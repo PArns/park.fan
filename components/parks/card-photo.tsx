@@ -8,9 +8,8 @@ import { cn } from '@/lib/utils';
 const SIZES = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
 
 /**
- * Resolves the two historical keywords to a CSS value so the keyword and
- * focal-point cases take the same path — two mechanisms for "where is this
- * cropped from" is how they drift apart.
+ * Resolves the two keywords to a CSS value, so the keyword and focal-point cases take one path
+ * and cannot drift apart.
  */
 function toObjectPosition(value: 'top' | 'center' | (string & {})): string {
   return value === 'top' ? '50% 0%' : value === 'center' ? '50% 50%' : value;
@@ -30,8 +29,8 @@ interface CardPhotoProps {
   /**
    * Where the photo is anchored when `object-fit: cover` has to throw pixels away.
    *
-   * `top` and `center` are the historical defaults — park/ride photos frame from the
-   * top, portrait editorial covers from the centre. Anything else is passed through
+   * `top` and `center` are keywords: park/ride photos frame from the top, portrait
+   * editorial covers from the centre. Anything else is passed through
    * as a raw CSS `object-position`, which is how a per-image focal point from the
    * media database reaches every card. See `lib/media/focus.ts`.
    */
@@ -41,44 +40,14 @@ interface CardPhotoProps {
 }
 
 /**
- * The card photo, in two layers — and the split is the whole point.
+ * The card photo, in two layers, and the split is the whole point.
  *
- * A card is a photo with two sheets of frosted glass laid over it: a header panel
- * at the top and a wait-time panel at the bottom. Only the strip between them is
- * actually _seen_; everything else is 16–18px of backdrop blur under a translucent
- * panel. Painting one image across the whole card therefore frames it against the
- * wrong box — and that is what made the focal point inert on the Y axis:
- *
- *   card box    405 × 404  → aspect 1.00
- *   4:3 photo             → aspect 1.33
- *
- * `object-fit: cover` scales to the larger ratio, so a landscape photo in a
- * near-square box fills the box's **height** exactly and overflows only sideways.
- * With zero vertical overflow there is nothing for `object-position`'s Y component
- * to move, and dragging the focal point up and down rendered byte-identical pixels.
- * (Portrait photos, being the other way round, always did respond — which is why it
- * looked intermittent.)
- *
- * So the framing reference is the visible strip, not the card:
- *
- * - {@link CardPhotoFrame} sits inside the card's photo-spacer row, i.e. exactly
- *   the strip between the panels (405 × 240 → aspect 1.69). A 4:3 photo now
- *   overflows it by ~26% vertically, and the focal point moves the subject through
- *   that range. This is the layer a person sees and the one they tune.
- * - {@link CardPhoto} keeps covering the whole card underneath, so the panels still
- *   have photo to blur and no gradient band shows through the glass. Its crop is
- *   never the reference; it is only ever seen through 16–18px of blur.
- *
- * Both are the same URL, so it is one request and one decode — the second layer
- * costs a composite, not a download. Their seam falls 16px inside each glass panel,
- * where the panel's own backdrop blur smears it away.
- *
- * Both are Client Components purely so the photo can **fade in over a stable
- * gradient placeholder** once it loads — the cards themselves stay dual-use Server
- * Components. Nearby/Favorites cards are client-rendered, so their lazy photos used
- * to pop in and look like they "realigned" seconds after load on uncached views. The
- * placeholder keeps the area stable and the fade smooths the swap; cached images are
- * caught via the ref so they show instantly with no fade-from-transparent flash.
+ * Only the strip between a card's two glass panels is actually seen, and an image framed against
+ * the whole near-square card has no vertical overflow for `object-position` to move.
+ * {@link CardPhotoFrame} sits in that strip and is the layer a person sees and tunes; this one
+ * covers the whole card underneath, so the panels have photo to blur. Same URL, so one request.
+ * Client Components only so the photo fades in over a stable gradient placeholder; a cached image
+ * is caught via the ref and shows without a fade. See docs/rules/card-photos-are-two-layers.md.
  */
 export function CardPhoto({
   src,
@@ -99,8 +68,7 @@ export function CardPhoto({
 
   return (
     <>
-      {/* Stable gradient placeholder — visible while the photo loads (and on mobile when the
-          photo is hidden). Matches the no-image card fallback. */}
+      {/* Visible while the photo loads and wherever it is hidden, like the no-image fallback. */}
       <div className="from-muted to-card absolute inset-0 bg-gradient-to-br" />
 
       <div
@@ -161,19 +129,10 @@ export function CardPhoto({
 /**
  * The photo as it is actually seen: cropped to the strip between the glass panels.
  *
- * Goes **inside the card's photo-spacer row**, which already is that strip — that is
- * how it gets the right box without any component needing to know how tall the two
- * panels came out. Sits above {@link CardPhoto} and below the scrim, so the spacer
- * has to stay at `z-0` for the scrim (`z-1`) to keep darkening it.
- *
- * Decorative: the bleed layer already carries the alt text for the same picture, and
- * announcing it twice would be a duplicate to a screen reader.
- *
- * `priority` belongs HERE rather than on the bleed layer when a card is the page's
- * LCP: this is the layer somebody sees. Both render the same URL with the same
- * `sizes`, so it is one request either way — but the preload should be attached to
- * the element whose paint the user is waiting for, and this one fades in on its own
- * `onLoad`. Prioritizing the blurred layer instead left the visible photo lazy.
+ * Goes inside the card's photo-spacer row, which already is that strip, so nothing needs to know
+ * how tall the panels came out. The spacer stays at `z-0` so the scrim keeps darkening it.
+ * Decorative, because the bleed layer carries the alt text. `priority` belongs here when a card is
+ * the page's LCP: this is the layer whose paint the reader waits for.
  */
 export function CardPhotoFrame({
   src,

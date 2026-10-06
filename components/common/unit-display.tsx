@@ -1,5 +1,6 @@
 import {
   formatTemp,
+  formatTempWithUnit,
   formatWindSpeed,
   formatPrecip,
   formatSpeed,
@@ -8,23 +9,19 @@ import {
 } from '@/lib/utils/temperature';
 
 /**
- * Dual-unit display primitives.
- *
- * Each renders BOTH the metric and imperial rendering of a value; global CSS
- * (`.u-metric` / `.u-imperial`, toggled by `html[data-temp-unit]`) shows exactly
- * one. This lets weather/calendar values be server-rendered in both units so the
- * page can be statically cached and the user's unit applied instantly (no °C→°F
- * hydration flash). `display:none` keeps the hidden unit out of the a11y tree.
- *
- * Pure (no hooks) → usable from both Server and Client Components.
+ * Dual-unit display primitives: each renders both the metric and the imperial value, and global
+ * CSS (`.u-metric` / `.u-imperial` under `html[data-temp-unit]`) shows one, so pages can be cached
+ * and the reader's unit applies without a hydration flash. No hooks, so Server and Client
+ * Components can use them.
  */
 
-/** Temperature from a Celsius value, e.g. "15°" / "59°". */
-export function Temp({ celsius }: { celsius: number }) {
+/** Temperature from a Celsius value, e.g. "15°" / "59°", or "15 °C" / "59 °F" with `withUnit`. */
+export function Temp({ celsius, withUnit = false }: { celsius: number; withUnit?: boolean }) {
+  const format = withUnit ? formatTempWithUnit : formatTemp;
   return (
     <>
-      <span className="u-metric">{formatTemp(celsius, 'C')}</span>
-      <span className="u-imperial">{formatTemp(celsius, 'F')}</span>
+      <span className="u-metric">{format(celsius, 'C')}</span>
+      <span className="u-imperial">{format(celsius, 'F')}</span>
     </>
   );
 }

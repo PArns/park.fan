@@ -68,7 +68,6 @@ export async function generateMetadata({ params }: DatenschutzPageProps): Promis
 export default async function DatenschutzPage({ params }: DatenschutzPageProps) {
   const { locale } = await params;
 
-  // Validate locale
   if (!routing.locales.includes(locale as Locale)) {
     return null;
   }

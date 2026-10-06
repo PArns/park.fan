@@ -186,11 +186,9 @@ function buildMocks(now: number): Record<string, WeatherNowcast> {
 export function NowcastBannerDemo({ single = false }: { single?: boolean } = {}) {
   const [mocks] = useState(() => buildMocks(Date.now()));
 
-  // The guide's walk-through wants one banner, not the priority ladder: there the
-  // point is what the block looks like, not how storm beats hail beats rain.
-  // The banner waits for the minute clock and renders nothing before it, so the box is held here:
-  // 148 px below `sm`, where the bar chart stacks under the text, and 117 px from `sm` up —
-  // measured at 360 to 1440 px in all six locales (PAR-683).
+  // The guide's walk-through wants one banner, not the priority ladder. The banner renders nothing
+  // until the minute clock runs, so the box is held here, taller below `sm`, where the bar chart
+  // stacks under the text.
   if (single) {
     return (
       <div className="min-h-[148px] sm:min-h-[117px]">

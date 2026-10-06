@@ -1243,6 +1243,11 @@
     "closedRides": {
       "title": "Attractions fermées définitivement",
       "since": "depuis {month}"
+    },
+    "hoursCalendar": {
+      "link": "Horaires dans l’agenda",
+      "summary": "{park} : ouvert",
+      "estimated": "Les horaires sont estimés."
     }
   },
   "attractions": {
@@ -1935,6 +1940,7 @@
       "close": "Fermer",
       "entry": "Alertes de temps d’attente",
       "entryWithCount": "Alertes de temps d’attente ({count})",
+      "nudge": "Nous vous prévenons dès que l’attente d’une attraction passe sous le nombre de minutes choisi.",
       "outOfSeason": "Hiver uniquement",
       "retired": "Démonté",
       "errorRateLimited": "Trop de tentatives. Réessayez dans {seconds} secondes.",

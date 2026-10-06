@@ -315,6 +315,7 @@ const FAQ = [
   },
 ];
 
+/** The guide page's article, Dutch. */
 export function ContentNL() {
   const glossary = `/${GLOSSARY_SEGMENTS.nl}`;
   const bestTime = `/${BEST_TIME_SEGMENTS.nl}`;
@@ -324,7 +325,6 @@ export function ContentNL() {
     <>
       <ChapterRail chapters={CHAPTERS} ariaLabel="Hoofdstukken" />
 
-      {/* ── Intro ───────────────────────────────────────────────────────── */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
           park.fan is in een wachtrij ontstaan. Taron, middag, bij de ingang stond iets met drie
@@ -362,7 +362,6 @@ export function ContentNL() {
         </Reveal>
       </div>
 
-      {/* ── 01 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="getal"
         index="01"
@@ -407,7 +406,6 @@ export function ContentNL() {
         </DemoFrame>
       </SectionShell>
 
-      {/* ── 02 ──────────────────────────────────────────────────────────── */}
       <Ambience>
         <SectionShell
           id="maatstaf"
@@ -486,9 +484,8 @@ export function ContentNL() {
             </WaitScaleStage>
           </div>
 
-          {/* Card left, prose right. The card is a park-page sidebar component and
-              looks absurd stretched across a 1500 px column, so it keeps its own
-              width and the text takes the rest instead of leaving a hole. */}
+          {/* Card left, prose right: the card is a park-page sidebar component, so it keeps
+              its own width and the text takes the rest. */}
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="Op de pagina van een attractie"
@@ -524,7 +521,6 @@ export function ContentNL() {
         </SectionShell>
       </Ambience>
 
-      {/* ── 03 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="moment"
         index="03"
@@ -577,7 +573,6 @@ export function ContentNL() {
         </div>
       </SectionShell>
 
-      {/* ── 04 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="dag"
         index="04"
@@ -598,10 +593,8 @@ export function ContentNL() {
           <CalendarDaysDemo />
         </DemoFrame>
 
-        {/* One column, full width, like every other chapter on this page. As two
-            prose columns this band put a third text edge under the paragraph above
-            it: a run of copy, then a 604 px column ending short of it, then a
-            second column starting where that paragraph still had words. */}
+        {/* One column, full width, like every other chapter on this page: two prose
+            columns would put a third text edge under the paragraph above. */}
         <div className="space-y-4 pt-2">
           <P>
             De vakanties van de buren tellen vaak even zwaar als de eigen, omdat dagjesmensen geen
@@ -640,7 +633,6 @@ export function ContentNL() {
         </div>
       </SectionShell>
 
-      {/* ── 05 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="dagplan"
         index="05"
@@ -674,7 +666,6 @@ export function ContentNL() {
         </P>
       </SectionShell>
 
-      {/* ── 06 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="parkpagina"
         index="06"
@@ -714,7 +705,6 @@ export function ContentNL() {
         </div>
       </SectionShell>
 
-      {/* ── 07 ──────────────────────────────────────────────────────────── */}
       <Ambience tone="emerald">
         <SectionShell
           id="nachtdienst"
@@ -767,7 +757,6 @@ export function ContentNL() {
         </SectionShell>
       </Ambience>
 
-      {/* ── 08 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="gaten"
         index="08"
@@ -805,7 +794,6 @@ export function ContentNL() {
         </div>
       </SectionShell>
 
-      {/* ── 09 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="wegwijzer"
         index="09"
@@ -900,7 +888,6 @@ export function ContentNL() {
         />
       </SectionShell>
 
-      {/* ── 10 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="faq"
         index="10"

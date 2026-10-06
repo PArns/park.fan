@@ -7,33 +7,13 @@ import { NewsRow } from '@/components/blog/news-row';
 import type { Locale } from '@/i18n/config';
 
 /**
- * The three newest posts, in a card directly under the hero.
- *
- * It stands where the park shortcut row used to: the first thing under the fold,
- * which is the only place on this page that reaches a reader who has not decided
- * to scroll yet. Three rather than six — this is the blog saying hello, not the
- * blog index, and `/blog` is one link away in the same row.
- *
- * From `lg` up only. The blog chapter further down carries the same posts in a
- * different shape (a lead card with four beside it), so nothing is lost on a
- * phone; what would be lost by keeping this one there is the fold.
- *
- * The three are articles only; news has its own smaller row under them
- * ({@link NewsRow}), so a busy news week does not push the guides out of the band.
- *
- * **No `<Suspense>`, and that is the point.** `listArticlesByRecency` reads the
- * generated manifest synchronously, so there is no async work to defer and a
- * boundary here would drop the band out of the first HTML and put it back a
- * moment later — a shift on the highest-traffic page in the app, for nothing.
- * Synchronous data belongs inline, at full height.
- *
- * `BlogPostCard` brings its own row template (`grid-template-rows` on the card,
- * never on this wrapper): the cards lay out with `row-span-3` + `subgrid`, and a
- * shared wrapper template collapses against the panels' negative margins and
- * slices the title. See the blog-spotlight note in CLAUDE.md.
- *
- * Renders nothing where the locale publishes no posts, which is the same
- * condition the blog routes 404 under.
+ * The three newest articles, in a card directly under the hero, the one place that reaches a
+ * reader who has not decided to scroll. From `lg` up only; the blog chapter further down carries
+ * the same posts, and news has its own row ({@link NewsRow}). No `<Suspense>`:
+ * `listArticlesByRecency` reads the manifest synchronously, and a boundary would drop the band out
+ * of the first HTML and shift the page when it returns. `BlogPostCard` brings its own row
+ * template, see docs/rules/blog-spotlight-cards.md. Renders nothing where the locale publishes no
+ * posts.
  */
 export async function BlogTeaserBand({ locale }: { locale: Locale }) {
   const [t, tBlog] = await Promise.all([
@@ -45,10 +25,8 @@ export async function BlogTeaserBand({ locale }: { locale: Locale }) {
   if (posts.length === 0) return null;
 
   return (
-    // Desktop only. On a phone this band would be three full-height cards
-    // between the hero and the first chapter — a screen and a half of blog
-    // before the site has said what it is. Phones meet the blog further down,
-    // in the chapter, which is where the reading order puts it anyway.
+    // Desktop only: on a phone this band would be a screen and a half of blog before the site has
+    // said what it is. Phones meet the blog in the chapter further down.
     <section className="hidden px-4 pt-8 pb-4 lg:block">
       <div className="container mx-auto">
         <div className="border-border bg-card/40 rounded-2xl border p-4 sm:p-6">

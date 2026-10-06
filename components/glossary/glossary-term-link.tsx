@@ -14,16 +14,9 @@ import {
 import type { Locale } from '@/i18n/config';
 
 /**
- * Subscribe to the lazily-loaded glossary data for `locale`. Returns the term map once it
- * resolves (or `undefined` until then). The data is client-only, so SSR and the first client
- * render both return `undefined` (matching markup → no hydration mismatch); the links/tooltips
- * "highlight in" right after the per-locale chunk loads. Only the mounted term-link instances
- * re-render — never the whole page.
- *
- * `useSyncExternalStore` re-reads the snapshot immediately after subscribing, so a term link
- * that mounts while the import is in-flight can't miss the resolution that lands in the
- * render→effect gap (which a manual effect+subscribe would). The effect only kicks the
- * (deduplicated) load off after first paint.
+ * Subscribes to the lazily loaded glossary data for `locale`: `undefined` on the server and the
+ * first client render, so the markup matches, then the term map once the per-locale chunk loads.
+ * `useSyncExternalStore` re-reads after subscribing, so a link mounting mid-import cannot miss it.
  */
 function useGlossaryTerms(locale: Locale) {
   useEffect(() => {
@@ -50,11 +43,8 @@ interface GlossaryTermLinkProps {
 }
 
 /**
- * Lightweight client component for rendering a glossary term link with optional tooltip.
- * Use this in client component trees where async GlossaryInject is not available.
- *
- * The term data (name/definition/slug) is loaded lazily per locale (see client-data-loader),
- * so until it arrives the children render as plain text and then upgrade to a link + tooltip.
+ * Glossary term link with an optional tooltip, for client trees where the async `GlossaryInject`
+ * is not available. Until the per-locale term data loads, the children render as plain text.
  */
 export function GlossaryTermLink({
   termId,
@@ -69,7 +59,6 @@ export function GlossaryTermLink({
   const slug = termData.slug;
   const segment = GLOSSARY_SEGMENTS[locale];
 
-  // Get tooltip data if available and enabled
   const tooltipName = showTooltip ? termData.name : null;
   const tooltipDefinition = showTooltip ? termData.shortDefinition : null;
 
@@ -103,7 +92,6 @@ export function GlossaryTermLink({
     </Link>
   );
 
-  // If we have tooltip data, wrap in Tooltip component
   if (tooltipName && tooltipDefinition) {
     return (
       <Tooltip>

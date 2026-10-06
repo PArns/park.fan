@@ -8,60 +8,45 @@ import { useTranslations, useLocale } from 'next-intl';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { Temp } from '@/components/common/unit-display';
 import { format, parseISO } from 'date-fns';
-import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
+import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { CROWD_TEXT_CLASS, CROWD_TILE_CLASS } from '@/lib/utils/crowd-level-styles';
 import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { cn } from '@/lib/utils';
 
+/** Props of one crowd-calendar day cell. */
 export interface ParkCalendarDayProps {
   day: CalendarDay;
   /** Park IANA timezone — opening hours render in park time (browser-time tooltip on hover). */
   parkTimezone: string;
   isToday: boolean;
   isBest?: boolean;
-  /** Opens the day-detail panel for `day.date`. When set, the whole card becomes a
-   *  button — the touch-friendly way to reach the weather / forecast / prediction
-   *  detail (the calendar's hover tooltips never opened on mobile). Receives the
-   *  date so callers can pass ONE stable handler instead of a per-day arrow (which
-   *  would defeat this component's `memo`). */
+  /**
+   * Opens the day-detail panel for `day.date`; when set, the whole card is a button, which also
+   * works on touch. Takes the date so callers pass one stable handler and the `memo` holds.
+   */
   onSelect?: (date: string) => void;
   /**
-   * Whether the grid is in comparison mode, where a press PICKS the day instead of opening it.
-   *
-   * The cell keeps one click handler either way — which of the two things it means is the grid's
-   * decision, and duplicating it here would be the same rule written twice. What this changes is
-   * what the cell SAYS: `aria-pressed` is only honest about a control that stays down, and in
-   * comparison mode this one does.
+   * Whether the grid is in comparison mode, where a press picks the day instead of opening it. The
+   * click handler is the grid's decision; this only adds `aria-pressed`, which is honest only for a
+   * control that stays down.
    */
   selectable?: boolean;
   /**
-   * `1` or `2` where this day is one of the two being compared, `null` otherwise.
-   *
-   * A number rather than a boolean because the two picks are not interchangeable: the left column
-   * of the comparison is the first one chosen, and a reader who has picked two days out of a month
-   * grid has no other way of telling which is which.
+   * `1` or `2` where this day is one of the two being compared, `null` otherwise. A number because
+   * the picks are not interchangeable: the comparison's left column is the first one chosen.
    */
   selectionIndex?: 1 | 2 | null;
 }
 
 /**
- * The four things a day can carry besides its crowd level, as a bar across the top edge.
- *
- * They used to be the cell's BORDER COLOUR plus an icon in the header row, which could only ever
- * show one of them: the border is one colour, and the icon picked a winner by priority. A Friday
- * in the summer holidays that is also a public holiday somewhere next door is three facts, and
- * the cell showed one. A bar splits into as many segments as there are signals, so the same cell
- * says all of it in three pixels — and the border is free to carry the crowd level instead, which
- * is the thing the reader came for.
- *
- * Colours are deliberately not the `--crowd-*` palette: these are categories, not a scale, and
- * borrowing the scale's amber for „Ferien in Nachbarregionen" would put a legend colour next to a
- * tier colour that means something else entirely. Red for a public holiday follows the calendar
- * convention every German wall calendar already taught the reader.
+ * The four things a day can carry besides its crowd level, as a bar across the top edge. The bar
+ * splits into one segment per signal, so a cell shows all of them at once and the border stays free
+ * for the crowd level.
  */
 function daySignals(day: CalendarDay, locale: string) {
   const signals: { key: string; className: string; label: string }[] = [];
@@ -70,23 +55,23 @@ function daySignals(day: CalendarDay, locale: string) {
     const name = day.events?.find((e) => e.type === 'school-holiday')?.name;
     signals.push({
       key: 'school',
-      className: 'bg-yellow-500 dark:bg-yellow-400',
+      className: DAY_SIGNAL_CLASS.school,
       label: translateHolidayName(name, locale) || '',
     });
   }
   if ((day.neighborHolidays?.length ?? 0) > 0 && day.status !== 'CLOSED') {
-    signals.push({ key: 'neighbor', className: 'bg-amber-600 dark:bg-amber-500', label: '' });
+    signals.push({ key: 'neighbor', className: DAY_SIGNAL_CLASS.neighbor, label: '' });
   }
   if (day.isHoliday || day.isPublicHoliday) {
     const name = day.events?.find((e) => e.type === 'holiday')?.name;
     signals.push({
       key: 'holiday',
-      className: 'bg-red-500 dark:bg-red-400',
+      className: DAY_SIGNAL_CLASS.holiday,
       label: translateHolidayName(name, locale) || '',
     });
   }
   if (day.isBridgeDay) {
-    signals.push({ key: 'bridge', className: 'bg-blue-500 dark:bg-blue-400', label: '' });
+    signals.push({ key: 'bridge', className: DAY_SIGNAL_CLASS.bridge, label: '' });
   }
 
   return signals;
@@ -106,15 +91,7 @@ function ParkCalendarDayComponent({
   const tLegend = useTranslations('attractions.historyLegend');
   const locale = useLocale();
 
-  const dateLocale =
-    {
-      de,
-      en: enUS,
-      es,
-      fr,
-      it,
-      nl,
-    }[locale as 'de' | 'en' | 'es' | 'fr' | 'it' | 'nl'] || enUS;
+  const dateLocale = dateFnsLocale(locale);
 
   const dayDate = parseISO(day.date);
   const dayOfWeek = format(dayDate, 'EEE', { locale: dateLocale });
@@ -138,15 +115,9 @@ function ParkCalendarDayComponent({
 
   /**
    * The day's wait in one number: the average across the park's headliners.
-   *
-   * `headlinerForecast.avgWait`, NOT `day.avgWaitTime` — the cell used to render the latter and
-   * therefore rendered nothing, because `/calendar` does not send it. Checked against the live
-   * payload for Phantasialand: a day carries `crowdLevel`, `hours`, `weather`, `peakLoad`,
-   * `events`, the holiday flags and `headlinerForecast`, and no `avgWaitTime` at all. The field
-   * stays in the fallback for a park or a cached response that does send one.
-   *
-   * `roundWaitTo5` on the way out as well as in the API: a displayed wait time is always a
-   * multiple of five, and an average across a day is exactly the arithmetic that breaks it.
+   * `headlinerForecast.avgWait` first, because `/calendar` does not send `day.avgWaitTime`; that
+   * field stays as the fallback for a response that does. Rounded, since a displayed wait time is
+   * always a multiple of five.
    */
   const rawWait = day.headlinerForecast?.avgWait ?? day.avgWaitTime;
   const wait = rawWait && rawWait > 0 ? roundWaitTo5(rawWait) : null;
@@ -169,18 +140,16 @@ function ParkCalendarDayComponent({
     .join(' · ');
 
   return (
-    // Every `lg:` below is the cell dressed for the seven-column week grid, and which grid it
-    // lands in is decided by the `matchMedia('(min-width: 1024px)')` in <ParkCalendarGrid> — so
-    // these stay on the window until that query does. See the note there.
+    // Every `lg:` below dresses the cell for the seven-column week grid, which <ParkCalendarGrid>
+    // picks with `matchMedia('(min-width: 1024px)')`, so these stay on the window until that query
+    // does.
     <Card
       className={cn(
         'relative flex h-full min-h-[92px] flex-col gap-0 overflow-hidden rounded-xl p-[10px] lg:min-h-[150px] lg:p-3',
         colored ? CROWD_TILE_CLASS[colored] : 'bg-muted/25 border-border/60',
         isToday && 'border-primary border-2',
-        // The picked state is a RING rather than a border colour, because the border is already
-        // spoken for twice over — the crowd tile owns it, and „heute" overrides that. A ring sits
-        // outside the box, so a picked day still reads as busy or quiet at a glance, which is the
-        // whole reason somebody is picking it.
+        // The picked state is a ring, not a border colour: the crowd tile and „heute" already own
+        // the border, and a ring outside the box keeps the day's crowd level readable.
         selectionIndex !== null && 'ring-primary ring-offset-background z-10 ring-2 ring-offset-2',
         clickable &&
           'focus-visible:ring-primary cursor-pointer transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:outline-none'
@@ -203,17 +172,16 @@ function ParkCalendarDayComponent({
           }
         : {})}
     >
-      {/* Which of the two picks this is, in the corner the crowd figure does not use. Numbered
-        rather than ticked: the comparison's left column is the first day chosen, and without the
-        number the reader has no way to know which cell that was. */}
+      {/* Which of the two picks this is. Numbered, not ticked: the comparison's left column is the
+          first day chosen. */}
       {selectionIndex !== null && (
         <span className="bg-primary text-primary-foreground absolute right-1 bottom-1 flex size-5 items-center justify-center rounded-full text-[10px] font-bold tabular-nums">
           {selectionIndex}
         </span>
       )}
 
-      {/* The signal bar. Sits on the cell's own top edge, inside its rounding, so it reads as part
-        of the tile rather than as a chip laid on it. */}
+      {/* Inside the cell's rounding, so it reads as part of the tile rather than a chip laid on it.
+       */}
       {signals.length > 0 && (
         <span className="pointer-events-none absolute inset-x-0 top-0 flex h-[3px]">
           {signals.map((s) => (
@@ -222,12 +190,9 @@ function ParkCalendarDayComponent({
         </span>
       )}
 
-      {/* Header: the date on the left, what it costs in queue on the right.
-        `flex-wrap` and a date group that refuses to shrink, because the seven-column grid starts
-        at 1024 px where a cell is 128 px wide and „28 · HEUTE · 40 Min" wants about 133: without
-        the wrap the date group was squeezed to 44 px and the pill slid out from under it, across
-        the wait time. Wrapped, the wait drops to a line of its own and the cell still comes in
-        under its 150 px — from 1280 px up nothing wraps at all. */}
+      {/* `flex-wrap` and a date group that does not shrink: in the narrowest seven-column cell the
+          date, the „Heute" pill and the wait do not fit one line, and without the wrap the pill
+          slid across the wait time. */}
       <div className="flex flex-wrap items-start justify-between gap-x-1.5 gap-y-0.5">
         <div className="flex shrink-0 items-baseline gap-1.5">
           <span
@@ -238,8 +203,8 @@ function ParkCalendarDayComponent({
           >
             {dayOfMonth}
           </span>
-          {/* The weekday gives way to the „Heute" pill rather than squeezing beside it: at `lg`
-            the cell is 132 px inside its padding and „28 Fr HEUTE 15 Min" does not fit in it. */}
+          {/* The weekday gives way to the „Heute" pill: at `lg` the two do not fit side by side.
+           */}
           {isToday ? (
             <span className="bg-primary text-primary-foreground rounded-full px-1.5 py-[3px] text-[8.5px] font-bold tracking-wider whitespace-nowrap uppercase">
               {tCommon('today')}
@@ -262,7 +227,6 @@ function ParkCalendarDayComponent({
         )}
       </div>
 
-      {/* What kind of day it is, in one word. */}
       <div
         className={cn(
           'mt-1.5 flex items-center gap-1 text-[9.5px] font-bold tracking-wider uppercase lg:mt-2 lg:text-[10.5px]',
@@ -286,9 +250,8 @@ function ParkCalendarDayComponent({
         <span className="truncate">{statusLabel}</span>
       </div>
 
-      {/* Hours and weather sit on the cell's floor, so every tile in a row lines them up. Below
-        `lg` they share a line — the two-column list is 177 px wide on a phone and a stacked pair
-        would cost the row a third of its height for two figures that fit side by side. */}
+      {/* Hours and weather sit on the cell's floor so a row lines them up. Below `lg` they share a
+          line; stacked, they would cost a phone row a third of its height. */}
       <div className="text-muted-foreground mt-auto flex flex-wrap items-center gap-x-2 gap-y-0.5 pt-1 text-[10.5px] lg:flex-col lg:items-start lg:gap-1 lg:text-[11px]">
         {day.status === 'OPERATING' && day.hours && (
           <span className="flex items-center gap-1 tabular-nums">
@@ -325,5 +288,8 @@ function ParkCalendarDayComponent({
   );
 }
 
-// Memoize component to prevent unnecessary re-renders
+/**
+ * One day cell of the crowd calendar, memoised so a grid update re-renders only the days that
+ * changed.
+ */
 export const ParkCalendarDay = memo(ParkCalendarDayComponent);

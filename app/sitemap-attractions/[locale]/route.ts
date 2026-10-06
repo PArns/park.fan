@@ -1,51 +1,40 @@
-import { xmlEscape } from '@/lib/seo/sitemap-xml';
+import {
+  localeFromSitemapFile,
+  localeSitemapParams,
+  urlsetResponse,
+  xmlEscape,
+} from '@/lib/seo/sitemap-xml';
 import { getAttractionPaths } from '@/lib/content-urls';
 import { getContentLastmodIndex } from '@/lib/seo/content-changes/store';
-import { locales, SITE_URL, type Locale } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
 import { notFound } from 'next/navigation';
 
 /**
- * One attraction sitemap per locale, addressed as `/sitemap-attractions/<locale>.xml`.
- *
- * The single combined file this replaces held 42,606 URLs — 7,101 attractions
- * × 6 locales — against the format's hard ceiling of 50,000. That left room for
- * 1,232 more attractions on a catalogue that went from ~5,800 to 7,101 in about
- * a year, so the file was going to stop validating on its own schedule. Split by
- * locale each child holds 7,101 and the ceiling stops being a deadline.
- *
- * Search Console also reports coverage per sitemap file, so a per-locale split
- * turns one undiagnosable number into six comparable ones.
+ * One attraction sitemap per locale, `/sitemap-attractions/<locale>.xml`, so no file nears the
+ * 50,000-URL ceiling and Search Console reports coverage per locale. See docs/seo/sitemaps.md.
  */
 export const revalidate = 86400;
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale: `${locale}.xml` }));
+  return localeSitemapParams();
 }
 
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ locale: string }> }
 ): Promise<Response> {
-  const { locale: fileName } = await params;
-  const locale = fileName.replace(/\.xml$/, '');
-  if (!locales.includes(locale as Locale)) notFound();
+  const locale = localeFromSitemapFile((await params).locale);
+  if (!locale) notFound();
 
   const [paths, lastmod] = await Promise.all([getAttractionPaths(), getContentLastmodIndex()]);
   const urls = paths.map((path) => {
-    // `<lastmod>` is the only one of these three tags Google reads at all — it
-    // ignores `changefreq` and `priority` outright — so until the content-change
-    // detector existed this file carried 7,101 URLs and no signal. A path the
-    // detector has never seen (a ride added since the last crawl) gets no tag
-    // rather than a guess. See lib/seo/content-changes/fingerprint.ts.
+    // `<lastmod>` is the only one of these tags Google reads. A path the content-change detector
+    // has never seen gets no tag rather than a guess. See lib/seo/content-changes/fingerprint.ts.
     const changedAt = lastmod.get(path);
     return `<url><loc>${xmlEscape(`${SITE_URL}/${locale}${path}`)}</loc>${
       changedAt ? `<lastmod>${changedAt}</lastmod>` : ''
     }<changefreq>weekly</changefreq><priority>0.6</priority></url>`;
   });
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>`;
-
-  return new Response(xml, {
-    headers: { 'Content-Type': 'application/xml; charset=utf-8' },
-  });
+  return urlsetResponse(urls);
 }

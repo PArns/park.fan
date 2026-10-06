@@ -22,10 +22,8 @@ const LINE_HEIGHT_CLASS = 'h-7';
  * `useParkBestDaysCalendar` and with it `useLoadLast` (docs/rules/park-page-loading-priority.md):
  * the favorites list and its live status load first, the forecast after.
  *
- * Until the forecast has answered, an empty box of the line's height stands in its place, so the
- * cards below do not move when it lands. A park whose snapshot is empty, unrated or failed draws
- * no text, and the box stays: collapsing it would pull everything below it up by the line's
- * height and 16 px of grid gap after the page had settled.
+ * Until the forecast has answered, an empty box of the line's height stands in its place, and it
+ * stays for a park whose snapshot is empty, unrated or failed, so the cards below never move.
  */
 export function FavoriteParkQuietestDay({
   slug,

@@ -23,18 +23,11 @@ export function toNewsListItem(post: BlogListItem): NewsListItem {
 }
 
 /**
- * The news posts as one row of their own, under the articles.
- *
- * News is short and will be published far more often than the guides, so it gets
- * a line of its own instead of a share of the article slots — a small label, a link
- * to the news category and a {@link NewsList}. The articles above keep their space
- * however many notes land in a week.
- *
- * `posts` defaults to the three newest news posts; the park and ride pages pass
- * their own. Nothing is dropped for its age — news is content and stays listed;
- * each item shows how old it is instead (`NewsAge`). Synchronous
- * manifest data, so no `<Suspense>`: see `BlogTeaserBand`. Renders nothing when
- * there is no news.
+ * The news posts as one row of their own, under the articles: news is published far more often
+ * than the guides, so it gets a line of its own and the articles keep their space. `posts`
+ * defaults to the three newest; the park and ride pages pass their own. Nothing is dropped for its
+ * age; each item shows it (`NewsAge`). Synchronous manifest data, so no `<Suspense>` (see
+ * `BlogTeaserBand`). Renders nothing when there is no news.
  */
 export async function NewsRow({
   locale,

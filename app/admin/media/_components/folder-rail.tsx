@@ -22,15 +22,8 @@ import {
 import type { Vocabulary } from '../_lib/types';
 
 /**
- * Virtual folders next to the media grid: by collection, by park, by tag facet.
- *
- * Every folder is a filter the page already has. Park and tag set the same
- * state as the two dropdowns, so the rail and the dropdowns can never disagree;
- * collection is the one filter only the rail sets. All of them combine with
- * search, the dropdowns and the quick filters.
- *
- * On a phone the rail is one `<select>` above the grid, holding all three
- * views as option groups.
+ * Every folder is a filter the page already has: park and tag set the same state as the
+ * dropdowns, so the two never disagree, and collection is the one only the rail sets.
  */
 
 export interface FolderSelection {
@@ -45,6 +38,10 @@ const VIEWS: { id: FolderView; label: string }[] = [
   { id: 'tag', label: 'Tags' },
 ];
 
+/**
+ * Collapsible folder rail beside the media grid, by collection, park or tag facet, each folder a
+ * filter with its image count. Below `lg` it is one `<select>` above the grid.
+ */
 export function FolderRail({
   vocabulary,
   total,

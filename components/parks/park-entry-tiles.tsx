@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { EntryTileBody } from '@/components/common/entry-tile';
+import { Temp } from '@/components/common/unit-display';
 import { useTileReveal } from '@/lib/hooks/use-tile-reveal';
 import { TILE_ROW_ATTR, useTileRowAnchor } from '@/lib/hooks/use-tile-row-anchor';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
@@ -28,23 +29,16 @@ import { cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 /**
- * The entry-tile row of the park header card — everything both of its renderings share.
- *
- * There are two, and they differ only in what a cell IS. On the park page the chapter cells are
- * `TabsTrigger`s that switch a panel in place (`ParkTabsList`); on a park SUB-page — the crowd
- * calendar and the wait-time record — there is no `Tabs` to switch, so every cell is a link
- * (`ParkNavTiles`). Two of them are links in BOTH rows, because the calendar and the record are
- * pages rather than panels. What must not differ is the row itself: the same cells in the same
- * order, with the same live hints, so that walking from the park to the calendar and back does
- * not feel like walking between two sites.
- *
- * So the hints live here. Each is derived once, from queries this row shares by key with the
- * panel above it and the sections below — no cell in either rendering fetches anything of its own.
+ * The entry-tile row of the park header card: everything its two renderings share. On the park page
+ * the chapter cells are `TabsTrigger`s (`ParkTabsList`); on a park sub-page every cell is a link
+ * (`ParkNavTiles`). The row must be the same on both, so the hints are derived here from queries
+ * shared by key with the panel and the sections, and no cell fetches anything of its own.
  */
 
 export type ParkTileKey =
   'attractions' | 'calendar' | 'stats' | 'weather' | 'map' | 'shows' | 'restaurants';
 
+/** One cell of the entry-tile row. */
 export interface ParkTileItem {
   key: ParkTileKey;
   icon: LucideIcon;
@@ -52,16 +46,14 @@ export interface ParkTileItem {
   count?: number;
   hint: React.ReactNode;
   /**
-   * CSS order class. The visual order is not the DOM order, because the two link cells — the
-   * calendar and the wait-time record — must sit after every `TabsTrigger`, since Radix's arrow
-   * keys have to run over an uninterrupted set. The calendar still belongs SECOND in the row,
-   * because the order is how often a visitor needs the answer (what is open, when to come, what
-   * it will be like, then the ways around the park), and re-sorting the row by how a cell happens
-   * to navigate would be sorting it by implementation.
+   * CSS order class. The visual order is not the DOM order: the two link cells (calendar, wait-time
+   * record) come after every `TabsTrigger` so Radix's arrow keys run over an uninterrupted set, but
+   * the row is ranked by how often a visitor needs the answer, so the calendar still shows second.
    */
   order: string;
 }
 
+/** What the row's cells and hints are derived from. */
 export interface ParkTileSource {
   park: ParkWithAttractions;
   continent: string;
@@ -73,55 +65,37 @@ export interface ParkTileSource {
   /** The park has weather data, so the weather chapter exists at all. */
   weatherAvailable: boolean | undefined;
   /**
-   * The park has a wait-time record page — `meta.displayable` on its two-year aggregate, read
-   * server-side through `hasParkStatsPage()`.
-   *
-   * Absent means "do not offer it", not "unknown and probably fine", and the difference is 91 of
-   * the 210 parks in the catalogue: their aggregate is too thin to print, the route 404s for them
-   * on purpose, and a cell pointing there would be a dead end in the row a visitor navigates the
-   * park with.
-   *
-   * **All three pages of a park resolve it**, and that is the point of it being a prop rather
-   * than a query in here: the row is the park's navigation and is rendered on every one of them,
-   * so a cell that appeared on the calendar and not on the park page would make two renderings of
-   * one row — the exact thing this module exists to prevent, and it would also break the
-   * `rememberTileRow` handoff between them. They share one Data Cache entry on
-   * `CACHE_TTL.stats`, so asking three times costs one upstream call per park per day.
+   * The park has a wait-time record page: `meta.displayable` on its two-year aggregate, read on the
+   * server through `hasParkStatsPage()`. Absent means do not offer it, since the route 404s for a
+   * park whose aggregate is too thin. A prop rather than a query, resolved on all three pages of a
+   * park, so the row is the same on each and `rememberTileRow` can hand off between them.
    */
   statsAvailable?: boolean;
 }
 
+/** The classes every cell of the row shares, tab trigger or link. */
 export const tileCell = cn(
   'group relative border-border/50 flex h-auto w-full flex-col items-start justify-start gap-2',
   'border-r border-b px-4 py-3.5 text-left whitespace-normal transition-colors',
   'bg-muted/20 hover:bg-muted/40',
-  // `TabsTrigger`'s own base is built for a segmented control and has to be undone here, or the
-  // selected cell draws a rounded, shadowed, `border-input`-coloured box inside a grid whose whole
-  // point is that there are no boxes: `rounded-md`, `data-[state=active]:shadow-sm`,
-  // `dark:data-[state=active]:border-input` and `h-[calc(100%-1px)]`. The link tile carries the
-  // same overrides for free — it is not a trigger, so they are simply no-ops on it.
+  // `TabsTrigger`'s base is built for a segmented control and has to be undone here, or the
+  // selected cell draws a rounded, shadowed box inside a grid of borderless cells. On the link tile
+  // these overrides are no-ops.
   'rounded-none',
-  // …including its TEXT colour. The base mutes an inactive trigger in dark mode
-  // (`dark:text-muted-foreground`), which a link is not subject to — so five cells rendered grey
-  // and the calendar cell rendered white, and the row read as if the calendar were selected too.
-  // All six labels carry the same weight now: they are six equally valid destinations, and the
-  // selected one is marked by the bar, the filled chip and the tint rather than by being the only
-  // legible one. Below `sm` there is no chip, so the bar and the tint carry it alone.
+  // …including its text colour: the base mutes an inactive trigger in dark mode, which a link is
+  // not subject to, so the calendar cell read as selected too. The selected cell is marked by the
+  // bar, the chip and the tint; below `sm` there is no chip.
   'text-foreground dark:text-foreground',
   'data-[state=active]:border-border/50 dark:data-[state=active]:border-border/50',
-  // Phone: a third of the row. The label alone, chip and hint hidden (`EntryTileBody`) — 47 px
-  // against the 148 px the stacked cell took. `min-h-11` holds the 44 px a touch target needs where the label
-  // has no reserved second line: the ride row, whose lone „FAQ" cell measured 41 px without it.
+  // Phone: a third of the row, the label alone (`EntryTileBody` hides chip and hint). `min-h-11`
+  // holds the 44 px touch target where the label has no reserved second line, as in the ride row.
   'max-sm:flex-row max-sm:items-center max-sm:gap-1.5 max-sm:px-2 max-sm:py-2 max-sm:min-h-11'
 );
 
 /**
- * The row on a phone: three columns instead of two, and no second line in the cells.
- *
- * Two columns put seven cells in four rows, 596 px on Phantasialand at 390 × 664 — most of the
- * first screen, and the seventh cell alone in the last row. Three columns of 47 px cells are
- * three rows and 141 px. Both rows use it, the park's (`ParkTileGrid`) and the ride's
- * (`RideNavTiles`); from `sm` up the grids are unchanged.
+ * The row on a phone: three columns instead of two, and no second line in the cells. Two columns
+ * put seven cells in four rows, most of the first screen; three columns make three rows. Both rows
+ * use it, `ParkTileGrid` and `RideNavTiles`.
  */
 export const tileRowPhone = 'max-sm:grid-cols-3';
 
@@ -137,22 +111,13 @@ export function phoneLastCellSpan(index: number, count: number): string | undefi
 }
 
 /**
- * The selected cell's bar, along its top edge.
+ * The selected cell's bar along its top edge. An element, not a border or a shadow:
+ * `border-t-primary` loses to the shorthand border colour the cell needs to beat `TabsTrigger`'s
+ * base, and an inset shadow loses to the base's `shadow-sm`. A positioned child also reserves no
+ * space.
  *
- * An element rather than a border or a shadow, and both of those were tried against the DOM
- * first. `border-t-primary` loses because the cell already needs a SHORTHAND `border-…` colour
- * under `data-[state=active]:` — to beat the `dark:data-[state=active]:border-input` that
- * `TabsTrigger`'s own base sets — and a shorthand border colour beats a side-specific one in the
- * cascade whatever order the classes are written in; measured, the selected cell's
- * `border-top-color` came back as the plain hairline colour. An inset `shadow-[…]` loses to the
- * base's `data-[state=active]:shadow-sm` in the same way; measured, `box-shadow` computed to
- * `0px 0px 0px 0`.
- *
- * A positioned child answers to nothing but itself. It costs no reserved space either, where a
- * `border-t-2` had to be carried by every cell in the row to keep the labels on one baseline.
- *
- * Two selectors, because a cell is selected in two different ways: `data-state=active` is Radix's
- * on the park page's tab triggers, `aria-current=page` is the one a sub-page's own cell carries.
+ * Two selectors, because a cell is selected two ways: `data-state=active` on the park page's tab
+ * triggers, `aria-current=page` on a sub-page's own cell.
  */
 export function SelectionBar() {
   return (
@@ -178,10 +143,8 @@ export function useParkTileItems({
   const t = useTranslations('parks');
   const locale = useLocale();
   /**
-   * The `<b>` every tile hint wraps its figures in. The words in a hint are context and the
-   * numbers are the reading, so the numbers take the foreground colour while the sentence around
-   * them stays `text-muted-foreground` — the same split the panel's own cells use for a value
-   * inside a caption.
+   * The `<b>` every tile hint wraps its figures in: the numbers take the foreground colour, the
+   * words around them stay muted, as in the panel's own cells.
    */
   const bold = (chunks: React.ReactNode) => (
     <strong className="text-foreground font-semibold">{chunks}</strong>
@@ -192,13 +155,10 @@ export function useParkTileItems({
   // render would be impure and would disagree between the server and the first client render.
   const browserNow = useMinuteNowDate();
 
-  // Every hint below is read off the snapshot the tile row already has, except the calendar's,
-  // which reads the best-days calendar through the SAME query key <ParkBestDaysSection> and
-  // <ParkTodayPanel> already use — one cached request between the three. It is `useLoadLast`-gated
-  // and therefore arrives late, which costs nothing here because the hint box is reserved at two
-  // lines whether or not it has text yet.
-  // Same nowcast the weather card and the panel read — one query key across all three, so the
-  // tile cannot name a temperature the chapter behind it contradicts.
+  // The nowcast uses the same query key as the weather card and the panel, so the tile cannot
+  // contradict them. The best-days calendar uses the key <ParkBestDaysSection> and <ParkTodayPanel>
+  // use; it is `useLoadLast`-gated and arrives late, which costs nothing because the hint box is
+  // reserved at two lines.
   const { data: nowcast } = useWeatherNowcast({ continent, country, city, parkSlug });
   const { data: bestDaysCalendar } = useParkBestDaysCalendar({
     continent,
@@ -221,10 +181,8 @@ export function useParkTileItems({
     const label = getDateTimeFormat(locale, { weekday: 'short', day: 'numeric', month: 'short' })
       .format(target)
       .replace(/\.$/, '');
-    // How far off the date is, counted in CALENDAR days rather than in 24-hour spans: a quiet
-    // Tuesday is "in 3 days" from any hour of Saturday, and a difference in milliseconds would
-    // call it 2 or 3 depending on what time somebody opened the page. Both ends are floored to
-    // local midnight first — `target` already is, being built from Y/M/D.
+    // Counted in calendar days, not 24-hour spans: a quiet Tuesday is "in 3 days" from any hour of
+    // Saturday. Both ends are floored to local midnight; `target` already is.
     const startOfToday = new Date(
       browserNow.getFullYear(),
       browserNow.getMonth(),
@@ -243,11 +201,8 @@ export function useParkTileItems({
     () => (park.restaurants ?? []).filter((r) => r.status === 'OPERATING').length,
     [park.restaurants]
   );
-  // The shortest HEADLINER queue, not the shortest queue in the park. Across the whole catalogue
-  // that second one is always a walk-on carousel reading 0, so the tile said "kürzeste 0 min" on
-  // every park at every hour — true, and worth nothing to somebody deciding what to walk to.
-  // Closed rides are excluded via the display status, or a ride that shut with a stale 0 on its
-  // queue would win it outright.
+  // The shortest headliner queue, not the park's: that one is always a walk-on carousel at 0.
+  // Closed rides are excluded via the display status, or a stale 0 would win.
   const shortestHeadlinerWait = useMemo(() => {
     const waits = (park.attractions ?? [])
       .filter(
@@ -268,22 +223,25 @@ export function useParkTileItems({
     const temp =
       nowcast?.currentTemperatureC ?? w.now?.temperature ?? Number(w.current.temperatureMax);
     if (!Number.isFinite(temp)) return null;
-    // NOT `weatherDescription`: that field is the provider's own English string, and it shipped
-    // as "22 °C · Overcast" on a German page. `getWeatherConfig` maps the WMO code to the key
-    // the weather card already translates.
+    // Not `weatherDescription`, which is the provider's English string: `getWeatherConfig` maps the
+    // WMO code to a key the weather card already translates.
     const { icon, label } = getWeatherConfig(
       nowcast?.currentWeatherCode ?? w.now?.weatherCode ?? w.current.weatherCode,
       nowcast?.isDay ?? w.now?.isDay ?? true
     );
-    const summary = `${Math.round(temp)} °C · ${tWeather(label)}`;
     // An official warning outranks the conditions on a tile this small: it is the reason to open
     // the weather chapter at all.
+    const warning = (w.warnings?.length ?? 0) > 0;
     return {
-      // The tile's icon is the CONDITIONS, not a generic weather glyph: a hard-wired CloudSun sat
-      // above "Klarer Himmel" at 24 °C. Same config that supplies the label, so icon and text
-      // cannot contradict each other.
+      // The icon shows the conditions, from the same config as the label, so icon and text cannot
+      // contradict each other.
       icon,
-      text: (w.warnings?.length ?? 0) > 0 ? `${summary} · ${t('severeWeatherWarning')}` : summary,
+      text: (
+        <>
+          <Temp celsius={temp} withUnit /> · {tWeather(label)}
+          {warning && ` · ${t('severeWeatherWarning')}`}
+        </>
+      ),
     };
   }, [park.weather, nowcast, tWeather, t]);
 
@@ -297,15 +255,12 @@ export function useParkTileItems({
         .map((st) => st.startTime)
         .filter((t) => new Date(t).getTime() > nowMs)
         .sort((a, b) => a.localeCompare(b))[0] ?? null;
-    // Formatted here rather than handed to <LocalTime>, because the hint is a translated
-    // sentence with the time inside it. `t.rich` cannot do it either: `{time}` is a placeholder
-    // and next-intl only calls a function value for a <tag>, so passing one rendered the label
-    // with an empty slot after it — "Nächste:" and nothing else, which is what shipped.
+    // Formatted here rather than handed to <LocalTime>, because the hint is a translated sentence
+    // with the time inside it, and `t.rich` only calls a function for a <tag>, not for a `{time}`
+    // placeholder.
     if (!iso) return null;
     return {
-      // `hour`/`minute` are load-bearing: without them Intl falls back to its DATE defaults and
-      // the tile read "Nächste: 26.8.2026 · in 45 Min". Every other formatTime call site in the
-      // repo passes them for the same reason.
+      // `hour`/`minute` are load-bearing: without them Intl falls back to its date defaults.
       time: formatTime(new Date(iso), locale, {
         hour: '2-digit',
         minute: '2-digit',
@@ -321,10 +276,9 @@ export function useParkTileItems({
       icon: Zap,
       label: t('attractions'),
       count: park.attractions?.length || 0,
-      // Two lines, not one sentence with three clauses. At tile width the third clause broke
-      // mid-phrase — "Headliner" on the first line and "ab 35 min" on the second — because all
-      // three shared the hint's two-line clamp. The headliner reading is a different statement
-      // from how many rides are open, so it gets the second line to itself.
+      // Two lines, not one sentence with three clauses: under the hint's two-line clamp the third
+      // clause broke mid-phrase. The headliner reading is a separate statement, so it gets the
+      // second line to itself.
       hint:
         stats && stats.avgWaitTime !== null && shortestHeadlinerWait !== null ? (
           <>
@@ -365,9 +319,8 @@ export function useParkTileItems({
       key: 'map',
       icon: Map,
       label: t('map'),
-      // A park whose rides carry no `land` still has a map worth opening — it just has nothing
-      // to count. "· 0 Themenbereiche" was a true sentence about an empty set and read as a
-      // defect; 22 of the 40 parks sampled are in that position for one field or another.
+      // A park whose rides carry no `land` still has a map worth opening, just nothing to count; "·
+      // 0 Themenbereiche" read as a defect.
       hint: lands > 0 ? t.rich('tileMap', { lands, b: bold }) : t('tileMapPlain'),
       order: 'order-3',
     },
@@ -462,20 +415,14 @@ export function ParkTileGrid({
         // between them are the separation.
         '-mr-px -mb-px grid w-full auto-rows-fr grid-cols-2 items-stretch sm:grid-cols-3',
         tileRowPhone,
-        // Every label holds two lines, wrapped or not. „Wartezeiten-Kalender" sits at the edge of
-        // its cell: one line in „Geist Fallback", two in Geist. On a first visit the row painted
-        // at 132 px and grew to 148 px when the web font arrived (~440 ms), and with
-        // `auto-rows-fr` every cell grew with it. Measured 2026-09-23 with the font held back:
-        // de and nl at 390, 1280 and 1440 px, es at 800 px. The label stays whole because it is
-        // also the link text to the calendar page. The cost is 16 px of row where no label
-        // wraps (English everywhere). On the grid rather than in `EntryTileBody`, so both
-        // renderings of this row get it and the ride page's row, which reuses the body, does
-        // not.
+        // Every label holds two lines, wrapped or not: „Wartezeiten-Kalender" is one line in the
+        // fallback font and two in Geist, so the row grew when the web font arrived, and with
+        // `auto-rows-fr` every cell grew with it. On the grid rather than in `EntryTileBody`, so
+        // the ride page's row, which reuses the body, does not get it.
         '[&_[data-tile-label]]:min-h-[2lh]',
-        // Seven cells need more room than six, not the same room divided further: at the
-        // 1024 px the six-cell row starts at, seven cells are 146 px wide and „Restaurants"
-        // wraps. 1180 px puts a seven-cell row back at the same 168 px per cell that six cells
-        // get at their own breakpoint, and below it the row wraps to the three-column layout.
+        // Seven cells need more room than six: at 1024 px they are too narrow and „Restaurants"
+        // wraps. From 1180 px each of seven cells gets the width six cells get at their own
+        // breakpoint; below it the row wraps to three columns.
         tileCount === 7 && '@min-[1180px]/page:grid-cols-7',
         tileCount === 6 && '@min-[1024px]/page:grid-cols-6',
         tileCount === 5 && '@min-[1024px]/page:grid-cols-5',

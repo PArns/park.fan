@@ -9,33 +9,15 @@ import { FavoritesHowTo } from '@/components/parks/favorites-how-to';
 import { countFavorites, FAVORITES_COOKIE_NAME, parseFavoritesCookie } from '@/lib/utils/favorites';
 
 /**
- * Everything this browser has starred, on a page of its own — the destination of the header
- * band's permanent "Meine Favoriten" link (`FavoritesPageMenuLink`, in all three of the panel's
- * states) and of the footer's. The link used to be "Alle anzeigen" and appeared only where the
- * band had a "+N more" line to justify it, which left the page unreachable for anybody with few
- * favorites or none.
+ * Everything this browser has starred, the destination of the header band's "Meine Favoriten"
+ * link (`FavoritesPageMenuLink`) and the footer's. Like `/alerts` it reports state that lives in
+ * one browser, so it is `noindex`, in no sitemap, and has no localized slug.
  *
- * Same shape as `/alerts`, down to the segment: both report state that lives in this one
- * browser, so both are `noindex` and neither is in a sitemap (a noindex URL in a sitemap is a
- * Search Console error), and neither gets a localized slug — the four routes that have one
- * (`lib/glossary/segments.ts` and its siblings) are the four that are meant to rank.
- *
- * `FavoritesSection` is imported directly rather than through `next/dynamic` as it is on the
- * homepage and the editorial routes. There it is a band most visitors never fill and the split
- * chunk is the point; here it is the page, so a `<Suspense>` boundary around it would only buy
- * the graft-in that `FavoritesEmptyState` exists to prevent.
- *
- * The page reads the favorites cookie, so it renders per request instead of being prerendered.
- * What it buys is the first HTML at the size of the list: `FavoritesSection` gets the counts and
- * paints the skeleton the cards land in, where a prerendered page could only paint the empty
- * state and grow twice after hydration (CLS 0.42 on a phone with three parks, PAR-668). The page
- * is `noindex, nofollow` and one browser's own list; the cached copy it gives up was the same
- * empty shell for every visitor.
- *
- * And there is no `<RouteMessages>`: the page's own three strings are read on the server, and
- * the two client components below need `favorites` and `navigation`, which the locale layout
- * already ships. The card namespaces travel the way they do everywhere else, as the lazy chunk
- * `FavoritesSection` fetches for itself.
+ * It reads the favorites cookie and renders per request, so the first HTML is the size of the
+ * list and `FavoritesSection` paints the skeleton the cards land in; a prerendered page could
+ * only paint the empty state and grow after hydration. `FavoritesSection` is imported directly,
+ * not through `next/dynamic`, because here it is the page. No `<RouteMessages>`: the client
+ * components need only `favorites` and `navigation`, which the locale layout ships.
  */
 interface FavoritesPageProps {
   params: Promise<{ locale: string }>;
@@ -46,9 +28,8 @@ export async function generateMetadata({ params }: FavoritesPageProps): Promise<
   if (!isServableRoute(locale)) return {};
   const t = await getTranslations({ locale, namespace: 'favoritesPage' });
   return {
-    // `metaTitle`, not `title`: the locale layout's template is `%s`, so every page carries its
-    // own brand suffix, and `title` is also the `<h1>` below — putting "– park.fan" in the one
-    // that belongs in a tab would put it in the heading too.
+    // `metaTitle`, not `title`: the locale layout's template is `%s`, so the page carries its own
+    // brand suffix, and `title` is also the `<h1>` below, which must not.
     title: t('metaTitle'),
     // A cookie in one browser — nothing here is the same page twice.
     robots: { index: false, follow: false },
@@ -66,11 +47,9 @@ export default async function FavoritesPage({ params }: FavoritesPageProps) {
 
   return (
     <>
-      {/* `px-4` outside, `container mx-auto` inside — the band's own geometry, not
-          `PageContainer`'s. `PageContainer` puts the padding INSIDE the container, so from
-          1440 px up its text starts 16 px right of the band's: measured 96 against 80 at
-          1440 and 208 against 192 at 1920, identical below that. Two columns a reader can
-          see the step between, on the one page where they stand on top of each other. */}
+      {/* `px-4` outside, `container mx-auto` inside: the band's own geometry. `PageContainer`
+          pads inside the container, which from 1440 px up would start this text 16 px right
+          of the band's. */}
       <div className="px-4 pt-8">
         <div className="container mx-auto flex items-center gap-3">
           <div className="bg-primary/10 flex size-10 shrink-0 items-center justify-center rounded-xl">

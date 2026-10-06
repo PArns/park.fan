@@ -16,17 +16,11 @@ interface ShowCardShowtimesProps {
 }
 
 /**
- * Today's showtimes for a show card (with past/next highlighting). Client Component
- * because "today / is past / is next" depend on the current time — under Cache Components
- * a server render can't read `new Date()`. Rendered only for OPERATING shows by the parent.
- *
- * Each badge opens `ShowFollowDialog` for its own performance: `ShowFollow`
- * on the API stores the chosen instant, so tapping 19:10 files a reminder for
- * 19:10 rather than for whichever performance happens to be next. A badge
- * already past, or one starting inside `SHOW_FOLLOW_MIN_LEAD_MIN`, is a
- * read-out instead — there is no reminder left to give for either.
- * `stopPropagation` keeps the click from also activating the card's own
- * `<Link>`, the same nested-interactive-element concern `RideAlertBell` has.
+ * Today's showtimes for a show card, with past and next highlighted; a Client Component because
+ * both depend on the current time. Each badge opens `ShowFollowDialog` for its own performance, so
+ * tapping 19:10 files a reminder for 19:10. A badge already past or starting inside
+ * `SHOW_FOLLOW_MIN_LEAD_MIN` is a read-out. `stopPropagation` keeps the click off the card's own
+ * `<Link>`.
  */
 export function ShowCardShowtimes({
   showtimes,
@@ -57,11 +51,8 @@ export function ShowCardShowtimes({
             const isPast = showtimeDate < today;
             const isNext = nextShowtime && showtime.startTime === nextShowtime.startTime;
 
-            // A badge opens the dialog for ITS OWN performance — the API
-            // stores the chosen instant, so tapping 19:10 files a reminder
-            // for 19:10 and not for whatever happens to be next. Two of them
-            // cannot: one already over, and one starting too soon for a
-            // reminder to beat it there.
+            // A performance already over, or too soon for a reminder to arrive first, gets no
+            // dialog.
             const leadMin = (showtimeDate.getTime() - today.getTime()) / 60_000;
             const canFollow = !isPast && leadMin >= SHOW_FOLLOW_MIN_LEAD_MIN;
 

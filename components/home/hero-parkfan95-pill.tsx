@@ -26,22 +26,10 @@ function YouTubeMark({ className }: { className?: string }) {
 }
 
 /**
- * German-only signpost at the foot of the hero: park.fan now outranks Parkfan95 for his own
- * name, so a share of the visitors arriving here wanted him and not a wait-time database.
- * The pill hands them the two places they were actually heading for.
- *
- * **German only, and hard-coded rather than routed through `messages/`.** The mix-up exists in
- * exactly one search market — a Dutch or Spanish visitor never typed his name — so the other
- * five locales would carry a key they never render, and `check:untranslated` would then have
- * to be told that five German strings are fine. `locale === 'de'` at the call site with the
- * copy in place is the same shape `app/[locale]/impressum` already uses for German-only text.
- *
- * **It sits ON the photo, not on the hero's glass plate**, which is where it started and where
- * it disappeared: `text-muted-foreground` behind a `/50` border is the plate's quietest
- * material, and against a busy hero image the whole pill read as part of the plate's bottom
- * edge. Out here it borrows the material the image attribution in the opposite corner already
- * uses — a light veil, a small blur and full-strength text — so the two things drawn straight
- * onto the picture are made of the same thing.
+ * German-only signpost at the foot of the hero: park.fan outranks Parkfan95 for his own name, so
+ * some visitors arriving here wanted him. The pill links to his site and channel. Hard-coded
+ * rather than in `messages/`, because the mix-up exists in one search market only. It sits on the
+ * photo in the image attribution's material, since on the glass plate it read as the plate's edge.
  */
 export function HeroParkfan95Pill({ className }: { className?: string }) {
   const linkClass =
@@ -54,10 +42,8 @@ export function HeroParkfan95Pill({ className }: { className?: string }) {
         // on a phone, and a fixed height would clip the links off it.
         'flex min-h-10 w-fit max-w-full flex-wrap items-center justify-center gap-x-3 gap-y-1.5',
         'rounded-full border border-white/25 px-4 py-2 text-sm shadow-lg',
-        // The image attribution's material (bottom-right on lg+), so both things sitting
-        // directly on the photo are made of the same glass. The blur is affordable here for the
-        // same reason it is there and not on the plate's own children: one small box, not a
-        // 64 px filter over the whole ken-burns frame.
+        // The image attribution's material, so both things drawn on the photo match. The blur is
+        // affordable on one small box.
         'bg-white/20 backdrop-blur-sm dark:bg-black/35',
         className
       )}

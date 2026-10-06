@@ -39,11 +39,9 @@ export function BlogPostCard({
     ? resolveCategoryLabel(categoryPath, locale, lastSegment)
     : null;
 
-  // Resolved HERE, not in the view: the view renders inside a client tree (the
-  // admin's focal-point previews), and a media-database lookup there ships the
-  // whole catalog to the browser. Frontmatter usually points at a pre-cut crop
-  // (`…-16x9.jpg`) — the one file whose bytes get rewritten under an unchanged URL
-  // when a focal point moves, which is exactly what `?v=` guards against.
+  // Resolved here, not in the view, which renders inside a client tree where a media-database
+  // lookup would ship the whole catalog. Versioned because frontmatter usually points at a
+  // pre-cut crop whose bytes change under the same URL when a focal point moves.
   const cover = versionedPath(post.frontmatter.coverImage?.src);
 
   return (

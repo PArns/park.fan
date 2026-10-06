@@ -1,10 +1,9 @@
 import { NextRequest } from 'next/server';
-import { relayPushGet, relayPushWrite } from '@/lib/api/push-relay';
+import { relayPushGet, relayPushWrite } from '@/lib/api/relay';
 
 /**
- * A browser's wait-time alerts. Thin relay — see `lib/api/push-relay.ts` for
- * why, and `app/api/push/subscriptions/route.ts` / `.../show-follows/route.ts`
- * for its siblings.
+ * A browser's wait-time alerts. Thin relay: see `lib/api/relay.ts` for why, and
+ * `app/api/push/subscriptions/route.ts` / `.../show-follows/route.ts` for its siblings.
  */
 const API_PATH = '/v1/push/ride-alerts';
 

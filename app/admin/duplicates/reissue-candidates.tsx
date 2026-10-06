@@ -6,25 +6,24 @@ import { ArrowRight, CheckCircle2, GitMerge, Loader2, Repeat, XCircle } from 'lu
 import { Button } from '@/components/ui/button';
 import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import { useCan } from '../_app/session';
-import { Section } from '../_lib/ui';
-import { Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
+import { formatDay } from '../_lib/format';
+import {
+  Chip,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  Panel,
+  PanelBody,
+  PanelHeader,
+} from '../_ui/primitives';
 import { Field, TextInput } from '../_ui/controls';
 import { useToast } from '../_ui/toast';
 import { DroppedCurations, readDroppedCurations, type DroppedCuration } from './dropped-curations';
 
 /**
- * Rides the feed may have re-issued under a new id AND a new name (API PAR-686).
- *
- * ThemeParks.wiki hands a seasonal maze a new id every season and often
- * renames it on the way — `HAUNTED HOUSE: SAW: Legacy of Terror` came back as
- * `SAW Legacy of Terror`. The sync only recognises an identical name, so the
- * old row stays retired with the history, and a new row starts from nothing.
- *
- * Every retired row with a younger live row within 30 m is listed, matching
- * name or not: Movie Park's Dutch pairs were real and match nothing, Walibi
- * Belgium's three 4D films are 0 m apart and are three films. The name chip is
- * a hint; the decision is made here, pair by pair, and a dismissed pair does
- * not come back.
+ * Rides the feed may have re-issued under a new id and a new name (a seasonal maze each season),
+ * leaving the history on the retired row. Every retired row with a younger live row within 30 m is
+ * listed, matching name or not, and decided pair by pair; a dismissed pair does not come back.
  */
 
 interface CandidateSide {
@@ -53,13 +52,6 @@ interface ReissueReport {
 
 const QUERY_KEY = ['admin', 'reissue-candidates'];
 
-function day(value: string | null): string {
-  if (!value) return '—';
-  const parsed = new Date(value);
-  if (Number.isNaN(parsed.getTime())) return value;
-  return parsed.toLocaleDateString('de-DE', { day: '2-digit', month: 'short', year: 'numeric' });
-}
-
 function Side({ label, side }: { label: string; side: CandidateSide }) {
   return (
     <div className="min-w-0 flex-1">
@@ -72,7 +64,7 @@ function Side({ label, side }: { label: string; side: CandidateSide }) {
       </Link>
       <p className="text-muted-foreground truncate font-mono text-xs">{side.slug}</p>
       <p className="text-muted-foreground text-xs">
-        angelegt {day(side.createdAt)} · zuletzt gemessen {day(side.lastReading)}
+        angelegt {formatDay(side.createdAt)} · zuletzt gemessen {formatDay(side.lastReading)}
       </p>
       <p
         className="text-muted-foreground truncate font-mono text-[11px]"
@@ -319,53 +311,61 @@ function CandidateRow({
   );
 }
 
+/**
+ * Duplicates section listing retired rides with a younger live ride within 30 m, pair by pair:
+ * merge into the retired row after a dry run (`canMerge`), or mark as not a duplicate (editor and
+ * up).
+ */
 export function ReissueCandidatesSection({ canMerge }: { canMerge: boolean }) {
   const canDismiss = useCan('editor');
   const query = useAdminQuery<ReissueReport>(QUERY_KEY, '/api/admin/reissue-candidates');
   const candidates = query.data?.candidates ?? [];
 
   return (
-    <Section
-      icon={Repeat}
-      title="Neu ausgegeben unter anderem Namen?"
-      action={
-        query.data ? (
-          <div className="flex items-center gap-2">
-            <Chip tone="success">{query.data.namesMatch} Name passt</Chip>
-            <Chip tone="muted">{query.data.total} in der Nähe</Chip>
-          </div>
-        ) : undefined
-      }
-    >
-      <p className="text-muted-foreground text-sm">
-        Stillgelegte Bahnen, neben denen innerhalb von 30 m eine jüngere Bahn läuft. ThemeParks.wiki
-        gibt Saison-Attraktionen jedes Jahr unter neuer Id aus und benennt sie dabei oft um, dann
-        erkennt der Sync sie nicht wieder. „Name passt“ ist nur ein Hinweis: Im selben Gebäude
-        stehen oft zwei verschiedene Dinge, und eine Übersetzung passt nie.
-      </p>
+    <Panel>
+      <PanelHeader
+        icon={Repeat}
+        title="Neu ausgegeben unter anderem Namen?"
+        action={
+          query.data ? (
+            <div className="flex items-center gap-2">
+              <Chip tone="success">{query.data.namesMatch} Name passt</Chip>
+              <Chip tone="muted">{query.data.total} in der Nähe</Chip>
+            </div>
+          ) : undefined
+        }
+      />
+      <PanelBody className="space-y-3">
+        <p className="text-muted-foreground text-sm">
+          Stillgelegte Bahnen, neben denen innerhalb von 30 m eine jüngere Bahn läuft.
+          ThemeParks.wiki gibt Saison-Attraktionen jedes Jahr unter neuer Id aus und benennt sie
+          dabei oft um, dann erkennt der Sync sie nicht wieder. „Name passt“ ist nur ein Hinweis: Im
+          selben Gebäude stehen oft zwei verschiedene Dinge, und eine Übersetzung passt nie.
+        </p>
 
-      {query.isError ? (
-        <ErrorState message={query.error?.message ?? 'Laden fehlgeschlagen'} />
-      ) : query.isLoading ? (
-        <LoadingState label="Kandidaten werden gesucht…" />
-      ) : candidates.length === 0 ? (
-        <EmptyState
-          icon={CheckCircle2}
-          title="Keine Kandidaten"
-          description="Neben keiner stillgelegten Bahn läuft eine jüngere."
-        />
-      ) : (
-        <div className="space-y-2">
-          {candidates.map((candidate) => (
-            <CandidateRow
-              key={`${candidate.previous.attractionId}:${candidate.current.attractionId}`}
-              candidate={candidate}
-              canMerge={canMerge}
-              canDismiss={canDismiss}
-            />
-          ))}
-        </div>
-      )}
-    </Section>
+        {query.isError ? (
+          <ErrorState message={query.error?.message ?? 'Laden fehlgeschlagen'} />
+        ) : query.isLoading ? (
+          <LoadingState label="Kandidaten werden gesucht…" />
+        ) : candidates.length === 0 ? (
+          <EmptyState
+            icon={CheckCircle2}
+            title="Keine Kandidaten"
+            description="Neben keiner stillgelegten Bahn läuft eine jüngere."
+          />
+        ) : (
+          <div className="space-y-2">
+            {candidates.map((candidate) => (
+              <CandidateRow
+                key={`${candidate.previous.attractionId}:${candidate.current.attractionId}`}
+                candidate={candidate}
+                canMerge={canMerge}
+                canDismiss={canDismiss}
+              />
+            ))}
+          </div>
+        )}
+      </PanelBody>
+    </Panel>
   );
 }

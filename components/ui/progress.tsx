@@ -1,3 +1,7 @@
+/**
+ * Progress bar primitive (shadcn/ui on Radix Progress) whose fill goes from green to yellow, orange
+ * and red as the value passes 40, 70 and 85.
+ */
 import * as React from 'react';
 import * as ProgressPrimitive from '@radix-ui/react-progress';
 
@@ -8,7 +12,6 @@ function Progress({
   value,
   ...props
 }: React.ComponentProps<typeof ProgressPrimitive.Root>) {
-  // Determine color based on value
   const getIndicatorColor = (val: number = 0) => {
     if (val < 40) return 'bg-green-500';
     if (val < 70) return 'bg-yellow-500';

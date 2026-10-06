@@ -9,11 +9,8 @@ import type { Chapter } from '@/lib/howto/chapters';
  * each `<SectionShell>` in `app/[locale]/best-time-to-visit/content/<locale>.tsx`);
  * `pnpm test:hub-chapters` fails when one of them is not in the page it points into.
  *
- * **The labels are the page's own chapter titles, cut to a menu row.** A title such as „Les jours
- * de semaine et les mois les plus calmes" or „Questions fréquentes sur le meilleur moment pour
- * visiter" runs past a 300 px column, so the long ones lose their tail rather than gain new words:
- * „Jours et mois les plus calmes", „Questions fréquentes". The FAQ label is the one the guide's
- * list uses for its own FAQ in each locale, so the two columns in the band say it the same way.
+ * The labels are the page's own chapter titles, cut to fit a menu row rather than reworded. The
+ * FAQ label is the one the guide's list uses, so the two columns in the band say it the same way.
  */
 export const BEST_TIME_CHAPTERS: Record<Locale, Chapter[]> = {
   de: [

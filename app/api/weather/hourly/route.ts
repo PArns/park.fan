@@ -7,28 +7,12 @@ import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 const NO_STORE = { 'Cache-Control': 'no-store, must-revalidate' };
 
 /**
- * Today's hour-by-hour forecast for a park location, proxied from Open-Meteo.
+ * Today's hour-by-hour forecast for a park location, proxied from Open-Meteo because the backend
+ * has only daily weather and a short nowcast. The proxy keeps visitor addresses first-party and
+ * lets the caches collapse a park's visitors onto one upstream call.
  *
- * The park.fan backend only exposes daily weather plus a ~6 h nowcast (no hourly
- * temperatures), so the detailed day view fetches Open-Meteo — the backend's own
- * upstream source, already attributed in the weather card — directly. Proxying it
- * through this route keeps the request first-party (no visitor IPs to a third
- * party) and lets the Next data cache + CDN collapse all visitors of a park onto
- * one upstream call per cache window.
- *
- * Query params: lat, lon (coordinates), tz (IANA timezone for local hour labels),
- * date (optional YYYY-MM-DD — the park-local "today" the client renders).
- * Coordinates are rounded to 2 decimals (~1 km) — plenty for weather, and it
- * canonicalizes the upstream URL for better cache hits.
- *
- * The `date` param pins the upstream request to an explicit day
- * (`start_date`/`end_date`) instead of `forecast_days=1` ("today at upstream
- * fetch time"). This makes every cache key — CDN (request URL) and Next data
- * cache (upstream URL) — roll over with the park-local day, so a
- * stale-while-revalidate serve can never return YESTERDAY's hours for a
- * request made today. (The chart hides data that isn't "today", so that stale
- * serve made the hourly day view randomly disappear for the first visitors of
- * a day.)
+ * Query: `lat`, `lon` (rounded to two decimals for cache hits), `tz`, and the optional `date`, the
+ * park-local day, which pins the upstream request so a stale serve never returns yesterday's hours.
  */
 
 interface OpenMeteoHourlyResponse {

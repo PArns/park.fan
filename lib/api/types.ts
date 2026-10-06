@@ -1,29 +1,16 @@
-// ============================================================================
-// Enums and Constants
-// ============================================================================
-
+/** A park's overall status. */
 export type ParkStatus = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
-// 'UNKNOWN' means "no information", never "closed". Two ways it arrives:
-//   - whole park: its wait times are unreadable (see `LiveWaitTimes`), so every
-//     ride's `effectiveStatus` is UNKNOWN rather than a guess;
-//   - single ride: no upstream source has reported it for 24h+ while the park
-//     runs normally. ThemeParks.wiki dropped ~140 rides across ten parks from
-//     its live feed this way, and they read as closed for weeks until the API
-//     stopped serving its own bookkeeping as the operator's word.
-// So raw `status` can be UNKNOWN too — it is no longer only the four upstream
-// values. `queues` is emptied in both cases; there is no wait time to read.
+/**
+ * An attraction's status. `UNKNOWN` means „no information", never closed: the whole park's wait
+ * times are unreadable (see `LiveWaitTimes`), or no upstream source has reported the ride for a
+ * day while the park runs normally. `queues` is empty in both cases.
+ */
 export type AttractionStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT' | 'UNKNOWN';
 
 /**
- * What an attraction is FOR, hand-decided by an editor. Contract with the API —
- * see `docs/frontend/attraction-kind.md` in v4.api.park.fan.
- *
- * These four are the whole list; the API's `ATTRACTION_KIND_VALUES` is the same
- * set, and the Swagger enum and the admin dropdown read it too.
- *
- * Distinct from the upstream's own free-text `attractionType`, which never
- * reaches the public payload: upstream files water rides as ATTRACTION and
- * walkthroughs as RIDE, so a label may never seed a kind.
+ * What an attraction is FOR, decided by an editor; the API's `ATTRACTION_KIND_VALUES` is the same
+ * four. Not the upstream's free-text `attractionType`, which files water rides as ATTRACTION and
+ * walkthroughs as RIDE. Contract: `docs/frontend/attraction-kind.md` in v4.api.park.fan.
  */
 export type AttractionKind = 'RIDE' | 'TRANSPORT' | 'SHOW' | 'WALKTHROUGH';
 
@@ -34,65 +21,59 @@ export type AttractionKind = 'RIDE' | 'TRANSPORT' | 'SHOW' | 'WALKTHROUGH';
 export type IndoorOutdoor = 'indoor' | 'outdoor' | 'covered_queue';
 
 /**
- * Why a park's wait times cannot be read. Contract with the API — see
- * `docs/frontend/live-wait-times-availability.md` in v4.api.park.fan.
- *
- * - `in_park_app_only`: the park serves them to its own app, only inside the park
- *   (typically its WLAN). Someone standing there can see them; we cannot.
- * - `not_published`: the park publishes them nowhere at all.
+ * Why a park's wait times cannot be read: `in_park_app_only` (only in the park's own app, inside
+ * the park) or `not_published`. Contract: `docs/frontend/live-wait-times-availability.md` in
+ * v4.api.park.fan.
  */
 export type NoLiveWaitTimesReason = 'in_park_app_only' | 'not_published';
 
 /**
- * Whether a park's wait times are readable at all.
- *
- * **Permanent, not a freshness signal** — a park whose feed went quiet this morning
- * stays `available: true`. `false` means no number will ever arrive, so an empty
- * ride list is an absence and not a quiet park. Read it via
- * `noLiveWaitTimesReason()` (`@/lib/utils/live-wait-times`), which treats an absent
- * field as available so pages keep working against an older API.
+ * Whether a park's wait times are readable at all. Permanent, not a freshness signal: `false`
+ * means no number will ever arrive. Read it via `noLiveWaitTimesReason()`, which treats an absent
+ * field as available. See docs/rules/parks-we-cannot-read.md.
  */
 export interface LiveWaitTimes {
   available: boolean;
   reason: NoLiveWaitTimesReason | null;
 }
 
+/** A good time to ride, from the model's forecast. */
 export interface BestVisitSlot {
   time: string; // ISO 8601
   predictedWaitTime: number;
   rating: 'optimal' | 'good';
 }
-// Queue types moved to QueueDataItem definition area
-// 'unknown' = "keine Prognose": there is nothing to rate against — the park is
-// not ratable yet (< 30 operating days of headliner data → API sends
-// typicalDayPeak=NULL), the ride has no P50 row of its own, or the park
-// reported no live sample at all. Reaches every crowd surface including search
-// results' `load`. Rendered as a neutral "no forecast" badge, never as a real
-// crowd tier and never swapped for 'moderate'.
-// A wait of 0 against a real baseline is NOT this case — that is a walk-on and
-// arrives as 'very_low'.
+/**
+ * The crowd scale. `unknown` means „no forecast": nothing to rate against (a park with too little
+ * history, a ride without its own P50, or no live sample). It renders as a neutral badge, never as
+ * a tier and never as `moderate`. A wait of 0 against a real baseline is a walk-on, `very_low`.
+ */
 export type CrowdLevel =
   'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme' | 'unknown';
+/** The prediction-accuracy grade. */
 export type AccuracyBadge = 'excellent' | 'good' | 'fair' | 'poor' | 'insufficient_data';
+/** How strongly a day or slot is recommended. */
 export type Recommendation =
   'highly_recommended' | 'recommended' | 'neutral' | 'avoid' | 'strongly_avoid' | 'closed';
+/** A schedule day's type. */
 export type ScheduleType = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
+/** A trend direction; the API uses several spellings. */
 export type TrendDirection =
   'up' | 'stable' | 'down' | 'increasing' | 'decreasing' | 'rising' | 'falling';
+/** How a reading compares with the usual. */
 export type ComparisonStatus =
   'much_lower' | 'lower' | 'typical' | 'higher' | 'much_higher' | 'closed';
+/** The kind of holiday a day falls in. */
 export type HolidayType = 'public' | 'observance' | 'school' | 'bank';
 
-// ============================================================================
-// Pagination
-// ============================================================================
-// Breadcrumb Type
+/** One step of a breadcrumb trail. */
 export interface Breadcrumb {
   name: string;
   url: string;
   className?: string;
 }
 
+/** Paging info of a paginated API answer. */
 export interface Pagination {
   page: number;
   limit: number;
@@ -102,20 +83,15 @@ export interface Pagination {
   hasPrevious: boolean;
 }
 
-// API Response Types
+/** A paginated API answer. */
 export interface PaginatedResponse<T> {
   data: T[];
   pagination: Pagination;
 }
 
-// ============================================================================
-// Schedule
-// ============================================================================
-
 /**
- * Paid skip-the-line offer attached to a schedule day (Disney parks only today:
- * Lightning Lane single passes per attraction plus Multi/Premier Pass packages).
- * `price.formatted` may be a placeholder ("Unknown"/amount 0) — treat as no price.
+ * Paid skip-the-line offer attached to a schedule day (Disney parks: Lightning Lane passes and
+ * packages). A `price` of 0 or „Unknown" is a placeholder; treat it as no price.
  */
 export interface SchedulePurchaseItem {
   id?: string;
@@ -125,6 +101,7 @@ export interface SchedulePurchaseItem {
   available?: boolean;
 }
 
+/** One day of a park's schedule. */
 export interface ScheduleItem {
   date: string;
   scheduleType: ScheduleType;
@@ -134,9 +111,8 @@ export interface ScheduleItem {
   purchases: SchedulePurchaseItem[] | null;
   isHoliday?: boolean;
   holidayName: string | null;
-  /** What `holidayName` names. The API has always sent it and this type has always dropped it,
-   *  which is how a school break ("Summer Holidays") reached the header wearing the party-popper
-   *  the public-holiday chip uses — `isHoliday` alone cannot tell the two apart. */
+  /** What `holidayName` names, so a school break is not shown with the public-holiday chip;
+   *  `isHoliday` alone cannot tell the two apart. */
   holidayType?: HolidayType | string | null;
   isBridgeDay?: boolean;
   isSchoolVacation?: boolean;
@@ -146,7 +122,7 @@ export interface ScheduleItem {
   influencingHolidays?: InfluencingHoliday[];
 }
 
-/** API nextSchedule shape: often has only openingTime/closingTime/scheduleType (no date). */
+/** API `nextSchedule` shape: often only openingTime, closingTime and scheduleType, no date. */
 export type NextScheduleItem = Omit<ScheduleItem, 'date'> & { date?: string };
 
 /** Compact schedule summary used in park cards and nearby responses. */
@@ -156,10 +132,7 @@ export interface ScheduleSummary {
   scheduleType: string;
 }
 
-// ============================================================================
-// Weather
-// ============================================================================
-
+/** One day of weather, current or forecast; numbers arrive as strings. */
 export interface WeatherDay {
   date: string;
   dataType: 'current' | 'forecast';
@@ -173,6 +146,7 @@ export interface WeatherDay {
   windSpeedMax: string;
 }
 
+/** The weather right now. */
 export interface WeatherNow {
   temperature: number;
   apparentTemperature: number;
@@ -182,16 +156,16 @@ export interface WeatherNow {
   isDay: boolean;
 }
 
+/** CAP severity of a weather warning. */
 export type WeatherWarningSeverity = 'Minor' | 'Moderate' | 'Severe' | 'Extreme';
 
 /**
- * Official severe-weather warning. Source: DWD (via Bright Sky) for German
- * parks, MeteoAlarm (via MeteoGate) for the rest of Europe. German and English
- * variants are both included — pick per locale, fall back to German when an
- * `*En` field is null. Non-European parks return no warnings.
+ * Official severe-weather warning: DWD (via Bright Sky) for German parks, MeteoAlarm (via
+ * MeteoGate) for the rest of Europe, none elsewhere. Pick the `*En` field per locale and fall back
+ * to German when it is null.
  */
 export interface WeatherWarning {
-  /** Stable id (CAP alert id) — use as a list key. */
+  /** Stable id (CAP alert id), usable as a list key. */
   alertId: string;
   /** Event type, German, e.g. "EXTREME HITZE". */
   event: string;
@@ -215,6 +189,7 @@ export interface WeatherWarning {
   source: string;
 }
 
+/** A park's weather block. */
 export interface WeatherData {
   current?: WeatherDay;
   now?: WeatherNow | null;
@@ -223,12 +198,10 @@ export interface WeatherData {
   warnings?: WeatherWarning[];
 }
 
-// ============================================================================
-// Weather Nowcast (15-min precipitation/storm short-term forecast)
-// ============================================================================
-
+/** Rain intensity in the nowcast. */
 export type RainIntensity = 'light' | 'moderate' | 'heavy';
 
+/** One 15-minute step of the nowcast. */
 export interface WeatherNowcastStep {
   time: string;
   precipitation: number | null;
@@ -241,12 +214,14 @@ export interface WeatherNowcastStep {
   visibility: number | null;
 }
 
+/** Source credit for the nowcast data. */
 export interface WeatherNowcastAttribution {
   url: string;
   license: string;
   attribution: string;
 }
 
+/** The park's short-term weather nowcast (15-minute steps, about two hours ahead). */
 export interface WeatherNowcast {
   park: { id: string; name: string; slug: string; timezone: string };
   observedAt: string;
@@ -267,8 +242,7 @@ export interface WeatherNowcast {
   currentWindGustsKmh: number | null;
   currentSnowfallCm: number | null;
   currentVisibilityM: number | null;
-  // Event timestamps — the backend omits these when no event is forecast,
-  // so they may be absent on the wire even though the spec lists them.
+  // Event timestamps: the backend omits them when no event is forecast.
   rainStartsAt?: string | null;
   rainStartsIntensityMm?: number | null;
   rainStartsIntensity?: RainIntensity | null;
@@ -286,10 +260,7 @@ export interface WeatherNowcast {
   warnings?: WeatherWarning[];
 }
 
-// ============================================================================
-// Weather Hourly (today's hour-by-hour forecast, proxied from Open-Meteo)
-// ============================================================================
-
+/** One hour of today's forecast (proxied from Open-Meteo). */
 export interface WeatherHourlyPoint {
   /** Naive park-local hour ("YYYY-MM-DDTHH:00"), same convention as nowcast steps. */
   time: string;
@@ -302,16 +273,14 @@ export interface WeatherHourlyPoint {
   isDay: boolean;
 }
 
+/** Today's hour-by-hour weather forecast. */
 export interface WeatherHourlyToday {
   /** IANA timezone the point times are local to. */
   timezone: string;
   points: WeatherHourlyPoint[];
 }
 
-// ============================================================================
-// Queue Data
-// ============================================================================
-
+/** The kinds of queue a ride can have. */
 export type QueueType =
   | 'STANDBY'
   | 'SINGLE_RIDER'
@@ -320,6 +289,7 @@ export type QueueType =
   | 'BOARDING_GROUP'
   | 'PAID_STANDBY';
 
+/** A queue's own status. */
 export type QueueStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT';
 
 /** Short-term wait-time trend the API attaches to live queues (STANDBY, SINGLE_RIDER). */
@@ -330,6 +300,7 @@ export interface QueueTrend {
   previousAverage: number;
 }
 
+/** Fields every queue kind shares. */
 export interface BaseQueue {
   queueType: QueueType;
   status: QueueStatus;
@@ -338,16 +309,19 @@ export interface BaseQueue {
   trend?: QueueTrend;
 }
 
+/** The regular standby line. */
 export interface StandbyQueue extends BaseQueue {
   queueType: 'STANDBY';
   waitTime: number | null;
 }
 
+/** The single-rider line. */
 export interface SingleRiderQueue extends BaseQueue {
   queueType: 'SINGLE_RIDER';
   waitTime: number | null;
 }
 
+/** A free virtual queue with return times. */
 export interface ReturnTimeQueue extends BaseQueue {
   queueType: 'RETURN_TIME';
   state: string | null;
@@ -355,6 +329,7 @@ export interface ReturnTimeQueue extends BaseQueue {
   returnEnd: string | null;
 }
 
+/** A paid return-time offer (e.g. Lightning Lane). */
 export interface PaidReturnTimeQueue extends BaseQueue {
   queueType: 'PAID_RETURN_TIME';
   returnStart: string | null;
@@ -366,6 +341,7 @@ export interface PaidReturnTimeQueue extends BaseQueue {
   } | null;
 }
 
+/** A boarding-group virtual queue. */
 export interface BoardingGroupQueue extends BaseQueue {
   queueType: 'BOARDING_GROUP';
   allocationStatus: string | null;
@@ -374,6 +350,7 @@ export interface BoardingGroupQueue extends BaseQueue {
   estimatedWait: number | null;
 }
 
+/** A paid standby line. */
 export interface PaidStandbyQueue extends BaseQueue {
   queueType: 'PAID_STANDBY';
   waitTime: number | null;
@@ -384,6 +361,7 @@ export interface PaidStandbyQueue extends BaseQueue {
   } | null;
 }
 
+/** Any queue an attraction can carry. */
 export type QueueDataItem =
   | StandbyQueue
   | SingleRiderQueue
@@ -392,10 +370,7 @@ export type QueueDataItem =
   | BoardingGroupQueue
   | PaidStandbyQueue;
 
-// ============================================================================
-// Forecast / Predictions
-// ============================================================================
-
+/** One external wait-time forecast entry. */
 export interface ForecastItem {
   predictedTime: string;
   predictedWaitTime: number;
@@ -411,13 +386,14 @@ export interface ForecastItem {
 export interface HourlyForecastItem {
   predictedTime: string;
   predictedWaitTime: number;
-  /** 0–100; `null` for a slot more than 24 h after the response (the API no longer serves the model's floor of 50 there). */
+  /** 0–100; `null` for a slot more than 24 h out, where the model only has its floor of 50. */
   confidence: number | null;
   /** Half-width of the uncertainty band in minutes; absent or null when the model gives none. */
   uncertaintyMinutes?: number | null;
   trend: TrendDirection;
 }
 
+/** One day of a park's long-range crowd forecast. */
 export interface ParkDailyPrediction {
   date: string;
   crowdLevel: CrowdLevel | 'closed';
@@ -427,10 +403,7 @@ export interface ParkDailyPrediction {
   avgWaitTime?: number;
 }
 
-// ============================================================================
-// Park Load & Analytics
-// ============================================================================
-
+/** The park's current load against its baseline. */
 export interface ParkLoad {
   crowdLevel: CrowdLevel;
   baseline: number;
@@ -439,6 +412,7 @@ export interface ParkLoad {
   comparisonStatus?: ComparisonStatus;
 }
 
+/** How full the park is right now compared with a typical day. */
 export interface ParkOccupancy {
   current: number;
   trend: TrendDirection;
@@ -449,11 +423,13 @@ export interface ParkOccupancy {
   breakdown?: Record<string, unknown>;
 }
 
+/** Where a park's peak hour comes from. */
 export type PeakHourSource = 'observed_today' | 'prediction' | 'historical_fallback';
 
+/** Today's park-wide wait statistics. */
 export interface ParkStatistics {
-  // The three wait aggregates are `null` when a park's wait times are unknowable: no readable
-  // source, or a feed silent for 30 days. `occupancy` is omitted in the same case.
+  // The three wait aggregates are `null` when a park's wait times are unknowable (no readable
+  // source, or a feed silent for 30 days); `occupancy` is omitted then too.
   avgWaitTime: number | null;
   avgWaitToday: number | null;
   peakHour: string | null;
@@ -466,16 +442,14 @@ export interface ParkStatistics {
   peakWaitToday: number | null;
 }
 
+/** A park's live analytics block. */
 export interface ParkAnalytics {
   occupancy?: ParkOccupancy;
   statistics: ParkStatistics;
   percentiles?: Record<string, unknown>;
 }
 
-// ============================================================================
-// Prediction Accuracy
-// ============================================================================
-
+/** How accurate the model's predictions were over the last 30 days. */
 export interface PredictionAccuracy {
   badge: AccuracyBadge;
   last30Days: {
@@ -485,27 +459,25 @@ export interface PredictionAccuracy {
   message: string;
 }
 
-// ============================================================================
-// Rope Drop (precomputed "worth arriving at opening" recommendation)
-// ============================================================================
-
+/** How strongly rope drop is recommended. */
 export type RopeDropStrength = 'high' | 'moderate';
+/** How much data the rope-drop recommendation rests on. */
 export type RopeDropConfidence = 'high' | 'medium' | 'low';
 
-/** Per-day-type level bucket (absolute minutes, trailing window). */
+/** Per-day-type levels (absolute minutes, trailing window). */
 export interface RopeDropDayBucket {
   /** Typical wait right after opening (minutes). */
   openWait: number;
   /** Typical daily peak wait (minutes). */
   busyPeak: number;
-  /** busyPeak − openWait (minutes saved by rope-dropping). */
+  /** busyPeak − openWait: minutes saved by rope-dropping. */
   savings: number;
 }
 
 /**
- * Rope-drop recommendation attached to tier1/tier2 headliners in parks with a
- * schedule. Present even when `worth` is false — always check `worth`, not
- * just existence. Headline levels reflect the busier of the two day-type buckets.
+ * Rope-drop recommendation on tier-1 and tier-2 headliners in parks with a schedule. Present even
+ * when `worth` is false, so check `worth`, not existence. Headline levels come from the busier of
+ * the two day-type buckets.
  */
 export interface RopeDropInfo {
   worth: boolean;
@@ -517,21 +489,18 @@ export interface RopeDropInfo {
   busyPeak: number;
   /** Typical wait at opening (minutes). */
   openWait: number;
-  /** busyPeak − openWait (minutes). */
+  /** busyPeak − openWait, in minutes. */
   savings: number;
   /** Advantage window: ride within X minutes after opening. */
   rideByMinutesAfterOpen: number;
   /** Minutes after opening of the day's absolute lowest wait (often evening). */
   bestSlotMinutesAfterOpen: number;
-  /**
-   * Expected wait (minutes) at that trough — the payoff for coming back later.
-   * Added in backend PR #69; absent/null until recommendations are recomputed.
-   */
+  /** Expected wait (minutes) at that trough, the payoff for coming back later; absent on older
+   *  recommendations. */
   bestSlotWait?: number | null;
   /**
-   * Server verdict: better saved for late in the day than rope-dropped (the
-   * trough falls in the back of the operating day, pre-closing line drain
-   * excluded). Added in backend PR #69; absent/null until recomputed.
+   * Server verdict: better saved for late in the day than rope-dropped (the trough falls late in
+   * the operating day, pre-closing line drain excluded). Absent on older recommendations.
    */
   endOfDayWorth?: boolean | null;
   /** busyPeak − bestSlotWait (minutes saved at the evening trough). */
@@ -555,32 +524,18 @@ export interface RopeDropHeadliner {
   strength: RopeDropStrength;
 }
 
-// ============================================================================
-// Park Entities (Attractions, Shows, Restaurants)
-// ============================================================================
-
+/** A themed area of a park. */
 export interface Land {
   name: string;
 }
 
 /**
- * A curated "this ride is being rebuilt from … to …" window.
+ * A curated „this ride is being rebuilt from … to …" window, written under
+ * `/admin/attractions/<id>` because no feed can tell a breakdown from a rebuild. Served beside
+ * `outage`, never inside it: an outage is a fault reported now, this is planned work.
  *
- * Hand-written under `/admin/attractions/<id>`, because no feed can tell a
- * breakdown from a rebuild: ThemeParks.wiki passes `REFURBISHMENT` through with
- * no start and no end, and a long rebuild seen from outside looks exactly like a
- * ride that keeps failing. Served next to `outage` and never inside it — an
- * outage is a fault somebody is reporting right now, this is planned work
- * somebody wrote down in advance.
- *
- * Both days are the PARK's, both bounds are inclusive, and either may stand
- * alone: `from` with no `to` while nobody has been told when it ends, `to` with
- * no `from` for a window that was already running when it was written down.
- *
- * The API deliberately says nothing about whether the window covers today —
- * that needs the park's timezone and the reader's clock is the wrong one. The
- * predicate lives in `lib/utils/works-period.ts`, the TypeScript twin of the
- * backend's `isCuratedOutOfService()`.
+ * Both days are the PARK's and inclusive, and either may stand alone. The API does not say whether
+ * the window covers today (that needs the park's zone); `lib/utils/works-period.ts` does.
  */
 export interface WorksPeriod {
   /** First park-local day, inclusive, or null for a window with no start. */
@@ -592,140 +547,71 @@ export interface WorksPeriod {
 }
 
 /**
- * When a ride that is down right now was first reported down.
- *
- * `startedAt` is a clock time and stays one. `queue_data` is a change log whose
- * hourly heartbeat copies the previous status forward, so wall minutes derived
- * from it would be wrong upward exactly on the long outages — the UI never
- * counts `now - startedAt`. The duration it does show beside the clock time is
- * `estimate.elapsedMinutes`, which the API measured on the park's operating
- * clock; `outageElapsedMinutes` in `lib/utils/outage.ts` is the only reader.
- */
-/**
- * A ride that has not run yet today, and when it last did.
- *
- * Its own field beside `outage` and never a third signal: an outage claims that
- * something stopped the ride, and this claims nothing about why. A water ride on
- * a cold day, a maintenance day, a ride that opens later than its park and a
- * fault from yesterday evening all read the same from the feed. So the page
- * says only what is true of every one of them — „Heute noch nicht in Betrieb",
- * last on Sunday at 18:00 — in a neutral block, never in the outage colour.
- *
- * Present only while the ride reads CLOSED, its park has been open for a
- * quarter of an hour, and it has had no OPERATING reading since the park last
- * closed; absent for a ride out of season, in a works period, beside an
- * outage, and when the last run is more than seven days back. The API's
- * `docs/frontend/not-run-today.md` has the edges.
+ * A ride that has not run yet today, and when it last did. Separate from `outage` because it claims
+ * nothing about why (a cold day, a late opening, maintenance), so the page shows it neutrally,
+ * never in the outage colour. Present only while the ride reads CLOSED a quarter hour into an open
+ * park with no run since the last close; see `docs/frontend/not-run-today.md` in the API repo.
  */
 export interface NotRunToday {
-  /**
-   * ISO 8601 UTC, the end of the last run clipped to that day's close. Always
-   * within seven days, so a weekday names it unambiguously.
-   */
+  /** ISO 8601 UTC, the end of the last run clipped to that day's close; always within seven days,
+   *  so a weekday names it unambiguously. */
   lastRunAt: string;
 }
 
+/**
+ * When a ride that is down right now was first reported down. `startedAt` is a clock time only;
+ * the duration shown beside it is `estimate.elapsedMinutes` (operating minutes), never
+ * `now - startedAt`, which overstates long outages. `outageElapsedMinutes` is the only reader.
+ */
 export interface AttractionOutage {
   /** ISO 8601 UTC. */
   startedAt: string;
   /**
-   * Whether the transition into DOWN was actually seen.
-   *
-   * False means the outage was already running at the edge of the seven-day
-   * window, so `startedAt` is the oldest reading and not the onset. The UI must
-   * name the day rather than a clock time in that case.
+   * Whether the transition into DOWN was seen. False: the outage was already running at the edge
+   * of the seven-day window, so `startedAt` is the oldest reading and the UI names the day instead.
    */
   startObserved: boolean;
   /**
-   * Which signal placed this outage, and it changes the wording.
-   *
-   * `down` is the operator's own feed saying the ride is not running —
-   * „Störung gemeldet seit …".
-   *
-   * `closed_gap` is INFERRED: the ride was open earlier the same day, shut
-   * inside opening hours, and did not shut together with the rest of the park.
-   * Nobody reported it, so the sentence may not say „gemeldet" —
-   * „Steht seit … still" is what we can defend. It appears only for the 102 of
-   * 182 parks whose feed never emits DOWN (Phantasialand, Energylandia, Alton
-   * Towers), where the alternative is not a stronger signal but silence.
+   * Which signal placed this outage, and it changes the wording. `down` is the operator's feed
+   * („Störung gemeldet seit …"). `closed_gap` is INFERRED, a ride shut inside opening hours apart
+   * from the rest of the park, for parks whose feed never emits DOWN; nobody reported it, so the
+   * sentence may not say „gemeldet" („Steht seit … still").
    */
   signal: 'down' | 'closed_gap';
   /**
-   * How long outages like this one usually still take from here.
-   *
-   * Absent whenever the measured curve cannot answer — under five operating
-   * minutes, too thin a sample, or a park publishing no opening hours so there
-   * is no operating clock. **Absence never means the outage is nearly over**,
-   * and there is no fallback copy that implies it.
+   * How long outages like this usually still take. Absent when the curve cannot answer (too early,
+   * too thin, or no opening hours to count against). Absence never means nearly over.
    */
   estimate?: OutageEstimate;
 }
 
 /**
- * The measured answer to "how much longer", never a prediction.
+ * The measured answer to „how much longer", never a prediction: what happened to outages that got
+ * this far, calibrated out of sample.
  *
- * The API's `docs/analytics/ride-downtime.md` §6 refuses to say when a ride will
- * break next. This is the other question — it is broken now, and this is what
- * happened to the outages that got this far. Conditioned on an observed event,
- * measured over 5900-128 000 intervals per bucket, calibrated out-of-sample to
- * 2.55 percentage points.
- *
- * ## Two rules for rendering it
- *
- * **`elapsedMinutes` is operating minutes, not wall time.** Do not compute it
- * from `startedAt`: an outage that began at 18:00 in a park that shut at 20:00
- * reads two hours the next morning, not sixteen, and the whole estimate is
- * built on that clock.
- *
- * **Never show the median without the spread.** The distribution is
- * heavy-tailed — at one hour elapsed the quartiles are 25 and 255 minutes
- * around a median of 70 — so a lone median reads as a promise. `remaining` is
- * absent past roughly two hours for exactly that reason, which means a
- * component that renders only the median silently shows nothing on the long
- * outages a visitor most wants to understand. Render the probability there.
+ * `elapsedMinutes` is operating minutes, not wall time; never compute it from `startedAt`. Never
+ * show the median without the spread: the distribution is heavy-tailed, and `remaining` is absent
+ * past about two hours, so render the probability there.
  */
 export interface OutageEstimate {
-  /** Operating minutes elapsed. NOT `now - startedAt`. */
+  /** Operating minutes elapsed, NOT `now - startedAt`. */
   elapsedMinutes: number;
   /** P(reported running again within 30 more operating minutes), 0-1. */
   recoveryWithin30: number;
   /** P(reported running again within 60 more operating minutes), 0-1. */
   recoveryWithin60: number;
   /**
-   * Remaining operating minutes at the quartiles. Absent past ~2 hours.
-   *
-   * `p75` goes first: past roughly two hours elapsed the upper quartile stops
-   * resolving while the median still does, and the API drops the KEY rather
-   * than sending `null` (measured 2026-09-09 — `{"p25":117,"median":460}`).
-   * Optional here for that reason; read it through `outageRemainingWindow`,
-   * which treats both shapes as the same open range. A `=== null` test does
-   * not, and formatted the difference as „NaN:NaN Std.".
+   * Remaining operating minutes at the quartiles; absent past about two hours. Past that point the
+   * API also drops the `p75` KEY instead of sending `null`, so read it through
+   * `outageRemainingWindow`, which treats both shapes as an open range.
    */
   remaining?: { p25: number; median: number; p75?: number | null };
   /**
-   * The same two quartiles placed on the park's opening calendar, as instants.
-   *
-   * The only field here a clock time may be built from. `remaining` is in
-   * operating minutes and may not be added to a wall clock: a ride with two
-   * operating hours left, in a park shutting in twenty minutes, comes back
-   * tomorrow morning, and only the API knows that because only the API has the
-   * calendar.
-   *
-   * Absent for a park that publishes no opening hours, and absent when the
-   * calendar does not reach far enough. There is deliberately no fallback —
-   * read it through `outageRecoveryClock`, which answers `null` and leaves the
-   * duration sentence standing.
-   *
-   * `to` follows `remaining.p75`: the key is **absent**, never `null`, when the
-   * upper quartile does not resolve (`ExcludeNullInterceptor` strips a null
-   * before it reaches the wire, so the type is written the way the wire
-   * behaves).
-   *
-   * `from` may already be in the past on a cached copy — up to about 15 minutes
-   * on a park page's server render. That reads as „any moment now" and is not
-   * an error: the instants were computed against the same moment
-   * `elapsedMinutes` was, so a stale payload stays consistent with itself,
-   * where a relative figure would silently re-base on the reader's clock.
+   * The same quartiles placed on the park's opening calendar, as instants: the only field a clock
+   * time may be built from, since operating minutes cannot be added to a wall clock across a
+   * closing. Absent without opening hours or calendar reach; read it through `outageRecoveryClock`.
+   * `to` is absent (never `null`) when `p75` does not resolve. `from` may be a few minutes past on
+   * a cached copy, which reads as „any moment now" and stays consistent with `elapsedMinutes`.
    */
   recoveryWindow?: { from: string; to?: string };
   /** Whether the park carried its own curve here. Diagnostic, not for display. */
@@ -733,16 +619,10 @@ export interface OutageEstimate {
 }
 
 /**
- * What may be said about how often a ride is reported down, or why nothing is.
- *
- * A discriminated union on `kind` and never a bag of nullable numbers: the
- * counts and thresholds that produced the verdict deliberately do not travel, so
- * no client can re-derive it and arrive somewhere else.
- *
- * Three of the withheld reasons are statements about OUR data rather than about
- * the ride, and the UI must keep them apart. `not_down_capable` in particular is
- * not "this ride never breaks" — it is "no source in this park reports outages
- * at all".
+ * What may be said about how often a ride is reported down, or why nothing is. A discriminated
+ * union, not nullable numbers: the inputs of the verdict do not travel, so no client can re-derive
+ * it differently. Several withheld reasons are about OUR data, not the ride: `not_down_capable` is
+ * „no source here reports outages", never „this ride never breaks".
  */
 export type DowntimeBlock =
   | {
@@ -764,25 +644,17 @@ export type DowntimeBlock =
       reason:
         | 'not_down_capable'
         /**
-         * The park's feed is listed but has never once said DOWN.
-         *
-         * Distinct from `not_down_capable`: that is configuration, this is an
-         * observed silence past the point where silence is possible. 91 parks
-         * are in this state — Phantasialand, Energylandia, Alton Towers — and
-         * together the never-reporting parks have MORE observed operating time
-         * than the reporting ones. Both mean "we cannot see this ride's
-         * outages", and neither may be rendered as "no outages".
+         * The park's feed is listed but has never once said DOWN, an observed silence rather than
+         * configuration. Like `not_down_capable` it means „we cannot see this ride's outages",
+         * and neither may be rendered as „no outages".
          */
         | 'park_never_reports'
         | 'artefact_regime'
         | 'no_schedule'
         /**
-         * The park publishes opening hours, but none of them falls inside the
-         * measured window, so there is no operating time to divide by.
-         *
-         * Seasonal parks between two seasons. Distinct from `no_schedule`
-         * (no hours at all) and from `thin_exposure` (the ride ran, too rarely).
-         * `outages` is 0 here and means "no operating day", not "no outage".
+         * The park publishes opening hours, but none inside the measured window (a seasonal park
+         * between seasons), so there is no operating time to divide by. `outages` is 0 and means
+         * „no operating day", not „no outage".
          */
         | 'outside_window'
         | 'thin_events'
@@ -791,48 +663,39 @@ export type DowntimeBlock =
         | 'recently_merged'
         | 'new_ride'
         /**
-         * The figures exist but are no longer current.
-         *
-         * Its own reason because the alternatives both lie. Reusing
-         * `thin_events` keeps the stored count and renders „34 Störungen
-         * gemeldet … für eine belastbare Zahl zu wenige", refuted by its own
-         * number; zeroing the count states "0 Störungen" about a ride that had
-         * 34. `outages` still carries the real value here — this reason's copy
-         * does not use it.
+         * The figures exist but are no longer current. Reusing `thin_events` would show a real
+         * count beside „too few", and zeroing it would claim „0 Störungen"; `outages` keeps the
+         * real value, which this reason's copy does not use.
          */
         | 'stale_data'
         /**
-         * Plenty of outages, too few of them seen to END — the opposite claim
-         * to `thin_events`, so it gets its own sentence. Strongly seasonal on
-         * the API side (a run cut off by the park shutting for the winter),
-         * which is why this reason comes and goes without the ride changing.
+         * Plenty of outages, too few seen to END: the opposite claim to `thin_events`. Strongly
+         * seasonal (a run cut off by the winter closure), so it comes and goes without the ride
+         * changing.
          */
         | 'heavily_censored';
-      /** 0 for the reasons above that are about us, where it means "we cannot see". */
+      /** 0 for the reasons above that are about us, where it means „we cannot see". */
       outages: number;
       windowDays: number;
     };
 
+/** An attraction as the park payload and the attraction detail carry it. */
 export interface ParkAttraction {
   id: string;
   name: string;
   slug: string;
-  url?: string; // Geographic URL from API (e.g., /v1/parks/europe/germany/bruhl/phantasialand/attractions/taron)
+  url?: string; // API URL, e.g. /v1/parks/europe/germany/bruhl/phantasialand/attractions/taron
   latitude: number | null;
   longitude: number | null;
   queues?: QueueDataItem[];
   land: string | null;
   status?: AttractionStatus;
   currentLoad?: ParkLoad | null;
-  // added fields
   crowdLevel?: CrowdLevel;
   /**
-   * The wait `crowdLevel` was rated against, in minutes: the ride's P50 over its samples (P90
-   * only for a ride too new to have one). `crowdLevel` is `current ÷ baseline`, so this is what
-   * turns the badge's word back into this ride's minutes — see `rideCrowdMinuteRanges`.
-   *
-   * Present only while the ride is rated: an operating ride with a live wait in a ratable park.
-   * Everything else, a closed park included, has it null or absent.
+   * The wait `crowdLevel` was rated against, in minutes: the ride's P50 (P90 for a ride too new to
+   * have one). Turns the badge's word back into minutes (see `rideCrowdMinuteRanges`). Present only
+   * while the ride is rated: operating, with a live wait, in a ratable park.
    */
   baseline?: number | null;
   trend?: TrendDirection;
@@ -843,99 +706,76 @@ export interface ParkAttraction {
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
   /**
-   * The running outage, present only while the ride reads DOWN.
-   *
-   * Absent is not "the ride is running": it is also every park whose sources
-   * cannot report an outage at all (only ThemeParks.wiki produces the status),
-   * and every ride inside a curated works period. Render the line when it is
-   * there and nothing when it is not; never a "no outages" state.
+   * The running outage, present only while the ride reads DOWN. Absent is not „running": it is also
+   * every park whose sources cannot report outages and every ride in a works period. Never render a
+   * „no outages" state.
    */
   outage?: AttractionOutage;
   /**
-   * The ride reads CLOSED in an open park and has not run since the park last
-   * closed, with when it last did. `null` is what the five-minute poll sends
-   * for every other ride — see `LiveAttractionSnapshot.outage` for why the key
-   * travels as `null` rather than `undefined`. See {@link NotRunToday}.
+   * The ride reads CLOSED in an open park and has not run since the park last closed, with when it
+   * last did. The poll sends `null` for every other ride (see `LiveAttractionSnapshot.outage`).
    */
   notRunToday?: NotRunToday | null;
   /**
-   * The curated rebuild window, or absent when nothing is curated — which is
-   * nearly every ride in the catalogue.
-   *
-   * Day-stable and curated, so it rides the server render and is deliberately
-   * NOT part of the five-minute poll's projection: `mergeLiveParkSnapshot`
-   * spreads the snapshot over the park, so an omitted key leaves this one
-   * standing. It says nothing about today on its own — see {@link WorksPeriod}.
+   * The curated rebuild window, absent for nearly every ride. Day-stable, so it rides the server
+   * render and not the poll; it says nothing about today on its own (see {@link WorksPeriod}).
    */
   worksPeriod?: WorksPeriod | null;
   /**
-   * Reported-outage figures, or the reason there are none.
-   *
-   * Attached by the ATTRACTION DETAIL response only. It is deliberately absent
-   * from the park's attraction list and from the five-minute poll: the park page
-   * renders none of it, and a page that renders none of a thing must not ship it.
+   * Reported-outage figures, or the reason there are none. Attraction detail response only: the
+   * park page renders none of it, so the park list and the poll do not carry it.
    */
   downtime?: DowntimeBlock;
   /** Minimum rider height in cm. Null/absent = unrestricted or unknown. */
   minimumHeight?: number | null;
   /** Maximum rider height in cm (kiddie rides). */
   maximumHeight?: number | null;
-  /** Whether riders may get wet. Null/absent = unknown (not "dry"). */
+  /** Whether riders may get wet. Null/absent = unknown, not „dry". */
   mayGetWet?: boolean | null;
   /** RCDB (rcdb.com) database id → https://rcdb.com/{id}.htm */
   rcdbId?: number | null;
   /**
-   * Whether the ride has a single-rider line at all.
-   *
-   * A static fact about the queue layout, NOT whether it is open right now —
-   * that is what the live `queues` array answers. Null/absent means unknown,
-   * never "no": most of the catalogue has never been checked.
+   * Whether the ride has a single-rider line at all: a static fact, not whether it is open now
+   * (the live `queues` say that). Null/absent means unknown, never „no".
    */
   hasSingleRider?: boolean | null;
   /**
-   * What this attraction is for: a ride, a transport system (railway, cable
-   * car, monorail), a show or a walkthrough. Curated one editor decision at a
-   * time.
-   *
-   * Null or absent means nobody has judged it, which is true of nearly the
-   * whole catalogue — and it never means "it is a ride". Render nothing for it.
+   * What this attraction is for: a ride, a transport system, a show or a walkthrough, curated per
+   * attraction. Null or absent means nobody has judged it, never „it is a ride"; render nothing.
    */
   attractionKind?: AttractionKind | null;
   /**
-   * Indoor, outdoor or outdoor with a roofed queue — see {@link IndoorOutdoor}.
-   *
-   * Curated and day-stable like `attractionKind`, so it rides the server render and not the
-   * five-minute poll. Null or absent means nobody has checked, which is most of the catalogue,
-   * and it never means "outdoor".
+   * Indoor, outdoor or outdoor with a roofed queue (see {@link IndoorOutdoor}). Curated and
+   * day-stable, so it rides the server render, not the poll. Null or absent means unchecked,
+   * never „outdoor".
    */
   indoorOutdoor?: IndoorOutdoor | null;
   /**
-   * Whether the ride runs a virtual queue (return times or boarding groups) at all.
-   *
-   * Same split as `hasSingleRider`: a curated fact, not today's reading — the
-   * live `RETURN_TIME` / `BOARDING_GROUP` entries in `queues` answer that. Null or
-   * absent means unknown, never "no".
+   * Whether the ride runs a virtual queue (return times or boarding groups) at all: curated, not
+   * today's reading (the live `queues` entries say that). Null or absent means unknown, never „no".
    */
   hasVirtualLine?: boolean | null;
-  /** Curated queue-jump product. Absent ≠ "there is none" — see `FastPass`. */
+  /** Curated queue-jump product. Absent is not „there is none"; see `FastPass`. */
   fastPass?: FastPass | null;
   bestVisitTimes?: BestVisitSlot[] | null;
   /** Only set for tier1/tier2 headliners in parks with a schedule. */
   ropeDrop?: RopeDropInfo | null;
-  /** Precomputed P50/P90 peak-wait stats — present for displayable headliners (SSR). */
+  /** Precomputed P50/P90 peak-wait stats, present for displayable headliners. */
   typicalWaits?: TypicalWaits | null;
-  // Only present on attraction detail page (merged from dedicated endpoint)
+  // Only on the attraction detail page, merged from a dedicated endpoint.
   hourlyForecast?: HourlyForecastItem[];
   predictionAccuracy?: PredictionAccuracy | null;
-  /** Curated ride profile (track figures, ride type, builder) — see `RideProfile`. */
+  /** Curated ride profile (track figures, ride type, builder); see `RideProfile`. */
   rideProfile?: RideProfile | null;
 }
 
+/** One showtime with its type. */
 export interface ShowtimeEntry {
   type: string;
   startTime: string;
 }
 
+/** A show in the park payload. */
 export interface ParkShow {
   id: string;
   name: string;
@@ -949,6 +789,7 @@ export interface ParkShow {
   isCurrentlyInSeason?: boolean | null;
 }
 
+/** A restaurant in the park payload. */
 export interface ParkRestaurant {
   id: string;
   name: string;
@@ -964,21 +805,14 @@ export interface ParkRestaurant {
   lastUpdated?: string;
 }
 
-// ============================================================================
-// Park Response Types
-// ============================================================================
-
+/** Identity and location fields every park shape shares. */
 export interface ParkBase {
   id: string;
   name: string;
   /**
-   * The German article this park's name takes — `der`, `die` or `das` — or
-   * absent for the names that take none, which is most of them.
-   *
-   * German copy cannot interpolate a park name without it: "im Phantasialand"
-   * (das), "in der Movie World" (die), "in Toverland" (none). Pass it through
-   * `parkArgs()` and let the message use `{inPark}` / `{forPark}` rather than
-   * writing the preposition into the string.
+   * The German article the park's name takes (`der`, `die`, `das`), or absent for none. German copy
+   * needs it („im Phantasialand", „in der Movie World", „in Toverland"): pass it through
+   * `parkArgs()` and use `{inPark}` / `{forPark}` rather than writing the preposition.
    */
   nameArticleDe?: string | null;
   slug: string;
@@ -993,6 +827,7 @@ export interface ParkBase {
   timezone: string;
 }
 
+/** A park with its live status, weather, analytics and schedule. */
 export interface ParkResponse extends ParkBase {
   status: ParkStatus;
   currentLoad: ParkLoad | null;
@@ -1015,11 +850,8 @@ export type ParkSeasonKind =
   | 'maintenance';
 
 /**
- * How settled a season is.
- *
- * Not decoration: a visitor planning October needs the difference between "the
- * park has published these dates" and "the park did this last year and has
- * announced nothing".
+ * How settled a season is: „the park published these dates" differs from „it did this last year
+ * and has announced nothing" for anyone planning around it.
  */
 export type ParkSeasonStatus = 'confirmed' | 'announced' | 'expected' | 'cancelled';
 
@@ -1046,11 +878,8 @@ export interface ParkSeason {
 }
 
 /**
- * The park facts a human wrote, from the API's `info` block.
- *
- * Every field is optional twice over: the API omits a null (the response
- * interceptor strips them) and the whole object is absent until somebody has
- * curated at least one. Detail payload only — the listings do not carry it.
+ * The park facts a human wrote, from the API's `info` block. Every field is optional twice over:
+ * the API strips nulls, and the object is absent until something is curated. Detail payload only.
  */
 export interface ParkInfo {
   website?: string | null;
@@ -1066,6 +895,7 @@ export interface ParkInfo {
   areaHectares?: number | null;
 }
 
+/** A park with its attractions, shows, restaurants and schedule: the park page's payload. */
 export interface ParkWithAttractions extends ParkBase {
   status?: ParkStatus;
   /** Curated facts no feed carries. Day-stable, so the live merge keeps it. */
@@ -1074,10 +904,9 @@ export interface ParkWithAttractions extends ParkBase {
   weather?: WeatherData;
   attractions: ParkAttraction[];
   /**
-   * The park's rides that closed for good, newest closure first — never part of `attractions`,
-   * so nothing that counts, filters or plans the park today sees them. The park page lists them
-   * under the ride list, each linking to its own page. Absent on an API that predates it
-   * (v4.api.park.fan PAR-607), and a ride an editor hid is left out.
+   * The park's rides that closed for good, newest first; never part of `attractions`, so nothing
+   * that counts, filters or plans today sees them. A ride an editor hid is left out.
+   * See docs/rules/a-closed-ride-keeps-its-page.md.
    */
   closedAttractions?: ClosedAttraction[];
   /** Headliners worth rope-dropping (worth=true), sorted by minutes saved. */
@@ -1089,8 +918,7 @@ export interface ParkWithAttractions extends ParkBase {
   nextSchedule?: NextScheduleItem | null;
   hasOperatingSchedule: boolean;
   /**
-   * Day-stable like `liveWaitTimes`, so it rides on the server render and never on the live poll's
-   * projection — the calendar range it governs cannot change between two five-minute refreshes.
+   * Day-stable like `liveWaitTimes`, so it rides the server render and never the live poll.
    */
   scheduleCoverage?: ScheduleCoverage;
   /** Day-stable, so it rides on the server render and the live merge carries it. */
@@ -1098,10 +926,9 @@ export interface ParkWithAttractions extends ParkBase {
 }
 
 /**
- * Lean live snapshot from `GET /v1/parks/{geo}/{park}/wait-times`: the park's own status plus
- * every attraction's current queues — and nothing else. ~9 KB for a 40-ride park versus ~95 KB
- * for the full park payload, which is what makes it viable as a *batch* live source for surfaces
- * that only need "open or closed, and how long" (the blog's inline ride references).
+ * Lean live snapshot from `GET /v1/parks/{geo}/{park}/wait-times`: the park's status plus every
+ * attraction's current queues and nothing else, small enough to be a batch live source for
+ * surfaces that only need „open or closed, and how long" (the blog's inline ride references).
  */
 export interface ParkWaitTimesResponse {
   park: {
@@ -1117,14 +944,9 @@ export interface ParkWaitTimesResponse {
   }[];
 }
 
-// ============================================================================
-// Attraction Response Types
-// ============================================================================
-
 /**
- * Typical-vs-busy peak waits, derived from the distribution of daily peak waits
- * over a 365-day window. `typical` = P50 (a normal day's peak), `busy` = P90
- * (a busy day's peak), both in whole minutes (null when no data).
+ * Typical-vs-busy peak waits from the distribution of daily peak waits over a year: `typical` is
+ * the P50 (a normal day's peak), `busy` the P90, in whole minutes, null without data.
  */
 export interface TypicalWaitBucket {
   typical: number | null;
@@ -1132,12 +954,14 @@ export interface TypicalWaitBucket {
   sampleDays: number;
 }
 
+/** Peak waits for one weekday. */
 export interface DayOfWeekWait extends TypicalWaitBucket {
   /** 0=Sunday … 6=Saturday. */
   dayOfWeek: number;
   isWeekend: boolean;
 }
 
+/** A ride's typical and busy peak waits, by day type and weekday. */
 export interface TypicalWaits {
   weekday: TypicalWaitBucket;
   weekend: TypicalWaitBucket;
@@ -1153,6 +977,7 @@ export interface TypicalWaits {
   generatedAt: string;
 }
 
+/** The attraction detail response. */
 export interface AttractionResponse {
   id: string;
   name: string;
@@ -1166,9 +991,8 @@ export interface AttractionResponse {
   latitude: number | null;
   longitude: number | null;
   /**
-   * Parent park block. Carries `timezone` and the park's live `status`, which is what lets a ride
-   * page render from this response alone instead of also polling the full park payload for two
-   * fields (see `useLiveAttractionData`). `status` was added in v4.api.park.fan#148.
+   * Parent park block, with `timezone` and the park's live `status`, so a ride page can render
+   * from this response alone (see `useLiveAttractionData`).
    */
   park?: {
     id: string;
@@ -1179,7 +1003,7 @@ export interface AttractionResponse {
     country?: string | null;
     city?: string | null;
     status?: ParkStatus;
-    /** Whether this park's wait times are readable — see {@link LiveWaitTimes}. */
+    /** Whether this park's wait times are readable; see {@link LiveWaitTimes}. */
     liveWaitTimes?: LiveWaitTimes;
   } | null;
   /** Wait-time trend direction. Present on this endpoint as well as on the park payload. */
@@ -1195,91 +1019,67 @@ export interface AttractionResponse {
   minimumHeight?: number | null;
   /** Maximum rider height in cm (kiddie rides). */
   maximumHeight?: number | null;
-  /** Whether riders may get wet. Null/absent = unknown (not "dry"). */
+  /** Whether riders may get wet. Null/absent = unknown, not „dry". */
   mayGetWet?: boolean | null;
   /** RCDB (rcdb.com) database id → https://rcdb.com/{id}.htm */
   rcdbId?: number | null;
   /**
-   * Whether the ride has a single-rider line at all.
-   *
-   * A static fact about the queue layout, NOT whether it is open right now —
-   * that is what the live `queues` array answers. Null/absent means unknown,
-   * never "no": most of the catalogue has never been checked.
+   * Whether the ride has a single-rider line at all: a static fact, not whether it is open now
+   * (the live `queues` say that). Null/absent means unknown, never „no".
    */
   hasSingleRider?: boolean | null;
   /**
-   * What this attraction is for: a ride, a transport system (railway, cable
-   * car, monorail), a show or a walkthrough. Curated one editor decision at a
-   * time.
-   *
-   * Null or absent means nobody has judged it, which is true of nearly the
-   * whole catalogue — and it never means "it is a ride". Render nothing for it.
+   * What this attraction is for: a ride, a transport system, a show or a walkthrough, curated per
+   * attraction. Null or absent means nobody has judged it, never „it is a ride"; render nothing.
    */
   attractionKind?: AttractionKind | null;
   /**
-   * Indoor, outdoor or outdoor with a roofed queue — see {@link IndoorOutdoor}.
-   *
-   * Curated and day-stable like `attractionKind`, so it rides the server render and not the
-   * five-minute poll. Null or absent means nobody has checked, which is most of the catalogue,
-   * and it never means "outdoor".
+   * Indoor, outdoor or outdoor with a roofed queue (see {@link IndoorOutdoor}). Curated and
+   * day-stable, so it rides the server render, not the poll. Null or absent means unchecked,
+   * never „outdoor".
    */
   indoorOutdoor?: IndoorOutdoor | null;
   /**
-   * Whether the ride runs a virtual queue (return times or boarding groups) at all.
-   *
-   * Same split as `hasSingleRider`: a curated fact, not today's reading — the
-   * live `RETURN_TIME` / `BOARDING_GROUP` entries in `queues` answer that. Null or
-   * absent means unknown, never "no".
+   * Whether the ride runs a virtual queue (return times or boarding groups) at all: curated, not
+   * today's reading (the live `queues` entries say that). Null or absent means unknown, never „no".
    */
   hasVirtualLine?: boolean | null;
-  /** Curated queue-jump product. Absent ≠ "there is none" — see `FastPass`. */
+  /** Curated queue-jump product. Absent is not „there is none"; see `FastPass`. */
   fastPass?: FastPass | null;
   bestVisitTimes?: BestVisitSlot[] | null;
   /** Only set for tier1/tier2 headliners in parks with a schedule. */
   ropeDrop?: RopeDropInfo | null;
-  /** Typical (P50) vs busy (P90) peak-wait stats — render when `displayable`. */
+  /** Typical (P50) vs busy (P90) peak-wait stats; render when `displayable`. */
   typicalWaits?: TypicalWaits | null;
-  /** Curated ride profile (track figures, ride type, builder) — see `RideProfile`. */
+  /** Curated ride profile (track figures, ride type, builder); see `RideProfile`. */
   rideProfile?: RideProfile | null;
   /**
-   * How often this ride has been reported down, or the reason nothing is said.
-   *
-   * Absent while the reconstruction has never run. Present-and-withheld is a
-   * different state and carries the reason.
+   * How often this ride has been reported down, or the reason nothing is said. Absent while the
+   * reconstruction has never run; present-and-withheld carries the reason.
    */
   downtime?: DowntimeBlock;
   /**
-   * The outage running RIGHT NOW — the history block's opposite number.
-   *
-   * On the endpoint since the field existed and undeclared here until PF-58,
-   * which is the whole of why the ride page said „Vorübergehend geschlossen"
-   * and nothing else while its own card on the park page carried both
-   * sentences. `useLiveAttractionData` overlays exactly the fields it names, so
-   * a field this type does not mention is a field the ride page reads off the
-   * day-cached shell — and an outage is the one thing on that payload that
-   * cannot survive a day.
+   * The outage running right now. `useLiveAttractionData` overlays exactly the fields this type
+   * names, so it must be declared, or the ride page reads it off the day-cached shell.
    */
   outage?: AttractionOutage;
   /** Same field as on the park's ride list, overlaid by `useLiveAttractionData`. */
   notRunToday?: NotRunToday | null;
   /**
-   * When the ride stopped operating for good (ISO 8601), or absent while it runs.
-   *
-   * Only this endpoint carries a retired ride — the park payload leaves it out — so a ride page
-   * that cannot find its slug in the park asks here before it answers 404. Read it together with
-   * {@link retiredKind}: a row can be retired without anything having closed.
+   * When the ride stopped operating for good (ISO 8601), or absent while it runs. Only this
+   * endpoint carries a retired ride, so a ride page missing from the park payload asks here before
+   * answering 404. Read it with {@link retiredKind}: a row can be retired without anything closing.
    */
   retiredAt?: string | null;
   /**
-   * Why it was retired and on whose authority: free English text, often just the URL of the
-   * source, and for X2 a park.fan news post. Never shown as it stands; see
-   * `lib/parks/closed-ride.ts` for what is read out of it.
+   * Why it was retired and on whose authority: free English text, often just a source URL. Never
+   * shown as it stands; see `lib/parks/closed-ride.ts` for what is read out of it.
    */
   retiredReason?: string | null;
   /**
-   * `closed` — the ride stopped operating for good, and its page says so. `reclassified` — the
-   * source now lists the entity as a show or a restaurant, so nothing closed and the ride page
-   * stays a 404. Absent while not retired (v4.api.park.fan PAR-607).
+   * `closed`: the ride stopped for good, and its page says so. `reclassified`: the source now lists
+   * it as a show or restaurant, so nothing closed and the ride page stays a 404. Absent while not
+   * retired.
    */
   retiredKind?: RetiredKind | null;
 }
@@ -1294,41 +1094,27 @@ export interface ClosedAttraction {
   retiredAt: string;
 }
 
-/** Which of the two retirements `retiredAt` is — see {@link AttractionResponse.retiredKind}. */
+/** Which of the two retirements `retiredAt` is; see {@link AttractionResponse.retiredKind}. */
 export type RetiredKind = 'closed' | 'reclassified';
 
 /**
- * The paid (or free) queue-jump product a ride sells.
+ * The paid (or free) queue-jump product a ride sells, hand-curated from park apps and ticket pages.
+ * The API sends the parts and this app composes them, because „12 €" and „€12" differ by locale.
  *
- * Hand-curated: no feed publishes these, they live in park apps and on ticket
- * pages. The API sends the parts and this app composes them, because "12 €" and
- * "€12" are the same price in two locales and only the frontend knows which one
- * the reader is in.
- *
- * **An absent `fastPass` is not "this ride has no fast pass."** It covers both
- * "nobody has checked" and "somebody checked and the park sells none" — the
- * admin keeps those apart, the payload deliberately does not. Most of the ~7000
- * attractions have never been looked at, so rendering "kein Fastpass" from an
- * absence would state the park's position on our behalf. Badge what is there;
- * render nothing for what is not.
+ * An absent `fastPass` is not „no fast pass": it also covers „nobody has checked", which is most
+ * of the catalogue. Badge what is there; render nothing for what is not.
  */
 export interface FastPass {
   /** The park's brand, the ride's override, or the neutral "Fast Pass". */
   name: string;
   /**
-   * What it costs, in `currency`.
-   *
-   * **`0` means free** — Europa-Park's Virtual Line is included with admission.
-   * `null` means unknown, which includes the products priced per day. Test
-   * `price != null`, never `if (price)`.
+   * What it costs, in `currency`. `0` means free (e.g. Europa-Park's Virtual Line); `null` means
+   * unknown, including per-day pricing. Test `price != null`, never `if (price)`.
    */
   price?: number | null;
   /**
-   * What the park's cheapest version costs, for the parks that sell one pass
-   * per visit rather than one per ride — which is nearly all of them.
-   *
-   * Render as "ab 25 €". Null whenever `price` is set: they answer the same
-   * question, and showing both says one of them is wrong.
+   * What the park's cheapest version costs, for parks that sell one pass per visit (nearly all);
+   * render as „ab 25 €". Null whenever `price` is set, since showing both says one is wrong.
    */
   priceFrom?: number | null;
   /** ISO-4217, for `Intl.NumberFormat`. Null when there is no price to denominate. */
@@ -1338,51 +1124,38 @@ export interface FastPass {
 }
 
 /**
- * The curated "what kind of ride is this, and what does it do" record.
- *
- * Every id in here is a **glossary term id** (`lib/glossary/data.ts`). The API
- * only stores ids; this app owns the glossary, so it resolves each one to a
- * localized name and a link and silently drops any id it does not know — which
- * is what keeps the API free to be seeded ahead of a term landing here.
+ * The curated „what kind of ride is this, and what does it do" record. Every id is a glossary term
+ * id (`lib/glossary/data.ts`); this app resolves each to a localized name and link and silently
+ * drops unknown ids, so the API can be seeded ahead of a term.
+ * See docs/rules/ride-and-glossary-link.md.
  */
 export interface RideProfile {
   /**
-   * Track figures **in ride order**. Repeats are meaningful: a layout that hits
-   * two corkscrews in a row lists `corkscrew` twice. Empty for rides with no
-   * track figures (dark rides, flat rides).
+   * Track figures **in ride order**; repeats are meaningful (two corkscrews in a row list
+   * `corkscrew` twice). Empty for rides without track figures.
    */
   elements: string[];
   /** Ride-type terms (`coasters` / `attractions` categories). Unordered. */
   types: string[];
-  /**
-   * Everything below is OPTIONAL as well as nullable, and the `?` is the
-   * important half: the API strips null-valued keys from its responses, so an
-   * unknown value arrives as a MISSING key, not as `null`. Guard with `!= null`
-   * — `!== null` passes `undefined` straight through, which is how a ride with
-   * no inversion count rendered a badge reading "Inversions:" and nothing else.
-   */
+  // Everything below is optional as well as nullable: the API strips null-valued keys, so an
+  // unknown value arrives as a missing key. Guard with `!= null`, never `!== null`.
   /** Builder's display name. */
   manufacturer?: string | null;
-  /** Builder's glossary term id — absent means render the name without a link. */
+  /** Builder's glossary term id; absent means render the name without a link. */
   manufacturerTermId?: string | null;
   /** The builder's own model name, e.g. "Blitz Coaster". */
   model?: string | null;
   openedYear?: number | null;
   /** As the park publishes it; may legitimately differ from `elements`. */
   inversions?: number | null;
-  /**
-   * Measurements. Null for rides we hold no measurement of at all, and every
-   * field inside is independently nullable — read each one defensively.
-   */
+  /** Measurements; null when we hold none, and every field inside is independently nullable. */
   stats?: RideStats | null;
 }
 
 /**
- * A ride's measurements, always metric — the display unit is the visitor's
- * (see `lib/utils/temperature.ts`: the C/F choice drives every secondary unit).
- * Merged field by field from a hand-curated seed and the Wikidata (CC0) import,
- * curated winning. Every field is independently nullable: a ride is listed the
- * moment one number is known, not once all four are.
+ * A ride's measurements, always metric; the display unit is the visitor's
+ * (`lib/utils/temperature.ts`). Merged per field from the curated seed and the Wikidata (CC0)
+ * import, curated winning, and listed as soon as one number is known.
  */
 export interface RideStats {
   /** Top speed in km/h. */
@@ -1393,20 +1166,14 @@ export interface RideStats {
   lengthM: number | null;
   /** Ride duration in seconds. */
   durationSeconds: number | null;
-  /**
-   * Which side of the merge the surviving values came from. Provenance only —
-   * to render the credit line, read {@link RideStats.attribution}.
-   */
+  /** Which side of the merge the values came from; provenance only. For the credit line read
+   *  {@link RideStats.attribution}. */
   source: 'curated' | 'wikidata' | 'mixed';
-  /** Wikidata entity id — `attribution.url` already points at it. */
+  /** Wikidata entity id; `attribution.url` already points at it. */
   sourceId?: string | null;
   /**
-   * Who to credit, resolved by the API: null exactly when every surviving
-   * number is hand-curated and nobody outside is owed one.
-   *
-   * Render it when it is there and nothing when it is not. Do **not** rebuild
-   * the rule from `source`/`sourceId` — doing that is what credited RCDB for
-   * numbers RCDB never supplied.
+   * Who to credit, resolved by the API; null exactly when every value is hand-curated. Render it
+   * when present; never rebuild the rule from `source`/`sourceId`, which credits the wrong source.
    */
   attribution?: RideStatsAttribution | null;
 }
@@ -1431,23 +1198,19 @@ export interface TermAttraction {
   parkSlug: string;
   /** Where the term matched on this ride. */
   kind: 'element' | 'type' | 'manufacturer';
-  /** Optional as well as nullable — the API strips null-valued keys. */
+  /** Optional as well as nullable: the API strips null-valued keys. */
   openedYear?: number | null;
   /**
-   * Typical peak wait in minutes — the API's P90 over 548 days, not a live
-   * reading.
-   *
-   * OPTIONAL rather than merely nullable, and that distinction matters: the API
-   * runs a global interceptor that deletes null-valued keys from every
-   * response, so a ride without a baseline omits this field entirely. Check for
-   * absence (`!= null`), never render a `0` fallback — that would read as "this
-   * ride never has a queue".
+   * Typical peak wait in minutes (the API's P90 over a long window, not a live reading). Missing
+   * when the ride has no baseline; check `!= null` and never fall back to 0, which would read as
+   * „never has a queue".
    */
   typicalPeakWait?: number | null;
   /** Whether the API classes this ride as one of its park's headliners. */
   isHeadliner?: boolean;
 }
 
+/** One day of an attraction's history: its utilization and hourly P90 waits. */
 export interface AttractionHistoryDay {
   date: string;
   utilization: CrowdLevel;
@@ -1457,24 +1220,22 @@ export interface AttractionHistoryDay {
   }>;
 }
 
+/** Today's wait statistics for one attraction. */
 export interface AttractionStatistics {
   avgWaitToday: number | null;
   minWaitToday: number | null;
   maxWaitToday: number | null;
   peakWaitToday: number | null;
   peakWaitTimestamp: string | null;
-  /** Sparkline series. Optional: stripped from the ISR shell snapshot (re-supplied by the live
-   *  no-store poll); present on live/detail responses. */
+  /** Sparkline series. Stripped from the ISR shell snapshot and re-supplied by the live poll;
+   *  present on live and detail responses. */
   history?: {
     timestamp: string;
     waitTime: number;
   }[];
 }
 
-// ============================================================================
-// Show & Restaurant Response Types
-// ============================================================================
-
+/** A show as its detail endpoint returns it. */
 export interface ShowResponse {
   id: string;
   name: string;
@@ -1484,6 +1245,7 @@ export interface ShowResponse {
   park?: { id: string; name: string; slug: string } | null;
 }
 
+/** A show with today's status and showtimes. */
 export interface ShowWithLiveData extends ShowResponse {
   status: string;
   showtimes: string[] | null;
@@ -1491,6 +1253,7 @@ export interface ShowWithLiveData extends ShowResponse {
   lastUpdated: string;
 }
 
+/** A restaurant as its detail endpoint returns it. */
 export interface RestaurantResponse {
   id: string;
   name: string;
@@ -1502,19 +1265,16 @@ export interface RestaurantResponse {
   park?: { id: string; name: string; slug: string } | null;
 }
 
-// ============================================================================
-// Search Types
-// ============================================================================
-
+/** One hit of `/v1/search`. */
 export interface SearchResultItem {
   type: 'park' | 'attraction' | 'show' | 'restaurant' | 'location' | 'glossary';
-  id: string; // Format: "city:slug" or "country:slug" for locations
+  id: string; // "city:slug" or "country:slug" for locations
   name: string;
   slug: string;
   url?: string;
   latitude?: number;
   longitude?: number;
-  // Location fields (populated for all types as applicable)
+  // Location fields, filled for every type where they apply.
   continent?: string;
   country?: string;
   countryCode?: string; // ISO code, e.g., "FR"
@@ -1530,31 +1290,29 @@ export interface SearchResultItem {
   isSeasonal?: boolean;
   isCurrentlyInSeason?: boolean | null;
   /**
-   * Thumbnail path. NOT from the backend — the `/api/search` proxy resolves it from the media
-   * database, which lives in this repo (see `lib/utils/search-assets.ts`).
+   * Thumbnail path, resolved by the `/api/search` proxy from the media database, not by the
+   * backend (see `lib/utils/search-assets.ts`).
    */
   imageUrl?: string;
   /** The thumbnail's focal point as a CSS `object-position`, from the same sidecar. */
   imagePosition?: string;
 }
 
+/** The `/v1/search` answer. */
 export interface SearchResult {
   query: string;
   results: SearchResultItem[];
   counts: Record<string, { returned: number; total: number }>;
 }
 
-// ============================================================================
-// Discovery / Geo Types
-// ============================================================================
-
+/** A park in the discovery tree, with live status for cards. */
 export interface ParkReference {
   id: string;
   name: string;
   slug: string;
   country: string;
-  /** Park position — null for parks the backend could not geocode. Feeds the "X km away" line
-   *  on the hub-page park cards without a per-park lookup. */
+  /** Park position, null when the backend could not geocode it; feeds the hub cards' „X km away"
+   *  line without a per-park lookup. */
   latitude?: number | null;
   longitude?: number | null;
   attractionCount: number;
@@ -1575,9 +1333,9 @@ export interface ParkReference {
   timezone?: string;
   hasOperatingSchedule: boolean;
   /**
-   * Whether this park's wait times are readable — see {@link LiveWaitTimes}. The `/api/parks/live`
-   * projection reads it to decide whether the `analytics` block above means anything, and drops
-   * the wait-derived fields when it does not, so the flag itself never reaches the client.
+   * Whether this park's wait times are readable (see {@link LiveWaitTimes}). The `/api/parks/live`
+   * projection drops the wait-derived `analytics` when they are not, so the flag never reaches the
+   * client.
    */
   liveWaitTimes?: LiveWaitTimes;
   todaySchedule?: {
@@ -1592,6 +1350,7 @@ export interface ParkReference {
   };
 }
 
+/** A city in the discovery tree. */
 export interface City {
   name: string;
   slug: string;
@@ -1600,6 +1359,7 @@ export interface City {
   openParkCount: number;
 }
 
+/** A country in the discovery tree. */
 export interface Country {
   name: string;
   slug: string;
@@ -1610,6 +1370,7 @@ export interface Country {
   openParkCount: number;
 }
 
+/** A continent in the discovery tree. */
 export interface Continent {
   name: string;
   slug: string;
@@ -1619,11 +1380,13 @@ export interface Continent {
   openParkCount: number;
 }
 
+/** One attraction URL for the sitemap. */
 export interface SitemapAttraction {
   url: string;
   slug: string;
 }
 
+/** The whole geographic tree (`/v1/discovery/geo`). */
 export interface GeoStructure {
   continents: Continent[];
   continentCount: number;
@@ -1634,10 +1397,7 @@ export interface GeoStructure {
   generatedAt: string;
 }
 
-// ============================================================================
-// Analytics / Stats Types
-// ============================================================================
-
+/** Site-wide live counts. */
 export interface GlobalCounts {
   openParks: number;
   parks: number;
@@ -1649,6 +1409,7 @@ export interface GlobalCounts {
   totalWaitTime?: number;
 }
 
+/** A park in the global stats (most or least crowded). */
 export interface ParkStatsItem {
   id: string;
   name: string;
@@ -1664,6 +1425,7 @@ export interface ParkStatsItem {
   timezone: string;
 }
 
+/** A ride in the global stats (longest or shortest wait). */
 export interface AttractionStatsItem {
   id: string;
   name: string;
@@ -1686,6 +1448,7 @@ export interface AttractionStatsItem {
   currentVsTypical: number | null;
 }
 
+/** The global real-time statistics (`/v1/analytics/realtime`). */
 export interface GlobalStats {
   counts: GlobalCounts;
   mostCrowdedPark: ParkStatsItem | null;
@@ -1694,6 +1457,7 @@ export interface GlobalStats {
   shortestWaitRide: AttractionStatsItem | null;
 }
 
+/** One entry of the live ticker. */
 export interface TickerItem {
   parkName: string;
   parkSlug: string;
@@ -1708,30 +1472,31 @@ export interface TickerItem {
   url: string | null;
 }
 
+/** The ticker endpoint's answer. */
 export interface TickerResponse {
   items: TickerItem[];
   generatedAt: string;
 }
 
+/** Open-park counts per continent and country (`/v1/analytics/geo-live`). */
 export interface GeoLiveStatsDto {
   continents: ContinentLiveStats[];
 }
 
+/** Open-park counts for one continent. */
 export interface ContinentLiveStats {
   slug: string;
   openParkCount: number;
   countries: CountryLiveStats[];
 }
 
+/** Open-park count for one country. */
 export interface CountryLiveStats {
   slug: string;
   openParkCount: number;
 }
 
-// ============================================================================
-// Holiday Types
-// ============================================================================
-
+/** One public or school holiday. */
 export interface HolidayItem {
   date: string;
   name: string;
@@ -1742,13 +1507,12 @@ export interface HolidayItem {
   isNationwide: boolean;
 }
 
+/** A list of holidays. */
 export interface HolidayResponse {
   holidays: HolidayItem[];
 }
 
-/**
- * Structured holiday information from a neighbor/influencing region
- */
+/** A holiday in a neighbouring region that influences the park's crowds. */
 export interface InfluencingHoliday {
   name: string;
   source: {
@@ -1765,33 +1529,22 @@ export interface HeadlinerWaitForecast {
   /** Expected (predicted) standby wait for this day, in minutes. */
   waitTime: number;
   /**
-   * Half-width of the model's uncertainty band around its own prediction, in
-   * minutes — the same figure the trip planner draws as a band and prints as
-   * „± n Min." (`lib/planner/estimate.ts`, `lib/planner/block-band.ts`).
-   *
-   * `null`/absent means NO SPREAD WAS REPORTED, which is a different statement
-   * from a narrow one and may not be rendered as a zero.
-   *
-   * It may not be turned into an interval either: `waitTime` is rounded to 5
-   * and floored at 10 on the way out, while the spread is measured against the
-   * raw median, so `waitTime - uncertaintyMinutes` goes negative on a quiet
-   * ride. The figure is printed on its own, never subtracted.
-   *
-   * Absent on a day whose forecast is `actual` — a recorded average is a
-   * measurement, and a measurement has no spread.
+   * Half-width of the model's uncertainty band in minutes, the „± n Min." the trip planner prints.
+   * `null`/absent means no spread was reported, never zero. Never subtract it from `waitTime`
+   * (rounded and floored on the way out, so the result can go negative); print it on its own.
+   * Absent on an `actual` day, since a measurement has no spread.
    */
   uncertaintyMinutes?: number | null;
 }
 
-/** Expected headliner waits for a calendar day — grounds the abstract crowd
- *  level in concrete numbers. Present on days with ML predictions (today +
- *  future), absent on completed/closed days. */
+/** Expected headliner waits for a calendar day, grounding the crowd level in numbers. Present on
+ *  days with predictions (today and later), absent on completed or closed days. */
 export interface HeadlinerForecast {
   /** Average wait across the park's headliners (minutes, rounded to 5). */
   avgWait: number;
   /** Top headliner rides for this day, sorted by wait desc (minutes, rounded to 5). */
   rides: HeadlinerWaitForecast[];
-  /** true = actual recorded averages for a PAST day; false/absent = forecast. */
+  /** true: actual recorded averages for a PAST day; false/absent: forecast. */
   actual?: boolean;
 }
 
@@ -1805,14 +1558,11 @@ export interface NeighborHoliday {
   };
   /** 'public' | 'school' | 'bank'. */
   holidayType: string;
-  /** Influence rank: 1 = nearest/most important region (strongest crowd impact). */
+  /** Influence rank: 1 = the nearest, most important region. */
   priority: number;
 }
 
-// ============================================================================
-// Discovery API Types
-// ============================================================================
-
+/** A city in a discovery listing. */
 export interface DiscoveryCity {
   name: string;
   slug: string;
@@ -1820,6 +1570,7 @@ export interface DiscoveryCity {
   parkCount: number;
 }
 
+/** A country in a discovery listing. */
 export interface DiscoveryCountry {
   name: string;
   slug: string;
@@ -1828,24 +1579,22 @@ export interface DiscoveryCountry {
   parkCount: number;
 }
 
+/** The countries of a continent, with breadcrumbs. */
 export interface DiscoveryCountryResponse {
-  data: DiscoveryCountry[]; // API returns 'data', not 'countries'
+  data: DiscoveryCountry[]; // 'data', not 'countries'
   breadcrumbs: Breadcrumb[];
 }
 
+/** The cities of a country, with breadcrumbs. */
 export interface DiscoveryCityResponse {
-  data: DiscoveryCity[]; // API returns 'data', not 'cities'
+  data: DiscoveryCity[]; // 'data', not 'cities'
   breadcrumbs: Breadcrumb[];
 }
 
 /**
- * Everything a ParkCard overlays on top of its prerendered shell — i.e. every field that can
- * change during the day. This is the whole response shape of `/api/parks/live`, keyed by park id.
- *
- * The card grids (hub pages, featured strip, blog references) render structure server-side and
- * leave these nine fields blank until the batch call lands, which is what lets those shells cache
- * for a day. Keep it a projection: a field added here is a field re-downloaded for every park in
- * the region on every 5-minute poll.
+ * Everything a ParkCard overlays on its prerendered shell, i.e. every field that changes during
+ * the day: the `/api/parks/live` response, keyed by park id. Keep it a projection, since each
+ * field is re-downloaded for every park in the region on every poll.
  */
 export interface LiveParkFields {
   status?: ParkStatus;
@@ -1859,12 +1608,10 @@ export interface LiveParkFields {
   nextSchedule?: ScheduleSummary;
 }
 
-// ============================================================================
-// ML Dashboard Types
-// ============================================================================
-
+/** Health of the model's drift. */
 export type DriftStatus = 'healthy' | 'warning' | 'critical';
 
+/** The ML dashboard (`/v1/ml/dashboard`). */
 export interface MLDashboardDto {
   model: {
     current: {
@@ -1913,9 +1660,9 @@ export interface MLDashboardDto {
       uniqueAttractions: number;
       uniqueParks: number;
     };
-    /** Served intraday accuracy (PCN champion-swap) — what users actually get for
-     *  15-min slots. `live`/`byPredictionType.HOURLY` measure the CatBoost fallback,
-     *  not the served model. null when PCN is not serving. */
+    /** Served intraday accuracy (PCN champion-swap): what users get for 15-min slots, where
+     *  `live`/`byPredictionType.HOURLY` measure the CatBoost fallback. null when PCN is not
+     *  serving. */
     servedIntraday: {
       servedModel: 'pcn';
       mae: number;
@@ -1970,10 +1717,7 @@ export interface MLDashboardDto {
   };
 }
 
-// ============================================================================
-// ML Metrics History
-// ============================================================================
-
+/** One trained model version with its error metrics. */
 export interface ModelMetricsSnapshot {
   version: string;
   trainedAt: string;
@@ -1985,15 +1729,13 @@ export interface ModelMetricsSnapshot {
   isActive: boolean;
 }
 
+/** The model metrics history (`/v1/ml/models/metrics-history`). */
 export interface ModelMetricsHistoryResponse {
   history: ModelMetricsSnapshot[];
   total: number;
 }
 
-// ============================================================================
-// Health Types
-// ============================================================================
-
+/** The API's health check. */
 export interface HealthStatus {
   status: string;
   timestamp: string;
@@ -2002,18 +1744,15 @@ export interface HealthStatus {
   data: Record<string, unknown>;
 }
 
-// ============================================================================
-// Calendar Types
-// ============================================================================
-
+/** What a calendar event carries. */
 export interface CalendarEventData {
   type: 'schedule' | 'weather' | 'holiday' | 'crowd' | 'recommendation' | 'special_event' | 'show';
   icon?: string;
-  // Legacy support
+  // Older shape:
   data?: ScheduleItem | WeatherDay | HolidayItem | ParkDailyPrediction;
   timezone?: string;
   details?: string;
-  // New integrated calendar properties
+  // Integrated calendar shape:
   schedule?: ScheduleItem;
   weather?: WeatherSummary;
   holiday?: HolidayItem;
@@ -2030,6 +1769,7 @@ export interface CalendarEventData {
   show?: { name: string; time: string; endTime?: string };
 }
 
+/** An event placed on the calendar. */
 export interface CalendarEvent {
   id: string;
   title: string;
@@ -2039,37 +1779,29 @@ export interface CalendarEvent {
   resource: CalendarEventData;
 }
 
-// ============================================================================
-// Integrated Calendar Types (New API)
-// ============================================================================
-
 /**
- * How far a park's published schedule reaches — MIN/MAX of its park-level OPERATING rows.
- *
- * Both ends are `null` for a park that has none, and the whole field is absent on a payload the
- * API cached before it shipped (3 min open, up to 6 h closed), so always read it optionally.
- *
- * Past `to` the API is no longer reporting a status, it is inferring one, and the inference is
- * worthless in both directions: a seasonal park comes back `CLOSED` for every day (Phantasialand
- * answered CLOSED for all of July 2027, mid-season, because its 2027 hours were not out yet) and a
- * year-round one comes back `UNKNOWN` with the constant `moderate` fallback and no hours
- * (Disneyland Paris and Toverland, same month). Neither is a page worth publishing.
+ * How far a park's published schedule reaches: MIN and MAX of its park-level OPERATING rows. Both
+ * ends are `null` for a park with none, and the field is absent on older cached payloads, so read
+ * it optionally. Past `to` the API infers a status (all `CLOSED`, or `UNKNOWN` with a constant
+ * fallback), and neither is a page worth publishing.
  */
 export interface ScheduleCoverage {
   /** `YYYY-MM-DD` in park timezone, or null when the park publishes no schedule at all. */
   from: string | null;
-  /** `YYYY-MM-DD` in park timezone, or null. The last date the API actually knows about. */
+  /** `YYYY-MM-DD` in park timezone, or null: the last date the API actually knows about. */
   to: string | null;
 }
 
+/** The calendar response's park metadata. */
 export interface CalendarMeta {
   slug: string;
   timezone: string;
   hasOperatingSchedule: boolean;
-  /** Absent on a response the API cached before this field shipped — read it optionally. */
+  /** Absent on a response cached before this field shipped; read it optionally. */
   scheduleCoverage?: ScheduleCoverage;
 }
 
+/** A calendar day's opening hours. */
 export interface OperatingHours {
   openingTime: string;
   closingTime: string;
@@ -2077,12 +1809,13 @@ export interface OperatingHours {
   isInferred: boolean;
 }
 
+/** A calendar day's weather. */
 export interface WeatherSummary {
   condition: string;
   icon: number;
   tempMin: number;
   tempMax: number;
-  /** Total precipitation for the day in mm (legacy name — NOT a percentage). */
+  /** Total precipitation for the day in mm, despite the name; NOT a percentage. */
   rainChance: number;
   /** Total precipitation for the day, in mm. */
   precipitationMm?: number;
@@ -2092,10 +1825,11 @@ export interface WeatherSummary {
   windMax?: number;
   /** Relative humidity (%), when available (today). */
   humidity?: number;
-  /** Apparent ("feels like") temperature, when available (today). */
+  /** Apparent („feels like") temperature, when available (today). */
   apparentTemp?: number;
 }
 
+/** A named event or holiday on a calendar day. */
 export interface CalendarEventItem {
   name: string;
   type: string;
@@ -2103,25 +1837,14 @@ export interface CalendarEventItem {
 }
 
 /**
- * One bar of a day's hour-by-hour crowd curve.
- *
- * Only today and tomorrow carry these, whatever `includeHourly` asks for — measured 2026-09-14
- * across three parks, where a range reaching four days out answered `all` and `today+tomorrow`
- * byte-identically and left every later day without the field.
+ * One bar of a day's hour-by-hour crowd curve. Only today and tomorrow carry these, whatever
+ * `includeHourly` asks for.
  */
 export interface HourlyPrediction {
   /**
-   * Hour of day, **UTC**, 0–23 — not the park's local hour and not the reader's.
-   *
-   * Measured at 11:42 UTC on 2026-09-14 against three parks at three offsets: Phantasialand
-   * (Europe/Berlin, opens 07:00Z), Alton Towers (Europe/London, 09:00Z) and Toverland
-   * (Europe/Amsterdam, 08:00Z) all answered `11 12 13 14 15` for today — the current UTC hour, not
-   * the local one (13, 12 and 13) — and `7…`, `9…`, `8…` for tomorrow, each matching that park's
-   * UTC opening hour rather than its local one (9, 10, 10).
-   *
-   * So a surface that prints this number as a clock time renders UTC on a park-local calendar.
-   * Convert first: `hourlyPredictionInstants` in `lib/utils/calendar-utils.ts` turns the series
-   * into instants, which `formatInTimeZone` then renders in park time.
+   * Hour of day in **UTC**, 0–23: not the park's local hour and not the reader's. Printed as a
+   * clock time it would show UTC on a park-local calendar, so convert first with
+   * `hourlyPredictionInstants` (`lib/utils/calendar-utils.ts`) and render in park time.
    */
   hour: number;
   crowdLevel: CrowdLevel;
@@ -2129,44 +1852,42 @@ export interface HourlyPrediction {
   probability?: number;
 }
 
+/** A calendar day's ticket price and availability. */
 export interface TicketInfo {
   price?: { amount: number; currency: string };
   tier?: 'budget' | 'standard' | 'peak';
   status?: 'available' | 'sold_out';
 }
 
+/** A show on a calendar day. */
 export interface ShowTime {
   name: string;
   time: string;
   endTime?: string;
 }
 
+/** One day of the integrated calendar. */
 export interface CalendarDay {
   date: string;
   status: ParkStatus;
   isToday: boolean;
-  /** Declared by the API and, measured against the live month payload on 2026-09-14, **never
-   *  sent** — every day of the range came back without the key, tomorrow's included. Derive the
-   *  day after `isToday` from the park's timezone instead of gating anything on this. */
+  /** Declared by the API but never sent. Derive the day after `isToday` from the park's timezone
+   *  instead of gating anything on this. */
   isTomorrow?: boolean;
   isEstimated?: boolean;
   hours?: OperatingHours;
   crowdLevel: CrowdLevel | 'closed';
-  /** ML FORWARD prediction for this day (predicted peak ÷ typical-day-peak). Equals
-   *  `crowdLevel` on today and every future day — it used to differ on TODAY, where
-   *  `crowdLevel` was overridden with a live occupancy spot reading, and the override is
-   *  gone. Kept as its own field because a past day's `crowdLevel` is a measurement and
-   *  this one stays a prediction. Optional: absent on API builds predating the field, and
-   *  on days with no ratable prediction. */
+  /** The model's forward prediction for this day (predicted peak ÷ typical-day peak). Equals
+   *  `crowdLevel` from today on; its own field because a past day's `crowdLevel` is a measurement
+   *  and this stays a prediction. Absent on older API builds and on days with no ratable
+   *  prediction. */
   predictedCrowdLevel?: CrowdLevel;
-  /** TODAY ONLY: how today has actually gone SO FAR — a day-so-far aggregate, against
-   *  `crowdLevel`'s forecast for the same day. The pair is what makes „heute bisher /
-   *  Prognose" mean something; both are a day aggregate ÷ typical-day-peak, so they are on
-   *  one scale. Absent before the day has enough samples to rate, on unratable parks, on
-   *  closed days and on every non-today day (there `crowdLevel` is already a measurement). */
+  /** TODAY ONLY: how today has gone so far, on the same scale as `crowdLevel`'s forecast, which
+   *  is what makes „heute bisher / Prognose" meaningful. Absent before enough samples, on unratable
+   *  parks, on closed days and on every other day. */
   todayCrowdLevel?: CrowdLevel;
-  /** How many observations {@link todayCrowdLevel} was rated from — lets a surface hide a
-   *  thin morning reading instead of showing "very low" next to a "very high" forecast. */
+  /** How many observations {@link todayCrowdLevel} was rated from, so a surface can hide a thin
+   *  morning reading. */
   todayCrowdLevelSamples?: number;
   avgWaitTime?: number;
   crowdScore?: number;
@@ -2178,11 +1899,11 @@ export interface CalendarDay {
   isPublicHoliday?: boolean;
   isSchoolHoliday?: boolean;
   influencingHolidays?: InfluencingHoliday[];
-  /** Expected headliner waits (avg + top rides) — decodes the crowd level into
-   *  concrete "what to expect at THIS park" numbers. Today + future days only. */
+  /** Expected headliner waits (average and top rides), turning the crowd level into this park's
+   *  numbers. Today and future days only. */
   headlinerForecast?: HeadlinerForecast;
-  /** Priority-ranked holidays in neighbouring regions (top influencing regions
-   *  only) that raise local crowds. Shown as a distinct calendar-cell marker. */
+  /** Priority-ranked holidays in neighbouring regions that raise local crowds; a distinct
+   *  calendar-cell marker. */
   neighborHolidays?: NeighborHoliday[];
   hourly?: HourlyPrediction[];
   refurbishments?: string[];
@@ -2192,15 +1913,13 @@ export interface CalendarDay {
   showTimes?: ShowTime[];
 }
 
+/** The integrated calendar response (`/calendar`). */
 export interface IntegratedCalendarResponse {
   meta: CalendarMeta;
   days: CalendarDay[];
 }
 
-// ============================================================================
-// Park Historical Stats  (GET /v1/parks/.../stats)
-// ============================================================================
-
+/** One month of a park's historical aggregate (`/stats`). */
 export interface MonthStat {
   month: number; // 1–12
   avgCrowdScore: number;
@@ -2210,6 +1929,7 @@ export interface MonthStat {
   sampleDays: number;
 }
 
+/** One weekday of a park's historical aggregate. */
 export interface DayOfWeekStat {
   dayOfWeek: number; // 0=Sunday, 6=Saturday
   avgCrowdScore: number;
@@ -2219,6 +1939,7 @@ export interface DayOfWeekStat {
   sampleDays: number;
 }
 
+/** One ride in a park's historical ranking. */
 export interface TopAttractionStat {
   attractionSlug: string;
   attractionName: string;
@@ -2227,21 +1948,18 @@ export interface TopAttractionStat {
   sampleDays: number;
   rank: number;
   /**
-   * The land the ride stands in, curated value winning over the Queue-Times one.
-   *
-   * OPTIONAL as well as nullable: the API strips null-valued keys from every response, and
-   * Queue-Times publishes no land at all for whole parks. Render the column only when at least
-   * one row in the table carries a value, or a park with no lands gets a column of dashes.
+   * The land the ride stands in, curated value winning. Optional and nullable (the API strips
+   * nulls, and some parks publish no lands), so render the column only when a row carries one.
    */
   land?: string | null;
   /**
-   * Coarse ride type ("Roller Coaster"), curated value winning. This is the free-text
-   * `attraction_type` column, NOT the ride-type glossary terms in `rideProfile` — those answer a
-   * different question ("launch coaster", "omnimover") and must not be joined onto this one.
+   * Coarse ride type („Roller Coaster"), curated value winning: the free-text `attraction_type`,
+   * NOT the ride-type glossary terms in `rideProfile`, which answer a different question.
    */
   attractionType?: string | null;
 }
 
+/** A park's historical crowd and wait aggregate (`GET /v1/parks/.../stats`). */
 export interface ParkHistoricalStats {
   byMonth: MonthStat[];
   byDayOfWeek: DayOfWeekStat[];
@@ -2251,35 +1969,26 @@ export interface ParkHistoricalStats {
     windowYears: number;
     displayable: boolean;
     /**
-     * Measured days an attraction needed to enter `topAttractions`. Optional: responses cached
-     * before schemaVersion 3 do not carry it, and nothing renders it — it is here so a reader of
-     * the payload can tell a filtered ranking from an unfiltered one.
+     * Measured days a ride needed to enter `topAttractions`; absent on older cached responses.
+     * Not rendered, only there to tell a filtered ranking from an unfiltered one.
      */
     minAttractionDays?: number;
   };
 }
 
-// ============================================================================
-// Park Hourly Profile  (GET /v1/parks/.../stats/hourly)
-// ============================================================================
-
+/** One ride's hourly wait profile (`GET /v1/parks/.../stats/hourly`). */
 export interface HourlyProfileAttraction {
   attractionSlug: string;
   attractionName: string;
   land?: string | null;
   /**
-   * Quiet-hour wait (P25), aligned with `hours` the same way as {@link p50}.
-   *
-   * Optional because it is newer than the endpoint: a deployment answering the
-   * v3 projection sends no `p25` at all, and a chart that assumed one would
-   * draw a band with no lower edge. Every reader treats an absent array as
-   * "no spread available" and falls back to the median line.
+   * Quiet-hour wait (P25), aligned with `hours` like {@link p50}. Optional because older
+   * deployments send none; readers treat an absent array as „no spread" and draw the median only.
    */
   p25?: Array<number | null>;
   /**
    * Median wait per hour, POSITIONAL: `p50[i]` belongs to `hours[i]`, never to `i` o'clock.
-   * `null` is a gap — the ride reported nothing in that hour — and is not the same claim as a
-   * zero, which would say the queue was empty.
+   * `null` is a gap (nothing reported that hour), not a zero, which would say the queue was empty.
    */
   p50: Array<number | null>;
   /** Busy-hour wait (P90), aligned with `hours` the same way. */
@@ -2290,13 +1999,9 @@ export interface HourlyProfileAttraction {
 }
 
 /**
- * One ride's day: what it normally does, what it has done so far today, and what
- * the model expects for the rest.
- *
- * Everything is POSITIONAL against `hours`, and `today`/`forecast` never overlap
- * — an hour already measured carries `forecast: null`, so a chart cannot draw
- * the model's guess on top of the fact. See docs/frontend/ride-day-curve.md in
- * the API repo.
+ * One ride's day: what it normally does, what it has done so far today, and what the model expects
+ * for the rest. Everything is POSITIONAL against `hours`, and `today` and `forecast` never overlap,
+ * so a chart cannot draw a guess over a fact. See docs/frontend/ride-day-curve.md in the API repo.
  */
 export interface RideDayCurve {
   hours: number[];
@@ -2305,36 +2010,23 @@ export interface RideDayCurve {
   p25: Array<number | null>;
   p50: Array<number | null>;
   p90: Array<number | null>;
-  /** Measured today. `null` for an hour not yet reached, or one the ride reported nothing in. */
+  /** Measured today; `null` for an hour not yet reached or one the ride reported nothing in. */
   today: Array<number | null>;
   /** Expected, for hours not yet measured. */
   forecast: Array<number | null>;
   /**
-   * What the model said for each hour BEFORE it happened — every hour it has an
-   * opinion about, measured or not.
-   *
-   * Optional: an API still on the older schema sends none, and the chart then
-   * draws no comparison line rather than an empty one.
+   * What the model said for each hour BEFORE it happened. Optional: older APIs send none, and the
+   * chart then draws no comparison line.
    */
   predicted?: Array<number | null>;
   /**
-   * The ride's own mean absolute error in minutes.
-   *
-   * A measured, published figure — a caller may draw the forecast as
-   * `± forecastError`, but must NOT fan it out with the horizon. The horizon is
-   * measured now (backend `forecast_accuracy_profile`, six lead buckets × three
-   * forecast bands), and what it measures rules out a multiplier: across the
-   * horizon, from one day out to sixty, every band widens by roughly the same
-   * four minutes — 21.5 → 25.5 for a queue predicted at 60 minutes or more,
-   * 8.6 → 12.5 for one under 30 (45-day window, measured 2026-09-11) — which is
-   * +19 % at the busy end against +45 % at the quiet one. A factor is therefore
-   * too small on a quiet ride and too large on a busy one. Where the horizon has
-   * to be accounted for, read `/plan/day`'s `rides[].expectedError` and
-   * `accuracy` instead: the lead bucket is already in them. `null` where the
-   * ride has not been scored.
+   * The ride's own mean absolute error in minutes, or `null` when unscored. Draw the forecast as
+   * `± forecastError`, but never fan it out with the horizon: measured error grows by roughly the
+   * same few minutes across the horizon for every band, so a multiplier is wrong at both ends.
+   * Where the horizon matters, read `/plan/day`'s `rides[].expectedError` and `accuracy`.
    */
   forecastError: number | null;
-  /** False for a park not open yet, a closed ride, an out-of-season ride. */
+  /** False for a park not open yet, a closed ride or an out-of-season ride. */
   measuredToday: boolean;
   sampleDays: number;
   timezone: string;
@@ -2343,16 +2035,14 @@ export interface RideDayCurve {
 }
 
 /**
- * The park's day shape, ride by ride — the matrix behind a "when is the queue longest" table.
- *
- * A lean projection rather than a slice of the attraction detail endpoint: that one costs ~53 KB
- * per ride (45 % of it a `schedule` nobody renders), so an eight-ride table cost 424 KB there and
- * ~2 KB here. See docs/architecture/api-budget.md.
+ * The park's day shape, ride by ride: the matrix behind a „when is the queue longest" table. A lean
+ * projection, far smaller than slicing the attraction detail endpoint per ride.
+ * See docs/architecture/api-budget.md.
  */
 export interface ParkHourlyProfile {
   /**
-   * Hours the table has columns for, park-local and ascending. Derived from the data, so a park
-   * that opens at 11 starts at 11 — never assume a fixed 9–18 window.
+   * Hours the table has columns for, park-local and ascending, derived from the data: a park that
+   * opens at 11 starts at 11, so never assume a fixed window.
    */
   hours: number[];
   attractions: HourlyProfileAttraction[];
@@ -2368,10 +2058,7 @@ export interface ParkHourlyProfile {
   };
 }
 
-// ============================================================================
-// Nearby Parks (discovery/nearby endpoint)
-// ============================================================================
-
+/** A park near a point, from `/v1/discovery/nearby`. */
 export interface NearbyParkItem {
   id: string;
   name: string;
@@ -2381,7 +2068,7 @@ export interface NearbyParkItem {
   country: string | null;
   status: string;
   totalAttractions: number;
-  /** Absent for a park whose wait times are unreadable — see {@link LiveWaitTimes}. */
+  /** Absent for a park whose wait times are unreadable; see {@link LiveWaitTimes}. */
   operatingAttractions?: number;
   analytics?: {
     avgWaitTime?: number;
@@ -2396,10 +2083,7 @@ export interface NearbyParkItem {
   nextSchedule?: ScheduleSummary | null;
 }
 
-// ============================================================================
-// Country Summary  (GET /v1/discovery/continents/:continent/:country/summary)
-// ============================================================================
-
+/** A top park in a country summary. */
 export interface TopParkSummary {
   name: string;
   slug: string;
@@ -2408,6 +2092,7 @@ export interface TopParkSummary {
   avgAnnualCrowdScore: number;
 }
 
+/** A country's summary (`GET /v1/discovery/continents/:continent/:country/summary`). */
 export interface CountrySummary {
   countrySlug: string;
   parkCount: number;
@@ -2417,11 +2102,7 @@ export interface CountrySummary {
   avgQuietMonths: number[];
 }
 
-// ============================================================================
-// Popular Parks  (GET /v1/parks/popular)
-// Parks ranked by tracked request volume — mirrors the cache-prewarm signal.
-// ============================================================================
-
+/** A park ranked by tracked request volume (`GET /v1/parks/popular`), the cache-prewarm signal. */
 export interface PopularPark {
   rank: number;
   requests: number;
@@ -2434,49 +2115,29 @@ export interface PopularPark {
   continent: string | null;
 }
 
-// ============================================================================
-// Trip planner — one day, ride by ride
-// ============================================================================
-
 /**
- * How a plan number was arrived at. It travels with every curve because the
- * three are not equally trustworthy and nothing about a rendered bar says which
- * one produced it.
- *
- * - `measured` — the model's own hourly prediction. Today and tomorrow only:
- *   the ML service generates 24 hours ahead (`HOURLY_PREDICTIONS`).
- * - `composed` — a day-level prediction scaled by the ride's historical hour
- *   shape. The level is predicted, the shape is historical.
- * - `long_range` — the same composition past the stored 60-day daily horizon,
- *   where the day level itself is thinner.
- *
- * A surface MUST render the three differently. A composed curve is not a
- * measured one, and they draw identically unless something is done about it.
- */
-/**
- * How a curve was produced. `observed` is the one that points BACKWARDS and is
- * not a forecast at all: a date in the past is answered from what the queues
- * actually did, out of the nightly 15-minute rollup, so a day somebody already
- * walked stops predicting at itself.
+ * How a plan curve was produced; it travels with every curve because the kinds are not equally
+ * trustworthy and a rendered bar does not say which it is. `observed` points backwards: a past date
+ * answered from what the queues did. `measured` is the model's hourly prediction (today and
+ * tomorrow). `composed` scales a day-level prediction by the ride's historical hour shape, and
+ * `long_range` is the same past the 60-day daily horizon. A surface MUST draw them differently.
  */
 export type PlanDayTier = 'observed' | 'measured' | 'composed' | 'long_range';
 
+/** One hour of a ride's planned day. */
 export interface PlanDayHour {
   /** Park-local hour, 0–23. */
   hour: number;
   /** Expected wait in minutes, already rounded to 5. */
   wait: number;
   /**
-   * Set only where THIS hour did not come from the day's {@link PlanDay.tier}.
-   *
-   * A day inside the 24-hour window is part measured and part composed — today
-   * has no measurement for the hours before now, tomorrow none for the hours
-   * after it — so the tier names the day's regime and this names the exceptions.
-   * Absent means "the day's tier", never "unknown".
+   * Set only where THIS hour did not come from the day's {@link PlanDay.tier}: a day inside the
+   * 24-hour window is part measured, part composed. Absent means „the day's tier", never „unknown".
    */
   source?: PlanDayTier | null;
 }
 
+/** One ride's planned day: an expected wait per open hour, with its uncertainty. */
 export interface PlanDayRide {
   attractionSlug: string;
   attractionName: string;
@@ -2486,95 +2147,61 @@ export interface PlanDayRide {
   /** The day-level prediction this ride's curve was scaled to. */
   dayPeak: number;
   /**
-   * Half-width of the model's uncertainty band in minutes (its top trained
-   * quantile minus the served median). `null` where the model reports no
-   * spread — which is NOT a band of width zero and must not be drawn as one.
+   * Half-width of the model's uncertainty band in minutes (its top trained quantile minus the
+   * served median). `null` means no spread was reported, NOT a band of width zero.
    */
   uncertaintyMinutes?: number | null;
   /**
-   * When THIS ride starts, park-local `HH:mm`, rounded to the quarter hour.
-   *
-   * A fact the planner had no source for until the API grew it, and the gap it
-   * closes is not small: Phantasialand's gates open at 09:00 and sixteen of its
-   * rides — Taron, F.L.Y., both Winja's, Talocan, Crazy Bats, Mystery Castle,
-   * River Quest, Colorado Adventure, Raik and more — do not run until 10:00, so
-   * the planner offered two hours of queue that did not exist.
-   *
-   * `hours` already begins here, so nothing needs clamping or filtering; this
-   * field is for SAYING it. Absent means the ride opens with the park, or that
-   * too few openings have been observed to tell — the two are the same to a
-   * reader, so absent renders nothing and `hours` is right either way.
-   *
-   * The rounding is deliberate: a raw 10:10 is five-minute polling plus feed
-   * lag on top of a 10:00 opening. There is no `closesAt` and there will not be
-   * one — feeds do not reliably flip back to CLOSED in the evening, so a
-   * closing time would be a guess.
+   * When THIS ride starts, park-local `HH:mm`, rounded to the quarter hour (a raw 10:10 is polling
+   * plus feed lag on a 10:00 opening). Many rides open later than their park. `hours` already
+   * begins here, so this is only for saying it; absent means it opens with the park or too few
+   * openings were seen. There is no `closesAt`: feeds do not reliably flip back to CLOSED.
    */
   opensAt?: string | null;
   /** Measured days behind the historical shape. */
   sampleDays: number;
   /**
-   * The typical error of this ride's own numbers, in minutes.
-   *
-   * Per RIDE and not per day, because it depends on both the lead time and the
-   * level: a queue that peaks over an hour is typically 21–25 minutes out, one
-   * under half an hour 8–13. It is a TYPICAL error and not a bound — half the
-   * days are further off than this — so it may never be drawn as an interval
+   * The typical error of this ride's numbers, in minutes; it depends on lead time and level. A
+   * TYPICAL error, not a bound (half the days are further off), so never draw it as an interval
    * that contains the answer. Absent where the backend has not measured one.
    */
   expectedError?: number | null;
   /**
-   * Where the ride is, so the planner can say how far apart two consecutive
-   * entries are without fetching forty attraction payloads.
-   *
-   * A geodesic distance between two of these is a LOWER BOUND on the walk and
-   * nothing more — park paths bend around water, queues and one-way routing, and
-   * Phantasialand stacks two lands vertically. State a floor; never present the
-   * straight line as a walking time.
+   * Where the ride is, so the planner can say how far apart two entries are without fetching every
+   * attraction. A straight-line distance is only a LOWER BOUND on the walk; never present it as a
+   * walking time.
    */
   latitude?: number | null;
   longitude?: number | null;
   /**
-   * The ride's photo, added by the proxy route rather than by the API: the media
-   * database is a filesystem catalogue in this repo, not something api.park.fan
-   * knows about. Carries the content hash as a query, because retargeting a
-   * focal point rewrites a crop's bytes at an unchanged URL.
+   * The ride's photo, added by the proxy route from this repo's media database. Carries the
+   * content hash as a query, because retargeting a focal point rewrites a crop at an unchanged URL.
    */
   backgroundImage?: string | null;
   /** `object-position` from the image's curated focal point. */
   backgroundPosition?: string;
   /**
-   * The ride was observed all through the previous operating day and was never
-   * OPERATING in any of it — down for the whole day rather than unobserved. A
-   * ride with no observations at all is silence and is not reported here.
-   * Absent past tomorrow: yesterday's downtime says nothing a visitor can act on
-   * for a Tuesday in November.
+   * Observed all through the previous operating day and never OPERATING: down for the day, not
+   * unobserved. Absent past tomorrow, where yesterday's downtime says nothing actionable.
    */
   downYesterday?: boolean;
 
   /**
-   * Whether the park counts this ride among its headliners.
-   *
-   * The API's CURATED answer, never re-derived here from `dayPeak`: the day's
-   * tallest bars are whatever happens to be busy, and pointing at those would
-   * recommend the queue rather than the ride. Absent on an ordinary ride.
+   * Whether the park counts this ride among its headliners: the API's curated answer, never
+   * re-derived from `dayPeak`, which would recommend the queue rather than the ride.
    */
   isHeadliner?: boolean;
   /**
-   * Minimum rider height in centimetres, the curated answer over the synced one.
-   *
-   * Here so the planner can answer "can the six-year-old ride this" for a whole
-   * day at once — the alternative is forty attraction payloads at 425 KB each.
-   * Absent where there is no minimum to state, which covers both "nothing
-   * recorded" and "a curator says there is none", and must never be turned into
-   * a promise that anyone may ride (`canRideAtHeight` treats it that way for
-   * the same reason `isCurrentlyInSeason` uses `!== false`).
+   * Minimum rider height in cm, curated over synced, so the planner can answer „can the
+   * six-year-old ride this" for the whole day. Absent covers both „not recorded" and „none", so it
+   * is never a promise that anyone may ride (see `canRideAtHeight`).
    */
   minimumHeight?: number | null;
-  /** Whether the ride may soak you. Absent is unknown, never "dry". */
+  /** Whether the ride may soak you. Absent is unknown, never „dry". */
   mayGetWet?: boolean | null;
 }
 
+/** The day and park around a plan: hours, crowd, weather, holidays, early entry. */
 export interface PlanDayContext {
   date: string;
   status: ParkStatus | string;
@@ -2582,60 +2209,48 @@ export interface PlanDayContext {
   openHour: number | null;
   closeHour: number | null;
   /**
-   * Where {@link openHour}/{@link closeHour} came from.
-   *
-   * `schedule` is the park's published calendar. `observed` is the window
-   * DERIVED from hours we measured, which is what the API falls back to past the
-   * publication horizon — about 60 days for half the parks — and it is narrower
-   * than the truth by construction: it can only span hours somebody recorded. On
-   * such a day `status` is not a promise either.
+   * Where {@link openHour}/{@link closeHour} came from: `schedule` is the published calendar,
+   * `observed` a window derived from measured hours past the publication horizon, narrower than
+   * the truth by construction. On an `observed` day `status` is no promise either.
    */
   hoursSource?: 'schedule' | 'observed' | null;
   crowdLevel?: CrowdLevel | 'closed' | null;
   /**
-   * Absent past the forecast's reach (about 14 days). The API does NOT
-   * substitute a climate normal there, so a caller must not present a missing
-   * value as "no rain expected".
+   * Absent past the forecast's reach (about two weeks). There is no climate-normal fallback, so a
+   * missing value must not read as „no rain expected".
    */
   weather?: WeatherSummary | null;
   isHoliday: boolean;
   isBridgeDay: boolean;
   isSchoolVacation: boolean;
-  /** Derived by the API — `CalendarDay` carries no such field. */
+  /** Derived by the API; `CalendarDay` carries no such field. */
   isWeekend: boolean;
   neighborHolidays?: NeighborHoliday[];
   /**
-   * Whether this park's wait times are readable at all.
-   *
-   * The same curated flag the park payload carries, repeated on this endpoint
-   * because a planner never fetches that payload — and without it `/plan/day`
-   * for a park with no source is byte-for-byte a park whose rides simply have
-   * no history: `rides` is empty and the axis is drawn either way. Read it
-   * through `noLiveWaitTimesReason()`, which treats an absent field as
-   * available so a build predating the API's own is unchanged.
+   * Whether this park's wait times are readable at all, repeated here because the planner never
+   * fetches the park payload; without it, a park with no source looks like rides without history.
+   * Read it through `noLiveWaitTimesReason()`. See docs/rules/parks-we-cannot-read.md.
    */
   liveWaitTimes?: LiveWaitTimes;
   /**
-   * Present only where a human confirmed that the park lets hotel guests in
-   * before opening (PAR-197). Absent means "no" and "nobody checked" alike, so
-   * test `=== true`. The rides it covers are the park's headliners.
+   * Present only where a human confirmed that the park lets hotel guests in before opening; absent
+   * means „no" and „unchecked" alike, so test `=== true`. It covers the park's headliners.
    */
   hasEarlyEntry?: true;
-  /** Minutes before `openHour` the early-entry rides open, the value that holds now. Only with `hasEarlyEntry`. */
+  /** Minutes before `openHour` the early-entry rides open now; only with `hasEarlyEntry`. */
   earlyEntryMinutesPeak?: number;
   /** The park's second value, for its quieter weeks. Only with `hasEarlyEntry`. */
   earlyEntryMinutesOffPeak?: number;
   /**
-   * Whether the VISITOR holds early entry on this day. Never sent by the API:
-   * the planner sets it from the visitor's own answer (PAR-200's wizard
-   * question, `PlannerDayPrefs.earlyEntry`) through `withEarlyEntry()` in
-   * `lib/planner/day-grid.ts`. Absent reads as `false`, and then nothing in the
-   * planner differs from a park without early entry. Read it only through
-   * `earlyEntryOpenMin()`, which also checks {@link hasEarlyEntry}.
+   * Whether the VISITOR holds early entry on this day. Never sent by the API: the planner sets it
+   * from the visitor's answer through `withEarlyEntry()` (`lib/planner/day-grid.ts`). Absent reads
+   * as `false`. Read it only through `earlyEntryOpenMin()`, which also checks
+   * {@link hasEarlyEntry}.
    */
   earlyEntry?: boolean;
 }
 
+/** The trip planner's day for one park (`/plan/day`). See docs/features/trip-planner.md. */
 export interface PlanDay {
   parkSlug: string;
   timezone: string;
@@ -2644,65 +2259,34 @@ export interface PlanDay {
   /** Whole days from today to this date, in the park's timezone. */
   leadDays: number;
   /**
-   * Measured mean absolute error for predictions made this far ahead, in
-   * minutes. `null` until the backend's lead-time archive has enough scored rows
-   * at this distance — and `null` is the honest answer rather than a gap to
-   * fill, so where it is absent, widen the band with distance WITHOUT attaching
-   * a figure.
-   *
-   * Absent here is not the same as unmeasured everywhere: `accuracy.typicalError`
-   * below carries a distance-dependent error of its own, and so does
-   * `rides[].expectedError`, which resolves the backend's lead-bucket profile
-   * per ride.
+   * Measured mean absolute error for predictions this far ahead, in minutes. `null` until enough
+   * scored rows exist at this distance; then widen the band with distance WITHOUT a figure.
+   * `accuracy.typicalError` and `rides[].expectedError` carry distance-dependent errors of their
+   * own.
    */
   leadTimeMae?: number | null;
   /**
-   * Whether anybody has checked how wrong the forecast is at this distance.
-   *
-   * `measured` means the error at this lead time has been compared against days
-   * that then happened; `unmeasured` means a prediction exists and nothing has
-   * ever verified it. `null` where the API says nothing at all.
-   *
-   * It behaves as documented again. Between 2026-09-02 and 2026-09-03 the API
-   * answered `unmeasured` for TODAY (`leadDays: 0`), which is why the note that
-   * stood here said the field could not be wired to anything: applying "never
-   * present an unmeasured day as a plannable day" literally would have refused
-   * every day the planner has. Re-measured on 2026-09-04 across six lead times
-   * at Phantasialand — 0, 1, 3, 16 and 41 days all answer `measured` with a
-   * `typicalError`, 87 days answers `unmeasured` with none. So `unmeasured` is
-   * what it says: past the horizon where anybody has checked.
-   *
-   * This is also the field that replaced the `long_range` tier in practice. The
-   * tier still types it, and the same six probes never returned it: what a day
-   * three months out actually looks like is `tier: 'composed'` with
-   * `basis: 'unmeasured'`, so the band reads the basis rather than waiting for a
-   * tier the API has stopped sending.
+   * Whether anybody has checked how wrong the forecast is at this distance: `measured` means
+   * compared against days that then happened, `unmeasured` means never verified, `null` means the
+   * API says nothing. In practice a far-out day is `tier: 'composed'` with `basis: 'unmeasured'`
+   * rather than `long_range`, so the band reads the basis.
    */
   accuracy?: {
     basis?: 'measured' | 'unmeasured' | null;
     /**
-     * The day's own typical error in minutes, over every ride and hour in it.
-     *
-     * A TYPICAL error and not a bound — half the days are further off — so it
-     * may never be drawn as an interval that contains the answer, which is the
-     * same rule `PlanDayRide.expectedError` carries per ride. Present only
-     * where `basis` is `measured`; 8.9 minutes for today at Phantasialand,
-     * 14.3 at sixteen days.
+     * The day's typical error in minutes over every ride and hour. A TYPICAL error, not a bound,
+     * like `PlanDayRide.expectedError`. Present only where `basis` is `measured`.
      */
     typicalError?: number | null;
     /**
-     * Observations behind that figure. It GROWS with the lead time (50,759 for
-     * today, 1,155,876 at sixteen days) because a composed day is scaled from a
-     * far wider historical window than a measured one, so it is a statement
-     * about the method rather than about the day's own quality.
+     * Observations behind that figure. It grows with lead time, because a composed day is scaled
+     * from a wider historical window, so it describes the method, not the day's quality.
      */
     sampleSize?: number | null;
   } | null;
   /**
-   * The park's own photo, added by the proxy route rather than by the API — the
-   * media database is a filesystem catalogue in this repo. It is what the
-   * planner panel sits on; `null` where the park has no picture, which is most
-   * of them.
+   * The park's photo for the planner panel, added by the proxy route from this repo's media
+   * database; `null` for most parks.
    */
   parkBackgroundImage?: string | null;
   /** `object-position` from the image's curated focal point. */
@@ -2712,29 +2296,20 @@ export interface PlanDay {
 }
 
 /**
- * Where a showtime came from, and the one thing a surface may not blur.
- *
- * - `scheduled` — the operator's own listing. Published for today and for days
- *   already past, and for nothing else: no source anywhere knows showtimes in
- *   advance.
- * - `projected` — this app's upstream carrying the last matching weekday
- *   forward. It is an observation of a different day, not a promise about this
- *   one, and the API says so explicitly with {@link PlanDayShow.observedOn}.
- *
- * The two MUST be drawn differently. They are the same shape and the same
- * fields, so nothing but a deliberate difference separates them, and a
- * projection presented as a listing is this app promising a performance that
- * nobody has scheduled.
+ * Where a showtime came from. `scheduled` is the operator's listing (today and past days only; no
+ * source knows showtimes in advance). `projected` carries the last matching weekday forward: an
+ * observation of another day (see {@link PlanDayShow.observedOn}), not a promise. The two MUST be
+ * drawn differently, or the app promises a performance nobody scheduled.
  */
 export type PlanDayShowSource = 'scheduled' | 'projected';
 
+/** One show's times on the planned day. */
 export interface PlanDayShow {
   showSlug: string;
   showName: string;
   /**
-   * Where the show is. Both are present on nearly every show (42 of 42 at
-   * Europa-Park on 2026-10-02) and absent on the rest, which is the normal case
-   * for a show nobody has located and not an error.
+   * Where the show is: present on nearly every show; absent is the normal case for one nobody has
+   * located, not an error.
    */
   latitude?: number | null;
   longitude?: number | null;
@@ -2742,9 +2317,8 @@ export interface PlanDayShow {
   times: string[];
   source: PlanDayShowSource;
   /**
-   * `projected` only: the date these times were actually observed on — the most
-   * recent same weekday. Absent on a `scheduled` entry, which speaks for the
-   * date it was asked about.
+   * `projected` only: the date these times were observed on (the most recent same weekday).
+   * Absent on a `scheduled` entry, which speaks for the date asked about.
    */
   observedOn?: string | null;
   /** `projected` only: how many measured days stand behind the projection. */

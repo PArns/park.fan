@@ -18,10 +18,7 @@ export interface PickerResult {
   refKey: string;
   label: string;
   kind: 'park' | 'ride';
-  /** For rides — the parent park's bare slug straight from the search hit.
-   *  The URL has an intercalated `/attractions/` segment so deriving this
-   *  from `refKey` alone is brittle; the search backend gives us the
-   *  authoritative value. */
+  /** For rides, the parent park's slug from the search hit; `refKey` has `/attractions/` in it. */
   parentParkSlug?: string;
   /** Inline only — spotlight always uses `?full`. */
   option: RefOption;
@@ -31,9 +28,7 @@ interface ParkRidePickerProps {
   mode: PickerMode | null;
   onPick: (result: PickerResult) => void;
   onClose: () => void;
-  /** Bounding rect of whatever triggered the picker (panel button, chip).
-   *  When supplied the modal floats near the trigger instead of always
-   *  hovering at the top of the viewport. */
+  /** Rect of whatever opened the picker, so the modal floats near it. */
   anchorRect?: { top: number; bottom: number; left: number; right: number };
 }
 
@@ -50,10 +45,8 @@ interface SearchResponse {
 }
 
 /**
- * Turn a hit into the path used inside the ref: token. The search API returns
- * `/v1/parks/<continent>/<country>/<city>/<parkSlug>[/<rideSlug>]`; we strip
- * the version prefix so the path matches the actual frontend URL and authors
- * see something they recognise in the markdown source.
+ * The path inside the `ref:` token: the hit's URL without the API's `/v1`, so the markdown source
+ * shows the frontend path.
  */
 function pathFromHit(hit: SearchHit): string | null {
   if (!hit.url) return null;
@@ -61,10 +54,8 @@ function pathFromHit(hit: SearchHit): string | null {
 }
 
 /**
- * Combobox modal: searches /api/search for parks (and rides when needed),
- * shows up to 12 matches, and resolves the slug into a ref: key. Spotlight
- * mode shows both parks and rides since the author picks either kind for
- * a ?full card.
+ * Search modal that picks a park or ride for a `ref:` link from `/api/search`; spotlight mode
+ * offers both kinds for a `?full` card.
  */
 export function ParkRidePicker({ mode, onPick, onClose, anchorRect }: ParkRidePickerProps) {
   const [q, setQ] = useState('');
@@ -77,9 +68,7 @@ export function ParkRidePicker({ mode, onPick, onClose, anchorRect }: ParkRidePi
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // preventScroll keeps the document pinned — the default `.focus()` was
-    // yanking the viewport to the top when the picker mounted near the
-    // bottom of a long page.
+    // `preventScroll`: a plain `.focus()` scrolls a long page to the picker.
     if (mode) inputRef.current?.focus({ preventScroll: true });
   }, [mode]);
 
@@ -133,9 +122,7 @@ export function ParkRidePicker({ mode, onPick, onClose, anchorRect }: ParkRidePi
     });
   };
 
-  // Anchor positioning — same scheme the ImagePicker uses. When a trigger
-  // rect is supplied, place the modal near it on the side with more room so
-  // the dialog never escapes the viewport.
+  // Anchored like the ImagePicker: near the trigger, on the side with more room.
   const DIALOG_HEIGHT = Math.min(560, window.innerHeight * 0.8);
   let modalStyle: React.CSSProperties = {};
   if (anchorRect) {

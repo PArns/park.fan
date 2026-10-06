@@ -2,13 +2,9 @@ import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * The entry tile's contents — one definition for both places it appears.
- *
- * A park page's tiles are real tabs (`TabsTrigger`), a ride page's are jump links to chapters
- * that stay in the HTML, so the two cannot share a component. They CAN share the cell
- * (`tileCell` in `park-entry-tiles.tsx`), the icon chip and the body, and they have to: both rows
- * sit a few hundred pixels apart on the same park photo, and a second copy of these classes is a
- * second copy that drifts on the next restyle.
+ * The entry tile's contents, one definition for both places it appears: a park page's tiles are
+ * tabs and a ride page's are jump links, so they cannot share a component, but they share the cell,
+ * chip and body so the two rows on the same photo cannot drift.
  */
 
 /** The icon chip. Square, so the row is scannable by shape before any label is read. */
@@ -16,13 +12,9 @@ export const entryTileChip =
   'bg-muted text-foreground flex h-8 w-8 items-center justify-center rounded-lg transition-colors';
 
 /**
- * Icon chip + label, with the optional count inside the label rather than on a line of its own:
- * it is the only figure that belongs on the same line as the name.
- *
- * `hint` is the second line — what is actually behind the tile ("24 offen · Ø 33 min") rather
- * than another label. Its box is reserved at two lines and clamped to two, on EVERY tile that
- * passes one, because the text moves on the live poll: unclamped, an eight-word hint in French
- * is a third line, and `auto-rows-fr` then makes every tile in the row taller at once.
+ * Icon chip and label, with the optional count inside the label. `hint` is the second line, what is
+ * behind the tile right now; its box is reserved and clamped at two lines on every tile, because
+ * the text changes on the live poll and a third line would make the whole row taller.
  */
 export function EntryTileBody({
   icon: Icon,
@@ -46,11 +38,9 @@ export function EntryTileBody({
           and never on the tile itself: the box carries `backdrop-blur-md`, and a transform on a
           backdrop-filtered element (or any ancestor) makes it a backdrop root and flattens the
           blur for the length of the animation. */}
-      {/* Below `sm` the tile is a third of the row (`tileRowPhone`), 109 px wide at 360 px. A
-          chip beside the label took 46 px of that and left ~63 px, and words were cut mid-word
-          at the cell edge („Attraktione", „Restaurant") — 18 labels over six locales on the park
-          and Taron rows. So on a phone there is no chip: the label alone, in `text-xs`, clamped
-          to its two reserved lines, and no hint. The selected cell keeps the bar and the tint. */}
+      {/* Below `sm` a tile is a third of the row, too narrow for a chip beside the label without
+          cutting words, so a phone gets the label alone in `text-xs`, clamped to its two lines,
+          and no hint. */}
       <span data-tile-stagger className={cn(entryTileChip, 'max-sm:hidden', chipClassName)}>
         <Icon className="h-4 w-4" aria-hidden="true" />
       </span>

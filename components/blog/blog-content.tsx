@@ -34,7 +34,7 @@ import { languageName } from '@/lib/utils/intl-format';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
 import { extractToc } from '@/lib/blog/toc';
 import { ChapterHeading } from '@/components/common/chapter-heading';
-import { GlossaryInjectTerm } from '@/components/glossary/glossary-inject-term';
+import { GlossarySegments } from '@/components/glossary/glossary-segments';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { GlossaryTerm } from '@/lib/glossary/types';
@@ -127,10 +127,8 @@ interface Segment {
   widget?: { name: string; attrs: Record<string, string> };
 }
 
-// `[ \\t]+` (NOT \\s+) — \\s matches the newline, which made the FIRST BODY LINE
-// parse as the info string. Body attrs use `key: value`, which the
-// info-string parser doesn't understand, so every body-attr widget (the
-// form the editor writes!) silently rendered as nothing.
+// `[ \t]+`, not `\s+`: `\s` matches the newline, which makes the first body line parse as the info
+// string and drops every widget whose attrs are written as `key: value` lines.
 const WIDGET_FENCE = /^```([a-z][a-z0-9-]*-widget)(?:[ \t]+([^\n`]+))?\n([\s\S]*?)\n?```$/gm;
 
 /** Widgets keyed by a single park `slug=` attr — all pre-resolve into parkMap. */
@@ -177,9 +175,8 @@ function parseEntityRef(href: string | undefined): EntityRef | null {
   if (!href) return null;
   if (href.startsWith('ref:')) {
     const { slug, options } = parseRefOptions(href.slice('ref:'.length));
-    // Accept both the legacy short form (`slug` or `parkSlug/rideSlug`) and the
-    // full geo-path form the editor writes — `/parks/<continent>/<…>`. The
-    // geoPath disambiguates slugs shared by multiple parks (Paris vs. Anaheim).
+    // Accept the short form (`slug` or `parkSlug/rideSlug`) and the full geo-path form the editor
+    // writes (`/parks/<continent>/<…>`); the geo path tells apart slugs several parks share.
     const { kind, key, geoPath } = parseRefKey(slug);
     return { kind, key, options, geoPath };
   }
@@ -255,26 +252,19 @@ function resolveImageAlign(altSegment: string | undefined, src: string): BlogIma
 }
 
 /**
- * Catch-all whitespace regex used to normalise text before the glossary
- * matcher runs. Combines JS `\s` (which already covers \n, \t, \r, \f, \v,
- * U+00A0 NBSP, U+1680, U+2000-U+200A, U+2028, U+2029, U+202F NARROW NBSP,
- * U+205F, U+3000 and U+FEFF) with the explicitly enumerated zero-width
- * characters that JS `\s` does *not* match (ZWSP U+200B, ZWNJ U+200C, ZWJ
- * U+200D, word-joiner U+2060). Without this the literal pattern
- * "Live Wait Times" never matches text like `live wait times`,
- * `live wait\ntimes` or `live wait​times`.
+ * Whitespace normaliser for the glossary matcher: JS `\s` plus the zero-width characters it does
+ * not match (ZWSP, ZWNJ, ZWJ, word joiner), so "Live Wait Times" matches across a line break or a
+ * zero-width space.
  */
 const WHITESPACE_NORMALIZE_RE = /(?:\s|​|‌|‍|⁠)+/g;
 
 /**
- * Replace glossary-term occurrences in a plain string with
- * `GlossaryInjectTerm` tooltips. Shares the project-wide first-occurrence
- * rule via the `used` Set passed in by BlogContent.
+ * Replace glossary-term occurrences in a plain string with `GlossaryInjectTerm` tooltips. Only the
+ * first occurrence of each term name or alias within this one string is linked.
  */
 function renderGlossaryString(
   text: string,
   terms: GlossaryTerm[],
-  _used: Set<string>,
   locale: Locale,
   segment: string
 ): ReactNode {
@@ -282,20 +272,7 @@ function renderGlossaryString(
   if (!normalized.trim()) return text;
   const segments = parseGlossarySegments(normalized, terms);
   if (segments.every((s) => s.type === 'text')) return text;
-  return segments.map((seg, i) => {
-    if (seg.type === 'text') return <Fragment key={i}>{seg.content}</Fragment>;
-    return (
-      <GlossaryInjectTerm
-        key={`${seg.id}-${i}`}
-        matchedText={seg.matchedText}
-        name={seg.name}
-        slug={seg.slug}
-        shortDefinition={seg.shortDefinition}
-        locale={locale}
-        segment={segment}
-      />
-    );
-  });
+  return <GlossarySegments segments={segments} locale={locale} segment={segment} />;
 }
 
 function parseAttrs(line: string | undefined, body: string): Record<string, string> {
@@ -359,17 +336,20 @@ function hastText(node: unknown): string {
   return (n.children ?? []).map(hastText).join('');
 }
 
+/**
+ * Renders a post's markdown body: GFM, callouts, numbered chapter headings, glossary terms, park,
+ * ride and post links, images, and every widget fence (wait tables, maps, weather, galleries,
+ * embeds). Server Component; resolves the parks and rides it names against the API first.
+ */
 export async function BlogContent({ markdown, locale }: BlogContentProps) {
   const { parkSlugs, attractions, parkGeoPaths, attractionGeoPaths } = extractInlineRefs(markdown);
   const tBlog = await getTranslations({ locale, namespace: 'blog' });
 
   // Pre-fetch glossary terms once so we can highlight them in headings and
-  // paragraphs without making the renderer async. Dedupe is shared across
-  // the whole post via `usedGlossaryTerms` — first occurrence wins, same
-  // behaviour as on the marketing pages.
+  // paragraphs without making the renderer async. Dedupe is per text string,
+  // not per post: every paragraph, heading or cell that mentions a term links it.
   const glossaryTerms = await getGlossaryTerms(locale);
   const glossarySegment = GLOSSARY_SEGMENTS[locale];
-  const usedGlossaryTerms = new Set<string>();
 
   const parkEntries = await Promise.all(
     [...parkSlugs].map(
@@ -396,13 +376,10 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
   // `park-widget slug=…` and `attraction-widget parkSlug=… slug=…`.
   const segments = segmentize(markdown);
 
-  // Chapter numbers for the post's `##` headings, resolved from the markdown
-  // rather than counted while rendering: the body is split into one
-  // <ReactMarkdown> per widget fence, so a render-time counter would restart
-  // at every widget and number the same post 01, 02, 01, 02. Keyed by the
-  // rehype-slug id and by the heading text, because rehype-slug runs per
-  // segment while `extractToc` slugs the whole post — a heading that repeats
-  // across two segments gets a `-1` suffix from one and not the other.
+  // Chapter numbers for the post's `##` headings, resolved from the markdown rather than counted
+  // while rendering: the body is one <ReactMarkdown> per widget fence, so a counter would restart
+  // at every widget. Keyed by the rehype-slug id and by the heading text, because rehype-slug runs
+  // per segment and can suffix a repeated heading differently from `extractToc`.
   const chapterNumbers = new Map<string, string>();
   extractToc(markdown)
     .filter((entry) => entry.depth === 2)
@@ -430,11 +407,9 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       for (const raw of attrs.slugs.split(',')) await addPark(raw);
     }
     if (name === 'ride-waits-widget') {
-      // Either one park (`park=`) or a semicolon-separated list of ride references, each of which
-      // may carry `|Label|Type` after the ref. Semicolons because a ride type routinely holds a
-      // comma.
-      // `slug=` is accepted by the renderer as an alias of `park=`, so it has to be prefetched
-      // too — a fence written that way resolved to nothing at all.
+      // Either one park (`park=`, or its alias `slug=`) or a semicolon-separated list of ride
+      // references, each optionally followed by `|Label|Type`; semicolons because a ride type
+      // often holds a comma.
       const single = attrs.park ?? attrs.slug;
       if (single) {
         await addPark(single);
@@ -460,16 +435,10 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
     }
   }
 
-  // Look up background images for every referenced park / attraction so the
-  // hover-card preview matches the favorites cards visually — and the focal point
-  // with them, or a referenced ride would be top-cropped in a post while the same
-  // card is correctly framed on the park page.
-  //
-  // Both maps are keyed by the reference as the post wrote it, which may be a bare slug or the
-  // long `/parks/<continent>/<country>/<city>/<park>` form. The media database is keyed by the
-  // bare slug alone, so the slug comes off the RESOLVED object rather than off the key — reading
-  // it out of the key gave `getParkBackgroundImage('/parks/europe/…')` and a ride whose park
-  // slug was the empty string, i.e. no photo and no focal point, silently.
+  // Background images and focal points for every referenced park and ride, so the hover preview
+  // matches the cards elsewhere. The maps are keyed by the reference as written (a bare slug or
+  // the long `/parks/…` form), but the media database is keyed by the bare slug, so the slug comes
+  // off the resolved object, not the key.
   const parkBackgroundMap = new Map<string, string | null>();
   const parkFocusMap = new Map<string, string>();
   for (const [ref, park] of parkMap) {
@@ -497,7 +466,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
    */
   const injectGlossary = (node: ReactNode): ReactNode => {
     if (typeof node === 'string') {
-      return renderGlossaryString(node, glossaryTerms, usedGlossaryTerms, locale, glossarySegment);
+      return renderGlossaryString(node, glossaryTerms, locale, glossarySegment);
     }
     if (Array.isArray(node)) {
       return node.map((child, i) => <Fragment key={i}>{injectGlossary(child)}</Fragment>);
@@ -599,21 +568,10 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         );
       }
       const isExternal = href?.startsWith('http://') || href?.startsWith('https://');
-      // A link whose visible text IS its URL — GFM autolinks a bare one, and a
-      // source list is full of them — is a single unbreakable token that runs
-      // for hundreds of characters, so on a phone it pushes the article column
-      // past the viewport and the document gets a horizontal scrollbar. Two
-      // treatments, because the two cases want opposite things:
-      //
-      //   * a URL as its own label carries no meaning past the first line, so
-      //     below `sm` it is cut off with an ellipsis (`truncate` needs a block
-      //     box, hence the inline-block) and the full address stays in `href`
-      //     and `title`;
-      //   * a real label must not lose characters, so it wraps instead —
-      //     `wrap-anywhere` rather than `break-words`, because
-      //     `overflow-wrap: break-word` breaks the token across lines but still
-      //     reports its full width as the paragraph's min-content, which is the
-      //     scrollbar all over again. Nothing changes for text that fits.
+      // A link whose text is its URL is one unbreakable token that pushes the column past a phone's
+      // viewport. Such a label is cut with an ellipsis below `sm` (the full address stays in `href`
+      // and `title`); a real label wraps with `wrap-anywhere`, since `break-words` still reports
+      // the token's full width as min-content.
       const label = String(flat);
       const labelIsUrl =
         isExternal && !!href && (label === href || label === href.replace(/^https?:\/\//, ''));
@@ -650,10 +608,8 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       const dims = getBlogImageDimensions(src);
       return (
         <BlogInlineImage
-          // Content-versioned like every other media URL. An author writes a bare
-          // path — often a build-time crop — and those are exactly the files whose
-          // bytes are rewritten under an unchanged URL when a focal point moves, so
-          // without the token a retargeted crop stays wrong in the CDN for a year.
+          // Content-versioned like every other media URL: an author writes a bare path, often a
+          // build-time crop whose bytes change under the same URL when a focal point moves.
           src={versionedPath(src) ?? src}
           alt={imgAlt}
           width={dims?.width}
@@ -697,12 +653,9 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         (c) => !(typeof c === 'string' && c.trim() === '')
       );
 
-      // Block-producing children that may NOT live inside a <p>: images (our
-      // img renderer emits a <figure>) and `?full` refs (block cards). When
-      // any are present the wrapper must be a <div> — the browser's parser
-      // would otherwise hoist them out of the <p> while parsing, desyncing
-      // the DOM from React's tree and nuking the whole hydrated subtree
-      // (which is exactly how every widget on a post used to vanish).
+      // Block children that may not live inside a <p> (our <figure> images and `?full` cards)
+      // need a <div> wrapper, or the browser's parser hoists them out of the <p>, the DOM desyncs
+      // from React's tree and the hydrated subtree is thrown away.
       const hastChildren =
         (
           node as {
@@ -1014,11 +967,8 @@ function renderWidget(
     // the line-based body. The folder form is the recommended shape since it
     // requires no manual file listing and picks up captions.json overrides.
     const folder = attrs.folder ?? attrs.dir ?? attrs.path;
-    // A hand-listed body goes through `resolveGallery` rather than straight to the
-    // component: it is the same enrichment a frontmatter gallery gets, and it is
-    // what attaches the content version to each path. Without it a fence listing
-    // `…-16x9.jpg` shipped unversioned crops — the exact files whose bytes get
-    // rewritten under an unchanged URL when a focal point is retargeted.
+    // A hand-listed body goes through `resolveGallery`, the enrichment a frontmatter gallery gets,
+    // which also attaches the content version to each path.
     const images = folder
       ? listFolderImages(folder, ctx.locale)
       : resolveGallery(parseGalleryBody(body), ctx.locale);

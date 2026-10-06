@@ -1,22 +1,10 @@
 /*
- * Why these dots carry `will-change`.
- *
- * They animate forever inside a card that carries `backdrop-filter`, and a backdrop filter is
- * re-read whenever its region is dirtied. A runtime audit over the park, calendar, ride and home
- * pages found six such elements — every one of them a live-status dot or its ping ring — sitting
- * inside 50 to 70 blurred elements per page. `opacity` and `transform` are the two properties a
- * compositor can animate without the main thread painting at all, but only once the element has
- * its own layer; `will-change` is what promises that. A 6 px dot costs nothing to promote.
- *
- * NOT `contain: paint`, which is the right tool one file over for the countdowns: containment
- * clips to the box, and `animate-ping` scales a ring beyond its own bounds on purpose.
- *
- * `will-change` did not stop the flicker in the park's "Heute im Park" header, which is why that
- * dot is static now (see `park-today-panel.tsx`). Inside a card that carries `backdrop-filter`,
- * prefer `variant="ping"` with `showPing={false}`: the colour still says "live".
- *
- * Both animations stop for `prefers-reduced-motion`; the ping ring is hidden rather than frozen,
- * because a frozen ring is a second, larger dot.
+ * These dots carry `will-change` because they animate forever inside cards with
+ * `backdrop-filter`: with its own layer the compositor animates `opacity` and `transform` without
+ * repainting the blurred region. Not `contain: paint`, which would clip the ping ring. Inside a
+ * card with `backdrop-filter`, prefer `variant="ping"` with `showPing={false}`. Under
+ * `prefers-reduced-motion` the ping ring is hidden rather than frozen, since a frozen ring is a
+ * second, larger dot.
  */
 
 import { cn } from '@/lib/utils';
@@ -44,11 +32,7 @@ interface LiveDotProps {
   className?: string;
 }
 
-/**
- * Small animated "live" indicator, previously copy-pasted across the live
- * ticker, ML badge, weather nowcast pill and training-status badge. See the
- * `variant` doc for the two shapes.
- */
+/** Small animated "live" indicator in two shapes; see `variant`. */
 export function LiveDot({
   variant = 'ping',
   size = 'h-2 w-2',

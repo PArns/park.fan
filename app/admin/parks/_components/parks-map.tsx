@@ -9,17 +9,8 @@ import { cartoTileUrl } from '@/lib/utils/carto-tile-url';
 import 'leaflet/dist/leaflet.css';
 
 /**
- * The catalogue on a map.
- *
- * Not decoration. Coordinates are synced, occasionally wrong, and wrong in a
- * way no table can show: a park at 0,0 or in the wrong hemisphere reads as a
- * perfectly ordinary row and as an obvious mistake on a map. The same view
- * answers the question a list cannot — "which parks are near this one" — which
- * is how a curation session for a region gets planned.
- *
- * Loaded only when this mode is chosen (the parent imports it dynamically):
- * leaflet plus its CSS is not worth shipping to somebody editing a ride's
- * height.
+ * Synced coordinates are occasionally wrong in a way only a map shows (a park at 0,0). Imported
+ * dynamically by the parent, so leaflet loads only in map mode.
  */
 
 const CURATED_COLOR = 'oklch(0.628 0.137 241.275)';
@@ -37,6 +28,7 @@ function dotIcon(curated: boolean): L.DivIcon {
   });
 }
 
+/** The park list on a map, curated parks in the brand colour, each popup linking to its editor. */
 export default function ParksMap({ parks }: { parks: AdminParkListItem[] }) {
   const router = useRouter();
 

@@ -29,7 +29,6 @@ export async function POST(request: NextRequest) {
 
   const { turnstileToken, ...rest } = (body ?? {}) as Record<string, unknown>;
 
-  // 1) Bot protection.
   const clientIp = getForwardedForHeaders(request)['X-Forwarded-For'];
   const turnstile = await verifyTurnstile(String(turnstileToken ?? ''), {
     expectedAction: TURNSTILE_ACTIONS.contribute,
@@ -42,14 +41,12 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // 2) Validate assignment + consent.
   const parsed = contributionMetaSchema.safeParse(rest);
   if (!parsed.success) {
     return NextResponse.json({ error: 'invalid-meta' }, { status: 422 });
   }
   const { entity, caption, credit } = parsed.data;
 
-  // 3) Mint the ticket.
   const sid = randomUUID();
   const ticket = await signTicket({ sid, entity, caption, credit, maxFiles: MAX_FILES });
 

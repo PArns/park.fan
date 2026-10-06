@@ -55,19 +55,10 @@ const ENTRANCE_MS = 2100;
  * its landmass) navigates to its geo route, and the country chips link to theirs.
  */
 export function HeroWorldPanelClient({ continents }: { continents: WorldPanelContinent[] }) {
-  // Does this panel's entrance still belong to the hero's choreography?
-  //
-  // `.hero-entering` is dropped after HERO_ENTRANCE_MS so late content does not animate in, but
-  // this panel is deliberately held back until load + idle, which lands on either side of that
-  // line depending on the connection. Mount while the class is still there and the contents
-  // snap to `scale(0.965)` 30px down and ease back over 0.85s — a solo entrance a second after
-  // the page looked finished, which reads as a jump. It is a race, so it shows up only
-  // sometimes, and never in a two-snapshot diff: a transform is not a layout shift, so the
-  // browser scores it 0 and only a frame-by-frame recording catches it.
-  //
-  // Worth keeping when it lands inside the choreography, so the test is whether it can still
-  // FINISH inside the window — and it is taken HERE, in the component that is created at the
-  // moment the panel appears, not in the gate, which renders from hydration onwards.
+  // Whether this panel's entrance still belongs to the hero's choreography. The panel waits for
+  // load and idle, which can land on either side of HERO_ENTRANCE_MS, and a solo entrance after the
+  // page looked finished reads as a jump. So it animates only if it can still finish inside the
+  // window, decided here where the panel is created, not in the gate.
   const [animateIn] = useState(() => performance.now() < HERO_ENTRANCE_MS - HERO_ITEM_IN_MS);
   const tGeo = useTranslations('geo');
   const tHome = useTranslations('home');
@@ -77,10 +68,8 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
   const [selectedSlug, setSelectedSlug] = useState('europe');
   const chipsRef = useRef<HTMLDivElement>(null);
   /**
-   * True only for the panel's own arrival. The bubbles pop in when the map first appears, but
-   * NOT when a continent is switched: the selected bubble is a link and the others are buttons,
-   * so switching remounts two of them, and a pop there would fire on exactly the two elements
-   * the visitor is looking at while the chip row below is already animating.
+   * True only for the panel's own arrival: switching continents remounts two bubbles, and a pop
+   * there would fire on the two elements the visitor is looking at.
    */
   const [entering, setEntering] = useState(true);
   useEffect(() => {
@@ -96,15 +85,9 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
   const selectedName = translateGeoSlug(tGeo, 'continents', selected.slug, selected.name);
   const selectedOpen = openCount(selected);
 
-  // GSAP choreographs the continent switch: the chip row is replaced wholesale, and letting
-  // the new set flick in staggered reads as the panel answering the click rather than the
-  // content teleporting. This is an INTERACTION, so its chunk can load while the visitor is
-  // already looking at the map — unlike the hero entrance, which has to own the first frame
-  // and is therefore plain CSS.
-  //
-  // A switch only, never the mount: the chips arrive painted at full opacity, and running the
-  // tween on mount fetched the GSAP chunk for every visitor, then snapped the whole row to
-  // opacity 0 and faded it back — the late solo entrance `animateIn` above exists to prevent.
+  // GSAP animates the continent switch, so the new chips read as the panel answering the click. A
+  // switch only, never the mount: the chips arrive painted, and a tween on mount would fetch the
+  // GSAP chunk for every visitor and fade the row in late.
   const shownSlug = useRef(selectedSlug);
   useEffect(() => {
     if (shownSlug.current === selectedSlug) return;
@@ -159,10 +142,8 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
         animateIn && 'hero-in-stagger'
       )}
     >
-      {/* Header: "Parks in Europe" + live open / total.
-          aria-live: switching continents replaces this heading, the open/total figure and the
-          whole chip row below. Without it a screen-reader user presses a bubble and hears
-          nothing about the panel they just changed. */}
+      {/* `aria-live`: switching continents replaces this heading, the figure and the chip row, and
+          a screen-reader user who presses a bubble should hear about it. */}
       <div
         className="border-border/40 flex items-start justify-between gap-4 border-b px-5 py-4"
         aria-live="polite"
@@ -185,7 +166,6 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
         </p>
       </div>
 
-      {/* World map with one bubble per continent */}
       <div className="bg-muted/20 relative">
         <svg
           viewBox={WORLD_MAP_VIEWBOX}
@@ -194,9 +174,8 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
           aria-hidden="true"
         >
           {WORLD_MAP_CONTINENTS.map((continent) => {
-            // The map draws six continents; the API returns only those that have parks. A
-            // landmass with no data was still styled as clickable and did nothing at all —
-            // it is inert now, and looks it.
+            // The map draws six continents; the API returns only those with parks, and a landmass
+            // with no data is inert and looks it.
             const isInteractive = continentBySlug.has(continent.slug);
             const sweep = SWEEP_ORDER.get(continent.slug) ?? 0;
             return (
@@ -222,13 +201,9 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
           })}
         </svg>
 
-        {/* One control per continent — the keyboard and screen-reader path to everything the
-            landmasses offer, which is why the <svg> itself stays aria-hidden.
-
-            The SELECTED one is a link, the others are buttons, because that is what they
-            actually do: pressing the selected bubble navigates to its parks, pressing another
-            switches the panel. It was one `aria-pressed` button for both, which announced a
-            toggle that never un-toggles and then navigated away instead. */}
+        {/* One control per continent, the keyboard and screen-reader path to everything the
+            landmasses offer, which is why the <svg> stays aria-hidden. The selected one is a link
+            and the others are buttons, because that is what they do: navigate, or switch. */}
         {continents.map((continent) => {
           const anchor = BUBBLE_ANCHORS[continent.slug as WorldMapContinentSlug];
           if (!anchor) return null;
@@ -293,7 +268,6 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
         })}
       </div>
 
-      {/* Country chips of the selected continent */}
       <div ref={chipsRef} className="flex flex-wrap gap-2 px-5 pt-4 pb-2">
         {selected.countries.map((country) => {
           const open =
@@ -327,7 +301,6 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
         })}
       </div>
 
-      {/* All parks of the continent */}
       <div className="px-5 pt-1 pb-4">
         <Link
           href={`/parks/${selected.slug}` as '/parks/europe'}

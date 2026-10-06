@@ -1,16 +1,10 @@
 import { cn } from '@/lib/utils';
 
 /**
- * The hero's pill row — the layout the nearby bubbles AND their skeleton both render into.
- *
- * Its whole job is to have a height that does not depend on its contents, because the two
- * versions never wrap identically: the skeleton cannot know how long "Chimelong Ocean Kingdom"
- * is, so a freely-wrapping row changed height when the real pills replaced it and pushed
- * everything below the hero down (a measured 0.0147 CLS on a throttled phone).
- *
- * Below `sm` that means one scrollable row — all five parks stay reachable by swiping. From
- * `sm` it is exactly two rows tall; five pills across a ~700px column fill them, and anything
- * that would spill into a third is clipped rather than allowed to move the page.
+ * The hero's pill row, the layout both the nearby bubbles and their skeleton render into. Its
+ * height does not depend on its contents, because the two never wrap identically and the hero
+ * must not move: below `sm` one row that scrolls sideways, from `sm` exactly two rows, with
+ * anything past them clipped.
  */
 export function HeroBubbleRow({
   children,

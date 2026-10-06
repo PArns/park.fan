@@ -13,6 +13,10 @@ interface NearbyParksSectionProps {
   className?: string;
 }
 
+/**
+ * Chapter listing up to three other parks within 100 km, on the park and ride pages. Renders a
+ * status-free list that `LiveNearbyParks` overlays with live status; nothing with fewer than two.
+ */
 export async function NearbyParksSection({ parkId, lat, lng, className }: NearbyParksSectionProps) {
   const [t, parks] = await Promise.all([
     getTranslations('nearby'),

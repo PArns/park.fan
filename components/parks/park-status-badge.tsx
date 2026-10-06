@@ -16,6 +16,10 @@ interface ParkStatusBadgeProps {
   className?: string;
 }
 
+/**
+ * Status badge for a park or a ride: operating, down, closed, refurbishment, unknown, or `RETIRED`
+ * for a ride that closed for good. An unrecognised status falls back to the closed style.
+ */
 export function ParkStatusBadge({ status, className }: ParkStatusBadgeProps) {
   const t = useTranslations('parks.status');
 

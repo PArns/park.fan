@@ -1,12 +1,9 @@
 import type { CrowdLevel } from '@/lib/api/types';
 
 /**
- * Single source of truth for mapping the six colored crowd levels onto the
- * project-wide `--crowd-*` palette. Every face of the palette (text, badge,
- * border chip) used to be hand-declared per component, so retuning a shade or
- * adding a level meant editing half a dozen files — pick the variant you need
- * from here instead. Full literal class strings on purpose: Tailwind's scanner
- * must see them (no `text-crowd-${level}` templates).
+ * Single source for mapping the six coloured crowd levels onto the `--crowd-*` palette; pick the
+ * face you need here rather than declaring it per component. Full literal class strings on
+ * purpose: Tailwind's scanner must see them (no `text-crowd-${level}` templates).
  */
 
 /** The six crowd levels that carry a color (i.e. `CrowdLevel` minus `unknown`). */
@@ -28,24 +25,17 @@ export function isColoredCrowdLevel(level: string): level is ColoredCrowdLevel {
 }
 
 /**
- * What each level means as a percentage, for the surfaces that explain the scale.
- *
- * These are the API's own thresholds, not a second definition: `determineCrowdLevel`
- * (backend `src/common/utils/crowd-level.util.ts`) buckets `reading ÷ baseline × 100`
- * into the six levels, and both regimes that feed a badge run through it — a calendar
- * day is its peak against the park's typical-day peak, a live reading is the headliners'
- * current waits summed against their summed P50 baselines. In both, 100 % is a typical
- * reading, which is why one table can caption both surfaces.
- *
- * `min` is absent on `very_low` and `max` on `extreme`: those two ends are open. The union
- * spells that out rather than making both optional, so a caller that handles the open end
- * has the closed one narrowed to a number instead of reaching for a non-null assertion.
+ * What each level means as a percentage, for the surfaces that explain the scale. These are the
+ * API's own thresholds (`determineCrowdLevel`, backend `src/common/utils/crowd-level.util.ts`),
+ * where 100 % is a typical reading for both calendar days and live readings. The union keeps the
+ * open ends (`very_low` has no `min`, `extreme` no `max`) narrowable without a non-null assertion.
  */
 export type CrowdPercentRange =
   | { min?: undefined; max: number }
   | { min: number; max: number }
   | { min: number; max?: undefined };
 
+/** The percentage range behind each coloured crowd level. */
 export const CROWD_LEVEL_PERCENT_RANGE: Record<ColoredCrowdLevel, CrowdPercentRange> = {
   very_low: { max: 60 },
   low: { min: 61, max: 89 },
@@ -56,10 +46,8 @@ export const CROWD_LEVEL_PERCENT_RANGE: Record<ColoredCrowdLevel, CrowdPercentRa
 };
 
 /**
- * Text color per level (inline values, blog annotations, …).
- *
- * `crowd-ink-*`, not `crowd-*`: in the light theme the fills are too light to read as text (3.3 …
- * 3.9:1 on white), and a wait time is text. In the dark theme the two are the same colour.
+ * Text colour per level (inline values, blog annotations, …). `crowd-ink-*`, not `crowd-*`: the
+ * light theme's fills are too light to read as text.
  */
 export const CROWD_TEXT_CLASS: Record<ColoredCrowdLevel, string> = {
   very_low: 'text-crowd-ink-very-low',
@@ -81,13 +69,9 @@ export const CROWD_BADGE_CLASS: Record<ColoredCrowdLevel, string> = {
 };
 
 /**
- * An opaque fill per level with white text, for a wait that has to be read at a glance in
- * daylight: the in-park compass's markers and its wait pills.
- *
- * `badge-crowd-*` is a 60 % fill of the light theme's pale tones under white text, and in the
- * light theme that measured 2.1–3.2 : 1 over the compass face, where 12 px bold needs 4.5; over
- * the dial the 60 % also let the view cone show through the number. These are the dark theme's
- * `--badge-crowd-*` tones (app/globals.css), solid, in both themes: 5.4–7.9 : 1.
+ * An opaque fill per level with white text, for a wait read at a glance in daylight: the in-park
+ * compass's markers and wait pills. `badge-crowd-*` is translucent and fails contrast over the
+ * compass face, so these are the dark theme's `--badge-crowd-*` tones, solid, in both themes.
  */
 export const CROWD_SOLID_CLASS: Record<ColoredCrowdLevel, string> = {
   very_low: 'bg-[oklch(0.42_0.14_192)] text-white',
@@ -109,13 +93,9 @@ export const CROWD_OUTLINE_CLASS: Record<ColoredCrowdLevel, string> = {
 };
 
 /**
- * The crowd-calendar day tile: tinted fill + border, one class per level.
- *
- * The opacity climbs with the level on purpose. A quiet day should recede into the card and a
- * full one should be visible from the other side of the room — at one flat alpha the six tiers
- * differ only in hue, and hue alone is the channel a red-green colour vision deficiency spends
- * first. So `very_low` … `moderate` sit at 8 %, `high` at 10, `very_high` at 14 and `extreme` at
- * 18, which reads as a ramp in weight as well as in colour.
+ * The crowd-calendar day tile: tinted fill + border. The opacity climbs with the level so the
+ * tiers differ in weight as well as hue, since hue alone is the channel a red-green colour vision
+ * deficiency loses first.
  */
 export const CROWD_TILE_CLASS: Record<ColoredCrowdLevel, string> = {
   very_low: 'bg-crowd-very-low/8 border-crowd-very-low/25',
@@ -127,16 +107,9 @@ export const CROWD_TILE_CLASS: Record<ColoredCrowdLevel, string> = {
 };
 
 /**
- * One segment of the calendar legend's crowd scale — the solid colour with text ON it.
- *
- * The six chips butt together into one strip, so this is the only face of the palette that needs
- * a readable foreground over a full-strength `--crowd-*`.
- *
- * The foreground is a fixed near-black in BOTH themes, not `text-background`. The palette is not
- * symmetric: in the dark theme the six sit at L 0.74 … 0.86 and `--background` happens to be
- * near-black, which reads; in the light theme they drop to L 0.55 … 0.62 and `--background`
- * becomes white, which puts white text on a mid amber at about 2.4:1 and fails outright. Black on
- * the light theme's darkest tier (`extreme`, L 0.55) still measures 5.4:1.
+ * One segment of the calendar legend's crowd scale: the solid colour with text on it. The text is
+ * a fixed near-black in both themes, not `text-background`, which turns white in the light theme
+ * and fails contrast on the mid tones.
  */
 export const CROWD_SCALE_CLASS: Record<ColoredCrowdLevel, string> = {
   very_low: 'bg-crowd-very-low text-neutral-950',
@@ -168,9 +141,8 @@ export const CROWD_CHIP_CLASS: Record<ColoredCrowdLevel, string> = {
 };
 
 /**
- * Canonical wait-time (minutes) → crowd tier thresholds, shared by
- * `WaitTimeValue` (the canonical wait-time display) and the inline blog wait
- * badges so a wait is green at 20 min and red past an hour everywhere.
+ * Wait-time (minutes) → crowd tier, shared by `WaitTimeValue` and the inline blog wait badges so a
+ * wait gets the same colour everywhere.
  */
 export function waitTimeCrowdTier(minutes: number): ColoredCrowdLevel {
   if (minutes <= 5) return 'very_low';

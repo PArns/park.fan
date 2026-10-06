@@ -33,17 +33,9 @@ function DistancePlaceholder({
 }
 
 /**
- * The box the resolved badge will occupy, reserved by rendering that badge
- * invisible rather than by guessing a width.
- *
- * A fixed `w-24` was measured at 412px against what actually renders: 104px in
- * French, 112px English, 128px Dutch, 131px German, 149px Italian and 158px
- * Spanish — the reservation was 62px short in the widest locale, and in a
- * `flex-wrap` row being short by any amount flips the line count and moves the
- * whole page. The label is the only thing that varies, so it sizes the box.
- *
- * `sample` uses the widest distance `formatDistance` can return, so a nearby
- * park resolving to "250 m" shrinks inside a box that never moves.
+ * The box the resolved badge will occupy, reserved by rendering that badge invisible rather than
+ * guessing a width: the label's width varies by locale, and in a `flex-wrap` row any shortfall
+ * moves the page. `sample` is the widest distance `formatDistance` can return.
  */
 function DistanceReservation({
   sample,
@@ -92,9 +84,9 @@ export function ParkDistance({
   longitude: number | string | null | undefined;
   size?: 'sm' | 'md';
   /**
-   * Hold the empty box at every width when no position is coming, not only below `sm`. For a row
-   * where something follows the distance on the same line: the park page's location line does
-   * from `lg` up, and dropping the box there moved it 160 px to the left (0.004 CLS at 1280 px).
+   * Hold the empty box at every width when no position is coming, not only below `sm`, for a row
+   * where something follows the distance on the same line (the park page's location line from
+   * `lg`).
    */
   keepGap?: boolean;
   className?: string;
@@ -102,14 +94,9 @@ export function ParkDistance({
   const t = useTranslations('nearby');
   const { meters, pending } = useDistanceTo(latitude, longitude);
   /*
-   * Bis zum Mount immer der Platzhalter.
-   *
-   * Die Entfernung ist ein rein clientseitiger Wert, und `useDistanceTo` kann ihn im ERSTEN
-   * Client-Render bereits haben — aus der gecachten Position. Der Server schrieb dann das
-   * Skelett und der Client an derselben Stelle das fertige Badge, was React mit einem
-   * Hydration-Fehler quittiert und den Teilbaum neu rendert. Die Reservierung ist ohnehin so
-   * gebaut, dass alle drei Zustände dieselbe Box haben — der eine zusätzliche Platzhalter-Render
-   * kostet also keinen Versatz.
+   * Always the placeholder until mount: `useDistanceTo` can have the value in the first client
+   * render from the cached position, which would not match the server. All three states share one
+   * box, so the extra render costs no shift.
    */
   const mounted = useMounted();
 
@@ -117,11 +104,9 @@ export function ParkDistance({
 
   if (!mounted || pending)
     return <DistancePlaceholder sample={sample} size={size} className={className} />;
-  // No position is coming. Both headers put this inside a `flex-wrap` meta row that is exactly
-  // wide enough to wrap around it on a phone, so dropping the element there does not free up a
-  // gap — it un-wraps the row, and the page below moves up a whole line (34px, ~0.106 CLS).
-  // Keep the box, empty and unannounced, for as long as the row is narrow enough to care;
-  // from `sm` up the row has the width to absorb the change without reflowing, so it goes.
+  // No position is coming. On a phone this sits in a `flex-wrap` row that wraps around it, so
+  // dropping it would un-wrap the row and move the page up a line; keep the empty box there. From
+  // `sm` the row absorbs the change.
   if (meters === null)
     return <DistanceGap sample={sample} size={size} keepGap={keepGap} className={className} />;
 
@@ -177,7 +162,7 @@ export function NearestParkDistance({
 }) {
   const t = useTranslations('nearby');
   const { meters, pending } = useNearestDistance(coordinates);
-  // Wie oben: die Entfernung ist clientseitig und kann im ersten Render schon dastehen.
+  // As above: the distance is client-only and can already be there in the first render.
   const mounted = useMounted();
 
   if (!mounted || pending)

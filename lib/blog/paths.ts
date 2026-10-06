@@ -17,6 +17,7 @@ export const NEWS_CATEGORY = 'news';
 /** Locale-relative path of the news overview, which replaces `/blog/category/news`. */
 export const NEWS_INDEX_PATH = '/news';
 
+/** Returns true when a category path is `news` or starts with `news/`. */
 export function isNewsCategory(category: string | null | undefined): boolean {
   return category === NEWS_CATEGORY || !!category?.startsWith(`${NEWS_CATEGORY}/`);
 }

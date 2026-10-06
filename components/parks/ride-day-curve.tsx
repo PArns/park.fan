@@ -25,6 +25,7 @@ function findLastIndex<T>(items: T[], predicate: (item: T) => boolean): number {
   return -1;
 }
 
+/** A highlighted window on the day curve, such as rope drop or the last hour. */
 export interface DayCurveWindow {
   /** Label above the window, e.g. "Guter Start". */
   label: string;
@@ -36,34 +37,23 @@ export interface DayCurveWindow {
   fromHour: number;
   toHour: number;
   /**
-   * Which end of the day this is.
-   *
-   * The two windows answer different questions — "when is a good time to start"
-   * and "what does the end of the day look like" — so they are not drawn as one
-   * repeated mark in one colour.
-   *
-   * Opening takes `--crowd-very-low`, the teal the crowd scale already uses for a
-   * quiet queue. Closing takes `--primary`, which is stable in both themes and
-   * claims no crowd level.
-   *
-   * NOT `--chart-2`/`--chart-3`, which was the first attempt: those two are
-   * shadcn defaults whose light and dark values are unrelated hues, and
-   * `--chart-3` flips from deep blue to AMBER in the dark theme — the colour this
-   * app's crowd scale spends on a busy queue. A quiet evening marked in amber
-   * says the opposite of what it means.
+   * Which end of the day this is. The two windows answer different questions, so they get different
+   * colours: opening takes `--crowd-very-low`, the crowd scale's quiet teal; closing takes
+   * `--primary`, stable in both themes and claiming no crowd level. Not `--chart-3`, which turns
+   * amber, the busy colour, in the dark theme.
    */
   which: 'opening' | 'closing';
 }
 
+/** Props of the ride day curve. */
 export interface RideDayCurveProps {
   /** Ride name, shown as the card's title. */
   title: string;
   /** Line under the title — what the curve is measured against. */
   subtitle?: string;
   /**
-   * Park-local hours the curve has points for, ascending. Comes straight from
-   * `/stats/hourly`, so a park that opens at 11 starts at 11: nothing here
-   * assumes a nine-to-eight day.
+   * Park-local hours the curve has points for, ascending, straight from the payload, so a park that
+   * opens at 11 starts at 11.
    */
   hours: number[];
   /** Median wait per hour. Positional against {@link hours}; `null` is a gap, not a zero. */
@@ -71,13 +61,9 @@ export interface RideDayCurveProps {
   /** Busy-hour wait per hour, same alignment. Draws the upper edge of the band. */
   p90: Array<number | null>;
   /**
-   * Lower edge of the spread band (P25), aligned with {@link hours}.
-   *
-   * Optional, and the fallback is the point: `/stats/hourly` grew this row in
-   * schema v4, so an API still answering v3 sends none. Rather than draw a band
-   * with an invented floor, the fill then runs median-to-busy and the legend
-   * says which of the two it is — a P50–P90 band labelled "P25–P90" would be a
-   * claim about the quiet quarter of days that nothing measured.
+   * Lower edge of the spread band (P25), aligned with {@link hours}. Optional: an older API sends
+   * none, and the fill then runs median-to-busy with a legend that says so, rather than a band with
+   * an invented floor.
    */
   p25?: Array<number | null> | null;
   /**
@@ -86,13 +72,9 @@ export interface RideDayCurveProps {
    */
   today?: Array<number | null> | null;
   /**
-   * What the model said for each hour BEFORE it happened, aligned with
-   * {@link hours}.
-   *
-   * Drawn only where {@link today} has a reading, because that is the only place
-   * it says something `forecast` does not: prediction against outcome, side by
-   * side. Past the last measurement the forecast line already carries the
-   * model's opinion and a second line would just trace it.
+   * What the model said for each hour before it happened, aligned with {@link hours}. Drawn only
+   * where {@link today} has a reading, the one place it adds something: prediction against outcome.
+   * Past the last measurement the forecast line already carries the model's opinion.
    */
   predicted?: Array<number | null> | null;
   /** IANA zone of the park, for the clock in the header. */
@@ -106,13 +88,9 @@ export interface RideDayCurveProps {
    */
   forecast?: Array<number | null> | null;
   /**
-   * The ride's own mean absolute error, in minutes. Draws the forecast tunnel as
-   * `forecast ± forecastError`.
-   *
-   * Constant width on purpose. It is a measured, published figure, and so is the
-   * horizon's own effect: across the horizon, from one day out to sixty, it adds
-   * roughly four minutes to every band, +19 % on a busy queue against +45 % on a
-   * quiet one, so a cone drawn by scaling this figure is wrong at both ends. See
+   * The ride's own mean absolute error, in minutes; the forecast tunnel is
+   * `forecast ± forecastError`. Constant width on purpose: the horizon adds a roughly fixed amount
+   * to every band, so a cone scaled from this figure would be wrong at both ends. See
    * `RideDayCurve.forecastError` in lib/api/types.ts.
    */
   forecastError?: number | null;
@@ -153,35 +131,15 @@ export interface RideDayCurveProps {
 }
 
 /**
- * A ride's day: today against what the ride normally does, with the spread it
- * normally does it in.
+ * A ride's day: today against what the ride normally does, with the spread it normally does it in.
+ * The good windows are drawn on the plot, since the chart answers "when do I walk over there". Pure
+ * SVG from props, no fetch, so it renders on the server and needs no attraction payload.
  *
- * The chart answers a positional question ("when do I walk over there"), so the
- * two good windows are drawn ON the plot rather than listed beside it — a reader
- * comparing a time to a curve should not have to hold a range in their head.
- *
- * Server-compatible: pure SVG, no hooks, no measurement. It takes its data as
- * props rather than fetching, so a ride page that already holds the attraction
- * payload can pass `today` and a marketing surface can render the median alone
- * without buying a 53 KB attraction response for one line.
- *
- * Geometry notes that are load-bearing:
- * - The box is given the viewBox's own ratio (`aspect-[720/200]`) rather than a
- *   fixed height. `preserveAspectRatio` then has nothing to correct: with a
- *   fixed `h-[200px]` the 720×260 viewBox letterboxed to 107 px of drawing
- *   inside a 200 px box on a 360 px phone, and `preserveAspectRatio="none"` is
- *   not the fix either — the curve is read for shape, and a non-uniform scale
- *   makes the same day look flat at one width and dramatic at another. An
- *   aspect ratio is also still deterministic from the width, so it costs no CLS.
- * - Both axes are HTML positioned at the SVG's own coordinates, not `<text>` and
- *   not `justify-between`. In-SVG text scales with the viewBox and rendered at
- *   ~4.5 px on a phone; `justify-between` spaces labels evenly while `x()` places
- *   hours linearly, so every intermediate tick pointed at the wrong column
- *   whenever the tick hours were not equally spaced (a 09–20 day ticks
- *   09/12/15/18/20 — the last gap is two hours, the others three).
- * - Gaps (`null`) break the path instead of interpolating across them. A ride
- *   that reported nothing between 13:00 and 15:00 has no median there, and a
- *   straight line over the hole is an invented measurement.
+ * Load-bearing geometry: the box takes the viewBox's own ratio (`aspect-[720/200]`), because a
+ * fixed height letterboxes on a phone and a non-uniform scale distorts the shape. Both axes are
+ * HTML placed at the SVG's own coordinates, since in-SVG text shrinks with the viewBox and
+ * `justify-between` misplaces unevenly spaced ticks. Gaps (`null`) break the path; a line across
+ * the hole would be an invented measurement.
  */
 export function RideDayCurve({
   title,
@@ -202,14 +160,9 @@ export function RideDayCurve({
   // Every hook sits above the two early returns below: a chart with fewer than
   // two hours, or with nothing to plot, still has to call them in the same order.
   /**
-   * The park's own clock, and what the ride is doing on it.
-   *
-   * Without this the chart is unreadable at a distance: Universal Studios Japan
-   * at 01:26 local draws no measured line at all, and a reader in Cologne has no
-   * way to know the park is asleep rather than the site broken. Three states,
-   * each of which the data actually supports — "closed" is never inferred from
-   * an absent measurement alone, only from the clock being outside the hours the
-   * park is ever open.
+   * The park's own clock, and what the ride is doing on it, so a chart with no measured line reads
+   * as a park asleep rather than a broken site. "Closed" is never inferred from a missing
+   * measurement alone, only from the clock being outside the hours the park is ever open.
    */
   const clock = useMemo(() => {
     if (!timezone) return null;
@@ -261,12 +214,9 @@ export function RideDayCurve({
   const forecastLine = forecast ? buildLinePath(hours, forecast, x, y) : '';
 
   /**
-   * The last measured hour, and the first forecast hour.
-   *
-   * The two series meet but do not overlap, so without a joining segment the
-   * chart shows a one-hour hole exactly at "now" — the most-looked-at point on
-   * it. The stub is drawn as part of the forecast, dashed, because the half of
-   * it that is a claim about the future is the forecast's.
+   * The last measured hour and the first forecast hour. The two series meet without overlapping, so
+   * without a joining stub the chart has a one-hour hole at "now"; the stub is dashed, as part of
+   * the forecast.
    */
   const lastMeasured = today ? findLastIndex(today, (v) => v != null) : -1;
   const firstForecast = forecast ? forecast.findIndex((v) => v != null) : -1;
@@ -294,13 +244,8 @@ export function RideDayCurve({
       : null;
 
   /**
-   * What the chart says, for somebody who cannot see it.
-   *
-   * `role="img"` hides the whole subtree, so without this the figure is a blank
-   * to a screen reader — and the old label was the title plus a possibly-absent
-   * subtitle, which described the card rather than the curve. The peak and the
-   * marked windows are the two things a sighted reader takes away, so they are
-   * what the label says.
+   * What the chart says, for somebody who cannot see it: `role="img"` hides the subtree, so the
+   * label carries the peak and the marked windows, the two things a sighted reader takes away.
    */
   const peak = peakOf(hours, p50);
   const ariaLabel = [
@@ -431,11 +376,9 @@ export function RideDayCurve({
 
       <div
         ref={plotRef}
-        // `ml-11` opens a gutter for the Y labels. They used to sit INSIDE the
-        // plot at its left edge, where every one of them landed on the curve,
-        // the band or the quiet-window box — not one stood free. The pointer
-        // maths reads this element's own box, so moving the plot moves the
-        // hover with it and nothing else has to know.
+        // `ml-11` opens a gutter for the Y labels, which inside the plot all landed on the curve or
+        // a window. The pointer maths reads this element's own box, so the hover moves with the
+        // plot.
         className="relative ml-11"
         onPointerMove={onPointer}
         onPointerLeave={() => setHoverIndex(null)}
@@ -471,9 +414,8 @@ export function RideDayCurve({
               width={Math.max(2, x(w.toHour) - x(w.fromHour))}
               height={VIEW_H - PAD_T - PAD_B}
               rx={10}
-              // A soft field, not a dashed cage: these mark WHERE to look, and
-              // the two heavy dashed boxes in the first version competed with
-              // the curve they were meant to point at.
+              // A soft field, not a dashed box: these mark where to look and must not compete with
+              // the curve.
               fill={
                 w.which === 'opening'
                   ? 'color-mix(in oklab, var(--color-crowd-very-low) 14%, transparent)'

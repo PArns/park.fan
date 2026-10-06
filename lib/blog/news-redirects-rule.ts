@@ -13,13 +13,12 @@ import { NEWS_ONLY_TAGS, NEWS_POST_TARGETS } from './news-redirects';
  *   the same hop instead of taking the post page's canonical-slug redirect afterwards.
  * - `/<locale>/blog/category/news` → `/<locale>/news`.
  * - `/<locale>/blog/tag/<slug>` of a tag only news carries → `/<locale>/news`. The tag archives
- *   count articles only, so such an archive has nothing left to list; it was in the sitemap while
- *   `/blog` listed news, and a 404 there throws away what it earned.
+ *   count articles only, so such an archive would be empty, and a 404 would throw away what the
+ *   URL earned.
  *
- * Which slugs are news is not decided here: `scripts/generate-blog-manifest.mjs` writes that list
- * (`./news-redirects.ts`) from the same frontmatter the post page reads. Everything else returns
- * `null` and falls through to the route unchanged. The post and category pages keep their own
- * `permanentRedirect` behind this as a net, so the rule is applied there and anticipated here.
+ * Which slugs are news comes from `./news-redirects.ts`, written by
+ * `scripts/generate-blog-manifest.mjs`. Everything else returns `null`. The post and category
+ * pages keep their own `permanentRedirect` behind this as a net.
  */
 export function newsRedirect(pathname: string): string | null {
   const parts = pathname.split('/');

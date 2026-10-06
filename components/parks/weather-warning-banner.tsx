@@ -18,6 +18,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import type { WeatherNowcast, WeatherWarning } from '@/lib/api/types';
@@ -132,6 +133,10 @@ const SOURCE_LABEL: Record<string, string> = {
   meteogate: 'MeteoAlarm',
 };
 
+/**
+ * Official weather warnings for a park (DWD, MeteoAlarm), severest first, one expandable card
+ * each. Polls the shared nowcast query, or shows the `warnings` it is given; client only.
+ */
 export function WeatherWarningBanner({
   continent = '',
   country = '',
@@ -311,7 +316,7 @@ function formatValidity(
     if (!iso) return null;
     const d = new Date(iso);
     if (Number.isNaN(d.getTime())) return null;
-    return new Intl.DateTimeFormat(locale, {
+    return getDateTimeFormat(locale, {
       weekday: 'short',
       hour: '2-digit',
       minute: '2-digit',

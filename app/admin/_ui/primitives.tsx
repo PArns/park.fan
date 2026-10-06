@@ -3,34 +3,17 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { AlertTriangle, Loader2, type LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { CROWD_CHIP_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 
 /**
- * The admin's shared surfaces.
- *
- * There were three of these before — `_lib/ui.tsx`, `media/_components/panel-ui.tsx`
- * and `blog-editor/_components/form-fields.tsx` each defined their own `Section`
- * and their own field row, with different padding, different heading sizes and
- * different ideas about where a hint goes. That is what the reuse rule in the
- * conventions exists to prevent, and the fix is one file, not a fourth.
+ * The admin's shared surfaces: page layout, panels, small parts and the loading, error and empty
+ * states. A page adds to this file rather than defining its own.
  */
 
-// ─── layout ───────────────────────────────────────────────────────────────────
-
 /**
- * One page's rhythm, in one place.
- *
- * Six pages carried their own `mx-auto max-w-Nxl space-y-4 p-4` with three
- * different widths, and the operations pages carried nothing at all — so
- * /admin/system and /admin/queues ran flush to the window edge while the
- * dashboard sat in a centred column. That is most of what made the admin feel
- * like two products stitched together.
- *
- * Three widths, named for what they hold rather than picked per page:
- * `wide` for boards and tables, the default for entity editors, `narrow` for
- * a single column of form. The two full-height list pages (parks, history)
- * own their own layout and stay out of this deliberately — they size
- * themselves against the viewport so the table scrolls inside the page rather
- * than the page scrolling.
+ * One admin page's column and spacing, in three widths named for what they hold: `wide` for
+ * boards and tables, the default for entity editors, `narrow` for a single form column. The
+ * full-height list pages (parks, history) size themselves against the viewport and stay out.
  */
 export function AdminPage({
   width = 'default',
@@ -57,14 +40,8 @@ export function AdminPage({
 }
 
 /**
- * A surface, and the reason it looks like one.
- *
- * A `bg-card` panel on a `bg-background` page is a two-percent difference in
- * lightness, and at that distance a border is the only thing saying "card" —
- * which is why the admin read as one flat sheet with hairlines drawn on it.
- * Three cheap things fix that and cost no layout: a soft drop shadow so the
- * panel sits *above* the page, an inset ring so the edge has thickness, and a
- * one-pixel highlight along the top where the layout's light comes from.
+ * A card surface. `bg-card` on `bg-background` differs by two percent in lightness, so a drop
+ * shadow, an inset ring and a top highlight are what make it read as a card.
  */
 export function Panel({ className, ...props }: ComponentProps<'section'>) {
   return (
@@ -79,6 +56,7 @@ export function Panel({ className, ...props }: ComponentProps<'section'>) {
   );
 }
 
+/** Header row of a `Panel`: optional icon, a title with a muted hint, an action on the right. */
 export function PanelHeader({
   icon: Icon,
   title,
@@ -108,8 +86,68 @@ export function PanelHeader({
   );
 }
 
+/** Padded content area of a `Panel`. */
 export function PanelBody({ className, ...props }: ComponentProps<'div'>) {
   return <div className={cn('p-4', className)} {...props} />;
+}
+
+/**
+ * A bordered box inside a panel or a dialog: one machine, one model, one group of controls, under
+ * an optional title row and hint.
+ */
+export function Tile({
+  icon: Icon,
+  title,
+  hint,
+  action,
+  className,
+  children,
+}: {
+  icon?: LucideIcon;
+  title?: ReactNode;
+  hint?: ReactNode;
+  action?: ReactNode;
+  className?: string;
+  children?: ReactNode;
+}) {
+  return (
+    <section
+      className={cn('border-border/60 bg-muted/20 space-y-2.5 rounded-lg border p-3', className)}
+    >
+      {(title || action) && (
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="flex min-w-0 items-center gap-2 text-[11px] font-semibold tracking-wider uppercase">
+            {Icon && <Icon className="text-muted-foreground h-3.5 w-3.5 shrink-0" />}
+            {title}
+          </h3>
+          {action}
+        </div>
+      )}
+      {hint && <p className="text-muted-foreground text-[11px]">{hint}</p>}
+      {children}
+    </section>
+  );
+}
+
+/** A `Tile` holding one large tabular figure under its label, with an optional line beneath. */
+export function StatTile({
+  label,
+  value,
+  sub,
+}: {
+  label: string;
+  value: ReactNode;
+  sub?: ReactNode;
+}) {
+  return (
+    <Tile className="space-y-1">
+      <p className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
+        {label}
+      </p>
+      <span className="block text-3xl font-bold tabular-nums">{value}</span>
+      {sub && <p className="text-muted-foreground text-xs">{sub}</p>}
+    </Tile>
+  );
 }
 
 /** A horizontal strip of controls above a list: search, filters, view switch. */
@@ -124,8 +162,6 @@ export function Toolbar({ className, ...props }: ComponentProps<'div'>) {
     />
   );
 }
-
-// ─── small parts ──────────────────────────────────────────────────────────────
 
 /** A keyboard hint. Rendered everywhere a shortcut exists, so shortcuts are
  *  discoverable by looking rather than by reading documentation. */
@@ -142,40 +178,48 @@ export function Meta({
   label,
   value,
   className,
+  valueClassName,
 }: {
   label: ReactNode;
   value: ReactNode;
   className?: string;
+  /** Colours the value when the figure is a verdict (a hit rate, an error). */
+  valueClassName?: string;
 }) {
   return (
     <div className={cn('min-w-0', className)}>
       <p className="text-muted-foreground text-[11px] tracking-wide uppercase">{label}</p>
-      <p className="truncate text-sm font-medium tabular-nums">{value}</p>
+      <p className={cn('truncate text-sm font-medium tabular-nums', valueClassName)}>{value}</p>
     </div>
   );
 }
 
+/** The five colours a `Chip` comes in, by meaning rather than by hue. */
+export type ChipTone = 'muted' | 'primary' | 'success' | 'warning' | 'danger';
+
+const CHIP_TONES: Record<ChipTone, string> = {
+  muted: 'border-border/60 bg-muted/50 text-muted-foreground',
+  primary: 'border-primary/30 bg-primary/10 text-primary',
+  success: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
+  warning: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
+  danger: 'border-destructive/40 bg-destructive/10 text-destructive',
+};
+
+/** Small rounded label in one of the five `ChipTone`s, the admin's only pill. */
 export function Chip({
   children,
   tone = 'muted',
   className,
 }: {
   children: ReactNode;
-  tone?: 'muted' | 'primary' | 'success' | 'warning' | 'danger';
+  tone?: ChipTone;
   className?: string;
 }) {
-  const tones: Record<string, string> = {
-    muted: 'border-border/60 bg-muted/50 text-muted-foreground',
-    primary: 'border-primary/30 bg-primary/10 text-primary',
-    success: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
-    warning: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
-    danger: 'border-destructive/40 bg-destructive/10 text-destructive',
-  };
   return (
     <span
       className={cn(
         'inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-medium whitespace-nowrap',
-        tones[tone],
+        CHIP_TONES[tone],
         className
       )}
     >
@@ -184,8 +228,54 @@ export function Chip({
   );
 }
 
-// ─── states ───────────────────────────────────────────────────────────────────
+const SEVERITY_TONES: Record<string, ChipTone> = {
+  low: 'primary',
+  medium: 'warning',
+  high: 'danger',
+  critical: 'danger',
+};
 
+/** The chip tone for an alert or anomaly severity (`low` to `critical`); muted for anything else. */
+export function severityTone(severity: string): ChipTone {
+  return SEVERITY_TONES[severity.toLowerCase()] ?? 'muted';
+}
+
+/**
+ * The chip tone for a service status word: success for healthy, ok, online and the like, warning
+ * for degraded, pending or a warning, danger for anything else.
+ */
+export function statusTone(status: string): ChipTone {
+  const lower = status?.toLowerCase() ?? '';
+  if (['warning', 'degraded', 'pending'].some((k) => lower.includes(k))) return 'warning';
+  if (
+    ['healthy', 'connected', 'operational', 'active', 'good', 'online', 'ok'].some((k) =>
+      lower.includes(k)
+    )
+  ) {
+    return 'success';
+  }
+  return 'danger';
+}
+
+/**
+ * A `Chip` class in the public site's crowd palette, so `moderate` reads as the green "Normal" it is
+ * there; undefined (a muted chip) for a level without a colour.
+ */
+export function crowdChipClass(level: string): string | undefined {
+  const key = level?.toLowerCase() ?? '';
+  return isColoredCrowdLevel(key) ? CROWD_CHIP_CLASS[key] : undefined;
+}
+
+/** A small round dot, green when `ok` and red otherwise. */
+export function StatusDot({ ok }: { ok: boolean }) {
+  return (
+    <span
+      className={cn('inline-block h-2 w-2 rounded-full', ok ? 'bg-emerald-500' : 'bg-red-500')}
+    />
+  );
+}
+
+/** Centred spinner with a label (`Lädt…` by default), for a panel whose data is loading. */
 export function LoadingState({ label = 'Lädt…' }: { label?: string }) {
   return (
     <div className="text-muted-foreground flex items-center justify-center gap-2 py-12 text-sm">
@@ -194,6 +284,7 @@ export function LoadingState({ label = 'Lädt…' }: { label?: string }) {
   );
 }
 
+/** Red error box showing a message, with an `Erneut` retry button when `onRetry` is given. */
 export function ErrorState({ message, onRetry }: { message: string; onRetry?: () => void }) {
   return (
     <div className="border-destructive/30 bg-destructive/10 text-destructive m-4 flex items-start gap-2 rounded-lg border px-3 py-2.5 text-sm">
@@ -212,6 +303,7 @@ export function ErrorState({ message, onRetry }: { message: string; onRetry?: ()
   );
 }
 
+/** Centred empty-panel message: optional icon, title, description and an action below. */
 export function EmptyState({
   icon: Icon,
   title,
@@ -242,12 +334,8 @@ export function EmptyState({
 }
 
 /**
- * Rows shaped like the rows they replace.
- *
- * The height matters: this admin loads lists over a network on every
- * navigation, and a spinner that collapses to nothing pushes the toolbar and
- * the pagination around every time. Same reason the public site reserves the
- * height of a streamed section.
+ * Skeleton rows shaped like the rows they replace, so a loading list does not push the toolbar
+ * and the pagination around.
  */
 export function SkeletonRows({ rows = 6, className }: { rows?: number; className?: string }) {
   return (

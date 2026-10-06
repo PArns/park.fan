@@ -10,36 +10,13 @@ import { useFavoriteCounts } from '@/lib/hooks/use-favorite-counts';
 import { useMenuTrigger } from '@/lib/hooks/use-menu-trigger';
 
 /**
- * The favorites entry in the header's nav row, opening the same full-width band the others do.
- *
- * Why it is here at all: starring something is the only piece of state this site keeps about a
- * visitor, and until this existed the only place it was ever shown was a band two screens down
- * the homepage. From a park page — the page where somebody presses the star — there was no way
- * back to what they had starred.
- *
- * It sits in the nav row rather than in the actions cluster, and it opens on hover with the same
- * hysteresis as "Parks entdecken" and "Mehr" (`useMenuTrigger`), because a row where one entry
- * behaves differently from its neighbours is a row you have to learn twice.
- *
- * **It is not a link, and that is deliberate.** "Parks entdecken" goes somewhere whether or not
- * its panel opens — for a keyboard, for a touch screen, for the crawler. Favorites are per-visitor
- * state living in a cookie: the homepage's favorites band is a page, but it answers differently for
- * every reader, so it is not an address this can promise. The trigger is a button, and the panel is
- * the whole feature.
- *
- * It is one of two buttons in the row now, for a different reason from the other: "Mehr" is a
- * collection with no page of its own, while this one has a page that is nobody's in particular
- * (`NavMenu`, rule 2).
- *
- * The star is rendered even at zero favorites: the nav row is laid out on the server, the cookie
- * is readable only after mount, and an entry that materialises after hydration shifts every
- * sibling in the row. It is also the only advertisement the feature gets — the empty panel says
- * what the star does.
- *
- * @param floating True while the bar floats over a hero photo — the ink, and nothing else. See
- *   `NavMenu` for the prop it replaced and the header for the contrast arithmetic behind it.
+ * The favorites entry in the header's nav row, opening the same full-width band as the others, on
+ * hover with the same hysteresis (`useMenuTrigger`). A button, not a link: favorites are
+ * per-visitor state, so there is no address it can promise (`NavMenu` rule 2). The star renders
+ * even at zero, because the cookie is readable only after mount and an entry that appears after
+ * hydration would shift the row. `floating` sets the ink and nothing else. Memoised for the same
+ * reason as `ParksMenuPanel`.
  */
-/** Memoised for the same reason as `ParksMenuPanel`: its one prop is a boolean. */
 export const FavoritesMenu = memo(function FavoritesMenu({ floating }: { floating?: boolean }) {
   const t = useTranslations('favorites');
   const panelId = useId();
@@ -54,40 +31,23 @@ export const FavoritesMenu = memo(function FavoritesMenu({ floating }: { floatin
         aria-controls={panelId}
         aria-label={t('title')}
         onClick={toggle}
-        /* `gap-2.5` und nicht `gap-1`: die Zählblase ragt rechts aus dem Stern heraus und lag mit
-           dem alten Abstand auf dem Chevron. Der Abstand ist konstant, ob null oder acht
-           Favoriten — die Blase ist absolut positioniert und misst nichts aus. */
+        /* `gap-2.5`: the count bubble sticks out to the right of the star and would sit on the
+           chevron. It is absolutely positioned, so the gap is the same at any count. */
         className={`flex cursor-pointer items-center gap-2.5 text-sm font-medium transition-colors duration-200 ${headerNavInk(floating)}`}
       >
-        {/* Der Zähler sitzt AUF dem Stern, nicht daneben. Als Geschwister war er eine zweite
-            Marke in der Zeile — und er hätte den Eintrag breiter gemacht, sobald jemand etwas
-            markiert, was jeden Nachbarn in der Navigationszeile verschoben hätte. Absolut
-            positioniert ist die Breite des Auslösers konstant, ob null oder acht Favoriten. */}
+        {/* The count sits on the star, not beside it, so the trigger's width stays constant and
+            no neighbour in the row moves when somebody stars something. */}
         <span className="relative flex items-center">
-          {/* Gold, nicht Primärfarbe. Derselbe Stern steht auf jeder Park- und Bahnseite und in
-              jeder Karte — dort ist er `fill-amber-400 text-amber-500` (`FavoriteStar`). Zwei
-              Farben für dieselbe Geste heißt, dass der Stern hier oben etwas anderes zu sein
-              scheint als der, den man gerade gedrückt hat; und in Primärblau stand er direkt
-              neben der blauen Zählblase, die ihn ohnehin überlappt. */}
+          {/* Gold, not primary: the same star as `FavoriteStar` on every park and ride page, and
+              in blue it would merge with the blue count bubble. */}
           <Star
             className={`h-4 w-4 ${counts.total > 0 ? 'fill-amber-400 text-amber-500' : ''}`}
             aria-hidden="true"
           />
           {counts.total > 0 && (
-            /* Der Ring ist nicht Zierrat: die Blase liegt AUF dem Stern, und ohne eine
-               Trennkante laufen die gefüllte Sternspitze und der Blasenrand ineinander — genau
-               die Stelle, an der beide zusammen wie ein einziger unlesbarer Fleck aussehen.
-               `ring-background` ist die Farbe des Balkens darunter (`bg-background/80`), also
-               schneidet der Ring die Blase aus dem Stern heraus statt eine zweite Marke
-               danebenzusetzen. Auf einer Hero-Seite, wo dieser Eintrag seit PAR-170 auch oben
-               sichtbar ist, liegt darunter kein Material, sondern der Scrim — `background/85`,
-               also derselbe Ton fünf Prozentpunkte schwächer. Der Ring ist dort einen Hauch
-               heller als sein Untergrund und bleibt damit das, was er sein soll.
-
-               Sie sitzt in der oberen rechten ECKE, nicht mittig auf dem Stern, und ist so klein
-               wie zwei Ziffern erlauben: mittig und einen Tick größer deckte sie bei 13
-               Favoriten dreizehn der sechzehn Sternpixel ab — vom Stern blieb ein goldener
-               Stummel unten links, und das Ding, das man auseinanderhalten soll, war weg. */
+            /* The ring cuts the bubble out of the star (`ring-background` is the bar's colour), or
+               the filled star tip and the bubble run into one blot. The bubble sits in the top
+               right corner and is as small as two digits allow, so the star stays visible. */
             <span className="bg-primary text-primary-foreground ring-background absolute -top-2 -right-2.5 min-w-[14px] rounded-full px-[3px] text-center text-[9px] leading-[14px] font-semibold tabular-nums ring-2">
               {counts.total}
             </span>

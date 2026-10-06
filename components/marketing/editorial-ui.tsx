@@ -22,20 +22,12 @@ import { ParkPlannerLink } from '@/components/parks/park-planner-link';
 // Used by every hub page so they read as one design system
 // (docs/product/landing-pages.md).
 
-// ── Landing-page head ────────────────────────────────────────────────────────
-
 /**
- * What the section after a `flowInto` hero must carry, so it overlaps the lower
- * part of the photo on a phone and sits normally from `sm` up.
- *
- * It pairs with the hero's own mobile bottom padding (`pb-48`, 192px) and the two
- * numbers are an invariant, not a coincidence: **the padding must exceed the pull.**
- * That is what makes the overlap safe in every language at every width without
- * anyone measuring a headline. The hero is `max(78vh, its content + padding)` tall
- * and the pull is measured from its bottom edge, so a long headline grows the hero
- * and carries the pulled-up section down with it — 192 − 176 = 16px of clearance,
- * always. Tuned by hand it was not: at 360px the German tagline ran 10px _past_ the
- * first card while French had 117px to spare.
+ * What the section after a `flowInto` hero must carry, so it overlaps the lower part of the photo
+ * on a phone and sits normally from `sm` up. It pairs with the hero's mobile `pb-48`, and the
+ * padding must exceed the pull: the hero grows with its headline and carries the pulled-up section
+ * down with it, so the clearance is the same in every language. See
+ * docs/rules/a-blog-card-is-a-row-on-phones.md.
  */
 export const HERO_FLOW_INTO_PULL = '-mt-44 sm:mt-0';
 
@@ -51,7 +43,7 @@ interface LandingHeroShared {
   kicker: string;
   title: string;
   tagline?: React.ReactNode;
-  /** Override the h1 classes. The default is the size of the kind (concept §3); no caller needs it today. */
+  /** Override the h1 classes; the default is the size of the kind (concept §3). */
   titleClassName?: string;
   /**
    * A second column from `lg` up, hidden below it — the guide's `WaitSign`. Below `lg` it would
@@ -71,16 +63,9 @@ type LandingHeroProps =
       stats?: Array<{ value: string; label: string }>;
       scrollLabel: string;
       /**
-       * Let the page's own content flow into the hero below `sm`.
-       *
-       * `min-h-[78vh]` + `items-end` is 658px on a phone with the headline pinned to
-       * the bottom of it, so a listing page spends its whole first screen on one
-       * picture and a title. With this set the headline moves to the TOP on a phone
-       * and the page pulls its first section up over the lower half of the photo —
-       * the image keeps every pixel of its height, the empty part of it just stops
-       * being empty. The caller owns the pull (a negative margin) because only it
-       * knows what comes next; the hero's part is the alignment, the tint and the
-       * scroll cue.
+       * Let the page's own content flow into the hero below `sm`: the headline moves to the top
+       * and the page pulls its first section up over the lower half of the photo, instead of a
+       * whole first screen of picture and title. The caller owns the pull (`HERO_FLOW_INTO_PULL`).
        */
       flowInto?: boolean;
     })
@@ -104,18 +89,11 @@ const TITLE_CLASS = {
 } as const;
 
 /**
- * The head of every hub and tool page — `LandingHero` in docs/product/landing-pages.md.
- *
- * One implementation for both kinds, so the kicker, the type and the left edge cannot drift
- * between them: the hub draws it over a full-bleed photo, `variant="compact"` draws the same
- * block on the page background. The guide's own `GuideHero` was folded into this one; its
- * `WaitSign` is the `aside`.
- *
- * Geometry under the 48 px header: the hub runs UNDER it (`-mt-12`, one of the four places that
- * height is written down, see docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md)
- * and clears it with `pt-32`. The compact head has no picture to slide under the bar, so it stays
- * in flow below the sticky header and carries no `-mt-12`: its kicker starts 32 px (48 from `sm`)
- * below the bar's bottom edge, the same `pt-8 sm:pt-12` the trip planner's photo-less head used.
+ * The head of every hub and tool page (`LandingHero` in docs/product/landing-pages.md), one
+ * implementation so kicker, type and left edge cannot drift between them: the hub over a
+ * full-bleed photo, `variant="compact"` on the page background. The hub runs under the 48 px
+ * header (`-mt-12`, see docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md)
+ * and clears it with `pt-32`; the compact head stays in flow below it.
  */
 export function LandingHero(props: LandingHeroProps) {
   const { kicker, title, tagline, titleClassName, aside, action } = props;
@@ -201,15 +179,9 @@ export function LandingHero(props: LandingHeroProps) {
         flowInto ? 'items-start sm:items-end' : 'items-end'
       )}
     >
-      {/* `sizes="100vw"` is right and stays — this photo really does span the viewport, so a
-          DPR-3 phone asking for w=1200 is asking for what it will draw. The lever is the
-          QUALITY. It is the LCP element on all five full-bleed heroes, it carries two gradient
-          tints and a headline over it, and nothing in it is read for detail. Measured on the
-          Europa-Park background (the source is ~1200 px wide, so every larger width returns the
-          same file): q75 is 45,921 B and q60 is 30,607 B at w=1200, 33,345 → 22,406 at w=828.
-          15 KB off the largest paint a phone waits for, for a difference nobody can see through
-          the tint. `60` is in `images.qualities` (next.config.ts) — a value that is not would be
-          rejected at request time. */}
+      {/* `sizes="100vw"` is right: this photo spans the viewport. The lever is the quality: it is
+          the LCP element under two tints and a headline, and nothing in it is read for detail, so
+          q60 saves bytes nobody can see. `60` must be in `images.qualities` (next.config.ts). */}
       <Image
         src={imageSrc}
         alt={imageAlt}
@@ -220,14 +192,9 @@ export function LandingHero(props: LandingHeroProps) {
         className="object-cover motion-safe:scale-105"
         style={{ objectPosition: objectPositionForSrc(imageSrc, '50% 50%') }}
       />
-      {/* Title/tagline sit directly on the photo (no panel). Readability comes from
-          a theme-aware tint that fades into the page background — a dark tint in
-          dark mode, a light tint in light mode — so the image never gets a dark
-          overlay in light mode and never fades dark→white.
-
-          One set of stops for every hub. The guide carried stronger ones of its own
-          (`via-background/80`, `to-background/25`, `from-background/70`) for its stats
-          row; every hub has that row, so the guide takes the shared values. */}
+      {/* Title and tagline sit directly on the photo. Readability comes from a theme-aware tint
+          that fades into the page background, so light mode never gets a dark overlay. One set of
+          stops for every hub. */}
       <div
         aria-hidden
         className="from-background via-background/70 to-background/20 pointer-events-none absolute inset-0 bg-gradient-to-t"
@@ -236,11 +203,8 @@ export function LandingHero(props: LandingHeroProps) {
         aria-hidden
         className="from-background/40 pointer-events-none absolute inset-0 bg-gradient-to-r to-transparent"
       />
-      {/* The tint above fades UP from the bottom, because the headline used to sit
-          there. Moved to the top on a phone it would sit on the one part of the
-          photo that is barely tinted at all (`to-background/20`), so `flowInto`
-          adds the mirror image of that fade — phones only, and only over the top
-          third, so the middle of the picture stays a picture. */}
+      {/* The tint above fades up from the bottom; with `flowInto` the headline sits at the top on
+          a phone, so this adds the mirror fade over the top third only. */}
       {flowInto && (
         <div
           aria-hidden
@@ -270,8 +234,6 @@ export function LandingHero(props: LandingHeroProps) {
   );
 }
 
-// ── Next step ────────────────────────────────────────────────────────────────
-
 /** One place a landing page sends its reader on to. */
 export interface LandingDestination {
   href: string;
@@ -290,18 +252,10 @@ export interface LandingDestination {
 }
 
 /**
- * The closing "next step" of a landing page — `LandingNextSteps` in
- * docs/product/landing-pages.md §2.
- *
- * One to three destinations; the first is the page's primary action and the only primary
- * button, the rest are outline buttons. It replaced four components that each drew this
- * differently: the guide's `ClosingBand`, the best-time hub's `FancastCta` card and the two
- * `NextStep` copies on the park audience pages.
- *
- * `surface` is where it stands, not what it is. `band` is the full-width tinted band of the hub
- * pages. `chapter` is a park audience page, which sits on the park's photo backdrop and opens
- * every chapter with a frosted `ChapterHeading` over a `GlassCard` tile, so the next step opens
- * the same way as the chapters above it.
+ * The closing "next step" of a landing page (`LandingNextSteps` in docs/product/landing-pages.md
+ * §2): one to three destinations, the first the page's only primary button. `surface` is where it
+ * stands: `band` is the hub pages' tinted band, `chapter` a park audience page on the park's photo
+ * backdrop, opening like the chapters above it.
  */
 export function LandingNextSteps({
   kicker,
@@ -395,7 +349,10 @@ export function LandingNextSteps({
   );
 }
 
-// ── Numbered section shell (Almanac-style "01 / 02 / …") ─────────────────────
+/**
+ * Numbered chapter of an editorial page: a section with a scroll anchor, a large `ChapterHeading`
+ * (index, icon, kicker, title) and the content below it.
+ */
 export function SectionShell({
   id,
   index,
@@ -430,14 +387,15 @@ export function SectionShell({
   );
 }
 
-// ── Text primitives ──────────────────────────────────────────────────────────
-// Running text runs the full width of its section — the same edges as the
-// headings, rules, figures and card grids around it. A narrower measure left a
-// ragged column with a dead strip beside every paragraph.
+/**
+ * Lead paragraph of an editorial page. Running text runs the full width of its section, the same
+ * edges as the headings and grids around it.
+ */
 export function Lead({ children }: { children: React.ReactNode }) {
   return <p className="text-foreground/80 text-xl leading-relaxed font-medium">{children}</p>;
 }
 
+/** Body paragraph of an editorial page, in the muted text colour. */
 export function P({ children }: { children: React.ReactNode }) {
   return <p className="text-muted-foreground leading-relaxed">{children}</p>;
 }
@@ -452,12 +410,8 @@ export function PG({ children }: { children: string }) {
 }
 
 /**
- * An inline link inside editorial prose.
- *
- * The site sets no global `a` style, so a bare `<Link>` in a `<P>` inherits the
- * muted body colour and is invisible as a link — which is what every inline
- * cross-reference on these pages looked like. Kept here rather than repeated
- * per content file so the six translations of a page cannot drift apart on it.
+ * An inline link inside editorial prose. The site sets no global `a` style, so a bare `<Link>` in
+ * a `<P>` would inherit the muted body colour and not read as a link.
  */
 export function A({
   href,
@@ -483,6 +437,7 @@ export function A({
   );
 }
 
+/** Tinted callout box with a shield icon, setting one statement apart from the running text. */
 export function Highlight({ children }: { children: React.ReactNode }) {
   return (
     <Reveal>
@@ -494,11 +449,15 @@ export function Highlight({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ── Ingredient / feature cards ───────────────────────────────────────────────
+/** Responsive grid (one, two, then three columns by page width) for `IngredientCard`s. */
 export function IngredientGrid({ children }: { children: React.ReactNode }) {
   return <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">{children}</div>;
 }
 
+/**
+ * Feature card on an editorial page: an icon tile, a title and a short text, revealed on scroll
+ * with an optional delay.
+ */
 export function IngredientCard({
   icon: Icon,
   title,
@@ -525,13 +484,16 @@ export function IngredientCard({
   );
 }
 
-// ── Crowd-level spectrum: gradient bar + coloured cards ───────────────────────
 // The site's crowd palette (`--crowd-*`) in scale order, so it follows the theme and any retuning
-// of the tokens. It was six fixed hex values from an older palette.
+// of the tokens.
 const CROWD_SPECTRUM = `linear-gradient(90deg,${CROWD_LEVEL_ORDER.map(
   (level) => `var(--crowd-${level.replace('_', '-')})`
 ).join(',')})`;
 
+/**
+ * The crowd-level scale as a gradient bar in the site's crowd colours, followed by one card per
+ * level with its `CrowdLevelBadge` and an explanation.
+ */
 export function CrowdSpectrum({
   items,
 }: {
@@ -560,7 +522,10 @@ export function CrowdSpectrum({
   );
 }
 
-// ── Alternating image/text row for editorial examples ────────────────────────
+/**
+ * Image beside text on an editorial page: a 4:3 photo and a kicker, title, paragraph and optional
+ * badge, side by side from 768 px of page width; `reverse` puts the photo on the right.
+ */
 export function SplitFigure({
   src,
   alt,
@@ -580,20 +545,9 @@ export function SplitFigure({
 }) {
   return (
     <Reveal>
-      {/* All three of these are one decision and have to switch together: the second
-          column, the gutter that only exists once there is one, and the swap that puts
-          the picture on the right. They ask `@container/page` (app/[locale]/layout.tsx)
-          because what decides whether a picture and a paragraph fit side by side is the
-          room this row has, and with the trip planner open the window is no longer that
-          — a 2000 px window with a 900 px panel laid a 1100 px page out for 2000.
-
-          The image `sizes` below cannot follow: a `sizes` condition has no container
-          form. So with the panel open it can now under-serve — page 600 draws one
-          full-width picture while the hint, reading a 1400 px window, still asks for the
-          two-column 500 px — which is a slightly soft image, not a broken row. Left as
-          it is because the same hint already under-serves without any panel (at 1536 px
-          the column is ~750 px), so that is a pre-existing number to correct on its own
-          terms rather than under this change. */}
+      {/* The second column, its gutter and the swap are one decision and ask `@container/page`,
+          since the trip planner can leave a wide window a narrow page. `sizes` has no container
+          form, so with the panel open the image can be slightly soft, never a broken row. */}
       <div className="grid items-center gap-6 @min-[768px]/page:grid-cols-2 @min-[768px]/page:gap-10">
         <div
           className={cn(
@@ -625,46 +579,9 @@ export function SplitFigure({
   );
 }
 
-// ── Standalone captioned figure ──────────────────────────────────────────────
-export function Figure({
-  src,
-  alt,
-  caption,
-  priority = false,
-}: {
-  src: string;
-  alt: string;
-  caption?: React.ReactNode;
-  priority?: boolean;
-}) {
-  return (
-    <Reveal>
-      <figure className="space-y-2">
-        <div className="bg-muted relative aspect-[16/9] w-full overflow-hidden rounded-2xl border shadow-md">
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            sizes="(max-width: 768px) 100vw, 800px"
-            className="object-cover"
-            style={{ objectPosition: objectPositionForSrc(src, '50% 50%') }}
-            priority={priority}
-          />
-        </div>
-        {caption && (
-          <figcaption className="text-muted-foreground text-center text-sm italic">
-            {caption}
-          </figcaption>
-        )}
-      </figure>
-    </Reveal>
-  );
-}
-
-// ── Icon touchpoint cards ────────────────────────────────────────────────────
 /**
- * `title` is a node, not a string, so a card can carry a glossary link on the term it is named
- * after — the same thing {@link SectionHeading} does on the park pages. `body` was already one.
+ * Grid of icon cards for an editorial page. `title` is a node, so a card can carry a glossary link
+ * on the term it is named after.
  */
 export function TouchpointGrid({
   items,
@@ -690,20 +607,10 @@ export function TouchpointGrid({
   );
 }
 
-// ── FAQ: accordion + FAQPage structured data ─────────────────────────────────
 /**
- * The editorial pages' FAQ — the same rows as the park and ride pages, plus its own `FAQPage`.
- *
- * The list itself is {@link FaqAccordion}, which every FAQ on the site draws. It used to be a
- * third treatment: a chevron rotating 90° the other way, no hover, no rule under the question and
- * its own padding, so the same object looked different depending on which page a reader had
- * arrived from. No icons here, because these arrays carry none and an invented one per question
- * would be decoration with nothing behind it.
- *
- * The structured data stays where it is, emitted from the same array it renders, so the markup
- * cannot drift from the page. The rows are not wrapped in a `ChapterPanel`: these sit inside
- * `SectionShell` on a page with no photo backdrop, where the chapter's box is the section band
- * itself.
+ * The editorial pages' FAQ: the shared {@link FaqAccordion} rows plus its own `FAQPage`, emitted
+ * from the same array it renders, so the markup cannot drift from the page. Not wrapped in a
+ * `ChapterPanel`: on these photo-less pages the section band is the chapter's box.
  */
 export function FaqList({ items }: { items: ReadonlyArray<{ question: string; answer: string }> }) {
   return (

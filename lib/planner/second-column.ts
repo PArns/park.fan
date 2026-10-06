@@ -3,74 +3,34 @@
 import { PAGE_MIN_PX, PANEL_WIDTH_MIN } from './panel-width';
 
 /**
- * The SECOND day column, when the panel is wide enough to hold one.
+ * The second day column, when the panel is wide enough to hold one. The first column is always the
+ * plan's active day, so this holds only the other; one nullable field cannot disagree with it.
  *
- * A column is one (park, date) pair. The first is always the plan's active one
- * — `activeParkSlug` / `activeDate` in the store — so this holds the other, and
- * "two columns" is exactly "the active day plus this". A list would have to be
- * reconciled against the active pair on every write; a single nullable field
- * cannot disagree with it.
- *
- * **Two, and the number is measured rather than chosen.** Measured off the
- * rendered panel, canvas being the block area right of the hour gutter: a
- * default 448 px panel gives one column 395 px of it, and at the existing
- * `PANEL_WIDTH_MAX` of 900 each of TWO columns gets 397 — so at the top of the
- * range two columns are two whole planners rather than two compromises. A third
- * would need the hour gutter to be shared, and the gutter carries the weather
- * rail, the showtime chips and the now pill, all three of which are per (park,
- * date): a shared one costs the second park its weather and its showtimes.
- *
- * **It is NOT part of `PlannerState`.** `trip-sync.ts` casts the whole plan onto
- * the wire (`payloadOf`), so a field added there ships to `PUT /api/trips`
- * unasked — and whether somebody has a second column open is a property of this
- * browser rather than of their day at Phantasialand. Same reasoning, and the
- * same shape, as `panel-width.ts` and `shows-visible.ts`.
- *
- * Which is also why it is stored at all rather than held in component state: the
- * panel unmounts whenever it closes, and an arrangement that vanished every time
- * somebody looked at the page behind it would not be an arrangement.
+ * Two columns at most: at `PANEL_WIDTH_MAX` each gets about the canvas a default panel has, and a
+ * third would need a shared gutter, which would cost a park its weather and showtimes. Stored
+ * outside `PlannerState`, which `trip-sync.ts` sends to the server whole, because an open column is
+ * a property of this browser; stored at all because the panel unmounts on close.
  */
 
 const KEY = 'parkfan_planner_column2';
 
 /**
- * The panel a second column needs before it is worth drawing.
- *
- * Two columns of `PANEL_WIDTH_MIN` plus the divider — the same floor a single
- * column has, applied twice, so a second column is never narrower than a first
- * is allowed to be. Below it the switch is not offered and an already-open
- * second column is not drawn; it is remembered, so widening the panel brings it
- * back rather than making somebody arrange it again.
+ * The panel a second column needs: two columns of `PANEL_WIDTH_MIN` plus the divider. Below it an
+ * open second column is not drawn but remembered, so widening the panel brings it back.
  */
 export const TWO_COLUMN_MIN_WIDTH = PANEL_WIDTH_MIN * 2 + 1;
 
 /**
- * The WINDOW a two-column panel needs — which is a different question from the
- * one above, and conflating them hid the whole feature.
- *
- * The switch used to be gated on the panel's own width, so at the default 448 px
- * it was not drawn at all: the only way to learn that the planner has two
- * columns was to drag the edge past 681 px on the off chance. Offered on the
- * window instead, the switch is what widens the panel — see the handler in
- * `planner-flyout.tsx`.
- *
- * Derived from both floors rather than typed, because `fitToViewport` caps the
- * panel at exactly `innerWidth - PAGE_MIN_PX`: below this the panel CANNOT reach
- * {@link TWO_COLUMN_MIN_WIDTH}, so a switch promising two columns would be
- * undone by the cap in the same frame. 681 + 360 = 1041 px today, and it moves
- * on its own if either floor does.
+ * The window a two-column panel needs, which is what the switch is offered on (the switch widens
+ * the panel). Derived from both floors, because `fitToViewport` caps the panel at
+ * `innerWidth - PAGE_MIN_PX`, so below this a promise of two columns would be undone at once.
  */
 export const TWO_COLUMN_MIN_VIEWPORT = TWO_COLUMN_MIN_WIDTH + PAGE_MIN_PX;
 
-/**
- * The same threshold as a media query, so `useMediaQuery` gets a module-level
- * string. The hook memoizes `subscribe`/`getSnapshot` on the query, and a
- * template literal built in a render body would be a fresh string each time —
- * equal by value, so React keeps the listener, but there is no reason to make
- * that guarantee depend on `Object.is` over strings.
- */
+/** The same threshold as a media query, a module-level string for `useMediaQuery`. */
 export const TWO_COLUMN_VIEWPORT_QUERY = `(min-width: ${TWO_COLUMN_MIN_VIEWPORT}px)`;
 
+/** One (park, date) pair shown as a column. */
 export interface PlannerColumn {
   parkSlug: string;
   date: string;
@@ -88,14 +48,13 @@ function load(): PlannerColumn | null {
     if (raw) {
       const parsed: unknown = JSON.parse(raw);
       const value = parsed as Record<string, unknown>;
-      // Read defensively: this is storage, so it is an input from another build
-      // of this app and from anything else that can write to the origin.
+      // Read defensively: storage is input from other builds and anything else on the origin.
       if (typeof value?.parkSlug === 'string' && typeof value?.date === 'string') {
         column = { parkSlug: value.parkSlug, date: value.date };
       }
     }
   } catch {
-    // Private mode, disabled storage, or a value that is not JSON. One column.
+    // Private mode, disabled storage, or not JSON: one column.
     column = null;
   }
   return column;
@@ -107,12 +66,12 @@ function write(next: PlannerColumn | null): void {
     if (next) window.localStorage.setItem(KEY, JSON.stringify(next));
     else window.localStorage.removeItem(KEY);
   } catch {
-    // The arrangement holds for this session and is not remembered. Nothing
-    // else about the panel depends on it.
+    // The arrangement holds for this session and is not remembered.
   }
   for (const listener of listeners) listener();
 }
 
+/** The second column as an external store. */
 export const plannerSecondColumn = {
   subscribe(listener: () => void): () => void {
     listeners.add(listener);
@@ -139,12 +98,8 @@ export const plannerSecondColumn = {
 };
 
 /**
- * How many columns the panel can hold at this width.
- *
- * Read from the LIVE width rather than the stored one, because the panel is
- * capped against the window (`fitToViewport`) and the stored number can be
- * larger than what is on screen — a plan arranged on a desktop, opened on a
- * laptop.
+ * How many columns the panel can hold at this width: the live width, since the stored one can be
+ * larger than what the window allows.
  */
 export function maxColumnsFor(widthPx: number): 1 | 2 {
   return widthPx >= TWO_COLUMN_MIN_WIDTH ? 2 : 1;

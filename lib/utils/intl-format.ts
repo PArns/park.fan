@@ -1,31 +1,15 @@
 /**
- * Cached `Intl` formatter factories.
- *
- * Constructing an `Intl.DateTimeFormat` is one of the most expensive things a render can do —
- * it resolves locale data and builds an internal pattern, on the order of tens of microseconds
- * each, far more than the `format()` call it precedes. Several hot paths built a fresh one per
- * item:
- *
- * - `WaitTimeSparklineCard` formats 4 axis ticks per card. A big park mounts ~100 of them, and
- *   they all re-render together on the shared minute clock — ~400 formatter constructions every
- *   single minute.
- * - `DailyWaitTimeChartClient` built one per hourly-forecast entry and per best-visit slot.
- * - `DailyWaitTimeChart` built one per 15-minute slot label (~40 per chart).
- * - The nowcast timeline, hourly weather chart, queue badges and typical-waits table did the
- *   same per label.
- *
- * The set of distinct (locale, options) pairs the app uses is tiny and fixed, so caching them in
- * a module-level Map turns all of that into a map lookup. The cache is unbounded by design —
- * every key comes from a literal options object in the codebase, so it cannot grow with data.
- *
- * Use these instead of `new Intl.DateTimeFormat(...)` / `date.toLocaleTimeString(locale, opts)`
- * anywhere a formatter would be built more than once.
+ * Cached `Intl` formatter factories. Constructing a formatter costs far more than the `format()`
+ * that follows, and hot paths (sparkline axes on every card, re-rendered each minute) built one
+ * per item. The distinct (locale, options) pairs are few and come from literals in the code, so an
+ * unbounded module-level Map is safe. Use these instead of `new Intl.DateTimeFormat(...)` or
+ * `toLocaleTimeString(locale, opts)`. See docs/rules/a-render-redoes-no-work.md.
  */
 
 const dateTimeFormatters = new Map<string, Intl.DateTimeFormat>();
 const numberFormatters = new Map<string, Intl.NumberFormat>();
 
-/** Stable cache key — options key order must not produce distinct entries. */
+/** Stable cache key, so options key order does not produce distinct entries. */
 function cacheKey(locale: string | string[] | undefined, options: object | undefined): string {
   const loc = Array.isArray(locale) ? locale.join(',') : (locale ?? '');
   if (!options) return `${loc}|`;
@@ -91,6 +75,22 @@ export function getRelativeTimeFormat(
   return formatter;
 }
 
+const listFormatters = new Map<string, Intl.ListFormat>();
+
+/** Cached {@link Intl.ListFormat}. Same arguments → same instance. */
+export function getListFormat(
+  locale?: string | string[],
+  options?: Intl.ListFormatOptions
+): Intl.ListFormat {
+  const key = cacheKey(locale, options);
+  let formatter = listFormatters.get(key);
+  if (!formatter) {
+    formatter = new Intl.ListFormat(locale, options);
+    listFormatters.set(key, formatter);
+  }
+  return formatter;
+}
+
 /** Cached equivalent of `new Date(ms).toLocaleTimeString(locale, options)`. */
 export function formatTime(
   value: number | Date,
@@ -101,12 +101,9 @@ export function formatTime(
 }
 
 /**
- * The weekday name for a day index, 0 = Sunday … 6 = Saturday — the convention of the API's
- * `DayOfWeekStat.dayOfWeek` and of `Date#getUTCDay`.
- *
- * Anchored in UTC on both ends: 2023-01-01 was a Sunday, and a UTC midnight formatted in the
- * runtime's own zone is the day before for anyone west of Greenwich. Several copies of this built
- * that date and formatted it without `timeZone`, which only held because the servers run on UTC.
+ * The weekday name for a day index, 0 = Sunday … 6 = Saturday, as the API's
+ * `DayOfWeekStat.dayOfWeek` and `Date#getUTCDay` count. Anchored in UTC on both ends: a UTC
+ * midnight formatted in the runtime's zone is the day before anywhere west of Greenwich.
  */
 export function weekdayName(
   dayOfWeek: number,
@@ -119,15 +116,10 @@ export function weekdayName(
 }
 
 /**
- * Today's hours as short as the locale allows: „09:00–18:00" in German, „9 AM–6 PM" in English.
- *
- * For the homepage hero's hours tile, which is half a phone wide. Written the site's usual way
- * (`hour: '2-digit'`, `minute: '2-digit'`) the English range is „09:00 AM – 06:00 PM", about 130 px.
- * A 12-hour clock drops a `:00` it does not need; a 24-hour one keeps both digits, because „9–18"
- * reads as a date range as easily as a time.
- *
- * Not `formatRange`: two times that fall on different days in the park's zone (a park closing at
- * 01:00) come back from it with both dates written out.
+ * Today's hours as short as the locale allows: „09:00–18:00" in German, „9 AM–6 PM" in English,
+ * for the homepage hero's half-width hours tile. A 12-hour clock drops a `:00` it does not need; a
+ * 24-hour one keeps both digits, since „9–18" reads like a date range. Not `formatRange`, which
+ * writes out both dates when a park closes after midnight.
  */
 export function formatHoursRange(
   openingIso: string,

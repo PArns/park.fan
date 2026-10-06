@@ -13,22 +13,10 @@ import { SITE_URL } from '@/i18n/config';
 import type { SearchResultItem } from '@/lib/api/types';
 
 /**
- * What the three tools in `tool-descriptors.ts` actually do.
- *
- * They read the public API — the one at api.park.fan that needs no key — through the same
- * functions the site's own pages use, so a tool can never be looking at data the page is not.
- * That matters most where the data lies: a park that publishes no wait times comes back from
- * the API looking exactly like a park shut for the night, and the only thing that tells them
- * apart is the curated `liveWaitTimes` flag, read here through `noLiveWaitTimesReason` like
- * everywhere else in the app.
- *
- * Read-only, all three. Nothing here writes, and nothing reaches anything under `/admin`: the
- * administrative API authenticates a person with a password and a TOTP code, and a tool server
- * is the last place that credential should be reachable from.
- *
- * Each tool returns plain JSON. The MCP route serializes it into a `text` content block (the
- * lowest common denominator every client understands) and hands the same object back as
- * `structuredContent` for the clients that read it.
+ * What the three tools in `tool-descriptors.ts` do. They read the public API through the same
+ * functions the pages use, so a park with no wait-time source goes through
+ * `noLiveWaitTimesReason` here too instead of reading as a park shut for the night. All three are
+ * read-only, and nothing here reaches `/admin`.
  */
 
 export type McpTool = ToolDescriptor & {

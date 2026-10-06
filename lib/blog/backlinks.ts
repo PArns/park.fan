@@ -12,49 +12,21 @@ import type { BlogFrontmatter, BlogListItem } from './types';
 import { defaultLocale, type Locale } from '@/i18n/config';
 
 /**
- * Reverse index: park slug → the posts about that park, and `parkSlug/rideSlug`
- * → the posts about that ride.
+ * Reverse index: park slug → the posts about that park, `parkSlug/rideSlug` → the posts about
+ * that ride, term id → the posts that explain it. A post lands on a page when its body references
+ * it (a ride counts for its park) or its frontmatter names it in `relatedParks` /
+ * `relatedAttractions`; `parkLinks` / `rideLinks` override both. See
+ * docs/rules/parkride-page-and-blog-link.md.
  *
- * The blog already links *into* the catalog (`ref:europa-park`,
- * `ref:phantasialand/taron`, spotlight cards, widgets). This module builds the
- * other direction so a park or ride page can surface the articles that mention
- * it — without authors having to maintain a second list by hand.
- *
- * A post lands on a page when either
- *   1. its body references that park/ride — the `parkRefs` / `rideRefs` the
- *      manifest generator extracted at build time from the `ref:`/`park:`/
- *      `attraction:` links and the widget fences (a ride reference also counts
- *      for its parent park), or
- *   2. its frontmatter names it in `relatedParks` / `relatedAttractions`, or
- *   3. its frontmatter names it in `parkLinks` / `rideLinks` (see below).
- *
- * Frontmatter control — `parkLinks` for park pages, `rideLinks` for ride pages,
- * independent of each other (a guide can be right for the park page and far too
- * broad for twelve ride pages):
- *   - omitted / `true` → automatic (rules 1 + 2). This is what a post like the
- *     Halloween round-up wants: it references ten parks and shows up on all ten.
- *   - `false` → never surfaced on those pages (the post still renders its own
- *     references as usual).
- *   - `[slug, …]` → exactly these, ignoring what the body happens to mention.
- *     Entries accept the bare form (`europa-park`, `europa-park/voltron-nevera`)
- *     or the full path form (`/parks/europe/france/paris/disneyland-park`),
- *     which pins the entry for slugs that exist more than once. `rideLinks`
- *     additionally takes `parkSlug/*` — every ride of that park the article
- *     links — so a park guide keeps its own rides without listing twelve of
- *     them, while a comparison table's foreign rides stay out.
- *
- * Nothing here reads a post body: park and ride pages are the highest-
- * cardinality routes on the site, and the refs baked into the (frontmatter-
- * sized) manifest keep the ~900 KB of markdown out of their bundles entirely.
+ * Nothing here reads a post body: the refs are baked into the manifest, so park and ride pages,
+ * the highest-cardinality routes, ship none of the markdown.
  */
 
 interface Mentioned {
   translationKey: string;
   /**
-   * `continent/country/city` paths the references pinned this entry to. Empty
-   * means "any park with this slug" — bare-slug references carry no geo, and
-   * park slugs are unique except for a handful (`disneyland-park` in Paris and
-   * Anaheim), which is exactly what the full-path form is for.
+   * `continent/country/city` paths the references pinned this entry to; empty means any park
+   * with this slug. Only a handful of slugs repeat (`disneyland-park` in Paris and Anaheim).
    */
   geoPaths: Set<string>;
   /** Relevance within one page: explicit config first, then topical signals. */
@@ -83,9 +55,8 @@ interface Index {
 }
 
 /**
- * Module-level memo rather than React `cache()`: the source is the generated
- * manifest, i.e. static for the lifetime of the deployment, so there is nothing
- * request-scoped to isolate and every render reuses the same index.
+ * Module-level memo rather than React `cache()`: the source is the generated manifest, static for
+ * the lifetime of the deployment.
  */
 let INDEX: Index | null = null;
 
@@ -136,14 +107,9 @@ function addMention(
 }
 
 /**
- * Collect what ONE post points at, across all of its translations.
- *
- * The configuration is deliberately resolved per post, not per locale: a
- * `parkLinks`/`rideLinks` entry in any translation governs the post everywhere,
- * so a translator who rewrites a paragraph (dropping a `ref:` on the way) can't
- * quietly change which pages link the article — and `false` can't be undone by
- * forgetting it in one of six files. Automatic detection, in turn, unions every
- * translation's references for the same reason.
+ * Collects what one post points at, across all of its translations. Resolved per post, not per
+ * locale, so a translator dropping a `ref:` cannot change which pages link the article, and a
+ * `false` in any one file holds everywhere.
  */
 function collectMentions(
   entries: ManifestPostMeta[],
@@ -163,10 +129,8 @@ function collectMentions(
   if (configured.length > 0) {
     for (const value of configured) {
       const raw = String(value).trim();
-      // `rideLinks: [toverland/*]` — every ride of that park the article links,
-      // so a park guide doesn't have to repeat its own twelve rides by hand.
-      // The full `/parks/…/<park>/*` form resolves to the same park slug (the
-      // generator accepts both, so both have to work here).
+      // `rideLinks: [toverland/*]`: every ride of that park the article links. The full
+      // `/parks/…/<park>/*` form resolves to the same park slug, since the generator accepts both.
       if (kind === 'ride' && raw.endsWith('/*')) {
         const base = raw.slice(0, -2);
         const parkSlug = base.startsWith('/parks/')
@@ -243,10 +207,8 @@ function buildIndex(): Index {
     return new Map([...bySlug].map(([slug, posts]) => [slug, [...posts.values()]]));
   };
 
-  // Glossary terms take the simple path, and deliberately so. There is no geo to disambiguate
-  // (a term id is unique site-wide), and no `glossaryLinks` frontmatter to honour — the only
-  // signal is that an author embedded the term's widget, which every post does equally or not at
-  // all. With nothing to rank by, the score stays 0 and `resolveMentions` falls back to date.
+  // Glossary terms take the simple path: a term id is unique site-wide and there is nothing to
+  // rank by, so the score stays 0 and `resolveMentions` sorts by date.
   const buildGlossary = (): Map<string, Mentioned[]> => {
     const byTerm = new Map<string, Map<string, Mentioned>>();
     for (const [translationKey, entries] of byPost) {
@@ -282,8 +244,8 @@ function resolveRanked(
   const visible = new Map(listPosts(locale).map((post) => [post.translationKey, post]));
 
   const ranked = mentions
-    // A reference that pinned a full geo path only counts for that park; without
-    // one (or without a geo path on the page) the bare slug decides, as before.
+    // A reference that pinned a full geo path only counts for that park; without one (or without
+    // a geo path on the page) the bare slug decides.
     .filter((mention) => {
       if (mention.geoPaths.size === 0 || !geoPath) return true;
       return mention.geoPaths.has(geoPath);
@@ -340,25 +302,16 @@ function entriesOfPost(translationKey: string): ManifestPostMeta[] {
 }
 
 /**
- * The most `parkLinks` a guide can carry and still be ONE park's primer. The park guides list one
- * or two (Toverland's names Efteling for the comparison, Europa-Park's its Traumatica event); the
- * round-ups that do list parks list six or more (the Germany ranking seven, Halloween in the USA
- * six), so they can be offered on each of those park pages without becoming any one park's guide.
+ * The most `parkLinks` a guide can carry and still be one park's primer: the park guides list one
+ * or two, the round-ups six or more.
  */
 export const MAX_PRIMER_PARK_LINKS = 3;
 
 /**
- * The park a visit guide is the primer for: the FIRST entry of its `parkLinks`, or `null`.
- *
- * Only configuration decides. The round-up guides (Halloween, winter) name a dozen parks in their
- * tags and none in `parkLinks`, so every automatic signal would make them the "first visit guide"
- * of each one. A guide that lists a second park (Toverland's names Efteling for the comparison)
- * is the primer for the first only; the second still lists it among its posts.
- *
- * A round-up that does list its parks in `parkLinks` (more than {@link MAX_PRIMER_PARK_LINKS}) is
- * nobody's primer either. The Germany ranking lists Europa-Park first because it ranks first, and
- * from the day it shipped the Europa-Park page opened with the ranking instead of the Europa-Park
- * guide (SEO run, 2026-10-03; `pnpm test:park-guide` caught it).
+ * The park a visit guide is the primer for: the first entry of its `parkLinks`, or `null`. Only
+ * configuration decides, because the round-ups tag a dozen parks and would become each one's
+ * guide. A round-up listing more than {@link MAX_PRIMER_PARK_LINKS} parks is nobody's primer.
+ * `pnpm test:park-guide`.
  */
 function guidePrimaryPark(translationKey: string): ManifestParkRef | null {
   for (const entry of entriesOfPost(translationKey)) {
@@ -394,18 +347,9 @@ export function getGuideForPark(
 }
 
 /**
- * The one park a news post is about, for its label and the park filter on `/news`.
- *
- * A news item belongs to one park, and every news post so far names it in `parkLinks`. So the
- * first configured entry wins, in the order the author wrote them — the Disneyland Paris note
- * lists `disneyland-park` before `disney-adventure-world`, and the first is the resort's name
- * readers look for. Without configuration the best-scored park the post mentions stands in, the
- * same score the park pages rank by. Resolved per post across all translations, like the index.
- *
- * "First" is the English translation's order, then the other locales alphabetically. The
- * translations used to be read in manifest order, so a post whose German `parkLinks` listed the
- * same parks the other way round than the English could change park with the order the generator
- * happened to write the files in.
+ * The one park a news post is about, for its label and the park filter on `/news`: the first
+ * `parkLinks` entry in the author's order (English first, then the other locales alphabetically,
+ * so the answer does not depend on file order), else the best-scored park the post mentions.
  */
 export function getNewsParkRef(translationKey: string): ManifestParkRef | null {
   const entries = entriesOfPost(translationKey);
@@ -440,16 +384,8 @@ export function getPostsForRide(
 }
 
 /**
- * Posts to link from a glossary term page, newest first.
- *
- * The counterpart to the widget a post embeds to explain a term — and the direction that was
- * missing: rides ↔ glossary and blog ↔ parks/rides were both already bidirectional, this one
- * only ran outward. Every future terminology post now earns its backlink without anyone
- * maintaining a list, retroactively included.
- *
- * Locale-scoped through `resolveMentions`, so a term page never links a post the reader cannot
- * read. Terms nobody has written about return `[]` — which is most of them, and the caller is
- * expected to render nothing rather than an empty shell.
+ * Posts to link from a glossary term page, newest first, in the reader's locale. Most terms
+ * return `[]`, and the caller renders nothing for them.
  */
 export function getPostsForGlossaryTerm(
   locale: Locale,

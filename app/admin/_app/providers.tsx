@@ -13,13 +13,8 @@ import { AdminShell } from './admin-shell';
 import { MustChangePassword } from './must-change-password';
 
 /**
- * Everything the admin needs before it can render anything.
- *
- * The `[locale]` tree has its own QueryClientProvider and the admin is
- * deliberately outside it — it is not localized and must not pull in the routed
- * messages machinery — so it mounts its own. Without one, every `useQuery` in
- * here throws "No QueryClient set", which is the kind of failure that only
- * shows up on the first page that uses it.
+ * Everything the admin needs before it renders, including its own QueryClientProvider: the admin
+ * sits outside the `[locale]` tree that has one.
  */
 export function AdminProviders({ children }: { children: ReactNode }) {
   const [client] = useState(
@@ -64,26 +59,14 @@ function SessionGate({ children }: { children: ReactNode }) {
     );
   }
 
-  // A refetch failure is not a logout. React Query keeps `data` and still flips
-  // the status to error, so this used to send an editor with unsaved work to
-  // the login screen over a five-second API hiccup. Only a real 401 does that;
-  // an outage keeps the shell standing on the identity it already has, and the
-  // next successful poll clears it.
-  //
-  // "Only a real 401" has to include the first load, where there is no `data`
-  // to stand on. A network error is not an AdminApiError, so it used to land
-  // here as a logout and put the login form in front of somebody whose session
-  // was fine — where every credential they typed would fail for the same
-  // reason. Unreachable is its own answer, below.
+  // A refetch failure is not a logout: only a real 401 with no identity to stand on shows the
+  // login screen. An outage keeps the shell on the identity it has, and an unreachable backend on
+  // the first load gets its own answer below.
   const unauthorized = session.error instanceof AdminApiError && session.error.isUnauthorized;
   if (session.isError && !session.data && unauthorized) return <LoginScreen />;
 
-  // The 503 `/api/admin/session` answers when the backend cannot be reached at
-  // all. It exists precisely so an outage is not read as a logout — but with
-  // no branch for it, the gate fell through to the spinner below and stayed
-  // there: `retry: false`, so nothing re-asked except a window-focus event,
-  // and the operator watched "Sitzung wird geprüft…" indefinitely with no way
-  // to trigger another attempt.
+  // The backend is unreachable (the session route's 503): say so and offer a retry, since the
+  // query does not retry by itself.
   if (session.isError && !session.data) {
     return (
       <div className="flex min-h-[100dvh] flex-col items-center justify-center gap-4 p-6 text-center">

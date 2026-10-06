@@ -1,39 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import type { DiscoveryCityResponse, LiveParkFields } from '@/lib/api/types';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
-
 /**
- * Guardrail for a public route that fans out to the backend: refuse silly region lists.
- *
- * The real upper bound is the featured strip — six parks, so at most six distinct regions, and
- * every other caller asks for one. Double that, because exceeding it costs the page its whole
- * live overlay (the batch 400s and every card next to the offending region loses its badge),
- * which is a bad trade for a limit whose only job is to stop an attacker asking for a hundred.
+ * Guardrail for a public route that fans out to the backend. The featured strip needs at most six
+ * regions; this is double, because exceeding it costs the page its whole live overlay.
  */
 const MAX_REGIONS = 12;
 const REGION_RE = /^[a-z0-9-]+\/[a-z0-9-]+$/;
 
 /**
- * Live park status for one or more regions, in ONE call and in the projection the cards read.
- *
- * The card overlay (`useLiveParksByRegion`) needs nine fields per park — status, crowd, average
- * wait, the open/total counts, timezone and today's/next schedule. It used to get them from
- * `/api/discovery/<continent>/<country>`, which answers with the region's full park objects; the
- * featured-parks strip spans three countries, so six cards cost three requests and 16.7 KB of
- * which 7.2 KB is fields nothing on the page reads (descriptions, coordinates, images the proxy
- * had just resolved, per-city nesting).
- *
- * Folding the regions into one request and returning the projection instead answers the same six
- * cards in one request and 9.5 KB (1.2 KB br) — and unlike the per-region route this response is
- * identical for every visitor, so the CDN window actually collapses the polls.
- *
- * `?regions=europe/germany,europe/france` — order-insensitive (the client sorts, so one cache
- * entry serves every ordering). Response: `{ "<parkId>": LiveParkFields }` across all regions,
- * flattened; ids are globally unique so the caller just looks its park up.
+ * Live park status for one or more regions in one call, in the projection the cards read
+ * (`useLiveParksByRegion`). The answer is identical for every visitor, so the CDN window collapses
+ * the polls. `?regions=europe/germany,europe/france` is order-insensitive (the client sorts); the
+ * response maps each park id to its `LiveParkFields`.
  */
 export async function GET(request: NextRequest) {
   const raw = request.nextUrl.searchParams.get('regions') ?? '';
@@ -58,12 +40,11 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  // Fan out in parallel: the regions are independent and this runs next to the backend, so the
-  // request costs one round-trip, not one per region like the client-side version it replaces.
+  // In parallel: the regions are independent, so the request costs one round trip.
   const responses = await Promise.all(
     regions.map(async (region) => {
       try {
-        const res = await fetch(`${API_BASE}/v1/discovery/continents/${region}`, {
+        const res = await fetch(`${getApiBaseUrl()}/v1/discovery/continents/${region}`, {
           // Always the backend's latest: this IS the live path. The CDN window below is what
           // keeps concurrent visitors off the origin.
           cache: 'no-store',
@@ -78,10 +59,9 @@ export async function GET(request: NextRequest) {
     })
   );
 
-  // Every region failed: a backend outage, not an empty answer. A 200 `{}` was cached at the CDN
-  // for up to three minutes and counted as success by React Query, which replaced every card's
-  // last good status with nothing and never retried. An uncached 502 keeps the last data on
-  // screen and lets the next poll try again.
+  // Every region failed: an outage, not an empty answer. An uncached 502 keeps the last data on
+  // screen and lets the next poll retry, where a `200 {}` would blank every card. See
+  // docs/rules/an-api-route-passes-only-slugs-upstream.md.
   if (responses.every((data) => data === null)) {
     // `no-store` explicitly: without a Cache-Control of its own the response would take the
     // shared window the rule in next.config.ts gives this path.
@@ -95,12 +75,9 @@ export async function GET(request: NextRequest) {
   for (const data of responses) {
     for (const city of data?.data ?? []) {
       for (const park of city.parks ?? []) {
-        // Parks that publish wait times only inside their own app produce an analytics block
-        // that is an aggregate over an empty set — Ø 0 min, `0 / 82 operating`, a crowd level
-        // with nothing behind it. Dropped here rather than shipped and hidden card-side: these
-        // are exactly the "absent" values the card already renders around while a poll is in
-        // flight, so it needs no new branch, and the projection stays at its nine volatile
-        // fields instead of gaining a tenth that never changes (see the API budget rule).
+        // A park without a readable wait-time source has an aggregate over an empty set (Ø 0 min).
+        // Dropped here as values the card already renders around, so the projection gains no
+        // field. See docs/rules/parks-we-cannot-read.md.
         const waitDerived = hasReadableWaitTimes(park)
           ? {
               crowdLevel: park.analytics?.statistics?.crowdLevel ?? park.currentLoad?.crowdLevel,

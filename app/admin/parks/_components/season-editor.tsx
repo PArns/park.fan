@@ -36,21 +36,9 @@ import { Field, Select, Switch, TextArea, TextInput } from '../../_ui/controls';
 import { useToast } from '../../_ui/toast';
 
 /**
- * Seasons, as they are actually shaped.
- *
- * The naive model is two dates, and it is wrong for the seasons worth
- * recording. Walibi Holland's 2026 calendar is the case that settles it:
- * Spooky Days on the 14th, 15th, 19th, 20th and 21st of October; Fright Nights
- * on every weekend between 3 October and 1 November plus three single dates.
- * Stored as 3 Oct – 1 Nov, that tells a visitor the park is haunted on a
- * Tuesday.
- *
- * So the editor has two levels. The range is the season's outer bounds — what a
- * heading says and what a query filters on — and the calendar underneath is
- * optional: leave it alone and the season runs every day between the bounds,
- * or pick days and it runs only on those. The distinction is null-versus-list,
- * never an empty list, because "runs on no day at all" is not a state a season
- * should be able to represent.
+ * Seasons as they are shaped: a range for the outer bounds, plus optional picked days, because an
+ * event like Fright Nights runs on weekends inside its range, not every day. No picked days is
+ * `null`, never `[]`, since a season on no day at all is not a state.
  */
 
 const KIND_META: Record<ParkSeasonKind, { label: string; icon: LucideIcon; tone: string }> = {
@@ -73,6 +61,7 @@ const STATUS_META: Record<
   cancelled: { label: 'abgesagt', tone: 'danger' },
 };
 
+/** A park's seasons, newest first, with the dialog to add or edit one when `canEdit`. */
 export function SeasonList({
   parkId,
   seasons,
@@ -211,14 +200,8 @@ function SeasonRow({
 }
 
 /**
- * A range as a person would write it — or the raw values when they are not a
- * range yet.
- *
- * `<input type="date">` reports `''` while it is being cleared, and every
- * other consumer goes through `toDayOrNull()` for exactly that reason. This
- * one did not, so clearing "Von" and then pressing "Löschen" threw
- * `RangeError: Invalid time value` out of date-fns and took the render with
- * it — losing a half-typed season, including its individually picked dates.
+ * A range as a person would write it, or the raw values while it is not one yet: a cleared
+ * `<input type="date">` reports `''`, which date-fns would throw on.
  */
 function formatRange(start: string, end: string): string {
   const from = parseISO(start);
@@ -230,8 +213,6 @@ function formatRange(start: string, end: string): string {
   }
   return `${format(from, 'd. MMM yyyy', { locale: de })} – ${format(to, 'd. MMM yyyy', { locale: de })}`;
 }
-
-// ─── dialog ───────────────────────────────────────────────────────────────────
 
 interface SeasonDraft {
   kind: ParkSeasonKind;
@@ -322,18 +303,13 @@ function SeasonDialog({
     [draft.dates]
   );
 
-  // `<input type="date">` yields '' while it is being typed into or cleared,
-  // and `parseISO('')` is an Invalid Date — which is truthy, so react-day-picker
-  // took it as `defaultMonth`, handed it to date-fns `format`, and threw
-  // `RangeError: Invalid time value`. There is no error boundary under /admin,
-  // so the whole route unmounted and the half-typed season went with it.
+  // `<input type="date">` yields `''` while typed into or cleared, and `parseISO('')` is a truthy
+  // Invalid Date that react-day-picker would format and throw on.
   const rangeStart = useMemo(() => toDayOrNull(draft.startDate), [draft.startDate]);
   const rangeEnd = useMemo(() => toDayOrNull(draft.endDate), [draft.endDate]);
 
   async function save() {
-    // `Number('53,50')` is NaN and `JSON.stringify` turns that into null, so a
-    // price typed with a decimal comma used to be saved as "no price" — with a
-    // 200, a green toast and a currency left standing next to nothing.
+    // `Number('53,50')` is NaN, which `JSON.stringify` would save as "no price".
     const priceFrom = parsePrice(draft.priceFrom);
     if (priceFrom === 'invalid') {
       setError('Preis muss eine Zahl sein, z. B. 53,50');
@@ -602,12 +578,8 @@ function SeasonDialog({
           )}
 
           {confirmingDelete ? (
-            /* A season is hand-researched — an outer range, often twenty-odd
-               individually picked dates, and the source they were read from.
-               The delete is a hard one and no undo covers it, so the second
-               step names what is about to go rather than asking "sicher?".
-               In-page rather than window.confirm, which returns false unseen
-               in an embedded context. */
+            /* A season is hand-researched and no undo covers its delete, so the second step names
+               what goes. In the page, since `window.confirm` returns false unseen when embedded. */
             <div className="border-destructive/40 bg-destructive/[0.06] space-y-3 rounded-lg border p-3">
               <p className="text-sm font-medium">Saison endgültig löschen?</p>
               <p className="text-muted-foreground text-xs leading-relaxed">

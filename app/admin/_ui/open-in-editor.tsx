@@ -5,16 +5,9 @@ import { MapPin, RollerCoaster } from 'lucide-react';
 import { useAdminQuery } from '../_lib/api';
 
 /**
- * The link from a slug to the thing it names.
- *
- * The media database and the blog identify parks and rides by slug; the editor
- * identifies them by id. Without a translation between the two, the admin is
- * one-directional — you can get from a ride to its photos and never back, which
- * is exactly the seam that makes three tools feel like three tools.
- *
- * Renders nothing while it resolves and nothing if it cannot. A dead link into
- * an editor is worse than no link: it reads as "this ride is gone" when it
- * usually means the slug in the sidecar has a typo.
+ * The media database and the blog name parks and rides by slug, the editors by id. Nothing is
+ * rendered for a slug that does not resolve: a dead link reads as "this ride is gone" when the
+ * sidecar usually has a typo.
  */
 
 interface ResolveResult {
@@ -23,6 +16,10 @@ interface ResolveResult {
   ambiguous: boolean;
 }
 
+/**
+ * Resolves a park slug (and optional ride and city slug) to admin ids and renders chip links to the
+ * park and ride editors. Renders nothing while resolving, when the slug is unknown or ambiguous.
+ */
 export function OpenInEditor({
   parkSlug,
   rideSlug,

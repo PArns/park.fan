@@ -19,34 +19,12 @@ export interface PickableFigure {
 }
 
 /**
- * Figure list plus the site's real 3-D player.
- *
- * The player is the one from the glossary (`components/glossary/coaster-player`),
- * not a second drawing of the same figures, so a figure retuned in
- * `lib/three/coaster/elements.ts` moves in both places at once.
- *
- * **The player is not mounted until the reader is nearly at it.** `next/dynamic`
- * fetches the three.js chunk when `CoasterPlayer` MOUNTS, not when it becomes
- * visible — an earlier version rendered it straight away and pulled the whole
- * engine onto the most-visited page in the app, for a chapter most readers never
- * scroll to. Same treatment `RideLayoutRail` gives it on ride pages.
- *
- * So the stage arms itself on SCROLL, and only then. Two gates, because either
- * one alone lets the chunk through too early: the observer does not even start
- * until `useAfterLoad`, so nothing about this can compete with the initial load,
- * and its margin is 150 px rather than a screenful, so it fires when the chapter
- * is genuinely being approached and not while it is still three sections away.
- * A click still arms it immediately, which is what a reader who scrolled fast
- * gets, and the un-armed stage keeps the player's own box so the swap costs no
- * layout shift.
- *
- * No `prefers-reduced-motion` branch here, deliberately: the scene reads that
- * query itself and starts paused, so gating the MOUNT as well would leave those
- * readers with a button that never becomes anything.
- *
- * Switching figures re-keys the player deliberately — the scene builds its
- * geometry from the element on mount, so a swapped prop alone would keep the
- * previous track.
+ * Figure list plus the glossary's real 3-D player, so a figure retuned in
+ * `lib/three/coaster/elements.ts` moves in both places. The player is not mounted until the reader
+ * is nearly at it, because `next/dynamic` fetches the three.js chunk on mount: the stage arms on
+ * scroll, with the observer started only after load and a 150 px margin, or on a click. The
+ * un-armed stage keeps the player's box. No reduced-motion branch: the scene starts paused itself.
+ * Switching figures re-keys the player, since the scene builds its geometry on mount.
  */
 export function CoasterFigurePicker({
   figures,

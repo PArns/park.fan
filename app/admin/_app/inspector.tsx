@@ -5,18 +5,9 @@ import { PanelRightClose, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * The third column.
- *
- * An admin page is usually two things at once: the thing you are editing, and
- * the context you need to edit it — what upstream says, who changed this last,
- * which photo is attached, what the ride page looks like right now. Stacking
- * that below the form means scrolling away from the field you are filling in;
- * putting it in a modal means losing the form while you read it.
- *
- * So it lives beside them, and it is a slot rather than a component: any page
- * can push content into it with `useInspector().show(...)`, and the shell
- * decides how it is presented — a docked column on a wide screen, a sheet over
- * the content on a narrow one. The page does not have to know which.
+ * The third column, beside the page, so the context of an edit never means scrolling away from
+ * the field. A slot: a page pushes content with `useInspector().show(...)`, and the shell docks it
+ * on a wide screen and shows a sheet on a narrow one.
  */
 
 export interface InspectorContent {
@@ -35,12 +26,17 @@ interface InspectorContextValue {
 
 const InspectorContext = createContext<InspectorContextValue | null>(null);
 
+/**
+ * Returns the inspector slot: its current content and open state, plus `show`, `close` and
+ * `toggle`. Throws outside `<InspectorProvider>`.
+ */
 export function useInspector(): InspectorContextValue {
   const context = useContext(InspectorContext);
   if (!context) throw new Error('useInspector must be used inside <InspectorProvider>');
   return context;
 }
 
+/** Holds the inspector's content and open state, so any admin page can fill the right column. */
 export function InspectorProvider({ children }: { children: ReactNode }) {
   const [content, setContent] = useState<InspectorContent | null>(null);
   const [open, setOpen] = useState(false);
@@ -64,6 +60,10 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
   return <InspectorContext.Provider value={value}>{children}</InspectorContext.Provider>;
 }
 
+/**
+ * Right-hand inspector column showing what a page pushed with `show()`: docked beside the page
+ * from `xl`, a sheet with a scrim below it. Renders nothing while closed or empty.
+ */
 export function InspectorPanel() {
   const { content, open, close } = useInspector();
   if (!content || !open) return null;

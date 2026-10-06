@@ -6,22 +6,18 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Compass, MapPin } from 'lucide-react';
 import { adminFetch } from '../_lib/api';
 import { slugsFromPublicPath } from '../_lib/public-path';
-import { Section } from '../_lib/ui';
-import { AdminPage, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
+import {
+  AdminPage,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  Panel,
+  PanelHeader,
+} from '../_ui/primitives';
 
 /**
- * From a public address to the editor that owns it.
- *
- * Everything else in this admin points outward — the park editor links to the
- * live page, the media panel links to both. The way back did not exist in
- * code at all, so noticing something wrong while browsing park.fan meant
- * searching for the park again by name in the palette.
- *
- * Takes either a full public path (`?path=/de/parks/europe/germany/bruehl/
- * phantasialand/taron`, which is what a copied browser URL looks like) or the
- * slugs on their own (`?park=phantasialand&ride=taron`, which is the shape the
- * term audit and the media database hold). Both end at the same resolver the
- * media panel already uses.
+ * From a public address to the editor that owns it. Takes a full public path
+ * (`?path=/de/parks/…`, a copied URL) or the slugs alone (`?park=phantasialand&ride=taron`).
  */
 
 interface Resolved {
@@ -42,9 +38,7 @@ function GoResolver() {
   const rideParam = params.get('ride');
   const cityParam = params.get('city');
 
-  // Derived during render rather than set from the effect: "this address makes
-  // no sense" is a property of the query string, not something that happens
-  // later, and React 19 forbids the setState-in-effect form outright.
+  // Derived during render: whether the address makes sense is a property of the query string.
   const target = useMemo(
     () =>
       path
@@ -136,11 +130,12 @@ function GoResolver() {
 export default function GoPage() {
   return (
     <AdminPage width="narrow">
-      <Section icon={Compass} title="Zur Bearbeitung springen">
+      <Panel>
+        <PanelHeader icon={Compass} title="Zur Bearbeitung springen" />
         <Suspense fallback={<LoadingState />}>
           <GoResolver />
         </Suspense>
-      </Section>
+      </Panel>
     </AdminPage>
   );
 }

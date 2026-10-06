@@ -8,12 +8,13 @@ export interface BestTimeBucket {
   relativeIndex: number;
   /** Crowd level derived from `relativeIndex` (relative, not an absolute baseline). */
   crowdLevel: CrowdLevel;
-  /** Sample-weighted global avg P50 wait (min) — context only, mixes park sizes. */
+  /** Sample-weighted global average P50 wait in minutes; context only, it mixes park sizes. */
   avgWaitP50: number;
   sampleDays: number;
   parkCount: number;
 }
 
+/** The global „best time to visit" aggregate, by weekday and by month. */
 export interface GlobalBestTimes {
   byDayOfWeek: BestTimeBucket[];
   byMonth: BestTimeBucket[];
@@ -30,10 +31,8 @@ export interface GlobalBestTimes {
 }
 
 /**
- * Global "best time to visit" aggregate — relative busyness across all parks by
- * weekday and by month. The backend serves this from a 24h Redis cache; we
- * revalidate the Data Cache daily and tag it `best-times-global` so a future
- * backend webhook can bust it on recompute.
+ * Global „best time to visit" aggregate: relative busyness across all parks by weekday and month.
+ * Revalidated daily and tagged `best-times-global` so a backend webhook can clear it on recompute.
  */
 export function getGlobalBestTimes(): Promise<GlobalBestTimes> {
   return api.get<GlobalBestTimes>('/v1/analytics/best-times', {

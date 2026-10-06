@@ -33,28 +33,15 @@ interface ChapterHeadingProps {
   /** Ready-made node after the title — a <Badge>, a link. */
   badge?: ReactNode;
   /**
-   * A control the chapter owns, pushed to the right of the title row.
-   *
-   * `badge` sits *next to* the title and reads as part of it; this sits at the
-   * far end and reads as something to operate — the calendar's month stepper,
-   * which used to live in the row below among the colour legend, where the most
-   * important label on the page ranked after a colour key.
-   *
-   * It wraps under the title on a narrow card rather than squeezing it, because
-   * the two are one row only while there is room for both.
+   * A control the chapter owns, pushed to the right of the title row (the calendar's month
+   * stepper). `badge` reads as part of the title; this reads as something to operate. It wraps
+   * under the title on a narrow card rather than squeezing it.
    */
   action?: ReactNode;
   /**
-   * Put that control BESIDE the whole heading rather than inside the title row.
-   *
-   * The title row's height is whatever its tallest item needs, and `hint` sits under that row —
-   * so a two-storey action (the calendar's month stepper with the comparison switch under it)
-   * pushed the subline 44 px down and detached it from the title it belongs to. Aside, the text
-   * column keeps `title` over `hint` and the control column stands to their right across both.
-   *
-   * Opt-in, because the three other call sites pass one small link, which reads right sitting on
-   * the title's own line. Below the width where both fit, the control column wraps under the text
-   * exactly as the in-row action does.
+   * Put that control beside the whole heading rather than inside the title row, so a two-storey
+   * control does not push `hint` away from its title. Opt-in; below the width where both fit, the
+   * control column wraps under the text.
    */
   actionAside?: boolean;
   /** Heading level, for the document outline. */
@@ -68,71 +55,28 @@ interface ChapterHeadingProps {
    */
   size?: 'md' | 'lg';
   /**
-   * Frosted band behind the heading, for the pages that render over a
-   * background photo. Bare text is unreadable over the bright parts of an
-   * arbitrary image, and a watermark glyph doubly so.
-   *
-   * The material is {@link TILE_GLASS} — the park header stack's, not a fourth
-   * recipe. On the park page the reader meets that card first and then eight of
-   * these bands under it, all over the same photo, so any difference between the
-   * two reads as two kinds of surface rather than one. There was one: the band
-   * was `bg-background/70` + `backdrop-blur-md`, which in the dark theme
-   * composites to a NEUTRAL near-black (`oklab(0.145 0 0 / 0.7)`) while the card
-   * above it is the blue-tinted `oklch(0.13 0.02 241 / 0.6)` at twice the blur.
-   * Different hue, different opacity, half the blur, one page.
-   *
-   * `TILE_GLASS` rather than the card's own `HEAVY_GLASS`, for the reason its
-   * docblock already gives one element over: 62 % is the fill for a 400 px panel
-   * packed with rules and numbers, and it is not the fill for a strip carrying a
-   * title and one `text-muted-foreground` hint. Measured against Europa-Park's
-   * backdrop — worst band position over a scroll of the whole page, sampling the
-   * composited `backdrop-filter` output off a screenshot, since it exists only in
-   * the framebuffer — the hint reads 2.93:1 at 62 %, 3.86:1 at the old `/70`
-   * (already under AA, and nobody had looked) and 4.60:1 at 75 %. So the band
-   * takes the tiles' grade of fill, which is the first recipe on this page that
-   * passes. On Phantasialand, whose photo is a dark blue night shot, the same
-   * three read 5.20, 5.91 and 6.30:1.
-   *
-   * All four corners are rounded. The band used to be `rounded-t-xl`, on the
-   * reasoning that it is the lid of the chapter under it — which is true where
-   * something is actually glued to its underside (the calendar's month stepper,
-   * which passes `rounded-b-none`) and false everywhere else. On the other seven
-   * chapters of a park page the content below is a grid of cards with a gap over
-   * it, so the band was a lid with two square corners resting on the photograph.
-   * A call site that continues downward says so; a band on its own is a box.
+   * Frosted band behind the heading, for pages that render over a background photo, where bare text
+   * is unreadable. The material is {@link TILE_GLASS}, the park header stack's, so the bands and
+   * the card above them read as one surface; its 75 % fill is the first that keeps the muted hint
+   * above AA over a bright photo. All four corners are rounded; a call site with something glued
+   * underneath passes `rounded-b-none`.
    */
   frosted?: boolean;
   /**
-   * How the chapter marks itself on the left.
-   *
-   * `watermark` (default) is the oversized translucent glyph every park, ride
-   * and blog chapter has always drawn. `tile` is the homepage story's: the icon
-   * sits in a 68 px gradient plate and the kicker becomes a pill.
-   *
-   * The two are the same component on purpose. The homepage runs eight chapters
-   * down one scroll with no numbers — `NearbyParksSection`'s rule, since a
-   * chapter here can render nothing — and a watermark icon at `/25` is the one
-   * mark that disappears when it is the only thing carrying the chapter's
-   * identity. The plate gives it an edge and a fill to sit on. Everything below
-   * the mark (kicker, title, hint, rule) is shared, so a title still wraps and
-   * measures the same in both.
+   * How the chapter marks itself on the left. `watermark` (default) is the oversized translucent
+   * glyph; `tile` is the homepage story's, the icon in a 68 px gradient plate with a pill kicker,
+   * because a `/25` watermark icon disappears when it alone carries the chapter's identity.
+   * Everything below the mark is shared.
    */
   variant?: 'watermark' | 'tile';
   className?: string;
 }
 
 /**
- * The site's chapter header: an oversized translucent glyph, an optional
- * kicker, the title, and the rule that closes it.
- *
- * It started as the guide page's `SectionShell` header and is now the one
- * implementation, because the alternative was visible: a park page used to
- * carry four different section headers — `text-xl font-semibold` with an
- * icon, `text-xl font-bold` with an icon, a `text-2xl` frosted pill and a bare
- * `<h2 class="text-xl font-bold">` — and a reader scrolling it could not tell
- * which of them opened a chapter and which labelled a card inside one.
- *
- * Server-compatible (no client hooks) so chapters render into the static shell.
+ * The site's chapter header: an oversized translucent glyph, an optional kicker, the title, and the
+ * rule that closes it. The one implementation, so a reader can tell a chapter's opening from a
+ * card's label. Server-compatible, so chapters render into the static shell. See
+ * docs/rules/a-chapter-opens-the-same-way-everywhere.md.
  */
 export function ChapterHeading({
   index,
@@ -152,11 +96,9 @@ export function ChapterHeading({
   className,
 }: ChapterHeadingProps) {
   const tile = variant === 'tile';
-  // Below `sm` every part of the heading is one step smaller: the icon, the numeral, the title
-  // and the padding around them. A park page stacks 14 of these, a ride page 7, and at 390 px a
-  // two-line `text-2xl` title under a 40 px glyph took 105 px before the chapter said anything
-  // (PAR-433). The glyph matches the title's line box there (28 px) so a one-line heading is as
-  // tall as its text, not as its icon.
+  // Below `sm` every part of the heading is one step smaller, since a park page stacks many of
+  // these. The glyph matches the title's 28 px line box, so a one-line heading is as tall as its
+  // text, not its icon.
   const watermark = index ?? (Icon ? <Icon className="h-7 w-7 sm:h-14 sm:w-14" /> : null);
   const aside = Boolean(action) && actionAside;
 
@@ -170,13 +112,9 @@ export function ChapterHeading({
         // „below this the two do not share a line" rather than a breakpoint that guesses at the
         // width of six languages' worth of buttons.
         aside && 'flex-wrap',
-        // The phone step of the spacing is a `max-sm:` class ADDED to the desktop value, never a
-        // base value with an `sm:` one over it. Call sites override these classes — `ChapterPanel`
-        // passes `mb-0`, the trip planner `mb-5 pb-4`, the guide `mb-8 pb-5` — and `twMerge` only
-        // drops the unprefixed class it conflicts with: an `sm:mb-6` here would survive their
-        // `mb-0` and open a 24 px gap between a panel's band and its body from `sm` up. The bottom
-        // margin has no phone step for the same reason, since a `max-sm:mb-4` would do that below
-        // `sm`. `pb` gets one only at the site scale; the guide's `lg` heading keeps its own.
+        // The phone step is a `max-sm:` class added to the desktop value, never a base value with
+        // an `sm:` over it: call sites override these classes, and `twMerge` only drops the
+        // unprefixed class it conflicts with, so an `sm:mb-6` would survive a caller's `mb-0`.
         tile
           ? 'mb-8 gap-4 pb-5 max-sm:mb-6 max-sm:gap-3 max-sm:pb-4'
           : cn('mb-6 gap-3 pb-4 sm:gap-4', size === 'md' && 'max-sm:pb-3'),
@@ -245,12 +183,8 @@ export function ChapterHeading({
             {title}
           </As>
           {badge}
-          {/* `flex-wrap`, because this row can already wrap and the action then lands on a line of
-              its own — one unbreakable item in a ~204 px column. The calendar's month stepper is
-              317 px of that, so its „nächster Monat" arrow rendered past the viewport's right edge
-              with `body { overflow-x: clip }` swallowing it. Plain `flex-wrap`, not `max-sm:`: the
-              two other call sites (home/story/blog-chapter, nearby-chapter) pass a single small
-              link and have nothing to wrap either way. */}
+          {/* `flex-wrap`: when this row wraps, the action lands on a line of its own, and a wide
+              stepper must be able to break rather than run past the viewport. */}
           {action && !aside && (
             <div className="ml-auto flex flex-wrap items-center justify-end gap-2">{action}</div>
           )}

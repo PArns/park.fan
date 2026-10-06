@@ -51,18 +51,13 @@ export function useWeatherNowcast({
 
       return (await response.json()) as WeatherNowcast;
     },
-    // Pass `undefined` (not the `null` prop) as initialData. The park page no longer provides an SSR
-    // nowcast seed (the slow fetch timed out the static prerender), so initialData arrives as `null`
-    // — and React Query treats a `null` initialData as an already-resolved value, skipping the mount
-    // fetch for the whole staleTime. That left the nowcast + warning banner blank for ~5 min. With
-    // `undefined`, there is no initial value, so the query fetches on mount.
+    // `undefined`, not the `null` prop: React Query treats a `null` initialData as a resolved value
+    // and would skip the mount fetch for the whole staleTime.
     initialData: initialData ?? undefined,
     // When a seed IS present, anchor freshness to its real observation time (not mount time) so a
     // stale cached page refetches immediately instead of trusting initialData for the full staleTime.
     initialDataUpdatedAt: initialData?.observedAt ? Date.parse(initialData.observedAt) : undefined,
-    // Client-only: under Cache Components, running the query during the static prerender would read
-    // Date.now() internally (React Query). `typeof window` keeps it off the server; the SSR shell
-    // renders from the (now empty) initialData and the client fetches the nowcast on mount.
+    // Client-only: running the query during the static prerender would read the clock.
     enabled: enabled && typeof window !== 'undefined',
     staleTime: 5 * 60_000,
     gcTime: 15 * 60_000,

@@ -4,18 +4,9 @@ import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
 /**
- * The header menu's third pane: the cities of one country, each with its parks.
- *
- * This exists so those links never enter the sitewide link graph. The menu's first two panes
- * (continents, countries) are server-rendered into every page because 28 hub links are worth
- * concentrating internal weight on; the 144 cities and 212 parks below them are not — they are
- * already linked from those hubs and from the sitemap, and putting them in a template that runs on
- * ~35,000 pages would spread the same weight over 356 more targets for nothing. So they are
- * fetched when somebody actually opens a country, not shipped to everybody who loads a page.
- *
- * One request per country a visitor opens, deduplicated by the menu for the life of the tab. The
- * upstream call is the cached discovery entry the country pages already use (`geo` tag, continents
- * TTL), so this is a data-cache read rather than a fresh hop to api.park.fan.
+ * The header menu's third pane: one country's cities and parks, fetched when a country is opened
+ * so these links stay out of the sitewide link graph. It reads the cached discovery entry the
+ * country pages use. See docs/rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md.
  */
 
 /** Slugs come from our own rendered markup, but this is a public URL — bound what we forward. */
@@ -42,10 +33,8 @@ export async function GET(
         parks: (city.parks ?? []).map((park) => ({
           slug: park.slug,
           name: park.name,
-          // Resolved HERE, on the server. `@/lib/media` is the 107 KB catalogue and the menu is a
-          // Client Component, so a lookup over there would ship the whole thing to the browser —
-          // only the URL crosses. `null` for most parks: the database holds a picture for 14 of
-          // 212, which is why the row keeps working without one rather than reserving a box.
+          // Resolved on the server: the menu is a Client Component, and `@/lib/media` there would
+          // ship the media catalog to the browser. `null` for most parks, so the row needs none.
           image: getParkBackgroundImage(park.slug),
           imagePosition: getCardObjectPosition(park.slug),
         })),
@@ -64,10 +53,8 @@ export async function GET(
       }
     );
   } catch {
-    // A failure, said as one. This used to answer 200 `{ cities: [] }`, which the menu cached as
-    // "this country has no cities" for the rest of the session, against its own intent of asking
-    // again on the next hover. The country link above the pane still works in the meantime.
-    // `no-store` explicitly, or the day-long window next.config.ts gives this path would apply.
+    // A failure, said as one: the menu would cache a `200 { cities: [] }` as "no cities" for the
+    // session. `no-store`, or the day-long window next.config.ts gives this path would apply.
     return NextResponse.json(
       { error: 'Cities unavailable' },
       { status: 502, headers: { 'Cache-Control': 'no-store, must-revalidate' } }

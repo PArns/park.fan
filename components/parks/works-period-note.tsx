@@ -14,27 +14,14 @@ interface WorksPeriodNoteProps {
 }
 
 /**
- * The ride page's sentence about a curated rebuild: since when, and until when.
+ * The ride page's sentence about a curated rebuild: since when and until when, the part a visitor
+ * can plan around. It sits where `NoLiveWaitTimesNotice` sits, above the chapters, because it
+ * answers the question the empty live panel raises.
  *
- * The badge beside the ride's name says THAT the ride is being rebuilt; this
- * says how long, which is the only part a visitor can plan around. It sits
- * where `NoLiveWaitTimesNotice` sits — above the chapters rather than inside
- * the live one — because it is the answer to the question the empty live panel
- * above it has already raised.
- *
- * ## Why the end date has two forms
- *
- * A park that has announced a reopening date and an editor who has guessed one
- * are not the same claim, and the API keeps them apart in `toUncertain`. „bis
- * voraussichtlich zum 3. März" is a date a visitor may not book a trip around;
- * „bis zum 3. März" is. Writing the second where we only know the first is the
- * one mistake this note can make that costs somebody a day at a park.
- *
- * ## The dates are days, not instants
- *
- * Both bounds are park-local calendar days. They are anchored at noon UTC and
- * formatted in UTC, so no offset can move them onto the neighbouring day — the
- * same treatment `ParkSeasonsCard` gives its season ranges.
+ * The end date has two forms because an announced reopening and an editor's estimate are different
+ * claims (`toUncertain`): „bis voraussichtlich zum 3. März" is not a date to book a trip around.
+ * Both bounds are park-local days, anchored at noon UTC and formatted in UTC so no offset moves
+ * them, as in `ParkSeasonsCard`.
  */
 export function WorksPeriodNote({ worksPeriod, todayIso, className }: WorksPeriodNoteProps) {
   const t = useTranslations('parks.worksPeriod');

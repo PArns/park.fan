@@ -65,8 +65,7 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
   return (
     <header className="relative isolate -mt-12 flex min-h-[58vh] items-start overflow-hidden sm:min-h-[66vh] sm:items-end">
       {/* `quality={60}` on the cover: it is the LCP element, full-bleed under a tint and a
-          headline. See the shared `Hero` in components/marketing/editorial-ui.tsx for the
-          measured numbers. */}
+          headline, as in `LandingHero` (components/marketing/editorial-ui.tsx). */}
       {cover ? (
         <Image
           src={cover}
@@ -102,13 +101,10 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
         className="from-background pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b to-transparent sm:hidden"
       />
 
-      {/* `pt-32` is clearance for the header floating over the cover, and at 48px
-          of header that left 80px of empty photo on a phone — where the banner is
-          content-driven (642px against a 490px `min-h`), so the padding is height,
-          not framing. Half of it from `sm` down. */}
-      {/* `pb-48` is 192px and pairs with HERO_FLOW_INTO_PULL (176px) on the section
-          below — the padding must stay the larger of the two, which is what keeps
-          the overlap clear of the byline in every language. */}
+      {/* `pt-32` clears the header floating over the cover; half of it below `sm`, where the
+          banner is content-driven and padding is height. `pb-48` pairs with HERO_FLOW_INTO_PULL
+          on the section below and must stay the larger of the two, see
+          docs/rules/a-blog-card-is-a-row-on-phones.md. */}
       <div className="text-foreground relative container mx-auto px-4 pt-20 pb-48 sm:pt-32 sm:pb-20">
         <p className="text-foreground/70 mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
           <span className="bg-primary inline-block h-2 w-2 rounded-full" />

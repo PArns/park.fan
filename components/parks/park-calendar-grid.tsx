@@ -13,7 +13,6 @@ import {
   startOfWeek,
   getDay,
 } from 'date-fns';
-import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
 import { Info } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
@@ -21,6 +20,7 @@ import { extremeCandidates, rankOf } from '@/lib/parks/calendar-month-summary';
 import type { CalendarDay } from '@/lib/api/types';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { parkDayOf } from '@/lib/utils/park-day';
+import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
 import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import { ParkCalendarGridPlaceholder } from '@/components/parks/park-calendar-grid-placeholder';
@@ -31,21 +31,18 @@ import { ParkCalendarDayDetail } from './park-calendar-day-detail';
 
 interface ParkCalendarGridProps {
   park: ParkWithAttractions;
-  /** Optional SSR seed. When omitted, the grid renders from its own per-month
-   *  useCalendarData fetch (calendarData?.days is already null-guarded below). */
+  /**
+   * Optional SSR seed. Without it the grid renders from its own per-month `useCalendarData` fetch.
+   */
   initialCalendarData?: IntegratedCalendarResponse;
   continent: string;
   country: string;
   city: string;
   parkSlug: string;
   /**
-   * The month to show, from the URL. `null` on the calendar hub, which shows today's.
-   *
-   * It used to be component state seeded from `new Date()` and then corrected by an effect that
-   * read `#calendar-2026-04` off the location — a month that lived in a hash, was written with
-   * `replaceState`, and therefore could not be crawled, could not be a search result and did not
-   * answer the back button. It is a path segment now, so the stepper below is two real links and
-   * each month is a page.
+   * The month to show, from the URL; `null` on the calendar hub, which shows today's. A path
+   * segment rather than state or a hash, so every month is a crawlable page and the stepper is two
+   * real links.
    */
   month: ParkCalendarMonth | null;
   /** Neighbouring months, already range-checked by the page — `null` means the stepper stops. */
@@ -53,6 +50,11 @@ interface ParkCalendarGridProps {
   nextMonth: ParkCalendarMonth | null;
 }
 
+/**
+ * The park's crowd calendar for one month: a week grid on desktop, a two-column list on phones, a
+ * detail panel for the tapped day and a two-day comparison. Client only (`ssr: false`); the month
+ * comes from the URL.
+ */
 export function ParkCalendarGrid({
   park,
   initialCalendarData,
@@ -70,16 +72,7 @@ export function ParkCalendarGrid({
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
 
-  // Map locale to date-fns locale
-  const dateLocale =
-    {
-      de,
-      en: enUS,
-      es,
-      fr,
-      it,
-      nl,
-    }[locale as 'de' | 'en' | 'es' | 'fr' | 'it' | 'nl'] || enUS;
+  const dateLocale = dateFnsLocale(locale);
 
   // Derived from the URL, not held in state. `month` is null only on the hub, where "this month"
   // is the answer and the browser clock is the right source for it.
@@ -87,23 +80,18 @@ export function ParkCalendarGrid({
     () => (month ? new Date(month.year, month.month - 1, 1) : new Date()),
     [month]
   );
-  // Selected day for the click-to-open detail panel (weather / forecast /
-  // predictions). Touch-friendly replacement for the old hover-only tooltips.
+  // Selected day for the click-to-open detail panel, which unlike a hover tooltip works on touch.
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
 
   /**
-   * The comparison's two picks, held OUTSIDE this component — see `day-comparison-store.ts`.
-   *
-   * They have to survive a change of month, and a change of month unmounts this grid: the month
-   * is a path segment, so October → November is a route navigation and not a `setState`. Comparing
-   * two days from two different months is the case the feature exists for, so the state cannot
-   * live here.
+   * The comparison's two picks, held outside this component (see `day-comparison-store.ts`). A
+   * month change is a route navigation that unmounts this grid, and comparing days from two months
+   * is the case the feature exists for.
    */
   const selection = useSyncExternalStore(
     dayComparisonStore.subscribe,
-    // Wrapped, because `useSyncExternalStore` calls the getter on every render and compares what
-    // comes back by identity: an inline arrow would be a new function each time, and the store
-    // itself returns one frozen `IDLE` for the miss so the comparison stays cheap.
+    // Wrapped, because `useSyncExternalStore` calls the getter on every render and compares by
+    // identity; the store returns one frozen `IDLE` for a miss.
     useCallback(() => dayComparisonStore.getSnapshot(parkSlug), [parkSlug]),
     dayComparisonStore.getServerSnapshot
   );
@@ -111,33 +99,20 @@ export function ParkCalendarGrid({
   const pickedDates = useMemo(() => selection.days.map((d) => d.date), [selection.days]);
 
   /**
-   * Whether the comparison is on screen.
-   *
-   * The dialog opens on the SECOND pick, which means "two days are selected" cannot also be what
-   * keeps it open — closing it would leave the condition true and the dialog would come straight
-   * back. What was closed is therefore remembered as the PAIR that produced it, so changing one of
-   * the two days opens the new comparison; and it is remembered in the store rather than here,
-   * because this component unmounts on a month change and a dismissed dialog would otherwise
-   * reopen on the next month step.
+   * Whether the comparison is on screen. The dialog opens on the second pick, so "two days are
+   * selected" cannot also keep it open: closing it would bring it straight back. The dismissed pair
+   * is remembered instead, in the store because this component unmounts on a month change.
    */
   const pairKey = pickedDates.join('|');
   const comparisonOpen = selection.days.length === 2 && selection.dismissed !== pairKey;
 
-  // The calendar has two structurally different layouts (a reversed 2-col list on mobile, a 7-col
-  // week grid on desktop). They used to BOTH live in the DOM toggled by `lg:hidden` / `hidden
-  // lg:block`, so every ParkCalendarDay mounted + rendered TWICE (display:none doesn't skip render
-  // or hydration). This grid is `ssr: false` (see tabs-with-hash) and only mounts once the calendar
-  // tab is opened, so we can pick the layout from the live viewport — no hydration mismatch — and
-  // each day card mounts exactly once.
+  // Two structurally different layouts (a two-column list on phones, a seven-column week grid on
+  // desktop), picked from the live viewport so each day card mounts once. This grid is
+  // `ssr: false`, so there is no hydration mismatch.
   //
-  // This is the one layout switch on a park page that stayed on the WINDOW when the rest moved to
-  // `@container/page` (app/[locale]/layout.tsx), and deliberately: the class and this query are
-  // one decision made twice, so converting only the classes leaves an open trip planner showing
-  // NEITHER layout — the container says list, `matchMedia` says week grid, and each branch is
-  // guarded by the other's answer. Moving it needs a container-width read here as well; until
-  // there is one, both halves stay on `(min-width: 1024px)` — and so do the day card's own `lg:`
-  // classes and <ParkCalendarGridPlaceholder>'s reservation, which dress and measure whichever
-  // layout this picks.
+  // This switch stays on the window, not `@container/page`: the `lg:` classes and this query are
+  // one decision, and converting only the classes leaves an open trip planner showing neither
+  // layout. The day card's `lg:` classes and <ParkCalendarGridPlaceholder> follow it.
   const [isDesktop, setIsDesktop] = useState(() =>
     typeof window === 'undefined' ? true : window.matchMedia('(min-width: 1024px)').matches
   );
@@ -149,7 +124,6 @@ export function ParkCalendarGrid({
     return () => mq.removeEventListener('change', update);
   }, []);
 
-  // Fetch calendar data with React Query (automatic caching)
   const from = format(startOfMonth(currentMonth), 'yyyy-MM-dd');
   const to = format(endOfMonth(currentMonth), 'yyyy-MM-dd');
 
@@ -165,47 +139,28 @@ export function ParkCalendarGrid({
     parkSlug,
     from,
     to,
-    enabled: true, // Always fetch for current month
+    enabled: true,
   });
 
   /**
-   * Today, in the PARK's timezone — never the browser's.
-   *
-   * A Florida park is still on yesterday's date for six hours after midnight in Berlin, and this
-   * value decides three visible things: which cell wears the HEUTE badge, which days enter the
-   * „Empfohlen" candidate set, and where the month's median is drawn. It read
-   * `format(new Date(), 'yyyy-MM-dd')` — the browser's local date — while the panel around it was
-   * already handed a park-timezone `currentMonth` from the server for exactly this reason.
-   *
-   * Computed inside a memo rather than at render top-level because `new Date()` in a render body
-   * is a new value on every pass; the day only changes once a day, and the month re-renders far
-   * more often than that.
+   * Today in the park's timezone, never the browser's: a Florida park is still on yesterday for six
+   * hours after midnight in Berlin, and this decides the HEUTE badge, the „Empfohlen" candidates
+   * and the month's median. Memoised because `new Date()` in a render body is a new value on every
+   * pass.
    */
   const todayStr = useMemo(() => parkDayOf(new Date(), parkTimezone), [parkTimezone]);
 
-  /*
-   * There used to be a second query here: today alone, on a five-minute staleTime, overlaid on
-   * the month so today's cell matched the live badge in the park header. It is gone with the
-   * backend override it existed to chase — today's crowd level is the ML forecast now, the same
-   * statement every other cell in the grid makes, and a forecast does not move between two
-   * visitors on the same morning. The live reading is still on this page; it is in the header
-   * and in the today panel, where a number that ticks belongs.
-   */
   const calendarData = fetchedCalendarData || initialCalendarData;
 
   const monthHref = (m: ParkCalendarMonth | null) =>
     m ? parkCalendarPath(locale, continent, country, city, parkSlug, m) : null;
 
-  // Flip a day forward/back from inside the detail dialog. Crossing a month boundary navigates to
-  // that month's PAGE, because the month is a URL now — the dialog keeps showing the previous day
-  // dimmed until the new month's data lands (see ParkCalendarDayDetail's lastDay retention).
+  // Flip a day forward or back from inside the detail dialog. Crossing a month boundary navigates
+  // to that month's page, and the dialog keeps the previous day dimmed until the new month lands.
   //
-  // `{ scroll: false }` + `suppressScrollToTopFor`: the same pair `MonthStep`'s arrows use in
-  // `ParkCalendarPanel`, for the same reason — this dialog is the touch-friendly replacement for
-  // the old hover tooltips, so flipping day by day and crossing a month boundary here is the way a
-  // phone visitor hits this bug, not the arrows below it. Without it the router's default put the
-  // reader back at the park's title card every time a swipe through the days crossed into a new
-  // month.
+  // `{ scroll: false }` + `suppressScrollToTopFor`, the same pair `MonthStep` uses in
+  // `ParkCalendarPanel`: without it, swiping through the days into a new month put a phone reader
+  // back at the park's title card.
   const handleDayNavigate = (direction: -1 | 1) => {
     if (!selectedDate) return;
     const target = format(addDays(parseISO(selectedDate), direction), 'yyyy-MM-dd');
@@ -219,9 +174,8 @@ export function ParkCalendarGrid({
     }
   };
 
-  // Memoize expensive calendar layout calculations — only recalculate when month or locale changes
   const { weeks, weekdayHeaders, listDays } = useMemo(() => {
-    // Compute start/end inside the memo so Date object identity doesn't cause spurious invalidation
+    // Start and end inside the memo, so Date identity does not invalidate it.
     const start = startOfMonth(currentMonth);
     const end = endOfMonth(currentMonth);
     const allDays = eachDayOfInterval({ start, end });
@@ -273,7 +227,6 @@ export function ParkCalendarGrid({
     };
   }, [currentMonth, dateLocale]);
 
-  // Create a map of calendar data by date for quick lookup
   const calendarMap = useMemo(() => {
     const map = new Map<string, CalendarDay>();
     if (calendarData?.days) {
@@ -285,15 +238,12 @@ export function ParkCalendarGrid({
   }, [calendarData]);
 
   /**
-   * One handler for a press on a day tile, whichever of the two things it means.
+   * One handler for a press on a day tile: it picks in comparison mode and opens the detail dialog
+   * otherwise. The tile is memoised and takes one `onSelect(date)`, so the decision is made here
+   * instead of in a closure per cell.
    *
-   * The tile is `memo`-ised and takes ONE `onSelect(date)`, so what a press does is decided here
-   * rather than by handing every cell its own closure — which is what the memo exists to avoid.
-   * In comparison mode it picks; otherwise it opens the detail dialog, exactly as before.
-   *
-   * The whole `CalendarDay` goes into the store, not just the date: once the reader steps to the
-   * next month, `calendarMap` no longer holds this day and the comparison would have nothing to
-   * read. See the store's own note.
+   * The whole `CalendarDay` goes into the store, because after a month step `calendarMap` no longer
+   * holds it.
    */
   const handleDayPress = useCallback(
     (date: string) => {
@@ -308,51 +258,25 @@ export function ParkCalendarGrid({
   );
 
   /**
-   * How far below the month's median a day must rank before it is worth a star, in units of
-   * `rankOf` — where 1.0 is one crowd bucket and the fractional part is the headliner wait scaled
-   * over two hours.
-   *
-   * Half a bucket. Below that the badge marks noise: a month whose days all forecast `low` and
-   * differ only by five minutes of queue would otherwise have half of itself recommended.
+   * How far below the month's median a day must rank before it gets a star, in `rankOf` units (1.0
+   * is one crowd bucket). Half a bucket: below that the badge marks noise, and a month of `low`
+   * days that differ by five minutes of queue would have half of itself recommended.
    */
   const BEST_DAY_MARGIN = 0.5;
 
   /**
-   * The days that get the „Empfohlen" star — the ones that stand out, not the ones that tie.
+   * The days that get the „Empfohlen" star: the ones that stand out, not the ones that tie. The
+   * same ranking as `summarizeCalendarMonth`, from the same `rankOf` (crowd bucket, headliner wait
+   * as the tie-break, since the API sends no `crowdScore`), so the grid and the summary above it
+   * never disagree.
    *
-   * This used to mark every candidate sitting at the month's lowest crowd BUCKET, and on a month
-   * where the bucket does not vary that is the whole month: measured on Phantasialand's November
-   * 2026, thirty days all forecast `low` and **23 of them wore the badge**. A recommendation that
-   * applies to three quarters of the month recommends nothing, and it contradicted the summary
-   * directly above the grid, which applies a median test and therefore said the month has no
-   * quiet day at all. Two answers to one question, on one page.
-   *
-   * So the same ranking as `summarizeCalendarMonth`, from the same `rankOf`: the crowd bucket with
-   * the headliner wait as the tie-break (the API sends no `crowdScore` — 0 of 30 days — so the
-   * wait is the only continuous signal that actually arrives). And a day has to beat the month's
-   * median by BEST_DAY_MARGIN, not merely beat it: "strictly below the median" still badged 13 of
-   * November's 29 candidates, and what separated them was 30 minutes of headliner wait against
-   * 35. Five minutes is not a recommendation.
-   *
-   * Half a crowd bucket is. Measured across four months of Phantasialand, that is the difference
-   * between a month with something to say and one without:
-   *
-   * ```
-   *   2026-09   29 candidates   ranks 0.21-3.50   12 badges
-   *   2026-10   15 candidates   ranks 0.21-3.50    7 badges
-   *   2026-11   29 candidates   ranks 1.25-1.29    0 badges
-   *   2026-12   22 candidates   ranks 1.25-1.29    0 badges
-   * ```
-   *
-   * No separate cap on the count: "below the median" already bounds it at half the month, and the
-   * margin does the rest of the work.
+   * A day has to beat the median by `BEST_DAY_MARGIN`, not merely beat it: on a flat month the
+   * lowest bucket is the whole month, and a recommendation that applies to most of it recommends
+   * nothing. "Below the median" already caps the count at half the month.
    */
   const bestDayDates = useMemo(() => {
-    // The SAME candidate set the summary sentence above the grid uses — `extremeCandidates`. The
-    // two had their own lists until a review caught it: the grid dropped school and public
-    // holidays and kept today, the summary did the reverse, so their medians were computed over
-    // different populations and they could name different days on one page. A quiet Whit Monday
-    // is still the month's quietest day.
+    // The same candidate set the summary sentence uses, `extremeCandidates`, so both medians are
+    // taken over the same days. A quiet Whit Monday is still the month's quietest day.
     const all = Array.from(calendarMap.values()) as CalendarDay[];
     const lastDate = all.reduce((acc, d) => (d.date > acc ? d.date : acc), all[0]?.date ?? '');
     const monthIsPast = !!lastDate && lastDate < todayStr;
@@ -375,21 +299,15 @@ export function ParkCalendarGrid({
   }, [calendarMap, todayStr]);
 
   return (
-    /* No <Card> around this any more: the box lives in `ParkCalendarPanel`, because the month
-       stepper has to be INSIDE it and cannot be inside this component — this is a `ssr: false`
-       import and anything in here is missing from the served HTML, which for two <a> tags means
-       a crawler arriving at one month finds no way to any other. So the panel renders the card,
-       puts the server-rendered stepper in it, and drops this grid in underneath. */
+    /*
+     * The card lives in `ParkCalendarPanel`: the month stepper has to sit inside it and be
+     * server-rendered so a crawler can reach the other months, and this grid is `ssr: false`.
+     */
     <>
       <div className="space-y-4">
-        {/* What the comparison mode is DOING, right above the tiles it is doing it to — the
-            switch itself is in the card's heading band, next to the month stepper, because it is
-            server-rendered there and this component is not (see `ParkCalendarPanel`).
-
-            Rendered only while the mode is on, and that is what keeps the two loading states
-            honest: at the first paint nothing is picked, so the box this grid promises through
-            `--cal-grid-h*` is the box it draws. The row appearing on a press is a row appearing
-            where the reader just pressed. */}
+        {/* What comparison mode is doing, right above the tiles. The switch itself is in the card's
+            heading band because it is server-rendered there. Rendered only while the mode is on, so
+            at first paint the grid draws exactly the box `--cal-grid-h*` promised. */}
         {comparing && (
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
             <p className="text-muted-foreground text-xs">
@@ -422,7 +340,6 @@ export function ParkCalendarGrid({
           </div>
         )}
 
-        {/* Error Message */}
         {error && (
           <div className="rounded-lg border border-red-500 bg-red-50 p-3 dark:bg-red-950/20">
             <p className="text-sm text-red-600 dark:text-red-400">
@@ -431,7 +348,6 @@ export function ParkCalendarGrid({
           </div>
         )}
 
-        {/* Disclaimer for parks without official schedule */}
         {!isLoading && calendarData?.meta?.hasOperatingSchedule === false && (
           <div className="rounded-lg border border-blue-200 bg-blue-50 p-3 dark:border-blue-900/30 dark:bg-blue-950/20">
             <div className="flex items-start gap-2 text-blue-700 dark:text-blue-300">
@@ -443,19 +359,17 @@ export function ParkCalendarGrid({
           </div>
         )}
 
-        {/* The SAME box the `next/dynamic` loading showed a moment ago, and now the same box
-          exactly: the legend that used to sit above this moved up into the panel's control row,
-          so the two waits no longer differ by a row one of them draws and the other does not. */}
+        {/* The same box the `next/dynamic` loading showed a moment ago, so the two waits do not
+            shift the page. */}
         {isLoading && <ParkCalendarGridPlaceholder />}
 
-        {/* Calendar Grid — dimmed while the previous month is shown as placeholder during a
-            month-navigation fetch (keepPreviousData), instead of flashing back to the skeleton. */}
+        {/* Dimmed while the previous month stands in during a month-navigation fetch
+            (keepPreviousData), instead of flashing back to the skeleton. */}
         {!isLoading && (
           <div
             className={`overflow-x-auto transition-opacity ${isPlaceholderData ? 'opacity-50' : ''}`}
           >
             <div className="inline-block min-w-full">
-              {/* Weekday Headers - Desktop Only */}
               <div className="mb-2 hidden grid-cols-7 gap-2 lg:grid">
                 {weekdayHeaders.map((header, idx) => (
                   <div key={idx} className="text-muted-foreground text-center text-sm font-medium">
@@ -464,7 +378,6 @@ export function ParkCalendarGrid({
                 ))}
               </div>
 
-              {/* Mobile View: Reversed List (Newest First) */}
               <div className="grid grid-cols-2 gap-2 pt-3 lg:hidden">
                 {!isDesktop &&
                   listDays.map((day) => {
@@ -490,7 +403,6 @@ export function ParkCalendarGrid({
                   })}
               </div>
 
-              {/* Desktop View: Standard Weeks */}
               <div className="hidden space-y-2 pt-3 lg:block">
                 {isDesktop &&
                   weeks.map((week, weekIdx) => (
@@ -530,9 +442,7 @@ export function ParkCalendarGrid({
         )}
       </div>
 
-      {/* Click-to-open day detail (weather + forecast + predictions) — works on
-          touch and desktop, unlike the calendar's former hover-only tooltips.
-          Prev/next flips days without leaving the dialog (incl. month crossing). */}
+      {/* Prev/next flips days without leaving the dialog, across a month boundary too. */}
       <ParkCalendarDayDetail
         day={selectedDate ? (calendarMap.get(selectedDate) ?? null) : null}
         parkTimezone={parkTimezone}
@@ -544,8 +454,8 @@ export function ParkCalendarGrid({
         planner={{ parkSlug, parkName: park.name, geo: { continent, country, city } }}
       />
 
-      {/* Opens on the SECOND pick and closes to the grid with both days still lit, so the reader
-          can swap one of them and see the new answer without starting over. */}
+      {/* Opens on the second pick and closes to the grid with both days still lit, so the reader
+          can swap one and see the new answer. */}
       <ParkCalendarComparison
         a={selection.days[0] ?? null}
         b={selection.days[1] ?? null}
@@ -562,11 +472,8 @@ export function ParkCalendarGrid({
 }
 
 /**
- * `1` or `2` where a date is one of the two picked, `null` otherwise.
- *
- * A function rather than a `Set`, because the ORDER is what the tile draws: the first pick is the
- * comparison's left column, and two identical rings would leave the reader guessing which of two
- * cells they clicked first.
+ * `1` or `2` where a date is one of the two picked, `null` otherwise. A function rather than a
+ * `Set` because the order is what the tile draws: the first pick is the comparison's left column.
  */
 function selectionIndexOf(picked: readonly string[], date: string): 1 | 2 | null {
   const index = picked.indexOf(date);

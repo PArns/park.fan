@@ -10,22 +10,10 @@ import type { BlogListItem } from '@/lib/blog/types';
 import { postPath } from '@/lib/blog/paths';
 
 /**
- * What the row below `sm` actually paints: a 96px thumbnail. The panelled card is
- * `display:none` there, so its own `sizes` says 96px too, which keeps a phone from
- * asking for a full-width cover for an element nobody can see.
- *
- * That alone does not make the row and the card share a request. next/image builds
- * the srcset from `sizes`: with a `vw` term it keeps only widths of at least
- * `deviceSizes[0]` (640) times the smallest share, so the card's `33vw` starts its
- * list at 256, while the row's plain `96px` gets every width from 32 up. At DPR 1 the
- * row picks 96 and the card 256; on a desktop the hidden row still fetches its 96.
- *
- * A lazy `<img>` under `display:none` is never fetched, so only a `priority` card
- * pays for this: eager and preloaded, both layers load. Such a card hands its own
- * `sizes` to the row (see `BlogPostCardView`). Same srcset and same `sizes` means the
- * same URL at every width and DPR, and React merges the two preloads into one. The
- * price is a 256 instead of a 96 for that one thumbnail on a DPR 1 phone; at DPR 2
- * and 3 both layers already picked 256 and 384.
+ * What the row below `sm` paints: a 96 px thumbnail. The panelled card is `display:none` there, so
+ * its `sizes` says 96 px too. A lazy `<img>` under `display:none` is never fetched, so only a
+ * `priority` card loads both layers; it hands its own `sizes` to the row (see `BlogPostCardView`),
+ * so both build the same srcset and React merges the two preloads into one.
  */
 const ROW_THUMB_SIZES = '96px';
 const FEATURE_SIZES = '(max-width: 640px) 96px, (max-width: 1024px) 100vw, 1024px';
@@ -51,18 +39,10 @@ export interface BlogPostCardViewProps {
 }
 
 /**
- * The presentational blog post card.
- *
- * Split out from `BlogPostCard` so it can render anywhere: the wrapper resolves the
- * author and the category label through modules that read the filesystem, which
- * makes it unusable inside a client tree such as the admin's focal-point previews.
- * This half takes those two values as props and imports nothing server-only.
- *
- * Built with the same visual language as ParkCard /
- * AttractionCard: photo background with a reflection seam, two glass panels
- * (`pk-panel-top` / `pk-panel-bot`) that overlap the image, hover lift via
- * the shared `--pk-card-shadow` CSS variables. Keeps the editorial surface
- * visually consistent with the rest of the site.
+ * The presentational blog post card, split from `BlogPostCard` so it can render in a client tree
+ * (the admin's focal-point previews): it takes the author and category label as props and imports
+ * nothing server-only. Same visual language as ParkCard and AttractionCard: a photo with two
+ * overlapping glass panels and the shared hover lift.
  */
 export function BlogPostCardView({
   post,
@@ -80,12 +60,8 @@ export function BlogPostCardView({
 
   const date = new Date(frontmatter.date);
 
-  // ---------- compact + phones: the list row ----------
-  // Below `sm` the panelled card hides its photo and collapses to nothing but its
-  // two sheets of glass, which then overlap by the 32px they were meant to lay over
-  // the picture — so the excerpt gets cut off mid-line and a post costs ~200px of
-  // height for a title and a date. The row says the same thing in a third of that
-  // and puts the cover back, so it is what a phone gets for every variant.
+  // Below `sm` the panelled card loses its photo and its two glass sheets overlap, cutting off the
+  // excerpt, so a phone gets the list row for every variant.
   if (variant === 'compact') {
     return (
       <BlogPostRow
@@ -103,19 +79,11 @@ export function BlogPostCardView({
 
   return (
     <>
-      {/* Phones get the row, everything from `sm` up the panelled card. Two
-          markups rather than one responsive tree: the glass is a block of inline
-          styles, which no breakpoint can switch off.
-
-          It stays a media query while the grids around it moved to `@container/page`,
-          for two reasons that point the same way. The row is a phone treatment, not a
-          narrow-box treatment — it drops the cover to a 96px thumbnail and gives up the
-          composition, which is not what a card wants merely because a trip-planner panel
-          took 300px off the page. And `sizes` above says `(max-width: 640px) 96px`, a
-          condition with no container form: move the switch and the painted markup and
-          the picked candidate start disagreeing, the row asking for 96px and getting the
-          50vw one. Below `sm` the page is never inset anyway (the panel is a modal sheet
-          there), so window and container are the same number at this threshold. */}
+      {/* Phones get the row, everything from `sm` up the panelled card: two markups, because the
+          glass is a block of inline styles no breakpoint can switch off. A media query rather
+          than `@container/page`: the row is a phone treatment, and `sizes` can only express a
+          viewport condition. Below `sm` the page is never inset, so the two agree. See
+          docs/rules/a-blog-card-is-a-row-on-phones.md. */}
       <BlogPostRow
         post={post}
         cover={cover}
@@ -140,11 +108,8 @@ export function BlogPostCardView({
           data-card-fx
           style={{ boxShadow: 'var(--pk-card-shadow)' }}
         >
-          {/* Photo — z-0. Shared CardPhoto, identical to ParkCard/AttractionCard:
-            placeholder + fade-in for a smooth load. `hideOnMobile` is belt and
-            braces — the whole card is `display:none` below `sm`, where the row
-            above renders instead. Portrait editorial covers crop from the center
-            (not the top) so the subject isn't sliced down to sky. */}
+          {/* Photo, z-0: the shared CardPhoto. Portrait editorial covers crop from the centre,
+              not the top, so the subject is not sliced down to sky. */}
           <div className="absolute inset-0 z-0 overflow-hidden">
             {cover ? (
               <CardPhoto
@@ -160,7 +125,6 @@ export function BlogPostCardView({
             )}
           </div>
 
-          {/* Scrim — z-1 */}
           <div
             className="pointer-events-none absolute inset-0 z-[1]"
             style={{
@@ -169,7 +133,6 @@ export function BlogPostCardView({
             }}
           />
 
-          {/* Top glass panel — z-3, mirrors pk-panel-top */}
           <div
             className="pk-panel-top relative z-[3] -mb-4 overflow-hidden"
             style={{
@@ -181,7 +144,6 @@ export function BlogPostCardView({
               boxShadow: 'inset 0 1px 0 var(--pk-panel-shine), inset 0 -1px 0 rgba(0,0,0,0.06)',
             }}
           >
-            {/* Diagonal shine overlay */}
             <div
               className="pointer-events-none absolute inset-0"
               style={{
@@ -190,7 +152,6 @@ export function BlogPostCardView({
               }}
             />
 
-            {/* Category label + optional Featured pill */}
             {(categoryLabel || frontmatter.featured) && (
               <div className="relative mb-1 flex items-center gap-2">
                 {frontmatter.featured && (
@@ -213,7 +174,6 @@ export function BlogPostCardView({
               </div>
             )}
 
-            {/* Title */}
             <div
               className={cn(
                 'relative font-extrabold tracking-[-0.022em] transition-colors group-hover:text-[color:var(--primary)]',
@@ -233,8 +193,7 @@ export function BlogPostCardView({
               </span>
             </div>
 
-            {/* Excerpt — single source of truth, right under the title. The
-              bottom panel below the cover only carries meta info. */}
+            {/* The excerpt sits under the title; the bottom panel carries only meta. */}
             <p
               className={cn(
                 'relative mt-[6px] leading-[1.45]',
@@ -274,7 +233,6 @@ export function BlogPostCardView({
             )}
           </div>
 
-          {/* Bottom glass panel — z-3, mirrors pk-panel-bot */}
           <div
             className="pk-panel-bot relative z-[3] -mt-4 overflow-hidden"
             style={{
@@ -294,8 +252,6 @@ export function BlogPostCardView({
               }}
             />
 
-            {/* Footer meta row — date, reading time and author live here so the
-              top panel is reserved for category + title + excerpt. */}
             <div
               className="relative flex flex-wrap items-center gap-x-[10px] gap-y-1 text-[11.5px] font-medium"
               style={{ color: 'var(--pk-text-2)' }}
@@ -364,22 +320,10 @@ interface BlogPostRowProps {
 }
 
 /**
- * The blog post as a list row: thumbnail, category, title, date and reading time.
- *
- * Two jobs, one shape. It is the `compact` variant, and it is what every other
- * variant renders below `sm` — the panelled card has no photo there and nothing
- * between its two sheets of glass, so it spends ~200px on a title and a date and
- * clips the excerpt where the panels overlap.
- *
- * **No variants of its own.** The first version had two: a border and three title
- * lines where the row replaced a card, an `-mx-2` bleed and two lines where it sat
- * in a list. On the homepage those meet — the lead post is a card below `sm`, the
- * four under it are the list — and the lead came out inset by 8px, boxed, and with
- * a reading time its neighbours did not have. One row, or the seam shows wherever
- * the two are stacked.
- *
- * The thumbnail carries the same `objectPosition` the card uses, so a focal point
- * tuned in the admin holds at 96×64 too.
+ * The blog post as a list row: thumbnail, category, title, date and reading time. It is the
+ * `compact` variant and what every other variant renders below `sm`. No variants of its own, so a
+ * lead post and the list under it never show a seam where they stack. The thumbnail keeps the
+ * card's `objectPosition`.
  */
 function BlogPostRow({
   post,

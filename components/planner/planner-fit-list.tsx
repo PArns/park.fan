@@ -7,24 +7,11 @@ import type { FitWish } from '@/lib/planner/fit';
 import { cn } from '@/lib/utils';
 
 /**
- * The rides the day is being decided over, in the order they are given up in.
- *
- * Two answers per row and they are different questions. The **checkbox** says
- * whether the ride is wanted at all — unticking one is the visitor taking it
- * out of the day, and on a ride they already had that is the only way it ever
- * leaves. The **pin** says it is one they are here for: a pinned ride moves to
- * the top of the list and the engine reads that order as `OptimizeInput.priority`,
- * so it is the last thing given up rather than the first.
- *
- * The list renders `fitOrder(...)` and never a sort of its own. That is the one
- * rule this component has: what is at the bottom of the screen is what the
- * engine gives up first, so a list ordered any other way would be a promise the
- * plan does not keep.
- *
- * The mark on the rides that will not make it is recomputed on every change,
- * against the same engine that will run on the press — which is what makes this
- * something to experiment with rather than a form. Pin the flagship and watch a
- * different name take the mark.
+ * The rides the day is being decided over, in the order they are given up in. The checkbox says
+ * whether a ride is wanted at all; the pin moves it up the order the engine reads as
+ * `OptimizeInput.priority`. The list renders `fitOrder(...)`, never a sort of its own, so the
+ * bottom of the screen is what the engine gives up first. The marks recompute on every change
+ * against the engine that runs on the press.
  */
 export function PlannerFitList({
   wishes,
@@ -55,10 +42,8 @@ export function PlannerFitList({
         const falls = !off && missed.has(wish.key);
         return (
           <li key={wish.key}>
-            {/* A `<label>` around the row so the name and the photo are part of
-                the hit area — ten rides at 20 px of checkbox each is a target
-                list nobody wants on a phone. The pin is a real button inside
-                it and stops the click there, or pinning would untick. */}
+            {/* A `<label>` around the row, so name and photo are part of the hit area. The pin is a
+                button inside it that stops the click, or pinning would untick. */}
             <label
               data-planner-fit-row={wish.key}
               className={cn(
@@ -79,10 +64,7 @@ export function PlannerFitList({
               />
               <span className="flex min-w-0 flex-1 items-center gap-1.5">
                 <span className="min-w-0 truncate text-sm">{wish.attractionName}</span>
-                {/* The park's own curation, on the rides it applies to. It is
-                    what the pin argues WITH: the app knows which rides a park
-                    is known for and cannot know which one somebody drove four
-                    hours for. */}
+                {/* The park's own curation, which the pin argues with. */}
                 {wish.headliner && (
                   <Crown
                     className="text-primary/70 size-3 shrink-0"
@@ -91,10 +73,8 @@ export function PlannerFitList({
                 )}
               </span>
 
-              {/* Which ones will not make it, on the rides themselves. The line
-                  above says how many fit; this says which, and that is the
-                  difference between a number and a decision somebody can act
-                  on. */}
+              {/* Which ones will not make it, on the rides themselves: the count says how many,
+                  this says which. */}
               {falls && (
                 <span
                   data-planner-fit-drops=""

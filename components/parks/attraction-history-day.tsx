@@ -3,7 +3,7 @@
 import { memo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { format, parseISO } from 'date-fns';
-import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
+import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
 import type {
   AttractionHistoryDay as AttractionHistoryDayData,
   ScheduleItem,
@@ -13,10 +13,12 @@ import { HourlyP90Sparkline } from './hourly-p90-sparkline';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { CROWD_TEXT_CLASS, CROWD_TILE_CLASS } from '@/lib/utils/crowd-level-styles';
 import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 
+/** One day of the ride's history window, as the grid hands it to a cell. */
 export interface DayDataProps {
   dateStr: string;
   historyData?: AttractionHistoryDayData;
@@ -35,13 +37,8 @@ interface AttractionHistoryDayProps {
  * The four things a day can carry besides its crowd level, as a bar across the top edge.
  *
  * The ride's twin of `daySignals` in {@link ParkCalendarDay}, reading a `ScheduleItem` where that
- * one reads a `CalendarDay`. Same colours in the same order, because the two grids sit two
- * chapters apart on pages about the same park and are explained by the same legend — this cell
- * used to say all of it with ONE coloured border plus ONE icon chosen by priority, so a Friday in
- * the summer holidays that is also a public holiday next door showed a third of what it knew.
- *
- * The neighbour signal is suppressed on a day the park was shut, exactly as over there: nobody
- * travelled in. A day where only the RIDE stood keeps it — the day-trippers still came.
+ * one reads a `CalendarDay`: same colours, same order, same legend. The neighbour signal is dropped
+ * on a day the park was shut (nobody travelled in), but kept on a day only the ride stood.
  */
 function daySignals(
   day: DayDataProps,
@@ -54,28 +51,28 @@ function daySignals(
   if (s.isSchoolHoliday || s.isSchoolVacation) {
     signals.push({
       key: 'school',
-      className: 'bg-yellow-500 dark:bg-yellow-400',
+      className: DAY_SIGNAL_CLASS.school,
       label: labels.school,
     });
   }
   if ((s.influencingHolidays?.length ?? 0) > 0 && day.attractionStatus !== 'PARK_CLOSED') {
     signals.push({
       key: 'neighbor',
-      className: 'bg-amber-600 dark:bg-amber-500',
+      className: DAY_SIGNAL_CLASS.neighbor,
       label: labels.neighbor,
     });
   }
   if (s.isPublicHoliday) {
     signals.push({
       key: 'holiday',
-      className: 'bg-red-500 dark:bg-red-400',
+      className: DAY_SIGNAL_CLASS.holiday,
       label: labels.holiday,
     });
   }
   if (s.isBridgeDay) {
     signals.push({
       key: 'bridge',
-      className: 'bg-blue-500 dark:bg-blue-400',
+      className: DAY_SIGNAL_CLASS.bridge,
       label: labels.bridge,
     });
   }
@@ -83,26 +80,14 @@ function daySignals(
 }
 
 /**
- * One day of the ride's 30-day wait-time history — the crowd calendar's cell with a queue curve
+ * One day of the ride's 30-day wait-time history: the crowd calendar's cell with a queue curve
  * in it.
  *
- * It is deliberately the same object as {@link ParkCalendarDay}: same tile fill from the same
- * `CROWD_TILE_CLASS`, same signal bar, same oversized day number in the tier's colour, same
- * one-word verdict under it. The two used to be different components that looked different — a
- * white card with a coloured BORDER and an icon row against a tinted tile with a top bar — and a
- * reader walking a park's calendar and then one of its rides met two visual languages for one
- * statement. The guide page settles which of them is canonical: it teaches `ParkCalendarDay` as
- * "the real calendar cell".
- *
- * What the ride cell has that the park cell does not is the SPARKLINE, and it is the reason this
- * component still exists. A park day is a forecast — one level, one number, opening hours. A ride
- * day is a measured curve, and its shape (flat all day, or a spike at eleven) is the finding: two
- * days can both read "hoch" and want visiting at different hours. So the curve takes the floor of
- * the tile, where the park cell puts its hours and weather, and the min–max pair sits under it.
- *
- * `yMax` is shared across the grid on purpose — see the trap named in the guide's own notes:
- * `Sparkline` fits each instance to its own maximum, so a flat 20-minute day and a 120-minute
- * peak are drawn identically dramatic unless the whole month is put on one scale.
+ * Deliberately the same object as {@link ParkCalendarDay} (tile fill, signal bar, day number,
+ * verdict), so a park's calendar and its rides speak one visual language. What the ride cell adds
+ * is the sparkline: a ride day is a measured curve and its shape is the finding, so it takes the
+ * floor of the tile. `yMax` is shared across the grid because `Sparkline` fits each instance to its
+ * own maximum, and a flat day would otherwise look as dramatic as a peak.
  */
 function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps) {
   const t = useTranslations('attractions');
@@ -111,8 +96,7 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
   const tLegend = useTranslations('attractions.historyLegend');
   const locale = useLocale();
 
-  const dateLocale =
-    { de, en: enUS, es, fr, it, nl }[locale as 'de' | 'en' | 'es' | 'fr' | 'it' | 'nl'] || enUS;
+  const dateLocale = dateFnsLocale(locale);
 
   const dayDate = parseISO(day.dateStr);
   const dayOfWeek = format(dayDate, 'EEE', { locale: dateLocale });
@@ -155,12 +139,8 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
           : tParks('crowdLevels.unknown');
 
   /**
-   * The bar's segments, each with the name of what it marks.
-   *
-   * The old cell put the holiday's own name in a tooltip on its corner icon — „Sommerferien",
-   * not „Schulferien" — and the rewrite dropped it: the name survived only in the cell's
-   * `aria-label`, so a sighted reader could no longer find out WHICH holiday a coloured segment
-   * meant. The legend names the category; only the day knows the day.
+   * The bar's segments, each with the name of what it marks: the legend names the category, only
+   * the day knows which holiday it is.
    */
   const signals = daySignals(day, {
     school:
@@ -198,7 +178,6 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
         day.isToday && 'border-primary border-2'
       )}
     >
-      {/* The signal bar, on the cell's own top edge and inside its rounding. */}
       {signals.length > 0 && (
         // 6 px of hit area for a 3 px bar: the segment is drawn at the cell's edge and the
         // wrapper reaches under it, so the name is reachable by pointer without the bar growing.
@@ -218,9 +197,8 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
         </span>
       )}
 
-      {/* Header: the date on the left, the day's longest queue on the right. Same wrap rule as
-        the park cell — the date group refuses to shrink and the wait drops to its own line rather
-        than sliding out from under it in a 128 px column. */}
+      {/* Same wrap rule as the park cell: the date group refuses to shrink and the wait drops to
+        its own line rather than sliding out from under it in a narrow column. */}
       <div className="flex flex-wrap items-start justify-between gap-x-1.5 gap-y-0.5">
         <div className="flex shrink-0 items-baseline gap-1.5">
           <span
@@ -253,12 +231,10 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
         )}
       </div>
 
-      {/* What kind of day it was, in one word — or why there is no curve. */}
       <div
         className={cn(
-          // `line-clamp-2`, not `truncate`: a crowd tier is one word but „Ganztägig geschlossen"
-          // is two, and at seven columns it came out „GANZTÄGIG GESCHLOS…". The tile has ~33 px of
-          // slack under its `min-h`, so a second line costs the grid nothing.
+          // `line-clamp-2`, not `truncate`: „Ganztägig geschlossen" is two words and would be cut
+          // at seven columns, and the tile has slack under its `min-h` for a second line.
           'mt-1.5 line-clamp-2 text-[9.5px] font-bold tracking-wider uppercase @min-[1024px]/page:mt-2 @min-[1024px]/page:text-[10.5px]',
           !isOpen
             ? 'text-status-closed'
@@ -270,9 +246,7 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
         {statusLabel}
       </div>
 
-      {/* The queue curve — the whole reason this cell is not `ParkCalendarDay`. It takes the floor
-        the park cell gives its hours and weather, and it keeps its box on a day with no data so a
-        closed Tuesday does not shorten the week it sits in. */}
+      {/* Keeps its box on a day with no data, so a closed Tuesday does not shorten its week. */}
       <div className="mt-auto flex flex-col gap-0.5 pt-1.5">
         <div className="h-8 w-full @min-[1024px]/page:h-11">
           {hasCurve && (
@@ -298,4 +272,8 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
   );
 }
 
+/**
+ * One day cell of the ride's 30-day history calendar: crowd tile, signal bar, hourly P90 curve and
+ * the day's low and high wait. Memoised; the grid renders one per day.
+ */
 export const AttractionHistoryDay = memo(AttractionHistoryDayComponent);

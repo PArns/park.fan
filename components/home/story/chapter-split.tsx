@@ -3,36 +3,16 @@ import { Reveal } from '@/components/marketing/scroll-reveal';
 import { cn } from '@/lib/utils';
 
 /**
- * A chapter's body as an argument beside its exhibit, alternating down the page.
+ * A chapter's body as an argument beside its exhibit, the sides alternating down the page: the
+ * prose in a narrow column, the live component wide beside it and running off the container edge.
  *
- * Every chapter used to be "heading, then a full-width grid", which reads the
- * same however good the individual section is — the page had one rhythm and
- * fourteen chances to use it. This is the other one: the prose in a narrow
- * column, the live component wide beside it and running off the container edge,
- * and the sides swapping from one chapter to the next.
- *
- * Three decisions are load-bearing.
- *
- * **The prose comes first in the DOM, whichever side it is drawn on.** The
- * exhibit is a table of numbers; the argument for reading it belongs ahead of it
- * for a screen reader and for a crawler. `order` moves the box, never the source.
- * Below a 768 px page the prose is drawn under the exhibit: a phone reads the
- * chapter as heading, then the live component, then the argument behind "show
- * more" (PAR-435). Every switch here asks the page's width, not the window's,
- * so the collapse and the two-column grid cannot disagree while the trip
- * planner narrows the page.
- *
- * **The exhibit is not wrapped in `Reveal`.** `Reveal` keeps a `translate-y-0`
- * on its wrapper for good, and a transform makes that wrapper a backdrop root —
- * any glass inside then has only the wrapper to sample and goes flat. Exhibits
- * here are real production components and several of them are `GlassCard`s, so
- * the entrance belongs to the text alone.
- *
- * **The bleed needs `overflow-x-clip` on the SECTION, never `overflow-hidden`.**
- * The overhang is what makes the component read as an object on the page rather
- * than a picture in a frame, and an unclipped one gives the document a
- * horizontal scrollbar. `hidden` would additionally make the section a scroll
- * container, which breaks any sticky inside it.
+ * - The prose comes first in the DOM whichever side it is drawn on, ahead of the table for a
+ *   screen reader and a crawler; `order` moves the box. Below a 768 px page it is drawn under the
+ *   exhibit, behind "show more". Every switch asks the page's width, not the window's.
+ * - The exhibit is not wrapped in `Reveal`, whose lasting transform would make its wrapper a
+ *   backdrop root and flatten any glass inside.
+ * - The bleed needs `overflow-x-clip` on the section, never `overflow-hidden`, which would make it
+ *   a scroll container and break any sticky inside.
  */
 export function ChapterSplit({
   exhibit,

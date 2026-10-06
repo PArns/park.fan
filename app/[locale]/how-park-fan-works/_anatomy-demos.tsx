@@ -26,18 +26,10 @@ import { getServerNowMs } from '@/lib/utils/server-time';
 import { buildDemoFixtures, DEMO_CALENDAR_DAYS, DEMO_TIMEZONE, OFF_SEASON_CARD } from './_fixtures';
 
 /**
- * One production component per step of the park-page walk-through (chapter 06).
- *
- * The chapter used to be the only one on this page with nothing in it: fourteen
- * paragraphs about cards a reader never saw, on a page whose whole premise is
- * "no screenshots, the real parts". Every block here mounts the same component
- * the park page mounts.
- *
- * The values are frozen fixtures, like the rest of the teaching blocks — the two
- * deliberately live blocks are in chapters 02 and 03, where the point is that
- * the thing is running right now. Here the point is what the block looks like,
- * and a lesson that reshapes itself overnight is not one. Where a figure is
- * quoted in the prose beside it, both come from the same reading.
+ * One production component per step of the park-page walk-through (chapter 06): every block
+ * mounts the component the park page mounts. The values are frozen fixtures, like the other
+ * teaching blocks, because a lesson that reshapes itself overnight is not one; where the prose
+ * quotes a figure, both come from the same reading.
  */
 
 const PARK_PATH = '/parks/europe/germany/bruehl/phantasialand';
@@ -65,9 +57,8 @@ function todaySchedule(nowMs: number): ScheduleItem {
     purchases: null,
     isHoliday: true,
     holidayName: 'Summer Holidays',
-    // The API sends `holidayType` and `isHoliday` together, and this is the pair that used to
-    // print a school break behind the public holiday's party-popper: without the type, `isHoliday`
-    // alone says nothing about which of the two this is.
+    // The API sends `holidayType` with `isHoliday`, which alone does not say whether this is a
+    // school or a public holiday.
     holidayType: 'school',
     isSchoolHoliday: true,
     isPublicHoliday: false,
@@ -85,9 +76,9 @@ function todaySchedule(nowMs: number): ScheduleItem {
  * 01 — the header's opening hours block.
  *
  * The countdown badge under the hours ("schließt in …") needs the browser clock and arrives after
- * hydration, 30 px of it. The box holds it: 316 px at 360 to 1440 px in all six locales (PAR-683).
- * From 17:00 UTC, when the fixture's park has closed, there is no badge and the box keeps those
- * 30 px empty under the card rather than letting the page below jump for everyone else.
+ * hydration, so the box holds its height: 316 px at 360 to 1440 px in all six locales. After the
+ * fixture's park has closed there is no badge, and the space stays empty rather than letting the
+ * page below jump.
  */
 export async function AnatomyHeaderDemo() {
   return (
@@ -100,18 +91,15 @@ export async function AnatomyHeaderDemo() {
 /** 02 — which school holidays reach this park today. */
 export async function AnatomyHolidayDemo() {
   const schedule = todaySchedule(await getServerNowMs());
-  // Only the four fields the panel reads. The cast is the honest shape of that:
-  // mounting the real component means feeding it the real prop, and a whole
-  // ParkWithAttractions fixture would be 40 rides of noise for one chip row.
+  // Only the fields the panel reads, cast: a whole ParkWithAttractions fixture would be 40 rides
+  // of noise for one chip row.
   const park = {
     timezone: DEMO_TIMEZONE,
     schedule: [schedule],
     nextSchedule: null,
     status: 'OPERATING',
     hasOperatingSchedule: true,
-    // The row names the park's own region beside the local chips, so the fixture has to carry one
-    // — without it the demo would show the neighbouring half alone, which is the imbalance this
-    // row exists to fix.
+    // The row names the park's own region beside the neighbours' chips, so the fixture carries one.
     region: 'Nordrhein-Westfalen',
     country: 'Germany',
   } as unknown as ParkWithAttractions;
@@ -125,7 +113,7 @@ export async function AnatomyHolidayDemo() {
  *
  * The card reads "today" off the browser clock and renders nothing before it, so its box is held
  * here: 101 px below `sm`, where the card drops to its tighter padding, and 149 px from `sm` up,
- * measured at 360 to 1440 px in all six locales (PAR-683).
+ * measured at 360 to 1440 px in all six locales.
  */
 export async function AnatomyPurchasesDemo() {
   const schedule = todaySchedule(await getServerNowMs());

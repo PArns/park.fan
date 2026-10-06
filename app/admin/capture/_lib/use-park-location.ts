@@ -2,16 +2,12 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
 
 /**
- * Where the phone is, and which park that is.
- *
- * Two separate questions with two separate failure modes, so they are two hooks.
- * The position is watched rather than read once — the point of the screen is that
- * the ride in front of you rises to the top, and that only works if the distance
- * updates as you walk. The park is resolved once it is found, because
- * `/api/nearby` is a round trip and the answer does not change between two paths.
+ * Where the phone is, and which park that is: two questions with two failure modes, so two hooks.
+ * The position is watched so the ride in front of you rises as you walk; the park is resolved once.
  */
 
 export interface DevicePosition {
@@ -24,26 +20,9 @@ export interface DevicePosition {
 export type PositionStatus = 'idle' | 'locating' | 'ready' | 'denied' | 'unavailable';
 
 /**
- * The device's position, kept current.
- *
- * `watchPosition` rather than `getCurrentPosition`: a single fix taken at the
- * entrance is wrong by half a kilometre by the time somebody reaches the back of
- * the park. `enableHighAccuracy` is on because the whole list is ordered by
- * distances of tens of metres, and the coarse fix cannot tell two neighbouring
- * rides apart.
- *
- * While the tab is in front, every fix the browser reports is published, about
- * one a second. PAR-341 dropped fixes that moved less than 10 m and let the first
- * callback come from a cache up to 60 s old; in the park that made the
- * nearest-ride card trail the walk by several seconds, and it is the card the
- * whole screen exists for. Re-sorting a backlog of a few dozen rides once a
- * second costs nothing a phone notices.
- *
- * What stays from PAR-341 is the one lever that does not slow the screen down:
- * the watch is released while the tab is in the background. The workflow is to
- * leave for the camera and come back, and a fix nobody is on screen to read is
- * the GPS radio running for nothing. Coming back re-subscribes, and a cached fix
- * of up to 15 s answers the first callback straight away.
+ * The device's position, kept current. Watched with high accuracy because the list is ordered by
+ * distances of tens of metres, and every fix is published so the nearest-ride card keeps up with
+ * the walk. The watch is released while the tab is in the background, where nobody reads it.
  */
 export function useDevicePosition(enabled = true) {
   const [position, setPosition] = useState<DevicePosition | null>(null);
@@ -52,6 +31,7 @@ export function useDevicePosition(enabled = true) {
   const [attempt, setAttempt] = useState(0);
   /** Whether the tab is in front. Only then is there a watch at all. */
   const [active, setActive] = useState(true);
+  const noGeolocation = useMounted() && !navigator.geolocation;
 
   useEffect(() => {
     if (typeof document === 'undefined') return;
@@ -65,15 +45,8 @@ export function useDevicePosition(enabled = true) {
   useEffect(() => {
     if (!enabled || !active) return;
 
-    const geolocation = typeof navigator === 'undefined' ? undefined : navigator.geolocation;
-    if (!geolocation) {
-      // Reported like any other failure, and deferred like any other callback. A
-      // browser without the API is not an event to subscribe to, and setting state
-      // straight from an effect body is the cascading render the rule exists to
-      // stop — so it goes out as a task instead.
-      const timer = setTimeout(() => setStatus('unavailable'), 0);
-      return () => clearTimeout(timer);
-    }
+    const geolocation = navigator.geolocation;
+    if (!geolocation) return;
 
     const watch = geolocation.watchPosition(
       (fix) => {
@@ -85,10 +58,8 @@ export function useDevicePosition(enabled = true) {
         setStatus('ready');
       },
       (error) => {
-        // A denial is permanent until somebody changes it in the browser's
-        // settings, so it gets its own state and its own sentence — "Ortung
-        // fehlgeschlagen" would send them looking for a signal problem they do
-        // not have.
+        // A denial lasts until the browser's settings change, so it gets its own state and
+        // sentence instead of sending somebody looking for a signal problem.
         setStatus(error.code === error.PERMISSION_DENIED ? 'denied' : 'unavailable');
       },
       { enableHighAccuracy: true, maximumAge: 15_000, timeout: 20_000 }
@@ -102,7 +73,7 @@ export function useDevicePosition(enabled = true) {
     setAttempt((n) => n + 1);
   }, []);
 
-  return { position, status, retry };
+  return { position, status: enabled && noGeolocation ? 'unavailable' : status, retry };
 }
 
 export interface NearbyPark {
@@ -112,33 +83,15 @@ export interface NearbyPark {
 }
 
 /**
- * Metres around a park's stored point that still count as standing in it.
- *
- * The endpoint answers `in_park` on `distance <= radius` against one stored point
- * per park — there is no boundary and no tolerance, so at 1001 m the answer flips.
- * Its default of 1000 m is smaller than several parks: measured across the 182
- * parks with attraction coordinates, 22 have a ride further than 1000 m from their
- * own point (Shanghai Disneyland 2097 m, Ocean Park 1993 m, Cedar Point 1446 m),
- * and the widest genuine one is 2266 m. Standing at those rides returned "no park"
- * while the ride list beside it worked, because that one is computed on the client
- * with no radius gate at all.
- *
- * 3000 m covers the widest park and leaves the car park and the entrance plaza
- * inside. It does not make the answer less certain: which park comes back is
- * decided by whichever point is nearest, and inside a resort that is already a
- * coin toss (PortAventura, Ferrari Land and Caribe share one point; Disneyland and
- * DCA are 86 m apart). That is what the picker is for, and a hand-picked park wins
- * over this one anyway.
+ * Metres around a park's stored point that still count as standing in it. The endpoint compares
+ * against one point per park, and its 1000 m default is smaller than several parks (the widest has
+ * a ride 2266 m out). Which park comes back is still decided by the nearest point.
  */
 const IN_PARK_RADIUS_M = 3000;
 
 /**
- * How long to wait before asking again while no park has been found.
- *
- * The first fix is often the coarse one — a cell tower, or the last position the
- * browser had cached — and a "no park" answer to it used to be final until
- * somebody pressed a button. Now the next fix asks again, but not every second:
- * the answer is a round trip, and a fix a second in a dead spot would queue them.
+ * How long to wait before asking again while no park has been found. The first fix is often
+ * coarse, so a later fix asks again, but not every second: each answer is a round trip.
  */
 const RETRY_WITHOUT_PARK_MS = 15_000;
 
@@ -153,19 +106,9 @@ function record(value: unknown): Record<string, unknown> | null {
 }
 
 /**
- * The park an `in_park` answer names, and its path when the answer carries one.
- *
- * The park object in that answer has **no** `url`: checked against the running
- * endpoint on 2026-09-27 for Phantasialand, it carries id, name, slug, distance,
- * status, analytics, timezone and schedules, and nothing with the continent,
- * country or city in it. Requiring `park.url` is what made this screen answer
- * "Kein Park in Reichweite" in every park since it shipped. Every ride in the
- * same answer does carry one (`/v1/parks/<continent>/<country>/<city>/<park>/
- * attractions/<slug>`), which is the geography the planner already reads
- * (`parkGeoFromUrl`). `park.url` is still tried first, for the day it appears.
- *
- * `path` is null when neither is there — a park whose rides have no coordinates
- * comes back with an empty ride list — and the caller asks once more for it.
+ * The park an `in_park` answer names, and its path when the answer carries one. The park object
+ * has no `url`, so the geography comes from the first ride that has one (`park.url` is still tried
+ * first). `path` is null when neither is there, and the caller asks once more.
  */
 export function readInParkAnswer(
   data: unknown
@@ -206,17 +149,9 @@ async function askNearby(query: string, signal: AbortSignal): Promise<unknown> {
 }
 
 /**
- * Which park a fix falls inside.
- *
- * `type: 'in_park'` is the only answer that names a park here — the
- * `nearby_parks` list is never guessed from, because picking its first entry
- * would file a morning's photographs under whichever park was closest to the
- * motorway. It reports "no park" instead and the screen offers the picker.
- *
- * The second request only runs when the `in_park` answer had no URL to read the
- * geography from. `radius=0` turns the same point into a `nearby_parks` answer,
- * whose entries do carry their URL, and the park is found in it by the slug the
- * first answer already named — it is a lookup, not a second guess.
+ * Which park a fix falls inside. Only `in_park` names a park: guessing from `nearby_parks` would
+ * file a morning's photos under whichever park is closest to the motorway. The second request
+ * (`radius=0`) only looks up the URL of the park the first answer named.
  */
 async function resolveNearbyPark(
   position: DevicePosition,
@@ -232,15 +167,9 @@ async function resolveNearbyPark(
 }
 
 /**
- * Which park the phone is in, via the public nearby endpoint.
- *
- * Asked on the first fix and, while nothing has been found, again on a later fix
- * every `RETRY_WITHOUT_PARK_MS`. Once a park is found it stays: walking around
- * must not re-ask on every fix.
- *
- * The request is not tied to the fix that started it. A fix arrives about once a
- * second, and aborting the request on each one would cancel every answer before
- * it came back — it is aborted only by `redetect` and on unmount.
+ * Which park the phone is in, via the public nearby endpoint. Asked again every
+ * `RETRY_WITHOUT_PARK_MS` until a park is found, which then stays. The request is aborted only by
+ * `redetect` and on unmount: a fix arrives about once a second and would cancel every answer.
  */
 export function useNearbyPark(position: DevicePosition | null) {
   const [park, setPark] = useState<NearbyPark | null>(null);

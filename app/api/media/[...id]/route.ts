@@ -33,7 +33,7 @@ export async function GET(request: NextRequest, context: { params: Promise<{ id:
   if (!image) {
     return NextResponse.json(
       { error: `No image with id "${id}"` },
-      // Not cached: an id that is missing today may exist after the next deploy.
+      // Cached only briefly: an id that is missing today may exist after the next deploy.
       { status: 404, headers: cdnCacheHeaders('public, s-maxage=60') }
     );
   }

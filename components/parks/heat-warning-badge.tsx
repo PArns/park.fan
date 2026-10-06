@@ -39,7 +39,6 @@ export function HeatWarningBadge({ label, size = '1em', className }: HeatWarning
       style={{ width: size, height: size }}
     >
       <title>{label}</title>
-      {/* Triangle: white fill, red border, rounded corners. */}
       <path
         d="M12 3 L22.5 21 L1.5 21 Z"
         fill="#ffffff"
@@ -47,7 +46,6 @@ export function HeatWarningBadge({ label, size = '1em', className }: HeatWarning
         strokeWidth="2.4"
         strokeLinejoin="round"
       />
-      {/* Exclamation mark, black. */}
       <line
         x1="12"
         y1="10"

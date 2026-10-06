@@ -48,15 +48,10 @@ interface SearchResultsPanelProps {
 }
 
 /**
- * The body of both search surfaces — the hero's floating dropdown and the header's palette:
- * skeleton → results (or glossary-only, or "no results") once a query runs, and the browse list
- * before that. Only the shell around it differs. The palette used to carry its own copy of this
- * tree, and the copy drifted: a skeleton drawn in white on a light dialog, no wait for the browse
- * list, and the last query's results left standing next to the browse list after a reopen.
- *
- * In the hero the list grows with its content and then scrolls. It can grow at all because the
- * dropdown floats over the page instead of sitting in the hero's flow — a list in flow would move
- * the vertically centred headline on every keystroke.
+ * The body of both search surfaces, the hero's floating dropdown and the header's palette:
+ * skeleton, then results (or glossary-only, or "no results") once a query runs, and the browse
+ * list before that. In the hero the list grows and then scrolls, which it can because the dropdown
+ * floats over the page rather than moving the centred headline.
  */
 export function SearchResultsPanel({
   query,
@@ -83,12 +78,9 @@ export function SearchResultsPanel({
     loading ||
     (query.trim().length >= 3 && debouncedQuery.trim().length < 3) ||
     (query.length < 3 && browse.isPending);
-  // Both `query` and `debouncedQuery` have to agree before anything query-bound renders. They
-  // disagree for the 300 ms debounce window after the field is cleared — `query` is already
-  // empty while `debouncedQuery` still holds the old term — and the browse branch below keys off
-  // `query`, so for that window the card rendered the full result list AND the browse list at
-  // once, ballooned to its cap and snapped back. Pressing Escape hit this every time, and the
-  // palette, which is cleared on close, showed the last query's results on every reopen.
+  // `query` and `debouncedQuery` must agree before anything query-bound renders: for the debounce
+  // window after the field is cleared they differ, and the card would show the old results and
+  // the browse list at once (on every Escape, and on every palette reopen).
   const queryIsLive = query.trim().length >= 3;
   const queryRan = !isPending && queryIsLive && debouncedQuery.length >= 3;
   const hasResults = queryRan && results;
@@ -139,7 +131,6 @@ export function SearchResultsPanel({
           ))}
       </CommandList>
 
-      {/* Footer: hint while browsing, "all results" once a query ran */}
       {showViewAll ? (
         <div className="border-border/40 shrink-0 border-t p-2">
           <Button

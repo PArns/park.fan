@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 import { mergeLiveParkSnapshot, type LiveParkSnapshot } from '@/lib/api/parks';
 import { readParkSimulationParam } from '@/lib/parks/park-simulation';
 import type { ParkWithAttractions } from '@/lib/api/types';
+import { LIVE_POLL_QUERY_OPTIONS } from '@/lib/hooks/live-poll-options';
 
 interface UseLiveParkDataParams {
   continent: string;
@@ -15,38 +16,9 @@ interface UseLiveParkDataParams {
 }
 
 /**
- * Hook to fetch live park data with React Query
- * - Page HTML served from Full Route Cache (ISR); this hook provides live updates on top
- * - Refetches immediately on mount: initialData comes from the statically cached page and
- *   can be stale, so we anchor it to epoch (initialDataUpdatedAt: 0) to mark it stale and
- *   force a fresh fetch on mount. (React Query otherwise treats initialData as fresh as of
- *   mount time and would skip the refetch for the full staleTime.)
- * - Auto-polls every 5 min regardless of park status (catches opening/closing)
- * - staleTime 5 min prevents redundant focus-triggered refetches within the poll window
- *
- * What comes back over the wire is the LIVE PROJECTION, not the whole park ({@link
- * LiveParkSnapshot} — ~40 KB instead of ~90 KB, every five minutes, for as long as the tab is
- * open). The merge back onto `initialData` happens in `select`, i.e. per observer against that
- * observer's own seed, so consumers still read a complete `ParkWithAttractions`. Subscribers
- * that pass no seed (WeatherCard, useTodaySchedule) read only park-level live fields and carry
- * props for the rest, so they see the projection unchanged.
- *
- * Shows and restaurant statuses are the case the projection could not cover, because they are
- * neither live nor stable: they are set for the DAY. The server render's copy comes out of a
- * fetch cached for PARK_REVALIDATE, so a tab opened at noon can be looking at a snapshot written
- * before the park unlocked its gates — showtimes dated yesterday, every show CLOSED. So this hook
- * asks for them (`?full=1`) on its first poll and every {@link DAILY_BLOCK_INTERVAL_MS} after,
- * plus once more when the park's own status flips, which is what changes the API's answer for
- * them. Upstream it is free: the proxy re-fetches the whole park on every poll either way.
- */
-/**
- * How long a tab may keep a day-scoped block before asking for it again.
- *
- * Half an hour, because the two things it can be wrong about resolve on different clocks: the
- * park opening (which the backend also pushes at, by dropping the park's cache tag — so a page
- * LOADED after opening is already right, and this covers the tab that was open across it) and a
- * show pulled during the day, which nothing announces. Measured against a running server the block
- * costs 5.1 KB, so this cadence spends ~10 KB an hour on it rather than ~61.
+ * How long a tab may keep the day-scoped block (shows, restaurants) before asking for it again: a
+ * park opening also drops the backend cache, but a show pulled during the day is announced by
+ * nothing.
  */
 const DAILY_BLOCK_INTERVAL_MS = 30 * 60_000;
 
@@ -60,6 +32,13 @@ const DAILY_BLOCK_INTERVAL_MS = 30 * 60_000;
  */
 const dailyBlockPolls = new Map<string, { lastFullAt: number; status?: string }>();
 
+/**
+ * Polls a park's live projection ({@link LiveParkSnapshot}) every five minutes and merges it onto
+ * the server-rendered park in `select`, per observer, so consumers read a complete
+ * `ParkWithAttractions`. Shows and restaurants are set for the day, so their full block (`?full=1`)
+ * is asked for on the first poll, every {@link DAILY_BLOCK_INTERVAL_MS} and when the park's status
+ * flips. See docs/rules/api-budget-per-page.md.
+ */
 export function useLiveParkData({
   continent,
   country,
@@ -130,18 +109,12 @@ export function useLiveParkData({
     // The seed is a full park, which is a valid snapshot too — merging it over itself is a no-op,
     // so the pre-fetch render is byte-identical to what the server sent.
     initialData,
-    // initialData comes from the statically cached page HTML and may be stale; anchor it to
-    // epoch so React Query treats it as stale and refetches live data on mount (see docblock).
+    // The seed comes from the cached page and may be stale: anchored to epoch, it refetches on
+    // mount instead of counting as fresh for the whole staleTime.
     initialDataUpdatedAt: 0,
-    // Run the query on the client only. During the static (Cache Components) prerender the
-    // component renders from `initialData`; activating React Query server-side would read
-    // Date.now() internally, which a static prerender forbids.
+    // Client-only: during the static prerender the component renders from `initialData`, and
+    // React Query would read the clock.
     enabled: enabled && typeof window !== 'undefined',
-    staleTime: 5 * 60_000,
-    gcTime: 10 * 60_000,
-    refetchOnWindowFocus: true,
-    refetchOnReconnect: true,
-    refetchInterval: 5 * 60_000,
-    retry: 2,
+    ...LIVE_POLL_QUERY_OPTIONS,
   });
 }

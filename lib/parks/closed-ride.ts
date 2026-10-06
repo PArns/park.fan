@@ -10,21 +10,11 @@ import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matche
 import type { Locale } from '@/i18n/config';
 
 /**
- * A ride that closed for good keeps its page.
- *
- * The park payload leaves retired rides out, so a ride page that cannot find its slug there used
- * to answer 404 — X2 at Six Flags Magic Mountain, retired on 2026-07-13, did so while its own news
- * post linked to it. The attraction detail endpoint keeps answering for a retired ride, and this
- * is the one place that asks it and decides whether what came back is a page.
- *
- * Only `retiredKind === 'closed'` is. A `reclassified` row is one the source now lists as a show
- * or a restaurant: nothing closed, so a page saying so would be wrong, and it stays a 404 as it
- * was. The same goes for a slug the park payload dropped as a name duplicate, which comes back
- * from the detail endpoint with no `retiredKind` at all.
- *
- * Asked only after the park payload missed, so a live ride costs nothing. The fetch is the cached
- * detail read the blog's ride references already share; `generateMetadata` and the page body ask
- * the same question and `cache()` makes it one.
+ * A ride that closed for good keeps its page. The park payload leaves retired rides out, but the
+ * attraction detail endpoint still answers for them; this asks it (only after the park payload
+ * missed) and decides whether the answer is a page. Only `retiredKind === 'closed'` is: a
+ * `reclassified` row or a dropped duplicate closed nothing and stays a 404. `cache()` makes the
+ * metadata and page reads one. See docs/rules/a-closed-ride-keeps-its-page.md.
  */
 export const getClosedRide = cache(
   async (
@@ -42,15 +32,14 @@ export const getClosedRide = cache(
 /** An attraction response that is a ride closed for good, with the date it closed. */
 export type ClosedRide = AttractionResponse & { retiredAt: string; retiredKind: 'closed' };
 
+/** Whether an attraction detail response is a ride closed for good. */
 export function isClosedRide(detail: AttractionResponse | null | undefined): detail is ClosedRide {
   return detail?.retiredKind === 'closed' && typeof detail.retiredAt === 'string';
 }
 
 /**
- * The day a ride closed, written out in the reader's locale.
- *
- * `retiredAt` is the day an editor entered, stored as midnight UTC, so it is formatted in UTC: in
- * the park's own timezone Magic Mountain's 13 July would read 12 July.
+ * The day a ride closed, written out in the reader's locale. `retiredAt` is an editor's date stored
+ * as midnight UTC, so it is formatted in UTC; the park's zone would move it to the day before.
  */
 export function formatClosedOn(retiredAt: string, locale: string): string {
   const day = new Date(retiredAt);
@@ -78,14 +67,9 @@ const HTTP_URL = /https?:\/\/[^\s<>"')\]]+/gi;
 
 /**
  * Our own post about the closure, in the reader's language, when the retirement reason links one.
- *
- * The reason is free English text an editor typed, often nothing but a URL, and X2's is our news
- * post's English address. That address is looked up in the blog manifest and the reader gets the
- * translation of the same post (or the English one where there is none), under the URL `postPath`
- * gives it — never the English slug on a German page.
- *
- * Null when the reason names no post of ours, when the post is not in the manifest (a draft), or
- * when this locale has no blog at all.
+ * The reason is an editor's free English text, often just our post's English URL; the slug is
+ * looked up in the manifest and the reader gets that post's translation under `postPath`, never
+ * the English slug on a German page. Null when no post of ours is linked or published.
  */
 export function closedRidePost(
   retiredReason: string | null | undefined,
@@ -101,11 +85,8 @@ export function closedRidePost(
 }
 
 /**
- * The first outside source the reason links, for a retirement that names no post of ours.
- *
- * Shown as the source's host name and nothing more: the rest of the reason is an editor's English
- * note, and printing it on a page in five other languages would be a sentence the reader did not
- * ask for in a language they may not read.
+ * The first outside source the reason links, for a retirement that names no post of ours. Shown
+ * as the host name only: the rest of the reason is an editor's English note.
  */
 export function closedRideSource(
   retiredReason: string | null | undefined

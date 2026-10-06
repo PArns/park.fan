@@ -5,18 +5,10 @@ import {
 } from '@/lib/agents/api-catalog';
 
 /**
- * The API catalog (RFC 9727) — the path an agent guesses instead of reading our docs, so it
- * can find the OpenAPI description of api.park.fan without a human handing over the URL.
- *
- * Static: the document is a handful of constants, so it is prerendered at build time and
- * served from the CDN rather than waking a function for every probe. Next serves HEAD from
- * this GET with the headers intact, which is what §2 asks for — a HEAD here must answer with
- * the `api-catalog` Link relation.
- *
- * `.well-known` is a real route folder in the App Router (Next lists it alongside rss.xml and
- * llms.txt), so nothing rewrites the leading dot away. It also stays clear of the i18n proxy:
- * the matcher skips any path segment containing a dot, so the catalog never gets a locale
- * prefix bolted onto it.
+ * The API catalog (RFC 9727): the path an agent guesses, so it finds the OpenAPI description of
+ * api.park.fan without a human handing over the URL. Next answers HEAD from this GET with the
+ * headers intact, and RFC 9727 §2 requires a HEAD to carry the `api-catalog` Link relation. The
+ * proxy matcher skips any segment containing a dot, so the path never gets a locale prefix.
  */
 export const dynamic = 'force-static';
 

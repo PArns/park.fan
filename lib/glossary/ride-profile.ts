@@ -45,18 +45,10 @@ export interface ResolvedRideProfile {
 }
 
 /**
- * Resolves a curated ride profile's glossary term ids into everything the UI
- * needs: names, links, definitions and rail metadata.
- *
- * This exists as ONE shared function on purpose. The page header claims a
- * figure count while the profile section renders the figures, and the two are
- * built from the same list only if they resolve it the same way — ids this app
- * has no glossary entry for are dropped (the API is free to be seeded with a
- * term before the glossary entry lands here), so counting `profile.elements`
- * directly would promise nine figures where the rail shows seven.
- *
- * Element ORDER and REPEATS are preserved. The list is the layout walkthrough,
- * so two corkscrews in a row must read as two steps — never dedupe or sort it.
+ * Resolves a curated ride profile's glossary term ids into names, links, definitions and rail
+ * metadata. One shared function, so the header's figure count and the rail agree: ids this app has
+ * no glossary entry for are dropped. Order and repeats are kept, because the list is the layout
+ * walkthrough; see docs/rules/ride-and-glossary-link.md.
  */
 export const resolveRideProfile = cache(async function resolveRideProfile(
   profile: RideProfile,
@@ -81,11 +73,9 @@ export const resolveRideProfile = cache(async function resolveRideProfile(
     });
   }
 
-  // "Launch Coaster" undersells a ride that launches you twice, and the seed
-  // does not carry the distinction — but the layout does, so read it off the
-  // figures rather than asking curators to keep a second field in sync. The
-  // term it links to stays `launch-coaster`: the glossary explains launches,
-  // and multi-launch is a count of them, not a different piece of engineering.
+  // A ride that launches twice is a multi-launch coaster, read off the figures rather than a
+  // second curated field. It still links `launch-coaster`: multi-launch is a count of launches,
+  // not a different piece of engineering.
   const launchCount = elements.filter((element) => LAUNCH_ELEMENT_IDS.has(element.id)).length;
   const isMultiLaunch = launchCount >= MULTI_LAUNCH_MIN;
   const t = await getTranslations({ locale, namespace: 'attraction.rideProfile' });
@@ -115,12 +105,8 @@ export const resolveRideProfile = cache(async function resolveRideProfile(
 });
 
 /**
- * Has the profile anything for the facts grid — manufacturer, year, inversions, stats?
- *
- * The half of "does this render" that needs no term resolution. Exported because the section
- * draws that grid conditionally and used to carry its own copy of this expression: the predicate
- * below was single-sourced while the expression inside it was not, which is the same drift one
- * step down.
+ * Whether the profile has anything for the facts grid (manufacturer, year, inversions, stats).
+ * Exported so the section's grid and {@link rideProfileRendersFrom} ask the same question.
  */
 export function hasRideProfileFacts(profile: RideProfile): boolean {
   return (
@@ -132,15 +118,8 @@ export function hasRideProfileFacts(profile: RideProfile): boolean {
 }
 
 /**
- * Does <RideProfileSection> render anything for this profile, given what its ids resolved to?
- *
- * The section returns null when the curated ids resolve to no elements and no types and the
- * profile carries no facts either — so the ride page's chapter row has to ask before offering a
- * jump to `#ride-profile`. One definition, so the row cannot offer an anchor the section declines
- * to render: the first version of the row used `!!attraction.rideProfile` and pointed into nothing
- * whenever a rename left a profile with no resolvable ids in it.
- *
- * Takes the resolved value rather than fetching it, for the caller that has one already.
+ * Whether <RideProfileSection> renders anything for this profile, given what its ids resolved to,
+ * so the ride page's chapter row never offers a `#ride-profile` jump into nothing.
  */
 export function rideProfileRendersFrom(
   profile: RideProfile,

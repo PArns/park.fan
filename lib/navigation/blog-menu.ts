@@ -6,50 +6,23 @@ import { postPath } from '@/lib/blog/paths';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 
 /**
- * What the blog menu shows, and what it deliberately leaves out.
+ * What the blog menu shows, and what it leaves out. The article categories (stable hubs) and the
+ * newest articles are in; news has its own panel (`lib/navigation/news-menu.ts`). Tags are out:
+ * most tag pages are one post's teaser at another URL, and a sitewide template would hand them
+ * the weight the category hubs should get. See
+ * docs/rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md.
  *
- * The blog currently holds 24 articles per locale across **4 categories** (guides, new
- * attractions, behind-the-scenes, new on park.fan), a few dozen tags and one author. News is not
- * in it: news has its own bar entry and panel (`lib/navigation/news-menu.ts`), and neither panel
- * lists the other's posts. So:
- *
- * - **Categories are in.** Four stable hubs; that is what a template link is for. The news
- *   category is not one of them — `buildCategoryTree` holds articles only.
- * - **The newest articles are in.** Five links (`RECENT_LIMIT` below), server-rendered. At this
- *   publishing rate the "the template's link set changes with every post" objection costs
- *   nothing — it is five URLs, and news, the part that turns over fast, is not among them. If the
- *   blog ever reaches the point where the front of the list turns over weekly, move this pane to a
- *   fetch the way the parks menu does with its cities.
- * - **Tags are out, and this is the whole reason the panel is small.** 31 tag pages for 7 posts
- *   means most of them are one post's teaser under a different URL. Promoting that set into a
- *   template that runs on ~35,000 pages would hand sitewide weight to precisely the pages worth
- *   the least, and would dilute what the four category hubs get. Tags stay where they belong: on
- *   the posts that carry them.
- *
- * No API call anywhere in here — both sources are the generated blog manifest, read synchronously
- * at render time. Imported from `@/lib/blog/listing`, never `@/lib/blog`, which would drag every
- * post body into the layout's bundle.
+ * Both sources are the generated blog manifest, imported from `@/lib/blog/listing`, never
+ * `@/lib/blog`, which would drag every post body into the layout's bundle.
  */
 
-/**
- * Articles in the panel.
- *
- * Five: an opener plus four rows. Four rows end level with the opener, so the band fits without
- * scrolling. What this may NOT become is the whole blog — see the note above on why the tags stayed
- * out.
- */
+/** Articles in the panel: an opener plus four rows, which end level with it, so no scrolling. */
 const RECENT_LIMIT = 5;
 
 /**
- * How much of a post's teaser reaches the header.
- *
- * The excerpts in this blog run 200–300 characters, and this text is repeated in the chrome of
- * every page on the site — so it is cut here, on the server, rather than clamped in CSS: a line
- * clamp hides the bytes, it does not stop shipping them.
- *
- * The opener gets more of it than the rows do: it has a column to itself and its own cover above,
- * so three lines sit in space that was otherwise empty, while a row has one line beside a 70 px
- * picture. One number for both would either starve the opener or bloat five rows.
+ * How much of a post's teaser reaches the header: cut on the server rather than clamped in CSS,
+ * because the text is repeated in the chrome of every page. The opener has a column of its own
+ * and gets more than a row.
  */
 const EXCERPT_CHARS = 170;
 const LEAD_EXCERPT_CHARS = 300;
@@ -86,7 +59,7 @@ export interface BlogMenuPost {
   excerpt?: string;
   /** The post's category, resolved to its label. Every post carries it — the rows show it too. */
   category?: string;
-  /** Cover image, where the post has one. All seven currently do. */
+  /** Cover image, where the post has one. */
   image?: string;
   /** The cover's focal point as a CSS `object-position` — the panel cannot read the manifest. */
   imagePosition?: string;
@@ -99,6 +72,10 @@ export interface BlogMenu {
   recent: BlogMenuPost[];
 }
 
+/**
+ * Builds the header's blog panel for a locale: the article categories by post count and the five
+ * most recently touched articles with trimmed excerpts and covers.
+ */
 export function getBlogMenu(locale: Locale): BlogMenu {
   const { root } = buildCategoryTree(locale);
 
@@ -125,11 +102,8 @@ export function getBlogMenu(locale: Locale): BlogMenu {
           post.frontmatter.excerpt,
           index === 0 ? LEAD_EXCERPT_CHARS : EXCERPT_CHARS
         ),
-        // Every post, not just the opener. This used to stop at `index === 0` because only the
-        // opener drew it, and the rows were the one place on the site that lists posts without
-        // their category. The five extra strings are the labels of three categories repeated —
-        // the panel prints "Guides" five times out of six here — which is what brotli is for:
-        // measured on a park page, the whole row change is under a tenth of a KB compressed.
+        // Every row, like every other list of posts on the site; the repeated labels compress
+        // to almost nothing.
         category: post.frontmatter.category
           ? resolveCategoryLabel(
               post.frontmatter.category,
@@ -137,11 +111,8 @@ export function getBlogMenu(locale: Locale): BlogMenu {
               post.frontmatter.category.split('/').filter(Boolean).pop() ?? ''
             )
           : undefined,
-        // The cover is already a 16:9 crop for every post that has one, so the panel needs no
-        // optimizer pass — but it does need the version token. Retargeting a focal point rewrites
-        // a crop's bytes at an unchanged URL, so a bare path serves the old framing out of cache
-        // until someone clears it. This rail sits in the header, i.e. on ~35,000 pages, which is
-        // why it was the largest source of unversioned media URLs on the site.
+        // Already a 16:9 crop, so no optimizer pass, but versioned: retargeting a focal point
+        // rewrites a crop's bytes at an unchanged URL.
         image: versionedPath(post.frontmatter.coverImage?.src) ?? post.frontmatter.coverImage?.src,
         imagePosition: objectPositionForSrc(post.frontmatter.coverImage?.src, '50% 50%'),
       })),

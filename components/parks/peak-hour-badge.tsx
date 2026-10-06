@@ -11,6 +11,10 @@ interface PeakHourBadgeProps {
   peakHour: string;
 }
 
+/**
+ * Badge counting down to the peak hour ("in 1 hour 20 minutes"). Renders nothing before mount,
+ * for an invalid timestamp, or once the time has passed.
+ */
 export function PeakHourBadge({ peakHour }: PeakHourBadgeProps) {
   const tCommon = useTranslations('common');
   const now = useMinuteNowDate();

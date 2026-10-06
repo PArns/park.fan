@@ -40,6 +40,11 @@ function Step({ n, title, children }: { n: number; title: string; children: Reac
   );
 }
 
+/**
+ * The photo contribution form: drop photos, pick the park or ride, add caption and credit, consent,
+ * pass Turnstile. Submits in three steps (`/api/contribute/start`, one `file` upload per photo,
+ * `finalize`), then opens the thank-you page.
+ */
 export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
   const t = useTranslations('contribute.form');
   const tErr = useTranslations('contribute.error');
@@ -189,10 +194,8 @@ export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
           </Step>
 
           <Step n={4} title={t('step4')}>
-            {/* The widget is an iframe the Turnstile script injects after hydration, into a
-                container that is empty until then. 72 px is what it takes once there: the
-                300 × 65 frame on the line box's baseline. Measured the same in the challenge,
-                the error and the test-key states, at 360, 390 and 1440 px (PAR-689). */}
+            {/* The widget is an iframe the Turnstile script injects after hydration into an empty
+                container; 72 px is its height once there, in every state. */}
             <TurnstileWidget
               className="min-h-[72px]"
               action={TURNSTILE_ACTIONS.contribute}

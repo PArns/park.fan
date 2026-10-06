@@ -9,50 +9,13 @@ import { MoreMenuLinks } from '@/components/layout/more-menu-links';
 import type { MoreMenu, MoreMenuChapter, MoreMenuPhoto } from '@/lib/navigation/more-menu';
 
 /**
- * The "more" band: the reading material that has no place of its own in the bar.
- *
- * The desktop bar had six equal entries plus favorites, search and three preference buttons in one
- * 48 px row, and it did not fit: measured on `/parks/europe/germany` before PAR-191, French at a
- * 1024 px container overflowed its box by 23.7 px and took the document to 1032 px, i.e. a
- * horizontal scrollbar on every page; at 1280 px it had exactly 0.0 px left. Four of those entries
- * — best travel time, the dictionary, the guide and the blog — moved one level down, and the blog
- * moved back out again (PAR-270).
- *
- * **Why the trigger is called "more" and not "discover".** The issue's own working title was
- * "Entdecken", which in German would have stood 101 px from "Parks entdecken" in the same row, and
- * in French put "Explorer" next to "Explorer les parcs". The thing is a catch-all — `/alerts`,
- * `/favorites` and `/contribute` hang in here too, in the footer row at the bottom — and a
- * catch-all is named after being one.
- *
- * **Three hubs side by side, each with what it contains** (Patrick, 2026-09-30: „Da fehlen Links,
- * das Wörterbuch … nach links, … die anderen Menüs geben einfach mehr her"). It was three cards of
- * one line each, and under the middle one — the dictionary — its twelve categories: two thirds of
- * the band were empty at a 1280 px bar and wider, the one list in it hung in the middle column,
- * and below 1280 the band was the three cards alone, 231 px against the 455–595 px the news, parks
- * and blog bands open to at a 1024 px bar. Now each hub is a column shaped like the rest of the
- * header's bands — a photo on top, a list under it — and each list is the hub's contents: the
- * dictionary's categories on the left, then the best-time hub's six chapters with the forecasting
- * model under them, then the guide's eleven. The chapter lists come from the same arrays the pages
- * render their own chapters from (`lib/howto/chapters.ts`, `lib/best-time/chapters.ts`);
- * `pnpm test:hub-chapters` fails on a chapter a page does not have.
- *
- * The order is the bar's old one with the dictionary moved to the front, as asked, and the phone
- * sheet lists the three the same way.
- *
- * **Every hub URL stays in the HTML of every page.** Each photo IS the hub's link, and the band is
- * `hidden`, never unmounted, so a crawler reads it the way it read the three entries in the bar.
- * The lists add no crawl target: a category is `/glossar#coasters` and a chapter
- * `/beste-reisezeit#times`, which a crawler reads as the hub itself. The terms stay out, like the
- * parks panel's 144 cities and the blog panel's 31 tags — see `lib/navigation/glossary-menu.ts`.
- *
- * **Three columns at every width the band exists at.** The panel only renders inside the nav row,
- * and that row is `@min-[1024px]:flex` on the same container, so the narrowest column is 309 px
- * (a 1024 px bar). The list used to be `hidden` below a 1280 px bar, because eleven rows under ONE
- * of three cards took the band from ~140 px to ~470 px; with a list under every column the
- * columns share the height. Measured on `/<locale>/parks/europe/germany` in all six locales at a
- * 1024 and a 1440 px bar: the band is 591 px in every one of them (590 at 1440 before), the three
- * columns end within one row of each other — 554, 536.5 and 525 px down the page, the middle one
- * 553 where the Fancast line wraps — and the document is never wider than the window.
+ * The "more" band: the reading material that has no place of its own in the bar. Named "more"
+ * rather than "discover" because it is a catch-all and „Parks entdecken" already sits beside it.
+ * Three hub columns, each a photo and what the hub holds: the dictionary's categories, the
+ * best-time hub's chapters with the forecasting model, and the guide's chapters, from the arrays
+ * the pages render (`pnpm test:hub-chapters`). The band is `hidden`, never unmounted, so every hub
+ * URL stays in every page's HTML; the lists are fragments on their hubs and add no crawl target.
+ * See docs/features/header-navigation.md.
  */
 interface MoreMenuPanelProps {
   /** Localized hub paths, resolved in the header, which already derives them for the phone sheet. */
@@ -68,28 +31,10 @@ interface MoreMenuPanelProps {
 }
 
 /**
- * The head of a column: the hub's photo with its name, its mark and one line on it — and the
- * hub's link, the whole surface of it.
- *
- * **Text on the photo, not under it**, like the parks panel's photo tiles: under it, the name and
- * the line would be two more rows between the picture and the list it heads.
- *
- * **The scrim is weighted to the lower half, and that is a measurement.** The first one ran
- * `black/85` → `black/45` at the middle → `black/10`, the shape a photo tile gets, and the name
- * sits near the middle here, above two lines of hint: over the lightest pixel of its row, white
- * read **3.23 : 1** on the carousel, 3.37 on the Fenix sky and 3.89 on the Pagode's lights beside
- * Symbolica — under the 4.5 a 15 px label owes. `via-black/65` at 45 % puts the row on at least
- * 55 % black: **4.98, 5.51 and 5.91 : 1**, and the hint (12 px, `white/85`) at 6.57 to 7.45.
- * Sampled off the rendered pixels with the text hidden, at a 1024 and a 1440 px bar; the photos
- * are the same in both themes, so are the numbers. The top of each photo stays clear, which is
- * where its subject is.
- *
- * `h-32` at every width. The name, the two lines of hint and the foot padding take 68 of the
- * 128 px; a 16:9 box at the narrowest column (309 px, a 1024 px bar) would be 174 px tall and push
- * every list down by 46 px for sky.
- *
- * A missing photo leaves `neutral-800` under the same scrim, so the banner keeps its height and
- * its white text stays legible — the fallback is a dark tile, not a hole.
+ * The head of a column: the hub's photo with its name, mark and one line on it, all of it the hub's
+ * link. The scrim is weighted to the lower half because the name sits mid-photo and white text
+ * needs 4.5 : 1 over the lightest photos. `h-32` at every width, so a narrow column does not push
+ * the list down for sky. A missing photo leaves a dark tile under the same scrim.
  */
 function HubBanner({
   href,
@@ -135,10 +80,8 @@ function HubBanner({
           <span className="text-[15px] leading-tight font-semibold">{label}</span>
           {count != null && <span className="text-xs text-white/75 tabular-nums">{count}</span>}
         </span>
-        {/* Two lines reserved whether the line needs them or not, so the three names stand on
-            one line across the band: the text is anchored to the foot of the photo, and a hint
-            that fits one line dropped its name by that line. „Meilleure période" at a 1024 px bar
-            stood 16.5 px below „Dictionnaire" and „Comment ça marche", whose lines wrap there. */}
+        {/* Two lines reserved whether the hint needs them or not, so the three names stand on one
+            line across the band: the text is anchored to the foot of the photo. */}
         <span className="line-clamp-2 min-h-[2lh] text-xs leading-snug text-pretty text-white/85">
           {hint}
         </span>
@@ -148,23 +91,10 @@ function HubBanner({
 }
 
 /**
- * The rows under a banner. One shape for the dictionary's categories and for a hub's chapters —
- * the parks panel's country row: label, a number, the `-mx-2` bleed that lets the hover reach
- * into the column gap — so the bands read as one surface.
- *
- * The number sits where the row's kind puts it. A category's is a count and stands right, as the
- * countries' do; a chapter's is its place in the page and stands first, in the accent the guide's
- * own chapter list gives it, so the column reads as a table of contents.
- *
- * **One row height in all three lists**, 29 px with the `space-y-px` between rows, so a row in one
- * column stands level with its neighbours in the other two. The chapter label had `leading-snug`
- * at first, 0.75 px shorter per row, and by the eleventh chapter the guide's rows stood 7.5 px out
- * of step with the dictionary's.
- *
- * A chapter label may wrap and a category label may not: cut at the end, a chapter would lose the
- * words that say what it is about, while a category is a single term. None wraps today — the
- * longest, „Een parkpagina van boven naar beneden", is 259.6 px in a 281.3 px label box at a
- * 1024 px bar, the narrowest the band gets.
+ * The rows under a banner, one shape for categories and chapters (the parks panel's country row),
+ * so the bands read as one surface. A category's number is a count and stands right; a chapter's
+ * is its place in the page and stands first, in the accent. One row height in all three lists, so
+ * rows stand level across columns. A chapter label may wrap and a category label may not.
  */
 const ROW =
   'text-muted-foreground hover:text-foreground hover:bg-muted/60 -mx-2 flex gap-2 rounded-md px-2 py-1 text-sm transition-colors';
@@ -194,15 +124,14 @@ export const MoreMenuPanel = memo(function MoreMenuPanel({
   howtoHref,
   menu,
 }: MoreMenuPanelProps) {
-  // `navigation` only. A `useTranslations('blog')` in a header component pulls the whole namespace
-  // into the chrome every page serializes — see `BlogMenuPanel` for what that cost the last time.
+  // `navigation` only: a `useTranslations('blog')` in a header component pulls the whole namespace
+  // into the chrome every page serializes.
   const t = useTranslations('navigation');
 
   const categories = menu?.glossary.categories ?? [];
 
-  // `CalendarRange` and `BookOpen` are the icons `BlogChapter` already gives these two hubs on the
-  // homepage, and `Compass` the guide's in the bar and the phone sheet — the same destination gets
-  // the same mark wherever it is offered. `LineChart` is Fancast's in the footer row it came from.
+  // The same destination gets the same mark wherever it is offered: `CalendarRange` and `BookOpen`
+  // as on the homepage's `BlogChapter`, `Compass` as in the bar and the phone sheet.
   return (
     <div className="flex flex-col gap-5">
       <div className="grid grid-cols-3 gap-x-8 gap-y-5">
@@ -241,7 +170,6 @@ export const MoreMenuPanel = memo(function MoreMenuPanel({
           )}
         </div>
 
-        {/* The best-time hub, chapter by chapter, and the model behind its crowd calendar. */}
         <div data-menu-stagger className="flex min-w-0 flex-col gap-3">
           <HubBanner
             href={bestTimeHref}
@@ -254,7 +182,6 @@ export const MoreMenuPanel = memo(function MoreMenuPanel({
           <FancastCard photo={menu?.fancast.photo ?? null} />
         </div>
 
-        {/* The guide, chapter by chapter. */}
         <div data-menu-stagger className="flex min-w-0 flex-col gap-3">
           <HubBanner
             href={howtoHref}
@@ -275,23 +202,11 @@ export const MoreMenuPanel = memo(function MoreMenuPanel({
 });
 
 /**
- * Fancast, under the chapters of the hub it serves: the crowd calendar that chapter 05 of the
- * best-time page explains is Fancast's forecast, and that page points at the model in a
- * `LandingNextSteps` band with Fancast as its one destination. It stood in the footer row before,
- * one word among the personal pages, which ranked the forecasting model with „Meine Alarme".
- *
- * **A photo strip on top, like the banners over it but a card.** Six chapters are 174 px against
- * the dictionary's twelve rows and the guide's eleven, and the column stood half empty; the card
- * fills it to within one row of the other two (its foot 536.5 px down the page, the lists' 554 and
- * 525). It was a thumbnail beside the text at first, pinned to the column's floor with `mt-auto`,
- * which left about 100 px of nothing between the last chapter and the card. The border and the
- * smaller photo keep it a rank below the three hubs: it has no name on the photo and no list of
- * its own.
- *
- * **The hover is the border, never the label's colour**, measured when these were the band's three
- * cards: `text-primary` is 3.47 : 1 on the light card and a 14 px semibold label is not WCAG large
- * text, while a border owes 3 : 1 and `border-primary` reads 3.46 : 1 light and 5.31 : 1 dark
- * against the card.
+ * Fancast, under the chapters of the hub it serves: the best-time page's crowd calendar is
+ * Fancast's forecast. A card with a photo strip that fills the column level with the other two, a
+ * rank below the hubs (no name on the photo, no list). The hover is the border, not the label's
+ * colour: `text-primary` misses 4.5 : 1 on a 14 px label, while `border-primary` clears the 3 : 1 a
+ * border owes.
  */
 function FancastCard({ photo }: { photo: MoreMenuPhoto | null }) {
   const t = useTranslations('navigation');

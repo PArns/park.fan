@@ -3,16 +3,9 @@
 import { useSyncExternalStore } from 'react';
 
 /*
- * One gate for the whole page, not one per caller.
- *
- * Every caller used to own a `load` listener, an idle callback and a `useState`, and `useNearbyParks`
- * calls this, so every nearby consumer had its own: three on every page (the header pill and both
- * menu panels), about twelve on the homepage. Each idle callback is its own task, so the flips
- * landed as separate commits, and a component mounted after a client-side navigation rendered
- * `false`, waited for another idle period and rendered again, long after the page had loaded.
- *
- * The page loads once. The first subscriber arms the listener, the flip notifies every subscriber
- * in one batch, and anything mounted afterwards reads `true` on its first render.
+ * One gate for the whole page, not one per caller: the first subscriber arms the listener, the
+ * flip notifies every subscriber in one batch, and anything mounted afterwards reads `true` on its
+ * first render.
  */
 
 let ready = false;

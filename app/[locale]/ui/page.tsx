@@ -28,7 +28,6 @@ import {
   BookOpen,
 } from 'lucide-react';
 
-// Base UI
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -38,45 +37,37 @@ import { Progress } from '@/components/ui/progress';
 import { Input } from '@/components/ui/input';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
-// Domain Badges
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { ComparisonBadge } from '@/components/parks/comparison-badge';
 import { PeakHourBadge } from '@/components/parks/peak-hour-badge';
 
-// Park Cards
 import { ParkCard } from '@/components/parks/park-card';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 
-// Attraction / Show / Restaurant Cards
 import { AttractionCard } from '@/components/parks/attraction-card';
 import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
 import { ShowCard } from '@/components/parks/show-card';
 import { ShowCardSkeleton } from '@/components/parks/show-card-skeleton';
 import { RestaurantCardSkeleton } from '@/components/parks/restaurant-card-skeleton';
 
-// Park Status + sparklines
 import { ParkStatus } from '@/components/parks/park-status';
 import { WaitTimeSparkline } from '@/components/parks/wait-time-sparkline';
 import { HourlyP90Sparkline } from '@/components/parks/hourly-p90-sparkline';
 
-// Attraction details
 import { LandSection } from '@/components/parks/land-section';
 import { RestaurantCard } from '@/components/parks/restaurant-card';
 import { AttractionHistoryDay } from '@/components/parks/attraction-history-day';
 import { AttractionTypicalWaitsDemo } from '@/components/parks/attraction-typical-waits-demo';
 import type { DayDataProps } from '@/components/parks/attraction-history-day';
 
-// Weather + Calendar
 import { WeatherCardShowcase, ParkTimeInfoShowcase } from '@/components/parks/weather-card-demo';
 import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
 import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
 import { ParkCalendarDay } from '@/components/parks/park-calendar-day';
 
-// Background overlay
 import { BackgroundOverlay } from '@/components/common/background-overlay';
 
-// Common Components
 import { StatsCard } from '@/components/common/stats-card';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { FavoriteStar } from '@/components/common/favorite-star';
@@ -93,15 +84,12 @@ import { OperatingHoursDisplay } from '@/components/common/operating-hours-displ
 import { MetricBar } from '@/components/common/metric-bar';
 import { TrainingStatusBadge } from '@/components/common/training-status-badge';
 
-// Gap components
 import { TrendIndicator } from '@/components/parks/trend-indicator';
 import { WaitTimeBadge } from '@/components/parks/wait-time-badge';
 import { QueueTypeBadge } from '@/components/parks/queue-type-badge';
 
-// Glossary inject
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
-// Search
 import { SearchCommand } from '@/components/search/search-bar';
 
 import { WaitTimeInfoCard } from '@/components/parks/wait-time-info-card';
@@ -116,10 +104,6 @@ import type {
 } from '@/lib/api/types';
 import { assertServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
-
-// ============================================================================
-// Layout helpers
-// ============================================================================
 
 function Section({
   title,
@@ -168,10 +152,6 @@ function ComponentLabel({ name, file }: { name: string; file: string }) {
 function Row({ children, wrap = true }: { children: React.ReactNode; wrap?: boolean }) {
   return <div className={`flex items-start gap-3 ${wrap ? 'flex-wrap' : ''}`}>{children}</div>;
 }
-
-// ============================================================================
-// Mock data
-// ============================================================================
 
 // Static showcase timestamp — this is the component gallery, not live data, so a fixed
 // time keeps it cacheComponents-safe (no current-time read during prerender).
@@ -351,7 +331,6 @@ const MOCK_ATTRACTION_REFURB = {
   statistics: null,
 } as unknown as ParkAttraction;
 
-// Trend variants
 const MOCK_ATTRACTION_TREND_DOWN = {
   id: 'colorado-adventure',
   slug: 'colorado-adventure',
@@ -396,7 +375,6 @@ const MOCK_ATTRACTION_TREND_STABLE = {
   bestVisitTimes: [{ time: bestVisitGood, predictedWaitTime: 20, rating: 'good' as const }],
 } as unknown as ParkAttraction;
 
-// Operating but no wait time in standby
 const MOCK_ATTRACTION_NO_WAIT = {
   id: 'chiapas',
   slug: 'chiapas',
@@ -438,7 +416,6 @@ const MOCK_ATTRACTION_FAVORITES = {
   },
 } as unknown as ParkAttraction;
 
-// AttractionHistoryDay mocks
 const MOCK_HISTORY_DAY_OPEN: DayDataProps = {
   dateStr: '2026-03-07',
   attractionStatus: 'OPEN',
@@ -598,12 +575,7 @@ const MOCK_CAL_UNKNOWN: CalendarDay = {
   isSchoolVacation: false,
 };
 
-// ============================================================================
-// Color table data
-// ============================================================================
-
 const COLOR_TABLE = [
-  // Brand
   {
     category: 'Brand',
     variable: '--primary',
@@ -628,7 +600,6 @@ const COLOR_TABLE = [
     hex: '#2191D3',
     usage: 'Focus ring (= primary)',
   },
-  // Layout
   {
     category: 'Layout',
     variable: '--background',
@@ -653,7 +624,6 @@ const COLOR_TABLE = [
     hex: '#ebebeb / white/10%',
     usage: 'Card borders, dividers',
   },
-  // Cards
   {
     category: 'Cards',
     variable: '--card',
@@ -678,7 +648,6 @@ const COLOR_TABLE = [
     hex: 'same as card',
     usage: 'Dropdown / popover bg',
   },
-  // Neutral
   {
     category: 'Neutral',
     variable: '--secondary',
@@ -711,7 +680,6 @@ const COLOR_TABLE = [
     hex: 'same as secondary',
     usage: 'Hover highlights',
   },
-  // Semantic
   {
     category: 'Semantic',
     variable: '--destructive',
@@ -736,7 +704,6 @@ const COLOR_TABLE = [
     hex: '#e8b000',
     usage: 'Warning yellow',
   },
-  // Status
   {
     category: 'Status',
     variable: '--status-operating',
@@ -769,7 +736,6 @@ const COLOR_TABLE = [
     hex: '#5b5bd6',
     usage: 'Attraction REFURBISHMENT — purple',
   },
-  // Crowd
   {
     category: 'Crowd',
     variable: '--crowd-very-low',
@@ -830,10 +796,6 @@ const COLOR_CATEGORIES = [
   'Crowd',
 ] as const;
 
-// ============================================================================
-// Page
-// ============================================================================
-
 interface UiPageProps {
   params: Promise<{ locale: string }>;
 }
@@ -864,9 +826,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
             <div className="bg-background/65 absolute inset-0" />
           </div>
 
-          {/* Scrollable content */}
           <div className="mx-auto max-w-7xl space-y-16 px-4 py-12 pb-32">
-            {/* Page header */}
             <div className="space-y-2">
               <h1 className="text-4xl font-bold tracking-tight">park.fan UI Style Guide</h1>
               <p className="text-muted-foreground">
@@ -875,9 +835,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </p>
             </div>
 
-            {/* ================================================================
-            1. FOUNDATION — Colors & Typography
-        ================================================================ */}
             <Section title="Foundation — Colors & Typography" icon={Palette}>
               <Sub title="Complete Color Token Table">
                 <GlassCard variant="medium" className="overflow-hidden p-0">
@@ -1046,9 +1003,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </Sub>
             </Section>
 
-            {/* ================================================================
-            2. BASE UI COMPONENTS
-        ================================================================ */}
             <Section title="Base UI Components" icon={LayoutGrid}>
               <ComponentLabel name="Badge" file="components/ui/badge.tsx" />
               <Sub title="Badge — Variants">
@@ -1213,9 +1167,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </Sub>
             </Section>
 
-            {/* ================================================================
-            3. GLASS UI
-        ================================================================ */}
             <Section title="Glass UI" icon={Layers}>
               <p className="text-muted-foreground -mt-4 text-sm">
                 The fixed background makes transparency effects visible while scrolling.
@@ -1342,9 +1293,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </Sub>
             </Section>
 
-            {/* ================================================================
-            4. DOMAIN BADGES
-        ================================================================ */}
             <Section title="Domain Badges" icon={Zap}>
               <ComponentLabel
                 name="CrowdLevelBadge"
@@ -1421,9 +1369,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </Sub>
             </Section>
 
-            {/* ================================================================
-            5. PARK CARDS
-        ================================================================ */}
             <Section title="Park Cards" icon={TreePalm}>
               <ComponentLabel name="ParkCard" file="components/parks/park-card.tsx" />
               <Sub title='ParkCard variant="compact" — OPERATING with bg / CLOSED / UNKNOWN / OPERATING no bg'>
@@ -1645,9 +1590,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </Sub>
             </Section>
 
-            {/* ================================================================
-            6. ATTRACTION & SHOW CARDS
-        ================================================================ */}
             <Section title="Attraction & Show Cards" icon={Ticket}>
               <ComponentLabel name="AttractionCard" file="components/parks/attraction-card.tsx" />
               <Sub title="AttractionCard — OPERATING: trend=up (rose) / trend=down (emerald) / trend=stable (gray)">
@@ -1868,9 +1810,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </Sub>
             </Section>
 
-            {/* ================================================================
-            7. PARK STATUS & TIMING
-        ================================================================ */}
             <Section title="Park Status & Timing" icon={Map}>
               <ComponentLabel name="ParkStatus" file="components/parks/park-status.tsx" />
 
@@ -1942,9 +1881,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </Sub>
             </Section>
 
-            {/* ================================================================
-            8. CHARTS & SPARKLINES
-        ================================================================ */}
             <Section title="Charts & Sparklines" icon={BarChart2}>
               <ComponentLabel
                 name="WaitTimeSparkline"
@@ -1969,9 +1905,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </Sub>
             </Section>
 
-            {/* ================================================================
-            9. COMMON COMPONENTS
-        ================================================================ */}
             <Section title="Common Components" icon={Star}>
               <ComponentLabel name="StatsCard" file="components/common/stats-card.tsx" />
               <Sub title="StatsCard — title / value / description / icon">
@@ -2159,9 +2092,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </Sub>
             </Section>
 
-            {/* ================================================================
-            10. WEATHER CARD
-        ================================================================ */}
             <Section title="Weather Card" icon={CloudSun}>
               <ComponentLabel name="WeatherCard" file="components/parks/weather-card.tsx" />
               <Sub title="WeatherCard — As seen on Park Page (with Glass effect)">
@@ -2189,9 +2119,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </Sub>
             </Section>
 
-            {/* ================================================================
-            11. ATTRACTION HISTORY
-        ================================================================ */}
             <Section title="Attraction History" icon={BarChart2}>
               <ComponentLabel
                 name="AttractionHistoryDay"
@@ -2237,9 +2164,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </Sub>
             </Section>
 
-            {/* ================================================================
-            12. CALENDAR DAYS
-        ================================================================ */}
             <Section title="Calendar Days" icon={CalendarDays}>
               <ComponentLabel
                 name="ParkCalendarDay"
@@ -2309,9 +2233,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </Sub>
             </Section>
 
-            {/* ================================================================
-            12. EXTRACTED SHARED COMPONENTS
-        ================================================================ */}
             <Section title="Shared Micro-Components" icon={Info}>
               <ComponentLabel name="TrendIndicator" file="components/parks/trend-indicator.tsx" />
               <Sub title="TrendIndicator — variant=icon, size=sm (default) / size=md">
@@ -2550,7 +2471,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </Sub>
             </Section>
 
-            {/* ── Admin / System Components ───────────────────────────────── */}
             <Section title="Admin / System Components" icon={Activity}>
               <ComponentLabel name="MetricBar" file="components/common/metric-bar.tsx" />
               <Sub title="MetricBar — auto-colors at 60% (amber) and 80% (red)">
@@ -2585,7 +2505,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </Sub>
             </Section>
 
-            {/* ── Glossary Inject ─────────────────────────────────────────── */}
             <Section title="Glossary Term Inject" icon={BookOpen}>
               <ComponentLabel
                 name="GlossaryInject"

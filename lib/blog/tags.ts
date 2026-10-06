@@ -23,14 +23,9 @@ export interface TagEntry {
 }
 
 /**
- * Collect every tag across every published ARTICLE in the given locale, returning
- * a stable, count-sorted list. Used by the tag archive page, the sidebar tag
- * cloud and SEO/sitemap helpers.
- *
- * News posts are not counted: a tag archive lives under `/blog/tag/…` and lists
- * the blog's articles only, so a tag carried by news alone (`news`,
- * `parques-reunidos`) has no archive, and a news post's tag pills link only to
- * the archives that exist (see `BlogTags`).
+ * Every tag across the published articles in a locale, sorted by count, for the tag archive, the
+ * tag cloud and the sitemap. News posts are not counted: a tag archive lists articles only, so a
+ * tag only news carries has no archive.
  */
 export const listTags = cache((locale: Locale): TagEntry[] => {
   const map = new Map<string, TagEntry>();
@@ -49,23 +44,10 @@ export const listTags = cache((locale: Locale): TagEntry[] => {
 });
 
 /**
- * A tag archive earns a place in the index once it collects at least this many
- * posts. Below it the page is one post's teaser at a second URL: 31 tags over 8
- * posts put **186 of the blog's 258 sitemap URLs** (72 %) into tag archives, 18
- * of the 31 holding a single post. That is not more of the blog on offer, it is
- * a thinner sample of it — and the entity tags among them (`efteling`,
- * `europa-park`) compete for their park's own, far stronger page.
- *
- * The header menu already drops tags for this reason. This is the same judgement
- * applied to the index, and it is deliberately **`noindex`, not `nofollow` and
- * not removal**: the pages stay reachable, stay crawlable, and keep passing
- * signal to the posts they list. A tag crossing the threshold simply reappears
- * in the index on the next build, so nothing has to be curated by hand.
- *
- * Both readers — {@link isIndexableTag} for the page's robots meta and the
- * sitemap's own filter — must agree. A sitemap that omits a page Google may
- * still index changes nothing, and a page that says `noindex` while the sitemap
- * advertises it is a contradiction we would be sending on purpose.
+ * A tag archive is indexed once it collects at least this many posts; below it the page is one
+ * post's teaser at a second URL, and entity tags compete with their park's own page. `noindex`,
+ * not removal: the pages stay crawlable and pass signal to their posts. {@link isIndexableTag}
+ * and the sitemap's filter must agree.
  */
 export const TAG_INDEX_MIN_POSTS = 3;
 
@@ -87,24 +69,11 @@ export function findCanonicalTag(locale: Locale, slug: string): string | null {
 }
 
 /**
- * Every locale's slug for the same tag, keyed `"<locale>:<slug>"`.
- *
- * Tags are free text in each post's frontmatter and are translated along with the post
- * ("wartezeiten" / "wait-times" / "tempi-di-attesa" / "temps-d-attente"), so unlike posts
- * they carry no shared `translationKey` to join on. What they DO carry is position: every
- * translation of a post lists the same tags in the same order (see content/blog/README.md),
- * so zipping the arrays of one `translationKey` across locales yields the mapping.
- *
- * Without this, the tag pages advertised `/{every-locale}/blog/tag/{this-locale's-slug}` as
- * their hreflang alternates — five 404s per tag page plus a dead `x-default`, which makes
- * Google drop the whole language cluster.
- *
- * Three guards keep it from inventing links:
- *   - EN-fallback posts are skipped; they carry the EN tags, not the locale's own.
- *   - Locales whose tag arrays differ in length are skipped — position means nothing then.
- *   - A tag that ends up with conflicting candidates in some locale is dropped for that
- *     locale rather than guessed at.
- * Callers additionally verify the mapped slug really exists (see {@link buildTagAlternates}).
+ * Every locale's slug for the same tag, keyed `"<locale>:<slug>"`. Tags are translated free text
+ * with no shared key, but every translation of a post lists its tags in the same order (see
+ * content/blog/README.md), so zipping one post's arrays across locales gives the mapping.
+ * Fallback posts, locales with a different tag count and ambiguous tags are skipped rather than
+ * guessed; {@link buildTagAlternates} also checks that the target page exists.
  */
 const getTagTranslationIndex = cache((): Map<string, Map<Locale, string>> => {
   const byKey = new Map<string, Map<Locale, string[]>>();

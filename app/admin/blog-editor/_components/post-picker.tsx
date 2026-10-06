@@ -27,9 +27,8 @@ interface PostPickerProps {
 }
 
 /**
- * Modal listing every existing post (grouped by translationKey, newest first).
- * Same shell-pattern as the image picker — body unmounts when closed so each
- * open is a fresh state slice without breaking React 19's no-reset-in-effect.
+ * Modal listing every existing post, grouped by translationKey, newest first. Unmounted while
+ * closed, so each opening starts from fresh state.
  */
 export function PostPicker(props: PostPickerProps) {
   if (!props.open) return null;

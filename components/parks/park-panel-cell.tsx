@@ -3,28 +3,17 @@ import type { LucideIcon } from 'lucide-react';
 
 /**
  * One column of a park panel: hairline rules on the right and bottom, and the padding they need.
- *
- * The dividers are drawn by every cell carrying a right and bottom hairline while the wrapper
- * clips the trailing ones — see {@link PanelGrid}. Written instead as `border-r` on all but the
- * last child it is only correct at the widest column count and puts a stray rule at the end of
- * the row at two and one.
+ * Every cell carries both hairlines and the wrapper clips the trailing ones (see {@link
+ * PanelGrid}); `border-r` on all but the last child would be right only at the widest column count.
  */
 export const PANEL_CELL = 'border-border/50 flex flex-col gap-3 border-r border-b px-5 py-4';
 
 /**
- * The grid the cells sit in.
- *
- * `-mr-px -mb-px` plus the caller's `overflow-hidden` clip the trailing hairlines, so the rules
- * stay correct at every column count. The count is passed rather than written into a class because
- * columns are conditional on both panels that use this: at a fixed four-column track set a park
- * with no headliners and no showtimes left two empty tracks sitting inside the panel's border,
- * which is exactly what shipped once.
- *
- * `sm:grid-cols-2` is part of that count and not a floor. It used to be unconditional, so a single
- * cell sat in the first of two tracks from 640 px up and drew its own right-hand hairline down the
- * middle of the box, with the whole right half empty behind it — which is what a blog post asking
- * for one table (`stats-widget show=weekdays`) rendered, and what a park with neither best-days
- * nor a quiet weekend day got in its best-travel-time panel.
+ * The grid the cells sit in. `-mr-px -mb-px` plus the caller's `overflow-hidden` clip the trailing
+ * hairlines at every column count. The count is passed in because columns are conditional in both
+ * panels that use this, and a fixed track set leaves empty tracks inside the border;
+ * `sm:grid-cols-2` is part of that count, so a single cell never draws its hairline down the middle
+ * of the box.
  */
 export function PanelGrid({
   columnCount,

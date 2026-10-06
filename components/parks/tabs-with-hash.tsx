@@ -18,6 +18,10 @@ import { nextWetMode, useAttractionFilter } from '@/lib/hooks/use-attraction-fil
 import { stripNewPrefix } from '@/lib/utils';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
 import { LiveDataFreshness } from '@/components/parks/live-data-freshness';
+import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
+import { RideAlertsEntryButton } from '@/components/push/ride-alerts-entry-button';
+import type { RideAlertDialogAttraction } from '@/components/push/ride-alert-dialog';
+import { useRideAlertParkAttractions } from '@/components/push/ride-alert-park-context';
 import {
   ParkHeightFilterContext,
   type ParkHeightFilter,
@@ -205,6 +209,7 @@ export const TabsWithHash = memo(function TabsWithHash({
   belowTabs,
 }: TabsWithHashProps) {
   const t = useTranslations('parks');
+  const alertAttractions = useRideAlertParkAttractions();
 
   const { isMounted, activeTab, handleTabChange, tabsRef, mapShowSlug } = useTabHashRouting({
     defaultValue,
@@ -489,6 +494,25 @@ export const TabsWithHash = memo(function TabsWithHash({
           parkName={park.name}
         />
       )}
+
+      {/* The alert nudge for a visitor who came for one wait time. It sits after the headliner
+          section: the live waits stay where they were, and it is one scroll on a phone. It follows
+          the headliner section's own gates (no headliners, no card) and is skipped while a filter
+          or search narrows the list, and for a park with no readable wait times, where an alert
+          could never fire. Same dialog as the panel's text link. */}
+      {headliners.length > 0 &&
+        !isSearching &&
+        !isNarrowing &&
+        hasReadableWaitTimes(park) &&
+        alertAttractions &&
+        alertAttractions.length > 0 && (
+          <RideAlertsEntryButton
+            variant="nudge"
+            parkName={park.name}
+            attractions={alertAttractions as RideAlertDialogAttraction[]}
+            reopenAvailable
+          />
+        )}
 
       {hasSearchResults || closedRideMatches.length > 0 ? (
         landNames.map((landName, index) => {

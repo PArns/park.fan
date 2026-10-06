@@ -19,36 +19,33 @@ interface ParkStatusProps {
   variant: 'compact' | 'detailed' | 'card' | 'hero';
   className?: string;
   /**
-   * Today's crowd level as a DAILY statistic (day aggregate ÷ typical-day-peak) — the same
-   * measure the header's forecast badge uses, and the only one comparable with it. Shown in the
-   * occupancy card beside the live badge, which is a point-in-time ratio-vs-P50 reading. Passed
-   * in rather than fetched here: the caller (<LiveParkData>) shares the header's one-day
-   * /calendar query, so the pair can never disagree and costs no second request.
+   * Today's crowd level as a daily statistic (day aggregate ÷ typical-day peak), the measure the
+   * header's forecast badge uses, shown beside the live badge's point-in-time reading. Passed in
+   * because <LiveParkData> shares the header's one-day /calendar query, so the pair cannot disagree
+   * and costs no second request.
    */
   todayCrowdLevel?: CrowdLevel | null;
 }
 
+/**
+ * A park's live status in four sizes: status and crowd badges (`compact`), plus average wait and
+ * open rides (`card`), large header badges (`hero`), or the crowd, wait-time and ride cards
+ * (`detailed`). Wait figures are left out for a park whose wait times cannot be read.
+ */
 export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkStatusProps) {
   const analytics = 'analytics' in park ? park.analytics : null;
   const currentLoad = 'currentLoad' in park ? park.currentLoad : null;
   const status = 'status' in park ? park.status : undefined;
-  // A park whose wait times are unreadable still gets an `analytics` block — the API cannot
-  // drop a field half the app destructures — but every number in it is an aggregate over an
-  // empty set: Ø 0 min, peak 0 min, 0 % occupancy, "0 / 82 operating". A wall of zeros says
-  // the park is dead when it may be at capacity, so nothing wait-derived is rendered for it.
-  // The crowd level is deliberately NOT gated here: the API sends `unknown` for these parks,
-  // which the badge renders as "keine Prognose" — the honest answer, already.
-  //
-  // A park whose feed has been silent for 30 days is the case the curated flag cannot see: it
-  // stays `available`, and the API answers with `avgWaitTime: null` instead. The value itself is
-  // the only marker in the payload, so it is the second half of this gate; without it the unit
-  // is printed with no number in front of it.
+  // A park with unreadable wait times still gets an `analytics` block, but every number in it is an
+  // aggregate over an empty set, and a wall of zeros says the park is dead when it may be full. So
+  // nothing wait-derived renders for it; the crowd level is not gated, since `unknown` already
+  // renders as "keine Prognose". A feed silent for 30 days stays `available` and answers
+  // `avgWaitTime: null`, the second half of this gate. See docs/rules/parks-we-cannot-read.md.
   const stats = hasReadableWaitTimes(park) ? analytics?.statistics : undefined;
   const waitStats = stats && stats.avgWaitTime !== null ? stats : undefined;
   const tCommon = useTranslations('common');
   const t = useTranslations('parks');
 
-  // Compact variant - just badges
   if (variant === 'compact') {
     return (
       <div className={cn('flex items-center gap-2', className)}>
@@ -60,7 +57,6 @@ export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkSt
     );
   }
 
-  // Card variant - for listing cards
   if (variant === 'card') {
     return (
       <div className={cn('space-y-3', className)}>
@@ -90,7 +86,6 @@ export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkSt
     );
   }
 
-  // Hero variant - large display for park header
   if (variant === 'hero') {
     return (
       <div className={cn('flex flex-wrap items-center gap-4', className)}>
@@ -114,7 +109,6 @@ export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkSt
     );
   }
 
-  // Detailed variant - for park page (NEW DESIGN)
   if (variant === 'detailed') {
     const crowdLevel = analytics?.statistics?.crowdLevel || currentLoad?.crowdLevel;
     // Both wait-derived — see `waitStats` above. Dropping them leaves the crowd card, which
@@ -124,17 +118,13 @@ export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkSt
     const showStatsGrid =
       (status === 'OPERATING' || status === 'UNKNOWN') && !!(stats || occupancy);
 
-    // Nothing to draw → render nothing, rather than an empty wrapper. On the park page this
-    // sits in a `flex-col gap-8`, where an empty child still costs its 32px gap: a band of
-    // dead space above the ride tabs on every closed park, and now on every park whose wait
-    // times are unreadable.
+    // Nothing to draw: render nothing rather than an empty wrapper, which still costs its gap in
+    // the park page's `flex-col gap-8`.
     if (!showStatsGrid) return null;
 
     return (
       <div className={cn('space-y-4', className)}>
-        {/* Main Stats Grid */}
         <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
-          {/* Status & Crowd Card */}
           {crowdLevel && status && (
             <Card>
               <CardHeader className="pb-3">
@@ -144,11 +134,10 @@ export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkSt
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                {/* Two ratings side by side when today's daily one is known — they measure
-                    different things and the labels are what keep that readable: "Heute" is the
-                    day aggregate (comparable with the header's forecast), "Jetzt" the live spot
-                    reading. Without today's value the live badge keeps its original centred,
-                    unlabelled position, so nothing changes for a park we cannot rate. */}
+                {/* Two ratings side by side when today's daily one is known, labelled because they
+                    measure different things: „Heute" is the day aggregate (comparable with the
+                    header's forecast), „Jetzt" the live reading. Without today's value the live
+                    badge stays centred and unlabelled. */}
                 {todayCrowdLevel ? (
                   <div className="flex items-start justify-center gap-6 py-2">
                     <div className="flex flex-col items-center gap-1.5">
@@ -174,9 +163,8 @@ export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkSt
                       </span>
                     </div>
                     <Progress
-                      // occupancy.current is relative to the 90th-percentile baseline and can
-                      // exceed 100 (e.g. 204% on an extreme day); clamp so the bar fills instead
-                      // of overflowing its track (translateX would push it out for >100).
+                      // `occupancy.current` is relative to the P90 baseline and can exceed 100;
+                      // clamped so the bar fills instead of overflowing its track.
                       value={Math.min(100, Math.max(0, occupancy.current))}
                       className="h-2"
                       aria-label={t('occupancy')}
@@ -206,7 +194,6 @@ export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkSt
             </Card>
           )}
 
-          {/* Wait Times Card */}
           {stats && (
             <Card>
               <CardHeader className="pb-3">
@@ -275,7 +262,6 @@ export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkSt
             </Card>
           )}
 
-          {/* Attractions Status Card */}
           {stats && (
             <Card>
               <CardHeader className="pb-3">

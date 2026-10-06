@@ -44,11 +44,8 @@ const NO_CLOSED_RIDES: readonly ClosedRideSearchItem[] = [];
 /**
  * Whether a ride counts as open for the "open now" toggle.
  *
- * Strictly OPERATING, and UNKNOWN is not it. The card renders a wait time for an
- * UNKNOWN ride and its badge says "Unbekannt", which is the honest reading of a
- * feed that has not spoken: a filter promising "open" must not answer with rides
- * nobody has heard from. Fifty of Europa-Park's ninety-six sit there before the
- * gates open.
+ * Strictly OPERATING, and UNKNOWN is not it: a filter promising "open" must not answer with rides
+ * nobody has heard from.
  */
 const isOpenNow = (attraction: ParkAttraction, parkStatus?: ParkStatus): boolean =>
   getLiveAttractionStatus(attraction, parkStatus) === 'OPERATING';
@@ -66,12 +63,9 @@ const mayGetWet = (attraction: ParkAttraction): boolean => attraction.mayGetWet 
 export type WetMode = 'only' | 'hide' | null;
 
 /**
- * The three answers, and the asymmetry between the two active ones.
- *
- * `only` demands `=== true`, `hide` only rejects `=== true` — so a ride nobody has
- * checked stays in the list when hiding and stays out when showing. It has to be
- * that way round: `mayGetWet` is absent on 93 of Europa-Park's 96 rides, and a
- * `hide` that also dropped the unknowns would answer a park of 96 with three.
+ * `only` demands `=== true` and `hide` only rejects `=== true`, so a ride nobody has checked stays
+ * in the list when hiding. `mayGetWet` is absent on most rides, and a `hide` that dropped the
+ * unknowns would leave almost nothing.
  */
 const matchesWet = (attraction: ParkAttraction, mode: WetMode): boolean =>
   mode === null ? true : mode === 'only' ? mayGetWet(attraction) : !mayGetWet(attraction);
@@ -94,25 +88,17 @@ const hasFastPass = (attraction: ParkAttraction): boolean => Boolean(attraction.
 /** `hasSingleRider` is three-valued and `SingleRiderBadge` renders only `true`; same here. */
 const hasSingleRider = (attraction: ParkAttraction): boolean => attraction.hasSingleRider === true;
 
-/**
- * Search, rider-height, live-status, wet-ride, queue-jump, single-rider, covered and
- * seasonal filtering for the park page's attractions and shows tabs: Fuse fuzzy search over
- * all attractions, the rider-height filter (stops derived from the park's own limits), the
- * five narrowing pills, off-season hiding (attractions + shows, with counts for the
- * "N off season" toggles), the wait-time-sorted headliners section, and the global
- * keyboard wiring for the search input (Escape clears, typing focuses).
- *
- * The filters compose in one order and it is the order they are declared in: height,
- * then the five pills, then season, then search — each reading the previous one's
- * output, so the headliner row, the land grid and the panel's counts can never
- * disagree.
- */
-
 /** Focus is on the page itself, not on a control somebody moved to. */
 function nothingFocused(active: Element | null): boolean {
   return active === null || active === document.body || active === document.documentElement;
 }
 
+/**
+ * Filters the park page's attractions and shows by search, rider height, the five pills and
+ * season, and returns the filtered lists, counts, headliners and every filter's state and setter.
+ * The filters compose in declaration order (height, pills, season, search), each reading the
+ * previous one's output, so the headliner row, the land grid and the panel's counts agree.
+ */
 export function useAttractionFilter({
   attractionsByLand,
   shows,
@@ -138,41 +124,23 @@ export function useAttractionFilter({
   const [showOffSeasonShows, setShowOffSeasonShows] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // INP: a pill tap used to re-filter the park and re-render the grid in the SAME commit that lit
-  // the pill, so the paint that ends the interaction waited for all of it — 392 ms on the park
-  // pages Cloudflare scores "Poor" (PAR-272's diagnosis, PAR-384). The array work is not the cost:
-  // the predicates below run over ~100 attractions. The cost is what the new arrays force — every
-  // land whose set changed reconciles, the rope-drop block mounts or unmounts, and every card that
-  // entered the set mounts with its two images, its hand-built sparkline path and its ten
-  // translation hooks.
-  //
-  // So the pill's own state stays urgent — `aria-pressed`, the lit glass and the counts paint on
-  // the tap — and everything derived from it reads a DEFERRED copy: the grid arrives a beat later
-  // at lower priority, and React may interrupt that render for the next tap. Same split the search
-  // box got below and the tab row got in `tabs-with-hash.tsx`, for the same reason.
-  //
-  // Read as a set, not one by one. All six come from one update, so a render sees either every
-  // old value or every new one, and the grid can never show "open now" applied without "wet".
+  // A pill's own state stays urgent so it lights up on the tap; everything derived from it reads
+  // a deferred copy, so the grid re-renders at lower priority instead of in the tap's commit. See
+  // docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md. All six come from
+  // one update, so a render sees every old value or every new one.
   const deferredOnlyOpen = useDeferredValue(onlyOpen);
   const deferredWetMode = useDeferredValue(wetMode);
   const deferredOnlyFastPass = useDeferredValue(onlyFastPass);
   const deferredOnlySingleRider = useDeferredValue(onlySingleRider);
   const deferredOnlyCovered = useDeferredValue(onlyCovered);
   const deferredShowOffSeasonAttractions = useDeferredValue(showOffSeasonAttractions);
-  // The rider height too. It was read live on the argument that a slider is not a tap, but a
-  // press on the resting slider switches the filter on, the ✕ and the empty state's reset are
-  // clicks, and arrow keys step it: each re-filtered the grid in its own commit, and a reset
-  // remounted every card the height had hidden. The slider's thumb, its label and the
-  // "23 of 40" readout keep the live value.
+  // The rider height too: a press on the slider, its reset and arrow keys are all interactions.
+  // The thumb, its label and the "23 of 40" readout keep the live value.
   const deferredRiderHeight = useDeferredValue(riderHeight);
 
-  // Clear search on Escape key. The updater form reads the current query, so the listener has
-  // no dependencies — it used to depend on `searchQuery`, which tore down and re-attached a
-  // global `keydown` listener on EVERY keystroke, right in the middle of the typing path this
-  // hook otherwise works hard to keep responsive.
-  //
-  // Only from the field itself or with nothing focused: an Escape that closes a dialog, a popover
-  // or the search palette used to clear the ride filter behind it as well.
+  // Escape clears the search. The updater form reads the current query, so the listener needs no
+  // dependencies and is not re-attached on every keystroke. Only from the field itself or with
+  // nothing focused: an Escape that closes a dialog must not clear the filter behind it.
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
@@ -186,14 +154,10 @@ export function useAttractionFilter({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Auto-focus on typing — with the hero search's guard (`hero-inline-search-panel.tsx`): only
-  // when nothing is focused, and never for Space. The old test only exempted inputs, so Space on
-  // a focused pill, tab or link moved focus to the field before the control could activate, Space
-  // to scroll jumped the page to the field, and a letter meant for a menu's first-letter
-  // navigation or a screen reader landed in the ride search.
+  // Typing focuses the search, only when nothing is focused and never for Space. See
+  // docs/rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md.
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
-      // Only trigger if attractions tab is active
       if (activeTab !== 'attractions') return;
       if (!nothingFocused(document.activeElement)) return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
@@ -206,7 +170,7 @@ export function useAttractionFilter({
     return () => window.removeEventListener('keydown', handleGlobalKeyDown);
   }, [activeTab]);
 
-  // Headliner attractions sorted by wait time (operating first, then no-wait, then closed)
+  // Headliners, longest wait first, rides without a wait after them.
   const headliners = useMemo(() => {
     const all = Object.values(attractionsByLand)
       .flat()
@@ -222,7 +186,6 @@ export function useAttractionFilter({
           (!deferredOnlyCovered || isCovered(a))
       );
 
-    // Pre-calculate wait times to avoid repeated find() calls in sort comparator (Schwartzian transform)
     return all
       .map((a) => ({
         a,
@@ -274,7 +237,6 @@ export function useAttractionFilter({
     });
   }, [attractionsByLand]);
 
-  // Off-season filtering
   const offSeasonAttractionCount = useMemo(
     () =>
       Object.values(attractionsByLand)
@@ -289,11 +251,9 @@ export function useAttractionFilter({
   );
 
   /**
-   * The heights the slider may be set to, or `null` when this park publishes no
-   * minimum height on any ride — which is the panel's signal to render no height
-   * filter at all rather than an empty one. Roughly a third of the catalogue has
-   * nothing on file here, and a control whose every position returns the same 40
-   * rides is worse than no control.
+   * The heights the slider may be set to, or `null` when this park publishes no minimum height on
+   * any ride, in which case the panel renders no height filter: a control whose every position
+   * returns the same rides is worse than none.
    */
   const heightStops = useMemo(
     () => riderHeightStops(Object.values(attractionsByLand).flat()),
@@ -301,14 +261,9 @@ export function useAttractionFilter({
   );
 
   /**
-   * What each narrowing pill has to work with, counted over the whole park.
-   *
-   * They gate whether a pill is RENDERED at all, which is the alternative to
-   * offering a filter whose only possible outcome is "no attractions found". Most
-   * of the catalogue has none of these on file: `mayGetWet` on 3 of Europa-Park's
-   * 96 rides and 1 of Toverland's 45, `fastPass` on 7 of Europa-Park and none at
-   * all at Efteling or Toverland, `hasSingleRider` on 6 and 7 and none — and at
-   * 04:00 nothing anywhere is open.
+   * What each narrowing pill has to work with, counted over the whole park. A pill with nothing to
+   * find is not rendered, rather than offering "no attractions found" as its only outcome; most
+   * parks have none of these fields on file.
    */
   const openAttractionCount = useMemo(
     () =>
@@ -330,14 +285,10 @@ export function useAttractionFilter({
     [attractionsByLand]
   );
   /**
-   * Rides the „Überdacht" pill would keep — and 0 unless the park has curated enough of its
-   * rides to say so (`coveredOfferReady`). The same gate decides whether the nowcast banner
-   * offers covered rides, so the pill and the banner never disagree about a park.
-   *
-   * The other pills gate on their count alone, and this one cannot: `mayGetWet` marks the few
-   * rides that ARE wet, so three marked rides are three true answers. Here a park where somebody
-   * marked three rides indoor and left ninety unchecked would answer „Überdacht" with three,
-   * and a visitor standing in the rain reads that as the whole list.
+   * Rides the „Überdacht" pill would keep, and 0 unless the park has curated enough of its rides
+   * to say so (`coveredOfferReady`), the same gate as the nowcast banner's. A count alone is not
+   * enough here: three rides marked indoor among ninety unchecked would read, in the rain, as the
+   * whole list.
    */
   const coveredAttractionCount = useMemo(() => {
     const all = Object.values(attractionsByLand).flat();
@@ -345,14 +296,8 @@ export function useAttractionFilter({
   }, [attractionsByLand]);
 
   /**
-   * The park's own name for its queue-jump product, when it has exactly one.
-   *
-   * Europa-Park sells "VirtualLine" and that is the word on every sign, in the app
-   * and in the mouth of anybody who has been — a pill saying it is a pill a visitor
-   * recognizes, where a generic "Quickpass" is a word the park does not use. Two or
-   * more distinct names (a park with a per-ride override) fall back to the generic
-   * label, because a pill filtering for three products cannot be titled after one
-   * of them.
+   * The park's own name for its queue-jump product when it has exactly one ("VirtualLine" is the
+   * word on Europa-Park's signs); with several, the pill keeps the generic label.
    */
   const fastPassLabel = useMemo(() => {
     const names = new Set<string>();
@@ -364,15 +309,9 @@ export function useAttractionFilter({
   }, [attractionsByLand]);
 
   /**
-   * Height filtering, applied BEFORE the season filter and — unlike the season —
-   * also while searching.
-   *
-   * That is the opposite of what the search does to the off-season toggle below,
-   * and the difference is what the two filters are about. The season is a property
-   * of the ride that the visitor never asked about, so typing a ride's name has to
-   * reach past it. A rider height is a statement about the person who would be
-   * queuing: a 105 cm child does not become tall enough because a parent typed
-   * "Taron". So the filter holds, and the empty state offers to clear it by name.
+   * Height filtering, applied before the season filter and, unlike the season, also while
+   * searching: a rider height is a statement about the person queuing, and a child does not
+   * grow because a parent typed "Taron". The empty state offers to clear it by name.
    */
   const heightFilteredByLand = useMemo(() => {
     if (deferredRiderHeight === null) return attractionsByLand;
@@ -400,13 +339,9 @@ export function useAttractionFilter({
   }, [attractionsByLand, riderHeight, totalAttractionCount]);
 
   /**
-   * "Open now" and "you may get wet", applied after the height and before the
-   * season — and, unlike the height, NOT applied while searching.
-   *
-   * Same split as the off-season toggle, for the same reason: both are ways of
-   * decluttering a park somebody is browsing, and neither is a statement about the
-   * person queuing. Typing "Black Mamba" is asking for one ride, and the answer to
-   * it is that ride, shut or dry; the card says "Geschlossen" on its own.
+   * The five pills, applied after the height and before the season, and not while searching:
+   * like the off-season toggle they declutter browsing, and typing a ride's name asks for that
+   * ride, shut or dry.
    */
   const narrowedByLand = useMemo(() => {
     if (
@@ -451,40 +386,25 @@ export function useAttractionFilter({
     return result;
   }, [narrowedByLand, deferredShowOffSeasonAttractions, offSeasonAttractionCount]);
 
-  // The shows tab's own off-season toggle stays urgent. It filters a list a park publishes a
-  // handful of entries for, against the attraction grid's ~100 cards, and a show card carries
-  // neither sparkline nor photo layers.
+  // The shows tab's off-season toggle stays urgent: a handful of light show cards, not the
+  // attraction grid.
   const visibleShows = useMemo(() => {
     if (showOffSeasonShows || offSeasonShowCount === 0) return shows ?? [];
     return (shows ?? []).filter(isInSeason);
   }, [shows, showOffSeasonShows, offSeasonShowCount]);
 
-  // Keep typing responsive on big parks: the input updates `searchQuery` synchronously, but the
-  // expensive Fuse search + full attraction-grid re-render run against a DEFERRED copy at lower
-  // priority, so each keystroke paints immediately instead of blocking on the filter. This was the
-  // dominant mobile-INP cost (~700 ms/keystroke on a 96-attraction park): it used to run unmemoized
-  // in the render body, so every keystroke re-ran the fuzzy search + re-rendered every land before
-  // the next paint. `useMemo` also stops it recomputing on unrelated re-renders (the 5-min poll).
-  //
-  // A one-character query counts as "not searching" rather than as a search that found
-  // nothing: Fuse cannot match a pattern shorter than `minMatchCharLength`, so the first
-  // keystroke used to replace the whole grid with "no attractions found".
+  // The input updates `searchQuery` synchronously; the Fuse search and the grid re-render run
+  // against a deferred copy, so each keystroke paints at once. A one-character query counts as
+  // not searching, because Fuse cannot match below `minMatchCharLength`.
   const deferredQuery = useDeferredValue(searchQuery);
   const searchTerm = deferredQuery.trim();
   const isSearching = searchTerm.length >= MIN_QUERY_LENGTH;
 
   const filteredAttractionsByLand = useMemo(() => {
     if (!isSearching) return inSeasonAttractionsByLand;
-    // Deliberately NOT filtered by season. The toggle above declutters BROWSING; typing a
-    // name is not browsing, it is asking for one ride, and the answer to "maximus" is
-    // Maximus' Blitz Bahn whatever month it is. Filtering the hits made every exact search
-    // for one of Toverlands four off-season rides answer "no attractions found" — while
-    // `ma` and `maxi` appeared to work, because Fuse drags in loose matches (Magiezijn,
-    // Exploria Magica) that happen to be in season. So the search got emptier the more
-    // precisely you typed, and the park looked like it had never heard of the ride it has
-    // a whole page for. The cards say "Nur im Winter" and "Geschlossen" on their own.
-    //
-    // The HEIGHT filter is the exception and stays applied — see `heightFilteredByLand`.
+    // Not filtered by season: typing a name asks for that ride whatever month it is, and an
+    // exact search for an off-season ride must not answer "no attractions found". The cards say
+    // "Nur im Winter" on their own. The height filter stays applied (`heightFilteredByLand`).
     return fuse
       .search(searchTerm)
       .map((result) => result.item)
@@ -537,14 +457,9 @@ export function useAttractionFilter({
   );
 
   /**
-   * Whether anything is currently cutting the grid down.
-   *
-   * Every narrowing filter in its DEFERRED reading, so it describes the grid on screen rather
-   * than the pills. It gates the rope-drop block, which is advice about the whole park: mounting
-   * or unmounting that block is one of the costs a pill tap used to pay before its paint, and
-   * flipping it off the urgent value would put the advice back over a grid that no longer
-   * matches it for as long as the deferred render takes. The rider height is read the same way,
-   * for the same reason.
+   * Whether anything is currently cutting the grid down, from every filter's deferred reading so
+   * it describes the grid on screen. It gates the rope-drop block, advice about the whole park
+   * that must not sit over a grid that no longer matches it.
    */
   const isNarrowing =
     isSearching ||
@@ -556,7 +471,6 @@ export function useAttractionFilter({
     deferredOnlyCovered;
 
   return {
-    // Search
     inputRef,
     searchQuery,
     setSearchQuery,
@@ -564,14 +478,12 @@ export function useAttractionFilter({
     filteredAttractionsByLand,
     hasSearchResults,
     closedRideMatches,
-    // Rider height
     /** The heights the slider may take, or `null` when the park publishes no minimum at all. */
     heightStops,
     riderHeight,
     setRiderHeight,
     totalAttractionCount,
     rideableAttractionCount,
-    // Narrowing pills
     onlyOpen,
     setOnlyOpen,
     wetMode,
@@ -602,12 +514,10 @@ export function useAttractionFilter({
     coveredAttractionCount,
     /** The park's own brand for its queue-jump product, or `null` when it sells several. */
     fastPassLabel,
-    // Attractions
     headliners,
     offSeasonAttractionCount,
     showOffSeasonAttractions,
     setShowOffSeasonAttractions,
-    // Shows
     visibleShows,
     offSeasonShowCount,
     showOffSeasonShows,

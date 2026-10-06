@@ -34,29 +34,14 @@ export interface NewsStreamPark {
 const PARK_PARAM = 'park';
 
 /**
- * The news overview's stream, newest day first, with a filter by park.
- *
- * Every entry is rendered on the server and passed in as a node, so the full list is in the
- * first HTML and in the static page. The filter is a query parameter on the one `/news` page,
- * not a URL of its own: the route stays static, and its canonical stays `/news` whatever the
- * parameter says. Clicks write it with `history.replaceState`, so a filtered view can be shared
- * without adding one history entry per click.
- *
- * The filtering itself is CSS, not a re-render: the stream carries `data-news-filter`, and one
- * rule per park hides the other notes and the days left empty. That is what lets a shared
- * `?park=` link arrive filtered. A static page cannot know the parameter on the server, and
- * reading it after hydration drew the full list first and then took most of it away, which
- * moved everything below. The inline script sets the attribute while the HTML is parsed, before
- * the notes are painted. A slug with no rule (an old link, a typo) matches nothing and shows
- * everything. A day knows its parks as `data-parks`, a space-separated list the rule matches with
- * `~=`: it used to ask `:not(:has([data-park=…]))`, and any `:has()` rule on a page makes every
- * DOM change there restyle the whole document (docs/rules/no-has-selector-in-the-stylesheet.md).
- *
- * After hydration the URL is the only state (`FilterBar`): it had a `useState` of its own, which
- * survived a navigation to plain `/news` and kept the list filtered under an unfiltered address.
- *
- * A pill press only changes that one attribute and the pill row, so no list is rebuilt in the
- * interaction's commit (`docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md`).
+ * The news overview's stream, newest day first, with a filter by park. Every entry is rendered on
+ * the server, so the full list is in the static page. The filter is `?park=` on the one `/news`
+ * page (the canonical stays `/news`), written with `history.replaceState`. Filtering is CSS, not a
+ * re-render: an inline script sets `data-news-filter` before paint, so a shared link arrives
+ * filtered without the list shifting, and one rule per park hides the rest. Days match with
+ * `data-parks ~=`, not `:has()` (docs/rules/no-has-selector-in-the-stylesheet.md). After hydration
+ * the URL is the only state, and a pill press rebuilds no list
+ * (docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md).
  */
 export function NewsStream({
   groups,

@@ -1,8 +1,4 @@
-/**
- * Enhanced Translation Helpers with Logging
- *
- * Type-safe helpers that also log missing translations
- */
+/** Country and continent names that fall back to the prettified slug and log the missing key. */
 
 import { logMissingTranslation } from './logger';
 
@@ -21,7 +17,6 @@ export function translateCountry(
     const key = `countries.${slug}`;
     const translated = t(key);
 
-    // Check if translation was found
     if (translated === key || translated.startsWith('countries.')) {
       logMissingTranslation(key, locale, 'geo');
       return fallback || formatSlug(slug);
@@ -54,32 +49,6 @@ export function translateContinent(
   } catch {
     logMissingTranslation(`continents.${slug}`, locale, 'geo');
     return fallback || formatSlug(slug);
-  }
-}
-
-/**
- * Safely translate with fallback and logging
- */
-export function safeTranslate(
-  t: TranslationFunction,
-  key: string,
-  locale: string,
-  namespace?: string,
-  fallback?: string
-): string {
-  try {
-    const result = t(key);
-
-    // If result equals key, translation likely wasn't found
-    if (result === key || result === `${namespace}.${key}`) {
-      logMissingTranslation(key, locale, namespace);
-      return fallback || key;
-    }
-
-    return result;
-  } catch {
-    logMissingTranslation(key, locale, namespace);
-    return fallback || key;
   }
 }
 

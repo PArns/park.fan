@@ -12,22 +12,9 @@ import { Chip, EmptyState } from './primitives';
 import { useToast } from './toast';
 
 /**
- * What has been changed here, and how to put it back.
- *
- * The undo is the reason this is a component and not a table: a curated value
- * is a claim about the world, and the useful question about one is usually not
- * "what does it say" but "who decided that, when, and on what evidence". An
- * audit list that cannot answer the fourth question — "and can I take it back"
- * — leaves the first three as trivia.
- *
- * Only curation entries can be undone. A job trigger has no previous state to
- * restore, and offering an undo that quietly does nothing is worse than not
- * offering one.
- *
- * A verification (`kind: 'verification'`, written by `park.verify`) changed
- * nothing: `before` holds the values someone checked against `sourceUrl`, and
- * `after` is null. It has the shape of a deletion, so it is drawn on its own
- * branch, and it never gets an undo (the backend answers one with a 400).
+ * What changed here and how to put it back: who decided a curated value, when, on what evidence,
+ * and an undo. Only curation entries can be undone. A verification (`park.verify`) changed
+ * nothing and has the shape of a deletion, so it is drawn on its own branch, without an undo.
  */
 
 const ACTION_LABELS: Record<string, string> = {
@@ -57,6 +44,10 @@ function actionLabel(action: string): string {
 
 const UNDOABLE = new Set(['attraction.curate', 'park.curate']);
 
+/**
+ * Audit log list: action, actor, time, before → after values, reason and source per entry. With
+ * `canUndo`, unreverted park and ride curations get a button that undoes them.
+ */
 export function HistoryList({
   entries,
   invalidateKeys = [],

@@ -5,6 +5,7 @@ import type {
   ParkWaitTimesResponse,
   QueueDataItem,
 } from '@/lib/api/types';
+import { LIVE_POLL_QUERY_OPTIONS } from '@/lib/hooks/live-poll-options';
 
 /** Live, per-ride fields the blog's ride references overlay client-side. */
 export interface LiveRideFields {
@@ -37,12 +38,9 @@ function toSnapshot(data: ParkWaitTimesResponse): ParkWaitTimesSnapshot {
 }
 
 /**
- * Batch-fetch the live status + standby wait of every ride in a park, keyed by attraction slug.
- *
- * One request per park — React Query dedupes it across every ride reference in a blog post, so a
- * post naming a dozen Phantasialand coasters costs a single ~9 KB call, not one park-page-sized
- * payload per ride. Mirrors the `useRegionParks` contract: client-only (the prerendered shell has
- * no live data to seed), refetch on mount, 5-min poll, refetch on focus/reconnect.
+ * The live status and standby wait of every ride in a park, keyed by attraction slug: one request
+ * per park, shared by every ride reference in a blog post. Client-only, polling like
+ * `useRegionParks`.
  */
 export function useParkWaitTimes(
   continent: string,
@@ -63,12 +61,7 @@ export function useParkWaitTimes(
     // Client-only: during the static (Cache Components) prerender the consumers render from the
     // server-resolved snapshot, and activating React Query there would read the clock.
     enabled: enabled && !!parkSlug && typeof window !== 'undefined',
-    staleTime: 5 * 60_000,
-    gcTime: 10 * 60_000,
-    refetchOnWindowFocus: true,
-    refetchOnReconnect: true,
-    refetchInterval: 5 * 60_000,
-    retry: 2,
+    ...LIVE_POLL_QUERY_OPTIONS,
   });
 
   // Data only — subscribing consumers to `isFetching` would re-render every ride reference in the

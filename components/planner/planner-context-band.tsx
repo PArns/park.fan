@@ -17,81 +17,34 @@ interface PlannerContextBandProps {
   day: PlanDay | null;
   state: PlannerDayState;
   /**
-   * Rendered at the end of the band's second row.
-   *
-   * The party chip used to have a line of its own under this band — 30 px of
-   * panel for one 22 px pill. It belongs on the badge row: it is the same kind
-   * of statement about the day and the same shape of control, and the panel's
-   * subject is the axis below, which was getting 324 px of 950.
+   * Rendered at the end of the band's chip row: the party chip, which is the same kind of statement
+   * about the day and would otherwise cost the axis a line of its own.
    */
   trailing?: ReactNode;
 }
 
 /**
- * One reserved box for every state — this panel is on every page, and the three
- * it can render (loading, empty, ready) must not move the grid under a pointer
- * when one flips to another. 60 px is the skeleton: 12 px of padding, a 22.5 px
- * badge row, a 4 px gap and a 16.5 px second row.
- *
- * It is a MINIMUM and the ready state exceeds it, which is worth knowing before
- * anybody adds a word here. Measured with the payload held at the route until
- * the skeleton had settled, Phantasialand today and Heide Park on 2026-11-30 (a
- * date past its published season, so no weather and derived hours):
- *
- *                       390 px phone        448 px panel
- *   today               60 → 60             60 → 75.5
- *   derived hours       60 → 103.5          60 → 92
- *
- * The phone hides the tier's hint (`planner-phone:sr-only`), which is why the common
- * case costs nothing there and 15.5 px in the panel. The rest is the chip row
- * wrapping, exactly as it does on a day carrying four badges. Two things were
- * kept out of this box because of those numbers: the day's typical error is
- * folded into the tier's own sentence rather than standing beside it (a
- * separate span measured 60 → 75.5 on the phone), and "the hours are derived"
- * is a two-word suffix inside the hours chip rather than a badge of its own (a
- * badge measured 92 → 120 in the panel).
- *
- * `planner-phone:py-1` since PAR-313 — 4 px off the gap between the day row
- * above and this band, which the report asked for by name. What it takes is
- * padding around chips that carry their own; none of them is a touch target, so
- * the 44 px floor is not in this trade. The `min-h` is unchanged and binds on
- * neither side here: measured at 360 px the band draws 83 px of content.
- *
- * One constant and not two class lists, because the skeleton and the settled
- * state have to agree — a loading box a few pixels off its own result is a jump
- * one second after the panel opens.
+ * One reserved box for every state, so loading, empty and ready do not move the grid under a
+ * pointer. 60 px is the skeleton: 12 px of padding, a 22.5 px badge row, a 4 px gap and a 16.5 px
+ * second row. A minimum the ready state can exceed, so the typical error goes into the tier's
+ * sentence and "derived" into the hours chip rather than into rows of their own. One constant so
+ * the skeleton and the settled state cannot drift.
  */
 const BAND_CLASS = 'flex min-h-[60px] flex-col justify-center gap-1 px-3 py-1.5 planner-phone:py-1';
 
 /**
- * Below this a day is dry. Open-Meteo reports a few hundredths of a millimetre
- * on days nobody would call wet, and "0,1 mm" next to a rain drop reads as a
- * forecast of rain.
+ * Below this a day is dry: Open-Meteo reports hundredths of a millimetre on dry days, and "0,1 mm"
+ * beside a drop reads as rain.
  */
 const WET_MM = 0.2;
 
 /**
- * What kind of day this is, above the plan.
+ * What kind of day this is, above the plan: facts about the date that explain the numbers below,
+ * such as a bridge day, a holiday next door, or rain at four.
  *
- * Everything here is a fact about the date rather than about the plan, and each
- * one is a reason the numbers below look the way they do: a bridge day, a school
- * holiday in the region next door, rain at four.
- *
- * The weather is the interesting case. It reaches about two weeks and then stops,
- * and the API does not substitute a climate normal — so past that this says the
- * forecast does not reach, rather than leaving a gap that reads as "no rain
- * expected". A missing forecast and a dry day look identical otherwise.
- *
- * Temperatures render in BOTH units with the global `.u-metric`/`.u-imperial`
- * pair, like every other temperature on the site. This panel is client-only, so
- * it could read the preference directly — but then it would be the one surface
- * whose unit came from React state instead of from the attribute, and the
- * document's own toggle would stop agreeing with it.
- *
- * Four states, not two. A panel that pulses forever is a panel claiming to be
- * loading, and the difference between "we could not fetch this", "this park and
- * day have no forecast" and "still fetching" is exactly what a visitor needs to
- * know before deciding whether to wait.
+ * Past the forecast's reach it says so, since a missing forecast and a dry day otherwise look the
+ * same. Temperatures render in both units with `.u-metric`/`.u-imperial`, like everywhere else on
+ * the site. Four states, so "could not fetch", "no forecast" and "still fetching" are told apart.
  */
 export function PlannerContextBand({ day, state, trailing }: PlannerContextBandProps) {
   const t = useTranslations('planner');
@@ -126,40 +79,15 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
       : null;
 
   /**
-   * Whether anybody has ever checked how wrong the forecast is this far out.
-   *
-   * `observed` is excluded, and that is the whole trap in this field: a day that
-   * has already happened also answers `basis: 'unmeasured'` — nothing predicted
-   * it, so nothing verified a prediction — while its figures are MEASUREMENTS.
-   * Reading the basis there would put "nobody has checked these numbers" under a
-   * day whose numbers are the only ones on this panel that are facts.
-   *
-   * Everywhere else it is the honest bottom of the ladder, and it is what the
-   * `long_range` tier turned into: measured across six lead times at
-   * Phantasialand on 2026-09-04, days 0 to 41 answer `measured`, day 87 answers
-   * `unmeasured`, and `long_range` never came back at all.
+   * Whether anybody has ever checked how wrong the forecast is this far out. Not on an `observed`
+   * day: it also answers `basis: 'unmeasured'`, but its figures are measurements.
    */
   const unmeasured = tier !== 'observed' && day.accuracy?.basis === 'unmeasured';
 
   /**
-   * The day's own typical error, rounded to the minute it is displayed in.
-   *
-   * A TYPICAL error and not a bound — half the days fall further out — so it is
-   * worded as "typically N minutes off" and never as a `±` interval that
-   * contains the answer, the same rule the per-ride figure in the selection bar
-   * follows.
-   *
-   * It goes INTO the tier's hint rather than beside it, and that is a height
-   * decision rather than a wording one: this band reserves one box for all four
-   * of its states, and a separate span for the figure measured 60 → 75.5 px on a
-   * 390 px phone and 75.5 → 92 px in the 448 px panel, i.e. the grid below
-   * stepping down by that much the moment the payload landed. Folded into the
-   * sentence it replaces the tier's generic explanation with a specific one at
-   * roughly the same length, and the box does not move.
-   *
-   * Only where the basis is measured: there is nothing to round otherwise, and
-   * deriving a figure from the tier would be the panel measuring its own
-   * accuracy.
+   * The day's own typical error, rounded to the minute. A typical error, not a bound, so it is
+   * worded "typically N minutes off" and never as a `±` interval. Folded into the tier's hint so
+   * the band keeps its height, and only where the basis is measured.
    */
   const typicalError =
     !unmeasured && typeof day.accuracy?.typicalError === 'number'
@@ -167,19 +95,12 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
       : null;
 
   /**
-   * The opening hours were DERIVED from measurements rather than published.
-   *
-   * It happens past a park's publication horizon — Heide Park answers
-   * `observed` with 10:00–16:00 and `status: UNKNOWN` for 2026-11-30 — and the
-   * window is narrower than the truth by construction, because it can only span
-   * hours somebody recorded. So the chip beside the hours says where they came
-   * from; without it the panel states a closing time the park never published.
+   * The opening hours were derived from measurements rather than published, which happens past a
+   * park's publication horizon and is narrower than the truth by construction, so the chip says so.
    */
   const observedHours = context.hoursSource === 'observed';
 
-  // `observed` first, because it is the one that is not a forecast: on a day
-  // that already happened the figures are what the queues actually did, and
-  // calling that "Stundenprognose" would be the panel predicting the past.
+  // `observed` first: on a day that already happened the figures are not a forecast.
   const tierLabel =
     tier === 'observed'
       ? t('tier.observed')
@@ -210,9 +131,8 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
   const hasCrowd = Boolean(crowd) && crowd !== 'closed';
 
   const weather = context.weather ?? null;
-  // The condition label comes from the WMO code, never from the API's own
-  // `condition` string: that one is the provider's English, and it shipped as
-  // "Overcast" on a German page elsewhere in this app.
+  // The condition label comes from the WMO code, never from the API's `condition` string, which is
+  // the provider's English.
   const conditions = weather ? getWeatherConfig(weather.icon) : null;
   const rainMm = weather ? (weather.precipitationMm ?? weather.rainChance) : 0;
 
@@ -221,14 +141,9 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
       <div className="flex flex-wrap items-center gap-1.5">
         {hasCrowd && <CrowdLevelBadge level={crowd} />}
 
-        {/* A day with no published hours is not the same as a day nobody asked
-            about: every figure below depends on when the park opens, so the
-            absence is stated rather than left as a missing line. */}
-        {/* Inside the hours chip and not a badge beside it: it is a statement
-            ABOUT these hours, and among the holiday badges it would read as
-            another fact about the date. It also costs the band a line as a
-            badge — measured 75.5 → 103.5 px at 390 px — where a suffix in the
-            same span usually fits on the row that is already there. */}
+        {/* A day with no published hours says so, since every figure depends on the opening. The
+            "derived" note sits inside the hours chip, because it is about these hours and as a
+            badge it would cost the band a line. */}
         <span
           className="text-muted-foreground inline-flex items-center gap-1 text-xs"
           title={observedHours && hours ? t('context.hoursObservedHint') : undefined}
@@ -255,31 +170,16 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
             {t('context.schoolVacation')}
           </Badge>
         )}
-        {/* Not on a phone. The column head two rows above prints the weekday
-            itself ("So. 06.09."), so this chip says nothing new there — and it
-            is a chip on a row that WRAPS, so on the reported day (Phantasialand,
-            Sunday) it was the one that pushed the row onto a second line and
-            cost the axis 26 px. It stays above `sm`, where the row has the width
-            to carry it on one line and the panel is not fighting for pixels.
-
-            **`planner-phone:` rather than `max-sm:` since PAR-168**, and that is
-            the same correction PAR-76 made across the sheet: the class asked the
-            WINDOW's width, so at 844x390 it did not fire and the band drew its
-            desktop fassung into a 320 px column. The sentence above is about a
-            narrow BOX and a coarse pointer, and both hold on a landscape phone —
-            measured, the band came out 138 px of the 269 the column has. */}
+        {/* Not on a phone: the column head already prints the weekday, and this chip pushed the
+            wrapping row onto a second line. `planner-phone:`, not `max-sm:`, so a landscape phone
+            counts as narrow too. */}
         {context.isWeekend && (
           <Badge variant="outline" className="planner-phone:hidden text-[11px]">
             {t('context.weekend')}
           </Badge>
         )}
-        {/* A palm on a phone, the words everywhere else (PAR-482: „Ferien
-            nebenan kürzen, damit das oben wieder 1 Zeile wird"). At 360 px the
-            chip row ran 10 px over with the words in it and put the party chip
-            on a line of its own; the palm is 26 px where the words were 97.
-            The words stay for a screen reader (`sr-only`) and in the `title`.
-            Only this badge: „Ferien" for the park's own region is one short
-            word already. */}
+        {/* A palm on a phone, the words everywhere else, so the chip row stays on one line at
+            360 px. The words stay for screen readers (`sr-only`) and in the `title`. */}
         {context.neighborHolidays && context.neighborHolidays.length > 0 && (
           <Badge
             variant="outline"
@@ -292,9 +192,7 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
           </Badge>
         )}
 
-        {/* Last on the CHIP row, not on the prose row below it: the second row
-            already carries the weather and the tier and wraps at 448 px, and a
-            third line there costs the axis 22 px. A chip among chips. */}
+        {/* Last on the chip row, not the prose row below, which already wraps at 448 px. */}
         {trailing}
       </div>
 
@@ -327,9 +225,7 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
         <span className="text-muted-foreground inline-flex items-center gap-1">
           <CalendarDays className="size-3" />
           <span className="text-foreground/80 font-medium">{tierLabel}</span>
-          {/* `planner-phone:` rather than `max-sm:` for the reason the weekend
-              chip above gives: the hint is folded away where the box is narrow
-              and the pointer coarse, and a landscape phone is both. */}
+          {/* `planner-phone:`, not `max-sm:`, for the reason the weekend chip gives. */}
           <span className="planner-phone:sr-only">{tierHint}</span>
         </span>
       </div>

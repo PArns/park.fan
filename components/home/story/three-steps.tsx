@@ -7,19 +7,13 @@ import { MobileMore } from '@/components/common/mobile-more';
 import { HeroInlineSearch } from '@/components/search/hero-inline-search';
 import { CROWD_DOT_CLASS, CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
+import { STORY_SECTION } from './section-chrome';
 
 /**
- * A month of crowd colours, as a shape rather than a claim.
- *
- * Deliberately NOT `ParkCalendarDay` with fixture days: this tile is 12 px
- * square inside a teaser card, so the real component's date, badge and border
- * would all have to be switched off to fit — at which point it is no longer the
- * real component, only its palette. The palette is the part that has to match,
- * and it does: the indices below read out of {@link CROWD_LEVEL_ORDER}, so a
- * retuned `--crowd-*` moves this illustration with every calendar on the site.
- *
- * It names no park and no date, which is what keeps it honest — the chapter
- * further down shows the calendar itself.
+ * A month of crowd colours, as a shape rather than a claim. Not `ParkCalendarDay` with fixture
+ * days: at 12 px square nothing but its palette would survive, and the indices read out of
+ * {@link CROWD_LEVEL_ORDER}, so a retuned `--crowd-*` moves this too. It names no park and no
+ * date.
  */
 const MONTH_SHAPE = [
   1, 0, 0, 1, 2, 5, 4, 0, 1, 0, 1, 3, 4, 3, 1, 0, 0, 1, 2, 5, 5, 2, 1, 0, 1, 2, 4, 4,
@@ -46,13 +40,9 @@ function StepCard({
   children: React.ReactNode;
 }) {
   return (
-    // No `backdrop-blur` on this card, deliberately. It is a BACKDROP ROOT for
-    // everything inside it, and step 1 holds a search dropdown whose own glass
-    // then has only the card to sample — the page behind read straight through
-    // it at every fill value. Measured, not guessed: walking the dropdown's
-    // ancestors named this element and nothing else. The card sits on a flat
-    // page background anyway, so there was never anything here to blur (see
-    // `PANEL_FLAT` in glass-card.tsx for the same reasoning one layer up).
+    // No `backdrop-blur` on this card: it would be a backdrop root for step 1's search dropdown,
+    // whose glass would then sample only the card. The card sits on a flat background anyway (see
+    // `PANEL_FLAT` in glass-card.tsx).
     <div className="border-border bg-card/60 flex h-full flex-col rounded-2xl border shadow-sm">
       <div className="p-5 pb-0 sm:p-6 sm:pb-0">
         <div className="mb-3 flex items-center gap-2.5">
@@ -72,6 +62,10 @@ function StepCard({
   );
 }
 
+/**
+ * Homepage chapter that walks through a park day in three cards: pick a park (with a live park
+ * search), check the day on a crowd-colour month, plan the route on a ride's day curve.
+ */
 export async function ThreeSteps() {
   const [t, tCommon] = await Promise.all([
     getTranslations('homeStory.steps'),
@@ -84,7 +78,7 @@ export async function ThreeSteps() {
     // and therefore paints ON TOP of it — the results ended up behind the next
     // chapter's heading. Below the header's z-50, which must stay above
     // everything.
-    <section className="relative z-30 px-4 py-16 sm:py-18">
+    <section className={`relative z-30 ${STORY_SECTION}`}>
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading
@@ -101,23 +95,11 @@ export async function ThreeSteps() {
             open a wide window can leave the page under 768 px, and a window-based
             `md:grid-cols-3` then drew step 1 beside two empty columns. */}
         <div className="grid gap-5 @min-[768px]/page:grid-cols-3">
-          {/* 1 — choose a park. Literally the hero's field, not a lookalike: a
-              search box that cannot search is the one thing a first visitor
-              tries first, and a second implementation is a second thing that can
-              stop working. `primary={false}` is what keeps the page-wide halves
-              of it (type-to-open, the hero click metric) unique. */}
-          {/* NOT wrapped in `Reveal`, and that is the whole point: `Reveal` keeps a
-              `translate-y-0` on its wrapper for good, a transform makes that
-              wrapper a BACKDROP ROOT, and `backdrop-filter` then samples only
-              inside it. The search dropdown's glass had nothing to blur — the
-              page behind read straight through it, at every fill value, which is
-              why raising the opacity looked like the fix and was not. Same rule
-              the header menu follows: never animate the glass or an ancestor of
-              it. The entrance for this one card is the price.
-
-              `relative z-10` stays for the other reason: the two cards after it
-              are their own stacking contexts, so the `z-40` inside the dropdown
-              cannot reach over them on its own. */}
+          {/* 1, choose a park: the hero's own field, not a lookalike, since a search box that
+              cannot search is what a first visitor tries first; `primary={false}` keeps its
+              page-wide halves unique. Not wrapped in `Reveal`, whose lasting transform would make a
+              backdrop root and leave the dropdown's glass nothing to blur. `relative z-10` lets
+              the dropdown's `z-40` reach over the next two cards. */}
           <div className="relative z-10">
             <StepCard
               step={1}
@@ -133,10 +115,9 @@ export async function ThreeSteps() {
             </StepCard>
           </div>
 
-          {/* On a phone, steps 2 and 3 open on request (PAR-435); `contents` keeps them items
-              of this grid from 768 px up. */}
+          {/* On a phone steps 2 and 3 open on request; `contents` keeps them items of this grid
+              from 768 px up. */}
           <MobileMore label={tCommon('showMore')} contents>
-            {/* 2 — check the day. */}
             <Reveal delay={80}>
               <StepCard
                 step={2}
@@ -167,7 +148,6 @@ export async function ThreeSteps() {
               </StepCard>
             </Reveal>
 
-            {/* 3 — plan the route. */}
             <Reveal delay={160}>
               <StepCard
                 step={3}

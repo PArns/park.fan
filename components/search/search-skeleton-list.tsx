@@ -2,29 +2,13 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 
 /**
- * The search dropdown's pending body — a group heading and N result rows — rendered by every
- * surface that has to stand in for the real list.
- *
- * It is its own module, free of `next/image`, cmdk and the result tree, because one of those
- * surfaces is {@link HeroSearchRestingCard}: the static shell that paints the hero's resting
- * dropdown before the search chunk exists. Importing it from `search-result-items.tsx` would
- * drag the whole result tree into the shell's chunk, which is the one thing that file is not
- * allowed to do.
- *
- * **Every one of these boxes has to be the height of the row it stands in for.** The hero
- * reserves the dropdown's resting height in its own flow (`--hero-search-rest-h`), so a skeleton
- * that is not exactly as tall as the list it precedes moves the nearby pills underneath it. Three
- * versions of "the same" card had drifted apart — the shell's at 252 px, the panel's pending
- * state at 288 px, the settled list at 270 px — and the pill row hopped 19 px down when the panel
- * mounted and back up two seconds later when its data landed.
- *
- * A result row's height comes from its photo box plus the surface's own vertical padding, which
- * each surface sets on its cmdk root (`[&_[cmdk-item]]:py-*`): 2.5 in the hero, 3.5 in the
- * palette. A plain `<div>` is not a `[cmdk-item]`, so `rowClassName` passes that padding in
- * rather than this file guessing which surface it is on. The default matches the palette, which
- * is where these rows started.
- *
- * @see {@link HERO_SKELETON_ROW_CLASS} for the hero's.
+ * The search dropdown's pending body (a group heading and N result rows) for every surface that
+ * stands in for the real list. Its own module, free of `next/image`, cmdk and the result tree,
+ * because {@link HeroSearchRestingCard} paints it in the static shell. Every box has the height of
+ * the row it stands in for, since the hero reserves the dropdown's resting height and any
+ * difference moves the nearby pills. A row's padding comes from the surface's cmdk root, so
+ * `rowClassName` passes it in; the default matches the palette, see
+ * {@link HERO_SKELETON_ROW_CLASS} for the hero's.
  */
 
 /**
@@ -73,12 +57,9 @@ interface SearchSkeletonListProps {
 }
 
 /**
- * Heading + rows, i.e. everything inside a pending dropdown above its footer.
- *
- * The bar standing in for the heading is **inline-block inside a `text-[10px]` line box**, not a
- * block-level bar. A block bar makes the box its own height — 8 px against the 13 px line the
- * real heading occupies, and those 4 px were part of the card's jump. Inline, the line box keeps
- * the height text would have given it and the bar sits inside it.
+ * Heading and rows, everything inside a pending dropdown above its footer. The heading's bar is
+ * inline-block inside a `text-[10px]` line box, so the line keeps the height the real heading's
+ * text gives it.
  */
 export function SearchSkeletonList({
   rows,

@@ -19,12 +19,8 @@ import { fitWithin } from '@/lib/utils/metadata';
 
 const SITE_URL = 'https://park.fan';
 /**
- * The publisher of every post, article and news alike.
- *
- * The logo is the PNG, not `logo-big.svg`: Google wants `publisher.logo` in a format Google Images
- * supports, and SVG is not one of them (PAR-486). The Schema.org validator does not flag it — the
- * restriction is Google's, not Schema.org's. `components/seo/structured-data.tsx` already falls
- * back to the same PNG for the park pages. 1024 × 1024, measured off the file.
+ * The publisher of every post, article and news alike. The logo is the PNG, not the SVG: Google
+ * wants `publisher.logo` in a format Google Images supports, and SVG is not one.
  */
 const ORG = {
   '@type': 'Organization',
@@ -49,16 +45,9 @@ function absoluteUrl(url: string | undefined | null): string | undefined {
 }
 
 /**
- * Representative image for a post's structured data. Prefers real imagery (an
- * explicit `seo.ogImage` override, then the cover photo) and falls back to the
- * post's generated OG card, so every linked post still carries an image. Mirrors
- * the OG-metadata chain in the blog post page.
- *
- * Content-versioned, like the park and ride structured data already is. A cover
- * is usually a build-time crop, `/media` is served with a month of `max-age`, and
- * a crawler re-fetches on its own schedule on top of that — so an unversioned URL
- * means a retargeted focal point shows up in search results as the old framing for
- * as long as everyone's caches feel like it.
+ * Representative image for a post's structured data: the `seo.ogImage` override, then the cover
+ * photo, then the generated OG card, as in the post page's OG metadata. Content-versioned, so a
+ * re-cropped cover does not linger in search results behind long-lived caches.
  */
 function resolvePostImage(locale: string, slug: string, frontmatter: BlogFrontmatter): string {
   return (
@@ -80,10 +69,9 @@ function sizeOf(size: { width: number; height: number }): { width: string; heigh
   return { width: String(size.width), height: String(size.height) };
 }
 /**
- * Frontmatter dates are calendar days (`2026-09-23`) without a clock, written in Germany.
- * Google asks for a timestamp with an offset on every Article type, so a post date is read as
- * local midnight there; a bare day is otherwise read in whatever zone the crawler assumes. Berlin switches DST at 02:00, so `T00:00:00` always exists (see G-39 for the zones
- * where it does not).
+ * Frontmatter dates are calendar days written in Germany, and Google wants a timestamp with an
+ * offset on every Article type, so a post date is read as local midnight in Berlin. Berlin switches
+ * DST at 02:00, so `T00:00:00` always exists.
  */
 const POST_TIME_ZONE = 'Europe/Berlin';
 
@@ -146,26 +134,18 @@ interface BlogPostingStructuredDataProps {
 }
 
 /**
- * Article-shaped JSON-LD for a single blog post. Surfaces author, publisher,
- * publish/update dates, the cover image, keywords (tags) and a few internal
- * links so Google can build rich-result cards for the post.
- *
- * A news post (`isNewsCategory`) sends `NewsArticle`, which Top Stories and Google News read,
- * with a headline of at most 110 characters, dates with an offset and an image list that holds
- * one image of 1200 px or more. Every other post sends `BlogPosting`, unchanged.
+ * Article JSON-LD for a single blog post: `NewsArticle` for a news post, which Top Stories and
+ * Google News read, and `BlogPosting` for every other post.
  */
 export function BlogPostingStructuredData({ post, locale, path }: BlogPostingStructuredDataProps) {
   const { frontmatter } = post;
-  // `author: patrick` in frontmatter is a REGISTRY KEY, not a display name. Taking it verbatim
-  // published `"author": {"name": "patrick"}` — the byline Google shows in article results —
-  // and dropped the url/avatar/bio the registry has. The visible page already resolves it
-  // (`resolveAuthor` in the post page); the JSON-LD has to do the same.
+  // `author: patrick` is a registry key, not a display name; it is resolved as on the visible page,
+  // because `author.name` is the byline Google shows.
   const author = resolveAuthor(frontmatter.author, locale as Locale);
   // Google wants `author.url` to point at a page ABOUT the author. For a registry author that
   // is our own profile page; the personal site then belongs in `sameAs`.
   const authorProfile = author.key ? `${SITE_URL}/${locale}/blog/authors/${author.key}` : undefined;
-  // Deduped: `url` and `links.website` are usually the same address, which otherwise
-  // listed the personal site twice.
+  // Deduped: `url` and `links.website` are usually the same address.
   const authorSameAs = [
     ...new Set(
       [author.url, ...Object.values(author.links ?? {})].filter(
@@ -237,9 +217,8 @@ interface BlogStructuredDataProps {
 }
 
 /**
- * Blog-shaped JSON-LD for listing pages (index + category). Includes
- * `blogPost` references for the visible items so Google can connect the
- * listing back to the individual posts.
+ * `Blog` JSON-LD for the blog index and category pages, with `blogPost` references to the listed
+ * posts.
  */
 export function BlogStructuredData({
   locale,
@@ -263,8 +242,6 @@ export function BlogStructuredData({
       url: `${SITE_URL}/${locale}${postPath(p)}`,
       datePublished: withZoneOffset(p.frontmatter.date),
       dateModified: withZoneOffset(p.frontmatter.updatedAt ?? p.frontmatter.date),
-      // Real cover photo preferred; generated OG card as fallback so every listed
-      // post carries an image when linked.
       image: resolvePostImage(locale, p.slug, p.frontmatter),
     })),
   };
@@ -285,12 +262,8 @@ interface NewsListingStructuredDataProps {
 
 /**
  * JSON-LD for the news overview: a `CollectionPage` whose main entity is an `ItemList` of the news
- * posts, newest first, each a `NewsArticle` reference with its own URL under `/news`.
- *
- * Not `Blog`: the overview used to send the blog's listing type, whose `blogPost` entries are
- * `BlogPosting`s, while every post it lists sends `NewsArticle` on its own page (PAR-471). One
- * page calling a post a blog posting and the post calling itself a news article is the kind of
- * disagreement structured data exists to avoid.
+ * posts, newest first, each a `NewsArticle` reference. Not `Blog`, whose entries are
+ * `BlogPosting`s, while each post it lists calls itself a `NewsArticle`.
  */
 export function NewsListingStructuredData({
   locale,

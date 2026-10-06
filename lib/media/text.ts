@@ -34,15 +34,9 @@ export function getMediaAlt(id: string, locale: string): string | null {
 }
 
 /**
- * Alt text for a PUBLIC PATH rather than a media id, e.g.
- * `/media/europa-park/arthur.jpg?v=0a5e56d1` → the `europa-park/arthur` sidecar.
- *
- * The hero pipeline carries paths, not ids: `HERO_SRCS` is a list of `src` strings because it is
- * the client-safe slice and an id would be a second thing to ship. Server callers that already
- * hold such a path (the homepage hero pick, the glossary background) can resolve authored alt
- * through here instead of inventing one from the entity name.
- *
- * Server-side only, like the rest of this module — see the file docstring.
+ * Alt text for a public path rather than a media id (`/media/europa-park/arthur.jpg?v=…` →
+ * `europa-park/arthur`), for server callers holding a hero path: the client-safe hero slice ships
+ * paths, not ids. Server-side only, like the rest of this module.
  */
 export function getMediaAltBySrc(src: string | null | undefined, locale: string): string | null {
   if (!src) return null;

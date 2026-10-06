@@ -1,15 +1,13 @@
 /**
- * Where the visitor stands relative to the park page's park, as one pure decision.
- *
- * Two page parts show it: the location line on the title card's address line
- * (`ParkLocationLine`, one box at one fixed height, because the server cannot know any of the
- * inputs below) and, for `inPark` only, the ride lists above the tabs (`ParkInParkBlock`). Kept
- * out of the components so the decision is testable without a browser (`pnpm test:in-park-block`).
+ * Where the visitor stands relative to the park page's park, as one pure decision for
+ * `ParkLocationLine` and, when in the park, `ParkInParkBlock`. Kept out of the components so
+ * `pnpm test:in-park-block` can run it without a browser.
  */
 import { calculateDistance } from '@/lib/utils/distance-utils';
 import type { AttractionWithDistance, NearbyAttractionsData, NearbyResponse } from '@/types/nearby';
 import { IN_PARK_FALLBACK_DISTANCE_M } from '@/types/nearby';
 
+/** What the in-park line and block show. */
 export type InParkBlockState =
   /** Nothing known yet (before the permission check, or a fix is on its way). Row invisible. */
   | { kind: 'pending' }
@@ -20,11 +18,12 @@ export type InParkBlockState =
   /** A fix exists and it is not inside this park. `distanceM` is null when the park has no point. */
   | { kind: 'away'; distanceM: number | null }
   /**
-   * Inside this park. `showDistances` is false when the fix is coarser than the in-park radius:
-   * the backend still placed the visitor in the park, but a per-ride distance would be noise.
+   * Inside this park. `showDistances` is false when the fix is coarser than the in-park radius,
+   * where a per-ride distance would be noise.
    */
   | { kind: 'inPark'; rides: AttractionWithDistance[]; showDistances: boolean };
 
+/** Everything {@link resolveInParkBlock} decides from. */
 export interface InParkBlockInput {
   parkId: string;
   parkLatitude: number | null | undefined;
@@ -33,9 +32,8 @@ export interface InParkBlockInput {
   rideCoordinates: ReadonlyMap<string, { lat: number; lng: number }>;
   nearby: NearbyResponse | undefined;
   /**
-   * The nearby query has no answer for the current key yet (React Query `isPending`, or it is
-   * painting `placeholderData` from the previous key). With a fix already in hand this must not
-   * read as "away": the answer that would place the visitor in the park is on its way.
+   * The nearby query has no answer for the current key yet (`isPending`, or still showing the
+   * previous key's `placeholderData`). With a fix in hand this must not read as „away".
    */
   nearbyPending: boolean;
   position: { lat: number; lng: number } | null;
@@ -45,8 +43,8 @@ export interface InParkBlockInput {
   initialCheckDone: boolean;
   loading: boolean;
   /**
-   * `?sim=` is set (dev and preview only). When the simulated answer places the visitor in this
-   * park, no fix is needed and none is used; otherwise the real inputs decide as usual.
+   * `?sim=` is set (dev and preview only). A simulated in-park answer needs no fix; otherwise the
+   * real inputs decide.
    */
   simulated: boolean;
 }
@@ -59,8 +57,8 @@ function inParkDataFor(nearby: NearbyResponse | undefined, parkId: string) {
 }
 
 /**
- * The API's distances were measured from the position the request carried, which can be up to a
- * refresh interval old. Where the page knows a ride's point, measure again from the current fix.
+ * Re-measures ride distances from the current fix where the page knows a ride's point, since the
+ * API measured from the position the request carried, up to a refresh interval old.
  */
 export function withCurrentDistances(
   rides: AttractionWithDistance[],
@@ -77,12 +75,13 @@ export function withCurrentDistances(
   });
 }
 
+/** Decides what the in-park line and block show for the current location state. */
 export function resolveInParkBlock(input: InParkBlockInput): InParkBlockState {
   const data = inParkDataFor(input.nearby, input.parkId);
 
   if (input.simulated && data) {
-    // The simulated answer was computed from preset coordinates; a real fix (the reader's desk)
-    // would turn every distance into kilometres, so the API's numbers are the only honest ones.
+    // Computed from preset coordinates; a real fix (the developer's desk) would make every distance
+    // kilometres, so the API's numbers are the only honest ones.
     return { kind: 'inPark', rides: data.rides ?? [], showDistances: true };
   }
 

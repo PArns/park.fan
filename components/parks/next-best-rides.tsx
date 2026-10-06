@@ -18,7 +18,7 @@ import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import type { AttractionWithDistance } from '@/types/nearby';
 
 /**
- * "What now?" for a visitor in the park without a plan (PAR-419): up to three rides whose queue
+ * "What now?" for a visitor in the park without a plan: up to three rides whose queue
  * is short now and forecast to be longer within two hours. The rule is `suggestNextRides`; this
  * only feeds it and prints the two numbers it compared.
  *

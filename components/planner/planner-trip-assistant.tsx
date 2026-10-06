@@ -32,18 +32,10 @@ interface PlannerTripAssistantProps {
 }
 
 /**
- * Which park on which day, proposed from the crowd forecast (PAR-9).
- *
- * A dialog opened from a button on the planner page, the same shape as the fit assistant beside
- * it: the visitor sets the window and the parks, reads a proposal, and nothing is written until
- * "annehmen". The proposal is taken or dropped as a whole, not per day.
- *
- * Window and park choice live here and are not stored: there is no trip in the plan, only
- * parks, days and entries. "Several trips" means the assistant is run again for the next window;
- * a run only ever adds days, and the days already in the plan stay where they are.
- *
- * Mounted by the caller only while open, so every opening starts from the defaults and no effect
- * has to reset anything.
+ * Which park on which day, proposed from the crowd forecast. Like the fit assistant: the visitor
+ * sets the window and parks, reads a proposal, and nothing is written until "annehmen", as a whole.
+ * Window and parks are not stored, since the plan has no trips, only days; a run only adds days.
+ * Mounted only while open, so every opening starts from the defaults.
  */
 export function PlannerTripAssistant({ onOpenChange }: PlannerTripAssistantProps) {
   const t = useTranslations('planner');

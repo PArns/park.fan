@@ -330,12 +330,8 @@ export function buildSlashItems(emit: (action: string) => void): SlashItem[] {
         emit('suno');
       },
     },
-    // Widget fences — each emits the same `widget:<name>` action so the
-    // canvas can insert a fresh codeBlock with the language attr already
-    // set. The author edits the body attrs via the right-side
-    // PropertiesPanel that flips on for the freshly-inserted chip.
-    // Widget catalogue — synced with _lib/widgets.ts. Adding a widget kind
-    // there auto-surfaces it here too.
+    // Widget fences from `_lib/widgets.ts`, each emitting `widget:<name>` so the canvas inserts a
+    // codeBlock with its language set; the PropertiesPanel then edits the attrs.
     ...WIDGETS.map<SlashItem>((w) => ({
       title: w.label,
       description: w.hint,

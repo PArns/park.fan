@@ -1,19 +1,9 @@
 import { locales, SITE_URL } from '@/i18n/config';
 
 /**
- * WebSub (W3C, formerly PubSubHubbub) — how a new post reaches a subscriber in
- * seconds instead of whenever their reader next polls.
- *
- * Two halves, and both are needed. The feed advertises a hub
- * (`<atom:link rel="hub">`), which is how a subscriber learns there is one and
- * registers with it. Then the publisher pings the hub when something changed;
- * the hub re-fetches the feed, diffs it, and pushes only real changes to
- * everyone subscribed. A feed that names a hub but never pings it is no faster
- * than polling — the hub has no other way to find out.
- *
- * Google's public hub, the one nearly every WebSub feed points at. It stores
- * nothing but the feed URL and the subscriber list, and a wrong ping costs a
- * fetch of a document that is public anyway.
+ * Google's public WebSub hub, the one nearly every feed points at. WebSub gets a new post to
+ * subscribers in seconds: the feed advertises the hub (`<atom:link rel="hub">`) and the publisher
+ * pings it on every change, since a hub that is never pinged has no other way to find out.
  */
 export const WEBSUB_HUB = 'https://pubsubhubbub.appspot.com/';
 

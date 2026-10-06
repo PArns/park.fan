@@ -5,34 +5,24 @@ import { usePathname } from '@/i18n/navigation';
 import { escapeRefocusesTrigger, focusLeftMenu } from '@/lib/utils/menu-focus';
 
 /**
- * The open/close behaviour every entry in the header's mega-menu bar shares.
+ * The open/close behaviour every entry in the header's mega-menu bar shares, so no entry opens
+ * differently from its neighbours.
  *
- * Extracted from `NavMenu` when the favorites entry moved into the same row: two copies of this
- * would be two chances for the hysteresis, the outside-click handling or the close-on-navigate
- * rule to drift, and a bar where one entry opens differently from its neighbours is worse than
- * one where none of them do.
- *
- * Two things it is built around:
- *
- * 1. **Open state is the PATH the panel was opened on, not a boolean.** The header lives in the
- *    locale layout and survives the route change, and the pointerdown handler deliberately
- *    ignores clicks INSIDE the band — which is exactly where the links are. So following one left
- *    the panel hanging over the page it had just navigated to. Comparing against the current path
- *    closes it during render, for free; a boolean plus an effect would do the same thing one
- *    render later and is the `setState`-in-an-effect the linter is right to refuse.
- * 2. **Hover has hysteresis.** Opening waits ~90 ms so a pointer crossing the bar on its way
- *    somewhere else does not flash three panels; closing waits ~180 ms so the diagonal from the
- *    trigger down into the panel does not fall through the gap. Neither timer runs for keyboard
- *    or touch, which open on click instead.
- * It used to take a `disabled` flag as well, for the header floating transparent over a hero: up
- * there the whole nav row was invisible, so a panel hanging open would have sat over the photo
- * attached to nothing. The row is visible and usable from the first screen line now, so an entry
- * that refuses to open has nothing left to protect.
+ * 1. Open state is the path the panel was opened on, not a boolean. The header survives route
+ *    changes and clicks inside the band are ignored, so a followed link would leave the panel
+ *    hanging; comparing against the current path closes it during render, with no effect.
+ * 2. Hover has hysteresis: opening waits so a pointer crossing the bar does not flash panels,
+ *    closing waits so the diagonal into the panel does not fall through the gap. Keyboard and
+ *    touch open on click instead.
  */
 
 const OPEN_DELAY_MS = 90;
 const CLOSE_DELAY_MS = 180;
 
+/**
+ * Open state and trigger handlers for one header mega-menu entry: hover opens after 90 ms and
+ * closes after 180 ms, click toggles, and navigating closes the panel.
+ */
 export function useMenuTrigger() {
   const pathname = usePathname();
   const [openedOn, setOpenedOn] = useState<string | null>(null);
@@ -69,13 +59,9 @@ export function useMenuTrigger() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setOpenedOn(null);
-        // Putting the focus back on the trigger is what makes Escape usable with a keyboard — and
-        // it is why Escape closed nothing: the trigger is INSIDE the wrapper, so `focus()`
-        // dispatches a bubbling `focusin`, `onFocus` calls `setRequested(true)`, and the close
-        // from the line above is overwritten in the same batch. The flag holds only for the
-        // duration of that synchronous dispatch.
-        // Only when the focus is in this band or nowhere: Escape belongs to what has focus, and a
-        // hover-opened band must not pull it out of a field elsewhere on the page.
+        // Focus goes back to the trigger, inside the wrapper, so its bubbling `focusin` would
+        // reopen the band in the same batch; the flag holds for that synchronous dispatch. Only
+        // when the focus is in this band or nowhere: Escape belongs to what has focus.
         const root = rootRef.current;
         if (
           !root ||
@@ -116,9 +102,8 @@ export function useMenuTrigger() {
       schedule(false, CLOSE_DELAY_MS);
     },
     onFocus: () => !closingRef.current && setRequested(true),
-    // Only a focus that names where it went can close the band — see `focusLeftMenu`. A button
-    // that disables itself while it holds the focus blurs to nothing, and reading that as "the
-    // visitor left" closed the band under its own click.
+    // Only a focus that names where it went can close the band (see `focusLeftMenu`): a button
+    // that disables itself while focused blurs to nothing, which is not the visitor leaving.
     onBlur: (e: React.FocusEvent) => {
       if (focusLeftMenu(e.currentTarget, e.relatedTarget as Node | null)) setOpenedOn(null);
     },
@@ -133,16 +118,9 @@ export function useMenuTrigger() {
       setRequested(!open);
     },
     /**
-     * For the band: a click on a link to the page already showing closes it.
-     *
-     * The band closes when `pathname` moves, and a link to the page it was opened on does not
-     * move it: the outside-click handler above leaves clicks inside the band alone, so a category
-     * clicked on the dictionary's own page scrolled that page under a band that stayed open —
-     * until the pointer left it, and after a tap or an Enter until Escape or a click elsewhere.
-     * Every band has a link or two like that, a heading on its own hub; the "more" band has
-     * twenty-nine since it lists the twelve categories and the seventeen chapters of the guide and
-     * the best-time hub, each a same-page link on its own hub. The phone sheet closes the same way
-     * (`closeOnSamePageTap` in the header): same test, a modifier click or a new tab excepted.
+     * For the band: a click on a link to the page already showing closes it. Otherwise the band
+     * closes only when `pathname` moves, so a same-page link would scroll the page under an open
+     * band. The phone sheet does the same (`closeOnSamePageTap`).
      */
     closeOnSamePageClick: (e: React.MouseEvent<HTMLElement>) => {
       const link = (e.target as HTMLElement).closest('a');

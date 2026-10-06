@@ -26,22 +26,10 @@ interface Props {
 }
 
 /**
- * Floating "Feedback" button that loads Userback on demand.
- *
- * Consent by action: the Userback SDK is NOT loaded on page load. Nothing is
- * fetched and no personal data (IP, geo, device, localStorage) is processed
- * until the visitor actively clicks this button to send feedback. This keeps
- * the site free of an always-on third-party tool — Umami stays the only script
- * that loads automatically (cookieless/anonymous, needs no consent banner).
- *
- * We render our own trigger and drive Userback purely via its API
- * (`trigger_type: 'api'`) so Userback's native launcher never appears.
- *
- * Currently NOT mounted: the locale layout no longer renders it, so no page
- * ships the trigger and the SDK is never loaded. Re-enable by rendering
- * `<UserbackFeedback locale={locale} />` in `app/[locale]/layout.tsx` again and
- * re-running `pnpm generate:route-namespaces` (the `feedback` namespace is
- * derived from that import graph).
+ * Floating "Feedback" button that loads Userback on demand: nothing is fetched and no personal data
+ * is processed until the visitor clicks it, so Umami stays the only script that loads by itself.
+ * Our own trigger drives Userback through its API (`trigger_type: 'api'`). Not mounted at present:
+ * to re-enable, render it in `app/[locale]/layout.tsx` and re-run `pnpm generate:route-namespaces`.
  */
 export function UserbackFeedback({ locale }: Props) {
   const t = useTranslations('feedback');
@@ -51,7 +39,6 @@ export function UserbackFeedback({ locale }: Props) {
   const handleClick = useCallback(async () => {
     trackEvent(UMAMI_EVENTS.FEEDBACK_OPENED);
 
-    // Already initialised → just reopen the form.
     if (widgetRef.current) {
       widgetRef.current.open();
       return;
@@ -60,7 +47,6 @@ export function UserbackFeedback({ locale }: Props) {
 
     setLoading(true);
     try {
-      // Lazy-load the SDK only on first interaction.
       const mod = await import('@userback/widget');
       const widget = await mod.default(USERBACK_TOKEN, {
         is_live: process.env.NODE_ENV === 'production',
@@ -82,7 +68,6 @@ export function UserbackFeedback({ locale }: Props) {
     }
   }, [locale, loading]);
 
-  // No token configured → feature disabled.
   if (!USERBACK_TOKEN) return null;
 
   return (

@@ -1,10 +1,7 @@
 /*
- * The editor canvas's two `:has()` rules, loaded with the editor and nowhere else.
- *
- * They used to sit in app/globals.css, which every public page loads, and any `:has()` rule in a
- * page's stylesheet makes every DOM change on that page restyle the whole document — measured at
- * 400-700 ms per tap on a throttled phone (docs/rules/no-has-selector-in-the-stylesheet.md). Here
- * they cost only the editor, where the canvas is a fraction of that size.
+ * The editor canvas's two `:has()` rules, loaded with the editor and nowhere else: a `:has()` rule
+ * in a page's stylesheet makes every DOM change restyle the whole document
+ * (docs/rules/no-has-selector-in-the-stylesheet.md).
  */
 
 /* Paragraphs hosting only a floated image keep enough height for the caret

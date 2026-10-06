@@ -10,19 +10,13 @@ const DEFERRED_KEY_PREFIXES = [
   'park-best-days-calendar',
   'park-historical-stats',
   'park-hourly-profile',
-  // The ride day curve gates itself on this hook too, so leaving it out made it
-  // exactly the starvation case described above: on a ride page it and
-  // `park-historical-stats` each counted the other as outstanding traffic and
-  // kept re-arming the grace window.
   'ride-day-curve',
 ];
 
 /**
- * `meta` for a query that gates itself on `useLoadLast` but whose key it shares with queries that
- * do not — `['calendar', …]` is the calendar grid's key too, where it is the page's main content
- * and must keep counting as traffic. The today panel's day detail is a deferred `calendar`
- * query; without the mark it counted as outstanding traffic in every other gate's window, the
- * starvation described above, and held the best-days calendar and the stats back by a round trip.
+ * `meta` for a query that gates itself on `useLoadLast` but shares its key prefix with queries
+ * that do not (`['calendar', …]` is also the grid's main content), so it does not count as
+ * outstanding traffic in every other gate's window.
  */
 export const LOAD_LAST_META = { loadLast: true } as const;
 
@@ -44,29 +38,17 @@ const SETTLE_GRACE_MS = 300;
 const SAFETY_TIMEOUT_MS = 5000;
 
 /**
- * Load-priority gate for the park page's heavy trip-planning queries
- * (best-days calendar + historical stats).
- *
- * REQUIREMENT (docs/architecture/system-overview.md → "Park page loading
- * priority"): the best-travel-time data must ALWAYS load LAST. Live status,
- * wait times and every weather query (nowcast, hourly day view) load first —
- * the calendar/stats responses are the largest and slowest park requests
- * (cold backend compute can take 10–20 s) and must never compete with the
- * fast, user-visible live data for bandwidth or backend capacity.
- *
- * Returns `true` once every OTHER React Query fetch on the page has been idle
- * for a short grace period, or after a safety timeout. Once released it stays
- * released (later polls don't re-suspend the sections).
+ * Load-priority gate for the park page's heavy trip-planning queries (best-days calendar,
+ * historical stats): `true` once every other React Query fetch on the page has been idle for a
+ * short grace period, or after a safety timeout, and released for good after that. Live status,
+ * wait times and weather load first; see docs/rules/park-page-loading-priority.md.
  */
 export function useLoadLast(): boolean {
   const [released, setReleased] = useState(false);
   const client = useQueryClient();
 
-  // In-flight queries other than the deferred ones themselves (reactive) — until the gate is
-  // released, and not after. This was `useIsFetching`, which stays subscribed to the query cache
-  // for the life of the page: every host of this hook (five on a park page, the ~1,000-line today
-  // panel among them) re-rendered twice on every live poll and every nowcast refetch, for a count
-  // nothing reads any more once `released` is true.
+  // In-flight queries other than the deferred ones, subscribed only until the gate is released:
+  // after that nothing reads the count, and a live subscription re-renders every host on each poll.
   const subscribe = useCallback(
     (onChange: () => void) =>
       released

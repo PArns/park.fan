@@ -18,25 +18,10 @@ interface ParkInfoCardProps {
 }
 
 /**
- * The things a visitor asks that no wait-time feed answers.
- *
- * Every value here is hand-written in the admin — the park's own site, where
- * tickets are sold, the street the navigation system needs, the year it opened.
- * None of the three upstream sources carries any of it, which is why the park
- * page had a map, a forecast and a weather chart but could not say where the
- * park is or what its website is.
- *
- * A Server Component on purpose: nothing here reacts to anything, and shipping
- * a client bundle for eleven strings would be the whole card's weight again.
- * It renders inline in the first HTML, so it costs no layout shift, and it
- * renders nothing at all for a park with nothing to say rather than an empty
- * frame — about the same shape as the school-holiday warning, and for the same
- * reason: the alternative is 200 parks showing a box that says nothing.
- *
- * The two map links are the exception to "hand-written in the admin": they are
- * built from the park's coordinates, which every feed carries, so they show up
- * for parks whose `info` block is empty or absent — a box with a working route
- * to the gate is not a box that says nothing.
+ * The things a visitor asks that no wait-time feed answers, each hand-written in the admin: the
+ * park's site, the street address, the year it opened. A Server Component in the first HTML,
+ * rendering nothing at all for a park with nothing to say. The two map links are the exception:
+ * built from the coordinates every feed carries, they show even when `info` is empty.
  */
 export async function ParkInfoCard({
   info,
@@ -56,15 +41,12 @@ export async function ParkInfoCard({
     country,
   ].filter((line): line is string => Boolean(line && line.trim()));
 
-  // The street is what makes an address worth printing. Without it the card
-  // would repeat the city that already sits under the park's name in the
-  // header, which is noise dressed as information.
+  // The street is what makes an address worth printing; without it the card would repeat the city
+  // from the header.
   const showAddress = Boolean(info?.streetAddress) && addressLines.length > 0;
 
-  // Website, ticket shop, Wikipedia and the socials are NOT here any more — they are
-  // <ParkQuickLinks>, a row under the intro in the page header. On most parks they were the only
-  // thing this section had, so it was a heading and a frame around two buttons; the guard below
-  // now correctly renders nothing for exactly those parks.
+  // Website, ticket shop, Wikipedia and socials live in <ParkQuickLinks> in the page header, not
+  // here.
 
   const facts = [
     info?.openedYear ? { label: t('opened'), value: String(info.openedYear) } : null,

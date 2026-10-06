@@ -8,12 +8,9 @@ interface GlossaryTermTrackerProps {
 }
 
 /**
- * Fires a glossary_term_viewed event once on mount.
- * Renders nothing — purely for client-side analytics.
- *
- * Only the term id is sent. The locale used to ride along, but it is already in the URL Umami
- * records with the event (/de/glossar/…) and each property is billed as another event — see the
- * property budget in `lib/analytics/umami.ts`.
+ * Fires a glossary_term_viewed event once on mount, with the term id only: the locale is already
+ * in the URL Umami records, and each property is billed as another event
+ * (docs/rules/umami-event-budget.md).
  */
 export function GlossaryTermTracker({ termId }: GlossaryTermTrackerProps) {
   useEffect(() => {

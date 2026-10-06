@@ -49,21 +49,10 @@ export function parkBestDaysQueryOptions({
 }
 
 /**
- * Client-side fetch of the precomputed best-days snapshot that feeds the "best days" widget,
- * the crowd-derived FAQ entry and the header "Prognose heute" forecast.
- *
- * Hits the dedicated `/api/parks/.../best-days` route (→ backend `/best-days`, a materialized
- * Redis snapshot, CDN-cached). This replaced the old derive-from-`/calendar` path: no `from`/`to`
- * window is needed (the endpoint returns the rolling today → +90d window), the payload is ~15 KB
- * instead of ~2.25 MB, and it never triggers a cold ML compute.
- *
- * - Browser-only (`enabled` gated on `window`): never runs during the static prerender, where
- *   reading the clock internally (React Query) is forbidden under Cache Components.
- * - 30-min staleTime: this fuels trip-planning aggregates that only shift with the daily forecast,
- *   so a half-hour-old snapshot is fine.
- * - Deferred via `useLoadLast`: the best-travel-time data must ALWAYS load last on the park page —
- *   it must never compete with the live status/weather queries (see
- *   docs/architecture/system-overview.md → "Park page loading priority").
+ * The precomputed best-days snapshot (today plus 90 days) behind the best-days widget, the crowd
+ * FAQ entry and the header's forecast for today, from the CDN-cached `/api/parks/.../best-days`
+ * route. Browser-only, and deferred through `useLoadLast` because best-travel-time data loads
+ * last; see docs/rules/park-page-loading-priority.md.
  */
 export function useParkBestDaysCalendar({
   continent,

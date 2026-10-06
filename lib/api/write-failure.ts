@@ -1,20 +1,10 @@
 /**
- * What a non-2xx answer from one of this app's own `/api` routes means, read
- * once so every writer agrees.
- *
- * Two write paths land here — the push follows (`lib/push/push-follows.ts`) and
- * the planner's stored trip (`lib/planner/trip-sync.ts`) — and they used to read
- * a response two different ways: one classified every status, the other read
- * `response.ok` and nothing else. The second is how a 500 on a trip update came
- * to mean "this trip is gone, start another one".
- *
- * Collapsing these to one boolean is what this replaces: a rate-limited caller
- * got the same "that didn't work, try again" as one whose payload was malformed,
- * and "try again" against a limiter that has already refused the retry is a lie.
- * Only `rate-limited` carries a figure a caller can act on; the rest are for a
- * caller that wants to word things differently, not to retry sooner.
+ * What a non-2xx answer from one of this app's own `/api` routes means, read once so every writer
+ * (push follows, the planner's stored trip) agrees. A single boolean made a 500 read as „this trip
+ * is gone" and told a rate-limited caller to try again at once. Only `rate-limited` carries a
+ * figure a caller can act on.
  */
-
+/** Why a write to one of this app's `/api` routes failed. */
 export type HttpWriteError =
   /** 429 — the API's own limiter, with the window it named. */
   | { reason: 'rate-limited'; retryAfterSeconds: number }
@@ -22,26 +12,20 @@ export type HttpWriteError =
   | { reason: 'invalid' }
   /** 404 — the subscription, trip or entity named no longer exists. */
   | { reason: 'not-found' }
-  /** A thrown fetch, or any other non-2xx (5xx included) — the "try again later" bucket. */
+  /** A thrown fetch, or any other non-2xx (5xx included): the „try again later" bucket. */
   | { reason: 'network' };
 
-/** A "try later" default: not a claim about the real window, just a usable one. */
+/** A usable „try later" default, not a claim about the real window. */
 const RATE_LIMIT_FALLBACK_SECONDS = 60;
 /**
- * Longer than this is not a number to put in front of somebody — an hour is
- * already past what any of these surfaces stays open for, and the value comes
- * off the network, so it is not ours to trust unbounded.
+ * Upper bound: an hour is already past what these surfaces stay open for, and the value comes
+ * off the network.
  */
 const RATE_LIMIT_MAX_SECONDS = 3600;
 
 /**
- * The limiter's own window, normalized ONCE so every reader agrees.
- *
- * Callers both print this number ("bitte in {seconds} Sekunden") and time
- * things by it, and the two must not diverge — a value clamped for the timer
- * and rendered raw would show a countdown that clears an hour early. Anything
- * under a second is not a wait a sentence can describe either, so it takes the
- * same road as a body that could not be read at all.
+ * The limiter's window, normalized once, because callers both print it and time things by it and
+ * the two must not diverge. Under a second, or unreadable, takes the fallback.
  */
 export function normalizeRetryAfter(raw: unknown): number {
   if (typeof raw !== 'number' || !Number.isFinite(raw) || raw < 1) {
@@ -51,10 +35,9 @@ export function normalizeRetryAfter(raw: unknown): number {
 }
 
 /**
- * Turn a non-2xx response into an `HttpWriteError`. 404 and the general 4xx
- * bucket carry no body worth reading; 429 does — both limiters answer it with
- * `{ statusCode, message, retryAfterSeconds }` (`PushFollowAccessGuard` and
- * `TripsController.guard`).
+ * Turn a non-2xx response into an `HttpWriteError`. Only a 429 has a body worth reading:
+ * `{ statusCode, message, retryAfterSeconds }` from `PushFollowAccessGuard` and
+ * `TripsController.guard`.
  */
 export async function classifyWriteFailure(response: Response): Promise<HttpWriteError> {
   if (response.status === 429) {
@@ -66,7 +49,7 @@ export async function classifyWriteFailure(response: Response): Promise<HttpWrit
           : undefined
       )
       .catch(() => undefined);
-    // A body the limiter didn't shape as expected is still a rate limit.
+    // A body the limiter did not shape as expected is still a rate limit.
     return { reason: 'rate-limited', retryAfterSeconds: normalizeRetryAfter(retryAfterSeconds) };
   }
   if (response.status === 404) return { reason: 'not-found' };

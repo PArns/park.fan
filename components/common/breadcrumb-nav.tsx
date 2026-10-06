@@ -17,9 +17,6 @@ interface BreadcrumbNavProps {
    * Optional current page name (not a link)
    */
   currentPage?: string;
-  /**
-   * Optional additional class names
-   */
   className?: string;
   /**
    * Visual style:
@@ -43,18 +40,10 @@ interface BreadcrumbNavProps {
 }
 
 /**
- * Breadcrumb navigation component.
- *
- * Collapses middle items into a "…" button only when the available width
- * is too narrow to show everything on one line. Items collapse from left
- * to right (furthest from the current page first). Clicking "…" reveals
- * the full path.
- *
- * Always pinned:
- *   - First breadcrumb (e.g. Home)
- *   - currentPage (bold, non-link)
- *   - When pinLastBreadcrumb=true: also the last breadcrumb link (park on
- *     ride/attraction pages)
+ * Breadcrumb trail that collapses middle items into a "…" button only when the width is too
+ * narrow, furthest from the current page first; "…" reveals the full path. The first crumb, the
+ * current page and, with `pinLastBreadcrumb`, the last crumb stay visible. A phone gets a single
+ * back link instead.
  */
 export function BreadcrumbNav({
   breadcrumbs,
@@ -91,18 +80,10 @@ export function BreadcrumbNav({
   // here must re-arm the measurement even though the container size didn't move.
   const contentKey = `${breadcrumbs.map((c) => c.name).join('\0')}\0${currentPage ?? ''}`;
 
-  // If the nav overflows its container, collapse one more item from the right, re-render and
-  // measure again — repeating until it fits. Runs synchronously before paint so no flash is
-  // visible. Uses getBoundingClientRect so we detect overflow into the right padding area
-  // before text touches the border, and avoids false positives on w-fit navs
-  // where scrollWidth === clientWidth even when items perfectly fill the content.
-  //
-  // The effect deliberately has NO dependency array (the measurement has to follow every
-  // collapse step), so `settledRef` stops the loop instead: once a measurement finds the nav
-  // fits — or nothing is left to collapse — measuring is off until something that can change
-  // the outcome happens (container shrink, or different breadcrumb content). Without it, the
-  // two forced layouts below ran after EVERY render of this component, including the many
-  // driven by unrelated parent re-renders.
+  // If the nav overflows its container, collapse one more item, re-render and measure again until
+  // it fits, before paint. No dependency array, because the measurement follows every collapse
+  // step; `settledRef` stops the loop once it fits, until the container shrinks or the content
+  // changes.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useLayoutEffect(() => {
     if (contentKeyRef.current !== contentKey) {
@@ -116,10 +97,8 @@ export function BreadcrumbNav({
       settledRef.current = true;
       return;
     }
-    // Compare the last child's right edge against the nav's right content edge
-    // (right border minus right padding). This correctly handles both w-fit navs
-    // (where scrollWidth === clientWidth even when items fill the content area)
-    // and constrained navs, without ever falsely triggering when items fit.
+    // Compare the last child's right edge with the nav's right content edge, which works for
+    // `w-fit` navs (where scrollWidth equals clientWidth) and constrained ones alike.
     const lastChild = nav.lastElementChild as HTMLElement | null;
     if (!lastChild) return;
     const navRect = nav.getBoundingClientRect();
@@ -188,11 +167,9 @@ export function BreadcrumbNav({
   );
 
   /*
-   * The phone's version, and it is a second, much smaller element rather than the trail with
-   * more collapsing (PAR-434). Below `sm` the trail collapsed to "Home › … › Phantasialand" —
-   * its first item, an ellipsis, and the page's own H1 a second time — in a row of its own
-   * above the title card. What it is FOR on a phone is the way one level up, so that is all it
-   * draws. Both are server-rendered and CSS picks one, so nothing moves at hydration.
+   * The phone's version: a second, much smaller element rather than the trail collapsed further,
+   * because on a phone the trail is for the way one level up. Both are server-rendered and CSS
+   * picks one, so nothing moves at hydration.
    */
   const parent = currentPage
     ? breadcrumbs[breadcrumbs.length - 1]
@@ -224,14 +201,9 @@ export function BreadcrumbNav({
       <nav
         ref={navRef}
         className={cn(
-          // `overflow-hidden` is load-bearing, not cosmetic. Until the effect below has measured
-          // and collapsed, the server render carries EVERY crumb, and each one is `shrink-0` — on a
-          // park page that is ~578px of content in a 390px viewport. `max-w-full` caps this box, but
-          // without clipping, the children still stick out of the document, and mobile Chrome answers
-          // an overflowing page by widening the layout viewport to fit it. The whole page then lays
-          // out at 578px until hydration collapses the trail, snaps the viewport back to 390 and
-          // re-lays out everything — which re-paints the hero and moves LCP from ~1.3s to ~4.4s.
-          // Measured on /de/parks/europe/germany/bruehl/phantasialand.
+          // `overflow-hidden` is load-bearing: until the effect has collapsed the trail, the server
+          // render carries every `shrink-0` crumb, and an overflowing page makes mobile Chrome
+          // widen the layout viewport and lay the page out again at hydration, which delays LCP.
           'text-muted-foreground mb-4 flex max-w-full items-center gap-2 overflow-hidden text-sm',
           variant === 'pill' && 'glass-card w-fit rounded-lg px-3 py-1',
           // Allow wrapping only when user manually expanded (pinned items must
@@ -242,7 +214,6 @@ export function BreadcrumbNav({
         )}
         aria-label="Breadcrumb"
       >
-        {/* First item – always visible */}
         {firstCrumb && (
           <Link
             href={firstCrumb.url}
@@ -253,27 +224,15 @@ export function BreadcrumbNav({
           </Link>
         )}
 
-        {/* Collapse indicator – sits right after Home, before remaining items */}
         {showDots && (
           <>
             <Separator />
             <button
               onClick={() => setUserExpanded(true)}
-              // ~17 × 14 px, and it exists ONLY where the trail collapses — which is the phone.
-              // The one control on the page that a mouse never meets was the smallest one there.
-              //
-              // The target grows, the BOX does not, and that distinction is the whole point: a
-              // `min-h-11` made this 44 px tall in a row of 20 px links, and since the button is
-              // only mounted once the client has measured the overflow, the breadcrumb grew ~24 px
-              // AFTER paint — 0.0227 of layout shift on a blog post, measured, where the row had
-              // been still. A pseudo-element takes the finger instead and the row keeps its height.
-              //
-              // Measured with `elementFromPoint`, the reach is ~41 × 30 px rather than the 45 × 44
-              // the `-inset-3` would suggest: this nav is `overflow-hidden` (load-bearing — see the
-              // note on the `<nav>`), so it clips the pseudo-element to its own 30 px. Growing past
-              // that means touching that clip, which is what keeps ~578 px of crumbs inside a
-              // 390 px viewport before the effect has collapsed them. 41 × 30 against 17 × 14 is
-              // the trade taken here.
+              // The trail only collapses on narrow screens, so this small button gets a larger
+              // touch target from a pseudo-element: a `min-h-11` would grow the row after paint,
+              // since the button mounts only once the overflow is measured. The nav's
+              // `overflow-hidden` clips the pseudo-element to the row's height.
               className="hover:text-foreground relative inline-flex shrink-0 cursor-pointer items-center justify-center rounded px-1 leading-none tracking-widest max-sm:after:absolute max-sm:after:-inset-3 max-sm:after:content-['']"
               aria-label="Show full breadcrumb path"
             >
@@ -282,7 +241,6 @@ export function BreadcrumbNav({
           </>
         )}
 
-        {/* Visible middle items (leftmost collapse first; closest to current page survive longest) */}
         {visibleCollapsible.map((crumb) => (
           <Fragment key={crumb.url}>
             <Separator />
@@ -292,7 +250,6 @@ export function BreadcrumbNav({
           </Fragment>
         ))}
 
-        {/* Pinned last breadcrumb (park on ride/attraction pages) – always visible */}
         {lastPinnedCrumb && (
           <>
             <Separator />
@@ -309,7 +266,6 @@ export function BreadcrumbNav({
           </>
         )}
 
-        {/* Current page – always visible */}
         {currentPage && (
           <>
             {hasAnyBefore && <Separator />}

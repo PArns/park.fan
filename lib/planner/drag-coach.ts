@@ -1,18 +1,9 @@
 'use client';
 
 /**
- * Whether the drag gesture has been explained once.
- *
- * A store rather than component state, for the reason `panel-width.ts` gives
- * for being one: the answer lives in `localStorage`, and reading it during a
- * render would make the first client render disagree with the server's.
- * `useSyncExternalStore` has a server snapshot for exactly that — the server
- * says "already seen", so nothing is in the first HTML and the coach mark can
- * only ever appear after mount, where it belongs.
- *
- * It is a preference of this browser and not part of the plan: the plan is a
- * document somebody may keep for months, and whether a hint has been read is
- * not a fact about their day at Phantasialand.
+ * Whether the drag gesture has been explained once: a store over `localStorage`, like
+ * `panel-width.ts`. The server snapshot says "already seen", so the coach mark only ever appears
+ * after mount. A preference of this browser, not part of the plan.
  */
 
 const KEY = 'parkfan_planner_dragcoach';
@@ -26,13 +17,13 @@ function load(): boolean {
   try {
     dismissed = window.localStorage.getItem(KEY) === '1';
   } catch {
-    // Private mode, or storage disabled. Showing the hint once per session is
-    // the friendlier failure than never showing it.
+    // Private mode, or storage disabled: shown once per session rather than never.
     dismissed = false;
   }
   return dismissed;
 }
 
+/** Whether the drag coach was dismissed, as an external store. */
 export const plannerDragCoach = {
   subscribe(listener: () => void): () => void {
     listeners.add(listener);
@@ -51,7 +42,7 @@ export const plannerDragCoach = {
     try {
       window.localStorage.setItem(KEY, '1');
     } catch {
-      // Held for this session, which is what the hint is for anyway.
+      // Held for this session.
     }
     for (const listener of listeners) listener();
   },

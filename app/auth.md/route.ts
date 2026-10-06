@@ -2,14 +2,9 @@ import { agentDocumentHeaders } from '@/lib/agents/http';
 import { SITE_URL } from '@/i18n/config';
 
 /**
- * `/auth.md` — where an agent looks to find out how to get credentials for a service. The
- * answer here is "you do not need any, and the one thing that needs them is not yours to have",
- * which is worth saying out loud rather than leaving as a 404 an agent has to interpret.
- *
- * Self-contained on purpose: the Auth.md flow points at OAuth Protected Resource Metadata when
- * a service has an authorization server, and park.fan does not. The public API is public, and
- * the administrative one authenticates a person, not a program — there is no client
- * registration to describe, so describing one would be an invitation to go looking for it.
+ * `/auth.md`: where an agent looks for how to get credentials. The public API needs none and the
+ * admin authenticates a person, not a program, so the document is self-contained and points at no
+ * OAuth Protected Resource Metadata or client registration.
  */
 export const dynamic = 'force-static';
 

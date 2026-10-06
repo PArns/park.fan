@@ -1,28 +1,12 @@
 /**
- * "New on the blog since your last visit" — the part that decides, without any UI.
+ * "New on the blog since your last visit": the decision, without any UI. Client-safe: the browser
+ * fetches the newest posts from `/api/blog-latest/<locale>` and compares them with what it stored.
  *
- * Client-safe on purpose: no `server-only`, no manifest import. The browser gets the newest
- * posts from `/api/blog-latest/<locale>` (a static JSON file per locale), compares them with
- * what it stored the last time, and only then loads the toast.
- *
- * ## What "seen" means
- *
- * A post's `date` is a calendar day, not an instant, so "published after the last visit" cannot
- * be answered with a timestamp: a post dated today and put live this afternoon would be missed
- * by a visit this morning, and one put live this morning would show up again. So the record
- * holds the posts themselves — the translation keys of the newest posts the visitor was shown,
- * and the newest date among them. A post is new when it is not in that set and is not older
- * than that date. The date floor keeps a post that merely dropped out of the list (because
- * several newer ones arrived) from reading as new when it comes back.
- *
- * A post back-dated to before the last visit is not announced. That is accepted: the toast is
- * about what arrived, and a back-dated post says it did not.
- *
- * Keys, not slugs: a slug differs per locale, so switching the language would announce every
- * post again.
- *
- * News and articles alike. The teaser surfaces keep the two apart (`isNewsPost`), but this is
- * not a teaser: it announces what arrived, and news is what arrives most often.
+ * A post's `date` is a day, not an instant, so the record holds the translation keys the visitor
+ * was shown plus the newest date among them. A post is new when its key is not in the set and it
+ * is not older than that date; the floor keeps a post that dropped off the list from coming back
+ * as new. Keys rather than slugs, which differ per locale. News counts too: this announces what
+ * arrived, and news arrives most often.
  */
 
 /** One post as the endpoint sends it — already resolved for the requested locale. */
@@ -71,13 +55,8 @@ export interface SeenRecord {
 export const SEEN_STORAGE_KEY = 'pf:blog-seen';
 
 /**
- * When this browser last asked for the list, in epoch milliseconds. In `localStorage`, so every
- * tab of the site shares one clock and the check costs one request per interval, not per page.
- *
- * It replaced a once-per-session flag in `sessionStorage`, which never expired while the tab
- * lived. A tab left open, a tab the browser restores on startup and an installed app all keep
- * their session for days, so a reload after a news post went live never asked again — only a
- * new tab did.
+ * When this browser last asked for the list, in epoch milliseconds. In `localStorage` rather than
+ * a per-session flag, so every tab shares one clock and a tab kept open for days still asks again.
  */
 export const CHECKED_AT_STORAGE_KEY = 'pf:blog-seen-checked-at';
 

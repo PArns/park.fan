@@ -6,15 +6,9 @@ import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { cn } from '@/lib/utils';
 
 /**
- * One column of the footer's link list: a plain column from `sm` up, a collapsed row below it.
- *
- * On a 390 × 664 phone the three columns were 438 px of 44 px rows, most of a 1,102 px footer
- * that took 1.7 screens at the end of every page (PAR-437). Folded, they are three 44 px rows.
- *
- * Folding hides with `max-sm:hidden` and never unmounts: every link stays in the HTML of every
- * page, open or shut, because the footer is part of the site's link graph and a crawler does not
- * press buttons. From `sm` up the button is not drawn and the list is always visible, so the
- * state only exists where the fold does.
+ * One column of the footer's link list: a plain column from `sm` up, a collapsed row below it, so
+ * the footer does not take most of a phone screen. Folding hides with `max-sm:hidden` and never
+ * unmounts, because the footer is part of the link graph and a crawler does not press buttons.
  */
 export function FooterLinkGroup({ heading, children }: { heading: string; children: ReactNode }) {
   const [open, setOpen] = useState(false);

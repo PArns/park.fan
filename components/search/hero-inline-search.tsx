@@ -16,20 +16,10 @@ interface HeroInlineSearchProps {
   label: string;
   className?: string;
   /**
-   * `false` for a SECOND instance of this field on the same page.
-   *
-   * Two things here are page-wide and must exist exactly once. `autoFocusOnType`
-   * listens on `document` and opens the palette on any single keypress, so a
-   * second instance opens a second palette from one keystroke; and
-   * `trackHeroSearchClicked` measures the hero specifically, so a taller page
-   * with a field further down would quietly inflate it.
-   *
-   * The `isGlobal` ⌘K handler is NOT among them — `SearchCommand` defaults it
-   * off and neither instance asks for it; the header owns that shortcut.
-   *
-   * It also picks the dropdown's material. The hero's glass is 62 % opaque
-   * because what it lands on is the hero photo; anywhere else it lands on page
-   * text, which reads straight through it.
+   * `false` for a second instance of this field on the same page. `autoFocusOnType` (a
+   * `document` listener) and `trackHeroSearchClicked` must exist once per page; the ⌘K handler is
+   * the header's. It also picks the dropdown's material: the hero's 62 % glass lands on the photo,
+   * anywhere else on page text that reads through it.
    */
   primary?: boolean;
 }
@@ -44,18 +34,10 @@ type PanelComponent = ComponentType<{
 }>;
 
 /**
- * The hero search: in-place floating results on desktop, palette popup on mobile.
- *
- * Mobile (< md) keeps the proven `SearchCommand` flow — tap opens the full-screen palette, no
- * inline list. From `md` up the in-place panel takes over: the input stays in the hero and the
- * results float below it.
- *
- * **Nothing here is on the critical path.** The panel chunk (cmdk + the result tree) is fetched
- * only after the page has loaded and gone idle, and only on viewports that will render it; the
- * live queries behind it (`useHomeNearbyParks`, popular parks) are gated the same way. Until it
- * arrives, {@link HeroSearchShell} is a working input that hands its focus and typed text over
- * on mount — so a visitor who is faster than the chunk loses nothing, and one who never touches
- * the field never pays for it.
+ * The hero search: in-place floating results from `md` up, the `SearchCommand` palette on phones.
+ * Nothing here is on the critical path: the panel chunk is fetched only after load and idle, on
+ * viewports that render it. Until then {@link HeroSearchShell} is a working input that hands its
+ * focus and typed text to the panel on mount.
  */
 export function HeroInlineSearch({
   placeholder,
@@ -80,23 +62,10 @@ export function HeroInlineSearch({
   }, []);
 
   /**
-   * Whether this field is actually on screen.
-   *
-   * Mounting the panel SCROLLS THE PAGE, and not by anything this file does:
-   * cmdk selects the first item as soon as one registers and then calls
-   * `scrollIntoView({ block: 'nearest' })` on it from a layout effect. That walks
-   * the whole chain of scroll ancestors up to the viewport, so a panel mounted
-   * far down the document drags the document to it.
-   *
-   * On the hero alone it was invisible — its item sits at y≈0, so "scroll it into
-   * view" is a no-op. The second instance in the homepage's step card sits at
-   * ~2100 px, and mounting it on a reload pulled the reader from the top of the
-   * page down to 1271 px. Proven by patching `Element.prototype.scrollIntoView`
-   * to a no-op: 1271 → 13.
-   *
-   * So the panel waits for its field to be in view. The 15 % inset keeps a field
-   * grazing the very edge of the viewport from mounting, because "nearest" would
-   * still shift the page by the few pixels needed to clear the edge.
+   * Whether this field is on screen. Mounting the panel scrolls the page: cmdk calls
+   * `scrollIntoView({ block: 'nearest' })` on its first item, which drags the document to a panel
+   * mounted far down (the homepage's step card). So the panel waits for its field to be in view,
+   * with a 15 % inset so a field grazing the edge does not shift the page either.
    */
   const hostRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -130,10 +99,9 @@ export function HeroInlineSearch({
     };
   }, [isDesktop, Panel, afterLoad, typed, inView]);
 
-  // Until the media query has an answer, render the SHELL — never the palette trigger.
-  // `useMediaQuery` is false on the server and on the first client render, so the desktop hero
-  // used to paint the mobile trigger first: a field carrying a ⌘K badge and a pulsing ring that
-  // vanished a moment later. That swap was the flicker.
+  // Until the media query has an answer, render the shell, never the palette trigger: the query
+  // is false on the server and the first client render, so the desktop hero would flash the mobile
+  // trigger.
   const showShell = !mounted || (isDesktop && !Panel);
 
   return (

@@ -100,10 +100,10 @@ const FAQ = [
   },
 ] as const;
 
+/** The Fancast page's article, Spanish. */
 export function ContentES() {
   return (
     <>
-      {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
           Fancast es nuestro modelo de previsión propio, la parte de park.fan que ya hoy calcula
@@ -124,7 +124,6 @@ export function ContentES() {
         </Highlight>
       </div>
 
-      {/* 01 — Scorecard (live) */}
       <SectionShell
         id="note"
         index="01"
@@ -142,7 +141,6 @@ export function ContentES() {
         <FancastLive labels={LIVE_LABELS} />
       </SectionShell>
 
-      {/* 02 — What it reads */}
       <SectionShell
         id="ingredients"
         index="02"
@@ -187,7 +185,6 @@ export function ContentES() {
         </P>
       </SectionShell>
 
-      {/* 03 — Concrete park examples */}
       <SectionShell
         id="examples"
         index="03"
@@ -238,7 +235,6 @@ export function ContentES() {
         </SplitFigure>
       </SectionShell>
 
-      {/* 04 — How it learns */}
       <SectionShell
         id="training"
         index="04"
@@ -261,7 +257,6 @@ export function ContentES() {
         </P>
       </SectionShell>
 
-      {/* 05 — Crowd levels */}
       <SectionShell
         id="levels"
         index="05"
@@ -303,7 +298,6 @@ export function ContentES() {
         />
       </SectionShell>
 
-      {/* 06 — Try a real park */}
       <SectionShell
         id="parks"
         index="06"
@@ -319,7 +313,6 @@ export function ContentES() {
         <PopularParksGrid />
       </SectionShell>
 
-      {/* 07 — Where you meet it */}
       <SectionShell
         id="where"
         index="07"
@@ -387,7 +380,6 @@ export function ContentES() {
         </P>
       </SectionShell>
 
-      {/* 08 — FAQ */}
       <SectionShell
         id="faq"
         index="08"

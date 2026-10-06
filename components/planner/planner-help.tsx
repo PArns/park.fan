@@ -5,18 +5,9 @@ import { Compass, CalendarPlus, MousePointerClick } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * What the planner is, for somebody who has not used it.
- *
- * ONE component for both places that have to explain it — the panel's empty
- * state and the page's — because they are the same three sentences and two
- * copies would drift apart on the first edit. The panel's empty state used to be
- * two lines of prose and nothing else, which told a visitor what to press
- * without telling them what they were about to get.
- *
- * `layout` is the only difference: three cards side by side have room on a page
- * and none in a 448 px panel, where the same three steps are a numbered list.
- * No screenshot in either — a picture of a feature ages the moment the feature
- * changes, and the panel is the feature, sitting right there.
+ * What the planner is, for somebody who has not used it: one component for the panel's empty state
+ * and the planner page, so the three sentences cannot drift. Cards on the page, a numbered list in
+ * the panel. No screenshot, which would age with the feature.
  */
 const STEPS = [
   { icon: Compass, key: 'find' },
@@ -24,6 +15,10 @@ const STEPS = [
   { icon: MousePointerClick, key: 'arrange' },
 ] as const;
 
+/**
+ * The planner's three steps (find a park, add rides, arrange the day), as cards on the planner page
+ * or as a numbered list in the empty panel.
+ */
 export function PlannerHelpSteps({ layout }: { layout: 'cards' | 'list' }) {
   const t = useTranslations('planner');
   const cards = layout === 'cards';

@@ -120,15 +120,10 @@ export function RideAlertDialog({
   const [changing, setChanging] = useState(false);
   const [adding, setAdding] = useState(false);
   /**
-   * The rides currently being removed — a set, not one key, and their failures keyed the same
-   * way. Both for the reason `usePushFollowRemoval` documents for the other two surfaces: as a
-   * single slot, pressing X on a second ride re-enabled the first row's button mid-flight and
-   * erased the "still armed" line belonging to a ride that really is still armed. This list is
-   * every alert in the park, so two presses in a row is the ordinary case rather than the odd one.
-   *
-   * They are the dialog's own state instead of that hook because this surface holds its own
-   * `alerts` list rather than the shared query cache — it filters the server's answer down to
-   * this park, which is what the add-form's dropdown reads.
+   * The rides being removed, as a set, with their failures keyed the same way, for the reason
+   * `usePushFollowRemoval` gives: a single slot would re-enable one row mid-flight and erase
+   * another's "still armed" line. Local state, because this dialog holds its own park-filtered
+   * `alerts` list rather than the shared query cache.
    */
   const [removingIds, setRemovingIds] = useState<readonly string[]>([]);
   const [addError, setAddError] = useState<PushWriteError | null>(null);

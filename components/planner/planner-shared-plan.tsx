@@ -6,21 +6,15 @@ import { CalendarCheck, Loader2, MapPin, RotateCw, TriangleAlert } from 'lucide-
 import { Button } from '@/components/ui/button';
 import { parsePlannerPayload, plannerStore } from '@/lib/planner/store';
 import { adoptSharedPlan, tripIdFromHash } from '@/lib/planner/trip-share';
-import { hasAnyPlan, isPlannedDay, type PlannerState } from '@/lib/planner/types';
+import { hasAnyPlan, plannedParks, type PlannerState } from '@/lib/planner/types';
 import { plannerUi } from '@/lib/planner/ui-store';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 /**
- * The page a shared-plan link opens: read somebody else's plan, then take a copy.
- *
- * The copy is the whole point (PAR-82, option A). The plan is written into THIS
- * browser's store and the sender's trip id is kept nowhere, so nothing here can
- * ever `PUT` to it: what the visitor changes afterwards is theirs, and the
- * sender's plan stays as it was. If this browser has push on, `adoptSharedPlan`
- * uploads the copy under this browser's own id.
- *
- * Nothing is written until the button is pressed. Opening a link must not
- * replace a plan the visitor already has, so when there is one the page says
- * so above the button.
+ * The page a shared-plan link opens: read somebody else's plan, then take a copy. The copy goes
+ * into this browser's store and the sender's trip id is kept nowhere, so nothing here can write to
+ * the sender's plan; with push on, `adoptSharedPlan` uploads it under this browser's own id.
+ * Nothing is written until the button is pressed, and a plan already here is mentioned above it.
  */
 
 type Load =
@@ -35,12 +29,15 @@ function subscribeHash(onChange: () => void): () => void {
   return () => window.removeEventListener('hashchange', onChange);
 }
 
+/**
+ * Page body for a shared planner link: loads the plan named in the URL fragment from `/api/trips`,
+ * shows it, and copies it into this browser's planner when the visitor presses the button.
+ */
 export function PlannerSharedPlan() {
   const t = useTranslations('planner');
   const locale = useLocale();
 
-  // `undefined` on the server and in the hydration pass, where there is no
-  // fragment to read; the real value arrives in the re-render right after.
+  // `undefined` on the server and in the hydration pass; the fragment arrives in the next render.
   const hash = useSyncExternalStore(
     subscribeHash,
     () => window.location.hash,
@@ -56,9 +53,7 @@ export function PlannerSharedPlan() {
 
   const [loaded, setLoaded] = useState<{ id: string; attempt: number; load: Load } | null>(null);
   const [attempt, setAttempt] = useState(0);
-  // The id that was taken over, not a boolean. A second link opened in the
-  // same tab changes only the fragment, and a boolean would then show "the
-  // plan is now in your planner" under a plan that is not.
+  // The id taken over, not a boolean: a second link in the same tab changes only the fragment.
   const [adoptedId, setAdoptedId] = useState<string | null>(null);
   const adopted = tripId !== undefined && tripId !== null && adoptedId === tripId;
 
@@ -92,8 +87,7 @@ export function PlannerSharedPlan() {
     };
   }, [tripId, attempt]);
 
-  // A result belongs to the id and the attempt it was fetched for. Anything
-  // else — a new fragment, or "try again" pressed — is loading again.
+  // A result belongs to the id and attempt it was fetched for; anything else is loading again.
   const load: Load =
     tripId === undefined
       ? { kind: 'loading' }
@@ -103,19 +97,14 @@ export function PlannerSharedPlan() {
           ? loaded.load
           : { kind: 'loading' };
 
-  const parks =
-    load.kind !== 'ready'
-      ? []
-      : Object.values(load.plan.parks)
-          .map((park) => ({
-            slug: park.slug,
-            name: park.name,
-            days: Object.values(park.days)
-              .filter(isPlannedDay)
-              .sort((a, b) => a.date.localeCompare(b.date)),
-          }))
-          .filter((park) => park.days.length > 0)
-          .sort((a, b) => a.name.localeCompare(b.name, locale));
+  const parks = load.kind !== 'ready' ? [] : plannedParks(load.plan.parks, locale);
+  const dayFormat = getDateTimeFormat(locale, {
+    weekday: 'short',
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
 
   const adopt = (id: string, plan: PlannerState) => {
     void adoptSharedPlan(plan);
@@ -173,13 +162,7 @@ export function PlannerSharedPlan() {
               {park.days.map((day) => (
                 <li key={day.date} className="flex items-center gap-2 py-2 text-sm">
                   <span className="min-w-0 flex-1 truncate">
-                    {new Date(`${day.date}T12:00:00Z`).toLocaleDateString(locale, {
-                      weekday: 'short',
-                      day: '2-digit',
-                      month: 'long',
-                      year: 'numeric',
-                      timeZone: 'UTC',
-                    })}
+                    {dayFormat.format(new Date(`${day.date}T12:00:00Z`))}
                   </span>
                   <span className="text-muted-foreground shrink-0 text-xs">
                     {t('summary.rides', { count: day.entries.length })}

@@ -27,63 +27,26 @@ import { isSlugPath } from '@/lib/utils/servable-route';
 import { pickRideFigures } from '@/lib/api/ride-figures';
 
 /**
- * The shared-cache window for the two backend aggregates that are recomputed once a day.
- *
- * A day, because that is what the backend itself answers: `/stats` and `/stats/hourly` both leave
- * api.park.fan as `max-age=86400, s-maxage=86400, stale-while-revalidate=172800`, and this proxy
- * used to re-cache them at 3600 — capping a 24-hour aggregate at an hour and asking the origin for
- * the same object 24 times a day. `getParkHistoricalStats`'s own docstring already said "cached
- * 24h on success — data changes daily, not in real-time"; the window did not.
- *
- * `max-age` is named as well as `s-maxage`: without it a browser gets a `public` with no lifetime
- * and re-requests the aggregate on every park-page view.
+ * A day for `/stats` and `/stats/hourly`, which the backend recomputes once a day and itself
+ * caches for a day. `max-age` is named too: without it a browser re-requests the aggregate on
+ * every park-page view.
  */
 const STATS_AGGREGATE_CACHE = 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400';
 
 /**
- * How long a "this park has no such aggregate" answer may be reused.
- *
- * A 404 out of these three branches is the API's OWN 404 — no such park, no such aggregate, too
- * few measured days for a curve — and never a failure of ours. That distinction is load-bearing
- * and was not always true: the fetchers used to answer `null` for an unreachable backend as well,
- * so an outage was stored here as a settled fact about the park for an hour plus six of
- * stale-while-revalidate. They now throw instead, and a throw leaves through the catch blocks as
- * an uncached 500.
- *
- * Note that "too little history for a two-year aggregate" is NOT one of these cases: the API
- * answers a thin park with a 200 and an aggregate to match. Until now every one of these answers
- * was returned bare — so it inherited the blanket `no-store` on `/api/:path*` and every reader of
- * a thin park's page paid a fresh Vercel invocation plus a backend round trip to be told no again.
- * Shorter than the 200s' window because the direction that is wrong rather than old is a park
- * CROSSING the threshold.
+ * How long the API's own 404 (no such park, no such aggregate, too few days for a curve) may be
+ * reused. A failure of ours throws and leaves as an uncached 500, so an outage is never stored as a
+ * fact about the park. Shorter than the 200s' window because a park can cross the threshold.
  */
 const STATS_MISSING_CACHE = 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=21600';
 
 /**
- * The window for `…/calendar/hourly`, the day-detail dialog's bar chart.
- *
- * Five minutes against the calendar's 86400, and the difference is what the curve IS. Measured at
- * 11:42 UTC on 2026-09-14 against three parks in three timezones, today's series starts at the
- * CURRENT UTC hour — Phantasialand, Alton Towers and Toverland all answered 11 12 13 14 15 — and
- * tomorrow's at the UTC hour the park opens. It moves at the top of every hour, while everything
- * else the calendar answers is a statement about a whole day.
- *
- * `max-age` is left out on purpose: the browser holds the curve for
- * `CALENDAR_HOURLY_STALE_TIME_MS` in React Query, which is where that decision belongs, and a
- * second HTTP window under it would only make the two disagree.
- *
- * **This window is not what a reader's freshness depends on**, and saying so was the first version
- * of this comment. The binding constraint is upstream: api.park.fan answers this URL with
- * `max-age=36251, s-maxage=36251` — an expiry at park-local midnight — and Cloudflare serves it
- * from cache, measured 2026-09-14 12:56 UTC as a `HIT` (`age: 3651`) whose series started at 11
- * while a cache-busted fetch of the same URL started at 12. So the first reader of the day fixes
- * the curve for the rest of it, and nothing in this repo can shorten that. What this window still
- * buys is that OUR layer never adds to it. The bars that have since expired are dropped at render
- * (`upcomingHourlyPredictions`), so a kept copy draws fewer bars rather than wrong ones; shortening
- * the backend's own window is PAR-217.
- *
- * Repeated verbatim in next.config.ts, like every other cacheable /api route — see the long note
- * in that headers block: which of the two wins depends on where it runs, so they may never differ.
+ * Five minutes for `…/calendar/hourly`: today's series starts at the current UTC hour, so it
+ * moves every hour. No `max-age`, because the browser's window is `CALENDAR_HOURLY_STALE_TIME_MS`
+ * in React Query. The backend's own cache until park-local midnight still binds, and expired bars
+ * are dropped at render (`upcomingHourlyPredictions`); this window only keeps our layer from
+ * adding to it. Repeated verbatim in next.config.ts, since which of the two wins depends on where
+ * it runs.
  */
 const CALENDAR_HOURLY_CACHE_CONTROL = 'public, s-maxage=300, stale-while-revalidate=300';
 
@@ -97,9 +60,9 @@ const RIDE_STATS_CACHE_CONTROL =
   'public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400';
 
 /**
- * On every failure, because a response without a Cache-Control of its own takes the window the
- * rule for its path in next.config.ts declares: a day for the calendar and the ride positions. A
- * 500 from one backend hiccup was a day of errors at the CDN for everybody reading that park.
+ * On every failure: a response without its own Cache-Control takes the window next.config.ts
+ * declares for its path (a day for the calendar), so one backend hiccup would be cached as a day of
+ * errors.
  */
 const NO_STORE = { 'Cache-Control': 'no-store, must-revalidate' };
 
@@ -115,53 +78,41 @@ export async function GET(
     return NextResponse.json({ error: 'Invalid path' }, { status: 400 });
   }
 
-  // Handle park data: [continent, country, city, park] (4 segments)
-  // e.g., ['europe', 'germany', 'rust', 'europa-park']
+  // The park page's live poll.
   if (path && path.length === 4) {
     const [continent, country, city, park] = path;
 
     try {
-      // Fresh (no-store) so the client poll reflects the backend's latest wait times — NOT the
-      // cached shell snapshot (which now lives 6h). getParkByGeoPathFresh resolves to null on 404.
+      // Fresh, not the cached snapshot the page render uses, so the poll carries the latest waits.
       const parkData = await getParkByGeoPathFresh(continent, country, city, park);
 
       if (!parkData) {
         return NextResponse.json({ error: 'Park not found' }, { status: 404 });
       }
 
-      // Dev/preview `?state=` — the same scenarios the page applied to the server render. It has
-      // to happen here too: `weather` IS in the projection below, so without this the first poll
-      // would quietly wash a simulated warning off a page that was rendered with one.
+      // Dev/preview `?state=`, as on the server render: `weather` is in the projection below, so
+      // without this the first poll would wash a simulated warning off the page.
       const simulated = applyParkSimulation(
         parkData,
         parseParkSimulation(request.nextUrl.searchParams.get('state'))
       );
 
-      // Only the fields that can change between two polls — the client lays them back over the
-      // park it was server-rendered with (see leanParkForLivePoll / mergeLiveParkSnapshot).
-      //
-      // `?full=1` adds the day-scoped block (shows + restaurant status). The client asks for it on
-      // its first poll and roughly every half hour after that, because those two are the only
-      // things on the page that neither the server render nor a normal poll keeps honest: the
-      // render's copy is up to PARK_REVALIDATE old and the poll never carried them. It costs
-      // nothing upstream — the fetch above is the same request either way.
+      // Only the fields that can change between two polls, laid back over the server-rendered park
+      // (`mergeLiveParkSnapshot`). `?full=1` adds shows and restaurant status, which the client
+      // asks for about every half hour because neither the render nor a normal poll keeps them
+      // current. See docs/rules/api-budget-per-page.md.
       const snapshot = leanParkForLivePoll(simulated, {
         daily: request.nextUrl.searchParams.get('full') === '1',
       });
 
-      // Attach each ride's photo and focal point here, on the server. The park page's
-      // attraction grid is a Client Component fed by this poll, so resolving them in
-      // the card instead would put the whole media catalog in the browser's bundle.
-      //
-      // `park: { slug }` is only the lookup key `enrichAttractionsWithImages` reads, and it is
-      // stripped again: no reader of the poll has ever used a park that carries just a slug
-      // (`attraction-card` wants its name, timezone or city), and the merge spreads the snapshot
-      // over the server render, so a `park` here would replace a fuller one.
+      // Photos are resolved on the server: the attraction grid is a Client Component, and doing
+      // it there would put the media catalog in the bundle. `park: { slug }` is only the lookup
+      // key and is stripped again, since the merge would let a slug-only `park` replace the full
+      // one.
       snapshot.attractions = enrichAttractionsWithImages(
         snapshot.attractions.map((a) => ({ ...a, park: { slug: park } }))
       ).map(({ park: _lookupKey, ...ride }) => ride);
 
-      // No caching - we want fresh live data
       return NextResponse.json(snapshot, {
         headers: {
           'Cache-Control': 'no-store',
@@ -181,15 +132,12 @@ export async function GET(
     }
   }
 
-  // Handle calendar data: [continent, country, city, park, 'calendar'] (5 segments)
-  // e.g., ['europe', 'germany', 'bruehl', 'phantasialand', 'calendar']
   if (path && path.length === 5 && path[4] === 'calendar') {
     const [continent, country, city, park] = path;
     const { searchParams } = new URL(request.url);
     const from = searchParams.get('from');
     const to = searchParams.get('to');
 
-    // Validate required parameters
     if (!from || !to) {
       return NextResponse.json(
         { error: 'Missing required query parameters: from, to' },
@@ -197,7 +145,6 @@ export async function GET(
       );
     }
 
-    // Validate date format (YYYY-MM-DD)
     const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
     if (!dateRegex.test(from) || !dateRegex.test(to)) {
       return NextResponse.json(
@@ -210,24 +157,15 @@ export async function GET(
       const data = await getIntegratedCalendar(continent, country, city, park, {
         from,
         to,
-        // No hourly data in the calendar view. It is scoped to the hour it was fetched in, and
-        // this response is cached for a day — `…/calendar/hourly` below serves it instead.
+        // The hourly curve is scoped to the hour it was fetched in and this response is cached for
+        // a day, so `…/calendar/hourly` below serves it instead.
         includeHourly: 'none',
       });
 
-      // A day, because a calendar month is a set of statements about days and none of them
-      // moves faster than that any more. It was 300 s for one reason: today's cell carried a
-      // live occupancy spot reading the backend rewrote every five minutes. That override is
-      // gone (today reads the ML forecast now), and with it the only volatile field in this
-      // payload.
-      //
-      // What can still change inside a day is a schedule correction, and it does not wait for
-      // this window: `sync-schedules-only` posts the park's cache tag to /api/revalidate, so a
-      // correction arrives through the tag rather than through expiry.
-      //
-      // The stale window is a second day: this endpoint's slow path is a live PERCENTILE_CONT
-      // aggregation, one query per day of the range, so an expiry that blocks is an expiry
-      // somebody waits 2.75 s for.
+      // A day: every field is a statement about a whole day. A schedule correction arrives through
+      // the park's cache tag (`sync-schedules-only` posts it to /api/revalidate), not through
+      // expiry. The stale window is a second day because the slow path is a per-day aggregation
+      // nobody should wait for.
       return NextResponse.json(data, {
         headers: cdnCacheHeaders('public, s-maxage=86400, stale-while-revalidate=86400'),
       });
@@ -240,16 +178,9 @@ export async function GET(
     }
   }
 
-  // Handle one day's hourly crowd curve: [continent, country, city, park, 'calendar', 'hourly']
-  // with `?date=YYYY-MM-DD` (6 segments). The day-detail dialog's bar chart, and nothing else.
-  //
-  // A path of its own rather than an `includeHourly` parameter on the branch above, and the reason
-  // is written down in next.config.ts: a `headers()` rule overrides a route handler's own
-  // Cache-Control under `next start` while the handler wins on Vercel, so the two halves have to
-  // name the same value — and a `headers()` rule matches a PATH, never a query string. A window
-  // that varied by parameter would therefore be 300 s on Vercel and 86400 under `next start` for
-  // the same URL. It is also the shape every other windowed payload in this file already has
-  // (`/wait-times`, `/best-days`, `/stats/day`, `/plan/day`).
+  // One day's hourly crowd curve (`?date=`), for the day-detail dialog's bar chart. A path of its
+  // own rather than a parameter on the branch above: the matching `headers()` rule in
+  // next.config.ts matches a path, never a query string, and both halves must name the same window.
   if (path && path.length === 6 && path[4] === 'calendar' && path[5] === 'hourly') {
     const [continent, country, city, park] = path;
     const date = new URL(request.url).searchParams.get('date');
@@ -264,19 +195,16 @@ export async function GET(
     }
 
     try {
-      // `today+tomorrow` rather than `all`: measured on 2026-09-14 the two return byte-identical
-      // responses because the backend has no curve beyond tomorrow, and the narrower word is the
-      // one that says so.
+      // `today+tomorrow`, not `all`: the backend has no curve beyond tomorrow, and the narrower
+      // word says so.
       const data = await getIntegratedCalendar(continent, country, city, park, {
         from: date,
         to: date,
         includeHourly: 'today+tomorrow',
       });
 
-      // Projected to the two fields the chart reads. The rest of the day is already on the client
-      // from the month fetch, and shipping it twice is the habit docs/architecture/api-budget.md
-      // exists to break. `hourly` is absent on every day but today and tomorrow — an empty array
-      // is the honest answer for both, and the section hides itself on it.
+      // Only the two fields the chart reads: the rest of the day is already on the client from the
+      // month fetch. An empty `hourly` (any day but today and tomorrow) hides the section.
       return NextResponse.json(
         { date, hourly: data.days?.[0]?.hourly ?? [] },
         { headers: cdnCacheHeaders(CALENDAR_HOURLY_CACHE_CONTROL) }
@@ -290,11 +218,8 @@ export async function GET(
     }
   }
 
-  // Handle best-days snapshot: [continent, country, city, park, 'best-days'] (5 segments)
-  // The lean precomputed today→+90d projection (status, crowd level, holiday flags + optional
-  // weekday aggregate) that feeds the best-days section, crowd FAQ and header forecast. Served
-  // from the backend's materialized Redis snapshot (never a lazy ML compute), so this proxy just
-  // mirrors it behind a matching CDN window — collapsing concurrent client polls off the origin.
+  // The best-days snapshot for the next 90 days. The backend serves it precomputed, so this proxy
+  // only mirrors it behind a CDN window that collapses concurrent polls.
   if (path && path.length === 5 && path[4] === 'best-days') {
     const [continent, country, city, park] = path;
 
@@ -313,12 +238,9 @@ export async function GET(
     }
   }
 
-  // Handle ride positions: [continent, country, city, park, 'positions'] (5 segments)
-  // Every ride's coordinates and nothing else — what the homepage's in-park compass needs to point
-  // at the headliners. `/api/nearby` sends each ride's distance and wait but no coordinates, and the
-  // park itself is ~88 KB on Phantasialand for 40 pairs of numbers. Coordinates move when somebody
-  // re-surveys a park, not between two polls, so this reads the day-cached park snapshot (not the
-  // no-store one the live poll uses) and the CDN keeps the answer for a day.
+  // Every ride's coordinates and nothing else, for the homepage's in-park compass (`/api/nearby`
+  // carries none, and the full park is far heavier). Coordinates change only on a re-survey, so
+  // this reads the day-cached park and the CDN keeps the answer for a day.
   if (path && path.length === 5 && path[4] === 'positions') {
     const [continent, country, city, park] = path;
 
@@ -344,12 +266,9 @@ export async function GET(
           longitude: a.longitude as number,
         }));
 
-      // A phone's compass points at MAGNETIC north (Safari's `webkitCompassHeading`, Android's
-      // rotation vector behind Chrome's absolute `alpha`), the bearings to the rides are TRUE
-      // north. The gap is 1–3° in western Europe and 11° at Disneyland Anaheim, where every arrow
-      // was off by that much. So the park's declination rides along, from the World Magnetic
-      // Model (WMM2025, bundled with `geomagnetism`) at the middle of its rides; it drifts a
-      // tenth of a degree a year, which the day's cache does not notice.
+      // A phone's compass points at magnetic north and the bearings to the rides are true north,
+      // a gap of up to 11° (Disneyland Anaheim). So the park's declination rides along, from the
+      // World Magnetic Model in `geomagnetism` at the middle of its rides.
       const middle = positions.length
         ? {
             lat: positions.reduce((sum, p) => sum + p.latitude, 0) / positions.length,
@@ -377,11 +296,9 @@ export async function GET(
     }
   }
 
-  // Handle ride figures: [continent, country, city, park, 'ride-stats'] (5 segments)
-  // Top speed, height and duration per ride, for the park map's popups and nothing else. The park
-  // page's server render leaves `rideProfile` out (`leanParkForParkShell`: 3.6 KB on Phantasialand,
-  // and the map is a tab most visitors never open), so the map asks for these when its tab opens.
-  // Day-stable like `positions`, so it reads the day-cached park and the CDN keeps the answer.
+  // Top speed, height and duration per ride, for the park map's popups. The page render leaves
+  // `rideProfile` out (`leanParkForParkShell`), so the map asks when its tab opens. Day-stable like
+  // `positions`.
   if (path && path.length === 5 && path[4] === 'ride-stats') {
     const [continent, country, city, park] = path;
 
@@ -404,11 +321,9 @@ export async function GET(
     }
   }
 
-  // Handle lean live wait times: [continent, country, city, park, 'wait-times'] (5 segments)
-  // The whole-park status + queue snapshot (~9 KB vs ~95 KB for the full park payload), polled by
-  // the blog's inline ride references so a statically generated post doesn't keep showing its
-  // build-time "closed" snapshot. The backend caches this 5 min; a matching CDN window collapses
-  // concurrent readers of the same post onto one origin call.
+  // The lean status and queue snapshot, polled by the blog's inline ride references so a static
+  // post does not keep its build-time snapshot. The CDN window collapses concurrent readers of one
+  // post onto one origin call.
   if (path && path.length === 5 && path[4] === 'wait-times') {
     const [continent, country, city, park] = path;
 
@@ -431,41 +346,24 @@ export async function GET(
     }
   }
 
-  // Handle historical stats: [continent, country, city, park, 'stats'] (5 segments)
-  // e.g., ['europe', 'germany', 'bruehl', 'phantasialand', 'stats']
   if (path && path.length === 5 && path[4] === 'stats') {
     const [continent, country, city, park] = path;
     const { searchParams } = new URL(request.url);
 
-    // `topN` is forwarded from a CLOSED SET, not passed through. It is part of the cache key at
-    // the CDN, so an arbitrary number lets any caller mint unlimited distinct objects per park —
-    // each of which is a cold-compute miss on the backend. 30 is the one deeper value anything
-    // asks for (the ride tables that name specific rides); everything else falls back to the
-    // backend default, which is the object the park page already warms.
+    // `topN` comes from a closed set: it is part of the CDN cache key, so an arbitrary number would
+    // let any caller mint unlimited cold-compute misses. 30 is the one deeper value anything asks
+    // for; everything else gets the backend default the park page already warms.
     const requestedTopN = Number(searchParams.get('topN'));
     const topN = requestedTopN === 30 ? 30 : undefined;
 
     try {
-      // 2-year aggregate — large and slow to compute (cold-park lazy compute is retried inside
-      // getParkHistoricalStats). Serving it through this function response keeps the response on
-      // the CDN (s-maxage) WITHOUT pulling the slow fetch into the park page's static prerender:
-      // this is a cacheable function response, NOT an ISR write of the page shell.
+      // A slow two-year aggregate, served as a CDN-cached function response so it stays out of the
+      // park page's static prerender.
       const stats = await getParkHistoricalStats(continent, country, city, park, 2, topN);
 
       if (!stats) {
-        // `null` is the API's own 404 and nothing else — no such park, no such aggregate —
-        // so this is a settled answer and may be cached. Uncached, every reader of a thin
-        // park's page paid a fresh invocation and a backend round trip for the same no.
-        //
-        // It used to mean something else as well, and that is what made this branch
-        // dangerous: `getParkHistoricalStats` also returned `null` when all four attempts
-        // failed. A park with THIN history was never this case — the API answers those with
-        // a 200 — so in practice the 404 fired only for outages, and cached each one for an
-        // hour plus six of stale-while-revalidate. Measured on 2026-09-03: Phantasialand's
-        // stats came back `{"error":"Stats not available"}` from the edge (`x-vercel-cache:
-        // HIT`) in 158 ms — too fast to have retried at all — while the API answered every
-        // request with 200 and 3.3 KB. A failure now throws and lands in the catch below,
-        // which returns an uncached 500.
+        // `null` is the API's own 404 and nothing else, so it may be cached. A failure throws
+        // and leaves through the catch below as an uncached 500.
         return NextResponse.json(
           { error: 'Stats not available' },
           { status: 404, headers: cdnCacheHeaders(STATS_MISSING_CACHE) }
@@ -484,11 +382,9 @@ export async function GET(
     }
   }
 
-  // Handle the hourly profile: [continent, country, city, park, 'stats', 'hourly'] (6 segments)
-  // Median and busy wait per hour of the operating day, ride by ride — the matrix behind the
-  // "when is the queue longest" table. Its own endpoint rather than a slice of the attraction
-  // detail payload: that one is ~53 KB per ride, so an eight-ride table cost 424 KB against ~2 KB
-  // here. Recomputed once a day on the backend, so the CDN window matches `/stats`.
+  // Median and busy wait per hour, ride by ride, for the "when is the queue longest" table. Its own
+  // endpoint because the attraction detail payload is far heavier per ride. Recomputed daily, so
+  // the window matches `/stats`.
   if (path && path.length === 6 && path[4] === 'stats' && path[5] === 'hourly') {
     const [continent, country, city, park] = path;
     const { searchParams } = new URL(request.url);
@@ -500,9 +396,7 @@ export async function GET(
       const data = await getParkHourlyProfile(continent, country, city, park, { topN });
 
       if (!data) {
-        // The API's 404, and nothing else: a failure throws and is answered uncached by the
-        // catch below. Caching a transient failure here would store our outage as a fact
-        // about the park for an hour — see the note on the `/stats` branch above.
+        // The API's 404 and nothing else: a failure throws and is answered uncached below.
         return NextResponse.json(
           { error: 'Hourly profile not available' },
           { status: 404, headers: cdnCacheHeaders(STATS_MISSING_CACHE) }
@@ -521,11 +415,8 @@ export async function GET(
     }
   }
 
-  // Handle one ride's day curve: [continent, country, city, park, 'stats', 'day'] (6 segments)
-  // Historical percentiles + today's measured hours + the forecast for the rest, in ~1 KB.
-  //
-  // s-maxage is FIVE minutes, not the hourly profile's hour: two thirds of this payload is today,
-  // and an hour-old copy of "today" is the one thing this route must not serve.
+  // One ride's day curve. Five minutes, not an hour: most of the payload is today, and an hour-old
+  // copy of today is the one thing this route must not serve.
   if (path && path.length === 6 && path[4] === 'stats' && path[5] === 'day') {
     const [continent, country, city, park] = path;
     const { searchParams } = new URL(request.url);
@@ -536,9 +427,7 @@ export async function GET(
     try {
       const data = await getRideDayCurve(continent, country, city, park, attraction);
 
-      // `null` is the API's 404 and nothing else: this park has too few measured
-      // days for a curve. Passed through as a 404 because it is the settled
-      // answer — the hook stops asking rather than retrying.
+      // `null` is the API's 404 (too few measured days), a settled answer: the hook stops asking.
       if (!data) {
         return NextResponse.json(
           { error: 'Day curve not available' },
@@ -561,14 +450,9 @@ export async function GET(
     }
   }
 
-  // Handle one day's plan: [continent, country, city, park, 'plan', 'day'] (6 segments)
-  // Per-ride hourly curves for one date, plus that day's context.
-  //
-  // s-maxage is FIFTEEN minutes across the board rather than scaled by distance.
-  // A day in November genuinely does not move and could hold for hours, but the
-  // date is in the CDN key, so a per-distance TTL would mean the same URL is
-  // cached differently depending on when it was first asked for — and today, the
-  // one that does move, is by far the most requested date.
+  // One day's plan. Fifteen minutes for every date: the date is in the CDN key, so a TTL scaled by
+  // distance would cache one URL differently depending on when it was first asked for, and today,
+  // the date that moves, is the most requested.
   if (path && path.length === 6 && path[4] === 'plan' && path[5] === 'day') {
     const [continent, country, city, park] = path;
     const { searchParams } = new URL(request.url);
@@ -586,22 +470,13 @@ export async function GET(
         );
       }
 
-      // The ride's photo, resolved HERE and not in the client. The media
-      // database is a 107 KB filesystem catalogue that `@/lib/media` pulls in
-      // whole, and the planner is a Client Component mounted in every page's
-      // layout — importing it there would ship the catalogue to every visitor.
-      // The same helper the park payload already uses does it server-side, with
-      // the content-hash query the focal-point editor depends on and the
-      // `object-position` a curated focal point resolves to.
+      // Photos resolved here, not in the client: the planner is a Client Component in every
+      // layout, and importing `@/lib/media` there would ship the media catalog to every visitor.
       const withImages = enrichAttractionsWithImages(
         data.rides.map((ride) => ({ ...ride, slug: ride.attractionSlug, park: { slug: park } }))
       );
-      // The PARK's own photo, for the panel to sit on. Same reason as the ride
-      // photos one line up — `@/lib/media` is a 107 KB catalogue and the
-      // planner is a Client Component in every page's layout — and the same
-      // helpers, so a focal point curated in the admin decides the crop here
-      // too. `null` where the media database has no picture for the park, which
-      // is 198 of 212 of them, and the panel then simply has no photo.
+      // The park's own photo for the panel, for the same reason; `null` where the media database
+      // has none.
       const enriched = {
         ...data,
         parkBackgroundImage: getParkBackgroundImage(park),
@@ -623,27 +498,15 @@ export async function GET(
     }
   }
 
-  // Handle attraction detail: [continent, country, city, park, 'attractions', slug] (6 segments)
-  // e.g., ['europe', 'germany', 'rust', 'europa-park', 'attractions', 'blue-fire-megacoaster']
   if (path && path.length === 6 && path[4] === 'attractions') {
     const [continent, country, city, park, , attractionSlug] = path;
 
     try {
-      // The heavy time-series — daily `history` + `hourlyForecast` (+ schedule, bestVisitTimes,
-      // predictionAccuracy) — that backs the daily chart, history grid and accuracy card. Serving
-      // it through this CDN-cached function response (s-maxage) keeps it OFF the attraction page's
-      // static prerender: it's a cacheable function response, NOT an ISR write of the page shell.
-      //
-      // 5 min fresh, 1 min stale. This response also carries the ride page's LIVE panel —
-      // status, queues, wait time — since `useLiveAttractionData` stopped polling the whole park
-      // for them, so this window is what decides how far the ride page can trail the park page's
-      // cards (those poll `/api/parks/<geo>/<park>`, which is `no-store`). 300 s is exactly what
-      // the backend caches an attraction for, so the fresh half adds no origin load at all; the
-      // stale half is deliberately short, because `stale-while-revalidate` is added to the age a
-      // reader can be served, not spent instead of it — 300 + 300 is a wait time up to ten minutes
-      // old on a panel labelled live. next.config.ts had said 300 for months with no effect: on
-      // Vercel a Cache-Control on a function response overrides the `headers()` rule for the same
-      // route, and `next dev` resolves it the other way, so the two are kept identical.
+      // The heavy time series behind the ride page's charts, as a CDN-cached function response so
+      // it stays out of the static prerender. It also carries the ride page's live panel, so the
+      // stale half is short: `stale-while-revalidate` adds to the age a reader can be served. 300 s
+      // matches the backend's own cache and is repeated in next.config.ts, because which of the
+      // two wins depends on where it runs.
       const data = await getAttractionByGeoPathFresh(
         continent,
         country,
@@ -668,14 +531,12 @@ export async function GET(
     }
   }
 
-  // Handle weather nowcast: [continent, country, city, park, 'weather', 'nowcast'] (6 segments)
   if (path && path.length === 6 && path[4] === 'weather' && path[5] === 'nowcast') {
     const [continent, country, city, park] = path;
 
     try {
-      // Fresh fetch: this is the live poll path, so we don't compound our own caches on top
-      // of the upstream CDN (that froze the banner / hid the update countdown). A small shared
-      // CDN window keeps repeated polls off the backend without re-introducing stale data.
+      // Fresh: this is a live poll, and a cache of ours on top of the upstream one freezes the
+      // banner. The short CDN window still keeps repeated polls off the backend.
       const data = applyNowcastSimulation(
         await getParkWeatherNowcastFresh(continent, country, city, park),
         parseParkSimulation(request.nextUrl.searchParams.get('state'))
@@ -697,7 +558,6 @@ export async function GET(
     }
   }
 
-  // Invalid path format
   return NextResponse.json(
     {
       error:
@@ -706,5 +566,3 @@ export async function GET(
     { status: 400 }
   );
 }
-
-// No caching - we want fresh data on every request

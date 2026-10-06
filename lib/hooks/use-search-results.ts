@@ -8,14 +8,9 @@ import { trackSearchNoResults } from '@/lib/analytics/umami';
 import { useHeroBrowseParks, type HeroBrowseParks } from '@/lib/hooks/use-hero-browse-parks';
 
 /**
- * Strip accents and punctuation the way the API's matcher does, so scoring here
- * agrees with the order the API already sorted the results into.
- *
- * Comparing raw strings meant a name whose letters are broken up by punctuation
- * never matched: "F.L.Y." does not contain "fly", so searching `fly` scored the
- * ride 0 and "Sky Fly" 30 — the API returned F.L.Y. first and this pushed it
- * back down. Accents hit the same wall ("Fårup Sommerland" vs `farup`), and "ß"
- * has no Unicode decomposition, hence the explicit replace.
+ * Folds accents the way the API's matcher does, so scoring here agrees with the order the API
+ * already sorted the results into (`farup` finds "Fårup Sommerland"). "ß" has no Unicode
+ * decomposition, hence the explicit replace.
  */
 const fold = (value: string): string =>
   value
@@ -60,7 +55,6 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
   const locale = useLocale();
   const [debouncedQuery, setDebouncedQuery] = useState('');
 
-  // Debounce the search query
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedQuery(query);
@@ -69,7 +63,6 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
     return () => clearTimeout(timer);
   }, [query]);
 
-  // React Query for search with caching
   const { data: results, isLoading: loading } = useQuery<SearchResult>({
     queryKey: ['search', debouncedQuery],
     queryFn: async () => {
@@ -77,7 +70,7 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
       if (!response.ok) throw new Error('Search failed');
       const data = (await response.json()) as SearchResult;
 
-      // Track no results (no query text for privacy — only length)
+      // Only the length is sent, never the query text.
       if (data.results.length === 0) {
         trackSearchNoResults({ queryLength: debouncedQuery.length });
       }
@@ -89,12 +82,11 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
     // every debounced keystroke resets `data` to undefined and the dialog flashes
     // results → skeleton → results on each typed batch.
     placeholderData: keepPreviousData,
-    staleTime: 60_000, // 1 min cache
-    gcTime: 5 * 60_000, // 5 min garbage collection
+    staleTime: 60_000,
+    gcTime: 5 * 60_000,
     retry: 1,
   });
 
-  // Glossary search
   const { data: glossaryData } = useQuery<{ results: GlossarySearchItem[] }>({
     queryKey: ['glossary-search', debouncedQuery, locale],
     queryFn: async () => {
@@ -115,7 +107,6 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
   // dedupes them all into one backend request.
   const browse = useHeroBrowseParks();
 
-  // Calculate match score for exact matches: name should be compared with query
   const calculateMatchScore = (item: SearchResultItem): number => {
     const name = fold(item.name);
     const query = fold(debouncedQuery);
@@ -123,18 +114,15 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
     const plainQuery = foldAlphanumeric(debouncedQuery);
     const hasPlainQuery = plainQuery.length > 0;
 
-    // Exact name match = 100 points — including one the user typed without the
-    // punctuation the name carries ("fly" for "F.L.Y.").
+    // Also without the punctuation the name carries: "fly" for "F.L.Y.".
     if (name === query || (hasPlainQuery && plainName === plainQuery)) {
       return 100;
     }
 
-    // Name starts with query = 50 points
     if (name.startsWith(query) || (hasPlainQuery && plainName.startsWith(plainQuery))) {
       return 50;
     }
 
-    // Substring match = 30 points
     if (name.includes(query) || (hasPlainQuery && plainName.includes(plainQuery))) {
       return 30;
     }
@@ -142,7 +130,6 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
     return 0;
   };
 
-  // Sort results within each category by match score (exact matches first), then by status (OPERATING first)
   const sortResultsByMatch = (
     items: SearchResultItem[]
   ): { item: SearchResultItem; score: number }[] => {
@@ -151,7 +138,6 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
       .sort((a, b) => {
         const scoreDiff = b.score - a.score;
         if (scoreDiff !== 0) return scoreDiff;
-        // Prefer OPERATING over non-OPERATING when scores are equal
         const aOperating = a.item.status === 'OPERATING' ? 0 : 1;
         const bOperating = b.item.status === 'OPERATING' ? 0 : 1;
         return aOperating - bOperating;

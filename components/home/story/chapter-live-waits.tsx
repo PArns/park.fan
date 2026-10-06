@@ -10,20 +10,14 @@ import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import type { Locale } from '@/i18n/config';
 import { getLeadPark } from './lead-park';
+import { STORY_SECTION_TINTED } from './section-chrome';
 
 /**
- * Chapter: live wait times.
- *
- * The exhibit is the **real ranking** for the locale's lead park — the same
- * `ParkStatsSection` a park page renders, in the `flat` material a page with no
- * park photograph needs, and the same one the guide page mounts for the same
- * reason: a chapter whose whole claim is "this is running right now" cannot make
- * it with frozen numbers.
- *
- * It stays inside the API budget because `ParkStatsSection` owns its own
- * `useLoadLast` gate — it does not fetch until the page has gone idle — and
- * because only the attractions card is asked for. No sentence around it quotes a
- * figure the table renders, so the copy stays true whatever the park does today.
+ * Chapter: live wait times. The exhibit is the real ranking for the locale's lead park, the same
+ * `ParkStatsSection` a park page renders, in the `flat` material, because a claim of "running
+ * right now" cannot be made with frozen numbers. It stays inside the API budget: `ParkStatsSection`
+ * waits for idle (`useLoadLast`) and only the attractions card is asked for. No sentence quotes a
+ * figure the table renders.
  */
 export async function ChapterLiveWaits({ locale }: { locale: string }) {
   const [t, tCommon, park] = await Promise.all([
@@ -36,7 +30,7 @@ export async function ChapterLiveWaits({ locale }: { locale: string }) {
     // `overflow-x-clip`, not `overflow-hidden`: the exhibit runs past the
     // container edge and an unclipped overhang gives the document a horizontal
     // scrollbar, while `hidden` would make this a scroll container.
-    <section className="border-border bg-muted/30 overflow-x-clip border-t px-4 py-16 sm:py-18">
+    <section className={`overflow-x-clip ${STORY_SECTION_TINTED}`}>
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading

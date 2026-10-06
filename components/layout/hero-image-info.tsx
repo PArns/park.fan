@@ -6,6 +6,10 @@ interface HeroImageInfoProps {
   meta: HeroImageMeta;
 }
 
+/**
+ * Server wrapper for the hero photo caption: translates the country name and renders
+ * `HeroImageInfoPanel`.
+ */
 export async function HeroImageInfo({ meta }: HeroImageInfoProps) {
   const tGeo = await getTranslations('geo');
   const country =

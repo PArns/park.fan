@@ -1,19 +1,17 @@
 import { api } from './client';
 import type { SearchResult } from './types';
 
+/** The entity kinds `/v1/search` can be filtered to. */
 export type SearchType = 'park' | 'attraction' | 'show' | 'restaurant';
 
-/**
- * Search across all entities
- */
+/** Search parks, attractions, shows and restaurants. */
 export async function search(query: string, types?: SearchType[]): Promise<SearchResult> {
   const params: Record<string, string> = { q: query };
   if (types && types.length > 0) {
     params.type = types.join(',');
   }
 
-  // Use cache: 'no-store' to respect API cache headers (60s)
-  // This prevents double-caching (Frontend + API)
+  // `no-store`: the API's own cache headers (60 s) are the one cache, not a second one here.
   return api.get<SearchResult>('/v1/search', {
     params,
     cache: 'no-store',

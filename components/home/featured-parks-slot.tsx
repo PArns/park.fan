@@ -10,16 +10,10 @@ import { extractFeaturedParks, type FeaturedPark } from './featured-parks-sectio
 import { FeaturedParkCardsLive } from './featured-park-cards-live';
 
 /**
- * Featured ("beliebte") parks — structure server-rendered into the page's shell, live data
- * layered on the client.
- *
- * The baked part is day-stable only (names, links, city, photo — the SEO point of this
- * section) and comes from the default 24h-cached `getGeoStructure()`, so this section no
- * longer pins its host pages (homepage, blog, glossary, howto) to a 5-min ISR window — that
- * pin was a main driver of the Jun 2026 ISR-write bill. Status/crowd/wait/schedule overlay
- * client-side via the hub-page pattern ({@link FeaturedParkCardsLive} → `useRegionParks`,
- * 5-min poll), so the cards are fresher than the old baked snapshot ever was. Wrapped in
- * <Suspense> by callers so the geo fetch never blocks the page shell.
+ * Featured parks: day-stable structure server-rendered from the 24 h-cached `getGeoStructure()`
+ * (the SEO point of this section), live data layered on the client ({@link FeaturedParkCardsLive}),
+ * so the host pages are not pinned to a 5-minute ISR window. Callers wrap it in <Suspense> so the
+ * geo fetch never blocks the shell.
  */
 
 /** Resolves translations server-side, then hands day-stable card data to the client grid. */

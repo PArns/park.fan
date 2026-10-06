@@ -1,9 +1,9 @@
 'use client';
 
-import { useSyncExternalStore } from 'react';
 import { ArrowRight, Languages } from 'lucide-react';
-import { locales, type Locale } from '@/i18n/config';
+import type { Locale } from '@/i18n/config';
 import { FlagDE, FlagUS, FlagNL, FlagFR, FlagES, FlagIT } from '@/components/common/icons/flags';
+import { useBrowserLocale } from '@/lib/hooks/use-browser-locale';
 
 const FLAGS: Record<Locale, React.ComponentType<{ className?: string }>> = {
   en: FlagUS,
@@ -13,23 +13,6 @@ const FLAGS: Record<Locale, React.ComponentType<{ className?: string }>> = {
   es: FlagES,
   it: FlagIT,
 };
-
-/** First supported locale among the browser's preferred languages, or null. */
-function detectBrowserLocale(): Locale | null {
-  if (typeof navigator === 'undefined') return null;
-  const langs = navigator.languages?.length ? navigator.languages : [navigator.language];
-  for (const raw of langs) {
-    const base = raw.toLowerCase().split('-')[0];
-    if ((locales as readonly string[]).includes(base)) {
-      return base as Locale;
-    }
-  }
-  return null;
-}
-
-// navigator.languages is read-once external state — useSyncExternalStore keeps
-// SSR (null) and the client read in sync without a setState-in-effect.
-const subscribeNoop = () => () => {};
 
 function LocaleFlag({ locale }: { locale: Locale }) {
   const Flag = FLAGS[locale];
@@ -82,10 +65,10 @@ export function BlogLanguageNotice({
   languageOffers,
   fallbackLabel,
 }: BlogLanguageNoticeProps) {
-  const browserLocale = useSyncExternalStore(subscribeNoop, detectBrowserLocale, () => null);
+  const browserLocale = useBrowserLocale();
 
-  // ── Case B: the browser language has a translation we can offer ───────────
-  // Only when it's not the page we're on and not the fallback we already show.
+  // Case B: the browser's language has a translation to offer, other than this page and the
+  // fallback already shown.
   const betterMatch =
     browserLocale && browserLocale !== currentLocale && browserLocale !== loadedLocale
       ? (languageOffers.find((o) => o.locale === browserLocale) ?? null)
@@ -108,7 +91,7 @@ export function BlogLanguageNotice({
     );
   }
 
-  // ── Case A: fallback notice ───────────────────────────────────────────────
+  // Case A: the fallback notice.
   if (fallbackLabel) {
     return (
       <div className="bg-muted/70 text-muted-foreground mt-5 flex items-center gap-2 rounded-md px-3 py-2 text-xs">

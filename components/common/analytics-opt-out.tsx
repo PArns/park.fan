@@ -1,32 +1,45 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 import { Button } from '@/components/ui/button';
 
 const UMAMI_DISABLED_KEY = 'umami.disabled';
 
-function getIsOptedOut(): boolean {
-  if (typeof window === 'undefined') return false;
-  return localStorage.getItem(UMAMI_DISABLED_KEY) === '1';
+const listeners = new Set<() => void>();
+
+function subscribe(listener: () => void): () => void {
+  listeners.add(listener);
+  window.addEventListener('storage', listener);
+  return () => {
+    listeners.delete(listener);
+    window.removeEventListener('storage', listener);
+  };
 }
 
+function readIsOptedOut(): boolean | null {
+  try {
+    return localStorage.getItem(UMAMI_DISABLED_KEY) === '1';
+  } catch {
+    // Storage blocked: there is no flag to read or write, so the button stays disabled.
+    return null;
+  }
+}
+
+const unknownOnServer = () => null;
+
+/**
+ * Privacy-page box that shows whether this browser is counted by Umami and toggles the
+ * `umami.disabled` localStorage flag to opt out or back in.
+ */
 export function AnalyticsOptOut() {
   const t = useTranslations('datenschutz.analyticsOptOut');
-  const [isOptedOut, setIsOptedOut] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    queueMicrotask(() => setIsOptedOut(getIsOptedOut()));
-  }, []);
+  const isOptedOut = useSyncExternalStore(subscribe, readIsOptedOut, unknownOnServer);
 
   const handleToggle = () => {
-    if (isOptedOut) {
-      localStorage.removeItem(UMAMI_DISABLED_KEY);
-      setIsOptedOut(false);
-    } else {
-      localStorage.setItem(UMAMI_DISABLED_KEY, '1');
-      setIsOptedOut(true);
-    }
+    if (isOptedOut) localStorage.removeItem(UMAMI_DISABLED_KEY);
+    else localStorage.setItem(UMAMI_DISABLED_KEY, '1');
+    listeners.forEach((listener) => listener());
   };
 
   if (isOptedOut === null) {

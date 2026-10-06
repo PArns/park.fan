@@ -46,20 +46,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const catalogue: ParkGeoPath[] = [];
 
   /**
-   * `<lastmod>` for a catalog URL, as the daily content-change crawl observed it.
-   *
-   * Returns `undefined` for a path the crawl has not seen yet — a park added
-   * since the last run — which leaves the entry exactly as it was before this
-   * existed. Never a guess and never today's date: a value that is identical on
-   * every URL is what gets a sitemap's `lastmod` discounted wholesale. See
-   * `lib/seo/content-changes/fingerprint.ts`.
+   * `<lastmod>` for a catalog URL, as the daily content-change crawl observed it, or `undefined`
+   * for a path the crawl has not seen. Never today's date: a value identical on every URL gets a
+   * sitemap's `lastmod` discounted wholesale. See `lib/seo/content-changes/fingerprint.ts`.
    */
   const lastModified = (contentPath: string): Date | undefined => {
     const changedAt = lastmodIndex.get(contentPath);
     return changedAt ? new Date(changedAt) : undefined;
   };
 
-  // ── Static pages ──────────────────────────────────────────────────────────
   // Impressum/Datenschutz are intentionally absent: they are noindex pages,
   // and noindex URLs in a sitemap trigger Search Console errors.
   const homepageAlternates = buildAlternates(() => '');
@@ -88,8 +83,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.5,
         alternates: fancastAlternates,
       },
-      // `index, follow` and canonical-per-locale, but it was missing here — an indexable page
-      // that no sitemap lists is discoverable only via internal links.
       {
         url: `${BASE_URL}/${locale}/contribute`,
         changeFrequency: 'monthly',
@@ -99,18 +92,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     );
   }
 
-  // ── Changelog ─────────────────────────────────────────────────────────────
-  // One URL, outside the locale loop and without an `alternates` map: the page
-  // is English only (`app/[locale]/changelog/page.tsx`), and the other five
-  // spellings are 301s. Listing them as hreflang alternates would advertise
-  // five URLs that answer with a redirect.
-  //
-  // `lastModified` is the date of the newest published entry, which is the day
-  // that page last changed — no crawl needed, the content carries its own date.
-  //
-  // Listed only while there is something to list: with no published entry the
-  // page answers `notFound()`, and a sitemap that advertises a 404 is worse
-  // than one that omits the URL.
+  // One URL without `alternates`: the changelog is English only and the other five spellings are
+  // 301s. Its date is the newest published entry's, and with no entry the page is a 404, so it is
+  // not listed.
   const changelogEntries = getChangelogEntries();
   if (changelogEntries.length > 0) {
     routes.push({
@@ -121,11 +105,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // ── "How park.fan works" guide ────────────────────────────────────────────
-  // Its own loop rather than a line in the static block above: the URL segment
-  // differs per locale, so the alternates map has to be built from the segment
-  // table. Priority 0.8 — it is the page every other surface links to when it
-  // needs to explain what a badge, a percentile or a forecast means.
+  // Priority 0.8: the guide is what every other surface links to when it explains a badge, a
+  // percentile or a forecast.
   const howtoAlternates = buildAlternates(
     (l) => `/${HOWTO_SEGMENTS[l as keyof typeof HOWTO_SEGMENTS]}`
   );
@@ -139,7 +120,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // ── Trip planner ──────────────────────────────────────────────────────────
   const plannerAlternates = buildAlternates(
     (l) => `/${PLANNER_SEGMENTS[l as keyof typeof PLANNER_SEGMENTS]}`
   );
@@ -153,7 +133,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // ── Best time to visit hub ────────────────────────────────────────────────
   const bestTimeAlternates = buildAlternates(
     (l) => `/${BEST_TIME_SEGMENTS[l as keyof typeof BEST_TIME_SEGMENTS]}`
   );
@@ -167,7 +146,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // ── Glossary pages ────────────────────────────────────────────────────────
   const glossaryIndexAlternates = buildAlternates(
     (l) => `/${GLOSSARY_SEGMENTS[l as keyof typeof GLOSSARY_SEGMENTS]}`
   );
@@ -175,10 +153,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of locales) {
     routes.push({
       url: `${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale as keyof typeof GLOSSARY_SEGMENTS]}`,
-      // Hand-maintained rather than observed: the glossary is prerendered from files
-      // in this repo, so the review date is simply known — see
-      // lib/glossary/content-date.ts. Park and ride URLs get theirs from the daily
-      // content-change crawl instead, because nothing writes their date down.
+      // Known rather than observed: the glossary is prerendered from files in this repo, so its
+      // review date is written down in lib/glossary/content-date.ts.
       lastModified: new Date(GLOSSARY_CONTENT_DATE),
       changeFrequency: 'weekly',
       priority: 0.5,
@@ -228,12 +204,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // ── Geo hub + park pages ──────────────────────────────────────────────────
-  // Hub pages target head terms ("freizeitparks deutschland", "theme parks
-  // florida") that competitors rank overview pages for — they were previously
-  // excluded for crawl budget, but the SERP evidence (July 2026) showed the
-  // country/city intent is real. Single-park cities are excluded: the city
-  // page 308s to its only park (thin-duplicate rule in the city page).
+  // Hub pages target head terms ("freizeitparks deutschland", "theme parks florida").
+  // Single-park cities are left out: that city page 308s to its only park.
   for (const continent of geo.continents) {
     const continentPath = `/parks/${continent.slug}`;
     const continentAlternates = buildAlternates(() => continentPath);
@@ -288,9 +260,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           });
           const parkAlternates = buildAlternates(() => parkPath);
           const parkLastModified = lastModified(parkPath);
-          // Image sitemap extension: associates the park's hero photo(s) with its URL so Google can
-          // pick one as the SERP thumbnail (Google-recommended over relying on in-page discovery
-          // alone). Uses the full aspect-ratio set when present, else the single base image.
+          // Image sitemap extension, so Google can pick the park's hero photo as the result
+          // thumbnail.
           const parkImageSet = getParkImageSet(park.slug);
           const parkImages = parkImageSet.length
             ? parkImageSet.map((src) => `${BASE_URL}${src}`)
@@ -307,19 +278,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             });
           }
 
-          // The crowd calendar, which was `#calendar` on the park page and therefore in no
-          // sitemap at all — a hash is not a URL. It answers "wann ist es leer", a question with
-          // far less competition than "wartezeiten", so it belongs in the index on its own.
-          // Weekly rather than daily: the forecast for a day three weeks out barely moves, and
-          // the park page above already carries the daily signal for this park.
-          //
-          // No `lastModified`, deliberately. `parkLastModified` is the day this park's EDITORIAL
-          // content changed — a ride renamed, a photo swapped — and none of that is what this
-          // page renders, so repeating it here would be a date about a different page. The
-          // calendar's own content is a forecast that moves a little every day on all 212 parks
-          // at once, which is precisely the identical-date-everywhere value the fingerprint
-          // detector exists to avoid emitting. Absent is the honest answer until there is a
-          // fingerprint for what a calendar actually shows.
+          // The crowd calendar answers "wann ist es leer", with far less competition than
+          // "wartezeiten", so it is listed on its own. Weekly: a forecast three weeks out barely
+          // moves. No `lastModified`: `parkLastModified` dates the park's editorial content, which
+          // this page does not render, and its forecast moves on every park at once.
           const calendarAlternates = buildAlternates(
             (locale) => `${parkPath}/${PARK_CALENDAR_SEGMENTS[locale as Locale]}`
           );
@@ -331,28 +293,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
               alternates: calendarAlternates,
             });
           }
-          // The month pages under this hub live in `/sitemap-calendar.xml`, not here. One build
-          // with them inline measured this file at 39.5 MB against a 50 MB limit — see that
-          // route for the arithmetic and why the split mirrors the attractions one.
+          // The month pages under this hub live in `/sitemap-calendar.xml`, which keeps this file
+          // under the 50 MB limit. See docs/seo/sitemaps.md.
         }
       }
     }
   }
 
-  // ── The wait-time record, for the parks that have one ─────────────────────
-  // Gated on `meta.displayable`, the same flag the route 404s on: 119 of the 201 parks with
-  // attractions passed on 2026-09-21, which is 714 URLs rather than 1,206. The other 492 would
-  // have been tables built from a handful of measured days, 222 of them from none at all — and
-  // every one of them a 404 advertised in a sitemap, which is the one thing worse than not
-  // advertising the page at all. See `docs/seo/dedicated-landing-pages.md` §5.
-  //
-  // No `lastModified`, for the same reason the calendar hub above carries none: the aggregate
-  // behind these pages is recomputed daily on every park at once, so a date here would be one
-  // identical value across the whole class — precisely the signal that gets a sitemap's `lastmod`
-  // discounted wholesale. Monthly, because a two-year window barely moves in a week.
-  //
-  // This is 201 probes on a cold Data Cache and none on a warm one: the answers are the very
-  // entries the record pages and the calendar pages read, all on `CACHE_TTL.stats`.
+  // The wait-time record, gated on `meta.displayable`, the same flag the route 404s on, so the
+  // sitemap never advertises a 404. See `docs/seo/dedicated-landing-pages.md` §5. No
+  // `lastModified`: the aggregate is recomputed daily on every park at once, so a date would be
+  // one identical value across the class. Monthly, because a two-year window barely moves in a
+  // week. The probes read the `CACHE_TTL.stats` entries the record and calendar pages read.
   const statsParks = await parksWithStatsPage(catalogue);
   for (const park of catalogue) {
     if (!statsParks.has(parkGeoKey(park))) continue;
@@ -370,13 +322,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // ── The "with kids" page, for the parks that clear its gate ───────────────
-  // Gated on `kidsPageData` (20 rides with a `minimumHeight` and half of the park's attractions;
-  // 32 of 203 parks on 2026-09-29, PAR-356), the same predicate the route 404s on. The probe reads
-  // the park payload the park pages already read, one Data Cache entry per park per day.
-  //
-  // No `lastModified`, for the reason the record above has none: the payload is read for a whole
-  // class at once and a date would be one identical value across it.
+  // The "with kids" page, gated on `kidsPageData`, the same predicate the route 404s on. The probe
+  // reads the park payload the park pages already read. No `lastModified`, for the reason the
+  // record above has none.
   const kidsParks = await parksWithKidsPage(catalogue);
   for (const park of catalogue) {
     if (!kidsParks.has(parkGeoKey(park))) continue;
@@ -394,11 +342,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Attraction pages live in a separate lean sitemap (app/sitemap-attractions.xml/
-  // route.ts, referenced from robots.ts): ~35k locale URLs would blow this file up
-  // past sitemap size limits if they carried the full hreflang alternate set.
+  // Attraction pages live in `/sitemap-attractions.xml`, without hreflang: with the alternate set
+  // they would push this file past the sitemap size limits.
 
-  // ── Blog pages ────────────────────────────────────────────────────────────
   const {
     listPosts,
     listArticles,
@@ -411,13 +357,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     await import('@/lib/blog/categories');
 
   /**
-   * When a blog LISTING page last changed: the newest post it shows.
-   *
-   * These pages carry no date of their own — an index, a category, a tag and an
-   * author profile are all just a filtered list — but they change the moment a
-   * post lands in them, and that is a date the frontmatter already states. It is
-   * the same claim the posts' own entries make, so it costs nothing to be right
-   * about. `undefined` for an empty list rather than today's date.
+   * When a blog listing page last changed: the date of the newest post it shows, or `undefined`
+   * for an empty list rather than today's date.
    */
   const newestPostDate = (
     posts: readonly { frontmatter: { date: string; updatedAt?: string } }[]
@@ -434,10 +375,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // keep the index + posts + category/tag pages out of the sitemap until then.
   if (!hasPublishedPosts()) return routes;
 
-  // German-first rollout: blog surfaces (index, categories, tags, authors,
-  // feeds) exist ONLY in locales that actually list posts. Locales without
-  // posts 404 their blog routes, so they must stay out of the sitemap and
-  // out of each other's hreflang alternates.
+  // Blog surfaces exist only in locales that list posts. The others 404 their blog routes, so
+  // they stay out of the sitemap and out of each other's hreflang alternates.
   const blogLocales = locales.filter((l) => hasPublishedPosts(l));
   const buildBlogAlternates = (
     pathFn: (locale: string) => string
@@ -461,8 +400,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // The news overview. It used to come out of the category loop below as the news category's
-  // page; the category tree holds articles only now, so it is listed here on its own.
   const newsLocales = blogLocales.filter(
     (l) => listNewsByDate(l as import('@/i18n/config').Locale).length > 0
   );
@@ -482,11 +419,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // Blog posts — alternates per translationKey use locale-specific slugs, and
-  // news posts sit under `/news` (`postPath`, lib/blog/paths.ts).
-  // Only locales with a real translation are listed: EN-fallback URLs
-  // (e.g. /de/blog/<en-slug>) canonicalize to the EN original and must not
-  // appear in the sitemap or in hreflang alternates.
+  // Only locales with a real translation: EN-fallback URLs (/de/blog/<en-slug>) canonicalize to
+  // the EN original and must not appear in the sitemap or in hreflang alternates.
   const translationIndex = getTranslationIndex();
   for (const [translationKey, localeMap] of translationIndex) {
     const alternates = buildPostAlternates(translationKey);
@@ -508,7 +442,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Blog category pages — articles only; news is not a blog category (see the news overview above).
+  // Articles only: news is not a blog category.
   for (const locale of blogLocales) {
     const posts = listArticles(locale as import('@/i18n/config').Locale);
     const { flat } = buildCategoryTree(locale as import('@/i18n/config').Locale);
@@ -524,14 +458,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Blog tag pages. Unlike categories, tag slugs are TRANSLATED per locale
-  // ("wartezeiten" / "wait-times"), so `buildBlogAlternates` — which reuses one path for
-  // every locale — would emit alternates that 404. `buildTagAlternates` resolves each
-  // locale's real slug and drops locales where the tag has no page.
-  // Only tags at or above TAG_INDEX_MIN_POSTS: the thin ones render `noindex`, and a
-  // sitemap advertising a page that asks not to be indexed is a contradiction we would
-  // be sending on purpose. Both sides read the same threshold from `@/lib/blog/tags`,
-  // so a tag crossing it reappears here and drops its robots meta in the same build.
+  // Tag slugs are translated per locale ("wartezeiten" / "wait-times"), so `buildBlogAlternates`
+  // would emit alternates that 404; `buildTagAlternates` resolves each locale's slug. Tags below
+  // TAG_INDEX_MIN_POSTS render `noindex` and stay out; the page reads the same threshold.
   const { listTags, buildTagAlternates, normalizeTagSlug, TAG_INDEX_MIN_POSTS } =
     await import('@/lib/blog/tags');
   for (const locale of blogLocales) {
@@ -554,7 +483,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Blog author pages
   const { listAuthorKeys, resolveAuthor } = await import('@/lib/blog/authors');
   for (const locale of blogLocales) {
     const posts = listArticles(locale as import('@/i18n/config').Locale);

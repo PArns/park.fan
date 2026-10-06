@@ -14,30 +14,20 @@ import type {
 } from './types';
 
 /**
- * Get complete geographic structure. Cached in the Vercel Data Cache (geo changes rarely);
- * used for static generation. `revalidate` keys the cache lifetime (e.g. the sitemap asks for 24h).
- *
- * Wrapped in React `cache()` for the same reason as {@link getContinents}: the Data Cache dedupes
- * the network but hands each call site its own `Response`, and the homepage alone has six (the
- * hero's world panel, the featured parks, the live-activity band and three story chapters), each
- * parsing the same 159 KB body. `revalidate` is part of the key, so a caller asking for the
- * sitemaps' one-day window gets its own entry. Callers must not mutate the result.
+ * Get the complete geographic structure, Data-cached; `revalidate` is part of the key, so the
+ * sitemaps' one-day window gets its own entry. Wrapped in React `cache()` because the Data Cache
+ * hands each call site its own `Response` and the homepage has several readers parsing the same
+ * large body. Callers must not mutate the result.
  */
 export const getGeoStructure = cache((revalidate: number = CACHE_TTL.geo): Promise<GeoStructure> =>
   api.get<GeoStructure>('/v1/discovery/geo', { next: { revalidate, tags: ['geo'] } })
 );
 
 /**
- * Get all continents, with their countries, cities and parks.
- *
- * Wrapped in React `cache()` because the layout reads this on every page (`getGeoMenu()`) and the
- * park, ride, calendar and stats pages read it again for their breadcrumb (`cityHasOwnPage()`).
- * The Data Cache dedupes the network but hands each call site its own `Response`, so without this
- * the ~160 KB body would be parsed twice per render.
- *
- * Across requests, the parsed document is reused while the Data Cache answers with the same one —
- * see {@link readContinents}. So the result can be the same object for many requests at once, and
- * callers must not mutate it; none does.
+ * Get all continents, with their countries, cities and parks. Wrapped in React `cache()` because
+ * the layout and the breadcrumb lookups read it on the same render; across requests the parsed
+ * document is reused while its ETag is unchanged (see {@link readContinents}), so callers must not
+ * mutate it.
  */
 export const getContinents = cache((): Promise<Continent[]> =>
   apiFetch<Continent[]>(
@@ -51,26 +41,14 @@ export const getContinents = cache((): Promise<Continent[]> =>
 let lastContinents: { etag: string | null; continents: Continent[] } | undefined;
 
 /**
- * The continents body, parsed only when it is not the document parsed last time.
+ * The continents body, parsed only when it is not the document parsed last time. The layout reads
+ * it on every request, and the API's weak ETag is computed from the body and stored with it in the
+ * Data Cache, so an unchanged ETag means the body need not be parsed again. Without an ETag it
+ * parses every time.
  *
- * The layout awaits this on every page, and every park, ride and calendar page is rendered per
- * request, so reading it was a per-request cost of the whole site: on a Data Cache hit Next hands
- * back a fresh `Response` over the cached bytes, and `.json()` on those 159 KB measured 1.5 ms,
- * for a header menu of 1.3 KB. The API sends a weak ETag computed from the body (Express's
- * `W/"<length>-<sha1>"`, checked against the body on 2026-09-28), and the Data Cache stores it
- * with the body, so an unchanged ETag is an unchanged document and its body is not read at all
- * (0.07 ms). Per request, menu plus the two lookups below, on a simulated hit: 2.0–2.3 ms of CPU
- * before, 0.19–0.29 ms after (three runs).
- *
- * Why the fetch still runs on every request instead of a memo in front of it: a fetch executed
- * during a prerender is what gives that page its `revalidate` and its `geo` tag
- * (`next/dist/server/lib/patch-fetch.js`), and on the blog and static pages this one is the only
- * fetch. Skipping it would take the window and the tag off every page rendered after the first
- * one in a process — which pages depends on render order — and `revalidateTag('geo')`, which the
- * backend sends on a park rename or merge, would stop reaching both those pages and this memo.
- * Keeping the fetch keeps both exactly as they were; only the parse is saved.
- *
- * Without an ETag it parses every time, which is what it did before.
+ * The fetch itself still runs on every request: a fetch during a prerender is what gives the page
+ * its `revalidate` and `geo` tag, and skipping it would stop `revalidateTag('geo')` reaching both
+ * those pages and this memo. Only the parse is saved.
  */
 async function readContinents(response: Response): Promise<Continent[]> {
   const etag = response.headers.get('etag');
@@ -85,10 +63,9 @@ async function readContinents(response: Response): Promise<Continent[]> {
 }
 
 /**
- * {@link getContinents} for the header menu and the redirect and breadcrumb lookups: when the
- * fetch fails and this process has parsed the document before, that document instead of a throw.
- * Those callers used to fall back to an empty menu or an empty index, which is worse than a
- * week-old one. Pages that render the continents themselves keep the throw.
+ * {@link getContinents} for the header menu and the redirect and breadcrumb lookups: when the fetch
+ * fails and this process parsed the document before, that document instead of a throw, since a
+ * stale menu beats an empty one. Pages that render the continents themselves keep the throw.
  */
 export async function getContinentsOrLastGood(): Promise<Continent[]> {
   try {
@@ -100,10 +77,9 @@ export async function getContinentsOrLastGood(): Promise<Continent[]> {
 }
 
 /**
- * Something derived from the continents document, computed once per document rather than once
- * per request. Keyed by the document object, which {@link readContinents} keeps the same while
- * the document is unchanged; a new document is simply a new key. The derived value is shared the
- * same way and must not be mutated.
+ * Something derived from the continents document, computed once per document rather than per
+ * request. Keyed by the document object, which {@link readContinents} keeps stable while the
+ * document is unchanged. The derived value is shared and must not be mutated.
  */
 export function perContinentsDocument<T>(
   derive: (continents: Continent[]) => T
@@ -119,18 +95,14 @@ export function perContinentsDocument<T>(
   };
 }
 
-/**
- * Get countries in a continent with hydrated park data and breadcrumbs.
- */
+/** Get countries in a continent with hydrated park data and breadcrumbs. */
 export function getCountriesWithParks(continentSlug: string): Promise<DiscoveryCountryResponse> {
   return api.get<DiscoveryCountryResponse>(`/v1/discovery/continents/${continentSlug}`, {
     next: { revalidate: CACHE_TTL.continents, tags: ['geo'] },
   });
 }
 
-/**
- * Get cities in a country with hydrated park data and breadcrumbs.
- */
+/** Get cities in a country with hydrated park data and breadcrumbs. */
 export function getCitiesWithParks(
   continentSlug: string,
   countrySlug: string
@@ -141,9 +113,7 @@ export function getCitiesWithParks(
   );
 }
 
-/**
- * Get all attractions for sitemap generation. Cached 24h. Returns flat array of { url, slug }.
- */
+/** Get every attraction URL and slug for sitemap generation. */
 export function getSitemapAttractions(): Promise<SitemapAttraction[]> {
   return api.get<SitemapAttraction[]>('/v1/sitemap/attractions', {
     next: { revalidate: 86400, tags: ['geo'] },
@@ -151,18 +121,9 @@ export function getSitemapAttractions(): Promise<SitemapAttraction[]> {
 }
 
 /**
- * Find parks near a geographic location using coordinate-based proximity. Cached (proximity +
- * structure is week-stable; live status is overlaid client-side via LiveNearbyParks).
- *
- * Uses a tiny latitude offset (+0.001°, ~111m) so the query point sits just
- * outside any park's center, ensuring the API always returns a "nearby_parks"
- * response rather than an "in_park" rides response.
- *
- * @param lat - Latitude of the reference point (e.g. a park's center)
- * @param lng - Longitude of the reference point
- * @param excludeParkId - Park ID to exclude from results (the reference park itself)
- * @param limit - Number of parks to return (default 3)
- * @param maxDistanceM - Maximum distance in meters; parks beyond this are excluded (default 300km)
+ * Find parks near a point, cached; live status is overlaid client-side. The query point is shifted
+ * 0.001° north so it never sits on a park's centre, where the API would answer `in_park` with rides
+ * instead of `nearby_parks`. `maxDistanceM` defaults to 300 km.
  */
 export function getParksNearLocation(
   lat: number,
@@ -175,11 +136,8 @@ export function getParksNearLocation(
 }
 
 /**
- * Live (no-store) variant of {@link getParksNearLocation} for the client overlay.
- *
- * The park page renders its "nearby parks" cards status-free (cacheable shell) and refreshes the
- * live open/closed status on the client via `useParkNeighbors` → `/api/parks/near`, which calls
- * this. Same proximity logic, just uncached so the overlay reflects the latest status.
+ * Live (no-store) variant of {@link getParksNearLocation} for the client overlay that refreshes
+ * the nearby cards' open/closed status through `/api/parks/near`.
  */
 export async function getParksNearLocationFresh(
   lat: number,
@@ -199,10 +157,9 @@ async function fetchParksNearLocation(
   maxDistanceM: number,
   fresh: boolean
 ): Promise<NearbyParkItem[]> {
-  // The API sometimes returns coordinates as strings despite being typed as number — coerce defensively.
+  // The API sometimes sends coordinates as strings despite the type.
   const latNum = Number(lat);
   const lngNum = Number(lng);
-  // Offset avoids haversine(identical, identical) = 0 which would trigger "in_park" even with radius=0
   const offsetLat = latNum + 0.001;
   const fetchLimit = limit + (excludeParkId ? 2 : 1); // buffer to cover filtered-out parks
 
@@ -231,34 +188,30 @@ async function fetchParksNearLocation(
       .slice(0, limit)
       .map(stripUnreadableWaitStats);
   } catch (error) {
-    // The live variant backs `/api/parks/near`, which shares its answer for 60 s: an empty list
-    // there would be cached as "no neighbours" and replace the cards' last good status. It throws,
-    // and the route answers an uncached 502. The page's own proximity list keeps rendering nothing.
+    // The live variant backs `/api/parks/near`, which caches its answer: an empty list would be
+    // stored as „no neighbours", so it throws and the route answers an uncached 502.
     if (fresh) throw error;
     return [];
   }
 }
 
 /**
- * Get countries in a continent (basic structure only, without park details).
- * Use getCountriesWithParks when you need full park data per country.
+ * Get countries in a continent (structure only, no park details); use
+ * {@link getCountriesWithParks} for full park data.
  */
 export async function getCountriesInContinent(continentSlug: string): Promise<Country[]> {
   const response = await api.get<{ data?: Country[]; countries?: Country[] }>(
     `/v1/discovery/continents/${continentSlug}`,
     { next: { revalidate: CACHE_TTL.continents, tags: ['geo'] } }
   );
-  // Handle both old array format and new {data} format
+  // The endpoint has answered both a bare array and `{ data }`.
   if (Array.isArray(response)) {
     return response;
   }
   return response.data || response.countries || [];
 }
 
-/**
- * Get country summary with top parks, peak/quiet months — for SEO landing pages.
- * Cached 24h — data is aggregated from ParkDailyStats, changes daily at most.
- */
+/** Get a country summary (top parks, peak and quiet months) for SEO landing pages. */
 export function getCountrySummary(
   continentSlug: string,
   countrySlug: string

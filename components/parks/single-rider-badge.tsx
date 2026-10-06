@@ -6,18 +6,10 @@ import { Badge } from '@/components/ui/badge';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 
 /**
- * "Single Rider" — that the ride has such a queue at all.
- *
- * Deliberately not derived from the live `queues` array, which is what
- * {@link QueueTypeBadge} renders: a single-rider queue that happens to be shut
- * right now, or a park whose wait times we cannot read at all, would make the
- * ride look as though it never had one. The API keeps the two apart for exactly
- * this reason — `queues` answers "is it open and how long", `hasSingleRider`
- * answers "does it exist" — and this badge is the second question.
- *
- * `null` is unknown and renders nothing. Most of the ~7000 attractions have
- * never been checked, so an absent badge is not a statement that the ride has
- * no single-rider line.
+ * „Single Rider": that the ride has such a queue at all. Not derived from the live `queues` array
+ * ({@link QueueTypeBadge}), where a single-rider queue shut right now, or a park we cannot read,
+ * would make the ride look as if it had none; `hasSingleRider` answers "does it exist". `null` is
+ * unknown and renders nothing, since most attractions have never been checked.
  */
 export function SingleRiderBadge({
   hasSingleRider,

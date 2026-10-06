@@ -8,16 +8,14 @@ interface LocalTimeProps {
   time: string;
   /** Timezone for display (defaults to park timezone) */
   timeZone?: string;
-  /** Time format options */
   format?: Intl.DateTimeFormatOptions;
   /** Fallback text if time is invalid */
   fallback?: string;
 }
 
 /**
- * Client component for displaying times in user's local format
- * Prevents hydration mismatches and respects user's 12h/24h preference
- * Wraps output in semantic <time> tag with datetime attribute for SEO
+ * A time in the reader's own 12/24 h format, rendered on the client to avoid a hydration mismatch,
+ * inside a `<time datetime>`.
  */
 export function LocalTime({
   time,
@@ -29,7 +27,6 @@ export function LocalTime({
 
   const date = new Date(time);
 
-  // Check for invalid date
   if (isNaN(date.getTime())) {
     return <>{fallback}</>;
   }
@@ -37,7 +34,6 @@ export function LocalTime({
   let formattedTime: string;
 
   try {
-    // Format the string first
     formattedTime = formatTime(date, locale, {
       ...format,
       timeZone,
@@ -47,31 +43,22 @@ export function LocalTime({
     return <>{fallback}</>;
   }
 
-  // Convert time to ISO 8601 format for datetime attribute
-  // Use the original time string if it's already in ISO format, otherwise convert
   let datetimeValue: string;
   try {
-    // If the input time string is already in ISO 8601 format, use it directly
-    // Otherwise, convert the Date object to ISO string
     if (time.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/)) {
-      // Already in ISO format, use as-is
       datetimeValue = time;
     } else {
-      // Convert to ISO string (always uses UTC, which is fine for datetime attribute)
+      // `toISOString` is UTC, which a datetime attribute accepts.
       datetimeValue = date.toISOString();
     }
   } catch {
-    // Fallback to ISO string if conversion fails
     datetimeValue = date.toISOString();
   }
 
   return <time dateTime={datetimeValue}>{formattedTime}</time>;
 }
 
-/**
- * Display a time range (e.g., opening hours)
- * Uses semantic <time> tags via LocalTime component
- */
+/** A time range such as opening hours, as two `LocalTime`s. */
 export function LocalTimeRange({
   start,
   end,

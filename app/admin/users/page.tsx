@@ -13,7 +13,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
-import type { AdminIdentity, AdminRole } from '../_lib/types';
+import type { AdminIdentity, AdminRole } from '@/lib/admin/roles';
 import {
   AdminPage,
   Chip,
@@ -25,7 +25,7 @@ import {
   SkeletonRows,
 } from '../_ui/primitives';
 import { Field, Select, Switch, TextInput } from '../_ui/controls';
-import { formatDisplayName } from '../_lib/ui';
+import { formatDisplayName } from '../_lib/format';
 import { useToast } from '../_ui/toast';
 import { useSession } from '../_app/session';
 

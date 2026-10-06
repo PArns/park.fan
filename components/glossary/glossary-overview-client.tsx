@@ -25,6 +25,10 @@ interface GlossaryOverviewClientProps {
   segment: string;
 }
 
+/**
+ * The glossary overview: term cards grouped by category, with a search field, category pills and a
+ * filter for terms that have a 3-D player. Typing anywhere focuses the search.
+ */
 export function GlossaryOverviewClient({
   groupedTerms,
   rideCounts,
@@ -74,9 +78,9 @@ export function GlossaryOverviewClient({
 
   const totalCount = groupedTerms.reduce((acc, g) => acc + g.terms.length, 0);
 
-  // The field and the pills read the live state; the grid reads deferred copies. A keystroke or a
-  // pill tap used to add or drop up to ~270 cards in its own commit, before the paint that answers
-  // it — docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md.
+  // The field and the pills read the live state; the grid reads deferred copies, so a keystroke
+  // does not rebuild up to ~270 cards in its own commit. See
+  // docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md.
   const listQuery = useDeferredValue(query);
   const listCategory = useDeferredValue(activeCategory);
   const listPlayerOnly = useDeferredValue(playerOnly);
@@ -114,13 +118,8 @@ export function GlossaryOverviewClient({
 
   return (
     <div>
-      {/* ── Glass panel: search + filters ──
-          The title and the intro moved out into the page's compact `LandingHero`, which the
-          server renders above this list; the search is the first control under it. */}
       <div className="bg-background/60 border-primary/15 mb-10 rounded-xl border shadow-sm backdrop-blur-md">
-        {/* Search + filters */}
         <div className="px-6 py-5">
-          {/* Centered, constrained search input */}
           <div className="relative mx-auto max-w-2xl">
             <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-3.5 h-4 w-4 -translate-y-1/2" />
             <Input
@@ -148,7 +147,6 @@ export function GlossaryOverviewClient({
             )}
           </div>
 
-          {/* Stats + category pills */}
           <div className="mt-3.5 flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
             <span className="text-muted-foreground flex items-center gap-1.5 text-xs">
               <Tag className="h-3 w-3" />
@@ -157,7 +155,6 @@ export function GlossaryOverviewClient({
 
             <span className="bg-border h-3.5 w-px" aria-hidden />
 
-            {/* 3-D player filter — distinct from category pills */}
             <button
               onClick={() => setPlayerOnly((v) => !v)}
               aria-pressed={playerOnly}
@@ -197,7 +194,6 @@ export function GlossaryOverviewClient({
         </div>
       </div>
 
-      {/* ── Results ──────────────────────────────────────────────────────── */}
       <div aria-live="polite" aria-atomic="false">
         {filtered.length === 0 ? (
           <div className="flex justify-center py-16">
@@ -211,12 +207,9 @@ export function GlossaryOverviewClient({
           </div>
         ) : (
           <div className="space-y-10">
-            {/* `id` is the category, which is what the header's "more" panel links into: the
-                filter beside this list is client state with no URL of its own, so a fragment is
-                the only way into a category from outside the page. `scroll-mt-24` is the house
-                number for an anchor under the floating 48 px bar (`page-section.tsx`,
-                `chapter-panel.tsx`). It stays on the section while a filter is active — the
-                filter drops the other groups rather than renaming this one. */}
+            {/* `id` is the category, which the header's "more" panel links into: the filter is
+                client state with no URL, so a fragment is the only way in from outside. It stays
+                while a filter is active. `scroll-mt-24` clears the floating header. */}
             {filtered.map(({ category, categoryLabel, terms }) => (
               <section key={category} id={category} className="scroll-mt-24">
                 {/* Unnumbered: a filter drops groups, and a number must not skip. */}

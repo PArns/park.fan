@@ -22,8 +22,8 @@ export interface StaticNearbyPark {
 /**
  * Park-page "nearby parks" grid. The proximity list (names, links, distance, photo) is prerendered
  * and edge-cached; live open/closed status + crowd is layered on the client via
- * {@link useParkNeighbors}, so the park-page shell no longer bakes (potentially stale) neighbour
- * statuses into the cached output.
+ * {@link useParkNeighbors}, so the park-page shell never bakes stale neighbour statuses into the
+ * cached output.
  */
 export function LiveNearbyParks({
   parkId,

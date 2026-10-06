@@ -21,17 +21,10 @@ interface BlogHourlyProfileWidgetProps {
  *   ```hourly-profile-widget slug=europa-park top=8
  *   ```
  *
- * Replaces the Europa-Park post's hand-typed 8 × 10 matrix — eighty numbers per locale, four
- * hundred and eighty across the six, none of which anything could bring forward. It is also the
- * table that most needed replacing: a queue's shape over the day changes when a park moves its
- * opening time or rebuilds a queue line, and the article read as a statement about today.
- *
- * The card is a Client Component fetching the CDN-cached `/api/parks/.../stats/hourly`, and on the
- * guide page it stays that way. Here it gets a server seed: a blog post is statically prerendered,
- * so the fetch happens once at build time — without it this table reached readers without
- * JavaScript as 132 skeleton placeholders, twelve rides by ten hours of nothing, in the very post
- * that replaced a hand-typed matrix with it. `getParkHourlyProfileSeed` is timeout-bounded and
- * resolves `null`, in which case this renders exactly what it rendered before.
+ * The card is a Client Component fetching the CDN-cached `/api/parks/.../stats/hourly`; here it
+ * gets a server seed, because a post is prerendered and without it readers without JavaScript got
+ * a grid of skeletons. `getParkHourlyProfileSeed` is timeout-bounded and resolves `null`, in which
+ * case the card loads on the client.
  */
 export async function BlogHourlyProfileWidget({ park, slug, top }: BlogHourlyProfileWidgetProps) {
   const [t, tOverview, tBlog] = await Promise.all([
@@ -66,11 +59,8 @@ export async function BlogHourlyProfileWidget({ park, slug, top }: BlogHourlyPro
     hour: t('hourlyProfileHour'),
     minutes: tOverview('minutesUnit'),
     peakNote: t('hourlyProfilePeakNote'),
-    // `t.raw`, not `t`: the message keeps its `{days}` placeholder and the card fills it in
-    // from `profile.meta.totalSampleDays`, a number only the settled client query knows. Run
-    // through `t` the ICU formatter is handed no `days` argument, throws FORMATTING_ERROR and
-    // next-intl returns the key path — which is how „parks.stats.hourlyProfileFootnote" shipped
-    // as visible text under the hourly table, in all six locales, on every post with this widget.
+    // `t.raw`, not `t`: the message keeps its `{days}` placeholder for the card to fill from
+    // `profile.meta.totalSampleDays`, and `t` without a `days` argument throws and prints the key.
     footnote: t.raw('hourlyProfileFootnote') as string,
   };
 

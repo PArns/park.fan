@@ -248,11 +248,8 @@ export const WidgetPreview = Extension.create({
             const matches = spans.filter((s) => s.name === name);
             const pick = pickClosestByCoords(chip, matches, view, (s) => s.pos);
             if (!pick) return false;
-            // The widget decoration anchors at the END of the codeBlock
-            // node (`pos: pos + node.nodeSize` in collectWidgets). The
-            // codeBlock node itself starts at pos - nodeSize. We compute the
-            // node's start/end by walking the doc from the anchor backwards
-            // until we find a codeBlock whose end matches `pick.pos`.
+            // The decoration anchors at the end of the codeBlock, so the node's range is found by
+            // looking for the codeBlock that ends at `pick.pos`.
             const doc = view.state.doc;
             let nodeFrom = -1;
             let nodeTo = -1;

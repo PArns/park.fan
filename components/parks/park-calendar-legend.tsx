@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 
 import { cn } from '@/lib/utils';
 import { CROWD_LEVEL_ORDER, CROWD_SCALE_CLASS } from '@/lib/utils/crowd-level-styles';
+import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 
 /** One meaning of the bar across a cell's top edge: the colour, then the word. */
 function SignalKey({ className, label }: { className: string; label: string }) {
@@ -16,24 +17,10 @@ function SignalKey({ className, label }: { className: string; label: string }) {
 }
 
 /**
- * What the colours in the month grid mean — the crowd scale, then the signal bar.
- *
- * The scale is ONE strip of butted chips rather than six separate pills, because it is a scale:
- * the reader is meant to see „Niedrig" and „Extrem" as two ends of the same ruler, and six
- * free-floating chips with gaps between them read as six unrelated categories. The signal keys
- * beside it are the opposite — four independent facts — so they keep their gaps.
- *
- * All six tiers are named here even though a given month rarely shows more than four of them. The
- * API sends six, so a reader who meets `very_low` on one park's quiet Tuesday has somewhere to
- * look it up; a legend that lists five and a grid that draws six is how a colour ends up meaning
- * nothing.
- *
- * It used to live INSIDE `ParkCalendarGrid`, which is a `ssr: false` import — so a legend that
- * needs no data, no clock and no viewport was withheld until a JavaScript chunk arrived, and it
- * made the grid's two loading states structurally different: `next/dynamic` drew a bare
- * placeholder, then the mounted-but-fetching grid drew this row PLUS a placeholder. Up in the
- * panel's control row it is server-rendered in the first byte, and the two loading states become
- * the same box by construction.
+ * What the colours in the month grid mean: the crowd scale, then the signal bar. The scale is one
+ * strip of butted chips because it is a ruler; the four signal keys are independent facts and keep
+ * their gaps. All six tiers are named even when a month shows four, so any colour the API sends can
+ * be looked up.
  */
 export function ParkCalendarLegend({ className }: { className?: string }) {
   const t = useTranslations('parks');
@@ -46,11 +33,9 @@ export function ParkCalendarLegend({ className }: { className?: string }) {
           {t('calendarLegendGroups.crowd')}
         </span>
 
-        {/* Below `sm` the six names do not fit: „Sehr niedrig" alone wants 60 px and the strip
-          measured 400 px inside a 358 px card, which pushed the whole legend row — signal keys
-          included — past the card's right edge and gave the document a horizontal scrollbar. So
-          the phone gets the ramp itself with only its two ends named; every tile in the grid
-          below spells its own tier out in full anyway. */}
+        {/* Below `sm` the six names do not fit and pushed the legend past the card's edge, so the
+            phone gets the ramp with only its two ends named. Every tile in the grid spells out its
+            own tier. */}
         <div className="flex min-w-0 flex-1 flex-col gap-1 sm:hidden">
           <div className="flex h-2.5 overflow-hidden rounded-md" aria-hidden="true">
             {CROWD_LEVEL_ORDER.map((level) => (
@@ -82,10 +67,10 @@ export function ParkCalendarLegend({ className }: { className?: string }) {
         <span className="text-muted-foreground text-[10px] font-medium tracking-widest uppercase">
           {t('calendarLegendGroups.signals')}
         </span>
-        <SignalKey className="bg-yellow-500 dark:bg-yellow-400" label={tLegend('schoolVacation')} />
-        <SignalKey className="bg-amber-600 dark:bg-amber-500" label={t('influencingHolidays')} />
-        <SignalKey className="bg-red-500 dark:bg-red-400" label={tLegend('holiday')} />
-        <SignalKey className="bg-blue-500 dark:bg-blue-400" label={tLegend('bridgeDay')} />
+        <SignalKey className={DAY_SIGNAL_CLASS.school} label={tLegend('schoolVacation')} />
+        <SignalKey className={DAY_SIGNAL_CLASS.neighbor} label={t('influencingHolidays')} />
+        <SignalKey className={DAY_SIGNAL_CLASS.holiday} label={tLegend('holiday')} />
+        <SignalKey className={DAY_SIGNAL_CLASS.bridge} label={tLegend('bridgeDay')} />
       </div>
     </div>
   );

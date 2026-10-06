@@ -3,13 +3,10 @@
 import { createContext, useContext } from 'react';
 
 /**
- * The park page's rider-height filter, for a control that is not in the filter panel.
- *
- * The state is `useAttractionFilter`'s, owned by `TabsWithHash`; this hands the same value and the
- * same setter to the second slider in the „Mit Kindern“ block under the ride list
- * (`ParkKidsHeightFilter`), so both sliders are one filter and the list, the panel's chip and the
- * phone's „Filter“ button all follow whichever of them moved. `null` where the park publishes no
- * minimum height at all, which is also what a consumer outside the park page reads.
+ * The park page's rider-height filter, for a control outside the filter panel. The state is
+ * `useAttractionFilter`'s, owned by `TabsWithHash`; this hands the same value and setter to the
+ * second slider in the „Mit Kindern“ block (`ParkKidsHeightFilter`), so both sliders are one
+ * filter. `null` where the park publishes no minimum height.
  */
 export interface ParkHeightFilter {
   /** Every height the slider may be set to, ascending — see `riderHeightStops`. */
@@ -24,8 +21,13 @@ export interface ParkHeightFilter {
   showList: () => void;
 }
 
+/** Carries the shared rider-height filter from `TabsWithHash` to controls outside the panel. */
 export const ParkHeightFilterContext = createContext<ParkHeightFilter | null>(null);
 
+/**
+ * Reads the park page's shared rider-height filter. `null` outside the park page and on a park that
+ * publishes no minimum heights.
+ */
 export function useParkHeightFilter(): ParkHeightFilter | null {
   return useContext(ParkHeightFilterContext);
 }

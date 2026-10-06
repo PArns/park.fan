@@ -204,9 +204,8 @@ export function useHeroBrowseParks(): HeroBrowseParks {
         id: park.id,
         name: stripNewPrefix(park.name),
         url: park.url ?? undefined,
-        // The popular ranking carries no live data at all — neither a wait nor a status. `null`
-        // is "unknown", NOT "open": claiming five green dots at three in the morning would be a
-        // worse answer than admitting we don't know.
+        // The popular ranking carries no live data. `null` is "unknown", not "open": five green
+        // dots at three in the morning would be worse than admitting we don't know.
         wait: null,
         open: null,
       })),

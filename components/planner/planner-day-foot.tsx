@@ -24,16 +24,13 @@ interface PlannerDayFootProps {
   entries: readonly PlannerEntry[];
   onAddFreeBlock: () => void;
   /**
-   * Drawn at the end of the optimise row: the phone's show switch since
-   * PAR-482 (the notification bell before it went up beside the ×). Not in
-   * the summary row below, because two rows of 44 px targets stacked cost the
-   * foot about 86 px, and the summary line without one is 29.
+   * Drawn at the end of the optimise row: the phone's show switch. Not in the summary row below,
+   * because two stacked rows of 44 px targets cost the foot far more than a line of text.
    */
   actionsTrailing?: ReactNode;
   /**
-   * The desktop's ride search, drawn in the free-block row beside its button.
-   * The column passes it; the phone's foot does not, because the phone's search
-   * is the panel's own (`PlannerRideSearch` in `planner-flyout.tsx`).
+   * The desktop's ride search, in the free-block row beside its button. The phone's foot gets none:
+   * its search is the panel's own (`PlannerRideSearch` in `planner-flyout.tsx`).
    */
   search?: ReactNode;
   /** The show picker, drawn beside the free block's button. Absent where the day has no showtimes. */
@@ -41,35 +38,13 @@ interface PlannerDayFootProps {
 }
 
 /**
- * Everything a day is filled and summed with: the missing headliners, a free
- * block, optimise, and what it all comes to — optimise last but one, so it
- * stands against the total it lowers (PAR-493).
+ * Everything a day is filled and summed with: the missing headliners, a free block, optimise, and
+ * what it all comes to, optimise last but one so it stands against the total it lowers.
  *
- * **Its own component because it is rendered in two places and must be one
- * implementation.** Every control in here names a park AND a date, and once the
- * panel can hold two columns there are two of each — so on a desktop it belongs
- * to the column, one set per column. That was the report: "die eigener Block
- * Buttons sowie optimieren gehen nur auf die linke Spalte", and it was worse
- * than it read, because nothing said which day the row meant — the headliner
- * band listed Phantasialand's missing rides under a panel whose right half was
- * Europa-Park, and "Tag optimieren" pressed over that column rebuilt the other.
- *
- * **On a phone it stays in the panel, and that is arithmetic rather than
- * taste.** The sheet is 716 px at 390×844. The drag handle, the header, the
- * ride search and the push toggle take 255 of them, so the column's box is
- * 461 px — and the column's own chrome (head, context band, showtime strip) is
- * 125 before the axis has drawn a line. This foot measures 217. Inside the
- * column that leaves the axis **119 px**, which is a search box with an hour
- * and a half of day in it, not a planner; the panel's own flex row, on the
- * other hand, can hand the foot its 217 px and shrink the ride search instead,
- * which is what it did before this moved. A phone never has a second column, so
- * there is no day for the panel's copy to be wrong about.
- *
- * The two call sites gate each other with CSS rather than `useMediaQuery`: the
- * hook answers `false` on its server snapshot, so a JS branch would ship the
- * phone's markup in every desktop's first HTML and then delete it. The column
- * wraps its copy in `hidden sm:contents`, which keeps the foot's rows as flex
- * children of the column at `sm` and up and removes them below it.
+ * One component rendered in two places. Every control names a park and a date, so on a desktop it
+ * belongs to each column; on a phone the panel draws it once, because inside a column it would
+ * leave the axis almost no room, and a phone never has a second column. The column decides with
+ * `withFoot`.
  */
 export function PlannerDayFoot({
   parkSlug,
@@ -92,10 +67,8 @@ export function PlannerDayFoot({
 
   return (
     <>
-      {/* Which of the park's big rides are still missing. Outside the phone's
-          ride search, because it is the one thing down here that both pointers
-          need: the phone adds by tapping a pill, the desktop drags one onto an
-          hour. */}
+      {/* Which big rides are still missing, outside the phone's ride search: both pointers need it
+          (a tap on a pill, a drag onto an hour). */}
       <PlannerMissingHeadliners
         parkSlug={parkSlug}
         parkName={parkName}
@@ -106,21 +79,9 @@ export function PlannerDayFoot({
         prefs={prefs}
       />
 
-      {/* A free block — a lunch break, a show, a meeting point — on its own row,
-          DESKTOP only. It used to sit inside the ride search, which is the
-          phone's surface alone, and it is the one thing in there that is not a
-          ride: the catalogue has no answer for "and then we eat". The phone
-          keeps its copy inside the search, where the same question is asked.
-
-          Which makes this row and that search ONE pair, and the pair is why
-          this is `planner-wide:flex` rather than `sm:flex` (PAR-76): the search
-          is `planner-wide:hidden`, so at 844x390 it was drawn AND this row was
-          drawn, and `t('custom.add')` stood twice in the same sheet — once here
-          and once in the list right below. It also cost the axis 33 px it had
-          none of. "Desktop only" has to mean the same thing on both halves. */}
-      {/* With the ride search beside it where the column passes one: the
-          phone's row reads the same, [Bahn suchen][Eigener Block], and a found
-          ride's list opens under the field. */}
+      {/* A free block, on its own row on the desktop only, with the desktop's ride search beside
+          it. The phone keeps its copy inside its search; `planner-wide:flex` matches the search's
+          `planner-wide:hidden`, so the two are never drawn together. */}
       <div className="border-border/60 planner-wide:flex hidden shrink-0 items-start gap-2 border-t px-2 py-1.5">
         {search && <div className="min-w-0 flex-1">{search}</div>}
         <button
@@ -138,14 +99,8 @@ export function PlannerDayFoot({
         {showPicker}
       </div>
 
-      {/* Letting the day sort itself, directly above what the day adds up to
-          (PAR-493). It used to open the foot, above the headliner band, and the
-          report was that nobody saw it — a grey button two rows away from the
-          total it changes. Next to "Wartezeit 3:20 Std." the button and the
-          figure it would lower are read together, and where it would lower it
-          the button is the foot's call to action and says by how much. The
-          headliner button in the same row follows the band that lists what it
-          adds, which is the order the two are read in. */}
+      {/* Letting the day sort itself, directly above what the day adds up to, so the button and
+          the figure it would lower are read together. */}
       <PlannerOptimizeActions
         parkSlug={parkSlug}
         parkName={parkName}
@@ -163,9 +118,7 @@ export function PlannerDayFoot({
           data-planner-summary=""
           className={cn(
             'border-border/60 text-muted-foreground flex shrink-0 flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-t px-3 py-2.5 text-xs',
-            // A line of text and nothing to press, so on a phone it is only as
-            // tall as the text wants (PAR-482: "im Footer die Abstände nach
-            // oben und unten verringern"): 29 px, where a bell in it made it 39.
+            // A line of text and nothing to press, so on a phone only as tall as the text.
             'planner-phone:py-1.5'
           )}
         >
@@ -177,18 +130,14 @@ export function PlannerDayFoot({
             {totals.done > 0 && (
               <span>{t('summary.done', { done: totals.done, total: entries.length })}</span>
             )}
-            {/* Expected and actual are never added together: one is a prediction
-                and the other a measurement, and a single figure mixing them
-                moves for two reasons at once. */}
+            {/* Expected and actual are never added together: a prediction and a measurement in one
+                figure would move for two reasons at once. */}
             {totals.counted > 0 && (
               <span className="flex items-baseline gap-1" title={t('summary.waiting')}>
-                {/* Named, not just hinted: a phone has no hover, so with the
-                    `title` alone the row ended in a duration with nothing saying
-                    which duration. */}
+                {/* Named, not just in the `title`: a phone has no hover. */}
                 <span>{t('summary.waitingLabel')}</span>
-                {/* The site's own duration format, not a second one invented
-                    here: `formatShortDuration` is what the weather warnings
-                    print and it knows all six locales' unit labels. */}
+                {/* The site's own duration format (`formatShortDuration`), with all six locales'
+                    units. */}
                 <span className="text-foreground font-mono tabular-nums">
                   {formatShortDuration(totals.expectedMinutes, locale)}
                 </span>

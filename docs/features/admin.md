@@ -36,13 +36,23 @@ app/admin/
   layout.tsx              own document, dark, noindex
   _app/                   providers, session, shell, palette, inspector, nav
   _ui/                    THE component kit — one of each thing
-  _lib/                   fetch layer, types, the dashboards' refresh loop
+  _lib/                   fetch layer, types, formatters, the dashboards' refresh loop
   parks/ attractions/     the editors
   seasons/ history/       cross-cutting views
   account/ users/         identity
   media/ blog-editor/ contributions/   content tools (kept, re-hosted)
   system/ queues/ analytics/ ml/ actions/   monitoring (kept, re-hosted)
 ```
+
+The kit's surfaces are in `_ui/primitives.tsx`, its form controls in
+`_ui/controls.tsx`. A section of a page is a `Panel` with a `PanelHeader` and a
+`PanelBody`. A box inside a panel or a dialog (a machine on the system page, a
+model on the ML page, a group of fields in the media editor) is a `Tile`, and a
+single big figure is a `StatTile`. A label over a value is `Meta`. Every pill is
+a `Chip` in one of five tones: `severityTone` and `statusTone` map the
+monitoring words onto them, and `crowdChipClass` takes the public site's crowd
+palette, so `moderate` is the same green "Normal" here as there. Pure formatters
+live in `_lib/format.ts`, never next to the components.
 
 Three ways to reach everything, on purpose: the sidebar, `⌘K`, and `g`-then-a-
 letter. The palette is not a power-user garnish — it is the only practical way to

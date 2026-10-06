@@ -100,10 +100,10 @@ const FAQ = [
   },
 ] as const;
 
+/** The Fancast page's article, French. */
 export function ContentFR() {
   return (
     <>
-      {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
           Fancast est notre modèle de prévision maison, la partie de park.fan qui calcule dès
@@ -123,7 +123,6 @@ export function ContentFR() {
         </Highlight>
       </div>
 
-      {/* 01 – Scorecard (live) */}
       <SectionShell
         id="note"
         index="01"
@@ -141,7 +140,6 @@ export function ContentFR() {
         <FancastLive labels={LIVE_LABELS} />
       </SectionShell>
 
-      {/* 02 – What it reads */}
       <SectionShell
         id="ingredients"
         index="02"
@@ -186,7 +184,6 @@ export function ContentFR() {
         </P>
       </SectionShell>
 
-      {/* 03 – Concrete park examples */}
       <SectionShell
         id="examples"
         index="03"
@@ -238,7 +235,6 @@ export function ContentFR() {
         </SplitFigure>
       </SectionShell>
 
-      {/* 04 – How it learns */}
       <SectionShell
         id="training"
         index="04"
@@ -262,7 +258,6 @@ export function ContentFR() {
         </P>
       </SectionShell>
 
-      {/* 05 – Crowd levels */}
       <SectionShell
         id="levels"
         index="05"
@@ -304,7 +299,6 @@ export function ContentFR() {
         />
       </SectionShell>
 
-      {/* 06 – Try a real park */}
       <SectionShell
         id="parks"
         index="06"
@@ -320,7 +314,6 @@ export function ContentFR() {
         <PopularParksGrid />
       </SectionShell>
 
-      {/* 07 – Where you meet it */}
       <SectionShell
         id="where"
         index="07"
@@ -389,7 +382,6 @@ export function ContentFR() {
         </P>
       </SectionShell>
 
-      {/* 08 – FAQ */}
       <SectionShell
         id="faq"
         index="08"

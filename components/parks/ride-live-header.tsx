@@ -19,15 +19,10 @@ interface RideLiveHeaderProps {
 }
 
 /**
- * The live half of the ride page's header card — {@link RideNowPanel} with data in it.
- *
- * A wrapper rather than hooks inside the panel, for the same reason `ParkTodayPanel` is handed
- * into `ParkHeaderCard` as a slot: the card is built by a Server Component and everything that
- * reads a query has to cross the client boundary somewhere. Here.
- *
- * It costs no request. Both queries below are the ones `LiveAttractionData` and
- * `AttractionHistorySections` already run, by the same key — React Query serves the three from
- * one fetch, which is the whole reason the ride page polls an attraction rather than its park.
+ * The live half of the ride page's header card: {@link RideNowPanel} with data in it. A wrapper
+ * because the card is built by a Server Component and the queries have to cross the client boundary
+ * somewhere. It costs no request: both queries share their keys with `LiveAttractionData` and
+ * `AttractionHistorySections`.
  */
 export function RideLiveHeader({
   initialPark,

@@ -5,33 +5,15 @@ import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 
 /**
- * The figure the guide is built around: one wait time, drawn against what that
- * ride's day normally looks like.
+ * The figure the guide is built around: one wait time, drawn against what that ride's day
+ * normally looks like. `WaitScaleBar` is the whole picture, server-renderable with its geometry
+ * in CSS custom properties; `WaitScaleStage` is the sticky desktop copy that tweens those
+ * properties, and the numbers as text, from one weekday's reading to the next.
  *
- * `WaitScaleBar` is the whole picture and is a plain, server-renderable div —
- * geometry comes in as CSS custom properties, so the bar is correct in the very
- * first HTML with no JavaScript at all. `WaitScaleStage` is the sticky desktop
- * copy: it watches which step the reader is next to and tweens the same three
- * properties from one weekday's numbers to the next.
- *
- * Three rules, the same ones `use-menu-reveal.ts` arrived at:
- *
- * - **CSS owns the picture, GSAP owns the transition between two of them.** The
- *   bar is never hidden, faded or built by script. If the chunk fails, the
- *   import is blocked or the reader prefers reduced motion, the figure simply
- *   stands on the first step's numbers and every step still states its own
- *   figures in prose beside it. Nothing here is the only copy of anything.
- * - **No ScrollTrigger.** Picking the active step is an intersection question
- *   and `IntersectionObserver` answers it in eight lines, without a second GSAP
- *   plugin, without a scroller-proxy against the sticky column, and without
- *   anything to tear down on a soft navigation. GSAP does what it is good at:
- *   interpolating between two states.
- * - **Nothing touches a backdrop.** The bar sits on the page background, not on
- *   glass, and the tween writes custom properties on one element instead of
- *   transforming an ancestor.
- *
- * The numbers count too: the labels are tweened as text so the reader watches
- * 42 become 70 rather than seeing it cut. That is the point being made.
+ * CSS owns the picture and GSAP only the transition, so a failed chunk or reduced motion leaves
+ * the first step standing, and every step states its figures in prose too. No ScrollTrigger: the
+ * active step is an `IntersectionObserver` question. Nothing touches a backdrop: the tween writes
+ * custom properties on one element.
  */
 
 type Gsap = typeof import('gsap').gsap;
@@ -49,6 +31,7 @@ function prefersReducedMotion() {
   );
 }
 
+/** One reading the scale can show: a weekday or occasion with its typical and busy waits. */
 export interface WaitScaleStep {
   /** Stable key; also what the step block carries in `data-wait-step`. */
   id: string;
@@ -220,8 +203,8 @@ export function WaitScaleStage({
   const figureRef = useRef<HTMLDivElement>(null);
   /** What the bar currently shows, so a repeat notification is a no-op. */
   const shownRef = useRef<string>(steps[0]?.id ?? '');
-  // The figure is `hidden lg:block`. Below `lg` the observer still fired as a phone reader
-  // scrolled through the steps, fetched GSAP and tweened a subtree with `display: none`.
+  // The figure is `hidden lg:block`, so below `lg` the observer must not fetch GSAP and tween a
+  // subtree with `display: none`.
   const figureShown = useMediaQuery('(min-width: 64rem)');
 
   useEffect(() => {
@@ -241,9 +224,8 @@ export function WaitScaleStage({
     const typicalEl = surface.querySelector<HTMLElement>('[data-scale-typical]');
     const busyEl = surface.querySelector<HTMLElement>('[data-scale-busy]');
     const daysEl = surface.querySelector<HTMLElement>('[data-scale-days]');
-    // The track is aria-hidden, so this caption is the ONLY accessible copy of the
-    // figure. It was rendered once from steps[0] and never touched again, which
-    // left every reading after the first announcing Monday's numbers.
+    // The track is aria-hidden, so this caption is the only accessible copy of the figure and
+    // has to follow every step.
     const summaryEl = surface.querySelector<HTMLElement>('[data-scale-summary]');
 
     const reduced = prefersReducedMotion();

@@ -7,20 +7,10 @@ import { leverKey, type FitLever } from '@/lib/planner/fit';
 import { cn } from '@/lib/utils';
 
 /**
- * What the visitor could change so the day holds everything, as things to press.
- *
- * Every row is a measured difference between two plans (`fitLevers`), so the
- * sentence on it is arithmetic rather than advice: „Ohne Mittagspause passt der
- * Plan" is printed on exactly the days where taking the break out makes the
- * whole wish list fit, and „Ohne Mittagspause passen 9 von 10" on the days where
- * it helps and is not enough. Nothing generic is ever shown — a lever that buys
- * no ride is not in the list at all, because an offer that changes no number is
- * worse than silence: somebody presses it and watches nothing happen.
- *
- * A lever is a TOGGLE, not a command. It is applied to the choice the assistant
- * is holding, the counts under it move, and pressing it again puts the break
- * back — which is the difference between an assistant somebody experiments with
- * and a wizard that makes a decision on their behalf.
+ * What the visitor could change so the day holds everything, as things to press. Every row is a
+ * measured difference between two plans (`fitLevers`): „Ohne Mittagspause passt der Plan" only
+ * where that is true, „passen 9 von 10" where it only helps, and no row for a lever that buys
+ * nothing. A lever is a toggle on the assistant's choice; pressing it again undoes it.
  */
 export function PlannerFitLevers({
   levers,
@@ -66,12 +56,7 @@ export function PlannerFitLevers({
               </span>
               <span className="min-w-0 flex-1">
                 <span className="block text-xs font-medium">{leverLabel(t, lever)}</span>
-                {/* What it buys, always as a count and never as an adjective.
-                    The two shapes are the two cases the day can be in, and the
-                    difference between them is the whole reason the assistant
-                    opened: one says the problem is solved, the other says how
-                    far it gets and leaves the rest to the list on the next
-                    step. */}
+                {/* What it buys, always as a count: solved, or how far it gets. */}
                 <span className="text-muted-foreground mt-0.5 block text-[11px] leading-snug">
                   {lever.solves
                     ? t('fit.leverSolves')
@@ -87,12 +72,8 @@ export function PlannerFitLevers({
 }
 
 /**
- * What the lever says it would do, in the visitor's own words for the block.
- *
- * The block's LABEL rather than the word "Pause": a visitor who wrote
- * „Showtime Wasserwelt" into a block gets that back, and the icon beside it is
- * the one they picked. A lever naming a generic break would be describing a
- * different day from the one on the axis.
+ * What the lever says it would do, using the block's own label and icon, so it describes the day on
+ * the axis rather than a generic break.
  */
 function leverLabel(t: ReturnType<typeof useTranslations>, lever: FitLever): string {
   if (lever.kind === 'drop-all-blocks') return t('fit.leverDropAll');

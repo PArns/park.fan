@@ -17,12 +17,8 @@ interface PlannerEntryRowProps {
   /** Whether the band may carry a figure — see `bandCarriesFigure`. */
   showBandFigure: boolean;
   /**
-   * The party asked to stay dry and this is a water ride — `partyFlags().wet`.
-   *
-   * A boolean, decided by the caller, because this row has the plan's entry and
-   * not the catalogue's ride: `PlannerEntry` stores a slug and a name, and the
-   * two facts the flag is computed from live in the day payload. A FLAG and
-   * never a filter — the row is the same row with a mark on it.
+   * The party asked to stay dry and this is a water ride (`partyFlags().wet`), decided by the
+   * caller, which has the day payload. A flag, never a filter.
    */
   wet?: boolean;
   onToggleDone: () => void;
@@ -30,20 +26,9 @@ interface PlannerEntryRowProps {
 }
 
 /**
- * One planned ride.
- *
- * The row is a fixed 56 px whatever it contains — a bar, an em dash, or a reason
- * there is no figure. This panel lives in the layout and is on every page, so a
- * row that grows when its data arrives would shift the list under a finger that
- * is dragging it.
- *
- * The reason a figure is missing is shown, not swallowed. "Outside the park's
- * hours" and "we have never measured this ride's day" are different things to
- * tell someone, and both are better than a blank where a number should be.
- *
- * That one line under the bar carries the reason OR, on a ticked-off ride, how
- * far the queue came in from the forecast. Never both — see `deltaLabel` — so
- * the row's height is the same row it has always been.
+ * One planned ride, in a fixed 56 px row, so the list does not shift under a dragging finger when
+ * data arrives. The line under the bar names why a figure is missing, or on a ticked-off ride how
+ * far the queue came in from the forecast, never both.
  */
 export function PlannerEntryRow({
   entry,
@@ -56,7 +41,7 @@ export function PlannerEntryRow({
   onRemove,
 }: PlannerEntryRowProps) {
   const t = useTranslations('planner');
-  // `common` is in the layout set on every route, so this costs no chunk.
+  // `common` is in the layout's set on every route, so this costs no chunk.
   const tCommon = useTranslations('common');
   const done = Boolean(entry.done);
 
@@ -77,9 +62,8 @@ export function PlannerEntryRow({
           ? t('entry.noSource')
           : null;
 
-  // What the queue cost against what was forecast for it. It takes the line the
-  // reason takes, and the two cannot both be there: a delta needs a figure and a
-  // forecast, and every `missingLabel` is a state that has neither.
+  // What the queue cost against the forecast. It shares the reason's line: a delta needs a figure,
+  // and every `missingLabel` state has none.
   const delta = actualVsEstimate(entry, estimate);
   const deltaLabel = !delta
     ? null
@@ -103,10 +87,8 @@ export function PlannerEntryRow({
 
       <div className="min-w-0 flex-1">
         <div className="flex items-baseline justify-between gap-2">
-          {/* The name and the party's mark are ONE column, so the figure on the
-              right keeps its place and the name is what gives way. The strike
-              stays on the text alone: a line drawn through the droplet would
-              read as the flag itself being crossed out. */}
+          {/* Name and the party's mark are one column, so the name gives way and the figure keeps
+              its place. The strike is on the text alone, not through the droplet. */}
           <span className="flex min-w-0 flex-1 items-center gap-1.5">
             <span className={cn('truncate text-sm', done && 'line-through')}>
               {entry.attractionName}
@@ -118,9 +100,8 @@ export function PlannerEntryRow({
               />
             )}
           </span>
-          {/* The number alone does not say whether it is a prediction or a
-              record — the strikethrough and the bar's tone carry that visually,
-              and neither reaches a screen reader. */}
+          {/* The `aria-label` says whether the number is a prediction or a record, which only the
+              strike and the bar's tone show, and neither reaches a screen reader. */}
           <span
             className="shrink-0 text-right font-mono text-sm tabular-nums"
             aria-label={
@@ -138,9 +119,7 @@ export function PlannerEntryRow({
           </span>
         </div>
 
-        {/* No figure, no bar. An empty track beside an em dash reads as a bar at
-            zero — the one thing this row must never say. The reason line below
-            takes the space instead. */}
+        {/* No figure, no bar: an empty track beside an em dash reads as a bar at zero. */}
         {figure !== null && (
           <div className="mt-1 flex items-center gap-2">
             <PlannerBar
@@ -150,9 +129,7 @@ export function PlannerEntryRow({
               tier={tier}
               done={done}
             />
-            {/* The figure for the band appears only where it is measured. Past
-              that, the bar's soft edge carries the uncertainty and no number
-              is attached to it. */}
+            {/* The band's figure only where it is measured; past that the soft edge alone. */}
             {!done && showBandFigure && estimate.uncertaintyMinutes !== null && (
               <span className="text-muted-foreground shrink-0 font-mono text-[10px] tabular-nums">
                 {t('band.plusMinus', { minutes: estimate.uncertaintyMinutes })}

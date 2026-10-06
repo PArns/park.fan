@@ -63,15 +63,11 @@ interface ClosedRidePageProps {
 /**
  * The page of a ride that closed for good.
  *
- * It keeps the URL, and with it the ranking the ride page earned while the ride ran, instead of
- * the 404 X2 at Six Flags Magic Mountain answered for two months after it closed. What it shows is
- * what is still true about the ride: when it closed, why (our news post, where the retirement
- * names one), what the queue cost before that, and the ride profile. Everything that describes
- * today — the live wait, today's curve, the rope-drop advice, the FAQ, the planner and the
- * favourite star — is left out, because every one of those would describe a ride that runs.
- *
- * Server-rendered throughout. The only client component is `AttractionTypicalWaits`, which the
- * live ride page mounts as well, so the route's message set does not grow.
+ * It keeps the URL and the ranking the ride page earned, and shows what is still true about the
+ * ride: when it closed, why, what the queue cost, and the ride profile. Everything that describes
+ * today (live wait, today's curve, rope-drop advice, FAQ, planner, favourite star) is left out.
+ * The only client component is `AttractionTypicalWaits`, which the live ride page mounts as well,
+ * so the route's message set does not grow. See docs/rules/a-closed-ride-keeps-its-page.md.
  */
 export async function ClosedRidePage({
   locale,

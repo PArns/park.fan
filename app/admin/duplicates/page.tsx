@@ -6,26 +6,25 @@ import { AlertTriangle, CheckCircle2, Copy, GitMerge, Loader2, MapPin } from 'lu
 import { Button } from '@/components/ui/button';
 import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import { useCan } from '../_app/session';
-import { Section } from '../_lib/ui';
-import { AdminPage, Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
+import {
+  AdminPage,
+  Chip,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  Panel,
+  PanelBody,
+  PanelHeader,
+} from '../_ui/primitives';
 import { Field, TextInput } from '../_ui/controls';
 import { useToast } from '../_ui/toast';
 import { DroppedCurations, readDroppedCurations, type DroppedCuration } from './dropped-curations';
 import { ReissueCandidatesSection } from './reissue-candidates';
 
 /**
- * Duplicate rows, and the one place they can be merged from.
- *
- * Two rows for one ride are not an internal tidiness problem: both appear in
- * the park's list on the public site, one of them with no wait time, and the
- * search suggests whichever it happens to hit. The detection and the merge
- * transaction have existed for a while — with a dry run, a recommended winner
- * and a safety verdict — reachable only by curl, which is why the catalogue
- * still has pairs in it.
- *
- * Nothing here merges in bulk. The backend supports it; a screen that offers
- * "merge all" invites exactly the case the verdict exists to prevent, and one
- * wrong merge deletes a row.
+ * Duplicate rows and the one place they can be merged from: two rows for one ride both show on the
+ * public park page, one without a wait time. Nothing merges in bulk, because one wrong merge
+ * deletes a row and the safety verdict exists to stop exactly that.
  */
 
 interface DuplicatePair {
@@ -247,7 +246,7 @@ function findParkPair(
 
 /** The detector's verdict on one pair: a chip, and for a review pair the reason. */
 function ParkPairVerdict({ pair }: { pair: DuplicateParkPair }) {
-  // An API older than PAR-247 sends no verdict; "prüfen" on every row would be a guess.
+  // Without a verdict from the API, "prüfen" on every row would be a guess.
   if (typeof pair.safe !== 'boolean') return null;
   if (pair.safe) return <Chip tone="success">sicher</Chip>;
   return (
@@ -277,10 +276,7 @@ function ParkMergePanel() {
     setCounts(null);
     setPairs(null);
     try {
-      // A read. The POST this used to send (`autoDetect: false`, no ids) hits
-      // the endpoint's own usage message and finds nothing, ever — and the one
-      // flag that does detect (`autoDetect: true`) merges every pair it finds
-      // in the same call, which is the opposite of a search.
+      // A read: the POST that detects (`autoDetect: true`) also merges every pair it finds.
       const result = await adminFetch<DuplicateParkReport>('/api/admin/duplicate-parks');
       setPairs(result.pairs);
       if (result.total === 0) {
@@ -321,7 +317,7 @@ function ParkMergePanel() {
   }
 
   return (
-    <div className="border-border/60 bg-card space-y-3 rounded-lg border p-4">
+    <PanelBody className="space-y-3">
       <p className="text-muted-foreground text-sm">
         Zwei Parkzeilen für denselben Park entstehen, wenn zwei Quellen ihn unterschiedlich
         benennen. Der Gewinner wird nach Wiki-Id, Zahl der Quellen, Zahl der Kinder und Alter
@@ -330,12 +326,8 @@ function ParkMergePanel() {
       </p>
 
       <div className="grid gap-3 sm:grid-cols-2">
-        {/* Not "bleibt" and "wird gelöscht": the backend runs
-            `determineMergeWinner` on the pair and the order they are typed in
-            here changes nothing. Labelling them as a choice promised an
-            operator that the row they put second is the one that disappears —
-            and for a pair where the junk row happens to carry the Wiki-Id, it
-            is the curated one that goes. */}
+        {/* Not "bleibt" and "wird gelöscht": the backend picks the winner
+            (`determineMergeWinner`), and the order typed here changes nothing. */}
         <Field label="Park-Id A" hint="Aus der Adresszeile des Park-Editors.">
           <TextInput value={park1Id} onChange={(event) => setPark1Id(event.target.value)} />
         </Field>
@@ -445,7 +437,7 @@ function ParkMergePanel() {
           })}
         </ul>
       )}
-    </div>
+    </PanelBody>
   );
 }
 
@@ -469,77 +461,81 @@ export default function DuplicatesPage() {
   return (
     <AdminPage width="wide">
       <>
-        <Section
-          icon={Copy}
-          title="Doppelte Fahrgeschäfte"
-          action={
-            query.data ? (
-              <div className="flex items-center gap-2">
-                <Chip tone="success">{query.data.safe} sicher</Chip>
-                {query.data.needsReview > 0 && (
-                  <Chip tone="warning">{query.data.needsReview} prüfen</Chip>
-                )}
-              </div>
-            ) : undefined
-          }
-        >
-          <p className="text-muted-foreground text-sm">
-            Zwei Zeilen für dieselbe Bahn, erkannt an Basis- und Suffix-Slug. Beide stehen auf der
-            öffentlichen Parkseite, eine davon ohne Wartezeit.
-          </p>
-
-          {query.isError ? (
-            <ErrorState message={query.error?.message ?? 'Laden fehlgeschlagen'} />
-          ) : query.isLoading ? (
-            <LoadingState label="Duplikate werden gesucht…" />
-          ) : byPark.length === 0 ? (
-            <EmptyState
-              icon={CheckCircle2}
-              title="Keine Duplikate"
-              description="Kein Park hat zwei Zeilen für dasselbe Fahrgeschäft."
-            />
-          ) : (
-            <div className="space-y-5">
-              {byPark.map(([parkId, group]) => (
-                <div key={parkId} className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="text-muted-foreground h-3.5 w-3.5" aria-hidden="true" />
-                    <Link
-                      href={`/admin/parks/${parkId}`}
-                      className="hover:text-primary text-sm font-medium transition-colors"
-                    >
-                      {group.parkName}
-                    </Link>
-                    <span className="text-muted-foreground text-xs">
-                      {group.pairs.length} {group.pairs.length === 1 ? 'Paar' : 'Paare'}
-                    </span>
-                  </div>
-                  {group.pairs.map((pair) => (
-                    <PairRow
-                      key={`${pair.winnerId}:${pair.loserId}`}
-                      pair={pair}
-                      canMerge={canMerge}
-                    />
-                  ))}
+        <Panel>
+          <PanelHeader
+            icon={Copy}
+            title="Doppelte Fahrgeschäfte"
+            action={
+              query.data ? (
+                <div className="flex items-center gap-2">
+                  <Chip tone="success">{query.data.safe} sicher</Chip>
+                  {query.data.needsReview > 0 && (
+                    <Chip tone="warning">{query.data.needsReview} prüfen</Chip>
+                  )}
                 </div>
-              ))}
-            </div>
-          )}
-
-          {!canMerge && (
-            <p className="text-muted-foreground flex items-center gap-2 text-xs">
-              <AlertTriangle className="h-3.5 w-3.5" aria-hidden="true" />
-              Zusammenführen darf nur ein Owner.
+              ) : undefined
+            }
+          />
+          <PanelBody className="space-y-3">
+            <p className="text-muted-foreground text-sm">
+              Zwei Zeilen für dieselbe Bahn, erkannt an Basis- und Suffix-Slug. Beide stehen auf der
+              öffentlichen Parkseite, eine davon ohne Wartezeit.
             </p>
-          )}
-        </Section>
+
+            {query.isError ? (
+              <ErrorState message={query.error?.message ?? 'Laden fehlgeschlagen'} />
+            ) : query.isLoading ? (
+              <LoadingState label="Duplikate werden gesucht…" />
+            ) : byPark.length === 0 ? (
+              <EmptyState
+                icon={CheckCircle2}
+                title="Keine Duplikate"
+                description="Kein Park hat zwei Zeilen für dasselbe Fahrgeschäft."
+              />
+            ) : (
+              <div className="space-y-5">
+                {byPark.map(([parkId, group]) => (
+                  <div key={parkId} className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <MapPin className="text-muted-foreground h-3.5 w-3.5" aria-hidden="true" />
+                      <Link
+                        href={`/admin/parks/${parkId}`}
+                        className="hover:text-primary text-sm font-medium transition-colors"
+                      >
+                        {group.parkName}
+                      </Link>
+                      <span className="text-muted-foreground text-xs">
+                        {group.pairs.length} {group.pairs.length === 1 ? 'Paar' : 'Paare'}
+                      </span>
+                    </div>
+                    {group.pairs.map((pair) => (
+                      <PairRow
+                        key={`${pair.winnerId}:${pair.loserId}`}
+                        pair={pair}
+                        canMerge={canMerge}
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {!canMerge && (
+              <p className="text-muted-foreground flex items-center gap-2 text-xs">
+                <AlertTriangle className="h-3.5 w-3.5" aria-hidden="true" />
+                Zusammenführen darf nur ein Owner.
+              </p>
+            )}
+          </PanelBody>
+        </Panel>
 
         <ReissueCandidatesSection canMerge={canMerge} />
 
         {canMerge && (
-          <Section icon={GitMerge} title="Doppelte Parks">
+          <Panel>
+            <PanelHeader icon={GitMerge} title="Doppelte Parks" />
             <ParkMergePanel />
-          </Section>
+          </Panel>
         )}
       </>
     </AdminPage>

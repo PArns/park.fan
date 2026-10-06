@@ -8,27 +8,11 @@ import { countAll } from '@/lib/planner/types';
 import { plannerUi } from '@/lib/planner/ui-store';
 
 /**
- * The planner's way in on a phone, in the header instead of on the window's edge.
- *
- * `PlannerEdgeTab` is the way in everywhere else and it is `planner-phone:hidden` now: on a
- * 390 px screen it was 24 × 102 px laid over the right edge of every page, across card text
- * and prices (PAR-434). This button takes its place in the bar, where the three preference
- * controls moved out to the burger sheet and left the room for it.
- *
- * **`planner-phone:` on both sides and not the bar's `@container` width**, because the question
- * is which way in exists, and the tab answers it with the planner's own variant. A container
- * query here would disagree with the tab at 844x390 on a coarse pointer — the bar is 844 px wide
- * there, so the button would stay hidden while the tab is hidden too, and the phone would have
- * no way in at all. On `planner-phone` the panel is a bottom sheet and never insets the page, so
- * the bar's width and the window's are the same number there anyway.
- *
- * It only ever OPENS. On `planner-phone` the panel is a modal sheet with its own handle and
- * overlay, so the closed → open press is the only one this button can receive.
- *
- * `label` is `navigation.planner`, passed in by the header, for the reason the edge tab gives:
- * this renders on every page, so it may only read what the layout chrome already carries. The
- * same word is the button's accessible name and, visually hidden, its text — which is what
- * `check:planner` reads off either way in.
+ * The planner's way in on a phone, in the header, where `PlannerEdgeTab` is `planner-phone:hidden`.
+ * `planner-phone:` rather than the bar's `@container` width, so this and the tab ask the same
+ * question and exactly one of them exists at any size. It only ever opens: on a phone the panel is
+ * a modal sheet. `label` is `navigation.planner`, since this renders on every page and may read
+ * only the layout chrome's messages.
  */
 export function PlannerHeaderButton({ label }: { label: string }) {
   const state = useSyncExternalStore(
@@ -45,9 +29,8 @@ export function PlannerHeaderButton({ label }: { label: string }) {
       size="icon"
       data-planner-launcher=""
       onClick={() => plannerUi.requestOpen('header')}
-      /* `max-sm:size-9` cancels the button scale's 44 px phone tier, like the burger beside it:
-         a 44 px control in a 48 px bar is the mistake the header-geometry requirement names.
-         `relative` is for the count badge. */
+      /* `max-sm:size-9` cancels the button scale's 44 px phone tier, like the burger beside it: a
+         44 px control does not fit a 48 px bar. `relative` is for the count badge. */
       className="planner-phone:inline-flex relative hidden max-sm:size-9"
     >
       <CalendarPlus className="h-5 w-5" aria-hidden="true" />

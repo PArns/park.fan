@@ -14,10 +14,8 @@ import {
 } from 'lucide-react';
 
 /**
- * Single source of truth for the widget catalogue. Adding a new widget kind
- * means appending one entry here — fixed-toolbar / slash-menu / widget-preview
- * collectors / PropertiesPanel field map and editor-canvas insertion defaults
- * all derive from this list, so the kinds stay in lock-step.
+ * The widget catalogue: toolbar, slash menu, previews, PropertiesPanel and canvas defaults all
+ * derive from this list, so a new widget kind is one entry here.
  */
 
 export interface WidgetField {
@@ -157,8 +155,9 @@ export const WIDGETS: readonly WidgetDef[] = [
 
 export const WIDGET_NAMES = new Set(WIDGETS.map((w) => w.name));
 
-export const WIDGET_BY_NAME = new Map(WIDGETS.map((w) => [w.name, w]));
+const WIDGET_BY_NAME = new Map(WIDGETS.map((w) => [w.name, w]));
 
+/** Returns the widget definition for a fence name such as `park-widget`, or `undefined`. */
 export function getWidget(name: string): WidgetDef | undefined {
   return WIDGET_BY_NAME.get(name);
 }

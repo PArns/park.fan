@@ -11,7 +11,7 @@ import { denyUnlessAdmin } from '@/lib/admin/session';
  * link will look like after publish.
  *
  * Accepts both the short form (`phantasialand`, `phantasialand/black-mamba`)
- * and the full geo-path form the picker now writes
+ * and the full geo-path form the picker writes
  * (`/parks/europe/germany/bruehl/phantasialand[/<rideSlug>]`).
  */
 export async function GET(req: NextRequest) {
@@ -62,8 +62,7 @@ export async function GET(req: NextRequest) {
     status: attraction.status ?? null,
     waitTime: attraction.currentWaitTime ?? null,
     crowdLevel: attraction.crowdLevel ?? null,
-    // Ride photo only — the editor preview has to show what the published card
-    // will show, and that no longer borrows the park's picture.
+    // Ride photo only, as on the published card.
     backgroundImage: getAttractionBackgroundImage(parkSlug, attractionSlug),
   });
 }

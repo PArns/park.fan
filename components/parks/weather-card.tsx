@@ -56,6 +56,11 @@ interface WeatherCardProps {
   className?: string;
 }
 
+/**
+ * Park page weather card on an animated weather scene: current conditions (live nowcast when the
+ * park has one), the hour-by-hour chart for today against the opening hours, and the forecast
+ * strip. Renders nothing without current weather.
+ */
 export function WeatherCard({
   weather,
   forecast,
@@ -90,12 +95,9 @@ export function WeatherCard({
   // liveNowcast is undefined when the hook is disabled (no params) — fall back to the static prop
   const activeNowcast = hasParams ? liveNowcast : nowcast;
 
-  // Detailed day view for today. The fetch starts IMMEDIATELY (in parallel with the
-  // nowcast, not gated on it) so the chart is ready the moment the nowcast lands —
-  // the old nowcast→hourly waterfall delayed the weather card by a full roundtrip.
-  // Rendering below still requires a nowcast (parks with live weather coverage); for
-  // parks without one the single CDN-cached fetch is cheap. A static `hourly` prop
-  // (showcases/demos) takes precedence and disables the fetch.
+  // Today's day view. The fetch starts in parallel with the nowcast, not gated on it, so the chart
+  // is ready when the nowcast lands; rendering still needs a nowcast. A static `hourly` prop
+  // (showcases) takes precedence and disables the fetch.
   const { data: fetchedHourly, isLoading: hourlyLoading } = useWeatherHourly({
     latitude,
     longitude,
@@ -104,22 +106,12 @@ export function WeatherCard({
   });
   const activeHourly = hourly !== undefined ? hourly : fetchedHourly;
 
-  // The chart needs BOTH queries, so its box has to be held for as long as EITHER is still out.
-  // The old gate (`activeNowcast && hourlyLoading`) held nothing until the nowcast had landed, so
-  // on the common ordering no placeholder was ever rendered and the ~143px chart dropped straight
-  // onto a settled card, pushing the forecast strip and the rest of the page down. Reserving on
-  // either query moves that to hydration, before the content below has painted. Both flags are
-  // false while a query is disabled, so a park without coordinates still reserves nothing (they
-  // are also false during SSR — these are client-only queries — which is why the shell itself
-  // carries no placeholder; by the time one appears the swap is no longer visible).
+  // The chart needs both queries, so its box is held while either is still out.
   const chartPending = hourlyLoading || nowcastLoading;
 
-  // ...but `chartPending` is false during SSR too, because both queries are browser-only
-  // and a disabled query is not loading. So the shell reserved nothing after all, and the
-  // 143px chart dropped onto a settled card at hydration — measured as the park page's
-  // largest remaining in-view shift (+171px mobile, +159px desktop, `pnpm measure:cls`).
-  // Gate the reservation on mount instead: hold the box from the FIRST paint whenever a
-  // chart is possible at all, and release it only once both queries have answered.
+  // Both flags are false during SSR (the queries are browser-only), so the reservation is gated on
+  // mount instead: the box is held from the first paint whenever a chart is possible at all, and
+  // released once both queries have answered.
   const chartPossible = Boolean(timezone && latitude != null && longitude != null);
   const holdChartBox = chartPossible && (!mounted || chartPending);
 
@@ -140,9 +132,8 @@ export function WeatherCard({
   const current = activeWeather.current;
   const now = activeWeather.now ?? null;
 
-  // Nowcast (~15 min freshness) wins over the daily "now" snapshot, which can be hours old.
-  // It now also carries temperature, apparent-temperature, min/max, and isDay — so when a
-  // nowcast is supplied the entire "current" block is sourced from it.
+  // The nowcast (about 15 minutes fresh) wins over the daily "now" snapshot, which can be hours
+  // old, and supplies the whole current block when present.
   const isDay = activeNowcast?.isDay ?? now?.isDay ?? true;
   const weatherCode = activeNowcast?.currentWeatherCode ?? now?.weatherCode ?? current.weatherCode;
   const { icon: WeatherIcon, label, color } = getWeatherConfig(weatherCode, isDay);
@@ -183,9 +174,6 @@ export function WeatherCard({
     >
       <WeatherBackground code={weatherCode} isDay={isDay} glass glassBlur={4} glassOpacity={0.72} />
       <div className="relative z-10 flex flex-col gap-4">
-        {/* The °C/°F toggle used to sit at the right end of this row, which put it on park pages
-            and nowhere else — while the unit governs the calendar, the blog posts and the
-            best-travel-time hub too. It is in the header now, beside the theme switch. */}
         <CardHeader className="px-0 pt-0 pb-0">
           <CardTitle className="flex items-center gap-2 text-base">
             <WeatherIcon className={`h-4 w-4 ${color}`} />
@@ -317,14 +305,15 @@ export function WeatherCard({
               nowcast={activeNowcast}
             />
           ) : holdChartBox ? (
-            /* Same box as the chart (h-28 plot + mt-1 axis), held from the first paint until both
-               queries have answered. On the parks the nowcast doesn't cover it is released again
-               once that 404 comes back — a park that never had the chart trades the drop-in for a
-               collapse of the same size, which is the price of not shifting the ones that do. */
+            /*
+             * Same box as the chart (h-28 plot + mt-1 axis), held from the first paint until both
+             * queries have answered. Where the nowcast does not cover the park it collapses once
+             * the 404 comes back, the price of not shifting the parks that do get a chart.
+             */
             <div className="min-w-0" aria-hidden="true">
               <div className="bg-muted/30 h-28 animate-pulse rounded-lg" />
-              {/* Matches the chart's axis row exactly (h-28 plot + mt-1 + 27px axis = 143px);
-                  the 31px this used to be left the strip below to hop 4px on the swap. */}
+              {/* Matches the chart's axis row exactly (h-28 plot + mt-1 + 27px axis = 143px), so
+                  the strip below does not hop on the swap. */}
               <div className="mt-1 h-[27px]" />
             </div>
           ) : null}

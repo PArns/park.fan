@@ -317,6 +317,7 @@ const FAQ = [
   },
 ];
 
+/** The guide page's article, Spanish. */
 export function ContentES() {
   const glossary = `/${GLOSSARY_SEGMENTS.es}`;
   const bestTime = `/${BEST_TIME_SEGMENTS.es}`;
@@ -326,7 +327,6 @@ export function ContentES() {
     <>
       <ChapterRail chapters={CHAPTERS} ariaLabel="Capítulos" />
 
-      {/* ── Intro ───────────────────────────────────────────────────────── */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
           park.fan nació en una cola. Taron, media tarde, el panel marcaba algo de tres cifras y
@@ -364,7 +364,6 @@ export function ContentES() {
         </Reveal>
       </div>
 
-      {/* ── 01 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="cifra"
         index="01"
@@ -410,7 +409,6 @@ export function ContentES() {
         </DemoFrame>
       </SectionShell>
 
-      {/* ── 02 ──────────────────────────────────────────────────────────── */}
       <Ambience>
         <SectionShell
           id="escala"
@@ -489,9 +487,8 @@ export function ContentES() {
             </WaitScaleStage>
           </div>
 
-          {/* Card left, prose right. The card is a park-page sidebar component and
-              looks absurd stretched across a 1500 px column, so it keeps its own
-              width and the text takes the rest instead of leaving a hole. */}
+          {/* Card left, prose right: the card is a park-page sidebar component, so it keeps
+              its own width and the text takes the rest. */}
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="En la página de una atracción"
@@ -527,7 +524,6 @@ export function ContentES() {
         </SectionShell>
       </Ambience>
 
-      {/* ── 03 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="momento"
         index="03"
@@ -580,7 +576,6 @@ export function ContentES() {
         </div>
       </SectionShell>
 
-      {/* ── 04 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="dia"
         index="04"
@@ -601,10 +596,8 @@ export function ContentES() {
           <CalendarDaysDemo />
         </DemoFrame>
 
-        {/* One column, full width, like every other chapter on this page. As two
-            prose columns this band put a third text edge under the paragraph above
-            it: a run of copy, then a 604 px column ending short of it, then a
-            second column starting where that paragraph still had words. */}
+        {/* One column, full width, like every other chapter on this page: two prose
+            columns would put a third text edge under the paragraph above. */}
         <div className="space-y-4 pt-2">
           <P>
             A menudo las vacaciones de los vecinos cuentan tanto como las propias, porque los
@@ -644,7 +637,6 @@ export function ContentES() {
         </div>
       </SectionShell>
 
-      {/* ── 05 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="plan-del-dia"
         index="05"
@@ -678,7 +670,6 @@ export function ContentES() {
         </P>
       </SectionShell>
 
-      {/* ── 06 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="pagina-parque"
         index="06"
@@ -718,7 +709,6 @@ export function ContentES() {
         </div>
       </SectionShell>
 
-      {/* ── 07 ──────────────────────────────────────────────────────────── */}
       <Ambience tone="emerald">
         <SectionShell
           id="noche"
@@ -773,7 +763,6 @@ export function ContentES() {
         </SectionShell>
       </Ambience>
 
-      {/* ── 08 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="limites"
         index="08"
@@ -811,7 +800,6 @@ export function ContentES() {
         </div>
       </SectionShell>
 
-      {/* ── 09 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="donde"
         index="09"
@@ -907,7 +895,6 @@ export function ContentES() {
         />
       </SectionShell>
 
-      {/* ── 10 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="faq"
         index="10"

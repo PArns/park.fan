@@ -4,6 +4,7 @@ import { useMemo, useRef, useState, type ReactNode } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarPlus, Check, Crown, Droplets, Ruler, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { foldRideName } from '@/lib/utils/text-fold';
 import { PHONE_TARGET_32 } from '@/lib/planner/touch-target';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { partyFlags } from '@/lib/planner/party';
@@ -14,7 +15,7 @@ import { buildDayGrid, earlyEntryOpenMin, nextFreeStart, rideFloor } from '@/lib
 import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { dayClock, resolveTimeZone } from '@/lib/planner/park-time';
 import { startRideDrag } from '@/lib/planner/ride-drag';
-import { occupiedMinutes } from '@/lib/planner/estimate';
+import { spansFor } from '@/lib/planner/estimate';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import type { PlannerDayState } from './planner-context-band';
 
@@ -30,86 +31,44 @@ interface PlannerRideSearchProps {
   /** The park's IANA zone, stored with the park so the plan reckons in it. */
   timezone?: string;
   /**
-   * Who is coming, if anybody asked. A row the shortest rider cannot ride is
-   * FLAGGED and still offered, never dropped: this list is the catalogue, and
-   * the visitor knows who is holding the bags. The flag prints the height
-   * rather than a word, because "too small" without the number is an argument a
-   * parent cannot check.
+   * Who is coming, if anybody asked. A row the shortest rider cannot ride is flagged with the
+   * height and still offered, never dropped: the visitor knows who is holding the bags.
    */
   prefs?: PlannerDayPrefs;
   /**
-   * Adds a block the visitor writes themselves. Beside the ride search rather
-   * than in a menu: the two are the same question — "what else goes in the day"
-   * — and one of the answers is not in the catalogue.
+   * Adds a block the visitor writes themselves, beside the ride search because both answer "what
+   * else goes in the day".
    */
   onAddCustom?: () => void;
   /** The show picker, drawn wherever the free block's button is. */
   showPicker?: ReactNode;
   /**
-   * The phone's search mode (PAR-482): the panel hides the axis and the foot
-   * while it is on and hands this block the sheet, so the rows a query finds
-   * are on screen above the keyboard rather than under it. The field turns it
-   * on when it takes focus; „Fertig" beside the field turns it off. Leaving
-   * the field does not, on purpose: a tap on a row blurs the field before the
-   * row's click lands, and a layout that jumped back on blur would move the
-   * row out from under that click.
+   * The phone's search mode: the panel hides the axis and the foot and hands this block the sheet,
+   * so the rows are above the keyboard. The field turns it on at focus and „Fertig" turns it off;
+   * a blur does not, or the layout would jump out from under the tap on a row.
    */
   searching?: boolean;
   onSearchingChange?: (searching: boolean) => void;
   /**
-   * A portrait phone: out of search mode the block is ONE row — the field and
-   * the free-block button beside it — and the ride list is drawn only in search
-   * mode. The list at rest was the part the sheet squeezed away anyway: at
-   * 390×664 the block was handed about 100 px, which cut the free-block row in
-   * half and showed no ride at all (PAR-482: „Eigener Block abgeschnitten").
-   * A landscape phone draws the search in a column of its own and keeps it.
-   *
-   * Whatever the pointer. A narrow window under a mouse kept the list at rest
-   * for a while, so rows could be dragged out of it, and got the same squeeze:
-   * at 390×844 with ten rides planned the block was 106 px for a 32 px field,
-   * a 44 px free-block row and a 176 px list scrolling inside a box that
-   * scrolled too, with not one ride row whole on screen („dadurch kann man
-   * die Suche quasi nicht verwenden").
+   * A portrait phone, whatever the pointer: out of search mode the block is one row, the field and
+   * the free-block button, and the ride list is drawn only in search mode, because the sheet has no
+   * room for it at rest. A landscape phone draws the search in a column of its own.
    */
   compact?: boolean;
   /**
-   * The desktop's copy, drawn by each column inside its foot row beside the
-   * free-block button (PAR-482 follow-up: „die Suche ist auf Desktop ganz
-   * verschwunden"). No border or padding of its own and no free-block button
-   * of its own — the row it sits in carries both — and the list only while a
-   * query is typed: the desktop's first way in is still a ride card dragged
-   * off the park page, and a list of every ride under each column would take
-   * the axis a third of the panel, which is why it was taken away there. The
-   * rows found are clicked or dragged onto the axis like the phone's.
+   * The desktop's copy, inside each column's foot row beside the free-block button: no border,
+   * padding or free-block button of its own, and the list only while a query is typed, so it does
+   * not take the axis's room. Rows are clicked or dragged onto the axis.
    */
   inline?: boolean;
 }
 
-/** Diacritics folded, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.". */
-function fold(value: string): string {
-  return value
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .replace(/[^a-z0-9]/g, '');
-}
-
 /**
- * Adding a ride without a ride card in reach.
+ * Adding a ride without a ride card in reach, which is the way in on a phone.
  *
- * On a phone the planner is a bottom sheet over whatever page the visitor is on,
- * so there is nothing to drag from — this is the way in there, and it is why the
- * empty state says "search below" on a phone and "drag one here" everywhere else.
- *
- * The list comes from the DAY, not from the park: `/plan/day` already omits rides
- * with no measured hourly shape, so searching it can only offer rides the planner
- * can actually draw. Offering one it would then render as an em dash would be a
- * worse answer than not offering it.
- *
- * No debounce and no request: the day's rides are already in memory, twenty or so
- * per park, and filtering them is a loop. `EntityPicker`'s 250 ms debounce and
- * `AbortController` exist because it queries the API across every park; copying
- * that discipline here would add latency to a filter over an array.
+ * The list comes from the day, not the park: `/plan/day` omits rides with no hourly shape, so the
+ * search only offers rides the planner can draw. No debounce and no request, since the day's rides
+ * are already in memory.
  */
 export function PlannerRideSearch({
   parkSlug,
@@ -128,14 +87,12 @@ export function PlannerRideSearch({
   inline = false,
 }: PlannerRideSearchProps) {
   const t = useTranslations('planner');
-  /** The axis' scale: 1.2 px per minute, 1.8 on a phone. See {@link usePlannerPxPerMin}. */
+  /** The axis' scale; see {@link usePlannerPxPerMin}. */
   const pxPerMin = usePlannerPxPerMin();
   const locale = useLocale();
   const { state, addRide } = usePlanner();
-  // This day's entries, read by park and date rather than off the ACTIVE day:
-  // the desktop draws one search per column, and a second column is a
-  // different day whose ticks and free slots are its own. The phone's panel
-  // passes the active day, so there the two are the same.
+  // This day's entries, by park and date rather than the active day: the desktop draws one search
+  // per column.
   const dayEntries = useMemo(
     () => state.parks[parkSlug]?.days[date]?.entries ?? [],
     [state, parkSlug, date]
@@ -145,63 +102,41 @@ export function PlannerRideSearch({
   /** The one-row state: a portrait phone that is not searching. See `compact`. */
   const resting = (compact && !searching) || (inline && query.trim().length === 0);
 
-  // How often each ride is already in this day — a COUNT, because a ride can
-  // legitimately be planned twice (a morning lap on a walk-on, an evening one for
-  // the lights). The row used to be greyed at one, which reads as "no" and is the
-  // reason nobody found the second lap the store has always allowed.
+  // How often each ride is already in this day: a count, because a ride can be planned twice.
   const planned = useMemo(() => {
     const counts = new Map<string, number>();
     for (const entry of dayEntries) {
-      // A free block has no slug and belongs to no row in this list.
       if (!entry.attractionSlug) continue;
       counts.set(entry.attractionSlug, (counts.get(entry.attractionSlug) ?? 0) + 1);
     }
     return counts;
   }, [dayEntries]);
 
-  // Where the next ride goes. Recomputed per render rather than per click so a
-  // second add after a first one lands after it, not on it — and PER RIDE,
-  // because the floor is the ride's, not the park's: filing every ride at the
-  // opening hour puts a block in hours the ride has no measured curve for.
+  // Where the next ride goes, per render so a second add lands after the first, and per ride,
+  // because the floor is the ride's own, not the park's.
   const grid = buildDayGrid(
     day?.context.openHour,
     day?.context.closeHour,
     pxPerMin,
     earlyEntryOpenMin(day?.context)
   );
-  // Recomputed per render for the same reason the start is: this list stays
-  // open, and a row tapped at 14:00 may not file into a morning that has gone.
-  // `resolveTimeZone` here and not at the call site — the flyout hands this
-  // component the raw `day?.timezone ?? park?.timezone`, which can be undefined.
+  // Per render too, so a row tapped at 14:00 cannot file into the morning. `resolveTimeZone` here,
+  // since the zone handed in can be undefined.
   const clock = dayClock(date, resolveTimeZone(timezone));
   const startFor = (ride: PlanDayRide) =>
     grid
       ? nextFreeStart(
-          dayEntries.map((entry) => ({
-            startMinute: entry.startMinute,
-            spanMinutes: occupiedMinutes(day, entry),
-          })),
+          spansFor(day, dayEntries),
           grid,
-          45,
+          undefined,
           rideFloor(grid, ride, clock).softMin
         )
       : undefined;
 
   /**
-   * The day's rides by NAME, and a copy rather than a sort in place.
-   *
-   * The API sorts this array busiest first, which is the right order for "what
-   * do I book time for" and the wrong one for "where is the ride I am looking
-   * for" — the top of a park's queue table IS its headliners, so a list capped
-   * at eight showed nothing else, at any park. Reported as "the search cannot
-   * find non-headliners", and there is no headliner filter anywhere in this
-   * file: it was the ordering and the cap together. The cap sat AFTER the
-   * filter too, so a two-letter needle in a sixty-ride payload had the same
-   * effect one keystroke later.
-   *
-   * `[...day.rides]` because `day.rides` is React Query's cached array, read by
-   * the grid and by `estimateFor` through `find` and a `Map` — order-insensitive
-   * lookups, so sorting it in place would corrupt the cache invisibly.
+   * The day's rides by name. The API sorts them busiest first, which put only headliners in a
+   * capped list. A copy, because `day.rides` is React Query's cached array and must not be sorted
+   * in place.
    */
   const byName = useMemo(
     () =>
@@ -212,45 +147,31 @@ export function PlannerRideSearch({
   );
 
   const matches = useMemo(() => {
-    // Below: an empty list is rendered as a stated reason, not as nothing.
-    const needle = fold(query);
+    const needle = foldRideName(query);
     if (needle.length === 0) return byName;
-    return byName.filter((ride) => fold(ride.attractionName).includes(needle));
+    return byName.filter((ride) => foldRideName(ride.attractionName).includes(needle));
   }, [byName, query]);
 
   return (
-    /* Named like every other row of the panel, because `check:planner` has to
-       be able to ask whether this surface is on screen: it is one half of two
-       pairs — the empty day's sentence and the free-block row both mean
-       something different depending on whether this list is drawn (PAR-76).
-
-       `py-1` rather than `py-2`: this block is the one the panel squeezes
-       (`shrink` at the call site), so at 390×844 it is handed about 80 px while
-       its own head — padding, field, hint — was 94. Everything the visitor came
-       here for, the ride rows, therefore started below the fold, which is what
-       „das Suchfeld ist zu hoch" describes. `planner-phone:py-0.5` on top of
-       that (PAR-313), and since PAR-482 the field itself is 36 px rather than
-       44, and a query gets the whole sheet (`searching`). */
+    /* Named so `check:planner` can ask whether this surface is on screen: the empty day's sentence
+       and the free-block row mean different things depending on it. `py-1`, because the panel
+       squeezes this block first. */
     <div
       data-planner-ride-search=""
       data-planner-search-mode={searching ? 'on' : undefined}
       className={cn(
         'border-border/60 planner-phone:py-0.5 border-t px-2 pt-1 pb-1',
-        // 6 px above and below the 32 px row on a portrait phone: the room its
-        // controls' 44 px reach lands in, so the reach stays inside this block
-        // rather than taking a strip off the axis above or the band below.
+        // 6 px above and below the 32 px row on a portrait phone: the room its controls' 44 px
+        // reach lands in, so it stays inside this block.
         compact && 'planner-phone:py-1.5',
-        // In search mode the block is the sheet's, and the list is what scrolls:
-        // the field stays put above it.
+        // In search mode the block is the sheet's, and the list scrolls under a fixed field.
         searching && 'flex min-h-0 flex-1 flex-col',
         // Inside the desktop foot's row, which draws the rule and the room.
         inline && 'border-t-0 p-0'
       )}
     >
-      {/* 32 px on a phone, down from 44 (PAR-482: „Bahn suchen nicht so hoch",
-          and at 36 „immer noch zu hoch"): the height every other control in
-          the sheet is drawn at. It stays at 16 px type on a coarse pointer, see
-          `[data-planner-sheet]` in `app/globals.css`. */}
+      {/* 32 px on a phone, the height every other control in the sheet is drawn at; 16 px type on a
+          coarse pointer, see `[data-planner-sheet]` in `app/globals.css`. */}
       <div className="relative flex items-center gap-2">
         <Search className="text-muted-foreground/60 pointer-events-none absolute top-1/2 left-2 size-3.5 -translate-y-1/2" />
         <input
@@ -266,10 +187,8 @@ export function PlannerRideSearch({
             inline && 'h-8'
           )}
         />
-        {/* The way out of search mode, where iOS puts it. It empties the field
-            too: the rows a query left are not the ones the day was being read
-            against. 32 px drawn, 44 to a finger: 6 px up into this block's
-            padding and 6 down, short of the free-block row 8 px below. */}
+        {/* The way out of search mode, where iOS puts it. It empties the field too. 32 px drawn and
+            44 to a finger, 6 px up and down. */}
         {searching && onSearchingChange && (
           <button
             type="button"
@@ -284,9 +203,8 @@ export function PlannerRideSearch({
             {t('search.done')}
           </button>
         )}
-        {/* At rest the free block sits beside the field, where the row has the
-            width for it; in search mode it heads the list below, as it does on
-            a landscape phone. Never both: see the note on the pair below. */}
+        {/* At rest the free block sits beside the field; in search mode it heads the list below.
+            Never both: see the pair below. */}
         {resting && onAddCustom && (
           <button
             type="button"
@@ -304,35 +222,17 @@ export function PlannerRideSearch({
         {resting && showPicker}
       </div>
 
-      {/* What a TAP does, because this component is mounted on phones alone
-          (`planner-wide:hidden` at its only call site) and the sentence here used to be
-          "oder zieh eine Bahn von der Parkseite auf die Zeitachse" — an HTML5
-          drag, named on the one pointer that has no such gesture. The row's own
-          click is what this describes, and `startFor` is where the minute comes
-          from.
-
-          Two lines at 11 px, in every locale — the sentence runs 100 to 140
-          characters and 374 px of phone will not take it in one. So what it
-          gives back is leading rather than words: `leading-snug` draws the same
-          two lines in 30 px instead of 33, and the 4 px off the margin come out
-          of the gap to a field that carries its own background anyway. */}
-      {/* Only until the first ride is in (PAR-482). By then the tap has done
-          what this sentence says, and on a phone its two lines are 30 px the
-          axis does not have — measured at 390×844 with a filled day, the axis
-          was the smallest thing in the sheet. */}
-      {/* Not in the desktop row: it describes a tap, and the desktop's way in
-          is the drag the empty axis already names. */}
+      {/* What a tap does, since this list is the phone's way in. Only until the first ride is in,
+          when the sentence has done its job and its two lines are room the axis needs. Not in the
+          desktop row, whose way in is the drag the empty axis names. */}
       {planned.size === 0 && !inline && (
         <p className="text-muted-foreground planner-phone:mt-0.5 mt-1 px-1 text-[11px] leading-snug">
           {t('search.tapHint')}
         </p>
       )}
 
-      {/* The phone's copy of the free-block offer, under its own name so the
-          two can be counted together without disturbing what counts the foot's:
-          they are a pair — this one is drawn where the search is, that one
-          where it is not — and the way that pair breaks is both appearing at
-          once. Before PAR-76 that is exactly what happened at 844x390. */}
+      {/* The phone's copy of the free-block offer, under its own name, so the pair can be counted:
+          this one where the search is, the foot's where it is not, never both. */}
       {!resting && onAddCustom && (
         <button
           type="button"
@@ -347,10 +247,8 @@ export function PlannerRideSearch({
       {!resting && showPicker && <div className="mt-1">{showPicker}</div>}
       {resting ? null : matches.length === 0 ? (
         <p className="text-muted-foreground mt-2 px-1 text-xs">
-          {/* Three different silences, and they are not interchangeable: a
-              query that matched nothing, a day the API has no forecast for, and
-              a request that failed. The input itself never disappears — on a
-              phone it is the only way into the plan. */}
+          {/* Three silences that are not interchangeable: no match, no forecast, a failed request.
+              The input never disappears: on a phone it is the only way into the plan. */}
           {day
             ? t('search.noResults')
             : dayState === 'error'
@@ -379,21 +277,13 @@ export function PlannerRideSearch({
                     timezone,
                     attractionSlug: ride.attractionSlug,
                     attractionName: ride.attractionName,
-                    // The first free slot, not the opening hour. This call site
-                    // bypassed `addEntry`'s own fallback entirely and filed
-                    // everything at the same minute, so five rides added from
-                    // the search landed as five blocks in one place, all
-                    // reporting a conflict with each other on first use.
+                    // The first free slot, not the opening hour, so rides added in a row do not
+                    // pile up on one minute.
                     startMinute: startFor(ride),
                   })
                 }
-                /* Draggable, which a `<button>` is not by default — and the
-                   planner's own ride list was the one surface a ride could not
-                   be dragged out of, while every card on a park page could. The
-                   click above stays the whole path on a phone, where HTML5 drag
-                   and drop does not exist; this is the pointer path, and it is
-                   what lets somebody put a ride at a chosen hour rather than at
-                   the next free one. */
+                /* Draggable, so a ride can be put at a chosen hour from here as from any card. The
+                   click stays the whole path on a phone, which has no HTML5 drag. */
                 draggable
                 onDragStart={(event) =>
                   startRideDrag(
@@ -403,11 +293,8 @@ export function PlannerRideSearch({
                       attractionSlug: ride.attractionSlug,
                       attractionName: ride.attractionName,
                     },
-                    // The row's own thumbnail — already decoded, which is the
-                    // only kind the chip can draw. `photo` is the fallback for
-                    // the row whose picture is still in flight: it costs no
-                    // request while the thumbnail is there, and warms the same
-                    // rendition for the next drag when it is not.
+                    // The row's own decoded thumbnail, the only kind the chip can draw; `photo` is
+                    // the fallback while it is in flight.
                     {
                       element: event.currentTarget,
                       photo: ride.backgroundImage,
@@ -417,44 +304,30 @@ export function PlannerRideSearch({
                 }
                 className="hover:bg-accent planner-phone:py-2.5 flex w-full cursor-grab items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors active:cursor-grabbing"
               >
-                {/* The ride's photo. It is ALREADY in the payload — the proxy
-                    route runs `enrichAttractionsWithImages` over `/plan/day`'s
-                    rides — so this costs no request, no type change and no
-                    `@/lib/media` import (that catalogue is 107 KB and this is a
-                    Client Component). */}
+                {/* The ride's photo, already in the payload (`enrichAttractionsWithImages`), so no
+                    request and no `@/lib/media` import in a Client Component. */}
                 <PlannerRideThumb
                   src={ride.backgroundImage}
                   position={ride.backgroundPosition}
                   size={8}
                 />
                 <span className="min-w-0 flex-1 truncate text-sm">{ride.attractionName}</span>
-                {/* What the band above used to say, on the ride itself: the
-                    CURATED headliner set from the API, never the day's tallest
-                    bars. `dayPeak` says what is busy; "did I miss the big one"
-                    is a question about what the park is known for, and a
-                    headliner having a quiet Tuesday is still the ride somebody
-                    travelled for. */}
-                {/* When the ride starts, where that is not when the park does.
-                    Sixteen of Phantasialand's rides open an hour after its
-                    gates, and somebody planning a rope drop has to see which
-                    queues do not exist yet. Absent means "with the park, or we
-                    do not know" — the same thing to a reader, so it prints
-                    nothing rather than a hedge. */}
+                {/* When the ride starts, where that is not when the park does, so a rope drop can
+                    see which queues do not exist yet. Absent prints nothing. */}
                 {ride.opensAt && (
                   <span className="text-muted-foreground shrink-0 text-[10px] tabular-nums">
                     {t('search.opensAt', { time: ride.opensAt })}
                   </span>
                 )}
+                {/* The curated headliner set, never the day's busiest rides: a headliner on a quiet
+                    day is still the ride somebody travelled for. */}
                 {ride.isHeadliner && (
                   <Crown
                     className="text-crowd-high size-3 shrink-0"
                     aria-label={t('headliners.label')}
                   />
                 )}
-                {/* What this party's own answers say about this ride. A flag,
-                    never a filter — see the `prefs` prop. The height is shown
-                    rather than a word, because "too small" without the number
-                    is an argument a parent cannot check. */}
+                {/* What this party's answers say about this ride: a flag, never a filter. */}
                 {(() => {
                   const flags = partyFlags(ride, prefs);
                   if (!flags.tooShort && !flags.wet) return null;
@@ -478,10 +351,7 @@ export function PlannerRideSearch({
                     </span>
                   );
                 })()}
-                {/* One lap is a tick; two or more is a NUMBER. A "1×" on every
-                    planned ride is a count of the obvious — the interesting
-                    state is the repeat, and it has to stand out from the row of
-                    ordinary ticks around it. */}
+                {/* One lap is a tick; two or more is a number, so a repeat stands out. */}
                 {(planned.get(ride.attractionSlug) ?? 0) === 1 && (
                   <Check className="text-crowd-low size-3.5 shrink-0" />
                 )}

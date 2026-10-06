@@ -31,10 +31,7 @@ interface TagPageProps {
   params: Promise<{ locale: string; tag: string }>;
 }
 
-/**
- * Pre-generate one page per (locale × tag) so every tag in every post becomes
- * an indexable archive. Tag slugs are normalised to lowercase + hyphens.
- */
+/** One page per (locale × tag). */
 export async function generateStaticParams() {
   const out: Array<{ locale: string; tag: string }> = [];
   for (const locale of locales) {
@@ -59,12 +56,9 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
   return {
     title: { absolute: fullTitle },
     description,
-    // A tag archive below TAG_INDEX_MIN_POSTS is one post's teaser at a second
-    // URL, so it stays out of the index — but `follow` keeps it passing signal
-    // to the posts it lists, and the page itself stays reachable and crawlable.
-    // The locale layout sets `index: true` with a `googleBot` block; page
-    // metadata replaces that object rather than merging into it, so `googleBot`
-    // is restated here instead of being left to inherit a contradicting value.
+    // A tag archive below TAG_INDEX_MIN_POSTS is one post's teaser at a second URL, so it is
+    // `noindex, follow`. Page metadata replaces the layout's `robots` object rather than merging
+    // into it, so `googleBot` is restated here.
     ...(isIndexableTag(locale as Locale, tag)
       ? {}
       : {
@@ -86,10 +80,8 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
     twitter: { card: 'summary_large_image', title: fullTitle, description, images: [ogImageUrl] },
     alternates: {
       canonical: `${SITE_URL}/${locale}/blog/tag/${tag}`,
-      // Tag slugs are translated ("wartezeiten" / "wait-times"), so the alternates cannot
-      // reuse this locale's slug — that pointed every tag page at five 404s plus a dead
-      // x-default. buildTagAlternates resolves the real per-locale slug and omits locales
-      // where the tag has no page.
+      // Tag slugs are translated ("wartezeiten" / "wait-times"), so buildTagAlternates resolves
+      // each locale's slug and omits locales where the tag has no page.
       languages: {
         ...tagAlternates,
         ...(tagAlternates['en'] && { 'x-default': tagAlternates['en'] }),

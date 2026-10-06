@@ -1,16 +1,10 @@
 'use client';
 
 /**
- * The rider height a page has just offered to plan with, on its way to the wizard.
- *
- * Same hand-off as {@link import('./page-day').plannerPageDay}, for the same reason: a plain
- * `plannerUi.requestOpen` carries no payload on purpose, and the park is already published by
- * `plannerPagePark`. The height is the one thing neither answers — it belongs to the PRESS on a
- * park's "with kids" page, where every step of the height ladder has its own button.
- *
- * The park slug travels with the height and is checked on the way out, and `take` clears as it
- * reads and refuses anything older than {@link MAX_AGE_MS}: a hand-off nobody collected must not
- * be found by the next gesture, and „Tag im Phantasialand planen" means "you ask me".
+ * The rider height a page has just offered to plan with, on its way to the wizard: the same
+ * hand-off as {@link import('./page-day').plannerPageDay}, for a press on a park's "with kids"
+ * page. The park slug is checked on the way out, and `take` clears as it reads and refuses anything
+ * older than {@link MAX_AGE_MS}.
  */
 export interface PlannerPageHeight {
   /** The park the height belongs to. */
@@ -24,6 +18,7 @@ const MAX_AGE_MS = 10_000;
 
 let pending: (PlannerPageHeight & { at: number }) | null = null;
 
+/** The pending height hand-off: `set` on the press, `take` in the panel. */
 export const plannerPageHeight = {
   /** Leave the height the visitor just chose, for the panel to pick up. */
   set(height: PlannerPageHeight): void {

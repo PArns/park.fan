@@ -5,20 +5,10 @@ import { focusToObjectPosition, versionedSrc } from '@/lib/media/focus';
 import type { SearchResult, SearchResultItem } from '@/lib/api/types';
 
 /**
- * Attach each hit's photo from the media database.
- *
- * The backend's `/v1/search` knows nothing about our images — they live in this repo — so the
- * proxy route resolves them, exactly like `/api/nearby` and `/api/parks/live` do for their park
- * lists. Without this the result rows fall back to their type icon and the palette looks empty
- * next to the nearby list, which does have photos.
- *
- * `server-only`: this reaches into `@/lib/media`, whose 107 KB catalog must never be bundled
- * into a Client Component. The import is what makes that a build error rather than a silent
- * regression somebody notices in a bundle report months later.
- *
- * Shows and restaurants get their park's photo (the media database has no per-show images and
- * that photo is the right "where is this" cue), rides get **only** their own — the park's photo
- * on a ride row claims to show the ride. Same rule as `enrichAttractionsWithImages`.
+ * Attach each search hit's photo from the media database, which the backend knows nothing about.
+ * `server-only` so the media catalog can never reach a Client Component bundle. Shows and
+ * restaurants get their park's photo; rides get only their own, as in
+ * `enrichAttractionsWithImages`, since a park photo on a ride row claims to show the ride.
  */
 export function enrichSearchResultsWithImages(data: SearchResult): SearchResult {
   return {

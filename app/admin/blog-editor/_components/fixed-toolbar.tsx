@@ -2,14 +2,10 @@
 
 import type { Editor } from '@tiptap/core';
 import {
-  Bold,
   Boxes,
   Camera,
   ChevronDown,
-  Code,
   Image as ImageIcon,
-  Italic,
-  Link as LinkIcon,
   List,
   ListOrdered,
   MapPin,
@@ -18,7 +14,6 @@ import {
   Quote,
   Redo2,
   Sparkles,
-  Strikethrough,
   Table as TableIcon,
   TrainFront,
   Undo2,
@@ -26,6 +21,7 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { INLINE_MARKS } from '../_lib/inline-marks';
 import { WIDGETS } from '../_lib/widgets';
 
 interface FixedToolbarProps {
@@ -35,9 +31,6 @@ interface FixedToolbarProps {
 
 export type ToolbarAction =
   'park' | 'ride' | 'spotlight' | 'image' | 'youtube' | 'instagram' | 'suno' | `widget:${string}`;
-
-// Widget kinds the toolbar dropdown exposes — sourced from the shared
-// _lib/widgets.ts registry so adding a new kind only touches one file.
 
 const HEADINGS: Array<{ level: 1 | 2 | 3; label: string }> = [
   { level: 1, label: 'Heading 1' },
@@ -59,17 +52,6 @@ export function FixedToolbar({ editor, onEmit }: FixedToolbarProps) {
   const activeHeading = HEADINGS.find((h) => editor.isActive('heading', { level: h.level }));
   const isParagraph = editor.isActive('paragraph');
   const blockLabel = activeHeading ? activeHeading.label : isParagraph ? 'Paragraph' : 'Block';
-
-  const promptForLink = () => {
-    const prev = editor.getAttributes('link').href as string | undefined;
-    const url = window.prompt('URL (https://… or ref:slug?info / ref:park/ride?full)', prev ?? '');
-    if (url === null) return;
-    if (url === '') {
-      editor.chain().focus().extendMarkRange('link').unsetLink().run();
-      return;
-    }
-    editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
-  };
 
   return (
     <div className="border-border/60 bg-background/95 supports-[backdrop-filter]:bg-background/75 sticky top-4 z-30 -mx-8 -mt-8 mb-6 flex flex-wrap items-center gap-1 rounded-t-2xl border-b px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-md">
@@ -134,37 +116,16 @@ export function FixedToolbar({ editor, onEmit }: FixedToolbarProps) {
       <Divider />
 
       <Group>
-        <IconBtn
-          label="Bold (⌘B)"
-          active={editor.isActive('bold')}
-          onClick={() => editor.chain().focus().toggleBold().run()}
-        >
-          <Bold className="h-3.5 w-3.5" />
-        </IconBtn>
-        <IconBtn
-          label="Italic (⌘I)"
-          active={editor.isActive('italic')}
-          onClick={() => editor.chain().focus().toggleItalic().run()}
-        >
-          <Italic className="h-3.5 w-3.5" />
-        </IconBtn>
-        <IconBtn
-          label="Strikethrough"
-          active={editor.isActive('strike')}
-          onClick={() => editor.chain().focus().toggleStrike().run()}
-        >
-          <Strikethrough className="h-3.5 w-3.5" />
-        </IconBtn>
-        <IconBtn
-          label="Inline code"
-          active={editor.isActive('code')}
-          onClick={() => editor.chain().focus().toggleCode().run()}
-        >
-          <Code className="h-3.5 w-3.5" />
-        </IconBtn>
-        <IconBtn label="Link (⌘K)" active={editor.isActive('link')} onClick={promptForLink}>
-          <LinkIcon className="h-3.5 w-3.5" />
-        </IconBtn>
+        {INLINE_MARKS.map(({ mark, label, icon: Icon, apply }) => (
+          <IconBtn
+            key={mark}
+            label={label}
+            active={editor.isActive(mark)}
+            onClick={() => apply(editor)}
+          >
+            <Icon className="h-3.5 w-3.5" />
+          </IconBtn>
+        ))}
       </Group>
 
       <Divider />

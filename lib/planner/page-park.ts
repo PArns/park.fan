@@ -3,23 +3,10 @@
 import type { PlannerGeo } from './types';
 
 /**
- * The park the page behind the panel is about.
- *
- * The planner is mounted in the layout and knows nothing about the route under
- * it, which produced the confusion this exists to end: standing on Toverland's
- * calendar with a Phantasialand plan open, the panel's header read
- * "Phantasialand" and there was no way to plan the park actually on screen
- * without leaving for the planner's own page.
- *
- * A module store rather than a context, for the reason `ui-store.ts` gives for
- * being one: a context for this would mean wrapping the whole layout to carry a
- * value that four routes publish and one component reads. `useSyncExternalStore`
- * has a server snapshot, so the server renders `null` and nothing here can
- * disagree across hydration.
- *
- * Published by {@link PlannerPageParkBeacon}, which every park-scoped route
- * mounts. It is the PAGE's park, never the plan's — the two are different
- * questions and conflating them is what the header got wrong.
+ * The park the page behind the panel is about, which the layout-mounted planner cannot otherwise
+ * know. The page's park, never the plan's. A module store rather than a context around the layout;
+ * the server snapshot is `null`. Published by {@link PlannerPageParkBeacon} on every park-scoped
+ * route.
  */
 export interface PlannerPagePark {
   slug: string;
@@ -27,14 +14,8 @@ export interface PlannerPagePark {
   geo: PlannerGeo;
   timezone?: string;
   /**
-   * The park's photo, for the wash behind the panel.
-   *
-   * Resolved by the ROUTE and carried here, because it comes out of
-   * `@/lib/media` — a 107 KB catalogue and server-only, which the panel (a
-   * Client Component in the layout) may not import. `/plan/day` answers with the
-   * same picture from the same place for a park that is being planned; this is
-   * for the panel that has nothing planned yet, which used to open as a black
-   * rectangle on top of a park page.
+   * The park's photo for the wash behind the panel, resolved by the route because `@/lib/media` is
+   * server-only. For a panel with nothing planned yet; a planned day gets it from `/plan/day`.
    */
   backgroundImage?: string | null;
   backgroundPosition?: string;
@@ -47,6 +28,7 @@ function emit(): void {
   for (const listener of listeners) listener();
 }
 
+/** The page's park as an external store, set by the beacon and read by the panel. */
 export const plannerPagePark = {
   subscribe(listener: () => void): () => void {
     listeners.add(listener);
@@ -60,9 +42,8 @@ export const plannerPagePark = {
     return null;
   },
   /**
-   * Announce the route's park. Idempotent by VALUE rather than by identity: the
-   * beacon re-runs on every render of its page, and a new object each time
-   * would notify every subscriber for a park that has not changed.
+   * Announce the route's park. Idempotent by value, not identity: the beacon re-runs on every
+   * render, and a new object each time would notify every subscriber.
    */
   set(park: PlannerPagePark | null): void {
     const same =

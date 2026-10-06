@@ -11,31 +11,12 @@ export interface FaqRow {
 }
 
 /**
- * One list of questions, for every FAQ on the site.
- *
- * There were three, and they disagreed about everything a reader would notice: the park page
- * stacked separate `Card`s, each drawing its own border over the park photo; the ride page had
- * the same until it became rows; and the editorial pages (`FaqList`) had rows with a chevron that
- * rotates the other way, no hover, no rule under the question, and different padding. Three
- * answers to „what does a question look like here".
- *
- * The row is the ride's: the whole summary is the click target, the chevron turns 180° so its
- * open state reads at a glance, and the answer sits under a hairline so a long one does not run
- * into the next question. The icon is optional because the editorial FAQ arrays carry none — an
- * invented one per question would be decoration with no meaning behind it.
- *
- * **Every answer stays in the served HTML.** A collapsed `<details>` is in the DOM, which is what
- * lets a crawler read all seven answers of a page that shows one; the `FAQPage` JSON-LD is
- * emitted by the caller from the same array it passes here, so the two cannot drift.
- *
- * Two paddings, because the list appears in two kinds of container. `panel` is for a
- * {@link ChapterPanel} whose box the rows fill edge to edge; `flush` drops the horizontal padding
- * for the editorial pages, where the list sits in a prose column and an indented question would
- * hang 16 px off the text above it. A negative margin would do the same and would be a number to
- * keep in step with the panel's.
- *
- * `@min-[768px]/page:px-6` and not `md:`: the trip planner's panel insets the page without the
- * window moving.
+ * One list of questions, for every FAQ on the site. The whole summary is the click target, the
+ * chevron turns 180°, and the answer sits under a hairline. The icon is optional: the editorial
+ * FAQ arrays carry none. Every answer stays in the served HTML (a collapsed `<details>` is in the
+ * DOM), and the caller emits the `FAQPage` JSON-LD from the same array. `panel` padding fills a
+ * {@link ChapterPanel} edge to edge; `flush` drops it for a prose column. The width asks
+ * `@container/page`, since the trip planner insets the page.
  */
 export function FaqAccordion({
   items,

@@ -13,23 +13,10 @@ import type { Locale } from '@/i18n/config';
 const ALL_SEGMENTS = new Set(Object.values(PARK_CALENDAR_SEGMENTS));
 
 /**
- * Link to this park's crowd calendar, from the FAQ answers and the best-days section header.
- *
- * It used to be an `<a href="#calendar">` with a hand-written click handler that assigned
- * `window.location.hash`, because next-intl's `Link` uses `pushState` and does not reliably fire
- * `hashchange` — the event the tab switcher listened to. The calendar is a page now, so this is
- * an ordinary `Link`, and the browser gets back what a real link has: middle-click, "open in new
- * tab", a URL in the status bar, and a back button that undoes the visit.
- *
- * The target is derived from the CURRENT path rather than from geo props, because every call site
- * is somewhere under one park and the calendar is that park's path plus one segment — derived this
- * way it cannot disagree with the park being rendered, which four threaded props could.
- *
- * Which means it has to cut the path back to the park first. The FAQ is part of the shared park
- * shell, so it renders ON the calendar pages too, where the path already ends in the calendar
- * segment and possibly a month: appending blindly produced
- * `…/wartezeiten-kalender/wartezeiten-kalender` and `…/2026/9/wartezeiten-kalender`, both of which the month
- * parser rejects — a 404 from the FAQ of every calendar page of every park in every locale.
+ * Link to this park's crowd calendar, from the FAQ answers and the best-days section header: an
+ * ordinary `Link`, with middle-click and back button. The target is derived from the current path,
+ * so it cannot disagree with the park being rendered. The FAQ renders on the calendar pages too,
+ * so the path is first cut back to the park, or the segment would be appended twice and 404.
  */
 export function CrowdCalendarFaqLink({
   children,

@@ -2,56 +2,31 @@ import type { WeatherHourlyPoint } from '@/lib/api/types';
 import { yFor, type DayGrid } from './day-grid';
 
 /**
- * The weather rail's data, as geometry. Pure — no React, no DOM, no clock.
+ * The weather rail's data, as geometry. Pure: no React, no DOM, no clock.
  *
- * The rail is a continuous band down the edge of the day and a handful of
- * labels, and the two halves answer different questions. The band answers "what
- * is it doing while I am in the park", continuously, so it is drawn for every
- * hour on the axis whether or not anything changed. The labels answer "when does
- * it turn", so they are drawn ONLY where it turns — a figure at every hour is a
- * table, and a table down the side of a plan is unreadable at a glance.
- *
- * The horizon is the forecast's, not the planner's: Open-Meteo answers about
- * fourteen days and the planner offers sixty, so most days have no rail at all
- * and the absence must read as "not known yet" rather than "dry". Nothing here
- * invents a value — {@link weatherRailSegments} returns an empty array and the
- * component renders nothing.
+ * The band is drawn for every hour on the axis; the labels only where the weather turns, since a
+ * figure at every hour is a table. The horizon is the forecast's (about fourteen days), and past it
+ * {@link weatherRailSegments} returns nothing rather than inventing a value.
  */
 
 /** How many days ahead the hourly forecast reaches. Measured, not documented upstream. */
 export const WEATHER_RAIL_MAX_LEAD_DAYS = 14;
 
 /**
- * Below this an hour counts as dry.
- *
- * Open-Meteo reports precipitation to a tenth of a millimetre, and 0.05 mm in an
- * hour is a damp railing rather than rain. Rounding it up to "0,1 mm" beside a
- * plan would promise the reader a decision to make about something they cannot
- * feel.
+ * Below this an hour counts as dry: 0.05 mm is a damp railing, not rain to plan around.
  */
 export const WET_MM_FLOOR = 0.1;
 
 /**
- * The condition groups the band paints, coarsest first.
- *
- * Deliberately fewer than the conditions `getWeatherConfig` (`lib/utils/weather-utils.ts`) labels:
- * a 6 px column can carry maybe five colours a reader can tell apart, and
- * "drizzle" against "light rain" is not a decision anybody makes about a day at
- * a theme park. The labels beside it keep the full vocabulary.
+ * The condition groups the band paints, coarsest first. Fewer than `getWeatherConfig` labels: a
+ * 6 px column carries about five colours a reader can tell apart. The labels keep the full set.
  */
 export type WeatherRailGroup = 'clear' | 'cloud' | 'fog' | 'rain' | 'snow' | 'storm';
 
 /**
- * WMO weather code → the group the band paints.
- *
- * The same code ranges `getWeatherConfig` splits on,
- * collapsed. A code this does not know is `cloud` rather than a hole: the band
- * is continuous by construction, and a gap in it would read as a gap in the day.
- *
- * The storm range is CLOSED (95–99) rather than "everything above 86", which is
- * how the first version read and how the fallback stopped being reachable — an
- * unrecognised code came out as a thunderstorm, the one group painted at full
- * strength. WMO stops at 99; a number past it is a bug upstream, not weather.
+ * WMO weather code to the group the band paints, on the ranges `getWeatherConfig` splits on. An
+ * unknown code is `cloud`, never a hole, since the band is continuous. The storm range is closed
+ * (95–99), so an unknown code is never painted as the loudest group.
  */
 export function weatherRailGroup(code: number | null | undefined): WeatherRailGroup {
   if (code === null || code === undefined) return 'cloud';
@@ -66,6 +41,7 @@ export function weatherRailGroup(code: number | null | undefined): WeatherRailGr
   return 'cloud';
 }
 
+/** One hour of the rail: where it is drawn and what the forecast says for it. */
 export interface WeatherRailSegment {
   /** Park-local hour, 0–23. */
   hour: number;
@@ -81,22 +57,16 @@ export interface WeatherRailSegment {
   probability: number | null;
   temperatureC: number | null;
   /**
-   * Whether this hour opens a new stretch — the first hour on the axis, or the
-   * first hour of a group different from the one before it. This is what makes
-   * the label sparse, and it is decided here rather than in the component so it
-   * can be tested against a day rather than against a screenshot.
+   * Whether this hour opens a new stretch: the first hour, or a group different from the one
+   * before. Decided here, not in the component, so it can be tested against a day.
    */
   changes: boolean;
 }
 
 /**
- * One segment per hour the axis covers, in order.
- *
- * Clipped to the axis, never to the opening hours: a plan starts half an hour
- * before the park opens and the rain that decides what somebody wears is falling
- * then. Hours the forecast does not carry are skipped rather than filled, so a
- * partial day (the fourteenth, where the model runs out mid-afternoon) draws
- * what it has and stops.
+ * One segment per hour the axis covers, in order: clipped to the axis, not to the opening hours,
+ * since the rain before opening decides what somebody wears. Hours the forecast lacks are skipped,
+ * not filled.
  */
 export function weatherRailSegments(
   grid: DayGrid,
@@ -106,9 +76,7 @@ export function weatherRailSegments(
 
   const byHour = new Map<number, WeatherHourlyPoint>();
   for (const point of points) {
-    // "YYYY-MM-DDTHH:00", park-local and naive — the same convention the nowcast
-    // steps use. Parsing it as a Date would read it in the BROWSER's zone, which
-    // is the one thing the planner never does.
+    // "YYYY-MM-DDTHH:00", park-local and naive: parsing it as a Date would read the browser's zone.
     const match = /T(\d{2}):/.exec(point.time);
     if (!match) continue;
     byHour.set(Number(match[1]), point);
@@ -121,9 +89,7 @@ export function weatherRailSegments(
 
   let previous: WeatherRailGroup | null = null;
   for (let hour = firstHour; hour <= lastHour; hour++) {
-    // A park closing after midnight runs the axis past 1440; the forecast is one
-    // calendar day, so hour 25 is 01:00 and simply has no point. Skipped, not
-    // wrapped: 01:00 of THIS day is twenty-four hours from the hour being drawn.
+    // Past midnight the forecast, one calendar day, has no point: skipped, not wrapped.
     const point = hour < 24 ? byHour.get(hour) : undefined;
     if (!point) continue;
 
@@ -150,24 +116,17 @@ export function weatherRailSegments(
 }
 
 /**
- * Whether this hour is wet enough to print a figure rather than an icon.
- *
- * The two are alternatives on purpose: the gutter is 44 px wide (40 on a phone)
- * and holds an hour label already, so an icon AND a figure do not both fit. A
- * wet hour's number is the thing worth reading; a dry one has no number, so it
- * gets the icon.
+ * Whether this hour is wet enough to print a figure rather than an icon. Alternatives, because the
+ * gutter beside an hour label has room for one of them.
  */
 export function isWet(segment: WeatherRailSegment): boolean {
   return segment.mm !== null && segment.mm >= WET_MM_FLOOR;
 }
 
 /**
- * Whether a date is inside the hourly forecast's reach.
- *
- * Both dates are `YYYY-MM-DD` in the PARK's reading, so this is a difference of
- * calendar days and not of instants — which is why it goes through `Date.UTC`
- * on the parts rather than through `new Date(string)`, whose result depends on
- * the reader's offset.
+ * Whether a date is inside the hourly forecast's reach. Both dates are park-local `YYYY-MM-DD`, so
+ * this counts calendar days through `Date.UTC`, never `new Date(string)`, which depends on the
+ * reader's offset.
  */
 export function withinWeatherHorizon(today: string, date: string): boolean {
   const days = dayDifference(today, date);

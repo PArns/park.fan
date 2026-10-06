@@ -1243,6 +1243,11 @@
     "closedRides": {
       "title": "Dauerhaft geschlossene Attraktionen",
       "since": "seit {month}"
+    },
+    "hoursCalendar": {
+      "link": "Öffnungszeiten in den Kalender",
+      "summary": "{park}: geöffnet",
+      "estimated": "Die Zeiten sind geschätzt."
     }
   },
   "attractions": {
@@ -1935,6 +1940,7 @@
       "close": "Schließen",
       "entry": "Wartezeit-Alarme",
       "entryWithCount": "Wartezeit-Alarme ({count})",
+      "nudge": "Wir melden uns, sobald die Wartezeit einer Bahn unter die Minutenzahl fällt, die du einstellst.",
       "outOfSeason": "Nur im Winter",
       "retired": "Abgebaut",
       "errorRateLimited": "Zu viele Versuche. Bitte in {seconds} Sekunden erneut versuchen.",

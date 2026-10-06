@@ -12,24 +12,11 @@ import { newsPostPath } from '@/lib/blog/paths';
 import type { NewsMenu } from '@/lib/navigation/news-menu';
 
 /**
- * The news menu: one lead, then the headlines on a time line.
- *
- * It is the blog panel's neighbour in the bar and deliberately does not look like it (see
- * `lib/navigation/news-menu.ts` for why the two are split). The blog panel sells an article by its
- * cover, its teaser and its reading time. A news item is picked by what happened and when, so here
- * only the lead keeps a large cover and a teaser, and every item leads with its age (`NewsAge`, in the
- * accent colour for the first seven days) rather than a category, which would be "News" six times.
- *
- * The time line on the right is a border with a dot per item, not a list of cards: headlines one
- * under the other read as a sequence of events, which is what they are. Each carries its own cover
- * as a thumbnail at the right end of its row (Patrick, 2026-09-25), the side the `/news` stream
- * puts its covers on, so the time line keeps its left edge for the dots. An item without a cover
- * gets `BlogCoverFallback` there, lead included, so the rows keep one shape.
- *
- * `navigation` for the strings, never `blog` — see `BlogMenuPanel` for the 3 KB that one
- * `useTranslations('blog')` in the header chrome costs every page.
+ * The news menu: one lead with a cover and teaser, then the headlines on a time line, each with its
+ * age (`NewsAge`) rather than a category and a thumbnail on the right, so the dots keep the left
+ * edge. It does not look like the blog panel on purpose, see `lib/navigation/news-menu.ts`.
+ * Strings come from `navigation`, never `blog`. Memoised for the same reason as `ParksMenuPanel`.
  */
-/** Memoised for the same reason as `ParksMenuPanel`. */
 export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, total }: NewsMenu) {
   const t = useTranslations('navigation');
   const [lead, ...wire] = items;
@@ -42,7 +29,6 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
       </div>
 
       <div className="grid gap-x-8 gap-y-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-        {/* The lead: the one item with a picture and a teaser. */}
         <div data-menu-stagger>
           <Link
             href={newsPostPath(lead.slug) as '/'}
@@ -83,7 +69,6 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
           </Link>
         </div>
 
-        {/* The headlines: age and title on a time line, newest at the top. */}
         {wire.length > 0 && (
           <div data-menu-stagger className="flex flex-col">
             <ol className="border-border/70 ml-1 border-l">
@@ -104,11 +89,10 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
                         {item.title}
                       </span>
                     </span>
-                    {/* 88 × 55 (16:10): two lines of headline plus the age line are ~56 px, and a
-                        thumbnail taller than its text would push the rows apart. A fixed size
-                        rather than `fill`, because this markup ships `hidden` on every page and
-                        `fill` with a px `sizes` lists every configured width in its srcset; a
-                        fixed one lists two (1x, 2x). */}
+                    {/* 88 × 55 (16:10): two lines of headline plus the age line, so the thumbnail
+                        does not push the rows apart. A fixed size rather than `fill`, because this
+                        markup ships `hidden` on every page and `fill` lists every configured width
+                        in its srcset. */}
                     {item.image ? (
                       <Image
                         src={item.image}

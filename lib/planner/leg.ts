@@ -4,21 +4,13 @@ import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import type { PlannerEntry } from './types';
 
 /**
- * What happens between two rides, and whether the plan survives it.
+ * What happens between two rides, and whether the plan survives it. Pure, and every constant that
+ * is a judgement rather than a measurement says so.
  *
- * This is the thing a wait-time feed cannot say: not "the queue is 45 minutes"
- * but "you will not make it from here to there". Everything in this module is
- * pure and every constant that is a judgement rather than a measurement says so
- * in its own docstring, because that word has to reach the reader too.
- *
- * The whole design rests on one asymmetry. A straight-line distance is a
- * provable LOWER BOUND on a walk and nothing more — park paths bend around
- * water, queues, one-way routing and, at Phantasialand, vertical stacking. So
- * `broken` — the only verdict that calls a plan impossible — is decided against
- * the floor, where the claim is certifiable. Every softer verdict is decided
- * against an assumed ceiling, so the unmeasured detour factor can only ever make
- * a workable plan look more or less comfortable. It can never call a workable
- * plan impossible.
+ * A straight-line distance is a provable lower bound on a walk and nothing more, so `broken`, the
+ * only verdict that calls a plan impossible, is decided against the floor. Every softer verdict is
+ * decided against an assumed ceiling, so the unmeasured detour factor can change how comfortable a
+ * workable plan looks but never call it impossible.
  */
 
 /** Out of the station, through the shop, onto the path. A judgement, not a measurement. */
@@ -47,8 +39,10 @@ export const CROSS_LAND_CEIL_MIN = 8;
 /** Under this a gap is never called "großzügig", however small the model's spread. */
 export const GENEROUS_MIN_MINUTES = 10;
 
+/** How a leg is graded: `broken` against the floor, the rest against the ceiling. */
 export type TransferVerdict = 'broken' | 'tight' | 'good' | 'generous' | 'unknown';
 
+/** One graded transfer between two consecutive entries. */
 export interface Leg {
   /** Straight-line metres, or null where either ride has no coordinates. */
   metres: number | null;
@@ -66,13 +60,12 @@ export interface Leg {
 }
 
 /**
- * Where an end of a leg stands: a ride, or a show that has coordinates. Only
- * the position and the land are read, so a show passes without being dressed
- * up as a ride (it has no land, and a transfer with an unknown land is never a
- * cross-land one).
+ * Where an end of a leg stands: a ride, or a show that has coordinates. Only position and land are
+ * read; a show has no land, so it is never a cross-land transfer.
  */
 export type LegPlace = Pick<PlanDayRide, 'latitude' | 'longitude' | 'land'>;
 
+/** One side of a leg: when it starts, its expected wait and where it is. */
 export interface LegEnd {
   startMinute: number;
   /** Expected wait, or null when the block carries no figure. */
@@ -92,14 +85,9 @@ function coordsOf(ride: LegPlace | null | undefined): [number, number] | null {
 }
 
 /**
- * Where an entry is, for the walk to it and from it.
- *
- * A ride is where `/plan/day` puts it. A show is where `/plan/day` puts the
- * show, and only when it carries both coordinates: a show without them has no
- * place, which is `null` and costs exactly what it cost before there was a
- * position to read. No placeholder and no guess, because a guess is the one
- * thing `leg.ts` may not feed its floor. Anything else (a lunch break, a
- * meeting point) has no place either.
+ * Where an entry is, for the walk to it and from it: the ride's or the show's coordinates from
+ * `/plan/day`, or `null`. A show without both coordinates and a free block have no place, and no
+ * placeholder, since a guess may never feed the floor.
  */
 export function entryPlace(
   day: PlanDay | null | undefined,
@@ -129,16 +117,10 @@ export function entryPlace(
 }
 
 /**
- * Which ends of a transfer are not rides: a show or a free block.
- *
- * Decided by the PO on 2026-10-04 (PAR-696). `EXIT_MIN` and the ride's own
- * minutes are what it costs to leave a ride, so they are spent only when the
- * transfer starts at one. After a show or a free block there is no station to
- * leave and no ride to sit through. A block with no position has no walk on
- * either side. Leaving one costs 0. Arriving at one from a ride still costs
- * `EXIT_MIN` + the ride's minutes, floor and ceiling alike, because the visitor
- * is still in the queue or on the ride. The optimiser, `clashCount()` and the
- * chip all read these same numbers.
+ * Which ends of a transfer are not rides: a show or a free block. Leaving one costs nothing (no
+ * station, no ride); arriving at one from a ride still costs `EXIT_MIN` plus the ride. A block with
+ * no position has no walk on either side. The optimiser, `clashCount()` and the chip read the same
+ * numbers.
  */
 export interface TransferEnds {
   fromBlock?: boolean;
@@ -150,6 +132,7 @@ export function isBlockEntry(entry: Pick<PlannerEntry, 'attractionSlug'>): boole
   return !entry.attractionSlug;
 }
 
+/** The geometry of a transfer, with no clock in it: distance and both bounds in minutes. */
 export interface Transfer {
   /** Straight-line metres, or null where either ride has no coordinates. */
   metres: number | null;
@@ -161,14 +144,9 @@ export interface Transfer {
 }
 
 /**
- * How long it takes to get from one ride to the next — the geometry alone,
- * with no clock in it.
- *
- * Split out of {@link legBetween} because the optimiser BUILDS against the
- * ceiling while the leg chip JUDGES against both bounds, and two copies of this
- * arithmetic would be two answers to one question — the plan and the chip
- * describing the same walk in different minutes. `legBetween` is unchanged: it
- * calls this and then does the part that needs a start time.
+ * How long it takes to get from one ride to the next, the geometry alone. Split from
+ * {@link legBetween} because the optimiser builds against the ceiling while the chip judges against
+ * both bounds, and the two must describe one walk in the same minutes.
  */
 export function transferBetween(
   from: LegPlace | null | undefined,
@@ -223,57 +201,13 @@ export function transferBetween(
 /**
  * The transfer between two consecutive entries.
  *
- * `uncertaintyMinutes` is the previous ride's own spread, and it is what decides
- * where "knapp" begins: the boundary is the model's own top-quantile-minus-median
- * rather than a number somebody picked, so `knapp` means precisely "this breaks
- * if the forecast is as wrong as it says it might be".
+ * The previous ride's `uncertaintyMinutes` decides where "knapp" begins, so `knapp` means "this
+ * breaks if the forecast is as wrong as it says it might be". On a day the optimiser just packed
+ * the ladder mostly reports the packing, and that is not the threshold's fault. See
+ * docs/features/trip-planner.md#the-leg-chip-judges-against-what-the-search-builds-against.
  *
- * **On an optimiser-built day the ladder reports the optimiser, not the walk,
- * and that is not a fault of the threshold.** The search builds against the same
- * `ceilingMinutes` this judges against, so the slack of a freshly planned day is
- * whatever the packing leaves over: mostly the remainder on `SNAP_MIN_FINE`,
- * plus whatever a ride's own opening hour or a deliberate wait adds on top of
- * it. Measured over 14 parks × 14 dates from `/plan/day`, 169 planned days and
- * 1369 legs (2026-09-13): slack median 6 min (p25 2, p75 10, max 26 — the grid
- * alone caps at 14) against a band of median 15 (p25 12, p75 18, max 44). So
- * `slack < uncertaintyMinutes` holds on 144 of the 162 legs that HAVE a band
- * (88.9 %), and the day before PAR-169 — when the optimiser reserved wait PLUS
- * band and the slack was therefore ≥ band by construction — it held on 0 of 157
- * (0.0 %), with 13 of them (8.3 %) reading "großzügig". The two denominators
- * differ because the two engines file different plans, not because legs went
- * missing. Both times the chip mirrored the reservation policy back.
- *
- * The threshold stays anyway, because lowering it moves which single rung a
- * packed day lands on and buys nothing: at ¼ band the same corpus reads 4.7 %
- * knapp and 92.1 % gut. What it would cost is the population where the ladder
- * does work — a day somebody laid out or dragged themselves, where the slack is
- * a free variable. Same 169 days, same code, headliners at a fixed cadence
- * instead of packed: at 60 minutes the band legs go 42.1 % knapp / 27.6 % gut /
- * 22.8 % großzügig (and 8.5 % of all legs broken), at 90 minutes 2.9 / 23.5 /
- * 71.6. The rung answers the slack exactly as it is built to.
- *
- * One asymmetry this leaves, and none of it is the ladder's doing: which rung a
- * packed day can reach at all depends on whether a band arrives, and that is
- * decided before this function is called. The payload decides most of it —
- * `uncertaintyMinutes` is reported on every ride of a `measured` day (today and
- * tomorrow) and on almost no ride of a `composed` one, so the same packed day
- * reads "knapp" throughout for tomorrow and "gut" throughout, capped and with
- * the `°`, the day after. The grid decides the rest, and it is the near-now
- * exception: a block inside `LIVE_WINDOW_MIN` of the clock is re-based on the
- * live wait and handed on with `uncertaintyMinutes: null`, because a queue
- * somebody is reading off the park's own board has no forecast error. So today's
- * next hour is capped too, and so is any leg leaving a custom block, an assumed
- * wait or a park with no readable source. See PAR-167 for what the band covers
- * where it does arrive.
- *
- * `observed` says the waits are MEASUREMENTS rather than predictions, and it
- * changes what a missing spread means. On a forecast, no spread is a gap in what
- * the model reported and the ladder caps at "gut" — "großzügig" is a claim about
- * how much room the forecast's own error leaves, and without an error there is
- * nothing to be generous about. On a day that already happened there is no
- * forecast error to leave room for: the gap is a fact. Capping it would
- * understate every leg of every past day, and the `°` the chip carries would
- * flag an absence that is the nature of the thing rather than a shortcoming.
+ * `observed` means the waits are measurements: a missing spread caps a forecast at "gut", but on a
+ * day that already happened the gap is a fact and runs the full ladder.
  */
 export function legBetween(
   from: LegEnd,
@@ -290,8 +224,7 @@ export function legBetween(
 
   const base = { metres, crossesLand, floorMinutes, ceilingMinutes };
 
-  // Nothing to be tight against: with no wait for the first ride there is no
-  // moment it ends, so there is no transfer to judge.
+  // With no wait for the first ride there is no moment it ends, so nothing to judge.
   if (from.wait === null) {
     return {
       ...base,
@@ -308,8 +241,7 @@ export function legBetween(
     return { ...base, gapMinutes, verdict: 'broken', missing: 'none' };
   }
 
-  // A measured day runs the full ladder against a spread of zero: there is no
-  // forecast error, so every minute of slack is real slack.
+  // A measured day runs the full ladder against a spread of zero.
   if (observed) {
     return {
       ...base,
@@ -319,9 +251,8 @@ export function legBetween(
     };
   }
 
-  // No spread reported is not a spread of zero. The ladder caps at `good`:
-  // "großzügig" is a claim about how much room the forecast's own error leaves,
-  // and without an error there is nothing to be generous about.
+  // No spread reported is not a spread of zero. The ladder caps at `good`: "großzügig" is a claim
+  // about the room the forecast's own error leaves.
   if (uncertaintyMinutes === null) {
     return {
       ...base,
@@ -341,20 +272,13 @@ export function legBetween(
 }
 
 /**
- * The earliest start for the later ride that clears the transfer.
- *
- * Snapped UP, never down: rounding a repair toward the problem it repairs would
- * leave it broken. Offered on a button and never applied on its own — a plan
- * that quietly fixes itself never shows the visitor that it did not work, and
- * that sentence is the product.
+ * The earliest start for the later ride that clears the transfer, snapped up, never down. Offered
+ * on a button and never applied on its own, so the visitor sees that the plan did not work.
  */
 export function earliestGoodStart(from: LegEnd, leg: Leg): number {
   const end = from.startMinute + (from.wait ?? 0);
-  // A CEILING, not `snapTo`. `snapTo` rounds to the nearest step, and the
-  // "+ step - 1" trick that turns a round into a ceiling for integers overshoots
-  // by a whole step whenever the target already sits past the midpoint — 654
-  // came out as 675 instead of 660, a quarter of an hour of a visitor's day
-  // given away by an off-by-one in a repair button.
+  // A ceiling, not `snapTo`, which rounds to the nearest step; "+ step - 1" overshoots by a step
+  // once the target is past the midpoint.
   return Math.ceil((end + leg.ceilingMinutes) / SNAP_MIN_FINE) * SNAP_MIN_FINE;
 }
 

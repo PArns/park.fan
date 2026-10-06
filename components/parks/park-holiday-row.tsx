@@ -13,8 +13,7 @@ interface ParkHolidayRowProps {
   initialData: ParkWithAttractions;
   /**
    * Geo params enable the live park poll behind `useTodaySchedule`. Omit all four and the row
-   * renders from `initialData` alone and fetches nothing — which is what the guide page's static
-   * example wants (a full park payload for one chip row is not a trade worth making).
+   * renders from `initialData` alone and fetches nothing, as the guide page's static example wants.
    */
   continent?: string;
   country?: string;
@@ -24,32 +23,14 @@ interface ParkHolidayRowProps {
 }
 
 /**
- * Today's holidays, in one band, with the park's own region first.
+ * Today's holidays in one band, the park's own region first. That region is the subject: named,
+ * flagged, its chips in the per-type colours of the calendar's day detail. Neighbouring regions on
+ * a school break are the second line, in neutral chips, under one sentence saying what they mean
+ * for the queue.
  *
- * This replaces two rows that told one story in two voices. The first was a muted grey caption
- * ("Ferien & Feiertage") followed by up to three chips for the park's OWN country and state. The
- * second was `HeaderHolidayPanel`: an amber caption, two sentences of amber body text and a row
- * of amber chips, for school breaks in the NEIGHBOURING regions. Measured against each other on a
- * day that had both, the neighbours occupied about four times the height of the local half and
- * were the only thing in colour — so the loudest thing in the panel was a break in the
- * Netherlands, and the fact that it was a public holiday in this park's own state was three small
- * chips above it.
- *
- * The ranking now matches what the two things are. The park's own region is the subject: it is
- * named ("Nordrhein-Westfalen"), it carries its flag, and its chips keep the per-type colours the
- * calendar's day detail already uses — a public holiday is orange, a bridge day blue, a school
- * break yellow. The neighbours are the second line, in neutral chips, under one sentence saying
- * what they mean for the queue. That sentence keeps a single amber accent because it is still a
- * crowd warning; what it loses is the second sentence and the four coloured chips.
- *
- * **A school break is not a public holiday.** `isHoliday` is true for both, so the old row read
- * `publicHolidayName` straight out of it and printed the school break "Summer Holidays" behind
- * the party-popper reserved for public holidays — on Phantasialand, all summer, in English.
- * `holidayType` (school | public | bank | observance) is what tells them apart; it has always been
- * on the wire and was simply missing from `ScheduleItem`. `isSchoolHoliday`/`isPublicHoliday` back
- * it up for feeds that send the booleans and no type.
- *
- * Holiday names go through `translateHolidayName` — the API answers in English only.
+ * A school break is not a public holiday: `isHoliday` is true for both, so `holidayType` tells them
+ * apart, with `isSchoolHoliday`/`isPublicHoliday` as the fallback for feeds that send only the
+ * booleans. Names go through `translateHolidayName`, since the API answers in English only.
  */
 export function ParkHolidayRow({
   initialData,
@@ -82,11 +63,9 @@ export function ParkHolidayRow({
 }
 
 /**
- * The band itself, for a caller that already holds today's schedule.
- *
- * `ParkTodayPanel` runs `useTodaySchedule` with exactly the inputs this row would, so rendering
- * the row there ran the hook twice: a second live-query observer and every date computation again,
- * on each minute tick and each poll. The panel hands its `sched.holiday` in instead.
+ * The band itself, for a caller that already holds today's schedule. `ParkTodayPanel` runs
+ * `useTodaySchedule` with the same inputs and hands its `sched.holiday` in, so the hook does not
+ * run twice.
  */
 export function ParkHolidayBand({
   holiday,
@@ -135,10 +114,8 @@ export function ParkHolidayBand({
         {t('holidaysLabel')}
       </span>
 
-      {/* Two ranks, one grid. The label column is `auto` so both rows' chips start on the same
-          x — the region name and "Nachbarregionen" are different lengths and a per-row flex would
-          leave the two chip rows ragged against each other. It collapses to stacked rows below
-          `sm`, where a 160px label column would leave the chips about 90px to wrap in. */}
+      {/* Two ranks, one grid: the `auto` label column starts both rows' chips on the same x.
+          Stacked below `sm`, where a label column would leave the chips no room. */}
       <div className="mt-2 grid gap-x-3 gap-y-2.5 sm:grid-cols-[auto_1fr] sm:items-baseline">
         {localChips.length > 0 && (
           <>
@@ -189,8 +166,7 @@ export function ParkHolidayBand({
 
 /**
  * One chip of the band. Exported with the two builders below for `ParkTimeInfo`, which reads the
- * same `useTodaySchedule().holiday` and used to draw its own chips: a school break went behind the
- * public holiday's party-popper there, in English, after the band had stopped doing it.
+ * same `useTodaySchedule().holiday`, so both draw a holiday the same way.
  */
 export function HolidayChip({
   icon,

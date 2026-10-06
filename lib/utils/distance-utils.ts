@@ -1,13 +1,6 @@
-/**
- * Distance calculation utilities using Haversine formula
- */
-
-/**
- * Calculate distance between two GPS coordinates in meters
- * Uses Haversine formula for accurate results
- */
+/** Great-circle (haversine) distance between two GPS coordinates, in metres. */
 export function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
-  const R = 6371e3; // Earth radius in meters
+  const R = 6371e3; // Earth radius in metres
   const φ1 = (lat1 * Math.PI) / 180;
   const φ2 = (lat2 * Math.PI) / 180;
   const Δφ = ((lat2 - lat1) * Math.PI) / 180;
@@ -18,15 +11,12 @@ export function calculateDistance(lat1: number, lon1: number, lat2: number, lon2
     Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-  return R * c; // in meters
+  return R * c;
 }
 
 /**
- * Format distance as human-readable string
- * < 1000m: "123 m"
- * < 100km: "1.2 km"
- * >= 100km: "1234 km" — a tenth of a km is noise at that range (and the geo hub pages
- *           routinely show continent-scale distances, where "1234.6 km" just reads long).
+ * Format a distance for display: „123 m", „1.2 km", and whole kilometres from 100 km, where a
+ * tenth is noise (the geo hubs show continent-scale distances).
  */
 export function formatDistance(meters: number): string {
   if (meters < 1000) {
@@ -43,9 +33,8 @@ export function formatDistance(meters: number): string {
 export type Coordinate = readonly [number, number];
 
 /**
- * Collect the coordinates of every park in a geo subtree (continent / country / city), skipping
- * parks the backend could not geocode. Used by the hub pages to show "nearest park X km away" on a
- * continent or country card: the tuple list is a fraction of the RSC payload the full tree would be.
+ * The coordinates of every geocoded park in a geo subtree (continent, country or city), for a hub
+ * card's „nearest park X km away"; the tuple list is a fraction of the full tree's RSC payload.
  */
 export function collectParkCoordinates(
   node:
@@ -66,9 +55,7 @@ export function collectParkCoordinates(
 
   const coordinates: Coordinate[] = [];
   for (const park of parks) {
-    // `/v1/discovery/*` sends these as real JSON numbers; the park-detail endpoints are
-    // the ones that send decimal strings, and those are parsed at the fetch boundary
-    // (lib/api/coordinates). Coerce anyway, and drop anything that isn't a real pair.
+    // Discovery sends real numbers; coerce anyway and drop anything that is not a real pair.
     const lat = Number(park.latitude);
     const lng = Number(park.longitude);
     if (
@@ -83,10 +70,7 @@ export function collectParkCoordinates(
   return coordinates;
 }
 
-/**
- * Distance in meters from a reference point to the CLOSEST of `coordinates`.
- * Returns null for an empty list.
- */
+/** Distance in metres from a point to the closest of `coordinates`, or null for an empty list. */
 export function nearestDistance(
   lat: number,
   lng: number,

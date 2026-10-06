@@ -54,14 +54,12 @@ export default async function ParksPage({ params }: ParksPageProps) {
   const t = await getTranslations('geo');
   const tExplore = await getTranslations('explore');
 
-  // Fetch continents and live stats
   const [continents, liveStats] = await Promise.all([
     catchNonFatal(getContinents()).then((r) => r ?? []),
     catchNonFatal(getGeoLiveStats()),
   ]);
 
   const continentItems = continents.map((continent) => {
-    // Find live stats for this continent to get the most up-to-date open park count
     const continentStats = liveStats?.continents.find((c) => c.slug === continent.slug);
 
     return {
@@ -73,17 +71,12 @@ export default async function ParksPage({ params }: ParksPageProps) {
     };
   });
 
-  // Calculate totals
   const totalParks = continentItems.reduce((sum, c) => sum + c.parkCount, 0);
   const totalCountries = continentItems.reduce((sum, c) => sum + c.countryCount, 0);
   const totalOpenParks = continentItems.reduce((sum, c) => sum + (c.openParkCount || 0), 0);
 
-  // Generate breadcrumbs using the helper if available, or manually
-  // Using manual construction here as it's a top level page below home
   const tCommon = await getTranslations('common');
 
-  // Note: We don't have a specific breadcrumb utility for the /parks root page exposed
-  // in the same way as continents, but we can construct it easily.
   const breadcrumbs = [{ name: tCommon('home'), url: '/' }];
 
   const tNav = await getTranslations('navigation');

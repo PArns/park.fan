@@ -1,39 +1,15 @@
 /**
  * Geometry for the weather card's hourly day chart (`WeatherHourlyChart`).
  *
- * WHY THE DAY AXIS IS NOT LINEAR
+ * The day axis is piecewise linear: an open hour is drawn {@link OPEN_HOUR_RATIO}× as wide as a
+ * closed one, and the two kinks sit on the opening-hours band's dashed borders so the eye can
+ * explain them. `buildDayScale` returns `null` (a linear axis) when there is no schedule, the park
+ * is open around the clock, or the gain is too small.
  *
- * A visitor reads this chart to plan a park day, and roughly 45 % of the width
- * used to go to hours the park is shut — for the median park (10 h of opening
- * hours) the whole visit fitted into 42 % of the box while the night got the
- * rest. So the axis is warped: an open hour is drawn {@link OPEN_HOUR_RATIO}×
- * as wide as a closed one, which buys the median park 7.4 % of the width per
- * open hour instead of 4.17 % — enough room for hour-by-hour ticks and a few
- * temperature readings inside the visit.
- *
- * The warp is piecewise LINEAR with two kinks, at opening and at closing time,
- * and both kinks sit exactly on the dashed borders of the opening-hours band.
- * That matters: a kink the eye cannot explain reads as weather. A smooth
- * (fisheye) falloff has no such line to hang off, which is why it is not used.
- *
- * WHEN IT STAYS LINEAR
- *
- * `buildDayScale` returns `null` — identity axis, today's rendering — whenever
- * warping would be pointless or grotesque: no schedule for today (about a
- * quarter of the catalogue on any given day), a park open around the clock, a
- * window under {@link MIN_OPEN_HOURS} or over {@link MAX_OPEN_HOURS}, or a gain
- * too small to be worth the distortion ({@link MIN_GAIN}).
- *
- * INDEX COORDINATES, NOT HOURS
- *
- * Every function here works in a continuous index `s ∈ [0, n]` over the hourly
- * points, NOT in hours-since-midnight: on a DST changeover Open-Meteo returns 23
- * or 25 points for the day, so `points[i]` is not the `i`-th hour. Column `i`
- * spans `[i, i + 1]` and its data point sits at `i + 0.5` — the centre-of-hour
- * shear the chart has always used, so with no scale the maths reduces to exactly
- * the old `((i + 0.5) / n) * 100`.
- *
- * All x values are viewBox percentages (0–100).
+ * Everything works in a continuous index `s ∈ [0, n]` over the hourly points, not in hours since
+ * midnight: on a DST changeover Open-Meteo returns 23 or 25 points. Column `i` spans `[i, i + 1]`
+ * with its point at `i + 0.5`. All x values are viewBox percentages (0–100).
+ * See docs/rules/weather-day-chart-is-built-around-the-parks-hours.md.
  */
 
 /** How much wider an open hour is drawn than a closed one. */
@@ -49,13 +25,11 @@ export const MIN_OPEN_HOURS = 3;
 /** Windows longer than this are close enough to a full day that a warp is noise. */
 export const MAX_OPEN_HOURS = 21;
 
+/** The piecewise-linear day scale: where the axis changes gear and the width per index unit. */
 export interface DayScale {
   /**
-   * Where the axis changes gear, in the same coordinate the hourly points are
-   * drawn in — so for a park opening at 09:00 that is `9 + 0.5`, the centre of
-   * the 09:00 column, which is where the axis has always put its "09" tick.
-   * Anchoring the kink anywhere else would leave the dashed band border and the
-   * hour label a half column apart and the kink unexplained.
+   * Where the axis changes gear, at the column centre (`9 + 0.5` for 09:00) where the hour tick
+   * sits, so the kink, the band border and the label line up.
    */
   sOpen: number;
   /** Same, for the closing instant. */
@@ -74,11 +48,9 @@ export function hoursOf(points: { time: string }[]): number[] {
 }
 
 /**
- * Wall-clock minute of the day → continuous index into the hourly points.
- *
- * Monotone by construction. On the autumn changeover the repeated hour appears
- * twice and the later occurrence wins; on the spring one the skipped hour maps
- * onto the start of the hour that replaced it.
+ * Wall-clock minute of the day → continuous index into the hourly points. Monotone: on the autumn
+ * changeover the later repeated hour wins, and a skipped spring hour maps onto the start of the
+ * hour that replaced it.
  */
 export function indexForMinute(hours: number[], minute: number): number {
   if (hours.length === 0) return 0;
@@ -113,8 +85,8 @@ export function buildDayScale(
   const natural = openUnits / n;
   let share = (OPEN_HOUR_RATIO * openUnits) / (OPEN_HOUR_RATIO * openUnits + closedUnits);
   share = Math.min(share, MAX_OPEN_SHARE, 1 - (MIN_CLOSED_UNIT_PCT / 100) * closedUnits);
-  // The three caps above can only ever pull `share` down, and the floor below is
-  // the linear share — so a warp never makes the opening hours NARROWER.
+  // The caps can only pull `share` down and the floor is the linear share, so a warp never makes
+  // the opening hours narrower.
   share = Math.max(share, natural);
   if (share - natural < MIN_GAIN) return null;
 
@@ -126,10 +98,7 @@ export function buildDayScale(
   };
 }
 
-/**
- * Continuous index → viewBox %. Strictly monotone, `x(0) = 0`, `x(n) = 100`.
- * With `scale === null` this is the linear day the chart has always drawn.
- */
+/** Continuous index → viewBox %. Strictly monotone, `x(0) = 0`, `x(n) = 100`. */
 export function makeXEdge(n: number, scale: DayScale | null): (s: number) => number {
   if (!scale || !(n > 0)) {
     return (s) => (clamp(s, 0, Math.max(n, 1)) / Math.max(n, 1)) * 100;
@@ -145,12 +114,10 @@ export function makeXEdge(n: number, scale: DayScale | null): (s: number) => num
   };
 }
 
-// ---------------------------------------------------------------------------
-// Axis ticks
-// ---------------------------------------------------------------------------
-
+/** What an axis tick marks: an ordinary hour, or the opening or closing time. */
 export type AxisTickKind = 'hour' | 'open' | 'close';
 
+/** One tick on the hour axis, with the density tier it belongs to. */
 export interface AxisTick {
   /** Hourly point whose weather icon and hour label the tick shows. */
   index: number;
@@ -161,10 +128,8 @@ export interface AxisTick {
 }
 
 /**
- * Centre-to-centre room two hour labels need, in viewBox %. Sized against the
- * widest hour label any locale produces at `text-[9px]` — German renders
- * "14 Uhr", not "14", about 30 px — over the ~310 px plot a 390 px phone gives
- * this card, plus a little air.
+ * Centre-to-centre room two hour labels need, in viewBox %, sized for the widest locale label
+ * (German „14 Uhr") on a phone-width plot.
  */
 export const TICK_GAP_BASE = 10.5;
 /** Same, once the chart is at least {@link TICK_WIDE_MIN_PX} wide. */
@@ -175,30 +140,31 @@ export const TICK_WIDE_MIN_PX = 440;
 export const HOUR_LABEL_WEIGHT = 1;
 /** An opening/closing time that spells out minutes ("9:30 AM") needs about a third more. */
 export const TIME_LABEL_WEIGHT = 1.3;
-/** Hour ticks on a linear day — unchanged from before the warp existed. */
+/** Hour ticks on a linear day. */
 export const LINEAR_TICK_STEP = 3;
 
 const STEP_LADDER = [1, 2, 3, 4, 6];
 
-/** Coarsest hour step whose spacing still clears `gap`. */
+/** Smallest hour step whose spacing still clears `gap`. */
 function stepFor(unitPct: number, gap: number): number {
   return STEP_LADDER.find((step) => step * unitPct >= gap) ?? 6;
 }
 
+/** An opening or closing tick passed into {@link buildAxisTicks}. */
 export interface AxisEdgeTick {
   kind: 'open' | 'close';
   x: number;
   /** Hourly point whose hour the tick sits in. */
   index: number;
   /**
-   * How wide this one's label is. Callers pass {@link HOUR_LABEL_WEIGHT} for a
-   * time that lands on the hour ("10 Uhr") and {@link TIME_LABEL_WEIGHT} for one
-   * that spells out minutes ("9:30 AM") — most parks open on the hour, and
-   * charging every one of them for the long form costs an hour tick that fitted.
+   * Label width: {@link HOUR_LABEL_WEIGHT} for a time on the hour, {@link TIME_LABEL_WEIGHT} for
+   * one with minutes („9:30 AM"). Most parks open on the hour, and charging all of them for the
+   * long form costs an hour tick that fitted.
    */
   weight: number;
 }
 
+/** Input to {@link buildAxisTicks}. */
 export interface AxisTickParams {
   hours: number[];
   /** x of the hourly point at index `i` (its column centre). */
@@ -209,14 +175,8 @@ export interface AxisTickParams {
 }
 
 /**
- * Which hours get a tick, at two densities.
- *
- * Tier 0 is what a phone shows, tier 1 what a wide chart adds on top; both are
- * in the DOM and CSS picks between them, so the row's height never depends on
- * the viewport (see the CLS note in the component).
- *
- * On a linear day this returns exactly the old "every third point" set: the
- * parks we have no schedule for keep the chart they had.
+ * Which hours get a tick, at two densities. Both tiers are in the DOM and CSS picks one, so the
+ * row's height never depends on the viewport. On a linear day this is every third hour.
  */
 export function buildAxisTicks({ hours, xForIndex, scale, edges }: AxisTickParams): AxisTick[] {
   if (!scale) {
@@ -231,15 +191,8 @@ export function buildAxisTicks({ hours, xForIndex, scale, edges }: AxisTickParam
   }
 
   const accepted: (AxisTick & { weight: number })[] = [];
-  /**
-   * Two ticks have to clear half of each label, so a pair of ordinary hours
-   * needs exactly the tier's budget and a spelled-out time a little more. The
-   * tier is what scales with the chart — the same "14 Uhr" is 10.5 % of a phone
-   * and 5 % of a desktop — so a tick accepted for the narrow tier must not go on
-   * demanding the narrow tier's clearance from the ones filling in around it.
-   * Charging the wider of the two instead reserved a phone's worth of room on
-   * every screen and left the wide tier with nothing to add.
-   */
+  // Two ticks must clear half of each label. The clearance scales with the tier being filled, not
+  // the stricter one a tick was accepted at, or the wide tier would have nothing left to add.
   const accept = (tick: AxisTick, tierGap: number, weight: number) => {
     const room = (other: (typeof accepted)[number]) => (tierGap * (weight + other.weight)) / 2;
     if (accepted.some((other) => Math.abs(other.x - tick.x) < room(other))) return;
@@ -252,18 +205,16 @@ export function buildAxisTicks({ hours, xForIndex, scale, edges }: AxisTickParam
   }
 
   const inWindow = (index: number) => index + 0.5 >= scale.sOpen && index + 0.5 <= scale.sClose;
-  // In-window ticks phase on the first open hour so they read as "n hours into
-  // the visit"; the compressed ones phase on midnight, so 00:00 always ticks.
+  // In-window ticks phase on the first open hour („n hours into the visit"); the compressed ones
+  // phase on midnight, so 00:00 always ticks.
   const firstOpenIndex = Math.min(
     Math.max(Math.ceil(scale.sOpen - 0.5), 0),
     Math.max(hours.length - 1, 0)
   );
   const firstOpenHour = hours[firstOpenIndex] ?? 0;
 
-  // Inside the window a step keeps the labels on a regular grid of round hours.
-  // Outside it every hour is a candidate and the spacing rule alone decides: the
-  // compressed segments are short enough that a step would round away the one
-  // label they do have room for.
+  // Inside the window a step keeps labels on round hours. Outside it every hour is a candidate,
+  // because a step would round away the one label a short compressed segment has room for.
   const passes: { tier: 0 | 1; open: boolean; step: number; gap: number }[] = [
     { tier: 0, open: true, step: stepFor(scale.openUnit, TICK_GAP_BASE), gap: TICK_GAP_BASE },
     { tier: 0, open: false, step: 1, gap: TICK_GAP_BASE },
@@ -289,10 +240,7 @@ export function buildAxisTicks({ hours, xForIndex, scale, edges }: AxisTickParam
     .sort((a, b) => a.x - b.x);
 }
 
-// ---------------------------------------------------------------------------
-// Extra temperature labels inside the opening hours
-// ---------------------------------------------------------------------------
-
+/** An extra temperature label inside the opening hours, with its density tier. */
 export interface ExtraTempLabel {
   index: number;
   tier: 0 | 1;
@@ -301,10 +249,8 @@ export interface ExtraTempLabel {
 /** Horizontal room a temperature label needs, in viewBox %. */
 export const EXTRA_LABEL_GAP = 9;
 /**
- * Within this many gaps of an existing label, a new one also has to READ
- * differently: "32°" printed a screen-third away from "33°" is a second label
- * carrying no second fact. Further out the same number is fine — "still 20°
- * when you leave" is worth saying even if the morning also touched 20°.
+ * Within this many gaps of an existing label, a new one must also show a different value: „32°"
+ * a short way from „33°" adds no fact. Further out the same number is fine.
  */
 export const EXTRA_LABEL_VALUE_GAPS = 3;
 /** How many extra labels a narrow chart carries. */
@@ -316,11 +262,13 @@ export const EXTRA_TOL_MIN_K = 1.5;
 /** …and on a swingy day the bar rises with the range rather than staying absolute. */
 export const EXTRA_TOL_SPAN_SHARE = 0.18;
 
+/** A temperature label already on the chart. */
 export interface PlacedLabel {
   x: number;
   value: number;
 }
 
+/** Input to {@link pickExtraTemperatureLabels}. */
 export interface ExtraTempParams {
   /** Point indices inside the opening hours, ascending, all with a temperature. */
   candidates: number[];
@@ -333,19 +281,10 @@ export interface ExtraTempParams {
 
 /**
  * The handful of extra temperatures worth printing inside the opening hours.
- *
- * The two ends of the visit come first — what it is like on arrival and what it
- * is like when you leave are the readings the whole change is for, they sit
- * exactly on the band's two borders, and they are the endpoints the
- * simplification below can structurally never pick. After that it is
- * Douglas-Peucker on the in-window curve: repeatedly label the hour furthest
- * from the polyline through the hours already labelled, and stop once that
- * distance drops under a tolerance that scales with the day's own range. A day
- * that just warms up steadily therefore gets nothing beyond its two ends, which
- * is the right answer rather than a missing feature.
- *
- * Nothing here depends on the current time: the set would otherwise reshuffle on
- * every minute tick.
+ * Arrival and departure come first (Douglas-Peucker can never pick the endpoints), then the hour
+ * furthest from the polyline through those already labelled, until the deviation drops under a
+ * tolerance scaled to the day's range; a steadily warming day gets only its two ends. Independent
+ * of the current time, so the set does not reshuffle every minute.
  */
 export function pickExtraTemperatureLabels({
   candidates,
@@ -381,9 +320,8 @@ export function pickExtraTemperatureLabels({
   const closing = candidates[candidates.length - 1];
   if (free(closing)) take(closing);
 
-  // Polyline the simplification measures against — seeded with both ends, and
-  // grown even by hours that end up unlabelled, so later rounds measure against
-  // the shape the reader can actually infer.
+  // Grown even by hours that end up unlabelled, so later rounds measure against the shape the
+  // reader can infer.
   const polyline = [0, candidates.length - 1];
   while (picked.length < EXTRA_LABEL_MAX) {
     let best = -1;
@@ -419,14 +357,10 @@ export function pickExtraTemperatureLabels({
     .sort((a, b) => a.index - b.index);
 }
 
-// ---------------------------------------------------------------------------
-// Rain runs
-// ---------------------------------------------------------------------------
-
+/** A run of consecutive wet hours, `[from, to)` in point indices. */
 export interface RainRun {
-  /** First hourly point of the run. */
   from: number;
-  /** One past the last — the run covers `[from, to)`. */
+  /** One past the last. */
   to: number;
   totalMm: number;
 }
@@ -435,19 +369,15 @@ export interface RainRun {
 export const RAIN_RUN_MM = 0.2;
 /** …and the lighter amount that still counts when the forecast is confident. */
 export const RAIN_RUN_LIGHT_MM = 0.1;
+/** Minimum precipitation probability (%) for the lighter amount to count. */
 export const RAIN_RUN_PROB = 70;
 /** Drawing more than this many turns the baseline into a dotted line. */
 export const MAX_RAIN_RUNS = 2;
 
 /**
- * The longest wet stretches of the day, as index ranges.
- *
- * Under the warp a night hour is only a few pixels wide, so four consecutive
- * drizzle bars read as noise rather than as "it rains all morning". A single
- * rule under the run says the same thing at any width — and, unlike a tooltip,
- * it says it on a phone, where Radix never opens one.
- *
- * Single wet hours are left to their bar; a run is at least two hours.
+ * The longest wet stretches of the day (two hours or more), as index ranges. Under the warp a
+ * night hour is a few pixels wide and drizzle bars read as noise; one rule under the run says „it
+ * rains all morning" at any width, and on a phone where tooltips never open.
  */
 export function findRainRuns(mm: (number | null)[], probability: (number | null)[]): RainRun[] {
   const wet = (i: number) => {

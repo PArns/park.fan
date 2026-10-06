@@ -1,9 +1,11 @@
+/** Host load averages over one, five and fifteen minutes. */
 export interface CpuLoad {
   '1m': number;
   '5m': number;
   '15m': number;
 }
 
+/** The API host's CPU, as the admin system-health page shows it. */
 export interface HostCpu {
   cores: number;
   model: string;
@@ -13,30 +15,35 @@ export interface HostCpu {
   temperatureC: number | null;
 }
 
+/** The API host's memory use. */
 export interface HostMemory {
   totalGB: number;
   usedGB: number;
   usedPct: number;
 }
 
+/** The API host's disk use. */
 export interface HostDisk {
   totalGB: number;
   freeGB: number;
   usedPct: number;
 }
 
+/** The API host's swap use. */
 export interface HostSwap {
   totalGB: number;
   usedGB: number;
   usedPct: number;
 }
 
+/** One hardware temperature sensor on the API host. */
 export interface HostSensor {
   chip: string;
   label: string;
   tempC: number;
 }
 
+/** Everything the system-health endpoint reports about the API host. */
 export interface HostMetrics {
   cpu: HostCpu;
   memory: HostMemory;
@@ -48,6 +55,7 @@ export interface HostMetrics {
   uptimeHours: number;
 }
 
+/** How recent the newest queue and weather data in the database are. */
 export interface FreshnessMetrics {
   latestQueueTime: string | null;
   queueStaleMinutes: number | null;
@@ -56,6 +64,7 @@ export interface FreshnessMetrics {
   weatherStaleHours: number | null;
 }
 
+/** Postgres health for the admin page. */
 export interface PostgresMetrics {
   status: string;
   connections: number;
@@ -66,6 +75,7 @@ export interface PostgresMetrics {
   cacheHitPct: number | null;
 }
 
+/** Redis health for the admin page. */
 export interface RedisMetrics {
   status: string;
   usedMemoryMB: number;
@@ -76,6 +86,7 @@ export interface RedisMetrics {
   uptimeHours: number;
 }
 
+/** Live chunk and step progress of a TFT training run. */
 export interface TftTrainingProgress {
   chunk: number;
   n_chunks: number;
@@ -86,6 +97,7 @@ export interface TftTrainingProgress {
   updated_at: number;
 }
 
+/** A model service's training state. */
 export interface MlTrainingStatus {
   is_training: boolean;
   current_version?: string;
@@ -98,6 +110,7 @@ export interface MlTrainingStatus {
   progress?: TftTrainingProgress | null;
 }
 
+/** The CatBoost model currently serving, with its error metrics. */
 export interface MlActiveModel {
   version: string;
   mae: number | null;
@@ -108,6 +121,7 @@ export interface MlActiveModel {
   trainedAt: string;
 }
 
+/** The TFT service's health check. */
 export interface MlTftHealth {
   status: string;
   model_trained: boolean;
@@ -115,12 +129,14 @@ export interface MlTftHealth {
   horizon: number;
 }
 
+/** CatBoost service state for the admin page. */
 export interface CatBoostMetrics {
   service: string;
   training: MlTrainingStatus;
   activeModel: MlActiveModel | null;
 }
 
+/** The TFT model currently serving. */
 export interface MlTftActiveModel {
   version: string;
   trainedAt: string | null;
@@ -128,6 +144,7 @@ export interface MlTftActiveModel {
   parkScope: string | null;
 }
 
+/** TFT service state for the admin page. */
 export interface TftMetrics {
   service: string;
   training: MlTrainingStatus;
@@ -135,6 +152,7 @@ export interface TftMetrics {
   activeModel: MlTftActiveModel | null;
 }
 
+/** One scored row of the daily model comparison. */
 export interface ComparisonRow {
   targetDate: string;
   model: string;
@@ -146,6 +164,7 @@ export interface ComparisonRow {
   avgLeadDays: number;
 }
 
+/** Both model services plus their daily comparison. */
 export interface MlMetrics {
   catboost: CatBoostMetrics;
   tft: TftMetrics;
@@ -156,13 +175,9 @@ export interface MlMetrics {
   };
 }
 
-// ─── Model comparison board (GET /v1/admin/ml-comparison) ─────────────────────
-// Daily TFT-vs-CatBoost (reuses ComparisonRow above), plus the two intraday/daily
-// shadow boards (PCN and Shape vs CatBoost) with a computed per-segment verdict.
-
-/** A scored row from the PCN intraday or Shape day-curve shadow board: MAE/bias plus
- * mean actual/predicted per (date, model, segment, lead bucket). MAE/bias come back as
- * Postgres numerics → string|number. */
+/** A scored row from the PCN intraday or Shape day-curve shadow board: MAE/bias plus mean
+ * actual/predicted per (date, model, segment, lead bucket). Postgres numerics arrive as
+ * `string | number`. */
 export interface ShadowComparisonRow {
   targetDate: string;
   model: string;
@@ -198,9 +213,8 @@ export interface ChallengerVerdict {
   challengerWins: boolean;
 }
 
-/** PCN−persistence MAE delta per (forecast horizon, segment), n-weighted. delta>0 ⇒
- * PCN's L-ahead forecast beats a naive no-change baseline. Persistence dominates at
- * short leads; PCN pulls ahead at longer leads (the rest-of-day the UI serves). */
+/** PCN−persistence MAE delta per (forecast horizon, segment), n-weighted. delta>0 ⇒ PCN's
+ * forecast beats a naive no-change baseline at that lead. */
 export interface LeadCurveVerdict {
   leadBucket: string; // '1h' | '3h' | '6h'
   segment: string;
@@ -221,19 +235,20 @@ export interface ComparisonSection<TRow, TVerdict> {
   error?: string;
 }
 
+/** The model comparison board (`GET /v1/admin/ml-comparison`): daily TFT and two shadow boards. */
 export interface MlComparisonBoard {
   timestamp: string;
-  /** TFT vs CatBoost forward scoreboard (no verdict — rows only). */
+  /** TFT vs CatBoost forward scoreboard (rows only, no verdict). */
   daily: ComparisonSection<ComparisonRow, never>;
   /** PCN vs CatBoost intraday shadow board + PCN−CatBoost verdict. */
   intraday: ComparisonSection<ShadowComparisonRow, IntradayVerdict>;
   /** Shape vs CatBoost day-curve shadow board + Shape−CatBoost verdict. */
   shape: ComparisonSection<ShadowComparisonRow, ChallengerVerdict>;
-  /** PCN@{1h,3h,6h} vs persistence lead-curve board + verdict (§7.7). Optional: absent
-   * on API builds predating the lead-curve scorer. */
+  /** PCN@{1h,3h,6h} vs persistence lead-curve board and verdict; absent on older API builds. */
   leadCurve?: ComparisonSection<ShadowComparisonRow, LeadCurveVerdict>;
 }
 
+/** One GPU on the API host. */
 export interface GpuDevice {
   index: number | null;
   name: string;
@@ -247,6 +262,7 @@ export interface GpuDevice {
   powerLimitW: number | null;
 }
 
+/** The API host's GPUs, or why they could not be read. */
 export interface GpuMetrics {
   available: boolean;
   count?: number;
@@ -255,6 +271,7 @@ export interface GpuMetrics {
   error?: string;
 }
 
+/** The admin system-health endpoint's answer. */
 export interface SystemHealthResponse {
   timestamp: string;
   host: HostMetrics;
@@ -265,6 +282,7 @@ export interface SystemHealthResponse {
   ml: MlMetrics;
 }
 
+/** One background job queue's counts. */
 export interface QueueEntry {
   name: string;
   active: number;
@@ -274,6 +292,7 @@ export interface QueueEntry {
   completed: number;
 }
 
+/** The admin queue-status endpoint's answer. */
 export interface QueueStatusResponse {
   timestamp: string;
   queues: QueueEntry[];

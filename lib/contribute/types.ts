@@ -101,10 +101,8 @@ export interface SubmissionSummary {
 }
 
 /**
- * Signed, short-lived upload ticket. Issued by `/api/contribute/start` AFTER the
- * Turnstile challenge is verified, then presented (instead of re-solving Turnstile)
- * when authorizing each direct-to-Blob upload and when finalizing the submission.
- * HMAC-signed so the client can't tamper with the assignment or file budget.
+ * Signed, short-lived upload ticket that `/api/contribute/start` issues after Turnstile (see
+ * `./ticket.ts`), so the client cannot change the assignment or the file budget.
  */
 export interface TicketPayload {
   /** Submission id — also the Blob folder all files must land under. */

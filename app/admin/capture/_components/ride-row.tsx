@@ -7,12 +7,7 @@ import { Chip } from '../../_ui/primitives';
 import type { UploadState } from '../_lib/types';
 import { PhotoInputs, StateLine } from './photo-inputs';
 
-/**
- * One ride, why it sits where it does, and the two ways to give it a photograph.
- *
- * The inputs and the upload states are in `photo-inputs.tsx`, because the park row
- * needs both and neither is about rides.
- */
+/** The inputs and upload states live in `photo-inputs.tsx`, which the park row shares. */
 
 /** Why this ride sits where it does, in words rather than a score. */
 function ReasonChip({ ride }: { ride: RankedRide }) {
@@ -48,6 +43,10 @@ interface RideRowProps {
   featured?: boolean;
 }
 
+/**
+ * Capture-screen row for one ride: name, why it is ranked there, land and distance, upload states
+ * and the camera and library inputs. `featured` makes it the larger, highlighted row.
+ */
 export function RideRow({ ride, distanceM, states, onFiles, featured }: RideRowProps) {
   return (
     <li

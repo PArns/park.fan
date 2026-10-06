@@ -3,14 +3,10 @@ import { API_CATALOG_PATH } from '@/lib/agents/api-catalog';
 import { AGENT_SKILLS, skillArtifactPath } from '@/lib/agents/skills';
 
 /**
- * The ARD capability manifest (agenticresourcediscovery.org, ai-catalog data model) — one
- * document that says what park.fan can do for an agent, as opposed to which pages it has.
- *
- * It is an index of indexes and holds no facts of its own: every entry points at a document
- * that already exists in this repository (the API catalog, the skills), so nothing in here can
- * drift away from what is actually served. The `representativeQueries` are the exception and
- * they are the point — a registry embeds them to decide whether park.fan is worth asking, so
- * they are written as somebody would type them, not as a description of the entry.
+ * The ARD capability manifest (agenticresourcediscovery.org): what park.fan can do for an agent.
+ * Every entry points at a document served elsewhere in this repository, so it cannot drift. The
+ * `representativeQueries` are written as somebody would type them, because a registry embeds them
+ * to decide whether park.fan is worth asking.
  */
 
 export const AI_CATALOG_PATH = '/.well-known/ai-catalog.json';
@@ -32,6 +28,10 @@ function identifier(namespace: string, name: string): string {
   return `urn:air:park.fan:${namespace}:${name}`;
 }
 
+/**
+ * Builds the ARD capability manifest served at `/.well-known/ai-catalog.json`: one entry for the
+ * API catalog and one per agent skill.
+ */
 export function aiCatalog() {
   const entries: CatalogEntry[] = [
     {

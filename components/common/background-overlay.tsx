@@ -15,6 +15,10 @@ const gradientIntensity = {
   heavy: 'from-background/70 via-background/60 to-background/10',
 };
 
+/**
+ * Fills its positioned parent with a background photo under a bottom-up gradient of `light`,
+ * `medium` or `heavy` strength.
+ */
 export function BackgroundOverlay({
   imageSrc,
   alt,

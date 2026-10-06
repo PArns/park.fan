@@ -28,9 +28,9 @@ export interface WorldPanelContinent {
 const PANEL_COUNTRY_LIMIT = 12;
 
 /**
- * Server seed for the hero's world-map panel: static geo structure (24h cache) + the
- * geo-live open counts (3600s — seed only, the client polls live values). Renders nothing
- * when the structure is unavailable; the gate mounts the actual panel only on xl viewports.
+ * Server seed for the hero's world-map panel: the static geo structure and the geo-live open
+ * counts, each at its fetch helper's cache window (a seed only; the client polls live values).
+ * Renders nothing when the structure is unavailable; the gate mounts the panel only on xl.
  */
 export async function HeroWorldPanel() {
   const [structure, live] = await Promise.all([

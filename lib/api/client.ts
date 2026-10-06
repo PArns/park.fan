@@ -1,25 +1,17 @@
-// API base configuration
-const getApiBaseUrl = () => {
-  // Server-side: go directly to the API to save round-trip/overhead
+/** Where a backend request starts: the API itself on the server, this app's own proxy routes in a browser. */
+export const getApiBaseUrl = () => {
   if (typeof window === 'undefined') {
     return process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
   }
-  // Client-side: use relative path to trigger Next.js proxy (avoids CORS)
+  // Relative, so the browser goes through the Next.js proxy and needs no CORS.
   return '';
 };
 
 /**
- * How this frontend names itself to api.park.fan.
- *
- * Without it every server-side request arrives as undici's default `node`, which makes the
- * backend's access log useless for telling our traffic apart from anything else pointed at the
- * same host. The deployment SHA is in there because the interesting question in that log is
- * usually "which deploy is hammering this", and the environment because build, preview and
- * production hit the same rate limit (300 req/60s) from the same origin.
- *
- * Server-side only, deliberately: `User-Agent` is a forbidden header name in the browser's
- * fetch, so setting it there is silently dropped — and the browser never talks to the backend
- * directly anyway, it goes through this app's own /api proxy routes.
+ * How this frontend names itself to api.park.fan, with the deploy SHA and environment, so the
+ * backend's access log can tell our traffic (and which deploy) apart from undici's default `node`.
+ * Server-side only: `User-Agent` is a forbidden header in browser fetch, and the browser goes
+ * through this app's proxy routes anyway.
  */
 function serverUserAgent(): string {
   const sha = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? 'dev';
@@ -28,25 +20,12 @@ function serverUserAgent(): string {
 }
 
 /**
- * Headers every request that targets the backend (api.park.fan) DIRECTLY should carry:
- * the auth key and the identifying User-Agent above.
+ * Headers every request that targets the backend directly should carry: the identifying
+ * User-Agent and, when configured, the server-only `API_AUTH_KEY`. Empty in the browser.
  *
- * The key lives in the server-only `API_AUTH_KEY` env var (NOT `NEXT_PUBLIC_`), so it
- * is only available server-side. It is omitted when unconfigured — on the client (where
- * requests go through the Next.js proxy routes) and in unconfigured environments.
- *
- * Spread this into the `headers` of any fetch that targets the backend directly. It was called
- * `getServerAuthHeaders` while the key was the only thing in it; the User-Agent went in here
- * rather than into a second helper that call sites could forget to add.
- *
- * **A script of ours is not a different client.** Three call sites had invented their own
- * name instead — `park.fan-build/1.0` in `generate-media-manifest` and `check-blog-slugs`,
- * `park.fan-admin/1.0` in the admin media routes — and an invented name is a second client
- * to allow at the edge. Neither was allowed anywhere, which the prebuild reported as
- * `Park catalog unreachable (HTTP 403)` and then carried on past, skipping every slug
- * verification for the rest of the run; the admin's GPS cross-check fails the same way, into
- * an empty park list. All three now spread this helper, the scripts included: the module
- * imports nothing, so `node`'s type stripping loads it straight out of `scripts/*.mjs`.
+ * Scripts spread this too rather than inventing their own User-Agent: an unknown client name is
+ * blocked at the edge. The module imports nothing, so `node`'s type stripping loads it from
+ * `scripts/*.mjs`.
  */
 export function getServerApiHeaders(): Record<string, string> {
   if (typeof window !== 'undefined') return {};
@@ -57,6 +36,7 @@ export function getServerApiHeaders(): Record<string, string> {
   };
 }
 
+/** `fetch` options for {@link apiFetch}, plus query params and Next's cache extensions. */
 export interface FetchOptions extends RequestInit {
   params?: Record<string, string | number | boolean | undefined>;
   /** Next.js server-side fetch extensions (revalidate, tags). Server components only. */
@@ -64,31 +44,30 @@ export interface FetchOptions extends RequestInit {
 }
 
 /**
- * Digest forwarded to the error boundary so it can render the maintenance page.
- * In production Next.js redacts `error.message` for server-thrown errors but
- * preserves a custom `digest`, so this is the reliable cross-environment signal.
+ * Digest forwarded to the error boundary so it can render the maintenance page. Production
+ * redacts `error.message` for server-thrown errors but keeps a custom `digest`.
  */
 export const API_MAINTENANCE_DIGEST = 'API_MAINTENANCE_1033';
 
 const CLOUDFLARE_TUNNEL_ERROR_RE = /(error[\s_]*1033|error code:\s*1033)/i;
 
 /**
- * Detects a Cloudflare "Argo Tunnel error" (error code 1033), which is served as
- * an HTML page (usually HTTP 530) when the API origin tunnel is unreachable.
+ * Detects a Cloudflare tunnel error page (code 1033, usually HTTP 530), served when the API
+ * origin is unreachable.
  */
 function isCloudflareTunnelDown(body: string): boolean {
   if (!body) return false;
   return CLOUDFLARE_TUNNEL_ERROR_RE.test(body);
 }
 
+/**
+ * Error thrown by `apiFetch` for a non-OK API response, carrying the HTTP status; a 502 or a
+ * Cloudflare 1033 page sets `isMaintenance` and the `API_MAINTENANCE_1033` digest.
+ */
 export class ApiError extends Error {
   digest?: string;
-  // Declared and assigned rather than written as constructor parameter properties.
-  // Identical at runtime, and it keeps this module loadable by the repo's own test
-  // scripts: they run on node's type stripping, which refuses parameter properties
-  // outright ("not supported in strip-only mode") — and node 26 dropped the
-  // --experimental-transform-types that used to be the way around it. Anything
-  // importing this file, which is every `lib/api` fetcher, was untestable until now.
+  // Declared and assigned instead of constructor parameter properties, which node's type stripping
+  // refuses; the repo's test scripts load this module that way.
   status: number;
   isMaintenance: boolean;
 
@@ -105,24 +84,19 @@ export class ApiError extends Error {
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-// Transient upstream failures worth a short retry. A single 429/503/504 (or a dropped
-// connection) from the API during a build prerendered the whole route as an error and failed the
-// build — brief blips or short rate-limit bursts would turn green builds red at random. We retry
-// these on the server only; on the client React Query already handles retries, and the browser
-// talks to the same-origin proxy anyway. 502 is treated as maintenance and is NOT retried (it
-// surfaces the maintenance page).
-//
-// NOTE: the real fix for build-time rate-limiting (api.park.fan allows 300 req/60s) is to set the
-// server-only `API_AUTH_KEY` env var in the build environment (Vercel → Build), so build requests
-// are authenticated. Without it the whole build runs unauthenticated and can trip the limit; this
-// retry only smooths over brief bursts, it does not replace the key.
+// Transient upstream failures worth a short server-side retry, so a brief blip or rate-limit burst
+// during a build does not fail it; React Query retries in the browser. 502 means maintenance and
+// is not retried. Build-time rate limiting is really solved by setting `API_AUTH_KEY` in the build
+// environment; this only smooths over bursts.
 const RETRYABLE_STATUS = new Set([429, 503, 504]);
 const RETRY_BACKOFF_MS = [300, 900];
 
 /**
- * @param read How a successful response becomes the result. `response.json()` unless the caller
- *   has a reason to look at the response first — `getContinents` reads the ETag and skips the body
- *   when it has already parsed that document.
+ * Fetches a park.fan API endpoint with query params and the server API headers. On the server a
+ * 429, 503, 504 or network failure is retried up to twice; a non-OK answer throws an `ApiError`.
+ *
+ * @param read How a successful response becomes the result; `response.json()` unless the caller
+ *   needs the response first (`getContinents` reads the ETag and may skip the body).
  */
 export async function apiFetch<T>(
   endpoint: string,
@@ -131,7 +105,6 @@ export async function apiFetch<T>(
 ): Promise<T> {
   const { params, ...fetchOptions } = options;
 
-  // Build URL with query params
   const baseUrl = getApiBaseUrl();
   const url = new URL(
     `${baseUrl}${endpoint}`,
@@ -146,7 +119,6 @@ export async function apiFetch<T>(
     });
   }
 
-  // Retry transient upstream errors server-side only (build/SSR/ISR resilience).
   const maxAttempts = typeof window === 'undefined' ? RETRY_BACKOFF_MS.length + 1 : 1;
 
   let lastError: unknown;
@@ -168,8 +140,7 @@ export async function apiFetch<T>(
       }
 
       const body = await response.text().catch(() => '');
-      // 502 Bad Gateway means the API origin is unreachable, same as a 1033 tunnel
-      // outage, so both render the maintenance page.
+      // 502 means the API origin is unreachable, like a 1033 tunnel outage: both are maintenance.
       const isMaintenance = response.status === 502 || isCloudflareTunnelDown(body);
       const error = new ApiError(
         response.status,
@@ -177,15 +148,14 @@ export async function apiFetch<T>(
         isMaintenance
       );
 
-      // Retry only transient upstream 5xx; surface 4xx (incl. 404) and maintenance immediately.
+      // Retry only transient 5xx; 4xx (incl. 404) and maintenance surface immediately.
       if (RETRYABLE_STATUS.has(response.status) && attempt < maxAttempts - 1) {
         lastError = error;
         continue;
       }
       throw error;
     } catch (err) {
-      // Network-level failure (fetch threw): retry while attempts remain. A decided ApiError
-      // (non-retryable, or thrown on the final attempt) is rethrown as-is.
+      // A network failure retries while attempts remain; a decided ApiError is rethrown as-is.
       if (err instanceof ApiError) throw err;
       lastError = err;
       if (attempt < maxAttempts - 1) continue;
@@ -197,12 +167,9 @@ export async function apiFetch<T>(
 }
 
 /**
- * `null` for the API's own 404, and a throw for everything else.
- *
- * This is the one to use when `null` ends in `notFound()`. A page that 404s on a failed fetch
- * publishes an outage as a fact about the URL: Cloudflare holds a 404 for an hour, an ISR route
- * stores it for its whole `revalidate`, and a crawler that arrives in that window drops the page.
- * A throw reaches the error boundary as an uncached 500 instead, and the next request tries again.
+ * `null` for the API's own 404, and a throw for everything else. Use it when `null` ends in
+ * `notFound()`: a 404 from a failed fetch gets cached by Cloudflare and ISR as a fact about the
+ * URL, while a throw is an uncached 500 and the next request tries again.
  * See "A negative cache may only hold a settled answer" in docs/architecture/caching-strategy.md.
  */
 export function nullOnNotFound<T>(promise: Promise<T>): Promise<T | null> {
@@ -213,11 +180,9 @@ export function nullOnNotFound<T>(promise: Promise<T>): Promise<T | null> {
 }
 
 /**
- * Like `.catch(() => null)` but re-throws maintenance errors so the error boundary
- * can detect API outages and render the maintenance page.
- *
- * For optional content only. Where `null` means "this page does not exist", use
- * {@link nullOnNotFound}: this one turns a 500, a 429 or a timeout into the same `null`.
+ * Like `.catch(() => null)` but re-throws maintenance errors so the error boundary can render the
+ * maintenance page. For optional content only: it turns a 500, 429 or timeout into `null`, so
+ * where `null` means „this page does not exist" use {@link nullOnNotFound}.
  */
 export function catchNonFatal<T>(promise: Promise<T>): Promise<T | null> {
   return promise.catch((err: unknown) => {
@@ -226,7 +191,7 @@ export function catchNonFatal<T>(promise: Promise<T>): Promise<T | null> {
   });
 }
 
-// Convenience methods
+/** `GET` and `POST` shorthands over {@link apiFetch}. */
 export const api = {
   get: <T>(endpoint: string, options?: FetchOptions) =>
     apiFetch<T>(endpoint, { ...options, method: 'GET' }),

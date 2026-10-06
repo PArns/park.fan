@@ -37,20 +37,14 @@ import { addPendingImage } from '../_lib/pending-images';
 interface EditorCanvasProps {
   initialMarkdown: string;
   onMarkdownChange: (md: string) => void;
-  /** Hand the TipTap editor instance up so the PropertiesPanel (rendered next
-   *  to the canvas in editor-client) can drive commands directly without
-   *  needing the canvas to proxy them. */
+  /** Hands the TipTap editor up so the PropertiesPanel can run commands directly. */
   onEditorReady?: (editor: Editor | null) => void;
 }
 
 /**
- * TipTap canvas with Notion-style affordances: bubble menu on selection
- * (Bold/Italic/Strike/Code/Link), slash command on `/` for inserting blocks
- * (headings/lists/tables/code/divider) and our park.fan custom inserts
- * (Park/Ride/Spotlight via a search picker, plus YouTube/Instagram/Suno
- * embed prompts). The editor emits markdown on every change; we rely on
- * `tiptap-markdown` to keep our custom blocks structural via `[label](ref:…)`
- * links and bare embed-URL lines.
+ * The blog editor's TipTap canvas: bubble menu, `/` slash command and park.fan inserts (park,
+ * ride, spotlight, embeds), emitting markdown on every change. Custom blocks stay structural as
+ * `[label](ref:…)` links and bare embed-URL lines.
  */
 export function EditorCanvas({
   initialMarkdown,
@@ -59,48 +53,32 @@ export function EditorCanvas({
 }: EditorCanvasProps) {
   const [pickerMode, setPickerMode] = useState<PickerMode | null>(null);
   const [imagePickerOpen, setImagePickerOpen] = useState(false);
-  /** When set, the next ImagePicker pick replaces the existing img at this
-   *  doc position rather than inserting a fresh image — driven by the
-   *  PropertiesPanel's "Pick image…" action via a window event. The src is
-   *  carried along so the position can be re-anchored at apply time if edits
-   *  above the image shifted it. */
+  /** When set, the next image pick replaces the image at this position; `src` re-anchors it. */
   const replaceImagePosRef = useRef<{ pos: number; src: string } | null>(null);
-  /** True while applyThemesToDoc restores table themes after a setContent —
-   *  that transaction changes the doc and would otherwise fire onUpdate,
-   *  marking a freshly-loaded post as dirty (and overwriting the draft body
-   *  with tiptap-markdown's normalisation of it). */
+  /** True while table themes are restored after a `setContent`, so that is not taken as an edit. */
   const applyingThemesRef = useRef(false);
-  // The markdown this canvas last handed up. The parent stores it and passes it straight back as
-  // `initialMarkdown`, and the sync effect below serialised the whole document again on every
-  // keystroke just to find the two equal.
+  // The markdown this canvas last handed up, which the parent passes straight back as
+  // `initialMarkdown`; the sync effect skips re-serialising the document when they are equal.
   const lastEmittedRef = useRef<string | null>(null);
-  /** When set, the next ParkRidePicker pick replaces an existing link at this
-   *  position rather than inserting a fresh link. The PropertiesPanel asks
-   *  for a replace via a window event; the canvas captures pos here. */
+  /** When set, the next park/ride pick replaces the link at this position. */
   const replacePosRef = useRef<number | null>(null);
-  /** When the panel's widget form asks for a park slug via "Pick…", we open
-   *  the ParkRidePicker in plain park-or-ride mode and remember the request
-   *  id so the result event can be addressed back to the originating field. */
+  /** Request id of a widget field's "Pick…", so the result goes back to the field that asked. */
   const widgetPickRequestRef = useRef<string | null>(null);
-  /** Chip rect for whichever surface triggered the image picker — drives
-   *  anchored modal positioning instead of always-on-top. */
+  /** Rect of whatever opened the image picker, so the modal anchors there. */
   const [imagePickerAnchor, setImagePickerAnchor] = useState<{
     top: number;
     bottom: number;
     left: number;
     right: number;
   } | null>(null);
-  /** Trigger rect for the park/ride picker. Set when the picker is opened
-   *  from a panel control so it floats near the click instead of pt-[15vh]. */
+  /** Rect of the panel control that opened the park/ride picker, so it floats near the click. */
   const [parkPickerAnchor, setParkPickerAnchor] = useState<{
     top: number;
     bottom: number;
     left: number;
     right: number;
   } | null>(null);
-  /** Render-time mirror of replaceImagePosRef.current so the ImagePicker can
-   *  read `replaceMode` without us reading a ref during render (React 19
-   *  forbids that — eslint-plugin-react-hooks/refs catches it). */
+  /** Render-time mirror of `replaceImagePosRef`, because a ref may not be read during render. */
   const [imagePickerReplaceMode, setImagePickerReplaceMode] = useState(false);
   // Hold the editor in a ref too so the slash extension can fire actions
   // synchronously without sequencing through useState (which React 19 forbids
@@ -140,9 +118,7 @@ export function EditorCanvas({
 
   const onToolbarEmit = (action: ToolbarAction) => emit(action);
 
-  /** Stage pasted / dropped image files and insert their markdown at `pos`
-   *  (or the current caret). The bytes ride along in the pending-images
-   *  store until Save ships them as commits in the PR. */
+  /** Stages pasted or dropped images and inserts their markdown at `pos` or the caret. */
   const insertUploadedImages = async (files: File[], pos?: number) => {
     const ed = editorRef.current;
     if (!ed) return;
@@ -165,27 +141,20 @@ export function EditorCanvas({
     extensions: [
       StarterKit.configure({
         codeBlock: { HTMLAttributes: { class: 'bg-muted rounded-md p-3' } },
-        // StarterKit v3 ships its own Link extension; we configure ours below
-        // with stricter URL validation, so disable the bundled one to avoid the
-        // "Duplicate extension names found: ['link']" warning.
+        // Ours is configured below; StarterKit's own would be a duplicate extension.
         link: false,
       }),
       Link.configure({
         openOnClick: false,
         autolink: true,
         protocols: ['ref', 'park', 'attraction', 'http', 'https', 'mailto'],
-        // TipTap v3 has a stricter default URL validator that rejects our
-        // `ref:/parks/<…>` form (and any plain absolute path). Whitelist the
-        // protocols we serialise into markdown so setLink({href}) actually
-        // sticks. Inline scheme defangs `javascript:` and `data:` URIs.
+        // TipTap v3's default validator rejects `ref:/parks/<…>` and plain paths, so the schemes
+        // we serialise are listed; `javascript:` and `data:` stay out.
         isAllowedUri: (url) => /^(ref:|park:|attraction:|https?:\/\/|mailto:|\/)/.test(url),
         HTMLAttributes: { rel: 'noopener' },
       }),
-      // `inline: true` lets the image live INSIDE a paragraph alongside
-      // prose — so authors can put their caret next to a left/right-floated
-      // image and type text that wraps around it. Without this the image is
-      // its own block, the paragraph holds only the image, and there's
-      // nothing to type into next to it.
+      // `inline: true` lets an image sit inside a paragraph, so text can be typed beside a
+      // floated one.
       Image.configure({ inline: true, allowBase64: false }),
       Placeholder.configure({
         placeholder: ({ node }) =>
@@ -209,9 +178,7 @@ export function EditorCanvas({
         transformPastedText: true,
         transformCopiedText: true,
       }),
-      // buildSlashItems closes over `emit`, which reads editorRef.current —
-      // but that read only happens when the user triggers a slash command at
-      // runtime, never during render. React's lint can't see the lazy edge.
+      // `emit` reads `editorRef.current` only when a slash command runs, never during render.
       // eslint-disable-next-line react-hooks/refs
       SlashCommand.configure({
         buildItems: () => buildSlashItems(emit),
@@ -243,9 +210,8 @@ export function EditorCanvas({
         }
         return false;
       },
-      // Paste / drop image files → stage them for the save-PR and insert
-      // their markdown immediately. Non-image clipboard content falls
-      // through to tiptap-markdown's regular paste handling.
+      // Pasted image files are staged for the save and inserted at once; anything else falls
+      // through to tiptap-markdown.
       handlePaste(_view, event) {
         const files = Array.from(event.clipboardData?.files ?? []).filter((f) =>
           f.type.startsWith('image/')
@@ -255,9 +221,8 @@ export function EditorCanvas({
         void insertUploadedImages(files);
         return true;
       },
-      // NOTE: image-file drops are handled by the canvas wrapper's React
-      // onDrop (covers the whole card incl. padding); a PM-level handleDrop
-      // here would double-insert since the event bubbles up to the wrapper.
+      // Image drops are handled by the wrapper's `onDrop`, which covers the padding; a
+      // `handleDrop` here would insert twice, since the event bubbles up to it.
     },
     onUpdate: ({ editor: e }) => {
       // Theme restoration after a load is not a user edit — swallowing it
@@ -311,17 +276,10 @@ export function EditorCanvas({
 
   const handlePick = (r: PickerResult) => {
     if (!editor) return;
-    // Widget Pick… flow — the request originated from the PropertiesPanel
-    // wanting a slug for a widget fence field. Fire the result back with
-    // just the bare slug (last path segment) and close the picker without
-    // touching the doc.
+    // A widget field's "Pick…": send back the bare slug and close without touching the doc.
     if (widgetPickRequestRef.current) {
-      // refKey looks like `/parks/europe/germany/bruehl/phantasialand[/attractions/<ride>]`;
-      // the widget fields expect just the last slug component. For a ride
-      // we also surface its parent park slug from the search hit so the
-      // attraction-widget's parkSlug field auto-fills — the URL has an
-      // intercalated `/attractions/` segment so slicing the path alone would
-      // produce "attractions" instead of the park.
+      // The last segment of `refKey` is the slug. A ride's path carries `/attractions/`, so its
+      // park slug comes from the search hit, not from slicing the path.
       const parts = r.refKey.split('/').filter(Boolean);
       const slug = parts[parts.length - 1] ?? r.refKey;
       window.dispatchEvent(
@@ -340,9 +298,7 @@ export function EditorCanvas({
     // Defend against incidental whitespace from the search backend so the
     // inserted markdown doesn't end up `[Phantasialand ](ref:…)`.
     const label = r.label.trim();
-    // Replace flow — when the user came in via "Replace…" from the panel.
-    // We resolve the link range from the click pos at apply time so the
-    // operation always targets the link that's actually there now.
+    // "Replace…" from the panel: the link range is resolved now, so it targets the link there.
     if (replacePosRef.current !== null) {
       const pos = replacePosRef.current;
       const opt = pickerMode === 'spotlight' ? 'full' : r.option;
@@ -362,11 +318,8 @@ export function EditorCanvas({
         .run();
       replacePosRef.current = null;
     } else if (pickerMode === 'spotlight' || r.option === 'full') {
-      // Block card always uses ?full — that's what triggers the spotlight
-      // render. Comes in here from the standalone Spotlight insert OR when
-      // the author picks the Full variant in a Park/Ride dialog. Wrapping
-      // with `\n\n` lifts the link into its own paragraph so the renderer
-      // hoists it into the block card on publish.
+      // The spotlight is a `?full` link in a paragraph of its own, which the renderer hoists
+      // into the block card.
       const md = `\n\n[${label}](ref:${r.refKey}?full)\n\n`;
       editor.chain().focus().insertContent(md).run();
     } else {
@@ -388,10 +341,8 @@ export function EditorCanvas({
     setPickerMode(null);
   };
 
-  // The PropertiesPanel (rendered next to this canvas by editor-client) fires
-  // this when the author hits "Replace park / ride" — we stash the clicked
-  // pos and open our picker. handlePick then resolves the link range fresh
-  // and swaps content.
+  // The panel's "Replace park / ride": stash the clicked position and open the picker;
+  // `handlePick` resolves the link range fresh.
   useEffect(() => {
     const onReplaceRequest = (e: Event) => {
       const detail = (
@@ -445,7 +396,6 @@ export function EditorCanvas({
 
   return (
     <div className="relative">
-      {/* Soft glow accent so the writing area visually anchors the page. */}
       <div
         aria-hidden="true"
         className="from-primary/20 via-primary/0 to-primary/10 pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br opacity-60 blur-sm"
@@ -455,9 +405,8 @@ export function EditorCanvas({
         // (h-[calc(100vh-6rem)]) so an empty/new editor and the panel end at
         // the same line; long content still grows past it naturally.
         className="border-border/60 bg-background/60 relative flex min-h-[calc(100vh-6rem)] flex-col rounded-2xl border p-8"
-        // Catch image drops on the WHOLE canvas card, not just the exact
-        // ProseMirror text area — dropping onto the padding / toolbar zone
-        // used to make the browser navigate to the file instead of uploading.
+        // Image drops on the whole card, not just the ProseMirror area: a drop on the padding
+        // would make the browser open the file.
         onDragOver={(e) => {
           if (Array.from(e.dataTransfer.items).some((i) => i.kind === 'file')) {
             e.preventDefault();
@@ -528,10 +477,7 @@ export function EditorCanvas({
                 setImagePickerAnchor(null);
                 return;
               }
-              // Don't `.focus()` here — that would yank the editor's scroll
-              // back to wherever the caret was sitting (often the top of the
-              // doc), which is exactly the "picker scrolls everything to the
-              // top" report. setNodeAttribute alone keeps the viewport stable.
+              // No `.focus()`: it scrolls back to the caret, often the top of the doc.
               const prevNode = editor.state.doc.nodeAt(pos);
               const prevAlt =
                 prevNode && prevNode.type.name === 'image' ? String(prevNode.attrs.alt ?? '') : '';
@@ -544,10 +490,7 @@ export function EditorCanvas({
                   return true;
                 })
                 .run();
-              // Re-emit the selection so the PropertiesPanel's preview img
-              // re-binds to the new src — without this the right-hand thumbnail
-              // would keep showing the old image until the user clicked
-              // elsewhere and back.
+              // Re-emit the selection so the panel's thumbnail shows the new src.
               const altParts = prevAlt.split('|').map((s) => s.trim());
               window.dispatchEvent(
                 new CustomEvent('parkfan-selection', {

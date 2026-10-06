@@ -10,18 +10,10 @@ export interface LivePosition {
 }
 
 /**
- * A precise, following position — only while `enabled`, and only where location is already
- * granted.
- *
- * The site otherwise avoids a second `watchPosition` (PAR-341): the geolocation context re-reads a
- * coarse fix once a minute in a park, and lists of rides do not need more. A compass does. An arrow
- * computed from a one-minute-old, 50 m fix points at the wrong ride as soon as the reader has
- * walked past two others. So this watches with high accuracy, but the caller passes its own
- * visibility as `enabled`: the watch runs while the compass is on screen and the tab is in front,
- * and is cleared the moment either stops being true — which is when the park map does the same.
- *
- * It never asks. `granted` is the context's answer; without it this stays `null` and the caller
- * falls back to the position the nearby answer was made for.
+ * A precise, following position, only while `enabled` and only where location is already granted.
+ * The geolocation context's coarse once-a-minute fix is enough for ride lists but would point a
+ * compass arrow at the wrong ride, so this watches with high accuracy while the caller says it is
+ * on screen and in front. It never asks: without `granted` it stays `null`.
  */
 export function useLivePosition(enabled: boolean, granted: boolean): LivePosition | null {
   const [position, setPosition] = useState<LivePosition | null>(null);

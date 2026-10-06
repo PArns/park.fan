@@ -45,26 +45,13 @@ export function latestNewsFrom(
 /**
  * The newest news post, in one of two shapes.
  *
- * - **`chip`** (the homepage hero): one line — label, date, headline, arrow. The headline
- *   truncates, so the chip is exactly as tall as the open-parks badge beside it. Beside the badge
- *   (from a 34 rem row, `HeroBadgeRow`) that costs the hero no height; below it (every phone) the
- *   chip stands under the badge and the plate is one chip, 38 px, taller.
- * - **`card`** (the phone menu): label and date on top, then the headline in two lines and two to
- *   three lines of the post's teaser, in a smaller type than the menu's entries. It was the chip
- *   there, with the headline allowed a second line, and a 300 px column left „EQT will Parques
- *   Reunidos…" and nothing else — no way to tell what the news is about (Patrick, 2026-09-25).
+ * - **`chip`** (the homepage hero): one line of label, date, headline and arrow, as tall as the
+ *   open-parks badge beside it. The hero is the only news above the fold on any screen.
+ * - **`card`** (the phone menu): label and date, then two lines of headline and a few of teaser,
+ *   so a 300 px column says what the news is about.
  *
- * Used where a whole news row would cost too much room: the hero is the only news above the fold
- * on any screen (it is `min-h-dvh`), and the only news a phone sees before the blog chapter at the
- * foot of the page, since the band under the hero is `lg` only.
- *
- * **News shows its age, and here it is the date.** Not `NewsAge`: that one adds its relative half
- * ("vor 3 Tagen") after hydration, and inside a truncating line the growth would slide the
- * headline sideways under the reader's eyes. The date is formatted in UTC, the zone the
- * frontmatter's bare day parses into, so the server and the browser print the same day.
- *
- * No `'use client'`: both hosts are client components already, and `useFormatter` works on either
- * side.
+ * The age is the date, not `NewsAge`, whose relative half arrives after hydration and would slide
+ * a truncated headline sideways. No `'use client'`: both hosts are client components already.
  */
 export function LatestNewsChip({
   news,

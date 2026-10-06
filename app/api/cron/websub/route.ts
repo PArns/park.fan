@@ -5,23 +5,10 @@ import { cronUnauthorized } from '@/lib/security/cron-auth';
 export const maxDuration = 30;
 
 /**
- * Tell the WebSub hub the blog feeds may have changed.
- *
- * The hub is what turns a subscriber's polling interval into a push, and it can
- * only do that if somebody tells it to look. Declaring
- * `<atom:link rel="hub">` in the feed and never pinging leaves every subscriber
- * exactly where polling left them.
- *
- * Daily, and unconditional. The obvious refinement — ping only when a post is
- * new — needs state this route does not have, and would buy nothing: the hub
- * fetches the feed, diffs it against what it last saw and pushes **only** if
- * something actually changed, so a ping for an unchanged feed costs one
- * conditional GET of a public document. Six requests a day is not worth a
- * snapshot to avoid.
- *
- * What this cannot do is deliver a post within minutes of publication, because
- * it fires on a schedule rather than on a deploy. Run it by hand
- * (`pnpm ping:websub`) after publishing if that matters for a particular post.
+ * Tells the WebSub hub the blog feeds may have changed, so subscribers get a push instead of
+ * polling. Daily and unconditional: the hub diffs the feed and pushes only on a change, so a ping
+ * for an unchanged feed costs one conditional GET. For a post that should go out at once, run
+ * `pnpm ping:websub` after publishing.
  */
 export async function GET(request: Request) {
   const denied = cronUnauthorized(request);

@@ -35,10 +35,8 @@ export async function BlogParkWidget({ park, slug, inRow = false }: BlogParkWidg
       className={
         inRow
           ? 'not-prose grid h-full w-full [grid-template-rows:auto_1fr] gap-3'
-          : // The fraction is of the article column, and how wide that column is follows
-            // the page, not the window — with the trip planner open the two stopped being
-            // the same number, so a third of a narrowed column is a card nobody can read.
-            // `sm:` stays: below it the planner is a modal sheet and nothing is inset.
+          : // The fraction is of the article column, whose width follows the page, not the
+            // window, while the trip planner is open. `sm:` stays: below it nothing is inset.
             'not-prose clear-both mx-auto my-8 grid w-full [grid-template-rows:auto_1fr] gap-3 sm:w-1/2 @min-[1024px]/page:w-1/3'
       }
     >
@@ -46,16 +44,11 @@ export async function BlogParkWidget({ park, slug, inRow = false }: BlogParkWidg
         {tBlog('widget.parkSpotlight')}
       </h3>
       {/*
-        The card's three sections inherit their row tracks via subgrid, so the
-        template has to sit on the card itself — not on this wrapper together
-        with the heading. Folding both into one `auto auto 1fr auto` grid gave
-        the panels `auto` tracks, which collapse against their `-mb-4`/`-mt-4`
-        overlap (12px for a header that needs ~78px), slicing the name and the
-        wait time in half. Same shape the hover preview and the reference grid
-        use; `minmax(220px, 1fr)` also keeps image-less cards at full height.
-        Below `sm` the photo is hidden, so the middle track only has to absorb
-        the two panels' 16px overlap — `0px` there let them collide and put the
-        wait time on top of the status badges.
+        The card's three sections inherit their row tracks via subgrid, so the template sits on the
+        card itself, never on this wrapper with the heading: `auto` tracks collapse against the
+        panels' `-mb-4`/`-mt-4` overlap and slice the name and wait time. `minmax(220px, 1fr)`
+        keeps image-less cards at full height; below `sm` the middle track absorbs the panels'
+        16 px overlap. See docs/rules/blog-spotlight-cards.md.
       */}
       <BlogParkCardLive
         park={park}

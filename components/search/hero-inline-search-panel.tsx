@@ -34,15 +34,11 @@ interface HeroInlineSearchPanelProps {
   /** Focus the input on mount — set when the visitor's own interaction pulled this chunk in. */
   autoFocus?: boolean;
   /** Called once the mount-focus has been dealt with, taken or declined. */
-  onFocusHandled?: () => void; /**
-   * `false` when the field does not sit on the hero photo.
-   *
-   * The dropdown is real glass at 62 % on purpose: in the hero it lands on the
-   * photo, the scrim and the plate, all smooth and all beautiful under blur. On
-   * a flat page it lands on whatever text happens to be under it, and that text
-   * reads straight through — in the homepage's step card the card's own hint
-   * ghosted up through the result rows. Off the hero it takes `tile` instead:
-   * more fill AND more blur, so it is still glass.
+  onFocusHandled?: () => void;
+  /**
+   * `false` when the field does not sit on the hero photo. The dropdown is glass at 62 % for the
+   * hero, where it lands on the photo; on a flat page the text under it reads through, so off the
+   * hero it takes `tile`, more fill and more blur.
    */
   onHero?: boolean;
 }
@@ -86,13 +82,9 @@ export default function HeroInlineSearchPanel({
   const search = useSearchResults(query);
   const { handleSelect, handleGlossarySelect } = useSearchNavigation(query.trim().length);
 
-  // Hand-off from the static shell: the visitor clicked or typed before this chunk arrived, so
-  // take over the focus and put the caret after what they already typed.
-  //
-  // Only if they are still there, though. Loading this chunk takes real time on a slow
-  // connection, and by now they may have scrolled past the hero or opened the header palette —
-  // stealing focus then would yank the page back up or out of an open dialog. `preventScroll`
-  // covers the rest: a focus() that scrolls is the same jump by another route.
+  // Hand-off from the static shell: the visitor clicked or typed before this chunk arrived, so take
+  // the focus and put the caret after what they typed. Only if they are still there: by now they
+  // may have scrolled past the hero or opened the palette. `preventScroll` avoids the same jump.
   useEffect(() => {
     if (!autoFocus) return;
     onFocusHandled?.();
@@ -134,7 +126,7 @@ export default function HeroInlineSearchPanel({
         }, cardRef);
       })
       .catch(() => {
-        // Without the tween the list simply snaps to its new size, which is what it did before.
+        // Without the tween the list simply snaps to its new size.
       });
 
     return () => {
@@ -144,25 +136,16 @@ export default function HeroInlineSearchPanel({
     };
   }, [expanded]);
 
-  // Reserve exactly the resting card's height in the flow, measured rather than assumed.
-  //
-  // It was a hardcoded constant that happened to match one locale's three rows. Any content
-  // that changes the card's height — a longer park name wrapping, a different language's
-  // heading, four rows instead of three — moved the card without moving the pills, so the gap
-  // between them drifted or closed entirely.
-  //
-  // Only measured while at REST, and only once the list it is measuring is the REAL one. Once a
-  // query grows the list the card is meant to expand over the pills, so the last resting height
-  // is what stays reserved; and a height taken off the pending skeleton would be reserved for as
-  // long as the browse lookup takes and then corrected, which is a second move of the pills for
-  // something the CSS variable already estimates.
+  // Reserve exactly the resting card's height in the flow, measured rather than assumed, so the
+  // pills below never drift as names wrap or the language changes. Only at rest, and only off the
+  // real list: a grown list is meant to expand over the pills, and a height taken off the skeleton
+  // would move them twice.
   const atRest = query.trim().length < 3 && !expanded && !search.browse.isPending;
   useEffect(() => {
     const card = cardRef.current;
     if (!card || !atRest) return;
-    // Never while GSAP is mid-tween. The tween writes an inline height frame by frame, and the
-    // observer fired on every one of them — so the spacer, and the pills sitting on it, animated
-    // along with the card and lurched the moment the field lost focus.
+    // Never while GSAP is mid-tween: the tween writes an inline height every frame, and the
+    // spacer and the pills would animate along with it.
     const measure = () => {
       if (tweening.current) return;
       setRestHeight(card.getBoundingClientRect().height);
@@ -173,26 +156,11 @@ export default function HeroInlineSearchPanel({
     return () => observer.disconnect();
   }, [atRest]);
 
-  // Cap the dropdown at whatever room is left below the field, so a long result list ends at
-  // the bottom of the screen and scrolls inside itself instead of running off the page. The
-  // value is written straight onto the node as a custom property, which keeps a scroll listener
-  // from re-rendering the whole result tree.
-  //
-  // Two things here exist because this runs on EVERY scroll frame of the homepage — the resting
-  // dropdown is always mounted, so there is no closed state to bail out on.
-  //
-  // **The field's box is measured in document space**, not read per frame. `getBoundingClientRect()`
-  // forces a synchronous layout, and this then wrote a custom property that invalidates style for
-  // the dropdown — a read and a write of the same pipeline, once per frame, forever. Traced on a
-  // production build it was 1031 forced style recalc / layout passes in a four-second scroll, the
-  // second largest source on the page after the card pointer effect. `top + scrollY` does not move
-  // when the page scrolls, so the per-frame path is now arithmetic over a cached number.
-  //
-  // **And it does not run while the field is off screen.** Clamping the written value was not
-  // enough and the trace said so: skipping the WRITE still left the per-frame READ of `scrollY`
-  // and `innerHeight`, and reading either one flushes style whenever style is dirty — the same
-  // forced pass, just bought with a different property. So an IntersectionObserver gates the
-  // handler itself, and once the hero has left the screen a scroll frame costs one boolean.
+  // Cap the dropdown at the room left below the field, so a long list scrolls inside itself. The
+  // value is written onto the node as a custom property, so scrolling re-renders nothing. This
+  // runs on every scroll frame of the homepage, so the field's box is measured in document space
+  // once rather than read per frame, and an IntersectionObserver turns the handler off while the
+  // field is off screen, where even reading `scrollY` would flush style.
   useEffect(() => {
     let bottomDoc = 0;
     let written: string | null = null;
@@ -243,9 +211,8 @@ export default function HeroInlineSearchPanel({
       measure();
       schedule();
     };
-    // The field also moves when the plate above it changes size — a longer heading wrapping, the
-    // streamed rest of the hero landing. A ResizeObserver catches that without anyone scrolling,
-    // which the old scroll+resize pair did not.
+    // The field also moves when the plate above it changes size (a heading wrapping, the rest of
+    // the hero streaming in); a ResizeObserver catches that without a scroll.
     const observer = new ResizeObserver(onResize);
     if (inputRef.current?.parentElement) observer.observe(inputRef.current.parentElement);
 
@@ -260,23 +227,15 @@ export default function HeroInlineSearchPanel({
     };
   }, []);
 
-  // Type-anywhere: a printable key outside an input focuses the hero search seeded with it
-  // (same behavior the palette trigger had via autoFocusOnType).
-  //
-  // Space is excluded on purpose. It is a printable character, so a naive length-1 test catches
-  // it — and then Space no longer scrolls the page and no longer activates a focused button,
-  // for every visitor, whether or not they ever use the search.
-  //
-  // The hero's instance only. A second field on the page (`primary={false}`, `onHero` false here)
-  // added a second page-wide listener, and whichever mounted first took the keystroke — after a
-  // reload scrolled down, that was the field 2,000 px below the hero.
+  // Type-anywhere: a printable key outside an input focuses the hero search seeded with it. Never
+  // Space, which scrolls the page and activates a focused button. The hero's instance only, so a
+  // second field on the page adds no second listener. See
+  // docs/rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md.
   useEffect(() => {
     if (!onHero) return;
     const onKey = (e: KeyboardEvent) => {
-      // Only when nothing is focused. Anything else — a link, a button, a menu — is a control
-      // the visitor deliberately moved to, and letters there mean first-letter navigation to a
-      // screen reader, not "start searching". Hijacking those was an unrequested focus change
-      // for people who may never touch this field.
+      // Only when nothing is focused: letters on a focused control mean first-letter navigation
+      // to a screen reader, not "start searching".
       const active = document.activeElement;
       if (active && active !== document.body && active !== document.documentElement) return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
@@ -333,25 +292,17 @@ export default function HeroInlineSearchPanel({
         />
       </div>
 
-      {/* Reserves the RESTING height of the dropdown in the hero's flow, so the nearby pills
-          sit below the open list instead of underneath it. Only the resting height — once a
-          query grows the list past three rows it grows over the pills rather than pushing
-          them, which is the whole reason the dropdown floats.
-
-          The CSS variable is only the pre-measurement estimate (it matches the shell's skeleton
-          card, which is what paints before this chunk exists); from mount on, the real card's
-          measured height takes over. */}
+      {/* Reserves the dropdown's resting height in the hero's flow, so the nearby pills sit below
+          the open list; a query that grows the list grows it over the pills instead. The CSS
+          variable is the estimate that matches the shell's skeleton; from mount on, the measured
+          height takes over. */}
       <div
         aria-hidden="true"
         className="h-[var(--hero-search-rest-h)]"
-        // The measured height replaces the CSS estimate ON THE HERO ONLY.
-        // `--hero-search-rest-h` is calibrated for the hero's full-width column;
-        // in the homepage's step card the same dropdown sits in a third of that
-        // width, wraps differently and measures ~75 px shorter — so the spacer
-        // paints at 282 px and then shrinks the moment this chunk mounts,
-        // pulling every chapter below it up by that much. Off the hero the
-        // estimate is kept: the dropdown floats, so overhanging its reservation
-        // by a few pixels costs nothing, while moving it costs the whole page.
+        // The measured height replaces the CSS estimate on the hero only: `--hero-search-rest-h` is
+        // calibrated for the hero's column, and in the narrower step card replacing it would pull
+        // every chapter below up when this chunk mounts. Off the hero the floating dropdown may
+        // overhang its reservation a little.
         style={
           onHero && restHeight != null ? { height: restHeight + DROPDOWN_TOP_GAP_PX } : undefined
         }
@@ -371,13 +322,9 @@ export default function HeroInlineSearchPanel({
             while the field has focus instead of the dropdown going opaque. */}
         <GlassCard
           ref={cardRef}
-          // `tile` is the same glass one grade more solid — 75 % fill and
-          // `backdrop-blur-2xl` instead of `xl` — and it exists for exactly this
-          // case: a panel that has to stay readable over whatever happens to be
-          // under it. The stronger blur is what does the work; at 2xl the card's
-          // own prose under the dropdown stops being letters. Going opaque
-          // instead would fix the ghosting by deleting the glass, which is not
-          // the same fix.
+          // Off the hero, `tile`: 75 % fill and `backdrop-blur-2xl`, so the card's own prose
+          // under the dropdown stops reading through. Going opaque would fix the ghosting by
+          // deleting the glass.
           variant={onHero ? 'heavy' : 'tile'}
           // Same marker the shell's skeleton carries, so `pnpm check:hero-search-rest` measures
           // the two against each other.

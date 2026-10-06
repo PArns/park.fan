@@ -14,23 +14,16 @@ const readSim = () => new URLSearchParams(window.location.search).get('sim');
 
 /**
  * How much of the viewport may lie below the slot when the compass goes in for a reader who has
- * scrolled. Pushing a sliver out of view scores its own share of the screen, so a tenth scores
- * about 0.1 at most, against the 1.0 a reader scrolled past the slot got before.
+ * scrolled: pushing a sliver out of view scores its share of the screen, so a tenth scores about
+ * 0.1 at most.
  */
 const VISIBLE_SLICE = 0.1;
 
 /**
  * Whether the compass may go in now: at the top of the page always, anywhere else only while the
- * slot lies below the viewport, give or take VISIBLE_SLICE.
- *
- * The top of the page is the exception because waiting there can mean never. The slot's top at
- * y = 0 is wherever the hero ends, and the hero's height follows its welcome line: „Herzlich
- * willkommen im Disneyland Park" takes three lines on a 390 px phone, "Welcome to Disneyland
- * Park" two. Measured at Disneyland (Anaheim), the slot sat at 680 px on 390 × 844, 412 × 915 and
- * 430 × 932 in five of six locales, inside the viewport, and a reader who then scrolls only moves
- * it further up. On those phones the compass never appeared. What it moves at the top is the
- * sliver of the next chapter's heading below the hero, and that scores its share of the screen:
- * up to 0.30 on a 430 × 932 phone in English (docs/features/park-compass.md has the table).
+ * slot lies below the viewport, give or take VISIBLE_SLICE. The top is the exception because
+ * waiting there can mean never: the hero's height follows its welcome line, and on common phones
+ * the slot sits inside the viewport at y = 0 (docs/features/park-compass.md has the table).
  */
 function mayPlace(slotTop: number): boolean {
   return window.scrollY < 1 || slotTop >= window.innerHeight * (1 - VISIBLE_SLICE);
@@ -40,30 +33,14 @@ function mayPlace(slotTop: number): boolean {
 type ParkCompassComponent = typeof import('./park-compass').ParkCompass;
 
 /**
- * Directly under the homepage hero: the in-park compass, or nothing.
+ * Directly under the homepage hero: the in-park compass, or nothing. It reads the same
+ * `/api/nearby` answer as the hero's welcome and, like it, waits for the mount. Only for `in_park`
+ * with a headliner in season, the filter `ParkCompass` lists by (`splitInParkRides`).
  *
- * It reads the same `/api/nearby` answer as the hero's welcome (`useHomeNearbyParks`, one request
- * between them), and like the welcome it waits for the mount — the hook can answer from a cached
- * position in the first client render, and the server wrote nothing here.
- *
- * Only for `in_park` with a headliner in season — the same filter `ParkCompass` lists by
- * (`splitInParkRides`), so the two cannot disagree about whether there is anything to show. The
- * 1 km fallback the hero also welcomes comes from `nearby_parks`, which carries no rides.
- *
- * **Where it appears, and when.** The compass is some 1,300 px on a phone and lands a second or
- * more after load. No box is held open for it (a screen of nothing for every visitor at home),
- * so its arrival moves whatever is below it, and a reader who had already scrolled past this
- * point had the page shoved down under them: a layout shift of 1.0 at y = 1100, measured. The
- * browser's scroll anchoring did not absorb it, and a `scrollBy` to compensate kept the page
- * visually still but is scored all the same — the Layout Instability API counts a node that
- * moved in the document, whatever the scroll did.
- *
- * So it goes in once its module has loaded (the chunk is fetched as soon as we know the visitor is
- * in a park, and only then — everybody else never downloads it), and then only where it moves
- * nothing the reader is looking at (`mayPlace`): at the top of the page, or while this slot lies
- * below the viewport. A reader who has scrolled past gets it when they come back up. Inside,
- * `ParkCompass` keeps its height as its data arrives (see its status line), so nothing moves
- * after that either.
+ * Where it appears, and when: no box is held open for it (a screen of nothing for everyone at
+ * home), so its arrival would shove down a reader who has scrolled past, and a compensating
+ * `scrollBy` is still scored as a shift. So the module is fetched only for a visitor in a park,
+ * and the compass goes in only where it moves nothing the reader is looking at (`mayPlace`).
  */
 export function ParkCompassSlot() {
   const mounted = useMounted();
@@ -129,10 +106,8 @@ export function ParkCompassSlot() {
     if (!shown || !ParkCompass || placed) return;
     const el = slotRef.current;
     if (!el) return;
-    // At most one layout read per frame. The listener read `getBoundingClientRect()` on every
-    // scroll event, unthrottled, for as long as a reader in a park was scrolled past the slot. It
-    // stays a listener rather than an IntersectionObserver because `mayPlace` also asks whether the
-    // page is back at its top, which no observer reports.
+    // At most one layout read per frame. A listener rather than an IntersectionObserver, because
+    // `mayPlace` also asks whether the page is back at its top.
     let frame = 0;
     const check = () => {
       frame = 0;

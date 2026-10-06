@@ -9,16 +9,9 @@ import type { PlannerEntry } from '@/lib/planner/types';
 const PARK = '/parks/europe/germany/bruehl/phantasialand';
 
 /**
- * The planner page's article, German. German is the source; the other five are
- * derived from it (docs/blog.md §6).
- *
- * One module per language, like the guide page and Fancast: the text carries
- * links and markup, and pressing six translations of it into a `messages` file
- * would turn every paragraph into a key.
- *
- * It describes what a visitor can do with the planner, not how the planner
- * works inside. Every figure here is in `_fixtures.ts` and comes from a real
- * API answer; whoever changes one changes both.
+ * The planner page's article, German: the source the other five are derived from (docs/blog.md
+ * §6). One module per language because the text carries links and markup. Every figure here is
+ * in `_fixtures.ts` and comes from a real API answer; whoever changes one changes both.
  */
 export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntry[] }) {
   return (

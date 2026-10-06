@@ -29,6 +29,7 @@ const variantClasses = {
   warning: 'bg-warning/10 text-warning',
 };
 
+/** A Lucide icon centred in a rounded, tinted square, in three sizes and six colour variants. */
 export function IconContainer({
   icon: Icon,
   size = 'md',

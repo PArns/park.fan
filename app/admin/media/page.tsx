@@ -13,27 +13,28 @@ import {
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { EmptyPanel, ErrorPanel, LoadingPanel, Section, StatCard } from '../_lib/ui';
 import { FolderRail } from './_components/folder-rail';
 import { MediaDetail } from './_components/media-detail';
 import { MediaUpload } from './_components/media-upload';
 import type { FolderView } from './_lib/folders';
 import type { MediaRow, MediaStats, Vocabulary } from './_lib/types';
-import { AdminPage } from '../_ui/primitives';
+import {
+  AdminPage,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  Panel,
+  PanelBody,
+  PanelHeader,
+  StatTile,
+} from '../_ui/primitives';
 import { fitForCommit } from '../_lib/upload-transport';
 import { pickReplacement, replacementExt } from './_lib/replace-drop';
 
 /**
- * The media database browser.
- *
- * Search runs against the same index the public API uses, so what is findable
- * here is exactly what is findable everywhere else — including all six locales of
- * alt and caption text, which is how you find a photo by what it *shows* rather
- * than by what it is called.
- *
- * The quick filters along the top are the maintenance backlog made visible:
- * images with unestablished rights, images with no park, sources below the
- * resolution target, and images nobody has framed yet.
+ * The media database browser. Search runs against the same index the public API uses, including
+ * the alt and caption text of all six locales, so a photo is found by what it shows; the quick
+ * filters are the maintenance backlog.
  */
 
 interface Payload {
@@ -68,16 +69,9 @@ interface StagedFile {
 type QuickFilter = 'review' | 'unlicensed' | 'unassigned' | 'lowres' | 'nofocus' | 'noalt';
 
 /**
- * The maintenance backlog as a row of chips. Each id IS the query parameter, so a
- * new one needs a matching branch in `/api/admin/media`.
- *
- * German, like the rest of the admin. The row was English while the panel above it
- * said "Bildabdeckung" and the sidebar said "Medien" — one row of a tool used in
- * one language, and the odd one out.
- *
- * `review` sits first because it is the only one with somebody waiting on it: a
- * photograph shot in a park this morning has no alt text, no caption and no tags
- * describing what is in it, and this is the list that finds them again.
+ * The maintenance backlog as a row of chips. Each id is the query parameter, so a new one needs a
+ * matching branch in `/api/admin/media`. `review` sits first because somebody is waiting on it:
+ * photos shot in a park this morning, with no alt text, caption or tags yet.
  */
 const QUICK_FILTERS: { id: QuickFilter; label: string }[] = [
   { id: 'review', label: 'Zu prüfen' },
@@ -89,15 +83,9 @@ const QUICK_FILTERS: { id: QuickFilter; label: string }[] = [
 ];
 
 export default function MediaAdminPage() {
-  // Opened from somewhere, most of the time.
-  //
-  // The park editor's photo coverage links here with `?park=…&ride=…`, the
-  // entity media panel with `?id=…`, the contribution moderator with
-  // `?image=…` — and this page read none of them, so every one of those links
-  // landed on the unfiltered browser with nothing selected and the operator
-  // started their search again. The parameters seed the state once; from then
-  // on the filters are ordinary state, because this browser is a workspace and
-  // not a set of addressable views.
+  // Links from the park editor (`?park=…&ride=…`), the entity media panel (`?id=…`) and the
+  // contribution moderator (`?image=…`) seed the state once. After that the filters are ordinary
+  // state, because this browser is a workspace, not a set of addressable views.
   const params = useSearchParams();
 
   const [data, setData] = useState<Payload | null>(null);
@@ -242,12 +230,9 @@ export default function MediaAdminPage() {
   };
 
   /**
-   * One `replace` request per staged tile, in order, each joining the session's PR.
-   * Sending them in one body is what exceeds the host's request limit once two or
-   * three originals are staged (see `upload-transport.ts`). No sidecar payload: the
-   * server rebuilds it from the manifest, so alt texts, focus and tags stay. A tile
-   * leaves the staging area as soon as its request landed, so a failure halfway
-   * keeps exactly the tiles that were not sent.
+   * One `replace` request per staged tile, in order, since one body would exceed the host's request
+   * limit (`upload-transport.ts`). No sidecar payload, so alt texts, focus and tags stay. A tile
+   * leaves staging once its request lands, so a failure keeps exactly the unsent tiles.
    */
   const saveStaged = async () => {
     const entries = Object.entries(staged);
@@ -297,8 +282,8 @@ export default function MediaAdminPage() {
     }
   };
 
-  if (error && !data) return <ErrorPanel message={error} />;
-  if (!data) return <LoadingPanel label="Loading the media database…" />;
+  if (error && !data) return <ErrorState message={error} />;
+  if (!data) return <LoadingState label="Loading the media database…" />;
 
   const { stats, vocabulary, images, total } = data;
 
@@ -320,10 +305,8 @@ export default function MediaAdminPage() {
           </div>
         )}
 
-        {/* Session bar — which pull request the next save lands in.
-          Everything edited here goes into ONE pull request until it is merged or
-          closed, so this says which one, how much is already in it, and offers the
-          way out. Without it, "save" is a coin toss between joining and opening. */}
+        {/* Which pull request the next save lands in, what is already in it, and the way out;
+            without it a save is a coin toss between joining and opening one. */}
         {tokenMissing ? (
           <div className="flex items-start gap-2 rounded-lg border border-amber-500/50 bg-amber-500/10 px-3 py-2 text-sm text-amber-500">
             <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
@@ -371,10 +354,7 @@ export default function MediaAdminPage() {
               </button>
             </div>
 
-            {/* What is already in the pull request you are about to add to. The log
-              is what each save said it did; the file list is what git actually
-              recorded — they are shown together because only the second one can
-              be wrong in a way that matters. */}
+            {/* The log says what each save meant to do; the file list is what git recorded. */}
             {showSession && (
               <div className="border-border/70 mt-2 grid gap-3 border-t pt-2 text-xs sm:grid-cols-2">
                 {session.log.length > 0 && (
@@ -438,16 +418,17 @@ export default function MediaAdminPage() {
         ) : null}
 
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6">
-          <StatCard label="Images" value={String(stats.total)} />
-          <StatCard label="Collections" value={String(stats.collections)} />
-          <StatCard label="Parks" value={String(stats.parks)} />
-          <StatCard label="With GPS" value={String(stats.withGps)} />
-          <StatCard label="Rights unknown" value={String(stats.unlicensed)} />
-          <StatCard label="Low resolution" value={String(stats.lowRes)} />
+          <StatTile label="Images" value={String(stats.total)} />
+          <StatTile label="Collections" value={String(stats.collections)} />
+          <StatTile label="Parks" value={String(stats.parks)} />
+          <StatTile label="With GPS" value={String(stats.withGps)} />
+          <StatTile label="Rights unknown" value={String(stats.unlicensed)} />
+          <StatTile label="Low resolution" value={String(stats.lowRes)} />
         </div>
 
-        <Section title="Browse" icon={ImageIcon}>
-          <div className="lg:flex lg:items-start lg:gap-4">
+        <Panel>
+          <PanelHeader title="Browse" icon={ImageIcon} />
+          <PanelBody className="lg:flex lg:items-start lg:gap-4">
             <FolderRail
               vocabulary={vocabulary}
               total={stats.total}
@@ -606,7 +587,7 @@ export default function MediaAdminPage() {
               )}
 
               {images.length === 0 ? (
-                <EmptyPanel label="Nothing matches those filters." />
+                <EmptyState title="Nothing matches those filters." />
               ) : (
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
                   {images.map((image) => (
@@ -676,9 +657,8 @@ export default function MediaAdminPage() {
                             </span>
                           )}
                         </div>
-                        {/* Low resolution is a to-do, not a footnote — it says what is
-                      wrong and what the click will let you do about it, because an
-                      icon-only warning here left no clue that the fix exists. */}
+                        {/* Says what is wrong and what a click does about it: an icon alone
+                            gave no clue the fix exists. */}
                         {image.lowRes && (
                           <span className="absolute inset-x-1 bottom-1 flex items-center gap-1 rounded bg-amber-500/95 px-1.5 py-0.5 text-[10px] font-medium text-black">
                             <AlertTriangle className="h-3 w-3 shrink-0" />
@@ -703,8 +683,8 @@ export default function MediaAdminPage() {
                 </div>
               )}
             </div>
-          </div>
-        </Section>
+          </PanelBody>
+        </Panel>
 
         {detailId && (
           <MediaDetail

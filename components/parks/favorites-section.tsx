@@ -34,21 +34,15 @@ import { LAZY_CHUNK_NAMESPACES } from '@/i18n/route-namespaces.generated';
 const PARK_ROW_WITH_LINE_PX = 244;
 
 /**
- * `standalone` is what `/favorites` passes: there the band is the page's whole content, so the
- * page carries the title (as its `<h1>`) and the instructions (under the band, in every state)
- * and this component draws neither. Everywhere else — homepage, blog, glossary — it is one band
- * among several and needs its own heading to be one.
+ * The visitor's favorites band: parks, rides, shows and restaurants, nearest first, with a
+ * skeleton and an empty state that stand in the same box.
  *
- * `className` goes onto the band in every state, the empty one included, and is for its padding:
- * the homepage hands it the story's rhythm (`STORY_SECTION_Y`), and must hand the same to the
- * `FavoritesEmptyState` it uses as the dynamic-import fallback. `heading` likewise: `tile` on the
- * homepage, `watermark` (the default) everywhere else — see `FavoritesHeading`.
- *
- * `initialCounts` is the cookie as the server read it, and only `/favorites` has it: there the
- * band is the page, so the page renders per request and the first HTML already holds the skeleton
- * at the size of the list. Without it the page painted the empty state's box, swapped in a
- * three-row skeleton at hydration and the cards after that — 136 px, then 436, then 616 on a
- * phone, with the instructions and the footer under it jumping each time (PAR-668).
+ * `standalone` is what `/favorites` passes: the band is the page's whole content there, so the
+ * page carries the title (its `<h1>`) and the instructions, and this draws neither. `className`
+ * (the band's padding) and `heading` go onto every state, and the homepage must hand the same to
+ * the `FavoritesEmptyState` it uses as the dynamic-import fallback. `initialCounts` is the cookie
+ * as the server read it, only on `/favorites`, so the first HTML already holds the skeleton at the
+ * size of the list.
  */
 export function FavoritesSection({
   standalone = false,
@@ -67,25 +61,21 @@ export function FavoritesSection({
   const { position } = useGeolocation();
   const { data: favoritesData, isLoading: loading, isPending } = useFavorites();
 
-  // Read cookie counts once after mount — avoids showing a skeleton for users with no favorites.
-  // Returns -1 on the server (cookies not readable); after mount the real count is used.
+  // Cookie counts, readable only after mount, so a visitor with no favorites never sees a skeleton.
   const cookieCounts = useMemo(
     () => (mounted ? countFavorites(getFavoritesFromCookies()) : null),
     [mounted]
   );
 
-  // `ParkCard`/`AttractionCard` read the `parks` + `attractions` namespaces, which the editorial
-  // routes deliberately keep out of their payload — this section is empty for almost everyone who
-  // lands there (see `LAZY_MESSAGE_BOUNDARIES` in lib/i18n/route-namespaces.mjs). Kick the fetch
-  // off from the same render that enables the favorites query below, so the chunk downloads
-  // ALONGSIDE that request instead of after it; on routes that already ship both namespaces
-  // (homepage, park pages) this resolves without a request at all.
+  // `ParkCard`/`AttractionCard` read namespaces the editorial routes keep out of their payload
+  // (see `LAZY_MESSAGE_BOUNDARIES` in lib/i18n/route-namespaces.mjs). The fetch starts in the
+  // render that enables the favorites query, so the chunk downloads alongside it; routes that ship
+  // both namespaces need no request.
   const cardMessages = useLazyMessages(
     LAZY_CHUNK_NAMESPACES,
     cookieCounts !== null && cookieCounts.total > 0
   );
 
-  // Sort by distance (nearest first) or alphabetically if no distance available
   const sortByDistanceOrName = useCallback(
     <T extends { distance?: number; name: string }>(items: T[]): T[] => {
       return [...items].sort((a, b) => {
@@ -100,7 +90,6 @@ export function FavoritesSection({
     []
   );
 
-  // Memoize sorted list to avoid recalculating when parent re-renders
   const sortedFavorites = useMemo(
     () =>
       favoritesData
@@ -115,9 +104,8 @@ export function FavoritesSection({
   );
 
   // One skeleton shape for every wait below, so whatever replaces it lands in the same box. The
-  // location hint and the group headings need no data, so they are the real ones: a grey 24 px bar
-  // stood in for the 28 px `<h3>`, and the 44 px hint arrived only with the cards. On `/favorites`
-  // each park also holds the 28 px line under its card that `FavoriteParkQuietestDay` fills.
+  // location hint and the group headings need no data, so they are the real ones. On `/favorites`
+  // each park also holds the line under its card that `FavoriteParkQuietestDay` fills.
   const renderSkeleton = (parkCount: number, attractionCount: number) => (
     <section className={cn('bg-muted/30 px-4 py-8', className)}>
       <div className="container mx-auto">
@@ -158,12 +146,9 @@ export function FavoritesSection({
     </section>
   );
 
-  // Server / first hydration: cookies aren't readable, so we don't know yet which of the
-  // three outcomes below this is. Hold the empty state's box anyway — it is the outcome
-  // for the overwhelming majority, and the same box is this component's dynamic-import
-  // fallback, so it stands from the first paint through hydration without moving.
-  //
-  // Unless the server read the cookie: then it is not a guess, and the skeleton is the box.
+  // Server and first hydration: cookies are not readable yet. Hold the empty state's box, the
+  // outcome for most visitors and the dynamic-import fallback, so it stands from the first paint
+  // through hydration. Unless the server read the cookie: then the skeleton is the box.
   if (!mounted && initialCounts && initialCounts.total > 0)
     return renderSkeleton(
       initialCounts.parks,
@@ -179,11 +164,8 @@ export function FavoritesSection({
       />
     );
 
-  // Cookies say no favorites, so the answer is already settled: render the empty state now
-  // instead of waiting for a query whose result we can predict. It used to return null here
-  // and let the resolved query paint the same box a moment later — but `useFavorites` is
-  // gated on geolocation and answers `{parks: [], …}`, a TRUTHY empty result, so the guard
-  // never held for long and the box arrived late instead of never.
+  // Cookies say no favorites: render the empty state now rather than wait for a query whose
+  // result is known (`useFavorites` is gated on geolocation and answers late).
   if (cookieCounts !== null && cookieCounts.total === 0 && !favoritesData) {
     return <FavoritesEmptyState standalone={standalone} heading={heading} className={className} />;
   }
@@ -225,10 +207,9 @@ export function FavoritesSection({
     return <FavoritesEmptyState standalone={standalone} heading={heading} className={className} />;
   }
 
-  // Favorites are here, their translations are not (yet). Hold the skeleton at the REAL counts so
-  // the cards drop into an identically sized box. In practice this branch is never painted: the
-  // chunk is a same-origin JS module that started downloading alongside the favorites request and
-  // resolves long before it — but rendering raw message keys is not an acceptable fallback.
+  // Favorites are here, their translations not yet: hold the skeleton at the REAL counts. Rarely
+  // painted, since the chunk started alongside the favorites request, but raw message keys are no
+  // fallback.
   if (!cardMessages.ready) {
     return renderSkeleton(
       sortedFavorites.parks.length,
@@ -257,7 +238,6 @@ export function FavoritesSection({
           <p className="text-muted-foreground mt-1 mb-6 text-xs">{t('locationHint')}</p>
         )}
         <div className="space-y-6">
-          {/* Parks */}
           {sortedFavorites.parks.length > 0 && (
             <>
               <div>
@@ -327,7 +307,6 @@ export function FavoritesSection({
             </>
           )}
 
-          {/* Attractions */}
           {sortedFavorites.attractions.length > 0 && (
             <>
               <div>
@@ -359,7 +338,6 @@ export function FavoritesSection({
             </>
           )}
 
-          {/* Shows */}
           {sortedFavorites.shows.length > 0 && (
             <>
               <div>
@@ -385,7 +363,6 @@ export function FavoritesSection({
             </>
           )}
 
-          {/* Restaurants */}
           {sortedFavorites.restaurants.length > 0 && (
             <div>
               <h3 className="mb-4 text-lg font-semibold">{t('restaurants')}</h3>

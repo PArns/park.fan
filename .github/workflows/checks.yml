@@ -169,3 +169,25 @@ jobs:
             echo "::error title=lib/media drifted::pnpm generate:media changed the files above. Run it locally and commit the result."
             exit 1
           fi
+
+  # docs/code-index/ is generated from the doc comments of every export and committed, so a session
+  # can look up an existing component or helper before writing a second one
+  # (docs/rules/the-code-index-is-generated-from-the-doc-comments.md). This job regenerates it and
+  # fails when the committed pages differ. A job of its own and not a step of lint-and-format, like
+  # media-drift: a stale index is a page to regenerate, not a reason to hold a fix. Source files
+  # only, about 3 s, no network.
+  code-index-drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - run: corepack enable
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: pnpm check:code-index
+        run: pnpm check:code-index

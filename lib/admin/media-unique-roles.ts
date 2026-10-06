@@ -1,20 +1,8 @@
 /**
- * Unique roles move; they are never shared.
- *
- * `ride-card` says "this is THE photo of Voltron", `park-background` says "this
- * is THE background of Europa-Park". The build has always known a second
- * claimant is a data error — `auditRoles` in the manifest generator warns — but
- * the admin let you make one: ticking `ride-card` on a new photo added the role
- * and left it on the old photo too. `getRideImage` then took whichever came
- * first, which was the old one, so the photo somebody had just chosen as the
- * ride's picture never showed up on the ride. That is how the first visitor
- * photo of Voltron stayed invisible behind the one it was meant to replace.
- *
- * So a save that claims a unique role takes it from whoever held it, in the
- * same pull request: which claims an image makes, which roles another image has
- * to give up because of them, and the rewrite of those images' sidecars. The
- * keys mirror `auditRoles` exactly, so the admin moves a role in precisely the
- * cases the build would have warned about. `pnpm test:media-unique-roles`.
+ * Unique roles move; they are never shared. `ride-card` and `park-background` name THE photo of a
+ * ride or a park, and `getRideImage` takes the first holder, so a second one would hide the photo
+ * just chosen. A save that claims a unique role takes it from whoever held it, in the same pull
+ * request. The keys mirror `auditRoles` in the manifest generator. `pnpm test:media-unique-roles`.
  */
 
 import { normalizeSidecar, serializeSidecar } from '@/lib/media/sidecar.mjs';
@@ -54,13 +42,8 @@ export function uniqueClaims(image: RoleHolder): string[] {
 }
 
 /**
- * The roles `other` has to give up so that `claims` stay unique.
- *
- * A role is one flag per image, not one per ride: a card that answers for two
- * rides through `alsoRides` loses `ride-card` for both when a new photo claims
- * one of them. That is the honest outcome — the old photo is no longer THE
- * picture of the first ride, and the second ride falls back to "any photo of
- * it" in `getRideImage` until somebody picks one.
+ * The roles `other` has to give up so that `claims` stay unique. A role is one flag per image, so
+ * a card that answers for two rides through `alsoRides` loses `ride-card` for both.
  */
 export function rolesToYield(claims: ReadonlySet<string>, other: RoleHolder): UniqueRole[] {
   const theirs = uniqueClaims(other);
@@ -84,15 +67,9 @@ export function idOfSidecarPath(path: string): string {
 }
 
 /**
- * Take every unique role the `claimants` claim from every other holder of it.
- *
- * `holders` maps a sidecar path to what is known about that image — the
- * manifest's row, overlaid with the session branch's version where the branch
- * has one. `skip` are the sidecars this save writes itself. The holder is
- * rewritten from `read`, which must answer with the file as it stands on the
- * branch: rebuilding it from the manifest would undo an edit made to that image
- * earlier in the same session. Only the role goes; every other field is written
- * back through the same normalizer the build uses, so the diff is one line.
+ * Takes every unique role the `claimants` claim from every other holder of it. `read` must answer
+ * with the file as it stands on the session branch: rebuilding it from the manifest would undo an
+ * earlier edit in the same session.
  */
 export async function handOverUniqueRoles({
   claimants,

@@ -6,18 +6,10 @@ import { Badge } from '@/components/ui/badge';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 
 /**
- * "Virtual queue" — that the ride hands out return times or boarding groups at
- * all, as opposed to whether it is doing so right now.
- *
- * The same split as {@link SingleRiderBadge}: {@link QueueTypeBadge} renders
- * today's `RETURN_TIME` / `BOARDING_GROUP` reading from the live `queues` array,
- * which is empty for a ride that is shut. Danse Macabre (Efteling) was the case
- * that showed it — closed, so no queue in the feed, so nothing on the page said
- * it runs a virtual line. `hasVirtualLine` is the curated fact about the ride.
- *
- * `null` is unknown and renders nothing. The field is curated and most rides
- * have never been checked, so an absent badge is not a statement that the ride
- * has no virtual line.
+ * „Virtual queue": that the ride hands out return times or boarding groups at all, not whether it
+ * does right now. {@link QueueTypeBadge} reads today's live `queues`, which are empty for a shut
+ * ride; `hasVirtualLine` is the curated fact, as with {@link SingleRiderBadge}. `null` is unknown
+ * and renders nothing, since most rides have never been checked.
  */
 export function VirtualLineBadge({
   hasVirtualLine,

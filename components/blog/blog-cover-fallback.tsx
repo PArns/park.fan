@@ -1,29 +1,12 @@
 import { cn } from '@/lib/utils';
 
 /**
- * The cover a blog post or news item gets when it has no photo of its own.
- *
- * The brand's dark ground with four lights in the logo's colours and the detailed pin
- * (`logo-dark.svg`) on top — proposal "A" from the 2026-09-30 round. Before it, every surface drew
- * something different for a post without a cover: a pale wash in the banner, a grey gradient in
- * the card, and in every list no thumbnail at all, so a coverless news item read as a different
- * kind of row than its neighbours.
- *
- * **One element, and all of it in CSS** (`.blog-cover-fallback` in `app/globals.css`). The
- * gradient is six layers long and the pin is a background image, so a surface pays 119 bytes of
- * HTML and 137 of RSC payload per post, against 775 and 841 for an `<img>` plus an inline gradient. That matters here more than
- * usual: the header's news and blog panels are server-rendered, hidden, into every page. A
- * background image is also not fetched while its panel is `display: none`.
- *
- * **Not one raster image.** A single 1200×630 file was built and put into every slot first: in the
- * article banner the pin sat behind the teaser, in the card only its tip showed between the two
- * glass panels, and at 88 px it was too small to recognise. So the slot decides where the pin
- * goes (`mark`), and the ground scales to whatever box it is given.
- *
- * **The hue comes from the slug.** Two coverless posts next to each other would otherwise be the
- * same picture twice, which `docs/rules/media-database.md` counts as worse than none. The slug is
- * what every surface has — the lists carry it, the menus and the toast carry the post's path,
- * whose last segment it is (`slugFromPostPath`) — so a post keeps its hue wherever it is listed.
+ * The cover a blog post or news item gets when it has no photo of its own: the brand's dark ground
+ * with lights in the logo's colours and the detailed pin, the same on every surface. One element,
+ * all of it CSS (`.blog-cover-fallback` in `app/globals.css`), because the header's hidden news and
+ * blog panels render it into every page and a background image is not fetched under
+ * `display: none`. The slot decides where the pin goes (`mark`), and the hue comes from the slug,
+ * so two coverless posts side by side differ and a post keeps its hue everywhere.
  */
 
 const HUES = ['blue', 'green', 'cyan'] as const;
@@ -62,6 +45,10 @@ interface BlogCoverFallbackProps {
   className?: string;
 }
 
+/**
+ * The cover drawn for a post or news item without a photo: one CSS-only element with the brand
+ * ground, a hue picked from the slug and the pin placed by `mark`.
+ */
 export function BlogCoverFallback({
   slug = '',
   mark = 'center',

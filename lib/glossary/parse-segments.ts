@@ -69,16 +69,10 @@ interface Matcher {
 }
 
 /**
- * The compiled matcher for one term list, built once per list rather than once per call.
- *
- * Building it means sorting 550–739 names and aliases (depending on the locale) and compiling them
- * into one alternation, and the text it then runs over is usually one sentence: a call on a German
- * FAQ answer took 453 µs, 16 µs of it the match itself. It ran on every call — once per FAQ
- * answer on a ride page, and the homepage's sections hold more than forty `<GlossaryInject>`s.
- * `getGlossaryTerms` hands every caller the same array for the life of the process, so keyed by
- * the array this is built once per locale. A `WeakMap` because the client passes lists it builds
- * itself. Term lists are never mutated after they are handed out; one that was would keep its
- * old matcher.
+ * The compiled matcher for one term list, built once per list: compiling several hundred names and
+ * aliases costs far more than matching the one sentence it then runs over. `getGlossaryTerms`
+ * hands every caller the same array, so this builds once per locale; a `WeakMap` because the
+ * client builds its own lists. A list mutated after it was handed out would keep its old matcher.
  */
 const matchers = new WeakMap<GlossaryMatchTerm[], Matcher | null>();
 
@@ -102,6 +96,10 @@ function getMatcher(terms: GlossaryMatchTerm[]): Matcher | null {
   return matcher;
 }
 
+/**
+ * Splits text into plain-text and glossary-term segments, linking only the first occurrence of each
+ * term name or alias; a name or alias of four characters or less must match its exact case.
+ */
 export function parseGlossarySegments(text: string, terms: GlossaryMatchTerm[]): GlossarySegment[] {
   const matcher = getMatcher(terms);
   if (!matcher) return [{ type: 'text', content: text }];
@@ -145,20 +143,10 @@ export function parseGlossarySegments(text: string, terms: GlossaryMatchTerm[]):
 }
 
 /**
- * Narrow a term list to the ones that can possibly match anywhere in `corpus`.
- *
- * Same purpose as `leanParkForShell` in `lib/api/parks.ts`: `<GlossaryInjectProvider>` is a CLIENT
- * boundary, so whatever it is handed is serialized into the page. The park page was passing the
- * whole dictionary — 61.2 KB (18.0 KB brotli, 25 % of the park page) — so that a FAQ of a few
- * paragraphs could link the handful of terms it happens to mention.
- *
- * Uses the exact matching rules of {@link parseGlossarySegments} (same alternation, same word
- * boundaries, same ≤4-char exact-case rule), so a term survives this filter if and only if the
- * client could have linked it. The one thing it does NOT model is first-occurrence-only — that is
- * per-string state at render time and would only ever drop MORE terms, never keep fewer.
- *
- * Pass a corpus that is a superset of what will be rendered. Text the client interpolates later
- * (park name, weekday names, hours) has to be included by the caller.
+ * Narrows a term list to the ones that can match anywhere in `corpus`, because
+ * `<GlossaryInjectProvider>` is a client boundary and serializes what it is handed. Same matching
+ * rules as {@link parseGlossarySegments} except first-occurrence-only, which could only drop more.
+ * Pass a corpus that is a superset of what will render, including text the client interpolates.
  */
 export function filterMatchableTerms<T extends GlossaryMatchTerm>(corpus: string, terms: T[]): T[] {
   if (!corpus) return [];

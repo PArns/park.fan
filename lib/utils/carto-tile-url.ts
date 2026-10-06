@@ -1,10 +1,8 @@
 /**
- * CARTO basemap raster tile URL for a given style (e.g. `rastertiles/voyager`,
- * `dark_all`). With `NEXT_PUBLIC_CARTO_MAP_KEY` set, uses CARTO's keyed
- * single-host endpoint (raises the request ceiling above the anonymous
- * fair-use tier); unset, falls back to the subdomain-sharded anonymous
- * endpoint both maps used before the key existed. See
- * docs/rules/map-tiles-are-carto-not-osms-own-tile-server.md.
+ * CARTO basemap raster tile URL for a style (e.g. `rastertiles/voyager`, `dark_all`). With
+ * `NEXT_PUBLIC_CARTO_MAP_KEY` set it uses CARTO's keyed endpoint, which raises the request ceiling;
+ * without, the anonymous subdomain-sharded one.
+ * See docs/rules/map-tiles-are-carto-not-osms-own-tile-server.md.
  */
 export function cartoTileUrl(style: string): string {
   const key = process.env.NEXT_PUBLIC_CARTO_MAP_KEY;

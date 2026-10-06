@@ -37,19 +37,14 @@ interface RideNowPanelProps {
   status: AttractionStatus;
   statusLabel: string;
   /**
-   * Today in the PARK's timezone (`yyyy-MM-dd`), resolved on the server.
-   *
-   * It exists so the typical/busy pair can be picked during the SERVER render. Derived from the
-   * browser clock it was `null` until mount, so the two figures a „typische Wartezeit Taron"
-   * query is about rendered as em dashes in the served HTML and only appeared for a visitor with
-   * JavaScript. This route is `force-dynamic`, so the server clock costs nothing here.
+   * Today in the park's timezone (`yyyy-MM-dd`), resolved on the server, so the typical/busy pair
+   * is in the served HTML rather than appearing after mount. The route is `force-dynamic`, so the
+   * server clock costs nothing.
    */
   todayIso: string;
   /**
-   * How many best-visit slots the SERVER render saw, for the column's row reservation.
-   *
-   * Separate from `attraction.bestVisitTimes` because that field is overlaid by the live merge —
-   * see `slotSlots` below for what reading the merged one did to the fold.
+   * How many best-visit slots the server render saw, for the column's row reservation. Separate
+   * from `attraction.bestVisitTimes`, which the live merge overlays (see `slotSlots`).
    */
   shellSlotCount: number;
   /** Today's schedule row for the park, from the client detail fetch. */
@@ -59,24 +54,14 @@ interface RideNowPanelProps {
 }
 
 /**
- * „Heute an dieser Bahn" — the ride page's fold, and the park header panel's twin.
+ * „Heute an dieser Bahn": the ride page's fold and the twin of {@link ParkTodayPanel}, with the
+ * same header strip, {@link PanelGrid} columns and {@link PanelMetric} captions. It answers on
+ * arrival what a visitor otherwise assembled from the whole page: the live wait, the park's hours,
+ * the best hours and the typical wait.
  *
- * The ride page used to answer the same four questions the park panel answers, in four places
- * spread down the page: the live wait sat in a card under the first chapter heading, the park's
- * own hours were nowhere at all, the best hours of the day were a caption under a bar chart 400 px
- * further down, and what the queue typically costs was a card in the chapter after that. A visitor
- * had to assemble it, on the page they arrive at from a search for „<ride> Wartezeit".
- *
- * It is deliberately the same object as {@link ParkTodayPanel}: the same header strip with the
- * live dot and the clock, the same {@link PanelGrid} of hairline-ruled columns, the same
- * {@link PanelMetric} captions. Two pages one click apart used to open with a dense four-column
- * panel and with a rounded row of four empty tiles.
- *
- * **Geometry comes from the shell, content from the poll** — the rule the park panel is built on,
- * and the reason the columns are counted rather than written down. Whether this ride has typical
- * waits and whether it has best-visit slots is decided by the server-rendered snapshot and cannot
- * change under the reader; the values inside those columns move on the 5-minute poll and the rows
- * that hold them do not.
+ * Geometry comes from the shell, content from the poll: whether the ride has typical waits or
+ * best-visit slots is decided by the server snapshot, and the 5-minute poll moves values, never
+ * rows.
  */
 export function RideNowPanel({
   park,
@@ -110,21 +95,16 @@ export function RideNowPanel({
     : (stats?.maxWaitToday ?? null);
 
   /**
-   * The queue's short-term movement — arrow and figure from ONE derivation.
-   *
-   * `shortTermWaitTrend` is `AttractionCard`'s, so the panel and the ride's own card on the park
-   * page cannot disagree. This used to take its direction from `attraction.trend` (the API's
-   * reading) and its number from today's second half against its first, which is a different
-   * question: at 18:00 a queue reading 70, 70, 55, 50 drew a falling arrow next to `+30 min`.
+   * The queue's short-term movement, arrow and figure from one derivation (`shortTermWaitTrend`,
+   * shared with `AttractionCard`), so the panel and the ride's card cannot disagree and the arrow
+   * cannot point against its own number.
    */
   const trend = useMemo(() => shortTermWaitTrend(history), [history]);
 
   /**
-   * Today's typical pair, from the ride's own weekday rather than the weekday/weekend average.
-   *
-   * Read off `todayIso` and not off the browser clock, so it is in the served HTML — see the prop.
-   * Reading the day back as UTC midnight cannot drift across a DST boundary the way a local
-   * `new Date(y, m, d)` can.
+   * Today's typical pair, from the ride's own weekday rather than the weekday/weekend average. Read
+   * off `todayIso`, so it is in the served HTML, and parsed as UTC midnight, which cannot drift
+   * across a DST boundary like a local `new Date(y, m, d)`.
    */
   const typicalToday = useMemo((): (TypicalWaitBucket & { isWeekend?: boolean }) | null => {
     const tw = attraction.typicalWaits;
@@ -146,14 +126,9 @@ export function RideNowPanel({
   }, [attraction.bestVisitTimes, browserNow]);
 
   /**
-   * Rows the slot column reserves.
-   *
-   * From `shellSlotCount`, which the server render measured, and NOT from `attraction` — that one
-   * is the merged object, and `useLiveAttractionData` overlays `bestVisitTimes` from the detail
-   * response. Six of Phantasialand's forty rides ship an empty list in the park payload and get
-   * two slots from the detail endpoint, so reading it here made `columnCount` go 2 → 3 about
-   * 300 ms in: a whole `PANEL_CELL` appearing under the h1, in the fold. It must not shrink as
-   * the day's slots pass either, which is why it is not `slots.length`.
+   * Rows the slot column reserves, from `shellSlotCount` and not from the merged `attraction`: the
+   * live merge can add `bestVisitTimes` from the detail response, which made a whole column appear
+   * in the fold after mount. Not `slots.length` either, which shrinks as the day's slots pass.
    */
   const slotSlots = Math.min(SLOT_ROWS, shellSlotCount);
 
@@ -163,21 +138,11 @@ export function RideNowPanel({
 
   return (
     <>
-      {/* The header strip: what this panel is, and the clock it is true at. Same anatomy as the
-        park panel's, down to the static dot — an `animate-pulse` inside a `backdrop-filter` box
-        dirties its region every frame and costs the card a repaint, which is what made the park
-        header flicker. */}
-      {/* 47 px = `py-3` over the tallest thing the row can hold, which is the accuracy badge
-        (16 px of `text-xs` + `py-0.5` + its 1 px borders = 22) rather than the 20 px heading, plus
-        the row's own 1 px `border-b` (the box is border-box). The badge is not in the shell —
-        `leanParkForShell` strips `predictionAccuracy`, so it arrives with the client detail fetch
-        — and without the reservation its arrival moved this row, the card, and the whole page
-        under it. The reservation read 46 and the trigger was a block box, whose line box put the
-        22 px badge in 24 px: the row settled at 49 and the shift was 3 px (0.0071 at y=0 on
-        Taron's phone layout once PAR-427 lifted this card into the first screen). */}
-      {/* Below `sm` the row is one line, 47 px, and wraps only so that a clock which does not fit
-        beside the heading drops to a second line `overflow-hidden` cuts off: the French heading
-        and clock need 376 px on a 286 px row at 360 px (PAR-441). */}
+      {/* The header strip, with the park panel's static dot (an `animate-pulse` inside
+          `backdrop-filter` repaints every frame). 47 px is `py-3` around the accuracy badge (22 px,
+          taller than the heading) plus the 1 px `border-b`: the badge arrives with the client
+          detail fetch and must not move the row. Below `sm` the row is one line and wraps only so a
+          clock that does not fit drops to a second line that `overflow-hidden` cuts off. */}
       <div className="border-border/50 flex min-h-[47px] items-center gap-3 border-b px-5 py-3 max-sm:h-[47px] max-sm:flex-wrap max-sm:gap-y-3.5 max-sm:overflow-hidden">
         <div className="flex shrink-0 items-center gap-2">
           <span
@@ -187,11 +152,8 @@ export function RideNowPanel({
             )}
             aria-hidden="true"
           />
-          {/* „Wartezeit jetzt" and not a „Heute an dieser Bahn" of its own, for the query this
-            page is written for. The chapter that used to carry this h2 sat under the fold and has
-            become „Wartezeiten heute" (the chart); putting the keyword back on the heading
-            directly above the number is the stronger placement of the two, and the page keeps
-            both headings rather than trading one for the other. */}
+          {/* „Wartezeit jetzt" rather than a „Heute an dieser Bahn" heading: the query this page is
+              written for belongs on the heading directly above the number. */}
           <h2 className="text-[13px] font-bold tracking-[0.06em] uppercase">
             {t('sectionLiveNow')}
           </h2>
@@ -238,7 +200,6 @@ export function RideNowPanel({
 
       <div className="overflow-hidden">
         <PanelGrid columnCount={columnCount}>
-          {/* ── Wartezeit ── */}
           <div className={cell}>
             <PanelMetric caption={t('waitTime')}>
               <ParkStatusBadge status={status} />
@@ -257,12 +218,9 @@ export function RideNowPanel({
               ) : (
                 <span className="text-xl font-semibold">{statusLabel}</span>
               )}
-              {/* Inside the box the panel already reserves for the number, where
-                  a ride with no wait shows its status label. A DOWN ride is
-                  exactly that case. The `full` block carries both estimate
-                  figures: the ride page has the room for the probability and
-                  its meter, and this is the page a visitor opens when they are
-                  standing in front of the ride wondering whether to wait. */}
+              {/* Inside the box reserved for the number, where a ride with no wait shows its
+                  status: a DOWN ride is that case. The `full` block carries both estimate figures,
+                  since this is the page a visitor opens standing in front of the ride. */}
               <OutageNote
                 outage={attraction.outage}
                 timezone={timezone}
@@ -286,7 +244,6 @@ export function RideNowPanel({
             </div>
           </div>
 
-          {/* ── Heute ── */}
           <div className={cell}>
             <div className="flex flex-wrap gap-x-6 gap-y-3">
               <PanelMetric caption={t('todayRange')}>
@@ -305,10 +262,8 @@ export function RideNowPanel({
                   )}
                 </span>
               </PanelMetric>
-              {/* Today's high-water mark and when it fell. NOT the park's crowd level, which is
-                the one reading on this page that would have been stale rather than old: the ride
-                poll overlays the park's `status` and nothing else, so `currentLoad` would still
-                hold whatever the day-cached shell fetch was written with. */}
+              {/* Today's high-water mark and when it fell. Not the park's crowd level: the ride
+                  poll overlays only the park's `status`, so `currentLoad` would be stale. */}
               <PanelMetric caption={t('peakToday')}>
                 {stats?.peakWaitToday != null ? (
                   <span className="text-lg font-bold tabular-nums">
@@ -328,10 +283,9 @@ export function RideNowPanel({
               </PanelMetric>
             </div>
 
-            {/* The park's own day, under the ride's. A ride's queue is only half the answer to
-              „soll ich jetzt hin" — the other half is whether the park is still open, and the
-              ride page never said. Reserved at two lines because the schedule arrives with the
-              client detail fetch. */}
+            {/* The park's own day, under the ride's: whether the park is still open is the other
+                half of „soll ich jetzt hin". Reserved at two lines because the schedule arrives
+                with the client detail fetch. */}
             <div className="mt-auto flex min-h-[3.25rem] flex-col gap-1">
               <span className="text-muted-foreground flex items-center gap-1 text-[10px] font-semibold tracking-[0.08em] uppercase">
                 <Clock className="h-3 w-3" aria-hidden="true" />
@@ -354,7 +308,6 @@ export function RideNowPanel({
             </div>
           </div>
 
-          {/* ── Beste Zeiten heute ── */}
           {slotSlots > 0 && (
             <div className={cell}>
               <PanelMetric caption={t('bestTimesToday')} icon={Star}>
@@ -409,7 +362,6 @@ export function RideNowPanel({
             </div>
           )}
 
-          {/* ── Typisch ── */}
           {attraction.typicalWaits?.displayable && (
             <div className={cell}>
               {/* No „basierend auf N Tagen" note here: the card in „Beste Besuchszeit planen"
@@ -439,8 +391,7 @@ export function RideNowPanel({
                 <p className="text-muted-foreground mt-auto text-xs">
                   {t('typicalWaits.peak', {
                     value: roundWaitTo5(attraction.typicalWaits.peak.value),
-                    // Never the raw field: it is `yyyy-MM-dd`, and it rendered as „Rekord 135 Min
-                    // · 2026-07-16" beside a card two chapters down saying „16. Juli 2026".
+                    // Never the raw `yyyy-MM-dd` field: formatted like the card two chapters down.
                     date: formatPeakDate(attraction.typicalWaits.peak.date, locale),
                   })}
                 </p>

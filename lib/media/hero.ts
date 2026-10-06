@@ -2,20 +2,12 @@ import { HERO_BY_PARK, HERO_META, HERO_SRCS } from './manifest-hero';
 import type { MediaFocus } from './types';
 
 /**
- * The homepage / glossary hero, served from the media database.
+ * The homepage and glossary hero, served from the media database: the rotation pool is every image
+ * whose sidecar claims the `hero` role.
  *
- * Replaces the generated `lib/hero-images.ts` + `lib/hero-images-meta.ts` pair.
- * Both used to be rebuilt by a script that re-fetched the API and re-derived the
- * captions on every build; now the rotation pool is just "images whose sidecar
- * claims the `hero` role" and the caption is assembled from data the database
- * already holds.
- *
- * **This module is client-safe, and must stay that way.** The rotation, the
- * crossfade and the caption that follows it all run in Client Components, so
- * anything imported here is shipped to every visitor. It therefore reads
- * `manifest-hero.ts` — a ~21 KB slice holding only the hero images and only the
- * fields the caption paints — never `manifest.ts`, which is ~107 KB of catalog
- * that would otherwise land in the bundle of every page with a hero.
+ * Client-safe, and must stay that way: the rotation, the crossfade and the caption run in Client
+ * Components, so this reads the small `manifest-hero.ts` slice, never `manifest.ts`, which would
+ * put the whole catalog in the bundle of every page with a hero.
  */
 
 export interface HeroImageMeta {
@@ -43,14 +35,9 @@ export function heroImageSrcs(): string[] {
 }
 
 /**
- * Hero images for ONE park — empty when no park is given.
- *
- * Deliberately a separate function from {@link heroImageSrcs} rather than an
- * optional argument on it. The in-park rotation asks this with the slug of the
- * park the visitor was detected in, which is `undefined` for everyone who is not
- * at a park; an optional-argument version answered that with the FULL pool, so the
- * hero crossfaded through every park's photos for every visitor instead of staying
- * on the one server-rendered image. Returning `[]` is what keeps the rotation off.
+ * Hero images for one park, empty when no park is given. A separate function rather than an
+ * optional argument on {@link heroImageSrcs}: a visitor at no park passes `undefined` and must get
+ * no rotation, not every park's photos.
  */
 export function parkHeroImageSrcs(parkSlug: string | null | undefined): string[] {
   if (!parkSlug) return [];

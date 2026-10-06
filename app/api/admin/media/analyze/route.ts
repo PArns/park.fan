@@ -9,17 +9,9 @@ import type { MediaGps } from '@/lib/media/types';
 import { LOW_RES_LONG_EDGE } from '../route';
 
 /**
- * Inspect freshly dropped files and propose where each belongs.
- *
- * This is the step that makes a 100-image drop reviewable instead of a data-entry
- * session: the browser posts the files, this reads the EXIF the camera left on
- * them and answers, per file, "this is Toverland, 240 m from the entrance, and
- * here are the eight nearest rides".
- *
- * Nothing is stored. The client keeps the bytes and posts them again — with the
- * corrections a human made — to `../commit`, which opens the pull request. Two
- * round trips over one is deliberate: the expensive, irreversible step (writing to
- * the repository) happens only after somebody has looked at the suggestions.
+ * Inspects freshly dropped files and proposes from their EXIF where each belongs: the park, the
+ * distance, the nearest rides. Nothing is stored; the client posts the corrected batch to
+ * `../commit`, so the irreversible write happens only after somebody has looked.
  */
 
 export const runtime = 'nodejs';
@@ -191,8 +183,8 @@ export async function POST(req: Request) {
         shotAt,
         suggestion: {
           park,
-          // A ranked shortlist, never a single auto-assigned ride: the nearest
-          // attraction is the right one only ~55 % of the time (see lib/media/suggest.ts).
+          // A ranked shortlist, never one auto-assigned ride: the nearest is right only about
+          // half the time (see lib/media/suggest.ts).
           rides,
           // The themed area of the closest ride, offered alongside it.
           area: rides[0]?.area ?? null,

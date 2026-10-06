@@ -29,32 +29,20 @@ import {
 } from './_fixtures';
 
 /**
- * Example UI for the guide.
- *
- * Every block below renders a **production** component with fixture props —
- * `AttractionCard`, `AttractionTypicalWaits`, `RopeDropCard`, `ParkCalendarDay`
- * and friends, the same ones a park page mounts. Nothing here redraws a
- * lookalike: a reader is being taught to read these exact cards, and a copy
- * would start lying the first time one of them is restyled.
- *
- * Most of them never touch the network: the teaching figures are prop-driven so
- * the lesson holds still, because chapter 02's three steps are written around
- * specific readings. The two exceptions are at the bottom of this file and are
- * marked as such — where the point is "this is running right now", a frozen
- * copy would be the wrong exhibit.
+ * Example UI for the guide: every block renders a production component with fixture props, the
+ * same ones a park page mounts, because a redrawn lookalike starts lying at the first restyle.
+ * The teaching figures are prop-driven so the lesson holds still; the two live exceptions are at
+ * the bottom of this file. See
+ * docs/rules/the-guide-page-teaches-the-real-cards-with-the-rides-real.md.
  */
 
 const PARK_PATH = '/parks/europe/germany/bruehl/phantasialand';
 const DEMO_PARK = 'phantasialand';
 
 /**
- * The card's photo through the media database, never a path typed out here.
- *
- * A literal `/media/phantasialand/taron.jpg` renders a different crop from the one
- * a park page shows: the sidecar's focal point drives `object-position` (Taron sits
- * at 0.55/0.58, Black Mamba at 0.5/0.38) and the `?v=` content hash is what lets a
- * retargeted focal point invalidate an unchanged URL. This page's whole claim is
- * that the card looks the same an hour later in the park.
+ * The card's photo through the media database, never a typed path: the sidecar's focal point
+ * drives `object-position` and the `?v=` content hash invalidates a retargeted crop, so the card
+ * looks as it does on the park page.
  */
 function photoProps(rideSlug: string) {
   return {
@@ -102,9 +90,8 @@ export function DemoFrame({
         </div>
         {children}
       </div>
-      {/* Same edges as the frame above it and as every paragraph around it —
-          the page runs one column at full width, so a capped caption would be
-          the only element on it with a right edge of its own. */}
+      {/* Same edges as the frame above it and every paragraph around it: the page runs
+          one column at full width. */}
       {note && <p className="text-muted-foreground mt-2 text-xs leading-relaxed">{note}</p>}
     </div>
   );
@@ -189,11 +176,9 @@ export async function RopeDropDemo({ className }: { className?: string }) {
 export async function TwoRidesDemo() {
   const { taron, mamba } = buildDemoFixtures(await getServerNowMs());
   return (
-    // One row template PER CARD, never one shared by both. `AttractionCard` is
-    // `row-span-3` + subgrid, so two of them in a single three-row grid put the
-    // second on implicit `auto` rows: measured at 390 px the shared version gave
-    // card 1 the 32 px spacer row and card 2 a 0 px one, and its panels' -mb-4 /
-    // -mt-4 then closed over each other. Same shape as the blog widgets.
+    // One row template per card, never one shared by both: `AttractionCard` is `row-span-3` +
+    // subgrid, so a second card in one three-row grid lands on implicit `auto` rows and its panels'
+    // negative margins close over each other. Same shape as the blog widgets.
     <div className="not-prose grid gap-4 sm:grid-cols-2">
       {[taron, mamba].map((attraction) => (
         <div
@@ -306,23 +291,10 @@ export function BadgeRowDemo({
 }
 
 /**
- * A whole planned day, drawn by the planner's own components.
- *
- * Imported from the planner's page rather than rebuilt here, and so is its
- * fixture: `PlannerDayDemo` mounts `PlannerDayGrid`, `PlannerShowBand`,
- * `PlannerContextBand` and `PlannerGridActions` against the payload the API
- * answered on 4 September 2026 for Saturday 12 September at Phantasialand. A
- * second day grid beside the real one would start lying at the first restyle,
- * and a second copy of the day would be a second date to keep honest.
- *
- * The figure is operable — a block drags, snaps and recomputes its height — and
- * inert: the demo holds its own state, the day has passed, so nothing is
- * written to a reader's plan and the grid's weather query stays outside its
- * horizon and never fires.
- *
- * Server-side like every block above it. `demoPlanDay()` reads the rides'
- * photos out of the media database, and the free block's label is a word this
- * page has in six languages.
+ * A whole planned day, drawn by the planner's own components: `PlannerDayDemo` and its fixture
+ * are imported from the planner's page rather than rebuilt, so there is one day grid and one
+ * dated payload to keep honest. Operable and inert: the demo holds its own state, and the past
+ * date keeps the grid's weather query from firing.
  */
 export async function PlannerDayFigure() {
   const t = await getTranslations('planner.custom.icon');
@@ -331,19 +303,10 @@ export async function PlannerDayFigure() {
   );
 }
 
-// ── Live blocks ──────────────────────────────────────────────────────────────
-//
-// The blocks above teach with frozen numbers, because chapter 02's three steps
-// are written around specific readings and a lesson that reshapes itself
-// overnight is not a lesson. These two are the opposite case: their whole point
-// is that the thing being described is running right now, so they mount the
-// real fetching components and show whatever the park's data says today.
-//
-// Both are safe to mount outside a park page. `useLoadLast` gates the heavy
-// trip-planning queries behind a network-idle window and releases within ~300 ms
-// here (nothing else on this page fetches), and `ParkStatsSection` already
-// supports a caller with no park object — that is how the blog widgets use it.
-// The prose beside them never quotes a figure they render.
+// The live blocks: their point is that the thing described is running right now, so they mount
+// the real fetching components. Both are safe outside a park page: `useLoadLast` releases quickly
+// here, since nothing else on this page fetches, and `ParkStatsSection` supports a caller with no
+// park object. The prose beside them never quotes a figure they render.
 
 const DEMO_GEO = {
   continent: 'europe',
@@ -364,11 +327,9 @@ export async function LiveHourlyProfile({ locale }: { locale: Locale }) {
     hour: t('hourlyProfileHour'),
     minutes: tOverview('minutesUnit'),
     peakNote: t('hourlyProfilePeakNote'),
-    // `t.raw`, not `t`: the message keeps its `{days}` placeholder and the card fills it in
-    // from `profile.meta.totalSampleDays`, a number only the settled client query knows. Run
-    // through `t` the ICU formatter is handed no `days` argument, throws FORMATTING_ERROR and
-    // next-intl returns the key path — which is how „parks.stats.hourlyProfileFootnote" shipped
-    // as visible text under the hourly table, in all six locales, on every post with this widget.
+    // `t.raw`, not `t`: the message keeps its `{days}` placeholder for the card to fill from the
+    // client query. Through `t`, with no `days` argument, it throws FORMATTING_ERROR and next-intl
+    // prints the key path.
     footnote: t.raw('hourlyProfileFootnote') as string,
   };
   return (

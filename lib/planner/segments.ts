@@ -1,14 +1,9 @@
 import type { Locale } from '@/i18n/config';
 
 /**
- * Locale → localized URL segment for the trip planner's own page.
- *
- * Same mechanism as the guide, the glossary and the best-travel-time hub: the
- * canonical route folder is the English slug, the other locales are served on it
- * by a rewrite in `next.config.ts` and canonicalized by redirects. Its own tiny
- * module so the header, the footer and the route can each import it without
- * pulling anything else in — the header is a Client Component mounted on every
- * page, and this is what a link there costs.
+ * Locale to localized URL segment for the trip planner's own page: the English slug is the route
+ * folder, the others are rewrites in `next.config.ts`, as for the guide and the glossary. Its own
+ * tiny module, because the header imports it on every page.
  */
 export const PLANNER_SEGMENTS: Record<Locale, string> = {
   en: 'trip-planner',
@@ -23,9 +18,8 @@ export const PLANNER_SEGMENTS: Record<Locale, string> = {
 export const PLANNER_CANONICAL_SEGMENT = PLANNER_SEGMENTS.en;
 
 /**
- * The anchor on the planner page where a plan is started — the hero's action jumps to it. It sits
- * on the body's own „new day" controls, whichever of the two is showing, so the jump lands on the
- * button that opens the wizard rather than on a second one.
+ * The anchor on the planner page where a plan is started, which the hero's action jumps to. It sits
+ * on whichever of the body's two "new day" controls is showing.
  */
 export const PLANNER_START_ID = 'plan';
 

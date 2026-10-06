@@ -6,6 +6,7 @@ import { MobileMore } from '@/components/common/mobile-more';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { getGlobalStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
+import { STORY_SECTION_TINTED } from './section-chrome';
 
 /**
  * Chapter: a park day is not only roller coasters.
@@ -35,7 +36,7 @@ export async function ChapterShowsRestaurants() {
     : [];
 
   return (
-    <section className="border-border bg-muted/30 border-t px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION_TINTED}>
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading

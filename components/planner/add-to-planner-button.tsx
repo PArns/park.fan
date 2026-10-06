@@ -22,9 +22,8 @@ interface AddToPlannerButtonProps {
   attractionSlug: string;
   attractionName: string;
   /**
-   * The park's IANA zone. Optional only because the payloads that carry it
-   * declare it optional — pass it wherever it is known, because it is BOTH the
-   * date this files under and the zone the whole plan then reckons in.
+   * The park's IANA zone. Optional only because the payloads declare it so; pass it wherever it is
+   * known, since it is both the date this files under and the zone the plan reckons in.
    */
   timezone?: string;
   /** Park-local date. Defaults to today where the park is. */
@@ -33,25 +32,14 @@ interface AddToPlannerButtonProps {
 }
 
 /**
- * Puts one ride into the plan.
+ * Puts one ride into the plan, from a ride card, a ride page or the mobile search alike, so it
+ * takes the park's identity as props rather than from a context. State is read through the module
+ * store, so every copy of this button and the launcher's count update together.
  *
- * This is the feature's real entry point — the floating launcher only appears
- * once something is in — so it has to work from a ride card, a ride page and the
- * mobile search alike, which is why it takes the park's identity as props rather
- * than reading a context. A card deep in a list has that information already; a
- * context would mean wrapping the tree for it.
- *
- * The state is read through the module store, so pressing this on one card
- * updates the launcher's count and any other copy of this button for the same
- * ride, with no provider between them.
- *
- * **A day with no room for the ride opens the assistant instead (PAR-67).** The
- * press files without a minute, and `addEntry` puts such a ride an hour after the
- * last one and never before now. Late on the day you are in the park that ran
- * past closing within five presses and then stacked rides on the 25:00 ceiling.
- * The press now asks `noRoomForRide` first and, where the engine cannot give
- * every wish a slot before closing, opens `PlannerFitAssistant` on that question
- * and writes nothing until the visitor confirms there.
+ * A day with no room for the ride opens the assistant instead: the press asks `noRoomForRide`
+ * first and, where not every wish gets a slot before closing, opens `PlannerFitAssistant` and
+ * writes nothing until the visitor confirms. See
+ * docs/rules/a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md.
  */
 export function AddToPlannerButton({
   parkSlug,
@@ -67,38 +55,28 @@ export function AddToPlannerButton({
   const locale = useLocale();
   const queryClient = useQueryClient();
   const { addRide, setActive, restoreDay, applyPlan } = usePlanner();
-  // What this button DISPLAYS a count for, and deliberately not what a press
-  // files under: this is a render-time reading of the clock, and `handleAdd`
-  // takes its own. A stale date here shows the wrong count for one render and
-  // corrects itself on the next; a stale date on the write is a misfiling.
+  // What this button displays a count for, not what a press files under: `handleAdd` reads its own
+  // clock, since a stale date on a write is a misfiling.
   const targetDate = date ?? todayInZone(timezone);
   const plannedCount = usePlannedCount(parkSlug, targetDate, attractionSlug);
   const planned = plannedCount > 0;
 
   /**
-   * The question a press raised, while somebody answers it.
-   *
-   * Held with the date it was asked FOR, because that is the day the answer
-   * writes into, and with the dialog's own code: the assistant and the engine
-   * behind it load on the press that needs them, not with every ride page.
-   * `nonce` remounts the dialog per press, so each question opens on a fresh
-   * answer, as it does in the optimise row.
+   * The question a press raised, while somebody answers it, with the date it was asked for (where
+   * the answer writes) and the dialog's own code, loaded on the press that needs it. `nonce`
+   * remounts the dialog per press.
    */
   const [fit, setFit] = useState<{
     date: string;
     input: FitInput;
-    /** What the dialog opens on: the pressed ride pinned (PAR-637). */
+    /** What the dialog opens on: the pressed ride pinned. */
     choice: FitChoice;
     nonce: number;
     Assistant: FitAssistant;
   } | null>(null);
   /**
-   * What the assistant's answer did, with the day before it for one undo.
-   *
-   * The rule for the optimise row holds here too: where the answer leaves
-   * something out, it says so in a bordered line with a way back, and an
-   * answer that re-timed the whole day can be taken back in one press. It
-   * lives in component state, so it lasts as long as the page does.
+   * What the assistant's answer did, with the day before it for one undo, as in the optimise row:
+   * a bordered line where something was left out, and a way back.
    */
   const [result, setResult] = useState<{
     date: string;
@@ -106,8 +84,8 @@ export function AddToPlannerButton({
     text: string;
     alert: boolean;
   } | null>(null);
-  // One press at a time: the probe can wait on the network, and a second press
-  // in that window would file a ride the first one is still deciding about.
+  // One press at a time: the probe can wait on the network, and a second press would file a ride
+  // the first is still deciding about.
   const pending = useRef(false);
 
   const file = (filingDate: string, now: number) => {
@@ -123,18 +101,14 @@ export function AddToPlannerButton({
       },
       now
     );
-    // Adding also decides what the flyout shows: a visitor who just planned a
-    // ride at this park on this day means to look at that day, not at whatever
-    // was open last week.
+    // Adding also decides what the flyout shows: the day just planned on.
     setActive(parkSlug, filingDate);
   };
 
   /**
-   * The conflict this press would cause, or `null` to file the ride as before.
-   *
-   * Every failure is `null` too: a plan-day request that errors or a chunk that
-   * does not load must not take the button away. The payload comes through the
-   * same query the flyout uses, so a day the panel has shown costs no request.
+   * The conflict this press would cause, or `null` to file the ride as before. Every failure is
+   * `null` too, so an error never takes the button away. The payload comes through the flyout's own
+   * query.
    */
   const probe = async (filingDate: string, now: number) => {
     try {
@@ -150,8 +124,7 @@ export function AddToPlannerButton({
         ),
         import('@/lib/planner/add-ride-fit'),
       ]);
-      // Read after the await, so a day edited while the request was out is the
-      // day the question is asked about.
+      // Read after the await, so a day edited meanwhile is the day asked about.
       const planned = plannerStore.getSnapshot().parks[parkSlug]?.days[filingDate];
       const clock = dayClock(filingDate, resolveTimeZone(timezone), now);
       const input = noRoomForRide({
@@ -172,17 +145,12 @@ export function AddToPlannerButton({
   const handleAdd = async () => {
     if (pending.current) return;
     pending.current = true;
-    // ONE clock read decides both halves, and the two are not independent: the
-    // day this files under and the earliest minute inside that day. `targetDate`
-    // above is computed at RENDER, so a ride page left open across park-local
-    // midnight would file under yesterday — where `addEntry`'s floor reads
-    // `phase: 'past'`, declines to raise anything and lands the ride at 10:00 on
-    // a day that has ended. That is the fault this button was fixed for, at the
-    // one boundary a floor cannot see from inside the day it is given.
+    // One clock read decides both the filing date and the earliest minute in it: `targetDate` is
+    // computed at render, and a page left open across park-local midnight would file under
+    // yesterday.
     const now = Date.now();
     const filingDate = date ?? todayInZone(timezone, now);
-    // A new press is a new question; the last answer's undo would restore a
-    // day this press is about to change.
+    // A new press is a new question; the last answer's undo would restore a day this press changes.
     setResult(null);
     try {
       const conflict = await probe(filingDate, now);
@@ -201,18 +169,15 @@ export function AddToPlannerButton({
   };
 
   /**
-   * The visitor's answer, written the way the optimise row writes it:
-   * `restoreDay` with the entries the choice keeps, then `applyPlan` with the
-   * schedule. Cancelling never reaches this, so the day stays as it was and the
-   * ride stays unplanned.
+   * The visitor's answer, written as the optimise row writes it: `restoreDay` with the entries the
+   * choice keeps, then `applyPlan`. Cancelling never reaches this.
    */
   const confirm = async (input: FitInput, filingDate: string, choice: FitChoice) => {
     setFit(null);
     const { evaluateFit } = await import('@/lib/planner/fit');
     const outcome = evaluateFit(input, choice);
-    // The answer re-times every movable ride of the day and drops what was
-    // unticked, so the day as it was is kept for one „Rückgängig", as in the
-    // optimise row. `input.entries` is that day: the dialog is modal.
+    // The day as it was is kept for one „Rückgängig"; `input.entries` is that day, since the dialog
+    // is modal.
     const left = outcome.missed.length + choice.dropped.size;
     setResult({
       date: filingDate,
@@ -230,12 +195,7 @@ export function AddToPlannerButton({
       geo,
       timezone,
       date: filingDate,
-      stops: outcome.stops.map((stop) => ({
-        entryId: stop.entryId,
-        attractionSlug: stop.attractionSlug,
-        attractionName: stop.attractionName,
-        startMinute: stop.startMinute,
-      })),
+      stops: outcome.stops,
     });
     trackPlanOptimized(parkName);
     setActive(parkSlug, filingDate);
@@ -273,9 +233,7 @@ export function AddToPlannerButton({
     <span className="relative inline-flex">
       {button}
       {result && (
-        // Hung below the button rather than in the row: the button sits in a
-        // header row beside the favourite star, and a line in that flow would
-        // push the row apart. Same colours as the optimise row's result line.
+        // Below the button rather than in its header row, where a line would push the row apart.
         <span
           role="status"
           className={cn(

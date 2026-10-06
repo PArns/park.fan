@@ -13,6 +13,10 @@ interface WaitTimeSparklineProps {
   className?: string;
 }
 
+/**
+ * Sparkline of a ride's recent wait times from its statistics history, held flat up to now, with
+ * tooltip times in the park's timezone.
+ */
 export function WaitTimeSparkline({ history, timezone, className }: WaitTimeSparklineProps) {
   const locale = useLocale();
   const browserNow = useBrowserNow();

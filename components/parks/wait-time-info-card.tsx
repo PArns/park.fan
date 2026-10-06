@@ -33,6 +33,10 @@ interface WaitTimeInfoCardProps {
   className?: string;
 }
 
+/**
+ * Card with a ride's current wait time in large type, today's low and high, a trend arrow and
+ * a faded sparkline of today underneath; shows a status icon and label when the ride is not open.
+ */
 export function WaitTimeInfoCard({
   waitTime,
   trend,
@@ -57,7 +61,6 @@ export function WaitTimeInfoCard({
   const hasSparkline = isOperating && sparklineHistory && sparklineHistory.length > 0;
 
   return (
-    // gap-3 overrides the card's default gap-6 to tighten header↔content spacing
     <Card className={cn('gap-3 overflow-hidden', className)}>
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-base">
@@ -68,7 +71,6 @@ export function WaitTimeInfoCard({
 
       <CardContent>
         <div className="flex items-center justify-between gap-4">
-          {/* Left: icon bubble + value */}
           <div className="flex items-center gap-4">
             <div className="bg-muted shrink-0 rounded-full p-3">
               <Clock className="text-primary h-8 w-8" />
@@ -93,7 +95,6 @@ export function WaitTimeInfoCard({
             </div>
           </div>
 
-          {/* Right: trend indicator */}
           {isOperating && trend && (
             <div
               className={cn(

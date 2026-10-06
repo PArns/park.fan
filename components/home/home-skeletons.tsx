@@ -14,15 +14,12 @@ import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skele
 import { cn } from '@/lib/utils';
 
 /**
- * Suspense fallbacks for the homepage's data-dependent sections.
- *
- * Each skeleton mirrors the real section's outer structure (section padding,
- * heading block, grid columns) and reuses the real card min-heights so the
- * streamed/hydrated content swaps in without shifting the sections below it
- * (minimal CLS). Pure, data-free Server Components rendered into the shell.
+ * Suspense fallbacks for the homepage's data-dependent sections. Each mirrors its section's outer
+ * structure and the real card heights, so the streamed content swaps in without moving the
+ * sections below.
  */
 
-/** Mirrors <StatsCard>: title line + large value + description. (~116px tall) */
+/** Mirrors <StatsCard>: title line, large value, description. */
 function StatsCardSkeleton() {
   return (
     <Card>
@@ -47,28 +44,25 @@ function StatCardRow({ children }: { children: React.ReactNode }) {
   );
 }
 
+/**
+ * Suspense fallback for the homepage's global and platform stats sections: the real headings over
+ * stat, park and ride card skeletons sized like the cards they stand in for.
+ */
 export function GlobalStatsSkeleton({ labels }: { labels: SectionHeadingLabels }) {
   return (
     <>
-      {/* Global Stats */}
       <section className={STORY_SECTION_TINTED}>
         <div className="container mx-auto">
-          {/* The REAL heading, not blocks shaped like one. It needs no data, and
-              since it became a `ChapterHeading` tile its height moves with how
-              the title and hint wrap — per locale, per breakpoint. A sized
-              placeholder cannot follow that; this node follows it by being it. */}
+          {/* The real heading, not blocks shaped like one: it needs no data, and its height moves
+              with how title and hint wrap per locale and breakpoint. */}
           <GlobalStatsHeading labels={labels} />
-          {/* Row 1: two stat cards */}
           <div className="mb-4 grid gap-4 sm:grid-cols-2">
             <StatsCardSkeleton />
             <StatsCardSkeleton />
           </div>
-          {/* Row 2: most/least crowded parks */}
           <div className="mb-3 grid gap-4 sm:grid-cols-2">
-            {/* No photo row: these two are the ends of a wait-time ranking, and the nine
-                parks that have a picture never reach either end (Phantasialand, the best
-                placed of them, sits 10th). Reserving it cost 221 px per card against a
-                measured 145.64 px. */}
+            {/* No photo row: the parks with a picture never reach either end of a wait-time
+                ranking, so the real cards have none. */}
             <StatCardRow>
               <ParkCardNearbySkeleton withPhoto={false} />
             </StatCardRow>
@@ -76,11 +70,9 @@ export function GlobalStatsSkeleton({ labels }: { labels: SectionHeadingLabels }
               <ParkCardNearbySkeleton withPhoto={false} />
             </StatCardRow>
           </div>
-          {/* Row 3: longest/shortest wait rides */}
           <div className="grid gap-4 sm:grid-cols-2">
-            {/* `stat`: these two build their card from a few stat fields — no land, no queue
-                history, no trend — so the real card settles at 197-231 px, not the 318 an
-                attractions-tab card measures. See the skeleton's own docblock. */}
+            {/* `stat`: these cards are built from a few stat fields, so the real card is shorter
+                than an attractions-tab card; see the skeleton's docblock. */}
             <StatCardRow>
               <AttractionCardSkeleton variant="stat" />
             </StatCardRow>
@@ -91,7 +83,6 @@ export function GlobalStatsSkeleton({ labels }: { labels: SectionHeadingLabels }
         </div>
       </section>
 
-      {/* Platform Statistics */}
       <section className={STORY_SECTION}>
         <div className="container mx-auto">
           <PlatformStatsHeading labels={labels} />
@@ -136,22 +127,23 @@ export function FeaturedParksSkeleton({
   );
 }
 
+/**
+ * Suspense fallback for the homepage's live activity section: the real heading over five continent
+ * card skeletons.
+ */
 export function LiveActivitySkeleton({ labels }: { labels: SectionHeadingLabels }) {
   return (
     <section className={STORY_SECTION_TINTED}>
       <div className="container mx-auto">
         <LiveActivityHeading labels={labels} />
-        {/* Five cards, one per continent the discovery endpoint lists today (Asia, Europe,
-            North America, Oceania, South America). Six reserved one card too many, and on a
-            phone, one column wide, that was 130 px the page lost when the grid landed. Since
-            PAR-435 the section sits above the story chapters there, so every chapter moved.
-            Five or six is the same two rows at `lg` and three at `sm`. */}
+        {/* Five cards, one per continent the discovery endpoint lists; a sixth would reserve a
+            card's height the page loses on a phone when the grid lands. */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 5 }).map((_, i) => (
             <Card key={i} className="bg-muted/50">
               <CardHeader className="pb-2">
                 {/* h-7 and h-9 are the line boxes of the real `text-lg` title and `text-3xl`
-                    count; h-5 and h-8 left each card 12 px short. */}
+                    count. */}
                 <div className="flex items-center justify-between">
                   <Skeleton className="h-7 w-28" />
                   <Skeleton className="h-4 w-4" />

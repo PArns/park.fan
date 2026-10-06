@@ -3,15 +3,8 @@ import { Plugin, PluginKey } from '@tiptap/pm/state';
 import { Decoration, DecorationSet } from '@tiptap/pm/view';
 
 /**
- * Highlights whichever chip is currently loaded in the PropertiesPanel.
- *
- * Clicking a chip fires `parkfan-selection` (consumed by the panel); this
- * plugin listens to the same event and rings the corresponding range in the
- * canvas so the author always sees WHICH park link / image / widget they're
- * editing — previously the only feedback was the panel content itself.
- *
- * Also binds Escape to clear the selection (panel + ring) for quick
- * keyboard-driven flows.
+ * Rings the chip loaded in the PropertiesPanel, from the same `parkfan-selection` event, so the
+ * author sees which link, image or widget is being edited. Escape clears the selection.
  */
 
 interface ActiveRange {

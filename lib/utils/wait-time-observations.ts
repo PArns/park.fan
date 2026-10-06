@@ -4,25 +4,10 @@ import { isInSeason } from './season';
 import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
 
 /**
- * One machine-readable wait-time reading. schema.org types `Observation` as a
- * measurement of a variable about some entity at some time, which is exactly
- * what a standby queue reading is — and unlike the surrounding `AmusementPark` node
- * it carries the one thing an answer engine needs and prose cannot give it: the
- * value, its unit, and the moment it was taken, per ride.
- *
- * `observationAbout` is a **reference**, not a copy: the ride is already
- * declared under the park's `containsPlace` with its own `@id`, so pointing at
- * that id keeps the page one graph instead of two disagreeing descriptions of
- * the same ride. (The obvious alternative — repeating `{name}` inline, as the
- * competitor's markup does — leaves a crawler to match rides by string and
- * throws away the ride's URL, which is the part that makes it an entity.)
- *
- * It carries the ride's `@type` all the same, because that `containsPlace` sits
- * in the park node's own `<script>` and these observations ship in the next one:
- * a consumer that reads one block at a time is handed an object it cannot type,
- * which is the shape Search Console rejected on the calendar's `Dataset`. The
- * type is the one thing about a node that cannot drift, so stating it twice
- * costs nothing; the ride's name and URL still live in exactly one place.
+ * One machine-readable wait-time reading as a schema.org `Observation`: the value, its unit and
+ * when it was taken, per ride. `observationAbout` references the ride's `@id` from the park's
+ * `containsPlace` instead of copying it, so the page stays one graph; its `@type` is repeated
+ * because the observations ship in a separate `<script>`, and an untyped node is rejected.
  */
 export interface WaitTimeObservation {
   '@type': 'Observation';
@@ -41,32 +26,12 @@ function getStandbyTimestamp(attraction: ParkAttraction): string | undefined {
 }
 
 /**
- * `Observation` nodes for a park's current standby waits.
- *
- * The selection deliberately mirrors the rules the attraction cards apply —
- * not the subset of them the first HTML happens to carry — because structured
- * data that contradicts the visible page is worse than no structured data at
- * all. A ride whose card is still behind a `LazyMount` placeholder is on the
- * page all the same, and `containsPlace` declares every one of them:
- *
- * 1. **Nothing at all for a park whose waits we cannot read.** Hansa-Park
- *    publishes wait times only inside its own app, and a park with no source is
- *    indistinguishable in the payload from a park shut for the night. Left to
- *    the generic path it would emit a full set of `value: 0` readings — a
- *    measurement we never made, asserted in machine-readable form. See
- *    `hasReadableWaitTimes`.
- * 2. **Out-of-season rides are skipped**, matching the grid's `isInSeason`
- *    filter. `containsPlace` still lists them, and should: it says what the park
- *    contains, which stays true in every month. An observation says what was
- *    measured today, and nobody measures the queue for an ice rink in August.
- * 3. **Only `OPERATING` rides**, via the same `getAttractionDisplayStatus` a
- *    card reads. A closed ride has no queue to stand in, so `value: 0` would
- *    not be a short wait — it would be a wait that does not exist. The
- *    competitor emits exactly that (`value: 0` alongside `Status: closed`), and
- *    it is how a quiet park comes to look like a park with no queues.
- *
- * A ride that is operating but carries no numeric standby reading drops out
- * too: absent is not zero.
+ * `Observation` nodes for a park's current standby waits, mirroring the attraction cards' rules,
+ * because structured data that contradicts the page is worse than none. Nothing for a park whose
+ * waits we cannot read (it would assert `value: 0` readings never made, see
+ * `hasReadableWaitTimes`); no out-of-season rides; only `OPERATING` rides, since a closed ride's 0
+ * is a wait that does not exist; and no ride without a numeric reading.
+ * See docs/rules/parks-we-cannot-read.md.
  */
 export function buildWaitTimeObservations(
   park: ParkWithAttractions,

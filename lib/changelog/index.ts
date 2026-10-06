@@ -13,15 +13,9 @@ import type {
 } from './types';
 
 /**
- * The public changelog, read from `content/changelog/<version>.md` at build time.
- *
- * A directory read rather than a generated manifest, which is what the blog
- * needs and this does not: one route renders these, there are a handful of
- * files, and no other surface imports them — so there is no import graph to
- * keep bodies out of. `lib/markdown.ts` is the same pattern one file at a time.
- *
- * The page is prerendered (`/en/changelog` has no dynamic params and reads no
- * request state), so this runs during the build and never per request.
+ * The public changelog, read from `content/changelog/<version>.md` at build time. A directory
+ * read rather than a generated manifest like the blog's: one prerendered route renders it, so
+ * there is no import graph to keep the bodies out of.
  */
 
 const CONTENT_DIR = path.resolve(process.cwd(), 'content', 'changelog');
@@ -29,13 +23,7 @@ const CONTENT_DIR = path.resolve(process.cwd(), 'content', 'changelog');
 /** The page is English-only, so alt and caption are read in English. */
 const CONTENT_LOCALE = 'en';
 
-/**
- * Numeric semver comparison, newest first.
- *
- * A string sort puts `2.9.0` above `2.12.0`, which is the whole reason this
- * exists — the version that would have been wrong is the one already in the
- * repo's history.
- */
+/** Numeric semver comparison, newest first; a string sort puts `2.9.0` above `2.12.0`. */
 function compareVersionsDesc(a: string, b: string): number {
   const partsA = a.split('.').map(Number);
   const partsB = b.split('.').map(Number);
@@ -67,14 +55,8 @@ function isPublished(fm: Partial<ChangelogFrontmatter>): boolean {
 }
 
 /**
- * `date` as `YYYY-MM-DD`, whatever YAML made of it.
- *
- * An unquoted `2026-09-21` in frontmatter is not a string: js-yaml parses it as
- * a `Date`, and `String(…)` then yields `Sun Sep 21 2026 00:00:00 GMT+0000`,
- * which `new Date(\`${value}T00:00:00Z\`)` reads as an invalid time. The first
- * build with this collection failed on exactly that, in `sitemap.xml` rather
- * than on the page, because that is where a Date is turned back into a string.
- * Normalising here means every consumer gets the one shape the type promises.
+ * `date` as `YYYY-MM-DD`, whatever YAML made of it: js-yaml parses an unquoted `2026-09-21` as a
+ * `Date`, whose `String(…)` the sitemap cannot read back as a date.
  */
 function toIsoDate(value: unknown): string | null {
   if (value instanceof Date) {

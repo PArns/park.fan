@@ -64,7 +64,6 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: LocaleLayoutProps): Promise<Metadata> {
   const { locale } = await params;
 
-  // Validate locale for metadata generation (security/correctness)
   if (!routing.locales.includes(locale as Locale)) {
     return {
       title: 'park.fan',
@@ -81,9 +80,8 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
     },
     description: t('description'),
     keywords: t('keywords'),
-    // No `icons` here on purpose — see the note in app/layout.tsx. A route that declares one
-    // REPLACES the inherited object rather than merging into it, and this one used to declare
-    // `icon: '/favicon.ico'`, which is what suppressed the SVG favicon site-wide.
+    // No `icons` here: a segment that declares them replaces the inherited object. See the note
+    // in app/layout.tsx.
     alternates: {
       canonical: `${siteUrl}/${locale}`,
       languages: {
@@ -131,7 +129,6 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
   const { locale } = await params;
 
-  // Validate locale
   if (!routing.locales.includes(locale as Locale)) {
     notFound();
   }
@@ -139,14 +136,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // Enable static rendering
   setRequestLocale(locale);
 
-  // Only what the CHROME reads — header, footer, search, language banner. Everything handed to
-  // the provider is serialized into every page's RSC payload, so a route's own namespaces are
-  // added further down the tree by `<RouteMessages>`, which merges them on the client (see
-  // i18n/client-messages.ts). Shipping the union here instead costs ~38 KB of JSON on routes
-  // that render none of it.
+  // Only what the chrome reads: everything handed to the provider is serialized into every
+  // page's RSC payload, so a route's own namespaces come further down from `<RouteMessages>`.
+  // See docs/rules/translations-are-routed-not-bundled.md.
   const messages = pickMessages(await getMessages(), LAYOUT_MESSAGE_NAMESPACES);
-  // Blog surfaces show only in locales that actually list posts (German-first
-  // rollout: /de/blog can be live while other locales stay blog-free).
+  // Blog surfaces show only in locales that list posts.
   const showBlog = hasPublishedPosts(locale as Locale);
   // The header's two menus. Both are structure rather than state: the geo spine is a cached
   // discovery read (no per-page hop to api.park.fan) and the blog side is the generated
@@ -162,13 +156,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // in this repo; the await is only `getTranslations` reaching for the category labels.
   const moreMenu = await getMoreMenu(locale as Locale);
   // The targets of the main navigation, in this list's own order, plus the continent hubs the
-  // parks menu opens onto. Kept to twelve — eleven without news, ten where `showBlog` is false: this
-  // is a hint about the primary navigation, and the country links are already in the rendered <nav>.
-  //
-  // It used to say "the same entries the bar renders, in the same order", and that has not been
-  // true since four of them moved behind the "Mehr" trigger: they are still in the navigation,
-  // one level down in a band that is `hidden` rather than unmounted, but the bar's order is no
-  // longer this one. The planner is the bar's third entry and comes after the "more" entries here.
+  // parks menu opens onto. Kept to twelve at most: this is a hint about the primary navigation,
+  // and the country links are already in the rendered <nav>.
   const tNav = await getTranslations({ locale, namespace: 'navigation' });
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
   const navigationItems = [
@@ -186,15 +175,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   ];
   const tSeo = await getTranslations({ locale, namespace: 'seo.global' });
 
-  // NOTE: the temperature-unit cookie is intentionally NOT read here. Reading
-  // cookies() in the root layout would opt every route into dynamic rendering,
-  // which is the whole reason every value the pages behind this layout are
-  // cached on stays out of it. Nothing else reads it on the server either — the
-  // park-scoped layout this note used to point at is gone, and the unit is
-  // resolved before paint by the inline script below plus the `.u-metric` /
-  // `.u-imperial` pair, so the markup carries BOTH units and the attribute
-  // picks one. Nothing about that varies per visitor, so nothing about it
-  // varies the cache.
+  // The temperature-unit cookie is not read on the server: cookies() here would make every route
+  // dynamic. The markup carries both units and the inline script below picks one before paint.
 
   // Umami is the only third-party origin the browser talks to (analytics script + beacons,
   // loaded afterInteractive). A dns-prefetch warms the DNS lookup without a full preconnect that
@@ -213,22 +195,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     <html lang={locale} suppressHydrationWarning>
       <body className={`${geistSans.variable} font-sans antialiased`} suppressHydrationWarning>
         {umamiOrigin && <link rel="dns-prefetch" href={umamiOrigin} />}
-        {/* Set the temperature unit on <html> before paint so weather/calendar values
-            (server-rendered in both units, toggled by CSS) show the visitor's unit with
-            no flash — and the pages stay statically cacheable. Reads the temp_unit cookie,
-            else derives from the browser locale's region (mirrors detectDefaultUnit). */}
-        {/* Deliberately a RAW <script>, not `next/script`.
-            React 19 logs "Encountered a script tag while rendering React component" for
-            this in development, because a script in the tree does not execute on a CLIENT
-            render. That warning does not apply here: this layout is server-rendered, the
-            browser executes the tag while parsing, and on a soft navigation there is
-            nothing to re-run — the attribute is already set.
-            `next/script` with `strategy="beforeInteractive"` was tried and reverted. It
-            does not emit an executable tag at all; it emits
-            `(self.__next_s=self.__next_s||[]).push([0,{children:"…"}])`, deferring the
-            code to whenever Next's runtime drains that queue. For a script whose entire
-            job is to run BEFORE first paint, that reintroduces the °C→°F flash this
-            exists to prevent. Verified against the rendered HTML on 2026-07-28. */}
+        {/* Sets the temperature unit on <html> before paint, from the temp_unit cookie or the
+            browser locale's region (mirrors detectDefaultUnit), so values rendered in both units
+            show the visitor's with no flash. A raw <script>, not `next/script`: its
+            `beforeInteractive` queues the code for Next's runtime, which brings the flash back.
+            React 19's dev warning about a script tag does not apply: the browser runs it while
+            parsing, and a soft navigation has nothing to re-run. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
@@ -236,21 +208,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           }}
         />
         {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && process.env.NEXT_PUBLIC_UMAMI_URL && (
-          /* `data-exclude-hash` is what keeps the visit count honest. Umami's tracker patches
-             `history.pushState` AND `history.replaceState` and sends a pageview whenever the
-             resulting URL differs from the last one — the hash included. Three places here write
-             a hash without navigating (`use-tab-hash-routing`, `park-calendar-grid`'s month
-             stepper, the `#calendar` FAQ link), so every tab switch and every month click was
-             billed as another pageview and inflated Views against Visitors.
-
-             `data-domains` gates the tracker on `window.location.hostname`, so a host missing
-             from this list is invisible in the stats — www included, not just the apex.
-
-             `data-do-not-track` is a deliberate choice, not a requirement: Umami is cookieless and
-             anonymous, the privacy policy relies on Art. 6(1)(f) rather than consent, and it never
-             promises to honour DNT. Keeping it means DNT visitors send nothing at all — no
-             pageview, no session — so the visitor count reads structurally low (typically 3–8 %).
-             See docs/development/analytics.md. */
+          /* `data-exclude-hash`: Umami sends a pageview whenever pushState or replaceState changes
+             the URL, hash included, and tab switches and the calendar's month stepper write a
+             hash. `data-domains` gates the tracker by hostname, so www has to be listed too.
+             `data-do-not-track` is a choice, not a requirement: DNT visitors send nothing, so the
+             visitor count reads low. See docs/development/analytics.md. */
           <Script
             src={process.env.NEXT_PUBLIC_UMAMI_URL}
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
@@ -270,11 +232,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           image={getOgImageUrl([locale])}
         />
         <SiteNavigationStructuredData locale={locale} items={navigationItems} />
-        {/* park.fan is a dark site: dark for everyone by default, on every device, and light
-            only for visitors who ask for it. `enableSystem` is off on purpose — following the OS
-            would make the site dark for some people and light for others by accident, which is
-            the opposite of having a default. See ThemeToggle for how browsers still holding the
-            retired `system` value are moved over. */}
+        {/* Dark for everyone by default, light only for visitors who ask for it; `enableSystem`
+            is off so the OS does not decide. See ThemeToggle for browsers still holding the
+            retired `system` value. */}
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -295,9 +255,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                 <WebVitalsReporter />
                 {/* The scrollbar gutter while a popup locks the page, without a `:has()` rule. */}
                 <ScrollLockGutter />
-                {/* Keeps the stored push zone pointed at where the phone is, so the quiet
-                    window from PAR-215 follows a traveller instead of staying where they
-                    armed the alert. Does nothing at all on a browser with none armed. */}
+                {/* Keeps the stored push zone pointed at where the phone is, so an alert's
+                    quiet window follows a traveller. Does nothing on a browser with none armed. */}
                 <PushTimezoneSync />
                 {/* Offers this tab's search and live park data to a browser-side agent
                     (WebMCP). Registers nothing where the API does not exist, which is nearly
@@ -310,85 +269,21 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                     fetched then, once per session, so no page carries them in its payload. */}
                 <NewPostsWatcher enabled={showBlog} />
               </Suspense>
-              {/* `min-h-dvh`, not `min-h-screen`: `100vh` is the LARGE viewport, the height with
-                  the URL bar retracted, so every short page (`/contribute/thanks`, a thin glossary
-                  term, a 404) was 80–115 px taller than what a phone actually shows — it scrolled
-                  for no content and made the browser chrome jitter on the way. The unit is already
-                  in the house: app/[locale]/page.tsx uses `lg:min-h-dvh`. */}
-              {/* The open planner's width, so the page beside it reflows rather
-                  than being covered. `--planner-inset` is set on the document
-                  element by `PlannerLauncher` and is `0px` until then, which is
-                  what the server renders and what a visitor who never opens the
-                  panel keeps — so this costs nothing and cannot mismatch on
-                  hydration. Above `sm` only: below it the panel is a modal
-                  bottom sheet, and a right inset there would leave a stripe of
-                  page beside nothing.
-
-                  The DURATION is a property too, because the panel edge is
-                  draggable: 300 ms is right for an open or a close and wrong
-                  under a pointer, where the page would lag a third of a second
-                  behind the edge somebody is holding. The tab sets it to 0 for
-                  the length of a drag. */}
-              {/* `@container/page` — the page's own width, for every route below.
-
-                  This element is the one that gets narrowed, so it is the one
-                  worth asking. `sm:` and `lg:` and `xl:` all read the WINDOW,
-                  and the two numbers stopped being the same the moment the
-                  padding above started reserving room for the panel. The
-                  homepage hero is what it looked like: window 2000, panel 900,
-                  so 1100 px of page — and the hero still laid itself out for
-                  2000. Its grid took `2xl:grid-cols-[minmax(0,1fr)_minmax(0,40rem)]`,
-                  handed 640 px to a world map and 356 to everything else, and
-                  the headline broke over 4 lines at 192 px where the same 1100 px
-                  as a window gives it 2 lines at 96. The intro went 3 lines to 7.
-
-                  The header solved this for itself in Sep 2026 (`@container` on
-                  `<header>`, see components/layout/header.tsx) and that fix
-                  reached exactly the 48 px it sits in. This is the same fix for
-                  the 16,000 px below it, in one place, so a route opts in by
-                  writing `@min-[1280px]/page:` instead of `xl:`.
-
-                  NAMED, and that is not decoration. An unnamed container query
-                  matches the nearest ancestor query container whatever it is
-                  called, so an unnamed `@min-[1280px]:` written on a park page
-                  would be answered by `@container/card-header` in
-                  components/ui/card.tsx the moment it landed inside a card.
-                  `/page` can only ever be answered by this element.
-
-                  Four side effects were measured against a bare Chromium before
-                  this was set, because the naive spec reading says it should
-                  break three of them. `container-type: inline-size` applies
-                  STYLE and INLINE-SIZE containment and establishes an
-                  independent formatting context — it does NOT apply layout
-                  containment (css-conditional-5 § container-type), and the
-                  difference is the whole risk:
-                    - `position: fixed` / `absolute` descendants keep the initial
-                      containing block. Measured: a `fixed` child of a container
-                      sits at viewport y=0 and y=780 exactly as without it, while
-                      the same element under `contain: layout` moves to y=-300
-                      and y=3710. So `BlogReadingProgress`, `ChapterRail` and
-                      `LocationBanner` — the three `fixed` overlays that render
-                      INSIDE `<main>` — are untouched.
-                    - No stacking context: a `z-50` descendant still paints over
-                      a `z-40` sibling of this div (the planner launcher). Under
-                      `contain: layout` the launcher wins instead.
-                    - No backdrop root, so the menu band's `backdrop-blur-xl`
-                      still samples the page behind it. Same measurement the
-                      header's note reports.
-                    - The independent formatting context costs nothing here: this
-                      div is `display: flex` and `<main>` below it is a flex
-                      item, so both already were one.
-
-                  What it does change is that the container's width has to be
-                  resolvable without looking at the contents — which it is: the
-                  div is block-level in `<body>` and fills it. */}
-              {/* `planner-wide:` and not `sm:`, because this inset is the other
-                  half of WHERE the panel sits, and the panel stopped deciding
-                  that by width alone (PAR-76). On a landscape phone the sheet
-                  comes up from the bottom while `sm:` still held 448 px of page
-                  reserved on the right — a gutter beside a panel that is not
-                  there. It has to ask the same question the panel asks, in the
-                  same two terms; `app/globals.css` keeps the pair. */}
+              {/* `min-h-dvh`, not `min-h-screen`: `100vh` is the large viewport, so a short page
+                  would scroll on a phone with nothing to scroll to. */}
+              {/* The open planner's width, so the page beside it reflows rather than being
+                  covered. `--planner-inset` is `0px` until `PlannerLauncher` sets it, so the
+                  server render cannot mismatch. The duration is a variable too: the tab sets it
+                  to 0 while the panel edge is dragged, so the page does not lag the pointer. */}
+              {/* `@container/page`: the page's own width, which the planner narrows while `sm:`,
+                  `lg:` and `xl:` keep reading the window. A route opts in with
+                  `@min-[1280px]/page:` instead of `xl:`. Named, because an unnamed container
+                  query answers to the nearest container, such as `@container/card-header` inside
+                  a card. `container-type: inline-size` applies no layout containment, so `fixed`
+                  descendants, stacking and the menu band's backdrop blur are unaffected. */}
+              {/* `planner-wide:`, not `sm:`: the inset is the other half of where the panel
+                  sits, so it asks the panel's own question (on a landscape phone the panel is a
+                  bottom sheet). `app/globals.css` keeps the pair. */}
               <div className="planner-wide:pr-[var(--planner-inset,0px)] @container/page flex min-h-dvh flex-col transition-[padding] [transition-duration:var(--planner-inset-ms,300ms)] ease-in-out">
                 {/* Reserves the bar's exact height (h-12 + the 1 px border the header itself draws)
                     so the first paint does not move when the client Header streams in. Both
@@ -414,14 +309,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                   />
                 </Suspense>
               </div>
-              {/* `fixed`, so it is outside the flow and reserves nothing. The
-                  TAB is drawn on every page — a feature nobody can see is a
-                  feature nobody starts — and the panel behind it is what waits
-                  for somebody to ask, along with the 15 KB `planner` namespace
-                  it reads. A Client Component either way: it reads
-                  `localStorage` through `useSyncExternalStore`, whose server
-                  snapshot is the empty one, so the first HTML is identical for
-                  every visitor and this layout stays cacheable. */}
+              {/* `fixed`, so it reserves nothing. The tab is drawn on every page; the panel and
+                  its `planner` namespace wait until somebody opens it. It reads `localStorage`
+                  through `useSyncExternalStore`, whose server snapshot is empty, so the first HTML
+                  is the same for every visitor and this layout stays cacheable. */}
               <PlannerLauncher />
             </NextIntlClientProvider>
           </Providers>

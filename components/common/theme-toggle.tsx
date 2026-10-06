@@ -1,42 +1,28 @@
 'use client';
 
-import { useState, useEffect, useRef, startTransition } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTheme } from 'next-themes';
 import { useTranslations } from 'next-intl';
 import { Moon, Sun } from 'lucide-react';
 import { runThemeWipe } from '@/lib/theme/theme-wipe';
 import { trackThemeToggled } from '@/lib/analytics/umami';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { cn } from '@/lib/utils';
 
 /**
- * Dark ⇄ light, as a switch.
- *
- * park.fan is a **dark site**: dark is the default for everyone, on every device, and light is
- * something a visitor opts into. There is therefore no "system" option any more — following the
- * OS would mean the site is dark for some visitors and light for others by accident, which is
- * the opposite of a default. Anyone whose browser still remembers `system` from the old
- * three-way menu is moved to dark on their next visit (see the effect below).
- *
- * Motion is split the same way it is everywhere else in this codebase:
- *
- * - **CSS owns the state.** The knob's position is a class, transitioned in CSS. If the GSAP
- *   chunk never loads, the switch still visibly switches.
- * - **GSAP owns the flourish.** The icon spins through the change, and the new theme opens out
- *   of the switch as a disc that covers the page before the colours flip (`runThemeWipe`). Both
- *   are loaded on the click that needs them — nobody who never touches the switch pays for it.
+ * Dark ⇄ light, as a switch. Dark is the default for everyone and light is opt-in, so there is no
+ * "system" option. CSS owns the state (the knob's position), so the switch works without the GSAP
+ * chunk; GSAP adds the icon spin and the disc that covers the page (`runThemeWipe`), loaded on the
+ * click that needs them.
  */
 export function ThemeToggle() {
   const { setTheme, resolvedTheme, theme } = useTheme();
   const t = useTranslations('theme');
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const iconRef = useRef<HTMLSpanElement>(null);
 
-  useEffect(() => {
-    startTransition(() => setMounted(true));
-  }, []);
-
-  // One-time migration off the retired three-way menu. `system` is no longer one of the themes,
-  // so a browser still holding it would resolve to nothing sensible; dark is the new default.
+  // `system` is no longer a theme, so a browser still holding it from the old three-way menu is
+  // moved to dark.
   useEffect(() => {
     if (!mounted || theme !== 'system') return;
     setTheme('dark');

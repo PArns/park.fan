@@ -16,6 +16,7 @@ import { MobileMore } from '@/components/common/mobile-more';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import type { Locale } from '@/i18n/config';
+import { STORY_SECTION_RULED } from './section-chrome';
 
 /**
  * The six differentiators, and the two pages that back them up.
@@ -59,7 +60,7 @@ export async function WhyParkFan({ locale }: { locale: Locale }) {
   };
 
   return (
-    <section className="border-border border-t px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION_RULED}>
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading
@@ -71,10 +72,9 @@ export async function WhyParkFan({ locale }: { locale: Locale }) {
           />
         </Reveal>
 
-        {/* On a phone the first two reasons show and the other four open on request (PAR-435).
-            `contents` keeps all six items of one grid from 768 px up. The columns ask the
-            page's width for the same reason as the collapse: with the planner open, a wide
-            window can hold a phone-width page. */}
+        {/* On a phone the first two reasons show and the other four open on request; `contents`
+            keeps all six items of one grid from 768 px up. The columns ask the page's width, like
+            the collapse. */}
         <div className="grid gap-4 @min-[640px]/page:grid-cols-2 @min-[1024px]/page:grid-cols-3">
           {reasons.slice(0, 2).map(renderReason)}
           <MobileMore label={tCommon('showMore')} contents buttonClassName="col-span-full">

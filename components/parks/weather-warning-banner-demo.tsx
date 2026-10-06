@@ -66,9 +66,9 @@ const DEMO_WARNINGS: WeatherWarning[] = [
 ];
 
 /**
- * The banner renders nothing until it has mounted, so the box it lands in is held here: 394 px,
- * the three warnings collapsed, measured at 360 to 1440 px in all six locales (PAR-683). Without
- * it the guide's walk-through grew by that much under a reader already past it.
+ * The banner renders nothing until it has mounted, so the box it lands in is held here: 394 px, the
+ * three warnings collapsed, the same in every locale from 360 to 1440 px. Without it the guide's
+ * walk-through grew under a reader already past it.
  */
 export function WeatherWarningBannerDemo() {
   return (

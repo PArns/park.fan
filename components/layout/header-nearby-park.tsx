@@ -9,28 +9,20 @@ import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import type { NearbyParksData } from '@/types/nearby';
 
 /** API returns distance in meters. Only show "Nearby: Park" when nearest park is within this (m). */
-const NEAR_PARK_HEADER_RADIUS_M = 5000; // 5 km
+const NEAR_PARK_HEADER_RADIUS_M = 5000;
 
 /**
- * The header's "you are near <park>" link: a pin in the bar (`bar`), a full row in the burger
- * sheet (`sheet`).
- *
- * Its own component because of what it subscribes to. `useHomeNearbyParks` reads the geolocation
- * context, an after-load flag and a query, and each of them changes several times per page load
- * (and again on every refetch while there is a position). Read in `Header`, every one of those
- * changes re-rendered the whole bar: four nav menus, five mega-menu panels, two search commands
- * and the toggles, for a 28 px pin most visitors never see. Here only the pin re-renders.
+ * The header's "you are near <park>" link: a pin in the bar (`bar`), a full row in the burger sheet
+ * (`sheet`). Its own component so the geolocation context, after-load flag and query it reads
+ * re-render only the pin, not the whole bar. See
+ * docs/rules/a-subscription-lives-in-the-leaf-that-shows-it.md.
  */
 export function HeaderNearbyPark({ variant }: { variant: 'bar' | 'sheet' }) {
   const t = useTranslations('navigation');
   const { data: nearbyData } = useHomeNearbyParks();
   /*
-   * Erst nach dem Mount, wie überall an dieser Query.
-   *
-   * `useHomeNearbyParks` seedet aus `localStorage`, also gibt es die Pille auf dem Server nicht
-   * und im ersten Client-Render eines Besuchers, der schon einmal in Parknähe war, schon — ein
-   * Hydration-Fehler mitten im Header, nach dem React die ganze Leiste neu rendert. Auf einer
-   * Maschine ohne Standort fällt das nie auf, weil die Pille dort nie erscheint.
+   * Only after mount, like everywhere this query is read: `useHomeNearbyParks` seeds from
+   * `localStorage`, so the pill would exist in the first client render and not on the server.
    */
   const mounted = useMounted();
   const parks =

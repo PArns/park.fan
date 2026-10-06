@@ -3,33 +3,17 @@
 import { compressImage } from '@/components/contribute/compress';
 
 /**
- * Getting an upload batch past the request-size limit.
- *
- * Both halves of the old flow put the whole batch in ONE request — `analyze` as a
- * single multipart, `commit` as a single JSON with every file base64-encoded.
- * Vercel's serverless functions reject bodies over ~4.5 MB, and base64 inflates by
- * a third, so a single 4 MB photo already exceeded it. The admin advertised
- * hundred-image batches and could not have committed three. It passed every local
- * test because `next start` has no such limit — the ceiling only exists in
- * production.
- *
- * So the batch is sent as one request per photo. The per-request body is then one
- * image instead of the sum of them, and batch size stops being a factor at all.
- * Commits go sequentially on purpose: the first one opens the session pull request
- * and the rest look it up and join, which they cannot do if they race.
- *
- * `lib/contribute/config.ts` reached the same conclusion for visitor uploads and is
- * where the 4.5 MB figure is documented.
+ * Getting an upload batch past Vercel's request-body limit, which `next start` does not have:
+ * one request per photo, sized off the encoded length. Commits run in sequence because the first
+ * opens the session pull request the rest join. The limit is documented in
+ * `lib/contribute/config.ts`.
  */
 
 /** Multipart envelope + headers, with room to spare under the ~4.5 MB ceiling. */
-export const ANALYZE_MAX_BYTES = 4 * 1024 * 1024;
+const ANALYZE_MAX_BYTES = 4 * 1024 * 1024;
 
-/**
- * Tighter, because `commit` sends base64: 3 MB of image is ~4.1 MB on the wire.
- * Sizing this off the encoded length rather than the file's is the whole trick.
- */
-export const COMMIT_MAX_BYTES = 3 * 1024 * 1024;
+/** Tighter, because `commit` sends base64: 3 MB of image is ~4.1 MB on the wire. */
+const COMMIT_MAX_BYTES = 3 * 1024 * 1024;
 
 /**
  * What the media database will actually store. Anything else has to become one of
@@ -43,39 +27,19 @@ function extensionOf(file: File): string {
 }
 
 /**
- * Whether this file has to be re-encoded before the database will take it.
- *
- * The case that matters is **HEIC from an iPhone's camera roll**. `/contribute`
- * accepts it (`lib/contribute/config.ts`), the media database does not: the commit
- * route's extension check lists jpg/jpeg/png/webp/avif/svg and nothing else. Two
- * of the three ways a photo reaches this app never produce one — the camera button
- * and, usually, the photo library both hand over JPEG because Safari converts on
- * the way out — but "Choose File" from the Files app does, and so does a share
- * sheet on a device set to keep originals.
- *
- * `compressImage` is not the safety net it looks like: it returns anything already
- * under the size cap untouched, so a 2 MB HEIC sails through the whole client and
- * fails at the last step with `Bad extension "heic"`, after the analysis, after the
- * shrink, after the upload. Format is a different question from size and gets asked
- * first.
+ * Whether this file has to be re-encoded before the database will take it. HEIC from the Files
+ * app or a share sheet is the case that matters, and `compressImage` passes a small one through
+ * untouched, so format is asked before size.
  */
-export function needsTranscode(file: File): boolean {
+function needsTranscode(file: File): boolean {
   if (/hei[cf]/i.test(file.type)) return true;
   const ext = extensionOf(file);
   return ext === 'heic' || ext === 'heif' || !DATABASE_EXTENSIONS.has(ext);
 }
 
 /**
- * Re-encode into something the database stores, or hand the file back untouched.
- *
- * Safari decodes HEIC through the system codec, so `createImageBitmap` works on the
- * device this matters on. On a desktop browser that cannot, this throws with a
- * sentence a person can act on rather than letting the failure surface four steps
- * later as a server-side extension error.
- *
- * Like every canvas pass, this **strips EXIF** — capture date and GPS have to be
- * carried into the sidecar by the caller. That is why `analyze` runs first, on the
- * original bytes.
+ * Re-encodes a file the media database cannot store as JPEG, or hands it back untouched. Like
+ * every canvas pass it strips EXIF, which is why `analyze` runs first, on the original bytes.
  */
 export async function toDatabaseFormat(file: File): Promise<{ file: File; transcoded: boolean }> {
   if (!needsTranscode(file)) return { file, transcoded: false };
@@ -83,15 +47,9 @@ export async function toDatabaseFormat(file: File): Promise<{ file: File; transc
 }
 
 /**
- * The same photo with nothing in it but pixels.
- *
- * For pictures somebody else took. A phone JPEG that fits under the size cap is
- * committed byte for byte, and its EXIF goes with it into `public/media/`, where
- * anyone can download the file: the GPS fix, the exact capture time, the camera's
- * serial number and, on some cameras, the owner's name. Our own shoots can carry
- * that; a visitor who sent a photo in did not agree to publish it. Re-encoding is
- * the only way to drop it that keeps the picture upright, because the rotation of
- * a portrait shot is one of the tags being dropped.
+ * The same photo with nothing in it but pixels, for pictures somebody else took: their EXIF in
+ * `public/media/` would publish a GPS fix and a camera serial. Re-encoding is the only way to drop
+ * it that keeps a portrait upright.
  */
 export async function withoutMetadata(file: File): Promise<File> {
   return reencodeAsJpeg(file);
@@ -144,13 +102,8 @@ async function reencodeAsJpeg(file: File): Promise<File> {
 const MAX_DIMENSION = 4096;
 
 /**
- * Fit a photo under the cap, or hand it back untouched when it already fits.
- *
- * **This strips EXIF** — a canvas re-encode cannot carry it — which is why it runs
- * AFTER `analyze` has read the GPS tag and capture date off the original, and why
- * the caller writes those into the sidecar explicitly. The alternative, compressing
- * first, would silently throw away the park/ride suggestion the whole flow is built
- * on.
+ * Fits a photo under the commit cap, or hands it back untouched when it already fits. It strips
+ * EXIF, so it runs after `analyze` has read the GPS tag and capture date off the original.
  */
 export async function fitForCommit(file: File): Promise<{ file: File; shrunk: boolean }> {
   if (file.size <= COMMIT_MAX_BYTES) return { file, shrunk: false };
@@ -159,12 +112,8 @@ export async function fitForCommit(file: File): Promise<{ file: File; shrunk: bo
 }
 
 /**
- * The bytes `analyze` needs to answer, which is not the whole photo.
- *
- * EXIF sits in an APP1 segment right after the JPEG header, so for an oversized
- * original the first megabyte carries the GPS tag and the capture date. Dimensions
- * may not survive the truncation — the route reports what it can and the admin
- * fills in the rest, which beats refusing the file.
+ * The bytes `analyze` needs: for an oversized original, the first megabyte, where the EXIF
+ * segment sits. Dimensions may not survive the cut; the route reports what it can.
  */
 export function analyzePayload(file: File): Blob {
   return file.size <= ANALYZE_MAX_BYTES ? file : file.slice(0, 1024 * 1024, file.type);

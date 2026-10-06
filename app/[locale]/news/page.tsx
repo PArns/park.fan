@@ -9,9 +9,8 @@ interface NewsIndexPageProps {
   params: Promise<{ locale: string }>;
 }
 
-// The news overview, which was `/blog/category/news`: a dated stream with a park filter
-// (`NewsIndexPageBody`). Statically generated per locale, like the blog index; the filter is a
-// query parameter read in the browser, so it adds no URLs and the canonical stays `/news`.
+// The park filter is a query parameter read in the browser, so it adds no URLs and the canonical
+// stays `/news`.
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

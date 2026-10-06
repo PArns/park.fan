@@ -3,20 +3,11 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * The night shift: the jobs that turn a year of five-minute readings into the
- * numbers this page has been quoting, drawn on the hours they actually run at.
- *
- * It is here because it is the answer to "why can a site not just show this?".
- * A live wait time is one request. "Is 70 minutes a lot on a Tuesday" is a
- * percentile over every Tuesday on record, and it has to be standing by before
- * anyone asks — which is a scheduled job, an archive that was never thrown
- * away, and an order between the two that matters (rope drop reads yesterday's
- * rollup, so it cannot run before it).
- *
- * Motion follows the same split as everywhere else: CSS draws the finished
- * figure, GSAP only lifts the markers into place once, the first time it comes
- * into view. Nothing is hidden waiting for script — a blocked chunk or a
- * reduced-motion preference leaves the diagram complete and still.
+ * The night shift: the jobs that turn a year of five-minute readings into the numbers this page
+ * quotes, drawn on the hours they run at. It answers "why can a site not just show this?": a
+ * percentile over every Tuesday on record has to be computed before anyone asks, and in order
+ * (rope drop reads yesterday's rollup). CSS draws the finished figure and GSAP only lifts the
+ * markers in once, so a blocked chunk or reduced motion leaves the diagram complete.
  */
 
 type Gsap = typeof import('gsap').gsap;
@@ -27,6 +18,7 @@ function loadGsap(): Promise<Gsap | null> {
   return gsapPromise;
 }
 
+/** One nightly job on the track: its UTC time and the card text. */
 export interface NightShiftJob {
   /** UTC hour the scheduler fires at, as a 24-hour number. */
   hour: number;
@@ -51,6 +43,10 @@ function formatUtc(locale: string, hour: number, minute: number): string {
   }).format(new Date(Date.UTC(2026, 0, 1, hour, minute)));
 }
 
+/**
+ * Guide page diagram of the nightly jobs: a UTC time track with a marker per job and a card for
+ * each, animated once with GSAP when it scrolls into view (not under reduced motion).
+ */
 export function NightShift({
   jobs,
   caption,

@@ -4,32 +4,15 @@ import type { PartyRideFacts } from '@/lib/planner/party';
 import { enrichAttractionsWithImages } from '@/lib/utils/park-assets';
 
 /**
- * One real day at Phantasialand, frozen.
+ * One real day at Phantasialand, frozen: every number below is what
+ * `/v1/parks/europe/germany/bruehl/phantasialand/plan/day?date=2026-09-12` answered on
+ * 4 September 2026, unrounded, so the planner's own components draw the product rather than a
+ * picture of it. It stays a dated forecast, and the past date keeps the exhibit inert:
+ * `PlannerDayGrid` gates its weather query on the forecast horizon.
  *
- * Every number below is what `/v1/parks/europe/germany/bruehl/phantasialand/
- * plan/day?date=2026-09-12` answered on 4 September 2026, eight days ahead of
- * the day it describes — an ordinary Saturday in September, `crowdLevel: low`,
- * open 09:00 to 18:00, drizzle. Nothing is rounded, invented or prettied up,
- * which is the whole point of the exhibit: the blocks on this page are drawn by
- * the planner's own components off the payload the planner itself reads, so the
- * reader is looking at the product rather than at a picture of it.
- *
- * It is a FORECAST and stays one. The date has since passed, and the caption
- * beside the demo says so — a fixture that renewed itself would either have to
- * invent numbers for a day nobody has measured or re-fetch on every render, and
- * both are worse than a dated example. The date being in the past is also what
- * keeps the exhibit inert: `PlannerDayGrid` gates its weather query on the
- * forecast horizon, so a demo of a day in September 2026 fires no request.
- *
- * Two things in here are worth reading twice, because the prose beside the demo
- * points at them:
- *
- *   - `expectedError` is 15.4 minutes on the eight headliners and 10.9 on the
- *     rest. It is a TYPICAL error, not a bound.
- *   - `opensAt` is 10:00 on most rides while the park opens at 09:00, and
- *     absent on Black Mamba and Maus au Chocolat, which run from the gates.
- *     `hours` starts where the ride does, so the first hour of the day has two
- *     rides in it and not sixteen.
+ * The prose beside the demo points at two things: `expectedError` (15.4 minutes on the
+ * headliners, 10.9 on the rest) is a typical error, not a bound; and `opensAt` is 10:00 on most
+ * rides while the park opens at 09:00, so the first hour of the day has two rides in it.
  */
 const READ_AT = '2026-09-04';
 
@@ -251,8 +234,8 @@ export const DEMO_PARTY_RIDES = {
  *
  * `enrichAttractionsWithImages` is the same call `app/api/parks/[...path]` makes
  * on a real `/plan/day`, so a focal point curated in the admin decides the crop
- * inside these blocks exactly as it does in the panel. It runs HERE, on the
- * server, because `@/lib/media` is the 107 KB catalogue and the demo below it is
+ * inside these blocks exactly as it does in the panel. It runs here, on the
+ * server, because `@/lib/media` is the whole catalogue and the demo below it is
  * a Client Component.
  */
 export function demoPlanDay(): PlanDay {
@@ -334,10 +317,9 @@ export function demoPlanDay(): PlanDay {
  *
  * Chosen to put the machinery on screen rather than to be optimal: Black Mamba
  * in the first hour because it is one of two rides that run before 10:00, Taron
- * straight after because its curve barely moves all day (45/50/45/40/45/45/50/
- * 50/50 — there is no cheap hour to wait for), a break in the middle, and
- * Winja's Force late because Rookburgh and Fantasy are at opposite ends of the
- * park and the leg between them is the point.
+ * straight after because its curve barely moves all day, a break in the middle,
+ * and Winja's Force late because Rookburgh and Fantasy are at opposite ends of
+ * the park and the leg between them is the point.
  *
  * The free block's label is passed in, because "Essen" is a word and this page
  * exists in six languages.

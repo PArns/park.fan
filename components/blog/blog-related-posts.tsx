@@ -38,9 +38,8 @@ function scorePost(post: BlogListItem, category: string | undefined, tags: strin
 
 /**
  * "Keep reading" under a post, from the post's own section: an article is followed by articles,
- * a news post by news. The two sections are kept apart everywhere a list of posts appears (see
- * `docs/rules/news-is-set-apart-from-the-articles.md`). The cards stay the blog's on both: a news
- * post reads like an article (PAR-473), only what it recommends differs.
+ * a news post by news (docs/rules/news-is-set-apart-from-the-articles.md). The cards are the
+ * blog's on both.
  */
 export async function BlogRelatedPosts({
   locale,
@@ -55,11 +54,8 @@ export async function BlogRelatedPosts({
   const pool = isNews ? listNewsByDate(locale) : listArticles(locale);
   const all = pool.filter((p) => p.translationKey !== currentTranslationKey);
 
-  // Rank the section by relevance — same-category posts score highest (category
-  // depth is weighted heavily in scorePost), then shared tags, with recency as the
-  // tiebreaker. Ranking across the whole section (instead of only the same-category
-  // pool) means a thin category — e.g. a second "guides" post — still fills the row
-  // instead of surfacing a single lonely card.
+  // Rank the whole section by relevance: same category first (weighted by depth in scorePost),
+  // then shared tags, with recency as the tiebreaker, so a thin category still fills the row.
   const ranked = [...all]
     .map((post) => ({ post, score: scorePost(post, category, tags) }))
     .sort((a, b) =>

@@ -19,8 +19,8 @@ import {
   TriangleAlert,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
-import type { AdminAttractionListItem, AdminParkDetail, CurationResponse } from '../../_lib/types';
+import { adminKeys, useAdminQuery } from '../../_lib/api';
+import type { AdminAttractionListItem, AdminParkDetail } from '../../_lib/types';
 import {
   AdminPage,
   Chip,
@@ -28,14 +28,12 @@ import {
   ErrorState,
   Meta,
   Panel,
-  PanelBody,
   PanelHeader,
   SkeletonRows,
 } from '../../_ui/primitives';
 import { TextInput } from '../../_ui/controls';
-import { CuratedFieldsEditor, useCuratedForm, type FieldValues } from '../../_ui/curated-fields';
+import { CuratedFieldsPanel } from '../../_ui/curated-fields';
 import { HistoryList } from '../../_ui/history-list';
-import { useToast } from '../../_ui/toast';
 import { EntityMediaPanel } from '../../_ui/entity-media';
 import { EntityPostsPanel } from '../../_ui/entity-posts';
 import { useCan } from '../../_app/session';
@@ -45,13 +43,8 @@ import { PhotoCoverage } from '../_components/photo-coverage';
 import { AttractionFeaturesEditor } from '../_components/attraction-features-editor';
 
 /**
- * One park, and everything about it that a person decides rather than a feed.
- *
- * Four tabs and they are four different jobs: correcting what upstream says,
- * working through the park's rides, writing down what the park does at
- * particular times of year, and reading back what has already been decided.
- * They share a header because they share a subject — losing sight of which park
- * you are editing is how a correction lands on the wrong one.
+ * One park and everything about it that a person decides rather than a feed, in tabs under one
+ * header, so it stays clear which park a correction lands on.
  */
 
 type Tab = 'fields' | 'attractions' | 'features' | 'seasons' | 'media' | 'history';
@@ -66,14 +59,8 @@ const TABS: Array<{ id: Tab; label: string; icon: typeof Sliders }> = [
 ];
 
 /**
- * The active tab, read from the address bar rather than held beside it.
- *
- * Derived, not stored: with the URL as the only source there is no state to
- * fall out of step with it, no effect to sync them, and the browser's back
- * button works because it is the thing that changes the value. `replace`
- * rather than `push`, because switching a tab is not a navigation anybody
- * wants five of in their history — but it does have to survive a reload and a
- * detour into a ride.
+ * The active tab, derived from the URL, so nothing falls out of step and it survives a reload and
+ * a detour into a ride. `replace`, not `push`, so tab switches do not fill the history.
  */
 function useTabFromUrl(): [Tab, (tab: Tab) => void] {
   const params = useSearchParams();
@@ -99,14 +86,7 @@ function useTabFromUrl(): [Tab, (tab: Tab) => void] {
 
 export default function ParkDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  // The open tab lives in the URL, not in component state.
-  //
-  // As state it was unreachable and unrememberable in equal measure: every link
-  // that meant to open one — `?tab=attractions` from the data-quality list,
-  // `#seasons` from the seasons table — landed on Stammdaten, and so did every
-  // way back from a ride. Somebody working through a park's rides had to find
-  // their place again after each one, which is the kind of friction that makes
-  // a tool feel unfinished even when every screen behind it works.
+  // In the URL, so links like `?tab=attractions` and the way back from a ride land on the tab.
   const [tab, setTab] = useTabFromUrl();
   // Read once, at the top: hooks may not be called from inside the conditional
   // branches below, and calling `useCan` per tab would do exactly that.
@@ -149,7 +129,17 @@ export default function ParkDetailPage({ params }: { params: Promise<{ id: strin
         ))}
       </div>
 
-      {tab === 'fields' && <ParkFieldsTab park={data} />}
+      {tab === 'fields' && (
+        <CuratedFieldsPanel
+          fields={data.fields}
+          endpoint={`/api/admin/content/parks/${data.id}`}
+          draftScope={`park:${data.id}`}
+          invalidateKeys={[adminKeys.park(data.id), ['admin', 'parks'], ['admin', 'history']]}
+          emptyHint="Nichts korrigiert. Der Park zeigt überall, was der Sync liefert."
+          savedDescription="Die Caches sind geleert, das Frontend wurde benachrichtigt."
+          canEdit={canEdit}
+        />
+      )}
       {tab === 'attractions' && <ParkAttractionsTab parkId={id} />}
       {tab === 'features' && <AttractionFeaturesEditor park={data} />}
       {tab === 'seasons' && (
@@ -182,8 +172,6 @@ export default function ParkDetailPage({ params }: { params: Promise<{ id: strin
   );
 }
 
-// ─── header ───────────────────────────────────────────────────────────────────
-
 function ParkHeader({ park }: { park: AdminParkDetail }) {
   const missingCoordinates = park.latitude === null || park.longitude === null;
   // Owner only, because a changed city rewrites the park's public address.
@@ -191,9 +179,7 @@ function ParkHeader({ park }: { park: AdminParkDetail }) {
 
   return (
     <header className="space-y-3">
-      {/* The same way back the ride editor now has: the breadcrumb in the top
-          bar names the section but does not link to it, and a park is opened
-          from a list somebody was working through. */}
+      {/* A way back to the list, since the top bar's breadcrumb does not link. */}
       <Link
         href="/admin/parks"
         className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-xs"
@@ -271,97 +257,6 @@ function ParkHeader({ park }: { park: AdminParkDetail }) {
   );
 }
 
-// ─── curated fields ───────────────────────────────────────────────────────────
-
-function ParkFieldsTab({ park }: { park: AdminParkDetail }) {
-  const canEdit = useCan('editor');
-  const toast = useToast();
-  const invalidate = useInvalidateAdmin();
-  const form = useCuratedForm(park.fields, `park:${park.id}`);
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const overridden = park.fields.filter((field) => field.overridden).length;
-
-  async function save(input: { fields: FieldValues; reason: string; sourceUrl: string }) {
-    setSaving(true);
-    setError(null);
-    try {
-      const result = await adminFetch<CurationResponse>(`/api/admin/content/parks/${park.id}`, {
-        method: 'PATCH',
-        body: {
-          fields: input.fields,
-          ...(input.reason ? { reason: input.reason } : {}),
-          ...(input.sourceUrl ? { sourceUrl: input.sourceUrl } : {}),
-        },
-      });
-
-      invalidate(adminKeys.park(park.id), ['admin', 'parks'], ['admin', 'history']);
-      form.applyServerFields(result.fields);
-
-      toast.push({
-        title: `${result.changed.length} Feld${result.changed.length === 1 ? '' : 'er'} gespeichert`,
-        description: 'Die Caches sind geleert, das Frontend wurde benachrichtigt.',
-        tone: 'success',
-        // The undo lives here because this is the moment it is wanted. Later it
-        // is in the history tab; a minute later nobody looks.
-        action: result.auditId
-          ? {
-              label: 'Rückgängig',
-              onClick: async () => {
-                await adminFetch(`/api/admin/content/history/${result.auditId}/undo`, {
-                  method: 'POST',
-                });
-                invalidate(adminKeys.park(park.id), ['admin', 'parks'], ['admin', 'history']);
-              },
-            }
-          : undefined,
-      });
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Speichern fehlgeschlagen');
-    } finally {
-      setSaving(false);
-    }
-  }
-
-  return (
-    <Panel>
-      <PanelHeader
-        icon={Sliders}
-        title="Kuratierte Felder"
-        hint={
-          overridden === 0
-            ? 'Nichts korrigiert. Der Park zeigt überall, was der Sync liefert.'
-            : `${overridden} Feld${overridden === 1 ? '' : 'er'} weicht vom Upstream ab.`
-        }
-        action={
-          overridden > 0 ? (
-            <Chip tone="primary">
-              <Sparkles className="h-3 w-3" />
-              {overridden}
-            </Chip>
-          ) : null
-        }
-      />
-      <PanelBody>
-        {!canEdit && (
-          <p className="text-muted-foreground mb-3 text-xs">
-            Dein Konto darf lesen, aber nicht kuratieren.
-          </p>
-        )}
-        <CuratedFieldsEditor
-          fields={park.fields}
-          form={form}
-          disabled={!canEdit}
-          saving={saving}
-          saveError={error}
-          onSave={save}
-        />
-      </PanelBody>
-    </Panel>
-  );
-}
-
 /**
  * The park's ride list, borrowed for the coverage lookup.
  *
@@ -377,8 +272,6 @@ function ParkPhotoCoverage({ parkId, parkSlug }: { parkId: string; parkSlug: str
   if (!attractions.data) return null;
   return <PhotoCoverage parkSlug={parkSlug} attractions={attractions.data.attractions} />;
 }
-
-// ─── attractions ──────────────────────────────────────────────────────────────
 
 function ParkAttractionsTab({ parkId }: { parkId: string }) {
   const [query, setQuery] = useState('');

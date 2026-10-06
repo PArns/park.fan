@@ -33,16 +33,10 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'contribute.meta' });
   const ogImageUrl = getOgImageUrl([locale, 'contribute']);
 
-  // Every park and ride page links here through `buildContributeHref`, which encodes the
-  // pre-selected entity as query params (`?type=…&id=…&name=…&slug=…&url=…`). That mints ONE
-  // crawlable URL per entity — thousands of them, all rendering the same form. It showed: over
-  // 24 h this page took 4 K requests and 154 MB, more than the park pages themselves, on a page
-  // nobody searches for.
-  //
-  // The banner links now carry rel="nofollow" so crawlers stop walking into them at all; this
-  // pairs with that to clean up what is already indexed — the prefilled variants are noindex and
-  // point their canonical at the bare page, so Google consolidates them onto the one URL that is
-  // worth having.
+  // Every park and ride page links here through `buildContributeHref` with the entity as query
+  // params, one crawlable URL per entity, all rendering the same form. The links are `nofollow`;
+  // the prefilled variants are also `noindex` with the bare page as canonical, so Google
+  // consolidates them onto one URL.
   const isPrefilled = parseEntityFromParams(await searchParams) !== null;
 
   return {
@@ -85,11 +79,8 @@ export default async function ContributePage({ params, searchParams }: Contribut
 
   return (
     <RouteMessages route="/contribute">
-      {/* A tool page: the compact head (docs/product/landing-pages.md §1), whose one action is
-          the upload form further down (§4). It replaces a centred photo card under a black
-          scrim that stayed black in the light theme. Its photo, Europa-Park's generic park
-          background, was not dropped into the example gallery: that gallery shows the kind of
-          picture a reader is asked for, and a stock park backdrop is not one. */}
+      {/* A tool page: the compact head, whose one action is the upload form further down
+          (docs/product/landing-pages.md §1, §4). */}
       <LandingHero
         variant="compact"
         kicker={tLanding('kicker')}
@@ -101,10 +92,8 @@ export default async function ContributePage({ params, searchParams }: Contribut
       {/* Gallery and form keep their widths but start at the `container` edge with the head. */}
       <div className="container mx-auto px-4 pt-12 pb-8 sm:pt-16 sm:pb-12">
         <div className="max-w-5xl">
-          {/* Inspiration gallery */}
           <ExampleGallery />
 
-          {/* Rights + form, in a narrower reading column */}
           <div id="upload" className="max-w-3xl scroll-mt-24">
             <RightsNotice />
             <ContributeForm initialEntity={initialEntity} />

@@ -3,17 +3,10 @@ import { getParksNearLocationFresh } from '@/lib/api/discovery';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
 /**
- * Live "parks near these coordinates" — backs the park page's nearby-parks client overlay
- * (`useParkNeighbors`). The page renders the nearby cards status-free (cacheable shell); this
- * endpoint supplies the live status/crowd on the client. Takes precedence over the
- * /api/parks/[...path] catch-all (static segment wins).
- *
- * Shared-cached for 60 s, the window `/api/parks/live` has for the same kind of answer. It was
- * `no-store`, so every park page view and every five-minute poll was a function invocation and a
- * backend call, although the coordinates are the park's own (`LiveNearbyParks`) and the URL is the
- * same for every visitor of that park. A backend failure throws (`getParksNearLocationFresh`) and
- * answers the uncached 502 below, never a shared empty list. Unlike `/api/nearby`, which geolocates the visitor, nothing
- * here depends on who asks. The rule in next.config.ts carries the same value.
+ * Live "parks near these coordinates" for the park page's nearby cards (`useParkNeighbors`), which
+ * render without status. The coordinates are the park's own, so the answer is the same for every
+ * visitor and shares the 60 s window of `/api/parks/live` (next.config.ts carries the same value).
+ * A backend failure answers an uncached 502, never a shared empty list.
  */
 export async function GET(request: NextRequest) {
   const sp = new URL(request.url).searchParams;

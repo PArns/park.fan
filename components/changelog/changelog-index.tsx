@@ -5,18 +5,10 @@ import type { ChangelogEntry } from '@/lib/changelog/types';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 /**
- * The jump list at the head of the changelog: every release by version and date.
- *
- * Grouped by year, because the dates are what a reader scans for ("what changed in March?") and a
- * year heading turns thirty full dates into thirty short ones. From `lg` up it is a column of its
- * own that stays in view while the releases scroll past. Below that it is a `<details>` under the
- * intro, shut: with 31 entries the open grid was about 700 px of links on a phone before the first
- * release, and a sticky block there would cover the text it indexes.
- *
- * Plain fragment links and no client code: the browser already scrolls to an `id`, and each
- * release carries `scroll-mt-20` so its heading lands below the 48 px header. The list is rendered
- * twice, once per layout, and CSS shows one; the hidden copy is `display: none`, so neither a
- * screen reader nor the tab order meets it.
+ * The changelog's jump list, grouped by year because readers scan by date. From `lg` up a sticky
+ * column; below it a closed `<details>` under the intro, since the open list would be a screen of
+ * links before the first release. Plain fragment links, no client code; the list renders twice and
+ * CSS shows one, the hidden copy `display: none`.
  */
 
 const dayMonth = () =>
@@ -60,6 +52,10 @@ function VersionList({ entries }: { entries: ChangelogEntry[] }) {
   );
 }
 
+/**
+ * Jump list of every release on the changelog page, grouped by year: a closed `<details>` below
+ * `lg`, a side column from `lg` up.
+ */
 export function ChangelogIndex({ entries }: { entries: ChangelogEntry[] }) {
   return (
     <>

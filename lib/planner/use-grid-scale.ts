@@ -4,88 +4,31 @@ import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { PX_PER_MIN, PX_PER_MIN_COARSE } from './day-grid';
 
 /**
- * What the planner means by "phone", as a media query.
+ * What the planner means by "phone", as a media query: the JS half of the one switch, whose CSS
+ * half is `planner-phone:` / `planner-wide:` in `app/globals.css`, kept side by side there.
  *
- * The planner has exactly one switch, and this is the JS half of it, written
- * once so a second consumer cannot pick a slightly different number and disagree
- * with the CSS. `planner-flyout.tsx` reads it for `isPhone`; the CSS half is
- * `planner-phone:` / `planner-wide:` in `app/globals.css`, and the two are kept
- * literally side by side there.
- *
- * **`40rem` and never `640px`**, which is the rule `globals.css` already states
- * at length for `.pk-panel-seam-sm`: Tailwind's breakpoints are rem, so
- * `planner-wide:` moves with the reader's default font size and a px query does
- * not. At 20 px / 700 px the panel would lay itself out as a phone — bottom
- * sheet, 44 px targets, the ride search instead of the drag coach — while this
- * answered `false` and handed it the desktop axis, i.e. exactly the mismatch the
- * whole scale exists to avoid, for exactly the readers who raised the default.
- *
- * **And a second term, on the HEIGHT**, because a width breakpoint cannot see a
- * landscape phone: 844x390 is the same device and the same thumb as 390x844, but
- * 844 is over `sm`, so this answered `false` and the panel drew the desktop
- * arrangement into a 390 px tall window. Measured on `main` @ `9e37710a`: the
- * time axis got **16 px** of a 448x390 side panel, all sixteen of them under the
- * optimize row. `or`, not `and` — a phone held either way is a phone.
- *
- * `31.25rem` is 500 px at the default size, which clears a 390 px landscape
- * phone by 110 px and leaves a 1512x982 laptop on the wide side. See PAR-76 and
- * the note above `@variant planner-phone` for the measurements.
- *
- * **The height term asks the POINTER too, and the width term does not.** A short
- * window is not by itself a phone: 1440x480 is a desktop browser somebody
- * dragged flat, and the height term alone caught it and handed it the phone
- * branch — which on this panel means `modal`, and `modal` kills the one gesture
- * the planner is deliberately non-modal for (drag a ride card off the park page
- * onto the axis). A landscape phone answers `(pointer: coarse)`, that window
- * does not, and the width term needs no such guard because 390 px of width on a
- * fine pointer wants the narrow arrangement anyway.
+ * `40rem`, never `640px`: Tailwind's breakpoints are rem and move with the reader's default font
+ * size. The height term catches a landscape phone, and asks `(pointer: coarse)` so a desktop window
+ * dragged flat stays wide, since the phone branch makes the panel modal and stops cards being
+ * dragged onto the axis. See
+ * docs/features/trip-planner.md#the-axis-has-a-phone-scale-and-it-comes-from-one-place.
  */
 export const PLANNER_PHONE_QUERY = '(width < 40rem), (height < 31.25rem) and (pointer: coarse)';
 
 /**
- * A landscape phone, as a media query — the one size the sheet draws in two
- * columns.
- *
- * **A refinement of {@link PLANNER_PHONE_QUERY}, not a sibling of it.** These
- * are the terms of its second branch plus a width, so everything that answers
- * this also answers that: a window this matches is a phone, gets the bottom
- * sheet, the 44 px targets and `PX_PER_MIN_COARSE`. What it adds is the room to
- * put the day's chrome BESIDE the axis instead of above it.
- *
- * The CSS half is `planner-landscape:` in `app/globals.css`, written directly
- * under the pair it refines, and the two carry the same numbers for the same
- * reason the pair does: rem, so a raised default font size moves both halves or
- * neither. The width is `35.5rem` (568 px), below the pair's `40rem`, so an
- * iPhone SE on its side gets the row as well (PAR-231, reasoning in
- * `globals.css`).
- *
- * Read by `planner-flyout.tsx` for the two things a class cannot decide — which
- * side of the panel draws the context band, and therefore what
- * `PlannerDayColumn` is asked to draw at all. `useMediaQuery` answers `false` on
- * the server snapshot, which is right here for the same reason it is right for
- * `isPhone`: the panel is mounted on the client the first time somebody asks for
- * it and is never server-rendered.
+ * A landscape phone, as a media query: the one size the sheet draws in two columns. A refinement of
+ * {@link PLANNER_PHONE_QUERY}, so everything matching it is also a phone; it adds room for the
+ * day's chrome beside the axis. The CSS half is `planner-landscape:` in `app/globals.css`, with the
+ * same rem numbers. `useMediaQuery`'s `false` server snapshot is right, as the panel is
+ * client-only.
  */
 export const PLANNER_LANDSCAPE_QUERY =
   '(width >= 35.5rem) and (height < 31.25rem) and (pointer: coarse)';
 
 /**
- * How many pixels one minute of the day is worth, here and now.
- *
- * A hook rather than six `isPhone ? … : …` at the call sites, because the six
- * axes have to agree: the wizard's preview, the ride search's free-slot maths
- * and the column's own grid are all read as the same day, and two of them at
- * different scales would put 09:00 at two heights in one panel.
- *
- * `useMediaQuery`'s server snapshot is `false`, so the first render is always
- * the desktop value. That is right here and not a compromise: every consumer is
- * inside the planner panel, which is mounted on the client and never
- * server-rendered — the comment at `planner-day-column.tsx` says the same thing
- * about `isPhone` and for the same reason. The one place this is NOT true is
- * `app/[locale]/trip-planner/_demos.tsx`, which is a Client Component on a
- * server-rendered page: it gets one re-render on mount, which is what a
- * `useMediaQuery` costs anywhere, and the axis it draws is a demo rather than a
- * plan.
+ * How many pixels one minute of the day is worth, here and now: one hook, so every axis in the
+ * panel reads the same day at the same scale. The first render is the desktop value, which is
+ * right because the panel is client-only; the trip-planner page's demos re-render once on mount.
  */
 export function usePlannerPxPerMin(): number {
   return useMediaQuery(PLANNER_PHONE_QUERY) ? PX_PER_MIN_COARSE : PX_PER_MIN;

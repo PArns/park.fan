@@ -4,16 +4,14 @@ import Image from 'next/image';
 import { usePolaroidReveal } from '@/lib/hooks/use-polaroid-reveal';
 import { cn } from '@/lib/utils';
 
+/** One photo for the polaroid stack, resolved on the server. */
 export interface PolaroidPhoto {
   src: string;
   /** `object-position` from the image's curated focal point. */
   position?: string;
   /** The caption written on the frame — a park or ride name. */
   label: string;
-  /**
-   * The photo's authored alt text in the page's language, resolved on the server
-   * from the media database. Empty string where the database holds none.
-   */
+  /** The photo's authored alt text in the page's language, from the media database, or `""`. */
   alt: string;
 }
 
@@ -22,35 +20,13 @@ interface PlannerPolaroidsProps {
 }
 
 /**
- * A handful of park photos, laid out as polaroids.
+ * A handful of park photos, laid out as polaroids: the one place in this app where a photo is
+ * decoration rather than data.
  *
- * The page had no picture on it at all, which for a page about days out is a
- * strange thing to be. Polaroids rather than a grid of cards because the page's
- * subject is a day somebody is about to have — a stack of snapshots is the
- * shape that says that, and it is the one place in this app where the photo is
- * allowed to be decoration rather than data. Everywhere else the picture sits
- * under a figure and has to keep out of its way.
- *
- * The photos are resolved on the SERVER and passed in. `@/lib/media` is the
- * 107 KB catalogue and this is a Client Component — importing it here would ship
- * the catalogue to every visitor of the page, which is the trap
- * `docs/features/media-database.md` names. The alt text arrives the same way,
- * out of `@/lib/media/text`, which is the other half of that trap: 37 KB of six
- * locales of prose that no visitor should be handed either.
- *
- * The alt text is AUTHORED, never derived. 26 of this page's 30 `<img>` shipped
- * without one — eight of them the four theme-paired logo SVGs, where empty is
- * the correct answer, and six of them these polaroids — so each card now carries
- * the sidecar's own sentence about that photograph, and a picture the database
- * has no sentence for keeps `alt=""` rather than a line assembled from its file
- * name, which is the one thing the media rules forbid inferring anything from.
- * That is also why the band is no longer `aria-hidden`: a described photograph
- * under a `figcaption` naming the park is content, and shipping that sentence to
- * Google Images while hiding it from a screen reader is the wrong way round.
- *
- * The frame is white in both themes on purpose. A polaroid is a physical object
- * and its border is the paper; a `bg-card` version reads as a card with a
- * caption, which is what the rest of the site already has plenty of.
+ * Photos and alt text are resolved on the server and passed in, because `@/lib/media` and
+ * `@/lib/media/text` are too large for a Client Component (see `docs/features/media-database.md`).
+ * The alt text is authored, never derived from a file name; a photo without one keeps `alt=""`. The
+ * frame is white in both themes: it is the paper of a physical print.
  */
 export function PlannerPolaroids({ photos }: PlannerPolaroidsProps) {
   const rootRef = usePolaroidReveal();
@@ -60,20 +36,14 @@ export function PlannerPolaroids({ photos }: PlannerPolaroidsProps) {
   return (
     <div
       ref={rootRef}
-      // The height is fixed so the reveal moves ink and never geometry — see
-      // `use-polaroid-reveal`. `select-none` because these are decoration and a
-      // drag-select over them looks like a bug.
+      // A fixed height, so the reveal moves ink and never geometry (see `use-polaroid-reveal`).
+      // `select-none`, since a drag-select over decoration looks like a bug.
       className="pointer-events-none relative mx-auto h-[210px] w-full max-w-md select-none sm:h-[260px] sm:max-w-2xl"
     >
       {photos.slice(0, SLOTS.length).map((photo, index) => (
-        /* TWO elements, and that is the whole reason this works. The wrapper
-           carries the resting angle as CSS and GSAP never touches it; the
-           `figure` inside is what gets tweened. One element could not do both:
-           `fromTo(..., { rotation: 0 })` writes an absolute transform on the
-           element and wipes whatever CSS rotation was there, so the first
-           version animated three cards into a flat row — every angle gone the
-           moment the tween landed, and gone for reduced-motion visitors too
-           because the CSS was being overwritten rather than respected. */
+        /* Two elements: the wrapper carries the resting angle as CSS, and GSAP tweens only the
+           `figure` inside. On one element the tween's absolute transform wipes the CSS rotation,
+           for reduced-motion visitors too. */
         <div
           key={photo.src}
           className={cn('absolute top-0', SLOTS[index].box)}
@@ -91,19 +61,14 @@ export function PlannerPolaroids({ photos }: PlannerPolaroidsProps) {
                 src={photo.src}
                 alt={photo.alt}
                 fill
-                // A phone card is 36 % of a 448 px column, a desktop one 26 %
-                // of a 672 px band — ~160 and ~175 px, doubled for a 2× display.
+                // A phone card is ~160 px wide, a desktop one ~175 px; doubled for a 2× display.
                 sizes="(max-width: 640px) 33vw, 180px"
                 quality={60}
                 style={{ objectFit: 'cover', objectPosition: photo.position }}
               />
             </span>
-            {/* LEFT, not centred, and that is about the overlap rather than
-                about taste: each card covers the right 40 % of the one before
-                it, so a centred caption came out as "Phanta…", "Toverl…",
-                "Walibi H…" — every park in the stack unnamed except the last.
-                The left third is the part of a card that is never covered, and
-                a caption written into the corner reads as handwriting anyway. */}
+            {/* Left-aligned: each card covers the right 40 % of the one before, so only the left
+                part of a caption is always visible. */}
             <figcaption className="absolute inset-x-2 bottom-1.5 truncate text-left text-[10px] font-medium text-neutral-700">
               {photo.label}
             </figcaption>
@@ -115,21 +80,9 @@ export function PlannerPolaroids({ photos }: PlannerPolaroidsProps) {
 }
 
 /**
- * Where each polaroid sits, per breakpoint.
- *
- * Hand-placed rather than evenly spread: cards at equal angles read as a fan,
- * and a fan reads as a widget. These overlap the way a stack somebody put down
- * does.
- *
- * FULL class strings and not an interpolated `left-[${n}%]`, because Tailwind's
- * scanner has to see them — the same rule the crowd palette states. It is also
- * why the breakpoint lives in classes at all: the positions differ between a
- * phone and a desktop and an inline style has no `sm:`.
- *
- * Three on a phone and six above it. Not a taste call: a 358 px column cannot
- * hold six overlapping cards and still leave a caption readable, and the extra
- * three are `hidden` rather than unrendered so the reveal always animates the
- * same DOM.
+ * Where each polaroid sits, per breakpoint, hand-placed so the stack reads as one somebody put down
+ * rather than a fan. Full class strings, so Tailwind's scanner sees them. Three on a phone and six
+ * above; the extra three are `hidden`, not unrendered, so the reveal animates the same DOM.
  */
 const SLOTS: readonly { box: string; rotate: number }[] = [
   { box: 'left-[2%] w-[36%] sm:left-[0%] sm:w-[26%]', rotate: -7 },

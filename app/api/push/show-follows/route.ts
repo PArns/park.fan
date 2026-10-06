@@ -1,9 +1,9 @@
 import { NextRequest } from 'next/server';
-import { relayPushGet, relayPushWrite } from '@/lib/api/push-relay';
+import { relayPushGet, relayPushWrite } from '@/lib/api/relay';
 
 /**
  * A browser's followed shows. Same thin-relay shape as
- * `app/api/push/ride-alerts/route.ts` — see `lib/api/push-relay.ts`.
+ * `app/api/push/ride-alerts/route.ts`; see `lib/api/relay.ts`.
  */
 const API_PATH = '/v1/push/show-follows';
 

@@ -865,7 +865,7 @@ const nextConfig: NextConfig = {
       // rendered to be read — a header is on the response whether or not anything renders, and
       // it is the only signal the JSON endpoints under /api/admin can carry at all. robots.txt
       // disallows the same three paths; this is the half that survives a crawler that ignores it.
-      ...['/admin', '/admin/:path*', '/api/admin/:path*', '/dev', '/dev/:path*'].map((source) => ({
+      ...['/admin', '/admin/:path*', '/api/admin/:path*'].map((source) => ({
         source,
         headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' }],
       })),
@@ -994,6 +994,13 @@ const nextConfig: NextConfig = {
         headers: sharedCache(
           'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800'
         ),
+      },
+      {
+        // The `.ics` of a park's coming opening days. The handler's own value, and it sends it on
+        // a successful answer only: its 404 and 502 carry `no-store` themselves.
+        // 3600 = `CACHE_TTL.schedule`, which this file cannot import.
+        source: '/api/parks/hours/:continent/:country/:city/:park',
+        headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=7200'),
       },
       {
         // The park map popups' speed, height and duration per ride. Day-stable; the handler's own
@@ -1269,8 +1276,8 @@ const nextConfig: NextConfig = {
       //   /:locale/search          — answers `no-store` and must keep doing so; a query-keyed
       //                              page shared across readers is a privacy question, not a
       //                              cache question.
-      //   /admin, /api, /dev       — the Cloudflare rule excludes the first two by hand; giving
-      //                              any of them a window here would be the way to undo that.
+      //   /admin, /api             — the Cloudflare rule excludes both by hand; giving either a
+      //                              window here would be the way to undo that.
       // The RIDE page and the PARK page, the two highest-invocation routes in the app. Listed
       // BEFORE the calendar block below so the calendar's own, more specific sources win — the
       // hub `…/:park/<segment>` has the same segment count as `…/:park/:attraction` and would

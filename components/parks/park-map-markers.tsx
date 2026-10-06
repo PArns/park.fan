@@ -6,6 +6,7 @@ import { Marker, Popup } from 'react-leaflet';
 import type { Marker as LeafletMarker } from 'leaflet';
 import type { ParkAttraction, ParkShow, ParkRestaurant } from '@/lib/api/types';
 import { stripNewPrefix } from '@/lib/utils';
+import { getStandbyWait } from '@/lib/utils/park-utils';
 import {
   attractionOperatingIcon,
   attractionClosedIcon,
@@ -17,7 +18,7 @@ import { formatDuration } from '@/lib/utils/temperature';
 import { Speed, TrackLength } from '@/components/common/unit-display';
 import type { RideFigures } from '@/lib/api/ride-figures';
 
-// Returns the next future showtime as a Date, or null if none remain
+/** The show's next start time still to come, or `null` when none remain. */
 export function getNextShowtimeDate(show: ParkShow): Date | null {
   if (!show.showtimes || show.showtimes.length === 0) return null;
 
@@ -36,10 +37,10 @@ interface AttractionMarkersProps {
   figures?: Record<string, RideFigures>;
 }
 
-// Memoized: `attractions` is a `useMemo`-stable array in ParkMap, and nothing here is
-// time-relative — so the once-per-minute `useMinuteNow` tick (needed only by the show
-// markers) no longer reconciles every attraction marker. Re-renders only when the 5-min
-// park poll actually changes the attractions.
+/**
+ * The ride pins. Memoised: nothing here is time-relative, so the minute tick the show markers need
+ * does not reconcile them.
+ */
 export const AttractionMarkers = memo(function AttractionMarkers({
   attractions,
   figures,
@@ -53,9 +54,7 @@ export const AttractionMarkers = memo(function AttractionMarkers({
         const isOperating = attraction.status === 'OPERATING';
         const icon = isOperating ? attractionOperatingIcon : attractionClosedIcon;
 
-        // Get wait time from queues
-        const standbyQueue = attraction.queues?.find((q) => q.queueType === 'STANDBY');
-        const waitTime = standbyQueue?.waitTime;
+        const waitTime = getStandbyWait(attraction);
         const ride = figures?.[attraction.id];
 
         return (
@@ -78,7 +77,7 @@ export const AttractionMarkers = memo(function AttractionMarkers({
                     </span>
                   </div>
                 )}
-                {waitTime !== null && waitTime !== undefined && (
+                {waitTime !== null && (
                   <div className="mt-1 text-xs">
                     {t('waitTime')}: <span className="font-semibold">{waitTime} min</span>
                   </div>
@@ -127,18 +126,13 @@ interface ShowMarkersProps {
   /** IANA timezone of the park, used to render showtimes in park-local time. */
   timezone: string;
   /**
-   * Slug of the show a `#map-show-<slug>` deep link named — its popup opens on mount.
-   *
-   * The header panel's „nächste Shows" rows point here, so following one lands on the park map
-   * with that show's marker already speaking rather than on a map of forty identical pins with
-   * no indication which of them was the answer.
+   * Slug of the show a `#map-show-<slug>` deep link named. Its popup opens on mount, so a „nächste
+   * Shows" row lands on that show's marker rather than on a map of identical pins.
    */
   focusSlug?: string | null;
 }
 
-// Memoized like its two siblings — it was the only marker layer left unmemoized, so it
-// re-rendered (rebuilding a Leaflet Popup and running getNextShowtimeDate per show) on every
-// ParkMap render. Its props are `useMemo`-stable at the call site.
+/** The show pins, memoised like their siblings; the props are `useMemo`-stable at the call site. */
 export const ShowMarkers = memo(function ShowMarkers({
   shows,
   timezone,
@@ -148,13 +142,9 @@ export const ShowMarkers = memo(function ShowMarkers({
   const locale = useLocale();
 
   /**
-   * The marker a `#map-show-<slug>` deep link named, so its popup can be opened after mount.
-   *
-   * Not from the ref callback itself: react-leaflet's `<Popup>` binds to its parent marker in its
-   * OWN effect, and a callback ref fires while the marker layer is added — before the popup
-   * exists, so `openPopup()` there is a no-op with no error (measured: the tab opened, the map
-   * drew, and nothing popped). A parent effect runs after the child's, which is exactly the order
-   * needed here.
+   * The marker a `#map-show-<slug>` deep link named, opened from a parent effect: react-leaflet's
+   * `<Popup>` binds to its marker in its own effect, so `openPopup()` in the ref callback is a
+   * silent no-op.
    */
   const focusRef = useRef<LeafletMarker | null>(null);
   useEffect(() => {
@@ -203,8 +193,7 @@ interface RestaurantMarkersProps {
   restaurants: ParkRestaurant[];
 }
 
-// Memoized like AttractionMarkers — restaurants carry no time-relative content, so the
-// minute tick never needs to touch them.
+/** The restaurant pins, memoised: they carry nothing time-relative. */
 export const RestaurantMarkers = memo(function RestaurantMarkers({
   restaurants,
 }: RestaurantMarkersProps) {

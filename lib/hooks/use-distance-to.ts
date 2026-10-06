@@ -35,7 +35,7 @@ export interface ViewerPositionState {
  * On the server both fields are `null` / `true`: nothing is known there, and a position is still
  * expected on the client.
  */
-export function useViewerPositionState(): ViewerPositionState {
+function useViewerPositionState(): ViewerPositionState {
   const { position, loading, initialCheckDone } = useGeolocation();
   const nearby = useHomeNearbyParks();
   const userLocation = nearby.data?.userLocation;

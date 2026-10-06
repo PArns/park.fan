@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Archive, Loader2, TriangleAlert, Undo2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useInvalidateAdmin, adminKeys } from '../../_lib/api';
+import { formatDay } from '../../_lib/format';
 import { Chip } from '../../_ui/primitives';
 import { Field, TextInput } from '../../_ui/controls';
 import { useToast } from '../../_ui/toast';
@@ -24,28 +25,10 @@ interface AttractionStatusProps {
   canRetire: boolean;
 }
 
-function day(value: string | null): string {
-  if (!value) return '—';
-  const parsed = new Date(value);
-  if (Number.isNaN(parsed.getTime())) return value;
-  return parsed.toLocaleDateString('de-DE', { day: '2-digit', month: 'short', year: 'numeric' });
-}
-
 /**
- * Der Status einer Bahn — und der Schalter dafür.
- *
- * Er stand hier als vierte Kennzahl neben Slug und externer ID, also als
- * Tatsache, die man zur Kenntnis nimmt. Setzen ließ er sich nur in der
- * Arbeitsliste unter `/admin/retirement`, und die zeigt eine Bahn nur, solange
- * der Detector sie vorlegt: eine Bahn, deren Feed nie verstummt ist, taucht dort
- * gar nicht auf, und eine, die einmal als „kein Fall" abgehakt wurde, für Monate
- * nicht mehr. Für Maximus' Blitz Bahn im Toverland hieß das: keine Zeile,
- * nirgends, in der sich das Urteil ändern ließ.
- *
- * Deshalb steht die Entscheidung jetzt dort, wo man sie trifft — auf der Seite,
- * auf der man Ride-Profil, Bilder und Verlauf gerade angesehen hat. Die
- * Pflichtangaben sind dieselben wie in der Arbeitsliste, weil es dieselbe
- * Entscheidung ist.
+ * A ride's status and the switch for it, on the ride's own page as well as in the retirement
+ * worklist, which shows a ride only while the detector proposes it. The required fields are the
+ * worklist's, since it is the same decision.
  */
 export function AttractionStatus({
   attractionId,
@@ -132,7 +115,7 @@ export function AttractionStatus({
         <p className="flex items-start gap-2 rounded-lg border border-amber-500/25 bg-amber-500/10 px-3 py-2 text-xs text-amber-300">
           <TriangleAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           <span>
-            Stillgelegt am {day(retiredAt)}
+            Stillgelegt am {formatDay(retiredAt)}
             {retiredReason ? ` — ${retiredReason}` : ''}. Die Seite antwortet weiter, die Bahn
             taucht aber in keiner Liste mehr auf.
           </span>

@@ -5,16 +5,6 @@ import { changelogAnchor } from '@/lib/changelog/paths';
 import type { ChangelogEntry } from '@/lib/changelog/types';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
-/**
- * One release on the public changelog.
- *
- * A Server Component with no state and no client bytes: the page is a list of
- * headings, paragraphs and images, and the only thing a visitor does on it is
- * read. A release is an `<article>` under a heading that carries the version,
- * so the page's outline reads as a list of versions rather than a wall of
- * bullet points.
- */
-
 /** `2026-09-21` printed as `21 September 2026`, in English, without a client locale. */
 function formatReleaseDate(iso: string): string {
   const parsed = new Date(`${iso}T00:00:00Z`);
@@ -27,6 +17,10 @@ function formatReleaseDate(iso: string): string {
   }).format(parsed);
 }
 
+/**
+ * One release on the public changelog: an `<article>` with the version, date and the release notes
+ * rendered from markdown. Server Component.
+ */
 export function ChangelogRelease({ entry }: { entry: ChangelogEntry }) {
   return (
     <article
@@ -84,14 +78,9 @@ export function ChangelogRelease({ entry }: { entry: ChangelogEntry }) {
       ))}
 
       {/*
-        Every element is mapped by hand rather than left to a `prose` class:
-        `@tailwindcss/typography` is not installed here, so `prose` is inert and
-        a markdown list would render without its markers. The classes are the
-        blog's (`components/blog/blog-content.tsx`), so a paragraph reads the
-        same on both surfaces.
-
-        `## New` is drawn as a section label rather than a heading of its own
-        size: inside a release it ranks under the release title above it.
+        Every element is mapped by hand: `@tailwindcss/typography` is not installed, so `prose` is
+        inert. The classes are the blog's (`components/blog/blog-content.tsx`). `## New` is drawn as
+        a section label, ranking under the release title.
       */}
       <ReactMarkdown
         components={{

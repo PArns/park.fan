@@ -1,17 +1,27 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowLeftRight, ExternalLink, Loader2, RotateCcw, Save, Sparkles } from 'lucide-react';
+import {
+  ArrowLeftRight,
+  ExternalLink,
+  Loader2,
+  RotateCcw,
+  Save,
+  Sliders,
+  Sparkles,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import type { CuratedField } from '../_lib/types';
+import { adminFetch, useInvalidateAdmin } from '../_lib/api';
+import type { CuratedField, CurationResponse } from '../_lib/types';
 
 /** ⌘S on a Mac, Strg+S everywhere else. Read once, in the browser. */
 function saveShortcutLabel(): string {
   if (typeof navigator === 'undefined') return 'Strg+S';
   return /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent) ? '⌘S' : 'Strg+S';
 }
-import { Chip } from './primitives';
+import { Chip, Panel, PanelBody, PanelHeader } from './primitives';
+import { useToast } from './toast';
 import {
   clearCuratedDraft,
   loadCuratedDraft,
@@ -30,25 +40,13 @@ import {
 } from './controls';
 
 /**
- * One editor for every curated field there is or ever will be.
- *
- * The backend describes its curatable columns — key, type, the value upstream
- * publishes, the value a human wrote, the value the API actually serves — and
- * this renders whatever it is handed. Adding a curated column to the API makes
- * it appear here with no frontend change at all, which is the point: a form
- * written field by field is a second, drifting copy of which columns are
- * curatable, and the drift shows up as a field somebody cannot edit and cannot
- * see why.
- *
- * The three-value display is the actual work. A curated field is a
- * **disagreement with a machine**, and the only way to judge one is to see both
- * sides at once: upstream's value beside yours, with the effective value
- * implied. Without it the editor is just a form, and a form cannot tell you
- * that the correction you wrote in March is now identical to what the sync
- * publishes and can be removed.
+ * One editor for every curated field: the backend describes its curatable columns and this renders
+ * whatever it is handed, so a new curated column needs no frontend change. Each row shows
+ * upstream's value beside the correction, which is how an editor sees a correction has become
+ * redundant.
  */
 
-export type FieldValues = Record<string, unknown>;
+type FieldValues = Record<string, unknown>;
 
 const MONTH_NAMES = [
   'Jan',
@@ -65,7 +63,8 @@ const MONTH_NAMES = [
   'Dez',
 ];
 
-export function formatFieldValue(field: CuratedField, value: unknown): string {
+/** A curated field's value as the editor shows it, `—` when empty. */
+function formatFieldValue(field: CuratedField, value: unknown): string {
   if (value === null || value === undefined || value === '') return '—';
   switch (field.type) {
     case 'boolean':
@@ -92,8 +91,6 @@ export function formatFieldValue(field: CuratedField, value: unknown): string {
 function sameValue(a: unknown, b: unknown): boolean {
   return JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
 }
-
-// ─── one field ────────────────────────────────────────────────────────────────
 
 function CuratedFieldRow({
   field,
@@ -316,38 +313,21 @@ function FieldControl({
   }
 }
 
-/**
- * The placeholder says what happens if you leave it empty.
- *
- * "Leer = Upstream" is more useful than repeating the label, because empty is a
- * meaningful state here and not an unfilled one — it is how a correction is
- * withdrawn.
- */
+/** Says what an empty field means, since emptying is how a correction is withdrawn. */
 function placeholderFor(field: CuratedField): string {
   if (field.humanOnly) return 'Nicht gesetzt';
   const upstream = formatFieldValue(field, field.syncedValue);
   return upstream === '—' ? 'Upstream sagt nichts' : `Upstream: ${upstream}`;
 }
 
-// ─── the form ─────────────────────────────────────────────────────────────────
-
-export interface CuratedFormState {
+interface CuratedFormState {
   values: FieldValues;
   dirtyKeys: string[];
   setValue: (key: string, value: unknown) => void;
   reset: () => void;
   /**
-   * Adopt what the server actually stored, from a save response.
-   *
-   * Not `reset()`. Clearing the overrides makes the form fall back to `initial`,
-   * which is still derived from the *pre-save* props until the refetch lands —
-   * so every input visibly snaps back to its old value for a moment and then
-   * jumps forward again, which reads as "the save was undone". Adopting the
-   * response instead shows the stored values immediately, and once the refetch
-   * arrives `initial` matches them and nothing is dirty.
-   *
-   * It also surfaces the server's own coercions — a trimmed string, sorted
-   * months — rather than leaving the form showing what was typed.
+   * Adopts what the server stored, from a save response. Not `reset()`, which falls back to the
+   * pre-save `initial` until the refetch lands, so every input would snap back for a moment.
    */
   applyServerFields: (fields: CuratedField[]) => void;
   /** When this form opened holding edits from an earlier visit. */
@@ -372,40 +352,22 @@ function dropConfirmed(overrides: FieldValues, server: FieldValues): FieldValues
 }
 
 /**
- * Three layers, and which one wins is the whole point.
- *
- * `initial` is what the query says, `saved` is what a save response said before
- * the query caught up, `overrides` is what the person typed. They are merged in
- * that order, and the moment a fresh `fields` array arrives — a refetch, a
- * window-focus refresh, another admin's edit — the middle layer is dropped and
- * every override the server now agrees with goes with it.
- *
- * The version this replaced seeded `overrides` with the *whole* save response
- * (the backend returns every descriptor, not just the changed ones), which
- * detached the form from the query for good: no later `initial` could win
- * against a full-coverage override. The visible cost was on the undo in the
- * save toast. Undo reverted the column server-side, the refetch brought the
- * reverted value back, and the form still showed the undone edit and counted it
- * as an unsaved change — pressing save again silently re-applied what had just
- * been taken back.
+ * The curated form's state in three layers, merged in order: `initial` from the query, `saved`
+ * from a save response until the query catches up, and `overrides` the person typed. A fresh
+ * `fields` array drops the middle layer and every override the server now agrees with, so the
+ * form follows the query again (an undo from the toast included).
  */
-export function useCuratedForm(fields: CuratedField[], scope?: DraftScope): CuratedFormState {
+function useCuratedForm(fields: CuratedField[], scope?: DraftScope): CuratedFormState {
   const initial = useMemo(() => curatedValues(fields), [fields]);
 
-  // Seeded from the draft, lazily so it runs once and never on the server.
-  // Everything the person typed and did not save is in there — see
-  // `curated-draft.ts` for the five ways out of this form that used to throw
-  // it away.
+  // Seeded from the draft (`curated-draft.ts`), lazily so it runs once and never on the server.
   const [restored] = useState(() => (scope ? loadCuratedDraft(scope) : null));
   const [overrides, setOverrides] = useState<FieldValues>(() => restored?.values ?? {});
   const [saved, setSaved] = useState<FieldValues | null>(null);
   const [seenFields, setSeenFields] = useState(fields);
 
-  // Adjusting state during render rather than in an effect: this is the
-  // documented pattern for "reset some state when a prop changes", it re-renders
-  // before anything is painted, and React 19 forbids the effect form outright.
-  // React Query keeps the reference stable while the data is deep-equal, so
-  // this fires when the data actually changed, not on every render.
+  // Adjusting state during render, React's pattern for resetting state when a prop changes. React
+  // Query keeps `fields` stable while the data is deep-equal, so this fires only on real changes.
   if (fields !== seenFields) {
     setSeenFields(fields);
     setSaved(null);
@@ -460,7 +422,13 @@ export function useCuratedForm(fields: CuratedField[], scope?: DraftScope): Cura
   };
 }
 
-export function CuratedFieldsEditor({
+/**
+ * Form for a park's or ride's curated fields as the backend describes them: one tab per group,
+ * each row showing upstream's value beside the correction, and a sticky save bar asking for reason
+ * and source. Binds ⌘S / Strg+S while there is something to save; state comes from
+ * `useCuratedForm`.
+ */
+function CuratedFieldsEditor({
   fields,
   form,
   disabled = false,
@@ -488,10 +456,8 @@ export function CuratedFieldsEditor({
     return [...byGroup.entries()];
   }, [fields]);
 
-  // One group at a time. The groups are still whatever the backend sends, in
-  // the order it sends them, so a new curated column lands in its tab with no
-  // change here. A chosen group that disappears from a refetch falls back to
-  // the first one instead of leaving an empty panel.
+  // One group at a time, in the backend's order. A chosen group that disappears from a refetch
+  // falls back to the first instead of leaving an empty panel.
   const [chosenGroup, setChosenGroup] = useState<string | null>(null);
   const activeGroup = groups.find(([group]) => group === chosenGroup) ?? groups[0];
 
@@ -506,10 +472,8 @@ export function CuratedFieldsEditor({
     setSourceUrl('');
   }
 
-  // ⌘S / Strg+S, because this form is worked with both hands on the keyboard —
-  // and the browser's own "save page" is never what somebody means while
-  // typing into a curated field. Bound only while there is something to save,
-  // so the shortcut cannot swallow a keystroke it has no answer for.
+  // ⌘S / Strg+S, bound only while there is something to save, so it never swallows the
+  // keystroke for nothing.
   useEffect(() => {
     if (!dirty || saving || disabled) return;
     const onKeyDown = (event: KeyboardEvent) => {
@@ -531,10 +495,8 @@ export function CuratedFieldsEditor({
     // "there is work here to lose".
     <div className="space-y-6" data-admin-dirty={dirty ? 'true' : undefined}>
       {form.restoredAt !== null && dirty && (
-        /* Say it out loud. Silently reinstating yesterday's half-finished
-           edits would be the same surprise as losing them, in the other
-           direction — and the person who reads this is the one who would
-           otherwise save them without noticing. */
+        /* Said out loud: silently reinstating yesterday's edits would surprise as much as losing
+           them. */
         <p className="border-border/60 bg-muted/40 text-muted-foreground rounded-lg border px-3 py-2 text-xs">
           Nicht gespeicherte Änderungen von{' '}
           {new Date(form.restoredAt).toLocaleString('de-DE', {
@@ -544,11 +506,8 @@ export function CuratedFieldsEditor({
           wiederhergestellt. Speichern oder verwerfen.
         </p>
       )}
-      {/* The same underline tabs as the page's own bar one level up, one step
-          smaller. Each tab carries two counts, because a hidden group must not
-          hide work: how many of its fields are corrected, and — in the primary
-          colour — how many hold an unsaved edit. The save bar below still lists
-          every change across all groups. */}
+      {/* Each tab carries two counts, so a hidden group does not hide work: corrected fields
+          and, in the primary colour, unsaved edits. */}
       {groups.length > 1 && (
         <div className="border-border/50 flex flex-wrap gap-x-1 border-b">
           {groups.map(([group, groupFields]) => {
@@ -680,5 +639,115 @@ export function CuratedFieldsEditor({
         )}
       </div>
     </div>
+  );
+}
+
+type QueryPrefix = readonly unknown[];
+
+/** The "Kuratierte Felder" panel of a park or a ride: the editor, its save, and the undo toast. */
+export function CuratedFieldsPanel({
+  fields,
+  endpoint,
+  draftScope,
+  invalidateKeys,
+  undoInvalidateKeys = invalidateKeys,
+  emptyHint,
+  savedDescription,
+  canEdit,
+}: {
+  fields: CuratedField[];
+  endpoint: string;
+  draftScope: DraftScope;
+  invalidateKeys: ReadonlyArray<QueryPrefix>;
+  /** Defaults to `invalidateKeys`. */
+  undoInvalidateKeys?: ReadonlyArray<QueryPrefix>;
+  emptyHint: string;
+  savedDescription?: string;
+  canEdit: boolean;
+}) {
+  const toast = useToast();
+  const invalidate = useInvalidateAdmin();
+  const form = useCuratedForm(fields, draftScope);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const overridden = fields.filter((field) => field.overridden).length;
+
+  async function save(input: { fields: FieldValues; reason: string; sourceUrl: string }) {
+    setSaving(true);
+    setError(null);
+    try {
+      const result = await adminFetch<CurationResponse>(endpoint, {
+        method: 'PATCH',
+        body: {
+          fields: input.fields,
+          ...(input.reason ? { reason: input.reason } : {}),
+          ...(input.sourceUrl ? { sourceUrl: input.sourceUrl } : {}),
+        },
+      });
+
+      invalidate(...invalidateKeys);
+      form.applyServerFields(result.fields);
+
+      toast.push({
+        title: `${result.changed.length} Feld${result.changed.length === 1 ? '' : 'er'} gespeichert`,
+        description: savedDescription,
+        tone: 'success',
+        // The undo lives here because this is the moment it is wanted. Later it
+        // is in the history tab; a minute later nobody looks.
+        action: result.auditId
+          ? {
+              label: 'Rückgängig',
+              onClick: async () => {
+                await adminFetch(`/api/admin/content/history/${result.auditId}/undo`, {
+                  method: 'POST',
+                });
+                invalidate(...undoInvalidateKeys);
+              },
+            }
+          : undefined,
+      });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Speichern fehlgeschlagen');
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <Panel>
+      <PanelHeader
+        icon={Sliders}
+        title="Kuratierte Felder"
+        hint={
+          overridden === 0
+            ? emptyHint
+            : `${overridden} Feld${overridden === 1 ? '' : 'er'} weicht vom Upstream ab.`
+        }
+        action={
+          overridden > 0 ? (
+            <Chip tone="primary">
+              <Sparkles className="h-3 w-3" />
+              {overridden}
+            </Chip>
+          ) : null
+        }
+      />
+      <PanelBody>
+        {!canEdit && (
+          <p className="text-muted-foreground mb-3 text-xs">
+            Dein Konto darf lesen, aber nicht kuratieren.
+          </p>
+        )}
+        <CuratedFieldsEditor
+          fields={fields}
+          form={form}
+          disabled={!canEdit}
+          saving={saving}
+          saveError={error}
+          onSave={save}
+        />
+      </PanelBody>
+    </Panel>
   );
 }

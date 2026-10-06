@@ -9,18 +9,10 @@ import { SITE_URL } from '@/i18n/config';
 import { blogFeedUrl } from '@/lib/blog/feed';
 
 /**
- * `/llms.txt` (llmstxt.org) — the one file to read when an agent has the hostname and nothing
- * else. Everything else this repo serves to machines is a schema; this is the sentence that
- * says what the schemas are for.
- *
- * English only, deliberately: the site is six languages but this file is read once, by
- * something that will then fetch the pages in whatever language its user speaks. Six copies
- * would be six things to keep in step for no reader.
- *
- * The park links come from the geo structure at build time rather than a list typed in here.
- * A park slug is exactly the kind of thing that gets renamed upstream ("Magic Kingdom Park" →
- * "Disney Magic Kingdom" already happened once), and a file whose whole purpose is to be
- * followed cannot afford six dead links.
+ * `/llms.txt` (llmstxt.org): the one file to read when an agent has the hostname and nothing
+ * else. English only, because it is read once, by something that then fetches the pages in its
+ * user's language. The park links come from the geo structure, not a typed list, because park
+ * slugs get renamed upstream and a file that exists to be followed cannot carry dead links.
  */
 export const dynamic = 'force-static';
 // Rebuilt with the rest of the site; the parks in it change on the order of years.

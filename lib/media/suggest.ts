@@ -2,23 +2,10 @@ import { distanceMeters, formatDistance, nearestPark, type GeoPark } from './geo
 import type { MediaGps } from './types';
 
 /**
- * Turning a photo's GPS fix into park and ride suggestions for the admin.
- *
- * Measured against the 55 photos in the database that carry both a GPS tag and a
- * known ride, the two questions have very different answers:
- *
- *  - **Which park?** The nearest park is right ~89 % of the time, and the misses
- *    are all "coordinates sit between two parks", not "wrong country". Parks are
- *    kilometres apart, so this is safe to fill in automatically.
- *  - **Which ride?** The nearest attraction is right only **55 %** of the time.
- *    Rides sit 15–50 m apart and you photograph one from a distance, so the
- *    closest point of interest is regularly the neighbour. Auto-assigning it
- *    would put a wrong ride on nearly half the uploads — worse than none, because
- *    a wrong label looks reviewed.
- *
- * So: the park is proposed as an answer, the ride as a **ranked shortlist**. The
- * correct ride is in the top 3 for 78 % of samples, top 5 for 87 % and top 8 for
- * 95 %, which makes picking it one click rather than a search.
+ * Turning a photo's GPS fix into park and ride suggestions for the admin. Parks are kilometres
+ * apart, so the nearest park is proposed as the answer. The nearest ride is right only about half
+ * the time (rides stand metres apart and are photographed from a distance), and a wrong label
+ * looks reviewed, so rides come as a ranked shortlist.
  */
 
 /** Below this, "nearest park" is a confident answer rather than a guess. */

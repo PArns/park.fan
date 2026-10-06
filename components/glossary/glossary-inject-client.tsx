@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
-import { GlossaryInjectTerm } from './glossary-inject-term';
+import { GlossarySegments } from './glossary-segments';
 import { useGlossaryInject } from './glossary-inject-context';
 
 /**
@@ -39,22 +39,11 @@ export function GlossaryInjectClient({
   }
 
   return (
-    <>
-      {segments.map((seg, i) => {
-        if (seg.type === 'text') return seg.content;
-        return (
-          <GlossaryInjectTerm
-            key={`${seg.id}-${i}`}
-            matchedText={seg.matchedText}
-            name={seg.name}
-            slug={seg.slug}
-            shortDefinition={seg.shortDefinition}
-            locale={ctx.locale}
-            segment={ctx.segment}
-            noUnderline={noUnderline}
-          />
-        );
-      })}
-    </>
+    <GlossarySegments
+      segments={segments}
+      locale={ctx.locale}
+      segment={ctx.segment}
+      noUnderline={noUnderline}
+    />
   );
 }

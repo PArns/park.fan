@@ -15,18 +15,10 @@ interface BlogQuoteOriginalProps {
 }
 
 /**
- * The original wording of a translated quote, on hover and on tap.
- *
- * `HoverCard` opens on a mouse hover and on keyboard focus, and Radix leaves
- * touch alone on purpose, so a tap opens it here and a second tap, a tap
- * outside or Escape closes it. The second tap needs care: Radix's dismiss
- * layer counts a tap on the trigger as a tap outside the card and closes it on
- * `pointerdown`, before the `click` arrives, so the click reads whether the
- * card was open when the finger came down. A mouse click changes nothing,
- * because hovering already decided. The card sits over the text and moves
- * nothing below it.
- * Screen readers get the original from a visually hidden copy in `BlogQuote`,
- * because a hover card is not announced.
+ * The original wording of a translated quote, on hover and on tap. Radix's `HoverCard` leaves
+ * touch alone, so a tap opens it here; its dismiss layer closes it on `pointerdown` before the
+ * `click` arrives, so the click reads whether the card was open when the finger came down. Screen
+ * readers get the original from a visually hidden copy in `BlogQuote`.
  */
 export function BlogQuoteOriginal({ lang, label, original, children }: BlogQuoteOriginalProps) {
   const [open, setOpen] = useState(false);

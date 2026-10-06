@@ -22,6 +22,7 @@ const DEMO: TypicalWaits = {
   generatedAt: '2026-06-19T03:00:00.000Z',
 };
 
+/** `AttractionTypicalWaits` filled with fixed mock stats, for the `/ui` component showcase. */
 export function AttractionTypicalWaitsDemo() {
   return <AttractionTypicalWaits typicalWaits={DEMO} className="max-w-md" />;
 }

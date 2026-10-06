@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { FolderOpen, Loader2, PenLine, Plus, Trash2 } from 'lucide-react';
 import type { Locale } from '@/i18n/config';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { FrontmatterForm } from './_components/frontmatter-form';
 import { EditorCanvas } from './_components/editor-canvas';
 import { MarkdownPreview } from './_components/markdown-preview';
@@ -27,6 +28,16 @@ import { clearPendingImages, listPendingImages, setUploadFolder } from './_lib/p
 
 const DEFAULT_SOURCE: Locale = 'en';
 
+function readRestorableDraft(): DraftSnapshot | null {
+  const snap = loadDraftSnapshot();
+  return snap && isMeaningfulSnapshot(snap) ? snap : null;
+}
+
+/**
+ * Blog editor workspace: one draft per locale with frontmatter form, rich-text or source view,
+ * properties panel, translation from the source locale, and saving or deleting a post as a GitHub
+ * pull request. Autosaves to localStorage and opens `?post=<key>` on load.
+ */
 export function BlogEditorClient({ initialData }: { initialData: EditorInitialData }) {
   const [sourceLocale, setSourceLocale] = useState<Locale>(DEFAULT_SOURCE);
   const [activeLocale, setActiveLocale] = useState<Locale>(DEFAULT_SOURCE);
@@ -39,29 +50,21 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
   const [loadingPost, setLoadingPost] = useState(false);
   const [deletingPost, setDeletingPost] = useState(false);
   const [view, setView] = useState<'editor' | 'source'>('editor');
-  /** Last clicked chip in the editor — drives the right-side PropertiesPanel.
-   *  Stays sticky until the next chip is clicked so the author can flip back
-   *  to the panel after typing. */
+  /** Last clicked chip, which drives the PropertiesPanel until the next chip is clicked. */
   const [selection, setSelection] = useState<EditorSelection>(null);
   /** Lifted TipTap editor instance so PropertiesPanel can run commands. */
   const [editor, setEditor] = useState<Editor | null>(null);
-  /** A meaningful localStorage snapshot from a previous session — drives the
-   *  "Restore draft?" banner. Detected once after mount (localStorage isn't
-   *  available during SSR, and reading it in render would mismatch hydration). */
-  const [restorable, setRestorable] = useState<DraftSnapshot | null>(null);
-  useEffect(() => {
-    // Deferred a tick — the React 19 lint (set-state-in-effect) flags
-    // synchronous setState in effects as a cascading-render hazard.
-    const t = setTimeout(() => {
-      const snap = loadDraftSnapshot();
-      if (snap && isMeaningfulSnapshot(snap)) setRestorable(snap);
-    }, 0);
-    return () => clearTimeout(t);
-  }, []);
+  /**
+   * A snapshot from a previous session for the "Restore draft?" banner: `undefined` until the
+   * first mounted render reads it, `null` when there is none or it has been answered. Read once
+   * into state, not subscribed to, because the autosave below rewrites the same slot.
+   */
+  const [restorable, setRestorable] = useState<DraftSnapshot | null | undefined>(undefined);
+  const mounted = useMounted();
+  if (mounted && restorable === undefined) setRestorable(readRestorableDraft());
 
-  // The ref-preview extension fires `parkfan-selection` from handleClick. We
-  // listen at the top level so the panel reflects whichever chip was clicked
-  // last, regardless of where in the canvas tree the event originated.
+  // The ref-preview extension fires `parkfan-selection` on click; listening at the top level
+  // catches it wherever in the canvas it came from.
   useEffect(() => {
     const onSelection = (e: Event) => {
       const detail = (e as CustomEvent<EditorSelection & { rect?: unknown }>).detail;
@@ -93,14 +96,10 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     },
     [selection]
   );
-  /** Authors / categories the user created in this session — get appended to
-   *  the editor's pickers AND sent with the save payload so the resulting PR
-   *  contains the new author file / categories.json patch. */
+  /** Authors and categories created this session: added to the pickers and sent with the save. */
   const [newAuthors, setNewAuthors] = useState<NewAuthorDraft[]>([]);
   const [newCategories, setNewCategories] = useState<NewCategoryDraft[]>([]);
-  /** Authors / categories the user *edited* (overwriting an existing entry).
-   *  Distinct from the new-* lists because the server commits them with the
-   *  existing file SHA (otherwise GitHub rejects the createOrUpdate call). */
+  /** Authors and categories edited this session, apart because they commit with the file's SHA. */
   const [editedAuthors, setEditedAuthors] = useState<NewAuthorDraft[]>([]);
   const [editedCategories, setEditedCategories] = useState<NewCategoryDraft[]>([]);
 
@@ -166,8 +165,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     originalSlugs: Partial<Record<Locale, string>>;
   } | null>(null);
 
-  /** Last successful localStorage snapshot — drives the tiny "saved" tick
-   *  in the stats row so authors trust the crash protection. */
+  /** Last localStorage snapshot, for the "saved" tick in the stats row. */
   const [lastAutosave, setLastAutosave] = useState<Date | null>(null);
   // Debounced crash-protection snapshot. Anything typed lands in
   // localStorage within a second; an empty editor clears the slot instead so
@@ -387,15 +385,8 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
   };
 
   /**
-   * Open the post named in `?post=<translationKey>`.
-   *
-   * This is what makes the park and ride editors able to link into the blog:
-   * their "Beiträge" panel lists what the blog says about the thing being
-   * curated, and a list you cannot click through from is a list you read once.
-   *
-   * Runs after mount and only once — the parameter is a starting point, not
-   * state. Re-reading it would fight the picker every time somebody loaded a
-   * different post without changing the URL.
+   * Opens the post named in `?post=<translationKey>`, so the park and ride editors can link into
+   * the blog. Runs once after mount: the parameter is a starting point, not state.
    */
   const deepLinkHandled = useRef(false);
   useEffect(() => {
@@ -403,9 +394,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     const key = new URLSearchParams(window.location.search).get('post');
     if (!key) return;
     deepLinkHandled.current = true;
-    // Deferred a tick, like the draft-restore effect above: `onLoadPost` sets
-    // state, and React 19 flags a synchronous setState inside an effect as a
-    // cascading-render hazard.
+    // Deferred a tick: `onLoadPost` sets state.
     const timer = setTimeout(() => void onLoadPost(key), 0);
     return () => clearTimeout(timer);
     // `onLoadPost` closes over setters only, so a one-shot is safe here.

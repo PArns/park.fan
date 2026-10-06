@@ -22,20 +22,16 @@ interface PlannerShowPickerProps {
 }
 
 /** The key `planned` is built from, so the caller and the list agree on what "taken" means. */
-export function showLineKey(slug: string, minute: number): string {
+function showLineKey(slug: string, minute: number): string {
   return `${slug}@${minute}`;
 }
 
 /**
- * Files one performance of one of the day's shows into the plan.
- *
- * It sits beside the free block's button and asks the same question, "what else
- * goes in the day", but its answer comes from the day's own showtimes and not
- * from a text field. A projection is listed with a `~` and the word the show band
- * uses, never as if the operator had published it. The entry it creates is bound
- * to the performance: see {@link addShowEntry}.
+ * Files one performance of one of the day's shows into the plan, answering "what else goes in the
+ * day" from the day's own showtimes. A projection is listed with a `~` and the show band's word.
+ * The entry is bound to the performance; see {@link addShowEntry}.
  */
-export function PlannerShowPicker({ lines, planned, onPick, className }: PlannerShowPickerProps) {
+function PlannerShowPicker({ lines, planned, onPick, className }: PlannerShowPickerProps) {
   const t = useTranslations('planner');
   const [open, setOpen] = useState(false);
   if (lines.length === 0) return null;
@@ -48,8 +44,7 @@ export function PlannerShowPicker({ lines, planned, onPick, className }: Planner
           data-planner-add-show=""
           className={cn(
             'text-muted-foreground hover:text-foreground hover:bg-accent/50 flex h-8 shrink-0 items-center gap-2 rounded-md px-2 text-left text-xs transition-colors',
-            // 32 px drawn, 44 px to the finger on a phone, like „Eigener Block" beside it
-            // (`check:planner`: every target in the sheet is 44 px high).
+            // 32 px drawn, 44 px to a finger on a phone, like „Eigener Block" beside it.
             PHONE_TARGET_32,
             className
           )}

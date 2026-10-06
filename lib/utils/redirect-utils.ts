@@ -1,12 +1,6 @@
 /**
- * Redirect utilities for handling malformed URLs
- *
- * These utilities help redirect old/malformed URLs to their correct counterparts.
- * Common issues include:
- * - Missing city segment: /parks/continent/country/park-slug (should have city)
- * - Attraction in park position: /parks/continent/country/park-slug/attraction-slug
- *   where park-slug is actually in the city position
- * - Stale geo segments after an API re-slug (bruhl → bruehl, marne-la-vallee → paris)
+ * Redirects for malformed or stale park URLs: a missing city segment (a park slug where the city
+ * goes), and geo segments that went stale after an API re-slug (`bruhl` → `bruehl`).
  */
 
 import { cache } from 'react';
@@ -15,20 +9,11 @@ import type { Continent } from '@/lib/api/types';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 
 /**
- * O(1) park-slug → geo-path index for redirect lookups. Built once per continents document
- * (`perContinentsDocument`), which the Data Cache holds for a week or until the `geo` tag drops
- * it, and falls back to the last document this process read when the fetch fails. Used only for
- * malformed-URL redirect detection, never to serve a valid park.
- *
- * Built from `getContinents()`, like {@link getCityParkCounts}, not from `getGeoStructure()`. The
- * two endpoints carry the same tree — compared on 2026-09-28: the same 210
- * continent/country/city/park paths in the same order, same 7-day window, same `geo` tag — but
- * the layout has already parsed the continents one for the header menu, while `/v1/discovery/geo`
- * was a second 159 KB body fetched and parsed on every park, calendar and stats render for this
- * lookup alone.
- *
- * Values are LISTS: park slugs are not globally unique (e.g. `disneyland-park` exists in both
- * Paris and Anaheim), so callers must disambiguate by continent/country before redirecting.
+ * Park-slug → geo-path index for redirect lookups, built once per continents document and falling
+ * back to the last good one. Only for malformed-URL redirects, never to serve a valid park. Read
+ * from `getContinents()`, which the layout has already parsed for the header menu, rather than a
+ * second geo body. Values are lists: slugs are not unique (`disneyland-park` in Paris and
+ * Anaheim), so callers disambiguate by continent and country.
  */
 const getParkSlugIndex = cache(async (): Promise<Record<string, ParkLookupResult[]>> => {
   try {
@@ -58,6 +43,7 @@ const buildParkSlugIndex = perContinentsDocument((continents: Continent[]) => {
   return index;
 });
 
+/** Where a park slug lives in the geo tree. */
 export interface ParkLookupResult {
   continent: string;
   country: string;
@@ -66,9 +52,8 @@ export interface ParkLookupResult {
 }
 
 /**
- * Parks per city, keyed `continent/country/city`, built once per document like the park-slug
- * index above. Read from `getContinents()` rather than `getGeoStructure()`: the layout reads that
- * one on every page for the header menu, so on these routes the tree is already in memory.
+ * Parks per city, keyed `continent/country/city`, built once per continents document like the
+ * park-slug index.
  */
 const getCityParkCounts = cache(async (): Promise<Map<string, number>> => {
   try {
@@ -92,14 +77,9 @@ const buildCityParkCounts = perContinentsDocument((continents: Continent[]) => {
 });
 
 /**
- * Whether a city answers with a page of its own rather than a 308 to its only park. It is the
- * rule `app/[locale]/parks/[continent]/[country]/[city]/page.tsx` redirects by and `app/sitemap.ts`
- * lists by: `city.parks.length > 1`.
- *
- * Breadcrumbs ask this before they link a city. 103 of the 144 cities hold a single park
- * (2026-09-24), so an unconditional city crumb sent every park, ride, calendar and stats page of
- * those 103 parks to a redirect, in the visible trail and in its BreadcrumbList JSON-LD. A city
- * the snapshot does not know keeps its crumb, which is what every page did before.
+ * Whether a city answers with a page of its own rather than a 308 to its only park: the rule the
+ * city route redirects by and the sitemap lists by (`city.parks.length > 1`). Breadcrumbs ask this
+ * so a single-park city's crumb does not link to a redirect. An unknown city keeps its crumb.
  */
 export const cityHasOwnPage = cache(
   async (continent: string, country: string, citySlug: string): Promise<boolean> => {
@@ -108,33 +88,23 @@ export const cityHasOwnPage = cache(
   }
 );
 
-/**
- * Find all locations a park slug exists at — O(1) via index.
- * Usually one entry; duplicates happen (disneyland-park: Paris + Anaheim).
- */
-export async function findParkLocationsBySlug(parkSlug: string): Promise<ParkLookupResult[]> {
+/** Every location a park slug exists at: usually one, sometimes more (`disneyland-park`). */
+async function findParkLocationsBySlug(parkSlug: string): Promise<ParkLookupResult[]> {
   const index = await getParkSlugIndex();
   return index[parkSlug] ?? [];
 }
 
 /**
- * Try to find a redirect for a malformed city page URL
- *
- * Pattern: /parks/{continent}/{country}/{maybePark}
- * If {maybePark} is actually a park slug, we need to find the city
- *
- * @returns The correct URL or null if no redirect found
+ * The real URL for a city-page URL whose city segment is a park slug
+ * (`/parks/{continent}/{country}/{parkSlug}`), or null.
  */
 export const findCityPageRedirect = cache(
   async (continent: string, country: string, citySlug: string): Promise<string | null> => {
-    // Check if the "citySlug" is actually a park within this continent/country
     const park = (await findParkLocationsBySlug(citySlug)).find(
       (p) => p.continent === continent && p.country === country
     );
 
     if (park) {
-      // Found! The "city" segment is actually a park slug
-      // Return the correct URL with the real city
       return `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}`;
     }
 
@@ -143,57 +113,26 @@ export const findCityPageRedirect = cache(
 );
 
 /**
- * Try to find a redirect for a malformed park page URL
- *
- * Pattern: /parks/{continent}/{country}/{maybeParkAsCity}/{maybeAttractionAsPark}
- * If {maybeParkAsCity} is actually a park and {maybeAttractionAsPark} is an attraction
- *
- * @returns The correct URL or null if no redirect found
+ * Redirect for a park-page URL whose city segment holds a park slug: the same lookup as
+ * {@link findCityPageRedirect}. The park segment is not read: the discovery data lists no
+ * attractions to check it against.
  */
-export const findParkPageRedirect = cache(
-  async (
-    continent: string,
-    country: string,
-    citySlug: string,
-    _parkSlug: string
-  ): Promise<string | null> => {
-    // Check if the "citySlug" is actually a park slug within this continent/country
-    const park = (await findParkLocationsBySlug(citySlug)).find(
-      (p) => p.continent === continent && p.country === country
-    );
-
-    if (park) {
-      // The "city" is actually a park — redirect to the park page at least.
-      // We can no longer check if parkSlug is an attraction (removed from discovery endpoint).
-      return `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}`;
-    }
-
-    return null;
-  }
-);
+export function findParkPageRedirect(
+  continent: string,
+  country: string,
+  citySlug: string,
+  _parkSlug: string
+): Promise<string | null> {
+  return findCityPageRedirect(continent, country, citySlug);
+}
 
 /**
- * Try to find a redirect for a park URL whose geo segments went stale.
+ * The canonical URL for a park whose geo segments went stale (a re-slugged or moved city), keyed
+ * by the stable park slug, or null. Duplicate slugs prefer the requested continent and country,
+ * then continent; otherwise no redirect rather than a cross-continent bounce.
  *
- * The park slug is the stable key: when the API re-slugs a city (e.g. the
- * umlaut transliteration change `bruhl` → `bruehl`, `gunzburg` → `guenzburg`)
- * or moves a park to another city (`marne-la-vallee` → `paris`), URLs indexed
- * by Google keep the old segments and would 404. If the requested park slug
- * exists in the geo structure under a different continent/country/city, return
- * its canonical path so callers can issue a permanent redirect.
- *
- * Duplicate slugs (disneyland-park: Paris + Anaheim) are disambiguated by
- * preferring a location in the requested continent+country, then continent;
- * an ambiguous slug with no continent match yields no redirect rather than
- * risking a cross-continent bounce.
- *
- * IMPORTANT: only call this AFTER the API lookup for the requested path has
- * failed. The geo-structure snapshot is cached for days — if it lagged behind
- * a re-slug, calling this on the happy path could bounce a working new URL
- * back to a stale one. After a confirmed miss it can only improve on a 404.
- *
- * @returns The canonical park URL or null if the slug is unknown, ambiguous or
- *          already at the requested path
+ * Call it only AFTER the API lookup for the requested path failed: the snapshot is cached for
+ * days, and on the happy path a lagging snapshot could bounce a working new URL to a stale one.
  */
 export const findRelocatedParkRedirect = cache(
   async (
@@ -222,37 +161,10 @@ export const findRelocatedParkRedirect = cache(
 );
 
 /**
- * Try to find a redirect for a malformed attraction page URL
- *
- * Pattern: /parks/{continent}/{country}/{city}/{park}/{attraction}
- * Various malformed patterns possible
- *
- * @returns The correct URL or null if no redirect found
- */
-// findAttractionPageRedirect removed: attraction data is no longer available
-// from discovery endpoints. Attraction redirect lookups are no longer supported.
-// Attraction URLs under a relocated park are healed via findRelocatedParkRedirect
-// (the attraction page re-appends its own slug to the corrected park path).
-
-/**
- * Canonical park path for a park the API DID return, when it differs from the path that was
- * requested.
- *
- * Upstream renames regenerate a park's slug ("Attractiepark Toverland" → "Toverland",
- * "Magic Kingdom Park" → "Disney Magic Kingdom"). The API records the old path and answers it
- * with a 301, but `fetch` follows redirects transparently — so the park comes back happily
- * under a request for the OLD path and we would render it there. That means two URLs serving
- * the same park, the stale one staying canonical, and none of the redirect's ranking transfer
- * actually reaching the browser or Googlebot.
- *
- * `findRelocatedParkRedirect` can't cover this: it matches on the park slug, which is exactly
- * what changed. This compares the park's own `url` (always the current canonical path) against
- * what was asked for, so it heals slug renames AND geo re-slugs in one check.
- *
- * Cheap and synchronous — no extra fetch, the park is already in hand.
- *
- * @returns The canonical park path, or null when the requested path is already canonical
- *          (or the API gave us no usable `url`).
+ * Canonical park path for a park the API DID return, when it differs from the requested path, or
+ * null. The API answers a renamed park's old path with a 301 that `fetch` follows silently, so
+ * without this the park would render under the stale URL too. Compares the park's own `url`, so it
+ * covers slug renames, which {@link findRelocatedParkRedirect} cannot see, and geo re-slugs.
  */
 export function findRenamedParkRedirect(
   park: { url?: string | null },
@@ -261,7 +173,7 @@ export function findRenamedParkRedirect(
   if (!park.url) return null;
 
   const canonical = convertApiUrlToFrontendUrl(park.url);
-  // convertApiUrlToFrontendUrl yields '#' when it can't parse the URL — never redirect on that.
+  // `'#'` means the URL could not be parsed; never redirect on that.
   if (!canonical.startsWith('/parks/')) return null;
 
   const requestedPath = `/parks/${requested.continent}/${requested.country}/${requested.city}/${requested.parkSlug}`;

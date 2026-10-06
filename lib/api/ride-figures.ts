@@ -24,14 +24,10 @@ interface FigureSource {
 }
 
 /**
- * The figures per attraction id, for the rides that have at least one.
- *
- * A figure has to be a positive number to count: a 0 km/h top speed or a 0:00 ride is a
- * placeholder, not a measurement, and the popup would print it as one. The duration is rounded
- * to whole seconds because the popup formats it as `m:ss`.
- *
- * Pure and in its own module so a node test can import it (`scripts/test-ride-figures.mjs`);
- * the route file reaches the API client and cannot be loaded that way.
+ * The figures per attraction id, for the rides that have at least one. Only a positive number
+ * counts (a 0 km/h top speed is a placeholder), and the duration is rounded to whole seconds for
+ * `m:ss`. In its own module so `scripts/test-ride-figures.mjs` can import it without the API
+ * client.
  */
 export function pickRideFigures(attractions: FigureSource[]): Record<string, RideFigures> {
   const result: Record<string, RideFigures> = {};

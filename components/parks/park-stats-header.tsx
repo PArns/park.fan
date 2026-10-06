@@ -6,14 +6,9 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Skeleton } from '@/components/ui/skeleton';
 
 /**
- * The statistics chapter's header. Its own file for the same reason
- * `ParkBestDaysHeader` has one: it carries no data — the title is a constant
- * string and only the "aus N Messtagen" line needs the payload — so the
- * loading placeholder renders this very component instead of grey boxes shaped
- * like it, so the title's height — which changes when it wraps — is reserved
- * exactly in every locale and at every breakpoint. Only the hint line is a
- * placeholder, and it holds one line where the settled subtitle can take two on
- * a phone.
+ * The statistics chapter's header. It carries no data except the subtitle, so the loading
+ * placeholder renders this same component and the title's height is reserved exactly in every
+ * locale and at every breakpoint. Only the hint line is a placeholder.
  */
 export function ParkStatsHeader({
   subtitle,
@@ -29,11 +24,9 @@ export function ParkStatsHeader({
    *  be glued to it. Skeleton and settled section must pass the same thing. */
   className?: string;
   /**
-   * A control at the far end of the title row — the link to the park's wait-time record.
-   *
-   * Only the settled section passes one. The skeleton deliberately does not: whether that page
-   * exists is the same question as whether these cards render at all, and a link drawn before the
-   * answer arrives would be a link to a 404 on 82 of 201 parks.
+   * A control at the far end of the title row: the link to the park's wait-time record. The
+   * skeleton passes none, because whether that page exists is the same question as whether these
+   * cards render, and an early link would 404 on many parks.
    */
   action?: React.ReactNode;
 }) {

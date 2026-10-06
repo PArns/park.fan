@@ -12,6 +12,10 @@ interface WaitTimeBadgeProps {
   className?: string;
 }
 
+/**
+ * Clock icon and a wait time in minutes: large and bold (`lg`) for a ride card's main figure, small
+ * and muted (`sm`) for a park's average. Shows the number as given, without rounding.
+ */
 export function WaitTimeBadge({ waitTime, size = 'sm', className }: WaitTimeBadgeProps) {
   const tCommon = useTranslations('common');
 

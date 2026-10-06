@@ -34,17 +34,14 @@ const DAY_AND_TIME: Intl.DateTimeFormatOptions = {
 
 /**
  * "As of 14:35" above the ride list, and a warning with a retry button when that is no longer
- * current (PAR-420, and the crawler's half of PAR-362).
+ * current.
  *
  * One line, one height, in every state: the warning and the button sit on the same `h-7` row the
- * time does, so a failed poll moves nothing below it. The red card that `LiveParkData` used to put
- * above the tabs on an error did, by its full height, over the whole page.
- *
- * It subscribes to the park's live query itself (same key as `LiveParkData`, so no extra fetch)
- * instead of taking the query state as props, because `TabsWithHash` is memoized precisely so the
- * attraction grid does not re-render on every `isFetching` flip; only this row does.
+ * time does, so a failed poll moves nothing below it. It subscribes to the park's live query
+ * itself (same key as `LiveParkData`, so no extra fetch) because `TabsWithHash` is memoised so the
+ * ride grid does not re-render on every `isFetching` flip; only this row does. Memoised itself for
+ * the same reason as `ParkTabsList`: its props hold still while the filters move.
  */
-/** Memoised for the same reason as `ParkTabsList`: its props hold still while the filters move. */
 export const LiveDataFreshness = memo(function LiveDataFreshness({
   park,
   todayIso,

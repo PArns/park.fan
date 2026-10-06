@@ -68,7 +68,6 @@ export async function generateMetadata({ params }: ImpressumPageProps): Promise<
 export default async function ImpressumPage({ params }: ImpressumPageProps) {
   const { locale } = await params;
 
-  // Validate locale
   if (!routing.locales.includes(locale as Locale)) {
     return null;
   }

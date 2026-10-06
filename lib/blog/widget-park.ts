@@ -30,23 +30,11 @@ export interface WidgetParkRef {
 }
 
 /**
- * Parse the park a widget fence names, in the bare form (`efteling`) or in the full-path form
- * `ref:` already takes (`/parks/europe/france/paris/disneyland-park`).
- *
- * **A bare park slug is not unique**, and exactly one collision exists in the catalogue today:
- * `disneyland-park` is Paris AND Anaheim. `parksBySlug` in the resolver is last-write-wins over
- * the geo iteration order, so Anaheim overwrites Paris — a `stats-widget slug=disneyland-park`
- * in a German post about Paris rendered Californian numbers, with no error and nothing in the
- * output to notice it by. Inline `ref:` links have been able to say which park they mean since
- * the resolver got its `geoPath` argument; the fences never learned the same form.
- *
- * Normalisation is {@link parseRefKey}'s, not a second copy of it, so a post can write one form
- * for both a link and a fence.
- *
- * `key` stays the string the post wrote. The prefetch and the render pass have to agree on what
- * they store and look up the resolved park by, and the written value is the one thing both hold —
- * keying by the normalised slug instead would also collapse Paris and Anaheim back into one entry
- * for a post that names both.
+ * Parses the park a widget fence names, bare (`efteling`) or in the full-path form `ref:` takes
+ * (`/parks/europe/france/paris/disneyland-park`), through {@link parseRefKey}. The full form is
+ * how a fence picks between the two `disneyland-park`s, since a bare slug resolves
+ * last-write-wins. `key` stays the string the post wrote: it is the one value the prefetch and
+ * the render pass both hold, and it keeps Paris and Anaheim apart in a post naming both.
  */
 export function parseWidgetParkRef(raw: string): WidgetParkRef | null {
   const key = raw.trim();

@@ -4,15 +4,9 @@ import { HeroBubbleRow } from '@/components/home/hero-bubble-row';
 import { cn } from '@/lib/utils';
 
 /**
- * Placeholders for the hero's three client-loaded surfaces.
- *
- * They exist for one reason: everything live in the hero (open-park count, nearby pills, the
- * world panel) resolves at its own pace after load, and rendering nothing until each one lands
- * made the hero assemble itself piece by piece in front of the visitor. A skeleton in **exactly
- * the final box** replaces that with one settled layout — and, because the box never changes
- * size, contributes nothing to CLS.
- *
- * So: if you change a height here, change it in the real component too.
+ * Placeholders for the hero's three client-loaded surfaces, each in exactly the final box, so the
+ * hero settles in one layout instead of assembling itself. Change a height here and in the real
+ * component together.
  */
 
 /** Stand-in for the nearby-park pill row — same {@link HeroBubbleRow} box as the real one. */
@@ -28,17 +22,13 @@ export function HeroBubblesSkeleton({ className }: { className?: string }) {
 }
 
 /**
- * Stand-in for the world-map panel (same 540px box, same surface).
- *
- * Through {@link GlassCard}, not a copy of its classes: the first version hand-rolled the glass
- * and had already drifted from the real panel's light-mode opacity, so the swap popped.
+ * Stand-in for the world-map panel, through {@link GlassCard} rather than a copy of its classes,
+ * so the surface cannot drift from the real panel's.
  */
 export function HeroWorldPanelSkeleton() {
   return (
-    // No `h-[540px]`: the real panel has no fixed height, it is as tall as its header, map
-    // and country chips make it. A hard number here was 1.2px off and would drift further
-    // with any change to the card — so the placeholder mirrors the same rows instead and
-    // computes the same height.
+    // No fixed height: the real panel is as tall as its header, map and chips make it, so this
+    // mirrors the same rows.
     <GlassCard
       variant="heavy"
       className="border-border/50 overflow-hidden rounded-2xl p-0 shadow-2xl"
@@ -52,11 +42,8 @@ export function HeroWorldPanelSkeleton() {
         </div>
         <Skeleton className="h-8 w-24" />
       </div>
-      {/* The real map is a full-width <svg> with viewBox "0 0 2000 857", so its height is
-          the panel width over that ratio — not a fixed number. A `h-[232px]` box happened to
-          match one viewport width and was wrong at every other, which moved the country chips
-          under it when the map mounted. `aspect-[2000/857]` tracks the svg at any width; the
-          margins go too, because the real map sits flush in its own tinted band. */}
+      {/* The real map is a full-width <svg> with viewBox "0 0 2000 857", so `aspect-[2000/857]`
+          tracks its height at any width. No margins: the map sits flush in its tinted band. */}
       <div className="bg-muted/20 relative">
         <Skeleton className="aspect-[2000/857] w-full rounded-none" />
       </div>

@@ -12,91 +12,28 @@ import { RideStatusBlock, rideStatusFooterClass, useWeekdayTime } from './ride-s
  * "Störung gemeldet seit …" — the one sentence this site says about a ride that
  * is down right now, and the block that carries it.
  *
- * It repeats in the present what the park's own feed is saying, which is what
- * makes it the only downtime figure that needs no methodology page, no event
- * floor and no exposure model. Everything historical is a claim about a company
- * and waits for those.
+ * It repeats in the present what the park's own feed is saying, so it needs no methodology page;
+ * everything historical is a claim about a company and waits for one.
  *
- * ## Why it names the weekday even when the outage started today
+ * It names the weekday even for an outage that started today: a shorter form would have to be
+ * chosen against the park's current day, which exists only after mount (`useMinuteNow` is `null`
+ * during SSR and hydration), and a text swap in a subgrid row shared across a row of cards is
+ * banned here. The query looks back seven days, so a weekday is unambiguous.
  *
- * Because the alternative is a text swap after hydration, and that is banned
- * here. A shorter "seit 14:20 Uhr" form would have to be chosen by comparing the
- * start against the park's current day, and "the park's current day" is not
- * available identically on both sides of hydration: the shared clock
- * (`useMinuteNow`) deliberately returns `null` during SSR and the hydration
- * render so the markup matches, which means the short form could only appear
- * after mount. The two strings are different widths in all six languages, they
- * sit in a subgrid whose row heights are shared across a whole row of cards, and
- * on a phone the longer one wraps. So the rule is now-independent: the weekday
- * and the clock time both come from `startedAt` alone, and the sentence renders
- * identically whenever it is rendered.
+ * The elapsed clause is the API's `estimate.elapsedMinutes`, never `now - startedAt`: the
+ * change log's hourly heartbeat carries a DOWN forward, so wall minutes would overstate exactly
+ * the long outages. It counts the park's operating clock, which is why the clause says so, and a
+ * stale figure from the cached server render is always short of the truth until the first poll
+ * refreshes `outage`. Both guards live in `outageElapsedMinutes`.
  *
- * Seven days is why a weekday is unambiguous — the query looks back no further,
- * and anything older comes back with `startObserved: false`.
+ * Two signals, two sentences: a DOWN from the park's feed attributes the report („Störung
+ * gemeldet seit …"); an outage inferred from a closure inside opening hours does not („Steht seit
+ * … still"). Both get the same block in the DOWN badge's orange, with the estimate
+ * (`OutageEstimateNote`) under it, so the sentence alone carries who noticed. The text keeps the
+ * surface's own colours, since `--status-down` as small text is under 3:1.
  *
- * ## The elapsed clause is measured, never counted
- *
- * „Seit Dienstag, 16:04" leaves the subtraction to the reader, and on a Thursday
- * that is a sum nobody does standing in front of a ride. The duration beside it
- * is the API's own `estimate.elapsedMinutes` and **not** `now - startedAt`:
- * `queue_data` is a change log whose hourly heartbeat copies the previous row's
- * status AND its `data_source` forward, so a carried DOWN is indistinguishable
- * from an observed one, and wall minutes derived from it would be wrong upward
- * exactly on the long outages — the ones anybody would quote.
- *
- * What the API sends instead is counted on the park's **operating** clock, which
- * is why the clause names it („3:00 Std. bei offenem Park"): an outage that
- * began at 18:00 in a park that shut at 20:00 is two hours old the next morning,
- * not sixteen, and the recovery figures under it are conditioned on that same
- * number. Both guards live in `outageElapsedMinutes` — no estimate means no
- * opening clock to count on, and an unobserved start makes every duration a
- * lower bound rather than a measurement.
- *
- * It is a measurement taken at the moment the payload was written, which is not
- * the same as one taken now: `startedAt` is an instant and does not decay, this
- * does. The park page's server render comes from a fetch cached for a day, so a
- * first paint can carry a figure hours behind the clock — the same staleness
- * the „gemeldet seit" line beside it has always had, and healed by the same
- * first poll (`mergeLiveParkSnapshot` refreshes the whole `outage` key), or by
- * the detail fetch on the ride page. It survives only for a reader with no
- * JavaScript. What makes that tolerable is the direction: operating minutes are
- * a subset of wall minutes, so a stale figure is always SHORT of the truth. The
- * page can understate how long a ride has been broken; it cannot accuse an
- * operator of a longer breakdown than was measured.
- *
- * ## Two signals, two sentences
- *
- * Where a park's feed emits DOWN, this says „Störung gemeldet seit …" and
- * attributes the report. Where it never does — 102 of 182 scheduled parks,
- * Phantasialand among them — the outage is inferred from a closure inside
- * opening hours, and the sentence drops the attribution: „Steht seit … still."
- * We noticed it; nobody told us.
- *
- * ## One block, in the outage colour, whichever signal placed it
- *
- * The sentence, the elapsed clause and the „wie lange noch" estimate
- * (`OutageEstimateNote`) sit in one tinted box with a solid icon chip, on the
- * ride card and in the ride page's live panel alike. As three loose grey lines
- * they read as small print under the badges, and on a card they wrapped at the
- * 92 px the corner circles reserve.
- *
- * Both signals get the same block: the DOWN badge's orange and its warning
- * triangle. A `closed_gap` sits under a red CLOSED badge, and it was drawn in
- * that red with a pause glyph at first; it looked like a different component
- * next to the orange ones and was turned down in review. The difference between
- * the two signals is a claim about who noticed, and the sentence carries it
- * („gemeldet" or not). The chip is the DOWN badge's own fill
- * (`--badge-status-down`), solid, with a white glyph like the badge's white
- * label. The text stays on the surface's own text colours: `--status-down` as
- * small text is 2.65 : 1 on a light surface, see `OutageEstimateNote`.
- *
- * ## data-nosnippet
- *
- * On the block's `<div>`, which is one of the three elements Google honours it
- * on. A result answering "Taron Wartezeit" with "Störung gemeldet seit Sonntag"
- * is a result nobody clicks, and the sentence is true for as long as it is on
- * the page and false the moment the ride restarts. Same reasoning as the
- * no-wait-times notice.
+ * `data-nosnippet` on the block's `<div>`: the sentence is false the moment the ride restarts.
+ * See docs/rules/parks-we-cannot-read.md.
  */
 export function OutageNote({
   outage,
@@ -125,20 +62,10 @@ export function OutageNote({
   // An unreadable start is a start we do not know, which is a sentence of its own.
   const when = outage.startObserved ? weekdayTime(outage.startedAt) : null;
 
-  // The two signals get different sentences, and the difference is not
-  // cosmetic. A `down` was reported by the park's own feed; a `closed_gap` is
-  // our reading of a ride that shut inside opening hours and did not shut with
-  // the rest of the park. Nobody reported the second one, so it may not say
-  // „gemeldet" — see `AttractionOutage.signal`.
-  // Anything that is not exactly the reported signal is treated as inferred.
-  //
-  // The safe default has to be the WEAKER claim. `signal` is a compile-time
-  // union with no runtime validation on the fetch path, and these two repos
-  // deploy independently — so a third signal, or a version-skew window where
-  // the API ships a new value before this build does, would have fallen through
-  // to „Störung gemeldet seit …" and attributed a report to the operator's own
-  // feed. That is the one claim this whole two-signal discipline exists to
-  // prevent for anything nobody actually reported.
+  // A `down` was reported by the park's own feed; a `closed_gap` is our reading, so it may not
+  // say „gemeldet" (see `AttractionOutage.signal`). Anything that is not exactly `down` counts as
+  // inferred: `signal` is not validated at runtime and the API deploys on its own, so an unknown
+  // value must fall to the WEAKER claim.
   const inferred = outage.signal !== 'down';
   const label =
     when !== null

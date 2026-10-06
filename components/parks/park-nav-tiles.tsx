@@ -22,22 +22,10 @@ import { suppressScrollToTopFor } from '@/lib/navigation/history-navigation';
 import { cn } from '@/lib/utils';
 
 /**
- * The same entry-tile row, on a park SUB-page — where every cell is a link.
- *
- * The crowd calendar left the park page's tabs and became its own URL, and it arrived there
- * without the row: a visitor who followed the calendar cell landed on a page with a heading, a
- * grid and one "back" link, and every other chapter of the park — the ride list, the map, the
- * shows — was two clicks away again. The row is the park's navigation, so it belongs on every
- * page of the park, not only on the one that happens to own the tab panels.
- *
- * The chapter cells link to the park page with the chapter's hash, which its tab router already
- * reads on arrival and on `hashchange`; the calendar and the wait-time record link to their own
- * pages. The cell for the page you are on carries `aria-current="page"` and the same treatment a
- * selected tab gets. Nothing here is a `TabsTrigger`, because there is no `Tabs` on this page to
- * switch — a trigger without a panel would be a button that does nothing.
- *
- * Same `useParkTileItems` as `ParkTabsList`, so both rows show the same cells with the same live
- * hints and the same order. Walking park → calendar → park has to feel like one site.
+ * The same entry-tile row on a park sub-page, where every cell is a link: chapter cells link to the
+ * park page with the chapter's hash, which its tab router reads, and the calendar and the wait-time
+ * record link to their own pages. No `TabsTrigger`, since there is no `Tabs` here to switch. Same
+ * `useParkTileItems` as `ParkTabsList`, so both rows show the same cells, hints and order.
  */
 export function ParkNavTiles({
   current,
@@ -50,19 +38,9 @@ export function ParkNavTiles({
   const locale = useLocale();
   const { continent, country, city, parkSlug } = source;
   /**
-   * The same live park the tab row on the park page reads, through the same query key.
-   *
-   * This row used to hand `useParkTileItems` the server-rendered snapshot it was given, and the
-   * doc below already claimed both rows show „the same six cells with the same live hints". They
-   * did not. The park page wraps its row in `LiveParkData`, so a gap in the server payload is
-   * refilled a moment later; here nothing refilled anything, and a park payload that arrived
-   * without `analytics` left „Attraktionen 40" with an empty hint — for as long as the data cache
-   * held that entry, which is a day. Reproduced on production while the same page rendered the
-   * hint locally, with the tile code identical on both sides: not a code difference, a data one,
-   * and a row that cannot recover from it.
-   *
-   * Costs no request: `ParkTodayPanel` sits in the same card and already runs this query, so React
-   * Query serves both from one fetch (`['park-live', …]`).
+   * The same live park the park page's tab row reads, through the same query key, so a server
+   * payload that arrived without `analytics` is refilled here too. Costs no request:
+   * `ParkTodayPanel` in the same card already runs this query (`['park-live', …]`).
    */
   const { data: livePark } = useLiveParkData({
     continent,
@@ -79,9 +57,8 @@ export function ParkNavTiles({
       {items.map((item, index) => {
         const span = phoneLastCellSpan(index, tileCount);
         const isCurrent = item.key === current;
-        // Two of the cells are pages of their own; the rest are chapters of the park page, whose
-        // tab router activates one from the hash on arrival, so the link lands on the right tab
-        // without any extra plumbing.
+        // Two cells are pages of their own; the rest are chapters of the park page, whose tab
+        // router activates one from the hash on arrival.
         const href =
           item.key === 'calendar'
             ? parkCalendarPath(locale, continent, country, city, parkSlug)
@@ -99,10 +76,8 @@ export function ParkNavTiles({
           />
         );
 
-        // The current cell is a `<span>`, not a link to itself. `aria-current` on an anchor that
-        // points at the page it is on is the one case where the link is noise for everybody: a
-        // pointer gets a target that does nothing and a screen reader gets a link it has already
-        // followed.
+        // The current cell is a `<span>`: a link to the page it is on gives a pointer a target that
+        // does nothing and a screen reader a link it has already followed.
         return isCurrent ? (
           <span
             key={item.key}
@@ -117,17 +92,14 @@ export function ParkNavTiles({
             key={item.key}
             href={href}
             className={cn('group', item.order, tileCell, span)}
-            // Every cell here leaves the page, and the row is on the page it leads to as well —
-            // so none of them may go to the top. The recorded offset then puts the row back on
-            // the pixel. `getPathname` because `ScrollToTop` compares against
-            // `window.location.pathname`, which carries the locale prefix. See
-            // `useTileRowAnchor`.
+            // Every cell leaves the page, and the row is on the page it leads to as well, so none
+            // may go to the top; the recorded offset puts the row back on the pixel
+            // (`useTileRowAnchor`). `getPathname` because `ScrollToTop` compares against
+            // `window.location.pathname`, which carries the locale prefix.
             scroll={false}
             onClick={(e) => {
               rememberTileRow(e.currentTarget, parkSlug);
-              // Without the hash: the flag is matched against `window.location.pathname`, which
-              // never carries one. (A hash link is already exempt from `ScrollToTop` — this is
-              // for the calendar cell, which has none.)
+              // Without the hash: `window.location.pathname` never carries one.
               suppressScrollToTopFor(getPathname({ href, locale }).split('#')[0]);
             }}
           >

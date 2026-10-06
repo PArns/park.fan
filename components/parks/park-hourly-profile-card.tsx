@@ -6,11 +6,13 @@ import { Clock } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
 import { CROWD_TEXT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { useParkHourlyProfile } from '@/lib/hooks/use-park-hourly-profile';
 import { hasReadableHourlyProfile } from '@/lib/parks/park-stats-derive';
 import type { ParkHourlyProfile } from '@/lib/api/types';
 
+/** The card's translated strings, passed in by the caller. */
 export interface HourlyProfileLabels {
   title: string;
   /** Header over the ride column. */
@@ -45,28 +47,20 @@ interface ParkHourlyProfileCardProps {
 }
 
 /**
- * Hour columns a skeleton reserves. The row count is `topN` itself — the guide page and the
- * `hourly-profile-widget` fence both ask for six, and a fixed eight collapsed ~44 px under
- * everything below the card when the data landed. `measure:cls --late` cannot see that one: it is
- * a client-query swap, not a streamed-tail resolve.
+ * Hour columns a skeleton reserves. The row count is `topN` itself, since a fixed count left the
+ * card short under everything below it. `measure:cls --late` cannot see this one: it is a
+ * client-query swap, not a streamed-tail resolve.
  */
 const SKELETON_HOURS = 10;
 
 /**
- * The park's day shape as a matrix: one row per ride, one column per hour it is open.
+ * The park's day shape as a matrix: one row per ride, one column per open hour. Readers ask when to
+ * walk to a ride, not how long its queue is, so each row's peak is marked and the rows are ranked
+ * by their busiest hour.
  *
- * This replaced a hand-typed 8 × 10 markdown table in the Europa-Park post — eighty numbers, in
- * six languages, that nothing could bring forward. It is the one table on the site where the
- * ANSWER is a position rather than a value: readers come to it asking when to walk to Voletarium,
- * not how long its queue is, which is why each row's own peak is marked and why the rows are
- * ranked by their busiest hour rather than by their daily average.
- *
- * Colour is the app-wide wait-time scale (`waitTimeCrowdTier`), so 30 minutes is the same colour
- * here as on a ride card. A per-row relative scale would read better in isolation and would make
- * a quiet ride's afternoon look like a headliner's — the two claims must not share a colour.
- *
- * Both axes come from the payload. A park that opens at 11 starts at 11; nothing here assumes a
- * nine-to-six day.
+ * Colour is the app-wide wait-time scale (`waitTimeCrowdTier`), so 30 minutes looks the same here
+ * as on a ride card; a per-row scale would give a quiet ride's afternoon a headliner's colour. Both
+ * axes come from the payload, so nothing assumes a nine-to-six day.
  */
 export function ParkHourlyProfileCard({
   continent,
@@ -93,7 +87,7 @@ export function ParkHourlyProfileCard({
 
   // Hour headers through Intl rather than a translated list: "9 Uhr" / "9 a.m." / "ore 9" are the
   // runtime's job, and the weekday names on the comparison table are already sourced this way.
-  const hourFormat = new Intl.DateTimeFormat(locale, { hour: 'numeric' });
+  const hourFormat = getDateTimeFormat(locale, { hour: 'numeric', timeZone: 'UTC' });
   const hourLabel = (h: number) => hourFormat.format(new Date(Date.UTC(2023, 0, 1, h)));
 
   if (isPending && !initialProfile) {
@@ -103,10 +97,8 @@ export function ParkHourlyProfileCard({
           <Clock className="text-primary h-4 w-4" aria-hidden="true" />
           {labels.title}
         </h3>
-        {/* The table's own rows, measured: a 28 px header over its 1 px rule, then 32 px per ride
-            (`py-1.5` around a `text-sm` line). The grey bars used to sit 22 px apart, and the
-            card grew 135 px on a phone when the query landed, under a reader of the guide's
-            chapters further down (PAR-683). */}
+        {/* The table's own rows: a 28 px header over its 1 px rule, then 32 px per ride (`py-1.5`
+            around a `text-sm` line), so the card does not grow when the query lands. */}
         <div>
           <div className="border-border/40 flex h-[29px] items-center gap-2 border-b">
             <Skeleton className="h-3 w-16 shrink-0" />
@@ -136,12 +128,9 @@ export function ParkHourlyProfileCard({
     );
   }
 
-  // Nothing to draw: too few measured days, or the park's hours are so ragged that no single hour
-  // was measured often enough to be a column. Rendering an empty grid would claim the park has no
-  // queues rather than that we cannot describe its day.
-  //
-  // The predicate is shared rather than written here, because the wait-time record's chapter
-  // heading and its method paragraph have to draw exactly when this table does.
+  // Nothing to draw: too few measured days, or hours too ragged for any hour to be a column. An
+  // empty grid would claim the park has no queues. The predicate is shared, because the wait-time
+  // record's heading and method paragraph must draw exactly when this table does.
   if (!hasReadableHourlyProfile(profile)) return null;
 
   return (
@@ -150,13 +139,10 @@ export function ParkHourlyProfileCard({
         <Clock className="text-primary h-4 w-4" aria-hidden="true" />
         {labels.title}
       </h3>
-      {/* A ten-hour matrix does not fit a phone at a readable size, and shrinking the type is
-          worse than scrolling it. The ride column stays put so a scrolled row keeps its subject.
-          `relative` is what keeps the scrolling inside this box: the hour headers carry an
-          `sr-only` label, `sr-only` is `position: absolute`, and an absolute box is clipped by the
-          nearest POSITIONED ancestor — without one here it resolved against something outside the
-          scroller, so the header of the last column, 178 px past the right edge of a phone, became
-          138 px of horizontal scroll on the whole document. */}
+      {/* A ten-hour matrix does not fit a phone at a readable size, so it scrolls, with the ride
+          column fixed. `relative` keeps the scrolling inside this box: the hour headers' `sr-only`
+          labels are `position: absolute`, and without a positioned ancestor here they widened the
+          whole document. */}
       <div className="relative -mx-1 overflow-x-auto px-1">
         <table className="w-full border-collapse text-sm">
           <thead>
@@ -172,13 +158,11 @@ export function ParkHourlyProfileCard({
                   key={h}
                   scope="col"
                   className="text-muted-foreground/70 px-1.5 py-1.5 text-right text-xs font-medium whitespace-nowrap"
-                  /* The two runtimes do not agree on this string, so the server's answer is kept
-                     rather than hydrated over. `hour: 'numeric'` for `it` pads to two digits in
-                     Chromium's CLDR and does not in Node's (measured on the same UTC input, same
-                     zone: node 22 / ICU 78.2 says "8", the browser says "08"); every other locale
-                     we ship matches. It only shows below 10, so it stayed invisible until a park
-                     that opens at 08:00 was asked for in Italian, where it threw a hydration
-                     error and had React regenerate the whole table on the client. */
+                  /*
+                   * Node's and Chromium's ICU disagree here: `hour: 'numeric'` for `it` pads to two
+                   * digits in the browser („08") and not in Node („8"), so the server's answer is
+                   * kept rather than hydrated over.
+                   */
                   suppressHydrationWarning
                 >
                   <span className="sr-only">{labels.hour} </span>
@@ -213,12 +197,10 @@ export function ParkHourlyProfileCard({
                       key={h}
                       className={cn(
                         'px-1.5 py-1.5 text-right tabular-nums',
-                        // Not "no queue" but "not watched" — a zero here would be a claim about
-                        // the ride rather than about the measurements.
-                        //
-                        // Tier off the RAW value: the boundaries sit at 5/15/30/40/60, so a p50 of
-                        // 41.5 rounded to 40 first would drop from "very high" to "high" and the
-                        // colour would follow the display rounding instead of the measurement.
+                        // Not "no queue" but "not watched": a zero would be a claim about the ride,
+                        // not about the measurements. The tier comes off the raw value, so the
+                        // colour follows the measurement and not the display rounding (41.5 is
+                        // "very high", 40 is "high").
                         raw == null
                           ? 'text-muted-foreground/30'
                           : CROWD_TEXT_CLASS[waitTimeCrowdTier(raw)],
@@ -239,7 +221,7 @@ export function ParkHourlyProfileCard({
         {labels.peakNote}{' '}
         {labels.footnote.replace(
           '{days}',
-          new Intl.NumberFormat(locale).format(profile.meta.totalSampleDays)
+          getNumberFormat(locale).format(profile.meta.totalSampleDays)
         )}
       </p>
     </GlassCard>

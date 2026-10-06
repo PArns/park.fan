@@ -45,11 +45,9 @@ interface LiveParkDataProps {
 }
 
 /**
- * Client component that wraps park data with live updates
- * - Uses initial SSR data for instant render
- * - Refreshes on window focus (when user returns to tab)
- * - Shows live indicator when data is fresh
- * - Gracefully falls back to last known state on error (the warning is <LiveDataFreshness>)
+ * The park page's live body: polls the park over the server-rendered snapshot and re-groups its
+ * rides by land for `TabsWithHash`. A failed poll keeps the last known state; the warning is
+ * <LiveDataFreshness>.
  */
 export function LiveParkData({
   initialData,
@@ -75,15 +73,11 @@ export function LiveParkData({
     initialData,
   });
 
-  // Use current data if available, otherwise fall back to initial data
   const currentPark = park || initialData;
 
-  // Re-group attractions if data has changed (memoized to avoid recalculating on every render).
-  // The land-less bucket name comes from the explicit `otherAttractionsLabel` prop, NOT from
-  // `landNames[landNames.length - 1]`: the server only sorts that label last when the park
-  // actually HAS land-less attractions. On every other park the last entry is a real land, so a
-  // ride that lost its `land` in the live poll was silently filed under (and counted towards)
-  // whichever land sorts last alphabetically.
+  // The land-less bucket name comes from `otherAttractionsLabel`, NOT from the last of
+  // `landNames`: the server only sorts that label last when the park HAS land-less rides, so
+  // otherwise a ride that lost its `land` in the poll would be filed under the last real land.
   const currentAttractionsByLand = useMemo(
     () =>
       park && park.attractions !== initialData.attractions
@@ -129,28 +123,8 @@ export function LiveParkData({
 
   return (
     <>
-      {/* A failed poll used to open a red card here, above the tabs, and every pixel of the page
-          below it moved by the card's height. It is now a warning on the "as of" line above the
-          ride list (<LiveDataFreshness>), in a row that is there in every state. */}
-      {/* The "wird aktualisiert" indicator used to sit here, in a permanently reserved `mb-4 h-4`
-          slot — 32 px of nothing between the header stack and its own navigation, on every view of
-          every park page, so that the spinner appearing on each 5-minute poll would not shift the
-          tabs. It is in <ParkTodayPanel>'s title row now, beside the park clock: that row exists
-          whether or not anything is fetching, so the indicator costs no height at all and no CLS,
-          and it sits with the live data it is about rather than above the tab bar. The panel reads
-          `isFetching` off the same query key this component polls. */}
-      {/* Just the tiles and the tab body now.
-          The <ParkStatus variant="detailed"> board that used to open this column is gone: every
-          figure on its three cards — occupancy and the vs-typical delta, today's and the live
-          crowd rating, Ø wait, peak, and open-of-total — is now in <ParkTodayPanel> up in the
-          header, and printing them a second time here is what made the page read as two answers
-          to one question. Best-days moved INTO the calendar tab, where it opens the chapter it
-          belongs to; between the header and the tabs it was a ~500px block about a future visit
-          standing in front of the way to everything else.
-          The heavy <TabsWithHash> stays rendered + hydrated EXACTLY ONCE — it used to be mounted
-          twice (a mobile copy inside ParkStatus and a `hidden sm:block` desktop copy) and
-          `display:none` does not skip hydration, which was the dominant mobile-INP source on
-          large parks like PortAventura. */}
+      {/* <TabsWithHash> is rendered and hydrated EXACTLY ONCE: a second, `display:none` copy for
+          another breakpoint would still hydrate. */}
       {/* "Near you" for a visitor standing in this park; nothing for everybody else. Its ask for
           location is the title card's `ParkLocationLine`. */}
       <ParkInParkBlock park={currentPark} />

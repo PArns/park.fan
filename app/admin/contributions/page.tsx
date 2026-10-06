@@ -18,10 +18,19 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { useAdmin, useAdminFetch } from '../_lib/admin-context';
-import { EmptyPanel, ErrorPanel, LoadingPanel, Section } from '../_lib/ui';
 import type { SubmissionRecord, SubmissionStatus } from '@/lib/contribute/types';
 import { AdoptIntoMedia } from './_components/adopt-into-media';
-import { AdminPage } from '../_ui/primitives';
+import {
+  AdminPage,
+  Chip,
+  type ChipTone,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  Panel,
+  PanelBody,
+  PanelHeader,
+} from '../_ui/primitives';
 import { useToast } from '../_ui/toast';
 
 interface ListResponse {
@@ -31,10 +40,10 @@ interface ListResponse {
   inventory: { metaBlobs: number; imageBlobs: number } | null;
 }
 
-const STATUS_STYLES: Record<SubmissionStatus, string> = {
-  pending: 'bg-amber-500/15 text-amber-400 border-amber-500/20',
-  approved: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/20',
-  rejected: 'bg-red-500/15 text-red-400 border-red-500/20',
+const STATUS_TONES: Record<SubmissionStatus, ChipTone> = {
+  pending: 'warning',
+  approved: 'success',
+  rejected: 'danger',
 };
 
 const FILTERS: { key: 'all' | SubmissionStatus; label: string }[] = [
@@ -46,12 +55,12 @@ const FILTERS: { key: 'all' | SubmissionStatus; label: string }[] = [
 
 export default function ContributionsPage() {
   const { triggerRefresh } = useAdmin();
-  const { data, error } = useAdminFetch<ListResponse>('/api/admin/contributions', true);
+  const { data, error } = useAdminFetch<ListResponse>('/api/admin/contributions');
   const [filter, setFilter] = useState<'all' | SubmissionStatus>('all');
   const [purging, setPurging] = useState(false);
 
-  if (error) return <ErrorPanel message={error} />;
-  if (!data) return <LoadingPanel label="Loading contributions…" />;
+  if (error) return <ErrorState message={error} />;
+  if (!data) return <LoadingState label="Loading contributions…" />;
 
   const visible =
     filter === 'all' ? data.submissions : data.submissions.filter((s) => s.status === filter);
@@ -74,63 +83,66 @@ export default function ContributionsPage() {
 
   return (
     <AdminPage width="wide">
-      <Section
-        icon={ImageIcon}
-        title="User photo contributions"
-        action={
-          <div className="flex gap-1">
-            {FILTERS.map((f) => {
-              const count = f.key === 'all' ? data.total : (data.counts[f.key] ?? 0);
-              return (
-                <button
-                  key={f.key}
-                  onClick={() => setFilter(f.key)}
-                  className={cn(
-                    'rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors',
-                    filter === f.key
-                      ? 'border-primary/40 bg-primary/10 text-primary'
-                      : 'border-border/60 text-muted-foreground hover:text-foreground'
-                  )}
-                >
-                  {f.label} <span className="tabular-nums">{count}</span>
-                </button>
-              );
-            })}
-          </div>
-        }
-      >
-        {orphans > 0 && (
-          <div className="flex flex-wrap items-center gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-300">
-            <AlertTriangle className="size-4 shrink-0" />
-            <span className="flex-1">
-              {orphans} orphaned image file(s) in the store with no submission record — left over
-              from uploads that failed before metadata was saved.
-            </span>
-            <button
-              onClick={purgeOrphans}
-              disabled={purging}
-              className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/40 px-2.5 py-1 text-xs font-medium hover:bg-amber-500/15 disabled:opacity-50"
-            >
-              {purging ? (
-                <Loader2 className="size-3.5 animate-spin" />
-              ) : (
-                <Trash2 className="size-3.5" />
-              )}
-              Purge orphans
-            </button>
-          </div>
-        )}
+      <Panel>
+        <PanelHeader
+          icon={ImageIcon}
+          title="User photo contributions"
+          action={
+            <div className="flex gap-1">
+              {FILTERS.map((f) => {
+                const count = f.key === 'all' ? data.total : (data.counts[f.key] ?? 0);
+                return (
+                  <button
+                    key={f.key}
+                    onClick={() => setFilter(f.key)}
+                    className={cn(
+                      'rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors',
+                      filter === f.key
+                        ? 'border-primary/40 bg-primary/10 text-primary'
+                        : 'border-border/60 text-muted-foreground hover:text-foreground'
+                    )}
+                  >
+                    {f.label} <span className="tabular-nums">{count}</span>
+                  </button>
+                );
+              })}
+            </div>
+          }
+        />
+        <PanelBody className="space-y-3">
+          {orphans > 0 && (
+            <div className="flex flex-wrap items-center gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-300">
+              <AlertTriangle className="size-4 shrink-0" />
+              <span className="flex-1">
+                {orphans} orphaned image file(s) in the store with no submission record — left over
+                from uploads that failed before metadata was saved.
+              </span>
+              <button
+                onClick={purgeOrphans}
+                disabled={purging}
+                className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/40 px-2.5 py-1 text-xs font-medium hover:bg-amber-500/15 disabled:opacity-50"
+              >
+                {purging ? (
+                  <Loader2 className="size-3.5 animate-spin" />
+                ) : (
+                  <Trash2 className="size-3.5" />
+                )}
+                Purge orphans
+              </button>
+            </div>
+          )}
 
-        {visible.length === 0 ? (
-          <EmptyPanel label="No contributions in this view." />
-        ) : (
-          <div className="space-y-4">
-            {visible.map((s) => (
-              <SubmissionCard key={s.id} submission={s} />
-            ))}
-          </div>
-        )}
-      </Section>
+          {visible.length === 0 ? (
+            <EmptyState title="No contributions in this view." />
+          ) : (
+            <div className="space-y-4">
+              {visible.map((s) => (
+                <SubmissionCard key={s.id} submission={s} />
+              ))}
+            </div>
+          )}
+        </PanelBody>
+      </Panel>
     </AdminPage>
   );
 }
@@ -205,10 +217,7 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
     });
   }
 
-  // No credential in the URL any more: the session is an httpOnly cookie and
-  // the browser sends it with the image request by itself. It used to carry
-  // `&pass=`, which put the one admin secret into browser history, into the
-  // referrer of anything the page linked to, and into this app's access log.
+  // No credential in the URL: the session cookie goes with the image request by itself.
   const imgSrc = (url: string) => url;
   const downloadSrc = (url: string, name: string) =>
     `${imgSrc(url)}&download=1&name=${encodeURIComponent(name)}`;
@@ -245,7 +254,6 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
   return (
     <div className="border-border/60 bg-card/40 rounded-xl border p-4">
       <div className="flex flex-col gap-4 md:flex-row">
-        {/* Photos */}
         <div className="grid grid-cols-3 gap-2 md:w-72 md:shrink-0">
           {submission.images.map((img) => (
             <figure
@@ -313,20 +321,12 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
           ))}
         </div>
 
-        {/* Details */}
         <div className="min-w-0 flex-1 space-y-3">
           <div className="flex flex-wrap items-center gap-2">
-            <span
-              className={cn(
-                'inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium capitalize',
-                STATUS_STYLES[submission.status]
-              )}
-            >
+            <Chip tone={STATUS_TONES[submission.status]} className="capitalize">
               {submission.status}
-            </span>
-            <span className="border-border/60 text-muted-foreground inline-flex items-center rounded-full border px-2 py-0.5 text-xs capitalize">
-              {submission.entity.type}
-            </span>
+            </Chip>
+            <Chip className="capitalize">{submission.entity.type}</Chip>
             <span className="font-semibold">{submission.entity.name}</span>
             {submission.entity.url && (
               <a

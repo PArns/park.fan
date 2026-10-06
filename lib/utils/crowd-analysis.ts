@@ -22,20 +22,22 @@ export function scoreToCrowdLevel(score: number): ColoredCrowdLevel {
   return 'extreme';
 }
 
+/** Average crowd score for one weekday over the analysed days. */
 export interface DayOfWeekStat {
   dayIndex: number; // 0 = Sunday
   avgScore: number;
   sampleSize: number;
 }
 
+/** What the best-days section says about a park's upcoming calendar. */
 export interface BestDaysAnalysis {
-  /** Best 3 days of week by avg crowd score (ascending) */
+  /** Best 3 weekdays by average crowd score, ascending. */
   bestDaysOfWeek: DayOfWeekStat[];
-  /** Worst 2 days of week */
+  /** Worst 2 weekdays. */
   worstDaysOfWeek: DayOfWeekStat[];
   /** All days with data, sorted ascending by avg score */
   allDaysOfWeek: DayOfWeekStat[];
-  /** Quietest 1-2 days per week within the next 30 days (very_low/low), capped at 8 */
+  /** The quietest one or two days per week in the next 30 days (very_low/low), at most 8. */
   upcomingQuietDays: CalendarDay[];
   /** Whether school holidays correlate with significantly higher crowds */
   schoolHolidaysAreBusy: boolean;
@@ -43,17 +45,16 @@ export interface BestDaysAnalysis {
   totalDays: number;
 }
 
+/** Weekday stats, upcoming quiet days and the school-holiday effect from a park's calendar days. */
 export function analyzeBestDays(
   days: CalendarDay[],
-  /** Epoch ms for "now" — pass a cached value (getServerNowMs) for cacheComponents safety. */
+  /** Epoch ms for „now"; pass a cached value (`getServerNowMs`) for cacheComponents safety. */
   nowMs: number,
   timezone?: string
 ): BestDaysAnalysis {
   const now = new Date(nowMs);
-  // "Today" must be in the park's timezone, not the server/UTC day — otherwise a
-  // park east/west of UTC can drop the current day (or keep a past one) for a few
-  // hours around midnight, e.g. listing a day in "upcoming quiet days" that has
-  // already started locally. Fall back to UTC only when no timezone is provided.
+  // „Today" in the park's zone, not the server's, or a park far from UTC drops today (or keeps a
+  // past day) around midnight. UTC only when no zone is given.
   const today = timezone
     ? formatInTimeZone(now, timezone, 'yyyy-MM-dd')
     : now.toISOString().slice(0, 10);
@@ -67,10 +68,9 @@ export function analyzeBestDays(
       CROWD_SCORE[d.crowdLevel] !== undefined
   );
 
-  // --- Day-of-week stats ---
   const byDow: Record<number, number[]> = {};
   for (const day of futureDays) {
-    // Parse YYYY-MM-DD without timezone shift
+    // Parse YYYY-MM-DD without a timezone shift.
     const [y, m, d] = day.date.split('-').map(Number);
     const dow = new Date(y, m - 1, d).getDay();
     const score = CROWD_SCORE[day.crowdLevel as CrowdLevel];
@@ -88,17 +88,14 @@ export function analyzeBestDays(
     }))
     .sort((a, b) => a.avgScore - b.avgScore);
 
-  // --- Upcoming quiet days (next 30 days) ---
   const in30Days = new Date(nowMs);
   in30Days.setDate(in30Days.getDate() + 30);
   const in30Str = in30Days.toISOString().slice(0, 10);
 
-  // Show the 1–2 quietest days per calendar week, not every quiet day: adjacent
-  // quiet days in a stretch are redundant for trip planning, and a long flat list
-  // is noise. Group the next-30-day quiet days by ISO week, keep the quietest
-  // 1–2 each, then cap the overall list.
+  // The one or two quietest days per ISO week, not every quiet day: a run of adjacent quiet days
+  // is redundant for planning.
   const MAX_QUIET_PER_WEEK = 2;
-  const MAX_QUIET_TOTAL = 8; // ~4-5 ISO weeks in 30d × up to 2/week, capped
+  const MAX_QUIET_TOTAL = 8;
   const quietByWeek = new Map<string, CalendarDay[]>();
   for (const d of futureDays) {
     if (d.date > in30Str) continue;
@@ -118,10 +115,8 @@ export function analyzeBestDays(
       )
     )
     .sort((a, b) => (a[0].date < b[0].date ? -1 : 1));
-  // Coverage-first so the list spans the whole 30-day window instead of
-  // front-loading the first weeks: take the single quietest day of EVERY week
-  // first, then fill a 2nd day per week up to the cap. Round-1 entries come first
-  // in the array, so the cap can only ever trim 2nd-choice days.
+  // Coverage first: every week's quietest day, then a second per week up to the cap, so the list
+  // spans the whole window and the cap only ever trims second choices.
   const upcomingQuietDays = [
     ...weeksSorted.map((week) => week[0]),
     ...(MAX_QUIET_PER_WEEK >= 2
@@ -131,7 +126,6 @@ export function analyzeBestDays(
     .slice(0, MAX_QUIET_TOTAL)
     .sort((a, b) => (a.date < b.date ? -1 : 1));
 
-  // --- School holiday impact ---
   const schoolDays = futureDays.filter((d) => d.isSchoolHoliday || d.isSchoolVacation);
   const normalDays = futureDays.filter(
     (d) => !d.isSchoolHoliday && !d.isSchoolVacation && !d.isHoliday && !d.isPublicHoliday

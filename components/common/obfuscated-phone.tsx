@@ -6,13 +6,12 @@ import { rot13 } from '@/components/common/obfuscated-email';
 interface ObfuscatedPhoneProps {
   number: string;
   displayText?: string;
-  className?: string; // Add className prop for flexibility
+  className?: string;
 }
 
 /**
- * Client component that obfuscates phone numbers to prevent spam bots from scraping them.
- * Uses ROT13 encryption during hydration - the plain text number is only assembled client-side.
- * The initial HTML shows ROT13-encrypted text, and after hydration it becomes a clickable tel link.
+ * A phone number kept from scrapers: the server HTML carries a ROT13-shifted string, and the tel
+ * link is assembled on the client after hydration.
  */
 export function ObfuscatedPhone({ number, displayText, className }: ObfuscatedPhoneProps) {
   const mounted = useMounted();

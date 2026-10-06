@@ -1,18 +1,7 @@
 /**
- * Crash protection for the curated-fields editor.
- *
- * The form lived entirely in component state, and there are five ordinary ways
- * to leave it: the tab strip on the entity page (which unmounts the editor to
- * show the photos), a sidebar link, the command palette, the account menu, and
- * a reload. Only the `g`-chord was guarded, which is the one an operator is
- * least likely to hit by accident. So somebody who typed six corrections, then
- * clicked "Bilder" to check whether the park had a photo, lost all six with no
- * prompt and no way back.
- *
- * A saved draft covers all five plus the browser's back button and a crash,
- * which no navigation-interception can. Modelled on the blog editor's
- * autosave, down to the version guard and the best-effort try/catch: this is
- * a safety net, and a safety net that throws is worse than none.
+ * Crash protection for the curated-fields editor: a draft in localStorage survives every way out
+ * of the form (a tab, a link, a reload, the back button, a crash), which no navigation guard can
+ * cover. Best effort throughout, since a safety net that throws is worse than none.
  */
 
 const KEY_PREFIX = 'parkfan-admin-curated-draft:';
@@ -36,6 +25,10 @@ function keyFor(scope: DraftScope): string {
   return KEY_PREFIX + scope;
 }
 
+/**
+ * Reads the unsaved curated-field corrections stored for a park or ride from localStorage. Returns
+ * `null` when there are none, the version differs or storage fails.
+ */
 export function loadCuratedDraft(scope: DraftScope): CuratedDraft | null {
   if (typeof window === 'undefined') return null;
   try {
@@ -50,6 +43,7 @@ export function loadCuratedDraft(scope: DraftScope): CuratedDraft | null {
   }
 }
 
+/** Stores the editor's current corrections for a park or ride in localStorage, with a timestamp. */
 export function saveCuratedDraft(scope: DraftScope, values: Record<string, unknown>): void {
   if (typeof window === 'undefined') return;
   try {
@@ -62,6 +56,7 @@ export function saveCuratedDraft(scope: DraftScope, values: Record<string, unkno
   }
 }
 
+/** Removes the stored curated-fields draft for a park or ride. */
 export function clearCuratedDraft(scope: DraftScope): void {
   if (typeof window === 'undefined') return;
   try {

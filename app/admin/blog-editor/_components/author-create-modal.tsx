@@ -29,10 +29,8 @@ interface Props {
 }
 
 /**
- * Modal that captures the minimum frontmatter for a content/blog/authors/<key>
- * .md file — either creating a new one (key auto-derives from name) or
- * editing an existing one (key field is locked). The live preview band at the
- * top mirrors the author block readers see on published posts.
+ * Creates or edits a content/blog/authors/<key>.md file (the key derives from the name and is
+ * locked when editing), previewing the author block readers see on a post.
  */
 export function AuthorCreateModal({ open, existing, initial, onClose, onSubmit }: Props) {
   return open ? (
@@ -144,11 +142,10 @@ function AuthorForm({
           </button>
         </div>
 
-        {/* Live preview — the author block readers get on posts. */}
         <div className="border-border/40 bg-muted/20 flex items-center gap-3 border-b px-4 py-3">
           <div className="from-primary/25 to-primary/5 text-primary relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br text-base font-bold">
             {avatar ? (
-              // eslint-disable-next-line @next/next/no-img-element
+              // eslint-disable-next-line @next/next/no-img-element -- a typed URL may be on any host
               <img src={avatar} alt="" className="absolute inset-0 h-full w-full object-cover" />
             ) : (
               (trimmedName || '?').charAt(0).toUpperCase()

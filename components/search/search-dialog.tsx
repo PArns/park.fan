@@ -88,7 +88,6 @@ export default function SearchDialog({
         }
       />
 
-      {/* Keyboard shortcuts footer – hidden on mobile */}
       <div className="border-primary/10 bg-primary/10 text-foreground/50 dark:text-muted-foreground/60 hidden items-center gap-4 border-t px-5 py-3 text-xs sm:flex">
         <span className="flex items-center gap-1.5">
           <kbd className="bg-primary/20 text-primary flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[11px] shadow-sm">

@@ -37,18 +37,8 @@ import { visibleGroups } from './nav';
 import { useSession } from './session';
 
 /**
- * ⌘K — the third way to reach everything.
- *
- * The admin is meant to be operable three ways: by pointing, by tabbing, and by
- * typing what you want. The third is not a shortcut for power users here so
- * much as the only practical way to reach one of 212 parks or one of ~7000
- * rides — a sidebar cannot list them, and a park page that takes four clicks to
- * find is a park page nobody corrects.
- *
- * Search runs against the admin's own park endpoint rather than the public
- * search index, and that matters: it matches the **curated** name too, so a
- * park somebody renamed last week is findable under the name they gave it. The
- * public index only learns that on its next rebuild.
+ * ⌘K, the practical way to reach one park or ride among thousands. It searches the admin's own
+ * endpoints, which match the curated name too, where the public index waits for its next rebuild.
  */
 
 interface PaletteAction {
@@ -60,6 +50,10 @@ interface PaletteAction {
   keywords?: string;
 }
 
+/**
+ * ⌘K dialog that searches parks and rides by upstream or curated name and lists the admin pages
+ * and actions (reload, open park.fan, sign out). Searches start at two characters, debounced.
+ */
 export function CommandPalette({
   open,
   onOpenChange,
@@ -101,9 +95,8 @@ export function CommandPalette({
       }
       setSearching(true);
       const encoded = encodeURIComponent(term);
-      // Both in parallel: an editor typing "taron" is looking for the ride and
-      // an editor typing "toverland" for the park, and asking them which one
-      // they meant before searching is the interaction this replaces.
+      // Both in parallel: "taron" means the ride and "toverland" the park, and nobody should have
+      // to say which first.
       Promise.allSettled([
         adminFetch<{ parks: AdminParkListItem[] }>(
           `/api/admin/content/parks?q=${encoded}&limit=6`,

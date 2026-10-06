@@ -8,18 +8,10 @@ import {
 import { cronUnauthorized } from '@/lib/security/cron-auth';
 
 /**
- * The daily pass that turns "the catalog looks like this" into "these pages
- * changed today".
- *
- * It runs at 05:30 UTC, half an hour before the IndexNow submitter, because that
- * submitter now reads what this run wrote: without the ordering it would ping
- * yesterday's set of changed URLs.
- *
- * The response is the diagnostic — `added`/`changed`/`removed` counts plus the
- * first few paths of each. On a normal day they are single digits; if `changed`
- * comes back in the thousands, something volatile has leaked into the
- * fingerprint and the `<lastmod>` on every sitemap URL is about to become
- * worthless. See `lib/seo/content-changes/fingerprint.ts`.
+ * The daily pass that turns "the catalog looks like this" into "these pages changed today", run
+ * half an hour before the IndexNow submitter, which reads what it writes. The response is the
+ * diagnostic: a `changed` count in the thousands means something volatile leaked into the
+ * fingerprint. See docs/rules/a-lastmod-is-observed-never-stamped.md.
  */
 
 export const maxDuration = 300;
@@ -66,10 +58,8 @@ export async function GET(request: Request) {
     },
   });
 
-  // Schedule coverage rides beside the diff, not through it: `diffSnapshot` decides which dates
-  // move and this is a value to carry. A park that did not answer keeps the coverage it already
-  // had — the same rule `retainUncovered` applies to its dates, and for the same reason: one
-  // timeout must not shorten that park's calendar to nothing tomorrow morning.
+  // Schedule coverage rides beside the diff, not through it. A park that did not answer keeps the
+  // coverage it had, as `retainUncovered` does for dates, so one timeout cannot empty its calendar.
   result.snapshot.scheduleCoverage = mergeScheduleCoverage(previous, crawl.scheduleCoverage);
 
   try {

@@ -20,6 +20,10 @@ interface GlossaryInjectContextValue {
 
 const GlossaryInjectContext = createContext<GlossaryInjectContextValue | null>(null);
 
+/**
+ * Provides the glossary terms, locale and glossary URL segment to client components that link terms
+ * in text (`GlossaryInjectClient`).
+ */
 export function GlossaryInjectProvider({
   children,
   terms,
@@ -37,6 +41,10 @@ export function GlossaryInjectProvider({
   return <GlossaryInjectContext value={value}>{children}</GlossaryInjectContext>;
 }
 
+/**
+ * Returns the glossary terms, locale and segment from the nearest `GlossaryInjectProvider`, or
+ * `null` outside one.
+ */
 export function useGlossaryInject() {
   return useContext(GlossaryInjectContext);
 }

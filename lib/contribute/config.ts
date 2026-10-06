@@ -16,13 +16,13 @@ export const MAX_FILES = 10;
  * multipart envelope). Larger originals are downscaled client-side before upload
  * (see components/contribute/compress.ts) so high-res shots still come through.
  */
-export const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4 MB (Vercel body limit ~4.5 MB)
+export const MAX_FILE_SIZE = 4 * 1024 * 1024;
 
 /**
  * Limit for the ORIGINAL the user may pick (before client-side downscaling). We
  * accept big high-res files here and shrink them to MAX_FILE_SIZE before upload.
  */
-export const MAX_ORIGINAL_FILE_SIZE = 50 * 1024 * 1024; // 50 MB
+export const MAX_ORIGINAL_FILE_SIZE = 50 * 1024 * 1024;
 
 /** MIME types we accept. Covers the common high-res photo formats incl. Apple HEIC. */
 export const ACCEPTED_MIME_TYPES = [
@@ -51,10 +51,17 @@ export const ACCEPT_ATTR = [
 
 export type AcceptedMimeType = (typeof ACCEPTED_MIME_TYPES)[number];
 
+/**
+ * Returns true when a file's MIME type is one of the photo formats the contribution upload accepts.
+ */
 export function isAcceptedMimeType(type: string): boolean {
   return (ACCEPTED_MIME_TYPES as readonly string[]).includes(type);
 }
 
+/**
+ * Formats a byte count as `B`, `KB` (whole) or `MB` (one decimal) for the photo upload limits and
+ * file list.
+ */
 export function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;

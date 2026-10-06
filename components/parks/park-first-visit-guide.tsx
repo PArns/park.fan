@@ -27,14 +27,10 @@ interface ParkFirstVisitGuideProps {
 }
 
 /**
- * "First visit?" — the park's own guide as the way in, with the glossary terms that guide leans on.
- *
- * This is the guide's slot on the park page and not a URL of its own: the guide already has one,
- * and a `/first-visit` sub-page would render the same posts under a second address
- * (`docs/seo/dedicated-landing-pages.md` §2). The park page renders nothing for a park without a
- * guide, so there is no empty shell to reserve or hide.
- *
- * Static content (the blog manifest and the glossary files), like the posts section it sits in.
+ * „First visit?": the park's own guide as the way in, with the glossary terms that guide leans on.
+ * A slot on the park page, not a URL of its own, since a `/first-visit` page would render the guide
+ * under a second address (`docs/seo/dedicated-landing-pages.md` §2). The park page renders nothing
+ * for a park without a guide.
  */
 export async function ParkFirstVisitGuide({
   locale,

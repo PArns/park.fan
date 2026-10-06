@@ -29,14 +29,10 @@ interface ParkPurchasesCardProps {
 }
 
 /**
- * Day prices for paid skip-the-line products from the operating schedule
- * (`schedule[].purchases`) — today Disney's Lightning Lane single passes and
- * Multi/Premier Pass packages, incl. sold-out state. Parks without purchase
- * data (everything non-Disney right now) render nothing.
- *
- * "Today" is derived from the browser clock in the park timezone (same pattern
- * as <ParkHeaderStats>); before opening hours exist for today we fall forward
- * to the next schedule day that carries purchases.
+ * Day prices for paid skip-the-line products from the operating schedule (`schedule[].purchases`):
+ * Disney's Lightning Lane passes and packages, including the sold-out state. Parks without purchase
+ * data render nothing. "Today" comes from the browser clock in the park's timezone; before today's
+ * hours exist it falls forward to the next day that carries purchases.
  */
 export function ParkPurchasesCard({ schedule, timezone, className }: ParkPurchasesCardProps) {
   const t = useTranslations('parks.purchases');
@@ -75,10 +71,9 @@ export function ParkPurchasesCard({ schedule, timezone, className }: ParkPurchas
         month: 'short',
       }).format(new Date(`${entry.date}T12:00:00`));
 
-  // Below `sm` the card is tighter: it sits above the "Heute im Park" panel, and at its desktop
-  // padding it pushed the first headliner row under the fold at 360×780 (y=832, PAR-592). Every
-  // row and every price stays; only padding and row spacing shrink. The rows are not links, so
-  // they owe no touch-target height.
+  // Tighter below `sm`: the card sits above „Heute im Park", and at its desktop padding it pushed
+  // the first headliner row under the fold on a phone. The rows are not links, so they owe no
+  // touch-target height.
   return (
     <GlassCard variant="medium" className={cn('border-primary/10 max-sm:p-3', className)}>
       <div className="mb-3 flex flex-wrap items-center gap-2 max-sm:mb-1.5">

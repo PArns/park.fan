@@ -32,22 +32,11 @@ interface RideAlertBellProps {
 }
 
 /**
- * "Notify me when this ride's wait drops below X minutes" — a card corner
- * icon in the same style as `FavoriteStar`/`ShowFollowBell`, opening
- * `RideAlertDialog` with this ride picked rather than toggling anything
- * itself: a threshold needs a number, which a single click cannot supply.
- * It is the same dialog as the park overview's central entry point, so the
- * visitor also sees the alerts already set in this park — including this
- * ride's own, which the list shows instead of offering it a second time.
- *
- * The other rides come from `RideAlertParkProvider` on the park page. The
- * cross-park listings (favorites, homepage, blog) have no provider, and there
- * the dialog lists this one ride.
- *
- * It draws its own {@link GlassCircle}, because it is also the only thing
- * that knows whether there is an alert to offer at all — wrapped by the card,
- * the disc stayed behind as an empty circle next to the star on every ride
- * queueing ten minutes or less (reported on Manta, SeaWorld Orlando).
+ * "Notify me when this ride's wait drops below X minutes": a card corner icon like
+ * `FavoriteStar`, opening `RideAlertDialog` with this ride picked, since a threshold needs a number
+ * a click cannot supply. The other rides come from `RideAlertParkProvider` on the park page;
+ * elsewhere the dialog lists this one ride. It draws its own {@link GlassCircle}, because only it
+ * knows whether there is an alert to offer, and a wrapped disc would stay behind empty.
  */
 export function RideAlertBell({
   attractionId,
@@ -76,13 +65,10 @@ export function RideAlertBell({
     setOpen(true);
   }, []);
 
-  // A queue this short has no alert left to offer: the threshold may not go
-  // under ten minutes, nor within ten of what the ride reads right now, and
-  // below twenty there is no value between those two. Same shape as
-  // `ShowFollowBell` hiding when a performance is too close to warn about —
-  // and, like it, an alert already SET keeps its bell whatever the queue is
-  // doing, because that bell is the only way to take it off again. While the dialog is open the
-  // bell stays, or removing this ride's alert in the dialog would unmount the dialog with it.
+  // A queue this short has no alert left to offer: the threshold may not go under ten minutes,
+  // nor within ten of the current reading. An alert already set keeps its bell, the only way to
+  // take it off, and so does an open dialog, which would otherwise unmount with it. A stopped ride
+  // that offers the reopen alert keeps its bell too.
   const offersReopen = rideAlertKindsFor({ status }, reopenAvailable).includes('reopen');
   if (!alerted && !open && !offersReopen && !hasUsableThresholdRange(currentWaitTime)) return null;
 
@@ -141,12 +127,8 @@ export function RideAlertBell({
 }
 
 /**
- * The bell's dialog, and the only part of it that reads the park's ride list.
- *
- * The list changes with every live poll, and it used to be read by the bell itself: every bell on
- * the park page (one per card, ~100 on a big park) re-rendered through its card's `memo` on each
- * poll and rebuilt an N-long list for a dialog that was not open. Read here, only bells somebody
- * has pressed subscribe to it.
+ * The bell's dialog, and the only part that reads the park's ride list, which changes with every
+ * live poll: only bells somebody has pressed subscribe to it.
  */
 function RideAlertBellDialog({
   open,

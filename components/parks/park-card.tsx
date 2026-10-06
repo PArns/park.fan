@@ -58,10 +58,9 @@ interface ParkCardProps {
   id?: string;
   backgroundImage?: string | null;
   /**
-   * Where the photo is cropped from — the image's focal point, resolved by the
-   * SERVER (`enrichParksWithImages` / `getCardObjectPosition`) and handed in. The
-   * card cannot look it up itself without importing the media manifest, and this
-   * card renders inside Client Components. Defaults to the historical top crop.
+   * Where the photo is cropped from: the image's focal point, resolved by the server
+   * (`enrichParksWithImages` / `getCardObjectPosition`), since this card renders inside Client
+   * Components and cannot import the media manifest. Defaults to a top crop.
    */
   objectPosition?: string;
   timezone?: string;
@@ -75,13 +74,18 @@ interface ParkCardProps {
   /** Accepted for API-shape compatibility — not used in rendering. */
   continent?: string;
   /**
-   * Hold the badge row open (22 px, one status badge) while `status` is still unknown. For a
-   * card whose status arrives from a client query after the first paint: without it the row
-   * is 0 px until then, and a grid of six cards grows 132 px under the reader (PAR-435).
+   * Hold the badge row open (22 px, one status badge) while `status` is still unknown, for a card
+   * whose status arrives from a client query after the first paint. Without it a grid of cards
+   * grows under the reader.
    */
   reserveStatusRow?: boolean;
 }
 
+/**
+ * Link card for a park: photo, name, city and distance, status and crowd badges, an opening or
+ * closing countdown and a favorite star. Below `sm` it renders a four-line row instead
+ * (`data-park-card-row`). Photo and crop come from the caller, so it is safe in Client Components.
+ */
 export function ParkCard({
   name,
   slug: _slug,
@@ -120,16 +124,13 @@ export function ParkCard({
   const effectiveCrowdLevel = crowdLevel ?? (analytics?.crowdLevel as CrowdLevel | undefined);
 
   const displayCountry = translateCountry
-    ? (() => {
-        return translateGeoSlug(tGeo, 'countries', country, country);
-      })()
+    ? translateGeoSlug(tGeo, 'countries', country, country)
     : country;
 
-  // The photo and where to crop it are handed in, never looked up here. This card
-  // is rendered by Client Components (the live hub grid, nearby, favorites), and a
-  // media-database lookup inside it puts the whole 107 KB catalog in their bundle.
-  // Server callers use `getParkBackgroundImage` / `getCardObjectPosition`; the API
-  // routes attach both via `enrichParksWithImages`.
+  // The photo and its crop are handed in, never looked up here: this card renders in Client
+  // Components, and a media-database lookup would put the whole catalog in their bundle. Server
+  // callers use `getParkBackgroundImage` / `getCardObjectPosition`; the API routes attach both via
+  // `enrichParksWithImages`.
   const backgroundImage = showBackground ? (propBackgroundImage ?? null) : null;
 
   const isOpen = status === 'OPERATING';
@@ -182,22 +183,19 @@ export function ParkCard({
       prefetch={false}
       className={cn('row-span-3 grid [grid-template-rows:subgrid]', className)}
     >
-      {/* Phones get a row, everything from `sm` up the panelled card — the same split as
-          `BlogPostRow` (docs/rules/a-blog-card-is-a-row-on-phones.md). Below `sm` the card
-          shows no photo, so it was two glass panels, 146 px, one per row. Two markups rather
-          than one responsive tree, because the glass is a block of inline styles that no
-          breakpoint can switch off. Inside the same `Link`, so every caller and every grid
-          that spans this card over three rows gets the row without a change. */}
+      {/* Phones get a row, `sm` and up the panelled card, the same split as `BlogPostRow`
+          (docs/rules/a-blog-card-is-a-row-on-phones.md). Two markups, because the glass is a block
+          of inline styles no breakpoint can switch off. Inside the same `Link`, so every caller
+          gets the row without a change. */}
       <div
         data-park-card-row
         className="group bg-card hover:bg-accent/30 border-border/60 relative row-span-3 flex items-start gap-3 rounded-xl border p-2 transition-colors sm:hidden"
       >
         {backgroundImage && (
-          // The whole thumbnail is the visible box, so the focal point is applied to it
-          // directly, and it stays wider than 1.5 (64 × 40 = 1.6) so a 4:3 photo keeps some
-          // vertical range for it (docs/rules/card-photos-are-two-layers.md). 64 px wide, not
-          // the blog row's 96: at 360 px the badge line needs 228 px for "Geöffnet" and
-          // "Sehr niedrig", and a 96 px thumbnail leaves 204.
+          // The thumbnail is the visible box, so the focal point applies to it directly, and it
+          // stays wider than 1.5 (64 × 40 = 1.6) so a 4:3 photo keeps some vertical range
+          // (docs/rules/card-photos-are-two-layers.md). 64 px, not the blog row's 96, so the badge
+          // line still fits "Geöffnet" and "Sehr niedrig" at 360 px.
           <div className="relative mt-0.5 h-10 w-16 shrink-0 overflow-hidden rounded-lg">
             <Image
               src={backgroundImage}
@@ -210,11 +208,10 @@ export function ParkCard({
             />
           </div>
         )}
-        {/* Four fixed lines: name 18 · 2 · location 16 · 4 · badges 22 · 4 · time 16, so
-            98 px with the padding and 100 with the border. The time has a line of its own
-            because next to two badges it does not fit at 360 px, and a line that wraps only
-            sometimes gives the rows of one list different heights. `ParkCardNearbySkeleton`
-            draws the same lines. */}
+        {/* Four fixed lines: name 18 · 2 · location 16 · 4 · badges 22 · 4 · time 16, so 100 px
+            with padding and border. The time has a line of its own because beside two badges it
+            does not fit at 360 px, and a line that wraps only sometimes gives one list rows of
+            different heights. `ParkCardNearbySkeleton` draws the same lines. */}
         <div className="min-w-0 flex-1">
           <h3
             className={cn(
@@ -270,8 +267,8 @@ export function ParkCard({
           boxShadow: 'var(--pk-card-shadow)',
         }}
       >
-        {/* Photo — z-0, inner div carries the hover scale. `hideOnMobile` is belt and braces:
-            the whole card is `display:none` below `sm`, where the row above renders. */}
+        {/* `hideOnMobile` is belt and braces: the whole card is `display:none` below `sm`, where
+            the row above renders. */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
             <CardPhoto
@@ -287,7 +284,6 @@ export function ParkCard({
           )}
         </div>
 
-        {/* Scrim — z-1 */}
         <div
           className="pointer-events-none absolute inset-0 z-[1]"
           style={{
@@ -296,7 +292,6 @@ export function ParkCard({
           }}
         />
 
-        {/* Favorite button — z-4 */}
         {effectiveParkId && (
           <GlassCircle className="absolute top-3 right-3 z-[4]">
             <FavoriteStar
@@ -311,7 +306,6 @@ export function ParkCard({
           </GlassCircle>
         )}
 
-        {/* Top glass panel — z-3 */}
         <div
           className="pk-panel-top relative z-[3] -mb-4 overflow-hidden"
           style={{
@@ -323,7 +317,6 @@ export function ParkCard({
             boxShadow: 'inset 0 1px 0 var(--pk-panel-shine), inset 0 -1px 0 rgba(0,0,0,0.06)',
           }}
         >
-          {/* Diagonal shine overlay */}
           <div
             className="pointer-events-none absolute inset-0"
             style={{
@@ -332,7 +325,6 @@ export function ParkCard({
             }}
           />
 
-          {/* Park name with coaster track icon */}
           <div
             className="relative text-[17px] leading-[1.2] font-extrabold tracking-[-0.022em]"
             style={{ color: 'var(--pk-text-1)' }}
@@ -349,7 +341,6 @@ export function ParkCard({
             </span>
           </div>
 
-          {/* Location + optional distance */}
           <div
             className="relative mt-[3px] flex items-center gap-1 text-[12px]"
             style={{ color: 'var(--pk-text-2)' }}
@@ -370,7 +361,6 @@ export function ParkCard({
             )}
           </div>
 
-          {/* Badges row */}
           <div
             className={cn(
               'relative mt-[9px] flex flex-wrap items-center gap-[6px]',
@@ -384,11 +374,9 @@ export function ParkCard({
           </div>
         </div>
 
-        {/* Photo spacer — the 1fr row resolves to 0 in an intrinsic-height
-           container; min-h forces it open when there is a background image.
-           It is also the strip of photo the panels leave visible, so the framed
-           layer lives in here — see `CardPhotoFrame`. Stays at `z-0` so the scrim
-           (z-1) keeps darkening it. */}
+        {/* The 1fr row resolves to 0 in an intrinsic-height container, so `min-h` forces it open
+            when there is a photo. It is also the strip the panels leave visible, so the framed
+            layer lives here (see `CardPhotoFrame`), at `z-0` so the scrim still darkens it. */}
         <div className={cn('relative z-0', backgroundImage && 'sm:min-h-[220px]')}>
           {backgroundImage && (
             <CardPhotoFrame
@@ -401,7 +389,6 @@ export function ParkCard({
           )}
         </div>
 
-        {/* Footer glass panel — z-3 */}
         <div
           className="pk-panel-bot relative z-[3] -mt-4 overflow-hidden"
           style={{
@@ -413,7 +400,6 @@ export function ParkCard({
             boxShadow: 'inset 0 1px 0 var(--pk-panel-shine), inset 0 -1px 0 rgba(0,0,0,0.03)',
           }}
         >
-          {/* Diagonal shine overlay */}
           <div
             className="pointer-events-none absolute inset-0"
             style={{
@@ -422,8 +408,8 @@ export function ParkCard({
             }}
           />
 
-          {/* Skeleton reserves the footer's single-line height so the client-rendered
-              schedule/countdown swaps in without shifting the card (cacheComponents defers it). */}
+          {/* Reserves the footer's one line, so the client-rendered countdown swaps in without
+              shifting the card. */}
           <Suspense fallback={<Skeleton className="h-4 w-32" />}>{scheduleFooter(false)}</Suspense>
         </div>
       </article>

@@ -1,4 +1,4 @@
-import { MapPin } from 'lucide-react';
+import { CalendarDays, MapPin } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
@@ -6,6 +6,8 @@ import { ParkDistance } from '@/components/common/park-distance';
 import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
 import { ParkPlannerLink } from '@/components/parks/park-planner-link';
 import { ParkQuickLinks } from '@/components/parks/park-quick-links';
+import { cn } from '@/lib/utils';
+import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import type { Locale } from '@/i18n/config';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -44,6 +46,12 @@ interface ParkTitleHeaderProps {
    * would put its translations on the calendar and the record too.
    */
   location?: React.ReactNode;
+  /**
+   * The `.ics` download of the park's coming opening days (`/api/parks/hours/…`). Only the park
+   * page passes it, and only for a park with at least one coming opening day: the page decides,
+   * because it holds the schedule and this header is shared with pages that offer no download.
+   */
+  hoursIcsHref?: string;
   /** Anything the page wants under the intro — a back link, for instance. */
   children?: React.ReactNode;
 }
@@ -72,6 +80,7 @@ export async function ParkTitleHeader({
   suffix,
   intro,
   location,
+  hoursIcsHref,
   children,
 }: ParkTitleHeaderProps) {
   const tGeo = await getTranslations('geo');
@@ -163,6 +172,23 @@ export async function ParkTitleHeader({
         `justify-between` puts a lone item on that second line at the START. */}
       <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-3">
         <ParkQuickLinks info={park.info} />
+        {hoursIcsHref && (
+          // The same 36 px square the quick links become below `sm`, with its label kept as
+          // `sr-only` text, so it joins their row without a second line on a 360 px phone.
+          <a
+            href={hoursIcsHref}
+            download
+            rel="nofollow"
+            title={tParks('hoursCalendar.link')}
+            className={cn(
+              'border-border/60 hover:border-primary/50 hover:text-primary inline-flex items-center gap-2 rounded-lg border text-sm font-medium transition-colors max-sm:h-9 max-sm:w-9 max-sm:justify-center sm:px-3 sm:py-1.5',
+              PHONE_HIT_AREA
+            )}
+          >
+            <CalendarDays className="h-4 w-4 opacity-80" aria-hidden="true" />
+            <span className="max-sm:sr-only">{tParks('hoursCalendar.link')}</span>
+          </a>
+        )}
         <ParkPlannerLink
           label={tParks('planDayCta', { park: parkName })}
           locale={locale}

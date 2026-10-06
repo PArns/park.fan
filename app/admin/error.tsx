@@ -5,17 +5,9 @@ import Link from 'next/link';
 import { AlertTriangle, RotateCcw } from 'lucide-react';
 
 /**
- * What a crash in the admin looks like.
- *
- * There was no boundary here, so any render error blanked the whole route:
- * a season dialog handed an invalid date to the day picker, a payload came
- * back one shape short of what a page indexed into, and the screen went white
- * with the unsaved work in it. A tool used to edit two hundred parks should
- * fail like a tool — say what happened, keep the way out visible, and let the
- * person retry the one page rather than the session.
- *
- * `reset()` re-renders the segment, which is enough for a transient payload;
- * the link is for when it is not.
+ * What a crash in the admin looks like: what happened, the way out, and a retry of the one page
+ * rather than the session. `reset()` re-renders the segment, which is enough for a transient
+ * payload; the link is for when it is not.
  */
 export default function AdminError({
   error,

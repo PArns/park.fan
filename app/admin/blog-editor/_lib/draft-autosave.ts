@@ -2,12 +2,8 @@ import type { Locale } from '@/i18n/config';
 import type { LocaleDraft } from './types';
 
 /**
- * Crash protection for the editor. The whole working state (per-locale
- * drafts + which post is being edited) is snapshotted into localStorage on a
- * debounce; closing the tab, a crash or an accidental navigation no longer
- * eats an hour of writing. The snapshot is cleared after a successful save
- * (the PR is the durable copy from then on) and when the author explicitly
- * discards it.
+ * Crash protection for the blog editor: the working state is snapshotted into localStorage on a
+ * debounce, and cleared after a successful save or an explicit discard.
  */
 
 const KEY = 'parkfan-blog-editor-draft';
@@ -27,6 +23,10 @@ export function isMeaningfulSnapshot(s: DraftSnapshot): boolean {
   return Object.values(s.drafts).some((d) => !!d && (!!d.fm.title.trim() || !!d.body.trim()));
 }
 
+/**
+ * Reads the blog editor's autosaved working state (per-locale drafts, the post being edited, active
+ * locales) from localStorage. Returns `null` when there is none, the version differs or it fails.
+ */
 export function loadDraftSnapshot(): DraftSnapshot | null {
   try {
     const raw = window.localStorage.getItem(KEY);
@@ -39,6 +39,7 @@ export function loadDraftSnapshot(): DraftSnapshot | null {
   }
 }
 
+/** Writes the blog editor's working state to localStorage with a version and timestamp. */
 export function saveDraftSnapshot(s: Omit<DraftSnapshot, 'v' | 'savedAt'>): void {
   try {
     window.localStorage.setItem(
@@ -50,6 +51,7 @@ export function saveDraftSnapshot(s: Omit<DraftSnapshot, 'v' | 'savedAt'>): void
   }
 }
 
+/** Removes the blog editor's autosaved snapshot, after a save or an explicit discard. */
 export function clearDraftSnapshot(): void {
   try {
     window.localStorage.removeItem(KEY);

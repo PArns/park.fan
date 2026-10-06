@@ -75,16 +75,9 @@ export function onHistoryNavigation(listener: HistoryNavigationListener): () => 
 
 /**
  * The pathname of a navigation that has asked {@link ScrollToTop} to leave the scroll alone.
- *
- * `<Link scroll={false}>` is not enough on its own, and the reason is in `ScrollToTop`'s own
- * docblock: Next's scroll handler bails out whenever the new page's top element is already in the
- * viewport, which our streamed shells hit on essentially every navigation, so this app scrolls to
- * the top itself — and that code knows nothing about a prop on a link. Measured on the calendar's
- * month stepper: `scroll={false}` reached `next/link` intact and the page still went to 0, about
- * 1.5 s after the click, which is `ScrollToTop`'s effect and not the router's.
- *
- * Keyed by destination pathname for the same reason `pushedPathname` is: a click that never
- * becomes a navigation would otherwise leave a flag lying around to swallow the next real one.
+ * `<Link scroll={false}>` alone is not enough: this app scrolls to the top itself (see
+ * `ScrollToTop`), and that code knows nothing about a prop on a link. Keyed by destination
+ * pathname, so a click that never becomes a navigation leaves no flag to swallow the next one.
  */
 let scrollSuppressedFor: string | null = null;
 
