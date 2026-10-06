@@ -5,10 +5,10 @@ import { LIVE_POLL_QUERY_OPTIONS } from '@/lib/hooks/live-poll-options';
 /**
  * Client-side refresh of the global "right now" statistics (open parks / operating attractions).
  *
- * The homepage shell only bakes an HOURLY SSR seed of these counts (see GlobalStatsSection —
- * keeping the shell's ISR window at 3600s is what keeps Vercel ISR writes down); this hook
- * overlays the live values after mount via the no-store `/api/analytics/realtime` proxy.
- * Same contract as `useGeoLiveStats`: client-only, 5-min poll, refetch on focus/reconnect.
+ * The homepage server-renders a seed of these counts from `getGlobalStats`, which caches it for a
+ * long time on purpose (its comment says why); this hook overlays the live values after mount
+ * through the no-store `/api/analytics/realtime` proxy, on the same {@link LIVE_POLL_QUERY_OPTIONS}
+ * cycle as `useGeoLiveStats`.
  */
 export function useGlobalStats() {
   return useQuery<GlobalStats>({
