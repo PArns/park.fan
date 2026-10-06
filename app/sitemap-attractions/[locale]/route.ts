@@ -1,7 +1,12 @@
-import { xmlEscape } from '@/lib/seo/sitemap-xml';
+import {
+  localeFromSitemapFile,
+  localeSitemapParams,
+  urlsetResponse,
+  xmlEscape,
+} from '@/lib/seo/sitemap-xml';
 import { getAttractionPaths } from '@/lib/content-urls';
 import { getContentLastmodIndex } from '@/lib/seo/content-changes/store';
-import { locales, SITE_URL, type Locale } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
 import { notFound } from 'next/navigation';
 
 /**
@@ -19,16 +24,15 @@ import { notFound } from 'next/navigation';
 export const revalidate = 86400;
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale: `${locale}.xml` }));
+  return localeSitemapParams();
 }
 
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ locale: string }> }
 ): Promise<Response> {
-  const { locale: fileName } = await params;
-  const locale = fileName.replace(/\.xml$/, '');
-  if (!locales.includes(locale as Locale)) notFound();
+  const locale = localeFromSitemapFile((await params).locale);
+  if (!locale) notFound();
 
   const [paths, lastmod] = await Promise.all([getAttractionPaths(), getContentLastmodIndex()]);
   const urls = paths.map((path) => {
@@ -43,9 +47,5 @@ export async function GET(
     }<changefreq>weekly</changefreq><priority>0.6</priority></url>`;
   });
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>`;
-
-  return new Response(xml, {
-    headers: { 'Content-Type': 'application/xml; charset=utf-8' },
-  });
+  return urlsetResponse(urls);
 }

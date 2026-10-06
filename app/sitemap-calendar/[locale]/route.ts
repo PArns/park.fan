@@ -1,10 +1,15 @@
-import { xmlEscape } from '@/lib/seo/sitemap-xml';
+import {
+  localeFromSitemapFile,
+  localeSitemapParams,
+  urlsetResponse,
+  xmlEscape,
+} from '@/lib/seo/sitemap-xml';
 import { notFound } from 'next/navigation';
 
 import { getGeoStructure } from '@/lib/api/discovery';
 import { CACHE_TTL } from '@/lib/api/cache-config';
 import { getScheduleCoverageIndex } from '@/lib/seo/content-changes/store';
-import { locales, SITE_URL, type Locale } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
 import {
   PARK_CALENDAR_SEGMENTS,
   currentParkCalendarMonth,
@@ -14,18 +19,17 @@ import {
 } from '@/lib/parks/calendar-segments';
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale: `${locale}.xml` }));
+  return localeSitemapParams();
 }
 
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ locale: string }> }
 ): Promise<Response> {
-  const { locale: fileName } = await params;
-  const locale = fileName.replace(/\.xml$/, '');
-  if (!locales.includes(locale as Locale)) notFound();
+  const locale = localeFromSitemapFile((await params).locale);
+  if (!locale) notFound();
 
-  const segment = PARK_CALENDAR_SEGMENTS[locale as Locale];
+  const segment = PARK_CALENDAR_SEGMENTS[locale];
   const [geo, coverage] = await Promise.all([
     getGeoStructure(CACHE_TTL.geoSitemap),
     getScheduleCoverageIndex(),
@@ -100,9 +104,5 @@ export async function GET(
     }
   }
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>`;
-
-  return new Response(xml, {
-    headers: { 'Content-Type': 'application/xml; charset=utf-8' },
-  });
+  return urlsetResponse(urls);
 }
