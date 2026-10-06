@@ -512,6 +512,13 @@ function printMissing(infos, prefix) {
 }
 
 const args = process.argv.slice(2);
+const unknown = args.filter((a) => a.startsWith('--') && !['--check', '--missing'].includes(a));
+if (unknown.length > 0) {
+  console.error(
+    `Unknown option ${unknown.join(', ')}. Usage: generate-code-index.mjs [--check | --missing [path-prefix]]`
+  );
+  process.exit(2);
+}
 const { infos, pages } = await build();
 
 if (args.includes('--missing')) {
