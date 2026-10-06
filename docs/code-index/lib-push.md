@@ -52,6 +52,8 @@ A local mirror of a browser's ride alerts and show follows, shaped like `lib/uti
 
 ### [`ride-alert-picker.ts`](../../lib/push/ride-alert-picker.ts)
 
+- `isStoppedRide` _function_: Whether the ride stands (`DOWN`, `CLOSED`, `REFURBISHMENT`) and so has a reopening to wait for.
+- `rideAlertKindsFor` _function_: The alert kinds a ride offers. A running ride has only the wait-time alert; a stopped one, where the park's wait times can be read, has both — and the reopening is the one to pick first.
 - `isReopenAlert` _function_: Whether a stored or fetched alert is the reopen kind; an absent `kind` is a wait-time alert.
 - `rideAlertPickerRows` _function_: Every ride the add-form may offer, by name. Rides that already carry an alert stay out, as they always have — that alert is edited in the list above the form, not added twice.
 - `filterRideAlertPickerRows` _function_: The rows whose name contains the typed text. An empty query keeps every row.

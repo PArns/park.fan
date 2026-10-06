@@ -295,6 +295,7 @@ export function AttractionCard({
                 backgroundImage={backgroundImage}
                 objectPosition={objectPosition}
                 currentWaitTime={waitTime}
+                status={status}
               />
             )}
             {rideLog && isUuid(attraction.id) && (

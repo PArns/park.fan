@@ -1243,6 +1243,11 @@
     "closedRides": {
       "title": "Definitief gesloten attracties",
       "since": "sinds {month}"
+    },
+    "hoursCalendar": {
+      "link": "Openingstijden naar agenda",
+      "summary": "{park}: open",
+      "estimated": "De tijden zijn geschat."
     }
   },
   "attractions": {
@@ -1925,6 +1930,7 @@
       "remove": "{name} verwijderen",
       "addTitle": "Nieuwe melding instellen",
       "selectRide": "Attractie kiezen",
+      "otherRide": "Andere attractie",
       "searchRide": "Attractie zoeken",
       "noRideFound": "Geen attractie met die naam.",
       "noQueueNow": "Nu geen wachttijd",
@@ -1937,6 +1943,7 @@
       "close": "Sluiten",
       "entry": "Wachttijdmeldingen",
       "entryWithCount": "Wachttijdmeldingen ({count})",
+      "nudge": "We melden het zodra de wachttijd van een attractie onder het aantal minuten komt dat je instelt.",
       "outOfSeason": "Alleen in de winter",
       "retired": "Gesloopt",
       "errorRateLimited": "Te veel pogingen. Probeer het over {seconds} seconden opnieuw.",

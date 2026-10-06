@@ -115,6 +115,10 @@ intensivsten`, `enthusiasts prize ejector airtime`, `is widely regarded as` hand
   reviewer with a link, the manufacturer's own brochure), say it yourself under the byline, or
   describe what happens in the seat and let the reader decide whether they would like it.
   `pnpm check:prose` flags the pattern.
+- **Our own guide is not the evidence.** `so steht es in unserem Guide zum Park`, `as our guide to
+the park says`: a claim that cites our earlier post cites nobody a reader can check. Name the park
+  or the operator who said it, and link our guide where the reader wants more. The rain guide said
+  it in all six languages until 2026-10-06; `pnpm check:prose` flags the shipped forms.
 
 ### 1.3 Have a verdict
 
@@ -339,6 +343,11 @@ Cosmic Rewind`) is not counted, and French colons after a no-break space are. Af
 - **Do not build every paragraph from the same parts.** Topic sentence, explanation, example,
   transition, four paragraphs in a row, is the template showing through. Start one with the
   number, let one be a single sentence, let one stop without a bridge to the next.
+- **Do not introduce two widgets with the same line.** `Wie die Bahnen im Gebäude heute stehen:`
+  stood above two widgets of the rain guide, and the six park sections opened with the same
+  `<Park> in <Ort> hat <Jahr> eröffnet`. A widget with a heading of its own needs no line in front
+  of it. `pnpm check:prose` warns when one paragraph ending on a colon occurs twice in a post (a
+  date stamp like `Stand 6. Oktober 2026:` is exempt).
 
 ### 2.8 The aphoristic closer
 
@@ -432,6 +441,13 @@ questions in a row are a triad (§2.2). `pnpm check:prose` flags `Das Ergebnis?`
 `Die Antwort?`, `Der Haken?` and their English twins, and a heading that asks and answers in one
 line (`Sind 70 Minuten viel? Kommt drauf an, ob Dienstag ist`) as a candidate.
 
+The set-up also comes folded into one sentence: `Offen bleibt, welche Bahnen an so einem Tag noch
+lohnen, und das sind zuerst die im Gebäude.` Nothing was open; the sentence answers itself after
+the comma. Write the answer: `An so einem Tag lohnen sich in der Regel die überdachten
+Attraktionen.` `pnpm check:prose` flags `Offen bleibt, welche …, und das …` and its five twins
+(`What's left open is which …, and`, `Reste à savoir quelles …, et`); `Reste à savoir si la
+question est recevable.` stays open and is not a hit.
+
 ### 2.13 Things that talk, and the product as protagonist
 
 **A queue shows nothing, a number says nothing, and a calendar knows nothing.** `Was die
@@ -445,6 +461,10 @@ ruhigsten Tage grün.` `Nach unseren Messungen brauche ich ihn nicht.` A display
 literally shows a figure is fine (`Am Eingang stehen 70 Minuten`, §3.3), and so is a legend, one of
 our own tables or widgets, or a UI element that marks something on screen (`Der blaue Kegel zeigt, wohin du schaust`, `Die
 Rahmenfarbe zeigt den Andrang an`); the queue itself never announces anything.
+
+Data and time do it too: `Die Daten belegen das nicht`, `ein anderes Jahr verteilt das anders`,
+`les données ne le prouvent pas`. Say who cannot prove it (`Belegen kann ich das mit diesen Zahlen
+nicht`) and what another year may bring (`2027 kann das ganz anders aussehen`).
 
 The travel-guide version is **false agency**: `Der Park lädt zum Verweilen ein`, `Die Bahn sorgt
 für Nervenkitzel`, `the ride promises`, `delivers thrills`. Say what a visitor does or gets.
@@ -486,6 +506,11 @@ happens instead.
 The German posts sit at a median of 1.2 negations per 100 words; the planner page read 2.8. The
 check warns above 2.
 
+The loudest form is the **pledge about a gap**: `Wir wissen dort nicht, welche Bahnen unter Dach
+liegen, und füllen die Lücke nicht mit Annahmen.`, `Die Lücke liegt in unserer Datenbank und hat
+mit den Parks nichts zu tun.` Nobody asked us to guess, and the reader did not need the gap at all
+(§2.19). `pnpm check:prose` flags it in six languages.
+
 ### 2.15 The definition colon
 
 `Typisch heißt: …`, `„Knapp“ bedeutet: …`. One definition is useful. Four on one page are a
@@ -503,6 +528,12 @@ A person who has something odd to report reports it, and the reader decides whet
 The colon version is the **set-up label**: `Das Beste:`, `Kurz gesagt:`, `Der Clou:`, `Die gute
 Nachricht:`, `Pro-Tipp:`, `Spoiler:`, `Pro tip:`, `Bottom line:`, `Here's why:`. A heading made of
 two words and a colon, in the middle of a paragraph.
+
+The counting version is the **count announcement**: `Drei Einschränkungen gehören dazu.`, `Zwei
+Einordnungen aus unseren Guides.`, `Three limitations come with it.` A sentence that says how many
+caveats follow is a heading in disguise. Start with the first caveat. `pnpm check:prose` warns on a
+sentence of up to seven words that counts caveats, notes or remarks; `Drei Dinge noch:` in front of
+a list is the same habit in five posts and left to the review pass.
 
 Cut the teaser and start with the fact. If the fact is not remarkable without the announcement,
 the announcement was covering for it. `pnpm check:prose` flags the common forms in German and
@@ -556,6 +587,43 @@ matters.`, `Das ist wichtig, weil …`, `a fact worth internalising`, `deserves 
 The same rules govern commit messages and PR bodies (CLAUDE.md). An edit summary that reads
 `refined for clarity and consistency while preserving the structure` is the Wikipedia example of
 a generated one; say what changed.
+
+### 2.19 The database instead of the park
+
+A post written from a query result keeps the query's words. The rain guide of 2026-10-06 was
+built that way, and Patrick read its excerpt three times without understanding it:
+
+> An Regentagen sind die Headliner in zwölf von zwölf ausgewerteten Parks kürzer besetzt als an
+> trockenen Tagen gleicher Art, im Movie Park fast ein Drittel, im Disneyland Paris kaum. Dazu die
+> Bahnen im Gebäude von Europa-Park, Phantasialand, Efteling, Movie Park, Plopsaland und Heide
+> Park, die Reiseplanung und die häufigsten Fragen.
+
+Every phrase in it is a habit with a name, and the body had all of them again:
+
+| Habit                                      | Shipped                                                                                                                                                                         | Write                                                                                                                                                                            |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Our schema as vocabulary**               | `Einträge`, `bei jedem hat der Park einen Wert`, `38 von 39 Einträgen führen einen Wert`, `Jede Attraktion kann drei Werte tragen`                                              | `Attraktionen`, `überdacht`, `im Freien`. A reader has never seen our table.                                                                                                     |
+| **The field name read aloud**              | `Bahnen im Gebäude`, 30 times: the enum `indoor`                                                                                                                                | the word the reader searches and the UI shows: `überdacht`, `Indoor-Bahn`, `in der Halle`                                                                                        |
+| **The gap reported instead of left out**   | `Bei neun der 37 wissen wir es noch nicht: …`, a list of nine parks without data, a column „Noch ohne Angabe“, `Wo ein Strich steht, fehlt uns die Angabe.`                     | leave it out. Name a gap only where the reader would otherwise draw a wrong conclusion, once.                                                                                    |
+| **A comparison against an unnamed bucket** | `trockene Tage gleicher Art`, `Tage derselben Gruppe`, `Gruppen aus Monat, Wochenende oder Feiertag und Schulferien`                                                            | say what is compared, with an example: `Einen verregneten Ferien-Samstag im Juli vergleichen wir mit trockenen Wochenend- und Feiertagen im Juli, die auch in den Ferien lagen.` |
+| **A verb that does not fit its noun**      | `die Headliner sind kürzer besetzt`, `die Headliner lagen unter dem Niveau trockener Tage`, `Der Regen stammt aus den Tageswerten`, `Mystery Castle fällt im Inneren des Turms` | the wait is shorter, the rainfall figures come from Open-Meteo, the gondola falls                                                                                                |
+| **A genitive chain**                       | `der Durchschnitt der gemessenen Wartezeiten über die Headliner des Parks, auf fünf Minuten gerundet`                                                                           | `wie lange man an seinen Headlinern im Schnitt anstand`                                                                                                                          |
+| **A circular definition**                  | `Als Headliner führen wir die Bahnen, die nach der Historie der Wartezeiten dazugehören.`                                                                                       | `Headliner sind die Bahnen, an denen in einem Park am längsten angestanden wird.`                                                                                                |
+| **A calque**                               | `Ein verregneter Samstag steht gegen trockene Wochenendtage` (_stands against_)                                                                                                 | `vergleichen wir mit`                                                                                                                                                            |
+| **The elliptical series**                  | `im Movie Park fast ein Drittel, im Disneyland Paris kaum`: shorter by what, or what is a third?                                                                                | `im Movie Park um fast ein Drittel kürzer`                                                                                                                                       |
+| **`X von X`**                              | `in zwölf von zwölf ausgewerteten Parks`                                                                                                                                        | `in allen zwölf Parks` (§3.3, rule 13)                                                                                                                                           |
+
+The test is the reader's question. Somebody looking for a park on a rainy Saturday asks which
+rides are under a roof and whether it is emptier; a sentence that answers neither and is about
+our records goes. The same test settles the SEO question, because the reader's words are the
+search words: nobody types „Freizeitpark Bahnen im Gebäude“, and „überdachte Attraktionen“ is
+what the park page's filter says.
+
+`pnpm check:prose` counts the schema words per post in six languages and warns above four per
+1,000 words (the rain guide read 18 in German; no other German post reached two), warns on
+`gleicher Art`, `derselben Gruppe`, `of the same kind` and `van hetzelfde soort`, and fails on
+`kürzer besetzt` and on `X von X` in all six languages. The genitive chain, the circular
+definition, the calque and the gap reported where it changes nothing are for the review pass.
 
 ---
 
@@ -614,7 +682,7 @@ sentences on the first run.
 
 ### 3.3 Ours, and non-negotiable
 
-Twelve house rules that are not in anybody's research. They came out of real reviews of shipped
+Fourteen house rules that are not in anybody's research. They came out of real reviews of shipped
 text:
 
 1. **Never `ehrlich`, in any form.** No `ehrlich gesagt`, no `der ehrlichste Woodie`, no
@@ -718,6 +786,16 @@ höchste`), so does a source as the object (`Six Flags nennt keine Quelle`), `ne
 source` and `según la fuente` mean "depending on the source" as often as "according to" and
     are not matched. The research sentence without a page in it (`habe ich am 5. Oktober keine
 Neuheit gefunden`) is the same habit and is left to the review pass.
+13. **Never `zwölf von zwölf`.** Nor `twelve of twelve`, `twaalf van de twaalf`, `douze sur
+douze`, `doce de doce`, `dodici su dodici`. Counting a number against itself performs a
+    completeness that `in allen zwölf Parks` states. It opened the excerpt of the rain guide in
+    German, English and Dutch until Patrick put it on the list on 2026-10-06. `pnpm check:prose`
+    fails on a number word followed by itself; `21 von 44`, a French `20 sur 20` and `two rows of
+two` stay.
+14. **Never `kürzer besetzt`.** Nor `länger besetzt` or the Dutch calque `korter bezet`. A ride is
+    not besetzt; the wait at it is shorter (`An Regentagen sind die Wartezeiten kürzer`). Same
+    excerpt, same day, and the same class as the other verbs that do not fit their noun (§2.19).
+    `pnpm check:prose` fails on it on every surface.
 
 ### 3.4 Travel-guide copy, in all six languages
 
@@ -815,6 +893,11 @@ Zahlen, Tage ohne Wetter`, `Der Park macht um neun auf, die Bahn um zehn`) or a 
   were written for the planner page and read as clever; none of them says what the chapter
   explains. Name it: `Blöcke und Umstiege`, `Bahnen, die später öffnen als der Park`. `pnpm
 check:prose` flags both shapes.
+- **A heading names what the reader gets, not what our records say.** `Wie die Hallen in unseren
+Daten stehen`, `Parks, für die wir keine Hallen kennen` and `Die sechs Parks nebeneinander` were
+  three headings of one guide. `Überdachte Bahnen auf der Parkseite finden`, `Toverland` and `Die
+neun Parks im Vergleich` say what is under them in the words people search for. `pnpm check:prose`
+  warns on a heading with `in unseren Daten` and its twins.
 - Do not fragment a text into a heading every three sentences. A section with two sentences under
   it should be a paragraph.
 - No title case in German. Sentence case, always.
@@ -993,6 +1076,19 @@ Frontmatter, `ref:` links and widget fences are in the
 like `das Toverland` and `das Phantasialand` (`zum Efteling`, `im Efteling`, never `der Efteling`
 or `zur Efteling`).
 
+**The excerpt and the meta description are the search snippet.** They carry the finding in full
+sentences and in the words people search for, never the post's table of contents: `Dazu die
+Bahnen im Gebäude von …, die Reiseplanung und die häufigsten Fragen.` became `Überdacht sind im
+Toverland 21 von 44 Attraktionen, im Phantasialand 14 von 40 und in Walibi Holland keine.`
+`pnpm check:prose` warns on `häufigsten Fragen`, `FAQ`, `Reiseplanung` and their twins in either
+field.
+
+**An FAQ answer stands alone.** It is read without the post around it, in a search result or an
+answer engine, so it never points elsewhere: `Zeitraum und Schwellenwerte stehen im Abschnitt ganz
+oben.` and `die Tabelle weiter oben schlüsselt es nach Monaten auf` became the period, the
+threshold and the two months that matter. On 2026-10-06 about forty answers in older guides still
+pointed to `weiter oben` or `the table above`; they are for the review pass, not the check.
+
 Voice reference for German: `content/blog/de/phantasialand-tipps.md` and
 `content/blog/de/toverland-troy-wartezeiten-tipps.md`.
 
@@ -1165,7 +1261,7 @@ output the way a regex can actually be trusted to:
   can only be about us, placeholder text, `Schlange` for `Warteschlange`, a German quote closed
   with a straight `"`, `die Antwort auf` in any of its six languages, `nennen eine` and its
   Dutch twin, a model that grades itself in any of its six languages, `ob der Tag aufgeht` and its
-  five translations (§3.3).
+  five translations, `zwölf von zwölf` and `kürzer besetzt` (§3.3).
 - **Warnings** are budgets and signals a person decides on. `eerlijke prijzen` in a paragraph
   about a restaurant means _fair_ prices and stays; the same word in a UI string does not.
 

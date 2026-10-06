@@ -3,7 +3,11 @@
 import { createContext, useContext, useMemo, type ReactNode } from 'react';
 import type { ParkAttraction, ParkStatus } from '@/lib/api/types';
 import { stripNewPrefix } from '@/lib/utils';
-import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-utils';
+import {
+  getAttractionDisplayStatus,
+  getLiveAttractionStatus,
+  getStandbyWait,
+} from '@/lib/utils/park-utils';
 import type { RideAlertDialogAttraction } from './ride-alert-dialog';
 
 /**
@@ -15,22 +19,27 @@ export function rideAlertAttractionsFor(park: {
   attractions?: ParkAttraction[] | null;
   status?: ParkStatus;
 }): RideAlertDialogAttraction[] {
-  return (park.attractions ?? []).map((a) => ({
-    id: a.id,
-    name: stripNewPrefix(a.name),
-    slug: a.slug,
-    currentWaitTime:
-      getAttractionDisplayStatus(a, park.status) === 'OPERATING' ? getStandbyWait(a) : null,
-    // Attached by the live poll's route (`enrichAttractionsWithImages`), not
-    // declared on `ParkAttraction` — read the way `AttractionCard` reads them.
-    // Until the first poll lands the picker shows its placeholder instead.
-    backgroundImage:
-      'backgroundImage' in a && typeof a.backgroundImage === 'string' ? a.backgroundImage : null,
-    backgroundPosition:
-      'backgroundPosition' in a && typeof a.backgroundPosition === 'string'
-        ? a.backgroundPosition
-        : undefined,
-  }));
+  return (park.attractions ?? []).map((a) => {
+    return {
+      id: a.id,
+      name: stripNewPrefix(a.name),
+      slug: a.slug,
+      currentWaitTime:
+        getAttractionDisplayStatus(a, park.status) === 'OPERATING' ? getStandbyWait(a) : null,
+      // The card's own reading of the status, so a ride the card shows as stopped is offered its
+      // reopening here as well.
+      status: getLiveAttractionStatus(a, park.status),
+      // Attached by the live poll's route (`enrichAttractionsWithImages`), not
+      // declared on `ParkAttraction` — read the way `AttractionCard` reads them.
+      // Until the first poll lands the picker shows its placeholder instead.
+      backgroundImage:
+        'backgroundImage' in a && typeof a.backgroundImage === 'string' ? a.backgroundImage : null,
+      backgroundPosition:
+        'backgroundPosition' in a && typeof a.backgroundPosition === 'string'
+          ? a.backgroundPosition
+          : undefined,
+    };
+  });
 }
 
 const RideAlertParkContext = createContext<readonly RideAlertDialogAttraction[] | null>(null);
