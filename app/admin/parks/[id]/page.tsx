@@ -43,13 +43,8 @@ import { PhotoCoverage } from '../_components/photo-coverage';
 import { AttractionFeaturesEditor } from '../_components/attraction-features-editor';
 
 /**
- * One park, and everything about it that a person decides rather than a feed.
- *
- * Four tabs and they are four different jobs: correcting what upstream says,
- * working through the park's rides, writing down what the park does at
- * particular times of year, and reading back what has already been decided.
- * They share a header because they share a subject — losing sight of which park
- * you are editing is how a correction lands on the wrong one.
+ * One park and everything about it that a person decides rather than a feed, in tabs under one
+ * header, so it stays clear which park a correction lands on.
  */
 
 type Tab = 'fields' | 'attractions' | 'features' | 'seasons' | 'media' | 'history';
@@ -64,14 +59,8 @@ const TABS: Array<{ id: Tab; label: string; icon: typeof Sliders }> = [
 ];
 
 /**
- * The active tab, read from the address bar rather than held beside it.
- *
- * Derived, not stored: with the URL as the only source there is no state to
- * fall out of step with it, no effect to sync them, and the browser's back
- * button works because it is the thing that changes the value. `replace`
- * rather than `push`, because switching a tab is not a navigation anybody
- * wants five of in their history — but it does have to survive a reload and a
- * detour into a ride.
+ * The active tab, derived from the URL, so nothing falls out of step and it survives a reload and
+ * a detour into a ride. `replace`, not `push`, so tab switches do not fill the history.
  */
 function useTabFromUrl(): [Tab, (tab: Tab) => void] {
   const params = useSearchParams();
@@ -97,14 +86,7 @@ function useTabFromUrl(): [Tab, (tab: Tab) => void] {
 
 export default function ParkDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  // The open tab lives in the URL, not in component state.
-  //
-  // As state it was unreachable and unrememberable in equal measure: every link
-  // that meant to open one — `?tab=attractions` from the data-quality list,
-  // `#seasons` from the seasons table — landed on Stammdaten, and so did every
-  // way back from a ride. Somebody working through a park's rides had to find
-  // their place again after each one, which is the kind of friction that makes
-  // a tool feel unfinished even when every screen behind it works.
+  // In the URL, so links like `?tab=attractions` and the way back from a ride land on the tab.
   const [tab, setTab] = useTabFromUrl();
   // Read once, at the top: hooks may not be called from inside the conditional
   // branches below, and calling `useCan` per tab would do exactly that.
@@ -190,8 +172,6 @@ export default function ParkDetailPage({ params }: { params: Promise<{ id: strin
   );
 }
 
-// ─── header ───────────────────────────────────────────────────────────────────
-
 function ParkHeader({ park }: { park: AdminParkDetail }) {
   const missingCoordinates = park.latitude === null || park.longitude === null;
   // Owner only, because a changed city rewrites the park's public address.
@@ -199,9 +179,7 @@ function ParkHeader({ park }: { park: AdminParkDetail }) {
 
   return (
     <header className="space-y-3">
-      {/* The same way back the ride editor now has: the breadcrumb in the top
-          bar names the section but does not link to it, and a park is opened
-          from a list somebody was working through. */}
+      {/* A way back to the list, since the top bar's breadcrumb does not link. */}
       <Link
         href="/admin/parks"
         className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-xs"
@@ -294,8 +272,6 @@ function ParkPhotoCoverage({ parkId, parkSlug }: { parkId: string; parkSlug: str
   if (!attractions.data) return null;
   return <PhotoCoverage parkSlug={parkSlug} attractions={attractions.data.attractions} />;
 }
-
-// ─── attractions ──────────────────────────────────────────────────────────────
 
 function ParkAttractionsTab({ parkId }: { parkId: string }) {
   const [query, setQuery] = useState('');

@@ -67,7 +67,7 @@ export default function SystemPage() {
         : 'text-foreground';
   const swap = data.host.swap;
   const fresh = data.freshness;
-  // Wait-time ingestion: a stalled cron once ran 83 days unnoticed, so flag staleness loudly.
+  // Wait-time ingestion: a stalled cron can go unnoticed for months, so staleness is loud.
   const queueStale = fresh?.queueStaleMinutes ?? null;
   const queueClass =
     queueStale == null

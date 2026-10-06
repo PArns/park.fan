@@ -6,17 +6,9 @@ import { requireAdmin } from '@/lib/admin/session';
 export const runtime = 'nodejs';
 
 /**
- * Which blog posts are about this park or this ride.
- *
- * The same index the public park and ride pages use, exposed to the admin so a
- * curation session can see the other half of the relation. That relation is
- * **derived from the posts themselves** — a `ref:` in the body, a widget, a
- * ride counting for its park — which is why a round-up like the Halloween guide
- * lands on ten park pages without anybody listing them. The consequence for an
- * editor is that this list is a *result*, not a setting: to change it you edit
- * the post, or its `parkLinks` / `rideLinks` frontmatter.
- *
- * German, because the admin is. The public pages resolve per visitor locale.
+ * Which blog posts are about this park or ride, from the index the public pages use, in German
+ * like the admin. The relation is derived from the posts, so it changes by editing the post. See
+ * docs/rules/parkride-page-and-blog-link.md.
  */
 export async function GET(request: Request) {
   const { response } = await requireAdmin(request, 'viewer');

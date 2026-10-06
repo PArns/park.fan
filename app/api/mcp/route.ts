@@ -3,24 +3,11 @@ import { MCP_TOOLS } from '@/lib/agents/mcp-tools';
 import { MCP_PROTOCOL_VERSION, MCP_SERVER_INFO } from '@/lib/agents/mcp-server-card';
 
 /**
- * park.fan's MCP server — Streamable HTTP, stateless, read-only.
- *
- * Written out rather than pulled from the SDK because of what it has to be: three tools over
- * data this app already fetches, on a Vercel function that must cold-start fast. The SDK brings
- * a session store and an SSE transport for a server that streams and remembers, and this one
- * does neither — every call is a `fetch` to the public API and an answer.
- *
- * Stateless has a consequence worth knowing before extending this: there is no session id, so
- * `initialize` returns capabilities and nothing else, and a client that expects to reconnect to
- * a session will not find one. That is within spec (the session header is optional) and is what
- * lets any instance answer any request.
- *
- * GET is 405 on purpose. A GET on an MCP endpoint opens the server-to-client SSE stream, and
- * this server never initiates anything — advertising a stream it will not write to leaves a
- * client waiting for messages that are not coming.
- *
- * The tools are read-only and public. Nothing here touches `/admin`, and no code path takes a
- * credential; see `lib/agents/mcp-tools.ts`.
+ * park.fan's MCP server: Streamable HTTP, stateless, read-only. Written out rather than taken from
+ * the SDK, whose session store and SSE transport it does not need, so a cold start stays fast.
+ * Stateless means no session id, so `initialize` returns capabilities only (within spec). GET is
+ * 405 because it would open a server-to-client stream this server never writes to. The tools are
+ * public and take no credential (`lib/agents/mcp-tools.ts`).
  */
 
 // Live wait times: never cached, never prerendered.

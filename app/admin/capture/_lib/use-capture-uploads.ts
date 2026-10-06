@@ -16,19 +16,10 @@ import { fieldTags, freeName, parkDate } from './naming';
 import type { ActiveUpload, BacklogResponse, CaptureSessionResponse, UploadState } from './types';
 
 /**
- * Taking a photograph and getting it into the repository, in a place with no network.
- *
- * The happy path is three calls — analyze the original for its EXIF, commit the
- * bytes, join the open pull request — and the interesting part is what happens when
- * any of them fails. It goes in the queue with everything needed to finish later:
- * the blob, the park, the ride, the name that was reserved for it. Nothing is
- * recomputed at drain time except the analysis, which has to be redone anyway
- * because the answer depends on a server.
- *
- * Names are reserved the moment the shutter closes, not when the upload succeeds.
- * Two photographs of the same ride while the first is still uploading would
- * otherwise both be called `troy` and the second would overwrite the first — the
- * commit endpoint writes by path and does not ask.
+ * Taking a photo and getting it into the repository, in a place with no network. A failed upload
+ * is queued with everything needed to finish it later. Names are reserved when the shutter closes,
+ * not when the upload succeeds, because `commit` writes by path and two photos of one ride taken
+ * during an upload would otherwise share a name.
  */
 
 interface Options {
@@ -49,14 +40,9 @@ export function useCaptureUploads({ data, author }: Options) {
   const [draining, setDraining] = useState(false);
 
   /**
-   * Every file name spoken for, per collection: on `main`, in the open session's
-   * pull request, in flight, or waiting in the queue.
-   *
-   * It only ever grows. It used to be replaced by the server's list on every
-   * backlog fetch, and the admin refetches on focus, so coming back from the
-   * camera dropped the names of photos still uploading or queued. A reload
-   * dropped the queued ones too, and the next photo of that ride took the same
-   * name — which the drain then wrote over.
+   * Every file name spoken for, per collection: on `main`, in the open session's pull request, in
+   * flight or queued. It only ever grows: replacing it with the server's list on a refetch would
+   * drop the names of photos still uploading, and the next photo would take one of them.
    */
   const taken = useRef<Map<string, Set<string>>>(new Map());
 
@@ -71,17 +57,8 @@ export function useCaptureUploads({ data, author }: Options) {
   }, [queued]);
 
   /**
-   * Which pull request the photographs are landing in, asked once on mount.
-   *
-   * The state lives in git — the open PR carrying the `media/session-` branch
-   * prefix — and the commit endpoint resolves it there on every save, so the
-   * photographs of a reloaded tab join the right one either way. What the
-   * reload lost was the link: the bar at the bottom is the only way to the pull
-   * request from a phone, and it went blank mid-session with nothing to say
-   * that the session was still running.
-   *
-   * A commit that answered while this request was in flight wins — it is the
-   * newer answer to the same question.
+   * Which pull request the photos are landing in, asked once on mount so a reloaded tab still
+   * shows the link to it. A commit that answered while this was in flight wins, being newer.
    */
   useEffect(() => {
     let cancelled = false;
@@ -149,9 +126,8 @@ export function useCaptureUploads({ data, author }: Options) {
           : undefined,
         shotAt: photo.shotAt,
         gps: photo.gps,
-        // The whole point of the field workflow: everything that needs the
-        // picture on a screen — alt text, caption, what is actually in frame —
-        // is left for the evening, and this is what finds them again.
+        // Everything that needs the picture on a screen (alt text, caption, what is in frame) is
+        // left for the evening, and this flag finds the photo again.
         review: true,
       },
     });
@@ -161,14 +137,9 @@ export function useCaptureUploads({ data, author }: Options) {
   }, []);
 
   /**
-   * Hand a ride — or the park itself, with `slug: null` — one or more files.
-   *
-   * Sequential, deliberately: the first commit of a session opens the pull request
-   * and the rest look it up and join. Fired in parallel they race to open their own,
-   * which is the bug the media browser's batch dialog was rewritten to avoid.
-   *
-   * `chosenTags` are the ones a person set on the screen. They are added to what
-   * the phone can derive on its own and never replace it.
+   * Hands a ride, or the park with `slug: null`, one or more files. Sequential, because the first
+   * commit opens the session pull request the rest join. `chosenTags` are added to the tags the
+   * phone derives, never in place of them.
    */
   const upload = useCallback(
     async (
@@ -211,9 +182,7 @@ export function useCaptureUploads({ data, author }: Options) {
           shotAt: dateOf(file.lastModified) ?? parkDate(data.park.timezone),
           gps: null,
           author,
-          // A `Set` rather than a concatenation: a chip the person pressed may
-          // already be in what the clock derived, and a tag twice in one sidecar
-          // is a row the tag audit has to explain away.
+          // A `Set`: a pressed chip may already be among the derived tags.
           tags: [
             ...new Set([
               ...fieldTags(data.park.timezone, ride.slug ? 'ride' : 'park'),
@@ -277,9 +246,8 @@ export function useCaptureUploads({ data, author }: Options) {
     return () => window.removeEventListener('online', drain);
   }, [drain]);
 
-  // Revoked on unmount and NOT on every change of `active`: with the list in the
-  // dependency array this ran after each state transition and revoked the preview
-  // of every photo still uploading, so the thumbnails went blank mid-upload.
+  // Revoked on unmount, not on every change of `active`, which would blank the previews of photos
+  // still uploading.
   const activeRef = useRef(active);
   useEffect(() => {
     activeRef.current = active;

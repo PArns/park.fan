@@ -29,19 +29,9 @@ import {
 import { useToast } from '../_ui/toast';
 
 /**
- * The worklist for rides that stopped reporting.
- *
- * The detection has been running for months and the answer it produces is a
- * question, not a fact: a feed going quiet looks the same whether the ride was
- * demolished, is in a nine-month refurbishment, or the park changed a name
- * upstream. Five endpoints existed to settle that question and none of them
- * had a screen, so the same candidates came back every run and nobody could
- * mark one as investigated.
- *
- * Hence three actions per row, not one. "Stillgelegt" is the destructive
- * answer, "kein Fall" is the one that stops the detector re-asking, and the
- * link into the editor is for the third case — where the answer is a curation,
- * not a retirement.
+ * The worklist for rides that stopped reporting. A quiet feed may mean a demolished ride, a long
+ * refurbishment or an upstream rename, so each row has three answers: "Stillgelegt", "kein Fall"
+ * (which stops the detector asking again), and the editor, for an answer that is a curation.
  */
 
 interface Candidate {

@@ -19,21 +19,9 @@ import { useToast } from '../../_ui/toast';
 import { useCan } from '../../_app/session';
 
 /**
- * The yes/no and pick-one facts about a park's rides, decided across the whole
- * list.
- *
- * The generic field editor can already write every one of these columns one
- * ride at a time, and for a single correction that is the right place. This
- * exists because the question is not asked one ride at a time: somebody reads
- * the park's QuickPass page, which lists twelve rides and their prices, or its
- * Single Rider page, and then has to put that into forty rows. Forty page loads
- * and forty saves is how that ends up half-done.
- *
- * So the table is the park's ride list with one column at a time, picked by a
- * chip, and one save for the batch, which is also one cache eviction and one
- * revalidation rather than forty of each. Edits survive switching chips, and
- * the save sends only the fields that changed, so a row touched under two chips
- * writes two fields and leaves the rest alone.
+ * The yes/no and pick-one facts about a park's rides, decided across the whole list, because they
+ * come from one page of the park's site covering many rides. One column at a time, one save for
+ * the batch, and only the changed fields are sent.
  */
 
 interface RowState {
@@ -106,6 +94,7 @@ function parkFastPass(park: AdminParkDetail) {
   };
 }
 
+/** The park editor's table for ride features such as fast pass or single rider, ride by ride. */
 export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
   const canEdit = useCan('editor');
   const toast = useToast();
@@ -357,10 +346,8 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
 
         {column === 'fastPass' && (
           <>
-            {/* The two settings that live on the park and decide what these rows can
-                even publish. Said here rather than only in the Stammdaten tab,
-                because this is where somebody notices the price they just typed is
-                not being served. */}
+            {/* The park settings that decide what these rows can publish, said here because this
+                is where an unserved price gets noticed. */}
             {!park_.currency && (
               <p className="flex items-start gap-2 rounded-lg border border-amber-500/25 bg-amber-500/10 px-3 py-2 text-xs text-amber-300">
                 <TriangleAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />

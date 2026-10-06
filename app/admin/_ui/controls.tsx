@@ -6,23 +6,12 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils';
 
 /**
- * The form controls the admin edits with.
- *
- * Built here rather than installed, and that is a deliberate trade. The
- * shadcn/Radix pieces this would otherwise need — select, switch, checkbox,
- * label, radio-group — are none of them in this project's lockfile, and adding
- * five packages to render three inputs is a worse deal than sixty lines that
- * behave exactly as the rest of the site already looks. Dialog, popover and
- * command ARE installed and ARE used: those solve focus trapping and layering,
- * which is genuinely hard and not worth re-solving.
- *
- * Everything here is keyboard-complete. The admin is meant to be usable
- * without leaving the keyboard, so a control that can only be operated by
- * mouse is a control that does not belong in it.
+ * The form controls the admin edits with, built here because the Radix select, switch, checkbox,
+ * label and radio-group are not in the lockfile (dialog, popover and command are, and are used).
+ * Every control is keyboard-complete.
  */
 
-// ─── field wrapper ────────────────────────────────────────────────────────────
-
+/** A labelled field row: label and optional `aside`, the control, then an error or a hint. */
 export function Field({
   label,
   hint,
@@ -60,18 +49,8 @@ export function Field({
 }
 
 /**
- * The shared look of every field, and the two numbers in it that are responsive.
- *
- * **`text-base` below `sm`, because iOS Safari zooms.** A focused input whose
- * computed font-size is under 16 px makes the browser scale the page up to meet
- * it, and it does not scale back on blur — so tapping the search field on a park
- * page left the whole admin at 1.3× with a horizontal scrollbar, and the only way
- * out was a pinch. `text-sm` is 14. Above `sm` there is a mouse and no zoom
- * behaviour, and 14 px is the density this tool is built around.
- *
- * **`h-11` below `sm`** is 44 px, which is the smallest target a thumb hits
- * reliably. The desk keeps `h-9`, off the button scale in `components/ui/button.tsx`
- * like the rest of the admin's control heights.
+ * The shared look of every field. `text-base` below `sm`: under 16 px iOS Safari zooms in on a
+ * focused input and does not zoom back out on blur.
  */
 const CONTROL_BASE =
   'border-border/70 bg-background/60 focus-visible:border-primary/60 focus-visible:ring-primary/20 w-full rounded-lg border px-3 text-base outline-none transition-colors focus-visible:ring-2 disabled:opacity-50 sm:text-sm';
@@ -80,16 +59,8 @@ const CONTROL_BASE =
 const CONTROL_HEIGHT = 'h-11 sm:h-9';
 
 /**
- * The same look for the places that render a bare `<input>` or `<textarea>`.
- *
- * Three of them existed — the media browser's detail panel, its upload dialog and
- * the walkthrough — each with its own copy of this string and its own idea of the
- * padding and the corner radius. They are the reason this is exported rather than
- * private: a fourth copy is how one field in the admin keeps zooming iOS after the
- * other three were fixed.
- *
- * Padded rather than fixed-height, because two of those call sites put it on a
- * `<textarea>` with its own `min-h-*`, and a height here would fight it.
+ * The same look for a bare `<input>` or `<textarea>`, exported so no call site keeps its own copy.
+ * Padded rather than fixed-height, because the textareas carry their own `min-h-*`.
  */
 export const FIELD_CLASS = `${CONTROL_BASE} py-2 sm:py-1.5`;
 
@@ -106,13 +77,8 @@ export function TextArea({ className, ...props }: ComponentProps<'textarea'>) {
 }
 
 /**
- * A number input that can tell "empty" from "zero".
- *
- * That distinction is load-bearing here rather than pedantic: on a curated
- * height, **0 means "there is no minimum at all"** — an override that replaces
- * upstream's number with nothing — while empty means "no correction, accept
- * upstream". A control that coerces '' to 0 destroys the first, and one that
- * treats 0 as empty destroys the second.
+ * A number input that tells empty from zero: on a curated height, 0 means "no minimum at all" and
+ * empty means "no correction, accept upstream".
  */
 export function NumberInput({
   value,
@@ -143,16 +109,9 @@ export function NumberInput({
   );
 }
 
-// ─── switch ───────────────────────────────────────────────────────────────────
-
 /**
- * A three-state switch: true, false, and "nothing said".
- *
- * Two states would be wrong for every curated boolean in this admin. `may get
- * wet` upstream is null for most rides and occasionally wrong where it is set,
- * so a correction has to be able to say `false` — and clearing the correction
- * has to be able to say "no opinion, use upstream" without that collapsing
- * into `false`. A plain checkbox cannot express the third.
+ * A three-state switch (true, false, "nothing said"), because a curated boolean must be able to
+ * say `false` and to withdraw the correction without that becoming `false`.
  */
 export function TriSwitch({
   value,
@@ -222,13 +181,8 @@ export function Switch({
       onClick={() => onCheckedChange(!checked)}
       className="group inline-flex items-center gap-2 disabled:opacity-50"
     >
-      {/* The knob is placed from the track's left edge, not from wherever an
-          absolutely positioned element without a `left` happens to land. It
-          landed at the track's right edge — measured at x=638 on a 602–638
-          track — so the white circle sat on top of the label next to it and
-          the switch read as broken before anybody clicked it. Two pixels of
-          inset either side, sixteen of knob, and a translate that stops
-          exactly inside: 2 + 16 + 16 = 34 of 36. */}
+      {/* Placed from the track's left edge, or the knob lands on the label beside it. A 2 px
+          inset, a 16 px knob and a 16 px translate stop inside the 36 px track. */}
       <span
         className={cn(
           'relative h-5 w-9 shrink-0 rounded-full transition-colors',
@@ -247,8 +201,7 @@ export function Switch({
   );
 }
 
-// ─── select ───────────────────────────────────────────────────────────────────
-
+/** One option of `Select`. */
 export interface SelectOption {
   value: string;
   label: string;
@@ -256,12 +209,8 @@ export interface SelectOption {
 }
 
 /**
- * A select on the installed popover, with an explicit empty option.
- *
- * The empty option is not decoration either: on a curated enum, choosing
- * nothing is how an editor withdraws a correction, and a native `<select>`
- * with no such entry makes that impossible without a separate "clear" button
- * nobody finds.
+ * A select on the installed popover with an explicit empty option, since choosing nothing is how
+ * an editor withdraws a correction on a curated enum.
  */
 export function Select({
   value,
@@ -369,8 +318,6 @@ function SelectRow({
   );
 }
 
-// ─── months ───────────────────────────────────────────────────────────────────
-
 const MONTH_LABELS = [
   'Jan',
   'Feb',
@@ -387,13 +334,8 @@ const MONTH_LABELS = [
 ];
 
 /**
- * The twelve months, as a grid.
- *
- * A season is a shape, not a list, and the shape is what an editor is checking:
- * April–October reads as a block at a glance and as `[4,5,6,7,8,9,10]` only
- * after counting. The grid also makes the artefact this data is prone to
- * visible instantly — a ride flagged with `[1,2,3,4,12]` is not seasonal in
- * winter, it is a ride whose recording window started in December.
+ * The twelve months as a grid, because a season is a shape: April to October reads as a block,
+ * and an artefact like `[1,2,3,4,12]`, a recording window that began in December, shows at once.
  */
 export function MonthPicker({
   value,

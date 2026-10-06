@@ -11,13 +11,8 @@ import { Chip, EmptyState, ErrorState, SkeletonRows, Toolbar } from '../_ui/prim
 import { Select } from '../_ui/controls';
 
 /**
- * Every park's seasons in one place.
- *
- * This is the view that answers "what do we have on file for Halloween 2026",
- * and until now that question could only be answered by reading a blog post.
- * The research existed — nine parks, in prose, in six languages — and it was
- * unqueryable: nothing could tell you which of the other 203 parks had nothing
- * recorded, which is the useful half.
+ * Every park's seasons in one place: what is on file for an event, and, the useful half, which
+ * parks have nothing recorded.
  */
 
 const KIND_LABELS: Record<ParkSeasonKind, string> = {

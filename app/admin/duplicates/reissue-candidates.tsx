@@ -13,18 +13,9 @@ import { useToast } from '../_ui/toast';
 import { DroppedCurations, readDroppedCurations, type DroppedCuration } from './dropped-curations';
 
 /**
- * Rides the feed may have re-issued under a new id AND a new name (API PAR-686).
- *
- * ThemeParks.wiki hands a seasonal maze a new id every season and often
- * renames it on the way — `HAUNTED HOUSE: SAW: Legacy of Terror` came back as
- * `SAW Legacy of Terror`. The sync only recognises an identical name, so the
- * old row stays retired with the history, and a new row starts from nothing.
- *
- * Every retired row with a younger live row within 30 m is listed, matching
- * name or not: Movie Park's Dutch pairs were real and match nothing, Walibi
- * Belgium's three 4D films are 0 m apart and are three films. The name chip is
- * a hint; the decision is made here, pair by pair, and a dismissed pair does
- * not come back.
+ * Rides the feed may have re-issued under a new id and a new name (a seasonal maze each season),
+ * leaving the history on the retired row. Every retired row with a younger live row within 30 m is
+ * listed, matching name or not, and decided pair by pair; a dismissed pair does not come back.
  */
 
 interface CandidateSide {

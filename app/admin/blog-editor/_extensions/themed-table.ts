@@ -3,17 +3,9 @@ import type { Node as PMNode } from '@tiptap/pm/model';
 import type { EditorView } from '@tiptap/pm/view';
 
 /**
- * Tiptap's Table extension with one extra attribute: `theme`. Drives a
- * `data-theme` attr on the rendered `<table>` element so authors can pick
- * from a handful of header-row colour presets (default / primary / accent /
- * success / warning / danger).
- *
- * The attribute round-trips through the markdown layer via a magic HTML
- * comment line (`<!--tbl-theme: NAME-->`) prepended to themed tables — GFM
- * tables themselves have no slot for table-level metadata, so we encode the
- * theme in a leading sibling that survives the GFM parser as a raw `html`
- * node. The save / load helpers in `_lib/table-theme-md.ts` keep both ends
- * of the round-trip in sync.
+ * A table's header-row colour preset, set as `data-theme` on the rendered `<table>`. GFM has no
+ * slot for table metadata, so it round-trips as a `<!--tbl-theme: NAME-->` line before the table
+ * (`_lib/table-theme-md.ts`).
  */
 export type TableTheme = 'default' | 'primary' | 'accent' | 'success' | 'warning' | 'danger';
 
@@ -27,11 +19,8 @@ export const TABLE_THEMES: readonly TableTheme[] = [
 ];
 
 /**
- * TableView only re-runs `updateColumns` when the node changes — it never
- * reapplies the table-level HTMLAttributes back onto the live <table> DOM
- * element. That means setting `theme` via setNodeAttribute updates the
- * ProseMirror doc but leaves the rendered <table data-theme="…"> stale.
- * This subclass writes the live theme attr onto the DOM on every update.
+ * TableView never reapplies table-level attributes to the live `<table>`, so a `theme` change
+ * would leave `data-theme` stale; this subclass writes it on every update.
  */
 class ThemedTableView extends TableView {
   update(node: PMNode): boolean {

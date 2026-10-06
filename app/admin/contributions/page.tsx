@@ -205,10 +205,7 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
     });
   }
 
-  // No credential in the URL any more: the session is an httpOnly cookie and
-  // the browser sends it with the image request by itself. It used to carry
-  // `&pass=`, which put the one admin secret into browser history, into the
-  // referrer of anything the page linked to, and into this app's access log.
+  // No credential in the URL: the session cookie goes with the image request by itself.
   const imgSrc = (url: string) => url;
   const downloadSrc = (url: string, name: string) =>
     `${imgSrc(url)}&download=1&name=${encodeURIComponent(name)}`;
@@ -245,7 +242,6 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
   return (
     <div className="border-border/60 bg-card/40 rounded-xl border p-4">
       <div className="flex flex-col gap-4 md:flex-row">
-        {/* Photos */}
         <div className="grid grid-cols-3 gap-2 md:w-72 md:shrink-0">
           {submission.images.map((img) => (
             <figure
@@ -313,7 +309,6 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
           ))}
         </div>
 
-        {/* Details */}
         <div className="min-w-0 flex-1 space-y-3">
           <div className="flex flex-wrap items-center gap-2">
             <span

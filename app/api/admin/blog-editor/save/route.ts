@@ -32,9 +32,7 @@ interface SavePayload {
   /** Brand-new categories — appended to content/blog/categories.json in the
    *  same PR so the post's `category:` field resolves on the live site. */
   newCategories?: Array<{ path: string; labels: Record<string, string> }>;
-  /** Edited authors: overwrite the existing author file in place (we pass
-   *  the existing SHA to the createOrUpdateFileContents call so GitHub
-   *  accepts the update). */
+  /** Edited authors overwrite the existing file, committed with its SHA. */
   editedAuthors?: SavePayload['newAuthors'];
   /** Edited categories: merge over the existing categories.json entry. */
   editedCategories?: SavePayload['newCategories'];
@@ -45,11 +43,8 @@ interface SavePayload {
 }
 
 /**
- * `/media/…` only, no traversal, whitelisted raster/vector extensions.
- *
- * Editor uploads land in the media database now (see `_lib/pending-images.ts`),
- * so this guards that prefix — it still said `/blog/images/` after the move, which
- * would have rejected every image dropped into a post.
+ * `/media/…` only (editor uploads land in the media database, see `_lib/pending-images.ts`), no
+ * traversal, and only the listed raster and vector extensions.
  */
 const IMAGE_PATH_RE = /^\/media\/[a-z0-9][a-z0-9/._-]*\.(png|jpe?g|webp|gif|avif|svg)$/i;
 /** ~3MB raw ≈ 4MB base64 — matches the client-side cap. */
@@ -137,14 +132,12 @@ export async function POST(req: Request) {
   const { owner, repo, baseBranch } = target;
   const octokit = new Octokit({ auth: token });
 
-  // 1. Fork a branch off the base branch's head.
   const stamp = new Date().toISOString().slice(0, 10);
   const branch = payload.editing ? `blog/edit-${baseSlug}-${stamp}` : `blog/${baseSlug}-${stamp}`;
   const forkError = await forkFromBase(octokit, target, branch);
   if (forkError) return NextResponse.json({ error: forkError }, { status: 500 });
 
-  // 2. Commit one file per locale on that branch (each is a separate commit so
-  //    the PR diff reads naturally).
+  // One commit per locale, so the pull request's diff reads naturally.
   const committed: string[] = [];
   for (const [locale, draft] of entries) {
     const filePath = `content/blog/${locale}/${draft.slug}.md`;
@@ -185,10 +178,8 @@ export async function POST(req: Request) {
     }
   }
 
-  // 3. Sweep up any stale per-locale files left behind by a slug rename. We
-  //    delete the original-slug file on the new branch only if the per-locale
-  //    draft committed at a different path; otherwise the upsert already
-  //    overwrote the same file in-place.
+  // A slug rename leaves the old per-locale file behind; it is deleted only when the draft was
+  // committed at a different path.
   const removed: string[] = [];
   if (payload.editing) {
     for (const [locale, originalSlug] of Object.entries(payload.editing.originalSlugs)) {
@@ -219,9 +210,8 @@ export async function POST(req: Request) {
     }
   }
 
-  // 3b. Commit any new authors as `content/blog/authors/<key>.md`. New keys
-  //     skip silently if the file already exists (mid-air collision); edited
-  //     keys deliberately overwrite using the existing SHA.
+  // A new author key skips an existing file (a mid-air collision); an edited one overwrites it
+  // with its SHA.
   const authorsCommitted: string[] = [];
   const authorsUpdated: string[] = [];
   const authorRuns: Array<{
@@ -270,9 +260,7 @@ export async function POST(req: Request) {
     }
   }
 
-  // 3c. Splice new + edited categories into content/blog/categories.json.
-  //     Edited entries overwrite labels in place; new entries skip silently
-  //     if a path is already taken (mid-air collision).
+  // Edited categories overwrite their labels; a new one skips a path already taken.
   const categoriesCommitted: string[] = [];
   const categoriesUpdated: string[] = [];
   const totalCategoryWork =
@@ -343,8 +331,7 @@ export async function POST(req: Request) {
     }
   }
 
-  // 3d. Commit uploaded images under public/media/… — one commit per
-  //     file so the PR diff stays readable. Hard-validated paths only.
+  // One commit per uploaded image, so the pull request's diff stays readable.
   const imagesCommitted: string[] = [];
   for (const img of payload.newImages ?? []) {
     if (!IMAGE_PATH_RE.test(img.path) || img.path.includes('..')) {
@@ -384,12 +371,8 @@ export async function POST(req: Request) {
       );
     }
 
-    // Its sidecar, so the file is a row in the media database rather than bytes
-    // sitting in the tree. This used to be skipped, which left every editor upload
-    // undescribed: no alt, no rights, and nothing for the admin to list.
-    //
-    // Never overwritten. A sidecar already on the branch was either hand-authored
-    // or written by the media admin, and both know more than this does.
+    // Its sidecar, so the file is a row in the media database rather than undescribed bytes.
+    // Never overwritten: one already on the branch was written by a person or the media admin.
     const sidecarPath = `${filePath.replace(/\.[^.]+$/, '')}.json`;
     let sidecarExists = false;
     try {
@@ -417,8 +400,7 @@ export async function POST(req: Request) {
     }
   }
 
-  // 4. Open the PR. Source-locale title is the PR title; the body lists the
-  //    locales we wrote so reviewers see at a glance what's included.
+  // The source locale's title is the pull request's title; the body lists the locales written.
   const sourceFm = perLocale[sourceLocale]!.frontmatter;
   const action = payload.editing ? 'Update' : 'Blog';
   const bodyLines = [

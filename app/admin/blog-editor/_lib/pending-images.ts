@@ -1,16 +1,8 @@
 /**
- * Client-side staging area for pasted / dropped images.
- *
- * The markdown gets the FINAL public path (`/media/uploads/…`)
- * immediately — that's what round-trips and what the published post will
- * use. The actual bytes wait here until "Save & open PR" ships them as
- * additional commits (the admin runs on a read-only filesystem in prod, so
- * the PR is the only durable write path). The editor previews staged images
- * through an object URL so authors aren't staring at broken thumbnails.
- *
- * Module-level singleton on purpose: the canvas (paste/drop), the image
- * picker (upload button), the preview decorations and the save flow all need
- * the same map without threading React state through four layers.
+ * Client-side staging for pasted and dropped images. The markdown gets the final public path at
+ * once, and the bytes wait here until Save commits them, the pull request being the only durable
+ * write path. A module-level singleton, because the canvas, the picker, the preview decorations
+ * and the save flow all need the same map.
  */
 
 export interface PendingImage {
@@ -26,9 +18,7 @@ export interface PendingImage {
 
 const pending = new Map<string, PendingImage>();
 
-/** Folder segment new uploads land in — the post's base slug, kept in sync
- *  by editor-client. Falls back to `uploads` before a slug exists (brand-new
- *  draft without a title yet). */
+/** Folder for new uploads: the post's base slug, kept in sync by editor-client, else `uploads`. */
 let uploadFolder = 'uploads';
 
 /** Sets the `/media/<folder>/` for new uploads from the post slug; `uploads` while it is blank. */
@@ -79,9 +69,8 @@ export async function addPendingImage(file: File): Promise<PendingImage> {
     );
   }
   const ext = EXT_BY_MIME[file.type];
-  // Uploads live in a per-post folder (/media/<post-slug>/<name>) so
-  // the repo stays organised — same convention the existing posts use. A
-  // numeric suffix dedupes same-named files within the session.
+  // One folder per post (`/media/<post-slug>/<name>`); a numeric suffix dedupes names within the
+  // session.
   const base = sanitizeName(file.name);
   let path = `/media/${uploadFolder}/${base}.${ext}`;
   for (let n = 2; pending.has(path); n++) {

@@ -11,12 +11,8 @@ interface EditorBubbleMenuProps {
 }
 
 /**
- * Selection-floating toolbar — bold, italic, strike, code, link.
- *
- * Strictly text-formatting only. Ref chip / link / widget editing all live
- * in the right-hand PropertiesPanel now, so this menu doesn't try to render
- * a parallel variant editor anymore (which used the old stale-position apply
- * path and would drift onto the wrong link).
+ * The blog editor's selection toolbar, for text formatting only (bold, italic, strike, code,
+ * link); chips, links and widgets are edited in the PropertiesPanel.
  */
 export function EditorBubbleMenu({ editor }: EditorBubbleMenuProps) {
   if (!editor) return null;

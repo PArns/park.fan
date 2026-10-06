@@ -5,13 +5,7 @@ import { denyUnlessAdmin } from '@/lib/admin/session';
 import { getRideImages, listParks, searchMedia } from '@/lib/media';
 
 /**
- * Which rides have no picture.
- *
- * The per-entity answer has always been visible — open a ride's Bilder tab and
- * it says "no images". The aggregate never was, in the admin or anywhere else,
- * so "which of this park's forty rides is still blank" meant opening forty
- * tabs. `pnpm audit:media` reports the inverse from a terminal; this is the
- * question an editor actually asks before spending an afternoon on photos.
+ * Which rides have no picture, the question an editor asks before an afternoon of photos.
  *
  * Two shapes:
  *
@@ -52,9 +46,8 @@ export async function POST(request: Request) {
   const without: string[] = [];
   for (const slug of rideSlugs) {
     if (typeof slug !== 'string' || !slug) continue;
-    // `getRideImages` is the right lookup rather than a folder listing: a
-    // Halloween photo of Troy lives in `toverland-halloween` and still answers
-    // for the ride, and `alsoRides` means one file can cover two.
+    // `getRideImages`, not a folder listing: a photo in another collection, or one naming the
+    // ride in `alsoRides`, answers for it too.
     (getRideImages(parkSlug, slug).length > 0 ? withImage : without).push(slug);
   }
 

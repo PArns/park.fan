@@ -7,22 +7,10 @@ import { adminGithubToken, adminRepo } from '@/lib/admin/github';
 import { resolveSession, sessionChanges } from '@/lib/admin/media-session';
 
 /**
- * Is a media session running, where is it, and what is already in it?
- *
- * A "session" is the branch carrying the `media/session-` prefix and the pull
- * request opened for it. Everything saved from the admin joins it, so retagging a
- * shoot is one reviewable PR instead of one per image. The state lives in git
- * rather than in the browser, which is why this is a request and not a
- * `sessionStorage` read: a reload, a second tab or a different machine must all
- * see the same session.
- *
- * It also answers **what changed** — the PR's own log lines plus the files the
- * branch actually touches. Saving into a shared pull request without being able
- * to see what is in it is how the wrong thing gets merged; the file list is the
- * one answer git can give that the log cannot lie about.
- *
- * It ends where it began — merge or close the PR, and the next save opens a new
- * one. The admin's "Start a new pull request" is the early exit.
+ * Whether a media session is running, where, and what is in it. A session is the branch with the
+ * `media/session-` prefix and its pull request; the state lives in git, so a reload, a second tab
+ * or another machine see the same one. The file list is what the branch touches, which the log
+ * cannot get wrong.
  */
 
 export const runtime = 'nodejs';

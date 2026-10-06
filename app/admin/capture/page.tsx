@@ -46,20 +46,9 @@ import {
 import type { BacklogResponse, UploadState } from './_lib/types';
 
 /**
- * Photographing a park, from inside the park.
- *
- * Every other surface in the admin assumes a desk: a table, a filter row, a detail
- * panel beside the thing being edited. This one assumes a hand, a phone, sunlight,
- * and a queue you are about to walk past. So it is one column of large targets, and
- * it answers exactly two questions — what is missing a photograph, and what is in
- * front of me — with the same list under two sort orders rather than two lists.
- *
- * The ordering is not this file's business (`lib/media/photo-backlog.ts`), and
- * neither is the upload (`_lib/use-capture-uploads.ts`). What lives here is the
- * screen and its one real decision: what to do when there is no fix. Location is
- * refused, unavailable indoors, and wrong in a car park — so the park is a value
- * that can always be set by hand, and the ordering by distance is the thing that
- * degrades, not the page.
+ * Photographing a park from inside it: one column of large targets for a phone, and one list
+ * under two sort orders (what is missing a photo, what is in front of me). Location can be refused
+ * or wrong, so the park can always be set by hand and only the distance ordering degrades.
  */
 
 type SortMode = 'importance' | 'distance';
@@ -84,19 +73,15 @@ export default function CapturePage() {
   );
   const remembered = useMemo(() => parseRememberedPark(savedPark), [savedPark]);
 
-  // A hand-picked park outranks the coordinates whether it was picked a minute
-  // ago or before the reload — that is what picking one is for. A remembered
-  // detection ranks below a fresh fix instead: it fills the gap until the
-  // coordinates answer again, and is wrong the moment somebody drives on.
+  // A hand-picked park outranks the coordinates, before or after a reload. A remembered detection
+  // ranks below a fresh fix: it only fills the gap until the coordinates answer again.
   const rememberedManual = remembered?.manual ? remembered.path : null;
   const rememberedFix = remembered && !remembered.manual ? remembered.path : null;
   const chosenPath = manualPath ?? rememberedManual;
   const path = chosenPath ?? park?.path ?? rememberedFix ?? null;
 
-  // Written whenever the park in force changes, so the next mount has it. What
-  // is written is what is in force, hand-picked parks included — writing the
-  // detected one while a pick from before the reload is still on screen would
-  // let the coordinates take the screen back on the next reload.
+  // Written whenever the park in force changes, hand-picked included, so the coordinates cannot
+  // take the screen back on the next reload.
   useEffect(() => {
     if (chosenPath) rememberPark({ path: chosenPath, manual: true });
     else if (park) rememberPark({ path: park.path, manual: false });

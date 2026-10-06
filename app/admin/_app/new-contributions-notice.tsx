@@ -9,19 +9,9 @@ import { useCan } from './session';
 import type { SubmissionSummary } from '@/lib/contribute/types';
 
 /**
- * "Photos came in" — said once, when you arrive.
- *
- * Visitor submissions wait in a queue nobody opens without a reason, and the
- * first ones sat there for days. So the shell asks after the login whether
- * anything is pending that this browser has not been told about, and says so
- * with a way straight to it. Asked again when the tab comes back into focus
- * after a while, because the admin is a long-lived tab and "after the login"
- * can be the morning.
- *
- * "Told about" is per browser and lives in localStorage: it is a reader's
- * convenience, not a fact about the submission, and a second moderator on
- * another machine should get their own notice. Arriving on the moderation page
- * counts as being told.
+ * "Photos came in", said once on arrival and again when the long-lived tab regains focus after a
+ * while. "Told about" is per browser in localStorage, so a second moderator gets their own notice;
+ * opening the moderation page counts as being told.
  */
 
 const SEEN_KEY = 'parkfan_admin_contributions_seen';

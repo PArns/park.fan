@@ -21,17 +21,8 @@ import {
 import { roleAtLeast, type AdminRole } from '@/lib/admin/roles';
 
 /**
- * The admin's map of itself.
- *
- * One list, read by three things: the sidebar, the command palette, and the
- * breadcrumb that names the current page. They used to be three separate
- * lists — the palette did not exist and the title was derived by a
- * longest-prefix match over the sidebar — and the cost of that was a page you
- * could reach but not find.
- *
- * `minRole` is a display filter, not a security boundary. The API enforces
- * roles; hiding a link an account cannot use is a courtesy that stops somebody
- * discovering their permissions by collecting 403s.
+ * The admin's map of itself, read by the sidebar, the command palette and the breadcrumb.
+ * `minRole` is a display filter, not a security boundary: the API enforces roles.
  */
 
 export interface NavItem {
@@ -44,11 +35,8 @@ export interface NavItem {
   /** Extra words the palette should match on. */
   keywords?: string[];
   /**
-   * Routes that belong to this entry without sitting under its href.
-   *
-   * A ride is edited at `/admin/attractions/<id>`, which no entry owns by
-   * prefix — so the breadcrumb read "Admin", the sidebar highlighted nothing,
-   * and the page presented itself as somewhere outside the admin's own map.
+   * Routes that belong to this entry without sitting under its href (`/admin/attractions/<id>`),
+   * so the breadcrumb and the sidebar still place them.
    */
   covers?: string[];
 }

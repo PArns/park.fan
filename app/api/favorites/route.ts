@@ -4,7 +4,7 @@ import { enrichParksWithImages, enrichAttractionsWithImages } from '@/lib/utils/
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 import { stripUnreadableWaitStats } from '@/lib/utils/live-wait-times';
 
-/** Response depends on cookies and optionally IP; must not be cached. */
+// The answer depends on cookies and optionally the IP, so it is never cached.
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -16,10 +16,8 @@ export async function GET(request: NextRequest) {
   const lng = searchParams.get('lng');
 
   try {
-    // Build API URL
     const apiUrl = new URL(`${getApiBaseUrl()}/v1/favorites`);
 
-    // Add query parameters if provided
     if (parkIds) {
       apiUrl.searchParams.set('parkIds', parkIds);
     }
@@ -62,9 +60,8 @@ export async function GET(request: NextRequest) {
     const data = await response.json();
 
     if (data.parks && Array.isArray(data.parks)) {
-      // Same rule the nearby list and the card overlay apply: a park with no readable
-      // source contributes no wait times, so its averages and open-count are zeros over
-      // an empty set. Dropped here so the favourite card falls back to its no-data layout.
+      // A park with no readable source has averages over an empty set; dropped so the card falls
+      // back to its no-data layout. See docs/rules/parks-we-cannot-read.md.
       data.parks = enrichParksWithImages(data.parks).map(stripUnreadableWaitStats);
     }
 

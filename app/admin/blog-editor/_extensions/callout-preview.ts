@@ -9,12 +9,9 @@ import type { Node as PMNode } from '@tiptap/pm/model';
  *     > [!NOTE]
  *     > Useful context the reader shouldn't skip.
  *
- * The doc keeps the plain blockquote + `[!TYPE]` marker text (perfect GFM
- * round-trip, renders sensibly on GitHub too) — this plugin only decorates:
- * the blockquote gets a coloured `editor-callout--<type>` class matching the
- * published blog's box, and the marker itself is styled as a badge pill.
- * Deleting the marker text turns the box back into a regular quote — honest
- * WYSIWYG with no hidden state.
+ * The doc keeps the plain blockquote and marker text, so the GFM round trip is exact; this plugin
+ * only decorates the blockquote and styles the marker as a pill. Deleting the marker makes it a
+ * plain quote again.
  */
 
 const MARKER_RE = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|CORRECTION|QUOTE)\]/;

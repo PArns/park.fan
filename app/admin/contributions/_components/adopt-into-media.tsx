@@ -13,21 +13,9 @@ import type { Vocabulary } from '../../media/_lib/types';
 import type { AssignedEntity, SubmissionRecord, StoredImageRecord } from '@/lib/contribute/types';
 
 /**
- * The step between moderation and the media database.
- *
- * Approving a visitor's photo did nothing to it: the bytes stayed in the
- * private submission store, and getting one onto a ride page meant downloading
- * the file, renaming it, writing a sidecar and opening a pull request by hand.
- * A hover button that did it in one click existed, but it was invisible until
- * you pointed at a thumbnail, wrote the credit under a key the sidecar does not
- * have (`credit.name`, so the photographer's name was dropped), and skipped
- * the part a person has to decide — the focal point, the roles, the alt text.
- *
- * So this hands the chosen photos to the media browser's own upload dialog,
- * the walkthrough every other photo goes through, with what the submission
- * already says filled in: park, ride, caption and who took it. The moderator
- * looks at each picture once, the batch lands in the open media pull request,
- * and the submission records where each photo went.
+ * The step between moderation and the media database: the chosen photos go through the media
+ * browser's own upload walkthrough, prefilled with what the submission says (park, ride, caption,
+ * photographer), into the open media pull request, and the submission records where each went.
  */
 
 interface MediaPayload {
@@ -123,10 +111,8 @@ export function AdoptIntoMedia({
               ride,
               caption: caption.trim(),
             })),
-            // The visitor's name when they gave one, and nobody's when they did
-            // not: an empty author renders no credit line at all, which is the
-            // honest answer. It is never filled with our own photographer — the
-            // picture is theirs, under the licence they granted on upload.
+            // The visitor's name when given, otherwise none: the picture is theirs, under the
+            // licence they granted, and never credited to our own photographer.
             credit: {
               ...(credit.trim() ? { author: credit.trim() } : {}),
               license: 'all-rights-reserved',

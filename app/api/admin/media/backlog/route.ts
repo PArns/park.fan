@@ -19,24 +19,10 @@ import { getStandbyWait } from '@/lib/utils/park-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 
 /**
- * One park's photo backlog: which rides have no picture, hardest-hitting first.
- *
- * The existing `/coverage` endpoint answers half of this and stays the right call
- * from the park editor, where the ride list is already on screen. Standing in a
- * park with a phone there is no ride list, and assembling one client-side means
- * pulling the whole park payload (65–85 KB, measured across Phantasialand, Movie
- * Park and Europa-Park) over park WLAN and then re-deriving the ranking in the
- * browser. This does it once, on the server, and answers a few KB.
- *
- * `/api/nearby` is deliberately NOT the source. It drops rides without coordinates
- * and rides that are definitively out of season — reasonable for "what can I ride
- * right now", wrong here, because the ride that cannot open before November is
- * exactly the one nobody has ever photographed.
- *
- * Both upstream calls may fail, and they fail differently:
- *   - no park payload → 404/502, there is nothing to say
- *   - no `/stats`     → the ranking loses its top layer and carries on, which is
- *                       what the layering in `lib/media/photo-backlog.ts` is for.
+ * One park's photo backlog: which rides have no picture, hardest-hitting first, ranked on the
+ * server so a phone in the park does not pull the whole park payload. Not built on `/api/nearby`,
+ * which drops out-of-season rides, the ones nobody has photographed. Without `/stats` the ranking
+ * only loses its top layer (`lib/media/photo-backlog.ts`).
  */
 
 export const runtime = 'nodejs';
@@ -45,37 +31,22 @@ export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
 /**
- * `topN: 30` rather than the default 10, and rather than something bigger.
- *
- * It is one of the two values `/api/parks/.../stats` forwards from its closed set,
- * so this asks for an object the backend may already hold instead of minting a
- * third cache key per park. Thirty ranked rides covers three quarters of a
- * mid-sized park; below that the ordering falls back to `isHeadliner` and today's
- * numbers, which is what it is built to do.
+ * One of the values `/api/parks/.../stats` forwards from its closed set, so this asks for an
+ * object the backend may already hold instead of minting another cache key per park.
  */
 const STATS_TOP_N = 30;
 
 /**
- * Sidecars read from the branch one by one, at most this many per request.
- *
- * Only a sidecar the session changed rather than added needs a read: an added
- * one comes whole in its patch. The capture screen only adds, so this is the
- * media browser's retagging, where the ride is usually the one already on `main`.
+ * Sidecars read from the branch one by one, at most this many per request. Only a changed sidecar
+ * needs a read; an added one comes whole in its patch.
  */
 const MAX_SIDECAR_READS = 40;
 
 /**
- * What the open media session already holds for this park.
- *
- * The media index is built from `main`, and a photo taken this morning sits in
- * the session's draft pull request until the evening review. Without this, a
- * reload put every ride photographed today back into "Fehlt noch" and named its
- * next photo as if the first did not exist — the same file name, written over the
- * photo already in the pull request. `lib/media/session-photos.ts` says how the
- * diff is read.
- *
- * Null when GitHub could not be asked. The backlog still answers from `main` then,
- * and says so, rather than failing the screen in a dead spot.
+ * What the open media session already holds for this park. The index is built from `main`, so
+ * without this a reload lists today's photos as missing and names the next one over the photo
+ * already in the pull request. Null when GitHub could not be asked; the backlog then answers from
+ * `main` and says so.
  */
 async function sessionPhotos(
   parkSlug: string
@@ -167,9 +138,8 @@ export async function GET(request: Request) {
       p90: ranked?.p90 ?? null,
       hasRideProfile: Boolean(attraction.rideProfile),
       isCurrentlyInSeason: attraction.isCurrentlyInSeason ?? null,
-      // `getRideImages`, not a folder listing: a Halloween photo of Troy lives in
-      // `toverland-halloween` and answers for the ride all the same, and one file
-      // naming a second slug in `alsoRides` covers both halves of Winja's.
+      // `getRideImages`, not a folder listing: a photo in another collection, or one naming the
+      // ride in `alsoRides`, answers for it too.
       hasPhoto: inSession || getRideImages(parkSlug, attraction.slug).length > 0,
       inSession,
     };
@@ -189,14 +159,8 @@ export async function GET(request: Request) {
           image.roles.includes('park-background')
         ),
         /**
-         * File names already used in `public/media/<park>/`, so the phone can name
-         * a new photograph without colliding.
-         *
-         * A ride with no picture gets its slug; a second shot of it needs a
-         * suffix, and picking one blind is how a save silently overwrites the
-         * photo taken an hour earlier — `commit` writes by path and does not ask.
-         * Only this collection matters: a Halloween photo of the same ride lives
-         * in a different folder and cannot collide.
+         * File names already used in `public/media/<park>/`, so the phone can name a new photo
+         * without colliding: `commit` writes by path and would silently overwrite.
          */
         takenNames: [
           ...new Set([
@@ -216,9 +180,8 @@ export async function GET(request: Request) {
        */
       sessionChecked: session !== null,
       /**
-       * Hansa-Park and its kind publish no wait times at all, so every ride reads
-       * zero and the ordering falls through to the name. Said out loud here,
-       * because a ranking with no visible reason on any row looks broken.
+       * Parks without a wait-time source read zero on every ride, so the ordering falls through
+       * to the name; said out loud because a ranking with no visible reason looks broken.
        */
       waitTimesAvailable: hasReadableWaitTimes(park),
       statsAvailable: rankBySlug.size > 0,

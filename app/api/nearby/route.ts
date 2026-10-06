@@ -4,7 +4,7 @@ import { enrichParksWithImages } from '@/lib/utils/park-assets';
 import { getForwardedForHeaders, isLocalOrUnusableIp } from '@/lib/utils/request-ip';
 import { isSimulationEnabled, resolveSimLocation } from '@/lib/nearby-simulation';
 
-/** Response depends on client IP (GeoIP when no coords); must not be cached. */
+// The answer depends on the client IP (GeoIP without coordinates), so it is never cached.
 
 /** Default radius in meters (backend default: 1000). */
 const DEFAULT_RADIUS = 1000;

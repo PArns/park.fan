@@ -29,18 +29,14 @@ import { getPendingImage } from '../_lib/pending-images';
 export type EditorSelection =
   | {
       kind: 'ref';
-      /** Start of the link mark in the doc — used directly by setTextSelection
-       *  so we don't have to re-resolve via extendMarkRange (which can extend
-       *  to the wrong link if the click resolved inside an adjacent span). */
+      /** Start of the link mark, used directly: `extendMarkRange` can reach an adjacent link. */
       pos: number;
       from: number;
       to: number;
       href: string;
       /** Raw ref value (without leading `ref:`) — drives label heuristics. */
       value: string;
-      /** Author-visible link text, captured at click time. Used as the panel
-       *  title so the inspector reads "bare" / "full" / "Phantasialand" —
-       *  whatever the author typed — instead of always reading the slug. */
+      /** The link text as the author wrote it, captured at click time, for the panel title. */
       label?: string;
     }
   | { kind: 'link'; pos: number; from: number; to: number; href: string }
@@ -64,8 +60,7 @@ export type EditorSelection =
       caption: string;
       align: 'center' | 'left' | 'right' | 'wide';
       size?: 'small' | 'medium' | 'large';
-      /** Carried through from the chip click so the ImagePicker (when the
-       *  panel opens it via Pick…) can anchor itself near the image. */
+      /** The chip's rect, so an ImagePicker opened via "Pick…" anchors near the image. */
       rect?: { top: number; bottom: number; left: number; right: number };
     }
   | {
@@ -84,20 +79,13 @@ interface PropertiesPanelProps {
   selection: EditorSelection;
   /** Total markdown length — shown in the empty state stats. */
   charCount: number;
-  /** Triggered when the author asks to swap the underlying park/ride. The
-   *  rect (when supplied) anchors the picker near the click instead of
-   *  floating at the top of the viewport. */
+  /** The author asks to swap the park or ride; `rect` anchors the picker near the click. */
   onReplaceRef: (rect?: { top: number; bottom: number; left: number; right: number }) => void;
 }
 
 /**
- * Notion-style right-hand inspector. Replaces the popovers — clicking any
- * chip in the editor selects it here, so editing scales to N chips without
- * the stale-position weirdness the floating popovers ran into.
- *
- * Each section snapshots the selection's pos and operates via TipTap commands
- * (setTextSelection → extendMarkRange → setLink/unsetLink). The doc is the
- * source of truth at every keystroke — no cached from/to on the DOM.
+ * The blog editor's right-hand inspector: clicking a chip selects it here, and each section edits
+ * the doc through TipTap commands, with the doc as the source of truth on every keystroke.
  */
 export function PropertiesPanel({
   editor,
@@ -188,11 +176,8 @@ function RefProperties({
     if (!editor) return;
     const value = selection.value;
     const newHref = `ref:${value}?${variant}`;
-    // setTextSelection over the FULL link range and replace the mark — never
-    // use extendMarkRange here. ProseMirror's mark-range extension can drift
-    // into an adjacent link when the source link is the trailing edge of a
-    // paragraph (which is exactly the case for inline ?info / ?long badges
-    // and the post-link widget anchor of ?full spotlights).
+    // `setTextSelection` over the full link range, never `extendMarkRange`, which drifts into an
+    // adjacent link when the source link ends a paragraph.
     editor
       .chain()
       .focus()
@@ -200,9 +185,7 @@ function RefProperties({
       .unsetMark('link')
       .setMark('link', { href: newHref })
       .run();
-    // Re-emit the selection event so the panel's `currentOpt` reflects the
-    // new href on the next render — otherwise the pill stays glued to the
-    // previous variant even though the doc has updated.
+    // Re-emit the selection so `currentOpt` shows the new href on the next render.
     window.dispatchEvent(
       new CustomEvent('parkfan-selection', {
         detail: { ...selection, href: newHref },
@@ -287,11 +270,7 @@ function RefProperties({
   );
 }
 
-/**
- * Inner thin wrapper so the form remounts (`key={pos}`) every time a different
- * chip is selected — that resets the uncontrolled state cleanly without
- * the `setState-in-effect` lint trap on React 19.
- */
+/** Remounts the form per chip (`key={pos}`), resetting its state without a set-state effect. */
 function LinkProperties(props: {
   editor: Editor | null;
   selection: Extract<EditorSelection, { kind: 'link' }>;
@@ -393,15 +372,7 @@ function LinkPropertiesForm({
   );
 }
 
-/**
- * Per-widget editable attr matrix. Each kind only surfaces the fields the
- * blog renderer cares about — author can still drop into the .md source view
- * if they want something exotic.
- */
-// Field roster per widget kind comes from the shared registry — see
-// _lib/widgets.ts for the catalogue. Adding a widget there auto-surfaces the
-// matching panel form here.
-
+/** The widget fence editor; each widget's fields come from the registry in `_lib/widgets.ts`. */
 function WidgetProperties(props: {
   editor: Editor | null;
   selection: Extract<EditorSelection, { kind: 'widget' }>;
@@ -423,10 +394,8 @@ function WidgetForm({
 
   const save = () => {
     if (!editor) return;
-    // Serialise the new attrs into one body line per key (the renderer
-    // already handles this form) and replace the codeBlock's whole content
-    // with it. Keeping the language attr intact preserves the widget name
-    // in the fence info string.
+    // One body line per key replaces the codeBlock's content; the language attr keeps the widget
+    // name in the fence.
     const body = fields
       .map((f) => `${f.key}: ${attrs[f.key]?.trim() ?? ''}`)
       .filter((line) => !line.endsWith(': '))
@@ -439,9 +408,8 @@ function WidgetForm({
       .chain()
       .focus()
       .command(({ tr, state }) => {
-        // nodeFrom was captured at click time — re-anchor on the nearest
-        // codeBlock still carrying this widget's fence language so edits
-        // above the fence can't make the save splice the wrong range.
+        // Re-anchor on the nearest codeBlock with this fence language, since edits above the
+        // fence shift the `nodeFrom` captured at click time.
         const pos = reanchorPos(
           state.doc,
           selection.nodeFrom,
@@ -501,9 +469,8 @@ function WidgetForm({
       />
 
       {fields.map((f) => {
-        // Which fields are "park" or "ride" slugs — those get a Pick button
-        // that opens the ParkRidePicker via a window event the editor-canvas
-        // catches. Keeps the panel ignorant of the picker's React state.
+        // Park and ride slug fields get a "Pick…" button that asks the canvas for its picker
+        // through a window event.
         const pickerMode: 'park' | 'ride' | null = ((): 'park' | 'ride' | null => {
           if (f.key === 'parkSlug') return 'park';
           if (f.key === 'slug') {
@@ -516,8 +483,6 @@ function WidgetForm({
         })();
         const openPicker = (ev: React.MouseEvent<HTMLButtonElement>) => {
           if (!pickerMode) return;
-          // Anchor the picker near the trigger button so it doesn't always
-          // float at the top of the viewport.
           const btnRect = ev.currentTarget.getBoundingClientRect();
           const rect = {
             top: btnRect.top,
@@ -532,10 +497,8 @@ function WidgetForm({
             ).detail;
             if (detail.id !== id) return;
             window.removeEventListener('parkfan-park-picker-result', onResult as EventListener);
-            // Pull the latest attrs to avoid stomping fields the user edited
-            // between opening and choosing. When picking a ride for the
-            // attraction-widget we also auto-fill parkSlug from the ride's
-            // parent — otherwise the author has to pick twice.
+            // The latest attrs, so fields edited meanwhile survive. Picking a ride also fills
+            // `parkSlug` from its parent.
             const hasParkSlugField = fields.some((x) => x.key === 'parkSlug');
             setAttrs((prev) => {
               const next = { ...prev, [f.key]: detail.slug };
@@ -595,14 +558,8 @@ function WidgetForm({
 }
 
 /**
- * Re-mount the image form on every new selection so its uncontrolled fields
- * pick up the new image cleanly without an in-effect setState dance.
- */
-/**
- * Bare-URL embed paragraph editor. The chip in the canvas represents a
- * paragraph whose only content is a YouTube / Instagram / Suno URL — saving
- * replaces the paragraph's content with the new URL, deletion drops the whole
- * paragraph (and adjacent blank lines collapse on the next markdown round-trip).
+ * Editor for a bare-URL embed paragraph (YouTube, Instagram, Suno): saving replaces the URL,
+ * deleting drops the paragraph.
  */
 function EmbedProperties(props: {
   editor: Editor | null;
@@ -733,6 +690,7 @@ function EmbedForm({
   );
 }
 
+/** Remounts the image form per selection, so its fields start from the new image. */
 function ImageProperties(props: {
   editor: Editor | null;
   selection: Extract<EditorSelection, { kind: 'image' }>;
@@ -784,9 +742,7 @@ function ImageForm({
     return parts.join(' | ');
   };
 
-  /** Write a new alt string into the doc — used by both the manual Save button
-   *  (for alt + caption text) and the live align/size toggles which apply on
-   *  click instead of waiting for Save. */
+  /** Writes a new alt string into the doc, for Save and for the align and size toggles. */
   const writeAlt = (next: {
     alt: string;
     caption: string;
@@ -855,10 +811,8 @@ function ImageForm({
     window.dispatchEvent(new CustomEvent('parkfan-clear-selection'));
   };
   const pickImage = (ev: React.MouseEvent<HTMLButtonElement>) => {
-    // Anchor to the Pick button itself — the panel is sticky so the button
-    // is always on-screen, whereas the underlying img can be scrolled
-    // away. The previous image-rect anchoring sent the picker off-viewport
-    // whenever the author scrolled before clicking Pick.
+    // Anchored to the Pick button, which the sticky panel keeps on screen; the image may have
+    // scrolled away.
     const r = ev.currentTarget.getBoundingClientRect();
     window.dispatchEvent(
       new CustomEvent('parkfan-image-pick-request', {

@@ -5,15 +5,9 @@ import { CloudUpload, ExternalLink, GitPullRequest, Loader2 } from 'lucide-react
 import type { ActiveUpload } from '../_lib/types';
 
 /**
- * What has happened to the photographs so far, pinned to the bottom of the screen.
- *
- * It is the only place the pull request is reachable from, and that is deliberate:
- * the merge is done on GitHub, from the phone, at the end of a session, and a link
- * that scrolls away with the list is a link nobody finds when they want it.
- *
- * The queue count is the part that matters. A photograph that failed to upload has
- * to be visibly somewhere, or the only honest reading of a silent screen is that
- * the picture is gone.
+ * What happened to the photos so far, pinned to the bottom of the capture screen, with the link to
+ * the pull request that is merged from the phone. The queue count shows a failed upload is still
+ * somewhere.
  */
 export function UploadBar({
   active,

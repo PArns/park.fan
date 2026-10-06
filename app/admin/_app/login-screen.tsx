@@ -32,51 +32,13 @@ type LoginResponse =
   | { status: 'locked' | 'rate-limited'; retryAfterSeconds: number };
 
 /**
- * The way in.
+ * The admin login: e-mail, password and code in one form, behind one Turnstile solve.
  *
- * Three states rather than the usual two, because the backend distinguishes
- * three and flattening them would cost the person at the keyboard the only
- * clue they get: a wrong password, a second factor that is simply not supplied
- * yet, and a lockout that waiting will fix. The third is the one worth the
- * extra branch — a form that answers "invalid credentials" to a locked account
- * invites the exact behaviour that locked it.
- *
- * The photograph is the page, not a wallpaper behind a box. Centring a card on
- * a picture means scrimming the picture until it is mud exactly where the
- * subject is, and the result was a grey rectangle floating on a smear. So the
- * form sits in a column on the left with the scrim as a horizontal gradient,
- * and the right two thirds of the photo stay untouched. It is the admin of a
- * site about theme parks, edited by people who go to them, and the media
- * database is right there with the rotation pool the homepage uses — through
- * `@/lib/media/hero`, the client-safe 21 KB slice, never the 107 KB catalog.
- *
- * The photo is picked after mount so the server and the browser cannot
- * disagree about which one, and everything under it — the gradient, the two
- * drifting aurora blobs the maintenance page already uses — carries the screen
- * on its own if the image never arrives.
- *
- * Three more things sit in this form and all of them are about somebody else's
- * software doing the typing.
- *
- * A **Turnstile challenge**, the same one `/contribute` uses, solved before the
- * credentials are sent and re-solved after every attempt because a token may be
- * spent once — see `/api/admin/session` for why the check belongs in front of
- * the backend's limiter rather than behind it. One login is one solve: the
- * two-step version this replaces made an account with a second factor solve
- * twice.
- *
- * **One form for all three fields**, e-mail, password and code, from the first
- * paint. The code used to arrive on a second screen after the credentials had
- * been sent, and no password manager would fill it there — see the comment
- * above the form for the three attempts that established that.
- *
- * And the code field is **one input**, not six. It looks like six: the boxes are
- * presentational and the real field lies over them, transparent. That is the
- * shape a password manager can fill. The six real inputs it replaces took
- * `value.replace(/\D/g,'').slice(-1)` per box, so 1Password handing "123456" to
- * the first box left a 6 in it and nothing anywhere else — the autofill looked
- * like a typo. One field with `autocomplete="one-time-code"` on it is what
- * every manager, and iOS and Android, actually look for.
+ * The backend's three answers stay three on screen (wrong credentials, a missing second factor, a
+ * lockout), because "invalid credentials" over a locked account invites the retries that locked
+ * it. The form sits in a column on the left so the photo survives on the right, and the photo is
+ * picked after mount so server and browser cannot disagree about it. See
+ * docs/rules/the-admin-holds-no-credential.md.
  */
 export function LoginScreen() {
   const client = useQueryClient();
@@ -87,19 +49,17 @@ export function LoginScreen() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [totpCode, setTotpCode] = useState('');
-  // Set only by the backend's `totp-required`: this account has a second factor
-  // and the attempt carried no code. It decides a message and a focus, never
-  // which form is on screen — there is only one.
+  // Set only by the backend's `totp-required`. It decides a message and a focus, never which
+  // form is on screen: there is only one.
   const [totpMissing, setTotpMissing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lockedFor, setLockedFor] = useState<number | null>(null);
   const [busy, setBusy] = useState(false);
   const [capsLock, setCapsLock] = useState(false);
 
-  // The Turnstile token, and the widget that mints it. Empty means "not solved
-  // yet"; `turnstileBroken` means the challenge itself never arrived — a
-  // blocked script, an offline laptop — which is worth saying out loud rather
-  // than leaving a button greyed out with no reason given.
+  // An empty token means not solved yet. `turnstileBroken` means the challenge never arrived (a
+  // blocked script, an offline laptop), which the gate says out loud instead of leaving the
+  // button greyed out with no reason.
   const [turnstileToken, setTurnstileToken] = useState('');
   const [turnstileBroken, setTurnstileBroken] = useState(false);
   const turnstileRef = useRef<TurnstileHandle>(null);
@@ -149,9 +109,7 @@ export function LoginScreen() {
       });
 
       if (result.status === 'totp-required') {
-        // Not a step: the account has a second factor and this attempt carried
-        // no code. The field is already on screen — say what it wants and put
-        // the caret in it, rather than replacing the form with another one.
+        // Not a step: the code field is already on screen, so say what it wants and focus it.
         setTotpMissing(true);
         setError('Dieses Konto ist mit einem zweiten Faktor geschützt. Der Code fehlt noch.');
         totpRef.current?.focus();
@@ -169,10 +127,8 @@ export function LoginScreen() {
 
       await client.invalidateQueries({ queryKey: adminKeys.session });
     } catch (err) {
-      // A 401 no longer says which of the three was wrong, because all three
-      // went in one request. Naming them all beats guessing: the old wording
-      // ("E-Mail oder Passwort stimmt nicht") over a form that also holds a
-      // code would send somebody retyping a password that was right.
+      // All three fields go in one request, so a 401 cannot say which was wrong. Naming the code
+      // too keeps somebody from retyping a password that was right.
       const message =
         err instanceof AdminApiError && err.status !== 401
           ? err.message
@@ -180,18 +136,13 @@ export function LoginScreen() {
             ? 'E-Mail, Passwort oder Code stimmt nicht. Der Code wechselt alle 30 Sekunden.'
             : 'E-Mail oder Passwort stimmt nicht.';
       setError(message);
-      // The code is spent either way — it is valid for thirty seconds, and the
-      // next attempt needs the next one. The password is only cleared when no
-      // code was in play: with one, it is the likelier culprit, and emptying
-      // the password field over a mistyped digit is the annoyance PAR-291 got
-      // rid of.
+      // A code lives thirty seconds, so it is cleared either way. The password is cleared only
+      // when no code was in play: with one, the code is the likelier culprit.
       setTotpCode('');
       if (!code) setPassword('');
     } finally {
       setBusy(false);
-      // The token is spent whatever the answer was. Ask for a fresh one rather
-      // than replaying one Cloudflare has retired — and note that one login is
-      // now one token: the two-step version solved the challenge twice.
+      // A Turnstile token is single-use, so ask for a fresh one whatever the answer was.
       setTurnstileToken('');
       turnstileRef.current?.reset();
     }
@@ -209,18 +160,10 @@ export function LoginScreen() {
     attemptRef.current = attempt;
   });
 
-  // A filled code submits itself — but only once the other two fields hold
-  // something.
-  //
-  // Not a convenience: it is the other half of making the field fillable. A
-  // manager that fills all three and then leaves them sitting behind a button
-  // has saved nobody the typing they came to avoid, and on a phone the keyboard
-  // is covering the button by then. The guard on e-mail and password is what
-  // one form adds: the code is no longer the last thing anybody enters, and
-  // six digits typed into an otherwise empty form must not fire a request that
-  // can only fail. Guarded against firing twice for one code, and it waits for
-  // `canSubmit`, so a code that lands before the fresh Turnstile token goes as
-  // soon as the token arrives.
+  // A complete code submits itself: a manager that fills all three fields and leaves them behind
+  // a button saves nobody the typing. It waits for e-mail and password (six digits in an empty
+  // form can only fail), fires once per code, and waits for `canSubmit`, so a code that lands
+  // before the fresh Turnstile token goes when the token arrives.
   const autoSubmitted = useRef<string | null>(null);
   const credentialsFilled = email.trim().length > 0 && password.length > 0;
   useEffect(() => {
@@ -233,12 +176,8 @@ export function LoginScreen() {
     void attemptRef.current();
   }, [credentialsFilled, totpCode, canSubmit]);
 
-  // The bottom of the form: the challenge, whatever went wrong, and the button.
-  //
-  // A variable holding this render's elements rather than a component declared
-  // in here: a component declared in the render would be a new type on every
-  // render and would remount its whole subtree — the Turnstile widget with it —
-  // on every keystroke.
+  // A variable, not a component declared in the render: that would be a new type on every render
+  // and remount the Turnstile widget on every keystroke.
   const gateAndSubmit = (
     <>
       <TurnstileGate
@@ -328,14 +267,8 @@ export function LoginScreen() {
         className="from-background/90 absolute inset-0 bg-gradient-to-t via-transparent to-transparent"
       />
 
-      {/* Same two drifting blobs as the maintenance page, dimmed: they give the
-          column its own light, and they are the whole background on the half
-          second before the image lands.
-
-          Masked to the side the form is on, or they wash a teal film across the
-          photograph and undo the reason it is there. A blurred blob at this
-          size covers the viewport whatever its opacity, so the fix is the mask
-          and not a smaller number. */}
+      {/* Masked to the form's side: a blurred blob this size covers the viewport whatever its
+          opacity, and unmasked it washes a teal film over the photograph. */}
       <div
         aria-hidden="true"
         className={cn(
@@ -364,28 +297,9 @@ export function LoginScreen() {
             </div>
           </div>
 
-          {/* One form, all three fields, from the first paint.
-
-              It used to be two, and the second one is what this replaces. The
-              login asked for e-mail and password, sent them, and only then drew
-              a code field on a second screen. Three attempts tried to make a
-              password manager fill that second screen — a per-step `key` on one
-              `<form>`, then two sibling `<form>` elements, then dropping the
-              hidden `username` field beside the code (PAR-291, PAR-345,
-              PAR-404). Each was tested against a real vault and each came back
-              negative, the last one with no 2FA suggestion offered at all.
-
-              What they have in common is the assumption that the problem is the
-              shape of the second form. It is the second form. An extension
-              fills a login in one pass, from what is in the document when it
-              looks; a field that appears after a round trip was not there to be
-              filled. So there is nothing to fill in a second pass any more: one
-              `<form>`, one POST, one Turnstile solve.
-
-              The backend already answers this shape — `totp-required` is what
-              it says when an account has a second factor and the request
-              carried no code, not a step it insists on. An account without one
-              never sees that answer and never has to touch the code field. */}
+          {/* One form for all three fields from the first paint: a password manager fills a login
+              from what is in the document when it looks, so a code field that arrives after a
+              round trip is never filled. See docs/rules/the-admin-holds-no-credential.md. */}
           <form onSubmit={handleSubmit} className={CARD_CLASS}>
             <CardHairline />
 
@@ -404,11 +318,8 @@ export function LoginScreen() {
                   value={email}
                   onChange={(event) => {
                     setEmail(event.target.value);
-                    // A different address is a different account, and the next
-                    // one may have no second factor at all. Without this,
-                    // `canSubmit` would go on demanding six digits because a
-                    // previous account wanted them — the state the "Andere
-                    // Anmeldung" button used to clear.
+                    // A different address may be an account without a second factor; without
+                    // this, `canSubmit` keeps demanding the six digits a previous account wanted.
                     setTotpMissing(false);
                   }}
                   required
@@ -456,8 +367,6 @@ export function LoginScreen() {
             {gateAndSubmit}
           </form>
 
-          {/* Not a badge for its own sake: it is the one property of this login
-              worth knowing, and the reason the whole thing was rebuilt. */}
           <p className="text-muted-foreground mt-4 flex items-center gap-1.5 px-1 text-[11px]">
             <ShieldCheck className="h-3 w-3 shrink-0" />
             Die Sitzung liegt in einem httpOnly-Cookie. Der Browser hält kein Geheimnis.
@@ -465,9 +374,6 @@ export function LoginScreen() {
         </div>
       </div>
 
-      {/* Which park you are looking at. The same line the public hero shows,
-          and the reason the photo is worth having: somebody signing in at
-          seven in the morning gets Taron at night. */}
       {hero?.meta && (
         <p className="animate-in fade-in absolute right-4 bottom-4 flex max-w-[70vw] items-center gap-1.5 truncate rounded-full border border-white/10 bg-black/40 px-3 py-1.5 text-[11px] text-white/75 backdrop-blur-md duration-1000 motion-reduce:animate-none">
           <MapPin className="h-3 w-3 shrink-0 opacity-70" />
@@ -481,29 +387,20 @@ export function LoginScreen() {
 }
 
 /**
- * The login card keeps its own geometry — `h-11`, `rounded-xl`, a card rather than
- * a form row — but not its own font size. Under 16 px, iOS Safari zooms the page in
- * to meet a focused input and does not zoom back out on blur, so the first tap on
- * the first screen of the admin left somebody at 1.3× with a horizontal scrollbar
- * and a pinch to undo it. `sm:` puts 14 px back where there is a mouse.
+ * `text-base` below `sm`: under 16 px iOS Safari zooms in on a focused input and does not zoom
+ * back out on blur.
  */
 const FIELD_CLASS =
   'border-border/60 bg-background/50 focus:border-primary/60 focus:ring-primary/25 placeholder:text-muted-foreground/50 h-11 w-full rounded-xl border px-3 text-base outline-none transition-[color,box-shadow,border-color] focus:ring-2 sm:text-sm';
 
 /**
- * The glass card the form is drawn on. A class string rather than a wrapper
- * component, so the `<form>` itself is the card: a wrapper between the card and
- * the fields is one more element between a password manager and the three
- * inputs it is looking at.
+ * A class string rather than a wrapper, so the `<form>` itself is the card and no element stands
+ * between a password manager and the three inputs.
  */
 const CARD_CLASS =
   'border-border/60 bg-card/70 relative overflow-hidden rounded-3xl border p-6 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.95)] ring-1 ring-white/5 backdrop-blur-2xl sm:p-7';
 
-/**
- * A hairline where the light would hit. One pixel, and it is the difference
- * between a glass panel and a grey rectangle. Positioned against the `<form>`,
- * which carries `relative` through `CARD_CLASS`.
- */
+/** A highlight along the card's top edge, positioned against the `<form>` (see `CARD_CLASS`). */
 function CardHairline() {
   return (
     <span
@@ -550,39 +447,10 @@ function LoginField({
 }
 
 /**
- * The six-digit code. Six boxes, one input.
- *
- * The boxes are drawn, not typed into: a single `<input>` lies over them,
- * transparent, and the cells underneath render what is in it. Everything a
- * password manager, iOS or Android looks for is then on one element —
- * `autocomplete="one-time-code"`, `inputMode="numeric"`, a six-character limit
- * — and everything a person looks for is still there, because six boxes is what
- * makes "which digit am I on" answerable at a glance and a mistyped digit cost
- * one backspace instead of a re-read.
- *
- * It replaces six real inputs, and they were unfillable for a reason worth
- * writing down. Each one took `value.replace(/\D/g,'').slice(-1)` on change,
- * which is correct for a person typing one digit and destroys an autofill:
- * 1Password writes all six characters into the first box in one event, the
- * slice kept the last of them, and the result was a single 6 in box one and
- * five empty boxes. No error, nothing in the console — it looked like the fill
- * had simply missed.
- *
- * It sits in the same form as the e-mail and the password, and it is there
- * before anybody submits anything. Three tickets tried to get a password
- * manager to fill it on a screen of its own and all three were tested against a
- * real vault and failed (PAR-291, PAR-345, PAR-404, the last one with no
- * suggestion offered at all). An extension fills a login from what is in the
- * document when it looks, so a field that arrives after a round trip is not
- * part of that login. This one arrives with the others.
- *
- * It takes no focus on mount — the e-mail field does. Most accounts have no
- * second factor and leave this empty, and a caret starting in the third field
- * of three is a caret in the wrong one.
- *
- * `wanted` is set after the backend has answered `totp-required`: the account
- * has a second factor and the attempt carried no code. It underlines the field
- * rather than replacing the screen.
+ * The six-digit code: six drawn boxes under one transparent input, because password managers,
+ * iOS and Android fill `autocomplete="one-time-code"` on one field, and six real inputs cannot
+ * take a code written in one event. It takes no focus on mount, since most accounts leave it
+ * empty; `wanted` marks it once the backend has answered `totp-required`.
  */
 function TotpField({
   code,
@@ -616,25 +484,16 @@ function TotpField({
       </label>
 
       <div className="relative h-14">
-        {/* Above the input, not below it, and that is the whole reason this
-            wrapper has a `z-10`. A password manager paints the field it filled
-            — 1Password gives it a blue background — and the field here is the
-            transparent one lying over these boxes, so its fill used to cover
-            them while its own text stayed `text-transparent`: a blue bar with
-            no code in it. Drawn on top, the digits survive whatever colour an
-            extension chooses, and nothing is lost by it, because these boxes
-            take no pointer events and the input underneath is still the full
-            size of the row. */}
+        {/* Above the input (`z-10`): a password manager paints the field it filled, and drawn
+            below, the boxes would sit under that colour with the digits transparent. They take
+            no pointer events, so the input still gets every tap. */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 flex gap-2">
           {Array.from({ length: CODE_LENGTH }, (_, index) => (
             <div
               key={index}
               className={cn(
-                // Opaque, unlike the other two fields' `/50`: these boxes are
-                // what covers the input a password manager has painted, and a
-                // translucent one lets its blue through as a grey wash. The
-                // card behind them is dark enough that the difference is
-                // invisible until something is filled.
+                // Opaque, unlike the other fields' `/50`: a translucent box lets a password
+                // manager's fill colour through as a grey wash.
                 'border-border/60 bg-background flex h-14 min-w-0 flex-1 items-center justify-center rounded-xl border text-xl font-semibold tabular-nums transition-[color,box-shadow,border-color]',
                 wanted && !code && 'border-amber-400/60',
                 code[index] && 'border-primary/40',
@@ -678,14 +537,8 @@ function TotpField({
 }
 
 /**
- * The Turnstile challenge, and what to show while it is not solved yet.
- *
- * Three states, because the middle one is most of them: the widget usually
- * settles in well under a second without asking anybody anything, so a line of
- * text is the right amount of interface for it. The third state is the one that
- * matters — a challenge that never loads (an extension, a captive portal, an
- * office proxy) would otherwise be a permanently greyed-out button with no
- * explanation, and the person in front of it has no way to guess what is wrong.
+ * The Turnstile challenge and its status line. A challenge that never loads (an extension, a
+ * captive portal, an office proxy) gets a message and a retry, not a silently disabled button.
  */
 function TurnstileGate({
   solved,

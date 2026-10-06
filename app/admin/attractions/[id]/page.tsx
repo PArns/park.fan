@@ -24,12 +24,8 @@ import { EntityMediaPanel } from '../../_ui/entity-media';
 import { EntityPostsPanel } from '../../_ui/entity-posts';
 
 /**
- * One ride.
- *
- * The same four-tab shape as a park, for the same reason — but the second tab
- * is the ride profile rather than a list of children, because a ride's
- * interesting curation is not its facts so much as what it *is*: the glossary
- * terms that connect it to the dictionary and let the dictionary list it back.
+ * One ride, in the park editor's tab shape, with the ride profile as the second tab: its glossary
+ * terms connect the ride to the dictionary.
  */
 
 type Tab = 'fields' | 'profile' | 'media' | 'history';
@@ -66,18 +62,12 @@ export default function AttractionDetailPage({ params }: { params: Promise<{ id:
   return (
     <AdminPage>
       <header className="space-y-3">
-        {/* The way back, spelled out. The park's name under the title has been
-            a link all along, but it reads as a subtitle — and this page is
-            reached from a park, from the palette and from a photo, so leaving
-            "where did I come from" to the browser's back button was the one
-            thing every route into it had in common. */}
+        {/* The way back, spelled out: the park's name under the title reads as a subtitle, not a
+            link. */}
         <Link
           href={
             data.park
-              ? // Back to the ride list, not to the park's master data: this
-                // page is reached from that list, one ride at a time, and
-                // landing on another tab means finding your place again after
-                // every single one.
+              ? // Back to the ride list, where this page is reached from one ride at a time.
                 `/admin/parks/${data.park.id}?tab=attractions`
               : '/admin/parks'
           }
@@ -131,10 +121,8 @@ export default function AttractionDetailPage({ params }: { params: Promise<{ id:
           />
         </div>
 
-        {/* Aus der Kennzahlenzeile heraus, weil er dort als Tatsache stand, die
-            man zur Kenntnis nimmt — setzen ließ er sich nur in der
-            Retirement-Arbeitsliste, und die zeigt eine Bahn nur, solange der
-            Detector sie vorlegt. */}
+        {/* Settable here, not only in the retirement worklist, which shows a ride only while the
+            detector proposes it. */}
         <AttractionStatus
           attractionId={data.id}
           name={data.name}

@@ -17,7 +17,7 @@ export async function GET(request: Request) {
   const enTerms = locale !== 'en' ? await getGlossaryTerms('en') : terms;
   const enNameMap = new Map(enTerms.map((t) => [t.id, t.name]));
 
-  // Calculate match score: exact name match = 100, alias match = 90, substring match = varies by position
+  // Exact matches rank first (name, English name, alias), then substrings, a prefix above the rest.
   interface ScoredTerm {
     term: (typeof terms)[0];
     score: number;
@@ -30,40 +30,33 @@ export async function GET(request: Request) {
       const lowerEnName = enName?.toLowerCase();
       const lowerQuery = query;
 
-      // Exact match on name = 100 points
       if (lowerName === lowerQuery) {
         return { term: t, score: 100 };
       }
 
-      // Exact match on English name = 95 points (slightly lower than localized name)
+      // The English name ranks just below the localized one.
       if (lowerEnName && lowerEnName === lowerQuery) {
         return { term: t, score: 95 };
       }
 
-      // Exact match on alias = 90 points
       if (t.aliases?.some((alias) => alias.toLowerCase() === lowerQuery)) {
         return { term: t, score: 90 };
       }
 
-      // Substring matches in name
       if (lowerName.includes(lowerQuery)) {
-        // Name starts with query = 50 points, otherwise 30 points
         const score = lowerName.startsWith(lowerQuery) ? 50 : 30;
         return { term: t, score };
       }
 
-      // Substring matches in English name = lower priority (25 or 15 points)
       if (lowerEnName && lowerEnName.includes(lowerQuery)) {
         const score = lowerEnName.startsWith(lowerQuery) ? 25 : 15;
         return { term: t, score };
       }
 
-      // Substring in short definition = 20 points
       if (t.shortDefinition.toLowerCase().includes(lowerQuery)) {
         return { term: t, score: 20 };
       }
 
-      // No match
       return null;
     })
     .filter((x): x is ScoredTerm => x !== null)

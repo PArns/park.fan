@@ -24,24 +24,14 @@ const EXT_TYPES: Record<string, string> = {
 /**
  * GET /api/admin/contributions/file?key=contributions/<id>/<file>
  *
- * Streams a contribution image to the admin moderation UI. This is the ONLY way the
- * bytes are exposed: the Blob store is private, so we fetch the blob server-side with
- * `get(..., { access: 'private' })` and stream it back behind the admin session.
- * The local driver reads from `.uploads/` instead.
- *
- * An `<img>` tag cannot set an Authorization header, which used to mean the
- * credential had to travel in the query string — and therefore into the
- * browser's history, the referrer of anything the page linked to, and this
- * app's own access log. The httpOnly session cookie removes that problem
- * rather than working around it: the browser attaches it to the image request
- * by itself, and nothing readable ends up in the URL.
+ * Streams a contribution image to the moderation UI behind the admin session, the only way the
+ * bytes are exposed, since the Blob store is private. The session cookie travels with the `<img>`
+ * request by itself, so no credential ends up in a URL.
  */
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  // The same guard as the routes that list these submissions, and for the same
-  // reason: `resolveAdminIdentity` answers "this token is a session", which is
-  // one question short of "this account may look at this". It skipped the role
-  // floor and the must-change-password refusal that every sibling applies.
+  // `denyUnlessAdmin`, like the routes that list these submissions: a valid session is not yet
+  // permission to look.
   const denied = await denyUnlessAdmin(request);
   if (denied) return denied;
 

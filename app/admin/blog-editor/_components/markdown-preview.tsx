@@ -10,13 +10,8 @@ interface MarkdownPreviewProps {
 }
 
 /**
- * Editable `.md` source view. When `onChange` is wired the textarea is the
- * source of truth for the canvas — TipTap's setContent picks up changes via
- * the parent state. Read-only when `onChange` is omitted (keeps the prop
- * shape forwards-compatible if a caller just wants a viewer).
- *
- * Layout: terminal-style monospace + gutter with 1-indexed line numbers that
- * stays glued to the textarea on scroll (single scrollable parent).
+ * The blog editor's `.md` source view, with line numbers that follow the textarea's scroll.
+ * Read-only without `onChange`.
  */
 export function MarkdownPreview({ value, onChange }: MarkdownPreviewProps) {
   const [copied, setCopied] = useState(false);

@@ -15,10 +15,7 @@ import { versionedSrc } from '@/lib/media/focus';
  *   GET /api/image?park=europa-park&attraction=blue-fire-megacoaster
  *   GET /api/image?park=europa-park&w=400&q=75
  *
- * The lookup used to probe `public/images/parks/<park>/<slug>.<ext>` on disk,
- * which tied a ride's photo to its filename; the database resolves by role
- * instead, so a ride whose photo is filed under any name still answers, and a
- * ride with only a Halloween shot gets that rather than a 404.
+ * The database resolves by role, so a ride's photo answers whatever its file is called.
  *
  * Prefer `/api/media` for anything richer — it returns the metadata, the focal
  * point and the pre-cut aspect variants. This route stays for clients that just

@@ -11,15 +11,12 @@ import { Chip } from '../_ui/primitives';
 import { useToast } from '../_ui/toast';
 
 /**
- * The answers to the two questions `/admin/data-quality` asks about rides
- * (PAR-695): "season ending or dropped feed?" and "season or gone?".
- *
- * Both write the same two curated columns through the bulk curation endpoint —
- * audited, cache-evicting, revalidating — so a card answered here disappears
- * on the next read and stays answered: the absence retirement and the silence
- * detector both skip a ride whose season is known.
+ * The answers to the two questions `/admin/data-quality` asks about rides: "season ending or
+ * dropped feed?" and "season or gone?". Both write the same two curated columns through the
+ * audited bulk endpoint, so an answered card disappears and stays answered.
  */
 
+/** Query key of the data-quality report, invalidated after every season write. */
 export const DATA_QUALITY_KEY = ['admin', 'data-quality'];
 
 const MONTHS = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
@@ -129,15 +126,14 @@ function monthsLabel(months: number[]): string {
   return months.length ? months.map((m) => MONTHS[m - 1]).join(', ') : 'Monate unbekannt';
 }
 
-// ── Verstummte Fahrgeschäfte ───────────────────────────────────────────────
-
+/** A group of a park's rides that went silent together, from the data-quality report. */
 export interface SilencedCluster {
   parkId: string;
   parkName: string;
   attractionCount: number;
   lastOperating: string;
   sampleNames: string[];
-  /** Absent until the API with PAR-695 is deployed. */
+  /** Absent from an API that does not send it yet. */
   attractions?: { attractionId: string; name: string }[];
 }
 
@@ -261,8 +257,7 @@ export function SilencedClusterCard({
   );
 }
 
-// ── Saison oder weg? ───────────────────────────────────────────────────────
-
+/** A ride retired for absence whose retirement nobody has reviewed yet. */
 export interface AbsenceRetiredUnreviewed {
   attractionId: string;
   name: string;

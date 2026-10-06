@@ -22,27 +22,14 @@ import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
  *   GET /api/media?role=ride-card&locale=en
  *   GET /api/media?facets=1                 + tag/park/collection counts
  *
- * ## Caching
- *
- * The database only changes when a deployment ships, and `MEDIA_REVISION` is a
- * content hash over the whole thing — so this is one of the rare API routes that
- * can be cached hard and still never be wrong:
- *
- *  - a **strong ETag** derived from the revision and the query, so a client that
- *    already has the answer gets a 304 with no body,
- *  - a long `s-maxage` with a longer `stale-while-revalidate`, because a stale
- *    answer here is a previous deployment's catalog, not stale live data,
- *  - `revision` in every payload, so the app can ask "has anything changed?"
- *    with one cheap conditional request instead of re-downloading the catalog.
- *
- * Image URLs themselves carry `?v=<content hash>` and can be treated as immutable.
+ * The database only changes with a deployment and `MEDIA_REVISION` hashes all of it, so this is
+ * cached hard: a strong ETag over revision and query (a 304 with no body), a long `s-maxage` with a
+ * longer stale window, and `revision` in every payload so the app can ask cheaply whether anything
+ * changed. Image URLs carry `?v=<content hash>` and are immutable.
  */
 
-// MUST stay dynamic: every filter arrives as a query parameter, and `force-static`
-// prerenders the route once with an EMPTY query and then serves that one response
-// for every request — so `?q=…` silently returned the entire catalog. The caching
-// win is not lost by this: the CDN still caches per full URL via the headers below,
-// which is the correct granularity for a route whose answer depends on the query.
+// Dynamic: every filter is a query parameter, and `force-static` would prerender once with an
+// empty query and serve that for every request. The CDN still caches per full URL.
 export const dynamic = 'force-dynamic';
 
 const MAX_LIMIT = 200;

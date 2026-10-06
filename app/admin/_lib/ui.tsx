@@ -10,20 +10,9 @@ import { EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
  * the ones in `_ui/primitives`, the kit the rest of the admin uses.
  */
 
-// ─── formatting ───────────────────────────────────────────────────────────────
-
 /**
- * A person's name as a name.
- *
- * Accounts get created by whoever is at the keyboard and the display name
- * arrives however it was typed, which on this deployment is `patrick` — so the
- * dashboard opened with „Hallo patrick" in 24 px bold. It is fixed on the way
- * out rather than on the way in: rewriting what somebody entered into their own
- * account is not this app's business, and the greeting is.
- *
- * The first letter of each part, and nothing else: a part that already starts
- * with a capital is left exactly as it is, which is what keeps `McMahon` from
- * coming out as `Mcmahon` the way a full title-case pass would.
+ * A display name with the first letter of each part capitalised, fixed on the way out rather than
+ * in the account. Only first letters change, so `McMahon` does not become `Mcmahon`.
  */
 export function formatDisplayName(name: string): string {
   return name.replace(
@@ -68,8 +57,6 @@ export function maeColor(mae: number) {
   if (mae < 15) return 'text-amber-400';
   return 'text-red-400';
 }
-
-// ─── primitives ─────────────────────────────────────────────────────────────
 
 /** Renders a small round dot, green when `ok` and red otherwise. */
 export function statusDot(ok: boolean) {
@@ -147,8 +134,6 @@ export function KeyVal({
   );
 }
 
-// ─── badges ───────────────────────────────────────────────────────────────────
-
 const SEVERITY_STYLES: Record<string, string> = {
   low: 'bg-blue-500/15 text-blue-400 border-blue-500/20',
   medium: 'bg-amber-500/15 text-amber-400 border-amber-500/20',
@@ -218,14 +203,9 @@ export function StatusBadge({ status }: { status: string }) {
   );
 }
 
-// ─── states ───────────────────────────────────────────────────────────────
-
 /**
- * The dashboards' names for the shared state panels.
- *
- * Kept as aliases rather than renamed at ~40 call sites: the rename would be a
- * large diff that changes nothing a person sees, buried in the same commit as
- * the changes that do.
+ * Dashboard name for `LoadingState`. The state panels stay aliases rather than a rename across
+ * every dashboard call site.
  */
 export function LoadingPanel({ label = 'Lädt…' }: { label?: string }) {
   return <LoadingState label={label} />;

@@ -1,27 +1,10 @@
 'use client';
 
 /**
- * Which park this tab was photographing, kept across a reload.
- *
- * The screen is used for hours with the phone going into a pocket between two
- * rides, and both iOS and Android reclaim a backgrounded tab: coming back to it
- * reloads the page. Everything this screen knows lived in React state, so the
- * reload threw the park away and asked for it again — the picker, in sunlight,
- * with half the queue still waiting.
- *
- * `sessionStorage` and not `localStorage`: the memory is meant to survive a
- * reload of this tab and nothing beyond it. Opening the admin at home next week
- * must not seed a park nobody is standing in.
- *
- * What was remembered matters as much as the path. A park somebody picked by
- * hand outranks the coordinates, because picking one is how a wrong detection
- * gets corrected; a park the coordinates resolved is only a head start until
- * they answer again.
- *
- * It is exposed as a store rather than as two functions because the value is
- * read during render and written from an event: the page subscribes with
- * `useSyncExternalStore`, which is also what keeps the server's render (no
- * storage, no park) and the browser's first one from disagreeing.
+ * Which park this tab was photographing, kept across the reload a phone forces on a backgrounded
+ * tab. `sessionStorage`, so it never outlives the tab. A hand-picked park outranks the coordinates,
+ * since picking is how a wrong detection is corrected. A store for `useSyncExternalStore`, which
+ * keeps the server render and the first browser render in agreement.
  */
 
 const KEY = 'parkfan.capture.park';

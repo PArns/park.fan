@@ -24,29 +24,11 @@ import { getMediaText } from '@/lib/media/text';
 import { normalizeSidecar, serializeSidecar } from '@/lib/media/sidecar.mjs';
 
 /**
- * The media database's write path: everything lands as a pull request.
- *
- * The database IS the repository — images and their sidecars are committed files —
- * so there is no separate store to write to, and on Vercel the filesystem is
- * read-only anyway. This mirrors what the blog editor already does: branch,
- * commit, open a PR, let a human merge. That also means every change to the
- * catalog is reviewable and revertible, which for copyright and attribution data
- * is worth more than the convenience of writing in place.
- *
- * Every save joins the **open session** — the branch carrying the `media/session-`
- * prefix and the pull request opened for it — so a working session is one
- * reviewable PR rather than one per image. Resolution lives in
- * `@/lib/admin/media-session`, shared with the endpoint that reports it.
- *
- * Four operations, all in one PR:
- *   - `create`   a new image + its sidecar
- *   - `update`   sidecar fields only (tags, park/ride, focal point, credit, text)
- *   - `move`     re-file an image into another collection or rename it
- *   - `replace`  swap the bytes — with or without sidecar edits in the same pass
- *
- * And one that is implied: a sidecar that claims a unique role (`ride-card` for
- * a ride, `park-background` for a park) takes it from the image that held it, in
- * the same pull request — see `@/lib/admin/media-unique-roles`.
+ * The media database's write path: every change lands as a pull request, because the database is
+ * the repository (Vercel's filesystem is read-only) and attribution data should be reviewable.
+ * Every save joins the open session's pull request (`@/lib/admin/media-session`). The operations
+ * are `create`, `update` (sidecar only), `move` and `replace`; a sidecar that claims a unique role
+ * takes it from the image that held it (`@/lib/admin/media-unique-roles`).
  */
 
 export const runtime = 'nodejs';
@@ -57,13 +39,9 @@ const NAME_RE = /^[a-z0-9][a-z0-9-]*$/;
 const COLLECTION_RE = /^[a-z0-9][a-z0-9-]*(?:\/[a-z0-9][a-z0-9-]*)*$/;
 const EXT_RE = /^(jpg|jpeg|png|webp|avif|svg)$/i;
 /**
- * Per-image ceiling, deliberately just under what the platform will actually pass.
- *
- * This used to say 8 MB, which was a promise the runtime could not keep: Vercel
- * rejects request bodies over ~4.5 MB before this handler ever runs, and base64
- * adds a third on top. A limit advertised above the real one turns a clear "too
- * large" into an opaque platform error, so it sits below it instead. The client
- * shrinks anything bigger before sending — see `app/admin/_lib/upload-transport.ts`.
+ * Per-image ceiling, just under what Vercel passes once base64 adds a third: a limit above the
+ * real one turns a clear "too large" into an opaque platform error. The client shrinks anything
+ * bigger first (`app/admin/_lib/upload-transport.ts`).
  */
 const MAX_BYTES = 3.5 * 1024 * 1024;
 
@@ -125,11 +103,8 @@ function pathsFor(collection: string, name: string, ext: string) {
 }
 
 /**
- * Merge a payload over what the image already has, then normalize.
- *
- * Normalizing through the SAME module the build generator uses is the point: a
- * sidecar written here is byte-identical to one a human would hand-author, so the
- * PR diff is readable and the two authoring paths can't drift.
+ * Merges a payload over what the image has, then normalizes it through the module the build
+ * generator uses, so a sidecar written here is byte-identical to a hand-authored one.
  */
 function buildSidecarFile(existingId: string | undefined, payload: SidecarPayload = {}) {
   const current = existingId ? getMediaImage(existingId) : null;
@@ -139,9 +114,8 @@ function buildSidecarFile(existingId: string | undefined, payload: SidecarPayloa
     park: payload.park !== undefined ? payload.park : current?.park,
     parkPath: payload.parkPath !== undefined ? payload.parkPath : current?.parkPath,
     ride: payload.ride !== undefined ? payload.ride : current?.ride,
-    // Carried through like every other field: a save that omitted it would drop the
-    // second ride's only photo again, which is the exact regression alsoRides exists
-    // to undo (see MediaSidecar.alsoRides).
+    // Carried through like every other field: omitting it would drop the second ride's only
+    // photo (see MediaSidecar.alsoRides).
     alsoRides: payload.alsoRides ?? current?.alsoRides,
     // Sent by the media editor (`[]` clears it); a payload without the field keeps what
     // the image has, so an upload or move from elsewhere cannot drop the image out of
@@ -183,9 +157,8 @@ export async function POST(req: Request) {
   const operations = payload.operations ?? [];
   if (!operations.length) return bad('No operations');
 
-  // ─── validate everything before touching GitHub ───────────────────────────
-  // A half-applied batch would leave the repository in a state nobody asked for,
-  // and the failure would be discovered as a broken build rather than an error.
+  // Validate everything before touching GitHub: a half-applied batch would surface as a broken
+  // build rather than an error.
   const planned: {
     op: Operation;
     from?: { image: string; sidecar: string };
@@ -236,8 +209,6 @@ export async function POST(req: Request) {
     });
   }
 
-  // ─── open a branch and commit ─────────────────────────────────────────────
-
   const token = adminGithubToken();
   if (!token) {
     return bad(
@@ -259,13 +230,9 @@ export async function POST(req: Request) {
     return bad(`Could not read ${baseBranch}: ${(e as Error).message}`, 502);
   }
 
-  // ─── join the open session, or start one ──────────────────────────────────
-  // Looked up on the server rather than tracked in the browser, so a reload, a
-  // second tab and a different machine all land in the same pull request.
-  //
-  // A FAILED lookup is an error, not "no session". Swallowing it — which this
-  // used to do, with a console warning — is precisely how a batch turns into one
-  // pull request per image: every save silently decides it is the first one.
+  // Join the open session or start one, looked up on the server so a reload, a second tab and
+  // another machine land in the same pull request. A failed lookup is an error, not "no session",
+  // or every save would open a pull request of its own.
   let session: MediaSession | null = null;
   if (!payload.newSession) {
     try {
@@ -357,11 +324,8 @@ export async function POST(req: Request) {
 
       if (from && from.image !== to.image) {
         await remove(from.image, `media: move away ${from.image}`);
-        // ONLY when it is a different file. A sidecar's path carries no extension,
-        // so replacing a `.png` with a `.jpg` in place leaves `from.sidecar` and
-        // `to.sidecar` as the same path — deleting it unconditionally, as this used
-        // to, threw away the sidecar that had just been written two lines above and
-        // dropped the image out of the database entirely.
+        // Only when it is a different file: a sidecar's path has no extension, so replacing a
+        // `.png` with a `.jpg` keeps the path of the sidecar just written above.
         if (from.sidecar !== to.sidecar) {
           await remove(from.sidecar, `media: move away ${from.sidecar}`);
         }
@@ -371,13 +335,9 @@ export async function POST(req: Request) {
             : `moved \`${from.image}\` → \`${to.image}\``
         );
 
-        // Repoint every article that named the old path, in this same pull request.
-        //
-        // Without it, moving is the one edit that silently breaks published pages,
-        // and the tree therefore has to be left however it was first filed. With it
-        // the folder can be tidied — by park, by shoot, whatever — and the articles
-        // follow. `postsReferencing` reads the build-time bodies manifest, so
-        // finding them costs no API calls; only the matches are fetched.
+        // Repoint every article that named the old path, in this same pull request, so a move
+        // never breaks a published page. `postsReferencing` reads the build-time manifest, so
+        // only the matches are fetched.
         for (const key of postsReferencing(fromRef!.collection, fromRef!.name)) {
           const postPath = postFilePath(key);
           const { data } = await octokit.repos.getContent({
@@ -405,8 +365,8 @@ export async function POST(req: Request) {
       } else if (op.op === 'create') {
         summary.push(`added \`${to.image}\``);
       } else if (op.op === 'replace') {
-        // A replace may now carry sidecar edits made in the same pass — say so,
-        // or the PR log reads as if only the pixels moved.
+        // A replace may carry sidecar edits made in the same pass; say so, or the PR log reads
+        // as if only the pixels moved.
         summary.push(
           op.sidecar
             ? `replaced the file \`${to.image}\` and updated its sidecar`
@@ -423,14 +383,9 @@ export async function POST(req: Request) {
     );
   }
 
-  // ─── hand unique roles over ───────────────────────────────────────────────
-  // After the batch, so a batch that failed half-way has taken nothing from
-  // anybody, and in a try of its own: the photos above have landed, and a
-  // GitHub hiccup here must not report them as failed. The current holder is
-  // looked for in two places: the build-time manifest (what `main` says) and
-  // the session branch (photos added or retagged earlier in this same pull
-  // request, which the manifest cannot see yet). The branch wins where both
-  // describe the same file.
+  // Unique roles change hands after the batch, so a failed batch has taken nothing, and in a try
+  // of its own, since the photos above have landed. The current holder is looked for in the
+  // build-time manifest and on the session branch, and the branch wins.
   let handoverWarning: string | null = null;
   const claims = new Set(planned.flatMap((p) => p.claims));
   if (claims.size) {

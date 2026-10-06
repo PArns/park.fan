@@ -26,20 +26,9 @@ interface AttractionStatusProps {
 }
 
 /**
- * Der Status einer Bahn — und der Schalter dafür.
- *
- * Er stand hier als vierte Kennzahl neben Slug und externer ID, also als
- * Tatsache, die man zur Kenntnis nimmt. Setzen ließ er sich nur in der
- * Arbeitsliste unter `/admin/retirement`, und die zeigt eine Bahn nur, solange
- * der Detector sie vorlegt: eine Bahn, deren Feed nie verstummt ist, taucht dort
- * gar nicht auf, und eine, die einmal als „kein Fall" abgehakt wurde, für Monate
- * nicht mehr. Für Maximus' Blitz Bahn im Toverland hieß das: keine Zeile,
- * nirgends, in der sich das Urteil ändern ließ.
- *
- * Deshalb steht die Entscheidung jetzt dort, wo man sie trifft — auf der Seite,
- * auf der man Ride-Profil, Bilder und Verlauf gerade angesehen hat. Die
- * Pflichtangaben sind dieselben wie in der Arbeitsliste, weil es dieselbe
- * Entscheidung ist.
+ * A ride's status and the switch for it, on the ride's own page as well as in the retirement
+ * worklist, which shows a ride only while the detector proposes it. The required fields are the
+ * worklist's, since it is the same decision.
  */
 export function AttractionStatus({
   attractionId,

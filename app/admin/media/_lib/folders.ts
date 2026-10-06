@@ -29,14 +29,9 @@ export interface TagGroup {
 }
 
 /**
- * Collections as a tree.
- *
- * `counts` is one row per node, parents included, each already holding the
- * distinct images at or below it (`listCollectionNodes()`), which is what
- * `searchMedia({ collection })` returns after the click. Summing children here
- * would count an image twice when it is filed under a parent and one of its
- * sub-collections. A parent that holds no images of its own (only
- * sub-collections) still gets a row, because it is a filter the API accepts.
+ * Collections as a tree. `counts` already holds the distinct images at or below each node
+ * (`listCollectionNodes()`), so summing children would count an image twice. A parent with no
+ * images of its own still gets a row, because it is a filter the API accepts.
  */
 export function buildCollectionTree(counts: { collection: string; count: number }[]): FolderNode[] {
   const byId = new Map<string, FolderNode>();

@@ -5,22 +5,9 @@ import { useIsFetching, useQueryClient } from '@tanstack/react-query';
 import { useSession } from '../_app/session';
 
 /**
- * The auto-refresh loop the monitoring pages run on.
- *
- * The dashboards (system, queues, analytics, ML, maintenance) are live views of
- * a moving system, and they were written against a hand-rolled context that
- * also carried the shared admin password. The password is gone — the session is
- * an httpOnly cookie the browser attaches by itself — so what is left is only
- * the refresh behaviour, which is worth keeping exactly as it was: a 60 s tick,
- * paused while the tab is hidden, with an exponential backoff so a downed
- * backend is not hammered by every open admin tab.
- *
- * `useAdminFetch` stays as the dashboards' data hook rather than being
- * rewritten into `useAdminQuery` at every call site, because what those pages
- * need is precisely "re-read this endpoint on every tick" and React Query's
- * caching would be working against that. It is a thin wrapper now, sharing the
- * query client's fetch counter so the topbar's "refreshing" indicator covers
- * both worlds.
+ * The auto-refresh loop the monitoring dashboards run on: a 60 s tick, paused while the tab is
+ * hidden, with exponential backoff so a downed backend is not hammered by every open tab.
+ * `useAdminFetch` re-reads on every tick, which React Query's caching would work against.
  */
 
 const REFRESH_INTERVAL_MS = 60_000;
@@ -155,11 +142,8 @@ export function useAdminFetch<T>(endpoint: string | null): FetchState<T> {
   });
   useEffect(() => {
     if (!endpoint) return;
-    // Per run, not a ref shared by every run. A ref was set back to false by the
-    // next effect the moment React started it, so the superseded request found
-    // itself un-cancelled when it resolved and wrote its older payload over the
-    // newer one — routine on the dashboards, where a refresh tick arrives every
-    // 60 s and several of the endpoints are slow aggregates.
+    // Per run, not a shared ref, which the next effect would reset, letting a superseded request
+    // write its older payload over the newer one.
     let cancelled = false;
     const controller = new AbortController();
     let ok = false;

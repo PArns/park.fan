@@ -1,10 +1,6 @@
 /**
- * The shapes the admin API answers with.
- *
- * Hand-written rather than generated, and deliberately narrow: these describe
- * what the admin renders, not everything the endpoints return. Anything not
- * listed here is not being shown to anybody, and adding a field to this file
- * should be a decision, not a side effect of a backend change.
+ * The shapes the admin API answers with, hand-written and narrow: they describe what the admin
+ * renders, so adding a field is a decision rather than a side effect of a backend change.
  */
 
 export type CuratedFieldType =
@@ -25,14 +21,9 @@ export type CuratedFieldType =
   | 'glossaryTerm';
 
 /**
- * One curated field, as the backend describes it.
- *
- * The editor is generated from these rather than hand-written per field, so a
- * new curated column appears in the admin with no frontend change. The three
- * values are the whole point: `syncedValue` is what the upstream feed says,
- * `curatedValue` is what a human wrote, `resolvedValue` is what the API
- * actually serves — and seeing all three at once is what tells an editor
- * whether a correction is still needed.
+ * One curated field as the backend describes it. The editor is generated from these, so a new
+ * curated column needs no frontend change; `syncedValue`, `curatedValue` and `resolvedValue` side
+ * by side tell an editor whether a correction is still needed.
  */
 export interface CuratedField {
   key: string;

@@ -4,14 +4,8 @@ import { cn } from '@/lib/utils';
 import { Field as AdminField } from '../../_ui/controls';
 
 /**
- * The media editor's furniture.
- *
- * `Section` and `Chip` stay here because they are genuinely this editor's:
- * a denser section than the rest of the admin uses (both halves of the image
- * dialog have to fit beside a preview) and a chip that is a toggle rather than
- * a label. `Field` and the notice do NOT stay — they were duplicates of the
- * shared ones, differing only in label size, and three definitions of a
- * labelled input is what the reuse rule exists to prevent.
+ * The media editor's furniture: a section denser than the rest of the admin's, so both halves of
+ * the image dialog fit beside a preview, and a chip that is a toggle rather than a label.
  */
 
 /** A titled group of related controls — the editor's unit of "one question". */
@@ -40,19 +34,12 @@ export function Section({
   );
 }
 
-/** The admin's labelled field. Kept re-exported under this name so the media
- *  editor's ~30 call sites did not need touching in the same commit. */
+/** The admin's shared labelled field, under the name the media editor uses. */
 export function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return <AdminField label={label}>{children}</AdminField>;
 }
 
-/**
- * A toggle that looks like a chip.
- *
- * Distinct from `_ui/primitives`' `Chip`, which is a read-only label. Both
- * names are right for what they are; merging them would give one component two
- * behaviours selected by whether `onClick` is set.
- */
+/** A toggle that looks like a chip, unlike the read-only label `Chip` in `_ui/primitives`. */
 export function Chip({
   active,
   onClick,
@@ -78,6 +65,7 @@ export function Chip({
   );
 }
 
+/** An info or warning box in the media editor. */
 export function Notice({ tone, children }: { tone: 'info' | 'warn'; children: React.ReactNode }) {
   return (
     <div

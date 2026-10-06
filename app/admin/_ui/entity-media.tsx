@@ -15,20 +15,9 @@ import {
 } from './primitives';
 
 /**
- * The pictures attached to the thing you are editing.
- *
- * The media database is a separate write model — images and their sidecars are
- * committed files, so a change there becomes a pull request rather than a row
- * update — and that difference is exactly why this panel is a *view* with links
- * into the media editor rather than an editor of its own. Pretending the two
- * write the same way would produce a save button that behaves differently from
- * every other save button in the admin.
- *
- * What it is for is the question the media browser cannot answer: does this
- * ride have a picture at all? A ride with none renders a blank card on the
- * public site, and nothing anywhere reports that — which is how the second half
- * of Winja's Fear/Force silently lost its only photo when a byte-identical
- * duplicate was removed.
+ * The pictures attached to the entity being edited, as a view with links into the media editor,
+ * because a media change becomes a pull request, unlike every other save in the admin. It answers
+ * whether a ride has a picture at all: one without shows a blank card and nothing else reports it.
  */
 
 interface MediaRow {

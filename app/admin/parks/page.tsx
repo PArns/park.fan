@@ -23,16 +23,8 @@ import { Select, TextInput } from '../_ui/controls';
 import { useLocalPreference } from '../_lib/use-local-preference';
 
 /**
- * The park browser, in three shapes.
- *
- * The same 212 rows answer different questions depending on how they are laid
- * out, and an admin that offers only one shape makes two of the three questions
- * hard. A table sorts and compares — "which parks have nothing curated yet".
- * A grid is for recognising a place rather than reading it. A map answers the
- * one neither can: where these things are, and which coordinates are wrong.
- *
- * The mode is remembered, because somebody who works in one shape works in it
- * every day, and re-choosing it on every visit is a small tax charged forever.
+ * The park browser in three shapes: a table to sort and compare, a grid to recognise a place, a
+ * map to see where parks are and which coordinates are wrong. The mode is remembered.
  */
 
 const ParksMap = dynamic(() => import('./_components/parks-map'), {
@@ -73,11 +65,8 @@ export default function ParksPage() {
     `/api/admin/content/parks?${params}`
   );
 
-  // The options come from the unfiltered list, not from the rows on screen.
-  // Derived from the filtered ones, picking "Deutschland" left the dropdown
-  // offering "Deutschland" and nothing else — the answer had removed the
-  // question. Same query key as the unfiltered view, so React Query serves
-  // both from one request whenever no filter is set.
+  // Options come from the unfiltered list, or picking a country would leave only that country to
+  // pick. Same query key as the unfiltered view, so one request serves both.
   const allParks = useAdminQuery<{ total: number; parks: AdminParkListItem[] }>(
     adminKeys.parks({ params: 'limit=500' }),
     '/api/admin/content/parks?limit=500',
@@ -182,8 +171,6 @@ export default function ParksPage() {
   );
 }
 
-// ─── view switch ──────────────────────────────────────────────────────────────
-
 const VIEWS: Array<{ mode: ViewMode; label: string; icon: typeof Rows3 }> = [
   { mode: 'table', label: 'Tabelle', icon: Rows3 },
   { mode: 'grid', label: 'Kacheln', icon: LayoutGrid },
@@ -214,20 +201,10 @@ function ViewSwitch({ mode, onChange }: { mode: ViewMode; onChange: (mode: ViewM
   );
 }
 
-// ─── table ────────────────────────────────────────────────────────────────────
-
 /**
- * 212 parks, as a table on a desk and as a list of rows on a phone.
- *
- * One markup, not two. Below `sm` the header row goes away and each `<tr>` becomes
- * a block: the three narrow columns — town, ride count, season count — are hidden
- * and their contents reappear as one line of meta under the park's name, because a
- * five-column table on a 390 px screen is either four columns of ellipsis or a
- * sideways scroll, and both are worse than a sentence.
- *
- * A second, phone-only component rendering the same parks would be the obvious
- * alternative and is the thing to avoid: the two would drift, and the one nobody
- * looks at on a laptop would be the one that rots.
+ * The parks as a table on a desk and as rows on a phone, in one markup: below `sm` each `<tr>`
+ * becomes a block and the narrow columns reappear as one meta line. A second, phone-only component
+ * would drift from this one.
  */
 function ParkTable({ parks }: { parks: AdminParkListItem[] }) {
   return (
@@ -318,8 +295,6 @@ function ParkCuratedChips({ park }: { park: AdminParkListItem }) {
     </div>
   );
 }
-
-// ─── grid ─────────────────────────────────────────────────────────────────────
 
 function ParkGrid({ parks }: { parks: AdminParkListItem[] }) {
   return (

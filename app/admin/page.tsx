@@ -26,14 +26,8 @@ import { useSession } from './_app/session';
 import { AdminPage } from './_ui/primitives';
 
 /**
- * The first screen: what is going on, and what is worth doing next.
- *
- * Deliberately not a metrics wall. The system dashboards already exist and are
- * one click away; what this answers is the question somebody opening the admin
- * actually has — "did anything change since I was last here, and is there
- * anything obvious to fix". Both halves are lists rather than numbers, because
- * a number here would need a second click to become actionable and an
- * actionable list does not.
+ * The first screen: what changed since the last visit and what is worth doing next, as lists a
+ * person can act on rather than a wall of metrics.
  */
 export default function AdminDashboard() {
   const { identity } = useSession();
@@ -54,10 +48,8 @@ export default function AdminDashboard() {
     '/api/admin/content/parks?curated=none&limit=6'
   );
 
-  // One request for every number on this screen. The tiles used to read the
-  // `total` of whichever list happened to run below them, which meant a tile
-  // silently inherited that list's `limit` — and a count capped at 500 looks
-  // exactly like a catalogue of 500.
+  // One request for every number on this screen, so no tile inherits the `limit` of a list it
+  // borrowed a total from.
   const overview = useAdminQuery<AdminOverview>(
     ['admin', 'overview'],
     '/api/admin/content/overview',
@@ -66,11 +58,8 @@ export default function AdminDashboard() {
 
   return (
     <AdminPage width="wide">
-      {/* The same photograph the login screen was showing a second ago.
-          Both ask `useHeroPhoto` for the same half-hour window, so signing in
-          does not throw away the picture somebody was just looking at — and a
-          tool for editing theme parks gets to look like one. The band has a
-          fixed height, so nothing moves when the image lands. */}
+      {/* The login screen's photo, from the same `useHeroPhoto` window. The band has a fixed
+          height, so nothing moves when the image lands. */}
       <div className="border-border/60 relative h-32 overflow-hidden rounded-2xl border shadow-lg ring-1 shadow-black/20 ring-white/[0.03] sm:h-40">
         <div
           aria-hidden="true"
@@ -115,12 +104,8 @@ export default function AdminDashboard() {
         )}
       </div>
 
-      {/* Straight to the camera.
-          Under the thumb and above everything else, because the moment this
-          screen is opened on a phone is almost always the moment somebody has
-          just walked through a park gate — and every other tile on this page
-          leads to a table nobody works on a 390 px screen. Full width below
-          `sm`, a normal-sized action above it, where the mouse is. */}
+      {/* The camera first and full width on a phone, which is opened at a park gate; every
+          other tile leads to a table. */}
       <Link
         href="/admin/capture"
         className="border-primary/40 bg-primary/15 text-primary hover:bg-primary/25 flex min-h-14 w-full items-center gap-3 rounded-2xl border px-4 font-medium transition-colors sm:min-h-12 sm:w-auto"
@@ -134,10 +119,6 @@ export default function AdminDashboard() {
         </span>
       </Link>
 
-      {/* What the catalogue looks like, and what is left to do.
-          Every tile is a link to the list it counts, and the ring is the share
-          rather than a decoration: two parks of 212 is the honest picture of
-          where curation stands, and a ring says that faster than a sentence. */}
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <MetricTile
           href="/admin/parks?curated=none"

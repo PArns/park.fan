@@ -1,21 +1,12 @@
 import type { EditorView } from '@tiptap/pm/view';
 import type { Node as PMNode } from '@tiptap/pm/model';
 
-/**
- * Helpers shared across the four chip preview extensions
- * (ref / widget / image / embed). The plugins themselves stay tiny — anything
- * that drifted into copy-paste between them lives here instead.
- */
+/** Helpers shared by the four chip preview extensions (ref, widget, image, embed). */
 
 /**
- * Re-resolve a chip's doc position right before writing to it. Positions are
- * captured at click time; any edit above the chip shifts them, so a write at
- * the captured pos could hit the wrong node (or out-of-bounds). The verifier
- * decides whether the node at a position is "the one we meant" (usually by
- * type + a stable attr like the image src or the widget's fence language).
- *
- * Returns the captured pos when it still verifies, otherwise the verified
- * position closest to it, otherwise null (chip was deleted).
+ * Re-resolves a chip's doc position right before writing to it, since an edit above the chip
+ * shifts the position captured at click time. Returns that position when it still verifies, else
+ * the closest verified one, else null (the chip was deleted).
  */
 export function reanchorPos(
   doc: PMNode,
@@ -38,10 +29,7 @@ export function reanchorPos(
 }
 
 /**
- * Click targets in TipTap are often the deepest DOM node a click landed on —
- * frequently a text node. `closest()` only exists on Elements, so plugins
- * have to walk up one step before they can query. This pattern was repeated
- * verbatim in every chip plugin.
+ * The element a click landed on: TipTap's target is often a text node, which has no `closest()`.
  */
 export function eventToElement(event: MouseEvent): Element | null {
   const raw = event.target as Node | null;
@@ -50,12 +38,8 @@ export function eventToElement(event: MouseEvent): Element | null {
 }
 
 /**
- * When a chip has multiple plausible spans in the doc (same park referenced
- * twice, two attraction widgets sharing a slug, the same image used twice),
- * pick the one whose anchor coordinate is closest to the chip rect. hypot
- * combines X and Y so two chips on the same line still disambiguate.
- *
- * Returns `null` only when the candidates list is empty.
+ * Picks, among several plausible spans for a chip (the same park referenced twice), the one whose
+ * anchor is closest to the chip's rect in X and Y. Returns `null` only for an empty list.
  */
 export function pickClosestByCoords<T>(
   chip: Element,
@@ -87,17 +71,6 @@ export function pickClosestByCoords<T>(
   return best;
 }
 
-/**
- * Module-level resolution cache shared between ref-preview and widget-preview
- * (and anything else that wants to call `/api/admin/blog-editor/resolve-ref`
- * without paying for duplicate fetches when both plugins see the same park
- * within a session).
- *
- * Each entry transitions loading → ready | failed and never reverts. Callers
- * register an `onResolve` callback that fires once the network round-trip
- * completes; the plugin then dispatches its own refresh transaction.
- */
-
 type CacheEntry<T> = { state: 'loading' } | { state: 'failed' } | { state: 'ready'; data: T };
 
 export interface ResolveCache<T> {
@@ -107,8 +80,9 @@ export interface ResolveCache<T> {
 }
 
 /**
- * Creates a cache of `resolve-ref` lookups keyed by ref value, each entry loading, ready or failed
- * and never refetched. Only the first `ensure` for a ref gets its `onResolve` called.
+ * Creates a cache of `resolve-ref` lookups keyed by ref value, so plugins that see the same ref do
+ * not fetch it twice. Entries never revert from ready or failed, and only the first `ensure` for a
+ * ref gets its `onResolve` called.
  */
 export function createResolveCache<T>(
   parseResponse: (raw: unknown) => T = (raw) => raw as T
@@ -121,9 +95,8 @@ export function createResolveCache<T>(
     ensure(refValue, onResolve) {
       if (cache.has(refValue)) return;
       cache.set(refValue, { state: 'loading' });
-      // Plain module, no hook access — and none needed: the session is an
-      // httpOnly cookie the browser attaches to a same-origin fetch by itself.
-      // This used to read a shared password out of sessionStorage.
+      // No hook needed: the session is an httpOnly cookie the browser attaches to a same-origin
+      // fetch by itself.
       fetch(`/api/admin/blog-editor/resolve-ref?ref=${encodeURIComponent(refValue)}`)
         .then((r) => (r.ok ? r.json() : Promise.reject()))
         .then((raw) => {

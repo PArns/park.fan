@@ -24,14 +24,9 @@ const WIDGET_NAMES = new Set([
 ]);
 
 /**
- * TipTap's CodeBlock parses only the first space-delimited token of the fence
- * info string as the `language` attr — anything after that is silently dropped.
- * Existing posts in this repo use the inline form (```park-widget slug=…``);
- * if we hand that to the editor verbatim, the slug vanishes on the first save.
- *
- * Migrate any widget fence with info-string attrs to the body-attr form
- * (```park-widget\nslug: …\n```) BEFORE we send the markdown to the client.
- * The renderer already supports both syntaxes, so this is a safe normalisation.
+ * Moves widget fence attrs from the info string (```park-widget slug=…```) into the body
+ * (`slug: …`) before the editor gets the markdown: TipTap keeps only the first token of the info
+ * string, so the slug would vanish on the first save. The renderer reads both forms.
  */
 function normaliseWidgetFences(md: string): string {
   return md.replace(
@@ -56,10 +51,8 @@ function normaliseWidgetFences(md: string): string {
 }
 
 /**
- * Load every locale file belonging to one post (matched by translationKey or
- * the source-locale slug) and hand the editor back a ready-to-hydrate draft
- * payload. Keys are validated against a slug-shape regex so we can't be
- * tricked into reading outside content/blog via `../`.
+ * Loads every locale file of one post (by translationKey or source-locale slug) as a draft for the
+ * editor. Keys must be slug-shaped, so `../` cannot read outside content/blog.
  */
 export async function GET(req: NextRequest, { params }: { params: Promise<{ key: string }> }) {
   const unauthorized = await denyUnlessAdmin(req);

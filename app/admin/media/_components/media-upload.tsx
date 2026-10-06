@@ -16,27 +16,18 @@ import { withoutMetadata } from '../../_lib/upload-transport';
 import { UploadWalkthrough } from './upload-walkthrough';
 
 /**
- * Drop a hundred photos in, correct what the GPS got wrong, open one pull request.
- *
- * The flow is deliberately two-stage. Dropping files only *analyzes* them: the
- * server reads each file's EXIF and answers where it was taken. The park comes
- * back filled in (the nearest park is right ~89 % of the time and parks are
- * kilometres apart), the ride comes back as a distance-ranked shortlist and NOT a
- * decision — the nearest attraction is the right one only ~55 % of the time, so
- * auto-picking it would mislabel half the batch while looking reviewed.
- *
- * Nothing is written until "Commit": then the files and the corrected assignments
- * go to `/api/admin/media/commit`, which lands them in the repository as a draft PR.
+ * Drop a batch of photos in, correct what the GPS got wrong, open one pull request. Dropping only
+ * analyzes the EXIF: the park comes back filled in, the ride as a distance-ranked shortlist rather
+ * than a decision, because the nearest ride is the right one only about half the time. Nothing is
+ * written until "Commit".
  */
 
 /** One look for every field in the admin — see `FIELD_CLASS`. */
 const INPUT = FIELD_CLASS;
 
 /**
- * The batch dialog's own file-name rule. `toSlug`, `analyzePhoto` and `commitPhoto`
- * come from `admin/_lib/media-upload.ts`, which the field-capture route uses too —
- * a second copy here is how the two surfaces would start disagreeing about which
- * formats are acceptable and when EXIF has to be carried into the sidecar.
+ * The batch dialog's own file-name rule. The rest (`toSlug`, `analyzePhoto`, `commitPhoto`) comes
+ * from `admin/_lib/media-upload.ts`, shared with the capture route so the two cannot disagree.
  */
 function extOf(fileName: string): string {
   const ext = fileName.split('.').pop()?.toLowerCase() ?? 'jpg';
@@ -99,9 +90,7 @@ export function MediaUpload({ vocabulary, newSession, seed, onDone, onClose }: P
   const [stage, setStage] = useState<'walk' | 'review'>('walk');
   const [picker, setPicker] = useState<PickerMode | null>(null);
 
-  // Created once per batch and revoked on unmount. Calling createObjectURL in
-  // render, as this used to, mints a new URL — and leaks the old one — on every
-  // keystroke in every field.
+  // Created once per batch and revoked on unmount: minting one in render leaks a URL per keystroke.
   const blobUrls = useMemo(() => files.map((f) => URL.createObjectURL(f)), [files]);
   useEffect(() => () => blobUrls.forEach((url) => URL.revokeObjectURL(url)), [blobUrls]);
 
@@ -111,9 +100,8 @@ export function MediaUpload({ vocabulary, newSession, seed, onDone, onClose }: P
     setBusy(`Reading ${images.length} file${images.length === 1 ? '' : 's'}…`);
     setError(null);
     try {
-      // One request per file. The batch used to go up as a single multipart, which
-      // meant a handful of photos exceeded the ~4.5 MB body limit and the whole
-      // drop failed — see `admin/_lib/upload-transport.ts`.
+      // One request per file: a single multipart exceeds the request-body limit with a handful of
+      // photos (`admin/_lib/upload-transport.ts`).
       const analyzed: AnalyzedFile[] = [];
       for (const [index, file] of images.entries()) {
         setBusy(`Reading ${index + 1} of ${images.length}…`);
@@ -233,16 +221,14 @@ export function MediaUpload({ vocabulary, newSession, seed, onDone, onClose }: P
     const landedPhotos: LandedPhoto[] = [];
 
     try {
-      // ONE REQUEST PER IMAGE, in order. A batch in a single body is what exceeded
-      // the ~4.5 MB serverless limit; sequential is what lets the first request open
-      // the session pull request and the rest find and join it instead of racing to
-      // open their own. See `admin/_lib/upload-transport.ts`.
+      // One request per image, in order: one body would exceed the request-body limit, and in
+      // sequence the first opens the session pull request the rest join. See
+      // `admin/_lib/upload-transport.ts`.
       for (const { assignment, index } of queued) {
         setBusy(`Committing ${landed + 1} of ${queued.length}…`);
 
-        // `commitPhoto` owns the order of operations — transcode, then shrink,
-        // then carry the analysis's EXIF into the sidecar if either of them
-        // re-encoded the file. Reproducing it here is what let a HEIC through.
+        // `commitPhoto` owns the order of operations: transcode, shrink, then carry the EXIF into
+        // the sidecar if either re-encoded the file.
         let result;
         try {
           result = await commitPhoto({

@@ -45,11 +45,8 @@ function toRow(image: MediaImage) {
   const text = getMediaText(image.id);
   return {
     ...image,
-    // The content-versioned address, which a spread of `MediaImage` does not
-    // carry: the row has `src`, and `?v=<hash>` is added by `versionedSrc`
-    // because retargeting a focal point rewrites a crop's bytes at an
-    // unchanged URL. The park and ride media panels read `url` — without it
-    // every thumbnail in them rendered as a broken image.
+    // The content-versioned address, which the park and ride media panels read: retargeting a
+    // focal point rewrites a crop's bytes at an unchanged `src`.
     url: versionedSrc(image),
     alt: text.alt ?? {},
     caption: text.caption ?? {},

@@ -5,32 +5,14 @@ import { AlertTriangle, Loader2, type LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * The admin's shared surfaces.
- *
- * There were three of these before — `_lib/ui.tsx`, `media/_components/panel-ui.tsx`
- * and `blog-editor/_components/form-fields.tsx` each defined their own `Section`
- * and their own field row, with different padding, different heading sizes and
- * different ideas about where a hint goes. That is what the reuse rule in the
- * conventions exists to prevent, and the fix is one file, not a fourth.
+ * The admin's shared surfaces: page layout, panels, small parts and the loading, error and empty
+ * states. A page adds to this file rather than defining its own.
  */
 
-// ─── layout ───────────────────────────────────────────────────────────────────
-
 /**
- * One page's rhythm, in one place.
- *
- * Six pages carried their own `mx-auto max-w-Nxl space-y-4 p-4` with three
- * different widths, and the operations pages carried nothing at all — so
- * /admin/system and /admin/queues ran flush to the window edge while the
- * dashboard sat in a centred column. That is most of what made the admin feel
- * like two products stitched together.
- *
- * Three widths, named for what they hold rather than picked per page:
- * `wide` for boards and tables, the default for entity editors, `narrow` for
- * a single column of form. The two full-height list pages (parks, history)
- * own their own layout and stay out of this deliberately — they size
- * themselves against the viewport so the table scrolls inside the page rather
- * than the page scrolling.
+ * One admin page's column and spacing, in three widths named for what they hold: `wide` for
+ * boards and tables, the default for entity editors, `narrow` for a single form column. The
+ * full-height list pages (parks, history) size themselves against the viewport and stay out.
  */
 export function AdminPage({
   width = 'default',
@@ -57,14 +39,8 @@ export function AdminPage({
 }
 
 /**
- * A surface, and the reason it looks like one.
- *
- * A `bg-card` panel on a `bg-background` page is a two-percent difference in
- * lightness, and at that distance a border is the only thing saying "card" —
- * which is why the admin read as one flat sheet with hairlines drawn on it.
- * Three cheap things fix that and cost no layout: a soft drop shadow so the
- * panel sits *above* the page, an inset ring so the edge has thickness, and a
- * one-pixel highlight along the top where the layout's light comes from.
+ * A card surface. `bg-card` on `bg-background` differs by two percent in lightness, so a drop
+ * shadow, an inset ring and a top highlight are what make it read as a card.
  */
 export function Panel({ className, ...props }: ComponentProps<'section'>) {
   return (
@@ -127,8 +103,6 @@ export function Toolbar({ className, ...props }: ComponentProps<'div'>) {
   );
 }
 
-// ─── small parts ──────────────────────────────────────────────────────────────
-
 /** A keyboard hint. Rendered everywhere a shortcut exists, so shortcuts are
  *  discoverable by looking rather than by reading documentation. */
 export function Kbd({ children }: { children: ReactNode }) {
@@ -186,8 +160,6 @@ export function Chip({
     </span>
   );
 }
-
-// ─── states ───────────────────────────────────────────────────────────────────
 
 /** Centred spinner with a label (`Lädt…` by default), for a panel whose data is loading. */
 export function LoadingState({ label = 'Lädt…' }: { label?: string }) {
@@ -248,12 +220,8 @@ export function EmptyState({
 }
 
 /**
- * Rows shaped like the rows they replace.
- *
- * The height matters: this admin loads lists over a network on every
- * navigation, and a spinner that collapses to nothing pushes the toolbar and
- * the pagination around every time. Same reason the public site reserves the
- * height of a streamed section.
+ * Skeleton rows shaped like the rows they replace, so a loading list does not push the toolbar
+ * and the pagination around.
  */
 export function SkeletonRows({ rows = 6, className }: { rows?: number; className?: string }) {
   return (

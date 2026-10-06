@@ -1,10 +1,6 @@
 /**
- * Reading a public park.fan address.
- *
- * Two places need this and they arrived from opposite directions: `/admin/go`
- * turns a pasted browser URL into an editor, and the contributions moderator
- * needs the park a submitted photo belongs to, which it only knows as the
- * entity's canonical page path. Same parse, so one function.
+ * Reading a public park.fan address, for `/admin/go` (a pasted browser URL) and the contributions
+ * moderator (a submission's canonical page path).
  */
 
 export interface PublicPathSlugs {

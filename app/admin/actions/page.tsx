@@ -28,17 +28,9 @@ import { useCan } from '../_app/session';
 import { AdminPage, Chip } from '../_ui/primitives';
 
 /**
- * The job triggers, with what came back.
- *
- * Every one of these enqueues work and answers with a message and a job id,
- * and the page used to throw both away — a green tile said "accepted", and
- * whether the job then ran, died or is still queued was a different screen's
- * problem. Now the answer is kept and the failing queues are one click away on
- * the data-quality page.
- *
- * Three of them take a parameter, which is the reason a trigger is not just a
- * button here: `import-ride-stats` without a limit walks the whole catalogue,
- * and the first run of anything should be small.
+ * The job triggers, keeping the message and job id each one answers; failing queues are one click
+ * away on the data-quality page. Some take a parameter, because a first run should be small
+ * (`import-ride-stats` without a limit walks the whole catalogue).
  */
 
 interface ActionDef {

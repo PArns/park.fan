@@ -45,20 +45,17 @@ interface ImagePickerProps {
   onPick: (r: ImagePickResult) => void;
   /** When set, the dialog also collects alt + caption (used for inline insertions). */
   withCaption?: boolean;
-  /** "Pick…" from a panel — a single click should commit the new src
-   *  immediately, without staging for caption-entry. */
+  /** "Pick…" from a panel: one click commits the new src, without caption entry. */
   replaceMode?: boolean;
-  /** Bounding rect of the chip that triggered the picker so the modal can
-   *  anchor near it instead of always floating at the top of the viewport. */
+  /** Rect of the chip that opened the picker, so the modal anchors near it. */
   anchorRect?: { top: number; bottom: number; left: number; right: number };
 }
 
 type View = 'grid' | 'list';
 
 /**
- * Thin shell that unmounts the body when `open` is false, so each opening gets
- * a fresh state slice without reaching for a state-reset effect (which React 19
- * forbids).
+ * The blog editor's image picker, unmounted while closed so each opening starts from fresh state
+ * without a reset effect.
  */
 export function ImagePicker(props: ImagePickerProps) {
   if (!props.open) return null;
@@ -81,10 +78,8 @@ function ImagePickerBody({
   const [stagedSrc, setStagedSrc] = useState<string | null>(null);
   const [view, setView] = useState<View>('grid');
   const searchRef = useRef<HTMLInputElement>(null);
-  // Focus the search box without `autoFocus` — the default-focus behaviour
-  // (focus on mount) calls .focus() WITHOUT `preventScroll`, which on some
-  // pages yanks the document up to bring the (already-visible, fixed-
-  // positioned) input "into view". preventScroll keeps the viewport pinned.
+  // Not `autoFocus`, whose `.focus()` has no `preventScroll` and can scroll the page to the
+  // fixed input.
   useEffect(() => {
     searchRef.current?.focus({ preventScroll: true });
   }, []);
@@ -107,9 +102,8 @@ function ImagePickerBody({
 
   const ql = q.trim().toLowerCase();
   const allFiltered = ql ? images.filter((i) => i.src.toLowerCase().includes(ql)) : images;
-  // No cap while searching — matches are usually a handful and the user is
-  // hunting. Both views paginate otherwise: list rows carry thumbnails now,
-  // so a thousand-image library would mount a thousand <Image>s without it.
+  // No cap while searching, since matches are few. Otherwise both views paginate: list rows
+  // carry thumbnails, and a large library would mount an `<Image>` per row.
   const visible = ql ? allFiltered : allFiltered.slice(0, displayLimit);
   const hiddenCount = allFiltered.length - visible.length;
 
@@ -120,9 +114,7 @@ function ImagePickerBody({
     groups.get(k)!.push(i);
   }
 
-  /** What "clicking an image" does — grid view inserts straight away unless we
-   *  need caption text; list view always stages so the author can preview the
-   *  rendered image before committing. */
+  /** Grid view inserts at once unless caption text is wanted; list view stages for a preview. */
   const onItemClick = (src: string) => {
     // Replace flow short-circuits caption staging — the panel already owns
     // alt/caption, the picker only swaps the underlying src.
@@ -133,9 +125,8 @@ function ImagePickerBody({
     }
     if (view === 'list' || withCaption) {
       setStagedSrc(src);
-      // Prefill from the database rather than from the filename: the image already
-      // carries a written alt and caption in this locale, and re-typing them per
-      // post was how the same photo ended up described three different ways.
+      // Prefilled from the database, not the filename, so one photo is described the same way in
+      // every post.
       const picked = images.find((i) => i.src === src);
       setAlt((prev) => prev || picked?.alt || '');
       setCaption((prev) => prev || picked?.caption || '');
@@ -151,9 +142,7 @@ function ImagePickerBody({
     onClose();
   };
 
-  // Anchor positioning — when the panel hands us the triggering chip's rect
-  // we float the modal near it instead of always at the top of the viewport.
-  // Picks the side with more room so the dialog never escapes the screen.
+  // Near the triggering chip when there is one, on the side with more room.
   const DIALOG_HEIGHT = Math.min(640, window.innerHeight * 0.85);
   let modalStyle: React.CSSProperties = {};
   if (anchorRect) {
@@ -334,9 +323,7 @@ function ImagePickerBody({
                             isStaged ? 'bg-primary/10 text-primary' : 'hover:bg-accent/40'
                           )}
                         >
-                          {/* Thumbnail instead of a generic icon — at list
-                              scale you pick by PICTURE, not by filename.
-                              Lazy-loaded so a thousand-row list stays cheap. */}
+                          {/* At list scale you pick by picture, not by filename. */}
                           <span className="border-border/50 bg-muted relative h-10 w-14 shrink-0 overflow-hidden rounded-md border">
                             <Image
                               src={img.src}

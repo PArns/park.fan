@@ -24,13 +24,9 @@ import {
 } from './season-actions';
 
 /**
- * What the backend already noticed and nobody could see.
- *
- * Three detectors were built, tested and left without a screen — a silenced
- * feed, a job that keeps dying, a glossary id a ride profile still points at.
- * All three describe the same kind of problem: something that is wrong now, is
- * not wrong enough to throw, and will stay wrong until a person looks. The
- * whole point of this page is to be the place that person looks.
+ * What the backend's detectors noticed (a silenced feed, a job that keeps dying, a glossary id a
+ * ride profile still points at): wrong now, not wrong enough to throw, and wrong until a person
+ * looks here.
  */
 
 interface FailingJob {
@@ -45,7 +41,7 @@ interface DataQuality {
   windowDays: number;
   silencedClusters: SilencedCluster[];
   failingJobs: FailingJob[];
-  /** Absent until the API with PAR-684 is deployed. */
+  /** Absent from an API that does not send it yet. */
   absenceRetiredUnreviewed?: AbsenceRetiredUnreviewed[];
 }
 

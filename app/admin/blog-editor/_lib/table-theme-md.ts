@@ -13,11 +13,8 @@ import type { TableTheme } from '../_extensions/themed-table';
  *     |----|----|
  *     |  1 |  2 |
  *
- * `serialize` walks the editor doc looking for themed tables and prepends
- * those comments to the markdown string (matching by Nth table). `parse`
- * goes the other way — strips the comments from the incoming markdown,
- * returning the cleaned-up source plus a per-table-index theme map that
- * can be applied to the parsed editor doc.
+ * `serializeWithThemes` prepends the comments by table index; `parseThemesFromMarkdown` strips
+ * them and returns the per-table theme map for the parsed doc.
  */
 
 const MAGIC_LINE_RE = /^\s*<!--\s*tbl-theme:\s*([a-zA-Z]+)\s*-->\s*$/;
@@ -135,12 +132,10 @@ export function parseThemesFromMarkdown(markdown: string): {
   return { cleaned: outLines.join('\n'), themes };
 }
 
-/** Apply the per-table-index theme map to a freshly-parsed editor doc.
- *  Positions are resolved INSIDE the transaction so they can't go stale, and
- *  the change is kept out of the undo history — it restores saved state, the
- *  author never "did" anything. The caller is responsible for suppressing
- *  its own onUpdate handling around this call (the transaction does change
- *  the doc, and TipTap has no per-command emitUpdate switch). */
+/**
+ * Applies the per-table theme map to a freshly parsed doc, outside the undo history since it
+ * restores saved state. The caller suppresses its own onUpdate around this call.
+ */
 export function applyThemesToDoc(editor: Editor, themes: TableTheme[]): void {
   if (themes.every((t) => t === 'default')) return;
   editor

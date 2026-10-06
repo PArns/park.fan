@@ -28,21 +28,18 @@ interface FrontmatterFormProps {
   allTags: string[];
   slug: string;
   onSlugChange: (s: string) => void;
-  /** Bubbles a brand-new author up to the parent so it can be appended to the
-   *  authors list AND included in the save PR. */
+  /** Hands a new author to the parent, for the authors list and the save's pull request. */
   onCreateAuthor?: (draft: NewAuthorDraft) => void;
   /** Same flow for a new (sub-)category. */
   onCreateCategory?: (draft: NewCategoryDraft) => void;
-  /** Edit-in-place flows — overwrite an existing author / category in the
-   *  same save PR. */
+  /** Overwrites an existing author or category in the same save. */
   onEditAuthor?: (draft: NewAuthorDraft) => void;
   onEditCategory?: (draft: NewCategoryDraft) => void;
 }
 
 /**
- * Notion-style page properties block. Big title + subtitle, then a compact grid
- * of pills/dropdowns for the rest. The active locale is controlled outside this
- * component (see LocaleTabs); only fields scoped to the active locale live here.
+ * The blog editor's page properties for the active locale: title and summary, then a compact grid
+ * of the remaining frontmatter. The locale is chosen outside, in `LocaleTabs`.
  */
 export function FrontmatterForm({
   value,
@@ -70,7 +67,6 @@ export function FrontmatterForm({
 
   return (
     <div className="mb-6 space-y-4">
-      {/* Title & summary card — gives the post identity its own breathing room. */}
       <div className="border-border/60 bg-card/40 group relative overflow-hidden rounded-2xl border p-7 backdrop-blur-sm">
         <div className="from-primary/8 via-primary/0 to-primary/3 pointer-events-none absolute inset-0 bg-gradient-to-br opacity-50" />
         <div className="relative">
@@ -95,7 +91,6 @@ export function FrontmatterForm({
         </div>
       </div>
 
-      {/* Properties card — Notion-style page properties grid. */}
       <div className="border-border/60 bg-card/30 rounded-2xl border p-5 backdrop-blur-sm">
         <div className="text-muted-foreground mb-4 inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase">
           <span className="bg-primary/40 h-1 w-1 rounded-full" />

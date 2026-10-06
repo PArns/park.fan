@@ -17,8 +17,7 @@ export interface AuthorOption {
   shortName?: string;
   avatar?: string;
   role?: string;
-  /** Full editable fields — read once upfront so the Edit modal can pre-fill
-   *  without an extra round-trip. Tiny payload for the handful of authors. */
+  /** Every editable field, so the Edit modal pre-fills without another round trip. */
   location?: string;
   url?: string;
   bio?: string;

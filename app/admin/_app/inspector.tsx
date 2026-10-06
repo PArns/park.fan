@@ -5,18 +5,9 @@ import { PanelRightClose, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * The third column.
- *
- * An admin page is usually two things at once: the thing you are editing, and
- * the context you need to edit it — what upstream says, who changed this last,
- * which photo is attached, what the ride page looks like right now. Stacking
- * that below the form means scrolling away from the field you are filling in;
- * putting it in a modal means losing the form while you read it.
- *
- * So it lives beside them, and it is a slot rather than a component: any page
- * can push content into it with `useInspector().show(...)`, and the shell
- * decides how it is presented — a docked column on a wide screen, a sheet over
- * the content on a narrow one. The page does not have to know which.
+ * The third column, beside the page, so the context of an edit never means scrolling away from
+ * the field. A slot: a page pushes content with `useInspector().show(...)`, and the shell docks it
+ * on a wide screen and shows a sheet on a narrow one.
  */
 
 export interface InspectorContent {

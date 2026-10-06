@@ -7,13 +7,8 @@ import { FocusPreviews } from './focus-previews';
 import { Section } from './panel-ui';
 
 /**
- * Set an image's focal point, and see what it does everywhere the site paints it.
- *
- * Framing cannot be judged on the source photo: a picture that looks fine at 4:3
- * loses the top of its subject in a wide ride card and keeps it in a tall one. The
- * previews therefore render the REAL cards and background (see `FocusPreviews`),
- * in their open and closed states, because the card chrome — a glass header over
- * the top, a wait panel over the bottom — decides how much of the photo survives.
+ * Framing cannot be judged on the source photo, so the previews render the real cards and
+ * background (`FocusPreviews`), whose chrome decides how much of the photo survives.
  */
 
 interface FocusEditorProps {
@@ -71,10 +66,8 @@ export function FocusEditor({ src, alt, focus, onChange }: FocusEditorProps) {
           </div>
         }
       >
-        {/* Click target: the full photo, undistorted, with the point marked.
-            Height-capped rather than full-bleed — a portrait original filled the
-            column on its own and pushed "How it lands", the part that answers
-            whether the point is right, below the fold. */}
+        {/* The full photo, undistorted, height-capped so a portrait original does not push the
+            previews below the fold. */}
         <div
           ref={frameRef}
           role="application"
@@ -104,9 +97,8 @@ export function FocusEditor({ src, alt, focus, onChange }: FocusEditorProps) {
         <FocusPreviews src={src} objectPosition={position} />
       </Section>
 
-      {/* Inline blog images are never cropped — they keep their own ratio. Shown
-          small, and only to make it obvious the focal point does nothing here,
-          rather than leaving somebody wondering why it had no effect. */}
+      {/* Inline blog images are never cropped; shown so it is clear the focal point does
+          nothing there. */}
       <Section title="Inline article image" hint="Uncropped — the focal point does not apply here.">
         <Image
           src={src}

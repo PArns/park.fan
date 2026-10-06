@@ -22,19 +22,9 @@ import {
 import { cn } from '@/lib/utils';
 
 /**
- * Toasts, written here rather than pulled in.
- *
- * `sonner` is not in this project's lockfile and is not worth adding for the
- * one behaviour the admin actually needs beyond a styled box: an **undo**
- * action attached to the message. Curation writes are reversible by design —
- * every one returns the id of its audit entry, and the API can put it back —
- * so the moment right after a save is the moment that affordance belongs, and
- * a toast that cannot carry a button would have pushed it into a menu nobody
- * opens.
- *
- * Deliberately not a portal: the admin shell already owns the whole viewport
- * and stacks nothing above `z-[80]`, so a fixed container inside it lands in
- * the same place with one fewer moving part.
+ * Toasts, written here because the one thing the admin needs beyond a styled box is an undo
+ * action right after a reversible save, which is not worth adding `sonner` for. Not a portal: the
+ * shell owns the viewport and stacks nothing above `z-[80]`.
  */
 
 export type ToastTone = 'success' | 'error' | 'info' | 'pending';
@@ -228,11 +218,8 @@ function ToastCard({
       await toast.action.onClick();
       onDismiss();
     } catch (error) {
-      // The undo in a save toast fails for reasons the person needs to hear:
-      // the change was already undone, something else has changed the field
-      // since, the session expired. Without this the promise rejected into
-      // nothing, the spinner blinked, and the toast then auto-dismissed as
-      // though the undo had worked.
+      // An undo can fail for reasons the person needs to hear (already undone, changed since,
+      // session expired); without this the toast would dismiss as though it had worked.
       onActionError(error instanceof Error ? error.message : 'Aktion fehlgeschlagen');
     } finally {
       setBusy(false);

@@ -2,13 +2,8 @@ import { revalidatePath, revalidateTag } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
- * On-demand cache revalidation — the "only write when data actually changed" lever.
- *
- * Time-based ISR cannot skip unchanged content: Vercel bills EVERY regeneration as a
- * size-weighted write, even if the output is byte-identical. So the shells/data entries run
- * on long TTLs, and whenever the SOURCE knows something really changed (new/removed park,
- * geo restructure, popularity re-rank, blog publish, model retrain) it POSTs here and only
- * then does the next request re-render + write.
+ * On-demand cache revalidation. Vercel bills every regeneration as a write, even a byte-identical
+ * one, so entries run on long TTLs and the source POSTs here when something really changed.
  *
  *   curl -X POST https://park.fan/api/revalidate \
  *     -H "Authorization: Bearer $REVALIDATE_SECRET" \
@@ -60,16 +55,9 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // 'max' = Next 16's stale-while-revalidate purge: entries are marked stale immediately and
-  // re-rendered in the background on the next request (no user-facing latency spike). That is the
-  // right trade for content whose old copy is merely a few minutes behind.
-  //
-  // `"expire": 0` is for the caller that cannot live with one more stale answer, and there is one:
-  // a park opening. Until the fetch re-runs, its shows carry yesterday's showtimes and read CLOSED
-  // (the API reports them that way for as long as the park is), and under 'max' the visitor who
-  // triggers the revalidation is served exactly that — the first person through the door every
-  // morning, on the park's busiest page. The cost is that one request waiting out the upstream
-  // fetch instead.
+  // 'max' marks entries stale and re-renders them in the background on the next request, right
+  // for content a few minutes behind. `"expire": 0` is for a park opening, where the stale copy
+  // shows yesterday's shows as closed to the first visitor; that one request waits instead.
   const profile = immediate ? { expire: 0 } : 'max';
   for (const tag of tags) revalidateTag(tag, profile);
   for (const path of paths) revalidatePath(path);

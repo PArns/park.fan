@@ -5,22 +5,9 @@ import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * The instrument row.
- *
- * A curation admin has one question that is genuinely a number — how much of
- * the catalogue has been touched — and the honest answer to it is currently
- * "two parks of 212". A ring says that faster than a sentence, and it says it
- * without flattering: an almost-empty ring is the point.
- *
- * Three rules hold this together and are worth writing down, because they are
- * what keeps a dashboard from becoming decoration:
- *
- *  - Every tile is a link to the list it counts. A number nobody can act on is
- *    a poster.
- *  - The ring is the share, the digits are the count. Percentages alone hide
- *    that 100 % of eight rides is not an achievement.
- *  - Colour carries meaning, never mood: brand blue for coverage, amber for a
- *    backlog worth a session, red for something that is wrong.
+ * The dashboard's instrument row. Every tile links to the list it counts, the ring is the share
+ * and the digits the count, and colour carries meaning: brand blue for coverage, amber for a
+ * backlog, red for something wrong.
  */
 
 export type MetricTone = 'brand' | 'good' | 'warn' | 'bad' | 'neutral';
@@ -66,10 +53,8 @@ function Ring({
           strokeWidth="7"
           className="stroke-muted-foreground/12"
         />
-        {/* A share below about 1.5 % draws as a dot and reads as a broken
-            ring rather than as a small number, so the arc keeps a minimum
-            length. The digits next to it carry the exact value; this only has
-            to be legible as "barely any". */}
+        {/* A tiny share would draw as a dot that reads as a broken ring, so the arc keeps a
+            minimum length; the digits carry the exact value. */}
         <circle
           cx="36"
           cy="36"
@@ -161,11 +146,8 @@ export function MetricTile({
 }
 
 /**
- * Thirty days of the admin's own work.
- *
- * Deliberately without axes. The question it answers is "did anything happen
- * lately, and when" — a grid and a y-scale would dress that up as analysis.
- * The last bar is the one that matters, so it carries the label.
+ * Thirty days of the admin's own work, without axes: it answers whether anything happened lately,
+ * and the last day carries the label.
  */
 export function CurationTrend({
   perDay,
@@ -196,10 +178,8 @@ export function CurationTrend({
         <p className="text-2xl font-bold tabular-nums">{loading ? '—' : total}</p>
       </div>
 
-      {/* An area, not bars. Thirty days of curation work is mostly zeroes with
-          a few spikes, and a row of bars at floor height reads as missing data
-          where it means "nobody edited anything that day". A line makes the
-          quiet stretches part of the shape instead of a defect in it. */}
+      {/* An area, not bars: mostly zeroes with a few spikes, and bars at floor height read as
+          missing data. */}
       <svg viewBox="0 0 300 64" preserveAspectRatio="none" className="mt-3 h-16 w-full">
         <defs>
           <linearGradient id="curation-fill" x1="0" y1="0" x2="0" y2="1">
@@ -230,13 +210,6 @@ export function CurationTrend({
   );
 }
 
-/**
- * What is left to do, ranked by how much of it there is.
- *
- * The share bar is against the whole catalogue, not against the biggest row —
- * "746 of 7140 rides" is the useful proportion, and normalising to the largest
- * backlog would make every list look equally urgent.
- */
 /** The 30 points as an SVG polyline, in a 300×64 box. */
 function points(buckets: Array<{ count: number }>, max: number): Array<[number, number]> {
   const step = buckets.length > 1 ? 300 / (buckets.length - 1) : 300;
@@ -258,8 +231,8 @@ function areaPath(buckets: Array<{ count: number }>, max: number): string {
 }
 
 /**
- * Backlog rows, each a link showing its count against the catalogue total and a bar for that share
- * in the row's tone. Rows render in the order given.
+ * Backlog rows, each a link showing its count and a bar for its share of the whole catalogue, not
+ * of the biggest row, so not every list looks equally urgent. Rows render in the order given.
  */
 export function BacklogBars({
   rows,

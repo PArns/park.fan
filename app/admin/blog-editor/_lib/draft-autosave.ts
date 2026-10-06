@@ -2,12 +2,8 @@ import type { Locale } from '@/i18n/config';
 import type { LocaleDraft } from './types';
 
 /**
- * Crash protection for the editor. The whole working state (per-locale
- * drafts + which post is being edited) is snapshotted into localStorage on a
- * debounce; closing the tab, a crash or an accidental navigation no longer
- * eats an hour of writing. The snapshot is cleared after a successful save
- * (the PR is the durable copy from then on) and when the author explicitly
- * discards it.
+ * Crash protection for the blog editor: the working state is snapshotted into localStorage on a
+ * debounce, and cleared after a successful save or an explicit discard.
  */
 
 const KEY = 'parkfan-blog-editor-draft';

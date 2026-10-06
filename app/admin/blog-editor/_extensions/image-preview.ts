@@ -15,10 +15,8 @@ import { getPendingImage } from '../_lib/pending-images';
  *   align ∈ left | right | center | wide   (defaults to center)
  *   size  ∈ small | medium | large         (optional override)
  *
- * In the editor we honour the same syntax: parse the alt parts, set
- * data-align / data-size attributes on the rendered `img` via a node
- * decoration so CSS can float/center it, and dispatch a parkfan-selection
- * event on click so the PropertiesPanel can offer an inline editor.
+ * The editor reads the same syntax into `data-align` and `data-size` decorations for CSS, and a
+ * click dispatches `parkfan-selection` for the PropertiesPanel.
  */
 
 type ImageAlign = 'center' | 'left' | 'right' | 'wide';
@@ -86,10 +84,8 @@ function buildCaptionDOM(caption: string, align: ImageAlign): HTMLElement {
 function buildDecorations(doc: PMNode, spans: ImageSpan[]): DecorationSet {
   const decorations: Decoration[] = [];
   for (const s of spans) {
-    // Freshly-uploaded images don't exist on disk yet — the bytes are staged
-    // in the pending-images store until Save commits them. Point the
-    // rendered img at the staging blob so the author sees the picture
-    // instead of a broken thumbnail. The doc keeps the final public path.
+    // A fresh upload is not on disk until Save, so the rendered img points at its staged blob;
+    // the doc keeps the final public path.
     const staged = getPendingImage(s.src);
     decorations.push(
       Decoration.node(s.pos, s.pos + 1, {
@@ -105,8 +101,7 @@ function buildDecorations(doc: PMNode, spans: ImageSpan[]): DecorationSet {
         ...(staged ? { src: staged.objectUrl } : {}),
       })
     );
-    // Caption widget — sits right after the image so it floats with the same
-    // alignment column. Empty captions skip the widget entirely.
+    // Right after the image, so the caption floats in the same column.
     if (s.parsed.caption) {
       decorations.push(
         Decoration.widget(
@@ -159,12 +154,8 @@ export const ImagePreview = Extension.create({
           handleClick(view, _clickPos, event) {
             const img = eventToElement(event)?.closest('img') as HTMLImageElement | null;
             if (!img) return false;
-            // Find the span matching this img by src. When the same image is
-            // used twice, disambiguate by hypot(Δx, Δy) so the closer instance
-            // wins even when both share a line. Freshly-uploaded images render
-            // through their staging blob URL (the decoration overrides src),
-            // so match against that too — otherwise clicking an uploaded image
-            // never opened the panel.
+            // The span is found by src, the closer one winning when an image is used twice. A
+            // fresh upload renders through its staging blob URL, so that matches too.
             const state = imagePreviewKey.getState(view.state);
             const spans = state?.spans ?? [];
             const src = img.getAttribute('src') ?? '';
@@ -174,12 +165,8 @@ export const ImagePreview = Extension.create({
             const pick = pickClosestByCoords(img, matches, view, (s) => s.pos);
             if (!pick) return false;
             event.preventDefault();
-            // Place a TextSelection right AFTER the image's inline node so
-            // the caret lands inside the same paragraph — arrow keys and
-            // typing then work as expected next to a floated image (the
-            // whole point of left/right alignment). Without this the click
-            // returned `true` and the selection stayed wherever it last
-            // was, so typing fell through to a different paragraph.
+            // The caret goes right after the image, in its paragraph, so typing works next to a
+            // floated image instead of landing wherever the selection last was.
             try {
               const afterImage = pick.pos + 1;
               if (afterImage <= view.state.doc.content.size) {

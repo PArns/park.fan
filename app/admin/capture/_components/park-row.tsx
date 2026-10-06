@@ -8,20 +8,9 @@ import type { UploadState } from '../_lib/types';
 import { PhotoInputs, StateLine } from './photo-inputs';
 
 /**
- * The park itself, for the photographs that belong to no ride.
- *
- * An entrance, a parade, the Halloween dressing of a path: the media database has
- * carried these since it had a park-only level (`getParkOnlyImages`), and the field
- * screen was the one way in that could not produce one, because every input on it
- * hung off a ride.
- *
- * The tags are the other half. A photograph committed from here is `review: true`
- * and gets its subject, weather and light in the evening — but which event a park
- * was dressed for is the one thing the evening cannot recover from the picture
- * alone with any certainty, and it is exactly what makes the photo findable for a
- * post six months later. So this row offers that one facet and nothing else: the
- * full vocabulary is 49 tags across six facets, which is a desk's worth of chips
- * on a screen built for a thumb.
+ * The park itself, for photos that belong to no ride (an entrance, a parade, a dressed path). It
+ * offers only the `season` facet: which event a park was dressed for is what the evening review
+ * cannot recover from the picture, and the full vocabulary is too many chips for a thumb.
  */
 
 /** The `season` facet of the shared vocabulary — the same list the browser offers. */

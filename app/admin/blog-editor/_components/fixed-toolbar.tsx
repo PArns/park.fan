@@ -32,9 +32,6 @@ interface FixedToolbarProps {
 export type ToolbarAction =
   'park' | 'ride' | 'spotlight' | 'image' | 'youtube' | 'instagram' | 'suno' | `widget:${string}`;
 
-// Widget kinds the toolbar dropdown exposes — sourced from the shared
-// _lib/widgets.ts registry so adding a new kind only touches one file.
-
 const HEADINGS: Array<{ level: 1 | 2 | 3; label: string }> = [
   { level: 1, label: 'Heading 1' },
   { level: 2, label: 'Heading 2' },
