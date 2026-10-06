@@ -4,6 +4,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { ArrowRight, CalendarPlus, ChevronRight, Clock } from 'lucide-react';
 import { Link, useRouter } from '@/i18n/navigation';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
+import { Temp } from '@/components/common/unit-display';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { plannerPageDay } from '@/lib/planner/page-day';
@@ -229,7 +230,9 @@ export function HeroParkActions({ park, className }: { park: HeroPark; className
           {weather && temperature !== null ? (
             <>
               <weather.icon className={cn('size-4 shrink-0', weather.color)} aria-hidden="true" />
-              <span className="truncate">{Math.round(temperature)} °C</span>
+              <span className="truncate">
+                <Temp celsius={temperature} withUnit />
+              </span>
             </>
           ) : weatherPending ? (
             <span aria-hidden="true" className="bg-muted-foreground/15 h-3.5 w-14 rounded" />
