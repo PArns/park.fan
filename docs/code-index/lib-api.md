@@ -15,13 +15,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`analytics.ts`](../../lib/api/analytics.ts)
 
-- `getGlobalStats` _function_: Get global real-time statistics — cached in the Vercel Data Cache.
-- `getTickerData` _function_: Get live ticker data — top wait times across all open parks. Cached 10 min so the client polls hitting the `/api/analytics/ticker` proxy collapse onto one backend call per window.
-- `getGeoLiveStats` _function_: Get live statistics for geographic regions — cached in the Vercel Data Cache.
+- `getGlobalStats` _function_: Get global real-time statistics, cached a week. Only an SSR seed: the homepage counts refresh client-side via `useGlobalStats`, and a shorter window here would pin the homepage's whole ISR window to it (the shortest fetch wins).
+- `getTickerData` _function_: Get live ticker data: top wait times across open parks. Cached ten minutes so the polls through the `/api/analytics/ticker` proxy collapse onto one backend call.
+- `getGeoLiveStats` _function_: Get live statistics for geographic regions, cached a week. Only an SSR seed: open-park counts refresh client-side via `useGeoLiveStats`, and this window pins every static route that bakes it (homepage, /parks).
 
 ### [`best-times.ts`](../../lib/api/best-times.ts)
 
-- `getGlobalBestTimes` _function_: Global "best time to visit" aggregate — relative busyness across all parks by weekday and by month.
+- `getGlobalBestTimes` _function_: Global „best time to visit" aggregate: relative busyness across all parks by weekday and month. Revalidated daily and tagged `best-times-global` so a backend webhook can clear it on recompute.
 - Types: `BestTimeBucket`, `GlobalBestTimes`
 
 ### [`cache-config.ts`](../../lib/api/cache-config.ts)
@@ -31,78 +31,78 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`cdn-cache-headers.ts`](../../lib/api/cdn-cache-headers.ts)
 
-- `cdnCacheHeaders` _function_: Cache headers for an API route that is meant to sit in a shared cache.
+- `cdnCacheHeaders` _function_: Cache headers for an API route meant to sit in a shared cache.
 
 ### [`client.ts`](../../lib/api/client.ts)
 
 - `getApiBaseUrl` _function_: Where a backend request starts: the API itself on the server, this app's own proxy routes in a browser.
-- `getServerApiHeaders` _function_: Headers every request that targets the backend (api.park.fan) DIRECTLY should carry: the auth key and the identifying User-Agent above.
+- `getServerApiHeaders` _function_: Headers every request that targets the backend directly should carry: the identifying User-Agent and, when configured, the server-only `API_AUTH_KEY`. Empty in the browser.
 - `apiFetch` _function_: Fetches a park.fan API endpoint with query params and the server API headers. On the server a 429, 503, 504 or network failure is retried up to twice; a non-OK answer throws an `ApiError`.
 - `nullOnNotFound` _function_: `null` for the API's own 404, and a throw for everything else.
-- `catchNonFatal` _function_: Like `.catch(() => null)` but re-throws maintenance errors so the error boundary can detect API outages and render the maintenance page.
+- `catchNonFatal` _function_: Like `.catch(() => null)` but re-throws maintenance errors so the error boundary can render the maintenance page.
 - `ApiError` _class_: Error thrown by `apiFetch` for a non-OK API response, carrying the HTTP status; a 502 or a Cloudflare 1033 page sets `isMaintenance` and the `API_MAINTENANCE_1033` digest.
-- `API_MAINTENANCE_DIGEST` _const_: Digest forwarded to the error boundary so it can render the maintenance page. In production Next.js redacts `error.message` for server-thrown errors but preserves a custom `digest`, so this is the reliable cross-environment signal.
-- `api` _const_: Convenience methods
+- `API_MAINTENANCE_DIGEST` _const_: Digest forwarded to the error boundary so it can render the maintenance page. Production redacts `error.message` for server-thrown errors but keeps a custom `digest`.
+- `api` _const_: `GET` and `POST` shorthands over `apiFetch`.
 - Types: `FetchOptions`
 
 ### [`coordinates.ts`](../../lib/api/coordinates.ts)
 
-- `parseCoordinate` _function_: A single coordinate as a number, or null when there isn't one.
-- `withCoordinates` _function_: A copy of `entity` with both coordinates parsed — or `entity` itself when they already were numbers (or absent), so a payload the backend sends correctly costs nothing and keeps its object identity.
-- `withParkCoordinates` _function_: Parse the coordinates on a park and on every mapped thing inside it — the attractions, shows and restaurants the park map draws markers for.
-- `withAttractionCoordinates` _function_: Parse the coordinates on an attraction detail response.
+- `parseCoordinate` _function_: A single coordinate as a number, or null when there isn't one. Not a validator: an out-of-range latitude passes through; only values that are no number at all become null.
+- `withCoordinates` _function_: A copy of `entity` with both coordinates parsed, or `entity` itself when they already were numbers (or absent), so a correct payload keeps its object identity.
+- `withParkCoordinates` _function_: Parse the coordinates on a park and on every mapped thing inside it (attractions, shows, restaurants). `fetchParkByGeoPath` parses in its own trimming copy instead (`leanParkAtFetch`).
+- `withAttractionCoordinates` _function_: Parse the coordinates on an attraction detail response; its nested `park` block carries none.
 
 ### [`discovery.ts`](../../lib/api/discovery.ts)
 
-- `getGeoStructure` _function_: Get complete geographic structure. Cached in the Vercel Data Cache (geo changes rarely); used for static generation. `revalidate` keys the cache lifetime (e.g. the sitemap asks for 24h).
+- `getGeoStructure` _function_: Get the complete geographic structure, Data-cached; `revalidate` is part of the key, so the sitemaps' one-day window gets its own entry.
 - `getContinents` _function_: Get all continents, with their countries, cities and parks.
-- `getContinentsOrLastGood` _function_: `getContinents` for the header menu and the redirect and breadcrumb lookups: when the fetch fails and this process has parsed the document before, that document instead of a throw.
-- `perContinentsDocument` _function_: Something derived from the continents document, computed once per document rather than once per request.
+- `getContinentsOrLastGood` _function_: `getContinents` for the header menu and the redirect and breadcrumb lookups: when the fetch fails and this process parsed the document before, that document instead of a throw, since a stale menu beats an empty one.
+- `perContinentsDocument` _function_: Something derived from the continents document, computed once per document rather than per request. Keyed by the document object, which `readContinents` keeps stable while the document is unchanged.
 - `getCountriesWithParks` _function_: Get countries in a continent with hydrated park data and breadcrumbs.
 - `getCitiesWithParks` _function_: Get cities in a country with hydrated park data and breadcrumbs.
-- `getSitemapAttractions` _function_: Get all attractions for sitemap generation. Cached 24h. Returns flat array of { url, slug }.
-- `getParksNearLocation` _function_: Find parks near a geographic location using coordinate-based proximity. Cached (proximity + structure is week-stable; live status is overlaid client-side via LiveNearbyParks).
-- `getParksNearLocationFresh` _function_: Live (no-store) variant of `getParksNearLocation` for the client overlay.
-- `getCountriesInContinent` _function_: Get countries in a continent (basic structure only, without park details). Use getCountriesWithParks when you need full park data per country.
-- `getCountrySummary` _function_: Get country summary with top parks, peak/quiet months — for SEO landing pages. Cached 24h — data is aggregated from ParkDailyStats, changes daily at most.
+- `getSitemapAttractions` _function_: Get every attraction URL and slug for sitemap generation.
+- `getParksNearLocation` _function_: Find parks near a point, cached; live status is overlaid client-side. The query point is shifted 0.001° north so it never sits on a park's centre, where the API would answer `in_park` with rides instead of `nearby_parks`.
+- `getParksNearLocationFresh` _function_: Live (no-store) variant of `getParksNearLocation` for the client overlay that refreshes the nearby cards' open/closed status through `/api/parks/near`.
+- `getCountriesInContinent` _function_: Get countries in a continent (structure only, no park details); use `getCountriesWithParks` for full park data.
+- `getCountrySummary` _function_: Get a country summary (top parks, peak and quiet months) for SEO landing pages.
 
 ### [`favorites.ts`](../../lib/api/favorites.ts)
 
-- `getFavorites` _function_: Get favorites with full information from API The API reads favorites from cookies if no query parameters are provided
+- `getFavorites` _function_: Get favorites with full details: the API directly on the server, the `/api/favorites` proxy in the browser. The API needs the ids as query parameters, so no ids means an empty answer without a request.
 - Types: `FavoritePark`, `FavoriteAttraction`, `FavoriteShow`, `FavoriteRestaurant`, `FavoritesResponse`
 
 ### [`glossary-rides.ts`](../../lib/api/glossary-rides.ts)
 
-- `getAttractionsForTerm` _function_: Rides whose track figures, ride type or manufacturer match `termId`. Returns an empty list rather than throwing — a glossary page must still render if the API is down or the term has no curated rides yet.
-- `getRideCountsByTerm` _function_: Term id → number of curated rides, for the whole set. Used to decide which glossary terms are worth badging on the overview.
+- `getAttractionsForTerm` _function_: Rides whose track figures, ride type or manufacturer match `termId`. An empty list rather than a throw, so a glossary page still renders when the API is down.
+- `getRideCountsByTerm` _function_: Term id → number of curated rides, for deciding which terms get a badge on the overview.
 
 ### [`integrated-calendar.ts`](../../lib/api/integrated-calendar.ts)
 
-- `getIntegratedCalendar` _function_: Fetch integrated calendar data for a park
-- `getBestDaysCalendar` _function_: Best-days snapshot for the SSR seed — Next data-cached (`BEST_DAYS_REVALIDATE`) + tagged, so repeat renders never touch the backend and the on-demand `best-days:<slug>` webhook keeps it fresh.
-- `getBestDaysSnapshotFresh` _function_: Live (no-store) best-days snapshot for the `/api/parks/.../best-days` client-poll proxy — skips our own cache so the response reflects the backend's latest snapshot (its Redis + CDN still collapse concurrent calls).
-- `getBestDaysCalendarSeed` _function_: Timeout-bounded wrapper around `getBestDaysCalendar` for the park page's streamed SEO seed.
-- `getCalendarMonthSeed` _function_: Timeout-bounded month fetch for the calendar page's streamed summary.
-- `BEST_DAYS_REVALIDATE` _const_: Next data-cache window for the SSR best-days snapshot.
-- `CALENDAR_MONTH_REVALIDATE` _const_: How long a month page's server-rendered summary may be reused.
+- `getIntegratedCalendar` _function_: Fetch a park's integrated calendar (hours, weather, holidays per day) in one uncached call. `from` defaults to today and `to` to 30 days later on the API side.
+- `getBestDaysCalendar` _function_: Best-days snapshot for the SSR seed, data-cached and tagged so repeat renders never touch the backend. Feeds the best-days section and the crowd FAQ and its FAQPage JSON-LD.
+- `getBestDaysSnapshotFresh` _function_: Live (no-store) best-days snapshot for the `/api/parks/.../best-days` client-poll proxy, so it reflects the backend's latest snapshot. Mirrors `getParkByGeoPathFresh`.
+- `getBestDaysCalendarSeed` _function_: Timeout-bounded `getBestDaysCalendar` for the park page's streamed SEO seed.
+- `getCalendarMonthSeed` _function_: Timeout-bounded month fetch for the calendar page's streamed summary, like `getBestDaysCalendarSeed`: a timeout drops only the summary card.
+- `BEST_DAYS_REVALIDATE` _const_: Data-cache window for the SSR best-days snapshot. Only the fallback cadence: the backend fires `revalidateTag('best-days:<slug>')` after every forecast warmup, and `analyzeBestDays` re-filters against a fresh „today" on every render.
+- `CALENDAR_MONTH_REVALIDATE` _const_: How long a month page's server-rendered summary may be reused: a day, since what it says (open days, quietest and busiest days, usual hours) does not change within one.
 - Types: `CalendarHourlyMode`, `BestDaysByDayOfWeek`, `BestDaysSnapshot`
 
 ### [`kids-page.ts`](../../lib/api/kids-page.ts)
 
-- `hasParkKidsPage` _function_: Does this park have a "with kids" page at all?
+- `hasParkKidsPage` _function_: Does this park have a „with kids" page at all? For the sitemap and links that must know whether the URL exists; reads the park payload from the Data Cache entry the park page already fills.
 - `parksWithKidsPage` _function_: Which of these parks have a "with kids" page, as a set of `parkGeoKey`s.
 
 ### [`ml.ts`](../../lib/api/ml.ts)
 
-- `getMLDashboard` _function_: Get ML model dashboard — accuracy, coverage, model health.
-- `getMLMetricsHistory` _function_: Get ML model metrics history for sparklines (oldest first, up to `limit`). Cached a day, for the same reason as the dashboard above: training runs once daily at 06:00 UTC.
+- `getMLDashboard` _function_: Get the ML model dashboard (accuracy, coverage, model health), cached a day because training runs once a day. This fetch sets the ISR window of the pages that render `MLStatsSection`, including the homepage.
+- `getMLMetricsHistory` _function_: Get ML metrics history for sparklines (oldest first, up to `limit`), cached a day likewise.
 
 ### [`park-live-projection.ts`](../../lib/api/park-live-projection.ts)
 
 - `parkCacheTag` _function_: Cache tag for ONE park's structure fetch, so the backend can drop that park's entry alone.
 - `leanParkForLivePoll` _function_: Project a park down to `LiveParkSnapshot`.
 - `mergeLiveParkSnapshot` _function_: Lay a `LiveParkSnapshot` back over the server-rendered park.
-- `leanParkForCalendarShell` _function_: Trim for the CALENDAR page's serialized park.
+- `leanParkForCalendarShell` _function_: Trim for the serialized park on the park SUB-pages (calendar, wait-time record), which render no attraction cards: only `ParkTodayPanel`'s headliner rows and `useParkTileItems` read `park.attractions`, and they need a dozen fields.
 - Types: `LiveAttractionSnapshot`, `LiveRestaurantSnapshot`, `LiveParkSnapshot`
 
 ### [`parks.ts`](../../lib/api/parks.ts)
@@ -122,43 +122,43 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`plan.ts`](../../lib/api/plan.ts)
 
-- `getPlanDay` _function_: One day of a park, ride by ride and hour by hour — the series the trip planner draws.
+- `getPlanDay` _function_: One day of a park, ride by ride and hour by hour: the series the trip planner draws.
 
 ### [`relay.ts`](../../lib/api/relay.ts)
 
 - `relayToApi` _function_: Sends one request to the backend and hands its status and body back unchanged.
-- `relayJsonWrite` _function_: Relays a write with the request's JSON body forwarded as-is, or answers 400 when it is not JSON.
-- `relayPushGet` _function_: Relays `GET <apiPath>?endpoint=…`, the "list this browser's own rows" read of `ride-alerts` and `show-follows`.
+- `relayJsonWrite` _function_: Relays a write with the request's JSON body forwarded as-is, or answers 400 when not JSON.
+- `relayPushGet` _function_: Relays `GET <apiPath>?endpoint=…`, the „this browser's own rows" read of alerts and follows.
 - `relayPushWrite` _function_: Relays a push `POST` or `DELETE` with the request's JSON body forwarded as-is.
 
 ### [`ride-figures.ts`](../../lib/api/ride-figures.ts)
 
-- `pickRideFigures` _function_: The figures per attraction id, for the rides that have at least one.
+- `pickRideFigures` _function_: The figures per attraction id, for the rides that have at least one. Only a positive number counts (a 0 km/h top speed is a placeholder), and the duration is rounded to whole seconds for `m:ss`.
 - Types: `RideFigures`
 
 ### [`search.ts`](../../lib/api/search.ts)
 
-- `search` _function_: Search across all entities
+- `search` _function_: Search parks, attractions, shows and restaurants.
 - Types: `SearchType`
 
 ### [`seed-timeout.ts`](../../lib/api/seed-timeout.ts)
 
-- `withSeedTimeout` _function_: SERVER ONLY. `after` comes from `next/server`, and this module may not be reached from a client component's import graph — `lib/api/parks.ts` is one such graph (`use-live-park-data.ts` pulls it into the browser bundle), which is why the …
+- `withSeedTimeout` _function_: Wait for a streamed SEO seed, but not for long, and never leave a timer behind. SERVER ONLY: `after` comes from `next/server`, which is why it is not in `lib/api/parks.ts` (that module reaches the browser bundle).
 
 ### [`stats.ts`](../../lib/api/stats.ts)
 
-- `getParkHistoricalStats` _function_: Fetch historical crowd/wait-time statistics for a park.
-- `getParkHourlyProfile` _function_: Fetch the park's hourly wait-time profile — median and busy wait per hour of the operating day, ride by ride.
-- `getParkHistoricalStatsSeed` _function_: Timeout-bounded, per-render-deduped wrapper around `getParkHistoricalStats` for the blog widgets' server seed.
-- `getRideDayCurve` _function_: One ride's day curve. `attraction` pins a ride; without it the backend picks the park's busiest ride that actually reported today, so the answer is not a closed or out-of-season one.
+- `getParkHistoricalStats` _function_: Fetch historical crowd and wait-time statistics for a park, retrying while a cold aggregate builds.
+- `getParkHourlyProfile` _function_: Fetch the park's hourly wait-time profile: median and busy wait per hour of the operating day, ride by ride. Not a cold-compute path, so one attempt is enough.
+- `getParkHistoricalStatsSeed` _function_: Timeout-bounded, per-render-deduped `getParkHistoricalStats` for the blog widgets' server seed, so a post's stats tables reach crawlers with figures instead of skeleton cells.
+- `getRideDayCurve` _function_: One ride's day curve. `attraction` pins a ride; without it the backend picks the park's busiest ride that reported today.
 - `getParkHourlyProfileSeed` _function_: Timeout-bounded, per-render-deduped fetch of a park's hourly wait profile for the blog widget's server seed; resolves `null` on a miss or after 3 s.
-- `getParkStatsForPage` _function_: The park's historical aggregate, read for a PAGE rather than for a widget.
-- `getParkHourlyProfileForPage` _function_: The hourly profile for the same page, on the same terms as `getParkStatsForPage`.
-- `hasParkStatsPage` _function_: Does this park have a wait-time record page at all?
-- `parkGeoKey` _function_: The key a park is identified by here. NOT the slug: `parks.slug` is not unique — the same name exists in more than one city — so only the whole geo path identifies a park.
-- `parksWithStatsPage` _function_: Which of these parks have a wait-time record page, as a set of `parkGeoKey`s.
-- `parksWhere` _function_: The parks for which a probe answers `true`, asked `AVAILABILITY_CONCURRENCY` at a time.
-- `PARK_STATS_PAGE_QUERY` _const_: How the wait-time record page asks for its two aggregates.
+- `getParkStatsForPage` _function_: The park's historical aggregate for an ISR page rather than a widget.
+- `getParkHourlyProfileForPage` _function_: The hourly profile for the same page, on the same terms as `getParkStatsForPage`, with `PARK_STATS_PAGE_QUERY.hourlyTopN` so the card asks for the same table.
+- `hasParkStatsPage` _function_: Does this park have a wait-time record page at all? `meta.displayable` is the API's answer to „is there enough measured history to print" and gates the route.
+- `parkGeoKey` _function_: The key a park is identified by here. Not the slug: the same slug exists in more than one city, so only the whole geo path is unique.
+- `parksWithStatsPage` _function_: Which of these parks have a wait-time record page, as a set of `parkGeoKey`s. Every probe answers `false` rather than throwing, per `hasParkStatsPage`.
+- `parksWhere` _function_: The parks for which a probe answers `true`, asked `AVAILABILITY_CONCURRENCY` at a time. A probe must answer `false` rather than throw.
+- `PARK_STATS_PAGE_QUERY` _const_: How the wait-time record page asks for its two aggregates, shared by the page, the client cards that re-query the same figures, and the Data Cache entry.
 - Types: `ParkGeoPath`
 
 ### [`types.ts`](../../lib/api/types.ts)
@@ -167,12 +167,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`weather-nowcast.ts`](../../lib/api/weather-nowcast.ts)
 
-- `getParkWeatherNowcast` _function_: Get short-term (next ~2h) weather nowcast for a park. Returns null if nowcast is unavailable (404 — missing coordinates or upstream down).
-- `getParkWeatherNowcastFresh` _function_: Fresh (uncached) nowcast for the live client poll path (`/api/parks/.../weather/nowcast`).
-- `NOWCAST_SEED_TTL_DECORATIVE` _const_: How long a nowcast seed may be cached inside a PRERENDERED page.
+- `getParkWeatherNowcast` _function_: Get the short-term (about two hours) weather nowcast for a park, data-cached; `null` on a 404 (no coordinates, or upstream down).
+- `getParkWeatherNowcastFresh` _function_: Fresh (uncached) nowcast for the live client poll (`/api/parks/.../weather/nowcast`). Layering our cache on the poll path would add to the upstream CDN's staleness, freeze the „live" banner and push `nextUpdateAt` into the past.
+- `NOWCAST_SEED_TTL_DECORATIVE` _const_: Nowcast seed window for a PRERENDERED page where the seed is decoration.
 
 ### [`write-failure.ts`](../../lib/api/write-failure.ts)
 
-- `normalizeRetryAfter` _function_: The limiter's own window, normalized ONCE so every reader agrees.
-- `classifyWriteFailure` _function_: Turn a non-2xx response into an `HttpWriteError`. 404 and the general 4xx bucket carry no body worth reading; 429 does — both limiters answer it with `{ statusCode, message, retryAfterSeconds }` (`PushFollowAccessGuard` and …
+- `normalizeRetryAfter` _function_: The limiter's window, normalized once, because callers both print it and time things by it and the two must not diverge. Under a second, or unreadable, takes the fallback.
+- `classifyWriteFailure` _function_: Turn a non-2xx response into an `HttpWriteError`. Only a 429 has a body worth reading: `{ statusCode, message, retryAfterSeconds }` from `PushFollowAccessGuard` and `TripsController.guard`.
 - Types: `HttpWriteError`

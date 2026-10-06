@@ -7,25 +7,25 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`attraction-history-geometry.ts`](../../lib/parks/attraction-history-geometry.ts)
 
-- `historyRows` _function_: Rows the grid needs, per breakpoint.
+- `historyRows` _function_: Rows the grid needs at a given column count. Constant per breakpoint, because the history is laid out today-first with no leading blanks, so the weekday the window starts on cannot change the reservation.
 - `historyListRows` _function_: Rows the two-column list below that needs.
 - `historyGridRows` _function_: Rows the seven-column grid needs above it.
-- `historyGridReservation` _function_: The two heights the placeholder reserves.
-- `HISTORY_WINDOW_DAYS` _const_: Today plus the thirty days behind it — the window `AttractionHistoryGrid` builds.
+- `historyGridReservation` _function_: The two heights the placeholder reserves, the same on every day of the year. Numbers rather than a class string, because Tailwind cannot see a computed class name; the panel writes them into CSS custom properties.
+- `HISTORY_WINDOW_DAYS` _const_: Today plus the thirty days behind it: the window `AttractionHistoryGrid` builds.
 - Types: `HistoryGridReservation`
 
 ### [`calendar-grid-geometry.ts`](../../lib/parks/calendar-grid-geometry.ts)
 
 - `weekRowsInMonth` _function_: Week rows a month spans on a Monday-first seven-column grid.
 - `listRowsInMonth` _function_: Rows the below-`lg` two-column day list needs.
-- `calendarGridReservation` _function_: The three heights the placeholder should reserve for one month.
+- `calendarGridReservation` _function_: The three heights the placeholder should reserve for one month. Numbers rather than a class string, because Tailwind cannot see a computed class name; the component writes them into CSS custom properties that arbitrary-value utilities read.
 - Types: `CalendarGridReservation`
 
 ### [`calendar-month-summary.ts`](../../lib/parks/calendar-month-summary.ts)
 
-- `extremeCandidates` _function_: The days a month's extremes may be picked from — the one definition both surfaces use.
-- `rankOf` _function_: One comparable number per day: the crowd bucket first, the headliner wait as the tie-break.
-- `summarizeCalendarMonth` _function_: Reduce one month of calendar days to the handful of facts a page can state in a sentence.
+- `extremeCandidates` _function_: The days a month's extremes may be picked from, shared by the summary sentence and the grid's „Empfohlen" star so their medians are computed over the same population. Holidays stay in: a quiet Whit Monday is still the month's quietest day.
+- `rankOf` _function_: One comparable number per day: the crowd bucket, plus the headliner wait squeezed below 1 as the tie-break, so a `moderate` day never sorts below a `low` one and an outlier cannot climb a whole bucket.
+- `summarizeCalendarMonth` _function_: Reduce one month of calendar days to the handful of facts a page can state in a sentence. `todayIso` is the park's own date, not the server's, so „war" versus „wird" does not flip with where the render happened.
 - Types: `NamedCalendarDay`, `MonthHoursPattern`, `CalendarMonthSummary`
 
 ### [`calendar-redirects.ts`](../../lib/parks/calendar-redirects.ts)
@@ -34,81 +34,81 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`calendar-segments.ts`](../../lib/parks/calendar-segments.ts)
 
-- `parkCalendarPath` _function_: Locale-relative path to a park's calendar, e.g. `/parks/europe/germany/bruehl/phantasialand/wartezeiten-kalender`, optionally for one month.
+- `parkCalendarPath` _function_: Locale-relative path to a park's calendar, optionally for one month; `@/i18n/navigation`'s `Link` adds the locale. The month is written unpadded (`/2026/9`) so each month has exactly one URL; the route redirects the padded form.
 - `parkCalendarMonthIndex` _function_: Months since year 0, so a window can be checked without date arithmetic.
-- `parkCalendarMonthsBack` _function_: How many months back the calendar actually reaches today — the smaller of the span and the distance to `EARLIEST_CALENDAR_MONTH`.
-- `parkCalendarMonthsForward` _function_: How many months forward this park's calendar actually says anything — the mirror of `parkCalendarMonthsBack`, and it exists for the same reason.
-- `parseParkCalendarMonth` _function_: Parse the optional `[[...date]]` catch-all into a month.
-- `parseParkCalendarMonthSpelling` _function_: Whether two URL segments SPELL a month — not whether the route serves it.
+- `parkCalendarMonthsBack` _function_: How many months back the calendar reaches today: the smaller of the span and the distance to `EARLIEST_CALENDAR_MONTH`. One source for the route's range check, the month index and the sitemap, so none of them links or serves past the edge.
+- `parkCalendarMonthsForward` _function_: How many months forward this park's calendar says anything.
+- `parseParkCalendarMonth` _function_: Parse the optional `[[...date]]` catch-all into a month. `null` month means the hub; `'invalid'` means segments that were there and wrong, a 404 rather than a silent fall back to the hub (which would put the same content on unbounded URLs).
+- `parseParkCalendarMonthSpelling` _function_: Whether two URL segments spell a month, not whether the route serves it: `/2026/13` is a typo and stays a 404, while an out-of-window real month 308s to the hub.
 - `shiftParkCalendarMonth` _function_: The month before/after, rolling the year over. Used for the crawlable prev/next links.
-- `isParkCalendarMonthInRange` _function_: Whether a month is inside the window the route serves — the prev/next links check it so they never point at a 404.
-- `currentParkCalendarMonth` _function_: Today's month in a given timezone.
-- `PARK_CALENDAR_SEGMENTS` _const_: Locale → localized URL segment for a park's wait-time calendar, and the month URLs under it.
+- `isParkCalendarMonthInRange` _function_: Whether a month is inside the window the route serves, so prev/next links never point at a 404. Pass `scheduleCoverage.to` as `coverageTo` wherever the park payload is in scope; without it the forward edge is the fixed span.
+- `currentParkCalendarMonth` _function_: Today's month in the park's timezone, never the server's or browser's, so the page and the grid agree on which month „this month" is across a month boundary. Uses the cached formatter, since `proxy.ts` calls it for every calendar month URL.
+- `PARK_CALENDAR_SEGMENTS` _const_: Locale → localized URL segment for a park's wait-time calendar, and the month URLs under it (`/parks/<geo>/<park>/wartezeiten-kalender/2026/9`). A park's „when should I go" gets its own crawlable URLs rather than a hash.
 - `PARK_CALENDAR_CANONICAL_SEGMENT` _const_: The canonical route-folder segment (English), what the app router matches.
-- `PARK_CALENDAR_MONTH_SPAN` _const_: How far a month URL may reach, counted in MONTHS from the current one.
-- `CALENDAR_DATA_START` _const_: The first day the wait-time archive holds anything at all.
+- `PARK_CALENDAR_MONTH_SPAN` _const_: How far a month URL may reach, counted in months from the current one. The API answers any range, past a park's season with every day `CLOSED`, so the route has to stop somewhere.
+- `CALENDAR_DATA_START` _const_: The first day the wait-time archive holds anything at all. Written down rather than inferred, because a zero-day month in the payload cannot tell „closed for the winter" from „not recorded".
 - Types: `ParkCalendarMonth`
 
 ### [`closed-ride.ts`](../../lib/parks/closed-ride.ts)
 
-- `getClosedRide` _function_: A ride that closed for good keeps its page.
-- `isClosedRide` _function_
-- `formatClosedOn` _function_: The day a ride closed, written out in the reader's locale.
+- `getClosedRide` _function_: A ride that closed for good keeps its page. The park payload leaves retired rides out, but the attraction detail endpoint still answers for them; this asks it (only after the park payload missed) and decides whether the answer is a page.
+- `isClosedRide` _function_: Whether an attraction detail response is a ride closed for good.
+- `formatClosedOn` _function_: The day a ride closed, written out in the reader's locale. `retiredAt` is an editor's date stored as midnight UTC, so it is formatted in UTC; the park's zone would move it to the day before.
 - `formatClosedMonth` _function_: Month and year only, for a list where the day is noise.
 - `closedRidePost` _function_: Our own post about the closure, in the reader's language, when the retirement reason links one.
-- `closedRideSource` _function_: The first outside source the reason links, for a retirement that names no post of ours.
+- `closedRideSource` _function_: The first outside source the reason links, for a retirement that names no post of ours. Shown as the host name only: the rest of the reason is an editor's English note.
 - `closedRidesForSearch` _function_: The park's closed rides as its ride search takes them: name, slug, themed area and the month it closed as finished text, so the client tree formats nothing. `undefined` for a park without one, so the prop is simply absent from the payload.
 - Types: `ClosedRide`
 
 ### [`day-comparison-store.ts`](../../lib/parks/day-comparison-store.ts)
 
-Which two days of a park's calendar are being compared, across a change of month.
+Which two days of a park's calendar are being compared, across a change of month. The month is a path segment, so stepping to the next month remounts `ParkCalendarGrid` and component state cannot hold the picks.
 
-- `dayComparisonStore` _const_
+- `dayComparisonStore` _const_: The module store behind the calendar's day comparison, shaped for `useSyncExternalStore`.
 - Types: `DayComparisonSelection`
 
 ### [`day-comparison.ts`](../../lib/parks/day-comparison.ts)
 
-- `compareDays` _function_: Compare two calendar days and say which one is the better visit.
-- `CLEAR_MARGIN` _const_: How far apart two days must rank before the verdict is stated as a clear one.
-- `TIE_MARGIN` _const_: Below this, the two days are called equal outright.
+- `compareDays` _function_: Compare two calendar days and say which one is the better visit. `todayIso` is `YYYY-MM-DD` in the **park's** timezone (the grid's HEUTE value): a Florida park is still on yesterday for six hours after midnight in Berlin.
+- `CLEAR_MARGIN` _const_: How far apart two days must rank for a clear verdict: half a crowd bucket, the same margin the grid uses for its star, so the two thresholds on one page cannot disagree.
+- `TIE_MARGIN` _const_: Below this the two days are called equal. A tenth of a bucket is twelve minutes of headliner wait, and naming a winner under that would be reading noise aloud.
 - Types: `DayComparisonSide`, `DayComparisonReasonKey`, `DayComparisonReason`, `DayComparisonBlockerKey`, `DayComparisonBlocker`, `DayComparison`
 
 ### [`kids-page.ts`](../../lib/parks/kids-page.ts)
 
 - `kidsPageData` _function_: The numbers of the page, or `null` where the park does not clear the gate.
 - `hasKidsPage` _function_: Whether the park has the page. The sitemap, the route and the park page all ask this.
-- `initialRiderHeightFromParam` _function_: The `?height=` a park page opens with, or `null`.
-- `KIDS_PAGE_GATE` _const_: Which parks get a "with kids" page, and what it says. One place, because three readers ask: the route (404 below the line), the sitemap, and the park page's link.
+- `initialRiderHeightFromParam` _function_: The `?height=` a park page opens with, or `null`. Only one of the park's posted minima is accepted, so a hand-edited URL cannot put the slider thumb between two stops.
+- `KIDS_PAGE_GATE` _const_: Which parks get a „with kids" page, and what it says; one place for the route (404 below the line), the sitemap and the park page's link.
 - Types: `KidsPageAttraction`, `KidsTierRide`, `KidsTier`, `KidsPageData`
 
 ### [`kids-segments.ts`](../../lib/parks/kids-segments.ts)
 
-- `parkKidsPath` _function_: Locale-relative path to a park's "with kids" page, e.g. `/parks/europe/germany/bruehl/phantasialand/mit-kindern`.
-- `PARK_KIDS_SEGMENTS` _const_: Locale → localized URL segment for a park's "with kids" page.
+- `parkKidsPath` _function_: Locale-relative path to a park's „with kids" page; `@/i18n/navigation`'s `Link` adds the locale.
+- `PARK_KIDS_SEGMENTS` _const_: Locale → localized URL segment for a park's „with kids" page, which prints the rides by the height a child must reach (the park page keeps the same numbers behind a slider no crawler moves). The words are the phrase a parent types.
 - `PARK_KIDS_CANONICAL_SEGMENT` _const_: The canonical route-folder segment (English), what the app router matches.
 
 ### [`maps-links.ts`](../../lib/parks/maps-links.ts)
 
-- `parkMapsLinks` _function_: Both map URLs for a coordinate pair, or `null` when the pair cannot address a place on earth.
+- `parkMapsLinks` _function_: Both map URLs for a coordinate pair, or `null` when the pair is missing, non-finite, out of range, or `0,0` (Null Island is what an ungeocoded row looks like).
 - Types: `ParkMapsLinks`
 
 ### [`park-simulation.ts`](../../lib/parks/park-simulation.ts)
 
-- `parseParkSimulation` _function_: Parse `?state=` into the scenarios to apply.
-- `readParkSimulationParam` _function_: The `?state=` value as the client should forward it, or null. Keeps the raw string so an unknown scenario reaches one parser rather than being dropped in three places.
-- `applyParkSimulation` _function_: Apply the parsed scenarios to a park payload. Pure — returns a new object and never mutates the response it was handed, because the same park object is the React Query seed.
-- `applyNowcastSimulation` _function_: The same scenarios applied to the nowcast payload.
+- `parseParkSimulation` _function_: Parse `?state=` into the scenarios to apply. Empty when simulation is off, the param is absent or nothing in it is known, so callers apply the result unconditionally and a typo degrades to the real park.
+- `readParkSimulationParam` _function_: The `?state=` value as the client should forward it, or null. Kept raw so one parser decides which scenarios are known.
+- `applyParkSimulation` _function_: Apply the parsed scenarios to a park payload. Pure: never mutates the response, because the same park object is the React Query seed.
+- `applyNowcastSimulation` _function_: The same scenarios applied to the nowcast payload. The warning banner and the rain strip read the nowcast while the weather tile reads `park.weather.warnings`, so both must be patched; the two sources can disagree in production too.
 - Types: `ParkSimScenario`
 
 ### [`park-stats-derive.ts`](../../lib/parks/park-stats-derive.ts)
 
-- `hasReadableHourlyProfile` _function_: Is there a typical-day table to draw?
-- `deriveParkStatsFindings` _function_
+- `hasReadableHourlyProfile` _function_: Is there a typical-day table to draw? Exported so the card, the record page's hourly chapter heading and its method paragraph ask the same question; a 200 with `displayable: false` is no.
+- `deriveParkStatsFindings` _function_: The park average, longest queue, quietest weekday and busiest month an aggregate supports.
 - Types: `ParkStatsFindings`
 
 ### [`stats-segments.ts`](../../lib/parks/stats-segments.ts)
 
-- `parkStatsPath` _function_: Locale-relative path to a park's wait-time record, e.g. `/parks/europe/germany/bruehl/phantasialand/durchschnittliche-wartezeiten`.
-- `PARK_STATS_SEGMENTS` _const_: Locale → localized URL segment for a park's wait-time record.
+- `parkStatsPath` _function_: Locale-relative path to a park's wait-time record; `@/i18n/navigation`'s `Link` adds the locale.
+- `PARK_STATS_SEGMENTS` _const_: Locale → localized URL segment for a park's wait-time record: crowd by month and weekday, the typical day hour by hour, and rides ranked by their usual queue, the historical half nothing else server-renders.
 - `PARK_STATS_CANONICAL_SEGMENT` _const_: The canonical route-folder segment (English), what the app router matches.

@@ -8,83 +8,83 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`accuracy-styles.ts`](../../lib/utils/accuracy-styles.ts)
 
 - `accuracyStyle` _function_: The style for a grade, muted for one this map does not know (the API may add a grade).
-- `ACCURACY_STYLES` _const_
+- `ACCURACY_STYLES` _const_: The colours per accuracy grade: excellent and good green, fair amber, poor red, no data grey.
 - Types: `AccuracyStyle`
 
 ### [`breadcrumb-utils.ts`](../../lib/utils/breadcrumb-utils.ts)
 
-- `generateContinentBreadcrumbs` _function_: Generate breadcrumbs for continent pages
-- `generateCountryBreadcrumbs` _function_: Generate breadcrumbs for country pages
-- `generateCityBreadcrumbs` _function_: Generate breadcrumbs for city pages
-- `generateParkBreadcrumbs` _function_: Generate breadcrumbs for park pages
-- `generateAttractionBreadcrumbs` _function_: Generate breadcrumbs for attraction pages
+- `generateContinentBreadcrumbs` _function_: Breadcrumbs for a continent page.
+- `generateCountryBreadcrumbs` _function_: Breadcrumbs for a country page.
+- `generateCityBreadcrumbs` _function_: Breadcrumbs for a city page.
+- `generateParkBreadcrumbs` _function_: Breadcrumbs for a park page.
+- `generateAttractionBreadcrumbs` _function_: Breadcrumbs for an attraction page.
 
 ### [`browser-cookie.ts`](../../lib/utils/browser-cookie.ts)
 
-- `readCookie` _function_: Read and write a cookie in the browser. Replaces `cookies-next`, which shipped 15 KB of minified JS to every page for the two client calls it served (favorites and the temperature unit; measured from the production source maps, 2026-10-03).
-- `writeCookie` _function_
+- `readCookie` _function_: A cookie's decoded value in the browser, or `undefined`.
+- `writeCookie` _function_: Sets a cookie in the browser, URL-encoding the value.
 
 ### [`calendar-utils.ts`](../../lib/utils/calendar-utils.ts)
 
-- `hourlyPredictionInstants` _function_: Turn a day's `HourlyPrediction` series into UTC instants, so a caller can render each bar in the park's own clock and tell which of them are already over.
-- `upcomingHourlyPredictions` _function_: The entries of a day's hourly curve that a reader can still act on, each with the instant its bar covers.
-- `isServableHourlyDate` _function_: Whether a `date` is one the hourly route may answer at all — a real calendar day, and one close enough to `nowMs` that a park somewhere could call it today or tomorrow.
+- `hourlyPredictionInstants` _function_: Turn a day's `HourlyPrediction` series into UTC instants, so each bar can be shown on the park's clock and the past ones told apart.
+- `upcomingHourlyPredictions` _function_: The entries of a day's hourly curve a reader can still act on, each with its bar's instant.
+- `isServableHourlyDate` _function_: Whether the hourly route may answer for `date`: a real calendar day, and one some park could call today or tomorrow, i.e. one day before to two days after the UTC date.
 
 ### [`carto-tile-url.ts`](../../lib/utils/carto-tile-url.ts)
 
-- `cartoTileUrl` _function_: CARTO basemap raster tile URL for a given style (e.g. `rastertiles/voyager`, `dark_all`).
+- `cartoTileUrl` _function_: CARTO basemap raster tile URL for a style (e.g. `rastertiles/voyager`, `dark_all`). With `NEXT_PUBLIC_CARTO_MAP_KEY` set it uses CARTO's keyed endpoint, which raises the request ceiling; without, the anonymous subdomain-sharded one.
 
 ### [`compass.ts`](../../lib/utils/compass.ts)
 
-The arithmetic behind the in-park compass (`ParkCompass`): which way a ride lies, which way the phone points, and where on the ring a marker may sit without covering its neighbour.
+The arithmetic behind the in-park compass (`ParkCompass`): which way a ride lies, which way the phone points, and where on the ring a marker may sit. Pure and DOM-free so `scripts/test-compass.mjs` can hold them to the numbers.
 
 - `normalizeDegrees` _function_: Any angle folded into [0, 360).
-- `bearingBetween` _function_: The initial bearing from the first point to the second, in degrees clockwise from true north (0 north, 90 east), in [0, 360).
+- `bearingBetween` _function_: The initial great-circle bearing from the first point to the second, in degrees clockwise from true north, in [0, 360).
 - `angleDelta` _function_: How far to turn from `from` to face `to`, in (-180, 180]: negative is left, positive right.
 - `headingFromOrientation` _function_: Which way the top of the phone points, in degrees clockwise from north, or `null` where the event cannot say.
-- `compassUnreliable` _function_: Whether the magnetometer says itself that it is off.
-- `smoothHeading` _function_: One step of an exponential filter over a heading, taking the short way round.
-- `niceRange` _function_: The radar's outer ring for a set of distances: the next round number at or above the farthest, so the ring can carry a label a reader takes in at a glance („500 m"), never „402 m".
-- `stableRange` _function_: The outer ring for a reader on the move: it grows at once when a ride falls outside it, and shrinks only when the farthest ride is well inside the step below (three quarters of it).
+- `compassUnreliable` _function_: Whether the magnetometer reports itself as off: Safari gives a negative or large error near the steel of a coaster, and the reader should recalibrate rather than trust the arrow. Chrome reports nothing, so `false` there.
+- `smoothHeading` _function_: One step of an exponential filter over a heading, taking the short way round: averaging raw numbers turns 359 and 1 into 180 and spins the ring half a turn.
+- `niceRange` _function_: The radar's outer ring for a set of distances: the next round step at or above the farthest, so the label reads „500 m", never „402 m".
+- `stableRange` _function_: The outer ring for a reader on the move: it grows at once, and shrinks only when the farthest ride is well inside the step below, so walking near a step does not flip the ring (and every marker) back and forth.
 - `placeMarkers` _function_: Where each marker sits inside the bezel: at its true bearing, at a radius that grows with its distance, then nudged apart where two would overlap.
-- `relocate` _function_: A point moved along with its park: where `point` would be if the park's `from` stood at `to`.
-- `dialLabel` _function_: A ride's name short enough to stand next to its marker on the dial: „Chiapas" for „Chiapas - DIE Wasserbahn", „Autopia" for „Autopia, presented by Avis", „Big Thunder…" for „Big Thunder Mountain".
+- `relocate` _function_: A point moved along with its park: where `point` would be if the park's `from` stood at `to`. Used by the compass demo.
+- `dialLabel` _function_: A ride's name short enough to stand next to its marker: „Chiapas" for „Chiapas - DIE Wasserbahn", „Big Thunder…" for „Big Thunder Mountain".
 - `placeLabels` _function_: Where each marker's name goes, or `null` where there is no room.
-- `rideAhead` _function_: The ride the reader is facing: the one whose bearing lies nearest the heading, within `reach` degrees either side; `null` when none is, or none has a bearing.
+- `rideAhead` _function_: The ride the reader is facing: the one whose bearing lies nearest the heading, within `reach` degrees either side (the dial's view cone with a little give), or `null`.
 - `compassPoint` _function_: The point of the compass a bearing falls in, 45° each, north from 337.5° to 22.5°.
-- `stableOrder` _function_: The rides nearest first, but a row only overtakes the one above it when it is nearer by more than `tolerance` metres.
+- `stableOrder` _function_: The rides nearest first, but a row only overtakes the one above it when it is nearer by more than `tolerance` metres, so GPS jitter does not reorder rows (links) under the thumb.
 - `COMPASS_POINTS` _const_: The eight points of the compass, clockwise from north, as message keys.
 - Types: `OrientationReading`, `RadarPoint`, `LabelBox`, `CompassPoint`
 
 ### [`covered-rides.ts`](../../lib/utils/covered-rides.ts)
 
-Covered rides: the rides a visitor can go to when the nowcast says rain is coming.
+Covered rides: where a visitor can go when the nowcast says rain is coming. The „Überdacht" filter pill and the nowcast banner's list share one predicate and one gate, so a park never offers one without the other. Pure.
 
-- `isCovered` _function_: Whether a ride keeps its riders dry while they queue: the ride is indoors, or its queue is roofed. Absent/null is unknown and never counts, the same way `mayGetWet` never reads absent as "dry".
-- `coveredOfferReady` _function_: Whether the park knows enough to offer covered rides at all: at least `COVERED_MIN_KNOWN_SHARE` of its in-season attractions carry a value, and at least one of them is covered.
-- `rankCoveredRides` _function_: The covered rides to offer, best first: operating, in season, covered — and ordered by the minutes until the visitor is on the ride, walk plus queue.
-- `COVERED_MIN_KNOWN_SHARE` _const_: Share of a park's in-season attractions that must carry a value before the park offers anything covered.
-- `COVERED_BANNER_LIMIT` _const_: Rides the banner lists. More is the filter's job, one tap away on the same page.
+- `isCovered` _function_: Whether a ride keeps its riders dry while they queue: indoors, or a roofed queue. Absent is unknown and never counts, as `mayGetWet` never reads absent as „dry".
+- `coveredOfferReady` _function_: Whether the park knows enough to offer covered rides at all: at least `COVERED_MIN_KNOWN_SHARE` of its in-season attractions carry a value, and at least one is covered. Off-season rides are left out of both counts.
+- `rankCoveredRides` _function_: The covered rides to offer, best first: operating, in season, covered, ordered by minutes until the visitor is on the ride (walk plus queue).
+- `COVERED_MIN_KNOWN_SHARE` _const_: Share of a park's in-season attractions that must carry an `indoorOutdoor` value before the park offers anything covered. Below it the list is whatever somebody happened to check, and a visitor reads a short list as a complete one.
+- `COVERED_BANNER_LIMIT` _const_: Rides the banner lists; the filter, one tap away, shows the rest.
 - Types: `CoveredGateInput`, `CoveredCandidate`
 
 ### [`crowd-analysis.ts`](../../lib/utils/crowd-analysis.ts)
 
 - `scoreToCrowdLevel` _function_: Inverse of `CROWD_SCORE`: bucket an average crowd score back into a level.
-- `analyzeBestDays` _function_
+- `analyzeBestDays` _function_: Weekday stats, upcoming quiet days and the school-holiday effect from a park's calendar days.
 - Types: `DayOfWeekStat`, `BestDaysAnalysis`
 
 ### [`crowd-level-styles.ts`](../../lib/utils/crowd-level-styles.ts)
 
 - `isColoredCrowdLevel` _function_: Whether a level is one of the six that carry a colour (i.e. not `unknown`, not `closed`).
-- `waitTimeCrowdTier` _function_: Canonical wait-time (minutes) → crowd tier thresholds, shared by `WaitTimeValue` (the canonical wait-time display) and the inline blog wait badges so a wait is green at 20 min and red past an hour everywhere.
+- `waitTimeCrowdTier` _function_: Wait-time (minutes) → crowd tier, shared by `WaitTimeValue` and the inline blog wait badges so a wait gets the same colour everywhere.
 - `CROWD_LEVEL_ORDER` _const_: Canonical low→high ordering of the colored crowd levels.
-- `CROWD_LEVEL_PERCENT_RANGE` _const_
-- `CROWD_TEXT_CLASS` _const_: Text color per level (inline values, blog annotations, …).
+- `CROWD_LEVEL_PERCENT_RANGE` _const_: The percentage range behind each coloured crowd level.
+- `CROWD_TEXT_CLASS` _const_: Text colour per level (inline values, blog annotations, …). `crowd-ink-*`, not `crowd-*`: the light theme's fills are too light to read as text.
 - `CROWD_BADGE_CLASS` _const_: `badge-crowd-*` solid badge per level (CrowdLevelBadge, blog wait badges, …).
-- `CROWD_SOLID_CLASS` _const_: An opaque fill per level with white text, for a wait that has to be read at a glance in daylight: the in-park compass's markers and its wait pills.
+- `CROWD_SOLID_CLASS` _const_: An opaque fill per level with white text, for a wait read at a glance in daylight: the in-park compass's markers and wait pills.
 - `CROWD_OUTLINE_CLASS` _const_: Outlined chip (tinted border + text) per level (live ticker, …).
-- `CROWD_TILE_CLASS` _const_: The crowd-calendar day tile: tinted fill + border, one class per level.
-- `CROWD_SCALE_CLASS` _const_: One segment of the calendar legend's crowd scale — the solid colour with text ON it.
+- `CROWD_TILE_CLASS` _const_: The crowd-calendar day tile: tinted fill + border. The opacity climbs with the level so the tiers differ in weight as well as hue, since hue alone is the channel a red-green colour vision deficiency loses first.
+- `CROWD_SCALE_CLASS` _const_: One segment of the calendar legend's crowd scale: the solid colour with text on it. The text is a fixed near-black in both themes, not `text-background`, which turns white in the light theme and fails contrast on the mid tones.
 - `CROWD_DOT_CLASS` _const_: Solid `bg-crowd-*` fill per level (status dots in the hero bubbles, …).
 - `CROWD_CHIP_CLASS` _const_: Soft tinted chip (translucent bg + border + text) per level (best-days chips, …).
 - Types: `ColoredCrowdLevel`, `CrowdPercentRange`
@@ -101,91 +101,91 @@ A fact about a day that a calendar cell's signal bar marks with a coloured segme
 
 ### [`distance-utils.ts`](../../lib/utils/distance-utils.ts)
 
-- `calculateDistance` _function_: Calculate distance between two GPS coordinates in meters Uses Haversine formula for accurate results
-- `formatDistance` _function_: Format distance as human-readable string &lt; 1000m: "123 m" &lt; 100km: "1.2 km" &gt;= 100km: "1234 km" — a tenth of a km is noise at that range (and the geo hub pages routinely show continent-scale distances, where "1234.6 km" just reads long).
-- `collectParkCoordinates` _function_: Collect the coordinates of every park in a geo subtree (continent / country / city), skipping parks the backend could not geocode.
-- `nearestDistance` _function_: Distance in meters from a reference point to the CLOSEST of `coordinates`. Returns null for an empty list.
+- `calculateDistance` _function_: Great-circle (haversine) distance between two GPS coordinates, in metres.
+- `formatDistance` _function_: Format a distance for display: „123 m", „1.2 km", and whole kilometres from 100 km, where a tenth is noise (the geo hubs show continent-scale distances).
+- `collectParkCoordinates` _function_: The coordinates of every geocoded park in a geo subtree (continent, country or city), for a hub card's „nearest park X km away"; the tuple list is a fraction of the full tree's RSC payload.
+- `nearestDistance` _function_: Distance in metres from a point to the closest of `coordinates`, or null for an empty list.
 - Types: `Coordinate`
 
 ### [`duration.ts`](../../lib/utils/duration.ts)
 
-Locale-aware short labels for "minutes" / "hours".
+Short „minutes" and „hours" labels per locale. A static map, because `Intl.NumberFormat` with `style: 'unit'` is inconsistent across runtimes for narrow displays.
 
-- `formatShortDuration` _function_: Format a duration in whole minutes as a compact, locale-aware string: - &lt; 60 min → "42 min" / "42 Min." / etc. - ≥ 60 min → "1:35 h" (universal h:mm with locale-specific hour label)
-- `formatWholeHours` _function_: Whole hours with the locale's short hour label — „2 Std.", „2 h", „2 u".
-- `formatSpanDuration` _function_: Same as `formatShortDuration`, for spans that can run past a day.
+- `formatShortDuration` _function_: A duration in whole minutes as a compact string: „42 Min." under an hour, „1:35 h" from there, which reads faster than „336 Min.".
+- `formatWholeHours` _function_: Whole hours with the locale's short hour label („2 Std.", „2 h", „2 u"), for an axis tick. Not for a measured span, which keeps the h:mm form even on a round hour.
+- `formatSpanDuration` _function_: Same as `formatShortDuration`, for spans that can run past a day (an outage counted in operating minutes can). From 24 hours on, „44:10 Std." reads like a time of day, so it becomes whole hours („44 Std.").
 
 ### [`favorites-band-plan.ts`](../../lib/utils/favorites-band-plan.ts)
 
-- `stackBelow` _function_: Below this the band is too narrow for two groups beside each other and they stack.
-- `shareTracks` _function_: Hands `total` tracks to the groups: one each, then always to whoever is most crowded.
-- `planBand` _function_: `null` until the band has a width — before the first layout pass there is nothing to divide.
-- `MAX_CARDS` _const_: The most cards a group may ever show, however wide the band is.
-- `CARD_MIN` _const_: The band's card track, in pixels, and the numbers the allocation below is built out of.
-- `CARD_MAX` _const_
-- `CARD_GAP` _const_
-- `GROUP_GAP` _const_
-- `VENUE_BASIS` _const_: Rows are rows: extra width only makes one longer, so a row group gets a slice and no more.
+- `stackBelow` _function_: Below this width the band is too narrow for groups side by side and they stack. A floor rather than a breakpoint: no header width reaches it today, but a change to the header's tiers should degrade into a column.
+- `shareTracks` _function_: Hands `total` tracks to the groups: one each, then greedily to whoever has the highest `wanted / (has + 1)`, so the split follows the counts. A group never gets more tracks than cards, since a spare track would draw an empty column.
+- `planBand` _function_: Plans the band for a measured width, or `null` before the first layout pass.
+- `MAX_CARDS` _const_: The most cards a group may ever show, however wide the band: a cap on how much of the menu one group may take. `MAX_CARD_ROWS` rows is usually the tighter limit.
+- `CARD_MIN` _const_: Smallest card width at which the second line still names a place instead of an ellipsis. The gaps differ on purpose: cards inside a group belong together, groups do not.
+- `CARD_MAX` _const_: Largest card width, so two favorites in a wide band do not become billboards.
+- `CARD_GAP` _const_: Gap between cards inside a group.
+- `GROUP_GAP` _const_: Gap between groups.
+- `VENUE_BASIS` _const_: Width of a row-shaped group (shows/restaurants, alerts): extra width only makes rows longer, so such a group gets a fixed slice, the same for both so their columns match.
 - `MAX_CARD_ROWS` _const_: Card rows a group may take before the rest goes behind the "+N" line.
 - Types: `BandPlan`
 
 ### [`favorites.ts`](../../lib/utils/favorites.ts)
 
-- `countFavorites` _function_
-- `parseFavoritesCookie` _function_: The cookie's value as `FavoritesData`, or `null` when it is missing or not the JSON object this module writes.
-- `getFavoritesFromCookies` _function_: Get favorites from cookies
+- `countFavorites` _function_: Counts a favorites set per kind and in total.
+- `parseFavoritesCookie` _function_: The cookie's value as `FavoritesData`, or `null` when it is missing or not the JSON object this module writes. Pure, so the server can read the same cookie and render `/favorites` at the size of the list.
+- `getFavoritesFromCookies` _function_: The visitor's favorites from the cookie, empty on the server or when there is none.
 - `subscribeToFavorites` _function_: `useSyncExternalStore` subscriber for the cookie: every add and remove above announces itself.
-- `toggleFavorite` _function_: Toggle a favorite. Returns the new state immediately (optimistic).
-- `isFavorite` _function_: Check if an item is favorited
-- `getFavoriteIds` _function_: Get all favorite IDs for a specific type
-- `FAVORITES_COOKIE_NAME` _const_
+- `toggleFavorite` _function_: Toggle a favorite and return the new state at once (optimistic).
+- `isFavorite` _function_: Whether an item is a favorite.
+- `getFavoriteIds` _function_: All favorite ids of one kind.
+- `FAVORITES_COOKIE_NAME` _const_: Name of the cookie that holds the visitor's favorites.
 - Types: `FavoriteType`, `FavoritesData`, `FavoriteCounts`
 
 ### [`geo-svg.ts`](../../lib/utils/geo-svg.ts)
 
-- `getRegionGeoSVG` _function_: Returns the SVG ViewBox and Paths for a given identifier list (ISO codes or Country Names).
+- `getRegionGeoSVG` _function_: The viewBox and paths for a set of countries, matched by ISO code, name or class, for the OG image's map.
 
 ### [`geo-translate.ts`](../../lib/utils/geo-translate.ts)
 
-- `translateGeoSlug` _function_: Safely translates a geo slug (country or continent) using next-intl. tGeo() throws on missing keys, so we guard with has() first. Normalizes the slug to lowercase-hyphenated form before lookup.
+- `translateGeoSlug` _function_: Translates a geo slug (country or continent) with next-intl, normalized to lowercase-hyphenated form. `tGeo()` throws on a missing key, so it checks `has()` first.
 
 ### [`geolocation-permission.ts`](../../lib/utils/geolocation-permission.ts)
 
-- `promptStateIsReliable` _function_: WebKit (Safari, and every browser on iOS) keeps the Permissions API at `prompt` while a grant is live.
-- `initialLocationAction` _function_: What the provider does on load. It lives in the locale layout, so this runs on every page, blog and news entry pages included.
-- `canRefreshSilently` _function_: Whether a background refresh (the 5-minute / in-park 1-minute tick, or the tab coming back to the front) may read a position right now.
-- `wasOnlyDismissed` _function_: Whether a refusal (`GeolocationPositionError` code 1) was only a dismissed prompt, not a block.
-- `locationHelpPlatform` _function_: Picks the steps for lifting a block. Only for help text: the three browser families put the setting in three different places.
-- `locationBannerIsQuiet` _function_: Whether a banner closed at `dismissedAt` (epoch ms, `null` = never) is still closed at `now`. It used to be closed for the browser session only, so a visitor who said no was asked again on every visit.
+- `promptStateIsReliable` _function_: Whether a Permissions API `prompt` means anything. WebKit (Safari and every iOS browser) reads `prompt` while a grant is live and after „Deny" alike; Chromium and Firefox report a lapsed grant faithfully.
+- `initialLocationAction` _function_: What the provider does on load, on every page. Only `granted` promises no prompt, so only it is read everywhere.
+- `canRefreshSilently` _function_: Whether a background refresh (the periodic tick, or the tab returning) may read a position now.
+- `wasOnlyDismissed` _function_: Whether a refusal (`GeolocationPositionError` code 1) was only a dismissed prompt, not a block. The error cannot tell them apart, but the Permissions API still reads `prompt` after a dismissal, so the button stays.
+- `locationHelpPlatform` _function_: Picks the steps for lifting a block, for help text only: Safari on iOS, Safari on macOS and the rest each keep the setting somewhere else.
+- `locationBannerIsQuiet` _function_: Whether a banner closed at `dismissedAt` (epoch ms, `null` = never) is still closed at `now`. A timestamp from the future (a clock that was wrong) does not hold the banner shut forever.
 - `LOCATION_BANNER_QUIET_MS` _const_: How long a closed location banner stays closed.
 - Types: `StoredPermission`, `InitialLocationAction`, `LocationHelpPlatform`
 
 ### [`holiday-names.ts`](../../lib/utils/holiday-names.ts)
 
-- `translateHolidayName` _function_: The API's English holiday name in the reader's language, or the name unchanged when it is not in either table.
-- `genericSchoolHolidayName` _function_: What a holiday chip should say when the feed gives a flag but no name — `isSchoolVacation` without a `holidayName`, which is most non-German parks.
+- `translateHolidayName` _function_: The API's English holiday name in the reader's language, or the name unchanged when it is not in either table: an untranslated holiday is still a fact about the day.
+- `genericSchoolHolidayName` _function_: The generic „school holidays" name, for a chip whose feed gives `isSchoolVacation` without a `holidayName`, so the wording matches a break that arrived with a name.
 
 ### [`image-loader.ts`](../../lib/utils/image-loader.ts)
 
-- `backgroundImageLoader` _function_: Shared next/image loader for full-bleed background images (homepage hero, glossary, park & ride pages, the announce section).
-- `backgroundPhotoUrl` _function_: The optimizer URL for a photo painted as a CSS `background-image` (planner blocks and panels), where there is no `<img>` and so no srcset.
-- `avatarUrl` _function_: The optimizer URL for a small square image drawn through a component that takes a plain `src` (the Radix `AvatarImage`).
+- `backgroundImageLoader` _function_: Shared next/image loader for full-bleed background images (hero, glossary, park and ride pages). They sit under gradient overlays and scrims, so quality is as low as the paint size allows; see `qualityForWidth`.
+- `backgroundPhotoUrl` _function_: The optimizer URL for a photo painted as a CSS `background-image` (planner blocks and panels), where there is no srcset. Those surfaces are narrow and draw the photo faintly, so one w=828 rendition covers a 2× screen.
+- `avatarUrl` _function_: The optimizer URL for a small square image drawn through a component that takes a plain `src` (the Radix `AvatarImage`). `width` must be one of `images.imageSizes` in next.config, q75 one of `qualities`.
 
 ### [`image-placeholder.ts`](../../lib/utils/image-placeholder.ts)
 
-- `BACKGROUND_BLUR_DATA_URL` _const_: Brand-matched blur placeholder for the full-bleed background photos (homepage hero, park & attraction backgrounds).
+- `BACKGROUND_BLUR_DATA_URL` _const_: Brand-matched blur placeholder for the full-bleed background photos: a tiny four-stop SVG gradient inlined as a data URI, so it paints with the HTML and costs no request.
 
 ### [`in-park-block.ts`](../../lib/utils/in-park-block.ts)
 
-Where the visitor stands relative to the park page's park, as one pure decision.
+Where the visitor stands relative to the park page's park, as one pure decision for `ParkLocationLine` and, when in the park, `ParkInParkBlock`. Kept out of the components so `pnpm test:in-park-block` can run it without a browser.
 
-- `withCurrentDistances` _function_: The API's distances were measured from the position the request carried, which can be up to a refresh interval old. Where the page knows a ride's point, measure again from the current fix.
-- `resolveInParkBlock` _function_
+- `withCurrentDistances` _function_: Re-measures ride distances from the current fix where the page knows a ride's point, since the API measured from the position the request carried, up to a refresh interval old.
+- `resolveInParkBlock` _function_: Decides what the in-park line and block show for the current location state.
 - Types: `InParkBlockState`, `InParkBlockInput`
 
 ### [`intl-format.ts`](../../lib/utils/intl-format.ts)
 
-Cached `Intl` formatter factories.
+Cached `Intl` formatter factories. Constructing a formatter costs far more than the `format()` that follows, and hot paths (sparkline axes on every card, re-rendered each minute) built one per item.
 
 - `getDateTimeFormat` _function_: Cached `Intl.DateTimeFormat`. Same arguments → same instance.
 - `getNumberFormat` _function_: Cached `Intl.NumberFormat`. Same arguments → same instance.
@@ -193,202 +193,202 @@ Cached `Intl` formatter factories.
 - `getRelativeTimeFormat` _function_: Cached `Intl.RelativeTimeFormat`. Same arguments → same instance.
 - `getListFormat` _function_: Cached `Intl.ListFormat`. Same arguments → same instance.
 - `formatTime` _function_: Cached equivalent of `new Date(ms).toLocaleTimeString(locale, options)`.
-- `weekdayName` _function_: The weekday name for a day index, 0 = Sunday … 6 = Saturday — the convention of the API's `DayOfWeekStat.dayOfWeek` and of `Date#getUTCDay`.
-- `formatHoursRange` _function_: Today's hours as short as the locale allows: „09:00–18:00" in German, „9 AM–6 PM" in English.
+- `weekdayName` _function_: The weekday name for a day index, 0 = Sunday … 6 = Saturday, as the API's `DayOfWeekStat.dayOfWeek` and `Date#getUTCDay` count.
+- `formatHoursRange` _function_: Today's hours as short as the locale allows: „09:00–18:00" in German, „9 AM–6 PM" in English, for the homepage hero's half-width hours tile.
 
 ### [`leaflet-icons.ts`](../../lib/utils/leaflet-icons.ts)
 
-- `parkIcon` _const_
-- `attractionOperatingIcon` _const_
-- `attractionClosedIcon` _const_
-- `showIcon` _const_
-- `restaurantIcon` _const_
-- `userIcon` _const_: Custom eye-catching user location icon with pulsing animation
+- `parkIcon` _const_: Map marker for a park.
+- `attractionOperatingIcon` _const_: Map marker for an operating attraction.
+- `attractionClosedIcon` _const_: Map marker for a closed attraction.
+- `showIcon` _const_: Map marker for a show.
+- `restaurantIcon` _const_: Map marker for a restaurant.
+- `userIcon` _const_: The visitor's own position on the map, with a pulsing ring.
 
 ### [`live-data-freshness.ts`](../../lib/utils/live-data-freshness.ts)
 
-- `newestQueueUpdate` _function_: The newest `lastUpdated` of any queue in the server-rendered seed, or `null` when it has none.
-- `liveDataHint` _function_: Whether the line should carry a warning, and which one.
-- `LIVE_DATA_STALE_AFTER_MS` _const_: How old the park page's live data may get before the "as of" line under the filter panel says so.
+- `newestQueueUpdate` _function_: The newest `lastUpdated` of any queue in the server-rendered seed, or `null`.
+- `liveDataHint` _function_: Whether the line should carry a warning, and which one. `now === null` is the pre-mount render, where no clock is read, so no warning.
+- `LIVE_DATA_STALE_AFTER_MS` _const_: How old the park page's live data may get before the „as of" line says so. The poll runs every five minutes, so ten means at least one poll went missing.
 - Types: `LiveDataHint`
 
 ### [`live-wait-times.ts`](../../lib/utils/live-wait-times.ts)
 
-- `noLiveWaitTimesReason` _function_: Why this park's wait times cannot be read — `null` when they can.
+- `noLiveWaitTimesReason` _function_: Why this park's wait times cannot be read, or `null` when they can. The one reader for the app.
 - `hasReadableWaitTimes` _function_: Shorthand for the common `noLiveWaitTimesReason(park) !== null`.
-- `stripUnreadableWaitStats` _function_: Drop a listing park's wait-derived stats when there is no source behind them.
+- `stripUnreadableWaitStats` _function_: Drop a listing park's wait-derived stats when there is no source behind them, so a card does not read „Ø 0 min · 0/82 open" for a park we simply have no numbers for. Cards already lay out around the fields being absent.
 
 ### [`menu-focus.ts`](../../lib/utils/menu-focus.ts)
 
 - `focusLeftMenu` _function_: Whether a `blur` raised inside a header menu means the focus really left it.
-- `escapeRefocusesTrigger` _function_: Whether Escape, after closing a header band, may move the focus back onto its trigger.
+- `escapeRefocusesTrigger` _function_: Whether Escape, after closing a header band, may move the focus back onto its trigger: yes from inside the band or from nowhere (`<body>`, `<html>`, `null`), where removing an alert leaves it; no from a real element elsewhere, or Escape in …
 
 ### [`metadata.ts`](../../lib/utils/metadata.ts)
 
-- `fitWithin` _function_: Picks the first candidate that fits, else the shortest one — never truncates mid-word.
-- `fitSentences` _function_: A description of at most `limit` characters cut from running text: as many whole sentences as fit, else the first sentence cut at a word boundary with an ellipsis.
-- `buildOpenGraphMetadata` _function_: Builds the openGraph + twitter metadata objects that are identical across all pages. Eliminates ~12 lines of boilerplate per page.
-- `MAX_TITLE_LENGTH` _const_: Google truncates the SERP title around 60 characters and the snippet around 160 — past that the tail is replaced by an ellipsis, so the keyword sitting there stops being visible.
-- `MAX_DESCRIPTION_LENGTH` _const_
+- `fitWithin` _function_: Picks the first candidate that fits, else the shortest; never truncates mid-word. Pass candidates richest-first. When even the shortest overruns, it still wins: a clipped bare name costs less than a clipped template.
+- `fitSentences` _function_: A description of at most `limit` characters cut from running text: as many whole sentences as fit, else the first sentence cut at a word boundary with an ellipsis, so a snippet never ends mid-clause.
+- `buildOpenGraphMetadata` _function_: Builds the openGraph and twitter metadata that are the same on every page.
+- `MAX_TITLE_LENGTH` _const_: Google truncates the SERP title around 60 characters, and a keyword past that disappears behind an ellipsis. Templates fit typical names; a long name pushes them over on its own.
+- `MAX_DESCRIPTION_LENGTH` _const_: Google's snippet length, past which the description is cut.
 
 ### [`nowcast-shelter.ts`](../../lib/utils/nowcast-shelter.ts)
 
-When the nowcast says it is time to go under a roof — the trigger for the covered rides the park page's nowcast banner offers (PAR-425).
+When the nowcast says it is time to go under a roof: the trigger for the covered rides the park page's nowcast banner offers.
 
-- `isRainingNow` _function_: Whether rain is falling now. The API only sets `rainStartsAt` while rain is still ahead (it is null once rain is already falling), so a future start means it is NOT raining yet — no matter when it ends.
-- `offersShelter` _function_: Rain or a thunderstorm that is falling now or starts within `SHELTER_LEAD_MINUTES`.
-- `SHELTER_LEAD_MINUTES` _const_: How far ahead (minutes) rain or a thunderstorm makes the banner offer covered rides.
+- `isRainingNow` _function_: Whether rain is falling now. The API sets `rainStartsAt` only while rain is still ahead, so a future start means it is not raining yet, however far off the end is.
+- `offersShelter` _function_: Rain or a thunderstorm that is falling now or starts within `SHELTER_LEAD_MINUTES`. Storm and hail alone are out of scope. A thunderstorm counts from its start for as long as the nowcast carries it, as the banner shows one.
+- `SHELTER_LEAD_MINUTES` _const_: How far ahead (minutes) rain or a thunderstorm makes the banner offer covered rides: about the time to cross a large park and join a queue. Further out the forecast start moves more than that between updates.
 
 ### [`number-utils.ts`](../../lib/utils/number-utils.ts)
 
-- `formatCompact` _function_: A large number in the locale's short form: "4.9M" in English, "4,9 Mio." in German, "4,9 M" in French. At most one decimal.
+- `formatCompact` _function_: A large number in the locale's short form: „4.9M" in English, „4,9 Mio." in German, at most one decimal. Uses the cached formatter, since card grids format one figure per card.
 
 ### [`og-image.ts`](../../lib/utils/og-image.ts)
 
-- `getOgImageUrl` _function_: Generate OG image URL for a given path
-- `OG_IMAGE_FILENAME` _const_: Trailing filename on every OG URL. Social crawlers like seeing an image extension, and the route strips this segment before parsing the path — it carries no routing meaning.
+- `getOgImageUrl` _function_: The OG image URL for a list of path segments (e.g. `['de', 'europe', 'germany']`).
+- `OG_IMAGE_FILENAME` _const_: Trailing filename on every OG URL: social crawlers like an image extension, and the route strips the segment before parsing. `.jpg` because the endpoint returns JPEG.
 
 ### [`opening-hours-schema.ts`](../../lib/utils/opening-hours-schema.ts)
 
-- `buildOpeningHoursSpecification` _function_: A park past local midnight (a Six Flags closing at 01:00) yields `closes` earlier than `opens`.
+- `buildOpeningHoursSpecification` _function_: The JSON-LD opening hours for a park's schedule. A park open past local midnight yields `closes` earlier than `opens`, which is schema.org's convention for an overnight span, so the pair stays on the operating day's single date.
 - Types: `OpeningHoursSpecification`
 
 ### [`outage.ts`](../../lib/utils/outage.ts)
 
-- `roundOutageMinutes` _function_: Five-minute steps, the resolution everything on this site is displayed at.
-- `outageRemainingWindow` _function_: How much longer outages that have got this far usually take.
+- `roundOutageMinutes` _function_: Rounds an outage figure to five-minute steps, floored at one step rather than zero.
+- `outageRemainingWindow` _function_: How much longer outages that have got this far usually take, as a rounded window.
 - `outageRecoveryClock` _function_: When the outage is expected to be over, on the park's own clock.
-- `outageRemainingBar` _function_: Where the remaining window sits on the fixed scale, as two percentages.
+- `outageRemainingBar` _function_: Where the remaining window sits on the fixed scale, as two percentages. A window whose lower end leaves less than one full segment of track gets no bar: it would be a sliver at the right edge, the same for „noch 5 Std." and „noch 40 Std.".
 - `outageRecoveryLine` _function_: Whether the recovery probability is said at all, and in which of its two sentences.
-- `outageRecoveryPercent` _function_: P(reported running again within 60 more operating minutes), in whole five-point steps.
-- `outageElapsedMinutes` _function_: How long the ride has been down, in the only clock this may be answered on.
-- `OUTAGE_BAR_HORIZON_MIN` _const_: The right-hand end of the scale the remaining window is drawn against, in minutes.
-- `OUTAGE_BAR_TICKS_MIN` _const_: Hour marks inside the track, drawn as hairlines in both variants.
-- `OUTAGE_MIN_SEGMENT_PCT` _const_: Narrowest segment that still reads as a segment, in percent of the track.
+- `outageRecoveryPercent` _function_: P(running again within 60 more operating minutes), in five-point steps because the curve is calibrated to about 2.5 points. A rounded 0 returns `null`, since „0 %" reads as „never" and the curve never claims that.
+- `outageElapsedMinutes` _function_: How long the ride has been down, in operating minutes. Never `now - startedAt`: an outage that began two hours before closing reads two hours the next morning, and the recovery curve is conditioned on this figure.
+- `OUTAGE_BAR_HORIZON_MIN` _const_: The right-hand end of the remaining-window bar's scale, in minutes. Fixed, never per instance: a park page draws several bars, and each scaled to its own window would make the ride nearly back look like the one that is not.
+- `OUTAGE_BAR_TICKS_MIN` _const_: Hour marks inside the track, drawn as unlabelled hairlines; the two ends are named beside the track and evenly spaced marks read as hours without labels.
+- `OUTAGE_MIN_SEGMENT_PCT` _const_: Narrowest segment that still reads as a segment, in percent of the track; a ten-minute window would otherwise look like a rendering fault. Exported because the open-end fade must not eat into this guaranteed width.
 - Types: `OutageRemainingWindow`, `OutageRecoveryClock`, `OutageRemainingBar`, `OutageRecoveryLine`
 
 ### [`park-assets.ts`](../../lib/utils/park-assets.ts)
 
 - `getParkBackgroundImage` _function_: Public path of a park's background photo, or `null`.
-- `getAttractionBackgroundImage` _function_: Public path of a ride's photo, or `null` when the ride has none.
+- `getAttractionBackgroundImage` _function_: Public path of a ride's photo, or `null` when the ride has none. Falls back to any image showing the ride when none is marked `ride-card`; a park-background fallback is the caller's decision.
 - `getParkImageSet` _function_: Full aspect-ratio image set for a park's hero photo, for structured-data `image`. Prefers the 16:9 / 4:3 / 1:1 crops, falls back to the single source, else `[]`.
-- `getAttractionImageSet` _function_: Full aspect-ratio image set for a ride's photo, `[]` when the ride has none.
-- `enrichParksWithImages` _function_: Adds `backgroundImage` **and** `backgroundPosition` to each park.
-- `enrichAttractionsWithImages` _function_: Same for attractions — and **only** the ride's own photo.
-- `getCardObjectPosition` _function_: `object-position` for a park/ride card photo, resolved server-side.
-- `CARD_FALLBACK_POSITION` _const_: Where a card crops from when the image has no focal point.
+- `getAttractionImageSet` _function_: Full aspect-ratio image set for a ride's photo, `[]` when the ride has none. No park fallback: this feeds JSON-LD `image`, and the park's carousel as a picture of a dark ride is worse than nothing.
+- `enrichParksWithImages` _function_: Adds `backgroundImage` **and** `backgroundPosition` to each park. The focal point travels with the path because the cards are Client Components, and looking it up there would ship the whole manifest to every visitor.
+- `enrichAttractionsWithImages` _function_: Same for attractions, and **only** the ride's own photo: the park's photo on a ride card says „this is what the ride looks like", which is false, and repeats on every card without one.
+- `getCardObjectPosition` _function_: `object-position` for a park or ride card photo, resolved server-side from the same image the card paints, so the ride branch stops at the ride just as the photo does.
+- `CARD_FALLBACK_POSITION` _const_: Where a card crops from when the image has no focal point: the top, as these photos have always been framed. Setting a focal point opts an image out.
 
 ### [`park-day-over.ts`](../../lib/utils/park-day-over.ts)
 
-- `isParkDayOver` _function_: Whether the park's day is over at `atMs`: it does not operate today, or today's last operating window has closed. `null` when the schedule cannot say — no entry for today in the park's timezone, or an operating entry without a closing time.
+- `isParkDayOver` _function_: Whether the park's day is over at `atMs`: no operation today, or today's last window has closed. `null` when the schedule cannot say.
 
 ### [`park-day.ts`](../../lib/utils/park-day.ts)
 
-- `parkDayOf` _function_: The calendar day an instant falls on in the park's zone, as `YYYY-MM-DD`.
+- `parkDayOf` _function_: The calendar day an instant falls on in the park's zone, as `YYYY-MM-DD` (what `ScheduleItem.date` and `CalendarDay.date` carry, and what compares correctly as a string).
 
 ### [`park-utils.ts`](../../lib/utils/park-utils.ts)
 
-- `getAttractionDisplayStatus` _function_: Effective display status of an attraction: when the whole park is not operating every attraction reads as CLOSED; otherwise the STANDBY queue status wins over the attraction's own status field.
+- `getAttractionDisplayStatus` _function_: Effective display status of an attraction: every attraction is CLOSED while the park is not operating; otherwise the STANDBY queue status beats the attraction's own field.
 - `getLiveAttractionStatus` _function_: The status a visitor is shown for one attraction, from the live payload.
-- `getStandbyWait` _function_: STANDBY wait of an attraction in minutes, or null when it has no standby queue.
-- `groupAttractionsByLand` _function_: Groups attractions by their land name. Attractions without a land fall back to `fallbackName`. Attractions within each land are sorted alphabetically.
+- `getStandbyWait` _function_: STANDBY wait of an attraction in minutes, or null when it has no standby queue. Says nothing about whether the ride is open: pair it with `getAttractionDisplayStatus`.
+- `groupAttractionsByLand` _function_: Groups attractions by land (`fallbackName` when none), each land sorted by name.
 
 ### [`quietest-day.ts`](../../lib/utils/quietest-day.ts)
 
-- `quietestOpenDay` _function_: The open day with the lowest forecast crowd level in the window `today … today + 13`.
+- `quietestOpenDay` _function_: The open day with the lowest forecast crowd level in the window `today … today + 13`, or `null`. `today` is the park's own date, like `CalendarDay.date`.
 - `QUIETEST_DAY_WINDOW_DAYS` _const_: How far ahead a favorite looks for its quietest day, today included.
 
 ### [`redirect-utils.ts`](../../lib/utils/redirect-utils.ts)
 
-Redirect utilities for handling malformed URLs
+Redirects for malformed or stale park URLs: a missing city segment (a park slug where the city goes), and geo segments that went stale after an API re-slug (`bruhl` → `bruehl`).
 
-- `cityHasOwnPage` _function_: Whether a city answers with a page of its own rather than a 308 to its only park. It is the rule `app/[locale]/parks/[continent]/[country]/[city]/page.tsx` redirects by and `app/sitemap.ts` lists by: `city.parks.length > 1`.
-- `findCityPageRedirect` _function_: Try to find a redirect for a malformed city page URL
+- `cityHasOwnPage` _function_: Whether a city answers with a page of its own rather than a 308 to its only park: the rule the city route redirects by and the sitemap lists by (`city.parks.length > 1`).
+- `findCityPageRedirect` _function_: The real URL for a city-page URL whose city segment is a park slug (`/parks/{continent}/{country}/{parkSlug}`), or null.
 - `findParkPageRedirect` _function_: Redirect for a park-page URL whose city segment holds a park slug: the same lookup as `findCityPageRedirect`. The park segment is not read: the discovery data lists no attractions to check it against.
-- `findRelocatedParkRedirect` _function_: Try to find a redirect for a park URL whose geo segments went stale.
-- `findRenamedParkRedirect` _function_: Canonical park path for a park the API DID return, when it differs from the path that was requested.
+- `findRelocatedParkRedirect` _function_: The canonical URL for a park whose geo segments went stale (a re-slugged or moved city), keyed by the stable park slug, or null.
+- `findRenamedParkRedirect` _function_: Canonical park path for a park the API DID return, when it differs from the requested path, or null.
 - Types: `ParkLookupResult`
 
 ### [`region-names.ts`](../../lib/utils/region-names.ts)
 
-- `getCountryName` _function_: Localised country name for a 2-letter ISO code via `Intl.DisplayNames` (falls back to the raw code). Covers every locale the app ships.
+- `getCountryName` _function_: Localised country name for a 2-letter ISO code via `Intl.DisplayNames`, else the raw code.
 - `countryFlagEmoji` _function_: Flag emoji (regional-indicator letters) for a 2-letter ISO country code; '' if invalid.
-- `getRegionLabel` _function_: Localised label for a holiday-source region: German federal states and the mapped European subdivisions keep their native name; anything else collapses to its COUNTRY name (so an unmapped region never leaks a raw code).
+- `getRegionLabel` _function_: Localised label for a holiday-source region: German states and the mapped subdivisions keep their native name; anything else becomes its country name, so a raw code never leaks.
 - `countryCodeForSlug` _function_: ISO country code for a country URL slug, or null when the slug is not in the catalogue.
 - `DE_STATES` _const_: ISO 3166-2:DE region code → German federal state name.
-- `SUBDIVISION_NAMES` _const_: `${countryCode}-${shortRegionCode}` → native region name, for the European neighbours whose school holidays realistically drive cross-border crowds. Key uses the SHORT region code the API emits (e.g. NL-LI → key "NL-LI").
+- `SUBDIVISION_NAMES` _const_: `${countryCode}-${shortRegionCode}` → native region name, for the European neighbours whose school holidays drive cross-border crowds. Keys use the SHORT region code the API emits.
 
 ### [`request-ip.ts`](../../lib/utils/request-ip.ts)
 
-- `pickClientIp` _function_: Take the originating client out of a (possibly comma-separated) forwarding chain. The leftmost entry is the client; everything after it are proxy hops.
-- `isLocalOrUnusableIp` _function_: True if IP is missing or local/private (GeoIP cannot resolve).
-- `getClientIp` _function_: The visitor's IP address, or '' when no header carries a usable one.
-- `getForwardedForHeaders` _function_: Headers to forward the real client IP to a backend (for GeoIP etc.). Use when calling api.park.fan from API routes; backend sees our server IP otherwise.
+- `pickClientIp` _function_: Take the originating client out of a (possibly comma-separated) forwarding chain: the leftmost entry, IPv6 included, since api.park.fan geolocates IPv6 correctly.
+- `isLocalOrUnusableIp` _function_: True if the IP is missing or local/private, which GeoIP cannot resolve.
+- `getClientIp` _function_: The visitor's IP address, or '' when no header carries a usable one. Takes a plain `Request` too, since the admin route handlers are typed on it.
+- `getForwardedForHeaders` _function_: Headers forwarding the real client IP to the backend for GeoIP; without them api.park.fan sees our server's IP.
 
 ### [`ride-crowd-scale.ts`](../../lib/utils/ride-crowd-scale.ts)
 
-- `rideCrowdLevelForWait` _function_: The crowd level the API gives a ride for one wait, against that ride's own baseline.
-- `rideCrowdMinuteRanges` _function_: Which waits put THIS ride in which tier.
+- `rideCrowdLevelForWait` _function_: The crowd level the API gives a ride for one wait, against that ride's own baseline. A twin of the backend's `determineCrowdLevel` (`src/common/utils/crowd-level.util.ts`): `wait ÷ baseline × 100`, unrounded, bucketed with `<=`.
+- `rideCrowdMinuteRanges` _function_: Which waits put THIS ride in which tier, for the badge tooltip.
 - Types: `RideCrowdMinuteRange`
 
 ### [`ride-day-curve-geometry.ts`](../../lib/utils/ride-day-curve-geometry.ts)
 
 - `niceMax` _function_: Round a max up to a friendly gridline so the axis labels are readable numbers.
-- `gridValues` _function_: Horizontal guide values for the plot, top first.
-- `makeScales` _function_: The plot's scales.
-- `axisHours` _function_: Which hours get a tick.
-- `smoothSegment` _function_: One contiguous run of points as a smooth cubic path segment.
+- `gridValues` _function_: Horizontal guide values for the plot, top first. The divisor is the first of 5, 4, 3, 2 whose step is a multiple of five, because 12.5 / 25 / 37.5 reads worse than no guides; `niceMax`'s values always allow one.
+- `makeScales` _function_: The plot's scales. `yMax` is clamped to at least 1 so a ride that is a walk-on all day does not divide by zero and write `NaN` into every path.
+- `axisHours` _function_: Which hours get a tick: the two ends, plus every third hour between them. The ends are excluded from the middle pass so the last hour cannot tick twice (a duplicate React key).
+- `smoothSegment` _function_: One contiguous run of points as a smooth cubic path segment. A queue does not turn corners on the hour, and the monotone interpolation never invents a value outside the measured range.
 - `runsOf` _function_: Split a positional series into the contiguous runs that actually have values.
-- `linePath` _function_: A positional series as an SVG path, broken at every gap.
-- `bandPath` _function_: The filled spread band, one closed subpath per contiguous run.
-- `quietWindows` _function_: The quiet run the day opens with and the quiet run it ends with.
+- `linePath` _function_: A positional series as an SVG path, broken at every gap. `null` means the ride reported nothing that hour; a line across the hole would be an invented measurement.
+- `bandPath` _function_: The filled spread band, one closed subpath per contiguous run, so the polygon never closes across a gap. A run under two points has no area and is dropped.
+- `quietWindows` _function_: The quiet run the day opens with and the one it ends with, derived from the median curve rather than the API's `ropeDrop` so a window cannot contradict the line it sits on. Either can be absent; the two never overlap.
 - `peakOf` _function_: The ride's busiest measured hour, for the chart's screen-reader summary.
-- `VIEW_W` _const_: Geometry for the ride day curve (`components/parks/ride-day-curve.tsx`) and for the quiet windows the card marks on it.
-- `VIEW_H` _const_: 720×200 rather than 720×260.
-- `PAD_L` _const_
-- `PAD_R` _const_
-- `PAD_T` _const_
-- `PAD_B` _const_
-- `QUIET_BAND` _const_: A quiet hour is one sitting in the lowest part of the ride's OWN daily range: at or under `min + QUIET_BAND × (max − min)`.
-- `MIN_RANGE_SHARE` _const_: How much a day has to move before "quiet" means anything.
+- `VIEW_W` _const_: viewBox width of the plot.
+- `VIEW_H` _const_: viewBox height. The y axis starts at zero, so a ride running 28–46 minutes uses only the top half of the plot; a taller box left a large empty rectangle in the card.
+- `PAD_L` _const_: Left inner padding of the plot, in viewBox units.
+- `PAD_R` _const_: Right inner padding.
+- `PAD_T` _const_: Top inner padding.
+- `PAD_B` _const_: Bottom inner padding.
+- `QUIET_BAND` _const_: A quiet hour sits at or under `min + QUIET_BAND × (max − min)` of the ride's OWN day.
+- `MIN_RANGE_SHARE` _const_: How much a day has to move, as a share of its peak, before „quiet" means anything. A ride at 30 minutes all day has a flat day, not a quiet window.
 - Types: `QuietWindow`
 
 ### [`rider-height.ts`](../../lib/utils/rider-height.ts)
 
-- `canRideAtHeight` _function_: Whether a rider of `cm` may ride.
-- `riderHeightThresholds` _function_: The distinct minimum heights a park actually enforces, ascending.
-- `riderHeightStops` _function_: Every height the slider may be set to, ascending — and nothing else.
-- `RIDER_HEIGHT_STEP` _const_: Grid the derived stops are rounded onto, in cm — the unit parks post their limits in.
+- `canRideAtHeight` _function_: Whether a rider of `cm` may ride. An attraction with no height data passes, like `import('./season').isInSeason`'s `!== false`: a missing limit means nobody wrote one down, and hiding the ride would quietly shorten the park.
+- `riderHeightThresholds` _function_: The distinct minimum heights a park enforces, ascending: where a ride opens up.
+- `riderHeightStops` _function_: Every height the slider may be set to, ascending: one detent per height at which the park's answer changes, so every step changes the list.
+- `RIDER_HEIGHT_STEP` _const_: Grid the derived stops are rounded onto, in cm, the unit parks post their limits in.
 - Types: `RiderHeightLimits`
 
 ### [`rope-drop.ts`](../../lib/utils/rope-drop.ts)
 
-- `isEveningBetter` _function_: The inverse rope-drop recommendation: the line is already long right at opening and the day's trough sits much later (usually the evening), so arriving at rope drop buys nothing — ride late instead.
-- `ropeDropDisplayWaits` _function_: Every wait `RopeDropCard` displays, rounded once for the whole card.
-- `ropeDropCardVariant` _function_: The panel a `ropeDrop` block gets. Total by construction — every recommendation resolves to one of three, and none of them is "nothing".
+- `isEveningBetter` _function_: The inverse rope-drop recommendation: the line is already long at opening and the day's trough sits much later, so ride late instead.
+- `ropeDropDisplayWaits` _function_: Every wait `RopeDropCard` displays, rounded once for the whole card so no panel disagrees with its neighbours or with itself. A displayed wait is always a multiple of five, as parks post them.
+- `ropeDropCardVariant` _function_: The panel a `ropeDrop` block gets. Total by construction: every recommendation resolves to one of three and none is „nothing", because the ride page's cell is gated on `attraction.ropeDrop` alone and a `null` here left a visibly empty …
 - Types: `RopeDropDisplayWaits`, `RopeDropCardVariant`
 
 ### [`route-guards.ts`](../../lib/utils/route-guards.ts)
 
 Route guards for the `/[locale]/...` tree.
 
-- `assertServableRoute` _function_: `isServableRoute` as a guard — 404s before a single backend call is made. Belongs at the very top of the page component, right after `await params`.
+- `assertServableRoute` _function_: `isServableRoute` as a guard that 404s before any backend call; put it at the top of the page component, right after `await params`.
 - Re-exports: `./servable-route`
 
 ### [`schedule-utils.ts`](../../lib/utils/schedule-utils.ts)
 
-- `getScheduleMessage` _function_: Computes a human-readable schedule message for a park card. Shared between ParkCard and ParkCardNearby.
+- `getScheduleMessage` _function_: The schedule line for a park card (opening soon, closing at, off season), shared by `ParkCard` and `ParkCardNearby`.
 - Types: `ScheduleSummary`
 
 ### [`scroll-when-settled.ts`](../../lib/utils/scroll-when-settled.ts)
 
 - `scrollWhenSettled` _function_: Scroll to an element and keep correcting until the page stops moving underneath it.
-- `HEADER_OFFSET` _const_: How far below the viewport's top edge a scrolled-to element comes to rest — the sticky bar plus a little air.
+- `HEADER_OFFSET` _const_: How far below the viewport's top edge a scrolled-to element comes to rest: the sticky bar plus a little air.
 - Types: `ScrollWhenSettledOptions`
 
 ### [`search-assets.ts`](../../lib/utils/search-assets.ts)
 
-- `enrichSearchResultsWithImages` _function_: Attach each hit's photo from the media database.
+- `enrichSearchResultsWithImages` _function_: Attach each search hit's photo from the media database, which the backend knows nothing about. `server-only` so the media catalog can never reach a Client Component bundle.
 
 ### [`search-park-hits.ts`](../../lib/utils/search-park-hits.ts)
 
@@ -397,16 +397,16 @@ Route guards for the `/[locale]/...` tree.
 
 ### [`season.ts`](../../lib/utils/season.ts)
 
-- `isInSeason` _function_: Whether a seasonal entity counts as running right now.
+- `isInSeason` _function_: Whether a seasonal entity counts as running right now. `isCurrentlyInSeason` has three values: `false` is known closed, `null` is „seasonal, nothing else known" and must not hide the ride, and `undefined` is an older payload.
 
 ### [`servable-route.ts`](../../lib/utils/servable-route.ts)
 
-- `isServableRoute` _function_: True when a `/[locale]/...` URL can possibly resolve: the locale is one we serve and every geo segment passed is slug-shaped. Call with just the locale on routes that take no geo params.
-- `isSlugPath` _function_: True when every segment is slug-shaped — the guard for an `/api/*` route that interpolates its catch-all segments into a backend path.
+- `isServableRoute` _function_: True when a `/[locale]/...` URL can possibly resolve: a locale we serve and slug-shaped geo segments (pass only the locale on routes without geo params). For `generateMetadata`, which must return rather than throw.
+- `isSlugPath` _function_: True when every segment is slug-shaped: the guard for an `/api/*` route that interpolates its catch-all segments into a backend path.
 
 ### [`server-time.ts`](../../lib/utils/server-time.ts)
 
-Server-side "current time" helpers.
+Server-side „current time" helpers. On per-request pages they are fresh; on prerendered pages they resolve at build or revalidation time, fine for day or year granularity. Live values (countdowns, „x min ago") belong in a Client Component.
 
 - `getCurrentYear` _function_: Current calendar year (for copyright lines).
 - `getServerNowMs` _function_: Current epoch milliseconds.
@@ -414,24 +414,24 @@ Server-side "current time" helpers.
 
 ### [`temperature.ts`](../../lib/utils/temperature.ts)
 
-- `detectDefaultUnit` _function_: Pick a sensible default temperature unit based on the region tag of the user's _primary_ browser language. We parse the region from the locale (`en-US` → `US`) and only flip to Fahrenheit when that region is in the known-Fahrenheit list.
+- `detectDefaultUnit` _function_: The default unit from the region of the browser's _primary_ language (`en-US` → `US`). The rest of `navigator.languages` is ignored, since it produces false positives. `'C'` on the server.
 - `formatTemp` _function_: Format a Celsius value as a rounded "15°" / "59°" string in the chosen unit.
 - `convertWindSpeed` _function_: Convert km/h into the unit-system pairing (km/h for metric, mph for imperial).
 - `formatWindSpeed` _function_: Format a km/h value as "20 km/h" or "12 mph" depending on the chosen unit.
-- `formatPrecip` _function_: Format a mm value as "0.8mm" (metric) or "0.03in" (imperial). Imperial uses 2 decimals since most live weather values are sub-inch.
-- `formatSpeed` _function_: Top speed from a km/h value: "80 km/h" / "50 mph".
-- `formatTrackLength` _function_: Track length or height from a metres value: "768 m" / "2520 ft".
+- `formatPrecip` _function_: Format a mm value as „0.8 mm" or „0.03 in"; two decimals, since most values are sub-inch.
+- `formatSpeed` _function_: Top speed from a km/h value: „80 km/h" or „50 mph". Separate from `formatWindSpeed` so a precision change to one does not silently change the other.
+- `formatTrackLength` _function_: Track length or height from metres: „768 m" or „2520 ft". Not the km/mi switch `Distance` uses for how far away a park is: a coaster is measured in metres and feet however long it is.
 - `formatRiderHeight` _function_: Rider height from a centimetres value: "140 cm" / "55 in".
-- `formatDuration` _function_: Ride duration from seconds: "2:20". Unit-independent — no country rides a coaster in anything but minutes and seconds.
+- `formatDuration` _function_: Ride duration from seconds: „2:20", the same in every unit system.
 - Types: `TemperatureUnit`
 
 ### [`touch-target.ts`](../../lib/utils/touch-target.ts)
 
-- `PHONE_HIT_AREA` _const_: A 44 × 44 px target below `sm` for a control whose box has to stay smaller.
+- `PHONE_HIT_AREA` _const_: A 44 × 44 px target below `sm` for a control whose box has to stay smaller: a centred pseudo-element grows instead of the control, so the layout does not move (the pattern `FavoriteStar` uses). 44 px is the button scale's phone tier.
 
 ### [`typical-waits.ts`](../../lib/utils/typical-waits.ts)
 
-- `quietestWeekdays` _function_
+- `quietestWeekdays` _function_: The ride's quietest weekday verdict.
 - `THIN_DAY_SHARE` _const_: A day is dropped when it carries less than half the median day's operating days.
 - `MIN_COMPARABLE_DAYS` _const_: Fewer comparable weekdays than this and the ride gets no verdict at all.
 - `MAX_TIED_DAYS` _const_: Three or more days sharing the minimum is a flat week, not a quiet day.
@@ -439,71 +439,71 @@ Server-side "current time" helpers.
 
 ### [`url-utils.ts`](../../lib/utils/url-utils.ts)
 
-URL conversion utilities Converts backend API URLs to frontend routes
+Converts backend API URLs to frontend routes. Always go through these helpers with a URL from the API, never string surgery like `.replace('/v1/parks/', '/parks/')`.
 
-- `convertApiUrlToFrontendUrl` _function_: Convert backend API URL to frontend route
-- `getParkUrlFromAttractionUrl` _function_: Extract park URL from an attraction URL
-- `parkChapterUrl` _function_: The park-page chapter a show or restaurant lives under: `/parks/…#shows` or `/parks/…#restaurants`.
-- `buildAttractionUrl` _function_: Build attraction URL from park URL and attraction slug
-- `searchResultHref` _function_: Where a search result links to — one answer for the palette, the hero's dropdown and `/search`.
-- `buildParkUrl` _function_: Build a park URL from geographic data
-- `buildAttractionUrlFromGeo` _function_: Build an attraction URL from geographic data
+- `convertApiUrlToFrontendUrl` _function_: Convert a backend API URL to a frontend route, or `'#'` when it cannot be converted.
+- `getParkUrlFromAttractionUrl` _function_: Extract the parent park's page URL from an attraction URL (API or frontend), or `'#'`.
+- `parkChapterUrl` _function_: The park-page tab a show or restaurant lives under: `/parks/…#shows` or `/parks/…#restaurants`.
+- `buildAttractionUrl` _function_: Build an attraction URL from a park URL and the attraction's slug.
+- `searchResultHref` _function_: Where a search result links to, the one answer for the palette, the hero's dropdown and `/search`. Locale-less like every path the i18n `Link` takes (the locale only picks the glossary's segment).
+- `buildParkUrl` _function_: Build a park URL from geographic data, the preferred way to link a park. Falls back to converting `url` when the geo path is incomplete, and returns `'#'` (with a warning) if both fail.
+- `buildAttractionUrlFromGeo` _function_: Build an attraction URL from its park's geographic data and its slug, falling back to `url` and then `'#'` like `buildParkUrl`.
 - Types: `ParkGeoData`, `AttractionGeoData`
 
 ### [`wait-time-observations.ts`](../../lib/utils/wait-time-observations.ts)
 
-- `buildWaitTimeObservations` _function_: `Observation` nodes for a park's current standby waits.
+- `buildWaitTimeObservations` _function_: `Observation` nodes for a park's current standby waits, mirroring the attraction cards' rules, because structured data that contradicts the page is worse than none.
 - Types: `WaitTimeObservation`
 
 ### [`wait-time.ts`](../../lib/utils/wait-time.ts)
 
-- `roundWaitTo5` _function_: Wait times are displayed in five-minute steps, always — except Disney's 13, see `WALK_ON_WAIT_MINUTES`, which is returned as it is.
-- `roundWaitDeltaTo5` _function_: The same five-minute grid for a DIFFERENCE between two wait times.
-- `shortTermWaitTrend` _function_: The short-term movement of one queue, as a direction AND the number that produced it.
-- `WALK_ON_WAIT_MINUTES` _const_: Disney's walk-on: the one posted wait that is not on the five-minute grid, and stays off it.
+- `roundWaitTo5` _function_: Rounds a wait time for display to five-minute steps, except Disney's 13 (`WALK_ON_WAIT_MINUTES`). Parks post multiples of five; percentiles and averages on top are what produce 51 or 47.
+- `roundWaitDeltaTo5` _function_: The same five-minute grid for a DIFFERENCE between two wait times. `roundWaitTo5` floors everything under 2.5 to zero, which is right for a queue and wrong for a delta: it would turn every falling trend into „stable".
+- `shortTermWaitTrend` _function_: The short-term movement of one queue, as a direction and the number that produced it, from the same arithmetic so arrow and figure cannot disagree.
+- `WALK_ON_WAIT_MINUTES` _const_: Disney's walk-on: 13 minutes, the one posted wait that stays off the five-minute grid. It is the park's signal for „walk straight on", and rounding it to 15 makes it an ordinary short queue.
 
 ### [`weather-chart-axis.ts`](../../lib/utils/weather-chart-axis.ts)
 
 - `hoursOf` _function_: Park-local hour of each hourly point, parsed from its naive "YYYY-MM-DDTHH:MM".
-- `indexForMinute` _function_: Wall-clock minute of the day → continuous index into the hourly points.
+- `indexForMinute` _function_: Wall-clock minute of the day → continuous index into the hourly points. Monotone: on the autumn changeover the later repeated hour wins, and a skipped spring hour maps onto the start of the hour that replaced it.
 - `buildDayScale` _function_: The piecewise-linear day scale, or `null` when the day should stay linear.
-- `makeXEdge` _function_: Continuous index → viewBox %. Strictly monotone, `x(0) = 0`, `x(n) = 100`. With `scale === null` this is the linear day the chart has always drawn.
-- `buildAxisTicks` _function_: Which hours get a tick, at two densities.
+- `makeXEdge` _function_: Continuous index → viewBox %. Strictly monotone, `x(0) = 0`, `x(n) = 100`.
+- `buildAxisTicks` _function_: Which hours get a tick, at two densities. Both tiers are in the DOM and CSS picks one, so the row's height never depends on the viewport. On a linear day this is every third hour.
 - `pickExtraTemperatureLabels` _function_: The handful of extra temperatures worth printing inside the opening hours.
-- `findRainRuns` _function_: The longest wet stretches of the day, as index ranges.
+- `findRainRuns` _function_: The longest wet stretches of the day (two hours or more), as index ranges.
 - `OPEN_HOUR_RATIO` _const_: How much wider an open hour is drawn than a closed one.
 - `MAX_OPEN_SHARE` _const_: The opening hours never take more than this share of the axis.
 - `MIN_CLOSED_UNIT_PCT` _const_: Width floor per closed hour, so a night hour stays a column and not a hairline.
 - `MIN_GAIN` _const_: Minimum share the warp has to win over a linear axis to be worth drawing.
 - `MIN_OPEN_HOURS` _const_: Windows shorter than this leave too little curve to expand.
 - `MAX_OPEN_HOURS` _const_: Windows longer than this are close enough to a full day that a warp is noise.
-- `TICK_GAP_BASE` _const_: Centre-to-centre room two hour labels need, in viewBox %.
+- `TICK_GAP_BASE` _const_: Centre-to-centre room two hour labels need, in viewBox %, sized for the widest locale label (German „14 Uhr") on a phone-width plot.
 - `TICK_GAP_WIDE` _const_: Same, once the chart is at least `TICK_WIDE_MIN_PX` wide.
 - `TICK_WIDE_MIN_PX` _const_: Where the second tier of ticks switches on — a container query, not a viewport one.
 - `HOUR_LABEL_WEIGHT` _const_: Room a plain hour label needs, as a multiple of the tier's budget.
 - `TIME_LABEL_WEIGHT` _const_: An opening/closing time that spells out minutes ("9:30 AM") needs about a third more.
-- `LINEAR_TICK_STEP` _const_: Hour ticks on a linear day — unchanged from before the warp existed.
+- `LINEAR_TICK_STEP` _const_: Hour ticks on a linear day.
 - `EXTRA_LABEL_GAP` _const_: Horizontal room a temperature label needs, in viewBox %.
-- `EXTRA_LABEL_VALUE_GAPS` _const_: Within this many gaps of an existing label, a new one also has to READ differently: "32°" printed a screen-third away from "33°" is a second label carrying no second fact.
+- `EXTRA_LABEL_VALUE_GAPS` _const_: Within this many gaps of an existing label, a new one must also show a different value: „32°" a short way from „33°" adds no fact. Further out the same number is fine.
 - `EXTRA_LABEL_BASE_MAX` _const_: How many extra labels a narrow chart carries.
 - `EXTRA_LABEL_MAX` _const_: Hard cap including the ones only a wide chart shows.
 - `EXTRA_TOL_MIN_K` _const_: A swing smaller than this is not worth a number, whatever the day's range.
 - `EXTRA_TOL_SPAN_SHARE` _const_: …and on a swingy day the bar rises with the range rather than staying absolute.
 - `RAIN_RUN_MM` _const_: mm in an hour slot that counts as rain outright.
 - `RAIN_RUN_LIGHT_MM` _const_: …and the lighter amount that still counts when the forecast is confident.
-- `RAIN_RUN_PROB` _const_
+- `RAIN_RUN_PROB` _const_: Minimum precipitation probability (%) for the lighter amount to count.
 - `MAX_RAIN_RUNS` _const_: Drawing more than this many turns the baseline into a dotted line.
 - Types: `DayScale`, `AxisTickKind`, `AxisTick`, `AxisEdgeTick`, `AxisTickParams`, `ExtraTempLabel`, `PlacedLabel`, `ExtraTempParams`, `RainRun`
 
 ### [`weather-utils.ts`](../../lib/utils/weather-utils.ts)
 
-- `getDayWeatherWarning` _function_: Classify a forecast day as severe weather.
-- `getWeatherConfig` _function_: WMO Weather Codes grouping https://open-meteo.com/en/docs
+- `getDayWeatherWarning` _function_: Classify a forecast day as severe weather, or `null`. The WMO weather code comes first, then the daily totals, so a day that piles up rain, snow or wind without a „heavy" code still counts. Priority: thunderstorm, snow, rain, wind.
+- `getWeatherConfig` _function_: Icon, label key and colour for a WMO weather code (https://open-meteo.com/en/docs).
 - Types: `WeatherWarning`
 
 ### [`works-period.ts`](../../lib/utils/works-period.ts)
 
-- `isWorksPeriodActive` _function_: Whether a curated rebuild window covers a given day.
+- `isWorksPeriodActive` _function_: Whether a curated rebuild window covers a given day. The twin of the backend's `isCuratedOutOfService()` and must stay one, or the „Umbaupause" badge and the planner gate disagree.
 
 ### [`yearly-outlook.ts`](../../lib/utils/yearly-outlook.ts)
 
