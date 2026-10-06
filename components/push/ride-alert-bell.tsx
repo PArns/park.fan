@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { Bell, BellRing } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
-import { GlassCircle } from '@/components/common/glass-circle';
+import { GLASS_CIRCLE_HIT_AREA, GlassCircle } from '@/components/common/glass-circle';
 import { getRideAlertLocal } from '@/lib/push/push-follows-store';
 import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-value';
 import { hasUsableThresholdRange } from '@/lib/push/threshold-minutes';
@@ -70,9 +70,7 @@ export function RideAlertBell({
           className={cn(
             'relative z-10 flex h-full w-full items-center justify-center transition-all hover:scale-110',
             'focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none',
-            'max-sm:after:absolute max-sm:after:top-1/2 max-sm:after:left-1/2 max-sm:after:h-11',
-            'max-sm:after:w-11 max-sm:after:-translate-x-1/2 max-sm:after:-translate-y-1/2',
-            'max-sm:after:content-[""]'
+            GLASS_CIRCLE_HIT_AREA
           )}
           aria-label={
             alerted

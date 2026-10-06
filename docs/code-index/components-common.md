@@ -86,6 +86,8 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 ### [`glass-circle.tsx`](../../components/common/glass-circle.tsx)
 
 - `GlassCircle` _component_: The 34 px frosted disc the card corner controls sit on (`FavoriteStar`, `RideAlertBell`). A control that can render nothing draws its own disc, or a `null` would leave an empty circle.
+- `GLASS_CIRCLE_ROW` _const_: The row the card corner's circles sit in, right-aligned by its caller. Below `sm` the gap is 6 px, which `GLASS_CIRCLE_HIT_AREA`'s width is measured against; from `sm` up there are no touch targets to keep apart.
+- `GLASS_CIRCLE_HIT_AREA` _const_: The phone hit area of a control filling a `GlassCircle` in a `GLASS_CIRCLE_ROW`: 44 px tall and 40 px wide, the circle plus the row's gap, so neighbouring targets meet edge to edge.
 
 ### [`icon-container.tsx`](../../components/common/icon-container.tsx)
 

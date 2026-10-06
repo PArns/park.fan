@@ -11,7 +11,11 @@ import { formatDistance } from '@/lib/utils/distance-utils';
 import type { ParkAttraction, ParkStatus, BestVisitSlot, RopeDropInfo } from '@/lib/api/types';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { FavoriteStar } from '@/components/common/favorite-star';
-import { GlassCircle } from '@/components/common/glass-circle';
+import {
+  GLASS_CIRCLE_HIT_AREA,
+  GLASS_CIRCLE_ROW,
+  GlassCircle,
+} from '@/components/common/glass-circle';
 import { RiddenToggle } from './ridden-toggle';
 import { RideAlertBell } from '@/components/push/ride-alert-bell';
 import { AttractionCardBestTime } from '@/components/parks/attraction-card-best-time';
@@ -275,13 +279,13 @@ export function AttractionCard({
 
         {/* The bell brings its own `GlassCircle` because it hides where the queue is too short
             for an alert, and a circle drawn here would stay behind empty. The star is the last
-            child, so it keeps the far-right spot. `gap-3` below `sm` because two 34px circles
-            with 44px touch targets overlap at `gap-2` (34 + 12 >= 44); from `sm` up there are no
-            touch targets. In a phone row the circles centre on the first line. */}
+            child, so it keeps the far-right spot. In a phone row the circles centre on the
+            first line. */}
         {attraction.id && (
           <div
             className={cn(
-              'absolute top-3 right-3 z-[4] flex items-center gap-3 sm:gap-2',
+              'absolute top-3 right-3 z-[4]',
+              GLASS_CIRCLE_ROW,
               phoneRow && 'max-sm:top-[6px]'
             )}
           >
@@ -310,7 +314,7 @@ export function AttractionCard({
                 size="md"
                 noCircle
                 variant="glass"
-                className="h-full w-full"
+                className={cn('h-full w-full', GLASS_CIRCLE_HIT_AREA)}
               />
             </GlassCircle>
           </div>
@@ -369,26 +373,25 @@ export function AttractionCard({
             );
             if (!phoneRow) return heading;
             // A phone row's first line: name, wait time, then the room the corner circles take
-            // (80 px for bell and star, 34 px for the star alone, plus an 8 px gap). The wait
-            // time sits outside the <h3> so the heading stays the ride's name.
+            // (34 px per circle and 6 px between them, plus an 8 px gap). The wait time sits
+            // outside the <h3> so the heading stays the ride's name. Its unit is left to screen
+            // readers: the width goes to the name, and the figure is a wait time on every card.
             return (
               <div
                 className={cn(
                   'relative max-sm:flex max-sm:min-h-[26px] max-sm:items-center max-sm:gap-2',
-                  parkName ? 'max-sm:pr-[88px]' : 'max-sm:pr-[42px]',
-                  rideLog && (parkName ? 'max-sm:pr-[128px]' : 'max-sm:pr-[82px]')
+                  parkName ? 'max-sm:pr-[82px]' : 'max-sm:pr-[42px]',
+                  rideLog && (parkName ? 'max-sm:pr-[122px]' : 'max-sm:pr-[82px]')
                 )}
               >
                 {heading}
                 {hasBottomPanel && (
-                  <span className="flex shrink-0 items-baseline gap-0.5 leading-none sm:hidden">
+                  <span className="flex shrink-0 leading-none sm:hidden">
                     <WaitTimeValue
                       minutes={roundWaitTo5(waitTime)}
                       className="text-[26px] font-extrabold tracking-[-0.02em] tabular-nums"
                     />
-                    <span className="text-[11px] font-medium" style={{ color: 'var(--pk-text-3)' }}>
-                      min
-                    </span>
+                    <span className="sr-only">min</span>
                   </span>
                 )}
               </div>
