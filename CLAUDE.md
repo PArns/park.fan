@@ -35,6 +35,9 @@ three lines, the rest belongs in the page.
 
 ## Applies to every change
 
+- **[DRY: don't repeat yourself](docs/rules/dry-one-place-for-each-piece-of-logic.md) (REQUIREMENT):** one place
+  for each piece of logic, constant, regex, formatter or class string that has to agree with another.
+  Look it up in the code index first, extend what exists, and extract a second copy instead of pasting it.
 - **[Reuse existing components](docs/rules/reuse-existing-components.md) (REQUIREMENT):** always reuse what exists (`ParkStatusBadge`,
   `CrowdLevelBadge`, `Badge`, `ParkCard`) instead of re-implementing UI inline. Only build new when
   nothing suitable exists. See [conventions](docs/development/conventions.md#11-reuse-existing-components).

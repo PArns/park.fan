@@ -63,6 +63,7 @@ _Layout, a component, a breakpoint, the header, a card, three.js._
 - [A landing page has one anatomy (REQUIREMENT)](a-landing-page-has-one-anatomy.md)
 - [A client-only preference may not decide server-rendered markup (REQUIREMENT)](a-client-only-preference-may-not-decide-server-rendered-markup.md)
 - [A cell is gated on its content, and a component that fills one may not return `null` — nor one line (REQUIREMENT)](a-cell-is-gated-on-its-content-and-a-component-that-fills-one.md)
+- [Don't repeat yourself: one place for each piece of logic (REQUIREMENT)](dry-one-place-for-each-piece-of-logic.md)
 - [Reuse existing components (REQUIREMENT)](reuse-existing-components.md)
 - [The code index is generated from the doc comments, and kept current in the same pull request (REQUIREMENT)](the-code-index-is-generated-from-the-doc-comments.md)
 - [A comment says why, once, and nothing that can go stale (REQUIREMENT)](a-comment-says-why-once.md)
