@@ -19,11 +19,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`attraction-card.tsx`](../../components/parks/attraction-card.tsx)
 
-- `AttractionCard` _component_: Component
+- `AttractionCard` _component_: A ride's card: photo, status and badges, and the live wait with its sparkline.
 
 ### [`attraction-downtime-section.tsx`](../../components/parks/attraction-downtime-section.tsx)
 
-- `AttractionDowntimeSection` _component_: How often this ride has been REPORTED down — or one sentence saying why we do not say.
+- `AttractionDowntimeSection` _component_: How often this ride has been REPORTED down, or one sentence saying why we do not say.
 
 ### [`attraction-filter-panel.tsx`](../../components/parks/attraction-filter-panel.tsx)
 
@@ -74,7 +74,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`card-photo.tsx`](../../components/parks/card-photo.tsx)
 
-- `CardPhoto` _component_: The card photo, in two layers — and the split is the whole point.
+- `CardPhoto` _component_: The card photo, in two layers, and the split is the whole point.
 - `CardPhotoFrame` _component_: The photo as it is actually seen: cropped to the strip between the glass panels.
 
 ### [`card-pointer-fx.tsx`](../../components/parks/card-pointer-fx.tsx)
@@ -150,7 +150,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`favorites-section.tsx`](../../components/parks/favorites-section.tsx)
 
-- `FavoritesSection` _component_: `standalone` is what `/favorites` passes: there the band is the page's whole content, so the page carries the title (as its `<h1>`) and the instructions (under the band, in every state) and this component draws neither.
+- `FavoritesSection` _component_: The visitor's favorites band: parks, rides, shows and restaurants, nearest first, with a skeleton and an empty state that stand in the same box.
 
 ### [`filter-toggle.tsx`](../../components/parks/filter-toggle.tsx)
 
@@ -180,11 +180,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`land-section.tsx`](../../components/parks/land-section.tsx)
 
-- `LandSection` _component_: Memoized: on the park page the parent `TabsWithHash` re-renders on every search keystroke and every input focus/blur.
+- `LandSection` _component_: One land of the park page's ride list: its heading with the open count, then a card per ride.
 
 ### [`lazy-mount.tsx`](../../components/parks/lazy-mount.tsx)
 
-- `LazyMount` _component_: Defers mounting heavy below-the-fold content until it nears the viewport, then keeps it mounted (no unmount → no scroll jank, no lost state).
+- `LazyMount` _component_: Defers mounting heavy below-the-fold content until it nears the viewport, then keeps it mounted (no unmount → no scroll jank, no lost state). A big park's ride grid is 100+ glass cards, which dominates mobile rendering time.
 - Types: `LazyMountGrid`
 
 ### [`live-attraction-data.tsx`](../../components/parks/live-attraction-data.tsx)
@@ -193,16 +193,16 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`live-country-cards.tsx`](../../components/parks/live-country-cards.tsx)
 
-- `LiveCountryCards` _component_: Continent-page country grid. The card structure (name, link, total parks, city count) is prerendered/edge-cached; the live open-park count is layered on the client via the shared `useGeoLiveStats` batch call — so the continent shell no …
+- `LiveCountryCards` _component_: Continent-page country grid. The card structure (name, link, total parks, city count) is prerendered/edge-cached; the live open-park count is layered on the client via the shared `useGeoLiveStats` batch call, so the continent shell need …
 - Types: `StaticCountryCard`
 
 ### [`live-data-freshness.tsx`](../../components/parks/live-data-freshness.tsx)
 
-- `LiveDataFreshness` _component_: Memoised for the same reason as `ParkTabsList`: its props hold still while the filters move.
+- `LiveDataFreshness` _component_: "As of 14:35" above the ride list, and a warning with a retry button when that is no longer current.
 
 ### [`live-nearby-parks.tsx`](../../components/parks/live-nearby-parks.tsx)
 
-- `LiveNearbyParks` _component_: Park-page "nearby parks" grid. The proximity list (names, links, distance, photo) is prerendered and edge-cached; live open/closed status + crowd is layered on the client via `useParkNeighbors`, so the park-page shell no longer bakes …
+- `LiveNearbyParks` _component_: Park-page "nearby parks" grid. The proximity list (names, links, distance, photo) is prerendered and edge-cached; live open/closed status + crowd is layered on the client via `useParkNeighbors`, so the park-page shell never bakes stale …
 - Types: `StaticNearbyPark`
 
 ### [`live-open-count.tsx`](../../components/parks/live-open-count.tsx)
@@ -211,7 +211,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`live-park-data.tsx`](../../components/parks/live-park-data.tsx)
 
-- `LiveParkData` _component_: Client component that wraps park data with live updates - Uses initial SSR data for instant render - Refreshes on window focus (when user returns to tab) - Shows live indicator when data is fresh - Gracefully falls back to last known state …
+- `LiveParkData` _component_: The park page's live body: polls the park over the server-rendered snapshot and re-groups its rides by land for `TabsWithHash`. A failed poll keeps the last known state; the warning is &lt;LiveDataFreshness&gt;.
 
 ### [`live-park-grid.tsx`](../../components/parks/live-park-grid.tsx)
 
@@ -247,7 +247,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`next-best-rides.tsx`](../../components/parks/next-best-rides.tsx)
 
-- `NextBestRides` _component_: "What now?" for a visitor in the park without a plan (PAR-419): up to three rides whose queue is short now and forecast to be longer within two hours.
+- `NextBestRides` _component_: "What now?" for a visitor in the park without a plan: up to three rides whose queue is short now and forecast to be longer within two hours. The rule is `suggestNextRides`; this only feeds it and prints the two numbers it compared.
 
 ### [`no-live-wait-times-notice.tsx`](../../components/parks/no-live-wait-times-notice.tsx)
 
