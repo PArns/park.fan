@@ -1,6 +1,6 @@
 import type { PlanDay } from '@/lib/api/types';
 import { buildDayGrid, earlyEntryOpenMin, growGridForSpans, withEarlyEntry } from './day-grid';
-import { occupiedMinutes } from './estimate';
+import { spansFor } from './estimate';
 import {
   addWishKey,
   fitBlocks,
@@ -75,10 +75,7 @@ export function noRoomForRide(params: {
       undefined,
       earlyEntryOpenMin(day.context)
     ),
-    entries.map((entry) => ({
-      startMinute: entry.startMinute,
-      spanMinutes: occupiedMinutes(day, entry),
-    }))
+    spansFor(day, entries)
   );
   if (!grid || !canOptimize(day, grid)) return null;
 

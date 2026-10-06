@@ -11,7 +11,7 @@ import { buildDayGrid, earlyEntryOpenMin, nextFreeStart, rideFloor } from '@/lib
 import { PLANNER_PHONE_QUERY, usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { dayClock, resolveTimeZone } from '@/lib/planner/park-time';
-import { occupiedMinutes } from '@/lib/planner/estimate';
+import { spansFor } from '@/lib/planner/estimate';
 import { startRideDrag } from '@/lib/planner/ride-drag';
 import type { PlannerDayPrefs, PlannerGeo } from '@/lib/planner/types';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
@@ -103,12 +103,9 @@ export function PlannerMissingHeadliners({
   const startFor = (ride: PlanDayRide) =>
     grid
       ? nextFreeStart(
-          activeEntries.map((entry) => ({
-            startMinute: entry.startMinute,
-            spanMinutes: occupiedMinutes(day, entry),
-          })),
+          spansFor(day, activeEntries),
           grid,
-          45,
+          undefined,
           rideFloor(grid, ride, clock).softMin
         )
       : undefined;

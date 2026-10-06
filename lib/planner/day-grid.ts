@@ -131,6 +131,14 @@ export const RIDE_DURATION_MIN = 5;
 export const SNAP_MIN_FINE = 15;
 
 /**
+ * The default a placement falls back to when nothing measured says otherwise.
+ *
+ * Not a claim about any ride — the number the grid itself uses for a block whose
+ * wait is unknown, kept in one place so the search and the panel agree.
+ */
+export const DEFAULT_OCCUPIED_MINUTES = 45;
+
+/**
  * The arrow-key step of a block on a coarse pointer, and nothing else since the
  * drag stopped using it (see {@link DRAG_SNAP_MIN}). 54 px on the phone's axis.
  */
@@ -890,11 +898,14 @@ export function packLanes(blocks: readonly LaneInput[]): Map<string, LanePlaceme
 export function nextFreeStart(
   existing: readonly { startMinute: number; spanMinutes: number }[],
   grid: DayGrid,
-  spanMinutes = 45,
+  spanMinutes = DEFAULT_OCCUPIED_MINUTES,
   floorMin?: number
 ): number {
   const taken = existing
-    .map((e) => ({ from: e.startMinute, to: e.startMinute + Math.max(e.spanMinutes, 15) }))
+    .map((e) => ({
+      from: e.startMinute,
+      to: e.startMinute + Math.max(e.spanMinutes, SNAP_MIN_FINE),
+    }))
     .sort((a, b) => a.from - b.from);
 
   // `dayStartMin` and not `openMin`: an early ride's soft floor sits below the

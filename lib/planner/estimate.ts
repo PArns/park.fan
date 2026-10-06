@@ -1,6 +1,11 @@
 import type { PlanDay, PlanDayRide, PlanDayTier } from '@/lib/api/types';
 import type { PlannerEntry } from './types';
-import { earlyEntryOpenMin, opensEarly, unfoldedCloseHour } from './day-grid';
+import {
+  DEFAULT_OCCUPIED_MINUTES,
+  earlyEntryOpenMin,
+  opensEarly,
+  unfoldedCloseHour,
+} from './day-grid';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
 
@@ -432,14 +437,6 @@ export function bandCarriesFigure(day: PlanDay | null | undefined): boolean {
 }
 
 /**
- * The default a placement falls back to when nothing measured says otherwise.
- *
- * Not a claim about any ride — the number the grid itself uses for a block whose
- * wait is unknown, kept in one place so the search and the panel agree.
- */
-export const DEFAULT_OCCUPIED_MINUTES = 45;
-
-/**
  * The two halves of a block's length, so the two readers below cannot drift.
  *
  * `planned` is what the entry is expected to cost; `band` is the model's own
@@ -520,4 +517,15 @@ export function plannedMinutes(
   fallback = DEFAULT_OCCUPIED_MINUTES
 ): number {
   return spanParts(day, entry, fallback).planned;
+}
+
+/** Where each entry starts and how long it is drawn, the shape the grid's placement and growth read. */
+export function spansFor(
+  day: PlanDay | null | undefined,
+  entries: readonly PlannerEntry[]
+): { startMinute: number; spanMinutes: number }[] {
+  return entries.map((entry) => ({
+    startMinute: entry.startMinute,
+    spanMinutes: occupiedMinutes(day, entry),
+  }));
 }

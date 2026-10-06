@@ -23,7 +23,7 @@ import { PlannerDayFoot } from './planner-day-foot';
 import { PlannerDragCoach } from './planner-drag-coach';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
-import { occupiedMinutes } from '@/lib/planner/estimate';
+import { spansFor } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import {
@@ -499,14 +499,7 @@ export function PlannerFlyout({
    * has to be tall enough to contain them, and a new block has to be filed
    * somewhere none of them is.
    */
-  const spans = useMemo(
-    () =>
-      activeEntries.map((entry) => ({
-        startMinute: entry.startMinute,
-        spanMinutes: occupiedMinutes(day, entry),
-      })),
-    [activeEntries, day]
-  );
+  const spans = useMemo(() => spansFor(day, activeEntries), [activeEntries, day]);
 
   /**
    * The park's axis, grown until it contains the plan.

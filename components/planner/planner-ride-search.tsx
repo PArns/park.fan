@@ -14,7 +14,7 @@ import { buildDayGrid, earlyEntryOpenMin, nextFreeStart, rideFloor } from '@/lib
 import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { dayClock, resolveTimeZone } from '@/lib/planner/park-time';
 import { startRideDrag } from '@/lib/planner/ride-drag';
-import { occupiedMinutes } from '@/lib/planner/estimate';
+import { spansFor } from '@/lib/planner/estimate';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import type { PlannerDayState } from './planner-context-band';
 
@@ -177,12 +177,9 @@ export function PlannerRideSearch({
   const startFor = (ride: PlanDayRide) =>
     grid
       ? nextFreeStart(
-          dayEntries.map((entry) => ({
-            startMinute: entry.startMinute,
-            spanMinutes: occupiedMinutes(day, entry),
-          })),
+          spansFor(day, dayEntries),
           grid,
-          45,
+          undefined,
           rideFloor(grid, ride, clock).softMin
         )
       : undefined;

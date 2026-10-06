@@ -31,7 +31,7 @@ import {
   withEarlyEntry,
 } from '@/lib/planner/day-grid';
 import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
-import { occupiedMinutes } from '@/lib/planner/estimate';
+import { spansFor } from '@/lib/planner/estimate';
 import { closedNowFor, liveWaitsFor } from '@/lib/planner/live';
 import { dayClock, parkToday, resolveTimeZone } from '@/lib/planner/park-time';
 import { showDayHours, showLinesFor } from '@/lib/planner/shows';
@@ -325,14 +325,7 @@ export function PlannerDayColumn({
   // component that picks a minute by itself (see `addFreeBlock`).
   const clock = date ? dayClock(date, timezone) : undefined;
 
-  const spans = useMemo(
-    () =>
-      entries.map((entry: PlannerEntry) => ({
-        startMinute: entry.startMinute,
-        spanMinutes: occupiedMinutes(day, entry),
-      })),
-    [entries, day]
-  );
+  const spans = useMemo(() => spansFor(day, entries), [entries, day]);
 
   /**
    * The park's axis, grown until it contains the plan. `openMin`/`closeMin` are
