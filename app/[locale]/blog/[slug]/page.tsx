@@ -10,10 +10,7 @@ interface BlogPostPageProps {
   params: Promise<{ locale: string; slug: string }>;
 }
 
-// All blog routes are statically generated at build time. Geo + glossary
-// data is fetched in cached server helpers, so the markup is produced once
-// per build (re-generated every `revalidate` window). News posts are not
-// listed here: they live under `/news/[slug]` (`lib/blog/paths.ts`).
+// News posts are not listed here: they live under `/news/[slug]` (`lib/blog/paths.ts`).
 
 export function generateStaticParams() {
   return listAllUrlSlugsByLocale('blog').map(({ locale, slug }) => ({ locale, slug }));

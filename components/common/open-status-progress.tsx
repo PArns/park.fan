@@ -8,6 +8,10 @@ interface OpenStatusProgressProps {
   showLabel?: boolean;
 }
 
+/**
+ * Progress bar of open out of total (parks or rides), with an optional label and `open / total`
+ * count above it.
+ */
 export function OpenStatusProgress({
   openCount,
   totalCount,

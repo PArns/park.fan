@@ -34,16 +34,10 @@ function statsUrl(target: ParkStatsTarget, depth: StatsDepth): string {
 }
 
 /**
- * The `/stats` query for one park at one depth: key, fetch and cache windows. Shared by
- * `useParkStatsQueries` below and `useParkHistoricalStats` (the park page's stats and best-days
- * sections), which used to spell the same query out a second time.
- *
- * 'park-historical-stats' + the four segments is the whole key at the default depth, so a
- * default-depth table on a park page reuses the section's own fetch. The depth suffix only
- * appears when it is not the default, keeping that key byte-identical.
- *
- * `releasedLast` is the caller's `useLoadLast()`: historical aggregates never race the live
- * status and weather queries (loads-last rule).
+ * The `/stats` query for one park at one depth (key, fetch, cache windows), shared by
+ * `useParkStatsQueries` and `useParkHistoricalStats`. At the default depth the key has no depth
+ * suffix, so a default-depth table on a park page reuses the section's own fetch. `releasedLast`
+ * is the caller's `useLoadLast()`.
  */
 export function parkStatsQuery(target: ParkStatsTarget, depth: StatsDepth, releasedLast: boolean) {
   const parkKey = [
@@ -72,29 +66,17 @@ export function parkStatsQuery(target: ParkStatsTarget, depth: StatsDepth, relea
 }
 
 /**
- * One `/stats` fetch per park, shared by every table built on the historical aggregate.
- *
- * Extracted because three surfaces read the same payload — the park-comparison table, the
- * ride-wait tables in blog posts and the park page's own stats section — and they were drifting:
- * the query key, the stale window and the `useLoadLast` gate had to agree in three places for two
- * widgets on one page to share a cache entry instead of fetching twice.
- *
- * The `useLoadLast` gate is the park page's loading-priority rule: historical aggregates never
- * race the live status and weather queries. A blog post embedding one of these tables inherits
- * that for free.
- *
- * Keyed by park AND depth. A page holding both a `stats-widget` (default) and a deep ride table
- * for the same park does fetch twice — which is correct, they are different objects — but two
- * deep tables for the same park share one.
+ * One `/stats` fetch per park, shared by every table built on the historical aggregate (the
+ * park-comparison table, the blog's ride-wait tables, the park page's stats section) and gated on
+ * `useLoadLast`. Keyed by park and depth: a default and a deep table for one park are two fetches,
+ * two deep tables are one.
  */
 export function useParkStatsQueries(
   targets: readonly ParkStatsTarget[],
   depth: StatsDepth = 'default',
   /**
-   * Server-fetched aggregate per target, aligned to `targets`. Rendered until the query for that
-   * park settles, which is what puts the numbers into the first HTML instead of a skeleton — a
-   * blog post shipped its tables as `data-slot="skeleton"` placeholders without it. Only the
-   * statically prerendered blog widgets pass one; the park page keeps its stats client-side.
+   * Server-fetched aggregate per target, aligned to `targets`, rendered until that park's query
+   * settles so the numbers are in the first HTML. Only the prerendered blog widgets pass one.
    */
   initialStats?: readonly (ParkHistoricalStats | null)[]
 ) {
@@ -109,8 +91,7 @@ export function useParkStatsQueries(
      * Aligned with `targets` by index. `null` where the park has no displayable aggregate.
      *
      * `isSuccess`, not `data ?? seed`: a settled 404 is the answer "no displayable aggregate", and
-     * falling back on a nullish check would quietly put the seed back on top of it. Without a seed
-     * this reduces to the previous `r.data ?? null`.
+     * a nullish fallback would put the seed back on top of it.
      */
     stats: results.map((r, i) => (r.isSuccess ? r.data : (initialStats?.[i] ?? null))),
     /** True while ANY park is still outstanding — the tables render one skeleton, not seven. */

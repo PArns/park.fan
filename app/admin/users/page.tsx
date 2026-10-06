@@ -13,7 +13,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
-import type { AdminIdentity, AdminRole } from '../_lib/types';
+import type { AdminIdentity, AdminRole } from '@/lib/admin/roles';
 import {
   AdminPage,
   Chip,

@@ -3,6 +3,10 @@ import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 
+/**
+ * Returns `winter` when every season month lies in November to February, `summer` when every one
+ * lies in May to September, otherwise `null`.
+ */
 export function getSeasonLabel(months: number[] | null): 'winter' | 'summer' | null {
   if (!months) return null;
   const winter = [11, 12, 1, 2];
@@ -18,6 +22,10 @@ interface SeasonalBadgeProps {
   className?: string;
 }
 
+/**
+ * Badge for a seasonal ride or show: "Winter", "Summer" or "Seasonal" in season, and "Winter only",
+ * "Summer only" or "Off-season", dimmed, out of it.
+ */
 export function SeasonalBadge({
   seasonMonths,
   isCurrentlyInSeason,
@@ -29,12 +37,8 @@ export function SeasonalBadge({
 
   const Icon = season === 'winter' ? Snowflake : season === 'summer' ? Sun : Leaf;
 
-  // What the badge says depends on whether the ride is running. In season the
-  // season name is the whole message ("Winter"). Out of it, the name alone was
-  // the message a visitor got least out of: the card beside it said "Geschlossen"
-  // and nothing on the page connected the two, so a closed ice rink in August
-  // read as a ride that happened to be shut rather than one that cannot open for
-  // another three months. "Nur im Winter" is both halves in three words.
+  // What the badge says depends on whether the ride is running. Out of season the season name alone
+  // did not connect to the card's „Geschlossen", so it says both halves: „Nur im Winter".
   const label = offSeason
     ? season === 'winter'
       ? t('seasonalWinterOnly')

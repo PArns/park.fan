@@ -9,12 +9,8 @@ import type { QueueEntry, QueueStatusResponse } from '@/lib/api/admin';
 import { AdminPage } from '../_ui/primitives';
 
 /**
- * A failure count is not a reason.
- *
- * Bull keeps the message and the stack of every failed job in Redis, and until
- * this panel the only way to read either was a terminal on the box. The count
- * beside a queue name told an operator that something is wrong and nothing
- * about what — which is the same as telling them to ask somebody with SSH.
+ * A failed job with the message and stack Bull keeps in Redis, because a failure count alone says
+ * something is wrong and nothing about what.
  */
 interface QueueFailure {
   id: string | number;
@@ -147,7 +143,7 @@ function QueueRow({ q }: { q: QueueEntry }) {
 }
 
 export default function QueuesPage() {
-  const { data, error } = useAdminFetch<QueueStatusResponse>('/api/admin/queue-status', true);
+  const { data, error } = useAdminFetch<QueueStatusResponse>('/api/admin/queue-status');
 
   if (error) return <ErrorPanel message={error} />;
   if (!data) return <LoadingPanel label="Loading queues…" />;

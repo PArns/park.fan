@@ -7,12 +7,8 @@ interface UseWeatherHourlyParams {
   longitude: number | null | undefined;
   timezone: string | undefined;
   /**
-   * The park-local day to fetch, `YYYY-MM-DD`. Omitted means today, computed at
-   * FETCH time — see the note on the rollover below, which is why the default
-   * is not simply "today" filled in here.
-   *
-   * A caller that names a day gets it in the query key as well, or two days of
-   * one park would share a cache entry and the second would read the first.
+   * The park-local day, `YYYY-MM-DD`; omitted means today, computed at fetch time. A named day
+   * goes into the query key, or two days of one park would share a cache entry.
    */
   date?: string;
   /** Gate the fetch (e.g. when static `hourly` data is supplied instead). */
@@ -20,24 +16,11 @@ interface UseWeatherHourlyParams {
 }
 
 /**
- * Today's hour-by-hour forecast (temperature + precipitation) for a park
- * location, via the cached `/api/weather/hourly` Open-Meteo proxy.
- *
- * The explicit `date` param pins every cache layer (CDN + Next data cache) to
- * the park-local day the CHART will check against ("is this today?"). Without
- * it, a stale-while-revalidate serve could hand the first visitor of the day
- * yesterday's response — whose date no longer matches "today", so the day view
- * silently disappeared on some pages. The date is computed at FETCH time (not
- * in the query key), so the 30-min refetch rolls the chart over to the new day
- * after midnight, same as before.
- *
- * The server response is cached 15 min, so polling faster is wasted work.
- *
- * The upstream reaches about **fourteen days**, not one — the route has taken an
- * explicit `date` since it was written and pins `start_date`/`end_date` to it.
- * The planner's weather rail asks for a day the visitor is planning, which may
- * be any of those; past the horizon Open-Meteo answers an error and this throws,
- * so a caller must gate on the horizon rather than rely on an empty result.
+ * A day's hour-by-hour forecast (temperature, precipitation) for a park location, through the
+ * cached `/api/weather/hourly` proxy. The park-local date is always sent, so a
+ * stale-while-revalidate serve cannot hand the chart yesterday's day; for today it is computed at
+ * fetch time, not in the key, so the 30-minute refetch rolls over at midnight. The upstream
+ * reaches about fourteen days and errors past that, so a caller gates on the horizon.
  */
 export function useWeatherHourly({
   latitude,
@@ -49,9 +32,8 @@ export function useWeatherHourly({
   const hasCoords = latitude != null && longitude != null && !!timezone;
 
   return useQuery<WeatherHourlyToday | null>({
-    // `date` only when a caller named one. Left out otherwise so the existing
-    // consumers keep the key they have — and with it the midnight rollover,
-    // which works precisely BECAUSE today is not in the key.
+    // `date` only when a caller named one: today must stay out of the key for the midnight
+    // rollover.
     queryKey: date
       ? ['weather-hourly', latitude, longitude, timezone, date]
       : ['weather-hourly', latitude, longitude, timezone],

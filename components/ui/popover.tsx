@@ -1,5 +1,9 @@
 'use client';
 
+/**
+ * Popover primitives (shadcn/ui on Radix Popover): root, trigger, anchor and the floating content
+ * panel.
+ */
 import * as React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 

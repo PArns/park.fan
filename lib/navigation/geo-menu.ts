@@ -4,25 +4,11 @@ import type { Continent } from '@/lib/api/types';
 
 /**
  * The geographic spine of the header menu: continents and their countries, and nothing else.
- *
- * WHY THIS TRIMS RATHER THAN PASSING THE PAYLOAD ALONG
- *
- * `/v1/discovery/continents` answers with the whole tree — 5 continents, 23 countries, 144 cities,
- * 212 parks, every park carrying coordinates, a schedule and live analytics. Measured: 168.6 KB
- * raw, 16.8 KB brotli. The header renders on EVERY page, so whatever it holds is serialized into
- * that page's HTML and again into its RSC payload. Trimmed to name/slug/parkCount it is 1.3 KB raw
- * and **420 B brotli**, which is what a sitewide structure is allowed to cost.
- *
- * WHY IT STOPS AT COUNTRIES
- *
- * Not bytes — links. Everything rendered here is a link on ~35,000 pages. 28 hub links concentrate
- * internal weight on the continent and country pages, which is the point. Adding the 144 cities
- * and 212 parks would spread the same weight over 356 further targets that are already reachable
- * from those hubs and from the sitemap; the menu's third pane fetches them on demand instead
- * (`/api/nav/geo/[continent]/[country]`), so they never enter the sitewide link graph.
- *
- * No new request per page: `getContinents()` is served from the Vercel Data Cache under the `geo`
- * tag with the continents TTL, the same entry the discovery pages already read.
+ * Trimmed to names, slugs and counts, because the header is serialized into every page and the
+ * full discovery tree is far heavier. It stops at countries for the link graph: cities and parks
+ * would spread sitewide weight over hundreds of targets the hubs already reach, so the menu's
+ * third pane fetches them on demand. See
+ * docs/rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md.
  */
 
 export interface GeoMenuCountry {
@@ -43,21 +29,10 @@ export interface GeoMenuContinent {
 }
 
 /**
- * Continents with their countries, sorted by park count so the regions somebody is most likely to
- * be looking for sit at the top of each column.
- *
- * Never throws, not even on a maintenance-flagged 502: this runs inside `app/[locale]/layout.tsx`
- * itself, and no `error.tsx` can catch a layout's own throw (its nested boundary renders only
- * what the layout returns, never the layout's own body) — so `catchNonFatal`'s usual re-throw,
- * which every page-level caller relies on to reach its error boundary, would take the whole page
- * (and, at build time, the whole build) down instead of reaching one. A plain swallow turns an
- * unreachable API into an empty list, and the menu then renders its plain links without the
- * geographic pane. A header is not worth a 500. Unless this process has read the document before:
- * then the menu it built from that one (`getContinentsOrLastGood`).
- *
- * Built once per continents document, not once per request (`perContinentsDocument`): the layout
- * asks on every page, and the document changes only when its Data Cache entry does — after a
- * week, or when the `geo` tag drops it.
+ * Continents with their countries, sorted by park count. Never throws, not even on a 502: it runs
+ * inside `app/[locale]/layout.tsx`, where no `error.tsx` can catch a throw, so an unreachable API
+ * gives the last good document this process read, or an empty list and a menu without the
+ * geographic pane. Built once per continents document (`perContinentsDocument`).
  */
 export async function getGeoMenu(): Promise<GeoMenuContinent[]> {
   const continents = await getContinentsOrLastGood().catch(() => []);

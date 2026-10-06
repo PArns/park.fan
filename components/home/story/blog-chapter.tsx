@@ -8,19 +8,13 @@ import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { NewsRow } from '@/components/blog/news-row';
 import type { Locale } from '@/i18n/config';
+import { STORY_SECTION_RULED } from './section-chrome';
 
 /**
- * The editorial chapter: the blog, plus the two evergreen hubs a reader who got
- * this far is most likely to want next.
- *
- * The post grid itself stays {@link LatestBlogSection} and comes in as a slot —
- * it reads the generated manifest synchronously and has its own
- * `BlogSectionHeader`, so it is wrapped rather than rebuilt.
- *
- * The two cards are here rather than in the chapters they belong to because
- * both are *destinations*, not explanations: the calendar chapter already links
- * to the best-time hub in passing, and this is where a reader is browsing rather
- * than learning.
+ * The editorial chapter: the blog, plus the two evergreen hubs a reader who got this far most
+ * likely wants next. The post grid is {@link LatestBlogSection}, wrapped rather than rebuilt. The
+ * two hub cards are here because they are destinations, where a reader is browsing rather than
+ * learning.
  */
 export async function BlogChapter({
   locale,
@@ -39,7 +33,7 @@ export async function BlogChapter({
   ]);
 
   return (
-    <section className="border-border border-t px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION_RULED}>
       {/* On a phone the posts come first and the two hub cards open on request, under the
           news (`order`), so the button does not sit between the heading and the posts. */}
       <div className="container mx-auto @max-[768px]/page:flex @max-[768px]/page:flex-col">

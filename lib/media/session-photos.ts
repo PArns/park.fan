@@ -1,25 +1,9 @@
 /**
- * What the open media session already holds for one park, read off its diff.
- *
- * The capture screen's backlog is built from the media index, and the index is
- * built from `main`. A photograph taken this morning is not on `main`: it is a
- * commit on the `media/session-` branch, waiting in a draft pull request until
- * the evening review. So after a reload every ride photographed today stood in
- * "Fehlt noch" again, and the next photo of it was named as if the first did not
- * exist — `wellenflug` a second time, which `commit` writes by path and would
- * have written over the one already in the pull request.
- *
- * Two answers come out of the diff, and they are read differently on purpose:
- *
- *  - **names** are read off paths. They only have to avoid a collision, and a
- *    collision is a question about the path.
- *  - **rides** are read out of the sidecars. Which ride a photo shows is never
- *    inferred from its file name or folder (the media database's own rule), and a
- *    Halloween photo filed in another collection answers for the ride all the
- *    same, so every sidecar the session touches is read, not only this park's
- *    folder.
- *
- * Pure: the route fetches the file list, this decides what it means, and
+ * What the open media session already holds for one park, read off its diff. The capture
+ * screen's backlog is built from `main`, so without this a ride photographed this morning (a
+ * commit on the session branch) would read as missing, and its next photo would be named over
+ * the first. Names are read off paths, since a collision is a question about the path; rides are
+ * read out of every sidecar the session touches, never from a file name or folder. Pure;
  * `pnpm test:capture-session` pins it.
  */
 

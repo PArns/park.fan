@@ -43,48 +43,18 @@ interface ThresholdMinutesInputProps {
 }
 
 /**
- * The "notify below N minutes" control both ride-alert dialogs render — a
- * slider, not a spinner: the whole point of the value is where it sits
- * between "almost nothing" and "barely worth waiting for", which a dragged
- * position shows and a stepper's ±1 arrows do not.
+ * The "notify below N minutes" control both ride-alert dialogs render: a slider, because the value
+ * is about where it sits between "almost nothing" and "barely worth waiting for". Drawn like
+ * `RiderHeightFilter` (a styled track and thumb under a transparent `input[type=range]`), with
+ * stops {@link THRESHOLD_STEP_MIN} apart.
  *
- * Draws the same way `RiderHeightFilter` does (see that file for the fuller
- * reasoning): a `<div>` track + thumb for the look, a transparent
- * `input[type=range]` on top for pointer/keyboard/screen-reader behaviour,
- * because a native range input's thumb and fill are not addressable from one
- * shared stylesheet. Unlike that filter this one's stops are a fixed
- * {@link THRESHOLD_STEP_MIN} apart rather than an index into a curated list —
- * a 240-position drag is fiddly on a touchscreen, and nobody is asking for
- * "notify below 47 minutes" specifically. The native input's own `min` is
- * {@link THRESHOLD_SLIDER_MIN} (five), not {@link MIN_THRESHOLD_MIN}: a
- * range input snaps EVERY value — the initial one, a drag, an arrow key — to `min + k·step`, always,
- * so anchoring the grid at `MIN_THRESHOLD_MIN` (1) would make the reachable
- * positions 1, 6, 11, 16, 21, ... — not one of which is a round number, and
- * none of which is what `defaultThresholdFor` actually returns (20, 30, 45,
- * ...). Anchored at five with a step of five the grid is exactly
- * 5, 10, 15, ..., up to whatever `max` is — and `max` lands on it rather than
- * one step short, because `maxThresholdFor` subtracts ten from an already
- * five-rounded reading. The drawn thumb/fill still use the true, unsnapped
- * `numericValue` for their position (clamped into `[0,1]` since an OLD
- * alert saved before this control had a floor at all can still carry 1–9),
- * so a legacy value like that draws at the track's left edge rather than
- * off it, while the number above it keeps reading its real, exact value.
+ * The native `min` is {@link THRESHOLD_SLIDER_MIN} (5), not {@link MIN_THRESHOLD_MIN}: a range
+ * input snaps every value to `min + k·step`, so anchoring at 1 would make no reachable position a
+ * round number. The drawn thumb uses the unsnapped value, clamped, so an older alert of 1 to 9
+ * minutes draws at the left edge with its exact number above.
  *
- * Still hands the caller a raw string rather than parsing it here: a real
- * range input can never actually report an out-of-range or non-numeric
- * value, but `value` is typed as a string so a caller can still seed it with
- * `''` before the first render without a type error.
- *
- * No `autoFocus` prop: an `autoFocus`ed range input inside a freshly-opened
- * Radix `Dialog` used to send the WHOLE PAGE scrolling to somewhere near its
- * bottom the instant the dialog appeared, on both the phone and desktop
- * viewport this was tested at — the native autofocus fires synchronously at
- * mount, before the dialog's open transform/animation has settled, and the
- * browser's implicit scroll-into-view reads that mid-transition layout.
- * Radix's own `Dialog.Content` already moves focus to the first focusable
- * descendant once the dialog has actually finished opening, deferred exactly
- * to avoid this, which is what still lands focus on this input with no
- * `autoFocus` here at all.
+ * No `autoFocus`: inside a freshly opened Radix `Dialog` it scrolls the page mid-transition, and
+ * Radix moves focus to this input once the dialog has opened anyway.
  */
 export function ThresholdMinutesInput({
   value,

@@ -1,7 +1,7 @@
 import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import {
   ADMIN_SESSION_COOKIE,
   forgetAllSessions,
@@ -13,68 +13,36 @@ import {
 import { adminProxyPath } from '@/lib/admin/proxy-path';
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
-
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 /**
- * Everything the admin UI asks of api.park.fan goes through here.
- *
- * Two reasons it is a proxy rather than a direct call. The session token lives
- * in an httpOnly cookie, so only the server can turn it into the
- * `Authorization: Bearer` header the API wants — that is what keeps the
- * credential out of reach of any script on this origin. And the browser never
- * needs a CORS relationship with the API, which is what let the backend keep
- * CORS effectively closed in production.
- *
- * Three things here are load-bearing and were each a bug in the version before:
- *
- *  - **Every verb.** The old proxy exported GET and POST. The editing API uses
- *    PATCH (curated fields, seasons, accounts) and DELETE (sessions, ride
- *    profiles, seasons), and each of those would have 405'd at Next before
- *    reaching the API at all.
- *  - **Bodies that are empty.** It ended in an unconditional `response.json()`,
- *    which throws on a 204 — and logout, every DELETE and several PATCHes
- *    answer with no body. The failure surfaced as a 500 from the proxy with
- *    nothing to explain it.
- *  - **The password-change hand-off.** Changing a password revokes every
- *    session of the account, including the one making the request, and answers
- *    with a replacement token. Passing that body straight through would leave
- *    the browser holding a cookie that was just revoked, i.e. logged out by
- *    succeeding. The new token is moved into the cookie here and stripped from
- *    the response.
+ * The admin UI's proxy to api.park.fan. The session token lives in an httpOnly cookie, so only the
+ * server can turn it into the `Authorization: Bearer` header, and the browser needs no CORS
+ * relationship with the API. It must export every verb, must not assume a body (logout and DELETE
+ * answer 204), and must move the token a password change re-issues into the cookie. See
+ * docs/rules/the-admin-holds-no-credential.md.
  */
 
 const FORWARDED_RESPONSE_HEADERS = ['content-type'];
 
 /**
- * The one route that legitimately has no session behind it.
- *
- * The admin UI signs in through `/api/admin/session`, but the proxy is a valid
- * way to reach the same endpoint and turning it into a 401 would be a silent
- * behaviour change for anything that does.
+ * The one route that legitimately has no session behind it. The admin UI signs in through
+ * `/api/admin/session`, but the proxy is a valid way to reach the same endpoint.
  */
 const ANONYMOUS_PATHS = new Set(['auth/login']);
 
 /**
- * Endpoints that kill sessions somewhere else.
- *
- * `resolveAdminIdentity` caches "who is this token" for a minute, which is what
- * would otherwise keep a session alive on this app's own write routes — the
- * media commit, the blog save — for up to a minute after an owner revoked it.
- * Clearing here only helps the instance that served the revoking request, so it
- * is the second line: the first is that `requireAdmin` never answers a write
- * from cache (see `lib/admin/session.ts`).
+ * Endpoints after which the cached identity of `resolveAdminIdentity` must be cleared. Clearing
+ * only helps the instance that served the request, so it is the second line; the first is that
+ * `requireAdmin` never answers a write from cache (`lib/admin/session.ts`).
  */
 function revokesSessions(method: string, route: string): boolean {
   if (route === 'auth/change-password' || route === 'auth/logout') return true;
   if (method === 'DELETE' && route.startsWith('auth/sessions')) return true;
   if (method === 'PATCH' && route.startsWith('auth/users/')) return true;
-  // Enrolling or clearing a second factor does not end the session, but it
-  // does change what `auth/me` answers — and a cached "totpEnabled: false"
-  // makes the account page show the enrolment form again to somebody who has
-  // just finished enrolling. Which reads as: two-factor cannot be switched on.
+  // A second factor does not end the session but changes what `auth/me` answers: a cached
+  // `totpEnabled: false` would show the enrolment form again right after enrolling.
   if (route === 'auth/totp/confirm' || route === 'auth/totp/disable') return true;
   return false;
 }
@@ -90,32 +58,19 @@ async function proxyRequest(request: NextRequest, path: string[]) {
   const route = path.join('/');
   const token = await readSessionToken(request);
 
-  // No session, no proxy. Everything behind here is an admin endpoint that
-  // would answer 401 anyway, but reaching the upstream at all is the problem:
-  // `getServerApiHeaders()` attaches this deployment's `x-auth-key`, which the
-  // API treats as a throttle bypass and as the reason to believe the address in
-  // `forwardedFor` — an address the caller chose. An anonymous request must not
-  // get either.
-  //
-  // Which means the cookie has to be *validated*, not counted. Reading it back
-  // only proves the caller can send a header, so `Cookie:
-  // parkfan_admin_session=x` walked straight through the check that was written
-  // to stop exactly that. `resolveAdminIdentity` asks the backend and caches the
-  // answer for a minute; it is deliberately not `requireAdmin`, because the two
-  // endpoints a session with an open obligation is allowed to reach — the
-  // password change and the TOTP enrolment — are behind this proxy, and a role
-  // floor here would be a second, drifting copy of the one the API enforces.
+  // No valid session, no proxy: `getServerApiHeaders()` attaches the `x-auth-key` the API reads as
+  // a throttle bypass and as licence to trust `forwardedFor`, which an anonymous caller must not
+  // get. The cookie is validated with the backend, not just read back. Not `requireAdmin`, because
+  // the password change and TOTP enrolment a session may still owe are behind this proxy.
   if (!ANONYMOUS_PATHS.has(route) && !(await resolveAdminIdentity(request))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   const incoming = new URL(request.url);
-  const target = new URL(`${API_BASE}/v1/admin/${upstreamPath}`);
+  const target = new URL(`${getApiBaseUrl()}/v1/admin/${upstreamPath}`);
   incoming.searchParams.forEach((value, key) => {
-    // The deprecated shared pass is a full-privilege credential that the admin
-    // UI has never sent. Relaying it would make this proxy the one place on the
-    // internet where guessing it costs nothing, since `x-auth-key` skips the
-    // throttler the API would otherwise put in front.
+    // The deprecated shared pass is never relayed: with `x-auth-key` skipping the throttler, this
+    // proxy would be the one place where guessing it costs nothing.
     if (key.toLowerCase() === 'pass') return;
     target.searchParams.set(key, value);
   });
@@ -182,36 +137,23 @@ async function proxyRequest(request: NextRequest, path: string[]) {
 }
 
 /**
- * The administrator's own address, for the backend's audit rows and limiter.
- *
- * `getClientIp` rather than a direct read: behind Cloudflare → Vercel the
- * `x-forwarded-for` this function used to copy is a Cloudflare edge server, not
- * the person at the keyboard, so every administrator shared one rate-limit
- * bucket. The same helper already backs `/api/nearby` and `/api/favorites`.
+ * The administrator's own address, for the backend's audit rows and limiter. Through the shared
+ * helper, because behind Cloudflare `x-forwarded-for` names an edge server.
  */
 function forwardedFor(request: NextRequest): Record<string, string> {
   return getForwardedForHeaders(request) as Record<string, string>;
 }
 
 /**
- * Endpoints whose response carries a session token meant for the cookie.
- *
- * A list rather than "any response with a `token` key": the rotation writes an
- * authentication cookie, and deciding to do that from the shape of an arbitrary
- * upstream payload is how a field named `token` on some future endpoint quietly
- * becomes somebody's session.
+ * Endpoints whose response carries a session token meant for the cookie. A list, not "any response
+ * with a `token` key", so a field named `token` on a future endpoint never becomes a session.
  */
 const TOKEN_ISSUING_PATHS = new Set(['auth/change-password', 'auth/login']);
 
 /**
- * Move a re-issued session token from the body into the cookie.
- *
- * `POST auth/change-password` answers with one because it has just revoked
- * every session of the account — including this request's. Left in the body,
- * the browser would be holding a dead cookie and a token it cannot store
- * (httpOnly is set here, not there). `auth/login` is on the list because the
- * proxy is a valid way to reach it, even though the admin UI uses
- * `/api/admin/session` instead.
+ * Moves a re-issued session token from the body into the cookie: a password change revokes every
+ * session of the account, this request's included, and the browser cannot store an httpOnly token
+ * itself.
  */
 async function rotateSessionToken(payload: unknown, path: string[]): Promise<unknown> {
   if (!TOKEN_ISSUING_PATHS.has(path.join('/'))) return payload;
@@ -230,11 +172,8 @@ async function rotateSessionToken(payload: unknown, path: string[]): Promise<unk
     expiresAt?: unknown;
   } & Record<string, unknown>;
 
-  // The session's own ceiling, the same number `/api/admin/session` uses after
-  // a login. The 12 hours this used to write were the backend's *idle* window,
-  // which slides on every request — the cookie's Max-Age does not, so an admin
-  // who changed their password was signed out twelve hours later mid-session
-  // while the session behind it had six days left.
+  // The session's absolute ceiling, as `/api/admin/session` sets after a login, not the backend's
+  // idle window: that slides on every request, and a cookie's Max-Age does not.
   const ceiling = typeof expiresAt === 'number' ? expiresAt : Date.parse(String(expiresAt));
   const maxAge = Number.isFinite(ceiling)
     ? Math.max(60, Math.floor((ceiling - Date.now()) / 1000))

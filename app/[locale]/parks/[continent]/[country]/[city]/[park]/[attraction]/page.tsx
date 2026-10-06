@@ -146,11 +146,9 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     return { title: tNotFound('attraction') };
   }
 
-  // The park was renamed upstream: the API 301'd our request for the old path and `fetch`
-  // followed it, so `park` is valid but lives elsewhere now. Canonical points at the real
-  // attraction path; the page body issues the matching 308.
-  // `park` is non-null here (a null park means no attraction, handled above), but the
-  // narrowing doesn't survive the optional chain that produced `attraction`.
+  // The park was renamed upstream: the API 301'd the old path and `fetch` followed it, so
+  // canonical points at the real attraction path; the page body issues the matching 308. `park`
+  // is non-null here, but the narrowing does not survive the optional chain behind `attraction`.
   const renamedUrl = park
     ? findRenamedParkRedirect(park, { continent, country, city, parkSlug })
     : null;
@@ -162,14 +160,9 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     };
   }
 
-  // A numbered-suffix slug (e.g. playground-2) is a backend duplicate of the base
-  // attraction only when the base slug exists in the same park AND carries the same
-  // name. Then it is noindex with canonical at the base slug, so Google consolidates
-  // signals on the primary page. The name check keeps distinct rides whose slug
-  // happens to end in a number indexable: "Main Train 2" next to "Main Train", or
-  // `midnight-2` renamed to "The Conjuring: Beyond Fear". The comparison is exact,
-  // like the backend's own name grouping, so "Dia de los Muertos" next to
-  // "Dia De Los Muertos" stays indexable too.
+  // A numbered-suffix slug (playground-2) is a backend duplicate only when the base slug exists
+  // in the same park with exactly the same name; then it is noindex with canonical at the base
+  // slug. The name check keeps distinct rides indexable ("Main Train 2" beside "Main Train").
   const isVariantSlug = /^.+-\d+$/.test(attractionSlug);
   const baseSlug = isVariantSlug ? attractionSlug.replace(/-\d+$/, '') : attractionSlug;
   const canonicalAttractionSlug =
@@ -200,10 +193,8 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     .filter(Boolean)
     .join(', ');
 
-  // One template for every ride fitted inside Google's ~60 characters for 33.2%
-  // of English rides, 29.9% of German ones and 7.1% of Italian, and said the same
-  // sentence on all 42,606 of them. The ladder takes every locale to ~98%; the
-  // facts come off the attraction this fetch already returned.
+  // A ladder of templates rather than one, so the title fits Google's ~60 characters in every
+  // locale; the facts come off the attraction this fetch already returned.
   const title = buildAttractionTitle(attractionName, parkName, t, {
     locale: locale as Locale,
     articleDe: park?.nameArticleDe,
@@ -324,12 +315,9 @@ function closedRideDescription(
   );
 }
 
-// FULLY DYNAMIC (force-dynamic) — rendered per request, so NO per-URL ISR shell write (the dominant
-// write-units source pre-#118 was prerendering every attraction × 6 locales). Cache Components is
-// off; this page reads the data-cached park snapshot (getParkByGeoPath, `fetch` next:revalidate,
-// shared per park) and renders the full content (h1, JSON-LD, FAQ) server-side into the first HTML
-// — content-first, no skeleton. Live status/wait times + the heavy history time-series are
-// client-loaded (React Query). No generateStaticParams needed.
+// Rendered per request, so there is no ISR shell write per attraction × locale. The page reads the
+// data-cached park snapshot and renders the full content (h1, JSON-LD, FAQ) into the first HTML;
+// live status and the history time-series load on the client.
 export const dynamic = 'force-dynamic';
 
 export default async function AttractionPage({ params }: AttractionPageProps) {
@@ -349,12 +337,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   const tGeo = await getTranslations('geo');
   const tSeo = await getTranslations('seo.attraction');
 
-  // Only the lean park snapshot is fetched in the static shell. The attraction's heavy detail — the
-  // daily `history` + `hourlyForecast` time-series — is loaded CLIENT-side inside
-  // <AttractionHistorySections> (via the CDN-cached /api/parks/.../attractions/<slug> route), so it
-  // no longer bakes into every per-attraction × per-locale ISR write (the dominant write source).
-  // The park-embedded attraction carries everything the shell + JSON-LD + FAQ need (name,
-  // statistics, bestVisitTimes); live status/wait times still come from the client poll.
+  // Only the lean park snapshot is fetched here; the attraction's daily history and hourly
+  // forecast load client-side in <AttractionHistorySections> through the CDN-cached attraction
+  // route. The park-embedded attraction carries everything the shell, JSON-LD and FAQ need.
   // Not `catchNonFatal`: a failed fetch must throw rather than 404 — see the park page.
   const park = await getParkByGeoPath(continent, country, city, parkSlug);
   const attraction = park?.attractions?.find((a) => a.slug === attractionSlug) ?? null;
@@ -391,7 +376,6 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     notFound();
   }
 
-  // Format names
   const continentName = translateContinent(tGeo, continent, locale);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
@@ -443,9 +427,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     notFound();
   }
 
-  // The ride's own photo or nothing — `ParkBackground` renders null and the page
-  // keeps its plain backdrop. Showing the park's picture here made a photo-less
-  // ride look like it had a photo, and it was the wrong one.
+  // The ride's own photo or nothing (`ParkBackground` renders null): the park's photo would make
+  // a photo-less ride look like it had one, and the wrong one.
   const backgroundImage = getAttractionBackgroundImage(parkSlug, attractionSlug);
   // OG card is only a fallback for the JSON-LD image when the ride has no photo.
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug, attractionSlug]);
@@ -470,80 +453,51 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
       <RcdbBadge rcdbId={attraction.rcdbId} attractionName={attractionName} />
     ) : null;
 
-  // Does the FAQ chapter actually render? <AttractionFAQSection> returns null on an empty set,
-  // and the chapter row must not offer a jump to an anchor that is not on the page. Same pure
-  // builder the section itself calls — it reads the attraction it was handed and does no I/O,
-  // so asking twice costs a function call.
-  // Does the ride-profile chapter actually render? `RideProfileSection` returns null when the
-  // curated ids resolve to nothing and the profile carries no facts, and a tile must not point at
-  // an anchor that is not on the page. Same predicate the section itself asks.
+  // Whether the ride-profile chapter renders, by the predicate `RideProfileSection` asks, so no
+  // tile points at an anchor that is not on the page.
   const hasRideProfile = attraction.rideProfile
     ? await rideProfileRenders(attraction.rideProfile, locale as Locale)
     : false;
 
   const tFaqItems = await getTranslations('seo.faq.attraction');
   const tRideProfile = await getTranslations('attraction.rideProfile');
+  // Whether the FAQ chapter renders, by the pure builder <AttractionFAQSection> calls, so asking
+  // twice costs a function call.
   const faqCount = buildAttractionFaqItems(
     attraction,
     park,
     tFaqItems as Parameters<typeof buildAttractionFaqItems>[2]
   ).length;
 
-  // Today in the PARK's timezone. Two things read it and both would be wrong from the browser's:
-  // the rope-drop card's closing cap below, and the history calendar's row reservation — a
-  // Florida park is still on yesterday's date for six hours after midnight in Berlin. Safe to
-  // read the server clock here because this route is `force-dynamic`; there is no ISR window for
-  // it to pin.
+  // Today in the park's timezone, for the rope-drop card's closing cap and the history calendar's
+  // row reservation; the browser's date can be a day off. Safe to read the server clock here: the
+  // route is `force-dynamic`, so there is no ISR window to pin.
   const todayIso = formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd');
 
   /**
-   * The one shell snapshot both client trees read, built ONCE.
-   *
-   * `leanParkForAttractionShell` is what takes this route's serialized park data from 36.3 KB to
-   * 3.7 KB (see docs/architecture/api-budget.md), and calling it twice undoes half of that: React
-   * Flight dedupes by object IDENTITY, so two calls producing equal objects are written to the
-   * payload twice, on 42,756 URLs × 6 locales. One call, one reference, one copy in the payload —
-   * and `attraction` below is the very object inside it, so that prop costs a back-reference
-   * rather than a third copy.
+   * The one shell snapshot both client trees read, built once: React Flight dedupes by object
+   * identity, so two equal objects would be written to the payload twice. `attraction` below is
+   * the object inside it, so that prop costs a back-reference. See docs/architecture/api-budget.md.
    */
   const shellPark = leanParkForAttractionShell(park, attraction);
 
-  // Does „Beste Besuchszeit planen" render anything? Both of its cards are optional, and the
-  // chapter row must not offer a jump to an anchor that is not on the page — same rule the ride
-  // profile and the FAQ tiles already follow.
+  // Whether „Beste Besuchszeit planen" renders anything: both of its cards are optional, and the
+  // chapter row must not offer a jump to an anchor that is not on the page.
   const hasPlanChapter = Boolean(attraction.ropeDrop || attraction.typicalWaits?.displayable);
 
   /**
-   * Does this park publish wait times at all?
-   *
-   * Two whole chapters answer questions that have no answer without them — today's curve and the
-   * 30-day calendar — and both are client-loaded behind a reserved box. On Hansa-Park, which
-   * publishes wait times only inside its own app, that box was 880 px on a desktop and 2024 px on
-   * a phone, and what landed in it was the one-line „Keine historischen Daten"; the chart card
-   * collapsed from its 401 px skeleton to 2 px. Measured with `pnpm measure:cls --late --scroll`
-   * on `hansa-park/nessie`: **0.5325** with the reader parked on the chapter, all of it those two
-   * boxes deflating.
-   *
-   * The curated `liveWaitTimes` flag is the only honest signal here and the server has it — a
-   * park with no source is byte-for-byte a park shut for the night, so this may never be derived
-   * from an empty payload. `NoLiveWaitTimesNotice` above the chapters already says why they are
-   * gone.
-   *
-   * What this does NOT cover is a ride inside a wait-times park that has no measured day of its
-   * own (2 of 8 non-headliners sampled at Phantasialand). Nothing in the shell can predict it —
-   * `statistics` is null on every attraction of the park payload — so it is left alone rather
-   * than guessed at. `NearbyParksSection` one page over is the opposite case: the server does
-   * know whether a park has neighbours, so that section renders inline (PAR-411).
+   * Whether this park publishes wait times at all. Today's curve and the 30-day calendar have no
+   * answer without them, and their reserved boxes would collapse to one line on a park like
+   * Hansa-Park. Read from the curated flag, never derived from an empty payload: a park with no
+   * source is byte-for-byte a park shut for the night. See docs/rules/parks-we-cannot-read.md.
    */
   const waitsReadable = hasReadableWaitTimes(park);
 
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/[attraction]">
       <>
-        {/* Tells the planner which park this route is about — see
-          `lib/planner/page-park.ts`. The panel lives in the layout and
-          otherwise cannot tell one park's page from another's, which is how its
-          header came to name a park the reader was not looking at. */}
+        {/* Tells the planner which park this route is about (`lib/planner/page-park.ts`): the
+          panel lives in the layout and cannot otherwise tell one park's page from another's. */}
         <PlannerPageParkBeacon
           slug={park.slug}
           name={stripNewPrefix(park.name)}
@@ -575,8 +529,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         />
         <ParkBackground
           imageSrc={backgroundImage}
-          // The sidecar's authored sentence in this locale, not the bare entity name:
-          // "{park}" told a screen reader nothing the heading had not already said.
+          // The sidecar's authored sentence in this locale: the bare name would tell a screen
+          // reader nothing the heading had not already said.
           alt={getMediaAltBySrc(backgroundImage, locale) ?? attractionName}
           objectPosition={objectPositionForSrc(backgroundImage)}
         />
@@ -590,41 +544,28 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           />
 
           <article itemScope itemType="https://schema.org/TouristAttraction">
-            {/* Header — the park header's card, not a lookalike: `variant="tile"` is the
-              recipe `ParkPageShell` wraps its own title card in, and this one carried `medium`.
-              Two pages one click apart over the same photograph opened on two grades of glass,
-              which reads as two kinds of surface rather than one. The `mb-4` is the park's too:
-              the title card and the header card under it are one stack. */}
+            {/* The park header's card, not a lookalike: `variant="tile"` and `mb-4` as in
+              `ParkPageShell`, so two pages over the same photo open on the same glass. */}
             <div className="mb-4">
               <GlassCard variant="tile">
-                {/* Title row: ride name + where it is on the left, favourite top-right.
-                  In flow, not absolutely positioned — a long name now wraps beside the
-                  star instead of underneath it. */}
+                {/* In flow, not absolutely positioned, so a long name wraps beside the star
+                  instead of underneath it. */}
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0 flex-1">
-                    {/* The wait-time keyword lives INSIDE the h1 (a styled span, not a
-                      sibling) so the primary heading actually carries "Wartezeit" — the
-                      strongest on-page signal for "{attraction} wartezeit" queries. */}
-                    {/* The literal space before the span matters: without it the extracted text
-                      (SERP snippets, screen readers) reads "Taron– Aktuelle Wartezeit". */}
+                    {/* The wait-time keyword lives inside the h1 (a styled span) so the primary
+                      heading carries "Wartezeit". The literal space before the span keeps the
+                      extracted text from reading "Taron– Aktuelle Wartezeit". */}
                     <h1 className="mb-2 text-3xl font-bold md:text-4xl">
                       {attractionName}{' '}
                       <span className="text-muted-foreground text-xl font-normal md:text-2xl">
                         – {t('h1Suffix')}
                       </span>
                     </h1>
-                    {/* Muted like the park header's address line: this is where the ride
-                      is, not what it is — the facts band below carries that.
-
-                      min-h is this row's own two-line height on a phone: 24px (the park link at
-                      text-base) + 12px (gap-3's row gap) + 22px (an outline Badge). Below `sm`
-                      the row sits within a couple of px of its wrap threshold, so one load
-                      flipped it 58 → 24 → 58px twice — once when Geist replaced the wider
-                      fallback face, once when ParkDistance swapped its placeholder for the real
-                      badge — and charged 0.32 CLS on a phone. Reserving the two lines makes both
-                      transitions free. `content-start` is load-bearing: with `items-center` a
-                      single line would centre itself 17px down inside the reserved box. From
-                      `sm` the row has the width never to wrap, the cutoff DistanceGap uses. */}
+                    {/* Muted like the park header's address line: where the ride is, not what it
+                      is. min-h reserves the row's two-line height on a phone (24 + 12 + 22 px):
+                      below `sm` it sits at its wrap threshold, and the font swap and
+                      ParkDistance's badge would flip it between one and two lines.
+                      `content-start` keeps a single line from centring inside the box. */}
                     <div className="text-muted-foreground flex min-h-[58px] flex-wrap content-start items-center gap-3 sm:min-h-0">
                       <Link
                         href={
@@ -658,9 +599,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   </div>
                   {attraction.id && (
                     <div className="flex items-center gap-2">
-                      {/* The planner's real entry point. Its floating launcher only
-                          appears once something is planned, so without a control
-                          here the feature has no first step. */}
+                      {/* The planner's first step from a ride page. */}
                       <AddToPlannerButton
                         parkSlug={parkSlug}
                         parkName={parkName}
@@ -674,19 +613,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   )}
                 </div>
 
-                {/* Facts band: what this ride IS, separated from where it is — the ride's
-                  counterpart to the park header's stats band, same hairline and spacing.
-                  One row mixing a navigation link, a live distance, a category label and
-                  an outbound reference gave all four the same weight.
-
-                  The order inside it is the point: what decides whether you may ride
-                  (height), then what the ride does (inversions), then what kind of ride
-                  it is, then who built it and when, then the way out to RCDB.
-
-                  Below `sm` the band is one row that scrolls sideways instead of wrapping: Taron's
-                  nine chips took three lines of a 390 px phone in front of the live wait time. The
-                  chips are `shrink-0` already (Badge), and the order above decides what is in view
-                  without a swipe — the height limits first. */}
+                {/* Facts band: what this ride is, apart from where it is, in the order that
+                  matters: whether you may ride (height), what it does, what kind it is, who built
+                  it, then RCDB. Below `sm` it is one row that scrolls sideways instead of
+                  wrapping in front of the live wait, so the order decides what is in view. */}
                 {(hasMetaBadges || attraction.rideProfile) && (
                   <div className="border-border/50 no-scrollbar mt-5 flex items-center gap-2 border-t pt-4 max-sm:overflow-x-auto sm:flex-wrap">
                     <AttractionMetaBadges
@@ -711,12 +641,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                 )}
                 <RideExposureLine indoorOutdoor={attraction.indoorOutdoor} />
 
-                {/* Keyword-rich, server-rendered intro — crawlable topical text for
-                  "{attraction} Wartezeit(en)" that the client-streamed live panel doesn't
-                  provide as static HTML. Inside the card, exactly like the park page: on
-                  the bare background it sat on top of the hero photo and was unreadable. */}
-                {/* Two lines below `sm`, the park header's clamp: CSS only, the full text stays
-                  in the HTML. */}
+                {/* Server-rendered intro: crawlable text for "{attraction} Wartezeit" that the
+                  client-streamed live panel does not give as HTML. Inside the card, as on the
+                  park page. Clamped to two lines below `sm`; the full text stays in the HTML. */}
                 <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed max-sm:line-clamp-2">
                   {t('intro', {
                     attraction: attractionName,
@@ -726,15 +653,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               </GlassCard>
             </div>
 
-            {/* The fold — one card, exactly as the park page's is: „Heute an dieser Bahn" on
-              top and the chapter row as its footer band. They were a title card, a gap, and a row
-              of four rounded tiles with an icon and a label in them, over a live wait time that
-              did not appear until the first chapter heading had gone by.
-
-              The tiles are jump links rather than tabs, and that part does not change: switching
-              a `Tabs` here would take the typical-wait table, the 30-day history, the ride profile
-              and the FAQ out of every ride page's served HTML, which is most of what a ride page
-              is for. */}
+            {/* The fold, one card as on the park page: „Heute an dieser Bahn" on top and the
+              chapter row as its footer. The tiles are jump links, not tabs: tabs would take the
+              typical-wait table, the history, the ride profile and the FAQ out of the served
+              HTML. */}
             <ParkHeaderCard
               panel={
                 <RideLiveHeader
@@ -768,35 +690,30 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             />
 
             {/* Parks that publish wait times only inside their own app (Hansa-Park). Above the
-              chapters rather than inside the live one, exactly where the park page puts it: it is
-              the answer to the question the empty panel above already raised. Renders nothing for
-              the other 212 parks. */}
+              chapters, as on the park page: it answers the question the empty panel above
+              raised. */}
             <NoLiveWaitTimesNotice
               reason={noLiveWaitTimesReason(park)}
               scope="ride"
               className="mt-4 mb-8"
             />
 
-            {/* Why the panel above is empty, for the rides where the answer is a rebuild rather
-              than a park that publishes nothing. Same place, same surface, and the same reason
-              for it: the live panel has already raised the question. Renders nothing for every
-              ride outside a curated window. */}
+            {/* Why the panel above is empty when the ride is being rebuilt. Same place and
+              surface as the notice above; renders nothing outside a curated window. */}
             <WorksPeriodNote
               worksPeriod={attraction.worksPeriod}
               todayIso={todayIso}
               className="mt-4 mb-8"
             />
 
-            {/* Chapter: today's curve. The live minute moved up into the header card, so what
-              this chapter is about is the day — what the queue has done since opening and what it
-              is forecast to do — plus the ride's other queues. */}
+            {/* Chapter: today's curve, what the queue has done since opening and what it is
+              forecast to do, plus the ride's other queues. The live minute is in the header. */}
             {waitsReadable && (
               <ChapterPanel
                 icon={Clock}
                 title={t('todayChart.title')}
-                // The chart's own h3 said this same string one line under the h2, so it draws no
-                // heading here (`hideTitle`) and its KI-Prognose pill rides up with the title it
-                // belonged to — the glossary link is the reason it is worth carrying over.
+                // The chart draws no heading of its own (`hideTitle`), so its KI-Prognose pill,
+                // with the glossary link, rides up to this title.
                 badge={
                   <GlossaryTermLink termId="ai-forecast">
                     <Badge className="border-primary/20 bg-primary/10 text-primary gap-1">
@@ -810,11 +727,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                 // whose cells bring theirs — a `p-4` here would be a second box inside the box.
                 bodyPadding="none"
               >
-                {/* initialPark is trimmed to THIS attraction AND to the park-level fields this page
-                actually reads (see leanParkForAttractionShell): passing the full park serialized
-                all ~95 sibling attractions plus 46 restaurants, 17 opening days, the weather block
-                and the show list into the HTML of a single ride — 36.3 KB of which 1.9 KB was
-                read. */}
+                {/* initialPark is trimmed to this attraction and the park fields this page reads
+                (leanParkForAttractionShell), not the full park with every sibling ride. */}
                 <LiveAttractionData
                   initialPark={shellPark}
                   attractionSlug={attractionSlug}
@@ -826,54 +740,27 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               </ChapterPanel>
             )}
 
-            {/* Chapter: plan your visit — rope-drop and typical waits, both server-rendered in
-              the shell for headliners so they paint together; side by side on wide screens,
-              stacked when only one is present. The rope-drop recommendation is precomputed daily
-              and exists only for tier1/tier2 headliners in parks with a schedule; today's closing
-              caps its displayed times to the operating day, and the „no need to rush" note
-              renders only when some ride in the park IS recommended, so it never sits on every
-              headliner of an unrecommended park.
-
-              Gated on having something to say. The 30-day calendar used to be the second half of
-              this chapter and is its own now, which left a ride with neither card opening a
-              chapter under a heading and closing it again. */}
+            {/* Chapter: plan your visit, rope-drop and typical waits, server-rendered for
+              headliners so they paint together. The rope-drop recommendation is precomputed daily
+              for tier1/tier2 headliners, and today's closing caps its times. Gated on having
+              something to say. */}
             {hasPlanChapter && (
               <ChapterPanel
                 icon={Sparkles}
                 title={t('sectionPlanVisit')}
-                /* The chapter's own line, in the shape the other chapter hints on this page use:
-                  it names the BASIS, the way „Basierend auf den letzten 31 Tagen" does one
-                  chapter down, rather than restating the title. It names no window, because the
-                  two cards under it are computed over different ones and only one of them
-                  publishes its length — a figure here would be a claim about data this page does
-                  not hold. Length is measured, not guessed: the heading's text column is 256 px
-                  at a 360 px viewport (PAR-433), so English at 37 characters takes one line there
-                  and the other five at 43–60 characters take two; at 1440 all six take one. The first draft ran
-                  71–90 characters and took three lines on every phone. */
+                /* Names the basis, like „Basierend auf den letzten 31 Tagen" one chapter down, but
+                  no window: the two cards are computed over different ones. Short enough for two
+                  lines in the heading's 256 px column on a 360 px phone. */
                 hint={t('sectionPlanVisitHint')}
                 id="plan"
                 bodyPadding="none"
               >
-                {/* Two readings, one box, a hairline between them — the shape „Heute im Park"
-                  and the statistics panel use. They were two `GlassCard`s side by side under a
-                  band, i.e. three boxes for one chapter, each drawing its own border over the
-                  ride's hero photo. Both render `bare` here because the `PANEL_CELL` around them
-                  already is the box.
-
-                  The column count may be decided from the presence of the two blocks because
-                  BOTH components are total over them: `RopeDropCard` returns an element for
-                  every `ropeDrop` (its return type says so) and `AttractionTypicalWaits` renders
-                  exactly when `displayable`. That was not true for a year — the card answered
-                  `null` for a ride in a park with no recommendation at all, and this cell, its
-                  hairline and a second column stood around nothing on 183 ride pages. A cell
-                  whose content can decline to render has to be gated on the content, not on the
-                  data behind it.
-
-                  Rendering an element was not the whole of it: where the park DID carry
-                  recommendations elsewhere, the card filled its half with one line of muted text
-                  on 470 further ride pages. That line is the `bestTime` panel's footer now
-                  (PAR-122), so `parkHasRecommendations` below no longer picks a panel — it picks
-                  whether that footer is printed. */}
+                {/* Two readings in one box with a hairline between them, as „Heute im Park" does;
+                  both render `bare` because `PANEL_CELL` is the box. The column count may be
+                  decided from the data because both components are total over it: `RopeDropCard`
+                  renders for every `ropeDrop`, `AttractionTypicalWaits` exactly when
+                  `displayable`. See
+                  docs/rules/a-cell-is-gated-on-its-content-and-a-component-that-fills-one.md. */}
                 <PanelGrid
                   columnCount={attraction.ropeDrop && attraction.typicalWaits?.displayable ? 2 : 1}
                 >
@@ -907,13 +794,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               </ChapterPanel>
             )}
 
-            {/* Chapter: the ride's own 30-day calendar — its own chapter now, where it used to be
-              the second half of „Beste Besuchszeit planen". The park has a calendar chapter with
-              its own heading, its own legend and its own panel; the ride's was a bare `Card` with
-              a hand-built badge legend, tucked under someone else's title. Client-loaded from the
-              CDN-cached attraction detail route (shared by key with the chart above and the
-              header card, so all three are one fetch); the heading and the legend need no data
-              and are in the served HTML, only the grid's own box is held. */}
+            {/* Chapter: the ride's own 30-day calendar, client-loaded from the CDN-cached
+              attraction route (one fetch shared with the chart and the header card). The heading
+              and the legend are in the served HTML; only the grid's own box is held. */}
             {waitsReadable && (
               <AttractionHistorySections
                 continent={continent}
@@ -926,24 +809,18 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               />
             )}
 
-            {/* Chapter: how often it has been reported down — or one line saying why
-              we do not say. A ChapterPanel only where there are numbers: on the large
-              majority of ~7000 rides there is nothing to publish, and a heading
-              promising outages over a sentence taking it back would be six languages
-              of noise on the second-highest-cardinality route in the app. Three of the
-              refusals are about OUR data rather than the ride, and the copy keeps them
-              apart — "no source here reports outages" must never read as "this ride
+            {/* Chapter: how often it has been reported down, or one line saying why we do not
+              say. A ChapterPanel only where there are numbers. The refusals about our data stay
+              apart from the ride: "no source here reports outages" must never read as "this ride
               never breaks". */}
             <AttractionDowntimeSection
               downtime={attraction.downtime}
               attractionName={attraction.name}
             />
 
-            {/* Chapter: what this ride is and what it does — the curated link into
-              the glossary. Static (hand-seeded) data, so it renders straight into
-              the shell; the component returns null when the ride has no profile.
-              Its own <PageSection> carries the #ride-profile anchor (and the
-              repo's scroll-mt offset) so the header teaser's jump lands right. */}
+            {/* Chapter: what this ride is and does, the curated link into the glossary. Static
+              data, so it renders into the shell; its own <PageSection> carries the #ride-profile
+              anchor the header teaser jumps to. */}
             {attraction.rideProfile && (
               <RideProfileSection profile={attraction.rideProfile} locale={locale as Locale} />
             )}
@@ -951,13 +828,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             {/* Chapter: FAQ (its own PageSection lives inside the component) */}
             <AttractionFAQSection attraction={attraction} park={park} />
 
-            {/* Chapter: what we wrote about this ride — static content out of the generated
-              blog manifest (no API call, no clock), so it neither competes with the live
-              queries nor adds anything to the shell's TTFB. Renders nothing when no post
-              mentions the ride. Not behind <Suspense> for the same reason as the park page's
-              counterpart: the lookups are synchronous, so the boundary deferred nothing while
-              its `fallback={null}` reserved nothing — the chapter dropped in at full height and
-              pushed the share row and everything under it down. */}
+            {/* Chapter: what we wrote about this ride, from the generated blog manifest, so no
+              API call. Not behind <Suspense>: the lookups are synchronous, and a
+              `fallback={null}` would let the chapter drop in at full height. */}
             <AttractionBlogPostsSection
               locale={locale as Locale}
               parkSlug={parkSlug}
@@ -970,7 +843,6 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               <ShareButtons url={attractionUrl} title={attractionName} />
             </div>
 
-            {/* Invite visitors to contribute their own photos of this ride */}
             <ContributeBanner
               className="mt-8"
               href={
@@ -988,7 +860,6 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               }
             />
 
-            {/* Secondary, lighter "make park.fan a preferred Google source" prompt */}
             <PreferredSourcePrompt compact className="mt-8" />
           </article>
         </PageContainer>

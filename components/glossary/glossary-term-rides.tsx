@@ -32,24 +32,16 @@ function groupByPark(rides: TermAttraction[]) {
     group.rides.push(ride);
     groups.set(key, group);
   }
-  // The list arrives ranked now, not alphabetically, so the groups have to be
-  // re-sorted here — otherwise they come out in ranking order and read as random.
+  // The list arrives ranked, so the groups are re-sorted by park name here.
   return [...groups.entries()]
     .map(([path, group]) => ({ path, ...group }))
     .sort((a, b) => a.parkName.localeCompare(b.parkName));
 }
 
 /**
- * The glossary → rides half of the link: the curated rides that feature this
- * term, whether as a track figure, a ride type, or its builder.
- *
- * Leads with the rides worth recognising rather than whichever park sorts first
- * alphabetically — "Abschuss" has 92 of them, and opening on "Adventureland
- * Resort" tells nobody anything.
- *
- * Renders nothing when no ride carries the term — most of the glossary is
- * concepts (airtime, rope drop, grey zone) that no ride profile references, and
- * an empty "found on these rides" box would be worse than no box.
+ * The glossary-to-rides half of the link: the curated rides that feature this term as a figure, a
+ * ride type or its builder, led by the rides worth recognising rather than alphabetical order.
+ * Renders nothing when no ride carries the term, as for most concepts.
  */
 export async function GlossaryTermRides({ termId, limit = 12 }: GlossaryTermRidesProps) {
   const rides = await getAttractionsForTerm(termId, 'popularity');
@@ -69,12 +61,8 @@ export async function GlossaryTermRides({ termId, limit = 12 }: GlossaryTermRide
   const hidden = rest.length - shown.length;
 
   return (
-    /* Built like the definition card directly above it — same border, same
-       shadow, heading strip over a divided body — because it is the same
-       chapter of the same page. It used to be a `PageSection` with a frosted
-       heading pill floating over the page background, which read as a separate
-       page bolted underneath. `id` keeps the #rides anchor and its scroll
-       offset (the glossary overview links straight here). */
+    /* Built like the definition card directly above it, because it is the same chapter of the
+       same page. `id` keeps the #rides anchor and its scroll offset (the overview links here). */
     <section id="rides" className="scroll-mt-24">
       <Card className="border-primary/20 gap-0 py-0 shadow-md">
         <div className="border-primary/10 border-b px-6 py-4">

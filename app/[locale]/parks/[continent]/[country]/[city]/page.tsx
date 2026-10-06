@@ -33,7 +33,6 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   const t = await getTranslations({ locale, namespace: 'seo.city' });
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
 
-  // Try to get city name from API data, fallback to slug formatting
   const response = await catchNonFatal(getCitiesWithParks(continent, country));
   const city = response?.data?.find((c) => c.slug === citySlug);
   const cityName =
@@ -73,22 +72,10 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
 }
 
 /**
- * Only the cities that HAVE a page — i.e. the ones with more than one park.
- *
- * A single-park city redirects to its park a few lines below (308, so Google
- * consolidates the signals), and `app/sitemap.ts` has carried the very same
- * `city.parks.length > 1` predicate all along. This list did not, so the build
- * prerendered **618 of 870** city pages (71 %, 103 cities × 6 locales) whose
- * entire output is a redirect — not in the sitemap, not linked from anywhere
- * (the country page links straight to `/…/<city>/<park>`, and the breadcrumb
- * leaves such a city out, see `cityHasOwnPage()`), and reachable only by
- * someone holding an old URL. Until 2026-09-24 the breadcrumb did link it, on
- * every page of all 103 parks.
- *
- * Dropping them from the list does not drop the redirect: `dynamicParams`
- * defaults to true, so such a URL still renders on demand and still 308s. It is
- * the same rule as the sitemap's, so the two move together — change one and
- * change the other, or the build starts prerendering redirects again.
+ * Only the cities that have a page, the ones with more than one park; a single-park city 308s to
+ * its park, and prerendering it would build a redirect. The URL still renders on demand
+ * (`dynamicParams`) and still 308s. Same predicate as `app/sitemap.ts` and `cityHasOwnPage()`:
+ * change one, change the others.
  */
 export async function generateStaticParams() {
   const geoData = await getGeoStructure().catch(() => null);
@@ -118,7 +105,6 @@ export default async function CityPage({ params }: CityPageProps) {
   const tCommon = await getTranslations('common');
   const tExplore = await getTranslations('explore');
 
-  // Fetch cities with parks
   // Only the API's own 404 may end in `notFound()` — see the continent page.
   const response = await nullOnNotFound(getCitiesWithParks(continent, country));
 
@@ -129,9 +115,8 @@ export default async function CityPage({ params }: CityPageProps) {
   const city = response.data.find((c) => c.slug === citySlug);
 
   if (!city || city.parks.length === 0) {
-    // Before returning 404, check if the "city" slug is actually a park
-    // This handles malformed URLs like /parks/europe/germany/phantasialand
-    // which should be /parks/europe/germany/bruehl/phantasialand
+    // The "city" slug may be a park: /parks/europe/germany/phantasialand should be
+    // /parks/europe/germany/bruehl/phantasialand.
     const redirectUrl = await findCityPageRedirect(continent, country, citySlug);
     if (redirectUrl) {
       permanentRedirect(`/${locale}${redirectUrl}`);
@@ -167,7 +152,6 @@ export default async function CityPage({ params }: CityPageProps) {
     longitude: park.longitude,
   }));
 
-  // Generate breadcrumbs with translations
   const tNav = await getTranslations('navigation');
   const { breadcrumbs, currentPage: cityCurrentPage } = generateCityBreadcrumbs({
     continent,
@@ -211,7 +195,7 @@ export default async function CityPage({ params }: CityPageProps) {
           locale={locale}
         />
 
-        {/* Parks Grid — status-free shell (cacheable); live status overlaid client-side. */}
+        {/* Status-free shell; live status is overlaid client-side. */}
         <section aria-label={tExplore('parks')}>
           <h2 className="sr-only">{tExplore('parks')}</h2>
           <LiveParkGrid

@@ -1,28 +1,12 @@
 /**
- * What park.fan permits a crawler to do with a page it has fetched, in the two machine-readable
- * forms that exist for saying so: the `Content-Signal` line in robots.txt
- * ([contentsignals.org](https://contentsignals.org)) and an RSL document at `/license.xml`
- * ([rslstandard.org](https://rslstandard.org)).
- *
- * They say the same three things, because they are the same three questions:
- *
- *   search    yes — list the site, that is the point.
- *   ai-input  yes — read a page to answer somebody who is asking right now. An assistant that
- *                   can read the page is a visitor who did not have to.
- *   ai-train  no  — the numbers here are hours old by lunchtime. A model that memorised them
- *                   would be wrong and confident, and the site gets nothing back.
- *
- * Two formats rather than one because they reach different readers: `Content-Signal` is read by
- * crawlers that already parse robots.txt, RSL by the licensing tooling that has grown up around
- * AI training deals, and Cloudflare's own AI Crawl Control documentation points at both.
- *
- * The comment block at the top of robots.txt is Cloudflare's Content Signals Policy text,
- * copied rather than paraphrased: it is what turns three tokens into an express reservation of
- * rights under Article 4 of the EU copyright directive, and a reworded version of a legal
- * notice is a different legal notice.
+ * What park.fan permits a crawler to do with a page, in both machine-readable forms: the
+ * `Content-Signal` line in robots.txt (contentsignals.org) and an RSL document at `/license.xml`
+ * (rslstandard.org), which reach different readers. Both say search yes, ai-input yes, ai-train
+ * no: the numbers are hours old by lunchtime, and a model that memorised them would be wrong and
+ * confident.
  *
  * Keep this file import-free: `next.config.ts` reads the `Link` header from here and is loaded
- * outside the app's module graph, so an `@/…` alias in here would break the config.
+ * outside the app's module graph.
  */
 
 /** Literal rather than an env var, for the same reason the API catalog is: a preview deployment

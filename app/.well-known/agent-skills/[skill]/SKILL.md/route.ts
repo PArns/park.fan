@@ -3,8 +3,7 @@ import { agentDocumentHeaders } from '@/lib/agents/http';
 
 /**
  * The skill artifacts themselves. The index publishes a SHA-256 of each one, so what is served
- * here has to be the file on disk verbatim — no header, no footer, no locale, nothing computed.
- * An agent that checks the digest and finds it wrong is right to throw the skill away.
+ * here has to be the file on disk verbatim: no header, no footer, no locale, nothing computed.
  */
 export const dynamic = 'force-static';
 export const dynamicParams = false;

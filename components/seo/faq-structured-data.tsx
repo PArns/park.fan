@@ -9,21 +9,23 @@ interface FAQStructuredDataProps {
   park: ParkWithAttractions;
   locale: string;
   /**
-   * Server "now" (epoch ms). The park page is force-dynamic (rendered per request), so the
-   * JSON-LD may safely carry today's concrete opening hours — the same answer the visible FAQ
-   * seeds itself with. Omit (null) for time-independent output (evergreen Q1).
+   * Server "now" (epoch ms). The park page renders per request, so the JSON-LD may carry today's
+   * opening hours, as the visible FAQ does. Null for time-independent output.
    */
   nowMs?: number | null;
   /**
-   * Best-days seed PROMISE (not the resolved value). This component is rendered inside a
-   * <Suspense> boundary and awaits the promise itself, so the cold `/best-days` fetch streams the
-   * JSON-LD in without blocking the page's TTFB. The awaited snapshot feeds the "least crowded"
-   * question so it appears in the JSON-LD (the visible Q7 is client-rendered). `null`/resolves-null
-   * → the FAQPage is emitted without the least-crowded entry.
+   * Best-days seed as a promise, awaited here inside a Suspense boundary so the cold `/best-days`
+   * fetch streams in without holding the page's TTFB. It adds the least-crowded question, which the
+   * visible FAQ renders on the client. Null leaves that question out.
    */
   seedPromise?: Promise<BestDaysSnapshot | null> | null;
 }
 
+/**
+ * `FAQPage` JSON-LD for a park page: the `buildParkFaqItems` questions, the least crowded days once
+ * the best-days seed resolves, and the crowd calendar question. Rendered inside a Suspense
+ * boundary.
+ */
 export async function FAQStructuredData({
   park,
   locale,
@@ -56,9 +58,8 @@ export async function FAQStructuredData({
     };
   });
 
-  // Q7: Least crowded days — only when the calendar seed is available; uses the SAME derivation
-  // as the visible FAQ (getLeastCrowdedDays) so the markup never claims what the page can't show.
-  // `t.markup` renders the <calendar> tag as plain text for the JSON-LD string.
+  // Least crowded days, from the same `getLeastCrowdedDays` as the visible FAQ so the markup never
+  // claims what the page cannot show. `t.markup` renders the <calendar> tag as plain text.
   if (calendarSeed && nowMs != null) {
     const leastCrowded = getLeastCrowdedDays(
       calendarSeed.days,
@@ -82,7 +83,6 @@ export async function FAQStructuredData({
     }
   }
 
-  // Q8: Crowd Calendar (always included in structured data)
   mainEntity.push({
     '@type': 'Question',
     name: t('crowdCalendarQ', { park: parkNom }),

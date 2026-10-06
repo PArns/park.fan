@@ -18,7 +18,7 @@ import { AttractionCardRopeDrop } from '@/components/parks/attraction-card-rope-
 import { Skeleton } from '@/components/ui/skeleton';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { isEveningBetter, ropeDropDisplayWaits } from '@/lib/utils/rope-drop';
-import { getLiveAttractionStatus } from '@/lib/utils/park-utils';
+import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { RideCrowdScaleTooltip } from './ride-crowd-scale-tooltip';
@@ -53,51 +53,30 @@ interface AttractionCardProps {
    * Where the photo is cropped from — the image's focal point, resolved by the
    * SERVER (`enrichAttractionsWithImages` / `getCardObjectPosition`) and handed in.
    * The card cannot look it up itself without importing the media manifest, and it
-   * renders inside Client Components. Defaults to the historical top crop.
+   * renders inside Client Components. Defaults to a top crop.
    */
   objectPosition?: string;
   distance?: number;
   showParkName?: boolean;
   timezone?: string;
   /**
-   * Today in the PARK's timezone, `YYYY-MM-DD`, computed by the server render.
-   *
-   * The only thing that reads it is the curated works period, which has to know
-   * the park's day to say whether the window is running. It is a prop and not a
-   * clock read because this card renders on both sides of hydration — see
-   * `isWorksPeriodActive`. The cross-park listings (favorites, the blog, the
-   * homepage) have no park day to pass, and the marker stays off there.
+   * Today in the PARK's timezone, `YYYY-MM-DD`, from the server render, for the works-period
+   * marker. A prop and not a clock read because this card renders on both sides of hydration
+   * (see `isWorksPeriodActive`). Cross-park listings have no park day, so the marker stays off.
    */
   todayIso?: string;
   /**
-   * The park's name, for the ride-alert bell's dialog — not for display (that
-   * is `showParkName`'s job). On the park's own page (`LandSection`) the
-   * attraction never carries a nested `park` object, since every card there
-   * is already known to belong to the one park the visitor is looking at; the
-   * cross-park listings (favorites, homepage) that DO attach one still work
-   * without this prop, via the fallback below.
+   * The park's name for the ride-alert bell's dialog, not for display. The park page passes it
+   * because its attractions carry no nested `park`; cross-park listings fall back to that object.
    */
   parkName?: string;
   /**
-   * Below `sm`, lay the card out as one compact row: name and wait time on
-   * the first line, the badges on a single line under it, no bottom panel.
-   *
-   * The park page's ride list (`LandSection`) passes it. At one card per row
-   * the full card is 318 px tall while the park is open, so Phantasialand's
-   * 47 rides took 8.6 screens (PAR-431). The sparkline, trend and day values
-   * the row drops are all on the ride's own page, one tap away. The other
-   * seven call sites keep the full card at every width. From `sm` up the
-   * prop changes nothing. Every class it adds is `max-sm:`.
+   * Below `sm`, lay the card out as one compact row: name and wait time on the first line, the
+   * badges on one line under it, no bottom panel. The park page's ride list passes it, so a long
+   * list stays short on a phone; what the row drops is on the ride's own page. Every class it
+   * adds is `max-sm:`.
    */
   phoneRow?: boolean;
-}
-
-// ---------- helpers ----------
-
-function getWaitTime(attraction: ParkAttraction | FavoriteAttraction): number | null {
-  const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
-  if (!standby) return null;
-  return 'waitTime' in standby ? (standby.waitTime ?? null) : null;
 }
 
 function getCrowdLevel(attraction: ParkAttraction | FavoriteAttraction): string | undefined {
@@ -136,10 +115,7 @@ function getHref(attraction: ParkAttraction | FavoriteAttraction, parkPath?: str
 /** The upper sheet catching the light. Not part of the seam below it — see `panelSeat`. */
 const PANEL_SHINE = 'inset 0 1px 0 var(--pk-panel-shine)';
 
-// ============================================================================
-// Component
-// ============================================================================
-
+/** A ride's card: photo, status and badges, and the live wait with its sparkline. */
 export function AttractionCard({
   attraction,
   parkPath,
@@ -159,7 +135,7 @@ export function AttractionCard({
 
   const status = closedPermanently ? 'RETIRED' : getLiveAttractionStatus(attraction, parkStatus);
   const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
-  const waitTime = isOperatingOrUnknown ? getWaitTime(attraction) : null;
+  const waitTime = isOperatingOrUnknown ? getStandbyWait(attraction) : null;
   const effectiveTimezone =
     timezone ??
     ('park' in attraction && attraction.park?.timezone ? attraction.park.timezone : undefined);
@@ -183,13 +159,9 @@ export function AttractionCard({
   const stats = attraction.statistics;
   const history = stats?.history;
 
-  // Short-term trend — the shared derivation in `shortTermWaitTrend`, which this block used to
-  // be. It moved out when the ride page's live panel grew a second copy that took its arrow from
-  // the API's `trend` field and its number from a different average, and drew the two disagreeing.
   const trend = isOperatingOrUnknown && waitTime !== null ? shortTermWaitTrend(history) : null;
 
-  // Best-visit slot (only for OPERATING). The "in X min" text is time-relative, so it's
-  // rendered by the client <AttractionCardBestTime> (cacheComponents-safe).
+  // The "in X min" text is time-relative, so the client <AttractionCardBestTime> renders it.
   const bestSlot = status === 'OPERATING' ? getBestSlot(attraction) : null;
 
   const ropeDropData = getRopeDrop(attraction);
@@ -204,17 +176,10 @@ export function AttractionCard({
   // claim that row too, or its lower edge sits exposed mid-card as a crop seam.
   const hasBottomPanel = isOperatingOrUnknown && waitTime !== null;
 
-  // What the top panel's lower edge is seated on, which is the whole reason that
-  // edge exists: the border and its inset shadow are the seam where the upper
-  // sheet of glass meets what is under it. A ride that is DOWN renders no bottom
-  // panel, and if it also has no photo there is nothing under the seam but the
-  // flat `from-muted to-card` placeholder — so the card drew a hairline across
-  // itself with empty gradient below it, which is the line in PF-58's shot.
-  //
-  // `photo` is its own case rather than a second `true` because the picture is
-  // `hidden sm:block`: on a phone a card collapses onto its panels, so the seam
-  // has nothing to sit on there either. That one is a breakpoint and lives in
-  // `.pk-panel-seam-sm` — an inline box-shadow cannot be switched off by a class.
+  // What the top panel's lower edge (the seam between the upper glass and what is under it) sits
+  // on. With no bottom panel and no photo there is only the flat placeholder, so no seam is drawn.
+  // `photo` is its own case because the picture is `hidden sm:block`; that breakpoint lives in
+  // `.pk-panel-seam-sm`, since an inline box-shadow cannot be switched off by a class.
   const panelSeat: 'panel' | 'photo' | 'none' = hasBottomPanel
     ? 'panel'
     : backgroundImage
@@ -237,27 +202,16 @@ export function AttractionCard({
     <Link
       href={href as '/europe/germany/rust/europa-park'}
       prefetch={false}
-      // `data-planner-open` is set on the document element by `PlannerLauncher`
-      // while the panel is out. Both classes below are inert without it, so a
-      // page with no planner open pays one selector that never matches — and a
-      // card does not re-render when the panel opens, which is the point of
-      // doing this in CSS over forty of them.
-      //
-      // `sm:` on both, because a coarse pointer has no drag and drop at all:
-      // the phone's way into a plan is the panel's own search, and a grab
-      // cursor there would promise a gesture that does nothing.
-      //
-      // A phone row is `block` below `sm`: with one card per row there is no
-      // neighbour to share row heights with through the subgrid, and the
-      // subgrid's inherited 16 px gaps would sit inside the row.
+      // `PlannerLauncher` sets `data-planner-open` on the document element while the panel is
+      // out, so the cursor changes in CSS and no card re-renders when it opens. `sm:` because a
+      // coarse pointer has no drag and drop. A phone row is `block` below `sm`: it has no
+      // neighbour to share row heights with, and the subgrid's gaps would sit inside the row.
       className={cn(
         'group row-span-3 grid [grid-template-rows:subgrid] sm:[html[data-planner-open]_&]:cursor-grab sm:[html[data-planner-open]_&]:active:cursor-grabbing',
         phoneRow && 'max-sm:block'
       )}
-      // Read by the trip planner while a drag is in flight — see
-      // `lib/planner/use-ride-drag-source.ts`, which attaches the payload from
-      // one listener on the document. Two attributes rather than a handler,
-      // because this card is a Server Component in eight places and a wrapper
+      // Read by the trip planner while a drag is in flight (`lib/planner/use-ride-drag-source.ts`).
+      // Attributes rather than a handler, because this card is a Server Component and a wrapper
       // element between it and its parent grid would break the subgrid chain.
       data-planner-ride={attraction.slug}
       data-planner-ride-name={stripNewPrefix(attraction.name)}
@@ -272,22 +226,11 @@ export function AttractionCard({
           boxShadow: 'var(--pk-card-shadow)',
         }}
       >
-        {/* The card is a drag source while the planner is out, and it has to say
-            so: a cursor change is only discovered by somebody who already
-            suspects the gesture. Inert without `html[data-planner-open]`, which
-            `PlannerLauncher` sets, and hidden below `sm` because a coarse
-            pointer has no drag and drop at all — there the panel's own search
-            is the way in, and this badge would name a gesture that does
-            nothing.
-
-            ON HOVER and over the PHOTO, which is two corrections to where it
-            started. It sat at `top-2 left-2` and permanently: that corner holds
-            the ride's name and its headliner crown, so forty cards each covered
-            their own title for as long as the panel was open, to say the same
-            sentence forty times. Centred on the picture it covers nothing that
-            carries information, and appearing under the pointer is what a
-            gesture hint is for — the one that has to reach somebody who is NOT
-            hovering is the coach mark in the panel, which is shown once. */}
+        {/* The card is a drag source while the planner is out, and a cursor change alone is
+            only found by somebody who already suspects the gesture. Inert without
+            `html[data-planner-open]`, hidden below `sm` (no drag and drop on a coarse pointer).
+            Centred on the photo and shown on hover, so it never covers the ride's name; the
+            panel's coach mark reaches the reader who is not hovering. */}
         <span
           data-planner-drag-hint=""
           className="bg-primary/90 text-primary-foreground ring-primary-foreground/20 pointer-events-none absolute top-1/2 left-1/2 z-30 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium opacity-0 shadow-sm ring-1 backdrop-blur-sm transition-opacity duration-150 group-hover:opacity-100 sm:[html[data-planner-open]_&]:flex"
@@ -295,8 +238,8 @@ export function AttractionCard({
           <GripVertical className="size-3 shrink-0" aria-hidden="true" />
           {t('planner.dragIn')}
         </span>
-        {/* Photo — hidden below `sm` (cards collapse on phones, matching the `sm:min-h-[220px]`
-            spacer below and ParkCard), so only the gradient placeholder shows there. */}
+        {/* Hidden below `sm`, where cards collapse onto their panels (as the `sm:min-h-[220px]`
+            spacer below and ParkCard do), so only the gradient placeholder shows there. */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
             <CardPhoto
@@ -311,7 +254,6 @@ export function AttractionCard({
           )}
         </div>
 
-        {/* Scrim */}
         <div
           className="pointer-events-none absolute inset-0 z-[1]"
           style={{
@@ -320,23 +262,11 @@ export function AttractionCard({
           }}
         />
 
-        {/* Notification bell + favorite star — a row of one or two 34px glass
-            circles. The bell brings its OWN circle (`RideAlertBell` renders
-            `GlassCircle` itself): it hides where the queue is too short to
-            set an alert on, and a circle drawn around it from here stayed
-            behind as an empty one. The star is the row's last child either
-            way, so it keeps the far-right position when the bell is gone.
-            `gap-3`, not `gap-2`: each circle's `::after` touch target is 44px
-            (`FavoriteStar`/`RideAlertBell`, below `sm`) centred on its own
-            34px circle, so two adjacent circles' 44px zones reach past their
-            shared edge — measured, `gap-2` (8px) left a 2px sliver where a
-            tap could land on either icon's zone. `gap-3` (12px, 34+12=46 ≥
-            44) puts the zones edge-to-edge with room to spare. From `sm` up
-            the touch targets are gone, so the row tightens to `gap-2`.
-            In a phone row the circles move up to centre on the first line
-            (10 px padding + half of its 26 px = 23 px, minus half a circle =
-            6 px). Their 44 px zones then run from 1 px to 45 px, inside the
-            card, which clips at its own edge. */}
+        {/* The bell brings its own `GlassCircle` because it hides where the queue is too short
+            for an alert, and a circle drawn here would stay behind empty. The star is the last
+            child, so it keeps the far-right spot. `gap-3` below `sm` because two 34px circles
+            with 44px touch targets overlap at `gap-2` (34 + 12 >= 44); from `sm` up there are no
+            touch targets. In a phone row the circles centre on the first line. */}
         {attraction.id && (
           <div
             className={cn(
@@ -344,11 +274,8 @@ export function AttractionCard({
               phoneRow && 'max-sm:top-[6px]'
             )}
           >
-            {/* `attraction.id` on a blog fallback card (its live detail failed
-                to resolve at build time) is `attractionSlug`, not a UUID —
-                `POST /push/ride-alerts` 400s on that, so the bell needs a real
-                one to make any sense here. `FavoriteStar` below has no such
-                requirement (a purely local storage key), so it is unaffected. */}
+            {/* On a blog fallback card `attraction.id` is the slug, not a UUID, and
+                `POST /push/ride-alerts` 400s on that. `FavoriteStar` only needs a local key. */}
             {parkName && isUuid(attraction.id) && (
               <RideAlertBell
                 attractionId={attraction.id}
@@ -373,25 +300,11 @@ export function AttractionCard({
           </div>
         )}
 
-        {/* Top glass panel. Its right padding reserves the corner circles'
-            footprint: 52px for one, 92px for the two a bell can make. It keys
-            on `parkName` and does NOT follow the circle actually drawn, which
-            is deliberate for the bell's own condition — whether the bell
-            renders is half a localStorage read (an alert already set keeps its
-            bell on any queue), so a padding tied to that would be a
-            client-only preference deciding server-rendered markup, and the
-            failure mode is a bell landing on top of the title at mount. 40px
-            of unused padding on a short queue is the cheaper half of the trade.
-            The bell's OTHER condition is not like that: a fallback card's
-            `isUuid(attraction.id)` (above) is known to the render and can
-            never change, so 92px there reserves a circle that will never
-            arrive. Left alone rather than folded in, because narrowing it
-            widens the title on those cards — a visible change PAR-120 did not
-            ask for and no screenshot in this PR covers.
-            A phone row overrides the inline padding below `sm` (hence the
-            `!`): the corner reservation moves onto the first line, which is
-            the only line that shares its height with the circles, and the
-            badge line runs the full width under them. */}
+        {/* The right padding reserves the corner circles: 52px for one, 92px for two. It keys
+            on `parkName`, not on the bell actually drawn, because whether the bell renders
+            depends on a localStorage read, and a client-only preference may not decide
+            server-rendered markup. A phone row overrides it below `sm` (hence the `!`): the
+            reservation moves onto the first line and the badge line runs the full width. */}
         <div
           className={cn(
             'pk-panel-top relative z-[3] -mb-4 overflow-hidden',
@@ -414,9 +327,8 @@ export function AttractionCard({
             }}
           />
 
-          {/* Attraction name — CSS-only truncate + native title attribute keeps
-              this whole card surface server-rendered (no useLayoutEffect, no
-              Radix Tooltip hydration × N cards). */}
+          {/* CSS truncate and a native `title` keep the card server-rendered: no layout effect,
+              no Radix tooltip to hydrate per card. */}
           {(() => {
             const displayName = stripNewPrefix(attraction.name);
             const isHeadliner = 'isHeadliner' in attraction && attraction.isHeadliner;
@@ -440,12 +352,9 @@ export function AttractionCard({
               </h3>
             );
             if (!phoneRow) return heading;
-            // The first line of a phone row: name, then the wait time, then
-            // the room the corner circles take (80 px for bell and star at
-            // `gap-3`, 34 px for the star alone, plus an 8 px gap). The wait
-            // time is the largest thing in the row, as it is on the card, and
-            // it sits outside the <h3> so the heading stays the ride's name.
-            // From `sm` up the wrapper is a plain block around the heading.
+            // A phone row's first line: name, wait time, then the room the corner circles take
+            // (80 px for bell and star, 34 px for the star alone, plus an 8 px gap). The wait
+            // time sits outside the <h3> so the heading stays the ride's name.
             return (
               <div
                 className={cn(
@@ -469,21 +378,18 @@ export function AttractionCard({
             );
           })()}
 
-          {/* Location line: pin · park · city, country · distance */}
           {(() => {
             const park = 'park' in attraction ? attraction.park : null;
-            const parkName =
+            const shownParkName =
               showParkName && park && 'name' in park ? stripNewPrefix(park.name) : null;
             const city = park && 'city' in park ? park.city : null;
             const rawCountry = park && 'country' in park ? park.country : null;
             const country = rawCountry
-              ? (() => {
-                  return translateGeoSlug(tGeo, 'countries', rawCountry, rawCountry);
-                })()
+              ? translateGeoSlug(tGeo, 'countries', rawCountry, rawCountry)
               : null;
             const place = [city, country].filter(Boolean).join(', ');
             const pieces = [
-              parkName,
+              shownParkName,
               place || null,
               distance != null ? formatDistance(distance) : null,
             ].filter(Boolean);
@@ -503,11 +409,9 @@ export function AttractionCard({
             );
           })()}
 
-          {/* Badges — CSS subgrid on the outer grid equalizes header heights
-              across all cards in a row; no artificial min-h needed. */}
-          {/* In a phone row the badges keep to one line and fade out at the
-              right edge rather than wrap: a wrapped line is another 26 px on
-              one ride in forty. The full set is on the ride's page. */}
+          {/* The outer subgrid equalises header heights across a row, so no min-h. In a phone
+              row the badges keep to one line and fade out rather than wrap; the full set is on
+              the ride's page. */}
           <div
             className={cn(
               'relative mt-[9px] flex flex-wrap items-start gap-[6px]',
@@ -598,24 +502,11 @@ export function AttractionCard({
                   />
                 ))}
           </div>
-          {/* A block of its own under the badges, never beside one: a sentence
-              whose position depends on how many badges happen to be present is
-              a sentence whose card height nobody can predict. It sat in the
-              badge wrap as `w-full` items until PAR-431; a phone row's badge
-              line does not wrap, so it moved out. `mt-[9px]` is the gap above
-              the badges, and `empty:hidden` drops it for the rides without an
-              outage, which is nearly all of them.
-
-              The block runs past the right padding, which is there for the
-              corner circles and nothing below them: the circles end 46 px
-              down, the block starts under the title and the badges. 16 px is
-              left on the right as on the left. A phone row's padding is 12 px
-              below `sm` already, so there it stays inside.
-
-              "How much longer" sits inside it in the compact form: the range
-              and its bar, because the probability sentence would wrap on a
-              phone and every card in the row shares its height through the
-              subgrid. Same numbers as the ride page, fewer words. */}
+          {/* A block of its own under the badges, never in the badge wrap: a sentence whose
+              position depends on how many badges are present makes the card height
+              unpredictable. The negative margin runs it past the right padding, which is only
+              there for the corner circles. Compact form, because the probability sentence would
+              wrap on a phone and the row shares its height through the subgrid. */}
           <div
             className={cn(
               'relative mt-[9px] empty:hidden',
@@ -641,12 +532,10 @@ export function AttractionCard({
           </div>
         </div>
 
-        {/* Photo spacer — the 1fr row resolves to 0 in an intrinsic-height
-           container; min-h forces it open when there is a background image.
-           It is also the strip of photo the panels leave visible, so the framed
-           layer lives in here: that is what gives `object-position` a box wider
-           than the picture and therefore a working Y axis. Stays at `z-0` so the
-           scrim (z-1) keeps darkening it. */}
+        {/* The 1fr row resolves to 0 in an intrinsic-height container, so min-h forces it open
+           when there is a photo. It is also the strip the panels leave visible, so the framed
+           layer lives here (docs/rules/card-photos-are-two-layers.md). `z-0` keeps it under the
+           scrim. */}
         <div
           className={cn(
             'relative z-0',
@@ -664,8 +553,7 @@ export function AttractionCard({
           )}
         </div>
 
-        {/* Bottom glass panel — only rendered when we have a live wait time.
-            A phone row shows the wait time on its first line instead. */}
+        {/* A phone row shows the wait time on its first line instead. */}
         {hasBottomPanel && (
           <div
             className={cn(
@@ -690,11 +578,9 @@ export function AttractionCard({
             />
 
             <div className="relative flex flex-col gap-2">
-              {/* Top row: wait time column + sparkline */}
               <div className="flex items-stretch gap-3">
-                {/* Wait-time column — always reserves a trend-pill slot so
-                    cards with and without live trend data share the same
-                    column height (keeps sparkline row heights aligned). */}
+                {/* Always reserves a trend-pill slot, so cards with and without a trend keep their
+                    sparkline rows aligned. */}
                 <div className="flex shrink-0 flex-col gap-1" style={{ width: 88 }}>
                   <div className="flex items-baseline gap-1 leading-none">
                     <WaitTimeValue
@@ -713,21 +599,15 @@ export function AttractionCard({
                   </div>
                 </div>
 
-                {/* Sparkline */}
-                {hasBottomPanel ? (
-                  <div className="relative min-w-0 flex-1" style={{ color: 'var(--pk-text-1)' }}>
-                    <WaitTimeSparklineCard
-                      history={history ?? []}
-                      timezone={effectiveTimezone}
-                      fallbackWaitTime={waitTime}
-                    />
-                  </div>
-                ) : (
-                  <div className="flex-1" />
-                )}
+                <div className="relative min-w-0 flex-1" style={{ color: 'var(--pk-text-1)' }}>
+                  <WaitTimeSparklineCard
+                    history={history ?? []}
+                    timezone={effectiveTimezone}
+                    fallbackWaitTime={waitTime}
+                  />
+                </div>
               </div>
 
-              {/* Divider + stats rows */}
               {(stats?.peakWaitToday != null ||
                 stats?.avgWaitToday != null ||
                 bestSlot ||
@@ -770,10 +650,8 @@ export function AttractionCard({
                       )}
                     </div>
                   )}
-                  {/* Skeleton reserves the single-line "best time in X" row so the
-                      client-rendered value (needs current time) swaps in without shifting.
-                      `h-4` is that row's `text-xs` line, 16 px; `h-3.5` was 2 px short per
-                      row, and the card grew 4 px when both rows landed (PAR-683). */}
+                  {/* Reserves the one-line row, so the client-rendered value (it needs the current
+                      time) swaps in without a shift. `h-4` is that row's `text-xs` line. */}
                   {bestSlot && (
                     <Suspense fallback={<Skeleton className="h-4 w-28" />}>
                       <AttractionCardBestTime

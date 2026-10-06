@@ -3,22 +3,15 @@ import { CalendarRange, ExternalLink, Ticket } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import type { ParkSeason, ParkSeasonStatus } from '@/lib/api/types';
 
 /**
- * What is on at this park, and how sure we are of it.
- *
- * The seasons are researched by hand from the park's own calendar, and the
- * reason they carry a status is that a visitor planning October needs the
- * difference between dates a park has published and dates it merely ran last
- * year. Rendering all of them the same way would be a lie with dates on it, so
- * `expected` says so and `cancelled` is struck through rather than hidden — a
- * cancelled Halloween is exactly what somebody came to find out.
- *
- * `dates` is the other half. Walibi Holland's Fright Nights are the weekends
- * between 3 October and 1 November plus three single dates; drawn as a range
- * that tells a visitor the park is haunted on a Tuesday. When the list exists,
- * the card says how many days it actually covers.
+ * What is on at this park, and how sure we are of it. Seasons are researched by hand, and a visitor
+ * planning October needs to tell published dates from dates the park merely ran last year:
+ * `expected` says so, and `cancelled` is struck through rather than hidden. When a season has a
+ * `dates` list, the card counts the days it covers, so a run of weekends is not drawn as one solid
+ * range.
  */
 
 const STATUS_TONE: Record<ParkSeasonStatus, string> = {
@@ -28,18 +21,24 @@ const STATUS_TONE: Record<ParkSeasonStatus, string> = {
   cancelled: 'border-border/60 bg-muted/50 text-muted-foreground',
 };
 
+const SHORT_DATE: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', timeZone: 'UTC' };
+const FULL_DATE: Intl.DateTimeFormatOptions = { ...SHORT_DATE, year: 'numeric' };
+
 function formatRange(locale: string, start: string, end: string): string {
   const from = new Date(`${start}T12:00:00Z`);
   const to = new Date(`${end}T12:00:00Z`);
   if (Number.isNaN(from.getTime()) || Number.isNaN(to.getTime())) return `${start} – ${end}`;
 
   const sameYear = from.getUTCFullYear() === to.getUTCFullYear();
-  const short: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', timeZone: 'UTC' };
-  const full: Intl.DateTimeFormatOptions = { ...short, year: 'numeric' };
+  const fromFormat = getDateTimeFormat(locale, sameYear ? SHORT_DATE : FULL_DATE);
 
-  return `${from.toLocaleDateString(locale, sameYear ? short : full)} – ${to.toLocaleDateString(locale, full)}`;
+  return `${fromFormat.format(from)} – ${getDateTimeFormat(locale, FULL_DATE).format(to)}`;
 }
 
+/**
+ * Park page card listing the park's seasons and events (Halloween, Christmas …) with dates, status
+ * badge, separate-ticket price and a link to the park's page. Renders nothing without seasons.
+ */
 export async function ParkSeasonsCard({
   seasons,
   locale,

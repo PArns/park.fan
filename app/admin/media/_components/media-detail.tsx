@@ -29,25 +29,8 @@ import { fitForCommit } from '../../_lib/upload-transport';
 import { parseCollectionPath } from '../_lib/folders';
 import { pickReplacement, replacementExt } from '../_lib/replace-drop';
 
-/** Shared field styling — the admin has no form primitives of its own. */
 /** One look for every field in the admin — see `FIELD_CLASS`. */
 const INPUT = FIELD_CLASS;
-
-/**
- * Edit one image: what it shows, how it is credited, how it is framed, where it
- * is filed — and which file it actually is.
- *
- * Everything here writes to the image's sidecar, and saving opens a pull request
- * rather than mutating anything in place — the database is the repository.
- *
- * **One save, one commit.** A dropped replacement file is *staged*, not sent: it
- * shows up in the file bar as pending and goes out with the next Save, in the
- * same operation as whatever else was edited. It used to commit the moment the
- * file landed, which meant swapping a photo and fixing its caption were two
- * commits — and the first one closed the editor, so the caption had to be found
- * again. Staging is also what lets the alt text be rewritten *for the new
- * picture* before either is written.
- */
 
 const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'] as const;
 
@@ -87,13 +70,17 @@ interface Props {
   onCommitted: (pullRequestUrl: string | null, joinedSession?: boolean) => void;
 }
 
+/**
+ * Editor for one media database image: subject, use, tags, per-locale words, rights, focal point,
+ * folder and a staged replacement file, all written to its sidecar in one commit to a pull request.
+ */
 export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }: Props) {
   const [row, setRow] = useState<MediaRow | null>(null);
   const [geo, setGeo] = useState<GeoVerdict | null>(null);
   const [draft, setDraft] = useState<Partial<MediaRow> | null>(null);
   const [locale, setLocale] = useState<(typeof LOCALES)[number]>('de');
   const [picker, setPicker] = useState<PickerMode | null>(null);
-  /** A replacement file chosen but not yet committed — it goes out with Save. */
+  /** A staged replacement file; it goes out with Save, in one commit with the text for it. */
   const [pending, setPending] = useState<PendingFile | null>(null);
   /** A file is being dragged over the replace bar. */
   const [dropping, setDropping] = useState(false);
@@ -106,21 +93,16 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
   const [newCollection, setNewCollection] = useState('');
   const [collectionError, setCollectionError] = useState<string | null>(null);
 
-  // One object URL per staged file, revoked when it is replaced or the editor
-  // closes. Minting it in render would leak one per keystroke.
-  //
-  // Keyed on the URL, not on `pending`: the dimension probe writes back into the
-  // same staged file, and an effect watching the object would tear the URL down
-  // on that update — revoking the very URL the preview is about to show.
+  // One object URL per staged file, revoked when it is replaced or the editor closes. Keyed on the
+  // URL, not on `pending`: the dimension probe writes back into the staged file, and watching the
+  // object would revoke the URL the preview is about to show.
   const pendingUrl = pending?.url;
   useEffect(() => {
     if (!pendingUrl) return;
     return () => URL.revokeObjectURL(pendingUrl);
   }, [pendingUrl]);
 
-  // No state reset here: the page mounts this with `key={id}`, so opening another
-  // image gets a fresh state slice. Resetting inside the effect instead would be a
-  // cascading render (and React 19 rejects it).
+  // No state reset here: the page mounts this with `key={id}`, so another image gets fresh state.
   useEffect(() => {
     let cancelled = false;
     fetch(`/api/admin/media?id=${encodeURIComponent(id)}`, {})
@@ -141,10 +123,8 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
     };
   }, [id]);
 
-  // Only a FAILED LOAD replaces the editor — there is nothing to edit then. Once the
-  // row is here, every later error (a rejected drop, a save that did not go through)
-  // renders inline instead: swapping the panel out at that point would throw away
-  // whatever sidecar edits were on screen, which is a steep price for a typo'd file.
+  // Only a failed load replaces the editor. Later errors render inline, so the edits on screen
+  // survive them.
   if (error && !row) return <Panel onClose={onClose}>{error}</Panel>;
   if (!row || !draft) return <Panel onClose={onClose}>Loading…</Panel>;
 
@@ -165,8 +145,6 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
     set('tags', [...cleaned, tag]);
   };
 
-  // The vocabulary arrives from the API as plain strings; it is generated from
-  // MEDIA_ROLES, so narrowing here is a cast at the boundary rather than a guess.
   const toggleCollection = (path: string) => {
     const current = draft.collections ?? [];
     set(
@@ -200,12 +178,8 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
   };
 
   /**
-   * Apply a pick from the shared park/ride picker.
-   *
-   * The picker hands back the full geo path, which is worth more than the slug:
-   * it disambiguates the two parks whose slug is not unique (`disneyland-park` is
-   * both Anaheim and Paris), so `parkPath` falls out for free instead of having to
-   * be remembered by hand.
+   * Applies a pick from the shared park/ride picker. Its full geo path also fills `parkPath`, which
+   * tells apart parks that share a slug (`disneyland-park`).
    */
   const applyPick = (result: PickerResult) => {
     // `/parks/europe/france/paris/disneyland-park[/attractions/<ride>]`
@@ -295,14 +269,8 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
   })();
 
   /**
-   * Closing throws the draft away, so ask first when there is one.
-   *
-   * Asked **in the page**, not with `window.confirm`. A native confirm is not a
-   * question the browser has to ask: an embedded view, a preview pane, or a user
-   * who ticked "prevent this page from creating additional dialogs" all make it
-   * return `false` without showing anything — and `false` means "keep editing", so
-   * the editor simply refused to close and there was no way out of it. A dialog
-   * whose close button silently does nothing is worse than losing a draft.
+   * Closing throws the draft away, so ask first, in the page: `window.confirm` can return `false`
+   * without showing anything (an embedded view, suppressed dialogs), leaving no way to close.
    */
   const requestClose = () => {
     if (dirty) {
@@ -313,11 +281,8 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
   };
 
   /**
-   * Everything on screen, in ONE operation.
-   *
-   * A staged replacement makes it a `replace` and carries the sidecar with it, so
-   * swapping a low-res original and rewriting its alt text for the new picture is
-   * a single commit in the session's pull request rather than two.
+   * Saves everything on screen in one operation; a staged replacement makes it a `replace` that
+   * carries the sidecar with it.
    */
   async function save() {
     setSaving(true);
@@ -327,8 +292,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
       let ext = row!.format;
 
       if (pending) {
-        // A replacement is usually a BIGGER file than the one it supersedes — this
-        // is the low-res upgrade path — so it is the most likely thing to run into
+        // A replacement is usually bigger than what it supersedes, so it is the likeliest to hit
         // the request-body limit. Shrunk only when it has to be.
         const { file } = await fitForCommit(pending.file);
         contentBase64 = await new Promise<string>((resolve, reject) => {
@@ -399,12 +363,8 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
   }
 
   /**
-   * Take one image out of a drop or a file picker and STAGE it, saying why when it
-   * is not one.
-   *
-   * Replacing swaps a single file, so a multi-file drop is rejected rather than
-   * silently using the first — picking one for somebody who meant to drop a batch
-   * is how the wrong photo ends up on a ride.
+   * Stages one image from a drop or a file picker, saying why when it cannot. A multi-file drop is
+   * rejected rather than silently using the first.
    */
   function replaceFrom(files: FileList | File[] | null) {
     const picked = pickReplacement(files);
@@ -453,9 +413,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
                 <span>{error}</span>
               </p>
             ) : result ? (
-              // The confirmation. A save that closed the dialog and left a toast
-              // behind never said whether the FILE went up — which is the one thing
-              // you want to know after dropping a 6 MB replacement.
+              // The confirmation stays in the dialog, so it says whether the file went up.
               <div className="min-w-0 text-xs text-emerald-400">
                 <p className="flex items-center gap-1.5 font-medium">
                   <Check className="h-3.5 w-3.5 shrink-0" />
@@ -523,21 +481,9 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
         </>
       }
     >
-      {/* File bar — the pixels, and the one action that changes them.
-          It sits above the two columns and spans both on purpose: the replace
-          control used to live at the top of the right-hand column, which on a
-          laptop is a full screen below the focal-point previews, and nobody
-          found it. Upgrading a low-res original is a routine job, so it gets a
-          routine place: next to the resolution it is fixing.
-
-          The whole bar is the drop target, not just the button — a photo being
-          upgraded comes from a file manager, so dragging it here is the shortest
-          path from "this one is too small" to a pull request. Clicking anywhere on
-          it opens the picker for the same reason. */}
-      {/* A div plus an explicit click, not a <label> wrapping the input — the same
-          shape `media-upload.tsx` uses. A label implicitly activates its control,
-          and a drop landing on it forwarded that activation, which tore the panel
-          down mid-drop. */}
+      {/* The file bar spans both columns, next to the resolution a replacement fixes, and the
+          whole bar is the drop target. A div with an explicit click, not a `<label>`: a label
+          forwards a drop's activation to its input, which tore the panel down mid-drop. */}
       <div
         role="button"
         tabIndex={0}
@@ -576,9 +522,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
       >
         {pending ? (
           <>
-            {/* Old and new side by side. "Is this the right file, and is it
-                actually bigger" is the whole question a replacement asks, and it
-                is answerable in one look here. */}
+            {/* Old and new side by side: is this the right file, and is it bigger. */}
             {/* eslint-disable-next-line @next/next/no-img-element -- admin chrome, fixed 40px box */}
             <img
               src={pending.url}
@@ -648,9 +592,8 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
         />
       </div>
 
-      {/* Two independently scrolling columns from `lg` up. The framing previews are
-          tall, so one shared scroll pushed the metadata a screenful away from the
-          picture it describes — which is exactly the pairing this editor is for. */}
+      {/* Two independently scrolling columns from `lg` up, so the metadata stays beside the
+          tall framing previews of the picture it describes. */}
       <div className="grid min-h-0 gap-5 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,1fr)_400px] lg:overflow-hidden">
         <div className="min-h-0 lg:overflow-y-auto lg:pr-1">
           <FocusEditor
@@ -664,9 +607,6 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
           />
         </div>
 
-        {/* Grouped by the question each answers — what it shows, what it is used
-            for, how it reads, who owns it. Twelve fields in one flat stack gave a
-            park slug the same weight as a caption. */}
         <div className="min-h-0 space-y-4 text-sm lg:overflow-y-auto lg:pr-1">
           {geo && geo.status !== 'no-gps' && (
             <Notice tone={geo.status === 'mismatch' ? 'warn' : 'info'}>
@@ -731,10 +671,8 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
               </p>
             )}
 
-            {/* The way back. Without it the admin is one-directional: a ride's
-                editor lists its photos, and a photo could not name the ride it
-                is of. `parkPath` is `continent/country/city`, and the city is
-                what disambiguates a slug two parks share. */}
+            {/* Back to the ride's or park's editor; the city in `parkPath` tells apart a slug two
+                parks share. */}
             <OpenInEditor
               parkSlug={draft.park}
               rideSlug={draft.ride}
@@ -929,9 +867,7 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
         </div>
       </div>
 
-      {/* Discard prompt. Sits above the whole dialog rather than inside the body,
-          because it is about the dialog, and it lists what is at stake — "discard
-          the changes" is a much easier decision once it says which ones. */}
+      {/* Above the whole dialog, and it lists what would be discarded. */}
       {confirmingClose && (
         <div
           className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-4"
@@ -970,9 +906,8 @@ export function MediaDetail({ id, vocabulary, newSession, onClose, onCommitted }
         </div>
       )}
 
-      {/* The blog editor's picker, reused verbatim — it already searches the live
-          catalog and returns the geo path. Typing raw slugs was how a photo ended
-          up on a ride that does not exist. */}
+      {/* The blog editor's picker searches the live catalog, so no photo lands on a ride that
+          does not exist. */}
       <ParkRidePicker mode={picker} onPick={applyPick} onClose={() => setPicker(null)} />
     </Panel>
   );
@@ -1010,16 +945,8 @@ function SlugField({
 }
 
 /**
- * The editor's dialog shell.
- *
- * Header and footer are pinned and only the body scrolls, because the two things
- * you always want reachable — which image am I editing, and Save — were the two
- * furthest apart: the title scrolled away upward while Save sat at the bottom of
- * a twelve-field column, so saving meant scrolling the whole overlay.
- *
- * The header thumbnail is cropped at the image's own focal point. It is the
- * cheapest possible demonstration of what the setting below it does, and it
- * doubles as "yes, this is the photo you clicked".
+ * The editor's dialog shell. Header and footer are pinned and only the body scrolls, so the
+ * image's name and Save stay reachable; the header thumbnail is cropped at the focal point.
  */
 function Panel({
   children,
@@ -1074,9 +1001,7 @@ function Panel({
         aria-label={title ?? 'Image'}
         className={cn(
           'bg-background ring-border flex max-h-full w-full flex-col overflow-hidden rounded-2xl shadow-2xl ring-1',
-          // The loading and failed-to-load states render the same shell with no
-          // body to speak of; at the editor's width they came out as a 1150px box
-          // holding the word "Loading…".
+          // The loading and error states have no body to speak of, so they get a narrow box.
           footer ? 'max-w-6xl' : 'max-w-md'
         )}
       >

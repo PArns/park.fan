@@ -2,13 +2,8 @@ import { NextResponse } from 'next/server';
 
 /**
  * The gate every `/api/cron/*` route opens with: `null` when the request carries the cron
- * secret, the response to return otherwise.
- *
- * The routes each compared `authorization` against `` `Bearer ${process.env.CRON_SECRET}` ``,
- * and with the variable unset — a preview, a misconfigured environment — that string is
- * `Bearer undefined`, which anybody can send. `prewarm` is a five-minute fan-out against the
- * backend and `indexnow`/`websub` ping third parties, so an unset secret now disables them, the
- * way `/api/revalidate` already treats its own.
+ * secret, the response to return otherwise. An unset `CRON_SECRET` disables cron with a 503
+ * rather than accepting `Bearer undefined`, which anybody can send.
  */
 export function cronUnauthorized(request: Request): NextResponse | null {
   const secret = process.env.CRON_SECRET;

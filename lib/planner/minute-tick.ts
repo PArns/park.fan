@@ -1,17 +1,10 @@
 import { subscribeToMinuteClock } from '@/lib/hooks/use-minute-now';
 
 /**
- * One minute counter for everything in the panel that watches the clock.
- *
- * A counter, not a time: the value only has to CHANGE each minute, and the
- * actual clock is read in park time where it is needed ({@link parkMinuteNow}).
- * On the server it is 0, so a now line and a "next show" are never in server
- * markup for a client to disagree with.
- *
- * Shared rather than per-component because two readers on one screen — the
- * grid's now line and the show band's next showtime — would otherwise install
- * two timers that fire a second apart and re-render the panel twice a minute.
- * The same reason ties it to the app's minute clock below.
+ * One minute counter for everything in the panel that watches the clock. A counter, not a time: it
+ * only has to change each minute, and the clock is read in park time where needed
+ * ({@link parkMinuteNow}). 0 on the server, so nothing clock-bound is in server markup. Shared, so
+ * two readers do not install two timers.
  */
 
 let minuteTick = 0;
@@ -19,11 +12,8 @@ let releaseClock: (() => void) | null = null;
 const minuteListeners = new Set<() => void>();
 
 /**
- * Driven by the app's shared minute clock (`useMinuteNow`) rather than an interval of its own.
- * Its own interval ran in hidden tabs — the in-park list on a pocketed phone, the planner's
- * optimiser in a background window — and out of phase with the shared clock, so a park page with
- * the panel open repainted twice a minute. The shared clock pauses while the tab is hidden and
- * ticks once on return, which also moves the counter.
+ * Driven by the app's shared minute clock (`useMinuteNow`) rather than an interval of its own, so
+ * it pauses in a hidden tab, ticks once on return, and stays in phase with the rest of the page.
  */
 export function subscribeToMinute(listener: () => void): () => void {
   minuteListeners.add(listener);
@@ -42,25 +32,27 @@ export function subscribeToMinute(listener: () => void): () => void {
   };
 }
 
+/**
+ * Snapshot for `useSyncExternalStore`: the planner's minute counter, which goes up by one each
+ * minute while anyone subscribes.
+ */
 export function getMinuteTick(): number {
   return minuteTick;
 }
 
 /**
- * The subscription a reader takes when there is nothing to keep up to date.
- *
- * A hook cannot be called conditionally, but the SUBSCRIBE function can decline
- * to subscribe — and it must, because the tick used to be installed
- * unconditionally: on any date that is not today, which is nearly every date
- * somebody plans, the panel ran a 60-second interval and re-rendered the whole
- * grid once a minute for a line it never draws. The layout memo was safe (its
- * `nowMinute` dependency stays `null`), but every block, leg and show pill
- * re-rendered anyway, forever, while the panel was open.
+ * The subscription a reader takes when there is nothing to keep up to date. A hook cannot be called
+ * conditionally, but the subscribe function can decline, so a date that is not today installs no
+ * timer and re-renders nothing.
  */
 export function subscribeToNothing(): () => void {
   return () => {};
 }
 
+/**
+ * Snapshot that is always 0, paired with `subscribeToNothing` for a reader with no clock to watch,
+ * and as the server snapshot.
+ */
 export function getZero(): number {
   return 0;
 }

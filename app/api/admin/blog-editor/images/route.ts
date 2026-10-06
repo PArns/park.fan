@@ -8,17 +8,8 @@ import { getMediaAlt, getMediaCaption, getCreditLine } from '@/lib/media/text';
 import type { MediaLicense, MediaRole } from '@/lib/media/types';
 
 /**
- * The image picker's backing list, served from the media database.
- *
- * It used to walk `public/blog/images` and hand back filenames, which meant the
- * picker could only offer photos that had been uploaded *for the blog* — the
- * park and ride photography was invisible to it even though a post about Troy
- * obviously wants Troy's photo. Every image in the database is now offered, with
- * the metadata needed to choose sensibly: what it shows, who took it, how big it
- * is, and the caption already written for it in this locale.
- *
- * Supports the same filters as `/api/media`, so the picker can search rather than
- * scroll once the database grows past a few hundred images.
+ * The image picker's backing list: every image in the media database, with what it shows, who
+ * took it, its size and its caption in this locale. Takes the same filters as `/api/media`.
  */
 export async function GET(req: Request) {
   const unauthorized = await denyUnlessAdmin(req);
@@ -38,8 +29,7 @@ export async function GET(req: Request) {
   }).map((image) => ({
     id: image.id,
     src: versionedSrc(image),
-    // The collection doubles as the picker's section label — it is what the old
-    // response called `folder`, and the UI still groups by it.
+    // The collection doubles as the picker's section label, which the UI groups by.
     folder: image.collection,
     name: image.id.split('/').pop() ?? image.id,
     alt: getMediaAlt(image.id, locale) ?? '',
@@ -50,8 +40,6 @@ export async function GET(req: Request) {
     park: image.park,
     ride: image.ride,
     tags: image.tags,
-    // Newest first is what the old picker approximated with mtime; `shotAt` is
-    // the real answer where the camera recorded it.
     shotAt: image.shotAt,
   }));
 

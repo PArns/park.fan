@@ -18,16 +18,6 @@ interface TableMenuProps {
   editor: Editor | null;
 }
 
-/**
- * Floating table operations toolbar.
- *
- * Appears whenever the caret is inside a table cell. Deliberately limited to
- * the operations GFM markdown can actually express: add / remove rows and
- * columns, the header colour theme, and deleting the table. Header-row /
- * header-column toggles and cell merge / split are NOT offered — they create
- * table shapes (header cells mid-table, colspan / rowspan) that have no pipe
- * table representation, so the post would silently degrade on save.
- */
 const THEME_LABEL: Record<TableTheme, string> = {
   default: 'Default',
   primary: 'Primary',
@@ -46,15 +36,16 @@ const THEME_SWATCH: Record<TableTheme, string> = {
   danger: 'bg-rose-500/60',
 };
 
+/**
+ * Bubble toolbar for the blog editor that appears while the caret is in a table: add or remove rows
+ * and columns, pick the header colour theme, delete the table. Header toggles and cell merges are
+ * left out, because a GFM pipe table cannot hold them and the post would degrade on save.
+ */
 export function TableMenu({ editor }: TableMenuProps) {
   const [themeOpen, setThemeOpen] = useState(false);
-  // useEditor only re-renders on doc changes; pure selection moves (caret
-  // jumping into a table cell) don't trigger a React render, so the
-  // `editor.can()` / `getAttributes` reads below would reflect the previous
-  // selection. Tick on selection + doc updates so the menu reads fresh state.
-  // NOTE: do NOT subscribe to `transaction` — plugins (column resizing,
-  // floating-ui sync) dispatch meta-only transactions during render, which
-  // turns an unconditional tick into an infinite update loop.
+  // useEditor re-renders only on doc changes, so selection moves tick this to keep the
+  // `editor.can()` reads fresh. Not on `transaction`: plugins dispatch meta-only transactions
+  // during render, which would loop.
   const [, tick] = useState(0);
   const wasInTable = useRef(false);
   useEffect(() => {

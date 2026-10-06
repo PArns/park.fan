@@ -1,42 +1,33 @@
 import { adminFetch } from '../_lib/api';
 
 /**
- * Stilllegen und Zurückholen, an einer Stelle.
- *
- * Zwei Oberflächen stellen dieselbe Frage: die Arbeitsliste unter
- * `/admin/retirement`, die Kandidaten vorlegt, und die Seite einer einzelnen
- * Bahn, wo die Antwort oft erst entsteht — man schaut sich das Ride-Profil an,
- * sieht den Verlauf, und stellt dabei fest, dass es die Bahn nicht mehr gibt.
- * Der Weg dorthin war bis eben ein Umweg über eine Liste, in der sie nur steht,
- * solange der Detector sie vorlegt.
- *
- * Geteilt wird das, was nicht auseinanderlaufen darf: welcher Endpunkt, welche
- * Pflichtangaben, welche Caches danach ungültig sind. Das Layout nicht — eine
- * Zeile in einer Arbeitsliste und ein Kopfbereich sind verschiedene Dinge.
+ * Retiring and restoring a ride, shared by the `/admin/retirement` worklist and a single ride's
+ * page. What must not drift apart lives here (endpoint, required fields, invalidated caches); the
+ * layout does not.
  */
 
-/** Der Tag, den `<input type="date">` und die API gleichermaßen wollen. */
+/** Today as `YYYY-MM-DD`, the shape `<input type="date">` and the API both want. */
 export function today(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
 /**
- * Grund und Quelle sind Pflicht.
- *
- * Eine Stilllegung ist eine Behauptung über die Welt und lässt sich nicht
- * zurücknehmen, ohne dass jemand sie bemerkt: die Bahn verschwindet aus jeder
- * Liste und aus der Sitemap. Ohne aufgeschriebenen Grund steht später niemand
- * für die Entscheidung ein.
+ * Reason and source are required: a retirement takes the ride out of every list and the sitemap,
+ * and without a written reason nobody can answer for the decision later.
  */
 export const RETIRE_REASON_REQUIRED =
   'Grund und Quelle sind Pflicht. Ohne sie steht später niemand für die Entscheidung ein.';
 
-/** Query-Präfixe, die eine Stilllegung ungültig macht. */
+/** Query prefixes a retirement invalidates. */
 export const RETIREMENT_KEYS = [
   ['admin', 'retirement-candidates'] as const,
   ['admin', 'retired-attractions'] as const,
 ];
 
+/**
+ * Retires one ride as of `retiredAt` with the given reason, through the admin retire endpoint. The
+ * caller checks the reason first (`RETIRE_REASON_REQUIRED`) and invalidates `RETIREMENT_KEYS`.
+ */
 export function retireAttraction(input: {
   attractionId: string;
   retiredAt: string;
@@ -49,11 +40,8 @@ export function retireAttraction(input: {
 }
 
 /**
- * Eine dauerhaft geschlossene Bahn auf der Parkseite aus- oder wieder einblenden.
- *
- * Wirkt nur auf die Liste „Dauerhaft geschlossene Attraktionen" der Parkseite. Die Seite der
- * Bahn und ihr Sitemap-Eintrag bleiben, weil die URL ihr Ranking behalten soll. Zurückholen
- * setzt das Flag wieder zurück.
+ * Hides a permanently closed ride from the park page's closed-rides list, or shows it again. The
+ * ride's own page and sitemap entry stay, so the URL keeps its ranking.
  */
 export function setRetiredHidden(attractionId: string, hidden: boolean): Promise<unknown> {
   return adminFetch(`/api/admin/retired-attractions/${attractionId}/hidden`, {
@@ -62,6 +50,7 @@ export function setRetiredHidden(attractionId: string, hidden: boolean): Promise
   });
 }
 
+/** Takes a ride's retirement back, so it counts as an active attraction again. */
 export function unretireAttraction(attractionId: string): Promise<unknown> {
   return adminFetch(`/api/admin/unretire-attraction/${attractionId}`, { method: 'POST' });
 }

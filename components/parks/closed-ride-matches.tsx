@@ -20,10 +20,9 @@ export interface ClosedRideSearchItem {
 /**
  * The closed rides a search on the park page matched, under the live results.
  *
- * Somebody who types „x2" on Magic Mountain's page is looking for X2, and the grid answered
- * „Keine Attraktionen gefunden" as if the park had never heard of it. The live grid is still the
- * park today, so the ride does not join it; it is named here, with its badge and the month it
- * closed, and links to its own page, which says what happened.
+ * The live grid is the park today, so a closed ride does not join it; it is named here with its
+ * badge and the month it closed, and links to its own page.
+ * See docs/rules/a-closed-ride-keeps-its-page.md.
  */
 export function ClosedRideMatches({
   rides,

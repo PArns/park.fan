@@ -10,10 +10,7 @@ interface StatusInfoCardProps {
   glass?: boolean;
 }
 
-/**
- * Card component with icon in title and flexible content
- * Used for wait time, status, and prediction accuracy displays
- */
+/** Card with an icon in its title and free content (wait time, status, prediction accuracy). */
 export function StatusInfoCard({
   title,
   icon: Icon,

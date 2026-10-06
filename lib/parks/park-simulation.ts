@@ -8,32 +8,19 @@ import type {
 } from '@/lib/api/types';
 
 /**
- * Dev-/preview-only park-state simulation — `?state=` on any park page.
+ * Dev- and preview-only park-state simulation: `?state=` on any park page, for header states
+ * (warnings, holidays, neighbouring breaks) almost no park is in when you look.
  *
- * The park header is built around states almost no park is in when you happen to look at it. A
- * DWD warning was live on none of the 212 parks on the three afternoons this row was designed;
- * a public holiday plus a bridge day plus neighbouring school breaks all landing on one day is a
- * handful of dates a year. So the row that carries them was drawn from the one park that had a
- * single Dutch summer break, and shipped with three of its four branches never once rendered.
+ * Unlike `?sim=` in `lib/nearby-simulation.ts`, which only moves the caller, this patches the
+ * payload, so every scenario is a lie the visitor must never be told. Two fences:
+ * {@link isSimulationEnabled} (off in production) and the `<ParkSimulationNotice>` banner the page
+ * renders while a scenario is active. Scenarios compose: `?state=warning,holiday,neighbors,busy`.
  *
- * This is the `?sim=` idea from `lib/nearby-simulation.ts` pointed at the park payload instead of
- * at the request coordinates, and it differs from that one in a way worth stating: `?sim=`
- * fabricates NOTHING — it moves the caller and lets the real backend answer. There is no such
- * trick here. A warning that is not currently in force cannot be conjured out of a real response,
- * so these scenarios patch the payload, and every one of them is therefore a lie the visitor must
- * never be told. Two fences: {@link isSimulationEnabled} (off on the production deployment, on
- * for local dev and Vercel previews — the same gate `?sim=` uses), and the banner
- * `<ParkSimulationNotice>` the page renders whenever a scenario is active, so a screenshot taken
- * from a preview carries the word "simuliert" in it.
- *
- * Scenarios compose, comma-separated: `?state=warning,holiday,neighbors,busy`.
- *
- * Where it is applied matters. `weather` is in the live poll's projection and `schedule` is not
- * (see `leanParkForLivePoll`), so patching only the server render would leave a simulated warning
- * on screen until the first poll landed and then silently drop it. `/api/parks/[…]` therefore
- * applies the same scenarios to its snapshot, and `useLiveParkData` forwards the param.
+ * `weather` is in the live poll's projection, so `/api/parks/[…]` applies the same scenarios to its
+ * snapshot and `useLiveParkData` forwards the param; otherwise the first poll would drop them.
  */
 
+/** One simulated park state `?state=` can switch on. */
 export type ParkSimScenario =
   | 'warning'
   | 'extreme'
@@ -58,15 +45,15 @@ const SCENARIOS = new Set<ParkSimScenario>([
 ]);
 
 /**
- * `all` expands to everything that can co-exist — `closed` is left out, it contradicts `busy`.
- * `rain` is left out too: it replaces the nowcast's rain forecast, and `all` predates it.
+ * `all` expands to everything that can co-exist: not `closed` (contradicts `busy`), and not
+ * `rain`, which replaces the nowcast's rain forecast.
  */
 const ALL: ParkSimScenario[] = ['warning', 'holiday', 'bridge', 'school', 'neighbors', 'busy'];
 
 /**
- * Parse `?state=` into the scenarios to apply. Returns an empty array when simulation is off, the
- * param is absent, or nothing in it is a known scenario — so every caller can apply the result
- * unconditionally and a typo degrades to the real park rather than to an error.
+ * Parse `?state=` into the scenarios to apply. Empty when simulation is off, the param is absent
+ * or nothing in it is known, so callers apply the result unconditionally and a typo degrades to
+ * the real park.
  */
 export function parseParkSimulation(raw: string | null | undefined): ParkSimScenario[] {
   if (!isSimulationEnabled() || !raw) return [];
@@ -80,8 +67,8 @@ export function parseParkSimulation(raw: string | null | undefined): ParkSimScen
   return [...new Set(picked)];
 }
 
-/** The `?state=` value as the client should forward it, or null. Keeps the raw string so an
- *  unknown scenario reaches one parser rather than being dropped in three places. */
+/** The `?state=` value as the client should forward it, or null. Kept raw so one parser decides
+ *  which scenarios are known. */
 export function readParkSimulationParam(search: string | null | undefined): string | null {
   if (!isSimulationEnabled() || !search) return null;
   const value = new URLSearchParams(search).get('state');
@@ -89,9 +76,8 @@ export function readParkSimulationParam(search: string | null | undefined): stri
 }
 
 /**
- * A DWD-shaped warning. The German fields carry the text and the `*En` ones the translation,
- * which is the exact shape `WeatherWarningBanner` reads — a simulated warning that filled only
- * `headline` would exercise a branch the real feed never takes.
+ * A DWD-shaped warning with German text and `*En` translations, the exact shape
+ * `WeatherWarningBanner` reads, so the simulation exercises the branch the real feed takes.
  */
 function warning(severity: 'Severe' | 'Extreme'): WeatherWarning {
   const severe: WeatherWarning = {
@@ -132,9 +118,8 @@ function warning(severity: 'Severe' | 'Extreme'): WeatherWarning {
 }
 
 /**
- * Neighbouring school breaks from four regions in three countries, which is the case the panel
- * was written for and the one nobody could see: the real feed hands the German parks a single
- * Dutch entry most of the year.
+ * Neighbouring school breaks from four regions in three countries, a case the real feed rarely
+ * shows (German parks usually get a single Dutch entry).
  */
 const NEIGHBOR_HOLIDAYS: InfluencingHoliday[] = [
   {
@@ -159,8 +144,8 @@ const NEIGHBOR_HOLIDAYS: InfluencingHoliday[] = [
   },
 ];
 
-/** Patch every schedule entry that is today or later, so the panel finds its holiday whichever
- *  entry the park clock picks. */
+/** Patch every schedule entry, so the panel finds its holiday whichever entry the park clock
+ *  picks. */
 function patchSchedule(
   schedule: ScheduleItem[] | null | undefined,
   patch: Partial<ScheduleItem>
@@ -170,8 +155,8 @@ function patchSchedule(
 }
 
 /**
- * Apply the parsed scenarios to a park payload. Pure — returns a new object and never mutates
- * the response it was handed, because the same park object is the React Query seed.
+ * Apply the parsed scenarios to a park payload. Pure: never mutates the response, because the
+ * same park object is the React Query seed.
  */
 export function applyParkSimulation(
   park: ParkWithAttractions,
@@ -202,8 +187,7 @@ export function applyParkSimulation(
     schedulePatch.isHoliday = true;
     schedulePatch.isSchoolHoliday = true;
     schedulePatch.isSchoolVacation = true;
-    // Only names the break when `holiday` has not already claimed the name field: a day that is
-    // both is a public holiday inside a school break, and the public one is what gets named.
+    // A public holiday inside a school break is named for the public holiday.
     if (!has('holiday')) {
       schedulePatch.holidayName = 'Autumn Holidays';
       schedulePatch.holidayType = 'school';
@@ -256,12 +240,9 @@ export function applyParkSimulation(
 }
 
 /**
- * The same scenarios applied to the nowcast payload.
- *
- * `WeatherWarningBanner` and the "es regnet gleich" strip both read the NOWCAST, while the
- * weather tile's hint reads `park.weather.warnings` — one claim, two sources, and simulating only
- * the park left the tile saying "Unwetterwarnung" above a panel with no banner in it. That split
- * is worth keeping in mind beyond the simulation: the two can disagree in production too.
+ * The same scenarios applied to the nowcast payload. The warning banner and the rain strip read
+ * the nowcast while the weather tile reads `park.weather.warnings`, so both must be patched; the
+ * two sources can disagree in production too.
  */
 export function applyNowcastSimulation(
   nowcast: WeatherNowcast | null,
@@ -279,9 +260,8 @@ export function applyNowcastSimulation(
       ],
     };
   }
-  // Moderate rain from ten minutes after the request for an hour: inside the banner's rain
-  // lead time and the covered-ride offer's (PAR-425). Stamped at request time, so it stays ten
-  // minutes ahead on every poll. The precipitation steps are left as they came.
+  // Moderate rain from ten minutes after the request for an hour, inside the banner's and the
+  // covered-ride offer's lead time. Stamped per request, so it stays ten minutes ahead.
   if (has('rain')) {
     const now = Date.now();
     next = {

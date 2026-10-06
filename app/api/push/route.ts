@@ -1,22 +1,14 @@
 import { NextResponse } from 'next/server';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 
 /**
- * Whether push works, and the key to subscribe with.
- *
- * Asked BEFORE the browser offers the control. A switch that turns on and does
- * nothing is the worst state this feature has, and an unconfigured deploy — no
- * VAPID keypair on the API — is exactly that unless somebody asks first.
- *
- * `no-store`: the answer changes when a deploy's environment changes, and a CDN
- * copy of `available: false` would keep the control hidden for a cache window
- * after push was switched on.
+ * Whether push works and the key to subscribe with, asked before the browser offers the control,
+ * so a deploy without a VAPID keypair shows no switch that does nothing. `no-store`, or a cached
+ * `available: false` would hide the control after push is switched on.
  */
 export async function GET() {
-  const apiBase = process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
-
   try {
-    const response = await fetch(`${apiBase}/v1/push`, {
+    const response = await fetch(`${getApiBaseUrl()}/v1/push`, {
       headers: { 'Content-Type': 'application/json', ...getServerApiHeaders() },
       cache: 'no-store',
     });

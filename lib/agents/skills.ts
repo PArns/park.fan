@@ -4,17 +4,10 @@ import path from 'node:path';
 import { SITE_URL } from '@/i18n/config';
 
 /**
- * The Agent Skills park.fan publishes at `/.well-known/agent-skills/` — the instructions an
- * agent reads once and then knows how to use this site without a human pasting URLs into it.
- *
- * The skills are prose in `content/agent-skills/<name>/SKILL.md` rather than string literals
- * in here for the same reason blog posts are: they are text, they get edited, and a diff on
- * a markdown file is readable. This module only turns them into the index document.
- *
- * The digest is computed from the bytes actually served, not from a value written down beside
- * the file. A skills index is a supply chain — an agent is allowed to fetch the artifact,
- * check it against the digest and refuse it — so a digest that is maintained by hand is a
- * digest that will one day be wrong in a way that makes every skill look tampered with.
+ * The Agent Skills park.fan publishes at `/.well-known/agent-skills/`, read from
+ * `content/agent-skills/<name>/SKILL.md`. The digest is computed from the served bytes, because an
+ * agent may refuse an artifact that does not match it and a hand-kept digest would one day make
+ * every skill look tampered with.
  */
 
 /** Fixed by the Agent Skills Discovery RFC v0.2.0. */
@@ -34,10 +27,8 @@ type AgentSkillDefinition = {
 };
 
 /**
- * Three skills, because there are three questions people arrive with: what is the queue doing
- * right now, which day should I go, and where do I get this as data. A fourth about the
- * administrative UI would be the one skill that must not exist — `/admin` is for the people who
- * run the site, it is disallowed in robots.txt, and nothing here mentions how to reach it.
+ * Three skills for the three questions people arrive with: the queue right now, which day to go,
+ * and the data itself. None of them mentions `/admin`, on purpose.
  */
 export const AGENT_SKILLS: AgentSkillDefinition[] = [
   {
@@ -72,6 +63,7 @@ export const AGENT_SKILLS: AgentSkillDefinition[] = [
   },
 ];
 
+/** Returns the public path of an agent skill's `SKILL.md` under `/.well-known/agent-skills/`. */
 export function skillArtifactPath(name: AgentSkillName): string {
   return `/.well-known/agent-skills/${name}/SKILL.md`;
 }
@@ -81,6 +73,10 @@ export function readSkillArtifact(name: AgentSkillName): string {
   return fs.readFileSync(path.join(SKILLS_ROOT, name, 'SKILL.md'), 'utf8');
 }
 
+/**
+ * Returns the `sha256:` digest of the bytes served for an agent skill's `SKILL.md`, computed from
+ * the file on every call.
+ */
 export function skillDigest(name: AgentSkillName): string {
   return `sha256:${createHash('sha256').update(readSkillArtifact(name), 'utf8').digest('hex')}`;
 }

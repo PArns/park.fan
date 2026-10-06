@@ -31,6 +31,10 @@ function secretKey(): Promise<CryptoKey> {
   );
 }
 
+/**
+ * Signs a photo upload ticket with HMAC-SHA256 and an expiry (15 minutes by default), returned as
+ * `<body>.<signature>` in base64url.
+ */
 export async function signTicket(
   payload: Omit<TicketPayload, 'exp'>,
   ttlMs = TTL_MS
@@ -41,6 +45,10 @@ export async function signTicket(
   return `${body}.${Buffer.from(sig).toString('base64url')}`;
 }
 
+/**
+ * Returns the payload of a valid, unexpired upload ticket, or `null` for a missing, forged or
+ * expired one.
+ */
 export async function verifyTicket(
   token: string | null | undefined
 ): Promise<TicketPayload | null> {

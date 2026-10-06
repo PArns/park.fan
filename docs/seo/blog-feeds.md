@@ -81,8 +81,8 @@ for a link back to the live post.
 
 Two things in that path each blew up this route's Vercel Function:
 
-**The body import.** Loading a post's markdown has exactly one door,
-`getPostByTranslationKey` from `@/lib/blog` — and `@/lib/blog` pulls in
+**The body import.** Loading a post's markdown goes through `@/lib/blog`
+(`getPostByLocaleSlug`), and `@/lib/blog` pulls in
 `manifest-bodies.ts`, every post body in every locale, as one generated module
 (`docs/development/scripts.md` reserves that import for the post page alone).
 One import here was enough for Next's function tracer to fold the whole thing

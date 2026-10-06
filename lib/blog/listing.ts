@@ -5,31 +5,17 @@ import { BLOG_POSTS_META } from './manifest';
 import { isNewsCategory, postPath } from './paths';
 
 /**
- * Everything a blog LISTING needs — cards, feeds, hreflang, the nav gate, the
- * park pages' backlinks — resolved from the frontmatter-only manifest.
+ * Everything a blog listing needs (cards, feeds, hreflang, the nav gate, the park pages'
+ * backlinks), resolved from the frontmatter-only manifest. Split from `./index` so the root
+ * layout does not drag every post body into every route's bundle; see
+ * docs/rules/blog-manifest-is-split.md.
  *
- * Split out of `./index` on purpose: the post bodies are ~900 KB and grow with
- * every article, and the root layout alone (`hasPublishedPosts`) would drag all
- * of them into every route's server bundle. Only the post page itself imports
- * `./index`, which is where the markdown lives.
- *
- * ## Memoised per process, not per request
- *
- * Every function here derives from the generated manifest and reads no clock,
- * no cookie and no request state, so its result is fixed for the lifetime of
- * the deployment. React's `cache()` would rebuild all of it on every request —
- * which the root layout, the homepage and (since the blog section) every
- * `force-dynamic` park page would pay for, on the highest-cardinality routes on
- * the site. Module-level memos survive across requests in the same instance
- * instead, so the second render onwards is a Map lookup.
- *
- * The returned lists are FROZEN: callers share one array, and an in-place
- * `sort()`/`push()` would corrupt it for every later request rather than for
- * one render. Copy first (`[...posts]`, `.filter()`, `.slice()`) — every
- * current caller already does.
+ * Memoised per process, not per request: everything here derives from the generated manifest and
+ * reads no clock or request state. The returned lists are frozen and shared, so copy before
+ * sorting.
  */
 
-export function isValidSlug(slug: string): boolean {
+function isValidSlug(slug: string): boolean {
   return /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(slug);
 }
 
@@ -179,19 +165,13 @@ export function getListItemByLocaleSlug(
   };
 }
 
-/**
- * Does the blog have at least one PUBLISHED post? Every visible blog surface —
- * header/footer nav, homepage strips, the blog index, feeds, sitemap — gates
- * on this so a repo where everything sits in draft/hidden presents no blog at
- * all.
- *
- * With a `locale` argument the check is locale-scoped: does THIS locale list
- * at least one post? (`listPosts` already applies mode + EN-fallback
- * semantics.) That lets a German-first rollout publish /de/blog without
- * switching the blog on for locales that would present an empty index.
- */
 const HAS_POSTS = new Map<string, boolean>();
 
+/**
+ * Returns true when the blog has at least one published post, in the given locale (with its
+ * English fallback) or, without one, in any locale. Every blog surface gates on it, so a locale
+ * with nothing published shows no blog at all.
+ */
 export function hasPublishedPosts(locale?: Locale): boolean {
   const cacheKey = locale ?? '*';
   const memo = HAS_POSTS.get(cacheKey);
@@ -276,14 +256,8 @@ export function listPosts(requestedLocale: Locale): readonly BlogListItem[] {
 }
 
 /**
- * Return alternate hreflang URLs for a single post (per translationKey).
- *
- * Only locales with a real, PUBLISHED translation are emitted. Untranslated
- * locales still render via EN fallback, but those URLs serve duplicate EN
- * content and canonicalize to the EN original — listing them as hreflang
- * alternates would tell search engines a translation exists where it
- * doesn't. Draft translations 404 and hidden ones are deliberately
- * unlisted, so both stay out as well.
+ * Hreflang URLs for one post, only for locales with a real, published translation: a fallback
+ * URL serves the English text and canonicalizes to it.
  */
 export function buildPostAlternates(translationKey: string): Record<string, string> {
   const localeMap = getMetaIndex().get(translationKey);
@@ -322,56 +296,13 @@ export function listAllUrlSlugsByLocale(
 /** Default number of posts per page on listing views. */
 export const BLOG_POSTS_PER_PAGE = 12;
 
-/**
- * Slice a posts list into a single page worth of items.
- * Pages are 1-based. Out-of-range pages return an empty array.
- */
-export function paginatePosts<T>(
-  items: readonly T[],
-  page: number,
-  perPage: number = BLOG_POSTS_PER_PAGE
-): { items: T[]; page: number; totalPages: number; totalItems: number } {
-  const totalItems = items.length;
-  const totalPages = Math.max(1, Math.ceil(totalItems / perPage));
-  const clamped = Math.min(Math.max(1, page | 0), totalPages);
-  const start = (clamped - 1) * perPage;
-  return {
-    items: items.slice(start, start + perPage),
-    page: clamped,
-    totalPages,
-    totalItems,
-  };
-}
-
-/**
- * Parse a `?page=` search-param value into a clamped 1-based page number.
- * Returns 1 for missing, invalid, or out-of-range input.
- */
-export function parsePageParam(value: unknown, totalPages: number = Infinity): number {
-  const raw = Array.isArray(value) ? value[0] : value;
-  const n = typeof raw === 'string' ? Number.parseInt(raw, 10) : NaN;
-  if (!Number.isFinite(n) || n < 1) return 1;
-  if (Number.isFinite(totalPages) && n > totalPages) return totalPages;
-  return n;
-}
-
 const POSTS_BY_RECENCY = new Map<Locale, readonly BlogListItem[]>();
 
 /**
- * When a post was last touched, for the recency sort below and for the date the header's blog
- * panel prints beside each post.
- *
- * `updatedAt` moves only when a post gets new content (new dates, new parks, new figures, a
- * corrected fact), never for a wording or prose pass
- * (docs/rules/updated-at-is-for-new-content.md): it is the order of the menu and the homepage.
- *
- * `updatedAt` is optional — a post that was never revised (most of them) sorts
- * by its publication `date`, exactly as it always did. The `max` is what makes
- * that rule total: `updatedAt` may only ever pull a post FORWARD. An entry that
- * predates its own `date` (a typo, or a `date` corrected forward after the fact)
- * would otherwise push the post further back than a pure date sort would, which
- * is the opposite of what marking it updated is for. Both fields are ISO
- * `YYYY-MM-DD`, so string comparison is date comparison.
+ * When a post was last touched, for the recency sort and the date the header's blog panel prints:
+ * `updatedAt` when it is later than `date`, so it can only pull a post forward. `updatedAt` moves
+ * only for new content (docs/rules/updated-at-is-for-new-content.md). Both are ISO `YYYY-MM-DD`,
+ * so string comparison is date comparison.
  */
 export function lastTouched(fm: BlogFrontmatter): string {
   const updated = fm.updatedAt?.trim();
@@ -379,25 +310,11 @@ export function lastTouched(fm: BlogFrontmatter): string {
 }
 
 /**
- * The same list as {@link listPosts}, but ordered by when a post last CHANGED
- * ({@link lastTouched}: `updatedAt` where it exists, else the publication
- * `date`) instead of by when it was first published.
- *
- * The homepage strips are a "what's new here" surface, not an archive: a guide
- * that got this season's confirmed dates written into it is news again, and
- * under a pure `date` sort it stays buried behind every post published since.
- * Every other surface keeps publication order on purpose — the blog index and
- * the category/tag pages read as an archive, `feed.xml` would re-notify
- * subscribers about an article they already have, and `blog-post-nav` walks
- * neighbours in chronological order, which is the only order a "previous post"
- * link means anything in.
- *
- * `featured` still wins, exactly as in `listPosts`, so pinning a post is not
- * quietly undone by someone fixing a typo in a newer one.
- *
- * Frozen and memoised like every list here — copy before sorting.
+ * {@link listPosts} ordered by {@link lastTouched} instead of publication date, for the "what's
+ * new" surfaces: a guide that got this season's dates is news again. The archive pages, the feed
+ * and prev/next keep publication order on purpose. `featured` still wins. Frozen and memoised.
  */
-export function listPostsByRecency(requestedLocale: Locale): readonly BlogListItem[] {
+function listPostsByRecency(requestedLocale: Locale): readonly BlogListItem[] {
   const memo = POSTS_BY_RECENCY.get(requestedLocale);
   if (memo) return memo;
 
@@ -421,14 +338,12 @@ export function listPostsByRecency(requestedLocale: Locale): readonly BlogListIt
 }
 
 /**
- * News and articles publish at very different rates — a news post is a short note
- * about a ride opening or an anniversary, an article is a measured guide — so the
- * surfaces that show "the newest posts" keep them apart: otherwise a week of news
- * pushes every guide off the homepage and out of the header menu. The category
- * itself, and the `/news` URL it earns a post, live in `./paths`.
+ * News and articles publish at very different rates, so the "newest posts" surfaces keep them
+ * apart; otherwise a week of news pushes every guide off the homepage and the header menu.
  */
 export { NEWS_CATEGORY } from './paths';
 
+/** Returns true when a post's category is `news` or a subcategory of it. */
 export function isNewsPost(post: Pick<BlogListItem, 'frontmatter'>): boolean {
   return isNewsCategory(post.frontmatter.category);
 }

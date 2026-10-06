@@ -1,3 +1,4 @@
+/** Text input primitive (shadcn/ui): a styled `<input>` with focus and invalid states. */
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';

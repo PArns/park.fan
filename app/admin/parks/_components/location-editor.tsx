@@ -8,19 +8,9 @@ import { Field, TextInput } from '../../_ui/controls';
 import { useToast } from '../../_ui/toast';
 
 /**
- * Correcting where a park is.
- *
- * The admin has been able to *see* a wrong location since the map view landed
- * — a marker at 0,0 is hard to miss — and the header even warns when the
- * coordinates are missing altogether, then told the operator to go and run a
- * repair job. `POST parks/:id/correct-location` has been sitting there the
- * whole time.
- *
- * Not a curated field, deliberately. The city is part of the park's public
- * address (`/parks/europe/germany/bruehl/phantasialand`), so changing it moves
- * a published URL: the endpoint writes a slug alias for the old path and
- * revalidates. That is a rename, which this codebase keeps as its own
- * operation rather than a column somebody edits by accident.
+ * Corrects where a park is, through `POST parks/:id/correct-location`. Not a curated field: the
+ * city is part of the park's public URL, so a change is a rename, with a slug alias for the old
+ * path, kept apart from columns somebody might edit by accident.
  */
 export function LocationEditor({
   parkId,

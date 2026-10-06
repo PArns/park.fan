@@ -70,13 +70,9 @@ export interface MediaSidecar {
   /** Park slug the image shows, or `null` when it shows no specific park. */
   park?: string | null;
   /**
-   * Full hierarchy path (`europe/france/paris/disneyland-park`), for the parks
-   * whose slug is not unique.
-   *
-   * Two really exist in the catalog: `disneyland-park` (Anaheim and Paris) and
-   * `universal-islands-of-adventure` (Orlando and, per the upstream data, Tampa).
-   * A bare slug cannot say which one a photo shows, so the generator warns when a
-   * colliding slug is used without this.
+   * Full hierarchy path (`europe/france/paris/disneyland-park`), for the parks whose slug is not
+   * unique (`disneyland-park` is Anaheim and Paris). The generator warns when a colliding slug is
+   * used without it.
    */
   parkPath?: string | null;
   /** Attraction slug, when the image shows one specific ride. */
@@ -89,18 +85,10 @@ export interface MediaSidecar {
    */
   collections?: string[];
   /**
-   * Further attraction slugs the same photo shows, and should answer for.
-   *
-   * For the pairs the API lists as two rides but the park built as one structure:
-   * Winja's Fear and Winja's Force share a hall, YOY Chill and YOY Thrill share a
-   * layout, and one photograph is genuinely of both. Storing that as two identical
-   * files is what the media database exists to avoid — and when the duplicates were
-   * cleaned up, the second ride silently lost its only picture, because `ride` holds
-   * one slug. `roles` already solved the same problem in the other direction (one
-   * file is `park-background` AND `ride-card`); this is that, for rides.
-   *
-   * Not a place for "this ride is also in frame somewhere": the photo has to be a
-   * fair card for every slug listed, since `ride-card` resolution treats them alike.
+   * Further attraction slugs the same photo shows and answers for: pairs the API lists as two
+   * rides but the park built as one structure (Winja's Fear and Force share a hall), so one file
+   * serves both. The photo has to be a fair card for every slug listed, since `ride-card`
+   * resolution treats them alike. See docs/rules/one-photo-can-index-two-rides-alsorides.md.
    */
   alsoRides?: string[];
   /** Themed area within the park (not tracked by the API — authored here). */
@@ -124,16 +112,9 @@ export interface MediaSidecar {
    */
   focus?: MediaFocus | string | null;
   /**
-   * Somebody still has to look at this one.
-   *
-   * Written by the field-capture route (`/admin/capture`), which fills in what a
-   * phone standing in front of a ride can know for certain and leaves what needs
-   * the picture on a screen: alt text, caption, the tags describing what is in
-   * frame, the focal point if it was not tapped on the spot. The flag is what
-   * separates "not written yet" from "needs none" — those two look identical in
-   * the database, which is why a missing alt text alone cannot be the signal.
-   *
-   * Cleared from the media browser's detail panel. Only `true` is ever written.
+   * Somebody still has to look at this one: set by the field-capture route (`/admin/capture`),
+   * cleared from the media browser's detail panel. It separates "not written yet" from "needs
+   * none", which a missing alt text alone cannot. Only `true` is ever written.
    */
   review?: boolean;
 }
@@ -197,19 +178,13 @@ export interface MediaImage {
   shotAt: string | null;
   order: number | null;
   /**
-   * GPS fix, from EXIF unless the sidecar overrides it. The admin browser matches
-   * this against the park catalog to confirm — or contradict — the assigned park,
-   * which is the cheapest data-quality check the database has: a photo tagged
-   * `europa-park` whose coordinates land in Kaatsheuvel is simply mislabelled.
+   * GPS fix, from EXIF unless the sidecar overrides it; the admin browser checks it against the
+   * assigned park (`lib/media/geo.ts`).
    */
   gps: MediaGps | null;
   /**
-   * Normalized focal point, or null when the image is happy centred.
-   *
-   * Drives both the CSS `object-position` wherever the photo is painted in a
-   * different aspect ratio (ride cards, backgrounds) and the offset the
-   * build-time crops are cut at, so a subject near an edge — the Troy horse's
-   * head — survives every rendition instead of being cut off in the wide one.
+   * Normalized focal point, or null when centred. Drives both the CSS `object-position` and the
+   * offset the build-time crops are cut at (see `MediaFocus`).
    */
   focus: MediaFocus | null;
   /** Still awaiting a proper pass — see `MediaSidecar.review`. */

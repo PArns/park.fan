@@ -9,13 +9,8 @@ import {
 } from './push-follows';
 
 /**
- * Every ride alert and followed show this browser has, from the server.
- *
- * The local mirror in `push-follows-store` is a cache for bells, not a source of truth for a
- * surface whose job is to show what is really set — the same reasoning `AlertsOverview`
- * documents. What the mirror IS good for is deciding whether to ask at all: a caller gates
- * `enabled` on `hasAnyPushFollowsLocal()`, so a browser that has never set an alert never makes
- * this request.
+ * Every ride alert and followed show this browser has, from the server: the local mirror in
+ * `push-follows-store` is a cache for bells, not the truth for a surface that lists what is set.
  */
 
 export interface PushFollowsList {
@@ -27,6 +22,10 @@ export interface PushFollowsList {
 
 export const PUSH_FOLLOWS_QUERY_KEY = ['push-follows'] as const;
 
+/**
+ * The server's list of this browser's alerts and follows. Gate `enabled` on
+ * `hasAnyPushFollowsLocal()`, so a browser that never set one never asks.
+ */
 export function usePushFollowsList({ enabled }: { enabled: boolean }) {
   return useQuery<PushFollowsList>({
     queryKey: PUSH_FOLLOWS_QUERY_KEY,
@@ -43,11 +42,9 @@ export function usePushFollowsList({ enabled }: { enabled: boolean }) {
       };
     },
     enabled,
-    // No stale window on purpose, unlike `useFavorites`' five minutes. This is a handful of rows
-    // of JSON behind a gate almost nobody passes, and it is a surface somebody DELETES from — a
-    // cached copy would offer a row that is already gone, or hide one just set on the page
-    // underneath. The 90 ms hover hysteresis in `useMenuTrigger` is what keeps a pointer crossing
-    // the bar from asking at all.
+    // No stale window: on a surface somebody deletes from, a cached copy would offer a row that is
+    // already gone or hide one just set. The hover hysteresis in `useMenuTrigger` keeps a pointer
+    // crossing the bar from asking at all.
     staleTime: 0,
     gcTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,

@@ -43,41 +43,18 @@ import type {
 import type { AttractionStatus, CrowdLevel, ParkStatus, ScheduleSummary } from '@/lib/api/types';
 
 /**
- * The favorites menu's contents — cards in the full-width band, rows in the 300 px burger sheet.
- *
- * Three things it is built around:
- *
- * 1. **It does not fetch until it is opened.** The header renders on every one of ~35,000 pages;
- *    an ungated `useFavorites()` here would put a `/api/favorites` request on all of them for
- *    every visitor who has ever starred anything. `open` is the gate, and the query key is shared
- *    with the homepage band, so opening the menu there resolves from cache.
- * 2. **Two shapes, because the two hosts are 1100 px apart.** The band gets cards with the photo
- *    the favorites proxy already attaches (`enrichParksWithImages`) and the wait time set large —
- *    that is what somebody opens this for. The sheet gets rows: a card grid in a 300 px column is
- *    one card per screen.
- * 3. **The picture is optional and the layout is not.** The media database holds an image for 14
- *    of 212 parks, so most cards fall back to a tinted field carrying the park's own crowd colour.
- *    Its box is identical either way — a grid that reflows depending on which parks somebody
- *    happens to have starred reads as broken.
- *
- * Everything here reads `favorites`, `common`, `geo` and `parks.status`, all of which the layout
- * chrome already carries. `ParkCard`/`AttractionCard` would drag `parks` + `attractions` into the
- * chrome payload of every page, which is what the homepage band fetches a lazy chunk to avoid.
+ * The favorites menu's contents: cards in the full-width band, rows in the 300 px burger sheet.
+ * It fetches nothing until opened, since the header renders on every page. The picture is optional
+ * and the card's box is not, so the grid never reflows on which parks are starred. It reads only
+ * namespaces the layout chrome already carries, which is why it does not use
+ * `ParkCard`/`AttractionCard`.
  */
 
 /**
- * The alerts group, loaded the first time somebody opens the band with something armed.
- *
- * `lib/push/push-follows` reaches `push-registration`, i.e. the service worker and the VAPID
- * key — none of which belongs in the chunk the header ships on ~35,000 pages for a feature most
- * visitors never use. Same split the planner makes: the way in is eager, the machinery is not.
- *
- * `lazy` rather than `next/dynamic`, for one reason: `dynamic`'s `loading` takes no props, and
- * the placeholder has to know how many rows to reserve. A `Suspense` fallback is written at the
- * call site, which is where that number already is. `Suspense` renders no element of its own
- * either, so a group that resolves to `null` leaves nothing behind — see `FavoritesMenuAlerts`.
- * There is no server render to worry about: the gate below is a `localStorage` count, which is
- * 0 in every server and hydrating render.
+ * The alerts group, loaded the first time somebody opens the band with something armed:
+ * `lib/push/push-follows` reaches the service worker and the VAPID key, which do not belong in the
+ * header's chunk. `lazy` rather than `next/dynamic`, because the `Suspense` fallback at the call
+ * site knows how many rows to reserve. The gate is a `localStorage` count, 0 on the server.
  */
 const FavoritesMenuAlerts = lazy(() =>
   import('@/components/layout/favorites-menu-alerts').then((m) => ({
@@ -118,23 +95,10 @@ function WaitFigure({ minutes, unit }: { minutes: number; unit: string }) {
 }
 
 /**
- * One favorite as a card: picture on top, name and place under it, the figure in the footer.
- *
- * **Every card in this panel is exactly as tall as every other one, and none of that height
- * depends on what the API answered.** The picture height is FIXED rather than an aspect ratio:
- * back when the two groups had columns of different widths, `aspect-[16/10]` made the picture
- * follow that width and a park card stood 27 px taller than the ride card beside it before a
- * single line of text was drawn. `planBand` gives every group the same card width now, so that
- * particular fault cannot recur — but a fixed height is still what keeps the band's rows level
- * when the card width changes between breakpoints, and `object-cover` fills the box either way
- * with the focal point holding.
- *
- * The text block underneath is reserved rather than conditional, for the same reason and for a
- * second one: within a group it made rows ragged too. A ride with no wait time rendered no
- * figure at all (32 px shorter), a closed park's `0/64` is a `text-xs` line where an open one has
- * a `text-2xl` one (8 px), and a ride whose park is unknown dropped its subtitle. So the
- * subtitle, the figure and the schedule each get a box of their own whether or not there is
- * anything to put in it.
+ * One favorite as a card: picture on top, name and place under it, the figure in the footer. Every
+ * card is exactly as tall as every other: the picture has a fixed height rather than an aspect
+ * ratio, and the subtitle, figure and schedule each keep their box when empty, so rows stay level
+ * whatever the API answered.
  */
 function Card({
   href,
@@ -189,10 +153,10 @@ function Card({
           <span className="text-foreground group-hover:text-primary truncate text-sm font-semibold transition-colors">
             {title}
           </span>
-          {/* Leer heißt leer, nicht weg — siehe oben. Das Geviert hält die Zeile offen. */}
+          {/* Empty, not gone: the no-break space keeps the line's box. */}
           <span className="text-muted-foreground truncate text-xs">{subtitle || '\u00A0'}</span>
-          {/* `h-6` ist die Höhe von `WaitFigure` (text-2xl, leading-none), damit die kleinere
-              Ersatzangabe darin sitzt statt die Karte kürzer zu machen. */}
+          {/* `h-6` is `WaitFigure`'s height, so the smaller fallback sits inside it instead of
+              making the card shorter. */}
           <span className="mt-1.5 flex h-6 items-center">{figure}</span>
           <span className="mt-1 flex h-4 items-center">{schedule}</span>
         </span>
@@ -202,18 +166,10 @@ function Card({
 }
 
 /**
- * „Schließt in 3 Std. 12 Min." / „Öffnet in 40 Min." / „Öffnet am Fr., 5. Sept." für eine
- * Favoritenkarte.
- *
- * Rein und ohne Uhr: `now` kommt von außen, damit die Funktion testbar bleibt und der Aufrufer
- * entscheidet, wann sie überhaupt eine Antwort geben darf. Vor dem Mount ist `now` `null` und
- * hier kommt `null` heraus — die Zeile ist dann leer, aber ihr Kasten steht (siehe `Card`), also
- * kostet das Nachrücken nichts.
- *
- * Der Status des Parks wird bewusst nicht gelesen, nur der Fahrplan und die Uhr in der Zeitzone
- * des Parks: `status` ist die Live-Lage („gerade außerplanmäßig zu"), die Frage hier ist aber,
- * wann laut Plan auf- und zugeschlossen wird. Beides nebeneinander widerspricht sich nicht — das
- * Badge auf dem Bild sagt das eine, diese Zeile das andere.
+ * „Schließt in 3 Std. 12 Min." / „Öffnet in 40 Min." / „Öffnet am Fr., 5. Sept." for a favorite
+ * card. Pure: `now` comes from the caller, and `null` before mount gives an empty line whose box
+ * already stands. It reads the schedule in the park's zone, not the live `status`: the badge on the
+ * picture says one, this line the other.
  */
 function scheduleMessage(
   {
@@ -239,8 +195,8 @@ function scheduleMessage(
     if (todaySchedule?.scheduleType === 'OPERATING') {
       const opening = new Date(todaySchedule.openingTime);
       const closing = new Date(todaySchedule.closingTime);
-      // Der Eintrag heißt „today", muss es aber in der Zeitzone des Parks auch sein: für einen
-      // Park in Kalifornien ist der 2. September hier schon der 1. dort.
+      // The entry is called "today", but it has to be today in the park's zone too: for a park in
+      // California, 2 September here can still be 1 September there.
       if (dayIn(opening) === dayIn(now)) {
         if (now < opening) {
           return `${t('opensIn')} ${formatDurationShort(opening.getTime() - now.getTime(), tCommon)}`;
@@ -255,8 +211,7 @@ function scheduleMessage(
     const next = new Date(nextSchedule.openingTime);
     const diff = next.getTime() - now.getTime();
     if (diff <= 0) return null;
-    // Unter einem Tag zählt die Restzeit, darüber das Datum: „öffnet in 62 Std." ist keine
-    // Angabe, mit der jemand etwas anfangen kann.
+    // Under a day the remaining time counts, beyond it the date: "opens in 62 h" helps nobody.
     if (diff < 24 * 60 * 60 * 1000) {
       return `${t('opensIn')} ${formatDurationShort(diff, tCommon)}`;
     }
@@ -272,11 +227,9 @@ function scheduleMessage(
 }
 
 /**
- * Die Fahrplanzeile unter der Kennzahl.
- *
- * `suppressHydrationWarning`, weil der Text an der Uhr des Lesers hängt; `useMinuteNowDate` gibt
- * vor dem Mount `null` zurück, der erste Client-Render stimmt also mit dem Server überein und die
- * Zeile füllt sich eine Tick später.
+ * The schedule line under the figure. `suppressHydrationWarning` because the text depends on the
+ * reader's clock; `useMinuteNowDate` is `null` before mount, so the first client render matches the
+ * server.
  */
 function ScheduleLine({
   todaySchedule,
@@ -315,9 +268,8 @@ function ScheduleLine({
 function CardSkeletons({ count }: { count: number }) {
   return (
     <>
-      {/* Dieselben Kästen wie in `Card`, sonst springt das Band beim Eintreffen der Daten. Die
-          Anzahl kommt fertig gedeckelt herein — das Skelett muss dieselben Reihen belegen wie
-          die Karten danach, und wie viele das sind, weiß nur die Aufteilung des Bandes. */}
+      {/* The same boxes as `Card`, or the band jumps when the data arrives. The count arrives
+          capped, because only the band's plan knows how many rows the cards will take. */}
       {Array.from({ length: count }).map((_, i) => (
         <li key={i} className="border-border/60 overflow-hidden rounded-xl border">
           <Skeleton className="h-32 rounded-none" />
@@ -334,14 +286,9 @@ function CardSkeletons({ count }: { count: number }) {
 }
 
 /**
- * The band's inner width, measured.
- *
- * There is no way around measuring: the number of cards that fit is a function of the width, the
- * width of the header is a function of the trip planner, and the split between the groups has to
- * be decided before either grid is drawn. It runs in a LAYOUT effect keyed on `open`, so the
- * measurement happens in the same commit that drops the panel's `hidden` — the first painted
- * frame is already the right one, and the observer only catches what changes afterwards (the
- * planner opening, a window resize).
+ * The band's inner width, measured: how many cards fit depends on it, and the planner changes the
+ * header's width. A layout effect keyed on `open`, so the measurement lands in the commit that
+ * drops `hidden` and the first painted frame is already right.
  */
 function useBandWidth(active: boolean) {
   const ref = useRef<HTMLDivElement>(null);
@@ -360,17 +307,19 @@ function useBandWidth(active: boolean) {
   return { ref, width };
 }
 
+/**
+ * Contents of the header's favourites menu: favourite parks, rides, shows and restaurants as cards
+ * in the full-width band or as rows in the phone sheet, the alerts group, and nearby parks to star
+ * while the list is empty. Fetches nothing until opened.
+ */
 export function FavoritesMenuPanel({
   open,
   variant = 'band',
 }: {
   open: boolean;
   /**
-   * `band` is the full-width header panel, `sheet` the 300 px burger column.
-   *
-   * Not cosmetic: every `sm:`/`lg:` below is a VIEWPORT query, and the sheet is 300 px wide at
-   * every viewport that shows it — including 640–1023 px, where the burger is still the whole
-   * navigation.
+   * `band` is the full-width header panel, `sheet` the 300 px burger column. Every `sm:`/`lg:`
+   * below is a viewport query, and the sheet is 300 px wide at every viewport that shows it.
    */
   variant?: 'band' | 'sheet';
 }) {
@@ -389,29 +338,18 @@ export function FavoritesMenuPanel({
   const { ref: bandRef, width: bandWidth } = useBandWidth(open && !isSheet && counts.total > 0);
 
   /*
-   * Vorschläge für den leeren Zustand.
-   *
-   * Dieselbe Query, die der Header für die „In der Nähe"-Pille und das Parkmenü ohnehin stellt —
-   * keine zusätzliche Anfrage. `useMounted` ist Pflicht und kein Feinschliff: der Hook seedet aus
-   * `localStorage`, ohne das Gatter stünde serverseitig keine Zeile und im ersten Client-Render
-   * eine, und React würde den Teilbaum wegwerfen (siehe #360).
-   */
-  /*
-   * Die Alarme dieses Browsers — unabhängig von den Favoriten, denn eine Glocke setzt niemand
-   * über einen Stern.
-   *
-   * Das Gatter ist der lokale Spiegel und nicht der Server: er kostet einen `localStorage`-Zugriff
-   * statt zweier Anfragen, und wer noch nie einen Alarm gesetzt hat — also fast jeder — lädt so
-   * weder den Chunk noch stellt er eine Anfrage. Ist der Spiegel gelöscht worden, während die
-   * Push-Anmeldung im Browser überlebt hat, bleibt die Gruppe aus; der Link „Meine Alarme" in der
-   * Kopfzeile führt weiterhin auf die vollständige Liste.
-   *
-   * Nur im Band: auf dem 300-px-Sheet bleibt es beim Link (siehe `FavoritesMenuAlerts`).
+   * This browser's alerts, independent of the favourites. The gate is the local mirror, not the
+   * server: one `localStorage` read, so a visitor who never set an alert loads neither the chunk
+   * nor a request. If the mirror was cleared while the subscription survived, the „Meine Alarme"
+   * link in the header row still leads to the full list. Band only.
    */
   const [alertCount] = useLocalPushFollowsValue(0, countPushFollowsLocal, []);
   const showAlerts = !isSheet && open && alertCount > 0;
   const rowGroups = (counts.shows + counts.restaurants > 0 ? 1 : 0) + (showAlerts ? 1 : 0);
 
+  // Suggestions for the empty state, from the query the header already makes for the nearby pill.
+  // `useMounted` is required: the hook seeds from `localStorage`, so without the gate the server
+  // and the first client render would disagree and React would throw the subtree away.
   const mounted = useMounted();
   const { data: nearbyData } = useHomeNearbyParks();
   const suggestions =
@@ -422,11 +360,8 @@ export function FavoritesMenuPanel({
 
   if (counts.total === 0) {
     /*
-     * In the sheet two lines, in the band the whole guide.
-     *
-     * The three steps stacked in a 300 px column are 358 px tall — 58 % of the entire burger menu
-     * on a 390×844 phone, for a state with nothing to show. That menu is the whole navigation
-     * there. The sentence that matters is the second step anyway: where the star is.
+     * In the sheet two lines, in the band the whole guide: the three steps stacked in a 300 px
+     * column would take over half the phone's navigation for a state with nothing to show.
      */
     if (isSheet) {
       return (
@@ -440,16 +375,9 @@ export function FavoritesMenuPanel({
               </span>
             </span>
           </div>
-          {/* `/favorites` only, and the alerts link deliberately not beside it.
-              `MoreMenuLinks variant="sheet"` carries `/alerts` unconditionally at the foot of this
-              same sheet, so a second one printed „Meine Alarme" twice in one 300 px column,
-              366 px apart (measured at 360 px: y = 170.5 and y = 536.5) — the duplication the
-              filled state's header already avoids with its `!isSheet`. `/favorites` is the
-              opposite case: `MoreMenuLinks` leaves it out of the sheet on purpose (PAR-290)
-              because this panel carries it, so without this line the empty state is the one
-              place in the whole menu with no way to that page, and on a phone this sheet is the
-              navigation. Its own line under the two sentences, not beside them: 252 px of
-              content carry the label, the sentence next to it they do not. */}
+          {/* `/favorites` only: `MoreMenuLinks` already carries `/alerts` at the foot of this
+              sheet, and leaves `/favorites` out because this panel carries it. On its own line,
+              since the 252 px column cannot hold it beside the sentences. */}
           <span className="mt-3 flex pl-7">
             <FavoritesPageMenuLink label={t('link')} />
           </span>
@@ -458,51 +386,32 @@ export function FavoritesMenuPanel({
     }
 
     /*
-     * Der leere Zustand ist DASSELBE Panel, nur ohne Inhalt — und sah aus wie ein anderes.
-     *
-     * Er stand mittig, mit `max-w-3xl` darunter: ein 768-px-Block, der in einem 1248 px breiten
-     * Band bei x=336 anfing und bei 1104 aufhörte, während die Navigationszeile darüber, die
-     * Karten des gefüllten Zustands und die Seite darunter alle bei 96 beginnen. Eine Insel, die
-     * sich an nichts ausrichtet, mit je einem Viertel leerem Glas links und rechts. Dazu eine
-     * andere Kopfzeile als der gefüllte Zustand — dort links „★ Favoriten" und rechts „Alle
-     * anzeigen", hier eine zentrierte Zeile ohne Gegenstück —, sodass ein Besucher ohne
-     * Favoriten nicht dasselbe Menü sieht wie einer mit.
-     *
-     * Die Begründung fürs Zentrieren war „linksbündig bliebe rechts eine leere Hälfte". Die
-     * bleibt zentriert auch — nur in zwei Vierteln statt in einer Hälfte, und dafür an keiner
-     * Kante. Also dieselbe Kopfzeile, dieselben Kanten, und die drei Schritte über die volle
-     * Breite als drei Spalten: bei 1248 px sind das ~400 px pro Schritt für ein bis zwei Zeilen,
-     * was liest, statt quer über den Bildschirm zu laufen.
+     * The empty state is the same panel without content: the same header, the same edges, and the
+     * three steps as three columns over the full width rather than a centred island.
      */
     return (
       <div>
         <div
           className={cn(
             'mb-4 flex gap-4',
-            // A 300px Sheet leaves ~252px of content — "★ Favoriten" on the
-            // left plus "🔔 Meine Alarme" and "Entdecken" both on the right,
-            // in one row, ran past that in German and French alike. Below
-            // `sm` the links wrap onto their own line under the title rather
-            // than overflowing the row.
+            // The 300 px sheet cannot hold the title and both links in one row in German or
+            // French, so the links wrap under the title.
             isSheet ? 'flex-col items-start gap-2' : 'items-center justify-between'
           )}
         >
-          {/* Grau, nicht gold: der Stern im Auslöser ist gefüllt, sobald etwas markiert ist, und
-              diese Zeile sagt das Gegenteil. */}
+          {/* Grey, not gold: the trigger's star is filled once something is starred, and this
+              line says the opposite. */}
           <span className="text-foreground inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase">
             <Star className="text-muted-foreground/60 h-4 w-4" aria-hidden="true" />
             {t('empty')}
           </span>
-          {/* Dieselben zwei Links wie im gefüllten Zustand, plus „Parks entdecken": als Knopf
-              unter der Anleitung nahm derselbe Link eine eigene Zeile im Band und stand wieder
-              auf keiner Kante. */}
+          {/* The same two links as the filled state, plus „Parks entdecken". */}
           <span className="flex items-center gap-3">
-            {/* Unabhängig von den Favoriten: wer keinen Favoriten, aber einen Ride-Alarm oder
-                eine Show-Erinnerung hat, braucht trotzdem einen Weg zur Übersicht. Im Sheet
-                nicht — dort steht derselbe Link unbedingt in `MoreMenuLinks`, siehe unten. */}
+            {/* Independent of favourites: a ride alert or show reminder still needs a way to the
+                overview. Not in the sheet, where `MoreMenuLinks` carries it. */}
             {!isSheet && <PushAlertsMenuLink label={tPush('link')} />}
-            {/* Und die Favoritenseite ist im leeren Zustand gerade das, was fehlt: dort steht
-                die Anleitung noch einmal, und ein Lesezeichen darauf ist der Weg zurück. */}
+            {/* In the empty state the favourites page is what is missing: it repeats the guide,
+                and a bookmark on it is the way back. */}
             <FavoritesPageMenuLink label={t('link')} />
             <Link
               href="/parks"
@@ -514,9 +423,8 @@ export function FavoritesMenuPanel({
           </span>
         </div>
 
-        {/* Über der Anleitung, nicht darunter: wer Alarme hat, hat etwas Echtes im Menü stehen,
-            und eine Anleitung zum Sternsetzen ist daneben das Nachrangige. Über die volle Breite,
-            weil es hier keine zweite Gruppe gibt, neben der es sich eine Spur teilen müsste. */}
+        {/* Above the guide: alerts are something real in the menu, and the starring guide is
+            secondary. Full width, since no second group shares the track. */}
         {showAlerts && (
           <Suspense
             fallback={
@@ -546,9 +454,8 @@ export function FavoritesMenuPanel({
             <span className="text-muted-foreground mb-2.5 block text-[11px] font-semibold tracking-wide uppercase">
               {tNav('nearby')}
             </span>
-            {/* Der Stern steht NEBEN dem Link, nicht darin: verschachtelt würde ein Klick darauf
-                zur Parkseite navigieren, statt den Park zu markieren. Genau das ist hier aber der
-                Sinn — ein Tippen, und das Panel füllt sich. */}
+            {/* The star sits beside the link, not inside it: nested, a click would open the park
+                page instead of starring it. */}
             <ul className="flex flex-wrap gap-2">
               {suggestions.map((park) => (
                 <SuggestionChip key={park.id} park={park} />
@@ -563,14 +470,9 @@ export function FavoritesMenuPanel({
   const loading = isPending || !data;
   const cap = isSheet ? MAX_ROWS : MAX_CARDS;
   /*
-   * Wie viele Karten eine Gruppe zeigt, entscheidet die Aufteilung des Bandes (`planBand`) und
-   * nicht eine feste Zahl: so viele, wie in `MAX_CARD_ROWS` Reihen ihrer Spalten passen. Damit
-   * hängt die Höhe des Bandes an der Anzahl der REIHEN statt daran, wie viel jemand markiert
-   * hat — der Rest fällt in dieselbe „+N"-Zeile.
-   *
-   * Diese Obergrenzen entscheiden nur noch über die „+N"-Zeile. Der Link auf `/favorites` hing
-   * einmal an ihnen („Alle anzeigen", nur wenn eine Gruppe überläuft); er ist jetzt
-   * unbedingt, siehe `FavoritesPageMenuLink`.
+   * How many cards a group shows is decided by the band's plan (`planBand`): as many as fit in
+   * `MAX_CARD_ROWS` rows of its columns, so the band's height follows the rows, not how much
+   * somebody starred. The rest goes to the „+N" line.
    */
   const plan = isSheet ? null : planBand(bandWidth, counts, rowGroups);
   const cardCap = (cols: number | undefined, count: number) =>
@@ -582,25 +484,21 @@ export function FavoritesMenuPanel({
 
   const listClass = isSheet ? 'space-y-px' : 'grid gap-3';
   /*
-   * Feste Pixelspuren, kein `1fr`: die Kartenbreite ist EINE Zahl für das ganze Band, und ein
-   * `fr` würde sie in jeder Gruppe neu aus deren Breite ableiten — genau der Rückweg zu zwei
-   * Kartengrößen nebeneinander. Ohne Messung fällt es auf `auto-fill` zurück, das ist nur für
-   * den einen Renderdurchgang vor dem ersten Layout da.
+   * Fixed pixel tracks, not `1fr`: the card width is one number for the whole band, and `fr` would
+   * derive it per group again. Without a measurement it falls back to `auto-fill` for the one
+   * render before the first layout.
    */
   const gridStyle = (cols: number | undefined): React.CSSProperties | undefined => {
     if (isSheet) return undefined;
     if (!plan || !cols) return { gridTemplateColumns: 'repeat(auto-fill, minmax(10.5rem, 1fr))' };
     return { gridTemplateColumns: `repeat(${cols}, ${plan.card}px)` };
   };
-  /* Die Gruppe ist so breit wie ihre Spuren; ihre Breite ist ein Ergebnis, keine Vorgabe mehr. */
+  /* A group is as wide as its tracks; its width is a result, not an input. */
   const groupStyle: React.CSSProperties | undefined = isSheet ? undefined : { flex: '0 0 auto' };
   /*
-   * Shows und Restaurants wachsen NICHT mit ihrer Anzahl.
-   *
-   * Karten brauchen mehr Breite, wenn es mehr werden; eine Zeile wird davon nur länger, nicht
-   * besser: vier Shows hätten sich sonst ein Drittel des Bandes genommen und es rechts leer
-   * stehen lassen. Eine feste Grundbreite, die den Rest nur mitnimmt, wenn keine andere Gruppe
-   * ihn braucht — und die volle Breite, wenn sie als einzige da ist.
+   * Shows and restaurants do not grow with their count: a row only gets longer, not better. A fixed
+   * base width that takes the rest only when no other group needs it, and the full width when it
+   * is the only group.
    */
   const rowGroupStyle: React.CSSProperties | undefined =
     isSheet || !plan || plan.stacked
@@ -612,33 +510,27 @@ export function FavoritesMenuPanel({
       <div
         className={cn(
           'mb-4 flex gap-4',
-          // Same overflow risk as the empty state's header above, and the
-          // same fix: on the 300px Sheet, "My alerts" and "view all" both
-          // sitting beside the title in one row can run past its ~252px of
-          // content, so they wrap onto their own line under it instead.
+          // Same fix as the empty state's header: on the 300 px sheet the links wrap under the
+          // title.
           isSheet ? 'flex-col items-start gap-2' : 'items-center justify-between'
         )}
       >
         <span className="text-foreground inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase">
-          {/* Gold wie der Auslöser im Balken und wie jeder Stern auf einer Park- oder Bahnseite
-              (`FavoriteStar`) — dieselbe Marke, dieselbe Farbe. */}
+          {/* Gold like the trigger and every `FavoriteStar`: the same mark, the same colour. */}
           <Star className="h-4 w-4 fill-amber-400 text-amber-500" aria-hidden="true" />
           {t('title')}
         </span>
         <span className="flex items-center gap-3">
-          {/* Nicht im Sheet: dort trägt `MoreMenuLinks` denselben Link mit demselben Icon und
-              demselben Text unbedingt, und in einer 300-px-Spalte stünde „Meine Alarme" für jeden
-              Besucher mit mindestens einem Favoriten zweimal untereinander (gemessen: y = 104 und
-              y = 547 bei 360 px). Im Band bleibt er, weil dieses Panel und das „Mehr"-Panel nie
-              gleichzeitig offen sind. */}
+          {/* Not in the sheet, where `MoreMenuLinks` carries the same link and it would appear
+              twice in one column. In the band it stays: this panel and „Mehr" are never open
+              together. */}
           {!isSheet && <PushAlertsMenuLink label={tPush('link')} />}
           <FavoritesPageMenuLink label={t('link')} />
         </span>
       </div>
 
-      {/* `plan.stacked` und nicht `lg:flex-row`: die Breite dieses Bandes ist die des Headers,
-          und die schrumpft der Tagesplaner, ohne dass das Fenster sich rührt — eine
-          Viewport-Regel beschreibt hier nicht mehr den Kasten, in dem sie steht. */}
+      {/* `plan.stacked` rather than `lg:flex-row`: the band is as wide as the header, which the
+          planner shrinks without the window changing. */}
       <div
         className={
           isSheet ? 'space-y-5' : `flex ${plan && !plan.stacked ? 'gap-8' : 'flex-col gap-6'}`
@@ -705,11 +597,8 @@ export function FavoritesMenuPanel({
           </div>
         )}
 
-        {/* Shows und Restaurants stehen in DIESER Reihe, nicht in der Kopfzeile.
-            Dort standen sie: im `flex items-center justify-between` neben Überschrift und
-            den beiden Links, also als dritte Spalte einer Titelleiste, vertikal zentriert und
-            32 px hoch gequetscht. Sie sind eine Gruppe wie Parks und Attraktionen und gehören
-            neben sie — nur eben als Zeilen, siehe `venueRows`. */}
+        {/* Shows and restaurants are a group in this row like parks and rides, drawn as rows; see
+            `venueRows`. */}
         {counts.shows + counts.restaurants > 0 && (
           <div data-menu-stagger className="min-w-0" style={rowGroupStyle}>
             <GroupHeading
@@ -738,10 +627,8 @@ export function FavoritesMenuPanel({
           </div>
         )}
 
-        {/* Zuletzt in der Reihe, weil es als einzige Gruppe keine Favoriten sind: ein Alarm hängt
-            an einer Glocke, nicht an einem Stern. Dieselbe Spur wie Shows/Restaurants — beide sind
-            Zeilen, und zwei verschieden breite Zeilenspalten nebeneinander hätte kein Leser
-            erklären können. */}
+        {/* Last in the row, the one group that is not favourites: an alert hangs on a bell, not a
+            star. The same track as shows and restaurants, since both are rows. */}
         {showAlerts && (
           <Suspense
             fallback={
@@ -767,15 +654,9 @@ export function FavoritesMenuPanel({
 }
 
 /**
- * The link to `/alerts`, beside the panel's own title in both header states —
- * independent of favorites, since a visitor can have one without the other.
- * Extracted after the two states each carried a byte-for-byte identical copy
- * of it.
- *
- * Unconditional, unlike the alerts group below it: that group is gated on the
- * local mirror, and a browser whose mirror was cleared while its push
- * subscription survived still has alerts the server knows about. This link is
- * how somebody in that state reaches them.
+ * The link to `/alerts`, beside the panel's title in both states. Unconditional, unlike the alerts
+ * group: a browser whose local mirror was cleared while its subscription survived still has
+ * alerts, and this link is how it reaches them.
  */
 function PushAlertsMenuLink({ label }: { label: string }) {
   return (
@@ -791,13 +672,9 @@ function PushAlertsMenuLink({ label }: { label: string }) {
 }
 
 /**
- * The link to `/favorites`, in every state of this panel — the sheet included, where
- * `MoreMenuLinks` leaves the destination out precisely because this link is here (PAR-290).
- *
- * It used to be „Alle anzeigen" and appeared only when a group ran over its cap — so a visitor
- * with three favorites, or with none, had no way to the page at all, and the page is where the
- * full list and the instructions live. What the cap hides is already said by the „+N" line
- * under the group; whether the page exists is not something the current count should decide.
+ * The link to `/favorites`, in every state of this panel, the sheet included, where
+ * `MoreMenuLinks` leaves it out because this link is here. Whether the page is reachable does not
+ * depend on the count; what the cap hides, the „+N" line says.
  */
 function FavoritesPageMenuLink({ label }: { label: string }) {
   return (
@@ -950,16 +827,9 @@ function AttractionEntry({
 }
 
 /**
- * Shows und Restaurants in einer Gruppe, als Zeilen.
- *
- * Sie bekommen keine Karte: die Mediendatenbank hat für keinen von beiden ein Bild, und eine
- * Kennzahl gibt es auch nicht — eine Karte wäre eine leere Fläche mit einem Namen darin. Beide
- * haben zudem keine eigene Seite; sie leben auf der Parkseite unter ihrem Reiter, weshalb der
- * Link dorthin geht.
- *
- * Der Grund, warum es diese Gruppe überhaupt (wieder) gibt: der Umbau auf Karten hat sie
- * herausgeworfen, und wer nur eine Show markiert hatte, öffnete danach ein leeres Menü mit einer
- * Zahl am Stern.
+ * Shows and restaurants as rows in one group. No card: the media database has no image for either
+ * and there is no figure, so a card would be an empty field with a name. Neither has a page of its
+ * own, so the link goes to the park page's tab.
  */
 function venueRows(shows: FavoriteShow[], restaurants: FavoriteRestaurant[]) {
   return [
@@ -979,24 +849,19 @@ function venueRows(shows: FavoriteShow[], restaurants: FavoriteRestaurant[]) {
     id: v.id,
     title: v.title,
     park: v.park,
-    // Ohne auflösbare Parkseite bleibt die Favoritenseite der einzige Ort, an dem der Eintrag
-    // noch zu sehen ist.
+    // Without a resolvable park page, the favourites page is the only place the entry still shows.
     href: v.chapter ?? '/favorites',
   }));
 }
 
 /**
- * Ein Parkvorschlag: antippbar zum Öffnen, mit einem Stern daneben zum Markieren.
- *
- * Der leere Zustand erklärt bisher, wo der Stern sitzt — und schickt den Leser damit weg, um ihn
- * zu suchen. Die Parks in Reichweite stehen ohnehin schon in der Antwort, die der Header für
- * seine Pille holt; sie hier anzubieten macht aus der Anleitung eine Handlung.
+ * A park suggestion: tap to open, with a star beside it to save. Offering the nearby parks turns
+ * the empty state's instructions into an action.
  */
 function SuggestionChip({ park }: { park: ParkWithDistance }) {
   return (
-    /* Links 1, rechts 2.5: die Pille ist `rounded-full`, ihr Rand krümmt sich also nach außen.
-       Links füllt das runde Bild die Höhe und sitzt satt in der Krümmung; rechts steht ein 16-px-
-       Stern in der Mitte, und mit denselben 4 px klebte er am Rand. */
+    /* Left 1, right 2.5: the pill is `rounded-full`. On the left the round image fills the curve;
+       on the right a 16 px star needs more room from the edge. */
     <li className="border-border/70 bg-card/40 hover:border-primary/40 flex items-center gap-1 rounded-full border py-1 pr-2.5 pl-1 transition-colors">
       <Link
         href={convertApiUrlToFrontendUrl(park.url) as '/'}

@@ -17,9 +17,9 @@ interface OffSeasonToggleProps {
  * Glass "N off season" toggle — reveals/hides off-season attractions or shows.
  * Only rendered when `count > 0` (callers guard).
  *
- * The odd one out among the panel's three pills, and deliberately: the other two
- * narrow the list, this one widens it, which is why it is the only one whose icon
- * is an eye rather than the thing it filters for.
+ * The odd one out among the panel's pills, deliberately: the others narrow the
+ * list, this one widens it, which is why its icon is an eye rather than the thing
+ * it filters for.
  */
 export function OffSeasonToggle({ count, shown, onToggle, size = 'sm' }: OffSeasonToggleProps) {
   const t = useTranslations('parks');

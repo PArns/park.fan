@@ -17,52 +17,29 @@ interface ShowFollowBellProps {
   /** Where this bell sits — the show's own card, or a row in the park overview. */
   source: 'card' | 'panel';
   /**
-   * Today's performances, ISO start times, in any order. WHICH of them is
-   * next is worked out here rather than by the caller, because the callers
-   * are Server Components rendering statically cached pages: "the next one"
-   * is a question only the visitor's own clock can answer, and the first
-   * entry of the day stops being the answer the moment it has started.
-   * Omitted entirely, the bell behaves as it always did. Where `startTime`
-   * names this bell's own performance, this is still the show's whole day —
-   * the dialog needs it to say which performance an open-ended reminder is
-   * about, and it is not what decides whether this bell is drawn.
+   * Today's performances, ISO start times, in any order. Which is next is worked out here, because
+   * the callers render statically cached pages and only the visitor's clock can answer it. With
+   * `startTime` set this is still the whole day, which the dialog needs; it does not decide
+   * whether the bell is drawn.
    */
   showtimes?: Array<{ startTime: string }> | null;
   /**
-   * The ONE performance this bell is about, as a full ISO instant — for a
-   * bell that sits beside a clock time rather than on a show as a whole.
-   * The park panel's rows are one performance each, so a bell there that
-   * files the open-ended follow arms every performance of that show while
-   * the row it sits in names one of them.
-   *
-   * Omitted is the open-ended follow — "whichever performance is next" —
-   * which is what a show card's corner bell means and what every caller of
-   * this component meant before the prop existed.
+   * The one performance this bell is about, as a full ISO instant, for a bell beside a clock time
+   * (the park panel's rows). Omitted is the open-ended follow, "whichever performance is next",
+   * which is what a show card's corner bell means.
    */
   startTime?: string | null;
   /**
-   * The PARK's zone, for the clock the dialog prints. Not optional in
-   * practice: without it `LocalTime` falls back to the visitor's own zone,
-   * and a Universal Epic Universe show at 16:40 was announced to a German
-   * reader as "Nächste Vorstellung 22:40" — six hours out, in the one line
-   * the dialog exists to state.
+   * The park's zone, for the clock the dialog prints. Without it `LocalTime` falls back to the
+   * visitor's zone and announces a performance hours off.
    */
   timezone?: string;
 }
 
 /**
- * "Notify me 30 minutes before this show starts" — the same interaction
- * shape as `FavoriteStar` (hydration-safe: renders "off" on the server, a
- * mount-only effect reads the real state, a window event keeps every bell on
- * the page in sync with the one that was just clicked), sitting in the same
- * corner.
- *
- * It OPENS `ShowFollowDialog` rather than toggling the follow itself, the
- * same way `RideAlertBell` opens its own. Toggling in place answered none of
- * the questions a click raises — which show did I just subscribe to, when is
- * it on, and (when the write fails, which it does for every browser with
- * notifications blocked) why nothing happened. A corner icon has room for a
- * colour and nothing else.
+ * "Notify me 30 minutes before this show starts", in the same corner as `FavoriteStar` and
+ * hydration-safe the same way. It opens `ShowFollowDialog` rather than toggling in place, so the
+ * visitor learns which show, when, and why a write failed, which a corner icon has no room to say.
  */
 export function ShowFollowBell({
   showId,
@@ -106,18 +83,9 @@ export function ShowFollowBell({
     ? t('following', { name: showName ?? '' })
     : t('follow', { name: showName ?? '' });
 
-  // Drawn until the browser's own clock says otherwise, so the bell a visitor
-  // sees on the first paint is the one the server sent. Nothing left today
-  // (every performance is over) hides it for the same reason as one about to
-  // start: there is no reminder left to give. A bell already switched ON
-  // stays visible either way — it is the only way to switch it off again,
-  // and hiding somebody's own control is worse than showing one with nothing
-  // left to schedule.
-  //
-  // A bell that names ONE performance asks about that one and not about the
-  // rest of the show's day: beside an 18:00 row, "is there still time to warn
-  // somebody" is a question about 18:00, and answering it from the show's
-  // whole list would keep a bell on a performance starting in four minutes.
+  // Drawn until the browser's clock says otherwise, so the first paint matches the server. Hidden
+  // when no performance is left far enough ahead to warn about; a bell already on stays, as the
+  // only way to switch it off. A bell naming one performance asks only about that one.
   const leadCandidates = startTime ? [startTime] : (showtimes ?? []).map((s) => s.startTime);
   // Not while its dialog is open: hiding the bell would take the dialog down with it.
   if (!following && !open && browserNow && leadCandidates.length > 0) {
@@ -140,8 +108,8 @@ export function ShowFollowBell({
           'relative z-10 flex items-center justify-center transition-all hover:scale-110',
           'focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none',
           'disabled:pointer-events-none disabled:opacity-60',
-          // Same 44 px hit area over a smaller visual box as FavoriteStar — see
-          // that component for the measured reasoning.
+          // The same 44 px hit area over a smaller visual box as FavoriteStar; see that component
+          // for why.
           'max-sm:after:absolute max-sm:after:top-1/2 max-sm:after:left-1/2 max-sm:after:h-11',
           'max-sm:after:w-11 max-sm:after:-translate-x-1/2 max-sm:after:-translate-y-1/2',
           'max-sm:after:content-[""]',

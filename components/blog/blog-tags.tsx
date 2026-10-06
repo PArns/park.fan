@@ -15,6 +15,10 @@ interface BlogTagsProps {
   asLinks?: boolean;
 }
 
+/**
+ * Row of coloured `#tag` pills for a post, each linking to its tag archive unless `asLinks` is
+ * false.
+ */
 export function BlogTags({ tags, className, label, asLinks = true }: BlogTagsProps) {
   if (tags.length === 0) return null;
   return (

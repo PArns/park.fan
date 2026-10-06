@@ -22,8 +22,6 @@ const META_PREFIX = 'submissions/';
 const metaPath = (id: string) => `${META_PREFIX}${id}.json`;
 const LOCAL_DIR = path.join(process.cwd(), '.data', 'contributions');
 
-// ─── local driver ───────────────────────────────────────────────────────────
-
 const local = {
   async record(rec: SubmissionRecord): Promise<void> {
     await fs.mkdir(LOCAL_DIR, { recursive: true });
@@ -58,8 +56,6 @@ const local = {
     await deleteImagesLocal(rec.id);
   },
 };
-
-// ─── vercel blob driver ─────────────────────────────────────────────────────
 
 /** Read a private metadata JSON blob by pathname (public URLs don't work on a private store). */
 async function readMeta(pathname: string): Promise<SubmissionRecord | null> {
@@ -102,21 +98,24 @@ function driver() {
   return resolveDriver() === 'vercel-blob' ? blob : local;
 }
 
-// ─── public API ─────────────────────────────────────────────────────────────
-
+/**
+ * Writes a photo submission's metadata record to the active storage backend, replacing any record
+ * with the same id.
+ */
 export function recordSubmission(rec: SubmissionRecord): Promise<void> {
   return driver().record(rec);
 }
 
+/** Returns every photo submission in the moderation queue, newest first. */
 export async function listSubmissions(): Promise<SubmissionRecord[]> {
   const records = await driver().list();
   return records.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }
 
-export function getSubmission(id: string): Promise<SubmissionRecord | null> {
-  return driver().get(id);
-}
-
+/**
+ * Applies a moderator's patch (status, caption, credit, adopted images matched by storage key) to a
+ * submission and returns it, or `null` when it does not exist.
+ */
 export async function updateSubmission(
   id: string,
   patch: SubmissionPatch
@@ -159,6 +158,7 @@ export async function summarizeSubmissions(): Promise<SubmissionSummary> {
   };
 }
 
+/** Deletes a submission's photos and metadata; returns false when there was no such submission. */
 export async function deleteSubmission(id: string): Promise<boolean> {
   const d = driver();
   const existing = await d.get(id);

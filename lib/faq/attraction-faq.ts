@@ -13,6 +13,10 @@ export interface AttractionFaqItem {
 
 type T = (key: string, values?: Record<string, string | number | Date | undefined>) => string;
 
+/**
+ * Builds a ride page's FAQ: where the ride is, its wait time (today's live figures when present),
+ * and single rider or paid queue questions when the ride has one.
+ */
 export function buildAttractionFaqItems(
   attraction: ParkAttraction,
   park: ParkWithAttractions,

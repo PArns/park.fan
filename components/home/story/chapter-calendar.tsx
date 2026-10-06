@@ -11,6 +11,7 @@ import { catchNonFatal } from '@/lib/api/client';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import type { Locale } from '@/i18n/config';
 import { getLeadPark } from './lead-park';
+import { STORY_SECTION_TINTED } from './section-chrome';
 
 /**
  * Chapter: where a calendar day's colour comes from.
@@ -63,7 +64,7 @@ export async function ChapterCalendar({ locale }: { locale: string }) {
   ];
 
   return (
-    <section className="border-border bg-muted/30 border-t px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION_TINTED}>
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading
@@ -108,7 +109,7 @@ export async function ChapterCalendar({ locale }: { locale: string }) {
         </div>
 
         {/* On a phone the pipeline is the chapter's exhibit; the feedback note and the body
-              open on request (PAR-435). */}
+              open on request. */}
         <MobileMore label={tCommon('showMore')}>
           <Reveal delay={80}>
             <p className="text-muted-foreground border-border mt-6 max-w-3xl border-l-2 pl-4 text-sm leading-relaxed">

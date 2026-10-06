@@ -75,11 +75,8 @@ function lockup(next: 'light' | 'dark') {
     'display:flex',
     'align-items:center',
     'justify-content:center',
-    // The gap used to be `0` because the artwork carried it: `logo-small.svg` drew its pin
-    // inside a square viewBox with ~19 % of that width empty on either side, so the spacing
-    // was a property of the file and scaled with the mark. Both files are cropped to their ink
-    // now, so it is written down — 0.187 × the mark plus 0.109 × the wordmark, which is the
-    // margin the two used to bring along at every step of the clamp.
+    // Both files are cropped to their ink, so the gap is written down: 0.187 × the mark plus
+    // 0.109 × the wordmark.
     'gap:clamp(15px,2.34vw,29px)',
     'pointer-events:none',
     'z-index:2147483647',
@@ -88,8 +85,7 @@ function lockup(next: 'light' | 'dark') {
   ].join(';');
   const { mark, word } = WIPE_LOGO[next];
   el.innerHTML =
-    // Ink heights: the old clamps were box heights over artwork that filled 86.3 % / 78.1 % of
-    // it, so these are the same mark at the same size, said in a unit a reader can check.
+    // Heights of the ink, since the files are cropped to it.
     `<img src="${mark}" alt="" style="height:clamp(48px,7.8vw,97px);width:auto">` +
     `<img src="${word}" alt="" style="height:clamp(30px,4.7vw,59px);width:auto">`;
   return el;

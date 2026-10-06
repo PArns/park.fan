@@ -54,18 +54,14 @@ export async function generateMetadata({ params }: TermPageProps): Promise<Metad
   const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
   const url = `${SITE_URL}/${locale}/${segment}/${termSlug}`;
 
-  // Keyword-rich title: "Wait Time – Theme Park Glossary | park.fan"
   const title = `${term.name} – ${t('termTitleSuffix')} | park.fan`;
-  // Description: whole sentences of the definition's first paragraph, at most 155 characters
   const description = fitSentences(term.definition.split('\n\n')[0], 155);
-  // Keywords: term name + related IDs resolved to names + category label
   const allTerms = await getGlossaryTerms(locale as Locale);
   const relatedNames = term.relatedTermIds
     ? allTerms.filter((x) => term.relatedTermIds!.includes(x.id)).map((x) => x.name)
     : [];
   const keywords = [term.name, t(`category.${term.category}`), ...relatedNames].join(', ');
 
-  // Build hreflang entries with locale-specific slugs
   const languages: Record<string, string> = {};
   for (const l of locales) {
     const localSlug = term.slugs[l];
@@ -98,10 +94,8 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
 
   const term = await getTermBySlug(locale as Locale, termSlug);
   if (!term) {
-    // Legacy cross-locale URLs (e.g. /nl/glossaire/harnais-epaules — a French
-    // slug under the NL locale, from next-intl's old auto-alternates) carry a
-    // slug from another locale. Translate it and 308 to the local URL so the
-    // thousands of such URLs in Google's index resolve instead of 404ing.
+    // A slug from another locale (/nl/glossaire/harnais-epaules), from URLs still in Google's
+    // index: translate it and 308 to the local URL instead of a 404.
     const translated = await findTermByAnySlug(locale as Locale, termSlug);
     if (translated) {
       const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
@@ -114,7 +108,6 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
 
   const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
 
-  // Load related terms
   const allTerms = await getGlossaryTerms(locale as Locale);
   const relatedTerms = term.relatedTermIds
     ? allTerms.filter((t) => term.relatedTermIds!.includes(t.id))
@@ -126,7 +119,6 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
     { name: t('overviewTitle'), url: `/${segment}` },
   ];
 
-  // Localised strings for the 3-D coaster player (only consumed when term.player is set)
   const playerLabels = term.player
     ? {
         play: t('player.play'),
@@ -174,26 +166,10 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
               fancastCta: t('fancastCta'),
             }}
             playerLabels={playerLabels}
-            /* The other half of the ride ↔ glossary link: every curated ride that
-             features this term. Handed in as a slot so it renders inside the
-             detail's own column — aligned with the definition card instead of
-             as a full-width stripe below it. Renders nothing for the concept
-             terms no ride profile references (43 % of the 267 terms).
-
-             Awaited inline, with no Suspense boundary: this route is prerendered
-             via `generateStaticParams` and the project runs no PPR, so the
-             prerender waits for every boundary anyway — the resolved rides markup
-             was already in the shipped .html, just sorted to the end of the byte
-             stream and grafted in afterwards by `$RC()`. The boundary deferred
-             nothing and bought nothing; what it did was drop 396–1233 px into the
-             column ~2 s after first paint, pushing the "back to dictionary" button
-             (`div.pb-2`) and the whole page tail down. Cloudflare RUM reports that
-             button by name, and a splice test that moves the block back to its
-             placeholder measures CLS 0.0000 instead of 0.1176.
-
-             Nothing to pad it with either: `getAttractionsForTerm` returns []
-             on error, and 115 of 267 terms have no rides at all, so a fixed
-             fallback height would tear a permanent hole in 43 % of the glossary. */
+            /* The other half of the ride ↔ glossary link, as a slot in the detail's own column.
+             Awaited inline, with no Suspense boundary: the route is prerendered, so a boundary
+             deferred nothing and only grafted the rides in after first paint, pushing the page
+             tail down. A fixed fallback height is no answer either: many terms have no rides. */
             rides={<GlossaryTermRides termId={term.id} />}
             posts={
               <GlossaryTermPosts termId={term.id} termName={term.name} locale={locale as Locale} />
@@ -201,8 +177,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
           />
         </PageContainer>
 
-        {/* Nearby → favorites → featured parks, the same tail the blog pages get.
-          It used to be hand-rolled here, which is how the two drifted apart. */}
+        {/* Nearby → favorites → featured parks, the same tail the blog pages get. */}
         <PageBottomSections locale={locale} />
       </>
     </RouteMessages>

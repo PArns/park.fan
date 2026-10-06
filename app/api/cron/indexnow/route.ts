@@ -20,14 +20,8 @@ export const maxDuration = 60;
 const RECENT_DAYS = 2;
 
 /**
- * Everything, once a week (Mondays, UTC).
- *
- * IndexNow is a changed-URL protocol, and this route used to hand it all 46,000
- * every morning, which is the same "everything changed" non-signal the sitemap's
- * missing `<lastmod>` was. Now it submits what the content-change crawl says
- * moved. The weekly sweep is the safety net for the failure mode that costs the
- * most and is the hardest to notice: a fingerprint that stops detecting anything
- * would otherwise mean this route quietly submits nothing, forever.
+ * Everything, once a week (Mondays, UTC); other days submit only what the content-change crawl
+ * says moved. The sweep is the safety net for a fingerprint that silently stops detecting anything.
  */
 function isFullSweepDay(now: Date): boolean {
   return now.getUTCDay() === 1;
@@ -40,18 +34,15 @@ export async function GET(request: Request) {
   const urls: string[] = [];
   const now = new Date();
 
-  // ── Static pages (high-value, matches sitemap priority ≥ 0.7) ─────────────
+  // Static pages, the sitemap's priority ≥ 0.7.
   for (const locale of locales) {
-    urls.push(`${BASE_URL}/${locale}`); // home
-    urls.push(`${BASE_URL}/${locale}/${HOWTO_SEGMENTS[locale]}`); // guide
-    urls.push(`${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale]}`); // glossary overview
+    urls.push(`${BASE_URL}/${locale}`);
+    urls.push(`${BASE_URL}/${locale}/${HOWTO_SEGMENTS[locale]}`);
+    urls.push(`${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale]}`);
   }
 
-  // ── Park + attraction pages ───────────────────────────────────────────────
-  // The interesting case is the first: the catalog paths whose content actually
-  // moved, per the crawl that ran half an hour earlier. An empty index means the
-  // crawl has never run or could not be read, and then the honest thing is the
-  // old behaviour — submit the lot — rather than an empty ping.
+  // Park and attraction pages whose content moved, per the crawl that ran half an hour earlier.
+  // An empty index means the crawl never ran or could not be read, and then all are submitted.
   const lastmod = await getContentLastmodIndex();
   const cutoff = new Date(now);
   cutoff.setUTCDate(cutoff.getUTCDate() - RECENT_DAYS);
@@ -79,11 +70,8 @@ export async function GET(request: Request) {
   }
   urls.push(...localizedUrls(catalogPaths, BASE_URL));
 
-  // ── Blog pages — index, every post, every category, every tag ─────────────
-  // Submitted in full every day, unlike the catalog above. Seven posts across six
-  // locales plus their categories and tags is a few hundred URLs, and the index,
-  // category and tag pages genuinely reshuffle whenever anything is published, so
-  // there is nothing here worth a change detector.
+  // Blog pages in full every day: a few hundred URLs, and the index, category and tag pages
+  // reshuffle on every publication.
   try {
     const { listPosts, listNewsByDate, getMetaIndex } = await import('@/lib/blog');
     const { buildCategoryTree } = await import('@/lib/blog/categories');
@@ -93,8 +81,7 @@ export async function GET(request: Request) {
 
     for (const locale of locales) {
       urls.push(`${BASE_URL}/${locale}/blog`);
-      // The news overview, where the locale lists news (it 404s otherwise). It used to arrive
-      // through the category tree, which holds articles only now.
+      // The news overview, where the locale has news (it 404s otherwise).
       if (listNewsByDate(locale).length > 0) urls.push(`${BASE_URL}/${locale}${NEWS_INDEX_PATH}`);
       // Posts — only real translations; EN-fallback URLs canonicalize to the
       // EN original and shouldn't be submitted.
@@ -106,7 +93,6 @@ export async function GET(request: Request) {
           );
         }
       }
-      // Categories + tags
       const { flat } = buildCategoryTree(locale);
       for (const path of flat.keys()) {
         urls.push(`${BASE_URL}/${locale}${categoryPath(path)}`);
@@ -115,15 +101,13 @@ export async function GET(request: Request) {
         urls.push(`${BASE_URL}/${locale}/blog/tag/${tag.slug}`);
       }
     }
-    // Stable order is good for IndexNow — same URL hash on repeated pings.
     void listPosts;
   } catch (error) {
     console.error('[IndexNow] Failed to collect blog URLs:', error);
   }
 
-  // `?dry=1` builds the URL list and submits nothing. The only way to see WHICH
-  // URLs a run would ping — the selection is the interesting half now that it is
-  // no longer "all of them", and it cannot be inspected by running the real thing.
+  // `?dry=1` builds the URL list and submits nothing: the only way to see which URLs a run would
+  // ping.
   const dry = new URL(request.url).searchParams.get('dry') === '1';
 
   if (!dry) {

@@ -101,12 +101,9 @@ export interface CompassDemo {
  * spelled `compass-…`): the homepage's in-park compass with a real park's live answer, laid out
  * around wherever the device actually is.
  *
- * It is the one `sim` value honoured in production, and it can be, because it overrides nothing on
- * the server. `resolveSimLocation` does not know it (so `/api/nearby` ignores it like any unknown
- * value); the compass slot asks `/api/nearby` for the preset's coordinates itself, which is a
- * request any visitor may make, and it draws a labelled demo. What it exists for is testing the
- * compass on a real phone — the magnetometer, the live position, walking — without being in a park,
- * and a preview deployment is not always at hand on a phone.
+ * It is the one `sim` value honoured in production, because it overrides nothing on the server:
+ * `/api/nearby` ignores it, and the compass slot asks for the preset's coordinates like any visitor
+ * could. It exists to test the compass on a real phone without being in a park.
  *
  * `null` for anything else, including every other `sim` value.
  */

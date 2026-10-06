@@ -69,26 +69,27 @@ export async function ParkStats({ waitTime }: { waitTime: number }) {
 
 ## Helper Functions
 
-There are helpers for common use cases:
+A wait time is a number and a unit, and no helper does both. The number goes through
+`roundWaitTo5` (`lib/utils/wait-time.ts`) before it is shown, and the unit comes from
+`t('minute', { count })` or the short `tCommon('min')`:
 
 ```tsx
-import { formatWaitTime, formatHours } from '@/lib/i18n/time';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 
-export function MyComponent() {
-  const t = useTranslations('common');
+const wait = roundWaitTo5(attraction.waitTime);
+<span>
+  {wait} {tCommon('minute', { count: wait })}
+</span>;
+```
 
-  // Format wait time with count and unit
-  const waitText = formatWaitTime(t, 15);
-  // → "15 minutes" (EN) / "15 Minuten" (DE)
+A span of time in milliseconds has two formatters in `lib/i18n/time.ts`, both reading the
+`common` namespace:
 
-  const waitSingle = formatWaitTime(t, 1);
-  // → "1 minute" (EN) / "1 Minute" (DE)
+```tsx
+import { formatDuration, formatDurationShort } from '@/lib/i18n/time';
 
-  const hours = formatHours(t, 3);
-  // → "3 hours" (EN) / "3 Stunden" (DE)
-
-  return <div>{waitText}</div>;
-}
+formatDuration(5_400_000, tCommon); // "1 hour 30 minutes" (EN) / "1 Stunde 30 Minuten" (DE)
+formatDurationShort(5_400_000, tCommon); // "1 h 30 min" (EN) / "1 Std. 30 Min." (DE)
 ```
 
 ---
@@ -112,13 +113,6 @@ export function MyComponent() {
 </span>
 // ✅ "1 minute"
 // ✅ "5 minutes"
-```
-
-Or with helper:
-
-```tsx
-import { formatWaitTime } from '@/lib/i18n/time';
-<span>{formatWaitTime(tCommon, avgWait)}</span>;
 ```
 
 ---
@@ -187,7 +181,7 @@ t('parkCount', { count: parks.length });
 1. **Identify all places** where `minutes`, `hours` etc. are used
 2. **Replace gradually** with pluralized versions
 3. **Test in both languages** (DE/EN)
-4. **Use formatWaitTime()** for standard cases
+4. **Round a wait time with `roundWaitTo5()`** before it is displayed
 
 Additional keys can be pluralized over time:
 

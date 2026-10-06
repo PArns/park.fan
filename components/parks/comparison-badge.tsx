@@ -9,12 +9,16 @@ interface ComparisonBadgeProps {
   showIcon?: boolean;
 }
 
+/**
+ * Badge saying how busy a ride is compared with usual (`much_lower` to `much_higher`, or `closed`),
+ * in the crowd-level colours. Renders nothing for `null`; only `/ui` and the guide page use it.
+ */
 export function ComparisonBadge({ comparison, className, showIcon = true }: ComparisonBadgeProps) {
   const tCommon = useTranslations('common');
 
   if (!comparison) return null;
 
-  // Map to shared crowd/status CSS tokens — same palette as CrowdLevelBadge/ParkStatusBadge
+  // Same palette as CrowdLevelBadge and ParkStatusBadge.
   const colorMap: Record<string, string> = {
     much_lower: 'badge-crowd-very-low',
     lower: 'badge-crowd-low',

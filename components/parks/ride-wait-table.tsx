@@ -12,6 +12,7 @@ import {
   type RideWaitTarget,
 } from '@/lib/hooks/use-ride-wait-stats';
 
+/** The table's translated strings, passed in by the caller. */
 export interface RideWaitTableLabels {
   title: string;
   /** Header over the ride column. */
@@ -50,16 +51,12 @@ const VALUE_CELL = 'px-2 py-1.5 text-right text-sm tabular-nums whitespace-nowra
 /**
  * The ride column, in the two widths a table can want it.
  *
- * SOLE: the ride name is the table's only text column, so it takes the slack the numbers do not
- * need. `w-full` asks for all of it, `max-w-0` lets it give any back, and `truncate` then has a
- * finite box to act on. Both classes are load-bearing — with `max-w-0` alone, `table-layout: auto`
- * splits the slack between every column in proportion, and at 1024 px "De Vliegende Hollander" was
- * clipped to "De Vliegende Holl…" while 400 px sat empty between the number columns.
+ * SOLE: the ride name is the only text column and takes the slack: `w-full` asks for all of it,
+ * `max-w-0` lets it give it back, and `truncate` gets a finite box. Both are needed; with `max-w-0`
+ * alone, auto layout splits the slack between every column and clips the name.
  *
- * SHARED: a park or type column is beside it, so it must NOT claim the slack. When it did, it won
- * all of it and the neighbours collapsed onto their own width: "Multi-Launch, Stahl" wrapped onto
- * three lines in a 90 px column while 500 px sat empty under the ride names. Auto layout already
- * shares width between text columns sensibly; the job here is only to stay out of its way.
+ * SHARED: a park or type column sits beside it, so it must not claim the slack, or its neighbours
+ * collapse onto their own width and wrap.
  */
 const NAME_CELL_SOLE = 'w-full max-w-0 px-2 py-1.5 text-sm';
 const NAME_CELL_SHARED = 'px-2 py-1.5 text-sm';
@@ -70,19 +67,10 @@ const TEXT_CELL = 'hidden px-2 py-1.5 text-sm sm:table-cell';
 const DEFAULT_COLUMNS = ['peak'] as const;
 
 /**
- * The wait-time table a blog post used to type out by hand.
- *
- * Four posts across six locales carried twenty-two of these — ride, park, land, typical, peak,
- * measured days — as markdown, keyed off a spreadsheet at the time of writing. Nothing brought
- * them forward: the Efteling table said 34 minutes for Joris en de Draak while the same figure
- * on the park page had moved to 35, and the two Toverland tables in one post disagreed with each
- * other by a minute because they were written a week apart.
- *
- * Rows are NOT re-sorted in `rides` mode — see the hook. In `park` mode the order IS the data's,
- * because that table's whole claim is the ranking.
- *
- * Columns beyond the median are opt-in, because these tables sit inside running text: a post
- * arguing about queue length wants two numbers and a name, not the full aggregate.
+ * A ride wait-time table for a blog post, fetched live so it never goes stale against the park page
+ * (docs/rules/a-wait-time-is-never-typed-into-a-post.md). Rows are not re-sorted in `rides` mode
+ * (see the hook); in `park` mode the order is the ranking. Columns beyond the median are opt-in,
+ * because these tables sit inside running text.
  */
 export function RideWaitTable({ parks, labels, options, columns }: RideWaitTableProps) {
   const cols = new Set(columns ?? DEFAULT_COLUMNS);

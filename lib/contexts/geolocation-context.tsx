@@ -84,10 +84,14 @@ function hasGeoOptIn(): boolean {
 /**
  * Epoch ms of the visitor's last no: the homepage banner closed, or the browser's prompt answered
  * with no (or dismissed) from any page. The banner stays away for `LOCATION_BANNER_QUIET_MS` after
- * it. The key predates the second case; it was the banner's own close record.
+ * it. The key is named after the first case.
  */
 const DECLINED_AT_KEY = 'pf_geo_banner_dismissed_at';
 
+/**
+ * Stores now as the moment the visitor last said no to location, which keeps the location banner
+ * away for 30 days.
+ */
 export function rememberLocationDeclined(): void {
   try {
     localStorage.setItem(DECLINED_AT_KEY, String(Date.now()));
@@ -96,6 +100,10 @@ export function rememberLocationDeclined(): void {
   }
 }
 
+/**
+ * Returns the epoch ms of the visitor's last no to location from localStorage, or `null` when there
+ * is none or storage is blocked.
+ */
 export function readLocationDeclinedAt(): number | null {
   try {
     const raw = localStorage.getItem(DECLINED_AT_KEY);
@@ -301,11 +309,10 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
     };
   }, [requestLocation, forgetEarlierYes]);
 
-  // Auto-refresh with dynamic interval (only when we have position). Skipped while the
-  // tab is hidden — the 60 s in-park cadence would otherwise wake the GPS on a pocketed
-  // phone for a page nobody is looking at; on return a fresh fix is requested right away.
-  // Each tick first asks the live permission state: Chrome's "Allow this time" runs out after
-  // five minutes in the background, and the read on return used to open a prompt nobody tapped.
+  // Auto-refresh while there is a position, skipped while the tab is hidden so the in-park
+  // cadence does not wake the GPS on a pocketed phone; on return a fresh fix is requested. Each
+  // tick first asks the live permission state: Chrome's "Allow this time" runs out after five
+  // minutes in the background, and a read then would open a prompt nobody tapped.
   useEffect(() => {
     if (position === null || permissionDenied || !permissionGranted) return;
 
@@ -379,6 +386,10 @@ async function queryGeolocationPermission(): Promise<PermissionStatus | null> {
   }
 }
 
+/**
+ * Reads the shared geolocation state (position, accuracy, permission flags, in-park flag, refresh);
+ * throws outside a `GeolocationProvider`.
+ */
 export function useGeolocation() {
   const context = useContext(GeolocationContext);
 

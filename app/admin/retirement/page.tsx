@@ -15,7 +15,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import { useCan } from '../_app/session';
-import { Section } from '../_lib/ui';
+import { formatDay, Section } from '../_lib/ui';
 import { AdminPage, Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 import { Field, TextInput } from '../_ui/controls';
 import {
@@ -29,19 +29,9 @@ import {
 import { useToast } from '../_ui/toast';
 
 /**
- * The worklist for rides that stopped reporting.
- *
- * The detection has been running for months and the answer it produces is a
- * question, not a fact: a feed going quiet looks the same whether the ride was
- * demolished, is in a nine-month refurbishment, or the park changed a name
- * upstream. Five endpoints existed to settle that question and none of them
- * had a screen, so the same candidates came back every run and nobody could
- * mark one as investigated.
- *
- * Hence three actions per row, not one. "Stillgelegt" is the destructive
- * answer, "kein Fall" is the one that stops the detector re-asking, and the
- * link into the editor is for the third case — where the answer is a curation,
- * not a retirement.
+ * The worklist for rides that stopped reporting. A quiet feed may mean a demolished ride, a long
+ * refurbishment or an upstream rename, so each row has three answers: "Stillgelegt", "kein Fall"
+ * (which stops the detector asking again), and the editor, for an answer that is a curation.
  */
 
 interface Candidate {
@@ -67,13 +57,6 @@ interface Retired {
    * Nach einem Jahr fällt die Bahn von selbst heraus und ist nur noch über ihre URL erreichbar.
    */
   onParkPage?: boolean;
-}
-
-function day(value: string | null): string {
-  if (!value) return '—';
-  const parsed = new Date(value);
-  if (Number.isNaN(parsed.getTime())) return value;
-  return parsed.toLocaleDateString('de-DE', { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
 /** Three months out — the default for "look at this again later". */
@@ -161,7 +144,7 @@ function CandidateRow({ candidate, canRetire }: { candidate: Candidate; canRetir
             <span className="text-muted-foreground text-xs">{candidate.park}</span>
           </div>
           <p className="text-muted-foreground mt-1 text-xs">
-            Still seit {day(candidate.wentSilent)} · zuletzt {candidate.maxWait} min Wartezeit
+            Still seit {formatDay(candidate.wentSilent)} · zuletzt {candidate.maxWait} min Wartezeit
           </p>
         </div>
         {mode === 'idle' && (
@@ -303,7 +286,7 @@ function RetiredRow({ entry, canRestore }: { entry: Retired; canRestore: boolean
         {entry.name}
         {entry.park && <span className="text-muted-foreground"> · {entry.park}</span>}
       </Link>
-      <span className="text-muted-foreground text-xs">{day(entry.retiredAt)}</span>
+      <span className="text-muted-foreground text-xs">{formatDay(entry.retiredAt)}</span>
       {entry.reason && (
         <span className="text-muted-foreground max-w-md truncate text-xs">{entry.reason}</span>
       )}

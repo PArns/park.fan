@@ -1,16 +1,10 @@
 import type { MediaGps, MediaImage } from './types';
 
 /**
- * Turning an image's GPS fix into a park check.
- *
- * 63 of the photos in the database still carry the camera's GPS tag, and that is
- * the cheapest correctness check the database has: a photo assigned to
- * `europa-park` whose coordinates land in Kaatsheuvel is mislabelled, and no
- * amount of reading captions would have caught it. The admin browser runs this
- * over the park catalog to confirm assignments and to suggest one for images that
- * have none.
- *
- * Pure functions over a park list the caller supplies — this module never fetches.
+ * Turning an image's GPS fix into a park check: a photo assigned to `europa-park` whose
+ * coordinates land in Kaatsheuvel is mislabelled, and no caption would have shown it. The admin
+ * browser runs this to confirm assignments and suggest missing ones. Pure; the caller supplies
+ * the parks.
  */
 
 export interface GeoPark {

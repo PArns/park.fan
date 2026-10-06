@@ -47,7 +47,6 @@ export function SearchResultRow({ result, position, onSelect }: SearchResultRowP
       onSelect={() => onSelect(result, position)}
       className="flex cursor-pointer items-center gap-2.5 sm:gap-4"
     >
-      {/* Photo (resolved from the media database) or type icon */}
       <div className="bg-foreground/10 relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg sm:h-11 sm:w-11 sm:rounded-xl">
         {result.imageUrl ? (
           <Image
@@ -70,9 +69,7 @@ export function SearchResultRow({ result, position, onSelect }: SearchResultRowP
         )}
       </div>
 
-      {/* Content */}
       <div className="flex min-w-0 flex-1 flex-col gap-1 sm:gap-1.5">
-        {/* Row 1: Name + Status */}
         <div className="flex items-center justify-between gap-3">
           <span className="truncate text-sm leading-none font-semibold sm:text-[15px]">
             {stripNewPrefix(result.name)}
@@ -80,10 +77,8 @@ export function SearchResultRow({ result, position, onSelect }: SearchResultRowP
           {result.status && <ParkStatusBadge status={result.status} className="text-[11px]" />}
         </div>
 
-        {/* Row 2: Location (left) + Crowd / Wait / Distance (right) */}
         <div className="flex items-center justify-between gap-3">
           <div className="text-foreground/45 flex min-w-0 items-center gap-1 text-xs">
-            {/* Location */}
             {(result.city || result.country) && (
               <span className="flex min-w-0 items-center gap-1">
                 <MapPin className="h-3 w-3 shrink-0" />
@@ -100,7 +95,6 @@ export function SearchResultRow({ result, position, onSelect }: SearchResultRowP
               </span>
             )}
 
-            {/* Live "open of total" attraction count (nearby feed) */}
             {result.attractionCounts && !isClosed && (
               <span className="hidden shrink-0 truncate sm:inline">
                 ·{' '}
@@ -111,7 +105,6 @@ export function SearchResultRow({ result, position, onSelect }: SearchResultRowP
               </span>
             )}
 
-            {/* Parent Park for attractions */}
             {result.parentPark && (
               <span className="truncate">
                 {tSearch('at', { park: stripNewPrefix(result.parentPark.name) })}
@@ -119,7 +112,6 @@ export function SearchResultRow({ result, position, onSelect }: SearchResultRowP
             )}
           </div>
 
-          {/* Right: Wait Time + Crowd + Distance */}
           <div className="flex shrink-0 items-center gap-2">
             {result.isSeasonal && result.isCurrentlyInSeason === true && (
               <Leaf className="h-3.5 w-3.5 shrink-0 text-violet-400" />
@@ -132,7 +124,6 @@ export function SearchResultRow({ result, position, onSelect }: SearchResultRowP
               </span>
             )}
 
-            {/* Park-wide average wait (nearby feed) — colored like every other wait time */}
             {result.type === 'park' && result.avgWaitTime != null && !isClosed ? (
               <Badge
                 variant="outline"

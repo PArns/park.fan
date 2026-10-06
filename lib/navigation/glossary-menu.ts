@@ -5,27 +5,14 @@ import { listGlossaryCategories } from '@/lib/glossary/categories';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 
 /**
- * What the glossary section of the header's "more" panel shows.
- *
- * The dictionary holds 274 terms and had one link in the whole app — the bare `/glossary` entry —
- * so nothing above a term page said what was in there. The section lists the categories, and stops
- * there: the same rule the parks panel follows with its 144 cities and the blog panel with its 31
- * tags. 274 term links in the chrome of ~35,000 pages would spread the site's own weight over the
- * pages worth the least of it.
- *
- * **Twelve rows, one per category that holds a term.** What this returns is what the overview
- * renders, which is the whole point — `termCount` below therefore counts all 274 terms. Until
- * PAR-264 `GLOSSARY_CATEGORY_ORDER` left `logistics` out and this was eleven rows and 271 terms.
- *
- * **Resolved on the server because the panel is a Client Component.** A `useTranslations('glossary')`
- * there would put the whole namespace — 2,402 B, ×6 locales — into the chrome every page
- * serializes, for labels that are 358 B of it. Same reason `blog-menu.ts` and
- * `featured-parks-menu.ts` exist, and the header's own comment on `@/lib/media` says it for a
- * third case.
- *
- * **The order is the page's**, alphabetical by translated label, because the overview sorts its
- * groups that way and a menu that lists them in a different order is a second thing to learn.
+ * What the glossary section of the header's "more" panel shows: one row per category that holds a
+ * term, and no term links, for the same link-graph reason as the parks and blog panels. Resolved
+ * on the server because the panel is a Client Component, and a `useTranslations('glossary')` there
+ * would put the whole namespace into every page's chrome. Ordered like the overview, alphabetical
+ * by translated label.
  */
+
+/** One category row in the glossary section of the "more" panel. */
 export interface GlossaryMenuCategory {
   /** The category id, which is also its anchor on the overview. */
   id: string;
@@ -41,6 +28,10 @@ export interface GlossaryMenu {
   termCount: number;
 }
 
+/**
+ * Builds the glossary section of the header's "more" panel: each category with its translated
+ * label, `#category` link and term count, sorted by label.
+ */
 export async function getGlossaryMenu(locale: Locale): Promise<GlossaryMenu> {
   const t = await getTranslations({ locale, namespace: 'glossary' });
   const segment = GLOSSARY_SEGMENTS[locale] ?? 'glossary';

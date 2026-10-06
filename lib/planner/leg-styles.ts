@@ -1,31 +1,11 @@
 import type { TransferVerdict } from './leg';
 
 /**
- * How a transfer verdict looks.
- *
- * Full literal strings, never built by interpolation: Tailwind's scanner reads
- * source text, so `bg-crowd-${level}/20` produces a class that exists in the
- * markup and in no stylesheet. `crowd-level-styles.ts` says the same at the top
- * of the file and it is the same trap here.
- *
- * The palette is borrowed rather than invented, and the mapping is deliberate:
- * a tight transfer is the same amber a busy queue is, a comfortable one the same
- * green as a quiet park. `broken` is the one verdict that leaves the crowd
- * palette entirely — it is not "very busy", it is "this does not work", and
- * `destructive` is the only colour in the system that says so.
- *
- * The `border-*` entry is the FULL chip's. The short chip (`leg-chip.ts`) draws
- * its outline as `ring-current/40`, so both halves of a verdict's colour come
- * from the one `text-*` class here and there is no second map to drift from this
- * one.
- *
- * The colour is in the TEXT and the border, never in the fill, and that is about
- * what a chip sits on. These float in the gap between two blocks, and a block is
- * a park photograph under two sheets of frosted glass — a `/20` tint took
- * whatever was behind it, so a sentence about a transfer was read against a
- * queue rail or a tree. Each chip carries the ground colour and a blur of its
- * own, which is the same construction the panel itself uses: a small pane of the
- * same glass, not a coloured film.
+ * How a transfer verdict looks, as full literal class strings, since Tailwind's scanner never sees
+ * an interpolated one. The palette is borrowed: tight is a busy queue's amber, comfortable a quiet
+ * park's green, and `broken` leaves the crowd palette for `destructive`, because it means "this
+ * does not work". The colour is in the text and border, never a fill, over the chip's own small
+ * pane of glass; the short chip's ring takes `current`, so there is no second map.
  */
 export const TRANSFER_CHIP_CLASS: Record<TransferVerdict, string> = {
   broken: 'bg-background/85 text-destructive border-destructive/50 shadow-sm backdrop-blur-md',

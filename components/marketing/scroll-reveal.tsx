@@ -21,19 +21,10 @@ export function Reveal({
   className?: string;
   delay?: number;
   /**
-   * Set this when anything inside carries `backdrop-filter`, and the fade is dropped for it.
-   *
-   * `opacity` below 1 makes an element a backdrop root, so for the 700 ms this is fading, every
-   * frosted panel underneath it blurs an empty backdrop instead of the page — flat glass for the
-   * whole reveal, snapping to the real material on the frame `opacity` reaches exactly 1. It is
-   * the same constraint `.pk-reveal` in `app/globals.css` states as a flat rule ("this only goes
-   * on sections with NO glass in them") and `lib/hooks/use-tile-reveal.ts` designs around
-   * ("Nothing touches the glass"); this component predates both.
-   *
-   * The rise stays. Tailwind v4 compiles `translate-y-*` to the standalone `translate` property,
-   * which Chromium does not treat as a backdrop root — measured in `components/parks/card-pointer-fx.tsx`,
-   * where a panel's backdrop detail held at 26.96 against 26.84 under one. So a glass section
-   * still settles in, it just does not fade, exactly as the entry tiles do not.
+   * Set this when anything inside carries `backdrop-filter`, and the fade is dropped: `opacity`
+   * below 1 makes an element a backdrop root, so every frosted panel inside would blur an empty
+   * backdrop for the whole reveal. The rise stays, since Tailwind's standalone `translate` is not
+   * a backdrop root in Chromium.
    */
   containsGlass?: boolean;
 }) {

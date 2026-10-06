@@ -43,10 +43,8 @@ export interface MediaStats {
 }
 
 /**
- * The upload pipeline's shapes, re-exported so this file stays the one import for
- * the media browser. They live in `admin/_lib/media-upload.ts` because the
- * field-capture route uses the same pipeline and must not reach across into a
- * sibling route's folder for its types.
+ * The upload pipeline's shapes, re-exported so this file stays the media browser's one import.
+ * They live in `admin/_lib/media-upload.ts`, which the capture route shares.
  */
 export type { AnalyzedFile, ParkSuggestion, RideSuggestion } from '../../_lib/media-upload';
 
@@ -63,13 +61,7 @@ export interface Assignment {
   alt: string;
   caption: string;
   shotAt: string | null;
-  /**
-   * Focal point, set by clicking the photo during the walkthrough.
-   *
-   * Worth capturing here rather than leaving for later: it is the one field that
-   * needs the picture in front of you, and the walkthrough is the only moment
-   * every photo is guaranteed to be looked at.
-   */
+  /** Focal point, set by clicking the photo in the walkthrough, where every photo is looked at. */
   focus: { x: number; y: number } | null;
   /** Excluded from the commit without being removed from the batch. */
   skip: boolean;

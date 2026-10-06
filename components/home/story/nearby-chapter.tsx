@@ -6,35 +6,19 @@ import { HomeLocationRow } from '@/components/home/home-location-row';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 
 /**
- * The chapter frame around the nearby-parks card.
- *
- * Its kicker names the thing ("your location"), not its place in the story. It
- * used to read "Step 1, for real", which leaned on `ThreeSteps` standing right
- * above it — true from 768 px up, while on a phone `PHONE_LATER` (page.tsx)
- * moves the steps below the park lists and this chapter opens right under the
- * hero, so a reader met "step 1" before any steps had been named.
- *
- * The card itself is unchanged and comes in as a slot, because it is a Client
- * Component with its own geolocation gate and its own skeleton — the caller
- * already dynamic-imports it, and re-importing it here would give the homepage
- * two entries for one chunk.
- *
- * The heading is a plain `<h2>` in the story ladder, which is the whole reason
- * this frame exists: the card opens with a `GlassSectionTitle`, a band label
- * rather than a chapter header, so on its own it left a step of the explanation
- * with no heading a crawler could see.
- *
- * Under the lead ("share your location and …") sits the control that does what
- * it says (`HomeLocationRow`), at one fixed height in every state.
+ * The chapter frame around the nearby-parks card, which comes in as a slot (a Client Component the
+ * caller already dynamic-imports). The frame exists for the plain `<h2>` in the story ladder: the
+ * card opens with a band label, not a chapter header. Its kicker names the thing ("your
+ * location"), not its place in the story, since on a phone the steps move below this chapter.
+ * Under the lead sits `HomeLocationRow`, at one fixed height in every state.
  */
 export async function NearbyChapter({ children }: { children: React.ReactNode }) {
   const t = await getTranslations('homeStory.nearby');
 
   return (
-    // No top padding from 768 px up: `ThreeSteps` stands above and its bottom padding is the
-    // gap, one untinted band running on. Below that `PHONE_LATER` in page.tsx moves the steps
-    // under the park lists, this chapter opens right under the hero's photo, and without a top
-    // padding of its own the heading tile sat flush on the photo's lower edge.
+    // No top padding from 768 px up, where `ThreeSteps` stands above and its bottom padding is the
+    // gap. Below that the steps move under the park lists (`PHONE_LATER` in page.tsx) and this
+    // chapter opens under the hero's photo, so it needs its own.
     <section className="px-4 pt-16 pb-16 sm:pt-18 sm:pb-18 @min-[768px]/page:pt-0">
       <div className="container mx-auto">
         <Reveal containsGlass>

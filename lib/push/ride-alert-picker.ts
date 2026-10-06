@@ -1,4 +1,5 @@
 import { hasUsableThresholdRange } from '@/lib/push/threshold-minutes';
+import { foldRideName } from '@/lib/utils/text-fold';
 
 /**
  * Pure logic behind the ride list in `RideAlertDialog`, kept out of the component
@@ -52,15 +53,6 @@ export function rideAlertPickerRows<T extends RideAlertPickerAttraction>(
       // A reopen alert has no threshold to fit under the queue, so no queue is too short for it.
       selectable: kind === 'reopen' || hasUsableThresholdRange(attraction.currentWaitTime),
     }));
-}
-
-/** Diacritics and punctuation folded, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.". */
-export function foldRideName(value: string): string {
-  return value
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .replace(/[^a-z0-9]/g, '');
 }
 
 /** The rows whose name contains the typed text. An empty query keeps every row. */

@@ -35,12 +35,8 @@ interface BlogParkLinkProps {
 }
 
 /**
- * Inline reference to a park inside blog content.
- *
- * The link itself is a real `<Link>` that navigates to the park page. Hover
- * opens a card built from the same `ParkCard` component used on favorites and
- * featured parks, so the experience is identical across the site (background
- * image, status badge, crowd badge, average wait, closing-time strip).
+ * Inline reference to a park inside blog content: a real `<Link>` to the park page, whose hover
+ * card is the same `ParkCard` used on favorites and featured parks.
  */
 export function BlogParkLink({
   park: resolvedPark,
@@ -66,20 +62,9 @@ export function BlogParkLink({
   }
 
   /**
-   * `ref:phantasialand?calendar` points at the park's wait-time calendar instead of its
-   * wait-times page.
-   *
-   * A post that argues about WHEN to go — a tips article, a best-time piece, a „wann ist es leer"
-   * — was sending readers to the live board, which answers a different question and answers it
-   * only for today. The calendar is the page that carries that argument's evidence, and it went
-   * live with nothing linking into it from the one place on this site that writes about visit
-   * timing at length.
-   *
-   * Built by appending the localized segment to the park's OWN href, not by reassembling the geo
-   * path: `ResolvedPark` carries `city` as the city's NAME („Brühl"), and there is no city slug on
-   * it — feeding that to `parkCalendarPath` produces a 404 on every park whose city is spelled
-   * with anything but its slug. The href is already the right path; the segment is the only part
-   * that is localized (`wartezeiten-kalender`, `calendrier-temps-attente`, …).
+   * `ref:phantasialand?calendar` points at the park's wait-time calendar instead of its wait-times
+   * page, for posts about when to go. Built by appending the localized segment to the park's own
+   * href: `ResolvedPark.city` is the city's name, not its slug, so `parkCalendarPath` would 404.
    */
   const wantsCalendar = options?.has('calendar') ?? false;
   const href = wantsCalendar
@@ -124,14 +109,9 @@ export function BlogParkLink({
         className="w-[420px] border-none bg-transparent p-0 shadow-none backdrop-blur-none"
       >
         {/*
-          ParkCard uses row-span-3 + grid-template-rows: subgrid so its three
-          internal sections (panel-top / image-spacer / panel-bottom) inherit
-          row tracks from this parent. Match exactly that shape — auto / 1fr
-          / auto — and *don't* pin a height: the card has a `sm:min-h-[220px]`
-          spacer in its middle row that opens the 1fr track on its own.
-          Using `minmax(220px, 1fr)` here means the card still renders at the
-          right height even when there is no background image (i.e. when the
-          card's own min-h conditional doesn't fire).
+          ParkCard uses `row-span-3` with `subgrid`, so its three sections inherit row tracks from
+          this parent: auto / 1fr / auto, with no pinned height. `minmax(220px, 1fr)` keeps the card
+          at full height when there is no background image to open the middle row.
         */}
         <BlogParkCardLive
           park={park}

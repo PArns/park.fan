@@ -4,20 +4,9 @@ import { useTranslations } from 'next-intl';
 import { CalendarPlus } from 'lucide-react';
 
 /**
- * "Toverland jetzt planen" — the offer to plan the park the reader is standing in.
- *
- * Its own component because it has to appear in two places that never render
- * together, and it used to appear in neither. It lived inside the panel's
- * no-axis empty branch, which is reached only when `buildDayGrid` returns
- * `null` — and the grid is non-null for every date `/plan/day` names hours for,
- * which is every open day. So one press of the calendar's plan button, or one
- * finished wizard, made the whole container unreachable and the reader was left
- * with the grid's own "Noch nichts geplant" overlay, which offers nothing.
- *
- * The other half is which park it names: the question is not whether the store
- * has heard of this park, it is whether the day on screen is already this
- * park's. Standing on Toverland's page with a Phantasialand day open, the right
- * offer is Toverland.
+ * "Toverland jetzt planen": the offer to plan the park the reader is standing in. Its own component
+ * because it appears in two places that never render together, the grid's empty overlay and the
+ * no-axis branch. It names the page's park whenever the day on screen is not already that park's.
  */
 export function PlannerPlanParkCta({
   parkName,

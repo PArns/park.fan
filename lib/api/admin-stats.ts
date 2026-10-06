@@ -1,8 +1,7 @@
-// Types for the read-only stats endpoints surfaced in the admin dashboard.
-// Sources: /v1/ml/*, /v1/analytics/*, /v1/parks (list).
+// Types for the read-only stats endpoints the admin dashboard shows: /v1/ml/*, /v1/analytics/*,
+// /v1/parks (list) and /v1/search.
 
-// ─── ML ─────────────────────────────────────────────────────────────────────
-
+/** Error metrics for a model. */
 export interface MlMetrics {
   mae: number;
   rmse: number;
@@ -10,6 +9,7 @@ export interface MlMetrics {
   r2Score: number;
 }
 
+/** The ML service's health. */
 export interface MlHealth {
   timestamp: string;
   status: string;
@@ -24,6 +24,7 @@ export interface MlHealth {
   message: string;
 }
 
+/** Live error metrics of the serving model. */
 export interface MlLivePerformance extends MlMetrics {
   totalPredictions: number;
   matchedPredictions: number;
@@ -33,6 +34,7 @@ export interface MlLivePerformance extends MlMetrics {
   badge: string;
 }
 
+/** A ride among the ones the model predicts best or worst. */
 export interface MlPerformer {
   attractionId: string;
   attractionName: string;
@@ -41,14 +43,15 @@ export interface MlPerformer {
   predictionsCount: number;
 }
 
+/** One day of live error, for the drift chart. */
 export interface MlDriftDaily {
   date: string;
   mae: number;
   predictionsCount: number;
 }
 
-/** Drift for one serving horizon (§6a-2). daily is `tracked:false` — far-daily
- *  predictions are never scored against actuals, so its drift is unmeasured. */
+/** Drift for one serving horizon. `daily` is `tracked: false`: far-daily predictions are never
+ *  scored against actuals, so their drift is unmeasured. */
 export interface MlHorizonDrift {
   horizon: 'hourly' | 'daily';
   tracked: boolean;
@@ -58,6 +61,7 @@ export interface MlHorizonDrift {
   note: string | null;
 }
 
+/** How far live error has drifted from training error. */
 export interface MlDrift {
   currentDrift: number;
   threshold: number;
@@ -65,13 +69,12 @@ export interface MlDrift {
   trainingMae: number;
   liveMae: number;
   dailyMetrics: MlDriftDaily[];
-  /** Per-horizon split. Optional: absent on API builds predating §6a-2. */
+  /** Per-horizon split; absent on older API builds. */
   byHorizon?: MlHorizonDrift[];
 }
 
-/** Served intraday accuracy (PCN champion-swap) — what users actually get for
- *  15-min slots. `live`/`byPredictionType.HOURLY` measure the CatBoost fallback,
- *  not the served model. null when PCN is not serving. */
+/** Served intraday accuracy (PCN champion-swap): what users get for 15-min slots, where
+ *  `live`/`byPredictionType.HOURLY` measure the CatBoost fallback. null when PCN is not serving. */
 export interface MlServedIntraday {
   servedModel: 'pcn';
   mae: number;
@@ -82,6 +85,7 @@ export interface MlServedIntraday {
   days: number;
 }
 
+/** The ML dashboard endpoint's answer (`/v1/ml/dashboard`). */
 export interface MlDashboard {
   model: {
     current: {
@@ -120,6 +124,7 @@ export interface MlDashboard {
   };
 }
 
+/** One ML alert. */
 export interface MlAlert {
   id: string;
   alertType: string;
@@ -131,6 +136,7 @@ export interface MlAlert {
   updatedAt: string;
 }
 
+/** Anomaly counts by type and severity. */
 export interface MlAnomalyStats {
   totalAnomalies: number;
   byType: Record<string, number>;
@@ -138,8 +144,7 @@ export interface MlAnomalyStats {
   avgAnomalyScore: number;
 }
 
-// ─── Analytics ────────────────────────────────────────────────────────────────
-
+/** A park in the realtime analytics answer. */
 export interface RealtimePark {
   id: string;
   name: string;
@@ -153,6 +158,7 @@ export interface RealtimePark {
   crowdLevel: string;
 }
 
+/** A ride in the realtime analytics answer. */
 export interface RealtimeRide {
   id: string;
   name: string;
@@ -164,6 +170,7 @@ export interface RealtimeRide {
   crowdLevel: string;
 }
 
+/** The realtime analytics endpoint's answer (`/v1/analytics/realtime`). */
 export interface AnalyticsRealtime {
   counts: {
     openParks: number;
@@ -181,6 +188,7 @@ export interface AnalyticsRealtime {
   shortestWaitRide: RealtimeRide;
 }
 
+/** One entry of the live ticker. */
 export interface TickerItem {
   parkName: string;
   parkSlug: string;
@@ -194,28 +202,31 @@ export interface TickerItem {
   url: string;
 }
 
+/** The ticker endpoint's answer (`/v1/analytics/ticker`). */
 export interface AnalyticsTicker {
   items: TickerItem[];
   generatedAt: string;
 }
 
+/** Open-park count for one country. */
 export interface GeoLiveCountry {
   slug: string;
   openParkCount: number;
 }
 
+/** Open-park counts for one continent and its countries. */
 export interface GeoLiveContinent {
   slug: string;
   openParkCount: number;
   countries: GeoLiveCountry[];
 }
 
+/** The geo-live endpoint's answer (`/v1/analytics/geo-live`). */
 export interface AnalyticsGeoLive {
   continents: GeoLiveContinent[];
 }
 
-// ─── Parks list  (GET /v1/parks) ────────────────────────────────────────────
-
+/** One park in the `/v1/parks` list. */
 export interface ParkListItem {
   id: string;
   name: string;
@@ -238,6 +249,7 @@ export interface ParkListItem {
   };
 }
 
+/** Paging info of the `/v1/parks` list. */
 export interface ParksPagination {
   page: number;
   limit: number;
@@ -247,15 +259,16 @@ export interface ParksPagination {
   hasPrevious: boolean;
 }
 
+/** The `/v1/parks` list endpoint's answer. */
 export interface ParksListResponse {
   data: ParkListItem[];
   pagination: ParksPagination;
 }
 
-// ─── Search  (GET /v1/search) ────────────────────────────────────────────────
-
+/** The kinds of result `/v1/search` returns. */
 export type SearchResultType = 'park' | 'attraction' | 'show' | 'restaurant' | 'location';
 
+/** One search hit, as the admin search shows it. */
 export interface SearchResult {
   type: SearchResultType;
   id: string;
@@ -271,6 +284,7 @@ export interface SearchResult {
   parentPark?: { id: string; name: string; slug: string; url: string };
 }
 
+/** The `/v1/search` endpoint's answer. */
 export interface SearchResponse {
   query: string;
   results: SearchResult[];

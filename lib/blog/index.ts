@@ -6,10 +6,9 @@ import { BLOG_POST_BODIES } from './manifest-bodies';
 import { findTranslationKeyBySlug, resolveEntryForLocale } from './listing';
 
 /**
- * Loading a post WITH its markdown body. This module pulls in
- * `manifest-bodies` (~900 KB and growing), so import it only where the post is
- * actually rendered — every listing surface (cards, feeds, hreflang, the nav
- * gate, the park pages' blog section) goes through `./listing` instead.
+ * Loading a post with its markdown body. This pulls in every post body, so import it only where
+ * a post is rendered; every listing surface goes through `./listing`. See
+ * docs/rules/blog-manifest-is-split.md.
  */
 
 // Re-exported so `@/lib/blog` stays the familiar import for the blog routes.
@@ -19,7 +18,7 @@ export * from './listing';
  * Load a single post by translationKey for the requested locale, falling back to EN.
  * Returns null when the post does not exist in EN either, or when its mode is not visible.
  */
-export const getPostByTranslationKey = cache(
+const getPostByTranslationKey = cache(
   (translationKey: string, requestedLocale: Locale): BlogPost | null => {
     const resolved = resolveEntryForLocale(translationKey, requestedLocale);
     if (!resolved) return null;

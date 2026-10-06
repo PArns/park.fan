@@ -144,7 +144,6 @@ export async function POST(request: Request) {
 
   const comment = await enrichFromDeployment(normalizeComment(envelope));
 
-  // ── Preview gate ────────────────────────────────────────────────────────────
   // Production and localhost comments have no PR. `unknown` is dropped too
   // unless explicitly allowed, so a payload shape we failed to read never
   // leaks production feedback onto a random PR.

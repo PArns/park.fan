@@ -1,41 +1,32 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { getTickerData } from '@/lib/api/analytics';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
-
 /**
- * The three public analytics reads, and only those three.
- *
- * This one stays anonymous — every homepage visitor polls the ticker and the
- * live stats — so the lock is the path list rather than a session. It is the
- * same hole the admin proxy had: a catch-all that joins the caller's segments
- * into a URL forwards `x-auth-key` (a rate-limit bypass at the API) to
- * wherever a percent-encoded separator takes it, and `new URL()` normalises
- * `..` after Next has already finished matching the route.
+ * The three public analytics reads, and only those three. It stays anonymous, so the lock is the
+ * path list: a catch-all joining the caller's segments would forward `x-auth-key`, a rate-limit
+ * bypass at the API, wherever an encoded `..` takes it. See
+ * docs/rules/an-api-route-passes-only-slugs-upstream.md.
  */
 const ANALYTICS_PATHS = new Set(['ticker', 'realtime', 'geo-live']);
 
 /**
- * All three are the same bytes for every visitor, and the backend caches them 300 s itself. They
- * answered `no-store`, so every homepage and hub poll was a function invocation; a 60 s shared
- * window collapses concurrent visitors onto one, the same as `/api/parks/live`. Only a successful
- * answer is shared. The rule in next.config.ts carries the same value.
+ * The same bytes for every visitor, so a 60 s shared window collapses concurrent polls onto one
+ * invocation, as on `/api/parks/live`. Only a successful answer is shared; next.config.ts carries
+ * the same value.
  */
 const SHARED_WINDOW = 'public, s-maxage=60, stale-while-revalidate=120';
 /** Every other answer says so itself, or the rule in next.config.ts would share it. */
 const NO_STORE = { 'Cache-Control': 'no-store, must-revalidate' };
 export async function GET(
-  request: NextRequest,
+  _request: NextRequest,
   { params }: { params: Promise<{ path: string[] }> }
 ) {
   const { path } = await params;
 
-  // The live wait-times ticker is polled by every homepage visitor (every 5 min, see
-  // live-wait-ticker) and the admin dashboard, all asking for the same param-less data.
-  // Serve it from the shared 10-min data cache (getTickerData → revalidate 600) so those
-  // concurrent polls collapse onto a single backend call instead of each hitting the API.
+  // Every homepage visitor and the admin dashboard poll the ticker without parameters, so it comes
+  // from the shared data cache (`getTickerData`) and concurrent polls make one backend call.
   if (path.length === 1 && path[0] === 'ticker') {
     try {
       const data = await getTickerData();
@@ -55,9 +46,9 @@ export async function GET(
   }
   const upstream = [...ANALYTICS_PATHS].find((candidate) => candidate === requested)!;
 
-  const incoming = new URL(request.url);
-  const apiUrl = new URL(`${API_BASE}/v1/analytics/${upstream}`);
-  incoming.searchParams.forEach((value, key) => apiUrl.searchParams.set(key, value));
+  // No query string goes upstream: none of the three takes one, and each distinct query would
+  // miss the shared window and spend a keyed backend call.
+  const apiUrl = new URL(`${getApiBaseUrl()}/v1/analytics/${upstream}`);
 
   try {
     const response = await fetch(apiUrl.toString(), {

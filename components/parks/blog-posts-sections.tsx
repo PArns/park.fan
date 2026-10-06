@@ -13,25 +13,12 @@ import type { BlogListItem } from '@/lib/blog/types';
 import type { Locale } from '@/i18n/config';
 
 /**
- * "This park / this ride in our blog" — the counterpart to the park and ride
- * references inside a post. Renders the articles that mention THIS page's
- * subject (body references plus the frontmatter configuration, see
- * `lib/blog/backlinks.ts`), using the same BlogPostCard as the blog index so
- * the tiles match the rest of the site.
- *
- * Pure static content (the generated blog manifest, no API call and no clock),
- * so it never competes with the live queries or with the park page's load-last
- * best-travel-time data.
- *
- * Articles and news are split: the grid holds articles only, and news about the
- * park gets a smaller row under it ({@link NewsRow}), newest first, each item
- * with its age. News will outnumber the articles, and in one ranked grid a busy
- * news month would take every slot a guide to the park had.
- *
- * Two exports because the two pages have different rhythms: the park page
- * builds its lower sections from frosted panels (like "Parks in der Nähe"),
- * the ride page from `PageSection` chapters. The lookup, the empty-state rule
- * and the card grid are shared.
+ * "This park / this ride in our blog": the articles that mention this page's subject (see
+ * `lib/blog/backlinks.ts`), in the blog index's own `BlogPostCard`. Static content from the blog
+ * manifest, so it never competes with the live queries. News gets its own row under the grid
+ * ({@link NewsRow}), so a busy news month cannot take every slot a guide had
+ * (docs/rules/news-is-set-apart-from-the-articles.md). Two exports because the park page builds
+ * its lower sections from frosted panels and the ride page from `PageSection` chapters.
  */
 
 /** 3 fills exactly one row of the grid below. */
@@ -64,6 +51,10 @@ interface AttractionBlogPostsSectionProps extends Omit<ParkBlogPostsSectionProps
   attractionName: string;
 }
 
+/**
+ * Park page chapter of blog articles and news that mention the park, preceded by the park's
+ * first-visit guide when it has one. Renders nothing in a locale without a published blog.
+ */
 export async function ParkBlogPostsSection({
   locale,
   parkSlug,
@@ -116,6 +107,10 @@ export async function ParkBlogPostsSection({
   );
 }
 
+/**
+ * Ride page chapter of blog articles and news that mention the ride. Renders nothing when there
+ * are none or the locale has no published blog.
+ */
 export async function AttractionBlogPostsSection({
   locale,
   parkSlug,
@@ -172,8 +167,8 @@ function AllPostsLink({ label }: { label: string }) {
 }
 
 /**
- * No shared row template on the wrapper — BlogPostCard carries its own
- * (`row-span-3` + subgrid), see CLAUDE.md on the spotlight cards.
+ * No shared row template on the wrapper: BlogPostCard carries its own (`row-span-3` + subgrid).
+ * See docs/rules/blog-spotlight-cards.md.
  */
 function BlogPostsGrid({ posts }: { posts: BlogListItem[] }) {
   if (posts.length === 0) return null;

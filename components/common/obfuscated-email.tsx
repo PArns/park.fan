@@ -8,18 +8,13 @@ interface ObfuscatedEmailProps {
   displayText?: string;
 }
 
-/**
- * ROT13-like encryption for email obfuscation
- * Shifts characters by 13 positions in the ASCII range
- */
+/** ROT13-style shift that keeps an address out of the server HTML. */
 export function rot13(text: string): string {
   return text
     .split('')
     .map((char) => {
       const code = char.charCodeAt(0);
-      // Only shift letters
       if ((code >= 65 && code <= 90) || (code >= 97 && code <= 122)) {
-        // Letters: a-z, A-Z
         const base = code >= 97 ? 97 : 65;
         return String.fromCharCode(((code - base + 13) % 26) + base);
       } else if (code >= 48 && code <= 57) {
@@ -39,9 +34,8 @@ export function rot13(text: string): string {
 }
 
 /**
- * Client component that obfuscates email addresses to prevent spam bots from scraping them.
- * Uses ROT13 encryption during hydration - the plain text email is only assembled client-side.
- * The initial HTML shows ROT13-encrypted text, and after hydration it becomes a clickable mailto link.
+ * An email address kept from scrapers: the server HTML carries a ROT13-shifted string, and the
+ * clickable mailto link is assembled on the client after hydration.
  */
 export function ObfuscatedEmail({ local, domain, displayText }: ObfuscatedEmailProps) {
   const mounted = useMounted();

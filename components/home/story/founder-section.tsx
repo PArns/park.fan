@@ -9,6 +9,7 @@ import type { Locale } from '@/i18n/config';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { MobileMore } from '@/components/common/mobile-more';
+import { STORY_SECTION_TINTED } from './section-chrome';
 
 /** Author slug the blog already publishes a page for. */
 const AUTHOR_SLUG = 'patrick';
@@ -24,23 +25,10 @@ const AUTHOR_SLUG = 'patrick';
 const STORY_POST_KEY = 'welcome-to-park-fan-blog';
 
 /**
- * Who is behind this.
- *
- * The bullet list and the two paragraphs deliberately restate no fact the blog
- * does not already carry — the mock's "30 Jahre" against the author page's "über
- * 25 Jahre" is exactly the sort of pair that ends up quoted back at the site —
- * and the section links out rather than growing a second biography nobody will
- * remember to update.
- *
- * The portrait is the blog author registry's `avatar`, not a path typed in here:
- * the same picture the author page and every post banner show, so there is one
- * file to replace and no second place to remember. It is a cut-out with a real
- * alpha channel, which is why it sits `object-contain` on a gradient plate
- * rather than filling a frame — `cover` would crop a head off.
- *
- * `avatar` is optional in the registry (it was an empty string until this photo
- * existed), so the plate falls back to the monogram rather than rendering a
- * broken image.
+ * Who is behind this. The text restates no fact the blog does not already carry and links out
+ * rather than keeping a second biography. The portrait is the author registry's `avatar`, a
+ * cut-out with a real alpha channel, so it sits `object-contain` on a gradient plate; without one,
+ * the plate shows the monogram.
  */
 export async function FounderSection({ locale }: { locale: Locale }) {
   const [t, tCommon] = await Promise.all([
@@ -59,7 +47,7 @@ export async function FounderSection({ locale }: { locale: Locale }) {
     : `/blog/authors/${AUTHOR_SLUG}`;
 
   return (
-    <section className="border-border bg-muted/30 border-t px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION_TINTED}>
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading

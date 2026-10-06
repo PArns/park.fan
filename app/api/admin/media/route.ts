@@ -35,6 +35,7 @@ import type { MediaImage, MediaLicense, MediaRole } from '@/lib/media/types';
 /** Long-edge target for a source photo — see docs/development/assets.md. */
 export const LOW_RES_LONG_EDGE = 2048;
 
+/** Whether a raster image's long edge is under `LOW_RES_LONG_EDGE` (2048 px); an SVG never is. */
 export function isLowRes(image: MediaImage): boolean {
   if (image.format === 'svg') return false; // resolution-independent
   return Math.max(image.width, image.height) < LOW_RES_LONG_EDGE;
@@ -44,11 +45,8 @@ function toRow(image: MediaImage) {
   const text = getMediaText(image.id);
   return {
     ...image,
-    // The content-versioned address, which a spread of `MediaImage` does not
-    // carry: the row has `src`, and `?v=<hash>` is added by `versionedSrc`
-    // because retargeting a focal point rewrites a crop's bytes at an
-    // unchanged URL. The park and ride media panels read `url` — without it
-    // every thumbnail in them rendered as a broken image.
+    // The content-versioned address, which the park and ride media panels read: retargeting a
+    // focal point rewrites a crop's bytes at an unchanged `src`.
     url: versionedSrc(image),
     alt: text.alt ?? {},
     caption: text.caption ?? {},

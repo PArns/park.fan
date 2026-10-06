@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { Clock } from 'lucide-react';
 
+/** The translated strings `BestTimesData` renders, one set per content module. */
 export interface BestTimesLabels {
   weekdaysTitle: string;
   weekdaysBody: string;
@@ -62,8 +63,7 @@ function BarList({
               {name(b.key)}
             </span>
             <div className="bg-muted h-7 flex-1 overflow-hidden rounded-lg">
-              {/* The site's crowd palette (`--crowd-*`), as every other crowd bar draws it. It
-                  was six fixed hex values from an older palette. */}
+              {/* The site's crowd palette (`--crowd-*`), as every other crowd bar draws it. */}
               <div
                 className={cn(
                   'h-full rounded-lg transition-[width,filter] duration-700 group-hover:brightness-110',
@@ -100,10 +100,9 @@ function PendingPanel({ text }: { text: string }) {
 }
 
 /**
- * Global best-time charts: relative busyness by weekday and by month, live from
- * `/v1/analytics/best-times`. Weekday/month names are localised via `Intl`.
- * While the aggregate is unreachable or not yet displayable, a compact "warming
- * up" panel is shown instead so the section never renders empty.
+ * Relative busyness by weekday and by month across the catalogue, live from
+ * `/v1/analytics/best-times`. A "warming up" panel stands in while the aggregate is unreachable
+ * or not yet displayable, so the section never renders empty.
  */
 export async function BestTimesData({
   locale,
@@ -119,8 +118,7 @@ export async function BestTimesData({
   const monthName = (m: number) =>
     new Intl.DateTimeFormat(locale, { month: 'long' }).format(new Date(Date.UTC(2023, m - 1, 1)));
 
-  // Drop buckets the aggregate couldn't rank (no samples) — a grey "average" bar
-  // in a busyness chart is misleading, so only real-data buckets are shown.
+  // A bucket without samples would draw a grey "average" bar that reads as data.
   const hasData = (b?: BestTimeBucket): b is BestTimeBucket =>
     !!b && b.sampleDays > 0 && b.crowdLevel !== 'unknown';
 
@@ -160,5 +158,5 @@ export async function BestTimesData({
   );
 }
 
-// Re-export so page/content can reference the crowd type if needed.
+/** The crowd level type, re-exported for this page's modules. */
 export type { CrowdLevel };

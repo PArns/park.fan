@@ -7,28 +7,21 @@ import { removeRideAlert, unfollowShow, type PushWriteError } from './push-follo
 import { PUSH_FOLLOWS_QUERY_KEY, type PushFollowsList } from './use-push-follows-list';
 
 /**
- * Dropping one row of the two surfaces that list every alert this browser has —
- * `/alerts` and the favorites band's alerts group.
- *
- * Both used to carry their own copy of the same four steps (mark the row busy,
- * call the API, edit the shared query cache, unmark), and both got the third
- * one wrong in the same way: they ran it whether or not the DELETE had worked,
- * because `removeRideAlert` and `unfollowShow` had no way of saying. The steps
- * live here now, and the cache is edited only where the server confirmed it —
- * one list, one rule for what leaves it.
- *
- * The analytics event moved with them, and only fires on success: an alert that
- * is still armed was not removed, and counting it would make the removal rate
- * in Umami a count of clicks rather than of removals.
+ * Dropping one row from the two surfaces that list every alert this browser has, `/alerts` and
+ * the favorites band's alerts group. The shared query cache is edited only once the server has
+ * confirmed the removal, and the analytics event fires only then, so Umami counts removals
+ * rather than clicks.
  */
 
 /** `ride:<attractionId>` or `show:<showId>` — unique across both lists in one keyspace. */
 export type PushFollowRowKey = string;
 
+/** The row key of a ride alert. */
 export function rideRowKey(attractionId: string): PushFollowRowKey {
   return `ride:${attractionId}`;
 }
 
+/** The row key of a show follow. */
 export function showRowKey(showId: string): PushFollowRowKey {
   return `show:${showId}`;
 }
@@ -42,14 +35,12 @@ export interface PushFollowRemoval {
   removeShow: (showId: string) => Promise<void>;
 }
 
+/** Removes ride alerts and show follows from the shared list, with per-row busy and error state. */
 export function usePushFollowRemoval(): PushFollowRemoval {
   const queryClient = useQueryClient();
   /**
-   * The rows currently being deleted — a set, not one key.
-   *
-   * As a single key, pressing remove on a second row re-enabled the first row's button while its
-   * DELETE was still in flight, and the first request coming back cleared the second row's
-   * spinner. Somebody clearing three alerts in a row does exactly that.
+   * The rows currently being deleted, a set rather than one key, so removing a second row neither
+   * re-enables the first row's button nor clears its spinner.
    */
   const [removing, setRemoving] = useState<readonly PushFollowRowKey[]>([]);
   const [errors, setErrors] = useState<Readonly<Record<PushFollowRowKey, PushWriteError>>>({});

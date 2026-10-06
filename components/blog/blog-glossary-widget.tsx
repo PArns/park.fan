@@ -59,11 +59,9 @@ export async function BlogGlossaryWidget({ slug, locale }: BlogGlossaryWidgetPro
         <div className="text-foreground/90 space-y-3 leading-relaxed" itemProp="description">
           {term.definition.split('\n\n').map((para, i) => (
             <p key={i}>
-              {/* Same renderer the glossary page uses, so an authored `[label](/href)` in a
-                  definition arrives as a link here too — 25 of 274 terms carry one, and
-                  printed raw they also put an unbreakable URL in a 278 px column. Auto-linking
-                  is off: see the `autoLink` docblock in glossary-rich-text.tsx. A link to a ride
-                  gets the live chip that a `ref:` link carries. */}
+              {/* The glossary page's renderer, so an authored `[label](/href)` in a definition
+                  arrives as a link rather than a raw URL. Auto-linking is off (see `autoLink` in
+                  glossary-rich-text.tsx); a ride link gets the live chip a `ref:` link carries. */}
               <GlossaryRichText
                 locale={locale}
                 autoLink={false}

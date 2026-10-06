@@ -1,13 +1,7 @@
 /**
- * Server-side "current time" helpers.
- *
- * With Cache Components disabled, server code may read `new Date()` / `Date.now()` directly. On the
- * `force-dynamic` park/attraction/home pages these resolve per request (always fresh); on the
- * statically-prerendered pages (Footer year, etc.) they resolve at build time, which is fine for
- * display values where day/year granularity is enough. For truly live values (countdowns,
- * "x min ago"), use a Client Component instead.
- *
- * They remain `async` so existing `await` call sites and `Promise` return types are unaffected.
+ * Server-side „current time" helpers. On per-request pages they are fresh; on prerendered pages
+ * they resolve at build or revalidation time, fine for day or year granularity. Live values
+ * (countdowns, „x min ago") belong in a Client Component. Kept `async` for the existing callers.
  */
 
 import { parkDayOf } from '@/lib/utils/park-day';

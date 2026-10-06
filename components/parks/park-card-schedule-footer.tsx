@@ -20,20 +20,16 @@ interface ParkCardScheduleFooterProps {
   nextSchedule?: ScheduleSummary;
   hasOperatingSchedule?: boolean;
   /**
-   * The one-line form the phone row of `ParkCard` uses: an open park shows only its closing
-   * time (the attraction count when there is none), and a closed park's line is cut with an
-   * ellipsis instead of wrapping. The row puts this next to the badges, so it gets whatever
-   * width they leave.
+   * The one-line form of `ParkCard`'s phone row: an open park shows only its closing time (or the
+   * attraction count without one), and a closed park's line ends in an ellipsis instead of
+   * wrapping.
    */
   compact?: boolean;
 }
 
 /**
- * Schedule/countdown footer of a park card. Extracted into a Client Component because it
- * reads the current time ("closes in X", "opens in Y") — under Cache Components a server
- * render can't read `Date.now()`, but a client render can, and the live value is what the
- * user should see (the absolute time is rendered by <ParkTime>, the relative text carries
- * suppressHydrationWarning). Behaviour is identical to the previous inline server version.
+ * Schedule and countdown footer of a park card. A Client Component because it reads the current
+ * time, which a server render under Cache Components cannot.
  */
 export function ParkCardScheduleFooter({
   isOpen,
@@ -64,8 +60,7 @@ export function ParkCardScheduleFooter({
     hasOperatingSchedule
   );
 
-  // Closing time for open parks: remaining duration only (absolute time rendered by
-  // ParkTime). Client render → Date.now() is the real client time.
+  // Remaining duration only; <ParkTime> renders the absolute time.
   // eslint-disable-next-line react-hooks/purity
   const nowMs = Date.now();
   const closingRemaining =
@@ -88,7 +83,6 @@ export function ParkCardScheduleFooter({
     operatingAttractions != null && totalAttractions != null && !(compact && hasClosingTime);
 
   return isOpen ? (
-    /* Open footer — stats strip only */
     hasStats ? (
       <div
         className={cn(
@@ -107,9 +101,8 @@ export function ParkCardScheduleFooter({
               style={{ color: 'var(--pk-text-3)' }}
               aria-hidden="true"
             />
-            {/* Wrapped in a single element so the bold count and "/total" stay
-                one flex item — otherwise the parent's `gap-1` renders a gap
-                between them ("36 /44" instead of "36/44"). */}
+            {/* One element, so the bold count and "/total" stay one flex item; the parent's `gap-1`
+                would render "36 /44". */}
             <span>
               <b className="font-bold" style={{ color: 'var(--pk-text-1)' }}>
                 {operatingAttractions}
@@ -151,7 +144,6 @@ export function ParkCardScheduleFooter({
       </div>
     ) : null
   ) : (
-    /* Closed footer */
     <div
       className={cn(
         'relative flex items-center gap-[6px] text-[12px]',

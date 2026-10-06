@@ -25,10 +25,8 @@ interface PlannerMonthCalendarProps {
   /** Days of this park that already have entries. Marked, and always reachable. */
   plannedDates?: readonly string[];
   /**
-   * What we know about each day, keyed by date: the crowd forecast, whether the
-   * park is open at all, its hours. From the park's own best-days snapshot —
-   * which reaches ninety days out, so most of the grid is genuinely unknown and
-   * a cell without an entry here simply says nothing.
+   * What we know about each day, keyed by date, from the park's best-days snapshot. It reaches
+   * about ninety days, so a cell without an entry says nothing.
    */
   facts?: ReadonlyMap<string, CalendarDay> | null;
   /** The last day that may be picked. Beyond it the grid stops stepping. */
@@ -46,25 +44,10 @@ function toneOf(day: CalendarDay | undefined): ColoredCrowdLevel | null {
 }
 
 /**
- * A month at a time, which is how somebody picks a day for a trip.
- *
- * It replaces a native `<select>` with sixty consecutive options. That control
- * was defended in its own docstring — a phone renders a native picker, the
- * choice is one of sixty days — and the defence was wrong about the thing that
- * matters: sixty options is a list two screens tall with no weekday columns and
- * no way to see that the 12th is a Saturday without reading every row. Picking
- * "the Saturday after next" is the actual task, and a grid answers it in one
- * glance.
- *
- * What the cells carry beyond the number is the park's own forecast: the crowd
- * tint straight off `CROWD_TILE_CLASS`, so a quiet Tuesday and a full Saturday
- * look here exactly as they look in the park's wait-time calendar. That is the
- * one thing this control can say that a dropdown cannot, and it is the reason
- * the grid is worth its extra markup.
- *
- * Days before today are drawn and NOT selectable, except where the plan already
- * has entries for one: a finished day is a record somebody may want to look at
- * again, and it is the one date the sixty-day window never covered.
+ * A month at a time, which is how somebody picks a day for a trip ("the Saturday after next"). The
+ * cells carry the park's forecast in `CROWD_TILE_CLASS` tints, as in the park's own calendar. Past
+ * days are drawn and not selectable, except where the plan has entries on one: a finished day is a
+ * record somebody may want to see again.
  */
 export function PlannerMonthCalendar({
   value,
@@ -78,16 +61,14 @@ export function PlannerMonthCalendar({
   const t = useTranslations('planner');
   const locale = useLocale();
 
-  // The month on screen, which starts at the chosen day's and then belongs to
-  // the visitor: stepping to November and picking nothing must not snap back.
+  // The month on screen starts at the chosen day's and then belongs to the visitor.
   const [month, setMonth] = useState(() => monthOf(value ?? today));
 
   const cells = useMemo(() => monthMatrix(month), [month]);
   const headers = useMemo(() => weekdayLabels(locale), [locale]);
   const planned = useMemo(() => new Set(plannedDates), [plannedDates]);
-  // One cached formatter for the 42 cell labels. `toLocaleDateString` with
-  // options builds a fresh `Intl.DateTimeFormat` per call, which was 42 of them
-  // on every render of the grid; the output is the same string.
+  // One cached formatter for the 42 cell labels; `toLocaleDateString` with options builds one per
+  // call.
   const dayLabel = getDateTimeFormat(locale, { weekday: 'long', day: 'numeric', month: 'long' });
 
   const todayMonth = monthOf(today);
@@ -108,19 +89,15 @@ export function PlannerMonthCalendar({
           className={cn(
             'hover:bg-accent flex items-center justify-center rounded-md transition',
             roomy ? 'size-8' : 'size-7',
-            // The phone floor, on both sizes: the compact arrows measured 32 px
-            // in the day picker's popover and the roomy ones 32 in the wizard.
+            // The phone floor, on both sizes.
             'planner-phone:size-11',
             !canStepBack && 'pointer-events-none opacity-30'
           )}
         >
           <ChevronLeft className="size-4" />
         </button>
-        {/* `min-w-0 flex-1 truncate`, because the box is fixed now and the
-            caption is the one thing in this header whose width is a locale's
-            business: it may shrink below its content and, in a language that
-            writes a very long month, end in an ellipsis rather than push the
-            two arrows out of the popover. */}
+        {/* `min-w-0 flex-1 truncate`: the box is fixed, and a long month name ends in an ellipsis
+            rather than pushing the arrows out. */}
         <span aria-live="polite" className="min-w-0 flex-1 truncate text-center font-medium">
           {monthLabel(month, locale)}
         </span>
@@ -132,8 +109,7 @@ export function PlannerMonthCalendar({
           className={cn(
             'hover:bg-accent flex items-center justify-center rounded-md transition',
             roomy ? 'size-8' : 'size-7',
-            // The phone floor, on both sizes: the compact arrows measured 32 px
-            // in the day picker's popover and the roomy ones 32 in the wizard.
+            // The phone floor, on both sizes.
             'planner-phone:size-11',
             !canStepOn && 'pointer-events-none opacity-30'
           )}
@@ -144,9 +120,7 @@ export function PlannerMonthCalendar({
 
       <div className="text-muted-foreground grid grid-cols-7 gap-0.5 text-center text-[10px]">
         {headers.map((header, index) => (
-          // The label is the reader's own abbreviation and the position is what
-          // carries the meaning, so the key is the column rather than the text —
-          // two locales abbreviate two weekdays the same way.
+          // Keyed by column: two locales abbreviate two weekdays the same way.
           <span key={index} className="py-0.5">
             {header}
           </span>
@@ -161,8 +135,7 @@ export function PlannerMonthCalendar({
           const isPast = cell.date < today;
           const isToday = cell.date === today;
           const isSelected = cell.date === value;
-          // A past day is reachable only where something was planned on it; a
-          // day past the window is not a day this plan can hold.
+          // A past day only where something was planned on it; past the window, never.
           const disabled = (isPast && !isPlanned) || Boolean(maxDate && cell.date > maxDate);
           const closed = day?.crowdLevel === 'closed';
 
@@ -174,22 +147,18 @@ export function PlannerMonthCalendar({
               onClick={() => onChange(cell.date)}
               aria-current={isSelected ? 'date' : undefined}
               data-planner-day={cell.date}
-              // The date in full, because the cell shows a number: a screen
-              // reader would otherwise announce "17" in a grid of numbers.
+              // The date in full, or a screen reader announces "17" in a grid of numbers.
               aria-label={dayLabel.format(new Date(`${cell.date}T12:00:00Z`))}
               className={cn(
                 'relative flex flex-col items-center justify-center rounded-md border border-transparent tabular-nums transition-colors',
                 roomy ? 'h-10' : 'h-8',
-                // A day cell is 43x40 in the wizard and 32x32 in the picker;
-                // the height is the half that can be fixed without touching
-                // the derived 254 px width, which is seven columns wide.
+                // The height is the half of a cell that can grow without touching the derived
+                // 254 px popover width.
                 'planner-phone:h-11',
                 !cell.inMonth && 'opacity-40',
                 disabled && 'text-muted-foreground/50 pointer-events-none',
                 closed && 'line-through',
-                // The tint is the park's forecast and the selection is the
-                // visitor's own choice, so the second replaces the first
-                // outright rather than sitting on top of it.
+                // The selection replaces the forecast tint rather than sitting on top of it.
                 isSelected
                   ? 'bg-primary text-primary-foreground font-semibold'
                   : [tone && CROWD_TILE_CLASS[tone], !disabled && 'hover:bg-accent']
@@ -198,10 +167,8 @@ export function PlannerMonthCalendar({
               <span className={cn(isToday && !isSelected && 'text-primary font-semibold')}>
                 {cell.day}
               </span>
-              {/* Two markers, and they never mean the same thing: the ring says
-                  "you have entries on this day", the dot is the crowd forecast
-                  in the same palette the tint uses, for the days where a tint
-                  alone is too subtle to read at 8 px. */}
+              {/* Two markers that never mean the same thing: the ring is "you have entries here",
+                  the dot is the crowd forecast for days where the tint is too subtle at 8 px. */}
               {isPlanned && (
                 <span
                   className={cn(

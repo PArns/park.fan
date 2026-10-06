@@ -38,11 +38,8 @@ interface PageHeader {
   intro: string;
   heroAlt: string;
   /**
-   * Document `<title>`. The H1 already ends in the brand, so the generic
-   * `"{title} | park.fan"` doubled it ("So funktioniert park.fan | park.fan")
-   * and opened on the brand rather than on what anyone types into a search box.
-   * Lead with the query and keep the brand exactly once; ~60 characters is the
-   * budget.
+   * Document `<title>`: leads with the query and names the brand once, since the H1 already ends
+   * in it. About 60 characters is the budget.
    */
   metaTitle: string;
   /** Unit under the hero's wait-time display. */
@@ -247,9 +244,8 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
     alternates: {
       canonical: url,
       languages: {
-        // Built from `urlFor`, the same function the canonical uses, so the two
-        // can never disagree — and so the locale prefix cannot go missing, which
-        // is exactly what a hand-written path template did here once.
+        // Built from `urlFor`, the same function the canonical uses, so the two can never disagree
+        // and the locale prefix cannot go missing.
         ...Object.fromEntries(locales.map((l) => [l, urlFor(l)])),
         'x-default': urlFor('en'),
       },
@@ -320,7 +316,7 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
           }))}
           scrollLabel={tLanding('scroll')}
           // The page's one action (docs/product/landing-pages.md §4): open a park and read its
-          // numbers with what this page explains. It used to sit only in the closing band.
+          // numbers with what this page explains.
           action={{ href: '/parks', label: tLanding('howto.action'), icon: Compass }}
           aside={
             <WaitSign
@@ -333,24 +329,11 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
           flowInto
         />
 
-        {/* One column at the container's width, no cap of its own.
-
-            Every section spans `container mx-auto`, and running text used to
-            stop at a 768 px measure inside it — a 752 px dead strip beside every
-            paragraph at 1920 while the headings, rules, grids and tables beside
-            it ran the full width. Capping the column instead only moved the
-            problem: it narrowed the figures too. So the measure is gone from
-            `Lead`, `P`, `PG`, `Highlight` and the demo captions, and text and
-            figures share the section's edges. What is still narrower is narrower
-            because a layout says so — a card, a column of a two-column demo, the
-            sticky copy beside the wait-time scale.
-
-            `overflow-x-clip` catches the decorative bleed — the glow behind the
-            opening figure, the per-chapter ambience — which is wider than a phone
-            and would otherwise hand the document a horizontal scrollbar. `clip`
-            rather than `hidden`: hidden makes this a scroll container and the
-            sticky figure in chapter 02 would stick to it instead of the
-            viewport. */}
+        {/* One column at the container's width, no cap of its own: text and figures share
+            the section's edges, and only a layout (a card, a demo column, the sticky scale)
+            is narrower. `overflow-x-clip` catches the decorative bleed that is wider than a
+            phone; `clip`, not `hidden`, which would make this a scroll container for chapter
+            02's sticky figure. */}
         <div
           id="start"
           className={cn(

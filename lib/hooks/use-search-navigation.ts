@@ -36,11 +36,10 @@ export function useSearchNavigation(queryLength: number, onNavigate?: () => void
       queryLength,
     });
 
-    // A show or restaurant of the park the visitor is already on is only a new fragment, and
-    // `router.push` writes that with `pushState`, which fires no `hashchange` — the one event the
-    // park page's tab router listens for (`useTabHashRouting`). The palette closed and nothing else
-    // happened. Setting the fragment on `location` is what a plain `<a href="#shows">` does, and it
-    // fires the event. The same fragment again fires nothing either, so that case dispatches it.
+    // A show or restaurant of the park already open is only a new fragment, and `router.push`
+    // writes it with `pushState`, which fires no `hashchange` for the tab router
+    // (`useTabHashRouting`). Setting `location.hash` fires it; the same fragment again needs the
+    // event dispatched.
     const [path, hash] = href.split('#');
     if (hash && window.location.pathname === `/${locale}${path}`) {
       if (window.location.hash === `#${hash}`) {

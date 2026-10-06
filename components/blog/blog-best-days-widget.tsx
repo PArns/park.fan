@@ -14,10 +14,8 @@ interface BlogBestDaysWidgetProps {
  *   ```best-days-widget slug=phantasialand
  *   ```
  *
- * Mirrors the park detail page: `ParkBestDaysSection` is a Client Component
- * that fetches the integrated calendar + day-of-week stats itself, so the
- * heavy ~2.25 MB calendar never lands on the server render and the post
- * shell stays statically prerenderable.
+ * `ParkBestDaysSection` fetches the heavy calendar and weekday stats itself, as on the park page,
+ * so they never land in the server render and the post stays statically prerenderable.
  */
 export async function BlogBestDaysWidget({ park, slug }: BlogBestDaysWidgetProps) {
   const tBlog = await getTranslations('blog');

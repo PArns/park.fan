@@ -13,15 +13,9 @@ interface AttractionHistoryGridProps {
   /**
    * Today in the PARK's timezone (`yyyy-MM-dd`), resolved on the server.
    *
-   * The same string the panel's reservation is computed from, and that is the point: the grid
-   * used to build its window from `new Date(browserNow)` at the VISITOR's local midnight, so the
-   * two disagreed by a day whenever the reader was on the other side of the park's date line —
-   * an afternoon in Los Angeles looking at a European park is enough. A day's difference flips
-   * the window's start weekday, which flips five week rows to six, which is a 172 px shift the
-   * moment the grid replaces the placeholder. Two weekdays in seven, so roughly 29 % of days.
-   *
-   * It also fixes what the cells SAY: „HEUTE" now lands on the day the park is on, the same day
-   * the typical/busy pair and the rope-drop card on this page already use.
+   * The same string the panel's reservation is computed from: a window built from the visitor's
+   * clock can be a day off, which can turn five rows into six and shift the page when the grid
+   * replaces the placeholder. It also puts „today" on the park's day.
    */
   todayIso: string;
 }
@@ -29,22 +23,10 @@ interface AttractionHistoryGridProps {
 /**
  * The ride's 30-day wait-time history: today first, then backwards.
  *
- * It is NOT the park's month grid and must not be laid out like one. That grid is a forecast over
- * a calendar month, so it aligns to weekday columns and reads forwards — the question there is
- * „welchen Tag buche ich". This one is a record of what already happened, and the question is
- * „was war hier zuletzt los", which is answered from today outwards. Aligning it to weekdays was
- * tried and reverted: it put the oldest week at the top, so the newest reading — the only one a
- * visitor standing in the park cares about — ended up at the bottom of a two-thousand-pixel
- * block, and the days ran forwards through a chapter titled „Verlauf".
- *
- * What it DOES take from the park calendar is the cell: the same `CROWD_TILE_CLASS` fill, the
- * same four-signal bar, the same oversized day number and one-word verdict, and the same legend
- * explaining them. The two grids answer different questions in the same visual language, which is
- * the point — the layout is where they differ, because the question differs.
- *
- * Seven per row from `md` up, two below it. One `yMax` across every cell: `Sparkline` fits each
- * instance to its own maximum, so without it a flat twenty-minute Tuesday is drawn exactly as
- * dramatically as a hundred-minute Saturday and the grid says the opposite of what the data says.
+ * Not laid out like the park's month grid: that one is a forecast read forwards by weekday, this
+ * one is a record read from today outwards, so no weekday alignment and the newest reading comes
+ * first. It shares the park calendar's cell and legend. One `yMax` across every cell, because
+ * `Sparkline` fits each instance to its own maximum and a flat day would look like a peak.
  */
 export function AttractionHistoryGrid({ history, schedule, todayIso }: AttractionHistoryGridProps) {
   const t = useTranslations('attractions');
@@ -104,9 +86,6 @@ export function AttractionHistoryGrid({ history, schedule, todayIso }: Attractio
   }
 
   return (
-    // One flow, today first. No weekday alignment and no week rows: this is a history, and a
-    // reader looking at a chapter called „Verlauf" starts from the most recent day. See the
-    // component docblock for why the park's month grid is laid out the other way.
     <div className="grid grid-cols-2 gap-2 @min-[1024px]/page:grid-cols-7">
       {days.map((day) => (
         <HistoryDay key={day.dateStr} day={day} yMax={yMax} />

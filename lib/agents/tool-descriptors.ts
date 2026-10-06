@@ -1,13 +1,7 @@
 /**
- * The three tools park.fan offers an agent, described once.
- *
- * They are served twice — over MCP at `/api/mcp` for a client with no browser, and through
- * `navigator.modelContext` for an agent looking at the page — and the two must not describe
- * themselves differently. So the descriptions and schemas live here, without an implementation
- * attached: `lib/agents/mcp-tools.ts` gives them one on the server, and the WebMCP component
- * registers these and calls that.
- *
- * Import-safe from a Client Component: pure data, no imports, no `server-only`.
+ * The three tools park.fan offers an agent, described once because they are served twice: over
+ * MCP at `/api/mcp` and through `navigator.modelContext` on the page. `lib/agents/mcp-tools.ts`
+ * implements them. Pure data, so a Client Component can import it.
  */
 
 export type ToolDescriptor = {
@@ -80,6 +74,10 @@ export const TOOL_DESCRIPTORS: ToolDescriptor[] = [
   },
 ];
 
+/**
+ * Returns the agent tool descriptor with the given name from `TOOL_DESCRIPTORS`, and throws when
+ * there is none.
+ */
 export function toolDescriptor(name: string): ToolDescriptor {
   const descriptor = TOOL_DESCRIPTORS.find((candidate) => candidate.name === name);
   if (!descriptor) throw new Error(`No tool descriptor named ${name}`);

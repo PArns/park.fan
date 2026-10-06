@@ -31,28 +31,17 @@ const HEAD_CELL = 'px-2 py-1.5 text-xs font-medium text-muted-foreground/70';
 const VALUE_CELL = 'px-2 py-1.5 text-right text-sm tabular-nums whitespace-nowrap';
 
 /**
- * The park name is never the cell that gives way.
- *
- * `table-layout: auto` hands space to the widest unbreakable content, and the longest-queue cell
- * holds things like "34 Min. · Voltron Nevera powered by Rimac" — 39 unbreakable characters. With
- * `max-w-0` on the park column it was the park column that collapsed instead, so the six featured
- * parks on the best-time hub read "Europa-P…", "Phantasia…", "Disneylan…". The name is the row's
- * subject and its identity; a ride name is a detail of one column, so the shrinking belongs there.
- *
- * `max-w-0 w-full` (below) is what makes the longest-queue cell the flexible one: `w-full` asks
- * for everything left over, `max-w-0` lets it give all of it back, and the `truncate` inside then
- * has a box narrow enough to act on. Without the `max-w-0` the ride name never truncates at all —
- * it just widens the table until the page scrolls sideways.
+ * The park name is never the cell that gives way. The longest-queue cell holds long unbreakable
+ * ride names, so `w-full max-w-0` goes on that cell (below): `w-full` takes what is left, `max-w-0`
+ * lets it give all of it back, and its `truncate` gets a box to act on. See
+ * docs/rules/the-quietest-weekday-may-be-two-days-and-a-thin-day-drops-out.md.
  */
 const PARK_CELL = 'px-2 py-1.5 text-sm whitespace-nowrap';
 
 /**
- * Cross-park median comparison, fetched live instead of typed into the post by hand.
- *
- * Rows arrive in the order the post lists them and are NOT re-sorted: the argument a post builds
- * around this table ("a third of the crowd, nine minutes longer") depends on the sequence its
- * author chose, and a table that reorders itself when a median moves by one minute would silently
- * break the sentence underneath it.
+ * Cross-park median comparison, fetched live instead of typed into the post. Rows keep the order
+ * the post lists them in, because the argument a post builds around the table depends on that
+ * sequence.
  */
 export function ParkComparisonCard({
   parks,
@@ -74,11 +63,8 @@ export function ParkComparisonCard({
         <Scale className="text-primary h-4 w-4" aria-hidden="true" />
         {title}
       </h3>
-      {/* Eigener Scroll-Container. Die Zellen tragen `whitespace-nowrap` (der Ride-Name in der
-          Spalte „Längste Warteschlange" ist bis zu 39 unumbrechbare Zeichen lang), also wird die Tabelle
-          unter ~410 px nicht schmaler — und schob auf `/beste-reisezeit` bei 390 px das ganze
-          Dokument seitwärts: 441 px Scrollbreite in einem 390-px-Viewport. Breite Tabellen scrollen
-          in sich, nie die Seite. */}
+      {/* Its own scroll container: the cells are `whitespace-nowrap`, so the table does not narrow
+          on a phone, and a wide table scrolls inside itself, never the page. */}
       <div className="-mx-4 overflow-x-auto px-4">
         <table className="w-full border-collapse">
           <thead>

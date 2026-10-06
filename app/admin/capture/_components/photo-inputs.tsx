@@ -6,20 +6,9 @@ import { Camera, Check, CloudUpload, Images, Loader2, TriangleAlert } from 'luci
 import type { UploadState } from '../_lib/types';
 
 /**
- * The two ways to hand this screen a picture, and what happened to it afterwards.
- *
- * Shared by the ride rows and the park row, which differ in what they are about
- * and not at all in this part: the same pair of inputs and the same five states.
- *
- * Two inputs rather than one, because on iOS the `capture` attribute is the whole
- * difference between the two gestures a person actually has. With it, the tap opens
- * the camera and nothing else. Without it, the tap opens the action sheet —
- * Fotomediathek, Aufnehmen, Datei auswählen — which is the way to a picture that
- * was taken earlier and cropped or straightened in the Fotos app since. Offering
- * only the first would mean every edited photograph had to go through the desktop.
- *
- * The library input takes several files at once: picking four shots of one ride is
- * one gesture, and they are named `<slug>`, `<slug>-2`, `<slug>-3` in order.
+ * The capture screen's two photo inputs, camera and library, shared by the ride and park rows.
+ * Two, because on iOS `capture` opens only the camera, and the library is the way to a photo edited
+ * since. The library input takes several files, named `<slug>`, `<slug>-2` and on in order.
  */
 
 export function PhotoInputs({
@@ -79,6 +68,10 @@ export function PhotoInputs({
   );
 }
 
+/**
+ * Status line for one capture upload: reading, uploading, waiting for network, in the pull request,
+ * or the reason it failed.
+ */
 export function StateLine({ state }: { state: UploadState }) {
   if (state.kind === 'reading')
     return (

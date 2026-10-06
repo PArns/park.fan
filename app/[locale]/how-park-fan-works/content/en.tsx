@@ -316,6 +316,7 @@ const FAQ = [
   },
 ];
 
+/** The guide page's article, English. */
 export function ContentEN() {
   const glossary = `/${GLOSSARY_SEGMENTS.en}`;
   const bestTime = `/${BEST_TIME_SEGMENTS.en}`;
@@ -325,7 +326,6 @@ export function ContentEN() {
     <>
       <ChapterRail chapters={CHAPTERS} ariaLabel="Chapters" />
 
-      {/* ── Intro ───────────────────────────────────────────────────────── */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
           park.fan started in a queue. Taron, mid-afternoon, the display said something with three
@@ -363,7 +363,6 @@ export function ContentEN() {
         </Reveal>
       </div>
 
-      {/* ── 01 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="number"
         index="01"
@@ -409,7 +408,6 @@ export function ContentEN() {
         </DemoFrame>
       </SectionShell>
 
-      {/* ── 02 ──────────────────────────────────────────────────────────── */}
       <Ambience>
         <SectionShell
           id="scale"
@@ -488,9 +486,8 @@ export function ContentEN() {
             </WaitScaleStage>
           </div>
 
-          {/* Card left, prose right. The card is a park-page sidebar component and
-              looks absurd stretched across a 1500 px column, so it keeps its own
-              width and the text takes the rest instead of leaving a hole. */}
+          {/* Card left, prose right: the card is a park-page sidebar component, so it keeps
+              its own width and the text takes the rest. */}
           <div className="grid items-start gap-8 pt-6 lg:grid-cols-[minmax(0,28rem)_minmax(0,1fr)]">
             <DemoFrame
               label="On a ride’s own page"
@@ -526,7 +523,6 @@ export function ContentEN() {
         </SectionShell>
       </Ambience>
 
-      {/* ── 03 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="moment"
         index="03"
@@ -579,7 +575,6 @@ export function ContentEN() {
         </div>
       </SectionShell>
 
-      {/* ── 04 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="day"
         index="04"
@@ -600,10 +595,8 @@ export function ContentEN() {
           <CalendarDaysDemo />
         </DemoFrame>
 
-        {/* One column, full width, like every other chapter on this page. As two
-            prose columns this band put a third text edge under the paragraph above
-            it: a run of copy, then a 604 px column ending short of it, then a
-            second column starting where that paragraph still had words. */}
+        {/* One column, full width, like every other chapter on this page: two prose
+            columns would put a third text edge under the paragraph above. */}
         <div className="space-y-4 pt-2">
           <P>
             The neighbours’ holidays often count as much as the local ones, because day guests don’t
@@ -643,7 +636,6 @@ export function ContentEN() {
         </div>
       </SectionShell>
 
-      {/* ── 05 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="day-plan"
         index="05"
@@ -677,7 +669,6 @@ export function ContentEN() {
         </P>
       </SectionShell>
 
-      {/* ── 06 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="park-page"
         index="06"
@@ -717,7 +708,6 @@ export function ContentEN() {
         </div>
       </SectionShell>
 
-      {/* ── 07 ──────────────────────────────────────────────────────────── */}
       <Ambience tone="emerald">
         <SectionShell
           id="night-shift"
@@ -772,7 +762,6 @@ export function ContentEN() {
         </SectionShell>
       </Ambience>
 
-      {/* ── 08 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="gaps"
         index="08"
@@ -810,7 +799,6 @@ export function ContentEN() {
         </div>
       </SectionShell>
 
-      {/* ── 09 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="signposts"
         index="09"
@@ -905,7 +893,6 @@ export function ContentEN() {
         />
       </SectionShell>
 
-      {/* ── 10 ──────────────────────────────────────────────────────────── */}
       <SectionShell
         id="faq"
         index="10"

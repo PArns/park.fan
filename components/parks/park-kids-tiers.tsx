@@ -37,22 +37,13 @@ function RideLinks({ rides, parkPath }: { rides: KidsTierRide[]; parkPath: strin
 }
 
 /**
- * The park's height ladder: one card per height at which its answer changes.
+ * The park's height ladder: one card per height at which its answer changes. The steps and counts
+ * come from the same `riderHeightThresholds` and `canRideAtHeight` as the park page's slider, so
+ * the two pages cannot give a parent two answers. Each card lists the rides that open up at exactly
+ * its height.
  *
- * The steps are the park's own posted minimum heights, the same ones the park page's slider
- * stands on (`riderHeightThresholds`), and each card's count is the slider's readout at that
- * step — "23 of 40" is computed by the same predicate (`canRideAtHeight`) that filters the park
- * page's grid, so the two pages cannot give a parent two answers. Under the count are the rides
- * that open up at exactly this height, which is what makes each card a different piece of text
- * and not the same list shortened.
- *
- * The first card is the one before the ladder starts: what carries no limit at all. It says what
- * the payload says and no more — a missing limit is "nobody wrote one down", not "nobody is too
- * small" (`RiderHeightLimits`), so the sentence under it does not promise the second.
- *
- * Server-rendered, no client state: every number and every ride name is in the first HTML. The
- * two links on each step are the only interactive parts, and the planner one is its own small
- * Client Component.
+ * The first card is what carries no limit at all, and says no more than the payload: a missing
+ * limit means nobody wrote one down, not that nobody is too small (`RiderHeightLimits`).
  */
 export async function ParkKidsTiers({ data, locale, parkSlug, parkPath }: ParkKidsTiersProps) {
   const t = await getTranslations('parks.kidsPage');

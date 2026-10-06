@@ -7,26 +7,12 @@ import type {
 } from '@/lib/api/types';
 
 /**
- * Fixtures for the guide's example UI.
- *
- * Every block on this page renders the **real** production component, fed from
- * here rather than from the network. That is the point of the page: a visitor
- * should recognise the card they are being taught to read when they meet it on
- * a park page an hour later, so a redrawn lookalike would defeat the exercise
- * (and drift away from the real one the first time it is restyled).
- *
- * Two rules these numbers follow:
- *
- * - **Every figure is one the API returned**, dated in the block that renders
- *   it, never a shape invented to make the lesson land. The page says which day
- *   it was read on, and every block links to the ride's own page for today's.
- * - **The ones that are instants are anchored to today.** A card's sparkline
- *   stretches its axis to the reader's clock and the "best time" row counts
- *   down to it, so a hard-coded date does not stay a demo: it decays into a
- *   flat line with a week-long tail and a permanent "right now". Those few
- *   values are built by {@link buildDemoFixtures} from a `nowMs` the caller
- *   passes in — `getServerNowMs()`, which on this prerendered route resolves at
- *   build time and is refreshed by the route's daily revalidate.
+ * Fixtures for the guide's example UI: every block renders the real production component, fed
+ * from here rather than the network, so the card a visitor learns here is the one they meet on a
+ * park page. Every figure is one the API returned, dated, never a shape invented to make the
+ * lesson land. Values that are instants are anchored to today by {@link buildDemoFixtures}, since
+ * a hard-coded date decays into a flat sparkline and a permanent "right now"; its `nowMs` comes
+ * from `getServerNowMs()`, refreshed by the route's daily revalidate.
  */
 
 const PARK_TZ = 'Europe/Berlin';
@@ -65,8 +51,6 @@ function parkLocalInstant(nowMs: number, hour: number, minute: number): string {
   ).toISOString();
 }
 
-// ── The number the whole page starts from ────────────────────────────────────
-
 /** What it says at the entrance. Everything else on this page is context for it. */
 export const TARON_WAIT_NOW = 70;
 
@@ -79,11 +63,9 @@ export const TARON_WAIT_NOW = 70;
  * the same series — so `busy` is roughly "the busiest one day in ten", not "the
  * worst it has ever been". That record lives in `peak`.
  *
- * They are frozen here rather than fetched because a lesson that changes shape
- * overnight is not a lesson: the three steps in chapter 02 are written around
- * 70 minutes landing exactly on Monday's busy line and exactly on Saturday's median.
- * Re-check them against the ride's own page when this page is next edited; the
- * page links there from the same block so a reader can do it too.
+ * Frozen rather than fetched: the three steps in chapter 02 are written around 70 minutes
+ * landing exactly on Monday's busy line and on Saturday's median. Re-check them against the
+ * ride's own page when this page is next edited.
  */
 export const TARON_TYPICAL_WAITS: TypicalWaits = {
   weekday: { typical: 60, busy: 75, sampleDays: 107 },
@@ -118,8 +100,8 @@ export const TARON_RECORD = 135;
 export const TARON_RECORD_DATE = '2026-07-16';
 
 /**
- * Days behind the two summary buckets on the ride's card. Read off the fixture above rather than
- * typed: they were 97 and 38 from an older fetch while the card beside the prose said 107 and 39.
+ * Days behind the two summary buckets on the ride's card, read off the fixture above so the prose
+ * and the card cannot disagree.
  */
 export const TARON_WEEKDAY_DAYS = TARON_TYPICAL_WAITS.weekday.sampleDays;
 export const TARON_WEEKEND_DAYS = TARON_TYPICAL_WAITS.weekend.sampleDays;
@@ -127,10 +109,9 @@ export const TARON_WEEKEND_DAYS = TARON_TYPICAL_WAITS.weekend.sampleDays;
 /** Upper end of the scale the figure draws. Above Taron's record, so nothing clips. */
 export const WAIT_SCALE_MAX = 140;
 
-// ── Attraction cards, rope drop, best slot ───────────────────────────────────
-
 const PARK_PATH = '/parks/europe/germany/bruehl/phantasialand';
 
+/** The instants-bearing fixtures {@link buildDemoFixtures} builds around the render time. */
 export interface DemoFixtures {
   /** Taron as the park page renders it: 70 minutes, queue still growing. */
   taron: ParkAttraction;
@@ -157,11 +138,9 @@ export interface DemoFixtures {
 export function buildDemoFixtures(nowMs: number): DemoFixtures {
   const at = (offsetMinutes: number) => new Date(nowMs + offsetMinutes * 60_000).toISOString();
 
-  // Park time, not an offset from now. As `now + 130 min` this read "Beste Zeit:
-  // 23:27 Uhr" on a page rendered in the evening — four hours after the park
-  // shuts. 18:45 is the ride's real evening trough and is inside the operating
-  // day whenever the reader looks; after closing the card says "Jetzt", which is
-  // the row's normal past-slot state rather than a nonsense hour.
+  // Park time, not an offset from now, or a page rendered in the evening would print a best
+  // time after closing. 18:45 is the ride's real evening trough; after closing the card says
+  // "Jetzt", the row's normal past-slot state.
   const bestSlot: BestVisitSlot = {
     time: parkLocalInstant(nowMs, 18, 45),
     predictedWaitTime: 35,
@@ -312,8 +291,6 @@ export const OFF_SEASON_CARD: ParkAttraction = {
   isCurrentlyInSeason: false,
   queues: [],
 };
-
-// ── Calendar ────────────────────────────────────────────────────────────────
 
 /**
  * Four days out of an autumn-break week, the case the calendar exists for: the

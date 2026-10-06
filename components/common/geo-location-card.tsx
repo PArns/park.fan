@@ -24,6 +24,10 @@ interface GeoLocationCardProps {
   className?: string;
 }
 
+/**
+ * Linked card for a continent, country or city: its name, open parks out of total with a progress
+ * bar, and the distance to its nearest park once the visitor's location is known.
+ */
 export function GeoLocationCard({
   name,
   href,
@@ -59,14 +63,12 @@ export function GeoLocationCard({
                     / {totalParkCount} {tExplore('stats.park', { count: totalParkCount })}
                   </span>
                 </div>
-                {/* "X km to the nearest park" — appears once the visitor's position resolves. */}
                 <NearestParkDistance coordinates={parkCoordinates} className="mt-1" />
               </div>
             </div>
             <ChevronRight className="group-interactive-icon h-5 w-5" />
           </div>
 
-          {/* Progress bar — muted placeholder until the live count loads */}
           <OpenStatusProgress
             openCount={openParkCount ?? 0}
             totalCount={totalParkCount}

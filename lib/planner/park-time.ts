@@ -2,28 +2,14 @@ import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { isPlannedDay, type PlannerState } from './types';
 
 /**
- * The planner's clock, which is the PARK's clock.
- *
- * Every time and every date in the planner is derived from the park's IANA zone
- * WHERE THAT ZONE IS KNOWN. The reader's offset is never used as a substitute for
- * one we have — but the zone reaches the plan late, so `resolveTimeZone` names the
- * one fallback and `todayInZone` is the only door to it. `PlanDay.timezone` had
- * been fetched and serialized since the endpoint existed and was read by nothing.
- *
- * The reason is not tidiness. `add-to-planner-button.tsx` computed today from
- * `getTimezoneOffset()` and used it as the **localStorage key** an entry is
- * filed under, so between 18:00 and midnight in Berlin a Magic Kingdom ride
- * landed on tomorrow's plan for a park where it was early afternoon. That is a
- * misfiling, not a mislabelling, and the visitor's only way to find the entry
- * again would be to guess which day it went to.
+ * The planner's clock is the park's clock: every planner date and time comes from the park's IANA
+ * zone, and the reader's offset is never a substitute for a known zone. `resolveTimeZone` is the
+ * one fallback for a zone that has not arrived yet.
  */
 
 /**
- * `YYYY-MM-DD` in the park's own reading.
- *
- * `en-CA` because it formats exactly that way — the same convention
- * `use-today-schedule.ts` already follows. Deriving it from an ISO string would
- * give UTC's date, which is the bug this function exists to stop.
+ * `YYYY-MM-DD` in the park's own reading. `en-CA` formats exactly that way; an ISO string would
+ * give UTC's date.
  */
 export function parkToday(timeZone: string, now: number = Date.now()): string {
   return getDateTimeFormat('en-CA', {
@@ -35,48 +21,25 @@ export function parkToday(timeZone: string, now: number = Date.now()): string {
 }
 
 /**
- * Today in the park's reckoning where the zone is known, in the reader's where
- * it is not.
- *
- * The fallback exists because the zone reaches the plan LATE. `PlannerPark.timezone`
- * is written by whichever call site puts the park in — and until one does, the
- * only alternatives are the reader's own zone or a constant. It was a constant:
- * the flyout resolved `day?.timezone ?? park?.timezone ?? 'UTC'`, no call site
- * ever wrote the field, and `/plan/day` answers 404 until the backend ships — so
- * the whole planner ran on UTC, which is the wrong day for every reader west of
- * Greenwich for part of every day and for every reader east of it after 22:00.
- *
- * The reader's zone is a better wrong answer than UTC and the right one for the
- * commonest case by far, somebody planning the park they are standing in. Where
- * the zone IS known this function is just {@link parkToday}.
- *
- * Not for rendering a TIME — only a date, and only where being one day out is
- * recoverable. The now line and the grid axis take a real zone or nothing.
+ * Today in the park's reckoning where the zone is known, in the reader's where it is not, because
+ * the zone reaches the plan late. The reader's zone is a better wrong answer than UTC. Only for a
+ * date, where a day out is recoverable; the now line and the axis take a real zone or nothing.
  */
 export function todayInZone(timeZone: string | undefined, now: number = Date.now()): string {
   return parkToday(resolveTimeZone(timeZone), now);
 }
 
 /**
- * The park's zone where known, the reader's otherwise.
- *
- * Callers that need a zone STRING rather than a date use this — the now line and
- * the grid's clock, where UTC put the marker hours out of place on any park not
- * on Greenwich.
+ * The park's zone where known, the reader's otherwise, for callers that need a zone string, such
+ * as the now line and the grid's clock.
  */
 export function resolveTimeZone(timeZone: string | undefined): string {
   return timeZone ?? Intl.DateTimeFormat().resolvedOptions().timeZone ?? 'UTC';
 }
 
 /**
- * Park-local minutes since midnight.
- *
- * Through the cached formatter: the now line ticks, and a fresh
- * `Intl.DateTimeFormat` per tick is the mistake `wait-time-sparkline-card`
- * already paid for at ~400 constructions a minute.
- *
- * `hourCycle: 'h23'` rather than `hour12: false`, which yields `24` for midnight
- * in several runtimes and would put the now line an entire day down the grid.
+ * Park-local minutes since midnight, through the cached formatter since the now line ticks.
+ * `hourCycle: 'h23'`, not `hour12: false`, which yields `24` for midnight in some runtimes.
  */
 export function parkMinuteNow(timeZone: string, now: number = Date.now()): number {
   const parts = getDateTimeFormat('en-GB', {
@@ -92,14 +55,8 @@ export function parkMinuteNow(timeZone: string, now: number = Date.now()): numbe
 }
 
 /**
- * Minutes since park-local midnight as `10:30`.
- *
- * Takes MINUTES, never a `Date`, which is what keeps the reader's timezone out
- * of the grid entirely: there is no instant here to convert, so there is nothing
- * for a well-meaning `toLocaleTimeString` to convert wrongly.
- *
- * Past midnight is folded back, so a park closing at 25:00 labels its last hour
- * `01:00` rather than `25:00`.
+ * Minutes since park-local midnight as `10:30`. Takes minutes, never a `Date`, so the reader's zone
+ * cannot enter. Past midnight folds back: 25:00 labels as `01:00`.
  */
 export function formatGridTime(minute: number): string {
   const wrapped = ((Math.round(minute) % 1440) + 1440) % 1440;
@@ -109,19 +66,9 @@ export function formatGridTime(minute: number): string {
 }
 
 /**
- * `Donnerstag, 17. September` — the day a plan is filed under, in the reader's
- * language.
- *
- * Noon UTC, which is the whole trick: a plan's date is a park-local calendar
- * day and this only ever has to NAME it, so a midpoint no offset on earth can
- * push across a date boundary keeps the label on the day the entries are stored
- * under. Parsing `${date}T00:00:00Z` and formatting it in a negative offset
- * names the day before.
- *
- * It lives here rather than beside either of its two callers because that is
- * how the second one arrived: the wizard's hero and the fit assistant's
- * subtitle name the same day in the same dialog stack, and two copies of a date
- * format are two chances to disagree about which day is being planned.
+ * `Donnerstag, 17. September`: the day a plan is filed under, in the reader's language. Formatted
+ * from noon UTC, which no offset can push across a date boundary. Shared, so the wizard and the fit
+ * assistant cannot name different days.
  */
 export function longDate(date: string, locale: string): string {
   return getDateTimeFormat(locale, {
@@ -139,14 +86,8 @@ export function addDays(isoDate: string, days: number): string {
 }
 
 /**
- * Whole calendar days from `from` to `to`, negative where `to` is the earlier one.
- *
- * Both dates are park-local calendar days, and the count is a count of NIGHTS
- * between them — not of elapsed hours. Noon UTC on both sides for the reason
- * {@link longDate} gives: a date string here names a day in some park's reading,
- * and anchoring it at midnight lets a negative offset name the day before. From
- * noon the subtraction is a whole number of days by construction, because UTC
- * has no DST to shorten one.
+ * Whole calendar days from `from` to `to`, negative where `to` is earlier: a count of nights, from
+ * noon UTC on both sides (see {@link longDate}), so the difference is whole by construction.
  */
 export function daysBetween(from: string, to: string): number {
   const start = Date.parse(`${from}T12:00:00Z`);
@@ -155,16 +96,9 @@ export function daysBetween(from: string, to: string): number {
 }
 
 /**
- * Where a planned day sits against the park's own clock.
- *
- * One value rather than a date plus a minute, because the two decide the same
- * things and a caller that sets one and forgets the other is the bug this
- * replaces: the optimiser was handed `nowMinute` for today and nothing at all
- * for yesterday, so it re-planned a day that had already been walked.
- *
- * `future` is the default everywhere it is optional, and every rule keyed to
- * this reduces to its pre-clock form there exactly — which is what keeps a
- * plan made for next Saturday reckoned the way it always was.
+ * Where a planned day sits against the park's own clock. One value rather than a date plus a
+ * minute, so a caller cannot set one and forget the other. `future` is the default wherever it is
+ * optional, and every rule keyed to it then behaves as if there were no clock.
  */
 export type DayClock =
   | { phase: 'past' }
@@ -173,11 +107,8 @@ export type DayClock =
   | { phase: 'future' };
 
 /**
- * The clock for one planned date, read in the PARK's zone.
- *
- * `now` is a defaulted parameter rather than a read inside, so a test can put
- * the day at 09:43 and assert what happens there — the same reason
- * `parkToday` and `parkMinuteNow` take one.
+ * The clock for one planned date, read in the park's zone. `now` is a parameter so a test can set
+ * the time.
  */
 export function dayClock(date: string, timeZone: string, now: number = Date.now()): DayClock {
   const today = parkToday(timeZone, now);
@@ -196,21 +127,10 @@ export interface NextPlannedDay {
 }
 
 /**
- * Which planned day comes next, across every park in the plan.
- *
- * There is no single "today" to measure this against, for the reason
- * `planner-overview.tsx` states for its greying-out: a plan may hold
- * Phantasialand and Magic Kingdom at once, and at 23:00 in Berlin those two
- * parks are on different dates. So each park's days are measured against that
- * park's own today, and what is compared across parks is the RESULT — the
- * number of nights — rather than the dates, which are not read on one clock.
- *
- * Today's day is not the answer: it is the day being walked, not the one being
- * waited for, and the list already calls it "Heute". A past day never is.
- *
- * Ties are broken by date and then by slug, so two parks the same number of
- * nights out do not swap places between renders — `Object.values` follows
- * insertion order, which is the order the visitor happened to plan in.
+ * Which planned day comes next, across every park in the plan. Each park's days are measured
+ * against that park's own today, and the nights between are compared, since two parks can be on
+ * different dates at once. Today's day is not the answer, and a past day never is. Ties go by date,
+ * then slug, so the answer is stable.
  */
 export function nextPlannedDay(
   state: PlannerState,
@@ -240,6 +160,7 @@ export function nextPlannedDay(
   return best;
 }
 
+/** The active day, when it is already over: what {@link pastActiveDay} answers. */
 export interface PastActiveDay {
   parkSlug: string;
   parkName: string;
@@ -247,21 +168,9 @@ export interface PastActiveDay {
 }
 
 /**
- * The day the panel would open on, if that day is already over.
- *
- * The panel always opens on the ACTIVE day, which is whatever the visitor last
- * looked at, and after a trip that is the trip: a click on the planner the
- * morning after opened yesterday's plan, ticked or not, and a new day was two
- * steps further (the overview, then „Neuen Tag planen"). The two ways in that
- * name no day — the edge tab and the header button — ask this first and put
- * the choice to the visitor instead.
- *
- * Only a day with something in it counts. `openDay` registers a date the
- * moment a calendar day is pressed, with no entry, and a question about
- * „your planned day" over an empty one would be about nothing.
- *
- * Past in the PARK's zone, for the reason {@link nextPlannedDay} gives: a plan
- * for Magic Kingdom is not over at midnight in Berlin.
+ * The day the panel would open on, if that day is already over, so the two ways in that name no
+ * day (the edge tab and the header button) can ask instead of opening yesterday's plan. Only a day
+ * with something in it counts, and "over" is read in the park's zone.
  */
 export function pastActiveDay(state: PlannerState, now: number = Date.now()): PastActiveDay | null {
   const { activeParkSlug, activeDate } = state;

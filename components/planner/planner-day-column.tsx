@@ -31,7 +31,7 @@ import {
   withEarlyEntry,
 } from '@/lib/planner/day-grid';
 import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
-import { occupiedMinutes } from '@/lib/planner/estimate';
+import { spansFor } from '@/lib/planner/estimate';
 import { closedNowFor, liveWaitsFor } from '@/lib/planner/live';
 import { dayClock, parkToday, resolveTimeZone } from '@/lib/planner/park-time';
 import { showDayHours, showLinesFor } from '@/lib/planner/shows';
@@ -40,34 +40,23 @@ import { PLANNER_RIDE_MIME, parseRideDrag } from '@/lib/planner/ride-drag';
 import { cn } from '@/lib/utils';
 
 /**
- * What a press has to land OUTSIDE for it to count as "show me this park".
- *
- * Everything here does its own job, and the job is never "navigate": the
- * controls, the form fields the free-block label is one of, and anything
- * draggable — the blocks, whose drag would otherwise start under a route being
- * replaced. `[data-planner-block]` is listed beside `[draggable]` because a
- * block's grip is what carries the attribute, and a press on the block's body
- * selects it, which is equally not a request for another page.
+ * What a press has to land outside for it to count as "show me this park": controls, form fields
+ * and anything draggable, including a block's body, which selects it.
  */
 const SELF_ACTING =
   'button, a, input, textarea, select, [role="button"], [role="slider"], [draggable="true"], [data-planner-block]';
 
 /** Air between a revealed block and the action bar docked under it. */
 const REVEAL_GAP_PX = 8;
-/**
- * How far below the scroller's top a revealed block's head must stay: the
- * sticky show strip is drawn there, 40 px tall with its rule.
- */
+/** How far below the scroller's top a revealed block's head must stay: the sticky show strip. */
 const REVEAL_TOP_PX = 44;
 
 interface PlannerDayColumnProps {
   parkSlug: string | null;
   date: string | null;
   /**
-   * The plan's ACTIVE column. Exactly one is, and it is the one every
-   * panel-level control speaks for — the ride search, the headliner band, the
-   * free-block row and the summary in the foot. A second column is a day beside
-   * it, not a second active day.
+   * The plan's active column. Exactly one is, and every panel-level control (ride search, headliner
+   * band, free-block row, summary) speaks for it.
    */
   primary: boolean;
   /** Whether the panel is open, which is what gates this column's queries. */
@@ -82,102 +71,43 @@ interface PlannerDayColumnProps {
   onStartPagePark?: () => void;
   onOpenWizard?: () => void;
   /**
-   * Whether this column draws its own foot — optimise, the missing headliners,
-   * a free block, the totals.
-   *
-   * The panel decides, because the answer is about the SHEET rather than about
-   * the column: on a phone the foot does not fit inside a column and the panel
-   * draws it once for the active day instead. See {@link PlannerDayFoot}.
+   * Whether this column draws its own foot. The panel decides, because on a phone the foot does not
+   * fit in a column and the panel draws it once. See {@link PlannerDayFoot}.
    */
   withFoot: boolean;
   /**
-   * Whether this column draws its own head — the park, the day.
-   *
-   * The panel decides, for the same reason it decides {@link withFoot}: the
-   * answer is about the SHEET. On a phone the sheet's own header and this row
-   * are two rows saying two halves of one thing, 45 px each over an axis that
-   * has 211 — so there the panel draws the head inside its `SheetHeader` and
-   * the two become one. The park name and the day are what a reader needs
-   * there; the panel's own title is what gives way, to `sr-only`.
-   *
-   * It is the same `PlannerColumnHead` in both places, moved rather than
-   * copied — a second markup would be a second `[data-planner-column-park]` for
-   * a selector to pick the wrong one of, and two lists that have to agree.
-   *
-   * A phone never has a second column, so the question of WHICH column a
-   * panel-level head speaks for — the reason the pair moved onto the column in
-   * the first place — cannot arise there.
+   * Whether this column draws its own head, the park and the day. On a phone the panel draws the
+   * same `PlannerColumnHead` inside its `SheetHeader` instead, moved rather than copied so there is
+   * one `[data-planner-column-park]`.
    */
   withHead: boolean;
   /**
-   * Whether this column draws its own context band — crowd level, hours,
-   * weather, who is coming.
-   *
-   * The panel decides, for the same reason it decides {@link withHead}, and on
-   * exactly one size: a landscape phone. There the sheet is a row — the day's
-   * chrome to the left of the axis, see `planner-landscape` in `app/globals.css`
-   * — and a band left inside the column would be the one chrome row still
-   * stacked ABOVE the axis, for 61 px of the 270 the axis has to work with. So
-   * the panel draws it on its own side of the row, the same component with the
-   * same props, and this row stays an empty element for the subgrid to count.
-   *
-   * A landscape phone never has a second column (`isPhone` gates that), so the
-   * two bands this row's subgrid exists to align cannot both be asked for at a
-   * size where one of them is drawn elsewhere.
+   * Whether this column draws its own context band. False only on a landscape phone, where the
+   * panel draws the band beside the axis and this row stays an empty element for the subgrid.
    */
   withBand: boolean;
   /**
-   * The column the reader is working in, where there is more than one.
-   *
-   * NOT {@link primary}, which is a fact about the plan — its active day, the
-   * column that cannot be closed. This is a fact about the pointer, and what
-   * hangs on it is the marker and the park the page behind the panel shows.
-   *
-   * `false` for a lone column, because a marker saying "this one" over the only
-   * one there is says nothing. The panel decides; see `focusColumn`.
+   * The column the reader is working in, where there is more than one: a fact about the pointer,
+   * not {@link primary}, which is a fact about the plan. `false` for a lone column.
    */
   active: boolean;
   /**
-   * The reader touched this column.
-   *
-   * `navigate` says whether the press was a plain one — on the column's own
-   * ground rather than on something in it that does its own job. See the
-   * capture handler for what that distinction is worth.
+   * The reader touched this column. `navigate` says whether the press landed on the column's own
+   * ground rather than on something that does its own job.
    */
   onActivate?: (navigate: boolean) => void;
   /**
-   * The column's place in the panel's grid, from the flyout.
-   *
-   * The panel lays the columns out as a CSS grid whose first two rows are the
-   * head and the context band, and each column takes those rows as a
-   * `subgrid` — which is why this arrives as a class rather than being written
-   * here: only the parent knows how many columns there are, and only the parent
-   * can own the row template both of them measure against.
+   * The column's place in the panel's grid. A class from the flyout, because only the parent knows
+   * how many columns there are and owns the row template each column takes as a `subgrid`.
    */
   className?: string;
 }
 
 /**
- * One day of one park, with everything that is about THAT day.
- *
- * It exists because the panel can hold two. With one column every per-day
- * question was answered in the panel's own header — one park name, one day
- * picker — and that stops working the moment there is a second, because the
- * header has no way to say which of the two it means. So the pair moved onto the
- * column, and the rest of the day's chrome came with it: the context band, the
- * showtime strip, the axis, and the action row that a selected block docks into.
- *
- * Two things are deliberately NOT in here, and both are about what a control
- * speaks for rather than about layout. The panel's foot — the ride search, the
- * headliner band, the free-block row, the totals — follows the PRIMARY column,
- * because those are how a day is filled and the plan has exactly one active day.
- * And the park photo behind the panel is panel-level for the same reason: it is
- * one wash under both columns, and it is the active park's.
- *
- * Every query in here is keyed by (park, date), so two columns of the same park
- * on two dates share the park-level ones — the best-days snapshot has no date in
- * its key, and the live poll is gated on `isToday` — and pay twice only for the
- * two things that really are per day.
+ * One day of one park, with everything about that day: head, context band, show strip, axis and
+ * the action row a selected block docks into. The foot and the photo behind the panel follow the
+ * primary column instead. Every query is keyed by (park, date), so two columns of one park share
+ * the park-level ones.
  */
 export function PlannerDayColumn({
   parkSlug,
@@ -199,7 +129,7 @@ export function PlannerDayColumn({
   className,
 }: PlannerDayColumnProps) {
   const t = useTranslations('planner');
-  /** The axis' scale: 1.2 px per minute, 1.8 on a phone. See {@link usePlannerPxPerMin}. */
+  /** The axis' scale; see {@link usePlannerPxPerMin}. */
   const pxPerMin = usePlannerPxPerMin();
   const {
     state,
@@ -217,41 +147,22 @@ export function PlannerDayColumn({
   const entries = useMemo(() => entriesFor(state, parkSlug, date), [state, parkSlug, date]);
 
   /**
-   * Which block is selected, and it is per COLUMN.
-   *
-   * Entry ids are unique only within one (park, date) — `makeId` counts
-   * collisions among that day's entries alone — so `taron-1` legitimately exists
-   * in a Saturday column and a Sunday column of the same park, which is exactly
-   * the case two columns are for. A panel-level selection would highlight both
-   * blocks and edit whichever one the action row happened to be handed.
+   * Which block is selected, per column: entry ids are unique only within one (park, date), so the
+   * same id can exist in two columns.
    */
   const [selectedId, setSelectedId] = useState<string | null>(null);
   /**
-   * A block is being dragged somewhere else in the day.
-   *
-   * It comes back out of the grid because the action bar below it is a sibling
-   * of the grid rather than one of its blocks, and it lies over the grid's
-   * lower edge — see the note where {@link PlannerGridActions} is rendered.
+   * A block is being dragged, so the action bar, a sibling of the grid lying over its lower edge,
+   * can stand down.
    */
   const [dragging, setDragging] = useState(false);
   const [flatDropActive, setFlatDropActive] = useState(false);
   const scrollerRef = useRef<HTMLDivElement>(null);
   /**
-   * The action bar's height, and a request to bring the selected block clear
-   * of it (PAR-332).
-   *
-   * The bar is docked `absolute` over the scroller's lower edge, so a block
-   * selected down there sat underneath the very bar that acts on it — the
-   * grip, the label and the corner ✕ all answered to the bar instead. Two
-   * things fix it, and neither costs the axis a pixel of height: the scroller
-   * gets the bar's height as extra bottom padding while a block is selected,
-   * so even the day's last block CAN scroll above it, and a tap that selects
-   * scrolls the block up by as much as the bar covers of it.
-   *
-   * The scroll follows the CLICK, not the selection. A drag selects its block
-   * on `pointerdown` (see `PlannerDayGrid`), and scrolling the day under a
-   * finger that is still holding the grip would move the drop target with it.
-   * The click comes after the release, whatever the gesture was.
+   * The action bar's height, and a request to bring the selected block clear of it. While a block
+   * is selected the scroller gets the bar's height as bottom padding, and a click scrolls the block
+   * up by as much as the bar covers. The scroll follows the click, not the selection, because a
+   * drag selects on `pointerdown` and scrolling under a held grip moves the drop target.
    */
   const barBoxRef = useRef<HTMLDivElement>(null);
   const [barHeight, setBarHeight] = useState(0);
@@ -268,8 +179,7 @@ export function PlannerDayColumn({
     return () => observer.disconnect();
   }, [selectedId]);
   useEffect(() => {
-    // Only the block the click was on: a later drag selects ANOTHER block on
-    // `pointerdown`, and that must not re-run this with the old request.
+    // Only the block the click was on: a later drag selects another block on `pointerdown`.
     if (!reveal || reveal.id !== selectedId || dragging || barHeight === 0) return;
     const scroller = scrollerRef.current;
     const block = scroller?.querySelector<HTMLElement>(
@@ -280,9 +190,8 @@ export function PlannerDayColumn({
     const rect = block.getBoundingClientRect();
     const clearBottom = box.bottom - barHeight - REVEAL_GAP_PX;
     if (rect.bottom <= clearBottom) return;
-    // As far as the bar covers, but never so far that the block's top goes
-    // under the sticky show strip at the scroller's top edge — a block taller
-    // than the space between the two keeps its head in view.
+    // As far as the bar covers, but never so far that the block's top goes under the sticky show
+    // strip.
     const delta = Math.min(rect.bottom - clearBottom, rect.top - box.top - REVEAL_TOP_PX);
     if (delta <= 0) return;
     const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -301,13 +210,13 @@ export function PlannerDayColumn({
     date: date ?? undefined,
     enabled: open && Boolean(park && date),
   });
-  // The visitor's early-entry answer (PAR-200) folded into the day, so every
-  // reader of `day.context` sees it (PAR-199).
-  const day = withEarlyEntry(fetchedDay, date ? park?.days[date]?.prefs?.earlyEntry : undefined);
+  const prefs = date ? park?.days[date]?.prefs : undefined;
+  // The early-entry answer folded into the day, memoised because the spans, grid and optimiser key
+  // on the folded object.
+  const earlyEntry = prefs?.earlyEntry;
+  const day = useMemo(() => withEarlyEntry(fetchedDay, earlyEntry), [fetchedDay, earlyEntry]);
 
-  // Keyed off `isFetching` rather than `isPending`: a disabled query is pending
-  // forever, so with no park picked the band would pulse without a request ever
-  // having been made.
+  // `isFetching`, not `isPending`: a disabled query is pending for ever.
   const dayState: PlannerDayState = isError
     ? 'error'
     : isFetching && !day
@@ -318,34 +227,22 @@ export function PlannerDayColumn({
 
   const timezone = resolveTimeZone(day?.timezone ?? park?.timezone);
   const isToday = Boolean(date && date === parkToday(timezone));
-  // Where this day stands against the park's clock, for the one thing in this
-  // component that picks a minute by itself (see `addFreeBlock`).
+  // Where this day stands against the park's clock, for `addFreeBlock`.
   const clock = date ? dayClock(date, timezone) : undefined;
 
-  const spans = useMemo(
-    () =>
-      entries.map((entry: PlannerEntry) => ({
-        startMinute: entry.startMinute,
-        spanMinutes: occupiedMinutes(day, entry),
-      })),
-    [entries, day]
-  );
+  const spans = useMemo(() => spansFor(day, entries), [entries, day]);
 
   /**
-   * The park's axis, grown until it contains the plan. `openMin`/`closeMin` are
-   * untouched by the growth, so the opening-hours band still marks the park's
-   * real day and every placement rule still speaks for the park.
+   * The park's axis, grown until it contains the plan; `openMin`/`closeMin` stay the park's.
+   * Memoised so the grid keeps its identity across renders that do not move it, since
+   * `PlannerOptimizeActions` keys a search on it.
    */
-  // Memoised, so the grid keeps its identity across renders that do not move
-  // it: `PlannerOptimizeActions` keys a 5–50 ms search on it (PAR-493).
   const openHour = day?.context.openHour;
   const closeHour = day?.context.closeHour;
-  // A number, so the memo below keys on a value and not on the context object.
+  // A number, so the memo keys on a value, not on the context object.
   const earlyOpen = earlyEntryOpenMin(day?.context);
-  // Two memos, not one: `spans` changes on every edit, and building the base axis inside the same
-  // memo handed out a new grid on every drop, resize step and keystroke even when nothing grew,
-  // which ran that search in the interaction's own commit. `growGridForSpans` returns the base
-  // grid itself when the plan fits, so the identity now moves only with the axis.
+  // Two memos, not one: `spans` changes on every edit, and `growGridForSpans` returns the base grid
+  // itself when the plan fits, so the identity moves only with the axis.
   const baseGrid = useMemo(
     () => buildDayGrid(openHour, closeHour, pxPerMin, earlyOpen),
     [openHour, closeHour, pxPerMin, earlyOpen]
@@ -353,11 +250,9 @@ export function PlannerDayColumn({
   const grid = useMemo(() => growGridForSpans(baseGrid, spans), [baseGrid, spans]);
 
   const dayFacts = usePlannerDayFacts(park, open);
-  const prefs = date ? park?.days[date]?.prefs : undefined;
 
-  // Gated on TODAY for two reasons that point the same way: a standby reading
-  // describes this minute and says nothing about a Tuesday in November, and on a
-  // park page this is a cache hit on the key the page already holds.
+  // Gated on today: a standby reading describes this minute, and on a park page this is a cache
+  // hit.
   const { data: livePark } = useLiveParkData({
     continent: park?.geo.continent ?? '',
     country: park?.geo.country ?? '',
@@ -365,8 +260,7 @@ export function PlannerDayColumn({
     parkSlug: parkSlug ?? '',
     enabled: open && isToday && Boolean(park),
   });
-  // Memoised on the snapshot: the grid's layout and show memos key on these, and a fresh Map and
-  // Set on every column render rebuilt the lanes, the legs and the show positions each time.
+  // Memoised on the snapshot: the grid's layout and show memos key on these.
   const liveWaits = useMemo(() => liveWaitsFor(livePark), [livePark]);
   const closedNow = useMemo(() => closedNowFor(livePark), [livePark]);
 
@@ -390,23 +284,9 @@ export function PlannerDayColumn({
     : [];
 
   /**
-   * Delete removes the selected block.
-   *
-   * A grid you can select an item in and not delete it from is a grid that owes
-   * you a mouse trip to a button — and the action row's own button stays, for
-   * the phone, where there is no Delete key.
-   *
-   * Bound to the DOCUMENT rather than to the block, because a block is not
-   * focused after a pointer selection: the grip takes focus during a drag and a
-   * plain click on the body focuses nothing at all. Guarded on the three places
-   * a Delete belongs to something else — a text field, a number field, anything
-   * `contenteditable` — since the panel carries a search box and a free block's
-   * label is an `<input>` sitting inside the very row this deletes.
-   *
-   * It lives on the COLUMN, with the selection it acts on. Panel-level it would
-   * have to name a park and a date, and with two columns open there are two of
-   * each — the effect is inert in a column with nothing selected, so exactly one
-   * of them ever has a listener bound.
+   * Delete removes the selected block. Bound to the document, because a pointer selection leaves
+   * nothing focused; ignored inside text fields and `contenteditable`. Per column, with the
+   * selection it acts on, so at most one listener is bound.
    */
   useEffect(() => {
     if (!selectedId || !parkSlug || !date) return;
@@ -428,15 +308,8 @@ export function PlannerDayColumn({
   const parks = useMemo(() => Object.values(state.parks), [state.parks]);
 
   /**
-   * Ticking a ride off, from either view.
-   *
-   * ONE handler, because there are two of them — the grid's docked action row
-   * and the flat list's row button — and both take `(entryId, done)`. The
-   * measured figure is looked up HERE rather than passed by the caller: the
-   * flat list had no way to pass it, and it is the view every visitor gets on a
-   * day with no axis, so every tick from there stored `done: true` with no
-   * number. Only on the way IN — un-ticking drops the figure, because a measured
-   * number must not stay attached to an entry that is a plan again.
+   * Ticking a ride off, from either view. The measured figure is looked up here, because the flat
+   * list cannot pass it; un-ticking drops it, since a plan again carries no measurement.
    */
   const toggleDone = (entryId: string, done: boolean) => {
     if (!parkSlug || !date) return;
@@ -446,11 +319,8 @@ export function PlannerDayColumn({
   };
 
   /**
-   * A block the visitor writes themselves — a lunch break, a show, a meeting
-   * point. It files itself at the first minute none of this column's blocks
-   * occupies, which is why it belongs to the COLUMN: `nextFreeStart` reads this
-   * day's spans and this day's axis, and the panel used to hand it the active
-   * day's while the button sat under both.
+   * A block the visitor writes themselves, filed at the first minute this column's blocks leave
+   * free, which is why it reads this column's spans and axis.
    */
   const addFreeBlock = () => {
     if (!park || !date) return;
@@ -462,9 +332,7 @@ export function PlannerDayColumn({
       date,
       label: t('custom.defaultLabel'),
       icon: 'break',
-      // Never before now: a break filed into a morning that has gone is the
-      // same fault as a queue filed there. `nowFloor` is `openMin` on every
-      // other date, so nothing about a future plan moves.
+      // Never before now; `nowFloor` is `openMin` on every other date.
       startMinute: grid ? nextFreeStart(spans, grid, undefined, nowFloor(grid, clock)) : undefined,
     });
   };
@@ -474,24 +342,10 @@ export function PlannerDayColumn({
       data-planner-column={parkSlug && date ? `${parkSlug}:${date}` : ''}
       data-planner-column-primary={primary ? '' : undefined}
       data-planner-column-active={active ? '' : undefined}
-      /* CAPTURE, and `pointerdown` rather than `click`: a drag inside a column
-         never produces a click, and a click that starts on a block is handled by
-         the block. Focus covers the keyboard, which reaches a column through its
-         head. Both are cheap and idempotent — `focusColumn` returns early when
-         the focus does not actually change, which is what keeps a single-column
-         panel from navigating anywhere.
-
-         Capturing is also why the press has to be CLASSIFIED. It fires before
-         the event reaches whatever is under the pointer, so the column's own
-         close button, its optimise bar, its free-block row, its day picker and
-         the grip of a block somebody is starting to drag all arrive here first.
-         Marking the column is right for every one of them. Taking the page to
-         that park is not: "close this column" would relocate the whole page
-         before closing it, and a drag would begin under a route that is being
-         replaced. So an activation coming from something interactive marks and
-         nothing more. `closest` rather than a check on the target, because the
-         pointer lands on an icon or a span inside the control, never on the
-         control itself. */
+      /* Capture and `pointerdown`, since a drag never produces a click. Capturing fires before the
+         target, so the press is classified: from anything interactive it only marks the column,
+         or "close this column" would navigate first and a drag would start under a route being
+         replaced. `focusColumn` returns early when nothing changes. */
       onPointerDownCapture={(event) => {
         const target = event.target as HTMLElement | null;
         onActivate?.(!target?.closest(SELF_ACTING));
@@ -502,37 +356,18 @@ export function PlannerDayColumn({
       }}
       className={cn('relative flex min-w-0 flex-col', className)}
     >
-      {/* The marker. A 2 px rule along the column's own top edge rather than a
-          tint over the column: everything in here is data a reader is comparing
-          across the two, and dimming the other one to say "not this one" makes
-          the comparison harder for a fact about the pointer.
-
-          `absolute`, so it takes no grid row of the subgrid — see the panel's
-          note — and `-top-px` to sit on the panel's own upper border rather than
-          under it. Drawn only where a second column exists to be told apart
-          from: with one column there is nothing to distinguish. */}
+      {/* The marker: a 2 px rule along the top edge rather than a tint, so neither column is dimmed
+          for a fact about the pointer. `absolute`, so it takes no subgrid row; only with a second
+          column to tell apart. */}
       {active && (
         <div
           className="bg-primary/70 pointer-events-none absolute inset-x-0 -top-px z-20 h-0.5"
           aria-hidden="true"
         />
       )}
-      {/* ROW 1 of the panel's subgrid, and it is always an element even where
-          it draws nothing: `grid-rows-subgrid` counts CHILDREN, so a column
-          that renders `false` here would hand its band to the head's row and
-          the two columns would be one row out of step with each other.
-
-          The head itself waits for the plan to hold a park. With none it would
-          be a chooser over an empty list under the words "kein Park" — a control
-          asking a question the visitor has no way to answer — above the empty
-          state, which is the one screen that has to say what this thing is for
-          and already carries the button that starts it.
-
-          `withHead` is the other gate and it is the panel's: on a phone this
-          row lives in the sheet's own header instead. The wrapper stays either
-          way — an empty ROW is what the subgrid needs, and a column that
-          rendered nothing at all here would hand its band to this row's
-          track. */}
+      {/* Row 1 of the panel's subgrid, always an element: `grid-rows-subgrid` counts children, and
+          a missing row would put the two columns out of step. The head waits for the plan to hold a
+          park; `withHead` moves it to the sheet header on a phone. */}
       <div className="min-w-0">
         {withHead && parks.length > 0 && (
           <PlannerColumnHead
@@ -551,24 +386,10 @@ export function PlannerDayColumn({
         )}
       </div>
 
-      {/* ROW 2, always an element for the same reason — and this is the row the
-          subgrid was introduced FOR: the band's height is data, not layout.
-          Europa-Park on a Sunday in the holidays carries a "Ferien nebenan"
-          chip that Phantasialand does not, so the two bands came out 28 px
-          apart and every hour rule of the right column sat 28 px below the same
-          hour on the left. Two axes of one panel disagreeing about where 09:00
-          is reads as broken however good each of them is alone.
-
-          The band draws only where a day has been CHOSEN. `dayState` ends in a
-          fall-through `empty`, and with no park or date the query is disabled —
-          so the band cannot tell "nobody ever asked" from a real 404 and would
-          print "keine Prognose" over an empty planner.
-
-          `withBand` is the panel's gate and it is the third of its kind here —
-          on a landscape phone the band is drawn beside the axis rather than
-          over it, by the panel, and this row stays the empty ELEMENT the
-          subgrid counts. The border goes with the band: a rule under a row that
-          drew nothing is a hairline under the sheet header. */}
+      {/* Row 2, always an element, and the reason for the subgrid: the band's height is data, and
+          bands of different heights put the two axes' hours at different heights. Drawn only where
+          a day has been chosen, or a disabled query reads as "keine Prognose". On a landscape phone
+          the panel draws it beside the axis instead. */}
       <div className={cn('min-w-0', withBand && park && date && 'border-border/60 border-b')}>
         {withBand && park && date && (
           <PlannerContextBand
@@ -584,86 +405,30 @@ export function PlannerDayColumn({
         )}
       </div>
 
-      {/* ROW 3: the axis and everything under it. `flex flex-col` inside one
-          grid row rather than five more subgrid rows — the feet differ in how
-          many rows they have (a column with every headliner in has no band, one
-          with nothing planned has no summary), so aligning them would mean each
-          column rendering placeholders for the other's. What has to line up is
-          the axis, and that is what rows 1 and 2 buy. */}
+      {/* Row 3: the axis and everything under it, in one row, since the feet differ in height and
+          only the axis has to line up. */}
       <div className="flex min-h-0 flex-col overflow-hidden">
-        {/* A FLOOR under the grid, and it is the difference between a planner
-            and a search box — see the phone note in the flyout.
-
-            140 rather than the 216 it was, and the number is the sheet's
-            arithmetic rather than a preference: at 390x844 the sheet is 716 px,
-            of which the handle, the header and the push toggle take 122, the
-            active day's foot 182 and this column's own chrome (head, context
-            band, showtime strip) 163 — leaving about 250 for the axis and the
-            ride search together. A floor above ~150 spends all of that here and
-            leaves the search a text field with nothing under it. At 1.2 px per
-            minute this is still two hours of day, and it scrolls.
-
-            **200 now, and the number is chosen so the floor keeps its DAY.**
-            140 px was two hours at 1.2 px per minute (116.7 minutes, to be
-            exact). The phone's axis is `PX_PER_MIN_COARSE` = 1.8, where the same
-            140 px would be one hour eighteen — the floor doing a third less work
-            on a taller axis, silently, because it is written in pixels and the
-            thing it bounds is minutes. 200 px at 1.8 is **one hour fifty-one**,
-            i.e. the same day to within six minutes, with every block on it half
-            again as tall.
-
-            The 60 px it costs come from three places, all in this change: the
-            sheet goes from 85svh to 92svh (+59 px at 844), the ride search's own
-            cap comes down from 46svh to 32, and the chrome above gives back the
-            handle row, the header's padding, this column's head and the weekend
-            chip. */}
-        {/* **Stays on `max-sm:` and does NOT move to `planner-phone:`** — the
-            one class in PAR-76's sweep that was tried, measured and put back.
-
-            The argument for moving it was sound and the measurement refused it.
-            A floor written in pixels only buys an axis room the sheet actually
-            has: at 390x844 the chrome is 523 px of a 776 px sheet, so the axis
-            gets 253 and this floor never binds. At 844x390 the chrome was
-            **343 px of a 359 px sheet** and the axis had **16 px**. Asking for
-            200 did not find 190 more; it made this box overflow a
-            `min-h-0 flex-1` parent that has none to give, and the axis then ran
-            from y=227 to y=427 in a sheet ending at 390: 37 px below the window,
-            with the optimize row, the headliner band, the summary and the foot
-            all painted over it. Measured, both ways, on PAR-76's branch.
-
-            **PAR-168 answered that size by moving the rows rather than the
-            floor.** A landscape phone is a ROW now — the chrome stands left of
-            the axis, which gets 269 px at 844x390.
-
-            PAR-231 took the row down to 35.5 rem, because at 568x320 the stack
-            was 303 px of chrome in a 308 px sheet and this floor pushed the
-            axis out of a 3 px wrapper. Between 35.5 and 40 rem `max-sm:` and
-            `planner-landscape:` now overlap, and the floor stays out of the
-            way there for a measured reason: the row gives the axis 252 px at
-            568x320, more than the 200 asked for, so it never binds. */}
+        {/* A floor under the grid, so the phone sheet stays a planner rather than a search box.
+            200 px is about the same span of day at 1.8 px per minute that 140 px was at 1.2. On
+            `max-sm:`, not `planner-phone:`: in a landscape sheet the floor would push the axis out
+            of the window, and the landscape row already gives the axis more than 200 px. See
+            docs/features/trip-planner.md#a-landscape-phone-is-a-row-because-the-chrome-is-taller-than-the-sheet. */}
         <div ref={barBoxRef} className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[200px]">
           <div
             ref={scrollerRef}
             className={cn(
-              /* `planner-phone:pt-0` (PAR-313): the show band is `sticky top-0`
-                 INSIDE this scroller, so the 8 px above it are 8 px the
-                 "Shows ausblenden" switch sits below the top of the axis at
-                 every scroll position — which is what "der Knopf soll weiter
-                 nach oben" describes. The strip carries its own background,
-                 its own rule and `backdrop-blur`, so flush against the band
-                 above it still reads as a strip. Only the TOP padding: the 8
-                 at the foot are what keeps the last block clear of the
-                 action bar docked over this box's lower edge. */
+              /* `planner-phone:pt-0`: the show band is sticky inside this scroller, so top padding
+                 only pushes its switch down. The bottom padding keeps the last block clear of the
+                 action bar. */
               'planner-phone:pt-0 relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto overscroll-y-contain px-1 py-2',
               flatDropActive && 'ring-primary/60 rounded-md ring-2 ring-inset'
             )}
-            /* Room under the day for the action bar, while there is one — see
-               `barHeight`. Padding rather than a spacer element, so the grid's
-               own geometry, which every drag reads, does not change. */
+            /* Room under the day for the action bar (see `barHeight`), as padding so the grid's
+               geometry, which every drag reads, does not change. */
             style={
               selectedId && barHeight > 0 ? { paddingBottom: barHeight + REVEAL_GAP_PX } : undefined
             }
-            /* After the block's own handler has selected it. See `reveal`. */
+            /* Runs after the block's own handler has selected it. See `reveal`. */
             onClick={(event) => {
               const id = (event.target as HTMLElement)
                 .closest('[data-planner-entry]')
@@ -679,9 +444,8 @@ export function PlannerDayColumn({
             }}
             onDragLeave={() => setFlatDropActive(false)}
             onDrop={(event) => {
-              // Prevented FIRST, before any refusal: a park card writes
-              // `text/uri-list` beside our own payload, so an early return leaves
-              // the browser holding a link it will follow.
+              // Prevented first: a park card writes `text/uri-list` beside our payload, and an
+              // early return would leave the browser following the link.
               event.preventDefault();
               setFlatDropActive(false);
               if (grid || !park || !date) return;
@@ -751,9 +515,8 @@ export function PlannerDayColumn({
                 scrollerRef={scrollerRef}
                 onDragChange={setDragging}
                 onSelect={setSelectedId}
-                /* The block's own ✕, and the same two statements the action
-                   bar's made: take the entry out, and let go of a selection
-                   that now points at nothing. */
+                /* The block's own ✕: take the entry out and drop a selection that now points at
+                   nothing, as the action bar does. */
                 onRemove={(entryId) => {
                   if (parkSlug && date) removeRide(parkSlug, date, entryId);
                   setSelectedId(null);
@@ -803,16 +566,8 @@ export function PlannerDayColumn({
               />
             )}
           </div>
-          {/* The bar is `absolute … bottom-0 z-40` over the grid's lower edge,
-              and a drag SELECTS the block it grabs — so it used to appear with
-              the press and sit on top of the very gesture. On a phone that is
-              101 px of a 200 px scroller, and the ghost was underneath it
-              (PAR-316). It also states the block's OLD start and estimate while
-              the ghost states the new ones, which is two answers to one
-              question. So it stands down for the length of a drag that has
-              actually moved: nothing on it is reachable while a finger is
-              holding a block, and it comes back at the drop with the minute the
-              drop wrote. */}
+          {/* The bar stands down while a drag has actually moved: it would cover the ghost and
+              state the block's old start. It returns at the drop with the minute written. */}
           {grid && selectedId && (
             <PlannerGridActions
               entry={entries.find((e: PlannerEntry) => e.id === selectedId) ?? null}
@@ -827,11 +582,8 @@ export function PlannerDayColumn({
               onEditCustom={(entryId, patch) => {
                 if (parkSlug && date) editCustom(parkSlug, date, entryId, patch);
               }}
-              /* The gesture-free way to move a block, clamped HERE because the
-                 clamp is the axis's: `clampStart` against the same
-                 `rideFloor().hardMin` the drag is bound by, so a block cannot be
-                 nudged anywhere a drag could not put it — into the hour before
-                 the ride opens, or past the last minute a queue may be joined. */
+              /* Clamped here with `clampStart` against the same `rideFloor().hardMin` the drag
+                 obeys, so a nudge cannot put a block anywhere a drag could not. */
               onNudge={(entryId, deltaMinutes) => {
                 if (!parkSlug || !date || !grid) return;
                 const entry = entries.find((e: PlannerEntry) => e.id === entryId);
@@ -850,13 +602,9 @@ export function PlannerDayColumn({
           )}
         </div>
 
-        {/* The column's foot — see {@link PlannerDayFoot} for why it is a
-            component and why a phone renders the panel's copy instead. A branch
-            rather than a `hidden sm:contents` wrapper: the panel is mounted
-            client-side and never server-rendered, so `useMediaQuery` is right
-            on its first render here, and two copies in the DOM would be two of
-            every `data-planner-optimize` for a selector to pick the wrong one
-            of. */}
+        {/* The column's foot (see {@link PlannerDayFoot}). A branch rather than a CSS-hidden copy:
+            the panel is client-only, so `useMediaQuery` is right on first render, and two copies
+            would duplicate `data-planner-optimize`. */}
         {withFoot && park && date && (
           <>
             <PlannerDayFoot

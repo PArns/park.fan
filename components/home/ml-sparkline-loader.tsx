@@ -8,6 +8,10 @@ const MLSparklineDynamic = dynamic(() => import('./ml-sparkline').then((m) => m.
   ssr: false,
 });
 
+/**
+ * Renders `MLSparkline`, the chart of a model metric's history, on the client only (`next/dynamic`
+ * with `ssr: false`). Takes the same props.
+ */
 export function MLSparklineLoader(props: ComponentProps<typeof MLSparklineType>) {
   return <MLSparklineDynamic {...props} />;
 }

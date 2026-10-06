@@ -4,13 +4,6 @@ import { getTranslations } from 'next-intl/server';
 import { Sparkles } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 
-/**
- * Decorative "get inspired" gallery shown on the contribution page. Uses real
- * park/ride photos already shipped under public/images (so they're locally
- * optimised — no remote image config needed) to illustrate the kind of shots and
- * the parks/rides people can contribute to. Server component → no client JS.
- */
-
 interface Example {
   src: string;
   ride: string;
@@ -41,6 +34,10 @@ const EXAMPLES: Example[] = [
   { src: '/media/walibi-belgium/kondaa.jpg', ride: 'Kondaa', park: 'Walibi Belgium' },
 ];
 
+/**
+ * Grid of eight ride photos with ride and park captions on the contribution page, showing the kind
+ * of shot people can send in. Server Component.
+ */
 export async function ExampleGallery() {
   const t = await getTranslations('contribute.gallery');
 
@@ -64,7 +61,6 @@ export async function ExampleGallery() {
               style={{ objectPosition: objectPositionForSrc(ex.src, '50% 50%') }}
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            {/* gradient + caption */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
             <figcaption className="absolute inset-x-0 bottom-0 p-2.5 text-white">
               <div className="truncate text-sm font-semibold drop-shadow">{ex.ride}</div>

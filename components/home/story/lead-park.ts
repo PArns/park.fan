@@ -15,38 +15,21 @@ export interface LeadPark {
 }
 
 /**
- * The park the story's live exhibits are drawn from: the first entry of the
- * locale's featured list.
- *
- * The chapters that show real data have to show it for *some* park, and a
- * hard-coded one would be Phantasialand for a reader in Madrid. `FEATURED_PARK_SLUGS`
- * is already the per-locale ranking this site trusts for exactly that question
- * (PortAventura leads `es`, Magic Kingdom leads `en`), so the exhibit follows it
- * rather than introducing a second opinion about which park a locale cares about.
- *
- * Reads the same 24 h-cached `getGeoStructure()` as the featured grid and the
- * shortcut band, so it adds no request. Returns `null` when the geo fetch fails
- * or the list resolves empty — every caller drops its exhibit rather than
- * rendering an empty frame.
+ * The park the story's live exhibits are drawn from: the first entry of the locale's featured
+ * list, the per-locale ranking this site already trusts, so a reader in Madrid does not get
+ * Phantasialand. Reads the same 24 h-cached `getGeoStructure()` as the featured grid, so it adds no
+ * request. `null` when the geo fetch fails or the list is empty; callers then drop their exhibit.
  */
 export async function getLeadPark(locale: string): Promise<LeadPark | null> {
   return (await getLeadParks(locale))[0] ?? null;
 }
 
 /**
- * The locale's featured parks, in order, as candidates for an exhibit.
- *
- * A single lead park is not enough for anything that has to render something
- * today. A park closes for the winter, a park has a maintenance day, a park's
- * catalogue is too thin to have a readable curve — and the answer to any of
- * those is the next park on the same list, not an empty card. The list is the
- * locale's own featured ranking, so the fallback stays regionally sensible
- * without a second thing to curate.
- *
- * Costs no extra request: `getGeoStructure` is the same 24 h-cached fetch the
- * featured grid and the shortcut band already read.
+ * The locale's featured parks, in order, as candidates for an exhibit: a park closed for the
+ * winter or for a maintenance day hands over to the next one on the same list. No extra request,
+ * since `getGeoStructure` is the same cached fetch.
  */
-export async function getLeadParks(locale: string): Promise<LeadPark[]> {
+async function getLeadParks(locale: string): Promise<LeadPark[]> {
   const geoData = await catchNonFatal(getGeoStructure());
   return extractFeaturedParks(geoData, locale)
     .map((park) => {
@@ -69,23 +52,10 @@ export async function getLeadParks(locale: string): Promise<LeadPark[]> {
 }
 
 /**
- * The parks the homepage's day-curve picker offers, in order.
- *
- * NOT `FEATURED_PARK_SLUGS`. That list answers "which parks does this locale
- * search for", and for `de` the honest answer is four German parks — which makes
- * a picker that reads like a German directory and, worse, offers nothing open
- * between midnight and nine. This list answers a different question: which parks
- * have a headliner worth drawing, spread across enough of the planet that one of
- * them is always mid-afternoon.
- *
- * Two lists rather than one because the questions differ, and both are curated
- * by hand: an automatic "pick something far away" would land on whichever park
- * the catalogue happens to hold, and most of them have no headliner anybody has
- * heard of.
- *
- * Every slug here is one `FEATURED_PARK_SLUGS` already uses somewhere, so none
- * of them is a new claim about the catalogue — a park that disappears upstream
- * drops out of both.
+ * The parks the homepage's day-curve picker offers, in order. Not `FEATURED_PARK_SLUGS`, which
+ * answers what a locale searches for (for `de`, four German parks with nothing open at night);
+ * this list holds parks with a headliner worth drawing, spread so one is always mid-afternoon.
+ * Curated by hand, and every slug is one `FEATURED_PARK_SLUGS` already uses.
  */
 const CURVE_PARK_SLUGS = [
   'europa-park', // DE — Voltron Nevera
@@ -108,52 +78,24 @@ const CURVE_PARK_SLUGS = [
  */
 export async function getCurveCandidates(locale: string): Promise<LeadPark[]> {
   void locale; // the list is deliberately the same everywhere; see the docblock
-  const geoData = await catchNonFatal(getGeoStructure());
-  if (!geoData) return [];
-
-  const found = new Map<string, LeadPark>();
-  for (const continent of geoData.continents) {
-    for (const country of continent.countries) {
-      for (const city of country.cities) {
-        for (const park of city.parks) {
-          if (
-            !found.has(park.slug) &&
-            (CURVE_PARK_SLUGS as readonly string[]).includes(park.slug)
-          ) {
-            found.set(park.slug, {
-              continent: continent.slug,
-              country: country.slug,
-              city: city.slug,
-              parkSlug: park.slug,
-              name: park.name,
-              href: `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
-              countryCode: country.code,
-            });
-          }
-        }
-      }
-    }
-  }
-
-  return CURVE_PARK_SLUGS.map((slug) => found.get(slug)).filter((p): p is LeadPark => p != null);
+  return resolveParkSlugs(CURVE_PARK_SLUGS);
 }
 
 /**
- * The parks the homepage's "with kids" chapter names, in order.
- *
- * Curated, not the locale's featured ranking: that list is what a locale searches for, and for
- * `en` it holds no park that clears the page's gate (`KIDS_PAGE_GATE`), so an English reader
- * would get no chapter. The same three parks serve every locale.
- *
- * Measured 2026-09-29 against `/v1/parks/<path>` (attractions with a `minimumHeight` / all):
- * Phantasialand 35 of 40, Europa-Park 69 of 97, Parc Astérix 39 of 61. Gardaland (21 of 36) and
- * Heide Park (20 of 39) clear the gate by one attraction and are left out: a park that slips
- * under it turns the link into a 404. Re-measure before adding a park.
+ * The parks the homepage's "with kids" chapter names, in order. Curated rather than the featured
+ * ranking, because for `en` that list holds no park that clears the page's gate
+ * (`KIDS_PAGE_GATE`). Only parks that clear it with room to spare, since one that slips under turns
+ * the link into a 404; re-measure before adding a park.
  */
 const KIDS_ENTRY_SLUGS = ['phantasialand', 'europa-park', 'parc-asterix'] as const;
 
 /** {@link KIDS_ENTRY_SLUGS} resolved against the 24 h-cached geo structure, in this list's order. */
 export async function getKidsEntryParks(): Promise<LeadPark[]> {
+  return resolveParkSlugs(KIDS_ENTRY_SLUGS);
+}
+
+/** Resolves a curated slug list against the geo structure, in the list's order. */
+async function resolveParkSlugs(slugs: readonly string[]): Promise<LeadPark[]> {
   const geoData = await catchNonFatal(getGeoStructure());
   if (!geoData) return [];
 
@@ -162,10 +104,7 @@ export async function getKidsEntryParks(): Promise<LeadPark[]> {
     for (const country of continent.countries) {
       for (const city of country.cities) {
         for (const park of city.parks) {
-          if (
-            !found.has(park.slug) &&
-            (KIDS_ENTRY_SLUGS as readonly string[]).includes(park.slug)
-          ) {
+          if (!found.has(park.slug) && slugs.includes(park.slug)) {
             found.set(park.slug, {
               continent: continent.slug,
               country: country.slug,
@@ -181,5 +120,5 @@ export async function getKidsEntryParks(): Promise<LeadPark[]> {
     }
   }
 
-  return KIDS_ENTRY_SLUGS.map((slug) => found.get(slug)).filter((p): p is LeadPark => p != null);
+  return slugs.map((slug) => found.get(slug)).filter((p): p is LeadPark => p != null);
 }

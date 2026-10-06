@@ -14,6 +14,10 @@ const COUNTRY_GUIDES: Record<string, string> = {
   germany: 'best-theme-parks-germany',
 };
 
+/**
+ * Returns the ranking guide post a country page links to, or `null` when the country has none or it
+ * is not published in this locale or English.
+ */
 export function getGuideForCountry(locale: Locale, countrySlug: string): BlogListItem | null {
   const translationKey = COUNTRY_GUIDES[countrySlug];
   if (!translationKey) return null;

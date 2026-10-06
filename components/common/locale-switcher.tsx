@@ -49,6 +49,11 @@ function RoundFlag({ locale }: { locale: Locale }) {
   );
 }
 
+/**
+ * Header dropdown that switches the site language: remembers the choice for `/`, then follows the
+ * page's hreflang link for the new locale, or replaces the locale in the current path when there is
+ * none.
+ */
 export function LocaleSwitcher() {
   const locale = useLocale() as Locale;
   const t = useTranslations('navigation');
@@ -81,26 +86,21 @@ export function LocaleSwitcher() {
         <Button
           variant="ghost"
           size="sm"
-          /* `max-sm:h-8` cancels the button scale's 44 px phone tier: this control only ever
-             renders inside the 48 px header, whose height is a documented requirement, and 44 in
-             48 is the mistake that requirement exists to prevent. The bar's own touch targets are
-             an open question about the bar's height, not about this class. */
+          /* `max-sm:h-8` cancels the button scale's 44 px phone tier: this control renders inside
+             the 48 px header, see
+             docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md. */
           className="h-8 gap-1.5 px-2 text-xs font-medium max-sm:h-8"
           suppressHydrationWarning
         >
           <RoundFlag locale={locale} />
-          {/* The country code is what pays for the °C/°F button beside the theme switch. At
-              360 px the bar carries 303 px of content in 328 px, this label is 22 px of it
-              (text plus its gap), and the unit control needs 35 px including its gap — so below
-              `sm` the flag stands alone and the dropdown, which lists the code AND the language
-              name, is one tap away. Above `sm` nothing is tight and the code stays. */}
+          {/* Below `sm` the flag stands alone: the country code's width pays for the °C/°F button
+              in the 360 px bar, and the dropdown lists code and language name anyway. */}
           <span className="max-sm:hidden">{LOCALE_CODES[locale]}</span>
           <span className="sr-only">{t('changeLanguage')}</span>
         </Button>
       </DropdownMenuTrigger>
       {/* `z-[80]`, above the sheet's `z-[70]`: on a phone this switcher lives in the burger
-          sheet (PAR-434), and at the menu's default `z-50` the list opened UNDER the sheet's
-          overlay, which then took every tap meant for a language. */}
+          sheet, and below it the sheet's overlay would take every tap. */}
       <DropdownMenuContent align="end" className="z-[80]">
         {routing.locales.map((loc) => (
           <DropdownMenuItem

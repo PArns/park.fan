@@ -15,7 +15,7 @@ import { formatDistance } from '@/lib/utils/distance-utils';
 import { waitTimeBadgeClass } from '@/lib/blog/live-display';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl, getParkUrlFromAttractionUrl } from '@/lib/utils/url-utils';
-import type { AttractionWithDistance, NearbyAttractionsData } from '@/types/nearby';
+import type { AttractionWithDistance, NearbyAttractionsData, NearbyParkInfo } from '@/types/nearby';
 import type { CrowdLevel } from '@/lib/api/types';
 
 // All headliners are shown (no cap). The "nearest" list below shows the next non-headliner rides so
@@ -43,7 +43,6 @@ export function InParkAttractionRow({
   /** The row's link was followed. */
   onOpen?: () => void;
 }) {
-  // Non-operating rides (e.g. whole park closed) get a colored status badge instead of a wait time.
   const showStatusBadge =
     attraction.status === 'DOWN' ||
     attraction.status === 'CLOSED' ||
@@ -57,7 +56,6 @@ export function InParkAttractionRow({
         onClick={onOpen}
       >
         <div className="bg-background/60 hover:bg-background/80 hover:border-primary/50 relative flex items-center justify-between rounded-lg border p-3 backdrop-blur-md transition-all hover:shadow-sm">
-          {/* Favorite Star */}
           {attraction.id && (
             <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
               <FavoriteStar type="attraction" id={attraction.id} />
@@ -90,7 +88,7 @@ export function InParkAttractionRow({
                     {attraction.waitTime} min
                   </Badge>
                 )}
-                {attraction.crowdLevel && attraction.crowdLevel !== null && (
+                {attraction.crowdLevel && (
                   <CrowdLevelBadge level={attraction.crowdLevel} showLabel={false} />
                 )}
               </>
@@ -111,22 +109,18 @@ export function InParkAttractionRow({
  * same rides in the same order.
  */
 export function splitInParkRides(rides: AttractionWithDistance[] | undefined) {
-  // Drop rides that are clearly out of their season. The API already hides
-  // `isCurrentlyInSeason === false`, but we filter defensively so off-season attractions never
-  // leak into the list; seasonal rides with unknown months (null) and in-season ones stay.
+  // The API already hides `isCurrentlyInSeason === false`; filtered again defensively, and a
+  // seasonal ride with unknown months (`null`) stays.
   const inSeasonRides = (rides || []).filter((a) => a.isCurrentlyInSeason !== false);
 
-  // Headliners (top/marquee attractions, flagged by the API). All of them are shown above the
-  // regular list, sorted by distance. Closed ones are kept and carry a status badge — a headliner
-  // is worth pointing out even when the park (or just that ride) isn't operating right now.
+  // Every headliner, nearest first. Closed ones stay with a status badge: a headliner is worth
+  // pointing out even when the park, or just that ride, is not running.
   const headliners = inSeasonRides
     .filter((a) => a.isHeadliner)
     .sort((a, b) => a.distance - b.distance);
   const headlinerIds = new Set(headliners.map((h) => h.id));
 
-  // The remaining (non-headliner) rides, nearest first. Closed/refurbishment rides are kept (they
-  // show a status badge) so the list isn't empty when the park is currently closed — otherwise the
-  // user would only ever see headliners. Off-season rides are already dropped via inSeasonRides.
+  // Closed rides stay (with a status badge), so the list is not empty while the park is closed.
   const attractions = inSeasonRides
     .filter((a) => !headlinerIds.has(a.id))
     .sort((a, b) => a.distance - b.distance)
@@ -151,7 +145,6 @@ export function InParkRideLists({
   const t = useTranslations('nearby');
   return (
     <>
-      {/* Headliners — always shown above the nearest attractions */}
       {headliners.length > 0 && (
         <div>
           <h4 className="text-muted-foreground mb-2 flex items-center gap-1.5 text-sm font-medium">
@@ -172,7 +165,6 @@ export function InParkRideLists({
         </div>
       )}
 
-      {/* Nearest Attractions */}
       {attractions.length > 0 && (
         <div>
           <h4 className="text-muted-foreground mb-2 text-sm font-medium">
@@ -195,6 +187,36 @@ export function InParkRideLists({
   );
 }
 
+function ParkAnalyticsRow({
+  analytics,
+  className,
+}: {
+  analytics: NonNullable<NearbyParkInfo['analytics']>;
+  className?: string;
+}) {
+  const tCommon = useTranslations('common');
+  return (
+    <div className={cn(className, 'flex items-center gap-4 text-sm')}>
+      {analytics.avgWaitTime !== undefined && (
+        <div className="flex items-center gap-1">
+          <Clock className="text-muted-foreground h-4 w-4" />
+          <span>
+            {analytics.avgWaitTime} {tCommon('minutes')} Ø
+          </span>
+        </div>
+      )}
+      {analytics.operatingAttractions !== undefined && (
+        <div className="flex items-center gap-1">
+          <TrendingUp className="text-muted-foreground h-4 w-4" />
+          <span>
+            {analytics.operatingAttractions} {tCommon('operating')}
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 /**
  * "You are in a park" view: full-bleed park banner with headliners and the nearest attractions.
  * Rendered when the nearby response classifies the user as inside a park.
@@ -210,7 +232,6 @@ export function InParkView({
   nested?: boolean;
 }) {
   const t = useTranslations('nearby');
-  const tCommon = useTranslations('common');
   const tStatus = useTranslations('parks.status');
 
   if (!data || !data.park) {
@@ -246,9 +267,8 @@ export function InParkView({
         className
       )}
     >
-      {/* Background image: confined to the header band and faded to the section background
-          so it never bleeds through the attractions list — keeping the list readable in
-          light mode. */}
+      {/* Confined to the header band and faded to the section background, so it never bleeds
+          through the list in light mode. */}
       {park.backgroundImage && (
         <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-56 overflow-hidden sm:h-64">
           <BackgroundOverlayImage
@@ -277,7 +297,6 @@ export function InParkView({
           />
         )}
         <div className="space-y-4">
-          {/* Quick navigation: primary CTA to park page when user is in park */}
           {parkPageUrl && (
             <div className="mb-4">
               <Button asChild size="lg" className="w-full justify-center sm:w-auto">
@@ -288,7 +307,6 @@ export function InParkView({
               </Button>
             </div>
           )}
-          {/* Park Info */}
           {parkMapUrl ? (
             <Link
               href={parkMapUrl}
@@ -309,27 +327,7 @@ export function InParkView({
                   )}
               </article>
 
-              {/* Park Analytics - Inside Link */}
-              {park.analytics && (
-                <div className="mt-4 flex items-center gap-4 text-sm">
-                  {park.analytics.avgWaitTime !== undefined && (
-                    <div className="flex items-center gap-1">
-                      <Clock className="text-muted-foreground h-4 w-4" />
-                      <span>
-                        {park.analytics.avgWaitTime} {tCommon('minutes')} Ø
-                      </span>
-                    </div>
-                  )}
-                  {park.analytics.operatingAttractions !== undefined && (
-                    <div className="flex items-center gap-1">
-                      <TrendingUp className="text-muted-foreground h-4 w-4" />
-                      <span>
-                        {park.analytics.operatingAttractions} {tCommon('operating')}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              )}
+              {park.analytics && <ParkAnalyticsRow analytics={park.analytics} className="mt-4" />}
             </Link>
           ) : (
             <>
@@ -344,27 +342,7 @@ export function InParkView({
                   )}
               </article>
 
-              {/* Park Analytics */}
-              {park.analytics && (
-                <div className="flex items-center gap-4 text-sm">
-                  {park.analytics.avgWaitTime !== undefined && (
-                    <div className="flex items-center gap-1">
-                      <Clock className="text-muted-foreground h-4 w-4" />
-                      <span>
-                        {park.analytics.avgWaitTime} {tCommon('minutes')} Ø
-                      </span>
-                    </div>
-                  )}
-                  {park.analytics.operatingAttractions !== undefined && (
-                    <div className="flex items-center gap-1">
-                      <TrendingUp className="text-muted-foreground h-4 w-4" />
-                      <span>
-                        {park.analytics.operatingAttractions} {tCommon('operating')}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              )}
+              {park.analytics && <ParkAnalyticsRow analytics={park.analytics} />}
             </>
           )}
 

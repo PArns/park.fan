@@ -1,5 +1,9 @@
 'use client';
 
+/**
+ * Tooltip primitives (shadcn/ui on Radix Tooltip): a provider with no open delay, the root (wrapped
+ * in its own provider), trigger, and content drawn above sheets and dialogs.
+ */
 import * as React from 'react';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
@@ -39,9 +43,6 @@ function TooltipTrigger({ ...props }: React.ComponentProps<typeof TooltipPrimiti
  * - `z-[70]` `SheetContent` / `DialogContent` and their overlays
  * - `z-[80]` popovers and menus opened from inside a sheet (call-site class)
  * - `z-[90]` tooltip — it is opened from anything above, so it sits on top
- *
- * The tooltip was `z-50`, so one opened from a sheet painted under it: at
- * 1440x900 only 58 of 256 px of the box were visible.
  */
 function TooltipContent({
   className,

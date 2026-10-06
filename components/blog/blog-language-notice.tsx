@@ -84,8 +84,8 @@ export function BlogLanguageNotice({
 }: BlogLanguageNoticeProps) {
   const browserLocale = useSyncExternalStore(subscribeNoop, detectBrowserLocale, () => null);
 
-  // ── Case B: the browser language has a translation we can offer ───────────
-  // Only when it's not the page we're on and not the fallback we already show.
+  // Case B: the browser's language has a translation to offer, other than this page and the
+  // fallback already shown.
   const betterMatch =
     browserLocale && browserLocale !== currentLocale && browserLocale !== loadedLocale
       ? (languageOffers.find((o) => o.locale === browserLocale) ?? null)
@@ -108,7 +108,7 @@ export function BlogLanguageNotice({
     );
   }
 
-  // ── Case A: fallback notice ───────────────────────────────────────────────
+  // Case A: the fallback notice.
   if (fallbackLabel) {
     return (
       <div className="bg-muted/70 text-muted-foreground mt-5 flex items-center gap-2 rounded-md px-3 py-2 text-xs">

@@ -6,26 +6,12 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 /**
- * The part of a section a phone reader only gets on request.
- *
- * Below a 768 px page the children are `display: none` until the button is pressed; from 768 px
- * up the wrapper is inert and the button is not drawn, so nothing changes there. The children are
- * always rendered, on the server too: the text stays in the HTML for a crawler and for a reader
- * who opens it, and the page does not fetch anything on the press.
- *
- * The width asked is the PAGE's (`@container/page`), not the window's — the same threshold and
- * the same reason as the nearby-parks list: with the trip planner open, a wide window can leave
- * the page a phone's width.
- *
- * `label` comes in as a prop so a Server Component resolves it: the homepage's client messages
- * do not carry the `common` namespace, and this is one string.
- *
- * The button leaves the DOM once pressed, so focus moves to the first revealed element
- * (made focusable with `tabIndex=-1`) rather than falling back to `<body>` — a keyboard or
- * screen-reader user keeps their place.
- *
- * `contents` keeps the wrapper out of the layout while it is visible, so a caller can put it
- * inside a grid or a flex row and the children stay that container's items.
+ * The part of a section a phone reader gets only on request: below a 768 px page the children are
+ * `display: none` until the button is pressed, and from 768 px up nothing changes. The children are
+ * always rendered, so the text stays in the HTML. The width is the page's (`@container/page`),
+ * since the trip planner can leave a wide window a phone-width page. Once pressed the button leaves
+ * the DOM, so focus moves to the first revealed element. `label` is a prop so a Server Component
+ * resolves it.
  */
 export function MobileMore({
   label,

@@ -12,18 +12,9 @@ import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { quietWindows } from '@/lib/utils/ride-day-curve-geometry';
 
 /**
- * The chart's quiet windows, labelled.
- *
- * The geometry — which hours count as quiet, where the two runs start and end,
- * what each run averages — lives in `lib/utils/ride-day-curve-geometry.ts` and
- * is covered by `pnpm test:ride-day-curve`. What is left here is the part that
- * is i18n rather than maths.
- *
- * The first version got the labelling wrong twice over. It called the evening
- * window "Letzte Runde", which is not what a three-hour stretch from 15:00 is,
- * and it printed "ca. 30 Min." — which reads as a DURATION ("for about thirty
- * minutes") next to a time range, when the number is the wait you can expect.
- * The range and the wait are separate fields now, and the wait says what it is.
+ * The chart's quiet windows, labelled. The geometry lives in `lib/utils/ride-day-curve-geometry.ts`
+ * (`pnpm test:ride-day-curve`); this is the i18n half. The range and the wait are separate fields,
+ * so the wait cannot be read as a duration.
  */
 function labelledWindows(
   hours: number[],
@@ -63,33 +54,25 @@ export interface DayCurveCandidate {
   countryCode: string;
 }
 
+/** Props of the day-curve card. */
 export interface RideDayCurveCardProps {
   /**
-   * Parks to try, in order. The first that answers is drawn.
-   *
-   * A list rather than one park because a park closes for the winter, has a
-   * maintenance day, or is simply too thinly measured to have a readable curve —
-   * and the answer to all three is the next park, not an empty card. Each entry
-   * costs a request ONLY if every earlier one 404s, which on a normal day means
-   * exactly one.
+   * Parks to try, in order; the first that answers is drawn. A list because a park can be closed
+   * for the winter, on a maintenance day or too thinly measured, and the answer to all three is the
+   * next park. Each entry costs a request only if every earlier one 404s.
    */
   candidates: DayCurveCandidate[];
   /**
-   * Called once the last candidate has missed and this card has nothing left to
-   * draw. The caller owns the surrounding layout and is the only one that can
-   * take the column back — this component can do no better than render nothing
-   * into it.
+   * Called once the last candidate has missed. The caller owns the layout and is the only one that
+   * can take the column back.
    */
   onExhausted?: () => void;
   className?: string;
 }
 
 /**
- * Try one park; report whether it answered.
- *
- * Its own component so each candidate gets its own hook instance — hooks cannot
- * be called in a loop, and a single hook with a changing park would refetch on
- * every re-render as the index moved.
+ * Try one park and report whether it answered. Its own component so each candidate gets its own
+ * hook instance, since hooks cannot run in a loop.
  */
 function Candidate({
   index,
@@ -127,12 +110,9 @@ function Candidate({
 }
 
 /**
- * Nothing left to try.
- *
- * Its own component so the notice reaches the parent from an effect rather than
- * from a render — a `setState` in the parent during this component's render is
- * the "cannot update a component while rendering a different component" warning,
- * and the parent's answer is to unmount this one.
+ * Nothing left to try. Its own component so the notice reaches the parent from an effect: a parent
+ * `setState` during this render is React's "cannot update a component while rendering a different
+ * component" warning.
  */
 function Exhausted({ onExhausted }: { onExhausted?: () => void }) {
   useEffect(() => {
@@ -142,20 +122,10 @@ function Exhausted({ onExhausted }: { onExhausted?: () => void }) {
 }
 
 /**
- * The day-curve chart, fed from `/stats/day`.
- *
- * A ~1 KB projection carrying all three series the chart draws — the historical
- * percentiles, today's measured hours and the forecast for the rest — behind the
- * same `useLoadLast` gate every historical aggregate on this site sits behind,
- * so it never races the live status queries.
- *
- * It is NOT `/stats/hourly`, which the first version read: that route has no
- * forecast, and it cannot carry today either, because the hourly rollup behind
- * it is computed for the completed day and holds no row for today at all.
- *
- * Reserves its own height while loading: the chart is 200/260 px plus its
- * caption and window row, and a section that appears out of nothing after the
- * idle window is the CLS this codebase measures with `pnpm measure:cls --late`.
+ * The day-curve chart, fed from `/stats/day`: one small projection with the historical percentiles,
+ * today's measured hours and the forecast, behind the same `useLoadLast` gate as every historical
+ * aggregate. Not `/stats/hourly`, which has no forecast and no row for today. Reserves its own
+ * height while loading (`pnpm measure:cls --late`).
  */
 export function RideDayCurveCard({ candidates, onExhausted, className }: RideDayCurveCardProps) {
   const t = useTranslations('homeStory.bestTime');
@@ -246,10 +216,9 @@ export function RideDayCurveCard({ candidates, onExhausted, className }: RideDay
         park={park}
         onResolved={onResolved}
         fallback={
-          // A `<figure>`, not a `<div>`: a first-paint/settled diff pairs children
-          // by tag once their classes differ, so a div standing in for the figure
-          // reports the whole card as an insertion rather than a swap. Same
-          // padding, same aspect box, same window row — the outcome most rides get.
+          // A `<figure>`, not a `<div>`, so a first-paint/settled diff pairs the placeholder with
+          // the figure instead of reporting an insertion. Same padding, aspect box and window row
+          // as the outcome most rides get.
           <figure
             className={cn('border-border bg-card/55 m-0 rounded-2xl border p-4 sm:p-5', className)}
           >

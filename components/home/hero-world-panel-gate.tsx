@@ -14,17 +14,10 @@ const HeroWorldPanelClient = dynamic(
 );
 
 /**
- * Mounts the world-map panel only when there is room for it (xl viewports) AND the page has
- * loaded + gone idle — the map must never compete with the hero photo (LCP). Below xl the right
- * grid column simply stays empty (the user asked for the panel only "when there's enough
- * space"). Same gate pattern the old hero ticker used.
- *
- * Until then it renders the skeleton. Note it does so even below xl, where the panel will never
- * appear: `useAfterLoad` and `useMediaQuery` are both false during SSR and on the first client
- * render, so this branch IS the server output — and the parent column is `hidden xl:block`, so
- * a narrow viewport hides the skeleton in CSS and pays only for the markup. The alternative
- * (returning null until the media query resolves) would leave the panel's box empty through
- * first paint and pop the skeleton in after hydration, which is the flicker this avoids.
+ * Mounts the world-map panel only on xl viewports and after load and idle, so the map never
+ * competes with the hero photo for LCP. Until then it renders the skeleton, below xl too: that is
+ * the server output, and the parent column's `hidden xl:block` hides it there, whereas returning
+ * null would pop the skeleton in after hydration.
  */
 export function HeroWorldPanelGate({ continents }: { continents: WorldPanelContinent[] }) {
   const ready = useAfterLoad();

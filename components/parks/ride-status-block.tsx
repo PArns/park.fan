@@ -6,15 +6,9 @@ import { formatShowClock } from '@/lib/push/show-clock';
 import { formatTime } from '@/lib/utils/intl-format';
 
 /**
- * The colours a block takes, each the colour of the status badge it sits under.
- *
- * `outage` is the DOWN badge's orange, for both outage signals (`OutageNote`).
- * `idle` is a slate grey for a ride that has not run yet today
- * (`NotRunTodayNote`): that line claims no fault, so it may not borrow the
- * fault's colour, and red would read as the closed badge shouting twice.
- *
- * The chip is a solid fill with a white glyph in both tones, the pair the
- * status badges already print their labels in.
+ * The colours a block takes, each the colour of the status badge it sits under. `outage` is the
+ * DOWN badge's orange (`OutageNote`); `idle` is slate for a ride that has not run yet today
+ * (`NotRunTodayNote`), which claims no fault and may not borrow a fault's colour.
  */
 const TONES = {
   outage: {
@@ -29,6 +23,7 @@ const TONES = {
   },
 } as const;
 
+/** Which of the block's colours it takes. */
 export type RideStatusTone = keyof typeof TONES;
 
 /**
@@ -48,32 +43,15 @@ export function rideStatusFooterClass(tone: RideStatusTone, variant: 'compact' |
 }
 
 /**
- * The block a ride's standing still is said in: a solid icon chip, a bold line,
- * an optional second line, and whatever sits under a hairline below them.
+ * The block a ride's standing still is said in: a solid icon chip, a bold line, an optional second
+ * line, and whatever sits under a hairline. One component for every such block, because readers
+ * compare them side by side on one card; only tone and words may differ. `compact` is a park page's
+ * ride card, `full` the ride page's live panel.
  *
- * One component for every such block, because they stand on the same cards and
- * a reader compares them side by side: a „steht still" block that was drawn a
- * little differently from a „Störung" block was read as a different thing, and
- * was reported as such. What may differ is the tone and the words.
- *
- * `compact` is a park page's ride card — card text colours, 11 to 12 px.
- * `full` is the ride page's live panel.
- *
- * ## Centring
- *
- * Each line is cut to its cap height and baseline (`text-box`), so
- * `items-center` centres the letters on the chip rather than the line boxes.
- * Geist reserves more room under the baseline than over the caps, and a lone
- * line sat visibly high in the block: 24 px of block above the caps and 28 px
- * below the baseline, measured off a reader's screenshot. The gaps only open up
- * where the trim applies; a browser without `text-box` keeps the line boxes and
- * the old gaps.
- *
- * ## data-nosnippet
- *
- * On the root `<div>`, one of the three elements Google honours it on. Every
- * sentence a block holds is true for as long as it is on the page and false the
- * moment the ride runs again, which is the reason the outage line gives.
+ * Each line is trimmed to cap height and baseline (`text-box`), so `items-center` centres the
+ * letters on the chip; Geist reserves more room under the baseline than over the caps.
+ * `data-nosnippet` sits on the root `<div>`, one of the elements Google honours it on, because
+ * every sentence here turns false the moment the ride runs again.
  */
 export function RideStatusBlock({
   icon: Icon,
@@ -148,24 +126,11 @@ export function RideStatusBlock({
 }
 
 /**
- * Weekday and clock time in the park's zone, as a phrase in the reader's
- * language: „Sonntag, 21:00 Uhr", „Sunday at 09:00 PM", „zondag 21:00 uur".
- *
- * Every instant a block names goes through here, so „seit Montag, 09:38 Uhr"
- * and „zuletzt Sonntag, 18:00 Uhr" are the same format on the same card. The
- * time is `formatShowClock`, the park-zone clock every other time on the site
- * reads like. The phrase around it is a message (`parks.rideStatus.weekdayTime`)
- * because `Intl` writes neither the „Uhr" nor the „at", and both belong to the
- * time in the languages that use them — the same split as „um {time} Uhr" on
- * the show alerts.
- *
- * The weekday is never relative („gestern"): which day is yesterday cannot be
- * decided identically on both sides of hydration, and the API keeps every
- * instant it sends a block inside the last week, where a weekday is
- * unambiguous.
- *
- * `null` for an instant or a zone `Intl` cannot read, which the caller renders
- * as the sentence for an unknown start rather than a time in the wrong zone.
+ * Weekday and clock time in the park's zone as a phrase in the reader's language („Sonntag, 21:00
+ * Uhr", „Sunday at 09:00 PM"), so every instant a block names reads the same. The phrase is a
+ * message (`parks.rideStatus.weekdayTime`) because `Intl` writes neither the „Uhr" nor the „at".
+ * Never relative („gestern"), which hydration cannot decide identically on both sides. `null` for
+ * an instant or zone `Intl` cannot read.
  */
 export function useWeekdayTime(timezone: string | undefined): (iso: string) => string | null {
   const t = useTranslations('parks.rideStatus');

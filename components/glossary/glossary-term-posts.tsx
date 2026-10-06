@@ -6,28 +6,16 @@ import { getPostsForGlossaryTerm } from '@/lib/blog/backlinks';
 import type { Locale } from '@/i18n/config';
 
 /**
- * "This term in our blog" — the return path that was missing from the link graph.
- *
- * A post reaches into the glossary in two ways: `GlossaryInject` links the first occurrence of
- * every known term in its prose, and an author can embed a term's card with a `glossary-widget`
- * fence. Only the second counts here. The first is a reading aid that would put nearly every post
- * on `wait-time` and `queue`; embedding the widget is the author saying the article explains this
- * term. See `extractGlossaryRefs` in `lib/blog/derive.mjs`.
- *
- * Renders nothing at all when no post covers the term, which today is 248 of 267 of them. That is
- * the intended shape, not a gap to pad: the sibling `GlossaryTermRides` slot carries a long
- * comment about why this page reserves no height for content that most terms do not have — a
- * fixed fallback would tear a permanent hole in the majority of the glossary. This block is pure
- * manifest data (no API call, no clock), so it resolves inline in the first HTML and never
- * arrives late enough to shift anything.
+ * "This term in our blog": the posts that embed a term's `glossary-widget`, which is the author
+ * saying the article explains it (prose auto-links do not count; see `extractGlossaryRefs` in
+ * `lib/blog/derive.mjs`). Renders nothing for the many terms no post covers and reserves no
+ * height: it is manifest data, inline in the first HTML.
  */
 interface GlossaryTermPostsProps {
   termId: string;
   /**
-   * The term as the reader sees it, for the heading.
-   *
-   * This is often the FIRST h2 on the page — glossary terms otherwise ship an h1 and no heading
-   * structure below it — so it carries the term rather than a generic "on the blog".
+   * The term as the reader sees it, for the heading, which is often the page's first h2, so it
+   * names the term rather than a generic "on the blog".
    */
   termName: string;
   locale: Locale;
@@ -35,6 +23,10 @@ interface GlossaryTermPostsProps {
   limit?: number;
 }
 
+/**
+ * The blog posts that embed a term's `glossary-widget`, as cards under a heading naming the term.
+ * Renders nothing when no post covers it or the locale has no blog.
+ */
 export async function GlossaryTermPosts({
   termId,
   termName,

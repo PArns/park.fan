@@ -17,6 +17,7 @@
 | [Troubleshooting](troubleshooting/common-issues.md)  | Common issues and solutions                        |
 | [Writing rules](blog.md)                             | How every text on the site is written              |
 | [Standing rules](rules/README.md)                    | The rules indexed by the repo's `CLAUDE.md`        |
+| [Code index](code-index/README.md)                   | Every exported component, hook and helper          |
 
 ---
 
@@ -89,7 +90,7 @@ sessions that need them.
 | ---------------------------------------------------- | --------------------------------------------------- |
 | [Internationalization](i18n/internationalization.md) | Locales, route prefix, namespaces, "Normal" display |
 | [Translation System](i18n/translations.md)           | Adding keys, helpers, validation, crawler, CI       |
-| [Pluralization](i18n/pluralization.md)               | ICU plurals, `formatWaitTime`, migration            |
+| [Pluralization](i18n/pluralization.md)               | ICU plurals, duration helpers, migration            |
 
 ### API & Backend
 

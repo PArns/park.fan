@@ -9,11 +9,8 @@ interface BlogStatsWidgetProps {
   park: ResolvedPark | null;
   slug: string;
   /**
-   * Comma-separated subset of `attractions,months,weekdays` from the fence's `show=` attribute.
-   * A post argues from one of those tables at a time, in sections that can sit 400 words apart,
-   * so embedding the whole bundle twice would show a reader the weekday chart while the prose
-   * is still talking about ride queues. Omitted → all three, which is what every existing post
-   * already gets.
+   * Comma-separated subset of `attractions,months,weekdays` from the fence's `show=` attribute, so
+   * a post can embed the one table its prose is arguing from. Omitted, all three.
    */
   show?: string;
 }
@@ -37,15 +34,10 @@ function parseShow(show: string | undefined): readonly CardName[] | undefined {
  *   ```stats-widget slug=phantasialand
  *   ```
  *
- * `ParkStatsSection` is a Client Component that fetches the historical aggregate itself via the
- * CDN-cached `/api/parks/.../stats` route, and on the park page it stays that way — moving the
- * heavy 2-year fetch back onto that render is what forced the whole route into `no-store`.
- *
- * A blog post is a different case: it is statically prerendered, so the fetch happens once at
- * build time and costs a visitor nothing. Without a seed the post shipped its numbers as
- * skeleton placeholders, so the tables an answer engine would quote reached crawlers empty.
- * `getParkHistoricalStatsSeed` is timeout-bounded and resolves `null` on a cold aggregate, in
- * which case this renders exactly what it rendered before.
+ * `ParkStatsSection` fetches the aggregate itself through the CDN-cached `/api/parks/.../stats`,
+ * as on the park page. A post is prerendered, so here it gets a server seed and its tables reach
+ * crawlers filled. `getParkHistoricalStatsSeed` is timeout-bounded and resolves `null` on a cold
+ * aggregate, in which case the card loads on the client.
  */
 export async function BlogStatsWidget({ park, slug, show }: BlogStatsWidgetProps) {
   const tBlog = await getTranslations('blog');

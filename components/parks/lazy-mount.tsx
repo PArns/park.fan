@@ -7,6 +7,7 @@ import './lazy-mount.css';
  *  (`grid-cols-1 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3`). */
 const GRID_COLUMNS = [1, 2, 3] as const;
 
+/** The card grid a `LazyMount` stands in for, so it can reserve its height per breakpoint. */
 export interface LazyMountGrid {
   /** Number of cards that will render into the grid. */
   count: number;
@@ -32,13 +33,8 @@ interface LazyMountProps {
   minHeight?: number;
   /**
    * Reservation for content rendering into the responsive card grid. The height is derived
-   * per breakpoint from the column count, so the placeholder matches what will actually be
-   * rendered there.
-   *
-   * A single `minHeight` can't do this: it reserved the ONE-column height at every
-   * breakpoint, so on a 3-column desktop a 30-card land reserved roughly three times the
-   * space the cards end up taking — the page scrolled far too long and the scrollbar visibly
-   * jumped the moment the section mounted.
+   * per breakpoint from the column count; a single `minHeight` would reserve the one-column
+   * height everywhere, about three times too much on a desktop.
    */
   grid?: LazyMountGrid;
   /** Mount immediately, skipping the observer (e.g. the first/above-the-fold block, or while searching). */
@@ -57,20 +53,13 @@ function reservedHeight(
 
 /**
  * Defers mounting heavy below-the-fold content until it nears the viewport, then keeps it
- * mounted (no unmount → no scroll jank, no lost state). On long pages this slashes the initial
- * DOM node count and the layout/paint/compositing cost — e.g. a big park's attraction grid
- * renders 100+ glass cards (each with backdrop-blur + sparkline), which Lighthouse flags as an
- * excessive DOM and which dominates mobile rendering time.
+ * mounted (no unmount → no scroll jank, no lost state). A big park's ride grid is 100+ glass
+ * cards, which dominates mobile rendering time.
  *
- * It decides what the first HTML contains. That was not true while the grid was mount-gated —
- * the server payload never held these nodes either way — and it is true since PAR-272, which
- * renders the grid on both sides of hydration: what a reader without JavaScript sees of the
- * areas below the first is this placeholder, and the rides in them arrive with the mount.
- * The park's full ride list stays machine-readable through `containsPlace` in the page's
- * structured data.
- *
- * The observer uses a generous rootMargin so a section mounts ~1.5 screens before it scrolls
- * into view — the swap happens off-screen, below the fold, so the user never sees a placeholder.
+ * It decides what the first HTML contains: below the first area, a reader without JavaScript sees
+ * this placeholder, so the park's full ride list stays machine-readable through `containsPlace`
+ * in the page's structured data. The generous rootMargin mounts a section well before it scrolls
+ * into view, so the swap happens off-screen.
  */
 export function LazyMount({ children, minHeight, grid, eager = false, className }: LazyMountProps) {
   const [shown, setShown] = useState(eager);

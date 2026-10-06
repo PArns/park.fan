@@ -30,10 +30,14 @@ async function buildGlossaryTerms(locale: Locale): Promise<GlossaryTerm[]> {
   });
 }
 
-// Glossary data is fixed at build time, so memoize per process instead of rebuilding the
-// 219-term array (+ translation map) on every request (glossary pages, search route, sitemap).
+// Glossary data is fixed at build time, so the term list is memoised per process instead of
+// rebuilt on every request.
 const termsByLocale = new Map<Locale, Promise<GlossaryTerm[]>>();
 
+/**
+ * Returns every glossary term with its name, definitions and slug in the locale, built once per
+ * locale for the life of the process.
+ */
 export function getGlossaryTerms(locale: Locale): Promise<GlossaryTerm[]> {
   let terms = termsByLocale.get(locale);
   if (!terms) {
@@ -43,6 +47,7 @@ export function getGlossaryTerms(locale: Locale): Promise<GlossaryTerm[]> {
   return terms;
 }
 
+/** Returns the glossary term with this localized slug, or `null`. Per-render cached. */
 export const getTermBySlug = cache(
   async (locale: Locale, slug: string): Promise<GlossaryTerm | null> => {
     const terms = await getGlossaryTerms(locale);
@@ -51,15 +56,9 @@ export const getTermBySlug = cache(
 );
 
 /**
- * Resolve a term slug from ANY locale to the requested locale's term.
- *
- * Google's index holds thousands of cross-locale glossary URLs from the era of
- * next-intl's auto-generated alternate links (e.g. /nl/glossaire/harnais-epaules —
- * a FRENCH slug under the NL locale). The segment redirect in next.config fixes
- * the segment but keeps the foreign slug, which then 404s. This lookup lets the
- * term page translate the slug and 308 to the correct local URL instead.
- *
- * Only call this after `getTermBySlug` missed for the requested locale.
+ * Resolves a term slug from any locale to the requested locale's term, so a foreign slug under a
+ * locale (`/nl/glossaire/harnais-epaules`, still in Google's index) can 308 to the right URL
+ * instead of a 404. Only call it after `getTermBySlug` missed.
  */
 export const findTermByAnySlug = cache(
   async (locale: Locale, slug: string): Promise<GlossaryTerm | null> => {

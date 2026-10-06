@@ -14,9 +14,8 @@ export const DIALOG_HERO_TINT =
   'from-primary/25 via-primary/8 absolute inset-0 bg-gradient-to-br to-transparent';
 
 /**
- * The close button of a band that brings its own (the dialog then passes `showCloseButton={false}`):
- * `DialogHero` and the push dialogs' `PushDialogHero`. The two drew it from copies of the same
- * classes, and only one of them had the phone-sized target.
+ * The close button of a band that brings its own (the dialog then passes
+ * `showCloseButton={false}`), shared by `DialogHero` and `PushDialogHero`.
  */
 export function DialogHeroClose({ onPhoto = false }: { onPhoto?: boolean }) {
   // `common`, because a dialog's close button is chrome — the namespace every page already ships.
@@ -44,25 +43,11 @@ export function DialogHeroClose({ onPhoto = false }: { onPhoto?: boolean }) {
 }
 
 /**
- * The band across the top of a full-dress dialog: a title, a line under it, and either a
- * photograph or a tinted field with an oversized translucent glyph.
- *
- * It was the planner wizard's alone (`WizardHero`), and the day comparison needed the same thing —
- * two dialogs opened from the same calendar, one of them leading directly into the other, drawn
- * as a plain `DialogHeader` and as this band would have read as two different products. What is
- * shared is the CHROME: the fixed height, the two ways of filling it, the close button that has to
- * carry its own ground over a picture, and the text block at the lower edge. What each caller
- * keeps is what its own line says.
- *
- * **No photo is a designed state, not a grey box** — the tinted field takes the same oversized
- * glyph the site's chapter headings use (`ChapterHeading`), at the same height as the photo
- * variant, so nothing moves when a picture lands a beat later.
- *
- * The height is FIXED (`h-28`, `sm:h-32`) and that is load-bearing: the wizard's picture arrives
- * with the park, one step in, and a band that grew for it would move the step under it.
- *
- * Renders the dialog's `DialogTitle`, so a caller passes `showCloseButton={false}` to
- * `DialogContent` and adds no header of its own.
+ * The band across the top of a full-dress dialog: a title, a line under it, and either a photograph
+ * or a tinted field with an oversized translucent glyph (`ChapterHeading`'s), so two dialogs opened
+ * from the same calendar read as one product. The height is fixed, so a picture that lands later
+ * moves nothing. Renders the dialog's `DialogTitle`, so the caller passes `showCloseButton={false}`
+ * and adds no header of its own.
  */
 export function DialogHero({
   icon: Icon,
@@ -81,36 +66,23 @@ export function DialogHero({
   title: ReactNode;
   titleClassName?: string;
   /**
-   * How many lines the title may take before it is cut.
-   *
-   * One by default, because a park name is a name and half of one says nothing. Two where the
-   * title is a sentence the reader is here to read — the day dialog's „Donnerstag, 10. September
-   * 2026" is 29 characters against about 240 px once the day stepper has taken its width, so at
-   * one line every date on a phone would end in an ellipsis. It is a prop rather than a class,
-   * because `truncate` and `whitespace-normal` land in different tailwind-merge groups and both
-   * survive the merge — which of them wins is then stylesheet order.
+   * How many lines the title may take before it is cut: one for a park name, two where the title
+   * is a sentence, such as a date that would otherwise end in an ellipsis on a phone. A prop,
+   * because `truncate` and `whitespace-normal` both survive tailwind-merge and stylesheet order
+   * would decide.
    */
   titleLines?: 1 | 2;
   /** The line under the title. Rendered inside this component's own `<p>`. */
   description?: ReactNode;
   descriptionClassName?: string;
   /**
-   * Whether that line is also the dialog's accessible description.
-   *
-   * A dialog has exactly ONE — Radix hands `DialogDescription` a single generated id and points
-   * `aria-describedby` at it — so this is opt-in rather than the default: the wizard's band names
-   * a park and a date while its description says which step of how many it is, and rendering two
-   * would put the same id on both. The comparison's band carries the verdict, which is the one
-   * sentence that dialog exists to produce, so there it is the description.
+   * Whether that line is also the dialog's accessible description. Opt-in, because a dialog has
+   * exactly one: Radix points `aria-describedby` at a single id.
    */
   describesDialog?: boolean;
   /**
-   * Controls at the band's lower right — the day dialog's prev/next stepper.
-   *
-   * Down here rather than beside the close button, which is the corner every dialog on the site
-   * uses for one thing: a control that navigates sitting inside the target of a control that
-   * discards is a mis-press waiting to happen, and on a phone both would be inside one thumb's
-   * travel.
+   * Controls at the band's lower right, such as the day dialog's stepper. Not beside the close
+   * button: a control that navigates within reach of one that discards invites a mis-press.
    */
   actions?: ReactNode;
   /** The picture, where the caller has one. `null`/`undefined` gives the tinted field. */
@@ -137,18 +109,9 @@ export function DialogHero({
             className="motion-safe:animate-in motion-safe:fade-in motion-safe:duration-500"
             style={{ objectFit: 'cover', objectPosition: photoPosition }}
           />
-          {/* Dark at the bottom because that is where the text is, and only there: a scrim over
-              the whole frame turns a photograph into a texture.
-
-              The three stops are MEASURED, not chosen. The first pair (`from-black/85
-              via-black/45 to-black/5`) looked right on Phantasialand's night shot and was not:
-              rendering six parks, hiding the text and walking the luminance of the exact box it
-              had occupied put the second line — `text-xs`, so it owes 4.5:1 — at **4.20:1 on
-              Disneyland at the 95th percentile**, with the brightest pixel under the title down at
-              2.73:1 against the 3:1 a 20 px semibold headline owes. At `/95 · /70 · transparent`
-              the same twelve cases (six parks × two viewports) read 8.73–14.09:1 at p95 and
-              5.42–7.39:1 at the single worst pixel, so the small line clears AA everywhere with
-              headroom and the castle's stonework is still legible. */}
+          {/* Dark at the bottom, where the text is, and only there: a scrim over the whole frame
+              turns a photograph into a texture. The stops are measured so the `text-xs` line
+              clears AA over the brightest park photos. */}
           <div
             className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent"
             aria-hidden="true"
@@ -172,10 +135,8 @@ export function DialogHero({
 
       <DialogHeroClose onPhoto={Boolean(photo)} />
 
-      {/* The close button is absolutely positioned over this block, so the text has to leave its
-          corner free — `pr-12` where nothing else is on the right. With `actions` there IS
-          something, and it sits at the band's foot, well under the close, so the padding goes
-          back to the band's own. */}
+      {/* `pr-12` leaves the absolutely positioned close button its corner; with `actions` the
+          controls sit at the foot, well under it, so the padding returns to the band's own. */}
       <div
         className={cn(
           'absolute inset-x-0 bottom-0 flex items-end gap-3 p-4 sm:p-5',

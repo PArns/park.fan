@@ -10,8 +10,8 @@ interface NewsPostPageProps {
   params: Promise<{ locale: string; slug: string }>;
 }
 
-// News posts, statically generated like the blog posts they used to sit among. The page is the
-// blog post page; only the section differs (`lib/blog/paths.ts`, `docs/rules/news-live-under-news.md`).
+// The blog post page with `section="news"`. See lib/blog/paths.ts and
+// docs/rules/news-live-under-news.md.
 
 export function generateStaticParams() {
   return listAllUrlSlugsByLocale('news').map(({ locale, slug }) => ({ locale, slug }));

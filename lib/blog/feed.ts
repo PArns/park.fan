@@ -3,28 +3,10 @@ import { SITE_URL, type Locale } from '@/i18n/config';
 import { hasPublishedPosts } from './listing';
 
 /**
- * The blog feed's identity — its URL, what a reader sees it called, and the
- * `<link rel="alternate">` every page needs in order for the feed to be found
- * at all.
- *
- * Autodiscovery is the only standardized route from an HTML page to a feed
- * (rssboard.org/rss-autodiscovery): `rel="alternate"`,
- * `type="application/rss+xml"`, an `href`, inside the `<head>`. Without it a
- * reader has nothing to go on but a guessed path.
- *
- * It cannot be declared once in the layout. Next replaces the whole
- * `alternates` object at the nearest segment that sets one rather than merging
- * into it — `app/[locale]/contribute/thanks/page.tsx` sets only `canonical` and
- * ships **no** hreflang links, though the locale layout declares `languages`.
- * So every route that sets `alternates` at all has to carry the feed itself,
- * which is exactly how the category pages lost it: four blog routes spelled the
- * same literal out by hand and the fifth was never given one. Hence this
- * module, and hence `blogFeedAlternates` returning the whole `types` object
- * instead of a URL a call site still has to wrap.
- *
- * The array-of-descriptors form (rather than a bare string) is what carries a
- * `title` into the markup. With one feed per page that is a courtesy; the spec
- * makes it the thing readers disambiguate by as soon as a page offers two.
+ * The blog feed's identity: its URL, its name and the `<link rel="alternate">` a reader finds it
+ * by. Every route that sets `alternates` has to carry the feed itself, because Next replaces the
+ * whole `alternates` object at the nearest segment that declares one instead of merging. See
+ * docs/rules/a-feed-nobody-links-to-is-a-file-with-a-url.md.
  */
 
 /** Where a locale's feed lives. `feed.xml`, per the route folder of the same name. */
@@ -33,10 +15,8 @@ export function blogFeedUrl(locale: Locale): string {
 }
 
 /**
- * The feed's name, as a reader's subscription list will show it.
- *
- * Localized because a subscription list is a place a person reads, and six
- * feeds all called the same thing are six identical rows.
+ * The feed's name, as a reader's subscription list will show it, localized so six feeds are not
+ * six identical rows.
  */
 export const BLOG_FEED_TITLE: Record<Locale, string> = {
   de: 'park.fan Blog',
@@ -47,10 +27,7 @@ export const BLOG_FEED_TITLE: Record<Locale, string> = {
   it: 'Blog di park.fan',
 };
 
-/**
- * The channel description. Previously a two-branch ternary that gave German its
- * own sentence and handed the English one to the remaining four locales.
- */
+/** The feed's channel description, per locale. */
 export const BLOG_FEED_DESCRIPTION: Record<Locale, string> = {
   de: 'Reiseberichte, Datenauswertungen und Park-News vom park.fan-Team.',
   en: 'Trip reports, data dives, and theme-park news from the park.fan team.',
@@ -61,14 +38,9 @@ export const BLOG_FEED_DESCRIPTION: Record<Locale, string> = {
 };
 
 /**
- * The `alternates.types` entry for a page whose feed is this locale's blog feed.
- *
- * Returns `undefined` where the locale publishes nothing, because the route
- * itself 404s in that case (`hasPublishedPosts`) and advertising a feed that
- * answers 404 is worse than advertising none: a reader records the failure
- * against the site, not against the one locale.
- *
- * Spread it into `alternates`:
+ * The `alternates.types` entry for a page whose feed is this locale's blog feed, or `undefined`
+ * where the locale publishes nothing: the feed 404s there, and a reader records that against the
+ * whole site. Spread it into `alternates`:
  *
  *     alternates: { canonical, languages, types: blogFeedAlternates(locale) }
  */

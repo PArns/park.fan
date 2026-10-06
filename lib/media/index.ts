@@ -33,12 +33,9 @@ export { MEDIA_REVISION } from './manifest-search';
  * 'troy')`, because its sidecar says which ride it shows. That is what makes one
  * pool serve the blog, the park pages and the ride pages at once.
  *
- * Localized alt/caption deliberately live in `./text` — importing them costs the
- * 37 KB text manifest, which a route that only resolves paths or searches should
- * not pay. Same split as `@/lib/blog/listing` vs `@/lib/blog`.
+ * Localized alt/caption live in `./text`: importing them costs the text manifest,
+ * which a route that only resolves paths or searches should not pay.
  */
-
-// ─── indexes ─────────────────────────────────────────────────────────────────
 
 // Built once per process on first use. The manifest is fixed at build time, so
 // there is nothing to invalidate.
@@ -112,8 +109,6 @@ export function groupByCollection(images: readonly MediaImage[]): Map<string, Me
   }
   return groups;
 }
-
-// ─── lookup ──────────────────────────────────────────────────────────────────
 
 /** One image by id (`toverland/troy`), or null. */
 export function getMediaImage(id: string): MediaImage | null {
@@ -205,8 +200,6 @@ export function collectionNodes(
     .sort((a, b) => a.collection.localeCompare(b.collection));
 }
 
-// ─── park reference data ─────────────────────────────────────────────────────
-
 /**
  * Name, city, country and page path of the park an image shows.
  *
@@ -231,8 +224,6 @@ export function getParkPagePath(image: MediaImage): string | null {
   const ref = getParkRef(image);
   return ref ? `/parks/${ref.path}` : null;
 }
-
-// ─── role-based resolution ───────────────────────────────────────────────────
 
 /**
  * The park's background image — the full-bleed photo on the park page and the OG
@@ -305,8 +296,6 @@ export function getImagesByRole(role: MediaRole, parkSlug?: string | null): Medi
   const pool = parkSlug ? getParkImages(parkSlug) : MEDIA_IMAGES;
   return pool.filter((i) => i.roles.includes(role));
 }
-
-// ─── search ──────────────────────────────────────────────────────────────────
 
 /**
  * Image indexes matching one query word, via the build-time inverted index.

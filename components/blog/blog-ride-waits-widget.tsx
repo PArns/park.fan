@@ -16,15 +16,10 @@ interface BlogRideWaitsWidgetProps {
   /** `top=` — how many rides in park mode. */
   top?: string;
   /**
-   * `rides=` — a SEMICOLON-separated list of `parkSlug/rideSlug`, each optionally carrying a
-   * display label and a ride type: `phantasialand/taron|Taron|Multi-Launch, Stahl`.
-   *
-   * Semicolons rather than commas because the type routinely contains one ("Dive Coaster, Stahl"
-   * is how three of the replaced tables wrote it), and a separator a value can hold is not a
-   * separator. The `|` fields are positional and both optional.
-   *
-   * The label and type are author-supplied because they are stable facts: a coaster's layout does
-   * not change between two page loads. The MINUTES are what drifts, and they never appear here.
+   * `rides=`: a semicolon-separated list of `parkSlug/rideSlug`, each optionally with a display
+   * label and a ride type (`phantasialand/taron|Taron|Multi-Launch, Stahl`). Semicolons because a
+   * type often holds a comma. Label and type are stable facts an author may write; the minutes,
+   * which drift, never appear here.
    */
   rides?: string;
   /** `columns=` — comma-separated subset of park,land,type,peak,days. */
@@ -82,14 +77,9 @@ function toRideWaitPark(park: ResolvedPark): RideWaitPark | null {
  *   ```ride-waits-widget rides=attractiepark-toverland/troy|Troy|Holz;efteling/joris-en-de-draak columns=park,type,peak highlight=attractiepark-toverland/troy
  *   ```
  *
- * Replaces twenty-two hand-maintained markdown tables across four posts and six locales. They had
- * already drifted: the Efteling post quoted 34 minutes for Joris en de Draak against 35 on the
- * park page, and the two Toverland tables in one post disagreed with each other by a minute
- * because they were typed a week apart. Nothing detected either — a stale number in markdown looks
- * exactly like a fresh one.
- *
- * Both modes read the CDN-cached `/api/parks/.../stats`, the same payload the `stats-widget` and
- * the park-comparison table use, so two tables in one post share a fetch and agree by construction.
+ * A wait time is never typed into a post (docs/rules/a-wait-time-is-never-typed-into-a-post.md).
+ * Both modes read the CDN-cached `/api/parks/.../stats`, the payload the `stats-widget` and the
+ * park-comparison table use, so two tables in one post share a fetch and agree.
  */
 export async function BlogRideWaitsWidget({
   parks,
@@ -124,8 +114,7 @@ export async function BlogRideWaitsWidget({
   );
 
   if (rides) {
-    // Semicolons, not commas: a ride type routinely holds a comma ("Dive Coaster, Stahl" is how
-    // three of the replaced tables wrote it), and a separator a value can contain is not one.
+    // Semicolons, not commas: a ride type often holds a comma.
     const parsed = rides
       .split(';')
       .map(parseRide)

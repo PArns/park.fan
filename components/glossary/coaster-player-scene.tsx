@@ -69,15 +69,10 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
     if (!host) return;
     let mounted = true;
 
-    // The canvas is created HERE, per initialisation, rather than rendered in
-    // JSX and reused. `scene.ts` deliberately calls `renderer.forceContextLoss()`
-    // on teardown (browsers cap live WebGL contexts, and switching elements
-    // would otherwise leak them until other canvases go black). But a canvas
-    // whose context was force-lost can never get a fresh one: `getContext`
-    // hands back the dead context and THREE reads `precision` off null. So a
-    // reused canvas is dead the second time this effect runs — which is every
-    // element switch, and in development every mount, because React's
-    // StrictMode invokes effects twice.
+    // The canvas is created here per initialisation, not rendered in JSX: `scene.ts` force-loses
+    // the WebGL context on teardown (browsers cap live contexts), and a force-lost canvas can never
+    // get a fresh one, so a reused canvas would be dead on every element switch and every
+    // StrictMode re-run.
     const canvas = document.createElement('canvas');
     canvas.className = 'absolute inset-0 h-full w-full';
     canvas.setAttribute('aria-hidden', 'true');
@@ -126,9 +121,8 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
     }
     handleRef.current = handle;
 
-    // A new scene starts at 0 — reset the imperatively-driven progress UI. (Matters when
-    // switching elements: the transport bar stays mounted, and under reduced motion no
-    // onTick ever fires to overwrite the previous element's position.)
+    // A new scene starts at 0, so reset the imperative progress UI: under reduced motion no onTick
+    // would overwrite the previous element's position.
     if (fillRef.current) fillRef.current.style.width = '0%';
     if (rangeRef.current) rangeRef.current.value = '0';
 
@@ -205,24 +199,18 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
         className
       )}
     >
-      {/* Canvas stage */}
       {/* The <canvas> is NOT rendered here — the effect creates one per
           initialisation and prepends it. See the effect for why. */}
       <div ref={hostRef} className="relative aspect-[16/10] w-full sm:aspect-[16/9]">
-        {/* Loading / fallback overlay */}
         {!ready && (
           <div className="text-muted-foreground absolute inset-0 flex items-center justify-center bg-[linear-gradient(to_bottom,#7fc2f3_0%,#cdeeff_100%)] text-sm dark:bg-[linear-gradient(to_bottom,#142150_0%,#33508c_100%)] dark:text-white/80">
             {labels.loading}
           </div>
         )}
 
-        {/* View switch — top-right overlay */}
         {ready && !failed && (
-          // 34 × 22 px, four pixels apart, and below `sm` the label is gone so the only thing
-          // naming them is a `title` a finger never sees. The label stays hidden — the stage is
-          // 358 px wide on a phone and three names would cover the picture — but the buttons get
-          // a thumb's worth of box and an `aria-label`, which is what the hover-only `title` was
-          // standing in for.
+          // Below `sm` the labels stay hidden (three names would cover the picture on a phone), so
+          // each button gets a thumb-sized box and an `aria-label`.
           <div className="absolute top-2 right-2 flex gap-2 rounded-full bg-black/35 p-1 backdrop-blur-sm">
             {VIEW_META.map(({ id, icon: Icon, key }) => (
               <button
@@ -244,11 +232,8 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
           </div>
         )}
 
-        {/* park.fan logo (pin + wordmark) — embedded branding, bottom-left.
-            Light/dark variants toggle with the theme, matching the header.
-            The heights are the mark's own: the artwork used to fill 86.3 % / 78.1 % of its
-            viewBox, so `h-5`/`h-4`/`gap-1.5` painted 17.25 px, 12.5 px and an optical 11.5 px.
-            The files are ink-tight now and this watermark keeps the size it had. */}
+        {/* park.fan lockup, bottom-left, light and dark variants with the theme. The artwork is
+            ink-tight, so these heights are the mark's own. */}
         {!failed && (
           <div className="pointer-events-none absolute bottom-2.5 left-3 z-10 flex items-center gap-[11px] drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] select-none">
             <Image
@@ -285,21 +270,10 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
         )}
       </div>
 
-      {/* Transport bar — 57 px (border + 2×10 px padding + 36 px buttons).
-
-          Rendered in every state, disabled until `ready`. Gated on `ready` it
-          appeared once the scene had booted and pushed everything below the
-          player down by those 57 px, on all 42 term pages that carry one; the
-          dynamic-import placeholder in `coaster-player.tsx` reserves the same
-          row, so the height now holds from the first paint through the chunk
-          arriving to the scene going live.
-
-          `failed` is deliberately NOT a condition here. Gating on it looks
-          right — a device without WebGL has nothing to transport — but it
-          trades one shift for another: the placeholder has already drawn the
-          row, so hiding it on failure takes 57 px back out mid-page, a jump
-          that did not exist before this row was reserved at all. A dead strip
-          under a player that could not start is the cheaper of the two. */}
+      {/* Transport bar, 57 px (border, 2×10 px padding, 36 px buttons), rendered in every state
+          and disabled until `ready`, so the height holds from the dynamic-import placeholder in
+          `coaster-player.tsx` through the scene going live. Not hidden on `failed` either: the
+          placeholder already drew the row, so removing it would shift the page. */}
       <div className="bg-background/80 flex items-center gap-3 border-t px-3 py-2.5 backdrop-blur">
         <button
           type="button"
@@ -325,7 +299,6 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
             thumb centres exactly on the groove regardless of intrinsic size. */}
         <div className="relative flex-1 self-stretch">
           <div className="absolute inset-x-0 top-1/2 h-5 -translate-y-1/2">
-            {/* groove */}
             <div className="bg-muted-foreground/20 pointer-events-none absolute inset-x-0 top-1/2 h-1.5 -translate-y-1/2 rounded-full" />
             {/* progress fill — width driven imperatively from onTick/onScrub */}
             <div
@@ -361,16 +334,9 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
                   onScrub(k.t);
                   endScrub();
                 }}
-                /* Five 22 px buttons at `z-20` over the range input covered 47 % of a 236 px
-                   track, some of them 1.6 px apart — so on a phone the timeline could be tapped
-                   but not dragged, which is the one thing a scrubber is for. A mouse can hit a
-                   22 px dot precisely and keeps them; a finger cannot, so under touch they leave
-                   the hit path entirely and the slider owns the whole track. The axis is the
-                   pointer, not the viewport: a small window on a desk still has a mouse.
-                   `pointer-fine:` is Tailwind v4's own variant — the arbitrary
-                   `[@media(hover:hover)and(pointer:fine)]:` this started as compiled to NOTHING
-                   (spaces in an arbitrary variant have to be underscores), so the markers stayed
-                   dead on the desk too until a build was checked for the rule. */
+                /* Under touch the markers leave the hit path so the slider owns the whole track: a
+                   finger cannot hit a 22 px dot, and the dots covered half the track. A mouse keeps
+                   them. The axis is the pointer, not the viewport (`pointer-fine:`). */
                 className="group pointer-events-none absolute top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 p-1.5 pointer-fine:pointer-events-auto"
                 style={{ left: `${k.t * 100}%` }}
                 aria-label={labels.keys[k.label] ?? k.label}

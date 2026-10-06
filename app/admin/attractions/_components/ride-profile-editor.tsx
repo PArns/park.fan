@@ -24,20 +24,9 @@ import { Field, NumberInput, TextInput } from '../../_ui/controls';
 import { useToast } from '../../_ui/toast';
 
 /**
- * The ride's profile: what kind of ride it is, and what its layout does.
- *
- * These rows had no write path at all until now. They were edited with
- * hand-written SQL against production, matched on park slug and ride slug
- * together (park slugs are not globally unique), with a `seeded_at = now()`
- * that had to be remembered — and forgetting it meant the correction was
- * written, was correct, and stayed invisible, because that column is what the
- * publish job reads to decide whose caches to drop.
- *
- * Two things about `elements` are not editorial preferences and must survive
- * any redesign of this component. The order is the ride's layout in ride order,
- * so the list is reorderable and never sorted. And repeats are meaningful — a
- * layout that takes the same figure twice says so twice — so adding a term that
- * is already in the list is allowed, not a no-op.
+ * The ride's profile: what kind of ride it is and what its layout does. `elements` is the layout
+ * in ride order, so it is reorderable and never sorted, and a repeated term is meaningful. See
+ * docs/rules/ride-and-glossary-link.md.
  */
 
 interface GlossaryTerm {
@@ -57,6 +46,11 @@ const MEASUREMENTS: Array<{
   { key: 'durationSeconds', label: 'Fahrzeit', unit: 's' },
 ];
 
+/**
+ * Admin panel editing a ride's profile: layout elements in ride order (glossary term ids, repeats
+ * kept, never sorted), ride types, manufacturer, model, opening year, inversions and stats. Saves
+ * with PUT and can delete the profile.
+ */
 export function RideProfileEditor({
   attractionId,
   parkId,
@@ -293,10 +287,8 @@ export function RideProfileEditor({
         )}
 
         {confirmingDelete && (
-          /* The profile is assembled by hand from the park's own page, the
-             manufacturer and a cross-check — layout in ride order, ride types,
-             builder, measurements. Nothing regenerates it and the delete is
-             not undoable, so it takes a second, informed click. */
+          /* Assembled by hand, nothing regenerates it and the delete has no undo, so it takes a
+             second, informed click. */
           <div className="border-destructive/40 bg-destructive/[0.06] mt-3 space-y-3 rounded-lg border p-3">
             <p className="text-sm font-medium">Ride-Profil endgültig löschen?</p>
             <p className="text-muted-foreground text-xs leading-relaxed">
@@ -336,8 +328,6 @@ export function RideProfileEditor({
     </Panel>
   );
 }
-
-// ─── term list ────────────────────────────────────────────────────────────────
 
 function TermList({
   label,

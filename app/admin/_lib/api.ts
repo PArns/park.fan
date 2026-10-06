@@ -1,25 +1,14 @@
 'use client';
 
-import {
-  useMutation,
-  useQuery,
-  useQueryClient,
-  type UseMutationOptions,
-  type UseQueryOptions,
-} from '@tanstack/react-query';
+import { useQuery, useQueryClient, type UseQueryOptions } from '@tanstack/react-query';
 
 /**
- * How the admin talks to everything.
- *
- * One rule and it is the reason this file is short: the browser holds no
- * credential. The session token lives in an httpOnly cookie the browser
- * attaches by itself, so every request here is a plain same-origin fetch with
- * no header to remember and nothing for an injected script to steal. The
- * previous admin passed a shared password from `sessionStorage` into every
- * call, which meant every call site had to remember to, and one that forgot
- * failed with a 401 that looked like an expired login.
+ * How the admin talks to everything. The browser holds no credential: the session lives in an
+ * httpOnly cookie it attaches by itself, so every request is a plain same-origin fetch. See
+ * docs/rules/the-admin-holds-no-credential.md.
  */
 
+/** A non-2xx answer from an admin route, with its status, message and payload. */
 export class AdminApiError extends Error {
   constructor(
     public status: number,
@@ -47,6 +36,10 @@ interface RequestOptions {
   signal?: AbortSignal;
 }
 
+/**
+ * Same-origin fetch for admin API routes: sends `body` as JSON, returns the parsed payload (or
+ * `undefined` on 204) and throws `AdminApiError` with the backend's message on a non-2xx answer.
+ */
 export async function adminFetch<T>(path: string, options: RequestOptions = {}): Promise<T> {
   const response = await fetch(path, {
     method: options.method ?? 'GET',
@@ -78,12 +71,8 @@ function safeParse(text: string): unknown {
 }
 
 /**
- * The most useful sentence in the payload.
- *
- * Nest's ValidationPipe answers with `message` as an array of complaints, one
- * per failing field, and showing `[object Object]` — or only the first of five
- * — is how a form ends up telling somebody "invalid" about a value that is
- * fine while staying silent about the one that is not.
+ * The most useful sentence in the payload. Nest's ValidationPipe sends `message` as an array with
+ * one complaint per failing field, and every one of them is shown.
  */
 function messageFrom(payload: unknown, response: Response): string {
   const record =
@@ -98,15 +87,11 @@ function messageFrom(payload: unknown, response: Response): string {
     return `${response.status} ${response.statusText}`.trim();
   })();
 
-  // A 5xx carries a reference the backend also wrote into its error log next to
-  // the stack. Shown here, a screenshot of a failed save is enough to find what
-  // produced it — which is the whole reason the reference exists, and it was
-  // being dropped one layer short of the person looking at it.
+  // A 5xx carries a reference the backend also logged next to the stack, so a screenshot of a
+  // failed save is enough to find it.
   const reference = record && typeof record.reference === 'string' ? record.reference : null;
   return reference ? `${sentence} (Ref ${reference})` : sentence;
 }
-
-// ─── query helpers ────────────────────────────────────────────────────────────
 
 /** Namespaced so `invalidate('parks')` can drop a whole family at once. */
 export const adminKeys = {
@@ -125,6 +110,10 @@ export const adminKeys = {
   raw: (path: string) => ['admin', 'raw', path] as const,
 };
 
+/**
+ * React Query hook that GETs an admin path through `adminFetch` under the given key. A `null` path
+ * disables the query, but an `enabled` passed in `options` overrides that.
+ */
 export function useAdminQuery<T>(
   key: readonly unknown[],
   path: string | null,
@@ -138,23 +127,9 @@ export function useAdminQuery<T>(
   });
 }
 
-export function useAdminMutation<TResult, TInput = void>(
-  mutation: (input: TInput) => Promise<TResult>,
-  options?: Omit<UseMutationOptions<TResult, AdminApiError, TInput>, 'mutationFn'>
-) {
-  return useMutation<TResult, AdminApiError, TInput>({
-    mutationFn: mutation,
-    ...options,
-  });
-}
-
 /**
- * Drop every cached admin query under a prefix.
- *
- * Curation writes ripple: editing a park's name changes the park detail, the
- * park list, the history and — because the API embeds the park in each ride's
- * payload — every ride under it. Invalidating by prefix is how that stays one
- * line at the call site instead of five keys somebody has to remember.
+ * Drops every cached admin query under a prefix: a curation write ripples (a park's name is
+ * embedded in each of its rides), and one prefix beats five keys at the call site.
  */
 export function useInvalidateAdmin() {
   const client = useQueryClient();

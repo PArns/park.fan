@@ -17,18 +17,9 @@ import {
 } from './primitives';
 
 /**
- * The posts about this park or ride.
- *
- * It is a *result*, not a setting, and the panel says so — the relation is
- * derived from the posts themselves (`ref:` links, widgets, a ride counting for
- * its park), which is how a round-up like the Halloween guide lands on ten park
- * pages without anybody maintaining a list. Changing what appears here means
- * editing the post, or its `parkLinks` / `rideLinks` frontmatter.
- *
- * Worth having in the editor anyway: it closes the triangle. From a park you
- * can reach its rides, its photos and now its coverage; from any of those, back.
- * Before this, the three were three separate tools that happened to share a
- * sidebar.
+ * The posts about this park or ride, a result rather than a setting: the relation is derived from
+ * the posts themselves, so changing it means editing the post or its `parkLinks` / `rideLinks`.
+ * See docs/rules/parkride-page-and-blog-link.md.
  */
 
 interface BacklinkPost {
@@ -41,6 +32,10 @@ interface BacklinkPost {
   isFallback: boolean;
 }
 
+/**
+ * Admin panel listing the blog posts that reference a park or ride, each with links to the blog
+ * editor and the live post. Read-only: the list is derived from the posts, not set here.
+ */
 export function EntityPostsPanel({
   parkSlug,
   rideSlug,
@@ -58,10 +53,8 @@ export function EntityPostsPanel({
   if (geoPath) query.set('geoPath', geoPath);
 
   const backlinks = useAdminQuery<{ total: number; posts: BacklinkPost[] }>(
-    // `geoPath` belongs in the key because it is in the URL, and it is in the
-    // URL because a park slug is not unique: `disneyland-park` is Anaheim and
-    // Paris. Left out, the second park opened reads the first one's cached
-    // answer for ten minutes and lists Anaheim's posts under Paris.
+    // `geoPath` is in the key because it is in the URL, and in the URL because a park slug is not
+    // unique (`disneyland-park` is Anaheim and Paris).
     ['admin', 'backlinks', parkSlug, rideSlug, geoPath],
     parkSlug ? `/api/admin/backlinks?${query.toString()}` : null,
     { staleTime: 10 * 60_000 }

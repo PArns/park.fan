@@ -26,13 +26,15 @@ interface AnnounceFrontmatter {
   subtitle?: string;
 }
 
+/**
+ * Homepage announcement band from `content/home/announce.<locale>.md`: background photo, title,
+ * flip-clock countdown to `countdownTo` and the markdown body. Renders nothing outside the
+ * `startAt`/`endAt` window or without a countdown.
+ */
 export async function AnnounceSection({ locale }: AnnounceSectionProps) {
   const data = getMarkdownContent<AnnounceFrontmatter>(`home/announce.${locale}.md`);
-  const t = await getTranslations('common'); // Or specific namespace if you have one for time labels
+  const t = await getTranslations('common');
 
-  // Fallback labels if not in translations yet, or use direct strings
-  // Better to use translation keys if user asked for "translations in .md file except labels"
-  // User said: "translations kommen in die .md file, ausser die labels für den countdown."
   const labels = {
     days: t('time.days'),
     hours: t('time.hours'),
@@ -52,17 +54,14 @@ export async function AnnounceSection({ locale }: AnnounceSectionProps) {
   if (startAt && new Date(startAt).getTime() > nowMs) return null;
   if (endAt && new Date(endAt).getTime() < nowMs) return null;
 
-  // Strip /public prefix if present
   const cleanBackground = background?.startsWith('/public')
     ? background.replace('/public', '')
     : background;
 
-  // Replace [b] tags with markdown bold syntax
   const processedContent = data.content.replace(/\[b\]/g, '**').replace(/\[\/b\]/g, '**');
 
   return (
     <section className="relative flex min-h-[500px] flex-col justify-center overflow-hidden py-16 md:py-24">
-      {/* Background Image with Overlay */}
       {cleanBackground && (
         <div className="absolute inset-0 z-0">
           <Image
@@ -73,10 +72,8 @@ export async function AnnounceSection({ locale }: AnnounceSectionProps) {
             className="object-cover"
             style={{ objectPosition: objectPositionForSrc(cleanBackground) }}
             sizes="100vw"
-            // Sits below the hero — not the LCP. Keeping it off `priority` stops it
-            // competing with the hero image for bandwidth (the hero's LCP load delay
-            // was ~1.4 s on slow 4G). Lazy-loads as it scrolls into view. Shares the
-            // hero's loader, so it gets the same q50 and the same width clamp.
+            // Below the hero, not the LCP: off `priority` so it does not compete with the hero
+            // image for bandwidth. Shares the hero's loader, so the same quality and width clamp.
           />
           <div className="from-background via-background/90 to-muted/50 absolute inset-0 bg-gradient-to-br" />
           <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />

@@ -29,20 +29,10 @@ interface AuthorRecord {
 const LOCALE_SET = new Set<string>(locales);
 
 /**
- * Load every author file once. Files are named `<key>.md` (the base, in the
- * default locale) plus optional `<key>.<locale>.md` translations. Frontmatter
- * carries the structured fields; the markdown body is the long-form bio.
- *
- * Language-neutral fields (name, url, avatar, links) normally live only in the
- * base file; locale files just translate role/location/bio and the body.
- *
- * Kept for the life of the process in production, where the directory ships with
- * the deployment and nothing writes to it at runtime (the blog editor commits new
- * authors to the repo); React `cache()` alone re-listed, re-read and re-parsed it
- * on every request that names an author, the homepage's founder section among
- * them. In development it stays per request, so an edited author file shows on
- * the next reload — same reasoning as `MEMOISE_PER_PROCESS` in `./categories`.
- * Callers share the result and must not mutate it; none does.
+ * Every author file: `<key>.md` is the base in the default locale, `<key>.<locale>.md` translates
+ * it, and the markdown body is the long-form bio. Kept for the life of the process in production,
+ * where nothing writes the directory at runtime; per request in development, so an edited file
+ * shows on reload. Callers share the result and must not mutate it.
  */
 let REGISTRY: Map<string, AuthorRecord> | undefined;
 

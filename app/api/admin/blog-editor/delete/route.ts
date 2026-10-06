@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
 import { denyUnlessAdmin } from '@/lib/admin/session';
+import { BLOG_LOCALE_RE, BLOG_SLUG_RE } from '@/lib/admin/blog-paths';
+import { adminGithubToken, adminRepo, forkFromBase, MISSING_TOKEN_HINT } from '@/lib/admin/github';
 
 interface DeletePayload {
   /** translationKey of the post being deleted (drives the branch name). */
@@ -11,12 +13,6 @@ interface DeletePayload {
   title?: string;
 }
 
-const REQUIRED_TOKEN_HINT =
-  'Set BLOG_EDITOR_GITHUB_TOKEN (PAT with repo scope) on the deployment to enable saving.';
-
-const SLUG_RE = /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
-const LOCALE_RE = /^[a-z]{2}(-[a-z]{2})?$/i;
-
 /**
  * Deletion mirrors the save flow: nothing touches `main` directly. A branch
  * is forked, every per-locale markdown file is removed in its own commit,
@@ -26,8 +22,8 @@ const LOCALE_RE = /^[a-z]{2}(-[a-z]{2})?$/i;
 export async function POST(req: Request) {
   const unauthorized = await denyUnlessAdmin(req);
   if (unauthorized) return unauthorized;
-  const token = process.env.BLOG_EDITOR_GITHUB_TOKEN ?? process.env.GITHUB_TOKEN;
-  if (!token) return NextResponse.json({ error: REQUIRED_TOKEN_HINT }, { status: 500 });
+  const token = adminGithubToken();
+  if (!token) return NextResponse.json({ error: MISSING_TOKEN_HINT }, { status: 500 });
 
   let payload: DeletePayload;
   try {
@@ -35,46 +31,24 @@ export async function POST(req: Request) {
   } catch {
     return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
   }
-  if (!payload.key || !SLUG_RE.test(payload.key)) {
+  if (!payload.key || !BLOG_SLUG_RE.test(payload.key)) {
     return NextResponse.json({ error: 'Invalid post key' }, { status: 400 });
   }
   const entries = Object.entries(payload.slugs ?? {}).filter(
-    ([locale, slug]) => LOCALE_RE.test(locale) && SLUG_RE.test(slug)
+    ([locale, slug]) => BLOG_LOCALE_RE.test(locale) && BLOG_SLUG_RE.test(slug)
   );
   if (entries.length === 0) {
     return NextResponse.json({ error: 'No locale files to delete' }, { status: 400 });
   }
 
-  const repoEnv = process.env.GITHUB_REPOSITORY ?? 'PArns/park.fan';
-  const [owner = 'PArns', repo = 'park.fan'] = repoEnv.split('/');
-  const baseBranch = process.env.BLOG_EDITOR_BASE_BRANCH ?? 'main';
+  const target = adminRepo();
+  const { owner, repo, baseBranch } = target;
   const octokit = new Octokit({ auth: token });
-
-  let baseSha: string;
-  try {
-    const { data: baseRef } = await octokit.git.getRef({
-      owner,
-      repo,
-      ref: `heads/${baseBranch}`,
-    });
-    baseSha = baseRef.object.sha;
-  } catch (e) {
-    return NextResponse.json(
-      { error: `Could not read base branch ${baseBranch}: ${(e as Error).message}` },
-      { status: 500 }
-    );
-  }
 
   const stamp = new Date().toISOString().slice(0, 10);
   const branch = `blog/delete-${payload.key}-${stamp}`;
-  try {
-    await octokit.git.createRef({ owner, repo, ref: `refs/heads/${branch}`, sha: baseSha });
-  } catch (e) {
-    return NextResponse.json(
-      { error: `Could not create branch ${branch}: ${(e as Error).message}` },
-      { status: 500 }
-    );
-  }
+  const forkError = await forkFromBase(octokit, target, branch);
+  if (forkError) return NextResponse.json({ error: forkError }, { status: 500 });
 
   const removed: string[] = [];
   for (const [locale, slug] of entries) {

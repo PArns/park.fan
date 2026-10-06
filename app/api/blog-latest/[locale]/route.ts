@@ -10,19 +10,10 @@ import { postPath } from '@/lib/blog/paths';
 
 /**
  * The newest blog posts of one locale, for the "new since your last visit" toast
- * (`components/blog/new-posts-watcher.tsx`, logic in `lib/blog/new-posts.ts`).
- *
- * Fetched, not rendered into the layout: the toast shows on a small share of page views, and
- * the RSC payload of every page is paid by every request, the crawler's included. The browser
- * asks for this at most once per ten minutes, after the page is idle.
- *
- * Built from the generated manifest only, so nothing here changes until the next deployment —
- * one static file per locale. News is in it like every other post: the toast announces what
- * arrived, it is not one of the teaser lists that keep news apart.
- *
- * Ten minutes at the edge, not an hour: nothing can purge Cloudflare, and a news post ("from
- * Saturday") is worth announcing mostly in the hours after it goes live. The file is static,
- * so a revalidation costs the origin no function call.
+ * (`components/blog/new-posts-watcher.tsx`). Fetched rather than rendered into the layout, because
+ * every page's RSC payload is paid by every request. Static per deployment and news included,
+ * since the toast announces what arrived. Ten minutes at the edge, because nothing can purge
+ * Cloudflare and news is worth announcing early.
  */
 
 /**

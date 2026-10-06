@@ -4,35 +4,12 @@ import { cn } from '@/lib/utils';
 /**
  * Placeholder for one `<AttractionCard>`, at the height the real card measures.
  *
- * It was a flat `min-h-[420px]` at every width and in every data state, and the real card is
- * never that tall. Measured off rendered cards (`pnpm build && pnpm start`, localhost):
- *
- *   park OPERATING, card has a bottom panel     362 px at 320 · 318 px from 360 up, desk included
- *   park CLOSED, no wait time so no bottom panel 122–180 px on a phone · 328–356 px on a desk
- *
- * So 420 over-reserved by 58 px in the best case and by ~300 in the worst, and it over-reserved in
- * ALL of them — every card that landed pulled the page up by the difference.
- *
- * **324 px is the open-park number, and that is the bet.** Two things vary and neither is known
- * when this renders: whether the ride has a live wait time (the bottom panel, ~196 px, and without
- * it the spacer takes `row-span-2` instead) and whether it has a photo (`sm:min-h-[220px]`, desk
- * only — which is why the closed case is short on a phone and tall on a desk). Betting on the open
- * park is betting on what most visitors are looking at: a park page read during opening hours, and
- * the homepage's longest/shortest-wait cards, which are rides WITH a wait time by definition.
- *
- * It is deliberately one number rather than a `sm:` split, and that is the difference from
- * `ParkCardNearbySkeleton` next door: a park card is a 100 px row on a phone and a 365 px card on a
- * desk, while an attraction card that HAS its bottom panel measures 318 on a phone and 318
- * on a desk. The breakpoint only matters in the state this does not bet on.
- *
- * **`variant` is for the one context where the card is knowably shorter.** The homepage's
- * longest/shortest-wait cards (`components/home/global-stats-section.tsx`) build their
- * `attraction` from a handful of stat fields — no land, no queue history, no trend — so they
- * settle at 197–231 px rather than 318, at BOTH widths. That is not a bet, the call site knows it,
- * so it says so, the way the nearby list passes `withPhoto={false}` where the data settles it.
- *
- * Re-measure before changing either number — `pnpm measure:cls --late`, both states, and read the
- * desktop number in the same run.
+ * 324 px is an open-park card with its bottom panel: whether a ride has a live wait time is not
+ * known when this renders, so it bets on what most readers see. One number rather than a `sm:`
+ * split, because that card is the same height at both widths. `variant="stat"` is for the
+ * homepage stat cards, which carry no land, history or trend and are knowably shorter.
+ * Re-measure with `pnpm measure:cls --late` before changing either number.
+ * See docs/rules/a-streamed-section-owes-the-page-its-height.md.
  */
 export function AttractionCardSkeleton({
   variant = 'full',
@@ -40,9 +17,8 @@ export function AttractionCardSkeleton({
 }: {
   variant?: 'full' | 'stat';
   /**
-   * Stands in for an `AttractionCard` with `phoneRow`: below `sm` it is that card's 72 px row
-   * (10 px padding, a 26 px first line, 6 px, a 22 px badge line, 8 px padding) and draws no
-   * bottom panel. From `sm` up nothing changes.
+   * Stands in for an `AttractionCard` with `phoneRow`: below `sm` it is that card's 72 px row and
+   * draws no bottom panel. From `sm` up nothing changes.
    */
   phoneRow?: boolean;
 }) {
@@ -56,17 +32,14 @@ export function AttractionCardSkeleton({
       )}
       style={{ boxShadow: 'var(--pk-card-shadow)' }}
     >
-      {/* Background */}
       <div className="absolute inset-0 z-0">
         <Skeleton className="h-full w-full" />
       </div>
 
-      {/* Favorite */}
       <div className="absolute top-3 right-3 z-[4]">
         <Skeleton className="h-[34px] w-[34px] rounded-full" />
       </div>
 
-      {/* Top glass panel */}
       <div
         className="relative z-[3] shrink-0 overflow-hidden"
         style={{
@@ -84,10 +57,8 @@ export function AttractionCardSkeleton({
         </div>
       </div>
 
-      {/* Spacer */}
       <div className={cn('relative z-[2] flex-1', phoneRow && 'max-sm:hidden')} />
 
-      {/* Bottom glass panel */}
       <div
         className={cn('relative z-[3] shrink-0 overflow-hidden', phoneRow && 'max-sm:hidden')}
         style={{

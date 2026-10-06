@@ -21,6 +21,10 @@ interface AttractionFAQSectionProps {
   park: ParkWithAttractions;
 }
 
+/**
+ * FAQ chapter on a ride page: questions built by `buildAttractionFaqItems`, answers with glossary
+ * terms linked. Renders nothing when there are no questions.
+ */
 export async function AttractionFAQSection({ attraction, park }: AttractionFAQSectionProps) {
   const t = await getTranslations('seo.faq.attraction');
   const locale = await getLocale();

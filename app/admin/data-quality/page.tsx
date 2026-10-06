@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
 import { useAdminQuery } from '../_lib/api';
-import { Section } from '../_lib/ui';
+import { formatDay, Section } from '../_lib/ui';
 import { AdminPage, Chip, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
 import { Select } from '../_ui/controls';
 import {
@@ -24,13 +24,9 @@ import {
 } from './season-actions';
 
 /**
- * What the backend already noticed and nobody could see.
- *
- * Three detectors were built, tested and left without a screen — a silenced
- * feed, a job that keeps dying, a glossary id a ride profile still points at.
- * All three describe the same kind of problem: something that is wrong now, is
- * not wrong enough to throw, and will stay wrong until a person looks. The
- * whole point of this page is to be the place that person looks.
+ * What the backend's detectors noticed (a silenced feed, a job that keeps dying, a glossary id a
+ * ride profile still points at): wrong now, not wrong enough to throw, and wrong until a person
+ * looks here.
  */
 
 interface FailingJob {
@@ -45,7 +41,7 @@ interface DataQuality {
   windowDays: number;
   silencedClusters: SilencedCluster[];
   failingJobs: FailingJob[];
-  /** Absent until the API with PAR-684 is deployed. */
+  /** Absent from an API that does not send it yet. */
   absenceRetiredUnreviewed?: AbsenceRetiredUnreviewed[];
 }
 
@@ -69,13 +65,6 @@ const WINDOWS = [
   { value: '30', label: '30 Tage' },
   { value: '90', label: '90 Tage' },
 ];
-
-function day(value: string | null): string {
-  if (!value) return '—';
-  const parsed = new Date(value);
-  if (Number.isNaN(parsed.getTime())) return value;
-  return parsed.toLocaleDateString('de-DE', { day: '2-digit', month: 'short', year: 'numeric' });
-}
 
 export default function DataQualityPage() {
   const [windowDays, setWindowDays] = useState('14');
@@ -134,7 +123,7 @@ export default function DataQualityPage() {
               <SilencedClusterCard
                 key={`${cluster.parkId}:${cluster.lastOperating}`}
                 cluster={cluster}
-                lastOperatingLabel={day(cluster.lastOperating)}
+                lastOperatingLabel={formatDay(cluster.lastOperating)}
               />
             ))}
           </div>
@@ -161,7 +150,7 @@ export default function DataQualityPage() {
         ) : (
           <div className="space-y-2">
             {[...unreviewedByPark.values()].map((rows) => (
-              <UnreviewedParkCard key={rows[0].parkId} rows={rows} dayLabel={day} />
+              <UnreviewedParkCard key={rows[0].parkId} rows={rows} />
             ))}
           </div>
         )}
@@ -193,7 +182,7 @@ export default function DataQualityPage() {
                   <span className="text-sm font-medium">{job.jobName}</span>
                   <Chip tone="danger">{job.failures}×</Chip>
                   <span className="text-muted-foreground ml-auto text-xs">
-                    {day(job.lastFailedAt)}
+                    {formatDay(job.lastFailedAt)}
                   </span>
                   <Link
                     href="/admin/queues"

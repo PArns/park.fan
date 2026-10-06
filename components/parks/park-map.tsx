@@ -6,6 +6,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import type L from 'leaflet';
 import type { ParkWithAttractions, ParkAttraction, ParkShow } from '@/lib/api/types';
 import { formatDistance } from '@/lib/utils/distance-utils';
+import { getStandbyWait } from '@/lib/utils/park-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { useParkMapGeolocation } from '@/lib/hooks/use-park-map-geolocation';
@@ -20,8 +21,6 @@ import {
 } from '@/components/parks/park-map-markers';
 import 'leaflet/dist/leaflet.css';
 
-// MapBoundsUpdater removed to prevent zoom reset loop
-
 interface ZoomTrackerProps {
   onUserZoom: () => void;
 }
@@ -30,9 +29,9 @@ interface ZoomTrackerProps {
 const programmaticZoom = new WeakSet<L.Map>();
 
 /**
- * Reports a zoom the VISITOR made. Leaflet fires `zoomstart`/`zoomend` for `setView` as well, so
- * the controller's own 17 → 19 step for an in-park visitor or a `#map-show-*` link used to count
- * as the visitor taking control, and the map stopped following their position from then on.
+ * Reports a zoom the visitor made. Leaflet fires `zoomstart`/`zoomend` for `setView` too, so a zoom
+ * the controller started (`programmaticZoom`) must not count as the visitor taking control, or the
+ * map would stop following them.
  */
 function ZoomTracker({ onUserZoom }: ZoomTrackerProps) {
   const map = useMap();
@@ -79,7 +78,6 @@ function MapViewController({ center, zoom, userHasZoomed }: MapViewControllerPro
       if (map.getZoom() !== zoom) programmaticZoom.add(map);
     };
 
-    // Initial view set
     if (!hasSetInitialView.current) {
       markIfZooming();
       map.setView(center, zoom, { animate: false });
@@ -87,7 +85,6 @@ function MapViewController({ center, zoom, userHasZoomed }: MapViewControllerPro
       return;
     }
 
-    // Reactive updates - ONLY if user hasn't taken control
     if (!userHasZoomed) {
       markIfZooming();
       map.setView(center, zoom, { animate: true, duration: 1.5 });
@@ -95,12 +92,6 @@ function MapViewController({ center, zoom, userHasZoomed }: MapViewControllerPro
   }, [map, center, zoom, userHasZoomed]);
 
   return null;
-}
-
-// Helper function to get wait time for an attraction
-function getWaitTime(attraction: ParkAttraction): number | null {
-  const standbyQueue = attraction.queues?.find((q) => q.queueType === 'STANDBY');
-  return standbyQueue?.waitTime ?? null;
 }
 
 // Returns the next show time as a relative string (e.g. "45 min"), used in the in-park panel
@@ -125,7 +116,7 @@ interface ParkMapProps {
   focusShowSlug?: string | null;
   /**
    * Where the park lives, for the ride figures in the popups. The blog's map widget has no geo
-   * path and leaves them out: its popups then carry no figures, as before.
+   * path, so its popups carry no figures.
    */
   continent?: string;
   country?: string;
@@ -133,6 +124,11 @@ interface ParkMapProps {
   parkSlug?: string;
 }
 
+/**
+ * Leaflet map of a park (CARTO tiles) with markers for in-season rides, shows and restaurants, the
+ * visitor's position and, when located, a panel of what is nearby. Used by the map tab and the
+ * blog's map widget.
+ */
 export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlug }: ParkMapProps) {
   const t = useTranslations('parks.mapMarkers');
   // Mounted only while the map tab is the one on screen, so this is the fetch that "opens with the
@@ -142,8 +138,8 @@ export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlu
   const [userHasZoomed, setUserHasZoomed] = useState(false);
   // Stable, so `ZoomTracker` does not re-bind its two map listeners on every render.
   const markUserZoom = useCallback(() => setUserHasZoomed(true), []);
-  // Shared once-per-minute clock (paused in hidden tabs) re-renders the relative
-  // time labels in the popups — replaces a private always-on 60 s interval.
+  // Shared once-per-minute clock (paused in hidden tabs) for the relative time labels in the
+  // popups.
   useMinuteNow();
 
   const validAttractions = useMemo(
@@ -180,10 +176,9 @@ export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlu
     validRestaurants
   );
 
-  // Fallback center (use user location if in park, otherwise park center). Memoized on the
-  // primitive coords so its identity is stable across the once-per-minute `useMinuteNow` tick —
-  // otherwise a fresh array each render re-triggers MapViewController's setView effect and the
-  // map visibly re-pans (animate: true) every 60 s even though nothing moved.
+  // Fallback centre: the visitor's position in the park, else the park. Memoised on the primitive
+  // coordinates, so the minute tick does not hand MapViewController a new array that re-pans the
+  // map.
   const center: L.LatLngExpression = useMemo(
     () =>
       // A named show wins over the visitor's own position: they asked for THIS show, and being
@@ -195,9 +190,8 @@ export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlu
           : park.latitude != null && park.longitude != null
             ? [park.latitude, park.longitude]
             : [51.505, -0.09], // London as fallback
-    // Depend on the primitive coords, not the `userLocation` object identity: a new object with
-    // unchanged lat/lng must NOT recompute `center` (that's exactly what caused the every-minute
-    // re-pan). `userLocation?.lat` flipping to/from undefined already covers null↔fix transitions.
+    // Depend on the primitive coords, not the `userLocation` object: a new object with the same
+    // lat/lng must not recompute `center`.
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       focusedShow?.latitude,
@@ -245,7 +239,7 @@ export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlu
           userHasZoomed={userHasZoomed}
         />
 
-        {/* User location marker - rendered FIRST to be topmost in Leaflet */}
+        {/* Rendered first to be topmost in Leaflet. */}
         {userLocation && (
           <Marker
             position={[userLocation.lat, userLocation.lng]}
@@ -258,7 +252,6 @@ export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlu
           </Marker>
         )}
 
-        {/* Park center marker */}
         {park.latitude != null && park.longitude != null && (
           <Marker position={[park.latitude, park.longitude]} icon={parkIcon}>
             <Popup>
@@ -273,7 +266,6 @@ export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlu
         <RestaurantMarkers restaurants={validRestaurants} />
       </MapContainer>
 
-      {/* Location Info Panel */}
       {userLocation && (
         <div className="bg-background/95 absolute bottom-4 left-4 z-[1000] w-auto min-w-[320px] rounded-lg border p-4 shadow-lg backdrop-blur-sm">
           {isInPark ? (
@@ -286,7 +278,7 @@ export function ParkMap({ park, focusShowSlug, continent, country, city, parkSlu
                 {nearbyEntities.map((entity) => {
                   const waitTime =
                     entity.type === 'attraction'
-                      ? getWaitTime(entity.data as ParkAttraction)
+                      ? getStandbyWait(entity.data as ParkAttraction)
                       : null;
                   const nextShow =
                     entity.type === 'show' ? getNextShowTime(entity.data as ParkShow) : null;

@@ -13,26 +13,13 @@ interface ParkQuickLinksProps {
 }
 
 /**
- * The park's own website, ticket shop and Wikipedia entry — a row of links directly under the
- * intro in the page header.
+ * The park's own website, ticket shop and Wikipedia entry, as a row of links under the intro in the
+ * page header. Each leads with its own icon so the row reads before its labels; the trailing
+ * `ExternalLink` mark is dimmed so it does not compete.
  *
- * These used to be the bottom row of `ParkInfoCard`, a titled section far down the page. For most
- * parks that section is *only* these links (Phantasialand curates nothing else), so it was a
- * heading, a frame and a rule wrapped around two buttons — and the two buttons are the reason
- * somebody scrolled to it. Up here they cost no chapter of its own. `ParkInfoCard` keeps the rest
- * (address, phone, opened year, area) and now renders nothing at all for a park that had only
- * these, which is the point.
- *
- * Each link leads with its own icon rather than the shared external-link glyph: at a glance the
- * row is "world, ticket, book", which is readable before the labels are. The `ExternalLink` mark
- * stays as the trailing hint that the link leaves the site, at reduced opacity so it does not
- * compete with the leading icon.
- *
- * Below `sm` the three labelled links are icon squares of the same 36 px as the socials, so all six
- * sit in one row. With labels they took two rows on a 390 px phone and, together with the planner
- * button, 134 px of the header before the first live figure. The label stays in the DOM as
- * `sr-only` text, so the accessible name and the crawled anchor text do not change, and `title`
- * gives it back to a pointer.
+ * Below `sm` the labelled links are 36 px icon squares like the socials, so all six fit one row.
+ * The label stays as `sr-only` text, so the accessible name and the crawled anchor text do not
+ * change, and `title` gives it back to a pointer.
  */
 export async function ParkQuickLinks({ info, className }: ParkQuickLinksProps) {
   const t = await getTranslations('parks.info');

@@ -57,7 +57,6 @@ export function SaveBar({ onSave, disabled, disabledReason }: SaveBarProps) {
 
   return (
     <div className="sticky bottom-4 z-10 mt-8">
-      {/* Soft gradient glow behind the bar so it lifts off the page edge. */}
       <div
         aria-hidden
         className="from-primary/15 via-primary/5 to-primary/15 pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-r opacity-80 blur-md"

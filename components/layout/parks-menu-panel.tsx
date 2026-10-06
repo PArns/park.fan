@@ -40,24 +40,12 @@ import type { ParkStatus } from '@/lib/api/types';
  *     all 28 links in the HTML          fixed set              fetched on hover
  * ```
  *
- * Going full width removed machinery rather than adding it. The narrow version had a continent
- * rail and swapped one country list in for another, so four of the five were `display:none` at any
- * moment and the panel needed an `activeContinent`. At the container's width all 28 links fit side
- * by side: nothing to switch, nothing hidden.
- *
- * Three kinds of content, and the difference matters:
- *
- * - **Continents and countries** are server-rendered into every page — 28 hub links worth
- *   concentrating sitewide weight on.
- * - **The photo rail** is a fixed four, resolved server-side. Not a thumbnail per park: the media
- *   database holds a picture for 14 of 212 parks, so a photo on every row would be nine pictures
- *   and two hundred empty boxes. See `lib/navigation/featured-parks-menu.ts`.
- * - **Cities and their parks** are fetched when a country opens. 144 cities and 212 parks in the
- *   header template would put 356 more targets into the link graph of ~35,000 pages, for pages the
- *   country hubs and the sitemap already reach.
- *
- * The detail row holds its height whether or not a country is open — it fills in under the pointer
- * as the fetch lands, and a band that resized while somebody was reading it would be worse.
+ * Three kinds of content: continents and countries are server-rendered into every page (28 hub
+ * links); the photo rail is a fixed set resolved server-side, since few parks have a photo (see
+ * `lib/navigation/featured-parks-menu.ts`); cities and parks are fetched when a country opens,
+ * because the country hubs and the sitemap already reach them. See
+ * docs/rules/the-header-menu-is-three-kinds-of-content-and-the-split-is.md. The detail row holds
+ * its height whether or not a country is open, so the band never resizes under the reader.
  */
 
 /** Cities in the detail row: one per column, five columns wide. */
@@ -97,15 +85,9 @@ export const ParksMenuPanel = memo(function ParksMenuPanel({
   featured,
 }: ParksMenuPanelProps) {
   /*
-   * Die Parks in Reichweite, im selben Streifen wie die kuratierten.
-   *
-   * Kostenlos: der Header ruft `useHomeNearbyParks()` ohnehin für die „In der Nähe"-Pille, das
-   * Panel hängt sich an dieselbe Query. Und die Daten tragen bereits alles, was der Streifen
-   * zeigen soll — Entfernung, Status, Ø-Wartezeit, offene Attraktionen und ein server-seitig
-   * aufgelöstes `backgroundImage`; nichts davon muss nachgeholt werden.
-   *
-   * Wo nichts in der Nähe ist — kein Standort freigegeben, oder wirklich nichts in Reichweite —
-   * bleibt es bei den kuratierten Parks. Ein leerer Streifen wäre schlechter als ein Vorschlag.
+   * Nearby parks, in the same rail as the curated ones, from the query the header already makes for
+   * the nearby pill; the data carries everything the rail shows. With nothing nearby the curated
+   * parks stay, since an empty rail would be worse than a suggestion.
    */
   const tCommon = useTranslations('common');
   const minuteLabel = tCommon('minuteShort');
@@ -113,15 +95,9 @@ export const ParksMenuPanel = memo(function ParksMenuPanel({
   const nearbyParks =
     nearbyData?.type === 'nearby_parks' ? (nearbyData.data as NearbyParksData).parks : [];
   /*
-   * Erst nach dem Mount umschalten, und das ist kein Feinschliff.
-   *
-   * `useHomeNearbyParks` seedet seine Query aus `localStorage` (`placeholderData`/`initialData`,
-   * siehe den Hook). Auf dem Server gibt es die nicht, im ERSTEN Client-Render schon — das Panel
-   * hätte also serverseitig die kuratierten Parks gerendert und im ersten Client-Render die Parks
-   * in Reichweite. Zwei verschiedene Bäume an derselben Stelle sind ein Hydration-Fehler, und
-   * React wirft daraufhin den Teilbaum weg und rendert ihn neu. Weil dieses Panel im Header
-   * steckt, hieße das: auf JEDER Seite, mitsamt der GSAP-Transforms, die der Header-Reveal auf
-   * die Leiste gelegt hat — von außen sieht das aus wie „nach dem Scrollen fehlen Elemente".
+   * Switch only after mount: `useHomeNearbyParks` seeds from `localStorage`, so the server and the
+   * first client render would draw different trees, and React would throw the subtree away on
+   * every page.
    */
   const mounted = useMounted();
   const showNearby = mounted && nearbyParks.length > 0;
@@ -147,12 +123,9 @@ export const ParksMenuPanel = memo(function ParksMenuPanel({
     if (requested.current.has(countryKey)) return;
     requested.current.add(countryKey);
 
-    // NOT cancelled when the pointer moves on. The response is a cache write keyed by country, so
-    // it is the right answer whatever is hovered by the time it lands — and discarding it while
-    // leaving the key in `requested` is what made countries stop loading altogether: skim past one
-    // and its result was thrown away, the guard above then refused to ask again, and the row sat
-    // on its skeleton for the rest of the session. Every country you pass on the way down to the
-    // detail row is one you skim past, so it happened constantly.
+    // Not cancelled when the pointer moves on: the response is a cache write keyed by country and
+    // right whenever it lands. Discarding it while the key stays in `requested` would leave every
+    // country skimmed past on its skeleton for the session.
     fetch(`/api/nav/geo/${countryKey}`)
       .then((r) => {
         if (!r.ok) throw new Error(`nav geo ${r.status}`);
@@ -169,16 +142,9 @@ export const ParksMenuPanel = memo(function ParksMenuPanel({
   }, [countryKey]);
 
   /*
-   * Hover has to be *rested* on, not merely crossed.
-   *
-   * The detail row sits under the country columns, so the way to it from any country leads over
-   * the countries below it. Switching on `pointerenter` meant that trip rewrote the row two or
-   * three times before the pointer arrived, and it landed on whichever country happened to be last
-   * — the row was effectively unreachable for the country you actually wanted.
-   *
-   * So entering a row only *arms* the switch, and leaving before the dwell is up disarms it. Rest
-   * on a country and it commits; cross it on the way somewhere else and it never fires. Focus is
-   * exempt: a keyboard user lands on exactly the country they meant.
+   * Hover has to be rested on, not crossed: the way to the detail row leads over the countries
+   * below, so entering a row only arms the switch and leaving before the dwell disarms it. Focus
+   * commits at once, since a keyboard user lands on the country they meant.
    */
   const dwellRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const disarm = () => {
@@ -207,14 +173,9 @@ export const ParksMenuPanel = memo(function ParksMenuPanel({
 
   return (
     <div>
-      {/* Container queries, not `lg:`/`xl:`, and for the reason `components/layout/header.tsx`
-          gives for its own four switches: the trip planner's panel insets the bar without the
-          window moving, so a media query here lays out against room this panel does not have.
-          Measured at a 1600 px window with the panel open: the header is 1152, this band's
-          content column 992 — and `xl:` still read 1600, so the 320 px rail drew, the five
-          continent columns split the remaining 648 into 110.4 px each, and 5 of the 23 country
-          labels were cut (narrowest label box 64 px). The thresholds are the old numbers, so
-          with the planner shut, where the header spans the window, nothing moves. */}
+      {/* Container queries, not `lg:`/`xl:`, for the reason the header gives for its own switches:
+          the trip planner insets the bar without the window moving. The thresholds are the old
+          numbers, so with the planner shut nothing moves. */}
       <div className="flex flex-col gap-5 @min-[1280px]:flex-row @min-[1280px]:gap-6">
         {/* Level 1 + 2 — every continent and every country, all of it in the first HTML. */}
         <div className="grid min-w-0 flex-1 grid-cols-3 gap-x-6 gap-y-5 @min-[1024px]:grid-cols-5">
@@ -327,12 +288,8 @@ export const ParksMenuPanel = memo(function ParksMenuPanel({
         className="border-border/60 mt-5 min-h-[7.5rem] border-t pt-4"
       >
         {activeCountry == null ? (
-          /* The resting state of the detail row, which is what the band shows
-             for as long as nobody has rested on a country — one line of grey
-             text in a 120 px band. The planner's call to action goes here: this
-             is the moment somebody is choosing where to go, and the row is
-             otherwise empty. It disappears the instant a country opens, so it
-             costs the cities nothing. */
+          /* The detail row's resting state. The planner's call to action goes here, the moment
+             somebody is choosing where to go; it disappears as soon as a country opens. */
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-muted-foreground/70 text-xs">{t('exploreByRegion')}</p>
             <Link
@@ -397,9 +354,8 @@ export const ParksMenuPanel = memo(function ParksMenuPanel({
                             prefetch={false}
                             className="text-muted-foreground hover:text-foreground hover:bg-muted/60 group -mx-2 flex items-center gap-2 rounded-md px-2 py-0.5 text-sm transition-colors"
                           >
-                            {/* Kein reservierter Kasten: die Mediendatenbank hat für 14 von 212
-                                Parks ein Bild, ein Platzhalter je Zeile wäre in dieser Liste fast
-                                überall eine leere Kachel. Wo eines ist, trägt es die Zeile. */}
+                            {/* No reserved box: few parks have an image, so a placeholder per row
+                                would be an empty tile almost everywhere. */}
                             {park.image && (
                               <span className="bg-muted relative block h-6 w-6 shrink-0 overflow-hidden rounded">
                                 <Image

@@ -8,28 +8,12 @@ import {
 } from '@/lib/agents/licensing';
 
 /**
- * robots.txt, written by hand rather than through `MetadataRoute.Robots`.
+ * robots.txt, written by hand because `MetadataRoute.Robots` cannot emit the `Content-Signal`
+ * line (draft-romm-aipref-contentsignals) or the `Agentmap` directive.
  *
- * Next's robots generator emits `User-agent`, `Allow`, `Disallow`, `Sitemap` and nothing else,
- * and two of the three things this file now has to say are not in that set: the
- * `Content-Signal` line (contentsignals.org, draft-romm-aipref-contentsignals) and the
- * `Agentmap` directive that points at the capability manifest. A route handler is the whole
- * format, so the file can carry them without a second file contradicting the first.
- *
- * The policy has three tiers and they are not the same question:
- *
- *   search      — may a crawler put park.fan in a result list? Yes, that is the point.
- *   ai-input    — may an assistant read a page to answer someone asking about a park?
- *                 Yes. A wait time is worth knowing at the moment somebody asks, and an
- *                 assistant that can read the page is a visitor who does not have to.
- *   ai-train    — may the pages become weights? No. The numbers on this site are hours old
- *                 by lunchtime; a model that memorised them would be wrong and confident,
- *                 and the site gets nothing back.
- *
- * The per-bot blocks below are the same three answers again, expressed the way each operator
- * reads them: crawlers that exist to collect a training corpus are disallowed, crawlers that
- * fetch a page because a person is waiting for an answer are allowed. Blocking the second
- * group would contradict every other machine-readable file this repo serves.
+ * Search: yes. ai-input: yes, an assistant reading a page answers somebody asking about a park.
+ * ai-train: no, the numbers are hours old by lunchtime and a model that memorised them would be
+ * confidently wrong. The per-bot blocks repeat these answers in the form each operator reads.
  */
 export const dynamic = 'force-static';
 
@@ -92,7 +76,6 @@ export function GET(): Response {
     [
       // The policy the signals below belong to, ahead of the first directive that uses one.
       CONTENT_SIGNALS_PREAMBLE,
-      // One line, read by any crawler that has no block of its own.
       block(['*'], [CONTENT_SIGNAL, ...CRAWLABLE_RULES]),
       block(ANSWER_CRAWLERS, [CONTENT_SIGNAL, ...CRAWLABLE_RULES]),
       block(TRAINING_CRAWLERS, [CONTENT_SIGNAL_TRAINING_ONLY, 'Disallow: /']),

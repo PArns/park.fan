@@ -15,6 +15,10 @@ interface BlogGalleryProps {
   heading?: string;
 }
 
+/**
+ * Masonry photo gallery for a blog post, with a lightbox dialog that steps through the images by
+ * button or arrow key.
+ */
 export function BlogGallery({ images, className, heading }: BlogGalleryProps) {
   const t = useTranslations('blog');
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -48,12 +52,8 @@ export function BlogGallery({ images, className, heading }: BlogGalleryProps) {
       <h2 className="text-foreground mb-4 text-lg font-semibold">
         {heading ?? t('gallery.title')}
       </h2>
-      {/* Three columns is a statement about room, so it asks `@container/page`
-          (app/[locale]/layout.tsx) rather than the window the trip planner no longer
-          speaks for. The `sizes` below cannot follow — there is no container form of a
-          `sizes` media condition — but it errs the safe way: the container query drops
-          to two columns exactly where the old one kept three in a narrowed page, so the
-          candidate the browser picks is now too large rather than too small. */}
+      {/* Three columns is a statement about room, so it asks `@container/page`. `sizes` has no
+          container form, but it errs the safe way: the picked candidate can only be too large. */}
       <div
         className={cn(
           '[column-gap:0.75rem]',

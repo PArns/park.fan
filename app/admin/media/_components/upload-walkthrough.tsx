@@ -18,22 +18,9 @@ import { Chip, Field, Section } from './panel-ui';
 import { RideCardToggle } from './ride-card-toggle';
 
 /**
- * Photos, one at a time, in the order they were dropped.
- *
- * A batch of thirty used to arrive as thirty rows of a table, which reads as
- * bookkeeping and gets treated like it: park and ride are filled in because the
- * form asks, and the fields that need someone to actually LOOK at the picture —
- * the focal point, the alt text, whether it is a night shot — are left for a
- * later pass that never happens. The photo itself was an 80 px thumbnail.
- *
- * So the batch becomes a queue. One photo, large enough to judge, with the EXIF
- * findings next to it and the ride shortlist as buttons rather than a slug field.
- * The focal point is set by clicking the picture — this is the one moment every
- * photo in the batch is guaranteed to be in front of somebody, and doing it here
- * costs a click instead of a later trip through the browser.
- *
- * Nothing is written until the whole queue has been walked; the review step is
- * what commits. Skipping is a decision the queue records, not a way out of it.
+ * A batch upload as a queue of single photos, because a table of rows gets filled in as
+ * bookkeeping and the fields that need somebody to look at the picture are skipped. Nothing is
+ * written until the whole queue has been walked.
  */
 
 /** One look for every field in the admin — see `FIELD_CLASS`. */
@@ -55,6 +42,10 @@ interface Props {
   onPickRide: () => void;
 }
 
+/**
+ * One photo of the batch: large enough to judge, its EXIF findings, the ride shortlist as buttons,
+ * and the focal point set by clicking the picture.
+ */
 export function UploadWalkthrough({
   index,
   file,
@@ -184,9 +175,8 @@ export function UploadWalkthrough({
         </div>
 
         <div className="min-h-0 space-y-3 lg:overflow-y-auto lg:pr-1">
-          {/* The ride shortlist is the whole point of the EXIF pass: the nearest
-              attraction is right about half the time, but the right one is in the
-              top eight in 95 % of cases. Buttons, not a slug field. */}
+          {/* Buttons, not a slug field: the nearest ride is right only about half the time, but
+              the right one is nearly always in the shortlist. */}
           <Section
             title="Which ride?"
             hint={
@@ -354,8 +344,7 @@ export function UploadWalkthrough({
                 onChange={(e) => onChange({ alt: e.target.value })}
               />
             </Field>
-            {/* The commit has always written a caption; this is where it can be
-                seen. A visitor's submission arrives with theirs filled in. */}
+            {/* A visitor's submission arrives with its caption filled in. */}
             <Field label="Caption (German)">
               <textarea
                 className={cn(INPUT, 'min-h-[52px] resize-y')}

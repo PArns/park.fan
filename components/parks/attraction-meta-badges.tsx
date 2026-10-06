@@ -16,15 +16,9 @@ interface AttractionMetaBadgesProps {
  * you get wet. All fields are nullable — rides without metadata render nothing.
  * Server-component compatible.
  *
- * The heights render in the visitor's unit system (the site-wide C/F choice),
- * which is why the label and the value are separate: the unit used to live
- * inside the translated string, and "Ab {cm} cm" cannot become inches. Every
- * locale puts the label in front, so a prefix plus a value is enough — no rich
- * text needed.
- *
- * The RCDB link used to live here too; it moved to {@link RcdbBadge} because it
- * is an outbound reference, not a restriction, and on the ride page it belongs
- * after the ride's facts rather than among the height limits.
+ * The heights render in the visitor's unit system (the site-wide C/F choice), so
+ * the label and the value are separate: "Ab {cm} cm" cannot become inches. Every
+ * locale puts the label in front, so a prefix plus a value is enough.
  */
 export function AttractionMetaBadges({
   minimumHeight,

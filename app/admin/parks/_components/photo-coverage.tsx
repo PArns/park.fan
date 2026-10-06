@@ -8,12 +8,8 @@ import { Panel, PanelBody, PanelHeader, Chip, LoadingState } from '../../_ui/pri
 import type { AdminAttractionListItem } from '../../_lib/types';
 
 /**
- * The rides in this park that have no picture.
- *
- * The Bilder tab could always answer this one ride at a time, which is the
- * same as not answering it: nobody opens forty tabs to find out where to spend
- * an afternoon with a camera. The lookup runs against the media index in one
- * request and costs no API call — the ride list is already on screen.
+ * The rides in this park that have no picture, looked up in the media index in one request; the
+ * ride list is already on screen, so it costs no API call.
  */
 export function PhotoCoverage({
   parkSlug,
@@ -23,11 +19,8 @@ export function PhotoCoverage({
   attractions: AdminAttractionListItem[];
 }) {
   const rideSlugs = attractions.map((attraction) => attraction.slug);
-  // The key has to identify the request body, and the body is the slug list.
-  // Keyed on its *length*, a different set of the same size — a retired ride
-  // toggled in, a rename, a refetch — read the previous answer for the whole
-  // five-minute window, so the panel named rides as missing a photo that had
-  // one, and the other way round.
+  // Keyed on the whole slug list, the request body: a different set of the same length must not
+  // read the previous answer.
   const rideKey = rideSlugs.join(',');
 
   // `useQuery` rather than `useAdminQuery`: the lookup is a POST because the

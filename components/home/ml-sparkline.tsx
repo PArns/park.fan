@@ -16,9 +16,8 @@ interface Props {
 }
 
 /**
- * ML model-metric trend. Reuses the shared parks/rides <Sparkline> for consistency (and
- * to drop the ~100 KB recharts bundle this used to pull onto the homepage). Metrics vary
- * little in absolute terms (e.g. r² ≈ 0.9), so it opts into the `fit` y-domain.
+ * ML model-metric trend on the shared parks/rides <Sparkline>. Metrics vary little in absolute
+ * terms (r² ≈ 0.9), so it opts into the `fit` y-domain.
  */
 export function MLSparkline({ history, metric, height = 140, unit, decimals = 1 }: Props) {
   const points: SparklinePoint[] = history

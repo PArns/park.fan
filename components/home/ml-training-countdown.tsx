@@ -44,21 +44,22 @@ function NumUnit({ n, u }: { n: string; u: string }) {
   );
 }
 
+/**
+ * Card with the model's age and a live countdown to the next daily retraining at 06:00 UTC, shown
+ * in the visitor's local time. Ticks only while the card is on screen.
+ */
 export function MLTrainingCountdown({ modelAge }: Props) {
   const t = useTranslations('home');
 
   const [remaining, setRemaining] = useState<number | null>(null);
   const [localTime, setLocalTime] = useState<string | null>(null);
-  // Only tick while the card is actually watchable: it sits below the fold, so
-  // the old unconditional 1s interval re-rendered it every second for the whole
-  // visit — scrolled away and in background tabs included.
+  // Only tick while the card is watchable: it sits below the fold.
   const { ref: cardRef, active } = useActiveOnScreen();
 
   useEffect(() => {
     if (!active) return;
-    // Capture `next` once; recompute only when it rolls over (once per day).
-    // setLocalTime is called every tick but React 18 bails out when the string
-    // is unchanged, so there's no extra re-render cost.
+    // Recompute `next` only when it rolls over, once a day. An unchanged string is a React
+    // bail-out, so setting it every tick costs no re-render.
     let next = getNextTrainingUTC();
 
     const tick = () => {
@@ -92,7 +93,6 @@ export function MLTrainingCountdown({ modelAge }: Props) {
           {t('ai.nextRetraining')}
         </p>
         <div className="grid grid-cols-2 gap-4">
-          {/* Model age */}
           <div>
             <div className="text-muted-foreground mb-0.5 text-xs">{t('ai.modelAgeTile')}</div>
             <div className="flex items-baseline tabular-nums">
@@ -110,17 +110,11 @@ export function MLTrainingCountdown({ modelAge }: Props) {
             </div>
           </div>
 
-          {/* Countdown */}
           <div>
             <div className="text-muted-foreground mb-0.5 text-xs">{t('ai.nextTrainingIn')}</div>
             {digits ? (
-              // `contain: paint` on the one row that changes every second.
-              //
-              // The seconds digit ticks inside a `Card`, and this project's Card is glass by
-              // default (`bg-background/60 backdrop-blur-md`). A backdrop filter has to re-read
-              // what is behind it whenever anything in its subtree paints, so without containment
-              // this tick invalidated the whole card's backdrop sixty times a minute — a dropped
-              // frame then shows the card unblurred for that frame. Same fix, same reason, as
+              // `contain: paint` on the one row that changes every second: the Card is glass, and
+              // without containment each tick dirties its whole backdrop. Same fix as
               // `NowcastUpdateCountdown`.
               <div className="flex items-baseline tabular-nums [contain:paint]">
                 <NumUnit n={digits.h} u="h" />

@@ -1,16 +1,7 @@
 /**
- * Reading one cookie out of a `Cookie` header.
- *
- * Its own module, with no `server-only` and no `next/headers`, for two reasons.
- * It is the one piece of the session transport that is pure — a string in, a
- * string out — so it is the one piece that can be tested without a request; and
- * it is parsing a header an attacker controls, which is exactly the code that
- * should be covered rather than assumed.
- *
- * Split rather than matched. A regex over hostile input is a shape worth
- * avoiding on principle, and splitting also makes the name comparison exact for
- * free: a loosely anchored pattern happily matches a cookie whose name merely
- * ends in the one being looked for.
+ * Reads one cookie out of a `Cookie` header. Kept free of `next/headers` so the code that parses
+ * attacker-controlled input can be tested; split rather than matched, so the name comparison is
+ * exact and no regex runs over hostile input.
  */
 export function readCookie(header: string | null | undefined, name: string): string | null {
   if (!header) return null;

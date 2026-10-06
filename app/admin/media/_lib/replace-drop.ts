@@ -1,15 +1,13 @@
-/**
- * Take the one image out of a drop or a file picker, or say why there is none.
- *
- * Replacing swaps a single file, so a multi-file drop is rejected rather than
- * silently using the first: picking one for somebody who meant to drop a batch is
- * how the wrong photo ends up on a ride. Shared by the editor's replace bar and
- * the grid tiles, so both refuse the same things with the same words.
- */
 const ALLOWED_EXT = /^(jpg|jpeg|png|webp|avif|svg)$/;
 
+/** The answer of `pickReplacement`: the one file, the reason there is none, or nothing dropped. */
 export type ReplaceDrop = { file: File } | { error: string } | null;
 
+/**
+ * Takes the one image out of a drop or a file picker, or says why there is none. A multi-file drop
+ * is rejected rather than silently using the first; the editor's replace bar and the grid tiles
+ * share this, so both refuse the same things in the same words.
+ */
 export function pickReplacement(files: FileList | File[] | null): ReplaceDrop {
   const list = Array.from(files ?? []);
   if (list.length === 0) return null;

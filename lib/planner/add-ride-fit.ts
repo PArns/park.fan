@@ -1,6 +1,6 @@
 import type { PlanDay } from '@/lib/api/types';
 import { buildDayGrid, earlyEntryOpenMin, growGridForSpans, withEarlyEntry } from './day-grid';
-import { occupiedMinutes } from './estimate';
+import { spansFor } from './estimate';
 import {
   addWishKey,
   fitBlocks,
@@ -16,36 +16,18 @@ import type { DayClock } from './park-time';
 import type { PlannerEntry } from './types';
 
 /**
- * The question a press on „In den Plan" raises, or `null` where it raises none
- * (PAR-67).
+ * The question a press on „In den Plan" raises, or `null` where it raises none.
  *
- * The ride-page button files a ride without a minute, so `addEntry` puts it an
- * hour after the last entry and never before now. Late on the day you are in
- * the park that runs past closing within five presses and then stacks on the
- * 25:00 ceiling: eight presses at 20:10 gave `20:15 · 21:15 · 22:15 · 23:15 ·
- * 24:15 · 25:00 · 25:00 · 25:00`. The day had no room for the ride and the plan
- * did not say so.
+ * The button files without a minute, so `addEntry` puts the ride an hour after the last entry, and
+ * late in the day presses run past closing and stack on the 25:00 ceiling. So it asks what the
+ * optimise buttons ask (`fitWishes`, `fitBlocks`, `needsFitHelp`): the day plus this ride, and
+ * whether every wish gets a slot before `closeMin`. Where not, the answer is the `FitInput` the
+ * assistant opens on, and nothing has been written.
  *
- * So the button asks the question the optimise buttons ask, with the same
- * three pieces (`fitWishes`, `fitBlocks`, `needsFitHelp`) and no second
- * wording of it: the day as planned plus this one ride, and whether the engine
- * can give every wish a slot before `closeMin`. Where it cannot, the answer is
- * the `FitInput` the assistant opens on, and nothing has been written.
- *
- * `null` means "file it the way the button always did", and that covers every
- * case where the question cannot be asked honestly: no payload, no opening
- * hours, a park whose wait times nobody can read (`canOptimize`, the same gate
- * the optimise row uses), a day already walked, and a ride the payload does
- * not list. A press there is not a conflict the app can measure, so it is not
- * one it may refuse.
- *
- * A second go on a ride already in the day („Nochmal") is a wish of its own.
- * `fitWishes` drops an addition whose slug is already planned, which is right
- * for the headliner button (it never adds a ride twice) and wrong here: the
- * press asks for another lap, and repeated presses on one ride are exactly how
- * the 25:00 stack was reached. So the lap is appended under its `a:<slug>` key,
- * and the engine plans it as an add like any other second go (`fitOrder` puts
- * laps last).
+ * `null` (file as before) wherever the question cannot be asked honestly: no payload, no hours, no
+ * readable waits (`canOptimize`), a walked day, or a ride the payload does not list. A second go on
+ * a planned ride is appended under its `a:<slug>` key, since `fitWishes` drops repeats. See
+ * docs/rules/a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md.
  */
 export function noRoomForRide(params: {
   day: PlanDay | null | undefined;
@@ -53,9 +35,8 @@ export function noRoomForRide(params: {
   attractionSlug: string;
   clock: DayClock;
   /**
-   * The visitor's early-entry answer for this day (`PlannerDay.prefs`), folded
-   * in with `withEarlyEntry` exactly as the day column folds it before the
-   * optimise buttons see the day, so both ask about the same opening.
+   * The visitor's early-entry answer for this day, folded in with `withEarlyEntry` as the day
+   * column does, so both ask about the same opening.
    */
   earlyEntry?: boolean;
 }): FitInput | null {
@@ -65,9 +46,7 @@ export function noRoomForRide(params: {
   const ride = day.rides.find((candidate) => candidate.attractionSlug === attractionSlug);
   if (!ride) return null;
 
-  // The axis the panels build for the same day, grown until it holds the plan.
-  // Only `closeMin` and the opening decide anything here and growth moves
-  // neither, but it is the same grid the assistant would get from the flyout.
+  // The same grown axis the panel builds, so the assistant gets the grid the flyout would give it.
   const grid = growGridForSpans(
     buildDayGrid(
       day.context.openHour,
@@ -75,10 +54,7 @@ export function noRoomForRide(params: {
       undefined,
       earlyEntryOpenMin(day.context)
     ),
-    entries.map((entry) => ({
-      startMinute: entry.startMinute,
-      spanMinutes: occupiedMinutes(day, entry),
-    }))
+    spansFor(day, entries)
   );
   if (!grid || !canOptimize(day, grid)) return null;
 
@@ -107,16 +83,9 @@ export function noRoomForRide(params: {
 }
 
 /**
- * The answer the assistant opens on after a press on „In den Plan": everything
- * ticked, and the pressed ride pinned (PAR-637).
- *
- * Without the pin the ride the visitor just asked for was one wish among the
- * rest, and the plan the dialog proposed could leave exactly that ride out.
- * The pin moves it to the top of the order the engine gives things up in; it
- * is an ordinary pin, so the row's pin button takes it off again. Its key is
- * `a:<slug>` in both cases `noRoomForRide` builds, a first ride and a lap.
- * Every hint the dialog shows is measured from this choice, the same way it is
- * measured from any choice the visitor makes afterwards.
+ * The answer the assistant opens on after „In den Plan": everything ticked and the pressed ride
+ * pinned, so the proposed plan cannot leave out the ride just asked for. An ordinary pin the
+ * visitor can take off.
  */
 export function requestedRideChoice(attractionSlug: string): FitChoice {
   return togglePin(fitChoiceAll(), addWishKey(attractionSlug));

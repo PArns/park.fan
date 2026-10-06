@@ -2,8 +2,6 @@ import 'server-only';
 import { cache } from 'react';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { getAttractionByGeoPath } from '@/lib/api/parks';
-// Body-derived helpers live in one plain-JS module so the build script can bake
-// their results into the manifest with the exact same implementation.
 import { extractInlineRefs, parseRefKey } from './derive.mjs';
 import type {
   AttractionResponse,
@@ -46,13 +44,9 @@ export interface ResolvedAttraction {
   attractionName: string;
   href: string;
   /**
-   * Live attraction payload (queues, statistics, sparkline). Populated lazily on the server when
-   * the post page renders, so AttractionCard can be embedded inside the hover with the same look
-   * as on favorites.
-   *
-   * Trimmed to what the card actually reads — see {@link leanDetailForBlogRef}. The browser
-   * replaces this with the full payload once a card is on screen (`useLiveBlogRide`
-   * `withDetail`), so nothing is lost by shipping the small version in the HTML.
+   * Live attraction payload for the AttractionCard in the hover, trimmed to what the card reads
+   * ({@link leanDetailForBlogRef}). The browser swaps in the full payload once a card is on screen
+   * (`useLiveBlogRide` `withDetail`).
    */
   detail?: AttractionResponse | null;
   /** Current STANDBY wait in minutes (null when unknown). Computed server-side. */
@@ -62,10 +56,8 @@ export interface ResolvedAttraction {
   /** Current crowd level for the ride, if the API exposes one. */
   crowdLevel?: CrowdLevel;
   /**
-   * The ride closed for good (`retiredKind === 'closed'` on the detail endpoint). Its badge says
-   * so instead of the live CLOSED, which is the one a ride comes back from: X2 read „Geschlossen"
-   * in the very post announcing that it will not reopen. A fact about the ride, not a reading, so
-   * the live overlay carries it through untouched.
+   * The ride closed for good (`retiredKind === 'closed'`), so its badge says that instead of the
+   * live CLOSED a ride comes back from. A fact about the ride, so the live overlay keeps it.
    */
   closedPermanently?: boolean;
 }
@@ -84,15 +76,9 @@ interface IndexedGeo {
 const buildIndex = cache(async (): Promise<IndexedGeo> => {
   let geo: GeoStructure | null = null;
   try {
-    // No explicit window: this index holds park names, slugs and geo paths, which is exactly what
-    // `CACHE_TTL.geo` describes, and it is invalidated by the same `geo` tag the backend pushes on
-    // a park rename or merge.
-    //
-    // The hard-coded 3600 that stood here set the ISR clock for every blog POST. `resolvePark`
-    // runs for the `ref:` links in each one, Next takes the shortest revalidate among a route's
-    // fetches, and nothing else on those pages was shorter — so 60 prerendered posts regenerated
-    // 24 times a day off a number that was never about the posts. Declaring
-    // `export const revalidate` on the route did not help and could not: a fetch always wins.
+    // No explicit window: park names, slugs and geo paths are what `CACHE_TTL.geo` describes, and
+    // a TTL here would set the ISR clock of every blog post. See
+    // docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md.
     geo = await getGeoStructure();
   } catch {
     geo = null;
@@ -121,10 +107,7 @@ const buildIndex = cache(async (): Promise<IndexedGeo> => {
             avgWaitTime: park.analytics?.statistics?.avgWaitTime ?? undefined,
             operatingAttractions: park.analytics?.statistics?.operatingAttractions,
             totalAttractions: park.analytics?.statistics?.totalAttractions,
-            // Schedule data flows straight from the geo API. ParkCard reads
-            // todaySchedule + nextSchedule (+ hasOperatingSchedule) to render
-            // "Closes in 3h 20m" while open and "Opens tomorrow 09:00" while
-            // closed — without these the closed footer is just "Closed".
+            // ParkCard reads these to show "Opens tomorrow 09:00" instead of a bare "Closed".
             hasOperatingSchedule: park.hasOperatingSchedule,
             todaySchedule: park.todaySchedule,
             nextSchedule: park.nextSchedule,
@@ -158,29 +141,10 @@ export const resolvePark = cache(
 );
 
 /**
- * Trim the attraction detail down to what a blog ride reference renders — the same reasoning that
- * drives `leanParkForShell` / `leanParkForAttractionShell` in `lib/api/parks.ts`, applied to the
- * one payload that is serialized *per ride mention* instead of once per page.
- *
- * Measured on `/de/blog/phantasialand-tipps`, the untrimmed object was 54.4 KB — for EVERY ride
- * named in the prose. A post naming ~20 rides shipped 1.73 MB of HTML, 60 % of it the RSC flight
- * payload:
- *
- *     schedule [17]     32.20 KB   ← never read
- *     history  [30]     15.30 KB   ← never read (that's the ride PAGE's 30-day grid)
- *     rest               6.90 KB
- *
- * The only consumers are `buildAttractionPayload` (`lib/blog/attraction-payload.ts`), which hands
- * `AttractionCard` an explicit field list, and `overlayAttraction` (`lib/blog/live-overlay.ts`),
- * which reads `queues`, `status` and `currentLoad.crowdLevel`. Everything kept below appears in
- * one of those two; everything else was pure payload.
- *
- * `statistics` stays WHOLE on purpose — `buildFavoriteStats` reads `statistics.history` for the
- * card's sparkline, and reads several fields off it best-effort through a `Record` cast, so
- * narrowing it here would silently blank them.
- *
- * An allowlist, not the `delete`-based shape used for parks: only 10 of 25 fields survive, and a
- * new heavy field on the API side should stay out by default rather than have to be remembered.
+ * Trims the attraction detail to what a blog ride reference renders, since it is serialized once
+ * per ride mention: `schedule` and `history` dominate it and neither `buildAttractionPayload` nor
+ * `overlayAttraction` reads them. `statistics` stays whole because `buildFavoriteStats` reads
+ * fields off it through a `Record` cast. An allowlist, so a new heavy API field stays out.
  */
 function leanDetailForBlogRef(detail: AttractionResponse): AttractionResponse {
   return {
@@ -197,12 +161,14 @@ function leanDetailForBlogRef(detail: AttractionResponse): AttractionResponse {
     statistics: detail.statistics,
     bestVisitTimes: detail.bestVisitTimes,
     // One enum value, and the card's transport badge has nothing else to read.
-    // `ref:efteling/stoomtrein-marerijk` stands in the Efteling post in all six
-    // locales, so leaving it out drops a badge from six pages.
     attractionKind: detail.attractionKind ?? null,
   };
 }
 
+/**
+ * Resolves a `ref:park/ride` mention in a post to the ride's name, link, live wait time, status and
+ * a trimmed attraction payload, or `null` for an unknown park. Per-render cached.
+ */
 export const resolveAttraction = cache(
   async (
     parkSlug: string,

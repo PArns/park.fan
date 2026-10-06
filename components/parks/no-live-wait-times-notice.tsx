@@ -14,19 +14,10 @@ interface NoLiveWaitTimesNoticeProps {
 /**
  * Explains why a park shows no wait times anywhere.
  *
- * Without it the page is not wrong so much as unreadable: the API withholds every
- * wait-derived value for these parks (rides read `UNKNOWN`, crowd levels `unknown`,
- * no forecast), which leaves a park that is open and busy looking like one nobody
- * has any information about — and a visitor with no way to tell that apart from a
- * site that is broken.
- *
- * Sits on `GlassNotice`, which carries the frosted surface and the
- * `data-nosnippet` that keeps these two sentences out of Google's snippet while
- * leaving them indexed — the reasoning for both is over there. The measurement
- * behind it is this notice's own: on 2026-08-30 the head query still rendered
- * the meta description verbatim, so the attribute is prevention rather than a
- * fix, and a snippet is chosen per query — the more specific the query, the
- * likelier Google builds one from the page instead.
+ * Without it the page is unreadable: the API withholds every wait-derived value for these parks,
+ * so an open, busy park looks like one nobody knows anything about, and a visitor cannot tell
+ * that apart from a broken site. Sits on `GlassNotice`, which carries the frosted surface and the
+ * `data-nosnippet`. See docs/rules/parks-we-cannot-read.md.
  */
 export function NoLiveWaitTimesNotice({ reason, scope, className }: NoLiveWaitTimesNoticeProps) {
   const t = useTranslations('parks.noLiveWaitTimes');

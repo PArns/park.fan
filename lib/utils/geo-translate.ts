@@ -4,9 +4,8 @@ type GeoTranslator = {
 };
 
 /**
- * Safely translates a geo slug (country or continent) using next-intl.
- * tGeo() throws on missing keys, so we guard with has() first.
- * Normalizes the slug to lowercase-hyphenated form before lookup.
+ * Translates a geo slug (country or continent) with next-intl, normalized to lowercase-hyphenated
+ * form. `tGeo()` throws on a missing key, so it checks `has()` first.
  */
 export function translateGeoSlug(
   t: GeoTranslator,

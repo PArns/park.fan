@@ -13,7 +13,7 @@ interface ErrorProps {
   /**
    * Re-fetches the segment and re-renders it. Not `reset`, which only re-renders the payload that
    * already failed: park and ride pages throw on a failed API call on purpose, so a `reset` retry
-   * showed the same error until a hard reload.
+   * would show the same error until a hard reload.
    */
   retry: () => void;
 }
@@ -31,7 +31,6 @@ export default function Error({ error, retry }: ErrorProps) {
     console.error(error);
   }, [error]);
 
-  // Redirect every failing route to the dedicated maintenance page.
   useEffect(() => {
     if (isMaintenance) {
       router.replace('/maintenance');

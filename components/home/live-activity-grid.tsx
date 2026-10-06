@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LiveContinentOpenCount } from '@/components/home/live-continent-open-count';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 
-/** Per-continent card data — the open count is the hourly SSR seed, overlaid live on the client. */
+/** Per-continent card data; the open count is the SSR seed, overlaid live on the client. */
 export interface ContinentCard {
   slug: string;
   name: string;
@@ -15,10 +15,9 @@ export interface ContinentCard {
 }
 
 /**
- * Homepage "parks open now" grid. The continent structure (names, links, totals) is
- * server-rendered into the hourly shell; only the open-park counter + progress bar are a
- * client component ({@link LiveContinentOpenCount}) that overlays the baked seed with live
- * values — one shared 5-min-polled batch call for all cards.
+ * Homepage "parks open now" grid. The continent structure is server-rendered into the shell; only
+ * the open-park counter and progress bar are a client component ({@link LiveContinentOpenCount})
+ * that overlays the seed, with one shared polled batch call for all cards.
  */
 export async function LiveActivityGrid({ continents }: { continents: ContinentCard[] }) {
   const [tGeo, tExplore] = await Promise.all([getTranslations('geo'), getTranslations('explore')]);

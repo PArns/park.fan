@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { CalendarDays, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { PHONE_TARGET_32 } from '@/lib/planner/touch-target';
 import { addDays, todayInZone } from '@/lib/planner/park-time';
 import { PlannerMonthCalendar } from './planner-month-calendar';
@@ -25,21 +26,9 @@ interface PlannerDayPickerProps {
 }
 
 /**
- * Which day the plan is for.
- *
- * A month grid in a popover, and it replaced a native `<select>` carrying sixty
- * consecutive days. That control had a written defence — a phone renders a
- * native picker, the choice is one of sixty consecutive days — and it missed the
- * task: nobody picks "the 43rd day from now", they pick the Saturday after next.
- * Sixty options is a list two screens tall with no columns, so the weekday of
- * each row has to be read off its label one at a time, and the days that are
- * already planned are marked with a trailing `·` that means nothing to anyone
- * who has not been told. The grid answers all of it at a glance, and it carries
- * the park's crowd forecast in the same colours as the park's own calendar.
- *
- * The arrows stay, and they are still the reason this is not just a calendar:
- * stepping a day at a time is the common move — "what if we went Saturday
- * instead" — and it should not cost a popover, a scan and a tap.
+ * Which day the plan is for: a month grid in a popover, tinted with the park's crowd forecast like
+ * the park's own calendar, because people pick "the Saturday after next", not the 43rd day. The ‹ ›
+ * arrows stay for the common move, one day at a time.
  */
 export function PlannerDayPicker({
   value,
@@ -50,8 +39,7 @@ export function PlannerDayPicker({
   maxDate,
 }: PlannerDayPickerProps) {
   const t = useTranslations('planner');
-  // The reader's locale, not a hard-coded `de-DE`: this shipped German weekday
-  // abbreviations into a control that is otherwise fully translated.
+  // The reader's locale, never a hard-coded `de-DE`.
   const locale = useLocale();
   const today = todayInZone(timezone);
   const [open, setOpen] = useState(false);
@@ -60,16 +48,9 @@ export function PlannerDayPicker({
   const atEnd = Boolean(maxDate && value >= maxDate);
 
   return (
-    /* **Wider on a phone, and it could not be shorter** (PAR-313). The report
-       asked for this bar less tall and wider, and the first half is already
-       spent: every control in it is 44 px, which is the touch floor
-       `CLAUDE.md` states and `check:planner` asserts, and the row around them
-       carries `planner-phone:py-0`, so the bar is exactly 44 px + its rule.
-       There is nothing left to take off the height.
-       The chevrons were 48 wide from PAR-313, when the width came free from a
-       chevron that used to sit beside this bar. PAR-482 put the bell and the
-       × into the same row, and at 360 px the park name was down to "E…":
-       the chevrons are 32 now and the bar 148 px (32 + 2 + 80 + 2 + 32). */
+    /* Every control in this bar is 44 px on a phone, the touch floor, so it cannot be shorter. The
+       chevrons are 32 px wide so the park name in the same row keeps its room: 148 px in all
+       (32 + 2 + 80 + 2 + 32). */
     <div className="planner-phone:gap-0.5 flex items-center gap-1">
       <button
         type="button"
@@ -77,13 +58,8 @@ export function PlannerDayPicker({
         disabled={atStart}
         aria-label={t('calendar.prevDay')}
         className={cn(
-          // 44 px on a phone, like its twin below and the day button between
-          // them. Stepping a day is the most-pressed control in the panel and
-          // it was a 28 px square; the row it sits in is 44 px tall now, so
-          // this costs the axis nothing beyond what the row already spent.
-          // 48 wide from PAR-313 until PAR-482 put the bell and the × into
-          // this row: 32 now, which the park name was paying for ("E…" at
-          // 360 px). 32 × 44 to a finger.
+          // 32 × 44 on a phone, like its twin below: stepping a day is the most-pressed control in
+          // the panel.
           'hover:bg-accent planner-phone:w-8 flex size-7 items-center justify-center rounded-md transition',
           PHONE_TARGET_32,
           atStart && 'pointer-events-none opacity-30'
@@ -103,34 +79,17 @@ export function PlannerDayPicker({
               PHONE_TARGET_32
             )}
           >
-            {/* Not on a phone (PAR-482): the sheet's × joined this row there, and
-                the 20 px of the icon are what the park name would otherwise pay
-                for it. The date and the two chevrons say what this is. */}
+            {/* Not on a phone, where the icon's 20 px would come off the park name; the date and
+                the chevrons say what this is. */}
             <CalendarDays className="planner-phone:hidden size-3.5 shrink-0" aria-hidden="true" />
             {dayLabel(value, today, locale, t)}
           </button>
         </PopoverTrigger>
-        {/* A DERIVED width, not `w-auto` and not one picked by eye.
-            `w-auto` made the popover shrink-to-fit, and what it fitted was its
-            widest ROW — which is never the day grid (`grid-cols-7` is
-            `minmax(0,1fr)` and takes whatever it is given) but the caption,
-            whose text is `toLocaleDateString(locale, {month:'long'})`. So the
-            calendar was as wide as the month's name: measured in de-DE,
-            Juli 144.8 px, August 155.5, September 177.9, Oktober 161.6,
-            November 173.4 — the popover coming out at caption + 82 px every
-            time, and the seven columns silently redistributing the difference.
-            254 px is 7 × 32 (the compact cell's `h-8`) + 6 × 2 (`gap-0.5`)
-            + 2 × 8 (`p-2`) + 2 × 1 (border), so the columns land on exactly
-            32.000 px and the box no longer depends on the calendar.
-            `align="end"` because this sits at the right edge of the panel
-            header — centred on it, the calendar hangs off the sheet. */}
-        {/* ABOVE the panel. Both this and `SheetContent` are portalled to
-          `<body>`, and the shared popover is `z-50` against the sheet's
-          `z-[70]` — so inside the planner this opened BEHIND the panel that
-          triggered it, which from the outside is a button that does nothing.
-          Fixed at the call site rather than in `components/ui/popover.tsx`:
-          every other popover on the site is correct at 50, and raising the
-          primitive would put a park page's popover over the header. */}
+        {/* A derived width: with `w-auto` the popover took the width of the month's name. 254 px is
+            7 × 32 (the compact cell's `h-8`) + 6 × 2 (`gap-0.5`) + 2 × 8 (`p-2`) + 2 × 1 (border),
+            so the columns are exactly 32 px. `align="end"`, or the calendar hangs off the sheet.
+            `z-[80]` above the sheet's `z-[70]`, set here because every other popover on the site is
+            right at 50. */}
         <PopoverContent align="end" className="z-[80] w-[254px] p-2">
           <PlannerMonthCalendar
             value={value}
@@ -152,7 +111,7 @@ export function PlannerDayPicker({
         disabled={atEnd}
         aria-label={t('calendar.nextDay')}
         className={cn(
-          // 32 × 44 on a phone, like its twin above — see the note on the row.
+          // 32 × 44 on a phone, like its twin above.
           'hover:bg-accent planner-phone:w-8 flex size-7 items-center justify-center rounded-md transition',
           PHONE_TARGET_32,
           atEnd && 'pointer-events-none opacity-30'
@@ -165,18 +124,13 @@ export function PlannerDayPicker({
 }
 
 /**
- * What the trigger says: `Heute`, `Morgen`, or `Mi., 02.09.`
- *
- * Noon UTC, never midnight: `new Date('2026-09-02')` is midnight UTC, which is
- * the previous day for every reader west of Greenwich — the label would name a
- * different day from the value it sits on.
+ * What the trigger says: `Heute`, `Morgen`, or `Mi., 02.09.` Noon UTC, never midnight, which is
+ * the previous day west of Greenwich.
  */
 function dayLabel(date: string, today: string, locale: string, t: (key: string) => string): string {
   if (date === today) return t('day.today');
   if (date === addDays(today, 1)) return t('day.tomorrow');
-  return new Date(`${date}T12:00:00Z`).toLocaleDateString(locale, {
-    weekday: 'short',
-    day: '2-digit',
-    month: '2-digit',
-  });
+  return getDateTimeFormat(locale, { weekday: 'short', day: '2-digit', month: '2-digit' }).format(
+    new Date(`${date}T12:00:00Z`)
+  );
 }

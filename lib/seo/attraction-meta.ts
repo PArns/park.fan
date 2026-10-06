@@ -12,16 +12,9 @@ type Translate = (key: string, values?: Record<string, string | number>) => stri
 const MAX_FACTS = 3;
 
 /**
- * What distinguishes THIS ride from the next one, in the order it is worth
- * saying.
- *
- * All of it is read off the attraction `generateMetadata` already holds — the
- * same cached park fetch the page body issues — so this costs no request
- * (CLAUDE.md, API budget per page).
- *
- * Every clause is a noun phrase or a preposition the language owns outright:
- * nothing here has to agree with the gender of a park or a themed area, which
- * is the trap `im {park}` already navigates for the sentence around it.
+ * What distinguishes this ride from the next one, in the order it is worth saying. Read off the
+ * attraction `generateMetadata` already holds, so it costs no request. Every clause is a noun
+ * phrase or a preposition the language owns, so nothing has to agree with a park's gender.
  */
 export function buildAttractionFacts(attraction: ParkAttraction, t: Translate): string[] {
   const facts: string[] = [];
@@ -43,13 +36,8 @@ export function buildAttractionFacts(attraction: ParkAttraction, t: Translate): 
 }
 
 /**
- * The ride title, shortened until it survives the ~60 characters Google shows.
- *
- * Measured over the whole catalogue (7,084 rides × 6 locales), the single
- * unconditional template this replaces fitted inside 60 characters for 33.2 %
- * of English rides, 29.9 % of German ones and 7.1 % of Italian — the rest were
- * cut, usually losing the wait-time keyword the template exists for. The ladder
- * puts every locale at 98.1–98.3 %. Same shape the park page has had all along.
+ * The ride title, stepped down a ladder of templates until it fits the ~60 characters Google
+ * shows, so the wait-time keyword is not the part that gets cut.
  */
 export function buildAttractionTitle(
   attractionName: string,
@@ -76,11 +64,8 @@ export function buildAttractionTitle(
 }
 
 /**
- * The ride description, carrying whatever sets the ride apart when we know
- * anything, and the plain sentence when we do not.
- *
- * The plain sentence was the only one there: one skeleton with two names
- * substituted into it, on all 42,606 ride URLs.
+ * The ride description, carrying whatever sets the ride apart when we know anything, and the
+ * plain sentence when we do not.
  */
 export function buildAttractionDescription(
   attractionName: string,
@@ -133,8 +118,8 @@ export function buildClosedRideTitle(
 
 /**
  * The description of a ride that closed for good: since when, what a normal weekday cost in the
- * queue before that, and who built it and when. Every clause is a fact about THIS ride, so the
- * ~70 closed rides do not share one sentence (docs/blog.md §5.3).
+ * queue before that, and who built it and when. Every clause is a fact about this ride, so the
+ * closed rides do not share one sentence (docs/blog.md §5.3).
  *
  * The page prints the same text as its intro, so the snippet and the page cannot disagree.
  *
@@ -178,15 +163,8 @@ export function buildClosedRideDescription(
 }
 
 /**
- * The template closes the sentence with its own full stop, so a clause that
- * already ends in one must not bring a second: Walt Disney World's themed areas
- * are named "Main Street, U.S.A." and "Springfield, U.S.A.", which rendered
- * "Bereich Main Street, U.S.A.." on 30 ride pages across five locales. English
- * escaped it only because its `factLand` reads "{land} area", putting the
- * abbreviation's period mid-clause.
- *
- * One period is also what the abbreviation and the sentence are supposed to
- * share — this drops the duplicate rather than the abbreviation's own.
+ * Drops a clause's trailing period, because the template closes the sentence with its own: an
+ * area named "Main Street, U.S.A." would otherwise end in two.
  */
 function endOfSentence(text: string): string {
   return text.endsWith('.') ? text.slice(0, -1) : text;

@@ -26,11 +26,8 @@ interface Props {
 const LOCALES = ['en', 'de', 'nl', 'fr', 'es', 'it'] as const;
 
 /**
- * Captures a category entry for content/blog/categories.json — create OR
- * edit. In edit mode the parent + slug halves of the path are locked
- * (renaming would also need to migrate every post that points at the old
- * path, which is out of scope here). The breadcrumb band previews the final
- * path live while typing.
+ * Creates or edits a category entry for content/blog/categories.json. In edit mode the path is
+ * locked, since a rename would have to migrate every post pointing at the old one.
  */
 export function CategoryCreateModal({ open, existing, initial, onClose, onSubmit }: Props) {
   return open ? (
@@ -145,7 +142,6 @@ function CategoryForm({
           </button>
         </div>
 
-        {/* Live path preview — breadcrumb of the final category path. */}
         <div
           className={cn(
             'border-border/40 flex items-center gap-1 border-b px-4 py-2.5',

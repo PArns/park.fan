@@ -78,11 +78,8 @@ interface ParkCalendarPageProps {
 }
 
 /**
- * The month a URL asks for, plus what to do when it asks wrongly.
- *
- * Shared by `generateMetadata` and the page so the two cannot disagree about which month they are
- * describing — a title for September under a grid showing August is the kind of mismatch nobody
- * notices until it is in the index.
+ * The month a URL asks for, or `'invalid'`. Shared by `generateMetadata` and the page so the two
+ * cannot describe different months.
  */
 function resolveMonth(
   date: string[] | undefined,
@@ -102,29 +99,16 @@ function monthLabel(locale: string, { year, month }: ParkCalendarMonth): string 
   }).format(new Date(Date.UTC(year, month - 1, 1)));
 }
 
-// Same posture as the park page: rendered per request, no per-URL ISR shell across 212 parks × 6
-// locales. The best-days seed streams inside its own boundary so a cold `/best-days` compute never
-// gates first byte; the month grid is client-fetched per visible month.
+// Same posture as the park page: rendered per request, no per-URL ISR shell. The best-days seed
+// streams inside its own boundary so a cold `/best-days` compute never gates first byte; the
+// month grid is client-fetched per visible month.
 export const dynamic = 'force-dynamic';
 
 /**
- * A park's crowd calendar, on its own URL.
- *
- * It was `#calendar` on the park page: a tab whose panel mounted on click, whose selection was
- * written with `history.replaceState`, and whose month stepper appended `#calendar-2026-04`. That
- * arrangement had one address for six different things. Nothing in it could be crawled, so the
- * whole "wann ist es leer" answer — the part of this site with the least competition in search —
- * existed for Google as a fragment of the wait-times page. It could not carry its own title or
- * description, could not be a search result, could not be shared as a link that opens on the
- * calendar, and `replaceState` meant the back button did not undo opening it.
- *
- * So the tab is a page. What moved with it is the best-days section, which is the answer the
- * calendar is the evidence for and which used to open that tab; what stayed on the park page is
- * the entry tile, whose hint already names the next quiet day and now links here.
- *
- * The month hash keeps its `#calendar-YYYY-MM` spelling rather than shortening to `#2026-04`, so
- * every link ever written against the old tab still lands on the right month after the redirect
- * the park page issues.
+ * A park's crowd calendar on its own URL, so the "wann ist es leer" answer can be crawled, carry
+ * its own title and be shared as a link; the best-days section, which the calendar is the
+ * evidence for, lives here too. The month hash keeps its `#calendar-YYYY-MM` spelling, so old
+ * links still land on the right month after the park page's redirect.
  */
 export async function generateMetadata({ params }: ParkCalendarPageProps): Promise<Metadata> {
   const { continent, country, city, park: parkSlug, locale, date } = await params;
@@ -145,43 +129,22 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
 
   const parkName = stripNewPrefix(park.name);
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
-  // The hub is canonical for the CURRENT month — `/2026/8` points at it in August — so it is
-  // that month's page and its title should say so. It used to end „: die ruhigen Tage", which
-  // names no month, matches no query and is the decorative closer CLAUDE.md rules out. The label
-  // is the month the page actually shows either way, so one variable serves both branches.
+  // The hub is canonical for the current month (`/2026/8` points at it in August), so its title
+  // names that month: the label is the month the page shows either way.
   const label = monthLabel(locale, month ?? nowInPark);
 
-  // `fitWithin` takes the limit first and then candidates longest-preferred: the short title is
-  // the fallback for a park name that pushes the full one past 60 characters.
-  //
-  // ONE pair for the hub and for every month, because they are one kind of page. The hub is
-  // canonical for the current month — `/2026/8` points at it in August — so it is that month's
-  // page and reads like one. It used to have a second pair of its own, and the two drifted the
-  // moment they existed: the hub said „Wartezeiten-Kalender", the months said „{month}:
-  // Wartezeiten & Andrang", and neither was the phrase a person types. Same reasoning as the
-  // segment name in `calendar-segments.ts` — two spellings of one thing are two chances to pick
-  // the wrong one.
+  // `fitWithin` takes the limit, then candidates longest-preferred: the short title is the
+  // fallback for a park name that pushes the full one past 60 characters. One pair for the hub
+  // and every month, because they are one kind of page; two pairs would drift apart.
   const title = fitWithin(
     MAX_TITLE_LENGTH,
     t('metaTitle', { park: parkName, month: label }),
     t('metaTitleShort', { park: parkName, month: label })
   );
-  // Two candidates, and the second is not decoration: the description names the park AND the
-  // city, and the catalogue's longest pair is 53 characters ("Fantawild Silk Road Heritage
-  // Jiayuguan" in "Jia Yu Guan Shi") against Phantasialand's 18. With one candidate `fitWithin`
-  // has nothing to fall back to and returns it at whatever length it came out — measured at 179
-  // to 198 characters in all six locales for that park, every one of them past the 160 Google
-  // will render. The city is the part that goes: it is already in the URL, the breadcrumb and
-  // the H1's address line. Same shape the park page has used all along.
-  /*
-   * Einmal gebeugt, viermal verwendet.
-   *
-   * `parkArgs` stand hier dreimal ausgeschrieben und im vierten Aufruf nicht — der bekam nur
-   * `{ park, city }`. Auf Englisch fiel das nicht auf, weil die Zeichenkette dort `{park}`
-   * einsetzt; auf Deutsch heißt sie „Wann ist es {inPark} in {city} leer?" und warf einen
-   * FORMATTING_ERROR beim Rendern der Metadaten. Eine Konstante kann nicht mehr an drei Stellen
-   * gepflegt und an der vierten vergessen werden.
-   */
+  // Two candidates: with the longest park and city names in the catalogue, the description runs
+  // past the 160 characters Google renders. The city goes, since it is already in the URL, the
+  // breadcrumb and the H1's address line. The park phrases are inflected once for all four
+  // strings: the German ones need them, and a call without them throws FORMATTING_ERROR.
   const parkPhrases = parkArgs(locale as Locale, parkName, park.nameArticleDe);
   const description = fitWithin(
     MAX_DESCRIPTION_LENGTH,
@@ -235,21 +198,16 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   assertServableRoute(locale, continent, country, city, parkSlug);
   setRequestLocale(locale);
 
-  // Fired before the park is awaited, because none of the three needs it: they used to start
-  // only after the park fetch, three translation loads and the malformed-URL check, one round
-  // trip later than necessary. None of them rejects (each answers a failure with null, [] or
-  // false), so a redirect below that leaves one unread cannot leave an unhandled rejection.
-  //
-  // The best-days seed is consumed inside the <Suspense> boundary below, so a cold best-days
-  // compute streams in behind the shell instead of gating TTFB. One clock read serves the seed.
+  // Started before the park is awaited, since none of the three needs it. None of them rejects
+  // (each answers a failure with null, [] or false), so a redirect below that leaves one unread
+  // cannot leave an unhandled rejection. The best-days seed is consumed inside the <Suspense>
+  // boundary below, so a cold compute streams in behind the shell instead of gating TTFB.
   const seedNow = new Date();
   const seedNowMs = seedNow.getTime();
   const bestDaysSeedPromise = getBestDaysCalendarSeed(continent, country, city, parkSlug);
   const seasonsPromise = getParkSeasons(continent, country, city, parkSlug);
   // Whether this park has a wait-time record, for the tile row below. Data-cached for a day and
-  // shared with that page's own render and with `app/sitemap.ts`, so the whole class costs one
-  // upstream call per park per day however many calendar URLs ask. Awaited with the seasons,
-  // rather than on its own line further down where it would be a second round trip.
+  // shared with that page and `app/sitemap.ts`; awaited with the seasons to save a round trip.
   const statsAvailablePromise = hasParkStatsPage(continent, country, city, parkSlug);
 
   // Not `catchNonFatal`: a failed fetch must throw rather than 404 — see the park page.
@@ -266,18 +224,11 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   // or a crawler probing, and answering it with the current month would put one page's content on
   // unbounded URLs.
   if (resolved === 'invalid') {
-    // A well-formed month that has simply fallen out of the window gets a 308 to the hub, not a
-    // 404. Narrowing the back span from twelve months to three turned five months × 210 parks ×
-    // 6 locales — 6,300 URLs, verified against production on 2026-09-21 — from 200 into gone, and
-    // every month boundary adds 210 × 6 more. These are URLs the stepper linked last month and a
-    // crawler may still hold. A malformed segment (`/2026/13`, `/abc/x`) stays a 404: that is a
-    // typo or a probe, and there is nothing to send it to.
-    //
-    // Most of these never reach this line: `proxy.ts` answers a month that is out of the window
-    // for every park before the render starts, because a redirect thrown from here carries this
-    // route's not-found document as its body. What arrives here is what the proxy could not
-    // decide from the URL alone — the months at the edge of the window, where this park's own
-    // timezone and `scheduleCoverage.to` are what settles it. See `lib/parks/calendar-redirects.ts`.
+    // A well-formed month that has fallen out of the window 308s to the hub: the stepper linked it
+    // once and a crawler may still hold it. A malformed segment stays a 404. Most never get here:
+    // `proxy.ts` answers months out of the window for every park, since a redirect thrown from a
+    // render carries the not-found document as its body; this handles the edge months that only
+    // this park's timezone and `scheduleCoverage.to` settle. See `lib/parks/calendar-redirects.ts`.
     if (parseParkCalendarMonthSpelling(date)) {
       permanentRedirect(
         `/${locale}${parkCalendarPath(locale, continent, country, city, parkSlug)}`
@@ -302,14 +253,12 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   // directly from search and a stale geo path must transfer rather than 404.
   const malformed = await findParkPageRedirect(continent, country, city, parkSlug);
   if (malformed) {
-    // Keep the calendar segment and the month, exactly as the relocated/renamed branches below do.
-    // Dropping them sent somebody who asked for September 2026 to the park's wait-time page.
+    // Keep the calendar segment and the month, as the relocated and renamed branches below do.
     permanentRedirect(`/${locale}${malformed}${parkCalendarSuffix(locale, month)}`);
   }
 
-  // The month the page is ABOUT — on the hub that is the current one, which is the month the grid
-  // opens on and therefore the month a summary there would describe. Fired here, awaited inside
-  // its own boundary below, and data-cached so tens of thousands of URLs do not each mean an
+  // The month the page is about: on the hub the current one, the month the grid opens on.
+  // Awaited inside its own boundary below, and data-cached so the many URLs do not each mean an
   // upstream call.
   const summaryMonth = month ?? nowMonth;
   const monthSeedPromise = getCalendarMonthSeed(continent, country, city, parkSlug, summaryMonth);
@@ -359,14 +308,8 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
     ...(month ? [{ name: t('breadcrumb'), url: calendarPath }] : []),
   ];
 
-  // The neighbouring months, but only while they are inside the window the route serves — a
-  // stepper that points at a 404 is worse than one that stops.
-  // One month value feeds the stepper, the grid and the label, so the three cannot disagree —
-  // the page used the park's clock while the grid fell back to the browser's, which is one month
-  // apart for a few hours around every month boundary in any zone but the reader's.
   // Same rule `generateMetadata` applies to `alternates.canonical`: the hub is canonical for the
-  // current month, every other month for itself. Kept next to the render so the structured data
-  // and the <link> can only ever name one URL.
+  // current month, every other month for itself.
   const isCurrentMonth = !!month && month.year === nowMonth.year && month.month === nowMonth.month;
   const canonicalUrl = `${SITE_URL}/${locale}${parkCalendarPath(
     locale,
@@ -377,6 +320,9 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
     isCurrentMonth ? undefined : (month ?? undefined)
   )}`;
 
+  // One month value feeds the stepper, the grid and the label, so the three cannot disagree. The
+  // neighbours only while they are inside the window: a stepper pointing at a 404 is worse than
+  // one that stops.
   const shownMonth = month ?? nowMonth;
   const back = shiftParkCalendarMonth(shownMonth, -1);
   const forward = shiftParkCalendarMonth(shownMonth, 1);
@@ -385,10 +331,9 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
 
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]">
-      {/* Tells the planner which park this route is about — see
-          `lib/planner/page-park.ts`. The panel lives in the layout and
-          otherwise cannot tell one park's calendar from another's, which is how
-          its header came to name a park the reader was not looking at. */}
+      {/* Tells the planner which park this route is about (`lib/planner/page-park.ts`): the
+          panel lives in the layout and cannot otherwise tell one park's calendar from
+          another's. */}
       <PlannerPageParkBeacon
         slug={park.slug}
         name={parkName}
@@ -413,16 +358,9 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
         statsAfterChildren
         head={
           <>
-            {/* Keyed on the CANONICAL month, not on the requested one. In August the hub and
-              `/2026/8` render the same page and the metadata canonicals the second at the first —
-              but both emitted their own `#dataset` and `#webpage` with identical name, description
-              and coverage. Two ids for one month, one of them on a URL that declares itself not
-              canonical. `canonicalMonth` is what the `<link rel=canonical>` already uses. */}
-            {/* What this page is about, pointing at the park's own `AmusementPark` node rather
-              than restating it. Without this the calendar pages declared no subject at all. */}
-            {/* The page is a table of one row per day, which is what `Dataset` is for. The month
-              it covers is `summaryMonth` — on the hub that is the current one, which is what its
-              grid opens on, so the coverage matches what a visitor actually sees. */}
+            {/* A `Dataset` for the table of days (`summaryMonth`, the month the grid opens on) and
+              a page node pointing at the park's own `AmusementPark` node. Both are keyed on the
+              canonical URL, so the hub and its current month do not emit two ids for one month. */}
             <ParkDatasetStructuredData
               url={canonicalUrl}
               parkUrl={`${SITE_URL}/${locale}${parkPath}`}
@@ -479,10 +417,8 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             country={country}
             countryName={countryName}
             locale={locale}
-            // The H1 is the one thing that must differ between the hub and each of its months,
-            // or twelve pages share a heading and a crawler has no reason to tell them apart.
-            // The month this page shows — the URL's on a month page, today's on the hub. Same
-            // suffix either way, for the same reason the title is.
+            // The H1 must differ between the hub and each of its months, or the pages share a
+            // heading; it names the month the page shows, today's on the hub.
             suffix={t('h1Suffix', { month: monthName ?? monthLabel(locale, nowMonth) })}
             intro={
               monthName
@@ -495,10 +431,8 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
           />
         }
       >
-        {/* The same header card the park page opens with, built with LINK cells instead of tab
-          triggers — there is no `<Tabs>` on this page to switch, and a trigger without a panel is
-          a button that does nothing. The panel above them is the identical component reading the
-          identical query keys, so the card shows the same readings it does one URL over. */}
+        {/* The park page's header card, with link cells instead of tab triggers: there is no
+          `<Tabs>` on this page, and a trigger without a panel does nothing. */}
         <ParkHeaderCard
           panel={
             <ParkTodayPanel
@@ -526,10 +460,8 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
           }
         />
 
-        {/* One chapter, one stream. „Beste Reisezeit" and the month's own sentences answer the
-          same question at two grains, so they arrive as one box rather than as two cards with a
-          strip of park photograph between them — and as one boundary rather than two, which is
-          also one placeholder to keep honest instead of two that have to agree. */}
+        {/* One chapter, one stream: „Beste Reisezeit" and the month's own sentences answer the
+          same question at two grains, so they arrive as one box behind one boundary. */}
         <Suspense
           fallback={
             <ParkBestDaysSectionSkeleton
@@ -602,16 +534,9 @@ function parkCalendarSuffix(locale: string, month: ParkCalendarMonth | null): st
 }
 
 /**
- * The streamed „beste Reisezeit" chapter, month summary included.
- *
- * Two awaits in one boundary on purpose. They used to be two: the month summary in its own
- * <Suspense> above this one, each with its own placeholder, each resolving on its own schedule —
- * so the chapter assembled itself in two visible steps. They answer the same question and are one
- * box now, so they are one wait.
- *
- * Either half may be missing and the chapter still stands. A `null` best-days seed falls through
- * to the section's own client fetch; a `null` month seed (timeout, or a month with no operating
- * day at all) simply renders no lead-in.
+ * The streamed „beste Reisezeit" chapter, month summary included: two awaits in one boundary,
+ * because they are one box. A `null` best-days seed falls through to the section's client fetch;
+ * a `null` month seed renders no lead-in.
  */
 async function SeededBestDays({
   seedPromise,

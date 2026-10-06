@@ -11,24 +11,10 @@ interface PlannerGridGroundProps {
 }
 
 /**
- * The ground the day grid stands on.
- *
- * Four layers, `aria-hidden`, no pointer events, and not one `dark:` utility:
- * every colour is a token, and the token is what flips. The crowd palette is not
- * symmetric between the themes, which is why `park-calendar-day` carries no
- * `dark:` on its tinted tile either.
- *
- * There were five. The fifth was a 4 px "rush strip" at the canvas's left edge
- * whose opacity was how busy each hour typically is — a shape, never a level.
- * It gave way to the WEATHER RAIL, which answers a question a plan cannot
- * otherwise answer at all: the rush was already legible from the blocks
- * themselves, since every one of them is drawn at the height of its own queue
- * and tinted by it, while nothing on this grid said it would be raining at two.
- *
- * The whole canvas starts as "the park is shut" and the operating band is
- * painted back over it. That way the closed hours are a positive statement
- * rather than the absence of one, and a reader can see at a glance how much of
- * the axis is a place they can be.
+ * The ground the day grid stands on: four layers, `aria-hidden`, no pointer events, and no `dark:`
+ * utility, since every colour is a token that flips with the theme. The whole canvas starts as "the
+ * park is shut" and the operating band is painted back over it, so the closed hours are a positive
+ * statement.
  */
 export function PlannerGridGround({
   grid,
@@ -43,13 +29,11 @@ export function PlannerGridGround({
 
   return (
     <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-      {/* L0 — the ground: shut, until told otherwise. */}
+      {/* L0: the ground, shut until told otherwise. */}
       <div className="bg-muted/25 absolute inset-0" />
 
-      {/* L1 — the operating band. The weather chart's own class string with its
-          border rotated, so a reader who has met the weather card recognises the
-          shape. `/[0.06]` rather than that chart's `/[0.07]`: a dozen crowd
-          tints sit on top of this one and stopped separating from it at .07. */}
+      {/* L1: the operating band, the weather chart's class string with its border rotated, at
+          `/[0.06]`, where the crowd tints on top of it still separate. */}
       <div
         className={cn(
           'absolute inset-x-0 border-y border-dashed',
@@ -58,11 +42,9 @@ export function PlannerGridGround({
         style={{ top: bandTop, height: bandHeight }}
       />
 
-      {/* L1b — the early-entry window, above the band: open, but only for the
-          headliners, so it is drawn in the band's colour at half its strength
-          and shares the band's dashed top edge. `null` on every day the visitor
-          has not said they hold early entry, which is every day until PAR-200's
-          answer is wired in, and then nothing here renders. */}
+      {/* L1b: the early-entry window above the band, open for the headliners only, so in the
+          band's colour at half strength with its dashed top edge. Only on a day the visitor holds
+          early entry. */}
       {grid.earlyEntryOpenMin !== null && !loading && (
         <div
           data-early-entry-band=""
@@ -74,18 +56,10 @@ export function PlannerGridGround({
         />
       )}
 
-      {/* L2 — the truncation feather, and it sits BELOW the band rather than
-          inside its last hour. The API reports the hour the closing time falls
-          in, so `closeMin` is the park's own closing minute on the 86 % of
-          operating days that end on the hour (3,046 of 3,540 measured across
-          the catalogue) and the earliest it can close on the other 14 %, which
-          close at half past or quarter to. The uncertainty therefore points
-          DOWN — the park may still be open up to an hour past the band — where
-          the feather used to hatch the last hour of the band, an hour that is
-          certainly open. Nothing is planned in here (see `DayGrid.closeMin`); a
-          drag may still reach it, because the person dragging knows their park.
-          When the backend sends a real minute `closeSlackMin` goes to zero and
-          this disappears. */}
+      {/* L2: the truncation feather, below the band, since the park may still be open up to an
+          hour past `closeMin` (the API reports the hour the closing time falls in). Nothing is
+          planned here; a drag may reach it. Gone once `closeSlackMin` is zero. See
+          docs/rules/the-planners-day-ends-when-the-park-closes-and-a-headliner-is.md. */}
       {grid.closeSlackMin > 0 && !loading && (
         <div
           className="absolute inset-x-0 opacity-25"
@@ -98,9 +72,8 @@ export function PlannerGridGround({
         />
       )}
 
-      {/* L3 — hour rules, inside the band only. The ladder stopping at a labelled
-          dashed line is one of the ways a reader is told that the region below
-          it is not a place they can plan into. */}
+      {/* L3: hour rules, inside the band only, so the ladder stopping says the region below is
+          not plannable. */}
       {!loading &&
         hours.map((hour) => (
           <div

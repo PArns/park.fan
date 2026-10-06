@@ -4,6 +4,7 @@ import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
 
+/** The legal notice (Impressum) in English, shown on every locale but `de`. */
 export function ImpressumEN() {
   return (
     <>

@@ -25,11 +25,8 @@ interface DailyWaitTimeChartClientProps {
   /**
    * What stands here while this component cannot draw yet.
    *
-   * It has a `useMounted()` gate of its own. Mounted under a parent's gate it is already open (the
-   * gate reads the client snapshot after hydration), but where this component hydrates itself it
-   * renders this for the hydration pass, and `null` there is a card collapsing to its remaining
-   * chrome for one frame. On the ride page that was a 269 px jump of the Fancast link under it,
-   * back when the gate ran one commit behind its parent's. Pass the same box the caller holds
+   * Where this component hydrates itself it renders this for the hydration pass, and `null` would
+   * collapse the card to its remaining chrome for a frame. Pass the same box the caller holds
    * during its own wait.
    */
   fallback?: React.ReactNode;
@@ -39,7 +36,7 @@ interface DailyWaitTimeChartClientProps {
    * the corridor belongs to the bars it sits behind and not to whatever the
    * endpoint would have picked on its own.
    *
-   * Omit and the chart renders exactly as before — the corridor is additive.
+   * Omit it and the chart draws no corridor.
    */
   corridor?: {
     continent: string;
@@ -50,7 +47,7 @@ interface DailyWaitTimeChartClientProps {
   };
 }
 
-/** Returns the time string (HH:mm) in the given IANA timezone from an ISO string, rounded to 15m. */
+/** The `HH:mm` of an ISO time in the given IANA timezone. */
 function getTimeSlotInTimezone(isoStr: string, timezone: string): string {
   const date = new Date(isoStr);
   const parts = getDateTimeFormat('en', {
@@ -68,10 +65,8 @@ function getTimeSlotInTimezone(isoStr: string, timezone: string): string {
 /**
  * Builds the daily chart's 15-minute slots for the given "today" (park-tz date string).
  *
- * Moved verbatim off the former DailyWaitTimeChartServer so the "today" selection no longer reads
- * the server clock (getServerToday) in the attraction static shell — that read was the #1 ISR-write
- * driver, pinning the shell to a 1h revalidate. The data itself (history/forecast/schedule) is
- * still passed down from the server shell (good for SEO/first paint); only the day pick is client.
+ * The day is picked on the client so the attraction's static shell never reads the clock; the
+ * data itself still comes down from the server render.
  */
 function buildChartData(
   todayStr: string,
@@ -87,21 +82,18 @@ function buildChartData(
   /** Hour → [P25, P90] for this ride, or null while the query is in flight. */
   corridorByHour: Map<number, [number, number]> | null
 ): DailyWaitTimeChartData | null {
-  // History P90 map: "HH:mm" → value
   const todayHistory = history?.find((h) => h.date === todayStr);
   const historyMap = new Map<string, number>();
   todayHistory?.hourlyP90?.forEach((p) => {
     historyMap.set(p.hour, p.value);
   });
 
-  // Forecast map: "HH:mm" (park tz) → waitTime, first entry wins per slot
   const forecastMap = new Map<string, number>();
   hourlyForecast?.forEach((f) => {
     const slot = getTimeSlotInTimezone(f.predictedTime, timezone);
     if (!forecastMap.has(slot)) forecastMap.set(slot, f.predictedWaitTime);
   });
 
-  // Time range: schedule-based or derived from data points
   const todaySchedule = schedule?.find((s) => s.date === todayStr);
   let startTime = '09:00';
   let endTime = '19:00';
@@ -115,7 +107,6 @@ function buildChartData(
         timeZone: timezone,
       }).format(date);
       const m = getDateTimeFormat('en', { minute: 'numeric', timeZone: timezone }).format(date);
-      // Round down to nearest 15m
       const roundedM = Math.floor(parseInt(m, 10) / 15) * 15;
       startTime = `${h.padStart(2, '0')}:${roundedM.toString().padStart(2, '0')}`;
     }
@@ -127,7 +118,6 @@ function buildChartData(
         timeZone: timezone,
       }).format(date);
       const m = getDateTimeFormat('en', { minute: 'numeric', timeZone: timezone }).format(date);
-      // Round up to nearest 15m
       const roundedM = Math.ceil(parseInt(m, 10) / 15) * 15;
       let finalH = parseInt(h, 10);
       let finalM = roundedM;
@@ -145,7 +135,6 @@ function buildChartData(
     }
   }
 
-  // Filter maps to ensure no data outside operating hours
   for (const time of historyMap.keys()) {
     if (time < startTime || time > endTime) historyMap.delete(time);
   }
@@ -160,7 +149,6 @@ function buildChartData(
     startTime = historyKeys[0];
   }
 
-  // Track last real data point to trim trailing empty slots later
   const lastHistoryTime = historyKeys.length > 0 ? historyKeys[historyKeys.length - 1] : null;
   const forecastKeys = [...forecastMap.keys()].sort();
   const lastForecastTime = forecastKeys.length > 0 ? forecastKeys[forecastKeys.length - 1] : null;
@@ -170,7 +158,6 @@ function buildChartData(
       .sort()
       .pop() ?? null;
 
-  // Build 15-minute slots
   const slots: DailyWaitTimeChartData['slots'] = [];
   const [startH, startM] = startTime.split(':').map(Number);
   const [endH, endM] = endTime.split(':').map(Number);
@@ -198,15 +185,14 @@ function buildChartData(
     }
   }
 
-  // Trim trailing slots past last actual data point (schedule may extend beyond predictions)
+  // The schedule may run past the last prediction; trailing empty slots go.
   if (lastActualTime) {
     while (slots.length > 0 && slots[slots.length - 1].time > lastActualTime) {
       slots.pop();
     }
   }
 
-  // Fill null history slots using carry-forward from last known value.
-  // This avoids fake sloping lines between two real data points.
+  // Carry-forward rather than interpolation, which would draw a fake slope between two real points.
   for (let i = 0; i < slots.length; i++) {
     if (slots[i].historyValue !== null) continue;
     const prev = i - 1;
@@ -216,10 +202,8 @@ function buildChartData(
     // Leading nulls (before first data point) remain null — park not open yet
   }
 
-  // Skip render if there's no data at all
   if (slots.every((s) => s.historyValue === null && s.forecastValue === null)) return null;
 
-  // Convert bestVisitTimes ISO timestamps → "HH:mm" in park timezone
   const bestSlots = bestVisitTimes
     ?.map((s) => ({
       time: getTimeSlotInTimezone(s.time, timezone),
@@ -236,6 +220,11 @@ function buildChartData(
   };
 }
 
+/**
+ * Builds `DailyWaitTimeChart` for today in the park's timezone from the ride's history, forecast,
+ * schedule and best visit times, and adds the P25 to P90 corridor once it loads (last).
+ * Renders `fallback` until mounted.
+ */
 export function DailyWaitTimeChartClient(props: DailyWaitTimeChartClientProps) {
   const mounted = useMounted();
   const { corridor } = props;
@@ -267,14 +256,10 @@ export function DailyWaitTimeChartClient(props: DailyWaitTimeChartClientProps) {
     return map.size > 0 ? map : null;
   }, [dayCurve]);
 
-  // Derive "today" (park tz) on the client; before mount render nothing so SSR and the first client
-  // render match (no hydration mismatch) and the static shell never reads the clock.
-  //
-  // The data props are listed one by one. They used to be left out on the claim that props came
-  // from the server shell and never changed, but the ride page feeds them from the attraction
-  // detail query, which polls every five minutes: the chart kept the first response for as long
-  // as the tab was open, and its "today" never rolled over. `translations` stays out — it is a new
-  // object on every render of the caller and only changes with the locale.
+  // Derive "today" (park tz) on the client; before mount render nothing, so SSR and the first
+  // client render match and the static shell never reads the clock. The data props are listed one
+  // by one because the ride page polls them every five minutes. Left out: `props` and
+  // `translations`, a new object on every render of the caller that only changes with the locale.
   const { history, hourlyForecast, schedule, bestVisitTimes } = props;
   const data = useMemo(() => {
     if (!mounted) return null;

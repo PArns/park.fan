@@ -11,6 +11,10 @@ function getIsOptedOut(): boolean {
   return localStorage.getItem(UMAMI_DISABLED_KEY) === '1';
 }
 
+/**
+ * Privacy-page box that shows whether this browser is counted by Umami and toggles the
+ * `umami.disabled` localStorage flag to opt out or back in.
+ */
 export function AnalyticsOptOut() {
   const t = useTranslations('datenschutz.analyticsOptOut');
   const [isOptedOut, setIsOptedOut] = useState<boolean | null>(null);

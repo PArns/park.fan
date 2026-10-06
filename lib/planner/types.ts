@@ -1,6 +1,6 @@
 /**
- * The trip planner's own data. Everything here lives in the visitor's browser —
- * there is no account system, and the plan is theirs.
+ * The trip planner's own data. It lives in the visitor's browser: there is no account, and the
+ * plan is theirs.
  */
 
 /** Where a park lives, so a stored plan can rebuild its API path and its links. */
@@ -20,16 +20,12 @@ export const PLANNER_BLOCK_ICONS = [
   'meet',
   'star',
 ] as const;
+/** One of {@link PLANNER_BLOCK_ICONS}. */
 export type PlannerBlockIcon = (typeof PLANNER_BLOCK_ICONS)[number];
 
 /**
- * A block the visitor wrote themselves.
- *
- * Its height is a DURATION the visitor drags, not a queue the model predicts —
- * which is the one structural difference from a ride. Everything else about it
- * (where it sits, how it packs into lanes, what the legs either side of it say)
- * is the same machinery, because an hour spent eating and an hour spent queuing
- * cost the day the same hour.
+ * A block the visitor wrote themselves. Its height is a duration the visitor drags, not a queue the
+ * model predicts; everything else (placement, lanes, legs) is the same machinery as a ride's.
  */
 export interface PlannerCustomBlock {
   label: string;
@@ -38,6 +34,17 @@ export interface PlannerCustomBlock {
   durationMinutes: number;
 }
 
+/** The longest label a free block keeps, wherever it is typed, stored or read back. */
+export const MAX_CUSTOM_LABEL_LENGTH = 60;
+
+/** Five minutes is a block you can still read; twelve hours is a whole day. */
+export const MIN_CUSTOM_MINUTES = 5;
+/** The longest a free block may be dragged to. */
+export const MAX_CUSTOM_MINUTES = 720;
+/** How long a free block is when nobody said. */
+export const DEFAULT_CUSTOM_MINUTES = 60;
+
+/** One block in a planned day: a ride, a free block or a show. */
 export interface PlannerEntry {
   /**
    * Stable across reorders and re-renders. Drag needs an identity that survives
@@ -46,34 +53,25 @@ export interface PlannerEntry {
    */
   id: string;
   /**
-   * The ride this entry stands for — absent on a FREE BLOCK, which stands for
-   * nothing in the catalogue. Optional rather than an empty string on purpose:
-   * an empty slug would be a claim that a ride exists with no name, one render
-   * away from a reader, and every lookup keyed on it (`liveWaits`, `closedNow`,
-   * the forecast curve, the "already planned" count) would silently answer for
-   * a ride that is not there.
+   * The ride this entry stands for, absent on a free block. Optional rather than an empty string,
+   * so no lookup keyed on it answers for a ride that is not there.
    */
   attractionSlug?: string;
   attractionName?: string;
   /**
-   * Set where this is a free block — a lunch break, a show, a meeting point,
-   * anything a visitor wants on the day that the catalogue does not know.
+   * Set where this is a free block: anything the visitor wants on the day that the catalogue lacks.
    */
   custom?: PlannerCustomBlock;
   /**
-   * Set where this block is a SHOW — one performance picked from the day's
-   * showtimes. It always travels with a `custom` block (label = the show's name,
-   * icon `show`), so the optimiser, the fit assistant and the estimate treat it
-   * as the fixed block they already know. What `showSlug` adds is the identity
-   * the walking-time sum needs to find the show's position, and a lock: the time
-   * belongs to the performance, so the entry is not dragged, nudged, resized or
-   * shifted. Changing it means deleting it and picking another performance.
+   * Set where this block is a show, one performance picked from the day's showtimes. It always
+   * comes with a `custom` block, so the optimiser and the estimate treat it as a fixed block; the
+   * slug gives the walking sum the show's position and locks the time to the performance (no drag,
+   * nudge or resize).
    */
   showSlug?: string;
   /**
-   * When the visit starts, as park-local minutes since midnight. Park-local
-   * always: the reader's own offset never enters the planner, because this
-   * value and the date it is filed under are what a plan IS.
+   * When the visit starts, in park-local minutes since midnight. Park-local always: the reader's
+   * own offset never enters the planner.
    */
   startMinute: number;
   /**
@@ -92,12 +90,9 @@ export interface PlannerEntry {
 }
 
 /**
- * What the visitor said about the day itself, as against what is in it.
- *
- * Two answers, both about the PARTY, and they are stored per day rather than per
- * park or per browser because that is what they are properties of: the same
- * family comes back in October without the four-year-old, and the park has not
- * changed. Neither ever hides a ride — see `party.ts`.
+ * What the visitor said about the day itself, as against what is in it. Stored per day, because a
+ * party changes between visits while the park does not. Neither answer ever hides a ride; see
+ * `party.ts`.
  */
 export interface PlannerDayPrefs {
   /**
@@ -108,12 +103,9 @@ export interface PlannerDayPrefs {
   /** The party would rather not get soaked. Water rides carry a flag. */
   avoidWet?: boolean;
   /**
-   * The visitor said they hold early entry for this day (a hotel guest let in
-   * before the official opening). Only ever asked at a park whose `/plan/day`
-   * context carries `hasEarlyEntry`, and absent everywhere else, which reads
-   * as `false`. The day grid's pre-opening window (PAR-199) reads it as the
-   * day context's `earlyEntry`. Not a statement about the party, so
-   * `hasPartyPrefs` ignores it.
+   * The visitor holds early entry for this day (a hotel guest let in before opening). Only asked at
+   * a park whose `/plan/day` context carries `hasEarlyEntry`; absent reads as `false`. Not about
+   * the party, so `hasPartyPrefs` ignores it.
    */
   earlyEntry?: boolean;
 }
@@ -126,11 +118,8 @@ export interface PlannerDay {
   /** Absent until the visitor has been asked. Never inferred. */
   prefs?: PlannerDayPrefs;
   /**
-   * Set where the visitor accepted a day from the trip assistant and has planned
-   * nothing in it yet. Optional, so a plan written before it existed reads as it
-   * always did. `openDay` files an empty day too, and that one stays invisible on
-   * purpose; this flag is what tells "the visitor said yes to this day" from
-   * "the visitor once opened this date".
+   * The visitor accepted this day from the trip assistant and has planned nothing in it yet. Tells
+   * "said yes to this day" from an empty day `openDay` filed by just opening the date.
    */
   reserved?: boolean;
 }
@@ -140,20 +129,21 @@ export function isPlannedDay(day: PlannerDay): boolean {
   return day.entries.length > 0 || day.reserved === true;
 }
 
+/** One park in the plan, with its days. */
 export interface PlannerPark {
   slug: string;
   name: string;
   geo: PlannerGeo;
   /**
-   * The park's IANA zone, stored rather than fetched: the overview lists several
-   * parks at once and has no payload for any of them, so a single "today" for
-   * the panel would be wrong by construction for all but one.
+   * The park's IANA zone, stored rather than fetched: the overview lists several parks at once with
+   * no payload for any of them.
    */
   timezone?: string;
   /** Keyed by date, so several days of the same park sit side by side. */
   days: Record<string, PlannerDay>;
 }
 
+/** The whole plan, as the store holds and persists it. */
 export interface PlannerState {
   /** Keyed by park slug — the visitor plans more than one park. */
   parks: Record<string, PlannerPark>;
@@ -164,6 +154,7 @@ export interface PlannerState {
   version: number;
 }
 
+/** A plan with nothing in it. */
 export const EMPTY_PLANNER_STATE: PlannerState = {
   parks: {},
   activeParkSlug: null,
@@ -174,6 +165,22 @@ export const EMPTY_PLANNER_STATE: PlannerState = {
 /** True when there is anything at all worth opening the flyout for. */
 export function hasAnyPlan(state: PlannerState): boolean {
   return Object.values(state.parks).some((park) => Object.values(park.days).some(isPlannedDay));
+}
+
+/** The parks that hold a planned day, by name in the reader's language, each with those days in date order. */
+export function plannedParks(
+  parks: PlannerState['parks'],
+  locale: string
+): Array<Omit<PlannerPark, 'days'> & { days: PlannerDay[] }> {
+  return Object.values(parks)
+    .map((park) => ({
+      ...park,
+      days: Object.values(park.days)
+        .filter(isPlannedDay)
+        .sort((a, b) => a.date.localeCompare(b.date)),
+    }))
+    .filter((park) => park.days.length > 0)
+    .sort((a, b) => a.name.localeCompare(b.name, locale));
 }
 
 /** Entries for one park and date, in plan order. Never `undefined`. */
@@ -187,7 +194,7 @@ export function entriesFor(
 }
 
 /** How many entries a park has across every planned day. */
-export function countForPark(state: PlannerState, parkSlug: string): number {
+function countForPark(state: PlannerState, parkSlug: string): number {
   const park = state.parks[parkSlug];
   if (!park) return 0;
   return Object.values(park.days).reduce((sum, day) => sum + day.entries.length, 0);
@@ -199,23 +206,9 @@ export function countAll(state: PlannerState): number {
 }
 
 /**
- * The latest minute a PLANNED stop may carry.
- *
- * A plan is not bounded by the park's hours and must not be. `optimizeDay`
- * files an ENTRY it cannot fit before closing PAST the gate on purpose, in the
- * sequence the day would actually reach it, and `growGridForSpans` widens the
- * canvas to hold them — so the overflow reads as "and these two do not fit"
- * rather than as blocks stacked in lanes on the park's last minute. (A ride it
- * is ADDING gets the opposite answer and is left out; the asymmetry is that
- * nobody's own plan is deleted behind their back.) Clamped at
- * the drag world's 25:00 that is exactly what came back: ten 120-minute queues
- * in a park open 09:00–22:00 produced 25:30, 26:45 and 28:00, and all three
- * were stored as 1500. The stacking the optimiser goes out of its way not to
- * draw was put back by the write.
- *
- * 48:00 because a plan is filed under ONE date and read in the park's own
- * clock: past the end of the day after it, a minute is not a reading of that
- * clock under any axis this app can draw, and nothing `MAX_STOPS` stops
- * of the longest queue on record can produce comes near it.
+ * The latest minute a planned stop may carry. A plan is not bounded by the park's hours:
+ * `optimizeDay` files an entry it cannot fit past the gate, in sequence, and a clamp at the drag's
+ * 25:00 would stack those again. 48:00, because past the end of the next day a minute is not a
+ * reading of the park's clock on any axis this app draws.
  */
 export const MAX_PLANNED_MINUTE = 48 * 60;

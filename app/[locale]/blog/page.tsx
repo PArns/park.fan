@@ -21,9 +21,10 @@ import { RouteMessages } from '@/i18n/route-messages';
 import { blogFeedAlternates } from '@/lib/blog/feed';
 import { cn } from '@/lib/utils';
 
-/** Scenic establishing shot for the blog hero (distinct from Fancast/the hub). */
-// Asked of the database, so the path carries its content version and the park can
-// change which photo this is without the blog index knowing.
+/**
+ * The blog hero's photo, asked of the media database so the path carries its content version and
+ * the park can change which photo it is.
+ */
 const BLOG_HERO_IMAGE =
   getParkBackgroundImage('europa-park') ?? '/media/europa-park/background.jpg';
 
@@ -31,10 +32,8 @@ interface BlogIndexPageProps {
   params: Promise<{ locale: string }>;
 }
 
-// Statically generated at build time. Pagination via `?page=N` would force a
-// dynamic render — when the post count grows past one page we'll add a
-// path-based `/blog/page/[n]` route, generateStaticParams for it, and keep
-// this index static.
+// Static: pagination via `?page=N` would force a dynamic render, so a second page of posts
+// means a path-based `/blog/page/[n]` route.
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -44,8 +43,7 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'blog' });
   const ogImageUrl = getOgImageUrl([locale, 'blog']);
-  // Descriptive, keyword-bearing <title> (the generic "Blog" stays as the H1
-  // fallback / breadcrumb label; the meta title carries the topic for search).
+  // A keyword-bearing <title>; the generic "Blog" stays the breadcrumb label.
   const fullTitle = `${t('heroTitle')} | park.fan`;
   return {
     title: { absolute: fullTitle },
@@ -109,10 +107,7 @@ export default async function BlogIndexPage({ params }: BlogIndexPageProps) {
     );
   }
 
-  // Render up to BLOG_POSTS_PER_PAGE on the index. Older posts stay reachable
-  // via the category tree on the right-hand sidebar. All posts use the same
-  // uniform card grid as the category pages (no separate full-width feature —
-  // it stretched portrait covers into a thin panoramic strip).
+  // Older posts stay reachable through the category tree in the sidebar.
   const visiblePosts = allPosts.slice(0, BLOG_POSTS_PER_PAGE);
 
   return (

@@ -11,11 +11,8 @@ import { cn } from '@/lib/utils';
 import type { AttractionStatus, CrowdLevel, ParkStatus } from '@/lib/api/types';
 
 /**
- * Minimal English message bundle for the live badges. The decoration is
- * mounted via `createRoot`, which creates a fresh React tree that does NOT
- * inherit the page's NextIntlClientProvider context. We therefore have to
- * carry the badge translations ourselves; the slice is tiny so bundle cost
- * is negligible and we avoid pulling in the full messages JSON.
+ * The live badges' English messages: a root mounted with `createRoot` does not inherit the page's
+ * NextIntlClientProvider, and this slice is far smaller than the full messages JSON.
  */
 const BADGE_MESSAGES = {
   parks: {
@@ -42,11 +39,7 @@ const BADGE_MESSAGES = {
   common: { min: 'min' },
 };
 
-/**
- * Identical compact sizing to what BlogParkLink uses for the inline pill
- * after a referenced name — keeps the editor preview visually in lockstep
- * with the published render without copy-pasting the badge implementations.
- */
+/** The compact pill sizing `BlogParkLink` uses after a referenced name, so the preview matches. */
 const INLINE_BADGE = 'h-[18px] gap-0.5 px-1.5 py-0 text-[10px] font-semibold no-underline';
 
 export interface InlineBadgeData {
@@ -87,10 +80,8 @@ function InlineBadge({ data }: { data: InlineBadgeData }) {
 }
 
 /**
- * Mount the real `ParkStatusBadge` / `CrowdLevelBadge` / wait-time Badge React
- * components into a DOM node owned by the ProseMirror widget decoration. The
- * returned Root must be unmounted from the decoration's `destroy` callback so
- * we don't leak React roots across editor sessions.
+ * Mounts the real `ParkStatusBadge`, `CrowdLevelBadge` or wait-time `Badge` into a widget
+ * decoration's DOM node. The caller unmounts the returned root in the decoration's `destroy`.
  */
 export function mountInlineBadge(container: HTMLElement, data: InlineBadgeData): Root {
   const root = createRoot(container);

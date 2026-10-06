@@ -16,9 +16,8 @@ const LocationBanner = nextDynamic(
   { loading: () => null, ssr: true }
 );
 
-// `loading` is a real Suspense fallback — see the note in page-bottom-sections.tsx. With
-// `() => null` the band arrived after the first paint and pushed the page tail down. It carries
-// the same `className` as the section below, or the band changes height as the chunk lands.
+// `loading` is a real Suspense fallback (see page-bottom-sections.tsx), with the same `className`
+// as the section, so the band keeps its height when the chunk lands.
 const FavoritesSection = nextDynamic(
   () =>
     import('@/components/parks/favorites-section').then((m) => ({ default: m.FavoritesSection })),
@@ -63,9 +62,9 @@ import {
   getSectionHeadingLabels,
 } from '@/components/home/section-headings';
 
-// The homepage story — "what is park.fan", chapter by chapter. Every one of these
-// is a Server Component whose copy is read server-side, so ~2 500 words of German
-// explanation never reach the client bundle (see the routed-translations rule).
+// The homepage story, chapter by chapter. Every one is a Server Component whose copy is read
+// server-side, so it never reaches the client bundle. See
+// docs/rules/translations-are-routed-not-bundled.md.
 import { BlogTeaserBand } from '@/components/home/story/blog-teaser-band';
 import { ThreeSteps } from '@/components/home/story/three-steps';
 import { NearbyChapter } from '@/components/home/story/nearby-chapter';
@@ -96,52 +95,26 @@ import { blogFeedAlternates } from '@/lib/blog/feed';
 import { getNewsMenu } from '@/lib/navigation/news-menu';
 import { latestNewsFrom } from '@/components/blog/latest-news-chip';
 
-// STATIC SHELL (per-locale build-time prerender — the homepage is only 6 pages, NOT the park/
-// attraction catalog). The shell is served straight from the CDN (fast TTFB → fast LCP, bf-cache
-// eligible). Every live value (nearby, favorites, ticker, open-park counts, global stats,
-// featured-card statuses) is refreshed CLIENT-side via React Query on top of the baked SSR seed —
-// the same shell+overlay model as the park/hub pages — so the shell's age is invisible to a JS
-// visitor. No `force-dynamic`: a per-request server render here was the page's biggest cost
-// (the `/` → `/{locale}` redirect + dynamic TTFB landing before LCP).
-
-// Regenerate WEEKLY. Vercel bills every shell regeneration as size-weighted ISR writes (~600 KB
-// HTML+RSC ≈ ~75 write units per locale), so the 5-min window this shipped with cost ~50k write
-// units/day across 6 locales — the dominant ISR-write driver of Jun 2026. That went to an hour,
-// and an hour was still 144 rebuilds a day for numbers no reader ever sees in the shell.
+// A static shell per locale, served from the CDN. Every live figure on the page is a seed that a
+// client query overlays on mount (`useGlobalStats`, `useGeoLiveStats`, polling every 5 minutes),
+// so the shell's age is invisible to a reader with JavaScript, and regenerating it weekly saves
+// ISR writes without losing anything a reader sees.
 //
-// Every live figure on this page is a SEED that a client query overlays on mount: the headline
-// counts through `useGlobalStats`, the continent open-counts through `useGeoLiveStats`, both
-// no-store and polling every 5 minutes. The seed exists for first paint and for readers without
-// JavaScript, and neither is served better by being an hour old rather than a week.
-//
-// The one section that had no such overlay was the hottest-parks heat banner, which compared a
-// weather reading against a threshold — stale there is wrong rather than merely old, so it held
-// the whole page to hourly on its own. It rendered nothing outside a real heat wave, which is
-// most of the year, and it is gone; `git log` has it if a summer wants it back with a client
-// overlay of its own.
-//
-// IMPORTANT: every `fetch` in this route's render must use `revalidate ≥ 604800` — the route's
-// effective ISR window is the LOWEST fetch revalidate in it (a single 300s fetch pins the whole
-// page back to 5 min). Verify with `next build` (revalidate column) after touching section fetches.
+// Every `fetch` in this route's render must use `revalidate ≥ 604800`: the route's effective
+// window is the lowest fetch revalidate in it. Verify with `next build` after touching section
+// fetches. See docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md.
 export const revalidate = 604800;
 
-// Classic hero image: a deterministic pick keyed to the current 5-min window — identical for all
-// concurrent requests, and re-picked on each shell regeneration (so the photo effectively rotates
-// with the ISR window, ~hourly). Server-rendered for LCP. Only used when HERO_3D_ENABLED is off;
-// the 3D hero ignores it.
+// The classic hero photo: a deterministic pick per 5-minute window, identical for concurrent
+// requests and re-picked on each shell regeneration. Server-rendered for LCP; the 3D hero
+// ignores it.
 const HERO_TTL_MS = 5 * 60_000;
 
-// On a phone the story chapters trade places with the park lists. A returning visitor comes for
-// the parks near them, their favourites, the popular parks and the ones open right now; on a
-// 390 px screen those sat between twenty chapters of explanation, "Popular Parks" at y=21,753 of
-// 26,569 (PAR-435). Everything wrapped in this class is drawn after the unwrapped sections below
-// a 768 px page, in the same order as in the source; from 768 px up the order is the source
-// order and nothing moves.
-//
-// `order` moves the box, not the DOM, so a screen reader and a crawler still read the story
-// where it stands. The page's width is asked (`@container/page`), not the window's, like every
-// other phone-only switch on this page. The tinted/untinted alternation of the bands follows
-// the source order and is therefore broken on a phone where the parks now sit between them.
+// On a phone the story chapters trade places with the park lists a returning visitor comes for:
+// everything wrapped in this class is drawn after the unwrapped sections below a 768 px page,
+// and from 768 px up the source order holds. `order` moves the box, not the DOM, so a screen
+// reader and a crawler still read the story where it stands. The tinted band alternation follows
+// the source order and is broken on a phone.
 const PHONE_LATER = '@max-[768px]/page:order-1';
 
 interface HomePageProps {
@@ -172,10 +145,8 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
         ...generateAlternateLanguages((l) => `/${l}`),
         'x-default': `${SITE_URL}/en`,
       },
-      // The homepage is where a reader or a crawler looks for a site's feed
-      // first, and it is the one page outside /blog that should answer. Park
-      // and glossary pages deliberately do not: the spec wants a page's own
-      // main feed, and a park page has none.
+      // The homepage is where a reader or a crawler looks for a site's feed first. Park and
+      // glossary pages carry none: the spec wants a page's own main feed, and they have none.
       types: blogFeedAlternates(locale as Locale),
     },
   };
@@ -208,19 +179,13 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     <RouteMessages route="/">
       <div className="flex flex-col">
-        {/* Hero Section – live-numbers headline + in-place search on the left, world-map panel on
-          the right (xl+ only), nearby-park bubbles below. When the user is in a park (nearby),
-          the headline switches to "Willkommen im [Park]" + park info. */}
-        {/* z-10 (not isolate — that clipped nothing but stacked the section BELOW later siblings):
-          the hero search dropdown floats out of this section over the content beneath it, and
-          `overflow-hidden` keeps the background photo in. The sticky header is z-50, so it still
-          wins. */}
-        {/* `suppressHydrationWarning` covers one attribute here: `className`. HeroEntranceGate's
-          inline script removes `hero-entering` 1700 ms in, so on a slow enough load React hydrates
-          against a class list a script has already edited — a development-build warning, and the
-          value that survives is the DOM's, which is the one the gate wanted. That file has the
-          rest. React reads the flag one level deep, on this element's own attributes and text, so
-          a mismatch inside the hero still reports. */}
+        {/* z-10, not `isolate`, which stacked the section below later siblings: the search
+          dropdown floats out of this section over the content beneath it. The sticky header is
+          z-50, so it still wins. */}
+        {/* `suppressHydrationWarning` covers `className`: HeroEntranceGate's inline script
+          removes `hero-entering`, so on a slow load React hydrates against a class list the
+          script already edited. React reads the flag one level deep, so a mismatch inside the
+          hero still reports. */}
         <section
           suppressHydrationWarning
           className="hero-entering relative z-10 -mt-12 overflow-visible px-6 pt-24 pb-8 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12"
@@ -231,36 +196,23 @@ export default async function HomePage({ params }: HomePageProps) {
               blurDataURL={heroBlurDataUrl(randomHeroImage)}
               alt={getMediaAltBySrc(randomHeroImage, locale) ?? undefined}
             />
-            {/* Closes the entrance window, so content that streams in later does not replay it —
-              see HeroEntranceGate for what that cost in LCP. Outside the plate on purpose: a
-              child there would shift the content stagger's nth-child by one. */}
+            {/* Closes the entrance window, so content that streams in later does not replay it
+              (see HeroEntranceGate). Outside the plate on purpose: a child there would shift the
+              content stagger's nth-child by one. */}
             <HeroEntranceGate />
-            {/* No legibility scrim any more. It existed because the left plate carried no
-              backdrop-blur, and it was anchored left so the photo still read on the right —
-              which meant the two panels ended up blurring different backdrops: the left a
-              dimmed one, the right the raw photo. Same 64 px filter, visibly different glass.
-              The plate's own blur now does the legibility work for both. */}
-            {/* Tailwind's `container` spelled out against `@container/page` instead of the
-              window, because it is a MEDIA-query utility: its max-width tier is picked from
-              how wide the window is, while its own box is what the planner's padding leaves.
-              With a 900 px panel on a 2000 px window the tier was 1536 (never binding, so the
-              row ran the full 1052 px) where the same 1052 px as a window gives 1024 — and one
-              breakpoint further down the gap is 223 px, at a window of 1720 with the default
-              448 px panel. Same five tiers as the utility, so nothing moves with the panel shut.
-              The header did this to its own row first — see components/layout/header.tsx. */}
+            {/* No legibility scrim: a scrim would give the two panels different backdrops to
+              blur, and the plate's own blur does the legibility work. */}
+            {/* Tailwind's `container` tiers, asked of `@container/page` instead of the window,
+              which an open planner makes wider than the page. Same five tiers, so nothing moves
+              with the panel shut. */}
             <div className="relative mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]">
               {/* grid-cols-1, not a bare `grid`: an implicit column is sized to its content's
                 max-content width, and the horizontally scrollable pill row inside is wider than
                 a phone. Tailwind's grid-cols-1 is `minmax(0, 1fr)`, which caps it at the
                 container instead — without it the whole hero overflowed the viewport. */}
-              {/* The two-column split asks the PAGE, not the window. `xl:`/`2xl:` read 2000 px
-                while the planner had left 1100, so the map column kept its 640 px and the text
-                column was cut to 356: the headline broke over 4 lines instead of 2 (192 px
-                against 96) and the intro over 7 instead of 3 (204.8 px against 87.8). Same two
-                thresholds, asked of the page's box. */}
+              {/* The two-column split asks the page, not the window, so an open planner does not
+                leave the map its full column and the text a sliver. */}
               <div className="grid grid-cols-1 items-start gap-10 @min-[1280px]/page:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] @min-[1536px]/page:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] @min-[1536px]/page:gap-14">
-                {/* Left: live badge + headline + intro with live counts + in-place search +
-                  the nearby-park bubbles */}
                 <HeroTextPanel className="hero-in-stagger">
                   <Suspense
                     fallback={<HeroWithNearby initialCounts={null} latestNews={latestNews} />}
@@ -272,28 +224,17 @@ export default async function HomePage({ params }: HomePageProps) {
                     label={tHome('hero.searchPlaceholder')}
                     className="peer/hero-search mt-5"
                   />
-                  {/* Nearby parks as pill bubbles (GeoIP fallback without location permission).
-                    mt-8 matches the plate's own padding, so the pills sit the same distance from
-                    the open dropdown above them as from the plate's bottom edge below — at mt-4
-                    they read as glued to the card's footer.
-
-                    While the search holds focus its dropdown covers the pills, and they fade out:
-                    through 75% translucency their high-contrast text ghosts straight through the
-                    glass, and the alternative was a nearly opaque dropdown. `peer-focus-within`
-                    because the two are siblings here — it used to be a `:has(input:focus)` on the
-                    plate, see docs/rules/no-has-selector-in-the-stylesheet.md. */}
+                  {/* GeoIP fallback without location permission. mt-8 matches the plate's own
+                    padding. While the search holds focus its dropdown covers the pills and they
+                    fade out, since their text would ghost through the glass. `peer-focus-within`
+                    because the two are siblings. See
+                    docs/rules/no-has-selector-in-the-stylesheet.md. */}
                   <HeroNearbyBubbles className="mt-8 peer-focus-within/hero-search:pointer-events-none peer-focus-within/hero-search:opacity-0" />
                 </HeroTextPanel>
 
-                {/* Right: world-map panel — only rendered when there is room, and "room" is the
-                  page's box rather than the window's. It kept its 640 px column with the planner
-                  open (624.4 px of map beside a 356 px text column); at the same 1100 px as a
-                  window it is `display: none`, which is what the grid above now also decides.
-
-                  Pushed DOWN while the text column is pulled up (`items-start` + these offsets):
-                  the search field sits in the left column and its dropdown is open at rest, so
-                  the two columns are staggered to give that list room instead of centring both
-                  against each other. */}
+                {/* The world-map panel, only where the page's box has room. Pushed down while the
+                  text column is pulled up, so the search dropdown, open at rest in the left
+                  column, has room. */}
                 <div className="hero-in-late hidden @min-[1280px]/page:mt-24 @min-[1280px]/page:block @min-[1536px]/page:mt-28">
                   <Suspense fallback={<HeroWorldPanelSkeleton />}>
                     <HeroWorldPanel />
@@ -303,39 +244,11 @@ export default async function HomePage({ params }: HomePageProps) {
             </div>
 
             {/* park.fan outranks Parkfan95 for his own name, so part of the German traffic here
-              was looking for Silas. German only — the confusion is a German-search-market one,
-              and the copy lives in the component for that reason.
-
-              Drawn straight onto the photo rather than onto the plate: inside the plate it was
-              the quietest thing on it and read as part of its bottom edge. Out here it is the
-              second thing on the picture itself, so where there is room it takes the image
-              attribution's baseline (`bottom-6`) and is made of the same glass — see
-              HeroParkfan95Pill.
-
-              THAT LINE IS NOT ALWAYS THERE, and both halves of the condition are measured rather
-              than picked:
-
-              - Wide enough. The pill is centred on the section and the attribution is `right-4`,
-                so they share the line only while the viewport exceeds the pill plus twice the
-                caption's width. The widest caption in the rotation is 428 px — measured by
-                cloning the live panel and swapping in all 53 hero captions — and the German pill
-                is 497, which puts the crossover at 1385. At `xl` they overlap by 14 px; at `lg`
-                the caption paints straight over the pill.
-              - Tall enough. The bottom of this hero is only photo while the plate does not reach
-                it. The section centres 912 px of content (784 plate + `pt-20` + `pb-12`) in its
-                `min-h-dvh`, so the plate's lower edge is `80 + (H - 912) / 2 + 784` against a
-                pill top of `H - 64`: they clear by `(H - 944) / 2`, and 980 is where that is
-                ~18 px and still catches the 14-inch laptop at 1512x982. At 1440x900 the plate
-                fills the section and an absolutely placed pill lands ON it, across the
-                nearby-park bubbles — exactly what moving it out here was for.
-
-              Anywhere else it stays in flow at the foot of the hero: still on the photo, still
-              centred, one line above the caption's. In flow is not by itself enough clearance —
-              the hero fills its `min-h-dvh` at those widths, so the pill landed at 908-948
-              against a caption at 919-976, on the same line by accident. `lg:mb-20` reserves the
-              band the caption occupies (its 57 px plus `bottom-6`) under the last thing in the
-              flow, which is what actually separates them; below `lg` the caption is not drawn at
-              all, so the margin goes with it. */}
+              was looking for Silas; German only, and the copy lives in the component. Drawn on
+              the photo, on the image attribution's baseline where there is room
+              (`hero-bottom-line` in app/globals.css holds the measured width and height).
+              Elsewhere it stays in flow at the foot of the hero, and `lg:mb-20` reserves the band
+              the caption occupies below it. */}
             {locale === 'de' && (
               <div className="hero-bottom-line:absolute hero-bottom-line:inset-x-4 hero-bottom-line:bottom-6 hero-bottom-line:mt-0 hero-bottom-line:mb-0 mt-10 flex justify-center lg:mb-20">
                 <HeroParkfan95Pill />
@@ -361,51 +274,30 @@ export default async function HomePage({ params }: HomePageProps) {
           which park it is. Client-only and absent for everybody else — see ParkCompassSlot. */}
         <ParkCompassSlot />
 
-        {/* The newest post, in the band the park shortcuts used to hold: the first
-          thing under the fold, and the only spot on this page that reaches a
-          reader who has not decided to scroll yet. Rendered inline, not behind a
-          boundary — its data is the synchronous manifest. */}
+        {/* The newest post, the first thing under the fold: the only spot on this page that
+          reaches a reader who has not decided to scroll yet. Inline, not behind a boundary: its
+          data is the synchronous manifest. */}
         <BlogTeaserBand locale={locale as Locale} />
 
-        {/* Announcement Section */}
         <div className="pk-reveal">
           <AnnounceSection locale={locale} />
         </div>
 
-        {/* Location banner: not for snippet/indexing (data-nosnippet); show when user has not granted location */}
         <LocationBanner />
 
-        {/* ── The story ──────────────────────────────────────────────────────
-          A first visitor arrives not knowing what this site is, so the page
-          answers that before it shows them anything to operate: three steps,
-          then one chapter per thing park.fan does, then why it is built the way
-          it is, then the proof, then the person.
-
-          The order inside the chapters is by what a stranger needs, not by what
-          was easiest to build: live wait times (the daily use), then the
-          forecast (the one thing almost nobody else attempts), then the
-          calendar and the day curve that plan a visit around it.
-
-          Tinted and untinted bands alternate the whole way down, with one
-          deliberate exception: `FavoritesSection` is a shared band (it renders on
-          blog and glossary pages too), so its tint is not this page's to flip,
-          and it lands next to the tinted live-wait-times chapter. The chapter's
-          own `border-t` carries that boundary — which is what the rule is for. */}
+        {/* The story: a first visitor does not know what this site is, so the page answers that
+          before it shows anything to operate. Three steps, a chapter per thing park.fan does in
+          the order a stranger needs them, why it is built this way, the proof, the person.
+          Tinted and untinted bands alternate, except where `FavoritesSection`, a shared band,
+          meets the tinted live-wait chapter, whose `border-t` carries the boundary. */}
         <div className={PHONE_LATER}>
           <ThreeSteps />
         </div>
 
-        {/* Step 1, made real: the visitor's own nearest parks, then their own
-          favourites. Both are Client Components that decide late (geolocation,
-          a cookie) — hence the dynamic imports at the top of this file and the
-          box-reserving fallbacks.
-
-          The favourites band and the featured parks further down are borrowed
-          from the blog and glossary pages, which keep them tighter; here they
-          get the story's padding (`STORY_SECTION_Y`). On a phone these two, the
-          nearby chapter and the open-parks section stand together under the
-          hero, and with their own paddings every band edge in that block had a
-          different gap on either side of it. */}
+        {/* Step 1, made real: the visitor's own nearest parks, then their favourites, Client
+          Components that decide late (geolocation, a cookie), hence the dynamic imports and the
+          box-reserving fallbacks. The shared bands get the story's padding (`STORY_SECTION_Y`),
+          so every band edge in the block has the same gap. */}
         <NearbyChapter>
           <NearbyParksCard nested />
         </NearbyChapter>
@@ -432,9 +324,8 @@ export default async function HomePage({ params }: HomePageProps) {
             <LatestBlogSection locale={locale as Locale} variant="lead" />
           </BlogChapter>
 
-          {/* The claim, then the evidence. `GlobalStatsSection` is the platform's
-            own live counters, so it belongs directly under the six reasons rather
-            than between the founder and the blog, where it used to sit. */}
+          {/* The claim, then the evidence: `GlobalStatsSection` is the platform's own live
+            counters, so it sits directly under the six reasons. */}
           <WhyParkFan locale={locale as Locale} />
           <Suspense fallback={<GlobalStatsSkeleton labels={headingLabels} />}>
             <GlobalStatsSection />
@@ -456,8 +347,8 @@ export default async function HomePage({ params }: HomePageProps) {
           <FeaturedParksSlot locale={locale} heading="tile" className={STORY_SECTION_Y} />
         </Suspense>
 
-        {/* Live Activity - Parks Open Now — no pk-reveal: its cards are GlassCards, and the
-          reveal's transform would flatten their backdrop for the length of the entry range. */}
+        {/* No pk-reveal: its cards are GlassCards, and the reveal's transform would flatten
+          their backdrop for the length of the entry range. */}
         <Suspense fallback={<LiveActivitySkeleton labels={headingLabels} />}>
           <LiveActivitySection />
         </Suspense>
@@ -468,13 +359,9 @@ export default async function HomePage({ params }: HomePageProps) {
           <FaqSection />
         </div>
 
-        {/* Soft "make park.fan your preferred Google source" prompt — end of the page,
-          once the visitor has seen what the site offers. The footer keeps the
-          persistent link; this is the higher-visibility spot. */}
-        {/* `pt-8` for the same reason as the band above it: without a top padding
-          this card's distance to its neighbour is only the neighbour's bottom
-          padding, which made the gap between the two closing cards 27 px tighter
-          than the ones around them. */}
+        {/* "Make park.fan your preferred Google source", at the end, once the visitor has seen
+          what the site offers; the footer keeps the persistent link. `pt-8`, or the gap to the
+          neighbour would be only its bottom padding. */}
         <section className={`px-4 pt-8 pb-16 ${PHONE_LATER}`}>
           <div className="container mx-auto">
             <PreferredSourcePrompt />

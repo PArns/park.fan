@@ -4,6 +4,7 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Reveal } from '@/components/marketing/scroll-reveal';
 import { MobileMore } from '@/components/common/mobile-more';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
+import { STORY_SECTION } from './section-chrome';
 
 /**
  * Chapter: the two things that matter once you are through the gate.
@@ -21,7 +22,7 @@ export async function ChapterInPark() {
   ]);
 
   return (
-    <section className="px-4 py-16 sm:py-18">
+    <section className={STORY_SECTION}>
       <div className="container mx-auto">
         <Reveal containsGlass>
           <ChapterHeading
@@ -34,9 +35,8 @@ export async function ChapterInPark() {
           />
         </Reveal>
 
-        {/* On a phone the favourites card stays and the map card opens on request (PAR-435).
-            `contents` keeps both items of one grid from 768 px up, and the columns ask the
-            page's width, the same as the collapse. */}
+        {/* On a phone the favourites card stays and the map card opens on request. `contents`
+            keeps both items of one grid from 768 px up, and the columns ask the page's width. */}
         <div className="grid gap-5 @min-[768px]/page:grid-cols-2">
           <Reveal>
             <div className="border-border bg-card/55 h-full rounded-2xl border p-5 sm:p-6">

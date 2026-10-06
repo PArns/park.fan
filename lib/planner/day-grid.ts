@@ -2,60 +2,26 @@ import type { PlanDay, PlanDayContext, PlanDayRide } from '@/lib/api/types';
 import type { DayClock } from './park-time';
 
 /**
- * The day grid's geometry. Pure — no React, no DOM, no clock.
+ * The day grid's geometry. Pure: no React, no DOM, no clock.
  *
- * The axis is **uniform and linear**, and that is a decision against the
- * precedent next door. `lib/utils/weather-chart-axis.ts` draws an open hour four
- * times as wide as a closed one, and it is right to: a weather chart must render
- * all 24 hours because the weather at 03:00 exists. A plan must not — the
- * planner refuses a time outside the park's hours already, and `PlanDayRide`
- * carries one entry per OPEN hour and nothing else. Running a linear axis over
- * just the operating day plus a small pad gives the opening hours ≈92 % of the
- * canvas against the warp's documented 74 %, with a one-line inverse.
- *
- * And a warp would cost the one property this whole view is about. On a
- * piecewise axis a minute costs a different number of pixels depending on where
- * it falls, so two identical 40-minute queues would draw at different heights —
- * invisibly, with no legend able to explain it. `heightFor` therefore takes a
- * DURATION and no start position, which is what makes the invariant enforceable
- * rather than merely stated.
+ * The axis is uniform and linear, unlike `lib/utils/weather-chart-axis.ts`: a plan only covers the
+ * park's hours, and on a piecewise axis two identical 40-minute queues would draw at different
+ * heights. `heightFor` takes a duration and no start position so that cannot happen. See
+ * docs/features/trip-planner.md#the-axis-is-the-parks-day-and-the-canvas-is-not.
  */
 
 /**
- * Pixels per minute. 72 px per hour.
- *
- * Chosen from content rather than from a viewport: a 40-minute queue — the
- * common headliner figure — is 48 px, which is two lines of `text-sm` plus a
- * `text-[10px]` meta line and 6 px of padding; the drag step
- * ({@link DRAG_SNAP_MIN}) is 6 px here, which is a step a pointer with
- * sub-pixel resolution can aim at, and 9 px on the phone's axis. Deriving it from a container's height would
- * be a measurement arriving after paint, i.e. a resize of the whole grid on
- * every open, so it is a constant per pointer class and not a function of the
- * box.
+ * Pixels per minute, 72 px per hour. Chosen from content: a 40-minute queue is 48 px, two lines of
+ * `text-sm` plus a meta line. A constant per pointer class rather than derived from the box, which
+ * would be a measurement after paint and a resize of the grid on every open.
  */
 export const PX_PER_MIN = 1.2;
 
 /**
- * The same axis on a phone. 108 px per hour.
- *
- * It is NOT a preference and not a squeeze in the other direction — the value
- * follows from what is left of the sheet. At 390×844 the sheet is 716 px, of
- * which the handle, the header and the push toggle take 122, the day's foot 182
- * and the column's own chrome 163: about 250 px for the axis and the ride search
- * together (the arithmetic is `planner-day-column.tsx`'s own, measured by its
- * author). At 1.2 px per minute a floor of 140 px is two hours of a nine-hour
- * day; at 1.8 the same floor is one hour twenty, which is worse — so this number
- * only pays off together with the chrome Etappe 2 gives back, and both land in
- * the same change.
- *
- * What it buys is the block, not the axis: a 20-minute queue is 24 px at 1.2 and
- * **36 px** at 1.8, i.e. the difference between a bar and something with a name
- * on it, and a coarse snap step goes from 36 px to 54 — far enough that a drag
- * of a thumb's width lands on the step it looks like it lands on.
- *
- * Every derived figure reads `grid.pxPerMin` and never this constant, so the
- * axis, the blocks and the inverse of `yFor` cannot disagree. The one place it
- * is read is {@link usePlannerPxPerMin}.
+ * The same axis on a phone, 108 px per hour: a 20-minute queue gets 36 px, enough for a name.
+ * Every derived figure reads `grid.pxPerMin`, never this constant, and the one place it is read is
+ * {@link usePlannerPxPerMin}. See
+ * docs/features/trip-planner.md#the-axis-has-a-phone-scale-and-it-comes-from-one-place.
  */
 export const PX_PER_MIN_COARSE = 1.8;
 
@@ -71,131 +37,63 @@ export const POST_PAD_MIN = 30;
 /**
  * How much later than {@link DayGrid.closeMin} the park might really shut.
  *
- * The API reports `closeHour` as an HOUR — the hour its closing time falls in —
- * and this axis used to read that as "the last hour the park is open" and add
- * sixty minutes to it. On a park closing at 18:00 that made the planner believe
- * in a day ending at 19:00, and the optimiser filled it: Phantasialand on
- * Saturday 2026-09-12 came back with Winja's Fear queued at **18:15** and the
- * day finishing at 18:55, an hour after the gates shut. The `+ 60` was not a
- * rounding error but a whole extra hour of plan, on every park that closes on
- * the hour.
- *
- * Which is most of them, and that is measured rather than assumed: over 3,540
- * operating park-days from the catalogue's own calendars, **3,046 close exactly
- * on the hour (86.0 %)**, 486 at half past and 8 at quarter to. So the hour is
- * the closing time for six days in seven and the truncation is real for the
- * seventh — and the two facts point opposite ways, which is why there are now
- * two numbers instead of one.
- *
- * {@link DayGrid.closeMin} is the CERTIFIABLE end: the park is open until then,
- * and nothing this app plans by itself may run past it. This is the slack above
- * it, where the park may or may not still be open — drawn, draggable, never
- * planned into. It is the same hard/soft split {@link rideFloor} makes at the
- * other end of the day, and for the same reason: a fact decides what the app
- * may assert, a guess decides only what it draws.
- *
- * Sixty because that is the width of the API's own rounding. It goes to zero
- * the day the backend sends a real minute, and every rule keyed to it then
- * reduces to "the park closes when it closes".
+ * The API reports `closeHour` as the hour the closing time falls in, so `closeMin` is the
+ * certifiable end and this is the slack above it: drawn, draggable, never planned into. Sixty
+ * because that is the width of the API's rounding; it goes to zero once the backend sends a real
+ * minute. See docs/rules/the-planners-day-ends-when-the-park-closes-and-a-headliner-is.md.
  */
 export const CLOSE_SLACK_MIN = 60;
 
 /**
- * How long one ride takes, boarding to the platform, for every ride alike.
- *
- * An ASSUMPTION, not a measurement (PAR-12, decided by the owner on
- * 2026-09-10): one static figure, no table per ride type and no curated
- * values. `PlanDayRide` carries no duration and the curated `durationSeconds`
- * covers 22 of 173 rides across three sampled parks, so a per-ride figure would
- * be a different number for one ride in eight and the same guess for the rest.
- *
- * It is spent in one place, the transfer between two stops (`transferBetween`
- * in `leg.ts`), so the optimiser's clock, the leg chip's verdict and the
- * `fits = start < closeMin` rule all read the same minutes. The end of the day
- * adds it once more for the last stop, which has no transfer after it. It is
- * never drawn: a block's height stays the queue.
+ * How long one ride takes, boarding to the platform, for every ride alike: an assumption, since
+ * `PlanDayRide` carries no duration. Spent in the transfer (`transferBetween` in `leg.ts`) and once
+ * more after the last stop, never drawn. See
+ * docs/features/trip-planner.md#a-ride-takes-five-minutes-and-that-is-an-assumption-par-12.
  */
 export const RIDE_DURATION_MIN = 5;
 
 /**
- * The quarter hour this app's own arithmetic sits on. 18 px here.
- *
- * Every start the app FILES lands on it: `nowFloor`, `rideFloor`, the optimiser's
- * search step, the ceiling in {@link latestStart}. Those are roundings and
- * clamps, not a gesture — they decide where a computed minute may come to rest.
- *
- * It was the drag's step too until PAR-307, and that is the one thing it is no
- * longer: a pointer has a resolution of its own and does not have to agree with
- * the grid the optimiser plans on. {@link DRAG_SNAP_MIN} is that step now.
+ * The quarter hour this app's own arithmetic sits on, 18 px here. Every start the app files lands
+ * on it (`nowFloor`, `rideFloor`, the optimiser's search step, {@link latestStart}); a drag uses
+ * {@link DRAG_SNAP_MIN} instead.
  */
 export const SNAP_MIN_FINE = 15;
 
 /**
- * The arrow-key step of a block on a coarse pointer, and nothing else since the
- * drag stopped using it (see {@link DRAG_SNAP_MIN}). 54 px on the phone's axis.
+ * The default a placement falls back to when nothing measured says otherwise.
+ *
+ * Not a claim about any ride — the number the grid itself uses for a block whose
+ * wait is unknown, kept in one place so the search and the panel agree.
  */
+export const DEFAULT_OCCUPIED_MINUTES = 45;
+
+/** The arrow-key step of a block on a coarse pointer, 54 px on the phone's axis. */
 export const SNAP_MIN_COARSE = 30;
 
 /**
- * What a drag commits to, under a mouse and under a finger. Five minutes, 6 px
- * here and 9 px on the phone's axis.
- *
- * Five because that is the resolution every displayed wait in this app already
- * has, so a block dropped on a five is on a minute the rest of the panel can
- * pronounce — and because a free block could already be RESIZED in fives
- * (`RESIZE_STEP_MIN` in `planner-day-grid.tsx`) while it could only be MOVED in
- * fifteens, which is a finer grip on a block's end than on its start.
- *
- * This is the drag's step and nothing else's. It does not travel to
- * {@link SNAP_MIN_FINE}'s call sites: a visitor placing a block by hand is
- * saying a minute out loud, while `nowFloor` and the optimiser are rounding one
- * they computed, and the quarter hour is what those round to.
- *
- * A finger had a step of its own until it was asked for in so many words („das
- * ich auf mobile in 5 min raster verschieben kann"): half an hour, on the
- * theory that a smaller step under a sliding contact patch reads as jitter. It
- * also meant a phone could only drag a block onto :00 or :30, while every
- * wait, walk and show in the same panel is counted in fives. The step is the
- * same for both pointers now; what a finger lands on is where it lets go, and
- * the ±15 buttons in the action row are still there for a start that has to be
- * exact without a gesture.
+ * What a drag commits to, under a mouse and under a finger: five minutes, 6 px here and 9 px on
+ * the phone's axis. Five because every displayed wait is already a multiple of five, so a dropped
+ * block lands on a minute the panel can say. Only the drag's step: computed minutes still round to
+ * {@link SNAP_MIN_FINE}. See
+ * docs/features/trip-planner.md#a-plan-may-not-depend-on-a-gesture-landing.
  */
 export const DRAG_SNAP_MIN = 5;
 
 /**
- * The smallest BOX a block may occupy — not a claim about its height.
- *
- * 20 px is the smallest box a `text-[11px]` line sits in. It corresponds to 16.7
- * minutes, so every shorter queue gets it; the tinted fill inside is still drawn
- * to the true height, so the box grows and the ink does not lie. `heightFor`
- * never consults this: `blockBoxFor` is the layout-only twin, and the two being
- * separate functions is what keeps the floor out of the measurement.
- *
- * Stated at {@link PX_PER_MIN} and scaled by the axis in {@link minBlockPxFor},
- * so the floor stays the same number of MINUTES at every scale. Left as a flat
- * 20 px it would be 11.1 minutes at {@link PX_PER_MIN_COARSE} — a floor that
- * quietly does less the moment the axis it is a floor on gets taller.
+ * The smallest box a block may occupy, not a claim about its height: 20 px is the smallest box a
+ * `text-[11px]` line sits in. The tinted fill inside is still drawn to the true height, and
+ * `heightFor` never consults this. Stated at {@link PX_PER_MIN} and scaled in
+ * {@link minBlockPxFor}, so the floor stays the same number of minutes at every scale.
  */
 export const MIN_BLOCK_PX = 20;
 
 /**
- * The same floor as {@link MIN_BLOCK_PX}, in minutes — 16.7 of them.
- *
- * This is the scale-free statement of it, and it is what a caller wants whenever
- * it needs the floor as a DURATION rather than as a height: the span a block
- * occupies for lane packing, say. Reading `MIN_BLOCK_PX / grid.pxPerMin` gave
- * the same number and made the caller depend on the axis for a value that does
- * not vary with it.
+ * The same floor as {@link MIN_BLOCK_PX}, in minutes (16.7), for a caller that needs it as a
+ * duration, such as lane packing, without depending on the axis.
  */
 export const MIN_BLOCK_MIN = MIN_BLOCK_PX / PX_PER_MIN;
 
-/**
- * Below this the uncertainty band is not drawn.
- *
- * `bar-geometry.ts` used `0.005` — half a percent of a fixed-width track, which
- * means nothing against a variable height. Restated in pixels: under 3 px (2.5
- * minutes) a band is an antialiasing artefact rather than a statement.
- */
+/** Below this the uncertainty band is not drawn: under 3 px a band is an antialiasing artefact. */
 export const MIN_BAND_PX = 3;
 
 /** Three 112 px columns still fit a truncated name and a figure on a phone. */
@@ -208,21 +106,9 @@ export const LANE_GUTTER_PX = 2;
 export const SHOW_LABEL_MIN_GAP_PX = 14;
 
 /**
- * The most show lines an axis may carry, however many the park runs.
- *
- * {@link SHOW_LABEL_MIN_GAP_PX} keeps two LABELS from overlapping and is a
- * statement about text; this is a statement about the drawing. Europa-Park on a
- * Sunday returns 33 shows, whose times land roughly every quarter hour — far
- * enough apart that nothing folded, so a nine-hour axis carried 28 dashed rules
- * and 28 centred pills, and the two blocks somebody had actually planned sat
- * behind them. Measured on that day at a 389 px column: the grid was 756 px and
- * every 27 px of it had a line in it.
- *
- * The cap is spent on the fold that already exists rather than on dropping
- * anything: the extra times keep their place inside the line they fold into and
- * are still counted in its "+n", which is what makes this a density limit and
- * not a promise the panel breaks. Twelve leaves ~60 px between lines on a
- * nine-hour day, which is two blocks' worth of room.
+ * The most show lines an axis may carry, however many the park runs: a park with 33 shows a day
+ * otherwise covers the planned blocks with dashed rules. The extra times fold into the nearest
+ * line and are counted in its "+n", so this limits density without dropping anything.
  */
 export const MAX_SHOW_LINES = 12;
 
@@ -232,17 +118,13 @@ export const MAX_SHOW_LINES = 12;
  */
 export const SOFT_FLOOR_MIN_SAMPLE_DAYS = 30;
 
+/** The day's axis: the park's hours in park-local minutes, and how they map to pixels. */
 export interface DayGrid {
   /** Park-local minutes since midnight. */
   openMin: number;
   /**
-   * The minute the park is known to be open until. May exceed 1440 on a
-   * past-midnight close.
-   *
-   * A CEILING and not merely an axis end: nothing this app files by itself —
-   * the optimiser, a click on a headliner pill, the ride search — may put a
-   * block that runs past it. What the park does in the hour above it is
-   * {@link closeSlackMin}.
+   * The minute the park is known to be open until; may exceed 1440 on a past-midnight close.
+   * Nothing the app files by itself may start past it. The hour above is {@link closeSlackMin}.
    */
   closeMin: number;
   /**
@@ -262,14 +144,9 @@ export interface DayGrid {
    */
   closeIsTruncated: boolean;
   /**
-   * The minute the early-entry rides open, below {@link openMin}, or `null` on a
-   * day without early entry — which is every day until the visitor says they
-   * hold it. See {@link earlyEntryOpenMin}.
-   *
-   * The open-side twin of {@link closeMin}/{@link closeSlackMin}, with one
-   * difference: it is a HARD start, because the park published it, but only
-   * for the rides {@link opensEarly} names. The rest of the park still opens at
-   * `openMin`, so nothing else in this file moves for it.
+   * The minute the early-entry rides open, below {@link openMin}, or `null` on a day without early
+   * entry (see {@link earlyEntryOpenMin}). A hard start, but only for the rides {@link opensEarly}
+   * names; the rest of the park still opens at `openMin`.
    */
   earlyEntryOpenMin: number | null;
 }
@@ -289,16 +166,10 @@ export function dayStartMin(grid: DayGrid): number {
 /**
  * Where the early-entry rides open on this day, in park-local minutes, or `null`.
  *
- * Three facts must agree and each one is necessary. The park lets guests in
- * early (`hasEarlyEntry`, curated, PAR-197). It says how early
- * (`earlyEntryMinutesPeak`, the value that holds now, PAR-199 decision A). And
- * the VISITOR holds it on this day (`earlyEntry`, their own answer). A hotel
- * guest is let in early; a day-ticket holder queues at the turnstile with
- * everyone else, so a park flag alone must never move anybody's morning.
- *
- * `null` on any doubt, and `null` is the old behaviour byte for byte: every
- * caller then builds the same grid, the same floors and the same figures it did
- * before this field existed.
+ * Three facts must agree: the park offers early entry (`hasEarlyEntry`), says how early
+ * (`earlyEntryMinutesPeak`), and the visitor holds it on this day (`earlyEntry`, their own answer).
+ * A day-ticket holder queues with everyone else, so a park flag alone never moves anybody's
+ * morning. `null` builds exactly the grid there was without early entry.
  */
 export function earlyEntryOpenMin(
   context:
@@ -331,16 +202,9 @@ export function withEarlyEntry<T extends PlanDay | null | undefined>(
 }
 
 /**
- * Whether this ride opens before the park on an early-entry day.
- *
- * The park's headliners and nothing else: the API's own statement is that early
- * entry covers them, and there is no per-ride list (a non-goal of PAR-199). A
- * headliner whose own `opensAt` is later than the park's opening is not one of
- * them — a ride that does not run at 09:00 does not run at 08:30 either.
- *
- * `openMin` rather than a grid so `estimate.ts` can ask the same question from
- * the day payload alone; two copies of this rule is how a block and the
- * optimiser's table would come to disagree.
+ * Whether this ride opens before the park on an early-entry day: the park's headliners, minus any
+ * whose own `opensAt` is later than the park's opening. Takes `openMin` rather than a grid so
+ * `estimate.ts` asks the same question from the payload alone.
  */
 export function opensEarly(
   ride: Pick<PlanDayRide, 'isHeadliner' | 'opensAt'> | undefined | null,
@@ -352,34 +216,12 @@ export function opensEarly(
 }
 
 /**
- * The closing hour on the day's own axis, which is not always the clock's.
+ * The closing hour on the day's own axis: a park running 16:00–01:00 reports `closeHour: 1`, which
+ * unfolds to 25. Exported so the axis and `estimate.ts` cannot unfold it differently.
  *
- * `closeHour` is a wall-clock hour, so a park running 16:00–01:00 reports
- * `closeHour: 1` and every naive comparison against `openHour: 16` reads it as
- * a day that ends nine hours before it starts. Unfolded, that day closes in
- * hour 25, and the axis, the hour test in `estimate.ts` and anything else
- * asking "is this minute inside the day" all agree again.
- *
- * It lives here, exported, rather than inline in `buildDayGrid`, because the
- * one copy of the rule was the bug: the grid unfolded and `estimateFor` did
- * not, so every block of a past-midnight park was answered with
- * `outside-hours` — including the ones in the middle of the evening — and the
- * planner's totals came out as zero minutes of queueing for a whole night. Two
- * halves of one statement, in two files, with nothing comparing them.
- *
- * The hour the closing time FALLS IN, like the field it reads — not the last
- * hour the park is open. Phantasialand shuts at 18:00 and the API answers
- * `closeHour: 18`; Toverland shuts at 17:30 and answers 17. So the hour is the
- * park's own closing minute for the 86 % of days that end on the hour, and up
- * to 59 minutes early for the rest, which is what {@link CLOSE_SLACK_MIN} is
- * for. `buildDayGrid` used to add sixty minutes here on the opposite reading
- * and gave the planner an hour of park that does not exist.
- *
- * The bucket at `closeHour` that the backend emits is therefore an hour the
- * park is mostly shut for. `estimateFor` still answers for it on purpose — a
- * block a visitor drags there is worth a figure rather than an em dash, and on
- * a park closing at 17:30 that hour is half real. Nothing this app files by
- * itself goes there; see {@link DayGrid.closeMin}.
+ * Like the field it reads, this is the hour the closing time falls in, not the last open hour;
+ * {@link CLOSE_SLACK_MIN} covers the minutes the API truncates. `estimateFor` still answers for
+ * that hour, because a block a visitor drags there deserves a figure.
  */
 export function unfoldedCloseHour(openHour: number, closeHour: number): number {
   return closeHour < openHour ? closeHour + 24 : closeHour;
@@ -402,11 +244,8 @@ export function buildDayGrid(
   if (closeHour === null || closeHour === undefined) return null;
 
   const openMin = openHour * 60;
-  // `closeHour` is the hour the park's closing time falls in, so this IS the
-  // closing minute wherever the park closes on the hour — and the earliest it
-  // can close where it does not. A close past midnight is unfolded rather than
-  // refused: the day is still a real span even where the API declines to answer
-  // for it. See {@link unfoldedCloseHour} and {@link CLOSE_SLACK_MIN}.
+  // `closeHour` is the hour the closing time falls in, so this is the closing minute wherever the
+  // park closes on the hour. See {@link unfoldedCloseHour} and {@link CLOSE_SLACK_MIN}.
   const closeMin = unfoldedCloseHour(openHour, closeHour) * 60;
 
   // An early-entry window only counts where it is really earlier. A value at or
@@ -435,31 +274,10 @@ export function buildDayGrid(
 }
 
 /**
- * The axis, widened until it contains the plan drawn on it.
- *
- * `buildDayGrid` answers a question about the PARK — when it opens, when it
- * shuts, plus half an hour either side for the arrival and for a queue joined
- * near closing. A plan is not bound by that. `clampStart` lets a block START up
- * to fifteen minutes before the park shuts, which for a sixty-minute free block
- * puts its foot forty-five minutes past `closeMin` against a canvas that ends
- * thirty past it; a hotel check-in written at 18:30 for an hour simply ran off
- * the bottom, drawn over the gutter label that says when the day ends.
- *
- * So the park's own hours stay exactly as they were — `openMin` and `closeMin`
- * are what the opening-hours band is drawn from, and moving them would be the
- * panel inventing a longer day — and only the CANVAS grows. The room that
- * appears is outside opening hours by construction, so it is hatched like every
- * other minute out there, which is the honest drawing of "you have planned
- * something for a time the park is shut".
- *
- * Rounded out to the full hour, for two reasons that happen to agree: the hour
- * ticks down the gutter stay whole numbers, and the axis then grows in steps a
- * reader notices once instead of by the minute while a block is being resized.
- *
- * Fed from the COMMITTED entries and never from a drag in flight. Growing the
- * canvas mid-gesture would move every other block under the pointer, because
- * `yFor` is measured from `gridStartMin` — the axis settles when the block
- * lands, which is also when the visitor can see what they did.
+ * The axis, widened until it contains the plan drawn on it. Only the canvas grows: `openMin` and
+ * `closeMin` stay the park's, so the extra room is hatched as outside opening hours. Fed from the
+ * committed entries, never from a drag in flight, or every other block would move under the
+ * pointer. See docs/features/trip-planner.md#the-axis-is-the-parks-day-and-the-canvas-is-not.
  */
 export function growGridForSpans(
   grid: DayGrid | null,
@@ -514,12 +332,8 @@ export function heightFor(grid: DayGrid, minutes: number): number {
 }
 
 /**
- * The floor under a block's box, on THIS axis.
- *
- * {@link MIN_BLOCK_PX} is 20 px at {@link PX_PER_MIN}, which is 16.7 minutes.
- * Scaling it by the axis keeps those minutes rather than those pixels, so a
- * phone's taller axis raises the floor with everything else instead of leaving
- * a 20 px box that now stands for eleven minutes.
+ * The floor under a block's box on this axis: {@link MIN_BLOCK_PX} scaled so it keeps its minutes,
+ * not its pixels.
  */
 export function minBlockPxFor(grid: DayGrid): number {
   // `(MIN_BLOCK_PX * pxPerMin) / PX_PER_MIN`, in that order, and not the
@@ -566,57 +380,39 @@ export function packedSpanMinutes(minutes: number | null): number {
 }
 
 /**
- * How tall a block is DRAWN, for the one caller that is not the block.
- *
- * `blockBoxFor` answers for a block that has a number; a block that has none is
- * {@link noFigurePxFor}, and that second case lived in `planner-block.tsx` alone.
- * The gap a leg chip sits in is measured from the bottom edge of the box above
- * it, so the leg needs the same answer the block gives itself — and a second
- * copy of `Math.max(…)` beside a hard-coded 40 is the kind of twin that agrees
- * on the day it is written and on no other. `minutes` is the block's occupancy:
- * a custom block's duration, a planned block's wait, `null` where there is no
- * figure at all.
+ * How tall a block is drawn, for the one caller that is not the block: the leg chip measures its
+ * gap from the bottom edge of the box above, so it needs the answer the block gives itself, not a
+ * second copy. `minutes` is a custom block's duration, a planned block's wait, or `null` for none.
  */
 export function drawnBoxPx(grid: DayGrid, minutes: number | null): number {
   return minutes === null ? noFigurePxFor(grid) : blockBoxFor(grid, minutes);
 }
 
+/** Rounds a minute to the nearest multiple of the step. */
 export function snapTo(minute: number, step: number): number {
   return Math.round(minute / step) * step;
 }
 
 /**
- * Where a block a VISITOR places may start.
+ * Where a block a visitor places may start. The bound is on the start, not the end: a queue joined
+ * just before closing is a real plan that overruns.
  *
- * The lower bound is the caller's floor (see {@link rideFloor}); the upper bound
- * is on the START, not the end — a 90-minute queue joined at 19:30 in a park
- * closing at 20:00 is a real plan that overruns, and forbidding it would be the
- * grid refusing to draw something a visitor may genuinely intend.
- *
- * The ceiling includes {@link DayGrid.closeSlackMin}, which is what keeps this
- * gesture exactly as far-reaching as it was before that field existed: the API
- * rounds the closing time down to the hour, the park may still be open up there,
- * and the person dragging knows which of those it is. `nextFreeStart` and the
- * optimiser stop at {@link DayGrid.closeMin} instead — the same hard/soft split
- * {@link rideFloor} makes at the other end of the day. What the app asserts by
- * itself is bounded by the fact; what it lets somebody assert is not.
+ * The ceiling includes {@link DayGrid.closeSlackMin}, because the person dragging knows whether
+ * their park is still open; `nextFreeStart` and the optimiser stop at {@link DayGrid.closeMin}.
  */
 export function clampStart(grid: DayGrid, minute: number, floorMin: number): number {
   return Math.min(Math.max(minute, floorMin), latestStart(grid));
 }
 
 /**
- * {@link clampStart}'s ceiling as a number, for the two call sites that hand a
- * `maxMinute` to a block rather than clamping a value.
- *
- * Exported so the drag, the keyboard nudge and the clamp cannot drift: they
- * were three copies of `closeMin - SNAP_MIN_FINE`, and the slack made that
- * expression wrong in all three at once.
+ * {@link clampStart}'s ceiling as a number, for call sites that hand a `maxMinute` to a block.
+ * Exported so the drag, the keyboard nudge and the clamp cannot drift apart.
  */
 export function latestStart(grid: DayGrid): number {
   return grid.closeMin + grid.closeSlackMin - SNAP_MIN_FINE;
 }
 
+/** The two floors under a ride; see {@link rideFloor}. */
 export interface RideFloor {
   /** The drag stops here. A published fact, never a statistic. */
   hardMin: number;
@@ -641,44 +437,18 @@ export function opensAtMinute(opensAt: string | null | undefined): number | null
 }
 
 /**
- * How long after the gates open somebody can actually be queueing.
- *
- * Nobody is at a ride's entrance in the second the park opens: there is a
- * turnstile, a bag check and a walk — Phantasialand's gate to Klugheim is the
- * better part of a kilometre — and the planner filed the first ride of the day
- * at exactly `openMin`, which is a plan nobody has executed.
- *
- * The same family of judgement as `EXIT_MIN` and `SAME_LAND_CEIL_MIN` in
- * `leg.ts`, and named as one: an allowance, not a measurement. So it belongs to
- * the SOFT floor — where a block is filed — and never to the hard one, which is
- * for facts. `opensAt` is the fact, and it arrived; this is what is left over
- * for a ride that has none.
+ * How long after the gates open somebody can actually be queueing: turnstile, bag check and walk.
+ * An allowance, not a measurement, so it belongs to the soft floor and never the hard one.
  */
 export const GATE_TO_FIRST_RIDE_MIN = 15;
 
 /**
- * The earliest minute a block may be FILED at today, and `openMin` on every
- * other date.
+ * The earliest minute a block may be filed at today, and `startMin` on every other date.
  *
- * The planner files a block at a minute it picks itself in four places — the
- * optimiser, a headliner pill, a ride-search row and a free block — and none of
- * them knew what time it was. Pressed at 14:00, all four still filed into the
- * morning: a queue nobody can join, on a day the visitor is standing in.
- *
- * It raises the SOFT floor and never the hard one (see {@link rideFloor}): a
- * drag into the recorded morning stays legal, because writing down when you
- * actually rode something is the reason a day is kept at all.
- *
- * **It is not capped at the end of the day, and that cap was the bug.** It used
- * to be clamped to `closeMin - SNAP_MIN_FINE` on the theory that a press made
- * after closing should still yield a usable minute — but the clamp beats the
- * very lower bound this function exists to impose, so at 17:58 in a park
- * shutting at 18:00 it answered **17:45**, and "plan every headliner" filed a
- * forty-minute queue thirteen minutes before the press. Worse, `hasStarted`
- * then read that block as already under way and froze it. Past the last slot
- * the honest answer is a minute the day has no room for, which is exactly what
- * every caller needs: `placementsFrom` finds no option and leaves the ride out,
- * `nextFreeStart` files into the hatched hours where a reader can see it.
+ * It raises the soft floor and never the hard one (see {@link rideFloor}), so a drag into the
+ * recorded morning stays legal. It is not capped at the end of the day: past the last slot the
+ * honest answer is a minute the day has no room for, and a cap would file a queue before the
+ * press. See docs/rules/the-planners-day-ends-when-the-park-closes-and-a-headliner-is.md.
  */
 export function nowFloor(grid: DayGrid, clock?: DayClock, startMin: number = grid.openMin): number {
   // `startMin` is the day's start for the ride asking: `openMin`, or the
@@ -691,40 +461,19 @@ export function nowFloor(grid: DayGrid, clock?: DayClock, startMin: number = gri
 }
 
 /**
- * The two floors under a ride, and the difference between them is the point.
+ * The two floors under a ride.
  *
- * The HARD floor is a FACT and is what a drag is clamped to: the ride's own
- * `opensAt` where the API has one, the park's published opening otherwise.
- * That field closed a real hole — Phantasialand's gates open at 09:00 and
- * sixteen of its rides do not run until 10:00, so the planner was offering two
- * hours of queue that did not exist, reported three times before there was any
- * data to prove it. It is rounded to the quarter hour upstream, because a raw
- * 10:10 is five-minute polling plus feed lag on a 10:00 opening.
+ * The hard floor is a fact and is what a drag is clamped to: the ride's own `opensAt` where the API
+ * has one, the park's published opening otherwise.
  *
- * The SOFT floor is where a new block is FILED, and it carries two things the
- * hard floor may not. The first hour this ride has a curve for, which is a
- * statement about MEASUREMENT rather than about opening — the backend skips
- * hours with no observations, so a ride merely unobserved at 09:00 must not be
- * clamped as though it opened at 11:00, and entering that window costs the
- * block its figure rather than refusing the placement. And
- * {@link GATE_TO_FIRST_RIDE_MIN}, for the walk from the gates, which is a
- * judgement and therefore may not refuse anything either.
+ * The soft floor is where a new block is filed, and adds three things the hard floor may not: the
+ * first hour this ride has a curve for (only with a month of data and an hour past the floor, or a
+ * quiet morning becomes a wall), {@link GATE_TO_FIRST_RIDE_MIN}, and today's clock through
+ * {@link nowFloor}.
  *
- * The measurement gates are deliberate: at least a month of measured days, and
- * at least an hour past the floor, or a single quiet morning becomes a wall.
- *
- * The soft floor carries a third thing, and it is not about the ride: today's
- * clock, through {@link nowFloor}. A block filed before now is a queue nobody
- * can join. `clock` is optional and every other phase reduces to the expression
- * this function had before it existed.
- *
- * On an early-entry day (`grid.earlyEntryOpenMin`), a ride {@link opensEarly}
- * names takes the early opening as its park opening: the hard floor is the
- * published early start, the soft one adds the walk from the gate like any
- * other morning. The measured curve may not lift it back to `openMin`, because
- * the curve begins at `openHour` by construction — the API has no hour before
- * the gates for anybody — so its first hour says nothing about whether the
- * ride runs earlier. Every other ride is untouched.
+ * On an early-entry day a ride {@link opensEarly} names takes the early opening as its park
+ * opening, and the curve may not lift it back, because the curve starts at `openHour` by
+ * construction.
  */
 export function rideFloor(
   grid: DayGrid,
@@ -755,11 +504,8 @@ export function rideFloor(
 
   return {
     hardMin,
-    // The RIDE's own reasons are capped at the last slot of the day — a curve
-    // that starts after closing is a statement about measurement, not a plan —
-    // and the clock is then allowed to raise it past that cap. At 17:58 in a
-    // park shutting at 18:00 this is 18:00, which is no slot at all, which is
-    // the true answer. See {@link nowFloor}.
+    // The ride's own reasons are capped at the last slot of the day; the clock may raise it past
+    // that, to a minute that is no slot at all. See {@link nowFloor}.
     softMin: Math.max(
       Math.min(withEntry, grid.closeMin - SNAP_MIN_FINE),
       nowFloor(grid, clock, startMin)
@@ -768,6 +514,7 @@ export function rideFloor(
   };
 }
 
+/** A block's drawn span, as {@link packLanes} takes it. */
 export interface LaneInput {
   id: string;
   topMin: number;
@@ -775,11 +522,24 @@ export interface LaneInput {
   bottomMin: number;
 }
 
+/** Where {@link packLanes} put a block. */
 export interface LanePlacement {
   column: number;
   columns: number;
   /** Blocks past {@link MAX_LANES} in this cluster, reported on the last column. */
   overflow: number;
+}
+
+/** The lane of a block that shares its time with nothing: the full width. */
+export const NO_LANE: LanePlacement = { column: 0, columns: 1, overflow: 0 };
+
+/** A lane's horizontal box as CSS, so a block, its band and its leg cannot drift apart. */
+export function laneBox(lane: Pick<LanePlacement, 'column' | 'columns'>): {
+  left: string;
+  width: string;
+} {
+  const width = `calc((100% - ${(lane.columns - 1) * LANE_GUTTER_PX}px) / ${lane.columns})`;
+  return { left: `calc((${width} + ${LANE_GUTTER_PX}px) * ${lane.column})`, width };
 }
 
 /**
@@ -857,31 +617,22 @@ export function packLanes(blocks: readonly LaneInput[]): Map<string, LanePlaceme
 }
 
 /**
- * Where a newly added ride goes.
- *
- * The earliest snapped minute at or after {@link floorMin} whose block would
- * overlap nothing already planned. The old rule — an hour after the last entry —
- * put five rides added from the search on one minute, because the search
- * bypassed it entirely and filed everything at the opening hour.
- *
- * `floorMin` defaults to the park's opening and is meant to be the RIDE's own
- * floor (`rideFloor().softMin`): a ride whose curve starts at 11:00 was being
- * filed at 09:00 with the park, which is the planner asserting a queue in an
- * hour nothing was ever measured in. Passing the park's opening for every ride
- * is what made "this ride is not even open yet" a thing the grid could say.
- *
- * The ceiling is {@link DayGrid.closeMin} and NOT the slack above it, unlike
- * {@link clampStart}: this is the app choosing a minute, and it may not choose
- * one in an hour the park has told us it is shut for.
+ * Where a newly added ride goes: the earliest snapped minute at or after `floorMin` whose block
+ * overlaps nothing already planned. `floorMin` should be the ride's own floor
+ * (`rideFloor().softMin`), not the park's opening. The ceiling is {@link DayGrid.closeMin}, not the
+ * slack above it, since this is the app choosing a minute.
  */
 export function nextFreeStart(
   existing: readonly { startMinute: number; spanMinutes: number }[],
   grid: DayGrid,
-  spanMinutes = 45,
+  spanMinutes = DEFAULT_OCCUPIED_MINUTES,
   floorMin?: number
 ): number {
   const taken = existing
-    .map((e) => ({ from: e.startMinute, to: e.startMinute + Math.max(e.spanMinutes, 15) }))
+    .map((e) => ({
+      from: e.startMinute,
+      to: e.startMinute + Math.max(e.spanMinutes, SNAP_MIN_FINE),
+    }))
     .sort((a, b) => a.from - b.from);
 
   // `dayStartMin` and not `openMin`: an early ride's soft floor sits below the
@@ -896,15 +647,12 @@ export function nextFreeStart(
     if (candidate < slot.to) candidate = snapTo(slot.to + SNAP_MIN_FINE - 1, SNAP_MIN_FINE);
   }
 
-  // The cap may not pull the answer BELOW the floor it was given. It used to,
-  // and on a day whose slots are gone that meant filing into the past: pressed
-  // at 17:58 in a park shutting at 18:00 the floor is 18:00 and the cap 17:45,
-  // so a ride added from the search landed thirteen minutes before the tap. A
-  // block in the hatched hours is a visible answer; a block behind the clock is
-  // not an answer at all.
+  // The cap may not pull the answer below the floor: on a day whose slots are gone that would file
+  // into the past. A block in the hatched hours is a visible answer.
   return Math.max(floor, Math.min(candidate, last));
 }
 
+/** Where a show line is drawn, and which showtimes it stands for. */
 export interface ShowLinePosition {
   minute: number;
   y: number;
@@ -976,22 +724,9 @@ export type ShowLineCover =
   | { kind: 'chip' };
 
 /**
- * What a show line runs through (PAR-482 follow-up).
- *
- * A show pill is centred on its line and as wide as the axis allows, so over a
- * planned ride it lay on the ride's name, its times, its lateness hint and the
- * transfer chip below it: on a park with an hourly show that was every other
- * block of a full day. Only on free axis does the grid draw the names. Over a
- * block it draws the mask alone, centred in the first column, the one strip of
- * a block that carries no figure. Over a transfer chip alone the middle is the
- * chip's own end, so the mask goes to the right end of the axis, which in a gap
- * between two blocks nothing is drawn on. A line through both is on the edge
- * where a chip meets the next block, whose wait figure takes the right end, so
- * there the grid puts the mask three quarters across the first column, between
- * the chip's end and the figure.
- *
- * The pill's own half height counts, so a line a few pixels above a block's top
- * edge is over the block's name line too.
+ * What a show line runs through, which decides where its pill's mask goes so it does not cover a
+ * ride's name or a transfer chip. The pill's own half height counts, so a line a few pixels above
+ * a block's top edge is over its name line too.
  */
 export function showLineCover(y: number, obstacles: readonly ShowLineObstacle[]): ShowLineCover {
   let columns = 0;
@@ -1015,15 +750,8 @@ export interface ShowLineHostCandidate {
 }
 
 /**
- * The block a show line falls into, which then says so itself (PAR-521:
- * „jetzt sieht man die Shows gar nicht mehr").
- *
- * Over a block the grid drew the mask alone, which kept the ride legible and
- * said nothing about which show it was. A block that falls on a show now writes
- * it itself, on its second line beside its times or, where it has none, on its
- * first between the name and the figure, and the browser truncates the show
- * before either; the grid then draws no mark of its own for that line. A line
- * that only grazes a block's edge has no host, and there the mask stays.
+ * The block a show line falls into, which then writes the show itself; the grid draws no mark of
+ * its own for that line. A line that only grazes a block's edge has no host.
  */
 export function showLineHost(y: number, blocks: readonly ShowLineHostCandidate[]): string | null {
   let host: ShowLineHostCandidate | null = null;

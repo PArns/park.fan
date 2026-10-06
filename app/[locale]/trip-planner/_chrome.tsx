@@ -3,18 +3,10 @@ import type { LucideIcon } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 
 /**
- * A chapter of the planner page's article.
- *
- * `ChapterHeading` directly rather than the guide's `SectionShell`, for one
- * reason: `SectionShell` carries its own `container mx-auto px-4`, and this page
- * already opens one — a chapter inside it would centre a second container
- * inside the first and inset every chapter by another gutter. The directory at
- * the top and the prose under it read as one document only while they share an
- * edge.
- *
- * Every chapter here renders unconditionally, which is what earns the numbers:
- * a sequence that skips because a section had no data looks like a bug rather
- * than an omission (see `ChapterHeading`'s note on `index`).
+ * A chapter of the planner page's article. `ChapterHeading` directly rather than the guide's
+ * `SectionShell`, whose own `container mx-auto px-4` would inset every chapter inside this page's
+ * container. Every chapter renders unconditionally, which is what earns the numbers (see
+ * `ChapterHeading`'s note on `index`).
  */
 export function Chapter({
   id,

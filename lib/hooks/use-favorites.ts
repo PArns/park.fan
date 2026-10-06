@@ -9,16 +9,9 @@ import {
 import type { FavoritesResponse } from '@/lib/api/favorites';
 
 /**
- * Every starred id, each kind sorted, as one string — the query key's view of the cookie.
- *
- * The key used to be the position alone while the query function read the ids, so a star set
- * anywhere but on the homepage band left the cached list standing: only the band invalidated on
- * `favorites-changed`, and the header menu, which is mounted on every page, reopened with the
- * list as it was before for up to five minutes. With the ids in the key a change is a new entry,
- * wherever the star was pressed and whichever surface asks next.
- *
- * `null` in the server and hydrating renders (no cookie there), which keeps the query off until
- * the real ids are known instead of fetching once for "none" and again for the real set.
+ * Every starred id, each kind sorted, as one string: the query key's view of the cookie, so a star
+ * set anywhere is a new cache entry for every surface. `null` in the server and hydrating renders,
+ * which keeps the query off until the real ids are known.
  */
 function getIdsSnapshot(): string {
   const f = getFavoritesFromCookies();
@@ -31,12 +24,9 @@ const getServerIdsSnapshot = () => null;
 
 interface UseFavoritesOptions {
   /**
-   * Gate on top of the geolocation gate. The homepage band leaves this at `true` — it is the
-   * page's reason for existing. The header's favorites menu passes `false` until somebody opens
-   * it: mounted in the layout, an ungated copy would put a `/api/favorites` request on EVERY
-   * page for every visitor who has ever starred anything, which is exactly the "one more request
-   * per page" the API budget is written against. Both share the query key, so opening the menu
-   * on the homepage costs nothing at all.
+   * Gate on top of the geolocation gate. The header's favorites menu passes `false` until it is
+   * opened, or every page would fetch `/api/favorites` for everyone who ever starred anything. It
+   * shares the query key with the homepage band.
    */
   enabled?: boolean;
   /**
@@ -48,10 +38,8 @@ interface UseFavoritesOptions {
 }
 
 /**
- * Hook to fetch favorites using React Query
- * - Keyed on the starred ids, so a toggle anywhere is a new entry (see `getIdsSnapshot`)
- * - Automatically uses geolocation from context
- * - Caches results for 5 minutes (matches the backend favorites TTL + the 5-min wait-times sync)
+ * The visitor's favorites with their live data, keyed on the starred ids and the position, and
+ * fresh for five minutes like the backend's favorites cache.
  */
 export function useFavorites({ enabled = true, poll = true }: UseFavoritesOptions = {}) {
   const { position, loading: geoLoading } = useGeolocation();
@@ -122,10 +110,10 @@ export function useFavorites({ enabled = true, poll = true }: UseFavoritesOption
       return response.json();
     },
     enabled: !geoLoading && enabled && ids !== null,
-    staleTime: 5 * 60 * 1000, // 5 minutes — matches refetch interval
-    gcTime: 10 * 60 * 1000, // 10 minutes
-    refetchOnWindowFocus: poll, // refresh when user returns to tab (live status can change)
-    refetchInterval: poll ? 5 * 60 * 1000 : false, // poll every 5 min — attraction status changes during the day
+    staleTime: 5 * 60 * 1000,
+    gcTime: 10 * 60 * 1000,
+    refetchOnWindowFocus: poll,
+    refetchInterval: poll ? 5 * 60 * 1000 : false,
     // When geo resolves, or a star is set or removed, the queryKey changes (new cache entry). Keep
     // showing the previous list while the new one loads instead of flashing a skeleton.
     placeholderData: (previousData: FavoritesResponse | undefined) => previousData,

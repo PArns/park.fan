@@ -1,22 +1,10 @@
 'use client';
 
 /**
- * HeroThreePark
- * -------------
- * Mounts the {@link createParkScene} three.js park into a full-bleed canvas for
- * the homepage hero. It owns the WebGL lifecycle only — the scene itself lives
- * in `lib/three/park-scene.ts`.
- *
- * Loading strategy: pulled in via a `ssr:false` dynamic import (see
- * `hero-background.tsx`), so three.js is code-split into its own chunk and never
- * blocks SSR or the hero's LCP. A CSS gradient sky shows underneath instantly;
- * the canvas fades in once the scene's textures have loaded. The loader chip
- * itself lives in the (always-mounted) parent so it can show during the chunk
- * download too — this component just reports readiness via `onReady`.
- *
- *  - **Theme-aware:** re-applies day/night whenever next-themes resolves.
- *  - **Reduced motion:** renders a single static frame, no animation loop.
- *  - **Resilient:** if WebGL is unavailable the gradient sky simply remains.
+ * Owns the WebGL lifecycle of the hero's three.js park; the scene itself is
+ * `lib/three/park-scene.ts`. Loaded through an `ssr:false` dynamic import in
+ * `hero-background.tsx`, which also owns the loader chip so it shows during the chunk download.
+ * Without WebGL the gradient sky stays.
  */
 
 import { useEffect, useRef, useState } from 'react';
@@ -24,6 +12,11 @@ import { useTheme } from 'next-themes';
 import { createParkScene, type ParkSceneHandle, type SceneTheme } from '@/lib/three/park-scene';
 import { cn } from '@/lib/utils';
 
+/**
+ * Mounts the three.js amusement park scene into a full-bleed canvas behind the homepage hero and
+ * reports load progress and readiness. Client-only through a dynamic import; follows the theme and
+ * draws one static frame under reduced motion.
+ */
 export function HeroThreePark({
   className,
   onReady,
@@ -135,5 +128,3 @@ export function HeroThreePark({
     />
   );
 }
-
-export default HeroThreePark;

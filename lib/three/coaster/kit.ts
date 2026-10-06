@@ -11,9 +11,7 @@
 
 import * as THREE from 'three';
 
-// ---------------------------------------------------------------------------
-// Palette — a bright, toy/RCT-ish look shared by every element scene.
-// ---------------------------------------------------------------------------
+/** The palette: a bright, toy-like look shared by every element scene. */
 export const PAL = {
   grass: 0x6fcf57,
   grassDark: 0x4fae3d,
@@ -28,11 +26,10 @@ export const PAL = {
   hill: 0x67c24f,
 };
 
-// ---------------------------------------------------------------------------
-// Disposal tracker — register every geometry/material/texture so the whole
-// scene can be torn down in one call (avoids WebGL leaks when the player
-// unmounts / the term page navigates away).
-// ---------------------------------------------------------------------------
+/**
+ * Registers every geometry, material and texture so a scene tears down in one call, without
+ * leaking WebGL resources when the player unmounts.
+ */
 export class Tracker {
   private geos: THREE.BufferGeometry[] = [];
   private mats: THREE.Material[] = [];
@@ -68,6 +65,7 @@ export interface BuildCtx {
   lit: (params: THREE.MeshStandardMaterialParameters, glow?: number) => THREE.MeshStandardMaterial;
 }
 
+/** The shared material factories for one scene, each registered with its tracker. */
 export function createCtx(track: Tracker): BuildCtx {
   const mat = (params: THREE.MeshStandardMaterialParameters) =>
     track.mat(new THREE.MeshStandardMaterial({ flatShading: true, ...params }));
@@ -80,16 +78,7 @@ export function createCtx(track: Tracker): BuildCtx {
   return { track, mat, lit };
 }
 
-// ---------------------------------------------------------------------------
-// Parallel-transport frames along a curve.
-//
-// Returns a smoothly-rotating frame (tangent / up / right) at N+1 samples,
-// transported with minimal twist so it never flips. A planar vertical loop
-// naturally takes `up` upside-down at the apex (correct), while a straight
-// section keeps `up` constant — and an explicit per-sample `roll(t)` then adds
-// barrel-rolls/heartline twists on top. Rails are lofted along `right`, and the
-// train + onboard camera are oriented from (tangent, up).
-// ---------------------------------------------------------------------------
+/** A curve's precomputed frames, as {@link framesAlongCurve} returns them. */
 export interface CurveFrames {
   curve: THREE.CatmullRomCurve3;
   points: THREE.Vector3[];
@@ -105,6 +94,12 @@ export interface CurveFrames {
 const _q = new THREE.Quaternion();
 const _v = new THREE.Vector3();
 
+/**
+ * Parallel-transport frames along a curve: tangent, up and right at N+1 samples, carried with
+ * minimal twist so they never flip. A vertical loop takes `up` upside-down at the apex, a straight
+ * keeps it constant, and `roll(t)` adds barrel rolls and heartline twists on top. Rails are lofted
+ * along `right`; the train and the onboard camera are oriented from tangent and up.
+ */
 export function framesAlongCurve(
   pts: THREE.Vector3[],
   N: number,
@@ -192,16 +187,13 @@ export function frameAt(
   out.right.crossVectors(out.tangent, out.up).normalize();
 }
 
-// ---------------------------------------------------------------------------
-// Environment — a consistent meadow + mountain + sky shared by every element.
-// ---------------------------------------------------------------------------
-
 function canvas2d(size: number): [HTMLCanvasElement, CanvasRenderingContext2D] {
   const c = document.createElement('canvas');
   c.width = c.height = size;
   return [c, c.getContext('2d')!];
 }
 
+/** The sky's vertical gradient as a canvas texture, by day or by night. */
 export function makeSkyTexture(track: Tracker, night: boolean): THREE.CanvasTexture {
   const [c, ctx] = canvas2d(256);
   const g = ctx.createLinearGradient(0, 0, 0, 256);
@@ -242,7 +234,6 @@ export function buildMountains(ctx: BuildCtx): THREE.Group {
   const rockMat = ctx.mat({ color: PAL.mountain, roughness: 1, flatShading: false });
   const snowMat = ctx.mat({ color: PAL.mountainSnow, roughness: 1, flatShading: false });
   const hillMat = ctx.mat({ color: PAL.hill, roughness: 1, flatShading: false });
-  // big peaks
   const peaks: [number, number, number][] = [
     [-26, 30, -8],
     [4, 42, 0],
@@ -261,7 +252,6 @@ export function buildMountains(ctx: BuildCtx): THREE.Group {
     snow.position.set(x, h - h * 0.16, -54 + dz);
     g.add(snow);
   }
-  // rolling foreground hills
   for (const [x, r, dz] of [
     [-30, 12, -34],
     [0, 14, -38],
@@ -309,6 +299,7 @@ export function buildClouds(ctx: BuildCtx): { group: THREE.Group; update: (e: nu
   };
 }
 
+/** A random number between `a` and `b`. */
 export function rnd(a: number, b: number): number {
   return a + Math.random() * (b - a);
 }

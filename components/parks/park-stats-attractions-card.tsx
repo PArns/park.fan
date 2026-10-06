@@ -39,10 +39,9 @@ interface ParkStatsAttractionsCardProps {
   city: string;
   parkSlug: string;
   /**
-   * Render without the card's own glass and padding — for the stats panel, where the enclosing
-   * `PANEL_CELL` already draws the box and the hairline rules and a card inside a card is one
-   * frame too many. The heading stays: it is a real `<h3>` in the document outline, not a metric
-   * label, and the table under it needs one.
+   * Render without the card's own glass and padding, for the stats panel, whose enclosing
+   * `PANEL_CELL` already draws the box. The heading stays: it is a real `<h3>` in the document
+   * outline.
    */
   bare?: boolean;
 }
@@ -57,11 +56,9 @@ const RANK_STYLES: Record<number, string> = {
 const VALUE_CELL = 'w-[4.5rem] py-1.5 pr-1 text-right tabular-nums';
 
 /**
- * Top-ten ranking as a table: typical and peak wait side by side with what the ride is
- * showing right now, which is the comparison the historical numbers exist for.
- *
- * The narrow layout keeps only the peak column (rank · name · peak — exactly what it showed
- * before), because four numeric columns do not fit next to a ride name on a phone.
+ * Top-ten ranking as a table: typical and peak wait beside what the ride shows right now, the
+ * comparison the historical numbers exist for. A phone keeps only the peak column, since four
+ * numeric columns do not fit beside a ride name.
  */
 export function ParkStatsAttractionsCard({
   attractions,
@@ -131,14 +128,11 @@ export function ParkStatsAttractionsCard({
                     {a.rank}
                   </span>
                 </td>
-                {/* max-w-0 in an auto-layout `w-full` table: the cell shrinks to nothing so the
-                  numeric columns get their width first, then absorbs what is left — which is
-                  what gives `truncate` below something finite to truncate against. */}
-                {/* With a land or ride type the cell holds two lines, 18 px + 14 px = 32 px, which is
-                  exactly the height of a one-line row (20 px name + 12 px padding, and the 20 px
-                  rank badge + padding beside it). So the table is as tall with the line as
-                  without, and the skeleton, which cannot know whether a park has lands, stays
-                  right. A row with neither value shows no second line. */}
+                {/* `max-w-0` in an auto-layout `w-full` table: the cell shrinks so the numeric
+                    columns get their width first, then absorbs the rest, which gives `truncate` a
+                    finite width. With a land or ride type the cell holds two lines (18 + 14 px),
+                    exactly the height of a one-line row, so the skeleton stays right whether or not
+                    a park has lands. */}
                 <td className={cn('max-w-0 pr-3', hasMeta ? 'py-0' : 'py-1.5')}>
                   <Link
                     href={`/parks/${continent}/${country}/${city}/${parkSlug}/${a.attractionSlug}`}

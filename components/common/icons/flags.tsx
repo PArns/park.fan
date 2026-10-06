@@ -1,3 +1,8 @@
+/**
+ * Inline SVG flags, one component per country (`FlagDE` … `FlagBR`), `aria-hidden` and sized by the
+ * caller. Used by the locale switcher, the language banners, the OG images and, through
+ * `CountryFlag`, the parks menu.
+ */
 import React from 'react';
 
 export function FlagDE(props: React.ComponentProps<'svg'>) {
@@ -251,10 +256,8 @@ export function FlagSA(props: React.ComponentProps<'svg'>) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" aria-hidden="true" {...props}>
       <rect width="900" height="600" fill="#006C35" />
-      {/* The shahada, as a band. The real flag carries a line of Arabic calligraphy above the
-          sword; at the 16×12 box this renders into it is under 2 px tall, which is an indistinct
-          white smudge whichever path you draw — so it is a band rather than a bad approximation of
-          script. The sword below it is what makes the flag readable at this size. */}
+      {/* The shahada as a band: at 16×12 any calligraphy is a sub-2 px smudge, and the sword is
+          what makes the flag readable. */}
       <rect width="470" height="52" x="215" y="200" rx="26" fill="#fff" />
       <rect width="150" height="30" x="215" y="285" rx="15" fill="#fff" />
       <rect width="230" height="30" x="420" y="285" rx="15" fill="#fff" />
@@ -318,17 +321,9 @@ export function FlagBR(props: React.ComponentProps<'svg'>) {
 }
 
 /**
- * The 20 flags above, reachable by ISO country code — plus an answer for the three the set does
- * not cover.
- *
- * The header's parks menu renders one per country row, and the geo payload carries the code
- * (`country.code`), so a lookup is all it needs. Emoji flags would have been the shorter route and
- * are the reason this file exists at all: Windows ships no flag glyphs, so `🇩🇪` renders there as
- * the letters "DE" — which is exactly what `countryFlagEmoji` in `lib/utils/region-names.ts`
- * accepts for a holiday label and what a navigation menu should not.
- *
- * All 23 countries the parks menu lists have artwork. A code that does not resolve still falls back
- * to a neutral chip with its letters rather than a gap — add the SVG here and it disappears.
+ * The flags above by ISO country code, for the parks menu. SVG rather than emoji flags, because
+ * Windows ships no flag glyphs and renders `🇩🇪` as the letters "DE". A code without artwork falls
+ * back to a neutral chip with its letters.
  */
 const FLAG_BY_CODE: Record<string, React.ComponentType<React.ComponentProps<'svg'>>> = {
   DE: FlagDE,

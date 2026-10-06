@@ -26,6 +26,10 @@ export const MCP_SERVER_INFO = {
   websiteUrl: SITE_URL,
 } as const;
 
+/**
+ * Builds the MCP server card served at `/.well-known/mcp/server-card.json`, listing the given tool
+ * names and the `/api/mcp` endpoint.
+ */
 export function mcpServerCard(toolNames: string[]) {
   return {
     serverInfo: MCP_SERVER_INFO,

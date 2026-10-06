@@ -3,26 +3,10 @@
 import { analyzePayload, fitForCommit, toDatabaseFormat } from './upload-transport';
 
 /**
- * The one path a photograph takes from a device into the media database.
- *
- * It existed twice by accident and only just: the media browser's batch dialog
- * carried the whole sequence inline, and the field-capture route needs exactly the
- * same one with a different screen in front of it. Four of the steps are rules
- * rather than plumbing, and each was learned the hard way:
- *
- *  1. **Analyze the ORIGINAL.** EXIF is what says where and when, and both of the
- *     re-encodes below destroy it. Reading it afterwards reads nothing.
- *  2. **Format before size.** A HEIC under the size cap is never touched by the
- *     shrink step and fails at the very last moment on the server's extension
- *     check. `toDatabaseFormat` asks the format question first.
- *  3. **Carry the EXIF back in.** Once anything has been re-encoded the file no
- *     longer carries its own coordinates, and the build generator re-reads them
- *     from the file. So they are written into the sidecar explicitly, and only
- *     then — an untouched original keeps being the source of truth.
- *  4. **One request per photo, in order.** A batch in a single body exceeded
- *     Vercel's ~4.5 MB limit; sequential is also what lets the first commit open
- *     the session pull request and the rest find and join it instead of racing to
- *     open their own.
+ * The one path a photo takes from a device into the media database, shared by the batch dialog
+ * and the capture screen. Its rules: analyze the original (a re-encode destroys EXIF), format
+ * before size, write the EXIF into the sidecar only when the file was re-encoded, and one request
+ * per photo, in order, so the first opens the session pull request and the rest join it.
  */
 
 /** A ranked park suggestion from the photo's coordinates. */
@@ -133,12 +117,8 @@ function readAsBase64(file: File): Promise<string> {
 }
 
 /**
- * Ask the server where this photo was taken, from the original bytes.
- *
- * Only the first megabyte goes up for an oversized file: EXIF sits in an APP1
- * segment right after the JPEG header, so the coordinates and the capture date are
- * in there. Dimensions may not survive the truncation, and the route reports what
- * it could read rather than refusing the file.
+ * Asks the server where this photo was taken, from the original bytes (for an oversized file only
+ * the first megabyte, where the EXIF sits).
  */
 export async function analyzePhoto(file: File): Promise<AnalyzedFile> {
   const form = new FormData();
@@ -174,10 +154,8 @@ export async function commitPhoto(input: CommitPhotoInput): Promise<CommitPhotoR
           sidecar: {
             ...input.sidecar,
             shotAt: input.sidecar.shotAt ?? input.exif?.shotAt ?? null,
-            // Only when the bytes were re-encoded. An untouched original still
-            // carries its own tag, and the build generator prefers reading it
-            // there — a copy written here would freeze and go stale if the file
-            // is ever replaced.
+            // Only when re-encoded: an untouched original carries its own tag, which the build
+            // generator prefers, and a copy here would go stale if the file is replaced.
             gps:
               input.sidecar.gps ??
               (reEncoded && input.exif?.gps

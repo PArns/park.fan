@@ -12,7 +12,6 @@ interface LanguageBannerProps {
   currentLocale: Locale;
 }
 
-// Flag components for each locale
 const FlagComponents: Record<Locale, React.ComponentType<{ className?: string }>> = {
   en: FlagUS,
   de: FlagDE,
@@ -22,16 +21,17 @@ const FlagComponents: Record<Locale, React.ComponentType<{ className?: string }>
   it: FlagIT,
 };
 
+/**
+ * Banner offering to switch to the browser's language when it differs from the page's, worded in
+ * that language. Dismissal is remembered per language pair in localStorage.
+ */
 export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
   const [browserLocale, setBrowserLocale] = useState<Locale | null>(null);
   const [isDismissed, setIsDismissed] = useState(true);
   const router = useRouter();
 
-  // Banner copy in the DETECTED language (not the page's), from the inlined per-locale map.
-  // This used to be `import(\`@/messages/${detected}.json\`)` inside the effect below: an async
-  // ~65 KB message-bundle download (and one emitted chunk per locale in the build output) to
-  // read three strings — paid by exactly the visitors the banner targets. Now that the strings
-  // are synchronous the whole thing is derived state, so the extra render pass is gone too.
+  // Banner copy in the detected language (not the page's), from the inlined per-locale map, so the
+  // visitors the banner targets do not download a whole message bundle for three strings.
   const translations = useMemo(() => {
     if (!browserLocale) return null;
     const messages = LANGUAGE_BANNER_MESSAGES[browserLocale];
@@ -45,7 +45,6 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
   }, [browserLocale]);
 
   useEffect(() => {
-    // Detect browser language
     const detectBrowserLanguage = (): Locale | null => {
       if (typeof window === 'undefined') return null;
 
@@ -94,11 +93,9 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
       );
       if (hreflangEl?.href) {
         const { pathname: hreflangPath } = new URL(hreflangEl.href);
-        // `router.replace`, not `window.location.replace`: the target path already carries the
-        // locale segment, so a client navigation renders the right language — and the fallback
-        // branch below has always used the router for the same operation. The hard version
-        // re-downloaded the whole document for a language switch, on the connection least able
-        // to afford it. Replace, not push, keeps the no-extra-history-entry behaviour.
+        // `router.replace`: the target path already carries the locale segment, so a client
+        // navigation renders the right language without re-downloading the document. Replace, not
+        // push, so no history entry is added.
         router.replace(hreflangPath);
         return;
       }
@@ -112,21 +109,14 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
     }
   };
 
-  // Don't show banner if:
-  // - Browser locale not detected
-  // - Browser locale matches current locale
-  // - Banner was dismissed
-  // - Translations not loaded yet
   if (!browserLocale || browserLocale === currentLocale || isDismissed || !translations) {
     return null;
   }
 
   return (
-    // `top-12`, not `top-0`: this sits at `z-[60]` over the `sticky top-0 z-50` header, and at
-    // 390 px the card is ~110 px tall and does not scroll away — so at `top-0` it covered the
-    // whole 48 px bar plus the first ~60 px of the page, and while it was up a visitor could
-    // reach neither the burger, nor the search, nor the logo. The number is the header's height
-    // (components/layout/header.tsx, `h-12`); it moves with it.
+    // `top-12`, not `top-0`: this sits at `z-[60]` over the sticky header and does not scroll
+    // away, so at `top-0` it would cover the burger, search and logo. The number is the header's
+    // height (`h-12`); it moves with it.
     <div
       className="animate-in slide-in-from-top fixed top-12 right-0 left-0 z-[60] duration-300"
       // Read by the new-posts toast, which sits below this from `sm` instead of under it.
@@ -134,12 +124,10 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
     >
       <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
         <div className="border-border/50 bg-background/95 supports-[backdrop-filter]:bg-background/80 relative overflow-hidden rounded-lg border p-3 shadow-lg backdrop-blur sm:p-4">
-          {/* Glassmorphism effect */}
           <div className="from-primary/5 to-primary/5 absolute inset-0 bg-gradient-to-r via-transparent" />
 
           <div className="relative flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <div className="flex items-center gap-2 sm:gap-3">
-              {/* Flag display */}
               <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
                 {(() => {
                   const CurrentFlag = FlagComponents[currentLocale];
@@ -156,14 +144,12 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
                 })()}
               </div>
 
-              {/* Message */}
               <p className="text-foreground text-xs font-medium sm:text-sm">
                 {translations.message}
               </p>
             </div>
 
             <div className="flex items-center gap-2 self-end sm:self-auto">
-              {/* Switch button */}
               <button
                 onClick={handleSwitch}
                 className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex min-h-11 items-center justify-center rounded-md px-3 py-1.5 text-xs font-semibold shadow-sm transition-all hover:shadow-md active:scale-95 sm:min-h-0 sm:px-4 sm:py-2 sm:text-sm"
@@ -171,12 +157,8 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
                 {translations.switchButton}
               </button>
 
-              {/* Dismiss button */}
-              {/* `min-h-11 min-w-11` below `sm` — the admin's `CONTROL_HEIGHT` number
-                  (app/admin/_ui/controls.tsx) and for the same reason. This is the banner's only
-                  exit, and it was a 28 px target that `sm:p-2` made LARGER on the desk, where a
-                  mouse is. The padding still grows above `sm` for the look; the minimum is what
-                  a thumb needs. */}
+              {/* `min-h-11 min-w-11` below `sm`: the banner's only exit needs a thumb-sized
+                  target. */}
               <button
                 onClick={handleDismiss}
                 className="text-muted-foreground hover:bg-muted hover:text-foreground inline-flex min-h-11 min-w-11 items-center justify-center rounded-md p-1.5 transition-colors sm:min-h-0 sm:min-w-0 sm:p-2"

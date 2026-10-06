@@ -29,18 +29,9 @@ import { InspectorPanel, useInspector } from './inspector';
 import { NewContributionsNotice } from './new-contributions-notice';
 
 /**
- * The frame every admin page sits in.
- *
- * Three columns and three ways to drive them. On the left, navigation that
- * collapses to an icon rail so the middle keeps its width on a laptop. In the
- * middle, the page. On the right, the inspector — context beside the thing
- * being edited rather than under it.
- *
- * The keyboard is a first-class way through all of it, not a garnish: ⌘K opens
- * the palette, and `g` followed by a letter jumps between sections the way a
- * terminal-shaped tool does. Both are advertised in the chrome (see the hints
- * in the topbar and the palette), because a shortcut nobody is told about is a
- * shortcut nobody uses.
+ * The frame every admin page sits in: navigation that collapses to an icon rail, the page, and
+ * the inspector beside it. ⌘K and the `g`-then-letter jumps are advertised in the chrome, because
+ * a shortcut nobody is told about is a shortcut nobody uses.
  */
 
 const SIDEBAR_STORAGE_KEY = 'parkfan_admin_sidebar';
@@ -58,6 +49,11 @@ const JUMP_KEYS: Record<string, string> = {
   q: '/admin/queues',
 };
 
+/**
+ * Admin frame around every page: collapsible sidebar, topbar with title, search, refresh and
+ * account menu, then the page, the inspector column and the ⌘K command palette. It also binds the
+ * `g`-then-letter section jumps, which stay off while typing, under a dialog or with unsaved edits.
+ */
 export function AdminShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -74,9 +70,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
 
   const groups = visibleGroups(identity.role);
   const active = activeNavItem(pathname);
-  // Which section of the admin this page lives in. Seventeen entries in four
-  // groups, and the title alone ("Duplikate") does not say whether you are in
-  // curation or in operations.
+  // The title alone ("Duplikate") does not say whether you are in curation or in operations.
   const activeGroup = active
     ? groups.find((group) => group.items.some((item) => item.href === active.href))?.label
     : undefined;
@@ -94,11 +88,8 @@ export function AdminShell({ children }: { children: ReactNode }) {
         return;
       }
 
-      // The `g`-then-letter chord is deliberately dead while typing: an editor
-      // writing "Gondoletta" into a name field must not be teleported to the
-      // dashboard by their own second keystroke. It is equally dead under any
-      // open dialog — the season editor and the account dialogs hold unsaved
-      // work, and navigating out from under one throws it away silently.
+      // Dead while typing (writing "Gondoletta" must not jump to the dashboard) and under any
+      // open dialog, which may hold unsaved work.
       if (typing || event.metaKey || event.ctrlKey || event.altKey) return;
       if (document.querySelector('[role="dialog"], [role="alertdialog"]')) return;
 
@@ -107,11 +98,8 @@ export function AdminShell({ children }: { children: ReactNode }) {
         const href = JUMP_KEYS[event.key.toLowerCase()];
         if (href) {
           event.preventDefault();
-          // The curated-fields editor is neither a dialog nor an input, and
-          // several of its controls are buttons that leave themselves focused
-          // after a click — a tri-state switch, a month, "Korrektur entfernen".
-          // With focus on one of those the chord used to fire straight through
-          // and take the unsaved corrections with it.
+          // The curated-fields editor is neither a dialog nor an input, and its buttons keep focus
+          // after a click, so unsaved corrections are checked for explicitly.
           if (document.querySelector('[data-admin-dirty="true"]')) {
             toast.push({
               title: 'Ungespeicherte Änderungen',
@@ -240,8 +228,6 @@ export function AdminShell({ children }: { children: ReactNode }) {
   );
 }
 
-// ─── sidebar ──────────────────────────────────────────────────────────────────
-
 function Sidebar({
   groups,
   pathname,
@@ -269,8 +255,6 @@ function Sidebar({
       )}
       <nav
         className={cn(
-          // The sidebar tokens have existed in globals.css since the theme was
-          // set up and nothing has ever used them. This is what they are for.
           'bg-sidebar border-sidebar-border fixed inset-y-0 left-0 z-50 flex flex-col border-r transition-[width,transform] duration-200',
           'bg-gradient-to-b from-[oklch(1_0_0_/_0.02)] to-transparent',
           'md:sticky md:top-0 md:z-auto md:h-[100dvh] md:translate-x-0',
@@ -302,9 +286,8 @@ function Sidebar({
           </button>
         </div>
 
-        {/* Dense enough that four groups and seventeen entries clear the footer
-            on a 900 px laptop: at the old rhythm the account group slid under
-            "Zur Website" and read as a rendering fault rather than a scroll. */}
+        {/* Dense enough that every group clears the footer on a laptop, where the last one
+            sliding under "Zur Website" reads as a rendering fault rather than a scroll. */}
         <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-2 py-2">
           {groups.map((group) => (
             <div key={group.label}>
@@ -377,9 +360,8 @@ function SidebarLink({
       onClick={onNavigate}
       title={collapsed ? item.label : undefined}
       className={cn(
-        // The rail is what makes "where am I" readable at a glance in a list of
-        // seventeen entries: a tinted row alone reads as a hover state, and in
-        // the collapsed sidebar there is no label to disambiguate it.
+        // The rail makes "where am I" readable at a glance: a tinted row alone reads as hover, and
+        // the collapsed sidebar has no label to tell them apart.
         'relative flex items-center gap-2.5 rounded-lg py-1.5 pr-2.5 pl-3 text-sm transition-colors',
         'before:absolute before:top-1.5 before:bottom-1.5 before:left-0 before:w-0.5 before:rounded-full before:transition-colors',
         active
@@ -392,8 +374,6 @@ function SidebarLink({
     </Link>
   );
 }
-
-// ─── account ──────────────────────────────────────────────────────────────────
 
 const ROLE_LABELS: Record<string, string> = {
   owner: 'Inhaber',
@@ -418,13 +398,8 @@ function AccountMenu({
 
   useEffect(() => {
     if (!open) return;
-    // Outside clicks only. Closing on *every* click, in the capture phase, took
-    // the menu out of the DOM before the event reached the button inside it:
-    // React flushes a discrete click's state update synchronously, so by the
-    // time its delegated listener looked the target up, that fiber was gone and
-    // `onClick` never ran. "Abmelden" did nothing, every time. "Mein Konto"
-    // still worked and hid the pattern — following a link is the browser's
-    // default action and needs no React handler at all.
+    // Outside clicks only: closing on every click in the capture phase unmounts the menu before
+    // React's delegated listener reaches the button inside it, so its `onClick` never runs.
     const close = (event: MouseEvent) => {
       if (menuRef.current?.contains(event.target as Node)) return;
       setOpen(false);
@@ -471,7 +446,7 @@ function AccountMenu({
           <button
             type="button"
             onClick={() => {
-              // The menu closes itself now that an inside click no longer does.
+              // Inside clicks do not close the menu (see above), so this one does.
               setOpen(false);
               onSignOut();
             }}

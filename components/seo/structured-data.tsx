@@ -7,6 +7,8 @@ import {
   Organization,
   TouristAttraction,
   Article,
+  FAQPage,
+  Question,
 } from 'schema-dts';
 import {
   getParkImageSet,
@@ -21,53 +23,30 @@ import { buildWaitTimeObservations } from '@/lib/utils/wait-time-observations';
 import { SITE_URL } from '@/i18n/config';
 
 /**
- * Stable node identities so the graph is one entity, not a fresh anonymous
- * Organization on every page. Without them nothing tied `WebSite` to its
- * publisher, and a crawler had no way to know the Organization on a park page
- * and the one on the homepage were the same thing.
+ * Stable node identities, so the Organization on every page, and the `WebSite` that names it as
+ * publisher, are one entity rather than a fresh anonymous node per page.
  */
 const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 
 /**
- * Third-party profiles that ARE park.fan, for `sameAs` — the edge an answer engine follows to
- * decide that the park.fan it read about somewhere else and this site are one entity. Empty for
- * now, and therefore omitted below rather than emitted as `sameAs: []`, which would be a claim
- * that the brand has no presence anywhere (the same reason `ParkStructuredData` drops an empty
- * one). Add a profile and it is one line.
- *
- * Only profiles of the ORGANISATION belong here. Patrick's personal accounts are a different
- * entity and already sit on the author's `Person` node in the blog's structured data; listing
- * them here would assert that the person and the company are the same thing.
+ * Third-party profiles that are park.fan itself, for `sameAs`. Omitted while empty, since
+ * `sameAs: []` claims no presence anywhere. Organisation profiles only: Patrick's accounts belong
+ * on the author's `Person` node in the blog's structured data.
  */
 const ORGANIZATION_SAME_AS: readonly string[] = [];
 const websiteId = (locale: string) => `${SITE_URL}/${locale}/#website`;
 
 /*
- * A reference to a node another `<script type="application/ld+json">` on this page describes in
- * full — and the reason most of them below carry a `@type` they do not strictly need.
- *
- * `{'@id': …}` on its own is correct JSON-LD and resolves against whatever graph the consumer
- * happens to have merged. Inside one `@graph` that is the document itself and the reference is
- * complete; across two script blocks it is a promise about a node that may never be looked up,
- * and Search Console says so: the wait-time calendar's `Dataset` pointed `spatialCoverage` at the
- * park id declared in the *neighbouring* block and came back „Ungültiger Objekttyp für Feld
- * spatialCoverage" — an object with no type is not a `Place`, whatever the id would have led to.
- *
- * So the rule is: a reference that leaves its own script states its type. It costs one property,
- * it cannot go stale (a node's type is the one thing about it that does not change), and it is
- * the difference between a graph a consumer can read in one pass and one it can read only if it
- * chose to merge. The description itself stays where it is — restating a park's address on
- * 24,000 URLs is one entity written 24,000 times, free to drift from the first edit.
- *
- * The one field this rule does not settle is `Dataset.spatialCoverage`: a stated type is not
- * enough there, it has to be the type Google's Dataset parser lists. See
+ * A reference that leaves its own `<script type="application/ld+json">` states its `@type`. A bare
+ * `{'@id': …}` resolves only for a consumer that merges the page's blocks, and Search Console
+ * rejects it as an invalid object type; the type costs one property and cannot go stale, while the
+ * full description stays in one place. `Dataset.spatialCoverage` has a stricter rule, see
  * `ParkDatasetStructuredData`.
  */
 
 /**
- * A `@graph` container is not a `Thing` — it sets already-built nodes side by side, which is how
- * the wait-time `Observation`s ship without duplicating every ride into the park node. The old
- * `as WithContext<Thing>` cast papered over that; the union states it instead.
+ * A `@graph` container is not a `Thing`: it sets built nodes side by side, which is how the
+ * wait-time `Observation`s ship without duplicating every ride into the park node.
  */
 type SchemaGraph = { '@context': 'https://schema.org'; '@graph': readonly object[] };
 
@@ -92,9 +71,8 @@ function JsonLd({ data }: StructuredDataProps) {
 }
 
 /**
- * Article JSON-LD for static guide pages (e.g. /howto). Google retired HowTo
- * rich results in 2023, so a plain Article with publisher is the appropriate
- * markup for long-form guide content.
+ * Article JSON-LD for static guide pages (e.g. /howto). Google retired HowTo rich results in 2023,
+ * so long-form guides get a plain Article with a publisher.
  */
 export function ArticleStructuredData({
   title,
@@ -113,11 +91,8 @@ export function ArticleStructuredData({
   /** `YYYY-MM-DD`. Optional — a guide with no meaningful publication date omits it. */
   datePublished?: string;
   /**
-   * `YYYY-MM-DD`. Worth setting on an evergreen guide: it is the only signal
-   * that separates a page kept current from one written once and abandoned, and
-   * Google shows it in the result. Must be a date the content actually changed,
-   * so it is written by hand rather than derived from the build clock — a
-   * timestamp that moves on every deploy says nothing and is arguably a lie.
+   * `YYYY-MM-DD`, written by hand: the date the content last changed, the only signal that a guide
+   * is kept current. A build timestamp would move on every deploy and say nothing.
    */
   dateModified?: string;
 }) {
@@ -144,21 +119,18 @@ export function ArticleStructuredData({
 }
 
 /**
- * FAQPage JSON-LD for guide pages that answer a set of recurring questions
- * (e.g. the Fancast model page). Enables the FAQ rich result in Google when the
- * page is eligible. Pass plain-text Q&A pairs — no markup inside answers.
+ * FAQPage JSON-LD for a page that renders the same questions, from plain-text Q&A pairs (no
+ * markup inside answers).
  */
 export function FaqStructuredData({
   items,
 }: {
   items: ReadonlyArray<{ question: string; answer: string }>;
 }) {
-  // schema-dts doesn't ship a `FAQPage` member in the pinned version, so we
-  // build the JSON-LD as a plain object and reuse the shared escaper/renderer.
-  const data = {
+  const data: WithContext<FAQPage> = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: items.map((item) => ({
+    mainEntity: items.map((item): Question => ({
       '@type': 'Question',
       name: item.question,
       acceptedAnswer: {
@@ -167,19 +139,12 @@ export function FaqStructuredData({
       },
     })),
   };
-  return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeJsonLd(data) }} />
-  );
+  return <JsonLd data={data} />;
 }
 
 /**
- * Builds the JSON-LD `image` value from a park/ride image set.
- *
- * Real park/ride photos are always preferred; the OG card is used ONLY as a
- * fallback when no such photo exists (Google then still has something to show,
- * but never in place of a real picture). Site-relative paths are absolutized;
- * a multi-crop set becomes an array (Google's recommended multi-aspect input),
- * a single image stays a string.
+ * Builds the JSON-LD `image` value from a park/ride image set: real photos first, the OG card only
+ * when there is none. A multi-crop set becomes an array, Google's recommended multi-aspect input.
  */
 function buildStructuredImage(
   imageSet: string[],
@@ -200,6 +165,10 @@ function normalizeCuisineType(cuisineType: string | null): string | undefined {
   return map[cuisineType.toLowerCase()] ?? cuisineType;
 }
 
+/**
+ * `Organization` JSON-LD for park.fan: name, logo, description, contact point and an optional
+ * image.
+ */
 export function OrganizationStructuredData({
   description,
   image,
@@ -231,8 +200,7 @@ export function OrganizationStructuredData({
 }
 
 /**
- * WebSite schema with SearchAction – helps Google show sitelinks search box and
- * understand site structure. Locale-aware so each language has correct search URL.
+ * `WebSite` JSON-LD with a `SearchAction`, per locale so each language has its own search URL.
  */
 export function WebSiteStructuredData({
   locale,
@@ -274,6 +242,10 @@ export function WebSiteStructuredData({
   return <JsonLd data={data as WithContext<Thing>} />;
 }
 
+/**
+ * `ItemList` of `SiteNavigationElement` JSON-LD naming the main navigation's destinations, in the
+ * order the caller passes.
+ */
 export function SiteNavigationStructuredData({
   locale,
   items,
@@ -285,22 +257,10 @@ export function SiteNavigationStructuredData({
   const baseUrl = `${SITE_URL}/${locale}`;
 
   /*
-   * What the header's main navigation is, stated rather than inferred.
-   *
-   * Google works the primary navigation out from the markup on its own, so this is a hint, not a
-   * requirement — which is exactly why it stays SHORT. It names six destinations (five where the
-   * blog has nothing published), news where there is any, and the five continent hubs, and stops there. The 23 country links are in the rendered `<nav>` where they
-   * belong; repeating them here would put a second copy of the same list into the head of every
-   * one of ~35,000 pages to tell the crawler something the markup already says.
-   *
-   * It used to say "the five bar entries", and that stopped being true when four of them moved
-   * behind the "Mehr" trigger: they are still in the main navigation, one level down in a band
-   * that is `hidden` rather than unmounted, so the hint is unchanged and only its description was.
-   *
-   * An `ItemList` rather than a bare array, because `position` is the only way to state an order at
-   * all — and the order is this list's own, not a copy of any surface's. It has not mirrored the
-   * bar since the blog moved out of it, and the caller is where it is decided
-   * (`app/[locale]/layout.tsx`).
+   * The header's main navigation, stated as a hint and kept short: the main destinations, news
+   * where there is any, and the five continent hubs. The country links stay in the rendered `<nav>`
+   * rather than in the head of every page. An `ItemList` because `position` is the only way to
+   * state an order, and the order is decided by the caller (`app/[locale]/layout.tsx`).
    */
   const data = {
     '@context': 'https://schema.org' as const,
@@ -317,6 +277,10 @@ export function SiteNavigationStructuredData({
   return <JsonLd data={data as WithContext<Thing>} />;
 }
 
+/**
+ * `AmusementPark` JSON-LD for a park page (address, coordinates, opening hours, rides and
+ * restaurants) plus a `WebPage` node and the current wait times as `Observation` nodes.
+ */
 export function ParkStructuredData({
   park,
   url,
@@ -353,9 +317,7 @@ export function ParkStructuredData({
     image: buildStructuredImage(getParkImageSet(park.slug), ogImageUrl),
     address: {
       '@type': 'PostalAddress',
-      // Street and postcode are curated — nothing upstream carries them, so
-      // before they existed this claimed a locality and a country and left
-      // Google to guess the rest.
+      // Street and postcode are curated; nothing upstream carries them.
       streetAddress: info?.streetAddress || undefined,
       postalCode: info?.postalCode || undefined,
       addressLocality: park.city || undefined,
@@ -363,10 +325,8 @@ export function ParkStructuredData({
       addressRegion: park.region || undefined,
     },
     telephone: info?.phone || undefined,
-    // The park's own presence, so a search engine can tie this page to the
-    // entity rather than treating it as an unrelated site about the same name.
-    // Omitted when the API curates none — an empty `sameAs: []` is a claim that
-    // the park has no presence anywhere, which is never what we mean.
+    // The park's own presence, so a search engine ties this page to the entity. Omitted when none
+    // is curated: `sameAs: []` claims no presence anywhere.
     sameAs: parkSameAs.length ? parkSameAs : undefined,
     geo:
       park.latitude && park.longitude
@@ -385,10 +345,8 @@ export function ParkStructuredData({
             const attrImg = getAttractionBackgroundImage(park.slug, attraction.slug);
             return {
               '@type': 'TouristAttraction' as const,
-              // Same reason the Organization and WebSite nodes carry ids: so the
-              // ride is one entity on the page rather than several anonymous
-              // descriptions of it. The wait-time `Observation` below points
-              // here instead of repeating the ride's name.
+              // An id, so the ride is one entity on the page and the wait-time `Observation` below
+              // can point here instead of repeating its name.
               '@id': `${url}/${attraction.slug}`,
               name: stripNewPrefix(attraction.name),
               url: `${url}/${attraction.slug}`,
@@ -406,21 +364,15 @@ export function ParkStructuredData({
     ],
   };
 
-  // Current standby waits as `Observation` nodes, in their own block rather than
-  // inside `AmusementPark` — a park does not have a property for "measurements taken
-  // about me", and the readings are about the rides anyway, which they reference
-  // by the `@id` those rides carry above. `undefined` for parks whose waits we
-  // cannot read; see buildWaitTimeObservations for the full selection rule.
+  // Current standby waits as `Observation` nodes in their own block: a park has no property for
+  // measurements about it, and the readings are about the rides, referenced by their `@id`.
+  // `undefined` for parks whose waits we cannot read; see buildWaitTimeObservations.
   const observations = 'attractions' in park ? buildWaitTimeObservations(park, url) : undefined;
 
-  // When this page's content last changed, which on a park page is the freshest wait-time reading
-  // on it. It goes on a `WebPage` node rather than onto `AmusementPark`: `dateModified` is a
-  // property of CreativeWork, and a park is a Place — the date describes the document, not the
-  // park. Omitted when there is no reading at all (a park whose waits we cannot read, one shut
-  // for the season): a stated modification date we cannot support is worse than none.
-  //
-  // Lexicographic max is safe here because every value is the same field from the same API, an
-  // ISO-8601 instant in UTC (`2026-08-23T08:13:23.908Z`).
+  // The freshest wait-time reading, as the `WebPage`'s `dateModified`: it is a CreativeWork
+  // property, and a park is a Place. Omitted when there is no reading, since an unsupported date is
+  // worse than none. A lexicographic max is safe: every value is the same API's ISO-8601 UTC
+  // instant.
   const latestObservation = observations?.reduce<string | undefined>(
     (latest, observation) =>
       observation.observationDate && (!latest || observation.observationDate > latest)
@@ -456,8 +408,7 @@ export function ParkStructuredData({
 }
 
 /**
- * ItemList schema for listing pages (Continent = countries, Country/City = parks).
- * Helps search engines understand the page as a list of items.
+ * `ItemList` JSON-LD for listing pages (a continent lists countries; a country or city, parks).
  */
 export function ItemListStructuredData({
   items,
@@ -465,9 +416,8 @@ export function ItemListStructuredData({
   pageUrl,
 }: {
   /**
-   * `image` (when provided) gives Google a per-item thumbnail candidate — the
-   * signal that lets list/hub pages surface picture results in the SERP. Pass
-   * an absolute or site-relative path; `null`/omitted items simply carry no image.
+   * `image` gives Google a per-item thumbnail candidate, which lets hub pages surface picture
+   * results. Absolute or site-relative; `null` or omitted carries no image.
    */
   items: { name: string; url: string; image?: string | null }[];
   listName?: string;
@@ -496,11 +446,8 @@ export function ItemListStructuredData({
 }
 
 /**
- * `WebApplication` for a page that IS a tool rather than a document about one (the trip planner).
- * It runs in the browser, costs nothing and needs no account, and those are the three facts this
- * node states. No `aggregateRating`: there are no ratings to report, so Google shows no software
- * rich result for it, and that is the honest outcome. What the node buys is the entity: an answer
- * engine reading the page learns it is a free web app by park.fan, not an article.
+ * `WebApplication` for a page that is a tool rather than a document (the trip planner): it runs in
+ * the browser, is free and needs no account. No `aggregateRating`: there are no ratings to report.
  */
 export function WebApplicationStructuredData({
   name,
@@ -535,6 +482,10 @@ export function WebApplicationStructuredData({
   return <JsonLd data={data as WithContext<Thing>} />;
 }
 
+/**
+ * `BreadcrumbList` JSON-LD from the page's breadcrumbs, optionally ending with the current page,
+ * with locale-prefixed absolute URLs. Renders nothing for an empty trail.
+ */
 export function BreadcrumbStructuredData({
   breadcrumbs,
   currentPage,
@@ -542,18 +493,9 @@ export function BreadcrumbStructuredData({
 }: {
   breadcrumbs: Breadcrumb[];
   /**
-   * The page being rendered, as the trail's last item.
-   *
-   * Separate from `breadcrumbs` because the VISIBLE trail already takes it separately —
-   * `BreadcrumbNav` draws it unlinked, as the leaf you are standing on — so a page that hands it
-   * to both would render it twice on screen. Google's examples end the list with the current
-   * page, and every geo, park, ride and calendar page here stopped one level short of it: the
-   * park page's trail ended at „Brühl", the ride page's at „Phantasialand", the calendar's at
-   * „Phantasialand" as well. A breadcrumb rich result for the calendar therefore advertised the
-   * park. The glossary has passed its own leaf all along; this is the rest of the site catching
-   * up.
-   *
-   * The URL is the page's own — the same one its canonical points at.
+   * The page being rendered, as the trail's last item, with its canonical URL. Separate from
+   * `breadcrumbs` because `BreadcrumbNav` draws the leaf unlinked and would otherwise render it
+   * twice; Google's examples end the list with the current page.
    */
   currentPage?: Breadcrumb;
   locale?: string;
@@ -564,7 +506,6 @@ export function BreadcrumbStructuredData({
   const toAbsoluteUrl = (url: string): string => {
     if (url.startsWith('http')) return url;
     if (!locale) return `${SITE_URL}${url}`;
-    // Home shorthand
     if (url === '/') return `${SITE_URL}/${locale}`;
     // Already has this locale prefix — don't double-prefix
     if (url === `/${locale}` || url.startsWith(`/${locale}/`)) return `${SITE_URL}${url}`;
@@ -585,6 +526,10 @@ export function BreadcrumbStructuredData({
   return <JsonLd data={data} />;
 }
 
+/**
+ * `TouristAttraction` JSON-LD for a ride page: name, description, image, coordinates and its park
+ * as `containedInPlace`, linked by the same `@id`s the park page uses.
+ */
 export function AttractionStructuredData({
   attraction,
   park,
@@ -608,9 +553,8 @@ export function AttractionStructuredData({
 }) {
   const attractionName = stripNewPrefix(attraction.name);
   const parkName = stripNewPrefix(park.name);
-  // The park page lists this ride in `containsPlace` under `@id: <ride URL>` and states itself as
-  // `@id: <park URL>`. Both ids here, so the two pages describe one ride inside one park instead
-  // of a second, unconnected ride next to an anonymous park (SEO run, 2026-10-03).
+  // The park page lists this ride under `@id: <ride URL>` and itself under `@id: <park URL>`; both
+  // ids here make the two pages describe one ride inside one park.
   const parkUrl = url.split('/').slice(0, -1).join('/');
   const { latitude, longitude } = attraction;
   const data: WithContext<TouristAttraction> = {
@@ -648,22 +592,10 @@ export function AttractionStructuredData({
 }
 
 /**
- * The `WebPage` node for a park SUB-page — today the wait-time calendar and its months.
- *
- * These pages carried `Organization`, `WebSite`, `BreadcrumbList` and `ItemList` and nothing that
- * said what they are about. A crawler could see a breadcrumb ending in „Wartezeiten-Kalender" and
- * had to infer the rest, on a class of 1,272 hubs plus 22,896 month URLs — the largest set of
- * pages on the site with no declared subject.
- *
- * It points at the park with `about` rather than describing it again. The park page emits the
- * `AmusementPark` with `@id` set to its own URL precisely so another node can reference it, and a
- * second full copy of the place on 24,000 URLs would be the same entity stated 24,000 times, free
- * to drift the moment one of them is edited. `about` and not `mainEntity`, because the primary
- * thing here is the calendar, not the park.
- *
- * `FAQPage` is deliberately still absent. The visible FAQ is shared furniture across every page
- * of a park; the structured data may not be, or one set of questions competes with itself on
- * every URL the park has.
+ * The `WebPage` node for a park sub-page (the wait-time calendar and its months), so the page
+ * declares its subject. It points at the park with `about` rather than describing it again, and
+ * uses `about` rather than `mainEntity` because the calendar is the primary thing. No `FAQPage`:
+ * the same questions on every URL of a park would compete with each other.
  */
 export function ParkSubPageStructuredData({
   url,
@@ -700,14 +632,8 @@ export function ParkSubPageStructuredData({
             // below is two lines down, in this same `@graph`.
             about: { '@id': parkUrl },
           },
-          // The stub for the thing `about` points at.
-          //
-          // `@id` on its own is a cross-document reference: correct JSON-LD, and worth nothing to
-          // a consumer reading this page without also fetching and merging the park page. The
-          // full `AmusementPark` — address, hours, photos, socials — lives there and stays there,
-          // because restating it on 24,000 URLs is one entity written 24,000 times and free to
-          // drift from the moment one of them is edited. A type and a name are enough to make the
-          // reference mean something here, and neither can go stale.
+          // The stub for `about`: a bare `@id` means nothing to a consumer that does not also fetch
+          // the park page, so it states a type and a name, neither of which can go stale.
           { '@type': 'AmusementPark', '@id': parkUrl, name: parkName, url: parkUrl },
         ],
       }}
@@ -716,48 +642,17 @@ export function ParkSubPageStructuredData({
 }
 
 /**
- * `Dataset` for a table of measurements about one park — the crowd calendar's month, or the
- * wait-time record's two-year window.
+ * `Dataset` for a table of measurements about one park: the crowd calendar's month, or the
+ * wait-time record's two-year window. Narrower than the type allows, because a `Dataset` makes
+ * claims a page has to honour:
  *
- * Neither page is prose about a park; each is a table of one row per day or per hour, and
- * `Dataset` is what schema.org has for that. wartezeiten.app marks its own calendar pages the
- * same way, which is what prompted this, but the shape here is deliberately narrower than theirs
- * in three places because a `Dataset` makes claims a page has to be able to honour.
- *
- * Everything that differs between the two pages arrives as a prop — the name, the description,
- * the covered interval and the list of values measured — so there is one node shape and one place
- * where its rules are written down.
- *
- * **`variableMeasured` lists what the grid actually draws** and nothing else. It is passed in by
- * the caller, already translated, rather than assembled from a fixed English list — the node
- * carries `inLanguage`, so its human-readable strings have to be in that language too.
- *
- * **No `distribution`.** That property means „here is the file", and there is no download. Naming
- * one would send Dataset Search at a URL that does not exist.
- *
- * **No `dateModified`.** A crowd forecast shifts a little every morning on all 212 parks at once,
- * so a modification date here would be one identical value across the whole catalogue — exactly
- * the signal docs/seo/sitemaps.md keeps out of `<lastmod>`, for the same reason.
- *
- * `creator` is a reference, not a copy: the site `Organization` already exists under that id, and
- * restating it on 24,000 URLs is one entity described 24,000 times, free to drift the moment one
- * is edited. It carries a `@type` because it points out of this script — see the note above
- * `ORGANIZATION_ID`.
- *
- * **`spatialCoverage` is a plain `Place`, and it carries no `@id`.** Google's Dataset parser takes
- * `Text` or `Place` there and nothing else — not a subtype, although schema.org makes
- * `AmusementPark` one (through `LocalBusiness`); the same parser rejects `Country`. Search Console
- * has reported „Ungültiger Objekttyp für Feld spatialCoverage" twice. In August the value was a
- * bare `{'@id': …}` with no type at all; the fix typed it `AmusementPark`, and from 23 September
- * the wait-time records came back with the same error, 137 items on the first day.
- * The park's `@id` stays off this node on purpose: it is the id of the `AmusementPark` stub in
- * `ParkSubPageStructuredData`'s `@graph`, and a consumer that merges the page's blocks would fold
- * the two into one node typed `AmusementPark` again. The link from this page to the park is that
- * stub and the `WebPage`'s `about`, not this field.
- *
- * What the `Place` does carry is the name, the park page's URL, and the park's coordinates when
- * the API has them: a single point is the form Google documents, and a name and a point do not
- * drift the way an address or opening hours would.
+ * - `variableMeasured` lists what the grid draws, translated, since the node carries `inLanguage`.
+ * - No `distribution`: there is no download to point at.
+ * - No `dateModified`: the forecast shifts every morning on every park at once, the signal
+ *   docs/seo/sitemaps.md keeps out of `<lastmod>`.
+ * - `spatialCoverage` is a plain `Place` with no `@id`. Google's Dataset parser takes `Text` or
+ *   `Place` only, not a subtype such as `AmusementPark`, and the park's `@id` would merge it into
+ *   the `AmusementPark` stub. It carries the name, the park page's URL and, when known, a point.
  */
 export function ParkDatasetStructuredData({
   url,

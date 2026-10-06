@@ -4,44 +4,16 @@ import { useEffect, type RefObject } from 'react';
 import { scrollWhenSettled } from '@/lib/utils/scroll-when-settled';
 
 /**
- * Keeping the entry-tile row where it is when a visitor walks from one park page to another.
+ * Keeps the entry-tile row where it is when a visitor walks from one park page to another. The row
+ * is identical on every page of a park, but following a cell is a navigation, which goes to the
+ * top. So the cell records where the row sat in the viewport, the scroll-to-top mechanisms stand
+ * down, and the destination's row corrects itself back to that offset.
  *
- * The row is the park's navigation and it is rendered on every page of the park — the same six
- * cells in the same order, deliberately, so that park → calendar → park feels like one site. It
- * did not feel like one, and the reason was the scroll: the calendar is a PAGE, so following its
- * cell is a navigation, and a navigation goes to the top of the document. A visitor who had
- * scrolled the row up to read it lost it on the way out and got it back somewhere else on the way
- * in — and the way in was worse, because the park page's hash router then smooth-scrolled the row
- * to 100 px, so one click cost a jump to the top plus an animation back down. Every time, in both
- * directions, and the row a visitor was pointing at is the one thing on the page that is
- * guaranteed to be identical on the other side of the click.
- *
- * So the row's position is handed over rather than recomputed. The cell records where the row sat
- * in the VIEWPORT at the moment of the click, the two scroll-to-top mechanisms are told to stand
- * down, and the row on the destination page corrects itself back to that offset — a few pixels at
- * most, because both pages build the row into the same shell and only the H1 above it differs.
- * Those few pixels are the whole correction, which is why it is skipped for a visitor who clicked
- * at the document top: there the same pixels move the page's own top instead, and the reasoning
- * is at the guard in `useTileRowAnchor`.
- *
- * Standing the scroll down takes THREE calls, not one, and each answers a different piece of code:
- * `scroll={false}` on the link is the router's; `suppressScrollToTopFor()` is this app's own
- * `ScrollToTop`, which exists because the router's handler bails out whenever the new page's top
- * element is already in the viewport and therefore never fires here; and `hasTileRowHandoff()` is
- * how `useTabHashRouting` knows not to run its deep-link scroll on arrival. Miss any one of them
- * and the row still ends up somewhere the visitor did not put it.
- *
- * A module-level variable rather than `sessionStorage`, because these are App Router client
- * navigations and the module outlives them. A hard navigation (middle-click, a reload, an address
- * bar) finds nothing here and gets exactly the behaviour it had before, which is the right
- * fallback: a visitor arriving cold has no position to keep.
- *
- * Nothing consumes the record — it expires instead, and that is what makes it survive React's
- * development double-mount. A version that cleared it in the effect's cleanup restored nothing at
- * all: StrictMode runs setup, cleanup, setup, so the first mount ate the handoff and the second
- * found an empty slot. An age is also the honest test of what the record is for. It describes one
- * click; if the destination has not rendered within `MAX_HANDOFF_AGE_MS` the visitor has long
- * stopped expecting the page to remember anything.
+ * Standing down takes three calls: `scroll={false}` on the link for the router,
+ * `suppressScrollToTopFor()` for this app's `ScrollToTop`, and `hasTileRowHandoff()` for
+ * `useTabHashRouting`'s deep-link scroll. A module variable rather than `sessionStorage`, since
+ * these are client navigations; a hard navigation finds nothing. The record expires instead of
+ * being consumed, so React's development double-mount cannot eat it.
  */
 interface TileRowHandoff {
   /** The park it was recorded on. A handoff is only ever redeemed on the same park. */
@@ -109,25 +81,12 @@ export function useTileRowAnchor(rowRef: RefObject<HTMLElement | null>, park: st
   useEffect(() => {
     const record = liveHandoff(park);
     if (!record) return;
-    // A visitor who had not scrolled has no position to hand over, and correcting for them costs
-    // the part of the page they are looking at. The pages of a park are the same shell, but the
-    // title card above the row is as tall as its own H1 and intro: on Phantasialand the
-    // calendar's card measures 240 px against the park page's 262 at 1280, 483 against 493 at
-    // 360, and 324 against 306 at 768, where the H1 wraps the other way. So the walk back from
-    // the calendar, clicked at the document top with the row on screen, put the park page at
-    // scrollY = 23 — the breadcrumb 23 px higher in the window than on the page it came from,
-    // which is what a reader reports as the two pages being spaced differently. The other
-    // direction never showed it: the calendar's row sits higher, so its correction is negative
-    // and already clamps to 0.
-    //
-    // The record itself stays. `hasTileRowHandoff()` is what keeps `useTabHashRouting` from
-    // scrolling to the row on arrival, and every chapter cell links with a hash. Only the
-    // correction stands down, and the destination keeps the top the visitor was already at.
+    // A visitor who had not scrolled has nothing to hand over: the title card above the row
+    // differs in height between a park's pages, so a correction would move the page's own top.
+    // The record stays, so `useTabHashRouting` still skips its scroll on arrival.
     if (record.scrollY === 0) return;
-    // Instant, and there is nothing to see: the row is already within a few pixels of where it
-    // was, because nothing scrolled on the way here. What this corrects is the difference between
-    // the two pages' headings — and then keeps correcting, because the panel above the row fills
-    // in from client queries and would otherwise push the row down under the visitor.
+    // Instant: the row is already within a few pixels of where it was. It keeps correcting while
+    // the panel above the row fills in from client queries.
     return scrollWhenSettled(() => rowRef.current, { offset: record.top, smooth: false });
   }, [rowRef, park]);
 }

@@ -14,34 +14,19 @@ interface UseAttractionDetailParams {
    */
   enabled?: boolean;
   /**
-   * Keep the response fresh on a 5-minute cycle (and on window focus), the way the park poll this
-   * replaced did.
-   *
-   * Opt-in rather than always-on: the ride page now renders its LIVE panel from this response, so
-   * it has to refresh; the blog's ride cards read live status from the lean whole-park
-   * `wait-times` batch and only use this for a sparkline, so polling it there would add a request
-   * per on-screen card for values nothing re-reads.
+   * Refresh on a 5-minute cycle and on window focus. Opt-in: the ride page renders its live panel
+   * from this response, while the blog's ride cards read live status from the lean `wait-times`
+   * batch and use this only for a sparkline.
    */
   poll?: boolean;
 }
 
 /**
- * Client-side fetch for an attraction's heavy detail: the daily `history` + `hourlyForecast`
- * time-series (plus `schedule`, `bestVisitTimes`, `predictionAccuracy`).
- *
- * Moved off the server render so the attraction page's static shell no longer bakes this
- * time-series into every per-attraction × per-locale ISR write — by far the dominant ISR-write
- * source (the attraction route was the top writer in Vercel's cache dashboard). The
- * `/api/parks/.../attractions/<slug>` route serves it as a CDN-cached function response
- * (s-maxage=3600); this hook just polls that. The daily chart, history grid and the
- * prediction-accuracy card all consume it, sharing one request via this query key.
- *
- * - Browser-only (`enabled` gated on `window`): never runs during the static prerender, where
- *   React Query reading the clock is forbidden under Cache Components.
- * - 404 = attraction has no detail → treated as `null`, no retries.
- * - 10-min staleTime mirrors the route's CDN window (today's hourlyForecast refines through the
- *   day; the backend caches attractions ~5 min), so a revisit refetches rather than showing 1h-old
- *   forecast.
+ * Client-side fetch for an attraction's heavy detail (daily `history`, `hourlyForecast`,
+ * `schedule`, `bestVisitTimes`, `predictionAccuracy`) from the CDN-cached
+ * `/api/parks/.../attractions/<slug>` route, so the page's static shell does not bake the time
+ * series into every ISR write. The daily chart, history grid and accuracy card share this query.
+ * A 404 means no detail and resolves to `null`.
  */
 export function useAttractionDetail({
   continent,
@@ -71,10 +56,8 @@ export function useAttractionDetail({
       return (await response.json()) as AttractionResponse;
     },
     enabled: enabled && !!attractionSlug && typeof window !== 'undefined',
-    // Polling consumers mirror the old park poll's cadence: 5 min, which is also what the backend
-    // caches an attraction for, so a shorter window would only add origin load without adding
-    // freshness. Non-polling consumers keep the longer window — they read this for the sparkline
-    // and the forecast, not for a live badge.
+    // Polling consumers use 5 min, the backend's own cache window for an attraction. Others read
+    // this for the sparkline and the forecast, not for a live badge.
     staleTime: poll ? 5 * 60_000 : 10 * 60_000,
     gcTime: 15 * 60_000,
     refetchOnWindowFocus: poll,

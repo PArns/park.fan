@@ -6,16 +6,9 @@ import { mergeMessages } from './client-messages';
 import { LAYOUT_MESSAGE_NAMESPACES } from './route-namespaces.generated';
 
 /**
- * Which namespaces are already in the provider below this point.
- *
- * A lazy boundary has to know whether the route it happens to be rendered on
- * already ships the namespaces it needs — `FavoritesSection` sits on the
- * homepage (where the park cards are eager anyway) and on `/blog` (where they
- * are not). Without this it would either fetch a chunk it does not need or, if
- * it guessed the other way, render raw message keys.
- *
- * The default is the layout set, which is a build-time constant: routes that
- * add nothing cost no context payload at all.
+ * Which namespaces are already in the provider below this point, so a lazy boundary such as
+ * `FavoritesSection` fetches a chunk only on routes that do not ship it. The default is the
+ * layout set, so a route that adds nothing costs no context payload.
  */
 const ProvidedNamespacesContext = createContext<readonly string[]>(LAYOUT_MESSAGE_NAMESPACES);
 
@@ -30,7 +23,7 @@ export function isNamespaceProvided(provided: readonly string[], namespace: stri
 }
 
 interface RouteMessagesProviderProps {
-  /** The route's delta — NOT the full message set. */
+  /** The route's delta, not the full message set. */
   messages: AbstractIntlMessages;
   /** Namespace paths contained in `messages`, for {@link useProvidedNamespaces}. */
   namespaces: readonly string[];
@@ -38,20 +31,10 @@ interface RouteMessagesProviderProps {
 }
 
 /**
- * Layers extra namespaces onto the ones already in context, merging on the
- * CLIENT so a shared set is serialized into the payload exactly once.
- *
- * Nesting a provider is what makes that possible, but note the semantics: a
- * nested provider REPLACES messages, it does not merge them
- * (`messages === undefined ? prevContext?.messages : messages` in `use-intl`'s
- * `IntlProvider`). Handing it just the delta would knock out the header and
- * footer translations for everything below. Hence `useMessages()` +
- * {@link mergeMessages} here rather than a second `<NextIntlClientProvider>`.
- *
- * `IntlProvider` is used directly instead of `NextIntlClientProvider` because it
- * inherits `formats`, `now`, `timeZone` and — importantly — the formatter cache
- * from the parent context, so the extra level costs no re-created Intl
- * formatters. Only `locale` has to be restated; the provider requires it.
+ * Layers a route's namespaces onto the ones already in context, merging on the client so a shared
+ * set is serialized once. A nested provider replaces messages instead of merging them, so the
+ * delta is merged with `useMessages()` first. `IntlProvider` rather than `NextIntlClientProvider`
+ * because it inherits the parent's formats, time zone and formatter cache.
  */
 export function RouteMessagesProvider({
   messages,

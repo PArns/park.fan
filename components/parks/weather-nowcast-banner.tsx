@@ -200,12 +200,9 @@ export interface NowcastAlert {
 }
 
 /**
- * The nowcast warning due right now, or `null` — the query, the clock, the pick and the wording,
- * without the box.
- *
- * Split out of {@link WeatherNowcastBanner} so the park header can say the same thing in one line
- * of its title row and open the full banner on a press. Both read this hook, so the one-line
- * version and the banner can never pick a different warning or word it differently.
+ * The nowcast warning due right now, or `null`: the query, the clock, the pick and the wording,
+ * without the box. The park header's one-line toggle and the full banner both read it, so they
+ * cannot pick or word a warning differently.
  */
 export function useNowcastAlert({
   continent,
@@ -228,30 +225,12 @@ export function useNowcastAlert({
     enabled,
   });
 
-  // Live clock so countdowns recompute: the shared minute clock (`useMinuteNow`), `null` on the
-  // server and the hydration render, so no epoch-based countdown text is baked into the server
-  // markup. Sixty seconds, always. Everything derived from `now` is minute-granular —
-  // `minutesUntil` rounds to whole minutes, `isInPast` and `dayKey` are coarser still — so a
-  // per-second tick bought no accuracy anywhere on screen. What it bought was a re-render sixty
-  // times a minute of a component that owns a full-bleed `backdrop-blur-md` layer. Chromium has to
-  // re-read what is behind a backdrop filter whenever its subtree paints, so every one of those
-  // ticks was a backdrop re-rasterisation; miss a frame and the blur flattens for exactly that
-  // frame, which is the „Heute im Park" card going transparent for an instant, irregularly, and
-  // then sitting still for seconds. The one thing that genuinely needs seconds is the mm:ss
-  // countdown, and it keeps its own ticker — scoped to itself, gated on visibility, and painted in
-  // isolation.
-  //
-  // The shared clock pauses while the tab is hidden and re-stamps on return, which is what this
-  // hook used to do with an interval, a `visibilitychange` listener and a deferred first stamp of
-  // its own. That first stamp was a `setTimeout(…, 0)`: the banner's host painted once without the
-  // warning and once more with it on every mount, client-side navigations included.
-  //
-  // No `useActiveOnScreen` here, and its absence is the point. It was left behind when the
-  // per-second tick became a flat 60-second one: nothing read its `active` value, but the hook
-  // still mounted an IntersectionObserver and a `visibilitychange` listener, and still called
-  // `setOnScreen`/`setTabVisible`. Every one of those re-rendered the component that owns the
-  // backdrop layer — so scrolling the banner into view or switching tabs cost exactly the backdrop
-  // invalidation the tick had cost, just on a different trigger.
+  // The shared minute clock, `null` on the server and the hydration render, so no countdown text is
+  // baked into the server markup. Everything derived from `now` is minute-granular, and a faster
+  // tick re-rendered the component that owns a `backdrop-blur-md` layer, which re-rasterises the
+  // backdrop and made „Heute im Park" flicker; only the mm:ss countdown ticks per second, in its
+  // own component. No `useActiveOnScreen` here for the same reason: its state updates re-rendered
+  // the backdrop owner too. See docs/rules/work-nobody-can-see-is-still-work.md.
   const now = useMinuteNow() ?? 0;
 
   // `now > 0` keeps the warning hidden until the clock mounts, so SSR and hydration agree.
@@ -259,7 +238,6 @@ export function useNowcastAlert({
 
   if (!data || !banner) return null;
 
-  // Build heading + body per banner kind
   let heading: string;
   let body: string;
 
@@ -350,13 +328,10 @@ export function useNowcastAlert({
 }
 
 /**
- * The warning as one line — the park header's title row carries it where the weather reading
- * otherwise sits, and a press opens the full {@link NowcastAlertBanner} under that row.
- *
- * The pill is exactly as tall as the row's own content: `py-0.5` plus the 1 px border is 6 px on
- * top of the `text-sm` line, and `-my-[3px]` hands those 6 px back. The row is what holds the
- * panel's header height, so a pill that grew it would move the whole card the moment the
- * nowcast landed — the shift this one-line form exists to avoid.
+ * The warning as one line, in the park header's title row where the weather reading otherwise sits;
+ * a press opens the full {@link NowcastAlertBanner} under the row. `-my-[3px]` hands back the
+ * pill's 6 px of padding and border, so it is exactly as tall as the row's own content and cannot
+ * move the card when the nowcast lands.
  */
 export function NowcastAlertToggle({
   alert,
@@ -459,19 +434,10 @@ export function NowcastAlertBanner({
             <h3 className="text-sm font-semibold">{heading}</h3>
             <NowcastUpdateCountdown nextUpdateAt={data.nextUpdateAt} className="ml-auto" />
           </div>
-          {/* Stacked below `sm`, side by side above it — and the chart rendered at ZERO WIDTH
-              before that. The `<p>` is a plain flex item, so its flex base size is its
-              max-content width (the German active-rain sentence is ~350 px at `text-sm`); the
-              timeline is `flex-1`, i.e. `flex: 1 1 0%`, base 0. Inside the panel the row has
-              268 px at 390 px of viewport, so there is negative free space — and flexbox
-              distributes shrinkage by base size × shrink factor, which is ~350 for the paragraph
-              and exactly 0 for the chart. The paragraph absorbed the whole deficit and wrapped,
-              the chart kept its 0 px basis, its `flex-1` bars each resolved to 0, and all that
-              was left beside the sentence was a 40 px tall empty column with two clipped time
-              labels. It only stopped being 0 px above ~490 px of viewport.
-
-              `w-full` rather than keeping `flex-1` in the column: `flex-1` in a `flex-col`
-              container is a VERTICAL grow factor and would say nothing about width. */}
+          {/* Stacked below `sm`, side by side above it. As a plain flex item the `<p>` shrinks by
+              its max-content base while the `flex-1` timeline has a base of 0, so in a narrow row
+              the chart rendered at zero width. `w-full`, because `flex-1` in a `flex-col` grows
+              height, not width. */}
           <div className="mt-1 flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-4">
             <p className="text-sm leading-relaxed">{body}</p>
             <NowcastPrecipTimeline

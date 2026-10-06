@@ -19,16 +19,9 @@ export function localizedParkName(parkName: string, parkSlug: string, locale: st
 }
 
 /**
- * The best-days section's frosted header. It carries NO calendar data — the park name, the subtitle
- * and the three links are all known without the seed — which is why it lives in its own file: the
- * loading placeholder (<ParkBestDaysSectionSkeleton>) renders this same component instead of grey
- * boxes shaped like it.
- *
- * That is what makes the reservation exact at every breakpoint and in every locale. "Beste
- * Reisezeit für den Europa-Park" wraps to two lines on a phone and one on a desktop, and no
- * fixed-width Skeleton can track that: sized placeholders left the mobile header 66–120px short,
- * and on the park page everything below — the whole attraction grid on desktop — absorbed the
- * difference as a jump the moment the streamed seed landed.
+ * The best-days section's frosted header. It carries no calendar data, so the loading skeleton
+ * renders this same component and reserves the exact height at every breakpoint and in every
+ * locale. See docs/rules/a-streamed-section-owes-the-page-its-height.md.
  */
 export function ParkBestDaysHeader({
   parkName,
@@ -44,9 +37,10 @@ export function ParkBestDaysHeader({
   articleDe?: string | null;
   locale: string;
   showCalendarLink?: boolean;
-  /** Passed through to `ChapterHeading` — the section and its skeleton square off the bottom so
-   *  the card underneath can be glued to it. The guide page renders this header on its own and
-   *  keeps all four corners. */
+  /**
+   * Passed through to `ChapterHeading`: the section and its skeleton square off the bottom so the
+   * card underneath can join it. The guide page keeps all four corners.
+   */
   className?: string;
 }) {
   const t = useTranslations('parks.bestDays');

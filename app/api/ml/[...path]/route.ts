@@ -1,37 +1,16 @@
 import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { denyUnlessAdmin } from '@/lib/admin/session';
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 /**
- * The ML dashboard's read passthrough — for the admin, and nobody else.
- *
- * It was a plain catch-all that joined the segments into a URL and forwarded
- * them with `getServerApiHeaders()`, which is the same shape that turned
- * `/api/admin/[...path]` into an anonymous proxy to the whole API: a
- * percent-encoded separator survives Next's route matching and only becomes
- * one inside `new URL()`, and the headers include this deployment's
- * `x-auth-key`, which the API treats as a rate-limit bypass.
- *
- * Two locks rather than a character filter, because unlike the admin proxy
- * this one serves a closed set of four paths and has exactly one caller
- * (`app/admin/ml/page.tsx`, through `useAdminFetch`, which is a same-origin
- * fetch and therefore already sends the session cookie):
- *
- *  - a session is required, so it is not an anonymous relay,
- *  - and the upstream path comes from this list, not from the request, so
- *    there is nothing to smuggle through it.
- *
- * The first lock has to *validate* the cookie, not notice it. Reading the
- * cookie only proves the caller can set a header, so `Cookie:
- * parkfan_admin_session=x` passed the check that was written to keep strangers
- * away from `x-auth-key`. `denyUnlessAdmin` asks the backend, at the floor
- * these four reads actually need.
+ * The ML dashboard's read passthrough, for the admin only, because `getServerApiHeaders()` carries
+ * the `x-auth-key` the API reads as a rate-limit bypass. Two locks: a session validated with the
+ * backend (`denyUnlessAdmin`), not a cookie merely present, and an upstream path taken from this
+ * list, never from the request.
  */
 const ML_PATHS = new Set([
   'dashboard',
@@ -57,7 +36,7 @@ export async function GET(
   const upstream = [...ML_PATHS].find((candidate) => candidate === requested)!;
 
   const incoming = new URL(request.url);
-  const apiUrl = new URL(`${API_BASE}/v1/ml/${upstream}`);
+  const apiUrl = new URL(`${getApiBaseUrl()}/v1/ml/${upstream}`);
   incoming.searchParams.forEach((value, key) => apiUrl.searchParams.set(key, value));
 
   try {

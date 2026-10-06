@@ -8,26 +8,16 @@ import { getMediaImageForPath } from '@/lib/media';
 import { WEBSUB_HUB } from '@/lib/websub';
 import { BLOG_FEED_DESCRIPTION, BLOG_FEED_TITLE, blogFeedUrl } from '@/lib/blog/feed';
 import { postPath } from '@/lib/blog/paths';
+import { xmlEscape } from '@/lib/seo/sitemap-xml';
 
 /**
- * How many items a feed carries. Items hold the excerpt, not the article, so
- * this stays cheap regardless of how long a post grows; everything older than
- * the cap stays where an archive belongs — the blog index, the category pages
- * and the sitemap.
+ * How many items a feed carries. Older posts stay where an archive belongs: the blog index, the
+ * category pages and the sitemap.
  */
 const MAX_ITEMS = 15;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
-}
-
-function escapeXml(value: string): string {
-  return value
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
 }
 
 function escapeCData(value: string): string {
@@ -49,57 +39,25 @@ const MIME_BY_EXTENSION: Record<string, string> = {
 };
 
 /**
- * The cover image as an `<enclosure>`, with a byte count.
- *
- * `length` is required by RSS. It comes from the media manifest rather than a
- * filesystem stat: `getMediaImageForPath` answers for the **source** photo, not
- * the `-16x9`/`-4x3`/`-1x1` crop a cover usually points at, so the number is
- * approximate. (It was `getMediaImageBySrc`, which does not know the crops at
- * all, so every crop cover — 8 of 15 items — shipped `length="0"`; PAR-478.)
- * But a dynamic `fs.statSync(path.join(process.cwd(), 'public',
- * …))` here traces as "unresolvable" and Next bundles the **entire** `/public`
- * directory into this function to cover every path it might resolve to (see
- * the `/api/og/[...path]` note in `next.config.ts`), which is what pushed this
- * route's Vercel Function past its size limit. An approximate length is a far
- * cheaper trade than 250+ MB of ride photos in an RSS handler.
+ * The cover image as an `<enclosure>`, with the byte count RSS requires. It comes from the media
+ * manifest, which knows the source photo rather than the crop a cover points at, so it is
+ * approximate. Not a filesystem stat: a dynamic path under `public` bundles the whole directory
+ * into this function. See docs/rules/a-runtime-file-read-ships-the-directory-it-is-rooted-at.md.
  */
 function coverEnclosure(coverAbs: string, coverPath: string): string {
   const clean = coverPath.split('?')[0];
   const extension = clean.split('.').pop()?.toLowerCase() ?? '';
   const type = MIME_BY_EXTENSION[extension] ?? 'image/jpeg';
   const length = getMediaImageForPath(clean)?.bytes ?? 0;
-  return `    <enclosure url="${escapeXml(coverAbs)}" type="${type}" length="${length}" />`;
+  return `    <enclosure url="${xmlEscape(coverAbs)}" type="${type}" length="${length}" />`;
 }
 
 /**
- * Per-locale RSS 2.0 feed for the blog.
- *
- * Three things here are deliberate and were each wrong before:
- *
- * **Order is publication order, strictly.** `listPosts` sorts featured-first so
- * a pinned article leads every listing on the site, which is right for a page
- * and wrong for a feed: `lastBuildDate` was read off `posts[0]`, so pinning an
- * older post moved the channel's timestamp backwards and told every subscriber
- * the feed had gotten older.
- *
- * **Items carry the excerpt**, not the full article. A `content:encoded` item
- * once carried the whole post, which meant the route's only path to a post's
- * markdown was `@/lib/blog` — the module `docs/development/scripts.md` reserves
- * for the post page alone, because it pulls in every post body, every locale,
- * as one generated module. That single import was enough for Next's function
- * tracer to fold the entire post-body manifest into this route; combined with
- * the `/public` sweep documented on `coverEnclosure` below, the built function
- * cleared Vercel's size limit. A feed reader gets a teaser and a link either
- * way, so the excerpt is the one this route can afford.
- *
- * **Only elements RSS actually defines.** The old items ended with
- * `<readingTime>`, an invented element in no namespace, plus a `<comments>`
- * pointing at the post itself and a `<source>` naming this very feed. `source`
- * means "this item was republished from somewhere else", so every item claimed
- * to be a repost of itself.
- *
- * Discovery is the other half and lives in `lib/blog/feed.ts`: a feed nobody
- * links to from a `<head>` is a file with a URL.
+ * Per-locale RSS 2.0 feed for the blog. Items are in strict publication order (`listPosts` puts
+ * featured posts first, which is right for a page and wrong for a feed), carry the excerpt rather
+ * than the article (the body would pull every post body in through `@/lib/blog`), and use only
+ * elements RSS defines. Discovery lives in `lib/blog/feed.ts`: a feed nobody links to from a
+ * `<head>` is a file with a URL.
  */
 export async function GET(
   _request: NextRequest,
@@ -154,14 +112,14 @@ export async function GET(
           : `${SITE_URL}${coverPath}`
         : null;
       const categories = (frontmatter.tags ?? [])
-        .map((tag) => `    <category>${escapeXml(tag)}</category>`)
+        .map((tag) => `    <category>${xmlEscape(tag)}</category>`)
         .join('\n');
       const enclosure = coverAbs && coverPath ? coverEnclosure(coverAbs, coverPath) : '';
 
       return `  <item>
-    <title>${escapeXml(frontmatter.title)}</title>
-    <link>${escapeXml(url)}</link>
-    <guid isPermaLink="true">${escapeXml(url)}</guid>
+    <title>${xmlEscape(frontmatter.title)}</title>
+    <link>${xmlEscape(url)}</link>
+    <guid isPermaLink="true">${xmlEscape(url)}</guid>
     <pubDate>${pubDate}</pubDate>
     <dc:creator><![CDATA[${escapeCData(author)}]]></dc:creator>
     <description><![CDATA[${escapeCData(frontmatter.excerpt)}]]></description>
@@ -176,13 +134,13 @@ ${enclosure}
      xmlns:atom="http://www.w3.org/2005/Atom"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel>
-  <title>${escapeXml(channelTitle)}</title>
-  <link>${escapeXml(channelLink)}</link>
-  <description>${escapeXml(channelDescription)}</description>
+  <title>${xmlEscape(channelTitle)}</title>
+  <link>${xmlEscape(channelLink)}</link>
+  <description>${xmlEscape(channelDescription)}</description>
   <language>${locale}</language>
   <lastBuildDate>${rfc822(lastBuild)}</lastBuildDate>
-  <atom:link href="${escapeXml(feedSelf)}" rel="self" type="application/rss+xml" />
-  <atom:link href="${escapeXml(WEBSUB_HUB)}" rel="hub" />
+  <atom:link href="${xmlEscape(feedSelf)}" rel="self" type="application/rss+xml" />
+  <atom:link href="${xmlEscape(WEBSUB_HUB)}" rel="hub" />
   <generator>park.fan</generator>
 ${items}
 </channel>

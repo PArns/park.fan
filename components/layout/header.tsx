@@ -52,10 +52,8 @@ import type { MoreMenu } from '@/lib/navigation/more-menu';
 const NO_FEATURED_PARKS: FeaturedParkCard[] = [];
 
 /**
- * Where a transparent hero bar turns solid, and where it turns back — two numbers, not one.
- *
- * They straddle the 50 px this used to test on both sides. See the `check` they are used in for
- * why a single line is the wrong shape for a threshold that switches a `backdrop-filter`.
+ * Where a transparent hero bar turns solid, and where it turns back: a band rather than one line,
+ * so a reader resting near the threshold does not flip the bar's glass on and off.
  */
 const SOLID_ON_Y = 56;
 const SOLID_OFF_Y = 44;
@@ -65,9 +63,9 @@ interface HeaderProps {
    *  hides while the answer is no. Computed server-side in the layout. */
   showBlog?: boolean;
   /**
-   * Continents and their countries for the parks menu. Fetched in the layout (a cached discovery
-   * read, not a per-page request) and passed down because this is a Client Component. 28 links,
-   * 420 B brotli — see `lib/navigation/geo-menu.ts` for why it stops at countries.
+   * Continents and their countries for the parks menu, fetched in the layout and passed down
+   * because this is a Client Component. See `lib/navigation/geo-menu.ts` for why it stops at
+   * countries.
    */
   geoMenu?: GeoMenuContinent[];
   /** Categories + newest articles for the blog menu, read from the generated manifest. */
@@ -78,17 +76,15 @@ interface HeaderProps {
    */
   newsMenu?: NewsMenu;
   /**
-   * What the "more" menu lists: the dictionary's categories with their labels already translated,
-   * the chapters of the guide and of the best-time hub, and a photo per hub. Resolved in the
-   * layout for the same reason `featuredParks` is: this is a Client Component, and
-   * `useTranslations('glossary')` in here would put the whole 2,402 B namespace into the chrome of
-   * every page for 358 B of labels, while the chapters and the photos are six locales of labels
-   * and the 107 KB media catalog. See `lib/navigation/more-menu.ts`.
+   * What the "more" menu lists: the dictionary's categories with translated labels, the chapters of
+   * the guide and of the best-time hub, and a photo per hub. Resolved in the layout because this is
+   * a Client Component, and the glossary namespace or the media catalog here would ship in the
+   * chrome of every page. See `lib/navigation/more-menu.ts`.
    */
   moreMenu?: MoreMenu;
   /**
-   * The photo rail in the parks menu. Resolved in the layout because `@/lib/media` is the 107 KB
-   * catalog and this is a Client Component — only four URLs cross the boundary.
+   * The photo rail in the parks menu, resolved in the layout so the media catalog stays out of this
+   * Client Component and only the URLs cross the boundary.
    */
   featuredParks?: FeaturedParkCard[];
 }
@@ -119,17 +115,10 @@ function SheetNavLink({
 
 /**
  * A destination in the phone sheet that opens onto what it holds: „Parks entdecken" onto the
- * continents, and — since the "more" band lists them on the desktop (Patrick, 2026-09-30: „denk
- * auch an mobile") — the dictionary onto its categories and the two hubs onto their chapters.
- *
- * A native `<details>`, so a list opens with no JavaScript at all and the disclosure state is the
- * browser's, not ours. The whole row is the toggle, as it always was for the parks, so the first
- * link inside is the destination itself; a label that navigated beside a chevron that toggled
- * would be two targets in one 28 px row on a phone, and a sheet where one disclosure opens on the
- * row and the next on its chevron is learnt twice.
- *
- * `ml-2.5` puts the rule under the icon's centre and `pl-5` the links under the label's first
- * letter — `NavEntryLabel`'s sheet size, a 20 px icon + 12 px gap.
+ * continents, the dictionary onto its categories and the two hubs onto their chapters. A native
+ * `<details>`, so it opens without JavaScript. The whole row is the toggle and the first link
+ * inside is the destination, so a row is never two targets. `ml-2.5` and `pl-5` line the rule and
+ * the links up with `NavEntryLabel`'s icon and label.
  */
 function SheetDisclosure({
   icon,
@@ -192,6 +181,11 @@ function SheetSubLink({
   );
 }
 
+/**
+ * The 48 px site header: brand lockup, the parks, blog, news and more menus, favourites, nearby
+ * park, planner, search, language, unit and theme controls, and the burger sheet on phones. Floats
+ * transparent over full-bleed heroes until the page scrolls.
+ */
 export function Header({
   showBlog = true,
   geoMenu,
@@ -205,8 +199,6 @@ export function Header({
   const tGeo = useTranslations('geo');
   const locale = useLocale();
   const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
-  // The header has always KNOWN this route — `isBestTime` below uses it to float the bar over
-  // the hub's hero — and never linked it. Same localized segment, now also a destination.
   const bestTimePath = '/' + BEST_TIME_SEGMENTS[locale as Locale];
   const howtoPath = '/' + HOWTO_SEGMENTS[locale as Locale];
   const plannerPath = '/' + PLANNER_SEGMENTS[locale as Locale];
@@ -229,30 +221,19 @@ export function Header({
       !pathname.startsWith('/blog/category/') &&
       !pathname.startsWith('/blog/tag/') &&
       !pathname.startsWith('/blog/authors/'));
-  // Pages that open with a full-bleed hero the header floats over: transparent at
-  // the top, solidifying to the normal bar on scroll. All of these heroes now show
-  // the photo in its natural colours (no dark wash) with a frosted glass panel for
-  // the text — like the park pages — so the floating logo follows the theme rather
-  // than being forced light (`darkHero` stays off).
+  // Pages that open with a full-bleed hero the header floats over: transparent at the top, solid on
+  // scroll. Their heroes show the photo in natural colours under a glass panel, so the floating
+  // logo follows the theme (`darkHero` stays off).
   const isHeroPage = isHomePage || isFancast || isBestTime || isHowto || isBlogIndex || isBlogPost;
   const darkHero = false;
   const [scrolled, setScrolled] = useState(false);
   const rafRef = useRef<number | null>(null);
 
   /*
-   * The burger sheet is CONTROLLED, and the only reason is that it has to close itself.
-   *
-   * Radix closes a dialog when something inside it calls `SheetClose`, and a `<Link>` does not:
-   * it navigates. The header lives in the locale layout and survives that navigation, so on a
-   * phone the sheet stayed open across the route change — you tapped "Glossar", the page behind
-   * the panel became the glossary, and the panel was still sitting on top of it. Every link in
-   * there had the bug; nobody could reach the page they had just asked for without also finding
-   * the X.
-   *
-   * `pathname` is the signal, and it is what the state STORES — the path the sheet was opened
-   * on, so a route change closes it during render rather than one `setState`-in-an-effect later.
-   * It comes from `@/i18n/navigation`, so it is locale-stripped, which is right here: switching
-   * language re-renders the same route and should not slam the menu shut mid-gesture.
+   * The burger sheet is controlled because it has to close itself: a `<Link>` navigates rather than
+   * calling `SheetClose`, and the header survives the navigation. The state stores the path the
+   * sheet was opened on, so a route change closes it during render. `pathname` is locale-stripped,
+   * so a language switch keeps it open.
    */
   const [menuOpenedOn, setMenuOpenedOn] = useState<string | null>(null);
   const mobileMenuOpen = menuOpenedOn === pathname;
@@ -261,12 +242,9 @@ export function Header({
   const latestNews = latestNewsFrom(newsMenu, { excerpt: true });
 
   /*
-   * A tap on a link to the page already showing changes no `pathname`, so the close-on-navigation
-   * above never fires and the sheet just stays open — the news card made that the common case on
-   * the newest post. That one case, and only that one, closes it here: a plain click on a link in
-   * the sheet's own DOM (not a portalled menu) whose path is the current one. A locale switch keeps
-   * the sheet open, as it always has, and a modifier click opens a tab. On the list and on the
-   * sheet's footer alike.
+   * A tap on a link to the page already showing changes no `pathname`, so that case closes the
+   * sheet here: a plain click on a link in the sheet's own DOM whose path is the current one. A
+   * locale switch keeps it open, and a modifier click still opens a tab.
    */
   const closeOnSamePageTap = (event: React.MouseEvent<HTMLElement>) => {
     const link = (event.target as HTMLElement).closest('a');
@@ -276,25 +254,14 @@ export function Header({
   };
 
   useEffect(() => {
-    // Only hero pages have a transparent-at-the-top header, so only they need the scroll
-    // listener — and only they need the initial measurement (on every other page `scrolled`
-    // is unused, and calling `check()` here queued a pointless state update + re-render of
-    // the whole header on each navigation).
+    // Only hero pages have a transparent-at-the-top header, so only they need the scroll listener
+    // and the initial measurement.
     if (!isHeroPage) return;
-    // A BAND, not a line, and the reason is written two comments down: crossing the threshold
-    // snaps `backdrop-filter` on or off, and the note on the bar's glass already says that it
-    // "repeats on every direction change up there". A single 50 px line means a reader resting
-    // anywhere near it — trackpad momentum settling, a short drag, a rubber-band bounce — flips
-    // the bar's glass on and off, which is the most prominent piece of glass on the page.
-    //
-    // 12 px of hysteresis is enough that no ordinary scroll oscillates across both edges, and
-    // small enough that the handoff still happens where it always did: the bar solidifies at
-    // 56 px on the way down and goes transparent again at 44 px on the way up, against the 50 px
-    // both used to share. `setScrolled` with an unchanged value is a React bail-out, so the
-    // steady state still costs nothing.
-    // `scrollY` is read HERE and not inside the updater: React may call an updater more than
-    // once and does it during render, so reading the document from inside one is both impure and
-    // a layout read in the wrong phase.
+    // A band, not a line: crossing the threshold snaps `backdrop-filter` on or off, and a single
+    // line flips the bar's glass whenever a reader rests near it (momentum, a short drag, a
+    // rubber-band bounce). An unchanged `setScrolled` is a React bail-out.
+    // `scrollY` is read here and not inside the updater: React may call an updater more than once,
+    // during render, where a layout read is in the wrong phase.
     const check = () => {
       const y = window.scrollY;
       setScrolled((was) => (was ? y > SOLID_OFF_Y : y > SOLID_ON_Y));
@@ -317,68 +284,12 @@ export function Header({
   const isTransparent = isHeroPage && !scrolled;
 
   /*
-   * The nav's ink, and it is the only thing the bar's two states still decide about the
-   * navigation. `headerNavInk` holds both halves and the arithmetic behind them, because the row
-   * has three kinds of entry and they must not drift apart. The bar's other controls need no
-   * branch: the search trigger and the burger are ghost `Button`s, and the locale switcher and the
-   * theme toggle carry no colour of their own, so all four inherit `foreground`. The °C/°F toggle
-   * is the one that does — `text-muted-foreground` on its own pill — and it is left alone on
-   * purpose: it reads the same on both states of the bar, and the 85 % scrim it sits on while the
-   * bar floats is a better ground than the 80 % it has had on every page since it was built.
-   *
-   * **It switches with the state and waits for nothing**, which took two attempts to get right.
-   * The worry is the way DOWN: muted ink arriving before the ground it is safe on. That was real
-   * while the scrim and the solid material were one layer — the scrim is `background-image`, which
-   * does not interpolate, so it vanished at the threshold and left about a quarter of a ground
-   * under muted labels for a third of a second. Two layers cross-fading on `opacity` fixed that at
-   * the source: their sum runs 85 % → ~65 % → 80 %, i.e. never far from the 80 % the solid bar has
-   * always given muted ink while a hero is still behind it.
-   *
-   * A `delay-300` on the solid class list was the first fix and is the wrong one: `transition-delay`
-   * is one property and the hover rule shares it, so it would have delayed the hover of all seven
-   * entries by 300 ms on every page in the app. A timer in state is worse — a `setState` in an
-   * effect, which this project's lint rule refuses for good reason. Neither is worth buying 200 ms
-   * of 65 % instead of 80 %.
-   */
-
-  /*
-   * The corner-to-bar handoff of the logo.
-   *
-   * The bar carries two copies of the lockup: one parked in the corner while the header floats
-   * over the hero, one in the flex flow once it solidifies. Cross-fading the pair looked like
-   * exactly what it was — one thing disappearing while a second one appeared somewhere else,
-   * at a different size on the left.
-   *
-   * The pair now travels the same path in the same 500 ms: the outgoing copy slides to where the
-   * incoming one lives, the incoming one starts at the corner. At the midpoint the two coincide,
-   * so the eye reads one object moving.
-   *
-   * "Coincide" is a claim about geometry, and it used to be false. Both copies render
-   * `<BrandLockup>` now, so they are congruent by construction and `logoScale` resolves to 1.000 —
-   * a pure translate, nothing rasterized at one size and painted at another. The scale is kept in
-   * the formula as the safety net it was meant to be: if the two ever diverge again the handoff
-   * still lands, it just costs a blur. Before the shared component it was carrying a 1.5× on every
-   * desktop hero page, and even that could not reconcile the two — a single factor cannot fix a
-   * pin:wordmark ratio of 36:24 against 24:20, so the corner copy stayed ~25 px wider than the bar
-   * copy the whole way across (measured at 1440: 147.2 px against 122.2 px).
-   *
-   * The logo is left-aligned, so the path is measured from the left edges and scales from
-   * `origin-left` — away from the screen edge, with its left edge on the path.
-   *
-   * **There used to be a second pair**, the locale + theme cluster, parked in a frosted pill at
-   * `right-6` while the bar floated. It is gone, and the reason is this change rather than taste:
-   * once the search trigger and the burger are visible from the first screen line, they are drawn
-   * at their flex positions on the right — which is exactly where that pill hangs. Measured at
-   * 360 px the pill spanned 240–336 px against the burger's 308–344 and the actions box's
-   * 216–304; at 1024 and 1280 it lay over the search control. Two copies of the same three
-   * preference controls, one of them painted across the burger, is not a handoff. The in-flow
-   * cluster is simply always there now, which also spares every hero page a second hydration of
-   * `LocaleSwitcher`, `ThemeToggle` and `TemperatureUnitToggle`.
-   *
-   * Every number is measured, never guessed, and always from `offsetLeft`/`offsetWidth`/
-   * `offsetHeight` — layout values, which ignore the transforms, so a measurement can never feed
-   * back into itself the way `getBoundingClientRect()` would. The container is centred, so the
-   * distances depend on the viewport and are re-measured on resize.
+   * The corner-to-bar handoff of the logo. The bar carries two copies of `BrandLockup`, one parked
+   * in the corner while the header floats and one in the flex flow, and they travel the same path
+   * in the same 500 ms, so at the midpoint they coincide and read as one object. Being the same
+   * component, `logoScale` resolves to 1 and is only a safety net. Measured with
+   * `offsetLeft`/`offsetWidth`/`offsetHeight`, which ignore transforms and so cannot feed back into
+   * themselves, and re-measured on resize because the container is centred.
    */
   const cornerLogoRef = useRef<HTMLAnchorElement>(null);
   const barLogoRef = useRef<HTMLAnchorElement>(null);
@@ -386,10 +297,8 @@ export function Header({
 
   useEffect(() => {
     if (!isHeroPage) return;
-    // One measurement per frame, and a commit only when a number moved. `resize` fires dozens of
-    // times per second while a window is dragged, and on phones every time the address bar
-    // collapses or returns — a vertical change that moves neither logo. A fresh object each time
-    // re-rendered the whole header for each of them.
+    // One measurement per frame, and a commit only when a number moved: `resize` fires dozens of
+    // times a second during a drag, and on phones whenever the address bar moves.
     let frame: number | null = null;
     const measure = () => {
       frame = null;
@@ -421,76 +330,33 @@ export function Header({
   const barLogoStyle = isTransparent
     ? { transform: `translateX(${-logoShift}px) scale(${logoScale.toFixed(3)})` }
     : undefined;
+  // The nav's ink is the one thing the bar's two states decide about the navigation (see
+  // `headerNavInk`). It switches with no delay, which is safe because the scrim and the solid
+  // material are two layers cross-fading on `opacity`; a `transition-delay` would also delay every
+  // entry's hover. See docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md.
   const navLinkClass = `text-sm font-medium transition-colors duration-200 ${headerNavInk(isTransparent)}`;
 
   return (
     <header
-      /* No `backdrop-filter` on this element, and that is load-bearing rather than tidy.
-         An element carrying one becomes a BACKDROP ROOT: a descendant with its own
-         `backdrop-filter` then samples only what was painted inside that root. The mega-menu band
-         hangs in the DOM under this header but paints below its box, where the root has painted
-         nothing — so the band's 24 px blur blurred an empty backdrop and the glass was simply not
-         there. The bar's own material moved into the sibling layer below, which blurs the page
-         exactly as before and is nobody's ancestor. */
-      /* `@container`, so the four visibility switches below ask how wide THIS BAR
-         is rather than how wide the window is. The two stopped being the same
-         number when the trip planner's panel started insetting the page: the
-         wrapper in `app/[locale]/layout.tsx` pads the page by the panel's width,
-         so with a 448 px panel on a 1440 px window the bar's box is 992 px while
-         `lg:`/`xl:` still read 1440 and kept handing it a desktop's worth of
-         content. Measured then: children summing 1087.9 px in a 992 px box, the
-         °C/°F toggle and the theme switch 95.9 px UNDER the panel in German and
-         171.1 px in French, and worse at 1280 (+255.9) and 1024 (+389.7),
-         because the panel is a fixed width and the box it leaves shrinks with
-         the window.
-
-         On the HEADER and not on the row inside it: `container-type` makes an
-         element the containing block for absolutely positioned descendants, and
-         the corner logo is `absolute left-6` — against the row (which is
-         `container mx-auto`, i.e. 1280 wide and centred in a 1440 window) it
-         would sit 80 px further right and break the handoff the whole lockup
-         geometry is built on. The header is already `relative`, so nothing about
-         that resolution changes here.
-
-         `container-type: inline-size` implies `contain: layout style
-         inline-size` and NOT `contain: paint`, which is what would have made
-         this element a backdrop root — see the note above about why the bar's
-         material lives in a sibling layer. Measured after the change: the menu
-         band's blur is unchanged.
-
-         The thresholds are the old ones on purpose. With the planner shut the
-         header spans the viewport, so 1024 and 1280 as container queries are the
-         same two switches at the same two window widths — the bar keeps every
-         layout it had, and only gains the ones it needs while the panel is
-         open. */
+      /* No `backdrop-filter` on this element: it would become a backdrop root, and the menu band,
+         which hangs under this header but paints below its box, would blur an empty backdrop. The
+         bar's material lives in the sibling layer below. */
+      /* `@container`, so the switches below ask how wide this bar is rather than the window: the
+         trip planner's panel insets the page without the window changing. On the header and not
+         the row, because `container-type` makes the corner logo (`absolute left-6`) resolve
+         against it. `inline-size` does not imply `contain: paint`, so this is no backdrop root.
+         See docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md. */
       className={`@container relative sticky top-0 z-50 h-12 border-b transition-[border-color] duration-500 ${
         isTransparent ? 'border-transparent' : 'border-border/50'
       }`}
     >
-      {/* The bar's glass.
-          `-z-10` is not decoration, it is the whole reason this layer works. Being first in the
-          DOM does NOT put it behind its siblings: in CSS painting order a POSITIONED element with
-          `z-index: auto` paints above every non-positioned in-flow descendant, so an
-          `absolute inset-0` sheet covers the bar's contents. It shipped that way and swallowed
-          the logo, the locale switcher and both chevrons the moment the bar solidified — while the
-          nav links, the search field and the favorites star stayed visible, because the header
-          reveal's GSAP transform was on those and a transform makes each of them its own
-          stacking context that escapes above the sheet. "Everything without a transform
-          disappears" is what that bug looked like from the outside. That reveal is gone with
-          PAR-170 and nothing in the bar carries a transform of its own any more, so the `-z-10`
-          is now the only thing holding the material behind the row.
-          The header is `sticky` with `z-index: 50`, so it is a stacking context of its own and a
-          negative z-index here cannot slip behind the page — it lands between the header's own
-          (transparent) background and its contents, which is exactly where a material belongs.
-          Making the inner container `relative` instead would also fix the painting, and must not
-          be done: `MenuBand` is absolutely positioned and resolves against the `<header>`, which
-          is what keeps the full-width band from being measured off a trigger.
-          `backdrop-filter` is deliberately NOT in the transition list: animating it made the
-          browser re-rasterize the blur of everything behind the full-width bar on every frame for
-          500 ms each time the scroll crossed the 50 px threshold — by far the most expensive
-          repaint on the hero pages, and it repeats on every direction change up there. The blur
-          snaps on/off (barely perceptible: the bar is still transparent when the fade starts)
-          while the colour keeps cross-fading. */}
+      {/* The bar's glass. `-z-10` keeps this positioned layer behind the row: a positioned element
+          with `z-index: auto` paints above every non-positioned sibling, whatever the DOM order.
+          The sticky `z-50` header is its own stacking context, so it cannot slip behind the page.
+          Do not make the inner container `relative` instead: `MenuBand` resolves against the
+          `<header>`. `backdrop-filter` is not in the transition list, since animating it
+          re-rasterizes the blur behind the whole bar on every frame; the blur snaps and the colour
+          fades. */}
       <div
         aria-hidden="true"
         className={`pointer-events-none absolute inset-0 -z-10 transition-[background-color] duration-500 ${
@@ -498,30 +364,11 @@ export function Header({
         }`}
       />
 
-      {/* The scrim, and it is a SECOND layer rather than a second class list on the first.
-
-          The transparent state is no longer empty: the nav used to be invisible up here, so the
-          bar could afford to be nothing at all, and now it is a working menu sitting on an
-          arbitrary photo. That needs a ground — never as a `backdrop-filter` or a transform on
-          the `<header>` itself, which would make it a backdrop root and take the menu band's blur
-          with it (see above).
-
-          Why not one layer with two class lists, which is where this started: a gradient is
-          `background-image` and a flat tint is `background-color`, and `background-image` does not
-          interpolate. The scrim would have vanished the instant the scroll crossed 50 px while the
-          solid colour faded in behind it over 500 ms — muted ink over ~25 % ground on a hero photo
-          for about a third of a second, i.e. precisely the case `navLinkClass` branches to avoid.
-          Two layers cross-fade on `opacity`, which does interpolate, so the ground falls from 85 %
-          to about 65 % at worst and climbs back — which is what makes the ink's own switch safe
-          with no delay at all (see `headerNavInk` above).
-
-          The geometry: the box reaches 32 px BELOW the bar (`-bottom-8`) and the gradient holds
-          `background/85` for the first 60 % of those 80 px — exactly the 48 px the bar occupies —
-          before fading out over the strip underneath. So the nav sits on an even ground and the
-          scrim has no edge of its own: a hard line across a hero photo reads as part of the
-          picture. Tint rather than blur, because the photo under the bar stays a photo; the blur
-          is what the solid state adds. Hero pages only — everywhere else `isTransparent` is never
-          true and this would be an always-invisible layer. */}
+      {/* The scrim: a ground for the nav over an arbitrary photo while the bar floats. A second
+          layer rather than a second class list, because a gradient is `background-image`, which
+          does not interpolate; two layers cross-fade on `opacity`, which is what lets the ink
+          switch with no delay. It reaches 32 px below the bar and holds `background/85` over the
+          bar's 48 px before fading, so it has no hard edge across the photo. Hero pages only. */}
       {isHeroPage && (
         <div
           aria-hidden="true"
@@ -532,41 +379,17 @@ export function Header({
       )}
 
       <div
-        /* `h-full`, not a second `h-12`: the header is `h-12 border-b` and Tailwind boxes are
-           border-box, so its CONTENT box is 47 px. A hard-coded 48 px here overflowed it by a
-           pixel and, worse, centred the in-flow logo on a different box than the corner copy,
-           which is absolutely centred in the header itself — the two copies of the same lockup
-           sat 0.5 px apart for the whole handoff. */
-        /* The row's own width, and it may NOT come from the viewport. `container`
-           is a media-query utility: its max-width is picked from how wide the
-           WINDOW is, while its parent here is the header, whose box the trip
-           planner shrinks without the window changing at all. The two disagree
-           the moment the panel opens, and the container then fills its parent
-           edge to edge — measured on a park page with the planner open, the
-           lockup sat at x=8 in a 1552 px header and at x=0 in a 992 px one,
-           flush against the screen. `md:px-0` is the other half: the padding is
-           dropped because the max-width is supposed to be providing the inset,
-           so when the max-width stops applying the row loses both at once.
-           Same thresholds, asked of the header instead — `@container` is already
-           on it for the nav switches — so the row insets against the space it
-           actually has.
-
-           And `px-4` is a FLOOR now rather than something the max-width
-           replaces. `md:px-0` assumed the container is always narrower than its
-           parent, which is false at every tier boundary: at a 1024 px window
-           the 1024 tier applies, the row fills the header exactly, and the
-           lockup sat at x=0 — flush against the edge of the screen, planner or
-           no planner. Measured at 768 and 1024 shut, and at 1440 and 2000 with
-           the panel open. Above 768 the bar's contents move 16 px inward; below
-           it nothing changes, which is where the width budget in
-           `design-system.md` is counted. */
+        /* `h-full`, not a second `h-12`: the header's content box is 47 px (border-box), and the
+           in-flow logo must centre on the same box as the corner copy. */
+        /* The row's width comes from the header's container tiers, not from `container`, whose
+           max-width follows the window while the planner shrinks the header. `px-4` is a floor
+           rather than something the max-width replaces, so the lockup never sits flush against
+           the screen edge at a tier boundary. */
         className="mx-auto flex h-full w-full items-center justify-between px-4 @min-[768px]:max-w-[768px] @min-[1024px]:max-w-[1024px] @min-[1280px]:max-w-[1280px] @min-[1536px]:max-w-[1536px]"
       >
-        {/* Corner logo – absolute, visible only when transparent (hero top).
-            Same left-6 offset as the hero image info text below. On scroll it hands over to the
-            bar logo below: see the handoff note above. `-translate-y-1/2` is Tailwind's
-            standalone `translate` property, so the inline `transform` composes with it rather
-            than dropping the centring. */}
+        {/* Corner logo, visible only while the bar is transparent; hands over to the bar logo on
+            scroll (see the handoff note above). `-translate-y-1/2` is Tailwind's standalone
+            `translate` property, so the inline `transform` composes with it. */}
         <Link
           ref={cornerLogoRef}
           href="/"
@@ -581,9 +404,8 @@ export function Header({
           <BrandLockup forceLight={darkHero} />
         </Link>
 
-        {/* Header logo – in flex flow, arrives from the corner on scroll. Keeps the
-            justify-between anchor when invisible; the transform is layout-free, so the anchor
-            holds throughout the handoff too. */}
+        {/* Bar logo, in flex flow. It keeps the justify-between anchor while invisible, and the
+            transform is layout-free. */}
         <Link
           ref={barLogoRef}
           href="/"
@@ -598,61 +420,26 @@ export function Header({
           <BrandLockup />
         </Link>
 
-        {/* Desktop Navigation.
-
-            It used to fade in on scroll, and that is what this change undid. `isTransparent` put
-            `opacity-0 pointer-events-none` on this row, `aria-hidden` on the `<nav>` and
-            `tabIndex={-1}` on every link inside it, so on all six hero pages the main menu was
-            unclickable and out of the accessibility tree and the tab order until the visitor had
-            scrolled 50 px — with nothing on screen saying a menu was there. The bar keeps its two
-            states; the navigation is no longer one of them. */}
-        {/* One breakpoint for the whole bar, not two.
-            The nav used to appear at `md` while the search input waits for `lg`, so between 768
-            and 1023 px the row carried the full navigation AND a 256 px search button AND no
-            burger — 789 px of content in a 736 px box. German wrapped it onto two lines and the
-            document grew a horizontal scrollbar. The trigger is icon-only below `lg` now, and the
-            nav starts where the input does; under that width everything lives in the burger,
-            which is the only arrangement that holds in all six languages.
-
-            `whitespace-nowrap` is the other half and was missing. Without it the
-            flex items shrink and WRAP their labels: measured at 1024 px in all
-            six languages, "Parks entdecken" and "So funktioniert's" came out on
-            two lines each in a 48 px bar, and the first of them painted across
-            the logo. A nav label is never two lines — the row is one line by
-            construction — so the row is allowed to be tighter (`gap-3.5`, and
-            `xl:gap-5` instead of 6) and the search field beside it shrinks
-            before anything here does. */}
+        {/* The navigation is never hidden by the bar's transparent state. One breakpoint for the
+            whole bar: the nav starts where the search input does, and below it everything lives
+            in the burger, the only arrangement that holds in all six languages.
+            `whitespace-nowrap` keeps every label on one line in the 48 px bar; the search field
+            beside it shrinks first. */}
         <nav
           className="hidden items-center gap-3.5 whitespace-nowrap @min-[1024px]:flex @min-[1280px]:gap-5"
           aria-label="Main navigation"
         >
           {/* The nearby park, drawn only within 5 km of one. Below a 1280 px bar it is the pin
-              alone, a 28 px circle with the park's name in its label and its tooltip: the icons
-              the entries carry since 2026-09-25 cost the row ~100 px, and with the 124 px chip
-              („Phantasialand") the row ran over its box in all six locales at 1024 — French by
-              91 px, the document 1099 px wide. A 28 px pin and its 14 px gap fit the French row's
-              47 px of slack. From 1280 the search input beside the row shrinks before anything
-              in it does, so the name comes back there — but only down to 155 px, which leaves the
-              chip 142 px in French at a 1280–1535 px bar: the name is cut at 96 px there
-              („Movie Park Ge…", 140 px of chip), and gets its 140 px from 1536, where the bar is
-              256 px wider. */}
+              alone, with the name in its label and tooltip, because the chip does not fit the row
+              in every locale; from 1280 the name comes back, truncated where the bar is narrow. */}
           <HeaderNearbyPark variant="bar" />
-          {/* The order is the phone menu's (Patrick, 2026-09-25): Backstage, News, Parks
-              entdecken, then „Mehr" where the sheet lists its three destinations (Wörterbuch,
-              Beste Reisezeit, So funktioniert's), then the planner. The homepage has no
-              entry here, the logo is its link; the favourites stay on the far right. Every entry
-              carries the icon it has in the sheet (`NavEntryLabel`), „Mehr" three dots, because
-              the sheet has no „Mehr". */}
+          {/* The order is the phone menu's: Backstage, News, Parks entdecken, „Mehr" where the
+              sheet lists its three hubs, then the planner. No home entry, the logo is its link.
+              Every entry carries its sheet icon (`NavEntryLabel`). */}
 
-          {/* Backstage — the blog, the one of the four travel-reading entries that came back out
-              of the „Mehr" panel into the row. It is the site's strongest SEO driver, and behind
-              a catch-all only somebody who opens it sees it.
-
-              A `NavMenu` of its own and not just a link: the panel `BlogMenuPanel` draws stands
-              directly under its own entry again instead of in the right half of somebody else's.
-              With `href="/blog"`, i.e. a real `<a>` plus a chevron button — see NavMenu, rule 2.
-              Without panel data the bare link remains, the same fallback as the parks entry
-              below. */}
+          {/* Backstage, the blog: an entry of its own rather than inside „Mehr", because it is
+              the site's strongest SEO driver. A `NavMenu` with `href="/blog"` (a real `<a>` plus a
+              chevron button, see NavMenu rule 2); without panel data, the bare link. */}
           {showBlog &&
             (blogMenu && blogMenu.recent.length > 0 ? (
               <NavMenu href="/blog" label={t('blog')} icon={Newspaper} floating={isTransparent}>
@@ -663,13 +450,9 @@ export function Header({
                 <NavEntryLabel icon={Newspaper}>{t('blog')}</NavEntryLabel>
               </Link>
             ))}
-          {/* News — an entry of its own beside Backstage and no longer a strip in its panel.
-              There news was one more corner of the blog, and `/blog` listed it that way too; now
-              they are two sections that share no post, so two entries. The same pattern as
-              Backstage: `href="/news"` plus a chevron button, and with no news there is no entry
-              at all. The panel looks different from the blog's on purpose, see `NewsMenuPanel`.
-              The label is the news category's (`categories.json`), the same word as over the
-              overview. */}
+          {/* News, an entry of its own beside Backstage, since the two sections share no post.
+              Same pattern, `href="/news"` plus a chevron; no news, no entry. The label is the news
+              category's (`categories.json`). */}
           {newsMenu && newsMenu.items.length > 0 && (
             <NavMenu
               href={newsMenu.path}
@@ -680,8 +463,6 @@ export function Header({
               <NewsMenuPanel {...newsMenu} />
             </NavMenu>
           )}
-          {/* Discovery. The trigger goes to `/parks` — the actual index — where it used to go
-              straight to `/parks/europe`, i.e. past the hub and into one of its five children. */}
           {geoMenu && geoMenu.length > 0 ? (
             <NavMenu
               href="/parks"
@@ -696,15 +477,10 @@ export function Header({
               <NavEntryLabel icon={RollerCoaster}>{t('explore')}</NavEntryLabel>
             </Link>
           )}
-          {/* The catch-all, and the reason the three links in it no longer stand here: „Beste
-              Reisezeit", „Wörterbuch" and „So funktioniert's" were entries of their own in a row
-              that ran 23.7 px over its box in French at 1024 px and took the document to 1032 px.
-              They sit in the panel `MoreMenuPanel` describes now, each with what it holds — the
-              dictionary's categories, the chapters of the other two — in the HTML of every page,
-              because `MenuBand` only hides the panel and never unmounts it. It stands where the
-              phone menu lists those three, between „Parks entdecken" and the planner.
-
-              No `href`: „Mehr" has no page of its own. See NavMenu, rule 2. */}
+          {/* „Mehr" holds „Beste Reisezeit", „Wörterbuch" and „So funktioniert's", which as
+              entries of their own overflowed the row in French. `MenuBand` hides the panel rather
+              than unmounting it, so the links stay in every page's HTML. No `href`: „Mehr" has no
+              page of its own (NavMenu rule 2). */}
           <NavMenu label={t('more')} icon={Ellipsis} floating={isTransparent}>
             <MoreMenuPanel
               bestTimeHref={bestTimePath}
@@ -713,24 +489,16 @@ export function Header({
               menu={moreMenu}
             />
           </NavMenu>
-          {/* The planner, as the last entry before the favourites, as in the phone menu. It was
-              not here at first because this row already wrapped with six entries;
-              `whitespace-nowrap` and the narrower search made room for it and were **not**
-              enough — in French the row ran 23.7 px over its box at 1024 px, see the comment on
-              the „Mehr" entry above. */}
+          {/* The planner, last before the favourites, as in the phone menu. */}
           <Link href={plannerPath} prefetch={false} className={navLinkClass}>
             <NavEntryLabel icon={CalendarPlus}>{t('planner')}</NavEntryLabel>
           </Link>
-          {/* The favourites stand in this row and not in the actions on the right: they open the
-              same band as „Parks entdecken" and „Mehr", with the same hover hysteresis, and a row
-              in which one entry opens differently from its neighbours has to be learnt twice. One
-              of two entries without a link, for a different reason than „Mehr": „Mehr" is a
-              collection with no page of its own, the favourites have one that answers every
-              reader differently — see FavoritesMenu. */}
+          {/* The favourites stand in this row because they open the same band as „Parks
+              entdecken" and „Mehr", with the same hover hysteresis. No link: their page answers
+              every reader differently, see FavoritesMenu. */}
           <FavoritesMenu floating={isTransparent} />
         </nav>
 
-        {/* Search Desktop */}
         {/* The full input from `xl`. Below that the row has no width to spare —
             see the icon trigger further down, which covers 1024–1279 px. */}
         <div className="hidden @min-[1280px]:block @min-[1280px]:w-64">
@@ -742,41 +510,25 @@ export function Header({
           />
         </div>
 
-        {/* Actions. `max-sm:gap-1` is width, not taste: at 320 px — the smallest viewport still in
-            the logs — this row is over its box by 26 px with the °C/°F button in it, and 16 px of
-            that is absorbed by the container's own padding before the document starts scrolling
-            sideways. Halving the two gaps between the three groups gives back 8 px and puts the
-            bar where it stood before the button existed (18 px over, invisible). Below `sm`
-            nothing else in here can give: every control is already at its documented exception. */}
+        {/* `max-sm:gap-1` is width, not taste: at 320 px the row only fits inside the
+            container's padding with these gaps halved. */}
         <div className="flex items-center gap-2 max-sm:gap-1">
-          {/* The icon trigger, up to `xl` and not just up to `lg`. The nav row
-              is one line by construction now, so it cannot give width back —
-              and at 1024 px it took the document 28 px wide in German and 103
-              in French with a 176 px input beside it. A 36 px icon that opens
-              the same palette costs nobody a search; a horizontal scrollbar on
-              every page costs everybody. */}
+          {/* The icon trigger up to `xl`: the nav row cannot give width back, and a 36 px icon
+              that opens the same palette costs nobody a search, while a horizontal scrollbar
+              costs everybody. */}
           <div className="@min-[1280px]:hidden">
             <SearchCommand trigger="button" size="sm" />
           </div>
 
-          {/* Locale + theme + unit. The only copy IN THE BAR — see the handoff note above for the
-              corner pill that used to hold a second one while the bar floated.
-
-              Not on a phone (PAR-434): below a 640 px bar the three move into the burger sheet,
-              where they are the first row. They were three controls of 24–34 px
-              in a row with 25 px of slack at 360, and they are preferences a visitor sets once,
-              not navigation. The bar's width and not the window's, like every switch in here.
-              The sheet copy is unconditional, because the sheet exists only below 1024 and a
-              portal cannot ask this container anything — between 640 and 1023 the three are in
-              both places, which costs nothing, while a mismatch could leave them in neither. */}
+          {/* Locale, theme and unit. Below a 640 px bar they move into the burger sheet, where
+              they are the first row: they are preferences set once, not navigation. The sheet copy
+              is unconditional, because a portal cannot ask this container anything; between 640
+              and 1023 they are in both places, which costs nothing. */}
           <div className="flex items-center gap-1 @max-[640px]:hidden">
             <LocaleSwitcher />
             <ThemeToggle />
-            {/* The unit lived in the weather card's header, i.e. on park pages only, while it
-                governs temperatures in the calendar, in blog posts and on the best-travel-time
-                hub as well. Third preference in the same cluster — and the one that made the row
-                measurable: see TemperatureUnitToggle and LocaleSwitcher for the 25 px of slack
-                this bar has at 360 px and where the space for it came from. */}
+            {/* The unit governs temperatures on every page, so it sits with the other
+                preferences; see TemperatureUnitToggle for the row's width budget. */}
             <TemperatureUnitToggle />
           </div>
 
@@ -784,7 +536,6 @@ export function Header({
               PlannerHeaderButton for why it asks `planner-phone` rather than this bar. */}
           <PlannerHeaderButton label={t('planner')} />
 
-          {/* Mobile Menu */}
           <div>
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
@@ -801,34 +552,18 @@ export function Header({
                   <span className="sr-only">{t('menu')}</span>
                 </Button>
               </SheetTrigger>
-              {/* The scroll belongs to the nav, not to the sheet. `SheetContent` is the
-                  positioned ancestor of the X in components/ui/sheet.tsx, so with
-                  `overflow-y-auto` on it the close button scrolled up and out of the panel with
-                  the links — on the one surface that IS the phone navigation. `overscroll-contain`
-                  stops a flick at the end of the list from carrying on into the page behind.
-
-                  `pt-2` and no top margin on the nav (Patrick, 2026-09-25): the list used to start
-                  80 px down (`pt-12` + `mt-8`), under a band that held nothing but the X. The
-                  first row, the preferences, now stands in the X's own band — the X is
-                  `max-sm:top-2` and 44 px tall, the row `min-h-11` from 8 px — so the menu starts
-                  at the top of the sheet. From `sm` the X is the 16 px one at `top-4`, centred at
-                  24 px, and `sm:pt-0.5` centres the row there too.
-
-                  `pb-1` for the footer at the bottom edge. The `env(safe-area-inset-bottom)` half
-                  reads 0 as the site stands — the viewport does not opt into `viewport-fit=cover`,
-                  so the browser keeps the page above an iPhone's home indicator itself — and takes
-                  over should it ever do, as in `NewPostsToast`. */}
+              {/* The scroll belongs to the nav, not the sheet: `SheetContent` positions the X, so
+                  scrolling it would carry the X away. `overscroll-contain` stops a flick at the end
+                  of the list from scrolling the page. `pt-2` puts the first row, the preferences,
+                  in the X's own band. The `env(safe-area-inset-bottom)` half of `pb-1` reads 0
+                  until the viewport opts into `viewport-fit=cover`. */}
               <SheetContent
                 side="right"
                 className="w-[300px] gap-0 px-6 pt-2 pb-[max(0.25rem,env(safe-area-inset-bottom))] sm:pt-0.5"
               >
-                {/* The landmark and the reveal's root span the list AND the footer below it.
-                    `useSheetReveal` staggers every `[data-sheet-stagger]` under its ref, and with
-                    the ref on the scrolling list the footer, which sits outside it, just appeared
-                    while every row above it slid in; with the `<nav>` on the list the footer's two
-                    links were in no navigation landmark at all. The column is the one the sheet
-                    already was: `flex-1 min-h-0`, so the list inside can still be the scroll
-                    container. One close handler for both. */}
+                {/* The landmark and the reveal's root span the list and the footer, so the footer
+                    staggers in with the rows and its links sit in a navigation landmark. Still
+                    `flex-1 min-h-0`, so the list inside can scroll. */}
                 <nav
                   ref={sheetRef}
                   className="flex min-h-0 flex-1 flex-col"
@@ -836,34 +571,17 @@ export function Header({
                   onClick={closeOnSamePageTap}
                 >
                   <div
-                    // `min-h-0` is load-bearing, not tidying: `flex-1` leaves `min-height: auto`,
-                    // and a flex item with that will not shrink below its content — so the list grew
-                    // past the sheet instead of scrolling inside it, and a menu longer than the
-                    // panel spilled out with no way to reach the end. With `min-h-0` it is the
-                    // scroll container the close button no longer sits in.
-                    //
-                    // `-mx-2 px-2` and `overflow-x-hidden` because a scroll container scrolls both
-                    // ways: `overflow-y: auto` computes `overflow-x` to `auto` as well, and the
-                    // favourites rows bleed 8 px past their column (`Row`'s `-mx-2`, which puts
-                    // them flush with their heading). Three saved parks made the list 259 px wide
-                    // in a 251 px box — a horizontal scrollbar under the sheet on every phone with
-                    // a favourite. The nav now reaches 8 px further on both sides and pads that
-                    // back, so the content column is the same 251 px and the bleed lands inside
-                    // the box; `overflow-x-hidden` also keeps the reveal's `x: 16` slide from
-                    // flashing a scrollbar while it runs.
+                    // `min-h-0`, or the flex item will not shrink below its content and the list
+                    // spills out of the sheet instead of scrolling. `-mx-2 px-2` with
+                    // `overflow-x-hidden`: `overflow-y: auto` makes `overflow-x` auto too, and the
+                    // favourites rows bleed 8 px past their column; this keeps the bleed inside the
+                    // box and hides the reveal's `x: 16` slide.
                     className="-mx-2 flex min-h-0 flex-1 flex-col gap-4 overflow-x-hidden overflow-y-auto overscroll-contain px-2 pb-4"
                   >
-                    {/* The three preferences the bar no longer carries on a phone. FIRST in the
-                      sheet, above the favourites: at the end of the list they sat at y=662 of a
-                      664 px sheet (390 × 664, no favourites saved), and every saved favourite
-                      pushes them further out of sight. The same components as the bar's, so a
-                      change to one is a change to both.
-
-                      In the X's band, on the left, and without the visible „Einstellungen" in
-                      front of them: beside a 44 px X the 251 px row has ~220 px left, and label
-                      plus controls came to about that in German and more in French. The flag, the
-                      sun and the unit say what they are; the word stays for screen readers as the
-                      group's name. `pr-12` keeps the controls clear of the X at any width. */}
+                    {/* The three preferences the bar does not carry on a phone, first in the sheet
+                      so saved favourites cannot push them out of sight; the same components as the
+                      bar's. No visible label beside the 44 px X: the controls say what they are,
+                      and the word stays for screen readers. `pr-12` keeps them clear of the X. */}
                     <div
                       data-sheet-stagger
                       role="group"
@@ -875,27 +593,21 @@ export function Header({
                       <TemperatureUnitToggle />
                     </div>
                     <HeaderNearbyPark variant="sheet" />
-                    {/* The newest news post, as the same chip the homepage hero draws beside its
-                      badge — a find like the nearby park above, not a menu entry. From the
-                      news menu's own data, so it costs the sheet nothing new. */}
+                    {/* The newest news post, as the chip the homepage hero draws, from the news
+                      menu's own data. */}
                     {latestNews && (
                       <div data-sheet-stagger>
                         <LatestNewsChip news={latestNews} variant="card" />
                       </div>
                     )}
-                    {/* Favorites before the destinations (only the two finds, nearby park and
-                      newest news, stand above them) — on a phone this sheet IS the navigation,
+                    {/* Favourites before the destinations: on a phone this sheet is the navigation,
                       and a returning visitor's own parks are the shortest route out of it. Radix
-                      unmounts the sheet's contents when it closes, so `open` is only ever true
-                      here and the panel's request is gated by the sheet itself. */}
+                      unmounts the contents on close, so `open` is always true here. */}
                     <div data-sheet-stagger className="border-border/60 border-b pb-4">
                       <FavoritesMenuPanel open variant="sheet" />
                     </div>
-                    {/* Every entry leads with its icon, in the accent (Patrick, 2026-09-25): the
-                      same glyph the destination carries elsewhere — `Newspaper` for the blog as
-                      on the homepage, `Megaphone` for news as on every news label, the "more"
-                      panel's three for its three hubs, `CalendarPlus` from the planner's button —
-                      so the sheet does not invent a second icon for a place that has one. */}
+                    {/* Every entry leads with the icon its destination carries elsewhere, so the
+                      sheet does not invent a second icon for a place that has one. */}
                     {showBlog && (
                       <SheetNavLink href="/blog" icon={Newspaper}>
                         {t('blog')}
@@ -920,12 +632,9 @@ export function Header({
                         </SheetSubLink>
                       ))}
                     </SheetDisclosure>
-                    {/* The three hubs of the desktop "more" band, in its column order — the
-                      dictionary first — and with what the band lists under each: the categories,
-                      the chapters. Each opens onto its own page as the first row („Übersicht"),
-                      the way „Parks entdecken" opens onto „Alle Parks". Without the lists (the
-                      layout stopped passing them) a hub is the plain link it used to be, not a
-                      disclosure holding one row. */}
+                    {/* The three hubs of the desktop "more" band, in its column order, each opening
+                      onto its own page as the first row and then its categories or chapters.
+                      Without the lists a hub is a plain link. */}
                     {moreMenu && moreMenu.glossary.categories.length > 0 ? (
                       <SheetDisclosure icon={BookOpen} label={t('glossary')}>
                         <SheetSubLink href={glossaryPath} count={moreMenu.glossary.termCount}>
@@ -982,14 +691,10 @@ export function Header({
                       {t('planner')}
                     </SheetNavLink>
                   </div>
-                  {/* The same row as the foot of the "Mehr" panel, from one definition, and down
-                    here and smaller for the same reason: the rest of this list is places visitors
-                    look for, these are places they come across. "Meine Favoriten" is missing here
-                    because the favourites panel above already carries it, see `MoreMenuLinks`.
-
-                    A real footer of the sheet (Patrick, 2026-09-25): OUTSIDE the scrolling list,
-                    so always on the bottom edge and never scrolled away, with 4 px beneath it
-                    instead of the sheet's 24 px padding (see `SheetContent` above). */}
+                  {/* The same row as the foot of the "Mehr" panel, from one definition, smaller
+                    because these are places visitors come across rather than look for. "Meine
+                    Favoriten" is left out because the favourites panel above carries it. Outside
+                    the scrolling list, so it stays on the bottom edge. */}
                   <MoreMenuLinks variant="sheet" />
                 </nav>
               </SheetContent>

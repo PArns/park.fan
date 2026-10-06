@@ -31,12 +31,23 @@ three lines, the rest belongs in the page.
 | layout, a component, a breakpoint, the header, a card, three.js                       | [design rules](docs/rules/README.md#design-and-layout)               |
 | sitemaps, feeds, favicon, robots and agents, analytics                                | [SEO rules](docs/rules/README.md#seo-and-the-machine-facing-surface) |
 | a blog post, UI strings, images, captions                                             | [content and media rules](docs/rules/README.md#content-and-media)    |
+| finding an existing component, hook or helper                                         | [code index](docs/code-index/README.md)                              |
 
 ## Applies to every change
 
+- **[DRY: don't repeat yourself](docs/rules/dry-one-place-for-each-piece-of-logic.md) (REQUIREMENT):** one place
+  for each piece of logic, constant, regex, formatter or class string that has to agree with another.
+  Look it up in the code index first, extend what exists, and extract a second copy instead of pasting it.
 - **[Reuse existing components](docs/rules/reuse-existing-components.md) (REQUIREMENT):** always reuse what exists (`ParkStatusBadge`,
   `CrowdLevelBadge`, `Badge`, `ParkCard`) instead of re-implementing UI inline. Only build new when
   nothing suitable exists. See [conventions](docs/development/conventions.md#11-reuse-existing-components).
+- **[Code index](docs/code-index/README.md) (REQUIREMENT):** look up existing components, hooks and
+  helpers there first. Every exported component, hook and function carries a `/** … */` comment;
+  after adding, renaming or removing an export or changing its comment, run `pnpm generate:code-index`
+  in the same PR (`pnpm check:code-index`). [The rule](docs/rules/the-code-index-is-generated-from-the-doc-comments.md).
+- **[A comment says why, once](docs/rules/a-comment-says-why-once.md) (REQUIREMENT):** a reason the code
+  cannot show, in one to three sentences, or a link to the page that holds it. Never what the next line
+  does, JSX labels, banners, history, ticket numbers, dates or measurements; nothing checks a comment.
 - **No text may read as AI-generated (REQUIREMENT):** this governs every string a human ever sees —
   posts, UI strings, `alt`/`caption`, meta descriptions, empty states, commit messages, PR bodies.
   `pnpm check:prose` decides the half a machine can, a separate review pass

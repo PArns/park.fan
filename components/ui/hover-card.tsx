@@ -1,5 +1,9 @@
 'use client';
 
+/**
+ * Hover card primitives (shadcn/ui on Radix HoverCard): root, trigger and the floating content
+ * panel.
+ */
 import * as React from 'react';
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card';
 

@@ -12,7 +12,7 @@ import type { NearbyResponse, NearbyParksData } from '@/types/nearby';
  */
 
 export const CACHE_KEY = 'nearby-parks-v2';
-export const CACHE_MAX_AGE_MS = 5 * 60 * 1000; // matches the hook's staleTime
+export const CACHE_MAX_AGE_MS = 5 * 60 * 1000;
 /** Skip a cached entry once the user has moved more than this far since it was written. */
 export const CACHE_COORD_MAX_DIST_KM = 10;
 
@@ -30,7 +30,11 @@ export function isMeaningful(data: NearbyResponse): boolean {
   return false;
 }
 
-export function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
+/**
+ * Great-circle distance in kilometres between two latitude/longitude points (haversine, Earth
+ * radius 6,371 km).
+ */
+function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
   const R = 6371;
   const dLat = ((lat2 - lat1) * Math.PI) / 180;
   const dLng = ((lng2 - lng1) * Math.PI) / 180;
@@ -41,17 +45,10 @@ export function haversineKm(lat1: number, lng1: number, lat2: number, lng2: numb
 }
 
 /**
- * An entry answers a question, and the question is "where am I" asked either with real
- * coordinates or without them. An entry written without coordinates is a GeoIP answer —
- * city-level at best, never able to resolve the 1 km in-park radius — so it may not stand in
- * for a query that carries coordinates, and vice versa. The distance check cannot cover this:
- * it needs coordinates on both sides, and one side has none.
- *
- * Without this check the entry the IP request had just written seeded the first GPS query, and
- * because `initialDataUpdatedAt` dated it to a moment ago, `staleTime` held that request back
- * for five minutes. A visitor who opened the homepage and then granted location — the ordinary
- * first visit, and the only order that happens inside a park — kept reading the generic
- * headline while standing in front of the gate.
+ * An entry answers "where am I" asked either with real coordinates or without them (a city-level
+ * GeoIP answer that cannot resolve the in-park radius), so one may not stand in for the other.
+ * Seeded as `initialData`, a GeoIP entry would hold back the first GPS request for the whole
+ * staleTime.
  */
 export function sameLocationBasis(
   currentLat: number | null,
@@ -64,12 +61,8 @@ export function sameLocationBasis(
 }
 
 /**
- * The last entry parsed, keyed by its raw string.
- *
- * `placeholderData` calls the reader on every render of every consumer while a query has no data
- * — the header, both menu panels and about nine homepage sections — and the whole persisted
- * answer was parsed each time, usually to be thrown away for being older than five minutes. The
- * string only changes when `writeCache` (or another tab) writes, so one parse per write is enough.
+ * The last entry parsed, keyed by its raw string: `placeholderData` calls the reader on every
+ * render of every consumer while a query has no data, and the string only changes on a write.
  */
 let lastRaw: string | null = null;
 let lastParsed: CachedNearby | null = null;
@@ -119,6 +112,10 @@ export function readCacheEntry(
   }
 }
 
+/**
+ * Returns the cached nearby answer that still fits the current coordinates (see `readCacheEntry`),
+ * or undefined.
+ */
 export function readCache(
   currentLat: number | null,
   currentLng: number | null
@@ -126,6 +123,10 @@ export function readCache(
   return readCacheEntry(currentLat, currentLng)?.data;
 }
 
+/**
+ * Stores a nearby answer in localStorage with the time and the coordinates it was asked with (null
+ * for a GeoIP answer); storage errors are ignored.
+ */
 export function writeCache(data: NearbyResponse, lat: number | null, lng: number | null): void {
   try {
     const entry: CachedNearby = { data, cachedAt: Date.now(), lat, lng };

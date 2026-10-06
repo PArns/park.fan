@@ -23,13 +23,8 @@ import { useToast } from '../_ui/toast';
 import { useSession } from '../_app/session';
 
 /**
- * The account's own settings: password, second factor, live sessions.
- *
- * The sessions list is the part worth having. An admin session unlocks
- * destructive operations, so "where am I signed in" and "end that one" have to
- * be answerable by the person themselves rather than by an owner filing a
- * request — and because the tokens are opaque and stored server-side, ending
- * one genuinely ends it, immediately.
+ * The account's own settings: password, second factor and live sessions, so "where am I signed in"
+ * and "end that one" are answered by the person themselves. Ending a session ends it at once.
  */
 export default function AccountPage() {
   const { identity } = useSession();
@@ -47,8 +42,6 @@ export default function AccountPage() {
     </AdminPage>
   );
 }
-
-// ─── password ─────────────────────────────────────────────────────────────────
 
 function PasswordPanel() {
   const toast = useToast();
@@ -134,8 +127,6 @@ function PasswordPanel() {
   );
 }
 
-// ─── two-factor ───────────────────────────────────────────────────────────────
-
 function TotpPanel({ enabled }: { enabled: boolean }) {
   const toast = useToast();
   const { refresh } = useSession();
@@ -149,11 +140,8 @@ function TotpPanel({ enabled }: { enabled: boolean }) {
     setBusy(true);
     setError(null);
     try {
-      // The password is required, and not as ceremony: without it a stolen
-      // session could enrol the attacker's own authenticator, and since only
-      // an owner can clear that, it would be a lockout rather than a nuisance.
-      // Sending nothing produced a 400 from the validation pipe, so enrolment
-      // could not be completed by anyone at all.
+      // The password is required: without it a stolen session could enrol the attacker's own
+      // authenticator, which only an owner can clear.
       const result = await adminFetch<{ secret: string; uri: string }>(
         '/api/admin/auth/totp/begin',
         { method: 'POST', body: { password } }
@@ -247,14 +235,9 @@ function TotpPanel({ enabled }: { enabled: boolean }) {
               wenn ein Code aus der App hier ankommt. So kann ein misslungener Scan niemanden
               aussperren.
             </p>
-            {/* No QR code, and that is deliberate rather than lazy. Every
-                hosted QR generator works by taking the payload in the URL —
-                and the payload here IS the shared secret. Rendering one would
-                mean posting the second factor to a third party at the moment
-                it is created, which is a worse outcome than typing 32
-                characters once. Encoding it in-process would be ~600 lines of
-                QR encoder for an action each account performs exactly once.
-                Password managers accept the otpauth:// link below directly. */}
+            {/* No QR code: a hosted generator would receive the shared secret in its URL, and an
+                in-process encoder is a lot of code for a one-time action. Password managers take
+                the otpauth:// link below. */}
             <div className="space-y-3">
               <div className="min-w-0 space-y-2">
                 <Field
@@ -335,8 +318,6 @@ function TotpPanel({ enabled }: { enabled: boolean }) {
   );
 }
 
-// ─── sessions ─────────────────────────────────────────────────────────────────
-
 function SessionsPanel() {
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
@@ -346,11 +327,8 @@ function SessionsPanel() {
   );
 
   async function revoke(id: string) {
-    // Wrapped like every other mutation on this page. Unwrapped, a failed
-    // revocation was an unhandled rejection in a console nobody has open: the
-    // row stayed exactly as it was, which is the same thing it does on
-    // success — so ending a suspicious session looked identical whether it
-    // worked or not.
+    // Wrapped like every other mutation here: a failed revocation leaves the row as it is, which
+    // looks the same as success, so only the toast tells them apart.
     try {
       await adminFetch(`/api/admin/auth/sessions/${id}`, { method: 'DELETE' });
       invalidate(adminKeys.sessions);

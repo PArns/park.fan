@@ -1,13 +1,9 @@
 import type { AccuracyBadge } from '@/lib/api/types';
 
 /**
- * The prediction-accuracy grade (`AccuracyBadge`) in colour, for every surface that prints one:
- * the Fancast accuracy card (`MLStatsSection`) and the ride page's accuracy badge
- * (`RideNowPanel`). Excellent and good share the operating green, fair takes the down amber, poor
- * the destructive red, and a grade the model cannot give yet is muted grey.
- *
- * One entry per grade with every face a caller needs, as full literal class strings so Tailwind's
- * scanner sees them.
+ * The prediction-accuracy grade (`AccuracyBadge`) in colour, for the Fancast accuracy card and the
+ * ride page's accuracy badge: every face a caller needs, as full literal class strings so
+ * Tailwind's scanner sees them.
  */
 export interface AccuracyStyle {
   /** Tinted pill: translucent fill plus text. */
@@ -20,6 +16,7 @@ export interface AccuracyStyle {
   glow: string;
 }
 
+/** The colours per accuracy grade: excellent and good green, fair amber, poor red, no data grey. */
 export const ACCURACY_STYLES: Record<AccuracyBadge, AccuracyStyle> = {
   excellent: {
     badge: 'bg-status-operating/15 text-status-operating',

@@ -13,18 +13,10 @@ import type { PlanDay } from '@/lib/api/types';
 import type { PlannerCustomBlock, PlannerEntry } from '@/lib/planner/types';
 
 /**
- * The demos on the planner's own page.
- *
- * They render the PRODUCTION components — `PlannerDayGrid`, `PlannerShowBand`,
- * `PlannerGridActions`, `PlannerContextBand` — off a frozen but real payload,
- * which is the same rule the guide page follows and for the same two reasons: a
- * redrawn lookalike starts lying at the first restyle, and an invented number
- * sits one link away from the ride's own page, where the real one is.
- *
- * They are also genuinely operable. The grid is the panel's grid, so a block
- * here drags, snaps, pushes its neighbours and recomputes its height from the
- * hour it lands on — the state lives in this component instead of in the
- * planner's store, so nothing a reader does here is written to their plan.
+ * The demos on the planner's own page: the production components (`PlannerDayGrid`,
+ * `PlannerShowBand`, `PlannerGridActions`, `PlannerContextBand`) off a frozen but real payload,
+ * as on the guide page. They are operable, but the state lives here instead of in the planner's
+ * store, so nothing a reader does is written to their plan.
  */
 
 /** The panel is 448 px by default, and these are drawn at that width. */
@@ -71,12 +63,9 @@ function useDemoState(initial: PlannerEntry[]) {
 }
 
 /**
- * A whole planned day, at the panel's own width.
- *
- * `isToday` is false and stays false: the day in the fixture has passed, so
- * there is no now line to draw and no minute timer to hold open — and
- * `PlannerDayGrid` gates its weather request on the forecast horizon, which a
- * date this far back is outside, so the exhibit makes no network call at all.
+ * A whole planned day, at the panel's own width. `isToday` stays false: the fixture's day has
+ * passed, so there is no now line and no minute timer, and the grid's weather request falls
+ * outside the forecast horizon, so the exhibit makes no network call.
  */
 export function PlannerDayDemo({
   day,

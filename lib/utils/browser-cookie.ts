@@ -1,13 +1,10 @@
 /**
- * Read and write a cookie in the browser. Replaces `cookies-next`, which shipped 15 KB of minified
- * JS to every page for the two client calls it served (favorites and the temperature unit;
- * measured from the production source maps, 2026-10-03).
- *
- * Same encoding as `cookies-next` 6, so cookies it wrote stay readable: the value goes through
- * `encodeURIComponent` on the way in (what its `cookie.serialize` did) and `%XX` runs are decoded
- * on the way out (its `decode`). Both are no-ops outside a browser.
+ * Read and write a cookie in the browser, without a cookie library in every page's bundle. Same
+ * encoding as `cookies-next` 6, so cookies it wrote stay readable: `encodeURIComponent` on the way
+ * in, `%XX` runs decoded on the way out. Both are no-ops outside a browser.
  */
 
+/** A cookie's decoded value in the browser, or `undefined`. */
 export function readCookie(name: string): string | undefined {
   if (typeof document === 'undefined') return undefined;
   const prefix = `${name}=`;
@@ -24,6 +21,7 @@ export function readCookie(name: string): string | undefined {
   return undefined;
 }
 
+/** Sets a cookie in the browser, URL-encoding the value. */
 export function writeCookie(
   name: string,
   value: string,

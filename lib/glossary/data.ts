@@ -1,7 +1,6 @@
 import type { GlossaryTermData } from './types';
 
 export const GLOSSARY_TERMS: GlossaryTermData[] = [
-  // ── Wait Times ─────────────────────────────────────────────────────────────
   {
     id: 'wait-time',
     category: 'wait-times',
@@ -230,7 +229,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'cola',
     },
   },
-  // ── Crowd Levels ───────────────────────────────────────────────────────────
   {
     id: 'crowd-level',
     category: 'crowd-levels',
@@ -279,7 +277,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'temporada-baja',
     },
   },
-  // ── Park Operations ────────────────────────────────────────────────────────
   {
     id: 'offseason',
     category: 'park-operations',
@@ -364,7 +361,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'evento-especial',
     },
   },
-  // ── Planning ───────────────────────────────────────────────────────────────
   {
     id: 'rope-drop',
     category: 'planning',
@@ -545,7 +541,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'tendencia-espera',
     },
   },
-  // ── Attractions ────────────────────────────────────────────────────────────
   {
     id: 'height-requirement',
     category: 'attractions',
@@ -594,7 +589,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'foto-atraccion',
     },
   },
-  // ── Coasters ───────────────────────────────────────────────────────────────
   {
     id: 'airtime',
     category: 'coaster-elements',
@@ -802,7 +796,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'schwarzkopf',
     },
   },
-  // ── Coaster Elements ───────────────────────────────────────────────────────
   {
     id: 'lifthill',
     category: 'coaster-elements',
@@ -1215,7 +1208,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'stacking',
     },
   },
-  // ── New Coaster Types ──────────────────────────────────────────────────────
   {
     id: 'inverted-coaster',
     category: 'coasters',
@@ -1288,7 +1280,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'giga-coaster',
     },
   },
-  // ── New Coaster Elements ───────────────────────────────────────────────────
   {
     id: 'overbank',
     category: 'coaster-elements',
@@ -1411,7 +1402,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'hangtime',
     },
   },
-  // ── Roller Coaster Element (meta term) ────────────────────────────────────
   {
     id: 'roller-coaster-element',
     category: 'coaster-elements',
@@ -1424,7 +1414,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'elemento-montana-rusa',
     },
   },
-  // ── New Attractions ────────────────────────────────────────────────────────
   {
     id: 'animatronics',
     category: 'attractions',
@@ -1449,7 +1438,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'trackless-ride',
     },
   },
-  // ── Ride Experience ────────────────────────────────────────────────────────
   {
     id: 'front-row',
     category: 'ride-experience',
@@ -1522,7 +1510,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'arnes-hombros',
     },
   },
-  // ── Shopping ───────────────────────────────────────────────────────────────
   {
     id: 'souvenir',
     category: 'shopping',
@@ -1571,7 +1558,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'exclusiva-parque',
     },
   },
-  // ── New Coaster Types (P1/P2) ─────────────────────────────────────────────
   {
     id: 'flying-coaster',
     category: 'coasters',
@@ -1716,7 +1702,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'zierer',
     },
   },
-  // ── New Coaster Elements (P1/P2) ───────────────────────────────────────────
   {
     id: 'stall',
     category: 'coaster-elements',
@@ -1754,7 +1739,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'high-five',
     },
   },
-  // ── New Crowd/Planning (P1/P2) ─────────────────────────────────────────────
   {
     id: 'shoulder-season',
     category: 'crowd-levels',
@@ -1803,7 +1787,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'pase-accesibilidad',
     },
   },
-  // ── New Attractions (P1/P2) ────────────────────────────────────────────────
   {
     id: 'motion-simulator',
     category: 'attractions',
@@ -1840,7 +1823,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'pre-show',
     },
   },
-  // ── Dining ─────────────────────────────────────────────────────────────────
   {
     id: 'quick-service',
     category: 'dining',
@@ -1877,7 +1859,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'cena-con-personajes',
     },
   },
-  // ── New Attractions ────────────────────────────────────────────────────────
   {
     id: 'flat-ride',
     category: 'attractions',
@@ -1914,7 +1895,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'espectaculo-en-vivo',
     },
   },
-  // ── New Attractions (P2) ───────────────────────────────────────────────────
   {
     id: 'drop-tower',
     category: 'attractions',
@@ -2047,7 +2027,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'troika',
     },
   },
-  // ── New Coasters (P2) ─────────────────────────────────────────────────────
   {
     id: 'racing-coaster',
     category: 'coasters',
@@ -2060,7 +2039,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'montana-rusa-carrera',
     },
   },
-  // ── New Dining (P2) ───────────────────────────────────────────────────────
   {
     id: 'dining-reservation',
     category: 'dining',
@@ -2097,7 +2075,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'food-court',
     },
   },
-  // ── New Park Operations (P2) ──────────────────────────────────────────────
   {
     id: 'capacity-closure',
     category: 'park-operations',
@@ -2344,7 +2321,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'atraccion-de-temporada',
     },
   },
-  // ── Manufacturers (P3) ─────────────────────────────────────────────────────
   {
     id: 'gravity-group',
     category: 'manufacturers',
@@ -2441,7 +2417,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'chance-rides',
     },
   },
-  // ── Coaster Elements (P3) ──────────────────────────────────────────────────
   {
     id: 'non-inverting-loop',
     category: 'coaster-elements',
@@ -2544,7 +2519,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
     player: { element: 'celestial-spin' },
   },
-  // ── Jargon & Concepts (P3) ─────────────────────────────────────────────────
   {
     id: 'gp',
     category: 'ride-experience',
@@ -2569,7 +2543,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'mackprodukt',
     },
   },
-  // ── Enthusiast jargon & ride feel ──────────────────────────────────────────
   {
     id: 'onride-offride',
     category: 'ride-experience',
@@ -2654,7 +2627,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'libertad-de-movimiento',
     },
   },
-  // ── Coaster types (additions) ──────────────────────────────────────────────
   {
     id: 'single-rail-coaster',
     category: 'coasters',
@@ -2727,7 +2699,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'alpine-coaster',
     },
   },
-  // ── Coaster elements (additions) ───────────────────────────────────────────
   {
     id: 'beyond-vertical-drop',
     category: 'coaster-elements',
@@ -2851,7 +2822,6 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'foot-chopper',
     },
   },
-  // ── Dark Ride Tech (P3) ────────────────────────────────────────────────────
   {
     id: 'projection-mapping',
     category: 'attractions',
@@ -3057,11 +3027,8 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
   },
 
-  // ── Ride profiles: terms the curated ride ↔ glossary link needs ────────────
-  // Added so every figure, ride type and builder stored in the API's
-  // RIDE_PROFILE_SEED resolves to a real glossary page. Seven of the new
-  // elements carry a 3-D player; the rest are mechanisms that read better as
-  // prose than as an animated curve.
+  // Terms the API's RIDE_PROFILE_SEED names, so every figure, ride type and builder it stores
+  // resolves to a glossary page.
   {
     id: 'launch',
     category: 'coaster-elements',

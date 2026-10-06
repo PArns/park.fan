@@ -17,26 +17,15 @@ interface RideCrowdScaleTooltipProps {
 }
 
 /**
- * The crowd scale behind a ride card's badge, in THIS ride's minutes.
+ * The crowd scale behind a ride card's badge, in this ride's minutes. A ride's badge is its current
+ * wait against its own typical wait, so „Hoch" is 20 minutes on one ride and 55 on another: the
+ * rows are the waits that put this ride in each tier (`rideCrowdMinuteRanges`), and without a
+ * baseline there is no tooltip.
  *
- * The park badge's tooltip can print percentages because every park is rated on the same scale.
- * A ride is not: its badge is its current wait against its own typical wait, so „Hoch" is 20
- * minutes on Mission: SPACE and 55 on Remy's. The rows here are therefore the waits that put this
- * ride in each tier (`rideCrowdMinuteRanges`), and without a baseline there is no tooltip at all
- * — the badge stays, unexplained, rather than explained with somebody else's numbers.
- *
- * **Radix mounts on first contact, not on hydration.** This sits on every ride card, and a park
- * page renders a hundred of them; `FavoriteStar` and the headliner crown use native `title` on
- * the same card for that reason. Until someone reaches for it the trigger is a plain button of
- * the same box, and three things swap the real tooltip in:
- *
- * * a mouse entering it, which mounts the tooltip already open;
- * * a tap, handled in the click — the stand-in swallows it and mounts the tooltip open. Not on
- *   pointerdown or pointerenter: swapping the element between pointerdown and click leaves the
- *   click without its target, and the browser hands it to the nearest common ancestor, which is
- *   the card's link;
- * * keyboard focus, after which the real trigger takes the focus back. A tap focuses the button
- *   too on some browsers, so `:focus-visible` decides whether a focus is the keyboard's.
+ * Radix mounts on first contact, not on hydration, since a park page renders a hundred ride cards.
+ * Until then the trigger is a plain button of the same box, swapped for the real tooltip by a mouse
+ * entering, a tap (in the click, not on pointerdown, or the click loses its target and lands on the
+ * card's link) or keyboard focus (`:focus-visible` tells it from a tap's focus).
  */
 export function RideCrowdScaleTooltip({ level, baseline, children }: RideCrowdScaleTooltipProps) {
   const [armed, setArmed] = useState<null | 'open' | 'focus'>(null);

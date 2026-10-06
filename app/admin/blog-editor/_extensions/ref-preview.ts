@@ -6,23 +6,13 @@ import type { Root } from 'react-dom/client';
 import { mountInlineBadge } from './inline-badge';
 import { createResolveCache, eventToElement, pickClosestByCoords } from '../_lib/chip-utils';
 
-/**
- * Tracks the React roots we mount inside widget DOM, keyed by the container
- * span so we can unmount them when the decoration is destroyed and avoid
- * leaking roots across edits.
- */
+/** React roots mounted inside widget DOM, keyed by container span, for unmounting on destroy. */
 const badgeRoots = new WeakMap<HTMLElement, Root>();
 
 /**
- * Live WYSIWYG preview for `[label](ref:…)` links — adds the same inline
- * annotation (city, country + live badge) that the published blog renderer
- * shows. The decoration sits to the right of the link span; ?bare suppresses
- * it (matches the renderer) and ?full hides it too because the spotlight card
- * is rendered as a whole block instead.
- *
- * Implementation note: data is fetched once per unique ref via a module-level
- * cache so jumping between locale tabs or remounting the editor doesn't
- * re-hit the API for refs already seen this session.
+ * Live preview for `[label](ref:…)` links: the inline annotation (city, country, live badge) the
+ * published renderer shows, to the right of the link. `?bare` suppresses it as the renderer does,
+ * and `?full` renders the spotlight card instead. Each ref is fetched once per session.
  */
 
 interface RefData {
@@ -69,10 +59,8 @@ function parseRefHref(href: string): { value: string; options: Set<string> } | n
 }
 
 /**
- * Walk the doc and collect contiguous spans of text that share a single
- * ref: link href. ProseMirror splits link-marked text across multiple text
- * nodes for any internal style change, so we coalesce by neighbour position +
- * matching href to find the actual end of the link.
+ * Collects the contiguous spans of text that share one `ref:` href. ProseMirror splits a link
+ * across text nodes on any style change, so neighbours with the same href are coalesced.
  */
 function collectRefs(doc: PMNode): RefSpan[] {
   const raw: Array<{ from: number; to: number; href: string }> = [];
@@ -113,8 +101,7 @@ function statusBadgeText(status: string | null | undefined): string | null {
 function buildBadgeDOM(span: RefSpan): HTMLElement {
   const wrapper = document.createElement('span');
   wrapper.className = 'ref-preview-badge';
-  // Critical — without this PM will try to map editing into our injected DOM
-  // and split text nodes oddly.
+  // Without this ProseMirror maps editing into the injected DOM and splits text nodes oddly.
   wrapper.contentEditable = 'false';
   wrapper.setAttribute('data-ref', span.refValue);
   // handleClick reads these to jump the caret back into the underlying link
@@ -146,10 +133,8 @@ function buildBadgeDOM(span: RefSpan): HTMLElement {
   }
   wrapper.appendChild(location);
 
-  // Live badge — wait time for rides, crowd level for parks, status when shut.
-  // Mount the real ParkStatusBadge / CrowdLevelBadge / wait-time Badge React
-  // components so the inline pill is pixel-identical to what the published
-  // post renders, instead of a hand-rolled visual lookalike.
+  // The real `ParkStatusBadge`, `CrowdLevelBadge` and wait-time `Badge`, so the pill is identical
+  // to the published post's.
   const badgeHost = document.createElement('span');
   badgeHost.className = 'ref-preview-pill-host';
   wrapper.appendChild(badgeHost);
@@ -165,9 +150,7 @@ function buildBadgeDOM(span: RefSpan): HTMLElement {
 }
 
 function buildSpotlightDOM(span: RefSpan): HTMLElement {
-  // Outer container holds the "ATTRAKTION IM FOKUS" label + the card itself,
-  // matching the BlogParkWidget / BlogAttractionWidget shape on the published
-  // page (label above, glass-top card below with photo bleed).
+  // Label above, glass-top card below, the shape of `BlogParkWidget` on the published page.
   const container = document.createElement('div');
   container.className = 'ref-preview-spotlight';
   container.contentEditable = 'false';
@@ -177,9 +160,8 @@ function buildSpotlightDOM(span: RefSpan): HTMLElement {
 
   const entry = cache.get(span.refValue);
 
-  // Best-effort label even before the API responds: a slash in the ref value
-  // means it's a ride (`parkSlug/rideSlug` or `/parks/.../park/ride`). Once the
-  // data lands we narrow further based on the resolved kind.
+  // A label before the API answers: a slash in the ref value means a ride (`parkSlug/rideSlug`
+  // or `/parks/.../park/ride`). The resolved kind narrows it later.
   const isRideHint = span.refValue.includes('/parks/')
     ? span.refValue.split('/').filter(Boolean).length >= 5
     : span.refValue.includes('/');
@@ -211,13 +193,11 @@ function buildSpotlightDOM(span: RefSpan): HTMLElement {
   const data = entry.data;
   container.setAttribute('data-kind', data.kind);
 
-  // Photo layer (z-0) — covers the whole card; the glass panel sits on top.
   if (data.backgroundImage) {
     const photo = document.createElement('div');
     photo.className = 'ref-preview-spotlight__photo';
     photo.style.backgroundImage = `url(${data.backgroundImage})`;
     card.appendChild(photo);
-    // Scrim mimicking pk-scrim-top/bot.
     const scrim = document.createElement('div');
     scrim.className = 'ref-preview-spotlight__scrim';
     card.appendChild(scrim);
@@ -225,13 +205,11 @@ function buildSpotlightDOM(span: RefSpan): HTMLElement {
     card.classList.add('ref-preview-spotlight__card--no-photo');
   }
 
-  // Favorite star ornament — purely decorative in the editor preview.
   const star = document.createElement('div');
   star.className = 'ref-preview-spotlight__star';
   star.textContent = '☆';
   card.appendChild(star);
 
-  // Glass panel on top.
   const panel = document.createElement('div');
   panel.className = 'ref-preview-spotlight__panel';
 
@@ -256,8 +234,6 @@ function buildSpotlightDOM(span: RefSpan): HTMLElement {
   location.appendChild(locText);
   panel.appendChild(location);
 
-  // Badge row — the big status badge gets prominence, just like the published
-  // card's GESCHLOSSEN / OPEN pill.
   const badges = document.createElement('div');
   badges.className = 'ref-preview-spotlight__badges';
 
@@ -313,11 +289,9 @@ function buildSpotlightDOM(span: RefSpan): HTMLElement {
 function buildDecorations(doc: PMNode, spans: RefSpan[]): DecorationSet {
   const decorations: Decoration[] = [];
   for (const span of spans) {
-    // ?bare suppresses the annotation entirely (matches the published renderer).
     if (span.options.has('bare')) continue;
-    // The key MUST encode the resolution state — otherwise PM reuses the
-    // loading-spinner DOM after the fetch resolves and the badge never
-    // updates to "(City, Country)".
+    // The key encodes the resolution state, or ProseMirror reuses the spinner DOM after the fetch
+    // and the badge never updates.
     const entry = cache.get(span.refValue);
     const stateKey = entry ? entry.state : 'unset';
     const optKey = [...span.options].sort().join(',');
@@ -326,9 +300,7 @@ function buildDecorations(doc: PMNode, spans: RefSpan[]): DecorationSet {
       Decoration.widget(span.to, () => (full ? buildSpotlightDOM(span) : buildBadgeDOM(span)), {
         side: 1,
         key: `ref-preview:${full ? 'spot' : 'inline'}:${span.refValue}:${optKey}:${stateKey}`,
-        // Unmount the React root that mountInlineBadge() created so we don't
-        // leak it across decoration rebuilds. `queueMicrotask` defers the
-        // unmount past the current render commit (otherwise React warns).
+        // `queueMicrotask` defers the unmount past the current render commit, where React warns.
         destroy(node) {
           const el = node as HTMLElement;
           const root = badgeRoots.get(el);
@@ -377,8 +349,7 @@ export const RefPreview = Extension.create({
             const s = refPreviewKey.getState(view.state);
             if (!s) return;
             for (const span of s.spans) {
-              // ?bare suppresses any preview, so skip the fetch. ?full DOES
-              // need the data — that's the spotlight card.
+              // `?bare` shows no preview, so no fetch; `?full` needs the data for its spotlight.
               if (span.options.has('bare')) continue;
               cache.ensure(span.refValue, () => {
                 if (view.isDestroyed) return;
@@ -408,25 +379,14 @@ export const RefPreview = Extension.create({
             let to = -1;
             let href = '';
 
-            // Branch 1: chip is one of our decoration widgets. The widget DOM
-            // gets reused across doc edits (key doesn't change for option-only
-            // shifts), so anything stashed as a data-* attr goes stale. The
-            // plugin's `spans` array, on the other hand, is recomputed from
-            // collectRefs(doc) on every docChanged tx → always current. Find
-            // the span by its data-ref (the link value never changes for a
-            // given chip's identity) and prefer the one whose anchor is
-            // nearest the chip's vertical position so we pick the *right* one
-            // when the same park is referenced multiple times.
+            // A chip of ours. Its DOM is reused across edits, so its data-* positions go stale; the
+            // plugin's `spans` are recomputed on every doc change, so the span is found there by
+            // `data-ref` and, for a park referenced twice, by the anchor nearest the chip.
             const dataRef = chip.getAttribute('data-ref');
             if (dataRef) {
               const state = refPreviewKey.getState(view.state);
-              // Filter by ref value AND by chip kind: a `.ref-preview-badge`
-              // can only come from an inline (?info / ?long / default) span,
-              // never a ?full one (?full renders a `.ref-preview-spotlight`
-              // instead). Without this filter, clicking the first of two
-              // back-to-back same-park inline badges that bracket a ?full
-              // spotlight would still match the spotlight as a candidate and
-              // its coord could end up closer.
+              // By chip kind too: a badge comes only from an inline span and a spotlight only from
+              // a `?full` one, so a spotlight between two same-park badges cannot win on distance.
               const isSpotlightChip = chip.classList.contains('ref-preview-spotlight');
               const candidates = (state?.spans ?? []).filter((s) => {
                 if (s.refValue !== dataRef) return false;
@@ -443,9 +403,8 @@ export const RefPreview = Extension.create({
               }
             }
 
-            // Branch 2: plain `<a>` click (e.g. ?bare links, mailto, https,
-            // internal /paths). Resolve the link mark at the live click pos
-            // and walk the textblock to find the contiguous mark range.
+            // A plain `<a>` click (`?bare` links, mailto, https, internal paths): resolve the link
+            // mark at the click position.
             if (from < 0) {
               let probe = clickPos;
               let $pos = doc.resolve(probe);
@@ -504,12 +463,8 @@ export const RefPreview = Extension.create({
               new CustomEvent('parkfan-selection', {
                 detail: {
                   kind: isRef ? 'ref' : 'link',
-                  // Carry the FULL range, not just a probe. The panel uses
-                  // [from, to] directly with setTextSelection so we don't
-                  // need extendMarkRange to recover the span — which was the
-                  // step that went wrong when ProseMirror's coordsAtPos
-                  // mapped a click inside a tall spotlight to the NEXT
-                  // paragraph's link instead.
+                  // The full range, not a probe: recovering it with `extendMarkRange` can land on
+                  // the next paragraph's link after a click inside a tall spotlight.
                   pos: from,
                   from,
                   to,

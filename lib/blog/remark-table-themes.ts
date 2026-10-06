@@ -1,12 +1,6 @@
 /**
- * Remark plugin that consumes the `<!--tbl-theme: NAME-->` magic comments
- * the blog editor writes above themed tables and rewrites them into a
- * `data-theme` attribute on the corresponding GFM table node. The matching
- * CSS in globals.css (`.blog-content table[data-theme='primary'] th`, etc.)
- * then paints the header row with the picked colour preset.
- *
- * The directive is opt-in — non-themed tables stay as plain GFM and are
- * unaffected.
+ * Table colour themes: the blog editor writes `<!--tbl-theme: NAME-->` above a themed table, and
+ * globals.css paints `.blog-content table[data-theme='…']`. Tables without one stay plain GFM.
  */
 // Deliberately NOT anchored to ^…$ — remark may merge adjacent raw-HTML
 // lines into one node, so the directive just needs to appear in the value.
@@ -21,6 +15,7 @@ interface MdRoot {
   children: MdNode[];
 }
 
+/** Turns a `<!--tbl-theme: NAME-->` comment into `data-theme` on the next table. */
 export function remarkTableThemes(): (tree: MdRoot) => void {
   return (tree) => {
     const children = tree.children;
@@ -46,10 +41,8 @@ export function remarkTableThemes(): (tree: MdRoot) => void {
           'data-theme': theme,
         };
       }
-      // Drop the magic comment from the rendered tree either way so it never
-      // shows up as a stray HTML island next to the table. When remark merged
-      // the comment with other raw HTML into one node, only strip the
-      // directive substring instead of nuking the whole node.
+      // Drop the comment either way so it never renders as a stray HTML island. When remark
+      // merged it with other raw HTML into one node, strip only the directive.
       const stripped = (node.value ?? '').replace(MAGIC_RE, '').trim();
       if (stripped) {
         node.value = stripped;

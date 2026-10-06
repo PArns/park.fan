@@ -1,15 +1,11 @@
 /**
  * What park.fan tells machines about its API: the catalog document served at
  * /.well-known/api-catalog (RFC 9727) and the `Link` header the homepage answers with
- * (RFC 8288, RFC 9727 §3).
- *
- * Both are built from `PARK_FAN_API` below because they make the same claim twice, and a
- * `Link` header is invisible — nothing renders it, no page breaks when it rots — so a URL
- * corrected in the document and forgotten in the header would keep pointing agents at a 404
- * with a green build.
+ * (RFC 8288, RFC 9727 §3). Both are built from `PARK_FAN_API`, because a `Link` header rots
+ * unseen and a URL fixed in only one of them would point agents at a 404.
  *
  * Keep this file import-free: next.config.ts reads `HOMEPAGE_LINK_HEADER` from here and is
- * loaded outside the app's module graph, so an `@/…` alias in here would break the config.
+ * loaded outside the app's module graph.
  */
 
 /** Where the catalog lives. Fixed by RFC 9727 §2 — agents try this path, not a link. */
@@ -31,9 +27,8 @@ export const API_CATALOG_CONTENT_TYPE =
 const API_ORIGIN = 'https://api.park.fan';
 
 /**
- * Titles stay ASCII. They are copied into the `Link` header, and Node rejects a header value
- * with a character outside Latin-1 — an em dash in one of these threw ERR_INVALID_CHAR and
- * turned the homepage into a 500, not into a page missing a header.
+ * Titles stay ASCII: they are copied into the `Link` header, and Node throws ERR_INVALID_CHAR,
+ * a 500 on the homepage, for a header character outside Latin-1.
  */
 type CatalogLink = { href: string; type: string; title: string };
 
@@ -46,10 +41,8 @@ type CatalogEntry = {
 };
 
 /**
- * One entry, because there is one API. `anchor` is the API itself (every endpoint lives under
- * /v1; the origin root serves the README as HTML), and the three relations come from RFC 8631:
- * `service-desc` is for machines, `service-doc` for people, `status` for whatever is checking
- * whether it is up.
+ * One entry, because there is one API. `anchor` is /v1, where every endpoint lives (the origin
+ * root serves the README as HTML).
  */
 const PARK_FAN_API: CatalogEntry = {
   anchor: `${API_ORIGIN}/v1`,
@@ -78,12 +71,9 @@ function linkHeaderValue(uri: string, rel: string, type: string, title?: string)
 }
 
 /**
- * The homepage's `Link` header. `api-catalog` is the one that matters — it is the relation
- * RFC 9727 defines and the reason the header exists at all; the OpenAPI and docs links save an
- * agent the second round trip through the catalog for the only API in it.
- *
- * Comma-separated in a single header: RFC 8288 §3 allows either, and one header is what
- * next.config's `headers()` can express (repeating a key there overwrites rather than appends).
+ * The homepage's `Link` header: the `api-catalog` relation, plus the OpenAPI and docs links that
+ * save an agent a round trip. One comma-separated header, because repeating a key in
+ * next.config's `headers()` overwrites it.
  */
 export const HOMEPAGE_LINK_HEADER = [
   linkHeaderValue(API_CATALOG_PATH, 'api-catalog', 'application/linkset+json'),

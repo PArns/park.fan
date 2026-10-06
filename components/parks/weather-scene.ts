@@ -1,12 +1,7 @@
 /**
- * weather-scene.ts
- * ----------------
- * Maps Open-Meteo WMO weather codes onto a small set of renderable
- * scenes used by <WeatherBackground />. Kept separate from
- * `lib/utils/weather-utils.ts` (which maps WMO codes to icons / labels)
- * because the animated background needs a coarser grouping.
- *
- * Reference: https://open-meteo.com/en/docs
+ * Maps Open-Meteo WMO weather codes onto the few scenes <WeatherBackground /> renders. Separate
+ * from `lib/utils/weather-utils.ts` (icons and labels) because the animated background needs a
+ * coarser grouping. Reference: https://open-meteo.com/en/docs
  */
 
 /** High-level scene that determines which animated background is shown. */
@@ -16,6 +11,7 @@ export type WeatherScene =
 /** Particle system to run on the canvas, or `null` for no precipitation. */
 export type Precipitation = 'rain' | 'snow' | null;
 
+/** What the background draws for one weather code. */
 export interface SceneDescriptor {
   scene: WeatherScene;
   /** Relative intensity (0..1). Scales particle count and fall speed. */

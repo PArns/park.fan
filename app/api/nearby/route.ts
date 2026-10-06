@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerApiHeaders } from '@/lib/api/client';
+import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { enrichParksWithImages } from '@/lib/utils/park-assets';
 import { getForwardedForHeaders, isLocalOrUnusableIp } from '@/lib/utils/request-ip';
 import { isSimulationEnabled, resolveSimLocation } from '@/lib/nearby-simulation';
 
-/** Response depends on client IP (GeoIP when no coords); must not be cached. */
+// The answer depends on the client IP (GeoIP without coordinates), so it is never cached.
 
 /** Default radius in meters (backend default: 1000). */
 const DEFAULT_RADIUS = 1000;
@@ -69,8 +69,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const apiBase = process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
-    const apiUrl = new URL(`${apiBase}/v1/discovery/nearby`);
+    const apiUrl = new URL(`${getApiBaseUrl()}/v1/discovery/nearby`);
     if (hasCoords) {
       apiUrl.searchParams.set('lat', effLat!);
       apiUrl.searchParams.set('lng', effLng!);

@@ -19,8 +19,10 @@ import {
   drawnBoxPx,
   dayStartMin,
   heightFor,
+  laneBox,
   latestStart,
   minuteAt,
+  NO_LANE,
   packLanes,
   packedSpanMinutes,
   rideFloor,
@@ -81,10 +83,7 @@ interface PlannerDayGridProps {
   liveWaits?: Map<string, number> | null;
   /** Showtimes as park-local minutes. `null` while the day payload is on its way. */
   showLines?: PlannerShowLine[] | null;
-  /**
-   * The shows switch is off. The lines stay mounted and fade out, rather than
-   * leaving the grid in one frame (PAR-482 follow-up: „alle Fades animiert").
-   */
+  /** The shows switch is off: the lines stay mounted and fade out. */
   showsHidden?: boolean;
   /** Rendered inside the "nothing planned yet" overlay. Usually `null`. */
   emptyAction?: React.ReactNode;
@@ -97,13 +96,8 @@ interface PlannerDayGridProps {
   /** Rides reporting closed right now. Empty where the date is not today. */
   closedNow?: ReadonlySet<string>;
   /**
-   * Who is coming, if anybody asked — the day's own answers, not the park's.
-   *
-   * The grid needs them for the same reason the ride search does: a block is a
-   * ride, and a ride the party flagged keeps that flag once it is placed. The
-   * search list was the only view that ever showed it, so a visitor who dragged
-   * a water ride in saw the mark for as long as the list was open and never
-   * again. A FLAG and never a filter — nothing here removes a block.
+   * Who is coming, if anybody asked, so a placed ride keeps the flag the ride search showed. A
+   * flag, never a filter.
    */
   prefs?: PlannerDayPrefs;
   loading?: boolean;
@@ -111,32 +105,19 @@ interface PlannerDayGridProps {
   onShiftFrom: (entryId: string, deltaMinutes: number) => void;
   onSelect: (entryId: string | null) => void;
   /**
-   * Take an entry out of the day, from the block's own ✕.
-   *
-   * The same write the action bar's ✕ does, reachable without leaving the
-   * block — see `PlannerBlockProps.onRemove` for why only this one action
-   * moved onto the card and only on a phone.
+   * Take an entry out of the day from the block's own ✕, the same write as the action bar's (see
+   * `PlannerBlockProps.onRemove`).
    */
   onRemove?: (entryId: string) => void;
   selectedId: string | null;
   /** The scroll container, for the drag's auto-scroll. */
   scrollerRef: React.RefObject<HTMLDivElement | null>;
   /**
-   * A drag has left the minute it started on, or has ended.
-   *
-   * The drag is this component's business, but one thing outside it has to
-   * know: the selected block's action bar is a SIBLING of this grid and lies
-   * over its lower edge. See the note on `dragMoved`.
+   * A drag has left the minute it started on, or has ended, so the column's action bar, a sibling
+   * lying over this grid's lower edge, can stand back. See `dragMoved`.
    */
   onDragChange?: (dragging: boolean) => void;
 }
-
-/**
- * A lane's width, as the block itself computes it — same 2 px gutter, so a band
- * and the block it belongs to cannot drift apart at any lane count.
- */
-const laneWidth = (lane: { columns: number }) =>
-  `calc((100% - ${(lane.columns - 1) * 2}px) / ${lane.columns})`;
 
 /** How far from a live reading's own moment it may still speak for a block. */
 const LIVE_WINDOW_MIN = 45;
@@ -148,11 +129,8 @@ const EDGE_PX = 48;
 const MAX_SCROLL_SPEED = 12;
 
 /**
- * The day grid: the axis, the ground, the blocks and the legs between them.
- *
- * Everything positional comes from `lib/planner/day-grid.ts`, which is pure and
- * tested — this component owns the gesture and the DOM, and no arithmetic that
- * decides where a minute lives.
+ * The day grid: the axis, the ground, the blocks and the legs between them. Everything positional
+ * comes from `lib/planner/day-grid.ts`; the grid owns the gesture and the DOM.
  */
 export function PlannerDayGrid({
   entries,
@@ -187,11 +165,10 @@ export function PlannerDayGrid({
   const [draggingId, setDraggingId] = useState<string | null>(null);
   const [dense, setDense] = useState(false);
 
-  // „A block is under the pointer" as an attribute on the grid, for the show marks that step
-  // back while somebody reads or moves a block. It was `group-has-[[data-planner-block]:hover]`,
-  // and any `:has()` rule in the stylesheet makes every DOM change on every page restyle the whole
-  // document (docs/rules/no-has-selector-in-the-stylesheet.md). One delegated pair of listeners
-  // and a DOM attribute — no state, so the grid does not re-render as the pointer crosses it.
+  // "A block is under the pointer" as an attribute on the grid, for the show marks that step back.
+  // Not `:has()`, which restyles the whole document on every DOM change
+  // (docs/rules/no-has-selector-in-the-stylesheet.md), and not state, so the grid does not
+  // re-render as the pointer crosses it.
   const gridRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const grid = gridRef.current;
@@ -212,9 +189,7 @@ export function PlannerDayGrid({
     };
   }, []);
 
-  // The half-hour hairlines are a question about the CANVAS's width, not the
-  // viewport's: this same component is 448 px in a desktop sheet and ~342 px on
-  // a phone, and `/ui` could render it narrower still.
+  // The half-hour hairlines ask the canvas's width, not the viewport's.
   useEffect(() => {
     const el = canvasRef.current;
     if (!el || typeof ResizeObserver === 'undefined') return;
@@ -223,10 +198,8 @@ export function PlannerDayGrid({
     return () => observer.disconnect();
   }, []);
 
-  // The now line, in park time. Through `useSyncExternalStore` because a clock
-  // IS an external source that changes on its own — and because its server
-  // snapshot is `null`, so the line is never in the first HTML for a client to
-  // disagree with.
+  // The now line, in park time, through `useSyncExternalStore`: a clock is an external source, and
+  // its server snapshot is `null`, so the line is never in the first HTML.
   const nowTick = useSyncExternalStore(
     isToday ? subscribeToMinute : subscribeToNothing,
     isToday ? getMinuteTick : getZero,
@@ -248,14 +221,9 @@ export function PlannerDayGrid({
   const showBandFigure = bandCarriesFigure(day);
 
   /**
-   * Everything the grid draws, in one pass.
-   *
-   * A live standby reading replaces the forecast only for a block within
-   * `LIVE_WINDOW_MIN` of the reading's own moment: a queue measured at 11:05
-   * describes 11:05, and pushing it into a 16:00 block would put the
-   * freshest-looking number on the least relevant row. The later curve is
-   * deliberately NOT scaled by the live-to-forecast ratio — that is the obvious
-   * move and nothing measures it.
+   * Everything the grid draws, in one pass. A live standby reading replaces the forecast only
+   * within `LIVE_WINDOW_MIN` of its own moment, and the later curve is not scaled by it, since
+   * nothing measures that.
    */
   const layout = useMemo(() => {
     const ordered = [...entries].sort((a, b) => a.startMinute - b.startMinute);
@@ -278,37 +246,21 @@ export function PlannerDayGrid({
           ? { ...estimate, wait: liveWait, uncertaintyMinutes: null, missing: 'none' as const }
           : estimate;
 
-      // A free block's "wait" is its DURATION. The legs either side ask how long
-      // this entry occupies the visitor, and an hour spent eating occupies the
-      // hour it lasts exactly as a queue does — so the same field carries it and
+      // A free block's "wait" is its duration: it occupies the visitor exactly as a queue does, so
       // the transfer arithmetic needs no special case.
       const wait = entry.custom
         ? entry.custom.durationMinutes
         : entry.done
           ? (entry.actualWait ?? null)
           : effective.wait;
-      // What a lane is cut for: the PLANNED occupancy, band excluded, which is
-      // the span the optimiser files a stop against and the span the block's
-      // own solid fill is drawn to. The band is the translucent tail below that
-      // fill — one-sided, `opacity-25`, deliberately outside the block's
-      // clipping so it reaches down into the gap (see `planner-block.tsx`) —
-      // and a following block starting inside it is the plan working, not two
-      // stops colliding. Counted as occupancy it put a day of ten headliners
-      // into two columns at every width: every block half as wide, its name
-      // truncated, and the leg chips lying over the blocks beside them.
-      //
-      // `packedSpanMinutes` is a floor rather than the bare wait: a ten-minute
-      // queue is still drawn in a box a line of text fits in, and two of those
-      // must be laid out as the boxes they are. A block with no figure is
-      // drawn at `NO_FIGURE_MIN` and packed at the same, so its lane and its
-      // box end on the same line (PAR-227).
+      // A lane is cut for the planned occupancy, band excluded: a block starting inside the
+      // previous one's band is the plan working, and counting the band split packed days into two
+      // columns. `packedSpanMinutes` floors it at the drawn box, so lane and box end on the same
+      // line.
       const spanMinutes = packedSpanMinutes(wait);
 
-      // "Meldet gerade geschlossen" is a statement about NOW, so it belongs to a
-      // block that is near now — the same window the live wait already obeys.
-      // Ungated it was put on every block of the day: a ride shut at 09:45 wore
-      // the warning on a 17:30 slot, where the word "gerade" is true about the
-      // ride and says nothing whatever about the visit.
+      // "Meldet gerade geschlossen" is about now, so only on a block near now, the window the live
+      // wait obeys.
       const closedRelevant =
         Boolean(entry.attractionSlug) &&
         nowMinute !== null &&
@@ -317,8 +269,8 @@ export function PlannerDayGrid({
       return {
         entry,
         ride,
-        // Where the walk to and from this block starts and ends: the ride, or a
-        // show that has coordinates. Not `ride`, which only a ride has.
+        // Where the walk to and from this block starts and ends: the ride, or a show with
+        // coordinates.
         place: entryPlace(day, entry),
         estimate: effective,
         wait,
@@ -358,22 +310,12 @@ export function PlannerDayGrid({
           from.estimate.uncertaintyMinutes,
           day?.tier === 'observed'
         ),
-        // The FROM block's lane, not the TO block's. A leg is drawn as a rail
-        // descending from where one block ends, so putting it in the
-        // destination's column made it descend from whatever happened to sit
-        // above THAT column — with Winja's Force between Taron and F.L.Y. in a
-        // second lane, the Winja's→F.L.Y. chip appeared under Taron and read as
-        // Taron→F.L.Y.: the right arithmetic against the wrong pair as far as
-        // anybody looking at it could tell. Reported as "the transfer is wrong,
-        // and so is the distance — Winja's is in between".
-        lane: lanes.get(from.entry.id) ?? { column: 0, columns: 1, overflow: 0 },
+        // The from block's lane: a leg descends from where one block ends, and in the destination's
+        // column it would read as a leg from whatever block sits above that column.
+        lane: lanes.get(from.entry.id) ?? NO_LANE,
         fromMinute: from.entry.startMinute + (from.wait ?? 0),
-        // What the block above is DRAWN at, which is not what its queue is: the
-        // chip's room is measured against this edge, and `drawnBoxPx` is the
-        // same function the block itself sizes its box with. In minutes here,
-        // like everything else in this memo — the pixels are the render's. The
-        // start it is counted from is `fromEntry.startMinute`, already on this
-        // object.
+        // In minutes, like everything in this memo; the chip's room is measured against the drawn
+        // edge (`drawnBoxPx`) in the render.
         fromWait: from.wait,
       };
     });
@@ -387,21 +329,13 @@ export function PlannerDayGrid({
     }
 
     return { rows, lanes, legs, broken };
-    // No `grid` and no `pxPerMin`: everything computed here is in MINUTES, which
-    // is what {@link packedSpanMinutes} bought — the floor under a span used to be
-    // written as `MIN_BLOCK_PX / grid.pxPerMin`, so a layout that has nothing to
-    // do with the scale was recomputed whenever the scale changed.
+    // No `grid` or `pxPerMin`: everything here is in minutes, so a scale change does not recompute
+    // it.
   }, [entries, day, ridesBySlug, liveWaits, nowMinute]);
 
   /**
-   * Where the park is, to about a kilometre.
-   *
-   * Taken off the first ride that carries a position, because NOTHING the
-   * planner fetches names the park's own — `PlannerPark` stores four URL slugs
-   * and a zone, `PlanDay` a slug and a zone, and the live snapshot projects no
-   * coordinates at all. A ride's position is the park's for this purpose by a
-   * wide margin: the weather proxy rounds to two decimals, and no theme park is
-   * a kilometre across in a way that changes its rain.
+   * Where the park is, to about a kilometre, taken off the first ride with a position: nothing the
+   * planner fetches carries the park's own, and the weather proxy rounds to two decimals anyway.
    */
   const located = day?.rides?.find(
     (ride) => typeof ride.latitude === 'number' && typeof ride.longitude === 'number'
@@ -410,12 +344,8 @@ export function PlannerDayGrid({
   const parkLon = located?.longitude ?? null;
 
   /**
-   * The hourly forecast for the day being planned — NOT for today.
-   *
-   * Gated on the forecast's own reach rather than on the planner's: the panel
-   * offers sixty days and the model answers about fourteen, and past that the
-   * proxy returns an error. Asking anyway would put a failed request behind
-   * every day in the second half of the picker, retry it, and log it.
+   * The hourly forecast for the day being planned, not for today. Gated on the forecast's own reach
+   * (about fourteen days), or every later day would put a failing request behind it.
    */
   const planDate = day?.context.date;
   const weatherEnabled = Boolean(
@@ -439,55 +369,18 @@ export function PlannerDayGrid({
   );
 
   /**
-   * A drag that has actually gone somewhere — which is what dims the day.
-   *
-   * NOT `draggingId !== null`. `setDraggingId` fires in `pointerdown`, with no
-   * movement threshold, because the same press is how a block gets selected.
-   * Dimming on that alone made every click on a block flash the whole column:
-   * the pressed block dropped to 35 % with no transition (it is `dragging`, and
-   * that branch is deliberately transition-free) while its neighbours faded
-   * over 300 ms, and the release faded them all back.
-   *
-   * So the test is whether the ghost stands anywhere other than where the block
-   * already is. That is also exactly when there is something to compare, which
-   * is the only reason to take contrast away from the rest of the day.
-   *
-   * State of its own rather than derived from the ghost's minute: every block
-   * and leg reads it, and it changes when the ghost leaves the block's minute
-   * and when the drag ends, while the minute changes at every five-minute step.
-   * As long as the minute was this component's state, each step re-rendered
-   * every block, leg and band of the day to move one of them; it is
-   * {@link DragGhost}'s now, and a step renders the ghost alone. Set only by
-   * `reportDragMoved` below.
+   * A drag that has actually gone somewhere, which is what dims the day. Not
+   * `draggingId !== null`: that is set on `pointerdown`, which also selects, so every click would
+   * flash the column. State of its own, set only by `reportDragMoved`, so a five-minute step
+   * re-renders the ghost alone ({@link DragGhost}).
    */
   const [dragMoved, setDragMoved] = useState(false);
 
   /**
-   * Tell the column when that is true, so the selected block's action bar can
-   * step aside for the gesture.
-   *
-   * The bar is `absolute inset-x-0 bottom-0 z-40` in the box this grid scrolls
-   * inside, so it is not one of the blocks `dimmed` reaches — and it is opaque.
-   * Measured at 360 px on 2026-09-20 (PAR-316): the scroller is 200 px tall,
-   * the bar wraps to two lines and takes 101 of them, and `elementFromPoint` on
-   * the ghost's own centre answered the bar's `<p>` — the drag was blind on a
-   * phone. It also prints `entry.startMinute` and the estimate of the OLD
-   * position, which is a second, contradicting answer to the question the ghost
-   * exists to answer.
-   *
-   * Reported by the gesture itself — the frame that moves the ghost and the
-   * drag's end — and not by an effect on `dragMoved`. The column hands down its
-   * own `setDragging`, so an effect cost a commit of the grid, then the effect,
-   * then a second render of the whole column at every drag start and every
-   * drop. Sent in the same frame that sets `dragMoved` and the ghost's minute,
-   * it is rendered with them in one pass.
-   *
-   * The frame compares the ghost against where the dragged block stands NOW,
-   * which is the test above. The loop is per gesture, so that start comes
-   * through a ref rather than from the closure the loop was created in, and a
-   * start that changes under a held pointer is picked up on the next frame. The
-   * callback goes through a ref too, since the column hands it down fresh on
-   * every render.
+   * Tell the column when that is true, so the selected block's action bar can step aside: it is
+   * opaque and lies over the grid's lower edge, where it hid the ghost and printed the old start.
+   * Reported from the gesture's own frame rather than an effect, so it renders in the same pass;
+   * the dragged block's start and the callback come through refs, since the loop is per gesture.
    */
   const draggedStart = ghostRow?.entry.startMinute ?? null;
   const draggedStartRef = useRef(draggedStart);
@@ -512,7 +405,6 @@ export function PlannerDayGrid({
     [grid, hourlyWeather, loading]
   );
 
-  // ── The drag ───────────────────────────────────────────────────────────────
   const dragState = useRef<{
     entryId: string;
     grabOffsetPx: number;
@@ -527,33 +419,17 @@ export function PlannerDayGrid({
   } | null>(null);
 
   /**
-   * How to tear down whichever gesture is currently running, from outside it.
-   *
-   * Both gestures below attach their listeners to a bus that may be the
-   * `document` — {@link capturePointer} falls back to it when the capture cannot
-   * be claimed — and a document listener outlives the component that added it.
-   * Unmounting mid-drag (the panel closes, the day switches, the plan is
-   * cleared) therefore left a live `pointermove` holding a closure over a block
-   * that is no longer in the tree, and a `pointerup` that would still try to
-   * commit through it.
-   *
-   * One slot rather than a set, and what it holds is an ABORT rather than a
-   * detach: a second pointer CAN start the other gesture while the first is
-   * still held — one finger on a grip and another on a resize edge is two live
-   * gestures, not one — so the displaced one has to be ended and not merely
-   * unsubscribed. Unsubscribing a move-drag leaves `dragState` set, and the rAF
-   * loop reads that and nothing else.
+   * How to tear down whichever gesture is running, from outside it. {@link capturePointer} may put
+   * the listeners on the `document`, which outlives the grid, so an unmount mid-drag must end
+   * the gesture. One slot holding an abort, not a detach: a second pointer can start the other
+   * gesture, and a merely unsubscribed move-drag leaves `dragState` set for the rAF loop.
    */
   const liveGesture = useRef<(() => void) | null>(null);
   useEffect(() => () => liveGesture.current?.(), []);
 
   /**
-   * The minute under a pointer, for a drop rather than a drag.
-   *
-   * Separate from `targetMinute` on purpose: that one reads `dragState` and
-   * subtracts the grab offset, because a block picked up by its middle must not
-   * jump its top to the cursor. A dropped ride has no grab offset — the cursor
-   * IS where it goes.
+   * The minute under a pointer, for a drop rather than a drag: no grab offset, since the cursor is
+   * where a dropped ride goes.
    */
   const minuteAtClientY = useCallback(
     (clientY: number, floorMin?: number) => {
@@ -570,12 +446,8 @@ export function PlannerDayGrid({
   );
 
   /**
-   * The floor under a ride that is being dragged in from the list.
-   *
-   * The drop used to clamp to the park's opening for every ride, so a ride whose
-   * curve starts at 11:00 could be dropped at 09:00 and the block would then
-   * carry a figure for an hour nothing was ever measured in. Looked up by slug,
-   * because a drag carries a slug and a name and not the ride.
+   * The floor under a ride being dragged in from the list, looked up by slug, so a ride whose curve
+   * starts at 11:00 cannot be dropped at 09:00.
    */
   const floorForSlug = useCallback(
     (slug: string) =>
@@ -587,25 +459,9 @@ export function PlannerDayGrid({
   );
 
   /**
-   * The same floor, for `dragover`, where the slug cannot come off the event.
-   *
-   * The line the grid draws under the pointer is a promise about where a
-   * release lands, and it was drawing one the drop then broke: `onDrop` clamps
-   * to {@link floorForSlug}, `onDragOver` clamped to the park's opening, so a
-   * ride whose curve starts an hour after the gates previewed a slot it could
-   * not be filed in — the ride's own strike-through hour, drawn as if it were
-   * available (PAR-313).
-   *
-   * It cannot be fixed the obvious way. Chrome hides a drag's payload until the
-   * drop, which is why the handler below reads `dataTransfer.types` and never
-   * `getData`, so `dragover` has no slug to look up. `activeRideDrag` is where
-   * the slug is instead, remembered by the `dragstart` of both sources.
-   *
-   * `parkSlug` is checked for the same reason `rideFromTransfer` checks it: a
-   * slug from another park is a floor this day knows nothing about, and
-   * `rideFloor` with no ride answers the park's opening — the value this line
-   * already had. A drag from another tab remembers nothing and lands there
-   * too, which is the honest answer rather than a guessed one.
+   * The same floor for `dragover`, where the payload is hidden until the drop, so the preview line
+   * promises what the drop will do. The slug comes from `activeRideDrag`; one from another park, or
+   * a drag from another tab, falls back to the park's opening.
    */
   const draggedRideFloor = useCallback(() => {
     const dragged = activeRideDrag();
@@ -614,27 +470,15 @@ export function PlannerDayGrid({
   }, [floorForSlug, parkSlug]);
 
   /**
-   * The minute under the pointer, snapped or not.
-   *
-   * Both are needed at once and they are not the same number, which is what
-   * makes a drag read as a drag: the BLOCK follows the pointer freely, because
-   * a block that jumps from step to step feels stuck rather than snapped, and
-   * the GHOST sits on the step it will actually commit to.
-   *
-   * Which no longer keeps them apart on screen, and the fix for that is not
-   * here. At a five-minute step the two are at most 3 px apart and often at 0,
-   * so the ghost is in front of the dragged block and the dragged block is
-   * dimmed — see `PlannerBlockProps.dimmed`. This split survives because it is
-   * about the FEEL of the gesture: drawing the block at the snapped minute makes
-   * it stutter under the pointer, whatever the layers do.
+   * The minute under the pointer, snapped or not: the block follows the pointer freely, because a
+   * block jumping between steps feels stuck, and the ghost sits on the step it will commit to.
    */
   const minuteUnderPointer = useCallback(
     (snap: boolean) => {
       const state = dragState.current;
       const canvas = canvasRef.current;
       if (!state || !canvas) return 0;
-      // Re-read the rect EVERY frame: it folds in the container's own scroll,
-      // which is the one thing the old index-based hit test already got right.
+      // Re-read the rect every frame: it folds in the container's own scroll.
       const top = canvas.getBoundingClientRect().top;
       const raw = minuteAt(grid, state.lastClientY - top - state.grabOffsetPx);
       if (!snap) return clampStart(grid, Math.round(raw), state.floorMin);
@@ -659,40 +503,17 @@ export function PlannerDayGrid({
       ghostRef.current?.show(null);
       reportDragMoved(false);
 
-      // A gesture the browser steals must not write. The old list bound its end
-      // handler to `pointerup` AND `pointercancel` and committed unconditionally,
-      // so a scroll that took the pointer over silently wrote a move nobody made.
+      // A gesture the browser steals (`pointercancel`) must not write.
       if (commit && minute !== state.startMinute) onMove(state.entryId, minute);
     },
     [onMove, reportDragMoved, targetMinute]
   );
 
   /**
-   * Dragging a free block's bottom edge.
-   *
-   * Deliberately simpler than the move drag above: that one previews through a
-   * custom property in a rAF loop because it moves a block across the whole
-   * axis, while this one only changes a height and commits straight to the
-   * store. The store makes that cheap — `setCustomBlock` returns the SAME state
-   * object when nothing changed, so a gesture that wobbles inside one five-minute
-   * step costs no write and no render.
-   */
-  /**
-   * A ride dragged in from the page behind the panel.
-   *
-   * TWO channels, and the order between them is the fix for a drop that used to
-   * be refused in silence. The planner's own payload
-   * ({@link PLANNER_RIDE_MIME}, attached by `useRideDragSource`) carries the
-   * ride's NAME, so a drop needs nothing from `/plan/day` — which answers 404
-   * until the backend ships, and until then the name lookup below finds nothing
-   * and every gesture ended in a shrug. A bare `text/uri-list` is still
-   * accepted, for a link from a surface that carries no attributes, and then the
-   * name does have to come from the day payload.
-   *
-   * The park gate is the same either way: dropping Voltron onto a
-   * Phantasialand day would file a ride under a park that does not have it, and
-   * the forecast is per park, so the block would draw nothing and the day would
-   * be a lie.
+   * A ride dragged in from the page behind the panel. The planner's own payload
+   * ({@link PLANNER_RIDE_MIME}) carries the name, so a drop needs nothing from `/plan/day`; a bare
+   * `text/uri-list` is still accepted, with the name from `/plan/day`. A ride from another park is
+   * refused: the forecast is per park.
    */
   const rideFromTransfer = useCallback(
     (transfer: DataTransfer): { slug: string; name: string } | null => {
@@ -710,19 +531,22 @@ export function PlannerDayGrid({
     [parkSlug, ridesBySlug]
   );
 
+  /**
+   * Dragging a free block's bottom edge. Simpler than the move drag: it only changes a height and
+   * commits straight to the store, which returns the same state for a no-op step, so a wobble
+   * costs no write.
+   */
   const handleResizeStart = useCallback(
     (entry: PlannerEntry) => (event: React.PointerEvent<HTMLElement>) => {
       if (event.button !== 0 || !entry.custom || entry.showSlug || !onResize) return;
       event.preventDefault();
       event.stopPropagation();
 
-      // Before anything else, for the same reason as the move drag: a displaced
-      // gesture has to be ended while the state it reads is still its own.
+      // First: a displaced gesture has to end while the state it reads is still its own.
       liveGesture.current?.();
 
       const handle = event.currentTarget;
-      // Where this gesture's events will arrive — the handle when the capture
-      // took, the document when it did not. See {@link capturePointer}.
+      // Where this gesture's events arrive; see {@link capturePointer}.
       const bus = capturePointer(handle, event.pointerId);
       const pointerId = event.pointerId;
       const startY = event.clientY;
@@ -730,9 +554,7 @@ export function PlannerDayGrid({
       onSelect(entry.id);
 
       const onPointerMove = (moveEvent: PointerEvent) => {
-        // Only this gesture's own finger. On the document fallback every
-        // pointer on the screen passes through here, so a second one put down
-        // anywhere would resize a block it never touched.
+        // Only this gesture's own pointer: on the document fallback every pointer arrives here.
         if (!isSamePointer(moveEvent, pointerId)) return;
         const deltaMinutes = (moveEvent.clientY - startY) / grid.pxPerMin;
         const next = Math.round((startMinutes + deltaMinutes) / RESIZE_STEP_MIN) * RESIZE_STEP_MIN;
@@ -749,9 +571,7 @@ export function PlannerDayGrid({
         releasePointer(handle, pointerId);
         if (liveGesture.current === detach) liveGesture.current = null;
       };
-      // Held so an unmount mid-gesture can still tear it down: with the
-      // document fallback the listeners outlive the component that added them,
-      // and their closure holds the block.
+      // Held so an unmount mid-gesture can tear it down.
       liveGesture.current = detach;
       bus.addEventListener('pointermove', onPointerMove as EventListener);
       bus.addEventListener('pointerup', onEnd as EventListener);
@@ -762,29 +582,23 @@ export function PlannerDayGrid({
 
   const handleDragStart = useCallback(
     (entry: PlannerEntry, floorMin: number) => (event: React.PointerEvent<HTMLElement>) => {
-      // A show is bound to its performance: the grip still selects it (the
-      // button's click), and nothing about a press on it starts a drag.
+      // A show is bound to its performance: the grip selects it, a press never drags it.
       if (event.button !== 0 || entry.showSlug) return;
       event.preventDefault();
 
       const block = event.currentTarget.closest('[data-planner-block]') as HTMLElement | null;
       if (!block) return;
 
-      // FIRST, before this gesture writes a single thing down. Whatever was
-      // running has to be ended while `dragState` is still ITS state: an abort
-      // run after the assignment below nulls out the drag that just replaced
-      // it, and the rAF handle two dozen lines further down then writes to
-      // `null` and throws inside a pointerdown handler — one finger's drag
-      // silently cancelled, the other's inert.
+      // First, before this gesture writes anything: an abort run after the assignment below would
+      // null out the drag that just replaced it.
       liveGesture.current?.();
 
       const handle = event.currentTarget;
-      // Where this gesture's events will arrive — the handle when the capture
-      // took, the document when it did not. See {@link capturePointer}.
+      // Where this gesture's events arrive; see {@link capturePointer}.
       const bus = capturePointer(handle, event.pointerId);
       const pointerId = event.pointerId;
-      // `preventDefault` above eats the focus a mouse drag would take, so a
-      // keyboard user cannot resume where the pointer just was.
+      // `preventDefault` above eats the focus a mouse drag would take, so focus it for the
+      // keyboard.
       handle.focus({ preventScroll: true });
 
       dragState.current = {
@@ -802,10 +616,7 @@ export function PlannerDayGrid({
       onSelect(entry.id);
 
       const onPointerMove = (moveEvent: PointerEvent) => {
-        // This gesture's finger and no other. With the document fallback the
-        // listeners hear every pointer on the page, so a second finger put down
-        // while the first holds a block would drive it — and its `pointerup`
-        // would COMMIT the drop at wherever that second finger happened to be.
+        // Only this gesture's own pointer, or a second finger would drive the drag and commit it.
         if (!isSamePointer(moveEvent, pointerId)) return;
         if (dragState.current) dragState.current.lastClientY = moveEvent.clientY;
       };
@@ -826,12 +637,8 @@ export function PlannerDayGrid({
         releasePointer(handle, pointerId);
         if (liveGesture.current === abort) liveGesture.current = null;
       };
-      // What an interruption from OUTSIDE this gesture has to do, and it is not
-      // `detach`: taking the listeners away leaves `dragState` set, and the rAF
-      // loop below reads exactly that — so the block would keep following a
-      // finger that is no longer being listened to, for ever. Ending the drag
-      // is the point; `false` because an interrupted drag is a cancelled one
-      // and may not write a minute.
+      // An interruption from outside ends the drag, not just the listeners: `dragState` would stay
+      // set and the rAF loop would keep following. `false`, so it writes no minute.
       const abort = () => {
         detach();
         endDrag(false);
@@ -842,32 +649,18 @@ export function PlannerDayGrid({
       bus.addEventListener('pointerup', onUp as EventListener);
       bus.addEventListener('pointercancel', onCancel as EventListener);
 
-      // The loop lives in the gesture rather than in a `useCallback`: it is
-      // per-gesture state, and a self-recursive rAF callback hoisted to a hook
-      // is both harder to read and something React's compiler rightly objects to.
-      //
-      // A rAF loop and NOT an event-driven one: `pointermove` does not fire
-      // while a finger is held still, so an auto-scroll driven by it would move
-      // the grid out from under the finger and freeze the drop time where the
-      // finger last moved.
+      // A rAF loop in the gesture, not an event-driven one: `pointermove` does not fire while a
+      // finger is held still, and the auto-scroll has to keep moving.
       const frame = () => {
         const state = dragState.current;
         if (!state) return;
 
         const scroller = scrollerRef.current;
         if (scroller && scroller.scrollHeight > scroller.clientHeight) {
-          // The SCROLLER's rect, not the viewport's: on a phone the bottom
-          // sixth of the screen is the page behind the sheet.
+          // The scroller's rect, not the viewport's: on a phone the page shows below the sheet.
           const box = scroller.getBoundingClientRect();
-          // The edge is a FRACTION of the box, capped at {@link EDGE_PX} — never
-          // the constant alone. On a phone this scroller had a 140 px floor
-          // (`planner-day-column.tsx`, 200 px since), and 48 px at each end of
-          // 140 leaves a neutral band of 44: two thirds of the axis
-          // auto-scrolled, so the day ran out from under a finger that was
-          // holding still, and `minuteUnderPointer` re-reads the rect every
-          // frame — so the target minute ran with it. A quarter each end keeps
-          // half the box neutral at every height, and from 192 px up the
-          // constant takes over unchanged.
+          // The edge is a fraction of the box, capped at {@link EDGE_PX}, so a short scroller keeps
+          // half its height neutral instead of auto-scrolling from almost anywhere.
           const edge = Math.min(EDGE_PX, box.height / 4);
           const depthTop = box.top + edge - state.lastClientY;
           const depthBottom = state.lastClientY - (box.bottom - edge);
@@ -880,25 +673,20 @@ export function PlannerDayGrid({
 
         const minute = targetMinute();
 
-        // A custom property, never `top`: writing `top` on every frame is layout
-        // on N blocks in a panel that is mounted in every page's layout. The
-        // UNSNAPPED minute, so the block sits under the finger that is holding
-        // it rather than a step ahead of or behind it.
+        // A custom property, never `top`, which would lay out every block per frame. The unsnapped
+        // minute, so the block stays under the finger.
         state.element.style.setProperty(
           '--pl-drag-dy',
           `${heightFor(grid, minuteUnderPointer(false) - state.startMinute)}px`
         );
 
-        // The ghost follows the SNAPPED minute, and only when it changes — so
-        // its setState fires a few times per gesture rather than sixty times a
-        // second, and renders the ghost and nothing else (see `DragGhost`).
+        // The ghost follows the snapped minute, and only when it changes, so it renders a few
+        // times per gesture (see `DragGhost`).
         if (state.ghostMinute !== minute) {
           state.ghostMinute = minute;
           ghostRef.current?.show(minute);
         }
-        // In the same frame, so the grid's and the column's updates join the
-        // ghost's — and on every frame rather than on a new minute alone, see
-        // `draggedStart`.
+        // In the same frame, so the grid's and the column's updates join the ghost's.
         const start = draggedStartRef.current;
         reportDragMoved(start !== null && minute !== start);
 
@@ -911,15 +699,9 @@ export function PlannerDayGrid({
   );
 
   /**
-   * Cancel a drag the page is about to lose — and ONLY then.
-   *
-   * The listener reads `endDrag` through a ref so this effect can depend on
-   * nothing. Depending on `endDrag` directly made the cleanup run whenever its
-   * identity changed, and it changes on `onMove` — which the parent hands down
-   * fresh after the `onSelect` this very gesture calls. So starting a drag
-   * re-rendered the parent, re-ran the effect, and the cleanup cancelled the
-   * drag one frame after it began: every grip press ended in `endDrag(false)`
-   * before a single rAF frame had run.
+   * Cancel a drag the page is about to lose, and only then. `endDrag` is read through a ref so this
+   * effect depends on nothing: its identity changes with the parent's re-render that the gesture
+   * itself causes, and the cleanup would cancel every drag a frame after it began.
    */
   const endDragRef = useRef(endDrag);
   useEffect(() => {
@@ -936,16 +718,9 @@ export function PlannerDayGrid({
   }, []);
 
   /**
-   * The `step` of each block's range input, which is the ARROW-KEY step.
-   *
-   * It carried the drag's step as well until PAR-307, under the name `snapStep`,
-   * and that is why it still reads the pointer: half an hour on a phone, where
-   * the drag was half an hour too until it moved to fives. What it must
-   * NOT become is {@link DRAG_SNAP_MIN} — five minutes is a good step for a
-   * hand moving a block over a distance it can see, and a bad one for a key that
-   * has to be pressed once per step to cross a day. So the fine branch stays at
-   * the quarter hour the keyboard has always had, and this is now the only place
-   * in the planner where the pointer decides a keyboard value.
+   * The `step` of each block's range input, the arrow-key step: the quarter hour on a fine pointer,
+   * half an hour on a coarse one. Not {@link DRAG_SNAP_MIN}: five minutes is good for a hand and
+   * bad for a key pressed once per step across a day.
    */
   const keyboardStep =
     typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
@@ -955,13 +730,8 @@ export function PlannerDayGrid({
   const hours: number[] = [];
   for (let h = Math.ceil(dayStartMin(grid) / 60); h * 60 <= grid.closeMin; h++) hours.push(h);
 
-  // Which SHOWS each drawn line stands for. `showLinePositions` folds labels
-  // closer than 14 px into one and records the rest in `collapsedWith` — a field
-  // that was written and read by nothing, so a 14:05 show folded into 14:00
-  // vanished from the grid with no marker at all. Both halves are resolved back
-  // to names here, which is also what turns a dashed rule into a show: the line
-  // and the time alone are indistinguishable from the hour grid they sit in, and
-  // that is why the shows read as an axis subdivision rather than as shows.
+  // Which shows each drawn line stands for, by name, including the ones `showLinePositions` folded
+  // into it (`collapsedWith`), so a folded show does not vanish.
   const showRows = useMemo(() => {
     if (showLines === null) return null;
     const byMinute = new Map<number, PlannerShowLine[]>();
@@ -970,11 +740,8 @@ export function PlannerDayGrid({
       at.push(line);
       byMinute.set(line.minute, at);
     }
-    // What the pills may not lie on: every block over its span or its drawn
-    // box, whichever reaches further (a short queue is drawn taller than it
-    // is), and every transfer chip where `PlannerLeg` puts it, which is the
-    // gap between two blocks and so exactly where a line between two rides
-    // falls.
+    // What the pills may not lie on: every block over its span or drawn box, whichever reaches
+    // further, and every transfer chip.
     const obstacles: ShowLineObstacle[] = [
       ...layout.rows.map((row) => ({
         kind: 'block' as const,
@@ -999,8 +766,7 @@ export function PlannerDayGrid({
         };
       }),
     ];
-    // The blocks a line may be written into, over their drawn box: the line a
-    // show is written on is in the box, not in the queue band under it.
+    // The blocks a line may be written into, over their drawn box.
     const hosts: ShowLineHostCandidate[] = layout.rows.map((row) => {
       const top = yFor(grid, row.entry.startMinute);
       const box = drawnBoxPx(grid, row.wait);
@@ -1020,7 +786,6 @@ export function PlannerDayGrid({
         const minutes = [line.minute, ...line.collapsedWith];
         const shows = minutes.flatMap((m) => byMinute.get(m) ?? []);
         const names = [...new Set(shows.map((show) => show.name))];
-        // See the pill below for what these two change.
         const cover = showLineCover(line.y, obstacles);
         const host = showLineHost(line.y, hosts);
         return { ...line, minutes, names, source: lineSource(shows), cover, host };
@@ -1037,11 +802,8 @@ export function PlannerDayGrid({
     }
     return byEntry;
   }, [showRows]);
-  // The empty day's card, where the canvas draws it. It sits at a third of the
-  // canvas and is as tall as its sentence wraps, so it is measured rather than
-  // computed, and a pill whose line falls under it is not drawn: at its edge
-  // the card cut a pill in half, and half a pill peeked over the one card an
-  // empty day is about.
+  // The empty day's card, measured because its height follows its sentence; a pill under it is not
+  // drawn, so no half pill peeks over it.
   const [emptyCard, setEmptyCard] = useState<{ top: number; bottom: number } | null>(null);
   const measureEmptyCard = useCallback((card: HTMLDivElement | null) => {
     if (!card) return;
@@ -1066,10 +828,8 @@ export function PlannerDayGrid({
     y > emptyCard.top - SHOW_PILL_HALF_PX &&
     y < emptyCard.bottom + SHOW_PILL_HALF_PX;
 
-  // Every show mark fades with the switch instead of leaving in one frame.
-  // `visibility` flips at the END of the fade out, so a hidden line takes no
-  // press and reads as absent to anything that asks, and at the start of the
-  // fade in.
+  // Every show mark fades with the switch. `visibility` flips at the end of the fade out, so a
+  // hidden line takes no press.
   const showFade = cn(
     'transition-[opacity,visibility] duration-200',
     showsHidden && 'invisible opacity-0'
@@ -1077,13 +837,10 @@ export function PlannerDayGrid({
 
   return (
     <div ref={gridRef} className="group/grid relative flex" data-planner-grid="">
-      {/* The gutter. Its own column, so a show pill and an hour label resolve
-          their only possible collision with the pill's own background. */}
+      {/* The gutter, its own column, so a show pill and an hour label cannot collide. */}
       <div className="relative w-11 shrink-0 max-sm:w-10" style={{ height: grid.heightPx }}>
-        {/* First in the DOM on purpose: the show chips and the now pill share
-            this column and both are opaque, so whichever of them lands on a
-            weather label paints over it — which is the right order, since a
-            showtime is an appointment and the weather is a condition. */}
+        {/* First in the DOM: the opaque show chips and now pill paint over a weather label, since
+            a showtime is an appointment and the weather a condition. */}
         <PlannerWeatherRail segments={weatherSegments} />
         {hours.map((hour) => (
           <span
@@ -1094,11 +851,8 @@ export function PlannerDayGrid({
             {formatGridTime(hour * 60)}
           </span>
         ))}
-        {/* The showtime itself. A projection is prefixed with a `~` and set a
-            shade back — the API answers `scheduled` only for today and for days
-            already gone, so on nearly every planned date these times are the
-            last matching weekday carried forward, and a bare "13:30" over a plan
-            would be this app promising a performance nobody has scheduled. */}
+        {/* The showtime. A projection gets a `~` and is set back, because the API answers
+            `scheduled` only for today and past days. */}
         {showRows?.map((line) => (
           <span
             key={`show-time-${line.minute}`}
@@ -1131,31 +885,19 @@ export function PlannerDayGrid({
         style={{ height: grid.heightPx }}
         onDragOver={(event) => {
           if (!onDropRide) return;
-          // The TYPE list, never the values: Chrome hides a drag's payload
-          // until the drop, so `getData` here answers an empty string for a
-          // drag that is perfectly acceptable — which is what the first version
-          // read, and it decided against itself half the time. `types` is
-          // readable throughout, so our own payload is accepted outright, a
-          // bare link optimistically, and a file or a text selection is left
-          // alone with the browser's own "no" cursor.
+          // The type list, never the values: Chrome hides the payload until the drop. Our payload
+          // is accepted outright, a bare link optimistically, anything else left alone.
           const types = event.dataTransfer.types;
           if (!types.includes(PLANNER_RIDE_MIME) && !types.includes('text/uri-list')) return;
           event.preventDefault();
           event.dataTransfer.dropEffect = 'copy';
-          // The ride's own floor, not the park's — the same number the drop
-          // below clamps to. See `draggedRideFloor`.
+          // The ride's own floor, the same number the drop clamps to. See `draggedRideFloor`.
           dropLineRef.current?.show(minuteAtClientY(event.clientY, draggedRideFloor()));
         }}
         onDragLeave={() => dropLineRef.current?.show(null)}
         onDrop={(event) => {
-          // FIRST, and before any refusal. `dragover` above accepts a bare
-          // `text/uri-list` optimistically — deliberately, so a ride card from a
-          // park page drags — which means this element has already claimed the
-          // drop by the time `drop` fires. Returning without preventing the
-          // default hands it back to the BROWSER, whose default action for a
-          // dropped link is to follow it: any link that is not a ride URL,
-          // dragged onto the grid from this page or another tab, navigated the
-          // app away and took the open panel with it.
+          // First, before any refusal: `dragover` already claimed the drop, and returning without
+          // preventing the default lets the browser follow a dropped link away from the app.
           event.preventDefault();
           dropLineRef.current?.show(null);
           if (!onDropRide) return;
@@ -1164,25 +906,14 @@ export function PlannerDayGrid({
           onDropRide(ride.slug, ride.name, minuteAtClientY(event.clientY, floorForSlug(ride.slug)));
         }}
       >
-        {/* Where it would land. The same line the drag itself commits to, so the
-            answer the visitor sees is the answer they get. */}
+        {/* Where it would land: the same minute the drag commits to. */}
         <DropLine ref={dropLineRef} grid={grid} />
 
         <PlannerGridGround grid={grid} dense={dense} loading={loading} />
 
-        {/* "closes approximately" is a SENTENCE, and it lived in a 40 px gutter.
-            It needs 50 px in German and 73 px in Italian, so all six locales were
-            cut off at the left — invisibly, because leftward overflow in an LTR
-            scroller never reaches `scrollWidth` and nothing can report it. It
-            belongs to the whole row rather than to the time column anyway, so it
-            is a caption on the canvas now, where a sentence has room to be one.
-
-            The `~` earns its keep in the other direction now: `closeMin` is the
-            park's own closing minute wherever the day ends on the hour, and the
-            earliest it can close where it does not, so "bis ~18:00" reads over
-            an hour that may or may not still be open — the strip the ground
-            hatches underneath. It used to sit an hour lower and name a time
-            nothing had ever claimed. */}
+        {/* "Closes approximately" is a sentence, so it is a caption on the canvas rather than in
+            the gutter, where it was cut off. The `~` says the hour above `closeMin` may or may not
+            still be open. */}
         {grid.closeIsTruncated && (
           <span
             className="text-muted-foreground/70 pointer-events-none absolute left-0 z-10 translate-y-1 text-[10px] whitespace-nowrap"
@@ -1192,10 +923,8 @@ export function PlannerDayGrid({
           </span>
         )}
 
-        {/* Shows as lines across the grid, UNDER the blocks (`z-10` against the
-            blocks' `10 + column`) so a line never buries a name. The time goes
-            in the gutter, which is why the grid keeps its full width on the
-            ~92 % of park-days with no shows to draw. */}
+        {/* Shows as lines under the blocks (`z-10` against `10 + column`), so a line never buries a
+            name; the time goes in the gutter. */}
         {showRows?.map((line) => (
           <div key={`show-${line.minute}`}>
             <div
@@ -1209,22 +938,11 @@ export function PlannerDayGrid({
               style={{ top: line.y }}
               aria-hidden="true"
             />
-            {/* The name, ON the line and above the blocks where the axis is
-                free, CENTRED, and with the band's mask icon, so the line and
-                the list above it read as the same subject.
-
-                Where the line runs into a block, the block writes the show on
-                its own second line (`showLineHost`, PAR-521: „jetzt sieht man
-                die Shows gar nicht mehr") and the grid draws nothing here. A
-                pill as wide as the axis had lain on the name, the times and the
-                lateness hint of every block a show fell into (PAR-482
-                follow-up), and the mask it was then reduced to said nothing
-                about which show. In the gap between two blocks the pill keeps
-                its names at the right end, clear of the transfer chip at the
-                left; 240 px is that chip at its widest plus its inset, and the
-                names truncate to the mask where the lane is narrower. A line
-                grazing a block's edge without falling into it gets the mask
-                alone, placed by `showLineCover`. */}
+            {/* The name, on the line where the axis is free. Where the line falls into a block the
+                block writes the show itself (`showLineHost`) and nothing is drawn here. Between two
+                blocks the names sit at the right end, clear of the transfer chip (240 px is the
+                widest chip plus its inset); a line grazing a block gets the mask alone
+                (`showLineCover`). */}
             {line.host === null && (
               <div
                 data-planner-show=""
@@ -1240,11 +958,8 @@ export function PlannerDayGrid({
                   line.source === 'projected' ? 'text-muted-foreground italic' : 'text-foreground',
                   showFade,
                   underEmptyCard(line.y) && 'invisible',
-                  // The pointer on a block is somebody reading or moving that
-                  // block, so every show mark steps back for as long as it is
-                  // there, and fades rather than blinks. A fine pointer only: a
-                  // tap leaves `:hover` stuck on a touch screen. The attribute
-                  // is set by the listener on `gridRef` above.
+                  // A pointer on a block means somebody is reading or moving it, so show marks step
+                  // back. Fine pointers only: a tap leaves `:hover` stuck on a touch screen.
                   'pointer-fine:group-data-[block-hover]/grid:opacity-20'
                 )}
                 style={{
@@ -1272,8 +987,7 @@ export function PlannerDayGrid({
           </div>
         ))}
 
-        {/* The now line. Outlook's, and the reason the panel says out loud that
-            its clock is the park's. */}
+        {/* The now line, and the reason the panel says its clock is the park's. */}
         {nowMinute !== null && nowMinute >= grid.gridStartMin && nowMinute <= grid.gridEndMin && (
           <div
             className="bg-destructive/70 pointer-events-none absolute inset-x-0 z-[15] h-px"
@@ -1283,80 +997,37 @@ export function PlannerDayGrid({
         )}
 
         {entries.length === 0 ? (
-          /* A card over the axis rather than a caption on it (PAR-482
-             follow-up: „wenn keine Rides im Planer sind, weise drauf hin, dass
-             man die per Drag & Drop rein ziehen kann"). It was muted text at a
-             third of the height, and the show pills, which sit above the
-             blocks at `z-20`, ran straight through it — on a park with shows
-             the one sentence that says how to start was the thing a reader
-             could not read. `z-30` with its own ground, over the pills and the
-             now line, since nothing on an empty axis matters more than how to
-             fill it. */
+          /* A card over the axis rather than a caption, `z-30` with its own ground, so the show
+             pills do not run through the one sentence that says how to start. */
           <div
             ref={measureEmptyCard}
             className="text-muted-foreground border-border/60 bg-background/90 absolute inset-x-4 top-1/3 z-30 mx-auto max-w-sm rounded-lg border px-4 py-3 text-center text-xs shadow-sm backdrop-blur-sm transition-opacity duration-300 starting:opacity-0"
           >
-            {/* The gesture itself on the desktop, where the sentence under it
-                is the drag: a hand carrying a card onto the axis. */}
+            {/* The gesture itself on the desktop: a hand carrying a card onto the axis. */}
             <PlannerDragDemo className="planner-wide:block mx-auto mb-1.5 hidden" />
             <p className="text-foreground text-sm font-medium">{t('empty.title')}</p>
-            {/* One sentence per pointer, chosen by CSS rather than by
-                `useMediaQuery`, whose server snapshot is `false` and would ship
-                the phone's line in every desktop's first HTML.
-                The split is not cosmetic: the ride search below this overlay is
-                `planner-wide:hidden`, so "such dir unten eine Bahn" is true
-                wherever that search is drawn and false wherever it is not. The
-                desktop line is the drag gesture, from the coach's own key — one
-                gesture, one wording, and the coach stands down while the day is
-                empty so the two never appear together.
-
-                Which is why these two moved off `sm:` with the search itself
-                (PAR-76): at 844x390 the search is there and this still said
-                "drag a ride from the park page", a gesture a thumb does not
-                have, while the list it should have pointed at sat right below.
-                The pair asks one question — is the search on screen — and both
-                halves have to ask it the same way. */}
+            {/* One sentence per pointer, chosen by CSS: `useMediaQuery`'s server snapshot would
+                ship the phone's line to every desktop. The ride search is `planner-wide:hidden`, so
+                "such dir unten eine Bahn" is only true where it is drawn; both halves ask the same
+                question. */}
             <p className="planner-wide:hidden mt-1">{t('empty.bodyGrid')}</p>
             <p className="planner-wide:block mt-1 hidden">{t('coach.drag')}</p>
-            {/* The way OUT of an empty day, where a reader standing in another
-                park would otherwise be told to drag in a ride that does not
-                belong to the day on screen. Optional and usually absent — see
-                `PlannerPlanParkCta`. `pointer-events-auto` because the overlay
-                it sits in is inside the drop canvas. */}
+            {/* The way out of an empty day for a reader standing in another park (see
+                `PlannerPlanParkCta`). `pointer-events-auto`, since the overlay is inside the drop
+                canvas. */}
             {emptyAction && (
               <div className="pointer-events-auto mx-auto max-w-56">{emptyAction}</div>
             )}
           </div>
         ) : (
           <ol className="absolute inset-0">
-            {/* The uncertainty bands, all of them, UNDER everything else.
-
-                Depth here is an argument about what a reader owes what. A block
-                is a fact about the day and a leg chip is a fact about the gap;
-                a band is a maybe, so it goes behind both and never makes either
-                harder to read. It cannot live inside its block and be that: the
-                block carries a `z-index` for its lane and is therefore a
-                stacking context, so the band was pinned above the leg at
-                `zIndex: 5` — measured with `elementFromPoint` at the centre of
-                every chip on a planned Phantasialand day, nine of nine were
-                painted by somebody's band.
-
-                It is a TAIL, from the end of the queue to the end of the
-                spread, rather than a slab behind the whole block. Drawn from
-                the top it painted the queue's own pixels a second time under
-                the fill, and since a headliner's band is as long again as its
-                queue (29 minutes on Taron, 36–38 on F.L.Y. and the two Winja's)
-                a planned day came out as one unbroken orange column with the
-                blocks somewhere inside it.
-
-                And it fades to nothing over its own length, because a spread's
-                last minute is its least likely one and a slab that stops dead
-                claims its hardest edge exactly where it is least sure. */}
+            {/* The uncertainty bands, under everything else: a band is a maybe, so it never makes a
+                block or a leg chip harder to read. Its own layer, because a block's `z-index` makes
+                it a stacking context. A tail from the end of the queue to the end of the spread,
+                fading out, since a spread's last minute is its least likely one. */}
             {layout.rows.map((row) => {
-              // A block under the finger moves by a transform on its own box, and
-              // a band in a layer of its own does not follow it — left in, it
-              // detaches and hangs at the slot the block has already left. The
-              // ghost is what says where the drag lands.
+              // A block under the finger moves by a transform its band does not follow; the ghost
+              // says where it lands.
               if (draggingId === row.entry.id) return null;
               const band = bandGeometry(grid, row.entry, row.estimate, { live: row.live });
               if (!band) return null;
@@ -1365,7 +1036,7 @@ export function PlannerDayGrid({
                   ? null
                   : waitTimeCrowdTier(row.wait);
               if (!tone) return null;
-              const lane = layout.lanes.get(row.entry.id) ?? { column: 0, columns: 1, overflow: 0 };
+              const lane = layout.lanes.get(row.entry.id) ?? NO_LANE;
               return (
                 <li
                   key={`band-${row.entry.id}`}
@@ -1377,8 +1048,7 @@ export function PlannerDayGrid({
                   style={{
                     top: band.top,
                     height: band.height,
-                    left: `calc((${laneWidth(lane)} + 2px) * ${lane.column})`,
-                    width: laneWidth(lane),
+                    ...laneBox(lane),
                     zIndex: 4,
                     maskImage: BAND_FADE,
                     WebkitMaskImage: BAND_FADE,
@@ -1421,26 +1091,10 @@ export function PlannerDayGrid({
               />
             ))}
 
-            {/* The ghost, and it is a REAL block rather than an outline: the
-                same photo, tint and name, at the minute the drag would commit
-                to, with the wait recomputed for that minute — which is what
-                makes its HEIGHT right, because the height is the wait and the
-                wait is a function of where the block sits. Moving a ride into a
-                quieter hour is the whole reason to move it, so the preview has
-                to answer "and then it is this tall" while the pointer is still
-                down.
-
-                It re-renders on the snapped minute, not on the pointer, so a
-                gesture costs a handful of renders, and they are its own: the
-                minute is `DragGhost`'s state, so a step does not re-render the
-                day around it. `ghost` makes it inert — nothing about it can be
-                clicked or dragged — and puts it in front of everything, with
-                every real block stepping back to 35 % for the length of the
-                gesture (`dimmed` below). It used to be the other way round: the
-                ghost was translucent and sat UNDER the block being dragged,
-                which with a five-minute step lands within three pixels of it,
-                so the preview was a dashed outline around somebody else's old
-                time. */}
+            {/* The ghost: a real block at the minute the drag would commit to, with the wait
+                recomputed for that minute, so its height answers "and then it is this tall". It
+                renders on the snapped minute only, in front, inert, while every real block steps
+                back (`dimmed`). */}
             <DragGhost
               ref={ghostRef}
               row={ghostRow}
@@ -1462,10 +1116,9 @@ export function PlannerDayGrid({
                   entry={row.entry}
                   estimate={row.estimate}
                   grid={grid}
-                  /* THIS hour's regime, which on a measured day is not always
-                     the day's — see `PlannerEstimate.tier`. */
+                  /* This hour's regime; see `PlannerEstimate.tier`. */
                   tier={row.estimate.tier ?? tier}
-                  lane={layout.lanes.get(row.entry.id) ?? { column: 0, columns: 1, overflow: 0 }}
+                  lane={layout.lanes.get(row.entry.id) ?? NO_LANE}
                   land={row.ride?.land}
                   metresFromPrevious={previous?.leg.metres ?? null}
                   shows={showsByEntry.get(row.entry.id)}
@@ -1486,11 +1139,8 @@ export function PlannerDayGrid({
                       : false
                   }
                   downYesterday={row.ride?.downYesterday === true}
-                  /* `{}` where the entry is a free block or a ride the day
-                     payload does not carry: `partyFlags` reads two optional
-                     facts off it and answers `NONE` for a ride with neither,
-                     which is the honest answer for a ride we know nothing
-                     about. */
+                  /* `{}` for a free block or a ride the payload lacks: `partyFlags` answers
+                     `NONE`. */
                   wet={partyFlags(row.ride ?? {}, prefs).wet}
                   selected={selectedId === row.entry.id}
                   dragging={draggingId === row.entry.id}
@@ -1514,17 +1164,15 @@ export function PlannerDayGrid({
           </ol>
         )}
 
-        {/* The not-yet-open region of the ride being dragged, drawn in its own
-            lane only so it never becomes a wall across the grid. Hard region:
-            the drag cannot enter it. */}
+        {/* The not-yet-open region of the dragged ride, in its own lane only. Hard region: the
+            drag cannot enter it. */}
         {draggingId !== null &&
           (() => {
             const row = layout.rows.find((r) => r.entry.id === draggingId);
             if (!row) return null;
             const floor = rideFloor(grid, row.ride);
-            const lane = layout.lanes.get(row.entry.id) ?? { column: 0, columns: 1, overflow: 0 };
-            const laneWidth = `calc((100% - ${(lane.columns - 1) * 2}px) / ${lane.columns})`;
-            const laneLeft = `calc((${laneWidth} + 2px) * ${lane.column})`;
+            const lane = layout.lanes.get(row.entry.id) ?? NO_LANE;
+            const { left: laneLeft, width: laneWidth } = laneBox(lane);
             return (
               <>
                 <div
@@ -1539,9 +1187,8 @@ export function PlannerDayGrid({
                   }}
                   aria-hidden="true"
                 />
-                {/* Soft region: measurement, not opening. It never blocks — a
-                    block dropped in it honestly loses its figure, which is what
-                    the data actually says. */}
+                {/* Soft region: measurement, not opening. It never blocks; a block dropped in it
+                    loses its figure. */}
                 {floor.softMin > floor.hardMin && (
                   <div
                     className="pointer-events-none absolute z-[24] opacity-20"
@@ -1565,16 +1212,9 @@ export function PlannerDayGrid({
 }
 
 /**
- * A minute that a child draws and the grid's own handlers set.
- *
- * The grid's two gestures each produce a number that changes at every
- * five-minute step: where the ghost of a dragged block stands, and where a ride
- * dragged in from the page would land. Both were the grid's state, so every
- * step re-rendered every block, leg and band of the day to move one element.
- * Each is now the state of the component that draws it, and the grid hands the
- * minute over through this handle. A `setState`, not a store: called from the
- * same handler as the grid's and the column's own updates, it is batched with
- * them into one render, as the grid's state was.
+ * A minute that a child draws and the grid's handlers set, so a five-minute step re-renders only
+ * the component that draws it. A `setState`, not a store, so it batches with the grid's and the
+ * column's updates.
  */
 interface MinuteHandle {
   show: (minute: number | null) => void;
@@ -1616,28 +1256,14 @@ function DragGhost({
   keyboardStep: number;
 }) {
   /**
-   * The minute the dragged block would land on, as REACT state — and the one
-   * thing in the drag that is allowed to be.
-   *
-   * The pointer moves at 60 Hz and the block follows it through a custom
-   * property for the reason the grid's rAF loop gives: a re-render per frame
-   * lays out every block in the day. But the SNAPPED minute changes only once
-   * per step of movement — a handful of times in a whole gesture — and that is
-   * what the ghost is drawn at. So the smooth half stays out of React and the
-   * ghost gets a real render, which is what lets it be an actual block rather
-   * than an outline: same photo, same tint, same name, and its own HEIGHT,
-   * because the height is the wait and the wait is a function of the start
-   * minute.
+   * The minute the dragged block would land on, as React state: it changes once per step, so the
+   * ghost can be a real block with its own height, while the 60 Hz movement stays out of React.
    */
   const [minute, setMinute] = useState<number | null>(null);
   useImperativeHandle(ref, () => ({ show: setMinute }), []);
 
   /**
-   * What the ghost would cost where it currently hovers.
-   *
-   * Hoisted out of the JSX because it is read twice — the figure inside the
-   * ghost and the tier its lower edge is drawn with — and computing it twice
-   * would be two chances for the two to disagree.
+   * What the ghost would cost where it hovers, computed once for both its figure and its edge.
    */
   const estimate = useMemo(
     () => (row && minute !== null ? estimateFor(day, { ...row.entry, startMinute: minute }) : null),
@@ -1652,11 +1278,9 @@ function DragGhost({
       entry={{ ...row.entry, startMinute: minute }}
       estimate={estimate}
       grid={grid}
-      /* The hour the ghost would land in, not the day: dragging a block out of
-         a measured hour and into a composed one is exactly the move whose edge
-         has to change under the pointer. */
+      /* The hour the ghost would land in, so the edge changes under the pointer. */
       tier={estimate.tier ?? tier}
-      lane={lane ?? { column: 0, columns: 1, overflow: 0 }}
+      lane={lane ?? NO_LANE}
       land={row.ride?.land}
       metresFromPrevious={null}
       showBandFigure={showBandFigure}
@@ -1671,9 +1295,7 @@ function DragGhost({
       }
       closedNow={false}
       downYesterday={false}
-      /* The ghost is the same ride, so it carries the same mark: a preview that
-         dropped the droplet would say the flag goes away at the new hour, which
-         is a claim about the ride and not about the clock. */
+      /* The same ride carries the same mark at any hour. */
       wet={partyFlags(row.ride ?? {}, prefs).wet}
       selected={false}
       dragging={false}

@@ -2,26 +2,15 @@ import type { PlanDay, PlanDayShow, PlanDayShowSource } from '@/lib/api/types';
 import { unfoldedCloseHour } from './day-grid';
 
 /**
- * Showtimes, as lines on the day.
- *
- * They used to be read off the live park payload, which meant they existed for
- * TODAY and for no other date — sixty of the sixty-one dates the picker offers
- * drew nothing, and the panel had to say so. `/plan/day` answers for every date
- * instead: the operator's own listing where there is one, and otherwise the last
- * matching weekday carried forward. That second kind is a projection and is
- * marked as one all the way to the pixel, which is the whole reason
- * {@link PlannerShowLine} carries `source` rather than resolving it away here.
+ * Showtimes, as lines on the day. `/plan/day` answers for every date: the operator's own listing
+ * where there is one, otherwise the last matching weekday carried forward, a projection marked as
+ * one all the way to the pixel, which is why {@link PlannerShowLine} keeps `source`.
  */
 
 /**
- * The park's PUBLISHED day, in park-local minutes — `context.openHour` and
- * `context.closeHour`, not the axis. The axis pads both ends by half an hour and
- * carries a whole extra hour at the close (the backend emits a bucket AT
- * `closeHour`), and neither of those is a claim that anything happens there.
- *
- * Build it with {@link showDayHours} rather than multiplying the two hours by
- * 60 at the call site: on a day that crosses midnight `closeHour < openHour`,
- * and the raw pair puts the close BEFORE the open.
+ * The park's published day in park-local minutes, not the axis with its pads. Build it with
+ * {@link showDayHours}: past midnight `closeHour < openHour`, and the raw pair puts the close
+ * before the open.
  */
 export interface ShowDayHours {
   openMin: number;
@@ -29,21 +18,10 @@ export interface ShowDayHours {
 }
 
 /**
- * The clip window for one day, or `null` where the park's hours are unknown.
- *
- * `closeHour` is unfolded the way {@link unfoldedCloseHour} unfolds the axis,
- * because a park whose day crosses midnight publishes `closeHour < openHour` —
- * La Ronde is `11 → 1`. Multiplied straight, that window is `660 → 60`, which
- * every showtime of the day falls outside of, so the clip below dropped ALL of
- * them: a projected 19:00 line is `1140 > 60`. Scheduled times are never
- * clipped, which is why it failed in silence on exactly the parks the window
- * was never meant to touch.
- *
- * Showtimes themselves are NOT unfolded, and must not be: the API buckets a
- * performance by its own park-local calendar date, so a `00:45` show belongs to
- * the following day's `shows` rather than to this one's past-midnight tail.
- * Every time in this day's array is therefore an ordinary 0–1439, and the
- * unfolded close is what lets the evening ones through.
+ * The clip window for one day, or `null` where the park's hours are unknown. `closeHour` is
+ * unfolded like the axis ({@link unfoldedCloseHour}), or a day crossing midnight clips every
+ * projected show. The showtimes are not unfolded: the API files a 00:45 show under the next date,
+ * so each day's times are an ordinary 0–1439.
  */
 export function showDayHours(
   openHour: number | null | undefined,
@@ -57,6 +35,7 @@ export function showDayHours(
   };
 }
 
+/** One showtime as a line on the day. */
 export interface PlannerShowLine {
   slug: string;
   name: string;
@@ -70,13 +49,8 @@ export interface PlannerShowLine {
 }
 
 /**
- * One line per showtime, ascending.
- *
- * `times` is park-local wall clock (`HH:mm`) and stays that way: the planner's
- * whole axis is park-local minutes, so there is no instant to build and no zone
- * to convert through. A malformed entry is dropped rather than defaulted — a
- * show at minute 0 would be drawn at midnight, which is a line somebody would
- * have to explain.
+ * One line per showtime, ascending. `times` is park-local `HH:mm`, like the axis, so nothing is
+ * converted; a malformed entry is dropped rather than drawn at midnight.
  */
 export function showLinesFor(
   shows: readonly PlanDayShow[] | undefined | null,
@@ -91,16 +65,9 @@ export function showLinesFor(
       const minute = Number(match[2]);
       if (hour > 23 || minute > 59) continue;
       const at = hour * 60 + minute;
-      // A projection carries ANOTHER day's programme, and the other day is often
-      // the longer one. Phantasialand closed at 18:00 on 2026-09-03 and its
-      // projection came off 2026-08-13, a late-summer evening: 22 of the 48
-      // showtimes the API returned for that date sat past the close — the whole
-      // Wintertraum and laser run from 18:15 to 21:00 — drawn down an axis that
-      // ends at 19:00, which is where the grid stopped being a plan and became a
-      // wall of dotted rules. A LISTING is never clipped: an operator publishing
-      // a time for this date outranks an opening hour we derived, which the API
-      // says out loud for `hoursSource: "observed"`, where the window it reports
-      // is narrower than the park's real one.
+      // A projection carries another day's programme, often a longer one, so it is clipped to this
+      // day's hours. A listing is never clipped: an operator's time for this date outranks hours we
+      // derived.
       if (show.source === 'projected' && hours && (at < hours.openMin || at > hours.closeMin)) {
         continue;
       }
@@ -118,10 +85,8 @@ export function showLinesFor(
 }
 
 /**
- * Whether the grid draws any show on this day: the day's shows within its
- * hours, asked exactly as the grid asks. The phone's show switch renders only
- * where this is true, and so does the row it sits in — a switch over an empty
- * set does nothing, and a row drawn for it alone would be an empty row.
+ * Whether the grid draws any show on this day, asked exactly as the grid asks. The phone's show
+ * switch and its row render only where this is true.
  */
 export function dayHasShowLines(day: PlanDay | null | undefined): boolean {
   if (!day) return false;
@@ -131,12 +96,8 @@ export function dayHasShowLines(day: PlanDay | null | undefined): boolean {
 }
 
 /**
- * The source a drawn line speaks with, where several shows fold into one.
- *
- * A projection anywhere in the group decides it. The rule is one-directional —
- * a projection may never be drawn as a listing — so where a scheduled 14:00 and
- * a projected 14:05 collapse into one rule, the softer treatment is the only
- * one that is not a promise about the second of them.
+ * The source a drawn line speaks with where several shows fold into one: a projection anywhere in
+ * the group, since a projection may never be drawn as a listing.
  */
 export function lineSource(lines: readonly PlannerShowLine[]): PlanDayShowSource {
   return lines.some((line) => line.source === 'projected') ? 'projected' : 'scheduled';

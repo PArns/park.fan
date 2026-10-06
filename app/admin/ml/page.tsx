@@ -598,7 +598,7 @@ function TftModelCard({ model }: { model: SystemHealthResponse['ml']['tft']['act
 }
 
 // TFT-vs-CatBoost daily scoreboard. Pivots the flat rows → one entry per (date, segment)
-// holding both models side by side (TFT's edge lives on busy/hdlnr). Logic kept verbatim.
+// holding both models side by side (TFT's edge lives on busy/hdlnr).
 function TftScoreboard({ comparison }: { comparison: SystemHealthResponse['ml']['comparison'] }) {
   return (
     <Card className="border-border/60">
@@ -647,10 +647,8 @@ function TftScoreboard({ comparison }: { comparison: SystemHealthResponse['ml'][
               headliner: 'text-violet-400',
             };
             return (
-              // Scrolls sideways rather than reflowing. Five numeric columns on a
-              // phone is not a layout problem worth solving here — this page is a
-              // monitoring surface read at a desk, and the honest mobile answer is
-              // "you can still get at it", not a redesign.
+              // Scrolls sideways on a phone rather than reflowing: this monitoring page is read
+              // at a desk.
               <div className="space-y-0 overflow-x-auto">
                 <div className="border-border/60 text-muted-foreground grid min-w-[24rem] grid-cols-5 gap-1 border-b pb-1 text-xs font-medium tracking-wide uppercase">
                   <span>Date</span>
@@ -715,8 +713,8 @@ export default function MlPage() {
     topPerformers: MlPerformer[];
     bottomPerformers: MlPerformer[];
   }>('/api/ml/monitoring/tft/performers');
-  const health = useAdminFetch<SystemHealthResponse>('/api/admin/system-health', true);
-  const comparison = useAdminFetch<MlComparisonBoard>('/api/admin/ml-comparison', true);
+  const health = useAdminFetch<SystemHealthResponse>('/api/admin/system-health');
+  const comparison = useAdminFetch<MlComparisonBoard>('/api/admin/ml-comparison');
 
   if (dash.error) return <ErrorPanel message={`ML dashboard: ${dash.error}`} />;
   if (!dash.data) return <LoadingPanel label="Loading ML metrics…" />;
@@ -753,7 +751,6 @@ export default function MlPage() {
   return (
     <AdminPage width="wide">
       <>
-        {/* ── Status strip: one-glance health, serving models, training ───────── */}
         <div className="space-y-3">
           <Card className="border-border/60">
             <CardContent className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-4">
@@ -832,7 +829,6 @@ export default function MlPage() {
           )}
         </div>
 
-        {/* ── Serving map: which model serves which horizon + live accuracy ───── */}
         <Section icon={Layers} title="Serving map">
           <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
             <ServingCard name="CatBoost" role="far-daily 31–365d · fallback">
@@ -925,7 +921,6 @@ export default function MlPage() {
             </ServingCard>
           </div>
 
-          {/* Model identity (CatBoost champion) */}
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             <StatCard
               label="Version"
@@ -941,7 +936,6 @@ export default function MlPage() {
           </div>
         </Section>
 
-        {/* ── Model health: training-vs-live accuracy + drift ─────────────────── */}
         <Section icon={Gauge} title="Model health">
           <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
             <Card className="border-border/60 lg:col-span-2">
@@ -1040,7 +1034,6 @@ export default function MlPage() {
           </div>
         </Section>
 
-        {/* ── Challenger boards: verdict-forward shadow comparisons ───────────── */}
         <Section icon={GitCompare} title="Challenger boards">
           <p className="text-muted-foreground text-sm">
             n-weighted MAE per segment × lead bucket (highlighted row = lead &ldquo;all&rdquo;
@@ -1104,7 +1097,6 @@ export default function MlPage() {
           )}
         </Section>
 
-        {/* ── Per-attraction accuracy: CatBoost hourly + TFT daily ────────────── */}
         <Section icon={Sparkles} title="Per-attraction accuracy">
           <div className="space-y-4">
             <div className="space-y-2">
@@ -1143,7 +1135,6 @@ export default function MlPage() {
           </div>
         </Section>
 
-        {/* ── Monitoring: anomalies + active alerts ───────────────────────────── */}
         <Section icon={Bell} title="Monitoring">
           <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
             <Card className="border-border/60">

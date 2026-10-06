@@ -7,100 +7,39 @@ interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * The `heavy` recipe as a bare class string, for the surfaces that are not a `GlassCard`.
- *
- * The park page opens with three stacked boxes — the title card, the "Heute im Park" panel and
- * the entry-tile row — and each of them had invented its own glass: `bg-background/60` +
- * `blur-md`, `bg-background/60` + `blur-md` with `dark:oklch(0.12 0.025 241 / 0.55)`, and
- * `bg-background/85` + `blur-xl` with `dark:oklch(0.13 0.02 241 / 0.88)`. Three fills of the same
- * colour at 60 %, 55 % and 88 %, two blurs, and the most opaque of the three was the row of small
- * boxes at the bottom — so the page's own header read as glass, glass, then a strip of black
- * plastic underneath it.
- *
- * They are one object stacked, so they get one material, and it is this one because it is the
- * variant already written down for a panel over a photo (see the docblock above). The tile row
- * takes {@link TILE_GLASS}, which is this recipe one grade more solid for a reason that only
- * applies at tile size.
+ * The `heavy` recipe as a bare class string, for surfaces that are not a `GlassCard`: the park
+ * page's stacked title card and „Heute im Park" panel take one material because they are one
+ * object.
  */
 export const HEAVY_GLASS = 'bg-background/62 backdrop-blur-xl dark:bg-[oklch(0.13_0.02_241_/_0.6)]';
 
 /**
- * The same glass one grade more solid, for the entry tiles.
- *
- * They cannot take {@link HEAVY_GLASS} unchanged, and the reason is size rather than taste. The
- * park backdrop is a `fixed` strip, so scrolling slides the header stack up across the picture,
- * and a 400 px panel packed with rules, numbers and captions carries enough structure of its own
- * to stay legible with the photo showing through at 62 %. A 200 px tile is an icon chip and two
- * lines of `text-xs`.
- *
- * The constraint is the tile's HINT, not its label. Measured on the tiles scrolled over the
- * bright half of the Phantasialand carousel — screenshotting each tile and averaging the pixels
- * in its left padding column, because `backdrop-filter` output exists only in the framebuffer and
- * cannot be read from the DOM — the composited glass came out at rgb(48,51,51) at 62 % and
- * rgb(38,47,45) at 75 %. The near-white label clears AA either way (12:1 and up). The hint is
- * `text-muted-foreground`, rgb(161,161,161) in the dark theme, and that one lands at 4.69:1 at
- * 62 % against 5.04:1 at 75 % — so 62 % puts the second line of every tile within a rounding
- * error of failing, on exactly the parks whose photo is brightest.
- *
- * 75 % is where that stops without going back to the strip of black plastic the row used to be:
- * the same hue, the same blur family, one step of fill instead of the `/85` + `oklch(…/0.88)`
- * this replaced. `backdrop-blur-2xl` rather than `xl` for the same reason, and without the cost
- * the `heavy` docblock describes — flattening the picture behind a 200 px box is fine, because
- * the picture is still there in the 12 px gaps between the tiles.
+ * The same glass one grade more solid, for the entry tiles. A small tile has too little structure
+ * of its own to stay legible over a bright photo at 62 %, and its muted hint fails AA there; 75 %
+ * and `backdrop-blur-2xl` fix that while the photo still shows in the gaps between tiles.
  */
 export const TILE_GLASS =
   'bg-background/75 backdrop-blur-2xl dark:bg-[oklch(0.13_0.02_241_/_0.75)]';
 
 /**
- * {@link TILE_GLASS}'s fill without its blur, for a panel that lays its own photograph behind
- * itself and blurs the image instead of the backdrop.
- *
- * The homepage compass does that: its arrows turn with every sensor frame, and a moving element
- * under a `backdrop-filter` is what made „Heute im Park" flicker, so the park's photo is blurred
- * once as an `<img>` and this fill goes over it. The tile's 75 % and not the heavy glass's 62 %
- * for the tile's reason: the list on that panel is small print, and over a bright park photo the
- * lighter fill took secondary text under AA.
+ * {@link TILE_GLASS}'s fill without its blur, for a panel that blurs its own photograph instead of
+ * the backdrop: the homepage compass, whose moving arrows would make a `backdrop-filter` flicker.
+ * 75 % for the tile's reason, since its list is small print.
  */
 export const PHOTO_GLASS_FILL = 'bg-background/75 dark:bg-[oklch(0.13_0.02_241_/_0.75)]';
 
 /**
- * The same panel where there is no photograph behind it.
- *
- * {@link TILE_GLASS} is a fill of `--background` over a park's backdrop picture, so what a visitor
- * reads as the panel's material is the blurred photo. Put that panel on a page with no backdrop
- * and the fill lands on `--background` itself: in the dark theme the composite comes out at
- * L 0.134 against the page's 0.145, an eleven-thousandth of a step and on the wrong side of it, so
- * the box sinks into the page instead of sitting on it and only the hairline border says it is
- * there at all. That is what the stats and best-days widgets looked like inside a blog post, next
- * to an attraction card that has a real `--card` fill and reads as an object.
- *
- * `--muted` is the token that separates from `--background` in BOTH themes (0.97 against white,
- * 0.269 against 0.145), which `--card` does not: in the light theme `--card` and `--background`
- * are the same white. No blur, because there is nothing behind it to blur.
+ * The same panel where there is no photograph behind it. {@link TILE_GLASS} over a plain page sinks
+ * into it in the dark theme, so this uses `--muted`, the token that separates from `--background`
+ * in both themes (`--card` is the same white in light). No blur, with nothing behind to blur.
  */
 export const PANEL_FLAT = 'bg-muted/30';
 
 /**
- * Glassmorphism card component with standardized glass effects
- * Used for headers and content cards with backdrop blur
- *
- * `heavy` is the hero's glass and the only variant that parts from the shared `--background`
- * tint: it stays lighter than the other variants in light mode and goes markedly DARKER in dark
- * mode, so a panel laid over the hero photo (the world map, the search dropdown) reads as one
- * pane of glass rather than a washed-out rectangle with the photo bleeding through its text.
- *
- * `tile` is {@link TILE_GLASS}, the same recipe one grade more solid. It is what the whole PARK
- * page is made of — title card, „Heute im Park", the entry tiles and every chapter band — while
- * `heavy` stayed the homepage hero's. The two photos are not the same problem: the hero picture is
- * chosen and cropped for the panel that sits on it, a park's backdrop is whatever picture that park
- * has, and at 62 % a bright one reads straight through the intro paragraph.
- *
- * It is deliberately NOT the biggest blur available. At 64 px over 75% fill the photo behind it
- * stopped being a photo — an even field of colour, with nothing left of the park behind the
- * panel. 24 px over 62% keeps shapes and light readable through the glass while the text on top
- * still measures far past AA (the hero copy clears 12:1 over the raw photo with no panel at all,
- * so the fill is not what is carrying legibility here). The radius is not a performance lever
- * either — 64 px, 24 px and 12 px all measured the same frame time.
+ * Glass card for headers and content cards over a photo. `heavy` is the homepage hero's glass,
+ * lighter in light mode and markedly darker in dark mode, so a panel over the hero photo reads as
+ * one pane. `tile` ({@link TILE_GLASS}) is the park page's, whose backdrop is whatever photo the
+ * park has. The blur is moderate on purpose: much more and the photo behind stops reading as one.
  */
 export function GlassCard({
   children,

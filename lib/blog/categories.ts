@@ -12,16 +12,9 @@ const LABELS_PATH = path.resolve(process.cwd(), 'content', 'blog', 'categories.j
 type CategoryLabels = Record<string, Partial<Record<Locale, string>>>;
 
 /**
- * Whether the labels and the tree below are kept for the life of the process.
- *
- * In production they are: `categories.json` ships with the deployment and nothing writes it at
- * runtime (the blog editor commits to the repo), and the tree is built from it and from the
- * generated manifest. React `cache()` alone re-read, re-parsed and rebuilt both on every request,
- * and the root layout asks on every page through the header's blog and news menus.
- *
- * In development they stay per request, so an edited `categories.json` shows on the next reload.
- * `./listing` can memoise per process in dev too because its source is a module that HMR
- * re-evaluates; a file read with `fs` has no such reset.
+ * Whether the labels and the tree are kept for the life of the process: yes in production, where
+ * nothing writes `categories.json` at runtime and the root layout asks on every page. Per request
+ * in development, so an edit shows on reload; a file read with `fs` gets no HMR reset.
  */
 const MEMOISE_PER_PROCESS = process.env.NODE_ENV === 'production';
 
@@ -41,6 +34,10 @@ function getLabels(): CategoryLabels {
   return (LABELS ??= readLabels());
 }
 
+/**
+ * Returns a blog category's label in the locale from `content/blog/categories.json`, falling back
+ * to English and then to the title-cased path segment.
+ */
 export function resolveCategoryLabel(
   fullPath: string,
   locale: Locale,
@@ -76,15 +73,9 @@ export function categoryPathBreadcrumbs(input: string | undefined | null): strin
 }
 
 /**
- * Build the blog's category tree from every visible ARTICLE.
- *
- * News is not a blog category any more: it has its own section at `/news`, and a "News" branch in
- * this tree put the one section a reader was not on into the sidebar, the header's category pills
- * and the category sitemap of the other. So the tree is built from `listArticles` and the news
- * category never enters it (see `docs/rules/news-is-set-apart-from-the-articles.md`).
- *
- * Kept per locale for the life of the process in production (see {@link MEMOISE_PER_PROCESS}),
- * so every caller shares one tree and must not mutate it; none does.
+ * Builds the blog's category tree from every visible article; news has its own section and never
+ * enters it (see docs/rules/news-is-set-apart-from-the-articles.md). Kept per locale in
+ * production, so callers share one tree and must not mutate it.
  */
 export function buildCategoryTree(locale: Locale): CategoryTree {
   if (!MEMOISE_PER_PROCESS) return buildTree(locale);
@@ -146,18 +137,15 @@ const buildTree = cache((locale: Locale): CategoryTree => {
     }
     const node = ensureNode(segments);
     node.directPostCount++;
-    // Walk up adding to totalPostCount of all ancestors plus self.
     for (let i = segments.length; i >= 1; i--) {
       const ancestorPath = segments.slice(0, i).join('/');
       const ancestor = flat.get(ancestorPath);
       if (ancestor) ancestor.totalPostCount++;
     }
-    // Attach top-level segments to root.
     const top = flat.get(segments[0]);
     if (top && !root.children.includes(top)) root.children.push(top);
   }
 
-  // Sort children alphabetically by label.
   const sortNode = (n: CategoryNode) => {
     n.children.sort((a, b) => a.label.localeCompare(b.label));
     n.children.forEach(sortNode);

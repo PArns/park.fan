@@ -8,7 +8,7 @@ import { addDays } from './park-time';
  * level above it, and it is pure: dates and levels in, dates and parks out, no clock and no
  * store, so `pnpm test:planner-assignment` runs it on fixtures.
  *
- * The rules are the PO's decision on PAR-9, and each one has a reason:
+ * The rules, each with its reason:
  *
  * - **A day is a slot for one park.** A day already in the plan (`fixed`, any park) is
  *   occupied, and is never moved.
@@ -25,6 +25,7 @@ import { addDays } from './park-time';
  *   what is left.
  */
 
+/** A day's crowd forecast for the assignment, or `closed`. */
 export type AssignCrowd = CrowdLevel | 'closed';
 
 /** Lower is quieter. `unknown` sits above `extreme` on purpose: see the file comment. */
@@ -50,8 +51,10 @@ const UNPLACED_PENALTY = 100;
  * with both.
  */
 export const MAX_ASSIGN_DAYS = 31;
+/** The most parks one search covers; see {@link MAX_ASSIGN_DAYS}. */
 export const MAX_ASSIGN_PARKS = 8;
 
+/** One park of the trip, with its forecast per date. */
 export interface AssignPark {
   slug: string;
   /** Parks that share it lie together. Compared as a string, so the caller passes one slug form. */
@@ -66,6 +69,7 @@ export interface AssignFixedDay {
   country: string;
 }
 
+/** What {@link assignParks} plans from. */
 export interface AssignInput {
   parks: readonly AssignPark[];
   /** The window, first and last day included. */
@@ -76,6 +80,7 @@ export interface AssignInput {
   travelDays: boolean;
 }
 
+/** One park placed on one date. */
 export interface AssignedDay {
   date: string;
   parkSlug: string;
@@ -84,6 +89,7 @@ export interface AssignedDay {
   second: boolean;
 }
 
+/** What {@link assignParks} answers. */
 export interface AssignResult {
   /** In date order. */
   days: AssignedDay[];
@@ -91,6 +97,10 @@ export interface AssignResult {
   unplaced: string[];
 }
 
+/**
+ * Sort rank of a crowd level for the trip assignment: `very_low` is 0, `unknown` ranks behind
+ * `extreme`, and `closed` is infinite.
+ */
 export function crowdRank(level: AssignCrowd): number {
   return level === 'closed' ? Number.POSITIVE_INFINITY : RANK[level];
 }
@@ -121,6 +131,10 @@ function popcount(mask: number): number {
   return n;
 }
 
+/**
+ * Gives each park of a trip the quietest free day in the window under the rules above, adds a
+ * second day beside busy ones, and lists the parks that got none.
+ */
 export function assignParks(input: AssignInput): AssignResult {
   const dates = windowDates(input.from, input.to);
   const parks = input.parks.slice(0, MAX_ASSIGN_PARKS);

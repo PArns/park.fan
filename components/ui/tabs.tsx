@@ -1,5 +1,9 @@
 'use client';
 
+/**
+ * Tabs primitives (shadcn/ui on Radix Tabs): root, the pill-shaped tab list, triggers and content
+ * panels.
+ */
 import * as React from 'react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 

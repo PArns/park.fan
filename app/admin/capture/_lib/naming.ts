@@ -11,16 +11,9 @@ import { parkDayOf } from '@/lib/utils/park-day';
  */
 
 /**
- * A free file name for a ride's next photograph.
- *
- * The first one is simply the ride's slug, which is what a hand-authored file
- * would have been called. Anything after that needs a suffix, and it has to be
- * checked against what is really in the collection: `commit` writes by path
- * without asking, so a second `troy.jpg` silently replaces the first.
- *
- * `taken` holds the names already in `public/media/<park>/` plus everything this
- * session has committed or queued — a queue drained an hour later must not collide
- * with a photo taken since.
+ * A free file name for a ride's next photo: the ride's slug, then a suffix checked against
+ * `taken` (the collection plus everything committed or queued this session), because `commit`
+ * silently replaces a file at the same path.
  */
 export function freeName(rideSlug: string | null, taken: ReadonlySet<string>): string {
   const base = rideSlug ? toSlug(rideSlug) : 'park';
@@ -35,16 +28,9 @@ export function freeName(rideSlug: string | null, taken: ReadonlySet<string>): s
 }
 
 /**
- * The tags a phone may set without guessing.
- *
- * `photo` and the subject are facts about what is being uploaded: a photograph
- * handed to a ride row shows a `ride`, one handed to the park row shows the
- * `park`, and both tags are in the vocabulary's `subject` facet. The time of day
- * is read off the park's own clock, and only in the two windows where it cannot
- * be wrong — nine to five is daylight in every month this catalogue covers, ten
- * at night is not. Everything between them is `dusk`, `dawn` or `blue-hour`,
- * which are judgements about the light rather than the hour, and they belong to
- * the review pass along with the weather and what is actually in frame.
+ * The tags a phone may set without guessing: `photo`, the subject, and the time of day only in
+ * the windows of the park's clock where it cannot be wrong. Dusk, dawn and blue hour are
+ * judgements about the light, left to the review pass.
  */
 export function fieldTags(
   parkTimezone: string | null,

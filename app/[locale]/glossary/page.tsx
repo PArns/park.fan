@@ -84,13 +84,11 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
   const enTerms = locale !== 'en' ? await getGlossaryTerms('en') : terms;
   const enNameMap = new Map(enTerms.map((t) => [t.id, t.name]));
 
-  // Group by category, sort alphabetically within each group
   const grouped = new Map<GlossaryCategory, GlossaryTermListItem[]>();
   for (const term of terms) {
     // Named fields, not `...term`: everything handed to a Client Component is serialized into
-    // this page's RSC payload and its HTML, ×6 locales, and the spread carried `definition`,
-    // `relatedTermIds`, `aliases`, `alternateNames` and a six-locale `slugs` record for all 274
-    // terms — none of which the client reads. See `GlossaryTermListItem`.
+    // the RSC payload and the HTML, and the client reads none of the other fields. See
+    // `GlossaryTermListItem`.
     const withEnName: GlossaryTermListItem = {
       id: term.id,
       name: term.name,
@@ -115,10 +113,9 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
     );
   }
 
-  // Build ordered array for the client component (with translated category labels).
-  // The order comes from `lib/glossary/categories.ts` because the header's "more" panel lists the
-  // same categories, and a menu entry for a category this page does not draw is a link to an
-  // anchor that is not in the document.
+  // The categories come from `lib/glossary/categories.ts` because the header's "more" panel lists
+  // the same ones, and a menu entry for a category this page does not draw links to an anchor
+  // that is not in the document.
   const groupedTerms = GLOSSARY_CATEGORY_ORDER.flatMap((category) => {
     const categoryTerms = grouped.get(category);
     if (!categoryTerms || categoryTerms.length === 0) return [];
@@ -129,9 +126,9 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
     <RouteMessages route="/glossary">
       <>
         <GlossaryBackground headTint />
-        {/* A tool page: the compact head (docs/product/landing-pages.md §1), rendered here rather
-            than in the client list so it reaches the browser as HTML and costs the client bundle
-            nothing. No action button: the search right under it is the page's one control (§4). */}
+        {/* A tool page: the compact head, rendered here rather than in the client list so it
+            arrives as HTML. No action button: the search under it is the page's one control
+            (docs/product/landing-pages.md §1, §4). */}
         <LandingHero
           variant="compact"
           kicker={tLanding('kicker')}

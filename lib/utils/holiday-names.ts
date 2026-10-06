@@ -1,42 +1,15 @@
 import type { Locale } from '@/i18n/config';
 
 /**
- * Localized holiday names.
+ * Localized holiday names. The API answers in English only, and its `localName` would be the
+ * holiday's own language („Koningsdag"), not the reader's („Königstag"), so the translation lives
+ * here.
  *
- * The API answers in English and only in English. `Holiday.localName` exists in its schema and
- * never reaches this app; the school-holiday importer picks `name.find(n => n.language === 'EN')`
- * out of the OpenHolidays name array and throws the other five away. So a German reader looking
- * at Phantasialand on a German page was told the park was in "Summer Holidays" — the one string
- * in that whole header that had not been translated.
- *
- * `localName` would not fix it either, and that is the reason this table is here rather than a
- * passthrough: it is the name in the HOLIDAY'S language, not the reader's. It answers "Koningsdag"
- * to a German reading about Efteling, when what that reader needs is "Königstag". A holiday name
- * has to be translated into the language of the person reading it, and only this side knows which
- * that is.
- *
- * Two vocabularies, handled differently because they behave differently:
- *
- * **School breaks are seasonal and compositional.** Across DE/AT/CH/BE/NL/FR/IT/ES/PL/LU the
- * OpenHolidays feed yields about seventy distinct English strings, and nearly all of them are one
- * of a dozen seasons wearing a different suffix and a different capitalisation — `Summer
- * Holidays`, `Summer holidays`, `summer holidays`, `Easter break`, `Christmas Break`. So the
- * lookup normalises (lowercase, collapse whitespace, drop a trailing holiday/holidays/break/
- * vacation/vacations) and matches what is left against {@link SEASONS}. Twelve keys cover the
- * seventy strings, and the next spelling variant the feed invents costs nothing.
- *
- * The composed form is written out per locale rather than assembled at runtime from a season word
- * and a word for "holidays". Both halves inflect — German glues ("Sommerferien"), Dutch glues but
- * changes the noun ("zomervakantie"), French takes an elided preposition before a vowel
- * ("vacances d'été") and a plain one otherwise ("vacances de printemps), Italian turns the season
- * into an adjective that agrees ("vacanze estive"). A template would get four of the six wrong.
- *
- * **Public holidays are names and are not compositional**, so they are a literal table — of the
- * ~172 distinct names Nager.Date returns for the 23 countries in the catalogue, this covers the
- * ones that recur across Europe plus each country's own national day. Everything else falls
- * through to {@link translateHolidayName}'s passthrough, which returns the API's English string
- * unchanged: an untranslated "Gold Cup Parade Day" is a worse chip than a translated one and a far
- * better chip than an empty one.
+ * School breaks are seasonal: the feed's many spellings („Summer Holidays", „summer break") are
+ * normalized and matched against {@link SEASONS}, written out per locale because both halves
+ * inflect differently in each language. Public holidays are a literal table of the names that
+ * recur across Europe plus each national day; anything else passes through in English, which
+ * beats an empty chip.
  *
  * Locale order in every tuple is fixed: **de, en, nl, fr, es, it**.
  */
@@ -623,11 +596,8 @@ function normalize(name: string): string {
 const TRAILING = /\s+(holidays?|breaks?|vacations?|recess)$/;
 
 /**
- * The API's English holiday name in the reader's language, or the name unchanged when it is not
- * in either table.
- *
- * Never returns an empty string, and never throws on an unknown name — a holiday nobody has
- * translated is still a fact about the day, and the chip that carries it stays useful in English.
+ * The API's English holiday name in the reader's language, or the name unchanged when it is not in
+ * either table: an untranslated holiday is still a fact about the day.
  */
 export function translateHolidayName(
   name: string | null | undefined,
@@ -640,8 +610,8 @@ export function translateHolidayName(
   const exact = PUBLIC_HOLIDAYS[key];
   if (exact) return exact[index];
 
-  // School breaks: try the whole string first (`february week`, `week in may`), then the stem
-  // left after the trailing holiday word (`summer holidays` → `summer`).
+  // School breaks: the whole string first (`february week`), then the stem left after the trailing
+  // holiday word (`summer holidays` → `summer`).
   const season = SEASONS[key] ?? SEASONS[key.replace(TRAILING, '')];
   if (season) return season[index];
 
@@ -649,10 +619,8 @@ export function translateHolidayName(
 }
 
 /**
- * What a holiday chip should say when the feed gives a flag but no name — `isSchoolVacation`
- * without a `holidayName`, which is most non-German parks. Callers pass their own translated
- * fallback; this exists so the "school holidays" wording is the same string whether it arrived
- * as a name or as a boolean.
+ * The generic „school holidays" name, for a chip whose feed gives `isSchoolVacation` without a
+ * `holidayName`, so the wording matches a break that arrived with a name.
  */
 export function genericSchoolHolidayName(locale: Locale | string): string {
   return SEASONS.school[LOCALE_INDEX[locale as Locale] ?? LOCALE_INDEX.en];

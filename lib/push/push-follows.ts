@@ -61,8 +61,7 @@ export interface ShowFollowRemote {
 /**
  * No push identity at all. `cause` is what separates "blocked in your browser"
  * (a setting only the visitor can change) from "this browser cannot" from "our
- * end is down" — three different sentences, and the reason a single "please try
- * again" was wrong in front of all of them.
+ * end is down": three different sentences.
  */
 type PushUnavailableError = { reason: 'unavailable'; cause: PushUnavailableCause };
 
@@ -115,9 +114,8 @@ async function postFollowShow(
 }
 
 /**
- * `startTime` is the performance the visitor picked, as a full ISO instant —
- * omitted for the open-ended follow a show card's bell files, which is "tell
- * me before whichever performance is next".
+ * Follows a show for this browser, registering push only when there is no subscription yet.
+ * `startTime` is the chosen performance as an ISO instant, omitted for "whichever is next".
  */
 export async function followShow(
   showId: string,
@@ -129,43 +127,19 @@ export async function followShow(
   }
   const result = await postFollowShow(registration.identity, showId, startTime);
   if (result.ok || result.error.reason !== 'not-found') return result;
-  // The browser already had a live PushManager subscription, so
-  // `identityForWrite` never called `ensurePushRegistered` and never gave the
-  // API a chance to re-upsert its row — a 404 here most likely means the
-  // backend's own copy of it is gone (pruned, or never finished writing),
-  // not that this particular show doesn't exist. Re-sync once and retry
-  // before surfacing an error that looks permanent but usually isn't.
+  // The browser had a live subscription, so the API never got to re-upsert its row: a 404 most
+  // likely means the backend's copy is gone, not the show. Re-sync once and retry.
   const resynced = await ensurePushRegistered();
   if (!resynced.ok) return result;
   return postFollowShow(resynced.identity, showId, startTime);
 }
 
 /**
- * The DELETE both removals send, and the one place that decides what counts as
- * gone.
- *
- * **404 is a success.** The row this call names is one the visitor asked to be
- * rid of, and a server that no longer has it has given them exactly that —
- * pruning after repeated delivery failures, or a second tab that got there
- * first. Reporting "das hat nicht geklappt" over a row that is provably not
- * there would leave it on screen for ever, since every retry answers 404 too.
- * The write path reads the same status the other way round (`setRideAlert`
- * re-syncs and retries, because there a 404 means this browser's subscription
- * is missing and the write really did not happen) — the asymmetry is the point,
- * not an oversight.
- *
- * Checked against the API rather than assumed, because "the row is gone" and
- * "the ride you named is gone" would be very different answers: neither DELETE
- * handler validates the entity id at all, both are documented idempotent and
- * answer 204 for a row that was not there
- * (`ride-alerts.controller.ts`/`show-follows.controller.ts`), so the ONE 404
- * this path can produce is `subscriptionOrThrow` — this browser has no stored
- * subscription — and a subscription that does not exist cannot be holding an
- * alert. That matters for a retired ride, whose alert `AlertsOverview`
- * deliberately still lists.
- *
- * Everything else goes through `classifyWriteFailure` like a write, so a caller has
- * the same classes to render either way.
+ * The DELETE both removals send. A 404 is a success: neither API handler validates the entity id
+ * (both answer 204 for a missing row), so its one 404 means this browser has no stored
+ * subscription, which cannot be holding an alert, and a failure there would leave the row on
+ * screen for ever. The write path reads 404 the other way, because there the write did not
+ * happen.
  */
 async function deletePushFollow(url: string, body: unknown): Promise<PushWriteResult<void>> {
   try {
@@ -184,20 +158,9 @@ async function deletePushFollow(url: string, body: unknown): Promise<PushWriteRe
 }
 
 /**
- * Stop reminding for a show — server first, mirror second.
- *
- * It used to be the other way round, optimistically like `FavoriteStar`'s
- * toggle, and returned `Promise<void>` without ever reading `response.ok`. A
- * 500 then took the row off the screen and left the reminder armed: it came
- * back at the next open with nothing having said so, and the favorites band's
- * whole alerts group — gated on the mirror — vanished in the same commit as the
- * click, taking its own spinner and any error it might have shown with it. A
- * star nobody else can see is a fair thing to move optimistically; a
- * notification that will arrive on a phone is not.
- *
- * A browser with no push identity at all has nothing the server could be
- * holding for it, so clearing the stale mirror entry IS the removal, and it
- * succeeds.
+ * Stops reminding for a show: server first, mirror second, because a notification that will
+ * arrive on a phone must not leave the screen while it is still armed. A browser with no push
+ * identity has nothing the server could hold, so clearing the mirror is the removal.
  */
 export async function unfollowShow(showId: string): Promise<PushWriteResult<void>> {
   const lookup = await lookupExistingPushIdentity();
@@ -252,6 +215,7 @@ async function postRideAlert(
   }
 }
 
+/** Sets or changes a ride's wait-time alert for this browser and returns the server's row. */
 export function setRideAlert(
   attractionId: string,
   thresholdMinutes: number
@@ -277,10 +241,8 @@ async function writeRideAlert(
   }
   const result = await postRideAlert(registration.identity, attractionId, what);
   if (result.ok || result.error.reason !== 'not-found') return result;
-  // Same reasoning as `followShow` — a 404 here most likely means the
-  // backend's copy of this browser's subscription is gone, not that the
-  // ride itself is (it came from this park's own attraction list). Re-sync
-  // the subscription once and retry before giving up.
+  // As in `followShow`: a 404 most likely means the backend lost this browser's subscription,
+  // not the ride. Re-sync once and retry.
   const resynced = await ensurePushRegistered();
   if (!resynced.ok) return result;
   return postRideAlert(resynced.identity, attractionId, what);
@@ -303,20 +265,10 @@ export async function removeRideAlert(attractionId: string): Promise<PushWriteRe
 }
 
 /**
- * The server's list, for the dialog and the overview page to reconcile
- * against. `{ ok: true, items: [] }` is a real "this browser has none" (no
- * identity yet, or the API's own 404 for "no subscription") — `{ ok: false
- * }` is "we don't know", which a caller must not render as the same empty
- * state: a visitor with five real alerts must not see "nothing set up yet"
- * because a fetch hiccupped.
- *
- * That is also why the lookup is `lookupExistingPushIdentity` and not
- * `getExistingPushIdentity`, for the same reason the removals read it: the
- * latter answers `null` for a `getRegistration()` that THREW as well
- * (storage access refused, a partitioned context), and folding that into
- * "this browser has none" puts the empty state — the one sentence this
- * result type exists to keep off the screen — in front of somebody whose
- * alerts are all still armed.
+ * The server's list of this browser's ride alerts. `{ ok: true, items: [] }` is a real "none";
+ * `{ ok: false }` is "we don't know", which a caller must not render as the empty state. Hence
+ * `lookupExistingPushIdentity`, which unlike `getExistingPushIdentity` does not answer `null` for
+ * a lookup that threw.
  */
 export async function fetchRideAlertsRemote(): Promise<PushListResult<RideAlertRemote>> {
   const lookup = await lookupExistingPushIdentity();

@@ -1,15 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 
-// Define the structure for parsed SVG paths
+/** One `<path>` from `public/world.svg`. */
 interface StartPath {
   id: string | null; // ISO Code
   name: string | null; // Country Name
-  cssClass: string | null; // Class (often Country Name)
+  cssClass: string | null; // often the country name
   d: string; // Path data
 }
 
-// Bounding Box Interface
 interface BBox {
   minX: number;
   minY: number;
@@ -21,9 +20,7 @@ interface BBox {
 
 let cachedPaths: StartPath[] | null = null;
 
-/**
- * Loads and parses the world.svg file to extract path data.
- */
+/** Loads and parses `public/world.svg` once per process. */
 function getStartPaths(): StartPath[] {
   if (cachedPaths) return cachedPaths;
 
@@ -33,7 +30,6 @@ function getStartPaths(): StartPath[] {
 
     const paths: StartPath[] = [];
 
-    // Regex to match <path ... >
     const pathRegex = /<path\s+([^>]+)>/g;
     let match;
 
@@ -64,9 +60,8 @@ function getStartPaths(): StartPath[] {
 }
 
 /**
- * Calculates the bounding box of an SVG path string.
- * Handles absolute/relative Move (M/m), Line (L/l), Horizontal (H/h), Vertical (V/v), and closing (Z/z).
- * Assumes simple paths (no curves) as verified in world.svg.
+ * Bounding box of an SVG path string, for the absolute and relative M, L, H, V and Z commands
+ * only: world.svg has no curves.
  */
 function calculatePathBBox(d: string): BBox {
   let minX = Infinity;
@@ -77,34 +72,28 @@ function calculatePathBBox(d: string): BBox {
   let currentX = 0;
   let currentY = 0;
 
-  // Tokenize: match commands or numbers
   const tokens = d.match(/([MmLlHhVvZz])|([-+]?\d*\.?\d+(?:[eE][-+]?\d+)?)/g);
 
   if (!tokens || tokens.length === 0) {
     return { minX: 0, minY: 0, maxX: 100, maxY: 100, width: 100, height: 100 };
   }
 
-  let currentCmd = 'M'; // Default start, though path usually starts with M
+  let currentCmd = 'M';
   let i = 0;
 
   while (i < tokens.length) {
     const token = tokens[i];
 
-    // Check if token is a command
     if (/^[MmLlHhVvZz]$/.test(token)) {
       currentCmd = token;
       i++;
 
-      // Z command doesn't take arguments
       if (currentCmd === 'Z' || currentCmd === 'z') {
         continue;
       }
     }
 
-    // Process arguments based on currentCmd (or implicit repetition)
-    // Note: 'M' implies subsequent 'L', 'm' implies subsequent 'l' according to spec
-
-    // Helper to safely get next number
+    // Per the SVG spec, extra coordinate pairs after `M` are `L` (and after `m`, `l`).
     const nextNum = () => {
       const val = parseFloat(tokens[i]);
       i++;
@@ -112,8 +101,8 @@ function calculatePathBBox(d: string): BBox {
     };
 
     let targetCmd = currentCmd;
-    if (currentCmd === 'M' && i > 1 && !/^[MmLlHhVvZz]$/.test(tokens[i - 1])) targetCmd = 'L'; // Subsequent M args are L
-    if (currentCmd === 'm' && i > 1 && !/^[MmLlHhVvZz]$/.test(tokens[i - 1])) targetCmd = 'l'; // Subsequent m args are l
+    if (currentCmd === 'M' && i > 1 && !/^[MmLlHhVvZz]$/.test(tokens[i - 1])) targetCmd = 'L';
+    if (currentCmd === 'm' && i > 1 && !/^[MmLlHhVvZz]$/.test(tokens[i - 1])) targetCmd = 'l';
 
     switch (targetCmd) {
       case 'M': // Absolute Move x y
@@ -157,19 +146,16 @@ function calculatePathBBox(d: string): BBox {
         break;
 
       default:
-        // Skip unknown or Z
         i++;
         break;
     }
 
-    // Update BBox with current absolute position
     if (currentX < minX) minX = currentX;
     if (currentX > maxX) maxX = currentX;
     if (currentY < minY) minY = currentY;
     if (currentY > maxY) maxY = currentY;
   }
 
-  // Handle case with no valid points found
   if (minX === Infinity) {
     return { minX: 0, minY: 0, maxX: 100, maxY: 100, width: 100, height: 100 };
   }
@@ -185,12 +171,12 @@ function calculatePathBBox(d: string): BBox {
 }
 
 /**
- * Returns the SVG ViewBox and Paths for a given identifier list (ISO codes or Country Names).
+ * The viewBox and paths for a set of countries, matched by ISO code, name or class, for the OG
+ * image's map.
  */
 export function getRegionGeoSVG(identifiers: string[]) {
   const allPaths = getStartPaths();
 
-  // Clean identifiers for loose matching (optional, but good for names involving spaces)
   const targets = identifiers.map((i) => i.toLowerCase());
 
   const selectedPaths = allPaths.filter((p) => {
@@ -203,34 +189,29 @@ export function getRegionGeoSVG(identifiers: string[]) {
 
   if (selectedPaths.length === 0) return null;
 
-  // Calculate BBoxes for all candidate paths
   const pathStats = selectedPaths.map((p) => {
     const bbox = calculatePathBBox(p.d);
     const area = bbox.width * bbox.height;
-    // Diagonal can be a better metric for line-like shapes, but area is okay for countries
     return { p, bbox, area };
   });
 
-  // Find the largest path to use as a reference baseline
   const maxArea = Math.max(...pathStats.map((s) => s.area));
 
-  // Filter out paths that are "noise" (e.g. tiny islands far away, like Svalbard/Canaries vs Mainland)
-  // Threshold: Keep paths that are at least 5% of the largest path
+  // Drop far-off specks (Svalbard, the Canaries) under 5 % of the largest shape, or they stretch
+  // the viewBox around empty sea.
   const interestingPaths =
     pathStats.length > 1 ? pathStats.filter((s) => s.area > maxArea * 0.05) : pathStats;
 
-  // 4. Determine viewBox based on remaining paths
   let minX = Infinity,
     minY = Infinity,
     maxX = -Infinity,
     maxY = -Infinity;
 
-  // Use filtered paths for bounding box unless empty, then fallback to original
   const pathsToMeasure =
     interestingPaths.length > 0 ? interestingPaths.map((s) => s.p) : selectedPaths;
 
   pathsToMeasure.forEach((p) => {
-    const bounds = calculatePathBBox(p.d); // Assuming getPathBounds is calculatePathBBox
+    const bounds = calculatePathBBox(p.d);
     if (bounds) {
       minX = Math.min(minX, bounds.minX);
       minY = Math.min(minY, bounds.minY);
@@ -239,7 +220,7 @@ export function getRegionGeoSVG(identifiers: string[]) {
     }
   });
 
-  // If no valid bounds found (should rare), fallback to world bounds
+  // Nothing measurable: fall back to the whole world.
   if (minX === Infinity) {
     minX = 0;
     minY = 0;
@@ -247,7 +228,6 @@ export function getRegionGeoSVG(identifiers: string[]) {
     maxY = 665.96301;
   }
 
-  // Add padding (5%)
   const paddingX = (maxX - minX) * 0.05;
   const paddingY = (maxY - minY) * 0.05;
   minX -= paddingX;
@@ -258,12 +238,8 @@ export function getRegionGeoSVG(identifiers: string[]) {
   const width = maxX - minX;
   const height = maxY - minY;
 
-  // We REMOVED the Aspect Ratio enforcement here.
-  // We want the tightest BBox possible.
-  // The 'preserveAspectRatio' on the SVG element in the consumer (route.tsx) will handle positioning (e.g. aligning right).
-
-  // We aligned strict padding above (lines 247-252).
-  // So minX, minY, width, height now essentially represent the padded SVG area.
+  // No aspect-ratio enforcement: the tightest box, positioned by the consumer's
+  // `preserveAspectRatio`.
   const viewBox = `${minX} ${minY} ${width} ${height}`;
 
   return {

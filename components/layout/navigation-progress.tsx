@@ -5,14 +5,10 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { onHistoryNavigation } from '@/lib/navigation/history-navigation';
 
 /**
- * Thin top-of-viewport progress bar shown during client-side navigations — so a click feels
- * acknowledged instantly (the way GitHub/YouTube do it), even while the next route is still
- * being fetched/streamed.
- *
- * No dependency: it's driven by CSS transform/opacity transitions. It starts on a same-origin link
- * click or a `history.pushState`/`replaceState` (router navigation), trickles toward ~90 %, runs
- * to 100 % and then fades when the new route's `pathname`/`searchParams` land. A safety timeout
- * finishes it if a navigation never resolves to a route change.
+ * Thin top-of-viewport progress bar for client-side navigations, so a click feels acknowledged
+ * while the next route streams. It starts on a same-origin link click or a history push/replace,
+ * trickles toward 90 % and finishes when the route's `pathname`/`searchParams` land; a safety
+ * timeout ends it if no route change comes.
  */
 export function NavigationProgress() {
   const pathname = usePathname();
@@ -58,12 +54,9 @@ export function NavigationProgress() {
     if (active.current) return;
     active.current = true;
     if (fadeOut.current) clearTimeout(fadeOut.current);
-    // `history.pushState` is patched below, so `start` can fire from inside
-    // React's insertion-effect phase (e.g. a `router.replace` during render /
-    // on mount), where scheduling a state update synchronously throws
-    // "useInsertionEffect must not schedule updates". Defer the visual updates
-    // one microtask so they run just outside that phase. The `active` guard and
-    // timers above stay synchronous so de-duping and timing are unaffected.
+    // `history.pushState` is patched, so `start` can fire inside React's insertion-effect phase,
+    // where a synchronous state update throws. The visual updates wait one microtask; the `active`
+    // guard and the timers stay synchronous.
     queueMicrotask(() => {
       setFading(false);
       setProgress(8);
@@ -116,17 +109,10 @@ export function NavigationProgress() {
       }
     });
 
-    // BUBBLE, not capture. The `e.defaultPrevented` guard above is the whole
-    // point of this listener's politeness, and in the capture phase it can
-    // never be true: document-level capture runs BEFORE the component whose
-    // handler does the preventing. Every control that sits inside a link and
-    // handles its own click — the wait-time alert bell, the show bell, the
-    // favourite star — therefore started a navigation that never happened,
-    // and the bar then crept to 90 % and hung there until the 10 s safety
-    // timeout. Nothing is lost by waiting for the bubble: a handler that
-    // stops propagation on its way up is by definition one that is not
-    // navigating, and a programmatic `router.push` is caught by the
-    // pushState patch above rather than here.
+    // Bubble, not capture: the `e.defaultPrevented` guard is only ever true after the component
+    // that prevents it has run, so in the capture phase a bell or star inside a link would start a
+    // bar that hangs at 90 %. A handler that stops propagation is not navigating, and
+    // `router.push` is caught by the pushState patch.
     document.addEventListener('click', onClick);
     return () => {
       unsubscribe();

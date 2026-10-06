@@ -11,18 +11,12 @@ import { cn } from '@/lib/utils';
 const subscribeNever = () => () => {};
 
 /**
- * The homepage's standing control for location, under the nearby chapter's lead ("Share your
- * location and park.fan shows you the parks around you").
- *
- * The banner is the ask that comes by itself, and after a no it stays away for 30 days. This row
- * does not come by itself, it is simply there, so a no can be taken back on the page where
- * location matters most: the button while nothing is decided, the state once location is on, and
- * after a block the steps to lift it (`LocationBlockedHelp`). It declares the page's need for
- * location like the banner does (`useLocationNeeded`), so either one mounting first is enough.
- *
- * Layout: server-rendered at one fixed height (44 px, the phone target) and every state fills
- * exactly that row, invisible until the permission check has run, the same contract as the park
- * page's location line. So the first paint and the settled page agree whatever the answer is.
+ * The homepage's standing control for location, under the nearby chapter's lead. The banner asks
+ * by itself and stays away for 30 days after a no; this row is simply there, so a no can be taken
+ * back: the button while nothing is decided, the state once location is on, and after a block the
+ * steps to lift it (`LocationBlockedHelp`). It declares the page's need for location like the
+ * banner (`useLocationNeeded`). Server-rendered at one fixed 44 px height that every state fills,
+ * so first paint and the settled page agree.
  */
 export function HomeLocationRow({ className }: { className?: string }) {
   const t = useTranslations('nearby');

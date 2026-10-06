@@ -12,33 +12,12 @@ import {
 /**
  * Teach every ride card on the page what it is, for the length of a drag.
  *
- * ONE listener on the document rather than a handler per card, and that is the
- * whole reason this works. `AttractionCard` is a Server Component rendered in
- * eight places; `onDragStart` is a client prop, so putting the source on the
- * card would mean either a client boundary around every ride grid in the app or
- * a wrapper element between the card and its parent grid — and the card lays out
- * with `row-span-3` + `grid-template-rows: subgrid`, so a wrapper breaks the
- * subgrid chain and slices the title and the wait time off (the trap
- * `design-system.md` records for the blog spotlight cards).
- *
- * A `dragstart` bubbles to the document, and the DataTransfer is still writable
- * while it does, so the panel can add its own payload to a drag the browser
- * started for a link it knows nothing about. Capture phase, so nothing further
- * down can stop the event before the payload is attached.
- *
- * Two things are written:
- *
- * - {@link PLANNER_RIDE_MIME}, carrying the park, the slug and the NAME. The
- *   name is the point: without it the drop had to find the ride in the
- *   `/plan/day` payload, which answers 404 until the backend ships, so every
- *   drop was a silent no.
- * - `text/uri-list` and `text/plain`, overwritten with the ride's own URL. The
- *   browser fills these in itself, but from whatever was grabbed — drag a card
- *   by its photo and it is the image file, which is why grabbing the picture
- *   (the obvious place to grab a card) never worked.
- *
- * Enabled only while the panel is open, because that is the only time there is
- * anywhere to drop.
+ * One capture-phase listener on the document rather than a handler per card: `AttractionCard` is a
+ * Server Component, and a client wrapper around it would break its `subgrid` layout. `dragstart`
+ * bubbles while the DataTransfer is still writable, so this adds {@link PLANNER_RIDE_MIME} (park,
+ * slug and name) and overwrites `text/uri-list` and `text/plain` with the ride's URL, which the
+ * browser would otherwise take from whatever was grabbed, such as the photo. Only while the panel
+ * is open, the only time there is anywhere to drop.
  */
 export function useRideDragSource(enabled: boolean): void {
   useEffect(() => {
@@ -61,33 +40,21 @@ export function useRideDragSource(enabled: boolean): void {
 
       try {
         dt.setData(PLANNER_RIDE_MIME, serializeRideDrag(payload));
-        // `anchor.href` rather than the attribute: absolute, so a drop outside
-        // this app gets a URL that resolves.
+        // `anchor.href`, absolute, so a drop outside this app gets a URL that resolves.
         dt.setData('text/uri-list', anchor.href);
         dt.setData('text/plain', anchor.href);
-        // `copy`, the same as `startRideDrag` sets for the panel's own ride
-        // list — and the same as every drop target here answers with. It was
-        // `copyLink`, which is a superset the browser is entitled to render
-        // with a link cursor, so the identical gesture looked like two
-        // different gestures depending on which ride was grabbed. The
-        // `text/uri-list` above still travels; a link drop outside this app
-        // does not need `link` to be in `effectAllowed` to work.
+        // `copy`, as `startRideDrag` and every drop target here answer; `copyLink` let the browser
+        // show a link cursor, so one gesture looked like two.
         dt.effectAllowed = 'copy';
       } catch {
-        // A store in protected mode — the drag was not started by this gesture.
-        // Nothing to add, and nothing is broken: the fallback path reads the
-        // URL the browser put there.
+        // A store in protected mode: nothing to add, and the fallback reads the browser's URL.
       }
 
-      // What the panel's `dragover` reads, because the payload above is
-      // unreadable until the drop — see `activeRideDrag`. Outside the `try`
-      // for the same reason it is in `startRideDrag`: a protected store costs
-      // the payload, and the preview should not pay for that too.
+      // What the panel's `dragover` reads, since the payload is unreadable until the drop. Outside
+      // the `try`, as in `startRideDrag`.
       rememberRideDrag(payload);
 
-      // The same chip the panel's own list hands over. Without it the browser
-      // snapshots the whole card — 405 × 404 px of photograph and panels — and
-      // the two ways into a plan look like two different features.
+      // The same chip the panel's own list hands over, rather than a snapshot of the whole card.
       setRideDragImage(dt, payload.attractionName, { element: anchor });
     };
 

@@ -6,18 +6,9 @@ import { Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * "This is the ride's photo" — one switch, with the photo it replaces in view.
- *
- * It used to be a chip reading `ride-card` among the other roles, and ticking it
- * added the role without taking it from the photo that already had it. The
- * save now moves the role (`@/lib/admin/media-unique-roles`), so the switch has
- * to say what it will move it away from: the current card, by name and as a
- * thumbnail, so the decision is made with both pictures on screen.
- *
- * The current card is read from the build-time manifest through
- * `/api/admin/media` — what `main` shows on the ride page today. A card chosen
- * earlier in the open media session is not in it yet; the save finds that one
- * on the branch all the same.
+ * The save moves `ride-card` away from the photo that holds it (`@/lib/admin/media-unique-roles`),
+ * so the switch shows that photo, read from the build-time manifest. A card chosen earlier in the
+ * open session is not in it, and the save finds that one on the branch.
  */
 
 interface Card {
@@ -53,6 +44,7 @@ function currentCards(park: string, ride: string): Promise<Card[]> {
   return pending;
 }
 
+/** The "this is the ride's photo" switch, with the photo it would take the role from in view. */
 export function RideCardToggle({
   park,
   ride,

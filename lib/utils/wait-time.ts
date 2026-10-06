@@ -1,9 +1,7 @@
 /**
- * Disney's walk-on: the one posted wait that is not on the five-minute grid, and stays off it.
- *
- * Disney posts 13 minutes for a ride you can walk straight onto. It is the park's own signal,
- * not a queue length, and rounding it to 15 turns "walk on" into an ordinary short queue. The
- * API keeps it the same way (`WALK_ON_WAIT_MINUTES` in `src/common/utils/wait-time.utils.ts`).
+ * Disney's walk-on: 13 minutes, the one posted wait that stays off the five-minute grid. It is the
+ * park's signal for „walk straight on", and rounding it to 15 makes it an ordinary short queue.
+ * The API keeps it the same way (`WALK_ON_WAIT_MINUTES` in `src/common/utils/wait-time.utils.ts`).
  */
 export const WALK_ON_WAIT_MINUTES = 13;
 
@@ -13,24 +11,13 @@ function snapWaitTo5(n: number): number {
 }
 
 /**
- * Wait times are displayed in five-minute steps, always — except Disney's 13, see
- * {@link WALK_ON_WAIT_MINUTES}, which is returned as it is.
+ * Rounds a wait time for display to five-minute steps, except Disney's 13
+ * ({@link WALK_ON_WAIT_MINUTES}). Parks post multiples of five; percentiles and averages on top
+ * are what produce 51 or 47. The API rounds the same way (`roundToNearest5Minutes`), and this
+ * repeats it so a surface is right whatever build or payload answers.
  *
- * Parks post them that way, so every raw observation in the database is already
- * a multiple of five (or that 13). What breaks it is the maths on top: a percentile
- * interpolates between two stored values and an average across days blurs the
- * rest, which is how the park's hourly table came to print 51, 53 and 47 —
- * readings no park has ever put on a sign.
- *
- * The API rounds these on the way out (`roundToNearest5Minutes` in
- * `src/common/utils/wait-time.utils.ts`, same formula). This is the same rule on
- * the rendering side, so a surface is correct regardless of which API build is
- * answering and regardless of what a third-party payload contains. Rounding an
- * already-rounded value is a no-op, so applying both costs nothing.
- *
- * Round only what is DISPLAYED. Anything that feeds a comparison — a crowd
- * ratio, a ranking, the pick of a ride's peak hour — reads the raw value, or
- * five-minute buckets invent ties the data does not have.
+ * Round only what is displayed: a comparison, ranking or peak pick reads the raw value, or the
+ * buckets invent ties. See docs/rules/the-guide-page-teaches-the-real-cards-with-the-rides-real.md.
  */
 export function roundWaitTo5(value: number): number {
   const n = typeof value === 'number' ? value : Number(value);
@@ -40,16 +27,9 @@ export function roundWaitTo5(value: number): number {
 }
 
 /**
- * The same five-minute grid for a DIFFERENCE between two wait times.
- *
- * `roundWaitTo5` floors everything under 2.5 to zero, which is right for a
- * queue — there is no such thing as −15 minutes of waiting. A delta is the
- * other case, and applying the wait-time rule to it silently deleted half the
- * scale: the attraction card's trend compares the last two readings against the
- * two before them, so a queue being worked off produces a negative delta, and
- * every one of them collapsed to 0 → "stable". No ride could show a falling
- * trend at all. It was visible on the guide page itself, where Black Mamba's
- * card sat at a grey "stabil" under a caption saying its queue was shrinking.
+ * The same five-minute grid for a DIFFERENCE between two wait times. `roundWaitTo5` floors
+ * everything under 2.5 to zero, which is right for a queue and wrong for a delta: it would turn
+ * every falling trend into „stable".
  */
 export function roundWaitDeltaTo5(value: number): number {
   const n = typeof value === 'number' ? value : Number(value);
@@ -61,22 +41,10 @@ export function roundWaitDeltaTo5(value: number): number {
 }
 
 /**
- * The short-term movement of one queue, as a direction AND the number that produced it.
- *
- * Both halves come from the same arithmetic, and that is the whole point. The ride page's live
- * panel drew its arrow from the API's `trend` field and its figure from an average of today's
- * first half against its second — two different questions — so at 18:00 a queue reading 70, 70,
- * 55, 50 got the API's „falling" arrow next to `+30 min`, because the afternoon had been busier
- * than the morning. Even where the signs agreed the number was answering „how much busier was
- * this afternoon", on a control labelled as a trend.
- *
- * A fixed window of two readings against the two before them, lifted verbatim out of
- * `AttractionCard` where it has always lived: a proportional window compares against hours-old
- * data when the history is sparse (eight points over 100 minutes would report the whole day's
- * change as „recent movement"). Two surfaces one click apart now answer with the same value.
- *
- * `roundWaitDeltaTo5`, never `roundWaitTo5` — the latter floors everything under 2.5 to zero, and
- * a difference is not a wait time.
+ * The short-term movement of one queue, as a direction and the number that produced it, from the
+ * same arithmetic so arrow and figure cannot disagree. A fixed window of the last two readings
+ * against the two before them: a proportional window would compare against hours-old data when
+ * the history is sparse. Shared by `AttractionCard` and the ride page's live panel.
  */
 export function shortTermWaitTrend(
   history: { waitTime: number }[] | null | undefined

@@ -21,10 +21,9 @@ import { RideStatusBlock, useWeekdayTime } from './ride-status-block';
  * is yesterday cannot be decided identically on both sides of hydration. See
  * `useWeekdayTime`.
  *
- * Rendered only for a CLOSED ride. The API only sends the field then, but a
- * line saying the ride has not run under a badge saying it is open is the exact
- * contradiction a stale outage line once put on Crazy Bats, so the caller
- * checks the status too.
+ * Rendered only for a CLOSED ride. The API only sends the field then, and the
+ * caller checks the status too, so the line never sits under a badge saying the
+ * ride is open.
  */
 export function NotRunTodayNote({
   notRunToday,

@@ -11,7 +11,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-// Maintenance page must never be indexed.
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };

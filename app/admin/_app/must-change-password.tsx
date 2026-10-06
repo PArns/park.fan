@@ -9,13 +9,8 @@ import { Field, TextInput } from '../_ui/controls';
 import { useSession } from './session';
 
 /**
- * The only screen an account with a temporary password can reach.
- *
- * A password that arrived over chat, or that sat in a deployment config, has
- * been seen by more than one person — so it gets the account created and
- * nothing else. The backend refuses every other endpoint for such a session;
- * this is the half that says so instead of letting the admin render and then
- * fail on each request.
+ * The only screen an account with a temporary password can reach, since such a password has been
+ * seen by more than one person. The backend refuses every other endpoint; this screen says so.
  */
 export function MustChangePassword() {
   const { identity, signOut } = useSession();

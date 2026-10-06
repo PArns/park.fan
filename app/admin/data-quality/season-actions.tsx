@@ -6,19 +6,17 @@ import { CalendarCheck2, Loader2, Trash2, Unplug } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { adminFetch, useInvalidateAdmin } from '../_lib/api';
+import { formatDay } from '../_lib/ui';
 import { Chip } from '../_ui/primitives';
 import { useToast } from '../_ui/toast';
 
 /**
- * The answers to the two questions `/admin/data-quality` asks about rides
- * (PAR-695): "season ending or dropped feed?" and "season or gone?".
- *
- * Both write the same two curated columns through the bulk curation endpoint —
- * audited, cache-evicting, revalidating — so a card answered here disappears
- * on the next read and stays answered: the absence retirement and the silence
- * detector both skip a ride whose season is known.
+ * The answers to the two questions `/admin/data-quality` asks about rides: "season ending or
+ * dropped feed?" and "season or gone?". Both write the same two curated columns through the
+ * audited bulk endpoint, so an answered card disappears and stays answered.
  */
 
+/** Query key of the data-quality report, invalidated after every season write. */
 export const DATA_QUALITY_KEY = ['admin', 'data-quality'];
 
 const MONTHS = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
@@ -128,18 +126,22 @@ function monthsLabel(months: number[]): string {
   return months.length ? months.map((m) => MONTHS[m - 1]).join(', ') : 'Monate unbekannt';
 }
 
-// ── Verstummte Fahrgeschäfte ───────────────────────────────────────────────
-
+/** A group of a park's rides that went silent together, from the data-quality report. */
 export interface SilencedCluster {
   parkId: string;
   parkName: string;
   attractionCount: number;
   lastOperating: string;
   sampleNames: string[];
-  /** Absent until the API with PAR-695 is deployed. */
+  /** Absent from an API that does not send it yet. */
   attractions?: { attractionId: string; name: string }[];
 }
 
+/**
+ * Data-quality card for a group of a park's rides that went silent together, asking "season ending
+ * or dropped feed?": sets the season months for all of them in one write, or explains the feed
+ * case.
+ */
 export function SilencedClusterCard({
   cluster,
   lastOperatingLabel,
@@ -255,8 +257,7 @@ export function SilencedClusterCard({
   );
 }
 
-// ── Saison oder weg? ───────────────────────────────────────────────────────
-
+/** A ride retired for absence whose retirement nobody has reviewed yet. */
 export interface AbsenceRetiredUnreviewed {
   attractionId: string;
   name: string;
@@ -267,13 +268,7 @@ export interface AbsenceRetiredUnreviewed {
   lastReading: string | null;
 }
 
-function UnreviewedRide({
-  row,
-  dayLabel,
-}: {
-  row: AbsenceRetiredUnreviewed;
-  dayLabel: (v: string | null) => string;
-}) {
+function UnreviewedRide({ row }: { row: AbsenceRetiredUnreviewed }) {
   const { write, busy } = useSeasonWrite();
   const [picking, setPicking] = useState(false);
   const [months, setMonths] = useState<number[]>([]);
@@ -288,7 +283,7 @@ function UnreviewedRide({
           {row.name}
         </Link>
         <span className="text-muted-foreground text-xs">
-          zuletzt gemessen {dayLabel(row.lastReading)}
+          zuletzt gemessen {formatDay(row.lastReading)}
         </span>
         {!picking && (
           <div className="flex gap-1.5">
@@ -348,13 +343,11 @@ function UnreviewedRide({
   );
 }
 
-export function UnreviewedParkCard({
-  rows,
-  dayLabel,
-}: {
-  rows: AbsenceRetiredUnreviewed[];
-  dayLabel: (v: string | null) => string;
-}) {
+/**
+ * Data-quality card for one park's rides retired for absence and not yet reviewed: per ride (or all
+ * at once) mark it as gone, or as seasonal with its months.
+ */
+export function UnreviewedParkCard({ rows }: { rows: AbsenceRetiredUnreviewed[] }) {
   const { write, busy } = useSeasonWrite();
   const [confirmAll, setConfirmAll] = useState(false);
   const park = rows[0];
@@ -410,7 +403,7 @@ export function UnreviewedParkCard({
       </div>
       <ul className="mt-2 space-y-1.5">
         {rows.map((row) => (
-          <UnreviewedRide key={row.attractionId} row={row} dayLabel={dayLabel} />
+          <UnreviewedRide key={row.attractionId} row={row} />
         ))}
       </ul>
     </div>

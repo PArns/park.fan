@@ -20,10 +20,8 @@ export async function ContributeBanner({ href = '/contribute', className }: Cont
   return (
     <Link
       href={href}
-      // The prefilled form of this href (`?type=…&id=…&name=…`) is a distinct URL per park and
-      // per ride — a crawl space thousands of URLs wide, all of them the same upload form. Left
-      // followable it drew 4 K requests / 154 MB a day, more traffic than the park pages. Visitors
-      // are unaffected: nofollow only tells crawlers not to walk the link.
+      // The prefilled form of this href is a distinct URL per park and ride, all of them the same
+      // upload form; `nofollow` keeps crawlers from walking that space. Visitors are unaffected.
       rel="nofollow"
       data-card=""
       className={cn(
@@ -37,13 +35,10 @@ export async function ContributeBanner({ href = '/contribute', className }: Cont
         className
       )}
     >
-      {/* branded gradient sheen on its own layer, so it doesn't collide with bg-card
-          in tailwind-merge (a bg-gradient class alongside bg-card gets one dropped) */}
       <div
         className="from-primary/10 via-primary/5 pointer-events-none absolute inset-0 bg-gradient-to-br to-transparent"
         aria-hidden
       />
-      {/* decorative camera glyph */}
       <Camera
         className="text-primary/10 pointer-events-none absolute -top-4 -right-4 size-32 -rotate-12 transition-transform duration-500 group-hover:rotate-0"
         aria-hidden

@@ -17,6 +17,10 @@ interface WaitTimeSparklineCardProps {
   fallbackWaitTime?: number;
 }
 
+/**
+ * The attraction card's wait-time curve for today, with four time ticks, held flat up to now on
+ * the shared minute clock. With no history it draws `fallbackWaitTime` over the last hour.
+ */
 export function WaitTimeSparklineCard({
   history,
   timezone,
@@ -24,9 +28,8 @@ export function WaitTimeSparklineCard({
   fallbackWaitTime,
 }: WaitTimeSparklineCardProps) {
   const locale = useLocale();
-  // Shared minute clock: one interval for ALL sparklines on the page (a big park mounts
-  // dozens), so the "extend axis to now" repaint happens once per minute in a single
-  // batched update instead of N staggered per-card timers.
+  // Shared minute clock: one interval for every sparkline on the page, so extending the axis to now
+  // is one batched update a minute.
   const nowMs = useMinuteNow();
 
   const rawData = useMemo(
@@ -78,10 +81,9 @@ export function WaitTimeSparklineCard({
     pathD += ` L ${x.toFixed(2)},${y.toFixed(2)}`;
   }
 
-  // Cached formatter: this ran `new Date(ms).toLocaleTimeString(locale, …)` — which builds a
-  // fresh Intl formatter internally — for each of the 4 ticks. A big park mounts ~100 of these
-  // sparklines and they all re-render together on the shared minute clock, so that was ~400
-  // formatter constructions every minute.
+  // Cached formatter: a park page mounts many of these, all re-rendering together on the minute
+  // clock, and `toLocaleTimeString` builds a new Intl formatter per call. See
+  // docs/rules/a-render-redoes-no-work.md.
   const fmt = (ms: number) =>
     formatTime(ms, locale, {
       hour: '2-digit',

@@ -58,6 +58,10 @@ export function HeroRotationProvider({ children }: { children: ReactNode }) {
   return <HeroRotationContext.Provider value={value}>{children}</HeroRotationContext.Provider>;
 }
 
+/**
+ * Returns the in-park hero rotation from `HeroRotationProvider`: the park's images, the active
+ * index and its image (empty outside a park).
+ */
 export function useHeroRotation(): HeroRotation {
   return useContext(HeroRotationContext);
 }

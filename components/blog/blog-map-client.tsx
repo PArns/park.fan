@@ -12,9 +12,8 @@ const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) =
 });
 
 /**
- * The box `ParkMap` draws itself into (`h-[65vh] md:h-[800px]`), standing in until it does. The
- * dynamic import used to render nothing while its chunk loaded, so the post grew by a map's
- * height under whoever was reading below it.
+ * The box `ParkMap` draws itself into (`h-[65vh] md:h-[800px]`), standing in while its chunk
+ * loads, so the post does not grow by a map's height under the reader.
  */
 function MapBox() {
   return <div className="bg-muted/40 h-[65vh] w-full rounded-lg border md:h-[800px]" />;

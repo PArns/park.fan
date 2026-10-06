@@ -17,25 +17,13 @@ interface GlassNoticeProps {
 /**
  * The surface every "here is why this page looks like this" notice sits on.
  *
- * Built on the weather banners' surface (frosted layer + tint under a
- * `rounded-xl` border) rather than a flat tinted box, because these notices sit
- * among glass cards on a park's hero photo, where a solid pastel panel reads as
- * a browser alert pasted onto the page. Deliberately quieter than those
- * banners: nothing in a notice is urgent and there is nothing to act on, so it
- * takes a neutral border and the muted body colour, and only the icon and the
- * sheer tint carry a colour at all.
+ * Built on the weather banners' surface (frosted layer plus tint) rather than a flat tinted box,
+ * which reads as a browser alert over a park's hero photo. Quieter than those banners: nothing in
+ * a notice is urgent, so only the icon and the sheer tint carry a colour.
  *
- * **Kept out of Google's snippet (`data-nosnippet`), never out of the index.**
- * A notice is the most quotable prose on the strongest page the site has, and
- * every one of them is a sentence that is true for exactly as long as it is on
- * the page: a result answering "Hansa-Park Wartezeiten" with „Keine Wartezeiten
- * verfügbar", or "Taron" with a rebuild that ended in March, is a result nobody
- * clicks. `data-nosnippet` is the only directive that applies to a fragment —
- * `noindex` has no per-element form and the page-level one would drop the park
- * — so the text stays crawled, stays in the ranking and stays in front of the
- * visitor, it just may not become the description. Honoured on `div`, `span`
- * and `section` only, which is why it rides on the root `<section>` and covers
- * the subtree from there.
+ * `data-nosnippet` keeps a notice out of Google's snippet, never out of the index: it is true only
+ * while it is on the page. Honoured on `div`, `span` and `section` only, so it rides on the root
+ * `<section>`. See docs/rules/parks-we-cannot-read.md.
  */
 export function GlassNotice({
   icon: Icon,

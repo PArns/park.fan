@@ -64,7 +64,6 @@ export function WindCompass({ directionDeg, windKmh, className }: WindCompassPro
           <polygon points="50,83 42,67 58,67" className="stroke-none" />
         </g>
       )}
-      {/* Speed + unit label, dual-rendered (CSS picks the active unit) */}
       <g className="u-metric">
         <text x="50" y="53" textAnchor="middle" className="fill-foreground text-[19px] font-bold">
           {metricSpeed}

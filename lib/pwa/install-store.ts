@@ -83,6 +83,7 @@ function computeMode(): InstallMode {
   return iosCache ? 'ios' : 'none';
 }
 
+/** Subscribes to changes of the install mode; returns the unsubscribe function. */
 export function subscribeToInstall(listener: () => void): () => void {
   listeners.add(listener);
   return () => {
@@ -90,10 +91,12 @@ export function subscribeToInstall(listener: () => void): () => void {
   };
 }
 
+/** Whether this browser can be asked to install park.fan right now, and how. */
 export function getInstallMode(): InstallMode {
   return computeMode();
 }
 
+/** The install mode on the server and during hydration: always `none`. */
 export const getServerInstallMode = (): InstallMode => 'none';
 
 /** Opens the browser's own install dialog. The event is single-use, so it is dropped after. */
@@ -109,6 +112,7 @@ export async function promptInstall(): Promise<void> {
   }
 }
 
+/** Hides the install hint for 30 days. */
 export function dismissInstall(): void {
   dismissed = true;
   try {

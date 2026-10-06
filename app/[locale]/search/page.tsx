@@ -55,8 +55,6 @@ export async function generateMetadata({
   };
 }
 
-// No caching for search - always fresh results
-
 const typeIcons = {
   park: TreePalm,
   attraction: Cog,
@@ -77,14 +75,10 @@ import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 
 /**
- * Park id → IANA zone, for the results that carry clock times.
- *
- * `/v1/search` sends `parkHours` and `showTimes` as UTC instants and no zone to read them in, and a
- * `LocalTime` without one formats in the zone of whoever renders it: UTC on the server, the
- * visitor's own zone on hydration. So Tokyo Disneyland opened at "00:00" in the HTML and at "02:00"
- * a moment later in Berlin, and neither is the 09:00 it opens at. The zone comes from the
- * continents tree the layout already reads for the header on every page (`getContinents()` is
- * request-memoized), so it costs no request of its own.
+ * Park id → IANA zone, for the results that carry clock times. `/v1/search` sends them as UTC
+ * instants with no zone, and a `LocalTime` without one formats in the renderer's zone, so the
+ * server and the hydrating browser would print different, wrong times. Read from the continents
+ * tree the layout already loads (`getContinents()` is request-memoized), so it costs no request.
  */
 async function getParkTimezones(): Promise<Map<string, string>> {
   const zones = new Map<string, string>();
@@ -124,7 +118,6 @@ function SearchResultCard({
 
   const card = (
     <Card className="hover:border-primary/50 relative h-full overflow-hidden transition-all hover:shadow-md">
-      {/* Background Image for Parks */}
       {backgroundImage && (
         <div className="absolute inset-0 z-0">
           <Image
@@ -156,7 +149,6 @@ function SearchResultCard({
           {result.name}
         </h3>
 
-        {/* Location */}
         {(result.city || result.country) && (
           <p className="text-muted-foreground mb-2 flex items-center gap-1 text-sm">
             <MapPin className="h-3 w-3" />
@@ -171,14 +163,12 @@ function SearchResultCard({
           </p>
         )}
 
-        {/* Parent Park (for attractions) */}
         {result.parentPark && (
           <p className="text-muted-foreground mb-2 text-sm">
             {t('at', { park: result.parentPark.name })}
           </p>
         )}
 
-        {/* Wait Time (for attractions) */}
         {result.type === 'attraction' && result.waitTime !== undefined && (
           <div className="flex items-center gap-1 text-sm">
             <Clock className="h-3 w-3" />
@@ -188,7 +178,6 @@ function SearchResultCard({
           </div>
         )}
 
-        {/* Park Hours */}
         {result.type === 'park' && result.parkHours && timezone && (
           <div className="flex items-center gap-1 text-sm">
             <Clock className="h-3 w-3" />
@@ -202,7 +191,6 @@ function SearchResultCard({
           </div>
         )}
 
-        {/* Show Times */}
         {result.type === 'show' && result.showTimes && result.showTimes.length > 0 && timezone && (
           <div className="mt-2 flex flex-wrap gap-1">
             {result.showTimes.slice(0, 3).map((time, i) => (
@@ -248,13 +236,9 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
         fallback={
           <form action="" method="get" className="relative max-w-xl">
             <Search className="text-muted-foreground absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2" />
-            {/* No `autoFocus` here, and that is the point: this input and the one in
-                `SearchBody` are DIFFERENT elements across a Suspense boundary. The fallback
-                painted, focused itself and opened the keyboard — dropping the visual viewport to
-                about 55 % and scrolling the page to keep the field visible — then `SearchBody`
-                resolved (it awaits api.park.fan), React replaced the subtree, this uncontrolled
-                input was destroyed with anything typed into it, and the replacement's own
-                `autoFocus` shut the keyboard and opened it again. Focus once, on the input that
+            {/* No `autoFocus`: this input and the one in `SearchBody` are different elements
+                across a Suspense boundary, so a focused fallback opens the keyboard on an input
+                that is then replaced, with anything typed into it. Focus once, on the input that
                 survives. */}
             <Input
               type="search"
@@ -282,7 +266,6 @@ async function SearchBody({
   const t = await getTranslations('common');
   const tSearch = await getTranslations('searchPage');
 
-  // Perform search if query is provided
   let results = null;
   if (query && query.length >= MIN_QUERY_LENGTH) {
     results = await search(query).catch(() => null);
@@ -296,7 +279,6 @@ async function SearchBody({
 
   return (
     <>
-      {/* Search Form */}
       <form action="" method="get" className="relative mb-8 max-w-xl">
         <Search className="text-muted-foreground absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2" />
         <Input
@@ -309,12 +291,10 @@ async function SearchBody({
         />
       </form>
 
-      {/* Results */}
       {query && query.length >= MIN_QUERY_LENGTH && (
         <>
           {results ? (
             <>
-              {/* Result Counts */}
               <div className="mb-6 flex flex-wrap gap-4">
                 {Object.entries(results.counts).map(([type, count]) => (
                   <Badge key={type} variant="secondary">
@@ -323,7 +303,6 @@ async function SearchBody({
                 ))}
               </div>
 
-              {/* Results Grid */}
               {results.results.length > 0 ? (
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                   {results.results.map((result) => (
@@ -349,7 +328,6 @@ async function SearchBody({
         </>
       )}
 
-      {/* Initial State */}
       {(!query || query.length < MIN_QUERY_LENGTH) && (
         <div className="py-12 text-center">
           <Search className="text-muted-foreground mx-auto mb-4 h-12 w-12" />

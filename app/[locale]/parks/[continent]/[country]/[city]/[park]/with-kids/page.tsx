@@ -65,7 +65,7 @@ interface ParkKidsPageProps {
  */
 export const revalidate = 86400;
 
-/** Empty on purpose: registers the route for ISR without building 192 pages at deploy time. */
+/** Empty on purpose: registers the route for ISR without building every park's page at deploy. */
 export async function generateStaticParams() {
   return [];
 }
@@ -134,21 +134,18 @@ export async function generateMetadata({ params }: ParkKidsPageProps): Promise<M
 /**
  * A park's height ladder for parents: which rides a child may take at which height.
  *
- * The park page has the same numbers behind a slider, which is state and not text. This page
- * prints them, one step per height the park posts, so that "phantasialand mit kindern" lands on a
- * page that answers it in the first HTML — see `docs/seo/dedicated-landing-pages.md` §12 and the
- * rule of §2 there: a new park URL earns its place by rendering what no other URL renders.
- *
- * **Gated** on `kidsPageData` (PAR-356, PO decision of 2026-09-29): a park below the line 404s
- * here and is linked from nowhere.
+ * The park page has the same numbers behind a slider, which is state and not text; this page
+ * prints them, one step per height the park posts, so "phantasialand mit kindern" is answered in
+ * the first HTML. See `docs/seo/dedicated-landing-pages.md` §2 and §12. Gated on `kidsPageData`:
+ * a park below the line 404s here and is linked from nowhere.
  */
 export default async function ParkKidsPage({ params }: ParkKidsPageProps) {
   const { locale, continent, country, city, park: parkSlug } = await params;
   assertServableRoute(locale, continent, country, city, parkSlug);
   setRequestLocale(locale);
 
-  // Not `catchNonFatal`: swallowed, an outage became a `notFound()` this ISR route then stored
-  // for a day.
+  // Not `catchNonFatal`: a swallowed outage would become a `notFound()` this ISR route stores for
+  // a day.
   const parkFull = await getParkByGeoPath(continent, country, city, parkSlug);
 
   // The same three redirects the park page and the record page run: this URL is reachable

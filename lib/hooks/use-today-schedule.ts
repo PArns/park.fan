@@ -52,8 +52,7 @@ export interface TodayScheduleResult {
   /** Not operating today but reopening later. `weeks` is null when it opens within a week. */
   offseason: { dateFormatted: string; weeks: number | null; message: string } | null;
   holiday: {
-    /** Named PUBLIC holiday only. A school break has `isHoliday` set too and used to arrive
-     *  here — see `holiday` below for what that printed. */
+    /** Named public holiday only; a school break has `isHoliday` set too (see `holiday` below). */
     publicHolidayName: string | null;
     /** The school break's own name ("Summer Holidays"), when the feed gives one. Null on the
      *  many parks that set `isSchoolVacation` and name nothing. */
@@ -106,8 +105,7 @@ export function useTodaySchedule({
   const hasOperatingSchedule =
     (hasParams ? livePark?.hasOperatingSchedule : undefined) ?? hasOperatingScheduleProp;
 
-  // `parkDayOf` is one cached formatter: this hook runs on every minute tick and every live poll,
-  // and the `toLocaleDateString('en-CA', { timeZone })` it replaces built one per call.
+  // `parkDayOf` is one cached formatter: this hook runs on every minute tick and every live poll.
   const todayInParkTz = currentTime ? parkDayOf(currentTime, timezone) : null;
 
   // Pick today's entry CLIENT-side (browser clock in the park tz) so the static shell never reads
@@ -217,12 +215,9 @@ export function useTodaySchedule({
       todaySchedule.influencingHolidays;
     if (!has) return null;
     const shownNames = new Set<string>();
-    // `isHoliday` is true for a school break as well as a public one, and `holidayName` then
-    // carries the break's name. Splitting them on `holidayType` is what stops "Summer Holidays"
-    // rendering behind the party-popper the public-holiday chip uses — which is what shipped on
-    // Phantasialand for the whole of the NRW summer, in English, on the German page.
-    // `isSchoolHoliday`/`isPublicHoliday` are the fallback for feeds that send the booleans and
-    // no type; with neither, an `isHoliday` day is treated as public exactly as before.
+    // `isHoliday` is true for a school break as well as a public one, with the break's name in
+    // `holidayName`, so `holidayType` splits them. The booleans stand in for feeds that send no
+    // type; with neither, an `isHoliday` day counts as public.
     const isSchoolNamed =
       todaySchedule.holidayType === 'school' ||
       (todaySchedule.holidayType == null && todaySchedule.isSchoolHoliday === true);
@@ -230,13 +225,9 @@ export function useTodaySchedule({
     const publicHolidayName = isSchoolNamed ? null : namedHoliday;
     const schoolHolidayName = isSchoolNamed ? namedHoliday : null;
     if (publicHolidayName) shownNames.add(publicHolidayName.toLowerCase());
-    // Keep influencing holidays DISTINCT BY REGION (name+country+region), not just by name: the same
-    // holiday (e.g. "Summer Holidays") across several neighbouring states each contributes a region
-    // to <HeaderHolidayPanel>. Drop only entries that ECHO the local holiday (same name, non-school):
-    // a shared public holiday (e.g. Whit Monday) is already told by the local badge. Region-specific
-    // SCHOOL breaks keep showing even under a same-named local break — generic names like
-    // "Summer Holidays" match across every neighbouring region, yet each region is its own crowd
-    // driver, and the day-detail dialog lists them all (header and dialog must tell one story).
+    // Distinct by region (name, country, region), not by name: each neighbouring region's break
+    // is its own crowd driver, and the day-detail dialog lists them all. Only entries that echo the
+    // local public holiday are dropped; the local badge already tells it.
     const seenRegions = new Set<string>();
     const influencing = (todaySchedule.influencingHolidays ?? []).filter(
       (h: InfluencingHoliday) => {
@@ -251,9 +242,8 @@ export function useTodaySchedule({
       publicHolidayName,
       schoolHolidayName,
       isBridgeDay: !!todaySchedule.isBridgeDay,
-      // `isSchoolVacation` and `isSchoolHoliday` are the same claim under two names — the calendar
-      // sends the first, the park schedule the second, and reading only one is why the school-break
-      // chip never appeared on a German park while its name sat in the public-holiday chip.
+      // `isSchoolVacation` (calendar) and `isSchoolHoliday` (park schedule) are the same claim
+      // under two names.
       isSchoolVacation: !!(
         todaySchedule.isSchoolVacation ||
         todaySchedule.isSchoolHoliday ||

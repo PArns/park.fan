@@ -10,27 +10,15 @@ import { cn } from '@/lib/utils';
  * The favorites band as it looks for a visitor who has none — which is almost everyone
  * who lands on the homepage, a blog post or a glossary term.
  *
- * It lives outside `FavoritesSection` so it can also be that section's `next/dynamic`
- * `loading` fallback. `next/dynamic` is `React.lazy` + `<Suspense>` under the hood, so
- * `loading: () => null` was a `fallback={null}` boundary in disguise: the whole section
- * shipped inside a `<div hidden id="S:…">` at the end of the document and got grafted in
- * afterwards, dropping a 232 px band into the page under whatever the reader was looking
- * at. Reserving it only inside the component was not enough — the component itself is
- * what arrives late.
+ * It lives outside `FavoritesSection` so it can also be that section's `next/dynamic` `loading`
+ * fallback: `loading: () => null` is a `fallback={null}` boundary that drops the band into the
+ * page late. See docs/rules/a-streamed-section-owes-the-page-its-height.md.
  *
- * `textHidden` keeps the box at full height with the two lines held back, for the phase
- * where the cookie has not been read yet: a visitor who DOES have favorites should not be
- * told for a beat that they have none.
- *
- * `standalone` is for `/favorites`, where this band IS the page rather than one chapter of
- * one: the page's own `<h1>` already says "Favorites" and its own `FavoritesHowTo` block
- * already stands under the band in every state, so drawing either here would be the same
- * heading twice and the same three steps twice.
- *
- * `className` goes onto the band and is for its padding: the homepage gives it the
- * story's rhythm, and whatever `FavoritesSection` receives it passes on here, so the
- * fallback and every settled state stand in the same box. `heading` is the same kind of
- * hand-me-down: see {@link FavoritesHeading}.
+ * `textHidden` keeps the box at full height with the text held back until the cookie is read, so
+ * a visitor who has favorites is never told they have none. `standalone` is for `/favorites`,
+ * whose own `<h1>` and `FavoritesHowTo` already stand around the band. `className` (the band's
+ * padding) and `heading` are passed through by `FavoritesSection`, so the fallback and every
+ * settled state stand in the same box.
  */
 export function FavoritesEmptyState({
   textHidden = false,
@@ -49,10 +37,9 @@ export function FavoritesEmptyState({
     <section className={cn('bg-muted/30 px-4 py-12', className)}>
       <div className="container mx-auto">
         {!standalone && <FavoritesHeading variant={heading} />}
-        {/* `inert`, not just `aria-hidden`: the box now holds a link and a button, and a
-            focusable control inside an aria-hidden subtree is reachable by keyboard while being
-            invisible to a screen reader — the worst of both. Before FavoritesHowTo there were
-            only two paragraphs in here, so aria-hidden alone was enough. */}
+        {/* `inert`, not just `aria-hidden`: the box holds a link and a button, and a focusable
+            control in an aria-hidden subtree is reachable by keyboard yet invisible to a screen
+            reader. */}
         <div
           aria-hidden={textHidden || undefined}
           inert={textHidden || undefined}
@@ -68,10 +55,8 @@ export function FavoritesEmptyState({
           >
             {t('empty')}
           </p>
-          {/* The one-line hint this replaced named the star and nothing else — see
-              FavoritesHowTo. Every state of this band renders the same component, so the box
-              growing costs no shift: the pre-mount copy, the dynamic-import fallback and the
-              settled empty state are the same markup with the text held back. */}
+          {/* Every state of this band renders the same markup, the text held back where needed,
+              so the box costs no shift. */}
           {!standalone && <FavoritesHowTo className="mx-auto mt-5 max-w-3xl" />}
         </div>
       </div>
@@ -79,6 +64,7 @@ export function FavoritesEmptyState({
   );
 }
 
+/** Which `ChapterHeading` look the favorites band opens with; see {@link FavoritesHeading}. */
 export type FavoritesHeadingVariant = 'watermark' | 'tile';
 
 /**

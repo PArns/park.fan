@@ -90,9 +90,8 @@ export interface BlogFrontmatter {
   category?: string;
   coverImage?: BlogImage;
   /**
-   * Either an explicit list of images, a folder path under /public (all images
-   * in the folder become the gallery, sorted by filename), or { folder: '...' }.
-   * A `captions.json` file in the folder may override alt/caption/credit per image.
+   * An explicit list of images, a media collection (`toverland-halloween` or
+   * `/media/toverland-halloween`), or `{ folder: '…' }`. See `lib/blog/gallery.ts`.
    */
   gallery?: BlogImage[] | string | { folder: string };
   relatedParks?: string[];
