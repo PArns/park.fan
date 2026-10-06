@@ -7,21 +7,6 @@
  * should be a decision, not a side effect of a backend change.
  */
 
-export type AdminRole = 'owner' | 'editor' | 'author' | 'viewer';
-
-export interface AdminIdentity {
-  id: string | null;
-  email: string;
-  displayName: string;
-  role: AdminRole;
-  legacy: boolean;
-  mustChangePassword: boolean;
-  totpEnabled: boolean;
-  isActive?: boolean;
-  lastLoginAt?: string | null;
-  createdAt?: string;
-}
-
 export type CuratedFieldType =
   | 'text'
   | 'longtext'

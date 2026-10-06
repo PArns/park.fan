@@ -18,7 +18,7 @@ import {
   Wrench,
   type LucideIcon,
 } from 'lucide-react';
-import type { AdminRole } from '../_lib/types';
+import { roleAtLeast, type AdminRole } from '@/lib/admin/roles';
 
 /**
  * The admin's map of itself.
@@ -232,13 +232,6 @@ export function activeNavItem(pathname: string): NavItem | null {
   );
 }
 
-const ROLE_RANK: Record<AdminRole, number> = {
-  owner: 30,
-  editor: 20,
-  author: 10,
-  viewer: 0,
-};
-
 /**
  * Returns the navigation groups with the entries below the given role's rank removed, and empty
  * groups dropped. A display filter only: the API enforces roles.
@@ -246,8 +239,6 @@ const ROLE_RANK: Record<AdminRole, number> = {
 export function visibleGroups(role: AdminRole): NavGroup[] {
   return NAV_GROUPS.map((group) => ({
     ...group,
-    items: group.items.filter(
-      (item) => !item.minRole || ROLE_RANK[role] >= ROLE_RANK[item.minRole]
-    ),
+    items: group.items.filter((item) => !item.minRole || roleAtLeast(role, item.minRole)),
   })).filter((group) => group.items.length > 0);
 }

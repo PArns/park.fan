@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useMemo, type ReactNode } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { adminFetch, adminKeys, useAdminQuery } from '../_lib/api';
-import type { AdminIdentity, AdminRole } from '../_lib/types';
+import { roleAtLeast, type AdminIdentity, type AdminRole } from '@/lib/admin/roles';
 
 /**
  * Who is signed in, for the whole admin.
@@ -15,13 +15,6 @@ import type { AdminIdentity, AdminRole } from '../_lib/types';
  * of them — the next request from any tab carries a cookie the server has
  * already dropped.
  */
-
-const ROLE_RANK: Record<AdminRole, number> = {
-  owner: 30,
-  editor: 20,
-  author: 10,
-  viewer: 0,
-};
 
 interface SessionContextValue {
   identity: AdminIdentity;
@@ -96,7 +89,7 @@ export function SessionProvider({
   const value = useMemo<SessionContextValue>(
     () => ({
       identity,
-      can: (role) => (ROLE_RANK[identity.role] ?? -1) >= ROLE_RANK[role],
+      can: (role) => roleAtLeast(identity.role, role),
       signOut,
       refresh: () => {
         void client.invalidateQueries({ queryKey: adminKeys.session });

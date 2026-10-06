@@ -2,6 +2,7 @@ import 'server-only';
 import { cookies } from 'next/headers';
 import { getServerApiHeaders } from '@/lib/api/client';
 import { readCookie } from './cookie';
+import { roleAtLeast, type AdminIdentity, type AdminRole } from './roles';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
@@ -21,35 +22,6 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
  * one setting under which a cross-site request cannot carry it at all.
  */
 export const ADMIN_SESSION_COOKIE = 'parkfan_admin_session';
-
-/** Roles, most privileged first. Mirrors the backend's `ADMIN_ROLES`. */
-export const ADMIN_ROLES = ['owner', 'editor', 'author', 'viewer'] as const;
-export type AdminRole = (typeof ADMIN_ROLES)[number];
-
-const ROLE_RANK: Record<AdminRole, number> = {
-  owner: 30,
-  editor: 20,
-  author: 10,
-  viewer: 0,
-};
-
-/**
- * Returns true when an admin role ranks at or above the given minimum (owner > editor > author >
- * viewer).
- */
-export function roleAtLeast(role: AdminRole, minimum: AdminRole): boolean {
-  return (ROLE_RANK[role] ?? -1) >= ROLE_RANK[minimum];
-}
-
-export interface AdminIdentity {
-  id: string | null;
-  email: string;
-  displayName: string;
-  role: AdminRole;
-  legacy: boolean;
-  mustChangePassword: boolean;
-  totpEnabled: boolean;
-}
 
 /**
  * Validated identities, briefly.
