@@ -8,7 +8,7 @@ featured: false
 excerpt: >-
   Legoland Deutschland is built for children from two to twelve, and on none of
   its nine headliner rides does an early start save enough time for a rope drop
-  tip. The highest minimum height is 1.25 metres, Fastrack costs from €25, and Halloween runs until 8 November.
+  tip. With an adult, the highest minimum height is 1.25 metres, and Halloween runs until 8 November.
 tags:
   - legoland
   - guenzburg
@@ -47,8 +47,7 @@ seo:
     - Legoland holiday village
 ---
 
-**Legoland Deutschland** describes itself as built for children between **two and twelve**. The
-highest minimum height in the whole park is **1.25 metres**, on
+**Legoland Deutschland** describes itself as built for children between **two and twelve**. For riding with an adult, the highest minimum height in the whole park is **1.25 metres**, on
 [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare). And on none of the nine headliner
 rides does an early start save enough time for us to give a rope drop tip. Anyone planning a day in
 Günzburg needs less tactical planning than in Rust or Brühl, and more attention to centimetres and ages.
@@ -146,7 +145,7 @@ everybody, 1.25 metres and seven years.
 
 The **[Dschungel X-pedition](ref:legoland-deutschland/jungle-x-pedition)** is the Intamin log flume
 from the opening year, with a twelve-metre drop where, according to the park, 80 litres of water per
-second pour into the lagoon. Nobody gets out dry, so in October a change of clothes belongs in your backpack.
+second pour into the lagoon. Riders get wet, so in October a change of clothes belongs in your backpack.
 
 **[LEGO NINJAGO The Ride](ref:legoland-deutschland/lego-ninjago-the-ride)** from 2017 isn't a
 coaster but an interactive 4D ride. With hand movements you throw flashes of light, fireballs, ice
@@ -166,7 +165,7 @@ If you come with a two-year-old, you take the **[LEGOLAND Express](ref:legoland-
 the **[DUPLO Express](ref:legoland-deutschland/duplo-express)** and the
 **[Hafenrundfahrt](ref:legoland-deutschland/harbour-cruise)**. On the two trains, children up to
 0.80 metres ride from age one on a parent's lap, and the Hafenrundfahrt asks for 0.80 metres and one
-year. Add the DUPLO playground, the pirate playground, the adventure playground and the shipyard,
+year. Add the DUPLO playground, the adventure playground and the shipyard,
 which according to Wikipedia have been in the park since it opened.
 
 The two **driving schools** have been there since 2002. In the
@@ -222,7 +221,7 @@ opens at 10, and the rides close an hour before the park does.
 
 At Das Große LEGO Rennen and the Hafenrundfahrt the highest value comes in the morning. At the
 Dschungel X-pedition and the Tret-o-Mobil the curve rises from opening and then stays up. At the
-Feuerdrache, the Drachenjagd and Flying NINJAGO the highest value is around midday, and at Maximus
+Feuerdrache, the Drachenjagd and Flying NINJAGO the curve rises until midday and then stays at a similar level, and at Maximus
 the wait stays almost the same all day.
 
 On rainy days, wait times at Legoland were 17 percent shorter than on comparable dry days in our
@@ -242,9 +241,9 @@ rides carries no rope drop recommendation.
 
 ```
 
-You don't have to be at the car park at seven. If you arrive early, start with the two rides whose curve only rises, the Dschungel X-pedition and the Tret-o-Mobil. Then take Das Große LEGO Rennen and the Hafenrundfahrt, where the crowds peak in the morning. Ride Maximus, the Feuerdrache and Flying NINJAGO later, because their curve hardly moves. If you'd rather have it quiet, come on a Friday.
+You don't have to be at the car park at seven. If you arrive early, start with the two rides whose curve only rises, the Dschungel X-pedition and the Tret-o-Mobil. Das Große LEGO Rennen and the Hafenrundfahrt are busiest in the morning, so they fit better in the afternoon. Ride Maximus, the Feuerdrache and Flying NINJAGO whenever you like, because their curve hardly moves. If you'd rather have it quiet, come on a Friday.
 
-## Fastrack: three tiers for 18 rides
+## Fastrack: three tiers and the rides
 
 **Fastrack** is what used to be called Express Pass. It's a ticket with a fixed number of rides that
 gets you into a shorter queue at the ride you choose. After feedback from guests the park dropped the
@@ -261,7 +260,7 @@ Tour, Piratenschule and LEGO Studios.
 
 Whether it pays depends on the day. For four people even €25 each is €100 on top of admission, for
 a ride where the table above shows no outliers anyway. On a Friday in June I wouldn't buy Fastrack.
-On a Saturday in the Bavarian holidays, when Legoland has its busiest days in our measurements, I'd
+On a Saturday in the Bavarian holidays, the busiest weekday in our measurements, I'd
 take Bronze for whichever ride is then at the top of the table.
 
 ## Tickets, prices and annual pass
@@ -316,7 +315,7 @@ on Mondays. On the Halloween Saturdays the parade replaces the 4 pm show. Costum
 ## When it rains
 
 According to the park, the **Tempel X-pedition**, **LEGO NINJAGO The Ride**, the **LEGO Studios**,
-**LEGOLAND ATLANTIS by SEA LIFE**, the **LEGO Fabrik** and the maze in the LEGO City police station
+**LEGOLAND ATLANTIS by SEA LIFE** and the **LEGO Fabrik**
 are under cover. According to Wikipedia Atlantis has over 2,000 fish, and its glass tunnel is eight
 metres long. There's also a **Regen Rallye**, a puzzle round for wet days.
 
@@ -339,8 +338,7 @@ three stands sell ice cream. You can pay by card in all restaurants and at the b
 in cash at the mobile stands. Allergen lists are available in the restaurants.
 
 For babies there's the **Baby Service** in the Imagination area, by the DUPLO playground and Pizza
-Mania!, with baby food and a changing and nursing area. All toilets in the park have a changing
-room. The park rents out strollers at the entrance for **€6** plus a €4 deposit, in limited numbers
+Mania!, with baby food and a changing and nursing area. The family toilets in the park are accessible and double as changing rooms. The park rents out strollers at the entrance for **€6** plus a €4 deposit, in limited numbers
 and without a mount for baby seats. You may bring your own wagon, but not tricycles, inline
 skates or kick scooters. Lockers cost €5 or €7. Dogs aren't allowed in the park or the holiday
 village, apart from assistance dogs.
@@ -395,7 +393,7 @@ days.
 With an adult from 0.80 metres at Käpt'n Nicks Piratenschlacht and from 1.00 metres at the
 Drachenjagd, the Dschungel X-pedition and the Fire & Ice Tower. From 1.10 metres Das Große LEGO
 Rennen and the Feuerdrache, from 1.20 metres Maximus and from 1.25 metres Flying NINJAGO. Riding
-alone, most rides ask for 1.20 metres, Maximus and Käpt'n Nicks Piratenschlacht for 1.30 metres. Each also has a minimum age: one to seven years with an adult, six to nine alone.
+alone, most rides ask for 1.20 metres, Maximus, Power Builder and Käpt'n Nicks Piratenschlacht for 1.30 metres. Each also has a minimum age: one to seven years with an adult, six to nine alone.
 
 ### How much does Legoland Deutschland cost?
 
@@ -436,7 +434,7 @@ Sierksdorf stood a first German Legoland from 1973 to 1976, more in the
 
 ## Who Legoland suits less
 
-The park has four coasters, and only one of them, Maximus, goes upside down. If you come with
+The park has four classic coasters, and only one of them, Maximus, goes upside down. If you come with
 children over twelve or without any, Phantasialand or Europa-Park have more rides that suit them.
 
 — Patrick

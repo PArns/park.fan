@@ -8,7 +8,7 @@ featured: false
 excerpt: >-
   Das Legoland Deutschland baut für Kinder von zwei bis zwölf, und an keiner der
   neun Headliner-Bahnen spart ein früher Start genug Zeit für einen
-  Rope-Drop-Tipp. Die höchste Mindestgröße liegt bei 1,25 Metern, Fastrack kostet ab 25 € und Halloween läuft bis zum 8. November.
+  Rope-Drop-Tipp. Mit Erwachsenem liegt die höchste Mindestgröße bei 1,25 Metern, und Halloween läuft bis zum 8. November.
 tags:
   - legoland
   - guenzburg
@@ -48,8 +48,7 @@ seo:
 ---
 
 Das **Legoland Deutschland** sagt über sich selbst, dass es für Kinder zwischen **zwei und
-zwölf Jahren** gebaut ist. Die höchste Mindestgröße im ganzen Park liegt bei **1,25 Metern**, an der
-Bahn [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare). Und an keiner der neun
+zwölf Jahren** gebaut ist. Für Fahrten mit Erwachsenem liegt die höchste Mindestgröße im ganzen Park bei **1,25 Metern**, an der Bahn [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare). Und an keiner der neun
 Headliner-Bahnen spart ein früher Start so viel Zeit, dass wir einen Rope-Drop-Tipp geben würden. Wer einen Tag in Günzburg plant, braucht deshalb weniger Taktik als in Rust oder Brühl
 und mehr Aufmerksamkeit für Zentimeter und Alter.
 
@@ -151,7 +150,7 @@ und sieben Jahre.
 
 Die **[Dschungel X-pedition](ref:legoland-deutschland/jungle-x-pedition)** ist die Wildwasserbahn
 von Intamin aus dem Eröffnungsjahr, mit einer zwölf Meter langen Abfahrt, bei der laut Park 80 Liter
-Wasser pro Sekunde in die Lagune stürzen. Trocken kommt hier niemand heraus, im Oktober gehört deshalb Wechselkleidung in den Rucksack.
+Wasser pro Sekunde in die Lagune stürzen. Wer die Abfahrt mitfährt, wird nass, im Oktober gehört deshalb Wechselkleidung in den Rucksack.
 
 **[LEGO NINJAGO The Ride](ref:legoland-deutschland/lego-ninjago-the-ride)** von 2017 ist keine
 Achterbahn, sondern eine interaktive 4D-Fahrt. Du schleuderst per Handbewegung Lichtblitze,
@@ -171,7 +170,7 @@ Wer mit einem Zweijährigen kommt, fährt mit dem **[LEGOLAND Express](ref:legol
 dem **[DUPLO Express](ref:legoland-deutschland/duplo-express)** und der
 **[Hafenrundfahrt](ref:legoland-deutschland/harbour-cruise)**. Bei den beiden Zügen fahren Kinder bis
 0,80 Meter ab einem Jahr auf dem Schoß der Eltern mit, bei der Hafenrundfahrt gelten 0,80 Meter und
-ein Jahr. Dazu kommen der DUPLO Spielplatz, der Piratenspielplatz, der Abenteuer-Spielplatz und die
+ein Jahr. Dazu kommen der DUPLO Spielplatz, der Abenteuer-Spielplatz und die
 Werft, die laut Wikipedia seit der Eröffnung im Park stehen.
 
 Die beiden **Fahrschulen** gibt es seit 2002. In der
@@ -229,8 +228,7 @@ Der Park öffnet um 10 Uhr, die Fahrgeschäfte schließen eine Stunde vor Parksc
 
 Beim Großen LEGO Rennen und bei der Hafenrundfahrt liegt der höchste Wert am Vormittag. An der
 Dschungel X-pedition und am Tret-o-Mobil steigt die Kurve dagegen von der Öffnung an und bleibt dann
-oben. Beim Feuerdrachen, bei der Drachenjagd und bei Flying NINJAGO liegt der höchste Wert gegen
-Mittag, und bei Maximus bleibt die Wartezeit fast den ganzen Tag gleich.
+oben. Beim Feuerdrachen, bei der Drachenjagd und bei Flying NINJAGO steigt die Kurve bis Mittag und bleibt dann auf ähnlichem Niveau, und bei Maximus bleibt die Wartezeit fast den ganzen Tag gleich.
 
 An Regentagen waren die Wartezeiten im Legoland nach unseren Messungen um 17 Prozent kürzer als an
 trockenen Vergleichstagen, wie der [Regen-Vergleich](/blog/freizeitpark-bei-regen) für zwölf Parks
@@ -249,9 +247,9 @@ Auf der Seite jeder dieser Bahnen steht deshalb keine Rope-Drop-Empfehlung.
 
 ```
 
-Um sieben Uhr musst du deshalb nicht am Parkplatz stehen. Wer früh kommt, nimmt sich zuerst die beiden Bahnen, deren Kurve nur steigt, die Dschungel X-pedition und das Tret-o-Mobil. Danach folgen das Große LEGO Rennen und die Hafenrundfahrt, bei denen der Andrang am Vormittag am höchsten ist. Maximus, Feuerdrache und Flying NINJAGO fährst du später, weil sich ihre Kurve kaum bewegt. Wer es lieber ruhig mag, kommt an einem Freitag.
+Um sieben Uhr musst du deshalb nicht am Parkplatz stehen. Wer früh kommt, nimmt sich zuerst die beiden Bahnen, deren Kurve nur steigt, die Dschungel X-pedition und das Tret-o-Mobil. Das Große LEGO Rennen und die Hafenrundfahrt sind am Vormittag am vollsten und gehören deshalb eher in den Nachmittag. Maximus, Feuerdrache und Flying NINJAGO fährst du, wann du willst, weil sich ihre Kurve kaum bewegt. Wer es lieber ruhig mag, kommt an einem Freitag.
 
-## Fastrack: drei Stufen für 18 Bahnen
+## Fastrack: drei Stufen und die Bahnen
 
 **Fastrack** heißt das, was vorher Express Pass hieß. Es ist ein Ticket mit einer festen Zahl von
 Fahrten, das an der gewählten Bahn einen Platz in einer kürzeren Warteschlange verschafft. Der Park
@@ -268,8 +266,7 @@ Wüsten X-kursion, Safari Tour, Piratenschule und LEGO Studios.
 
 Ob es sich lohnt, hängt am Tag. Bei vier Personen sind selbst 25 € je Kopf 100 € zusätzlich zum
 Eintritt, für eine Bahn, an der die Tabelle oben ohnehin keine Ausreißer zeigt. An einem Freitag im Juni würde
-ich Fastrack nicht kaufen. An einem Samstag in den bayerischen Ferien, an dem das Legoland nach
-unseren Messungen seine vollsten Tage hat, würde ich Bronze für die Bahn nehmen, die dann in der Tabelle
+ich Fastrack nicht kaufen. An einem Samstag in den bayerischen Ferien, dem vollsten Wochentag in unseren Messungen, würde ich Bronze für die Bahn nehmen, die dann in der Tabelle
 ganz oben steht.
 
 ## Tickets, Preise und Jahreskarte
@@ -326,8 +323,7 @@ nicht. An den Halloween-Samstagen ersetzt die Parade die Vorstellung um 16 Uhr. 
 ## Wenn es regnet
 
 Unter Dach liegen laut Park die **Tempel X-pedition**, **LEGO NINJAGO The Ride**, die **LEGO
-Studios**, **LEGOLAND ATLANTIS by SEA LIFE**, die **LEGO Fabrik** und das Labyrinth in der LEGO City
-Polizeistation. Atlantis hat nach Wikipedia über 2.000 Fische, und der Glastunnel dort ist acht Meter
+Studios**, **LEGOLAND ATLANTIS by SEA LIFE** und die **LEGO Fabrik**. Atlantis hat nach Wikipedia über 2.000 Fische, und der Glastunnel dort ist acht Meter
 lang. Dazu kommt eine **Regen Rallye**, eine Rätselrunde für nasse Tage.
 
 Zwischen dem 24. Dezember 2025 und dem 5. Oktober 2026 fielen im
@@ -349,8 +345,7 @@ Coca-Cola selbst, und Eis verkaufen drei Stände. In allen Restaurants und an de
 Karte, an den mobilen Ständen nur bar. Allergenlisten gibt es in den Restaurants.
 
 Für Babys gibt es den **Baby Service** im Bereich Imagination, am DUPLO Spielplatz und bei Pizza
-Mania!, mit Babynahrung und einem Wickel- und Stillbereich. Alle Toiletten im Park haben einen
-Wickelraum. Buggys leiht der Park im Eingangsbereich für **6 €** plus 4 € Pfand, in begrenzter
+Mania!, mit Babynahrung und einem Wickel- und Stillbereich. Die Familientoiletten im Park sind barrierefrei und dienen auch als Wickelraum. Buggys leiht der Park im Eingangsbereich für **6 €** plus 4 € Pfand, in begrenzter
 Zahl und ohne Halterung für Babyschalen. Einen eigenen Bollerwagen darfst du mitbringen, Dreiräder,
 Inliner und Kickboards nicht. Schließfächer kosten 5 oder 7 €. Hunde sind bis auf Assistenzhunde
 im Park und im Feriendorf nicht erlaubt.
@@ -404,7 +399,7 @@ trockenen Vergleichstagen.
 Mit Erwachsenem ab 0,80 Metern bei Käpt'n Nicks Piratenschlacht und ab 1,00 Metern bei der Drachenjagd,
 der Dschungel X-pedition und dem Fire & Ice Tower. Ab 1,10 Metern fahren das Große LEGO Rennen und der
 Feuerdrache, ab 1,20 Metern Maximus und ab 1,25 Metern Flying NINJAGO. Allein verlangen die meisten
-Bahnen 1,20 Meter, Maximus und Käpt'n Nicks Piratenschlacht 1,30 Meter. Dazu kommt jeweils ein Mindestalter: mit Erwachsenem zwischen einem und sieben Jahren, allein zwischen sechs und neun.
+Bahnen 1,20 Meter, Maximus, Power Builder und Käpt'n Nicks Piratenschlacht 1,30 Meter. Dazu kommt jeweils ein Mindestalter: mit Erwachsenem zwischen einem und sieben Jahren, allein zwischen sechs und neun.
 
 ### Was kostet das Legoland Deutschland?
 
@@ -445,7 +440,7 @@ Hansa-Parks in Sierksdorf stand von 1973 bis 1976 ein erstes deutsches Legoland,
 
 ## Für wen das Legoland weniger passt
 
-Vier Achterbahnen hat der Park, und nur eine davon, Maximus, fährt über Kopf. Wer mit Kindern über
+Vier klassische Achterbahnen hat der Park, und nur eine davon, Maximus, fährt über Kopf. Wer mit Kindern über
 zwölf oder ohne Kind kommt, findet im Phantasialand oder im Europa-Park mehr Bahnen, die zu ihnen
 passen.
 

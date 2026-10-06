@@ -8,7 +8,7 @@ featured: false
 excerpt: >-
   Legoland Deutschland is gebouwd voor kinderen van twee tot twaalf jaar, en bij
   geen van de negen headliners levert een vroege start genoeg tijd op voor een
-  rope-droptip. De hoogste minimumlengte is 1,25 meter, Fastrack kost vanaf € 25 en Halloween loopt tot 8 november.
+  rope-droptip. Met een volwassene is de hoogste minimumlengte 1,25 meter, en Halloween loopt tot 8 november.
 tags:
   - legoland
   - guenzburg
@@ -47,8 +47,7 @@ seo:
     - Legoland vakantiedorp
 ---
 
-**Legoland Deutschland** zegt zelf dat het gebouwd is voor kinderen van **twee tot twaalf jaar**. De
-hoogste minimumlengte van het hele park is **1,25 meter**, bij
+**Legoland Deutschland** zegt zelf dat het gebouwd is voor kinderen van **twee tot twaalf jaar**. Voor meerijden met een volwassene is de hoogste minimumlengte van het hele park **1,25 meter**, bij
 [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare). En bij geen van de negen headliners
 levert een vroege start zoveel tijd op dat wij een rope-droptip zouden geven. Wie een dag in
 Günzburg plant, heeft dus minder tactiek nodig dan in Rust of Brühl en meer aandacht voor centimeters
@@ -146,7 +145,7 @@ iedereen, 1,25 meter en zeven jaar.
 
 De **[Dschungel X-pedition](ref:legoland-deutschland/jungle-x-pedition)** is de boomstamattractie van
 Intamin uit het openingsjaar, met een afdaling van twaalf meter waarbij volgens het park 80 liter
-water per seconde in de lagune stort. Niemand komt hier droog uit, dus in oktober horen er droge kleren in de rugzak.
+water per seconde in de lagune stort. Wie meerijdt, wordt nat, dus in oktober horen er droge kleren in de rugzak.
 
 **[LEGO NINJAGO The Ride](ref:legoland-deutschland/lego-ninjago-the-ride)** uit 2017 is geen achtbaan
 maar een interactieve 4D-rit. Met handbewegingen schiet je lichtflitsen, vuurballen, ijsfonteinen en
@@ -166,7 +165,7 @@ Kom je met een tweejarige, dan neem je de **[LEGOLAND Express](ref:legoland-deut
 de **[DUPLO Express](ref:legoland-deutschland/duplo-express)** en de
 **[Hafenrundfahrt](ref:legoland-deutschland/harbour-cruise)**. In de twee treinen rijden kinderen tot
 0,80 meter vanaf een jaar op schoot bij hun ouders mee, bij de Hafenrundfahrt gelden 0,80 meter en
-een jaar. Daarbij komen de DUPLO-speeltuin, de piratenspeeltuin, de avonturenspeeltuin en de werf,
+een jaar. Daarbij komen de DUPLO-speeltuin, de avonturenspeeltuin en de werf,
 die er volgens Wikipedia sinds de opening staan.
 
 De twee **rijscholen** bestaan sinds 2002. In de
@@ -224,7 +223,7 @@ park gaat om 10.00 uur open, en de attracties sluiten een uur voor sluitingstijd
 
 Bij Das Große LEGO Rennen en de Hafenrundfahrt ligt de hoogste waarde in de ochtend. Bij de Dschungel
 X-pedition en de Tret-o-Mobil stijgt de lijn vanaf de opening en blijft dan hoog. Bij de Feuerdrache,
-de Drachenjagd en Flying NINJAGO ligt de hoogste waarde rond het middaguur, en bij Maximus blijft de
+de Drachenjagd en Flying NINJAGO stijgt de lijn tot het middaguur en blijft dan op een vergelijkbaar niveau, en bij Maximus blijft de
 wachttijd bijna de hele dag gelijk.
 
 Op regendagen waren de wachttijden in Legoland volgens onze metingen 17 procent korter dan op
@@ -243,9 +242,9 @@ van elk van deze attracties staat daarom geen rope-dropadvies.
 
 ```
 
-Je hoeft niet om zeven uur op de parkeerplaats te staan. Wie vroeg komt, begint met de twee attracties waarvan de lijn alleen stijgt, de Dschungel X-pedition en de Tret-o-Mobil. Daarna volgen Das Große LEGO Rennen en de Hafenrundfahrt, waar de drukte in de ochtend het hoogst is. Maximus, de Feuerdrache en Flying NINJAGO rijd je later, omdat hun lijn nauwelijks beweegt. Wie het liever rustig heeft, komt op een vrijdag.
+Je hoeft niet om zeven uur op de parkeerplaats te staan. Wie vroeg komt, begint met de twee attracties waarvan de lijn alleen stijgt, de Dschungel X-pedition en de Tret-o-Mobil. Das Große LEGO Rennen en de Hafenrundfahrt zijn in de ochtend het drukst en passen daarom beter in de middag. Maximus, de Feuerdrache en Flying NINJAGO rijd je wanneer je wilt, omdat hun lijn nauwelijks beweegt. Wie het liever rustig heeft, komt op een vrijdag.
 
-## Fastrack: drie niveaus voor 18 attracties
+## Fastrack: drie niveaus en de attracties
 
 **Fastrack** heet wat vroeger Express Pass heette. Het is een ticket met een vast aantal ritten dat je
 bij de gekozen attractie een plek in een kortere wachtrij geeft. Na reacties van gasten heeft het
@@ -263,8 +262,7 @@ Safari Tour, Piratenschule en LEGO Studios.
 
 Of het loont, hangt van de dag af. Bij vier personen is zelfs € 25 per hoofd € 100 extra bovenop de
 entree, voor een attractie waar de tabel hierboven toch geen uitschieters laat zien. Op een vrijdag
-in juni zou ik Fastrack niet kopen. Op een zaterdag in de Beierse vakantie, wanneer Legoland in onze
-metingen zijn drukste dagen heeft, zou ik Brons nemen voor de attractie die dan bovenaan de tabel
+in juni zou ik Fastrack niet kopen. Op een zaterdag in de Beierse vakantie, de drukste weekdag in onze metingen, zou ik Brons nemen voor de attractie die dan bovenaan de tabel
 staat.
 
 ## Tickets, prijzen en jaarkaart
@@ -322,8 +320,7 @@ Verkleden mag.
 ## Als het regent
 
 Onder dak liggen volgens het park de **Tempel X-pedition**, **LEGO NINJAGO The Ride**, de **LEGO
-Studios**, **LEGOLAND ATLANTIS by SEA LIFE**, de **LEGO Fabrik** en het doolhof in het LEGO City
-politiebureau. Atlantis heeft volgens Wikipedia ruim 2.000 vissen, en de glazen tunnel daar is acht
+Studios**, **LEGOLAND ATLANTIS by SEA LIFE** en de **LEGO Fabrik**. Atlantis heeft volgens Wikipedia ruim 2.000 vissen, en de glazen tunnel daar is acht
 meter lang. Daarnaast is er een **Regen Rallye**, een puzzelronde voor natte dagen.
 
 Tussen 24 december 2025 en 5 oktober 2026 viel in Legoland Deutschland
@@ -346,8 +343,7 @@ drie kraampjes verkopen ijs. In alle restaurants en aan de kassa betaal je met p
 kraampjes alleen contant. Allergenenlijsten liggen in de restaurants.
 
 Voor baby’s is er de **Baby Service** in het gebied Imagination, bij de DUPLO-speeltuin en Pizza
-Mania!, met babyvoeding en een verschoon- en voedingsruimte. Alle toiletten in het park hebben een
-verschoonruimte. Buggy’s verhuurt het park bij de ingang voor **€ 6** plus € 4 borg, in beperkt
+Mania!, met babyvoeding en een verschoon- en voedingsruimte. De gezinstoiletten in het park zijn toegankelijk en dienen ook als verschoonruimte. Buggy’s verhuurt het park bij de ingang voor **€ 6** plus € 4 borg, in beperkt
 aantal en zonder houder voor autostoeltjes. Je eigen bolderkar mag mee, driewielers, skates en
 steps niet. Kluisjes kosten € 5 of € 7. Honden zijn in het park en het vakantiedorp niet toegestaan,
 behalve hulphonden.
@@ -402,7 +398,7 @@ vergelijkbare droge dagen.
 
 Met een volwassene vanaf 0,80 meter bij Käpt'n Nicks Piratenschlacht en vanaf 1,00 meter bij de
 Drachenjagd, de Dschungel X-pedition en de Fire & Ice Tower. Vanaf 1,10 meter Das Große LEGO Rennen
-en de Feuerdrache, vanaf 1,20 meter Maximus en vanaf 1,25 meter Flying NINJAGO. Voor alleen rijden vragen de meeste attracties 1,20 meter, Maximus en Käpt'n Nicks Piratenschlacht 1,30 meter. Daarbij hoort telkens een minimumleeftijd: met een volwassene tussen een en zeven jaar, alleen tussen zes en negen.
+en de Feuerdrache, vanaf 1,20 meter Maximus en vanaf 1,25 meter Flying NINJAGO. Voor alleen rijden vragen de meeste attracties 1,20 meter, Maximus, Power Builder en Käpt'n Nicks Piratenschlacht 1,30 meter. Daarbij hoort telkens een minimumleeftijd: met een volwassene tussen een en zeven jaar, alleen tussen zes en negen.
 
 ### Wat kost Legoland Deutschland?
 
@@ -443,7 +439,7 @@ Hansa-Park in Sierksdorf stond van 1973 tot 1976 een eerste Duitse Legoland, mee
 
 ## Voor wie Legoland minder past
 
-Het park heeft vier achtbanen, en maar één daarvan, Maximus, gaat ondersteboven. Wie met kinderen
+Het park heeft vier klassieke achtbanen, en maar één daarvan, Maximus, gaat ondersteboven. Wie met kinderen
 boven de twaalf komt of zonder kind, vindt in Phantasialand of Europa-Park meer attracties die bij hen
 passen.
 
