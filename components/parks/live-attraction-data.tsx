@@ -16,6 +16,7 @@ import { LocalTime } from '@/components/ui/local-time';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
+import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
 import type { ParkWithAttractions, QueueType, QueueStatus } from '@/lib/api/types';
 
 const QUEUE_TYPE_KEYS = {
@@ -227,8 +228,7 @@ export function LiveAttractionData({
                         (q) => q.queueType === queue.queueType
                       )?.trend;
                       if (!trend) return null;
-                      const delta =
-                        Math.round((trend.recentAverage - trend.previousAverage) / 5) * 5;
+                      const delta = roundWaitDeltaTo5(trend.recentAverage - trend.previousAverage);
                       const direction = delta > 0 ? 'up' : delta < 0 ? 'down' : 'stable';
                       return <TrendPill direction={direction} delta={delta} />;
                     })()}
