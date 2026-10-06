@@ -549,6 +549,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`queue-type-badge.tsx`](../../components/parks/queue-type-badge.tsx)
 
 - `QueueTypeBadge` _component_: Badge for a ride's extra queue: single rider, virtual queue return window, boarding groups, Lightning Lane or Express price. Nothing for standby; most link to their glossary term.
+- `QUEUE_GLOSSARY_TERMS` _const_: The glossary term that explains each queue type, for the queue labels that link to it.
 
 ### [`rcdb-badge.tsx`](../../components/parks/rcdb-badge.tsx)
 
