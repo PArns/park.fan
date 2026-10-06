@@ -242,7 +242,7 @@ These dots carry `will-change` because they animate forever inside cards with `b
 
 ### [`unit-display.tsx`](../../components/common/unit-display.tsx)
 
-- `Temp` _component_: Temperature from a Celsius value, e.g. "15°" / "59°".
+- `Temp` _component_: Temperature from a Celsius value, e.g. "15°" / "59°", or "15 °C" / "59 °F" with `withUnit`.
 - `Wind` _component_: Wind speed from a km/h value, e.g. "20 km/h" / "12 mph".
 - `Precip` _component_: Precipitation from a mm value, e.g. "0.8 mm" / "0.03 in".
 - `Distance` _component_: Distance/visibility from a metres value, e.g. "5 km" / "3 mi".

@@ -27,6 +27,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `nextWetMode` _function_: The cycle the pill walks: off → the water rides → everything but them → off.
 - Types: `WetMode`
 
+### [`use-browser-locale.ts`](../../lib/hooks/use-browser-locale.ts)
+
+- `useBrowserLocale` _hook_: The site locale the visitor's browser asks for: null on the server, while hydrating, and when none of its languages is one of ours. `firstChoiceOnly` reads only `navigator.language` instead of the whole preference list.
+
 ### [`use-calendar-data.ts`](../../lib/hooks/use-calendar-data.ts)
 
 - `useCalendarData` _hook_: A park's integrated calendar for a date range, fresh for `CALENDAR_STALE_TIME_MS`.
