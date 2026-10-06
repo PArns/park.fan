@@ -1,7 +1,7 @@
 'use client';
 
 import { useId, useState, type ComponentProps, type ReactNode } from 'react';
-import { Check, ChevronDown, Minus } from 'lucide-react';
+import { Check, ChevronDown } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 
@@ -243,50 +243,6 @@ export function Switch({
         />
       </span>
       {label && <span className="text-sm">{label}</span>}
-    </button>
-  );
-}
-
-/**
- * Checkbox drawn as a `role="checkbox"` button, with an optional label and a dash for the
- * indeterminate state (`aria-checked="mixed"`).
- */
-export function Checkbox({
-  checked,
-  indeterminate,
-  onCheckedChange,
-  label,
-  className,
-}: {
-  checked: boolean;
-  indeterminate?: boolean;
-  onCheckedChange: (checked: boolean) => void;
-  label?: ReactNode;
-  className?: string;
-}) {
-  return (
-    <button
-      type="button"
-      role="checkbox"
-      aria-checked={indeterminate ? 'mixed' : checked}
-      onClick={() => onCheckedChange(!checked)}
-      className={cn('inline-flex min-h-11 items-center gap-2 text-sm sm:min-h-0', className)}
-    >
-      <span
-        className={cn(
-          'flex h-4 w-4 items-center justify-center rounded border transition-colors',
-          checked || indeterminate
-            ? 'border-primary bg-primary text-primary-foreground'
-            : 'border-border/70 bg-background/60'
-        )}
-      >
-        {indeterminate ? (
-          <Minus className="h-3 w-3" />
-        ) : checked ? (
-          <Check className="h-3 w-3" />
-        ) : null}
-      </span>
-      {label}
     </button>
   );
 }

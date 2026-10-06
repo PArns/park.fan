@@ -47,15 +47,6 @@ export function parseImageAlt(raw: string): ParsedImageAlt {
   };
 }
 
-/** Joins image alt parts back into `Alt | Caption | align | size`, dropping empty trailing parts. */
-export function serialiseImageAlt(parts: ParsedImageAlt): string {
-  // Trim trailing empty segments so we don't emit `Alt | | center` when the
-  // caption is empty. Always keep at least `alt`.
-  const out: string[] = [parts.alt, parts.caption ?? '', parts.align, parts.size ?? ''];
-  while (out.length > 1 && out[out.length - 1] === '') out.pop();
-  return out.join(' | ').replace(/\s+\|/g, ' |').replace(/\|\s+/g, '| ');
-}
-
 function normaliseAlign(value: string | undefined): ImageAlign {
   const v = (value ?? '').toLowerCase();
   if (v === 'left' || v === 'right' || v === 'wide' || v === 'center') return v;

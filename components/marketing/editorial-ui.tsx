@@ -644,43 +644,6 @@ export function SplitFigure({
   );
 }
 
-// ── Standalone captioned figure ──────────────────────────────────────────────
-/** A 16:9 photo with an optional caption on an editorial page, revealed on scroll. */
-export function Figure({
-  src,
-  alt,
-  caption,
-  priority = false,
-}: {
-  src: string;
-  alt: string;
-  caption?: React.ReactNode;
-  priority?: boolean;
-}) {
-  return (
-    <Reveal>
-      <figure className="space-y-2">
-        <div className="bg-muted relative aspect-[16/9] w-full overflow-hidden rounded-2xl border shadow-md">
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            sizes="(max-width: 768px) 100vw, 800px"
-            className="object-cover"
-            style={{ objectPosition: objectPositionForSrc(src, '50% 50%') }}
-            priority={priority}
-          />
-        </div>
-        {caption && (
-          <figcaption className="text-muted-foreground text-center text-sm italic">
-            {caption}
-          </figcaption>
-        )}
-      </figure>
-    </Reveal>
-  );
-}
-
 // ── Icon touchpoint cards ────────────────────────────────────────────────────
 /**
  * `title` is a node, not a string, so a card can carry a glossary link on the term it is named

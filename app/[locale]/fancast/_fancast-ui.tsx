@@ -15,7 +15,6 @@ export {
   IngredientCard,
   CrowdSpectrum,
   SplitFigure,
-  Figure,
   TouchpointGrid,
   FaqList,
 } from '@/components/marketing/editorial-ui';

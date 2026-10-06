@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  useMutation,
-  useQuery,
-  useQueryClient,
-  type UseMutationOptions,
-  type UseQueryOptions,
-} from '@tanstack/react-query';
+import { useQuery, useQueryClient, type UseQueryOptions } from '@tanstack/react-query';
 
 /**
  * How the admin talks to everything.
@@ -142,17 +136,6 @@ export function useAdminQuery<T>(
     queryKey: key,
     queryFn: ({ signal }) => adminFetch<T>(path as string, { signal }),
     enabled: path !== null && (options?.enabled ?? true),
-    ...options,
-  });
-}
-
-/** React Query `useMutation` typed for admin writes, so errors arrive as `AdminApiError`. */
-export function useAdminMutation<TResult, TInput = void>(
-  mutation: (input: TInput) => Promise<TResult>,
-  options?: Omit<UseMutationOptions<TResult, AdminApiError, TInput>, 'mutationFn'>
-) {
-  return useMutation<TResult, AdminApiError, TInput>({
-    mutationFn: mutation,
     ...options,
   });
 }

@@ -40,13 +40,6 @@ export function formatUptime(hours: number) {
   return `${h}h ${m}m`;
 }
 
-/** Formats a count with a `K` (one decimal) or `M` (two decimals) suffix, e.g. `12.3K`. */
-export function formatCompact(n: number) {
-  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(2)}M`;
-  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
-  return String(n);
-}
-
 /** A timestamp as a German calendar day for admin lists, `—` when there is none. */
 export function formatDay(value: string | null): string {
   if (!value) return '—';

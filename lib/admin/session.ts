@@ -234,33 +234,6 @@ export async function requireAdmin(
   return { response: null, identity };
 }
 
-/**
- * Call an admin endpoint on api.park.fan as the current session.
- *
- * The one place the cookie is turned into a Bearer token. Nothing else in this
- * app should read the cookie and build that header, or the day the transport
- * changes there will be three places to find.
- */
-export async function adminApiFetch(
-  path: string,
-  init: RequestInit & { token?: string | null } = {}
-): Promise<Response> {
-  const { token: explicitToken, ...rest } = init;
-  const token = explicitToken ?? (await readSessionToken());
-  const url = path.startsWith('http') ? path : `${API_BASE}/v1/admin/${path.replace(/^\/+/, '')}`;
-
-  return fetch(url, {
-    ...rest,
-    cache: 'no-store',
-    headers: {
-      'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      ...getServerApiHeaders(),
-      ...(rest.headers as Record<string, string> | undefined),
-    },
-  });
-}
-
 /** The `Set-Cookie` attributes a session cookie is written with. */
 export function sessionCookieOptions(maxAgeSeconds: number) {
   return {

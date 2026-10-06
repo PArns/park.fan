@@ -20,7 +20,6 @@ import type { TableTheme } from '../_extensions/themed-table';
  * can be applied to the parsed editor doc.
  */
 
-const MAGIC_RE = /<!--\s*tbl-theme:\s*([a-zA-Z]+)\s*-->\n?/gm;
 const MAGIC_LINE_RE = /^\s*<!--\s*tbl-theme:\s*([a-zA-Z]+)\s*-->\s*$/;
 const DIVIDER_RE = /^\s*\|?[\s|:-]+\|?\s*$/;
 const FENCE_RE = /^\s*(```|~~~)/;
@@ -160,11 +159,4 @@ export function applyThemesToDoc(editor: Editor, themes: TableTheme[]): void {
       return true;
     })
     .run();
-}
-
-/** Strip ALL magic comments from a markdown string — used when the post is
- *  consumed outside the editor (preview pane, server-side renderer that
- *  doesn't yet understand the directive). Keeps body counts stable. */
-export function stripThemeComments(markdown: string): string {
-  return markdown.replace(MAGIC_RE, '');
 }

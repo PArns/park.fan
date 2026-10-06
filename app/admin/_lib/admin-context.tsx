@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useIsFetching, useQueryClient } from '@tanstack/react-query';
-import { adminKeys, useAdminQuery } from './api';
 import { useSession } from '../_app/session';
 
 /**
@@ -201,6 +200,3 @@ export function useAdminFetch<T>(endpoint: string | null, _needsPass = false): F
 
   return state;
 }
-
-/** Re-exported so the dashboards can reach the query layer without a new import path. */
-export { adminKeys, useAdminQuery };
