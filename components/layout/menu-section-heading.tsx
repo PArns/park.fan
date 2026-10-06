@@ -1,23 +1,9 @@
 import { Link } from '@/i18n/navigation';
 
 /**
- * The rule above a column in one of the header's menu bands.
- *
- * One definition, for the same reason `MenuBand` is one: the bands are meant to read as one
- * surface whichever trigger opened them, and a heading that is a shade lighter or a pixel lower in
- * the second panel is the kind of drift nobody reports and everybody sees. It started as a private
- * helper inside `ParksMenuPanel`; the "more" panel needs the identical rule, so it moved here
- * rather than being typed a second time.
- *
- * `href` is optional because not every column has a hub to point at, and `count` because most do
- * not have a number worth printing.
- *
- * No `'use client'`: there is no hook, no state and no handler in here. With the directive it
- * would be a client reference of its own wherever a Server Component renders it. Everything that
- * imports it today is a client component itself — `ParksMenuPanel`, `BlogMenuPanel` (the "more"
- * panel drew cards instead from PAR-269) and the footer's `FooterLinkGroup`, which folds each
- * column on a phone (PAR-437) — so it compiles into their bundles without it. The footer's
- * popular-parks columns (PAR-325) render it from a Server Component, which needs the same.
+ * The rule above a column in one of the header's menu bands, in one definition so the bands read as
+ * one surface. `href` and `count` are optional: not every column has a hub or a number. No
+ * `'use client'`, since there is no hook here and Server Components (the footer) render it too.
  */
 export function MenuSectionHeading({
   label,

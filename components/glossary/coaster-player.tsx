@@ -14,10 +14,8 @@ export type { CoasterPlayerLabels } from './coaster-player-scene';
 
 const Scene = nextDynamic(() => import('./coaster-player-scene'), {
   ssr: false,
-  // Same shell as the scene itself: the aspect-ratio stage AND the 57 px
-  // transport row below it. The placeholder used to be the stage alone, so the
-  // player grew by a row the moment the chunk landed and shoved the rest of the
-  // term page down with it.
+  // Same shell as the scene: the aspect-ratio stage and the 57 px transport row below it, so the
+  // term page does not move when the chunk lands.
   loading: () => (
     <div className="border-primary/15 bg-muted/40 w-full animate-pulse overflow-hidden rounded-xl border">
       <div className="aspect-[16/10] w-full sm:aspect-[16/9]" />

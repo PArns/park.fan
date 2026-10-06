@@ -34,30 +34,18 @@ const KEN_BURNS_CLASS = 'hero-ken-burns';
 const PAUSED_CLASS = 'hero-motion-paused';
 
 /**
- * When the ken-burns pan is allowed to start.
- *
- * The pan is the hero's single biggest rendering cost: it transforms the backdrop that both
- * glass panels and the search dropdown are blurring, and a moving backdrop has to be re-filtered
- * every frame while a static one is filtered once and cached. Measured with the hero on screen,
- * **66.6 ms median frame with the pan running against 16.7 ms without** — so for as long as it
- * runs, everything else animating over it runs at 15 fps.
- *
- * The entrance stagger, the map's sweep and every skeleton resolving into content all happen in
- * the first couple of seconds, and the pan used to start on the LCP image's `load`, well inside
- * that. Waiting for load + idle AND the entrance window means the hero assembles itself over a
- * still photo and only starts moving when there is nothing left to arrive. Nothing is visible in
- * the trade: the pan's first keyframe is the identity transform, so starting it later starts it
- * from exactly where the photo already is.
+ * When the ken-burns pan may start: after load, idle and the entrance window. The pan transforms
+ * the backdrop both glass panels blur, which then has to be re-filtered every frame, so it waits
+ * until nothing else in the hero is still arriving. Its first keyframe is the identity transform,
+ * so a late start is invisible. See docs/features/homepage-hero.md.
  */
 function useHeroPanAllowed(): boolean {
   const afterLoad = useAfterLoad();
   const [entranceOver, setEntranceOver] = useState(false);
 
   useEffect(() => {
-    // Same clock the entrance runs on: both start from the moment the hero's markup is parsed,
-    // which is close enough to navigation start for a window this long. On a slow link hydration
-    // itself lands after the window has already closed, and the clamp fires the timer on the next
-    // tick — which is correct, the entrance is over by then.
+    // The same clock the entrance runs on. On a slow link hydration lands after the window has
+    // closed, and the clamp fires the timer on the next tick.
     const remaining = Math.max(0, HERO_ENTRANCE_MS - performance.now());
     const id = setTimeout(() => setEntranceOver(true), remaining);
     return () => clearTimeout(id);
@@ -66,13 +54,8 @@ function useHeroPanAllowed(): boolean {
   return afterLoad && entranceOver;
 }
 
-// All hero source images are ≤1024px wide, so the old 80vw made high-DPR phones request the
-// w=1080 srcset candidate — an *upscale* of a 1024px source: more bytes, zero extra detail. 60vw
-// pulls the w=828 candidate instead (w=640 on DPR2) — the largest non-upscaled rendition — which
-// cuts the mobile LCP image ~28% at the same quality. It's a decorative full-bleed background
-// under a gradient overlay + ken-burns, so the slightly smaller rendition is
-// imperceptible. Desktop keeps 115vw; `backgroundImageLoader` bands the quality by how wide the
-// rendition will actually be painted, so wide screens still get the detail they need.
+// Hero sources are at most 1024 px wide, so 60vw on phones picks the largest candidate that is not
+// an upscale. Desktop keeps 115vw; `backgroundImageLoader` bands the quality by painted width.
 const HERO_IMAGE_SIZES = '(max-width: 768px) 60vw, 115vw';
 
 /**
@@ -83,16 +66,9 @@ const HERO_IMAGE_SIZES = '(max-width: 768px) 60vw, 115vw';
 const PARK_LAYER_LOOKAHEAD = 1;
 
 /**
- * Alt text for a hero photo when the caller passed none.
- *
- * `HERO_META` already carries what the info panel paints — ride, themed area, park — so composing
- * from it costs no bundle bytes, unlike shipping six locales of authored alt into the client-safe
- * slice. The authored sidecar text is better and server callers pass it via the `alt` prop; this
- * covers the client-side rotation, whose images only mount after hydration and so never reach a
- * crawler anyway.
- *
- * Returns `''` (decorative) rather than a placeholder when nothing is known: a screen reader
- * skipping an unnamed background beats it announcing "Park Background" on every page.
+ * Alt text for a hero photo when the caller passed none, composed from `HERO_META` at no bundle
+ * cost. Server callers pass the authored sidecar text; this covers the client-side rotation.
+ * Returns `''` (decorative) when nothing is known, rather than announcing a placeholder.
  */
 function heroAltFromMeta(src: string | null | undefined): string {
   const meta = src ? getHeroMetaBySrc(src) : null;
@@ -137,17 +113,11 @@ function InParkHeroImages({
 
   const total = parkImages.length;
 
-  // One stacked layer per park image, crossfaded by toggling opacity. The LAYER (a plain div) is
-  // always mounted and carries both the opacity transition and the ken-burns animation, so every
-  // layer's animation clock starts at the same moment and stays in phase — crossfades never "jump"
-  // the ken-burns transform.
-  //
-  // The <Image> inside, however, only mounts for a small window around the active layer. Every
-  // layer sits in the viewport at full size, so `loading="lazy"` would not defer anything and the
-  // old render fetched a park's WHOLE set at once — 13 renditions ≈ 250 KB for Europa-Park, all
-  // competing for bandwidth the moment the nearby lookup resolves. With the window it's two
-  // renditions up front, and each following one preloads behind opacity-0 during the 8 s the
-  // current image is on screen (PARK_ROTATE_MS), so transitions stay instant.
+  // One stacked layer per park image, crossfaded by opacity. The layer div is always mounted and
+  // carries the ken-burns animation, so every layer's clock stays in phase. The <Image> inside
+  // mounts only for a small window around the active layer: every layer sits in the viewport, so
+  // `loading="lazy"` would defer nothing, and the next image preloads during the current one's
+  // turn.
   return (
     <>
       {parkImages.map((src, i) => {
@@ -202,14 +172,11 @@ export function RandomHeroImage({ imageSrc, noAnimation, blurDataURL, alt }: Ran
   const panAllowed = useHeroPanAllowed();
   const animate = loaded && panAllowed;
 
-  // Is the user inside a park with its own hero images? If so, those take over (rendered below).
   const { parkImages } = useHeroRotation();
   const hasParkImages = parkImages.length > 0;
 
-  // Hold the base image at full opacity until the first park image has actually LOADED.
-  // The in-park images mount only after the nearby lookup resolves (~2s in), so fading the
-  // base out the moment they appear crossfaded into a still-empty layer — the hero flashed
-  // down to the background gradient and back once the photo arrived.
+  // Hold the base image at full opacity until the first park image has loaded, or the hero
+  // crossfades into an empty layer and flashes the background gradient.
   const [parkImageLoaded, setParkImageLoaded] = useState(false);
   // Reset during render (not in an effect) when the in-park images go away, so a later
   // re-entry starts from "not loaded" again.
@@ -247,13 +214,9 @@ export function RandomHeroImage({ imageSrc, noAnimation, blurDataURL, alt }: Ran
         loader={backgroundImageLoader}
         priority={isServerImage}
         fetchPriority={isServerImage ? 'high' : undefined}
-        // Paint something in the first frame instead of the bare bg-background, so the hero never
-        // shows an empty slab while the rendition is in flight. Preferably a 16 px inline preview
-        // of this very photo (`blurDataURL`), which turns the moment the rendition lands from a
-        // photo appearing over a gradient into the same picture sharpening — measured at a 72 %
-        // frame-to-frame change before, 12 % after. The brand gradient stays as the fallback for
-        // callers that cannot look one up. Either way it is a background-image on the <img>, not
-        // an LCP candidate of its own — LCP is still measured against the photo.
+        // Paint something in the first frame: a 16 px inline preview of this photo, so the
+        // rendition landing reads as the same picture sharpening, or the brand gradient when the
+        // caller has none. A background-image on the <img>, not an LCP candidate of its own.
         placeholder="blur"
         blurDataURL={blurDataURL ?? BACKGROUND_BLUR_DATA_URL}
         onLoad={noAnimation ? undefined : () => setLoaded(true)}
@@ -312,12 +275,8 @@ function HeroBackgroundClassic({ imageSrc, blurDataURL, alt }: HeroBackgroundPro
       )}
     >
       <RandomHeroImage imageSrc={imageSrc} blurDataURL={blurDataURL} alt={alt} />
-      {/* Branded overlay — from-background is navy in dark mode, near-white in light mode */}
-      {/* Light mode used to wash the photo out with 60% white at the top-left, back when the
-          text sat on the photo and needed it. The panels carry their own glass now (the hero
-          text measures 16:1 over the real photo with no wash at all), so the tint is only there
-          to keep the very top readable under the header. Dark mode keeps its heavier gradient —
-          it is what makes the night photos read as night rather than grey. */}
+      {/* Light mode only tints the top for the header, since the panels carry their own glass.
+          Dark mode keeps its heavier gradient, which makes the night photos read as night. */}
       <div className="from-background/25 to-muted/20 dark:from-background dark:via-background/20 dark:to-muted/70 absolute inset-0 bg-gradient-to-br via-transparent" />
       <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
     </div>
@@ -369,9 +328,7 @@ function HeroBackground3D() {
       {/* Instant gradient sky — bright by day, deep blue at night (dark mode),
           matching the 3D sky so the canvas fades in seamlessly. */}
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#3b8fe3_0%,#7fc2f3_55%,#cdeeff_100%)] dark:bg-[linear-gradient(to_bottom,#070b1e_0%,#142150_55%,#33508c_100%)]" />
-      {/* three.js park scene (client-only, fades in when ready) */}
       <HeroThreePark onReady={onReady} onProgress={onProgress} />
-      {/* Real park photos take over when the visitor is detected inside a park */}
       <InParkHeroImages />
       {/* Only a very light tint for depth/legibility — kept subtle and
           theme-independent so the bright, colorful scene always shows through. */}

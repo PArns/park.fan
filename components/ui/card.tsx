@@ -24,10 +24,9 @@ function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="card-header"
       className={cn(
-        // shadcn widens the columns here when the header holds a <CardAction>, and asks with a
-        // `:has()` variant. A header that holds one says so at its call site instead (two
-        // columns, `1fr auto`): any `:has()` rule in the stylesheet makes every DOM change
-        // restyle the whole document — see docs/rules/no-has-selector-in-the-stylesheet.md.
+        // A header holding a <CardAction> sets its two columns (`1fr auto`) at its call site rather
+        // than through shadcn's `:has()` variant, see
+        // docs/rules/no-has-selector-in-the-stylesheet.md.
         '@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-2 px-6 [.border-b]:pb-6',
         className
       )}

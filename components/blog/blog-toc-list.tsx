@@ -22,10 +22,8 @@ interface BlogTocListProps {
 export function BlogTocList({ entries, title, label }: BlogTocListProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const activeRef = useRef<HTMLAnchorElement | null>(null);
-  // The list sits in an aside that is `hidden lg:block` (`blog-post-page.tsx`). Below `lg` it
-  // spied anyway: a scroll listener every frame, a ResizeObserver on <body> re-measuring every
-  // heading, and a re-render of a list nobody could see at each new section. Rem, like Tailwind's
-  // own `lg`.
+  // The list sits in a `hidden lg:block` aside, so below `lg` it does not spy at all. Rem, like
+  // Tailwind's own `lg`.
   const visible = useMediaQuery('(min-width: 64rem)');
 
   useEffect(() => {
@@ -94,13 +92,8 @@ export function BlogTocList({ entries, title, label }: BlogTocListProps) {
     };
   }, [entries, visible]);
 
-  // Keep the active entry visible inside the sticky sidebar's own scroll box as
-  // the reader moves through the article. On a long ToC the highlighted section
-  // otherwise scrolls out of the sidebar's clipped viewport and the reader loses
-  // their place. Scrolls ONLY the sidebar container (found via its
-  // `data-toc-scroll` marker) — never the window — so it can't fight the page
-  // scroll, and does nothing when the sidebar isn't its own scroll area (mobile,
-  // or a short ToC that fits without overflowing).
+  // Keep the active entry visible inside the sticky sidebar's own scroll box. Scrolls only the
+  // `data-toc-scroll` container, never the window, and does nothing when it does not overflow.
   useEffect(() => {
     if (!activeId) return;
     const link = activeRef.current;

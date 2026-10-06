@@ -3,24 +3,11 @@ import { BarChart3, Database, Globe, Star } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 
 /**
- * The chapter headings of the three homepage sections that stream, plus the one
- * lookup that resolves their strings.
- *
- * Their own file for the reason `ParkBestDaysHeader` has one: the section is
- * behind a `<Suspense>`, and the heading is the part of it that needs **no**
- * data — so the fallback mounts the real heading rather than a stack of
- * `Skeleton` blocks shaped like one. That matters more since these became
- * `ChapterHeading` tiles, because the height now moves with how the title and
- * hint wrap, which is per locale and per breakpoint. A sized placeholder cannot
- * track that; the real node tracks it by being it.
- *
- * The components are **synchronous** and take resolved strings, which is the
- * whole trick. `ParkBestDaysHeader` gets there by being a Client Component with
- * `useTranslations`; these stay on the server and take a prop instead, because a
- * fallback that awaits anything suspends — and a suspending fallback is not a
- * fallback. The caller resolves the labels once with
- * {@link getSectionHeadingLabels} and hands the same object to the boundary and
- * to the section inside it.
+ * The chapter headings of the three homepage sections that stream, and the lookup that resolves
+ * their strings. Their own file so a Suspense fallback can mount the real heading, whose height
+ * moves with how title and hint wrap, rather than a sized placeholder. They are synchronous and
+ * take resolved strings, because a fallback that awaits suspends; the caller resolves the labels
+ * once with {@link getSectionHeadingLabels} for both the boundary and the section.
  */
 
 export interface SectionHeadingLabels {

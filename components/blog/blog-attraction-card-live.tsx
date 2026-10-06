@@ -22,13 +22,10 @@ interface BlogAttractionCardLiveProps {
 }
 
 /**
- * `AttractionCard` for a blog ride reference, kept live in the browser.
- *
- * Shared by the hover preview and the `?full` spotlight so both show the same state. Status and
- * wait come from the post-wide batch poll; the card also renders today's average/peak and the
- * sparkline, which the batch doesn't carry — those need the full attraction detail, so it's
- * fetched only once the card is actually on screen (a hover preview qualifies the moment it
- * opens). A post naming a dozen rides therefore loads one batch, not a dozen detail payloads.
+ * `AttractionCard` for a blog ride reference, kept live in the browser, shared by the hover
+ * preview and the `?full` spotlight. Status and wait come from the post-wide batch poll; today's
+ * figures and the sparkline need the full detail, fetched only once the card is on screen, so a
+ * post naming a dozen rides loads one batch, not a dozen payloads.
  */
 export function BlogAttractionCardLive({
   park,

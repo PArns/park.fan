@@ -13,17 +13,10 @@ import { STORY_SECTION_TINTED } from './section-chrome';
 const FIGURE_COUNT = 6;
 
 /**
- * Chapter: the dictionary, and the track figures you can fly.
- *
- * The six figures are **derived**, not listed: any glossary term carrying a
- * `player` whose element the registry actually knows is eligible, in dictionary
- * order. A hand-written list would be a second opinion about which terms have a
- * player, and it would go stale silently the first time one was renamed — the
- * failure the ride↔glossary docs warn about, since this app is the only place a
- * term id is defined.
- *
- * Names, definitions and hrefs are the glossary's own, so the chapter is
- * localized wherever the dictionary is.
+ * Chapter: the dictionary, and the track figures you can fly. The six figures are derived, not
+ * listed: any glossary term whose `player` element the registry knows, in dictionary order, so a
+ * renamed term cannot leave a stale second list. Names, definitions and hrefs are the glossary's,
+ * so the chapter is localized wherever the dictionary is.
  */
 export async function ChapterDictionary({ locale }: { locale: Locale }) {
   const [t, tGlossary, terms] = await Promise.all([

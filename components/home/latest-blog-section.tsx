@@ -10,40 +10,26 @@ interface LatestBlogSectionProps {
   locale: Locale;
   limit?: number;
   /**
-   * `section` (default) is the standalone tinted band with its own
-   * `BlogSectionHeader`. `bare` returns the post grid alone, for a caller that
-   * has already opened the chapter — the homepage story wraps this in
-   * `BlogChapter`, and a nested `<section>` there would stack a second tint and
-   * a second heading inside the first.
-   *
-   * `lead` is `bare` with a front page's hierarchy: the newest post as one big
-   * card, the four after it as rows beside it. Six equal cards say "here is an
-   * archive"; one large one says "read this". Both variants are the same
-   * `BlogPostCard` in its `feature` and `compact` shapes, which the component
-   * already had and nothing used.
+   * `section` (default) is the standalone tinted band with its own `BlogSectionHeader`. `bare`
+   * returns the post grid alone, for a caller that already opened the chapter (the homepage
+   * story's `BlogChapter`). `lead` is `bare` with a front page's hierarchy: the newest post as one
+   * big card and the next ones as rows beside it.
    */
   variant?: 'section' | 'bare' | 'lead';
 }
 
 /**
- * How many rows stand beside the `lead` variant's feature card, and how many of
- * them a phone gets.
- *
- * Measured at 1440 px in all six locales: the card is 513.5 px, a row is 80 px
- * with a two-line title and 89.5 px with three, and the gap between two rows is
- * 4 px. Four rows therefore end 143.5–153 px above the card's lower edge, which
- * is the empty block this number exists to close; six land between 14 px short
- * and 44 px past it, depending on how the titles wrap. The grid below stretches
- * whichever column ends first, so the remainder is absorbed rather than drawn.
- *
- * Below `lg` the two columns stack and every further row is more of the
- * homepage to scroll past, so the phone keeps the four it had.
+ * How many rows stand beside the `lead` variant's feature card, and how many a phone gets. Six
+ * rows end near the card's lower edge at desktop width, and the grid stretches whichever column
+ * ends first; below `lg` the columns stack and every extra row is more to scroll past.
  */
 const LEAD_ROWS = 6;
 const LEAD_ROWS_PHONE = 4;
 
-// 6 fills exactly two rows of the 3-column grid below (and three rows of the
-// 2-column `sm` layout), so the section never ends on a ragged half-row.
+/**
+ * The newest blog articles, as a tinted section, a bare grid or a lead layout (see `variant`). The
+ * default `limit` of 6 fills two rows of the 3-column grid and three of the 2-column one.
+ */
 export async function LatestBlogSection({
   locale,
   limit = 6,
@@ -56,16 +42,9 @@ export async function LatestBlogSection({
   if (variant === 'lead') {
     const [lead, ...rest] = posts;
     return (
-      // Below `lg` the lead post is a `BlogPostRow` too, so its gap to the four
-      // under it has to be the gap between them — at `gap-6` it read as a
-      // separate block rather than the first row of the list.
-      //
-      // The two columns stretch rather than sitting on their own heights: the
-      // list is a whole number of rows and the card a photo with a floor, so
-      // they never agree to the pixel, and whichever is shorter grows into the
-      // difference — the card through the `1fr` photo row it already has, the
-      // list into empty space its rows do not paint. With `lg:items-start` the
-      // difference was drawn instead, as a hole under the shorter column.
+      // Below `lg` the lead post is a `BlogPostRow` too, so its gap to the rows under it is
+      // theirs. The two columns stretch rather than keeping their own heights, so the shorter one
+      // grows into the difference instead of leaving a hole under it.
       <div className="grid gap-2 lg:grid-cols-[1.5fr_1fr] lg:gap-6">
         <BlogPostCard post={lead} variant="feature" />
         {rest.length > 0 && (

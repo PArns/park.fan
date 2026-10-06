@@ -6,17 +6,15 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 
 interface LiveContinentOpenCountProps {
   continentSlug: string;
-  /** SSR seed baked into the hourly shell — shown until the shared geo-live batch call lands. */
+  /** SSR seed baked into the shell, shown until the shared geo-live batch call lands. */
   initialOpenCount: number;
   parkCount: number;
 }
 
 /**
- * Live open-park counter + progress bar for one continent card in the homepage
- * "parks open now" grid. The prerendered shell bakes an hourly seed; the live count
- * overlays it after mount via the shared {@link useGeoLiveStats} batch call (one
- * request for all continents, 5-min poll) — so the "live" section is actually live
- * without pinning the homepage shell to a short ISR window.
+ * Live open-park counter and progress bar for one continent card in the homepage "parks open now"
+ * grid: the shell bakes a seed and the shared {@link useGeoLiveStats} batch call (one request for
+ * all continents) overlays it after mount, without pinning the shell to a short ISR window.
  */
 export function LiveContinentOpenCount({
   continentSlug,
@@ -24,15 +22,9 @@ export function LiveContinentOpenCount({
   parkCount,
 }: LiveContinentOpenCountProps) {
   /*
-   * Auch hier zählt im ersten Client-Render der Seed.
-   *
-   * Dieselbe Falle wie in GlobalStatsLiveCounts, nur mit der anderen geteilten Abfrage: Der Seed
-   * kommt aus einem Fetch, der die volle Stunde des Shells gecached ist, der Poll aus dem
-   * no-store-Proxy — ob beide dieselbe Zahl nennen, ist Zufall. Und nichts garantiert, dass diese
-   * Karte die erste ist, die `useGeoLiveStats` liest: Sie sitzt in der letzten Suspense-Boundary
-   * einer langen Seite, während das World-Panel im Hero nach `load` + idle mountet und dieselbe
-   * Anfrage abschickt. Kommt deren Antwort vorher an, rendert der Client 14, wo im Server-HTML 17
-   * steht, und React verwirft den Teilbaum. Der Live-Wert landet einen Commit später.
+   * The seed counts in the first client render here too: the seed and the poll come from different
+   * caches, and the hero's world panel may fire the same query first, so the client could render a
+   * number the server HTML does not have. The live value lands one commit later.
    */
   const mounted = useMounted();
   const { data } = useGeoLiveStats();

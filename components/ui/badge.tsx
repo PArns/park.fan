@@ -42,13 +42,8 @@ function Badge({
 
 /**
  * The exact presentation props `<Badge>` applies, for a link that should *look* like a badge.
- *
- * The `<Button>` counterpart, `buttonLinkProps`, carries the full reasoning: from a **server**
- * component, `asChild` hands a client component like `next/link` to Radix's `Slot` as a lazy
- * client reference rather than an element, which throws once that chunk is already resolved. See
- * `docs/development/conventions.md` §14.
- *
- * Slotting a plain `<a>` stays fine (host elements are never lazy) — see `rcdb-badge.tsx`.
+ * Server components use it instead of `asChild` around a client component, for the reason on
+ * `buttonLinkProps`. Slotting a plain `<a>` is fine: host elements are never lazy.
  */
 function badgeLinkProps({
   variant,

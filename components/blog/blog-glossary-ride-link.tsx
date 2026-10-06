@@ -7,12 +7,9 @@ const CHIP_ONLY = new Set(['chip']);
 
 /**
  * A ride link authored in a glossary definition, rendered inside a blog post: the label plus the
- * live wait-time (or status) chip a `ref:` link carries.
- *
- * Definitions hold finished geo paths where `ref:` links hold a slug key, so the path is split
- * (`parseGlossaryRideHref`) and resolved the way `ref:` links are. The chip carries no photos: the
- * hover card falls back to its photo-less layout, which a `ref:` link also uses without an image. A park link (four segments), an unknown ride or a
- * failed lookup shows `fallback`, the plain anchor, instead of throwing.
+ * live wait-time (or status) chip a `ref:` link carries. The definition's geo path is split
+ * (`parseGlossaryRideHref`) and resolved as `ref:` links are; the hover card uses its photo-less
+ * layout. A park link, an unknown ride or a failed lookup shows `fallback`, the plain anchor.
  */
 export async function BlogGlossaryRideLink({
   label,

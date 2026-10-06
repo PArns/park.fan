@@ -9,40 +9,12 @@ interface TemperatureUnitToggleProps {
 }
 
 /**
- * °C ⇄ °F, as one button in the header beside the theme switch.
- *
- * It used to be a two-segment pill in the weather card's header, i.e. reachable on park pages
- * and nowhere else — while the unit governs temperatures in the calendar, in blog posts and on
- * the best-travel-time hub too. It sits next to the other two preferences now (language, theme),
- * which is also the only row that is on every page.
- *
- * **The bar decided the shape.** Measured at 360 px (the width most Android phones still report),
- * the header row carries 303 px of content in 328 px: 25 px of slack, and a two-segment pill is
- * 54 px wide. So the control shows the unit that is ACTIVE and switches to the other one on
- * click — 28 px, 24 on a phone, which fits beside the locale switcher once that drops its
- * redundant country code below `sm`. Above `sm` the extra clarity of both segments would be affordable and is
- * deliberately not taken: one control that looks the same everywhere beats two markups that
- * hydrate into each other.
- *
- * The `max-sm:min-w-6` is the last 4 px of that budget, and it is paid here because this is the
- * control that spends it: at 320 px, the smallest viewport still in the logs, the row was already
- * 15 px over its box before this button existed — absorbed by the container's own padding, so
- * nothing scrolled — and the button plus the header's tightened phone gaps have to land back
- * under that same 16 px. Measured: 320 px document, no sideways scroll, at every width from 320
- * to 768.
- *
- * **Which unit is shown is CSS, not React state** — the same `.u-metric` / `.u-imperial` pair
- * that every server-rendered temperature on the site uses, under the `html[data-temp-unit]` the
- * inline script writes before paint. Branching on the context during render made this the one
- * control on the page that disagreed with the values it governs until React booted — and worse,
- * a hydration mismatch: the provider resolves the unit outside React, so a weather widget
- * hydrating after that was hydrated against `F` while its server HTML said `C`, and React logged
- * the subtree and patched nothing. Static classes cannot mismatch, and the pre-paint attribute
- * has the answer before the first frame.
- *
- * For the same reason the click reads the attribute rather than the context: whatever the CSS is
- * currently showing is what the reader is looking at, so flipping that is always the right move,
- * with no render state to be stale.
+ * °C ⇄ °F as one button in the header beside the theme switch, the one row on every page. It shows
+ * the active unit and switches on click, because the 360 px bar has no room for a two-segment pill.
+ * Which unit is shown is CSS (`.u-metric` / `.u-imperial` under `html[data-temp-unit]`), not React
+ * state, so it can never disagree with the temperatures it governs or cause a hydration mismatch;
+ * the click reads the attribute for the same reason. See
+ * docs/rules/a-client-only-preference-may-not-decide-server-rendered-markup.md.
  */
 export function TemperatureUnitToggle({ className }: TemperatureUnitToggleProps) {
   const { setUnit } = useTemperatureUnit();
@@ -56,20 +28,14 @@ export function TemperatureUnitToggle({ className }: TemperatureUnitToggleProps)
       }
       title={t('temperatureUnitToggle')}
       className={cn(
-        // Height and border are the theme switch's (`h-7`, same ring, same muted fill): the two
-        // sit 4 px apart and read as one pair of preferences. The button scale's 44 px phone tier
-        // is cancelled here like it is for the locale switcher, the search trigger and the
-        // burger — the bar is `h-12` and 44 in 48 is the mistake that requirement exists to
-        // prevent. This is the fourth and, unless the bar grows, the last opt-out.
+        // The theme switch's height and border, so the two read as one pair. The 44 px phone tier
+        // is cancelled because the bar is `h-12`, see
+        // docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md.
         'border-border/60 bg-muted/60 text-muted-foreground inline-flex h-7 shrink-0 items-center',
         'justify-center rounded-full border px-1 text-[11px] font-medium',
-        // **The width may not depend on which unit is active.** `°F` is narrower than `°C`, so a
-        // button sized by its label changed width under the finger that pressed it, and the two
-        // controls beside it slid over with it — in a row whose every pixel is accounted for. The
-        // `min-w` makes the label's width irrelevant while it is under the box (it is: ~13 px of
-        // text in 28), and the `px-1` is what happens if a reader's font ever pushes past that:
-        // the button grows rather than clipping. Circular at 28, which is what sits well beside
-        // the theme switch's 48 × 28 pill.
+        // The width may not depend on the active unit: `°F` is narrower than `°C`, and a button
+        // that resized under the finger would slide its neighbours. `px-1` lets it grow rather than
+        // clip if a reader's font is larger.
         'min-w-7 max-sm:min-w-6',
         'hover:border-primary/50 hover:text-foreground focus-visible:ring-ring transition-colors',
         'focus-visible:ring-2 focus-visible:outline-none',

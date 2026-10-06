@@ -40,34 +40,19 @@ const TILE =
   'border-border/60 bg-background/40 hover:border-primary/40 hover:bg-background/60 focus-visible:ring-ring flex min-w-0 flex-col justify-center gap-1 rounded-xl border px-3 py-2 transition-colors focus-visible:ring-2 focus-visible:outline-none';
 
 /**
- * The part of the homepage hero that is for somebody standing in a park, or right next to one.
+ * The part of the homepage hero for somebody standing in a park, or right next to one: two things
+ * to press and two to read.
  *
- * It used to be a row of badges — open, rides running, crowd, hours — and a „Zum Park" link that
- * never rendered for a visitor inside the park: `/api/nearby` sends no URL for the park in its
- * `in_park` answer, and the link was built from exactly that field. Somebody at the gate got a
- * welcome and nothing to press.
+ * - **„Heute planen"** opens the planner's wizard with this park and today already answered (the
+ *   calendar's hand-off: `plannerPageDay` plus a `page-park-wizard` request). If today is already
+ *   planned it opens that day; if the park is shut or closed today it asks for the date.
+ * - **„Zum Park"**: the wait times, with how many rides are running.
+ * - **Öffnungszeiten**: today's hours, with a dot for open now, to the crowd calendar.
+ * - **Wetter**: the nowcast's condition and temperature, to the weather chapter.
  *
- * Now it is two things to press and two things to read:
- *
- * - **„Heute planen"** opens the planner's wizard with this park and the park's today already
- *   answered, on „Wer kommt mit". It is the calendar's hand-off (`plannerPageDay` + a
- *   `page-park-wizard` request); the park reaches the panel through the beacon mounted here,
- *   which is what makes the homepage „about" this park while the hero says it is. The wizard's
- *   last step goes to the park's page, where the ride cards are. If today is already in the plan
- *   it opens that day instead, and if the park is shut today or has closed it asks for the date.
- * - **„Zum Park"** — the wait times, with how many rides are running under it.
- * - **Öffnungszeiten** — today's hours with a dot for open right now, to the crowd calendar.
- * - **Wetter** — the 15-minute nowcast's condition and temperature, to the weather chapter.
- *
- * The weather is the one request of its own (`useWeatherNowcast`, the key the park page uses), and
- * only for a visitor this hero has placed in or near a park; everybody else never mounts this.
- * Everything else is in the nearby answer the hero already has.
- *
- * The whole block renders after mount (the hero's nearby variant is gated on it), so it may read
- * the clock and the plan in render without a hydration mismatch. Values that arrive later still
- * sit in fixed-height lines, and the placeholders are static bars rather than `animate-pulse`: the
- * plate is glass, and an endless animation under a `backdrop-filter` is what made „Heute im Park"
- * flicker.
+ * The weather is the only request of its own (`useWeatherNowcast`). The block renders after mount,
+ * so it may read the clock and the plan in render; late values sit in fixed-height lines with
+ * static placeholders, since an endless animation under the plate's `backdrop-filter` flickers.
  */
 export function HeroParkActions({ park, className }: { park: HeroPark; className?: string }) {
   const t = useTranslations('parks');

@@ -10,10 +10,7 @@ interface PageHeaderProps {
   className?: string;
 }
 
-/**
- * Standard page header with breadcrumb, title, and optional description
- * Used across all geo pages (continent, country, city)
- */
+/** Geo page header (continent, country, city): breadcrumb, title and an optional description. */
 export function PageHeader({
   breadcrumbs,
   currentPage,

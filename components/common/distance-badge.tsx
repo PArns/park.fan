@@ -8,9 +8,9 @@ interface DistanceBadgeProps {
   size?: 'sm' | 'md';
   className?: string;
   /**
-   * Draw the label through CSS (`content: attr(…)`) instead of as text. For the invisible copy
-   * that reserves the badge's width: same box, but no "20000 km away" in the document text that
-   * crawlers, snippets and text extractors read (SEO run, 2026-10-03).
+   * Draw the label through CSS (`content: attr(…)`) instead of as text, for the invisible copy that
+   * reserves the badge's width: same box, but no "20000 km away" in the text crawlers and snippets
+   * read.
    */
   sizer?: boolean;
 }

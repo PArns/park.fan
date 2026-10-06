@@ -6,12 +6,8 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 
 /**
- * The row-shaped vocabulary the header's favorites band shares between its groups.
- *
- * It sat inside `favorites-menu-panel.tsx` while that file was the only thing drawing rows. The
- * alerts group is lazily imported (its half of `lib/push` has no business in the chrome bundle of
- * ~35,000 pages), so it cannot reach into the panel's private helpers without importing the very
- * module that imports it. Same rows, one definition, no cycle.
+ * The row-shaped vocabulary the header's favorites band shares between its groups, in its own file
+ * so the lazily imported alerts group can use it without importing the panel that imports it.
  */
 
 /** Rows per group in the sheet, where they are cheaper. */
@@ -40,10 +36,9 @@ export function Row({
   title: string;
   subtitle?: string | null;
   /**
-   * The part of the subtitle that must never be cut: an alert's threshold, a reminder's time. It
-   * sits after `subtitle` on the same line and outside its `truncate`, so the park name gives way
-   * and the value stays readable. Same line, so the row's height and the band's row count do not
-   * move (PAR-71).
+   * The part of the subtitle that must never be cut: an alert's threshold, a reminder's time. On
+   * the same line after `subtitle` and outside its `truncate`, so the park name gives way and the
+   * row's height does not move.
    */
   subtitleValue?: string | null;
   image?: string | null;
@@ -89,7 +84,7 @@ export function Row({
               {subtitle && (
                 <>
                   <span className="truncate">{subtitle}</span>
-                  {/* No-break spaces, so the row's text reads "Park · value" exactly as before. */}
+                  {/* `whitespace-pre` keeps the spaces, so the row reads "Park · value". */}
                   <span className="shrink-0 whitespace-pre">{' · '}</span>
                 </>
               )}
@@ -121,8 +116,8 @@ export function GroupHeading({ title, count }: { title: string; count: number })
 }
 
 /**
- * `max` is the caller's own cap, not the sheet's: a group that slices its rows at `MAX_CARDS`
- * would otherwise reserve five and grow by three when the request lands.
+ * Skeleton rows for a group still loading. `max` is the caller's own cap, not the sheet's, or a
+ * group capped at `MAX_CARDS` would reserve five rows and then grow.
  */
 export function RowSkeletons({ count, max = MAX_ROWS }: { count: number; max?: number }) {
   return (
@@ -141,14 +136,9 @@ export function RowSkeletons({ count, max = MAX_ROWS }: { count: number; max?: n
 }
 
 /**
- * A row group's box before its content exists: the heading it is going to have, and as many
- * skeleton rows as it expects to fill.
- *
- * It is the `Suspense` fallback of the lazily imported alerts group, and it is a component rather
- * than an inline `<div>` because a placeholder has to reserve the group's HEIGHT and not only its
- * track in the band. An empty box held the 208 px slice and nothing else, so the chunk landing
- * dropped a heading plus three rows — about 210 px — into an open panel, and a server answering
- * "none" pulled it back out again.
+ * A row group's box before its content exists: its heading and as many skeleton rows as it
+ * expects. The `Suspense` fallback of the lazy alerts group, reserving the group's height and not
+ * only its track, so the chunk landing does not drop rows into an open panel.
  */
 export function RowGroupSkeleton({
   title,
@@ -174,10 +164,8 @@ export function RowGroupSkeleton({
 }
 
 /**
- * „+3 weitere“ under a group that ran past its cap. `href` is where the rest actually is —
- * `/favorites` for favorites, `/alerts` for the alerts group. It used to be `/#favorites`, an
- * anchor no page in this repo ever carried: the link landed at the top of the homepage and left
- * the reader to find the band.
+ * „+3 weitere“ under a group that ran past its cap. `href` is where the rest actually is:
+ * `/favorites` for favorites, `/alerts` for the alerts group.
  */
 export function MoreLine({
   hidden,

@@ -52,27 +52,13 @@ interface ShowFollowDialogProps {
 }
 
 /**
- * Every way of asking for a show reminder ends here: the corner bell, and a
- * tap on any showtime badge. The bell used to toggle the follow silently on
- * click, which left the one question a visitor actually has unanswered —
- * WHICH show did I just sign up for, and when is it? A dialog can name both;
- * a corner icon that quietly changes colour cannot.
- *
- * Which performance it names is the whole question, and there are three
- * answers in this order: the one that was tapped (`startTime`), the one this
- * browser has already pinned, and — only when neither exists — whichever
- * comes next, which is the open-ended follow a card's corner bell files.
- * Naming the next one over a pin was wrong in the one way that matters: the
- * API sends the pinned performance and the dialog was announcing another.
- *
- * One reminder per show, because that is what `show_follows` holds: it is
- * unique on (subscription, show) and its upsert overwrites `startTime`. So
- * arming a second performance MOVES the reminder, and the dialog says so
- * before the press rather than leaving it to be discovered.
- *
- * The mirror is only a cache, so opening the dialog asks the server what it
- * holds for this show and takes that over (`reconcileShowFollowLocal`). A
- * failed answer changes nothing: unknown is not the same as none.
+ * Every way of asking for a show reminder ends here: the corner bell and a tap on any showtime
+ * badge, so the visitor sees which show and when. The performance it names is, in order: the one
+ * tapped (`startTime`), the one this browser already pinned, else the next one (the open-ended
+ * follow). One reminder per show, because `show_follows` is unique on (subscription, show) and
+ * overwrites `startTime`, so arming a second performance moves it and the dialog says so first.
+ * On open it asks the server what it holds (`reconcileShowFollowLocal`); a failed answer changes
+ * nothing.
  */
 export function ShowFollowDialog({
   open,
@@ -125,10 +111,8 @@ export function ShowFollowDialog({
     };
   }, [open, showId]);
 
-  // Both outcomes close the dialog, the way the ride bell's own dialog used to
-  // close on save: the press answered the only question this dialog asks, and
-  // a form that stays open after succeeding reads as one that did not. Only a
-  // FAILURE holds it open — that is when there is something left to read.
+  // Both outcomes close the dialog: the press answered its only question, and a form that stays
+  // open after succeeding reads as one that did not. Only a failure holds it open.
   const arm = async (start: string | null | undefined) => {
     pressedRef.current = true;
     setPending(true);
@@ -152,9 +136,8 @@ export function ShowFollowDialog({
     pressedRef.current = true;
     setPending(true);
     setError(null);
-    // No optimistic `setFollowing(false)` before the call any more: `unfollowShow` writes the
-    // local mirror itself, and only once the server has confirmed. Flipping the bell first
-    // meant a refused DELETE left it dark over a reminder that would still arrive.
+    // No optimistic `setFollowing(false)`: `unfollowShow` writes the local mirror itself, once the
+    // server has confirmed, so a refused DELETE cannot leave the bell dark over a live reminder.
     const result = await unfollowShow(showId);
     setPending(false);
     if (!result.ok) {
@@ -190,8 +173,7 @@ export function ShowFollowDialog({
   // before the 18:00 one. Only the press that ARMS one names one.
   const armedOpenEnded = active && armedStart === null;
   const chosenStart = armedOpenEnded ? null : (startTime ?? pinnedStart);
-  // An open-ended reminder can be narrowed to the performance this dialog was
-  // opened from. Until now it only offered to turn the whole thing off.
+  // An open-ended reminder can be narrowed to the performance this dialog was opened from.
   const canNarrow = armedOpenEnded && !!startTime && isUpcoming(startTime);
   const nextStart =
     (canNarrow ? startTime : null) ??

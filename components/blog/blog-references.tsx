@@ -33,7 +33,6 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
   const t = await getTranslations('blog');
   const tGeo = await getTranslations('geo');
 
-  // --- 1. Gather every referenced slug --------------------------------------
   const {
     parkSlugs: inlineParkSlugs,
     attractions: inlineAttractionRefs,
@@ -65,7 +64,6 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
     if (gp && !parkGeoPathBySlug.has(parkSlug)) parkGeoPathBySlug.set(parkSlug, gp);
   }
 
-  // --- 2. Resolve in parallel ----------------------------------------------
   const parks = (
     await Promise.all(
       [...parkSlugSet].map((slug) => resolvePark(slug, parkGeoPathBySlug.get(slug)))

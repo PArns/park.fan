@@ -5,27 +5,11 @@ import { useRouter } from '@/i18n/navigation';
 import { TOOL_DESCRIPTORS } from '@/lib/agents/tool-descriptors';
 
 /**
- * WebMCP: what park.fan can do, offered to an agent that is looking at the page rather than
- * crawling the site.
- *
- * The rest of this repo's machine-readable surface (llms.txt, the skills, the API catalog)
- * tells an agent where to go and leaves it to fetch things itself. This is the other half: an
- * assistant sitting in the browser gets to ask *this tab*.
- *
- * The three data tools are the MCP server's, not copies of it — they register the shared
- * descriptors and execute by calling `/api/mcp`, so a browser-side agent and a desktop client
- * get the same answer from the same code. That is not politeness: the rules those answers
- * depend on (a park that publishes no wait times looks identical to a park shut for the night;
- * a ride out of season is not one of today's rides) live on the server with the data, and a
- * second implementation in the browser would be a second place for them to go wrong.
- *
- * The fourth tool is the one that only exists here, because it is the one thing a tab can do
- * that a server cannot: move. It refuses `/admin` — the back office is fenced off in robots.txt,
- * in an `X-Robots-Tag` and in the layout's metadata, and this is the only one of those fences an
- * agent could otherwise walk through.
- *
- * Costs nothing where the API does not exist: the effect returns immediately on a browser
- * without `navigator.modelContext`, which today is nearly all of them.
+ * WebMCP: park.fan's tools, offered to an agent looking at the page rather than crawling the site.
+ * The data tools register the MCP server's shared descriptors and run through `/api/mcp`, so the
+ * rules their answers depend on (parks we cannot read, rides out of season) have one
+ * implementation. The navigate tool refuses `/admin`, the one fence an agent could otherwise walk
+ * through. A no-op in browsers without `navigator.modelContext`.
  */
 
 /** The slice of the not-yet-shipped API this uses, so it compiles without a global type. */

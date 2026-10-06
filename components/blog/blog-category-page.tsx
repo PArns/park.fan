@@ -25,10 +25,9 @@ import { blogFeedAlternates } from '@/lib/blog/feed';
 import { categoryPath, NEWS_CATEGORY } from '@/lib/blog/paths';
 
 /**
- * A blog category listing at `/blog/category/[...path]`. Articles only: the news category is not
- * a blog category — its posts live under `/news`, and its overview is the news page
- * (`NewsIndexPageBody`, `components/blog/news-index-page.tsx`), which draws nothing from here. Canonical, hreflang and
- * breadcrumbs come from `categoryPath` (`lib/blog/paths.ts`).
+ * Metadata for a blog category listing at `/blog/category/[...path]`. Articles only: the news
+ * category's posts live under `/news` (`NewsIndexPageBody`). Canonical, hreflang and breadcrumbs
+ * come from `categoryPath` (`lib/blog/paths.ts`).
  */
 export async function buildCategoryMetadata(locale: string, path: string[]): Promise<Metadata> {
   if (!routing.locales.includes(locale as Locale)) return {};
@@ -60,10 +59,8 @@ export async function buildCategoryMetadata(locale: string, path: string[]): Pro
         ...generateAlternateLanguages((l) => `/${l}${href}`),
         'x-default': `${SITE_URL}/en${href}`,
       },
-      // The one blog listing that never had this. There is no per-category feed
-      // — three categories over seven posts would mostly be one post at a
-      // second URL — so a category page points at the locale's feed, which is
-      // also what the autodiscovery spec asks for: one link, the main feed.
+      // No per-category feed (a few categories over few posts would repeat one post at a second
+      // URL), so a category page points at the locale's main feed, as autodiscovery asks.
       types: blogFeedAlternates(locale as Locale),
     },
   };

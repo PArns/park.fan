@@ -8,18 +8,11 @@ import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { STORY_SECTION } from './section-chrome';
 
 /**
- * Chapter: the forecast, and what the rest of the market does instead.
- *
- * Three competitor cards, then the claim, then {@link MLStatsSection} in its
- * `bare` variant as the evidence. The order is the argument: every card names
- * its own limit, all three limits are the same one (nobody publishes an error),
- * and the block underneath is this site publishing its error. That only works if
- * the numbers below are the live ones — they are, straight off `/v1/ml/dashboard`,
- * which is also why no sentence here quotes a figure it renders.
- *
- * The competitors are described by approach, not by name: the shapes are stable,
- * a particular site's product is not, and a page that names a rival ages into a
- * claim about them that nobody re-checks.
+ * Chapter: the forecast, and what the rest of the market does instead. Three competitor cards,
+ * then the claim, then {@link MLStatsSection} (`bare`) as the evidence: every card names the same
+ * limit (nobody publishes an error), and the block underneath publishes ours, live, which is why
+ * no sentence quotes a figure it renders. Competitors are described by approach, not by name, so
+ * the page does not age into claims about a rival.
  */
 export async function ChapterAI() {
   const [t, tCommon] = await Promise.all([

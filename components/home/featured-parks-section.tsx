@@ -2,12 +2,10 @@ import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-
 import type { GeoStructure } from '@/lib/api/types';
 
 /**
- * Featured parks per locale — verified slugs from footer + API structure.
- * Ordered by visit relevance for each language audience.
+ * Featured parks per locale, ordered by wait-time search relevance for each language market (TEA
+ * Global Experience Index and European attendance rankings). 'disneyland-park' resolves to Paris,
+ * because Europe is traversed before North America.
  */
-// Sources: TEA 2024 Global Experience Index + European attendance rankings.
-// Ordered by wait-time search relevance for each language market.
-// Note: 'disneyland-park' resolves to Paris (Europe traversed before North America).
 const FEATURED_PARK_SLUGS: Record<string, string[]> = {
   de: [
     'europa-park', // 6M visitors, #1 DACH by far
@@ -60,10 +58,9 @@ const FEATURED_PARK_SLUGS: Record<string, string[]> = {
 };
 
 /**
- * Day-stable, cacheable park fields only — deliberately NO live data (status, crowd, wait,
- * schedule). Those used to be baked from the geo snapshot, which forced the geo fetch (and with
- * it every page rendering this section) onto a 5-min ISR window; they now overlay client-side
- * via `useRegionParks` (see FeaturedParkCardsLive), the same pattern as the hub-page grids.
+ * Day-stable, cacheable park fields only, with no live data (status, crowd, wait, schedule): those
+ * overlay on the client via `useRegionParks` (see FeaturedParkCardsLive), so the geo fetch does not
+ * pin every page with this section to a 5-minute ISR window.
  */
 interface FeaturedPark {
   name: string;
@@ -118,11 +115,8 @@ export function extractFeaturedParks(geoData: GeoStructure | null, locale: strin
     }
   }
 
-  // A slug that no longer exists in the geo structure used to vanish here without a trace —
-  // that is how the "Magic Kingdom Park" -> "Disney Magic Kingdom" rename quietly removed the
-  // #1 featured park for English visitors, and the `portaventura-world` typo kept it/es one park
-  // short for far longer. The list above is hand-curated, so an unresolved slug is always a bug
-  // in it (or a rename to follow) — say so instead of silently shipping a shorter row.
+  // The list above is hand-curated, so a slug the geo structure does not have is a bug in it (or a
+  // rename to follow): say so instead of silently shipping a shorter row.
   const missing = slugs.filter((slug) => !slugMap.has(slug));
   if (missing.length > 0) {
     console.warn(

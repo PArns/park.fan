@@ -43,9 +43,6 @@ function TooltipTrigger({ ...props }: React.ComponentProps<typeof TooltipPrimiti
  * - `z-[70]` `SheetContent` / `DialogContent` and their overlays
  * - `z-[80]` popovers and menus opened from inside a sheet (call-site class)
  * - `z-[90]` tooltip — it is opened from anything above, so it sits on top
- *
- * The tooltip was `z-50`, so one opened from a sheet painted under it: at
- * 1440x900 only 58 of 256 px of the box were visible.
  */
 function TooltipContent({
   className,

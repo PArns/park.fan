@@ -6,12 +6,8 @@ import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
 import { GlossarySegments } from './glossary-segments';
 
 /**
- * Async server component — fetches glossary terms for the given (or current) locale and
- * replaces the first occurrence of each term (or alias) with a dashed-underline
- * tooltip link. No provider or wrapper needed.
- *
- * @param locale  Optional: the locale to use. If not provided, uses getLocale().
- * @param noUnderline  When true, suppress the dashed underline (e.g. inside headings).
+ * Async server component that links the first occurrence of each glossary term or alias in its
+ * text to a dashed-underline tooltip. `locale` defaults to the request's locale.
  */
 export async function GlossaryInject({
   children,

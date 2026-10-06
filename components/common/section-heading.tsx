@@ -21,10 +21,8 @@ interface SectionHeadingProps {
   /** Heading level for correct document outline. Defaults to h2. */
   as?: 'h2' | 'h3';
   /**
-   * `chapter` (default): the site-wide chapter header — oversized translucent
-   * icon, big title, closing rule (`ChapterHeading`). `plain`: bare tinted
-   * icon + semibold title + optional badge — the card/sub-section header
-   * (absorbed the former separate `SectionHeader` component).
+   * `chapter` (default): the site-wide chapter header (`ChapterHeading`). `plain`: a tinted icon, a
+   * semibold title and an optional badge, the card or sub-section header.
    */
   variant?: 'chapter' | 'plain';
   /**
@@ -37,10 +35,8 @@ interface SectionHeadingProps {
 }
 
 /**
- * Labeled section header used to split pages into clear chapters
- * ("Jetzt im Park", "Beste Besuchszeit", city sections on country pages, …)
- * instead of anonymous `<Separator>` dividers. Server-compatible (no client
- * hooks) so it renders into the static shell for SEO + instant paint.
+ * Labeled section header that splits a page into chapters instead of anonymous `<Separator>`
+ * dividers. Server-compatible, so it renders into the static shell.
  */
 export function SectionHeading({
   icon: Icon,

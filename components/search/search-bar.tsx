@@ -106,13 +106,9 @@ export function SearchCommand({
     return () => document.removeEventListener('keydown', onKey);
   }, [autoFocusOnType, open]);
 
-  // Pre-mount the (closed) lazy dialog during idle so the first tap opens an already-mounted
-  // palette instead of one that still has to fetch its chunk + mount before it can focus. That
-  // async gap is what keeps the on-screen keyboard down on the first tap on mobile (see the
-  // `prewarm` prop docs). Gated to coarse-pointer (touch) devices — desktop focus() works
-  // regardless of the lazy mount, so there's no reason to pull cmdk onto the idle path there.
-  // Scheduled after load + idle so it never competes with LCP/hydration; the dialog stays
-  // closed (open=false) so no portal content renders and no visible change occurs.
+  // Pre-mount the closed dialog during idle on touch devices (see `prewarm`), after load so it
+  // never competes with LCP. Desktop focus() works regardless, so cmdk stays off the idle path
+  // there.
   useEffect(() => {
     if (!prewarm || hasOpened) return;
     if (!window.matchMedia?.('(pointer: coarse)').matches) return;
@@ -149,20 +145,11 @@ export function SearchCommand({
       {trigger === 'button' && (
         <Button
           variant="outline"
-          /* `sm` is the header bar, where this stands in for the search field below `lg`. Two
-             things it must not do there:
-
-             - be taller than the burger beside it (it was 40 against 36), and
-             - widen to `md:w-64`. That expansion band is exactly 768–1023 px — the widths where
-               the bar ALSO shows the full navigation and no burger — and 256 px of search button
-               is what pushed the row over the container: 789 px of content in a 736 px box at 768,
-               which wrapped the nav to two lines and gave the document a horizontal scrollbar.
-               Icon-only until `lg` hands over to the real input.
-
-             `lg` (the /ui gallery, anything outside the bar) keeps the wide trigger. */
-          /* The `max-sm:` pair on the `sm` branch cancels the button scale's 44 px phone tier,
-             for the same reason as the two points above: this branch IS the header bar, and 44 px
-             of control in a 48 px row is what the header-geometry requirement forbids. */
+          /* `sm` is the header bar, where this stands in for the search field below `lg`: icon-only
+             and no taller than the burger, since a wider trigger at 768–1023 px pushed the row over
+             the container. The `max-sm:` pair cancels the button scale's 44 px phone tier, see
+             docs/rules/the-header-is-48-px-and-its-height-is-written-down-in-four.md. `lg` keeps
+             the wide trigger. */
           className={`relative p-0 ${
             size === 'sm'
               ? 'h-9 w-9 max-sm:h-9 max-sm:w-9'

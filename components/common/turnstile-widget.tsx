@@ -4,27 +4,11 @@ import { useEffect, useImperativeHandle, useRef, type Ref } from 'react';
 import { useTheme } from 'next-themes';
 
 /**
- * Cloudflare Turnstile widget (explicit render).
- *
- * Loads the Turnstile script once, renders into our container, and surfaces the
- * solved token via `onVerify`. The token is then POSTed to the route that acts
- * on it, where the server verifies it with the secret key
- * (`lib/security/turnstile.ts`).
- *
- * Site key comes from NEXT_PUBLIC_TURNSTILE_SITE_KEY; when unset we fall back to
- * Cloudflare's official always-passes TEST key so the form still renders in dev.
- *
- * Two things exist for the admin login and are worth stating, because both are
- * about a token being **single-use**:
- *
- *  - `ref.reset()`. A login is two round trips when the account has a second
- *    factor — password, then code — and the first one spends the token. Without
- *    a reset the code step would arrive with a token Cloudflare has already
- *    retired and every 2FA login would fail on its last step. The caller resets
- *    after every attempt, successful or not.
- *  - `theme`. `/admin` is hardcoded dark and mounts no next-themes provider, so
- *    `useTheme()` answers `undefined` there and the widget would render its
- *    light skin on a near-black panel. An explicit prop wins over the hook.
+ * Cloudflare Turnstile widget (explicit render): loads the script once and surfaces the solved
+ * token via `onVerify`; the route that acts on it verifies it server-side
+ * (`lib/security/turnstile.ts`). Without NEXT_PUBLIC_TURNSTILE_SITE_KEY it uses Cloudflare's
+ * always-passes test key. A token is single-use, so a caller resets it (`ref.reset()`) after every
+ * attempt. `theme` is a prop because `/admin` mounts no next-themes provider.
  */
 
 const TEST_SITE_KEY = '1x00000000000000000000AA';

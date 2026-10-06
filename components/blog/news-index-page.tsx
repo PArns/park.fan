@@ -33,12 +33,9 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils/metadata';
 
 /**
- * The overview's own metadata. It used to borrow the blog category's, which titled it
- * "News | Blog · park.fan", described it as "all blog posts in the category News" and asked the OG
- * route for a card at `blog/news` — a post slug that does not exist, so the card's title was the
- * word "news". The page is not a blog category any more, so none of that fits: the title carries
- * the search phrase ("Freizeitpark-News"), the card is `/api/og/<locale>/news`, and the canonical
- * is `/news` whatever `?park=` says (the filter adds no URLs, see `NewsStream`).
+ * The news overview's own metadata: a title carrying the search phrase ("Freizeitpark-News"), the
+ * card from `/api/og/<locale>/news`, and a canonical of `/news` whatever `?park=` says (the filter
+ * adds no URLs, see `NewsStream`).
  */
 export async function buildNewsIndexMetadata(locale: string): Promise<Metadata> {
   if (!routing.locales.includes(locale as Locale)) return {};

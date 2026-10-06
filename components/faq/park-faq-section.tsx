@@ -100,18 +100,14 @@ export function ParkFAQSection({
   const t = useTranslations('seo.faq');
   const tGeo = useTranslations('geo');
 
-  // "now": the server-passed seedNowMs, so the time-dependent Q1 (today's hours) and Q7 (least
-  // crowded) are part of the crawlable first HTML. Both renders read the SAME prop value → no
-  // hydration mismatch; the page is force-dynamic, so a per-request server clock is fine. The
-  // browser clock is read only when there is no seed: day-granular precision is all Q1/Q7 need,
-  // so taking it over after mount yielded the same text and cost a second pass over the whole
-  // FAQ (the items, the least-crowded ranking, the accordion) on every park page.
+  // "now" is the server's `seedNowMs`, so the time-dependent answers are in the crawlable first
+  // HTML and both renders agree. The browser clock is read only without a seed: these answers are
+  // day-granular, and taking it over after mount would only redo the whole FAQ.
   const browserNow = useBrowserNow(seedNowMs == null);
   const nowMs = browserNow ? browserNow.getTime() : (seedNowMs ?? null);
 
-  // Calendar feeds only Q7 (least-crowded days). The deferred client fetch takes over once it
-  // lands; until then the server seed (when available) backs Q7 so it's already in the first
-  // HTML. Without a seed the base Q0–Q6 render immediately — the old streamed behavior.
+  // The calendar feeds only the least-crowded answer. The server seed backs it in the first HTML
+  // until the deferred client fetch lands; without a seed the other answers render at once.
   const { data: clientCalendarData } = useParkBestDaysCalendar({
     continent,
     country,
@@ -173,19 +169,9 @@ export function ParkFAQSection({
   }
 
   /**
-   * The crowd-calendar question, which the `FAQPage` markup has always carried and no visitor
-   * could ever read.
-   *
-   * `faq-structured-data.tsx` pushes it unconditionally — its own comment says "always included
-   * in structured data" — while this section never built it, so every park page shipped a
-   * `FAQPage` claiming a question the page does not answer. That is the failure mode the
-   * agent-readiness rules name (two copies of one claim, one of them invisible), and for a
-   * `FAQPage` it is also what the format asks not to do: the content has to be on the page.
-   *
-   * It needs no data — a yes and a sentence — so it renders here from the same two keys and the
-   * same arguments the markup uses. Deliberately `t` and not `t.rich`: the message carries no
-   * `<calendar>` tag, and the point of this fix is that the visible answer and the one in the
-   * `FAQPage` are the same string.
+   * The crowd-calendar question, which the `FAQPage` markup carries, so the visible page must
+   * answer it too. It needs no data, and uses `t`, not `t.rich`, so the visible answer and the one
+   * in the markup are the same string.
    */
   faqs.push({
     iconName: 'Calendar' as ParkFaqIconName,
@@ -201,14 +187,9 @@ export function ParkFAQSection({
       locale={locale as Locale}
       segment={glossarySegment}
     >
-      {/* One box, and the questions are rows in it — the same `FaqAccordion` the ride page draws,
-        inside the same `ChapterPanel`. This was a chapter band floating over a stack of separate
-        `Card`s, each drawing its own border over the park photo: five boxes for one chapter, on
-        the page a visitor lands on from „<Park> Wartezeiten".
-
-        Nothing left the served HTML. A collapsed `<details>` is in the DOM, and this section
-        emits no structured data of its own — the park page's `FAQStructuredData` does, from the
-        same `buildParkFaqItems` array, so the two cannot drift apart. */}
+      {/* One box with the questions as rows: the `FaqAccordion` the ride page draws, inside the
+        same `ChapterPanel`. This section emits no structured data; the park page's
+        `FAQStructuredData` does, from the same `buildParkFaqItems` array. */}
       <ChapterPanel icon={HelpCircle} title={t('title', { park: parkName })} bodyPadding="none">
         <FaqAccordion
           items={faqs.map((faq) => ({

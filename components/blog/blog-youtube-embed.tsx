@@ -6,28 +6,12 @@ import { Play } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 /**
- * Responsive 16:9 YouTube embed (privacy-enhanced nocookie host), behind a facade.
- *
- * `loading="lazy"` defers the fetch, it does not shrink it: the moment an `<iframe
- * src="…youtube-nocookie.com/embed/…">` nears the viewport it pulls the whole player, roughly
- * 500–900 KB for the first one and ~250 KB for each one after. `walibi-holland-untamed-hard-gaan`
- * carries FOUR of them, and 71 embed URLs exist across the six locales — so a reader who scrolls
- * that post to the end downloaded about 1.5–2 MB of player for videos they may never start.
- *
- * So nothing loads until somebody asks for it. Until the tap this is a poster frame and a play
- * button; after it, the same iframe as before plus `autoplay=1`, because a person who has already
- * pressed play should not have to press it again.
- *
- * Two things are deliberate. The poster goes through **our** optimizer (`i.ytimg.com` is in
- * `images.remotePatterns`) rather than being pointed at directly — a direct `<img>` would restore
- * exactly the third-party request on page load that the facade exists to remove, and this way the
- * browser gets AVIF at the width it draws instead of a 480×360 JPEG. And it is `hqdefault.jpg`,
- * which YouTube has for every video; `maxresdefault` is sharper and 404s on anything the uploader
- * never gave an HD thumbnail. `hqdefault` is 4:3 with black bars, so `object-cover` crops them —
- * the visible area is 480×270, soft on a wide desktop column and right on a phone.
- *
- * The geometry is unchanged: `aspect-video` reserved the box before and reserves it now, so the
- * swap costs no layout shift.
+ * Responsive 16:9 YouTube embed (privacy-enhanced nocookie host), behind a facade:
+ * `loading="lazy"` defers the player but does not shrink it, and a post can carry several. Until
+ * the tap this is a poster and a play button; after it, the iframe with `autoplay=1`. The poster
+ * goes through our optimizer (`i.ytimg.com` is in `images.remotePatterns`), so page load makes no
+ * third-party request, and it is `hqdefault.jpg`, which every video has (`maxresdefault` can 404);
+ * `object-cover` crops its 4:3 letterbox. `aspect-video` reserves the box either way.
  */
 export function BlogYouTubeEmbed({
   id,

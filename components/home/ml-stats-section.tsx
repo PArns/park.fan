@@ -21,14 +21,10 @@ function getR2Color(r2: number | null | undefined) {
 interface MLStatsSectionProps {
   linkToFancast?: boolean;
   /**
-   * `section` (default) is the band `/fancast` renders inside its chapter 01: its own
-   * `<section>`, its own H3 (the chapter's `ChapterHeading` is the H2) and intro.
-   *
-   * `bare` drops all three and returns the metric grid alone, for a caller that
-   * has already opened the chapter — the homepage story's AI chapter states the
-   * claim ("we publish our error") and then shows these numbers as the evidence,
-   * so a second heading between the two would break the ladder and repeat the
-   * sentence above it.
+   * `section` (default) is the band `/fancast` renders in its chapter 01, with its own `<section>`,
+   * H3 and intro. `bare` returns the metric grid alone for a caller that already opened the
+   * chapter (the homepage story's AI chapter), where a second heading would repeat the sentence
+   * above it.
    */
   variant?: 'section' | 'bare';
 }
@@ -72,7 +68,6 @@ export async function MLStatsSection({
     <>
       {variant === 'section' && (
         <>
-          {/* Header */}
           <div className="mb-3 flex items-center gap-2">
             <Brain className="text-primary h-5 w-5" />
             <h3 className="text-xl font-bold">
@@ -85,9 +80,7 @@ export async function MLStatsSection({
         </>
       )}
 
-      {/* Top: Featured accuracy card + stats grid */}
       <div className="mb-10 grid gap-4 lg:grid-cols-2">
-        {/* Featured accuracy card */}
         <Card
           className={cn(
             'border-2 py-0 shadow-lg',
@@ -97,7 +90,6 @@ export async function MLStatsSection({
           )}
         >
           <CardContent className="flex flex-1 flex-col p-5">
-            {/* Live badge pill */}
             <div className="flex items-center gap-2">
               {/* Static: the card carries `backdrop-filter`, and an endless pulse inside one
                   dirties the blurred region every frame (see `LiveDot`). */}
@@ -108,7 +100,6 @@ export async function MLStatsSection({
               </span>
             </div>
 
-            {/* Primary metric: MAE — grows to fill available space */}
             <div className="mt-4 flex flex-col">
               <div className="flex items-baseline gap-2">
                 <span className={cn('text-6xl font-bold tabular-nums', styles.text)}>
@@ -128,7 +119,6 @@ export async function MLStatsSection({
               )}
             </div>
 
-            {/* Sub-metrics: RMSE + MAPE — flush at bottom */}
             <div className="grid grid-cols-2 gap-x-4 gap-y-3 border-t pt-3">
               <div>
                 <div className="text-lg font-semibold tabular-nums">
@@ -154,7 +144,6 @@ export async function MLStatsSection({
           </CardContent>
         </Card>
 
-        {/* 2×2 stats grid */}
         <div className="grid grid-cols-2 content-start gap-4">
           <Card className="py-0">
             <div className="px-4 pt-3 pb-3">
@@ -204,7 +193,6 @@ export async function MLStatsSection({
         </div>
       </div>
 
-      {/* Editorial explanation — 2 columns */}
       <div className="grid gap-8 border-t pt-10 md:grid-cols-2">
         <div>
           <div className="mb-3 flex items-center gap-2">

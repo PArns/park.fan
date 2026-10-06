@@ -1,14 +1,7 @@
 /**
- * Brand marks, in one place.
- *
- * lucide-react carried these until v1 dropped its brand set, so they live here
- * as plain paths. They were sitting privately inside `share-buttons.tsx`, which
- * was fine while sharing was the only thing that needed them — the park info
- * card needs Facebook too, and a second hand-copied path is how two Facebook
- * logos end up slightly different sizes on the same page.
- *
- * `fill="currentColor"` on a 24×24 viewBox, so they size and colour like the
- * lucide icons they sit next to.
+ * Brand marks in one place, as plain paths since lucide-react dropped its brand set, so every
+ * Facebook logo on a page is the same size. `fill="currentColor"` on a 24×24 viewBox, so they size
+ * and colour like the lucide icons beside them.
  */
 
 interface BrandIconProps {

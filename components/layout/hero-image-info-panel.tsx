@@ -2,12 +2,9 @@ import { Link } from '@/i18n/navigation';
 import type { HeroImageMeta } from '@/lib/media/hero';
 
 /**
- * Presentational hero image attribution panel (bottom-right, desktop only). Pure markup with no
- * data fetching, so both the server caption ({@link HeroImageInfo}) and the client in-park caption
- * can reuse the exact same styling — only the resolved `country` string differs by caller.
- *
- * Bottom-RIGHT because the hero's left column now runs the full height of the section (headline,
- * search panel, nearby bubbles); on the left the caption would sit under them.
+ * Hero photo attribution panel (bottom-right, desktop only), pure markup shared by the server
+ * caption and the client in-park caption. Bottom-right because the hero's left column runs the
+ * full height of the section.
  */
 export function HeroImageInfoPanel({ meta, country }: { meta: HeroImageMeta; country: string }) {
   const titleParts = [meta.attractionName, meta.area].filter(Boolean);

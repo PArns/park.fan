@@ -23,7 +23,7 @@ import type {
 import { IN_PARK_FALLBACK_DISTANCE_M } from '@/types/nearby';
 
 /** Only show "Park is nearby" hero subline when nearest park is within this (m). */
-const NEAR_PARK_HERO_RADIUS_M = 5000; // 5 km
+const NEAR_PARK_HERO_RADIUS_M = 5000;
 
 /** Sentence fallbacks when neither the SSR seed nor the live overlay has counts yet. */
 const FALLBACK_COUNTS = { openParks: null, parks: 200, attractions: 7000 };
@@ -36,14 +36,9 @@ export interface HeroInitialCounts {
 }
 
 /**
- * Glass pill above the headline: "N parks open right now", live via useGlobalStats.
- *
- * The pill's shell is rendered either way and only its CONTENT swaps — a pulsing bar until the
- * count arrives. Two separate elements (a skeleton and then the badge) measured a small but
- * real layout shift even at identical heights; one element cannot shift.
- *
- * `self-start` + `w-fit`: the hero's left panel is a flex column on xl and would stretch this
- * pill across the whole column otherwise.
+ * Glass pill above the headline: "N parks open right now", live via useGlobalStats. The shell
+ * renders either way and only its content swaps, since a skeleton replaced by a badge shifts even
+ * at identical heights. `self-start w-fit`, or the xl flex column would stretch it.
  */
 function OpenParksBadge({ openParks }: { openParks: number | null }) {
   const tHome = useTranslations('home');
@@ -71,28 +66,11 @@ function OpenParksBadge({ openParks }: { openParks: number | null }) {
 }
 
 /**
- * The open-parks badge and, beside it, the newest news post as a chip.
- *
- * One element in the text panel's flow, so the panel's entrance stagger (`hero-in-stagger`, by
- * `nth-child`) counts the same children it always did.
- *
- * **The row's own width decides the layout, never the badge's.** The badge changes width after
- * the first paint — a skeleton bar until the count arrives, then "8" or "123" parks in one of six
- * languages — so a wrap left to `flex-wrap` could move the chip to a second line late and push the
- * headline, the intro and the search 38 px down under the reader. So the row is its own container
- * (`@container/badges`): from 34 rem it is one line that never wraps (`flex-nowrap`), the badge
- * keeps its width and the chip shrinks into what is left and truncates; below that the two stand
- * in a column, badge above chip, whatever the count. 34 rem is the widest badge (French, 286 px)
- * plus the gap plus 15 rem of chip. Measured: the chip is on the badge's line from a 768 px
- * window up in all six locales, and the plate is not a pixel taller there than without it.
- *
- * The chip does not grow: a short headline gets a short chip, not a pill of empty tint.
- *
- * **In a park the chip's place goes to the compass.** While the compass is on the page (see
- * `useCompassPresent`), the row carries a pill that scrolls down to it instead of the news: in a
- * park, the rides around you are the reason to be here, and the compass sits a screen below a
- * hero that fills the phone. Same shape and height as the chip, in the chip's slot, so the swap
- * moves nothing.
+ * The open-parks badge and, beside it, the newest news post as a chip. The row's own width decides
+ * the layout, never the badge's, which changes after first paint: from 34 rem (the widest badge
+ * plus 15 rem of chip) it is one line that never wraps and the chip truncates; below that, badge
+ * above chip. In a park, while the compass is on the page, the chip's slot holds a pill that
+ * scrolls down to it, same shape and height, so the swap moves nothing.
  */
 function HeroBadgeRow({
   openParks,
@@ -152,47 +130,17 @@ function CompassPill() {
 }
 
 /**
- * The headline, with the pin beside it on a wide page, sized to German's two-line wrap — the case
- * in the screenshot that started this ticket.
- *
- * **Pin only, not the full lockup.** A full lockup (pin + wordmark, 4.21 : 1 on the wordmark) at a
- * height that reads next to `text-5xl` text is ~400 px wide — built and measured, not guessed —
- * and that leaves too little of the 608–672 px plate for the headline: German and French both fold
- * to four short lines. The pin alone is roughly 0.82 : 1, so it can go tall without doing that: at
- * 96 px it is ~79 px wide, and the headline keeps its normal two-line wrap in every locale that
- * matters.
- *
- * **The detailed pin (`logo.svg`), not `BrandPin`'s simplified one.** `BrandPin` (the header's
- * `logo-small.svg`) is a flat silhouette meant to still read at 26 px; blown up to 96 px it looks
- * like a plain icon rather than the mark. `logo.svg`/`logo-dark.svg` is cut from the same master
- * lockup (`logo-big.svg`) the favicon's detailed sizes use and the footer draws next to its own
- * wordmark — full linework at any size, which is the point at 96 px. It is inlined here rather
- * than going through a shared component: the footer draws the same pair the same way with no
- * component either, and `BrandPin`'s own contract (26 px ink box, `logo-small.svg` specifically)
- * would have to change shape to fit a different file.
- *
- * **96 px is the two-line headline's own height**, measured at the 1440 px width the ticket's
- * screenshot was taken at (`h-24`). A shorter headline (English's one-liner) sits under a taller
- * pin than its own line — the same tradeoff the original 48 px version made in the other direction,
- * just resolved toward the ticket's own reference case instead of away from it.
- *
- * **`mark` is off for the welcome headline, and that is not a nicety.** The two headlines are not
- * the same kind of string: `hero.title` is six fixed sentences that can be measured once, while
- * `heroWelcome` interpolates a park name of no fixed length, and the welcome variant only appears
- * AFTER the mount, when the nearby lookup lands. Turning the mark on there would move the intro
- * paragraph and the open-parks badge at that exact moment — the same post-mount jump this version
- * was built to avoid. Without the mark the welcome headline lays out exactly as it did before this
- * change.
- *
- * **The threshold asks the PAGE, not this card and not the window.** 1304 px is where the plate
- * stops being squeezed by the world map column (48 the hero section's `px-6` + 672 `max-w-2xl` +
- * 40 the grid's gap + 544 the map column's `34rem`) — because the ticket asks for this on a wide
- * page. Same `@container/page` every other threshold in this hero asks.
+ * The headline, with the detailed pin beside it on a wide page. The pin alone, not the full
+ * lockup, which at a height that reads beside `text-5xl` would fold German and French to four
+ * lines; `logo.svg` rather than `BrandPin`, whose flat silhouette is made for 26 px. 96 px (`h-24`)
+ * is the two-line headline's own height. `mark` stays off for the welcome headline, which appears
+ * only after mount and would otherwise move the intro and badge. The threshold asks the page
+ * (`@container/page`): 1304 px is where the world map column stops squeezing the plate.
  */
 function HeroHeadline({ children, mark = false }: { children: React.ReactNode; mark?: boolean }) {
   return (
-    // mt-4 mb-3 sat on the <h1> and moved here unchanged: margins do not collapse in a flex
-    // container, so the spacing above and below the headline is the same with the row as without.
+    // Margins do not collapse in a flex container, so `mt-4 mb-3` here spaces the headline as it
+    // would on the <h1>.
     <div className="mt-4 mb-3 flex items-center gap-4">
       {mark && (
         <span className="hidden shrink-0 @min-[1304px]/page:block">
@@ -240,13 +188,9 @@ export function HeroWithNearby({
   const tHome = useTranslations('home');
   const { data: liveNearbyData } = useHomeNearbyParks();
   /*
-   * Die Nähe-Variante erst nach dem Mount.
-   *
-   * `useHomeNearbyParks` liest die zuletzt bekannte Position aus dem localStorage und kann deshalb
-   * schon im ERSTEN Client-Render einen Park liefern. Der Server schrieb dann den allgemeinen
-   * Einleitungssatz und der Client an derselben Stelle „Das Phantasialand ist in deiner Nähe" —
-   * React verwirft den Teilbaum mit einem Hydration-Fehler. Die Umschaltung passiert ohnehin erst
-   * eine Runde später, das Gate verschiebt sie nur um einen Render.
+   * The nearby variant only after mount: `useHomeNearbyParks` reads the last known position from
+   * localStorage and can return a park in the first client render, which would not match the
+   * server's general intro.
    */
   const mounted = useMounted();
   const nearbyData = mounted ? liveNearbyData : undefined;
@@ -295,11 +239,9 @@ export function HeroWithNearby({
         null
       );
 
-    // No intro under the welcome. The general sentence („park.fan hat 210 Freizeitparks …") was
-    // six lines on a phone between the welcome and the one thing somebody in the park came for,
-    // and this variant is client-only, so the served HTML — and its crawlable intro — is the
-    // general one either way. Three children, like the general variant, so the plate's entrance
-    // stagger counts the search and the pills below at the same places.
+    // No intro under the welcome: on a phone it stood between the welcome and what somebody in the
+    // park came for, and this variant is client-only, so the crawlable HTML keeps the general
+    // intro. Three children, like the general variant, so the entrance stagger counts alike.
     return (
       <>
         <HeroBadgeRow openParks={openParks} latestNews={latestNews} />

@@ -9,10 +9,7 @@ interface StatsCardProps {
   className?: string;
 }
 
-/**
- * Standardized statistics card with title, large value, and optional description
- * Used on homepage and park status pages
- */
+/** Statistics card with a title, a large value, and an optional description and icon. */
 export function StatsCard({ title, value, description, icon: Icon, className }: StatsCardProps) {
   return (
     <Card className={className}>

@@ -72,10 +72,9 @@ export async function WhyParkFan({ locale }: { locale: Locale }) {
           />
         </Reveal>
 
-        {/* On a phone the first two reasons show and the other four open on request (PAR-435).
-            `contents` keeps all six items of one grid from 768 px up. The columns ask the
-            page's width for the same reason as the collapse: with the planner open, a wide
-            window can hold a phone-width page. */}
+        {/* On a phone the first two reasons show and the other four open on request; `contents`
+            keeps all six items of one grid from 768 px up. The columns ask the page's width, like
+            the collapse. */}
         <div className="grid gap-4 @min-[640px]/page:grid-cols-2 @min-[1024px]/page:grid-cols-3">
           {reasons.slice(0, 2).map(renderReason)}
           <MobileMore label={tCommon('showMore')} contents buttonClassName="col-span-full">

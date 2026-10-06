@@ -5,31 +5,16 @@ import { GlossaryInject } from './glossary-inject';
 /**
  * Renders a glossary definition paragraph with up to two layers of linking:
  *
- *  1. Inline markdown links `[label](href)` — authored directly in the
- *     definition text (e.g. linking a ride or park to its source). External
- *     `http(s)` links open in a new tab; anything else is treated as internal.
- *  2. With `autoLink` (the default), everything between those links is passed
- *     through {@link GlossaryInject}, which auto-links the first mention of
- *     other glossary terms.
+ *  1. Inline markdown links `[label](href)` authored in the definition. External `http(s)` links
+ *     open in a new tab.
+ *  2. With `autoLink` (the default), the text between them goes through {@link GlossaryInject},
+ *     which links the first mention of other glossary terms.
  *
- * Links are parsed first so a term name inside a markdown label is never
- * double-wrapped. Server component (GlossaryInject is async).
- *
- * `autoLink={false}` keeps layer 1 and drops layer 2. It exists for the blog's
- * `glossary-widget`, where a second auto-linking layer would be wrong twice:
- * the post body already links glossary terms in the prose around the card
- * (`injectGlossary` in `blog-content.tsx`, deduped per string, not per post),
- * so the card would link the same terms a second time; and
- * `parseGlossarySegments` has no self-exclusion, so a card explaining one term
- * would link that term's own name inside its own definition, to the page its
- * "more in the glossary" button already points at.
- * On the glossary page itself auto-linking is the only layer and stays on.
- *
- * `renderLink` lets a caller take over an internal link. It receives the plain anchor as
- * `fallback`, so a caller only has to answer for the hrefs it recognises and shows the anchor for
- * the rest. The blog widget uses it to put the
- * live wait-time chip on a link to a ride; the glossary page passes nothing and stays a plain
- * reference page.
+ * Links are parsed first, so a term inside a markdown label is never wrapped twice. The blog's
+ * `glossary-widget` passes `autoLink={false}`: the post already links terms in the prose around
+ * it, and a card would otherwise link its own term to the page its button points at. `renderLink`
+ * lets a caller take over an internal link, receiving the plain anchor as `fallback`; the blog
+ * widget uses it for the live ride chip.
  */
 
 export function GlossaryRichText({

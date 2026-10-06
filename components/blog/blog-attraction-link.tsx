@@ -33,12 +33,8 @@ interface BlogAttractionLinkProps {
 }
 
 /**
- * Inline reference to an attraction inside blog content.
- *
- * Mirrors BlogParkLink but uses the full `AttractionCard` (the same one shown
- * on favorites and on the homepage stats) inside the hover, so the reader
- * gets the background image, live wait time, sparkline, status badge and
- * crowd level.
+ * Inline reference to an attraction inside blog content: a real link whose hover card is the full
+ * `AttractionCard`, as `BlogParkLink` does for parks.
  */
 export function BlogAttractionLink({
   attraction: resolvedAttraction,
@@ -53,10 +49,8 @@ export function BlogAttractionLink({
 }: BlogAttractionLinkProps) {
   const tCommon = useTranslations('common');
   const tGeo = useTranslations('geo');
-  // The post is statically generated, so the resolved pair is a build-time snapshot — every ride
-  // in it would read "closed" for as long as the park happened to be shut when the post was
-  // built. Refresh both in the browser (see `useLiveBlogRide`); the hover card fetches the fuller
-  // payload itself once it opens.
+  // The post is statically generated, so the resolved pair is a build-time snapshot; refresh both
+  // in the browser (`useLiveBlogRide`). The hover card fetches the fuller payload once it opens.
   const { park, attraction } = useLiveBlogRide(resolvedPark, resolvedAttraction);
   const label = children ?? attraction?.attractionName ?? fallbackLabel;
   const bare = options?.has('bare') ?? false;
@@ -111,10 +105,8 @@ export function BlogAttractionLink({
         align="start"
         className="w-[420px] border-none bg-transparent p-0 shadow-none backdrop-blur-none"
       >
-        {/* See BlogParkLink for the row-template reasoning. AttractionCard
-           uses the same sm:min-h-[220px] photo spacer trick to open the 1fr
-           middle row; the minmax floor keeps the image area open even when
-           there is no background image to trigger the spacer's min-h. */}
+        {/* Row template as in BlogParkLink; the minmax floor keeps the image area open when there
+            is no background image. */}
         <BlogAttractionCardLive
           park={park}
           attraction={attraction}

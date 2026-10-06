@@ -19,14 +19,9 @@ export function HeroNearbyBubbles({ className }: { className?: string }) {
   const tSearch = useTranslations('search');
   const { entries, isPending } = useHeroBrowseParks();
   /*
-   * Bis zum Mount immer das Skelett, auch wenn schon Daten dastehen.
-   *
-   * `useNearbyParks` darunter seedet seine Query aus `localStorage` (`initialData`), also ist
-   * `isPending` auf dem Server true und im ERSTEN Client-Render bei einem wiederkehrenden
-   * Besucher false. Der Server schrieb damit `<div data-slot="skeleton">`, der Client an
-   * derselben Stelle `<a href="/de/parks/…">` — ein Hydration-Fehler, nach dem React den
-   * Teilbaum wegwirft und neu rendert. Das Skelett reserviert dieselbe Box, der Tausch nach dem
-   * Mount kostet also weiterhin keinen Versatz.
+   * The skeleton until mount, even when data is there: `useNearbyParks` seeds from
+   * `localStorage`, so a returning visitor's first client render would not match the server's
+   * skeleton. The skeleton holds the same box, so the swap costs no shift.
    */
   const mounted = useMounted();
 

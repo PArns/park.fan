@@ -3,16 +3,10 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Thin fixed bar at the top of the viewport tracking how far the reader has
- * scrolled through the article body. Progress reaches 100% at the end of the
- * post content (the `#blog-progress-end` marker), not the end of the page — so
- * the references, related posts and footer below it don't count.
- *
- * Driven imperatively: the scroll handler only reads `scrollY` and writes a
- * compositor-friendly `transform: scaleX(...)` to a ref — no React re-render
- * and no forced layout per scroll frame. The expensive part (locating the end
- * marker via getBoundingClientRect) runs once and again only when the document
- * actually changes size (images/lazy content loading in, viewport resize).
+ * Thin fixed bar at the top of the viewport tracking how far the reader has scrolled through the
+ * article body, reaching 100% at the `#blog-progress-end` marker rather than the end of the page.
+ * The scroll handler only reads `scrollY` and writes a `scaleX` transform to a ref; the marker is
+ * measured again only when the document changes size.
  */
 export function BlogReadingProgress() {
   const barRef = useRef<HTMLDivElement>(null);

@@ -10,48 +10,17 @@ import type { BlogMenu } from '@/lib/navigation/blog-menu';
 import { categoryPath } from '@/lib/blog/paths';
 
 /**
- * The blog menu: one post given room, the rest as rows, the categories as a footer.
- *
- * It used to be a category column beside four equal thumbnails, which treated a 32-minute measured
- * guide and a 5-minute note as the same object and gave each a 145 px picture and a three-line
- * title. Four equal cards make the reader do all the choosing; an opener makes one of the choices
- * for them, and the covers finally get a size worth looking at.
- *
- * The split is the same one the blog itself uses: the newest post is the opener, everything after
- * it is a row with a small cover, its date and its reading time — the two facts that actually
- * decide whether somebody clicks — plus a line of the post's own teaser.
- *
- * The teaser is there for a reader first and a crawler second, and it is cut on the SERVER
- * (`trimExcerpt`, 170 characters): this text sits in the chrome of every page on the site, and a
- * CSS line clamp would hide the bytes without stopping them from shipping.
- *
- * **One heading over both columns, not one per column.** It used to carry two — "Neueste Beiträge"
- * over the opener and "Blog" over the rows — for a single list of posts split across two shapes,
- * and the second of them repeated the word that now labels the bar entry this panel hangs from. The
- * heading is `MenuSectionHeading`, the same rule the parks and "more" bands draw, and it is the
- * link to `/blog` (the "heading IS the link" rule those two already follow), so the panel keeps its
- * way to the index without a second copy of the word beside it.
- *
- * Categories move to a pill row along the bottom. As a left column they cost 13 rem of the band
- * for three links; as pills they cost one line and read as what they are, a filter rather than a
- * section of their own.
- *
- * No news in here. News used to sit in a strip between the articles and the categories, which
- * filed it as one more corner of the blog; it has its own bar entry and panel now
- * (`NewsMenuPanel`), and this panel lists articles only, like `/blog` itself.
- *
- * Everything here is server-rendered from the build-time blog manifest — no fetch, no loading
- * state, and the covers are already 16:9 crops. That is the difference from the parks menu's rail,
- * which is a curated four because only 14 of 212 parks have a picture at all; here it is 7 of 7.
+ * The blog menu: the newest article as the opener, the rest as rows with a small cover, date,
+ * reading time and teaser, and the categories as a pill row along the bottom. One heading over both
+ * columns, a `MenuSectionHeading` linking to `/blog`. The teaser is cut on the server
+ * (`trimExcerpt`), because this text ships in the chrome of every page and a CSS clamp would not
+ * stop the bytes. Articles only; news has its own panel. Memoised for the same reason as
+ * `ParksMenuPanel`.
  */
-/** Memoised for the same reason as `ParksMenuPanel`. */
 export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }: BlogMenu) {
   /*
-   * `navigation`, not `blog`, for the headings — and the difference is 3 KB on every page.
-   *
-   * The layout's chrome namespaces are derived from the import graph, so one
-   * `useTranslations('blog')` in a header component pulled the whole `blog` namespace into the set
-   * every page serializes: 6066 B of chrome JSON became 9047 B, times six locales, for one label.
+   * `navigation`, not `blog`: one `useTranslations('blog')` in a header component pulls the whole
+   * namespace into the chrome every page serializes.
    */
   const t = useTranslations('navigation');
   const format = useFormatter();
@@ -67,13 +36,11 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }:
   return (
     <div className="flex flex-col gap-5">
       <div>
-        {/* The one heading, spanning both columns — see the docblock. */}
         <div data-menu-stagger>
           <MenuSectionHeading label={t('latestPosts')} href="/blog" />
         </div>
 
         <div className="grid gap-x-8 gap-y-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
-          {/* The opener. */}
           {lead && (
             <div data-menu-stagger>
               <Link
@@ -121,8 +88,8 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }:
             </div>
           )}
 
-          {/* The rest, as rows. A row carries the two facts that decide a click — how old it is and
-              how long it takes — where a fourth equal card carried neither at a legible size. */}
+          {/* The rest, as rows carrying the two facts that decide a click: how old a post is and
+              how long it takes. */}
           {rest.length > 0 && (
             <div data-menu-stagger>
               <ul className="flex flex-col gap-1">
@@ -133,10 +100,9 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }:
                       prefetch={false}
                       className="group hover:bg-muted/60 -mx-2 flex items-start gap-3 rounded-lg px-2 py-2 transition-colors"
                     >
-                      {/* 16:10 auf 8 rem: die Zeile trägt vier Zeilen Text (Kategorie, Titel,
-                          Teaser, Datum). Auf 7 rem waren es 112×70 und drei Zeilen — die Kategorie
-                          ist die vierte, und ein Bild, das kürzer ist als sein Text, fällt unten
-                          aus der Zeile. 128×80 trifft die neue Texthöhe. */}
+                      {/* 16:10 at 8 rem: the row holds four lines of text (category, title,
+                          teaser, date), and a picture shorter than its text falls out of the
+                          row. */}
                       <span className="bg-muted relative block aspect-[16/10] w-32 shrink-0 overflow-hidden rounded-lg">
                         {post.image ? (
                           <Image
@@ -159,14 +125,8 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }:
                         )}
                       </span>
                       <span className="min-w-0 flex-1">
-                        {/* Dieselbe Optik wie der Opener links daneben: über dem Titel, klein,
-                            versal, in der Akzentfarbe. Der Bezug ist bewusst der Opener und
-                            nicht `BlogPostRow` — die Zeile dort setzt die Kategorie in
-                            `text-muted-foreground`, die Karte in `var(--pk-text-3)`. Beide
-                            stehen aber auf einer Seite, und diese zwei stehen in einem Band
-                            nebeneinander: zwei Tonwerte für dasselbe Feld in derselben Fläche
-                            liest man zweimal. Sie fehlte hier als einziger Stelle der App, die
-                            Beiträge auflistet. */}
+                        {/* The opener's look: above the title, small, uppercase, in the accent, so
+                            one band does not show the same field in two tones. */}
                         {post.category && (
                           <span className="text-primary mb-0.5 block text-[10px] font-semibold tracking-wide uppercase">
                             {post.category}

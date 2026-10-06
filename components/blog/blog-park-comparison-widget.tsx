@@ -32,14 +32,9 @@ interface BlogParkComparisonWidgetProps {
  *   ```park-comparison-widget slugs=europa-park,phantasialand highlight=europa-park
  *   ```
  *
- * Exists because this is the one table in a park guide that no existing component covered and
- * that drifts daily. Measured cost: ~3 KB per park, so a seven-park row costs ~21 KB — cheap
- * enough for a client fetch, unlike an hourly-profile equivalent (8 × 53 KB, 45 % of it
- * `schedule` nobody renders), which needs a backend projection first.
- *
- * Attendance figures deliberately have no column here. They come from the TEA index, are curated
- * once a year and are not in our API; a number that changes annually belongs in the prose, a
- * number that changes daily belongs in the widget.
+ * The one table in a park guide that drifts daily and no other component covered; at a few KB per
+ * park it is cheap enough for a client fetch. No attendance column: those figures change yearly,
+ * are not in our API and belong in the prose.
  */
 export async function BlogParkComparisonWidget({
   parks,
@@ -93,11 +88,9 @@ export async function BlogParkComparisonWidget({
     );
   }
 
-  // Server seed for the numbers. Without it this table reached crawlers as park names beside
-  // empty cells — `data-slot="skeleton"` in the shipped HTML — while the prose around it argues
-  // from exactly these figures. Fetched only after the guard above, so a post with a typo'd slug
-  // does not fetch seven aggregates to render an error. `Promise.all` over a timeout-bounded,
-  // per-render-cached fetch: seven parks cost one round of ≤3s at build, never at request time.
+  // Server seed for the numbers, so crawlers do not get park names beside skeleton cells. Fetched
+  // only after the guard above; the fetch is timeout-bounded and per-render cached, so it runs at
+  // build, never at request time.
   const initialStats = await Promise.all(
     resolved.map((p) => getParkHistoricalStatsSeed(p.continent, p.country, p.city, p.parkSlug))
   );

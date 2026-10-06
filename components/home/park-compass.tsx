@@ -65,9 +65,8 @@ const COARSE_FIX_M = 40;
 /** The compass demo puts its park down for good at the first fix this accurate (see `placed`). */
 const DEMO_SETTLED_M = 25;
 /**
- * The ride ahead changes only once the new one has stayed ahead this long. A phone carried while
- * walking sways a few degrees either way, and Disneyland's east side has four headliners within
- * 10°: without a wait the bar changed ten times in five seconds of simulated sway.
+ * The ride ahead changes only once the new one has stayed ahead this long: a phone carried while
+ * walking sways a few degrees, and headliners can sit within 10° of each other.
  */
 const AHEAD_DWELL_MS = 300;
 /** Heading changes smaller than this are not written to the page; the sensor's noise is finer. */
@@ -117,45 +116,12 @@ const STATUS_TEXT: Record<DialRideKind, string> = {
 
 /**
  * The headliners around somebody standing in a park, inside a compass bezel: which way each one
- * is, how far, and what its queue costs right now.
- *
- * **A map with the reader's arrow in it** (`ParkCompassDial`): north up, every headliner a
- * marker at its true bearing and at a radius that grows with its distance, and in the middle the
- * reader, an arrow with a view cone that turns with the phone. The bar under the dial names one
- * ride and links to it; the list carries every ride with an arrow that points the way to go from
- * where the reader is looking.
- *
- * **The bar follows the reader's eyes.** With a compass it names the ride inside the view cone
- * (`rideAhead`: within 30° of the heading, held against jitter, taken only after it has stayed
- * ahead AHEAD_DWELL_MS); with nothing in the cone, the nearest. A tap on a marker pins that ride
- * until it is tapped again, or the ✕ in the bar; a tap on another pins that one.
- *
- * **Without a compass nothing pretends to be one.** The dial is north up and says so, and the
- * list and the bar write the direction („Richtung Südwesten", „SW" in the chip) instead of an
- * arrow: an arrow drawn north-up reads as „go this way" to anybody holding the phone, and sends
- * them the wrong way.
- *
- * **Turning costs React nothing, and the page little.** The heading arrives at up to 60 Hz. It is
- * written into `--heading` on exactly the elements that turn (`data-heading`, collected after
- * every commit), each on its own compositing layer, and not written at all for changes under a
- * quarter degree. It used to go onto the panel root, which restyled all 387 elements under it and
- * repainted the blurred photos on every frame: 45 fps, measured, even on a phone held still.
- *
- * **The heading is true north.** A phone's compass is magnetic; the bearings to the rides are
- * not. `/positions` sends the park's declination, and it is added to every reading.
- *
- * **Where the reader stands** is a high-accuracy fix this component watches while on screen
- * (`useLivePosition`), taken only when it moved more than max(3 m, a third of its accuracy) —
- * every fix used to re-render the whole panel — else the point `/api/nearby` answered for. Under
- * a server `?sim=` only the second. In the `?sim=compass` demo the park is laid around the device.
- *
- * **Held still while walking.** The list only reorders when a ride is nearer by more than
- * max(15 m, half the fix's accuracy) (`stableOrder`), and the range ring only grows at once and
- * shrinks with a margin (`stableRange`): both flipped every few fixes on a simulated walk.
- *
- * No `backdrop-filter` anywhere in here: the arrows move on every sensor frame, and a moving
- * element under a backdrop filter is what made „Heute im Park" flicker. The panel's glass is the
- * park photo blurred as an image under `PHOTO_GLASS_FILL`.
+ * is, how far, and what its queue costs right now (`ParkCompassDial`). The bar under the dial names
+ * the ride in the view cone, held against jitter, or the nearest; a tap on a marker pins one.
+ * Without a compass the dial is north up and the direction is written, never drawn as an arrow.
+ * The heading is written into `--heading` on only the elements that turn, so turning costs React
+ * nothing, and it is corrected to true north with the park's declination. No `backdrop-filter`
+ * anywhere, since the arrows move on every sensor frame. See docs/features/park-compass.md.
  */
 export function ParkCompass({
   data,
@@ -203,12 +169,9 @@ export function ParkCompass({
     setHere(live);
   }
 
-  // In the demo the park is put down under the device and then stays there; every later fix
-  // moves the reader through it. Anchoring it to every fix would carry the park along and no ride
-  // would ever come closer. A phone's first fix is usually a Wi-Fi or cell estimate, tens or
-  // hundreds of metres out, and the GPS fix after it "moved" the reader by the gap without a step
-  // taken, so while the fix is worse than DEMO_SETTLED_M each clearly better one puts the park
-  // down again; the first one within it pins it.
+  // In the demo the park is put down under the device and then stays there, so later fixes move
+  // the reader through it. A first fix is often a coarse Wi-Fi or cell estimate, so each clearly
+  // better fix puts the park down again until one is within DEMO_SETTLED_M, which pins it.
   const [placed, setPlaced] = useState<LivePosition | null>(null);
   if (
     demo &&
@@ -399,8 +362,8 @@ export function ParkCompass({
   if (rides.length === 0 || range === null) return null;
 
   /**
-   * The second line of a ride: distance, direction without a compass (in the list; the bar's chip
-   * already says it and the line was cut to „Geschl…"), status without a wait.
+   * The second line of a ride: distance, direction without a compass (in the list only; the bar's
+   * chip already says it), status without a wait.
    */
   const meta = (r: CompassRide, withDirection: boolean) => (
     <>
@@ -602,7 +565,6 @@ export function ParkCompass({
           )}
         </div>
 
-        {/* ── The same rides as a list, nearest first ── */}
         <ul className="divide-foreground/10 divide-y">
           {rides.map((r) => (
             <li key={r.id}>

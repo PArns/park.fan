@@ -109,7 +109,7 @@ export async function ChapterCalendar({ locale }: { locale: string }) {
         </div>
 
         {/* On a phone the pipeline is the chapter's exhibit; the feedback note and the body
-              open on request (PAR-435). */}
+              open on request. */}
         <MobileMore label={tCommon('showMore')}>
           <Reveal delay={80}>
             <p className="text-muted-foreground border-border mt-6 max-w-3xl border-l-2 pl-4 text-sm leading-relaxed">

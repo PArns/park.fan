@@ -106,7 +106,6 @@ export function PhotoDropzone({ images, onChange, disabled }: PhotoDropzoneProps
 
   return (
     <div className="flex flex-col gap-3">
-      {/* Drop area */}
       <div
         role="button"
         tabIndex={0}
@@ -160,7 +159,6 @@ export function PhotoDropzone({ images, onChange, disabled }: PhotoDropzoneProps
         />
       </div>
 
-      {/* Rejection notices */}
       {rejections.length > 0 && (
         <ul className="text-destructive space-y-0.5 text-xs">
           {rejections.map((r, i) => (
@@ -171,7 +169,6 @@ export function PhotoDropzone({ images, onChange, disabled }: PhotoDropzoneProps
         </ul>
       )}
 
-      {/* Thumbnail grid */}
       {images.length > 0 && (
         <>
           {/* How many thumbnails fit is room, so the fifth column asks `@container/page`
@@ -190,10 +187,8 @@ export function PhotoDropzone({ images, onChange, disabled }: PhotoDropzoneProps
                   type="button"
                   onClick={() => removeImage(img.id)}
                   aria-label={t('remove')}
-                  // People contribute park photos from a phone, standing in the park, and taking a
-                  // wrongly-picked one back out is the whole correction gesture of this form. It
-                  // was a 24 px circle in the corner of a ~100 px tile, and long-pressing the
-                  // thumbnail does nothing. 36 px inside a 100 px tile is still unobtrusive.
+                  // People take a wrongly picked photo back out on a phone, standing in the park,
+                  // so the remove button grows to 36 px there.
                   className="bg-background/80 text-foreground hover:bg-destructive absolute top-1 right-1 flex size-6 items-center justify-center rounded-full shadow-sm backdrop-blur-sm transition-colors hover:text-white max-sm:size-9"
                 >
                   <X className="size-3.5" />

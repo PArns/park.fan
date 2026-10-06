@@ -12,22 +12,10 @@ import { getCurveCandidates } from './lead-park';
 import { STORY_SECTION } from './section-chrome';
 
 /**
- * Chapter: when a ride is actually quiet.
- *
- * The exhibit is the day curve for the busiest ride in the locale's lead park:
- * the median of every measured day, the spread that median sits in, and the two
- * quiet windows marked on the plot. The chapter's claim is positional ("a
- * coaster has two good windows"), so the answer has to be a shape rather than a
- * number, and the windows are read off the same curve the reader is looking at.
- *
- * It reads `/stats/day`, a ~1 KB projection rather than the 425 KB park payload,
- * which is what lets a marketing surface mount it at all.
- *
- * The ride pages draw none of this. They already carry today hour by hour in
- * `DailyWaitTimeChart`, and a second chart there would have redrawn the same two
- * series in a different shape; what they take from this endpoint is the one
- * thing they were missing, the historical corridor, and they take it as a band
- * behind their own bars.
+ * Chapter: when a ride is actually quiet. The exhibit is the day curve of the busiest ride in the
+ * locale's lead park, with its spread and the two quiet windows marked, because the claim ("a
+ * coaster has two good windows") is a shape, not a number. It reads `/stats/day`, a small
+ * projection rather than the park payload, which is what lets this page mount it.
  */
 export async function ChapterBestTime({ locale }: { locale: string }) {
   const [t, tCommon, parks] = await Promise.all([

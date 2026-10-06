@@ -48,16 +48,10 @@ function FeaturedLiveCard({ park, live }: { park: FeaturedCardStatic; live?: Liv
 }
 
 /**
- * Featured-parks card grid with hub-page-style live overlay: the shell bakes only day-stable
- * structure (name, link, city, photo), so the pages embedding it (homepage, blog, glossary,
- * howto) can keep long ISR windows; status/crowd/wait/schedule land client-side and stay on a
- * 5-min poll.
- *
- * The featured set deliberately spans several countries (the German strip reaches Efteling and
- * Disneyland Paris), which used to mean one request per country: three requests and 16.7 KB to
- * fill in nine fields on six cards. `useLiveParksByRegion` takes the whole region list at once,
- * so the strip is one request now. The hook sits here rather than in the card so the list is
- * passed down instead of re-derived six times.
+ * Featured-parks card grid with a live overlay: the shell bakes only day-stable structure (name,
+ * link, city, photo), so the pages embedding it keep long ISR windows, and status, crowd, wait and
+ * schedule land on the client on a 5-minute poll. `useLiveParksByRegion` takes all regions in one
+ * request, since the featured set spans several countries.
  */
 export function FeaturedParkCardsLive({ parks }: { parks: FeaturedCardStatic[] }) {
   const regions = useMemo(() => parks.map((p) => `${p.continentSlug}/${p.countrySlug}`), [parks]);

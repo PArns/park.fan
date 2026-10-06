@@ -6,14 +6,9 @@ import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import { trackPreferredSourceClicked } from '@/lib/analytics/umami';
 
 /**
- * Google "Preferred Sources" opt-in link. Points at Google's source-preferences
- * tool pre-filled with our domain, so a reader can mark park.fan as a preferred
- * source (its content then surfaces more prominently in Search / Top Stories).
- * Domain-level only — no schema or verification needed; just open in a new tab.
- * See https://developers.google.com/search/docs/appearance/preferred-sources
- *
- * Client component so the outbound click can be tracked in Umami; the <a> itself
- * still server-renders, so the link is present in the no-JS HTML.
+ * Google's Preferred Sources tool, pre-filled with our domain, so a reader can mark park.fan as a
+ * preferred source in Search and Top Stories. Domain-level, no schema needed. See
+ * https://developers.google.com/search/docs/appearance/preferred-sources
  */
 const PREFERRED_SOURCE_URL = 'https://www.google.com/preferences/source?q=park.fan';
 

@@ -27,15 +27,9 @@ const FlipCard = ({ value, label }: { value: number; label: string }) => {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      {/* No containment on this element, deliberately — it was tried and taken back out.
-        The tile is BOTH the animated thing and the blurred thing: its digit flips every second
-        under framer-motion while the element itself carries `backdrop-filter`. Putting
-        `contain: paint` here looked like the same fix the countdowns got, but those carry it on a
-        DESCENDANT of the blurred card. `contain: paint` is one of the properties that establishes
-        a backdrop root in Chromium, so on the blurred element itself it can make the tile sample
-        an empty backdrop and render with no blur at all — trading a rare dropped frame for a
-        permanent visual regression that no test would catch. `overflow-hidden` already clips the
-        flip. */}
+      {/* No `contain: paint` on this element: the tile is both animated and blurred, and on the
+        blurred element itself it makes a backdrop root in Chromium and can drop the blur.
+        `overflow-hidden` already clips the flip. */}
       <div className="bg-foreground/10 border-foreground/10 relative h-16 w-14 overflow-hidden rounded-lg border shadow-xl backdrop-blur-md md:h-24 md:w-20 lg:h-32 lg:w-28">
         <div className="absolute inset-0 flex items-center justify-center">
           <AnimatePresence mode="popLayout">
@@ -71,17 +65,15 @@ const Separator = () => (
  * flips with framer-motion. Ticks only while on screen; used by the homepage announcement.
  */
 export function FlipClock({ targetDate, labels }: FlipClockProps) {
-  // `null` = not stamped yet → the skeleton shows (also covers SSR/hydration,
-  // replacing the old separate `isClient` flag). The clock only ever swaps in
-  // with real digits, so no 00 00 00 00 flash.
+  // `null` until stamped, so SSR and hydration show the skeleton and the clock never flashes
+  // 00 00 00 00.
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
   // The flip animation (a framer-motion spring per second) is pure decoration —
   // only tick while the clock is on screen and the tab is visible.
   const { ref: containerRef, active } = useActiveOnScreen();
 
-  // Compute + store the remaining time; returns true once the target has passed.
-  // Preserves state identity when nothing changed (e.g. after expiry) — a fresh
-  // object each second re-rendered four AnimatePresence trees forever.
+  // Returns true once the target has passed. Keeps the state object when nothing changed, or
+  // every tick would re-render four AnimatePresence trees.
   const applyTimeLeft = useCallback((target: Date) => {
     const diffInSeconds = Math.max(0, differenceInSeconds(target, new Date()));
     const days = Math.floor(diffInSeconds / (3600 * 24));

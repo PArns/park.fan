@@ -12,7 +12,6 @@ function Progress({
   value,
   ...props
 }: React.ComponentProps<typeof ProgressPrimitive.Root>) {
-  // Determine color based on value
   const getIndicatorColor = (val: number = 0) => {
     if (val < 40) return 'bg-green-500';
     if (val < 70) return 'bg-yellow-500';

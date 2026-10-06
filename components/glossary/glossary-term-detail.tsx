@@ -40,20 +40,13 @@ interface GlossaryTermDetailProps {
   /** Localised strings for the 3-D player; only needed when `term.player` is set. */
   playerLabels?: CoasterPlayerLabels;
   /**
-   * The rides that feature this term, as a slot rather than a sibling section.
-   *
-   * It used to render in its own full-width `PageContainer` below this
-   * component, which put two page paddings plus a chapter margin between the
-   * definition and the rides and made it a stripe wider than the card it
-   * belongs to — it read as a different page. Passing it in keeps it in the
-   * SAME grid column, one card-gap under the definition, still streamed
-   * separately by the caller's `<Suspense>`.
+   * The rides that feature this term, as a slot so they sit in the definition's column, one card
+   * gap under it, still streamed by the caller's `<Suspense>`.
    */
   rides?: ReactNode;
   /**
-   * The blog posts that explain this term, as a slot for the same reason as {@link rides}: it
-   * belongs in the definition's column, not in a full-width band under it. Renders nothing for
-   * the 248 of 267 terms no post covers, so it reserves no height either.
+   * The blog posts that explain this term, a slot for the same reason as {@link rides}. Renders
+   * nothing for the many terms no post covers, so it reserves no height.
    */
   posts?: ReactNode;
 }
@@ -76,8 +69,8 @@ export function GlossaryTermDetail({
 }: GlossaryTermDetailProps) {
   const hasPlayer = Boolean(term.player && playerLabels);
 
-  // ── Reusable fragments — composed differently depending on whether the term
-  //    carries a 3-D player (player on top, text below) or not (combined card).
+  // Fragments composed differently for a term with a 3-D player (player on top, text below) and
+  // without (one combined card).
   const headerBlock = (
     <>
       <div className="mb-1 flex items-center gap-2">
@@ -124,7 +117,6 @@ export function GlossaryTermDetail({
     </div>
   );
 
-  // Model / accuracy-metric terms get a CTA to the Fancast model page.
   const fancastCta = FANCAST_TERM_IDS.has(term.id) ? (
     <Card className="border-primary/30 from-primary/10 gap-0 bg-gradient-to-br to-transparent py-0 shadow-sm">
       <Link
@@ -174,15 +166,13 @@ export function GlossaryTermDetail({
   return (
     <div>
       <GlossaryTermTracker termId={term.id} />
-      {/* Breadcrumb — floats above the grid */}
       <div className="mb-5">
         <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={term.name} variant="pill" />
       </div>
 
       {hasPlayer ? (
-        /* ── Player layout: the 3-D player sits full-bleed on top of one
-              cohesive card, with the title + definition below it; related
-              terms go in the sidebar. ── */
+        /* Player layout: the player full-bleed on top of one card with the title and definition;
+           related terms in the sidebar. */
         <div className="grid gap-5 @min-[1024px]/page:grid-cols-[1fr_260px]">
           <div className="flex flex-col gap-4">
             <Card className="border-primary/20 gap-0 overflow-hidden py-0 shadow-md">
@@ -202,7 +192,7 @@ export function GlossaryTermDetail({
           {sidebar}
         </div>
       ) : (
-        /* ── Default layout: combined header + definition card with sidebar ── */
+        /* Default layout: one header and definition card, with the sidebar. */
         <div className="grid gap-5 @min-[1024px]/page:grid-cols-[1fr_260px]">
           <div className="flex flex-col gap-4">
             <Card className="border-primary/20 gap-0 py-0 shadow-md">

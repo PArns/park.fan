@@ -14,13 +14,8 @@ import {
 import { cn } from '@/lib/utils';
 
 /**
- * How hard the confirming button pushes back.
- *
- * `destructive` is not decoration. The two cases a reader has to tell apart in
- * half a second are "this saves something" and "this throws something away",
- * and the only element that can carry that distinction is the button they are
- * about to press: the rest of the dialog is prose, and prose is what somebody
- * skips once they already know which row they clicked.
+ * How hard the confirming button pushes back. The button about to be pressed is the only element
+ * that can tell "this saves something" from "this throws something away" at a glance.
  */
 export type ConfirmTone = 'default' | 'destructive';
 
@@ -30,121 +25,53 @@ export interface ConfirmDialogProps {
   /** The question, short enough to be read at a glance. */
   title: React.ReactNode;
   /**
-   * What actually happens, and what is gone afterwards.
-   *
-   * Optional, and where it is omitted the dialog tells Radix there is no
-   * description (`aria-describedby={undefined}`) instead of repeating the title
-   * into an `sr-only` paragraph. A screen reader that hears the same sentence
-   * twice learns nothing the second time, and the explicit `undefined` is
-   * Radix's own documented way of saying "there is none" — without it the
-   * primitive logs a missing-description warning on every open.
+   * What actually happens, and what is gone afterwards. Without it the dialog passes
+   * `aria-describedby={undefined}`, Radix's documented way to say there is none, rather than
+   * repeating the title in an `sr-only` paragraph.
    */
   description?: React.ReactNode;
   confirmLabel: string;
   cancelLabel: string;
   /**
-   * Runs, and then the dialog closes.
-   *
-   * Synchronous on purpose. Both callers change local state, and an async
-   * variant needs a pending flag, a disabled button and somewhere to put an
-   * error — three decisions no call site has had to make yet, and three guesses
-   * if they were made here first.
+   * Runs, and then the dialog closes. Synchronous on purpose: an async variant needs a pending
+   * flag, a disabled button and an error slot that no caller has needed yet.
    */
   onConfirm: () => void;
   /**
-   * Runs when the CANCEL BUTTON is pressed, and only then, before the dialog
-   * closes.
-   *
-   * For a question whose two buttons are both answers: the planner's past-day
-   * prompt offers „Vergangenen Tag ansehen" beside „Neuen Tag planen", and
-   * that first one opens the panel. Escape and the overlay still only close,
-   * which is why this cannot be `onOpenChange(false)`: a reflex away from the
-   * dialog must not count as a choice. Callers without it read as before.
+   * Runs when the cancel button is pressed, and only then, for a question whose two buttons are
+   * both answers. Escape and the overlay still only close, which is why this is not
+   * `onOpenChange(false)`: a reflex away from the dialog must not count as a choice.
    */
   onCancel?: () => void;
   tone?: ConfirmTone;
   /**
-   * Greys out the way on, for a question whose answer can be empty.
-   *
-   * The way OUT is never disabled: a dialog somebody cannot leave is worse than
-   * one they can leave without deciding.
+   * Greys out the way on, for a question whose answer can be empty. The way out is never disabled.
    */
   confirmDisabled?: boolean;
   /**
-   * What the reader has to look at before they can answer — a list to tick, a
-   * choice to make. Rendered between the description and the footer, in its own
-   * scroll region, so a question about ten rides does not push the buttons off
-   * a phone.
-   *
-   * Optional, and most callers have none: this stays a confirmation with a body
-   * rather than becoming a form component. The body's own state belongs to the
-   * caller, which is what keeps this file free of the thing it is asking about.
+   * What the reader has to look at before they can answer (a list to tick, a choice to make), in
+   * its own scroll region so a long list does not push the buttons off a phone. Its state stays
+   * with the caller.
    */
   children?: React.ReactNode;
   /**
-   * A Lucide component, drawn in a tinted tile beside the title.
-   *
-   * Same tile as the planner wizard's answer cards (`size-8 rounded-lg` around
-   * a `size-4` glyph), so a delete dialog opening out of a row with a bin in it
-   * shows that bin again at the same weight. Drawn **once**: repeating it on the
-   * confirming button puts the same glyph twice in a box this small, and the
-   * button already carries the tone.
+   * A Lucide component, drawn once in a tinted tile beside the title; not again on the button,
+   * which already carries the tone.
    */
   icon?: LucideIcon;
   /**
-   * Names the dialog for a script: `data-confirm-dialog` on the content, with
-   * `data-confirm-cancel` and `data-confirm-action` on the two buttons. A
-   * browser check that has to answer the question in any of six languages
-   * cannot find the buttons by their labels.
+   * Names the dialog for a script: `data-confirm-dialog` on the content, `data-confirm-cancel` and
+   * `data-confirm-action` on the buttons, which a browser check cannot find by label in six
+   * languages.
    */
   marker?: string;
 }
 
 /**
- * Ask before doing something that cannot be taken back.
- *
- * It replaces `window.confirm`, which is not a question the browser has to ask.
- * An embedded view, a preview pane, or a visitor who once ticked "prevent this
- * page from creating additional dialogs" all make it return `false` without
- * showing anything, and `false` reads as "no" — so the action silently never
- * happens and nothing on screen says why. The same trap was found and fixed
- * twice under `/admin` (`media-detail`, `season-editor`); the planner was the
- * last place on the public site still asking the browser.
- *
- * The second reason is plainer. A native box is drawn by the operating system,
- * in the operating system's font, with the origin printed above it. It is the
- * one element on the page that cannot be styled, carries no icon, and reads as
- * a security prompt rather than as part of the panel it came out of.
- *
- * **The cancelling button takes the focus, never the confirming one.** Radix
- * otherwise focuses the first tabbable child of the content, and a dialog that
- * opens with "Löschen" under the caret deletes on the first Enter, pressed by
- * somebody who had not finished reading. So `onOpenAutoFocus` is prevented and
- * the cancel button is focused by hand, which is deterministic in a way "put
- * cancel first in the DOM" is not: the footer's order is a layout decision and
- * the next caller is free to change it.
- *
- * Escape and a click on the overlay both cancel. That is Radix's default and is
- * deliberately left alone: a confirmation nobody can back out of by reflex is a
- * confirmation people learn to click through.
- *
- * It takes a **body** as `children`, which is what keeps a question with a list
- * in it from becoming a second dialog component. The planner's headliner
- * conflict is one: the same title, description and footer, with ten rides to
- * tick in between. The body scrolls on its own so the footer never leaves the
- * screen, and its state stays with the caller — this file still knows nothing
- * about what is being asked.
- *
- * It carries **no translation keys**. A primitive under `components/ui/` that
- * calls `useTranslations('planner')` is a primitive only the planner can use,
- * and the second caller would have to move the strings or copy the file. Every
- * label arrives as a prop.
- *
- * The visual language is the planner wizard's, since that is where the first two
- * callers live: `p-0` on the content so the footer's rule reaches both edges,
- * the body at `px-5 py-4 sm:px-6`, and the wizard's own footer — a `border-t` at
- * `border-border/60`, a `ghost` button for the way out, a full-weight one for
- * the way on.
+ * Asks before doing something that cannot be taken back, in place of `window.confirm`, which an
+ * embedded view or a "prevent additional dialogs" tick turns into a silent `false`. The cancel
+ * button takes the focus, never the confirming one, so a first Enter cannot delete; Escape and the
+ * overlay cancel. Every label arrives as a prop, so the primitive is not tied to the planner.
  */
 export function ConfirmDialog({
   open,
@@ -166,13 +93,8 @@ export function ConfirmDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      {/* `flex` over the grid the dialog ships with, plus `p-0`, which is the
-          same pair of overrides the wizard makes and for the same reason: the
-          footer's rule has to span the full width.
-
-          Narrower than the wizard at `sm:max-w-md`. This is one sentence and two
-          buttons, and 512 px around them reads as a dialog somebody forgot to
-          fill in. */}
+      {/* `flex` and `p-0` over the dialog's grid so the footer's rule spans the full width;
+          `sm:max-w-md` because this is one sentence and two buttons. */}
       <DialogContent
         data-confirm-dialog={marker}
         showCloseButton={false}
@@ -208,32 +130,17 @@ export function ConfirmDialog({
           </div>
         </div>
 
-        {/* Its own scroll region rather than the whole content scrolling: the
-            footer has to stay reachable, and on a phone a list of ten rides is
-            taller than the dialog. `overscroll-contain` so a flick that reaches
-            the end of the list does not carry on into the page behind it. */}
+        {/* Its own scroll region so the footer stays reachable when a list is taller than the
+            dialog; `overscroll-contain` keeps a flick from scrolling the page behind. */}
         {children && (
           <div className="max-h-[45vh] overflow-y-auto overscroll-contain px-5 pb-4 sm:px-6">
             {children}
           </div>
         )}
 
-        {/* `px-3` below `sm` rather than the body's `px-5`, for the wizard's own
-            reason: this row is the one place a label decides the width, and the
-            longest pair of labels in six locales has to fit at 320 px without
-            either button being squeezed.
-
-            `max-sm:min-h-11` on both, although the button scale already resolves
-            `sm` and `default` to 44 px below `sm`. It is a floor rather than a
-            second copy of that height, so a caller reaching for `lg` — the one
-            size with no phone tier — still clears the touch target.
-
-            `flex-wrap` for a pair that does not fit, which the planner's
-            past-day question is: two answers rather than an answer and a way
-            out, both named in full („Vergangenen Tag ansehen", „Neuen Tag
-            planen"), 71 px wider than the row at 320 px. Unwrapped, the first
-            button ran off the dialog's left edge. A pair that fits is
-            unchanged. */}
+        {/* `px-3` below `sm` so the longest pair of labels in six locales fits at 320 px.
+            `max-sm:min-h-11` is a touch-target floor for a caller passing `lg`, which has no phone
+            tier, and `flex-wrap` lets a pair of long answers break onto two rows. */}
         <div className="border-border/60 flex shrink-0 flex-wrap items-center justify-end gap-2 border-t px-3 py-3 sm:px-6">
           <DialogClose asChild>
             <Button

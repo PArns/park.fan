@@ -4,15 +4,10 @@ import { heroImageSrcs } from '@/lib/media/hero';
 import { getMediaAltBySrc } from '@/lib/media/text';
 
 /**
- * Pick the glossary background server-side. Server-rendering is what makes the image an LCP-friendly
- * resource: passing `imageSrc` to <RandomHeroImage> renders it in the SSR HTML with `priority` +
- * `fetchPriority="high"` (next/image then preloads the optimized rendition). The old client-random
- * pick (no `imageSrc`) only chose the image in a post-hydration effect with no priority — the cause
- * of the multi-second glossary LCP.
- *
- * The pick is DETERMINISTIC (not random): on the statically-prerendered glossary pages the
- * build-time day index is baked in, so every glossary page in a deploy resolves to the same image
- * (navigating between terms no longer swaps the hero) and there is zero per-request/ISR write churn.
+ * Picks the glossary background on the server, so the image is in the SSR HTML with `priority`
+ * and preloaded, which keeps LCP fast. Deterministic, not random: the prerendered pages bake in
+ * the build-time day index, so every glossary page in a deploy shows the same image and nothing
+ * changes per request.
  */
 function pickGlossaryHero(): string | null {
   const pool = heroImageSrcs();
@@ -22,8 +17,8 @@ function pickGlossaryHero(): string | null {
 }
 
 /**
- * Random park background for glossary pages — server-rendered for a fast LCP.
- * No Ken Burns animation. Fades to the page background colour over the lower third.
+ * Park background for glossary pages, server-rendered for a fast LCP, without the ken-burns pan,
+ * fading to the page background over the lower third.
  */
 export async function GlossaryBackground({
   headTint = false,

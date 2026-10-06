@@ -12,12 +12,10 @@ export function BuildInfo() {
 
   return (
     <div className="text-muted-foreground flex items-center justify-center gap-2 text-center text-xs">
-      {/* The version is the release this build belongs to, so it opens that release's notes.
-          `version` and not `buildNumber`: the commit count behind the last dot is not a release,
-          and `pnpm check:changelog` keeps `package.json` equal to the newest published entry,
-          so the anchor always exists. English only, like the page. `gap-1` carries the space
-          between the word and the number, which an inline-flex row would collapse, and
-          `max-sm:min-h-11` gives it the 44 px row every other footer link has on a phone. */}
+      {/* The version opens its release's notes: `version`, not `buildNumber`, and
+          `pnpm check:changelog` keeps `package.json` equal to the newest published entry, so the
+          anchor exists. `gap-1` keeps the space an inline-flex row would collapse, and
+          `max-sm:min-h-11` matches the other footer links. */}
       <a
         href={changelogHref(buildInfo.version)}
         hrefLang="en"
@@ -25,10 +23,8 @@ export function BuildInfo() {
       >
         Version<span className="font-mono">{buildInfo.buildNumber}</span>
       </a>
-      {/* `md:` and not `@min-[768px]/page:`: the whole line is ~240px of `text-xs` and
-          fits at 320, so 768 was never the width at which it stops fitting — it is where
-          a phone stops wanting a build date under the footer. A question about the device,
-          so it keeps asking the window. */}
+      {/* `md:`, not a container query: whether a phone wants a build date is a question about
+          the device, so it asks the window. */}
       <span className="text-muted-foreground/60 hidden items-center md:inline-flex">•</span>
       <span className="hidden md:inline">
         Built{' '}

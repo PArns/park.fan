@@ -28,13 +28,7 @@ function SheetPortal({ ...props }: React.ComponentProps<typeof SheetPrimitive.Po
 }
 
 /**
- * `z-[70]` on both halves, matching `dialog.tsx`.
- *
- * The sheet was left at `z-50` while the language banner sits at `z-[60]`
- * deliberately, "over the `sticky top-0 z-50` header" — so the banner painted
- * across the top of every open sheet, the burger menu included. A modal outranks
- * a dismissible notice; the dialog primitive already said so and this one had
- * simply not been moved with it.
+ * `z-[70]` on both halves, matching `dialog.tsx`: a modal outranks the `z-[60]` language banner.
  */
 function SheetOverlay({
   className,
@@ -64,18 +58,9 @@ function SheetContent({
   /** Mirrors the root's `modal`; a non-modal sheet renders no overlay. */
   modal?: boolean;
   /**
-   * Drops the × below. Opt-in per call site, never a global default: this
-   * component also draws the header's burger menu, which is the phone
-   * navigation and has nothing else to close it with.
-   *
-   * Only pass it where the sheet draws a close control of its own, somewhere
-   * this corner slot would be in the way. The planner's bottom sheet does: its
-   * × sits in the grab-handle row (PAR-483), because this corner is the sheet
-   * header's day picker on a phone. It went without any drawn close button for
-   * a while, on the theory that a drag on the handle and a tap on the shield
-   * were exits enough; pulled up to 100svh the shield is gone and the drag is
-   * named nowhere, and people got stuck. A sheet with no × and no way out is a
-   * trap, and the call site is the only place that knows which it is.
+   * Drops the ×. Opt-in per call site, since the burger menu has nothing else to close it with.
+   * Pass it only where the sheet draws its own close control, as the planner's bottom sheet does in
+   * its grab-handle row: a sheet with no × and no way out is a trap.
    */
   hideClose?: boolean;
 }) {
@@ -88,17 +73,10 @@ function SheetContent({
       <SheetPrimitive.Content
         data-slot="sheet-content"
         className={cn(
-          // 300 ms BOTH ways, and the number is not a taste: the page beside an
-          // open planner reflows on a `transition-[padding]` of its own, at
-          // `--planner-inset-ms` (300 ms, `app/[locale]/layout.tsx`), and the
-          // edge tab tracks the panel on a third. At 500 the panel was the
-          // slowest of the three and lost — traced frame by frame at 1440 px,
-          // the page finished its inset at 432 ms and the panel arrived at 668,
-          // so for a quarter of a second there was a strip of bare background
-          // up to 83 px wide between the page's right edge and a panel still on
-          // its way in. `ease-in-out` is already shared: `--tw-ease` is what
-          // `animate-in` reads for its timing function, so the class below sets
-          // the easing of the animation and of the transition at once.
+          // 300 ms both ways, matching `--planner-inset-ms` (`app/[locale]/layout.tsx`): the page
+          // beside an open planner reflows on its own padding transition, and a slower panel leaves
+          // a strip of bare background between the two. `animate-in` reads `--tw-ease`, so
+          // `ease-in-out` sets the easing of both the animation and the transition.
           'bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-[70] flex flex-col gap-4 shadow-lg transition duration-300 ease-in-out',
           side === 'right' &&
             'data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm',
@@ -113,13 +91,9 @@ function SheetContent({
         {...props}
       >
         {children}
-        {/* A 16 px target — the icon's own box, with no padding around it — on the control that
-            closes the sheet. It grows to 44 on a phone (`planner-phone:`: narrower than 40rem, or
-            shorter than 31.25rem on a coarse pointer, so a landscape phone counts) and stays a 16 px glyph: the box is
-            centred on where it used to sit, so nothing moves visually. Whether it also stays in
-            view is the call site's business, not this component's: `SheetPrimitive.Content` is
-            the positioned ancestor, so an `overflow-y-auto` PUT ON IT scrolls this button away
-            with the content. Give the scroll to a child instead (see the burger sheet in
+        {/* A 16 px glyph whose target grows to 44 on a phone (`planner-phone:`), centred on the
+            glyph. `SheetPrimitive.Content` is its positioned ancestor, so an `overflow-y-auto` on
+            the content scrolls it away: give the scroll to a child (see the burger sheet in
             components/layout/header.tsx). */}
         {!hideClose && (
           <SheetPrimitive.Close

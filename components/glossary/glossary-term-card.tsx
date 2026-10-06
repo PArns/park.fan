@@ -19,9 +19,8 @@ interface GlossaryTermCardProps {
 }
 
 /**
- * Memoised: the overview renders all ~270 of these, and every one of its props is either a
- * string or a term object that stays put while the visitor types, so a filter change re-renders
- * only the cards it adds.
+ * A glossary term as a card in the overview grid, with its player and ride-count badges.
+ * Memoised: the overview renders all of them, and its props stay put while the visitor types.
  */
 export const GlossaryTermCard = memo(function GlossaryTermCard({
   term,

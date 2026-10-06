@@ -25,15 +25,10 @@ import {
 } from '@/lib/utils/park-assets';
 
 /**
- * Global real-time stats + platform statistics — server-rendered into the homepage shell.
- *
- * The shell revalidates HOURLY (keeping ISR writes down — see app/[locale]/page.tsx), so the
- * two headline "right now" counts overlay themselves client-side ({@link GlobalStatsLiveCounts},
- * 5-min poll) on top of the baked seed. The highlighted park/ride cards stay fully baked (≤1h
- * stale): they are editorial highlights linking to live park pages, and re-resolving them
- * client-side would need per-park background lookups (a server-only fs resolve via
- * {@link getParkBackgroundImage}/{@link getAttractionBackgroundImage}). While the fetch is
- * pending the homepage <Suspense> shows its skeleton; on error the section is omitted.
+ * Global real-time stats and platform statistics, server-rendered into the homepage shell. The two
+ * "right now" counts overlay themselves on the client ({@link GlobalStatsLiveCounts}); the
+ * highlighted park and ride cards stay baked, since resolving their backgrounds needs a
+ * server-only lookup ({@link getParkBackgroundImage}). On error the section is omitted.
  */
 export async function GlobalStatsSection() {
   const [t, tCommon, tGeo, locale, headingLabels] = await Promise.all([
@@ -50,16 +45,12 @@ export async function GlobalStatsSection() {
 
   return (
     <>
-      {/* Global Stats */}
       <section className={STORY_SECTION_TINTED}>
         <div className="container mx-auto">
-          {/* The evidence for the six reasons above it, so it opens like every
-            other chapter on this page rather than with a header of its own.
-            Shared with GlobalStatsSkeleton, which mounts the same node — see
-            components/home/section-headings.tsx. */}
+          {/* The evidence for the six reasons above it, so it opens like every other chapter on
+              this page. GlobalStatsSkeleton mounts the same node. */}
           <GlobalStatsHeading labels={headingLabels} />
 
-          {/* First row — the two headline "right now" counts, live via client overlay */}
           <GlobalStatsLiveCounts
             initialCounts={stats.counts}
             locale={locale}
@@ -72,7 +63,6 @@ export async function GlobalStatsSection() {
             }}
           />
 
-          {/* Grid Layout: Second row - Parks */}
           <div className="mb-3 grid gap-4 sm:grid-cols-2">
             {stats.mostCrowdedPark && (
               <ParkHighlight title={t('mostCrowded')} park={stats.mostCrowdedPark} tGeo={tGeo} />
@@ -82,7 +72,6 @@ export async function GlobalStatsSection() {
             )}
           </div>
 
-          {/* Grid Layout: Third row - Attractions */}
           <div className="grid gap-4 sm:grid-cols-2">
             {stats.longestWaitRide && (
               <RideHighlight
@@ -102,13 +91,11 @@ export async function GlobalStatsSection() {
         </div>
       </section>
 
-      {/* Platform Statistics */}
       <section className={STORY_SECTION}>
         <div className="container mx-auto">
           <PlatformStatsHeading labels={headingLabels} />
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Total Wait Time */}
             {stats.counts.totalWaitTime != null && (
               <StatsCard
                 title={t('totalWaitTime')}
@@ -122,14 +109,12 @@ export async function GlobalStatsSection() {
               />
             )}
 
-            {/* Queue Data Records */}
             <StatsCard
               title={t('dataPoints')}
               value={<CompactNumberWithTooltip value={stats.counts.queueDataRecords} />}
               description={t('queueDataRecords')}
             />
 
-            {/* Shows & Restaurants */}
             <Card>
               <CardHeader className="pb-2">
                 <CardTitle className="text-muted-foreground text-sm font-medium">

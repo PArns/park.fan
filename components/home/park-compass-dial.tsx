@@ -11,15 +11,10 @@ import { formatDistance } from '@/lib/utils/distance-utils';
 
 /**
  * The dial's radii, in units of a 100-wide drawing. The dial is a size container, so a unit is
- * also 1 `cqw` and the HTML markers share the SVG's coordinates. From the rim in: the bezel (the
- * „Lünette", 43–49.5) with its ticks at the inner edge and the four letters in its middle, then
- * the face, with the radar's outer range ring at 37.5 and the radius a ride at 0 m would sit at,
- * 8, just outside the reader's arrow.
- *
- * The first bezel ran 40–49.5 and carried numerals every 30° and the heading as a figure. The
- * rides then had a circle of 34 units — 194 px across on a 360 px phone — and at that size 13
- * pairs of Phantasialand's markers sat closer than they are wide. Nobody in a park acts on „120"
- * or „100°"; they act on the ride. The bezel lost the numerals and gave the face the room.
+ * also 1 `cqw` and the HTML markers share the SVG's coordinates. From the rim in: the bezel
+ * (43–49.5) with its ticks and four letters, then the face, with the outer range ring at 37.5 and
+ * the 0 m radius at 8, just outside the reader's arrow. The bezel carries no numerals, so the rides
+ * get the room.
  */
 const RANGE_OUTER = 37.5;
 const RANGE_INNER = 8;
@@ -102,33 +97,13 @@ function roseRay(angle: number, length: number, base: number) {
 }
 
 /**
- * The compass itself: a bezel with its ticks and letters, a face cut out of the park's own photo,
- * a faint rose, the rides as markers with their names, and the reader in the middle.
- *
- * **An instrument, and the rides first.** The face is the park photo the hero above it just
- * showed, blurred and dimmed so it tints rather than competes, with a faint rose; the bezel is a
- * ring of glass with 5° ticks and the four letters (a north triangle under the N covered the
- * letter once the bezel narrowed, and the letter says it). Blue means one thing on it: the reader and
- * the way to the ride in focus. North is drawn in the foreground colour; when it was blue too, a
- * reader facing north saw two blue spikes leave the centre.
- *
- * **A marker says what the ride is doing.** A wait is the number on an opaque disc in the wait
- * colours (`CROWD_SOLID_CLASS`: the 60 % badge fill measured 2.1–3.2 : 1 in the light theme); a
- * breakdown is an orange ring with a warning sign, a refurbishment a wrench, a ride open without
- * a posted wait a green ring. A closed ride is a small hollow ring with nothing in it: ten grey
- * discs with a dash each were ten times the same non-information, and the room they took was
- * room the names needed. Every marker's hit area is 44 px whatever it draws.
- *
- * **What turns with the phone** sits in one layer rotated by `--heading`: the view cone on the
- * face, the lit arc on the bezel, the arrow. `ParkCompass` writes the heading onto that layer
- * directly (`data-heading`), so turning re-renders nothing and restyles nothing else.
- *
- * **Every marker says which ride it is**, where there is room: a short name placed the way a map
- * labels its pins (`placeLabels`), with a hairline to its marker. The pinned ride chooses first,
- * then the nearest; the order does not follow the ride ahead, which reshuffled one or two names
- * every time the reader turned. A label with no free place is left out rather than laid over
- * another. Marker spacing and labels are worked out in px from the measured width: the 10-unit gap
- * the first version used is less than a marker on any dial under 340 px.
+ * The compass itself: a bezel with ticks and letters, a face cut from the park's photo, a faint
+ * rose, the rides as markers with their names, and the reader in the middle. Blue means only the
+ * reader and the way to the ride in focus. A marker says what its ride is doing (a wait on an
+ * opaque disc, a ring for a breakdown, refurbishment or open ride, a small hollow ring when
+ * closed), with a 44 px hit area whatever it draws. What turns with the phone sits in one layer
+ * rotated by `--heading`. Names are placed like map labels (`placeLabels`), pinned ride first,
+ * then nearest; a label with no free place is left out.
  */
 export function ParkCompassDial({
   rides,
