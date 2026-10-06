@@ -3,6 +3,7 @@ import type { LucideIcon } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { PANEL_FLAT, TILE_GLASS } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
+import { CHAPTER_GAP } from '@/components/common/chapter-spacing';
 
 interface ChapterPanelProps {
   icon: LucideIcon;
@@ -79,7 +80,7 @@ export function ChapterPanel({
     // pair `PageSection` and `AttractionHistoryPanel` carry, so the rhythm between chapters does
     // not depend on which of the three opened one. `max-sm:` on top of the desktop value, so a
     // `className` margin still wins from `sm` up (see the spacing note in `ChapterHeading`).
-    <section id={id} className={cn('mt-10 max-sm:mt-6', id && 'scroll-mt-24', className)}>
+    <section id={id} className={cn(CHAPTER_GAP, id && 'scroll-mt-24', className)}>
       <ChapterHeading
         icon={icon}
         title={title}

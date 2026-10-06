@@ -23,6 +23,7 @@ import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { ParkSeasonsCard } from '@/components/parks/park-seasons-card';
 import { ParkInfoCard } from '@/components/parks/park-info-card';
+import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 
 interface ParkPageShellProps {
   park: ParkWithAttractions;
@@ -235,7 +236,7 @@ export async function ParkPageShell({
               parkId={park.id}
               lat={park.latitude}
               lng={park.longitude}
-              className="mt-8"
+              className={CHAPTER_GAP_COMPACT}
             />
           )}
 
