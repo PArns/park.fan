@@ -143,34 +143,18 @@ export const findCityPageRedirect = cache(
 );
 
 /**
- * Try to find a redirect for a malformed park page URL
- *
- * Pattern: /parks/{continent}/{country}/{maybeParkAsCity}/{maybeAttractionAsPark}
- * If {maybeParkAsCity} is actually a park and {maybeAttractionAsPark} is an attraction
- *
- * @returns The correct URL or null if no redirect found
+ * Redirect for a park-page URL whose city segment holds a park slug: the same lookup as
+ * {@link findCityPageRedirect}. The park segment is not read: the discovery data lists no
+ * attractions to check it against.
  */
-export const findParkPageRedirect = cache(
-  async (
-    continent: string,
-    country: string,
-    citySlug: string,
-    _parkSlug: string
-  ): Promise<string | null> => {
-    // Check if the "citySlug" is actually a park slug within this continent/country
-    const park = (await findParkLocationsBySlug(citySlug)).find(
-      (p) => p.continent === continent && p.country === country
-    );
-
-    if (park) {
-      // The "city" is actually a park — redirect to the park page at least.
-      // We can no longer check if parkSlug is an attraction (removed from discovery endpoint).
-      return `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}`;
-    }
-
-    return null;
-  }
-);
+export function findParkPageRedirect(
+  continent: string,
+  country: string,
+  citySlug: string,
+  _parkSlug: string
+): Promise<string | null> {
+  return findCityPageRedirect(continent, country, citySlug);
+}
 
 /**
  * Try to find a redirect for a park URL whose geo segments went stale.
@@ -220,19 +204,6 @@ export const findRelocatedParkRedirect = cache(
     return null;
   }
 );
-
-/**
- * Try to find a redirect for a malformed attraction page URL
- *
- * Pattern: /parks/{continent}/{country}/{city}/{park}/{attraction}
- * Various malformed patterns possible
- *
- * @returns The correct URL or null if no redirect found
- */
-// findAttractionPageRedirect removed: attraction data is no longer available
-// from discovery endpoints. Attraction redirect lookups are no longer supported.
-// Attraction URLs under a relocated park are healed via findRelocatedParkRedirect
-// (the attraction page re-appends its own slug to the corrected park path).
 
 /**
  * Canonical park path for a park the API DID return, when it differs from the path that was
