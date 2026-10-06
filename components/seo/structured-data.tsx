@@ -7,6 +7,8 @@ import {
   Organization,
   TouristAttraction,
   Article,
+  FAQPage,
+  Question,
 } from 'schema-dts';
 import {
   getParkImageSet,
@@ -144,21 +146,18 @@ export function ArticleStructuredData({
 }
 
 /**
- * FAQPage JSON-LD for guide pages that answer a set of recurring questions
- * (e.g. the Fancast model page). Enables the FAQ rich result in Google when the
- * page is eligible. Pass plain-text Q&A pairs — no markup inside answers.
+ * FAQPage JSON-LD for a page that renders the same questions, from plain-text Q&A pairs (no
+ * markup inside answers).
  */
 export function FaqStructuredData({
   items,
 }: {
   items: ReadonlyArray<{ question: string; answer: string }>;
 }) {
-  // schema-dts doesn't ship a `FAQPage` member in the pinned version, so we
-  // build the JSON-LD as a plain object and reuse the shared escaper/renderer.
-  const data = {
+  const data: WithContext<FAQPage> = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: items.map((item) => ({
+    mainEntity: items.map((item): Question => ({
       '@type': 'Question',
       name: item.question,
       acceptedAnswer: {
@@ -167,9 +166,7 @@ export function FaqStructuredData({
       },
     })),
   };
-  return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeJsonLd(data) }} />
-  );
+  return <JsonLd data={data} />;
 }
 
 /**
