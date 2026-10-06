@@ -97,7 +97,7 @@ export async function readSessionToken(request?: Request): Promise<string | null
  * reached or answers with a 5xx, so the session probe can report an outage
  * instead of a logout.
  */
-export class AdminBackendUnreachable extends Error {}
+class AdminBackendUnreachable extends Error {}
 
 /**
  * Who this request is, according to the backend.

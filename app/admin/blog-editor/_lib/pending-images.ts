@@ -50,7 +50,7 @@ const EXT_BY_MIME: Record<string, string> = {
 };
 
 /** ~3MB raw — keeps a multi-image save under typical serverless body limits. */
-export const MAX_UPLOAD_BYTES = 3 * 1024 * 1024;
+const MAX_UPLOAD_BYTES = 3 * 1024 * 1024;
 
 function sanitizeName(name: string): string {
   const base = name.replace(/\.[a-z0-9]+$/i, '');

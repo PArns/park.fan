@@ -75,11 +75,8 @@ const MONTH_NAMES = [
   'Dez',
 ];
 
-/**
- * Formats a curated field's value for display by field type: Ja/Nein, short German month names,
- * number with unit, `DD.MM.YYYY`, or `—` when empty.
- */
-export function formatFieldValue(field: CuratedField, value: unknown): string {
+/** A curated field's value as the editor shows it, `—` when empty. */
+function formatFieldValue(field: CuratedField, value: unknown): string {
   if (value === null || value === undefined || value === '') return '—';
   switch (field.type) {
     case 'boolean':

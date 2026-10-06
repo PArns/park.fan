@@ -21,10 +21,10 @@ import { getPendingImage } from '../_lib/pending-images';
  * event on click so the PropertiesPanel can offer an inline editor.
  */
 
-export type ImageAlign = 'center' | 'left' | 'right' | 'wide';
-export type ImageSize = 'small' | 'medium' | 'large' | undefined;
+type ImageAlign = 'center' | 'left' | 'right' | 'wide';
+type ImageSize = 'small' | 'medium' | 'large' | undefined;
 
-export interface ParsedImageAlt {
+interface ParsedImageAlt {
   alt: string;
   caption?: string;
   align: ImageAlign;
@@ -35,7 +35,7 @@ export interface ParsedImageAlt {
  * Splits a markdown image alt string `Alt | Caption | align | size` into its parts. Unknown align
  * falls back to `center`, unknown size to none.
  */
-export function parseImageAlt(raw: string): ParsedImageAlt {
+function parseImageAlt(raw: string): ParsedImageAlt {
   const parts = (raw ?? '').split('|').map((s) => s.trim());
   const align = normaliseAlign(parts[2]);
   const size = normaliseSize(parts[3]);

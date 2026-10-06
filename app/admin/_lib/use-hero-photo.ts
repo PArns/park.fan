@@ -12,7 +12,7 @@ import { pickHeroImage, type HeroImageMeta } from '@/lib/media/hero';
  * same half hour both get the same park, and signing in does not throw away
  * the thing you were just looking at.
  */
-export const HERO_WINDOW_MS = 30 * 60 * 1000;
+const HERO_WINDOW_MS = 30 * 60 * 1000;
 
 export interface HeroPhoto {
   src: string;

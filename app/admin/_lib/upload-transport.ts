@@ -23,13 +23,13 @@ import { compressImage } from '@/components/contribute/compress';
  */
 
 /** Multipart envelope + headers, with room to spare under the ~4.5 MB ceiling. */
-export const ANALYZE_MAX_BYTES = 4 * 1024 * 1024;
+const ANALYZE_MAX_BYTES = 4 * 1024 * 1024;
 
 /**
  * Tighter, because `commit` sends base64: 3 MB of image is ~4.1 MB on the wire.
  * Sizing this off the encoded length rather than the file's is the whole trick.
  */
-export const COMMIT_MAX_BYTES = 3 * 1024 * 1024;
+const COMMIT_MAX_BYTES = 3 * 1024 * 1024;
 
 /**
  * What the media database will actually store. Anything else has to become one of
@@ -59,7 +59,7 @@ function extensionOf(file: File): string {
  * shrink, after the upload. Format is a different question from size and gets asked
  * first.
  */
-export function needsTranscode(file: File): boolean {
+function needsTranscode(file: File): boolean {
   if (/hei[cf]/i.test(file.type)) return true;
   const ext = extensionOf(file);
   return ext === 'heic' || ext === 'heif' || !DATABASE_EXTENSIONS.has(ext);

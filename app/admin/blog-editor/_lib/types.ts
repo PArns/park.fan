@@ -99,7 +99,7 @@ export function fromFrontmatter(raw: Record<string, unknown>): EditorFrontmatter
 }
 
 /** Sensible defaults for a fresh post. */
-export function emptyFrontmatter(): EditorFrontmatter {
+function emptyFrontmatter(): EditorFrontmatter {
   const today = new Date().toISOString().slice(0, 10);
   return {
     title: '',
