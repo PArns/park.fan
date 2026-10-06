@@ -7,7 +7,14 @@ import type {
   PlannerPark,
   PlannerState,
 } from './types';
-import { isPlannedDay, MAX_PLANNED_MINUTE } from './types';
+import {
+  DEFAULT_CUSTOM_MINUTES,
+  isPlannedDay,
+  MAX_CUSTOM_LABEL_LENGTH,
+  MAX_CUSTOM_MINUTES,
+  MAX_PLANNED_MINUTE,
+  MIN_CUSTOM_MINUTES,
+} from './types';
 import { clampRiderHeight } from './party';
 import { SNAP_MIN_FINE } from './day-grid';
 import { dayClock, resolveTimeZone } from './park-time';
@@ -209,7 +216,7 @@ export function addShowEntry(state: PlannerState, params: AddShowParams): Planne
     startMinute: at,
     showSlug,
     custom: {
-      label: showName.slice(0, 60),
+      label: showName.slice(0, MAX_CUSTOM_LABEL_LENGTH),
       icon: 'show',
       durationMinutes: clampDuration(params.durationMinutes ?? DEFAULT_SHOW_MINUTES),
     },
@@ -237,7 +244,7 @@ export function setCustomBlock(
   if (!target?.custom || target.showSlug) return state;
 
   const next: PlannerCustomBlock = {
-    label: (patch.label ?? target.custom.label).slice(0, 60),
+    label: (patch.label ?? target.custom.label).slice(0, MAX_CUSTOM_LABEL_LENGTH),
     icon: patch.icon ?? target.custom.icon,
     durationMinutes: clampDuration(patch.durationMinutes ?? target.custom.durationMinutes),
   };
@@ -258,11 +265,6 @@ export function setCustomBlock(
     entries.map((entry) => (entry.id === entryId ? { ...entry, custom: next } : entry))
   );
 }
-
-/** Five minutes is a block you can still read; twelve hours is a whole day. */
-export const MIN_CUSTOM_MINUTES = 5;
-export const MAX_CUSTOM_MINUTES = 720;
-export const DEFAULT_CUSTOM_MINUTES = 60;
 
 function clampDuration(minutes: number): number {
   if (!Number.isFinite(minutes)) return DEFAULT_CUSTOM_MINUTES;

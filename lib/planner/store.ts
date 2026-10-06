@@ -1,6 +1,10 @@
 import {
+  DEFAULT_CUSTOM_MINUTES,
   EMPTY_PLANNER_STATE,
+  MAX_CUSTOM_LABEL_LENGTH,
+  MAX_CUSTOM_MINUTES,
   MAX_PLANNED_MINUTE,
+  MIN_CUSTOM_MINUTES,
   PLANNER_BLOCK_ICONS,
   type PlannerBlockIcon,
   type PlannerCustomBlock,
@@ -83,11 +87,11 @@ function toCustomBlock(value: unknown): PlannerCustomBlock | null {
   const icon = PLANNER_BLOCK_ICONS.includes(c.icon as PlannerBlockIcon)
     ? (c.icon as PlannerBlockIcon)
     : 'star';
-  const raw = typeof c.durationMinutes === 'number' ? c.durationMinutes : 60;
+  const raw = typeof c.durationMinutes === 'number' ? c.durationMinutes : DEFAULT_CUSTOM_MINUTES;
   return {
-    label: c.label.slice(0, 60),
+    label: c.label.slice(0, MAX_CUSTOM_LABEL_LENGTH),
     icon,
-    durationMinutes: Math.max(5, Math.min(720, Math.round(raw))),
+    durationMinutes: Math.max(MIN_CUSTOM_MINUTES, Math.min(MAX_CUSTOM_MINUTES, Math.round(raw))),
   };
 }
 

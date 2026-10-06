@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils';
 import { formatGridTime } from '@/lib/planner/park-time';
 import { SNAP_MIN_FINE } from '@/lib/planner/day-grid';
 import {
+  MAX_CUSTOM_LABEL_LENGTH,
   PLANNER_BLOCK_ICONS,
   type PlannerCustomBlock,
   type PlannerEntry,
@@ -161,7 +162,7 @@ export function PlannerGridActions({
             value={custom.label}
             onChange={(event) => onEditCustom(entry.id, { label: event.target.value })}
             aria-label={t('custom.label')}
-            maxLength={60}
+            maxLength={MAX_CUSTOM_LABEL_LENGTH}
             className="focus:bg-accent/50 w-full truncate rounded-sm bg-transparent text-sm outline-none"
           />
         ) : (

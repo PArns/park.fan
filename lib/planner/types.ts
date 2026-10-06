@@ -38,6 +38,16 @@ export interface PlannerCustomBlock {
   durationMinutes: number;
 }
 
+/** The longest label a free block keeps, wherever it is typed, stored or read back. */
+export const MAX_CUSTOM_LABEL_LENGTH = 60;
+
+/** Five minutes is a block you can still read; twelve hours is a whole day. */
+export const MIN_CUSTOM_MINUTES = 5;
+/** The longest a free block may be dragged to. */
+export const MAX_CUSTOM_MINUTES = 720;
+/** How long a free block is when nobody said. */
+export const DEFAULT_CUSTOM_MINUTES = 60;
+
 export interface PlannerEntry {
   /**
    * Stable across reorders and re-renders. Drag needs an identity that survives
