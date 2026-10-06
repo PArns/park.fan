@@ -7,10 +7,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`install-store.ts`](../../lib/pwa/install-store.ts)
 
-- `subscribeToInstall` _function_
-- `getInstallMode` _function_
-- `getServerInstallMode` _function_
+- `subscribeToInstall` _function_: Subscribes to changes of the install mode; returns the unsubscribe function.
+- `getInstallMode` _function_: Whether this browser can be asked to install park.fan right now, and how.
+- `getServerInstallMode` _function_: The install mode on the server and during hydration: always `none`.
 - `promptInstall` _function_: Opens the browser's own install dialog. The event is single-use, so it is dropped after.
-- `dismissInstall` _function_
+- `dismissInstall` _function_: Hides the install hint for 30 days.
 - `INSTALL_DISMISSED_KEY` _const_
 - Types: `InstallMode`

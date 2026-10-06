@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`chapters.ts`](../../lib/howto/chapters.ts)
 
-- `HOWTO_CHAPTERS` _const_: The guide's chapters, per locale.
+- `HOWTO_CHAPTERS` _const_: The guide's chapters, per locale, for the page's chapter list, its rail and the header's "more" band.
 - Types: `Chapter`
 
 ### [`segments.ts`](../../lib/howto/segments.ts)
@@ -15,4 +15,4 @@ by hand: change the comment in the code and re-run the script. -->
 - `howtoPath` _function_: Localized path for a locale, e.g. `/so-funktioniert-park-fan`.
 - `HOWTO_SEGMENTS` _const_: Locale → localized URL segment for the "how park.fan works" guide.
 - `HOWTO_CANONICAL_SEGMENT` _const_: The canonical route-folder segment (English), what the app router matches.
-- `HOWTO_LEGACY_SEGMENT` _const_: The pre-rename segment, kept for the redirect rules that keep it alive.
+- `HOWTO_LEGACY_SEGMENT` _const_: The old `/howto` segment, which `next.config.ts` still redirects to the localized ones.

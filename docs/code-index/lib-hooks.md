@@ -19,23 +19,23 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-attraction-detail.ts`](../../lib/hooks/use-attraction-detail.ts)
 
-- `useAttractionDetail` _hook_: Client-side fetch for an attraction's heavy detail: the daily `history` + `hourlyForecast` time-series (plus `schedule`, `bestVisitTimes`, `predictionAccuracy`).
+- `useAttractionDetail` _hook_: Client-side fetch for an attraction's heavy detail (daily `history`, `hourlyForecast`, `schedule`, `bestVisitTimes`, `predictionAccuracy`) from the CDN-cached `/api/parks/.../attractions/<slug>` route, so the page's static shell does not …
 
 ### [`use-attraction-filter.ts`](../../lib/hooks/use-attraction-filter.ts)
 
-- `useAttractionFilter` _hook_: Filters the park page's attractions and shows by search, rider height, the five pills and season, and returns the filtered lists, counts, headliners and every filter's state and setter. See the notes above.
+- `useAttractionFilter` _hook_: Filters the park page's attractions and shows by search, rider height, the five pills and season, and returns the filtered lists, counts, headliners and every filter's state and setter.
 - `nextWetMode` _function_: The cycle the pill walks: off → the water rides → everything but them → off.
 - Types: `WetMode`
 
 ### [`use-calendar-data.ts`](../../lib/hooks/use-calendar-data.ts)
 
-- `useCalendarData` _hook_: Hook to fetch calendar data with React Query - Fresh for `CALENDAR_STALE_TIME_MS` - Instant navigation when month data is cached - Automatically fetches when parameters change
-- `CALENDAR_STALE_TIME_MS` _const_: How long a fetched month stays fresh in the browser.
+- `useCalendarData` _hook_: A park's integrated calendar for a date range, fresh for `CALENDAR_STALE_TIME_MS`.
+- `CALENDAR_STALE_TIME_MS` _const_: How long a fetched month stays fresh in the browser: a calendar day is a forecast or a measurement, and neither changes while a tab is open.
 
 ### [`use-calendar-day-hourly.ts`](../../lib/hooks/use-calendar-day-hourly.ts)
 
-- `useCalendarDayHourly` _hook_: The hour-by-hour crowd curve for ONE calendar day, fetched on demand.
-- `CALENDAR_HOURLY_STALE_TIME_MS` _const_: How long a fetched hourly curve stays fresh in the browser.
+- `useCalendarDayHourly` _hook_: The hour-by-hour crowd curve for one calendar day, fetched on demand rather than in the month payload: the month is cached for a day, the curve only for the hour, so it travels on its own request with its own window (see …
+- `CALENDAR_HOURLY_STALE_TIME_MS` _const_: How long a fetched hourly curve stays fresh in the browser: five minutes, the window the route answers with, because the series is the remaining open hours and moves every hour.
 
 ### [`use-compass-heading.ts`](../../lib/hooks/use-compass-heading.ts)
 
@@ -51,17 +51,17 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-favorite-counts.ts`](../../lib/hooks/use-favorite-counts.ts)
 
-- `useFavoriteCounts` _hook_: How many things the visitor has starred, straight off the cookie.
+- `useFavoriteCounts` _hook_: How many things the visitor has starred, straight off the cookie, so the header can show it without a request.
 - Types: `FavoriteCounts`
 
 ### [`use-favorites.ts`](../../lib/hooks/use-favorites.ts)
 
-- `useFavorites` _hook_: Hook to fetch favorites using React Query - Keyed on the starred ids, so a toggle anywhere is a new entry (see `getIdsSnapshot`) - Automatically uses geolocation from context - Caches results for 5 minutes (matches the backend favorites …
+- `useFavorites` _hook_: The visitor's favorites with their live data, keyed on the starred ids and the position, and fresh for five minutes like the backend's favorites cache.
 
 ### [`use-geo-live-stats.ts`](../../lib/hooks/use-geo-live-stats.ts)
 
-- `useGeoLiveStats` _hook_: Batch-fetch live "open park" counts per continent/country.
-- `findOpenParkCount` _function_: Look up the live open-park count for a continent (or a country within it).
+- `useGeoLiveStats` _hook_: Live open-park counts per continent and country, one request shared by every consumer on a page. Client-only, so the counts are not baked into the ISR shell.
+- `findOpenParkCount` _function_: The live open-park count for a continent or a country within it.
 
 ### [`use-global-stats.ts`](../../lib/hooks/use-global-stats.ts)
 
@@ -84,27 +84,27 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-live-attraction-data.ts`](../../lib/hooks/use-live-attraction-data.ts)
 
-- `useLiveAttractionData` _hook_: Live data for the ONE ride a ride page is about.
+- `useLiveAttractionData` _hook_: Live data for the one ride a ride page is about, from the attraction detail the page already fetches for its chart (same query key as `<AttractionHistorySections>`, one request) rather than a poll of the whole park.
 
 ### [`use-live-park-data.ts`](../../lib/hooks/use-live-park-data.ts)
 
-- `useLiveParkData` _hook_: Polls a park's live snapshot every 5 minutes with React Query and merges it onto the server-rendered park, so consumers read a complete `ParkWithAttractions`. See the notes above.
+- `useLiveParkData` _hook_: Polls a park's live projection (`LiveParkSnapshot`) every five minutes and merges it onto the server-rendered park in `select`, per observer, so consumers read a complete `ParkWithAttractions`.
 
 ### [`use-live-parks-by-region.ts`](../../lib/hooks/use-live-parks-by-region.ts)
 
-- `useLiveParksByRegion` _hook_: Batch-fetch live park status for a set of regions, keyed by park id.
+- `useLiveParksByRegion` _hook_: Live park status for a set of regions, keyed by park id: one request per distinct region set, answered with the `LiveParkFields` projection.
 - `useRegionParks` _hook_: Single-region convenience wrapper for the hub grids and the blog's park references.
 - Types: `LiveParkFields`
 
 ### [`use-live-position.ts`](../../lib/hooks/use-live-position.ts)
 
-- `useLivePosition` _hook_: A precise, following position — only while `enabled`, and only where location is already granted.
+- `useLivePosition` _hook_: A precise, following position, only while `enabled` and only where location is already granted.
 - Types: `LivePosition`
 
 ### [`use-load-last.ts`](../../lib/hooks/use-load-last.ts)
 
-- `useLoadLast` _hook_: Load-priority gate for the park page's heavy trip-planning queries (best-days calendar + historical stats).
-- `LOAD_LAST_META` _const_: `meta` for a query that gates itself on `useLoadLast` but whose key it shares with queries that do not — `['calendar', …]` is the calendar grid's key too, where it is the page's main content and must keep counting as traffic.
+- `useLoadLast` _hook_: Load-priority gate for the park page's heavy trip-planning queries (best-days calendar, historical stats): `true` once every other React Query fetch on the page has been idle for a short grace period, or after a safety timeout, and …
+- `LOAD_LAST_META` _const_: `meta` for a query that gates itself on `useLoadLast` but shares its key prefix with queries that do not (`['calendar', …]` is also the grid's main content), so it does not count as outstanding traffic in every other gate's window.
 
 ### [`use-media-query.ts`](../../lib/hooks/use-media-query.ts)
 
@@ -118,9 +118,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-menu-reveal.ts`](../../lib/hooks/use-menu-reveal.ts)
 
-- `useMenuReveal` _hook_: The panel's columns lifting into place on open.
+- `useMenuReveal` _hook_: The panel's columns lifting into place on open. `restart()` rather than a timeline played and reversed: opening is a discrete event, and closing snaps because a menu that lingers on the way out is in the way.
 - `useRowReveal` _hook_: The detail row re-settling whenever it fills with a different country.
-- `useSheetReveal` _hook_: The mobile sheet's rows settling in behind the panel that is sliding on.
+- `useSheetReveal` _hook_: The mobile sheet's rows settling in behind the panel sliding on, tuned down from the desktop band because a phone shows the whole list at once. Same rules as `useMenuReveal`, with Radix's own `data-[state]` animation owning visibility.
 
 ### [`use-menu-trigger.ts`](../../lib/hooks/use-menu-trigger.ts)
 
@@ -129,7 +129,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-minute-now.ts`](../../lib/hooks/use-minute-now.ts)
 
 - `useMinuteNow` _hook_: `enabled: false` reads `null` and takes no subscription — for a reader that only needs the clock while something is open, since a hook cannot be called conditionally.
-- `useMinuteNowDate` _hook_: `useMinuteNow` as a `Date` — drop-in replacement for `useBrowserNow(60_000)` call sites, but on the shared (visibility-paused) clock instead of a private per-component interval.
+- `useMinuteNowDate` _hook_: `useMinuteNow` as a `Date`, on the shared visibility-paused clock.
 - `subscribeToMinuteClock` _const_: The clock's raw subscription, for a store that keeps its own snapshot but should tick with this one: the planner's minute counter (`lib/planner/minute-tick.ts`).
 
 ### [`use-mounted.ts`](../../lib/hooks/use-mounted.ts)
@@ -140,28 +140,28 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-nearby-analytics.ts`](../../lib/hooks/use-nearby-analytics.ts)
 
-- `useNearbyAnalytics` _hook_: Fires the nearby-card analytics events (parks/in-park loaded, permission granted/denied) and keeps the geolocation context's in-park flag in sync.
+- `useNearbyAnalytics` _hook_: Fires the nearby-card analytics events (parks or in-park loaded, permission granted or denied) and keeps the geolocation context's in-park flag in sync.
 
 ### [`use-nearby-parks.ts`](../../lib/hooks/use-nearby-parks.ts)
 
 - `useHomeNearbyParks` _hook_: Homepage nearby-parks query with the shared canonical params. All homepage consumers share one underlying request via React Query deduplication.
-- `HOME_NEARBY_RADIUS_M` _const_: The backend classifies the user as "in park" (and returns the rides list) only when within `radius` of a park.
+- `HOME_NEARBY_RADIUS_M` _const_: Canonical radius for the homepage nearby-parks query; every consumer must share the params so React Query dedupes them into one request, hence `useHomeNearbyParks`.
 - `HOME_NEARBY_LIMIT` _const_
 - Types: `UseNearbyParksOptions`
 
 ### [`use-park-best-days-calendar.ts`](../../lib/hooks/use-park-best-days-calendar.ts)
 
-- `useParkBestDaysCalendar` _hook_: Client-side fetch of the precomputed best-days snapshot that feeds the "best days" widget, the crowd-derived FAQ entry and the header "Prognose heute" forecast.
+- `useParkBestDaysCalendar` _hook_: The precomputed best-days snapshot (today plus 90 days) behind the best-days widget, the crowd FAQ entry and the header's forecast for today, from the CDN-cached `/api/parks/.../best-days` route.
 - `parkBestDaysQueryOptions` _function_: The query itself, without the gates. The trip assistant asks for several parks at once with `useQueries` and has to hit the same cache entry the park page does, so the key and the fetcher live here and nowhere else.
 
 ### [`use-park-comparison-stats.ts`](../../lib/hooks/use-park-comparison-stats.ts)
 
-- `useParkComparisonStats` _hook_: The `/stats` payload for one park is ~3 KB, so seven of them cost ~21 KB — measured, and the reason this widget exists client-side at all while an hourly-profile equivalent does not (8 × 53 KB, of which 45 % is `schedule` nobody renders).
+- `useParkComparisonStats` _hook_: A park comparison table's rows, from each park's `/stats` aggregate, which is small enough per park to fetch client-side (see docs/architecture/api-budget.md).
 - Types: `ComparisonPark`, `ComparisonRow`
 
 ### [`use-park-historical-stats.ts`](../../lib/hooks/use-park-historical-stats.ts)
 
-- `useParkHistoricalStats` _hook_: Client-side fetch for a park's 2-year historical crowd/wait-time aggregate.
+- `useParkHistoricalStats` _hook_: Client-side fetch for a park's two-year historical crowd and wait-time aggregate, from the CDN-cached `/api/parks/.../stats` route, so the park page render needs no dynamic hole for it.
 
 ### [`use-park-hourly-profile.ts`](../../lib/hooks/use-park-hourly-profile.ts)
 
@@ -178,19 +178,19 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-park-stats-queries.ts`](../../lib/hooks/use-park-stats-queries.ts)
 
-- `useParkStatsQueries` _hook_: One `/stats` fetch per park, shared by every table built on the historical aggregate.
-- `parkStatsQuery` _function_: The `/stats` query for one park at one depth: key, fetch and cache windows.
+- `useParkStatsQueries` _hook_: One `/stats` fetch per park, shared by every table built on the historical aggregate (the park-comparison table, the blog's ride-wait tables, the park page's stats section) and gated on `useLoadLast`.
+- `parkStatsQuery` _function_: The `/stats` query for one park at one depth (key, fetch, cache windows), shared by `useParkStatsQueries` and `useParkHistoricalStats`.
 - Types: `ParkStatsTarget`, `StatsDepth`
 
 ### [`use-park-wait-times.ts`](../../lib/hooks/use-park-wait-times.ts)
 
-- `useParkWaitTimes` _hook_: Batch-fetch the live status + standby wait of every ride in a park, keyed by attraction slug.
+- `useParkWaitTimes` _hook_: The live status and standby wait of every ride in a park, keyed by attraction slug: one request per park, shared by every ride reference in a blog post. Client-only, polling like `useRegionParks`.
 - Types: `LiveRideFields`, `ParkWaitTimesSnapshot`
 
 ### [`use-plan-day.ts`](../../lib/hooks/use-plan-day.ts)
 
-- `usePlanDay` _hook_: One day's per-ride hourly plan.
-- `planDayQuery` _function_: The key and the fetch behind `usePlanDay`, for a caller that needs the day once, on a press, rather than subscribed (`AddToPlannerButton`, PAR-67).
+- `usePlanDay` _hook_: One day's per-ride hourly plan. Not behind `useLoadLast`: it is the whole content of a panel the visitor opened on purpose. Fifteen minutes stale, the proxy's `s-maxage`, and no polling.
+- `planDayQuery` _function_: The key and the fetch behind `usePlanDay`, for a caller that needs the day once, on a press, rather than subscribed (`AddToPlannerButton`).
 
 ### [`use-polaroid-reveal.ts`](../../lib/hooks/use-polaroid-reveal.ts)
 
@@ -198,7 +198,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-ride-day-curve.ts`](../../lib/hooks/use-ride-day-curve.ts)
 
-- `useRideDayCurve` _hook_: One ride's day curve.
+- `useRideDayCurve` _hook_: One ride's day curve, deferred behind `useLoadLast` like `useParkHourlyProfile` because it is a historical aggregate.
 
 ### [`use-ride-figures.ts`](../../lib/hooks/use-ride-figures.ts)
 
@@ -211,7 +211,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-ride-wait-stats.ts`](../../lib/hooks/use-ride-wait-stats.ts)
 
-- `useRideWaitStats` _hook_: The rows behind every wait-time table that lists RIDES, in the two shapes posts actually write.
+- `useRideWaitStats` _hook_: The rows behind every wait-time table that lists rides: `mode="park"` takes the top of one park's ranking, `mode="rides"` a hand-picked list that usually spans parks. Both read the same `/stats` payload, so the tables in one post agree.
 - Types: `RideWaitPark`, `RideWaitTarget`, `RideWaitRow`
 
 ### [`use-search-navigation.ts`](../../lib/hooks/use-search-navigation.ts)
@@ -245,7 +245,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-weather-hourly.ts`](../../lib/hooks/use-weather-hourly.ts)
 
-- `useWeatherHourly` _hook_: Today's hour-by-hour forecast (temperature + precipitation) for a park location, via the cached `/api/weather/hourly` Open-Meteo proxy.
+- `useWeatherHourly` _hook_: A day's hour-by-hour forecast (temperature, precipitation) for a park location, through the cached `/api/weather/hourly` proxy.
 
 ### [`use-weather-nowcast.ts`](../../lib/hooks/use-weather-nowcast.ts)
 

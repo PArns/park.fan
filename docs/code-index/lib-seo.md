@@ -7,15 +7,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`attraction-meta.ts`](../../lib/seo/attraction-meta.ts)
 
-- `buildAttractionFacts` _function_: What distinguishes THIS ride from the next one, in the order it is worth saying.
-- `buildAttractionTitle` _function_: The ride title, shortened until it survives the ~60 characters Google shows.
+- `buildAttractionFacts` _function_: What distinguishes this ride from the next one, in the order it is worth saying. Read off the attraction `generateMetadata` already holds, so it costs no request.
+- `buildAttractionTitle` _function_: The ride title, stepped down a ladder of templates until it fits the ~60 characters Google shows, so the wait-time keyword is not the part that gets cut.
 - `buildAttractionDescription` _function_: The ride description, carrying whatever sets the ride apart when we know anything, and the plain sentence when we do not.
 - `buildClosedRideTitle` _function_: The title of a ride that closed for good: its name, the park and that it is closed, and no promise of a live wait time the page cannot keep. Same ladder as `buildAttractionTitle`.
 - `buildClosedRideDescription` _function_: The description of a ride that closed for good: since when, what a normal weekday cost in the queue before that, and who built it and when.
 
 ### [`content-changes/crawl.ts`](../../lib/seo/content-changes/crawl.ts)
 
-- `crawlContentFingerprints` _function_
+- `crawlContentFingerprints` _function_: Fingerprints every sitemap URL, with each park's schedule coverage and the parks that failed.
 - Types: `CrawlResult`
 
 ### [`content-changes/fingerprint.ts`](../../lib/seo/content-changes/fingerprint.ts)
@@ -24,16 +24,16 @@ by hand: change the comment in the code and re-run the script. -->
 - `fingerprintPark` _function_: A park's fingerprint. It carries the ride ROSTER — slug, name, land — but not the rides' own fingerprints: the park page lists its attractions, so a ride appearing, being renamed or moving to another land changes the park page too, while a …
 - `fingerprintGeoHub` _function_: A geo hub's fingerprint: the parks it lists, and nothing else. Everything else a country page shows — open/closed, average wait, crowd level — is a live reading.
 - `diffSnapshot` _function_: Fold one crawl into the stored snapshot.
-- `mergeScheduleCoverage` _function_: Yesterday's schedule coverage plus whatever today's crawl saw — the sibling of `diffSnapshot` for a value that is carried rather than compared.
+- `mergeScheduleCoverage` _function_: Yesterday's schedule coverage plus whatever today's crawl saw, the sibling of `diffSnapshot` for a value that is carried rather than compared.
 - `FINGERPRINT_VERSION` _const_: Bump when the fingerprint inputs change.
 - Types: `EntityContext`, `DiffResult`, `DiffOptions`
 
 ### [`content-changes/store.ts`](../../lib/seo/content-changes/store.ts)
 
-- `readContentChangeSnapshot` _function_
-- `writeContentChangeSnapshot` _function_
-- `getContentLastmodIndex` _function_
-- `getScheduleCoverageIndex` _function_
+- `readContentChangeSnapshot` _function_: The stored content-change snapshot, or null when there is none or it cannot be read.
+- `writeContentChangeSnapshot` _function_: Stores the content-change snapshot for the sitemaps to read.
+- `getContentLastmodIndex` _function_: Path → `YYYY-MM-DD` of the last content change, for the sitemaps; empty without a snapshot.
+- `getScheduleCoverageIndex` _function_: Park path → the last date that park's schedule reaches, for the calendar sitemap. Empty means "no answer", never "no coverage": truncating the catalogue on a cold blob would drop thousands of live URLs.
 
 ### [`content-changes/types.ts`](../../lib/seo/content-changes/types.ts)
 
@@ -50,7 +50,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`not-found-metadata.ts`](../../lib/seo/not-found-metadata.ts)
 
-- `notFoundMetadata` _function_: The head of a locale 404. Without it the page inherited the `[locale]` layout's metadata: the homepage title, the homepage canonical and an `index, follow` next to the `noindex` Next injects for the status (SEO run, 2026-10-03).
+- `notFoundMetadata` _function_: The head of a locale 404. Without it the page inherits the `[locale]` layout's metadata: the homepage title and canonical, and an `index, follow` beside the `noindex` Next injects.
 
 ### [`sitemap-xml.ts`](../../lib/seo/sitemap-xml.ts)
 

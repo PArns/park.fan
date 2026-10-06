@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`helpers.ts`](../../lib/i18n/helpers.ts)
 
-Enhanced Translation Helpers with Logging
+Country and continent names that fall back to the prettified slug and log the missing key.
 
 - `translateCountry` _function_: Translate a country by its slug with logging
 - `translateContinent` _function_: Translate a continent by its slug with logging
@@ -19,9 +19,9 @@ Enhanced Translation Helpers with Logging
 
 ### [`logger.ts`](../../lib/i18n/logger.ts)
 
-`fs`/`path` are loaded lazily (server-only) instead of via top-level imports: this module is now reachable from Client Components (e.g. the client FAQ section → translateCountry), and a static `import fs from 'fs'` makes the client bundle …
+`fs` and `path` load lazily, on the server only: this module is reachable from Client Components, where a static `import fs` fails to resolve under Turbopack.
 
-- `logMissingTranslation` _function_: Export helper for use in translation functions
+- `logMissingTranslation` _function_: Records a missing translation key for the build log and the development console.
 
 ### [`message-chunk-loader.ts`](../../lib/i18n/message-chunk-loader.ts)
 
@@ -36,7 +36,7 @@ Enhanced Translation Helpers with Logging
 
 ### [`remember-locale.ts`](../../lib/i18n/remember-locale.ts)
 
-- `rememberLocale` _function_: Remember an EXPLICIT language choice for the unprefixed `/` entry point.
+- `rememberLocale` _function_: Remembers an explicit language choice for the unprefixed `/` entry point. `proxy.ts` drops next-intl's own cookie so pages stay cacheable, and only `/` reads it, so only an active pick is persisted.
 
 ### [`time.ts`](../../lib/i18n/time.ts)
 

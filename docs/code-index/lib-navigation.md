@@ -13,12 +13,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`featured-parks-menu.ts`](../../lib/navigation/featured-parks-menu.ts)
 
-- `getFeaturedParksMenu` _function_: Memoised per process, like `getNewsMenu`: everything it reads is the generated media manifest and a constant, so the answer is fixed for the deployment, and the layout asks for it on every page.
+- `getFeaturedParksMenu` _function_: The parks menu's photo cards for a locale, memoised per process: everything it reads is fixed for the deployment, and the layout asks on every page. Callers share the array and must not mutate it.
 - Types: `FeaturedParkCard`
 
 ### [`geo-menu.ts`](../../lib/navigation/geo-menu.ts)
 
-- `getGeoMenu` _function_: Continents with their countries, sorted by park count so the regions somebody is most likely to be looking for sit at the top of each column.
+- `getGeoMenu` _function_: Continents with their countries, sorted by park count.
 - Types: `GeoMenuCountry`, `GeoMenuContinent`
 
 ### [`glossary-menu.ts`](../../lib/navigation/glossary-menu.ts)
@@ -40,5 +40,5 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`news-menu.ts`](../../lib/navigation/news-menu.ts)
 
-- `getNewsMenu` _function_: Memoised per process, like the listings it reads: the manifest is fixed for the deployment, and the layout (every page) and the homepage hero both ask for it.
+- `getNewsMenu` _function_: The header's news panel for a locale, memoised per process: the manifest is fixed for the deployment, and the layout and the homepage hero both ask for it.
 - Types: `NewsMenuItem`, `NewsMenu`

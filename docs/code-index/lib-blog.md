@@ -20,10 +20,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `getPostsForPark` _function_: Posts to link from a park page, most relevant first (explicit configuration and topical posts before passing mentions, newest first within the same relevance).
 - `getGuideForPark` _function_: The visit guide for one park in the reader's locale, or `null` — the post the park page opens with instead of listing it among the others. See `guidePrimaryPark` for what makes a post one.
-- `getNewsParkRef` _function_: The one park a news post is about, for its label and the park filter on `/news`.
+- `getNewsParkRef` _function_: The one park a news post is about, for its label and the park filter on `/news`: the first `parkLinks` entry in the author's order (English first, then the other locales alphabetically, so the answer does not depend on file order), else …
 - `getPostsForRide` _function_: The same for a single ride. Ranking and locale semantics as above.
-- `getPostsForGlossaryTerm` _function_: Posts to link from a glossary term page, newest first.
-- `MAX_PRIMER_PARK_LINKS` _const_: The most `parkLinks` a guide can carry and still be ONE park's primer.
+- `getPostsForGlossaryTerm` _function_: Posts to link from a glossary term page, newest first, in the reader's locale. Most terms return `[]`, and the caller renders nothing for them.
+- `MAX_PRIMER_PARK_LINKS` _const_: The most `parkLinks` a guide can carry and still be one park's primer: the park guides list one or two, the round-ups six or more.
 - Types: `BacklinkOptions`
 
 ### [`categories.ts`](../../lib/blog/categories.ts)
@@ -31,7 +31,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `resolveCategoryLabel` _function_: Returns a blog category's label in the locale from `content/blog/categories.json`, falling back to English and then to the title-cased path segment.
 - `parseCategoryPath` _function_: Parse a slash-separated category path into normalized segments.
 - `categoryPathBreadcrumbs` _function_: Return [["a"], ["a","b"], ["a","b","c"]] from "a/b/c".
-- `buildCategoryTree` _function_: Build the blog's category tree from every visible ARTICLE.
+- `buildCategoryTree` _function_: Builds the blog's category tree from every visible article; news has its own section and never enters it (see docs/rules/news-is-set-apart-from-the-articles.md).
 - `filterPostsByCategory` _function_: Posts whose category path starts with the given segments (inclusive).
 
 ### [`country-guide.ts`](../../lib/blog/country-guide.ts)
@@ -48,13 +48,13 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`feed.ts`](../../lib/blog/feed.ts)
 
 - `blogFeedUrl` _function_: Where a locale's feed lives. `feed.xml`, per the route folder of the same name.
-- `blogFeedAlternates` _function_: The `alternates.types` entry for a page whose feed is this locale's blog feed.
-- `BLOG_FEED_TITLE` _const_: The feed's name, as a reader's subscription list will show it.
-- `BLOG_FEED_DESCRIPTION` _const_: The channel description. Previously a two-branch ternary that gave German its own sentence and handed the English one to the remaining four locales.
+- `blogFeedAlternates` _function_: The `alternates.types` entry for a page whose feed is this locale's blog feed, or `undefined` where the locale publishes nothing: the feed 404s there, and a reader records that against the whole site. Spread it into `alternates`:
+- `BLOG_FEED_TITLE` _const_: The feed's name, as a reader's subscription list will show it, localized so six feeds are not six identical rows.
+- `BLOG_FEED_DESCRIPTION` _const_: The feed's channel description, per locale.
 
 ### [`gallery.ts`](../../lib/blog/gallery.ts)
 
-- `listFolderImages` _function_: The images of a gallery, in order.
+- `listFolderImages` _function_: The images of a gallery, in order, from a collection id or a `/media/<collection>` path. An unknown collection gives no gallery rather than a broken page.
 - `resolveGallery` _function_: Resolve a polymorphic gallery declaration from frontmatter into `BlogImage[]`.
 
 ### [`glossary-ride-href.ts`](../../lib/blog/glossary-ride-href.ts)
@@ -66,7 +66,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`image-dimensions.ts`](../../lib/blog/image-dimensions.ts)
 
-- `getBlogImageDimensions` _function_: Intrinsic dimensions for an image referenced from a blog post, looked up in the media database.
+- `getBlogImageDimensions` _function_: Intrinsic dimensions for an image a blog post references, from the media database, so an inline image reserves its box before the bytes arrive. Null for anything outside the database.
 
 ### [`index.ts`](../../lib/blog/index.ts)
 
@@ -79,12 +79,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `resolveEntryForLocale` _function_: Pick the entry to serve for a requested locale: that locale, else EN, else whichever translation exists.
 - `findTranslationKeyBySlug` _function_: Find a post's translationKey from a URL slug: the requested locale's slug first, then EN, then any other locale (which the post page turns into a redirect to the canonical URL).
 - `getListItemByLocaleSlug` _function_: A post's card data by URL slug, WITHOUT its body — for surfaces that only need frontmatter (the OG image route). Hidden posts resolve here just like they do by URL; drafts don't.
-- `hasPublishedPosts` _function_: Returns true when the blog has at least one published post, in the given locale (with its English fallback) or, without one, in any locale. Memoised per process; see the note above.
+- `hasPublishedPosts` _function_: Returns true when the blog has at least one published post, in the given locale (with its English fallback) or, without one, in any locale. Every blog surface gates on it, so a locale with nothing published shows no blog at all.
 - `getTranslationIndex` _function_: Map from translationKey → { locale: slug } — kept for hreflang / canonical lookups.
 - `listPosts` _function_: List all published posts for the given locale, falling back to EN where needed. Sorted newest-first by `date`.
-- `buildPostAlternates` _function_: Return alternate hreflang URLs for a single post (per translationKey).
+- `buildPostAlternates` _function_: Hreflang URLs for one post, only for locales with a real, published translation: a fallback URL serves the English text and canonicalizes to it.
 - `listAllUrlSlugsByLocale` _function_: All visible URL slugs per locale — used for generateStaticParams. `section` keeps the two post routes apart: `blog` lists the articles, `news` the news posts (see `./paths`).
-- `lastTouched` _function_: When a post was last touched, for the recency sort below and for the date the header's blog panel prints beside each post.
+- `lastTouched` _function_: When a post was last touched, for the recency sort and the date the header's blog panel prints: `updatedAt` when it is later than `date`, so it can only pull a post forward.
 - `isNewsPost` _function_: Returns true when a post's category is `news` or a subcategory of it.
 - `listArticles` _function_: `listPosts` without the news posts: what the blog lists.
 - `listArticlesByRecency` _function_: `listPostsByRecency` without the news posts. Frozen and memoised.
@@ -96,13 +96,13 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`live-display.ts`](../../lib/blog/live-display.ts)
 
 - `isNotOperating` _function_: True when a park/attraction status string means "not currently operating".
-- `waitTimeBadgeClass` _function_: Severity-coloured badge class for a wait time in minutes, sharing the canonical `waitTimeCrowdTier` thresholds with `WaitTimeValue` so an inline blog wait badge is green at 20 min and red past an hour — the same palette as CrowdLevelBadge, …
+- `waitTimeBadgeClass` _function_: Severity-coloured badge class for a wait time in minutes, on the same `waitTimeCrowdTier` thresholds and palette as `WaitTimeValue` and CrowdLevelBadge.
 
 ### [`live-overlay.ts`](../../lib/blog/live-overlay.ts)
 
 - `parkGeoParts` _function_: Split a resolved park href (`/parks/{continent}/{country}/{city}/{parkSlug}`) back into its geo parts — the shape every live endpoint is keyed by.
 - `overlayPark` _function_: Lay the live region snapshot over a park resolved at build time.
-- `overlayAttraction` _function_: Lay live data over a ride resolved at build time.
+- `overlayAttraction` _function_: Lays live data over a ride resolved at build time. `live` is the lean whole-park batch, `detail` the full attraction payload fetched lazily for the cards that render its stats; whatever is missing falls back to the resolved snapshot.
 
 ### [`new-posts.ts`](../../lib/blog/new-posts.ts)
 
@@ -111,7 +111,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `writeSeen` _function_: Remember every post in the list as seen.
 - `unseenPosts` _function_: The posts the visitor has not been shown yet, newest first.
 - `SEEN_STORAGE_KEY` _const_
-- `CHECKED_AT_STORAGE_KEY` _const_: When this browser last asked for the list, in epoch milliseconds. In `localStorage`, so every tab of the site shares one clock and the check costs one request per interval, not per page.
+- `CHECKED_AT_STORAGE_KEY` _const_: When this browser last asked for the list, in epoch milliseconds. In `localStorage` rather than a per-session flag, so every tab shares one clock and a tab kept open for days still asks again.
 - `CHECK_INTERVAL_MS` _const_: How long one answer counts. The same ten minutes the browser may keep `/api/blog-latest` for (`max-age=600`): asking sooner would only be answered from the HTTP cache.
 - Types: `LatestPost`, `LatestPostsLabels`, `LatestPostsPayload`, `SeenRecord`
 
@@ -145,24 +145,24 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`remark-callouts.ts`](../../lib/blog/remark-callouts.ts)
 
 - `remarkCallouts` _function_: Remark plugin that turns a blockquote starting with `[!NOTE]`, `[!CORRECTION]`, `[!QUOTE]` and the other markers into a callout tagged with `data-callout`.
-- `CALLOUT_TYPES` _const_: GitHub-style alert callouts:
+- `CALLOUT_TYPES` _const_: GitHub-style alert callouts (`> [!NOTE]`). remark-gfm leaves them as plain blockquotes; this plugin strips the `[!TYPE]` marker and tags the blockquote `data-callout="note"` for the renderer in blog-content.tsx.
 - Types: `CalloutType`
 
 ### [`remark-table-themes.ts`](../../lib/blog/remark-table-themes.ts)
 
 Deliberately NOT anchored to ^…$ — remark may merge adjacent raw-HTML lines into one node, so the directive just needs to appear in the value.
 
-- `remarkTableThemes` _function_
+- `remarkTableThemes` _function_: Turns a `<!--tbl-theme: NAME-->` comment into `data-theme` on the next table.
 
 ### [`tags.ts`](../../lib/blog/tags.ts)
 
 - `normalizeTagSlug` _function_: Lowercase + replace any whitespace / special chars with hyphens.
-- `listTags` _function_: Collect every tag across every published ARTICLE in the given locale, returning a stable, count-sorted list. Used by the tag archive page, the sidebar tag cloud and SEO/sitemap helpers.
+- `listTags` _function_: Every tag across the published articles in a locale, sorted by count, for the tag archive, the tag cloud and the sitemap. News posts are not counted: a tag archive lists articles only, so a tag only news carries has no archive.
 - `isIndexableTag` _function_: Whether a tag archive should be indexed. Unknown slugs answer `false`: a tag with no entry has no posts, which is below any threshold.
 - `findCanonicalTag` _function_: Find the canonical display label for a slug — there may be multiple differently-cased variants in posts, the first wins.
 - `buildTagAlternates` _function_: Absolute hreflang alternates for a tag archive — only locales where the equivalent tag actually has a page.
 - `getTagColorClass` _function_: Pick a deterministic color class for a tag slug. Using a tiny FNV-1a hash so the same string always picks the same palette regardless of locale.
-- `TAG_INDEX_MIN_POSTS` _const_: A tag archive earns a place in the index once it collects at least this many posts.
+- `TAG_INDEX_MIN_POSTS` _const_: A tag archive is indexed once it collects at least this many posts; below it the page is one post's teaser at a second URL, and entity tags compete with their park's own page.
 - Types: `TagEntry`
 
 ### [`toc.ts`](../../lib/blog/toc.ts)
@@ -183,6 +183,6 @@ Deliberately NOT anchored to ^…$ — remark may merge adjacent raw-HTML lines 
 ### [`widget-park.ts`](../../lib/blog/widget-park.ts)
 
 - `parkGeoPath` _function_: Derive the API geo-path segments from a ResolvedPark.href, which has the shape `/parks/{continent}/{country}/{city}/{park}`. Returns null when the href doesn't have all four segments (e.g. geo data was unavailable).
-- `parseWidgetParkRef` _function_: Parse the park a widget fence names, in the bare form (`efteling`) or in the full-path form `ref:` already takes (`/parks/europe/france/paris/disneyland-park`).
+- `parseWidgetParkRef` _function_: Parses the park a widget fence names, bare (`efteling`) or in the full-path form `ref:` takes (`/parks/europe/france/paris/disneyland-park`), through `parseRefKey`.
 - `parseWidgetRideRef` _function_: Split a `rides=` entry's reference into the park it names and the ride, accepting the same two park forms as `parseWidgetParkRef`: `efteling/joris-en-de-draak` or `/parks/europe/france/paris/disneyland-park/peter-pans-flight`.
 - Types: `ParkGeoPath`, `WidgetParkRef`

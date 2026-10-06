@@ -8,7 +8,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`content-urls.ts`](../../lib/content-urls.ts)
 
 - `getParkPaths` _function_: Park detail paths (`/parks/<continent>/<country>/<city>/<park>`), ordered most-popular-first so a time-bounded prewarm run covers the highest-traffic parks before the long tail. Popularity ranking is best-effort.
-- `getAttractionPaths` _function_: Attraction detail paths, one per `/v1/sitemap/attractions` entry. Transforms the API url (`/v1/parks/.../attractions/<slug>`) to the frontend path.
+- `getAttractionPaths` _function_: Attraction detail paths, one per `/v1/sitemap/attractions` entry.
 - `localizedUrls` _function_: Expand locale-agnostic paths into absolute URLs for every locale.
 
 ### [`indexnow.ts`](../../lib/indexnow.ts)
@@ -29,18 +29,18 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`providers.tsx`](../../lib/providers.tsx)
 
-- `Providers` _component_: Client-side providers wrapper. Includes geolocation and data fetching (React Query). Note: ThemeProvider (next-themes) is handled in the root layout to avoid React 19 script injection warnings.
+- `Providers` _component_: Client-side providers: React Query, the temperature unit and geolocation. `ThemeProvider` (next-themes) is mounted in the locale layout instead, to avoid React 19 script injection warnings.
 
 ### [`utils.ts`](../../lib/utils.ts)
 
-- `cn` _function_
+- `cn` _function_: Joins class names and resolves conflicting Tailwind classes, the later one winning.
 - `stripNewPrefix` _function_: Strip "NEW:", "Neu:", "Nouveau:", etc. from display names, titles, descriptions.
 - `isUuid` _function_: Whether a string is shaped like a UUID — used to refuse an id before it reaches an endpoint that validates one with `@IsUUID()`.
-- `getGermanArticle` _function_: The German article a park name takes, curated first and guessed second.
+- `getGermanArticle` _function_: The German article a park name takes, curated first and guessed second. The curated `nameArticleDe` is set for every park, including those that take none; pass it whenever a park object is at hand.
 
 ### [`websub.ts`](../../lib/websub.ts)
 
 - `feedUrlsForPing` _function_: Every feed a ping covers — one per locale.
 - `pingWebSub` _function_: Tell the hub a feed changed.
-- `WEBSUB_HUB` _const_: WebSub (W3C, formerly PubSubHubbub) — how a new post reaches a subscriber in seconds instead of whenever their reader next polls.
+- `WEBSUB_HUB` _const_: Google's public WebSub hub, the one nearly every feed points at.
 - Types: `WebSubPingResult`

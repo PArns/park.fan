@@ -7,35 +7,35 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`coaster/elements.ts`](../../lib/three/coaster/elements.ts)
 
-- `getCoasterElement` _function_
-- `hasCoasterElement` _function_
-- `COASTER_ELEMENTS` _const_
+- `getCoasterElement` _function_: The 3-D player's element for a glossary term id, if it has one.
+- `hasCoasterElement` _function_: Whether a glossary term has a 3-D player.
+- `COASTER_ELEMENTS` _const_: Every element with a 3-D player, keyed by glossary term id.
 - Types: `ElementKeyPoint`, `CoasterElementDef`
 
 ### [`coaster/kit.ts`](../../lib/three/coaster/kit.ts)
 
 Reusable three.js toolkit for the glossary coaster player.
 
-- `createCtx` _function_
-- `framesAlongCurve` _function_
+- `createCtx` _function_: The shared material factories for one scene, each registered with its tracker.
+- `framesAlongCurve` _function_: Parallel-transport frames along a curve: tangent, up and right at N+1 samples, carried with minimal twist so they never flip.
 - `frameAt` _function_: Sample an interpolated frame at progress `t` (0..1 along the curve), reusing the precomputed frames. Used every animation tick to place + orient the train and the follow/onboard cameras without recomputing the whole frame set.
-- `makeSkyTexture` _function_
+- `makeSkyTexture` _function_: The sky's vertical gradient as a canvas texture, by day or by night.
 - `buildMeadow` _function_: A flat green meadow the coaster element sits on.
 - `buildMountains` _function_: A simple, consistent mountain backdrop behind the element: a cluster of snow-capped cones + low rolling hills, set well back so the coaster reads in front of it from the frontal view.
 - `buildClouds` _function_: A few fluffy clouds drifting across the sky (optional ambience).
-- `rnd` _function_
-- `Tracker` _class_: Disposal tracker — register every geometry/material/texture so the whole scene can be torn down in one call (avoids WebGL leaks when the player unmounts / the term page navigates away).
-- `PAL` _const_: Palette — a bright, toy/RCT-ish look shared by every element scene.
+- `rnd` _function_: A random number between `a` and `b`.
+- `Tracker` _class_: Registers every geometry, material and texture so a scene tears down in one call, without leaking WebGL resources when the player unmounts.
+- `PAL` _const_: The palette: a bright, toy-like look shared by every element scene.
 - Types: `BuildCtx`, `CurveFrames`
 
 ### [`coaster/scene.ts`](../../lib/three/coaster/scene.ts)
 
-createCoasterScene — a small, self-contained three.js scene that runs ONE coaster element (from the registry) on a meadow in front of a mountain, with a transport-controlled train and three camera modes.
+The 3-D player for one coaster element from the registry: a meadow in front of a mountain, a train under transport controls and three camera modes. Every glossary term with a player uses this factory, so only the element data differs.
 
-- `createCoasterScene` _function_
+- `createCoasterScene` _function_: Mounts the player for one coaster element on `canvas`.
 - Types: `CoasterView`, `SceneTheme`, `CoasterSceneOptions`, `CoasterSceneHandle`
 
 ### [`park-scene.ts`](../../lib/three/park-scene.ts)
 
-- `createParkScene` _function_: Scene assembly
+- `createParkScene` _function_: Builds the hero park on `canvas` and runs its render loop until disposed.
 - Types: `SceneTheme`, `ParkSceneHandle`

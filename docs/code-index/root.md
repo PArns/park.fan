@@ -7,5 +7,5 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`proxy.ts`](../../proxy.ts)
 
-- `default (proxy)` _function_
+- `default (proxy)` _function_: Next's request proxy: locale routing plus the redirects that must not render a page first.
 - `config` _const_

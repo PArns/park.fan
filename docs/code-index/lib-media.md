@@ -17,7 +17,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `versionedPath` _function_: Any media path with its content version attached — including a pre-cut crop.
 - `focusToObjectPosition` _function_: CSS `object-position` for a focal point, defaulting to centre.
 - `focusStyle` _function_: Style object for any element painting a media image with `object-fit: cover`.
-- `mediaImageProps` _function_: The props every `<Image fill>` / `<Image>` rendering a database image should spread: the path, the intrinsic size that reserves the box, and the focal point.
+- `mediaImageProps` _function_: The props every `<Image fill>` / `<Image>` rendering a database image should spread: the path, the intrinsic size that reserves the box, and the focal point, so every surface frames an image the same way.
 - `variantFor` _function_: The best variant for a target aspect ratio: the pre-cut crop when one exists, otherwise the source.
 - `versioned` _function_: A path with the image's content version attached.
 - `versionedSrc` _function_: The image's own path, content-versioned.
@@ -34,13 +34,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-lqip.ts`](../../lib/media/hero-lqip.ts)
 
-- `heroBlurDataUrl` _function_: The inline preview for a hero photo — a 16 px WebP as a `data:` URL, for `next/image`'s `placeholder="blur"`.
+- `heroBlurDataUrl` _function_: The inline preview for a hero photo, a tiny WebP `data:` URL for `next/image`'s `placeholder="blur"`.
 
 ### [`hero.ts`](../../lib/media/hero.ts)
 
 - `getHeroMetaBySrc` _function_: Caption data for a hero image by its public path — what the client rotation has.
 - `heroImageSrcs` _function_: Public paths of every image eligible for the hero rotation.
-- `parkHeroImageSrcs` _function_: Hero images for ONE park — empty when no park is given.
+- `parkHeroImageSrcs` _function_: Hero images for one park, empty when no park is given. A separate function rather than an optional argument on `heroImageSrcs`: a visitor at no park passes `undefined` and must get no rotation, not every park's photos.
 - `heroObjectPosition` _function_: CSS `object-position` for a hero image, defaulting to centre.
 - `pickHeroImage` _function_: Deterministic pick keyed to a time window: identical for all concurrent requests, re-picked when the window rolls over. Server-rendered for LCP, so it must not be random per request — that would make the shell uncacheable.
 - Types: `HeroImageMeta`
@@ -104,7 +104,7 @@ What the open media session already holds for one park, read off its diff.
 - `countWithText` _function_: How many images carry localized prose at all — the translation-coverage counter.
 - `getMediaText` _function_: Raw localized text for an image, unresolved.
 - `getMediaAlt` _function_: Alt text in the requested locale, falling back through de → en → anything.
-- `getMediaAltBySrc` _function_: Alt text for a PUBLIC PATH rather than a media id, e.g. `/media/europa-park/arthur.jpg?v=0a5e56d1` → the `europa-park/arthur` sidecar.
+- `getMediaAltBySrc` _function_: Alt text for a public path rather than a media id (`/media/europa-park/arthur.jpg?v=…` → `europa-park/arthur`), for server callers holding a hero path: the client-safe hero slice ships paths, not ids.
 - `getMediaCaption` _function_: Caption in the requested locale, falling back through de → en → anything.
 - `getCreditLine` _function_: Attribution line, e.g. `© 2025 Patrick Arns (CC BY 4.0)`.
 - `needsAttribution` _function_: Whether an image needs a visible, on-image credit rather than just the sidecar-only line every photo already carries.

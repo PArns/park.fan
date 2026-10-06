@@ -12,11 +12,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-faq-terms.ts`](../../lib/faq/park-faq-terms.ts)
 
-- `getParkFaqGlossary` _function_: The glossary terms a park's FAQ can actually link, and the locale's glossary segment.
+- `getParkFaqGlossary` _function_: The glossary terms a park's FAQ can link, and the locale's glossary segment.
 
 ### [`park-faq.ts`](../../lib/faq/park-faq.ts)
 
-- `getParkArticleForms` _function_: The park name in the forms German sentences need.
+- `getParkArticleForms` _function_: The park name in the forms German sentences need, through `parkPhrase`: the article is the curated `nameArticleDe`, and `in dem` contracts while `in der` does not.
 - `buildParkFaqItems` _function_: Builds a park page's FAQ items (wait times, today's opening hours, location, ride count, themed areas, shows, dining), each only when the park has the data.
 - `getLeastCrowdedDays` _function_: Shared derivation for the "when is {park} least crowded?" FAQ entry — used by BOTH the server-rendered FAQPage JSON-LD and the visible FAQ section, so the structured data can never claim something the page doesn't show.
 - Types: `ParkFaqIconName`, `ParkFaqItem`, `ParkArticleForms`, `LeastCrowdedResult`

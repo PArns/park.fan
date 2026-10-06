@@ -8,7 +8,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`blog-image-sidecar.ts`](../../lib/admin/blog-image-sidecar.ts)
 
 - `textFromDrafts` _function_: `![alt | caption | …](path)` for one image, across every filled locale.
-- `sidecarForUpload` _function_: Serialize that into a sidecar file, through the same normalizer the generator and the media admin use — so a file written here is byte-identical to one a human would hand-author, and the diff in the pull request reads as content.
+- `sidecarForUpload` _function_: The sidecar file for an image uploaded from the blog editor, written through the same normalizer as the generator so it is byte-identical to a hand-authored one.
 - Types: `LocaleDraft`
 
 ### [`blog-paths.ts`](../../lib/admin/blog-paths.ts)
@@ -18,7 +18,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`cookie.ts`](../../lib/admin/cookie.ts)
 
-- `readCookie` _function_: Reading one cookie out of a `Cookie` header.
+- `readCookie` _function_: Reads one cookie out of a `Cookie` header. Kept free of `next/headers` so the code that parses attacker-controlled input can be tested; split rather than matched, so the name comparison is exact and no regex runs over hostile input.
 
 ### [`github.ts`](../../lib/admin/github.ts)
 
@@ -32,31 +32,31 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `postFilePath` _function_: `de/phantasialand-tipps` → `content/blog/de/phantasialand-tipps.md`.
 - `postsReferencing` _function_: The post keys (`<locale>/<slug>`) whose body references the image.
-- `rewriteReferences` _function_: Rewrite every reference to an image so it points at where the image went.
+- `rewriteReferences` _function_: Rewrites every reference to an image so it points at where the image went. The crop suffix is kept and the extension comes from the destination, because a move can also swap a PNG for a JPEG.
 
 ### [`media-session.ts`](../../lib/admin/media-session.ts)
 
-- `resolveSession` _function_: The running session, or null when there genuinely is none.
-- `sessionFiles` _function_: The files a session changes against its base.
+- `resolveSession` _function_: The running session, or null when there is none. Throws when GitHub could not be asked.
+- `sessionFiles` _function_: The files a session changes against its base: the PR's file list, or a compare with the base for a session branch that never got its PR.
 - `readSessionJson` _function_: A JSON file as it stands on the session branch, or null when it cannot be read.
-- `sessionChanges` _function_: The `- ` lines of a session PR body: one per change, in the order they landed.
-- `SESSION_PREFIX` _const_: Which pull request a media save lands in.
+- `sessionChanges` _function_: The `- ` lines of a session PR body, one per change in the order they landed: the body is the session's log, which the admin shows before the next save.
+- `SESSION_PREFIX` _const_: Which pull request a media save lands in. A session is the branch with the `media/session-` prefix and its pull request, resolved on the server so a reload, a second tab or another machine all land in the same PR.
 - Types: `MediaSession`
 
 ### [`media-unique-roles.ts`](../../lib/admin/media-unique-roles.ts)
 
-Unique roles move; they are never shared.
+Unique roles move; they are never shared. `ride-card` and `park-background` name THE photo of a ride or a park, and `getRideImage` takes the first holder, so a second one would hide the photo just chosen.
 
 - `uniqueClaims` _function_: Every uniqueness key an image claims, e.g. `ride-card:europa-park/voltron`.
-- `rolesToYield` _function_: The roles `other` has to give up so that `claims` stay unique.
+- `rolesToYield` _function_: The roles `other` has to give up so that `claims` stay unique. A role is one flag per image, so a card that answers for two rides through `alsoRides` loses `ride-card` for both.
 - `idOfSidecarPath` _function_: `public/media/europa-park/voltron.json` → `europa-park/voltron`.
-- `handOverUniqueRoles` _function_: Take every unique role the `claimants` claim from every other holder of it.
+- `handOverUniqueRoles` _function_: Takes every unique role the `claimants` claim from every other holder of it. `read` must answer with the file as it stands on the session branch: rebuilding it from the manifest would undo an earlier edit in the same session.
 - `UNIQUE_ROLES` _const_: The roles only one image may hold per park (`park-background`) or per ride (`ride-card`).
 - Types: `UniqueRole`, `RoleHolder`, `Handover`
 
 ### [`proxy-path.ts`](../../lib/admin/proxy-path.ts)
 
-The path guard for `/api/admin/[...path]`.
+The path guard for `/api/admin/[...path]`, pure so it can be tested without Next.
 
 - `isSafeSegment` _function_: Returns false for an empty, `.` or `..` segment, or one holding a decoded `/`, `\`, `?` or `#` that could move the upstream admin URL.
 - `adminProxyPath` _function_: `['content', 'parks', '<id>'] → 'content/parks/<id>'`, or null if unsafe.
@@ -71,10 +71,10 @@ The path guard for `/api/admin/[...path]`.
 - `readSessionToken` _function_: The raw token from the request's cookie, or null. See `readCookie`.
 - `resolveAdminIdentity` _function_: Who this request is, according to the backend.
 - `forgetSession` _function_: Drop a token from the validation cache — called on logout.
-- `forgetAllSessions` _function_: Drop every cached identity.
-- `requireAdmin` _function_: Guard for this app's own admin route handlers.
+- `forgetAllSessions` _function_: Drops every cached identity, for revocations that do not name a token this process can see (a password change, sign out everywhere, a deactivated account).
+- `requireAdmin` _function_: Guard for this app's own admin route handlers: a ready-to-return response on failure, the identity on success. `minRole` defaults to `author` because every route behind it writes.
 - `sessionCookieOptions` _function_: The `Set-Cookie` attributes a session cookie is written with.
-- `denyUnlessAdmin` _function_: The one-liner form of `requireAdmin`, for handlers that need the guard but not the identity: `const denied = await denyUnlessAdmin(req); if (denied) return denied;`
-- `ADMIN_SESSION_COOKIE` _const_: The admin session cookie.
+- `denyUnlessAdmin` _function_: The one-line form of `requireAdmin`, for handlers that need no identity.
+- `ADMIN_SESSION_COOKIE` _const_: The admin session cookie: httpOnly, so no script on the admin origin can read the token, and `SameSite=Strict`, since nothing links into the admin from another site. See docs/rules/the-admin-holds-no-credential.md.
 - `SESSION_ABSOLUTE_TTL_SECONDS` _const_: The backend's absolute session ceiling (`ABSOLUTE_TTL_SECONDS`), for the one case where a cookie has to be written without an `expiresAt` to derive it from.
 - Types: `AdminGuardFailure`, `AdminGuardSuccess`

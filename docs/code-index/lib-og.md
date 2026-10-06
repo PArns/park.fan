@@ -24,7 +24,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`jpeg.ts`](../../lib/og/jpeg.ts)
 
-- `ogAsJpeg` _function_: Re-encode an `ImageResponse` as JPEG.
+- `ogAsJpeg` _function_: Re-encodes an `ImageResponse` as JPEG. `next/og` can only emit PNG, which stores the photo under a card's gradient losslessly and made the OG cards the largest responses on the site; JPEG (q82, mozjpeg) is far smaller for every card type, …
 
 ### [`text-card.tsx`](../../lib/og/text-card.tsx)
 

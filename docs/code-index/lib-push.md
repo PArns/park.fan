@@ -7,18 +7,18 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`push-follows-store.ts`](../../lib/push/push-follows-store.ts)
 
-A local mirror of a browser's ride alerts and show follows — the same shape as `lib/utils/favorites.ts`: read/write `localStorage`, dispatch a custom event so every mounted bell re-checks itself, and never touch the network from here.
+A local mirror of a browser's ride alerts and show follows, shaped like `lib/utils/favorites.ts`: `localStorage`, a custom event so every mounted bell re-checks itself, and no network.
 
-- `parseShowFollowEntry` _function_: A stored entry, in either shape this key has ever held.
-- `getShowFollowLocal` _function_: The follow this browser holds for a show, with the performance it is about.
-- `showFollowMatchesLocal` _function_: Whether the follow this browser holds is the one a given bell is about.
-- `isSameInstant` _function_: Whether two ISO strings name the same moment.
-- `setShowFollowedLocal` _function_
-- `reconcileShowFollowLocal` _function_: Bring this browser's entry for one show in line with the server's list.
-- `getRideAlertLocal` _function_
-- `listRideAlertsLocal` _function_
+- `parseShowFollowEntry` _function_: A stored entry in either shape this key has held: a bare show id (the older format, meaning the open-ended follow) or `{ showId, startTime }`. Anything else is skipped.
+- `getShowFollowLocal` _function_: The follow this browser holds for a show, with the performance it is about. No boolean "is this show followed" sits beside it on purpose: that question lit every showtime's bell for a reminder about one of them.
+- `showFollowMatchesLocal` _function_: Whether the follow this browser holds is the one a given bell is about. Without `startTime` it asks whether the show is followed at all; with it, about one performance, since a park panel lists an hourly show once per showtime.
+- `isSameInstant` _function_: Whether two ISO strings name the same moment, compared as instants and not as text: a stored `+02:00` that comes back as `Z` is the same performance. An unparseable value matches nothing.
+- `setShowFollowedLocal` _function_: Records or clears this browser's follow of a show, with the performance it is for.
+- `reconcileShowFollowLocal` _function_: Brings this browser's entry for one show in line with a list the server really returned (`PushListResult` with `ok: true`): a missing show's entry goes, a present one takes the server's `startTime`. Every other show's entry is left alone.
+- `getRideAlertLocal` _function_: This browser's alert for a ride in the local mirror, or null.
+- `listRideAlertsLocal` _function_: Every ride alert in this browser's local mirror.
 - `setRideAlertLocal` _function_: One entry per ride, whichever kind: setting one kind replaces the other, as the API does.
-- `removeRideAlertLocal` _function_
+- `removeRideAlertLocal` _function_: Removes a ride's alert from the local mirror.
 - `countPushFollowsLocal` _function_: How many local alerts and follows this browser has.
 - `hasAnyPushFollowsLocal` _function_: Whether this browser has any local alert or follow at all — gates the "view all" link.
 - `PUSH_FOLLOWS_CHANGED_EVENT` _const_
@@ -26,19 +26,19 @@ A local mirror of a browser's ride alerts and show follows — the same shape as
 
 ### [`push-follows.ts`](../../lib/push/push-follows.ts)
 
-- `followShow` _function_: `startTime` is the performance the visitor picked, as a full ISO instant — omitted for the open-ended follow a show card's bell files, which is "tell me before whichever performance is next".
-- `unfollowShow` _function_: Stop reminding for a show — server first, mirror second.
-- `setRideAlert` _function_
+- `followShow` _function_: Follows a show for this browser, registering push only when there is no subscription yet. `startTime` is the chosen performance as an ISO instant, omitted for "whichever is next".
+- `unfollowShow` _function_: Stops reminding for a show: server first, mirror second, because a notification that will arrive on a phone must not leave the screen while it is still armed.
+- `setRideAlert` _function_: Sets or changes a ride's wait-time alert for this browser and returns the server's row.
 - `setReopenAlert` _function_: "Tell me when this ride opens again". The API keeps one alert per ride and browser, so this replaces a wait-time alert on the same ride, and `setRideAlert` replaces this one.
 - `removeRideAlert` _function_: Same contract as `unfollowShow` — see there for why the mirror moves last.
-- `fetchRideAlertsRemote` _function_: The server's list, for the dialog and the overview page to reconcile against.
+- `fetchRideAlertsRemote` _function_: The server's list of this browser's ride alerts. `{ ok: true, items: [] }` is a real "none"; `{ ok: false }` is "we don't know", which a caller must not render as the empty state.
 - `fetchShowFollowsRemote` _function_: Same reasoning as `fetchRideAlertsRemote` — see there.
 - Types: `RideAlertRemote`, `ShowFollowRemote`, `PushWriteError`, `PushWriteResult`, `PushListResult`
 
 ### [`push-registration.ts`](../../lib/push/push-registration.ts)
 
-- `lookupExistingPushIdentity` _function_
-- `getExistingPushIdentity` _function_: This browser's existing subscription, without prompting for anything.
+- `lookupExistingPushIdentity` _function_: Reads this browser's push subscription without prompting; `{ ok: false }` when that fails.
+- `getExistingPushIdentity` _function_: This browser's existing subscription without prompting, `null` for every reason there is none, a failed lookup included.
 - `ensurePushRegistered` _function_: Subscribe this browser, or reuse its existing subscription.
 - Types: `PushIdentity`, `PushUnavailableCause`, `PushRegistration`, `PushIdentityLookup`
 
@@ -46,7 +46,7 @@ A local mirror of a browser's ride alerts and show follows — the same shape as
 
 - `currentPushTimezone` _function_: This browser's zone, or `null` where it cannot be read.
 - `readSentPushTimezone` _function_: What the API last accepted, or `null`. Safe to call before mount.
-- `rememberSentPushTimezone` _function_: Remember that the API accepted this zone for this endpoint.
+- `rememberSentPushTimezone` _function_: Remembers that the API accepted this zone for this endpoint. Called on the 2xx of every POST that carried a zone, so the next page load does not send the same zone again.
 - `refreshPushTimezone` _function_: Send this browser's current zone, if it differs from the last one the API took. Never throws, never prompts, never registers a service worker.
 - Types: `PushTimezoneRefresh`
 
@@ -70,29 +70,29 @@ A local mirror of a browser's ride alerts and show follows — the same shape as
 ### [`threshold-minutes.ts`](../../lib/push/threshold-minutes.ts)
 
 - `parseThresholdMinutes` _function_: Whether `raw` is a whole number of minutes the API will actually accept — see `CreateRideAlertDto` (`@IsInt() @Min(1) @Max(240)`).
-- `defaultThresholdFor` _function_: Where the slider starts for a ride the visitor has not already set an alert for: ten minutes under what the queue reads right now, not a flat `DEFAULT_THRESHOLD_MIN` that means nothing next to a ride at 80 minutes or one at 10.
-- `maxThresholdFor` _function_: How far up the slider may go for a ride queueing `currentWaitTime` right now — ten minutes UNDER that reading, not the flat `MAX_THRESHOLD_MIN`.
+- `defaultThresholdFor` _function_: Where the slider starts for a ride without an alert yet: `maxThresholdFor`, ten minutes under the current reading and the least demanding alert that is not already true.
+- `maxThresholdFor` _function_: How far up the slider may go: ten minutes under the current reading.
 - `hasUsableThresholdRange` _function_: Whether a wait-time alert can say anything at all about this ride today.
 - `DEFAULT_THRESHOLD_MIN` _const_: A person watches for a wait dropping below this many minutes.
 - `MIN_THRESHOLD_MIN` _const_: The API's actual floor — see `CreateRideAlertDto` — kept for parsing/validation only.
 - `MAX_THRESHOLD_MIN` _const_
 - `THRESHOLD_STEP_MIN` _const_: The slider's own step.
-- `THRESHOLD_SLIDER_MIN` _const_: The slider's practical floor, and — doubling as the native `<input min>` in `ThresholdMinutesInput` rather than `MIN_THRESHOLD_MIN` — its grid's anchor.
+- `THRESHOLD_SLIDER_MIN` _const_: The slider's practical floor and its native `<input min>`: a browser snaps a range input to `min + k·step`, so anchored at `MIN_THRESHOLD_MIN` the grid would be 1, 6, 11; at 5 it is 5, 10, 15 and every `maxThresholdFor` lands on it.
 
 ### [`use-local-push-follows-value.ts`](../../lib/push/use-local-push-follows-value.ts)
 
-- `useLocalPushFollowsValue` _hook_: The shape every bell shares: render a server-safe default, then read the real value from `push-follows-store` (localStorage) once mounted, and again whenever any bell on the page changes it.
+- `useLocalPushFollowsValue` _hook_: The shape every bell shares: a server-safe `initialValue` first, then the real value from `push-follows-store` once mounted and whenever any bell on the page changes it.
 
 ### [`use-push-follow-removal.ts`](../../lib/push/use-push-follow-removal.ts)
 
-- `usePushFollowRemoval` _hook_
-- `rideRowKey` _function_
-- `showRowKey` _function_
+- `usePushFollowRemoval` _hook_: Removes ride alerts and show follows from the shared list, with per-row busy and error state.
+- `rideRowKey` _function_: The row key of a ride alert.
+- `showRowKey` _function_: The row key of a show follow.
 - Types: `PushFollowRowKey`, `PushFollowRemoval`
 
 ### [`use-push-follows-list.ts`](../../lib/push/use-push-follows-list.ts)
 
-- `usePushFollowsList` _hook_
+- `usePushFollowsList` _hook_: The server's list of this browser's alerts and follows. Gate `enabled` on `hasAnyPushFollowsLocal()`, so a browser that never set one never asks.
 - `PUSH_FOLLOWS_QUERY_KEY` _const_
 - Types: `PushFollowsList`
 

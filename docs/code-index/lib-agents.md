@@ -10,18 +10,18 @@ by hand: change the comment in the code and re-run the script. -->
 - `API_CATALOG_PATH` _const_: Where the catalog lives. Fixed by RFC 9727 §2 — agents try this path, not a link.
 - `API_CATALOG_CONTENT_TYPE` _const_: RFC 9727 §4.2: the Linkset media type, plus the profile parameter that says the linkset is an API catalog rather than any other set of links. Only a SHOULD, but it is what tells a client that stumbled on the document what it is holding.
 - `apiCatalog` _const_: The catalog document itself — RFC 9264 Linkset, serialized as-is by the route handler.
-- `HOMEPAGE_LINK_HEADER` _const_: The homepage's `Link` header. `api-catalog` is the one that matters — it is the relation RFC 9727 defines and the reason the header exists at all; the OpenAPI and docs links save an agent the second round trip through the catalog for the …
+- `HOMEPAGE_LINK_HEADER` _const_: The homepage's `Link` header: the `api-catalog` relation, plus the OpenAPI and docs links that save an agent a round trip. One comma-separated header, because repeating a key in next.config's `headers()` overwrites it.
 - `API_CATALOG_LINK_HEADER` _const_: What the catalog document itself answers with. RFC 9727 §2 requires a HEAD request to /.well-known/api-catalog to come back carrying the `api-catalog` relation, which means the document has to link to itself.
 
 ### [`catalog.ts`](../../lib/agents/catalog.ts)
 
 - `aiCatalog` _function_: Builds the ARD capability manifest served at `/.well-known/ai-catalog.json`: one entry for the API catalog and one per agent skill.
-- `AI_CATALOG_PATH` _const_: The ARD capability manifest (agenticresourcediscovery.org, ai-catalog data model) — one document that says what park.fan can do for an agent, as opposed to which pages it has.
+- `AI_CATALOG_PATH` _const_: The ARD capability manifest (agenticresourcediscovery.org): what park.fan can do for an agent. Every entry points at a document served elsewhere in this repository, so it cannot drift.
 
 ### [`http.ts`](../../lib/agents/http.ts)
 
-- `agentDocumentHeaders` _function_: Response headers for a machine-readable document: the given content type, `AGENT_DOC_CACHE_CONTROL` and open CORS.
-- `AGENT_DOC_CACHE_CONTROL` _const_: The response shape every machine-readable document on this site shares.
+- `agentDocumentHeaders` _function_: Response headers for a machine-readable document: the given content type, `AGENT_DOC_CACHE_CONTROL` and open CORS, since these exist to be read from other origins.
+- `AGENT_DOC_CACHE_CONTROL` _const_: Cache policy for every machine-readable document: cached like a deployment artifact, not like a wait time, since each one changes only with a deploy.
 
 ### [`licensing.ts`](../../lib/agents/licensing.ts)
 
@@ -56,7 +56,7 @@ Literal rather than an env var, for the same reason the API catalog is: a previe
 - `skillDigest` _function_: Returns the `sha256:` digest of the bytes served for an agent skill's `SKILL.md`, computed from the file on every call.
 - `agentSkillsIndex` _function_: The discovery document itself. Absolute URLs: an index can be mirrored, a relative URL cannot.
 - `AGENT_SKILLS_INDEX_PATH` _const_: Fixed by the Agent Skills Discovery RFC v0.2.0.
-- `AGENT_SKILLS` _const_: Three skills, because there are three questions people arrive with: what is the queue doing right now, which day should I go, and where do I get this as data.
+- `AGENT_SKILLS` _const_: Three skills for the three questions people arrive with: the queue right now, which day to go, and the data itself. None of them mentions `/admin`, on purpose.
 - Types: `AgentSkillName`
 
 ### [`tool-descriptors.ts`](../../lib/agents/tool-descriptors.ts)

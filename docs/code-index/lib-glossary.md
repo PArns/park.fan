@@ -7,8 +7,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`categories.ts`](../../lib/glossary/categories.ts)
 
-- `listGlossaryCategories` _function_: Categories that hold at least one term, in the order above, with the size of each.
-- `GLOSSARY_CATEGORY_ORDER` _const_: The order the glossary overview groups its terms in, and the only list of categories the site renders anywhere.
+- `listGlossaryCategories` _function_: Categories that hold at least one term, in the order above, with the size of each. Counted from the untranslated `GLOSSARY_TERMS`, since a category holds the same terms in every language.
+- `GLOSSARY_CATEGORY_ORDER` _const_: The order the glossary overview groups its terms in, and the one list of categories the site renders: the page and the header's "more" panel both read it, so the menu never offers an anchor the page lacks.
 
 ### [`client-data-loader.ts`](../../lib/glossary/client-data-loader.ts)
 
@@ -19,7 +19,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`content-date.ts`](../../lib/glossary/content-date.ts)
 
-- `GLOSSARY_CONTENT_DATE` _const_: When the glossary was last reviewed — the one date two consumers must agree on.
+- `GLOSSARY_CONTENT_DATE` _const_: When the glossary was last reviewed: `dateModified` in its JSON-LD and `<lastmod>` on its sitemap URLs, one claim in two places, so one constant.
 - `GLOSSARY_CONTENT_HASH` _const_: SHA-256 (16 hex chars) over the glossary's reader-visible content: term ids, categories, player elements, all six locales' slugs, and every name, definition, related id and alias.
 
 ### [`data.ts`](../../lib/glossary/data.ts)
@@ -34,14 +34,14 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`parse-segments.ts`](../../lib/glossary/parse-segments.ts)
 
 - `parseGlossarySegments` _function_: Splits text into plain-text and glossary-term segments, linking only the first occurrence of each term name or alias; a name or alias of four characters or less must match its exact case.
-- `filterMatchableTerms` _function_: Narrow a term list to the ones that can possibly match anywhere in `corpus`.
+- `filterMatchableTerms` _function_: Narrows a term list to the ones that can match anywhere in `corpus`, because `<GlossaryInjectProvider>` is a client boundary and serializes what it is handed.
 - Types: `GlossaryMatchTerm`, `GlossarySegment`, `GlossaryTerm`
 
 ### [`ride-profile.ts`](../../lib/glossary/ride-profile.ts)
 
-- `resolveRideProfile` _function_: Resolves a curated ride profile's glossary term ids into everything the UI needs: names, links, definitions and rail metadata.
-- `hasRideProfileFacts` _function_: Has the profile anything for the facts grid — manufacturer, year, inversions, stats?
-- `rideProfileRendersFrom` _function_: Does &lt;RideProfileSection&gt; render anything for this profile, given what its ids resolved to?
+- `resolveRideProfile` _function_: Resolves a curated ride profile's glossary term ids into names, links, definitions and rail metadata. One shared function, so the header's figure count and the rail agree: ids this app has no glossary entry for are dropped.
+- `hasRideProfileFacts` _function_: Whether the profile has anything for the facts grid (manufacturer, year, inversions, stats). Exported so the section's grid and `rideProfileRendersFrom` ask the same question.
+- `rideProfileRendersFrom` _function_: Whether &lt;RideProfileSection&gt; renders anything for this profile, given what its ids resolved to, so the ride page's chapter row never offers a `#ride-profile` jump into nothing.
 - `rideProfileRenders` _function_: The same question for a caller holding only the profile — e.g. the ride page's chapter row.
 - Types: `ResolvedElement`, `ResolvedTypeTerm`, `ResolvedRideProfile`
 
@@ -54,7 +54,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `getGlossaryTerms` _function_: Returns every glossary term with its name, definitions and slug in the locale, built once per locale for the life of the process.
 - `getTermBySlug` _function_: Returns the glossary term with this localized slug, or `null`. Per-render cached.
-- `findTermByAnySlug` _function_: Resolve a term slug from ANY locale to the requested locale's term.
+- `findTermByAnySlug` _function_: Resolves a term slug from any locale to the requested locale's term, so a foreign slug under a locale (`/nl/glossaire/harnais-epaules`, still in Google's index) can 308 to the right URL instead of a 404.
 
 ### [`types.ts`](../../lib/glossary/types.ts)
 

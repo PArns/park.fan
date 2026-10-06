@@ -9,7 +9,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 Turns an (undocumented) Vercel `comment.*` webhook payload into a `NormalizedComment`.
 
-- `normalizeComment` _function_
+- `normalizeComment` _function_: The `NormalizedComment` for one Vercel comment webhook.
 
 ### [`render.ts`](../../lib/vercel-comments/render.ts)
 

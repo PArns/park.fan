@@ -23,7 +23,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`prefill.ts`](../../lib/contribute/prefill.ts)
 
-- `buildContributeHref` _function_: Helpers to pass a pre-selected park/ride to the contribution page via query params, so the "Add your photos" button on a park or attraction page lands the user on /contribute with that entity already assigned.
+- `buildContributeHref` _function_: The /contribute link with a park or ride already assigned through query params, for the "Add your photos" button on its page.
 - `parseEntityFromParams` _function_: Parse a pre-assigned entity from contribute-page search params (null if absent/invalid).
 
 ### [`storage.ts`](../../lib/contribute/storage.ts)

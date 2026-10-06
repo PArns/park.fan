@@ -16,5 +16,5 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`turnstile.ts`](../../lib/security/turnstile.ts)
 
-- `verifyTurnstile` _function_
+- `verifyTurnstile` _function_: Verifies a Turnstile token for the form it was solved on; a failure carries a reason to log.
 - Types: `TurnstileResult`, `TurnstileCheck`
