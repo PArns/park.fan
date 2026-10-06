@@ -31,12 +31,17 @@ three lines, the rest belongs in the page.
 | layout, a component, a breakpoint, the header, a card, three.js                       | [design rules](docs/rules/README.md#design-and-layout)               |
 | sitemaps, feeds, favicon, robots and agents, analytics                                | [SEO rules](docs/rules/README.md#seo-and-the-machine-facing-surface) |
 | a blog post, UI strings, images, captions                                             | [content and media rules](docs/rules/README.md#content-and-media)    |
+| finding an existing component, hook or helper                                         | [code index](docs/code-index/README.md)                              |
 
 ## Applies to every change
 
 - **[Reuse existing components](docs/rules/reuse-existing-components.md) (REQUIREMENT):** always reuse what exists (`ParkStatusBadge`,
   `CrowdLevelBadge`, `Badge`, `ParkCard`) instead of re-implementing UI inline. Only build new when
   nothing suitable exists. See [conventions](docs/development/conventions.md#11-reuse-existing-components).
+- **[Code index](docs/code-index/README.md) (REQUIREMENT):** look up existing components, hooks and
+  helpers there first. Every exported component, hook and function carries a `/** … */` comment;
+  after adding, renaming or removing an export or changing its comment, run `pnpm generate:code-index`
+  in the same PR (`pnpm check:code-index`). [The rule](docs/rules/the-code-index-is-generated-from-the-doc-comments.md).
 - **No text may read as AI-generated (REQUIREMENT):** this governs every string a human ever sees —
   posts, UI strings, `alt`/`caption`, meta descriptions, empty states, commit messages, PR bodies.
   `pnpm check:prose` decides the half a machine can, a separate review pass

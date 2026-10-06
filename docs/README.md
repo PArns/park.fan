@@ -17,6 +17,7 @@
 | [Troubleshooting](troubleshooting/common-issues.md)  | Common issues and solutions                        |
 | [Writing rules](blog.md)                             | How every text on the site is written              |
 | [Standing rules](rules/README.md)                    | The rules indexed by the repo's `CLAUDE.md`        |
+| [Code index](code-index/README.md)                   | Every exported component, hook and helper          |
 
 ---
 

@@ -11,6 +11,7 @@
 | `generate-image-crops.mjs`     | Generates image crop configs                                                                                  |
 | `generate-og-assets.mjs`       | Writes `og-assets/`, the OG function's own asset root (see below)                                             |
 | `fetch-hero-textures.mjs`      | Fetches textures for the 3-D hero (`generate:hero-textures`)                                                  |
+| `generate-code-index.mjs`      | Writes `docs/code-index/` from the doc comments (`generate:code-index`, manual, committed; see below)         |
 
 All except `fetch-hero-textures.mjs` (manual, `pnpm generate:hero-textures`) run automatically via `prebuild` before `pnpm build`. See [Assets, Images & Content](assets.md) for what each generates.
 
@@ -49,6 +50,15 @@ The generator also **warns** about `parkLinks`/`rideLinks` frontmatter that
 would fail silently: an entry that isn't a valid slug, an empty list, and a
 config that differs between a post's translations (it governs the post in all
 languages). Warnings never fail the build.
+
+### `generate-code-index.mjs` (manual, committed)
+
+Writes [`docs/code-index/`](../code-index/README.md): one page per directory, one line per export,
+each with the first sentence of its doc comment. Not part of `prebuild`, because the output is
+committed: run `pnpm generate:code-index` after adding, renaming or removing an export or changing
+its comment, and commit the result. `pnpm check:code-index` (CI job `code-index-drift`) fails while
+a page is stale, and `--missing <prefix>` lists the exports without a description. The rule:
+[the code index is generated from the doc comments](../rules/the-code-index-is-generated-from-the-doc-comments.md).
 
 ### `generate-hero-world-map.mjs` (manual)
 
