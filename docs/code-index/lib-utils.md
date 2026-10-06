@@ -292,6 +292,7 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `getLiveAttractionStatus` _function_: The status a visitor is shown for one attraction, from the live payload.
 - `getStandbyWait` _function_: STANDBY wait of an attraction in minutes, or null when it has no standby queue. Says nothing about whether the ride is open: pair it with `getAttractionDisplayStatus`.
 - `groupAttractionsByLand` _function_: Groups attractions by land (`fallbackName` when none), each land sorted by name.
+- `sortLandNames` _function_: Land names in display order: alphabetical, then the Halloween-maze group, then the land-less one.
 
 ### [`quietest-day.ts`](../../lib/utils/quietest-day.ts)
 

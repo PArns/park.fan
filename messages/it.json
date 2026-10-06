@@ -852,6 +852,11 @@
       "label": "Trasporto",
       "hint": "Un mezzo per attraversare il parco, non un’attrazione. L’attesa dipende dagli orari, non dalla folla."
     },
+    "halloweenMaze": {
+      "label": "Labirinto di Halloween",
+      "hint": "Un percorso stagionale, non un'attrazione. Apre solo durante la stagione di Halloween del parco."
+    },
+    "mazeSection": "Labirinti di Halloween",
     "info": {
       "title": "Informazioni sul parco",
       "address": "Indirizzo",
