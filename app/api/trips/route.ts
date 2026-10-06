@@ -1,45 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
-import { getForwardedForHeaders } from '@/lib/utils/request-ip';
+import { NextRequest } from 'next/server';
+import { relayJsonWrite } from '@/lib/api/relay';
 
 /**
- * Storing a plan.
- *
- * `getForwardedForHeaders` is load-bearing rather than tidy. The API rate-limits
- * trip writes per address, and without the visitor's own address every write
- * from this site keys on ONE Vercel function's IP — one bucket for the whole
- * world, which is either no limit at all or a limit that locks everybody out
- * together the first time a script finds the endpoint.
+ * Storing a plan. A thin relay, see `lib/api/relay.ts`, which also says why the visitor's own
+ * address goes along.
  *
  * No `revalidate`, no CDN header: a trip is one visitor's and a shared edge copy
  * would hand the next reader somebody else's plan.
  */
-
-export async function POST(request: NextRequest) {
-  let body: unknown;
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
-  }
-
-  try {
-    const response = await fetch(`${getApiBaseUrl()}/v1/trips`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...getForwardedForHeaders(request),
-        ...getServerApiHeaders(),
-      },
-      body: JSON.stringify(body),
-      cache: 'no-store',
-    });
-    const text = await response.text();
-    return new NextResponse(text || null, {
-      status: response.status,
-      headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
-    });
-  } catch {
-    return NextResponse.json({ error: 'Trip service unreachable' }, { status: 502 });
-  }
-}
+export const POST = (request: NextRequest) =>
+  relayJsonWrite(request, '/v1/trips', { method: 'POST', unreachable: 'Trip service unreachable' });

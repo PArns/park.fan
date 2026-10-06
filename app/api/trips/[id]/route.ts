@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
-import { getForwardedForHeaders } from '@/lib/utils/request-ip';
+import { relayJsonWrite, relayToApi } from '@/lib/api/relay';
 
 /**
  * Reading, replacing and deleting one stored plan.
@@ -15,29 +14,14 @@ import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 /** What `TripsService.newId` produces: 12 random bytes as base64url. */
 const TRIP_ID = /^[A-Za-z0-9_-]{16}$/;
 
+const UNREACHABLE = 'Trip service unreachable';
+
 export async function GET(request: NextRequest, context: { params: Promise<{ id: string }> }) {
   const { id } = await context.params;
   if (!TRIP_ID.test(id)) {
     return NextResponse.json({ error: 'Trip not found' }, { status: 404 });
   }
-
-  try {
-    const response = await fetch(`${getApiBaseUrl()}/v1/trips/${id}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        ...getForwardedForHeaders(request),
-        ...getServerApiHeaders(),
-      },
-      cache: 'no-store',
-    });
-    const text = await response.text();
-    return new NextResponse(text || null, {
-      status: response.status,
-      headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
-    });
-  } catch {
-    return NextResponse.json({ error: 'Trip service unreachable' }, { status: 502 });
-  }
+  return relayToApi(request, `/v1/trips/${id}`, { json: true, unreachable: UNREACHABLE });
 }
 
 export async function PUT(request: NextRequest, context: { params: Promise<{ id: string }> }) {
@@ -45,33 +29,7 @@ export async function PUT(request: NextRequest, context: { params: Promise<{ id:
   if (!TRIP_ID.test(id)) {
     return NextResponse.json({ error: 'Trip not found' }, { status: 404 });
   }
-
-  let body: unknown;
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
-  }
-
-  try {
-    const response = await fetch(`${getApiBaseUrl()}/v1/trips/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        ...getForwardedForHeaders(request),
-        ...getServerApiHeaders(),
-      },
-      body: JSON.stringify(body),
-      cache: 'no-store',
-    });
-    const text = await response.text();
-    return new NextResponse(text || null, {
-      status: response.status,
-      headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
-    });
-  } catch {
-    return NextResponse.json({ error: 'Trip service unreachable' }, { status: 502 });
-  }
+  return relayJsonWrite(request, `/v1/trips/${id}`, { method: 'PUT', unreachable: UNREACHABLE });
 }
 
 /**
@@ -94,30 +52,12 @@ export async function DELETE(request: NextRequest, context: { params: Promise<{ 
   if (!TRIP_ID.test(id)) {
     return NextResponse.json({ error: 'Trip not found' }, { status: 404 });
   }
-
-  try {
-    const response = await fetch(`${getApiBaseUrl()}/v1/trips/${id}`, {
-      method: 'DELETE',
-      headers: {
-        ...getForwardedForHeaders(request),
-        ...getServerApiHeaders(),
-      },
-      cache: 'no-store',
-    });
-    const text = await response.text();
+  return relayToApi(request, `/v1/trips/${id}`, {
+    method: 'DELETE',
+    unreachable: UNREACHABLE,
     // A 204 carries no body and may not be given one, so the JSON content type
-    // goes with it — the success case here says everything in its status.
-    if (!text) {
-      return new NextResponse(null, {
-        status: response.status,
-        headers: { 'Cache-Control': 'no-store' },
-      });
-    }
-    return new NextResponse(text, {
-      status: response.status,
-      headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
-    });
-  } catch {
-    return NextResponse.json({ error: 'Trip service unreachable' }, { status: 502 });
-  }
+    // goes with it: the success case here says everything in its status.
+    answerEmpty: (status) =>
+      new NextResponse(null, { status, headers: { 'Cache-Control': 'no-store' } }),
+  });
 }
