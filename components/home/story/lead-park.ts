@@ -46,7 +46,7 @@ export async function getLeadPark(locale: string): Promise<LeadPark | null> {
  * Costs no extra request: `getGeoStructure` is the same 24 h-cached fetch the
  * featured grid and the shortcut band already read.
  */
-export async function getLeadParks(locale: string): Promise<LeadPark[]> {
+async function getLeadParks(locale: string): Promise<LeadPark[]> {
   const geoData = await catchNonFatal(getGeoStructure());
   return extractFeaturedParks(geoData, locale)
     .map((park) => {
@@ -108,34 +108,7 @@ const CURVE_PARK_SLUGS = [
  */
 export async function getCurveCandidates(locale: string): Promise<LeadPark[]> {
   void locale; // the list is deliberately the same everywhere; see the docblock
-  const geoData = await catchNonFatal(getGeoStructure());
-  if (!geoData) return [];
-
-  const found = new Map<string, LeadPark>();
-  for (const continent of geoData.continents) {
-    for (const country of continent.countries) {
-      for (const city of country.cities) {
-        for (const park of city.parks) {
-          if (
-            !found.has(park.slug) &&
-            (CURVE_PARK_SLUGS as readonly string[]).includes(park.slug)
-          ) {
-            found.set(park.slug, {
-              continent: continent.slug,
-              country: country.slug,
-              city: city.slug,
-              parkSlug: park.slug,
-              name: park.name,
-              href: `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
-              countryCode: country.code,
-            });
-          }
-        }
-      }
-    }
-  }
-
-  return CURVE_PARK_SLUGS.map((slug) => found.get(slug)).filter((p): p is LeadPark => p != null);
+  return resolveParkSlugs(CURVE_PARK_SLUGS);
 }
 
 /**
@@ -154,6 +127,11 @@ const KIDS_ENTRY_SLUGS = ['phantasialand', 'europa-park', 'parc-asterix'] as con
 
 /** {@link KIDS_ENTRY_SLUGS} resolved against the 24 h-cached geo structure, in this list's order. */
 export async function getKidsEntryParks(): Promise<LeadPark[]> {
+  return resolveParkSlugs(KIDS_ENTRY_SLUGS);
+}
+
+/** Resolves a curated slug list against the geo structure, in the list's order. */
+async function resolveParkSlugs(slugs: readonly string[]): Promise<LeadPark[]> {
   const geoData = await catchNonFatal(getGeoStructure());
   if (!geoData) return [];
 
@@ -162,10 +140,7 @@ export async function getKidsEntryParks(): Promise<LeadPark[]> {
     for (const country of continent.countries) {
       for (const city of country.cities) {
         for (const park of city.parks) {
-          if (
-            !found.has(park.slug) &&
-            (KIDS_ENTRY_SLUGS as readonly string[]).includes(park.slug)
-          ) {
+          if (!found.has(park.slug) && slugs.includes(park.slug)) {
             found.set(park.slug, {
               continent: continent.slug,
               country: country.slug,
@@ -181,5 +156,5 @@ export async function getKidsEntryParks(): Promise<LeadPark[]> {
     }
   }
 
-  return KIDS_ENTRY_SLUGS.map((slug) => found.get(slug)).filter((p): p is LeadPark => p != null);
+  return slugs.map((slug) => found.get(slug)).filter((p): p is LeadPark => p != null);
 }
