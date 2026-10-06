@@ -11,8 +11,6 @@ import { cn } from '@/lib/utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { CROWD_DOT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
 type SlotType = 'past' | 'current' | 'forecast';
 
 interface TimeSlot {
@@ -20,39 +18,30 @@ interface TimeSlot {
   historyValue: number | null;
   forecastValue: number | null;
   /**
-   * What this ride normally does at this time of day, across every measured day
-   * — the quiet quarter (P25) and the busy tenth (P90) of its own history.
-   *
-   * The corridor is the one thing this chart could not say before. It drew today
-   * with no scale to read it against, so a reader could see 45 minutes at 14:00
-   * and not know whether that was a good afternoon or a bad one. Hourly, so all
-   * four fifteen-minute slots of an hour share a value and the band reads as a
-   * step rather than a curve — which is honest, because the underlying rollup is
-   * hourly too.
+   * What this ride normally does at this time of day: the quiet quarter (P25) and the busy tenth
+   * (P90) of its own history, the scale today's figure is read against. Hourly, so the four slots
+   * of an hour share a value and the band reads as a step, as the rollup behind it is hourly too.
    */
   typicalLow?: number | null;
   typicalHigh?: number | null;
 }
 
+/** Everything `DailyWaitTimeChart` draws: today's slots, the best slots and its strings. */
 export interface DailyWaitTimeChartData {
   slots: TimeSlot[];
   timezone: string;
   /** Best visit slots from the backend, times already in "HH:mm" park-local format. */
   bestSlots?: { time: string; rating: 'optimal' | 'good' }[];
   /**
-   * Whether a corridor is being fetched for this ride. The legend then holds the
-   * third entry's box from the first paint and only fills it in once the band is
-   * really there — three 11 px entries wrap onto a second line on the narrowest
-   * phones, and a legend row that grows a line after the query lands would push
-   * the whole chart and everything under it down.
+   * Whether a corridor is being fetched for this ride. The legend then holds the third entry's box
+   * from the first paint, so a legend that wraps on a narrow phone does not grow a line, and push
+   * the chart down, when the band lands.
    */
   expectTypical?: boolean;
   /**
-   * The caller's own heading already says what this chart is, so it draws none.
-   *
-   * Set by the ride page, where the chart is the whole of a chapter titled „Wartezeiten heute" —
-   * `translations.title` is that same string, and the two rendered one under the other. The
-   * caller takes the KI-Prognose badge with it, so the pill still sits beside the title.
+   * The caller's own heading already says what this chart is, so it draws none. Set by the ride
+   * page, whose chapter title is the same string; the caller renders the KI-Prognose badge
+   * beside it.
    */
   hideTitle?: boolean;
   translations: {
@@ -76,8 +65,6 @@ export interface DailyWaitTimeChartData {
     legendTypical?: string;
   };
 }
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 /** Format "HH:mm" for display: 12h AM/PM for EN, otherwise HH:mm + suffix. */
 function formatSlotTime(hhmm: string, locale: string, timeSuffix: string): string {
@@ -104,12 +91,9 @@ function getCurrentTimeSlotInTimezone(timezone: string): string {
   }).formatToParts(new Date());
   const hour = parts.find((p) => p.type === 'hour')?.value || '00';
   const minute = parts.find((p) => p.type === 'minute')?.value || '00';
-  // Round to nearest 15m slot
   const roundedMinute = Math.floor(parseInt(minute, 10) / 15) * 15;
   return `${hour.padStart(2, '0')}:${roundedMinute.toString().padStart(2, '0')}`;
 }
-
-// ─── Component ────────────────────────────────────────────────────────────────
 
 /**
  * Bar chart of a ride's wait times today in 15-minute slots: measured up to now, AI forecast
@@ -154,7 +138,6 @@ export function DailyWaitTimeChart({
     [slots, currentTimeSlot]
   );
 
-  // Best slots map from backend data (HH:mm → rating)
   const bestSlotsMap = useMemo(() => {
     const map = new Map<string, 'optimal' | 'good'>();
     bestSlots?.forEach((s) => map.set(s.time, s.rating));
@@ -166,7 +149,6 @@ export function DailyWaitTimeChart({
     [typedSlots]
   );
 
-  // Scroll the current-time slot to the center of the visible area on mount
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || currentIndex < 0 || typedSlots.length === 0) return;
@@ -185,7 +167,6 @@ export function DailyWaitTimeChart({
   );
   const hasCorridor = typedSlots.some((s) => s.typicalLow != null && s.typicalHigh != null);
 
-  // Bottom hint: show optimal and good times with locale-aware formatting
   const fmt = (times: string[]) =>
     times.map((t) => formatSlotTime(t, locale, translations.timeSuffix)).join(', ');
   const optimalTimes = bestSlots?.filter((s) => s.rating === 'optimal').map((s) => s.time) ?? [];
@@ -195,19 +176,16 @@ export function DailyWaitTimeChart({
   const bestSlotsGoodLabel =
     goodTimes.length > 0 ? translations.bestSlotsGood.replace('{hours}', fmt(goodTimes)) : null;
 
-  // Show hour labels (HH:00), always show last slot
   const showLabel = (slot: { time: string; type: SlotType }, isLast: boolean) => {
     if (slot.type === 'current') return true;
     if (isLast) return true;
     const [h, m] = slot.time.split(':');
     if (m !== '00') return false;
     const hour = parseInt(h, 10);
-    // If > 48 slots (12 hours), only show even hours
     if (typedSlots.length > 48) return hour % 2 === 0;
     return true;
   };
 
-  // For the last slot, round up to next hour if not on the hour
   const lastSlotLabel = (() => {
     const last = typedSlots[typedSlots.length - 1];
     if (!last) return '';
@@ -219,11 +197,8 @@ export function DailyWaitTimeChart({
   return (
     // Bare section (no Card) — rendered inside the unified live card on the attraction page.
     <div>
-      {/* Title + KI-Prognose pill (links to the AI-forecast glossary term).
-        Suppressed where the chapter heading above already says it: on the ride page the chart's
-        chapter is „Wartezeiten heute" and this h3 repeated the string verbatim, two headings in a
-        row saying one thing. The badge travels with the title, so the caller that hides this one
-        renders it beside its own h2. */}
+      {/* Suppressed where the chapter heading above already says it (`hideTitle`). The badge
+        travels with the title, so the caller that hides this one renders it beside its own h2. */}
       {!hideTitle && (
         <SectionHeading
           icon={ChartColumn}
@@ -242,10 +217,8 @@ export function DailyWaitTimeChart({
         />
       )}
 
-      {/* Explainer: past bars are real measurements, future bars are AI predictions */}
       <p className="text-muted-foreground mb-3 text-xs sm:text-sm">{translations.aiExplainer}</p>
 
-      {/* Legend distinguishing recorded (dimmed) from forecast (solid) bars */}
       <div className="text-muted-foreground mb-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px]">
         <span className="flex items-center gap-1.5">
           <span className="bg-crowd-moderate h-2.5 w-2 rounded-sm opacity-40" aria-hidden="true" />
@@ -263,16 +236,11 @@ export function DailyWaitTimeChart({
         )}
       </div>
 
-      {/* Horizontally scrollable chart — current time centered on mount */}
       <div ref={scrollRef} className="no-scrollbar -mx-4 overflow-x-auto px-4 sm:-mx-6 sm:px-6">
         <div style={{ minWidth: `${Math.max(320, typedSlots.length * 15)}px` }}>
-          {/* Value labels above bars — hidden on small screens.
-
-              `md:`/`xl:` and not `@min-[…]/page:`: the row above scrolls at a fixed `minWidth`,
-              so a narrower page does not squeeze these labels, it just scrolls further. What the
-              breakpoint buys is quiet on a phone, where a number over every fifteen-minute bar is
-              noise — a question about the device, not about the column. <LiveAttractionData>'s
-              reserved box steps at the same two widths for the same reason. */}
+          {/* `md:`/`xl:` and not `@min-[…]/page:`: the row scrolls at a fixed `minWidth`, so the
+              breakpoint asks about the device (a number over every bar is noise on a phone), not
+              the column. <LiveAttractionData>'s reserved box steps at the same two widths. */}
           <div className="mb-2 hidden gap-0.5 md:flex">
             {typedSlots.map((slot) => (
               <div
@@ -294,7 +262,6 @@ export function DailyWaitTimeChart({
             ))}
           </div>
 
-          {/* Bars */}
           <div className="flex h-28 items-stretch gap-0.5 sm:h-32">
             {typedSlots.map((slot) => {
               const bestRating = bestSlotsMap.get(slot.time);
@@ -304,14 +271,9 @@ export function DailyWaitTimeChart({
                   key={slot.time}
                   className="relative flex min-w-[15px] flex-1 flex-col justify-end"
                 >
-                  {/* The corridor, behind everything: where this ride's queue
-                      normally sits at this time. One block per slot rather than a
-                      path, so it shares the bars' scale by construction and needs
-                      no second geometry to keep in step with them.
-                      It bleeds one pixel to each side because the columns sit in a
-                      `gap-0.5` row: without that the four slots of an hour draw
-                      four stripes with 2 px of card between them, and a band that
-                      is constant for an hour has to look constant. */}
+                  {/* The corridor, behind everything. One block per slot rather than a path, so it
+                      shares the bars' scale by construction. It bleeds a pixel to each side across
+                      the `gap-0.5`, so a band constant for an hour looks constant. */}
                   {slot.typicalLow != null && slot.typicalHigh != null && (
                     <div
                       aria-hidden="true"
@@ -322,24 +284,21 @@ export function DailyWaitTimeChart({
                       }}
                     />
                   )}
-                  {/* Best-time dot above bar */}
                   {bestRating && slot.value !== null && (
                     <Tooltip>
                       <TooltipTrigger
                         className="absolute left-1/2 z-10 -translate-x-1/2 cursor-default bg-transparent p-0 transition-[bottom] duration-500 motion-reduce:transition-none"
                         style={{ bottom: `calc(${barPct}% + 3px)` }}
                       >
-                        {/* A static ring. It used to ping, one endless animation per best slot
-                            inside the ride page's glass panel (`backdrop-blur-2xl`), which re-reads
-                            the blurred region every frame — the flicker `park-today-panel.tsx`
-                            documents for its own dot. */}
+                        {/* A static ring: an endless animation inside the ride page's glass panel
+                            makes the blur re-read every frame.
+                            See docs/rules/work-nobody-can-see-is-still-work.md. */}
                         <span
                           className={cn(
                             'absolute -inset-0.5 rounded-full opacity-50',
                             bestRating === 'optimal' ? 'bg-emerald-400' : 'bg-emerald-700'
                           )}
                         />
-                        {/* Solid dot */}
                         <span
                           className={cn(
                             'relative block h-2 w-2 rounded-full',
@@ -382,7 +341,6 @@ export function DailyWaitTimeChart({
             })}
           </div>
 
-          {/* Time labels + current dot below bars */}
           <div className="mt-2 flex gap-0.5">
             {typedSlots.map((slot, i) => {
               const isLast = i === typedSlots.length - 1;
@@ -418,7 +376,6 @@ export function DailyWaitTimeChart({
         </div>
       </div>
 
-      {/* Best slot hints — optimal and good times from backend */}
       {(bestSlotsLabel || bestSlotsGoodLabel) && (
         <div className="mt-3 flex flex-col gap-1">
           {bestSlotsLabel && (

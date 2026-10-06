@@ -19,8 +19,8 @@ export interface StaticCountryCard {
 /**
  * Continent-page country grid. The card structure (name, link, total parks, city count) is
  * prerendered/edge-cached; the live open-park count is layered on the client via the shared
- * {@link useGeoLiveStats} batch call — so the continent shell no longer revalidates every 10 min
- * just to keep the count fresh.
+ * {@link useGeoLiveStats} batch call, so the continent shell need not revalidate to keep the count
+ * fresh.
  */
 export function LiveCountryCards({
   continent,

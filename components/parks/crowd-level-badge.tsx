@@ -7,7 +7,6 @@ import { CrowdLevelScaleTooltip } from './crowd-level-scale-tooltip';
 
 import { User, Users, AlertCircle, Ban, HelpCircle } from 'lucide-react';
 
-/* Green band: teal (very_low) → emerald (low) → green (moderate/Normal); then orange → rose → red. */
 const crowdLevelConfig: Record<string, { colorClass: string; Icon: typeof User }> = {
   very_low: { colorClass: CROWD_BADGE_CLASS.very_low, Icon: User },
   low: { colorClass: CROWD_BADGE_CLASS.low, Icon: User },
@@ -29,11 +28,9 @@ interface CrowdLevelBadgeProps {
   /**
    * Wrap the badge in the crowd-scale tooltip (hover on a pointer, tap on a phone).
    *
-   * Off by default, and that default is the point: the badge appears on thirty surfaces,
-   * most of them inside a link or a button already, and a tooltip trigger is itself a
-   * `<button>`. Opt in where the badge is a page's own reading of how busy it is and
-   * nothing interactive encloses it — and keep `showLabel`, because the label is what
-   * names the button.
+   * Off by default: most badges sit inside a link or a button already, and a tooltip trigger is
+   * itself a `<button>`. Opt in where nothing interactive encloses the badge, and keep
+   * `showLabel`, because the label is what names the button.
    */
   withScale?: boolean;
 }

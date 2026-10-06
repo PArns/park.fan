@@ -73,10 +73,9 @@ export function LiveAttractionData({
     initialPark,
   });
 
-  // The attraction *detail* (stripped from the live park poll) carries the prediction accuracy AND
-  // the daily "Wartezeiten heute" time-series (history/forecast/schedule/bestVisitTimes). It's
-  // fetched client-side via the CDN-cached detail route — shared (deduped) with the 30-day grid's
-  // <AttractionHistorySections> through React Query's query key, so this adds no extra request.
+  // The attraction *detail* (stripped from the live park poll) carries today's time series. It
+  // shares its React Query key with the 30-day grid's <AttractionHistorySections>, so this adds no
+  // request.
   const { data: detail, isLoading: isDetailLoading } = useAttractionDetail({
     continent,
     country,
@@ -87,7 +86,6 @@ export function LiveAttractionData({
 
   if (!attraction) return null;
 
-  // Whether the detail carries enough to render the "Wartezeiten heute" bar chart.
   const hasTodayChart =
     (detail?.hourlyForecast?.length ?? 0) > 0 || (detail?.history?.length ?? 0) > 0;
 
@@ -109,29 +107,15 @@ export function LiveAttractionData({
           </div>
         </Card>
       )}
-      {/* Today's curve. The live value, the status badge and the accuracy chip that used to sit
-          above it now open the page inside the header card, where the park page puts the same
-          readings, so what is left here is the chart.
-
-          The whole card is gated: with `hasTodayChart` false it used to render as a bordered box
-          with nothing in it, ~2 px tall under a chapter heading. The old code always had the live
-          panel inside, so the empty case never came up; a ride with no forecast and no reading
-          today (verified on `hansa-park/animal-babies-of-peterhof`) got exactly that. */}
+      {/* Gated as a whole: a ride with no forecast and no reading today would otherwise get an
+          empty bordered box under its chapter heading. */}
       {(!mounted || isDetailLoading || hasTodayChart) && (
         <>
-          {/* Loading state and chart share ONE box with a reserved height, because the placeholder
-              used to stand in for the chart at less than half its size: 213 px held for the
-              401-421 px the chart occupies, so the moment the detail fetch landed the rest of the
-              ride page dropped ~208 px. The skeleton mirrors the chart's anatomy row for row:
-              explainer, legend, plot, best-slot line, Fancast link. It carries no title row,
-              because the chart no longer draws one (`hideTitle`; the chapter heading above says
-              it). The plot grows at `sm` with the taller bars and again at `md`, where the
-              hour-label row appears.
-
-              Window breakpoints, not `@container/page`: the rows this reserves for are themselves
-              gated on the window inside <DailyWaitTimeChart>, and a reservation that asks a
-              different question from the thing it reserves for is how a box comes out 200 px
-              short. */}
+          {/* Loading state and chart share ONE box with a reserved height, so the page does not
+              drop when the detail lands. Window breakpoints, not `@container/page`: the rows it
+              reserves for are gated on the window inside <DailyWaitTimeChart>, and a reservation
+              has to ask the same question.
+              See docs/rules/a-streamed-section-owes-the-page-its-height.md. */}
           {!mounted || isDetailLoading ? (
             <div className="min-h-[318px] p-4 sm:min-h-[338px] sm:p-6 md:min-h-[367px]">
               <DailyWaitTimeChartPlaceholder />
@@ -139,8 +123,8 @@ export function LiveAttractionData({
           ) : (
             <div className="min-h-[318px] p-4 sm:min-h-[338px] sm:p-6 md:min-h-[367px]">
               <DailyWaitTimeChartClient
-                // The chapter heading above already reads the chart's own title, so it draws
-                // none. The KI-Prognose badge moved up beside that h2 with it.
+                // The chapter heading above already reads the chart's title; the KI-Prognose badge
+                // sits beside that h2.
                 hideTitle
                 // The same box this card held a moment ago, for the frame in which the chart's
                 // own mount gate has not caught up with this component's.
@@ -181,11 +165,9 @@ export function LiveAttractionData({
         </>
       )}
 
-      {/* The ride's other queues — single rider, a paid lane, a return window. A band of
-          hairline-ruled columns under the chart in the SAME box, not a row of cards under a
-          second heading: they are a reading about this ride's day like the chart above them, and
-          three floating cards under a chapter band was the shape this page was rebuilt to stop
-          drawing. The `border-t` is the rule that separates them from the chart. */}
+      {/* The ride's other queues, as hairline-ruled columns under the chart in the SAME box rather
+          than cards under a second heading: they are a reading about this ride's day, like the
+          chart. */}
       {attraction.queues && attraction.queues.length > 1 && (
         <div className="border-border/50 border-t">
           <div className="px-4 pt-4 md:px-6">
@@ -216,13 +198,10 @@ export function LiveAttractionData({
                       </span>
                       <Badge variant="outline">{t(QUEUE_STATUS_KEYS[queue.status])}</Badge>
                     </div>
-                    {/* Canonical queue detail (price, single-rider time, boarding groups,
-                        virtual-queue window/state) — same component used on attraction cards. */}
+                    {/* The same queue detail the attraction cards show. */}
                     <QueueTypeBadge queue={queue} timezone={park.timezone} />
-                    {/* Short-term wait-time trend (e.g. single-rider rising/falling). Only the
-                        client-side detail fetch carries per-queue trend; the live park poll that
-                        feeds `attraction.queues` above does not. Derive both the arrow and the
-                        delta from the recent-vs-previous averages so they never disagree. */}
+                    {/* Only the detail fetch carries a per-queue trend, not the live park poll.
+                        Arrow and delta come from the same averages, so they never disagree. */}
                     {(() => {
                       const trend = detail?.queues?.find(
                         (q) => q.queueType === queue.queueType

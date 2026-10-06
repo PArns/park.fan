@@ -21,120 +21,34 @@ import {
  * "Wie lange dauert das noch?" — the one thing a visitor standing at a stopped
  * ride actually wants to know.
  *
- * Renders in both places a `DOWN` ride appears, from the same numbers and
- * always as the lower half of `OutageNote`'s block: compact on a park page's
- * ride card, and in full in the ride page's live panel.
+ * Renders wherever a `DOWN` ride appears, always as the lower half of `OutageNote`'s block:
+ * compact on a park page's ride card, in full in the ride page's live panel.
  *
- * ## Why this may be said when a forecast may not
+ * It may be said where a breakdown forecast may not: the outage has already started, and the
+ * figure describes what happened to the outages that got this far (calibrated out of sample, see
+ * the API's `DowntimeRecoveryCurve`). The copy names that condition („Störungen, die schon so
+ * lange dauern"), because the unconditional figure is wrong exactly for the long outages.
  *
- * The API refuses to say when a ride will break next, and that refusal is not
- * softened here. This is a different question with a different sample behind it:
- * the outage has already started, and the figure describes what happened to the
- * outages that got this far. It is measured over 5900-128 000 intervals per
- * bucket and calibrated out-of-sample to 2.55 percentage points. The full
- * argument lives on the API's `DowntimeRecoveryCurve`.
+ * A range, never a point: the distribution is heavy-tailed and a single number reads as a
+ * promise. Past roughly two hours the upper quartile stops resolving and renders as an open
+ * range („über …"); `outageRemainingWindow` reads both shapes the payload uses for that.
  *
- * ## The copy names the condition, because the condition is the whole point
+ * A clock time where the API places one (`estimate.recoveryWindow`), a duration everywhere else:
+ * `remaining` counts operating minutes and only the API knows the opening calendar, so nothing
+ * here derives a time from minutes. The weekday comes from the instant alone, never from "now",
+ * so both sides of hydration render the same text. No bar under a clock time: the bar's axis is
+ * operating minutes and would contradict the sentence across a closing.
  *
- * Not "outages usually last 25 minutes". That is the unconditional figure, and
- * it is wrong for the ride in front of the visitor exactly when it matters: 54 %
- * of outages are over within half an hour, but of those still down after four
- * hours only 8.5 % are. So the sentence says *„Störungen, die schon so lange
- * dauern"*, and a reader can see the estimate is about this outage's history
- * rather than about outages in general.
+ * The bar puts the window on a fixed „jetzt" to four-hours scale, so a short outage looks short
+ * beside a long one (the trap `Sparkline`'s `yMax` exists for); its geometry is in
+ * `outageRemainingBar`. Neither bar is in the accessibility tree: each restates the sentence
+ * above it, inside the card's one `<Link>`. Not `components/ui/progress.tsx`, which fills from
+ * zero and colours by value. Both bars are `bg-primary` on a white track, which clears 3:1 inside
+ * `OutageNote`'s tinted block where the muted track vanishes; the ride's orange cannot reach 3:1.
  *
- * ## A range, never a point — and an open range when that is the truth
- *
- * The distribution is heavy-tailed: at one hour elapsed the quartiles sit at 25
- * and 255 minutes around a median of 70. A single number would read as a
- * promise, so both surfaces render the quartile range and let its width carry
- * the uncertainty. Past roughly two hours the upper quartile stops resolving;
- * that renders as „über 1:55 Std.", which is the honest shape of a long outage
- * — still measurable, no longer bounded. Which shape the payload uses to say so
- * is `outageRemainingWindow`'s problem, not this component's: it arrives as an
- * absent key at least as often as the documented `null`, and the `=== null`
- * test that used to sit here formatted the difference as „NaN:NaN Std.".
- *
- * ## A clock time where the API can place one, a duration everywhere else
- *
- * „meist noch 25 Min. bis 1:00 Std." is a subtraction a visitor standing at the
- * ride should not have to do, and for most of the day the answer is simply
- * „zwischen 14:35 und 16:10 Uhr". What stops the component from computing it is
- * the unit: `remaining` counts OPERATING minutes, so two hours left in a park
- * shutting in twenty minutes is tomorrow morning, and the opening calendar that
- * says so lives in the API. It sends the placed instants as
- * `estimate.recoveryWindow`, and where they are missing — a park that publishes
- * no hours, a calendar that does not reach — the duration sentence stays
- * exactly as it was. Nothing here derives a time from minutes.
- *
- * **The sentence names the weekday, and never asks what day it is now.**
- * `OutageNote` directly above settled this: „the park's current day" is not
- * available identically on both sides of hydration, so a form chosen by
- * comparing against now can only appear after mount, and a text swap in a
- * subgrid whose row heights are shared across a whole row of cards is banned
- * here. So the weekday comes from the instant alone. `from` always carries one;
- * `to` carries one only where it falls on a later day, because that is the case
- * a bare „11:00 Uhr" would be read as this evening. Both renders are identical
- * whenever they happen, which is why this needs no mount guard.
- *
- * **No bar under a clock time.** The bar's axis is operating minutes, from
- * „jetzt" to four hours. Where the window crosses a closing — the case the
- * placed instants exist for — the picture would put the ride back in two hours
- * while the sentence over it says tomorrow morning, and a picture that
- * contradicts its caption is worse than no picture. Which of the two forms a
- * park gets is a property of the park rather than of the ride, so the cards in
- * one grid do not disagree.
- *
- * ## Why the numbers are drawn as well as written
- *
- * „meist noch 25 Min. bis 1:00 Std." and „meist noch 50 Min. bis 3:40 Std." are
- * the same sentence with different digits in it, and a visitor scanning a park
- * page reads the shape before the digits. The bar puts the window on a **fixed**
- * scale — „jetzt" to four hours, hour marks inside the track — so a short outage
- * looks short beside a long one on the next card. The scale is fixed for exactly
- * that reason; one drawn per window would make every ride look alike, which is
- * the trap `Sparkline`'s `yMax` exists for. Where the window's top is not on the
- * scale the segment fades out to the right instead of ending in a cap, and where
- * the window leaves no room for a full segment there is no bar at all — the
- * geometry, and why it refuses, sit in `outageRemainingBar`.
- *
- * Neither bar is in the accessibility tree. Each restates, as a picture, the
- * sentence directly above it, and on a park page the whole block sits inside the
- * card's one `<Link>`, so a label here would be read out as part of the link's
- * name. The numbers are in the sentence, where a screen reader reaches them once.
- *
- * The probability gets a plain meter, which needs no axis: 0 to 100 % is the
- * axis. `components/ui/progress.tsx` is not reused for either — it fills from
- * zero and cannot draw a segment that starts somewhere else, and its colour ramp
- * runs green→red with the value, so a ride with a 77 % chance of being back
- * within the hour would be painted in the alarm colour of a full park.
- *
- * Both bars are `bg-primary` on a white track, `bg-white/70` in light and
- * `bg-white/10` in dark. They render inside `OutageNote`'s tinted block, and the
- * `bg-muted/40` track `AttractionTypicalWaits` uses vanished there: sampled off
- * the rendered card, it sat at 1.00 : 1 against the block in dark and 1.03 : 1 in
- * light, so the meter was a blue stub with no visible end. A darker track is not
- * the way out in light, where the fill only reaches 3.02 : 1 against the block
- * itself. A lighter one is: measured on 2026-10-05 (Genting SkyWorlds card,
- * Disneyland Park ride page), fill against track is 3.31 and 3.35 : 1 in light,
- * 3.39 and 3.93 : 1 in dark, and the track stands off the block at 1.08 to
- * 1.35 : 1. The ride's own orange is not available for the fill: a solid
- * `--status-down` on `--muted` computes to **2.65 : 1** in light, and its
- * ceiling against pure white is 2.89 : 1, so no lighter track brings it to the
- * 3 : 1 a graphical object owes.
- *
- * ## Rounding
- *
- * Percentages in steps of five, because the calibration error is 2.55 points and
- * "47 %" claims a precision the estimate does not have. Minutes in steps of five
- * too, which is the site's convention everywhere and the real resolution of the
- * feed. Both live in `lib/utils/outage.ts`, and the bars are drawn from the same
- * rounded figures the sentence prints — a segment placed off the raw quartile
- * under a label reading the rounded one is a picture disagreeing with its
- * caption.
- *
- * `data-nosnippet` for the same reason as `OutageNote`: it is true while it is
- * on the page and false the moment the ride restarts.
+ * Percentages and minutes in steps of five (the calibration error is 2.55 points), from
+ * `lib/utils/outage.ts`, and the bars use the same rounded figures as the sentence.
+ * `data-nosnippet` for the same reason as `OutageNote`.
  */
 export function OutageEstimateNote({
   estimate,
@@ -145,14 +59,10 @@ export function OutageEstimateNote({
 }: {
   estimate: OutageEstimate | undefined;
   /**
-   * Which signal placed the outage, because the sentence depends on it. A
-   * reported DOWN reads „Störungen wie diese … waren … behoben"; an inferred
-   * `closed_gap` reads „Stillstände wie dieser … waren … vorbei", since nobody
-   * reported it and nothing says it was repaired — only that the ride ran
-   * again. The API reads each from its own curve.
-   *
-   * Anything that is not exactly `down` takes the closure sentences, the same
-   * weaker-claim default `OutageNote` applies to the line above.
+   * Which signal placed the outage, because the sentence depends on it: a reported DOWN was
+   * „behoben", an inferred `closed_gap` only „vorbei", since nothing says it was repaired. The
+   * API reads each from its own curve. Anything that is not exactly `down` takes the closure
+   * sentences, the same weaker-claim default `OutageNote` applies.
    */
   signal: AttractionOutage['signal'] | undefined;
   /**
@@ -205,23 +115,12 @@ export function OutageEstimateNote({
           })
       : null;
 
-  // A rounded 0 % would read as "never", a claim the curve does not make: the
-  // thinnest measured bucket is still 8.5 %. If a future curve produced it,
-  // saying nothing beats saying never. `outageRecoveryPercent` answers `null`
-  // there, and the range alone carries the block.
-  //
-  // The `&& !remaining` this used to carry defeated the guard exactly where it
-  // was needed: a long-elapsed bucket with a sub-2.5 % 60-minute share and a
-  // still-resolvable median would have rendered "0 %" beside a numeric time
-  // range, which reads as "never coming back" rather than "we cannot say".
-  // The range alone is honest; the zero is not.
+  // A rounded 0 % would read as "never", a claim the curve does not make, so
+  // `outageRecoveryPercent` answers `null` there and the range alone carries the block.
   if (percent === null && !range) return null;
 
-  // Whether the probability is said here, and in which of its two sentences — three inputs, all
-  // three of them rules rather than layout, so the answer comes from `outageRecoveryLine` and is
-  // tested there. This branch got it wrong on its first write while it lived in this file: it
-  // read the range instead of the variant and put the ride page's long, conditioned sentence on
-  // a card, in exactly the case a card can reach.
+  // Whether the probability is said here, and in which of its two sentences, takes three rules,
+  // so `outageRecoveryLine` decides it and is tested there.
   const recovery = outageRecoveryLine(percent, variant, range !== null);
 
   return (
@@ -251,19 +150,11 @@ export function OutageEstimateNote({
 /**
  * One end of the clock window, in the park's zone and the reader's language.
  *
- * `withWeekday` is not a style choice: a bare „11:00 Uhr" is read as today, and
- * whether it is today cannot be decided identically on both sides of hydration
- * (see the note on the component). The weekday is therefore attached from the
- * instant alone — always on the lower end, and on the upper one only where it
- * sits on a later day, which is what `outageRecoveryClock` has already worked
- * out against the park's calendar day.
- *
- * Falls back to the runtime's own zone rather than throwing, the way
- * `OutageNote` does: an unknown zone costs the sentence its precision, not the
- * card its render. The fallback cannot disagree across hydration here —
- * `outageRecoveryClock` has already withheld the whole clock form for any zone
- * `Intl` refuses, so a throw at this point means a zone that resolves there and
- * not here, which no runtime does.
+ * `withWeekday` because a bare „11:00 Uhr" reads as today, which cannot be decided
+ * identically on both sides of hydration; `outageRecoveryClock` has worked out which
+ * end needs it. Falls back to the runtime's own zone rather than throwing, like
+ * `OutageNote`: `outageRecoveryClock` already withheld the clock form for any zone
+ * `Intl` refuses, so the fallback cannot disagree across hydration.
  */
 function formatClock(
   instant: string,
@@ -302,23 +193,16 @@ function RemainingBar({
   nowLabel: string;
   endLabel: string;
 }) {
-  // How much of the segment is drawn solid before the open end fades out.
-  //
-  // A share of the SEGMENT, floored so the solid head is never narrower than the whole segment
-  // was guaranteed to be: at 35 % of a five-percent segment the visible part is 1.75 % of the
-  // track, which is the sliver `outageRemainingBar` refuses to produce, put back by the paint.
-  // A segment that cannot afford the fade is drawn solid — at that width the fade is a pixel and
-  // the sentence above says „über …" either way.
+  // How much of the segment is drawn solid before the open end fades out: a share of the
+  // SEGMENT, floored so the solid head is never narrower than `OUTAGE_MIN_SEGMENT_PCT`, the sliver
+  // `outageRemainingBar` refuses to produce. A segment too narrow for the fade is drawn solid.
   const width = bar.endPct - bar.startPct;
   const solidPct = Math.min(100, Math.max(35, (OUTAGE_MIN_SEGMENT_PCT / width) * 100));
 
-  // 10 px is the floor the rest of the site's chart furniture sits at, and the labels keep the
-  // block's inherited `text-muted-foreground` rather than dimming it further: an opacity on top
-  // of it would take small text under the 4.5 : 1 it owes.
-  // Hidden at the OUTER element, not at the track: „jetzt" and „4 Std." are the scale's two ends
-  // and neither is this outage's remaining time, so a reader who has just heard „meist noch
-  // 25 Min. bis 1:00 Std." would get two more numbers that are about the drawing rather than
-  // about the ride. Hiding the track alone left exactly those two behind.
+  // 10 px is the floor of the site's chart furniture, and the labels keep the inherited
+  // `text-muted-foreground`: more dimming would take small text under the 4.5 : 1 it owes.
+  // Hidden at the OUTER element, not at the track: „jetzt" and „4 Std." are the scale's two
+  // ends, numbers about the drawing rather than about the ride.
   return (
     <span className="flex items-center gap-1.5 text-[10px] leading-none" aria-hidden="true">
       <span className="shrink-0">{nowLabel}</span>

@@ -18,7 +18,6 @@ export async function CitySummarySection({ cityName, parkNames, locale }: CitySu
 
   return (
     <section aria-label={cityName} className="mb-8">
-      {/* Intro text — indexable SEO content, same role as CountrySummarySection's */}
       <p className="text-muted-foreground text-sm">
         {t('intro', { city: cityName, parkCount: parkNames.length, parks })}
       </p>

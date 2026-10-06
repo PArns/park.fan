@@ -8,21 +8,11 @@ import { buttonLinkProps } from '@/components/ui/button';
 /**
  * What to do when the favorites list is empty — three steps, not a sentence.
  *
- * The empty state used to be one line ("click the star to save something here"), which names the
- * control without saying where a visitor would ever meet one. Favorites are the only piece of
- * state this site keeps about a person, and the star that creates them lives on cards and detail
- * pages — never on the surface that reports them. So the empty state is the only place the
- * feature can explain itself, and it is also the state almost every visitor sees.
- *
- * Step 2 draws the real control rather than describing it: an inert copy of `FavoriteStar`'s
- * chip, so the thing to look for is on screen at the size it actually appears. No position is
- * claimed for it — a card's star sits in a corner, a park page's does not, and copy that says
- * where to look is wrong on one of them and on every phone.
- *
- * Shared by the homepage band and the header's favorites band, which is what keeps the two
- * answers identical. It is deliberately NOT what the burger sheet shows: three steps stacked in a
- * 300 px column are 358 px tall, i.e. 58 % of the whole menu on a 390×844 phone, and that menu is
- * the entire navigation there — see `FavoritesMenuPanel`, which renders two lines instead.
+ * The star that creates favorites lives on cards and detail pages, never on the surface that
+ * reports them, so the empty state is the one place the feature can explain itself. Step 2 draws
+ * an inert copy of `FavoriteStar`'s chip rather than saying where it sits, which differs per
+ * surface. Shared by the homepage band and the header's favorites band; the burger sheet shows
+ * `FavoritesMenuPanel`'s two lines instead, because three stacked steps would fill a phone's menu.
  */
 export function FavoritesHowTo({
   className,

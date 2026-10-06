@@ -34,10 +34,8 @@ interface LiveParkGridProps {
 /**
  * Renders a grid of park cards whose STRUCTURE (name, link, city, photo) is prerendered and
  * edge-cached, while the live status / crowd / wait time / schedule is layered on the client via
- * {@link useRegionParks}. This keeps the hub-page ISR shell status-free (so it can be cached for a
- * day instead of churning every hour to stay fresh) without ever showing a stale open/closed badge:
- * the badge simply renders once the client batch call lands. Multiple grids on a country page share
- * one underlying request (React Query dedupe by continent+country).
+ * {@link useRegionParks}. The hub page's ISR shell stays status-free and long-cached without ever
+ * showing a stale open/closed badge. Grids on one country page share one request.
  */
 export function LiveParkGrid({ continent, country, parks, className }: LiveParkGridProps) {
   const { liveByParkId } = useRegionParks(continent, country);

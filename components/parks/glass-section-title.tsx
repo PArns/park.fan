@@ -14,9 +14,8 @@ interface GlassSectionTitleProps {
 
 /**
  * Frosted-glass section title pill (`bg-background/70` + backdrop blur). It is not a chapter
- * header: since PAR-688 its one remaining use is the nearby-parks card on the homepage, where
- * `NearbyChapter` opens the chapter with a `ChapterHeading` and this labels the list inside it,
- * as an `<h3>`. Under editorial pages the same card opens with `ChapterHeading` instead.
+ * header: its one use is the nearby-parks card on the homepage, where `NearbyChapter` opens the
+ * chapter with a `ChapterHeading` and this labels the list inside it, as an `<h3>`.
  */
 export function GlassSectionTitle({
   icon: Icon,

@@ -34,7 +34,6 @@ export async function CountrySummarySection({
 
   return (
     <section aria-labelledby="country-summary-heading" className="mb-8 space-y-4">
-      {/* Intro text — indexable SEO content */}
       <p id="country-summary-heading" className="text-muted-foreground text-sm">
         {summary.parkCount === 1
           ? t('introSingle', { country: countryName, parkCount: summary.parkCount })
@@ -46,7 +45,6 @@ export async function CountrySummarySection({
       </p>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {/* Top Parks */}
         {summary.topParks.length > 0 && (
           <GlassCard variant="light" className="space-y-3 p-4">
             <h2 className="flex items-center gap-2 text-sm font-semibold">
@@ -73,7 +71,6 @@ export async function CountrySummarySection({
           </GlassCard>
         )}
 
-        {/* Best / busiest months */}
         {hasMonthData && (
           <GlassCard variant="light" className="space-y-3 p-4">
             <h2 className="flex items-center gap-2 text-sm font-semibold">

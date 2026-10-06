@@ -10,19 +10,10 @@ import { getNumberFormat } from '@/lib/utils/intl-format';
 /**
  * "QuickPass: 12 €" — the queue-jump product a ride sells.
  *
- * Its own component rather than part of {@link AttractionMetaBadges}, for the
- * same reason {@link RcdbBadge} is: those badges are rider restrictions, facts
- * about who may ride. This one is something you can buy.
- *
- * The API sends `{ name, price, currency }` and never a finished string,
- * because the finished string is different in every locale — 12 € here, €12 in
- * English — and only this side knows which one is being read.
- *
- * **Rendered only when the object is there.** An absent `fastPass` means either
- * that nobody has checked this ride or that the park sells no such product, and
- * the payload does not distinguish them on purpose. A "kein Fastpass" badge
- * would turn the first case — which is most of the catalogue — into a claim
- * about the park.
+ * Not part of {@link AttractionMetaBadges}: those are rider restrictions, this is something you
+ * can buy. The API sends `{ name, price, currency }` rather than a finished string, because the
+ * string differs per locale. Rendered only when the object is there: an absent `fastPass` may
+ * just mean nobody checked, and a "kein Fastpass" badge would make that a claim about the park.
  */
 export function FastPassBadge({
   fastPass,

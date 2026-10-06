@@ -18,17 +18,10 @@ interface ClosedRidesListProps {
 /**
  * The park's rides that closed for good, under its live ride list.
  *
- * A visitor who looks for X2 on Magic Mountain's page finds it here, with the month it closed,
- * and one click takes them to its page, which says what happened. Before this the ride was simply
- * gone from the park, and its page answered 404.
- *
  * A list apart, never rows in the live grid: that grid is the park today, and a closed ride among
- * the open ones would be counted, filtered and planned like one. The API sends it apart for the
- * same reason. An editor can take a ride off this list in the admin once nobody looks for it any
- * more; its page stays.
- *
- * Server-rendered from data the page already holds: no request, no client code, no height to
- * reserve. Renders nothing for the parks without a closed ride, which is nearly all of them.
+ * the open ones would be counted, filtered and planned like one. An editor can take a ride off
+ * this list in the admin; its page stays. Server-rendered from data the page already holds, and
+ * nothing for a park without a closed ride. See docs/rules/a-closed-ride-keeps-its-page.md.
  */
 export async function ClosedRidesList({
   rides,

@@ -5,19 +5,15 @@ import { useEffect } from 'react';
 /**
  * How much of the photo's own headroom the drift is allowed to use, at the card's edge.
  *
- * NOT a pixel constant. The headroom is `(PHOTO_SCALE - 1) / 2` of each dimension, and on the
- * real card that is 12.1 px across but only 6.0 px down — a flat 7 px drift slid the picture 1 px
- * past its own top edge and exposed the bleed layer underneath it, reflection and all. Deriving
- * the limit per axis from the measured box makes it correct at any card size, and keeps it
- * correct if somebody retunes the scale.
+ * A fraction, not pixels: the headroom is `(PHOTO_SCALE - 1) / 2` of each dimension and differs
+ * per axis, so a flat pixel drift can slide the picture past its top edge and expose the bleed
+ * layer. Derived per axis from the measured box, it holds at any card size and any scale.
  */
 const DRIFT_FRACTION = 0.85;
 /**
- * The photo's own zoom while a card is hovered. It exists to give the drift somewhere to go:
- * without headroom, sliding the picture inside its clipped box would expose the edge. Separate
- * from `pk-photo-zoom`'s 1.04 on the PARENT — CSS owns the transform there, this owns it on the
- * `<img>`, and keeping them on different elements is what stops the two composing into one
- * runaway scale.
+ * The photo's own zoom while a card is hovered, so the drift has headroom to use. Separate from
+ * `pk-photo-zoom` on the PARENT: CSS owns the transform there and this owns it on the `<img>`, so
+ * the two never compose into one runaway scale.
  */
 const PHOTO_SCALE = 1.05;
 
@@ -35,24 +31,10 @@ interface Active {
   /**
    * The card's box in DOCUMENT space, measured ONCE when the pointer arrives.
    *
-   * Reading it per frame instead cost 20 ms a frame at 6× CPU throttle (53.1 against a 33.6 ms
-   * baseline over the same card): `getBoundingClientRect()` forces a synchronous layout, and
-   * doing that inside a rAF that then writes styles is the textbook layout thrash.
-   *
-   * Document space, and that is the whole reason scrolling no longer has to re-measure. A
-   * viewport box is invalidated by every scroll frame, so this used to carry a `scroll` listener
-   * that called `getBoundingClientRect()` again — **unthrottled**, on every scroll event, for as
-   * long as the pointer sat on a card. Traced on a production build, that was 2072 forced style
-   * recalc / layout passes in a single four-second scroll of the homepage, the largest single
-   * source on the page. `rect.top + scrollY` does not move when the page scrolls, and the
-   * pointer's own `pageX`/`pageY` are in the same space, so the subtraction in `onMove` is
-   * unchanged arithmetic that reads no layout at all.
-   *
-   * What still invalidates it is the box genuinely moving: a resize (handled) or a layout shift
-   * above a card the pointer is already resting on (a lazy-mounted section). The latter leaves
-   * the highlight offset by that shift until the pointer crosses into another card, which
-   * re-measures — the same exposure the viewport box had between two scroll events, on an effect
-   * whose whole travel is 12 px.
+   * Reading it per frame would force a synchronous layout inside a rAF that writes styles, and a
+   * viewport box would need re-measuring on every scroll. A document box only moves on a resize
+   * (handled) or a layout shift above the hovered card, which the next card re-measures.
+   * See docs/rules/work-nobody-can-see-is-still-work.md.
    */
   box: { left: number; top: number; width: number; height: number };
 }
@@ -72,27 +54,13 @@ function documentBox(el: HTMLElement): Active['box'] {
  * Pointer depth on the cards: the photo drifts against the pointer while the glass panels stay
  * put, and a soft highlight follows the pointer across the whole card.
  *
- * The drift is the point. Moving the picture while the panels hold still is what makes them read
- * as floating above it rather than printed on it — and it is the one thing here CSS cannot do,
- * because it needs the pointer's position.
- *
- * Three rules it works under, all of them paid for elsewhere in this codebase:
- *
- * - **Never a transform on the CARD.** The card carries two `backdrop-filter` panels, and a
- *   transform on it would make it a backdrop root for as long as the pointer was inside — the
- *   glass would go flat exactly while somebody is looking at it. The drift goes on the photo,
- *   which sits behind the panels and filters nothing. (Tailwind's `hover:-translate-y-1` on the
- *   card is safe: v4 compiles it to the standalone `translate` property, which Chromium does not
- *   treat as a backdrop root — measured, the panel's backdrop detail holds at 26.96 → 26.84.)
- * - **One listener, not one per card.** `pointerover` is delegated on the document and finds the
- *   card with `closest()`; the per-frame work is bound only while a card is actually hovered and
- *   torn down on the way out. A grid of twenty cards costs the same as one.
- * - **The highlight is two custom properties**, not an element and not a filter. The card's
- *   `::after` reads them (see `.pk-card-fx` in globals.css), so nothing is added to the DOM and
- *   nothing relayouts.
- *
- * Skipped entirely for reduced motion and for coarse pointers — on a touch screen there is no
- * hover to track, and the listener would only cost battery.
+ * Never a transform on the CARD: it carries two `backdrop-filter` panels and would become a
+ * backdrop root, flattening the glass while hovered. The drift goes on the photo, behind the
+ * panels (Tailwind v4's `hover:-translate-y-1` compiles to the standalone `translate` property,
+ * which Chromium does not treat as a backdrop root). One delegated `pointerover` listener, with
+ * the per-frame work bound only while a card is hovered. The highlight is two custom properties
+ * read by `.pk-card-fx`'s `::after`, so nothing is added to the DOM. Skipped for reduced motion
+ * and coarse pointers.
  */
 export function CardPointerFx() {
   useEffect(() => {
@@ -112,15 +80,9 @@ export function CardPointerFx() {
       card.removeEventListener('pointermove', onMove);
       card.removeEventListener('pointerleave', release);
       card.style.removeProperty('--fx-o');
-      // The way home goes through the SAME setters, never a fresh gsap.to on x/y.
-      //
-      // `quickTo` keeps one persistent tween per property and holds its last target. A second
-      // tween aiming at 0 does not replace it — they both write every frame, the return looks
-      // right, and then the moment it finishes the quickTo re-asserts the old hover offset. That
-      // is the photo snapping back a beat after the pointer has gone: traced frame by frame, a
-      // clean glide to 0,0 and then a 5.95 px step back to 4.48,3.92 on the twelfth frame.
-      //
-      // `scale` is not driven by quickTo, so it has no second owner and a plain tween is fine.
+      // The way home goes through the SAME setters, never a fresh gsap.to on x/y: `quickTo` holds
+      // its last target, and once a second tween finished it would re-assert the hover offset.
+      // `scale` is not driven by quickTo, so a plain tween is fine.
       setX?.(0);
       setY?.(0);
       if (img && gsap) gsap.to(img, { scale: 1, duration: 0.4, ease: 'power2.out' });
@@ -135,9 +97,7 @@ export function CardPointerFx() {
         active.frame = null;
         const { box } = active;
         // `pageX/pageY`, not `clientX/clientY`: the box is in document space, and the pointer has
-        // to be read in the same one. `pageX === clientX + scrollX`, so the difference is the
-        // identical number the viewport pair produced — without anything reading the scroll
-        // offset or the layout to get there.
+        // to be read in the same one, without reading the scroll offset or the layout.
         const px = event.pageX - box.left;
         const py = event.pageY - box.top;
         // −1 … 1 from the card's centre
@@ -192,10 +152,8 @@ export function CardPointerFx() {
           });
     };
 
-    // A resize is what actually moves a card now — scrolling does not, because the box is
-    // measured in document space (see `Active['box']`). There is deliberately no `scroll`
-    // listener here any more; the one that used to sit here was this page's single biggest
-    // source of forced layout.
+    // A resize moves a card; scrolling does not, because the box is in document space (see
+    // `Active['box']`), so there is deliberately no `scroll` listener.
     const remeasure = () => {
       if (active) active.box = documentBox(active.card);
     };

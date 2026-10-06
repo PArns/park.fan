@@ -82,10 +82,8 @@ interface AttractionFilterPanelProps {
  * that are already apart. The captions do that job there.
  */
 function CellDivider() {
-  // `bg-foreground/…` rather than the `--border` token: in the dark theme that token is
-  // white at 10 %, so any opacity modifier on it composites to nothing — `border-border/60`
-  // resolved to alpha 0.06 and the hairline was in the DOM at 1x56 px and invisible on
-  // screen. This is the value the slider's own track already uses on this surface.
+  // `bg-foreground/…` rather than the `--border` token: in the dark theme that token is white at
+  // 10 %, so any opacity modifier on it composites to nothing. The slider's track uses the same.
   return (
     <div
       aria-hidden="true"
@@ -97,56 +95,13 @@ function CellDivider() {
 /**
  * The attractions tab's filter panel: search, rider height, and the pills.
  *
- * These were three controls loose on the page — the search box was
- * `md:absolute md:top-0 md:right-0` inside the grid, so on a desktop it floated
- * over the park photo beside the rope-drop card and on a phone it was a full-width
- * box wedged above the first land; the off-season toggle sat beside it in a bare
- * flex row. Nothing said they were one set of controls over one list, and there was
- * nowhere to put a third.
- *
- * **Two bands, not one row.** The first holds the two controls that carry a VALUE
- * you set — a query and a height — and they sit side by side from 768 px of page with a
- * hairline between them. The second is the pills, which carry no value: each is on
- * or off (the wet one has a third state) and any of them may be missing entirely,
- * so they are a wrapping row rather than a cell of fixed width.
- *
- * It used to be one row of three cells, and the fifth pill is what ended that: in
- * German the pills alone measure ~600 px, and 220 + 280 + 600 plus the dividers and
- * gaps is ~1140 px against the ~1180 px an `xl` container has to give — a park with
- * "12 außer Saison" would have pushed it over, on the widest screen there is. Two
- * bands cost one row of height and stop the panel depending on a word's length.
- *
- * The controls sit **left**, in their own widths, rather than stretching: a 1200 px
- * search box is not a better search box.
- *
- * The heading is the site's `ChapterHeading`, inside the box rather than a frosted
- * band above it: the panel already carries the glass, and its own closing rule is
- * the line the bands hang under, so the header and what it heads stay one object.
- * No chapter number — `NearbyParksSection`'s rule, and here the count is 1 of 1.
- *
- * It takes {@link TILE_GLASS}, the material of the entry-tile row directly above it,
- * because that is what it is: another band of the same stack of objects over the same
- * park photograph, not a new kind of thing.
- *
- * **Its height is the ride list's top edge**, so every row inside is fixed — `h-6`
- * for the captions, `h-9` for the controls (the input scale from
- * `components/ui/button.tsx`), `h-5`/`h-4` for the slider's track and scale — and
- * nothing inside appears or disappears as a visitor types or drags. What does change
- * the box is which pills the park earns and the breakpoint, and both are the same on
- * either side of hydration — the counts that gate the pills come off the same payload
- * the server rendered. Which is why the pre-mount branch of `TabsWithHash` renders
- * this same component rather than a spacer shaped like it: a placeholder would have
- * to write every one of those numbers down a second time, and be wrong about one.
- *
- * **Below `sm` it is one row.** Open, the panel was 515 px on a 390 px phone and the
- * first ride started 3.9 screens down (PAR-430). So on a phone the box holds only the
- * search box and a „Filter" button; the heading, the height slider and the pills are
- * `max-sm:hidden` in the box and render again inside a bottom sheet the button opens.
- * The switch is CSS, not a media query read in JS: the server cannot know the width,
- * and both branches of `TabsWithHash` must render the same markup. The sheet's
- * controls are the same two render functions the box uses, over the same state, so a
- * pill set in the sheet is the pill lit in the box. What is set shows as chips under
- * the row, each a lit pill that turns its filter off.
+ * Two bands, the controls that carry a value (query, height) and then the pills as a wrapping
+ * row, so the panel does not depend on how long a translated label is. Its height is the ride
+ * list's top edge, so every row inside has a fixed height and nothing appears or disappears as a
+ * visitor types; the pre-mount branch of `TabsWithHash` renders this same component rather than
+ * a placeholder. Below `sm` it is one row, the search and a „Filter" button, and the rest moves
+ * into a bottom sheet built from the same render functions and state. The switch is CSS, because
+ * the server cannot know the width.
  */
 export function AttractionFilterPanel({
   inputRef,
@@ -199,12 +154,9 @@ export function AttractionFilterPanel({
   const showSingleRider = singleRiderCount > 0 || onlySingleRider;
   const showCovered = coveredCount > 0 || onlyCovered;
   /**
-   * The pills are two groups, and the split is the one the attraction cards already
-   * make: a status badge over the photo, the restriction badges under it. "Geöffnet"
-   * and "N außer Saison" are statements about TODAY; the water, the queue-jump product
-   * and the single-rider line are what the ride IS, all year. Five pills of equal
-   * weight in one row are a block that says none of that, and it was five that made it
-   * matter — with one it was a detail.
+   * The pills are two groups, split as the attraction cards split their badges: "open" and
+   * "off season" are about TODAY; the water, the queue-jump product, the single-rider line and
+   * the roof are what the ride IS, all year.
    */
   const hasToday = showOpen || offSeasonCount > 0;
   const hasTraits = showWet || showFastPass || showSingleRider || showCovered;
@@ -335,8 +287,8 @@ export function AttractionFilterPanel({
       </div>
     );
 
-  // `max-sm:p-2`: the phone box is the 44 px row plus 8 px each side and the border, 62 px,
-  // under the 64 px PAR-430 set for the collapsed panel.
+  // `max-sm:p-2`: the phone box is the 44 px row plus 8 px each side and the border, which keeps
+  // the collapsed panel under 64 px.
   return (
     <div
       className={cn(

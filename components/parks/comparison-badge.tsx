@@ -18,7 +18,7 @@ export function ComparisonBadge({ comparison, className, showIcon = true }: Comp
 
   if (!comparison) return null;
 
-  // Map to shared crowd/status CSS tokens — same palette as CrowdLevelBadge/ParkStatusBadge
+  // Same palette as CrowdLevelBadge and ParkStatusBadge.
   const colorMap: Record<string, string> = {
     much_lower: 'badge-crowd-very-low',
     lower: 'badge-crowd-low',

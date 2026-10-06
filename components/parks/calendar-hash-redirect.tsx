@@ -37,35 +37,14 @@ interface CalendarHashRedirectProps {
  * Forwards an old `#calendar` / `#calendar-YYYY-MM` deep link to the calendar PAGE before the park
  * page hydrates.
  *
- * `useTabHashRouting` already does this, and keeps doing it — but it cannot do it early enough. Its
- * hop sits behind `isMounted`, which is set in an effect via `startTransition`, so the earliest it
- * can fire is two commits after hydration. The park page's client queries hang behind no such gate:
- * they start WITH hydration. So both documents fetched, and `#calendar` cost the live poll, the
- * nowcast and the neighbour list twice over — measured 12 calls / 121.9 KB against the 9 the
- * calendar page costs when it is opened directly (`node scripts/measure-api-calls.mjs --only park`,
- * 2026-10-01). The calendar MONTH was never fetched twice: the harness groups on the path, and the
- * calendar page asks for the grid and for today separately.
+ * `useTabHashRouting` does this too, but only after hydration, by which time the park page's
+ * client queries have started and the visit pays for both documents. An inline script runs before
+ * the deferred React chunks, so `location.replace` stops the load instead of racing it.
  *
- * **It is an inline script, not an effect**, for the same reason `HeroEntranceGate` is one: parsed
- * inline it runs while the document is still being read, before the deferred chunks that carry
- * React — and a `location.replace` there stops the load instead of racing it. An effect is by
- * construction too late; the thing it has to beat is hydration itself.
- *
- * **The month window is computed in the script, not baked in here.** The hook calls
- * `currentParkCalendarMonth(timezone)` at client runtime; serializing "now" into the markup would
- * freeze it at render time and land a month off across a month boundary — this page is prerendered.
- * What does travel from the server are the two RELATIVE bounds, because those are constants of this
- * repo rather than readings off a clock (`PARK_CALENDAR_MONTH_SPAN`, saturated at −3 since
- * 2026-04). `coverageTo` is deliberately not passed, matching what the hook does today: narrowing
- * the forward edge here would be a behaviour change this ticket does not ask for.
- *
- * A month outside the window falls back to the hub rather than forwarding into the route's 308,
- * which is what the hook does too.
- *
- * If the script is blocked, nothing is lost: the hook's own branch still forwards after hydration,
- * which is exactly today's behaviour. That branch also stays because this script only ever runs on
- * a document load — a client-side navigation carrying `#calendar`, and every later `hashchange`,
- * still go through the hook.
+ * The month window is computed in the script, because this page is prerendered and a baked "now"
+ * would be a month off across a month boundary; only the relative bounds travel from the server.
+ * `coverageTo` is not passed, as in the hook. A month outside the window falls back to the hub, as
+ * the hook does. The hook stays for client-side navigations, `hashchange` and a blocked script.
  */
 export function CalendarHashRedirect({
   locale,

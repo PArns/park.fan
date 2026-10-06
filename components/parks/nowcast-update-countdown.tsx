@@ -28,10 +28,8 @@ export function NowcastUpdateCountdown({
 }: NowcastUpdateCountdownProps) {
   const t = useTranslations('parks.weatherNowcast');
 
-  // Deterministic pre-mount value on BOTH server and hydration render. The old
-  // `typeof window === 'undefined' ? 0 : Date.now()` initializer rendered an epoch-based
-  // countdown ("Update in 29738148:20") into any server-rendered nowcast, which never matched
-  // the client → hydration text mismatch → React regenerated the subtree on every load.
+  // Deterministic pre-mount value on BOTH server and hydration render: a `Date.now()` initializer
+  // would differ between the two and make React regenerate the subtree.
   const [internalNow, setInternalNow] = useState(0);
   // Standalone mode (no external clock): only tick while the countdown is on
   // screen and the tab is visible — a mm:ss readout nobody can see doesn't need
@@ -39,8 +37,8 @@ export function NowcastUpdateCountdown({
   const { ref: anchorRef, active } = useActiveOnScreen();
   useEffect(() => {
     if (externalNow !== undefined || !active) return;
-    // Deferred initial stamp (same pattern as useBrowserNow) — replaces the "--:--"
-    // placeholder right after mount without a synchronous set-state-in-effect.
+    // Deferred initial stamp: replaces the "--:--" placeholder right after mount without a
+    // synchronous set-state-in-effect.
     const init = window.setTimeout(() => setInternalNow(Date.now()), 0);
     const id = window.setInterval(() => setInternalNow(Date.now()), 1_000);
     return () => {
@@ -84,15 +82,9 @@ export function NowcastUpdateCountdown({
   return (
     <p
       ref={anchorRef}
-      // `contain: paint` on the one element that repaints every second.
-      //
-      // This readout usually sits inside a card that carries `backdrop-blur`, and a backdrop
-      // filter has to re-read what is behind it whenever anything in its subtree paints. Without
-      // containment the mm:ss tick invalidated the whole card's backdrop sixty times a minute;
-      // a dropped frame then showed the card unblurred for that frame — an occasional flash of
-      // transparency with seconds of calm between, which is exactly how it was reported.
-      // Containment promises the browser that nothing here paints outside this box, so the tick
-      // stops reaching the ancestor.
+      // `contain: paint` on the one element that repaints every second: inside a `backdrop-blur`
+      // card, an uncontained tick makes the backdrop re-read every second, and a dropped frame
+      // shows the card unblurred. See docs/rules/work-nobody-can-see-is-still-work.md.
       className={cn('font-mono text-[11px] tabular-nums opacity-60 [contain:paint]', className)}
       title={t('updateIn', { countdown: `${mm}:${ss}` })}
     >
