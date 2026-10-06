@@ -34,7 +34,7 @@ import { languageName } from '@/lib/utils/intl-format';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
 import { extractToc } from '@/lib/blog/toc';
 import { ChapterHeading } from '@/components/common/chapter-heading';
-import { GlossaryInjectTerm } from '@/components/glossary/glossary-inject-term';
+import { GlossarySegments } from '@/components/glossary/glossary-segments';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { GlossaryTerm } from '@/lib/glossary/types';
@@ -267,14 +267,12 @@ function resolveImageAlign(altSegment: string | undefined, src: string): BlogIma
 const WHITESPACE_NORMALIZE_RE = /(?:\s|​|‌|‍|⁠)+/g;
 
 /**
- * Replace glossary-term occurrences in a plain string with
- * `GlossaryInjectTerm` tooltips. Shares the project-wide first-occurrence
- * rule via the `used` Set passed in by BlogContent.
+ * Replace glossary-term occurrences in a plain string with `GlossaryInjectTerm` tooltips. Only the
+ * first occurrence of each term name or alias within this one string is linked.
  */
 function renderGlossaryString(
   text: string,
   terms: GlossaryTerm[],
-  _used: Set<string>,
   locale: Locale,
   segment: string
 ): ReactNode {
@@ -282,20 +280,7 @@ function renderGlossaryString(
   if (!normalized.trim()) return text;
   const segments = parseGlossarySegments(normalized, terms);
   if (segments.every((s) => s.type === 'text')) return text;
-  return segments.map((seg, i) => {
-    if (seg.type === 'text') return <Fragment key={i}>{seg.content}</Fragment>;
-    return (
-      <GlossaryInjectTerm
-        key={`${seg.id}-${i}`}
-        matchedText={seg.matchedText}
-        name={seg.name}
-        slug={seg.slug}
-        shortDefinition={seg.shortDefinition}
-        locale={locale}
-        segment={segment}
-      />
-    );
-  });
+  return <GlossarySegments segments={segments} locale={locale} segment={segment} />;
 }
 
 function parseAttrs(line: string | undefined, body: string): Record<string, string> {
@@ -369,12 +354,10 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
   const tBlog = await getTranslations({ locale, namespace: 'blog' });
 
   // Pre-fetch glossary terms once so we can highlight them in headings and
-  // paragraphs without making the renderer async. Dedupe is shared across
-  // the whole post via `usedGlossaryTerms` — first occurrence wins, same
-  // behaviour as on the marketing pages.
+  // paragraphs without making the renderer async. Dedupe is per text string,
+  // not per post: every paragraph, heading or cell that mentions a term links it.
   const glossaryTerms = await getGlossaryTerms(locale);
   const glossarySegment = GLOSSARY_SEGMENTS[locale];
-  const usedGlossaryTerms = new Set<string>();
 
   const parkEntries = await Promise.all(
     [...parkSlugs].map(
@@ -502,7 +485,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
    */
   const injectGlossary = (node: ReactNode): ReactNode => {
     if (typeof node === 'string') {
-      return renderGlossaryString(node, glossaryTerms, usedGlossaryTerms, locale, glossarySegment);
+      return renderGlossaryString(node, glossaryTerms, locale, glossarySegment);
     }
     if (Array.isArray(node)) {
       return node.map((child, i) => <Fragment key={i}>{injectGlossary(child)}</Fragment>);

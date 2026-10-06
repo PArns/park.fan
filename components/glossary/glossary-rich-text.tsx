@@ -17,12 +17,12 @@ import { GlossaryInject } from './glossary-inject';
  *
  * `autoLink={false}` keeps layer 1 and drops layer 2. It exists for the blog's
  * `glossary-widget`, where a second auto-linking layer would be wrong twice:
- * the post body already runs its own first-occurrence pass over the prose
- * around the card (`usedGlossaryTerms` in `blog-content.tsx`) and the widget
- * renders outside that pass, so both would link the same term from their own
- * separate ledgers; and `parseGlossarySegments` has no self-exclusion, so a
- * card explaining one term would link that term's own name inside its own
- * definition, to the page its "more in the glossary" button already points at.
+ * the post body already links glossary terms in the prose around the card
+ * (`injectGlossary` in `blog-content.tsx`, deduped per string, not per post),
+ * so the card would link the same terms a second time; and
+ * `parseGlossarySegments` has no self-exclusion, so a card explaining one term
+ * would link that term's own name inside its own definition, to the page its
+ * "more in the glossary" button already points at.
  * On the glossary page itself auto-linking is the only layer and stays on.
  *
  * `renderLink` lets a caller take over an internal link. It receives the plain anchor as

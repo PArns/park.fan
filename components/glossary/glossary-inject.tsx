@@ -3,7 +3,7 @@ import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { Locale } from '@/i18n/config';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
-import { GlossaryInjectTerm } from './glossary-inject-term';
+import { GlossarySegments } from './glossary-segments';
 
 /**
  * Async server component — fetches glossary terms for the given (or current) locale and
@@ -35,22 +35,11 @@ export async function GlossaryInject({
   }
 
   return (
-    <>
-      {segments.map((seg, i) => {
-        if (seg.type === 'text') return seg.content;
-        return (
-          <GlossaryInjectTerm
-            key={`${seg.id}-${i}`}
-            matchedText={seg.matchedText}
-            name={seg.name}
-            slug={seg.slug}
-            shortDefinition={seg.shortDefinition}
-            locale={locale}
-            segment={segment}
-            noUnderline={noUnderline}
-          />
-        );
-      })}
-    </>
+    <GlossarySegments
+      segments={segments}
+      locale={locale}
+      segment={segment}
+      noUnderline={noUnderline}
+    />
   );
 }
