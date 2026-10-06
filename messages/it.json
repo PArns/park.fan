@@ -1496,7 +1496,10 @@
       "noticeSource": "Fonte: <link>{host}</link>",
       "noticePark": "Tempi di attesa attuali delle altre attrazioni: <link>{park}</link>",
       "waitsTitle": "Tempi di attesa prima della chiusura"
-    }
+    },
+    "riddenMark": "Segna come provata",
+    "riddenUnmark": "Rimuovi il segno di provata",
+    "riddenProgress": "{count, plural, one {# attrazione provata} other {# attrazioni provate}} su {total}"
   },
   "nearby": {
     "title": "Parchi nelle vicinanze",

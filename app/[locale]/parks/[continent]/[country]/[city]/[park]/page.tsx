@@ -35,6 +35,7 @@ import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Locale } from '@/i18n/config';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
+import { RiddenCounter } from '@/components/parks/ridden-counter';
 import { ParkLocationLine } from '@/components/parks/park-location-line';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { ParkKidsLink } from '@/components/parks/park-kids-link';
@@ -541,7 +542,11 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
                 park={{ id: park.id, latitude: park.latitude, longitude: park.longitude }}
               />
             }
-          />
+          >
+            {/* The rides the list below offers a „ridden" switch on; `closedAttractions` are a
+                separate list and stay out of the total. */}
+            <RiddenCounter rideIds={(park.attractions ?? []).map((a) => a.id)} />
+          </ParkTitleHeader>
         }
       >
         {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks

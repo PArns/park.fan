@@ -1496,7 +1496,10 @@
       "noticeSource": "Fuente: <link>{host}</link>",
       "noticePark": "Tiempos de espera actuales de las demás atracciones: <link>{park}</link>",
       "waitsTitle": "Tiempos de espera antes del cierre"
-    }
+    },
+    "riddenMark": "Marcar como montada",
+    "riddenUnmark": "Quitar la marca de montada",
+    "riddenProgress": "{count, plural, one {# atracción montada} other {# atracciones montadas}} de {total}"
   },
   "nearby": {
     "title": "Parques cercanos",

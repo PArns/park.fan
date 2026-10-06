@@ -12,6 +12,7 @@ import type { ParkAttraction, ParkStatus, BestVisitSlot, RopeDropInfo } from '@/
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { GlassCircle } from '@/components/common/glass-circle';
+import { RiddenToggle } from './ridden-toggle';
 import { RideAlertBell } from '@/components/push/ride-alert-bell';
 import { AttractionCardBestTime } from '@/components/parks/attraction-card-best-time';
 import { AttractionCardRopeDrop } from '@/components/parks/attraction-card-rope-drop';
@@ -77,6 +78,12 @@ interface AttractionCardProps {
    * adds is `max-sm:`.
    */
   phoneRow?: boolean;
+  /**
+   * Draw the „ridden" switch in the corner, beside the bell and the star. The park page's ride
+   * list passes it. A prop and not a check on the data, because the corner circles' reserved
+   * width has to be known to the server render.
+   */
+  rideLog?: boolean;
 }
 
 function getCrowdLevel(attraction: ParkAttraction | FavoriteAttraction): string | undefined {
@@ -129,6 +136,7 @@ export function AttractionCard({
   todayIso,
   parkName: parkNameProp,
   phoneRow = false,
+  rideLog = false,
 }: AttractionCardProps) {
   const t = useTranslations('attractions');
   const tGeo = useTranslations('geo');
@@ -155,6 +163,9 @@ export function AttractionCard({
     ('backgroundPosition' in attraction && typeof attraction.backgroundPosition === 'string'
       ? attraction.backgroundPosition
       : 'top');
+
+  // 40 px per corner circle (34 px and a 6 px gap), a pair at the least.
+  const cornerReserve = (parkName ? 92 : 52) + (rideLog ? 40 : 0);
 
   const stats = attraction.statistics;
   const history = stats?.history;
@@ -286,6 +297,11 @@ export function AttractionCard({
                 currentWaitTime={waitTime}
               />
             )}
+            {rideLog && isUuid(attraction.id) && (
+              <GlassCircle>
+                <RiddenToggle id={attraction.id} />
+              </GlassCircle>
+            )}
             <GlassCircle>
               <FavoriteStar
                 type="attraction"
@@ -312,7 +328,7 @@ export function AttractionCard({
             phoneRow && 'max-sm:mb-0 max-sm:pt-[10px]! max-sm:pr-3! max-sm:pb-2! max-sm:pl-3.5!'
           )}
           style={{
-            padding: parkName ? '14px 92px 13px 16px' : '14px 52px 13px 16px',
+            padding: `14px ${cornerReserve}px 13px 16px`,
             background: 'var(--pk-panel-highlight-top), var(--pk-panel)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
@@ -359,7 +375,8 @@ export function AttractionCard({
               <div
                 className={cn(
                   'relative max-sm:flex max-sm:min-h-[26px] max-sm:items-center max-sm:gap-2',
-                  parkName ? 'max-sm:pr-[88px]' : 'max-sm:pr-[42px]'
+                  parkName ? 'max-sm:pr-[88px]' : 'max-sm:pr-[42px]',
+                  rideLog && (parkName ? 'max-sm:pr-[128px]' : 'max-sm:pr-[82px]')
                 )}
               >
                 {heading}
@@ -510,7 +527,13 @@ export function AttractionCard({
           <div
             className={cn(
               'relative mt-[9px] empty:hidden',
-              parkName ? 'mr-[-76px]' : 'mr-[-36px]',
+              parkName
+                ? rideLog
+                  ? 'mr-[-116px]'
+                  : 'mr-[-76px]'
+                : rideLog
+                  ? 'mr-[-76px]'
+                  : 'mr-[-36px]',
               phoneRow && 'max-sm:mt-2 max-sm:mr-0'
             )}
           >

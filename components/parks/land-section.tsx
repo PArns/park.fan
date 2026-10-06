@@ -94,6 +94,7 @@ export const LandSection = memo(function LandSection({
                 todayIso={todayIso}
                 parkName={parkName}
                 phoneRow
+                rideLog
               />
             </li>
           );

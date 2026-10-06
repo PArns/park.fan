@@ -1496,7 +1496,10 @@
       "noticeSource": "Bron: <link>{host}</link>",
       "noticePark": "Actuele wachttijden van de andere attracties: <link>{park}</link>",
       "waitsTitle": "Wachttijden voor de sluiting"
-    }
+    },
+    "riddenMark": "Markeren als gereden",
+    "riddenUnmark": "Markering “gereden” weghalen",
+    "riddenProgress": "{count} van {total} attracties gereden"
   },
   "nearby": {
     "title": "Parken in de buurt",
