@@ -513,13 +513,11 @@ export function PlannerBlock({
         transform: dragging ? 'translateY(var(--pl-drag-dy, 0px))' : undefined,
       }}
     >
-      {/* No uncertainty band here, and that absence is the point: it is drawn in
-          a layer of its own beneath every block and every leg — see
-          `PlannerBandLayer` in `planner-day-grid.tsx` and `bandGeometry`. The
-          band is the one part of a block that is not IN the block; it hangs
-          past the box into the gap the next stop starts in, and a child of a
-          block cannot be painted under that stop's chip whatever z-index it
-          carries. */}
+      {/* No uncertainty band here: `planner-day-grid.tsx` draws it in a layer
+          of its own beneath every block and every leg (`bandGeometry`). It
+          hangs past the box into the gap the next stop starts in, and a child
+          of a block cannot be painted under that stop's chip whatever z-index
+          it carries. */}
 
       {/* The ground, UNDER the bordered box rather than inside it.
 

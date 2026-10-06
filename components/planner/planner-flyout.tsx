@@ -1033,16 +1033,6 @@ export function PlannerFlyout({
     bus.addEventListener('pointercancel', cancel as EventListener);
   };
 
-  // `null` only while the day payload is on its way. `/plan/day` answers with
-  // showtimes for every date the picker offers — the operator's own listing for
-  // today and for days already gone, the last matching weekday carried forward
-  // for the rest — so the panel no longer has to say "not knowable". What it
-  // does have to say is WHICH of the two it is looking at, which rides along on
-  // each line as `source`.
-  /* Whether the day's showtimes are drawn at all — a preference of this
-     browser, remembered, and read here rather than in the band so the grid's
-     lines and the band above them can never disagree. */
-
   return (
     // NOT modal on a desktop pointer. Radix's default puts `pointer-events: none`
     // on everything outside the panel and a full-screen overlay over it, which
