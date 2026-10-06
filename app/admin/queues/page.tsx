@@ -4,15 +4,17 @@ import { useState } from 'react';
 import { ChevronDown, ChevronRight, ListChecks, Loader2 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
 import { adminFetch } from '../_lib/api';
-import { Section } from '../_lib/ui';
 import type { QueueEntry, QueueStatusResponse } from '@/lib/api/admin';
 import {
   AdminPage,
   Chip,
+  type ChipTone,
   EmptyState,
   ErrorState,
   LoadingState,
-  type ChipTone,
+  Panel,
+  PanelBody,
+  PanelHeader,
 } from '../_ui/primitives';
 
 /**
@@ -152,17 +154,18 @@ export default function QueuesPage() {
 
   return (
     <AdminPage width="wide">
-      <Section icon={ListChecks} title="Queues">
+      <Panel>
+        <PanelHeader icon={ListChecks} title="Queues" />
         {data.queues.length === 0 ? (
           <EmptyState title="No queues reported." />
         ) : (
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          <PanelBody className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {data.queues.map((q) => (
               <QueueRow key={q.name} q={q} />
             ))}
-          </div>
+          </PanelBody>
         )}
-      </Section>
+      </Panel>
     </AdminPage>
   );
 }

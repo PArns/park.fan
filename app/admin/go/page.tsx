@@ -6,8 +6,14 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Compass, MapPin } from 'lucide-react';
 import { adminFetch } from '../_lib/api';
 import { slugsFromPublicPath } from '../_lib/public-path';
-import { Section } from '../_lib/ui';
-import { AdminPage, EmptyState, ErrorState, LoadingState } from '../_ui/primitives';
+import {
+  AdminPage,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  Panel,
+  PanelHeader,
+} from '../_ui/primitives';
 
 /**
  * From a public address to the editor that owns it. Takes a full public path
@@ -124,11 +130,12 @@ function GoResolver() {
 export default function GoPage() {
   return (
     <AdminPage width="narrow">
-      <Section icon={Compass} title="Zur Bearbeitung springen">
+      <Panel>
+        <PanelHeader icon={Compass} title="Zur Bearbeitung springen" />
         <Suspense fallback={<LoadingState />}>
           <GoResolver />
         </Suspense>
-      </Section>
+      </Panel>
     </AdminPage>
   );
 }

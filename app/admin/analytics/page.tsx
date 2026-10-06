@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { Activity, Globe, Radio } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
-import { Section } from '../_lib/ui';
 import type { AnalyticsGeoLive, AnalyticsRealtime, AnalyticsTicker } from '@/lib/api/admin-stats';
 import {
   AdminPage,
@@ -12,6 +11,7 @@ import {
   LoadingState,
   Panel,
   PanelBody,
+  PanelHeader,
   StatTile,
   Tile,
   crowdChipClass,
@@ -36,19 +36,21 @@ export default function AnalyticsPage() {
 
   return (
     <AdminPage width="wide">
-      <Section icon={Activity} title="Realtime counts">
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+      <Panel>
+        <PanelHeader icon={Activity} title="Realtime counts" />
+        <PanelBody className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           <StatTile label="Open parks" value={c.openParks} sub={`of ${c.parks}`} />
           <StatTile label="Open rides" value={c.openAttractions} sub={`of ${c.attractions}`} />
           <StatTile label="Shows" value={c.shows} />
           <StatTile label="Restaurants" value={c.restaurants} />
           <StatTile label="Total wait" value={`${c.totalWaitTime.toLocaleString('en-GB')}'`} />
           <StatTile label="Queue records" value={c.queueDataRecords.toLocaleString('en-GB')} />
-        </div>
-      </Section>
+        </PanelBody>
+      </Panel>
 
-      <Section icon={Globe} title="Geographic activity">
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <Panel>
+        <PanelHeader icon={Globe} title="Geographic activity" />
+        <PanelBody className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           {(geo.data?.continents ?? []).map((cont) => (
             <Tile
               key={cont.slug}
@@ -75,43 +77,45 @@ export default function AnalyticsPage() {
               </div>
             </Tile>
           ))}
-        </div>
-      </Section>
+        </PanelBody>
+      </Panel>
 
-      <Section icon={Radio} title="Live ticker">
-        <Panel>
-          <PanelBody className="divide-border/40 divide-y py-2">
-            {(ticker.data?.items ?? []).slice(0, 25).map((item, i) => (
-              <Link
-                key={`${item.attractionSlug}-${i}`}
-                href={item.url}
-                className="hover:bg-card/60 -mx-2 flex items-center gap-3 px-2 py-1.5 text-sm"
-              >
-                <span className={`w-4 shrink-0 text-center ${TREND_COLOR[item.trend] ?? ''}`}>
-                  {TREND_ICON[item.trend] ?? '·'}
-                </span>
-                <span className="min-w-0 flex-1 truncate">{item.attractionName}</span>
-                <span className="text-muted-foreground hidden truncate text-xs sm:block sm:w-40">
-                  {item.parkName}
-                </span>
-                <span className="w-12 shrink-0 text-right font-mono tabular-nums">
-                  {item.waitTime}&apos;
-                </span>
-                <span className="hidden shrink-0 sm:block">
-                  <Chip className={crowdChipClass(item.crowdLevel)}>
-                    {item.crowdLevel?.replace(/_/g, ' ') ?? '—'}
-                  </Chip>
-                </span>
-              </Link>
-            ))}
-          </PanelBody>
-        </Panel>
-        {ticker.data && (
-          <p className="text-muted-foreground text-right text-xs">
-            Generated {new Date(ticker.data.generatedAt).toLocaleTimeString('en-GB')}
-          </p>
-        )}
-      </Section>
+      <Panel>
+        <PanelHeader
+          icon={Radio}
+          title="Live ticker"
+          hint={
+            ticker.data
+              ? `Generated ${new Date(ticker.data.generatedAt).toLocaleTimeString('en-GB')}`
+              : undefined
+          }
+        />
+        <PanelBody className="divide-border/40 divide-y py-2">
+          {(ticker.data?.items ?? []).slice(0, 25).map((item, i) => (
+            <Link
+              key={`${item.attractionSlug}-${i}`}
+              href={item.url}
+              className="hover:bg-card/60 -mx-2 flex items-center gap-3 px-2 py-1.5 text-sm"
+            >
+              <span className={`w-4 shrink-0 text-center ${TREND_COLOR[item.trend] ?? ''}`}>
+                {TREND_ICON[item.trend] ?? '·'}
+              </span>
+              <span className="min-w-0 flex-1 truncate">{item.attractionName}</span>
+              <span className="text-muted-foreground hidden truncate text-xs sm:block sm:w-40">
+                {item.parkName}
+              </span>
+              <span className="w-12 shrink-0 text-right font-mono tabular-nums">
+                {item.waitTime}&apos;
+              </span>
+              <span className="hidden shrink-0 sm:block">
+                <Chip className={crowdChipClass(item.crowdLevel)}>
+                  {item.crowdLevel?.replace(/_/g, ' ') ?? '—'}
+                </Chip>
+              </span>
+            </Link>
+          ))}
+        </PanelBody>
+      </Panel>
     </AdminPage>
   );
 }

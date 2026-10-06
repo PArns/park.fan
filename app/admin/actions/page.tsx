@@ -23,9 +23,8 @@ import {
   Wrench,
   type LucideIcon,
 } from 'lucide-react';
-import { Section } from '../_lib/ui';
 import { useCan } from '../_app/session';
-import { AdminPage, Chip } from '../_ui/primitives';
+import { AdminPage, Chip, Panel, PanelBody, PanelHeader } from '../_ui/primitives';
 
 /**
  * The job triggers, keeping the message and job id each one answers; failing queues are one click
@@ -374,29 +373,38 @@ export default function ActionsPage() {
 
   return (
     <AdminPage width="wide">
-      <Section icon={Wrench} title="Jobs anstoßen">
-        <p className="text-muted-foreground text-sm">
-          Alles hier läuft asynchron: der Klick stellt den Job in die Queue und die Antwort sagt,
-          unter welcher Nummer. Was daraus geworden ist, steht unter Datenqualität.
-        </p>
-        {renderGrid(MAINTENANCE_ACTIONS)}
-      </Section>
+      <Panel>
+        <PanelHeader icon={Wrench} title="Jobs anstoßen" />
+        <PanelBody className="space-y-3">
+          <p className="text-muted-foreground text-sm">
+            Alles hier läuft asynchron: der Klick stellt den Job in die Queue und die Antwort sagt,
+            unter welcher Nummer. Was daraus geworden ist, steht unter Datenqualität.
+          </p>
+          {renderGrid(MAINTENANCE_ACTIONS)}
+        </PanelBody>
+      </Panel>
 
-      <Section icon={AlertTriangle} title="Eingriffe">
-        <p className="text-muted-foreground text-sm">
-          Diese vier verwerfen oder schreiben Daten um, statt etwas zu berechnen. Owner-Rolle
-          vorausgesetzt, und das Zurücksetzen von Redis fragt nach.
-        </p>
-        {renderGrid(DESTRUCTIVE_ACTIONS)}
-      </Section>
+      <Panel>
+        <PanelHeader icon={AlertTriangle} title="Eingriffe" />
+        <PanelBody className="space-y-3">
+          <p className="text-muted-foreground text-sm">
+            Diese vier verwerfen oder schreiben Daten um, statt etwas zu berechnen. Owner-Rolle
+            vorausgesetzt, und das Zurücksetzen von Redis fragt nach.
+          </p>
+          {renderGrid(DESTRUCTIVE_ACTIONS)}
+        </PanelBody>
+      </Panel>
 
-      <Section icon={GitCompare} title="Schattenmodelle (PCN / Shape)">
-        <p className="text-muted-foreground text-sm">
-          Manuelle Auslöser für die Schattenpipelines. Die Bewertungen landen unter ML →
-          Schattenmodelle.
-        </p>
-        {renderGrid(SHADOW_ACTIONS)}
-      </Section>
+      <Panel>
+        <PanelHeader icon={GitCompare} title="Schattenmodelle (PCN / Shape)" />
+        <PanelBody className="space-y-3">
+          <p className="text-muted-foreground text-sm">
+            Manuelle Auslöser für die Schattenpipelines. Die Bewertungen landen unter ML →
+            Schattenmodelle.
+          </p>
+          {renderGrid(SHADOW_ACTIONS)}
+        </PanelBody>
+      </Panel>
     </AdminPage>
   );
 }

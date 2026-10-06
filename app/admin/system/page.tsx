@@ -15,11 +15,20 @@ import {
   Zap,
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
-import { Section } from '../_lib/ui';
 import { formatUptime } from '../_lib/format';
 import { MetricBar } from '@/components/common/metric-bar';
 import type { HostDisk, SystemHealthResponse } from '@/lib/api/admin';
-import { AdminPage, ErrorState, LoadingState, Meta, StatusDot, Tile } from '../_ui/primitives';
+import {
+  AdminPage,
+  ErrorState,
+  LoadingState,
+  Meta,
+  Panel,
+  PanelBody,
+  PanelHeader,
+  StatusDot,
+  Tile,
+} from '../_ui/primitives';
 
 const CHIP_LABELS: Record<string, string> = {
   coretemp: 'CPU · coretemp',
@@ -111,8 +120,9 @@ export default function SystemPage() {
 
   return (
     <AdminPage width="wide">
-      <Section icon={Server} title="Host">
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <Panel>
+        <PanelHeader icon={Server} title="Host" />
+        <PanelBody className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <Tile icon={Cpu} title="CPU" className="space-y-3">
             <div className="grid grid-cols-2 gap-3">
               <div>
@@ -227,106 +237,116 @@ export default function SystemPage() {
               </p>
             </div>
           </Tile>
-        </div>
-      </Section>
+        </PanelBody>
+      </Panel>
 
       {data.gpu?.available && data.gpu.gpus?.length ? (
-        <Section icon={Gauge} title="GPU">
-          {data.gpu.gpus.map((g) => {
-            const temp = g.temperatureC ?? 0;
-            const tempClass =
-              temp >= 85 ? 'text-red-400' : temp >= 70 ? 'text-amber-400' : 'text-foreground';
-            const vramTotal = g.memoryTotalMB ? g.memoryTotalMB / 1024 : 0;
-            const vramUsed = (g.memoryUsedMB ?? 0) / 1024;
-            return (
-              // 4 cards in the same grid as HOST so GPU lines up column-for-column.
-              <div
-                key={g.index ?? g.name}
-                className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
-              >
-                <Tile icon={Gauge} title="GPU Load" className="space-y-3">
-                  <div>
-                    <span className="text-3xl font-bold tabular-nums">
-                      {g.utilizationGpuPct ?? '—'}
-                      <span className="text-muted-foreground text-lg font-normal">%</span>
-                    </span>
-                    <p className="text-muted-foreground mt-0.5 truncate text-xs" title={g.name}>
-                      {g.name.replace(/^NVIDIA\s+/i, '')}
-                    </p>
-                  </div>
-                  <MetricBar
-                    label="Utilization"
-                    value={g.utilizationGpuPct ?? 0}
-                    max={100}
-                    unit="%"
-                    thresholds={[70, 90]}
-                  />
-                </Tile>
-
-                <Tile icon={Thermometer} title="Temperature" className="space-y-3">
-                  <div>
-                    <span className={`text-3xl font-bold tabular-nums ${tempClass}`}>
-                      {g.temperatureC ?? '—'}
-                      <span className="text-muted-foreground text-lg font-normal"> °C</span>
-                    </span>
-                    <p className="text-muted-foreground mt-0.5 text-xs">
-                      Mem I/O {g.utilizationMemPct ?? '—'}%
-                    </p>
-                  </div>
-                  <MetricBar label="Temp" value={temp} max={100} unit=" °C" thresholds={[70, 85]} />
-                </Tile>
-
-                <Tile icon={MemoryStick} title="VRAM" className="space-y-3">
-                  <div>
-                    <span className="text-3xl font-bold tabular-nums">
-                      {vramUsed.toFixed(1)}
-                      <span className="text-muted-foreground text-lg font-normal"> GB</span>
-                    </span>
-                    <p className="text-muted-foreground mt-0.5 text-xs">
-                      of {vramTotal.toFixed(0)} GB
-                    </p>
-                  </div>
-                  {vramTotal ? (
+        <Panel>
+          <PanelHeader icon={Gauge} title="GPU" />
+          <PanelBody className="space-y-3">
+            {data.gpu.gpus.map((g) => {
+              const temp = g.temperatureC ?? 0;
+              const tempClass =
+                temp >= 85 ? 'text-red-400' : temp >= 70 ? 'text-amber-400' : 'text-foreground';
+              const vramTotal = g.memoryTotalMB ? g.memoryTotalMB / 1024 : 0;
+              const vramUsed = (g.memoryUsedMB ?? 0) / 1024;
+              return (
+                // 4 cards in the same grid as HOST so GPU lines up column-for-column.
+                <div
+                  key={g.index ?? g.name}
+                  className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
+                >
+                  <Tile icon={Gauge} title="GPU Load" className="space-y-3">
+                    <div>
+                      <span className="text-3xl font-bold tabular-nums">
+                        {g.utilizationGpuPct ?? '—'}
+                        <span className="text-muted-foreground text-lg font-normal">%</span>
+                      </span>
+                      <p className="text-muted-foreground mt-0.5 truncate text-xs" title={g.name}>
+                        {g.name.replace(/^NVIDIA\s+/i, '')}
+                      </p>
+                    </div>
                     <MetricBar
-                      label="Used"
-                      value={vramUsed}
-                      max={vramTotal}
-                      unit=" GB"
-                      pct={g.memoryUsedPct ?? undefined}
-                      thresholds={[75, 90]}
-                    />
-                  ) : null}
-                </Tile>
-
-                <Tile icon={Zap} title="Power" className="space-y-3">
-                  <div>
-                    <span className="text-3xl font-bold tabular-nums">
-                      {g.powerW?.toFixed(0) ?? '—'}
-                      <span className="text-muted-foreground text-lg font-normal"> W</span>
-                    </span>
-                    <p className="text-muted-foreground mt-0.5 text-xs">
-                      of {g.powerLimitW?.toFixed(0) ?? '—'} W limit
-                    </p>
-                  </div>
-                  {g.powerLimitW ? (
-                    <MetricBar
-                      label="Draw"
-                      value={g.powerW ?? 0}
-                      max={g.powerLimitW}
-                      unit=" W"
+                      label="Utilization"
+                      value={g.utilizationGpuPct ?? 0}
+                      max={100}
+                      unit="%"
                       thresholds={[70, 90]}
                     />
-                  ) : null}
-                </Tile>
-              </div>
-            );
-          })}
-        </Section>
+                  </Tile>
+
+                  <Tile icon={Thermometer} title="Temperature" className="space-y-3">
+                    <div>
+                      <span className={`text-3xl font-bold tabular-nums ${tempClass}`}>
+                        {g.temperatureC ?? '—'}
+                        <span className="text-muted-foreground text-lg font-normal"> °C</span>
+                      </span>
+                      <p className="text-muted-foreground mt-0.5 text-xs">
+                        Mem I/O {g.utilizationMemPct ?? '—'}%
+                      </p>
+                    </div>
+                    <MetricBar
+                      label="Temp"
+                      value={temp}
+                      max={100}
+                      unit=" °C"
+                      thresholds={[70, 85]}
+                    />
+                  </Tile>
+
+                  <Tile icon={MemoryStick} title="VRAM" className="space-y-3">
+                    <div>
+                      <span className="text-3xl font-bold tabular-nums">
+                        {vramUsed.toFixed(1)}
+                        <span className="text-muted-foreground text-lg font-normal"> GB</span>
+                      </span>
+                      <p className="text-muted-foreground mt-0.5 text-xs">
+                        of {vramTotal.toFixed(0)} GB
+                      </p>
+                    </div>
+                    {vramTotal ? (
+                      <MetricBar
+                        label="Used"
+                        value={vramUsed}
+                        max={vramTotal}
+                        unit=" GB"
+                        pct={g.memoryUsedPct ?? undefined}
+                        thresholds={[75, 90]}
+                      />
+                    ) : null}
+                  </Tile>
+
+                  <Tile icon={Zap} title="Power" className="space-y-3">
+                    <div>
+                      <span className="text-3xl font-bold tabular-nums">
+                        {g.powerW?.toFixed(0) ?? '—'}
+                        <span className="text-muted-foreground text-lg font-normal"> W</span>
+                      </span>
+                      <p className="text-muted-foreground mt-0.5 text-xs">
+                        of {g.powerLimitW?.toFixed(0) ?? '—'} W limit
+                      </p>
+                    </div>
+                    {g.powerLimitW ? (
+                      <MetricBar
+                        label="Draw"
+                        value={g.powerW ?? 0}
+                        max={g.powerLimitW}
+                        unit=" W"
+                        thresholds={[70, 90]}
+                      />
+                    ) : null}
+                  </Tile>
+                </div>
+              );
+            })}
+          </PanelBody>
+        </Panel>
       ) : null}
 
       {sensorEntries.length ? (
-        <Section icon={Thermometer} title="Sensors">
-          <div className="grid grid-cols-1 gap-3">
+        <Panel>
+          <PanelHeader icon={Thermometer} title="Sensors" />
+          <PanelBody className="grid grid-cols-1 gap-3">
             {sensorEntries.map(([chip, list]) => {
               const hot = Math.max(...list.map((s) => s.tempC));
               return (
@@ -371,12 +391,13 @@ export default function SystemPage() {
                 </Tile>
               );
             })}
-          </div>
-        </Section>
+          </PanelBody>
+        </Panel>
       ) : null}
 
-      <Section icon={Database} title="Database & Cache">
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      <Panel>
+        <PanelHeader icon={Database} title="Database & Cache" />
+        <PanelBody className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <Tile
             icon={Database}
             title="PostgreSQL"
@@ -442,12 +463,13 @@ export default function SystemPage() {
               />
             </div>
           </Tile>
-        </div>
-      </Section>
+        </PanelBody>
+      </Panel>
 
       {fresh ? (
-        <Section icon={Activity} title="Data Ingestion">
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <Panel>
+          <PanelHeader icon={Activity} title="Data Ingestion" />
+          <PanelBody className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <Tile
               icon={Waves}
               title="Wait Times"
@@ -507,8 +529,8 @@ export default function SystemPage() {
                 <Meta label="Forecast until" value={weatherDate ?? '—'} />
               </div>
             </Tile>
-          </div>
-        </Section>
+          </PanelBody>
+        </Panel>
       ) : null}
     </AdminPage>
   );
