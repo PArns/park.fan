@@ -56,8 +56,32 @@ const long = buildParkHoursIcs({
   estimatedNote: '',
   now,
 });
-ok(long.includes('\\,') && long.includes('\;') && long.includes('\\\\'), 'text is escaped');
+ok(long.includes('\\,') && long.includes('\\;') && long.includes('\\\\'), 'text is escaped');
 const unfolded = long.replace(/\r\n /g, '');
+ok(
+  buildParkHoursIcs({
+    parkName: 'A;B',
+    parkSlug: 'x',
+    parkUrl: 'u',
+    schedule: [op('2026-10-06', '07:00', '16:00')],
+    summary: 'A;B\r\nC',
+    estimatedNote: '',
+    now,
+  }).includes('SUMMARY:A\\;B\\nC'),
+  'semicolon and line breaks'
+);
+ok(
+  buildParkHoursIcs({
+    parkName: 'A',
+    parkSlug: 'x',
+    parkUrl: 'u',
+    schedule: [],
+    summary: 's',
+    estimatedNote: '',
+    now,
+  }).indexOf('VEVENT') === -1,
+  'empty schedule, no event'
+);
 ok(unfolded.includes('ö'.repeat(60)), 'folding never splits a UTF-8 character');
 
 console.log(`park hours ics: ${checks} checks passed`);

@@ -998,6 +998,7 @@ const nextConfig: NextConfig = {
       {
         // The `.ics` of a park's coming opening days. The handler's own value, and it sends it on
         // a successful answer only: its 404 and 502 carry `no-store` themselves.
+        // 3600 = `CACHE_TTL.schedule`, which this file cannot import.
         source: '/api/parks/hours/:continent/:country/:city/:park',
         headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=7200'),
       },

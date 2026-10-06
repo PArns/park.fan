@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getTranslations } from 'next-intl/server';
+import { CACHE_TTL } from '@/lib/api/cache-config';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 import { getParkSchedule } from '@/lib/api/parks';
 import { defaultLocale, isValidLocale, SITE_URL } from '@/i18n/config';
@@ -19,8 +20,12 @@ import { isSlugPath } from '@/lib/utils/servable-route';
  * `CACHE_TTL.schedule`. A failure, and a park with no coming opening day, answer without a cache
  * window: an empty calendar must not be shared as the park's hours.
  */
-const SCHEDULE_CACHE = 'public, s-maxage=3600, stale-while-revalidate=7200';
-const NO_STORE = { 'Cache-Control': 'no-store, must-revalidate' };
+const SCHEDULE_CACHE = `public, s-maxage=${CACHE_TTL.schedule}, stale-while-revalidate=${CACHE_TTL.schedule * 2}`;
+// `CDN-Cache-Control` too: the rule in next.config.ts sets one on every answer of this path.
+const NO_STORE = {
+  'Cache-Control': 'no-store, must-revalidate',
+  'CDN-Cache-Control': 'no-store',
+};
 
 export async function GET(
   request: NextRequest,
@@ -56,7 +61,7 @@ export async function GET(
       headers: {
         ...cdnCacheHeaders(SCHEDULE_CACHE),
         'Content-Type': 'text/calendar; charset=utf-8',
-        'Content-Disposition': `attachment; filename="${result.park.slug}.ics"`,
+        'Content-Disposition': `attachment; filename="${park}.ics"`,
       },
     });
   } catch (error) {
