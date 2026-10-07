@@ -5,6 +5,7 @@ import {
   Clock,
   CloudSun,
   GalleryHorizontal,
+  Megaphone,
   MapPin,
   Scale,
   TableProperties,
@@ -139,6 +140,18 @@ export const WIDGETS: readonly WidgetDef[] = [
       { key: 'highlight', label: 'Highlight ride', placeholder: 'troy' },
     ],
     defaultBody: 'park: efteling\ntop: 10\ncolumns: land,peak,days',
+  },
+  {
+    name: 'cta-widget',
+    label: 'CTA widget',
+    hint: 'One action as a button',
+    icon: Megaphone,
+    fields: [
+      { key: 'href', label: 'Link', placeholder: 'https://www.openpetition.de/…' },
+      { key: 'label', label: 'Button text', placeholder: 'Petition unterschreiben' },
+      { key: 'text', label: 'Line beside the button', placeholder: 'Läuft bis zum 23. November.' },
+    ],
+    defaultBody: 'href: https://\nlabel: Jetzt unterschreiben\ntext: ',
   },
   {
     name: 'hourly-profile-widget',

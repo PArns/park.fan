@@ -62,6 +62,7 @@ import { BlogParkComparisonWidget } from './blog-park-comparison-widget';
 import { BlogRideWaitsWidget } from './blog-ride-waits-widget';
 import { BlogHourlyProfileWidget } from './blog-hourly-profile-widget';
 import { BlogGlossaryWidget } from './blog-glossary-widget';
+import { BlogCtaWidget } from './blog-cta-widget';
 import { BlogGallery } from './blog-gallery';
 import { parseWidgetParkRef, parseWidgetRideRef } from '@/lib/blog/widget-park';
 import { listFolderImages, resolveGallery } from '@/lib/blog/gallery';
@@ -961,6 +962,9 @@ function renderWidget(
     const slug = attrs.slug ?? attrs.term ?? attrs.id;
     if (!slug) return null;
     return <BlogGlossaryWidget slug={slug} locale={ctx.locale} />;
+  }
+  if (name === 'cta-widget') {
+    return <BlogCtaWidget href={attrs.href} label={attrs.label} text={attrs.text} />;
   }
   if (name === 'gallery-widget') {
     // Prefer a folder reference if one was passed via attrs; otherwise parse

@@ -316,6 +316,7 @@ attributes on the info line (`key=value`, `key: value` or `key="value"`).
 | `map-widget`             | `slug`                        | Interactive park map.                       |
 | `glossary-widget`        | `slug` (a.k.a. `term` / `id`) | Full glossary definition inline.            |
 | `gallery-widget`         | `folder` (or line-based body) | Photo gallery (see below).                  |
+| `cta-widget`             | `href`, `label`, `text`       | One action as a button (see below).         |
 | `park-widget`            | `slug`                        | Park spotlight card — use `ref:…?full`.     |
 | `attraction-widget`      | `parkSlug`, `slug`            | Ride spotlight card — use `ref:…?full`.     |
 
@@ -520,6 +521,26 @@ Or list images line by line in the body:
 - /media/<collection>/b.jpg | Alt text
 ```
 ````
+
+### `cta-widget`: the one action a post asks for
+
+````md
+```cta-widget
+href: https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands
+label: Petition auf openPetition unterschreiben
+text: Die Petition läuft bis zum 23. November.
+```
+````
+
+A box with the line of text and a link drawn as a button (`BlogCtaWidget`,
+`components/blog/blog-cta-widget.tsx`). Use it once per post, for the action the post exists to
+ask for; every other link stays in the sentence that needs it. `label` says what the reader does
+(„Petition unterschreiben“), never „Hier klicken“. `text` is optional.
+
+`href` has to be an http(s) URL or a path on this site, or the widget renders nothing: a fence is
+author input like any link. An outbound link opens in a new tab like every other external link in a
+post. The feed carries only the excerpt, so the sentence that first mentions the action keeps its
+own inline link.
 
 ### Video & social embeds
 
