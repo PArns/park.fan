@@ -2,6 +2,7 @@
 title: 'Europa-Park start dineravond in Piraten in Batavia'
 translationKey: adventure-in-batavia-dinner-europa-park
 date: '2026-10-07'
+time: '12:18'
 author: patrick
 mode: published
 featured: false

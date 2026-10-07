@@ -55,8 +55,8 @@ sitemap use, `withZoneOffset()` the timestamp in `datePublished` and `<news:publ
 A post without a time sorts before every timed post of its day. Equal stamps return 0, so a stable
 sort keeps them in manifest order.
 
-The times of the news posts before 2026-10-07 are the minute each reached `main`, read off the
-first-parent history. Two of them were merged after the day in their `date` (the Hollywood Drift
+The times of the news posts that were on `main` before the field existed are the minute each
+reached `main`, read off the first-parent history. Two of them were merged after the day in their `date` (the Hollywood Drift
 post on 2026-09-30, the Golden Ticket post on 2026-10-03); each is the only news of its day, so the
 time orders nothing there.
 

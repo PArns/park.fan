@@ -19,7 +19,7 @@ Vorher sortierten `/news`, das News-Panel im Header, der Hero-Chip, der Feed und
 nur nach `date`, und der Vergleich gab bei gleichem Tag nie 0 zurück. Die vier News vom 1. Oktober
 und die vier vom 23. September standen so in zufälliger Reihenfolge. `lib/blog/published-at.ts`
 liest die Uhrzeit an einer Stelle (`publishedAt`, `newestPublishedFirst`, `withZoneOffset`); sie
-geht auch in `datePublished`, in `<news:publication_date>` und in das `pubDate` des Feeds. Die 18
+geht auch in `datePublished`, in `<news:publication_date>` und in das `pubDate` des Feeds. Die 19
 bestehenden News haben die Minute bekommen, in der sie auf `main` kamen.
 `pnpm check:blog-updated-at` lässt keinen News-Beitrag ohne gültige, einheitliche Uhrzeit durch,
 `pnpm test:news-split` prüft die Reihenfolge in allen sechs Sprachen.
