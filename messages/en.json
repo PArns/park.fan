@@ -1506,7 +1506,10 @@
       "noticeSource": "Source: <link>{host}</link>",
       "noticePark": "Current wait times for the other attractions: <link>{park}</link>",
       "waitsTitle": "Wait times before it closed"
-    }
+    },
+    "riddenMark": "Mark as ridden",
+    "riddenUnmark": "Remove ridden mark",
+    "riddenProgress": "{count} of {total} rides ridden"
   },
   "nearby": {
     "title": "Nearby parks",

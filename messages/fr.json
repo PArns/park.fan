@@ -1506,7 +1506,10 @@
       "noticeSource": "Source : <link>{host}</link>",
       "noticePark": "Temps d’attente actuels des autres attractions : <link>{park}</link>",
       "waitsTitle": "Temps d’attente avant la fermeture"
-    }
+    },
+    "riddenMark": "Marquer comme faite",
+    "riddenUnmark": "Retirer la marque « faite »",
+    "riddenProgress": "{count, plural, one {# attraction faite} other {# attractions faites}} sur {total}"
   },
   "nearby": {
     "title": "Parcs à proximité",

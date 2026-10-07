@@ -326,6 +326,14 @@ Redirects for malformed or stale park URLs: a missing city segment (a park slug 
 - `getClientIp` _function_: The visitor's IP address, or '' when no header carries a usable one. Takes a plain `Request` too, since the admin route handlers are typed on it.
 - `getForwardedForHeaders` _function_: Headers forwarding the real client IP to the backend for GeoIP; without them api.park.fan sees our server's IP.
 
+### [`ridden-rides.ts`](../../lib/utils/ridden-rides.ts)
+
+- `getRiddenSnapshot` _function_: The marked ids. The same object comes back until the stored value changes, which is what `useSyncExternalStore` needs from a snapshot.
+- `getServerRiddenSnapshot` _function_: The snapshot on the server and while hydrating: nothing marked yet.
+- `subscribeToRidden` _function_: Calls `listener` when a ride is marked here or in another tab; returns the unsubscribe.
+- `toggleRidden` _function_: Marks the ride as ridden, or takes the mark off; returns the new state.
+- `RIDDEN_RIDES_KEY` _const_: Where the marked ride ids live, as a JSON array of strings.
+
 ### [`ride-crowd-scale.ts`](../../lib/utils/ride-crowd-scale.ts)
 
 - `rideCrowdLevelForWait` _function_: The crowd level the API gives a ride for one wait, against that ride's own baseline. A twin of the backend's `determineCrowdLevel` (`src/common/utils/crowd-level.util.ts`): `wait ÷ baseline × 100`, unrounded, bucketed with `<=`.

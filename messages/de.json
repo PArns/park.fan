@@ -1506,7 +1506,10 @@
       "noticeSource": "Quelle: <link>{host}</link>",
       "noticePark": "Aktuelle Wartezeiten der anderen Attraktionen: <link>{park}</link>",
       "waitsTitle": "Wartezeiten vor der Schließung"
-    }
+    },
+    "riddenMark": "Als gefahren markieren",
+    "riddenUnmark": "Markierung „gefahren“ entfernen",
+    "riddenProgress": "{count} von {total} Bahnen gefahren"
   },
   "nearby": {
     "title": "Parks in deiner Nähe",

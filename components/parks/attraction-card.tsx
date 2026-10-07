@@ -11,7 +11,12 @@ import { formatDistance } from '@/lib/utils/distance-utils';
 import type { ParkAttraction, ParkStatus, BestVisitSlot, RopeDropInfo } from '@/lib/api/types';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { FavoriteStar } from '@/components/common/favorite-star';
-import { GlassCircle } from '@/components/common/glass-circle';
+import {
+  GLASS_CIRCLE_HIT_AREA,
+  GLASS_CIRCLE_ROW,
+  GlassCircle,
+} from '@/components/common/glass-circle';
+import { RiddenToggle } from './ridden-toggle';
 import { RideAlertBell } from '@/components/push/ride-alert-bell';
 import { AttractionCardBestTime } from '@/components/parks/attraction-card-best-time';
 import { AttractionCardRopeDrop } from '@/components/parks/attraction-card-rope-drop';
@@ -78,6 +83,12 @@ interface AttractionCardProps {
    * adds is `max-sm:`.
    */
   phoneRow?: boolean;
+  /**
+   * Draw the „ridden" switch in the corner, beside the bell and the star. The park page's ride
+   * list passes it. A prop and not a check on the data, because the corner circles' reserved
+   * width has to be known to the server render.
+   */
+  rideLog?: boolean;
 }
 
 function getCrowdLevel(attraction: ParkAttraction | FavoriteAttraction): string | undefined {
@@ -130,6 +141,7 @@ export function AttractionCard({
   todayIso,
   parkName: parkNameProp,
   phoneRow = false,
+  rideLog = false,
 }: AttractionCardProps) {
   const t = useTranslations('attractions');
   const tGeo = useTranslations('geo');
@@ -156,6 +168,9 @@ export function AttractionCard({
     ('backgroundPosition' in attraction && typeof attraction.backgroundPosition === 'string'
       ? attraction.backgroundPosition
       : 'top');
+
+  // 40 px per corner circle (34 px and a 6 px gap), a pair at the least.
+  const cornerReserve = (parkName ? 92 : 52) + (rideLog ? 40 : 0);
 
   const stats = attraction.statistics;
   const history = stats?.history;
@@ -265,14 +280,14 @@ export function AttractionCard({
 
         {/* The bell brings its own `GlassCircle` because it hides where the queue is too short
             for an alert, and a circle drawn here would stay behind empty. The star is the last
-            child, so it keeps the far-right spot. `gap-3` below `sm` because two 34px circles
-            with 44px touch targets overlap at `gap-2` (34 + 12 >= 44); from `sm` up there are no
-            touch targets. In a phone row the circles centre on the first line. */}
+            child, so it keeps the far-right spot. In a phone row the circles centre on the
+            first line, and the star sits as far from the right edge as from the top. */}
         {attraction.id && (
           <div
             className={cn(
-              'absolute top-3 right-3 z-[4] flex items-center gap-3 sm:gap-2',
-              phoneRow && 'max-sm:top-[6px]'
+              'absolute top-3 right-3 z-[4]',
+              GLASS_CIRCLE_ROW,
+              phoneRow && 'max-sm:top-[8px] max-sm:right-[8px]'
             )}
           >
             {/* On a blog fallback card `attraction.id` is the slug, not a UUID, and
@@ -288,6 +303,11 @@ export function AttractionCard({
                 status={status}
               />
             )}
+            {rideLog && isUuid(attraction.id) && (
+              <GlassCircle>
+                <RiddenToggle id={attraction.id} />
+              </GlassCircle>
+            )}
             <GlassCircle>
               <FavoriteStar
                 type="attraction"
@@ -296,7 +316,7 @@ export function AttractionCard({
                 size="md"
                 noCircle
                 variant="glass"
-                className="h-full w-full"
+                className={cn('h-full w-full', GLASS_CIRCLE_HIT_AREA)}
               />
             </GlassCircle>
           </div>
@@ -306,15 +326,16 @@ export function AttractionCard({
             on `parkName`, not on the bell actually drawn, because whether the bell renders
             depends on a localStorage read, and a client-only preference may not decide
             server-rendered markup. A phone row overrides it below `sm` (hence the `!`): the
-            reservation moves onto the first line and the badge line runs the full width. */}
+            reservation moves onto the first line, the badge line runs the full width, and the
+            sides and the bottom take the 8 px the star keeps from the card's edge. */}
         <div
           className={cn(
             'pk-panel-top relative z-[3] -mb-4 overflow-hidden',
             seamOnClass && 'pk-panel-seam-sm',
-            phoneRow && 'max-sm:mb-0 max-sm:pt-[10px]! max-sm:pr-3! max-sm:pb-2! max-sm:pl-3.5!'
+            phoneRow && 'max-sm:mb-0 max-sm:pt-[10px]! max-sm:pr-2! max-sm:pb-2! max-sm:pl-2!'
           )}
           style={{
-            padding: parkName ? '14px 92px 13px 16px' : '14px 52px 13px 16px',
+            padding: `14px ${cornerReserve}px 13px 16px`,
             background: 'var(--pk-panel-highlight-top), var(--pk-panel)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
@@ -344,7 +365,13 @@ export function AttractionCard({
                 style={{ color: 'var(--pk-text-1)' }}
               >
                 {isHeadliner && (
-                  <span title={headlinerHint} aria-label={t('headliner.title')}>
+                  // Not in a phone row: the headliners have a section of their own there, and the
+                  // row's first line is the name's.
+                  <span
+                    title={headlinerHint}
+                    aria-label={t('headliner.title')}
+                    className={phoneRow ? 'max-sm:hidden' : undefined}
+                  >
                     <Crown className="h-3.5 w-3.5 shrink-0 text-amber-400" />
                   </span>
                 )}
@@ -355,25 +382,26 @@ export function AttractionCard({
             );
             if (!phoneRow) return heading;
             // A phone row's first line: name, wait time, then the room the corner circles take
-            // (80 px for bell and star, 34 px for the star alone, plus an 8 px gap). The wait
-            // time sits outside the <h3> so the heading stays the ride's name.
+            // (30 px per circle and 3 px between them, 8 px from the card's edge, plus an 8 px gap;
+            // the panel's own 8 px padding already covers part of it). The wait time sits
+            // outside the <h3> so the heading stays the ride's name. Its unit is left to screen
+            // readers: the width goes to the name, and the figure is a wait time on every card.
             return (
               <div
                 className={cn(
                   'relative max-sm:flex max-sm:min-h-[26px] max-sm:items-center max-sm:gap-2',
-                  parkName ? 'max-sm:pr-[88px]' : 'max-sm:pr-[42px]'
+                  parkName ? 'max-sm:pr-[71px]' : 'max-sm:pr-[38px]',
+                  rideLog && (parkName ? 'max-sm:pr-[104px]' : 'max-sm:pr-[71px]')
                 )}
               >
                 {heading}
                 {hasBottomPanel && (
-                  <span className="flex shrink-0 items-baseline gap-0.5 leading-none sm:hidden">
+                  <span className="flex shrink-0 leading-none sm:hidden">
                     <WaitTimeValue
                       minutes={roundWaitTo5(waitTime)}
                       className="text-[26px] font-extrabold tracking-[-0.02em] tabular-nums"
                     />
-                    <span className="text-[11px] font-medium" style={{ color: 'var(--pk-text-3)' }}>
-                      min
-                    </span>
+                    <span className="sr-only">min</span>
                   </span>
                 )}
               </div>
@@ -413,15 +441,22 @@ export function AttractionCard({
 
           {/* The outer subgrid equalises header heights across a row, so no min-h. In a phone
               row the badges keep to one line and fade out rather than wrap; the full set is on
-              the ride's page. */}
+              the ride's page. The status badge leaves that line while a wait time stands beside
+              the name, which already says the ride is running; `min-h` keeps the row at its
+              72 px when nothing else is left on the line. `*:flex` because a badge wrapped in a
+              `<span>` (a tooltip, a glossary link) otherwise sits on a 24 px text line, and the
+              row grows to 74 px; it outranks a child's own `max-sm:hidden`, hence the `!`. */}
           <div
             className={cn(
               'relative mt-[9px] flex flex-wrap items-start gap-[6px]',
               phoneRow &&
-                'max-sm:mt-[6px] max-sm:flex-nowrap max-sm:overflow-hidden max-sm:[mask-image:linear-gradient(to_right,black_85%,transparent)] max-sm:*:shrink-0'
+                'max-sm:mt-[6px] max-sm:min-h-[22px] max-sm:flex-nowrap max-sm:overflow-hidden max-sm:[mask-image:linear-gradient(to_right,black_85%,transparent)] max-sm:*:flex max-sm:*:shrink-0'
             )}
           >
-            <ParkStatusBadge status={status} />
+            <ParkStatusBadge
+              status={status}
+              className={phoneRow && hasBottomPanel ? 'max-sm:hidden!' : undefined}
+            />
             {isOperatingOrUnknown && crowdLevel && (
               // The scale is this ride's own, in minutes, and only where the API sent the
               // baseline it rated against — without one the badge stands alone.
@@ -513,7 +548,13 @@ export function AttractionCard({
           <div
             className={cn(
               'relative mt-[9px] empty:hidden',
-              parkName ? 'mr-[-76px]' : 'mr-[-36px]',
+              parkName
+                ? rideLog
+                  ? 'mr-[-116px]'
+                  : 'mr-[-76px]'
+                : rideLog
+                  ? 'mr-[-76px]'
+                  : 'mr-[-36px]',
               phoneRow && 'max-sm:mt-2 max-sm:mr-0'
             )}
           >
