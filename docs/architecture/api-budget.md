@@ -67,8 +67,16 @@ cached. It is also ~100 bytes. Leave it alone.
 +2.5s    3.0 KB  /api/parks/<geo>/<park>/stats            2-year aggregate          ← loads last
 +2.5s    1.9 KB  /api/parks/<geo>/<park>/calendar?…       today only, for the forecast cell
 +2.6s    0.1 KB  /api/nearby                              header
++3.1s   20.8 KB  /api/parks/<geo>/<park>/plan/day                today's ride openings, early entry   ← loads last
 +3.0s    1.3 KB  /api/parks/near                          "parks nearby" status overlay
 ```
+
+Since PAR-742 a ninth request, today's `/plan/day`, follows the live data behind `useLoadLast`
+(`useParkPlanDay`). It feeds the „Öffnet ca. HH:mm" line on a ride that starts after its park and the
+park's „Early Entry" line. The ride page makes the same request. Measured on a build of `main` and of
+the branch, Phantasialand, 2026-10-07: park 8 calls / 52.5 KB → 9 calls / 73.4 KB, ride page (Taron)
+4 calls / 31.8 KB → 5 calls / 52.7 KB; the body is 21,335 B raw and 2,893 B brotli. The table above
+predates the other changes since it was written and is not re-measured here.
 
 Eight requests reads high, and folding them together is tempting. It is also the wrong move, and
 the split is deliberate:
