@@ -2,6 +2,7 @@
 title: 'Thrill Glider kommt 2027 nach Magic Mountain'
 translationKey: thrill-glider-six-flags-magic-mountain
 date: '2026-10-03'
+time: '21:59'
 author: patrick
 mode: published
 featured: false

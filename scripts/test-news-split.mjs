@@ -12,6 +12,8 @@
  *   - a tag only news carries is exactly what the proxy 308s from `/blog/tag/…` to `/news`, so an
  *     archive that disappeared with the split answers a redirect, not a 404
  *   - the blog menu lists articles and no news category, the news menu lists news only
+ *   - news runs newest first by date and then `time`, so a day's posts keep the order they went
+ *     out in (a comparator on the date alone left them in whatever order the sort produced)
  *
  * Needs the generated manifests: run `pnpm generate:blog-manifest` (or `pnpm prebuild`) first.
  *
@@ -31,6 +33,7 @@ import {
 import { buildCategoryTree } from '../lib/blog/categories.ts';
 import { listTags, normalizeTagSlug } from '../lib/blog/tags.ts';
 import { isNewsCategory, postPath } from '../lib/blog/paths.ts';
+import { POST_TIME, publishedAt } from '../lib/blog/published-at.ts';
 import { getBlogMenu } from '../lib/navigation/blog-menu.ts';
 import { getNewsMenu } from '../lib/navigation/news-menu.ts';
 import { NEWS_ONLY_TAGS } from '../lib/blog/news-redirects.ts';
@@ -128,6 +131,12 @@ for (const locale of locales) {
         lastTouched(p.frontmatter) !== p.frontmatter.date,
       ])
     );
+  });
+
+  test(`${locale}: news runs newest first by date and time`, () => {
+    const stamps = news.map((p) => publishedAt(p.frontmatter));
+    assert.deepEqual(stamps, [...stamps].sort().reverse());
+    for (const post of news) assert.match(post.frontmatter.time ?? '', POST_TIME, post.slug);
   });
 
   test(`${locale}: the news menu lists the newest news, newest first`, () => {

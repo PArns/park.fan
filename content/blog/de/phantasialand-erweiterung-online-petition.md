@@ -2,6 +2,7 @@
 title: 'Phantasialand soll wachsen: Gegenpetition zum Bürgerbegehren'
 translationKey: phantasialand-expansion-online-petition
 date: '2026-10-07'
+time: '13:30'
 author: patrick
 mode: published
 featured: false

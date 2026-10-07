@@ -2,6 +2,7 @@
 title: 'X2 ne rouvrira plus à Six Flags Magic Mountain'
 translationKey: x2-magic-mountain-retired
 date: '2026-09-30'
+time: '09:58'
 author: patrick
 mode: published
 featured: false

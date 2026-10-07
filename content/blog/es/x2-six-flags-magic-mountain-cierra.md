@@ -2,6 +2,7 @@
 title: 'La montaña rusa X2 no volverá a abrir en Magic Mountain'
 translationKey: x2-magic-mountain-retired
 date: '2026-09-30'
+time: '09:58'
 author: patrick
 mode: published
 featured: false

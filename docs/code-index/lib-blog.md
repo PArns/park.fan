@@ -88,7 +88,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `isNewsPost` _function_: Returns true when a post's category is `news` or a subcategory of it.
 - `listArticles` _function_: `listPosts` without the news posts: what the blog lists.
 - `listArticlesByRecency` _function_: `listPostsByRecency` without the news posts. Frozen and memoised.
-- `listNewsByDate` _function_: The news posts only, newest first by publication date — not by last edit: a corrected typo does not make an anniversary note news again. Frozen and memoised.
+- `listNewsByDate` _function_: The news posts only, newest first by publication date and time — not by last edit: a corrected typo does not make an anniversary note news again. Frozen and memoised.
 - `BLOG_POSTS_PER_PAGE` _const_: Default number of posts per page on listing views.
 - Types: `MetaEntry`, `ResolvedEntry`
 - Re-exports: `./paths`
@@ -141,6 +141,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `categoryPath` _function_: Locale-relative path of a category listing. The news category itself is the news overview; every other category keeps its `/blog/category/…` page.
 - `NEWS_CATEGORY` _const_: The category path that marks a post as news. Subcategories (`news/…`) count too.
 - `NEWS_INDEX_PATH` _const_: Locale-relative path of the news overview, which replaces `/blog/category/news`.
+
+### [`published-at.ts`](../../lib/blog/published-at.ts)
+
+- `publishedAt` _function_: When a post went out, as a sortable local stamp: `2026-10-07T13:20`, or the bare date for a post without a time, which then sorts before every timed post of its day. Both halves are fixed-width, so string comparison is time comparison.
+- `newestPublishedFirst` _function_: Comparator, newest first by `publishedAt`. Equal stamps return 0, so a stable sort keeps them in the order it was given; a comparator that never returns 0 left same-day posts in whatever order the engine's sort happened to produce.
+- `withZoneOffset` _function_: A calendar day, and the post's time when it has one, as a timestamp with Berlin's offset, which Google wants on every Article type: `2026-10-07` → `2026-10-07T00:00:00+02:00`, with `13:20` → `2026-10-07T13:20:00+02:00`.
+- `publishedInstant` _function_: The instant a post went out, for a feed's `pubDate`: feed readers order by it, and every news post of a day used to share one. A post without a time keeps UTC midnight, the instant the feed has always given it, so no existing item moves.
+- `POST_TIME` _const_: The shape `time` must have: `HH:MM`, 00:00 to 23:59.
 
 ### [`remark-callouts.ts`](../../lib/blog/remark-callouts.ts)
 

@@ -2,6 +2,7 @@
 title: 'Petition against Phantasialand’s expansion is under way'
 translationKey: phantasialand-expansion-petition
 date: '2026-10-01'
+time: '08:54'
 author: patrick
 mode: published
 featured: false

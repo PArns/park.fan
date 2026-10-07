@@ -2,6 +2,7 @@
 title: 'Europa-Park fait ses adieux à Euro-Mir le 9 janvier 2027'
 translationKey: europa-park-euro-mir-farewell
 date: '2026-10-01'
+time: '09:23'
 author: patrick
 mode: published
 featured: false

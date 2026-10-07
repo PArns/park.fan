@@ -50,6 +50,7 @@ YAML block at the very top of the file, between `---` fences.
 title: 'park.fan is live — and we're writing now, too'   # required
 translationKey: welcome-to-park-fan-blog                 # share across locales
 date: '2026-05-20'                                       # required, YYYY-MM-DD
+time: '13:30'                                            # required on news, HH:MM Berlin (below)
 updatedAt: '2026-05-22'                                  # optional, only for new content (below)
 author: patrick                                          # key from authors.json (see §2.1)
 mode: published                                          # published | hidden | draft
@@ -80,6 +81,12 @@ the panel prints it as „Aktualisiert …“, and it is `dateModified` and `<la
 post gets new content (new dates, parks, figures, a corrected fact) and leave it alone for a wording
 pass, a prose-rule fix, a typo or a link. News never carries it. The rule:
 [`updatedAt` is for new content](../../docs/rules/updated-at-is-for-new-content.md).
+
+`time` is the minute a news post goes out, quoted, in Europe/Berlin, the same in all six files.
+`/news`, the header's news panel, the feed and the news sitemap order a day by it, and it goes into
+`datePublished`. Set it when the post is merged; `pnpm check:blog-updated-at` fails a news post
+without one. Articles may leave it out. The rule:
+[order within a day](../../docs/rules/news-is-set-apart-from-the-articles.md#order-within-a-day).
 
 ### 2.1 Authors
 

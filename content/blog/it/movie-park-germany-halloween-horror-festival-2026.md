@@ -2,6 +2,7 @@
 title: 'Al Movie Park Germany serate horror fino all’8 novembre'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
+time: '11:37'
 author: patrick
 mode: published
 featured: false

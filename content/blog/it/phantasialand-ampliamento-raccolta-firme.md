@@ -2,6 +2,7 @@
 title: 'Raccolta firme contro l’ampliamento di Phantasialand'
 translationKey: phantasialand-expansion-petition
 date: '2026-10-01'
+time: '08:54'
 author: patrick
 mode: published
 featured: false

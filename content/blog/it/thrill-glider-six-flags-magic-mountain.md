@@ -2,6 +2,7 @@
 title: 'Thrill Glider aprirà a Magic Mountain nel 2027'
 translationKey: thrill-glider-six-flags-magic-mountain
 date: '2026-10-03'
+time: '21:59'
 author: patrick
 mode: published
 featured: false

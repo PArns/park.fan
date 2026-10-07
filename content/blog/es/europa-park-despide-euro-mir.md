@@ -2,6 +2,7 @@
 title: 'Europa-Park despide Euro-Mir el 9 de enero de 2027'
 translationKey: europa-park-euro-mir-farewell
 date: '2026-10-01'
+time: '09:23'
 author: patrick
 mode: published
 featured: false
