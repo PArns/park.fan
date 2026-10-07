@@ -18,6 +18,11 @@ tags:
   - allemagne
   - saison-2026
 category: guides
+coverImage:
+  src: /media/legoland-deutschland/flying-ninjago-16x9.jpg
+  alt: "Le bras rouge est incliné en l'air, les nacelles et leurs passagers suspendues de part et d'autre."
+  caption: 'Flying NINJAGO, la seule attraction du parc avec une limite unique pour tous.'
+  credit: 'Alex234 / Wikimedia Commons (CC0 1.0)'
 parkLinks:
   - legoland-deutschland
 rideLinks:
@@ -80,6 +85,8 @@ million. Le monde le plus récent est **LEGO Mythica**, ouvert le 25 mars 2023. 
 d’euros, c’était l’extension la plus chère du parc, et son wing coaster est la première nouvelle
 montagne russe de Legoland Deutschland depuis une vingtaine d’années.
 
+![La maquette du stade ouverte, gradins pleins, pelouse verte et un bus d’équipe rouge devant. | L’Allianz Arena du Miniland, ouverte pour laisser voir les gradins. | wide](/media/legoland-deutschland/allianz-arena-16x9.jpg)
+
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
 ## Taille minimale et âge aux attractions
@@ -130,6 +137,8 @@ garde-manger, la cuisine, la salle des fêtes et la chambre au trésor de Merlin
 le dragon remarque les passagers, et sur le parcours extérieur le train prend les virages jusqu’à huit
 mètres par seconde, soit un peu moins de 29 km/h. Un enfant peut monter avec un adulte à partir de
 1,10 mètre et de six ans.
+
+![Le train-dragon au sommet du parcours extérieur, sous lui les rails de la seconde partie. | La seconde partie du parcours commence quand le dragon remarque ses passagers. | wide](/media/legoland-deutschland/fire-dragon-16x9.jpg)
 
 **[Das Große LEGO Rennen](ref:legoland-deutschland/the-great-lego-race)** est une wild mouse de Mack Rides, haute de 18 mètres, longue de 400 mètres et rapide jusqu’à 56 km/h selon Wikipédia. Elle
 roulait auparavant sous le nom de Project X et porte depuis 2018 le décor d’un circuit de Lego City.

@@ -1,0 +1,36 @@
+{
+  "title": "Allianz Arena im Miniland",
+  "park": "legoland-deutschland",
+  "ride": "allianz-arena",
+  "area": "Miniland",
+  "roles": ["ride-card"],
+  "tags": ["photo", "theming", "detail", "day", "overcast", "outdoor", "autumn"],
+  "alt": {
+    "de": "Das Stadionmodell ist an der Längsseite aufgeschnitten und gibt den Blick auf die besetzten Ränge und das grüne Spielfeld frei.",
+    "en": "The stadium model is cut open along its long side, showing the filled stands and the green pitch.",
+    "nl": "Het stadionmodel is aan de lange zijde opengesneden en toont de gevulde tribunes en het groene veld.",
+    "fr": "La maquette du stade est ouverte sur sa longueur et laisse voir les gradins garnis et la pelouse verte.",
+    "es": "La maqueta del estadio está abierta por el lado largo y deja ver las gradas ocupadas y el césped verde.",
+    "it": "Il modello dello stadio è tagliato sul lato lungo e lascia vedere le tribune occupate e il campo verde."
+  },
+  "caption": {
+    "de": "Auf den Rängen dieses Modells sitzen 30.000 Minifiguren.",
+    "en": "Thirty thousand minifigures sit in the stands of this model.",
+    "nl": "Op de tribunes van dit model zitten 30.000 minifiguren.",
+    "fr": "Trente mille minifigurines occupent les gradins de cette maquette.",
+    "es": "En las gradas de esta maqueta se sientan 30.000 minifiguras.",
+    "it": "Sulle tribune di questo modello siedono 30.000 minifigure."
+  },
+  "credit": {
+    "author": "Gzen92",
+    "license": "cc-by-sa-4.0",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miniland_-_Allianz_Arena_(Legoland).jpg",
+    "year": 2025
+  },
+  "shotAt": "2025-10-05",
+  "focus": {
+    "x": 0.45,
+    "y": 0.55
+  }
+}

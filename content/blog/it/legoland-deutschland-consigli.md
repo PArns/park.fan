@@ -18,6 +18,11 @@ tags:
   - germania
   - stagione-2026
 category: guides
+coverImage:
+  src: /media/legoland-deutschland/flying-ninjago-16x9.jpg
+  alt: 'Il braccio rosso è inclinato in aria e ai due lati pendono le navicelle con i passeggeri.'
+  caption: "Flying NINJAGO, l'unica attrazione del parco con un solo limite per tutti."
+  credit: 'Alex234 / Wikimedia Commons (CC0 1.0)'
 parkLinks:
   - legoland-deutschland
 rideLinks:
@@ -80,6 +85,8 @@ minifigure sugli spalti, e il Reichstag di Berlino ne richiede circa 1,07 milion
 costosa del parco, e il suo wing coaster è la prima nuova montagna russa del Legoland Deutschland da
 circa 20 anni.
 
+![Il modello dello stadio aperto, con le tribune piene, il campo verde e un pullman della squadra rosso davanti. | L’Allianz Arena del Miniland, aperta perché le tribune restino visibili. | wide](/media/legoland-deutschland/allianz-arena-16x9.jpg)
+
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
 ## Altezza minima ed età alle attrazioni
@@ -130,6 +137,8 @@ familiare di Zierer in due parti. Prima il treno attraversa le stanze degli abit
 davanti alla dispensa, alla cucina, alla sala delle feste e al tesoro di Merlino, tutto di Lego. Poi il
 drago si accorge dei passeggeri, e sul percorso esterno si affrontano le curve fino a otto metri al
 secondo, poco meno di 29 km/h. Un bambino può salire con un adulto da 1,10 metri e sei anni.
+
+![Il treno-drago in cima al percorso esterno, sotto i binari della seconda parte. | La seconda parte del giro comincia quando il drago si accorge dei passeggeri. | wide](/media/legoland-deutschland/fire-dragon-16x9.jpg)
 
 **[Das Große LEGO Rennen](ref:legoland-deutschland/the-great-lego-race)** è una wild mouse di Mack Rides, alto 18 metri, lungo 400 metri e veloce fino a 56 km/h secondo Wikipedia. Prima girava come
 Project X e dal 2018 è allestito come un circuito di Lego City. Con un adulto bastano 1,10 metri, e per
