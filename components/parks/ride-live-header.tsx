@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { useLiveAttractionData } from '@/lib/hooks/use-live-attraction-data';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
 import { RideNowPanel } from '@/components/parks/ride-now-panel';
+import { ParkOpeningsProvider } from '@/components/parks/park-openings-context';
 import { getLiveAttractionStatus } from '@/lib/utils/park-utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -68,15 +69,25 @@ export function RideLiveHeader({
   const todaySchedule = detail?.schedule?.find((s) => s.date === todayIso) ?? null;
 
   return (
-    <RideNowPanel
-      park={park}
-      attraction={attraction}
-      status={status}
-      statusLabel={t(`status.${status.toLowerCase()}` as 'status.operating')}
+    <ParkOpeningsProvider
+      continent={continent}
+      country={country}
+      city={city}
+      parkSlug={parkSlug}
+      timezone={park.timezone ?? 'UTC'}
+      schedule={park.schedule ?? (todaySchedule ? [todaySchedule] : null)}
       todayIso={todayIso}
-      shellSlotCount={shellSlotCount}
-      todaySchedule={todaySchedule}
-      isRefreshing={isFetching}
-    />
+    >
+      <RideNowPanel
+        park={park}
+        attraction={attraction}
+        status={status}
+        statusLabel={t(`status.${status.toLowerCase()}` as 'status.operating')}
+        todayIso={todayIso}
+        shellSlotCount={shellSlotCount}
+        todaySchedule={todaySchedule}
+        isRefreshing={isFetching}
+      />
+    </ParkOpeningsProvider>
   );
 }

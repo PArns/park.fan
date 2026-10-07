@@ -828,6 +828,16 @@
       "title": "Not running yet today",
       "lastRun": "Last ran {when}"
     },
+    "rideOpensAt": {
+      "approx": "Opens around {time}",
+      "firm": "Opens at {time}",
+      "detail": "This ride starts later than the park."
+    },
+    "earlyEntry": {
+      "title": "Early Entry",
+      "detail": "Hotel guests can ride the big rides before the park opens.",
+      "detailMinutes": "Hotel guests can ride the big rides {minutes} minutes before the park opens."
+    },
     "rideStatus": {
       "weekdayTime": "{weekday} at {time}"
     },

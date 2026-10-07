@@ -4,6 +4,7 @@ import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { TabsWithHash } from '@/components/parks/tabs-with-hash';
 import { RideAlertParkProvider } from '@/components/push/ride-alert-park-context';
 import { ParkInParkBlock } from '@/components/parks/park-in-park-block';
+import { ParkOpeningsProvider } from '@/components/parks/park-openings-context';
 import { useMemo } from 'react';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
@@ -99,25 +100,35 @@ export function LiveParkData({
   // alert dialog with this ride picked and the park's other rides in the list.
   const tabsWithHash = (
     <RideAlertParkProvider park={currentPark} reopenAvailable={hasReadableWaitTimes(initialData)}>
-      <TabsWithHash
-        defaultValue="attractions"
-        todayIso={todayIso}
-        showsAvailable={currentPark.shows && currentPark.shows.length > 0}
-        restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
-        weatherAvailable={!!currentPark.weather?.current}
-        statsAvailable={statsAvailable}
-        initialRiderHeight={initialRiderHeight}
-        park={currentPark}
+      <ParkOpeningsProvider
         continent={continent}
         country={country}
         city={city}
         parkSlug={parkSlug}
-        landNames={currentLandNames}
-        attractionsByLand={currentAttractionsByLand}
-        todayPanel={todayPanel}
-        closedRides={closedRides}
-        belowTabs={belowTabs}
-      />
+        timezone={initialData.timezone}
+        schedule={currentPark.schedule ?? initialData.schedule}
+        todayIso={todayIso}
+      >
+        <TabsWithHash
+          defaultValue="attractions"
+          todayIso={todayIso}
+          showsAvailable={currentPark.shows && currentPark.shows.length > 0}
+          restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
+          weatherAvailable={!!currentPark.weather?.current}
+          statsAvailable={statsAvailable}
+          initialRiderHeight={initialRiderHeight}
+          park={currentPark}
+          continent={continent}
+          country={country}
+          city={city}
+          parkSlug={parkSlug}
+          landNames={currentLandNames}
+          attractionsByLand={currentAttractionsByLand}
+          todayPanel={todayPanel}
+          closedRides={closedRides}
+          belowTabs={belowTabs}
+        />
+      </ParkOpeningsProvider>
     </RideAlertParkProvider>
   );
 

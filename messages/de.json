@@ -591,6 +591,16 @@
       "title": "Heute noch nicht in Betrieb",
       "lastRun": "Zuletzt in Betrieb: {when}"
     },
+    "rideOpensAt": {
+      "approx": "Öffnet ca. {time} Uhr",
+      "firm": "Öffnet um {time} Uhr",
+      "detail": "Diese Bahn startet später als der Park."
+    },
+    "earlyEntry": {
+      "title": "Early Entry",
+      "detail": "Hotelgäste dürfen vor der Öffnung auf die großen Bahnen.",
+      "detailMinutes": "Hotelgäste dürfen {minutes} Minuten vor der Öffnung auf die großen Bahnen."
+    },
     "rideStatus": {
       "weekdayTime": "{weekday}, {time} Uhr"
     },

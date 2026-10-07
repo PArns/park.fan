@@ -2158,6 +2158,12 @@ export interface PlanDayRide {
    * openings were seen. There is no `closesAt`: feeds do not reliably flip back to CLOSED.
    */
   opensAt?: string | null;
+  /**
+   * How many days of watching `opensAt` rests on: `high` from 40, `medium` from 20, `low` below.
+   * Present exactly when `opensAt` is. A grade of the time, never an interval to derive minutes
+   * from.
+   */
+  opensAtConfidence?: 'high' | 'medium' | 'low';
   /** Measured days behind the historical shape. */
   sampleDays: number;
   /**

@@ -363,6 +363,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkComparisonCard` _component_: Cross-park median comparison, fetched live instead of typed into the post. Rows keep the order the post lists them in, because the argument a post builds around the table depends on that sequence.
 
+### [`park-early-entry-note.tsx`](../../components/parks/park-early-entry-note.tsx)
+
+- `ParkEarlyEntryNote` _component_: „Early Entry" under the park's opening hours, where a human has confirmed that hotel guests get in before the gates open (`hasEarlyEntry`).
+
 ### [`park-entry-tiles.tsx`](../../components/parks/park-entry-tiles.tsx)
 
 - `SelectionBar` _component_: The selected cell's bar along its top edge. An element, not a border or a shadow: `border-t-primary` loses to the shorthand border colour the cell needs to beat `TabsTrigger`'s base, and an inset shadow loses to the base's `shadow-sm`.
@@ -446,6 +450,11 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`park-nav-tiles.tsx`](../../components/parks/park-nav-tiles.tsx)
 
 - `ParkNavTiles` _component_: The same entry-tile row on a park sub-page, where every cell is a link: chapter cells link to the park page with the chapter's hash, which its tab router reads, and the calendar and the wait-time record link to their own pages.
+
+### [`park-openings-context.tsx`](../../components/parks/park-openings-context.tsx)
+
+- `ParkOpeningsProvider` _component_: Today's later ride openings and the park's early entry, for the cards and the header panel below it. One deferred request for the whole park page (`useParkPlanDay`), read through a context so a hundred cards share one subscription.
+- `useParkOpenings` _hook_: Today's openings, or `null` outside a `ParkOpeningsProvider` and until the plan lands.
 
 ### [`park-page-shell.tsx`](../../components/parks/park-page-shell.tsx)
 
@@ -597,6 +606,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`ride-now-panel.tsx`](../../components/parks/ride-now-panel.tsx)
 
 - `RideNowPanel` _component_: „Heute an dieser Bahn": the ride page's fold and the twin of `ParkTodayPanel`, with the same header strip, `PanelGrid` columns and `PanelMetric` captions.
+
+### [`ride-opens-at-note.tsx`](../../components/parks/ride-opens-at-note.tsx)
+
+- `RideOpensAtNote` _component_: „Öffnet ca. 10:00 Uhr" for a CLOSED ride that starts later than its park, and only until that minute has passed.
 
 ### [`ride-profile-section.tsx`](../../components/parks/ride-profile-section.tsx)
 
