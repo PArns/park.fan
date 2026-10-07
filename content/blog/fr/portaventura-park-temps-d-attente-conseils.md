@@ -46,15 +46,15 @@ seo:
     - parc d’attractions Costa Daurada
 ---
 
-PortAventura World regroupe trois parcs qui ont chacun leurs billets : le PortAventura Park, Ferrari Land et le parc aquatique Caribe Aquatic Park. Ce guide traite du PortAventura Park, ouvert en **mai 1995**. Les deux autres ont leur propre section, parce que la question du billet y est le point essentiel. Tous les prix et horaires viennent du site du parc et ont été relevés le 7 octobre 2026. Les temps d’attente n’apparaissent que dans les tableaux que nos mesures calculent en direct.
+PortAventura World regroupe trois parcs qui ont chacun leurs billets : le PortAventura Park, Ferrari Land et le parc aquatique Caribe Aquatic Park. Ce guide traite du PortAventura Park, ouvert en **mai 1995**. Les deux autres ont leur propre section, parce que leurs billets sont distincts. Tous les prix et horaires viennent du site du parc, état au 7 octobre 2026. Les temps d’attente n’apparaissent que dans les tableaux que nos mesures calculent en direct.
 
 ## Comment le parc est né
 
 Le parc a ouvert le 2 mai 1995, selon la RCDB le même jour que Dragon Khan et le train de la mine El Diablo. Les actionnaires des premières années étaient le Tussauds Group, La Caixa, Anheuser-Busch et FECSA. En 1998, Universal a racheté la plus grande part des titres de Tussauds, et le parc s’est appelé « Universal's Port Aventura ». NBCUniversal s’est retiré à partir de 2004, et depuis 2005 le parc ne porte plus le nom d’Universal.
 
-Le resort et ses hôtels sont arrivés le 13 juin 2002, Ferrari Land le 7 avril 2017. D’après Wikipédia, l’ensemble appartient aujourd’hui à Investindustrial et au fonds KKR, qui a repris en 2013 près de la moitié des parts. PortAventura World a annoncé environ 5,5 millions de visites pour 2023 (Vozpopuli) et 5,3 millions pour 2025, l’année du trentième anniversaire (Diari de Tarragona), à chaque fois pour le resort avec ses trois parcs. La moitié des visiteurs environ vient de l’étranger, surtout de France, de Grande-Bretagne et d’Irlande. Ces sources ne donnent aucun chiffre pour le seul PortAventura Park.
+Le resort et ses hôtels sont arrivés le 13 juin 2002, Ferrari Land le 7 avril 2017. D’après Wikipédia, l’ensemble appartient aujourd’hui à Investindustrial et au fonds KKR, qui a repris en 2013 près de la moitié des parts. PortAventura World a annoncé environ 5,5 millions de visites pour 2023 (Vozpopuli) et 5,3 millions pour 2025, l’année du trentième anniversaire (Diari de Tarragona), à chaque fois pour le resort avec ses trois parcs. Selon Diari de Tarragona, la moitié des visiteurs environ vient de l’étranger, surtout de France, de Grande-Bretagne et d’Irlande. Ces sources ne donnent aucun chiffre pour le seul PortAventura Park.
 
-Le parc est conçu comme un tour du monde en six zones thématiques : Mediterrània à l’entrée, puis Polynesia, China, México, Far West et SésamoAventura pour les petits.
+Le parc compte six zones thématiques : Mediterrània à l’entrée, puis Polynesia, China, México, Far West et SésamoAventura pour les petits.
 
 ## Les montagnes russes : constructeur, hauteur, taille minimale
 
@@ -96,7 +96,7 @@ Tomahawk, le coaster pour enfants construit la même année par le même constru
 
 ### El Diablo – Tren de la Mina
 
-El Diablo est un train de la mine d’Arrow Dynamics, ouvert le 2 mai 1995. Selon la RCDB, il fait 1 008 mètres, avec trois lifts et 3 min 10 de trajet. L’histoire : le Mexique colonial, une vieille mine d’argent qu’El Diablo a fait fermer après la disparition de mineurs. D’après le parc, les wagons sont encore en bois. Depuis mai 2025, la RCDB classe l’attraction parmi les hybrides de réalité virtuelle, car les visiteurs peuvent mettre un casque. On monte seul à partir de **1,40 m**, accompagné d’un adulte à partir de **1,10 m**.
+El Diablo est un train de la mine d’Arrow Dynamics, ouvert le 2 mai 1995. Selon la RCDB, il fait 1 008 mètres, avec trois lifts et 3 min 10 de trajet. L’histoire se passe dans le Mexique colonial, dans une vieille mine d’argent qu’El Diablo a fait fermer après la disparition de mineurs. D’après le parc, les wagons sont encore en bois. Depuis mai 2025, la RCDB classe l’attraction parmi les hybrides de réalité virtuelle, car les visiteurs peuvent mettre un casque. On monte seul à partir de **1,40 m**, accompagné d’un adulte à partir de **1,10 m**.
 
 ### Uncharted: The Enigma of Penitence
 
@@ -128,7 +128,7 @@ Hurakan Condor est une tour de chute d’Intamin, dans la zone México. Le parc 
 
 ```
 
-Le parc compte quatre attractions aquatiques, et toutes mouillent :
+Le parc compte quatre attractions aquatiques :
 
 | Attraction | Zone | Taille minimale | Avec un adulte |
 | --- | --- | --- | --- |
@@ -153,7 +153,7 @@ Le tableau donne chaque attraction avec son propre nombre de jours mesurés :
 
 ```
 
-Savoir si la plus haute attraction a aussi la plus longue file, c’est le tableau qui le dit, pas ce texte. En le lisant, regardez aussi la colonne des jours mesurés : une attraction ouverte seulement quelques jours y figure avec un chiffre plus mince que celle qui a tourné tout l’été.
+Dans le tableau, on voit si la plus haute attraction a aussi la plus longue file. En le lisant, regardez aussi la colonne des jours mesurés : une attraction ouverte seulement quelques jours y figure avec un chiffre plus mince que celle qui a tourné tout l’été.
 
 Comment les files grossissent au fil de la journée :
 
@@ -198,7 +198,7 @@ Pour la page du parc, nous calculons les attractions où venir tôt fait gagner 
 
 ## Quand venir
 
-Sur sa page, le parc propose des « conseils et recommandations », et la première phrase est nette : le samedi et le dimanche sont les jours où les familles viennent, « et en général il y a plus de monde ». Le moment idéal serait le milieu de semaine, du mardi au jeudi, tant qu’un jour férié ne tombe pas dessus. Le parc conseille aussi de vérifier les vacances scolaires en Espagne et en France, car beaucoup de visiteurs français viennent. Il cite en outre l’été, les longs week-ends, Pâques et Halloween comme des périodes de forte affluence.
+Sur sa page, le parc propose des « conseils et recommandations ». Il y écrit que le samedi et le dimanche sont les jours où les familles viennent, « et en général il y a plus de monde ». Le moment idéal serait le milieu de semaine, du mardi au jeudi, tant qu’un jour férié ne tombe pas dessus. Le parc conseille aussi de vérifier les vacances scolaires en Espagne et en France, car beaucoup de visiteurs français viennent. Il cite en outre l’été, les longs week-ends, Pâques et Halloween comme des périodes de forte affluence.
 
 Les mois et les jours de la semaine d’après nos mesures :
 
@@ -210,7 +210,7 @@ Pour l’année scolaire 2026/27, 3Cat indique pour la Catalogne les jours féri
 
 ### Halloween : du 19 septembre au 15 novembre 2026
 
-Le parc fête Halloween du 19 septembre au 15 novembre 2026. Les cinq pasajes del Terror s’appellent El Carnicero de Penitence (nouveau), La Isla Maldita, La Muerte Viva, REC Experience et Angkor: La leyenda del Rey Caníbal. S’ajoutent le spectacle « Resurrection at the Saloon » et la scare zone « La Maldición del Emperador ». Comme le parc cite lui-même Halloween parmi les périodes de forte affluence, un mardi ou un mercredi vaut ici particulièrement la peine. Tous les détails sur les prix et les âges minimums se trouvent dans la [news sur Halloween à PortAventura](/blog/portaventura-halloween-2026). Vous trouverez des conseils généraux pour la saison dans le guide sur [Halloween dans les parcs d’attractions](/blog/halloween-parcs-attractions-2026).
+Le parc fête Halloween du 19 septembre au 15 novembre 2026. Les cinq pasajes del Terror s’appellent El Carnicero de Penitence (nouveau), La Isla Maldita, La Muerte Viva, REC Experience et Angkor: La leyenda del Rey Caníbal. S’ajoutent le spectacle « Resurrection at the Saloon » et la scare zone « La Maldición del Emperador ». Comme le parc cite lui-même Halloween parmi les périodes de forte affluence, un mardi ou un mercredi vaut ici la peine. Tous les détails sur les prix et les âges minimums se trouvent dans la [news sur Halloween à PortAventura](/blog/portaventura-halloween-2026). Vous trouverez des conseils généraux pour la saison dans le guide sur [Halloween dans les parcs d’attractions](/blog/halloween-parcs-attractions-2026).
 
 ### Noël
 
@@ -218,7 +218,7 @@ Selon le site du parc, la période de Noël va du 20 novembre 2026 au 6 janvier 
 
 ## Billets et prix
 
-Tous les prix sont des prix en ligne pour adultes et juniors ou seniors, relevés le 7 octobre 2026. Aux caisses de l’entrée, ils sont plus élevés.
+Tous les prix sont des prix en ligne pour adultes et juniors ou seniors, état au 7 octobre 2026. Aux caisses de l’entrée, ils sont plus élevés.
 
 | Billet | Adultes | Juniors et seniors |
 | --- | --- | --- |
@@ -254,7 +254,7 @@ Le billet du parc vaut pour le PortAventura Park et rien d’autre. Le parc l’
 
 Un billet à la journée pour Ferrari Land seul coûte à partir de 21 euros, un pour Caribe à partir de 32 euros, à chaque fois pour les adultes. Qui dort à l’hôtel du resort reçoit, en plus de l’accès au parc, un jour à Ferrari Land.
 
-Ferrari Land a ouvert le 7 avril 2017, et le resort y a investi plus de 100 millions d’euros. La plus haute attraction est Red Force, un accélérateur d’Intamin de 112 mètres de haut, 180 km/h et 880 mètres de voie. Parmi les autres, on trouve Maranello Grand Race, Thrill Towers, Flying Dreams et Racing Legends. Les sources se contredisent sur l’ouverture quotidienne de la zone en basse saison : vérifiez donc le calendrier avant de partir.
+Ferrari Land a ouvert le 7 avril 2017, et le resort y a investi plus de 100 millions d’euros. La plus haute attraction est Red Force, un accélérateur d’Intamin de 112 mètres de haut, 180 km/h et 880 mètres de voie. Parmi les autres, on trouve Maranello Grand Race, Thrill Towers, Flying Dreams et Racing Legends. Taquilla indique Ferrari Land ouvert tous les jours du 1er avril au 31 décembre 2026, un blog de voyage (El Viaje de Sofi) seulement certains jours de novembre et de décembre. Vérifiez le calendrier avant de partir.
 
 Le Caribe Aquatic Park est un parc aquatique de 16 attractions sur environ 50 000 mètres carrés. Sa saison 2026 s’est terminée le 20 septembre selon Taquilla, et il est fermé en octobre. Au cours de l’été 2026, selon le Diari de Tarragona, la Coral Bay s’y est ajoutée, avec la Leyenda Perdida et des montagnes russes aquatiques de la famille Cyclone.
 
@@ -262,13 +262,13 @@ Le Caribe Aquatic Park est un parc aquatique de 16 attractions sur environ 50 00
 
 Pendant l’été 2026 est arrivé à Polynesia **Makamanu Jungle**, un parcours d’aventure dans une ancienne carrière : 135 mètres de long, 18 cabanes en hauteur, 20 tunnels de cordes, 3 échelles de filet et 4 toboggans. Il comprend les zones Forest pour les enfants jusqu’à 3 ans, Nest, Trail et Summit, ainsi qu’un chemin accessible à tous. L’accès part directement de Far West, et il n’y a pas d’Express.
 
-Le parc a en outre annoncé en mai 2026 un Hard Rock Cafe à l’entrée, avec environ 430 places. Je n’ai pas pu confirmer le 7 octobre s’il a déjà ouvert. Selon le Diari de Tarragona, il remplace le restaurant LaLiga.
+Le parc a en outre annoncé en mai 2026 un Hard Rock Cafe à l’entrée, avec environ 430 places. Aucune des pages liées ne dit s’il a déjà ouvert. Selon le Diari de Tarragona, il remplace le restaurant LaLiga.
 
-Pour 2027, d’après mes recherches du 7 octobre, le parc n’a encore rien confirmé de nouveau.
+Pour 2027, le parc n’a encore rien confirmé de nouveau.
 
 ## Une journée au parc, dans les grandes lignes
 
-Qui attend à l’entrée à l’ouverture file d’abord vers les trois attractions de la section rope drop : Hurakan Condor à México, Tutuki Splash à Polynesia et Silver River Flume à Far West. Ensuite, mieux vaut avancer zone par zone plutôt que de traverser tout le parc. China a Shambhala et Dragon Khan, et le casier entre les deux montre qu’elles sont proches l’une de l’autre. Far West a Stampida, Tomahawk, Uncharted et Grand Canyon Rapids, México El Diablo et Templo del Fuego, Mediterrània Furius Baco. Les enfants qui n’atteignent pas la taille de Street Mission et de Tami-Tami ont leur zone dans SésamoAventura.
+Qui attend à l’entrée à l’ouverture file d’abord vers les trois attractions de la section rope drop : Hurakan Condor à México, Tutuki Splash à Polynesia et Silver River Flume à Far West. Ensuite, mieux vaut avancer zone par zone plutôt que de traverser tout le parc. China a Shambhala et Dragon Khan, avec des casiers entre les deux. Far West a Stampida, Tomahawk, Uncharted et Grand Canyon Rapids, México El Diablo et Templo del Fuego, Mediterrània Furius Baco. Pour les enfants trop petits pour les grandes attractions, SésamoAventura propose Street Mission et Tami-Tami.
 
 Le plan du parc, pour préparer vos trajets :
 
@@ -284,7 +284,7 @@ En train, la ligne Rodalies R17 s’arrête directement au resort, sur le trajet
 
 Le stationnement coûte à partir de 16 euros pour les voitures, à partir de 21 euros dans la zone préférentielle, à partir de 16 euros pour les camping-cars et à partir de 6 euros pour les motos. Qui quitte le parking le même jour y rentre avec son ticket.
 
-Le resort a six hôtels à lui, à ces prix de départ par chambre et par nuit : Gold River à partir de 96 €, El Paso à partir de 99 €, Caribe à partir de 105 €, PortAventura à partir de 110 €, Colorado Creek à partir de 123 € et la Mansión de Lucy à partir de 275 €. Chaque nuit à l’hôtel apporte un jour d’accès au parc en plus : une nuit donne deux jours, deux nuits trois jours. S’y ajoute un jour à Ferrari Land. Hors du site, l’offre comprend quatre hôtels de la chaîne Ponient : Vila Centric, Pirámide Salou, Dorada Palace et Marinada. Pour l’automne et l’hiver, je n’ai pas trouvé d’Early Access. La page des hôtels le mentionne, une demi-heure avant l’ouverture, pour des séjours du 23 mars au 17 mai, sans indication d’année.
+Le resort a six hôtels à lui, à ces prix de départ par chambre et par nuit : Gold River à partir de 96 €, El Paso à partir de 99 €, Caribe à partir de 105 €, PortAventura à partir de 110 €, Colorado Creek à partir de 123 € et la Mansión de Lucy à partir de 275 €. Chaque nuit à l’hôtel apporte un jour d’accès au parc en plus : une nuit donne deux jours, deux nuits trois jours. S’y ajoute un jour à Ferrari Land. Hors du site, l’offre comprend quatre hôtels de la chaîne Ponient : Vila Centric, Pirámide Salou, Dorada Palace et Marinada. La page des hôtels mentionne l’Early Access, une demi-heure avant l’ouverture, uniquement pour des séjours du 23 mars au 17 mai, sans indication d’année, et pas pour l’automne ni l’hiver.
 
 ## Restauration, casiers, aides
 
@@ -326,7 +326,7 @@ Non, seulement dans les billets trois parcs et dans les billets Caribe. En octob
 
 ### Les Express valent-ils le coup ?
 
-Cela dépend du nombre d’attractions que vous faites. Express 5 Adrenaline vaut pour sept attractions et coûte à partir de 46 €, Express 10 à partir de 59 €, Unlimited à partir de 75 €. Les attractions aux longues files sont dans le tableau plus haut.
+Express 5 Adrenaline vaut pour sept attractions et coûte à partir de 46 €, Express 10 à partir de 59 €, Unlimited à partir de 75 €. Les attractions aux longues files sont dans le tableau plus haut.
 
 ### Quand le parc est-il ouvert en 2026 ?
 
@@ -348,7 +348,7 @@ Les pages du parc n’en disent rien. Le glossaire explique le principe :
 
 Avec Shambhala et Dragon Khan, le parc possède deux attractions de Bolliger & Mabillard à 17 ans d’écart, et avec Furius Baco et Uncharted deux d’Intamin. Qui n’a qu’un jour réserve son billet en ligne, choisit un jour du mardi au jeudi hors jours fériés et file à l’ouverture vers les trois attractions du rope drop.
 
-Ferrari Land et Caribe ne sont compris que dans les billets combinés. Qui veut les voir achète le bon billet avant le voyage.
+Ferrari Land et Caribe demandent un billet à part ou un billet combiné. Qui veut les voir achète le bon billet avant le voyage.
 
 — Patrick
 

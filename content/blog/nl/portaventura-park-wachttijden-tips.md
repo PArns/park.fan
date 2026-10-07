@@ -46,15 +46,15 @@ seo:
     - pretpark Costa Daurada
 ---
 
-PortAventura World bestaat uit drie parken met eigen tickets: PortAventura Park, Ferrari Land en het waterpark Caribe Aquatic Park. Deze gids gaat over PortAventura Park, dat in **mei 1995** opende. De twee andere krijgen een eigen stuk, want daar is de ticketvraag het belangrijkste punt. Alle prijzen en openingstijden komen van de website van het park en zijn opgehaald op 7 oktober 2026. Wachttijden staan alleen in de tabellen die onze metingen live berekenen.
+PortAventura World bestaat uit drie parken met eigen tickets: PortAventura Park, Ferrari Land en het waterpark Caribe Aquatic Park. Deze gids gaat over PortAventura Park, dat in **mei 1995** opende. De twee andere krijgen een eigen stuk, want daar gelden eigen tickets. Alle prijzen en openingstijden komen van de website van het park, stand 7 oktober 2026. Wachttijden staan alleen in de tabellen die onze metingen live berekenen.
 
 ## Hoe het park is ontstaan
 
 Het park ging op 2 mei 1995 open, volgens RCDB op dezelfde dag als Dragon Khan en de mijntrein El Diablo. De eerste aandeelhouders waren de Tussauds Group, La Caixa, Anheuser-Busch en FECSA. In 1998 kocht Universal het grootste deel van de Tussauds-aandelen, en het park heette toen “Universal's Port Aventura”. Vanaf 2004 trok NBCUniversal zich terug, en sinds 2005 draagt het park de naam Universal niet meer.
 
-Het resort met hotels kwam op 13 juni 2002 erbij, Ferrari Land op 7 april 2017. Volgens Wikipedia is het geheel nu van Investindustrial en investeerder KKR, die in 2013 bijna de helft van de aandelen overnam. PortAventura World meldde voor 2023 ongeveer 5,5 miljoen bezoeken (Vozpopuli) en voor 2025, het jaar van de dertigste verjaardag, 5,3 miljoen (Diari de Tarragona), telkens voor het resort met alle drie de parken. Ongeveer de helft van de gasten komt uit het buitenland, vooral uit Frankrijk, het Verenigd Koninkrijk en Ierland. Een getal voor PortAventura Park alleen noemen deze bronnen niet.
+Het resort met hotels kwam op 13 juni 2002 erbij, Ferrari Land op 7 april 2017. Volgens Wikipedia is het geheel nu van Investindustrial en investeerder KKR, die in 2013 bijna de helft van de aandelen overnam. PortAventura World meldde voor 2023 ongeveer 5,5 miljoen bezoeken (Vozpopuli) en voor 2025, het jaar van de dertigste verjaardag, 5,3 miljoen (Diari de Tarragona), telkens voor het resort met alle drie de parken. Volgens Diari de Tarragona komt ongeveer de helft van de gasten uit het buitenland, vooral uit Frankrijk, het Verenigd Koninkrijk en Ierland. Een getal voor PortAventura Park alleen noemen deze bronnen niet.
 
-Het park is opgezet als wereldreis in zes themagebieden: Mediterrània bij de ingang, daarnaast Polynesia, China, México, Far West en SésamoAventura voor de kleinste kinderen.
+Het park heeft zes themagebieden: Mediterrània bij de ingang, daarnaast Polynesia, China, México, Far West en SésamoAventura voor de kleinste kinderen.
 
 ## De achtbanen: fabrikant, hoogte, minimale lengte
 
@@ -96,7 +96,7 @@ Tomahawk, de kinderbaan die hetzelfde jaar van dezelfde fabrikant kwam, is 440 m
 
 ### El Diablo - Tren de la Mina
 
-El Diablo is een mijntrein van Arrow Dynamics. Hij opende op 2 mei 1995 en is volgens RCDB 1.008 meter lang, met drie lifthills en een ritduur van 3:10 minuten. Het verhaal: koloniaal Mexico, een oude zilvermijn die El Diablo liet sluiten nadat mijnwerkers waren verdwenen. De wagens zijn volgens het park nog van hout. RCDB noemt de baan sinds mei 2025 een virtual-reality-hybride, omdat gasten een bril kunnen opzetten. Vanaf **1,40 m** mag je alleen mee, vanaf **1,10 m** met een volwassene erbij.
+El Diablo is een mijntrein van Arrow Dynamics. Hij opende op 2 mei 1995 en is volgens RCDB 1.008 meter lang, met drie lifthills en een ritduur van 3:10 minuten. De baan speelt zich af in koloniaal Mexico, in een oude zilvermijn die El Diablo liet sluiten nadat mijnwerkers waren verdwenen. De wagens zijn volgens het park nog van hout. RCDB noemt de baan sinds mei 2025 een virtual-reality-hybride, omdat gasten een bril kunnen opzetten. Vanaf **1,40 m** mag je alleen mee, vanaf **1,10 m** met een volwassene erbij.
 
 ### Uncharted: The Enigma of Penitence
 
@@ -128,7 +128,7 @@ Hurakan Condor is een valtoren van Intamin in het gebied México. Het park noemt
 
 ```
 
-Het park heeft vier waterbanen, en op alle vier word je nat:
+Het park heeft vier waterbanen:
 
 | Baan | Gebied | Minimale lengte | Met volwassene |
 | --- | --- | --- | --- |
@@ -153,7 +153,7 @@ In de tabel staat elke baan met zijn eigen aantal meetdagen:
 
 ```
 
-Of de hoogste baan ook de langste rij heeft, beslist de tabel en niet deze tekst. Lees de kolom met meetdagen mee: een baan die maar op weinig dagen open was, staat daar met een dunner getal dan een baan die de hele zomer reed.
+Of de hoogste baan ook de langste rij heeft, staat in de tabel. Lees de kolom met meetdagen mee: een baan die maar op weinig dagen open was, staat daar met een dunner getal dan een baan die de hele zomer reed.
 
 Zo groeien de rijen over de dag:
 
@@ -198,7 +198,7 @@ Voor de parkpagina berekenen we bij welke banen vroeg komen de meeste wachttijd 
 
 ## Wanneer je moet komen
 
-Het park noemt op zijn site “tips en aanbevelingen”, en de eerste uitspraak is duidelijk: op zaterdag en zondag komen de gezinnen, “en over het algemeen is het dan drukker”. De ideale tijd is volgens het park midden in de week, dinsdag tot en met donderdag, zolang er geen feestdag op valt. Verder raadt het park aan de schoolvakanties in Spanje en Frankrijk te controleren, omdat er veel Franse gasten komen. Als drukkere periodes noemt het zomer, lange weekenden, Pasen en Halloween.
+Het park noemt op zijn site “tips en aanbevelingen”. Daar staat dat op zaterdag en zondag de gezinnen komen, “en over het algemeen is het dan drukker”. De ideale tijd is volgens het park midden in de week, dinsdag tot en met donderdag, zolang er geen feestdag op valt. Verder raadt het park aan de schoolvakanties in Spanje en Frankrijk te controleren, omdat er veel Franse gasten komen. Als drukkere periodes noemt het zomer, lange weekenden, Pasen en Halloween.
 
 De maanden en weekdagen uit onze metingen:
 
@@ -210,7 +210,7 @@ Voor het schooljaar 2026/27 noemt 3Cat voor Catalonië de vrije dagen 12 oktober
 
 ### Halloween: 19 september tot 15 november 2026
 
-Het park viert Halloween van 19 september tot 15 november 2026. De vijf Pasajes del Terror heten El Carnicero de Penitence (nieuw), La Isla Maldita, La Muerte Viva, REC Experience en Angkor: La leyenda del Rey Caníbal. Daarbij komen de show “Resurrection at the Saloon” en de scare zone “La Maldición del Emperador”. Omdat het park Halloween zelf een drukkere periode noemt, loont een dinsdag of woensdag hier extra. Alle details over prijzen en leeftijdsgrenzen staan in het [nieuws over Halloween bij PortAventura](/blog/portaventura-halloween-2026). Algemene tips voor het seizoen vind je in de gids over [Halloween in pretparken](/blog/halloween-pretparken-2026).
+Het park viert Halloween van 19 september tot 15 november 2026. De vijf Pasajes del Terror heten El Carnicero de Penitence (nieuw), La Isla Maldita, La Muerte Viva, REC Experience en Angkor: La leyenda del Rey Caníbal. Daarbij komen de show “Resurrection at the Saloon” en de scare zone “La Maldición del Emperador”. Omdat het park Halloween zelf een drukkere periode noemt, loont hier een dinsdag of woensdag. Alle details over prijzen en leeftijdsgrenzen staan in het [nieuws over Halloween bij PortAventura](/blog/portaventura-halloween-2026). Algemene tips voor het seizoen vind je in de gids over [Halloween in pretparken](/blog/halloween-pretparken-2026).
 
 ### Kerst
 
@@ -218,7 +218,7 @@ De kersttijd loopt volgens de site van het park van 20 november 2026 tot 6 janua
 
 ## Tickets en prijzen
 
-Alle prijzen zijn onlineprijzen voor volwassenen en junioren of senioren, opgehaald op 7 oktober 2026. Bij de kassa's aan de ingang zijn ze hoger.
+Alle prijzen zijn onlineprijzen voor volwassenen en junioren of senioren, stand 7 oktober 2026. Bij de kassa's aan de ingang zijn ze hoger.
 
 | Ticket | Volwassenen | Junioren en senioren |
 | --- | --- | --- |
@@ -254,7 +254,7 @@ Het parkticket geldt voor PortAventura Park en voor niets anders. Dat schrijft h
 
 Een dagticket voor Ferrari Land alleen kost vanaf € 21, een voor Caribe vanaf € 32, telkens voor volwassenen. Wie in een hotel van het resort slaapt, krijgt naast de toegang tot het park een dag in Ferrari Land.
 
-Ferrari Land opende op 7 april 2017, en het resort gaf er meer dan 100 miljoen euro aan uit. De hoogste baan is Red Force, een Intamin-versneller van 112 meter hoog, met 180 km/u en 880 meter spoor. Verdere attracties zijn Maranello Grand Race, Thrill Towers, Flying Dreams en Racing Legends. Of het gebied in het laagseizoen dagelijks open is, beantwoorden de bronnen tegenstrijdig, dus controleer de kalender voordat je gaat.
+Ferrari Land opende op 7 april 2017, en het resort gaf er meer dan 100 miljoen euro aan uit. De hoogste baan is Red Force, een Intamin-versneller van 112 meter hoog, met 180 km/u en 880 meter spoor. Verdere attracties zijn Maranello Grand Race, Thrill Towers, Flying Dreams en Racing Legends. Taquilla noemt Ferrari Land van 1 april tot en met 31 december 2026 dagelijks open, een reisblog (El Viaje de Sofi) alleen op losse dagen in november en december. Controleer de kalender voordat je gaat.
 
 Caribe Aquatic Park is een waterpark met 16 attracties op ongeveer 50.000 vierkante meter. Het seizoen 2026 eindigde volgens Taquilla op 20 september, in oktober is het dicht. In de zomer van 2026 is er volgens de Diari de Tarragona de Coral Bay bijgekomen, met de Leyenda Perdida en een waterachtbaan uit de Cyclone-familie.
 
@@ -262,13 +262,13 @@ Caribe Aquatic Park is een waterpark met 16 attracties op ongeveer 50.000 vierka
 
 In de zomer van 2026 is in Polynesia **Makamanu Jungle** geopend, een avonturenpad in een voormalige steengroeve: 135 meter lang, met 18 hutten op hoogte, 20 touwtunnels, 3 netladders en 4 glijbanen. Daarbij horen de zones Forest voor kinderen tot 3 jaar, Nest, Trail en Summit, en een rolstoeltoegankelijk pad. De toegang loopt rechtstreeks vanuit Far West, en Express is er niet.
 
-Het park kondigde daarnaast in mei 2026 een Hard Rock Cafe bij de ingang aan, met ongeveer 430 plaatsen. Of het al open is, kon ik op 7 oktober niet bevestigen. Het vervangt het LaLiga-restaurant, meldt de Diari de Tarragona.
+Het park kondigde daarnaast in mei 2026 een Hard Rock Cafe bij de ingang aan, met ongeveer 430 plaatsen. Op geen van de gelinkte pagina’s staat of het al open is. Het vervangt het LaLiga-restaurant, meldt de Diari de Tarragona.
 
-Voor 2027 had het park volgens mijn onderzoek op 7 oktober nog niets nieuws bevestigd.
+Voor 2027 heeft het park nog niets nieuws bevestigd.
 
 ## Een dag in het park, globaal gepland
 
-Wie bij opening aan de ingang staat, gaat eerst naar de drie banen uit het rope-drop-stuk: Hurakan Condor in México, Tutuki Splash in Polynesia en Silver River Flume in Far West. Daarna loont het om per gebied te werken in plaats van kriskras door het park te lopen. China heeft Shambhala en Dragon Khan, en het kluisje tussen die twee laat zien dat ze dicht bij elkaar liggen. Far West heeft Stampida, Tomahawk, Uncharted en Grand Canyon Rapids, México El Diablo en Templo del Fuego, Mediterrània Furius Baco. Kinderen tot de lengte van Street Mission en Tami-Tami hebben in SésamoAventura hun eigen gebied.
+Wie bij opening aan de ingang staat, gaat eerst naar de drie banen uit het rope-drop-stuk: Hurakan Condor in México, Tutuki Splash in Polynesia en Silver River Flume in Far West. Daarna loont het om per gebied te werken in plaats van kriskras door het park te lopen. China heeft Shambhala en Dragon Khan, met kluisjes tussen die twee. Far West heeft Stampida, Tomahawk, Uncharted en Grand Canyon Rapids, México El Diablo en Templo del Fuego, Mediterrània Furius Baco. Voor kinderen die te klein zijn voor de grote attracties zijn er in SésamoAventura Street Mission en Tami-Tami.
 
 De plattegrond van het park, om je route uit te stippelen:
 
@@ -284,7 +284,7 @@ Met de trein stopt Rodalies-lijn R17 direct bij het resort, op het traject vanaf
 
 Parkeren kost vanaf € 16 voor auto's, vanaf € 21 in de voorkeurszone, vanaf € 16 voor campers en vanaf € 6 voor motoren. Wie het parkeerterrein op dezelfde dag verlaat, komt met de parkeerbon weer binnen.
 
-Het resort heeft zes eigen hotels, vanaf deze prijzen per kamer en nacht: Gold River vanaf € 96, El Paso vanaf € 99, Caribe vanaf € 105, PortAventura vanaf € 110, Colorado Creek vanaf € 123 en de Mansión de Lucy vanaf € 275. Elke nacht in het hotel geeft een extra dag toegang tot het park: één nacht betekent twee dagen, twee nachten betekenen drie dagen. Daarbij komt een dag Ferrari Land. Buiten het terrein horen vier hotels van de keten Ponient bij het aanbod: Vila Centric, Pirámide Salou, Dorada Palace en Marinada. Voor herfst en winter vond ik geen early access. De hotelpagina noemt het wel, een half uur voor opening, voor verblijven van 23 maart tot 17 mei, zonder jaartal.
+Het resort heeft zes eigen hotels, vanaf deze prijzen per kamer en nacht: Gold River vanaf € 96, El Paso vanaf € 99, Caribe vanaf € 105, PortAventura vanaf € 110, Colorado Creek vanaf € 123 en de Mansión de Lucy vanaf € 275. Elke nacht in het hotel geeft een extra dag toegang tot het park: één nacht betekent twee dagen, twee nachten betekenen drie dagen. Daarbij komt een dag Ferrari Land. Buiten het terrein horen vier hotels van de keten Ponient bij het aanbod: Vila Centric, Pirámide Salou, Dorada Palace en Marinada. De hotelpagina noemt early access, een half uur voor opening, alleen voor verblijven van 23 maart tot 17 mei, zonder jaartal, en niet voor herfst en winter.
 
 ## Eten, kluisjes, hulpmiddelen
 
@@ -326,7 +326,7 @@ Nee, alleen in de tickets voor drie parken en in de Caribe-tickets. In oktober i
 
 ### Loont Express?
 
-Dat hangt af van hoeveel banen je rijdt. Express 5 Adrenaline geldt voor zeven banen en kost vanaf € 46, Express 10 vanaf € 59, Unlimited vanaf € 75. Welke banen lange rijen hebben, staat in de tabel hierboven.
+Express 5 Adrenaline geldt voor zeven banen en kost vanaf € 46, Express 10 vanaf € 59, Unlimited vanaf € 75. Welke banen lange rijen hebben, staat in de tabel hierboven.
 
 ### Wanneer is het park in 2026 open?
 
@@ -348,7 +348,7 @@ Op de pagina's van het park staat daar niets over. De woordenlijst legt uit wat 
 
 Met Shambhala en Dragon Khan heeft het park twee banen van Bolliger & Mabillard die 17 jaar uit elkaar liggen, en met Furius Baco en Uncharted twee van Intamin. Wie maar één dag heeft, boekt het ticket online, kiest een dinsdag tot donderdag buiten de feestdagen en gaat bij opening naar de drie rope-drop-banen.
 
-Ferrari Land en Caribe zitten alleen in de combitickets. Wie ze wil zien, koopt vóór de reis het juiste ticket.
+Ferrari Land en Caribe vragen een eigen ticket of een combiticket. Wie ze wil zien, koopt vóór de reis het juiste ticket.
 
 — Patrick
 
