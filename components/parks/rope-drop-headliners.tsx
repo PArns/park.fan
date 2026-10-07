@@ -14,6 +14,12 @@ interface RopeDropHeadlinersProps {
   /** All park attractions, used to resolve URLs and derive the evening picks. */
   attractions: ParkAttraction[];
   parkPath: string;
+  /**
+   * Visibility per breakpoint, from the caller: the park page draws the strip above the headliners
+   * from `sm` up and below them on a phone, as two instances rather than a CSS `order`, so the
+   * reading and tab order match what is on screen.
+   */
+  className?: string;
 }
 
 function attractionHref(attraction: ParkAttraction, parkPath: string): string {
@@ -31,6 +37,7 @@ export const RopeDropHeadliners = memo(function RopeDropHeadliners({
   headliners,
   attractions,
   parkPath,
+  className,
 }: RopeDropHeadlinersProps) {
   const t = useTranslations('parks.ropeDropSection');
 
@@ -60,7 +67,10 @@ export const RopeDropHeadliners = memo(function RopeDropHeadliners({
     <section
       // `w-fit` with a `max-w` that keeps 320 px free on the right; the width follows the page, not
       // the window.
-      className="border-border/50 bg-background/60 w-fit rounded-xl border p-4 shadow-md backdrop-blur-md @min-[768px]/page:max-w-[calc(100%-320px)] dark:bg-[oklch(0.12_0.025_241_/_0.55)]"
+      className={cn(
+        'border-border/50 bg-background/60 w-fit rounded-xl border p-4 shadow-md backdrop-blur-md @min-[768px]/page:max-w-[calc(100%-320px)] dark:bg-[oklch(0.12_0.025_241_/_0.55)]',
+        className
+      )}
       aria-label={t('title')}
     >
       <div className="mb-1 flex items-center gap-2">

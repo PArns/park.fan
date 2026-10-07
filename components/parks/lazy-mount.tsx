@@ -21,6 +21,8 @@ export interface LazyMountGrid {
   phoneRowHeight?: number;
   /** Extra px above the grid (section heading etc.). */
   headerHeight?: number;
+  /** `headerHeight` for the one-column (phone) grid, when its heading differs. */
+  phoneHeaderHeight?: number;
 }
 
 interface LazyMountProps {
@@ -44,11 +46,12 @@ interface LazyMountProps {
 
 /** Reserved height for `columns` columns of the grid. */
 function reservedHeight(
-  { count, rowHeight, phoneRowHeight, headerHeight = 0 }: LazyMountGrid,
+  { count, rowHeight, phoneRowHeight, headerHeight = 0, phoneHeaderHeight }: LazyMountGrid,
   columns: number
 ) {
   const row = columns === 1 ? (phoneRowHeight ?? rowHeight) : rowHeight;
-  return headerHeight + Math.ceil(count / columns) * row;
+  const header = columns === 1 ? (phoneHeaderHeight ?? headerHeight) : headerHeight;
+  return header + Math.ceil(count / columns) * row;
 }
 
 /**

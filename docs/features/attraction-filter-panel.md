@@ -55,8 +55,10 @@ Open, the panel measured 515 px on a 390 × 664 phone (Phantasialand), and the f
 at y=2,611, 3.9 screens down. Below `sm` the box now holds one row: the search box and a
 **„Filter"** button carrying the number of set filters. The heading, the height slider and the
 pills are `max-sm:hidden` in the box and render again inside a bottom sheet
-(`components/ui/sheet.tsx`, `side="bottom"`) the button opens. The box is `max-sm:p-2` around the
-44 px row, 62 px with its border.
+(`components/ui/sheet.tsx`, `side="bottom"`) the button opens. The box is `max-sm:p-1.5` around a
+36 px row, 50 px with its border, the height of the land headings below it (PAR-719 review; it was
+`max-sm:p-2` around a 44 px row, 62 px). The field and the button keep their desktop `h-9` there,
+6 px corners inside the box's 12 px ones; the button's reach stays 44 px through `PHONE_HIT_AREA`.
 
 - **CSS decides, not JavaScript.** The server cannot know the width and both branches of
   `TabsWithHash` render the same markup, so the phone row and the full panel are the same tree with

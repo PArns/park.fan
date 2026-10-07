@@ -1,7 +1,9 @@
 import { memo } from 'react';
 import { useTranslations } from 'next-intl';
-import { LayoutGrid } from 'lucide-react';
+import { Crown, LayoutGrid } from 'lucide-react';
 import { AttractionCard } from './attraction-card';
+import { TILE_GLASS } from '@/components/common/glass-card';
+import { cn } from '@/lib/utils';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import type { ParkAttraction, ParkStatus } from '@/lib/api/types';
 
@@ -26,6 +28,8 @@ interface LandSectionProps {
    * ride-alert bell needs it as a prop.
    */
   parkName: string;
+  /** The headliners' section: the crown the cards carry, in their amber, for the grid icon. */
+  headliner?: boolean;
 }
 
 /**
@@ -44,6 +48,7 @@ export const LandSection = memo(function LandSection({
   timezone,
   todayIso,
   parkName,
+  headliner = false,
 }: LandSectionProps) {
   const t = useTranslations('parks');
   const operatingCount = attractions.filter(
@@ -57,13 +62,31 @@ export const LandSection = memo(function LandSection({
 
   return (
     <section>
-      <div className="bg-background/70 mb-4 flex w-fit items-center gap-3 rounded-lg px-3 py-1.5 backdrop-blur-md">
-        <div className="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg">
-          <LayoutGrid className="text-primary h-5 w-5" />
+      {/* The glass, border and corners of the filter panel above it. Below `sm` it spans the
+          column like that panel and the rows under it, on one 50 px line with the count at the
+          end; the lands' `LazyMount` in `tabs-with-hash.tsx` reserves that as
+          `phoneHeaderHeight`. */}
+      <div
+        className={cn(
+          'border-border/50 mb-4 flex w-fit items-center gap-3 rounded-xl border px-3 py-1.5 shadow-sm max-sm:mb-2 max-sm:w-full max-sm:gap-2.5 max-sm:p-2',
+          TILE_GLASS
+        )}
+      >
+        <div
+          className={cn(
+            'flex h-10 w-10 shrink-0 items-center justify-center rounded-lg max-sm:h-8 max-sm:w-8',
+            headliner ? 'bg-amber-400/15' : 'bg-primary/10'
+          )}
+        >
+          {headliner ? (
+            <Crown className="h-5 w-5 text-amber-500 max-sm:h-4 max-sm:w-4 dark:text-amber-400" />
+          ) : (
+            <LayoutGrid className="text-primary h-5 w-5 max-sm:h-4 max-sm:w-4" />
+          )}
         </div>
-        <div>
-          <h2 className="text-xl font-semibold">{landName}</h2>
-          <p className="text-muted-foreground text-sm">
+        <div className="max-sm:flex max-sm:min-w-0 max-sm:flex-1 max-sm:items-baseline max-sm:justify-between max-sm:gap-2">
+          <h2 className="text-xl font-semibold max-sm:truncate max-sm:text-base">{landName}</h2>
+          <p className="text-muted-foreground text-sm max-sm:shrink-0 max-sm:text-xs">
             {noneKnown
               ? t('attractionCount', { count: attractions.length })
               : t('operatingCount', { count: operatingCount, total: attractions.length })}

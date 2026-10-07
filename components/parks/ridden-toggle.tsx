@@ -3,6 +3,7 @@
 import { useCallback, useSyncExternalStore } from 'react';
 import { Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { GLASS_CIRCLE_HIT_AREA } from '@/components/common/glass-circle';
 import { cn } from '@/lib/utils';
 import {
   getRiddenSnapshot,
@@ -45,10 +46,8 @@ export function RiddenToggle({ id }: RiddenToggleProps) {
       className={cn(
         'relative z-10 flex h-full w-full items-center justify-center transition-all hover:scale-110',
         'focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none',
-        // Same 44 px touch target as the star: a near miss on a phone would open the ride's page.
-        'max-sm:after:absolute max-sm:after:top-1/2 max-sm:after:left-1/2 max-sm:after:h-11',
-        'max-sm:after:w-11 max-sm:after:-translate-x-1/2 max-sm:after:-translate-y-1/2',
-        'max-sm:after:content-[""]'
+        // A near miss on a phone would open the ride's page.
+        GLASS_CIRCLE_HIT_AREA
       )}
       aria-label={ridden ? t('riddenUnmark') : t('riddenMark')}
       aria-pressed={ridden}

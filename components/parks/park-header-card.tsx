@@ -13,16 +13,20 @@ import { cn } from '@/lib/utils';
 export function ParkHeaderCard({
   panel,
   tiles,
+  className,
 }: {
   panel?: React.ReactNode;
   tiles: React.ReactNode;
+  /** Spacing from the page that places the card; its box stays here. */
+  className?: string;
 }) {
   return (
     <div
       data-card=""
       className={cn(
         'border-border/50 mb-4 overflow-hidden rounded-xl border shadow-sm',
-        TILE_GLASS
+        TILE_GLASS,
+        className
       )}
     >
       {/* Keyed fragments: these two children compile to an array, and an element handed in through
