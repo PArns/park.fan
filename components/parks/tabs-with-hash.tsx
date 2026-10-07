@@ -491,6 +491,7 @@ export const TabsWithHash = memo(function TabsWithHash({
       {headliners.length > 0 && !isSearching && (
         <LandSection
           landName={t('headlinersSection')}
+          headliner
           attractions={headliners}
           parkPath={parkPath}
           parkSlug={parkSlug}
