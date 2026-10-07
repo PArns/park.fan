@@ -67,8 +67,21 @@ cached. It is also ~100 bytes. Leave it alone.
 +2.5s    3.0 KB  /api/parks/<geo>/<park>/stats            2-year aggregate          ← loads last
 +2.5s    1.9 KB  /api/parks/<geo>/<park>/calendar?…       today only, for the forecast cell
 +2.6s    0.1 KB  /api/nearby                              header
++3.1s   23.6 KB  /api/parks/<geo>/<park>/plan/day                today's ride openings, early entry   ← loads last
 +3.0s    1.3 KB  /api/parks/near                          "parks nearby" status overlay
 ```
+
+Since PAR-742 a ninth request, today's `/plan/day`, follows the live data behind `useLoadLast`
+(`useParkPlanDay`). It feeds the „Öffnet ca. HH:mm" line on a ride that starts after its park and the
+park's „Early Entry" line. The ride page makes the same request, for a CLOSED ride only. Measured on
+a build of `main` and of the branch, Phantasialand, `localhost`, 2026-10-07 (uncompressed, as `next
+start` serves `/api/*`): park 8 calls / 75.4 KB → 9 calls / 99.0 KB; the document is unchanged
+(1,113.1 KB → 1,111.8 KB). On the wire the body is 2,893 B brotli, one request per page view, not
+polled. Against [the byte budget](../rules/a-day-in-the-park-has-a-byte-budget.md): first live wait
+time and the poll are untouched (the request leaves after the live data and nothing server-renders
+from it), the first visit grows by about 2.9 KB, from 847 KB to about 850 KB against a 850 KB
+ceiling, and the day by the same 2.9 KB. The table above predates the other changes since it was
+written and is not re-measured here.
 
 Eight requests reads high, and folding them together is tempting. It is also the wrong move, and
 the split is deliberate:

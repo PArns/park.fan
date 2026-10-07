@@ -180,6 +180,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useParkNeighbors` _hook_: Batch-fetch live status for the parks near a given location, keyed by park id.
 
+### [`use-park-plan-day.ts`](../../lib/hooks/use-park-plan-day.ts)
+
+- `useParkPlanDay` _hook_: Today's `/plan/day` for the park page, behind `useLoadLast`: what it feeds (a ride's later opening, the park's early entry) is a line of small print, and it must not queue in front of the live status and weather.
+
 ### [`use-park-stats-queries.ts`](../../lib/hooks/use-park-stats-queries.ts)
 
 - `useParkStatsQueries` _hook_: One `/stats` fetch per park, shared by every table built on the historical aggregate (the park-comparison table, the blog's ride-wait tables, the park page's stats section) and gated on `useLoadLast`.

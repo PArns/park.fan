@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { TrendPill } from '@/components/parks/trend-pill';
 import { OutageNote } from '@/components/parks/outage-note';
-import { NotRunTodayNote } from '@/components/parks/not-run-today-note';
+import { RideOpensAtNote } from '@/components/parks/ride-opens-at-note';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { formatPeakDate } from '@/components/parks/attraction-typical-waits';
 import { ParkTimeRange } from '@/components/common/park-time';
@@ -228,7 +228,8 @@ export function RideNowPanel({
                 className="my-1.5"
               />
               {status === 'CLOSED' && !attraction.outage && (
-                <NotRunTodayNote
+                <RideOpensAtNote
+                  slug={attraction.slug}
                   notRunToday={attraction.notRunToday}
                   timezone={timezone}
                   variant="full"

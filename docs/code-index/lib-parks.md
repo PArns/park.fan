@@ -114,6 +114,13 @@ Which two days of a park's calendar are being compared, across a change of month
 - `deriveParkStatsFindings` _function_: The park average, longest queue, quietest weekday and busiest month an aggregate supports.
 - Types: `ParkStatsFindings`
 
+### [`ride-openings.ts`](../../lib/parks/ride-openings.ts)
+
+- `parkOpenMinute` _function_: Park-local minute the gates open on `todayIso`, from the park's own schedule. Not `context.openHour`, which is the hour the opening falls in: against it a park opening at 10:30 would call every ride with `opensAt` 10:30 a late starter.
+- `parkOpeningsFromPlan` _function_: The rides of a plan that start after the park, by slug, and the park's early entry. A ride without `opensAt` is absent from the map: the API sends it only where it knows, so a missing value is „unknown", never „opens with the park".
+- `isOpeningAhead` _function_: Whether the line „öffnet ca. HH:mm" still tells the truth: only before that minute. After it, a ride that still reads CLOSED is shut for some other reason, and the line would promise an opening that has already passed.
+- Types: `RideOpening`, `ParkEarlyEntry`, `ParkOpenings`
+
 ### [`stats-segments.ts`](../../lib/parks/stats-segments.ts)
 
 - `parkStatsPath` _function_: Locale-relative path to a park's wait-time record; `@/i18n/navigation`'s `Link` adds the locale.

@@ -828,6 +828,16 @@
       "title": "Hoy aún no ha funcionado",
       "lastRun": "Funcionó por última vez: {when}"
     },
+    "rideOpensAt": {
+      "approx": "Abre sobre las {time}",
+      "firm": "Abre a las {time}",
+      "detail": "Esta atracción empieza más tarde que el parque."
+    },
+    "earlyEntry": {
+      "title": "Early Entry",
+      "detail": "Para huéspedes del hotel antes de la apertura",
+      "detailMinutes": "Para huéspedes del hotel, {minutes} min antes de la apertura"
+    },
     "rideStatus": {
       "weekdayTime": "el {weekday} a las {time}"
     },
