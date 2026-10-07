@@ -6,10 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Brühl sammeln Naturschützer bis zum 9. November Unterschriften, um die
-  Erweiterung des Phantasialands zu stoppen. Dagegen hält eine Online-Petition,
-  die eine „verantwortungsvolle Erweiterung“ mit Naturschutz und Ausgleich
-  fordert. Ich habe sie unterschrieben.
+  Eine Online-Petition fordert seit Mai vom Brühler Rat eine „verantwortungsvolle
+  Erweiterung“ des Phantasialands, mit Naturschutz und Ausgleich. Sie hält damit
+  gegen das Bürgerbegehren, mit dem Naturschützer die Planung stoppen wollen. Ich
+  habe sie unterschrieben.
 tags:
   - news
   - phantasialand
@@ -27,15 +27,15 @@ coverImage:
 seo:
   title: 'Gegenpetition für die Phantasialand-Erweiterung in Brühl'
   description: >-
-    Ein Bürgerbegehren will die Phantasialand-Erweiterung am Ententeich stoppen.
-    Eine Gegenpetition fordert sie, mit Naturschutz und Ausgleich.
+    Eine Gegenpetition fordert eine Phantasialand-Erweiterung mit Naturschutz und
+    Ausgleich. Sie läuft bis zum 23. November, und ich habe sie unterschrieben.
   keywords:
-    - Phantasialand Erweiterung
     - Phantasialand Erweiterung Petition
-    - Phantasialand Erweiterung aktuell
+    - Phantasialand Gegenpetition
     - Phantasialand Petition openPetition
-    - Phantasialand Ententeich
-    - Brühler Waldentscheid
+    - Petition verantwortungsvolle Erweiterung Phantasialand
+    - Phantasialand Erweiterung pro und contra
+    - Phantasialand Erweiterung Arbeitsplätze
     - Bürgerforum Phantasialand Erweiterung
 ---
 
@@ -53,11 +53,12 @@ Das Netzwerk sammelt seit dem 28. September Unterschriften für sein
 Bürgerbegehren, den „Brühler Waldentscheid“. Es soll die
 Beschlüsse vom 9. Juli aufheben, mit denen die Stadt die Planung begonnen hat.
 Bis zum 9. November braucht das Netzwerk dafür 2.536 gültige Unterschriften von
-Wahlberechtigten aus Brühl. Einen Zwischenstand hat es auf
-[seiner Website](https://nsg-ententeich.de/) bis zum 7. Oktober nicht genannt.
+Wahlberechtigten aus Brühl. Wie viele schon zusammen sind, sagt es bisher nicht.
 
-Wie es zu dem Bürgerbegehren kam und was der Park seit 2003 versucht hat, habe
-ich [am 1. Oktober aufgeschrieben](/news/phantasialand-erweiterung-buergerbegehren).
+Wie es zu dem
+[Bürgerbegehren gegen die Erweiterung](/news/phantasialand-erweiterung-buergerbegehren)
+kam und was der Park seit 2003 versucht hat, steht in unserem Beitrag vom 1.
+Oktober.
 
 ## Was bisher entschieden ist
 
@@ -71,13 +72,15 @@ einsehen und Einwände schreiben kann, hat die Stadt noch nicht genannt.
 Das Phantasialand lässt Gutachten zu sieben Fachgebieten erstellen, vom
 Artenschutz bis zum Wasserhaushalt, und bezahlt sie. Die Stadt führt das
 Verfahren und prüft, ob die Gutachten den gesetzlichen Anforderungen genügen.
-Ergebnisse der sieben Gutachten hat der Park bisher nicht veröffentlicht. Auf
-seiner Seite
+Was untersucht wird, hat der Park auf seiner Seite
 [„Standortsicherung“](https://www.phantasialand.de/de/rechtliches/standortsicherung/)
-hat er angekündigt, „Zahlen, Daten und Fakten“ zu veröffentlichen und
-fortlaufend zu aktualisieren. Dazugekommen ist seit Ende September keine Karte
-der Fläche, kein Zeitplan und keine Investitionssumme. Ob der Ententeich bleiben
-soll, steht auf der Seite weiterhin nicht.
+offengelegt, und dort will er auch „Zahlen, Daten und Fakten“ veröffentlichen
+und fortlaufend aktualisieren. Was mit dem Ententeich geschieht, ist Teil des
+Gutachtens zum Wasserhaushalt. Für Detailpläne fehlten noch die baurechtlichen Rahmenbedingungen, die erst im
+Verfahren festgelegt werden, sagte Ralf-Richard Kenter,
+Beauftragter der Geschäftsführung, im Juli dem Kölner Stadt-Anzeiger. Früher
+veröffentlicht, könnten sie außerdem Wettbewerbern „wertvolle Einblicke“
+liefern.
 
 Das Grundstück gehört noch dem Land Nordrhein-Westfalen. Den Tausch gegen 38,82
 Hektar Wald hat der Landtag 2021 erlaubt, und unterschrieben ist der Vertrag
@@ -150,7 +153,7 @@ besonderen Beziehung zum Park.
 >
 > Eberhard Meyer vom Bürgerforum Phantasialand Erweiterung im [Brühler Schlossboten vom 11. August 2026](https://www.rheinische-anzeigenblaetter.de/bruehl/c-nachrichten/scharfe-kritik-an-angestrebtem-buergerbegehren-macht-jede-sachliche-diskussion-kaputt_a377326)
 
-## Was für die Erweiterung spricht
+## Was für die Erweiterung des Phantasialands spricht
 
 Das Phantasialand beschäftigt nach eigenen Angaben 1.800 Mitarbeitende und
 Auszubildende. Schon 2013 hat es für die Erweiterung 830 neue Arbeitsplätze
@@ -162,23 +165,34 @@ ganze Jahr zu öffnen. Nach dem Konzept von 2013 sollten die neuen Einrichtungen
 „zum weit überwiegenden Anteil“ Gebäude oder überdachte Bereiche werden, und
 nach Einschätzung der Bezirksregierung kommt das auch dem Lärmschutz zugute.
 
-Drei Hotels hat das Phantasialand heute, Ling Bao, Matamba und Charles
-Lindbergh. Ein Aquapark mit Hotel und ein Theater sollen Gäste mehrere Tage
+Drei Hotels hat das Phantasialand heute,
+[Ling Bao, Matamba und Charles Lindbergh](/blog/phantasialand-tipps). Ein Aquapark mit Hotel und ein Theater sollen Gäste mehrere Tage
 halten. Georg Frey, Kreisvorsitzender des Gastgewerbeverbands Dehoga, sieht in
 der Erweiterung eine Chance für Hotels und Gastronomie in der Region. Wie viel
 Steuern das der Stadt bringt, lässt sich nach ihrer eigenen Kostenschätzung auf
 der Unterschriftenliste des Bürgerbegehrens „nicht belastbar prognostizieren“,
 und die Gewerbesteuer könne in den ersten Jahren nach dem Bau wegen der
-Abschreibungen sogar sinken. Ralf-Richard Kenter, Beauftragter der
-Geschäftsführung, hatte im Juli gesagt, die Behauptung, hohe Investitionen
-führten dazu, dass kaum Gewerbesteuer fließe, „greift zu kurz“.
+Abschreibungen sogar sinken. Kenter hatte im Juli gesagt, die Behauptung, hohe
+Investitionen führten dazu, dass kaum Gewerbesteuer fließe, „greift zu kurz“.
 
-Für Besucher bedeutet mehr Fläche, dass neue Attraktionen dazukommen können,
-ohne dass alte weichen müssen. Weil das Gelände dicht bebaut ist, können neue
-Angebote dort „nur durch Entfernung vorhandener Attraktionen geschaffen
-werden“, heißt es 2013 in der Begründung der Bezirksregierung, die damit die
-Sicht des Parks wiedergibt. Damals waren auf der Erweiterungsfläche keine neuen
-Fahrattraktionen vorgesehen, heute stehen sie in den Plänen des Parks.
+Auf dem heutigen Gelände ist für fast jede große Neuheit der letzten zwanzig
+Jahre etwas abgerissen worden. 2007 verschwand der Märchenwald, mit dem der Park
+1967 angefangen hatte, 2008 und 2009 folgten der Phantasialand-Jet und die
+Gondelbahn 1001 Nacht. Für die Wasserbahn
+[Chiapas](ref:phantasialand/chiapas-die-wasserbahn) wurden 2012 und 2013 die
+alten Wildwasserbahnen abgerissen. Klugheim mit
+[Taron](ref:phantasialand/taron) und [Raik](ref:phantasialand/raik) steht seit
+2016 dort, wo bis 2014 die Westernstadt Silver City mit der Silbermine stand,
+einer Dunkelfahrt von 1984. Für Rookburgh mit [F.L.Y.](ref:phantasialand/fly)
+fiel 2016 der Flugsimulator Race for Atlantis, der 1994 als Galaxy eröffnet
+hatte. Seine goldene Kuppel gehörte zu den auffälligsten Gebäuden des Parks.
+
+Weil das Gelände so dicht bebaut ist, können neue Angebote dort „nur durch
+Entfernung vorhandener Attraktionen geschaffen werden“, heißt es 2013 in der
+Begründung der Bezirksregierung, die damit die Sicht des Parks wiedergibt. Mit
+mehr Fläche kann Neues dazukommen, ohne dass Altes weichen muss. Damals waren
+auf der Erweiterungsfläche keine neuen Fahrattraktionen vorgesehen, heute
+stehen sie in den Plänen des Parks.
 
 Das Land bekäme für die 14,17 Hektar am Ententeich im Tausch 38,82 Hektar Wald,
 die direkt an Staatswald grenzen, fast dreimal so viel Fläche. Dazu kommen
@@ -201,7 +215,7 @@ Umkreis von höchstens vier Kilometern neue Lebensräume entstehen, mit
 Fledermauskästen, künstlichen Gewässern und Brutwänden für den Eisvogel, dazu
 sollten Äcker aufgeforstet werden.
 
-## Das Beispiel Rust
+## Rust und der Europa-Park
 
 Als der [Europa-Park](ref:europa-park) am 12. Juli 1975 aufmachte, hatte er 15
 Attraktionen auf 16 Hektar und rund fünfzig Beschäftigte. Rust hatte damals
@@ -243,7 +257,7 @@ als das heutige Ling Bao eröffnete. Was ihm im Vergleich zum Europa-Park fehlt,
 ist der Wasserpark mit weiteren Betten, und den will es auf der neuen Fläche
 bauen.
 
-## Die Petition für einen „dritten Weg“
+## Was die Petition fordert
 
 Gestartet hat die Petition Ramon Harbecke aus Köln, der nach eigenen Angaben
 selbst in Brühl gelebt hat. Er richtet sie an den Rat der Stadt und den
@@ -289,18 +303,17 @@ nach einem gescheiterten Bürgerbegehren noch möglich wäre, hat Hölzmann im
 September selbst dem Schlossboten gesagt.
 
 Das Phantasialand kann nach eigener Aussage nur noch Neues bauen, indem es
-Altes abreißt oder überbaut. Dass es für ein Hotel mit Aquapark mehr Platz
+Altes abreißt oder überbaut, und die Liste der Abrisse seit 2007 ist lang. Dass es für ein Hotel mit Aquapark mehr Platz
 braucht, als seine rund 28 Hektar hergeben, glaube ich ihm. Was der Europa-Park
 mit seinen Hotels und Rulantica für Rust und die Orte drumherum bedeutet,
 wünsche ich Brühl in kleinerem Maßstab auch: mehr Arbeitsplätze, die das ganze
-Jahr bestehen, und Gäste, die über Nacht bleiben. Ob es dafür ausgerechnet der
-Ententeich sein muss, soll das Verfahren klären.
+Jahr bestehen, und Gäste, die über Nacht bleiben. Wie das mit dem Ententeich
+zusammengeht, soll das Verfahren klären.
 
-Vom Park erwarte ich dafür mehr als bisher. Die Petition verlangt Transparenz,
-und da hat das Phantasialand weniger geliefert, als es selbst angekündigt hat.
-Bis zum 9. November entscheiden viele in Brühl, ob sie das Bürgerbegehren
-unterschreiben, und vorher sollte der Park zeigen, wo genau er bauen will und ob
-der Teich in seinen Plänen bleibt.
+Die Petition verlangt Transparenz, und mit der Seite „Standortsicherung“ hat der
+Park damit angefangen. Eine Karte der Fläche wäre der nächste Schritt, gerade
+jetzt, wo viele in Brühl bis zum 9. November entscheiden, ob sie das
+Bürgerbegehren unterschreiben.
 
 ```cta-widget
 href: https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands
@@ -328,7 +341,7 @@ text: Die Petition läuft bis zum 23. November. Wohnst du in Brühl, zählt dein
 - 830 Arbeitsplätze, davon 600 ganzjährig, West- und Ostteil, Ganzjahresöffnung, überdachte Einrichtungen und Lärm, neue Angebote nur durch Entfernung alter Attraktionen, keine Fahrattraktionen auf der Erweiterungsfläche: [8. Regionalplanänderung, Planbegründung (Bezirksregierung Köln, April 2013, PDF)](https://extra.bezreg-koeln.nrw.de/brk_media/_regionalplan/koeln/pub_planaenderung_08/textliche_darstellung.pdf)
 - Ausgleichskonzept von 2013: [Phantasialand stellt Pläne für Naturausgleich vor (Parkerlebnis, 29. September 2013, nach der Rhein-Erft Rundschau)](https://www.parkerlebnis.de/phantasialand-stellt-plaene-fuer-naturausgleich-nach-freizeitpark-erweiterung-vor_2222.html)
 - Flächentausch, 38,82 Hektar Wald, Wertabschöpfung, Ausgleichspflichten, Umweltbildung, Verzicht westlich der L 194: [Bericht des Umweltministeriums, Vorlage 17/6282 (Landtag NRW)](https://www.landtag.nrw.de/portal/WWW/dokumentenarchiv/Dokument/MMV17-6282.pdf) · Vertrag unterschrieben am 1. März 2022: [Vorlage 18/235 (Landtag NRW)](https://opal.landtag.nrw.de/portal/WWW/dokumentenarchiv/Dokument/MMV18-235.pdf)
-- Hotels des Phantasialands seit 2003: [Phantasialand auf de.wikipedia](https://de.wikipedia.org/wiki/Phantasialand) · Einwohner von Brühl: [Brühl (Rheinland) auf de.wikipedia](<https://de.wikipedia.org/wiki/Br%C3%BChl_(Rheinland)>)
+- Hotels des Phantasialands seit 2003, Abrisse von Märchenwald, Jet, Gondelbahn, Wildwasserbahnen, Westernstadt und Galaxy: [Phantasialand auf de.wikipedia](https://de.wikipedia.org/wiki/Phantasialand) · Silbermine 1984 bis 2014, für Klugheim abgerissen: [Silbermine (Dark Ride Database)](https://darkridedatabase.com/rides/silbermine/) · Galaxy 1994, ab 2006 Race for Atlantis, 2016 für Rookburgh abgerissen: [Race for Atlantis (Dark Ride Database)](https://darkridedatabase.com/rides/race-for-atlantis-2/) · Einwohner von Brühl: [Brühl (Rheinland) auf de.wikipedia](<https://de.wikipedia.org/wiki/Br%C3%BChl_(Rheinland)>)
 - Europa-Park 1975 mit 15 Attraktionen und 50 Beschäftigten: [Europa-Park celebrates big anniversary (dpa bei bluewin, 2025)](https://www.bluewin.ch/en/news/europa-park-celebrates-big-anniversary-with-numerous-innovations-2604224.html) · [50 Jahre Europa-Park (Tageskarte)](https://www.tageskarte.io/tourismus/detail/50-jahre-europa-park-1.html) · Hotels, Rulantica und heutige Fläche: [Europa-Park auf de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · Beschäftigte in der Saison: [Karriere im Europa-Park Erlebnis-Resort](https://jobs.europapark.de/de)
 - Einwohner von Rust 1975 bis 2025 nach dem Statistischen Landesamt: [Rust (Baden) auf de.wikipedia](<https://de.wikipedia.org/wiki/Rust_(Baden)>) · Übernachtungen 2024: [Zahlen & Daten (Gemeinde Rust)](https://www.rust.de/leben-in-rust/die-gemeinde/zahlen+und+daten)
 - Gästeankünfte pro Einwohner: [Das ist Deutschlands wahre Touristenhochburg (t-online, 30. September 2026, nach HolidayCheck)](https://www.t-online.de/leben/reisen/deutschland/id_101455862/holidaycheck-diese-gemeinde-ist-deutschlands-touristen-magnet.html) · Gewerbesteuer: [Wie die Gewerbesteuer die Kassen in der Südlichen Ortenau klingeln lässt (Schwarzwälder Bote, 12. März 2026)](https://www.schwarzwaelder-bote.de/lokales/lahr/europa-park-herrenknecht-und-co-wie-die-gewerbesteuer-die-kassen-in-der-suedlichen-ortenau-klingeln-laesst-78924366.html)

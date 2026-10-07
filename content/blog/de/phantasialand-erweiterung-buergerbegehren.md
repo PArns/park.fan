@@ -28,9 +28,8 @@ coverImage:
 seo:
   title: 'Ententeich: Bürgerbegehren gegen Phantasialand-Erweiterung'
   description: >-
-    Seit 28. September läuft der „Brühler Waldentscheid“. Was der Park bauen
-    will, welche Gutachten er zahlt und wie 2003 der Streit um den Ententeich
-    begann.
+    Seit 28. September sammelt das Netzwerk NSG Ententeich Unterschriften gegen
+    die Phantasialand-Erweiterung. Bis 9. November braucht es 2.536 aus Brühl.
   keywords:
     - Phantasialand Erweiterung
     - Phantasialand Erweiterung Ententeich
@@ -215,7 +214,7 @@ des Parks nach dem Ausschussbeschluss, die t-online zitiert, heißt es:
 >
 > Ralf-Richard Kenter in der Mitteilung des Phantasialands vom Juli 2026, zitiert von [t-online am 14. Juli 2026](https://koeln.t-online.de/region/koeln/id_101342086/bruehl-phantasialand-bei-koeln-verteidigt-geplante-erweiterung.html)
 
-Für die Erweiterung werben in Brühl seit Juli auch Bürger. Eberhard Meyer hat
+[Für die Erweiterung werben](/news/phantasialand-erweiterung-online-petition) in Brühl seit Juli auch Bürger. Eberhard Meyer hat
 das
 [„Bürgerforum Phantasialand Erweiterung“](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-neues-buergerforum-betont-positive-aspekte-des-phantasialand-ausbaus-1332586)
 gegründet und sieht im Bauleitverfahren den Ort, an dem „alle Fakten auf den

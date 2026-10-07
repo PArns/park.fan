@@ -28,8 +28,9 @@ coverImage:
 seo:
   title: 'Ententeich: firmas contra la ampliación de Phantasialand'
   description: >-
-    Desde el 28 de septiembre se recogen firmas en Brühl. Qué quiere construir
-    Phantasialand, qué estudios paga y cómo empezó en 2003 la disputa.
+    Desde el 28 de septiembre el Netzwerk NSG Ententeich recoge firmas contra la
+    ampliación de Phantasialand. Necesita 2.536 de Brühl antes del 9 de
+    noviembre.
   keywords:
     - Phantasialand ampliación
     - Phantasialand ampliación Ententeich
@@ -226,7 +227,7 @@ la comisión, que cita t-online, se lee:
 >
 > Ralf-Richard Kenter en el comunicado de Phantasialand de julio de 2026, citado por [t-online el 14 de julio de 2026](https://koeln.t-online.de/region/koeln/id_101342086/bruehl-phantasialand-bei-koeln-verteidigt-geplante-erweiterung.html), traducido del alemán
 
-Desde julio también hay vecinos de Brühl que hacen campaña a favor. Eberhard
+Desde julio también hay vecinos de Brühl que [hacen campaña a favor](/news/phantasialand-ampliacion-peticion-online). Eberhard
 Meyer fundó el
 [«Bürgerforum Phantasialand Erweiterung»](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-neues-buergerforum-betont-positive-aspekte-des-phantasialand-ausbaus-1332586),
 un foro ciudadano, y ve el procedimiento urbanístico como el lugar donde «todos
