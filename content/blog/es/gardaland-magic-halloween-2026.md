@@ -2,6 +2,7 @@
 title: 'El Halloween de Gardaland dura ahora 51 días'
 translationKey: gardaland-magic-halloween-2026
 date: '2026-10-01'
+time: '09:23'
 author: patrick
 mode: published
 featured: false

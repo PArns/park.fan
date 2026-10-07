@@ -41,6 +41,29 @@ On the teaser surfaces news is drawn a step below the articles (a 112 px cover, 
 
 The header's News entry is drawn differently from the blog's on purpose: one lead with cover and teaser, then the headlines on a time line, each led by its age. An article is picked by topic and length, a news item by what happened and when (`lib/navigation/news-menu.ts`). It used to be a strip of three at the bottom of the blog panel, which filed news as one more blog category.
 
+## Order within a day
+
+News runs newest first, and a day can carry several: four on 2026-09-23, four on 2026-10-01. The
+date alone does not order them, and the comparator that sorted on it never returned 0, so a day's
+posts came out in whatever order the engine's sort left them, and the hero chip could name the
+first post of the morning as the latest. Every news post therefore carries `time: 'HH:MM'`, the
+minute it went out, in Europe/Berlin, the same in all six files.
+
+`lib/blog/published-at.ts` is the one place that reads it: `publishedAt()` is the sortable stamp
+(`2026-10-01T09:23`), `newestPublishedFirst()` the comparator every listing, the feed and the news
+sitemap use, `withZoneOffset()` the timestamp in `datePublished` and `<news:publication_date>`.
+A post without a time sorts before every timed post of its day. Equal stamps return 0, so a stable
+sort keeps them in manifest order.
+
+The times of the news posts that were on `main` before the field existed are the minute each
+reached `main`, read off the first-parent history. Two of them were merged after the day in their `date` (the Hollywood Drift
+post on 2026-09-30, the Golden Ticket post on 2026-10-03); each is the only news of its day, so the
+time orders nothing there.
+
+`pnpm check:blog-updated-at` fails a news group without a time, with a value that is not a quoted
+`HH:MM` (unquoted, YAML may read `09:23` as 563), or with six files that disagree.
+`pnpm test:news-split` checks the order in every locale.
+
 ## Why
 
 News is short and will be published far more often than the articles. In one list ordered by date, a busy news month takes every slot a measured guide had — on the homepage, in the header menu on ~35,000 pages, and on the park page the guide was written for.

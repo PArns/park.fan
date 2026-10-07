@@ -7,7 +7,6 @@ import type {
   NewsArticle,
   WithContext,
 } from 'schema-dts';
-import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
 import type { BlogFrontmatter, BlogListItem, BlogPost } from '@/lib/blog/types';
 import { resolveAuthor } from '@/lib/blog/authors';
 import type { Locale } from '@/i18n/config';
@@ -16,6 +15,7 @@ import { versionedPath } from '@/lib/media/focus';
 import { isNewsCategory, postPath } from '@/lib/blog/paths';
 import { getBlogImageDimensions } from '@/lib/blog/image-dimensions';
 import { fitWithin } from '@/lib/utils/metadata';
+import { withZoneOffset } from '@/lib/blog/published-at';
 
 const SITE_URL = 'https://park.fan';
 /**
@@ -69,20 +69,15 @@ function sizeOf(size: { width: number; height: number }): { width: string; heigh
   return { width: String(size.width), height: String(size.height) };
 }
 /**
- * Frontmatter dates are calendar days written in Germany, and Google wants a timestamp with an
- * offset on every Article type, so a post date is read as local midnight in Berlin. Berlin switches
- * DST at 02:00, so `T00:00:00` always exists.
+ * `datePublished` and `dateModified` for one post. A post without `updatedAt` (every news post) was
+ * last modified when it went out, time included.
  */
-const POST_TIME_ZONE = 'Europe/Berlin';
-
-/** `2026-09-23` → `2026-09-23T00:00:00+02:00`. Anything that is not a bare day passes through. */
-function withZoneOffset(date: string): string {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return date;
-  return formatInTimeZone(
-    fromZonedTime(`${date}T00:00:00`, POST_TIME_ZONE),
-    POST_TIME_ZONE,
-    "yyyy-MM-dd'T'HH:mm:ssXXX"
-  );
+function articleDates(fm: BlogFrontmatter): { datePublished: string; dateModified: string } {
+  const datePublished = withZoneOffset(fm.date, fm.time);
+  return {
+    datePublished,
+    dateModified: fm.updatedAt ? withZoneOffset(fm.updatedAt) : datePublished,
+  };
 }
 
 /**
@@ -168,8 +163,7 @@ export function BlogPostingStructuredData({ post, locale, path }: BlogPostingStr
       ? { caption: frontmatter.coverImage.alt }
       : {}),
   };
-  const datePublished = frontmatter.date;
-  const dateModified = frontmatter.updatedAt ?? frontmatter.date;
+  const { datePublished, dateModified } = articleDates(frontmatter);
 
   const data: WithContext<BlogPosting | NewsArticle> = {
     '@context': 'https://schema.org',
@@ -179,8 +173,8 @@ export function BlogPostingStructuredData({ post, locale, path }: BlogPostingStr
     description: frontmatter.seo?.description ?? frontmatter.excerpt,
     url: canonical,
     inLanguage: locale,
-    datePublished: withZoneOffset(datePublished),
-    dateModified: withZoneOffset(dateModified),
+    datePublished,
+    dateModified,
     keywords:
       frontmatter.tags && frontmatter.tags.length > 0 ? frontmatter.tags.join(', ') : undefined,
     wordCount: post.content ? post.content.split(/\s+/).filter(Boolean).length : undefined,
@@ -240,8 +234,7 @@ export function BlogStructuredData({
       '@type': 'BlogPosting',
       headline: p.frontmatter.title,
       url: `${SITE_URL}/${locale}${postPath(p)}`,
-      datePublished: withZoneOffset(p.frontmatter.date),
-      dateModified: withZoneOffset(p.frontmatter.updatedAt ?? p.frontmatter.date),
+      ...articleDates(p.frontmatter),
       image: resolvePostImage(locale, p.slug, p.frontmatter),
     })),
   };
@@ -291,8 +284,7 @@ export function NewsListingStructuredData({
           '@type': 'NewsArticle',
           headline: newsHeadline(p.frontmatter),
           url: `${SITE_URL}/${locale}${postPath(p)}`,
-          datePublished: withZoneOffset(p.frontmatter.date),
-          dateModified: withZoneOffset(p.frontmatter.updatedAt ?? p.frontmatter.date),
+          ...articleDates(p.frontmatter),
           image: resolvePostImage(locale, p.slug, p.frontmatter),
         },
       })),

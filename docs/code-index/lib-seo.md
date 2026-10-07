@@ -44,7 +44,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `newsWindowStart` _function_: `YYYY-MM-DD` of the day `days` before `today` (also `YYYY-MM-DD`), counted in UTC.
 - `buildNewsSitemap` _function_: The news sitemap document. `postsByLocale` holds each locale's listed posts (articles included; they are filtered out here), `today` is the UTC date the file is built on.
 - `NEWS_SITEMAP_MAX_URLS` _const_: Google reads at most this many `<url>` entries from a news sitemap.
-- `NEWS_SITEMAP_WINDOW_DAYS` _const_: How many calendar days back a post still counts. Google wants the articles of the last 48 hours. A post carries a DATE, not a time (`date: 'YYYY-MM-DD'`), so a post dated two days ago may be 25 hours old or 71.
+- `NEWS_SITEMAP_WINDOW_DAYS` _const_: How many calendar days back a post still counts. Google wants the articles of the last 48 hours.
 - `NEWS_PUBLICATION_NAME` _const_: Publication name as Google News shows it. Must match the name in the Publisher Center.
 - Types: `NewsSitemapPost`
 

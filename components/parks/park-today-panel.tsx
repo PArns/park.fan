@@ -18,6 +18,7 @@ import { WeatherWarningBanner } from './weather-warning-banner';
 import { NowcastAlertBanner, NowcastAlertToggle, useNowcastAlert } from './weather-nowcast-banner';
 import { NowcastCoveredRides, coveredRowsOf } from './nowcast-covered-rides';
 import { ParkTimeRange } from '@/components/common/park-time';
+import { ParkEarlyEntryNote } from '@/components/parks/park-early-entry-note';
 import { Temp } from '@/components/common/unit-display';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { LocalTime } from '@/components/ui/local-time';
@@ -544,6 +545,7 @@ export function ParkTodayPanel({
                       {sched.timeUntil.message}
                     </span>
                   )}
+                  <ParkEarlyEntryNote />
                 </>
               ) : sched.offseason ? (
                 <span className="text-xs font-medium sm:text-sm">{sched.offseason.message}</span>

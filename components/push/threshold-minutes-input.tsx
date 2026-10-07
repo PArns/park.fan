@@ -1,6 +1,7 @@
 'use client';
 
 import type { CSSProperties } from 'react';
+import { HAIRLINE_FILL } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 import {
   DEFAULT_THRESHOLD_MIN,
@@ -87,7 +88,12 @@ export function ThresholdMinutesInput({
       </div>
 
       <div className="relative h-6">
-        <div className="bg-foreground/12 dark:bg-foreground/15 absolute top-1/2 h-1.5 w-full -translate-y-1/2 rounded-full" />
+        <div
+          className={cn(
+            HAIRLINE_FILL,
+            'absolute top-1/2 h-1.5 w-full -translate-y-1/2 rounded-full'
+          )}
+        />
         <div
           className="bg-primary absolute top-1/2 h-1.5 -translate-y-1/2 rounded-full"
           style={{ width: thumbOffset }}

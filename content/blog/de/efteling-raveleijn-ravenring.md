@@ -2,6 +2,7 @@
 title: 'Efteling öffnet Raveleijn am 1. Dezember wieder'
 translationKey: efteling-raveleijn-ravenring
 date: '2026-10-03'
+time: '21:59'
 author: patrick
 mode: published
 featured: false

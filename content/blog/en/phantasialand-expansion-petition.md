@@ -2,6 +2,7 @@
 title: 'Petition against Phantasialand’s expansion is under way'
 translationKey: phantasialand-expansion-petition
 date: '2026-10-01'
+time: '08:54'
 author: patrick
 mode: published
 featured: false
@@ -28,8 +29,9 @@ coverImage:
 seo:
   title: 'Ententeich: petition against Phantasialand expansion'
   description: >-
-    A citizens’ petition in Brühl started on 28 September. What the park wants
-    to build, which reports it pays for, and the Ententeich fight since 2003.
+    Since 28 September, the Netzwerk NSG Ententeich has been collecting
+    signatures against Phantasialand’s expansion. It needs 2,536 from Brühl by 9
+    November.
   keywords:
     - Phantasialand expansion
     - Phantasialand expansion Ententeich
@@ -216,7 +218,7 @@ vote, quoted by t-online, says:
 >
 > Ralf-Richard Kenter in Phantasialand’s statement of July 2026, quoted by [t-online on 14 July 2026](https://koeln.t-online.de/region/koeln/id_101342086/bruehl-phantasialand-bei-koeln-verteidigt-geplante-erweiterung.html), translated from German
 
-Some Brühl residents have been campaigning for the expansion since July, too.
+Some Brühl residents have been [campaigning for the expansion](/news/phantasialand-expansion-online-petition) since July, too.
 Eberhard Meyer founded the
 ["Bürgerforum Phantasialand Erweiterung"](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-neues-buergerforum-betont-positive-aspekte-des-phantasialand-ausbaus-1332586),
 a citizens’ forum, and sees the zoning procedure as the place where "all the

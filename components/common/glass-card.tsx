@@ -22,6 +22,13 @@ export const TILE_GLASS =
   'bg-background/75 backdrop-blur-2xl dark:bg-[oklch(0.13_0.02_241_/_0.75)]';
 
 /**
+ * The fill of a hairline or a slider track on {@link TILE_GLASS}. The foreground at a low opacity
+ * rather than the `--border` token: in the dark theme that token is white at 10 %, so any opacity
+ * modifier on it composites to nothing.
+ */
+export const HAIRLINE_FILL = 'bg-foreground/12 dark:bg-foreground/15';
+
+/**
  * {@link TILE_GLASS}'s fill without its blur, for a panel that blurs its own photograph instead of
  * the backdrop: the homepage compass, whose moving arrows would make a `backdrop-filter` flicker.
  * 75 % for the tile's reason, since its list is small print.

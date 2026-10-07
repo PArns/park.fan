@@ -828,6 +828,16 @@
       "title": "Vandaag nog niet in bedrijf",
       "lastRun": "Laatst in bedrijf: {when}"
     },
+    "rideOpensAt": {
+      "approx": "Opent rond {time}",
+      "firm": "Opent om {time}",
+      "detail": "Deze attractie start later dan het park."
+    },
+    "earlyEntry": {
+      "title": "Early Entry",
+      "detail": "Voor hotelgasten vóór opening",
+      "detailMinutes": "Voor hotelgasten, {minutes} min voor opening"
+    },
     "rideStatus": {
       "weekdayTime": "{weekday} {time} uur"
     },

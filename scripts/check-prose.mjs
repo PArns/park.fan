@@ -296,6 +296,134 @@ const ACCESS_DATE = {
   },
 };
 /**
+ * `Einen Zwischenstand hat es auf seiner Website bis zum 7. Oktober nicht genannt.` (§3.3, rule
+ * 15), in a news post dated 7 October: a non-event pinned to the post's own `date` or
+ * `updatedAt`, which is the day of the research. The post is dated already; the sentence says
+ * what the author found missing that morning. Matched per sentence: one of those two dates after
+ * `bis zum` / `by` / `tot` / `au` / `hasta el` / `al` and a negation in the same sentence.
+ * `Bis zum 7. Oktober haben 161 Menschen unterschrieben` has no negation and stays, and so does
+ * a stamp over a table (`Stand 6. Oktober 2026:`), whose colon ends the date.
+ */
+const MONTH_NAMES = {
+  de: 'Januar Februar März April Mai Juni Juli August September Oktober November Dezember',
+  en: 'January February March April May June July August September October November December',
+  nl: 'januari februari maart april mei juni juli augustus september oktober november december',
+  fr: 'janvier février mars avril mai juin juillet août septembre octobre novembre décembre',
+  es: 'enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre',
+  it: 'gennaio febbraio marzo aprile maggio giugno luglio agosto settembre ottobre novembre dicembre',
+};
+const PINNED_DATE = {
+  de: { by: '(?:bis(?: zum| zu| am)?|stand)', date: (d, m) => `${d}[._]\\s*${m}` },
+  en: {
+    by: '(?:by|until|till|as of)',
+    date: (d, m) => `(?:${d}(?:st|nd|rd|th)? ${m}|${m} ${d}(?:st|nd|rd|th)?)`,
+  },
+  nl: { by: '(?:tot(?: en met)?|per)', date: (d, m) => `${d} ${m}` },
+  fr: { by: "(?:au|jusqu['’]au)", date: (d, m) => `${d === 1 ? '1(?:er)?' : d} ${m}` },
+  es: { by: '(?:hasta el|a|al)', date: (d, m) => `${d} de ${m}` },
+  it: { by: '(?:al|fino al|entro il)', date: (d, m) => `${d === 1 ? '1[º°]?' : d} ${m}` },
+};
+const PINNED_NEGATION = {
+  de: /(?<!\p{L})(?:nicht|nichts|kein\p{L}*|nie)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:not|no|none|nothing|never)(?!\p{L})|n['’]t(?!\p{L})/iu,
+  nl: /(?<!\p{L})(?:niet|geen|niets|nooit)(?!\p{L})/iu,
+  fr: /(?<!\p{L})(?:ne|aucun\p{L}*|rien|jamais)(?!\p{L})|(?<!\p{L})n['’]/iu,
+  es: /(?<!\p{L})(?:no|ningún|ninguna|ninguno|nada|nunca)(?!\p{L})/iu,
+  it: /(?<!\p{L})(?:non|nessun\p{L}*|nulla|niente|mai)(?!\p{L})/iu,
+};
+
+/** The frontmatter `date` and `updatedAt` of a post, as `[day, month]` pairs. */
+function postDates(raw) {
+  const fm = raw.match(/^---\n([\s\S]*?)\n---\n/)?.[1] ?? '';
+  return [...fm.matchAll(/^(?:date|updatedAt):\s*['"]?\d{4}-(\d{2})-(\d{2})/gm)].map((m) => [
+    Number(m[2]),
+    Number(m[1]),
+  ]);
+}
+
+/**
+ * `…, habe ich am 1. Oktober aufgeschrieben` (§3.3, rule 16): an earlier post linked as the
+ * author's diary. The byline is a person and the archive is the site's, so a pointer to another
+ * post says `in unserem Beitrag vom 1. Oktober`. Matched per sentence: a link to `/blog/…` or
+ * `/news/…` and a first-person writing verb in the same sentence. `Ich habe die Petition
+ * unterschrieben` links no post and stays.
+ */
+const POST_LINK = /\]\((?:\/[a-z]{2})?\/(?:blog|news)\/[a-z0-9-]+/;
+const FIRST_PERSON_WROTE = {
+  de: /(?<!\p{L})(?:(?:habe|hatte|hab) ich [^.!?]{0,80}?(?:aufgeschrieben|geschrieben|beschrieben|erklärt|erzählt|zusammengefasst|vorgerechnet)|ich (?:schrieb|beschrieb|erklärte))(?!\p{L})/iu,
+  en: /(?<!\p{L})I(?:['’]ve| have| had)? (?:\p{L}+ )?(?:wrote|written|described|covered|explained|set out)(?!\p{L})/u,
+  nl: /(?<!\p{L})(?:(?:heb|had) ik [^.!?]{0,80}?(?:geschreven|beschreven|opgeschreven|uitgelegd)|ik (?:schreef|beschreef))(?!\p{L})/iu,
+  fr: /(?<!\p{L})(?:je l['’]ai|j['’]ai) (?:\p{L}+ )?(?:raconté|écrit|décrit|expliqué)(?!\p{L})/iu,
+  es: /(?<!\p{L})(?:(?:lo |la )?(?:conté|escribí|describí|expliqué)|he (?:contado|escrito|descrito|explicado))(?!\p{L})/iu,
+  it: /(?<!\p{L})(?:l['’])?ho (?:\p{L}+ )?(?:raccontat|scritt|descritt|spiegat)\p{L}*/iu,
+};
+
+/**
+ * §3.3 rules 15 and 16, posts and news only: the day of the research reported as a non-event,
+ * and an earlier post cited as the author's notebook. Warnings, not errors: both shapes were in
+ * the archive when the rules were written, and a person decides each one. Quote blocks and
+ * widget fences are someone else's words or not prose.
+ */
+function researchVoice(file, raw, locale) {
+  const text = raw
+    .replace(/^---\n[\s\S]*?\n---\n/, '')
+    .replace(/(?:^>.*(?:\n|$))+/gm, (block) => (/^>\s*\[!QUOTE\]/.test(block) ? '' : block))
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/^\s*[-*] .*\]\(https?:\/\/.*$/gm, '')
+    .replace(/^\s*\|.*$/gm, '')
+    .replace(/^\s*#{1,6} .*$/gm, '');
+  const all = splitSentences(text);
+  const rule = PINNED_DATE[locale];
+  if (rule) {
+    const months = MONTH_NAMES[locale].split(' ');
+    const pinned = postDates(raw).flatMap(([d, m]) => {
+      const re = new RegExp(
+        `(?<!\\p{L})${rule.by}\\s+(?:dem\\s+|the\\s+)?${rule.date(d, months[m - 1])}(?!(?:,?\\s+(?:de\\s+)?\\d{4})?\\s*:)`,
+        'iu'
+      );
+      return all.filter(
+        (s) => re.test(s.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')) && PINNED_NEGATION[locale].test(s)
+      );
+    });
+    if (pinned.length)
+      warn(
+        file,
+        `a non-event pinned to the post's own date (§3.3), say it in the present or leave it out: ${[
+          ...new Set(pinned),
+        ]
+          .slice(0, 2)
+          .map(
+            (s) =>
+              `"${s
+                .trim()
+                .replace(/(\d)_/g, '$1.')
+                .replace(/\]\([^)]*\)/g, ']')
+                .slice(0, 90)}"`
+          )
+          .join(' · ')}`
+      );
+  }
+  const wrote = FIRST_PERSON_WROTE[locale];
+  if (wrote) {
+    const diary = all.filter((s) => POST_LINK.test(s) && wrote.test(s));
+    if (diary.length)
+      warn(
+        file,
+        `another post linked as the author's notebook (§3.3), say "our post": ${diary
+          .slice(0, 2)
+          .map(
+            (s) =>
+              `"${s
+                .trim()
+                .replace(/\]\([^)]*\)/g, ']')
+                .slice(0, 90)}"`
+          )
+          .join(' · ')}`
+      );
+  }
+}
+
+/**
  * `in zwölf von zwölf ausgewerteten Parks` (§3.3, rule 13): completeness performed instead of
  * stated, where `in allen zwölf` says the same. It opened the excerpt of the rain guide in all six
  * languages (`twelve of twelve`, `twaalf van de twaalf`, `douze parcs sur douze`, `doce de doce`,
@@ -336,7 +464,7 @@ const WRONG_NOUN = {
 };
 /**
  * `der Park ist deshalb nicht ruhig`, `die Wartezeiten sind flach`, `Das Efteling liegt beim
- * Wochentag flach` (§3.3, rule 15): a mood or a shape handed to a park or a wait. A park is not
+ * Wochentag flach` (§3.3, rule 17): a mood or a shape handed to a park or a wait. A park is not
  * ruhig and a wait is not flach; it is short, or it barely changes, or a curve is flat. The first
  * stood in the planner's empty day (PAR-740) as a denial nobody needed, the others in two posts,
  * until Patrick put it on the list on 2026-10-07. German on every surface, in main clauses,
@@ -1226,6 +1354,7 @@ for (const locale of runs('blog') ? LOCALES : []) {
     ].join('\n');
     scan(`${file} (frontmatter and image text)`, frontAndImages, { skip: [SIGN_RULE] });
     researchNarration(file, `${body}\n\n${frontAndImages}`, locale);
+    researchVoice(file, raw, locale);
     databaseProse(file, raw, body, locale);
 
     if (/^category:\s*['"]?news\b/m.test(raw.match(/^---\n([\s\S]*?)\n---\n/)?.[1] ?? '')) {

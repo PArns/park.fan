@@ -51,6 +51,7 @@
     "test:ride-day-curve": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-day-curve.mjs",
     "test:umami-events": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-umami-events.mjs",
     "test:park-day-over": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-day-over.mjs",
+    "test:ride-openings": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-openings.mjs",
     "test:typical-waits": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-typical-waits.mjs",
     "test:ride-crowd-scale": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-crowd-scale.mjs",
     "test:planner-actions": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-actions.mjs",

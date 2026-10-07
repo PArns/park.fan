@@ -2,6 +2,7 @@
 title: 'Une pétition contre l’agrandissement de Phantasialand'
 translationKey: phantasialand-expansion-petition
 date: '2026-10-01'
+time: '08:54'
 author: patrick
 mode: published
 featured: false
@@ -26,10 +27,10 @@ coverImage:
   caption: 'Chiapas, zone Mexico. Sur son terrain actuel, le parc dit ne plus pouvoir que remplacer une attraction par une autre.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Ententeich : pétition contre l’agrandissement de Phantasialand'
+  title: 'Pétition contre l’agrandissement de Phantasialand'
   description: >-
-    À Brühl, une pétition circule depuis le 28 septembre. Ce que le parc veut
-    construire, les études qu’il paie et le conflit de l’Ententeich depuis 2003.
+    Depuis le 28 septembre, le Netzwerk NSG Ententeich recueille des signatures
+    contre l’agrandissement de Phantasialand. Il lui en faut 2 536 de Brühl.
   keywords:
     - Phantasialand agrandissement
     - Phantasialand agrandissement Ententeich
@@ -232,8 +233,8 @@ après le vote de la commission, citée par t-online, on lit :
 >
 > Ralf-Richard Kenter dans la déclaration de Phantasialand de juillet 2026, citée par [t-online le 14 juillet 2026](https://koeln.t-online.de/region/koeln/id_101342086/bruehl-phantasialand-bei-koeln-verteidigt-geplante-erweiterung.html), traduit de l’allemand
 
-Depuis juillet, des habitants de Brühl font aussi campagne pour
-l’agrandissement. Eberhard Meyer a fondé le
+Depuis juillet, des habitants de Brühl font aussi
+[campagne pour l’agrandissement](/news/phantasialand-agrandissement-petition-en-ligne). Eberhard Meyer a fondé le
 [« Bürgerforum Phantasialand Erweiterung »](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-neues-buergerforum-betont-positive-aspekte-des-phantasialand-ausbaus-1332586),
 un forum citoyen, et considère la procédure d’urbanisme comme l’endroit où l’on
 mettra « tous les faits sur la table ». Georg Frey, président de la fédération
