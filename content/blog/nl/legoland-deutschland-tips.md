@@ -82,7 +82,7 @@ zwaar en met 30.000 minifiguren op de tribunes, en in het Reichstaggebouw uit Be
 1,07 miljoen steentjes. De jongste themawereld is **LEGO Mythica**, geopend op 25 maart 2023. Met ruim
 € 15 miljoen was het de duurste uitbreiding van het park, en de wing coaster daar is de eerste nieuwe achtbaan in Legoland Deutschland in zo’n 20 jaar.
 
-![Het opengesneden stadionmodel met volle tribunes, een groen veld en een rode spelersbus ervoor. | De Allianz Arena in Miniland, opengesneden zodat de tribunes zichtbaar blijven. | wide](/media/legoland-deutschland/allianz-arena-16x9.jpg)
+![Het opengesneden stadionmodel met volle tribunes, een groen veld en een rode spelersbus ervoor. | De Allianz Arena in Miniland, opengesneden zodat de tribunes zichtbaar blijven. Foto: Gzen92, Wikimedia Commons (CC BY-SA 4.0) | wide](/media/legoland-deutschland/allianz-arena-16x9.jpg)
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
@@ -135,7 +135,7 @@ langs de voorraadkamer, de keuken, de feestzaal en Merlins schatkamer, alles van
 draak de passagiers op, en op het buitenparcours gaat het met tot acht meter per seconde door de
 bochten, dat is net geen 29 km/u. Een kind mag met een volwassene mee vanaf 1,10 meter en zes jaar.
 
-![De drakentrein op de top van het buitenparcours, daaronder de rails van het tweede deel. | Het tweede deel van de rit begint zodra de draak de passagiers opmerkt. | wide](/media/legoland-deutschland/fire-dragon-16x9.jpg)
+![De drakentrein op de top van het buitenparcours, daaronder de rails van het tweede deel. | Het tweede deel van de rit begint zodra de draak de passagiers opmerkt. Foto: GT1976, Wikimedia Commons (CC BY-SA 4.0) | wide](/media/legoland-deutschland/fire-dragon-16x9.jpg)
 
 **[Das Große LEGO Rennen](ref:legoland-deutschland/the-great-lego-race)** is een wilde muis van Mack
 Rides, 18 meter hoog, volgens Wikipedia 400 meter lang en tot 56 km/u snel. De baan reed eerder als

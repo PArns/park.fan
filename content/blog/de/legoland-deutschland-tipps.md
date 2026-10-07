@@ -84,7 +84,7 @@ rund 1,07 Millionen Steine. Die jüngste Themenwelt ist **LEGO Mythica**, die am
 eröffnet hat. Sie war mit über 15 Millionen Euro die teuerste Erweiterung des Parks, und ihr Wing
 Coaster ist die erste neue Achterbahn im Legoland Deutschland seit gut 20 Jahren.
 
-![Das aufgeschnittene Stadionmodell mit vollen Rängen, grünem Spielfeld und einem roten Mannschaftsbus davor. | Die Allianz Arena im Miniland, aufgeschnitten, damit die Ränge sichtbar bleiben. | wide](/media/legoland-deutschland/allianz-arena-16x9.jpg)
+![Das aufgeschnittene Stadionmodell mit vollen Rängen, grünem Spielfeld und einem roten Mannschaftsbus davor. | Die Allianz Arena im Miniland, aufgeschnitten, damit die Ränge sichtbar bleiben. Foto: Gzen92, Wikimedia Commons (CC BY-SA 4.0) | wide](/media/legoland-deutschland/allianz-arena-16x9.jpg)
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
@@ -140,7 +140,7 @@ Dann bemerkt der Drache die Fahrgäste, und auf der Außenstrecke geht es mit bi
 Sekunde durch die Kurven, das sind knapp 29 km/h. Ein Kind darf mit Erwachsenem ab 1,10 Metern und
 sechs Jahren mitfahren.
 
-![Der Drachenzug auf der Kuppe der Außenstrecke, darunter die Schienen des zweiten Streckenteils. | Der zweite Teil der Fahrt beginnt, wenn der Drache die Fahrgäste bemerkt. | wide](/media/legoland-deutschland/fire-dragon-16x9.jpg)
+![Der Drachenzug auf der Kuppe der Außenstrecke, darunter die Schienen des zweiten Streckenteils. | Der zweite Teil der Fahrt beginnt, wenn der Drache die Fahrgäste bemerkt. Foto: GT1976, Wikimedia Commons (CC BY-SA 4.0) | wide](/media/legoland-deutschland/fire-dragon-16x9.jpg)
 
 **[Das Große LEGO Rennen](ref:legoland-deutschland/the-great-lego-race)** ist eine Wilde Maus von
 Mack Rides, 18 Meter hoch, nach Angaben der Wikipedia 400 Meter lang und bis zu 56 km/h schnell. Sie
