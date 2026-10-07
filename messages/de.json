@@ -2445,8 +2445,8 @@
         "unknown": "Der Park gibt keine lesbaren Wartezeiten aus. Deshalb gibt es hier keine Kurven."
       },
       "never_measured": "Von diesem Park sind uns noch keine Wartezeiten zugegangen, deshalb gibt es noch keine Kurven.",
-      "feed_stale": "Die Wartezeiten dieses Parks erreichen uns seit {days, plural, one {# Tag} other {# Tagen}} nicht mehr. Die Störung liegt bei uns, der Park ist deshalb nicht ruhig.",
-      "feed_stale_unknown": "Die Wartezeiten dieses Parks erreichen uns derzeit nicht. Die Störung liegt bei uns, der Park ist deshalb nicht ruhig.",
+      "feed_stale": "Von diesem Park kommen seit {days, plural, one {# Tag} other {# Tagen}} keine Wartezeiten mehr bei uns an. Der Fehler liegt bei uns.",
+      "feed_stale_unknown": "Von diesem Park kommen gerade keine Wartezeiten bei uns an. Der Fehler liegt bei uns.",
       "rides_cannot_open": "An diesem Tag ist jedes Fahrgeschäft außerhalb der Saison oder im Umbau. Probier einen anderen Tag.",
       "insufficient_history": "Für diesen Park fehlen noch genug Messtage für Kurven. Probier einen anderen Tag.",
       "no_hourly_shape": "Die Fahrgeschäfte dieses Parks haben zu unterschiedliche Zeiten, daraus lässt sich noch kein Tagesverlauf bilden.",

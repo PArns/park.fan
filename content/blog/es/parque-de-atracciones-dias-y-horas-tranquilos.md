@@ -75,8 +75,8 @@ quedan muy juntos, y en Walibi Holland el sábado es uno de los días más vací
 Con las horas también hay un patrón. En la mayoría de los parques, la espera de
 la primera hora tras la apertura es claramente más corta que después. Luego la
 cola crece y en nueve parques alcanza su máximo entre las diez y las doce. En
-ocho parques, la última o la penúltima hora es la más tranquila. Phantasialand y
-Heide Park se quedan planos entre medias, y en Legoland y Movie Park por la
+ocho parques, la última o la penúltima hora es la más tranquila. En Phantasialand y
+Heide Park la espera apenas cambia el resto del día, y en Legoland y Movie Park por la
 tarde vuelve a haber más gente.
 
 La página [Mejor época para visitar](/mejor-epoca-para-visitar) te muestra los
@@ -216,7 +216,7 @@ Renania del Norte-Westfalia. Cómo aguantarlo igualmente lo explica la
 
 ## Efteling
 
-[Efteling](ref:efteling) es plano con los días de la semana. Sábado y domingo
+En [Efteling](ref:efteling) los días de la semana apenas se diferencian. Sábado y domingo
 van algo más llenos, el lunes queda en medio, y el jueves es el día más tranquilo,
 seguido de martes y miércoles. Un lunes en Efteling va algo más lleno que un
 martes.

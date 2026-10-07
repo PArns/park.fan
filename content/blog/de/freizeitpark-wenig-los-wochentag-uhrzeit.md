@@ -78,8 +78,8 @@ Auch bei der Uhrzeit gibt es ein Muster. In den meisten Parks ist die Wartezeit
 in der ersten Stunde nach dem Öffnen deutlich kürzer als später. Danach baut sich
 die Warteschlange auf und erreicht in neun Parks zwischen zehn und zwölf Uhr ihren
 Höchststand. In acht Parks ist die letzte oder vorletzte Stunde die ruhigste.
-Phantasialand und Heide Park bleiben dazwischen flach, und im Legoland und im
-Movie Park wird es abends wieder voller.
+Im Phantasialand und im Heide Park bleibt die Wartezeit danach bis zum Abend fast
+gleich, und im Legoland und im Movie Park wird es abends wieder voller.
 
 Die Seite [Beste Reisezeit](/beste-reisezeit) zeigt dir die ruhigsten Tage für
 deinen Reisemonat. Hier stehen zwölf Parks nebeneinander, mit den Daten, die
@@ -218,7 +218,7 @@ beginnen. Wie du ihn trotzdem schaffst, steht im
 
 ## Efteling
 
-Das [Efteling](ref:efteling) liegt beim Wochentag flach. Samstag und Sonntag sind
+Im [Efteling](ref:efteling) unterscheiden sich die Wochentage kaum. Samstag und Sonntag sind
 etwas voller, Montag liegt dazwischen, und Donnerstag ist der ruhigste Tag,
 gefolgt von Dienstag und Mittwoch. Ein Montag ist im Efteling etwas voller als ein
 Dienstag.

@@ -76,8 +76,8 @@ dagen.
 Ook bij het tijdstip zie je een patroon. In de meeste parken is de wachttijd in
 het eerste uur na opening duidelijk korter dan later. Daarna loopt de rij op en
 bereikt in negen parken tussen tien en twaalf uur het hoogste punt. In acht
-parken is het laatste of een-na-laatste uur het rustigst. Phantasialand en Heide
-Park blijven ertussen vlak, en in Legoland en Movie Park wordt het in de avond
+parken is het laatste of een-na-laatste uur het rustigst. In Phantasialand en Heide
+Park blijft de wachttijd daarna tot de avond bijna gelijk, en in Legoland en Movie Park wordt het in de avond
 weer drukker.
 
 De pagina [Beste reistijd](/beste-tijd-om-te-bezoeken) laat je de rustigste
@@ -214,7 +214,7 @@ Hoe je het toch redt, staat in de [Phantasialand-gids](/blog/phantasialand-wacht
 
 ## Efteling
 
-De [Efteling](ref:efteling) ligt qua weekdag vlak. Zaterdag en zondag zijn wat
+In de [Efteling](ref:efteling) verschillen de weekdagen nauwelijks. Zaterdag en zondag zijn wat
 drukker, maandag ligt ertussen, en donderdag is de rustigste dag, gevolgd door
 dinsdag en woensdag. Een maandag is in de Efteling iets drukker dan een dinsdag.
 
