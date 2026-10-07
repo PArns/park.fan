@@ -1,0 +1,7 @@
+### Die Wartezeit-Alarme stehen im Kopf des Headliner-Abschnitts
+
+Der Hinweis aus PAR-375 war eine eigene Karte über die volle Breite, zwischen dem Headliner-Abschnitt und dem ersten Bereich. Auf der Movie-Park-Seite stand „Van Helsing's Factory" als zehnter Headliner allein in der letzten Reihe, darunter die Karte, darunter „Halloween-Mazes". Sie gehörte zu keinem der beiden Abschnitte.
+
+`RideAlertsEntryButton` hat statt `nudge` jetzt die Variante `heading`, einen Button am Ende der Headliner-Überschrift hinter einer Haarlinie. `LandSection` nimmt ihn als `action` entgegen, `TabsWithHash` memoisiert ihn, damit der Abschnitt sein `memo` auch bei einem Tab-Wechsel behält. Auf dem Telefon zeigt er nur die Glocke und die Zahl der gesetzten Alarme, die Beschriftung bleibt für Screenreader im Button. Sind für den Park Alarme gesetzt, trägt er die amberfarbene Glocke der Karten. Der Satz, was ein Alarm tut (`pushAlerts.rideDialog.nudge`), steht jetzt im `title`. Die Überschrift bleibt mit Button so hoch wie ohne, 50 px auf 390 px und 62 px auf 1305 px, gemessen gegen „Halloween-Mazes". Die Seite wird auf Movie Park 138 px (390 px) und 98 px (1305 px) kürzer, die Karte und ihr Abstand. Ein gesetzter Filter blendet den Button nicht mehr aus, während der Suche ist der Headliner-Abschnitt wie bisher ganz verborgen.
+
+Die Farbe der Haarlinien und Slider-Schienen auf Glas (`bg-foreground/12 dark:bg-foreground/15`) stand an vier Stellen und wäre mit der neuen Linie die fünfte gewesen. Sie liegt jetzt als `HAIRLINE_FILL` in `components/common/glass-card.tsx`.

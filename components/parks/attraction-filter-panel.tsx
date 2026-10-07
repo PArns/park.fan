@@ -27,7 +27,7 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
 import { OffSeasonToggle } from '@/components/parks/off-season-toggle';
 import { FilterToggle } from '@/components/parks/filter-toggle';
 import { RiderHeightFilter } from '@/components/parks/rider-height-filter';
-import { TILE_GLASS } from '@/components/common/glass-card';
+import { HAIRLINE_FILL, TILE_GLASS } from '@/components/common/glass-card';
 import type { WetMode } from '@/lib/hooks/use-attraction-filter';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatRiderHeight } from '@/lib/utils/temperature';
@@ -83,12 +83,13 @@ interface AttractionFilterPanelProps {
  * that are already apart. The captions do that job there.
  */
 function CellDivider() {
-  // `bg-foreground/…` rather than the `--border` token: in the dark theme that token is white at
-  // 10 %, so any opacity modifier on it composites to nothing. The slider's track uses the same.
   return (
     <div
       aria-hidden="true"
-      className="bg-foreground/12 dark:bg-foreground/15 hidden w-px self-center @min-[768px]/page:block @min-[768px]/page:h-14"
+      className={cn(
+        HAIRLINE_FILL,
+        'hidden w-px self-center @min-[768px]/page:block @min-[768px]/page:h-14'
+      )}
     />
   );
 }
@@ -235,7 +236,7 @@ export function AttractionFilterPanel({
         {hasToday && hasTraits && (
           <div
             aria-hidden="true"
-            className="bg-foreground/12 dark:bg-foreground/15 mt-6 hidden w-px self-stretch sm:block"
+            className={cn(HAIRLINE_FILL, 'mt-6 hidden w-px self-stretch sm:block')}
           />
         )}
 

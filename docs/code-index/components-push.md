@@ -35,7 +35,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`ride-alerts-entry-button.tsx`](../../components/push/ride-alerts-entry-button.tsx)
 
-- `RideAlertsEntryButton` _component_: The central "manage wait-time alerts" entry point for this park — sits beside `allAttractionsLink` in `ParkTodayPanel`'s headliner column rather than in the panel's own tightly-measured header strip (see that file's own comment on why …
+- `RideAlertsEntryButton` _component_: The central "manage wait-time alerts" entry point for this park, in two places: beside `allAttractionsLink` in `ParkTodayPanel`'s headliner column rather than in the panel's own tightly-measured header strip (see that file's own comment on …
 
 ### [`show-follow-bell.tsx`](../../components/push/show-follow-bell.tsx)
 

@@ -1,8 +1,8 @@
-import { memo } from 'react';
+import { memo, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { Crown, LayoutGrid } from 'lucide-react';
 import { AttractionCard } from './attraction-card';
-import { TILE_GLASS } from '@/components/common/glass-card';
+import { HAIRLINE_FILL, TILE_GLASS } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import type { ParkAttraction, ParkStatus } from '@/lib/api/types';
@@ -30,6 +30,12 @@ interface LandSectionProps {
   parkName: string;
   /** The headliners' section: the crown the cards carry, in their amber, for the grid icon. */
   headliner?: boolean;
+  /**
+   * A control at the end of the heading, behind a hairline. It has to fit the heading's line,
+   * 32 px high on both sides of `sm`, so the heading keeps its height whether it is there or not.
+   * Memoise it at the call site, or every render of the parent re-renders the whole land.
+   */
+  action?: ReactNode;
 }
 
 /**
@@ -49,6 +55,7 @@ export const LandSection = memo(function LandSection({
   todayIso,
   parkName,
   headliner = false,
+  action,
 }: LandSectionProps) {
   const t = useTranslations('parks');
   const operatingCount = attractions.filter(
@@ -92,6 +99,12 @@ export const LandSection = memo(function LandSection({
               : t('operatingCount', { count: operatingCount, total: attractions.length })}
           </p>
         </div>
+        {action && (
+          <>
+            <div aria-hidden="true" className={cn(HAIRLINE_FILL, 'h-8 w-px shrink-0 max-sm:h-6')} />
+            {action}
+          </>
+        )}
       </div>
 
       {/* Below `sm` every card is a compact row (`phoneRow`), so the list tightens and each <li>
