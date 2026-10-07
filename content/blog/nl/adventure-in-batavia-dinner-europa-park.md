@@ -60,9 +60,8 @@ uur en einde om 23.00 uur:
 | 2 januari 2027   | zaterdag  |
 | 7 januari 2027   | donderdag |
 
-De toegang is bij de hoteltoegang van Europa-Park, en parkeren is gratis op de
-parkeerplaats van hotel “El Andaluz”. Gegeten wordt in restaurant Bamboe Baai in
-het Nederlandse themagebied, dat Aziatisch kookt.
+Je gaat naar binnen via de hoteltoegang van Europa-Park, en parkeren is gratis op de
+parkeerplaats van hotel “El Andaluz”. Je eet in restaurant Bamboe Baai, dat Aziatisch kookt en in het Nederlandse themagebied ligt.
 
 ## Wat het kost en wat erbij zit
 
@@ -78,7 +77,7 @@ Volwassenen vanaf 12 jaar betalen € 155, kinderen van 4 tot en met 11 jaar
 Alle acht avonden vallen in een seizoen. Volgens de seizoensdata van het park
 loopt Halloween tot en met 1 november, HALLOWinter van 2 tot en met 27 november
 en Winterzauber van 28 november tot en met 9 januari 2027. Andere kosten noemt
-de pagina niet. Een hotelovernachting is een apart aanbod: de
+de pagina niet. Een hotelovernachting is een apart aanbod. De
 evenementenpagina verwijst naar een combinatie van evenement en hotel, zonder
 daar een prijs bij te zetten.
 
@@ -96,8 +95,7 @@ veld”) en chocolademousse met framboos.
 Katja Mack voert de regie. Zangers, dansers, acteurs en acrobaten spelen vaste
 rollen, onder wie figuren uit de rit zoals Bartholomeus van Robbemond. Een deel
 van de muziek is speciaal gecomponeerd, en het park ontwikkelde twee
-luchtacrobatiekacts met leden van de TALENT ACADEMY Europa-Park die er al lang
-bij zijn. Hoe lang de rit aan het begin duurt en hoeveel plaatsen er per avond
+luchtacrobatiekacts met langjarige leden van de TALENT ACADEMY Europa-Park. Hoe lang de rit aan het begin duurt en hoeveel plaatsen er per avond
 zijn, staat noch in het persbericht noch op de evenementenpagina.
 
 ## De attractie erachter
@@ -105,23 +103,18 @@ zijn, staat noch in het persbericht noch op de evenementenpagina.
 Piraten in Batavia opende in 1987. Op 26 mei 2018 brak in een opslaghal brand
 uit die oversloeg op de attractie. Sinds 28 juli 2020 varen de boten weer, in
 een nieuw gebouw, en acht figuren komen nog uit de oude versie. De bronnen
-staan in de [Europa-Park-gids](/blog/europa-park-wachttijden-tips). Bij het
-diner is de rit de opening, daarna verhuist de avond naar het restaurant.
+staan in de [Europa-Park-gids](/blog/europa-park-wachttijden-tips).
 
 ## Boeken
 
 De kaartjes staan op de evenementenpagina van het park, en groepen vanaf 20
-personen sturen een aanvraag via het contactformulier. Het park behoudt zich
-wijzigingen voor. Het telefoonnummer van het resort is +49 7822 77-6688.
+personen sturen een aanvraag via het contactformulier. Het park mag het programma wijzigen. Het telefoonnummer van het resort is +49 7822 77-6688.
 
 Kom je op een van de twee oktoberavonden, dan staat in het
 [Halloween-overzicht](/blog/halloween-pretparken-2026) en in het bericht over
 [tien jaar Traumatica](/blog/traumatica-tien-jaar-europa-park) wat er verder in
 het park te doen is. Voor de avonden in december en januari is er het
 [winteroverzicht](/blog/winter-pretparken-2026).
-
-De toegang geldt al vanaf 17.00 uur, dus je kunt voor het diner al in het park
-zijn.
 
 ```best-days-widget slug=europa-park
 
@@ -130,6 +123,6 @@ zijn.
 Bronnen: de [evenementenpagina van Adventure in Batavia](https://www.europapark.de/de/events/adventure-batavia-immersive-dinner-experience),
 het [persbericht van de MACK Gruppe van 6 oktober 2026](https://mack.group/de/presse-medien/pressemitteilungen/2026-10-06/einzigartige-dinner-experience-mit-den-piraten-in-batavia-im-europa-park-adventure-in-batavia),
 de [openingstijden en seizoenen van Europa-Park](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons)
-en voor de geschiedenis van de attractie de [Europa-Park-gids](/blog/europa-park-wachttijden-tips) met zijn bronnen. Geraadpleegd op 7 oktober 2026.
+en voor de geschiedenis van de attractie de [Europa-Park-gids](/blog/europa-park-wachttijden-tips) met zijn bronnen.
 
 — Patrick

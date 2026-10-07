@@ -62,7 +62,7 @@ La página del evento enumera ocho fechas, con inicio a las 19:30 y final a las
 
 La entrada es por el acceso del hotel de Europa-Park, y el aparcamiento del
 hotel «El Andaluz» es gratuito. La cena se sirve en el restaurante Bamboe Baai,
-en la zona temática neerlandesa, que ofrece cocina asiática.
+que ofrece cocina asiática y está en la zona temática neerlandesa.
 
 ## Cuánto cuesta y qué incluye
 
@@ -71,14 +71,14 @@ incluido. Según la página del evento, el precio incluye:
 
 - un paseo en Pirates in Batavia, con el aperitivo servido a bordo
 - un menú de cuatro platos
-- una bebida libre hasta el final del evento
+- un paquete de bebidas hasta el final del evento
 - el espectáculo entre plato y plato
 - la entrada a Europa-Park desde las 17:00, mientras sea temporada
 
 Las ocho noches caen dentro de una temporada. Según las fechas del parque,
 Halloween llega hasta el 1 de noviembre, HALLOWinter va del 2 al 27 de
 noviembre y Winterzauber del 28 de noviembre al 9 de enero de 2027. La página
-no menciona otros costes. La noche de hotel es una oferta aparte: la página del
+no menciona otros costes. La noche de hotel es una oferta aparte. La página del
 evento enlaza un paquete de evento más hotel, sin indicar su precio.
 
 ## Menú y espectáculo
@@ -105,8 +105,7 @@ Pirates in Batavia abrió en 1987. El 26 de mayo de 2018 se declaró un incendio
 en un almacén que se extendió a la atracción. Los barcos navegan de nuevo desde
 el 28 de julio de 2020, en un edificio nuevo, y ocho figuras siguen siendo de la
 versión antigua. Las fuentes están en la
-[guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos). En la cena,
-el paseo hace de apertura y luego la noche pasa al restaurante.
+[guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos).
 
 ## Reservar
 
@@ -121,9 +120,6 @@ sobre los [diez años de Traumatica](/blog/traumatica-diez-anos-europa-park)
 cuentan qué más pasa en el parque. Para las noches de diciembre y enero está el
 [resumen de invierno](/blog/parques-atracciones-invierno-2026).
 
-La entrada vale desde las 17:00, así que puedes estar en el parque antes de la
-cena.
-
 ```best-days-widget slug=europa-park
 
 ```
@@ -131,6 +127,6 @@ cena.
 Fuentes: la [página del evento Adventure in Batavia](https://www.europapark.de/de/events/adventure-batavia-immersive-dinner-experience),
 la [nota de prensa del grupo MACK del 6 de octubre de 2026](https://mack.group/de/presse-medien/pressemitteilungen/2026-10-06/einzigartige-dinner-experience-mit-den-piraten-in-batavia-im-europa-park-adventure-in-batavia),
 los [horarios y temporadas de Europa-Park](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons)
-y, para la historia de la atracción, la [guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos) con sus fuentes. Consultadas el 7 de octubre de 2026.
+y, para la historia de la atracción, la [guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos) con sus fuentes.
 
 — Patrick

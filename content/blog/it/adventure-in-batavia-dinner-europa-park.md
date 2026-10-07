@@ -60,8 +60,7 @@ La pagina dell’evento elenca otto date, con inizio alle 19:30 e fine alle 23:0
 | 7 gennaio 2027   | giovedì |
 
 L’ingresso è all’entrata dell’hotel di Europa-Park, e il parcheggio dell’hotel
-«El Andaluz» è gratuito. Si cena al ristorante Bamboe Baai, nell’area a tema
-olandese, che serve cucina asiatica.
+«El Andaluz» è gratuito. Si cena al ristorante Bamboe Baai, che serve cucina asiatica e si trova nell’area a tema olandese.
 
 ## Quanto costa e cosa comprende
 
@@ -77,7 +76,7 @@ inclusa. Secondo la pagina dell’evento, il prezzo comprende:
 Tutte e otto le serate cadono in una stagione. Secondo le date del parco,
 Halloween dura fino al 1° novembre, HALLOWinter va dal 2 al 27 novembre e
 Winterzauber dal 28 novembre al 9 gennaio 2027. La pagina non indica altri
-costi. Il pernottamento è un’offerta a parte: la pagina dell’evento rimanda a un
+costi. Il pernottamento è un’offerta a parte. La pagina dell’evento rimanda a un
 pacchetto evento più hotel, senza indicarne il prezzo.
 
 ## Menu e spettacolo
@@ -104,8 +103,7 @@ Pirates in Batavia ha aperto nel 1987. Il 26 maggio 2018 è scoppiato un incendi
 in un magazzino che si è esteso all’attrazione. Le barche navigano di nuovo dal
 28 luglio 2020, in un edificio nuovo, e otto figure vengono ancora dalla vecchia
 versione. Le fonti sono nella
-[guida di Europa-Park](/blog/europa-park-tempi-di-attesa-consigli). Alla cena il
-giro fa da apertura, poi la serata si sposta al ristorante.
+[guida di Europa-Park](/blog/europa-park-tempi-di-attesa-consigli).
 
 ## Prenotare
 
@@ -119,8 +117,6 @@ sui [dieci anni di Traumatica](/blog/traumatica-dieci-anni-europa-park)
 raccontano cos’altro c’è nel parco. Per le serate di dicembre e gennaio c’è la
 [panoramica dell’inverno](/blog/parchi-divertimenti-inverno-2026).
 
-L’ingresso vale dalle 17:00, quindi puoi essere nel parco prima della cena.
-
 ```best-days-widget slug=europa-park
 
 ```
@@ -128,6 +124,6 @@ L’ingresso vale dalle 17:00, quindi puoi essere nel parco prima della cena.
 Fonti: la [pagina dell’evento Adventure in Batavia](https://www.europapark.de/de/events/adventure-batavia-immersive-dinner-experience),
 il [comunicato stampa del gruppo MACK del 6 ottobre 2026](https://mack.group/de/presse-medien/pressemitteilungen/2026-10-06/einzigartige-dinner-experience-mit-den-piraten-in-batavia-im-europa-park-adventure-in-batavia),
 gli [orari e le stagioni di Europa-Park](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons)
-e, per la storia dell’attrazione, la [guida di Europa-Park](/blog/europa-park-tempi-di-attesa-consigli) con le sue fonti. Consultate il 7 ottobre 2026.
+e, per la storia dell’attrazione, la [guida di Europa-Park](/blog/europa-park-tempi-di-attesa-consigli) con le sue fonti.
 
 — Patrick

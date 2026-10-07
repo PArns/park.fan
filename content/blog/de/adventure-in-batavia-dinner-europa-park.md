@@ -62,8 +62,7 @@ Die acht Termine stehen auf der Eventseite des Parks, jeweils mit Beginn um
 | 7. Januar 2027    | Donnerstag |
 
 Eingelassen wird am Hoteleingang des Europa-Park, parken kannst du kostenlos
-auf dem Parkplatz des Hotels „El Andaluz“. Gegessen wird im Restaurant Bamboe
-Baai, das im niederländischen Themenbereich liegt und asiatisch kocht.
+auf dem Parkplatz des Hotels „El Andaluz“. Du isst im Restaurant Bamboe Baai, das asiatisch kocht und im niederländischen Themenbereich liegt.
 
 ## Was es kostet und was drin ist
 
@@ -79,7 +78,7 @@ inklusive Mehrwertsteuer. Im Preis stehen laut Eventseite:
 Die Saison deckt alle acht Abende ab. Nach den Saisonzeiten des Parks laufen
 Halloween bis zum 1. November, HALLOWinter vom 2. bis 27. November und
 Winterzauber vom 28. November bis zum 9. Januar 2027. Weitere Kosten nennt die
-Seite nicht. Die Übernachtung ist ein getrenntes Angebot: Die Eventseite
+Seite nicht. Die Übernachtung ist ein getrenntes Angebot. Die Eventseite
 verlinkt eine Kombination aus Event und Hotel, ohne einen Preis dafür
 anzugeben.
 
@@ -91,7 +90,7 @@ Poularde und zum Nachtisch Ananas im Knuspermantel mit Pandan, Honig und
 Pistazien. Das vegetarische Menü ersetzt Lachs und Garnele durch Tofu und eine
 vegane Suppe mit Gemüsedumpling und nimmt im Biryani Paneer statt Poularde.
 Das Kindermenü besteht aus einer Tramezzini-Rolle, einer Karottencremesuppe,
-Maispoularde mit Kartoffelgratin (auf Wunsch mit veganem Rind vom Feld) und
+Maispoularde mit Kartoffelgratin (auf Wunsch mit „veganem Rind vom Feld“) und
 Schokoladenmousse mit Himbeere.
 
 Katja Mack führt Regie. Sänger, Tänzer, Schauspieler und Akrobaten spielen feste
@@ -107,8 +106,6 @@ Piraten in Batavia hat 1987 eröffnet. Am 26. Mai 2018 brach in einer Lagerhalle
 Feuer aus und griff auf die Anlage über. Seit dem 28. Juli 2020 fahren die
 Boote in einem Neubau wieder, acht Figuren stammen noch aus der alten Fassung. Die
 Quellen dazu stehen im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
-Beim Dinner läuft die Fahrt als Auftakt, danach wechselt der Abend ins
-Restaurant.
 
 ## Buchen
 
@@ -122,8 +119,6 @@ Wer an einem der beiden Oktoberabende kommt, findet im
 sonst läuft. Für die Abende im Dezember und Januar steht der
 [Winter-Überblick](/blog/winter-freizeitparks-2026) bereit.
 
-Der Eintritt gilt schon ab 17:00 Uhr, du kannst also vor dem Dinner im Park sein.
-
 ```best-days-widget slug=europa-park
 
 ```
@@ -131,6 +126,6 @@ Der Eintritt gilt schon ab 17:00 Uhr, du kannst also vor dem Dinner im Park sein
 Quellen: die [Eventseite zu Adventure in Batavia](https://www.europapark.de/de/events/adventure-batavia-immersive-dinner-experience),
 die [Pressemitteilung der Mack Gruppe vom 6. Oktober 2026](https://mack.group/de/presse-medien/pressemitteilungen/2026-10-06/einzigartige-dinner-experience-mit-den-piraten-in-batavia-im-europa-park-adventure-in-batavia),
 die [Öffnungszeiten und Saisons des Europa-Parks](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons)
-und für die Geschichte der Fahrt der [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps) mit seinen Quellen. Abgerufen am 7. Oktober 2026.
+und für die Geschichte der Fahrt der [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps) mit seinen Quellen.
 
 — Patrick
