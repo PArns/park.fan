@@ -325,12 +325,13 @@ export function AttractionCard({
             on `parkName`, not on the bell actually drawn, because whether the bell renders
             depends on a localStorage read, and a client-only preference may not decide
             server-rendered markup. A phone row overrides it below `sm` (hence the `!`): the
-            reservation moves onto the first line and the badge line runs the full width. */}
+            reservation moves onto the first line, the badge line runs the full width, and the
+            sides and the bottom take the 8 px the star keeps from the card's edge. */}
         <div
           className={cn(
             'pk-panel-top relative z-[3] -mb-4 overflow-hidden',
             seamOnClass && 'pk-panel-seam-sm',
-            phoneRow && 'max-sm:mb-0 max-sm:pt-[10px]! max-sm:pr-3! max-sm:pb-2! max-sm:pl-3.5!'
+            phoneRow && 'max-sm:mb-0 max-sm:pt-[10px]! max-sm:pr-2! max-sm:pb-2! max-sm:pl-2!'
           )}
           style={{
             padding: `14px ${cornerReserve}px 13px 16px`,
@@ -381,15 +382,15 @@ export function AttractionCard({
             if (!phoneRow) return heading;
             // A phone row's first line: name, wait time, then the room the corner circles take
             // (30 px per circle and 3 px between them, 8 px from the card's edge, plus an 8 px gap;
-            // the panel's own 12 px padding already covers part of it). The wait time sits
+            // the panel's own 8 px padding already covers part of it). The wait time sits
             // outside the <h3> so the heading stays the ride's name. Its unit is left to screen
             // readers: the width goes to the name, and the figure is a wait time on every card.
             return (
               <div
                 className={cn(
                   'relative max-sm:flex max-sm:min-h-[26px] max-sm:items-center max-sm:gap-2',
-                  parkName ? 'max-sm:pr-[67px]' : 'max-sm:pr-[34px]',
-                  rideLog && (parkName ? 'max-sm:pr-[100px]' : 'max-sm:pr-[67px]')
+                  parkName ? 'max-sm:pr-[71px]' : 'max-sm:pr-[38px]',
+                  rideLog && (parkName ? 'max-sm:pr-[104px]' : 'max-sm:pr-[71px]')
                 )}
               >
                 {heading}
