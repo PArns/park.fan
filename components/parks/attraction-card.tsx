@@ -363,7 +363,13 @@ export function AttractionCard({
                 style={{ color: 'var(--pk-text-1)' }}
               >
                 {isHeadliner && (
-                  <span title={headlinerHint} aria-label={t('headliner.title')}>
+                  // Not in a phone row: the headliners have a section of their own there, and the
+                  // row's first line is the name's.
+                  <span
+                    title={headlinerHint}
+                    aria-label={t('headliner.title')}
+                    className={phoneRow ? 'max-sm:hidden' : undefined}
+                  >
                     <Crown className="h-3.5 w-3.5 shrink-0 text-amber-400" />
                   </span>
                 )}
