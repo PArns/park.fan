@@ -280,13 +280,13 @@ export function AttractionCard({
         {/* The bell brings its own `GlassCircle` because it hides where the queue is too short
             for an alert, and a circle drawn here would stay behind empty. The star is the last
             child, so it keeps the far-right spot. In a phone row the circles centre on the
-            first line. */}
+            first line, and the star sits as far from the right edge as from the top. */}
         {attraction.id && (
           <div
             className={cn(
               'absolute top-3 right-3 z-[4]',
               GLASS_CIRCLE_ROW,
-              phoneRow && 'max-sm:top-[8px]'
+              phoneRow && 'max-sm:top-[8px] max-sm:right-[8px]'
             )}
           >
             {/* On a blog fallback card `attraction.id` is the slug, not a UUID, and
@@ -374,15 +374,16 @@ export function AttractionCard({
             );
             if (!phoneRow) return heading;
             // A phone row's first line: name, wait time, then the room the corner circles take
-            // (30 px per circle and 6 px between them, plus an 8 px gap). The wait time sits
+            // (30 px per circle and 3 px between them, 8 px from the card's edge, plus an 8 px gap;
+            // the panel's own 12 px padding already covers part of it). The wait time sits
             // outside the <h3> so the heading stays the ride's name. Its unit is left to screen
             // readers: the width goes to the name, and the figure is a wait time on every card.
             return (
               <div
                 className={cn(
                   'relative max-sm:flex max-sm:min-h-[26px] max-sm:items-center max-sm:gap-2',
-                  parkName ? 'max-sm:pr-[74px]' : 'max-sm:pr-[38px]',
-                  rideLog && (parkName ? 'max-sm:pr-[110px]' : 'max-sm:pr-[74px]')
+                  parkName ? 'max-sm:pr-[67px]' : 'max-sm:pr-[34px]',
+                  rideLog && (parkName ? 'max-sm:pr-[100px]' : 'max-sm:pr-[67px]')
                 )}
               >
                 {heading}

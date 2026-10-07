@@ -1007,9 +1007,10 @@ are paid in text width and in 3 of those 18 that is one more line (es at 320 and
 
 **Neighbouring targets meet, they do not overlap.** Where two overlap, the later element in the
 DOM takes the tap, so a finger closer to the left control fires the right one. A ride card's corner
-holds up to three circles (bell, ridden, star); on a phone they are 30 px and sit 6 px apart
-(`GLASS_CIRCLE_ROW`), and each target is 36 × 40 px (`GLASS_CIRCLE_HIT_AREA`), the circle plus the
-gap, so the targets tile the row. Before that the circles were 34 px and stood 12 px apart to keep
+holds up to three circles (bell, ridden, star); on a phone they are 30 px and sit 3 px apart
+(`GLASS_CIRCLE_ROW`), and each target is 33 × 40 px (`GLASS_CIRCLE_HIT_AREA`), the circle plus the
+gap, so the targets tile the row. In the park page's phone row the star sits 8 px from the card's
+top and 8 px from its right edge. Before that the circles were 34 px and stood 12 px apart to keep
 44 px squares from overlapping, and the empty glass between them came out of the width of the
 ride's name.
 
