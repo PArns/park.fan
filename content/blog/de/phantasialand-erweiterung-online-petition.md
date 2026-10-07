@@ -38,6 +38,8 @@ seo:
     - Phantasialand Erweiterung pro und contra
     - Phantasialand Erweiterung Arbeitsplätze
     - Bürgerforum Phantasialand Erweiterung
+    - Phantasialand Erweiterung genehmigt
+    - Naturschutzgebiet Ententeich Brühl
 ---
 
 Seit dem 24. Mai hält eine Petition auf openPetition gegen das Bürgerbegehren,
@@ -65,8 +67,9 @@ Oktober.
 
 Am 9. Juli hat der Planungsausschuss mit den Stimmen von CDU, SPD und FDP/Volt
 die Änderung des Flächennutzungsplans und den Bebauungsplan 06.01 auf den Weg
-gebracht. Grüne und Linke stimmten dagegen, die AfD enthielt sich. Eine
-Genehmigung ist das nicht. Die Verwaltung arbeitet mit einem Planungsbüro an
+gebracht. Grüne und Linke stimmten dagegen, die AfD enthielt sich. Genehmigt ist die Erweiterung damit nicht. Die Fläche liegt westlich des Parks,
+zwischen der Berggeiststraße, der Phantasialandstraße (L 194) und der
+Autobahn 553. Die Verwaltung arbeitet mit einem Planungsbüro an
 einem Vorentwurf, und einen Termin für die Offenlage, in der jeder den Plan
 einsehen und Einwände schreiben kann, hat die Stadt noch nicht genannt.
 
@@ -86,7 +89,8 @@ liefern.
 Das Grundstück gehört noch dem Land Nordrhein-Westfalen. Den Tausch gegen 38,82
 Hektar Wald hat der Landtag 2021 erlaubt, und unterschrieben ist der Vertrag
 seit März 2022. Das Eigentum wechselt aber erst, wenn der Bebauungsplan in Kraft
-tritt. Für einen Besuch im Park ändert sich bis dahin nichts.
+tritt. Erst danach kann der Park dort bauen, und wann das sein wird, steht
+noch nicht fest. Für einen Besuch im Park ändert sich bis dahin nichts.
 
 ## Wer gegen die Erweiterung ist
 
@@ -333,7 +337,7 @@ text: Die Petition läuft bis zum 23. November. Wohnst du in Brühl, zählt dein
 - Petitionstext, Begründung, Adressaten, Laufzeit und Unterschriften: [Für eine verantwortungsvolle Erweiterung des Phantasialands (openPetition)](https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Unterschriften aus Brühl und Durchschnitt pro Tag: [Statistik der Petition](https://www.openpetition.de/petition/statistik/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Argumente beider Seiten, darunter die Pressemitteilung der Schutzgemeinschaft Deutscher Wald: [Pro & Contra](https://www.openpetition.de/petition/argumente/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Quorum und wer dazu zählt: [FAQ (openPetition)](https://www.openpetition.de/content/faq)
 - Begründung, geplante Nutzungen, Gutachten, Waldausgleich, angekündigte Zahlen und Fakten: [Standortsicherung (Phantasialand)](https://www.phantasialand.de/de/rechtliches/standortsicherung/)
 - Bürgerbegehren, Frist, Unterschriftenzahl und die Kostenschätzung der Stadt mit den Steuern: [Unterschriftenliste „Brühler Waldentscheid“ (PDF)](https://nsg-ententeich.de/mitmachen/docs/unterschriftenliste.pdf) · [Bürgerbegehren & Bürgerentscheid (Netzwerk NSG Ententeich)](https://nsg-ententeich.de/buegerbegehren.html) · Unterstützer des Netzwerks: [Brühler sollen über Ausbaupläne für das Phantasialand abstimmen (Kölner Stadt-Anzeiger, 28. September 2026)](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-buerger-sollen-ueber-ausbauplaene-fuer-phantasialand-abstimmen-1384212)
-- Vorentwurf mit dem Planungsbüro: [Vorlage 168/2026 der Stadt Brühl (PDF)](https://www.50tausendbaeume.de/files/pdf/faq/TOP_16-1-1_Vorlage_168-2026_2026-05-18.pdf) · Ausschussbeschluss und Abstimmung: [Planungsausschuss macht Weg für Prüfverfahren frei (FreizeitparkNEWS)](https://www.freizeitparknews.de/phantasialand/erweiterung-pruefverfahren/)
+- Vorentwurf mit dem Planungsbüro und Lage der Fläche: [Vorlage 168/2026 der Stadt Brühl (PDF)](https://www.50tausendbaeume.de/files/pdf/faq/TOP_16-1-1_Vorlage_168-2026_2026-05-18.pdf) · Ausschussbeschluss und Abstimmung: [Planungsausschuss macht Weg für Prüfverfahren frei (FreizeitparkNEWS)](https://www.freizeitparknews.de/phantasialand/erweiterung-pruefverfahren/)
 - Ankündigung des Bürgerbegehrens am 19. Mai, Zitate Hölzmann und Stübner, Schwammstadtkonzept: [Ratsvotum vertagt, Bürgerbewegung kündigt Bürgerbegehren an (FreizeitparkNEWS, 20. Mai 2026)](https://www.freizeitparknews.de/phantasialand/buergerbegehren/) · Verbandsklage: [Quo vadis, Phantasialand? (NABU Rhein-Erft)](https://www.nabu-rhein-erft.de/aktionen-und-projekte/quo-vadis-phantasialand-1/)
 - 50Tausend Bäume und das Bürgerbegehren, Klage nach einem gescheiterten Begehren: [Waldschützer ziehen nicht an einem Strang (Brühler Schlossbote, 29. September 2026)](https://www.rheinische-anzeigenblaetter.de/bruehl/c-nachrichten/waldschuetzer-ziehen-nicht-an-einem-strang_a380293) · [Phantasialand: Streit um Bürgerbegehren in Brühl (Radio Erft, 29. September 2026)](https://www.radioerft.de/artikel/phantasialand-streit-um-buergerbegehren-in-bruehl-2768434) · [Startseite (Initiative 50Tausend Bäume)](https://www.50tausendbaeume.de/)
 - Bürgerforum und Eberhard Meyer: [Scharfe Kritik an angestrebtem Bürgerbegehren (Brühler Schlossbote, 11. August 2026)](https://www.rheinische-anzeigenblaetter.de/bruehl/c-nachrichten/scharfe-kritik-an-angestrebtem-buergerbegehren-macht-jede-sachliche-diskussion-kaputt_a377326) · Dehoga: [Dehoga-Kreischef sieht große Chancen (Kölner Stadt-Anzeiger, 7. August 2026)](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-dehoga-kreischef-frey-befuerwortet-phantasialand-ausbau-1341610)

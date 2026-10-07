@@ -39,6 +39,8 @@ seo:
     - Phantasialand ampliación empleo
     - Phantasialand ampliación Ententeich
     - Brühler Waldentscheid
+    - Phantasialand planes de ampliación
+    - Phantasialand ampliación aprobada
 ---
 
 Desde el 24 de mayo, una petición en openPetition hace de contrapeso a la
@@ -69,7 +71,9 @@ octubre.
 El 9 de julio, la comisión de urbanismo puso en marcha, con los votos de la
 CDU, el SPD y el grupo FDP/Volt, una modificación del plan de usos del suelo y
 el plan urbanístico 06.01. Los Verdes y Die Linke votaron en contra, y la AfD
-se abstuvo. Eso no es una autorización. La administración prepara un
+se abstuvo. Con eso, la ampliación todavía no está aprobada. El terreno está al oeste del
+parque, entre la Berggeiststraße, la Phantasialandstraße (L 194) y la autopista
+A 553. La administración prepara un
 anteproyecto con un estudio de planificación, y la ciudad aún no ha dado fecha
 para la exposición pública, en la que cualquiera puede consultar el plan y
 presentar alegaciones.
@@ -89,8 +93,9 @@ Publicados antes, además, podrían dar a la competencia «información valiosa�
 El terreno sigue siendo del Land de Renania del Norte-Westfalia. El parlamento
 regional autorizó en 2021 cambiarlo por 38,82 hectáreas de bosque, y el
 contrato está firmado desde marzo de 2022. Pero la propiedad solo cambia de
-manos cuando entre en vigor el plan urbanístico. Hasta entonces, para quien
-visite el parque no cambia nada.
+manos cuando entre en vigor el plan urbanístico. Solo entonces podrá construir allí el parque, y todavía no se sabe cuándo
+será. Hasta entonces, para quien visite el parque no
+cambia nada.
 
 ## Quién está en contra de la ampliación
 
@@ -349,7 +354,7 @@ text: La petición sigue abierta hasta el 23 de noviembre. Si vives en Brühl, t
 - Texto de la petición, justificación, destinatarios, plazo y firmas: [Für eine verantwortungsvolle Erweiterung des Phantasialands (openPetition)](https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Firmas de Brühl y media diaria: [estadísticas de la petición](https://www.openpetition.de/petition/statistik/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Argumentos de ambas partes, incluido el comunicado de la Schutzgemeinschaft Deutscher Wald: [Pro & Contra](https://www.openpetition.de/petition/argumente/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · El quórum y quién cuenta para él: [FAQ (openPetition)](https://www.openpetition.de/content/faq)
 - Justificación, usos previstos, informes técnicos, compensación forestal, cifras y hechos anunciados: [Standortsicherung (Phantasialand)](https://www.phantasialand.de/de/rechtliches/standortsicherung/)
 - Iniciativa ciudadana, plazo, número de firmas y la estimación municipal sobre los impuestos: [Hoja de firmas «Brühler Waldentscheid» (PDF)](https://nsg-ententeich.de/mitmachen/docs/unterschriftenliste.pdf) · [Bürgerbegehren & Bürgerentscheid (Netzwerk NSG Ententeich)](https://nsg-ententeich.de/buegerbegehren.html) · Grupos detrás de la red: [Brühler sollen über Ausbaupläne für das Phantasialand abstimmen (Kölner Stadt-Anzeiger, 28 de septiembre de 2026)](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-buerger-sollen-ueber-ausbauplaene-fuer-phantasialand-abstimmen-1384212)
-- Anteproyecto con el estudio de planificación: [Vorlage 168/2026 de la ciudad de Brühl (PDF)](https://www.50tausendbaeume.de/files/pdf/faq/TOP_16-1-1_Vorlage_168-2026_2026-05-18.pdf) · Acuerdo y votación de la comisión: [Planungsausschuss macht Weg für Prüfverfahren frei (FreizeitparkNEWS)](https://www.freizeitparknews.de/phantasialand/erweiterung-pruefverfahren/)
+- Anteproyecto con el estudio de planificación y ubicación del terreno: [Vorlage 168/2026 de la ciudad de Brühl (PDF)](https://www.50tausendbaeume.de/files/pdf/faq/TOP_16-1-1_Vorlage_168-2026_2026-05-18.pdf) · Acuerdo y votación de la comisión: [Planungsausschuss macht Weg für Prüfverfahren frei (FreizeitparkNEWS)](https://www.freizeitparknews.de/phantasialand/erweiterung-pruefverfahren/)
 - Anuncio de la iniciativa ciudadana el 19 de mayo, citas de Hölzmann y Stübner, plan de ciudad esponja: [Ratsvotum vertagt, Bürgerbewegung kündigt Bürgerbegehren an (FreizeitparkNEWS, 20 de mayo de 2026)](https://www.freizeitparknews.de/phantasialand/buergerbegehren/) · Recurso como asociación: [Quo vadis, Phantasialand? (NABU Rhein-Erft)](https://www.nabu-rhein-erft.de/aktionen-und-projekte/quo-vadis-phantasialand-1/)
 - 50Tausend Bäume y la iniciativa ciudadana, vía judicial tras un fracaso: [Waldschützer ziehen nicht an einem Strang (Brühler Schlossbote, 29 de septiembre de 2026)](https://www.rheinische-anzeigenblaetter.de/bruehl/c-nachrichten/waldschuetzer-ziehen-nicht-an-einem-strang_a380293) · [Phantasialand: Streit um Bürgerbegehren in Brühl (Radio Erft, 29 de septiembre de 2026)](https://www.radioerft.de/artikel/phantasialand-streit-um-buergerbegehren-in-bruehl-2768434) · [Página de inicio (Initiative 50Tausend Bäume)](https://www.50tausendbaeume.de/)
 - Foro ciudadano y Eberhard Meyer: [Scharfe Kritik an angestrebtem Bürgerbegehren (Brühler Schlossbote, 11 de agosto de 2026)](https://www.rheinische-anzeigenblaetter.de/bruehl/c-nachrichten/scharfe-kritik-an-angestrebtem-buergerbegehren-macht-jede-sachliche-diskussion-kaputt_a377326) · Dehoga: [Dehoga-Kreischef sieht große Chancen (Kölner Stadt-Anzeiger, 7 de agosto de 2026)](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-dehoga-kreischef-frey-befuerwortet-phantasialand-ausbau-1341610)
