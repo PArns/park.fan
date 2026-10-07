@@ -78,7 +78,7 @@ L’heure aussi suit un schéma. Dans la plupart des parcs, l’attente est nett
 plus courte pendant la première heure après l’ouverture que plus tard. La file
 se forme ensuite et atteint son maximum entre 10 h et 12 h dans neuf parcs. Dans
 huit parcs, la dernière ou l’avant-dernière heure est la plus calme.
-Phantasialand et Heide Park restent plats entre les deux, et au Legoland comme
+À Phantasialand et au Heide Park, l’attente reste ensuite presque la même jusqu’au soir, et au Legoland comme
 au Movie Park, le monde revient en fin de journée.
 
 La page [Meilleure période pour visiter](/meilleure-periode-pour-visiter) te montre
@@ -221,7 +221,7 @@ Rhénanie-du-Nord-Westphalie. Comment y arriver malgré tout, le
 
 ## Efteling
 
-[Efteling](ref:efteling) est plat quant au jour de la semaine. Samedi et dimanche
+À [Efteling](ref:efteling), les jours de la semaine diffèrent à peine. Samedi et dimanche
 sont un peu plus chargés, le lundi se place entre les deux, et le jeudi est le
 jour le plus calme, suivi du mardi et du mercredi. Un lundi est un peu plus
 chargé à Efteling qu’un mardi.

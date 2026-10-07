@@ -2445,8 +2445,8 @@
         "unknown": "The park publishes no readable wait times, so there are no curves here."
       },
       "never_measured": "We have not received any wait times from this park yet, so there are no curves.",
-      "feed_stale": "We haven't received this park's wait times for {days, plural, one {# day} other {# days}}. The fault is on our side, so the park is not simply quiet.",
-      "feed_stale_unknown": "We are not receiving this park's wait times at the moment. The fault is on our side, so the park is not simply quiet.",
+      "feed_stale": "We haven't received any wait times from this park for {days, plural, one {# day} other {# days}}. The problem is on our end.",
+      "feed_stale_unknown": "We aren't receiving any wait times from this park right now. The problem is on our end.",
       "rides_cannot_open": "On this day every ride is out of season or closed for works. Try another day.",
       "insufficient_history": "We don't have enough measured days for this park to draw curves yet. Try another day.",
       "no_hourly_shape": "This park's rides run on hours that differ too much to build one day shape from them yet.",

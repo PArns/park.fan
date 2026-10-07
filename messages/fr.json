@@ -2445,8 +2445,8 @@
         "unknown": "Le parc ne publie aucun temps d’attente lisible. Il n’y a donc pas de courbes ici."
       },
       "never_measured": "Nous n’avons encore reçu aucun temps d’attente de ce parc, donc il n’y a pas encore de courbes.",
-      "feed_stale": "Les temps d’attente de ce parc ne nous parviennent plus depuis {days, plural, one {# jour} other {# jours}}. La panne vient de chez nous, le parc n’est donc pas simplement calme.",
-      "feed_stale_unknown": "Les temps d’attente de ce parc ne nous parviennent pas pour le moment. La panne vient de chez nous, le parc n’est donc pas simplement calme.",
+      "feed_stale": "Depuis {days, plural, one {# jour} other {# jours}}, les temps d’attente de ce parc ne nous parviennent plus. Le problème vient de chez nous.",
+      "feed_stale_unknown": "En ce moment, les temps d’attente de ce parc ne nous parviennent pas. Le problème vient de chez nous.",
       "rides_cannot_open": "Ce jour-là, chaque attraction est hors saison ou fermée pour travaux. Essaie un autre jour.",
       "insufficient_history": "Nous n’avons pas encore assez de jours mesurés pour ce parc pour tracer des courbes. Essaie un autre jour.",
       "no_hourly_shape": "Les attractions de ce parc ont des horaires trop différents pour en tirer déjà un profil de journée.",

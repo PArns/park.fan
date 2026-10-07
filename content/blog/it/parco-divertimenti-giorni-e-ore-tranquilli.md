@@ -76,8 +76,8 @@ Deutschland sei giorni sono molto vicini tra loro, e a Walibi Holland il sabato
 Anche per l’orario c’è uno schema. Nella maggior parte dei parchi l’attesa nella
 prima ora dopo l’apertura è nettamente più corta che più tardi. Poi la coda
 cresce e in nove parchi tocca il massimo tra le dieci e le dodici. In otto parchi
-l’ultima o la penultima ora è la più tranquilla. Phantasialand e Heide Park
-restano piatti nel mezzo, e al Legoland e al Movie Park la sera si riempie di
+l’ultima o la penultima ora è la più tranquilla. A Phantasialand e a Heide Park
+l’attesa cambia poco per il resto della giornata, e al Legoland e al Movie Park la sera si riempie di
 nuovo.
 
 La pagina del [periodo migliore per visitare](/periodo-migliore-per-visitare) ti
@@ -217,7 +217,7 @@ le vacanze. Come cavartela comunque lo trovi nella
 
 ## Efteling
 
-L’[Efteling](ref:efteling) è piatto quanto al giorno della settimana. Sabato e
+All’[Efteling](ref:efteling) i giorni della settimana si differenziano poco. Sabato e
 domenica sono un po’ più pieni, il lunedì sta in mezzo, e il giovedì è il giorno
 più tranquillo, seguito da martedì e mercoledì. Un lunedì all’Efteling è un po’
 più pieno di un martedì.
