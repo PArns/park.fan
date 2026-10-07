@@ -598,8 +598,8 @@
     },
     "earlyEntry": {
       "title": "Early Entry",
-      "detail": "Hotelgäste dürfen vor der Öffnung auf die großen Bahnen.",
-      "detailMinutes": "Hotelgäste dürfen {minutes} Minuten vor der Öffnung auf die großen Bahnen."
+      "detail": "Für Hotelgäste vor der Öffnung",
+      "detailMinutes": "Für Hotelgäste, {minutes} Min. vor der Öffnung"
     },
     "rideStatus": {
       "weekdayTime": "{weekday}, {time} Uhr"

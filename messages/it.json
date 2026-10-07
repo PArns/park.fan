@@ -835,8 +835,8 @@
     },
     "earlyEntry": {
       "title": "Early Entry",
-      "detail": "Gli ospiti dell'hotel possono salire sulle attrazioni principali prima dell'apertura.",
-      "detailMinutes": "Gli ospiti dell'hotel possono salire sulle attrazioni principali {minutes} minuti prima dell'apertura."
+      "detail": "Per gli ospiti dell'hotel prima dell'apertura",
+      "detailMinutes": "Per gli ospiti dell'hotel, {minutes} min prima dell'apertura"
     },
     "rideStatus": {
       "weekdayTime": "{weekday} alle {time}"

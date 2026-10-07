@@ -835,8 +835,8 @@
     },
     "earlyEntry": {
       "title": "Early Entry",
-      "detail": "Hotel guests can ride the big rides before the park opens.",
-      "detailMinutes": "Hotel guests can ride the big rides {minutes} minutes before the park opens."
+      "detail": "For hotel guests before opening",
+      "detailMinutes": "For hotel guests, {minutes} min before opening"
     },
     "rideStatus": {
       "weekdayTime": "{weekday} at {time}"

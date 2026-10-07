@@ -835,8 +835,8 @@
     },
     "earlyEntry": {
       "title": "Early Entry",
-      "detail": "Hotelgasten mogen vóór de opening in de grote attracties.",
-      "detailMinutes": "Hotelgasten mogen {minutes} minuten voor de opening in de grote attracties."
+      "detail": "Voor hotelgasten vóór opening",
+      "detailMinutes": "Voor hotelgasten, {minutes} min voor opening"
     },
     "rideStatus": {
       "weekdayTime": "{weekday} {time} uur"
