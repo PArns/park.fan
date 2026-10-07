@@ -852,6 +852,11 @@
       "label": "Transport",
       "hint": "A way across the park, not a ride. The wait follows the timetable, not the crowd."
     },
+    "halloweenMaze": {
+      "label": "Halloween maze",
+      "hint": "A seasonal walk-through, not a ride. It opens only during the park's Halloween season."
+    },
+    "mazeSection": "Halloween mazes",
     "info": {
       "title": "Park information",
       "address": "Address",
@@ -1501,7 +1506,10 @@
       "noticeSource": "Source: <link>{host}</link>",
       "noticePark": "Current wait times for the other attractions: <link>{park}</link>",
       "waitsTitle": "Wait times before it closed"
-    }
+    },
+    "riddenMark": "Mark as ridden",
+    "riddenUnmark": "Remove ridden mark",
+    "riddenProgress": "{count} of {total} rides ridden"
   },
   "nearby": {
     "title": "Nearby parks",

@@ -27,7 +27,7 @@ import {
   findRelocatedParkRedirect,
   findRenamedParkRedirect,
 } from '@/lib/utils/redirect-utils';
-import { stripNewPrefix } from '@/lib/utils';
+import { isUuid, stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { CalendarHashRedirect } from '@/components/parks/calendar-hash-redirect';
 import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
@@ -35,6 +35,7 @@ import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Locale } from '@/i18n/config';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
+import { RiddenCounter } from '@/components/parks/ridden-counter';
 import { hasOpeningDays } from '@/lib/parks/park-hours-ics';
 import { ParkLocationLine } from '@/components/parks/park-location-line';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
@@ -45,7 +46,7 @@ import { ParkYearlyOutlookSection } from '@/components/parks/park-yearly-outlook
 import { ParkYearlyOutlookSkeleton } from '@/components/parks/park-yearly-outlook-skeleton';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
 import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
-import { groupAttractionsByLand } from '@/lib/utils/park-utils';
+import { groupAttractionsByLand, sortLandNames } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { RouteMessages } from '@/i18n/route-messages';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
@@ -329,6 +330,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
 
   // Group attractions by land
   const otherAttractionsLabel = t('otherAttractions');
+  const mazeSectionLabel = t('mazeSection');
 
   // The park's closed rides as the ride search finds them (`ClosedRideMatches`). A few rows at
   // most, and nothing at all for a park without one — so this ships nothing on nearly every park.
@@ -346,13 +348,16 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // there is no ISR window for the value to be pinned in.
   const todayIso = formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd');
 
-  const attractionsByLand = groupAttractionsByLand(park.attractions || [], otherAttractionsLabel);
-  const landNames = Object.keys(attractionsByLand).sort((a, b) => {
-    // Put "Other Attractions" at the end
-    if (a === otherAttractionsLabel) return 1;
-    if (b === otherAttractionsLabel) return -1;
-    return a.localeCompare(b);
-  });
+  const attractionsByLand = groupAttractionsByLand(
+    park.attractions || [],
+    otherAttractionsLabel,
+    mazeSectionLabel
+  );
+  const landNames = sortLandNames(
+    Object.keys(attractionsByLand),
+    otherAttractionsLabel,
+    mazeSectionLabel
+  );
 
   // Format names for breadcrumb - use actual names from park data (proper umlauts)
   const continentName = translateContinent(tGeo, continent, locale);
@@ -549,7 +554,11 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
                 park={{ id: park.id, latitude: park.latitude, longitude: park.longitude }}
               />
             }
-          />
+          >
+            {/* The rides the list below offers a „ridden" switch on; `closedAttractions` are a
+                separate list and stay out of the total. */}
+            <RiddenCounter rideIds={(park.attractions ?? []).map((a) => a.id).filter(isUuid)} />
+          </ParkTitleHeader>
         }
       >
         {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks
@@ -593,6 +602,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           landNames={landNames}
           attractionsByLand={attractionsByLand}
           otherAttractionsLabel={otherAttractionsLabel}
+          mazeSectionLabel={mazeSectionLabel}
           closedRides={closedRidesForSearch}
           todayPanel={
             <ParkTodayPanel

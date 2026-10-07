@@ -2,7 +2,7 @@
 title: 'Halloween 2026 in Europas Freizeitparks: Kettensäge, Kürbis oder gar nichts'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-09-30'
+updatedAt: '2026-10-07'
 author: patrick
 mode: published
 excerpt: >-
@@ -491,7 +491,16 @@ Erntebankett mit Masken. Jedes Maze braucht ein eigenes Zeitfenster-Ticket für
 ideal, denn alle fahren tagsüber zusammen Achterbahn, und wer alt und mutig genug ist, verschwindet
 abends im Maze, während der Rest sich an der Bratwurst festhält.
 
+Für Familien gibt es zwei eigene Angebote. Der _Zauberwald_ richtet sich an
+Kinder von 3 bis 10 Jahren, und _Mission Meeresgrund_ läuft in einer
+Halloween-Version ab dem späten Nachmittag, empfohlen ab 10 Jahren. An den fünf
+langen Tagen gibt es abends ein Feuerwerk mit Lichtspiel auf dem See. _Parasomnis_
+hat gegenüber 2025 zusätzliche Effekte, und rund 80 % der Attraktionen laufen an
+den langen Tagen bis 21 Uhr.
+
 [Heide-Park](ref:heide-park?full)
+
+Quelle: [Pressemitteilung des Heide-Park vom 4. Oktober 2026](https://www.heide-park.de/presse/pressemeldungen/halloween-2026/), abgerufen am 7. Oktober 2026.
 
 Aktuelle Termine und Altersfreigaben:
 [heide-park.de → Halloween](https://www.heide-park.de/entdecken/events/halloween/).

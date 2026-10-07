@@ -2,7 +2,7 @@
 title: 'Halloween 2026 in Europe’s Theme Parks: Chainsaw, Pumpkin or Nothing at All'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-09-30'
+updatedAt: '2026-10-07'
 author: patrick
 mode: published
 excerpt: >-
@@ -466,7 +466,16 @@ ride coasters together during the day, and whoever is old
 and brave enough disappears into a maze in the evening while the rest hold on
 to a bratwurst.
 
+Families get two offers of their own. _Zauberwald_ (the magic forest) is for
+children aged 3 to 10, and _Mission Meeresgrund_ runs in a Halloween version
+from late afternoon, recommended from age 10. On the five long days there is a
+fireworks show in the evening with a light display on the lake. _Parasomnis_
+has extra effects compared with 2025, and about 80% of the attractions run
+until 9 p.m. on the long days.
+
 [Heide-Park](ref:heide-park?full)
+
+Source: [Heide-Park press release of 4 October 2026](https://www.heide-park.de/presse/pressemeldungen/halloween-2026/) (in German), retrieved 7 October 2026.
 
 Current dates and age ratings:
 [heide-park.de → Halloween](https://www.heide-park.de/en/explore/events/halloween/).

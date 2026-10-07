@@ -58,8 +58,8 @@ coverImage:
 seo:
   title: 'Halloween 2026 aux USA : HHN, Scary Farm, Fright Fest'
   description: >-
-    Dates et prix des Halloween Horror Nights, de Knott's Scary Farm, de Fright
-    Fest, de Howl-O-Scream et des soirées Disney, plus les événements familiaux.
+    Dates et prix des Halloween Horror Nights, de Scary Farm, de Fright Fest, de
+    Howl-O-Scream et des soirées Disney, plus les événements familiaux.
   keywords:
     - Halloween parc d’attractions États-Unis 2026
     - Halloween Horror Nights 2026 Orlando
