@@ -1,16 +1,15 @@
 ---
-title: 'Online petitie pleit voor uitbreiding van Phantasialand'
+title: 'Phantasialand moet groeien, vindt een tegenpetitie'
 translationKey: phantasialand-expansion-online-petition
 date: '2026-10-07'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Natuurbeschermers in Brühl hebben tot 9 november om de handtekeningen te
-  verzamelen waarmee ze de planning voor de uitbreiding van Phantasialand willen
-  stoppen. Een online petitie vraagt de gemeenteraad sinds mei om de
-  uitbreiding grondig te onderzoeken en daarbij rekening te houden met natuur
-  en compensatiemaatregelen. Ik heb haar getekend.
+  Sinds mei vraagt een online petitie de raad van Brühl om een “verantwoorde
+  uitbreiding” van Phantasialand, met natuurbescherming en compensatie. Ze
+  vormt een tegenwicht voor het burgerinitiatief waarmee natuurbeschermers de
+  planning willen stoppen. Ik heb haar getekend.
 tags:
   - news
   - phantasialand
@@ -26,71 +25,78 @@ coverImage:
   caption: 'Colorado Adventure in het themagebied Mexico. Ook op de uitbreidingsgrond wil het park nieuwe attracties bouwen.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Online petitie voor uitbreiding Phantasialand in Brühl'
+  title: 'Tegenpetitie voor de uitbreiding van Phantasialand'
   description: >-
-    Een burgerinitiatief wil de uitbreiding van Phantasialand bij de Ententeich
-    stoppen. Een online petitie vraagt de raad van Brühl om grondig onderzoek.
+    Een tegenpetitie vraagt om een uitbreiding van Phantasialand met
+    natuurbescherming en compensatie. Ze loopt tot 23 november, ik heb getekend.
   keywords:
-    - Phantasialand uitbreiding
     - Phantasialand uitbreiding petitie
-    - Phantasialand uitbreiding nieuws
-    - Phantasialand openPetition
-    - Phantasialand Ententeich
+    - Phantasialand tegenpetitie
+    - Phantasialand petitie openPetition
+    - Phantasialand uitbreiding voor en tegen
+    - Phantasialand uitbreiding banen
+    - Phantasialand uitbreiding Ententeich
     - Brühler Waldentscheid
-    - Phantasialand nieuw gebied
 ---
 
-Sinds 24 mei loopt er op openPetition een petitie die de gemeenteraad van
-Brühl en zijn planningscommissie oproept tot een “verantwoorde uitbreiding” van
-[Phantasialand](ref:phantasialand). Tot 7 oktober tekenden 161 mensen, van wie
-45 uit Brühl. Komen er 740 handtekeningen uit Brühl bij elkaar, dan vraagt
-openPetition de raad om een standpunt en publiceert de antwoorden.
+Sinds 24 mei biedt een petitie op openPetition tegenwicht aan het
+burgerinitiatief dat de uitbreiding van [Phantasialand](ref:phantasialand)
+moet stoppen. Ze ging online vijf dagen nadat het Netzwerk NSG Ententeich het
+burgerinitiatief had aangekondigd, en roept de gemeenteraad van Brühl en zijn
+planningscommissie op tot een “verantwoorde uitbreiding”. Tot 7 oktober
+tekenden 161 mensen, van wie 45 uit Brühl. Komen er 740 handtekeningen uit
+Brühl bij elkaar, dan vraagt openPetition de raad om een standpunt en
+publiceert de antwoorden.
 [Tekenen kan](https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands)
 nog tot 23 november.
 
-Aan de andere kant verzamelt het Netzwerk NSG Ententeich sinds 28 september
-handtekeningen voor een burgerinitiatief, de “Brühler Waldentscheid”. Dat moet
-de besluiten van 9 juli schrappen waarmee de gemeente aan de planning is
-begonnen. Het netwerk heeft daarvoor tot 9 november 2.536 geldige
-handtekeningen nodig van kiesgerechtigden uit Brühl. Een tussenstand had het
-tot 7 oktober niet op [zijn website](https://nsg-ententeich.de/) gezet.
+Het netwerk verzamelt sinds 28 september handtekeningen voor zijn
+burgerinitiatief, de “Brühler Waldentscheid”. Dat moet de besluiten van 9 juli
+schrappen waarmee de gemeente aan de planning is begonnen. Het netwerk heeft
+daarvoor tot 9 november 2.536 geldige handtekeningen nodig van kiesgerechtigden
+uit Brühl. Hoeveel het er al heeft, zegt het nog niet.
 
-Hoe het burgerinitiatief er kwam en wat het park sinds 2003 heeft geprobeerd,
-schreef ik [op 1 oktober](/news/phantasialand-erweiterung-buergerbegehren).
+Hoe het
+[burgerinitiatief tegen de uitbreiding](/news/phantasialand-uitbreiding-burgerinitiatief)
+er kwam en wat het park sinds 2003 heeft geprobeerd, staat in ons bericht van 1
+oktober.
 
 ## Wat er tot nu toe besloten is
 
-Op 9 juli startte de planningscommissie met de stemmen van CDU, SPD en FDP/Volt
-twee procedures: een wijziging van het structuurplan en bestemmingsplan 06.01.
-De Groenen en Die Linke stemden tegen, de AfD onthield zich. Een vergunning is
-dat niet. Het gemeentebestuur werkt met een planbureau aan een voorontwerp, en
-een datum voor de terinzagelegging, waarin iedereen het plan kan inzien en
-bezwaar kan maken, heeft de gemeente nog niet genoemd.
+Op 9 juli zette de planningscommissie met de stemmen van CDU, SPD en FDP/Volt
+een wijziging van het structuurplan en bestemmingsplan 06.01 in gang. De
+Groenen en Die Linke stemden tegen, de AfD onthield zich. Een vergunning is dat
+niet. Het gemeentebestuur werkt met een planbureau aan een voorontwerp, en een
+datum voor de terinzagelegging, waarin iedereen het plan kan inzien en bezwaar
+kan maken, heeft de gemeente nog niet genoemd.
 
 Phantasialand laat rapporten opstellen over zeven vakgebieden, van
 soortenbescherming tot waterhuishouding, en betaalt ze ook. De gemeente leidt
 de procedure en controleert of de rapporten aan de wettelijke eisen voldoen.
-Resultaten heeft het park tot nu toe niet gepubliceerd. Op zijn pagina
+Wat er onderzocht wordt, heeft het park op zijn pagina
 [“Standortsicherung”](https://www.phantasialand.de/de/rechtliches/standortsicherung/)
-(de toekomst van de locatie veiligstellen) beloofde het park “cijfers, data en
-feiten” te publiceren en die doorlopend bij te werken. Sinds eind september is
-er geen kaart van het terrein bijgekomen, geen tijdpad en geen
-investeringsbedrag. Of de Ententeich-vijver moet blijven, staat er nog altijd
-niet.
+(de toekomst van de locatie veiligstellen) bekendgemaakt, en daar wil het ook
+“cijfers, data en feiten” publiceren en doorlopend bijwerken. Wat er met de
+Ententeich-vijver gebeurt, is onderdeel van het rapport over de
+waterhuishouding. Voor gedetailleerde plannen ontbreken nog de bouwrechtelijke
+kaders, die pas in de procedure worden vastgelegd, zei Ralf-Richard Kenter,
+gevolmachtigde van de directie, in juli tegen de Kölner Stadt-Anzeiger. Eerder
+gepubliceerd zouden ze concurrenten bovendien “waardevolle inzichten” geven.
 
 De grond is nog van de deelstaat Noordrijn-Westfalen. Het deelstaatparlement
-stemde in 2021 in met een ruil tegen 38,82 hectare bos, maar die gaat pas in
-als het bestemmingsplan van kracht is. Voor een dag in het park verandert er
-tot die tijd niets.
+stemde in 2021 in met een ruil tegen 38,82 hectare bos, en het contract is
+sinds maart 2022 getekend. De eigendom gaat echter pas over als het
+bestemmingsplan van kracht wordt. Voor een dag in het park verandert er tot die
+tijd niets.
 
 ## Wie tegen de uitbreiding is
 
 Achter het burgerinitiatief staan volgens de Kölner Stadt-Anzeiger zo’n twaalf
 groepen, onder wie de Groenen en Die Linke, de natuurorganisaties NABU en BUND
 en het Klimabündnis Brühl. De vraag of een natuurgebied moet wijken voor het
-park “hoort bij de inwoners van de stad”, zei coördinator Christine Hölzmann in
-mei, nadat de raad het besluit had uitgesteld. Haar medestander Stephan Stübner
-draaide het om het water:
+park “hoort bij de inwoners van de stad”, verklaarde coördinator Christine
+Hölzmann in mei in een bericht van het netwerk, nadat de raad het besluit had
+uitgesteld. Medestander Stephan Stübner onderbouwde het nee met het water:
 
 > [!QUOTE]
 > Deze 14 hectare natuur is geen vrij bouwterrein, maar een natuurlijk
@@ -104,7 +110,7 @@ draaide het om het water:
 Bebouwing botst volgens het netwerk ook met het sponsstad- en
 klimaatadaptatieplan dat Brühl zelf heeft aangenomen, en het verwacht meer
 verkeer en lawaai. NABU Rhein-Erft, dat het burgerinitiatief mee draagt, houdt
-daarnaast een rechtszaak tegen een later bestemmingsplan uitdrukkelijk open.
+daarnaast een rechtszaak als vereniging tegen een later bestemmingsplan open.
 
 Niet elke tegenstander steunt het burgerinitiatief. Het initiatief
 [50Tausend Bäume](https://www.50tausendbaeume.de/) (50.000 bomen), in 2007
@@ -118,17 +124,18 @@ Op de debatpagina van de petitie zelf staat als tegenargument een persbericht
 van de Schutzgemeinschaft Deutscher Wald, een bosbeschermingsvereniging, in het
 Rhein-Erft-Kreis. Het is van 17 mei 2026 en heet “Walderhalt statt
 Freizeitpark-Erweiterung” (bos behouden in plaats van het pretpark uitbreiden).
-De plannen passen volgens het bericht niet meer bij het doel van
-Noordrijn-Westfalen om minder grond op te gebruiken.
+De plannen passen volgens het bericht niet meer bij wat er vandaag nodig is voor
+de bescherming van klimaat, natuur en grond, juist omdat Noordrijn-Westfalen
+veel minder grond wil opgebruiken.
 
 ## Wie voor is
 
 Op zijn pagina “Standortsicherung” onderbouwt Phantasialand de uitbreiding met
-korte vakanties. Om meer gasten te
-laten overnachten, heeft het park naar eigen zeggen aanbod nodig voor langere
-verblijven, en daar is op het huidige terrein geen plek voor. Op zo’n 15
-hectare staan onder meer een aquapark-hotelresort, attracties, een theater en
-parkeergarages gepland. Op dezelfde pagina schrijft het park:
+korte vakanties. Om meer gasten te laten overnachten, heeft het park naar eigen
+zeggen aanbod nodig voor langere verblijven, en daar is op het huidige terrein
+geen plek voor. Op zo’n 15 hectare staan onder meer een aquapark-hotelresort,
+attracties, een theater en parkeergarages gepland. Op dezelfde pagina schrijft
+het park:
 
 > [!QUOTE]
 > Phantasialand wil de discussie over het project transparant en in een
@@ -144,9 +151,10 @@ verbond haar steun al in maart 2025 aan de voorwaarde dat de Ententeich niet
 verandert, en in het coalitieakkoord staat dat de planning “met inachtneming
 van de Ententeich” moet worden opgesteld.
 
-Onder de inwoners voert Eberhard Meyer campagne voor het project. Deze zomer
-richtte hij het “Bürgerforum Phantasialand Erweiterung” op, een burgerforum
-voor de uitbreiding, en hij zegt geen bijzondere band met het park te hebben.
+Onder de inwoners voert Eberhard Meyer campagne voor het project. Meyer
+richtte deze zomer het “Bürgerforum Phantasialand Erweiterung” op, een
+burgerforum voor de uitbreiding, en zegt geen bijzondere band met het park te
+hebben.
 
 > [!QUOTE]
 > Het burgerinitiatief maakt elke zakelijke discussie kapot.
@@ -155,42 +163,59 @@ voor de uitbreiding, en hij zegt geen bijzondere band met het park te hebben.
 >
 > Eberhard Meyer van het Bürgerforum Phantasialand Erweiterung in de [Brühler Schlossbote van 11 augustus 2026](https://www.rheinische-anzeigenblaetter.de/bruehl/c-nachrichten/scharfe-kritik-an-angestrebtem-buergerbegehren-macht-jede-sachliche-diskussion-kaputt_a377326), vertaald uit het Duits
 
-## Wat voor de uitbreiding pleit
+## Wat voor de uitbreiding van Phantasialand pleit
 
 Phantasialand heeft naar eigen zeggen 1.800 medewerkers en leerlingen in
 dienst. Al in 2013 voorspelde het park 830 nieuwe banen door de uitbreiding,
-waarvan 600 het hele jaar door. Dat staat in de toelichting van de
-Bezirksregierung Keulen bij de wijziging van het regionale plan, en in juli
-2026 noemde het park hetzelfde getal. Het hele jaar door moesten die banen er
-zijn, omdat het park toen het hele jaar open wilde. Volgens het concept van
-2013 zouden de nieuwe voorzieningen “voor het overgrote deel” gebouwen of
-overdekte ruimtes worden, en volgens de Bezirksregierung komt dat ook de
-geluidsbescherming ten goede.
+waarvan 600 het hele jaar door, toen nog voor een west- en een oostdeel. Dat
+staat in de toelichting van de Bezirksregierung Keulen bij de wijziging van het
+regionale plan. Het oostdeel plant het park nu niet meer, maar in juli 2026
+sprak het opnieuw van ongeveer 830 banen. Het park noemde destijds ook het doel
+om het hele jaar open te gaan. Volgens het concept van 2013 zouden de nieuwe
+voorzieningen “voor het overgrote deel” gebouwen of overdekte ruimtes worden,
+en volgens de Bezirksregierung komt dat ook de geluidsbescherming ten goede.
 
-Phantasialand heeft nu drie hotels: Ling Bao, Matamba en Charles Lindbergh.
+Phantasialand heeft nu drie hotels,
+[Ling Bao, Matamba en Charles Lindbergh](/blog/phantasialand-wachttijden-tips).
 Een aquapark met hotel en een theater moeten gasten meerdere dagen vasthouden.
 Georg Frey, districtsvoorzitter van horecabond Dehoga, ziet in de uitbreiding
 een kans voor hotels en restaurants in de regio. Hoeveel belasting het de stad
-oplevert, is volgens de gemeente zelf “niet betrouwbaar te voorspellen”. De bedrijfsbelasting zou in de eerste jaren na de bouw door
-afschrijvingen zelfs kunnen dalen, staat op de handtekeningenlijst van het
-burgerinitiatief.
+oplevert, is volgens haar eigen kostenraming op de handtekeningenlijst van het
+burgerinitiatief “niet betrouwbaar te voorspellen”, en de bedrijfsbelasting zou
+in de eerste jaren na de bouw door afschrijvingen zelfs kunnen dalen. Kenter
+had in juli gezegd dat de bewering dat hoge investeringen ertoe leiden dat er
+nauwelijks bedrijfsbelasting binnenkomt, “te kort door de bocht” is.
 
-Voor bezoekers betekent meer grond dat er nieuwe attracties bij kunnen komen
-zonder dat oude weg moeten. Omdat het terrein zo vol staat, kan nieuw aanbod er “alleen
-door het verwijderen van bestaande attracties” ontstaan, schreef de
-Bezirksregierung in 2013. Destijds waren er op de uitbreidingsgrond geen nieuwe
-attracties gepland, nu staan ze in de plannen van het park.
+Op het huidige terrein is voor bijna elke grote nieuwigheid van de afgelopen
+twintig jaar iets afgebroken. In 2007 verdween het Märchenwald, het sprookjesbos
+waarmee het park in 1967 was begonnen, in 2008 en 2009 volgden de
+Phantasialand-Jet en de gondelbaan 1001 Nacht. Voor de waterbaan
+[Chiapas](ref:phantasialand/chiapas-die-wasserbahn) werden in 2012 en 2013 de
+oude wildwaterbanen afgebroken. Klugheim met
+[Taron](ref:phantasialand/taron) en [Raik](ref:phantasialand/raik) staat sinds
+2016 op de plek waar tot 2014 het westernstadje Silver City stond, met de
+Silbermine, een darkride uit 1984. Voor Rookburgh met
+[F.L.Y.](ref:phantasialand/fly) verdween in 2016 de vluchtsimulator Race for
+Atlantis, die in 1994 als Galaxy was geopend. Zijn gouden koepel was een van de
+opvallendste gebouwen van het park.
+
+Omdat het terrein zo dicht bebouwd is, kan nieuw aanbod er “alleen door het
+verwijderen van bestaande attracties” ontstaan, schreef de Bezirksregierung in
+2013 in haar toelichting, die daarmee het standpunt van het park weergeeft.
+Met meer grond kan er iets nieuws bij komen zonder dat het oude moet wijken.
+Destijds waren er op de uitbreidingsgrond geen nieuwe attracties gepland, nu
+staan ze in de plannen van het park.
 
 Voor de 14,17 hectare bij de Ententeich zou de deelstaat bij de ruil 38,82
 hectare bos krijgen dat direct aan staatsbos grenst, bijna drie keer zoveel
-grond. Daarbij komt minstens 30 procent van de
-marktwaarde, begin 2022 ruw geschat op zo’n twee miljoen euro, bestemd voor
-meer staatsbos, en 20 jaar lang 20.000 euro per jaar voor natuur- en
-milieueducatie in de regio. In het contract verplicht Phantasialand zich
-bovendien om alle voorgeschreven compensatiemaatregelen in de tijd samen met de
-ingreep en zo mogelijk in de regio uit te voeren. Het moet grond leveren voor
-herbebossing en mag niet ten westen van de L 194 verder groeien. Het bos dat de
-deelstaat krijgt, staat er overigens al en wisselt alleen van eigenaar.
+grond. Daarbij komt minstens 30 procent van de marktwaarde, begin 2022 ruw
+geschat op zo’n twee miljoen euro, bestemd voor meer staatsbos, en 20 jaar lang
+20.000 euro per jaar voor natuur- en milieueducatie in de regio. In het contract
+verplicht Phantasialand zich bovendien om alle voorgeschreven compensatie- en
+vervangingsmaatregelen in de tijd samen met de ingreep uit te voeren, met als
+doel dat ze in de regio liggen. Het moet grond leveren voor herbebossing en mag
+niet ten westen van de L 194 verder groeien. Het bos dat de deelstaat krijgt,
+staat er overigens al en wisselt alleen van eigenaar.
 
 Meyer zei tegen de Schlossbote dat het bedrijf de gekapte bomen wil
 compenseren met drie keer zoveel bos en een moerasbiotoop. Op de pagina van het
@@ -200,15 +225,17 @@ voor 19 hectare. De dieren die er leven zouden binnen hooguit vier kilometer
 nieuw leefgebied krijgen, met vleermuiskasten, kunstmatige poelen en
 broedwanden voor de ijsvogel, en daarnaast zouden akkers worden bebost.
 
-## Het voorbeeld Rust
+## Rust en Europa-Park
 
 Toen [Europa-Park](ref:europa-park) op 12 juli 1975 openging, had het 15
-attracties op 16 hectare en ongeveer vijftig medewerkers. Rust, het dorp waar
-het park ligt, telde toen 2.595 inwoners. De eerste vijftien jaar veranderde
-dat nauwelijks: in 1990 waren het er 2.751. Vanaf 1995 werd het park een
-resort. Als eerste hotel opende El Andaluz, tot 2019 kwamen er vijf bij, als
-laatste Krønasår, en in november 2019 het waterpark Rulantica. Rust groeide in die jaren naar 4.317 inwoners
-in 2020, en eind 2025 waren het er 4.874, bijna twee keer zoveel als in 1975.
+attracties op 16 hectare en ongeveer vijftig medewerkers. Rust telde toen 2.595
+inwoners. Vanaf 1995 werd het park een resort. Als eerste hotel opende El
+Andaluz, tot 2019 kwamen er vijf bij, als laatste Krønasår, en in november 2019
+het waterpark Rulantica. Nu heeft het resort naar eigen zeggen in het seizoen
+meer dan 5.500 mensen in dienst. Het aantal inwoners van Rust is in die tijd
+bijna verdubbeld, tot 4.874 eind 2025 volgens het statistisch bureau van de
+deelstaat, dat sinds de volkstelling van 2022 met een nieuwe basis rekent. Het
+dorp groeide al voor het eerste hotel, van 2.751 inwoners in 1990 naar 3.122 in 1995.
 
 In 2024 telde Rust ongeveer 1,6 miljoen overnachtingen. In 2025 kwamen er per
 inwoner 199 gasten aan, meer dan in welke andere Duitse plaats ook, blijkt uit
@@ -217,32 +244,31 @@ Oostzee met 79. Per inwoner hebben Rust en Schwanau de hoogste inkomsten uit
 bedrijfsbelasting in het zuiden van de Ortenau, Rust vooral dankzij Europa-Park,
 meldde de Schwarzwälder Bote in maart 2026.
 
-Volgens een studie van de Universiteit van St.
-Gallen, die het park in maart 2025 op zijn persconferentie bij de start van het
-seizoen presenteerde, zorgden het park en zijn bezoekers in seizoen 2023/24
-voor 896 miljoen euro omzet in Baden-Württemberg en 156 miljoen in de Elzas.
-Daarvan ging 343 miljoen naar Rust en zes buurgemeenten, die samen de
-“Erlebnisregion Europa-Park” vormen. Ongeveer 7.800 banen in Baden-Württemberg
-en 2.100 in de Elzas zijn volgens de studie aan het park en zijn bezoekers te
-danken, en zo’n 550 bedrijven uit de regio kregen opdrachten van het park. Bij
-de 1,4 miljoen overnachtingen in de eigen accommodaties van het park kwamen er
-2,4 miljoen buiten het resort. Sinds 2018 is het aantal bedden in het resort
-met 78 procent gestegen en het aantal overnachtingen met 154 procent.
-Studieleider Roland Scherer schrijft de groei ten opzichte van seizoen 2018/19
-toe aan het feit dat het park gegroeid is en een bestemming voor het hele jaar
-is geworden.
+Volgens een studie van de Universiteit van St. Gallen in opdracht van het park,
+die het in maart 2025 op zijn persconferentie bij de start van het seizoen
+presenteerde, zorgden het park en zijn bezoekers in seizoen 2023/24 voor 896
+miljoen euro omzet in Baden-Württemberg en 156 miljoen in de Elzas. Daarvan
+ging 343 miljoen naar Rust en zes buurgemeenten, die samen de “Erlebnisregion
+Europa-Park” vormen. Ongeveer 7.800 banen in Baden-Württemberg en 2.100 in de
+Elzas zijn volgens de studie aan het park en zijn bezoekers te danken, en zo’n
+550 bedrijven uit de regio kregen opdrachten van het park. Bij de 1,4 miljoen
+overnachtingen in de eigen accommodaties van het park kwamen er 2,4 miljoen
+buiten het resort. In de Erlebnisregion is het aantal bedden sinds 2018 met 78
+procent gestegen en het aantal overnachtingen met 154 procent. Studieleider
+Roland Scherer schrijft de groei van koopkracht en toegevoegde waarde ten
+opzichte van seizoen 2018/19 toe aan het feit dat het park gegroeid is en een
+bestemming voor het hele jaar is geworden.
 
-Brühl is geen Rust. De stad heeft ongeveer 36.000 kiesgerechtigden en ligt
-direct naast Keulen. Europa-Park beslaat nu 95 hectare, Phantasialand zou
-groeien van ongeveer 28 naar ruim 40 hectare. Vergelijkbaar is de stap die
-Europa-Park in de jaren negentig zette en die Phantasialand nu wil zetten, van
-een dagje uit naar een bestemming voor een korte vakantie met hotel en later
-een waterpark.
+Brühl is geen Rust. De stad heeft ongeveer 45.000 inwoners en ligt direct naast
+Keulen. Europa-Park beslaat nu 95 hectare, Phantasialand zou groeien van
+ongeveer 28 naar ruim 40 hectare. Hotels heeft Phantasialand sinds 2003, toen
+het huidige Ling Bao openging. Wat het vergeleken met Europa-Park mist, is het
+waterpark met extra bedden, en dat wil het op de nieuwe grond bouwen.
 
-## De petitie voor een “derde weg”
+## Wat de petitie vraagt
 
 De petitie is gestart door Ramon Harbecke uit Keulen, die naar eigen zeggen
-zelf in Brühl heeft gewoond. Hij richt haar tot de gemeenteraad en de
+zelf in Brühl heeft gewoond. Ze is gericht aan de gemeenteraad en de
 planningscommissie.
 
 > [!QUOTE]
@@ -252,13 +278,14 @@ planningscommissie.
 >
 > [de] Ich wünsche mir einen dritten Weg: eine ernsthafte, transparente und verantwortungsvolle Prüfung, wie eine Zukunft für das Phantasialand möglich sein kann, ohne berechtigte Sorgen um Natur und Umwelt zu übergehen.
 >
-> Ramon Harbecke in de toelichting bij zijn [petitie op openPetition](https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands), vertaald uit het Duits
+> Ramon Harbecke in de toelichting bij de [petitie op openPetition](https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands), vertaald uit het Duits
 
-Een bepaald besluit eist de petitie niet. Ze noemt de Ententeich een “gevoelig
-gebied” en somt op wat serieus moet worden meegewogen: natuurgebied,
-compensatiemaatregelen, geluidsbescherming, verkeer en de gevolgen voor het
-klimaat. Het motto staat aan het eind van de tekst: “Dialoog in plaats van
-stilstand”.
+Een bepaald raadsbesluit noemt de petitie niet. Ze vraagt om een “verantwoorde
+uitbreiding”, waarbij de toekomst van het park, de bescherming van belangrijke
+natuurgebieden en echte compensatiemaatregelen “samen worden gedacht”. De
+Ententeich noemt ze een “gevoelig gebied”, en ook geluidsbescherming, verkeer
+en de gevolgen voor het klimaat moeten serieus worden meegewogen. Het motto
+staat aan het eind van de tekst: “Dialoog in plaats van stilstand”.
 
 Haalt een burgerinitiatief genoeg handtekeningen en is het toelaatbaar, dan
 moet de raad de besluiten zelf schrappen of Brühl laten stemmen. Een petitie op
@@ -276,36 +303,35 @@ Brühl.
 
 Voor het quorum telt mijn handtekening niet, omdat ik niet in Brühl woon.
 
-Ik vind het verkeerd om de procedure nu te stoppen. Het burgerinitiatief zou
-haar beëindigen voordat de rapporten er zijn. In de procedure voor het
-bestemmingsplan laat het park onderzoeken wat er met de Ententeich, het water,
-het lawaai en het verkeer gebeurt, en de gemeente controleert de rapporten. Als
-het plan ter inzage ligt, kunnen omwonenden en verenigingen bezwaar maken. Maakt
-het resultaat niet waar wat het park belooft, dan kunnen de verenigingen nog
-naar de rechter. Dat natuurorganisaties ook na een mislukt burgerinitiatief
-tegen het bestemmingsplan kunnen procederen, zei Hölzmann in september zelf
-tegen de Schlossbote.
+Ik vind het verkeerd om de procedure nu te stoppen. Als het burgerinitiatief
+slaagt, eindigt de procedure voordat de rapporten er zijn. In de procedure voor
+het bestemmingsplan laat het park onderzoeken wat er met de Ententeich, het
+water, het lawaai en het verkeer gebeurt, en de gemeente controleert de
+rapporten. Als het plan ter inzage ligt, kunnen omwonenden en verenigingen
+bezwaar maken. Vinden de verenigingen het plan aan het eind onrechtmatig, dan
+kunnen ze naar de rechter. Dat dat ook na een mislukt burgerinitiatief nog kan,
+zei Hölzmann, die het burgerinitiatief coördineert, in september tegen de
+Schlossbote.
 
 Phantasialand kan naar eigen zeggen alleen nog iets nieuws bouwen door iets
-ouds af te breken of te overbouwen. Dat het voor een hotel met aquapark meer
-ruimte nodig heeft dan de ongeveer 28 hectare die het nu heeft, geloof ik. Wat
-er in Rust is gebeurd sinds Europa-Park hotels en een waterpark bouwde, gun ik
+ouds af te breken of te overbouwen, en de lijst van wat sinds 2007 is
+afgebroken, is lang. Dat het voor een hotel met aquapark meer ruimte nodig
+heeft dan de ongeveer 28 hectare die het nu heeft, geloof ik. Wat Europa-Park
+met zijn hotels en Rulantica voor Rust en de dorpen eromheen betekent, gun ik
 Brühl op kleinere schaal ook: meer banen die het hele jaar bestaan, en gasten
-die blijven overnachten. Of het daarvoor per se de Ententeich moet zijn, moet de
-procedure uitwijzen.
+die blijven overnachten. Hoe dat samengaat met de Ententeich, moet de procedure
+uitwijzen.
 
-Van het park verwacht ik daarvoor wel meer dan tot nu toe. De petitie vraagt om
-transparantie, en Phantasialand heeft minder gepubliceerd dan het zelf had
-aangekondigd. Tot 9 november beslissen veel mensen in Brühl of ze het
-burgerinitiatief tekenen, en voor die tijd zou het park moeten laten zien waar
-het precies wil bouwen en of de vijver in zijn plannen blijft.
+De petitie vraagt om transparantie, en met de pagina “Standortsicherung” is het
+park daarmee begonnen. Een kaart van het terrein zou de volgende stap zijn,
+juist nu veel mensen in Brühl tot 9 november beslissen of ze het
+burgerinitiatief tekenen.
 
-> [!TIP]
-> De petitie “Für eine verantwortungsvolle Erweiterung des Phantasialands”
-> (voor een verantwoorde uitbreiding van Phantasialand) kun je tot 23 november
-> [op openPetition tekenen](https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands).
-> Woon je in Brühl, dan telt je handtekening ook mee voor het quorum.
-> Handtekeningenlijsten om uit te printen staan er als pdf.
+```cta-widget
+href: https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands
+label: Teken de petitie op openPetition
+text: De petitie loopt tot 23 november. Woon je in Brühl, dan telt je handtekening ook mee voor het quorum. Handtekeningenlijsten om uit te printen staan er als pdf.
+```
 
 [Phantasialand](ref:phantasialand?full)
 
@@ -318,15 +344,17 @@ het precies wil bouwen en of de vijver in zijn plannen blijft.
 - Tekst van de petitie, toelichting, geadresseerden, looptijd en handtekeningen: [Für eine verantwortungsvolle Erweiterung des Phantasialands (openPetition)](https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Handtekeningen uit Brühl en het daggemiddelde: [statistieken van de petitie](https://www.openpetition.de/petition/statistik/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Argumenten van beide kanten, met het persbericht van de Schutzgemeinschaft Deutscher Wald: [Pro & Contra](https://www.openpetition.de/petition/argumente/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Het quorum en wie ervoor meetelt: [FAQ (openPetition)](https://www.openpetition.de/content/faq)
 - Onderbouwing, geplande functies, rapporten, bosscompensatie, aangekondigde cijfers en feiten: [Standortsicherung (Phantasialand)](https://www.phantasialand.de/de/rechtliches/standortsicherung/)
 - Burgerinitiatief, termijn, aantal handtekeningen en de kostenraming van de gemeente over de belastingen: [Handtekeningenlijst “Brühler Waldentscheid” (pdf)](https://nsg-ententeich.de/mitmachen/docs/unterschriftenliste.pdf) · [Bürgerbegehren & Bürgerentscheid (Netzwerk NSG Ententeich)](https://nsg-ententeich.de/buegerbegehren.html) · Groepen achter het netwerk: [Brühler sollen über Ausbaupläne für das Phantasialand abstimmen (Kölner Stadt-Anzeiger, 28 september 2026)](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-buerger-sollen-ueber-ausbauplaene-fuer-phantasialand-abstimmen-1384212)
-- Citaten van Hölzmann en Stübner, sponsstadplan: [Ratsvotum vertagt, Bürgerbewegung kündigt Bürgerbegehren an (FreizeitparkNEWS, 20 mei 2026)](https://www.freizeitparknews.de/phantasialand/buergerbegehren/)
-- 50Tausend Bäume en het burgerinitiatief, naar de rechter na een mislukt initiatief, NABU: [Waldschützer ziehen nicht an einem Strang (Brühler Schlossbote, 29 september 2026)](https://www.rheinische-anzeigenblaetter.de/bruehl/c-nachrichten/waldschuetzer-ziehen-nicht-an-einem-strang_a380293) · [Phantasialand: Streit um Bürgerbegehren in Brühl (Radio Erft, 29 september 2026)](https://www.radioerft.de/artikel/phantasialand-streit-um-buergerbegehren-in-bruehl-2768434) · [Startpagina (Initiative 50Tausend Bäume)](https://www.50tausendbaeume.de/)
-- Compensatieplan van 2013: [Phantasialand stellt Pläne für Naturausgleich vor (Parkerlebnis, 29 september 2013, naar de Rhein-Erft Rundschau)](https://www.parkerlebnis.de/phantasialand-stellt-plaene-fuer-naturausgleich-nach-freizeitpark-erweiterung-vor_2222.html)
-- 830 banen, waarvan 600 het hele jaar, het hele jaar open, overdekte voorzieningen en geluid, nieuw aanbod alleen door oude attracties te verwijderen, geen attracties op de uitbreidingsgrond: [8e wijziging van het regionale plan, toelichting (Bezirksregierung Köln, april 2013, pdf)](https://extra.bezreg-koeln.nrw.de/brk_media/_regionalplan/koeln/pub_planaenderung_08/textliche_darstellung.pdf)
-- Besluit en stemming in de commissie: [Planungsausschuss macht Weg für Prüfverfahren frei (FreizeitparkNEWS)](https://www.freizeitparknews.de/phantasialand/erweiterung-pruefverfahren/)
+- Voorontwerp met het planbureau: [Vorlage 168/2026 van de gemeente Brühl (pdf)](https://www.50tausendbaeume.de/files/pdf/faq/TOP_16-1-1_Vorlage_168-2026_2026-05-18.pdf) · Besluit en stemming in de commissie: [Planungsausschuss macht Weg für Prüfverfahren frei (FreizeitparkNEWS)](https://www.freizeitparknews.de/phantasialand/erweiterung-pruefverfahren/)
+- Aankondiging van het burgerinitiatief op 19 mei, citaten van Hölzmann en Stübner, sponsstadplan: [Ratsvotum vertagt, Bürgerbewegung kündigt Bürgerbegehren an (FreizeitparkNEWS, 20 mei 2026)](https://www.freizeitparknews.de/phantasialand/buergerbegehren/) · Rechtszaak als vereniging: [Quo vadis, Phantasialand? (NABU Rhein-Erft)](https://www.nabu-rhein-erft.de/aktionen-und-projekte/quo-vadis-phantasialand-1/)
+- 50Tausend Bäume en het burgerinitiatief, naar de rechter na een mislukt initiatief: [Waldschützer ziehen nicht an einem Strang (Brühler Schlossbote, 29 september 2026)](https://www.rheinische-anzeigenblaetter.de/bruehl/c-nachrichten/waldschuetzer-ziehen-nicht-an-einem-strang_a380293) · [Phantasialand: Streit um Bürgerbegehren in Brühl (Radio Erft, 29 september 2026)](https://www.radioerft.de/artikel/phantasialand-streit-um-buergerbegehren-in-bruehl-2768434) · [Startpagina (Initiative 50Tausend Bäume)](https://www.50tausendbaeume.de/)
 - Burgerforum en Eberhard Meyer: [Scharfe Kritik an angestrebtem Bürgerbegehren (Brühler Schlossbote, 11 augustus 2026)](https://www.rheinische-anzeigenblaetter.de/bruehl/c-nachrichten/scharfe-kritik-an-angestrebtem-buergerbegehren-macht-jede-sachliche-diskussion-kaputt_a377326) · Dehoga: [Dehoga-Kreischef sieht große Chancen (Kölner Stadt-Anzeiger, 7 augustus 2026)](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-dehoga-kreischef-frey-befuerwortet-phantasialand-ausbau-1341610)
-- 830 banen: [Phantasialand verteidigt geplante Erweiterung (t-online, 14 juli 2026)](https://koeln.t-online.de/region/koeln/id_101342086/bruehl-phantasialand-bei-koeln-verteidigt-geplante-erweiterung.html) · Overbouwen en verdichten: [Phantasialand will Konkurrenz keine Einblicke liefern (Kölner Stadt-Anzeiger, 2 juli 2026)](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-phantasialand-will-konkurrenz-keine-einblicke-liefern-1315097)
+- 830 banen in juli: [Phantasialand verteidigt geplante Erweiterung (t-online, 14 juli 2026)](https://koeln.t-online.de/region/koeln/id_101342086/bruehl-phantasialand-bei-koeln-verteidigt-geplante-erweiterung.html) · Overbouwen en verdichten, Kenter over de bedrijfsbelasting: [Phantasialand will Konkurrenz keine Einblicke liefern (Kölner Stadt-Anzeiger, 2 juli 2026)](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-phantasialand-will-konkurrenz-keine-einblicke-liefern-1315097)
 - Voorwaarde van de SPD en coalitieakkoord: [Phantasialand soll neue Attraktionen bekommen (t-online, 25 maart 2025)](https://koeln.t-online.de/region/koeln/id_100650986/phantasialand-neue-attraktionen-geplant-erste-details.html) · [Coalitieakkoord CDU en SPD 2025–2030 (pdf)](https://www.cdu-bruehl.de/wp-content/uploads/2026/04/Koalitionsvertrag_2025-2030_.pdf)
-- Grondruil, 38,82 hectare bos, aandeel in de marktwaarde, compensatieplichten, educatie, geen groei ten westen van de L 194: [Verslag van het milieuministerie, Vorlage 17/6282 (Landtag NRW)](https://www.landtag.nrw.de/portal/WWW/dokumentenarchiv/Dokument/MMV17-6282.pdf)
-- Europa-Park in 1975, de hotels en Rulantica, huidige oppervlakte: [Europa-Park op de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · Inwoners van Rust van 1975 tot 2025, volgens het statistisch bureau van de deelstaat: [Rust (Baden) op de.wikipedia](<https://de.wikipedia.org/wiki/Rust_(Baden)>) · Overnachtingen in 2024: [Zahlen & Daten (Gemeinde Rust)](https://www.rust.de/leben-in-rust/die-gemeinde/zahlen+und+daten)
+- 830 banen, waarvan 600 het hele jaar, west- en oostdeel, het hele jaar open, overdekte voorzieningen en geluid, nieuw aanbod alleen door oude attracties te verwijderen, geen attracties op de uitbreidingsgrond: [8e wijziging van het regionale plan, toelichting (Bezirksregierung Köln, april 2013, pdf)](https://extra.bezreg-koeln.nrw.de/brk_media/_regionalplan/koeln/pub_planaenderung_08/textliche_darstellung.pdf)
+- Compensatieplan van 2013: [Phantasialand stellt Pläne für Naturausgleich vor (Parkerlebnis, 29 september 2013, naar de Rhein-Erft Rundschau)](https://www.parkerlebnis.de/phantasialand-stellt-plaene-fuer-naturausgleich-nach-freizeitpark-erweiterung-vor_2222.html)
+- Grondruil, 38,82 hectare bos, aandeel in de marktwaarde, compensatieplichten, educatie, geen groei ten westen van de L 194: [Verslag van het milieuministerie, Vorlage 17/6282 (Landtag NRW)](https://www.landtag.nrw.de/portal/WWW/dokumentenarchiv/Dokument/MMV17-6282.pdf) · Contract getekend op 1 maart 2022: [Vorlage 18/235 (Landtag NRW)](https://opal.landtag.nrw.de/portal/WWW/dokumentenarchiv/Dokument/MMV18-235.pdf)
+- Hotels van Phantasialand sinds 2003, afbraak van het Märchenwald, de Jet, de gondelbaan, de wildwaterbanen, het westernstadje en Galaxy: [Phantasialand op de.wikipedia](https://de.wikipedia.org/wiki/Phantasialand) · Silbermine van 1984 tot 2014, afgebroken voor Klugheim: [Silbermine (Dark Ride Database)](https://darkridedatabase.com/rides/silbermine/) · Galaxy in 1994, vanaf 2006 Race for Atlantis, in 2016 afgebroken voor Rookburgh: [Race for Atlantis (Dark Ride Database)](https://darkridedatabase.com/rides/race-for-atlantis-2/) · Inwoners van Brühl: [Brühl (Rheinland) op de.wikipedia](<https://de.wikipedia.org/wiki/Br%C3%BChl_(Rheinland)>)
+- Europa-Park in 1975 met 15 attracties en 50 medewerkers: [Europa-Park celebrates big anniversary (dpa via bluewin, 2025)](https://www.bluewin.ch/en/news/europa-park-celebrates-big-anniversary-with-numerous-innovations-2604224.html) · [50 Jahre Europa-Park (Tageskarte)](https://www.tageskarte.io/tourismus/detail/50-jahre-europa-park-1.html) · Hotels, Rulantica en huidige oppervlakte: [Europa-Park op de.wikipedia](https://de.wikipedia.org/wiki/Europa-Park) · Medewerkers in het seizoen: [Werken bij het Europa-Park Erlebnis-Resort](https://jobs.europapark.de/de)
+- Inwoners van Rust van 1975 tot 2025, volgens het statistisch bureau van de deelstaat: [Rust (Baden) op de.wikipedia](<https://de.wikipedia.org/wiki/Rust_(Baden)>) · Overnachtingen in 2024: [Zahlen & Daten (Gemeinde Rust)](https://www.rust.de/leben-in-rust/die-gemeinde/zahlen+und+daten)
 - Gasten per inwoner: [Das ist Deutschlands wahre Touristenhochburg (t-online, 30 september 2026, naar HolidayCheck)](https://www.t-online.de/leben/reisen/deutschland/id_101455862/holidaycheck-diese-gemeinde-ist-deutschlands-touristen-magnet.html) · Bedrijfsbelasting: [Wie die Gewerbesteuer die Kassen in der Südlichen Ortenau klingeln lässt (Schwarzwälder Bote, 12 maart 2026)](https://www.schwarzwaelder-bote.de/lokales/lahr/europa-park-herrenknecht-und-co-wie-die-gewerbesteuer-die-kassen-in-der-suedlichen-ortenau-klingeln-laesst-78924366.html)
-- Studie van de Universiteit van St. Gallen over seizoen 2023/24: [Over a billion euros in revenue (Universiteit van St. Gallen, 13 maart 2025)](https://www.unisg.ch/en/newsroom/over-a-billion-euros-in-revenue-hsg-study-calculates-the-regional-value-added-by-europa-park/) · Aandeel van de Erlebnisregion: [Der Europa-Park zwischen Boom und Kritik (Ortenau Journal, 8 mei 2025)](https://ortenau-journal.de/wirtschaft/wirtschaftsmotor-tourismusgigant-und-arbeitgeber-der-europa-park-zwischen-boom-und-kritik/)
+- Studie van de Universiteit van St. Gallen over seizoen 2023/24, opdrachtgever, bedden en overnachtingen in de Erlebnisregion: [Over a billion euros in revenue (Universiteit van St. Gallen, 13 maart 2025)](https://www.unisg.ch/en/newsroom/over-a-billion-euros-in-revenue-hsg-study-calculates-the-regional-value-added-by-europa-park/) · Aandeel van de Erlebnisregion: [Der Europa-Park zwischen Boom und Kritik (Ortenau Journal, 8 mei 2025)](https://ortenau-journal.de/wirtschaft/wirtschaftsmotor-tourismusgigant-und-arbeitgeber-der-europa-park-zwischen-boom-und-kritik/)

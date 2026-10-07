@@ -808,8 +808,8 @@ bisher nicht.`), or leave the gap out when the reader does not need it (§2.19).
     the same shape and was changed the same day. `pnpm check:prose` warns, in posts and news in
     six languages, on a sentence that names the post's own `date` or `updatedAt` after `bis zum`,
     `by`, `tot`, `au`, `hasta el` or `al` and carries a negation; a stamp over a table (`Stand 6.
-Oktober 2026:`) is left alone. Fifteen sentences in ten posts carried it that day, among
-    them the 2027 novelties post in all five translations.
+Oktober 2026:`) is left alone. Besides the post it was found in, twelve sentences in ten
+    posts carried it that day, among them the 2027 novelties post in all six languages.
 16. **A post speaks for park.fan when it points to another post.** `Wie es zu dem Bürgerbegehren
 kam …, habe ich am 1. Oktober aufgeschrieben.` linked the earlier news post as if it were
     the author's notebook. The byline is a person; the archive is the site's: `steht in unserem
@@ -819,7 +819,8 @@ gegen die Erweiterung](/news/…)`), not on a date. First person stays where the
     2026-10-07. `pnpm check:prose` warns on a first-person writing verb (`habe ich …
 aufgeschrieben`, `I wrote`, `heb ik … geschreven`, `je l’ai écrit`, `lo conté`, `l’ho
 raccontato`) in a sentence that links a post under `/blog/` or `/news/`; that day it found
-    thirteen, most of them in the Efteling and Phantasialand guides.
+    fourteen in ten posts besides the one it came from, most of them in the Efteling and
+    Phantasialand guides.
 
 ### 3.4 Travel-guide copy, in all six languages
 
