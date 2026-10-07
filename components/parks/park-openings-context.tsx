@@ -21,6 +21,7 @@ export function ParkOpeningsProvider({
   timezone,
   schedule,
   todayIso,
+  enabled = true,
   children,
 }: {
   continent: string;
@@ -30,13 +31,15 @@ export function ParkOpeningsProvider({
   timezone: string;
   schedule: readonly ScheduleItem[] | null | undefined;
   todayIso: string;
+  /** Off where nothing on the page can use the plan, so the request is not made. */
+  enabled?: boolean;
   children: ReactNode;
 }) {
-  const { data: plan } = useParkPlanDay({ continent, country, city, parkSlug });
-  const value = useMemo(
-    () => parkOpeningsFromPlan(plan, parkOpenMinute(schedule, todayIso, timezone)),
-    [plan, schedule, todayIso, timezone]
-  );
+  const { data: plan } = useParkPlanDay({ continent, country, city, parkSlug, enabled });
+  // A number, not the schedule array: every live poll hands over a new array, and the value below
+  // would then be rebuilt, and every card under it rendered, for an opening that did not move.
+  const parkOpenMin = parkOpenMinute(schedule, todayIso, timezone);
+  const value = useMemo(() => parkOpeningsFromPlan(plan, parkOpenMin), [plan, parkOpenMin]);
   return <ParkOpeningsContext.Provider value={value}>{children}</ParkOpeningsContext.Provider>;
 }
 

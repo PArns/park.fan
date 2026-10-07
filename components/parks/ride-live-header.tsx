@@ -77,6 +77,8 @@ export function RideLiveHeader({
       timezone={park.timezone ?? 'UTC'}
       schedule={park.schedule ?? (todaySchedule ? [todaySchedule] : null)}
       todayIso={todayIso}
+      // The plan only feeds the „Öffnet um …" line, which is drawn under a CLOSED badge.
+      enabled={status === 'CLOSED'}
     >
       <RideNowPanel
         park={park}

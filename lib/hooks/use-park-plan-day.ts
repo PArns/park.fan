@@ -14,17 +14,19 @@ export function useParkPlanDay({
   country,
   city,
   parkSlug,
+  enabled = true,
 }: {
   continent: string;
   country: string;
   city: string;
   parkSlug: string;
+  enabled?: boolean;
 }) {
   const releasedLast = useLoadLast();
   return useQuery<PlanDay | null>({
     ...planDayQuery({ continent, country, city, parkSlug }),
     meta: LOAD_LAST_META,
-    enabled: releasedLast && typeof window !== 'undefined' && Boolean(parkSlug),
+    enabled: enabled && releasedLast && typeof window !== 'undefined' && Boolean(parkSlug),
     gcTime: 30 * 60_000,
     refetchOnWindowFocus: false,
     retry: 1,
