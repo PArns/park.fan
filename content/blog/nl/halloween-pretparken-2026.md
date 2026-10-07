@@ -2,7 +2,7 @@
 title: 'Halloween 2026 in Europa’s pretparken: kettingzaag, pompoen of helemaal niks'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-09-30'
+updatedAt: '2026-10-07'
 author: patrick
 mode: published
 excerpt: >-
@@ -475,7 +475,16 @@ tijdslotticket van € 9, alle drie samen kosten € 22. Dat is goed voor de
 gezinsvrede. Iedereen rijdt overdag samen achtbaan, en wie oud en dapper genoeg is, verdwijnt
 ’s avonds in een maze terwijl de rest zich aan de braadworst vasthoudt.
 
+Gezinnen krijgen twee eigen aanbiedingen. De _Zauberwald_ (de toverbos) is voor
+kinderen van 3 tot 10 jaar, en _Mission Meeresgrund_ draait vanaf de late
+middag in een Halloween-versie, aanbevolen vanaf 10 jaar. Op de vijf lange
+dagen is er ’s avonds een vuurwerk met lichtspel op het meer. _Parasomnis_ heeft
+ten opzichte van 2025 extra effecten, en zo’n 80 % van de attracties draait op
+de lange dagen tot 21 uur.
+
 [Heide-Park](ref:heide-park?full)
+
+Bron: [persbericht van het Heide-Park van 4 oktober 2026](https://www.heide-park.de/presse/pressemeldungen/halloween-2026/) (in het Duits), geraadpleegd op 7 oktober 2026.
 
 Actuele data en leeftijdsindicaties:
 [heide-park.de → Halloween](https://www.heide-park.de/en/explore/events/halloween/).

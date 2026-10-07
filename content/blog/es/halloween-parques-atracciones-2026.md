@@ -2,7 +2,7 @@
 title: 'Halloween 2026 en los parques de Europa: motosierra, calabaza o nada de nada'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-09-30'
+updatedAt: '2026-10-07'
 author: patrick
 mode: published
 excerpt: >-
@@ -476,7 +476,17 @@ montan juntos en montaña rusa durante el día, y quien
 tenga edad y valor suficientes desaparece por la noche en un maze mientras el
 resto se aferra a una salchicha.
 
+Las familias tienen dos ofertas propias. El _Zauberwald_ (el bosque mágico) es
+para niños de 3 a 10 años, y _Mission Meeresgrund_ funciona en una versión de
+Halloween desde última hora de la tarde, recomendada a partir de 10 años. En
+los cinco días largos hay por la noche un espectáculo de fuegos artificiales
+con juego de luces en el lago. _Parasomnis_ tiene efectos adicionales respecto a
+2025, y alrededor del 80 % de las atracciones funcionan hasta las 21 h en los
+días largos.
+
 [Heide-Park](ref:heide-park?full)
+
+Fuente: [nota de prensa del Heide-Park del 4 de octubre de 2026](https://www.heide-park.de/presse/pressemeldungen/halloween-2026/) (en alemán), consultada el 7 de octubre de 2026.
 
 Fechas actuales y edades permitidas:
 [heide-park.de → Halloween](https://www.heide-park.de/en/explore/events/halloween/).
