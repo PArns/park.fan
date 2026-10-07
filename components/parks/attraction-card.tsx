@@ -437,7 +437,7 @@ export function AttractionCard({
               the name, which already says the ride is running; `min-h` keeps the row at its
               72 px when nothing else is left on the line. `*:flex` because a badge wrapped in a
               `<span>` (a tooltip, a glossary link) otherwise sits on a 24 px text line, and the
-              row grows to 74 px. */}
+              row grows to 74 px; it outranks a child's own `max-sm:hidden`, hence the `!`. */}
           <div
             className={cn(
               'relative mt-[9px] flex flex-wrap items-start gap-[6px]',
@@ -447,7 +447,7 @@ export function AttractionCard({
           >
             <ParkStatusBadge
               status={status}
-              className={phoneRow && hasBottomPanel ? 'max-sm:hidden' : undefined}
+              className={phoneRow && hasBottomPanel ? 'max-sm:hidden!' : undefined}
             />
             {isOperatingOrUnknown && crowdLevel && (
               // The scale is this ride's own, in minutes, and only where the API sent the
