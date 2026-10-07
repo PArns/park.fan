@@ -22,6 +22,7 @@ import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { WorksPeriodBadge } from '@/components/parks/works-period-badge';
 import { TransportSystemBadge } from '@/components/parks/transport-system-badge';
+import { HalloweenMazeBadge } from '@/components/parks/halloween-maze-badge';
 import { WorksPeriodNote } from '@/components/parks/works-period-note';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
@@ -586,6 +587,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                           a departure interval rather than a queue. Independent
                           of the season and works badges beside it. */}
                       <TransportSystemBadge attractionKind={attraction.attractionKind} />
+                      <HalloweenMazeBadge attractionKind={attraction.attractionKind} />
                       {attraction.isSeasonal && (
                         <SeasonalBadge
                           seasonMonths={attraction.seasonMonths}

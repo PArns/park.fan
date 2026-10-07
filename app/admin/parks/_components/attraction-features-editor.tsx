@@ -94,6 +94,9 @@ function parkFastPass(park: AdminParkDetail) {
   };
 }
 
+/** German labels for the `attractionKind` values the API lists; an unknown value shows as itself. */
+const ATTRACTION_KIND_LABELS: Record<string, string> = { MAZE: 'Halloween-Maze' };
+
 /** The park editor's table for ride features such as fast pass or single rider, ride by ride. */
 export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
   const canEdit = useCan('editor');
@@ -116,7 +119,7 @@ export function AttractionFeaturesEditor({ park }: { park: AdminParkDetail }) {
   const optionsFor = (key: FieldKey) =>
     (specs.data?.attraction.find((spec) => spec.key === key)?.options ?? []).map((option) => ({
       value: option,
-      label: option,
+      label: (key === 'attractionKind' && ATTRACTION_KIND_LABELS[option]) || option,
     }));
 
   const rows = useMemo(() => attractions.data?.attractions ?? [], [attractions.data]);

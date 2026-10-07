@@ -852,6 +852,11 @@
       "label": "Vervoer",
       "hint": "Een verbinding door het park, geen attractie. De wachttijd volgt de dienstregeling, niet de drukte."
     },
+    "halloweenMaze": {
+      "label": "Halloween-maze",
+      "hint": "Een seizoensgebonden rondgang, geen attractie. Alleen open tijdens het Halloweenseizoen van het park."
+    },
+    "mazeSection": "Halloween-mazes",
     "info": {
       "title": "Parkinformatie",
       "address": "Adres",

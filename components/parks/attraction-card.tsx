@@ -32,6 +32,7 @@ import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
 import { VirtualLineBadge } from '@/components/parks/virtual-line-badge';
 import { AttractionMetaBadges } from './attraction-meta-badges';
 import { TransportSystemBadge } from './transport-system-badge';
+import { HalloweenMazeBadge } from './halloween-maze-badge';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
 import { TrendPill } from './trend-pill';
 import { OutageNote } from './outage-note';
@@ -440,6 +441,7 @@ export function AttractionCard({
                 departure, so a high reading says the train is due rather than
                 that the ride is popular. */}
             <TransportSystemBadge attractionKind={attraction.attractionKind} />
+            <HalloweenMazeBadge attractionKind={attraction.attractionKind} />
             {/* Rope drop is planning info — shown regardless of live status (it
                 matters most before the park opens). */}
             {ropeDrop && (
