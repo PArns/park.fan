@@ -210,6 +210,21 @@ export const TabsWithHash = memo(function TabsWithHash({
 }: TabsWithHashProps) {
   const t = useTranslations('parks');
   const alertAttractions = useRideAlertParkAttractions();
+  const waitsReadable = hasReadableWaitTimes(park);
+  // Not for a park with no readable wait times, where an alert could never fire. Memoised so the
+  // headliner `LandSection` keeps its memo through a tab tap, which re-renders this component.
+  const headlinerAlertsAction = useMemo(
+    () =>
+      waitsReadable && alertAttractions && alertAttractions.length > 0 ? (
+        <RideAlertsEntryButton
+          variant="heading"
+          parkName={park.name}
+          attractions={alertAttractions as RideAlertDialogAttraction[]}
+          reopenAvailable
+        />
+      ) : null,
+    [waitsReadable, alertAttractions, park.name]
+  );
 
   const { isMounted, activeTab, handleTabChange, tabsRef, mapShowSlug } = useTabHashRouting({
     defaultValue,
@@ -499,30 +514,11 @@ export const TabsWithHash = memo(function TabsWithHash({
           timezone={park.timezone}
           todayIso={todayIso}
           parkName={park.name}
+          action={headlinerAlertsAction}
         />
       )}
 
-      {/* The alert nudge for a visitor who came for one wait time. It sits after the headliner
-          section: the live waits stay where they were, and it is one scroll on a phone. It follows
-          the headliner section's own gates (no headliners, no card) and is skipped while a filter
-          or search narrows the list, and for a park with no readable wait times, where an alert
-          could never fire. Same dialog as the panel's text link. */}
-      {headliners.length > 0 &&
-        !isSearching &&
-        !isNarrowing &&
-        hasReadableWaitTimes(park) &&
-        alertAttractions &&
-        alertAttractions.length > 0 && (
-          <RideAlertsEntryButton
-            variant="nudge"
-            parkName={park.name}
-            attractions={alertAttractions as RideAlertDialogAttraction[]}
-            reopenAvailable
-          />
-        )}
-
-      {/* On a phone the headliners come first, the strip filled the first screen there. After
-          the nudge, which keeps its place one scroll down. */}
+      {/* On a phone the headliners come first, the strip filled the first screen there. */}
       {ropeDropStrip('sm:hidden')}
 
       {hasSearchResults || closedRideMatches.length > 0 ? (

@@ -80,6 +80,7 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 - `GlassCard` _component_: Glass card for headers and content cards over a photo. `heavy` is the homepage hero's glass, lighter in light mode and markedly darker in dark mode, so a panel over the hero photo reads as one pane.
 - `HEAVY_GLASS` _const_: The `heavy` recipe as a bare class string, for surfaces that are not a `GlassCard`: the park page's stacked title card and „Heute im Park" panel take one material because they are one object.
 - `TILE_GLASS` _const_: The same glass one grade more solid, for the entry tiles.
+- `HAIRLINE_FILL` _const_: The fill of a hairline or a slider track on `TILE_GLASS`. The foreground at a low opacity rather than the `--border` token: in the dark theme that token is white at 10 %, so any opacity modifier on it composites to nothing.
 - `PHOTO_GLASS_FILL` _const_: `TILE_GLASS`'s fill without its blur, for a panel that blurs its own photograph instead of the backdrop: the homepage compass, whose moving arrows would make a `backdrop-filter` flicker. 75 % for the tile's reason, since its list is small …
 - `PANEL_FLAT` _const_: The same panel where there is no photograph behind it.
 
