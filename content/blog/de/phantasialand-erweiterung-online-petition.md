@@ -8,8 +8,8 @@ featured: false
 excerpt: >-
   In Brühl sammeln Naturschützer bis zum 9. November Unterschriften, um die
   Planung für die Erweiterung des Phantasialands zu stoppen. Eine Online-Petition
-  bittet den Rat seit Mai um das Gegenteil: die Erweiterung gründlich prüfen und
-  Natur und Ausgleich dabei mitdenken. Ich habe sie unterschrieben.
+  bittet den Rat seit Mai, die Erweiterung gründlich zu prüfen und dabei Natur
+  und Ausgleichsmaßnahmen zu berücksichtigen. Ich habe sie unterschrieben.
 tags:
   - news
   - phantasialand
@@ -25,10 +25,10 @@ coverImage:
   caption: 'Colorado Adventure im Themenbereich Mexico. Neue Fahrattraktionen will der Park auch auf der Erweiterungsfläche bauen.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Phantasialand-Erweiterung: Petition für einen dritten Weg'
+  title: 'Online-Petition für die Phantasialand-Erweiterung in Brühl'
   description: >-
-    Bürgerbegehren dagegen, Online-Petition dafür: wo der Streit um die
-    Phantasialand-Erweiterung und den Ententeich im Oktober 2026 steht.
+    Ein Bürgerbegehren will die Phantasialand-Erweiterung am Ententeich stoppen.
+    Eine Online-Petition bittet den Brühler Rat um eine gründliche Prüfung.
   keywords:
     - Phantasialand Erweiterung
     - Phantasialand Erweiterung Petition
@@ -61,15 +61,15 @@ ich [am 1. Oktober aufgeschrieben](/news/phantasialand-erweiterung-buergerbegehr
 
 Am 9. Juli hat der Planungsausschuss mit den Stimmen von CDU, SPD und FDP/Volt
 die Änderung des Flächennutzungsplans und den Bebauungsplan 06.01 auf den Weg
-gebracht. Grüne und Linke stimmten dagegen, die AfD enthielt sich. Genehmigt ist
-damit nichts. Die Verwaltung arbeitet mit einem Planungsbüro an einem
-Vorentwurf, und für die Offenlage, in der jeder den Plan einsehen und Einwände
-schreiben kann, gibt es noch keinen Termin.
+gebracht. Grüne und Linke stimmten dagegen, die AfD enthielt sich. Eine
+Genehmigung ist das nicht. Die Verwaltung arbeitet mit einem Planungsbüro an
+einem Vorentwurf, und einen Termin für die Offenlage, in der jeder den Plan
+einsehen und Einwände schreiben kann, hat die Stadt noch nicht genannt.
 
 Das Phantasialand lässt Gutachten zu sieben Fachgebieten erstellen, vom
 Artenschutz bis zum Wasserhaushalt, und bezahlt sie. Die Stadt führt das
 Verfahren und prüft, ob die Gutachten den gesetzlichen Anforderungen genügen.
-Ergebnisse hat der Park bis zum 7. Oktober nicht veröffentlicht. Auf seiner Seite
+Ergebnisse hat der Park bisher nicht veröffentlicht. Auf seiner Seite
 [„Standortsicherung“](https://www.phantasialand.de/de/rechtliches/standortsicherung/)
 hat der Park angekündigt, „Zahlen, Daten und Fakten“ zu veröffentlichen und
 fortlaufend zu aktualisieren. Dazugekommen ist seit Ende September keine Karte
@@ -99,7 +99,8 @@ das Nein mit dem Wasser:
 
 Das Netzwerk sieht eine Bebauung auch im Widerspruch zum Schwammstadt- und
 Klimaanpassungskonzept, das Brühl selbst beschlossen hat, und rechnet mit mehr
-Verkehr und Lärm.
+Verkehr und Lärm. Der NABU Rhein-Erft, der das Bürgerbegehren mitträgt, hat sich
+außerdem eine Verbandsklage gegen einen späteren Bebauungsplan vorbehalten.
 
 Nicht jeder Gegner unterstützt das Bürgerbegehren. Die Initiative
 [50Tausend Bäume](https://www.50tausendbaeume.de/), 2007 gegen die damaligen
@@ -107,8 +108,7 @@ Pläne im Ville-Wald gegründet, will über ein Naturschutzgebiet nicht abstimme
 lassen. Entscheiden sollen ihrer Ansicht nach wissenschaftliche Fakten und das
 geltende Recht. Dass ein Naturschutzgebiet im Eigentum des Landes für einen
 Freizeitpark aufgegeben wird, habe es „bundesweit noch nie“ gegeben, schreibt
-sie auf ihrer Startseite. Der NABU Rhein-Erft hat sich eine Verbandsklage gegen
-einen späteren Bebauungsplan vorbehalten.
+sie auf ihrer Startseite.
 
 Auf der Debattenseite der Petition selbst steht als Gegenargument eine
 Pressemitteilung der Schutzgemeinschaft Deutscher Wald im Rhein-Erft-Kreis vom
@@ -118,7 +118,8 @@ verbrauchen, heißt es dort.
 
 ## Wer dafür ist
 
-Das Phantasialand begründet die Erweiterung mit Kurzurlaubern. Um mehr Gäste
+Auf seiner Seite „Standortsicherung“ begründet das Phantasialand die
+Erweiterung mit Kurzurlaubern. Um mehr Gäste
 über Nacht zu halten, brauche es Angebote für längere Aufenthalte, und dafür sei
 auf der heutigen Fläche kein Platz. Geplant sind auf rund 15 Hektar unter anderem
 ein Aquapark-Hotelressort, Fahrattraktionen, ein Theater und Parkpaletten. Auf
@@ -130,8 +131,8 @@ derselben Seite schreibt der Park:
 >
 > Phantasialand auf seiner Seite [„Standortsicherung“](https://www.phantasialand.de/de/rechtliches/standortsicherung/), abgerufen am 7. Oktober 2026
 
-Im Rat tragen CDU und SPD das Verfahren, die nach der Kommunalwahl 2025
-vereinbart haben, die Erweiterung „grundsätzlich offen“ zu prüfen. Die SPD hat
+Im Rat tragen CDU und SPD das Verfahren. Nach der Kommunalwahl 2025 haben sie
+vereinbart, die Erweiterung „grundsätzlich offen“ zu prüfen. Die SPD hat
 ihre Zustimmung schon im März 2025 an die Bedingung geknüpft, dass der Ententeich
 nicht verändert wird, und im Koalitionsvertrag steht, die Planung sei „unter
 Berücksichtigung des Ententeichs“ zu erstellen.
@@ -148,39 +149,39 @@ besonderen Beziehung zum Park.
 ## Was für die Erweiterung spricht
 
 Das Phantasialand beschäftigt nach eigenen Angaben 1.800 Mitarbeitende und
-Auszubildende. Für die Erweiterung hat es schon 2013 830 neue Arbeitsplätze
+Auszubildende. Schon 2013 hat es für die Erweiterung 830 neue Arbeitsplätze
 vorhergesagt, 600 davon ganzjährig. So steht es in der Begründung der
 Bezirksregierung Köln zur Änderung des Regionalplans, und im Juli 2026 nannte
-der Park dieselbe Zahl. Ganzjährig, weil der Park damals das Ziel nannte, das
-ganze Jahr zu öffnen. Nach dem Konzept von 2013 sollten die neuen Einrichtungen
-„zum weit überwiegenden Anteil“ Gebäude oder überdachte Bereiche werden, und
-nach Einschätzung der Bezirksregierung wirkt sich das auch positiv auf den Lärm
-aus.
+der Park dieselbe Zahl. Ganzjährig sollten sie sein, weil der Park damals das
+ganze Jahr öffnen wollte. Nach dem Konzept von 2013 sollten die neuen
+Einrichtungen „zum weit überwiegenden Anteil“ Gebäude oder überdachte Bereiche
+werden, und nach Einschätzung der Bezirksregierung kommt das auch dem
+Lärmschutz zugute.
 
 Drei Hotels hat das Phantasialand heute, Ling Bao, Matamba und Charles
 Lindbergh. Ein Aquapark mit Hotel und ein Theater sollen Gäste mehrere Tage
-halten. Georg Frey, Kreisvorsitzender des Gastgewerbeverbands Dehoga, sieht
-darin eine Chance für Hotels und Gastronomie in der ganzen Region. Wie viel
-Steuern das der Stadt bringt, lässt sich nach ihrer
-eigenen Schätzung „nicht belastbar prognostizieren“. Die Gewerbesteuer könne in
+halten. Georg Frey, Kreisvorsitzender des Gastgewerbeverbands Dehoga, sieht in
+der Erweiterung eine Chance für Hotels und Gastronomie in der Region. Wie viel
+Steuern das der Stadt bringt, lässt sich nach Einschätzung der Stadt selbst
+„nicht belastbar prognostizieren“. Die Gewerbesteuer könne in
 den ersten Jahren nach dem Bau wegen der Abschreibungen sogar sinken, steht auf
 der Unterschriftenliste des Bürgerbegehrens.
 
-Für Besucher bedeutet mehr Fläche, dass Neues dazukommen kann, ohne dass Altes
-weichen muss. Weil das Gelände dicht bebaut ist, können neue Angebote dort „nur
+Für Besucher bedeutet mehr Fläche, dass neue Attraktionen dazukommen können,
+ohne dass alte weichen müssen. Weil das Gelände dicht bebaut ist, können neue Angebote dort „nur
 durch Entfernung vorhandener Attraktionen geschaffen werden“, schrieb die
 Bezirksregierung 2013. Damals waren auf der Erweiterungsfläche keine neuen
 Fahrattraktionen vorgesehen, heute stehen sie in den Plänen des Parks.
 
-Auch das Land bekäme etwas. Für die 14,17 Hektar am Ententeich erhält es im
-Tausch 38,82 Hektar Wald, die direkt an Staatswald grenzen, fast dreimal so viel
-Fläche. Dazu kommen mindestens 30 Prozent des Verkehrswerts, Anfang 2022
+Das Land bekäme für die 14,17 Hektar am Ententeich im Tausch 38,82 Hektar Wald,
+die direkt an Staatswald grenzen, fast dreimal so viel Fläche. Dazu kommen mindestens 30 Prozent des Verkehrswerts, Anfang 2022
 überschlagen rund zwei Millionen Euro, die in weiteren Staatswald fließen
 sollen, und 20 Jahre lang jährlich 20.000 Euro für Umweltbildung in der Region.
 Im Vertrag verpflichtet sich das Phantasialand außerdem, alle vorgeschriebenen
-Ausgleichs- und Ersatzmaßnahmen im zeitlichen Zusammenhang mit dem Eingriff zu
-leisten, möglichst in der Region, Grundstücke für die Ersatzaufforstung
-bereitzustellen und nicht über die L 194 nach Westen hinaus zu wachsen. Der
+Ausgleichs- und Ersatzmaßnahmen im zeitlichen Zusammenhang mit dem Eingriff und
+möglichst in der Region zu leisten. Es muss Grundstücke für die
+Ersatzaufforstung bereitstellen und darf nicht über die L 194 nach Westen hinaus
+wachsen. Der
 Wald, den das Land bekommt, steht allerdings schon und wechselt nur den
 Besitzer.
 
@@ -200,8 +201,8 @@ Attraktionen auf 16 Hektar und rund fünfzig Beschäftigte. Rust hatte damals
 2.595 Einwohner. In den ersten fünfzehn Jahren änderte sich daran wenig, 1990
 waren es 2.751. Ab 1995 wurde aus dem Park ein Resort. Als erstes Hotel
 eröffnete das El Andaluz, bis 2019 kamen fünf weitere dazu, zuletzt das
-Krønasår, und im November 2019 die Wasserwelt Rulantica. Einen Wasserpark mit
-Hotel plant jetzt auch das Phantasialand. Rust wuchs in diesen Jahren auf
+Krønasår, und im November 2019 die Wasserwelt Rulantica. Rust wuchs in diesen
+Jahren auf
 4.317 Einwohner im Jahr 2020, und Ende 2025 waren es 4.874, fast doppelt so viele
 wie 1975.
 
@@ -212,8 +213,7 @@ Binz mit 79. Gemessen an der Einwohnerzahl haben Rust und Schwanau die höchsten
 Gewerbesteuereinnahmen der südlichen Ortenau, Rust vor allem dank des
 Europa-Parks, berichtete der Schwarzwälder Bote im März 2026.
 
-Davon hat auch die Umgebung etwas. Nach einer Studie der Universität St.
-Gallen, die der Park im März 2025 auf seiner Pressekonferenz zum Saisonstart
+Nach einer Studie der Universität St. Gallen, die der Park im März 2025 auf seiner Pressekonferenz zum Saisonstart
 vorgestellt hat, lösten der Park und seine Besucher in der Saison 2023/24
 Umsätze von 896 Millionen Euro in Baden-Württemberg und 156 Millionen im Elsass
 aus. 343 Millionen davon entfielen auf Rust und sechs Nachbargemeinden, die
@@ -226,12 +226,12 @@ um 78 Prozent gestiegen und die der Übernachtungen um 154 Prozent. Studienleite
 Roland Scherer führt den Zuwachs gegenüber der Saison 2018/19 darauf zurück, dass
 der Park gewachsen und zu einem Ziel für das ganze Jahr geworden ist.
 
-Brühl ist nicht Rust. Die Stadt hat rund 36.000 Wahlberechtigte und liegt direkt
-neben Köln, der Europa-Park ist heute 95 Hektar groß, und das Phantasialand
+Brühl ist nicht Rust. Die Stadt hat rund 36.000 Wahlberechtigte und liegt
+direkt neben Köln. Der Europa-Park ist heute 95 Hektar groß, das Phantasialand
 würde von rund 28 auf gut 40 Hektar wachsen. Vergleichbar ist der Schritt, den
-der Europa-Park in den Neunzigern gegangen ist, vom Ausflugsziel für einen Tag
-zum Ziel für einen Kurzurlaub mit Hotel und später mit Wasserpark. Genau diesen
-Schritt will das Phantasialand jetzt gehen.
+der Europa-Park in den Neunzigern gegangen ist und den das Phantasialand jetzt
+gehen will, vom Ausflugsziel für einen Tag zum Ziel für einen Kurzurlaub mit
+Hotel und später mit Wasserpark.
 
 ## Die Petition für einen „dritten Weg“
 
@@ -251,30 +251,30 @@ ein „sensibles Gebiet“ und zählt auf, was ernsthaft berücksichtigt werden 
 Naturflächen, Ausgleichsmaßnahmen, Lärmschutz, Verkehr und Klimafolgen. Ihr
 Motto steht am Ende des Textes, „Für Dialog statt Stillstand“.
 
-Rechtlich ist sie etwas anderes als das Bürgerbegehren. Hat ein Bürgerbegehren
-genug Unterschriften und ist es zulässig, muss der Rat die Beschlüsse entweder
-selbst aufheben oder die Brühler abstimmen lassen. Eine Petition auf openPetition
-verpflichtet den Rat zu nichts. Erreicht sie ihr Quorum, fragt die Plattform bei
-den zuständigen Politikern nach einer Stellungnahme und veröffentlicht die
-Antworten. Dann kann man nachlesen, wie die Ratsmitglieder, die geantwortet
-haben, zur Erweiterung stehen.
+Hat ein Bürgerbegehren genug Unterschriften und ist es zulässig, muss der Rat
+die Beschlüsse entweder selbst aufheben oder die Brühler abstimmen lassen. Eine
+Petition auf openPetition verpflichtet den Rat dagegen zu nichts. Erreicht sie
+ihr Quorum, kann man nachlesen, wie die Ratsmitglieder, die openPetition
+geantwortet haben, zur Erweiterung stehen.
 
 Unterschreiben kann jeder, mit Namen, Anschrift und E-Mail-Adresse. Zur
 Gesamtzahl zählen alle Unterschriften, zum Quorum nur die aus Brühl. Im Schnitt
-ist seit Mai gut eine am Tag dazugekommen, und bis zum 23. November bleiben
-knapp sieben Wochen.
+ist seit Mai gut eine Unterschrift am Tag dazugekommen. Bis zum 23. November
+bleiben knapp sieben Wochen, und für das Quorum fehlen noch 695 Unterschriften
+aus Brühl.
 
 ## Warum ich unterschrieben habe
 
-Ich habe die Petition unterschrieben. Für das Quorum zählt meine Unterschrift
-nicht, weil ich nicht in Brühl wohne.
+Für das Quorum zählt meine Unterschrift nicht, weil ich nicht in Brühl wohne.
 
 Ich halte es für falsch, das Verfahren jetzt zu stoppen. Das Bürgerbegehren
-würde es beenden, bevor die Gutachten dafür vorliegen. Im
-Bebauungsplanverfahren wird geprüft, was aus dem Ententeich, dem Wasser, dem
-Lärm und dem Verkehr wird, und wenn der Plan ausliegt, können Anwohner und
-Verbände Einwände schreiben. Hält das Ergebnis nicht, was der Park verspricht,
-bleibt den Verbänden die Klage. Das hat Hölzmann im September selbst gesagt.
+würde es beenden, bevor die Gutachten vorliegen. Im Bebauungsplanverfahren lässt
+der Park begutachten, was aus dem Ententeich, dem Wasser, dem Lärm und dem
+Verkehr wird, und die Stadt prüft die Gutachten. Wenn der Plan ausliegt, können
+Anwohner und Verbände Einwände schreiben. Hält das Ergebnis nicht, was der Park
+verspricht, bleibt den Verbänden die Klage. Dass Umweltverbände auch nach einem
+gescheiterten Bürgerbegehren gegen den Bebauungsplan klagen können, hat Hölzmann
+im September selbst dem Schlossboten gesagt.
 
 Das Phantasialand kann nach eigener Aussage nur noch Neues bauen, indem es
 Altes abreißt oder überbaut. Dass es für ein Hotel mit Aquapark mehr Platz
@@ -286,17 +286,16 @@ Ententeich sein muss, soll das Verfahren klären.
 
 Vom Park erwarte ich dafür mehr als bisher. Die Petition verlangt Transparenz,
 und da hat das Phantasialand weniger geliefert, als es selbst angekündigt hat.
-Eine Karte, auf der man sieht, ob der Ententeich in den Plänen noch vorkommt,
-würde ich gern vor dem 9. November sehen. Bis dahin entscheiden viele in Brühl,
-ob sie das Bürgerbegehren unterschreiben.
+Bis zum 9. November entscheiden viele in Brühl, ob sie das Bürgerbegehren
+unterschreiben, und vorher sollte der Park zeigen, wo genau er bauen will und ob
+der Teich in seinen Plänen bleibt.
 
 > [!TIP]
 > Die Petition „Für eine verantwortungsvolle Erweiterung des Phantasialands“
 > kannst du bis zum 23. November
 > [auf openPetition unterschreiben](https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands).
-> Wohnst du in Brühl, zählt deine Unterschrift zu den 740, ab denen openPetition
-> den Rat um Stellungnahmen bittet. Sammelbögen zum Ausdrucken gibt es dort als
-> PDF.
+> Wohnst du in Brühl, zählt deine Unterschrift auch für das Quorum. Sammelbögen
+> zum Ausdrucken gibt es dort als PDF.
 
 [Phantasialand](ref:phantasialand?full)
 
@@ -308,7 +307,7 @@ ob sie das Bürgerbegehren unterschreiben.
 
 - Petitionstext, Begründung, Adressaten, Laufzeit und Unterschriften: [Für eine verantwortungsvolle Erweiterung des Phantasialands (openPetition)](https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Unterschriften aus Brühl und Durchschnitt pro Tag: [Statistik der Petition](https://www.openpetition.de/petition/statistik/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Argumente beider Seiten, darunter die Pressemitteilung der Schutzgemeinschaft Deutscher Wald: [Pro & Contra](https://www.openpetition.de/petition/argumente/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Quorum und wer dazu zählt: [FAQ (openPetition)](https://www.openpetition.de/content/faq)
 - Begründung, geplante Nutzungen, Gutachten, Waldausgleich, angekündigte Zahlen und Fakten: [Standortsicherung (Phantasialand)](https://www.phantasialand.de/de/rechtliches/standortsicherung/)
-- Bürgerbegehren, Frist und Unterschriftenzahl: [Unterschriftenliste „Brühler Waldentscheid“ (PDF)](https://nsg-ententeich.de/mitmachen/docs/unterschriftenliste.pdf) · [Bürgerbegehren & Bürgerentscheid (Netzwerk NSG Ententeich)](https://nsg-ententeich.de/buegerbegehren.html) · Unterstützer des Netzwerks: [Brühler sollen über Ausbaupläne für das Phantasialand abstimmen (Kölner Stadt-Anzeiger, 28. September 2026)](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-buerger-sollen-ueber-ausbauplaene-fuer-phantasialand-abstimmen-1384212)
+- Bürgerbegehren, Frist, Unterschriftenzahl und die Kostenschätzung der Stadt mit den Steuern: [Unterschriftenliste „Brühler Waldentscheid“ (PDF)](https://nsg-ententeich.de/mitmachen/docs/unterschriftenliste.pdf) · [Bürgerbegehren & Bürgerentscheid (Netzwerk NSG Ententeich)](https://nsg-ententeich.de/buegerbegehren.html) · Unterstützer des Netzwerks: [Brühler sollen über Ausbaupläne für das Phantasialand abstimmen (Kölner Stadt-Anzeiger, 28. September 2026)](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-buerger-sollen-ueber-ausbauplaene-fuer-phantasialand-abstimmen-1384212)
 - Zitate Hölzmann und Stübner, Schwammstadtkonzept: [Ratsvotum vertagt, Bürgerbewegung kündigt Bürgerbegehren an (FreizeitparkNEWS, 20. Mai 2026)](https://www.freizeitparknews.de/phantasialand/buergerbegehren/)
 - 50Tausend Bäume und das Bürgerbegehren, Klage nach einem gescheiterten Begehren, NABU: [Waldschützer ziehen nicht an einem Strang (Brühler Schlossbote, 29. September 2026)](https://www.rheinische-anzeigenblaetter.de/bruehl/c-nachrichten/waldschuetzer-ziehen-nicht-an-einem-strang_a380293) · [Phantasialand: Streit um Bürgerbegehren in Brühl (Radio Erft, 29. September 2026)](https://www.radioerft.de/artikel/phantasialand-streit-um-buergerbegehren-in-bruehl-2768434) · [Startseite (Initiative 50Tausend Bäume)](https://www.50tausendbaeume.de/)
 - Ausgleichskonzept von 2013: [Phantasialand stellt Pläne für Naturausgleich vor (Parkerlebnis, 29. September 2013, nach der Rhein-Erft Rundschau)](https://www.parkerlebnis.de/phantasialand-stellt-plaene-fuer-naturausgleich-nach-freizeitpark-erweiterung-vor_2222.html)

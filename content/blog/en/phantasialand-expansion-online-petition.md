@@ -8,9 +8,9 @@ featured: false
 excerpt: >-
   Conservationists in Brühl have until 9 November to collect the signatures
   that would stop the planning for Phantasialand’s expansion. Since May, an
-  online petition has been asking the town council for the opposite: examine
-  the expansion properly and plan nature and compensation into it. I’ve signed
-  it.
+  online petition has been asking the town council to examine the expansion
+  properly and to take nature and compensation measures into account. I’ve
+  signed it.
 tags:
   - news
   - phantasialand
@@ -26,10 +26,10 @@ coverImage:
   caption: 'Colorado Adventure in the Mexico area. The park wants to build new rides on the expansion land as well.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Phantasialand expansion: a petition for a third way'
+  title: 'Online petition for the Phantasialand expansion in Brühl'
   description: >-
-    A citizens’ initiative against it, an online petition for it: where the
-    fight over Phantasialand’s expansion and the Ententeich stands in October.
+    A citizens’ initiative wants to stop Phantasialand’s expansion at the
+    Ententeich. An online petition asks Brühl’s council to examine it properly.
   keywords:
     - Phantasialand expansion
     - Phantasialand expansion petition
@@ -62,15 +62,15 @@ is in [my post from 1 October](/news/phantasialand-erweiterung-buergerbegehren).
 
 On 9 July, the planning committee started two procedures with the votes of the
 CDU, SPD and FDP/Volt: a change to the land-use plan and zoning plan 06.01. The
-Greens and Die Linke voted against, and the AfD abstained. That approves
-nothing. The town administration is drafting a first version with a planning
-firm, and there’s no date yet for the public display period, when anyone can
-read the plan and file objections.
+Greens and Die Linke voted against, and the AfD abstained. That isn’t a
+permit. The town administration is drafting a first version with a planning
+firm, and the town hasn’t yet named a date for the public display period, when
+anyone can read the plan and file objections.
 
 Phantasialand has commissioned expert reports in seven fields, from species
 protection to the water balance, and pays for them. The town runs the procedure
-and checks that the reports meet the legal requirements. By 7 October the park
-hadn’t published any results. On its page
+and checks that the reports meet the legal requirements. So far the park hasn’t
+published any results. On its page
 ["Standortsicherung"](https://www.phantasialand.de/de/rechtliches/standortsicherung/)
 (securing the site), it promised to publish "figures, data and facts" and to
 keep them up to date. Since the end of September it hasn’t added a map of the
@@ -102,15 +102,15 @@ Her fellow campaigner Stephan Stübner made the case with water:
 
 The network also says building there would contradict the sponge-city and
 climate-adaptation plan that Brühl adopted itself, and expects more traffic and
-noise.
+noise. NABU Rhein-Erft, which backs the citizens’ initiative, has also said it
+reserves the right to take a later zoning plan to court.
 
 Not every opponent supports the citizens’ initiative. The group
 [50Tausend Bäume](https://www.50tausendbaeume.de/) (50,000 trees), founded in
 2007 against the plans of that time in the Ville forest, doesn’t want a nature
 reserve put to a vote. In its view, scientific facts and the law as it stands
 should decide. Giving up a state-owned nature reserve for a theme park has
-"never happened anywhere in Germany", the group writes on its home page. NABU
-Rhein-Erft has said it reserves the right to take a later zoning plan to court.
+"never happened anywhere in Germany", the group writes on its home page.
 
 The petition’s own debate page lists, as an argument against, a press release
 from the Schutzgemeinschaft Deutscher Wald, a forest protection association, in
@@ -121,7 +121,8 @@ land.
 
 ## Who’s for it
 
-Phantasialand bases its case on short breaks. To keep more guests overnight, it
+On its "Standortsicherung" page, Phantasialand bases its case on short
+breaks. To keep more guests overnight, it
 says it needs attractions for longer stays, and there’s no room for them on the
 land it has today. On about 15 hectares, it plans among other things an
 aquapark hotel resort, rides, a theatre and parking decks. On the same page,
@@ -135,8 +136,8 @@ the park writes:
 >
 > Phantasialand on its page ["Standortsicherung"](https://www.phantasialand.de/de/rechtliches/standortsicherung/), accessed 7 October 2026, translated from German
 
-In the council, the procedure is carried by the CDU and SPD, who agreed after
-the 2025 local election to examine the expansion with "a fundamentally open
+In the council, the CDU and SPD carry the procedure. After the 2025 local
+election they agreed to examine the expansion with "a fundamentally open
 mind". Back in March 2025, the SPD made its support conditional on the
 Ententeich staying as it is, and their coalition agreement says the planning
 must be drawn up "taking the Ententeich into account".
@@ -157,34 +158,36 @@ the expansion, and says he has no particular connection to the park.
 Phantasialand says it employs 1,800 staff and apprentices. Back in 2013 it
 forecast 830 new jobs from the expansion, 600 of them year-round. That’s in the
 Cologne regional government’s reasoning for amending the regional plan, and in
-July 2026 the park gave the same figure. Year-round because the park’s stated
-aim at the time was to open all year. Under the 2013 plan, "by far the largest
-share" of the new facilities were to be buildings or covered areas, which in
-the regional government’s view would also help with noise.
+July 2026 the park gave the same figure. They were to be year-round jobs
+because the park wanted to open all year at the time. Under the 2013 plan, "by
+far the largest share" of the new facilities were to be buildings or covered
+areas, which in the regional government’s view would also help keep the noise
+down.
 
 Phantasialand has three hotels today: Ling Bao, Matamba and Charles Lindbergh.
 An aquapark with a hotel and a theatre are meant to keep guests for several
 days. Georg Frey, district chair of the hospitality association Dehoga, sees
-that as a chance for hotels and restaurants across the region. How much tax it
-would bring the town "can’t be reliably forecast", according to the town’s own
-estimate, printed on the citizens’ initiative’s signature sheet. Business tax
+the expansion as a chance for hotels and restaurants in the region. How much
+tax it would bring the town "can’t be reliably forecast", according to the
+town itself, in its estimate printed on the citizens’ initiative’s signature
+sheet. Business tax
 might even fall in the first years after construction because of depreciation.
 
-For visitors, more land means new things can be added without old ones having
-to go. Because the grounds are so densely built, new attractions can "only be
+For visitors, more land means new attractions can be added without old ones
+having to go. Because the grounds are so densely built, new attractions can "only be
 created by removing existing ones", the regional government wrote in 2013. At
 the time, no new rides were planned for the expansion land. Today they’re in
 the park’s plans.
 
-The state would get something too. For the 14.17 hectares at the Ententeich, it
-receives 38.82 hectares of forest bordering existing state forest in the swap,
-almost three times the area. On top of that come at least 30 per cent of the
+For the 14.17 hectares at the Ententeich, the state would receive 38.82
+hectares of forest bordering existing state forest in the swap, almost three
+times the area. On top of that come at least 30 per cent of the
 market value, roughly estimated in early 2022 at about two million euros and
 earmarked for more state forest, plus 20,000 euros a year for 20 years for
 environmental education in the region. In the contract, Phantasialand also
 commits to providing all required compensation measures in step with the
-construction, in the region where possible, to supply land for replacement
-planting, and not to grow west beyond the L 194 road. The forest the state
+construction and in the region where possible. It has to supply land for
+replacement planting and may not grow west beyond the L 194 road. The forest the state
 receives is already standing, though. It only changes hands.
 
 Meyer told the Schlossbote that the company wants to make up for the felled
@@ -202,8 +205,7 @@ attractions on 16 hectares and about fifty staff. Rust, the village it’s in,
 had 2,595 inhabitants. For the first fifteen years that barely changed: in 1990
 there were 2,751. From 1995 the park turned into a resort. El Andaluz opened as
 its first hotel, five more followed up to 2019, the last being Krønasår, and in
-November 2019 came the Rulantica water park. An aquapark with a hotel is what
-Phantasialand is planning now. Over those years Rust grew to 4,317 inhabitants
+November 2019 came the Rulantica water park. Over those years Rust grew to 4,317 inhabitants
 in 2020, and at the end of 2025 there were 4,874, almost twice as many as in
 1975.
 
@@ -214,7 +216,7 @@ resort of Binz with 79. Measured per resident, Rust and Schwanau have the
 highest business-tax income in the southern Ortenau district, Rust mainly
 thanks to Europa-Park, the Schwarzwälder Bote reported in March 2026.
 
-The surrounding area benefits as well. According to a study by the University
+According to a study by the University
 of St. Gallen, which the park presented at its season-opening press conference
 in March 2025, the park and its visitors generated 896 million euros in revenue
 in Baden-Württemberg and 156 million in Alsace in the 2023/24 season. Of that,
@@ -229,11 +231,10 @@ Scherer, puts the increase over the 2018/19 season down to the park’s growth
 and to it becoming a destination for the whole year.
 
 Brühl isn’t Rust. The town has about 36,000 voters and sits right next to
-Cologne, Europa-Park now covers 95 hectares, and Phantasialand would grow from
+Cologne. Europa-Park now covers 95 hectares, and Phantasialand would grow from
 about 28 to just over 40. What compares is the step Europa-Park took in the
-nineties, from a place for a day out to a short-break destination with a hotel
-and later a water park. That’s exactly the step Phantasialand wants to take
-now.
+nineties and Phantasialand wants to take now, from a place for a day out to a
+short-break destination with a hotel and later a water park.
 
 ## The petition for a "third way"
 
@@ -254,30 +255,31 @@ The petition doesn’t ask for any particular decision. It calls the Ententeich 
 compensation measures, noise protection, traffic and the effects on the
 climate. Its motto closes the text: "Dialogue instead of standstill".
 
-Legally it’s a different thing from the citizens’ initiative. If a
-Bürgerbegehren gets enough signatures and is ruled admissible, the council has
-to either overturn the decisions itself or put them to a vote in Brühl. A
-petition on openPetition binds the council to nothing. If it reaches its
-quorum, the platform asks the politicians responsible for a statement and
-publishes the replies. Then anyone can read where the council members who
-answered stand on the expansion.
+If a Bürgerbegehren gets enough signatures and is ruled admissible, the
+council has to either overturn the decisions itself or put them to a vote in
+Brühl. A petition on openPetition, by contrast, binds the council to nothing.
+If it reaches its quorum, anyone can read where the council members who
+answered openPetition stand on the expansion.
 
 Anyone can sign, with their name, address and email. Every signature counts
 towards the total, and only those from Brühl towards the quorum. Since May it
-has gained a little over one a day on average, and there are just under seven
-weeks left until 23 November.
+has gained a little over one signature a day on average. There are just under
+seven weeks left until 23 November, and the quorum still needs 695 signatures
+from Brühl.
 
 ## Why I signed
 
-I’ve signed the petition. My signature doesn’t count towards the quorum,
-because I don’t live in Brühl.
+My signature doesn’t count towards the quorum, because I don’t live in
+Brühl.
 
 I think stopping the procedure now is wrong. The citizens’ initiative would end
-it before the expert reports are in. The zoning procedure is where the effects
-on the Ententeich, the water, the noise and the traffic get examined, and once
-the plan is on public display, residents and associations can file objections.
-If the result doesn’t hold up to what the park promises, the associations can
-still go to court. Hölzmann said so herself in September.
+it before the expert reports are in. In the zoning procedure, the park has
+experts assess what happens to the Ententeich, the water, the noise and the
+traffic, and the town checks their reports. Once the plan is on public
+display, residents and associations can file objections. If the result doesn’t
+hold up to what the park promises, the associations can still go to court.
+Hölzmann herself told the Schlossbote in September that environmental groups
+could challenge the zoning plan even after a failed citizens’ initiative.
 
 Phantasialand says it can now only build something new by tearing down or
 building over something old. I believe it needs more room for a hotel with an
@@ -289,17 +291,16 @@ to settle.
 
 In return, I expect more from the park than it has delivered so far. The
 petition asks for transparency, and Phantasialand has published less than it
-said it would. I’d like to see a map showing whether the Ententeich is still in
-the plans before 9 November, because that’s when many people in Brühl will
-have decided whether to sign the citizens’ initiative.
+said it would. By 9 November, many people in Brühl will decide whether to sign
+the citizens’ initiative, and before then the park should show exactly where
+it wants to build and whether the pond stays in its plans.
 
 > [!TIP]
 > You can sign the petition "Für eine verantwortungsvolle Erweiterung des
 > Phantasialands" (for a responsible expansion of Phantasialand)
 > [on openPetition](https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands)
-> until 23 November. If you live in Brühl, your signature counts towards the
-> 740 at which openPetition asks the council for statements. Printable
-> signature sheets are available there as a PDF.
+> until 23 November. If you live in Brühl, your signature also counts towards
+> the quorum. Printable signature sheets are available there as a PDF.
 
 [Phantasialand](ref:phantasialand?full)
 
@@ -311,7 +312,7 @@ have decided whether to sign the citizens’ initiative.
 
 - Petition text, reasoning, addressees, deadline and signatures: [Für eine verantwortungsvolle Erweiterung des Phantasialands (openPetition)](https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Signatures from Brühl and the daily average: [the petition’s statistics](https://www.openpetition.de/petition/statistik/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · Arguments on both sides, including the Schutzgemeinschaft Deutscher Wald press release: [Pro & Contra](https://www.openpetition.de/petition/argumente/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) · The quorum and who counts towards it: [FAQ (openPetition)](https://www.openpetition.de/content/faq)
 - Reasoning, planned uses, expert reports, forest compensation, promised figures and facts: [Standortsicherung (Phantasialand)](https://www.phantasialand.de/de/rechtliches/standortsicherung/)
-- Citizens’ initiative, deadline and number of signatures: [Signature sheet "Brühler Waldentscheid" (PDF)](https://nsg-ententeich.de/mitmachen/docs/unterschriftenliste.pdf) · [Bürgerbegehren & Bürgerentscheid (Netzwerk NSG Ententeich)](https://nsg-ententeich.de/buegerbegehren.html) · Groups behind the network: [Brühler sollen über Ausbaupläne für das Phantasialand abstimmen (Kölner Stadt-Anzeiger, 28 September 2026)](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-buerger-sollen-ueber-ausbauplaene-fuer-phantasialand-abstimmen-1384212)
+- Citizens’ initiative, deadline, number of signatures and the town’s cost estimate on taxes: [Signature sheet "Brühler Waldentscheid" (PDF)](https://nsg-ententeich.de/mitmachen/docs/unterschriftenliste.pdf) · [Bürgerbegehren & Bürgerentscheid (Netzwerk NSG Ententeich)](https://nsg-ententeich.de/buegerbegehren.html) · Groups behind the network: [Brühler sollen über Ausbaupläne für das Phantasialand abstimmen (Kölner Stadt-Anzeiger, 28 September 2026)](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-buerger-sollen-ueber-ausbauplaene-fuer-phantasialand-abstimmen-1384212)
 - Hölzmann and Stübner quotes, sponge-city plan: [Ratsvotum vertagt, Bürgerbewegung kündigt Bürgerbegehren an (FreizeitparkNEWS, 20 May 2026)](https://www.freizeitparknews.de/phantasialand/buergerbegehren/)
 - 50Tausend Bäume and the citizens’ initiative, going to court after a failed initiative, NABU: [Waldschützer ziehen nicht an einem Strang (Brühler Schlossbote, 29 September 2026)](https://www.rheinische-anzeigenblaetter.de/bruehl/c-nachrichten/waldschuetzer-ziehen-nicht-an-einem-strang_a380293) · [Phantasialand: Streit um Bürgerbegehren in Brühl (Radio Erft, 29 September 2026)](https://www.radioerft.de/artikel/phantasialand-streit-um-buergerbegehren-in-bruehl-2768434) · [Home page (Initiative 50Tausend Bäume)](https://www.50tausendbaeume.de/)
 - Compensation plan of 2013: [Phantasialand stellt Pläne für Naturausgleich vor (Parkerlebnis, 29 September 2013, after the Rhein-Erft Rundschau)](https://www.parkerlebnis.de/phantasialand-stellt-plaene-fuer-naturausgleich-nach-freizeitpark-erweiterung-vor_2222.html)
