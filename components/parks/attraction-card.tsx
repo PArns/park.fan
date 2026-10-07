@@ -433,15 +433,20 @@ export function AttractionCard({
 
           {/* The outer subgrid equalises header heights across a row, so no min-h. In a phone
               row the badges keep to one line and fade out rather than wrap; the full set is on
-              the ride's page. */}
+              the ride's page. The status badge leaves that line while a wait time stands beside
+              the name, which already says the ride is running; `min-h` keeps the row at its
+              72 px when nothing else is left on the line. */}
           <div
             className={cn(
               'relative mt-[9px] flex flex-wrap items-start gap-[6px]',
               phoneRow &&
-                'max-sm:mt-[6px] max-sm:flex-nowrap max-sm:overflow-hidden max-sm:[mask-image:linear-gradient(to_right,black_85%,transparent)] max-sm:*:shrink-0'
+                'max-sm:mt-[6px] max-sm:min-h-[22px] max-sm:flex-nowrap max-sm:overflow-hidden max-sm:[mask-image:linear-gradient(to_right,black_85%,transparent)] max-sm:*:shrink-0'
             )}
           >
-            <ParkStatusBadge status={status} />
+            <ParkStatusBadge
+              status={status}
+              className={phoneRow && hasBottomPanel ? 'max-sm:hidden' : undefined}
+            />
             {isOperatingOrUnknown && crowdLevel && (
               // The scale is this ride's own, in minutes, and only where the API sent the
               // baseline it rated against — without one the badge stands alone.
