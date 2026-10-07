@@ -2,6 +2,7 @@
 title: 'Europa-Park opens on 7 March 2027 for the first time'
 translationKey: europa-park-pre-opening-weeks-2027
 date: '2026-10-01'
+time: '09:23'
 author: patrick
 mode: published
 featured: false

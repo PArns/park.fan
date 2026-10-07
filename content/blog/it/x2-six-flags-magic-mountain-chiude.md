@@ -2,6 +2,7 @@
 title: 'X2 a Magic Mountain resta chiusa per sempre'
 translationKey: x2-magic-mountain-retired
 date: '2026-09-30'
+time: '09:58'
 author: patrick
 mode: published
 featured: false

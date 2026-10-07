@@ -7,6 +7,7 @@
  *   - the window is the build day and the two days before it, both ends inclusive
  *   - only news posts, only real translations (no EN fallback), no future-dated post
  *   - each entry carries publication name, language, date and the escaped title
+ *   - a post with a `time` carries it with Berlin's offset, and the later post of a day comes first
  *   - an empty window is still a well-formed `<urlset>` with the news namespace
  *   - never more than 1000 entries, and the cap drops the oldest
  *
@@ -40,10 +41,10 @@ function test(name, fn) {
 }
 
 const TODAY = '2026-09-24';
-const post = (slug, date, { category = 'news', isFallback = false, title = slug } = {}) => ({
+const post = (slug, date, { category = 'news', isFallback = false, title = slug, time } = {}) => ({
   slug,
   isFallback,
-  frontmatter: { title, date, category },
+  frontmatter: { title, date, time, category },
 });
 const locs = (xml) => [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 
@@ -100,6 +101,26 @@ test('an entry names publication, language, date and the escaped title', () => {
   assert.match(xml, /<news:language>fr<\/news:language>/);
   assert.match(xml, /<news:publication_date>2026-09-23<\/news:publication_date>/);
   assert.match(xml, /<news:title>Peur &amp; &lt;frissons&gt;<\/news:title>/);
+});
+
+test('a time goes out with Berlin’s offset, and the later post of a day comes first', () => {
+  const xml = buildNewsSitemap(
+    [
+      [
+        'de',
+        [
+          post('morning', '2026-09-23', { time: '08:03' }),
+          post('noon', '2026-09-23', { time: '11:37' }),
+        ],
+      ],
+    ],
+    TODAY
+  );
+  assert.match(xml, /<news:publication_date>2026-09-23T08:03:00\+02:00<\/news:publication_date>/);
+  assert.deepEqual(locs(xml), [
+    'https://park.fan/de/news/noon',
+    'https://park.fan/de/news/morning',
+  ]);
 });
 
 test('an empty window is a well-formed urlset with the news namespace', () => {

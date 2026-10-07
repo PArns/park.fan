@@ -8,6 +8,7 @@ import { getMediaImageForPath } from '@/lib/media';
 import { WEBSUB_HUB } from '@/lib/websub';
 import { BLOG_FEED_DESCRIPTION, BLOG_FEED_TITLE, blogFeedUrl } from '@/lib/blog/feed';
 import { postPath } from '@/lib/blog/paths';
+import { newestPublishedFirst, publishedInstant } from '@/lib/blog/published-at';
 import { xmlEscape } from '@/lib/seo/sitemap-xml';
 
 /**
@@ -76,7 +77,7 @@ export async function GET(
 
   // Copy before sorting: `listPosts` hands out a shared frozen array.
   const posts = [...listPosts(locale)]
-    .sort((a, b) => (a.frontmatter.date < b.frontmatter.date ? 1 : -1))
+    .sort((a, b) => newestPublishedFirst(a.frontmatter, b.frontmatter))
     .slice(0, MAX_ITEMS);
 
   const channelTitle = BLOG_FEED_TITLE[locale];
@@ -87,10 +88,9 @@ export async function GET(
   // The newest thing in the feed, by whichever date is later — a post revised
   // today is a change to the document this timestamp describes.
   const lastBuild = posts.reduce((newest, post) => {
-    const { date, updatedAt } = post.frontmatter;
-    for (const candidate of [date, updatedAt]) {
-      if (!candidate) continue;
-      const parsed = new Date(candidate);
+    const { updatedAt } = post.frontmatter;
+    for (const parsed of [publishedInstant(post.frontmatter), updatedAt && new Date(updatedAt)]) {
+      if (!parsed) continue;
       if (!Number.isNaN(parsed.getTime()) && parsed > newest) newest = parsed;
     }
     return newest;
@@ -101,7 +101,7 @@ export async function GET(
       const { frontmatter } = post;
       const url = `${SITE_URL}/${locale}${postPath(post)}`;
       const author = resolveAuthor(frontmatter.author, locale).name;
-      const pubDate = rfc822(new Date(frontmatter.date));
+      const pubDate = rfc822(publishedInstant(frontmatter));
       // Content-versioned like every other media URL. A feed reader caches an
       // enclosure by its address, so an unversioned crop keeps the old framing in
       // every subscriber's client after a focal point moves.

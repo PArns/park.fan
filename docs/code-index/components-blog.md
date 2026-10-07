@@ -45,6 +45,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `slugFromPostPath` _function_: The slug of a post from its locale-relative path (`/blog/<slug>`, `/news/<slug>`).
 - Types: `CoverFallbackHue`
 
+### [`blog-cta-widget.tsx`](../../components/blog/blog-cta-widget.tsx)
+
+- `BlogCtaWidget` _component_: The `cta-widget` fence: one line of text and a link drawn as a button, for the single action a post asks of its reader (sign a petition, book a ticket).
+
 ### [`blog-gallery.tsx`](../../components/blog/blog-gallery.tsx)
 
 - `BlogGallery` _component_: Masonry photo gallery for a blog post, with a lightbox dialog that steps through the images by button or arrow key.

@@ -2,6 +2,7 @@
 title: 'Traumatica compie dieci anni a Europa-Park'
 translationKey: traumatica-ten-years
 date: '2026-09-23'
+time: '08:03'
 author: patrick
 mode: published
 featured: false

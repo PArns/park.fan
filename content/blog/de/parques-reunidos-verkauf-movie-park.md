@@ -2,6 +2,7 @@
 title: 'EQT sucht einen Käufer für Parques Reunidos'
 translationKey: parques-reunidos-sale
 date: '2026-09-25'
+time: '08:02'
 author: patrick
 mode: published
 featured: false

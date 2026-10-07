@@ -2,6 +2,7 @@
 title: 'Movie Park Halloween Horror Festival läuft bis 8. November'
 translationKey: movie-park-germany-halloween-horror-festival-2026
 date: '2026-09-23'
+time: '11:37'
 author: patrick
 mode: published
 featured: false

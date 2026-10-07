@@ -2,6 +2,7 @@
 title: 'Cedar Point apre un labirinto di Diablo per HalloWeekends'
 translationKey: cedar-point-halloweekends-2026
 date: '2026-09-29'
+time: '09:15'
 author: patrick
 mode: published
 featured: false

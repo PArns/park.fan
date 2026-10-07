@@ -80,6 +80,12 @@ export interface BlogFrontmatter {
   translationKey?: string;
   /** ISO date (YYYY-MM-DD). */
   date: string;
+  /**
+   * Time of day the post went out, `HH:MM` in Europe/Berlin. Required on news: several news posts
+   * share a day, and without it their order within the day was whatever the sort left
+   * (docs/rules/news-is-set-apart-from-the-articles.md#order-within-a-day).
+   */
+  time?: string;
   /** Optional last-updated date. */
   updatedAt?: string;
   author: BlogAuthor | string;

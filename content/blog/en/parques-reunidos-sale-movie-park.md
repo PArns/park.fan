@@ -2,6 +2,7 @@
 title: "Movie Park Germany's owner Parques Reunidos is up for sale"
 translationKey: parques-reunidos-sale
 date: '2026-09-25'
+time: '08:02'
 author: patrick
 mode: published
 featured: false

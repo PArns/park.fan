@@ -2,6 +2,7 @@
 title: 'Europa-Park ist zum elften Mal bester Park der Welt'
 translationKey: europa-park-golden-ticket-2026
 date: '2026-10-02'
+time: '09:16'
 author: patrick
 mode: published
 featured: false
