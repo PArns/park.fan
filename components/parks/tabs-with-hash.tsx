@@ -536,11 +536,14 @@ export const TabsWithHash = memo(function TabsWithHash({
               eager={index === 0 || isSearching}
               // `phoneRowHeight`: one `phoneRow` card below `sm` is 72 px (10 px padding, the
               // 26 px name line, 6 px, a 22 px badge line, 8 px padding) plus the 8 px gap.
+              // `phoneHeaderHeight`: the 50 px land heading and its 8 px margin, less the gap the
+              // last row is counted with and does not take.
               grid={{
                 count: attractions.length,
                 rowHeight: 340,
                 phoneRowHeight: 80,
                 headerHeight: 64,
+                phoneHeaderHeight: 50,
               }}
             >
               <LandSection
