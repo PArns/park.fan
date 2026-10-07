@@ -2,6 +2,7 @@
 title: 'Scarefest in Alton Towers mit neuem Maze Final Exhibit'
 translationKey: alton-towers-scarefest-2026
 date: '2026-09-28'
+time: '13:34'
 author: patrick
 mode: published
 featured: false

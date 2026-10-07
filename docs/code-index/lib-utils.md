@@ -292,6 +292,7 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `getLiveAttractionStatus` _function_: The status a visitor is shown for one attraction, from the live payload.
 - `getStandbyWait` _function_: STANDBY wait of an attraction in minutes, or null when it has no standby queue. Says nothing about whether the ride is open: pair it with `getAttractionDisplayStatus`.
 - `groupAttractionsByLand` _function_: Groups attractions by land (`fallbackName` when none), each land sorted by name.
+- `sortLandNames` _function_: Land names in display order: alphabetical, then the Halloween-maze group, then the land-less one.
 
 ### [`quietest-day.ts`](../../lib/utils/quietest-day.ts)
 
@@ -324,6 +325,14 @@ Redirects for malformed or stale park URLs: a missing city segment (a park slug 
 - `isLocalOrUnusableIp` _function_: True if the IP is missing or local/private, which GeoIP cannot resolve.
 - `getClientIp` _function_: The visitor's IP address, or '' when no header carries a usable one. Takes a plain `Request` too, since the admin route handlers are typed on it.
 - `getForwardedForHeaders` _function_: Headers forwarding the real client IP to the backend for GeoIP; without them api.park.fan sees our server's IP.
+
+### [`ridden-rides.ts`](../../lib/utils/ridden-rides.ts)
+
+- `getRiddenSnapshot` _function_: The marked ids. The same object comes back until the stored value changes, which is what `useSyncExternalStore` needs from a snapshot.
+- `getServerRiddenSnapshot` _function_: The snapshot on the server and while hydrating: nothing marked yet.
+- `subscribeToRidden` _function_: Calls `listener` when a ride is marked here or in another tab; returns the unsubscribe.
+- `toggleRidden` _function_: Marks the ride as ridden, or takes the mark off; returns the new state.
+- `RIDDEN_RIDES_KEY` _const_: Where the marked ride ids live, as a JSON array of strings.
 
 ### [`ride-crowd-scale.ts`](../../lib/utils/ride-crowd-scale.ts)
 

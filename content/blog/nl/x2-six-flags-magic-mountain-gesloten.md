@@ -2,6 +2,7 @@
 title: 'Achtbaan X2 in Magic Mountain blijft definitief dicht'
 translationKey: x2-magic-mountain-retired
 date: '2026-09-30'
+time: '09:58'
 author: patrick
 mode: published
 featured: false

@@ -2,6 +2,7 @@
 title: 'Efteling opent Raveleijn op 1 december weer'
 translationKey: efteling-raveleijn-ravenring
 date: '2026-10-03'
+time: '21:59'
 author: patrick
 mode: published
 featured: false

@@ -682,7 +682,7 @@ sentences on the first run.
 
 ### 3.3 Ours, and non-negotiable
 
-Fourteen house rules that are not in anybody's research. They came out of real reviews of shipped
+Sixteen house rules that are not in anybody's research. They came out of real reviews of shipped
 text:
 
 1. **Never `ehrlich`, in any form.** No `ehrlich gesagt`, no `der ehrlichste Woodie`, no
@@ -776,8 +776,9 @@ le`, `tal como los da la fuente`, `Consulté todas las páginas el`, `come li d�
 aperte il`. A reader cannot look up `die Quelle`; the post links every page, so name whose page
     it is: `wie Park oder Hersteller sie angeben`, `mehr als die Hälfte nennt keinen Hersteller`.
     The access date is a bibliography's `abgerufen am` moved into the text, and with it the
-    author's routine. Say what the parks did by that date instead (`haben bis zum 5. Oktober keine
-Neuheit für 2027 bestätigt`) or leave it to `updatedAt` and a `Stand 5. Oktober 2026`. All of
+    author's routine. Say what the parks have done, in the present (`haben noch keine Neuheit für
+2027 bestätigt`), and leave the day to `updatedAt` or to a `Stand 5. Oktober 2026` over a table
+    (rule 15). All of
     it stood in the 2027 novelties post in six languages until Patrick put it on the list on
     2026-10-05. `pnpm check:prose` fails on both in every language, in posts and news only: in the
     admin a `Quelle` is the upstream feed. A named source stays (`Six Flags nennt sie die
@@ -796,6 +797,30 @@ two` stay.
     not besetzt; the wait at it is shorter (`An Regentagen sind die Wartezeiten kürzer`). Same
     excerpt, same day, and the same class as the other verbs that do not fit their noun (§2.19).
     `pnpm check:prose` fails on it on every surface.
+15. **Never pin a non-event to the post's own date.** `Einen Zwischenstand hat es auf seiner
+Website bis zum 7. Oktober nicht genannt.` stood in a news post dated 7 October, in six
+    languages (`by 7 October it hadn’t published a running count`). The date is the morning of
+    the research, and the sentence reports what the author found missing then; Patrick's verdict
+    on 2026-10-07 was that nobody writes like that. The post's `date` already says when. Say the
+    state in the present, with whoever owns it (`Wie viele schon zusammen sind, sagt das Netzwerk
+bisher nicht.`), or leave the gap out when the reader does not need it (§2.19). The
+    recommendation rule 12 used to give, `haben bis zum 5. Oktober keine Neuheit bestätigt`, is
+    the same shape and was changed the same day. `pnpm check:prose` warns, in posts and news in
+    six languages, on a sentence that names the post's own `date` or `updatedAt` after `bis zum`,
+    `by`, `tot`, `au`, `hasta el` or `al` and carries a negation; a stamp over a table (`Stand 6.
+Oktober 2026:`) is left alone. Besides the post it was found in, twelve sentences in ten
+    posts carried it that day, among them the 2027 novelties post in all six languages.
+16. **A post speaks for park.fan when it points to another post.** `Wie es zu dem Bürgerbegehren
+kam …, habe ich am 1. Oktober aufgeschrieben.` linked the earlier news post as if it were
+    the author's notebook. The byline is a person; the archive is the site's: `steht in unserem
+Beitrag vom 1. Oktober`, with the link on the words that name the topic (`[Bürgerbegehren
+gegen die Erweiterung](/news/…)`), not on a date. First person stays where the author did
+    something (`Ich habe die Petition unterschrieben`). Patrick put it on the list on
+    2026-10-07. `pnpm check:prose` warns on a first-person writing verb (`habe ich …
+aufgeschrieben`, `I wrote`, `heb ik … geschreven`, `je l’ai écrit`, `lo conté`, `l’ho
+raccontato`) in a sentence that links a post under `/blog/` or `/news/`; that day it found
+    fourteen in ten posts besides the one it came from, most of them in the Efteling and
+    Phantasialand guides.
 
 ### 3.4 Travel-guide copy, in all six languages
 

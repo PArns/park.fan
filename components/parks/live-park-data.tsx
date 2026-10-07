@@ -6,7 +6,7 @@ import { RideAlertParkProvider } from '@/components/push/ride-alert-park-context
 import { ParkInParkBlock } from '@/components/parks/park-in-park-block';
 import { ParkOpeningsProvider } from '@/components/parks/park-openings-context';
 import { useMemo } from 'react';
-import { groupAttractionsByLand } from '@/lib/utils/park-utils';
+import { groupAttractionsByLand, sortLandNames } from '@/lib/utils/park-utils';
 import type { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
@@ -34,6 +34,7 @@ interface LiveParkDataProps {
   attractionsByLand: Record<string, ParkAttraction[]>;
   /** Translated bucket name for attractions the API reports without a land. */
   otherAttractionsLabel: string;
+  mazeSectionLabel: string;
   /** <ParkTodayPanel> as a slot — it is the top half of the header card whose bottom half is the
    *  entry-tile row, and that card is built inside <TabsWithHash>. */
   todayPanel?: React.ReactNode;
@@ -62,6 +63,7 @@ export function LiveParkData({
   landNames,
   attractionsByLand,
   otherAttractionsLabel,
+  mazeSectionLabel,
   todayPanel,
   closedRides,
   belowTabs,
@@ -82,19 +84,26 @@ export function LiveParkData({
   const currentAttractionsByLand = useMemo(
     () =>
       park && park.attractions !== initialData.attractions
-        ? groupAttractionsByLand(park.attractions || [], otherAttractionsLabel)
+        ? groupAttractionsByLand(park.attractions || [], otherAttractionsLabel, mazeSectionLabel)
         : attractionsByLand,
-    [park, initialData.attractions, attractionsByLand, otherAttractionsLabel]
+    [park, initialData.attractions, attractionsByLand, otherAttractionsLabel, mazeSectionLabel]
   );
 
   const currentLandNames = useMemo(() => {
     if (!(park && park.attractions !== initialData.attractions)) return landNames;
-    return Object.keys(currentAttractionsByLand).sort((a, b) => {
-      if (a === otherAttractionsLabel) return 1;
-      if (b === otherAttractionsLabel) return -1;
-      return a.localeCompare(b);
-    });
-  }, [currentAttractionsByLand, park, initialData.attractions, landNames, otherAttractionsLabel]);
+    return sortLandNames(
+      Object.keys(currentAttractionsByLand),
+      otherAttractionsLabel,
+      mazeSectionLabel
+    );
+  }, [
+    currentAttractionsByLand,
+    park,
+    initialData.attractions,
+    landNames,
+    otherAttractionsLabel,
+    mazeSectionLabel,
+  ]);
 
   // The park's ride list for every ride-alert bell in the tabs below: a bell opens the full
   // alert dialog with this ride picked and the park's other rides in the list.

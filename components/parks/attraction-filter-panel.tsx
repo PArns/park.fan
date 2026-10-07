@@ -27,11 +27,12 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
 import { OffSeasonToggle } from '@/components/parks/off-season-toggle';
 import { FilterToggle } from '@/components/parks/filter-toggle';
 import { RiderHeightFilter } from '@/components/parks/rider-height-filter';
-import { TILE_GLASS } from '@/components/common/glass-card';
+import { HAIRLINE_FILL, TILE_GLASS } from '@/components/common/glass-card';
 import type { WetMode } from '@/lib/hooks/use-attraction-filter';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatRiderHeight } from '@/lib/utils/temperature';
 import { cn } from '@/lib/utils';
+import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import { trackAttractionFilterUsed, type AttractionFilterName } from '@/lib/analytics/umami';
 
 interface AttractionFilterPanelProps {
@@ -82,12 +83,13 @@ interface AttractionFilterPanelProps {
  * that are already apart. The captions do that job there.
  */
 function CellDivider() {
-  // `bg-foreground/…` rather than the `--border` token: in the dark theme that token is white at
-  // 10 %, so any opacity modifier on it composites to nothing. The slider's track uses the same.
   return (
     <div
       aria-hidden="true"
-      className="bg-foreground/12 dark:bg-foreground/15 hidden w-px self-center @min-[768px]/page:block @min-[768px]/page:h-14"
+      className={cn(
+        HAIRLINE_FILL,
+        'hidden w-px self-center @min-[768px]/page:block @min-[768px]/page:h-14'
+      )}
     />
   );
 }
@@ -234,7 +236,7 @@ export function AttractionFilterPanel({
         {hasToday && hasTraits && (
           <div
             aria-hidden="true"
-            className="bg-foreground/12 dark:bg-foreground/15 mt-6 hidden w-px self-stretch sm:block"
+            className={cn(HAIRLINE_FILL, 'mt-6 hidden w-px self-stretch sm:block')}
           />
         )}
 
@@ -287,12 +289,13 @@ export function AttractionFilterPanel({
       </div>
     );
 
-  // `max-sm:p-2`: the phone box is the 44 px row plus 8 px each side and the border, which keeps
-  // the collapsed panel under 64 px.
+  // `max-sm:p-1.5`: the phone box is the 36 px row plus 6 px each side and the border, 50 px like
+  // the land headings below it, and 6 px is what keeps the controls' 6 px corners concentric with
+  // the panel's 12 px ones.
   return (
     <div
       className={cn(
-        'border-border/50 mb-4 rounded-xl border p-3 shadow-sm max-sm:p-2 sm:p-4',
+        'border-border/50 mb-4 rounded-xl border p-3 shadow-sm max-sm:mb-2 max-sm:p-1.5 sm:p-4',
         TILE_GLASS
       )}
     >
@@ -310,15 +313,12 @@ export function AttractionFilterPanel({
             {t('filterSection.searchLabel')}
           </p>
           <div className="group relative">
-            <Search className="text-muted-foreground group-focus-within:text-primary absolute top-2.5 left-3 z-10 h-4 w-4 transition-colors max-sm:top-3.5" />
+            <Search className="text-muted-foreground group-focus-within:text-primary absolute top-2.5 left-3 z-10 h-4 w-4 transition-colors" />
             <Input
               ref={inputRef}
               placeholder={t('searchAttractions')}
               className={cn(
-                // `Input` is a flat `h-9` with no phone tier of its own; this panel stacks
-                // below `sm`, so the row it would have to stay level with is not there and
-                // it can take the 44 px the pills beside it take.
-                'border-primary/20 hover:border-primary/40 focus-visible:border-primary/60 w-full bg-transparent pl-9 shadow-none transition-colors max-sm:h-11 dark:bg-transparent',
+                'border-primary/20 hover:border-primary/40 focus-visible:border-primary/60 w-full bg-transparent pl-9 shadow-none transition-colors dark:bg-transparent',
                 isFocused && searchQuery ? 'pr-16' : 'pr-4'
               )}
               value={searchQuery}
@@ -340,7 +340,12 @@ export function AttractionFilterPanel({
           <Button
             type="button"
             variant="outline"
-            className="shrink-0 bg-transparent sm:hidden dark:bg-transparent"
+            // `max-sm:h-9` takes the button off the scale's 44 px phone tier to stand level with
+            // the field in the panel's 50 px phone line; `PHONE_HIT_AREA` keeps the reach at 44.
+            className={cn(
+              'shrink-0 bg-transparent max-sm:h-9 sm:hidden dark:bg-transparent',
+              PHONE_HIT_AREA
+            )}
             aria-haspopup="dialog"
             aria-expanded={sheetOpen}
             onClick={() => setSheetOpen(true)}

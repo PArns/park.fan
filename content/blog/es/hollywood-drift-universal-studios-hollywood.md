@@ -2,6 +2,7 @@
 title: 'Fast & Furious: Hollywood Drift ya está abierta'
 translationKey: hollywood-drift-universal-studios-hollywood
 date: '2026-09-16'
+time: '09:16'
 author: patrick
 mode: published
 featured: false

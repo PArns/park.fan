@@ -52,15 +52,22 @@ export function getStandbyWait(attraction: ParkAttraction | FavoriteAttraction):
   return standby && 'waitTime' in standby ? standby.waitTime : null;
 }
 
-/** Groups attractions by land (`fallbackName` when none), each land sorted by name. */
+/**
+ * Groups attractions by land (`fallbackName` when none), each land sorted by name. With
+ * `mazeName`, every `MAZE` joins one group of that name whatever land it sits in: a Halloween
+ * maze is a seasonal walk-through, and a visitor looks for it as a kind, not as a corner of the
+ * park.
+ */
 export function groupAttractionsByLand(
   attractions: ParkAttraction[],
-  fallbackName: string = 'Other Attractions'
+  fallbackName: string = 'Other Attractions',
+  mazeName?: string
 ): Record<string, ParkAttraction[]> {
   const grouped: Record<string, ParkAttraction[]> = {};
 
   attractions.forEach((attraction) => {
-    const landName = attraction.land || fallbackName;
+    const landName =
+      mazeName && attraction.attractionKind === 'MAZE' ? mazeName : attraction.land || fallbackName;
     if (!grouped[landName]) {
       grouped[landName] = [];
     }
@@ -72,4 +79,14 @@ export function groupAttractionsByLand(
   });
 
   return grouped;
+}
+
+/** Land names in display order: alphabetical, then the Halloween-maze group, then the land-less one. */
+export function sortLandNames(
+  landNames: string[],
+  fallbackName: string,
+  mazeName?: string
+): string[] {
+  const rank = (name: string) => (name === fallbackName ? 2 : name === mazeName ? 1 : 0);
+  return [...landNames].sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
 }

@@ -80,12 +80,15 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 - `GlassCard` _component_: Glass card for headers and content cards over a photo. `heavy` is the homepage hero's glass, lighter in light mode and markedly darker in dark mode, so a panel over the hero photo reads as one pane.
 - `HEAVY_GLASS` _const_: The `heavy` recipe as a bare class string, for surfaces that are not a `GlassCard`: the park page's stacked title card and „Heute im Park" panel take one material because they are one object.
 - `TILE_GLASS` _const_: The same glass one grade more solid, for the entry tiles.
+- `HAIRLINE_FILL` _const_: The fill of a hairline or a slider track on `TILE_GLASS`. The foreground at a low opacity rather than the `--border` token: in the dark theme that token is white at 10 %, so any opacity modifier on it composites to nothing.
 - `PHOTO_GLASS_FILL` _const_: `TILE_GLASS`'s fill without its blur, for a panel that blurs its own photograph instead of the backdrop: the homepage compass, whose moving arrows would make a `backdrop-filter` flicker. 75 % for the tile's reason, since its list is small …
 - `PANEL_FLAT` _const_: The same panel where there is no photograph behind it.
 
 ### [`glass-circle.tsx`](../../components/common/glass-circle.tsx)
 
-- `GlassCircle` _component_: The 34 px frosted disc the card corner controls sit on (`FavoriteStar`, `RideAlertBell`). A control that can render nothing draws its own disc, or a `null` would leave an empty circle.
+- `GlassCircle` _component_: The frosted disc the card corner controls sit on (`FavoriteStar`, `RideAlertBell`): 34 px, and 30 px with a 14 px icon below `sm`. A control that can render nothing draws its own disc, or a `null` would leave an empty circle.
+- `GLASS_CIRCLE_ROW` _const_: The row the card corner's circles sit in, right-aligned by its caller. Below `sm` the gap is 3 px, which `GLASS_CIRCLE_HIT_AREA`'s width is measured against; from `sm` up there are no touch targets to keep apart.
+- `GLASS_CIRCLE_HIT_AREA` _const_: The phone hit area of a control filling a `GlassCircle` in a `GLASS_CIRCLE_ROW`: 40 px tall and 33 px wide, the 30 px circle plus the row's gap, so neighbouring targets meet edge to edge, where an overlap would go to the later one.
 
 ### [`icon-container.tsx`](../../components/common/icon-container.tsx)
 

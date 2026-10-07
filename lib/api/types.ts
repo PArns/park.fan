@@ -12,7 +12,7 @@ export type AttractionStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT'
  * four. Not the upstream's free-text `attractionType`, which files water rides as ATTRACTION and
  * walkthroughs as RIDE. Contract: `docs/frontend/attraction-kind.md` in v4.api.park.fan.
  */
-export type AttractionKind = 'RIDE' | 'TRANSPORT' | 'SHOW' | 'WALKTHROUGH';
+export type AttractionKind = 'RIDE' | 'TRANSPORT' | 'SHOW' | 'WALKTHROUGH' | 'MAZE';
 
 /**
  * Where an attraction stands in the weather: the ride under a roof (`indoor`), in the open

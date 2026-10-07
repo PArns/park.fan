@@ -2,6 +2,7 @@
 title: 'Plopsaland Deutschland abre dos casas del terror nuevas'
 translationKey: plopsaland-deutschland-fright-nights-2026
 date: '2026-09-23'
+time: '11:37'
 author: patrick
 mode: published
 featured: false

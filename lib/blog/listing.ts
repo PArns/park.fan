@@ -3,6 +3,7 @@ import { locales, defaultLocale, SITE_URL, type Locale } from '@/i18n/config';
 import type { BlogFrontmatter, BlogListItem } from './types';
 import { BLOG_POSTS_META } from './manifest';
 import { isNewsCategory, postPath } from './paths';
+import { newestPublishedFirst } from './published-at';
 
 /**
  * Everything a blog listing needs (cards, feeds, hreflang, the nav gate, the park pages'
@@ -239,7 +240,7 @@ export function listPosts(requestedLocale: Locale): readonly BlogListItem[] {
       readingTimeMinutes: resolved.entry.readingTimeMinutes,
     });
   }
-  // Featured posts bubble to the top of every listing, then date DESC within
+  // Featured posts bubble to the top of every listing, then newest first within
   // each group. The blog index treats the first item as its big "feature
   // card", so flagging a post `featured: true` in frontmatter is enough to
   // promote it across all surfaces — index, category, tag and the RSS feed.
@@ -247,7 +248,7 @@ export function listPosts(requestedLocale: Locale): readonly BlogListItem[] {
     const aFeatured = a.frontmatter.featured ? 1 : 0;
     const bFeatured = b.frontmatter.featured ? 1 : 0;
     if (aFeatured !== bFeatured) return bFeatured - aFeatured;
-    return a.frontmatter.date < b.frontmatter.date ? 1 : -1;
+    return newestPublishedFirst(a.frontmatter, b.frontmatter);
   });
 
   const frozen = Object.freeze(items);
@@ -327,9 +328,8 @@ function listPostsByRecency(requestedLocale: Locale): readonly BlogListItem[] {
     const bDate = lastTouched(b.frontmatter);
     if (aDate !== bDate) return aDate < bDate ? 1 : -1;
     // Same touch date (a batch edit, or two posts published the same day):
-    // fall back to publication date so the order stays deterministic across
-    // renders rather than depending on the manifest's file order.
-    return a.frontmatter.date < b.frontmatter.date ? 1 : -1;
+    // fall back to publication date and time.
+    return newestPublishedFirst(a.frontmatter, b.frontmatter);
   });
 
   const frozen = Object.freeze(items);
@@ -376,7 +376,7 @@ export function listArticlesByRecency(requestedLocale: Locale): readonly BlogLis
 }
 
 /**
- * The news posts only, newest first by publication date — not by last edit: a
+ * The news posts only, newest first by publication date and time — not by last edit: a
  * corrected typo does not make an anniversary note news again. Frozen and memoised.
  */
 export function listNewsByDate(requestedLocale: Locale): readonly BlogListItem[] {
@@ -385,7 +385,7 @@ export function listNewsByDate(requestedLocale: Locale): readonly BlogListItem[]
   const frozen = Object.freeze(
     [...listPosts(requestedLocale)]
       .filter(isNewsPost)
-      .sort((a, b) => (a.frontmatter.date < b.frontmatter.date ? 1 : -1))
+      .sort((a, b) => newestPublishedFirst(a.frontmatter, b.frontmatter))
   );
   NEWS_BY_DATE.set(requestedLocale, frozen);
   return frozen;

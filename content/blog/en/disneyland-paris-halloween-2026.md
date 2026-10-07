@@ -2,6 +2,7 @@
 title: 'Dr. Facilier returns for Halloween at Disneyland Paris'
 translationKey: disneyland-paris-halloween-2026
 date: '2026-09-23'
+time: '11:37'
 author: patrick
 mode: published
 featured: false

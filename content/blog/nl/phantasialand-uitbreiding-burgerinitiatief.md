@@ -2,6 +2,7 @@
 title: 'Burgerinitiatief tegen uitbreiding van Phantasialand gestart'
 translationKey: phantasialand-expansion-petition
 date: '2026-10-01'
+time: '08:54'
 author: patrick
 mode: published
 featured: false
@@ -28,9 +29,8 @@ coverImage:
 seo:
   title: 'Ententeich: burgerinitiatief tegen uitbreiding Phantasialand'
   description: >-
-    Sinds 28 september loopt in Brühl een burgerinitiatief. Wat het park wil
-    bouwen, welke onderzoeken het betaalt en de strijd om de Ententeich sinds
-    2003.
+    Sinds 28 september verzamelt het Netzwerk NSG Ententeich handtekeningen
+    tegen de uitbreiding van Phantasialand. Het heeft er 2.536 uit Brühl nodig.
   keywords:
     - Phantasialand uitbreiding
     - Phantasialand uitbreiding Ententeich
@@ -222,7 +222,7 @@ het park na het commissiebesluit, die t-online citeert, staat:
 >
 > Ralf-Richard Kenter in de verklaring van Phantasialand van juli 2026, geciteerd door [t-online op 14 juli 2026](https://koeln.t-online.de/region/koeln/id_101342086/bruehl-phantasialand-bei-koeln-verteidigt-geplante-erweiterung.html), vertaald uit het Duits
 
-Sinds juli voeren in Brühl ook inwoners campagne vóór de uitbreiding. Eberhard
+Sinds juli voeren in Brühl ook inwoners [campagne vóór de uitbreiding](/news/phantasialand-uitbreiding-online-petitie). Eberhard
 Meyer richtte het
 [“Bürgerforum Phantasialand Erweiterung”](https://www.ksta.de/region/rhein-erft/bruehl/bruehl-neues-buergerforum-betont-positive-aspekte-des-phantasialand-ausbaus-1332586)
 op en ziet de procedure als de plek waar “alle feiten op tafel” komen. Georg

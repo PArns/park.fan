@@ -210,6 +210,21 @@ export const TabsWithHash = memo(function TabsWithHash({
 }: TabsWithHashProps) {
   const t = useTranslations('parks');
   const alertAttractions = useRideAlertParkAttractions();
+  const waitsReadable = hasReadableWaitTimes(park);
+  // Not for a park with no readable wait times, where an alert could never fire. Memoised so the
+  // headliner `LandSection` keeps its memo through a tab tap, which re-renders this component.
+  const headlinerAlertsAction = useMemo(
+    () =>
+      waitsReadable && alertAttractions && alertAttractions.length > 0 ? (
+        <RideAlertsEntryButton
+          variant="heading"
+          parkName={park.name}
+          attractions={alertAttractions as RideAlertDialogAttraction[]}
+          reopenAvailable
+        />
+      ) : null,
+    [waitsReadable, alertAttractions, park.name]
+  );
 
   const { isMounted, activeTab, handleTabChange, tabsRef, mapShowSlug } = useTabHashRouting({
     defaultValue,
@@ -347,8 +362,12 @@ export const TabsWithHash = memo(function TabsWithHash({
   // The header card is the same object on both sides of hydration, so it is built once. Written
   // out twice it was 20 lines that had to be kept equal by hand, and everything below it moves
   // when they drift.
+  // Below `sm` every box of the ride list stands 8 px from the next, the cards' own gap: the
+  // `Tabs` root's `gap-2` is that much on its own, so the card drops its margin there. The filter
+  // panel, the "As of" warning, the list's `space-y` and the land headings follow suit.
   const headerCard = (
     <ParkHeaderCard
+      className="max-sm:mb-0"
       panel={todayPanel}
       tiles={
         <ParkTabsList
@@ -447,6 +466,23 @@ export const TabsWithHash = memo(function TabsWithHash({
     />
   );
 
+  // The rope-drop strip renders nothing when there are neither worth nor evening picks, and
+  // nothing while a filter is narrowing the list either. It reads `park.attractions` raw, so with
+  // "Nur mit Nässe" on it put a dry rope-drop tip above a grid of four water rides, and with a
+  // rider height set it recommended being at the gate for a coaster the child below it cannot
+  // board. Hidden for the same reason it is hidden while searching: it is advice about the whole
+  // park, and the visitor has just said they are asking about part of it. The off-season toggle
+  // is not in this list — it widens the grid rather than narrowing it.
+  const ropeDropStrip = (className: string) =>
+    !isNarrowing && (
+      <RopeDropHeadliners
+        headliners={park.ropeDropHeadliners ?? NO_HEADLINERS}
+        attractions={park.attractions ?? NO_ATTRACTIONS}
+        parkPath={parkPath}
+        className={className}
+      />
+    );
+
   // Attractions grouped by Land — ONE tree, rendered by both branches below.
   //
   // It used to be two: before the mount the tab showed `AttractionWaitOverview`, a compact row
@@ -462,29 +498,15 @@ export const TabsWithHash = memo(function TabsWithHash({
   // so any constant is wrong on one of the two. Rendering the same tree twice needs no
   // constant — the geometry is equal because the markup is the same markup.
   const attractionsPanel = (
-    <div className="relative space-y-8">
+    <div className="relative space-y-8 max-sm:space-y-2">
       {/* Stays mounted when another tab is chosen — the mounted branch hides its panel instead
           (`forceMount` + `hidden`), so leaving the ride list and coming back rebuilds nothing. */}
-      {/* Renders nothing when there are neither worth nor evening picks — and
-                    nothing while a filter is narrowing the list either. It reads
-                    `park.attractions` raw, so with "Nur mit Nässe" on it put a dry
-                    rope-drop tip above a grid of four water rides, and with a rider
-                    height set it recommended being at the gate for a coaster the child
-                    below it cannot board. Hidden for the same reason it is hidden while
-                    searching: it is advice about the whole park, and the visitor has
-                    just said they are asking about part of it. The off-season toggle is
-                    not in this list — it widens the grid rather than narrowing it. */}
-      {!isNarrowing && (
-        <RopeDropHeadliners
-          headliners={park.ropeDropHeadliners ?? NO_HEADLINERS}
-          attractions={park.attractions ?? NO_ATTRACTIONS}
-          parkPath={parkPath}
-        />
-      )}
+      {ropeDropStrip('max-sm:hidden')}
 
       {headliners.length > 0 && !isSearching && (
         <LandSection
           landName={t('headlinersSection')}
+          headliner
           attractions={headliners}
           parkPath={parkPath}
           parkSlug={parkSlug}
@@ -492,27 +514,12 @@ export const TabsWithHash = memo(function TabsWithHash({
           timezone={park.timezone}
           todayIso={todayIso}
           parkName={park.name}
+          action={headlinerAlertsAction}
         />
       )}
 
-      {/* The alert nudge for a visitor who came for one wait time. It sits after the headliner
-          section: the live waits stay where they were, and it is one scroll on a phone. It follows
-          the headliner section's own gates (no headliners, no card) and is skipped while a filter
-          or search narrows the list, and for a park with no readable wait times, where an alert
-          could never fire. Same dialog as the panel's text link. */}
-      {headliners.length > 0 &&
-        !isSearching &&
-        !isNarrowing &&
-        hasReadableWaitTimes(park) &&
-        alertAttractions &&
-        alertAttractions.length > 0 && (
-          <RideAlertsEntryButton
-            variant="nudge"
-            parkName={park.name}
-            attractions={alertAttractions as RideAlertDialogAttraction[]}
-            reopenAvailable
-          />
-        )}
+      {/* On a phone the headliners come first, the strip filled the first screen there. */}
+      {ropeDropStrip('sm:hidden')}
 
       {hasSearchResults || closedRideMatches.length > 0 ? (
         landNames.map((landName, index) => {
@@ -530,11 +537,14 @@ export const TabsWithHash = memo(function TabsWithHash({
               eager={index === 0 || isSearching}
               // `phoneRowHeight`: one `phoneRow` card below `sm` is 72 px (10 px padding, the
               // 26 px name line, 6 px, a 22 px badge line, 8 px padding) plus the 8 px gap.
+              // `phoneHeaderHeight`: the 50 px land heading and its 8 px margin, less the gap the
+              // last row is counted with and does not take.
               grid={{
                 count: attractions.length,
                 rowHeight: 340,
                 phoneRowHeight: 80,
                 headerHeight: 64,
+                phoneHeaderHeight: 50,
               }}
             >
               <LandSection
@@ -623,7 +633,7 @@ export const TabsWithHash = memo(function TabsWithHash({
       <ClosedRideMatches
         rides={closedRideMatches}
         parkPath={parkPath}
-        className={hasSearchResults ? 'mt-6' : 'mt-4'}
+        className={hasSearchResults ? 'mt-6 max-sm:mt-0' : 'mt-4 max-sm:mt-0'}
       />
     </div>
   );

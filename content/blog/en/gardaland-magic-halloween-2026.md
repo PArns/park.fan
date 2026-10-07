@@ -2,6 +2,7 @@
 title: 'Gardaland’s Halloween now runs for 51 days'
 translationKey: gardaland-magic-halloween-2026
 date: '2026-10-01'
+time: '09:23'
 author: patrick
 mode: published
 featured: false

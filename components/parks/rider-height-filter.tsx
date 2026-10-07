@@ -6,6 +6,7 @@ import { X } from 'lucide-react';
 import { RiderHeight } from '@/components/common/unit-display';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatRiderHeight } from '@/lib/utils/temperature';
+import { HAIRLINE_FILL } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 
 interface RiderHeightFilterProps {
@@ -107,7 +108,12 @@ export function RiderHeightFilter({
       </div>
 
       <div className="relative h-5">
-        <div className="bg-foreground/12 dark:bg-foreground/15 absolute top-1/2 h-1.5 w-full -translate-y-1/2 rounded-full" />
+        <div
+          className={cn(
+            HAIRLINE_FILL,
+            'absolute top-1/2 h-1.5 w-full -translate-y-1/2 rounded-full'
+          )}
+        />
         {/* No fill at all while the filter is off — a coloured bar behind the head is
             the thing that made an untouched control look set. */}
         {isActive && (

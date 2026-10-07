@@ -164,6 +164,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `GlassSectionTitle` _component_: Frosted-glass section title pill (`bg-background/70` + backdrop blur).
 
+### [`halloween-maze-badge.tsx`](../../components/parks/halloween-maze-badge.tsx)
+
+- `HalloweenMazeBadge` _component_: „Halloween-Maze": a seasonal walk-through, not a ride. Orange, because it belongs to one time of the year, and next to `TransportSystemBadge` in the badge row. Whether it is open follows the park's season like any other attraction.
+
 ### [`heat-warning-badge.tsx`](../../components/parks/heat-warning-badge.tsx)
 
 - `HeatWarningBadge` _component_: A real, road-sign style warning triangle — red border, white background and a black "!". Deliberately not stylised. Shown next to temperatures above `HEAT_WARNING_THRESHOLD_C`.
@@ -571,6 +575,14 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`restaurant-card.tsx`](../../components/parks/restaurant-card.tsx)
 
 - `RestaurantCard` _component_: Card for a park restaurant: name, cuisine, status, wait time while open, reservation badge and opening hours. With `href` the whole card is a link, as in the favorites section.
+
+### [`ridden-counter.tsx`](../../components/parks/ridden-counter.tsx)
+
+- `RiddenCounter` _component_: „x of y rides ridden" in the park header, once at least one ride is marked. The line is always in the layout at its own height (`h-5`), so the number appearing after hydration moves nothing; until then it holds its place hidden.
+
+### [`ridden-toggle.tsx`](../../components/parks/ridden-toggle.tsx)
+
+- `RiddenToggle` _component_: The card corner's „ridden" switch. It reads one boolean off the ridden store, so marking a ride re-renders this button and the park header's counter and nothing else, and it sits inside the card's link, so the press does not navigate.
 
 ### [`ride-crowd-scale-tooltip.tsx`](../../components/parks/ride-crowd-scale-tooltip.tsx)
 

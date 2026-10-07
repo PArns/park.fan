@@ -625,6 +625,11 @@
       "label": "Transportsystem",
       "hint": "Eine Verbindung durch den Park, kein Fahrgeschäft. Die Wartezeit hängt am Fahrplan, nicht am Andrang."
     },
+    "halloweenMaze": {
+      "label": "Halloween-Maze",
+      "hint": "Ein saisonaler Rundgang, keine Fahrt. Er öffnet nur in der Halloween-Saison des Parks."
+    },
+    "mazeSection": "Halloween-Mazes",
     "info": {
       "title": "Infos zum Park",
       "address": "Adresse",
@@ -1511,7 +1516,10 @@
       "noticeSource": "Quelle: <link>{host}</link>",
       "noticePark": "Aktuelle Wartezeiten der anderen Attraktionen: <link>{park}</link>",
       "waitsTitle": "Wartezeiten vor der Schließung"
-    }
+    },
+    "riddenMark": "Als gefahren markieren",
+    "riddenUnmark": "Markierung „gefahren“ entfernen",
+    "riddenProgress": "{count} von {total} Bahnen gefahren"
   },
   "nearby": {
     "title": "Parks in deiner Nähe",

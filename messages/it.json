@@ -862,6 +862,11 @@
       "label": "Trasporto",
       "hint": "Un mezzo per attraversare il parco, non un’attrazione. L’attesa dipende dagli orari, non dalla folla."
     },
+    "halloweenMaze": {
+      "label": "Labirinto di Halloween",
+      "hint": "Un percorso stagionale, non un'attrazione. Apre solo durante la stagione di Halloween del parco."
+    },
+    "mazeSection": "Labirinti di Halloween",
     "info": {
       "title": "Informazioni sul parco",
       "address": "Indirizzo",
@@ -1511,7 +1516,10 @@
       "noticeSource": "Fonte: <link>{host}</link>",
       "noticePark": "Tempi di attesa attuali delle altre attrazioni: <link>{park}</link>",
       "waitsTitle": "Tempi di attesa prima della chiusura"
-    }
+    },
+    "riddenMark": "Segna come provata",
+    "riddenUnmark": "Rimuovi il segno di provata",
+    "riddenProgress": "{count, plural, one {# attrazione provata} other {# attrazioni provate}} su {total}"
   },
   "nearby": {
     "title": "Parchi nelle vicinanze",

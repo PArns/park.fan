@@ -2,6 +2,7 @@
 title: 'PortAventura fête Halloween avec le boucher de Penitence'
 translationKey: portaventura-halloween-2026
 date: '2026-09-29'
+time: '00:15'
 author: patrick
 mode: published
 featured: false
