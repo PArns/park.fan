@@ -75,8 +75,8 @@ Holland Saturday is one of the emptier days.
 The time of day has a pattern too. At most parks the wait in the first hour
 after opening is clearly shorter than later on. Then the queues build, and at
 nine parks they peak between ten and twelve. At eight parks the last or
-second-to-last hour is the quietest. Phantasialand and Heide Park stay flat
-through the rest of the day, and at Legoland and Movie Park it gets busier
+second-to-last hour is the quietest. At Phantasialand and Heide Park the wait
+barely changes for the rest of the day, and at Legoland and Movie Park it gets busier
 again in the evening.
 
 The [best time to visit](/best-time-to-visit) page shows you the quietest days
@@ -210,7 +210,7 @@ Rhine-Westphalia. How to cope with it anyway is in the
 
 ## Efteling
 
-[Efteling](ref:efteling) is flat across the weekdays. Saturday and Sunday are a
+At [Efteling](ref:efteling) the weekdays barely differ. Saturday and Sunday are a
 little busier, Monday sits between, and Thursday is the quietest day, followed by
 Tuesday and Wednesday. A Monday at Efteling is a little busier than a Tuesday.
 

@@ -2445,6 +2445,25 @@
     "loading": "Plan wordt geladen",
     "error": "Het plan kon niet worden geladen.",
     "noPlan": "Voor deze dag is er geen prognose.",
+    "unavailable": {
+      "park_closed": "Het park is op deze dag gesloten. Probeer een andere dag.",
+      "hours_unknown": "We kennen de openingstijden voor deze dag nog niet, dus er zijn geen curves.",
+      "no_rides_on_file": "Voor dit park hebben we nog geen attracties vastgelegd.",
+      "no_wait_time_source": {
+        "in_park_app_only": "Het park publiceert zijn wachttijden alleen via de eigen app op het wifi in het park. Daarom zijn er hier geen curves.",
+        "not_published": "Het park publiceert zijn wachttijden nergens. Daarom zijn er hier geen curves.",
+        "unknown": "Het park publiceert geen leesbare wachttijden. Daarom zijn er hier geen curves."
+      },
+      "never_measured": "We hebben van dit park nog geen wachttijden ontvangen, dus er zijn nog geen curves.",
+      "feed_stale": "Van dit park komen al {days, plural, one {# dag} other {# dagen}} geen wachttijden meer bij ons binnen. Het probleem ligt bij ons.",
+      "feed_stale_unknown": "Van dit park komen op dit moment geen wachttijden bij ons binnen. Het probleem ligt bij ons.",
+      "rides_cannot_open": "Op deze dag is elke attractie buiten het seizoen of gesloten wegens werkzaamheden. Probeer een andere dag.",
+      "insufficient_history": "Voor dit park hebben we nog te weinig meetdagen voor curves. Probeer een andere dag.",
+      "no_hourly_shape": "De attracties van dit park draaien op te verschillende tijden om er al een dagverloop van te maken.",
+      "no_forecast": "Het model heeft voor deze dag nog geen prognose berekend. Kijk na de volgende modelrun nog eens.",
+      "no_observations": "Voor deze verleden dag hebben we geen metingen van dit park.",
+      "data_unavailable": "Een dienst achter het plan heeft niet geantwoord. We weten nu niet waarom er geen curves zijn. Probeer het zo nog eens."
+    },
     "overview": {
       "empty": "Nog geen dagen gepland.",
       "countdown": "over {count, plural, one {# dag} other {# dagen}}"

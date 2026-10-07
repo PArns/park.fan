@@ -68,6 +68,7 @@ import { CROWD_DOT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styl
 import { cn } from '@/lib/utils';
 import { PlannerDragDemo } from './planner-drag-demo';
 import { partyFlags } from '@/lib/planner/party';
+import { unavailableNote } from '@/lib/planner/unavailable';
 import type { PlannerDayPrefs, PlannerEntry } from '@/lib/planner/types';
 import type { PlanDay, PlanDayRide, PlanDayTier } from '@/lib/api/types';
 
@@ -157,6 +158,7 @@ export function PlannerDayGrid({
   onDragChange,
 }: PlannerDayGridProps) {
   const t = useTranslations('planner');
+  const unavailable = unavailableNote(day);
   const canvasRef = useRef<HTMLDivElement>(null);
   /** The ghost of a dragged block, moved by the rAF loop — see {@link DragGhost}. */
   const ghostRef = useRef<MinuteHandle>(null);
@@ -1004,14 +1006,24 @@ export function PlannerDayGrid({
             className="text-muted-foreground border-border/60 bg-background/90 absolute inset-x-4 top-1/3 z-30 mx-auto max-w-sm rounded-lg border px-4 py-3 text-center text-xs shadow-sm backdrop-blur-sm transition-opacity duration-300 starting:opacity-0"
           >
             {/* The gesture itself on the desktop: a hand carrying a card onto the axis. */}
-            <PlannerDragDemo className="planner-wide:block mx-auto mb-1.5 hidden" />
+            {!unavailable && (
+              <PlannerDragDemo className="planner-wide:block mx-auto mb-1.5 hidden" />
+            )}
             <p className="text-foreground text-sm font-medium">{t('empty.title')}</p>
-            {/* One sentence per pointer, chosen by CSS: `useMediaQuery`'s server snapshot would
-                ship the phone's line to every desktop. The ride search is `planner-wide:hidden`, so
-                "such dir unten eine Bahn" is only true where it is drawn; both halves ask the same
-                question. */}
-            <p className="planner-wide:hidden mt-1">{t('empty.bodyGrid')}</p>
-            <p className="planner-wide:block mt-1 hidden">{t('coach.drag')}</p>
+            {unavailable ? (
+              <p className="mt-1" data-planner-unavailable={unavailable.key}>
+                {t(`unavailable.${unavailable.key}`, unavailable.values)}
+              </p>
+            ) : (
+              <>
+                {/* One sentence per pointer, chosen by CSS: `useMediaQuery`'s server snapshot would
+                    ship the phone's line to every desktop. The ride search is `planner-wide:hidden`,
+                    so "such dir unten eine Bahn" is only true where it is drawn; both halves ask
+                    the same question. */}
+                <p className="planner-wide:hidden mt-1">{t('empty.bodyGrid')}</p>
+                <p className="planner-wide:block mt-1 hidden">{t('coach.drag')}</p>
+              </>
+            )}
             {/* The way out of an empty day for a reader standing in another park (see
                 `PlannerPlanParkCta`). `pointer-events-auto`, since the overlay is inside the drop
                 canvas. */}

@@ -2256,6 +2256,31 @@ export interface PlanDayContext {
   earlyEntry?: boolean;
 }
 
+/**
+ * Why a plan day carries no ride curves, from the backend's `PlanDayUnavailableReason`. The API
+ * sends it exactly when `rides` is empty.
+ */
+export type PlanDayUnavailableReason =
+  | 'park_closed'
+  | 'hours_unknown'
+  | 'no_rides_on_file'
+  | 'no_wait_time_source'
+  | 'never_measured'
+  | 'feed_stale'
+  | 'rides_cannot_open'
+  | 'insufficient_history'
+  | 'no_hourly_shape'
+  | 'no_forecast'
+  | 'no_observations'
+  | 'data_unavailable';
+
+/** The planner's empty-day explanation (`PlanDay.ridesUnavailable`). */
+export interface PlanDayUnavailable {
+  reason: PlanDayUnavailableReason;
+  /** `feed_stale` only: days since the last usable reading, counted from today. */
+  staleDays?: number;
+}
+
 /** The trip planner's day for one park (`/plan/day`). See docs/features/trip-planner.md. */
 export interface PlanDay {
   parkSlug: string;
@@ -2298,6 +2323,8 @@ export interface PlanDay {
   /** `object-position` from the image's curated focal point. */
   parkBackgroundPosition?: string;
   rides: PlanDayRide[];
+  /** Why `rides` is empty; absent whenever it is not. */
+  ridesUnavailable?: PlanDayUnavailable;
   shows: PlanDayShow[];
 }
 

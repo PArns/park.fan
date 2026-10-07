@@ -463,6 +463,80 @@ const WRONG_NOUN = {
   nl: /(?<!\p{L})(?:korter|langer) bezet(?!\p{L})/giu,
 };
 /**
+ * `der Park ist deshalb nicht ruhig`, `die Wartezeiten sind flach`, `Das Efteling liegt beim
+ * Wochentag flach` (§3.3, rule 17): a mood or a shape handed to a park or a wait. A park is not
+ * ruhig and a wait is not flach; it is short, or it barely changes, or a curve is flat. The first
+ * stood in the planner's empty day (PAR-740) as a denial nobody needed, the others in two posts,
+ * until Patrick put it on the list on 2026-10-07. German on every surface, in main clauses,
+ * questions (`ist der Park ruhig`) and subordinate clauses (`in der kein Park ruhig blieb`); a
+ * park name only when it is a `ref:` link. `liegt ruhig` is a location and stays, so `liegen`
+ * counts only with `flach`; `am ruhigsten` and `ruhiger` compare days and stay, and `die
+ * Tageskurve ist flach` is a curve. A park is `quiet`, `rustig`, `calme`, `tranquilo` and
+ * `tranquillo` in plain speech, so the other five match only the shipped denial (`not simply
+ * quiet`) and a park that is `flat`.
+ */
+const QUIET_GAP = String.raw`(?:[\p{L}’']+\s+){0,3}?`;
+const QUIET_REF = String.raw`\[[^\]]{1,60}\]\(ref:[^)]+\)`;
+const quietRule = (alternatives) =>
+  new RegExp(alternatives.map((a) => String.raw`(?<!\p{L})${a}(?!\p{L})`).join('|'), 'giu');
+const QUIET_DE = {
+  subject: String.raw`(?:[\p{L}-]*park|\{park\}|[\p{L}-]*wartezeit(?:en)?|[\p{L}-]*warteschlangen?|${QUIET_REF})s?`,
+  be: '(?:ist|sind|war|waren|wäre|wären|bleibt|bleiben|blieb|blieben|wird|werden|wurde|wurden)',
+  mood: '(?:ruhig|flach|entspannt|gemütlich|gelassen|still|friedlich)',
+  article: '(?:der|die|das|dein|deine|ein|eine|kein|keine|jeder|jede|unser|unsere)',
+  // `Im Park ist es morgens ruhig` is plain German: there the park is a place, not the subject.
+  notPlace: String.raw`(?<!(?<!\p{L})(?:im|ins|vom|zum|beim|am|in|aus|von|zu|bei|nach|mit|auf|an)\s+(?:(?:dem|den|der|einem|einen|unserem|deinem|eurem)\s+)?)`,
+};
+const quietFlat = (subject, verb, flat) => String.raw`${subject}\s+${verb}\s+${QUIET_GAP}${flat}`;
+const QUIET_PARK = {
+  de: quietRule([
+    String.raw`${QUIET_DE.notPlace}${QUIET_DE.subject}\s+${QUIET_DE.be}\s+(?!es\s)${QUIET_GAP}${QUIET_DE.mood}`,
+    String.raw`${QUIET_DE.notPlace}${QUIET_DE.subject}\s+(?:liegt|liegen|lag|lagen)\s+${QUIET_GAP}flach`,
+    String.raw`${QUIET_DE.be}\s+(?:${QUIET_DE.article}\s+)?${QUIET_DE.subject}\s+${QUIET_GAP}${QUIET_DE.mood}`,
+    String.raw`${QUIET_DE.notPlace}${QUIET_DE.subject}\s+${QUIET_GAP}${QUIET_DE.mood}\s+${QUIET_DE.be}`,
+  ]),
+  en: quietRule([
+    'not (?:simply|just|merely) quiet',
+    quietFlat(
+      String.raw`(?:parks?|\{park\}|${QUIET_REF})`,
+      '(?:is|are|was|were|stays?|stayed|remains?|remained)',
+      'flat'
+    ),
+  ]),
+  nl: quietRule([
+    'niet (?:zomaar|gewoon|simpelweg) rustig',
+    quietFlat(
+      String.raw`(?:park(?:en)?|\{park\}|${QUIET_REF})`,
+      '(?:is|zijn|was|waren|blijft|blijven|bleef|bleven|ligt|liggen|lag|lagen)',
+      'vlak'
+    ),
+  ]),
+  fr: quietRule([
+    'pas (?:simplement|juste|seulement) calmes?',
+    quietFlat(
+      String.raw`(?:parcs?|park|\{park\}|${QUIET_REF})`,
+      '(?:est|sont|était|étaient|reste|restent|restait|restaient)',
+      'plat(?:e|s|es)?'
+    ),
+  ]),
+  es: quietRule([
+    'no (?:está|están|es|son|estaba|estaban) (?:simplemente|solo|sólo) tranquil[oa]s?',
+    quietFlat(
+      String.raw`(?:parques?|park|\{park\}|${QUIET_REF})`,
+      '(?:es|son|está|están|era|eran|estaba|estaban|se queda|se quedan|sigue|siguen)',
+      'plan[oa]s?'
+    ),
+  ]),
+  it: quietRule([
+    'non (?:è|sono|era|erano) (?:semplicemente|solo|soltanto) tranquill[oaie]',
+    quietFlat(
+      String.raw`(?:parco|parchi|park|\{park\}|${QUIET_REF})`,
+      '(?:è|sono|era|erano|resta|restano|rimane|rimangono)',
+      'piatt[oaie]'
+    ),
+  ]),
+};
+/**
  * `Drei Einschränkungen gehören dazu.`, `Zwei Einordnungen aus unseren Guides.` (§2.16): a short
  * sentence that counts what follows instead of saying it. Only the nouns of a text talking about
  * its own caveats are matched; `Drei Dinge noch:` introduces a list in five posts and is left to
@@ -1122,6 +1196,12 @@ function hardRules(file, text, locale) {
     fail(
       file,
       `"kürzer besetzt" (§3.3), a ride is not besetzt, its wait is shorter: ${[...new Set(wrongNoun)].join(' · ')}`
+    );
+  const quietPark = flat.match(QUIET_PARK[locale]);
+  if (quietPark)
+    fail(
+      file,
+      `"der Park ist ruhig" (§3.3), say how long the wait is or what changed: ${[...new Set(quietPark)].slice(0, 3).join(' · ')}`
     );
   const numberShown = [
     ...((A_NUMBER_SHOWN[locale] && flat.match(A_NUMBER_SHOWN[locale])) || []),

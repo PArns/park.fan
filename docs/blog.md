@@ -682,7 +682,7 @@ sentences on the first run.
 
 ### 3.3 Ours, and non-negotiable
 
-Sixteen house rules that are not in anybody's research. They came out of real reviews of shipped
+Seventeen house rules that are not in anybody's research. They came out of real reviews of shipped
 text:
 
 1. **Never `ehrlich`, in any form.** No `ehrlich gesagt`, no `der ehrlichste Woodie`, no
@@ -821,6 +821,25 @@ aufgeschrieben`, `I wrote`, `heb ik … geschreven`, `je l’ai écrit`, `lo con
 raccontato`) in a sentence that links a post under `/blog/` or `/news/`; that day it found
     fourteen in ten posts besides the one it came from, most of them in the Efteling and
     Phantasialand guides.
+17. **Never `der Park ist ruhig`, and never a flat wait.** Nor `der Park ist deshalb nicht
+ruhig`, `die Wartezeiten sind nicht ruhig`, `die Wartezeiten sind flach`, `Phantasialand und
+Heide Park bleiben dazwischen flach`, `Das Efteling liegt beim Wochentag flach` or `in der kein
+Park ruhig blieb`. Nobody talks about a park that way. A park has no mood and a wait has no
+    shape: say how long the wait is, or that it barely changes (`bleibt bis zum Abend fast
+gleich`, `unterscheiden sich die Wochentage kaum`). A curve may be flat (`Die Tageskurve ist
+flach`). The first stood in the planner's empty day (PAR-740), `Die Störung liegt bei uns, der
+Park ist deshalb nicht ruhig`, where it also denied a reading nobody had: an empty planner shows
+    no curve, not a short wait, and `Der Fehler liegt bei uns.` says all of it. The others stood in
+    two posts in all six languages until Patrick put it on the list on 2026-10-07.
+    `pnpm check:prose` fails on it in German on every surface, with `ruhig`, `flach`,
+    `entspannt`, `gemütlich`, `gelassen`, `still` and `friedlich`, in main clauses, questions
+    and subordinate clauses, and on a park name only as a `ref:` link. `am ruhigsten` and
+    `ruhiger` compare days and stay, so do `Im Park ist es morgens ruhig` (the park is a place
+    there) and `liegt ruhig` (a location). The other five languages call a park `quiet`,
+    `rustig`, `calme`, `tranquilo` or `tranquillo` in plain speech, so they fail only on the
+    shipped denial (`not simply quiet`, `niet zomaar rustig`, `pas simplement calme`, `no está
+simplemente tranquilo`, `non è semplicemente tranquillo`) and on a park that is flat (`is
+flat`, `ligt vlak`, `est plat`, `es plano`, `è piatto`).
 
 ### 3.4 Travel-guide copy, in all six languages
 
@@ -1286,7 +1305,8 @@ output the way a regex can actually be trusted to:
   can only be about us, placeholder text, `Schlange` for `Warteschlange`, a German quote closed
   with a straight `"`, `die Antwort auf` in any of its six languages, `nennen eine` and its
   Dutch twin, a model that grades itself in any of its six languages, `ob der Tag aufgeht` and its
-  five translations, `zwölf von zwölf` and `kürzer besetzt` (§3.3).
+  five translations, `zwölf von zwölf`, `kürzer besetzt`, and `der Park ist ruhig` with its
+  flat waits (§3.3).
 - **Warnings** are budgets and signals a person decides on. `eerlijke prijzen` in a paragraph
   about a restaurant means _fair_ prices and stays; the same word in a UI string does not.
 
