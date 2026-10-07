@@ -108,15 +108,15 @@ In SésamoAventura rijden Tami-Tami (alleen vanaf 1,30 m, met een volwassene van
 
 ### Alle banen naast elkaar
 
-| Baan | Gebied | Fabrikant | Geopend | Lengte | Minimale lengte |
-| --- | --- | --- | --- | --- | --- |
-| Dragon Khan | China | Bolliger & Mabillard | 2 mei 1995 | 1.269 m | 1,40 m |
-| El Diablo | México | Arrow Dynamics | 2 mei 1995 | 1.008 m | 1,40 m, met volwassene 1,10 m |
-| Stampida | Far West | Custom Coasters International | 17 maart 1997 | 953 m per spoor | 1,20 m |
-| Tomahawk | Far West | Custom Coasters International | 17 maart 1997 | 440 m | 1,05 m |
-| Furius Baco | Mediterrània | Intamin | 5 juni 2007 | 850 m | 1,40 m |
-| Shambhala | China | Bolliger & Mabillard | 12 mei 2012 | 1.564 m | 1,40 m |
-| Uncharted | Far West | Intamin | 17 juni 2023 | 673 m | met volwassene 1,10 m |
+| Baan        | Gebied       | Fabrikant                     | Geopend       | Lengte          | Minimale lengte               |
+| ----------- | ------------ | ----------------------------- | ------------- | --------------- | ----------------------------- |
+| Dragon Khan | China        | Bolliger & Mabillard          | 2 mei 1995    | 1.269 m         | 1,40 m                        |
+| El Diablo   | México       | Arrow Dynamics                | 2 mei 1995    | 1.008 m         | 1,40 m, met volwassene 1,10 m |
+| Stampida    | Far West     | Custom Coasters International | 17 maart 1997 | 953 m per spoor | 1,20 m                        |
+| Tomahawk    | Far West     | Custom Coasters International | 17 maart 1997 | 440 m           | 1,05 m                        |
+| Furius Baco | Mediterrània | Intamin                       | 5 juni 2007   | 850 m           | 1,40 m                        |
+| Shambhala   | China        | Bolliger & Mabillard          | 12 mei 2012   | 1.564 m         | 1,40 m                        |
+| Uncharted   | Far West     | Intamin                       | 17 juni 2023  | 673 m           | met volwassene 1,10 m         |
 
 De lengtes komen van RCDB, die van Uncharted van het park.
 
@@ -130,12 +130,12 @@ Hurakan Condor is een valtoren van Intamin in het gebied México. Het park noemt
 
 Het park heeft vier waterbanen:
 
-| Baan | Gebied | Minimale lengte | Met volwassene |
-| --- | --- | --- | --- |
-| Tutuki Splash | Polynesia | 1,40 m | vanaf 1,20 m |
-| Silver River Flume | Far West | 1,40 m | vanaf 1,00 m |
-| Grand Canyon Rapids | Far West | 1,30 m | vanaf 1,10 m |
-| Angkor | China | 1,30 m | onder 1,30 m met volwassene |
+| Baan                | Gebied    | Minimale lengte | Met volwassene              |
+| ------------------- | --------- | --------------- | --------------------------- |
+| Tutuki Splash       | Polynesia | 1,40 m          | vanaf 1,20 m                |
+| Silver River Flume  | Far West  | 1,40 m          | vanaf 1,00 m                |
+| Grand Canyon Rapids | Far West  | 1,30 m          | vanaf 1,10 m                |
+| Angkor              | China     | 1,30 m          | onder 1,30 m met volwassene |
 
 Angkor is volgens Wikipedia in 2014 geopend en een waterspeeltuin met waterpistolen. Bij Tutuki Splash en Silver River Flume staan speciale kluisjes van € 2, die verderop worden beschreven.
 
@@ -171,14 +171,14 @@ De rustigste komende openingsdagen, live berekend:
 
 PortAventura verkoopt voorrang bij de banen als “Express”, en in de tickets zit er geen enkele. De prijzen gelden per persoon en per dag en zijn “vanaf”-prijzen die van de datum afhangen. De prijzen zijn van 7 oktober 2026.
 
-| Product | Prijs vanaf | Wat erin zit |
-| --- | --- | --- |
-| Express ONE | € 7 | één toegang tot een baan |
-| Express 5 Fun | € 29 | vijf toegangen |
-| Express 5 Adrenaline | € 46 | vijf toegangen voor Shambhala, Dragon Khan, Furius Baco, Stampida, Grand Canyon Rapids, El Diablo en Templo del Fuego |
-| Express 10 | € 59 | tien toegangen, één per baan |
-| Express Unlimited | € 75 | onbeperkt snelle toegang, ook meerdere keren |
-| Express Unlimited Plus | € 135 | onbeperkt, plus één toegang tot Uncharted, Street Mission en Hurakan Condor |
+| Product                | Prijs vanaf | Wat erin zit                                                                                                          |
+| ---------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------- |
+| Express ONE            | € 7         | één toegang tot een baan                                                                                              |
+| Express 5 Fun          | € 29        | vijf toegangen                                                                                                        |
+| Express 5 Adrenaline   | € 46        | vijf toegangen voor Shambhala, Dragon Khan, Furius Baco, Stampida, Grand Canyon Rapids, El Diablo en Templo del Fuego |
+| Express 10             | € 59        | tien toegangen, één per baan                                                                                          |
+| Express Unlimited      | € 75        | onbeperkt snelle toegang, ook meerdere keren                                                                          |
+| Express Unlimited Plus | € 135       | onbeperkt, plus één toegang tot Uncharted, Street Mission en Hurakan Condor                                           |
 
 Voor Ferrari Land bestaan eigen passen (Express Ferrari Land € 26 voor vijf toegangen, Express ONE € 7), voor Caribe twee (Express Caribe 6 voor € 26, Unlimited voor € 36). Het nieuwe gebied Makamanu heeft geen Express-toegang.
 
@@ -220,16 +220,16 @@ De kersttijd loopt volgens de site van het park van 20 november 2026 tot 6 janua
 
 Alle prijzen zijn onlineprijzen voor volwassenen en junioren of senioren, stand 7 oktober 2026. Bij de kassa's aan de ingang zijn ze hoger.
 
-| Ticket | Volwassenen | Junioren en senioren |
-| --- | --- | --- |
-| 1 dag PortAventura Park | € 37 | € 33 |
-| 1 dag, 2 parken (park en Ferrari Land) | € 50 | € 46 |
-| Nachtticket (park vanaf 17 uur) | € 36 | € 32 |
-| 2 dagen PortAventura Park | € 43 | € 39 |
-| 2 dagen, 2 parken | € 57 | € 51 |
-| 3 dagen, 2 parken | € 77 | € 70 |
-| 2 dagen, 3 parken | € 76 | € 67 |
-| 3 dagen, 3 parken | € 96 | € 84 |
+| Ticket                                 | Volwassenen | Junioren en senioren |
+| -------------------------------------- | ----------- | -------------------- |
+| 1 dag PortAventura Park                | € 37        | € 33                 |
+| 1 dag, 2 parken (park en Ferrari Land) | € 50        | € 46                 |
+| Nachtticket (park vanaf 17 uur)        | € 36        | € 32                 |
+| 2 dagen PortAventura Park              | € 43        | € 39                 |
+| 2 dagen, 2 parken                      | € 57        | € 51                 |
+| 3 dagen, 2 parken                      | € 77        | € 70                 |
+| 2 dagen, 3 parken                      | € 76        | € 67                 |
+| 3 dagen, 3 parken                      | € 96        | € 84                 |
 
 Kinderen mogen vanaf 12 jaar zonder volwassene de parken in.
 
@@ -239,12 +239,12 @@ Voor Halloween is er de code SUSTO26 met tot 30 procent korting op tickets voor 
 
 De vier jaarkaarten gelden 365 dagen vanaf aankoop. Junioren zijn kinderen van 4 tot 10 jaar, senioren zijn vanaf 60, kinderen van 0 tot 3 jaar zijn gratis.
 
-| Kaart | Volwassenen | Junioren en senioren | Parken |
-| --- | --- | --- | --- |
-| Adventurer | € 159 | € 129 | PortAventura Park, 180 dagen |
-| Explorer | € 219 | € 169 | park, plus Caribe in vaste periodes |
-| Discoverer | € 279 | € 219 | park, Caribe en Ferrari Land |
-| Pioneer | € 329 | € 249 | zoals Discoverer, met twee gratis tickets en vier keer Express ONE |
+| Kaart      | Volwassenen | Junioren en senioren | Parken                                                             |
+| ---------- | ----------- | -------------------- | ------------------------------------------------------------------ |
+| Adventurer | € 159       | € 129                | PortAventura Park, 180 dagen                                       |
+| Explorer   | € 219       | € 169                | park, plus Caribe in vaste periodes                                |
+| Discoverer | € 279       | € 219                | park, Caribe en Ferrari Land                                       |
+| Pioneer    | € 329       | € 249                | zoals Discoverer, met twee gratis tickets en vier keer Express ONE |
 
 Alleen Explorer noemt gratis parkeren als voordeel. Bij Explorer geldt de toegang tot Caribe volgens de site van 23 mei tot 7 juni en van 7 tot 20 september 2026.
 

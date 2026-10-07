@@ -108,15 +108,15 @@ A SésamoAventura ci sono Tami-Tami (da soli da 1,30 m, con un adulto da 1,00 m)
 
 ### Tutte le montagne russe a confronto
 
-| Attrazione | Area | Costruttore | Apertura | Lunghezza | Altezza minima |
-| --- | --- | --- | --- | --- | --- |
-| Dragon Khan | China | Bolliger & Mabillard | 2 maggio 1995 | 1.269 m | 1,40 m |
-| El Diablo | México | Arrow Dynamics | 2 maggio 1995 | 1.008 m | 1,40 m, con un adulto 1,10 m |
-| Stampida | Far West | Custom Coasters International | 17 marzo 1997 | 953 m per percorso | 1,20 m |
-| Tomahawk | Far West | Custom Coasters International | 17 marzo 1997 | 440 m | 1,05 m |
-| Furius Baco | Mediterrània | Intamin | 5 giugno 2007 | 850 m | 1,40 m |
-| Shambhala | China | Bolliger & Mabillard | 12 maggio 2012 | 1.564 m | 1,40 m |
-| Uncharted | Far West | Intamin | 17 giugno 2023 | 673 m | con un adulto 1,10 m |
+| Attrazione  | Area         | Costruttore                   | Apertura       | Lunghezza          | Altezza minima               |
+| ----------- | ------------ | ----------------------------- | -------------- | ------------------ | ---------------------------- |
+| Dragon Khan | China        | Bolliger & Mabillard          | 2 maggio 1995  | 1.269 m            | 1,40 m                       |
+| El Diablo   | México       | Arrow Dynamics                | 2 maggio 1995  | 1.008 m            | 1,40 m, con un adulto 1,10 m |
+| Stampida    | Far West     | Custom Coasters International | 17 marzo 1997  | 953 m per percorso | 1,20 m                       |
+| Tomahawk    | Far West     | Custom Coasters International | 17 marzo 1997  | 440 m              | 1,05 m                       |
+| Furius Baco | Mediterrània | Intamin                       | 5 giugno 2007  | 850 m              | 1,40 m                       |
+| Shambhala   | China        | Bolliger & Mabillard          | 12 maggio 2012 | 1.564 m            | 1,40 m                       |
+| Uncharted   | Far West     | Intamin                       | 17 giugno 2023 | 673 m              | con un adulto 1,10 m         |
 
 Le lunghezze vengono dalla RCDB, per Uncharted dal parco.
 
@@ -130,12 +130,12 @@ Hurakan Condor è una torre di caduta di Intamin nell’area México. Il parco p
 
 Nel parco ci sono quattro attrazioni acquatiche:
 
-| Attrazione | Area | Altezza minima | Con un adulto |
-| --- | --- | --- | --- |
-| Tutuki Splash | Polynesia | 1,40 m | da 1,20 m |
-| Silver River Flume | Far West | 1,40 m | da 1,00 m |
-| Grand Canyon Rapids | Far West | 1,30 m | da 1,10 m |
-| Angkor | China | 1,30 m | sotto 1,30 m con un adulto |
+| Attrazione          | Area      | Altezza minima | Con un adulto              |
+| ------------------- | --------- | -------------- | -------------------------- |
+| Tutuki Splash       | Polynesia | 1,40 m         | da 1,20 m                  |
+| Silver River Flume  | Far West  | 1,40 m         | da 1,00 m                  |
+| Grand Canyon Rapids | Far West  | 1,30 m         | da 1,10 m                  |
+| Angkor              | China     | 1,30 m         | sotto 1,30 m con un adulto |
 
 Secondo Wikipedia Angkor ha aperto nel 2014 ed è un gioco d’acqua con pistole ad acqua. A Tutuki Splash e a Silver River Flume ci sono armadietti speciali da 2 euro, descritti più sotto.
 
@@ -171,14 +171,14 @@ I prossimi giorni di apertura più tranquilli, calcolati in diretta:
 
 PortAventura vende la precedenza alle attrazioni con il nome «Express», e nei biglietti non ce n’è nessuno compreso. I prezzi valgono a persona e per giorno e sono prezzi «a partire da» che dipendono dalla data. I prezzi sono quelli del 7 ottobre 2026.
 
-| Prodotto | Prezzo da | Che cosa comprende |
-| --- | --- | --- |
-| Express ONE | 7 € | un accesso a una attrazione |
-| Express 5 Fun | 29 € | cinque accessi |
-| Express 5 Adrenaline | 46 € | cinque accessi per Shambhala, Dragon Khan, Furius Baco, Stampida, Grand Canyon Rapids, El Diablo e Templo del Fuego |
-| Express 10 | 59 € | dieci accessi, uno per attrazione |
-| Express Unlimited | 75 € | accesso rapido illimitato, anche ripetuto |
-| Express Unlimited Plus | 135 € | illimitato, più un accesso a Uncharted, Street Mission e Hurakan Condor |
+| Prodotto               | Prezzo da | Che cosa comprende                                                                                                  |
+| ---------------------- | --------- | ------------------------------------------------------------------------------------------------------------------- |
+| Express ONE            | 7 €       | un accesso a una attrazione                                                                                         |
+| Express 5 Fun          | 29 €      | cinque accessi                                                                                                      |
+| Express 5 Adrenaline   | 46 €      | cinque accessi per Shambhala, Dragon Khan, Furius Baco, Stampida, Grand Canyon Rapids, El Diablo e Templo del Fuego |
+| Express 10             | 59 €      | dieci accessi, uno per attrazione                                                                                   |
+| Express Unlimited      | 75 €      | accesso rapido illimitato, anche ripetuto                                                                           |
+| Express Unlimited Plus | 135 €     | illimitato, più un accesso a Uncharted, Street Mission e Hurakan Condor                                             |
 
 Per Ferrari Land ci sono pass propri (Express Ferrari Land 26 € per cinque accessi, Express ONE 7 €), per Caribe due (Express Caribe 6 a 26 €, Unlimited a 36 €). La nuova area Makamanu non ha accesso Express.
 
@@ -220,16 +220,16 @@ Secondo il sito del parco il periodo natalizio va dal 20 novembre 2026 al 6 genn
 
 Tutti i prezzi sono prezzi online per adulti e per junior o senior, nello stato del 7 ottobre 2026. Alle casse all’ingresso costano di più.
 
-| Biglietto | Adulti | Junior e senior |
-| --- | --- | --- |
-| 1 giorno PortAventura Park | 37 € | 33 € |
-| 1 giorno, 2 parchi (parco e Ferrari Land) | 50 € | 46 € |
-| Biglietto serale (parco dalle 17) | 36 € | 32 € |
-| 2 giorni PortAventura Park | 43 € | 39 € |
-| 2 giorni, 2 parchi | 57 € | 51 € |
-| 3 giorni, 2 parchi | 77 € | 70 € |
-| 2 giorni, 3 parchi | 76 € | 67 € |
-| 3 giorni, 3 parchi | 96 € | 84 € |
+| Biglietto                                 | Adulti | Junior e senior |
+| ----------------------------------------- | ------ | --------------- |
+| 1 giorno PortAventura Park                | 37 €   | 33 €            |
+| 1 giorno, 2 parchi (parco e Ferrari Land) | 50 €   | 46 €            |
+| Biglietto serale (parco dalle 17)         | 36 €   | 32 €            |
+| 2 giorni PortAventura Park                | 43 €   | 39 €            |
+| 2 giorni, 2 parchi                        | 57 €   | 51 €            |
+| 3 giorni, 2 parchi                        | 77 €   | 70 €            |
+| 2 giorni, 3 parchi                        | 76 €   | 67 €            |
+| 3 giorni, 3 parchi                        | 96 €   | 84 €            |
 
 I ragazzi dai 12 anni possono entrare nei parchi senza un adulto.
 
@@ -239,12 +239,12 @@ Per Halloween c’è il codice SUSTO26, con fino al 30 per cento di sconto sui b
 
 I quattro abbonamenti annuali valgono 365 giorni dall’acquisto. Gli junior sono i bambini da 4 a 10 anni, i senior hanno almeno 60 anni, i bambini da 0 a 3 anni entrano gratis.
 
-| Abbonamento | Adulti | Junior e senior | Parchi |
-| --- | --- | --- | --- |
-| Adventurer | 159 € | 129 € | PortAventura Park, 180 giorni |
-| Explorer | 219 € | 169 € | Parco, più Caribe in periodi fissi |
-| Discoverer | 279 € | 219 € | Parco, Caribe e Ferrari Land |
-| Pioneer | 329 € | 249 € | come Discoverer, con due biglietti gratuiti e quattro Express ONE |
+| Abbonamento | Adulti | Junior e senior | Parchi                                                            |
+| ----------- | ------ | --------------- | ----------------------------------------------------------------- |
+| Adventurer  | 159 €  | 129 €           | PortAventura Park, 180 giorni                                     |
+| Explorer    | 219 €  | 169 €           | Parco, più Caribe in periodi fissi                                |
+| Discoverer  | 279 €  | 219 €           | Parco, Caribe e Ferrari Land                                      |
+| Pioneer     | 329 €  | 249 €           | come Discoverer, con due biglietti gratuiti e quattro Express ONE |
 
 Solo Explorer cita il parcheggio gratuito tra i vantaggi. Con Explorer l’accesso a Caribe vale, secondo il sito, dal 23 maggio al 7 giugno e dal 7 al 20 settembre 2026.
 
