@@ -347,8 +347,12 @@ export const TabsWithHash = memo(function TabsWithHash({
   // The header card is the same object on both sides of hydration, so it is built once. Written
   // out twice it was 20 lines that had to be kept equal by hand, and everything below it moves
   // when they drift.
+  // Below `sm` every box of the ride list stands 8 px from the next, the cards' own gap: the
+  // `Tabs` root's `gap-2` is that much on its own, so the card drops its margin there. The filter
+  // panel, the "As of" warning, the list's `space-y` and the land headings follow suit.
   const headerCard = (
     <ParkHeaderCard
+      className="max-sm:mb-0"
       panel={todayPanel}
       tiles={
         <ParkTabsList
@@ -479,7 +483,7 @@ export const TabsWithHash = memo(function TabsWithHash({
   // so any constant is wrong on one of the two. Rendering the same tree twice needs no
   // constant — the geometry is equal because the markup is the same markup.
   const attractionsPanel = (
-    <div className="relative space-y-8">
+    <div className="relative space-y-8 max-sm:space-y-2">
       {/* Stays mounted when another tab is chosen — the mounted branch hides its panel instead
           (`forceMount` + `hidden`), so leaving the ride list and coming back rebuilds nothing. */}
       {ropeDropStrip('max-sm:hidden')}
@@ -632,7 +636,7 @@ export const TabsWithHash = memo(function TabsWithHash({
       <ClosedRideMatches
         rides={closedRideMatches}
         parkPath={parkPath}
-        className={hasSearchResults ? 'mt-6' : 'mt-4'}
+        className={hasSearchResults ? 'mt-6 max-sm:mt-0' : 'mt-4 max-sm:mt-0'}
       />
     </div>
   );

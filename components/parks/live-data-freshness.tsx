@@ -84,7 +84,7 @@ export const LiveDataFreshness = memo(function LiveDataFreshness({
   return (
     <div
       className={cn(
-        'mb-4 flex h-7 min-w-0 items-center gap-2 text-xs',
+        'mb-4 flex h-7 min-w-0 items-center gap-2 text-xs max-sm:mb-2',
         hint ? 'text-amber-700 dark:text-amber-400' : 'text-muted-foreground max-sm:hidden'
       )}
     >

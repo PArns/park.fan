@@ -435,12 +435,14 @@ export function AttractionCard({
               row the badges keep to one line and fade out rather than wrap; the full set is on
               the ride's page. The status badge leaves that line while a wait time stands beside
               the name, which already says the ride is running; `min-h` keeps the row at its
-              72 px when nothing else is left on the line. */}
+              72 px when nothing else is left on the line. `*:flex` because a badge wrapped in a
+              `<span>` (a tooltip, a glossary link) otherwise sits on a 24 px text line, and the
+              row grows to 74 px. */}
           <div
             className={cn(
               'relative mt-[9px] flex flex-wrap items-start gap-[6px]',
               phoneRow &&
-                'max-sm:mt-[6px] max-sm:min-h-[22px] max-sm:flex-nowrap max-sm:overflow-hidden max-sm:[mask-image:linear-gradient(to_right,black_85%,transparent)] max-sm:*:shrink-0'
+                'max-sm:mt-[6px] max-sm:min-h-[22px] max-sm:flex-nowrap max-sm:overflow-hidden max-sm:[mask-image:linear-gradient(to_right,black_85%,transparent)] max-sm:*:flex max-sm:*:shrink-0'
             )}
           >
             <ParkStatusBadge

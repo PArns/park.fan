@@ -294,7 +294,7 @@ export function AttractionFilterPanel({
   return (
     <div
       className={cn(
-        'border-border/50 mb-4 rounded-xl border p-3 shadow-sm max-sm:p-1.5 sm:p-4',
+        'border-border/50 mb-4 rounded-xl border p-3 shadow-sm max-sm:mb-2 max-sm:p-1.5 sm:p-4',
         TILE_GLASS
       )}
     >
