@@ -8,7 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Merlin Entertainments cierra el Berlin Dungeon de la Spandauer Straße tras más
-  de 13 años. El último día es el 6 de noviembre de 2026. El operador no da
+  de 13 años. El último día es el 6 de noviembre de 2026. El comunicado no da
   ningún motivo.
 tags:
   - news
@@ -37,10 +37,10 @@ que funcionó algo más de 13 años.
 
 ## Qué dice Merlin
 
-El comunicado es breve. Lo esencial está en esta frase:
+Merlin escribe:
 
 > [!QUOTE]
-> Tras más de 13 años dando vida para vosotros a las oscuras historias de la
+> Tras más de 13 años dándoos vida a las oscuras historias de la
 > ciudad, lamentamos comunicaros que nuestra atracción cerrará de forma
 > definitiva a partir del 7 de noviembre.
 >
@@ -66,7 +66,7 @@ opciones de cambio o cancelación.
 Para la plantilla, el operador dice que estudiará la posibilidad de seguir
 trabajando en otras atracciones del grupo.
 
-## El tercer cierre de Merlin en Berlín
+## Cierres anteriores de Merlin en Berlín
 
 El Dungeon no es la primera atracción berlinesa que Merlin abandona. El 13 de
 diciembre de 2024 cerraron el Sea Life y el Little Big City, junto a

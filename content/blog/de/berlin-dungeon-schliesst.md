@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Merlin Entertainments macht das Berlin Dungeon in der Spandauer Straße nach
   mehr als 13 Jahren zu. Letzter Öffnungstag ist der 6. November 2026. Einen
-  Grund nennt der Betreiber nicht.
+  Grund steht in der Mitteilung nicht.
 tags:
   - news
   - merlin-entertainments
@@ -31,12 +31,12 @@ seo:
 
 Das **Berlin Dungeon** schließt am 6. November 2026 zum letzten Mal. Ab dem 7. November bleibt die Gruselattraktion in der Spandauer Straße in Berlin-Mitte
 dauerhaft zu, das hat der Betreiber Merlin Entertainments auf der Website und
-auf Instagram mitgeteilt. Eröffnet hat das Dungeon 2013, es hat damit gut 13
-Jahre durchgehalten.
+auf Instagram mitgeteilt. Eröffnet hat das Dungeon 2013, es war damit gut 13
+Jahre geöffnet.
 
 ## Was Merlin sagt
 
-Die Ankündigung ist kurz. Der Kern steht in diesem Satz:
+Merlin schreibt:
 
 > [!QUOTE]
 > Nachdem wir euch mehr als 13 Jahre lang die dunklen Stadtgeschichten zum Leben
@@ -62,7 +62,7 @@ E-Mail schicken.
 Für die Beschäftigten will der Betreiber nach eigener Aussage Möglichkeiten
 prüfen, an anderen Attraktionen der Gruppe weiterzuarbeiten.
 
-## Die dritte Merlin-Schließung in Berlin
+## Frühere Merlin-Schließungen in Berlin
 
 Das Dungeon ist nicht die erste Berliner Attraktion, die Merlin aufgibt. Am 13. Dezember 2024 haben das Sea Life und das Little Big City nahe dem
 Alexanderplatz zugemacht. Merlin begründete das damals wirtschaftlich: Beide

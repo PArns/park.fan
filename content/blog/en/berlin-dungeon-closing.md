@@ -8,8 +8,8 @@ mode: published
 featured: false
 excerpt: >-
   Merlin Entertainments is shutting the Berlin Dungeon on Spandauer Straße after
-  more than 13 years. The last day is 6 November 2026. The operator gives no
-  reason.
+  more than 13 years. The last day is 6 November 2026. The announcement gives
+  no reason.
 tags:
   - news
   - merlin-entertainments
@@ -36,7 +36,7 @@ Instagram. The Dungeon opened in 2013, so it ran for a little over 13 years.
 
 ## What Merlin says
 
-The announcement is short. The core is this sentence:
+Merlin writes:
 
 > [!QUOTE]
 > After bringing the dark stories of the city to life for you for more than 13
@@ -47,12 +47,12 @@ The announcement is short. The core is this sentence:
 >
 > Berlin Dungeon, [announcement on its website and Instagram](https://www.freizeitparknews.de/berlin-dungeon/schliessung-2026/), quoted by FreizeitparkNEWS on 6 October 2026, translated from German
 
-The announcement does not say why. Asked by the Berliner Zeitung, Merlin named a
+The announcement doesn't say why. Asked by the Berliner Zeitung, Merlin named a
 “regular review of the development of its own attraction portfolio” and wrote
 that it is very grateful to the team, the guests and the partners.
 
-The Dutch site Looopings suspects weak results as the cause. That is the
-editors' own assessment, and Merlin has not confirmed it.
+The Dutch site Looopings suspects weak results as the cause. That's the
+editors' own assessment, and Merlin hasn't confirmed it.
 
 ## Tickets and staff
 
@@ -64,9 +64,9 @@ e-mail.
 For the staff, the operator says it will look into continued work at other
 attractions of the group.
 
-## The third Merlin closure in Berlin
+## Earlier Merlin closures in Berlin
 
-The Dungeon is not the first Berlin attraction Merlin has given up. On 13
+The Dungeon isn't the first Berlin attraction Merlin has given up. On 13
 December 2024 the Sea Life and the Little Big City near Alexanderplatz closed.
 Merlin gave economic reasons at the time: both no longer appealed “sufficiently
 to the intended target audience”, Sea Life especially since the Aquadom burst

@@ -8,8 +8,8 @@ mode: published
 featured: false
 excerpt: >-
   Merlin Entertainments sluit de Berlin Dungeon aan de Spandauer Straße na meer
-  dan 13 jaar. De laatste dag is 6 november 2026. Een reden noemt de exploitant
-  niet.
+  dan 13 jaar. De laatste dag is 6 november 2026. Een reden staat niet in de
+  mededeling.
 tags:
   - news
   - merlin-entertainments
@@ -36,7 +36,7 @@ Instagram. De Dungeon opende in 2013 en draaide dus iets meer dan 13 jaar.
 
 ## Wat Merlin zegt
 
-De mededeling is kort. De kern staat in deze zin:
+Merlin schrijft:
 
 > [!QUOTE]
 > Nadat we jullie meer dan 13 jaar lang de donkere verhalen van de stad hebben
@@ -49,7 +49,7 @@ De mededeling is kort. De kern staat in deze zin:
 
 Waarom, staat er niet in. Op vragen van de Berliner Zeitung noemde Merlin een
 “regelmatige beoordeling van de ontwikkeling van het eigen attractieportfolio”
-en schreef het dat het het team, de gasten en de partners zeer dankbaar is.
+en dankte het team, de gasten en de partners.
 
 De Nederlandse site Looopings vermoedt zwakke resultaten als oorzaak. Dat is de
 inschatting van de redactie, Merlin heeft haar niet bevestigd.
@@ -63,7 +63,7 @@ en verdere opties om om te boeken of te annuleren wil Merlin per e-mail sturen.
 Voor het personeel wil de exploitant naar eigen zeggen onderzoeken of werken bij
 andere attracties van de groep mogelijk is.
 
-## De derde Merlin-sluiting in Berlijn
+## Eerdere Merlin-sluitingen in Berlijn
 
 De Dungeon is niet de eerste Berlijnse attractie die Merlin opgeeft. Op 13
 december 2024 sloten Sea Life en Little Big City bij Alexanderplatz. Merlin gaf
@@ -84,7 +84,7 @@ Londen en Amsterdam open.
 
 ## Wat bezoekers nu kunnen doen
 
-Tot 6 november draait de reguliere exploitatie. Wie Merlin elders in Duitsland
+Tot 6 november is de Dungeon gewoon open. Wie Merlin elders in Duitsland
 wil bezoeken: de groep exploiteert [Heide Park](ref:heide-park?bare) en
 [Legoland Deutschland](ref:legoland-deutschland?bare), en we hebben een
 [Legoland-gids](/blog/legoland-deutschland-tips).
