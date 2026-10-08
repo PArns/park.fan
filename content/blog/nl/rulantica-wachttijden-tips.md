@@ -180,8 +180,8 @@ centimeter met een volwassene erbij.
 
 Meteen ernaast ligt [Vinter Rytt](ref:rulantica/vinter-rytt), de halfpipe. De
 start in de vierpersoonsring is rustig, dan gaat het steil omlaag en schiet de
-ring aan de andere kant tegen de wand omhoog. Hier geldt als enige glijbaan van
-het park een gewichtsgrens: 320 kilogram per ring. Minimale lengte 125
+ring aan de andere kant tegen de wand omhoog. Alleen deze glijbaan heeft
+een gewichtsgrens: 320 kilogram per ring. Minimale lengte 125
 centimeter, vanaf tien jaar. In onze gegevens staan deze twee glijbanen bovenaan
 bij de wachttijden. Hoe groot het verschil is, staat in de tabel verderop.
 
