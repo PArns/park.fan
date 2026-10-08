@@ -240,8 +240,7 @@ hasta el cierre del parque.
 ## Minion Park y Universal Wonderland
 
 En Minion Park está **[Despicable Me: Minion
-Mayhem](ref:universal-studios-japan/despicable-me-minion-mayhem-2)**, abierta en
-2017. Una pantalla en cúpula y una proyección llenan la sala, en la que, según el
+Mayhem](ref:universal-studios-japan/despicable-me-minion-mayhem-2)**, abierta en 2017. Una pantalla en cúpula y una proyección llenan la sala, en la que, según el
 parque, uno se convierte en minion a bordo de un vehículo diseñado por Gru. Son
 ocho personas por vehículo, dos filas de cuatro, y todo junto dura unos 25
 minutos. Altura mínima de 122 centímetros, o 102 con acompañante; cola de single
@@ -358,18 +357,18 @@ veinte paquetes, cada uno con un precio «desde» que sube según el día de la
 visita. Los paquetes valen solo en días seleccionados y junto con un Studio Pass.
 Todos los precios incluyen impuestos:
 
-| Paquete | Atracciones | Desde (yenes) | Franja horaria Super Nintendo World |
-| ------- | ----------- | ------------- | ----------------------------------- |
-| Express Pass 4, «Race & JAWS» y «Mine Cart & JAWS» | cuatro | 10.800 | incluida |
-| Express Pass 4, «Backdrop & The Flying Dinosaur» | cuatro | 10.800 | no incluida |
-| Express Pass 4, «Thrill Max» | cuatro | 11.800 | no incluida |
-| Express Pass 5, «Adventure Special» | cinco | 12.200 | incluida |
-| Express Pass 5, «Race & Minion Special» | cinco | 14.700 | incluida |
-| Express Pass 5, «Race & Minecart Special» | cinco | 18.900 | incluida |
-| Express Pass 8, «Minion & MineCart Special» | ocho | 23.900 | incluida |
-| Express Pass 8, «Mine Cart & The Flying Dinosaur Special» | ocho | 25.900 | incluida |
-| Express Pass Premium | todas | 41.000 a 44.000 | incluida |
-| Express Pass Premium Unlimited | todas | 99.000 | incluida |
+| Paquete                                                   | Atracciones | Desde (yenes)   | Franja horaria Super Nintendo World |
+| --------------------------------------------------------- | ----------- | --------------- | ----------------------------------- |
+| Express Pass 4, «Race & JAWS» y «Mine Cart & JAWS»        | cuatro      | 10.800          | incluida                            |
+| Express Pass 4, «Backdrop & The Flying Dinosaur»          | cuatro      | 10.800          | no incluida                         |
+| Express Pass 4, «Thrill Max»                              | cuatro      | 11.800          | no incluida                         |
+| Express Pass 5, «Adventure Special»                       | cinco       | 12.200          | incluida                            |
+| Express Pass 5, «Race & Minion Special»                   | cinco       | 14.700          | incluida                            |
+| Express Pass 5, «Race & Minecart Special»                 | cinco       | 18.900          | incluida                            |
+| Express Pass 8, «Minion & MineCart Special»               | ocho        | 23.900          | incluida                            |
+| Express Pass 8, «Mine Cart & The Flying Dinosaur Special» | ocho        | 25.900          | incluida                            |
+| Express Pass Premium                                      | todas       | 41.000 a 44.000 | incluida                            |
+| Express Pass Premium Unlimited                            | todas       | 99.000          | incluida                            |
 
 Los paquetes con «incluida» en la última columna llevan, según la tienda, un Area
 Timed Entry Ticket garantizado para Super Nintendo World; en los demás hay que
@@ -418,11 +417,11 @@ sistema de precios por día: cada día empieza en su nivel más bajo y, con much
 demanda, el precio puede subir. Según el parque, comprar pronto suele salir más
 barato.
 
-| Entrada | Adultos desde |
-| ------- | ------------- |
-| Studio Pass de 1 día | 8.400 yenes |
-| Studio Pass de 1,5 días (acceso el primer día desde las 15:00) | 13.600 yenes |
-| Studio Pass de 2 días | 16.000 yenes |
+| Entrada                                                        | Adultos desde |
+| -------------------------------------------------------------- | ------------- |
+| Studio Pass de 1 día                                           | 8.400 yenes   |
+| Studio Pass de 1,5 días (acceso el primer día desde las 15:00) | 13.600 yenes  |
+| Studio Pass de 2 días                                          | 16.000 yenes  |
 
 Cuenta como niño quien tenga entre 4 y 11 años el día de la visita. Quien pase a
 la escuela media en abril paga la tarifa infantil hasta el 31 de marzo y la de
@@ -476,8 +475,7 @@ antelación.
 
 Desde finales de 2024 se han añadido la zona de Donkey Kong, el espectáculo de
 Detective Conan, Illumination's Villain-Con Minion Blast y Snoopy's Flying Ace
-Adventure. La atracción de Spider-Man, abierta en 2004, cerró el 22 de enero de
-2024. Backdraft y T2-3D están cerradas desde 2020, y la Sesame Street Fun World
+Adventure. La atracción de Spider-Man, abierta en 2004, cerró el 22 de enero de 2024. Backdraft y T2-3D están cerradas desde 2020, y la Sesame Street Fun World
 desde el 10 de mayo de 2026.
 
 ## Preguntas frecuentes sobre Universal Studios Japan

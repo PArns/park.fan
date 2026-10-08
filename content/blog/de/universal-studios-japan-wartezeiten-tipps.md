@@ -143,6 +143,7 @@ einem Jubiläumsband.
 ## The Wizarding World of Harry Potter
 
 Zum Bereich gehören zwei Bahnen und der Rundgang Hogwarts Castle Walk, der vom
+
 1. September 2026 bis zum 17. Januar 2027 läuft.
 
 **[Harry Potter and the Forbidden
@@ -336,8 +337,7 @@ Der Rundgang „Frieren:
 Beyond Journey's End Story Walk“ in Hollywood läuft vom 30. Mai 2026 bis zum 11.
 Januar 2027 und verlangt ein Attraction Timed Entry Ticket aus der App. „ONE PIECE
 Premier Summer 2026“ geht vom 30. Juli bis zum 19. November 2026, und die
-Straßenshow „Wicked: The Witches of Oz“ läuft vom 20. Februar bis zum 27. Dezember
-2026.
+Straßenshow „Wicked: The Witches of Oz“ läuft vom 20. Februar bis zum 27. Dezember 2026.
 
 ## Express Pass: Pakete, Preise, Zeitfenster
 
@@ -355,18 +355,18 @@ Parks. Stand 8. Oktober 2026 führt der autorisierte Ticketshop JTRWeb
 Mindestbetrag, der je nach Besuchstag steigt. Die Pakete gelten nur an
 ausgewählten Tagen und zusammen mit einem Studio Pass. Alle Preise mit Steuern:
 
-| Paket | Bahnen | Ab (Yen) | Zeitfenster Super Nintendo World |
-| ----- | ------ | -------- | -------------------------------- |
-| Express Pass 4, „Race & JAWS“ und „Mine Cart & JAWS“ | vier | 10.800 | enthalten |
-| Express Pass 4, „Backdrop & The Flying Dinosaur“ | vier | 10.800 | nicht enthalten |
-| Express Pass 4, „Thrill Max“ | vier | 11.800 | nicht enthalten |
-| Express Pass 5, „Adventure Special“ | fünf | 12.200 | enthalten |
-| Express Pass 5, „Race & Minion Special“ | fünf | 14.700 | enthalten |
-| Express Pass 5, „Race & Minecart Special“ | fünf | 18.900 | enthalten |
-| Express Pass 8, „Minion & MineCart Special“ | acht | 23.900 | enthalten |
-| Express Pass 8, „Mine Cart & The Flying Dinosaur Special“ | acht | 25.900 | enthalten |
-| Express Pass Premium | alle Bahnen | 41.000 bis 44.000 | enthalten |
-| Express Pass Premium Unlimited | alle Bahnen | 99.000 | enthalten |
+| Paket                                                     | Bahnen      | Ab (Yen)          | Zeitfenster Super Nintendo World |
+| --------------------------------------------------------- | ----------- | ----------------- | -------------------------------- |
+| Express Pass 4, „Race & JAWS“ und „Mine Cart & JAWS“      | vier        | 10.800            | enthalten                        |
+| Express Pass 4, „Backdrop & The Flying Dinosaur“          | vier        | 10.800            | nicht enthalten                  |
+| Express Pass 4, „Thrill Max“                              | vier        | 11.800            | nicht enthalten                  |
+| Express Pass 5, „Adventure Special“                       | fünf        | 12.200            | enthalten                        |
+| Express Pass 5, „Race & Minion Special“                   | fünf        | 14.700            | enthalten                        |
+| Express Pass 5, „Race & Minecart Special“                 | fünf        | 18.900            | enthalten                        |
+| Express Pass 8, „Minion & MineCart Special“               | acht        | 23.900            | enthalten                        |
+| Express Pass 8, „Mine Cart & The Flying Dinosaur Special“ | acht        | 25.900            | enthalten                        |
+| Express Pass Premium                                      | alle Bahnen | 41.000 bis 44.000 | enthalten                        |
+| Express Pass Premium Unlimited                            | alle Bahnen | 99.000            | enthalten                        |
 
 Die Pakete mit „enthalten“ in der letzten Spalte haben laut Ticketshop ein garantiertes
 Area Timed Entry Ticket für Super Nintendo World, bei den anderen muss man das
@@ -414,19 +414,20 @@ Preissystem ein: Jeder Tag beginnt auf seiner niedrigsten Stufe, und bei hoher
 Nachfrage kann der Preis steigen. Früh kaufen ist nach Angaben des Parks meist am
 günstigsten.
 
-| Ticket | Erwachsene ab |
-| ------ | ------------- |
-| 1 Day Studio Pass | 8.400 Yen |
-| 1.5 Day Studio Pass (Einlass am ersten Tag ab 15 Uhr) | 13.600 Yen |
-| 2 Day Studio Pass | 16.000 Yen |
+| Ticket                                                | Erwachsene ab |
+| ----------------------------------------------------- | ------------- |
+| 1 Day Studio Pass                                     | 8.400 Yen     |
+| 1.5 Day Studio Pass (Einlass am ersten Tag ab 15 Uhr) | 13.600 Yen    |
+| 2 Day Studio Pass                                     | 16.000 Yen    |
 
 Als Kind zählt, wer am Besuchstag zwischen 4 und 11 Jahre alt ist. Wer im April auf
 die Mittelschule wechselt, zahlt bis zum 31. März noch den Kindertarif und ab dem
+
 1. April den Preis für Erwachsene. Ein Studio Pass erlaubt keinen erneuten Einlass
-nach dem Verlassen, nur der Jahrespass (laut Park nur auf Japanisch buchbar). Der
-Weiterverkauf ist verboten, und Karten von Wiederverkäufern werden nicht
-angenommen. Bei manchen Karten für Besuche ab dem 1. September 2026 lässt sich das
-Datum ändern.
+   nach dem Verlassen, nur der Jahrespass (laut Park nur auf Japanisch buchbar). Der
+   Weiterverkauf ist verboten, und Karten von Wiederverkäufern werden nicht
+   angenommen. Bei manchen Karten für Besuche ab dem 1. September 2026 lässt sich das
+   Datum ändern.
 
 ## Anreise
 

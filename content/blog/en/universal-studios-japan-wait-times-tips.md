@@ -215,8 +215,7 @@ and the lockers are at the boarding area.
 is one of the rides from the 2001 opening. 25 people sit in a boat and plunge
 25.9 metres to escape a Tyrannosaurus. You get wet. The ride takes about seven
 minutes, with a height requirement of 122 cm, or 107 cm with a companion. For
-its 25th anniversary the ride had extra effects from 8 July to 30 September
-2026.
+its 25th anniversary the ride had extra effects from 8 July to 30 September 2026.
 
 **[JAWS](ref:universal-studios-japan/jaws-2)** in Amity Village is a boat tour
 of about seven minutes, with 48 guests in eight rows of six. A shark attacks
@@ -327,8 +326,7 @@ parks in the season.
 The "Frieren: Beyond Journey's End Story Walk" in Hollywood runs from 30 May
 2026 to 11 January 2027 and requires an Attraction Timed Entry Ticket from the
 app. "ONE PIECE Premier Summer 2026" runs from 30 July to 19 November 2026, and
-the street show "Wicked: The Witches of Oz" from 20 February to 27 December
-2026.
+the street show "Wicked: The Witches of Oz" from 20 February to 27 December 2026.
 
 ## Express Pass: packages, prices, time slots
 
@@ -346,18 +344,18 @@ than twenty packages, each with a price starting from a minimum amount that goes
 up depending on the day of the visit. The packages are valid only on selected
 days and together with a Studio Pass. All prices include tax:
 
-| Package | Rides | From (yen) | Super Nintendo World time slot |
-| ------- | ----- | ---------- | ------------------------------ |
-| Express Pass 4, "Race & JAWS" and "Mine Cart & JAWS" | four | 10,800 | included |
-| Express Pass 4, "Backdrop & The Flying Dinosaur" | four | 10,800 | not included |
-| Express Pass 4, "Thrill Max" | four | 11,800 | not included |
-| Express Pass 5, "Adventure Special" | five | 12,200 | included |
-| Express Pass 5, "Race & Minion Special" | five | 14,700 | included |
-| Express Pass 5, "Race & Minecart Special" | five | 18,900 | included |
-| Express Pass 8, "Minion & MineCart Special" | eight | 23,900 | included |
-| Express Pass 8, "Mine Cart & The Flying Dinosaur Special" | eight | 25,900 | included |
-| Express Pass Premium | all rides | 41,000 to 44,000 | included |
-| Express Pass Premium Unlimited | all rides | 99,000 | included |
+| Package                                                   | Rides     | From (yen)       | Super Nintendo World time slot |
+| --------------------------------------------------------- | --------- | ---------------- | ------------------------------ |
+| Express Pass 4, "Race & JAWS" and "Mine Cart & JAWS"      | four      | 10,800           | included                       |
+| Express Pass 4, "Backdrop & The Flying Dinosaur"          | four      | 10,800           | not included                   |
+| Express Pass 4, "Thrill Max"                              | four      | 11,800           | not included                   |
+| Express Pass 5, "Adventure Special"                       | five      | 12,200           | included                       |
+| Express Pass 5, "Race & Minion Special"                   | five      | 14,700           | included                       |
+| Express Pass 5, "Race & Minecart Special"                 | five      | 18,900           | included                       |
+| Express Pass 8, "Minion & MineCart Special"               | eight     | 23,900           | included                       |
+| Express Pass 8, "Mine Cart & The Flying Dinosaur Special" | eight     | 25,900           | included                       |
+| Express Pass Premium                                      | all rides | 41,000 to 44,000 | included                       |
+| Express Pass Premium Unlimited                            | all rides | 99,000           | included                       |
 
 According to the ticket shop, the packages marked "included" in the last column
 come with a guaranteed Area Timed Entry Ticket for Super Nintendo World; with
@@ -405,11 +403,11 @@ visit. For visits from 1 September 2026, the park uses day-based pricing: every
 day starts at its lowest level, and the price can rise when demand is high.
 According to the park, buying early is usually cheapest.
 
-| Ticket | Adults from |
-| ------ | ----------- |
-| 1 Day Studio Pass | 8,400 yen |
-| 1.5 Day Studio Pass (entry on the first day from 3 pm) | 13,600 yen |
-| 2 Day Studio Pass | 16,000 yen |
+| Ticket                                                 | Adults from |
+| ------------------------------------------------------ | ----------- |
+| 1 Day Studio Pass                                      | 8,400 yen   |
+| 1.5 Day Studio Pass (entry on the first day from 3 pm) | 13,600 yen  |
+| 2 Day Studio Pass                                      | 16,000 yen  |
 
 A child is anyone aged 4 to 11 on the day of the visit. If you start middle
 school in April, you still pay the child price until 31 March and the adult
@@ -462,8 +460,7 @@ advance.
 
 Since the end of 2024, the Donkey Kong area, the Detective Conan show,
 Illumination's Villain-Con Minion Blast and Snoopy's Flying Ace Adventure have
-been added. The Spider-Man ride, which opened in 2004, closed on 22 January
-2024. Backdraft and T2-3D have been closed since 2020, and Sesame Street Fun
+been added. The Spider-Man ride, which opened in 2004, closed on 22 January 2024. Backdraft and T2-3D have been closed since 2020, and Sesame Street Fun
 World since 10 May 2026.
 
 ## Frequently asked questions about Universal Studios Japan

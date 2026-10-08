@@ -344,18 +344,18 @@ pacchetti, ciascuno con un prezzo «da» che sale a seconda del giorno di visita
 pacchetti valgono solo in giorni selezionati e insieme a uno Studio Pass. Tutti i
 prezzi includono le tasse:
 
-| Pacchetto | Attrazioni | Da (yen) | Fascia oraria Super Nintendo World |
-| --------- | ---------- | -------- | ---------------------------------- |
-| Express Pass 4, «Race & JAWS» e «Mine Cart & JAWS» | quattro | 10.800 | inclusa |
-| Express Pass 4, «Backdrop & The Flying Dinosaur» | quattro | 10.800 | non inclusa |
-| Express Pass 4, «Thrill Max» | quattro | 11.800 | non inclusa |
-| Express Pass 5, «Adventure Special» | cinque | 12.200 | inclusa |
-| Express Pass 5, «Race & Minion Special» | cinque | 14.700 | inclusa |
-| Express Pass 5, «Race & Minecart Special» | cinque | 18.900 | inclusa |
-| Express Pass 8, «Minion & MineCart Special» | otto | 23.900 | inclusa |
-| Express Pass 8, «Mine Cart & The Flying Dinosaur Special» | otto | 25.900 | inclusa |
-| Express Pass Premium | tutte le attrazioni | da 41.000 a 44.000 | inclusa |
-| Express Pass Premium Unlimited | tutte le attrazioni | 99.000 | inclusa |
+| Pacchetto                                                 | Attrazioni          | Da (yen)           | Fascia oraria Super Nintendo World |
+| --------------------------------------------------------- | ------------------- | ------------------ | ---------------------------------- |
+| Express Pass 4, «Race & JAWS» e «Mine Cart & JAWS»        | quattro             | 10.800             | inclusa                            |
+| Express Pass 4, «Backdrop & The Flying Dinosaur»          | quattro             | 10.800             | non inclusa                        |
+| Express Pass 4, «Thrill Max»                              | quattro             | 11.800             | non inclusa                        |
+| Express Pass 5, «Adventure Special»                       | cinque              | 12.200             | inclusa                            |
+| Express Pass 5, «Race & Minion Special»                   | cinque              | 14.700             | inclusa                            |
+| Express Pass 5, «Race & Minecart Special»                 | cinque              | 18.900             | inclusa                            |
+| Express Pass 8, «Minion & MineCart Special»               | otto                | 23.900             | inclusa                            |
+| Express Pass 8, «Mine Cart & The Flying Dinosaur Special» | otto                | 25.900             | inclusa                            |
+| Express Pass Premium                                      | tutte le attrazioni | da 41.000 a 44.000 | inclusa                            |
+| Express Pass Premium Unlimited                            | tutte le attrazioni | 99.000             | inclusa                            |
 
 I pacchetti con «inclusa» nell’ultima colonna hanno, secondo il negozio, un Area
 Timed Entry Ticket garantito per Super Nintendo World; negli altri il biglietto
@@ -404,11 +404,11 @@ le visite dal 1° settembre 2026 il parco applica prezzi legati al giorno: ogni
 giorno parte dal livello più basso e, con molta richiesta, il prezzo può salire.
 Comprare presto, dice il parco, di solito costa meno.
 
-| Biglietto | Adulti da |
-| --------- | --------- |
-| Studio Pass 1 giorno | 8.400 yen |
+| Biglietto                                                  | Adulti da  |
+| ---------------------------------------------------------- | ---------- |
+| Studio Pass 1 giorno                                       | 8.400 yen  |
 | Studio Pass 1,5 giorni (ingresso il primo giorno dalle 15) | 13.600 yen |
-| Studio Pass 2 giorni | 16.000 yen |
+| Studio Pass 2 giorni                                       | 16.000 yen |
 
 Conta come bambino chi il giorno della visita ha fra 4 e 11 anni. Chi ad aprile
 passa alla scuola media paga la tariffa bambini fino al 31 marzo e quella adulti

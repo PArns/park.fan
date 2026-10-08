@@ -332,8 +332,7 @@ Dive. Andere parken in het seizoen staan in onze
 De wandeling “Frieren: Beyond Journey's End Story Walk” in Hollywood loopt van 30
 mei 2026 tot 11 januari 2027 en vraagt om een Attraction Timed Entry Ticket uit
 de app. “ONE PIECE Premier Summer 2026” duurt van 30 juli tot 19 november 2026, en
-de straatshow “Wicked: The Witches of Oz” loopt van 20 februari tot 27 december
-2026.
+de straatshow “Wicked: The Witches of Oz” loopt van 20 februari tot 27 december 2026.
 
 ## Express Pass: pakketten, prijzen, tijdslot
 
@@ -351,18 +350,18 @@ meer dan twintig pakketten, elk met een prijs vanaf een minimumbedrag dat met de
 bezoekdag stijgt. De pakketten gelden alleen op bepaalde dagen en samen met een
 Studio Pass. Alle prijzen zijn inclusief belasting:
 
-| Pakket | Attracties | Vanaf (yen) | Tijdslot Super Nintendo World |
-| ------ | ---------- | ----------- | ----------------------------- |
-| Express Pass 4, “Race & JAWS” en “Mine Cart & JAWS” | vier | 10.800 | inbegrepen |
-| Express Pass 4, “Backdrop & The Flying Dinosaur” | vier | 10.800 | niet inbegrepen |
-| Express Pass 4, “Thrill Max” | vier | 11.800 | niet inbegrepen |
-| Express Pass 5, “Adventure Special” | vijf | 12.200 | inbegrepen |
-| Express Pass 5, “Race & Minion Special” | vijf | 14.700 | inbegrepen |
-| Express Pass 5, “Race & Minecart Special” | vijf | 18.900 | inbegrepen |
-| Express Pass 8, “Minion & MineCart Special” | acht | 23.900 | inbegrepen |
-| Express Pass 8, “Mine Cart & The Flying Dinosaur Special” | acht | 25.900 | inbegrepen |
-| Express Pass Premium | alle attracties | 41.000 tot 44.000 | inbegrepen |
-| Express Pass Premium Unlimited | alle attracties | 99.000 | inbegrepen |
+| Pakket                                                    | Attracties      | Vanaf (yen)       | Tijdslot Super Nintendo World |
+| --------------------------------------------------------- | --------------- | ----------------- | ----------------------------- |
+| Express Pass 4, “Race & JAWS” en “Mine Cart & JAWS”       | vier            | 10.800            | inbegrepen                    |
+| Express Pass 4, “Backdrop & The Flying Dinosaur”          | vier            | 10.800            | niet inbegrepen               |
+| Express Pass 4, “Thrill Max”                              | vier            | 11.800            | niet inbegrepen               |
+| Express Pass 5, “Adventure Special”                       | vijf            | 12.200            | inbegrepen                    |
+| Express Pass 5, “Race & Minion Special”                   | vijf            | 14.700            | inbegrepen                    |
+| Express Pass 5, “Race & Minecart Special”                 | vijf            | 18.900            | inbegrepen                    |
+| Express Pass 8, “Minion & MineCart Special”               | acht            | 23.900            | inbegrepen                    |
+| Express Pass 8, “Mine Cart & The Flying Dinosaur Special” | acht            | 25.900            | inbegrepen                    |
+| Express Pass Premium                                      | alle attracties | 41.000 tot 44.000 | inbegrepen                    |
+| Express Pass Premium Unlimited                            | alle attracties | 99.000            | inbegrepen                    |
 
 Bij de pakketten met “inbegrepen” in de laatste kolom zit volgens de ticketshop een
 gegarandeerd Area Timed Entry Ticket voor Super Nintendo World. Bij de andere
@@ -412,11 +411,11 @@ dagafhankelijk prijssysteem: elke dag begint op het laagste niveau en bij veel
 vraag kan de prijs stijgen. Vroeg kopen is volgens het park meestal het
 goedkoopst.
 
-| Ticket | Volwassenen vanaf |
-| ------ | ----------------- |
-| 1 Day Studio Pass | 8.400 yen |
-| 1.5 Day Studio Pass (toegang op de eerste dag vanaf 15 uur) | 13.600 yen |
-| 2 Day Studio Pass | 16.000 yen |
+| Ticket                                                      | Volwassenen vanaf |
+| ----------------------------------------------------------- | ----------------- |
+| 1 Day Studio Pass                                           | 8.400 yen         |
+| 1.5 Day Studio Pass (toegang op de eerste dag vanaf 15 uur) | 13.600 yen        |
+| 2 Day Studio Pass                                           | 16.000 yen        |
 
 Als kind telt wie op de bezoekdag tussen 4 en 11 jaar oud is. Wie in april naar de
 middelbare school gaat, betaalt tot 31 maart nog het kindertarief en vanaf 1 april

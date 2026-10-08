@@ -183,18 +183,18 @@ Un Studio Pass donne l’entrée et l’accès à toutes les attractions. L’Un
 
 Le parc n’affiche aucun prix sur son site, ils figurent dans sa boutique de billets. Au 8 octobre 2026, la boutique agréée JTRWeb (usjticketing.com) propose plus de vingt forfaits, chacun avec un prix « à partir de » qui monte selon le jour de la visite. Les forfaits ne valent que certains jours et avec un Studio Pass. Tous les prix incluent les taxes :
 
-| Forfait | Attractions | À partir de (yens) | Créneau Super Nintendo World |
-| ------- | ----------- | ------------------ | ---------------------------- |
-| Express Pass 4, « Race & JAWS » et « Mine Cart & JAWS » | quatre | 10 800 | inclus |
-| Express Pass 4, « Backdrop & The Flying Dinosaur » | quatre | 10 800 | non inclus |
-| Express Pass 4, « Thrill Max » | quatre | 11 800 | non inclus |
-| Express Pass 5, « Adventure Special » | cinq | 12 200 | inclus |
-| Express Pass 5, « Race & Minion Special » | cinq | 14 700 | inclus |
-| Express Pass 5, « Race & Minecart Special » | cinq | 18 900 | inclus |
-| Express Pass 8, « Minion & MineCart Special » | huit | 23 900 | inclus |
-| Express Pass 8, « Mine Cart & The Flying Dinosaur Special » | huit | 25 900 | inclus |
-| Express Pass Premium | toutes | 41 000 à 44 000 | inclus |
-| Express Pass Premium Unlimited | toutes | 99 000 | inclus |
+| Forfait                                                     | Attractions | À partir de (yens) | Créneau Super Nintendo World |
+| ----------------------------------------------------------- | ----------- | ------------------ | ---------------------------- |
+| Express Pass 4, « Race & JAWS » et « Mine Cart & JAWS »     | quatre      | 10 800             | inclus                       |
+| Express Pass 4, « Backdrop & The Flying Dinosaur »          | quatre      | 10 800             | non inclus                   |
+| Express Pass 4, « Thrill Max »                              | quatre      | 11 800             | non inclus                   |
+| Express Pass 5, « Adventure Special »                       | cinq        | 12 200             | inclus                       |
+| Express Pass 5, « Race & Minion Special »                   | cinq        | 14 700             | inclus                       |
+| Express Pass 5, « Race & Minecart Special »                 | cinq        | 18 900             | inclus                       |
+| Express Pass 8, « Minion & MineCart Special »               | huit        | 23 900             | inclus                       |
+| Express Pass 8, « Mine Cart & The Flying Dinosaur Special » | huit        | 25 900             | inclus                       |
+| Express Pass Premium                                        | toutes      | 41 000 à 44 000    | inclus                       |
+| Express Pass Premium Unlimited                              | toutes      | 99 000             | inclus                       |
 
 D’après la boutique, les forfaits marqués « inclus » dans la dernière colonne comprennent un Area Timed Entry Ticket garanti pour Super Nintendo World ; pour les autres, il faut le retirer dans l’appli le jour de la visite. Le forfait « Race & Minecart Special » comprend Mario Kart, Mine Cart Madness, Forbidden Journey, Villain-Con Minion Blast et The Flying Dinosaur. Pour les forfaits qui contiennent Hollywood Dream ou l’attraction aux dinosaures, la taille minimale est de 132 centimètres.
 
@@ -218,13 +218,13 @@ L’**Area Timed Entry Ticket** vaut pour des zones comme Super Nintendo World. 
 
 Tous les prix de la boutique incluent les taxes et dépendent du jour de la visite. Pour les visites à partir du 1er septembre 2026, le parc applique une tarification selon le jour : chaque jour commence à son niveau le plus bas, et le prix peut monter quand la demande est forte. D’après le parc, acheter tôt est le plus souvent le moins cher.
 
-| Billet | Adultes à partir de |
-| ------ | ------------------- |
-| 1 Day Studio Pass | 8 400 yens |
-| 1.5 Day Studio Pass (entrée dès 15 h le premier jour) | 13 600 yens |
-| 2 Day Studio Pass | 16 000 yens |
+| Billet                                                | Adultes à partir de |
+| ----------------------------------------------------- | ------------------- |
+| 1 Day Studio Pass                                     | 8 400 yens          |
+| 1.5 Day Studio Pass (entrée dès 15 h le premier jour) | 13 600 yens         |
+| 2 Day Studio Pass                                     | 16 000 yens         |
 
-Est considéré comme enfant celui qui a entre 4 et 11 ans le jour de la visite. Qui entre au collège en avril paie encore le tarif enfant jusqu’au 31 mars, et le tarif adulte à partir du 1er avril. Un Studio Pass n’autorise pas à ressortir et revenir, seul l’abonnement annuel le permet (réservable uniquement en japonais, d’après le parc). La revente est interdite et les billets de revendeurs sont refusés. Sur certains billets pour des visites à partir du 1er septembre 2026, la date peut être modifiée.
+Compte comme enfant celui qui a entre 4 et 11 ans le jour de la visite. Qui entre au collège en avril paie encore le tarif enfant jusqu’au 31 mars, et le tarif adulte à partir du 1er avril. Un Studio Pass n’autorise pas à ressortir et revenir, seul l’abonnement annuel le permet (réservable uniquement en japonais, d’après le parc). La revente est interdite et les billets de revendeurs sont refusés. Sur certains billets pour des visites à partir du 1er septembre 2026, la date peut être modifiée.
 
 ## Venir au parc
 
