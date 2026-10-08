@@ -31,8 +31,8 @@ rideLinks:
 seo:
   title: 'Liseberg 2026: Balder, Helix, Wartezeiten und Halloween'
   description: >-
-    Gemessene Wartezeiten zu Helix, Valkyria und Balder, dazu virtuelle
-    Warteschlange, Halloween, Jul på Liseberg, Preise und Anreise.
+    Helix, Valkyria, Loke und Balder liegen bei den gemessenen Wartezeiten dicht
+    beieinander. Die virtuelle Warteschlange in der App kostet nichts extra.
   keywords:
     - Liseberg
     - Liseberg Wartezeiten
@@ -57,10 +57,9 @@ Am **4. Oktober 2026** fuhren auf Liseberg die Radiobilarna ihre letzte Runde. E
 waren Autoscooter, die seit dem **12. Mai 1927** im Park standen, in einer Halle,
 die jetzt abgerissen wird. Mehr als 300.000 Gäste im Jahr haben sie genutzt, und
 wer an den letzten drei Tagen einen Eintritt hatte, durfte kostenlos fahren. Was
-an der Stelle entsteht, steht noch nicht fest.
+an der Stelle entsteht, sagt der Park noch nicht.
 
-Ein Park, der fast hundert Jahre alte Fahrgeschäfte abreißt, hat vorher alles
-Wichtige behalten. Liseberg in Göteborg ist 1923 für eine Jubiläumsausstellung
+Liseberg in Göteborg ist 1923 für eine Jubiläumsausstellung
 gebaut worden und sollte danach wieder verschwinden. Heute stehen auf dem
 Gelände vier große Achterbahnen, der Turm [AtmosFear](ref:liseberg/atmosfear) mit
 einem 90 Meter hohen freien Fall und im Herbst fünf Spukhäuser. Im November
@@ -83,8 +82,7 @@ war als vorübergehend gedacht. Weil in dem ersten Monat mehr als 80.000 Gäste
 kamen, blieb er. Am **24. November 1924** beschloss der Stadtrat, ihn für eine
 Million Kronen zu kaufen, und 1925 übernahm die städtische Gesellschaft
 Liseberg AB den Betrieb. Erster Direktor war bis 1942 der Zimmermann Herman
-Lindholm. Der Park gehört bis heute der Stadt Göteborg. In den Jahren dazwischen ist er mehr
-geworden als ein Platz für Karussells. Im Mai 1950 liefen in der Konzerthalle
+Lindholm. Der Park gehört bis heute der Stadt Göteborg. Im Mai 1950 liefen in der Konzerthalle
 die ersten Fernsehversuche Schwedens, mit Pye aus Cambridge und der Technischen
 Hochschule Chalmers. Auf der großen Bühne sind unter anderem ABBA, die Rolling Stones und
 Led Zeppelin aufgetreten, und 1947 sang dort Édith Piaf.
@@ -95,19 +93,25 @@ wurde **1987** abgerissen und durch die
 [Lisebergbanan](ref:liseberg/lisebergbanan) ersetzt, die Anton Schwarzkopf für denselben Berg
 entworfen hatte.
 
-Drei Jahreszahlen haben die Besuchszeiten verändert. Seit **2000** hat Liseberg im
+Seit **2000** hat Liseberg im
 Winter geöffnet („Jul på Liseberg“), im ersten Jahr kamen 418.000 Gäste. **2015**
 folgte Halloween. Und **2020** blieb der Park wegen der Pandemie die gesamte Saison
 zu, zum ersten Mal seit der Gründung. 2023 wurde er 100 Jahre alt.
+
+Wie viele Gäste kommen, lässt sich über die Jahrzehnte nachlesen. 1936 waren es mehr als eine
+Million, 1954 gut 1,7 Millionen, und 1979 1,8 Millionen. 2003, im Jahr von Balder, meldete
+der Park mit 3,4 Millionen Gästen in Sommer und Weihnachten seinen Rekord. 2021, im
+ersten Jahr nach der Pandemie, waren es 1,5 Millionen, 2023 laut schwedischer Wikipedia 2,2
+Millionen. Die bis dahin teuerste Investition war **Spaceport Liseberg**: 1990 eröffnete der Park
+ein Simulatorkino und den Aussichtsturm, für 110 Millionen Kronen. Aus dem Aussichtsturm wurde später AtmosFear.
 
 ## Balder: die Holzachterbahn
 
 [Balder](ref:liseberg/balder) eröffnete am **12. April 2003** und ist laut
 Roller Coaster DataBase eine Holzachterbahn von Intamin mit vorgefertigten
 Schienen, entworfen vom Ingenieurbüro Stengel und gebaut von Cordes Holzbau.
-Die Zahlen gehen leicht auseinander, je nachdem, wen man fragt:
-**36 Meter** Höhe, **1.070 Meter** Strecke und **90 km/h**, nach der
-Roller Coaster DataBase **100 Millionen Kronen** Baukosten. Der Zug fährt über
+Sie ist **36 Meter** hoch, hat **1.070 Meter** Strecke und erreicht **90 km/h**;
+die Baukosten liegen nach der Roller Coaster DataBase bei **100 Millionen Kronen**. Der Zug fährt über
 zwei Minuten, und die Mindestgröße liegt bei **130 cm** plus sieben Jahren
 Alter.
 
@@ -120,8 +124,8 @@ Bahn steht auf der anderen Seite des Flusses Mölndalsån, wie die Kållerado.
 
 ```
 
-Auf der Seite der Wartezeiten gehört Balder zu den vier Bahnen, die oben
-stehen. Der Abstand zwischen den vieren ist klein. Die Roller Coaster DataBase nennt für die
+In unseren Messungen gehört Balder zu den vier Bahnen mit den längsten
+Wartezeiten. Die Roller Coaster DataBase nennt für die
 Bahn eine Kapazität von rund 1.149 Gästen pro Stunde.
 
 [Balder](ref:liseberg/balder?full)
@@ -144,12 +148,19 @@ sieben Jahren Alter, der Zug fährt etwa zwei Minuten und zehn Sekunden.
 
 **[Valkyria](ref:liseberg/valkyria)** eröffnete am **10. August 2018** auf dem
 Gelände der Kanonen. Die Kanonen war ein Launch Coaster von Intamin, der am
-23. April 2005 öffnete und am 30. Dezember 2016 zum letzten Mal fuhr. Bei Valkyria
-handelt es sich um einen Dive Coaster von Bolliger & Mabillard mit drei Inversionen
+23. April 2005 öffnete und am 30. Dezember 2016 zum letzten Mal fuhr. Valkyria
+ist ein Dive Coaster von Bolliger & Mabillard mit drei Inversionen
 und einer **50 Meter** langen, steilen ersten Abfahrt, die direkt in einen Tunnel
 unter der Erde führt. Der Park nennt **47 Meter** Höhe und **105 km/h**.
 Valkyria braucht **132 cm** plus sieben Jahre und hat, wie Mechanica, eine
 Obergrenze von 195 cm.
+
+Die Kanonen war die erste Bahn ihrer Art im Norden. Der Zug schoss hydraulisch
+in 1,84 Sekunden auf 75 km/h, stieg 24 Meter steil nach oben, fuhr eine Loop und eine
+Heartroll und stand nach rund 50 Sekunden wieder in der Station. 2010 hatte sie 651.000
+Fahrten und war damit die fünftbeliebteste Bahn des Parks. Valkyria ersetzte sie
+auf derselben Fläche, und der Weg der ersten Abfahrt führt jetzt unter die Erde, in einen
+Tunnel.
 
 Und es gibt die **[Lisebergbanan](ref:liseberg/lisebergbanan)**, die älteste der
 großen Bahnen. Am **18. April 1987** eröffnet, von Zierer nach einem Entwurf von
@@ -168,10 +179,9 @@ Begleitung 95 cm plus drei Jahre. Und für die Kleinen gibt es die
 **[Stampbanan](ref:liseberg/stampbanan)** von Preston & Barbieri (2013), beide im
 Kaninchenland. Für beide braucht ein Kind 110 cm, in Begleitung 90 cm.
 
-## Der Rest: ein Turm, der früher eine Aussicht war
+## AtmosFear, Wasserfahrten und die übrigen Fahrgeschäfte
 
-Der auffälligste Bau auf dem Berg ist **[AtmosFear](ref:liseberg/atmosfear)**.
-Der Turm wurde 1990 als Aussichtsturm gebaut („Lisebergstornet“), am 30. Mai
+Der Turm **[AtmosFear](ref:liseberg/atmosfear)** wurde 1990 als Aussichtsturm gebaut („Lisebergstornet“), am 30. Mai
 2010 fuhr die letzte Gruppe hinauf, einen Tag später begann der Umbau durch Intamin.
 Als Fahrgeschäft eröffnete er im April 2011. Die Gondel fällt rund 90 Meter
 frei, in ungefähr drei Sekunden, bei bis zu 110 km/h. Der Umbau kostete etwa
@@ -187,8 +197,8 @@ die in der Beliebtheit 2010 knapp hinter der Lisebergbanan lag (1,11 Millionen
 Fahrten, die Lisebergbanan hatte 1,32 Millionen). Für die FlumeRide gelten
 130 cm, mit Begleitung 100 cm, für die Kållerado 130 cm, mit Begleitung 110 cm.
 
-Dazu kommen Fahrgeschäfte, die im Alltag eines Parks mit mehr als dreißig
-Fahrattraktionen die Warteschlangen füllen:
+Dazu kommen weitere Fahrgeschäfte in einem Park mit mehr als dreißig
+Fahrattraktionen:
 
 - **[Loke](ref:liseberg/loke)** (2017), ein Gyro Swing von Intamin für bis zu 40 Gäste,
   mit der Mindestgröße 130 cm plus sieben Jahre,
@@ -204,18 +214,26 @@ Fahrattraktionen die Warteschlangen füllen:
   Höhe, das seit 2012 im Park steht und davor am Kanaltorget in Göteborg
   „Göteborgshjulet“ hieß.
 
+Ruhiger geht es in **[Underlandet](ref:liseberg/underlandet)** zu, einer Gondelfahrt
+durch mehrere Räume in der Welt der Liseberg-Kaninchen. Sie stammt aus 2020 und 2021,
+steht in der Liste der Bahnen mit virtueller Warteschlange, und für sie braucht ein
+Kind 130 cm, in Begleitung 90 cm. Die **[Slänggungan](ref:liseberg/slaenggungan)**, ein
+Kettenkarussell von Zierer, gibt es seit 1989, die jetzige Anlage seit 2018, ab 120 cm.
+Die **[Kaffekoppen](ref:liseberg/kaffekoppen)** von 1985 sind große Tassen, die man selbst
+mit der Hand dreht.
+
 Das Neueste ist **[Stormvåg](ref:liseberg/stormvag)**, eine Wild Swing XL von Art
 Engineering mit 24 Plätzen und 14,5 Metern Höhe, am **14. Mai 2026** eröffnet und
 im Hafenthema gestaltet. Sie steht dort, wo die Kristallsalongen standen, ein
-Spiegelkabinett von 1962, das am **14. September 2025** schloss. Der Park nennt
-rund 15 Millionen Besucher. Vorher, 2025, eröffnete
+Spiegelkabinett von 1962, das am **14. September 2025** schloss, nach Angaben des
+Parks mit rund 15 Millionen Besuchern in seiner Laufzeit. Vorher, 2025, eröffnete
 **[Kraftverket](ref:liseberg/kraftverket)**, ein schnell drehendes Karussell
 (130 cm, mit Begleitung 120 cm). Für Stormvåg braucht ein Kind 120 cm, mit
 Begleitung 95 cm.
 
 Im Kaninchenland (2013 eröffnet) stehen sieben Fahrgeschäfte für die Kleinen, dazu
 die beiden Bahnen von oben und ein Spielplatz. Das ist auch der Teil, der als Einziger
-im Herbst und im Winter an eigenen Tagen öffnet, dazu mehr weiter unten.
+im Herbst und im Winter an eigenen Tagen öffnet.
 
 Die JukeBox braucht 110 cm, und für die Spukhäuser gilt ein Mindestalter: elf Jahre für Vinden, Zombie, Nattsvart på
 Gasten und Skogen, **15 Jahre** für „7“.
@@ -246,10 +264,9 @@ Zum Gelände gehört außerdem die **Lustgården**, ein Garten mit Wasserfällen
 Skulpturen. Sie ging 2008 als „Göteborgs Lustgårdar“ auf einer Wiese von gut 20.000
 Quadratmetern zwischen dem Turm und dem Korsvägen auf.
 
-## Wie voll es wirklich ist
+## Wie voll es ist
 
-Unsere Messungen für Liseberg laufen seit dem 26. Dezember 2025. Die Daten kommen vor allem aus der Sommersaison, im Winter laufen nur wenige Bahnen. Hier die Bahnen mit den längsten
-Wartezeiten, jede mit ihrer eigenen Zahl an Messtagen:
+Unsere Messungen für Liseberg laufen seit dem 26. Dezember 2025. Die Daten kommen vor allem aus der Sommersaison, im Winter laufen nur wenige Bahnen.
 
 ```ride-waits-widget park=liseberg top=8 columns=land,peak,days highlight=balder
 
@@ -257,23 +274,19 @@ Wartezeiten, jede mit ihrer eigenen Zahl an Messtagen:
 
 Oben stehen Helix und Valkyria, danach Loke und Balder, und der Abstand zwischen den
 vieren ist klein. Es gibt hier keine einzelne Bahn, vor der sich alles staut, die Warteschlange verteilt sich
-auf vier Namen. Auffällig ist außerdem, dass die
+auf vier Bahnen. Die
 Neuheit [Stormvåg](ref:liseberg/stormvag) und das 2025 eröffnete
-[Kraftverket](ref:liseberg/kraftverket) schon unter den ersten zehn liegen, und dass
-auch die Kinderbahn Rabalder in der Tabelle steht.
-
-So wachsen die Warteschlangen über den Tag:
+[Kraftverket](ref:liseberg/kraftverket) liegen schon unter den ersten zehn, und
+auch die Kinderbahn Rabalder steht in der Tabelle.
 
 ```hourly-profile-widget slug=liseberg top=8
 
 ```
 
-Die Zellen sind über den ganzen Nachmittag ähnlich fett, mit dem Maximum bei den
+Über den ganzen Nachmittag bleibt es ähnlich voll, mit dem Maximum bei den
 meisten Bahnen um 16 Uhr, bei der FlumeRide eine Stunde später. Die
-Kaninchenland-Bahnen haben ihren Höhepunkt eher am frühen Nachmittag. Das passt
-zu einem Park, der in der Stadt liegt und dessen Gäste nicht alle zur Öffnung
-anreisen. Wer um 12 Uhr da ist, hat vor den vier großen Bahnen weniger Gedränge als
-um vier, und das gilt auch für Helix.
+Kaninchenland-Bahnen haben ihren Höhepunkt eher am frühen Nachmittag. Wer um 12 Uhr
+da ist, hat vor den vier großen Bahnen weniger Gedränge als um vier.
 
 Die ruhigsten der kommenden Öffnungstage, live berechnet:
 
@@ -305,14 +318,14 @@ also zuerst in der App ein und fährt in der Zwischenzeit etwas anderes.
 ```
 
 Der Sommer ist die volle Zeit, Juli und August liegen oben, der Mai und der Juni
-etwas darunter. Die Monate Januar bis März sind sehr ruhig, weil dort nur das Kaninchenland
-an Wochenenden geöffnet hat und fast nichts gemessen wird. Beim Wochentag steht der
-Dienstag oben und der Sonntag unten, und der Sonntag trägt mit 40 gemessenen Tagen
+etwas darunter. Von Januar bis März ist es ruhig, weil dort nur das Kaninchenland
+an Wochenenden geöffnet hat und fast nichts gemessen wird. Am Dienstag ist am meisten
+los, am Sonntag am wenigsten, und der Sonntag hat mit 40 gemessenen Tagen
 mehr als dreimal so viele wie Montag oder Dienstag.
 Im Herbst schließt der Park sonntags um 20 Uhr, freitags und samstags um 22 Uhr.
 
-Die Sommersaison 2026 begann am **18. April** um 11 Uhr. Wann sie endete, nennt der
-Park in keiner Meldung, die ich gefunden habe. Der Kalender auf der
+Die Sommersaison 2026 begann am **18. April** um 11 Uhr. Wann sie endet, sagt der
+Park nicht. Der Kalender auf der
 [Parkseite](ref:liseberg) zeigt, was für die nächsten Wochen veröffentlicht ist.
 
 ### Halloween: 2. Oktober bis 1. November 2026
@@ -320,8 +333,8 @@ Park in keiner Meldung, die ich gefunden habe. Der Kalender auf der
 Der Park ist an allen Halloween-Tagen komplett geöffnet, das Kaninchenland
 eingeschlossen. Freitags wird von 15 bis 22 Uhr geöffnet, samstags von 12 bis 22
 Uhr, sonntags von 12 bis 20 Uhr; vom 24. bis zum 31. Oktober täglich
-von 11 bis 23 Uhr. Die fünf Spukhäuser öffnen drei Stunden nach dem Park, an Tagen
-mit Öffnung um 11 Uhr also um 15 Uhr:
+von 11 bis 23 Uhr. Die Spukhäuser öffnen später als der Park: Auf der Seite von Zombie nennt Liseberg
+für Tage mit Parkstart um 11 Uhr 15 Uhr. Es gibt fünf:
 
 - **Vinden**, **Zombie**, **Nattsvart på Gasten** und **Skogen** ab 11 Jahren,
 - **7**, das Haus zu den sieben Todsünden, ab **15 Jahren**.
@@ -333,14 +346,20 @@ kostenlos hinein. Verkleiden darf man sich, aber das Gesicht darf nicht vollstä
 geschminkt sein, in den Häusern sind Masken verboten, und nichts darf wie eine Waffe aussehen.
 Valkyria läuft während Halloween nicht, Helix und Lisebergbanan dagegen schon.
 
+Halloween auf Liseberg startete 2015 mit zwei Häusern, Smitthärden Gasten und
+Dockkabinettet, und mit „The Experiment“, bei dem AtmosFear mit Darstellern thematisiert
+wurde. Seitdem kamen Zombie, Vinden und 2018 der Schauplatz Cirkus Bisarr dazu. Die
+meistbesuchten Saisons waren laut schwedischer Wikipedia 2019 und 2024; für 2024 nennt sie
+343.581 Gäste.
+
 Außerdem gibt es „Klubb Nattsvart“, eine Party im Hafenbereich, am 9., 10., 16. und 17.
 Oktober von 22:30 bis 2 Uhr, und das Oktoberfest im Tirolerbereich vom 2. bis 31. Oktober.
 Und für Kinder gibt es „Höst i Kaninlandet“: an einzelnen Tagen ist nur das
 Kaninchenland von 11 bis 17 Uhr geöffnet, am 26. und 27. September, am 30. September
 und 1. Oktober, und am 14. und 15. Oktober.
 
-Wie viel Liseberg im Oktober los ist, sagt der Park: Halloween 2025
-brachte etwa **330.000 Gäste** an 16 Öffnungstagen. Die Termine anderer Parks stehen im
+Halloween 2025 brachte nach Angaben des Parks
+etwa **330.000 Gäste** an 16 Öffnungstagen. Die Termine anderer Parks stehen im
 [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
 
 ### Jul på Liseberg: Mitte November bis Ende Dezember
@@ -362,7 +381,7 @@ Gammaldags Jul im Viertel Storgatan und die Vintermarknad an der Stora Scenen. D
 kommen das Tomtehuset, die Eisbahn und eine neue Lichtshow im Hafenbereich. Gefahren
 wurde 2025 mit rund 30 Bahnen, darunter Balder, Valkyria, Loke und Mechanica,
 aber nicht auf Helix und der Lisebergbanan. Die Preise für den Eintritt zu Jul
-2026 stehen bei Redaktionsschluss noch nicht fest. Das Kaninchenland hat 2026 an 42
+2026 hat der Park noch nicht veröffentlicht. Das Kaninchenland hat 2026 an 42
 zusätzlichen Tagen im Winter geöffnet, an jedem Wochenende und in den Schulferien.
 
 ## Tickets und Preise
@@ -380,8 +399,8 @@ Preisstufen je nach Tag. Die Preise der Halloween-Saison 2026, online:
 
 Ohne Åkpass kostet eine einzelne Fahrt eine Åkkupong zu 25 Kronen, ein Spukhaus
 zwei bis vier Kupongen. An den Tagen „Höst i Kaninlandet“ kostet der Eintritt 95
-Kronen, mit Kinderbahnen 245 Kronen. Die Sommerpreise 2026 habe ich nicht belegen
-können, die Seite zeigt nur noch Halloween. Welche der sieben Stufen an welchem Tag gilt, steht im Preiskalender des Parks als PDF.
+Kronen, mit Kinderbahnen 245 Kronen. Die Sommerpreise 2026 zeigt die Seite des
+Parks nicht mehr, dort stehen nur noch die Halloween-Preise. Welche der sieben Stufen an welchem Tag gilt, steht im Preiskalender des Parks als PDF.
 
 Wer öfter kommt, kauft einen Jahrespass (zwölf Monate ab Aktivierung): das
 **Lisebergspasset** für 395 Kronen gilt für den Eintritt, das **Guldpasset** für 2.595
@@ -401,7 +420,7 @@ verweist auf Västtrafik.
 Wer mit dem Auto kommt, hat drei Parkhäuser: **P-huset Liseberg Södra** unter World of
 Volvo (1.170 Plätze), **P-huset Liseberg Västra** an der Södra Vägen 70 (162 Plätze)
 und **P-huset Focus** an der Fabriksgatan 45 (1.057 Plätze). Die Parkgebühren stehen
-nicht auf der Seite des Parks, sondern bei Parkering Göteborg.
+bei Parkering Göteborg, nicht auf der Seite des Parks.
 
 ## Übernachten und Essen
 
@@ -409,8 +428,8 @@ Das **Liseberg Grand Curiosa Hotel** gehört dem Park, hat 457 Zimmer und ist am
 22. April 2023 eröffnet worden. Es liegt am Södra entrén, jedes Zimmer hat mindestens fünf Betten, und das Büro
 Wingårdh hat es entworfen. Daneben
 gibt es das **Lisebergsbyn** mit Hütten, Camping, Pension und Hostel, zehn Minuten von der
-Stadt. Das Gothia Towers neben dem Park gehört nicht zu Liseberg, sondern der Stiftung
-Svenska Mässan.
+Stadt. Das Gothia Towers neben dem Park gehört der Stiftung
+Svenska Mässan, nicht Liseberg.
 
 Essen darfst du mitbringen. Der Park schreibt dazu: „Det går bra att ta med egen
 mat“, und es gibt Picknickplätze. Hunde sind nicht erlaubt, Blindenhunde schon. Wer im
@@ -428,16 +447,20 @@ Milliarde Kronen, die Eröffnung ist „i början av 2027“ geplant, und Ticket
 Ende November 2026 geben. Mehr dazu im Beitrag
 [Freizeitpark-Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
 
+Nach den Angaben des Parks hat Oceana rund 6.000 Quadratmeter Innenbecken und 4.000
+Quadratmeter Außenfläche. Das Bad gehört zum Projekt, das 2017 beschlossen wurde und auch das
+Grand Curiosa Hotel umfasste. Das Hotel steht seit 2023, das Bad fehlt.
+
 ## Ein Tag auf Liseberg, grob geplant
 
 Wer im Sommer kommt, geht zuerst zu **Helix** oder **Valkyria** und reiht sich, wenn die
 virtuelle Warteschlange läuft, schon auf dem Weg dorthin in der App für die andere
-Bahn ein. **Balder** liegt auf der anderen Seite des Flusses, deshalb lohnt es sich,
-dafür einen eigenen Block einzuplanen. **Loke** und **Mechanica** passen dazwischen, die
+Bahn ein. **Balder** liegt auf der anderen Seite des Flusses, deshalb plane
+dafür einen eigenen Block ein. **Loke** und **Mechanica** passen dazwischen, die
 **Lisebergbanan** schiebt sich in die Lücken. Die FlumeRide und die Kållerado hebst du dir für die wärmste Stunde auf.
 
-Im Herbst lohnt es sich anders: Halloween-Tage beginnen freitags erst um 15 Uhr, und
-die Spukhäuser öffnen drei Stunden nach dem Park. Wer die Häuser und die Bahnen will,
+Im Herbst beginnen Halloween-Tage freitags erst um 15 Uhr, und
+die Spukhäuser öffnen erst am Nachmittag. Wer die Häuser und die Bahnen will,
 fährt zuerst, bis es dunkel wird, und geht dann in die Häuser.
 
 ## Häufige Fragen zu Liseberg
@@ -464,7 +487,6 @@ Dazu kommen Winterwochenenden im Kaninchenland. Der Kalender auf der
 
 Am Sonntag, nach unseren Messungen mit deutlichem Abstand zum Dienstag. Im Winter ist
 es noch ruhiger, dann laufen aber nur wenige Bahnen.
-Welche der nächsten Tage am ruhigsten werden, zeigt das Widget weiter oben.
 
 ### Darf ich Essen mitbringen?
 
@@ -473,20 +495,18 @@ Ja, der Park erlaubt es und hat Picknickplätze. Hunde sind nicht erlaubt.
 ### Was kostet der Eintritt?
 
 Im Herbst 2026 online ab 125 Kronen für den Eintritt, ab 425 Kronen mit Åkpass. Kinder
-unter 110 cm kommen kostenlos hinein. Die Sommerpreise 2026 sind hier nicht belegt.
+unter 110 cm kommen kostenlos hinein. Die Sommerpreise 2026 zeigt die Seite des Parks derzeit nicht.
 
 ### Ab wann darf ich in die Spukhäuser?
 
 Vinden, Zombie, Nattsvart på Gasten und Skogen ab elf Jahren, das Haus „7“ ab 15 Jahren.
-Der Park öffnet die Häuser drei Stunden nach der Parköffnung.
+Sie öffnen später als der Park, an Tagen mit Parkstart um 11 Uhr um 15 Uhr.
 
 ### Wann kommt Oceana?
 
 Nach Angaben von Liseberg Anfang 2027, mit Ticketverkauf ab Ende November 2026.
 
 ## Zum Weiterlesen
-
-Wie das Wetter über dem Park aussieht, wenn du hinfährst:
 
 ```weather-widget slug=liseberg
 
@@ -496,15 +516,6 @@ Der Überblick über [Winterparks 2026](/blog/winter-freizeitparks-2026) stellt 
 Weihnachtsmarkt neben die anderen, und der
 [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026) vergleicht die Herbstprogramme. Eine Holzachterbahn mit anderer Geschichte beschreibt der Guide zum
 [Heide Park](/blog/heide-park-wartezeiten-tipps).
-
-## Was ich dir für Göteborg mitgebe
-
-Vier Bahnen stehen bei den Wartezeiten dicht beieinander, die Wahl der Bahn macht den
-Tag also kaum aus. Entscheidend ist der Zeitpunkt, und der ist nach unseren Messungen ein
-Sonntag statt eines Dienstags. Im Herbst kommt es auf die Uhrzeit an: Freitags öffnet der Park
-erst um 15 Uhr, und die Spukhäuser drei Stunden nach ihm. Die Radiobilarna und die
-Kristallsalongen sind weg, Oceana ist noch nicht da, und die virtuelle Warteschlange läuft
-nicht an jedem Tag. Prüf die App, bevor du in Göteborg ankommst.
 
 — Patrick
 
