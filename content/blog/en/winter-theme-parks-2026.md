@@ -2,7 +2,7 @@
 title: 'Theme parks in winter: who opens in December and who can’t afford to'
 translationKey: winter-parks-2026
 date: '2026-09-03'
-updatedAt: '2026-10-03'
+updatedAt: '2026-10-08'
 author: patrick
 mode: published
 featured: false
@@ -265,6 +265,19 @@ open on 20 days from 11:00 to 19:00, until 18:00 on 24 and 31 December. You
 don’t have to book a date: tickets and passes are valid on any winter day. Three
 attractions stay shut: Radja River, Vampire and Flash Back. For a river rapids
 ride in December that’s no surprise.
+
+On the eve, **Friday 4 December 2026**, the park hosts its first evening run, the
+**Walibi Winter Run**. The park stays closed during the day. Bibs are handed out
+from 16:30, the 10 km starts at 18:00 and the 5 km at 18:15. Start, finish and
+refreshments are in the car park. The 5 km is one loop through the park and its
+backstage areas, the 10 km is two loops. Part of the course is unlit, so the
+park advises a head or chest lamp. Entry costs **€24** for the 5 km and **€29**
+for the 10 km, parking is free, and €1 per entry goes to an association. One
+companion per runner pays €15. After the race the park is open to runners from
+about 19:00 to 22:00 with a selection of attractions, among them Melody Road,
+Wave Swinger, [Loup-Garou](ref:walibi-belgium/loup-garou), Cinéma 4D, Spinning Vibe, Silverton, Dalton Terror and
+Calamity Mine, plus the Christmas market and Sugar Rush. Registration runs
+through Chronorace.
 
 [Walibi Belgium](ref:walibi-belgium?full)
 
@@ -550,7 +563,7 @@ the rink is back in the Berlin area of the park._
 - Plopsaland Deutschland, winter season 2025/26 and Majaland Pfalz: [press release of 5 November 2025 (Plopsa, German)](https://plopsanews.com/de/pressemitteilungen/das-plopsaland-deutschland-feiert-die-wintersaison-so-einmalig-schoen-und-lang-wie-noch-nie)
 - Winter Efteling 2026/27: [Winter Efteling (official)](https://www.efteling.com/en/park/events/winter-efteling) · [opening hours from 16 November (Looopings, Dutch)](https://www.looopings.nl/weblog/34023/De-Efteling-gaat-komende-winter-op-veel-dagen-een-uurtje-eerder-open.html) · [Closed attractions (official)](https://www.efteling.com/en/park/information/in-maintenance)
 - Toverland, dates, halls and Winter Laguna: [2026 calendar (official, Dutch)](https://www.toverland.com/toverblog/blog-jaarkalender2026) · [Winter Feelings (official)](https://www.toverland.com/en/theme-park/actvities/winterfeelings) · pay per ride from 28 November to 16 December: [Toverland test gratis entree (Pretwerk, Dutch)](https://pretwerk.nl/recreatie-actueel/deelsectoren/attracties/toverland-test-gratis-entree-en-betalen-per-attractie-tijdens-winter-feelings/102669/)
-- Walibi Belgium: [Walibi Winter with FAQ and closed attractions (official)](https://www.walibi.be/walibi-winter/en)
+- Walibi Belgium: [Walibi Winter with FAQ and closed attractions (official)](https://www.walibi.be/walibi-winter/en) · [Walibi Winter Run, press release of 10 August 2026 (official)](https://walibibelgium.prezly.com/walibi-winter-run-une-premiere-course-nocturne-au-coeur-de-la-magie-de-noel)
 - Bobbejaanland: [Wintert, opening hours and programme (official, Dutch)](https://www.bobbejaanland.be/bobbejaanland-wintert/openingstijden) · [first winter opening in 2025 (VRT, Dutch)](https://www.vrt.be/vrtnws/nl/2025/12/30/kasterlee-bobbejaanland-wintert-succes/)
 - Movie Park: [Hollywood Christmas (official)](https://www.movieparkgermany.de/en/christmas) · [press release of 4 March 2026, more than a million lights (German)](https://www.movieparkgermany.de/presse/pm-04-03-2026-30-jahre) · [2025 programme (Themenpark.de, German)](https://www.themenpark.de/news/movie-park-germany/movie-parks-hollywood-christmas-2025/32359)
 - Legoland Deutschland: [WinterWonder LEGOLAND (official, German)](https://www.legoland.de/legoland-entdecken/der-park/winterwonder-legoland/) · [third winter opening in 2025/26 (FreizeitparkNEWS, German)](https://www.freizeitparknews.de/legoland-deutschland-resort/winterwonder-legoland-2025-2026/)

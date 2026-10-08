@@ -2,7 +2,7 @@
 title: 'Parchi d’inverno: chi apre a dicembre e chi non se lo può permettere'
 translationKey: winter-parks-2026
 date: '2026-09-03'
-updatedAt: '2026-10-03'
+updatedAt: '2026-10-08'
 author: patrick
 mode: published
 featured: false
@@ -270,6 +270,19 @@ in 4D e un mercatino. Il parco apre 20 giorni, dalle 11 alle 19, fino alle 18 il
 24 e il 31 dicembre. Non serve prenotare una data: biglietto e abbonamento
 valgono in qualsiasi giorno del Walibi Winter. Tre attrazioni restano chiuse:
 Radja River, Vampire e Flash Back.
+
+Alla vigilia, **venerdì 4 dicembre 2026**, il parco ospita per la prima volta una
+corsa serale, la **Walibi Winter Run**. Di giorno il parco resta chiuso. I
+pettorali si ritirano dalle 16:30, i 10 km partono alle 18:00 e i 5 km alle
+18:15. Partenza, arrivo e ristoro sono nel parcheggio. I 5 km sono un giro nel
+parco e nelle aree backstage, i 10 km sono due giri. Una parte del percorso non
+è illuminata, perciò il parco consiglia una lampada frontale o da petto.
+L’iscrizione costa **24 €** per i 5 km e **29 €** per i 10 km, il parcheggio è
+gratuito e 1 € per ogni iscrizione va a un’associazione. Un accompagnatore per
+corridore paga 15 €. Dopo la gara il parco è aperto ai corridori dalle 19:00
+alle 22:00 circa, con una selezione di attrazioni, tra cui Melody Road, Wave
+Swinger, [Loup-Garou](ref:walibi-belgium/loup-garou), Cinéma 4D, Spinning Vibe, Silverton, Dalton Terror e Calamity
+Mine, più il mercatino di Natale e Sugar Rush. L’iscrizione passa da Chronorace.
 
 [Walibi Belgium](ref:walibi-belgium?full)
 
@@ -561,7 +574,7 @@ novembre sarebbe arrivato il Wintertraum come risarcimento. Arriva il
 - Plopsaland Deutschland, stagione invernale 2025/26 e Majaland Pfalz: [comunicato del 5 novembre 2025 (Plopsa, tedesco)](https://plopsanews.com/de/pressemitteilungen/das-plopsaland-deutschland-feiert-die-wintersaison-so-einmalig-schoen-und-lang-wie-noch-nie)
 - Winter Efteling 2026/27: [Winter Efteling (ufficiale, inglese)](https://www.efteling.com/en/park/events/winter-efteling) · [orari dal 16 novembre (Looopings, olandese)](https://www.looopings.nl/weblog/34023/De-Efteling-gaat-komende-winter-op-veel-dagen-een-uurtje-eerder-open.html) · [Attrazioni in manutenzione (ufficiale, inglese)](https://www.efteling.com/en/park/information/in-maintenance)
 - Toverland, date, capannoni e Winter Laguna: [calendario 2026 (ufficiale, olandese)](https://www.toverland.com/toverblog/blog-jaarkalender2026) · [Winter Feelings (ufficiale, inglese)](https://www.toverland.com/en/theme-park/actvities/winterfeelings) · pagamento a corsa dal 28 novembre al 16 dicembre: [Toverland test gratis entree (Pretwerk, olandese)](https://pretwerk.nl/recreatie-actueel/deelsectoren/attracties/toverland-test-gratis-entree-en-betalen-per-attractie-tijdens-winter-feelings/102669/)
-- Walibi Belgium: [Walibi Winter, FAQ e attrazioni chiuse (ufficiale, inglese)](https://www.walibi.be/walibi-winter/en)
+- Walibi Belgium: [Walibi Winter, FAQ e attrazioni chiuse (ufficiale, inglese)](https://www.walibi.be/walibi-winter/en) · [Walibi Winter Run, comunicato del 10 agosto 2026 (ufficiale, francese)](https://walibibelgium.prezly.com/walibi-winter-run-une-premiere-course-nocturne-au-coeur-de-la-magie-de-noel)
 - Bobbejaanland: [Wintert, orari e programma (ufficiale, olandese)](https://www.bobbejaanland.be/bobbejaanland-wintert/openingstijden) · [prima apertura invernale nel 2025 (VRT, olandese)](https://www.vrt.be/vrtnws/nl/2025/12/30/kasterlee-bobbejaanland-wintert-succes/)
 - Movie Park: [Hollywood Christmas (ufficiale, inglese)](https://www.movieparkgermany.de/en/christmas) · [comunicato del 4 marzo 2026, più di un milione di luci (tedesco)](https://www.movieparkgermany.de/presse/pm-04-03-2026-30-jahre) · [programma 2025 (Themenpark.de, tedesco)](https://www.themenpark.de/news/movie-park-germany/movie-parks-hollywood-christmas-2025/32359)
 - Legoland Deutschland: [WinterWonder LEGOLAND (ufficiale, tedesco)](https://www.legoland.de/legoland-entdecken/der-park/winterwonder-legoland/) · [terza apertura invernale nel 2025/26 (FreizeitparkNEWS, tedesco)](https://www.freizeitparknews.de/legoland-deutschland-resort/winterwonder-legoland-2025-2026/)

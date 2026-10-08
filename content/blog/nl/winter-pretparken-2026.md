@@ -2,7 +2,7 @@
 title: 'Pretparken in de winter: wie in december opengaat en wie dat niet kan betalen'
 translationKey: winter-parks-2026
 date: '2026-09-03'
-updatedAt: '2026-10-03'
+updatedAt: '2026-10-08'
 author: patrick
 mode: published
 featured: false
@@ -273,6 +273,19 @@ Het park is 20 dagen open van 11 tot 19 uur, op 24 en 31 december tot 18 uur. Ee
 datum hoef je niet te boeken, ticket en abonnement gelden op elke winterdag.
 Drie attracties blijven dicht: Radja River, Vampire en Flash Back. Bij een
 wildwaterbaan in december is dat geen verrassing.
+
+Een dag eerder, op **vrijdag 4 december 2026**, houdt het park voor het eerst een
+avondloop, de **Walibi Winter Run**. Overdag blijft het park dicht. Startnummers
+krijg je vanaf 16.30 uur, om 18.00 uur start de 10 km, om 18.15 uur de 5 km.
+Start, finish en versnaperingen zitten op de parking. De 5 km is één ronde door
+het park en de backstagegebieden, de 10 km is twee rondes. Een deel van het
+parcours is onverlicht, daarom adviseert het park een hoofd- of borstlamp.
+Inschrijven kost **€ 24** voor de 5 km en **€ 29** voor de 10 km, parkeren is
+gratis en € 1 per inschrijving gaat naar een vereniging. Een begeleider per
+loper betaalt € 15. Na de loop is het park voor de lopers van ongeveer 19 tot 22
+uur open, met een selectie attracties, onder meer Melody Road, Wave Swinger,
+[Loup-Garou](ref:walibi-belgium/loup-garou), Cinéma 4D, Spinning Vibe, Silverton, Dalton Terror en Calamity Mine,
+plus kerstmarkt en Sugar Rush. Inschrijven gaat via Chronorace.
 
 [Walibi Belgium](ref:walibi-belgium?full)
 
@@ -561,7 +574,7 @@ ijsbaan staat weer in het Berlijnse deel van het park._
 - Plopsaland Deutschland, winterseizoen 2025/26 en Majaland Pfalz: [persbericht van 5 november 2025 (Plopsa, Duits)](https://plopsanews.com/de/pressemitteilungen/das-plopsaland-deutschland-feiert-die-wintersaison-so-einmalig-schoen-und-lang-wie-noch-nie)
 - Winter Efteling 2026/27: [Winter Efteling (officieel)](https://www.efteling.com/nl/park/events/winter-efteling) · [openingstijden vanaf 16 november (Looopings)](https://www.looopings.nl/weblog/34023/De-Efteling-gaat-komende-winter-op-veel-dagen-een-uurtje-eerder-open.html) · [Attracties in onderhoud (officieel)](https://www.efteling.com/nl/park/informatie/in-onderhoud)
 - Toverland, data, hallen en Winter Laguna: [Jaarkalender 2026 (officieel)](https://www.toverland.com/toverblog/blog-jaarkalender2026) · [Winter Feelings (officieel)](https://www.toverland.com/magie/winter-feelings) · betalen per rit van 28 november tot 16 december: [Toverland test gratis entree (Pretwerk)](https://pretwerk.nl/recreatie-actueel/deelsectoren/attracties/toverland-test-gratis-entree-en-betalen-per-attractie-tijdens-winter-feelings/102669/)
-- Walibi Belgium: [Walibi Winter met FAQ en gesloten attracties (officieel)](https://www.walibi.be/walibi-winter/walibi-winter)
+- Walibi Belgium: [Walibi Winter met FAQ en gesloten attracties (officieel)](https://www.walibi.be/walibi-winter/walibi-winter) · [Walibi Winter Run, persbericht van 10 augustus 2026 (officieel, Frans)](https://walibibelgium.prezly.com/walibi-winter-run-une-premiere-course-nocturne-au-coeur-de-la-magie-de-noel)
 - Bobbejaanland: [Wintert, openingstijden en programma (officieel)](https://www.bobbejaanland.be/bobbejaanland-wintert/openingstijden) · [eerste winteropening in 2025 (VRT)](https://www.vrt.be/vrtnws/nl/2025/12/30/kasterlee-bobbejaanland-wintert-succes/)
 - Movie Park: [Hollywood Christmas (officieel)](https://www.movieparkgermany.de/nl/christmas) · [persbericht van 4 maart 2026, ruim een miljoen lichtjes (Duits)](https://www.movieparkgermany.de/presse/pm-04-03-2026-30-jahre) · [programma 2025 (Themenpark.de, Duits)](https://www.themenpark.de/news/movie-park-germany/movie-parks-hollywood-christmas-2025/32359)
 - Legoland Deutschland: [WinterWonder LEGOLAND (officieel, Duits)](https://www.legoland.de/legoland-entdecken/der-park/winterwonder-legoland/) · [derde winteropening in 2025/26 (FreizeitparkNEWS, Duits)](https://www.freizeitparknews.de/legoland-deutschland-resort/winterwonder-legoland-2025-2026/)
