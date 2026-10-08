@@ -2,7 +2,7 @@
 title: 'Fiesta de Halloween de SWR3 en Europa-Park el 31 de octubre'
 translationKey: swr3-halloween-party-europa-park
 date: '2026-10-08'
-time: '10:15'
+time: '10:00'
 author: patrick
 mode: published
 featured: false
@@ -57,7 +57,7 @@ Los invitados VIP pagan por su cuenta la comida y la bebida fuera de la zona VIP
 
 ## Entradas y alojamiento
 
-Las entradas están en venta anticipada en swr3tickets.de y europapark.de, y según el comunicado también en taquilla esa noche. Ninguna de las dos fuentes dice cómo van las ventas; solo la tienda de entradas muestra lo que queda. Quien no encuentre habitación en el resort puede reservar el paquete «Sleep & Party» del VOYA Hotel en Ringsheim. Incluye la entrada a la fiesta, pero no el viaje de ida y vuelta.
+Las entradas están en venta anticipada en swr3tickets.de y europapark.de, y según el comunicado también en taquilla esa noche. Ni la página del evento ni el comunicado dicen cómo van las ventas; solo la tienda de entradas muestra lo que queda. Quien no encuentre habitación en el resort puede reservar el paquete «Sleep & Party» del VOYA Hotel en Ringsheim. Incluye la entrada a la fiesta, pero no el viaje de ida y vuelta.
 
 ## ¿Y Traumatica?
 

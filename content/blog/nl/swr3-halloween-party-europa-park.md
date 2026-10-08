@@ -2,7 +2,7 @@
 title: 'SWR3 Halloween Party in Europa-Park op 31 oktober'
 translationKey: swr3-halloween-party-europa-park
 date: '2026-10-08'
-time: '10:15'
+time: '10:00'
 author: patrick
 mode: published
 featured: false
@@ -57,7 +57,7 @@ Eten en drinken buiten de VIP-zone betalen VIP-gasten zelf.
 
 ## Tickets en overnachten
 
-Tickets zijn in de voorverkoop verkrijgbaar op swr3tickets.de en europapark.de, en volgens het persbericht ook aan de avondkassa. Over de verkoop zeggen beide bronnen niets; hoeveel tickets er nog zijn, laat alleen de ticketshop zien. Wie geen kamer in het resort krijgt, kan bij het VOYA Hotel in Ringsheim het pakket "Sleep & Party" boeken. Daarin zit het feestticket, maar niet de reis heen en terug.
+Tickets zijn in de voorverkoop verkrijgbaar op swr3tickets.de en europapark.de, en volgens het persbericht ook aan de avondkassa. Over de verkoop zeggen de eventpagina en het persbericht niets; hoeveel tickets er nog zijn, laat alleen de ticketshop zien. Wie geen kamer in het resort krijgt, kan bij het VOYA Hotel in Ringsheim het pakket "Sleep & Party" boeken. Daarin zit het feestticket, maar niet de reis heen en terug.
 
 ## En Traumatica?
 

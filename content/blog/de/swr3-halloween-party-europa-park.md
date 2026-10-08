@@ -2,7 +2,7 @@
 title: 'SWR3 Halloween-Party im Europa-Park am 31. Oktober'
 translationKey: swr3-halloween-party-europa-park
 date: '2026-10-08'
-time: '10:15'
+time: '10:00'
 author: patrick
 mode: published
 featured: false
