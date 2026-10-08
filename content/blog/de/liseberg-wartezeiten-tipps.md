@@ -147,8 +147,7 @@ sieben Jahren Alter, der Zug fährt etwa zwei Minuten und zehn Sekunden.
 ```
 
 **[Valkyria](ref:liseberg/valkyria)** eröffnete am **10. August 2018** auf dem
-Gelände der Kanonen. Die Kanonen war ein Launch Coaster von Intamin, der am
-23. April 2005 öffnete und am 30. Dezember 2016 zum letzten Mal fuhr. Valkyria
+Gelände der Kanonen. Die Kanonen war ein Launch Coaster von Intamin, der am 23. April 2005 öffnete und am 30. Dezember 2016 zum letzten Mal fuhr. Valkyria
 ist ein Dive Coaster von Bolliger & Mabillard mit drei Inversionen
 und einer **50 Meter** langen, steilen ersten Abfahrt, die direkt in einen Tunnel
 unter der Erde führt. Der Park nennt **47 Meter** Höhe und **105 km/h**.
@@ -370,8 +369,7 @@ Weihnachtsmarkt. 2025 war das 25. Jubiläum, mit 2.100 Bäumen, sieben Tonnen
 Kunstschnee, fünf Millionen Lichtern und einem 116 Meter hohen Baum, laut der Meldung
 des Parks vom 6. November 2025.
 
-Die Öffnungstage 2026, wie sie die Park-API liefert: im November der 14. und 15.,
-20. bis 22. und 27. bis 29., im Dezember der 2. bis 6., 9. bis 13. und 16. bis 23.
+Die Öffnungstage 2026, wie sie die Park-API liefert: im November der 14. und 15., 20. bis 22. und 27. bis 29., im Dezember der 2. bis 6., 9. bis 13. und 16. bis 23.
 (vom 20. an täglich) sowie 26. bis 30. Dezember. Freitags ist von 15 bis 22 Uhr
 geöffnet, samstags von 12 bis 22 Uhr, sonntags von 12 bis 20 Uhr. Am 24. und 25.
 Dezember bleibt der Park zu.
@@ -424,8 +422,7 @@ bei Parkering Göteborg, nicht auf der Seite des Parks.
 
 ## Übernachten und Essen
 
-Das **Liseberg Grand Curiosa Hotel** gehört dem Park, hat 457 Zimmer und ist am
-22. April 2023 eröffnet worden. Es liegt am Södra entrén, jedes Zimmer hat mindestens fünf Betten, und das Büro
+Das **Liseberg Grand Curiosa Hotel** gehört dem Park, hat 457 Zimmer und ist am 22. April 2023 eröffnet worden. Es liegt am Södra entrén, jedes Zimmer hat mindestens fünf Betten, und das Büro
 Wingårdh hat es entworfen. Daneben
 gibt es das **Lisebergsbyn** mit Hütten, Camping, Pension und Hostel, zehn Minuten von der
 Stadt. Das Gothia Towers neben dem Park gehört der Stiftung
@@ -532,8 +529,8 @@ Weihnachtsmarkt neben die anderen, und der
 - Technische Daten der Bahnen:
   [Balder](https://rcdb.com/1562.htm) · [Helix](https://rcdb.com/11048.htm) ·
   [Lisebergbanan](https://rcdb.com/1061.htm) in der Roller Coaster DataBase ·
-  [Balder auf en.wikipedia](https://en.wikipedia.org/wiki/Balder_(roller_coaster)) ·
-  [Helix auf sv.wikipedia](https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)) ·
+  [Balder auf en.wikipedia](<https://en.wikipedia.org/wiki/Balder_(roller_coaster)>) ·
+  [Helix auf sv.wikipedia](<https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)>) ·
   [AtmosFear auf sv.wikipedia](https://sv.wikipedia.org/wiki/Atmosfear) ·
   [Kanonen auf sv.wikipedia](https://sv.wikipedia.org/wiki/Kanonen)
 - Mindestgrößen, Stormvåg, Luna, Spukhäuser:

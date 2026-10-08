@@ -558,8 +558,8 @@ de gids over [Heide Park](/blog/heide-park-wachttijden-tips).
 - Technische gegevens van de banen:
   [Balder](https://rcdb.com/1562.htm) · [Helix](https://rcdb.com/11048.htm) ·
   [Lisebergbanan](https://rcdb.com/1061.htm) in de Roller Coaster DataBase ·
-  [Balder op en.wikipedia](https://en.wikipedia.org/wiki/Balder_(roller_coaster)) ·
-  [Helix op sv.wikipedia](https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)) ·
+  [Balder op en.wikipedia](<https://en.wikipedia.org/wiki/Balder_(roller_coaster)>) ·
+  [Helix op sv.wikipedia](<https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)>) ·
   [AtmosFear op sv.wikipedia](https://sv.wikipedia.org/wiki/Atmosfear) ·
   [Kanonen op sv.wikipedia](https://sv.wikipedia.org/wiki/Kanonen)
 - Minimale lengtes, Stormvåg, Luna, spookhuizen:

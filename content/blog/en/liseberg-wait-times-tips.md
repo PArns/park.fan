@@ -519,8 +519,7 @@ opens at 11:00.
 
 ### When does Oceana open?
 
-According to Liseberg, in early 2027, with ticket sales from the end of November
-2026.
+According to Liseberg, in early 2027, with ticket sales from the end of November 2026.
 
 ## Further reading
 
@@ -549,8 +548,8 @@ to [Heide Park](/blog/heide-park-wait-times-tips).
 - Technical data for the coasters:
   [Balder](https://rcdb.com/1562.htm) · [Helix](https://rcdb.com/11048.htm) ·
   [Lisebergbanan](https://rcdb.com/1061.htm) in the Roller Coaster DataBase ·
-  [Balder on en.wikipedia](https://en.wikipedia.org/wiki/Balder_(roller_coaster)) ·
-  [Helix on sv.wikipedia](https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)) ·
+  [Balder on en.wikipedia](<https://en.wikipedia.org/wiki/Balder_(roller_coaster)>) ·
+  [Helix on sv.wikipedia](<https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)>) ·
   [AtmosFear on sv.wikipedia](https://sv.wikipedia.org/wiki/Atmosfear) ·
   [Kanonen on sv.wikipedia](https://sv.wikipedia.org/wiki/Kanonen)
 - Height requirements, Stormvåg, Luna, haunted houses:

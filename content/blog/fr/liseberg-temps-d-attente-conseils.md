@@ -544,8 +544,7 @@ où le parc ouvre à 11 h.
 
 ### Quand arrive Oceana ?
 
-Selon Liseberg, début 2027, avec vente des billets à partir de fin novembre
-2026.
+Selon Liseberg, début 2027, avec vente des billets à partir de fin novembre 2026.
 
 ## Pour aller plus loin
 
@@ -574,8 +573,8 @@ décrites dans le guide du [Heide Park](/blog/heide-park-temps-d-attente-conseil
 - Données techniques des attractions :
   [Balder](https://rcdb.com/1562.htm) · [Helix](https://rcdb.com/11048.htm) ·
   [Lisebergbanan](https://rcdb.com/1061.htm) dans la Roller Coaster DataBase ·
-  [Balder sur en.wikipedia (en anglais)](https://en.wikipedia.org/wiki/Balder_(roller_coaster)) ·
-  [Helix sur sv.wikipedia (en suédois)](https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)) ·
+  [Balder sur en.wikipedia (en anglais)](<https://en.wikipedia.org/wiki/Balder_(roller_coaster)>) ·
+  [Helix sur sv.wikipedia (en suédois)](<https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)>) ·
   [AtmosFear sur sv.wikipedia (en suédois)](https://sv.wikipedia.org/wiki/Atmosfear) ·
   [Kanonen sur sv.wikipedia (en suédois)](https://sv.wikipedia.org/wiki/Kanonen)
 - Tailles minimales, Stormvåg, Luna, maisons hantées :

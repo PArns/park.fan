@@ -1,5 +1,5 @@
 ---
-title: 'Liseberg: Balder, Helix e un parco nel cuore di Göteborg'
+title: 'Liseberg: Balder, Helix e un parco dentro Göteborg'
 translationKey: liseberg-guide
 date: '2026-10-08'
 author: patrick
@@ -292,8 +292,7 @@ dieci, e nella tabella compare anche l’attrazione per bambini Rabalder.
 Per tutto il pomeriggio l’affluenza resta simile, con il massimo alle 16 per la
 maggior parte delle attrazioni, per la FlumeRide un’ora più tardi. Le attrazioni
 del Paese dei Conigli hanno il loro picco piuttosto nel primo pomeriggio. Chi è
-lì alle 12 trova davanti alle quattro grandi attrazioni meno ressa che alle
-16.
+lì alle 12 trova davanti alle quattro grandi attrazioni meno ressa che alle 16.
 
 I più tranquilli fra i prossimi giorni di apertura, calcolati in diretta:
 
@@ -348,8 +347,7 @@ per i giorni in cui il parco apre alle 11, le 15. Sono cinque:
 - **7**, la casa dei sette peccati capitali, da **15 anni**.
 
 Si aggiungono tre aree con attori: Clown, Demonernas Skugga e Nemesis, anche se a
-Nemesis non ci sono interpreti, solo proiezioni di film. Gli attori ci sono dalle
-18. Un limite di età per entrare non c’è, i bambini sotto i 110 cm entrano
+Nemesis non ci sono interpreti, solo proiezioni di film. Gli attori ci sono dalle 18. Un limite di età per entrare non c’è, i bambini sotto i 110 cm entrano
 gratis. Ci si può travestire, ma il viso non può essere truccato per intero, nelle
 case le maschere sono vietate e nulla deve sembrare un’arma. Valkyria durante
 Halloween non funziona, Helix e Lisebergbanan invece sì.
@@ -519,8 +517,7 @@ anni. Aprono più tardi del parco, nei giorni in cui il parco apre alle 11, alle
 
 ### Quando arriva Oceana?
 
-Secondo Liseberg all’inizio del 2027, con vendita dei biglietti da fine novembre
-2026.
+Secondo Liseberg all’inizio del 2027, con vendita dei biglietti da fine novembre 2026.
 
 ## Per approfondire
 
@@ -549,8 +546,8 @@ la guida all’[Heide Park](/blog/heide-park-tempi-di-attesa-consigli).
 - Dati tecnici delle montagne russe:
   [Balder](https://rcdb.com/1562.htm) · [Helix](https://rcdb.com/11048.htm) ·
   [Lisebergbanan](https://rcdb.com/1061.htm) nella Roller Coaster DataBase ·
-  [Balder su en.wikipedia (in inglese)](https://en.wikipedia.org/wiki/Balder_(roller_coaster)) ·
-  [Helix su sv.wikipedia (in svedese)](https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)) ·
+  [Balder su en.wikipedia (in inglese)](<https://en.wikipedia.org/wiki/Balder_(roller_coaster)>) ·
+  [Helix su sv.wikipedia (in svedese)](<https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)>) ·
   [AtmosFear su sv.wikipedia (in svedese)](https://sv.wikipedia.org/wiki/Atmosfear) ·
   [Kanonen su sv.wikipedia (in svedese)](https://sv.wikipedia.org/wiki/Kanonen)
 - Altezze minime, Stormvåg, Luna, case stregate:

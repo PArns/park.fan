@@ -387,8 +387,7 @@ parque del 6 de noviembre de 2025.
 Los días de apertura de 2026, tal como los devuelve la API del parque: en
 noviembre el 14 y 15, del 20 al 22 y del 27 al 29, en diciembre del 2 al 6, del 9
 al 13 y del 16 al 23 (desde el 20 a diario), así como del 26 al 30 de diciembre.
-Los viernes abre de 15 a 22 horas, los sábados de 12 a 22, los domingos de 12 a
-20. El 24 y el 25 de diciembre el parque permanece cerrado.
+Los viernes abre de 15 a 22 horas, los sábados de 12 a 22, los domingos de 12 a 20. El 24 y el 25 de diciembre el parque permanece cerrado.
 
 Hay tres mercados: el Tyrolermarknad entre los Radiobilarna y la Slänggungan, el
 Gammaldags Jul en el barrio Storgatan y el Vintermarknad junto a la Stora Scenen.
@@ -564,8 +563,8 @@ guía del [Heide Park](/blog/heide-park-tiempos-de-espera-consejos).
 - Datos técnicos de las atracciones:
   [Balder](https://rcdb.com/1562.htm) · [Helix](https://rcdb.com/11048.htm) ·
   [Lisebergbanan](https://rcdb.com/1061.htm) en la Roller Coaster DataBase ·
-  [Balder en en.wikipedia](https://en.wikipedia.org/wiki/Balder_(roller_coaster)) ·
-  [Helix en sv.wikipedia](https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)) ·
+  [Balder en en.wikipedia](<https://en.wikipedia.org/wiki/Balder_(roller_coaster)>) ·
+  [Helix en sv.wikipedia](<https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)>) ·
   [AtmosFear en sv.wikipedia](https://sv.wikipedia.org/wiki/Atmosfear) ·
   [Kanonen en sv.wikipedia](https://sv.wikipedia.org/wiki/Kanonen)
 - Alturas mínimas, Stormvåg, Luna, casas del terror:
