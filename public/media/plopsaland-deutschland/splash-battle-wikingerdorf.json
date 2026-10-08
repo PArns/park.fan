@@ -2,18 +2,8 @@
   "title": "Splash Battle im Wikingerdorf",
   "park": "plopsaland-deutschland",
   "ride": "splash-battle",
-  "roles": [
-    "ride-card"
-  ],
-  "tags": [
-    "day",
-    "sunny",
-    "water-ride",
-    "ride",
-    "theming",
-    "outdoor",
-    "photo"
-  ],
+  "roles": ["ride-card"],
+  "tags": ["day", "sunny", "water-ride", "ride", "theming", "outdoor", "photo"],
   "alt": {
     "de": "Flache Boote mit Drachenköpfen treiben durch ein türkisfarbenes Becken, daneben Zielscheiben und ein grauer Felsen mit einer Rutschbahn.",
     "en": "Flat boats with dragon heads drift through a turquoise basin, with target discs beside them and a grey rock carrying a chute.",

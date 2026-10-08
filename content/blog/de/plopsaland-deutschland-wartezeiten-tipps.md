@@ -72,6 +72,7 @@ alles andere in Rheinland-Pfalz. Wir messen hier seit zwei Jahren Wartezeiten, a
 57 Attraktionen.
 
 ```park-comparison-widget slugs=plopsaland-deutschland,europa-park,phantasialand,heide-park highlight=plopsaland-deutschland
+
 ```
 
 ## Expedition GeForce, und warum sie 25 Jahre gehalten hat
@@ -84,13 +85,14 @@ Angaben des Parks, der von der höchsten Stelle des Lifthills aus misst. Wo die 
 auseinandergehen, steht hier die des Parks.
 
 ```glossary-widget slug=hyper-coaster
+
 ```
 
 Bei der Eröffnung war sie die schnellste Achterbahn Europas und nach The Big One im englischen
 Pleasure Beach Resort die zweithöchste. Beides ist sie längst nicht mehr. Was sie geblieben
 ist, lässt sich schlechter in eine Tabelle schreiben: Sie wurde mehrfach mit dem Golden Ticket
-Award des Fachmagazins *Amusement Today* als beste Achterbahn Europas ausgezeichnet und im
-*Internet Coaster Poll* mehrfach zur besten Achterbahn der Welt gewählt. Der Park zählt
+Award des Fachmagazins _Amusement Today_ als beste Achterbahn Europas ausgezeichnet und im
+_Internet Coaster Poll_ mehrfach zur besten Achterbahn der Welt gewählt. Der Park zählt
 inzwischen 40 Auszeichnungen.
 
 Der Grund dafür liegt hinter dem ersten Gefälle. Die Bahn hat keine Inversion, keinen Launch
@@ -115,8 +117,7 @@ Acht-Grad-Grenze, gemessen an der Schienentemperatur.
 
 ![Eine rote Schiene steigt an einem grauen Stützgerüst senkrecht auf, kippt oben über und fällt in einer Schleife hinter ein Backsteingebäude. | Sky Scream wirft seine Züge dreimal an, bevor sie über den 45 Meter hohen Top Hat kommen.](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
 
-**100% Wolf – Die Familienachterbahn** ist die Neuheit der Saison 2026, eröffnet am
-22. März. Gebaut hat sie Gerstlauer: 17,5 Meter hoch, 760 Meter lang, 55 km/h, ein
+**100% Wolf – Die Familienachterbahn** ist die Neuheit der Saison 2026, eröffnet am 22. März. Gebaut hat sie Gerstlauer: 17,5 Meter hoch, 760 Meter lang, 55 km/h, ein
 Beschleunigungselement, eine Schienenweiche für die Rückwärtsfahrt und ein Spike als
 Schlusselement. Sie ist der Grund, warum der Park dieses Jahr überhaupt in den Neuheitenlisten
 auftaucht, und sie ist eine Familienbahn: ab 100 Zentimetern in Begleitung, ab 130 allein, und
@@ -161,6 +162,7 @@ Schlümpfe Abenteuer** ist eine Themenfahrt von Mack Rides, die bis Ende 2022 Bu
 hieß und zur Saison 2025 mit neuer Thematisierung wieder aufgemacht hat.
 
 ```map-widget slug=plopsaland-deutschland
+
 ```
 
 ## Die Themenbereiche, und was in welchem steht
@@ -210,6 +212,7 @@ An dieser Stelle hört die Werbung auf und die Messung fängt an. Wir sammeln di
 dieses Parks seit dem 7. Oktober 2024, inzwischen an 225 Tagen mit Betrieb.
 
 ```ride-waits-widget park=plopsaland-deutschland top=8 columns=land,peak,days highlight=bigfm-expedition-geforce
+
 ```
 
 Die Zahl, die einem beim ersten Blick auf diese Tabelle auffällt, ist, wie niedrig sie alle
@@ -234,6 +237,7 @@ stillstehen, bleibt von den Attraktionen für Erwachsene nicht viel übrig. Die 
 Wartezeit ist kein Polster gegen eine geschlossene Bahn.
 
 ```hourly-profile-widget slug=plopsaland-deutschland top=8
+
 ```
 
 Innerhalb des Tages gilt trotzdem, was überall gilt: Die Kurve steigt vormittags an, hält sich
@@ -244,6 +248,7 @@ Park dieser Größe keine Strategie, sondern bloß Pünktlichkeit.
 ### Der Express Pass
 
 ```glossary-widget slug=express-pass
+
 ```
 
 Der Express Pass kostet 7 Euro für eine Fahrt, 35 Euro für neun Fahrten und 95 Euro für
@@ -261,6 +266,7 @@ Freitag im September. Das Preisschild ist das ganze Jahr dasselbe, die Warteschl
 ## Wann du hinfahren solltest
 
 ```stats-widget slug=plopsaland-deutschland show=weekdays
+
 ```
 
 ### Der Wochentag
@@ -280,6 +286,7 @@ Freitagabend der vollste Teil der Woche.
 ### Der Monat
 
 ```stats-widget slug=plopsaland-deutschland show=months
+
 ```
 
 Der Juli ist der vollste Monat, mit einem Median von 15 Minuten der einzige neben dem Oktober,
@@ -293,12 +300,12 @@ Schienentemperatur acht Grad erreicht, und ein kalter Tag kostet einen die beide
 derer man gekommen ist.
 
 ```best-days-widget slug=plopsaland-deutschland
+
 ```
 
 ### Halloween 2026
 
-Die Halloween Fright Nights laufen im Oktober an jedem Freitag und Samstag: am 9. und 10., am
-16. und 17., am 23. und 24. sowie am 30. und 31. Oktober. An diesen Tagen hat der Park von
+Die Halloween Fright Nights laufen im Oktober an jedem Freitag und Samstag: am 9. und 10., am 16. und 17., am 23. und 24. sowie am 30. und 31. Oktober. An diesen Tagen hat der Park von
 10 bis 22 Uhr offen statt bis 18 Uhr. An allen anderen Oktobertagen bleibt es bei 10 bis 18 Uhr.
 
 Dazu kommen tagsüber das Plopsa Herbstfest und eine Kürbisausstellung im Kürbisdorf, die auch
@@ -425,6 +432,7 @@ Souvenirs, im Pfalzgraf und in den anderen Plopsa-Parks. Der Plopsa Pass Europe 
 bis 22 Uhr. Die Saison endet am 1. November.
 
 ```weather-widget slug=plopsaland-deutschland
+
 ```
 
 ## Häufige Fragen
