@@ -293,7 +293,7 @@ Per tutto il pomeriggio l’affluenza resta simile, con il massimo alle 16 per l
 maggior parte delle attrazioni, per la FlumeRide un’ora più tardi. Le attrazioni
 del Paese dei Conigli hanno il loro picco piuttosto nel primo pomeriggio. Chi è
 lì alle 12 trova davanti alle quattro grandi attrazioni meno ressa che alle
-quattro.
+16.
 
 I più tranquilli fra i prossimi giorni di apertura, calcolati in diretta:
 
@@ -386,7 +386,7 @@ I giorni di apertura 2026, come li fornisce l’API del parco: a novembre il 14 
 il parco resta chiuso.
 
 I mercatini sono tre: la Tyrolermarknad fra i Radiobilarna e la Slänggungan, la
-Gammaldags Jul nel quartiere Storgatan e la Vintermarknad al Stora Scenen. Si
+Gammaldags Jul nel quartiere Storgatan e la Vintermarknad alla Stora Scenen. Si
 aggiungono il Tomtehuset, la pista di ghiaccio e un nuovo spettacolo di luci
 nell’area del porto. Nel 2025 funzionavano circa 30 attrazioni, fra cui Balder,
 Valkyria, Loke e Mechanica, ma non Helix e la Lisebergbanan. I prezzi
@@ -396,7 +396,7 @@ vacanze scolastiche.
 
 ## Biglietti e prezzi
 
-Liseberg vende l’ingresso e il braccialetto per le attrazioni separatamente
+Liseberg vende l’ingresso e il braccialetto per le attrazioni separatamente.
 L’**Åkpass** comprende tutte le attrazioni e le case stregate, il solo ingresso al
 parco non ne fa parte. Online costa sempre meno che alla cassa, e ci sono sette
 fasce di prezzo a seconda del giorno. I prezzi della stagione di Halloween 2026,
