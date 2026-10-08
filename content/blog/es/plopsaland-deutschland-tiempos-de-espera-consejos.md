@@ -98,7 +98,7 @@ cambio de vía. Tiene tres colinas construidas de modo que el tren pesa menos qu
 en la cresta, y una hélice al final donde ese efecto se da la vuelta. Si lo que se busca es
 airtime, aquí está.
 
-![Vista desde arriba de una montaña rusa de acero roja cuyo recorrido atraviesa un terreno arbolado en colinas largas y una curva amplia. | Expedition GeForce vista desde la Free Fall Tower. Las tres colinas tras la primera caída son lo que le dio su fama.](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
+![Vista desde arriba de una montaña rusa de acero roja cuyo recorrido atraviesa un terreno arbolado en colinas largas y una curva amplia. | Expedition GeForce vista desde la Free Fall Tower. Las tres colinas tras la primera caída son lo que le dio su fama. Foto: Hetamin1000, Wikimedia Commons (Public Domain) | right](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
 
 Lo práctico son 140 centímetros, por debajo nada. Funciona a partir de 8 grados centígrados,
 lo que en marzo y noviembre puede marcar la diferencia entre una vuelta y un paseo. El Express
@@ -113,7 +113,7 @@ estación, hacia delante y hacia atrás, antes de superar el top hat vertical. A
 140 centímetros, edad mínima 14 años, y también aquí rige el límite de ocho grados, medido en la
 temperatura de la vía.
 
-![Una vía roja sube en vertical por una estructura gris, vuelca arriba y cae en un rizo detrás de un edificio de ladrillo. | Sky Scream lanza sus trenes tres veces antes de que superen el top hat de 45 metros.](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
+![Una vía roja sube en vertical por una estructura gris, vuelca arriba y cae en un rizo detrás de un edificio de ladrillo. | Sky Scream lanza sus trenes tres veces antes de que superen el top hat de 45 metros. Foto: Freddo, Wikimedia Commons (CC BY-SA 4.0) | left](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
 
 **100% Wolf – La montaña rusa familiar** es la novedad de 2026, inaugurada el 22 de marzo. La
 construyó Gerstlauer: 17,5 metros de alto, 760 metros de largo, 55 km/h, con un tramo de
@@ -146,7 +146,7 @@ Junto a ellas está **Splash Battle** en el Wickieland, donde las tripulaciones 
 gente de la orilla se mojan unos a otros, y **Die große Welle**, un Disk'O de Zamperla. Las tres
 comparten la misma zona temática.
 
-![Barcas planas con cabezas de dragón flotan en una pila turquesa, con dianas al lado y una roca gris que sostiene una rampa. | Splash Battle en Wickieland y, al fondo, la vía de Expedition GeForce.](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
+![Barcas planas con cabezas de dragón flotan en una pila turquesa, con dianas al lado y una roca gris que sostiene una rampa. | Splash Battle en Wickieland y, al fondo, la vía de Expedition GeForce. Foto: Freak-Line-Community, Wikimedia Commons (CC BY-SA 4.0) | right](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
 
 **Sky Fly** de Gerstlauer, instalada desde 2015 donde estaba la Bounty Tower vendida, es el
 aparato para quien quiera darse la vuelta por su cuenta. La **Lighthouse Tower** de Funtime está

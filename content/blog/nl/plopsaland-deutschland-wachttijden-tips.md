@@ -97,7 +97,7 @@ wissel. Hij heeft drie heuvels die zo gebouwd zijn dat de trein bovenaan lichter
 passagiers, en een helix aan het eind waarin dat effect omslaat. Wie om airtime komt, zit hier
 goed.
 
-![Blik van bovenaf op een rode stalen achtbaan waarvan het spoor in lange heuvels en een brede bocht door bebost terrein loopt. | Expedition GeForce vanaf de Free Fall Tower. De drie heuvels na de eerste afdaling zijn waar de baan haar reputatie verdiende.](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
+![Blik van bovenaf op een rode stalen achtbaan waarvan het spoor in lange heuvels en een brede bocht door bebost terrein loopt. | Expedition GeForce vanaf de Free Fall Tower. De drie heuvels na de eerste afdaling zijn waar de baan haar reputatie verdiende. Foto: Hetamin1000, Wikimedia Commons (Public Domain) | right](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
 
 Praktisch: vanaf 140 centimeter, daaronder helemaal niet. De baan rijdt vanaf 8 graden Celsius,
 wat in maart en november het verschil kan maken tussen een rit en een wandeling. De Express Pass
@@ -112,7 +112,7 @@ station uit geschoten, vooruit en achteruit, voordat hij over de verticale top h
 Minimale lengte 140 centimeter, minimumleeftijd 14 jaar, en ook hier geldt de achtgradengrens,
 gemeten aan de temperatuur van het spoor.
 
-![Een rood spoor klimt verticaal langs een grijs steunframe, kantelt bovenaan en valt in een lus achter een bakstenen gebouw. | Sky Scream lanceert zijn treinen drie keer voordat ze over de 45 meter hoge top hat komen.](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
+![Een rood spoor klimt verticaal langs een grijs steunframe, kantelt bovenaan en valt in een lus achter een bakstenen gebouw. | Sky Scream lanceert zijn treinen drie keer voordat ze over de 45 meter hoge top hat komen. Foto: Freddo, Wikimedia Commons (CC BY-SA 4.0) | left](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
 
 **100% Wolf – De familieachtbaan** is de nieuwigheid van 2026, geopend op 22 maart. Gerstlauer
 bouwde hem: 17,5 meter hoog, 760 meter lang, 55 km/u, met een launchgedeelte, een wissel voor de
@@ -145,7 +145,7 @@ Daarnaast staat **Splash Battle** in het Wickieland, waar bootbemanningen en oms
 natspuiten, en **Die große Welle**, een Disk'O van Zamperla. Alle drie horen bij hetzelfde
 themagebied.
 
-![Platte boten met drakenkoppen drijven door een turquoise bassin, ernaast schietschijven en een grijze rots met een glijbaan. | Splash Battle in Wickieland, daarachter het spoor van Expedition GeForce.](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
+![Platte boten met drakenkoppen drijven door een turquoise bassin, ernaast schietschijven en een grijze rots met een glijbaan. | Splash Battle in Wickieland, daarachter het spoor van Expedition GeForce. Foto: Freak-Line-Community, Wikimedia Commons (CC BY-SA 4.0) | right](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
 
 **Sky Fly** van Gerstlauer staat sinds 2015 op de plek van de verkochte Bounty Tower en is het
 toestel voor wie zichzelf over de kop wil draaien. De **Lighthouse Tower** van Funtime staat er

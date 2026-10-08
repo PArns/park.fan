@@ -100,7 +100,7 @@ und keine Schienenweiche. Sie hat drei Hügel, die so gebaut sind, dass der Zug 
 ist als die Passagiere, und eine Helix am Ende, in der dieser Effekt ins Gegenteil kippt. Wer
 sich für Airtime interessiert, fährt genau deswegen hierher.
 
-![Blick von oben auf eine rote Stahlachterbahn, deren Schiene in langen Hügeln und einer weiten Kurve durch bewaldetes Gelände läuft. | Expedition GeForce vom Free Fall Tower aus. Die drei Hügel hinter dem ersten Gefälle sind die Stellen, an denen die Bahn ihren Ruf verdient hat.](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
+![Blick von oben auf eine rote Stahlachterbahn, deren Schiene in langen Hügeln und einer weiten Kurve durch bewaldetes Gelände läuft. | Expedition GeForce vom Free Fall Tower aus. Die drei Hügel hinter dem ersten Gefälle sind die Stellen, an denen die Bahn ihren Ruf verdient hat. Foto: Hetamin1000, Wikimedia Commons (Public Domain) | right](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
 
 Praktisches dazu: ab 140 Zentimetern, unterhalb davon gar nicht. Die Bahn fährt ab
 8 Grad Celsius, was im März und im November den Unterschied zwischen einem Besuch und einem
@@ -115,7 +115,7 @@ dreimal aus der Station geschossen, vorwärts und rückwärts, bevor er über de
 Top Hat kommt. Mindestgröße 140 Zentimeter, Mindestalter 14 Jahre, und auch hier gilt die
 Acht-Grad-Grenze, gemessen an der Schienentemperatur.
 
-![Eine rote Schiene steigt an einem grauen Stützgerüst senkrecht auf, kippt oben über und fällt in einer Schleife hinter ein Backsteingebäude. | Sky Scream wirft seine Züge dreimal an, bevor sie über den 45 Meter hohen Top Hat kommen.](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
+![Eine rote Schiene steigt an einem grauen Stützgerüst senkrecht auf, kippt oben über und fällt in einer Schleife hinter ein Backsteingebäude. | Sky Scream wirft seine Züge dreimal an, bevor sie über den 45 Meter hohen Top Hat kommen. Foto: Freddo, Wikimedia Commons (CC BY-SA 4.0) | left](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
 
 **100% Wolf – Die Familienachterbahn** ist die Neuheit der Saison 2026, eröffnet am 22. März. Gebaut hat sie Gerstlauer: 17,5 Meter hoch, 760 Meter lang, 55 km/h, ein
 Beschleunigungselement, eine Schienenweiche für die Rückwärtsfahrt und ein Spike als
@@ -150,7 +150,7 @@ Dazu kommt **Splash Battle** im Wickieland, bei der man vom Boot aus und vom Ufe
 aufeinander schießt, sowie **Die große Welle**, ein Disk'O von Zamperla. Beide hängen mit der
 Wasserbahn im selben Themenbereich zusammen.
 
-![Flache Boote mit Drachenköpfen treiben durch ein türkisfarbenes Becken, daneben Zielscheiben und ein grauer Felsen mit einer Rutschbahn. | Splash Battle im Wickieland, dahinter die Schiene von Expedition GeForce.](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
+![Flache Boote mit Drachenköpfen treiben durch ein türkisfarbenes Becken, daneben Zielscheiben und ein grauer Felsen mit einer Rutschbahn. | Splash Battle im Wickieland, dahinter die Schiene von Expedition GeForce. Foto: Freak-Line-Community, Wikimedia Commons (CC BY-SA 4.0) | right](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
 
 **Sky Fly** von Gerstlauer, seit 2015 an der Stelle des verkauften Bounty Tower, ist das Gerät
 für Leute, die sich selbst überschlagen wollen. Der **Lighthouse Tower** von Funtime steht seit

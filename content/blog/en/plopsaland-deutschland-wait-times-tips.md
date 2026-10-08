@@ -98,7 +98,7 @@ switch. It has three hills shaped so that the train is lighter at the crest than
 and a helix at the end where that effect flips the other way. If airtime is what you ride for,
 that's the trip.
 
-![A view from above of a red steel coaster whose track runs through wooded ground in long hills and one wide curve. | Expedition GeForce seen from the Free Fall Tower. The three hills after the first drop are where the ride earned its reputation.](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
+![A view from above of a red steel coaster whose track runs through wooded ground in long hills and one wide curve. | Expedition GeForce seen from the Free Fall Tower. The three hills after the first drop are where the ride earned its reputation. Foto: Hetamin1000, Wikimedia Commons (Public Domain) | right](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
 
 The practical part: 140 centimetres and up, nothing below that. It runs from 8 degrees Celsius,
 which in March and November can decide whether you get a ride or a walk. The Express Pass is
@@ -112,7 +112,7 @@ Germany's first coaster with inversions. Its successor is a Sky Rocket II: 45 me
 times, forwards and backwards, before it clears the vertical top hat. Minimum height
 140 centimetres, minimum age 14, and the same eight-degree rule applies, measured at the track.
 
-![A red track climbs vertically up a grey support frame, tips over at the top and falls in a loop behind a brick building. | Sky Scream launches its trains three times before they clear the 45-metre top hat.](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
+![A red track climbs vertically up a grey support frame, tips over at the top and falls in a loop behind a brick building. | Sky Scream launches its trains three times before they clear the 45-metre top hat. Foto: Freddo, Wikimedia Commons (CC BY-SA 4.0) | left](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
 
 **100% Wolf – The Family Roller Coaster** is the 2026 addition, opened on 22 March. Gerstlauer
 built it: 17.5 metres tall, 760 metres long, 55 km/h, with a launch section, a track switch for
@@ -145,7 +145,7 @@ Two water rides keep the park busy through summer:
 Next to them sits **Splash Battle** in Wickieland, where boat crews and bystanders soak each
 other, and **The Big Wave**, a Zamperla Disk'O. All three share the same themed area.
 
-![Flat boats with dragon heads drift through a turquoise basin, with target discs beside them and a grey rock carrying a chute. | Splash Battle in Wickieland, with the track of Expedition GeForce behind it.](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
+![Flat boats with dragon heads drift through a turquoise basin, with target discs beside them and a grey rock carrying a chute. | Splash Battle in Wickieland, with the track of Expedition GeForce behind it. Foto: Freak-Line-Community, Wikimedia Commons (CC BY-SA 4.0) | right](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
 
 **Sky Fly** by Gerstlauer, in place since 2015 where the sold-off Bounty Tower stood, is the one
 for people who want to flip themselves over. The **Lighthouse Tower** by Funtime has stood since
