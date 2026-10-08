@@ -1,0 +1,41 @@
+{
+  "title": "Splash Battle im Wikingerdorf",
+  "park": "plopsaland-deutschland",
+  "ride": "splash-battle",
+  "roles": [
+    "ride-card"
+  ],
+  "tags": [
+    "day",
+    "sunny",
+    "water-ride",
+    "ride",
+    "theming",
+    "outdoor",
+    "photo"
+  ],
+  "alt": {
+    "de": "Flache Boote mit Drachenköpfen treiben durch ein türkisfarbenes Becken, daneben Zielscheiben und ein grauer Felsen mit einer Rutschbahn.",
+    "en": "Flat boats with dragon heads drift through a turquoise basin, with target discs beside them and a grey rock carrying a chute.",
+    "nl": "Platte boten met drakenkoppen drijven door een turquoise bassin, ernaast schietschijven en een grijze rots met een glijbaan.",
+    "fr": "Des barques plates à tête de dragon dérivent dans un bassin turquoise, avec des cibles sur le côté et un rocher gris portant une descente.",
+    "es": "Barcas planas con cabezas de dragón flotan en una pila turquesa, con dianas al lado y una roca gris que sostiene una rampa.",
+    "it": "Barche piatte con teste di drago scivolano in una vasca turchese, con bersagli di lato e una roccia grigia che regge uno scivolo."
+  },
+  "caption": {
+    "de": "Splash Battle im Wickieland, dahinter die Schiene von Expedition GeForce.",
+    "en": "Splash Battle in Wickieland, with the track of Expedition GeForce behind it.",
+    "nl": "Splash Battle in Wickieland, daarachter het spoor van Expedition GeForce.",
+    "fr": "Splash Battle dans le Wickieland, et derrière la voie d'Expedition GeForce.",
+    "es": "Splash Battle en Wickieland y, al fondo, la vía de Expedition GeForce.",
+    "it": "Splash Battle nel Wickieland e, sullo sfondo, il binario di Expedition GeForce."
+  },
+  "credit": {
+    "author": "Freak-Line-Community",
+    "license": "cc-by-sa-4.0",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plopsaland_Deutschland_Splash_Battle.jpg",
+    "year": 2026
+  },
+  "shotAt": "2026-09-02"
+}
