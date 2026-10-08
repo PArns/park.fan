@@ -146,9 +146,7 @@ Aquarena. Die Spanne bei der Mindestgröße reicht in der ganzen Anlage von 90
 Zentimetern am Wasserkarussell über 95 bei den kleinsten Rutschen bis zu den 140
 von Dugdrob und Vildfål. Bei Hugin, Munin, Stormvind und Svalgur Rytt steht auf
 der Parkseite, dass Kinder zwischen 110 und 125 Zentimetern nur in Begleitung
-eines Erwachsenen fahren dürfen. Stormrok liegt im Außenbereich und hat bis zum
-
-1. Mai 2027 zu.
+eines Erwachsenen fahren dürfen. Stormrok liegt im Außenbereich und ist bis zum 1. Mai 2027 geschlossen.
 
 ### Dugdrob und Vildfål: die Fallkabinen
 
