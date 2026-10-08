@@ -117,8 +117,7 @@ Dati all’8 ottobre 2026. Un prezzo vale sempre per il giorno in cui abbiamo
 letto la pagina, e i parchi lo cambiano all’inizio della stagione. Dove due
 pagine dello stesso parco indicano limiti d’età diversi, lo segnaliamo più sotto.
 
-I limiti sono costruiti in modo diverso. Efteling, Europa-Park, Phantasialand e
-Parc Astérix contano l’età, Heide Park, Toverland, Walibi Belgium e Plopsaland
+I limiti sono costruiti in modo diverso. Efteling, Europa-Park, Phantasialand, Parc Astérix, Legoland Deutschland e Walibi Holland contano l’età, Heide Park, Toverland, Walibi Belgium e Plopsaland
 l’altezza, e secondo Plopsaland e Walibi Belgium si misura con le scarpe. Un
 bambino può essere gratis con la regola dell’età di un parco e non esserlo con
 la regola dell’altezza di un altro, e viceversa. Se tuo figlio è alto per la sua
@@ -153,7 +152,7 @@ Vogel Rok e Pagode, a Ruigrijk Baron 1898, De Oude Tufferbaan, De Vliegende
 Hollander, Halve Maen, Joris en de Draak e Python, ad Anderrijk Danse Macabre,
 Fata Morgana, Max & Moritz e Piraña, a Fantasierijk Symbolica.
 
-Per i bambini sotto i 4 anni ci sono due parchi giochi, Kleuterhof a Reizenrijk
+Per i più piccoli ci sono due parchi giochi, Kleuterhof a Reizenrijk
 e Kindervreugd a Marerijk. Sul sito del parco diverse attrazioni non indicano
 un’altezza minima ma solo una regola: i bambini sotto 1,00 m salgono con un
 adulto sullo [Stoomcarrousel](ref:efteling/stoomcarrousel), a Villa Volta, sul
@@ -178,8 +177,7 @@ Il parco indica fasciatoi in sette punti: all’ingresso principale, al punto
 informazioni sul lago, in Irlanda (Kinderwelt), in Italia accanto al dm family &
 friends, in Spagna, nel Märchenwald e nel Regno dei Minimoys. Come siano
 attrezzati e se esista una sala per l’allattamento, lì non si legge. Al dm
-family & friends il parco vende alcuni alimenti per neonati, che secondo la
-pagina si possono scaldare solo con l’aiuto del servizio ospiti.
+family & friends il parco vende alcuni alimenti per neonati. Se e dove si possano scaldare, la pagina non lo dice, rimanda al servizio ospiti.
 
 Il passeggino a noleggio costa 5 euro più 50 euro di cauzione e si ritira
 all’ingresso principale o all’ingresso del parcheggio dell’hotel. Secondo il
@@ -195,7 +193,7 @@ Megacoaster e Alpenexpress Coastiality, un elenco completo non c’è. Chi aspet
 resta con il bambino per esempio al parco giochi, e chi guida riceve una carta
 per l’uscita o per l’ingresso Baby Switch dedicato.
 
-Per i più piccoli il parco elenca tra l’altro Little Lamb’s Land come «Tiny tots
+Nell’elenco generale del parco sembrano pensati per i più piccoli: Little Lamb’s Land come «Tiny tots
 playground», il Würmchen Wies’n Playground, il Water Playground, la piscina di
 palline, l’Adventure Playground, Paul’s Playboat e il Mul-Muls Carousel. Nel
 nostro database ci sono 90 centimetri per i Quipse Paddle Boats, i Mini-Scooters
@@ -221,7 +219,7 @@ un fasciatoio e un bollitore.
 Il passeggino a noleggio costa 3 euro al giorno più 20 euro di cauzione e si
 ritira al servizio ospiti nell’area tematica Berlin. Il numero è limitato, si
 può prenotare via e-mail, e il passeggino regge bambini fino a 22 chilogrammi.
-Per i mezzi portati da casa il Phantasialand è il più severo dei dieci:
+Per i mezzi portati da casa il Phantasialand è molto severo, con misure precise:
 ammessi sono solo passeggini classici e buggy stretti, fino a 105 centimetri di
 lunghezza, 75 di larghezza e 125 di altezza, e solo per trasportare bambini.
 Carretti a mano, rimorchi per biciclette e carrelli per cani sono vietati. Una
@@ -270,11 +268,7 @@ comunque una regola, non lo sappiamo, e prima della visita conviene chiedere.
 
 La pagina del parco per i bambini piccoli nomina la Junior Fahrschule (dai 3
 anni), il Duplo Express, il Safari Tour, il giro del porto, l’aeroporto, il
-torneo dei cavalieri, la Kanu X-pedition e il Miniland. Secondo i nostri dati,
-accompagnati salgono dagli 80 centimetri Airport, Canoe X-pedition, Captain
-Nick’s Splash Battle, Duplo Express, Harbour Cruise, Legoland Express e
-l’Observation Tower, dai 90 centimetri Caterpillar Ride, Pedal-A-Car, Pirate
-School, Pyramid Rallye, Royal Joust e Temple X-pedition. A questi si aggiungono
+torneo dei cavalieri, la Kanu X-pedition e il Miniland. Secondo i nostri dati, Airport, Canoe X-pedition, Captain Nick’s Splash Battle, Duplo Express, Harbour Cruise, Legoland Express e l’Observation Tower hanno un’altezza minima di 80 centimetri, Caterpillar Ride, Pedal-A-Car, Pirate School, Pyramid Rallye, Royal Joust e Temple X-pedition di 90 centimetri. A questi si aggiungono
 aree gioco senza valore nel nostro database: la Ninjago World Toddler Area, il
 Duplo Playground e i playground di Pirate Land, Shipyard e LavaLand. L’elenco
 completo con età e altezza il parco lo pubblica come PDF, che non abbiamo
@@ -324,7 +318,7 @@ Altre indicazioni nella nostra guida
 l’ingresso gratuito solo un’altezza: i bambini sotto gli 85 centimetri non
 pagano. Da 85 a 99 centimetri il biglietto costa 22 euro, da un metro vale il
 prezzo adulti. La pagina dei prezzi non indica l’anno. Il biglietto famiglia da
-tre a sei persone costa tra 139 e 259 euro, secondo la grandezza del gruppo.
+tre a sei persone costa tra 139 e 259 euro, secondo la grandezza del gruppo. La pagina del biglietto famiglia indica ancora da 170 a 250 euro per la stagione estiva 2025.
 
 Secondo il parco, i fasciatoi per neonati sono in tutti i blocchi bagni. Nei
 ristoranti Pfalzgraf, Maja-Burger e nel Plopsa Indoor ci sono microonde per
@@ -334,15 +328,13 @@ anche nei ristoranti e sulle terrazze esterne.
 
 I passeggini sono ammessi, ma vanno lasciati nelle aree previste vicino alle
 attrazioni e agli spettacoli, e nei giorni affollati non sono ammessi nel Plopsa
-Indoor. Un passeggino a noleggio il parco, secondo le nostre fonti, non lo
-offre. I carretti a mano costano nel Plopsaland Shop 10 euro al giorno più 50
+Indoor. Un noleggio di passeggini il parco non lo indica. I carretti a mano costano nel Plopsaland Shop 10 euro al giorno più 50
 euro di cauzione, così dice la FAQ. Il regolamento del parco parla invece di un
 documento o di 100 euro di cauzione. Quale dato sia giusto lo sa solo il parco.
 Rider Switch o scambio non li nominano né la FAQ né il regolamento, e ogni ospite
 deve lasciare l’attrazione dopo il giro.
 
-In compenso Plopsaland è il parco in cui le fasce di altezza di ogni attrazione
-sono indicate con più precisione sul sito del parco. Un accompagnatore deve
+In compenso Plopsaland indica le fasce di altezza sulla pagina di ogni attrazione. Un accompagnatore deve
 avere almeno 15 anni. Senza altezza minima, ma accompagnati, i bambini sotto i
 100 centimetri salgono per esempio su Bällchenbad, Fischerboote, Frösche,
 Tanzende Fontänen, Red Baron, Historisches Karussell (sotto 105 centimetri,
@@ -376,16 +368,14 @@ alcune attrazioni, senza limite d’età: all’imbarco si ritira un biglietto
 speciale e un genitore può salire dall’uscita. Quali attrazioni siano, il parco
 non lo dice.
 
-Per i bambini da 0 a 4 anni il Toverland è il parco più chiaro dei dieci. Nel
-Land van Toos, un’area con padiglioni coperti, i bambini accompagnati salgono da
+Nel Land van Toos, un’area con padiglioni coperti, i bambini accompagnati salgono da
 0 centimetri nel Klokhuis e nei Morrels Truckjes, da soli dai 90. Toos-Express,
 Theekopjes e Drakenslangen partono con accompagnatore a 90, Djinn a 100
 centimetri. In più ci sono Villa Toverhoed, Tovertuin, Dwaalhof, Sim sa la Klim
 e lo Speelkasteel senza indicazione di altezza. Ad Avalon c’è con Little Dragons
 un parco giochi per bambini piccoli, la Garden Tour parte con accompagnatore da
 0 e Jumping Juna da 0 centimetri, nel Wunderwald la giostra da 0. Aree giochi
-d’acqua sono Sparky’s Splash Dock e Waku Waku. In nessun punto il parco si
-regola sull’età, solo sull’altezza. Il parco si descrive come in parte
+d’acqua sono Sparky’s Splash Dock e Waku Waku. Sulle pagine consultate il parco non indica nessun limite d’età, solo altezze. Il parco si descrive come in parte
 coperto. Il nostro dato in merito è nella guida
 [Parco divertimenti con la pioggia](/blog/parco-divertimenti-con-la-pioggia).
 
@@ -444,8 +434,7 @@ La FAQ nomina i «trolleys» a 10 euro in numero limitato, se siano passeggini n
 Il parco non ha aree per bambini con un nome, ma una categoria «Kids». Il valore
 più basso è 50, con accompagnatore, per Stormy, 4x4 Adventure, Mini Tour,
 Spinning Taxi e Tchou-Tchou Express. La pagina del parco riporta il numero senza
-unità, si intendono centimetri. Attrazioni senza alcuna altezza minima, quindi,
-non ce ne sono. Durante i giorni Ibilaw sono chiuse tra l’altro Kondaala,
+unità, si intendono centimetri. Sulle pagine consultate non risulta nessuna attrazione senza altezza minima. Durante i giorni Ibilaw sono chiuse tra l’altro Kondaala,
 Spinning Taxi, Guitar Riff, Kids Airlines, Tchou-Tchou Express e Little Swing.
 Nel nostro database l’altezza minima manca per tutte le attrazioni. Più sfondo
 nella guida [Walibi Belgium: tempi di attesa e consigli](/blog/walibi-belgium-tempi-di-attesa-consigli).
@@ -466,16 +455,13 @@ pagine consultate non c’è scritto.
 
 Il Baby Switch è spiegato in una pagina dedicata: un genitore sale da solo,
 l’altro resta con il bambino, poi vanno entrambi dall’operatore, che fa salire il
-secondo senza nuova coda. Vale per i bambini sotto l’altezza minima. Un elenco
-delle attrazioni non c’è.
+secondo senza nuova coda. Vale per i bambini sotto l’altezza minima. Un elenco completo delle attrazioni la pagina non lo indica.
 
 L’area per bambini si chiama «Attractions for Little Gauls». Con l’età il parco
 indica The Mini Train e Ceasar’s Carrousel dai 2 anni, The Mini Flying Chairs,
-Ace Flying Squadron e Laundromatix dai 3. I tre parchi giochi Golden Boar,
-Getafix e Little Oaks sono aperti a tutti, la pagina dice «no age or height
-restrictions». Per Aerodynamix, Enigmatix e Hydrolix il parco indica in un punto
+Ace Flying Squadron e Laundromatix dai 3. La pagina del Baby Switch indica i parchi giochi Golden Boar, Getafix e Little Oaks senza limiti di età o di altezza, la pagina delle attività indica per il Golden Boar dai 2 anni. Per Aerodynamix, Enigmatix e Hydrolix il parco indica in un punto
 dai 5 anni e in un altro l’accessibilità per bambini sotto il metro. Quale dato
-sia giusto, conviene chiederlo all’ingresso, dove i bambini vengono misurati e
+sia giusto, conviene chiederlo alla reception, dove i bambini vengono misurati e
 ricevono un braccialetto con le attrazioni adatte. La nostra guida
 [Parc Astérix: tempi di attesa e consigli](/blog/parc-asterix-tempi-di-attesa-consigli)
 spiega il resto.
@@ -505,24 +491,17 @@ per i problemi di circolazione. Dove un bambino debba dormire, lo decide quindi
 di solito il passeggino. Quello a noleggio dell’Europa-Park non permette di
 sdraiarsi, quello dell’Efteling è un monoposto di legno per un bimbo piccolo, e
 al Phantasialand i passeggini propri sono limitati a 105 per 75 per 125
-centimetri. Chi vuole far dormire il bambino nel passeggino sta più comodo con il
-proprio.
+centimetri.
 
 Sul cibo le regole sono diverse. Plopsaland ammette esplicitamente il cibo per
-neonati, anche nei ristoranti. A Walibi Holland si può portare cibo proprio. Per
-Europa-Park, Phantasialand, Legoland, Toverland e Parc Astérix non abbiamo
-trovato nulla sul cibo per neonati, solo i divieti di griglie e fornelli
+neonati, anche nei ristoranti. A Walibi Holland si può portare cibo proprio. Per Europa-Park, Phantasialand, Legoland, Toverland, Parc Astérix, Efteling, Heide Park e Walibi Belgium non abbiamo trovato nulla sul cibo per neonati, solo i divieti di griglie e fornelli
 all’Europa-Park. Un microonde c’è, secondo le pagine, a Plopsaland, Toverland,
-Walibi Holland e Walibi Belgium, uno scaldapappa a cura del personale al
-Phantasialand, all’Heide Park e all’Efteling.
+Walibi Holland e Walibi Belgium, Il personale scalda biberon e vasetti al Phantasialand e all’Efteling, se lo si chiede in un ristorante. All’Heide Park il parco indica postazioni per scaldare: il Wirtshaus des Admirals, il Lucky Land e l’app.
 
 Con il Baby Switch si divide la giornata. Nei parchi si chiama in modo diverso,
 cioè Baby Switch, Baby-Switch, Baby-Switch-Pass o «baby change», e funziona
 allo stesso modo: uno sale, uno aspetta con il bambino, il secondo sale senza
-coda. All’Efteling è indicato il numero delle attrazioni, all’Europa-Park e al
-Parc Astérix il tipo di attrazioni, e all’Heide Park, al Toverland, a Walibi
-Holland e al Phantasialand si chiede all’attrazione. A Legoland e Plopsaland non
-c’è scritto niente. Rifare lo stesso giro a Plopsaland, secondo il regolamento,
+coda. All’Efteling è indicato il numero delle attrazioni, all’Europa-Park e al Parc Astérix il tipo di attrazioni. All’Heide Park il pass si ritira al Service Center, al Toverland e al Phantasialand si chiede all’attrazione, a Walibi Holland un adulto aspetta all’uscita. A Legoland e Plopsaland non c’è scritto niente. Rifare lo stesso giro a Plopsaland, secondo il regolamento,
 è possibile solo rimettendosi in coda.
 
 ## Domande frequenti
@@ -554,7 +533,7 @@ carta, all’Heide Park è un pass che si ritira al Service Center.
 
 ### Posso portare il passeggino al parco divertimenti?
 
-Nella maggior parte dei dieci parchi sì, ma non su ogni attrazione. Il
+Nei parchi che lo indicano sì, ma non su ogni attrazione. Il
 Phantasialand ammette solo passeggini e buggy stretti fino a 105 per 75 per 125
 centimetri e vieta i carretti a mano. Al Toverland, al Legoland e a Plopsaland
 si può portare un carretto a mano proprio, secondo le indicazioni che abbiamo
@@ -569,25 +548,21 @@ euro. Al Toverland non c’è noleggio.
 
 ### Da che età un bambino può salire sulle montagne russe?
 
-Lo stabilisce ogni parco, attrazione per attrazione. I valori più bassi che
-abbiamo letto per le attrazioni per famiglie sono 80 centimetri al Legoland
-Deutschland e 85 centimetri a Plopsaland. Per i bambini piccoli ci sono
-attrazioni che partono già da 0 centimetri, se accompagnati, al Toverland e a
-Walibi Holland. L’altezza minima di ogni attrazione è sulla sua pagina su
+Lo stabilisce ogni parco, attrazione per attrazione. I valori più bassi per le attrazioni per bambini e famiglie: accompagnati da 0 centimetri al Toverland e a Walibi Holland, da 50 a Walibi Belgium (numero senza unità sulla pagina), da 80 centimetri di altezza minima al Legoland Deutschland secondo i nostri dati e da 85 centimetri a Plopsaland. L’altezza minima di ogni attrazione è sulla sua pagina su
 park.fan.
 
 ## Fonti e approfondimenti
 
 I prezzi sono quelli delle pagine nel giorno di questo articolo.
 
-- Efteling: [Tickets](https://www.efteling.com/nl/park/tickets), [Baby care](https://www.efteling.com/en/park/information/baby-care), [Stroller](https://www.efteling.com/en/park/information/stroller), [Baby Switch](https://www.efteling.com/en/park/information/babyswitch), [Dagje uit met peuter](https://www.efteling.com/nl/park/dagje-uit-met-peuter)
-- Europa-Park: [Tickets und Preise](https://www.europapark.de/de/tickets-preise), [Tipps für den Besuch](https://www.europapark.de/en/theme-park/info/plan-your-visit/tips-your-europa-park-visit), [Parkordnung](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations), [Familienseite](https://www.europapark.de/en/theme-park/tickets-offers/family-day-out-europa-park)
-- Phantasialand: [Preise und Tickets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Informationen und Anreise](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Mitgebrachte Transportmittel](https://www.phantasialand.de/de/mitgebrachte-transportmittel/), [Familienspaß](https://www.phantasialand.de/en/theme-park/great-family-fun/)
-- Legoland Deutschland: [Tageskarten](https://www.legoland.de/tickets/beliebte-tickets/tageskarten/), [Baby Service](https://www.legoland.de/legoland-entdecken/der-park/baby-service/), [FAQ Park](https://www.legoland.de/besuch-planen/hilfe/faq-park/), [Legoland mit Kleinkindern](https://www.legoland.de/lp/legoland-mit-kleinkindern/)
-- Heide Park: [Freizeitpark mit Kindern](https://www.heide-park.de/planen/infos/freizeitpark-mit-kindern/), [Top-Tipps](https://www.heide-park.de/planen/besuch-planen/top-tipps/), [Parkplan](https://www.heide-park.de/planen/infos/parkplan/)
-- Plopsaland Deutschland: [Tickets](https://www.plopsa.com/en/plopsaland-deutschland/tickets), [Parkordnung](https://www.plopsa.com/de/plopsaland-deutschland/parkordnung), [Babynahrung](https://www.plopsa.com/de/plopsaland-deutschland/node/7080), [Wickelräume](https://www.plopsa.com/de/plopsaland-deutschland/node/7104)
-- Toverland: [Praktische Informationen](https://www.toverland.com/en/practical-information), [FAQ](https://www.toverland.com/en/contact/frequently-asked-questions), [Land van Toos](https://www.toverland.com/en/worlds/land-van-toos), [Dagje uit met kinderen](https://www.toverland.com/en/themepark/dagje-uit-met-kinderen)
-- Walibi Holland: [Tickets](https://www.walibi.nl/en/tickets), [Einrichtungen](https://www.walibi.nl/en/plan-your-visit/facilities), [FAQ](https://www.walibi.nl/en/plan-your-visit/faq), [Kids-Bahnen](https://www.walibi.nl/en/park/attractions/kids)
-- Walibi Belgium: [Tickets](https://www.walibi.be/en/tickets), [FAQ](https://www.walibi.be/en/faq), [Parkordnung](https://www.walibi.be/en/regulations/park-regulations), [Services](https://www.walibi.be/en/plan-your-visit/services)
-- Parc Astérix: [Tickets](https://www.parcasterix.fr/en/offers/tickets), [Baby Switch Service](https://www.parcasterix.fr/en/parc/services/baby-switch-service), [Aktivitäten für Kinder](https://www.parcasterix.fr/en/to-do-in-park/activities-for-children)
+- Efteling: [Biglietti](https://www.efteling.com/nl/park/tickets), [Cura del bebè](https://www.efteling.com/en/park/information/baby-care), [Passeggini](https://www.efteling.com/en/park/information/stroller), [Baby Switch](https://www.efteling.com/en/park/information/babyswitch), [Una giornata con un bimbo piccolo](https://www.efteling.com/nl/park/dagje-uit-met-peuter)
+- Europa-Park: [Biglietti e prezzi](https://www.europapark.de/de/tickets-preise), [Consigli per la visita](https://www.europapark.de/en/theme-park/info/plan-your-visit/tips-your-europa-park-visit), [Regolamento del parco](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations), [Pagina per famiglie](https://www.europapark.de/en/theme-park/tickets-offers/family-day-out-europa-park)
+- Phantasialand: [Prezzi e biglietti](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Informazioni e arrivo](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Mezzi portati da casa](https://www.phantasialand.de/de/mitgebrachte-transportmittel/), [Divertimento in famiglia](https://www.phantasialand.de/en/theme-park/great-family-fun/)
+- Legoland Deutschland: [Biglietti giornalieri](https://www.legoland.de/tickets/beliebte-tickets/tageskarten/), [Baby Service](https://www.legoland.de/legoland-entdecken/der-park/baby-service/), [FAQ del parco](https://www.legoland.de/besuch-planen/hilfe/faq-park/), [Legoland con bimbi piccoli](https://www.legoland.de/lp/legoland-mit-kleinkindern/)
+- Heide Park: [Parco divertimenti con bambini](https://www.heide-park.de/planen/infos/freizeitpark-mit-kindern/), [Consigli migliori](https://www.heide-park.de/planen/besuch-planen/top-tipps/), [Mappa del parco](https://www.heide-park.de/planen/infos/parkplan/)
+- Plopsaland Deutschland: [Biglietti](https://www.plopsa.com/en/plopsaland-deutschland/tickets), [Regolamento del parco](https://www.plopsa.com/de/plopsaland-deutschland/parkordnung), [Cibo per neonati](https://www.plopsa.com/de/plopsaland-deutschland/node/7080), [Fasciatoi](https://www.plopsa.com/de/plopsaland-deutschland/node/7104)
+- Toverland: [Informazioni pratiche](https://www.toverland.com/en/practical-information), [FAQ](https://www.toverland.com/en/contact/frequently-asked-questions), [Land van Toos](https://www.toverland.com/en/worlds/land-van-toos), [Una giornata con i bambini](https://www.toverland.com/en/themepark/dagje-uit-met-kinderen)
+- Walibi Holland: [Biglietti](https://www.walibi.nl/en/tickets), [Strutture](https://www.walibi.nl/en/plan-your-visit/facilities), [FAQ](https://www.walibi.nl/en/plan-your-visit/faq), [Attrazioni Kids](https://www.walibi.nl/en/park/attractions/kids)
+- Walibi Belgium: [Biglietti](https://www.walibi.be/en/tickets), [FAQ](https://www.walibi.be/en/faq), [Regolamento del parco](https://www.walibi.be/en/regulations/park-regulations), [Services](https://www.walibi.be/en/plan-your-visit/services)
+- Parc Astérix: [Biglietti](https://www.parcasterix.fr/en/offers/tickets), [Baby Switch Service](https://www.parcasterix.fr/en/parc/services/baby-switch-service), [Attività per bambini](https://www.parcasterix.fr/en/to-do-in-park/activities-for-children)
 - Altezze minime e classificazione delle attrazioni nel nostro database: park.fan, dati all’8 ottobre 2026
