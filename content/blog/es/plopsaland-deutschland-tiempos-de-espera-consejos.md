@@ -60,10 +60,9 @@ está en el mismo sitio desde 2001. Solo el parque se llama distinto desde el 28
 2025: [Plopsaland Deutschland](ref:plopsaland-deutschland), por el operador belga que lo tiene
 desde noviembre de 2010.
 
-Ese cambio de nombre es la razón por la que esta guía empieza con un nombre y no con una
-atracción. Quien en 2026 busque entrada escribiendo «Holiday Park» acaba en resultados de tres
-décadas que hablan todos del mismo parque y dan precios distintos. Así que primero lo que ha
-cambiado y luego lo que sigue igual.
+Quien en 2026 busque entrada escribiendo «Holiday Park» acaba en resultados de tres décadas que
+hablan todos del mismo parque y dan precios distintos. El operador dejó la marca antigua con el
+cambio de nombre; la calle y el número la conservan.
 
 El parque está en el Palatinado, entre Neustadt an der Weinstraße y Ludwigshafen, sobre
 40 hectáreas. En 2025 recibió 804.218 visitantes, según el operador el mejor año de su historia.
@@ -96,12 +95,12 @@ ha elegido más de una vez la mejor del mundo. El parque cuenta ya 40 galardones
 
 La razón está detrás de la primera caída. La máquina no tiene inversión, ni lanzamiento, ni
 cambio de vía. Tiene tres colinas construidas de modo que el tren pesa menos que sus pasajeros
-en la cresta, y una hélice al final donde ese efecto se da la vuelta. Quien monta por el
-airtime, monta por esto.
+en la cresta, y una hélice al final donde ese efecto se da la vuelta. Si lo que se busca es
+airtime, aquí está.
 
 ![Vista desde arriba de una montaña rusa de acero roja cuyo recorrido atraviesa un terreno arbolado en colinas largas y una curva amplia. | Expedition GeForce vista desde la Free Fall Tower. Las tres colinas tras la primera caída son lo que le dio su fama.](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
 
-Lo práctico: desde 140 centímetros, por debajo nada. Funciona a partir de 8 grados centígrados,
+Lo práctico son 140 centímetros, por debajo nada. Funciona a partir de 8 grados centígrados,
 lo que en marzo y noviembre puede marcar la diferencia entre una vuelta y un paseo. El Express
 Pass vale.
 
@@ -134,7 +133,7 @@ cuadrados. En un día de lluvia, es la parte del parque que de pronto se llena.
 La Free Fall Tower fue en 1997 la primera torre de caída de Alemania, un Giant Drop de Intamin,
 70 metros de alto, desde 120 centímetros. Es lo que se ve desde la A65 antes de tomar la salida.
 
-Dos atracciones acuáticas sostienen el verano:
+El verano aquí se reparte entre dos atracciones acuáticas.
 
 - **DinoSplash**, llamada Donnerfluss hasta 2019, es de 1984 y fue el primer rapid river de
   Alemania. 500 metros, alimentada con agua subterránea, desde 110 centímetros acompañado y
@@ -164,7 +163,7 @@ la temporada 2025 con nueva tematización.
 
 ## Las zonas temáticas, y qué hay en cada una
 
-El parque no es un circuito sino una estrella: las zonas salen de la plaza de las Fuentes,
+El parque tiene forma de estrella. Las zonas salen de la plaza de las Fuentes,
 detrás de la entrada, en todas las direcciones, y se cruza el centro varias veces al día. Cansa
 menos de lo que suena, porque 40 hectáreas siguen siendo caminables.
 
@@ -204,8 +203,9 @@ escenario del Majaland a las 10:50, en la Free Fall Tower hay menos gente.
 
 ## Cuánto se espera aquí de verdad
 
-Aquí se acaba la publicidad y empieza la medición. Recogemos los tiempos de espera de este
-parque desde el 7 de octubre de 2024, a día de hoy en 225 jornadas de funcionamiento.
+Recogemos los tiempos de espera de este parque desde el 7 de octubre de 2024, a día de hoy en
+225 jornadas de funcionamiento. Las cifras de abajo salen de esa ventana, no de una sola
+temporada.
 
 ```ride-waits-widget park=plopsaland-deutschland top=8 columns=land,peak,days highlight=bigfm-expedition-geforce
 
@@ -234,10 +234,9 @@ cerrada.
 
 ```
 
-Dentro del día vale lo que vale en todas partes: la curva sube por la mañana, se mantiene al
+Dentro del día se repite el patrón habitual. La curva sube por la mañana, se mantiene al
 mediodía y baja por la tarde. Quien haga las tres grandes en la primera hora tras la apertura
-pasa prácticamente sin cola, y en un parque de este tamaño eso no es una estrategia sino
-puntualidad.
+pasa prácticamente sin cola, y en un parque de este tamaño basta con llegar puntual.
 
 ### El Express Pass
 
@@ -291,6 +290,11 @@ abre aún a diario y que el tiempo en el Palatinado en septiembre suele ser mejo
 Marzo y noviembre son meses de borde. Entonces Expedition GeForce y Sky Scream solo funcionan si
 la vía alcanza ocho grados, y un día frío cuesta justo las dos atracciones por las que se ha
 venido.
+
+Enero y febrero figuran en nuestros datos con cero minutos. No es una cola vacía sino el cierre
+de invierno: el parque está cerrado, y la temporada 2026 va del 22 de marzo al 1 de noviembre.
+Una visita tiene por tanto unos siete meses y medio donde elegir, y las semanas de borde
+dependen de la regla de los ocho grados.
 
 ```best-days-widget slug=plopsaland-deutschland
 

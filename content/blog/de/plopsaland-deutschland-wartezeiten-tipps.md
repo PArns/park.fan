@@ -60,10 +60,10 @@ meisten kommen, steht seit 2001 an derselben Stelle. Nur der Park heißt seit de
 anders: [Plopsaland Deutschland](ref:plopsaland-deutschland), benannt nach dem belgischen
 Betreiber, dem er schon seit November 2010 gehört.
 
-Die Umbenennung ist der Grund, warum dieser Guide mit einer Namensfrage anfängt und nicht mit
-einer Bahn. Wer 2026 ein Ticket sucht und „Holiday Park“ eintippt, landet bei Suchergebnissen
-aus drei Jahrzehnten, die alle denselben Park meinen und unterschiedliche Preise nennen. Also
-zuerst die Fakten, die sich geändert haben, und dann die, die gleich geblieben sind.
+Wer 2026 ein Ticket sucht und „Holiday Park“ eintippt, landet bei Suchergebnissen aus drei
+Jahrzehnten, die alle denselben Park meinen und unterschiedliche Preise nennen. Der Betreiber
+führt die alte Marke seit der Umbenennung nicht mehr, die Straße und die Hausnummer dagegen
+schon.
 
 Der Park liegt in der Pfalz, zwischen Neustadt an der Weinstraße und Ludwigshafen, auf
 40 Hektar. 2025 kamen 804.218 Besucher, nach Angaben des Betreibers das beste Jahr der
@@ -167,7 +167,7 @@ hieß und zur Saison 2025 mit neuer Thematisierung wieder aufgemacht hat.
 
 ## Die Themenbereiche, und was in welchem steht
 
-Der Park ist kein Rundweg, sondern ein Stern: Vom Platz der Fontänen hinter dem Eingang gehen
+Der Park ist sternförmig angelegt: Vom Platz der Fontänen hinter dem Eingang gehen
 die Bereiche in alle Richtungen ab, und man kreuzt die Mitte mehrmals am Tag. Das ist bequemer,
 als es klingt, weil das Gelände mit 40 Hektar überschaubar bleibt.
 
@@ -208,8 +208,8 @@ Majaland-Bühne steht, ist am Free Fall Tower weniger los.
 
 ## Wie lange man hier wirklich ansteht
 
-An dieser Stelle hört die Werbung auf und die Messung fängt an. Wir sammeln die Wartezeiten
-dieses Parks seit dem 7. Oktober 2024, inzwischen an 225 Tagen mit Betrieb.
+Wir sammeln die Wartezeiten dieses Parks seit dem 7. Oktober 2024, inzwischen an 225 Tagen mit
+Betrieb. Die Zahlen unten stammen aus diesem Fenster, nicht aus einer einzelnen Saison.
 
 ```ride-waits-widget park=plopsaland-deutschland top=8 columns=land,peak,days highlight=bigfm-expedition-geforce
 
@@ -240,10 +240,10 @@ Wartezeit ist kein Polster gegen eine geschlossene Bahn.
 
 ```
 
-Innerhalb des Tages gilt trotzdem, was überall gilt: Die Kurve steigt vormittags an, hält sich
+Innerhalb des Tages zeigt sich das gewohnte Muster: Die Kurve steigt vormittags an, hält sich
 über Mittag und fällt zum Nachmittag ab. Wer die drei großen Bahnen in der ersten Stunde nach
-Parköffnung fährt, kommt an ihnen praktisch ohne Anstehen vorbei, und das ist bei einem
-Park dieser Größe keine Strategie, sondern bloß Pünktlichkeit.
+Parköffnung fährt, kommt an ihnen praktisch ohne Anstehen vorbei, und bei einem Park dieser
+Größe reicht dafür einfach Pünktlichkeit.
 
 ### Der Express Pass
 
@@ -298,6 +298,12 @@ täglich offen hat und das Wetter in der Pfalz im September oft besser ist als i
 März und November sind Randmonate. Da fahren Expedition GeForce und Sky Scream nur, wenn die
 Schienentemperatur acht Grad erreicht, und ein kalter Tag kostet einen die beiden Bahnen, wegen
 derer man gekommen ist.
+
+Januar und Februar stehen in unseren Daten auf null Minuten. Das ist keine leere Warteschlange,
+sondern Winterpause: Der Park hat dann zu, und die Saison 2026 läuft vom 22. März bis zum
+
+1. November. Wer einen Besuch plant, hat also rund siebeneinhalb Monate zur Auswahl, von denen
+   die Randwochen an der Acht-Grad-Regel hängen.
 
 ```best-days-widget slug=plopsaland-deutschland
 

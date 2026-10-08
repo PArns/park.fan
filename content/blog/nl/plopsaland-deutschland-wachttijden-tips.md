@@ -60,10 +60,9 @@ komen staat sinds 2001 op dezelfde plek. Alleen het park heet sinds 28 juni 2025
 [Plopsaland Deutschland](ref:plopsaland-deutschland), naar de Belgische uitbater die het al
 sinds november 2010 in handen heeft.
 
-Die naamswijziging is de reden dat deze gids met een naam begint en niet met een attractie. Wie
-in 2026 een ticket zoekt en “Holiday Park” intikt, komt bij zoekresultaten uit drie decennia
-terecht die allemaal hetzelfde park bedoelen en verschillende prijzen noemen. Dus eerst wat er
-veranderd is, daarna wat hetzelfde bleef.
+Wie in 2026 een ticket zoekt en “Holiday Park” intikt, komt bij zoekresultaten uit drie decennia
+terecht die allemaal hetzelfde park bedoelen en verschillende prijzen noemen. De uitbater voert
+de oude merknaam sinds de naamswijziging niet meer; de straat en het huisnummer wel.
 
 Het park ligt in de Palts, tussen Neustadt an der Weinstraße en Ludwigshafen, op 40 hectare. In
 2025 kwamen er 804.218 bezoekers, volgens de uitbater het beste jaar uit de parkgeschiedenis.
@@ -95,8 +94,8 @@ meer dan eens tot beste achtbaan ter wereld gekozen. Het park telt inmiddels 40 
 
 De reden ligt achter de eerste afdaling. De baan heeft geen inversie, geen launch en geen
 wissel. Hij heeft drie heuvels die zo gebouwd zijn dat de trein bovenaan lichter is dan zijn
-passagiers, en een helix aan het eind waarin dat effect omslaat. Wie om airtime rijdt, rijdt
-daarvoor hierheen.
+passagiers, en een helix aan het eind waarin dat effect omslaat. Wie om airtime komt, zit hier
+goed.
 
 ![Blik van bovenaf op een rode stalen achtbaan waarvan het spoor in lange heuvels en een brede bocht door bebost terrein loopt. | Expedition GeForce vanaf de Free Fall Tower. De drie heuvels na de eerste afdaling zijn waar de baan haar reputatie verdiende.](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
 
@@ -133,7 +132,7 @@ openging. Op een regendag is dat het deel van het park dat ineens vol staat.
 De Free Fall Tower was in 1997 de eerste valtoren van Duitsland, een Giant Drop van Intamin,
 70 meter hoog, vanaf 120 centimeter. Het is wat je vanaf de A65 ziet voordat je de afslag neemt.
 
-Twee waterattracties dragen de zomer:
+Twee waterattracties vullen de zomer:
 
 - **DinoSplash**, tot 2019 Donnerfluss, is uit 1984 en was de eerste rapid river van Duitsland.
   500 meter, gevoed met grondwater, vanaf 110 centimeter met begeleiding en vanaf 130 alleen.
@@ -163,7 +162,7 @@ met nieuwe thematisering opnieuw openging.
 
 ## De themagebieden, en wat er in elk staat
 
-Het park is geen rondgang maar een ster: vanaf het Fonteinenplein achter de ingang lopen de
+Het park is stervormig aangelegd: vanaf het Fonteinenplein achter de ingang lopen de
 gebieden alle kanten op, en je kruist het midden meermaals per dag. Dat is minder vermoeiend dan
 het klinkt, omdat 40 hectare te belopen blijft.
 
@@ -203,8 +202,8 @@ op het Majaland-podium staat, is het bij de Free Fall Tower rustiger.
 
 ## Hoe lang je hier echt aanschuift
 
-Hier houdt de reclame op en begint de meting. Wij verzamelen de wachttijden van dit park sinds
-7 oktober 2024, inmiddels op 225 dagen met bedrijf.
+Wij verzamelen de wachttijden van dit park sinds 7 oktober 2024, inmiddels op 225 dagen met
+bedrijf. De cijfers hieronder komen uit dat venster en niet uit één seizoen.
 
 ```ride-waits-widget park=plopsaland-deutschland top=8 columns=land,peak,days highlight=bigfm-expedition-geforce
 
@@ -232,10 +231,10 @@ er voor volwassenen weinig over. De korte wachttijd is geen buffer tegen een ges
 
 ```
 
-Binnen de dag geldt wat overal geldt: de curve stijgt in de ochtend, houdt over de middag aan en
-zakt in de namiddag weg. Wie de drie grote banen in het eerste uur na opening rijdt, komt er
-praktisch zonder aanschuiven langs, en bij een park van deze omvang is dat geen strategie maar
-simpelweg op tijd zijn.
+Binnen de dag zie je het vertrouwde patroon: de curve stijgt in de ochtend, houdt over de
+middag aan en zakt in de namiddag weg. Wie de drie grote banen in het eerste uur na opening
+rijdt, komt er praktisch zonder aanschuiven langs, en bij een park van deze omvang komt dat
+neer op op tijd zijn.
 
 ### De Express Pass
 
@@ -290,6 +289,11 @@ open is en het weer in de Palts in september vaak beter is dan in juni.
 Maart en november zijn randmaanden. Dan rijden Expedition GeForce en Sky Scream alleen als de
 spoortemperatuur acht graden haalt, en een koude dag kost je precies de twee banen waarvoor je
 gekomen bent.
+
+Januari en februari staan in onze data op nul minuten. Dat is geen lege wachtrij maar de
+winterstop: het park is dan dicht, en het seizoen 2026 loopt van 22 maart tot 1 november. Wie
+een bezoek plant heeft dus ruim zevenenhalve maand om uit te kiezen, waarvan de randweken aan
+de achtgradenregel hangen.
 
 ```best-days-widget slug=plopsaland-deutschland
 

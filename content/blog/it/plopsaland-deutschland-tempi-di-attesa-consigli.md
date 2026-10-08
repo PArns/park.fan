@@ -60,10 +60,9 @@ parte delle persone sta nello stesso punto dal 2001. Solo il parco porta un altr
 28 giugno 2025: [Plopsaland Deutschland](ref:plopsaland-deutschland), dal gestore belga che lo
 possiede già da novembre 2010.
 
-Quel cambio di nome è il motivo per cui questa guida comincia da un nome e non da
-un'attrazione. Chi nel 2026 cerca un biglietto digitando «Holiday Park» finisce su risultati di
-tre decenni che indicano tutti lo stesso parco e riportano prezzi diversi. Quindi prima quello
-che è cambiato, poi quello che è rimasto.
+Chi nel 2026 cerca un biglietto digitando «Holiday Park» finisce su risultati di tre decenni che
+indicano tutti lo stesso parco e riportano prezzi diversi. Il gestore ha lasciato il vecchio
+marchio con il cambio di nome; la strada e il numero civico lo tengono ancora.
 
 Il parco si trova nel Palatinato, tra Neustadt an der Weinstraße e Ludwigshafen, su 40 ettari.
 Nel 2025 ha accolto 804.218 visitatori, secondo il gestore l'anno migliore della sua storia. È
@@ -94,7 +93,7 @@ più di una volta il migliore del mondo. Il parco conta ormai 40 riconoscimenti.
 
 Il motivo sta dopo la prima discesa. La macchina non ha inversioni, né lancio, né scambio. Ha
 tre collinette costruite in modo che in cima il treno pesi meno dei suoi passeggeri, e un'elica
-finale dove quell'effetto si ribalta. Chi sale per l'airtime, sale per questo.
+finale dove quell'effetto si ribalta. Chi cerca l'airtime lo trova qui.
 
 ![Veduta dall'alto di un ottovolante d'acciaio rosso il cui tracciato attraversa un terreno boscoso con lunghe colline e un'ampia curva. | Expedition GeForce vista dalla Free Fall Tower. Le tre colline dopo la prima discesa sono ciò che le ha dato fama.](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
 
@@ -132,7 +131,7 @@ La Free Fall Tower è stata nel 1997 la prima torre di caduta della Germania, un
 Intamin, alta 70 metri, da 120 centimetri. È quello che si vede dalla A65 prima di prendere
 l'uscita.
 
-Due attrazioni acquatiche reggono l'estate:
+Due attrazioni acquatiche animano l'estate:
 
 - **DinoSplash**, fino al 2019 Donnerfluss, è del 1984 ed è stata il primo rapid river della
   Germania. 500 metri, alimentata con acqua di falda, da 110 centimetri accompagnati e da 130 da
@@ -162,7 +161,7 @@ riaperto per la stagione 2025 con una nuova tematizzazione.
 
 ## Le aree tematiche, e che cosa c'è in ciascuna
 
-Il parco non è un anello ma una stella: le aree partono dalla piazza delle Fontane dietro
+Il parco è organizzato a stella: le aree partono dalla piazza delle Fontane dietro
 l'ingresso in tutte le direzioni, e si attraversa il centro più volte al giorno. Stanca meno di
 quanto sembri, perché 40 ettari restano percorribili a piedi.
 
@@ -202,8 +201,8 @@ del Majaland alle 10:50, alla Free Fall Tower c'è meno gente.
 
 ## Quanto si attende qui davvero
 
-Qui finisce la pubblicità e comincia la misurazione. Raccogliamo i tempi di attesa di questo
-parco dal 7 ottobre 2024, a oggi su 225 giornate di esercizio.
+Raccogliamo i tempi di attesa di questo parco dal 7 ottobre 2024, a oggi su 225 giornate di
+esercizio. I numeri qui sotto escono da quella finestra, non da una sola stagione.
 
 ```ride-waits-widget park=plopsaland-deutschland top=8 columns=land,peak,days highlight=bigfm-expedition-geforce
 
@@ -232,9 +231,9 @@ chiusa.
 
 ```
 
-Dentro la giornata vale ciò che vale ovunque: la curva sale la mattina, tiene a mezzogiorno e
+Dentro la giornata vale lo schema abituale: la curva sale la mattina, tiene a mezzogiorno e
 cala nel pomeriggio. Chi fa i tre grandi nella prima ora dopo l'apertura ci passa praticamente
-senza fare la fila, e in un parco di queste dimensioni non è una strategia ma solo puntualità.
+senza fare la fila, e in un parco di queste dimensioni basta essere puntuali.
 
 ### L'Express Pass
 
@@ -288,6 +287,11 @@ giorno e che il tempo nel Palatinato a settembre è spesso migliore che a giugno
 Marzo e novembre sono mesi di margine. Allora Expedition GeForce e Sky Scream funzionano solo se
 il binario raggiunge gli otto gradi, e una giornata fredda costa proprio le due attrazioni per
 cui si è venuti.
+
+Gennaio e febbraio stanno a zero minuti nei nostri dati. Non è una coda vuota ma la chiusura
+invernale: il parco è chiuso, e la stagione 2026 va dal 22 marzo al 1° novembre. Una visita ha
+quindi circa sette mesi e mezzo tra cui scegliere, e le settimane di margine dipendono dalla
+regola degli otto gradi.
 
 ```best-days-widget slug=plopsaland-deutschland
 

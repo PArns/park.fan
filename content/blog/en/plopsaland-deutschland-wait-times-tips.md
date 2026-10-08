@@ -60,9 +60,9 @@ stood in the same spot since 2001. Only the park has a different name: since 28 
 [Plopsaland Deutschland](ref:plopsaland-deutschland), named after the Belgian operator that has
 owned it since November 2010.
 
-That rename is why this guide opens with a question about a name rather than a ride. Search for
-"Holiday Park" in 2026 and you get results from three decades, all about the same place and all
-quoting different prices. First what changed, then what stayed.
+Search for "Holiday Park" in 2026 and you get results from three decades, all about the same
+place and all quoting different prices. The operator dropped the old brand with the rename; the
+street and the house number kept it.
 
 The park sits in the Palatinate, between Neustadt an der Weinstraße and Ludwigshafen, on
 40 hectares. It drew 804,218 visitors in 2025, which the operator calls the best year in the
@@ -133,7 +133,7 @@ The Free Fall Tower was Germany's first drop tower when it opened in 1997, an In
 Drop, 70 metres tall, from 120 centimetres. It's the thing you see from the A65 before you take
 the exit.
 
-Two water rides carry the summer:
+Two water rides keep the park busy through summer:
 
 - **DinoSplash**, called Donnerfluss until 2019, dates from 1984 and was Germany's first rapid
   river ride. 500 metres, fed from groundwater, from 110 centimetres with an adult and from 130
@@ -162,7 +162,7 @@ season with new theming.
 
 ## The themed areas, and what is in each
 
-The park is not a loop but a star. The areas branch off the Square of Fountains behind the
+The park is laid out as a star. The areas branch off the Square of Fountains behind the
 entrance, and you cross the middle several times a day. That's less tiring than it sounds,
 because 40 hectares stay walkable.
 
@@ -201,8 +201,8 @@ Tower is emptier.
 
 ## How long you actually queue here
 
-This is where the marketing stops and the measurement starts. We have been collecting this
-park's wait times since 7 October 2024, by now across 225 operating days.
+We have been collecting this park's wait times since 7 October 2024, by now across 225 operating
+days. The figures below come out of that window rather than a single season.
 
 ```ride-waits-widget park=plopsaland-deutschland top=8 columns=land,peak,days highlight=bigfm-expedition-geforce
 
@@ -232,7 +232,7 @@ not much is left for adults. A short queue is no cushion against a closed ride.
 
 Within the day the usual shape holds. The curve climbs through the morning, holds over midday
 and drops off in the afternoon. Ride the three big coasters in the first hour after opening and
-you walk onto all of them, which at a park this size isn't a strategy so much as being on time.
+you walk onto all of them, and at a park this size that simply means being on time.
 
 ### The Express Pass
 
@@ -284,6 +284,11 @@ weather in the Palatinate often beats June.
 
 March and November are edge months. Expedition GeForce and Sky Scream only run once the track
 reaches eight degrees, and a cold day costs you both of the rides you came for.
+
+January and February sit at zero minutes in our data. That is not an empty queue but the winter
+break: the park is shut, and the 2026 season runs from 22 March to 1 November. So a visit has
+about seven and a half months to choose from, with the edge weeks hanging on the eight-degree
+rule.
 
 ```best-days-widget slug=plopsaland-deutschland
 
