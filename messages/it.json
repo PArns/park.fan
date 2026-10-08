@@ -2468,7 +2468,7 @@
     "climatology": {
       "title": "Uno sguardo indietro su giorni comparabili, non una previsione.",
       "regular": "Basato su {days, plural, one {# giorno ordinario} other {# giorni ordinari}} degli anni precedenti.",
-      "holiday": "Basato su {days, plural, one {# festivo o ponte} other {# festivi o ponti}} degli anni precedenti.",
+      "holiday": "Basato su {days, plural, one {# giorno festivo o ponte} other {# giorni festivi o ponti}} degli anni precedenti.",
       "school_vacation": "Basato su {days, plural, one {# giorno} other {# giorni}} di vacanze scolastiche degli anni precedenti."
     },
     "overview": {
