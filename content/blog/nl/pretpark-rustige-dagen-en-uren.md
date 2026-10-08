@@ -36,9 +36,7 @@ coverImage:
 seo:
   title: 'Pretpark rustig: weekdag en tijdstip in twaalf parken'
   description: >-
-    Zaterdag is in negen van de twaalf pretparken het drukst, donderdag en
-    vrijdag zijn het rustigst. Onze meting voor Europa-Park, Phantasialand,
-    Efteling en negen andere parken.
+    Zaterdag is in negen van de twaalf pretparken het drukst, donderdag en vrijdag het rustigst. Gemeten in Europa-Park, Efteling en tien andere.
   keywords:
     - beste tijd pretpark
     - wanneer is het rustig in een pretpark

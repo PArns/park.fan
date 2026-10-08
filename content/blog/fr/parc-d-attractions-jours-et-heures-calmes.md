@@ -37,9 +37,7 @@ coverImage:
 seo:
   title: 'Parc d’attractions peu fréquenté : jour et heure comparés'
   description: >-
-    Le samedi est le plus chargé dans neuf parcs sur douze, le jeudi et le
-    vendredi sont les plus calmes. Notre mesure pour Europa-Park, Phantasialand,
-    Efteling et neuf autres parcs.
+    Le samedi est le plus chargé dans neuf parcs sur douze, le jeudi et le vendredi les plus calmes. Mesuré à Europa-Park, Efteling et dix autres.
   keywords:
     - meilleur moment parc d’attractions
     - parc d’attractions peu de monde

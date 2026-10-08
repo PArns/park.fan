@@ -37,9 +37,7 @@ coverImage:
 seo:
   title: 'Freizeitpark wenig los: Wochentag und Uhrzeit im Vergleich'
   description: >-
-    Samstag ist in neun von zwölf Freizeitparks am vollsten, am ruhigsten sind
-    Donnerstag und Freitag. Unsere Messung für Europa-Park, Phantasialand,
-    Efteling und neun weitere.
+    Samstag ist in neun von zwölf Freizeitparks am vollsten, Donnerstag und Freitag am ruhigsten. Gemessen in Europa-Park, Efteling und zehn weiteren.
   keywords:
     - beste Zeit Freizeitpark
     - Freizeitpark wenig los
