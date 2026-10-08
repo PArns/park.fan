@@ -1,5 +1,5 @@
 ---
-title: 'Rulantica: Die Wasserwelt, die offen hat, wenn der Europa-Park schläft'
+title: 'Rulantica: offen, wenn der Europa-Park im Winter geschlossen ist'
 translationKey: rulantica-guide
 date: '2026-10-08'
 author: patrick
@@ -7,9 +7,8 @@ mode: published
 featured: false
 excerpt: >-
   Vom 11. Januar bis zum 19. März 2027 hat der Europa-Park zu, Rulantica nebenan
-  öffnet täglich. Die Becken haben 27 bis 32 Grad, Tickets gibt es ab 28 Euro.
-  Dazu Technik und Mindestgrößen der großen Rutschen, was Hyggedal kostet und
-  in welchen Monaten in unseren Daten am wenigsten los ist.
+  öffnet täglich. Die Becken haben 27 bis 32 Grad, Tickets gibt es ab 28 Euro,
+  und in unseren Daten sind Januar und März die ruhigsten Monate.
 tags:
   - rulantica
   - europa-park
@@ -28,8 +27,8 @@ rideLinks:
 seo:
   title: 'Rulantica 2026: Rutschen, Preise und die ruhigsten Tage'
   description: >-
-    Rulantica im Überblick: Mindestgrößen und Technik der großen Rutschen,
-    Tickets ab 28 Euro, Hyggedal und wann in der Wasserwelt am wenigsten los ist.
+    Rulantica im Winter: Tickets ab 28 Euro, Mindestgrößen von 90 bis 140
+    Zentimetern und die ruhigsten Monate Januar und März.
   keywords:
     - Rulantica
     - Rulantica Wartezeiten
@@ -57,14 +56,9 @@ nebenan öffnet in dieser Zeit jeden Tag um 9:30 Uhr, in der Halle hat die Luft 
 bis 34 Grad und das Wasser 27 bis 32.
 
 Wie voll es dann wird, haben wir nachgemessen. Die Wartezeiten an den Rutschen
-sind kurz, und an ein paar von ihnen merkt man sie trotzdem. Dieser Guide geht
-der Reihe nach durch, was du vor dem ersten Besuch wissen solltest: wie die
-Anlage entstanden ist, welche Rutschen es gibt und welche davon Mindestgröße,
-Schwimmkenntnisse oder Nerven verlangen. Was eine Karte kostet, wo Hyggedal
-anfängt und wie du einen Tag so legst, dass du die Rutschen in der Zeit
-schaffst, in der die Halle am leersten ist.
+sind kurz, und an ein paar von ihnen merkt man sie trotzdem.
 
-## Wie aus einem Namen eine Wasserwelt wurde
+## Geschichte und Bau von Rulantica
 
 „Rulantica“ ist ein Kunstwort aus **Rust** und **Atlantik**. Erfunden hat es
 Manfred Gotta, die Marke ließ sich der Betreiber Europa-Park im April 2014
@@ -84,7 +78,7 @@ umschließt rund 300.000 Kubikmeter Luft. Der Mast, der das Holzdach trägt, ist
 aus Fichte und wiegt 50 Tonnen. Auf den Parkplätzen sorgen Solarzellen für
 Schatten und liefern etwa ein Viertel des Stroms.
 
-Gebaut wurde mit einer Geschichte im Kopf. Rulantica ist eine erfundene Insel im
+Rulantica ist eine erfundene Insel im
 Nordmeer, bewohnt von Trollen, Meermenschen und Wikingern, und ihr Maskottchen
 ist **Snorri**, ein blauer Sixtopus, also ein Oktopus mit sechs Armen. Im Mai
 2018 lief im Europa-Park-Teatro ein Musical, bei Coppenrath erschienen drei
@@ -92,7 +86,7 @@ Romane von Michaela Hanauer. Das Hotel Krønasår gegenüber ist wie ein
 Naturkundemuseum gestaltet. Im Restaurant Bubba Svens steht die „Wiking Saga“, mit
 der Burghard Pieske den Atlantik überquerte.
 
-Danach ging es Schritt für Schritt weiter. Nach der Schließung wegen der
+Nach der Schließung wegen der
 Pandemie öffnete die Wasserwelt am **10. Juni 2020** mit Hygienekonzept wieder,
 im Oktober 2020 folgte der Sauna- und Wohlfühlbereich Hyggedal. 2021 kamen neue
 Außenbereiche mit zusammen 9.000 Quadratmetern dazu, 2022 das Wasserkarussell
@@ -102,11 +96,10 @@ den Zahlen von TEA und AECOM besuchten 2023 rund 1,2 Millionen Gäste die
 Anlage, und zum Start nannte die Süddeutsche Zeitung 6.000 Gäste pro Tag als
 Obergrenze.
 
-## Die Welt in Bereichen
+## Die Themenbereiche
 
-Rulantica ist in Themenbereiche geteilt. Die Namen musst du dir nicht merken,
-sie stehen auf dem Parkplan. Ein paar lohnen den Blick, weil sie sagen, was dort
-passiert.
+Rulantica ist in Themenbereiche geteilt. Auf dem Parkplan stehen alle, die
+wichtigsten sind diese.
 
 **Rangnakor** ist die „Stadt auf Stelzen“, vier Meter über dem Boden. Von hier
 führen die großen Rutschen nach unten, und von den Komfort-Hyddas aus sieht man
@@ -117,8 +110,8 @@ Wasserkarussell. **Lumåfals** ist die Höhle mit Wasserfall, Wellenbad und Lazy
 River, die **Skog Lagune** hat Sprudelliegen unter Kiefern.
 
 Für die Kleinen gibt es **Trølldal** mit flachem Wasser und kleinen Rutschen und
-den **Skip Strand**, auf dem ein versunkener Dreimaster und die Reste eines
-Dampfers zum Klettern einladen. Im **Nordiskturn** steht auf 30 Metern Höhe die
+den **Skip Strand**, auf dem man auf einem versunkenen Dreimaster und den Resten
+eines Dampfers klettern kann. Im **Nordiskturn** steht auf 30 Metern Höhe die
 größte Rutschenanlage der Wasserwelt.
 
 Drei Bereiche liegen draußen und sind an die Saison gebunden: **Svalgurok** mit
@@ -132,8 +125,8 @@ offen.
 
 Die Tabelle fasst zusammen, was der Park zu den größten Rutschen veröffentlicht.
 Unter 125 Zentimetern fahren Kinder bei mehreren davon nur mit einem Erwachsenen.
-Die Mindestgröße ist also die Grenze, ab der es überhaupt geht, nicht die, ab der
-ein Kind allein fahren darf.
+Ab der Mindestgröße geht es überhaupt, allein fahren dürfen Kinder bei mehreren
+dieser Rutschen erst ab 125 Zentimetern.
 
 | Rutsche                                         | Bereich     | Höhe   | Länge  | Mindestgröße | Alter | Hersteller |
 | ----------------------------------------------- | ----------- | ------ | ------ | ------------ | ----- | ---------- |
@@ -195,7 +188,7 @@ Start im Vierer-Reifen ist gemächlich, dann geht es steil bergab, und der
 Reifen schießt auf der anderen Seite die Wand hoch. Hier gibt es als einzige
 Rutsche der Anlage eine Gewichtsgrenze: 320 Kilogramm pro Reifen. Mindestgröße
 125 Zentimeter, ab zehn Jahren. In unseren Daten stehen die beiden Rutschen an
-der Spitze der Wartezeiten; wie groß der Abstand ist, steht in der Tabelle weiter unten.
+der Spitze der Wartezeiten. Wie groß der Abstand ist, steht in der Tabelle weiter unten.
 
 ### Stormvind: die Trommel
 
@@ -208,8 +201,7 @@ Jahren und 110 Zentimetern zu, unter 125 Zentimetern mit erwachsener Begleitung.
 ### Isbrekker: das Sprungbrett
 
 Isbrekker besteht aus zwei Sprungrutschen im Eispalast, vier Meter hoch und
-13,5 Meter lang. Statt gemächlich ins Wasser zu gleiten, wirst du am Ende nach
-Angaben des Parks regelrecht ins Becken katapultiert. Mindestgröße 125
+13,5 Meter lang. Am Ende wirst du nach Angaben des Parks ins Becken katapultiert. Mindestgröße 125
 Zentimeter, ab zehn Jahren, nur für Schwimmer, und wer unter zehn ist, fährt nur
 unter Aufsicht eines Erziehungsberechtigten. 240 Gäste pro Stunde.
 
@@ -218,16 +210,15 @@ unter Aufsicht eines Erziehungsberechtigten. 240 Gäste pro Stunde.
 [Vikingløp](ref:rulantica/vikinglop) im Nordiskturn ist laut Park die größte
 Speed-Rutsche Europas. Acht Rennbahnen laufen nebeneinander, du legst dich auf
 eine Matte, Kopf voraus, und rutschst gegen die Gäste auf den anderen Bahnen.
-Unten steht eine Tribüne, von der aus Zuschauer den Sieger bejubeln. Die Regeln
-des Parks sind genau: Arme und Ellbogen bleiben auf der Matte, Beine und Knie
-auch, in den Kurven halten beide Hände die Matte fest, und kurz vor dem Ziel
-hebst du die Füße an. Brillen sind hier nicht erlaubt. Das theoretische Maximum
+Unten steht eine Tribüne, von der aus Zuschauer den Sieger bejubeln. Nach den
+Regeln des Parks bleiben Arme und Ellbogen auf der Matte, Beine und Knie auch,
+in den Kurven halten beide Hände die Matte fest, und kurz vor dem Ziel hebst du
+die Füße an. Brillen sind hier nicht erlaubt. Das theoretische Maximum
 liegt bei 600 Gästen pro Stunde, Mindestgröße ist 110 Zentimeter, ab zehn Jahren.
 
 ## Wasser ohne Rutsche
 
-Nicht alles in Rulantica ist eine Rutsche, und wer nach drei Stunden Treppensteigen
-etwas anderes will, findet es hier.
+Wer nach drei Stunden Treppensteigen etwas anderes will, findet es hier.
 
 [Snorri's Saga](ref:rulantica/snorris-saga) ist ein Strömungskanal. Du setzt dich in
 einen Einerreifen, lehnst dich zurück und treibst durch die ganze Wasserwelt: an
@@ -245,16 +236,14 @@ theoretische Kapazität liegt bei 1.080 Gästen pro Stunde. Das Karussell steht
 inzwischen unter Dach und läuft ganzjährig; die Mindestgröße beträgt 90
 Zentimeter, ab drei Jahren, unter 120 Zentimetern mit einem Erwachsenen.
 
-Der [Vildstrøm](ref:rulantica/vildstrom) ist ein reißender Fluss, der alles
-mitnimmt, was sich ihm anvertraut. Kinder unter 125 Zentimetern oder unter acht
+Der [Vildstrøm](ref:rulantica/vildstrom) ist ein reißender Fluss. Kinder unter 125 Zentimetern oder unter acht
 Jahren dürfen ihn nur mit Schwimmweste und in Begleitung eines Erwachsenen nutzen.
 Am Ufer stehen Liegen für alle, die eine Pause von den Stromschnellen brauchen.
-Der **Surf Fjørd** ist das Wellenbad im Herzen der Wasserwelt, und im
-**Hoppablad** wartet ein Hindernisparcours auf dem Wasser, auf dem keine Brille
+Der **Surf Fjørd** ist das Wellenbad mitten in der Wasserwelt, und im
+**Hoppablad** gibt es einen Hindernisparcours auf dem Wasser, auf dem keine Brille
 getragen werden darf.
 
-Eine Sonderrolle hat **Snorri Snorkling VR – The New Adventure** an der Skog
-Lagune. Du bekommst eine VR-Taucherbrille mit Schnorchel und schwimmst in einem
+**Snorri Snorkling VR – The New Adventure** liegt an der Skog Lagune. Du bekommst eine VR-Taucherbrille mit Schnorchel und schwimmst in einem
 Becken, das 1,10 Meter tief ist, durch versunkene Schiffswracks bis zum Dorf der
 Meerjungfrauen, während die Brille die Szene dazu zeigt. Eine Fahrt dauert sechs
 Minuten, zwei Becken nebeneinander nehmen bis zu vier Personen auf. Die
@@ -265,7 +254,7 @@ nennt 40 Gäste pro Stunde als Kapazität. Rollstühle kommen nicht hinein, und 
 Brille trägt, setzt sie ab oder trägt sie unter der VR-Brille, wenn das Format passt. Die Station hat laut Park täglich von
 12:00 bis 21:00 Uhr geöffnet.
 
-## Wartezeiten: Was wir messen
+## Wartezeiten an den Rutschen
 
 Rulantica gibt für die großen Attraktionen Wartezeiten an, und wir erfassen sie
 wie bei jedem anderen Park. In der Tabelle stehen die zehn Attraktionen mit den
@@ -291,7 +280,7 @@ Plateau, nach 21 Uhr fällt es ab.
 
 ```
 
-Das Plateau ist flach. Nach 11 Uhr gibt es in unseren Daten keine Stunde, in der
+Nach 11 Uhr gibt es in unseren Daten keine Stunde, in der
 eine Rutsche plötzlich doppelt so lange dauert wie in der Stunde davor. Früh
 anzukommen spart bei Hugin, Munin und Stormvind etwas und an den Vierer-Reifen
 wenig.
@@ -303,18 +292,18 @@ Tage an den großen Rutschen. Das reicht für die Monate von Januar bis Septembe
 Dezember und Oktober stehen dagegen auf nur je sieben Tagen, ich lese sie als
 Hinweis und nicht als Ergebnis.
 
-Der Hinweis ist deutlich. **Juli und August** sind die vollsten Monate, der August
-mit Abstand. Der **Dezember** liegt auf dem Niveau des Sommers; die sieben Tage
-stammen aus der Weihnachtswoche. Am ruhigsten waren **Januar und März**, danach
-folgen der Februar und der Mai. Beim Wochentag sticht nur der **Samstag** heraus.
+Juli und August sind die vollsten Monate, der August mit Abstand. Der Dezember
+liegt auf dem Niveau des Sommers. Die sieben Tage stammen aus der Weihnachtswoche.
+Am ruhigsten waren Januar und März, danach folgen der Februar und der Mai. Beim
+Wochentag sticht nur der Samstag heraus.
 Montag bis Freitag unterscheiden sich in unseren Daten kaum, und auch der
 Sonntag liegt dicht dabei.
 
-Der Kalender spielt dem Winter zu: Wenn der Europa-Park vom 11. Januar bis zum
+Wenn der Europa-Park vom 11. Januar bis zum
 19. März 2027 geschlossen ist, hat Rulantica täglich auf, und Januar und März
 gehören bei uns zu den ruhigsten Monaten. In unserem Kalender wirken außerdem die Schulferien deutscher Bundesländer und Schweizer
 Kantone auf einen Tag ein, und diese Ferien verschieben sich gegeneinander.
-Verlassen kann man sich deshalb auf die Tendenz, nicht auf den einzelnen Tag.
+Einzelne Tage können deshalb abweichen.
 Die ruhigsten kommenden Tage:
 
 ```best-days-widget slug=rulantica
@@ -327,35 +316,33 @@ Und die Monate und Wochentage, gerechnet aus den gemessenen Tagen:
 
 ```
 
-## Ein Tag, in Reihenfolge
+## Die Reihenfolge für einen Tag in Rulantica
 
-Eine Strategie, die an einer einzelnen Rutsche den Unterschied macht, gibt es
-nicht, die Wartezeiten sind dafür zu kurz. Eine Reihenfolge, die den Tag
-ruhiger macht, schon.
+Die Wartezeiten sind zu kurz, als dass sich ein Trick an einer einzelnen Rutsche
+lohnt. Mit fester Reihenfolge wird der Tag trotzdem ruhiger.
 
-**Vor der Öffnung.** Übernachtungsgäste des Europa-Park Erlebnis-Resorts und
-Inhaber des Abenteuertickets dürfen ab 9:00 Uhr hinein, eine halbe Stunde vor
+Vor der Öffnung dürfen Übernachtungsgäste des Europa-Park Erlebnis-Resorts und
+Inhaber des Abenteuertickets ab 9:00 Uhr hinein, eine halbe Stunde vor
 allen anderen. Diese halbe Stunde reicht für die zwei Fallkabinen in Rangnakor.
 
-**Der Vormittag.** Geh danach nach Vinterhal zu Svalgur Rytt und Vinter Rytt, den
+Am Vormittag gehst du danach nach Vinterhal zu Svalgur Rytt und Vinter Rytt, den
 beiden Rutschen mit den längsten Wartezeiten, dann zu Stormvind und Isbrekker. Vikingløp im
 Nordiskturn hat trotz seiner acht Bahnen in unseren Daten deutlich kürzere
 Wartezeiten als die beiden Vierer-Reifen-Rutschen.
 
-**Mittags.** Zwischen den Rutschenrunden lohnen Snorri's Saga, der Surf Fjørd und
+Mittags lohnen zwischen den Rutschenrunden Snorri's Saga, der Surf Fjørd und
 die Sprudelliegen der Skog Lagune. Essen darfst du nicht mitbringen: Mitgebrachtes
 gehört ins Schließfach und wird in der Lobby gegessen, zum Beispiel im Kelpie
 Café. In der Halloween-Saison laufen am Skip Strand Shows zwischen 15:30 und 17:30
 Uhr (Stand 8. Oktober 2026).
 
-**Der Abend.** Das Abendticket gilt ab 17:00 Uhr, das Moonlight-Ticket ab 19:00
+Am Abend gilt das Abendticket ab 17:00 Uhr, das Moonlight-Ticket ab 19:00
 Uhr, beide bis 22:00 Uhr. In unseren Daten fallen die Wartezeiten nach 21 Uhr
 deutlich. Wer nur für die großen Rutschen kommt, kann also mit einem Abendticket
 die letzten Stunden nutzen und zahlt weniger.
 
 ## Mit Kindern
 
-Rulantica ist auf Familien eingestellt, und die Regeln sind eindeutig.
 Kinderwagen sind in der Wasserwelt aus Sicherheitsgründen nicht erlaubt; der Park
 bittet darum, sie im Auto zu lassen, und hält eine begrenzte Zahl an
 kinderwagengeeigneten Schließfächern bereit. Als Tipp nennt er eine Babyschale, in
@@ -380,8 +367,7 @@ Dazwischen liegt die Gruppe der Sechs- bis Zwölfjährigen. Die Einsteigerrutsch
 kann also alles bis Vikingløp rutschen, Hugin, Munin, Stormvind und Svalgur Rytt
 nur mit erwachsener Begleitung, und die Fallkabinen und Vinter Rytt noch nicht.
 
-Schwimmkenntnisse brauchst du je nach Rutsche unterschiedlich. Der Park schreibt
-das an jeder Attraktion aus: Bei Isbrekker gilt „nur für Schwimmer“, bei Snorri
+Der Park schreibt an jeder Attraktion aus, ob Schwimmkenntnisse nötig sind: Bei Isbrekker gilt „nur für Schwimmer“, bei Snorri
 Snorkling VR ebenfalls.
 
 ## Hyggedal: die Sauna über dem Wasser
@@ -391,8 +377,7 @@ Der Sauna- und Wohlfühlbereich **Hyggedal** hat über 1.000 Quadratmeter und li
 textilfreien Saunen mit regelmäßigen Aufgüssen, einem Dampfbad, zwei Außenterrassen
 und einer eigenen Bar. Eine der Saunen ist das **KOTA Sauna Chalet** auf der
 Außenterrasse. Zugang hast du nur mit dem **Hyggedal Rulantica Ticket** (52 bis
-68 Euro), das den normalen Eintritt gleich enthält. Ohne Rulantica-Ticket geht
-Hyggedal nicht. Wer schon eine Tageskarte hat, kann den Zugang unter 07822 77 6655
+68 Euro), das den normalen Eintritt gleich enthält. Wer schon eine Tageskarte hat, kann den Zugang unter 07822 77 6655
 dazubuchen oder bei Platz vor Ort.
 
 Kinder unter 12 Jahren dürfen nicht hinein, und Saunen, Dampfbad, Kübelduschen und
@@ -405,8 +390,7 @@ bucht, bekommt eine Ticketgarantie für Begleitpersonen, auch wenn der Online-Ve
 ausverkauft ist.
 
 Die **panoraama – die Rulantica Bar** im ersten Obergeschoss erreichst du über die
-Lobby, und dafür brauchst du keinen Eintritt. Der Blick über die Wasserwelt gehört
-hier zum Getränk.
+Lobby, und dafür brauchst du keinen Eintritt.
 
 ## Komfortangebote im Überblick
 
@@ -433,17 +417,17 @@ bis zum 19. März 2027. Die Karten sind tagesbasiert, ein Zeitfenster nennt der
 Park nicht. Weil die Kapazität begrenzt ist, rät er zum Online-Kauf. An der
 Tageskasse gibt es Karten nur bei freier Kapazität und für **6 Euro Aufpreis**.
 
-- **Tagesticket:** 38 bis 54 Euro, von 9:30 bis 22:00 Uhr.
-- **Abendticket:** 35 bis 46,50 Euro, von 17:00 bis 22:00 Uhr.
-- **Moonlight-Ticket:** 28 bis 34 Euro, von 19:00 bis 22:00 Uhr.
-- **Hyggedal Rulantica Ticket:** 52 bis 68 Euro, mit Zugang zu Sauna und Ruhebereich.
-- **Abenteuerticket:** 59 bis 72 Euro, mit einem der drei Rulantica-Romane und
+- Tagesticket: 38 bis 54 Euro, von 9:30 bis 22:00 Uhr.
+- Abendticket: 35 bis 46,50 Euro, von 17:00 bis 22:00 Uhr.
+- Moonlight-Ticket: 28 bis 34 Euro, von 19:00 bis 22:00 Uhr.
+- Hyggedal Rulantica Ticket: 52 bis 68 Euro, mit Zugang zu Sauna und Ruhebereich.
+- Abenteuerticket: 59 bis 72 Euro, mit einem der drei Rulantica-Romane und
   Einlass ab 9:00 Uhr.
-- **Best-Preis-Ticket:** 28 bis 48 Euro, nur zusammen mit einer Übernachtung im
+- Best-Preis-Ticket: 28 bis 48 Euro, nur zusammen mit einer Übernachtung im
   Europa-Park Erlebnis-Resort.
-- **Gruppen:** ab 20 zahlenden Personen 38 bis 45 Euro, Schulklassen ab zehn
+- Gruppen: ab 20 zahlenden Personen 38 bis 45 Euro, Schulklassen ab zehn
   zahlenden Schülern 28 bis 33 Euro.
-- **Gutscheinticket:** ab 51 Euro.
+- Gutscheinticket: ab 51 Euro.
 
 Dazu kommen kleine Posten. Das Schließfach kostet **1 Euro pro Tag** und lässt sich
 beim Ticketkauf oder vor Ort buchen; für Hotelgäste ab zwölf Jahren ist es
@@ -461,8 +445,7 @@ Fachzeitschrift Schwimmbad+Sauna in der Kategorie „Smart Technology“.
 
 ## Rulantica und der Europa-Park
 
-Beide gehören demselben Betreiber und liegen an derselben Autobahnausfahrt. Im
-Kalender ergänzen sie sich. Der Europa-Park ist vom 28. März bis 25. September 2026
+Beide gehören demselben Betreiber und liegen an derselben Autobahnausfahrt. Der Europa-Park ist vom 28. März bis 25. September 2026
 in der Sommersaison geöffnet, danach folgen Halloween (bis 1. November) und
 HALLOWinter (2. bis 27. November), vom 28. November 2026 bis 9. Januar 2027 der
 Winterzauber. Dann ist bis zum 19. März Pause.
@@ -476,7 +459,7 @@ pro Person im Fünfbettzimmer. In der Nebensaison gibt es „2 für 1“ (zwei N
 und zwei Tage Rulantica ab 160 Euro pro Person im Doppelzimmer) und „Kids for free“
 für zwei Erwachsene mit bis zu drei Kindern ab 320 Euro.
 
-Wie der Europa-Park im Messdatensatz aussieht, steht im
+Welche Wartezeiten und ruhigen Tage wir im Europa-Park gemessen haben, steht im
 [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
 
 ## Anreise, Parken, Übernachten
@@ -504,14 +487,14 @@ Einlass um 9:00 Uhr.
 
 ## Essen, Regeln und Kleingedrucktes
 
-Die Gastronomie reicht vom Kelpie Café in der Lobby (8:30 bis 22:30 Uhr) über das
-Snekkjas in der Stelzenstadt und das Lumålunda am Surf Fjørd bis zum Tempel Krog am
+Zur Gastronomie gehören das Kelpie Café in der Lobby (8:30 bis 22:30 Uhr), das
+Snekkjas in der Stelzenstadt, das Lumålunda am Surf Fjørd und der Tempel Krog am
 Frigg Tempel. Dazu kommen die Skogbar mitten in der Lagune, die Svømme-Bar am
 Außenpool und die Hygge Sauna-Bar für Hyggedal-Gäste. Es gibt vegetarische, vegane
 und glutenfreie Gerichte, und an den Stationen neben Snekkjas und im Strand Kök
 mischst du dir Softeis mit Toppings selbst.
 
-Ein paar Regeln sind in Rulantica anders als im Freibad:
+Diese Regeln gelten in der Wasserwelt:
 
 - Badebekleidung muss aus speziellen Badetextilien bestehen.
 - Brillen sind auf Hoppablad, Dugdrob, Vildfål, Vikingløp und Isbrekker nicht
@@ -524,7 +507,7 @@ Ein paar Regeln sind in Rulantica anders als im Freibad:
 - Für Rollstuhlfahrer sind die meisten Wege befahrbar, es gibt Wasserrollstühle in
   begrenzter Zahl. Die VR-Station ist nicht zugänglich.
 
-## Was neu ist und was zu ist
+## Schließzeiten, Halloween und Nørd Havn
 
 Vom **16. bis zum 27. November 2026** ist Rulantica wegen der Revision
 geschlossen, ebenso am 24. und 25. Dezember. Am 31. Dezember schließt die
@@ -596,14 +579,13 @@ werden. Getränke sind erlaubt, nur keine Glasflaschen.
 
 Ja. Mit einem Tagesticket von 9:30 bis 22:00 Uhr kommst du bei den kurzen
 Wartezeiten an alle großen Rutschen, an das Wasserkarussell, den Strömungskanal
-und die Lagune. Mit kleinen Kindern wird der Tag meist kürzer, mit Hyggedal länger.
+und die Lagune.
 
-## Fahr hin, wenn die anderen zu haben
+## Rulantica, wenn der Europa-Park geschlossen ist
 
-Rulantica hat eine Geschichte, ein Maskottchen und eine Rutschenlandschaft, die
-von 9:30 bis 22:00 Uhr offen ist. Im Januar öffnet sie, wenn der Europa-Park
-nebenan geschlossen hat, und in unseren Daten ist der Januar einer der ruhigsten
-Monate.
+Rulantica hat täglich von 9:30 bis 22:00 Uhr offen, im Januar auch dann, wenn der
+Europa-Park nebenan geschlossen hat. In unseren Daten ist der Januar einer der
+ruhigsten Monate.
 
 Wie es gerade am Park aussieht:
 
@@ -617,8 +599,7 @@ Und die zwei Rutschen, die ich zuerst fahren würde:
 [Vikingløp](ref:rulantica/vikinglop?full)
 
 Nimm eigene Handtücher mit, lass die Brille im Schließfach und plane die
-Fallkabinen für die erste halbe Stunde ein. Der Rest passt dann ohne Eile in den
-Tag.
+Fallkabinen für die erste halbe Stunde ein.
 
 — Patrick
 
