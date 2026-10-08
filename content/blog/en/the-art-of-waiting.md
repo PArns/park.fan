@@ -58,7 +58,7 @@ capacity. One decides how the wait _feels_, the other how long the line
 _really_ is.
 
 park.fan was invented in a Taron queue, out of pure frustration over what felt
-like an eternity ([the whole story is here](/blog/welcome-to-park-fan-blog)),
+like an eternity ([how that happened](/blog/welcome-to-park-fan-blog)),
 and I wanted to know exactly what was happening to me back there. Two formulas
 come into it, and the two of them fit together on the back of a single beer
 mat.

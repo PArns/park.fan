@@ -276,9 +276,8 @@ navideña de estilo escandinavo y espectáculos propios con Anna, Elsa y Olaf. E
 Nochevieja, cada uno de los dos parques celebra su propia fiesta.
 
 La curva por día de la semana de arriba es plana, y tiene su motivo: un parque que abre 365 días al año y se anuncia en media docena de
-países no tiene un martes muerto al que escaparse. Cuáles de las próximas
-semanas son, aun así, las más tranquilas, está aquí, recalculado en todo
-momento:
+países no tiene un martes muerto al que escaparse. Cuáles de las próximas semanas son, aun así, las más tranquilas está marcado en el
+calendario de abajo, recalculado en todo momento:
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -417,16 +416,14 @@ las atracciones al aire libre:
 
 Quien busque la comparación con los parques que desde Alemania quedan a una
 distancia similar: sobre [Walibi Belgium](/blog/walibi-belgium-tiempos-de-espera-consejos)
-y sobre el [Efteling](/blog/efteling-el-disney-de-los-paises-bajos) ya hay aquí
-sendos textos. Y si tu viaje cae entre ahora y el verano de 2027: Adventure
+y sobre el [Efteling](/blog/efteling-el-disney-de-los-paises-bajos) ya tenemos sendos artículos. Y si tu viaje cae entre ahora y el verano de 2027: Adventure
 World funciona en estos meses con trece atracciones en vez de catorce. Quien
 ya dudaba de si el ticket de dos parques merece el sobreprecio tiene ahora un
 argumento menos a favor.
 
 Del 7 de noviembre al 6 de enero los dos parques celebran la temporada navideña,
 y la semana entre Navidad y Año Nuevo se comporta aquí distinto que en Orlando:
-en Adventure World es incluso la más tranquila del año medido. Las fechas, el
-programa de Nochevieja y la comparación están aquí: [Navidad y Nochevieja en Orlando y París](/blog/navidad-ano-nuevo-orlando-paris-2026).
+en Adventure World es incluso la más tranquila del año medido. Las fechas, el programa de Nochevieja y la comparación están en nuestro artículo [Navidad y Nochevieja en Orlando y París](/blog/navidad-ano-nuevo-orlando-paris-2026).
 
 — Patrick
 

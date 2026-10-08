@@ -61,7 +61,7 @@ _réelle_ de la file.
 
 Le sujet ne me lâche pas, pour une raison assez personnelle. park.fan a été inventé
 dans une file de Taron, par pure frustration devant une éternité ressentie
-([toute l’histoire est ici](/blog/une-poussette-une-gondole-et-park-fan)). Ce
+([comment c’est arrivé](/blog/une-poussette-une-gondole-et-park-fan)). Ce
 qui m’arrivait vraiment cet après-midi-là, j’ai voulu ensuite le savoir
 précisément. Deux formules entrent en jeu, et les deux tiennent ensemble au dos
 d’un sous-bock.

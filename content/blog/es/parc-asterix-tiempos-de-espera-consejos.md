@@ -78,8 +78,8 @@ parques uno por uno, es el tercero de Francia, detrás del
 Adventure World; el parque se presenta como el segundo porque cuenta Disneyland
 Paris como un solo destino. Entre sus montañas rusas están Goudurix, que ya funcionaba el día de la apertura, y [Toutatis](ref:parc-asterix/toutatis), la más alta de Francia.
 
-Lo que sigue sale de nuestras mediciones de tiempos de espera desde la Navidad de
-2025, de la web del parque tal como estaba el 2 de octubre de 2026 y de los
+Los tiempos de espera salen de nuestras mediciones desde la Navidad de 2025; lo
+demás, de la web del parque tal como estaba el 2 de octubre de 2026 y de los
 artículos y bases de datos enlazados al final. Cuando dos fuentes no coinciden,
 aparecen las dos cifras.
 

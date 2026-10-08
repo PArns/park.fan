@@ -91,10 +91,8 @@ export function ContentDE() {
           ziemlich genau nachrechnen.
         </Lead>
         <P>
-          Also haben wir nachgerechnet, mit den mitgeschriebenen Wartezeiten aus über 200 Parks.
-          Weiter unten stehen die ruhigsten Wochentage und Monate, die besten Uhrzeiten und die
-          Termine, die du besser meidest. Den passenden Tag für deinen Wunschpark findest du danach
-          im Crowd-Kalender.
+          Also haben wir nachgerechnet, mit den mitgeschriebenen Wartezeiten aus über 200 Parks. Den
+          passenden Tag für deinen Wunschpark findest du danach im Crowd-Kalender.
         </P>
         <Highlight>
           Am kürzesten stehst du dienstags bis donnerstags außerhalb der Ferien an, wenn du

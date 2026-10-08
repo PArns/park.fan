@@ -132,6 +132,8 @@ The text never talks about itself, its chapters, its thesis, or how it is organi
 
 - `Und jetzt der Grund, warum dieses Kapitel hier steht` → just write the paragraph
 - `Kommen wir nun zu`, `In diesem Abschnitt` → delete
+- `Hier steht, wie …`, `Was hier steht`, `Unten stehen zuerst die Termine` → say it, or name the
+  table it is in (§3.3, rule 18)
 - `die These dieses Artikels` → name the claim instead
 - `Es ist wichtig zu beachten, dass X` → `X`. The importance is shown by the sentence existing.
 - `Als langjähriger Freizeitpark-Fan …`, `As a long-time coaster fan, I …` → the byline already
@@ -682,7 +684,7 @@ sentences on the first run.
 
 ### 3.3 Ours, and non-negotiable
 
-Seventeen house rules that are not in anybody's research. They came out of real reviews of shipped
+Twenty house rules that are not in anybody's research. They came out of real reviews of shipped
 text:
 
 1. **Never `ehrlich`, in any form.** No `ehrlich gesagt`, no `der ehrlichste Woodie`, no
@@ -840,6 +842,46 @@ Park ist deshalb nicht ruhig`, where it also denied a reading nobody had: an emp
     shipped denial (`not simply quiet`, `niet zomaar rustig`, `pas simplement calme`, `no está
 simplemente tranquilo`, `non è semplicemente tranquillo`) and on a park that is flat (`is
 flat`, `ligt vlak`, `est plat`, `es plano`, `è piatto`).
+18. **Never `hier steht`.** Not `Hier steht, wie lang man an 225 gemessenen Tagen angestanden
+hat`, not `Was hier steht, ist live`, not `Bei dem Median, der hier steht`, not `[die ganze
+Geschichte steht hier](…)` and not `Unten stehen zuerst die Termine`. The text points at itself
+    as the place where something is written (§1.4) instead of writing it. Say the thing (`An 225
+gemessenen Tagen stand man an den meisten Bahnen nur wenige Minuten an`), name the table it
+    is in (`in der Tabelle darunter`, `Die ruhigsten Tage der nächsten Wochen im Europa-Park:`),
+    or put the link on the words that say what is behind it (`[wie es dazu kam](…)`). A place is
+    named, not pointed at: `das seit 1956 im Park steht`, `Im Hansa-Park steht dort oft
+zusätzlich ein Alter`. Patrick put it on the list on 2026-10-08, after the excerpt of the
+    Plopsaland guide; that day it and its kin stood in twenty German sentences across thirteen
+    posts, on the best-time page, in a caption and in a planner string, and the translations
+    had carried it as `What’s in there is live`, `Wat hier staat`, `Hier lees je`, `Ce qui
+s’affiche ici`, `Lo que ves aquí`, `Quello che c’è qui` and
+    `[the details are here](…)`. `pnpm check:prose` fails on `hier steht` in any position, on
+    `steht hier` before a comma, a colon or the end of a link label, on `hier findest du` and on
+    a sentence that opens with `Unten steht` (a figure after it, as in `Unten stehen 96
+Attraktionen`, or a `Ganz` before it, as in a ranking, stays), on every surface. The other
+    five languages fail on the shapes listed above; their `Below is` stays a reading job, because
+    the guide and planner pages introduce a demo you can drag with it.
+19. **Never `unterschiedliche Preise nennen` without the prices.** `Suchergebnisse aus drei
+Jahrzehnten, die alle denselben Park meinen und unterschiedliche Preise nennen` says that a
+    difference exists and gives none of it. Give the figure that holds (`Ein Ticket mit festem
+Datum kostet 2026 online ab 36 Euro.`), or both figures and whose they are (`Die Ticketseite
+nennt dafür an zwei Stellen verschiedene Preise, 229,99 $ und 274,99 $`). A rule that has no
+    single figure says what happens instead: `Widersprechen sich die Quellen, entscheidet die
+Mehrheit`, not `Melden die Quellen unterschiedliche Zahlen`. Patrick put it on the list on
+    2026-10-08, from the same guide, which had carried it into all five translations (`all
+quoting different prices`, `verschillende prijzen noemen`, `annoncent des prix différents`,
+    `dan precios distintos`, `riportano prezzi diversi`). `pnpm check:prose` fails, in six
+    languages and on every surface, on a verb of naming with `unterschiedliche`, `verschiedene`,
+    `abweichende` or `andere` and a noun for figures (`Preise`, `Zahlen`, `Höhen`, `Termine` and
+    their twins), and in German on `die Angaben gehen auseinander`, when neither that sentence
+    nor the next holds a figure. A year is not a figure.
+20. **A launch coaster does not `anwerfen` its trains.** `Sky Scream wirft seine Züge dreimal
+an` stood in a Plopsaland caption. A motor is angeworfen; a train is abgeschossen or
+    beschleunigt, and the thing itself is der Abschuss: `Erst nach dem dritten Abschuss kommt der
+Zug von Sky Scream über den 45 Meter hohen Top Hat.` Patrick put it on the list on
+    2026-10-08. `pnpm check:prose` fails on `anwerfen` and `anschmeißen` with a train, a car or
+    the riders as the object, so `den Motor anwerfen` stays. German only: `launch`, `lanceert`,
+    `lance`, `lanza` and `lancia` are the right words.
 
 ### 3.4 Travel-guide copy, in all six languages
 
@@ -1305,8 +1347,9 @@ output the way a regex can actually be trusted to:
   can only be about us, placeholder text, `Schlange` for `Warteschlange`, a German quote closed
   with a straight `"`, `die Antwort auf` in any of its six languages, `nennen eine` and its
   Dutch twin, a model that grades itself in any of its six languages, `ob der Tag aufgeht` and its
-  five translations, `zwölf von zwölf`, `kürzer besetzt`, and `der Park ist ruhig` with its
-  flat waits (§3.3).
+  five translations, `zwölf von zwölf`, `kürzer besetzt`, `der Park ist ruhig` with its
+  flat waits, `hier steht` and its kin, `unterschiedliche Preise nennen` with no price in sight,
+  and a train that is angeworfen (§3.3).
 - **Warnings** are budgets and signals a person decides on. `eerlijke prijzen` in a paragraph
   about a restaurant means _fair_ prices and stays; the same word in a UI string does not.
 

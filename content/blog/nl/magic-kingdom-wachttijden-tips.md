@@ -339,7 +339,7 @@ parken wel, en de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken) noemt hem.
 Sinds de opening is Magic Kingdom negen keer tijdelijk dichtgegaan vanwege een
 orkaan, het laatst in oktober 2024 bij Milton.
 
-Welke dagen in een bepaalde periode het rustigst zijn, staat hier, elke dag
+In de kalender hieronder zijn voor elke periode de rustigste dagen gemarkeerd, elke dag
 opnieuw berekend:
 
 ```best-days-widget slug=magic-kingdom-park

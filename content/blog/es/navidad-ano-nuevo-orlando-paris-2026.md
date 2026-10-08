@@ -65,9 +65,7 @@ del año**.
 
 Los dos destinos celebran la Navidad
 durante más o menos el mismo tiempo, los dos anuncian las mismas semanas, y
-sobre lo que te espera el 28 de diciembre dicen cosas muy distintas. Abajo van
-primero las fechas, cada una de la página oficial del parque, y después la
-medición con sus límites.
+sobre lo que te espera el 28 de diciembre dicen cosas muy distintas. Cada fecha sale de la página oficial del parque.
 
 > **Sobre las fechas:** este es el estado a 4 de octubre de 2026. Ese día releí
 > cada fecha, cada horario y cada precio en las páginas oficiales que aparecen

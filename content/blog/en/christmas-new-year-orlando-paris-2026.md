@@ -65,9 +65,7 @@ the year**.
 
 Both destinations run a Christmas season of
 roughly the same length, both advertise the same weeks, and when you ask what
-27 December actually looks like, they answer very differently. The dates come
-first, each one from the park's own site, and the measurement with its limits
-comes after.
+27 December actually looks like, they answer very differently. Each date comes from the park's own site.
 
 > **About the dates:** this is where things stood on 4 October 2026. I read
 > every date, time and price that day on the official pages listed in the

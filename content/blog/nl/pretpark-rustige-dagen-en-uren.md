@@ -81,8 +81,8 @@ Park blijft de wachttijd daarna tot de avond bijna gelijk, en in Legoland en Mov
 weer drukker.
 
 De pagina [Beste reistijd](/beste-tijd-om-te-bezoeken) laat je de rustigste
-dagen voor jouw reismaand zien. Hier staan twaalf parken naast elkaar, met de
-gegevens die park.fan sinds 24 december 2025 verzamelt.
+dagen voor jouw reismaand zien. Hieronder vergelijken we
+twaalf parken met de gegevens die park.fan sinds 24 december 2025 verzamelt.
 
 ## Waar de cijfers vandaan komen
 
@@ -165,7 +165,7 @@ Twee parken lopen tegen het patroon in. In Legoland Deutschland en Movie Park
 Germany is het laatste uur met gegevens, 17 uur, een van de drukste. In Heide
 Park eindigt de curve ook om 17 uur, daar trekt hij aan het eind niet aan.
 
-Hieronder staat de curve voor Europa-Park, elke attractie apart.
+De curve voor Europa-Park, elke attractie apart:
 
 ```hourly-profile-widget slug=europa-park top=8
 
@@ -454,7 +454,7 @@ de avond blijft, wint in Disneyland Paris, Parc Astérix, Europa-Park, de Efteli
 en beide Walibi's, maar nauwelijks in Phantasialand en Heide Park. Hoe je de uren
 indeelt, laat de [dagplanner](/blog/dagplanner) zien.
 
-Hieronder staan de rustigste dagen van de komende weken in Europa-Park.
+De rustigste dagen van de komende weken in Europa-Park:
 
 ```best-days-widget slug=europa-park
 

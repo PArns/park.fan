@@ -9,9 +9,10 @@ excerpt: >-
   Depuis juin 2025, le Holiday Park de Haßloch s'appelle Plopsaland
   Deutschland, et beaucoup le cherchent encore sous son ancien nom. On y trouve
   des montagnes russes élues deux fois meilleures du monde, et depuis mars 2026
-  une deuxième à côté. Voici combien de temps on a vraiment patienté sur
-  225 jours mesurés, pourquoi le vendredi est le jour le plus calme de la
-  semaine et ce que rapporte réellement l'Express Pass à 35 euros.
+  une deuxième à côté. Sur 225 jours mesurés, l'attente n'a duré que quelques
+  minutes à la plupart des attractions, le moins longtemps le vendredi hors
+  saison d'Halloween, et l'Express Pass à 35 euros se rentabilise surtout un
+  samedi de juillet.
 tags:
   - plopsaland-deutschland
   - holiday-park
@@ -60,9 +61,10 @@ plupart viennent se dressent au même endroit depuis 2001. Seul le parc porte un
 depuis le 28 juin 2025 : [Plopsaland Deutschland](ref:plopsaland-deutschland), du nom de
 l'exploitant belge qui le possède depuis novembre 2010.
 
-Qui cherche un billet en 2026 en tapant « Holiday Park » tombe sur des résultats couvrant trois
-décennies, qui désignent tous le même parc et annoncent des prix différents. L'exploitant a
-abandonné l'ancienne marque avec le changement de nom ; la rue et le numéro l'ont gardée.
+Qui cherche un billet en 2026 en tapant « Holiday Park » tombe aussi sur des pages d'années passées,
+avec des prix qui ne sont plus valables. Un billet daté coûte en 2026 à partir de 36 euros en ligne.
+L'exploitant a abandonné l'ancienne marque avec le changement de nom ; la rue et le numéro l'ont
+gardée.
 
 Le parc se trouve dans le Palatinat, entre Neustadt an der Weinstraße et Ludwigshafen, sur
 40 hectares. En 2025, il a accueilli 804 218 visiteurs, la meilleure année de son histoire selon

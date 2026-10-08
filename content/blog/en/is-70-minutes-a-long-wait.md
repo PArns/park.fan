@@ -78,7 +78,7 @@ weight a row carries depends on the column with the days measured.
 
 ```
 
-What’s in there is live. Read this article again in three months and the table
+These tables are live. Read this article again in three months and the table
 will hold different numbers, while the text around it still holds. These widgets
 exist because four older articles had their figures typed by hand into
 Markdown tables, spread across six languages, and after a few weeks they had

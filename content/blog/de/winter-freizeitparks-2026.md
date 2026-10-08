@@ -310,8 +310,8 @@ Experience, eine Zugfahrt zum Nordpol gegen Aufpreis.
 ![Eine violett angeleuchtete Achterbahn bei Nacht, darüber der Mond | Bottrop im Dunkeln. Zwischen Halloween und Weihnachten liegen hier knapp drei Wochen Umbau. | wide](/media/movie-park-germany/iron-claw.jpg)
 
 Movie Park und Bobbejaanland gehören zu Parques Reunidos, und die will der
-Finanzinvestor EQT gerade verkaufen. Für Besucher ändert das vorerst nichts,
-[die Einzelheiten stehen hier](/blog/parques-reunidos-verkauf-movie-park).
+Finanzinvestor EQT gerade verkaufen. Für Besucher ändert das vorerst nichts
+([mehr zum Verkauf](/blog/parques-reunidos-verkauf-movie-park)).
 Welcher Wochentag in Bottrop wirklich der ruhigste ist, und warum die üblichen
 Ratgeber dabei danebenliegen, steht im
 [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).

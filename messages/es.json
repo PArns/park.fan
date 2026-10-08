@@ -2725,7 +2725,7 @@
       "facts": {
         "title": "Lo que sabemos de este día",
         "nothing": "Todavía no tenemos previsión para ese día.",
-        "pickFirst": "Elige un día y aquí aparece lo que sabemos de él.",
+        "pickFirst": "Elige un día para ver lo que sabemos de él.",
         "loading": "Cargando la previsión …"
       },
       "blocks": {

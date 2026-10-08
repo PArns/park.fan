@@ -80,8 +80,8 @@ Heide Park la espera apenas cambia el resto del día, y en Legoland y Movie Park
 tarde vuelve a haber más gente.
 
 La página [Mejor época para visitar](/mejor-epoca-para-visitar) te muestra los
-días más tranquilos para el mes en que viajas. Aquí ponemos doce parques uno al
-lado de otro, con los datos que park.fan recoge desde el 24 de diciembre de 2025.
+días más tranquilos para el mes en que viajas. Más abajo comparamos
+doce parques con los datos que park.fan recoge desde el 24 de diciembre de 2025.
 
 ## De dónde salen las cifras
 
@@ -164,7 +164,7 @@ Dos parques van contra el patrón. En Legoland Deutschland y Movie Park Germany 
 última hora con datos, las 17 h, es una de las más llenas. La curva de Heide Park
 también termina a las 17 h, pero allí no sube al final.
 
-Debajo está la curva de Europa-Park, atracción por atracción.
+La curva de Europa-Park, atracción por atracción:
 
 ```hourly-profile-widget slug=europa-park top=8
 
@@ -458,7 +458,7 @@ queda hasta la noche gana en Disneyland Paris, Parc Astérix, Europa-Park,
 Efteling y los dos Walibi, pero casi nada en Phantasialand y Heide Park. Cómo
 repartir las horas te lo muestra el [planificador](/blog/planificador).
 
-Debajo están los días más tranquilos de las próximas semanas en Europa-Park.
+Los días más tranquilos de las próximas semanas en Europa-Park:
 
 ```best-days-widget slug=europa-park
 
