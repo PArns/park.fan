@@ -43,7 +43,7 @@ export interface LatestPostsLabels {
 
 export interface LatestPostsPayload {
   labels: LatestPostsLabels;
-  /** Newest first, by publication date. */
+  /** Newest first, by publication date and `time` (`newestPublishedFirst`). */
   posts: LatestPost[];
 }
 
