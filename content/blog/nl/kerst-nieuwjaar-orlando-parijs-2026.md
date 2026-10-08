@@ -66,9 +66,8 @@ van het jaar**.
 
 Beide bestemmingen vieren ongeveer even
 lang Kerst, beide adverteren dezelfde weken, en op de vraag wat je op 28
-december te wachten staat geven ze een heel ander antwoord. Hieronder eerst de
-data, elk van de officiële pagina van het park, daarna de meting met haar
-beperkingen.
+december te wachten staat geven ze een heel ander antwoord. De data komen telkens van
+de officiële pagina van het park.
 
 > **Over de data:** dit is de stand van 4 oktober 2026. Alle datums, tijden en
 > prijzen heb ik die dag nagelezen op de officiële pagina's die onderaan bij de
@@ -307,7 +306,7 @@ zijn alle dagen vakantiedagen, en de rustigste weekdag van het jaar is dan nog
 maar een weekdag. Voor de weken ervoor is de kolom bruikbaar, en daar ligt de
 hele eerste seizoenshelft.
 
-Welke dagen onze kalender voor de komende weken als rustig aanmerkt, staat hier:
+De dagen die onze kalender voor de komende weken als rustig aanmerkt:
 
 ```best-days-widget slug=magic-kingdom-park
 

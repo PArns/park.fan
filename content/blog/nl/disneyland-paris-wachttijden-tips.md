@@ -275,8 +275,8 @@ de twee parken met een eigen programma.
 De weekdagcurve hierboven is vlak, omdat een park dat 365 dagen per jaar open is
 en in een half dozijn landen wordt geadverteerd, geen dode dinsdag heeft om naar
 uit te wijken.
-Welke van de komende weken toch het rustigst zijn, staat hier, doorlopend
-opnieuw berekend:
+Welke van de komende weken toch het rustigst zijn, is gemarkeerd in de kalender
+hieronder, doorlopend opnieuw berekend:
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -411,16 +411,14 @@ de buitenattracties:
 
 Wie de vergelijking zoekt met andere grote parken: over
 [Walibi Belgium](/blog/walibi-belgium-wachttijden-tips) en over het
-[Efteling](/blog/efteling-disney-van-nederland) staat hier al elk een
-eigen tekst. En als jouw reis tussen nu en de zomer van 2027 valt: Adventure
+[Efteling](/blog/efteling-disney-van-nederland) hebben we al elk een eigen artikel. En als jouw reis tussen nu en de zomer van 2027 valt: Adventure
 World rijdt in deze maanden dertien attracties in plaats van veertien. Wie
 toch al twijfelde of het twee-parkenticket de meerprijs waard is, heeft
 daar nu een argument minder voor.
 
 Van 7 november tot 6 januari draait in beide parken het kerstseizoen, en de week
 tussen Kerst en Nieuwjaar gedraagt zich hier anders dan in Orlando: in de Adventure World
-zelfs de rustigste van het gemeten jaar. Data, oudejaarsprogramma en de
-vergelijking staan hier: [Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
+zelfs de rustigste van het gemeten jaar. Data, oudejaarsprogramma en de vergelijking staan in ons artikel [Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
 
 — Patrick
 

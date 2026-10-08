@@ -1,0 +1,31 @@
+{
+  "title": "Expedition GeForce, Airtime-Hügel",
+  "park": "plopsaland-deutschland",
+  "ride": "bigfm-expedition-geforce",
+  "roles": ["ride-card"],
+  "tags": ["day", "overcast", "coaster", "ride", "aerial", "outdoor", "photo"],
+  "alt": {
+    "de": "Blick von oben auf eine rote Stahlachterbahn, deren Schiene in langen Hügeln und einer weiten Kurve durch bewaldetes Gelände läuft.",
+    "en": "A view from above of a red steel coaster whose track runs through wooded ground in long hills and one wide curve.",
+    "nl": "Blik van bovenaf op een rode stalen achtbaan waarvan het spoor in lange heuvels en een brede bocht door bebost terrein loopt.",
+    "fr": "Vue plongeante sur des montagnes russes en acier rouge dont la voie traverse un terrain boisé en longues collines et une large courbe.",
+    "es": "Vista desde arriba de una montaña rusa de acero roja cuyo recorrido atraviesa un terreno arbolado en colinas largas y una curva amplia.",
+    "it": "Veduta dall'alto di un ottovolante d'acciaio rosso il cui tracciato attraversa un terreno boscoso con lunghe colline e un'ampia curva."
+  },
+  "caption": {
+    "de": "Expedition GeForce vom Free Fall Tower aus. Die drei Hügel hinter dem ersten Gefälle sind die Stellen, an denen die Bahn ihren Ruf verdient hat.",
+    "en": "Expedition GeForce seen from the Free Fall Tower. The three hills after the first drop are where the ride earned its reputation.",
+    "nl": "Expedition GeForce vanaf de Free Fall Tower. De drie heuvels na de eerste afdaling zijn waar de baan haar reputatie verdiende.",
+    "fr": "Expedition GeForce vue depuis la Free Fall Tower. Les trois collines après la première descente sont ce qui a fait sa réputation.",
+    "es": "Expedition GeForce vista desde la Free Fall Tower. Las tres colinas tras la primera caída son lo que le dio su fama.",
+    "it": "Expedition GeForce vista dalla Free Fall Tower. Le tre colline dopo la prima discesa sono ciò che le ha dato fama."
+  },
+  "credit": {
+    "author": "Hetamin1000",
+    "license": "public-domain",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Achterbahn_Ge_Force1.JPG",
+    "year": 2010
+  },
+  "shotAt": "2010-09-10"
+}

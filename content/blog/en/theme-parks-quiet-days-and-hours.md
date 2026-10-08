@@ -75,13 +75,13 @@ Holland Saturday is one of the emptier days.
 The time of day has a pattern too. At most parks the wait in the first hour
 after opening is clearly shorter than later on. Then the queues build, and at
 nine parks they peak between ten and twelve. At eight parks the last or
-second-to-last hour is the quietest. Phantasialand and Heide Park stay flat
-through the rest of the day, and at Legoland and Movie Park it gets busier
+second-to-last hour is the quietest. At Phantasialand and Heide Park the wait
+barely changes for the rest of the day, and at Legoland and Movie Park it gets busier
 again in the evening.
 
 The [best time to visit](/best-time-to-visit) page shows you the quietest days
-for the month you're travelling. This post puts twelve parks side by side, using
-the data park.fan has been collecting since 24 December 2025.
+for the month you're travelling. Below we compare
+twelve parks using the data park.fan has been collecting since 24 December 2025.
 
 ## Where the numbers come from
 
@@ -160,7 +160,7 @@ Two parks run against the pattern. At Legoland Deutschland and Movie Park
 Germany the last hour with data, 5 pm, is one of the busiest. At Heide Park the
 curve also ends at 5 pm, but there it doesn't pick up at the end.
 
-Below is the curve for Europa-Park, each ride on its own.
+The curve for Europa-Park, each ride on its own:
 
 ```hourly-profile-widget slug=europa-park top=8
 
@@ -210,7 +210,7 @@ Rhine-Westphalia. How to cope with it anyway is in the
 
 ## Efteling
 
-[Efteling](ref:efteling) is flat across the weekdays. Saturday and Sunday are a
+At [Efteling](ref:efteling) the weekdays barely differ. Saturday and Sunday are a
 little busier, Monday sits between, and Thursday is the quietest day, followed by
 Tuesday and Wednesday. A Monday at Efteling is a little busier than a Tuesday.
 
@@ -438,7 +438,7 @@ you gain at Disneyland Paris, Parc Astérix, Europa-Park, Efteling and both
 Walibis, but hardly at Phantasialand and Heide Park. How to split the hours is
 shown by the [trip planner](/blog/trip-planner).
 
-Below are the quietest days of the coming weeks at Europa-Park.
+The quietest days of the coming weeks at Europa-Park:
 
 ```best-days-widget slug=europa-park
 

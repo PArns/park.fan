@@ -76,13 +76,13 @@ dagen.
 Ook bij het tijdstip zie je een patroon. In de meeste parken is de wachttijd in
 het eerste uur na opening duidelijk korter dan later. Daarna loopt de rij op en
 bereikt in negen parken tussen tien en twaalf uur het hoogste punt. In acht
-parken is het laatste of een-na-laatste uur het rustigst. Phantasialand en Heide
-Park blijven ertussen vlak, en in Legoland en Movie Park wordt het in de avond
+parken is het laatste of een-na-laatste uur het rustigst. In Phantasialand en Heide
+Park blijft de wachttijd daarna tot de avond bijna gelijk, en in Legoland en Movie Park wordt het in de avond
 weer drukker.
 
 De pagina [Beste reistijd](/beste-tijd-om-te-bezoeken) laat je de rustigste
-dagen voor jouw reismaand zien. Hier staan twaalf parken naast elkaar, met de
-gegevens die park.fan sinds 24 december 2025 verzamelt.
+dagen voor jouw reismaand zien. Hieronder vergelijken we
+twaalf parken met de gegevens die park.fan sinds 24 december 2025 verzamelt.
 
 ## Waar de cijfers vandaan komen
 
@@ -165,7 +165,7 @@ Twee parken lopen tegen het patroon in. In Legoland Deutschland en Movie Park
 Germany is het laatste uur met gegevens, 17 uur, een van de drukste. In Heide
 Park eindigt de curve ook om 17 uur, daar trekt hij aan het eind niet aan.
 
-Hieronder staat de curve voor Europa-Park, elke attractie apart.
+De curve voor Europa-Park, elke attractie apart:
 
 ```hourly-profile-widget slug=europa-park top=8
 
@@ -214,7 +214,7 @@ Hoe je het toch redt, staat in de [Phantasialand-gids](/blog/phantasialand-wacht
 
 ## Efteling
 
-De [Efteling](ref:efteling) ligt qua weekdag vlak. Zaterdag en zondag zijn wat
+In de [Efteling](ref:efteling) verschillen de weekdagen nauwelijks. Zaterdag en zondag zijn wat
 drukker, maandag ligt ertussen, en donderdag is de rustigste dag, gevolgd door
 dinsdag en woensdag. Een maandag is in de Efteling iets drukker dan een dinsdag.
 
@@ -454,7 +454,7 @@ de avond blijft, wint in Disneyland Paris, Parc Astérix, Europa-Park, de Efteli
 en beide Walibi's, maar nauwelijks in Phantasialand en Heide Park. Hoe je de uren
 indeelt, laat de [dagplanner](/blog/dagplanner) zien.
 
-Hieronder staan de rustigste dagen van de komende weken in Europa-Park.
+De rustigste dagen van de komende weken in Europa-Park:
 
 ```best-days-widget slug=europa-park
 

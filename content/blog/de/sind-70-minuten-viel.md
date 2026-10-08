@@ -49,7 +49,7 @@ und dein Kopf vergleicht die Zahl sofort mit deiner Erinnerung. Beim letzten
 Besuch waren es 40, also ist heute schlimmer. Beim vorletzten 90, also ist
 heute super. Zwei Besuche sind keine Grundlage, und dein Gedächtnis rundet
 ohnehin zu deinen Ungunsten
-([warum, steht hier](/blog/die-kunst-des-wartens)).
+([warum das so ist](/blog/die-kunst-des-wartens)).
 
 Die Parks schreiben die Zahl selbst an, sie stimmt meistens ungefähr, und sie
 kostet uns einen Abruf alle fünf Minuten. Nur steht sie allein da, wie eine
@@ -81,7 +81,7 @@ desto mehr Gewicht trägt eine Zeile.
 
 ```
 
-Was hier steht, ist live. Wenn du diesen Artikel in drei Monaten noch einmal
+Diese Tabellen sind live. Wenn du diesen Artikel in drei Monaten noch einmal
 liest, stehen andere Zahlen in der Tabelle, und der Text drumherum stimmt
 trotzdem noch. Die Widgets gibt es, weil in vier älteren Artikeln die Zahlen
 mal von Hand getippt in Markdown-Tabellen standen, über sechs Sprachen

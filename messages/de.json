@@ -1865,7 +1865,7 @@
         "whichParksQ": "Welche Freizeitparks werden von park.fan unterstützt?",
         "whichParksA": "park.fan deckt über 200 Freizeitparks weltweit ab, darunter Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland und Bobbejaanland. Die vollständige Liste mit Live-Wartezeiten steht auf der Parks-Übersichtsseite.",
         "liveDataQ": "Sind die Wartezeiten bei park.fan live und in Echtzeit?",
-        "liveDataA": "Ja. Wo ein Park seine Wartezeiten veröffentlicht, fragen wir sie alle fünf Minuten ab, aus drei öffentlichen Quellen gleichzeitig: ThemeParks.wiki, Wartezeiten.app und Queue-Times.com. Melden die Quellen unterschiedliche Zahlen, entscheidet die Mehrheit, danach der Median, danach der Mittelwert. Das Ergebnis wird auf fünf Minuten gerundet, weil die Parks selbst in Fünf-Minuten-Schritten anschreiben.",
+        "liveDataA": "Ja. Wo ein Park seine Wartezeiten veröffentlicht, fragen wir sie alle fünf Minuten ab, aus drei öffentlichen Quellen gleichzeitig: ThemeParks.wiki, Wartezeiten.app und Queue-Times.com. Widersprechen sich die Quellen, entscheidet die Mehrheit, danach der Median, danach der Mittelwert. Das Ergebnis wird auf fünf Minuten gerundet, weil die Parks selbst in Fünf-Minuten-Schritten anschreiben.",
         "freeQ": "Ist die Nutzung von park.fan kostenlos?",
         "freeA": "Ja. Live-Wartezeiten, Öffnungszeiten, Shows, Restaurants und der Crowd-Kalender sind ohne Konto und ohne Bezahlschranke zu sehen. Es gibt keine Abo-Stufe, hinter der mehr Daten liegen.",
         "favoritesQ": "Kann ich meine Lieblingsparks und Attraktionen bei park.fan speichern?",
@@ -2445,6 +2445,25 @@
     "loading": "Plan wird geladen",
     "error": "Der Plan konnte nicht geladen werden.",
     "noPlan": "Für diesen Tag liegt keine Prognose vor.",
+    "unavailable": {
+      "park_closed": "Der Park hat an diesem Tag geschlossen. Probier einen anderen Tag.",
+      "hours_unknown": "Für diesen Tag kennen wir die Öffnungszeiten noch nicht, deshalb gibt es keine Kurven.",
+      "no_rides_on_file": "Für diesen Park sind bei uns noch keine Fahrgeschäfte hinterlegt.",
+      "no_wait_time_source": {
+        "in_park_app_only": "Der Park gibt seine Wartezeiten nur über seine eigene App im Park-WLAN aus. Deshalb gibt es hier keine Kurven.",
+        "not_published": "Der Park veröffentlicht seine Wartezeiten nirgendwo. Deshalb gibt es hier keine Kurven.",
+        "unknown": "Der Park gibt keine lesbaren Wartezeiten aus. Deshalb gibt es hier keine Kurven."
+      },
+      "never_measured": "Von diesem Park sind uns noch keine Wartezeiten zugegangen, deshalb gibt es noch keine Kurven.",
+      "feed_stale": "Von diesem Park kommen seit {days, plural, one {# Tag} other {# Tagen}} keine Wartezeiten mehr bei uns an. Der Fehler liegt bei uns.",
+      "feed_stale_unknown": "Von diesem Park kommen gerade keine Wartezeiten bei uns an. Der Fehler liegt bei uns.",
+      "rides_cannot_open": "An diesem Tag ist jedes Fahrgeschäft außerhalb der Saison oder im Umbau. Probier einen anderen Tag.",
+      "insufficient_history": "Für diesen Park fehlen noch genug Messtage für Kurven. Probier einen anderen Tag.",
+      "no_hourly_shape": "Die Fahrgeschäfte dieses Parks haben zu unterschiedliche Zeiten, daraus lässt sich noch kein Tagesverlauf bilden.",
+      "no_forecast": "Für diesen Tag hat das Modell noch keine Prognose berechnet. Schau nach dem nächsten Modelllauf wieder rein.",
+      "no_observations": "Für diesen vergangenen Tag haben wir keine Messwerte dieses Parks.",
+      "data_unavailable": "Ein Dienst hinter dem Plan hat nicht geantwortet. Warum keine Kurven kommen, wissen wir gerade nicht. Versuch es gleich noch einmal."
+    },
     "overview": {
       "empty": "Noch keine Tage geplant.",
       "countdown": "in {count, plural, one {# Tag} other {# Tagen}}"
@@ -2706,7 +2725,7 @@
       "facts": {
         "title": "Was wir über den Tag wissen",
         "nothing": "Für diesen Tag haben wir noch keine Prognose.",
-        "pickFirst": "Wähle einen Tag, dann steht hier, was wir über ihn wissen.",
+        "pickFirst": "Wähle einen Tag, um zu sehen, was wir über ihn wissen.",
         "loading": "Prognose wird geladen …"
       },
       "blocks": {

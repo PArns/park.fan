@@ -343,8 +343,8 @@ otros parques sí lo hay, y la [página de la mejor época](/mejor-epoca-para-vi
 Desde su apertura, Magic Kingdom ha cerrado temporalmente nueve veces por
 huracanes, la última en octubre de 2024 por Milton.
 
-Si tienes unas fechas concretas en mente, aquí están los días más tranquilos,
-recalculados cada día:
+Si tienes unas fechas concretas en mente, el calendario de abajo marca los días más
+tranquilos, recalculados cada día:
 
 ```best-days-widget slug=magic-kingdom-park
 

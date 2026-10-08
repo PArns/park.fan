@@ -92,9 +92,7 @@ export function ContentFR() {
         </Lead>
         <P>
           Nous avons donc fait le calcul, avec les temps d’attente relevés dans plus de 200 parcs.
-          Plus bas se trouvent les jours de semaine et les mois les plus calmes, les heures les plus
-          tranquilles de la journée et les dates à éviter. Le bon jour pour le parc de votre choix
-          se trouve ensuite dans le calendrier d’affluence.
+          Le bon jour pour le parc de votre choix se trouve ensuite dans le calendrier d’affluence.
         </P>
         <Highlight>
           C’est du mardi au jeudi, hors vacances scolaires, et devant le portail dès l’ouverture que

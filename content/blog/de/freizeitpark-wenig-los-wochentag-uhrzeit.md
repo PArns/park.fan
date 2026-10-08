@@ -78,12 +78,13 @@ Auch bei der Uhrzeit gibt es ein Muster. In den meisten Parks ist die Wartezeit
 in der ersten Stunde nach dem Öffnen deutlich kürzer als später. Danach baut sich
 die Warteschlange auf und erreicht in neun Parks zwischen zehn und zwölf Uhr ihren
 Höchststand. In acht Parks ist die letzte oder vorletzte Stunde die ruhigste.
-Phantasialand und Heide Park bleiben dazwischen flach, und im Legoland und im
-Movie Park wird es abends wieder voller.
+Im Phantasialand und im Heide Park bleibt die Wartezeit danach bis zum Abend fast
+gleich, und im Legoland und im Movie Park wird es abends wieder voller.
 
 Die Seite [Beste Reisezeit](/beste-reisezeit) zeigt dir die ruhigsten Tage für
-deinen Reisemonat. Hier stehen zwölf Parks nebeneinander, mit den Daten, die
-park.fan seit dem 24. Dezember 2025 sammelt.
+deinen Reisemonat. Unten
+vergleichen wir zwölf Parks mit den Daten, die park.fan seit dem 24. Dezember 2025
+sammelt.
 
 ## Woher die Zahlen kommen
 
@@ -167,7 +168,7 @@ Zwei Parks laufen gegen das Muster. Im Legoland Deutschland und im Movie Park
 Germany ist die letzte Stunde mit Daten, 17 Uhr, eine der vollsten. Im Heide
 Park endet die Kurve ebenfalls um 17 Uhr, dort zieht sie am Ende nicht an.
 
-Unten steht die Kurve für den Europa-Park, jede Bahn einzeln.
+Die Kurve für den Europa-Park, jede Bahn einzeln:
 
 ```hourly-profile-widget slug=europa-park top=8
 
@@ -218,7 +219,7 @@ beginnen. Wie du ihn trotzdem schaffst, steht im
 
 ## Efteling
 
-Das [Efteling](ref:efteling) liegt beim Wochentag flach. Samstag und Sonntag sind
+Im [Efteling](ref:efteling) unterscheiden sich die Wochentage kaum. Samstag und Sonntag sind
 etwas voller, Montag liegt dazwischen, und Donnerstag ist der ruhigste Tag,
 gefolgt von Dienstag und Mittwoch. Ein Montag ist im Efteling etwas voller als ein
 Dienstag.
@@ -455,7 +456,7 @@ bleibt, gewinnt im Disneyland Paris, im Parc Astérix, im Europa-Park, im Efteli
 und in beiden Walibis, aber kaum im Phantasialand und im Heide Park. Wie du die
 Stunden aufteilst, zeigt der [Tagesplaner](/blog/tagesplaner).
 
-Unten stehen die ruhigsten Tage der nächsten Wochen im Europa-Park.
+Die ruhigsten Tage der nächsten Wochen im Europa-Park:
 
 ```best-days-widget slug=europa-park
 

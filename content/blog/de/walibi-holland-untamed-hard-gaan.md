@@ -918,7 +918,7 @@ Dezember bis zum 3. Januar.
 
 ### Braucht man einen Fast Lane Pass?
 
-An einem normalen Tag nicht. Bei dem Median, der hier steht, zahlst du für
+An einem normalen Tag nicht. Bei dem Median, den dieser Park hat, zahlst du für
 eingesparte Minuten, die du gar nicht hast. An vollen Tagen, an den
 Abendevents und für YOY kann es sich lohnen.
 

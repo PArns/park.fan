@@ -345,8 +345,8 @@ c’è, e la [pagina del periodo migliore](/periodo-migliore-per-visitare) lo in
 Dall’apertura il Magic Kingdom ha chiuso temporaneamente nove volte a causa di
 uragani, l’ultima a ottobre 2024 per Milton.
 
-Se hai in mente un periodo preciso, qui trovi i giorni più tranquilli,
-ricalcolati ogni giorno:
+Se hai in mente un periodo preciso, nel calendario qui sotto sono segnati i giorni più
+tranquilli, ricalcolati ogni giorno:
 
 ```best-days-widget slug=magic-kingdom-park
 

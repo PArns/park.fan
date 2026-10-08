@@ -48,7 +48,7 @@ Je staat voor [Taron](ref:phantasialand/taron), bij de ingang staat
 **70 minuten**, en je hoofd doet meteen het verkeerde en vergelijkt dat getal met je herinnering. Vorige keer
 was het 40, dus vandaag is het erger. De keer daarvoor 90, dus vandaag is het
 top. Twee bezoeken zijn geen basis, en je geheugen rondt sowieso in je nadeel af
-([waarom, lees je hier](/blog/de-kunst-van-het-wachten)).
+([waarom dat zo is](/blog/de-kunst-van-het-wachten)).
 
 De parken schrijven het getal zelf aan, het klopt meestal ongeveer, en het kost
 ons één aanvraag per vijf minuten. Maar het staat er in zijn eentje, als een
@@ -80,7 +80,7 @@ een regel draagt.
 
 ```
 
-Wat hier staat, is live. Lees je dit artikel over drie maanden opnieuw, dan
+Deze tabellen zijn live. Lees je dit artikel over drie maanden opnieuw, dan
 staan er andere cijfers in de tabel, en de tekst eromheen klopt nog steeds.
 Deze widgets zijn er omdat in vier oudere artikelen de cijfers met de hand in
 markdowntabellen getypt stonden, verdeeld over zes talen, en die waren na een

@@ -76,13 +76,13 @@ Deutschland sei giorni sono molto vicini tra loro, e a Walibi Holland il sabato
 Anche per l’orario c’è uno schema. Nella maggior parte dei parchi l’attesa nella
 prima ora dopo l’apertura è nettamente più corta che più tardi. Poi la coda
 cresce e in nove parchi tocca il massimo tra le dieci e le dodici. In otto parchi
-l’ultima o la penultima ora è la più tranquilla. Phantasialand e Heide Park
-restano piatti nel mezzo, e al Legoland e al Movie Park la sera si riempie di
+l’ultima o la penultima ora è la più tranquilla. A Phantasialand e a Heide Park
+l’attesa cambia poco per il resto della giornata, e al Legoland e al Movie Park la sera si riempie di
 nuovo.
 
 La pagina del [periodo migliore per visitare](/periodo-migliore-per-visitare) ti
-mostra i giorni più tranquilli per il tuo mese di viaggio. Qui invece ci sono
-dodici parchi a confronto, con i dati che park.fan raccoglie dal 24 dicembre 2025.
+mostra i giorni più tranquilli per il tuo mese di viaggio. Più sotto invece
+confrontiamo dodici parchi con i dati che park.fan raccoglie dal 24 dicembre 2025.
 
 ## Da dove vengono i numeri
 
@@ -165,7 +165,7 @@ Due parchi vanno contro lo schema. Al Legoland Deutschland e al Movie Park
 Germany l’ultima ora con dati, le 17, è una delle più piene. All’Heide Park la
 curva finisce ugualmente alle 17, ma lì alla fine non risale.
 
-Qui sotto c’è la curva dell’Europa-Park, attrazione per attrazione.
+La curva dell’Europa-Park, attrazione per attrazione:
 
 ```hourly-profile-widget slug=europa-park top=8
 
@@ -217,7 +217,7 @@ le vacanze. Come cavartela comunque lo trovi nella
 
 ## Efteling
 
-L’[Efteling](ref:efteling) è piatto quanto al giorno della settimana. Sabato e
+All’[Efteling](ref:efteling) i giorni della settimana si differenziano poco. Sabato e
 domenica sono un po’ più pieni, il lunedì sta in mezzo, e il giovedì è il giorno
 più tranquillo, seguito da martedì e mercoledì. Un lunedì all’Efteling è un po’
 più pieno di un martedì.
@@ -456,7 +456,7 @@ sera guadagna a Disneyland Paris, al Parc Astérix, all’Europa-Park, all’Eft
 e in entrambi i Walibi, ma poco a Phantasialand e all’Heide Park. Come dividere
 le ore lo mostra il [pianificatore](/blog/pianificatore).
 
-Qui sotto ci sono i giorni più tranquilli delle prossime settimane all’Europa-Park.
+I giorni più tranquilli delle prossime settimane all’Europa-Park:
 
 ```best-days-widget slug=europa-park
 

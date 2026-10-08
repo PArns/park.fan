@@ -82,7 +82,6 @@ fills the same weeks with dark rides and looks better in the rain.
 and Walibi Belgium has halls. Walibi Holland didn’t have a single covered major
 ride in winter.
 
-Below is who’s running the 2026/27 season, with dates, hours and prices.
 Between Christmas and New Year, when it gets dark at half past four, people
 queue longer than they do in May.
 
@@ -305,8 +304,8 @@ train ride to the North Pole at extra cost.
 ![A purple-lit roller coaster at night with the moon above it | Bottrop after dark. Just under three weeks of rebuilding separate Halloween from Christmas here. | wide](/media/movie-park-germany/iron-claw.jpg)
 
 Movie Park and Bobbejaanland both belong to Parques Reunidos, which the private
-equity firm EQT is now looking to sell. For visitors nothing changes for the
-time being, and [the details are here](/blog/parques-reunidos-sale-movie-park).
+equity firm EQT is now looking to sell. For visitors nothing changes for the time being
+([more on the sale](/blog/parques-reunidos-sale-movie-park)).
 Which weekday is the quietest in Bottrop, and where the usual advice
 gets it wrong, is in the
 [Movie Park guide](/blog/movie-park-germany-wait-times-tips).

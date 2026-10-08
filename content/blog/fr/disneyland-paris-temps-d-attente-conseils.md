@@ -287,8 +287,8 @@ décembre, chacun des deux parcs organise sa propre fête.
 La courbe des jours de la semaine, ci-dessus, est plate, et pour une bonne
 raison : un parc ouvert 365 jours par an et promu
 dans une demi-douzaine de pays n’a pas de mardi mort sur lequel se replier.
-Quels sont malgré tout les jours les plus calmes des prochaines semaines,
-c’est ici, recalculé en continu :
+Les jours les plus calmes des prochaines semaines sont malgré tout marqués dans le
+calendrier ci-dessous, recalculé en continu :
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -431,8 +431,7 @@ files des attractions extérieures :
 
 Pour la comparaison avec des parcs situés à une distance similaire depuis
 l’Allemagne : [Walibi Belgium](/blog/walibi-belgium-temps-d-attente-conseils)
-et [l’Efteling](/blog/efteling-le-disney-des-pays-bas) ont chacun déjà droit à
-leur propre article ici. Si ton voyage tombe entre maintenant et l’été 2027,
+et [l’Efteling](/blog/efteling-le-disney-des-pays-bas) ont chacun déjà leur propre article chez nous. Si ton voyage tombe entre maintenant et l’été 2027,
 sache qu’Adventure World tourne durant ces mois avec treize attractions au
 lieu de quatorze. Qui hésitait déjà à prendre le billet deux parcs a là un
 argument de moins pour le faire.

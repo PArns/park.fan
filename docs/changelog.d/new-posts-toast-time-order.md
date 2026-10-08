@@ -1,0 +1,3 @@
+### Der Neue-Beiträge-Toast zeigt die zuletzt erschienene News zuerst
+
+`app/api/blog-latest/[locale]/route.ts` sortierte nur nach `date` und bei gleichem Tag alphabetisch nach `translationKey`. Der Toast zeigt den ersten Eintrag groß und zählt den Rest als „N weitere“, also führte am 2026-10-07 die News von 12:18 (`adventure-in-batavia-dinner-europa-park`) und die von 14:10 (`phantasialand-expansion-online-petition`) stand dahinter. Die Route sortiert jetzt mit `newestPublishedFirst` aus `lib/blog/published-at.ts`, also nach Datum und `time`, wie jede andere Liste. `pnpm test:new-posts` prüft das (16 Tests).

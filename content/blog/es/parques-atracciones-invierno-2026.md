@@ -84,8 +84,7 @@ llena esas mismas semanas con dark rides y hasta luce mejor bajo la lluvia.
 atracciones, y Walibi Belgium tiene naves. Walibi Holland no tenía en invierno
 ni una sola atracción grande cubierta.
 
-Abajo está quién hace la temporada 2026/27, con fechas, horarios y precios. Y, contra
-lo que parece, entre Navidad y Año Nuevo, cuando anochece a las cuatro y media,
+Contra lo que parece, entre Navidad y Año Nuevo, cuando anochece a las cuatro y media,
 se hace más cola que en mayo.
 
 > **Sobre las fechas:** esta es la situación a 25 de septiembre de 2026. Los
@@ -318,8 +317,8 @@ Experience, un viaje en tren al Polo Norte con suplemento.
 ![Una montaña rusa iluminada de violeta por la noche, encima la luna | Bottrop a oscuras. Entre Halloween y Navidad hay aquí casi tres semanas de montaje. | wide](/media/movie-park-germany/iron-claw.jpg)
 
 Movie Park y Bobbejaanland pertenecen a Parques Reunidos, que el fondo EQT
-quiere vender. Para el visitante no cambia nada por ahora, y
-[los detalles están aquí](/blog/eqt-venta-parques-reunidos-movie-park). Qué día
+quiere vender. Para el visitante no cambia nada por ahora
+([más sobre la venta](/blog/eqt-venta-parques-reunidos-movie-park)). Qué día
 de la semana es el más tranquilo en Bottrop, y en qué se equivocan los
 consejos habituales, está en la
 [guía de Movie Park](/blog/movie-park-germany-tiempos-de-espera-consejos).

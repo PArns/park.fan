@@ -30,6 +30,7 @@ import {
   rideFloor,
   withEarlyEntry,
 } from '@/lib/planner/day-grid';
+import { unavailableNote } from '@/lib/planner/unavailable';
 import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
 import { spansFor } from '@/lib/planner/estimate';
 import { closedNowFor, liveWaitsFor } from '@/lib/planner/live';
@@ -225,6 +226,7 @@ export function PlannerDayColumn({
         ? 'ready'
         : 'empty';
 
+  const unavailable = unavailableNote(day);
   const timezone = resolveTimeZone(day?.timezone ?? park?.timezone);
   const isToday = Boolean(date && date === parkToday(timezone));
   // Where this day stands against the park's clock, for `addFreeBlock`.
@@ -532,6 +534,14 @@ export function PlannerDayColumn({
               <div className="flex flex-col gap-3 px-4 py-5">
                 <div>
                   <p className="text-sm font-medium">{t('empty.title')}</p>
+                  {unavailable && (
+                    <p
+                      className="text-muted-foreground mt-1 text-xs"
+                      data-planner-unavailable={unavailable.key}
+                    >
+                      {t(`unavailable.${unavailable.key}`, unavailable.values)}
+                    </p>
+                  )}
                   {unplannedPagePark && onStartPagePark ? (
                     <PlannerPlanParkCta
                       parkName={unplannedPagePark.name}

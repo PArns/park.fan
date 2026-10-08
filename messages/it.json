@@ -2445,6 +2445,25 @@
     "loading": "Caricamento del piano",
     "error": "Non è stato possibile caricare il piano.",
     "noPlan": "Per questo giorno non c’è una previsione.",
+    "unavailable": {
+      "park_closed": "Il parco è chiuso in quel giorno. Prova un altro giorno.",
+      "hours_unknown": "Non conosciamo ancora gli orari di apertura di quel giorno, quindi non ci sono curve.",
+      "no_rides_on_file": "Per questo parco non abbiamo ancora attrazioni registrate.",
+      "no_wait_time_source": {
+        "in_park_app_only": "Il parco pubblica i tempi di attesa solo tramite la propria app con il Wi-Fi del parco. Per questo qui non ci sono curve.",
+        "not_published": "Il parco non pubblica i tempi di attesa da nessuna parte. Per questo qui non ci sono curve.",
+        "unknown": "Il parco non pubblica tempi di attesa leggibili. Per questo qui non ci sono curve."
+      },
+      "never_measured": "Da questo parco non abbiamo ancora ricevuto nessun tempo di attesa, quindi non ci sono ancora curve.",
+      "feed_stale": "Da {days, plural, one {# giorno} other {# giorni}} i tempi di attesa di questo parco non ci arrivano più. Il problema è da parte nostra.",
+      "feed_stale_unknown": "In questo momento i tempi di attesa di questo parco non ci arrivano. Il problema è da parte nostra.",
+      "rides_cannot_open": "In quel giorno ogni attrazione è fuori stagione o chiusa per lavori. Prova un altro giorno.",
+      "insufficient_history": "Per questo parco non abbiamo ancora abbastanza giorni misurati per tracciare le curve. Prova un altro giorno.",
+      "no_hourly_shape": "Le attrazioni di questo parco hanno orari troppo diversi per ricavarne già un profilo della giornata.",
+      "no_forecast": "Il modello non ha ancora calcolato una previsione per questo giorno. Ripassa dopo la prossima esecuzione del modello.",
+      "no_observations": "Non abbiamo misurazioni di questo parco per quel giorno passato.",
+      "data_unavailable": "Un servizio dietro il piano non ha risposto. Al momento non sappiamo perché non ci siano curve. Riprova tra un attimo."
+    },
     "overview": {
       "empty": "Ancora nessun giorno pianificato.",
       "countdown": "tra {count, plural, one {# giorno} other {# giorni}}"
@@ -2706,7 +2725,7 @@
       "facts": {
         "title": "Quello che sappiamo di questa giornata",
         "nothing": "Per questo giorno non abbiamo ancora una previsione.",
-        "pickFirst": "Scegli un giorno e qui compare quello che sappiamo su di lui.",
+        "pickFirst": "Scegli un giorno per vedere quello che sappiamo su di lui.",
         "loading": "Caricamento della previsione …"
       },
       "blocks": {

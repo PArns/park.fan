@@ -697,8 +697,7 @@ tranquilos** de nuestro calendario de afluencia con IA:
 
 Para el Movie Park todavía no hay ningún otoño de Halloween medido detrás del
 calendario, así que toma su previsión para las noches de terror con cautela.
-Debajo está cuánta gente suele haber en Bottrop por día de la semana y por mes
-según nuestras mediciones, que empiezan a finales de diciembre de 2025. A 29 de
+Cuánta gente suele haber en Bottrop por día de la semana y por mes está en la estadística, según nuestras mediciones, que empiezan a finales de diciembre de 2025. A 29 de
 septiembre de 2026 aún no había ningún octubre medido, así que Halloween, de
 momento, te lo tienes que imaginar.
 

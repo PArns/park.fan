@@ -1,0 +1,31 @@
+{
+  "title": "Haupteingang mit Free Fall Tower",
+  "park": "plopsaland-deutschland",
+  "roles": ["park-background"],
+  "tags": ["day", "sunny", "entrance", "theming", "park", "outdoor", "photo"],
+  "alt": {
+    "de": "Ein gepflasterter Vorplatz führt auf ein sandfarbenes Torhaus zu, dahinter ragt ein schmaler weißer Fallturm über die Baumwipfel.",
+    "en": "A paved forecourt leads to a sand-coloured gateway, with a slim white drop tower rising above the treetops behind it.",
+    "nl": "Een geplaveid voorplein loopt naar een zandkleurige toegangspoort, daarachter steekt een slanke witte valtoren boven de boomtoppen uit.",
+    "fr": "Un parvis pavé mène à un portail couleur sable, derrière lequel une fine tour de chute blanche dépasse la cime des arbres.",
+    "es": "Una explanada adoquinada lleva hasta un portal de color arena; detrás, una esbelta torre de caída blanca sobresale por encima de las copas.",
+    "it": "Un piazzale lastricato porta a un portale color sabbia, dietro il quale una sottile torre di caduta bianca supera le chiome degli alberi."
+  },
+  "caption": {
+    "de": "Der Haupteingang in Haßloch. Der Free Fall Tower dahinter ist 70 Meter hoch und von der A65 aus zu sehen.",
+    "en": "The main entrance in Haßloch. The Free Fall Tower behind it stands 70 metres tall and is visible from the A65.",
+    "nl": "De hoofdingang in Haßloch. De Free Fall Tower erachter is 70 meter hoog en vanaf de A65 te zien.",
+    "fr": "L'entrée principale à Haßloch. La Free Fall Tower derrière elle mesure 70 mètres et se voit depuis l'A65.",
+    "es": "La entrada principal en Haßloch. La Free Fall Tower que asoma detrás mide 70 metros y se ve desde la A65.",
+    "it": "L'ingresso principale a Haßloch. La Free Fall Tower dietro è alta 70 metri e si vede dalla A65."
+  },
+  "credit": {
+    "author": "Fischer.H",
+    "license": "cc-by-sa-4.0",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:IMG_Holiday_Park_8079.jpg",
+    "year": 2018
+  },
+  "shotAt": "2018-06-27",
+  "focus": { "x": 0.42, "y": 0.45 }
+}

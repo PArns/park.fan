@@ -244,7 +244,7 @@ Europa-Park kam auf 13.
 Beim Plopsaland steht die Zahl auf sechs Werktagen, und Ostern fiel dort in die ersten Wochen
 der Saison. Der Vergleich mit einem ferienfreien Werktag zwischen April und September ist also
 auch ein Vergleich zwischen Saisonstart und Alltag. Für alle sechs gilt trotzdem, dass Ostern in
-unserer Messung die einzige Ferienzeit war, in der kein Park ruhig blieb.
+unserer Messung die einzige Ferienzeit war, in der jeder Park über dem Maßstab lag.
 
 Karfreitag und Ostermontag waren dabei nicht die vollsten Tage. Im Europa-Park lagen beide fünf
 Prozent unter dem Maßstab, im Plopsaland war Ostermontag ein ganz gewöhnlicher Werktag. Die

@@ -246,7 +246,7 @@ At Oogie Boogie Bash, masks are banned from age 14, costumes can't drag on the g
 
 ## When to go
 
-We have no figures of our own for the event nights. Our measurements cover the whole day and don't separate the evening from regular operation. For Universal Studios Florida, here's every major ride hour by hour, measured over the whole season:
+We have no figures of our own for the event nights. Our measurements cover the whole day and don't separate the evening from regular operation. For Universal Studios Florida, the table below has every major ride hour by hour, measured over the whole season:
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 
