@@ -92,9 +92,7 @@ export function ContentES() {
         </Lead>
         <P>
           Así que hicimos las cuentas, con los tiempos de espera registrados en más de 200 parques.
-          Más abajo están los días laborables y los meses más tranquilos, las horas más tranquilas
-          del día y las fechas que conviene evitar. El día que le va a tu parque lo encuentras
-          después en el calendario de afluencia.
+          El día que le va a tu parque lo encuentras después en el calendario de afluencia.
         </P>
         <Highlight>
           Menos cola harás de martes a jueves fuera de las vacaciones escolares, si estás en la

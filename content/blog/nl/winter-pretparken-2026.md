@@ -82,8 +82,7 @@ dezelfde weken met dark rides en ziet er in de regen zelfs beter uit.
 attracties, Walibi Belgium heeft hallen. Walibi Holland had in de winter geen
 enkele overdekte grote baan.
 
-Hieronder staat wie het seizoen 2026/27 draait, met data, tijden en prijzen. En
-tegen het gevoel in staan de mensen tussen kerst en oud en nieuw, als het om half
+Tegen het gevoel in staan de mensen tussen kerst en oud en nieuw, als het om half
 vijf donker wordt, langer in de rij dan in mei.
 
 > **Over de data:** dit is de stand van 25 september 2026. Parken schuiven hun
@@ -314,8 +313,8 @@ Noordpool tegen betaling.
 ![Een paars aangelichte achtbaan bij nacht, daarboven de maan | Bottrop in het donker. Tussen Halloween en Kerstmis zitten hier bijna drie weken ombouw. | wide](/media/movie-park-germany/iron-claw.jpg)
 
 Movie Park en Bobbejaanland zijn allebei van Parques Reunidos, en dat wil
-investeerder EQT nu verkopen. Voor bezoekers verandert er voorlopig niets,
-[de details staan hier](/blog/parques-reunidos-te-koop-movie-park). Welke weekdag
+investeerder EQT nu verkopen. Voor bezoekers verandert er voorlopig niets
+([meer over de verkoop](/blog/parques-reunidos-te-koop-movie-park)). Welke weekdag
 in Bottrop echt de rustigste is, en waar de gangbare adviezen de plank
 misslaan, staat in de
 [Movie Park-gids](/blog/movie-park-germany-wachttijden-tips).

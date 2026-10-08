@@ -91,10 +91,8 @@ export function ContentEN() {
           precisely.
         </Lead>
         <P>
-          So we worked it out, from the wait times recorded at more than 200 parks. Further down are
-          the quietest weekdays and months, the calmest hours of the day and the dates you’re better
-          off avoiding. Then find the right day for the park you’ve got in mind in the crowd
-          calendar.
+          So we worked it out, from the wait times recorded at more than 200 parks. Then find the
+          right day for the park you’ve got in mind in the crowd calendar.
         </P>
         <Highlight>
           Go Tuesday to Thursday outside the school holidays, be at the gate for opening, and treat

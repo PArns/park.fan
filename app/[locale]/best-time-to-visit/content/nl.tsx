@@ -90,9 +90,8 @@ export function ContentNL() {
           omdat elke parkdag wachttijden achterlaat, valt dat vrij nauwkeurig na te rekenen.
         </Lead>
         <P>
-          Dus hebben we het nagerekend, met de meegeschreven wachttijden uit ruim 200 parken.
-          Hieronder staan de rustigste weekdagen en maanden, de beste uren van de dag en de dagen
-          die je beter mijdt. De passende dag voor jouw park vind je daarna in de druktekalender.
+          Dus hebben we het nagerekend, met de meegeschreven wachttijden uit ruim 200 parken. De
+          passende dag voor jouw park vind je daarna in de druktekalender.
         </P>
         <Highlight>
           Het kortst sta je in de rij op dinsdag tot en met donderdag buiten de schoolvakanties, als

@@ -13,8 +13,9 @@
  *     `localStorage` that allows one request per `CHECK_INTERVAL_MS`, across tabs.
  *
  * The last block is a grep over the watcher and the route: the interval is worth nothing if the
- * watcher still reads the session flag, and "news counts" is worth nothing if the route filters
- * news out before the browser ever sees it.
+ * watcher still reads the session flag, "news counts" is worth nothing if the route filters
+ * news out before the browser ever sees it, and the toast leads with the wrong post when the route
+ * sorts a day with several news posts by anything but their `time`.
  *
  * Run: `pnpm test:new-posts`
  */
@@ -223,6 +224,13 @@ await test('the watcher asks again when a tab comes back to the front', () => {
 await test('the route lists news like every other post', () => {
   assert.match(route, /listPosts\(locale\)/);
   assert.doesNotMatch(route, /isNewsPost|listArticlesByRecency|NEWS_CATEGORY/);
+});
+
+await test('the route orders a day by its time, through newestPublishedFirst', () => {
+  // The toast leads with the first post; by the date alone a day's news falls into key order.
+  // See docs/features/new-posts-toast.md.
+  assert.match(route, /newestPublishedFirst\(a\.frontmatter, b\.frontmatter\)/);
+  assert.doesNotMatch(route, /frontmatter\.date [<>=]/);
 });
 
 await test('the route and next.config agree on the cache window', () => {

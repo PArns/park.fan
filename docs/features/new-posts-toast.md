@@ -81,7 +81,11 @@ visitor already saw a post dated that morning, is never announced to them. Date 
 it goes live.
 
 Only publication order counts. `updatedAt` does not make a post new, and `featured` does not move
-it to the front.
+it to the front. Within a day the route sorts by the news posts' `time` through
+`newestPublishedFirst` (`lib/blog/published-at.ts`), the comparator every listing uses, because the
+toast leads with the first post of the list. Until 2026-10-08 it compared the date alone and broke
+ties by key: on 2026-10-07 the 12:18 news led and the 14:10 one was "1 more". An article carries no
+`time` and sorts behind the timed news of its day, as everywhere else.
 
 ## Layout
 

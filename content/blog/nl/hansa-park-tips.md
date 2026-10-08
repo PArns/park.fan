@@ -210,8 +210,7 @@ schrikreacties bij de kleinsten.
 
 ## Lengte en leeftijd per achtbaan
 
-Bij de meeste parken staat bij elke ingang een aantal centimeters. Hier staat er vaak ook een
-leeftijd bij, en die bepaalt of je kind zelfstandig mag of alleen met een volwassene ernaast.
+Bij de meeste parken staat bij elke ingang een aantal centimeters. In het Hansa-Park staat er vaak ook een leeftijd bij, en die bepaalt of je kind zelfstandig mag of alleen met een volwassene ernaast.
 
 Alleen de drie groten hebben een harde ondergrens: de [Highlander](ref:hansa-park/highlander?bare) 1,40 meter, de [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) 1,30, de [Flucht von Novgorod](ref:hansa-park/escape-of-novgorod?bare) 1,25. Bij de andere achtbanen volstaat minder, zolang er een volwassene naast het kind zit. [Crazy Mine](ref:hansa-park/crazy-mine?bare) neemt kinderen vanaf
 1,10 meter mee, zonder begeleiding pas **vanaf 9 jaar**. [Nessie](ref:hansa-park/nessie?bare) en de [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) beginnen bij een meter, zonder begeleiding mag pas

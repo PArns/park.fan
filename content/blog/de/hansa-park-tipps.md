@@ -225,8 +225,7 @@ Schreckreaktionen bei den Kleinsten.
 
 ## Mindestgröße und Alter an den Achterbahnen
 
-Bei den meisten Parks steht am Eingang jeder Bahn eine Zentimeterangabe. Hier steht oft zusätzlich
-ein Alter, und das entscheidet, ob dein Kind allein fahren darf oder nur mit einem Erwachsenen
+Bei den meisten Parks steht am Eingang jeder Bahn eine Zentimeterangabe. Im Hansa-Park steht dort oft zusätzlich ein Alter, und das entscheidet, ob dein Kind allein fahren darf oder nur mit einem Erwachsenen
 daneben.
 
 Eine feste Größe verlangen nur die großen: [Highlander](ref:hansa-park/highlander?bare)

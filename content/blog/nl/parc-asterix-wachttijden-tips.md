@@ -80,7 +80,7 @@ Paris als één bestemming telt. Tot de achtbanen horen Goudurix, die op de
 openingsdag al reed, en [Toutatis](ref:parc-asterix/toutatis), de hoogste
 achtbaan van Frankrijk.
 
-Wat hier staat, komt uit onze eigen wachttijdmetingen sinds kerst 2025, van de
+De wachttijden komen uit onze eigen metingen sinds kerst 2025, de rest van de
 website van het park zoals die er op 2 oktober 2026 uitzag en uit de artikelen
 en databanken die onderaan gelinkt staan. Waar twee daarvan elkaar tegenspreken,
 staan beide getallen erbij.

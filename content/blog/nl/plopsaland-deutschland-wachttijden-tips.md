@@ -9,9 +9,9 @@ excerpt: >-
   Sinds juni 2025 heet het Holiday Park in Haßloch Plopsaland Deutschland, en
   veel mensen zoeken het nog steeds onder de oude naam. Er staat een achtbaan
   die twee keer tot beste ter wereld is gekozen, en sinds maart 2026 staat er
-  een tweede naast. Hier lees je hoe lang mensen er op 225 gemeten dagen echt
-  hebben aangeschoven, waarom vrijdag de rustigste dag van de week is en wat de
-  Express Pass van 35 euro werkelijk oplevert.
+  een tweede naast. Op 225 gemeten dagen stond je bij de meeste attracties maar
+  een paar minuten in de rij, op vrijdagen buiten het Halloweenseizoen het
+  kortst, en de Express Pass van 35 euro loont het meest op een zaterdag in juli.
 tags:
   - plopsaland-deutschland
   - holiday-park
@@ -60,9 +60,10 @@ komen staat sinds 2001 op dezelfde plek. Alleen het park heet sinds 28 juni 2025
 [Plopsaland Deutschland](ref:plopsaland-deutschland), naar de Belgische uitbater die het al
 sinds november 2010 in handen heeft.
 
-Wie in 2026 een ticket zoekt en “Holiday Park” intikt, komt bij zoekresultaten uit drie decennia
-terecht die allemaal hetzelfde park bedoelen en verschillende prijzen noemen. De uitbater voert
-de oude merknaam sinds de naamswijziging niet meer; de straat en het huisnummer wel.
+Wie in 2026 een ticket zoekt en “Holiday Park” intikt, vindt ook pagina's uit eerdere jaren, met
+prijzen die niet meer gelden. Een ticket met vaste datum kost in 2026 online vanaf 36 euro. De
+uitbater voert de oude merknaam sinds de naamswijziging niet meer; de straat en het huisnummer
+wel.
 
 Het park ligt in de Palts, tussen Neustadt an der Weinstraße en Ludwigshafen, op 40 hectare. In
 2025 kwamen er 804.218 bezoekers, volgens de uitbater het beste jaar uit de parkgeschiedenis.
@@ -79,7 +80,7 @@ Rijnland-Palts. Wij meten hier al twee jaar wachttijden, op dit moment bij 57 at
 Intamin-baan uit 2001, en hij is de reden dat mensen uit Hamburg naar de Palts rijden. Het park
 geeft 55 meter hoogte op, 120 km/u, 1.220 meter baanlengte, 1:15 minuut rijtijd en tot 4,5 g.
 De Duitse Wikipedia noemt 53 meter; dat is de hoogte van het spoor tegenover de opgave van het
-park, dat vanaf het hoogste punt van de lifthill meet. Waar de twee uiteenlopen, staat hier het
+park, dat vanaf het hoogste punt van de lifthill meet. Waar de twee uiteenlopen, nemen we het
 getal van het park.
 
 ```glossary-widget slug=hyper-coaster

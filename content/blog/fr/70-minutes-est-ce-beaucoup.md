@@ -49,7 +49,7 @@ aussitôt la mauvaise chose : elle compare ce chiffre à ton souvenir. La derni
 fois c’était 40, donc aujourd’hui c’est pire. La fois d’avant 90, donc
 aujourd’hui c’est parfait. Deux visites ne font pas une base, et de toute façon
 ta mémoire arrondit à ton désavantage
-([pourquoi, c’est ici](/blog/l-art-d-attendre)).
+([pourquoi c’est ainsi](/blog/l-art-d-attendre)).
 
 Les parcs affichent ce chiffre, il est généralement à peu près juste, et il nous
 coûte une requête toutes les cinq minutes. Seulement, il est seul, comme une
@@ -81,7 +81,7 @@ a de jours mesurés, plus elle pèse.
 
 ```
 
-Ce qui s’affiche ici est en direct. Dans trois mois, le
+Ces tableaux sont en direct. Dans trois mois, le
 tableau contiendra d’autres chiffres, et le texte autour tiendra toujours. Dans quatre articles plus anciens,
 les chiffres étaient tapés à la main dans des tableaux Markdown, répartis sur
 six langues, et au bout de quelques semaines ils avaient discrètement divergé,

@@ -288,7 +288,7 @@ const FAQ = [
   {
     question: 'Da dove arrivano i tempi di attesa?',
     answer:
-      'Da tre fonti pubbliche: ThemeParks.wiki, Wartezeiten.app e Queue-Times.com. Interroghiamo ogni parco ogni cinque minuti, e se le fonti danno numeri diversi decide la maggioranza.',
+      'Da tre fonti pubbliche: ThemeParks.wiki, Wartezeiten.app e Queue-Times.com. Interroghiamo ogni parco ogni cinque minuti, e se le fonti non concordano, decide la maggioranza.',
   },
   {
     question: 'Perché per alcuni parchi c’è scritto «Nessuna previsione»?',
@@ -721,7 +721,7 @@ export function ContentIT() {
         >
           <P>
             Ogni cinque minuti interroghiamo ciascuno dei 212 parchi, su tre fonti pubbliche
-            insieme. Se danno numeri diversi, decide la maggioranza.
+            insieme. Se non concordano, decide la maggioranza.
           </P>
 
           <IngredientGrid>

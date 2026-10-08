@@ -59,7 +59,7 @@ _anfühlt_, die andere, wie lang die Warteschlange _wirklich_ ist.
 
 Mich lässt das Thema aus einem ziemlich persönlichen Grund nicht los. park.fan ist in
 einer Taron-Warteschlange entstanden, aus purem Frust über eine gefühlte Ewigkeit
-([die ganze Geschichte steht hier](/blog/willkommen-im-park-fan-blog)). Was an
+([wie es dazu kam](/blog/willkommen-im-park-fan-blog)). Was an
 dem Nachmittag eigentlich mit mir passiert war, wollte ich danach genau wissen.
 Es kommen dabei zwei Formeln vor, und beide passen zusammen auf einen
 Bierdeckel.

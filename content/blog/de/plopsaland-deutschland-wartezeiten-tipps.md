@@ -7,11 +7,12 @@ mode: published
 featured: false
 excerpt: >-
   Seit Juni 2025 heißt der Holiday Park in Haßloch Plopsaland Deutschland, und
-  viele suchen ihn immer noch unter dem alten Namen. Dabei steht hier eine
+  viele suchen ihn immer noch unter dem alten Namen. Dabei steht dort eine
   Achterbahn, die zweimal zur besten der Welt gewählt wurde, und im März 2026 ist
-  eine zweite dazugekommen. Hier steht, wie lang man an 225 gemessenen Tagen
-  wirklich angestanden hat, warum der Freitag der ruhigste Tag der Woche ist und
-  was der Express Pass für 35 Euro tatsächlich bringt.
+  eine zweite dazugekommen. An 225 gemessenen Tagen stand man an den meisten
+  Bahnen nur wenige Minuten an, an Freitagen außerhalb der Halloween-Saison am
+  kürzesten, und der Express Pass für 35 Euro lohnt sich am ehesten an einem
+  Samstag im Juli.
 tags:
   - plopsaland-deutschland
   - holiday-park
@@ -60,10 +61,10 @@ meisten kommen, steht seit 2001 an derselben Stelle. Nur der Park heißt seit de
 anders: [Plopsaland Deutschland](ref:plopsaland-deutschland), benannt nach dem belgischen
 Betreiber, dem er schon seit November 2010 gehört.
 
-Wer 2026 ein Ticket sucht und „Holiday Park“ eintippt, landet bei Suchergebnissen aus drei
-Jahrzehnten, die alle denselben Park meinen und unterschiedliche Preise nennen. Der Betreiber
-führt die alte Marke seit der Umbenennung nicht mehr, die Straße und die Hausnummer dagegen
-schon.
+Wer 2026 ein Ticket sucht und „Holiday Park“ eintippt, findet auch Seiten aus früheren Jahren,
+mit Preisen, die nicht mehr gelten. Ein Ticket mit festem Datum kostet 2026 online ab 36 Euro.
+Der Betreiber führt die alte Marke seit der Umbenennung nicht mehr, die Straße und die
+Hausnummer dagegen schon.
 
 Der Park liegt in der Pfalz, zwischen Neustadt an der Weinstraße und Ludwigshafen, auf
 40 Hektar. 2025 kamen 804.218 Besucher, nach Angaben des Betreibers das beste Jahr der
@@ -82,7 +83,7 @@ Intamin-Bahn von 2001, und sie ist der Grund, warum Leute aus Hamburg in die Pfa
 Park gibt 55 Meter Höhe an, 120 km/h, 1.220 Meter Strecke, 1:15 Minuten Fahrzeit und bis zu
 4,5 g. Die deutsche Wikipedia nennt 53 Meter; das ist die Schienenhöhe gegenüber den
 Angaben des Parks, der von der höchsten Stelle des Lifthills aus misst. Wo die beiden Zahlen
-auseinandergehen, steht hier die des Parks.
+auseinandergehen, nehmen wir die des Parks.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -115,7 +116,7 @@ dreimal aus der Station geschossen, vorwärts und rückwärts, bevor er über de
 Top Hat kommt. Mindestgröße 140 Zentimeter, Mindestalter 14 Jahre, und auch hier gilt die
 Acht-Grad-Grenze, gemessen an der Schienentemperatur.
 
-![Eine rote Schiene steigt an einem grauen Stützgerüst senkrecht auf, kippt oben über und fällt in einer Schleife hinter ein Backsteingebäude. | Sky Scream wirft seine Züge dreimal an, bevor sie über den 45 Meter hohen Top Hat kommen. Foto: Freddo, Wikimedia Commons (CC BY-SA 4.0) | left](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
+![Eine rote Schiene steigt an einem grauen Stützgerüst senkrecht auf, kippt oben über und fällt in einer Schleife hinter ein Backsteingebäude. | Erst nach dem dritten Abschuss kommt der Zug von Sky Scream über den 45 Meter hohen Top Hat. Foto: Freddo, Wikimedia Commons (CC BY-SA 4.0) | left](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
 
 **100% Wolf – Die Familienachterbahn** ist die Neuheit der Saison 2026, eröffnet am 22. März. Gebaut hat sie Gerstlauer: 17,5 Meter hoch, 760 Meter lang, 55 km/h, ein
 Beschleunigungselement, eine Schienenweiche für die Rückwärtsfahrt und ein Spike als

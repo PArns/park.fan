@@ -79,9 +79,9 @@ zweitgrößten, weil er Disneyland Paris als ein Ziel rechnet. Zu seinen Achterb
 gehören Goudurix, die schon am Eröffnungstag fuhr, und
 [Toutatis](ref:parc-asterix/toutatis), die höchste Achterbahn Frankreichs.
 
-Was hier steht, kommt aus unseren Wartezeit-Messungen seit Weihnachten 2025,
-von den Seiten des Parks mit dem Stand vom 2. Oktober 2026 und aus den Artikeln
-und Datenbanken, die am Ende verlinkt sind. Wo sich zwei davon widersprechen,
+Die Wartezeiten stammen aus unseren Messungen seit Weihnachten 2025, die übrigen
+Angaben von den Seiten des Parks mit dem Stand vom 2. Oktober 2026 und aus den
+Artikeln und Datenbanken, die am Ende verlinkt sind. Wo sich zwei davon widersprechen,
 stehen beide Zahlen da.
 
 ## Parc Astérix Wartezeiten, Bahn für Bahn

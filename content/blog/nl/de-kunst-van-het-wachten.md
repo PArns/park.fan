@@ -57,8 +57,7 @@ park tegelijk onder controle heeft. De ene bepaalt hoe het wachten _voelt_, de a
 _echt_ is.
 
 Dit onderwerp laat me om een nogal persoonlijke reden niet los. park.fan is bedacht
-in een Taron-rij, uit pure frustratie over een gevoelde eeuwigheid ([het hele
-verhaal staat hier](/blog/welkom-bij-de-park-fan-blog)). Wat er die middag
+in een Taron-rij, uit pure frustratie over een gevoelde eeuwigheid ([hoe dat zo kwam](/blog/welkom-bij-de-park-fan-blog)). Wat er die middag
 eigenlijk met me gebeurde, wilde ik daarna precies weten. Er komen twee
 formules aan te pas, en die passen samen op één bierviltje.
 

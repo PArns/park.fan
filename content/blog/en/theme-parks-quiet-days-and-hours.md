@@ -80,8 +80,8 @@ barely changes for the rest of the day, and at Legoland and Movie Park it gets b
 again in the evening.
 
 The [best time to visit](/best-time-to-visit) page shows you the quietest days
-for the month you're travelling. This post puts twelve parks side by side, using
-the data park.fan has been collecting since 24 December 2025.
+for the month you're travelling. Below we compare
+twelve parks using the data park.fan has been collecting since 24 December 2025.
 
 ## Where the numbers come from
 
@@ -160,7 +160,7 @@ Two parks run against the pattern. At Legoland Deutschland and Movie Park
 Germany the last hour with data, 5 pm, is one of the busiest. At Heide Park the
 curve also ends at 5 pm, but there it doesn't pick up at the end.
 
-Below is the curve for Europa-Park, each ride on its own.
+The curve for Europa-Park, each ride on its own:
 
 ```hourly-profile-widget slug=europa-park top=8
 
@@ -438,7 +438,7 @@ you gain at Disneyland Paris, Parc Astérix, Europa-Park, Efteling and both
 Walibis, but hardly at Phantasialand and Heide Park. How to split the hours is
 shown by the [trip planner](/blog/trip-planner).
 
-Below are the quietest days of the coming weeks at Europa-Park.
+The quietest days of the coming weeks at Europa-Park:
 
 ```best-days-widget slug=europa-park
 

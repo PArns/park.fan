@@ -7,6 +7,7 @@ import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
 import type { LatestPost, LatestPostsPayload } from '@/lib/blog/new-posts';
 import { postPath } from '@/lib/blog/paths';
+import { newestPublishedFirst } from '@/lib/blog/published-at';
 
 /**
  * The newest blog posts of one locale, for the "new since your last visit" toast
@@ -36,14 +37,13 @@ export async function GET(_request: Request, { params }: { params: Promise<{ loc
   const locale = rawLocale as Locale;
 
   // Publication order, not `listPostsByRecency`: an edited post is not a new one, and
-  // `listPosts` puts `featured` posts first, which is a listing decision, not a date.
+  // `listPosts` puts `featured` posts first, which is a listing decision, not a date. The toast
+  // leads with the first post, so a day with several news posts has to sort by their `time`.
   const posts: LatestPost[] = [...listPosts(locale)]
-    .sort((a, b) =>
-      a.frontmatter.date === b.frontmatter.date
-        ? a.translationKey.localeCompare(b.translationKey)
-        : a.frontmatter.date < b.frontmatter.date
-          ? 1
-          : -1
+    .sort(
+      (a, b) =>
+        newestPublishedFirst(a.frontmatter, b.frontmatter) ||
+        a.translationKey.localeCompare(b.translationKey)
     )
     .slice(0, LIMIT)
     .map((post) => {

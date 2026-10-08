@@ -76,9 +76,9 @@ visitatori. Contando i parchi uno per uno è il terzo in Francia, dopo il
 Adventure World; il parco si definisce secondo perché conta Disneyland Paris come
 un’unica destinazione. Tra le sue montagne russe ci sono Goudurix, che funzionava già il giorno dell’apertura, e [Toutatis](ref:parc-asterix/toutatis), la più alta di Francia.
 
-Quello che segue viene dalle nostre misurazioni dei tempi di attesa dal Natale
-2025, dal sito del parco com’era il 2 ottobre 2026 e dagli articoli e dalle banche
-dati linkati in fondo. Dove due fonti non coincidono, ci sono entrambe le cifre.
+I tempi di attesa vengono dalle nostre misurazioni dal Natale 2025, il resto dal
+sito del parco com’era il 2 ottobre 2026 e dagli articoli e dalle banche dati
+linkati in fondo. Dove due fonti non coincidono, ci sono entrambe le cifre.
 
 ## Tempi di attesa al Parc Astérix, attrazione per attrazione
 

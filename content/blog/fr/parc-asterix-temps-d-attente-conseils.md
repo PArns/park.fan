@@ -79,8 +79,8 @@ compte les parcs un par un, il arrive troisième en France, derrière le
 Adventure World ; le parc se dit deuxième, parce qu’il compte Disneyland Paris
 comme une seule destination. Parmi ses montagnes russes, il y a Goudurix, qui roulait déjà le jour de l’ouverture, et [Toutatis](ref:parc-asterix/toutatis), la plus haute de France.
 
-Ce qui suit vient de nos mesures de temps d’attente depuis Noël 2025, du site du
-parc tel qu’il était le 2 octobre 2026, et des articles et bases de données
+Les temps d’attente viennent de nos mesures depuis Noël 2025, le reste du site du
+parc tel qu’il était le 2 octobre 2026 et des articles et bases de données
 listés en fin d’article. Quand deux sources se contredisent, nous donnons les deux chiffres.
 
 ## Temps d’attente au Parc Astérix, attraction par attraction

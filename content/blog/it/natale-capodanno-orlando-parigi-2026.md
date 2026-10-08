@@ -65,9 +65,7 @@ dell'anno**.
 
 Le due mete festeggiano il Natale più o
 meno per lo stesso tempo, tutte e due pubblicizzano le stesse settimane, e su
-cosa ti aspetta il 28 dicembre dicono cose molto diverse. Qui sotto prima le
-date, ognuna presa dal sito ufficiale del parco, poi la misurazione con i suoi
-limiti.
+cosa ti aspetta il 28 dicembre dicono cose molto diverse. Ogni data viene dal sito ufficiale del parco.
 
 > **Sulle date:** questa è la situazione al 4 ottobre 2026. Quel giorno ho
 > riletto ogni data, ogni orario e ogni prezzo sulle pagine ufficiali elencate

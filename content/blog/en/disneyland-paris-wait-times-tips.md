@@ -280,8 +280,8 @@ own party.
 
 The weekday curve above is flat, because a park open 365 days a year and
 advertised across half a dozen countries has no dead Tuesday to escape to.
-Which of the coming weeks is quietest anyway is right here, recalculated
-continuously:
+Which of the coming weeks is quietest anyway is marked in the calendar below,
+recalculated continuously:
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -428,8 +428,7 @@ reason to say yes.
 
 From 7 November to 6 January both parks run the Christmas season, and the week
 between Christmas and New Year looks different here than in Orlando: at Adventure World it's
-the quietest of the measured year. Dates, the New Year's Eve programme and the
-comparison are here: [Christmas and New Year in Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026).
+the quietest of the measured year. Dates, the New Year's Eve programme and the comparison are in our post [Christmas and New Year in Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026).
 
 — Patrick
 
