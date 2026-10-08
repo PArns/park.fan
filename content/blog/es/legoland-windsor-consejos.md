@@ -51,7 +51,7 @@ Planeamos el día para niños de tres a doce años. Nuestros tiempos de espera s
 
 ## Un parque en los terrenos de un safari
 
-Legoland Windsor abrió el **17 de marzo de 1996** en los casi 60 hectáreas del Windsor Safari Park, que había entrado en administración judicial en enero de 1992. Fue el segundo Legoland tras Billund. El funicular que baja a los visitantes desde la entrada hasta el parque viene de la época del safari: mide unos 300 metros y salva unos 27 metros de desnivel. Desde 2005 el parque pertenece a Merlin Entertainments, después de que la sociedad de inversión Blackstone comprara en julio de 2005 el negocio de Legoland.
+Legoland Windsor abrió el **17 de marzo de 1996** en unas 60 hectáreas del Windsor Safari Park, que había entrado en administración judicial en enero de 1992. Fue el segundo Legoland tras Billund. El funicular que baja a los visitantes desde la entrada hasta el parque viene de la época del safari: mide unos 300 metros y salva unos 27 metros de desnivel. Desde 2005 el parque pertenece a Merlin Entertainments, después de que la sociedad de inversión Blackstone comprara en julio de 2005 el negocio de Legoland.
 
 Según Wikipedia, en 2019 vinieron unos **2,43 millones de visitantes**, la cifra más alta de un parque de atracciones británico ese año. El Miniland, según el parque, se compone de casi 40 millones de ladrillos de Lego y reproduce ciudades como Londres, Edimburgo, París, Lovaina y Ámsterdam. Las ampliaciones más recientes son el mundo temático **LEGO Mythica**, inaugurado en mayo de 2021, y la montaña rusa de duelo **Minifigure Speedway**, que llegó en abril de 2024.
 
@@ -61,21 +61,21 @@ Según Wikipedia, en 2019 vinieron unos **2,43 millones de visitantes**, la cifr
 
 En Legoland Windsor cada atracción tiene dos límites: una altura mínima para que un niño suba, y una segunda altura a partir de la cual puede subir sin acompañante. Solo puede acompañar quien tenga al menos 16 años. En la mayoría de las atracciones, el segundo límite está en 1,30 metros.
 
-| Atracción                                                                      | Qué es                                      | Altura mínima     | sin acompañante |
-| ------------------------------------------------------------------------------ | ------------------------------------------- | ----------------- | --------------- |
-| [Minifigure Speedway](ref:legoland-windsor/minifigure-speedway?bare)           | montaña rusa de duelo, Zierer, 2024         | 1,05 m            | 1,30 m          |
-| [The Dragon](ref:legoland-windsor/the-dragon?bare)                             | montaña rusa familiar, 1998                 | 1,00 m            | 1,30 m          |
-| [Hydra's Challenge](ref:legoland-windsor/hydras-challenge?bare)                | recorrido acuático interactivo en barcas    | 1,00 m            | 1,30 m          |
-| [Pirate Falls](ref:legoland-windsor/pirate-falls-treasure-quest?bare)          | atracción de troncos                        | 1,00 m            | 1,30 m          |
-| [Flight of the Sky Lion](ref:legoland-windsor/flight-of-the-sky-lion?bare)     | flying theatre, Brogent, 2021               | 1,00 m            | 1,20 m          |
-| [Fire & Ice Freefall](ref:legoland-windsor/fire-and-ice-freefall?bare)         | dos torres de caída giratorias              | 1,00 m            | 1,20 m          |
-| [LEGO NINJAGO The Ride](ref:legoland-windsor/lego-ninjago-the-ride?bare)       | recorrido 4D interactivo, Triotech, 2017    | ninguna           | 1,20 m          |
-| [Laser Raiders](ref:legoland-windsor/laser-raiders?bare)                       | recorrido oscuro interactivo, Sally, 2009   | ninguna           | 1,30 m          |
-| [Coastguard HQ](ref:legoland-windsor/coastguard-hq?bare)                       | barcas eléctricas que conduces tú           | ninguna           | 1,30 m          |
-| [Fire Academy](ref:legoland-windsor/fire-academy?bare)                         | coche de bomberos a fuerza de piernas       | 0,90 m            | 1,30 m          |
-| [Dragon's Apprentice](ref:legoland-windsor/dragons-apprentice?bare)            | mini montaña rusa                           | 0,90 m            | 1,30 m          |
-| [DUPLO Dino Coaster](ref:legoland-windsor/duplo-dino-coaster?bare)             | primera montaña rusa DUPLO                  | 0,90 m            | 1,30 m          |
-| [LEGO City Driving School](ref:legoland-windsor/lego-city-driving-school?bare) | conducir coches eléctricos                  | 1,10 m a 1,50 m   | conduce solo    |
+| Atracción                                                                      | Qué es                                    | Altura mínima   | sin acompañante |
+| ------------------------------------------------------------------------------ | ----------------------------------------- | --------------- | --------------- |
+| [Minifigure Speedway](ref:legoland-windsor/minifigure-speedway?bare)           | montaña rusa de duelo, Zierer, 2024       | 1,05 m          | 1,30 m          |
+| [The Dragon](ref:legoland-windsor/the-dragon?bare)                             | montaña rusa familiar, 1998               | 1,00 m          | 1,30 m          |
+| [Hydra's Challenge](ref:legoland-windsor/hydras-challenge?bare)                | recorrido acuático interactivo en barcas  | 1,00 m          | 1,30 m          |
+| [Pirate Falls](ref:legoland-windsor/pirate-falls-treasure-quest?bare)          | atracción de troncos                      | 1,00 m          | 1,30 m          |
+| [Flight of the Sky Lion](ref:legoland-windsor/flight-of-the-sky-lion?bare)     | flying theatre, Brogent, 2021             | 1,00 m          | 1,20 m          |
+| [Fire & Ice Freefall](ref:legoland-windsor/fire-and-ice-freefall?bare)         | dos torres de caída giratorias            | 1,00 m          | 1,20 m          |
+| [LEGO NINJAGO The Ride](ref:legoland-windsor/lego-ninjago-the-ride?bare)       | recorrido 4D interactivo, Triotech, 2017  | ninguna         | 1,20 m          |
+| [Laser Raiders](ref:legoland-windsor/laser-raiders?bare)                       | recorrido oscuro interactivo, Sally, 2009 | ninguna         | 1,30 m          |
+| [Coastguard HQ](ref:legoland-windsor/coastguard-hq?bare)                       | barcas eléctricas que conduces tú         | ninguna         | 1,30 m          |
+| [Fire Academy](ref:legoland-windsor/fire-academy?bare)                         | coche de bomberos a fuerza de piernas     | 0,90 m          | 1,30 m          |
+| [Dragon's Apprentice](ref:legoland-windsor/dragons-apprentice?bare)            | mini montaña rusa                         | 0,90 m          | 1,30 m          |
+| [DUPLO Dino Coaster](ref:legoland-windsor/duplo-dino-coaster?bare)             | primera montaña rusa DUPLO                | 0,90 m          | 1,30 m          |
+| [LEGO City Driving School](ref:legoland-windsor/lego-city-driving-school?bare) | conducir coches eléctricos                | 1,10 m a 1,50 m | conduce solo    |
 
 Supongamos que tu hijo tiene seis años y mide 1,15 metros. Contigo puede subir a Hydra's Challenge, The Dragon, Pirate Falls y Flight of the Sky Lion. También al Minifigure Speedway, porque allí el límite es de 1,05 metros. Para subir solo necesita 1,30 metros, y en Flight of the Sky Lion 1,20. En Flight of the Sky Lion, un adulto puede acompañar como máximo a dos niños de entre 1,00 y 1,20 metros.
 
