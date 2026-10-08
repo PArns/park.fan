@@ -67,9 +67,8 @@ Zeile des Jahres**.
 
 Beide Ziele feiern Weihnachten ähnlich lang,
 beide bewerben dieselben Wochen, und bei der Frage, was dich am 28. Dezember
-erwartet, liegen sie weit auseinander. Unten stehen zuerst die Termine, jeder
-von der offiziellen Seite des Parks, und danach die Messung mit ihren
-Einschränkungen.
+erwartet, liegen sie weit auseinander. Die Termine stammen jeweils von der
+offiziellen Seite des Parks.
 
 > **Zu den Terminen:** Stand ist der 4. Oktober 2026. Alle Daten, Uhrzeiten und
 > Preise habe ich an diesem Tag auf den offiziellen Seiten nachgelesen, die
@@ -308,8 +307,7 @@ wenig. In dieser Woche sind alle Tage Ferientage, und der ruhigste Wochentag des
 Jahres ist dann nur noch ein Wochentag. Für die Wochen davor ist sie brauchbar,
 und davor liegt die ganze erste Saisonhälfte.
 
-Welche Tage unser Kalender für die kommenden Wochen als ruhig einstuft, steht
-hier:
+Die Tage, die unser Kalender für die kommenden Wochen als ruhig einstuft:
 
 ```best-days-widget slug=magic-kingdom-park
 

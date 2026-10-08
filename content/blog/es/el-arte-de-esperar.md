@@ -57,8 +57,7 @@ parque controla las dos a la vez. Una decide cómo se _siente_ la espera, la otr
 cuánto mide _realmente_ la cola.
 
 El tema no me suelta por una razón bastante personal. park.fan se inventó en una
-cola de Taron, por pura frustración ante una eternidad percibida ([la historia
-completa está aquí](/blog/un-cochecito-una-gondola-y-park-fan)). Qué me estaba
+cola de Taron, por pura frustración ante una eternidad percibida ([cómo pasó](/blog/un-cochecito-una-gondola-y-park-fan)). Qué me estaba
 pasando allí en realidad, quise saberlo después con exactitud. Entran en juego
 dos fórmulas, y las dos caben juntas en un posavasos.
 

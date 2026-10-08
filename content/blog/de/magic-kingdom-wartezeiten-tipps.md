@@ -303,7 +303,8 @@ du gezielt wählen solltest, gibt es nicht. Bei manchen anderen Parks gibt es ih
 Wegen Hurrikans hat Magic Kingdom seit der Eröffnung neunmal vorübergehend geschlossen, zuletzt im
 Oktober 2024 wegen Milton.
 
-Für einen bestimmten Zeitraum steht hier, welche Tage am ruhigsten sind, jeden Tag neu berechnet:
+Im Kalender darunter sind für jeden Zeitraum die ruhigsten Tage markiert, jeden Tag neu
+berechnet:
 
 ```best-days-widget slug=magic-kingdom-park
 

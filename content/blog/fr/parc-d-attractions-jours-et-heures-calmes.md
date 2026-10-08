@@ -82,8 +82,8 @@ huit parcs, la dernière ou l’avant-dernière heure est la plus calme.
 au Movie Park, le monde revient en fin de journée.
 
 La page [Meilleure période pour visiter](/meilleure-periode-pour-visiter) te montre
-les jours les plus calmes pour le mois de ton voyage. Ici, douze parcs sont
-côte à côte, avec les données que park.fan collecte depuis le 24 décembre 2025.
+les jours les plus calmes pour le mois de ton voyage. Plus bas, nous
+comparons douze parcs avec les données que park.fan collecte depuis le 24 décembre 2025.
 
 ## D’où viennent les chiffres
 
@@ -170,7 +170,7 @@ Deux parcs vont à contre-courant. Au Legoland Deutschland et au Movie Park
 Germany, la dernière heure avec des données, 17 h, fait partie des plus chargées.
 À Heide Park, la courbe s’arrête aussi à 17 h, mais elle ne remonte pas à la fin.
 
-Voici la courbe d’Europa-Park, attraction par attraction.
+La courbe d’Europa-Park, attraction par attraction :
 
 ```hourly-profile-widget slug=europa-park top=8
 
@@ -462,7 +462,7 @@ le soir gagne à Disneyland Paris, au Parc Astérix, à Europa-Park, à Efteling
 dans les deux Walibi, mais à peine à Phantasialand et à Heide Park. La façon de
 répartir les heures, c’est le [planificateur](/blog/planificateur) qui la montre.
 
-Voici les jours les plus calmes des prochaines semaines à Europa-Park.
+Les jours les plus calmes des prochaines semaines à Europa-Park :
 
 ```best-days-widget slug=europa-park
 

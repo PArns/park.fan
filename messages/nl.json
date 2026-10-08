@@ -2725,7 +2725,7 @@
       "facts": {
         "title": "Wat we over deze dag weten",
         "nothing": "Voor deze dag hebben we nog geen verwachting.",
-        "pickFirst": "Kies een dag, dan staat hier wat we over die dag weten.",
+        "pickFirst": "Kies een dag om te zien wat we over die dag weten.",
         "loading": "Verwachting wordt geladen …"
       },
       "blocks": {

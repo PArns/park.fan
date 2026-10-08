@@ -91,10 +91,8 @@ export function ContentIT() {
           dietro di sé dei tempi di attesa, il conto si può rifare con una certa precisione.
         </Lead>
         <P>
-          Così abbiamo fatto i conti, con i tempi di attesa registrati in oltre 200 parchi. Più in
-          basso trovi i giorni feriali e i mesi più tranquilli, le ore migliori della giornata e le
-          date da evitare. Il giorno giusto per il parco che hai in mente lo trovi poi nel
-          calendario dell’affluenza.
+          Così abbiamo fatto i conti, con i tempi di attesa registrati in oltre 200 parchi. Il
+          giorno giusto per il parco che hai in mente lo trovi poi nel calendario dell’affluenza.
         </P>
         <Highlight>
           Le code più corte le trovi dal martedì al giovedì fuori dalle vacanze scolastiche, se sei
