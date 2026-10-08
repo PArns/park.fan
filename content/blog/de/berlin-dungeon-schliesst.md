@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Merlin Entertainments macht das Berlin Dungeon in der Spandauer Straße nach
   mehr als 13 Jahren zu. Letzter Öffnungstag ist der 6. November 2026. Einen
-  Grund steht in der Mitteilung nicht.
+  Grund nennt die Mitteilung nicht.
 tags:
   - news
   - merlin-entertainments
