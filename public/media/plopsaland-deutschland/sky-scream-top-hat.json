@@ -1,0 +1,32 @@
+{
+  "title": "Sky Scream, Top Hat",
+  "park": "plopsaland-deutschland",
+  "ride": "sky-scream",
+  "roles": ["ride-card"],
+  "tags": ["day", "overcast", "coaster", "ride", "theming", "outdoor", "photo"],
+  "alt": {
+    "de": "Eine rote Schiene steigt an einem grauen Stützgerüst senkrecht auf, kippt oben über und fällt in einer Schleife hinter ein Backsteingebäude.",
+    "en": "A red track climbs vertically up a grey support frame, tips over at the top and falls in a loop behind a brick building.",
+    "nl": "Een rood spoor klimt verticaal langs een grijs steunframe, kantelt bovenaan en valt in een lus achter een bakstenen gebouw.",
+    "fr": "Une voie rouge grimpe verticalement le long d'une ossature grise, bascule au sommet et retombe en boucle derrière un bâtiment en brique.",
+    "es": "Una vía roja sube en vertical por una estructura gris, vuelca arriba y cae en un rizo detrás de un edificio de ladrillo.",
+    "it": "Un binario rosso sale in verticale lungo un telaio grigio, si ribalta in cima e ricade in un giro dietro un edificio in mattoni."
+  },
+  "caption": {
+    "de": "Sky Scream wirft seine Züge dreimal an, bevor sie über den 45 Meter hohen Top Hat kommen.",
+    "en": "Sky Scream launches its trains three times before they clear the 45-metre top hat.",
+    "nl": "Sky Scream lanceert zijn treinen drie keer voordat ze over de 45 meter hoge top hat komen.",
+    "fr": "Sky Scream lance ses trains trois fois avant qu'ils ne franchissent le top hat de 45 mètres.",
+    "es": "Sky Scream lanza sus trenes tres veces antes de que superen el top hat de 45 metros.",
+    "it": "Sky Scream lancia i suoi treni tre volte prima che superino il top hat di 45 metri."
+  },
+  "credit": {
+    "author": "Freddo",
+    "license": "cc-by-sa-4.0",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sky_Scream1.JPG",
+    "year": 2014
+  },
+  "shotAt": "2014-07-13",
+  "focus": { "x": 0.33, "y": 0.4 }
+}
