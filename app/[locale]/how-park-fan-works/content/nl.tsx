@@ -286,7 +286,7 @@ const FAQ = [
   {
     question: 'Waar komen de wachttijden vandaan?',
     answer:
-      'Uit drie openbare bronnen: ThemeParks.wiki, Wartezeiten.app en Queue-Times.com. We vragen elk park elke vijf minuten op, en melden de bronnen verschillende cijfers, dan geldt de meerderheid.',
+      'Uit drie openbare bronnen: ThemeParks.wiki, Wartezeiten.app en Queue-Times.com. We vragen elk park elke vijf minuten op, en spreken de bronnen elkaar tegen, dan geldt de meerderheid.',
   },
   {
     question: 'Waarom staat er bij sommige parken “geen voorspelling”?',
@@ -715,7 +715,7 @@ export function ContentNL() {
         >
           <P>
             Elke vijf minuten vragen we elk van de 212 parken op, bij drie openbare bronnen
-            tegelijk. Melden die verschillende cijfers, dan geldt de meerderheid.
+            tegelijk. Spreken die elkaar tegen, dan geldt de meerderheid.
           </P>
 
           <IngredientGrid>

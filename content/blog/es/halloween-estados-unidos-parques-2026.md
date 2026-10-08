@@ -246,7 +246,7 @@ En el Oogie Boogie Bash están prohibidas las máscaras a partir de 14 años, lo
 
 ## Cuándo ir
 
-De las noches de evento en sí no tenemos datos propios. Nuestra medición cubre el día entero y no separa la noche del horario de día. Aquí tienes cada atracción grande de Universal Studios Florida hora a hora, medida durante toda la temporada:
+De las noches de evento en sí no tenemos datos propios. Nuestra medición cubre el día entero y no separa la noche del horario de día. En la tabla de abajo está cada atracción grande de Universal Studios Florida hora a hora, medida durante toda la temporada:
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 

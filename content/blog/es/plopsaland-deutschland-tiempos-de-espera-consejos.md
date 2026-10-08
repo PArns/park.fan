@@ -7,11 +7,12 @@ mode: published
 featured: false
 excerpt: >-
   Desde junio de 2025 el Holiday Park de Haßloch se llama Plopsaland
-  Deutschland, y mucha gente sigue buscándolo por el nombre antiguo. Aquí hay
+  Deutschland, y mucha gente sigue buscándolo por el nombre antiguo. Allí hay
   una montaña rusa votada dos veces como la mejor del mundo, y desde marzo de
-  2026 hay una segunda al lado. Esto es lo que se ha esperado de verdad a lo
-  largo de 225 días medidos, por qué el viernes es el día más tranquilo de la
-  semana y qué da realmente el Express Pass de 35 euros.
+  2026 hay una segunda al lado. En 225 días medidos se esperaba pocos
+  minutos en la mayoría de las atracciones, aún menos los viernes fuera de la
+  temporada de Halloween, y el Express Pass de 35 euros compensa sobre
+  todo un sábado de julio.
 tags:
   - plopsaland-deutschland
   - holiday-park
@@ -60,9 +61,10 @@ está en el mismo sitio desde 2001. Solo el parque se llama distinto desde el 28
 2025: [Plopsaland Deutschland](ref:plopsaland-deutschland), por el operador belga que lo tiene
 desde noviembre de 2010.
 
-Quien en 2026 busque entrada escribiendo «Holiday Park» acaba en resultados de tres décadas que
-hablan todos del mismo parque y dan precios distintos. El operador dejó la marca antigua con el
-cambio de nombre; la calle y el número la conservan.
+Quien en 2026 busque entrada escribiendo «Holiday Park» encuentra también páginas de años
+anteriores, con precios que ya no están vigentes. Una entrada con fecha cuesta en 2026 desde
+36 euros en línea. El operador dejó la marca antigua con el cambio de nombre; la calle y el
+número la conservan.
 
 El parque está en el Palatinado, entre Neustadt an der Weinstraße y Ludwigshafen, sobre
 40 hectáreas. En 2025 recibió 804.218 visitantes, según el operador el mejor año de su historia.
@@ -80,8 +82,8 @@ Renania-Palatinado. Medimos aquí los tiempos de espera desde hace dos años, ah
 de Intamin de 2001, y es el motivo por el que hay quien conduce desde Hamburgo hasta el
 Palatinado. El parque da 55 metros de altura, 120 km/h, 1.220 metros de recorrido, 1:15 minutos
 de trayecto y hasta 4,5 g. La Wikipedia alemana indica 53 metros: esa es la altura de la vía
-frente al dato del parque, que mide desde el punto más alto del lift. Donde ambos divergen, aquí
-va el del parque.
+frente al dato del parque, que mide desde el punto más alto del lift. Donde ambos divergen, usamos
+el del parque.
 
 ```glossary-widget slug=hyper-coaster
 

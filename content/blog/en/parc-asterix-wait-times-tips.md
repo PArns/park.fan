@@ -79,9 +79,9 @@ Paris as one destination. Its coasters include Goudurix, which was already
 running on opening day, and [Toutatis](ref:parc-asterix/toutatis), the tallest
 coaster in France.
 
-What follows comes from our own wait-time measurements since Christmas 2025,
-from the park's website as it stood on 2 October 2026, and from the articles and
-databases linked at the end. Where two of them disagree, you get both numbers.
+The wait times come from our own measurements since Christmas 2025, everything
+else from the park's website as it stood on 2 October 2026 and from the articles
+and databases linked at the end. Where two of them disagree, you get both numbers.
 
 ## Parc Astérix wait times, ride by ride
 

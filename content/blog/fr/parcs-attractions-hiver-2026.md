@@ -315,8 +315,8 @@ voyage en train vers le pôle Nord, payant en supplément.
 ![Un coaster éclairé en violet la nuit, la lune au-dessus | Bottrop dans le noir. Entre Halloween et Noël, il y a ici près de trois semaines de transformation. | wide](/media/movie-park-germany/iron-claw.jpg)
 
 Movie Park et Bobbejaanland appartiennent tous deux à Parques Reunidos, que le
-fonds EQT cherche à vendre. Pour les visiteurs, rien ne change pour l’instant,
-[les détails sont ici](/blog/parques-reunidos-a-vendre-movie-park). Quel jour de
+fonds EQT cherche à vendre. Pour les visiteurs, rien ne change pour l’instant
+([plus de détails sur la vente](/blog/parques-reunidos-a-vendre-movie-park)). Quel jour de
 la semaine est vraiment le plus calme à Bottrop, et où les conseils habituels se
 trompent, c’est dans le
 [guide Movie Park](/blog/movie-park-germany-temps-d-attente-conseils).

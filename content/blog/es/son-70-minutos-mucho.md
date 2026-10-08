@@ -49,7 +49,7 @@ Estás delante de [Taron](ref:phantasialand/taron), en la entrada pone
 **70 minutos**, y tu cabeza hace enseguida lo que no debe: comparar esa cifra con tu recuerdo. La última vez
 fueron 40, así que hoy es peor. La anterior 90, así que hoy va genial. Dos
 visitas no son una base, y además tu memoria redondea en tu contra
-([aquí está el porqué](/blog/el-arte-de-esperar)).
+([por qué pasa](/blog/el-arte-de-esperar)).
 
 Los parques anuncian esa cifra, suele ser aproximadamente correcta y nos
 cuesta una consulta cada cinco minutos. Pero está sola, como una temperatura sin
@@ -79,7 +79,7 @@ la columna de días medidos. Cuantos más días tiene una fila, más peso soport
 
 ```
 
-Lo que ves aquí va en directo. Si vuelves a leer este artículo dentro de tres
+Estas tablas van en directo. Si vuelves a leer este artículo dentro de tres
 meses, la tabla tendrá otras cifras y el texto de alrededor seguirá siendo
 válido. Los widgets existen porque en cuatro artículos más antiguos las
 cifras estaban tecleadas a mano en tablas de Markdown, repartidas por seis

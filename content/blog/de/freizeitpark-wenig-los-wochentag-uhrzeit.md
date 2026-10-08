@@ -82,8 +82,9 @@ Im Phantasialand und im Heide Park bleibt die Wartezeit danach bis zum Abend fas
 gleich, und im Legoland und im Movie Park wird es abends wieder voller.
 
 Die Seite [Beste Reisezeit](/beste-reisezeit) zeigt dir die ruhigsten Tage für
-deinen Reisemonat. Hier stehen zwölf Parks nebeneinander, mit den Daten, die
-park.fan seit dem 24. Dezember 2025 sammelt.
+deinen Reisemonat. Unten
+vergleichen wir zwölf Parks mit den Daten, die park.fan seit dem 24. Dezember 2025
+sammelt.
 
 ## Woher die Zahlen kommen
 
@@ -167,7 +168,7 @@ Zwei Parks laufen gegen das Muster. Im Legoland Deutschland und im Movie Park
 Germany ist die letzte Stunde mit Daten, 17 Uhr, eine der vollsten. Im Heide
 Park endet die Kurve ebenfalls um 17 Uhr, dort zieht sie am Ende nicht an.
 
-Unten steht die Kurve für den Europa-Park, jede Bahn einzeln.
+Die Kurve für den Europa-Park, jede Bahn einzeln:
 
 ```hourly-profile-widget slug=europa-park top=8
 
@@ -455,7 +456,7 @@ bleibt, gewinnt im Disneyland Paris, im Parc Astérix, im Europa-Park, im Efteli
 und in beiden Walibis, aber kaum im Phantasialand und im Heide Park. Wie du die
 Stunden aufteilst, zeigt der [Tagesplaner](/blog/tagesplaner).
 
-Unten stehen die ruhigsten Tage der nächsten Wochen im Europa-Park.
+Die ruhigsten Tage der nächsten Wochen im Europa-Park:
 
 ```best-days-widget slug=europa-park
 

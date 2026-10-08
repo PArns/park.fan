@@ -9,9 +9,9 @@ excerpt: >-
   Since June 2025 the Holiday Park in Haßloch has been called Plopsaland
   Deutschland, and plenty of people still look for it under the old name. It
   holds a coaster that has twice been voted the best in the world, and since
-  March 2026 a second one stands next to it. Here is how long people really
-  queued across 225 measured days, why Friday is the quietest day of the week,
-  and what the 35-euro Express Pass actually buys you.
+  March 2026 a second one stands next to it. Across 225 measured days most
+  rides had a wait of a few minutes, shortest on Fridays outside the Halloween
+  season, and the 35-euro Express Pass pays off most on a Saturday in July.
 tags:
   - plopsaland-deutschland
   - holiday-park
@@ -60,9 +60,9 @@ stood in the same spot since 2001. Only the park has a different name: since 28 
 [Plopsaland Deutschland](ref:plopsaland-deutschland), named after the Belgian operator that has
 owned it since November 2010.
 
-Search for "Holiday Park" in 2026 and you get results from three decades, all about the same
-place and all quoting different prices. The operator dropped the old brand with the rename; the
-street and the house number kept it.
+Search for "Holiday Park" in 2026 and you also get pages from earlier years, with prices that no
+longer apply. A dated ticket costs from 36 euros online in 2026. The operator dropped the old
+brand with the rename; the street and the house number kept it.
 
 The park sits in the Palatinate, between Neustadt an der Weinstraße and Ludwigshafen, on
 40 hectares. It drew 804,218 visitors in 2025, which the operator calls the best year in the

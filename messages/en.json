@@ -2725,7 +2725,7 @@
       "facts": {
         "title": "What we know about the day",
         "nothing": "We have no forecast for that day yet.",
-        "pickFirst": "Pick a day and what we know about it shows up here.",
+        "pickFirst": "Pick a day to see what we know about it.",
         "loading": "Loading the forecast …"
       },
       "blocks": {

@@ -286,7 +286,7 @@ const FAQ = [
   {
     question: 'Woher kommen die Wartezeiten?',
     answer:
-      'Aus drei öffentlichen Quellen: ThemeParks.wiki, Wartezeiten.app und Queue-Times.com. Wir fragen jeden Park alle fünf Minuten ab, und wenn die Quellen verschiedene Zahlen melden, gilt die Mehrheit.',
+      'Aus drei öffentlichen Quellen: ThemeParks.wiki, Wartezeiten.app und Queue-Times.com. Wir fragen jeden Park alle fünf Minuten ab, und wenn sich die Quellen widersprechen, gilt die Mehrheit.',
   },
   {
     question: 'Warum steht bei manchen Parks „keine Prognose“?',
@@ -718,7 +718,7 @@ export function ContentDE() {
         >
           <P>
             Alle fünf Minuten fragen wir jeden der 212 Parks ab, bei drei öffentlichen Quellen
-            gleichzeitig. Melden sie verschiedene Zahlen, gilt die Mehrheit.
+            gleichzeitig. Widersprechen sie sich, gilt die Mehrheit.
           </P>
 
           <IngredientGrid>

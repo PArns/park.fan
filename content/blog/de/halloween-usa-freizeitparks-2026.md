@@ -404,7 +404,7 @@ Hollywood sind es die Kostümmasken.
 
 ## Wann du hingehst
 
-Für die Eventabende selbst haben wir keine eigenen Zahlen. Unsere Messung gilt für den ganzen Tag und trennt den Abend nicht vom Tagesbetrieb. Für Universal Studios Florida steht hier jede große Bahn Stunde für Stunde, über die ganze Saison gemessen:
+Für die Eventabende selbst haben wir keine eigenen Zahlen. Unsere Messung gilt für den ganzen Tag und trennt den Abend nicht vom Tagesbetrieb. Für Universal Studios Florida steht jede große Bahn Stunde für Stunde in der Tabelle darunter, über die ganze Saison gemessen:
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 

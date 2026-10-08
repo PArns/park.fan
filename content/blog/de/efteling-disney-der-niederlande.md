@@ -271,8 +271,7 @@ Dazu kommen eine **[Dampfeisenbahn](ref:efteling/stoomtrein-marerijk)** von 1969
 mit zwei Bahnhöfen, deren Loks bis 2025 alle mit Kohle fuhren (seit Mai 2025 läuft
 die älteste, Aagje von 1911, elektrisch, die anderen werden nach und nach
 umgebaut, fürs Dampflok-Gefühl sorgen dann Showeffekte), das
-**[Stoomcarrousel](ref:efteling/stoomcarrousel)** von 1895, das seit 1956 hier
-steht, die **[Gondoletta](ref:efteling/gondoletta)** über den See, die schwebende
+**[Stoomcarrousel](ref:efteling/stoomcarrousel)** von 1895, das seit 1956 im Park steht, die **[Gondoletta](ref:efteling/gondoletta)** über den See, die schwebende
 **[Pagode](ref:efteling/pagode)** und **Aquanura**, die Wassershow auf dem See
 vor Fata Morgana. 17 Millionen Euro, 200 Fontänen, Platz für 6.500 Zuschauer.
 Seit Dezember 2024 läuft dort die Show „Efteling Symphonica“, vierzehn Minuten

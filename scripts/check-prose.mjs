@@ -537,6 +537,90 @@ const QUIET_PARK = {
   ]),
 };
 /**
+ * `Hier steht, wie lang man … angestanden hat`, `Was hier steht, ist live`, `Bei dem Median, der
+ * hier steht` (§3.3, rule 18): the text pointing at itself as the place where something is
+ * written (§1.4). Say the thing, or name the table or the post it is in. Patrick put it on the
+ * list on 2026-10-08, after the excerpt of the Plopsaland guide. `hier steht` counts in every
+ * position: the two hits that day that meant a place (`das seit 1956 hier steht`) read better
+ * with the place named. `steht hier` counts only before a comma, a colon or the end of a link
+ * label (`[die Einzelheiten stehen hier](…)`), since `Seit 1999 steht hier die Holzachterbahn` is
+ * a park. Its kin go with it: `hier findest du`, and `Unten steht …` opening a sentence, unless a
+ * figure follows (`Oben stehen 6,2 Millionen. Unten stehen 96 Attraktionen` is a fraction) or
+ * `Ganz` comes before it (a ranking). The other five languages are matched on the shapes their
+ * translations took (`What’s in there is live`, `Wat hier staat`, `Ce qui s’affiche ici`, `Lo
+ * que ves aquí`, `Quello che c’è qui`, `[the details are here](…)`). Their `Below is` stays a
+ * reading job, because the guide and planner pages need it for a demo you can drag (`Below is a
+ * plan for Phantasialand`), and `Here’s how`, `Voici comment` and `Ecco come` translate a plain
+ * German `So …:`.
+ */
+const AT_SENTENCE_START = String.raw`(?<=^|[.!?]\s)`;
+const SAYS_HERE = Object.fromEntries(
+  Object.entries({
+    de: String.raw`hier\s+(?:steht|stehen|stand|standen)|(?:steht|stehen|stand|standen)\s+hier(?=\s*[,:\]])|hier\s+(?:findest|erfährst|liest)\s+du|${AT_SENTENCE_START}(?:weiter\s+)?unten\s+(?:steht|stehen)(?![\s*_]*\d)`,
+    en: String.raw`what['’]s in (?:here|there)|what(?: is|['’]s) (?:written |shown )?here|(?:is|are) here(?=\s*[,:\]])|here you(?:['’]ll| will| can) (?:find|read)`,
+    nl: String.raw`hier\s+(?:staat|staan|stond|stonden|lees\s+je|vind\s+je)|(?:staat|staan|stond|stonden)\s+hier(?=\s*[,:\]])`,
+    fr: String.raw`ce qui (?:s['’]affiche|est écrit|figure|se trouve) ici|(?:est|sont|se trouvent?|figurent?) ici(?=\s*[,:\]])`,
+    es: String.raw`lo que (?:ves|hay|pone|se lee|aparece) aquí|aquí ponemos|(?:está|están) aquí(?=\s*[,:\]])`,
+    it: String.raw`quello che (?:c['’]è|si legge|trovi) qui|(?:è|sono) qui(?=\s*[,:\]])`,
+  }).map(([locale, alternatives]) => [
+    locale,
+    new RegExp(String.raw`(?<!\p{L})(?:${alternatives})(?!\p{L})`, 'giu'),
+  ])
+);
+/**
+ * `Suchergebnisse aus drei Jahrzehnten, die alle denselben Park meinen und unterschiedliche
+ * Preise nennen` (§3.3, rule 19): a difference announced and none of the figures given. Which
+ * prices, and which one holds? Patrick put it on the list on 2026-10-08, from the same guide,
+ * which had carried it into all five translations (`all quoting different prices`, `verschillende
+ * prijzen noemen`, `annoncent des prix différents`, `dan precios distintos`, `riportano prezzi
+ * diversi`). `Die Berichte gehen auseinander` is the same announcement. Matched per sentence,
+ * and only when neither that sentence nor the next holds a digit: `Die Ticketseite nennt …
+ * verschiedene Preise, 229,99 $ und 274,99 $` gives them, and so does a sentence that says two
+ * pages disagree before the next one quotes both heights. `Wartezeiten` is not on the list:
+ * `Widersprechen sich die Quellen, entscheidet die Mehrheit` describes a rule, and a rule has no
+ * single figure to give.
+ */
+const DIFFER_DE = String.raw`(?:unterschiedlich|verschieden|abweichend|widersprüchlich|ander)(?:e|en|er|es)?`;
+const FIGURES_DE = String.raw`(?:\p{L}*preise|zahlen|werte|angaben|höhen|längen|termine|daten|öffnungszeiten|tarife|beträge|summen|geschwindigkeiten)`;
+const NAMING_DE = String.raw`(?:nenn(?:en|t)|nannten?|meld(?:en|et|eten)|geben|gibt|gaben?|liefer(?:n|t|ten)|zeig(?:en|t|ten)|angeben|ausweisen|weis(?:en|t))`;
+const DIFFERENT_FIGURES = {
+  de: new RegExp(
+    String.raw`(?<!\p{L})(?:${NAMING_DE}\s+(?:\p{L}+\s+){0,3}?${DIFFER_DE}\s+(?:\p{L}+\s+)?${FIGURES_DE}|${DIFFER_DE}\s+(?:\p{L}+\s+)?${FIGURES_DE}\s+(?:\p{L}+\s+){0,2}?${NAMING_DE}|(?:angaben|zahlen|werte|berichte|quellen|preise)\s+(?:\p{L}+\s+){0,2}?(?:gehen|gingen)\s+(?:\p{L}+\s+){0,2}?auseinander|(?:gehen|gingen)\s+(?:die\s+)?(?:angaben|zahlen|werte|berichte|quellen|preise)\s+(?:\p{L}+\s+){0,2}?auseinander)(?!\p{L})`,
+    'giu'
+  ),
+  en: /(?<!\p{L})(?:quot(?:es?|ing|ed)|giv(?:es?|ing)|gave|list(?:s|ing|ed)?|nam(?:es?|ing|ed)|show(?:s|ing|ed)?|stat(?:es?|ing|ed)|report(?:s|ing|ed)?|carr(?:y|ies|ying|ied))\s+(?:\p{L}+\s+)?(?:different|differing|conflicting|varying|other)\s+(?:prices|figures|numbers|heights|lengths|dates|values|amounts|opening hours|fares|speeds)(?!\p{L})/giu,
+  nl: /(?<!\p{L})(?:(?:noem(?:en|t|de|den)|gee(?:ft|ven)|gaf|gaven|meld(?:en|t)|vermeld(?:en|t)|to(?:nen|ont))\s+(?:\p{L}+\s+){0,2}?(?:verschillende|andere|uiteenlopende|tegenstrijdige|afwijkende)\s+(?:prijzen|cijfers|getallen|hoogtes|hoogten|lengtes|data|waarden|bedragen|openingstijden|snelheden)|(?:verschillende|andere|uiteenlopende|tegenstrijdige|afwijkende)\s+(?:prijzen|cijfers|getallen|hoogtes|hoogten|lengtes|data|waarden|bedragen|openingstijden|snelheden)\s+(?:\p{L}+\s+){0,2}?(?:noemen|noemt|geven|geeft|melden|meldt|vermelden|vermeldt|tonen|toont))(?!\p{L})/giu,
+  fr: /(?<!\p{L})(?:annonc|donn|indiqu|affich|cit|mentionn|signal|publi)\p{L}*\s+(?:\p{L}+\s+)?(?:des\s+(?:prix|chiffres|nombres|hauteurs|longueurs|dates|valeurs|montants|tarifs|horaires|vitesses)\s+(?:différent|divergent|contradictoire|variable)\p{L}*|d['’]autres\s+(?:prix|chiffres|nombres|hauteurs|dates|valeurs|montants|tarifs|horaires))(?!\p{L})/giu,
+  es: /(?<!\p{L})(?:da|dan|daba|daban|dio|dieron|dice|dicen|indica\p{L}*|muestra\p{L}*|cita\p{L}*|recoge\p{L}*|menciona\p{L}*|publica\p{L}*|señala\p{L}*)\s+(?:(?:precios|cifras|números|alturas|longitudes|fechas|valores|importes|tarifas|horarios|velocidades)\s+(?:distint|diferent|dispar|contradictori)\p{L}*|(?:distint[oa]s|diferentes|otr[oa]s)\s+(?:precios|cifras|números|alturas|longitudes|fechas|valores|importes|tarifas|horarios|velocidades))(?!\p{L})/giu,
+  it: /(?<!\p{L})(?:(?:riport|indic|mostr|cit|menzion|pubblic|segnal)\p{L}*|d(?:à|anno|ava|avano))\s+(?:\p{L}+\s+)?(?:(?:prezzi|cifre|numeri|altezze|lunghezze|date|valori|importi|tariffe|orari|velocità)\s+(?:divers|differenti|discordant|contraddittori)\p{L}*|(?:diversi|diverse|altri|altre)\s+(?:prezzi|cifre|numeri|altezze|valori|importi|tariffe|orari))(?!\p{L})/giu,
+};
+/**
+ * The sentences of `text` that announce a difference with no figure in them or in the next one.
+ * A year is not a figure: the Plopsaland sentence opened with `Wer 2026 ein Ticket sucht`.
+ */
+function unnamedDifferences(text, locale) {
+  const re = DIFFERENT_FIGURES[locale];
+  if (!re) return [];
+  const list = splitSentences(text.replace(/\]\([^)]*\)/g, ']'));
+  const figure = (s = '') => /\d/.test(s.replace(/(?<!\d)(?:19|20)\d\d(?!\d)/g, ''));
+  return list.flatMap((s, i) => (figure(s) || figure(list[i + 1]) ? [] : (s.match(re) ?? [])));
+}
+/**
+ * `Sky Scream wirft seine Züge dreimal an` (§3.3, rule 20): a motor is angeworfen, a launch
+ * coaster is not. A train is abgeschossen or beschleunigt, the thing itself is der Abschuss. It
+ * stood in a Plopsaland caption until Patrick put it on the list on 2026-10-08. German only: the
+ * other five say `launch`, `lanceert`, `lance`, `lanza` and `lancia`, which is the right word.
+ * The train or the riders have to be the object, so `den Motor anwerfen` stays; `anschmeißen` is
+ * the same verb one register down.
+ */
+const LAUNCH_VEHICLE = '(?:zug|züge|zügen|wagen|gondeln?|fahrzeuge?|fahrgäste|passagiere)';
+const THROWN_ON = {
+  de: new RegExp(
+    String.raw`(?<!\p{L})(?:(?:wirft|werfen|warf|warfen|schmeißt|schmeißen|schmiss|schmissen)\s+(?:\p{L}+\s+){0,3}?${LAUNCH_VEHICLE}\s+(?:\p{L}+\s+){0,3}?an(?=\s*[,.;:!?)]|\s*$|\s+(?:und|bevor|sobald|wenn|als|damit)(?!\p{L}))|${LAUNCH_VEHICLE}\s+(?:\p{L}+\s+){0,4}?(?:angeworfen|anzuwerfen|anwerfen|anwirft|anwarf|angeschmissen|anschmeißen))(?!\p{L})`,
+    'giu'
+  ),
+};
+/**
  * `Drei Einschränkungen gehören dazu.`, `Zwei Einordnungen aus unseren Guides.` (§2.16): a short
  * sentence that counts what follows instead of saying it. Only the nouns of a text talking about
  * its own caveats are matched; `Drei Dinge noch:` introduces a list in five posts and is left to
@@ -1202,6 +1286,24 @@ function hardRules(file, text, locale) {
     fail(
       file,
       `"der Park ist ruhig" (§3.3), say how long the wait is or what changed: ${[...new Set(quietPark)].slice(0, 3).join(' · ')}`
+    );
+  const saysHere = flat.match(SAYS_HERE[locale]);
+  if (saysHere)
+    fail(
+      file,
+      `"hier steht" (§3.3), say the thing or name the table it is in: ${[...new Set(saysHere)].slice(0, 3).join(' · ')}`
+    );
+  const differences = unnamedDifferences(text, locale);
+  if (differences.length)
+    fail(
+      file,
+      `"unterschiedliche Preise nennen" (§3.3), give the figures or say which one holds: ${[...new Set(differences)].slice(0, 3).join(' · ')}`
+    );
+  const thrownOn = THROWN_ON[locale] && flat.match(THROWN_ON[locale]);
+  if (thrownOn)
+    fail(
+      file,
+      `"wirft seine Züge an" (§3.3), a launch is abgeschossen or beschleunigt: ${[...new Set(thrownOn)].join(' · ')}`
     );
   const numberShown = [
     ...((A_NUMBER_SHOWN[locale] && flat.match(A_NUMBER_SHOWN[locale])) || []),

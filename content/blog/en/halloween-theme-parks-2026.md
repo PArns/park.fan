@@ -684,9 +684,7 @@ choice from our AI crowd calendar:
 ```
 
 At Movie Park the calendar has no measured Halloween autumn to learn from yet,
-so take its forecast for the horror evenings with a pinch of salt. Below is how
-busy Bottrop typically gets by weekday and month, from our measurements. They
-only start in late December 2025 and no October had been measured by 29
+so take its forecast for the horror evenings with a pinch of salt. How busy Bottrop typically gets by weekday and month is in the statistics. Our measurements there only start in late December 2025 and no October had been measured by 29
 September 2026, so Halloween is left to your imagination for now:
 
 **Movie Park Germany, typical wait times by weekday & month**

@@ -58,8 +58,7 @@ la capacità. La prima decide come _pesa_ l’attesa, la seconda quanto è
 _davvero_ lunga la fila.
 
 Il tema non mi molla per un motivo piuttosto personale. park.fan è nato in una coda
-al Taron, per pura frustrazione davanti a un’eternità percepita ([la storia
-completa è qui](/blog/un-passeggino-una-gondola-e-park-fan)). Cosa mi stesse
+al Taron, per pura frustrazione davanti a un’eternità percepita ([com’è andata](/blog/un-passeggino-una-gondola-e-park-fan)). Cosa mi stesse
 succedendo davvero quel pomeriggio, volevo poi saperlo con precisione. Servono
 due formule, e stanno insieme sul retro di un sottobicchiere.
 

@@ -66,9 +66,7 @@ calme de l'année**.
 
 Les deux destinations fêtent Noël à peu près aussi
 longtemps, toutes deux font la promotion des mêmes semaines, et sur ce qui vous
-attend le 28 décembre, elles ne disent pas du tout la même chose. Vous trouverez
-d'abord les dates, chacune prise sur le site officiel du parc, puis la mesure
-avec ses limites.
+attend le 28 décembre, elles ne disent pas du tout la même chose. Chaque date vient du site officiel du parc.
 
 > **À propos des dates :** voici l'état au 4 octobre 2026. J'ai relu ce jour-là
 > chaque date, chaque horaire et chaque prix sur les pages officielles

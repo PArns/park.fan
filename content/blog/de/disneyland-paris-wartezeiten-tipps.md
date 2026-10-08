@@ -272,8 +272,8 @@ Olaf. An Silvester feiert jeder der beiden Parks mit eigenem Programm.
 
 Die Wochentagskurve darüber ist flach, weil ein Park, der 365 Tage im Jahr aufhat und in
 einem halben Dutzend Ländern beworben wird, keinen toten Dienstag hat, auf den
-man ausweichen könnte. Welche der nächsten Wochen trotzdem die ruhigsten sind, steht
-hier, laufend neu berechnet:
+man ausweichen könnte. Welche der nächsten Wochen trotzdem die ruhigsten sind, ist im Kalender darunter
+markiert, laufend neu berechnet:
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -413,8 +413,8 @@ den Außenbahnen heißt:
 
 Wer den Vergleich mit den Parks sucht, die aus Deutschland ähnlich weit weg
 sind: über [Walibi Belgium](/blog/walibi-belgium-wartezeiten-tipps) und über das
-[Efteling](/blog/efteling-disney-der-niederlande) steht hier schon je ein
-eigener Text. Und wenn deine Reise zwischen jetzt und dem Sommer 2027 liegt:
+[Efteling](/blog/efteling-disney-der-niederlande) gibt es bei uns schon je einen eigenen
+Beitrag. Und wenn deine Reise zwischen jetzt und dem Sommer 2027 liegt:
 Adventure World fährt in diesen Monaten dreizehn Attraktionen statt vierzehn.
 Wer ohnehin geschwankt hat, ob das Zwei-Park-Ticket den Aufpreis wert ist, hat
 gerade ein Argument weniger dafür.
@@ -422,7 +422,7 @@ gerade ein Argument weniger dafür.
 Zwischen dem 7. November und dem 6. Januar läuft in beiden Parks die
 Weihnachtssaison, und die Woche zwischen den Jahren ist hier anders als in
 Orlando: in der Adventure World sogar die ruhigste des gemessenen Jahres.
-Termine, Silvesterprogramm und der Vergleich stehen hier: [Weihnachten und Silvester in Orlando und Paris](/blog/weihnachten-silvester-orlando-paris-2026).
+Termine, Silvesterprogramm und den Vergleich gibt es in unserem Beitrag [Weihnachten und Silvester in Orlando und Paris](/blog/weihnachten-silvester-orlando-paris-2026).
 
 — Patrick
 

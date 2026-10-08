@@ -47,7 +47,7 @@ Sei davanti a [Taron](ref:phantasialand/taron), il display segna
 **70 minuti**, e la tua testa fa subito la cosa sbagliata, cioè confronta quel numero con il tuo ricordo. L’ultima
 volta erano 40, quindi oggi va peggio. La volta prima 90, quindi oggi va
 benissimo. Due visite non sono una base, e la memoria arrotonda comunque a tuo
-sfavore ([il perché è qui](/blog/l-arte-dell-attesa)).
+sfavore ([perché succede](/blog/l-arte-dell-attesa)).
 
 I parchi espongono il numero, di solito è più o meno giusto e a noi costa una
 richiesta ogni cinque minuti. Però sta da solo, come una temperatura senza la
@@ -78,7 +78,7 @@ più quella riga pesa.
 
 ```
 
-Quello che c’è qui è in tempo reale. Se rileggi questo articolo tra tre mesi, in
+Queste tabelle sono in tempo reale. Se rileggi questo articolo tra tre mesi, in
 tabella ci saranno altri numeri, e il testo attorno starà ancora in piedi. Per
 questo esistono questi widget. In quattro articoli più vecchi i
 numeri erano digitati a mano in tabelle Markdown, distribuiti su sei lingue, e
