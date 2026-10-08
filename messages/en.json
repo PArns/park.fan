@@ -2414,7 +2414,8 @@
       "composedHint": "The day’s level is predicted; the shape comes from earlier days.",
       "composedHintError": "Day’s level predicted, shape from earlier days, typically {minutes} min off.",
       "longRangeHint": "This far ahead even the level of the whole day is uncertain. The hourly figures are only a rough guide.",
-      "unmeasuredHint": "How well the forecast holds up this far ahead has not been evaluated yet. The figures are only a rough guide."
+      "unmeasuredHint": "How well the forecast holds up this far ahead has not been evaluated yet. The figures are only a rough guide.",
+      "climatology": "Earlier years"
     },
     "band": {
       "plusMinus": "± {minutes} min"
@@ -2463,6 +2464,12 @@
       "no_forecast": "The model has not produced a forecast for this day yet. Check back after the next model run.",
       "no_observations": "We have no measurements for this park on that past day.",
       "data_unavailable": "A service behind the plan did not answer. We don't know right now why there are no curves. Try again in a moment."
+    },
+    "climatology": {
+      "title": "A look back at comparable days, not a forecast.",
+      "regular": "Based on {days, plural, one {# ordinary day} other {# ordinary days}} from earlier years.",
+      "holiday": "Based on {days, plural, one {# public holiday or bridge day} other {# public holidays or bridge days}} from earlier years.",
+      "school_vacation": "Based on {days, plural, one {# day} other {# days}} in school holidays from earlier years."
     },
     "overview": {
       "empty": "No days planned yet.",

@@ -68,6 +68,7 @@
     "test:planner-optimize": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-optimize.mjs",
     "test:quietest-day": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-quietest-day.mjs",
     "test:planner-fit": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-fit.mjs",
+    "test:planner-climatology": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-climatology.mjs",
     "test:planner-unavailable": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-unavailable.mjs",
     "test:ride-figures": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-figures.mjs",
     "test:rider-height": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-rider-height.mjs",
