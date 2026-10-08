@@ -93,9 +93,6 @@ Het loont niet in deze gevallen:
   single-riderrij naast elkaar.
 - **De baan vertelt iets wat jullie samen willen beleven.** Bij Symbolica in de Efteling kun je als
   single rider niet kiezen welke van de drie paleisrondleidingen je krijgt.
-- **Je hebt een tijdslot.** Wie in het Europa-Park via de VirtualLine voor die ene baan heeft
-  gereserveerd, mag tot het tijdvenster ergens anders in de rij staan. Voor die baan heeft hij de
-  single-rideringang dan niet nodig.
 - **De gewone rij is toch al kort.** Dan vervalt het voordeel, en is het gezelschap zonder reden
   gescheiden.
 
@@ -108,7 +105,7 @@ opgave. Op de attractiepagina toont park.fan daarvoor een “Single Rider”-tek
 “onbekend” en nooit “nee”. Een ontbrekend teken zegt dus niets over de vraag of de rij bestaat.
 
 **Hoe lang is hij nu?** Hier ontbreekt vaak het getal. Op 8 oktober 2026 hebben we de live-gegevens van
-alle 18 parken opgehaald. Daarin stonden 41 single-riderrijen, 19 daarvan geopend, in zeven parken.
+alle 18 parken opgehaald. Daarin stonden 41 single-riderrijen in twaalf parken, 19 daarvan geopend, in zeven parken.
 Geen enkele van de 41 had een wachttijd. De parken melden ons dat de rij open is, maar niet hoe lang
 hij is. Op de attractiepagina toont park.fan dan “Single Rider” zonder tijd, en de tabellen in dit
 artikel tonen de gewone rij.
@@ -284,7 +281,7 @@ Springs Racers, Grizzly River Run, WEB SLINGERS en Soarin’ Over California.
 Bij ons zijn het er samen zes: Millennium Falcon en Tiana’s Bayou Adventure in het
 [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) en Incredicoaster,
 Radiator Springs Racers, WEB SLINGERS en Silly Symphony Swings in
-[Disney California Adventure Park](ref:disney-california-adventure-park). Vijf banen van de lijst van
+[Disney California Adventure Park](ref:disney-california-adventure-park). Zes banen van de lijst van
 het resort ontbreken bij ons, en de Silly Symphony Swings staan niet op de lijst.
 
 Het park schrijft dat cast members je naar de bedoelde rij sturen en dat je gezelschap daar wordt

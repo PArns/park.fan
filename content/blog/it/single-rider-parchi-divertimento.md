@@ -95,9 +95,6 @@ Non conviene in questi casi:
   rider si siedono vicine.
 - **L’attrazione racconta qualcosa che volete vivere insieme.** A Symbolica all’Efteling, da single
   rider non puoi scegliere quale delle tre visite guidate del palazzo ti tocca.
-- **Hai una fascia oraria.** Chi all’Europa-Park ha prenotato con la Virtual Line per quell’unica
-  attrazione può fare la coda altrove fino al suo turno. Per quell’attrazione, l’ingresso single
-  rider allora non gli serve.
 - **La coda normale è già corta.** Il vantaggio sparisce e il gruppo si è diviso senza motivo.
 
 ## Cosa sanno i nostri dati sulla coda
@@ -110,7 +107,7 @@ Rider”. Il valore `null` vuol dire “sconosciuto” e mai “no”. Se l’ic
 dire se la coda esista.
 
 **Quanto è lunga adesso?** Qui il numero spesso manca. L’8 ottobre 2026 abbiamo richiesto i dati in
-tempo reale di tutti i 18 parchi. C’erano 41 code single rider, 19 delle quali aperte, in sette
+tempo reale di tutti i 18 parchi. C’erano 41 code single rider in dodici parchi, 19 delle quali aperte, in sette
 parchi. Nessuna delle 41 riportava un tempo di attesa. I parchi ci comunicano che la coda è aperta,
 ma non quanto è lunga. Sulla pagina dell’attrazione park.fan mostra allora “Single Rider” senza
 tempo, e le tabelle di questo articolo mostrano la coda normale.
@@ -286,7 +283,7 @@ Springs Racers, Grizzly River Run, WEB SLINGERS e Soarin’ Over California.
 Da noi sono sei in tutto: Millennium Falcon e Tiana’s Bayou Adventure al
 [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park), e Incredicoaster,
 Radiator Springs Racers, WEB SLINGERS e Silly Symphony Swings al
-[Disney California Adventure Park](ref:disney-california-adventure-park). Cinque attrazioni
+[Disney California Adventure Park](ref:disney-california-adventure-park). Sei attrazioni
 dell’elenco del resort da noi mancano, e le Silly Symphony Swings non sono nell’elenco.
 
 Il parco scrive che i Cast Member ti indirizzano alla coda prevista e che lì il tuo gruppo viene
@@ -399,7 +396,7 @@ Tre limiti valgono per tutto l’articolo:
 ### Fonti e approfondimenti
 
 - Single rider all’Efteling, elenco delle sei attrazioni, regole per gruppi e bambini, Symbolica:
-  [Single-Rider-Eingang (ufficiale)](https://www.efteling.com/de/park/informationen/single-rider-eingang)
+  [Ingresso single rider (ufficiale)](https://www.efteling.com/de/park/informationen/single-rider-eingang)
 - Single rider a Walt Disney World, cinque attrazioni e le regole:
   [Single Rider Services (ufficiale)](https://disneyworld.disney.go.com/guest-services/single-rider-line/)
 - Single rider al Disneyland Resort, undici attrazioni e le regole:

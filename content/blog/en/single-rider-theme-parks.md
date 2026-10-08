@@ -93,9 +93,6 @@ It isn’t worth it in these cases:
   side by side.
 - **The ride tells a story you want to experience together.** On Symbolica at Efteling you cannot
   choose which of the three palace tours you get as a single rider.
-- **You have a time slot.** At Europa-Park, anyone who has reserved the one ride through the Virtual
-  Line may queue elsewhere until the time window. For that ride they don’t need the single rider
-  entrance.
 - **The standard queue is short anyway.** Then the advantage is gone, and the group is split for no
   reason.
 
@@ -109,13 +106,13 @@ fixed attribute. On the attraction page park.fan shows a “Single rider” badg
 exists.
 
 **How long is it right now?** Here the number is often missing. On 8 October 2026 we pulled the live
-data of all 18 parks. It contained 41 single rider queues, 19 of them open, in seven parks. Not one
+data of all 18 parks. It contained 41 single rider queues in twelve parks, 19 of them open, in seven parks. Not one
 of the 41 carried a wait time. The parks tell us the queue is open, but not how long it is. On the
 attraction page park.fan then shows “Single rider” without a time, and the tables in this post show
 the standard queue.
 
 So how much time the entrance saves can’t currently be calculated from our data. All that is backed
-up is Efteling’s statement that single riders usually wait less. We do not quote the result of our own
+up is Efteling’s statement that single riders usually wait less. We don’t quote the result of our own
 measurement as long as there is none.
 
 ## Park by park: how many rides we know
@@ -149,7 +146,7 @@ attraction, missing for one and for none. There, “not on the list” really do
 queue”. Everywhere else the list is a lower bound: at Disneyland Park in Paris the value is missing for
 41 of 43 attractions, at Disneyland Park in Anaheim for 54 of 56.
 
-The other 185 of the 203 parks do not have a single ride with the attribute. Whether that is a “no” or
+The other 185 of the 203 parks don’t have a single ride with the attribute. Whether that is a “no” or
 a gap, we don’t know there.
 
 ## Europa-Park
@@ -239,7 +236,7 @@ At [Alton Towers](ref:alton-towers) there are four rides in the Thrills area: TH
 Whizzer, The Smiler and Galactica. At [Thorpe Park](ref:thorpe-park) there are two, both in the
 Coasters area: SAW – The Ride and Hyperia. At both parks the value is missing for most rides: at Alton
 Towers for 48 of 55 attractions, at Thorpe Park for 38 of 45. The minimum height is 120 centimetres on
-TH13TEEN and Spinball Whizzer, 130 on Hyperia and 140 on The Smiler, Galactica and SAW. We have not
+TH13TEEN and Spinball Whizzer, 130 on Hyperia and 140 on The Smiler, Galactica and SAW. We haven’t
 read a page from either park that confirms the list.
 
 ```ride-waits-widget rides=alton-towers/the-smiler|The Smiler;alton-towers/galactica|Galactica;alton-towers/th13teen|TH13TEEN;alton-towers/spinball-whizzer|Spinball Whizzer;thorpe-park/hyperia|Hyperia;thorpe-park/saw-the-ride|SAW – The Ride columns=park,peak
@@ -250,7 +247,7 @@ read a page from either park that confirms the list.
 
 At [PortAventura Park](ref:portaventura-park) we know four rides: Hurakan Condor, Furius Baco,
 Shambhala and Dragon Khan. The value is missing for 45 of the 51 attractions, so the list is
-especially short compared with what we do not know.
+especially short compared with what we don’t know.
 
 ```ride-waits-widget rides=portaventura-park/shambhala|Shambhala;portaventura-park/dragon-khan|Dragon Khan;portaventura-park/furius-baco|Furius Baco;portaventura-park/hurakan-condor|Hurakan Condor columns=peak
 
@@ -261,10 +258,10 @@ especially short compared with what we do not know.
 On its single rider service page, Walt Disney World names five rides: Millennium Falcon: Smugglers
 Run, Star Wars: Rise of the Resistance and Rock ’n’ Roller Coaster Starring The Muppets at Disney’s
 Hollywood Studios, plus Remy’s Ratatouille Adventure and Test Track at EPCOT. Added to that is
-Expedition Everest at Disney’s Animal Kingdom, which is not on the park’s list.
+Expedition Everest at Disney’s Animal Kingdom, which isn’t on the park’s list.
 
 The rules are on the same page. The service lets groups split up and board separately. Immediate
-boarding and the choice of seat are not guaranteed, special seating requests may not be met, and the
+boarding and the choice of seat aren’t guaranteed, special seating requests may not be met, and the
 participating attractions and the wait times can change.
 
 The three single rider queues at Disney’s Hollywood Studios were listed as “open” on 8 October 2026,
@@ -284,8 +281,8 @@ Springs Racers, Grizzly River Run, WEB SLINGERS and Soarin’ Over California.
 In our data there are six in total: Millennium Falcon and Tiana’s Bayou Adventure at
 [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park), and Incredicoaster,
 Radiator Springs Racers, WEB SLINGERS and Silly Symphony Swings at
-[Disney California Adventure Park](ref:disney-california-adventure-park). Five rides on the resort’s
-list are missing from our data, and the Silly Symphony Swings are not on the list.
+[Disney California Adventure Park](ref:disney-california-adventure-park). Six rides on the resort’s
+list are missing from our data, and the Silly Symphony Swings aren’t on the list.
 
 The park writes that Cast Members direct you to the designated queue, where your group is split up to
 fill the seats that guests in the standard queue don’t take.
@@ -376,14 +373,14 @@ requirements. Efteling writes the same for children who enter alone.
 
 ### Can I choose my seat?
 
-No. Efteling assigns a seat, and Walt Disney World does not guarantee the choice of seat.
+No. Efteling assigns a seat, and Walt Disney World doesn’t guarantee the choice of seat.
 
 ## Where the data has gaps
 
 Three limits apply to everything in this post:
 
 - `hasSingleRider` is a fixed attribute per ride. It doesn’t say whether the queue is open today.
-- “Unknown” is not “no”. Where nothing is entered, the ride is not in the lists.
+- “Unknown” is not “no”. Where nothing is entered, the ride isn’t in the lists.
 - For Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal and the Asian
   Disney parks, the value comes from our data, not from a park page we could read. At Efteling our data
   lists one ride more than the park does.

@@ -96,9 +96,6 @@ Elle ne vaut pas le coup dans ces cas :
   hasard que des personnes de la file Single Rider s’assoient côte à côte.
 - **L’attraction raconte quelque chose que vous voulez vivre ensemble.** À Symbolica, à l’Efteling,
   tu ne peux pas choisir en Single Rider laquelle des trois visites du palais tu auras.
-- **Tu as un créneau.** Qui a réservé l’attraction à l’Europa-Park avec la Virtual Line peut faire
-  la queue ailleurs jusqu’à son créneau. Pour cette attraction, il n’a pas besoin de l’entrée Single
-  Rider.
 - **La file normale est de toute façon courte.** L’avantage disparaît, et le groupe est séparé pour
   rien.
 
@@ -112,7 +109,7 @@ Il y a deux questions, et nos données ne répondent bien qu’à l’une d’el
 donc rien sur l’existence de la file.
 
 **Quelle est sa longueur en ce moment ?** Ici, le chiffre manque souvent. Le 8 octobre 2026, nous
-avons interrogé les données en direct des 18 parcs. Elles contenaient 41 files Single Rider, dont 19
+avons interrogé les données en direct des 18 parcs. Elles contenaient 41 files Single Rider dans douze parcs, dont 19
 ouvertes, dans sept parcs. Pas une seule des 41 n’affichait de temps d’attente. Les parcs nous
 signalent que la file est ouverte, mais pas sa longueur. Sur la page de l’attraction, park.fan montre
 alors « Single Rider » sans durée, et les tableaux de cet article montrent la file normale.
@@ -295,7 +292,7 @@ Springs Racers, Grizzly River Run, WEB SLINGERS et Soarin’ Over California.
 Chez nous, il y en a six en tout : Millennium Falcon et Tiana’s Bayou Adventure au
 [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park), ainsi
 qu’Incredicoaster, Radiator Springs Racers, WEB SLINGERS et Silly Symphony Swings au
-[Disney California Adventure Park](ref:disney-california-adventure-park). Cinq attractions de la liste
+[Disney California Adventure Park](ref:disney-california-adventure-park). Six attractions de la liste
 du resort manquent chez nous, et les Silly Symphony Swings ne figurent pas sur la liste.
 
 Le parc écrit que des Cast Members t’orientent vers la file prévue et que ton groupe y est séparé

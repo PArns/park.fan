@@ -1,5 +1,5 @@
 ---
-title: 'Single Rider: In welchen Freizeitparks du allein schneller auf die Bahn kommst'
+title: 'Single Rider: In welchen Parks du allein schneller fährst'
 translationKey: single-rider-guide
 date: '2026-10-08'
 author: patrick
@@ -97,9 +97,6 @@ Es lohnt sich nicht in diesen Fällen:
   Single-Rider-Warteschlange nebeneinander.
 - **Die Bahn erzählt etwas, das ihr gemeinsam erleben wollt.** Bei Symbolica im Efteling kannst du als
   Single Rider nicht wählen, welche der drei Palastführungen du bekommst.
-- **Du hast einen Zeitslot.** Wer im Europa-Park über die Virtual Line für die eine Bahn reserviert
-  hat, darf bis zum Zeitfenster woanders anstehen. Für diese Bahn braucht er den Single-Rider-Eingang
-  dann nicht.
 - **Die normale Warteschlange ist ohnehin kurz.** Dann entfällt der Vorteil, und die Gruppe ist
   grundlos getrennt.
 
@@ -113,7 +110,7 @@ festen Angabe. Auf der Seite der Attraktion zeigt park.fan dafür ein „Single 
 Warteschlange gibt.
 
 **Wie lang ist sie gerade?** Hier fehlt oft die Zahl. Wir haben am 8. Oktober 2026 die Live-Daten aller
-18 Parks abgerufen. Darin standen 41 Single-Rider-Warteschlangen, 19 davon geöffnet, in sieben Parks.
+18 Parks abgerufen. Darin standen 41 Single-Rider-Warteschlangen in zwölf Parks, 19 davon geöffnet, in sieben Parks.
 Keine einzige der 41 trug eine Wartezeit. Die Parks melden uns, dass die Warteschlange offen ist,
 aber nicht, wie lang sie ist. Auf der Attraktionsseite zeigt park.fan dann „Single Rider“ ohne Zeit,
 und die Tabellen in diesem Beitrag zeigen die normale Warteschlange.
@@ -295,7 +292,7 @@ Springs Racers, Grizzly River Run, WEB SLINGERS und Soarin’ Over California.
 Es sind zusammen sechs: Millennium Falcon und Tiana’s Bayou Adventure im
 [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) sowie Incredicoaster,
 Radiator Springs Racers, WEB SLINGERS und Silly Symphony Swings im
-[Disney California Adventure Park](ref:disney-california-adventure-park). Fünf Bahnen der Liste des
+[Disney California Adventure Park](ref:disney-california-adventure-park). Sechs Bahnen der Liste des
 Resorts fehlen bei uns, und die Silly Symphony Swings stehen nicht auf der Liste.
 
 Der Park schreibt, dass Cast Members dich in die vorgesehene Warteschlange leiten und deine Gruppe

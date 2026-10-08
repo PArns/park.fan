@@ -94,9 +94,6 @@ No compensa en estos casos:
   una al lado de otra las personas de la cola single rider.
 - **La atracción cuenta algo que queréis vivir juntos.** En Symbolica, en el Efteling, como single
   rider no puedes elegir cuál de las tres visitas guiadas al palacio te toca.
-- **Tienes una franja horaria.** Quien en el Europa-Park ha reservado con la Virtual Line para esa
-  atracción puede hacer cola en otro sitio hasta que llegue su franja. Para esa atracción ya no
-  necesita la entrada single rider.
 - **La cola normal ya es corta.** Entonces desaparece la ventaja y el grupo se separa sin motivo.
 
 ## Qué sabe nuestra información de la cola
@@ -109,7 +106,7 @@ valor `null` significa «desconocido» y nunca «no». La ausencia del distintiv
 nada sobre si existe la cola.
 
 **¿Qué longitud tiene ahora mismo?** Aquí suele faltar la cifra. El 8 de octubre de 2026 consultamos
-los datos en vivo de los 18 parques. Contenían 41 colas single rider, 19 de ellas abiertas, en siete
+los datos en vivo de los 18 parques. Contenían 41 colas single rider en doce parques, 19 de ellas abiertas, en siete
 parques. Ninguna de las 41 traía tiempo de espera. Los parques nos comunican que la cola está
 abierta, pero no su longitud. En la página de la atracción, park.fan muestra entonces «Single Rider»
 sin tiempo, y las tablas de este artículo muestran la cola normal.
@@ -287,7 +284,7 @@ Springs Racers, Grizzly River Run, WEB SLINGERS y Soarin’ Over California.
 Nosotros tenemos seis en total: Millennium Falcon y Tiana’s Bayou Adventure en el
 [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park), e Incredicoaster,
 Radiator Springs Racers, WEB SLINGERS y Silly Symphony Swings en el
-[Disney California Adventure Park](ref:disney-california-adventure-park). Cinco atracciones de la
+[Disney California Adventure Park](ref:disney-california-adventure-park). Seis atracciones de la
 lista del resort faltan en nuestros datos, y las Silly Symphony Swings no figuran en la lista.
 
 El parque escribe que los Cast Members te dirigen a la cola prevista y que allí tu grupo se separa
