@@ -1,5 +1,5 @@
 ---
-title: 'Single Rider : dans quels parcs on monte plus vite seul'
+title: 'Single Rider : dans quels parcs on monte plus vite seul'
 translationKey: single-rider-guide
 date: '2026-10-08'
 author: patrick
@@ -28,7 +28,7 @@ coverImage:
   caption: 'Voltron Nevera, à l’Europa-Park, a sa propre entrée Single Rider.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Single Rider en parc d’attractions : quelles attractions'
+  title: 'Single Rider en parc d’attractions : quelles attractions'
   description: >-
     Quelles attractions de 18 parcs ont une file Single Rider, comment elle
     fonctionne et quand elle ne vaut pas le coup.
@@ -180,7 +180,7 @@ consulte le [guide de l’Europa-Park](/blog/europa-park-temps-d-attente-conseil
 
 ```
 
-Le tableau montre la file normale, dans le même ordre que les attractions ci-dessus. La répartition
+La file normale figure dans le tableau, dans le même ordre que les attractions ci-dessus. La répartition
 sur la journée montre quand elle se remplit :
 
 ```hourly-profile-widget slug=europa-park top=6
