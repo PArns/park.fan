@@ -48,7 +48,7 @@ seo:
 
 Das **Legoland Windsor** richtet sich nach eigener Angabe an Familien mit Kindern zwischen **zwei und zwölf Jahren** und hat über **55 Bahnen und Attraktionen** in elf Themenwelten. Ein früher Start zahlt sich dort an vier Bahnen aus: Laser Raiders, The Dragon, Hydra's Challenge und Pirate Falls. Flight of the Sky Lion und Coastguard HQ gehören in unseren Messungen zu den drei längsten Warteschlangen des Parks, und dort steht man morgens fast so lange an wie nachmittags.
 
-Dieser Guide geht von einem Tag mit Kindern zwischen drei und zwölf aus. Unsere Wartezeiten stammen aus **219 Messtagen** der letzten zwei Jahre. Preise, Zeiten und Termine gelten mit Stand **8. Oktober 2026**.
+Wir planen den Tag für Kinder zwischen drei und zwölf. Unsere Wartezeiten stammen aus **219 Messtagen** der letzten zwei Jahre. Preise, Zeiten und Termine gelten mit Stand **8. Oktober 2026**.
 
 ## Ein Park auf dem Gelände eines Safariparks
 
@@ -60,7 +60,7 @@ Nach Wikipedia kamen 2019 rund **2,43 Millionen Gäste**, das war die höchste B
 
 ## Mindestgröße und Begleitung an den Bahnen
 
-Das Legoland Windsor kennt pro Bahn zwei Grenzen: eine Mindestgröße, ab der ein Kind mitfahren darf, und eine zweite Größe, ab der es ohne Begleitperson fahren darf. Begleiten darf nur, wer mindestens 16 Jahre alt ist. Bei den meisten Bahnen liegt die zweite Grenze bei 1,30 Metern.
+Im Legoland Windsor gelten pro Bahn zwei Grenzen: eine Mindestgröße, ab der ein Kind mitfahren darf, und eine zweite Größe, ab der es ohne Begleitperson fahren darf. Begleiten darf nur, wer mindestens 16 Jahre alt ist. Bei den meisten Bahnen liegt die zweite Grenze bei 1,30 Metern.
 
 | Bahn                                                                           | Was es ist                           | Mindestgröße      | ohne Begleitung |
 | ------------------------------------------------------------------------------ | ------------------------------------ | ----------------- | --------------- |
@@ -84,7 +84,7 @@ Kinder unter 90 Zentimetern zahlen nach Angabe des Parks keinen Eintritt. LEGO N
 
 ## Die großen Bahnen
 
-Der **[Minifigure Speedway](ref:legoland-windsor/minifigure-speedway)** ist nach Angabe des Parks der erste Duell-Coaster im Lego-Design und fährt in beide Richtungen: Zwei Züge, das Team Legends und das Team AllStars, starten gleichzeitig, und ein Teil der Strecke läuft rückwärts. Gebaut hat ihn Zierer. Er ist nach Wikipedia 14 Meter hoch, 244 Meter lang und fährt bis zu 56 km/h. Er steht auf dem Platz der Raft Racers, einer Schlauchboot-Rutsche, die bis 2021 fuhr.
+Der **[Minifigure Speedway](ref:legoland-windsor/minifigure-speedway)** ist nach Angabe des Parks der erste Duell-Coaster im Lego-Design und fährt in beide Richtungen. Zwei Züge, das Team Legends und das Team AllStars, starten gleichzeitig, und ein Teil der Strecke läuft rückwärts. Gebaut hat ihn Zierer. Er ist nach Wikipedia 14 Meter hoch, 244 Meter lang und fährt bis zu 56 km/h. Er steht auf dem Platz der Raft Racers, einer Schlauchboot-Rutsche, die bis 2021 fuhr.
 
 **[The Dragon](ref:legoland-windsor/the-dragon)** fährt seit 1998. Der Zug rollt zuerst durch eine Burg mit animierten Lego-Szenen, steigt dann den Lift hinauf und fährt zwei Achter durch die Baumwipfel. Der Park nennt bis zu 30 Meilen pro Stunde, das sind rund 48 km/h. Die Strecke ist laut Coasterpedia 423 Meter lang. Pro Reihe sitzen zwei Fahrgäste, Kinder auf der linken Seite des Zuges.
 
@@ -102,7 +102,7 @@ Die **[Laser Raiders](ref:legoland-windsor/laser-raiders)** sind eine Dunkelfahr
 
 ```
 
-**[Fire & Ice Freefall](ref:legoland-windsor/fire-and-ice-freefall)** besteht aus zwei drehenden Fallturm-Fahrgeschäften von Zierer. **[LEGO NINJAGO The Ride](ref:legoland-windsor/lego-ninjago-the-ride)** ist eine interaktive 4D-Fahrt: Du wirfst per Handbewegung Feuerbälle, Eis und Blitze auf Gegner, ohne Controller, und spürst dabei Wärme, Luftstöße und Wasserspritzer.
+**[Fire & Ice Freefall](ref:legoland-windsor/fire-and-ice-freefall)** besteht aus zwei drehenden Fallturm-Fahrgeschäften von Zierer. **[LEGO NINJAGO The Ride](ref:legoland-windsor/lego-ninjago-the-ride)** ist eine interaktive 4D-Fahrt. Du wirfst per Handbewegung Feuerbälle, Eis und Blitze auf Gegner, ohne Controller, und spürst dabei Wärme, Luftstöße und Wasserspritzer.
 
 ## Für Kinder unter sechs
 
@@ -148,7 +148,7 @@ Die Tabelle führt acht Bahnen auf, mit dem Median, dem Typ und den Messtagen. D
 
 Die aktuellen Wartezeiten stehen auf der [Parkseite](ref:legoland-windsor), alle fünf Minuten neu. Die Legoland-App zeigt die Warteschlangen ebenfalls.
 
-Der Wochentag macht in unseren Messungen den größten Unterschied:
+Der Wochentag macht in unseren Messungen den größten Unterschied.
 
 ```stats-widget slug=legoland-windsor show=weekdays
 
@@ -168,7 +168,7 @@ Der Park öffnet um 10 Uhr, die Warteschlangen aller Bahnen schließen bis zu 30
 
 ```
 
-Pirate Falls und Hydra's Challenge steigen vom Morgen an und erreichen ihren höchsten Wert am Nachmittag. Laser Raiders steigt bis zum frühen Nachmittag und fällt zum Abend hin. Beim Minifigure Speedway und beim DUPLO Dino Coaster liegt die Warteschlange am Vormittag am höchsten. Flight of the Sky Lion und Coastguard HQ bleiben den ganzen Tag auf ähnlichem Niveau.
+An Pirate Falls und Hydra's Challenge wird die Warteschlange vom Morgen an länger und ist am Nachmittag am längsten. An den Laser Raiders wird sie bis zum frühen Nachmittag länger und zum Abend hin wieder kürzer. Beim Minifigure Speedway und beim DUPLO Dino Coaster liegt die Warteschlange am Vormittag am höchsten. Bei Flight of the Sky Lion und Coastguard HQ ändert sich die Warteschlange den ganzen Tag kaum.
 
 ## Rope Drop lohnt sich an vier Bahnen
 
@@ -180,9 +180,9 @@ Rope Drop heißt, dass du zur Öffnung am Eingang stehst und die ersten Bahnen f
 
 Für Flight of the Sky Lion und Coastguard HQ gilt das nicht. Beide haben schon beim Öffnen eine Warteschlange, die sich danach kaum bewegt. Wer früh da ist, fährt sie genauso gut mittags. Auch Minifigure Speedway, Fire Academy und Driving School bekommen keinen Rope-Drop-Tipp.
 
-Ein Ablauf für Kinder ab sieben: Zuerst The Dragon und Hydra's Challenge, beide sollten vor halb zwölf gefahren sein. Dann Laser Raiders, spätestens bis gegen halb zwölf. Pirate Falls hält die kurze Warteschlange am längsten und lässt sich bis etwa 13 Uhr aufschieben, im Oktober ist das für nasse Kleidung die wärmere Zeit. Danach folgen Flight of the Sky Lion, Coastguard HQ und die übrigen Bahnen. Wer den LEGO Store vor dem Gedränge erledigen will, geht zwischen 12 und 16 Uhr hinein.
+Ein Ablauf für Kinder ab sieben: Zuerst The Dragon und Hydra's Challenge, beide sollten vor halb zwölf gefahren sein. Dann Laser Raiders, spätestens bis gegen halb zwölf. An Pirate Falls bleibt die Warteschlange am längsten kurz, die Bahn lässt sich bis etwa 13 Uhr aufschieben. Im Oktober ist das für nasse Kleidung die wärmere Zeit. Danach folgen Flight of the Sky Lion, Coastguard HQ und die übrigen Bahnen. Wer den LEGO Store vor dem Gedränge erledigen will, geht zwischen 12 und 16 Uhr hinein.
 
-## Fastrack: drei Pakete und die Bahnen
+## Die drei Fastrack-Pakete und ihre Bahnen
 
 **Fastrack** heißt das kostenpflichtige Angebot, das an vielen Bahnen einen eigenen Eingang mit kürzerer Wartezeit bietet. Der Park verkauft drei Pakete: Bronze mit drei Fahrten, Silver mit sechs und Gold ganztägig. Jedes Paket gilt für eine Person, wird nur alle drei Minuten gescannt und enthält keinen Parkeintritt. Fastrack ist nicht erstattungsfähig und nicht übertragbar.
 
@@ -192,7 +192,7 @@ Ob es sich lohnt, hängt am Wochentag. An einem Dienstag im September würde ich
 
 ## Tickets, Preise und Jahreskarten
 
-Eine Tageskarte kostet online **ab 32 £**, und im Voraus zu buchen spart laut Park bis zu 36 £. Die Preise hängen vom Tag ab und können sich ändern. Kinder unter 90 Zentimetern haben freien Eintritt. Tickets sind nicht erstattungsfähig, das Datum lässt sich dagegen ändern. Zwei-für-eins-Angebote gibt es nach Angabe des Parks derzeit nicht. Tickets für Brick or Treat beginnen bei 37 £ pro Person, für LEGOLAND at Christmas bei 34 £.
+Eine Tageskarte kostet online **ab 32 £**, und im Voraus zu buchen spart laut Park bis zu 36 £. Die Preise hängen vom Tag ab. Kinder unter 90 Zentimetern haben freien Eintritt. Tickets sind nicht erstattungsfähig, das Datum lässt sich dagegen ändern. Zwei-für-eins-Angebote gibt es nach Angabe des Parks derzeit nicht. Tickets für Brick or Treat beginnen bei 37 £ pro Person, für LEGOLAND at Christmas bei 34 £.
 
 Die Annual Passes kosten zwischen 64 und 299 £. Der **LEGOLAND Annual Pass** kostet ab 64 £ und hat 17 Ausschlusstage. Der **Merlin Essential Pass** kostet 139 £ mit 25 Ausschlusstagen. Der **Merlin Gold Pass** kostet 239 £ und schließt Parken ein, ausgenommen sind nur die Feuerwerke in Alton Towers. Der **Merlin Platinum Pass** kostet 299 £ und hat keine Ausschlusstage, vier Freundestickets im Jahr und ein Einzel-Fastrack je Besuch. Wer an einem Ausschlusstag kommen will, zahlt 15 £ pro Person für ein Upgrade-Ticket. Alle Passinhaber müssen den Besuch vorab buchen. Die Pässe schließen Brick or Treat und LEGOLAND at Christmas ein.
 
@@ -204,9 +204,9 @@ Einige Bahnen laufen im Herbst nur an Wochentagen oder erst am Nachmittag. Vom 2
 
 **Brick or Treat**, das Halloween-Event des Parks, läuft am 10. und 11. Oktober sowie vom 17. Oktober bis 1. November. Zum Programm gehören die Show „Lord Vampyre's House Party“, die Show „Monster Jam“, eine Disco in The Dragon, das Haunted House Monster Party, Fotopunkte und Begegnungen mit Lego-Monstern. Kostüme sind willkommen, Gesichtsmasken und Waffenimitate nicht. Die Halloween-Termine anderer Parks stehen im [Halloween-Überblick](/blog/halloween-freizeitparks-2026).
 
-Im November wird das Angebot kleiner: Pirate Falls schließt am **2. November** und öffnet im März 2027 wieder. Am **9. November** schließen Aero Nomad, Balloon School, Fire Academy, Jolly Rocker und Minifigure Speedway bis Februar 2027 sowie Coastguard HQ, Fairy Tale Brook, Fire & Ice Freefall und Hydra's Challenge bis März. **LEGOLAND at Christmas** läuft an ausgewählten Tagen vom 21. November bis 2. Januar 2027, mit mehr als 20 Bahnen, einem Treffen mit dem LEGO-Weihnachtsmann und mehreren Shows. Der [Winter-Überblick](/blog/winter-freizeitparks-2026) vergleicht das mit anderen Parks.
+Pirate Falls schließt am **2. November** und öffnet im März 2027 wieder. Am **9. November** schließen Aero Nomad, Balloon School, Fire Academy, Jolly Rocker und Minifigure Speedway bis Februar 2027 sowie Coastguard HQ, Fairy Tale Brook, Fire & Ice Freefall und Hydra's Challenge bis März. **LEGOLAND at Christmas** läuft an ausgewählten Tagen vom 21. November bis 2. Januar 2027, mit mehr als 20 Bahnen, einem Treffen mit dem LEGO-Weihnachtsmann und mehreren Shows. Der [Winter-Überblick](/blog/winter-freizeitparks-2026) vergleicht das mit anderen Parks.
 
-Die ruhigsten kommenden Tage stehen im Kalender:
+Die ruhigsten kommenden Tage im Legoland Windsor:
 
 ```best-days-widget slug=legoland-windsor
 
@@ -226,7 +226,7 @@ Alle Gastronomiebetriebe des Parks sind **bargeldlos**, bezahlt wird mit Karte, 
 
 Für Babys und Kleinkinder gibt es Baby Care Centres, die im Resort verteilt und auf dem Parkplan eingetragen sind. Der Park nennt DUPLO Valley als Themenwelt für Familien mit Kleinkindern, dort haben viele Bahnen keine Mindestgröße. Das Priority Parking eignet sich laut Park für Familien mit Kinderwagen, und Schließfächer stehen in der Nähe des Haupteingangs. Das Total Sensory Space in Heartlake City ist ein Raum mit Sitzsäcken, Projektionen und gedämpftem Licht für Gäste, die eine Pause vom Lärm brauchen.
 
-Am Eingang durchsucht das Sicherheitspersonal alle Taschen. Verboten sind unter anderem Glasflaschen, Alkohol, Waffen und Waffenimitate, Skateboards, Scooter, Rollerblades und Drohnen. Plane dafür Zeit ein, bevor du zu den Drehkreuzen gehst. Das Ride Access Pass-System ändert sich Ende 2026: Der Park führt eine virtuelle Warteschlange ein, die Berechtigung bleibt gleich, und die Pflicht zum Vorabbuchen soll schrittweise entfallen.
+Am Eingang durchsucht das Sicherheitspersonal alle Taschen. Verboten sind unter anderem Glasflaschen, Alkohol, Waffen und Waffenimitate, Skateboards, Scooter, Rollerblades und Drohnen. Plane dafür Zeit ein, bevor du zu den Drehkreuzen gehst. Das Ride Access Pass-System ändert sich Ende 2026. Der Park führt eine virtuelle Warteschlange ein, die Berechtigung bleibt gleich, und die Pflicht zum Vorabbuchen soll schrittweise entfallen.
 
 ## Anreise, Parken und Übernachten
 
