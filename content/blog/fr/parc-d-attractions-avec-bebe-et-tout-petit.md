@@ -103,18 +103,18 @@ minimale.
 
 ## Les dix parcs en un coup d’œil
 
-| Parc                                                 | Gratuit jusqu’à                   | Baby Switch                                                      | Poussette à louer         |
-| ---------------------------------------------------- | --------------------------------- | ---------------------------------------------------------------- | ------------------------- |
-| [Efteling](ref:efteling)                             | 3 ans                             | oui, sur 19 attractions                                          | 5 €                       |
-| [Europa-Park](ref:europa-park)                       | 3 ans                             | oui, sur les grandes montagnes russes                            | 5 € plus 50 € de caution  |
-| [Phantasialand](ref:phantasialand)                   | 3 ans                             | oui                                                              | 3 € plus 20 € de caution  |
-| [Parc Astérix](ref:parc-asterix)                     | moins de 3 ans                    | oui                                                              | 15 €                      |
-| [Legoland Deutschland](ref:legoland-deutschland)     | moins de 2 ans                    | non mentionné                                                    | 6 € plus 4 € de caution   |
-| [Walibi Holland](ref:walibi-holland)                 | moins de 2 ans (billetterie 2026) | oui, sous le nom « baby change »                                 | 10 € plus 50 € de caution |
-| [Heide Park](ref:heide-park)                         | moins de 90 cm                    | oui, pass jusqu’à 3 ans, seulement les jours avec Express Ticket | non mentionné             |
-| [Toverland](ref:attractiepark-toverland)             | moins de 90 cm                    | oui, sur certaines attractions                                   | pas de location           |
-| [Walibi Belgium](ref:walibi-belgium)                 | moins d’un mètre                  | oui, gratuit                                                     | flou (« trolleys », 10 €) |
-| [Plopsaland Deutschland](ref:plopsaland-deutschland) | moins de 85 cm                    | non mentionné                                                    | non mentionné             |
+| Parc                                                 | Gratuit jusqu’à  | Baby Switch                                                      | Poussette à louer         |
+| ---------------------------------------------------- | ---------------- | ---------------------------------------------------------------- | ------------------------- |
+| [Efteling](ref:efteling)                             | 3 ans            | oui, sur 19 attractions                                          | 5 €                       |
+| [Europa-Park](ref:europa-park)                       | 3 ans            | oui, sur les grandes montagnes russes                            | 5 € plus 50 € de caution  |
+| [Phantasialand](ref:phantasialand)                   | 3 ans            | oui                                                              | 3 € plus 20 € de caution  |
+| [Parc Astérix](ref:parc-asterix)                     | moins de 3 ans   | oui                                                              | 15 €                      |
+| [Legoland Deutschland](ref:legoland-deutschland)     | moins de 2 ans   | non mentionné                                                    | 6 € plus 4 € de caution   |
+| [Walibi Holland](ref:walibi-holland)                 | jusqu’à 2 ans    | oui, sous le nom « baby change »                                 | 10 € plus 50 € de caution |
+| [Heide Park](ref:heide-park)                         | moins de 90 cm   | oui, pass jusqu’à 3 ans, seulement les jours avec Express Ticket | non mentionné             |
+| [Toverland](ref:attractiepark-toverland)             | moins de 90 cm   | oui, sur certaines attractions                                   | pas de location           |
+| [Walibi Belgium](ref:walibi-belgium)                 | moins d’un mètre | oui, gratuit                                                     | flou (« trolleys », 10 €) |
+| [Plopsaland Deutschland](ref:plopsaland-deutschland) | moins de 85 cm   | non mentionné                                                    | non mentionné             |
 
 Situation au 8 octobre 2026. Un prix vaut pour le jour où nous avons lu la page,
 et les parcs le changent à l’ouverture de la saison. Quand deux pages d’un même
@@ -256,10 +256,7 @@ donne le reste.
 Au [Legoland Deutschland](ref:legoland-deutschland), à Günzburg, les enfants de
 moins de 2 ans entrent gratuitement. Pendant la saison 2026 (du 28 mars au
 8 novembre), les enfants de 2 à 11 ans paient 58 euros à la caisse du jour, et 64
-euros à partir de 12 ans. En ligne, le billet journée démarre à 39 euros. Dans un
-résultat de recherche, nous avons lu « unter drei Jahren » pour une autre page du
-parc, sans pouvoir le vérifier dans le texte complet. La page des prix dit
-moins de 2 ans.
+euros à partir de 12 ans. En ligne, le billet journée démarre à 39 euros.
 
 Le Baby Service powered by Müller se trouve dans le quartier Imagination et
 comprend une table à langer, un espace d’allaitement séparé, des places assises
@@ -293,9 +290,9 @@ les attractions.
 
 Au [Heide Park](ref:heide-park), à Soltau, les enfants de moins de 90
 centimètres entrent gratuitement. Les enfants dont c’est l’anniversaire, quel
-que soit leur âge, entrent gratuitement sur justificatif. Nous n’avons pas pu
-vérifier les prix des billets : la page des tarifs a renvoyé une erreur au
-moment de la consulter.
+que soit leur âge, entrent gratuitement sur justificatif ; il faut choisir le
+billet à 0 euro dans la boutique en ligne. Le billet journée daté coûte à partir
+de 37 euros en ligne, 64 euros à la caisse.
 
 Ici, l’échange s’appelle Baby-Switch-Pass. Les parents d’enfants jusqu’à 3 ans
 inclus l’obtiennent gratuitement au Service Center, seulement les jours où
@@ -304,11 +301,13 @@ parc dise lesquelles.
 
 Tu peux réchauffer un repas de bébé, entre autres, au Wirtshaus des Admirals et
 au Lucky Land, l’appli montre toutes les stations. Le plan du parc marque aussi
-les tables à langer. Les pages d’aide du parc ont renvoyé un 403 au moment de la
-consulter. Pour les salles de change, l’allaitement, les Bollerwagen et les
-repas apportés, nous ne pouvons donc que dire ce que résument les résultats de
-recherche, et nous ne l’avons pas repris. Louer une poussette ou apporter la
-sienne : pas mentionné sur les pages que nous avons pu lire.
+les tables à langer. Les pages d’aide du parc sont sur support.heide-park.de et
+ont répondu par un 403 à deux tentatives. Sur le plan du parc, les meilleurs
+conseils, la page des billets et le règlement, rien n’indique la location de
+poussettes, la poussette personnelle ou le Bollerwagen, l’allaitement ni les
+repas apportés ; nous renseignons donc le Heide Park sans indication sur ces
+points. Le règlement interdit les vélos, draisiennes et tricycles, trottinettes,
+skateboards, patins à roulettes et luges.
 
 Sur la page « Freizeitpark mit Kindern », le parc cite comme attractions pour
 enfants le Peppa Pig Land, Drachenzähmen – Die Insel et Ghostbusters 5D, ainsi
@@ -341,11 +340,11 @@ extérieures.
 
 Les poussettes sont autorisées, mais doivent être posées aux endroits prévus
 près des attractions et des spectacles, et les jours de forte affluence elles ne
-sont pas admises au Plopsa Indoor. Le parc ne mentionne pas de location de poussettes. Les Bollerwagen coûtent 10 euros par jour plus 50 euros de caution au
-Plopsaland Shop, c’est ce que dit la FAQ. Le règlement, lui, parle d’une pièce
-d’identité ou de 100 euros de caution. Seul le parc sait laquelle des deux est
-juste. Ni la FAQ ni le règlement ne mentionnent de Rider Switch ni d’échange, et
-chaque visiteur doit quitter l’attraction après le tour.
+sont pas admises au Plopsa Indoor. Le parc ne mentionne pas de location de poussettes. Les Bollerwagen sont payants d’après le règlement, contre une pièce
+d’identité ou 100 euros de caution. Le règlement n’en indique pas le prix. Ni les
+pages de questions ni le règlement ne mentionnent de Rider Switch ni d’échange, et
+chaque visiteur doit quitter l’attraction après le tour. Qui veut faire un
+second tour refait la queue.
 
 En revanche, Plopsaland indique les paliers de taille sur la page de chaque attraction. La personne qui accompagne doit
 avoir au moins 15 ans. Sans taille minimale, mais accompagnés, les enfants de
@@ -398,11 +397,12 @@ Le guide du parc avec tout le reste :
 
 ## Walibi Holland
 
-[Walibi Holland](ref:walibi-holland), à Biddinghuizen, donne deux limites d’âge
-différentes. La billetterie 2026 dit : gratuit avant 2 ans, 23 euros de 3 à 5
-ans, 36 euros de 6 à 11 ans, 46 euros à partir de 12 ans, comme prix de basse
-saison. La FAQ de la saison 2025 dit : gratuit avant 3 ans. Si c’est la
-billetterie qui fait foi, un enfant de deux ans n’est probablement pas gratuit.
+[Walibi Holland](ref:walibi-holland), à Biddinghuizen, formule la limite d’âge de
+deux façons différentes. La billetterie 2026 dit : gratuit jusqu’à 2 ans, 23 euros de 3 à 5
+ans, 36 euros de 6 à 11 ans, 46 euros à partir de 12 ans, comme prix de caisse
+pour la basse saison. La FAQ de la saison 2025 dit : gratuit avant 3 ans. Les
+deux indications veulent dire la même chose : l’entrée est gratuite jusqu’au
+troisième anniversaire de l’enfant.
 Selon la FAQ, il n’y a pas d’âge minimum pour venir.
 
 Les tables à langer sont dans plusieurs toilettes, les micro-ondes pour
@@ -530,8 +530,8 @@ qu’en refaisant la queue.
 
 Cela dépend du parc. À l’Efteling, c’est jusqu’à 3 ans inclus, à l’Europa-Park
 et au Phantasialand de 0 à 3 ans, à Parc Astérix avant 3 ans. Au Legoland
-Deutschland, les moins de 2 ans sont gratuits, à Walibi Holland aussi d’après la
-billetterie 2026. Le Heide Park et Toverland comptent en taille, sous 90
+Deutschland, les moins de 2 ans sont gratuits, à Walibi Holland les enfants
+jusqu’à 2 ans, donc jusqu’au troisième anniversaire. Le Heide Park et Toverland comptent en taille, sous 90
 centimètres, Walibi Belgium sous un mètre et Plopsaland Deutschland sous 85
 centimètres. La situation est celle du 8 octobre 2026.
 
@@ -581,8 +581,8 @@ Les prix sont ceux des pages au jour de cet article.
 - Europa-Park : [Billets et tarifs](https://www.europapark.de/de/tickets-preise), [Conseils pour la visite](https://www.europapark.de/en/theme-park/info/plan-your-visit/tips-your-europa-park-visit), [Règlement du parc](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations), [Page famille](https://www.europapark.de/en/theme-park/tickets-offers/family-day-out-europa-park)
 - Phantasialand : [Tarifs et billets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Informations et accès](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Moyens de transport apportés](https://www.phantasialand.de/de/mitgebrachte-transportmittel/), [Plaisir en famille](https://www.phantasialand.de/en/theme-park/great-family-fun/)
 - Legoland Deutschland : [Billets journée](https://www.legoland.de/tickets/beliebte-tickets/tageskarten/), [Baby Service](https://www.legoland.de/legoland-entdecken/der-park/baby-service/), [FAQ du parc](https://www.legoland.de/besuch-planen/hilfe/faq-park/), [Legoland avec des tout-petits](https://www.legoland.de/lp/legoland-mit-kleinkindern/)
-- Heide Park : [Parc d’attractions avec des enfants](https://www.heide-park.de/planen/infos/freizeitpark-mit-kindern/), [Meilleurs conseils](https://www.heide-park.de/planen/besuch-planen/top-tipps/), [Plan du parc](https://www.heide-park.de/planen/infos/parkplan/)
-- Plopsaland Deutschland : [Billets](https://www.plopsa.com/en/plopsaland-deutschland/tickets), [Règlement du parc](https://www.plopsa.com/de/plopsaland-deutschland/parkordnung), [Aliments pour bébé](https://www.plopsa.com/de/plopsaland-deutschland/node/7080), [Salles de change](https://www.plopsa.com/de/plopsaland-deutschland/node/7104)
+- Heide Park : [Parc d’attractions avec des enfants](https://www.heide-park.de/planen/infos/freizeitpark-mit-kindern/), [Meilleurs conseils](https://www.heide-park.de/planen/besuch-planen/top-tipps/), [Plan du parc](https://www.heide-park.de/planen/infos/parkplan/), [Page des billets](https://www.heide-park.de/tickets-paesse/tickets/), [Règlement du parc](https://www.heide-park.de/informationen-daten/parkordnung/)
+- Plopsaland Deutschland : [Billets](https://www.plopsa.com/en/plopsaland-deutschland/tickets), [Règlement du parc](https://www.plopsa.com/de/plopsaland-deutschland/parkordnung), [Aliments pour bébé](https://www.plopsa.com/de/plopsaland-deutschland/node/7080), [Salles de change](https://www.plopsa.com/de/plopsaland-deutschland/node/7104), [Pages FAQ](https://www.plopsa.com/de/plopsaland-deutschland/koennen-wir-dir-helfen)
 - Toverland : [Informations pratiques](https://www.toverland.com/en/practical-information), [FAQ](https://www.toverland.com/en/contact/frequently-asked-questions), [Land van Toos](https://www.toverland.com/en/worlds/land-van-toos), [Une journée avec des enfants](https://www.toverland.com/en/themepark/dagje-uit-met-kinderen)
 - Walibi Holland : [Billets](https://www.walibi.nl/en/tickets), [Équipements](https://www.walibi.nl/en/plan-your-visit/facilities), [FAQ](https://www.walibi.nl/en/plan-your-visit/faq), [Attractions Kids](https://www.walibi.nl/en/park/attractions/kids)
 - Walibi Belgium : [Billets](https://www.walibi.be/en/tickets), [FAQ](https://www.walibi.be/en/faq), [Règlement du parc](https://www.walibi.be/en/regulations/park-regulations), [Services](https://www.walibi.be/en/plan-your-visit/services)
