@@ -59,6 +59,14 @@ Les invités VIP paient eux-mêmes ce qu'ils consomment en dehors de l'espace VI
 
 Les billets sont en prévente sur swr3tickets.de et europapark.de, et d'après le communiqué aussi à la caisse du soir. Ni la page de l'événement ni le communiqué ne disent où en sont les ventes ; seule la boutique de billets montre ce qui reste. Qui ne trouve pas de chambre dans le resort peut réserver le forfait « Sleep & Party » au VOYA Hotel de Ringsheim. Il comprend le billet de la soirée, mais pas le trajet aller-retour.
 
+## Venir et rentrer
+
+D'après la page de l'événement, le stationnement est payant, sur le parking visiteurs d'Europa-Park. La navette des hôtels circule de 16 h à 1 h, toutes les 15 minutes, de Kronasar à El Andaluz en passant par Rulantica et Bell Rock. Selon la page, l'EP-Express circule jusqu'à 3 h du matin. Le vestiaire du Ballsaal Berlin est ouvert de 18 h à 2 h. On entre dans le parc par l'entrée principale et à la soirée par le Confertainment Center. Les objets interdits figurent dans un PDF auquel renvoie la page de l'événement ; la page elle-même ne les cite pas.
+
+## La saison d'Halloween autour
+
+Selon le parc, la saison d'Halloween d'Europa-Park court du 26 septembre au 1er novembre 2026, avec environ 180 000 citrouilles. Pendant cette période, le parc est ouvert tous les jours de 9 h à 18 h au moins ; la page ne donne pas l'heure de fermeture exacte du 31 octobre. Le billet une journée coûte à partir de 56,50 € d'après la page Halloween, jusqu'à 76,00 € selon le jour. Traumatica se tient du 23 septembre au 7 novembre, donc au-delà de la saison. Le food court y ouvre à 18 h et les attractions d'horreur démarrent à 19 h. Selon la page Halloween, le parc compte 18 quartiers thématiques européens. Le 31 octobre, le site de l'événement ouvre à 18 h et les salles de la soirée à 20 h.
+
 ## Et Traumatica ?
 
 La soirée a son propre billet et ne fait pas partie de [Traumatica](/blog/traumatica-dix-ans-europa-park). Selon notre article sur la dixième édition, l'événement d'horreur dure jusqu'au 7 novembre ; la page de la soirée ne le mentionne pas. Comment les autres parcs fêtent Halloween, c'est dans le [panorama Halloween](/blog/halloween-parcs-attractions-2026).
@@ -74,4 +82,5 @@ La soirée a son propre billet et ne fait pas partie de [Traumatica](/blog/traum
 ### Sources & lectures
 
 - Date, prix, contenu des billets, programme, limite d'âge, forfait hôtel : [SWR3 Halloween-Party (Europa-Park, consulté le 8 octobre 2026)](https://www.europapark.de/de/events/swr3-halloween-party)
+- L'arrivée, la navette, le vestiaire et le mode de paiement figurent sur la même page. Saison d'Halloween, horaires, billet journée et dates de Traumatica : [Halloween im Europa-Park (europapark.de, consulté le 8 octobre 2026)](https://www.europapark.de/de/halloween)
 - Tête d'affiche, Dome, Studio, karaoké, prévente et caisse du soir : [SWR3 Halloween-Party im Europa-Park mit Top-Act Jaden Bojsen (Mack Group, 7 octobre 2026)](https://mack.group/de/presse-medien/pressemitteilungen/2026-10-07/swr3-halloween-party-im-europa-park-mit-top-act-jaden-bojsen)

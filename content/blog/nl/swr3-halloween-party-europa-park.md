@@ -59,6 +59,14 @@ Eten en drinken buiten de VIP-zone betalen VIP-gasten zelf.
 
 Tickets zijn in de voorverkoop verkrijgbaar op swr3tickets.de en europapark.de, en volgens het persbericht ook aan de avondkassa. Over de verkoop zeggen de eventpagina en het persbericht niets; hoeveel tickets er nog zijn, laat alleen de ticketshop zien. Wie geen kamer in het resort krijgt, kan bij het VOYA Hotel in Ringsheim het pakket "Sleep & Party" boeken. Daarin zit het feestticket, maar niet de reis heen en terug.
 
+## Heen en terug
+
+Volgens de eventpagina is parkeren betaald en kan dat op de bezoekersparkeerplaats van Europa-Park. De hotelshuttle rijdt van 16:00 tot 01:00 uur elk kwartier van Kronasar via Rulantica en Bell Rock naar El Andaluz. De EP-Express rijdt volgens de eventpagina tot 3 uur 's nachts. De garderobe in de Ballsaal Berlin is open van 18:00 tot 02:00 uur. Het park ga je in via de hoofdingang, naar het feest via het Confertainment Center. Welke voorwerpen verboden zijn, staat in een pdf waar de eventpagina naar linkt; de pagina zelf noemt ze niet.
+
+## Het halloweenseizoen eromheen
+
+Volgens het park loopt het halloweenseizoen van Europa-Park van 26 september tot 1 november 2026, met zo'n 180.000 pompoenen. Overdag is het park in die tijd dagelijks open van 9:00 tot minstens 18:00 uur; de exacte sluitingstijd op 31 oktober noemt de pagina niet. Het dagticket kost volgens de halloweenpagina vanaf € 56,50, afhankelijk van de dag tot € 76,00. Traumatica loopt van 23 september tot 7 november, dus langer dan het seizoen. Daar gaat de foodcourt om 18:00 uur open en starten de horrorattracties om 19:00 uur. Volgens de halloweenpagina heeft het park 18 Europese themagebieden. Op 31 oktober gaat het evenemententerrein om 18:00 uur open en de feestlocaties om 20:00 uur.
+
 ## En Traumatica?
 
 Het feest is een eigen ticket en geen onderdeel van [Traumatica](/blog/traumatica-tien-jaar-europa-park). Volgens ons artikel over de tiende editie loopt het horrorevenement nog tot 7 november; de eventpagina van het feest noemt het niet. Hoe de andere parken Halloween vieren, staat in het [Halloween-overzicht](/blog/halloween-pretparken-2026).
@@ -74,4 +82,5 @@ Het feest is een eigen ticket en geen onderdeel van [Traumatica](/blog/traumatic
 ### Bronnen & verder lezen
 
 - Datum, prijzen, ticketinhoud, tijdschema, leeftijdsgrens, hotelpakket: [SWR3 Halloween-Party (Europa-Park, geraadpleegd op 8 oktober 2026)](https://www.europapark.de/de/events/swr3-halloween-party)
+- Aankomst, shuttle, garderobe en betaalwijze staan op dezelfde eventpagina. Halloweenseizoen, openingstijden, dagticket en Traumatica-data: [Halloween im Europa-Park (europapark.de, geraadpleegd op 8 oktober 2026)](https://www.europapark.de/de/halloween)
 - Headliner, Dome, Studio, karaoke, voorverkoop en avondkassa: [SWR3 Halloween-Party im Europa-Park mit Top-Act Jaden Bojsen (Mack Group, 7 oktober 2026)](https://mack.group/de/presse-medien/pressemitteilungen/2026-10-07/swr3-halloween-party-im-europa-park-mit-top-act-jaden-bojsen)
