@@ -1,7 +1,11 @@
 /**
  * Every media URL a page actually renders, checked against a running site.
  *
- * Run: pnpm check:media-urls   (needs `pnpm start` on :3000)
+ * Run: pnpm check:media-urls [/extra/page ...]   (needs `pnpm start` on CHECK_BASE, default :3000)
+ *
+ * With no server, or when no page yields a single media URL, it exits 1: a run that
+ * checked nothing is not a pass. Extra pages come from argv or `CHECK_PAGES` (comma
+ * separated), so a new post can check its own pages.
  *
  * Two things go wrong silently and only here:
  *
@@ -35,6 +39,11 @@ const PAGES = [
   '/en/parks/europe/netherlands/sevenum/attractiepark-toverland',
 ];
 
+const EXTRA_PAGES = [...process.argv.slice(2), ...(process.env.CHECK_PAGES ?? '').split(',')]
+  .map((page) => page.trim())
+  .filter(Boolean);
+const ALL_PAGES = [...new Set([...PAGES, ...EXTRA_PAGES])];
+
 /** `/_next/image?url=…` wraps the real path; unwrap so both forms are checked once. */
 function realPath(raw) {
   try {
@@ -57,13 +66,21 @@ const unversioned = new Map();
 const unknown = new Map();
 const legacy = new Map();
 let checked = 0;
+let loaded = 0;
 
-for (const page of PAGES) {
-  const response = await fetch(`${BASE}${page}`);
+for (const page of ALL_PAGES) {
+  let response;
+  try {
+    response = await fetch(`${BASE}${page}`);
+  } catch (error) {
+    console.log(`⚠️  ${page} → ${error instanceof Error ? error.message : error}`);
+    continue;
+  }
   if (!response.ok) {
     console.log(`⚠️  ${page} → HTTP ${response.status}`);
     continue;
   }
+  loaded += 1;
   const html = await response.text();
 
   // Both bare paths and optimizer-wrapped ones, from src, srcset, and inline CSS.
@@ -120,7 +137,14 @@ function report(title, map) {
   return true;
 }
 
-console.log(`\n🔎 ${checked} media URLs across ${PAGES.length} pages\n`);
+console.log(`\n🔎 ${checked} media URLs across ${loaded} of ${ALL_PAGES.length} pages\n`);
+if (loaded === 0 || checked === 0) {
+  console.error(
+    `❌ Nothing was checked (${loaded} pages loaded, ${checked} media URLs). ` +
+      `Is a server running at CHECK_BASE=${BASE}? Start one with \`pnpm start\` first.\n`
+  );
+  process.exit(1);
+}
 const failed = [
   report('Unversioned media paths', unversioned),
   report('Paths not in the database', unknown),
