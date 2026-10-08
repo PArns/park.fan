@@ -8,9 +8,7 @@ featured: false
 excerpt: >-
   Der Parque Warner liegt 30 Kilometer südlich von Madrid und öffnet fast immer
   erst mittags. Dort steht mit Batman: Gotham City Escape die erste
-  Multi-Launch-Bahn Spaniens, dazu Europas erste Floorless-Achterbahn. Über
-  Wartezeiten, den Pase Correcaminos, Mindestgrößen und Halloween, und warum
-  ein Park, der 368 Millionen Euro gekostet hat, lange keinen Gewinn machte.
+  Multi-Launch-Bahn Spaniens, dazu Europas erste Floorless-Achterbahn. Der Park hat 368 Millionen Euro gekostet und machte lange keinen Gewinn.
 tags:
   - parque-warner-madrid
   - batman-gotham-city-escape
@@ -48,8 +46,7 @@ seo:
     - Bono Parques
 ---
 
-Um **12 Uhr** geht das Tor auf, und das ist das Erste, was man über den
-[Parque Warner Madrid](ref:parque-warner-madrid) wissen muss. In unserem Kalender
+Um **12 Uhr** geht das Tor des [Parque Warner Madrid](ref:parque-warner-madrid) auf. In unserem Kalender
 beginnt fast jeder Öffnungstag des Jahres 2026 mittags. Geschlossen wird je nach
 Saison um 20, 21 oder 22 Uhr, im Juli und August um Mitternacht. Wer um zehn
 am Parkplatz steht, wartet zwei Stunden, denn der Parkplatz öffnet eine Stunde vor dem
@@ -57,8 +54,7 @@ Park.
 
 Der Park liegt in San Martín de la Vega, rund 30 Kilometer südlich der
 Hauptstadt, und hat fünf Themenbereiche aus den Filmen und Comics von
-Warner Bros. Von sieben Achterbahnen sind zwei die Gründe, wegen derer man
-anreist: Superman, seit der Eröffnung 2002 da, und Batman: Gotham City Escape,
+Warner Bros. Wegen zwei der sieben Achterbahnen reist man an: Superman, seit der Eröffnung 2002 da, und Batman: Gotham City Escape,
 seit 2023. Alles andere im Park hat meist kurze Warteschlangen, nur Batman nicht.
 
 ## Wie der Park entstand
@@ -78,8 +74,7 @@ Warner Madrid.
 
 Die Betreiber hatten mit drei Millionen Gästen im Jahr gerechnet und senkten
 die Erwartung bald auf eine Million. Die spanische Wikipedia nennt als Gründe den
-hohen Eintrittspreis, die Parkgebühr und das Verbot, Essen mitzubringen; im
-ersten Jahr kamen lange Warteschlangen hinzu, weil die Angestellten die Anlage nicht
+hohen Eintrittspreis, die Parkgebühr und das Verbot, Essen mitzubringen. Im ersten Jahr kamen lange Warteschlangen hinzu, weil die Angestellten die Anlage nicht
 kannten, und 56 von ihnen kündigten. 2006 lag die Schuldenlast bei 240 Millionen
 Euro. Die Comunidad verkaufte ihre Anteile für 25 Millionen Euro an die Baufirma
 Fadesa, und **Parques Reunidos** übernahm für zehn Jahre die Führung. Danach
@@ -109,7 +104,7 @@ Danach vergingen vier Jahre bis zu Batman.
 
 ## Superman und Gotham: DC Super Heroes World
 
-In diesem Bereich stehen die Bahnen, wegen derer die Leute kommen.
+DC Super Heroes World hat die Bahnen, für die die Leute kommen.
 **[Superman: La Atracción de Acero](ref:parque-warner-madrid/superman-la-atraccion-de-acero)**
 fährt seit der Eröffnung und war laut spanischer Wikipedia die erste
 Floorless-Achterbahn Europas. Gebaut hat sie Bolliger & Mabillard. Bei dieser
@@ -135,7 +130,7 @@ die Spitze liegt laut RCDB bei 103 km/h, der Park nennt 104.
 
 ```
 
-Zwei Dinge gehören vor das Anstehen. Die Bahn fährt von **140 bis 195 cm**, und
+Die Bahn fährt von **140 bis 195 cm**, und
 der Park weist darauf hin, dass wegen der Bügel auch der Körperumfang zählt; wer
 unsicher ist, fragt das Personal an der Station. Außerdem steht sie mitten im
 Park, die Schienen laufen über die Wege der Gäste. Die spanische Wikipedia führt
@@ -188,7 +183,7 @@ belasten können, und Brillen und Handys, die bei der Fahrt verloren gehen. Ab *
 
 Río Bravo (Intamin, ab 100 cm) ist eine Wildwasserbahn nach dem gleichnamigen
 Film von 1959. Das Boot fährt gut fünf Minuten lang durch
-eine nachgebaute Schlucht und eine verlassene Siedlung, bevor er aus 22 Metern in
+eine nachgebaute Schlucht und eine verlassene Siedlung, bevor es aus 22 Metern in
 einen See fällt. Die Cataratas Salvajes (ab 110 cm) und die Karren der Mine (ab
 120 cm) sind kleiner.
 
@@ -243,23 +238,17 @@ Lucas, A Toda Máquina und der Convoy de Camiones. Bei der Cine Tour in Movie
 World Studios gilt das bis 120 cm. Ab 100 cm kommen die beiden kleinen
 Achterbahnen, Río Bravo, der Mr.-Freeze-Stuhl und das Hotel Embrujado dazu, ab
 110 cm die Rápidos ACME. Auf den meisten dieser Bahnen fahren Kinder zwischen
-100 und 120 cm nur mit einem Erwachsenen mit. Batman fällt für diese Gruppe weg,
-aber die Tabelle weiter unten zeigt, dass auch sonst kaum etwas im Park lang
-dauert.
+100 und 120 cm nur mit einem Erwachsenen mit. Batman fällt für diese Gruppe weg. An den übrigen Bahnen steht man meist kurz an, wie die Tabelle weiter unten zeigt.
 
 ## Welche Bahn für wen
 
-Wer nur eine große Bahn fährt, nimmt Superman: Sie hat sieben
+Wer nur eine große Bahn fährt, nimmt Superman. Sie hat sieben
 Inversionen und keinen Wagenboden, und ihre Warteschlange liegt im Mittelfeld des
-Parks. Wer die intensivste Fahrt will, geht zu Stunt Fall, bei der die RCDB 4,5 g nennt und die
-zweimal durch dieselbe Strecke läuft, einmal rückwärts. Batman ist die modernste
+Parks. Wer die intensivste Fahrt will, geht zu Stunt Fall. Die RCDB nennt 4,5 g, und die Bahn läuft zweimal durch dieselbe Strecke, einmal rückwärts. Batman ist die modernste
 Bahn und die mit den längsten Wartezeiten, und wer wegen ihr kommt, plant am
-besten einen Pass ein. Der Coaster Express ist eine Holzbahn
-mit rauem Lauf, und wer Holz mag, bekommt hier 1,4 Kilometer davon.
+besten einen Pass ein. Der Coaster Express ist eine Holzbahn mit rauem Lauf und 1,4 Kilometern Strecke.
 
-Die Shadows of Arkham sind der unauffälligste der großen Namen: kompakt, mit
-fünf Inversionen auf 823 Metern, und selten ein Grund zum Warten. Der Turm ist für alle, die gern
-hoch hinauswollen, und wer unter 132 cm bleibt, sieht ihn von unten.
+Die Shadows of Arkham sind der unauffälligste der großen Namen. Die Bahn ist kompakt, hat fünf Inversionen auf 823 Metern, und man steht dort selten an. Den Turm fährt man ab 132 cm. Wer kleiner ist, sieht ihn von unten.
 
 ## Shows und Neues 2026
 
@@ -276,10 +265,10 @@ die Don Gonzales Taquería am Hollywood Boulevard, ein Restaurant mit Speedy
 Gonzales als Thema, in dem alles glutenfrei ist. Der Oso Yogui, 2009 die erste
 Splash-Battle-Anlage Spaniens, führt unsere Parkseite unter den geschlossenen Attraktionen.
 
-## Wie voll es wirklich ist
+## Wartezeiten nach Bahn und Tageszeit
 
 Die Tabelle beruht auf den Messtagen der letzten zwei Jahre bis zum 7. Oktober
-2026, jede Bahn mit ihrer eigenen Zahl. Weil der Park im Winter nur an
+2026, jede Bahn mit ihrer eigenen Zahl an Messtagen. Weil der Park im Winter nur an
 einzelnen Tagen öffnet, stammt der größte Teil aus den Monaten April bis
 September:
 
@@ -290,8 +279,7 @@ September:
 Batman: Gotham City Escape steht oben, und der Abstand nach unten ist groß. Alles
 darunter liegt dicht beieinander: Rápidos ACME steht auf Platz zwei, danach folgen
 Scooby-Doo, Superman, Río Bravo und Coaster Express, und Stunt Fall findet sich
-nicht unter den ersten zehn. Ohne
-Batman liegt keine Bahn weit über dem Rest.
+nicht unter den ersten zehn.
 
 So verteilen sich die Warteschlangen über den Tag:
 
@@ -305,9 +293,7 @@ Bei den anderen großen Bahnen steigt sie bis zum frühen Nachmittag und bleibt 
 flach. Rápidos ACME und Río Bravo haben ihr Maximum am Nachmittag, wenn es warm ist.
 
 Rope Drop lohnt sich in diesem Park nur bei einer Bahn. Die Rápidos ACME haben zur
-Öffnung rund zehn Minuten Wartezeit und im Tagesmaximum rund 60. Unsere Auswertung
-empfiehlt, sie in den ersten 90 Minuten nach der Öffnung zu fahren (Stand 8. Oktober 2026). Bei Batman steht zur Öffnung schon rund 40 Minuten Wartezeit
-an; die Auswertung schlägt dort keinen frühen Besuch vor.
+Öffnung rund zehn Minuten Wartezeit und im Tagesmaximum rund 60. Wir empfehlen, sie in den ersten 90 Minuten nach der Öffnung zu fahren (Stand 8. Oktober 2026). Bei Batman beträgt die Wartezeit zur Öffnung schon rund 40 Minuten, einen frühen Besuch empfehlen wir dort nicht.
 
 Die ruhigsten der kommenden Öffnungstage, live berechnet:
 
@@ -333,8 +319,7 @@ Batman. Platin (ab 75,90 €, online aktuell 65,90 €) gilt unbegrenzt mit fast
 sofortigem Zugang. Der One-Pass (8 €) gilt für eine einzige Fahrt auf einer
 gewählten Bahn.
 
-Mein Urteil: Wer vor allem wegen Batman kommt, kauft den One-Pass oder Gold. Silber
-spart bei Superman, Enigma und Coaster Express etwas Zeit, aber genau dort sind die
+Wer vor allem wegen Batman kommt, kauft meiner Meinung nach den One-Pass oder Gold. Silber spart bei Superman, Venganza del Enigma und Coaster Express etwas Zeit, aber genau dort sind die
 Warteschlangen ohnehin kurz, und der Pass lässt die einzige lange Warteschlange des Parks aus.
 Wer sich den Pass sparen will, fährt Batman gegen 16 Uhr, wenn die Warteschlange
 ein paar Minuten kürzer ist als sonst, und plant trotzdem Zeit ein.
@@ -345,15 +330,14 @@ ein paar Minuten kürzer ist als sonst, und plant trotzdem Zeit ein.
 
 ```
 
-Am Wochentag hängt hier viel. Oben steht der Samstag mit deutlichem Abstand, unten
+Der Wochentag macht hier viel aus. Oben steht der Samstag mit deutlichem Abstand, unten
 stehen Mittwoch und Donnerstag. Der Montag liegt auf Platz zwei, Sonntag und
 Dienstag in der Mitte. Der Montag steht auf wenig Messtagen, weil der Park ihn im
 Herbst oft schließt.
 
 Beim Monat fällt der August auf. Der Juli liegt tief, obwohl der Park in beiden
 Monaten täglich von 12 Uhr bis Mitternacht geöffnet hat, und der August liegt
-deutlich höher. Warum, können wir aus den Daten nicht ablesen. Der September ist
-ruhig. Der Oktober hat bisher sechs gemessene Tage und ist der ruhigste Monat, der
+deutlich höher. Warum, wissen wir nicht. Im September ist es ruhig. Der Oktober hat bisher sechs gemessene Tage und ist der ruhigste Monat, der
 Dezember steht ebenfalls auf sechs Tagen und hat einen auffallend hohen Wert
 (Stand 8. Oktober 2026). Beide Zahlen sind dünn.
 
@@ -378,7 +362,7 @@ Die Halloween-Saison läuft vom **26. September bis zum 2. November 2026**.
 Tagsüber gibt es Dekoration, Paraden und die neue Familienattraktion ACME Factory,
 in der man mit dem Coyote eine Fabrik repariert. Dazu kommen vier Pasajes del
 Terror (La Monja, Crime Alley: Night of Chaos, IT Experience, Expedientes Warren)
-und zwei Scare Zones; die Pasajes verkauft der Park einzeln oder im
+und zwei Scare Zones. Die Pasajes verkauft der Park einzeln oder im
 Paket. Neu ist außerdem das Musical La Maldición de Drácula.
 
 Die **Halloween Scary Nights** sind ein eigenes Ticket für den Abend. Sie finden
@@ -395,8 +379,7 @@ ausverkauft. Wie sich das Event gegen andere in Europa schlägt, steht im
 Alle Preise sind die des Parks vom 8. Oktober 2026. Die Tageskarte kostet online ab
 **32,90 €** und an der Kasse **62,90 €** (ab 140 cm). Kinder von 100 bis 140 cm
 zahlen online ab 32,90 € und an der Kasse 56,90 €, Kinder unter 100 cm nichts.
-Den Juniorpreis zahlen auch Senioren ab 65, Großfamilien und Menschen mit
-Behinderung ab 33 Prozent; deren Begleitperson kommt gratis herein. Die
+Den Juniorpreis zahlen auch Senioren ab 65, Großfamilien und Menschen mit Behinderung ab 33 Prozent. Bei Menschen mit Behinderung kommt die Begleitperson gratis herein. Die
 Zwei-Tages-Karte beginnt online bei 42,90 €, mit dem Parque Warner Beach zusammen
 kostet ein Tag ab 44,80 €.
 
@@ -413,7 +396,7 @@ Parks. Der Bono Platino (329 €) gilt in 27. Der Oro gibt außerdem 50 Prozent 
 im Parque Warner Beach. Wie sich das mit anderen Jahreskarten vergleicht,
 steht im [Jahreskartenvergleich](/blog/jahreskarte-vergleich-freizeitparks).
 
-## Im Park: was man vorab wissen sollte
+## Service im Park
 
 Der Park hat 13 behindertengerechte Toiletten mit Wickeltischen, eine
 Gepäckaufbewahrung und einen Abholservice für Einkäufe, bei dem die Läden die
@@ -444,9 +427,7 @@ enthalten ist, für 45 € am Tag.
 
 Am Park selbst steht kein Hotel. Er verkauft Pakete aus Eintritt und Übernachtung
 in Partnerhotels der umliegenden Orte und wirbt für Besuche bis zum 2. November mit
-einem zweiten Tag gratis (Buchung bis 12. Oktober). Wer in Madrid schläft, fährt
-30 Kilometer, und das ist die praktischere Lösung, wenn der Besuch ein Abstecher in
-einem Madrid-Urlaub ist.
+einem zweiten Tag gratis (Buchung bis 12. Oktober). Wer in Madrid schläft, fährt 30 Kilometer. Das ist praktischer, wenn der Besuch ein Abstecher im Madrid-Urlaub ist.
 
 ## Ein Tag im Park, grob geplant
 
@@ -486,8 +467,7 @@ Höchstgröße 195 cm.
 
 ### Wann ist im Parque Warner am wenigsten los?
 
-An einem Mittwoch oder Donnerstag, vor allem im September und Oktober. Welche der
-nächsten Öffnungstage am ruhigsten werden, zeigt das Widget weiter oben.
+An einem Mittwoch oder Donnerstag, vor allem im September und Oktober. Die ruhigsten der nächsten Öffnungstage stehen auf der [Parkseite](ref:parque-warner-madrid).
 
 ### Darf man Essen mitbringen?
 
@@ -513,9 +493,7 @@ Wie das Wetter über dem Park aussieht, wenn du hinfährst:
 
 ```
 
-Auch [PortAventura](/blog/portaventura-halloween-2026) feiert Halloween, und so
-liegen die beiden Parks neben dem Parque de Atracciones de Madrid bei den
-Wartezeiten:
+Auch [PortAventura](/blog/portaventura-halloween-2026) feiert Halloween. Die Wartezeiten von Parque Warner, PortAventura und Parque de Atracciones de Madrid im Vergleich:
 
 ```park-comparison-widget slugs=parque-warner-madrid,portaventura-park,parque-de-atracciones-de-madrid highlight=parque-warner-madrid
 
@@ -526,7 +504,7 @@ Wartezeiten:
 Der Park lohnt als Ausflug von Madrid aus vor allem wegen drei Bahnen: Batman,
 Superman und Stunt Fall. Wer mit Kindern unter 120 cm kommt, hat in Cartoon
 Village ein ordentliches Programm und wenig Anstehen. Wer unter der Woche im
-September oder Oktober fährt, hat die Auswahl.
+September oder Oktober fährt, erwischt die ruhigsten Tage.
 
 Im Juli und August schließt der Park um Mitternacht. Wer ohne Auto kommt, prüft
 vorher die Fahrpläne der Linien 412 und 413, die der Busbetreiber ändern kann. Und
