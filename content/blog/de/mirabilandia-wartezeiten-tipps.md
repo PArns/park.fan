@@ -63,11 +63,11 @@ Die ersten Jahre liefen schlecht. Zwischen 1994 und 1996 fielen die Besuche nach
 
 Danach wurde investiert. 1997 kamen die beiden 60 Meter hohen Türme, die heute Oil Tower heißen. 1998 folgte die Wilde Maus Pakal, heute [Gold Digger](ref:mirabilandia/gold-digger), und der Eingangsbereich bekam sein Piratenthema, die Baia dei Pirati. 1999 eröffneten das Riesenrad Eurowheel und die Wasserbahn Niagara, heute [El Dorado Falls](ref:mirabilandia/el-dorado-falls). Im Jahr 2000 kam Katun. 2003 öffnete der Wasserpark Mirabilandia Beach, seit 2011 Mirabeach.
 
-2006 kaufte Parques Reunidos den Park. Die deutsche Wikipedia nennt unter Berufung auf die spanische Zeitung Cinco Días rund 100 Millionen Euro. 2009 ersetzte iSpeed die Sierra Tonante, die seit 2007 stillstand. Es folgten Master Thai (2011), Divertical (2012), der Kinderbereich Dinoland (2014), der Westernbereich Far West Valley (2016) und 2019 Ducati World mit Desmo Race. 2022 begann die Zusammenarbeit mit Nickelodeon, 2025 eröffnete Nickelodeon Land. EQT sucht für Parques Reunidos einen Käufer, Näheres steht in unserem Beitrag [EQT sucht einen Käufer für Parques Reunidos](/news/parques-reunidos-verkauf-movie-park).
+2006 kaufte Parques Reunidos den Park. Die deutsche Wikipedia nennt unter Berufung auf die spanische Zeitung Cinco Días rund 100 Millionen Euro. iSpeed ersetzte die Sierra Tonante, die seit 2007 stillstand (Eröffnung 2008 nach dem Park, 2009 nach der Wikipedia). Es folgten Master Thai (2011), Divertical (2012), der Kinderbereich Dinoland (2014), der Westernbereich Far West Valley (2016) und 2019 Ducati World mit Desmo Race. 2022 begann die Zusammenarbeit mit Nickelodeon, 2025 eröffnete Nickelodeon Land. EQT sucht für Parques Reunidos einen Käufer, Näheres steht in unserem Beitrag [EQT sucht einen Käufer für Parques Reunidos](/news/parques-reunidos-verkauf-movie-park).
 
 ## Die Achterbahnen
 
-Die fünf großen Bahnen im Überblick. Die Zahlen stammen aus der Roller Coaster DataBase, die Mindestgrößen von der Website des Parks:
+Die fünf großen Bahnen im Überblick. Länge, Höhe und Tempo stammen aus der Roller Coaster DataBase, die Mindestgrößen von der Website des Parks, Typ und Eröffnungsjahr aus Wikipedia und vom Park:
 
 | Bahn        | Typ und Hersteller          | Eröffnet | Höhe | Tempo    | Inversionen | Mindestgröße |
 | ----------- | --------------------------- | -------- | ---- | -------- | ----------- | ------------ |
@@ -138,7 +138,7 @@ Hinter dem Eingangsplatz, der Baia dei Pirati mit dem X Point für die Flash Pä
 
 Kinder unter 100 Zentimetern kommen kostenlos hinein. Für sie gibt es zwei Bereiche.
 
-**Nickelodeon Land** (2025, 25.000 Quadratmeter) hat nach Angabe des Parks zehn Attraktionen, drei Restaurants, einen Laden, zwei Meet-and-Greet-Bereiche und eine Showbühne. Der Bereich gliedert sich nach vier Serien. SpongeBob hat Jellyfish Jam (ab 100 Zentimetern, unter 120 mit Begleitung) und den Bikini Bottom Express (ab 75 Zentimetern). PAW Patrol hat den Spielplatz Adventure Bay, die Bahn PAW Patrol To The Rescue, die Wasserfahrt Rubble's Rapids und ein Karussell. Dazu kommen Dora's Train Adventure, Splish Splat als Wasserspielplatz und für die Ninja Turtles die Cowabunga Carts. Die Website des Parks nennt den Bereich „Italy's Best New Family Attraction 2025“.
+**Nickelodeon Land** (2025, 25.000 Quadratmeter) hat nach Angabe des Parks zehn Attraktionen, drei Restaurants, einen Laden, zwei Meet-and-Greet-Bereiche und eine Showbühne. Der Bereich gliedert sich nach vier Serien. SpongeBob hat Jellyfish Jam (ab 100 Zentimetern, Kinder unter sechs Jahren und unter 120 Zentimetern mit Begleitung) und den Bikini Bottom Express (ab 75 Zentimetern). PAW Patrol hat den Spielplatz Adventure Bay, die Bahn PAW Patrol To The Rescue, die Wasserfahrt Rubble's Rapids und ein Karussell. Dazu kommen Dora's Train Adventure, Splish Splat als Wasserspielplatz und für die Ninja Turtles die Cowabunga Carts. Die Website des Parks nennt den Bereich „Italy's Best New Family Attraction 2025“.
 
 In **Dinoland** fährt [Reptilium](ref:mirabilandia/reptilium) ab 120 Zentimetern, Raptotana (die drehenden Nester mit Mama Velociraptor), Bicisauro und Monosauro fahren ab 90 Zentimetern. Kinder unter zehn Jahren brauchen dort an den meisten Fahrten eine erwachsene Begleitung.
 
@@ -160,7 +160,7 @@ Am 30. Oktober gibt es die Scary Night: Der Park öffnet um 19:30 Uhr zusätzlic
 
 ## Wartezeiten der Bahnen
 
-Die aktuelle Wartezeit jeder Bahn zeigt der Park in seiner App. Die Tabelle darunter blickt zurück auf die zehn Bahnen, für die wir in 42 Messtagen mindestens 20 Tage Daten haben.
+Die aktuelle Wartezeit jeder Bahn zeigt der Park in seiner App. Die Tabelle darunter zeigt die Bahnen mit den längsten Wartezeiten, jede mit mindestens 20 Messtagen aus den 42.
 
 ```ride-waits-widget park=mirabilandia top=8 columns=land,peak,days
 
@@ -184,7 +184,7 @@ Bei keiner der acht Bahnen, für die unsere Parkseite eine Rope-Drop-Auswertung 
 
 ## Wann du hinfahren solltest
 
-Der Freitag ist in unseren Daten der ruhigste Wochentag, der Dienstag der vollste. Samstag und Mittwoch liegen über der Mitte, der Sonntag darunter, Montag und Donnerstag dazwischen. Basis sind jeweils fünf bis neun Tage, im Oktober hat der Park nur an Wochenenden geöffnet. Die Aussage ist dünn, und ein einzelner voller Freitag kann die Reihenfolge ändern.
+Der Freitag ist in unseren Daten der ruhigste Wochentag, der Dienstag der vollste. Samstag und Mittwoch liegen über der Mitte, der Sonntag darunter, Montag und Donnerstag dazwischen. Basis sind jeweils fünf bis neun Tage, bis Ende Oktober hat der Park nur an Wochenenden geöffnet. Die Aussage ist dünn, und ein einzelner voller Freitag kann die Reihenfolge ändern.
 
 ```stats-widget slug=mirabilandia show=weekdays
 
@@ -196,7 +196,7 @@ Zu den Monaten haben wir nur August, September und Oktober. Der August ist der v
 
 ```
 
-Die Saison 2026 läuft vom 2. April bis zum 1. November. Im Oktober ist der Park laut Kalender nur an Wochenenden offen: samstags von 10:30 bis 22:00 Uhr, am 24. Oktober bis 23:00 Uhr, sonntags von 10:30 bis 18:00 Uhr. An den Samstagen im Oktober macht ab 19 Uhr Suburbia auf. Die Zeiten für den Rest der Saison stehen im Kalender des Parks und ändern sich.
+Die Saison 2026 läuft vom 2. April bis zum 1. November. Bis zum 24. Oktober ist der Park laut Kalender nur an Wochenenden offen: samstags von 10:30 bis 22:00 Uhr, am 24. Oktober bis 23:00 Uhr, sonntags von 10:30 bis 18:00 Uhr. An den Samstagen im Oktober macht ab 19 Uhr Suburbia auf. Die Zeiten für den Rest der Saison stehen im Kalender des Parks und ändern sich.
 
 ```best-days-widget slug=mirabilandia
 
@@ -238,10 +238,10 @@ Bei den Saisonkarten läuft bis zum 18. Oktober eine Aktion: Wer eine Karte für
 | ------ | --------- | -------------- | ------------------------------------------------------------------------------------------------------------- |
 | Bronze | 59,90 €   | 59,90 €        | 2026 bis 25.10., 2027 bis 24.10. ohne 9. bis 22.8.2027, 5 % in den Läden (nur 2027)                           |
 | Silver | 62,90 €   | 62,90 €        | alle Öffnungstage, 40 % auf den Parkplatz, 10 % in den Läden, 20 % auf den Gold Flash Pass (2027)             |
-| Gold   | 99,90 €   | 94,90 €        | zusätzlich 50 % auf den Parkplatz, 30 % auf den Gold Flash Pass (2027)                                        |
+| Gold   | 99,90 €   | 94,90 €        | zusätzlich 50 % auf den Parkplatz, 30 % auf den Gold Flash Pass (2027), Parks der Gruppe                      |
 | VIP    | 119,90 €  | 114,90 €       | Mirabilandia und Mirabeach, Parkplatz frei, 15 % in den Läden, 50 % auf den Gold Flash Pass, Parks der Gruppe |
 
-Die VIP-Karte schließt außerdem freien Eintritt in weitere Parks der Gruppe ein, darunter Movie Park Germany, Parque Warner, Parque de Atracciones de Madrid, Bobbejaanland und Slagharen. Zur Silver-Karte gibt es Mirabeach gegen 39,90 Euro Aufpreis.
+Die Gold- und die VIP-Karte schließen außerdem freien Eintritt in weitere Parks der Gruppe ein, darunter Movie Park Germany, Parque Warner, Parque de Atracciones de Madrid, Bobbejaanland und Slagharen. Zur Silver-Karte gibt es Mirabeach gegen 39,90 Euro Aufpreis.
 
 ## Anreise und Parken
 
@@ -259,7 +259,7 @@ Gegessen wird in Restaurants und Kiosken, darunter die Locanda del Faro, das Pad
 
 ## Was neu ist, und was geschlossen hat
 
-2025 kamen Nickelodeon Land und mit ihm die Cowabunga Carts. 2026 sind neu: Paranormal Activity: Next of Kin, die Zone Ossarium in Suburbia, die Show „I misteri di Wondy“ und der Becher von Coca-Cola Freestyle. Geschlossen haben die Monorail Mirabilandia Express (1992 bis 2019), Colazione da Papere (2003 bis 2023) und Casa Matta (2001 bis 2024), so die italienische Wikipedia. Die Sierra Tonante stand von 1992 bis 2007.
+2025 kamen Nickelodeon Land und mit ihm die Cowabunga Carts. 2026 sind unter anderem neu: Paranormal Activity: Next of Kin, die Zone Ossarium in Suburbia, die Show „I misteri di Wondy“ und der Becher von Coca-Cola Freestyle. Geschlossen haben die Monorail Mirabilandia Express (1992 bis 2019), Colazione da Papere (2003 bis 2023) und Casa Matta (2001 bis 2024), so die italienische Wikipedia. Die Sierra Tonante stand von 1992 bis 2007.
 
 Eine neue Bahn für 2027 nennt der Park in seiner Kampagne für die Saisonkarte 2027 nicht, die Anfang August startete.
 
@@ -271,7 +271,7 @@ An den meisten Bahnen liegt der Median in unseren 42 Messtagen seit August 2026 
 
 ### Wann ist in Mirabilandia am wenigsten los?
 
-Nach unseren bisherigen Daten an einem Freitag, und im September und Oktober mehr als im August. Mit fünf bis neun Tagen je Wochentag ist das ein Hinweis und keine Regel. Im Oktober hat der Park nur an Wochenenden geöffnet.
+Nach unseren bisherigen Daten an einem Freitag, und im September und Oktober weniger als im August. Mit fünf bis neun Tagen je Wochentag ist das ein Hinweis und keine Regel. Bis Ende Oktober hat der Park nur an Wochenenden geöffnet.
 
 ### Brauche ich in Mirabilandia den Flash Pass?
 
@@ -287,7 +287,7 @@ Das Tagesticket für Erwachsene beginnt online bei 27,90 Euro, an der Kasse kost
 
 ### Wann ist Mirabilandia geöffnet?
 
-Die Saison 2026 läuft vom 2. April bis zum 1. November. Im Oktober ist der Park nur an Wochenenden offen, samstags von 10:30 bis 22:00 Uhr und sonntags bis 18:00 Uhr.
+Die Saison 2026 läuft vom 2. April bis zum 1. November. Bis zum 24. Oktober ist der Park nur an Wochenenden offen, samstags von 10:30 bis 22:00 Uhr und sonntags bis 18:00 Uhr.
 
 ### Kann man Mirabilandia an einem Tag schaffen?
 
