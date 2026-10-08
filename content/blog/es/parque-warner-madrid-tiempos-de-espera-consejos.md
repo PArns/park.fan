@@ -215,22 +215,22 @@ el escenario del espectáculo de bienvenida con los Looney Tunes.
 
 Todas las alturas mínimas, como las da el parque en la ficha de cada atracción:
 
-| Atracción                       | Altura mínima | Nota                                        |
-| ------------------------------- | ------------- | ------------------------------------------- |
-| Batman: Gotham City Escape      | 140 cm        | hasta 195 cm, cuenta también el perímetro   |
-| Stunt Fall                      | 137 cm        | hasta 195 cm                                |
-| Superman: La Atracción de Acero | 132 cm        |                                             |
-| Shadows of Arkham               | 132 cm        |                                             |
-| La Venganza del Enigma          | 132 cm        | hasta 195 cm                                |
-| Coaster Express                 | 121 cm        | hasta 197 cm                                |
-| Los Carros de la Mina           | 120 cm        | acompañados hasta 130 cm                    |
-| Rápidos ACME                    | 110 cm        | acompañados hasta 140 cm                    |
-| Cataratas Salvajes              | 110 cm        | acompañados hasta 122 cm                    |
-| Autos de choque del Joker       | 105 cm        | acompañados hasta 140 cm                    |
-| Río Bravo                       | 100 cm        | acompañados hasta 120 cm                    |
-| Tom & Jerry                     | 100 cm        | acompañados hasta 120 cm                    |
-| Correcaminos Bip Bip            | 100 cm        | acompañados hasta 130 cm                    |
-| Hotel Embrujado                 | 90 cm         | acompañados hasta 120 cm                    |
+| Atracción                       | Altura mínima | Nota                                      |
+| ------------------------------- | ------------- | ----------------------------------------- |
+| Batman: Gotham City Escape      | 140 cm        | hasta 195 cm, cuenta también el perímetro |
+| Stunt Fall                      | 137 cm        | hasta 195 cm                              |
+| Superman: La Atracción de Acero | 132 cm        |                                           |
+| Shadows of Arkham               | 132 cm        |                                           |
+| La Venganza del Enigma          | 132 cm        | hasta 195 cm                              |
+| Coaster Express                 | 121 cm        | hasta 197 cm                              |
+| Los Carros de la Mina           | 120 cm        | acompañados hasta 130 cm                  |
+| Rápidos ACME                    | 110 cm        | acompañados hasta 140 cm                  |
+| Cataratas Salvajes              | 110 cm        | acompañados hasta 122 cm                  |
+| Autos de choque del Joker       | 105 cm        | acompañados hasta 140 cm                  |
+| Río Bravo                       | 100 cm        | acompañados hasta 120 cm                  |
+| Tom & Jerry                     | 100 cm        | acompañados hasta 120 cm                  |
+| Correcaminos Bip Bip            | 100 cm        | acompañados hasta 130 cm                  |
+| Hotel Embrujado                 | 90 cm         | acompañados hasta 120 cm                  |
 
 Los niños de menos de 100 cm no pagan entrada y encuentran más cosas sobre todo
 en Cartoon Village. Las cuatro montañas rusas rápidas empiezan entre 132 y

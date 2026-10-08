@@ -143,8 +143,7 @@ andere Beste Achtbaan van het Jaar bij de Park World Excellence Awards, en voor
 **[Shadows of Arkham](ref:parque-warner-madrid/batman-arkham-asylum)** is de oudere
 Batman-baan, een inverted coaster van Bolliger & Mabillard met vijf inversies,
 32 meter hoogte en 80 km/u. Hij heette Batman: La Fuga en later Batman: Arkham
-Asylum. Het park biedt een rit met virtualrealitybril aan, de RCDB noemt die sinds
-2017. Minimale lengte **132 cm**.
+Asylum. Het park biedt een rit met virtualrealitybril aan, de RCDB noemt die sinds 2017. Minimale lengte **132 cm**.
 
 Het baken van het park is de toren. **[La Venganza del Enigma](ref:parque-warner-madrid/la-venganza-del-enigma)**
 is een combi-toren van S&S en volgens het park 115 meter hoog. Hij werkt in drie
@@ -212,22 +211,22 @@ podium van de welkomstshow met de Looney Tunes.
 Alle minimale lengtes, zoals het park ze op de pagina’s van de afzonderlijke
 attracties noemt:
 
-| Attractie                       | Minimale lengte | Opmerking                                |
-| ------------------------------- | --------------- | ---------------------------------------- |
-| Batman: Gotham City Escape      | 140 cm          | tot 195 cm, ook lichaamsomvang telt mee  |
-| Stunt Fall                      | 137 cm          | tot 195 cm                               |
-| Superman: La Atracción de Acero | 132 cm          |                                          |
-| Shadows of Arkham               | 132 cm          |                                          |
-| La Venganza del Enigma          | 132 cm          | tot 195 cm                               |
-| Coaster Express                 | 121 cm          | tot 197 cm                               |
-| Los Carros de la Mina           | 120 cm          | met begeleider tot 130 cm                |
-| Rápidos ACME                    | 110 cm          | met begeleider tot 140 cm                |
-| Cataratas Salvajes              | 110 cm          | met begeleider tot 122 cm                |
-| Joker-botsauto’s                | 105 cm          | met begeleider tot 140 cm                |
-| Río Bravo                       | 100 cm          | met begeleider tot 120 cm                |
-| Tom & Jerry                     | 100 cm          | met begeleider tot 120 cm                |
-| Correcaminos Bip Bip            | 100 cm          | met begeleider tot 130 cm                |
-| Hotel Embrujado                 | 90 cm           | met begeleider tot 120 cm                |
+| Attractie                       | Minimale lengte | Opmerking                               |
+| ------------------------------- | --------------- | --------------------------------------- |
+| Batman: Gotham City Escape      | 140 cm          | tot 195 cm, ook lichaamsomvang telt mee |
+| Stunt Fall                      | 137 cm          | tot 195 cm                              |
+| Superman: La Atracción de Acero | 132 cm          |                                         |
+| Shadows of Arkham               | 132 cm          |                                         |
+| La Venganza del Enigma          | 132 cm          | tot 195 cm                              |
+| Coaster Express                 | 121 cm          | tot 197 cm                              |
+| Los Carros de la Mina           | 120 cm          | met begeleider tot 130 cm               |
+| Rápidos ACME                    | 110 cm          | met begeleider tot 140 cm               |
+| Cataratas Salvajes              | 110 cm          | met begeleider tot 122 cm               |
+| Joker-botsauto’s                | 105 cm          | met begeleider tot 140 cm               |
+| Río Bravo                       | 100 cm          | met begeleider tot 120 cm               |
+| Tom & Jerry                     | 100 cm          | met begeleider tot 120 cm               |
+| Correcaminos Bip Bip            | 100 cm          | met begeleider tot 130 cm               |
+| Hotel Embrujado                 | 90 cm           | met begeleider tot 120 cm               |
 
 Kinderen onder 100 cm betalen geen entree en vinden vooral in Cartoon Village
 iets te doen. De vier snelle banen beginnen tussen 132 en 140 cm.

@@ -189,8 +189,7 @@ sostegni metallici. Wikipedia in spagnolo riporta lamentele per forti vibrazioni
 che possono affaticare schiena e collo, e per occhiali e cellulari persi durante
 il giro. Da **121 cm**.
 
-Río Bravo (Intamin, da 100 cm) è un rapid river basato sull’omonimo film del
-1959. La barca percorre per oltre cinque minuti una gola ricostruita e un
+Río Bravo (Intamin, da 100 cm) è un rapid river basato sull’omonimo film del 1959. La barca percorre per oltre cinque minuti una gola ricostruita e un
 villaggio abbandonato, prima di cadere da 22 metri in un lago. Le Cataratas
 Salvajes (da 110 cm) e i carrelli della miniera (da 120 cm) sono più piccoli.
 
@@ -218,22 +217,22 @@ cinema 3D e il palco dello spettacolo di benvenuto con i Looney Tunes.
 Tutte le altezze minime, come le indica il parco sulle pagine delle singole
 attrazioni:
 
-| Attrazione                      | Altezza minima | Nota                                         |
-| ------------------------------- | -------------- | -------------------------------------------- |
-| Batman: Gotham City Escape      | 140 cm         | fino a 195 cm, conta anche la circonferenza  |
-| Stunt Fall                      | 137 cm         | fino a 195 cm                                |
-| Superman: La Atracción de Acero | 132 cm         |                                              |
-| Shadows of Arkham               | 132 cm         |                                              |
-| La Venganza del Enigma          | 132 cm         | fino a 195 cm                                |
-| Coaster Express                 | 121 cm         | fino a 197 cm                                |
-| Los Carros de la Mina           | 120 cm         | con accompagnatore fino a 130 cm             |
-| Rápidos ACME                    | 110 cm         | con accompagnatore fino a 140 cm             |
-| Cataratas Salvajes              | 110 cm         | con accompagnatore fino a 122 cm             |
-| Autoscontri Joker               | 105 cm         | con accompagnatore fino a 140 cm             |
-| Río Bravo                       | 100 cm         | con accompagnatore fino a 120 cm             |
-| Tom & Jerry                     | 100 cm         | con accompagnatore fino a 120 cm             |
-| Correcaminos Bip Bip            | 100 cm         | con accompagnatore fino a 130 cm             |
-| Hotel Embrujado                 | 90 cm          | con accompagnatore fino a 120 cm             |
+| Attrazione                      | Altezza minima | Nota                                        |
+| ------------------------------- | -------------- | ------------------------------------------- |
+| Batman: Gotham City Escape      | 140 cm         | fino a 195 cm, conta anche la circonferenza |
+| Stunt Fall                      | 137 cm         | fino a 195 cm                               |
+| Superman: La Atracción de Acero | 132 cm         |                                             |
+| Shadows of Arkham               | 132 cm         |                                             |
+| La Venganza del Enigma          | 132 cm         | fino a 195 cm                               |
+| Coaster Express                 | 121 cm         | fino a 197 cm                               |
+| Los Carros de la Mina           | 120 cm         | con accompagnatore fino a 130 cm            |
+| Rápidos ACME                    | 110 cm         | con accompagnatore fino a 140 cm            |
+| Cataratas Salvajes              | 110 cm         | con accompagnatore fino a 122 cm            |
+| Autoscontri Joker               | 105 cm         | con accompagnatore fino a 140 cm            |
+| Río Bravo                       | 100 cm         | con accompagnatore fino a 120 cm            |
+| Tom & Jerry                     | 100 cm         | con accompagnatore fino a 120 cm            |
+| Correcaminos Bip Bip            | 100 cm         | con accompagnatore fino a 130 cm            |
+| Hotel Embrujado                 | 90 cm          | con accompagnatore fino a 120 cm            |
 
 I bambini sotto i 100 cm entrano gratis e trovano qualcosa soprattutto a Cartoon
 Village. Le quattro attrazioni veloci cominciano fra 132 e 140 cm.

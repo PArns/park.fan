@@ -217,22 +217,22 @@ with a 3D cinema and the stage of the welcome show with the Looney Tunes.
 All minimum heights, as the park gives them on the pages of the individual
 rides:
 
-| Ride                            | Minimum height | Note                                    |
-| ------------------------------- | -------------- | --------------------------------------- |
-| Batman: Gotham City Escape      | 140 cm         | up to 195 cm, body girth counts too     |
-| Stunt Fall                      | 137 cm         | up to 195 cm                            |
-| Superman: La Atracción de Acero | 132 cm         |                                         |
-| Shadows of Arkham               | 132 cm         |                                         |
-| La Venganza del Enigma          | 132 cm         | up to 195 cm                            |
-| Coaster Express                 | 121 cm         | up to 197 cm                            |
-| Los Carros de la Mina           | 120 cm         | with an adult up to 130 cm              |
-| Rápidos ACME                    | 110 cm         | with an adult up to 140 cm              |
-| Cataratas Salvajes              | 110 cm         | with an adult up to 122 cm              |
-| Joker bumper cars               | 105 cm         | with an adult up to 140 cm              |
-| Río Bravo                       | 100 cm         | with an adult up to 120 cm              |
-| Tom & Jerry                     | 100 cm         | with an adult up to 120 cm              |
-| Correcaminos Bip Bip            | 100 cm         | with an adult up to 130 cm              |
-| Hotel Embrujado                 | 90 cm          | with an adult up to 120 cm              |
+| Ride                            | Minimum height | Note                                |
+| ------------------------------- | -------------- | ----------------------------------- |
+| Batman: Gotham City Escape      | 140 cm         | up to 195 cm, body girth counts too |
+| Stunt Fall                      | 137 cm         | up to 195 cm                        |
+| Superman: La Atracción de Acero | 132 cm         |                                     |
+| Shadows of Arkham               | 132 cm         |                                     |
+| La Venganza del Enigma          | 132 cm         | up to 195 cm                        |
+| Coaster Express                 | 121 cm         | up to 197 cm                        |
+| Los Carros de la Mina           | 120 cm         | with an adult up to 130 cm          |
+| Rápidos ACME                    | 110 cm         | with an adult up to 140 cm          |
+| Cataratas Salvajes              | 110 cm         | with an adult up to 122 cm          |
+| Joker bumper cars               | 105 cm         | with an adult up to 140 cm          |
+| Río Bravo                       | 100 cm         | with an adult up to 120 cm          |
+| Tom & Jerry                     | 100 cm         | with an adult up to 120 cm          |
+| Correcaminos Bip Bip            | 100 cm         | with an adult up to 130 cm          |
+| Hotel Embrujado                 | 90 cm          | with an adult up to 120 cm          |
 
 Children under 100 cm get in free and find most of their rides in Cartoon
 Village. The four fast coasters start between 132 and 140 cm.
