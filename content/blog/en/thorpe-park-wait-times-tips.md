@@ -78,7 +78,7 @@ The park called the plan "Project Exodus". It put first designs to a public cons
 
 ```
 
-On its own page the park gives the track length as 995.4 metres, the longest in the park, along with a height of 236 feet, a top speed of 81 mph, a 168-foot (51-metre) loop that the park says is the tallest in Europe, and an element the park lists as a world first, an airtime hill with an outward tilt. It also gives 14.8 seconds of weightlessness. The ride has two inversions, a barrel roll in the downward section and a dive loop with a short hold in mid-air. A chain pulls the train up the lift, and on the first drop it rotates through 180 degrees.
+On its own page the park gives the track length as 995.4 metres, the longest in the park, along with a height of 236 feet, a top speed of 81 mph, a 168-foot (51-metre) loop that the park says is the tallest in Europe, and an element the park lists as a world first, an airtime hill with an outward tilt. It also gives 14.8 seconds of weightlessness. The ride has two inversions, a barrel roll in the downward section and a dive loop with a short hold in mid-air. A chain pulls the train up the lift. The first drop is vertical, and the train turns through 180 degrees as it falls.
 
 The minimum height is **1.30 metres**, the lowest of the park's big coasters. Riders with a prosthesis can't ride, and after a review the park says the ride is no longer suitable for people who can't move independently. Hyperia and SAW both have a single rider queue.
 

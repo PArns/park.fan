@@ -1,5 +1,5 @@
 ---
-title: 'Thorpe Park: Hyperia, Stealth en een park op oude grindputten'
+title: 'Thorpe Park: Hyperia, Stealth en een park op grindputten'
 translationKey: thorpe-park-guide
 date: '2026-10-08'
 author: patrick

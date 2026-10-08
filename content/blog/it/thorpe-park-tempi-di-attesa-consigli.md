@@ -78,7 +78,7 @@ Il parco chiamava il progetto «Project Exodus». A dicembre 2021 presentò i pr
 
 ```
 
-Sul suo sito il parco indica 995,4 metri di percorso, il più lungo del parco, poi 236 piedi di altezza, 81 mph di velocità massima, un looping di 168 piedi (51 metri), secondo il parco il più alto d'Europa, e un elemento che presenta come prima mondiale: una collina di airtime con inclinazione laterale. Dichiara inoltre 14,8 secondi di assenza di peso. La pista ha due inversioni, un barrel roll nella discesa e un dive loop con una breve sosta a mezz'aria. Una catena porta il treno in cima al lift, e nel primo tratto il treno ruota di 180 gradi.
+Sul suo sito il parco indica 995,4 metri di percorso, il più lungo del parco, poi 236 piedi di altezza, 81 mph di velocità massima, un looping di 168 piedi (51 metri), secondo il parco il più alto d'Europa, e un elemento che presenta come prima mondiale: una collina di airtime con inclinazione laterale. Dichiara inoltre 14,8 secondi di assenza di peso. La pista ha due inversioni, un barrel roll nella discesa e un dive loop con una breve sosta a mezz'aria. Una catena porta il treno in cima al lift. La prima discesa è verticale e il treno ruota di 180 gradi mentre scende.
 
 L'altezza minima è di **1,30 metri**, la più bassa tra le grandi montagne russe del parco. Chi porta una protesi non può salire, e secondo il controllo effettuato dal parco l'attrazione non è più adatta a chi non riesce a muoversi in autonomia. Per Hyperia e SAW esiste una coda single rider.
 

@@ -78,7 +78,7 @@ Den Plan nannte der Park „Project Exodus“. Im Dezember 2021 zeigte er in ein
 
 ```
 
-Auf seiner Seite gibt der Park 995,4 Meter Streckenlänge an, die längste im Park, dazu 236 Fuß Höhe, 81 mph Höchstgeschwindigkeit, ein Looping von 168 Fuß (51 Meter), laut Park der höchste Europas, und ein Element, das der Park als Weltpremiere führt, einen Airtime-Hügel mit Außenneigung. Dazu gibt der Park 14,8 Sekunden schwerelose Momente an. Die Bahn hat zwei Inversionen, einen Barrel Roll im Abwärtsteil und einen Dive Loop mit kurzem Halt in der Luft. Eine Kette zieht den Zug den Lift hinauf, und im ersten Fall dreht er sich dabei um 180 Grad.
+Auf seiner Seite gibt der Park 995,4 Meter Streckenlänge an, die längste im Park, dazu 236 Fuß Höhe, 81 mph Höchstgeschwindigkeit, ein Looping von 168 Fuß (51 Meter), laut Park der höchste Europas, und ein Element, das der Park als Weltpremiere führt, einen Airtime-Hügel mit Außenneigung. Dazu gibt der Park 14,8 Sekunden schwerelose Momente an. Die Bahn hat zwei Inversionen, einen Barrel Roll im Abwärtsteil und einen Dive Loop mit kurzem Halt in der Luft. Eine Kette zieht den Zug den Lift hinauf. Der erste Abfall ist senkrecht, und der Zug dreht sich dabei um 180 Grad.
 
 Die Mindestgröße liegt bei **1,30 Meter**, das ist die niedrigste unter den großen Achterbahnen des Parks. Wer eine Prothese trägt, darf nicht mitfahren, und für Menschen, die sich nicht selbstständig bewegen können, ist die Bahn nach einer Überprüfung des Parks nicht mehr geeignet. Für Hyperia und SAW gibt es eine Single-Rider-Warteschlange.
 
