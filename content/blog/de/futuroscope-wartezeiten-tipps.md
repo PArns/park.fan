@@ -88,7 +88,7 @@ das Restaurant Space Loop (beide am 29. April 2022 eröffnet), das Hotel Ecolodg
 Aquascope (15. Juli 2024) und Mission Bermudes (Juni 2025). Seit dem 29. Mai 2024 heißt das
 Ganze Futuroscope Xperiences.
 
-## Die großen Attraktionen, und was jede verlangt
+## Die großen Attraktionen und ihre Mindestgrößen
 
 Die Mindestgrößen setzt der Park pro Attraktion, und es gibt meist zwei: eine für Kinder in
 Begleitung eines Erwachsenen und eine für Kinder allein. Wer unter der ersten liegt, darf nicht
@@ -98,11 +98,10 @@ zuschauen, wenn es nicht fahren darf.
 
 ### Objectif Mars
 
-[Objectif Mars](ref:futuroscope/destination-mars) ist seit 2020 in Betrieb und neben dem
-Kinderachterbahn Le Balancier in Futuropolis die einzige Achterbahn des Parks. Gebaut hat sie Intamin
+[Objectif Mars](ref:futuroscope/destination-mars) ist seit 2020 in Betrieb und neben der Kinderachterbahn Le Balancier in Futuropolis die einzige Achterbahn des Parks. Gebaut hat sie Intamin
 als Launched Coaster mit drehenden Fahrzeugen, einen Spinning Coaster. Der Park nennt sie eine
 Familienachterbahn und gibt eine Höchstgeschwindigkeit von
-55 km/h an, die Strecke führt durch ein Gebäude und ins Freie. Eröffnet werden sollte sie am 28. März 2020; wegen der Schließung in der Pandemie ging sie im Juni 2020 an den Start, zuerst
+55 km/h an, die Strecke führt durch ein Gebäude und ins Freie. Eröffnet werden sollte sie am 28. März 2020. Wegen der Schließung in der Pandemie ging sie im Juni 2020 an den Start, zuerst
 nur an den Wochenenden.
 
 Mit Begleitung geht es ab 1,10 Metern, allein ab 1,20 Metern, und die Obergrenze liegt bei
@@ -236,7 +235,7 @@ Objectif Mars und L'Extraordinaire Voyage teilen sich den ersten Rang. Dahinter 
 Chasseurs de Tornades, La Maison à l'envers, Aventure Éclabousse und Danse avec les Robots dicht
 beieinander.
 
-Dass La Maison à l'envers unter den ersten fünf steht, ist ein Befund dieser Auswertung. Das Haus
+La Maison à l'envers steht unter den ersten fünf. Das Haus
 hat nach den Angaben des Parks keine Größengrenze und ist die Ausweichmöglichkeit für Familien,
 deren Kinder die Bahnen noch nicht fahren dürfen. Der Pass Premium+ gilt dort nicht.
 
@@ -279,7 +278,7 @@ Der Samstag ist der vollste Tag, mit deutlichem Abstand zu allen anderen. Donner
 Sonntag haben die kürzesten Wartezeiten, Montag bis Mittwoch liegen dazwischen. Jeder Wochentag
 steht in unseren Daten auf 30 bis 35 Tagen.
 
-Ein Vorbehalt gehört dazu: Im Herbst ist der Park Montag bis Mittwoch oft geschlossen, im
+Im Herbst ist der Park Montag bis Mittwoch oft geschlossen, im
 September an drei Wochen, im Oktober 2026 vom 12. bis zum 14. Die offenen Tage dieser
 Wochentage liegen deshalb überwiegend im Frühjahr und Sommer, wenn ohnehin mehr los ist. Der
 Vergleich mit dem Donnerstag ist darum nicht ganz sauber.
@@ -292,8 +291,7 @@ Vergleich mit dem Donnerstag ist darum nicht ganz sauber.
 
 Der August ist der vollste Monat, der April mit den Osterferien kommt als zweiter. Der Juli ist
 trotz Ferienbeginn nicht voller als der Mai. Der September ist der Monat mit den kürzesten
-Wartezeiten der Hauptsaison, und auch der Februar liegt niedrig. Der Oktober ist mit wenigen
-Messtagen zu dünn besetzt, um ihn auszuwerten.
+Wartezeiten der Hauptsaison, und auch der Februar liegt niedrig. Für den Oktober haben wir zu wenige Messtage, um ihn auszuwerten.
 
 Die Saison 2026 läuft nach dem Kalender der Carte Saison vom 7. Februar 2026 bis zum 3. Januar 2027, aber nicht jeden Tag. Im November öffnet der Park laut Kalender ab dem 2. November nur noch an den Wochenenden, im Dezember bis zum 18. ebenfalls, und von da an täglich bis zum 3. Januar. Das erklärt, warum unsere Messwerte für November und Dezember dünn sind.
 
@@ -337,8 +335,7 @@ France Miniature, Walibi Rhône-Alpes, Walibi Belgium, Bellewaerde, Walibi Holla
 die Hälfte. Wer 2025 eine Karte hatte, bekommt 20 Prozent Rabatt auf die Verlängerung. Die Karte
 gibt es an der Agentur Futuroscope Destination am Haupteingang, das Foto entsteht vor Ort.
 
-Der Aquascope, das überdachte Erlebnisbad auf dem Gelände, ist nicht im Parkticket enthalten
-(mehr dazu weiter unten im Abschnitt zum Resort).
+Der Aquascope, das überdachte Erlebnisbad auf dem Gelände, ist nicht im Parkticket enthalten.
 
 ## Anreise
 
@@ -440,7 +437,7 @@ Bahnen früh und die Filme später zu nehmen.
    am Tag selbst im Kalender des Parks.
 6. **Abend** La Clé des Songes am Lac aux Images.
 
-Ein zweiter Tag lohnt sich vor allem mit Kindern, weil Futuropolis dann den ganzen Tag trägt. Mit
+Ein zweiter Tag lohnt sich vor allem mit Kindern, weil sich Futuropolis dann den ganzen Tag lohnt. Mit
 der Aktion „3. Tag gratis“ kostet er wenig.
 
 ## Häufige Fragen
