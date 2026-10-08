@@ -9,8 +9,8 @@ excerpt: >-
   Universal Studios Japan in Osaka hatte 2024 rund 16 Millionen Gäste, mehr als
   jeder andere Park in Asien. Für Super Nintendo World braucht man je nach
   Andrang ein Zeitfenster aus der App, ein Express Pass kostet je nach Paket
-  zwischen 10.800 und 99.000 Yen. Dazu Mindestgrößen, Anreise und die
-  Halloween-Saison bis zum 8. November.
+  zwischen 10.800 und 99.000 Yen. Der Wochentag macht wenig aus, der Juli
+  ist der leerste Monat.
 tags:
   - universal-studios-japan
   - osaka
@@ -47,39 +47,35 @@ seo:
     - USJ Mindestgröße
 ---
 
-Wer in Osaka nach Super Nintendo World will, braucht je nach Andrang ein Area
+Wer in [Universal Studios Japan](ref:universal-studios-japan) nach Super Nintendo
+World will, braucht je nach Andrang ein Area
 Timed Entry Ticket. Es gibt zwei Wege dorthin: im Voraus mit einem der Express
 Pässe oder am Besuchstag in der App des Parks. Seit dem **5. Januar 2026** läuft
 die Ausgabe vor Ort nur noch über die App. An wenig besuchten Tagen kommt man
 laut Park auch ohne Ticket hinein.
 
-Hinter dem Eingang stehen die zwei Bahnen mit den längsten Wartezeiten im Park. In
-den Messungen seit Oktober 2024 ist das
-[Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2), gefolgt von
+Die zwei Bahnen mit den längsten Wartezeiten im Park liegen in Super Nintendo
+World. In unseren Messungen seit Oktober 2024 steht
+[Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2) vorn, dahinter
 [Mario Kart: Koopa's
-Challenge](ref:universal-studios-japan/mario-kart-koopas-challenge-2). Deshalb
-steht in diesem Beitrag zuerst, wie die Zeitfenster und die Express Pässe von
-[Universal Studios Japan](ref:universal-studios-japan) zusammenspielen, und danach,
-welche Bahn wann dran ist.
+Challenge](ref:universal-studios-japan/mario-kart-koopas-challenge-2).
 
 ## Die Geschichte des Parks
 
 Universal Studios Japan hat am **31. März 2001** im Osakaer Stadtteil Konohana-ku
 eröffnet. Es war der erste Park von Universal außerhalb der USA, gebaut für 1,7
-Milliarden US-Dollar. Die Planung läuft seit Dezember 1992, als die Osaka
-Universal Planning Inc. gegründet wurde. Im Februar 1996 folgte der Rahmenvertrag
+Milliarden US-Dollar. Die Planung begann im Dezember 1992 mit der Gründung der Osaka
+Universal Planning Inc. Im Februar 1996 folgte der Rahmenvertrag
 mit MCA, 1998 begann der Bau.
 
 Im ersten Jahr kamen mehr als **11 Millionen** Gäste, und der Park erreichte die
-Marke von zehn Millionen schneller als jeder Park vor ihm. Bis 2009 sank der Besuch
-auf 8 Millionen im Jahr. Am **15. Juli 2014** eröffnete **The Wizarding World of
+Marke von zehn Millionen schneller als jeder Park vor ihm. Bis 2009 sank die Besucherzahl auf 8 Millionen im Jahr. Am **15. Juli 2014** eröffnete **The Wizarding World of
 Harry Potter**, Baukosten 45 Milliarden Yen. 2015 zählte der Park 13,9 Millionen
 Gäste, 2017 knapp 14,9 Millionen. 2020 waren es wegen der Pandemie 4,9 Millionen,
 2022 wieder 12,4 Millionen. Für 2024 nennt die englische Wikipedia 16 Millionen
 Gäste, hinter dem Magic Kingdom und Disneyland der dritte Platz weltweit.
 
-Betrieben wird der Park von USJ LLC. Comcast kaufte 2017 die restlichen Anteile
-für 2,3 Milliarden US-Dollar, seit dem 2. März 2017 gehört der Park über
+Betrieben wird der Park von USJ LLC. Comcast kaufte 2017 die restlichen Anteile für 2,3 Milliarden US-Dollar. Seit dem 2. März 2017 gehört der Park über
 NBCUniversal vollständig dem Konzern. Im August 2026 sprechen USJ, Nippon Steel
 und die Stadt Osaka über ein angrenzendes früheres Fabrikgelände von rund 60.000
 Quadratmetern.
@@ -93,7 +89,7 @@ World.
 
 ## Mindestgrößen, Begleitperson, Metalldetektor
 
-Der Park gibt bei jeder Bahn zwei Werte an: die Größe, ab der man allein fahren darf,
+Bei jeder Bahn gilt eine Mindestgröße für Gäste allein
 und eine niedrigere Grenze, wenn eine Begleitperson mitfährt. Die Begleitperson
 muss mindestens im Alter der Mittelschule sein und die Voraussetzungen der Bahn
 selbst erfüllen. Bei Bahnen mit Sicherheitsbügel wird zusätzlich geprüft, ob der
@@ -109,23 +105,22 @@ Schließfach liegen.
 ## Super Nintendo World
 
 Der Zugang führt durch ein Warp-Rohr in das Schloss von Prinzessin Peach, Bowsers
-Schloss liegt auf der anderen Seite. Drei Fahrgeschäfte stehen im Bereich, dazu
+Schloss liegt auf der anderen Seite. Drei Bahnen stehen im Bereich, dazu
 kommt das Spiel mit dem Power-Up Band.
 
 **[Mario Kart: Koopa's
 Challenge](ref:universal-studios-japan/mario-kart-koopas-challenge-2)** ist seit
 2021 die Hauptattraktion. Man geht durch Bowsers Schloss zum Fahrzeug, dann fahren
 vier Personen in zwei Reihen etwa fünf Minuten lang durch Strecken aus dem Spiel
-und beschießen Gegner mit Panzern. Der Park nennt es die weltweit erste
-interaktive Mario-Kart-Fahrt in einem Themenpark, bezogen auf eine eigene
-Recherche. Mindestgröße 122 Zentimeter, mit Begleitperson 107 Zentimeter.
+und beschießen Gegner mit Panzern. Nach eigener Recherche nennt der Park es
+die weltweit erste interaktive Mario-Kart-Fahrt in einem Themenpark. Mindestgröße 122 Zentimeter, mit Begleitperson 107 Zentimeter.
 
 **[Yoshi's Adventure](ref:universal-studios-japan/yoshis-adventure-2)** ist die
 leichteste Bahn im Bereich. Zwei Personen reiten auf Yoshi und suchen mit der
 Karte von Captain Toad drei Eier, oben auf dem Mount Beanpole mit Blick über das
 Pilzkönigreich. Die Fahrt dauert etwa fünf Minuten, der Park bietet einen
 kostenpflichtigen Fotoservice an. Mindestgröße 122 Zentimeter, mit Begleitperson
-92 Zentimeter. Ein Kind zwischen 92 und 106 Zentimetern darf damit in Super
+92 Zentimeter. Ein Kind zwischen 92 und 106 Zentimetern darf deshalb in Super
 Nintendo World nur diese eine Bahn fahren.
 
 **[Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2)** hat am 11.
@@ -133,14 +128,13 @@ Dezember 2024 mit Donkey Kong Country eröffnet und ist eine Achterbahn. Der Wag
 wird am Goldenen Tempel aus einer Fasskanone geschossen, fährt durch den Dschungel
 und springt über ein eingebrochenes Gleisstück. Dafür nutzt Universal laut englischer
 Wikipedia eine neue Bauart, den „Boom Coaster“: Ein Arm verbindet die Räder mit dem
-Wagen darüber, sodass der Wagen von der Schiene abzuheben scheint, ohne dass ein
-Bildschirm im Spiel ist. Vier Personen fahren in zwei Reihen, die Fahrt dauert etwa
+Wagen darüber, sodass der Wagen von der Schiene abzuheben scheint, und das
+ohne Bildschirm. Vier Personen fahren in zwei Reihen, die Fahrt dauert etwa
 zwei Minuten und man kann nass werden. Mindestgröße 122 Zentimeter, mit
 Begleitperson 107 Zentimeter. Die Bahn hat eine Single-Rider-Warteschlange.
 
 Das **Power-Up Band** kostet extra und wird am Wagen vor dem Super Star Plaza
-verkauft. Es sammelt Münzen, Schlüssel und Punkte, die sich mit der App des Parks
-verbinden. Bei den Key Challenges holt man drei Schlüssel im ganzen Bereich und
+verkauft. Es sammelt Münzen, Schlüssel und Punkte und lässt sich mit der App des Parks verbinden. Bei den Key Challenges holt man drei Schlüssel im ganzen Bereich und
 tritt am Ende gegen Bowser Jr. an, der Endkampf ist für Gäste ab fünf Jahren
 gedacht. Zum fünften Jahrestag läuft vom 18. März 2026 bis zum 11. Januar 2027 ein
 Fest mit Super-Stern-Dekoration, einem Treffen mit Yoshi in mehreren Farben und
@@ -172,14 +166,14 @@ Gepäck darf nicht mit.
 
 ## Hollywood
 
-Zwei Fahrten teilen sich ein Gleis. **[Hollywood Dream – The
+Zwei Bahnen teilen sich ein Gleis. **[Hollywood Dream – The
 Ride](ref:universal-studios-japan/hollywood-dream-the-ride-2)** hat am **9. März
 2007** eröffnet, gebaut von Bolliger & Mabillard als Hyper Coaster: 44 Meter hoch,
 43 Meter Abfahrt, 90 km/h, 1.200 Meter Strecke und etwa zweieinhalb Minuten Fahrzeit.
-Die Investition lag bei 50 Millionen US-Dollar, nach der Spider-Man-Bahn mit 120
-Millionen die zweithöchste in der Geschichte des Parks. Nach der englischen
-Wikipedia stieg der Besuch nach der Eröffnung rasch, und der Nettogewinn des Parks
-wuchs später um 63,6 Prozent.
+Sie kostete 50 Millionen US-Dollar, nach der Spider-Man-Bahn (120 Millionen) die
+zweithöchste Investition des Parks. Laut englischer Wikipedia stiegen nach der
+Eröffnung die Besucherzahlen rasch, und der Nettogewinn des Parks wuchs später um
+63,6 Prozent.
 
 Jeder Gast wählt vor der Fahrt ein Musikstück, das während der Fahrt läuft. Zur
 Halloween-Saison 2026 stehen Stücke von King Gnu, Ado, Sandaime J SOUL BROTHERS
@@ -200,11 +194,11 @@ Gleiche Mindestgröße, gleiche Regeln am Einstieg.
 
 **[Space Fantasy – The
 Ride](ref:universal-studios-japan/space-fantasy-the-ride-2)** ist eine
-Indoor-Achterbahn mit Drehwagen. Sie ist 2010 eröffnet und bekam 2011 den THEA Award
+Indoor-Achterbahn mit Drehwagen. Sie hat 2010 eröffnet und bekam 2011 den THEA Award
 für herausragende Leistung. Das Raumschiff fährt an Erde, Saturn und Kometen
 vorbei und stürzt am Ende in die Sonne. Acht Personen sitzen in vier Reihen, der
 Besuch dauert etwa zehn Minuten. Mindestgröße 122 Zentimeter, mit Begleitperson 102
-Zentimeter. Weil die Bahn im Gebäude liegt, spielt das Wetter keine Rolle.
+Zentimeter. Weil die Bahn in einer Halle liegt, fährt sie bei jedem Wetter.
 
 ## Jurassic Park und Amity Village
 
@@ -214,8 +208,7 @@ einer Sonderausführung: 46 Meter hoch, 38 Meter Abfahrt, 100 km/h, 1.124 Meter
 Strecke und fünf Inversionen. Ein Flugsaurier packt die Fahrgäste von hinten und
 zieht sie in die Höhe, so beschreibt es der Park. Nach der englischen Wikipedia ist
 es der zweitlängste Flying Coaster der Welt, länger ist nur F.L.Y. im
-Phantasialand, das am 17. September 2020 eröffnet hat. Vier Züge mit je 32 Plätzen
-fahren etwa drei Minuten. Mindestgröße 132 bis 198 Zentimeter, auch mit
+Phantasialand, der am 17. September 2020 eröffnet hat. Vier Züge mit je 32 Plätzen, die Fahrt dauert etwa drei Minuten. Mindestgröße 132 bis 198 Zentimeter, auch mit
 Begleitperson 132 Zentimeter. Wie bei Hollywood Dream bleibt alles Gepäck draußen, die
 Schließfächer stehen am Einstieg.
 
@@ -224,7 +217,7 @@ Schließfächer stehen am Einstieg.
 ```
 
 **[Jurassic Park – The Ride](ref:universal-studios-japan/jurassic-park-the-ride-2)**
-gehört zu den Bahnen der Eröffnung von 2001. Fünfundzwanzig Personen sitzen in einem
+gehört zu den Bahnen der Eröffnung von 2001. 25 Personen sitzen in einem
 Boot und stürzen 25,9 Meter in die Tiefe, um einem Tyrannosaurus zu entkommen.
 Man wird nass. Die Fahrt dauert etwa sieben Minuten, Mindestgröße 122 Zentimeter,
 mit Begleitperson 107 Zentimeter. Zum 25. Jubiläum bekam die Bahn vom 8. Juli bis
@@ -243,7 +236,7 @@ Im Minion Park liegt **[Despicable Me: Minion
 Mayhem](ref:universal-studios-japan/despicable-me-minion-mayhem-2)**, 2017
 eröffnet. Eine Kuppelleinwand und eine Projektion füllen den Raum, in dem man laut
 Park in einem von Gru entworfenen Fahrzeug zum Minion wird. Acht Personen pro
-Fahrzeug, zwei Reihen zu vier, die gesamte Dauer liegt bei etwa 25 Minuten.
+Fahrzeug, zwei Reihen zu vier, alles zusammen dauert etwa 25 Minuten.
 Mindestgröße 122 Zentimeter, mit Begleitperson 102 Zentimeter, Single-Rider-
 Warteschlange seit dem 21. Dezember 2019.
 
@@ -278,7 +271,7 @@ Die zehn Attraktionen mit dem höchsten Median der letzten zwei Jahre, gemessen 
 
 Mine Cart Madness und Mario Kart liegen vor allen anderen. Dahinter folgen Hollywood
 Dream: Backdrop und die Show Detective Conan 4-D, danach Yoshi's Adventure,
-Hollywood Dream, Flight of the Hippogriff und die Jurassic-Park-Fahrt, zuletzt The
+Hollywood Dream, Flight of the Hippogriff und Jurassic Park, zuletzt The
 Flying Dinosaur und Forbidden Journey. Wer seine Reihenfolge nach der Tabelle
 wählt, beginnt bei den zwei Nintendo-Bahnen, solange das Zeitfenster gilt.
 
@@ -287,16 +280,16 @@ wählt, beginnt bei den zwei Nintendo-Bahnen, solange das Zeitfenster gilt.
 ```
 
 An Mine Cart Madness und Mario Kart steigt die Wartezeit in der ersten Stunde nach
-Parköffnung auf ein Vielfaches und fällt erst am Abend wieder. Wer pünktlich um
-acht Uhr am Tor ist, spart deshalb an diesen beiden Bahnen und an Yoshi's Adventure
-nach unseren Rope-Drop-Messungen am meisten, danach folgt Hollywood Dream: Backdrop.
+Parköffnung um ein Vielfaches und fällt erst am Abend wieder. Wer pünktlich um
+acht Uhr am Tor ist, spart nach unseren Rope-Drop-Messungen an diesen beiden Bahnen und an
+Yoshi's Adventure am meisten Zeit. Danach folgt Hollywood Dream: Backdrop.
 
 ```glossary-widget slug=rope-drop
 
 ```
 
-Der Park öffnet je nach Tag früher als im Kalender angekündigt. Am 9. Oktober 2026
-stehen dort 8:00 bis 22:00 Uhr, die Zeiten wechseln aber.
+Am 9. Oktober 2026 ist der Park von 8:00 bis 22:00 Uhr geöffnet, die Zeiten
+wechseln aber.
 
 ## Wann du hinfahren solltest
 
@@ -312,9 +305,9 @@ Dienstag ist kaum leerer als ein Samstag.
 
 ```
 
-Der Monat trennt mehr. Der Juli hat in den Messungen die niedrigste Auslastung, der
+Zwischen den Monaten ist der Unterschied größer. Der Juli hat in den Messungen die niedrigste Auslastung, der
 März liegt deutlich darüber. Der Dezember liegt am höchsten, ist aber nur an acht
-Tagen gemessen. Für den Oktober gilt dasselbe, auch hier fehlen noch Tage.
+Tagen gemessen. Auch für den Oktober fehlen noch Tage.
 
 ```best-days-widget slug=universal-studios-japan
 
@@ -336,10 +329,10 @@ Auf Hollywood Dream laufen in dieser Zeit Stücke japanischer Bands, und Jurassi
 Park fährt als „The Ride in the Dark“ bei Dunkelheit. Der Park hat dafür
 Halloween-Pakete mit vier Attraktionen für den Express Pass zusammengestellt, zum
 Beispiel mit Factory of Fear, Chainsaw Man: The Chaos 4-D oder Resident Evil
-Requiem: The Dive. Mehr zu anderen Parks in der Saison steht in unserem
+Requiem: The Dive. Andere Parks in der Saison behandelt unser
 [Halloween-Guide](/blog/halloween-freizeitparks-2026).
 
-Daneben laufen weitere Sonderaktionen bis ins nächste Jahr. Der Rundgang „Frieren:
+Der Rundgang „Frieren:
 Beyond Journey's End Story Walk“ in Hollywood läuft vom 30. Mai 2026 bis zum 11.
 Januar 2027 und verlangt ein Attraction Timed Entry Ticket aus der App. „ONE PIECE
 Premier Summer 2026“ geht vom 30. Juli bis zum 19. November 2026, und die
@@ -350,7 +343,7 @@ Straßenshow „Wicked: The Witches of Oz“ läuft vom 20. Februar bis zum 27. 
 
 Ein Studio Pass erlaubt den Eintritt und alle Bahnen. Der Universal Express Pass
 wird dazu gekauft und gibt bei ausgewählten Bahnen Zugang zu einer kürzeren
-Spur.
+Warteschlange.
 
 ```glossary-widget slug=express-pass
 
@@ -375,8 +368,8 @@ ausgewählten Tagen und zusammen mit einem Studio Pass. Alle Preise mit Steuern:
 | Express Pass Premium | alle Bahnen | 41.000 bis 44.000 | enthalten |
 | Express Pass Premium Unlimited | alle Bahnen | 99.000 | enthalten |
 
-Die Pakete mit „Zeitfenster enthalten“ haben laut Ticketshop ein garantiertes
-Area Timed Entry Ticket für Super Nintendo World, bei den anderen müsste man das
+Die Pakete mit „enthalten“ in der letzten Spalte haben laut Ticketshop ein garantiertes
+Area Timed Entry Ticket für Super Nintendo World, bei den anderen muss man das
 Ticket am Besuchstag in der App holen. Das Paket „Race & Minecart Special“ enthält
 Mario Kart, Mine Cart Madness, Forbidden Journey, Villain-Con Minion Blast und The
 Flying Dinosaur. Bei Paketen mit Hollywood Dream oder der Dinosaurierbahn gilt
@@ -398,19 +391,18 @@ der Gruppe zusammen, dafür füllt man eine freie Einzelplatz-Lücke.
 
 ### Die App: Zeitfenster, Yoyakunori, Standby
 
-Drei Dinge laufen über die App des Parks. Vor dem Kauf eines Zeitfensters muss das
-Ticket in der App registriert sein, bei Gruppen die Karten aller Mitglieder.
+Vor dem Kauf eines Zeitfensters muss das Ticket in der App registriert sein, bei
+Gruppen die Karten aller Mitglieder.
 
 Das **Area Timed Entry Ticket** gilt für Bereiche wie Super Nintendo World. Ist das
 Kontingent des Tages vergeben, gibt der Park das **Standby Entry Ticket** aus. Er
-sagt dazu, dass die Ausgabe je nach Besuch ohne Vorwarnung enden kann. Hat man ein
+sagt dazu, dass die Ausgabe je nach Andrang ohne Vorwarnung enden kann. Hat man ein
 Ticket, kann die Bahn im Bereich trotzdem schon wieder ausgebucht sein.
 
 **Yoyakunori (Reserve & Ride)** reserviert eine Fahrzeit für ausgewählte Bahnen, im
-Park etwa bei The Flying Snoopy und Freeze Ray Sliders. Bis zur Zeit kann man andere
+Park etwa bei The Flying Snoopy und Freeze Ray Sliders. Bis zur reservierten Zeit kann man andere
 Bahnen fahren oder essen. Das **Attraction Timed Entry Ticket** gilt für einzelne
-Bahnen, die Frieren-Show eingeschlossen. Beides gibt es nur im Park, ist nicht
-übertragbar, und pro Gruppe lässt sich immer nur eine Bahn wählen. Deinstalliert man
+Bahnen, den Frieren-Rundgang eingeschlossen. Beides gibt es nur im Park und ist nicht übertragbar, und pro Gruppe lässt sich nur eine Bahn wählen. Deinstalliert man
 die App vor der Fahrzeit, wird das Ticket ungültig. Die App verlangt iOS 17 oder
 Android 9.
 
@@ -444,7 +436,7 @@ dem Park. Die Strecke ist 4,1 Kilometer lang, startet in Nishikujō, und Univers
 ist die dritte Station, 3,2 Kilometer entfernt. Einige Züge fahren direkt von
 Tennōji, Kyōbashi und Ōsaka, außerhalb der Hauptverkehrszeit im Wechsel. Der Park
 listet Fahrzeiten von acht Ausgangspunkten, darunter Umeda und Osaka Station,
-Shin-Osaka, Namba, Tennoji und die Flughäfen Itami und Kansai.
+Shin-Osaka, Namba, Tennōji und die Flughäfen Itami und Kansai.
 
 Per Boot fährt die Captain Line vom Kaiyukan West Wharf zum Universal City Port,
 etwa zehn Minuten. Bus und Taxi halten am Bus & Taxi Plaza.
@@ -465,7 +457,7 @@ Keihan Universal Tower** gibt es laut Hotel die erste natürliche Thermalquelle
 Osakas, mit Blick von der 31. Etage, dazu ein Restaurant mit Luftschiff-Thema. Das
 **Hotel Kintetsu Universal City** hat Zimmer im Sesame-Street-Design, **Hotel
 Universal Port** und **Hotel Universal Port Vita** (eröffnet im Juli 2018)
-begrüßen mit Minions. Dazu kommt das **Oriental Hotel Universal City**. Wer in
+sind mit Minions dekoriert. Dazu kommt das **Oriental Hotel Universal City**. Wer in
 einem Partnerhotel schläft, kann Studio Pässe am Tag des Check-ins und am Folgetag
 kaufen.
 
@@ -489,7 +481,7 @@ T2-3D sind seit 2020 zu, die Sesame Street Fun World seit dem 10. Mai 2026.
 
 Ein 1-Tages-Ticket kostet für Erwachsene ab 8.400 Yen einschließlich Steuern, ein
 2-Tages-Ticket ab 16.000 Yen. Wie viel genau, hängt vom Besuchstag ab, weil der Park
-seit dem 1. September 2026 nach Nachfrage abrechnet.
+seit dem 1. September 2026 die Preise nach Nachfrage staffelt.
 
 ### Brauche ich für Super Nintendo World ein Ticket?
 
