@@ -3,7 +3,7 @@
  *
  * Run: pnpm check:media-urls [/extra/page ...]   (needs `pnpm start` on CHECK_BASE, default :3000)
  *
- * With no server, or when no page yields a single media URL, it exits 1: a run that
+ * When any page fails to load, or no page yields a single media URL, it exits 1: a run that
  * checked nothing is not a pass. Extra pages come from argv or `CHECK_PAGES` (comma
  * separated), so a new post can check its own pages.
  *
@@ -42,6 +42,11 @@ const PAGES = [
 const EXTRA_PAGES = [...process.argv.slice(2), ...(process.env.CHECK_PAGES ?? '').split(',')]
   .map((page) => page.trim())
   .filter(Boolean);
+const badExtra = EXTRA_PAGES.filter((page) => !page.startsWith('/'));
+if (badExtra.length) {
+  console.error(`❌ Extra pages must start with "/": ${badExtra.join(', ')}`);
+  process.exit(1);
+}
 const ALL_PAGES = [...new Set([...PAGES, ...EXTRA_PAGES])];
 
 /** `/_next/image?url=…` wraps the real path; unwrap so both forms are checked once. */
@@ -70,8 +75,10 @@ let loaded = 0;
 
 for (const page of ALL_PAGES) {
   let response;
+  let html;
   try {
-    response = await fetch(`${BASE}${page}`);
+    response = await fetch(`${BASE}${page}`, { signal: AbortSignal.timeout(30_000) });
+    html = response.ok ? await response.text() : '';
   } catch (error) {
     console.log(`⚠️  ${page} → ${error instanceof Error ? error.message : error}`);
     continue;
@@ -81,7 +88,6 @@ for (const page of ALL_PAGES) {
     continue;
   }
   loaded += 1;
-  const html = await response.text();
 
   // Both bare paths and optimizer-wrapped ones, from src, srcset, and inline CSS.
   const candidates = new Set();
@@ -138,9 +144,9 @@ function report(title, map) {
 }
 
 console.log(`\n🔎 ${checked} media URLs across ${loaded} of ${ALL_PAGES.length} pages\n`);
-if (loaded === 0 || checked === 0) {
+if (loaded < ALL_PAGES.length || checked === 0) {
   console.error(
-    `❌ Nothing was checked (${loaded} pages loaded, ${checked} media URLs). ` +
+    `❌ Not every page was checked (${loaded} of ${ALL_PAGES.length} loaded, ${checked} media URLs). ` +
       `Is a server running at CHECK_BASE=${BASE}? Start one with \`pnpm start\` first.\n`
   );
   process.exit(1);
