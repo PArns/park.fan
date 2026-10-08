@@ -79,7 +79,7 @@ aus Fichte und wiegt 50 Tonnen. Auf den Parkplätzen sorgen Solarzellen für
 Schatten und liefern etwa ein Viertel des Stroms.
 
 Rulantica ist eine erfundene Insel im
-Nordmeer, bewohnt von Trollen, Meermenschen und Wikingern, und ihr Maskottchen
+Norwegischen Meer, bewohnt von Trollen, Meermenschen und Wikingern, und ihr Maskottchen
 ist **Snorri**, ein blauer Sixtopus, also ein Oktopus mit sechs Armen. Im Mai
 2018 lief im Europa-Park-Teatro ein Musical, bei Coppenrath erschienen drei
 Romane von Michaela Hanauer. Das Hotel Krønasår gegenüber ist wie ein

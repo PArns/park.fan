@@ -79,7 +79,7 @@ para Wikipedia la inversión más cara de la historia del Europa-Park. La nave m
 abeto y pesa 50 toneladas. En los aparcamientos, las placas solares dan sombra y
 producen alrededor de una cuarta parte de la electricidad.
 
-Rulantica es una isla inventada en el mar del Norte, poblada por trolls, sirenas y
+Rulantica es una isla inventada en el mar de Noruega, poblada por trolls, sirenas y
 vikingos, y su mascota es **Snorri**, un sixtopus azul, es decir, un pulpo con seis
 brazos. En mayo de 2018 se estrenó un musical en el Europa-Park-Teatro, y la
 editorial Coppenrath publicó tres novelas de Michaela Hanauer. El hotel Krønasår,

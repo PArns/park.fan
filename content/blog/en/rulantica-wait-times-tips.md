@@ -77,7 +77,7 @@ encloses around 300,000 cubic metres of air. The mast holding up the wooden roof
 is made of spruce and weighs 50 tonnes. Solar cells shade the car parks and
 supply about a quarter of the electricity.
 
-Rulantica is an invented island in the Nordic Sea, home to trolls, merfolk and
+Rulantica is an invented island in the Norwegian Sea, home to trolls, merfolk and
 Vikings, and its mascot is **Snorri**, a blue sixtopus, an octopus with six
 arms. A musical ran at the Europa-Park Teatro in May 2018, and Coppenrath
 published three novels by Michaela Hanauer. The Krønasår hotel opposite is

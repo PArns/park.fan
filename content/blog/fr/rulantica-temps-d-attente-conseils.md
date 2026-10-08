@@ -81,7 +81,7 @@ l’investissement le plus cher de l’histoire de l’Europa-Park. La halle mes
 pèse 50 tonnes. Sur les parkings, des panneaux solaires font de l’ombre et
 fournissent environ un quart de l’électricité.
 
-Rulantica est une île inventée de la mer du Nord, peuplée de trolls, de
+Rulantica est une île inventée de la mer de Norvège, peuplée de trolls, de
 sirènes et de Vikings, et sa mascotte s’appelle **Snorri**, un sixtopus bleu,
 c’est-à-dire une pieuvre à six bras. En mai 2018, une comédie musicale a été
 donnée au Teatro de l’Europa-Park, et trois romans de Michaela Hanauer sont

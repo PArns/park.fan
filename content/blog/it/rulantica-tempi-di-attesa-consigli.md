@@ -78,7 +78,7 @@ quadrati e racchiude circa 300.000 metri cubi d’aria. L’albero che regge il 
 in legno è di abete rosso e pesa 50 tonnellate. Nei parcheggi i pannelli solari
 fanno ombra e producono circa un quarto dell’elettricità.
 
-Rulantica è un’isola inventata del Mare del Nord, abitata da troll, tritoni e
+Rulantica è un’isola inventata del Mar di Norvegia, abitata da troll, tritoni e
 vichinghi, e la sua mascotte è **Snorri**, un sixtopus blu, cioè un polpo con sei
 braccia. Nel maggio 2018 è andato in scena un musical all’Europa-Park-Teatro, e
 da Coppenrath sono usciti tre romanzi di Michaela Hanauer. L’hotel Krønasår, di

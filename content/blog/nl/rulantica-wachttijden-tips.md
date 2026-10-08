@@ -78,7 +78,7 @@ vierkante meter en omsluit ongeveer 300.000 kubieke meter lucht. De mast die het
 houten dak draagt, is van vurenhout en weegt 50 ton. Op de parkeerterreinen
 geven zonnepanelen schaduw en leveren ze ongeveer een kwart van de stroom.
 
-Rulantica is een verzonnen eiland in de Noordzee, bewoond door trollen,
+Rulantica is een verzonnen eiland in de Noorse Zee, bewoond door trollen,
 zeemensen en vikingen, en de mascotte is **Snorri**, een blauwe sixtopus, dus
 een octopus met zes armen. In mei 2018 liep in het Europa-Park-Teatro een
 musical, en bij Coppenrath verschenen drie romans van Michaela Hanauer. Het
@@ -180,7 +180,7 @@ centimeter met een volwassene erbij.
 
 Meteen ernaast ligt [Vinter Rytt](ref:rulantica/vinter-rytt), de halfpipe. De
 start in de vierpersoonsring is rustig, dan gaat het steil omlaag en schiet de
-ring aan de andere kant tegen de wand omhoog. Alleen deze glijbaan heeft
+ring aan de andere kant tegen de wand omhoog. Alleen deze glijbaan van het park heeft
 een gewichtsgrens: 320 kilogram per ring. Minimale lengte 125
 centimeter, vanaf tien jaar. In onze gegevens staan deze twee glijbanen bovenaan
 bij de wachttijden. Hoe groot het verschil is, staat in de tabel verderop.
