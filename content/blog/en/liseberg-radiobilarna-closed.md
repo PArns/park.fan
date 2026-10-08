@@ -24,8 +24,7 @@ rideLinks:
 seo:
   title: 'Radiobilarna at Liseberg closed: building to be demolished'
   description: >-
-    Liseberg closed the Radiobilarna on 4 October 2026. Its history since 1927,
-    what stays, and what the park has not decided yet.
+    Liseberg closed the Radiobilarna on 4 October 2026. The building will be demolished, and whether the ride gets a new place is open.
   keywords:
     - Radiobilarna Liseberg
     - Radiobilarna closed
@@ -37,86 +36,66 @@ seo:
 
 [Liseberg](ref:liseberg) in Gothenburg opened the
 [Radiobilarna](ref:liseberg/radiobilarna) for the last time on Sunday, 4
-October. The bumper-car ride had run since 1927 and is the park's oldest ride
-concept. The building will be demolished and a new attraction will take its
-place. The announcement does not say which one.
+October. According to the park, the bumper-car ride had run since 1927 and is its
+oldest ride concept. Liseberg is tearing the building down, and a new attraction
+will take its place.
 
-## What Liseberg announced on 29 September
+## The announcement of 29 September
 
 Liseberg announced the closure by press release on Tuesday, 29 September, at
 8 a.m. The Radiobilarna close at their current location after the park's first
-Halloween weekend. The announcement does not say where in the park the ride
-stands. The building will then be demolished to make room for a new attraction.
+Halloween weekend. The building will then be demolished.
 
-CEO Andreas Andersen gives making room for new things as the reason. On the
-future of the Radiobilarna he says Liseberg is looking into whether they can get
-a new place in the park later. That is part of planning for the park's future.
-Nothing has been decided.
+CEO Andreas Andersen says the park wants to make room for something new. Liseberg
+is looking into whether the Radiobilarna can get a new place in the park later.
+Nothing has been decided. The park has not said which attraction will go into the
+old building.
 
-In the same announcement Liseberg historian Patrik Källström calls it a farewell
-to a beloved classic. He also looks ahead to the next chapter in the park's
-history.
+Liseberg historian Patrik Källström calls it a farewell to a beloved classic.
 
-For the farewell, every guest with park admission rode for free from 2 to 4
-October. After that it was over. Our data shows the ride's last wait-time report
-on 4 October at 18:01 UTC, which is 20:01 Swedish time. Since then it has been
-shown as closed on our side.
+From 2 to 4 October, every guest with park admission rode for free. We recorded
+the last wait time on 4 October at 20:01 Swedish time, and we have listed the
+ride as closed since.
 
 ## Since 1927
 
-The Radiobilarna opened on 12 May 1927 at 7 p.m. The park itself was four years
-old by then: Liseberg opened on 8 May 1923 for the Gothenburg Jubilee Exhibition,
-meant as a temporary site, and stayed. The park is still owned by the City of
-Gothenburg.
+The Radiobilarna opened on 12 May 1927 at 7 p.m. The park was four years old by
+then. Liseberg had opened on 8 May 1923 for the Gothenburg Jubilee Exhibition as
+a temporary site, and the City of Gothenburg still owns it.
 
 For the first five years the entrepreneur Arnold Neble ran the ride. After that
 Liseberg took it over for 5,000 kronor. Since then it has stood in four different
 places in the park, and it moved for the last time in 1998.
 
-According to the park, the ride was substantially rebuilt several times. The
-cars changed shape eight times, so there were eight different car models. More
-than 300,000 guests a year rode it most recently. Liseberg as a whole counts
-about 3 million visitors a year and says this makes it Sweden's most visited
-destination. The announcement also names Michael Jackson and Stevie Wonder among
-the riders.
+The park names eight car models and several substantial rebuilds. More than
+300,000 guests a year rode it most recently. According to the announcement,
+Michael Jackson and Stevie Wonder were among the riders.
 
-## What this means for visitors
+## Tuta & Kör and Oceana
 
-The bumper cars are no longer in the park. The small children's bumper cars
-"Tuta & Kör" in Kaninlandet stay unchanged. Anyone coming with younger children
-will still find a ride of this kind there. Whether there will be a replacement
-for older guests, the announcement does not say.
+The Radiobilarna are closed. The small children's bumper cars "Tuta & Kör" in
+Kaninlandet stay unchanged. Whether there will be a replacement, the announcement
+does not say.
 
-Liseberg announced another new attraction some time ago: the water world Oceana.
-It covers about 13,600 square metres, 6,000 of them indoors and 4,000 outdoors.
-Planned are four larger slides, three children's areas, a wave pool and a river
-for families. According to Liseberg, Oceana is due to open in "early 2027"; more
-in our overview of the [2027 novelties](/blog/new-theme-park-attractions-2027).
-The announcement about the Radiobilarna does not mention Oceana.
+Another new attraction at the park is the water world Oceana, about 13,600 square
+metres, 6,000 of them indoors and 4,000 outdoors. Planned are four larger
+slides, three children's areas, a wave pool and a river for families. According
+to Liseberg, Oceana is due to open in "early 2027"; more in our overview of the
+[2027 novelties](/blog/new-theme-park-attractions-2027).
 
-## What our data says about the ride
+## Wait times of the Radiobilarna over the past year
 
-We measured the wait times of the Radiobilarna until it closed. The measurement
-window runs from 8 October 2025 to 7 October 2026, a full year. The table shows
-the ride with its longest wait and the number of days we measured it.
+The measurement window runs from 8 October 2025 to 7 October 2026.
 
 ```ride-waits-widget rides=liseberg/radiobilarna|Radiobilarna|Bumper cars columns=type,peak,days
 
 ```
 
-## What stays in the park
+## The roller coasters in the park
 
-Besides the Radiobilarna, Liseberg has a row of roller coasters that are younger
-than the bumper cars. The oldest is Lisebergbanan from 1987, followed by Balder
-(2003), Rabalder (2009), Stampbanan (2013), Helix (2014), Valkyria (2018) and
-Luna (2023). The Radiobilarna are older than any of these and came four years
-after the park opened. Liseberg calls them its oldest ride concept.
-
-## What is still open
-
-Liseberg has not decided whether the Radiobilarna will be rebuilt elsewhere in
-the park. The park is looking into whether that is possible. It has not said
-which attraction will go into the old building.
+Liseberg's roller coasters include Lisebergbanan (1987), Balder (2003), Rabalder
+(2009), Stampbanan (2013), Helix (2014), Valkyria (2018) and Luna (2023). The park
+itself opened in 1923.
 
 [Radiobilarna](ref:liseberg/radiobilarna?full)
 
@@ -126,6 +105,6 @@ which attraction will go into the old building.
 
 ### Sources & further reading
 
-- Closure on 4 October 2026, free rides 2 to 4 October, demolition, premiere in 1927, four locations, eight car models, Tuta & Kör, riders, quotes from Andreas Andersen and Patrik Källström, replacement open, about 3 million visitors: [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29 September 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
-- Park opening on 8 May 1923, owner City of Gothenburg, opening years of the roller coasters: [Liseberg (Wikipedia)](https://en.wikipedia.org/wiki/Liseberg)
+- Closure on 4 October 2026, free rides 2 to 4 October, demolition, premiere on 12 May 1927, Arnold Neble, 5,000 kronor, four locations, move in 1998, eight car models, rebuilds, over 300,000 riders a year, Tuta & Kör, riders, statements by Andreas Andersen and Patrik Källström, replacement open: [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29 September 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
+- Park opening on 8 May 1923 as a temporary site of the Jubilee Exhibition, owner City of Gothenburg, opening years of the roller coasters: [Liseberg (Wikipedia)](https://en.wikipedia.org/wiki/Liseberg)
 - Oceana 2027: [Oceana (Liseberg)](https://www.liseberg.se/oceana/)

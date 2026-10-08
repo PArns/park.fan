@@ -23,8 +23,7 @@ rideLinks:
 seo:
   title: 'Radiobilarna de Liseberg fermées : le bâtiment sera démoli'
   description: >-
-    Liseberg a fermé les Radiobilarna le 4 octobre 2026. Leur histoire depuis
-    1927, ce qui reste et ce que le parc n'a pas encore décidé.
+    Liseberg a fermé les Radiobilarna le 4 octobre 2026. Le bâtiment sera démoli, et un nouvel emplacement reste à décider.
   keywords:
     - Radiobilarna Liseberg
     - Radiobilarna fermées
@@ -36,91 +35,67 @@ seo:
 
 [Liseberg](ref:liseberg), à Göteborg, a ouvert les
 [Radiobilarna](ref:liseberg/radiobilarna) pour la dernière fois le dimanche 4
-octobre. Les autos tamponneuses tournaient depuis 1927 et forment le plus ancien
-concept d'attraction du parc. Le bâtiment sera démoli, une nouvelle attraction
-prendra sa place. Laquelle, le communiqué ne le dit pas.
+octobre. Selon le parc, les autos tamponneuses tournaient depuis 1927 et forment
+son plus ancien concept d'attraction. Liseberg démolit le bâtiment, une nouvelle
+attraction prendra sa place.
 
-## Ce que Liseberg a annoncé le 29 septembre
+## Le communiqué du 29 septembre
 
 Liseberg a annoncé la fermeture par communiqué le mardi 29 septembre, à 8 h. Les
 Radiobilarna ferment à leur emplacement actuel, après le premier week-end
-d'Halloween du parc. Le communiqué ne précise pas où se trouve l'attraction dans
-le parc. Le bâtiment sera ensuite démoli pour faire place à une nouvelle
-attraction.
+d'Halloween du parc. Le bâtiment sera ensuite démoli.
 
-Le directeur du parc, Andreas Andersen, donne comme raison la place à faire pour
-du nouveau. Sur l'avenir des Radiobilarna, il dit que Liseberg étudie si elles
-peuvent retrouver une place dans le parc plus tard. Cela fait partie de la
-planification de l'avenir du parc. Rien n'est décidé.
+Le directeur du parc, Andreas Andersen, dit que le parc veut faire de la place
+pour du nouveau. Liseberg étudie si les Radiobilarna peuvent retrouver une place
+dans le parc plus tard. Rien n'est décidé. Le parc n'a pas dit quelle attraction
+occupera l'ancien bâtiment.
 
-Dans le même communiqué, l'historien de Liseberg Patrik Källström parle d'un adieu
-à un classique aimé. Il se tourne aussi vers le prochain chapitre de l'histoire du
-parc.
+L'historien de Liseberg Patrik Källström parle d'un adieu à un classique aimé.
 
-Pour l'adieu, tous les visiteurs avec une entrée au parc ont roulé gratuitement du
-2 au 4 octobre. Ensuite, c'était fini. Dans nos données, le dernier relevé de
-temps d'attente de l'attraction date du 4 octobre à 18 h 01 UTC, soit 20 h 01 en heure
-suédoise. Depuis, elle est indiquée comme fermée chez nous.
+Du 2 au 4 octobre, tous les visiteurs avec une entrée au parc ont roulé
+gratuitement. Nous avons relevé le dernier temps d'attente le 4 octobre à 20 h 01,
+heure suédoise, et nous indiquons l'attraction comme fermée depuis.
 
 ## Depuis 1927
 
-Les Radiobilarna ont ouvert le 12 mai 1927 à 19 h. Le parc avait alors quatre ans :
-Liseberg a ouvert le 8 mai 1923 pour l'exposition du jubilé de Göteborg, conçu
-comme un site provisoire, et il est resté. Le parc appartient toujours à la ville
-de Göteborg.
+Les Radiobilarna ont ouvert le 12 mai 1927 à 19 h. Le parc avait alors quatre ans.
+Liseberg avait ouvert le 8 mai 1923 pour l'exposition du jubilé de Göteborg, comme
+site provisoire, et appartient toujours à la ville de Göteborg.
 
 Pendant les cinq premières années, l'entrepreneur Arnold Neble a exploité
 l'attraction. Ensuite, Liseberg l'a reprise pour 5 000 couronnes. Depuis, elle a
 occupé quatre emplacements différents dans le parc, et elle a déménagé pour la
 dernière fois en 1998.
 
-Selon le parc, l'attraction a été profondément remaniée plusieurs fois. Les
-voitures ont changé huit fois de forme, il y a donc eu huit modèles différents.
-Plus de 300 000 visiteurs par an l'ont empruntée ces dernières années. Liseberg
-compte au total environ 3 millions de visiteurs par an et se présente ainsi comme
-la destination la plus visitée de Suède. D'après le communiqué, Michael Jackson et
-Stevie Wonder comptent aussi parmi les passagers.
+Le parc cite huit modèles de voitures et plusieurs remaniements profonds. Plus de
+300 000 visiteurs par an l'ont empruntée ces dernières années. D'après le
+communiqué, Michael Jackson et Stevie Wonder comptent aussi parmi les passagers.
 
-## Ce que cela change pour les visiteurs
+## Tuta & Kör et Oceana
 
-Les autos tamponneuses ne sont plus dans le parc. Les petites autos tamponneuses
-pour enfants « Tuta & Kör », à Kaninlandet, restent inchangées. Qui vient avec de
-jeunes enfants y trouve toujours une attraction de ce genre. Le communiqué ne dit
-pas s'il y aura un remplacement pour les plus grands.
+Les Radiobilarna sont fermées. Les petites autos tamponneuses pour enfants
+« Tuta & Kör », à Kaninlandet, restent inchangées. Le communiqué ne dit pas s'il y
+aura un remplacement.
 
-Liseberg a annoncé depuis un moment une autre nouveauté : le monde aquatique
-Oceana. Il couvre environ 13 600 mètres carrés, dont 6 000 à l'intérieur et 4 000 à
-l'extérieur. Sont prévus quatre grands toboggans, trois espaces pour enfants, une
-piscine à vagues et une rivière pour les familles. Selon Liseberg, Oceana doit
-ouvrir « début 2027 », plus dans notre aperçu des
-[nouveautés 2027](/blog/nouveautes-parcs-attractions-2027). Le communiqué sur les
-Radiobilarna ne mentionne pas Oceana.
+Une autre nouveauté du parc est le monde aquatique Oceana, environ 13 600 mètres
+carrés, dont 6 000 à l'intérieur et 4 000 à l'extérieur. Sont prévus quatre grands
+toboggans, trois espaces pour enfants, une piscine à vagues et une rivière pour les
+familles. Selon Liseberg, Oceana doit ouvrir « début 2027 », plus dans notre aperçu
+des [nouveautés 2027](/blog/nouveautes-parcs-attractions-2027).
 
-## Ce que disent nos données sur l'attraction
+## Temps d'attente des Radiobilarna sur l'année écoulée
 
-Nous avons mesuré les temps d'attente des Radiobilarna jusqu'à la fermeture. La
-fenêtre de mesure va du 8 octobre 2025 au 7 octobre 2026, soit une année entière.
-Le tableau reprend l'attraction avec son temps d'attente le plus long et le nombre
-de jours où nous l'avons mesurée.
+La fenêtre de mesure va du 8 octobre 2025 au 7 octobre 2026.
 
 ```ride-waits-widget rides=liseberg/radiobilarna|Radiobilarna|Autos tamponneuses columns=type,peak,days
 
 ```
 
-## Ce qui reste dans le parc
+## Les montagnes russes du parc
 
-À côté des Radiobilarna, Liseberg compte une série de montagnes russes plus
-récentes que les autos tamponneuses. La plus ancienne est Lisebergbanan, de 1987,
-suivie de Balder (2003), Rabalder (2009), Stampbanan (2013), Helix (2014), Valkyria
-(2018) et Luna (2023). Les Radiobilarna sont plus anciennes que chacune d'elles et
-sont arrivées quatre ans après l'ouverture du parc. Liseberg les appelle son plus
-ancien concept d'attraction.
-
-## Ce qui reste ouvert
-
-Liseberg n'a pas décidé si les Radiobilarna seront reconstruites ailleurs dans le
-parc. Le parc étudie si c'est possible. Il n'a pas dit quelle attraction prendra
-place dans l'ancien bâtiment.
+Parmi les montagnes russes de Liseberg figurent Lisebergbanan (1987), Balder (2003),
+Rabalder (2009), Stampbanan (2013), Helix (2014), Valkyria (2018) et Luna (2023). Le
+parc lui-même a ouvert en 1923.
 
 [Radiobilarna](ref:liseberg/radiobilarna?full)
 
@@ -130,6 +105,6 @@ place dans l'ancien bâtiment.
 
 ### Sources & pour aller plus loin
 
-- Fermeture le 4 octobre 2026, tours gratuits du 2 au 4 octobre, démolition, inauguration en 1927, quatre emplacements, huit modèles de voitures, Tuta & Kör, passagers, déclarations d'Andreas Andersen et de Patrik Källström, remplacement ouvert, environ 3 millions de visiteurs : [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29 septembre 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
-- Ouverture du parc le 8 mai 1923, propriétaire ville de Göteborg, années d'ouverture des montagnes russes : [Liseberg (Wikipédia)](https://en.wikipedia.org/wiki/Liseberg)
+- Fermeture le 4 octobre 2026, tours gratuits du 2 au 4 octobre, démolition, inauguration le 12 mai 1927, Arnold Neble, 5 000 couronnes, quatre emplacements, déménagement en 1998, huit modèles de voitures, remaniements, plus de 300 000 visiteurs par an, Tuta & Kör, passagers, déclarations d'Andreas Andersen et de Patrik Källström, remplacement ouvert : [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29 septembre 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
+- Ouverture du parc le 8 mai 1923 comme site provisoire de l'exposition du jubilé, propriétaire ville de Göteborg, années d'ouverture des montagnes russes : [Liseberg (Wikipédia)](https://en.wikipedia.org/wiki/Liseberg)
 - Oceana 2027 : [Oceana (Liseberg)](https://www.liseberg.se/oceana/)
