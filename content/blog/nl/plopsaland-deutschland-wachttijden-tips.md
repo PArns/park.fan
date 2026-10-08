@@ -26,7 +26,7 @@ coverImage:
   src: /media/plopsaland-deutschland/haupteingang-free-fall-tower-16x9.jpg
   alt: 'Een geplaveid voorplein loopt naar een zandkleurige toegangspoort, daarachter steekt een slanke witte valtoren boven de boomtoppen uit.'
   caption: 'De hoofdingang in Haßloch. De Free Fall Tower erachter is 70 meter hoog en vanaf de A65 te zien.'
-  credit: 'Fischer.H / Wikimedia Commons, CC BY-SA 4.0'
+  credit: 'Fischer.H / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - plopsaland-deutschland
 rideLinks:

@@ -26,7 +26,7 @@ coverImage:
   src: /media/plopsaland-deutschland/haupteingang-free-fall-tower-16x9.jpg
   alt: 'Una explanada adoquinada lleva hasta un portal de color arena; detrás, una esbelta torre de caída blanca sobresale por encima de las copas.'
   caption: 'La entrada principal en Haßloch. La Free Fall Tower que asoma detrás mide 70 metros y se ve desde la A65.'
-  credit: 'Fischer.H / Wikimedia Commons, CC BY-SA 4.0'
+  credit: 'Fischer.H / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - plopsaland-deutschland
 rideLinks:

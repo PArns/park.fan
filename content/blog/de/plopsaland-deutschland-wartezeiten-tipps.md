@@ -26,7 +26,7 @@ coverImage:
   src: /media/plopsaland-deutschland/haupteingang-free-fall-tower-16x9.jpg
   alt: 'Ein gepflasterter Vorplatz führt auf ein sandfarbenes Torhaus zu, dahinter ragt ein schmaler weißer Fallturm über die Baumwipfel.'
   caption: 'Der Haupteingang in Haßloch. Der Free Fall Tower dahinter ist 70 Meter hoch und von der A65 aus zu sehen.'
-  credit: 'Fischer.H / Wikimedia Commons, CC BY-SA 4.0'
+  credit: 'Fischer.H / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - plopsaland-deutschland
 rideLinks:
