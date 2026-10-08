@@ -1,5 +1,5 @@
 ---
-title: 'Parque Warner Madrid: Batman, Superman und ein Park, der um 12 Uhr aufmacht'
+title: 'Parque Warner Madrid: Batman, Superman, Öffnung um 12 Uhr'
 translationKey: parque-warner-madrid-guide
 date: '2026-10-08'
 author: patrick
