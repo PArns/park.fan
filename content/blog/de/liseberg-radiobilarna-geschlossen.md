@@ -77,9 +77,6 @@ einer Fläche von 17,4 mal 31,4 Metern fuhren 36 Wagen mit je zwei Plätzen, bis
 Zentimetern. Als Partner der Bahn nennt der Park Ahlgrens bilar, eine schwedische
 Süßigkeit in Autoform.
 
-Liseberg selbst zählt als Reiseziel rund drei Millionen Gäste im Jahr und nennt
-sich das meistbesuchte Schwedens.
-
 ## Tuta & Kör und Oceana
 
 Die Radiobilarna sind geschlossen. Die kleinen Kinder-Autoscooter „Tuta & Kör“ im
@@ -141,7 +138,7 @@ von Mack stammt von 1985. Die jüngste Bahn ist die Familienattraktion Stormvåg
 
 ### Quellen & Weiterlesen
 
-- Schließung am 4. Oktober 2026, Gratisfahrten 2. bis 4. Oktober, Abriss, Premiere 12. Mai 1927, Arnold Neble, 5.000 Kronen, vier Standorte, Umzug 1998, acht Wagenmodelle, Umbauten, über 300.000 Fahrgäste pro Jahr, Tuta & Kör, Fahrgäste, Aussagen von Andreas Andersen und Patrik Källström, Neubau offen, rund drei Millionen Gäste im Jahr: [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29. September 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
+- Schließung am 4. Oktober 2026, Gratisfahrten 2. bis 4. Oktober, Abriss, Premiere 12. Mai 1927, Arnold Neble, 5.000 Kronen, vier Standorte, Umzug 1998, acht Wagenmodelle, Umbauten, über 300.000 Fahrgäste pro Jahr, Tuta & Kör, Fahrgäste, Aussagen von Andreas Andersen und Patrik Källström, Neubau offen: [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29. September 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
 - Eröffnung des Parks am 8. Mai 1923 als vorübergehende Anlage der Jubiläumsausstellung, Eigentümer Stadt Göteborg, Eröffnungsjahre der Achterbahnen: [Liseberg (Wikipedia)](https://en.wikipedia.org/wiki/Liseberg)
 - Oceana 2027: [Oceana (Liseberg)](https://www.liseberg.se/oceana/)
 - Anlage von Preston & Barbieri aus dem Jahr 2010, 36 Wagen, 72 Plätze, etwa 7 km/h, Fläche, Mindestgröße, Partner Ahlgrens bilar: [Radiobilarna (Liseberg)](https://www.liseberg.se/parken/attraktioner/radiobilarna/)

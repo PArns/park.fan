@@ -79,9 +79,6 @@ personas a la vez, a unos 7 km/h. Para subir había que medir al menos 130
 centímetros. El parque cita como socio de la atracción a Ahlgrens bilar, un dulce
 sueco con forma de coche.
 
-Liseberg cuenta como destino unos tres millones de visitantes al año y se presenta
-como el más visitado de Suecia.
-
 ## Tuta & Kör y Oceana
 
 Las Radiobilarna están cerradas. Los pequeños autos de choque infantiles
@@ -144,7 +141,7 @@ del inicio de la temporada el 18 de abril.
 
 ### Fuentes y lecturas adicionales
 
-- Cierre el 4 de octubre de 2026, viajes gratis del 2 al 4 de octubre, demolición, estreno el 12 de mayo de 1927, Arnold Neble, 5.000 coronas, cuatro emplazamientos, traslado en 1998, ocho modelos de coche, reformas, más de 300.000 visitantes al año, Tuta & Kör, pasajeros, declaraciones de Andreas Andersen y Patrik Källström, sustituto abierto, unos tres millones de visitantes al año: [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29 de septiembre de 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
+- Cierre el 4 de octubre de 2026, viajes gratis del 2 al 4 de octubre, demolición, estreno el 12 de mayo de 1927, Arnold Neble, 5.000 coronas, cuatro emplazamientos, traslado en 1998, ocho modelos de coche, reformas, más de 300.000 visitantes al año, Tuta & Kör, pasajeros, declaraciones de Andreas Andersen y Patrik Källström, sustituto abierto: [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29 de septiembre de 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
 - Apertura del parque el 8 de mayo de 1923 como recinto provisional de la Exposición del Jubileo, propietario la ciudad de Gotemburgo, años de apertura de las montañas rusas: [Liseberg (Wikipedia)](https://en.wikipedia.org/wiki/Liseberg)
 - Oceana 2027: [Oceana (Liseberg)](https://www.liseberg.se/oceana/)
 - Instalación de Preston & Barbieri de 2010, 36 coches, 72 plazas, unos 7 km/h, superficie, altura mínima, socio Ahlgrens bilar: [Radiobilarna (Liseberg)](https://www.liseberg.se/parken/attraktioner/radiobilarna/)

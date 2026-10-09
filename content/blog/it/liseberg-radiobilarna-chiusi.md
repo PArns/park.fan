@@ -78,9 +78,6 @@ alla volta, a circa 7 km/h. Per salire bisognava essere alti almeno 130 centimet
 Come partner dell'attrazione il parco indica Ahlgrens bilar, un dolciume svedese a
 forma di automobile.
 
-Liseberg conta come destinazione circa tre milioni di ospiti all'anno e si presenta
-come la meta più visitata della Svezia.
-
 ## Tuta & Kör e Oceana
 
 Le Radiobilarna sono chiuse. I piccoli autoscontri per bambini «Tuta & Kör» a
@@ -142,7 +139,7 @@ settimane dopo l'inizio della stagione il 18 aprile.
 
 ### Fonti e approfondimenti
 
-- Chiusura il 4 ottobre 2026, giri gratuiti dal 2 al 4 ottobre, demolizione, inaugurazione il 12 maggio 1927, Arnold Neble, 5.000 corone, quattro sedi, trasloco nel 1998, otto modelli di vettura, ricostruzioni, oltre 300.000 ospiti all'anno, Tuta & Kör, passeggeri, dichiarazioni di Andreas Andersen e Patrik Källström, sostituto aperto, circa tre milioni di ospiti all'anno: [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29 settembre 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
+- Chiusura il 4 ottobre 2026, giri gratuiti dal 2 al 4 ottobre, demolizione, inaugurazione il 12 maggio 1927, Arnold Neble, 5.000 corone, quattro sedi, trasloco nel 1998, otto modelli di vettura, ricostruzioni, oltre 300.000 ospiti all'anno, Tuta & Kör, passeggeri, dichiarazioni di Andreas Andersen e Patrik Källström, sostituto aperto: [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29 settembre 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
 - Apertura del parco l'8 maggio 1923 come sito provvisorio dell'Esposizione del Giubileo, proprietaria la città di Göteborg, anni di apertura delle montagne russe: [Liseberg (Wikipedia)](https://en.wikipedia.org/wiki/Liseberg)
 - Oceana 2027: [Oceana (Liseberg)](https://www.liseberg.se/oceana/)
 - Impianto di Preston & Barbieri del 2010, 36 vetture, 72 posti, circa 7 km/h, superficie, altezza minima, partner Ahlgrens bilar: [Radiobilarna (Liseberg)](https://www.liseberg.se/parken/attraktioner/radiobilarna/)

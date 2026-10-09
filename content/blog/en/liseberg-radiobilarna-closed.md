@@ -77,9 +77,6 @@ to 72 guests at once, at about 7 km/h. Riders had to be at least 130 centimetres
 tall. The park lists Ahlgrens bilar, a Swedish sweet shaped like a car, as the
 ride's partner.
 
-Liseberg itself counts about three million guests a year as a destination and calls
-itself Sweden's most visited one.
-
 ## Tuta & Kör and Oceana
 
 The Radiobilarna are closed. The small children's bumper cars "Tuta & Kör" in
@@ -140,7 +137,7 @@ ride by Mack dates from 1985. The newest ride is the family attraction Stormvåg
 
 ### Sources & further reading
 
-- Closure on 4 October 2026, free rides 2 to 4 October, demolition, premiere on 12 May 1927, Arnold Neble, 5,000 kronor, four locations, move in 1998, eight car models, rebuilds, over 300,000 riders a year, Tuta & Kör, riders, statements by Andreas Andersen and Patrik Källström, replacement open, about three million guests a year: [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29 September 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
+- Closure on 4 October 2026, free rides 2 to 4 October, demolition, premiere on 12 May 1927, Arnold Neble, 5,000 kronor, four locations, move in 1998, eight car models, rebuilds, over 300,000 riders a year, Tuta & Kör, riders, statements by Andreas Andersen and Patrik Källström, replacement open: [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29 September 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
 - Park opening on 8 May 1923 as a temporary site of the Jubilee Exhibition, owner City of Gothenburg, opening years of the roller coasters: [Liseberg (Wikipedia)](https://en.wikipedia.org/wiki/Liseberg)
 - Oceana 2027: [Oceana (Liseberg)](https://www.liseberg.se/oceana/)
 - Installation by Preston & Barbieri from 2010, 36 cars, 72 seats, about 7 km/h, floor size, minimum height, partner Ahlgrens bilar: [Radiobilarna (Liseberg)](https://www.liseberg.se/parken/attraktioner/radiobilarna/)
