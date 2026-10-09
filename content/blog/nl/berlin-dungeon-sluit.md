@@ -8,8 +8,8 @@ mode: published
 featured: false
 excerpt: >-
   Merlin Entertainments sluit de Berlin Dungeon aan de Spandauer Straße na meer
-  dan 13 jaar. De laatste dag is 6 november 2026. Een reden staat niet in de
-  mededeling.
+  dan 13 jaar. De laatste dag is 6 november 2026. Een concrete reden geeft
+  Merlin niet.
 tags:
   - news
   - merlin-entertainments
@@ -21,7 +21,7 @@ seo:
   title: 'Berlin Dungeon sluit definitief op 6 november 2026'
   description: >-
     De Berlin Dungeon sluit na meer dan 13 jaar. De laatste dag is 6 november
-    2026. Wat bekend is en wat er met geboekte tickets gebeurt.
+    2026. Wie voor een latere datum heeft geboekt, kan nu al omboeken.
   keywords:
     - Berlin Dungeon sluit
     - Berlin Dungeon sluiting
@@ -31,8 +31,8 @@ seo:
 
 De **Berlin Dungeon** gaat op 6 november 2026 voor het laatst open. Vanaf 7
 november blijft de horrorattractie aan de Spandauer Straße in Berlin-Mitte
-definitief dicht, meldt exploitant Merlin Entertainments op de website en op
-Instagram. De Dungeon opende in 2013 en draaide dus iets meer dan 13 jaar.
+definitief dicht. Dat meldt exploitant Merlin Entertainments op zijn website en
+op Instagram. De Dungeon opende in 2013, iets meer dan 13 jaar geleden.
 
 ## Wat Merlin zegt
 
@@ -47,9 +47,10 @@ Merlin schrijft:
 >
 > Berlin Dungeon, [mededeling op de website en Instagram](https://www.freizeitparknews.de/berlin-dungeon/schliessung-2026/), geciteerd door FreizeitparkNEWS op 6 oktober 2026, vertaald uit het Duits
 
-Waarom, staat er niet in. Op vragen van de Berliner Zeitung noemde Merlin een
-“regelmatige beoordeling van de ontwikkeling van het eigen attractieportfolio”
-en dankte het team, de gasten en de partners.
+Een reden geeft Merlin in de mededeling niet. Op vragen van de Berliner Zeitung
+verwees het bedrijf naar een “regelmatige beoordeling van de ontwikkeling van
+het eigen attractieportfolio”. Daarbij bedankte Merlin het team, de gasten en
+de partners.
 
 De Nederlandse site Looopings vermoedt zwakke resultaten als oorzaak. Dat is de
 inschatting van de redactie, Merlin heeft haar niet bevestigd.
@@ -57,11 +58,12 @@ inschatting van de redactie, Merlin heeft haar niet bevestigd.
 ## Tickets en personeel
 
 Wie een ticket heeft voor een datum na 6 november, wordt volgens de mededeling
-individueel op de hoogte gebracht. Omboeken kan nu al via het boekingsportaal,
-en verdere opties om om te boeken of te annuleren wil Merlin per e-mail sturen.
+individueel op de hoogte gebracht. Omboeken kan nu al via het boekingsportaal.
+Verdere mogelijkheden om om te boeken of te annuleren wil Merlin per e-mail
+sturen.
 
-Voor het personeel wil de exploitant naar eigen zeggen onderzoeken of werken bij
-andere attracties van de groep mogelijk is.
+Merlin wil naar eigen zeggen onderzoeken of het personeel bij andere attracties
+van de groep kan blijven werken.
 
 ## Eerdere Merlin-sluitingen in Berlijn
 
@@ -72,21 +74,21 @@ voldoende”, Sea Life vooral sinds de Aquadom in december 2022 barstte. In
 dezelfde mededeling stond dat Madame Tussauds, de Berlin Dungeon en het Legoland
 Discovery Centre open zouden blijven.
 
-De eigenaar van het Legoland Discovery Centre is intussen veranderd: volgens
+Het Legoland Discovery Centre heeft intussen een nieuwe eigenaar. Volgens
 FreizeitparkNEWS en Looopings heeft Merlin de Discovery Centres overgedragen
-aan de Lego Group. De vestiging in Berlijn is dus niet gesloten, maar hoort niet
-meer bij de groep.
+aan de Lego Group. De vestiging in Berlijn blijft open, maar hoort niet meer bij
+Merlin.
 
-Ook elders heeft Merlin Dungeons beëindigd. De Alton Towers Dungeon in Engeland
+Ook elders heeft Merlin Dungeons gesloten. De Alton Towers Dungeon in Engeland
 opende in 2019 en sloot in 2024 na ongeveer vijf jaar, schrijft de Berliner
 Zeitung. Volgens FreizeitparkNEWS blijven er onder meer Dungeons in Hamburg,
 Londen en Amsterdam open.
 
 ## Wat bezoekers nu kunnen doen
 
-Tot 6 november is de Dungeon gewoon open. Wie Merlin elders in Duitsland
-wil bezoeken: de groep exploiteert [Heide Park](ref:heide-park?bare) en
-[Legoland Deutschland](ref:legoland-deutschland?bare), en we hebben een
+Tot 6 november is de Dungeon gewoon open. In Duitsland exploiteert Merlin
+daarnaast [Heide Park](ref:heide-park?bare) en
+[Legoland Deutschland](ref:legoland-deutschland?bare). Voor Legoland is er onze
 [Legoland-gids](/blog/legoland-deutschland-tips).
 
 — Patrick

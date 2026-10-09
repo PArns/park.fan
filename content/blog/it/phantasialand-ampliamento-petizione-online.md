@@ -1,5 +1,5 @@
 ---
-title: 'Phantasialand deve crescere, chiede una contropetizione'
+title: 'Una contropetizione sostiene l’ampliamento di Phantasialand'
 translationKey: phantasialand-expansion-online-petition
 date: '2026-10-07'
 time: '14:10'
@@ -7,10 +7,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Da maggio una petizione online chiede al consiglio di Brühl un «ampliamento
-  responsabile» di Phantasialand, con tutela della natura e compensazioni. Fa
-  da contrappeso all’iniziativa popolare con cui gli ambientalisti vogliono
-  fermare la pianificazione. Io l’ho firmata.
+  Da maggio una petizione online chiede al consiglio di Brühl di ampliare
+  Phantasialand tutelando la natura. Si oppone all’iniziativa popolare con cui
+  gli ambientalisti vogliono fermare la pianificazione. Io l’ho firmata.
 tags:
   - news
   - phantasialand
@@ -28,8 +27,8 @@ coverImage:
 seo:
   title: 'Contropetizione per l’ampliamento di Phantasialand'
   description: >-
-    Una contropetizione chiede di ampliare Phantasialand tutelando la natura e
-    con compensazioni. Resta aperta fino al 23 novembre e l’ho firmata.
+    Una contropetizione chiede di ampliare Phantasialand e di compensare la
+    natura persa. Resta aperta fino al 23 novembre. Io l’ho firmata.
   keywords:
     - Phantasialand ampliamento petizione
     - Phantasialand contropetizione
@@ -42,12 +41,11 @@ seo:
     - Phantasialand ampliamento approvato
 ---
 
-Dal 24 maggio una petizione su openPetition fa da contrappeso all’iniziativa
-popolare che dovrebbe fermare l’ampliamento di
-[Phantasialand](ref:phantasialand). È stata messa online cinque giorni dopo che
-la rete Netzwerk NSG Ententeich aveva annunciato la sua iniziativa popolare, e
-chiede al consiglio comunale di Brühl e alla sua commissione urbanistica un
-«ampliamento responsabile». Al 7 ottobre l’avevano firmata 161 persone, 45
+Dal 24 maggio una petizione su openPetition si oppone all’iniziativa popolare
+che dovrebbe fermare l’ampliamento di [Phantasialand](ref:phantasialand). È
+stata messa online cinque giorni dopo che la rete Netzwerk NSG Ententeich aveva
+annunciato la sua iniziativa popolare. Chiede al consiglio comunale di Brühl e
+alla sua commissione urbanistica un «ampliamento responsabile». Al 7 ottobre l’avevano firmata 161 persone, 45
 delle quali di Brühl. Se si raggiungono 740 firme da Brühl, openPetition
 chiederà al consiglio di prendere posizione e pubblicherà le risposte. La si
 può
@@ -73,9 +71,9 @@ gruppo FDP/Volt, una modifica del piano di destinazione d’uso e il piano
 urbanistico 06.01. Verdi e Die Linke hanno votato contro, l’AfD si è astenuta.
 Con questo l’ampliamento non è ancora approvato. Il terreno si trova a ovest del
 parco, tra la Berggeiststraße, la Phantasialandstraße (L 194) e l’autostrada
-A 553. L’amministrazione sta preparando un progetto
-preliminare con uno studio di pianificazione, e la città non ha ancora indicato
-una data per l’esposizione pubblica, in cui chiunque può consultare il piano e
+A 553. L’amministrazione sta preparando un progetto preliminare con uno studio
+di pianificazione. La città non ha ancora indicato una data per l’esposizione
+pubblica, in cui chiunque può consultare il piano e
 presentare osservazioni.
 
 Phantasialand fa redigere perizie su sette materie, dalla tutela delle specie
@@ -83,19 +81,19 @@ al bilancio idrico, e le paga. La città conduce la procedura e verifica che le
 perizie rispettino i requisiti di legge. Che cosa viene esaminato, il parco lo
 ha spiegato sulla sua pagina
 [«Standortsicherung»](https://www.phantasialand.de/de/rechtliches/standortsicherung/)
-(mettere in sicurezza la sede), dove vuole anche pubblicare «cifre, dati e
+(mettere in sicurezza la sede). Lì vuole anche pubblicare «cifre, dati e
 fatti» e aggiornarli di continuo. Che cosa succede allo stagno dell’Ententeich
 fa parte della perizia sul bilancio idrico. Per i piani dettagliati manca
-ancora il quadro urbanistico, che verrà fissato solo nel corso della procedura,
-ha detto a luglio al Kölner Stadt-Anzeiger Ralf-Richard Kenter, incaricato
-della direzione. Pubblicati prima, darebbero inoltre ai concorrenti
-«informazioni preziose».
+ancora il quadro urbanistico, ha detto a luglio al Kölner Stadt-Anzeiger
+Ralf-Richard Kenter, incaricato della direzione. Quel quadro verrà fissato solo
+nel corso della procedura. Piani pubblicati prima darebbero inoltre ai
+concorrenti «informazioni preziose».
 
 Il terreno appartiene ancora al Land Renania Settentrionale-Vestfalia. Il
 parlamento regionale ha autorizzato nel 2021 lo scambio con 38,82 ettari di
-bosco, e il contratto è firmato da marzo 2022. La proprietà passa però solo
-quando il piano urbanistico entra in vigore. Solo allora il parco potrà costruirvi, e quando sarà non è ancora
-stabilito. Fino ad allora, per una giornata al parco non
+bosco. Il contratto è firmato da marzo 2022. La proprietà passa però solo
+quando il piano urbanistico entra in vigore. Solo allora il parco potrà
+costruirvi. Quando sarà, non è ancora stabilito. Fino ad allora, per una giornata al parco non
 cambia nulla.
 
 ## Chi è contro l’ampliamento
@@ -118,9 +116,9 @@ motivato il no con l’acqua:
 > Stephan Stübner del Netzwerk NSG Ententeich, citato da [FreizeitparkNEWS il 20 maggio 2026](https://www.freizeitparknews.de/phantasialand/buergerbegehren/), tradotto dal tedesco
 
 Secondo la rete, costruire lì contrasterebbe anche con il piano «città spugna»
-e di adattamento al clima che Brühl stessa ha approvato, e porterebbe più
+e di adattamento al clima che Brühl stessa ha approvato. Porterebbe inoltre più
 traffico e più rumore. Il NABU Rhein-Erft, che sostiene l’iniziativa popolare,
-si è inoltre riservato di impugnare in tribunale, come associazione, un futuro
+si è riservato di impugnare in tribunale, come associazione, un futuro
 piano urbanistico.
 
 Non tutti gli oppositori sostengono l’iniziativa popolare. L’iniziativa
@@ -144,7 +142,7 @@ vuole consumare molto meno suolo.
 
 Sulla sua pagina «Standortsicherung» Phantasialand motiva l’ampliamento con le
 vacanze brevi. Per far restare più ospiti la notte, dice di aver bisogno di
-offerte per soggiorni più lunghi, e sul terreno attuale non c’è spazio. Su
+offerte per soggiorni più lunghi. Sul terreno attuale non c’è spazio. Su
 circa 15 ettari sono previsti, tra l’altro, un resort con hotel e parco
 acquatico, attrazioni, un teatro e parcheggi multipiano. Sulla stessa pagina il
 parco scrive:
@@ -160,7 +158,7 @@ parco scrive:
 In consiglio la procedura è sostenuta da CDU e SPD. Dopo le elezioni comunali
 del 2025 si sono accordati per esaminare l’ampliamento «in linea di principio
 con apertura». Già nel marzo 2025 l’SPD aveva legato il suo sostegno alla
-condizione che l’Ententeich non venisse modificato, e l’accordo di coalizione
+condizione che l’Ententeich non venisse modificato. L’accordo di coalizione
 prevede che la pianificazione avvenga «tenendo conto dell’Ententeich».
 
 Tra i cittadini, Eberhard Meyer fa campagna per il progetto. Meyer ha fondato
@@ -179,13 +177,13 @@ parco.
 
 Phantasialand dà lavoro, secondo i suoi dati, a 1.800 dipendenti e
 apprendisti. Già nel 2013 prevedeva 830 nuovi posti di lavoro grazie
-all’ampliamento, 600 dei quali per tutto l’anno, allora per una parte ovest e
-una parte est. Lo si legge nella relazione della Bezirksregierung di Colonia
+all’ampliamento, 600 dei quali per tutto l’anno. Allora si parlava di una parte
+ovest e di una parte est. Lo si legge nella relazione della Bezirksregierung di Colonia
 sulla modifica del piano regionale. La parte est il parco oggi non la prevede
 più, ma a luglio 2026 ha parlato di nuovo di circa 830 posti. Allora il parco
 indicava anche l’obiettivo di aprire tutto l’anno. Secondo il progetto del
 2013, le nuove strutture sarebbero state «in larghissima parte» edifici o aree
-coperte, e a giudizio della Bezirksregierung questo giova anche alla
+coperte. A giudizio della Bezirksregierung, questo giova anche alla
 protezione dal rumore.
 
 Phantasialand ha oggi tre hotel,
@@ -194,12 +192,12 @@ Un parco acquatico con hotel e un teatro dovrebbero trattenere gli ospiti per
 più giorni. Georg Frey, presidente distrettuale dell’associazione alberghiera
 Dehoga, vede nell’ampliamento un’opportunità per hotel e ristoranti della
 regione. Quante tasse porterebbe alla città «non si può prevedere in modo
-attendibile», secondo la stima dei costi del comune stesso, stampata sul modulo
-di raccolta firme dell’iniziativa popolare, e l’imposta sulle attività
-produttive potrebbe addirittura calare nei primi anni dopo la costruzione, per
-via degli ammortamenti. A luglio Kenter aveva detto che l’affermazione secondo
-cui grandi investimenti fanno sì che non si paghi quasi nessuna imposta sulle
-attività produttive «è riduttiva».
+attendibile», secondo il comune stesso. Così si legge nella sua stima dei
+costi, stampata sul modulo di raccolta firme dell’iniziativa popolare.
+L’imposta sulle attività produttive potrebbe addirittura calare nei primi anni
+dopo la costruzione, per via degli ammortamenti. L’affermazione secondo cui
+grandi investimenti fanno sì che non si paghi quasi nessuna imposta di questo
+tipo «è riduttiva», aveva detto Kenter a luglio.
 
 Sul terreno attuale, quasi ogni grande novità degli ultimi vent’anni ha
 richiesto un abbattimento. Nel 2007 è sparito il Märchenwald, il bosco delle
@@ -222,24 +220,24 @@ parco.
 
 Per i 14,17 ettari dell’Ententeich il Land riceverebbe nello scambio 38,82
 ettari di bosco confinanti con il bosco demaniale, quasi tre volte la
-superficie. A questi si aggiungono almeno il 30 % del valore di mercato,
-stimato a grandi linee all’inizio del 2022 in circa due milioni di euro e
-destinato ad ampliare il bosco demaniale, e 20.000 euro all’anno per 20 anni
-per l’educazione ambientale nella regione. Nel contratto Phantasialand si
-impegna inoltre a realizzare tutte le misure di compensazione e sostituzione
-obbligatorie di pari passo con i lavori, con l’obiettivo che si trovino nella
-regione. Deve mettere a disposizione terreni per il rimboschimento e non può
+superficie. A questi si aggiungerebbe almeno il 30 % del valore di mercato,
+stimato a grandi linee all’inizio del 2022 in circa due milioni di euro. Quel
+denaro è destinato ad ampliare il bosco demaniale. Il Land riceverebbe inoltre
+20.000 euro all’anno per 20 anni per l’educazione ambientale nella regione. Nel
+contratto Phantasialand si impegna a realizzare tutte le misure di
+compensazione e sostituzione obbligatorie di pari passo con i lavori,
+possibilmente nella regione. Deve mettere a disposizione terreni per il rimboschimento e non può
 espandersi a ovest oltre la strada L 194. Il bosco che riceve il Land, però,
 esiste già e cambia solo proprietario.
 
 Meyer ha detto allo Schlossbote che l’azienda vuole compensare il
 disboscamento con il triplo di superficie a bosco e una zona umida. Sulla
 pagina del parco compare una «compensazione forestale» come parte di un piano
-di compensazione, senza superficie. Un primo progetto Phantasialand lo aveva
+di compensazione, ma senza indicare una superficie. Un primo progetto Phantasialand lo aveva
 presentato nel settembre 2013, allora per 19 ettari. Gli animali dell’area
 avrebbero avuto nuovi habitat entro un raggio di quattro chilometri al
 massimo, con cassette nido per pipistrelli, specchi d’acqua artificiali e
-pareti di nidificazione per il martin pescatore, e inoltre si sarebbero
+pareti di nidificazione per il martin pescatore. Inoltre si sarebbero
 rimboschiti terreni agricoli.
 
 ## Rust ed Europa-Park
@@ -247,10 +245,10 @@ rimboschiti terreni agricoli.
 Quando [Europa-Park](ref:europa-park) aprì il 12 luglio 1975, aveva 15
 attrazioni su 16 ettari e una cinquantina di dipendenti. Rust contava allora
 2.595 abitanti. Dal 1995 il parco diventò un resort. Il primo hotel ad aprire
-fu El Andaluz, fino al 2019 se ne aggiunsero altri cinque, l’ultimo il
+fu El Andaluz. Fino al 2019 se ne aggiunsero altri cinque, l’ultimo il
 Krønasår, e nel novembre 2019 arrivò il parco acquatico Rulantica. Oggi il
 resort dice di impiegare in stagione più di 5.500 persone. La popolazione di
-Rust in questo periodo è quasi raddoppiata, fino a 4.874 abitanti a fine 2025
+Rust in questo periodo è quasi raddoppiata. A fine 2025 contava 4.874 abitanti,
 secondo l’ufficio statistico del Land, che dal censimento del 2022 calcola su
 una nuova base. Il paese cresceva già prima del primo hotel, da 2.751 abitanti
 nel 1990 a 3.122 nel 1995.
@@ -263,14 +261,14 @@ Rust e Schwanau hanno le entrate più alte dell’imposta sulle attività
 produttive nell’Ortenau meridionale, Rust soprattutto grazie a Europa-Park, ha
 scritto lo Schwarzwälder Bote a marzo 2026.
 
-Secondo uno studio dell’Università di San Gallo commissionato dal parco, che
-questo ha presentato a marzo 2025 nella conferenza stampa di apertura della
-stagione, il parco e i suoi visitatori hanno generato nella stagione 2023/24 un
-fatturato di 896 milioni di euro nel Baden-Württemberg e di 156 milioni in
-Alsazia. Di questi, 343 milioni sono andati a Rust e a sei comuni vicini, che
+A marzo 2025, nella conferenza stampa di apertura della stagione, il parco ha
+presentato uno studio che aveva commissionato all’Università di San Gallo.
+Secondo lo studio, il parco e i suoi visitatori hanno generato nella stagione
+2023/24 un fatturato di 896 milioni di euro nel Baden-Württemberg e di 156
+milioni in Alsazia. Di questi, 343 milioni sono andati a Rust e a sei comuni vicini, che
 insieme formano la «Erlebnisregion Europa-Park». Circa 7.800 posti di lavoro
 nel Baden-Württemberg e 2.100 in Alsazia si devono, secondo lo studio, al parco
-e ai suoi visitatori, e circa 550 aziende della regione hanno ricevuto commesse
+e ai suoi visitatori. Circa 550 aziende della regione hanno ricevuto commesse
 dal parco. Ai 1,4 milioni di pernottamenti nelle strutture del parco se ne sono
 aggiunti 2,4 milioni fuori dal resort. Nella Erlebnisregion i posti letto sono
 aumentati del 78 % dal 2018 e i pernottamenti del 154 %. Il responsabile dello
@@ -282,7 +280,7 @@ Brühl non è Rust. La città ha circa 45.000 abitanti e si trova proprio accant
 a Colonia. Europa-Park oggi si estende su 95 ettari, Phantasialand passerebbe
 da circa 28 a poco più di 40. Phantasialand ha hotel dal 2003, quando aprì
 l’attuale Ling Bao. Quello che gli manca rispetto a Europa-Park è il parco
-acquatico con altri posti letto, ed è quello che vuole costruire sul nuovo
+acquatico con altri posti letto. È quello che vuole costruire sul nuovo
 terreno.
 
 ## Che cosa chiede la petizione
@@ -303,9 +301,9 @@ urbanistica.
 La petizione non indica una delibera precisa del consiglio. Chiede un
 «ampliamento responsabile», in cui il futuro del parco, la tutela di aree
 naturali importanti e vere misure di compensazione «vengano pensati insieme».
-Definisce l’Ententeich una «zona sensibile», e anche la protezione dal rumore,
+Definisce l’Ententeich una «zona sensibile». Anche la protezione dal rumore,
 il traffico e gli effetti sul clima vanno presi seriamente in considerazione.
-Il suo motto chiude il testo: «Dialogo invece di immobilismo».
+Il testo si conclude con il suo motto: «Dialogo invece di immobilismo».
 
 Se un’iniziativa popolare raccoglie abbastanza firme ed è dichiarata
 ammissibile, il consiglio deve annullare da sé le delibere oppure far votare i
@@ -316,7 +314,7 @@ pensano sull’ampliamento i consiglieri che hanno risposto a openPetition.
 Può firmare chiunque, con nome, indirizzo ed e-mail. Nel totale contano tutte
 le firme, nel quorum solo quelle di Brühl. Da maggio si è aggiunta in media
 poco più di una firma al giorno. Fino al 23 novembre mancano quasi sette
-settimane, e per il quorum servono ancora 695 firme da Brühl.
+settimane. Per il quorum servono ancora 695 firme da Brühl.
 
 ## Perché l’ho firmata
 
@@ -325,7 +323,7 @@ La mia firma non conta per il quorum, perché non abito a Brühl.
 Credo che fermare adesso la procedura sarebbe sbagliato. Se l’iniziativa
 popolare avesse successo, la procedura finirebbe prima che esistano le perizie.
 Nella procedura del piano urbanistico il parco fa valutare che cosa succede
-all’Ententeich, all’acqua, al rumore e al traffico, e la città controlla le
+all’Ententeich, all’acqua, al rumore e al traffico. La città controlla le
 perizie. Quando il piano sarà esposto al pubblico, residenti e associazioni
 potranno presentare osservazioni. Se alla fine le associazioni riterranno il
 piano illegittimo, potranno ricorrere in tribunale. Che questo resterebbe
@@ -333,14 +331,14 @@ possibile anche dopo il fallimento dell’iniziativa popolare, l’ha detto allo
 Schlossbote a settembre Hölzmann, che coordina l’iniziativa.
 
 Phantasialand dice di poter ormai costruire qualcosa di nuovo solo abbattendo
-o costruendo sopra qualcosa di vecchio, e l’elenco degli abbattimenti dal 2007
-è lungo. Che per un hotel con parco acquatico gli serva più spazio dei suoi
+o costruendo sopra qualcosa di vecchio. L’elenco degli abbattimenti dal 2007 è
+lungo. Che per un hotel con parco acquatico gli serva più spazio dei suoi
 circa 28 ettari, ci credo. Quello che Europa-Park, con i suoi hotel e
 Rulantica, significa per Rust e i paesi intorno lo auguro anche a Brühl, in
 scala più piccola: più posti di lavoro che durano tutto l’anno e ospiti che
 restano a dormire. Come conciliarlo con l’Ententeich, lo dirà la procedura.
 
-La petizione chiede trasparenza, e con la pagina «Standortsicherung» il parco
+La petizione chiede trasparenza. Con la pagina «Standortsicherung», il parco
 ha cominciato. Una mappa del terreno sarebbe il passo successivo, soprattutto
 adesso che molte persone a Brühl decidono entro il 9 novembre se firmare
 l’iniziativa popolare.

@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Merlin Entertainments macht das Berlin Dungeon in der Spandauer Straße nach
   mehr als 13 Jahren zu. Letzter Öffnungstag ist der 6. November 2026. Einen
-  Grund nennt die Mitteilung nicht.
+  konkreten Grund nennt Merlin nicht.
 tags:
   - news
   - merlin-entertainments
@@ -21,7 +21,8 @@ seo:
   title: 'Berlin Dungeon schließt am 6. November 2026 dauerhaft'
   description: >-
     Das Berlin Dungeon schließt nach mehr als 13 Jahren. Letzter Tag ist der
-    6. November 2026. Was bekannt ist und was mit gebuchten Tickets passiert.
+    6. November 2026. Wer für einen späteren Termin gebucht hat, kann schon
+    jetzt umbuchen.
   keywords:
     - Berlin Dungeon schließt
     - Berlin Dungeon Schließung
@@ -29,10 +30,10 @@ seo:
     - Merlin Entertainments Berlin
 ---
 
-Das **Berlin Dungeon** schließt am 6. November 2026 zum letzten Mal. Ab dem 7. November bleibt die Gruselattraktion in der Spandauer Straße in Berlin-Mitte
-dauerhaft zu, das hat der Betreiber Merlin Entertainments auf der Website und
-auf Instagram mitgeteilt. Eröffnet hat das Dungeon 2013, es war damit gut 13
-Jahre geöffnet.
+Das **Berlin Dungeon** öffnet am 6. November 2026 zum letzten Mal. Ab dem 7. November bleibt die Gruselattraktion in der Spandauer Straße in Berlin-Mitte
+dauerhaft zu. Das hat der Betreiber Merlin Entertainments auf seiner Website
+und auf Instagram mitgeteilt. Eröffnet hatte das Dungeon 2013, vor gut 13
+Jahren.
 
 ## Was Merlin sagt
 
@@ -44,10 +45,10 @@ Merlin schreibt:
 >
 > Berlin Dungeon, [Mitteilung auf Website und Instagram](https://www.freizeitparknews.de/berlin-dungeon/schliessung-2026/), zitiert von FreizeitparkNEWS vom 6. Oktober 2026
 
-Warum, sagt die Mitteilung nicht. Auf Nachfrage der Berliner Zeitung nannte
-Merlin eine „regelmäßige Bewertung der Entwicklung des eigenen
-Attraktionsportfolios“ und schrieb, man sei dem Team, den Gästen und den
-Partnern sehr dankbar.
+Einen Grund nennt Merlin in der Mitteilung nicht. Auf Nachfrage der Berliner
+Zeitung verwies der Konzern auf eine „regelmäßige Bewertung der Entwicklung des
+eigenen Attraktionsportfolios“. Man sei dem Team, den Gästen und den Partnern
+sehr dankbar, schrieb Merlin dazu.
 
 Das niederländische Portal Looopings vermutet schwache Ergebnisse als Ursache.
 Das ist die Einschätzung der Redaktion, Merlin hat sie nicht bestätigt.
@@ -55,12 +56,12 @@ Das ist die Einschätzung der Redaktion, Merlin hat sie nicht bestätigt.
 ## Tickets und Mitarbeiter
 
 Wer ein Ticket für einen Termin nach dem 6. November gebucht hat, wird laut
-Ankündigung einzeln informiert. Umbuchen geht schon jetzt über das
-Buchungsportal, weitere Optionen zum Umbuchen oder Stornieren will Merlin per
-E-Mail schicken.
+Ankündigung einzeln informiert. Umbuchen kannst du schon jetzt über das
+Buchungsportal. Weitere Möglichkeiten zum Umbuchen oder Stornieren will Merlin
+per E-Mail schicken.
 
-Für die Beschäftigten will der Betreiber nach eigener Aussage Möglichkeiten
-prüfen, an anderen Attraktionen der Gruppe weiterzuarbeiten.
+Merlin will nach eigener Aussage prüfen, ob die Beschäftigten in anderen
+Attraktionen der Gruppe weiterarbeiten können.
 
 ## Frühere Merlin-Schließungen in Berlin
 
@@ -71,23 +72,21 @@ besonders das Sea Life seit dem Platzen des Aquadoms im Dezember 2022. In
 derselben Mitteilung hieß es, Madame Tussauds, das Berlin Dungeon und das
 Legoland Discovery Centre sollten geöffnet bleiben.
 
-Beim Legoland Discovery Centre hat sich seitdem der Eigentümer geändert: Merlin
-hat die Discovery Centres laut FreizeitparkNEWS und Looopings an die Lego Group
-abgegeben. Das Haus in Berlin ist damit nicht geschlossen, gehört aber nicht
-mehr zum Konzern.
+Das Legoland Discovery Centre hat seitdem einen neuen Eigentümer. Merlin hat
+die Discovery Centres laut FreizeitparkNEWS und Looopings an die Lego Group
+abgegeben. Das Haus in Berlin bleibt offen, gehört aber nicht mehr zu Merlin.
 
-Auch an anderen Standorten hat Merlin Dungeons beendet. Das Alton Towers
+Auch an anderen Orten hat Merlin Dungeons geschlossen. Das Alton Towers
 Dungeon in England eröffnete 2019 und schloss 2024 nach rund fünf Jahren, wie
 die Berliner Zeitung schreibt. Weiter betrieben werden laut FreizeitparkNEWS
 Dungeons unter anderem in Hamburg, London und Amsterdam.
 
 ## Was Besucher jetzt tun können
 
-Bis zum 6. November läuft der reguläre Betrieb. Wer Merlin in Deutschland
-sonst besuchen will: Der Konzern betreibt hierzulande den
-[Heide Park](ref:heide-park?bare) und das
-[Legoland Deutschland](ref:legoland-deutschland?bare), dazu gibt es unseren
-[Legoland-Guide](/blog/legoland-deutschland-tipps).
+Bis zum 6. November hat das Dungeon wie gewohnt geöffnet. In Deutschland
+betreibt Merlin außerdem den [Heide Park](ref:heide-park?bare) und das
+[Legoland Deutschland](ref:legoland-deutschland?bare). Für das Legoland gibt es
+unseren [Legoland-Guide](/blog/legoland-deutschland-tipps).
 
 — Patrick
 

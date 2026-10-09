@@ -7,10 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  An acht Abenden zwischen dem 23. Oktober 2026 und dem 7. Januar 2027 fahren
-  Gäste mit dem Aperitif durch Piraten in Batavia und essen danach im
-  Restaurant Bamboe Baai. Erwachsene zahlen 155 €, Kinder von 4 bis 11 Jahren
-  105 €.
+  An acht Abenden zwischen dem 23. Oktober 2026 und dem 7. Januar 2027 gibt es
+  im Europa-Park ein Dinner mit Show. Den Aperitif bekommst du auf einer Fahrt
+  durch Piraten in Batavia, das Essen danach im Restaurant Bamboe Baai.
+  Erwachsene zahlen 155 €, Kinder von 4 bis 11 Jahren 105 €.
 tags:
   - news
   - europa-park
@@ -30,8 +30,9 @@ coverImage:
 seo:
   title: 'Adventure in Batavia: Dinner im Europa-Park ab 23. Oktober'
   description: >-
-    Dinner-Show im Europa-Park: acht Abende vom 23. Oktober 2026 bis 7. Januar
-    2027, 155 € für Erwachsene, 105 € für Kinder, inklusive Fahrt und Getränken.
+    Das Dinner mit Show „Adventure in Batavia“ gibt es im Europa-Park an acht
+    Abenden vom 23. Oktober 2026 bis 7. Januar 2027. Erwachsene zahlen 155 €,
+    Kinder 105 €. Die Fahrt und die Getränke sind im Preis enthalten.
   keywords:
     - Adventure in Batavia
     - Europa-Park Dinner
@@ -48,8 +49,7 @@ Pressemitteilung angekündigt.
 
 ## Wann und wo
 
-Die acht Termine stehen auf der Eventseite des Parks, jeweils mit Beginn um
-19:30 Uhr und Ende um 23:00 Uhr:
+Alle acht Abende beginnen um 19:30 Uhr und enden um 23:00 Uhr:
 
 | Datum             | Wochentag  |
 | ----------------- | ---------- |
@@ -62,13 +62,14 @@ Die acht Termine stehen auf der Eventseite des Parks, jeweils mit Beginn um
 | 2. Januar 2027    | Samstag    |
 | 7. Januar 2027    | Donnerstag |
 
-Eingelassen wird am Hoteleingang des Europa-Park, parken kannst du kostenlos
-auf dem Parkplatz des Hotels „El Andaluz“. Du isst im Restaurant Bamboe Baai, das asiatisch kocht und im niederländischen Themenbereich liegt.
+Der Einlass ist am Hoteleingang des Europa-Parks. Parken kannst du kostenlos
+auf dem Parkplatz des Hotels „El Andaluz“. Gegessen wird im asiatischen
+Restaurant Bamboe Baai im niederländischen Themenbereich.
 
 ## Was es kostet und was drin ist
 
 Erwachsene ab 12 Jahren zahlen 155 €, Kinder von 4 bis 11 Jahren 105 €, jeweils
-inklusive Mehrwertsteuer. Im Preis stehen laut Eventseite:
+inklusive Mehrwertsteuer. Im Preis enthalten sind laut Eventseite:
 
 - eine Fahrt mit Piraten in Batavia, bei der der Aperitif serviert wird
 - ein Menü mit vier Gängen
@@ -76,20 +77,21 @@ inklusive Mehrwertsteuer. Im Preis stehen laut Eventseite:
 - die Show zwischen den Gängen
 - der Eintritt in den Europa-Park ab 17:00 Uhr, solange Saison ist
 
-Die Saison deckt alle acht Abende ab. Nach den Saisonzeiten des Parks laufen
-Halloween bis zum 1. November, HALLOWinter vom 2. bis 27. November und
-Winterzauber vom 28. November bis zum 9. Januar 2027. Weitere Kosten nennt die
-Seite nicht. Die Übernachtung ist ein getrenntes Angebot. Die Eventseite
-verlinkt eine Kombination aus Event und Hotel, ohne einen Preis dafür
-anzugeben.
+Alle acht Abende liegen in einer Saison des Parks. Halloween läuft bis zum
+
+1. November, HALLOWinter vom 2. bis 27. November und Winterzauber vom
+2. November bis zum 9. Januar 2027. Weitere Kosten nennt die Eventseite nicht.
+   Eine Übernachtung buchst du getrennt. Für ein Paket aus Dinner und Hotel gibt
+   es auf der Eventseite einen Link, aber keinen Preis.
 
 ## Menü und Show
 
 Das Standardmenü beginnt mit einem Glasnudelsalat mit gebeiztem Lachs im
 Bambuskörbchen. Dann folgen eine Tom-Kha-Suppe mit Garnele, ein Biryani mit
 Poularde und zum Nachtisch Ananas im Knuspermantel mit Pandan, Honig und
-Pistazien. Das vegetarische Menü ersetzt Lachs und Garnele durch Tofu und eine
-vegane Suppe mit Gemüsedumpling und nimmt im Biryani Paneer statt Poularde.
+Pistazien. Im vegetarischen Menü gibt es Tofu statt Lachs und eine vegane
+Suppe mit Gemüsedumpling statt der Suppe mit Garnele. Im Biryani ist dann
+Paneer statt Poularde.
 Das Kindermenü besteht aus einer Tramezzini-Rolle, einer Karottencremesuppe,
 Maispoularde mit Kartoffelgratin (auf Wunsch mit „veganem Rind vom Feld“) und
 Schokoladenmousse mit Himbeere.
@@ -98,27 +100,27 @@ Katja Mack führt Regie. Sänger, Tänzer, Schauspieler und Akrobaten spielen fe
 Rollen, darunter Figuren aus der Fahrt wie Bartholomeus van Robbemond. Teile
 der Musik sind eigens komponiert, und zwei Luftakrobatik-Nummern hat der Park
 mit langjährigen Mitgliedern der TALENT ACADEMY Europa-Park entwickelt. Wie
-lange die Fahrt zu Beginn dauert und wie viele Plätze es pro Abend gibt, steht
-weder in der Pressemitteilung noch auf der Eventseite.
+lange die Fahrt zu Beginn dauert und wie viele Plätze es pro Abend gibt, schreibt
+der Park weder in der Pressemitteilung noch auf der Eventseite.
 
 ## Die Bahn dahinter
 
 Piraten in Batavia hat 1987 eröffnet. Am 26. Mai 2018 brach in einer Lagerhalle
 Feuer aus und griff auf die Anlage über. Seit dem 28. Juli 2020 fahren die
 Boote in einem Neubau wieder, acht Figuren stammen noch aus der alten Fassung. Die
-Quellen dazu stehen im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
+Quellen dazu sind im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps) verlinkt.
 
 ## Buchen
 
-Die Karten gibt es auf der Eventseite des Parks, Gruppen ab 20 Personen fragen
+Karten gibt es auf der Eventseite des Parks. Gruppen ab 20 Personen fragen
 über das Kontaktformular an. Der Park behält sich Änderungen vor. Die
 Hotline des Resorts erreichst du unter +49 7822 77-6688.
 
-Wer an einem der beiden Oktoberabende kommt, findet im
+Was an den beiden Oktoberabenden sonst im Park läuft, steht im
 [Halloween-Überblick](/blog/halloween-freizeitparks-2026) und in der Meldung zu
-[zehn Jahren Traumatica](/blog/traumatica-zehn-jahre-europa-park), was im Park
-sonst läuft. Für die Abende im Dezember und Januar steht der
-[Winter-Überblick](/blog/winter-freizeitparks-2026) bereit.
+[zehn Jahren Traumatica](/blog/traumatica-zehn-jahre-europa-park). Für die
+Abende im Dezember und Januar gibt es den
+[Winter-Überblick](/blog/winter-freizeitparks-2026).
 
 ```best-days-widget slug=europa-park
 
