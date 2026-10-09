@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Maximize2, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { PhotoCredit } from '@/components/media/photo-credit';
 import { cn } from '@/lib/utils';
 
 export type BlogImageAlign = 'center' | 'left' | 'right' | 'wide';
@@ -19,6 +20,11 @@ interface BlogInlineImageProps {
   height?: number;
   /** Caption shown below the image and in the lightbox. */
   caption?: string;
+  /**
+   * Ready-made credit line (`© <author> (<licence>)`) for a photo that is not ours. Resolved on the
+   * server, because `@/lib/media` in a Client Component ships the whole catalog.
+   */
+  credit?: string | null;
   /**
    * In-flow placement:
    *  - center (default): block, centered, max-w-2xl
@@ -56,6 +62,7 @@ export function BlogInlineImage({
   width,
   height,
   caption,
+  credit,
   align = 'center',
   size,
 }: BlogInlineImageProps) {
@@ -87,6 +94,7 @@ export function BlogInlineImage({
           }
           className="h-auto w-full"
         />
+        <PhotoCredit credit={credit} />
         <span className="bg-background/80 absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full opacity-0 transition-opacity duration-200 group-hover:opacity-100">
           <Maximize2 className="h-3.5 w-3.5" aria-hidden="true" />
         </span>
@@ -107,6 +115,7 @@ export function BlogInlineImage({
           <div className="relative flex flex-col items-center">
             <div className="relative aspect-[3/2] w-full max-w-5xl">
               <Image src={src} alt={alt} fill sizes="100vw" className="object-contain" priority />
+              <PhotoCredit credit={credit} />
             </div>
             {caption && (
               <p className="bg-background/90 mt-3 max-w-3xl rounded-xl px-4 py-2 text-center text-sm backdrop-blur-sm">

@@ -47,6 +47,8 @@ import { BlogAttractionLink } from './blog-attraction-link';
 import { BlogInlineImage, type BlogImageAlign } from './blog-inline-image';
 import { getBlogImageDimensions } from '@/lib/blog/image-dimensions';
 import { versionedPath } from '@/lib/media/focus';
+import { getMediaImageForPath } from '@/lib/media';
+import { getCreditLine, needsAttribution } from '@/lib/media/text';
 import { BlogParkWidget } from './blog-park-widget';
 import { BlogAttractionWidget } from './blog-attraction-widget';
 import { BlogYouTubeEmbed } from './blog-youtube-embed';
@@ -607,6 +609,8 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       const size: 'small' | 'medium' | 'large' | undefined =
         sizeRaw === 'small' || sizeRaw === 'medium' || sizeRaw === 'large' ? sizeRaw : undefined;
       const dims = getBlogImageDimensions(src);
+      const photo = getMediaImageForPath(src);
+      const credit = photo && needsAttribution(photo) ? getCreditLine(photo) : null;
       return (
         <BlogInlineImage
           // Content-versioned like every other media URL: an author writes a bare path, often a
@@ -616,6 +620,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
           width={dims?.width}
           height={dims?.height}
           caption={caption}
+          credit={credit}
           align={align}
           size={size}
         />
