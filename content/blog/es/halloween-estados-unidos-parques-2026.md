@@ -7,10 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Halloween Horror Nights en Orlando y Hollywood, Knott's Scary Farm, Fright
-  Fest y Halloween Haunt en ocho parques de Six Flags, Howl-O-Scream y dos
-  fiestas de Disney que ya están agotadas. Fechas hasta principios de
-  noviembre, casas, precios, edades y lo que hay de día para familias.
+  La mayoría de los eventos de Halloween de los parques de Estados Unidos duran
+  hasta el 31 de octubre o el 1 de noviembre, y SCarowinds, hasta el 7 de
+  noviembre. Las dos fiestas de Disney están agotadas para 2026. Casi todos los
+  parques recomiendan sus noches a partir de 13 años.
 tags:
   - halloween
   - parque-atracciones
@@ -58,8 +58,9 @@ coverImage:
 seo:
   title: 'Halloween 2026 EE. UU.: HHN, Scary Farm, Fright Fest'
   description: >-
-    Fechas y precios de Halloween Horror Nights, Knott's Scary Farm, Fright
-    Fest, Howl-O-Scream y las fiestas de Disney, además de eventos para familias.
+    Una noche en Halloween Horror Nights de Orlando cuesta desde 94,99 $. Las
+    dos fiestas de Halloween de Disney en Estados Unidos están agotadas para
+    2026.
   keywords:
     - Halloween parques de atracciones Estados Unidos 2026
     - Halloween Horror Nights 2026 Orlando
@@ -73,12 +74,12 @@ seo:
     - Halloween en Estados Unidos con niños
 ---
 
-A principios de octubre hay eventos de Halloween en 25 de los parques de Estados Unidos que recoge park.fan, y casi todos duran hasta el 31 de octubre o el 1 de noviembre. El último en cerrar es SCarowinds, en Charlotte, el 7 de noviembre. Para las Horror Nights, Knott's Scary Farm y Howl-O-Scream en Tampa y Orlando necesitas una entrada propia. En algunos parques el evento va incluido en la entrada normal, y las dos fiestas de Disney ya están agotadas para 2026.
+A principios de octubre hay eventos de Halloween en 25 de los parques de Estados Unidos que recoge park.fan, y casi todos duran hasta el 31 de octubre o el 1 de noviembre. El último en cerrar es SCarowinds, en Charlotte, el 7 de noviembre. Para las Horror Nights, Knott's Scary Farm y Howl-O-Scream en Tampa y Orlando necesitas una entrada propia. En algunos parques el evento va incluido en la entrada normal. Las dos fiestas de Disney ya están agotadas para 2026.
 
-Por la noche hay casas del terror, scare zones con actores y espectáculos, y casi todos los parques desaconsejan llevar a menores de 13 años. De día hay caramelos, calabazas y disfraces, muchas veces en el mismo parque, solo unas horas antes. El panorama de Europa está en nuestra [guía de Halloween](/blog/halloween-parques-atracciones-2026), y Cedar Point, en Ohio, tiene su propio artículo sobre [HalloWeekends](/blog/cedar-point-halloweekends-2026).
+Por la noche hay casas del terror, scare zones con actores y espectáculos. Casi todos los parques desaconsejan llevar a menores de 13 años. De día hay caramelos, calabazas y disfraces, muchas veces en el mismo parque, solo unas horas antes. El panorama de Europa está en nuestra [guía de Halloween](/blog/halloween-parques-atracciones-2026). Los [HalloWeekends](/blog/cedar-point-halloweekends-2026) de Cedar Point, en Ohio, tienen su propio artículo.
 
 > [!NOTE]
-> A 5 de octubre de 2026: las fechas, casas, edades y precios de abajo proceden de las webs de los parques y de sus operadores, consultadas ese mismo día. Los precios son los de partida, en dólares estadounidenses y sin impuestos. Cambian según la noche y suelen subir cuanto más cerca está.
+> A 5 de octubre de 2026: las fechas, casas, edades y precios proceden de las webs de los parques y de sus operadores. Los precios son los de partida, en dólares estadounidenses y sin impuestos. Cambian según la noche y suelen subir cuanto más cerca está.
 
 ## Todos los eventos de un vistazo
 
@@ -130,7 +131,7 @@ Las otras cinco son invención de Universal:
 
 Se suman cuatro scare zones, todas nuevas: Fortnitemares, Infernal Carnival of Nightmares, Downtown Clowntown y Sideshow of Decay. Por las calles se mueven Mel's Die-In: Zombies, Club Horror y las Chainsaw Hordes. Hay dos espectáculos, uno de Stranger Things en la laguna y Nightmare Fuel: Blood Noir. Algunas atracciones siguen funcionando por la noche, entre ellas Revenge of the Mummy, Harry Potter and the Escape from Gringotts, TRANSFORMERS: The Ride-3D y MEN IN BLACK Alien Attack.
 
-En la tienda en línea de Universal, una noche cuesta desde 94,99 $, y más según la fecha. Consultado el 5 de octubre, el 14 de octubre costaba 95 $ y el 31 de octubre, 140 $. Para ir varias noches están el Rush of Fear Pass, de hasta 18 noches, y el Frequent Fear Pass, de hasta 31. En la página de entradas aparecen dos pares de precios distintos para ellos, 229,99 $ y 274,99 $ en una línea y 239,99 $ y 289,99 $ en otra. El Express Pass, con el que entras una vez en cada casa sin hacer la cola normal, cuesta desde 279,99 $, y el R.I.P. Tour guiado desde 529,99 $. En 2026 Universal ya no vende pases de varias noches con Express.
+En la tienda en línea de Universal, una noche cuesta desde 94,99 $, y más según la fecha. El 14 de octubre cuesta 95 $, y el 31 de octubre, 140 $. Para ir varias noches están el Rush of Fear Pass, de hasta 18 noches, y el Frequent Fear Pass, de hasta 31. En la página de entradas aparecen dos pares de precios distintos para ellos, 229,99 $ y 274,99 $ en una línea y 239,99 $ y 289,99 $ en otra. El Express Pass, con el que entras una vez en cada casa sin hacer la cola normal, cuesta desde 279,99 $, y el R.I.P. Tour guiado desde 529,99 $. En 2026 Universal ya no vende pases de varias noches con Express.
 
 Universal no recomienda el evento para menores de 13 años. Están prohibidos los disfraces y las máscaras de disfraz. La única excepción es la Premium Scream Night del lunes 19 de octubre, que tiene entrada propia. Esa noche se permiten los disfraces, pero las máscaras siguen prohibidas.
 
@@ -140,9 +141,9 @@ Universal no recomienda el evento para menores de 13 años. Están prohibidos lo
 
 De las ocho casas, cinco son las mismas que en Orlando: Stranger Things, Sinners, Hellraiser, Ozzy Osbourne: Prince of Darkness y Evil Dead Burn. Solo en Hollywood están **Killer Klowns from Outer Space**, basada en la película, **KILLceañera**, con música de Slash, en la que la fiesta de quince años de Lola se va de las manos, y **Dead, Deader, Deadest**, en una funeraria abandonada.
 
-La Terror Tram solo existe en Hollywood. Esas noches, Art the Clown se apodera del tranvía que de día recorre los estudios de cine, con música del grupo Ice Nine Kills. Según el comunicado de prensa, se suman un espectáculo, The Purge: Dangerous Waters, y cinco scare zones, que son Fortnitemares, Hackerz, El Circo de la Muerte, Blood Bog y Murder of Crowz. Por la noche funcionan Mario Kart: Bowser's Challenge hasta las 22:00 y Harry Potter and the Forbidden Journey hasta las 23:15, junto con Flight of the Hippogriff, TRANSFORMERS, The Simpsons Ride y Revenge of the Mummy.
+La Terror Tram solo existe en Hollywood. Esas noches, Art the Clown se apodera del tranvía que de día recorre los estudios de cine. La música es del grupo Ice Nine Kills. Según el comunicado de prensa de Universal, se suman un espectáculo, The Purge: Dangerous Waters, y cinco scare zones, que son Fortnitemares, Hackerz, El Circo de la Muerte, Blood Bog y Murder of Crowz. Por la noche funcionan Mario Kart: Bowser's Challenge hasta las 22:00 y Harry Potter and the Forbidden Journey hasta las 23:15, junto con Flight of the Hippogriff, TRANSFORMERS, The Simpsons Ride y Revenge of the Mummy.
 
-Una noche cuesta desde 84 $ y, según la fecha, hasta 109 $. El Frequent Fear Pass, de hasta 35 noches, empieza en 179 $, el Ultimate Fear Pass en 299 $ y Universal Express en 279 $. Si quieres entrar al parque ya a las 14:00, la entrada de día y noche cuesta desde 124 $. Con Early Access, por 20 $, entras en las primeras casas antes de que empiece el evento. La web habla de las 17:00 y el comunicado de prensa de las 17:30. No hay edad mínima, pero Universal no recomienda el evento para menores de 13. Las máscaras de disfraz están prohibidas.
+Una noche cuesta desde 84 $ y, según la fecha, hasta 109 $. El Frequent Fear Pass, de hasta 35 noches, empieza en 179 $, el Ultimate Fear Pass en 299 $ y Universal Express en 279 $. Si quieres entrar al parque ya a las 14:00, la entrada de día y noche cuesta desde 124 $. Con Early Access, por 20 $, entras en las primeras casas antes de que empiece el evento. En la web pone las 17:00 y en el comunicado de prensa, las 17:30. No hay edad mínima, pero Universal no recomienda el evento para menores de 13. Las máscaras de disfraz están prohibidas.
 
 ### Knott's Berry Farm: Knott's Scary Farm
 
@@ -150,7 +151,7 @@ Una noche cuesta desde 84 $ y, según la fecha, hasta 109 $. El Frequent Fear Pa
 
 Hay diez mazes, dos de ellos nuevos. En **Inked** te persiguen los personajes asesinos de un dibujante venido a menos de la década de 1930, y en **Unearthed** una excavación ha sacado a la luz algo antiguo y malvado. Completan la lista Widows, Eight Fingers Nine: The Boogeyman, Chilling Chambers, con escenas de más de 50 años de Scary Farm, Room 13, Cinema Slasher, Mary - The Haunting of Worth Home, The Zoo y Origins: The Curse of Calico.
 
-Por el parque se reparten cinco scare zones, entre ellas CarnEVIL y las Ghost Town Streets con los Sliders, que llevan años formando parte de ellas. Dos de los tres espectáculos son nuevos. **Occultum** es un espectáculo de magia preparado por el Magic Castle de Hollywood que se representa en el Bird Cage Theatre, y el otro es **Voodoo: Bayou's Edge**. También es nueva una linterna con seis colores que se consiguen en puntos repartidos por el parque.
+Por el parque se reparten cinco scare zones, entre ellas CarnEVIL y las Ghost Town Streets con los Sliders, que llevan años formando parte de ellas. Dos de los tres espectáculos son nuevos. **Occultum** es un espectáculo de magia preparado por el Magic Castle de Hollywood que se representa en el Bird Cage Theatre, y el otro es **Voodoo: Bayou's Edge**. También es nueva una linterna cuyos seis colores se consiguen en puntos repartidos por el parque.
 
 Una noche cuesta desde 65 $ y el pase para todas las noches 164 $, las dos cosas solo en línea. Los mazes no llevan suplemento. Para Fright & Fast Lane, con el que te saltas la cola normal de los mazes y de algunas atracciones, la página del evento pone «desde 139 $» y la de entradas «desde 159 $», en los dos casos sin la entrada. El parque no recomienda el evento para menores de 13 años, y cada visitante necesita su propia entrada, tenga la edad que tenga.
 
@@ -196,7 +197,7 @@ En [Busch Gardens Tampa](ref:busch-gardens-tampa), Howl-O-Scream se celebra en n
 
 [SeaWorld Orlando](ref:seaworld-orlando) abre las puertas a las 18:30, y el evento empieza a las 19:00. Tiene cinco casas, entre ellas **I Know What You Did Last Summer: The Final Catch**, la primera de este parque basada en una película. Completan el programa seis scare zones, cinco bares nuevos, cuatro atracciones a oscuras y dos espectáculos. Según la web, una noche cuesta desde 47,99 $, y en el comunicado de prensa figuran 45,99 $ si compras dos entradas o más.
 
-En [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg), en Virginia, y en [SeaWorld San Antonio](ref:seaworld-san-antonio), Howl-O-Scream va incluido en la entrada normal. Williamsburg empieza a las 18:00, tiene cinco casas, dos de ellas nuevas, y aconseja a las familias con niños pequeños que se piensen bien si se quedan después de las 18:00. San Antonio celebra el 25.º año de Howl-O-Scream con cinco casas, tres de ellas nuevas, y ocho scare zones, de viernes a domingo hasta el 1 de noviembre.
+En [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg), en Virginia, y en [SeaWorld San Antonio](ref:seaworld-san-antonio), Howl-O-Scream va incluido en la entrada normal. Williamsburg empieza a las 18:00, con cinco casas, dos de ellas nuevas. El parque aconseja a las familias con niños pequeños que se piensen bien si se quedan después de las 18:00. San Antonio celebra el 25.º año de Howl-O-Scream con cinco casas, tres de ellas nuevas, y ocho scare zones. Allí abre de viernes a domingo hasta el 1 de noviembre.
 
 ### Hersheypark: Dark Nights
 
@@ -204,7 +205,7 @@ En [Hersheypark](ref:hersheypark), en Pensilvania, las Dark Nights forman parte 
 
 ### Kennywood: Phantom Fall Fest
 
-[Kennywood](ref:kennywood), en Pittsburgh, tiene siete casas del terror, entre ellas la nueva Ghostwood Estate: Open House, y cuatro scare zones, todo incluido en la entrada, que en venta anticipada cuesta desde 37,49 $. Phantom Fall Fest va del 12 de septiembre al 1 de noviembre, los viernes desde las 18:00 y los fines de semana desde mediodía. No hay edad mínima, pero después de las 18:00 el evento está pensado para un público mayor, y quien tenga 17 años o menos debe ir con un acompañante de 21 o más.
+[Kennywood](ref:kennywood), en Pittsburgh, tiene siete casas del terror y cuatro scare zones, y la casa nueva es Ghostwood Estate: Open House. Todo va incluido en la entrada, que en venta anticipada cuesta desde 37,49 $. Phantom Fall Fest va del 12 de septiembre al 1 de noviembre, los viernes desde las 18:00 y los fines de semana desde mediodía. No hay edad mínima, pero después de las 18:00 el evento está pensado para un público mayor. Quien tenga 17 años o menos debe ir con un acompañante de 21 o más.
 
 ## Para familias: Halloween de día
 
@@ -212,9 +213,9 @@ En [Hersheypark](ref:hersheypark), en Pensilvania, las Dark Nights forman parte 
 
 **Mickey's Not-So-Scary Halloween Party**, en [Magic Kingdom](ref:magic-kingdom-park), tiene en 2026 un total de 38 noches entre el 7 de agosto y el 31 de octubre. En octubre quedan los días 6, 8, 9, 13, 15, 16, 18, 22, 23, 25, 27, 29 y 31, y según Disney todas las fechas están agotadas. La fiesta va de 19:00 a medianoche, y con entrada puedes pasar al parque desde las 16:00. El programa incluye el desfile Mickey's Boo-To-You Halloween Parade, los fuegos artificiales con láseres Disney's Not-So-Spooky Spectacular y el espectáculo Hocus Pocus Villain Spelltacular, en el escenario delante del castillo. Hay caramelos en puestos de todas las zonas del parque. Son nuevos A Masquerade with Stitch, una fiesta de baile con Stitch, Lilo y Angel en Tomorrowland, y el capitán Jack Sparrow con un programa pirata en Adventureland. Según Disney, esas noches Space Mountain funciona completamente a oscuras y con música de Halloween.
 
-El **Oogie Boogie Bash**, en [Disney California Adventure](ref:disney-california-adventure-park), en Anaheim, tiene 33 noches del 18 de agosto al 31 de octubre, siempre de 18:00 a 23:00 y con acceso al parque desde las 15:00. Los precios iban de 139 $ por una noche de agosto a 199 $ por la del 31 de octubre, y aquí también se han vendido todas las entradas. La novedad es Madame Leota's Swinging Wake, una fiesta callejera en torno a la Haunted Mansion. A partir de 14 años no se permiten máscaras, y las capas solo si no arrastran por el suelo.
+El **Oogie Boogie Bash**, en [Disney California Adventure](ref:disney-california-adventure-park), en Anaheim, tiene 33 noches del 18 de agosto al 31 de octubre, siempre de 18:00 a 23:00 y con acceso al parque desde las 15:00. Los precios iban de 139 $ por una noche de agosto a 199 $ por la del 31 de octubre. Aquí también se han vendido todas las entradas. La novedad es Madame Leota's Swinging Wake, una fiesta callejera en torno a la Haunted Mansion. A partir de 14 años no se permiten máscaras, y las capas solo si no arrastran por el suelo.
 
-Sin entrada para la fiesta también ves la decoración. En Magic Kingdom cuelgan de día guirnaldas de calabazas sobre Main Street, y en Disneyland Resort Halloween Time dura hasta el 31 de octubre con la entrada normal. Allí la Haunted Mansion se convierte en Haunted Mansion Holiday, Cars Land pasa a ser Radiator Screams por la noche, y en Disneyland Park se representa el espectáculo nocturno Halloween Screams, algunas noches con fuegos artificiales. Para planificar un día en Magic Kingdom tienes nuestra [guía de Magic Kingdom](/blog/magic-kingdom-tiempos-de-espera-consejos).
+Sin entrada para la fiesta también ves la decoración. En Magic Kingdom cuelgan de día guirnaldas de calabazas sobre Main Street, y en Disneyland Resort Halloween Time dura hasta el 31 de octubre con la entrada normal. Allí la Haunted Mansion se convierte en Haunted Mansion Holiday, y Cars Land pasa a ser Radiator Screams por la noche. En Disneyland Park se representa el espectáculo nocturno Halloween Screams, algunas noches con fuegos artificiales. Para planificar un día en Magic Kingdom tienes nuestra [guía de Magic Kingdom](/blog/magic-kingdom-tiempos-de-espera-consejos).
 
 ### Knott's Spooky Farm y los días en Six Flags
 
@@ -230,7 +231,7 @@ Los cuatro parques de United Parks tienen de día un programa para niños inclui
 
 [Dollywood](ref:dollywood), en Tennessee, celebra el Harvest Festival del 14 de septiembre al 31 de octubre con la entrada normal. Por la noche, en las Great Pumpkin LumiNights, se iluminan más de 12.000 calabazas y un árbol de calabazas de doce metros de altura. Es nuevo el Harvey's Boo Bash, los días 16, 23 y 30 de octubre de 21:00 a medianoche, con disfraces, por 129,99 $ adicionales.
 
-[Silver Dollar City](ref:silver-dollar-city), en Misuri, celebra su Harvest Festival del 11 de septiembre al 31 de octubre. Desde las 17:30 se iluminan más de 20.000 calabazas, en el Garden of Giants hay calabazas de más de 450 kilos, y de día los artesanos trabajan a la vista del público. No hace falta una entrada específica para el evento.
+[Silver Dollar City](ref:silver-dollar-city), en Misuri, celebra su Harvest Festival del 11 de septiembre al 31 de octubre. Desde las 17:30 se iluminan más de 20.000 calabazas, y en el Garden of Giants hay calabazas de más de 450 kilos. De día, los artesanos trabajan a la vista del público. No hace falta una entrada específica para el evento.
 
 ### Legoland y Knoebels
 
@@ -240,13 +241,13 @@ Los cuatro parques de United Parks tienen de día un programa para niños inclui
 
 ## Con niños: edades y disfraces
 
-Casi todos los parques recomiendan sus eventos de noche a partir de 13 años. Six Flags lo indica en cada uno de sus parques, y Busch Gardens Tampa y SeaWorld Orlando hablan de un público adulto, aunque SeaWorld deja entrar a menores de 18. En Great America la recomendación rige a partir de las 18:00, y en Kennywood quien tenga hasta 17 años necesita un acompañante de 21 o más. Hersheypark no da ninguna edad para las Dark Nights.
+Casi todos los parques recomiendan sus eventos de noche a partir de 13 años. Six Flags lo indica en cada uno de sus parques. Busch Gardens Tampa y SeaWorld Orlando hablan de un público adulto, aunque SeaWorld deja entrar a menores de 18. En Great America la recomendación rige a partir de las 18:00. En Kennywood, quien tenga hasta 17 años necesita un acompañante de 21 o más. Hersheypark no da ninguna edad para las Dark Nights.
 
-En el Oogie Boogie Bash están prohibidas las máscaras a partir de 14 años, los disfraces no pueden arrastrar por el suelo ni llevar armas, y quien vaya disfrazado de un personaje no puede posar para fotos como si lo fuera. SeaWorld Orlando prohíbe las máscaras a partir de 13 años en el Spooktacular, y Hersheypark también. En las Halloween Horror Nights de Orlando están prohibidos los disfraces y las máscaras de disfraz, salvo en la Premium Scream Night, y en Hollywood, las máscaras de disfraz.
+En el Oogie Boogie Bash están prohibidas las máscaras a partir de 14 años, y los disfraces no pueden arrastrar por el suelo ni llevar armas. Quien vaya disfrazado de un personaje no puede posar para fotos como si lo fuera. SeaWorld Orlando prohíbe las máscaras a partir de 13 años en el Spooktacular, y Hersheypark también. En las Halloween Horror Nights de Orlando están prohibidos los disfraces y las máscaras de disfraz, salvo en la Premium Scream Night, y en Hollywood, las máscaras de disfraz.
 
 ## Cuándo ir
 
-De las noches de evento en sí no tenemos datos propios. Nuestra medición cubre el día entero y no separa la noche del horario de día. En la tabla de abajo está cada atracción grande de Universal Studios Florida hora a hora, medida durante toda la temporada:
+Nuestros tiempos de espera cubren el día entero, y las noches de evento no las medimos por separado. En la tabla de abajo está cada atracción grande de Universal Studios Florida hora a hora, medida durante toda la temporada:
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 
@@ -258,7 +259,7 @@ Los días más tranquilos de las próximas semanas en Knott's Berry Farm están 
 
 ```
 
-Para los grandes parques con evento nocturno tenemos los tiempos de espera de esta temporada, cada uno con el día de la semana en que las colas son más cortas. El Oogie Boogie Bash costaba 199 $ el 31 de octubre y 139 $ una noche de agosto. En las Horror Nights de Orlando, consultado el 5 de octubre, el 31 de octubre costaba 140 $ y el 14 de octubre, 95 $.
+Si no tienes que ir justo en Halloween, ahorras: en las Horror Nights de Orlando, el 31 de octubre cuesta 140 $, y el 14 de octubre, 95 $. Este es el día de la semana con las colas más cortas en cada uno de los grandes parques con evento nocturno, medido durante esta temporada:
 
 ```park-comparison-widget slugs=universal-studios-florida,knotts-berry-farm,six-flags-magic-mountain,six-flags-great-adventure,kings-island,busch-gardens-tampa,seaworld-orlando show=quietest
 
@@ -266,7 +267,7 @@ Para los grandes parques con evento nocturno tenemos los tiempos de espera de es
 
 ## Dos eventos en un mismo viaje
 
-En Orlando, Universal Studios Florida y SeaWorld Orlando están a siete kilómetros en línea recta, y Magic Kingdom a 13 kilómetros de Universal. Halloween Horror Nights y Howl-O-Scream se pueden combinar en un mismo viaje en dos noches, con un día en medio en uno de los parques de Disney, donde la decoración de Halloween se ve aunque no tengas entrada para la fiesta. Busch Gardens Tampa queda algo más de 100 kilómetros en línea recta más al oeste.
+En Orlando, Universal Studios Florida y SeaWorld Orlando están a siete kilómetros en línea recta, y Magic Kingdom a 13 kilómetros de Universal. Halloween Horror Nights y Howl-O-Scream se pueden combinar en un mismo viaje en dos noches. Entre una y otra cabe un día en uno de los parques de Disney, donde la decoración de Halloween se ve aunque no tengas entrada para la fiesta. Busch Gardens Tampa queda algo más de 100 kilómetros en línea recta más al oeste.
 
 En el área de Los Ángeles, Knott's Berry Farm y Disney California Adventure están a ocho kilómetros, Universal Studios Hollywood a 46 kilómetros de Knott's, y Six Flags Magic Mountain otros 39 kilómetros más al norte. Knott's Scary Farm y Fright Fest en Magic Mountain coinciden los viernes y sábados de octubre, y esos días los dos abren hasta medianoche o más tarde.
 
@@ -276,7 +277,7 @@ Los paquetes de Six Flags incluyen la entrada al parque para todo el día. Puede
 
 ### ¿Cuál es el evento de Halloween más grande de Estados Unidos?
 
-Por número de noches, las Halloween Horror Nights de Universal Studios Florida, con 49. En casas empatan Orlando y Knott's Scary Farm, con diez cada uno, y entre los demás parques de Six Flags el que más tiene es Great Adventure, con nueve.
+Por número de noches, las Halloween Horror Nights de Universal Studios Florida, con 49. Los eventos con más casas son los de Orlando y Knott's Scary Farm, con diez cada uno. Entre los demás parques de Six Flags, el que más tiene es Great Adventure, con nueve.
 
 ### ¿Quedan entradas para las fiestas de Halloween de Disney?
 
@@ -298,7 +299,7 @@ Lo mejor es ir de día y no de noche, por ejemplo a Knott's Spooky Farm, a Trick
 
 ### Fuentes y para seguir leyendo
 
-Todos los datos proceden de los parques y de sus operadores, consultados el 5 de octubre de 2026.
+Todos los datos proceden de los parques y de sus operadores.
 
 - Halloween Horror Nights Orlando: [Halloween Horror Nights 2026 Overview (Universal Parks USA)](https://media.universalparksusa.com/press-releases/halloween-horror-nights-2026-overview/), [Inauguración 2026 (Universal Parks USA)](https://media.universalparksusa.com/press-releases/universal-orlando-resort-opens-the-gates-to-halloween-horror-nights-2026-082826/), [Página del evento (Universal Orlando)](https://www.universalorlando.com/hhn/en/us), [Normas del parque (Universal Orlando)](https://www.universalorlando.com/web/en/us/plan-your-visit/hours-information/policies-restrictions), precios por fecha: [Tienda en línea (Universal Orlando)](https://store.universalorlando.com/en/us/store/c/uo_ice_default_pb_extras/)
 - Halloween Horror Nights Hollywood: [Inauguración 2026 (Universal Parks USA)](https://media.universalparksusa.com/press-releases/halloween-horror-nights-opens-at-universal-studios-hollywood-kicking-off-southern-californias-most-extreme-halloween-event-over-42-terrifying-nights-from-thursday-september-3-to-sunday-nov/), [Terror Tram y casas (Universal Parks USA)](https://media.universalparksusa.com/press-releases/halloween-horror-nights-at-universal-studios-hollywood-completes-its-sinister-2026-line-up-with-terror-tram-starring-art-the-clown-the-return-of-cult-horror-classic-killer/), [Página del evento (Universal Studios Hollywood)](https://www.universalstudioshollywood.com/hhn/en/us), precios: [Tienda en línea (Universal Studios Hollywood)](https://store.universalstudioshollywood.com/en/us/store/c/uh_ice_default_pb_events/)

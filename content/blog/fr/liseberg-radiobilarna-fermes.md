@@ -8,8 +8,9 @@ mode: published
 featured: false
 excerpt: >-
   Liseberg a ouvert ses autos tamponneuses Radiobilarna pour la dernière fois le
-  4 octobre 2026. Le bâtiment sera démoli et une nouvelle attraction prendra sa
-  place. Le parc étudie encore si les Radiobilarna peuvent rouler ailleurs.
+  4 octobre 2026, après presque 100 ans. Le bâtiment sera démoli pour laisser la
+  place à une nouvelle attraction. Le parc étudie encore si les Radiobilarna
+  peuvent rouler ailleurs dans le parc.
 tags:
   - news
   - liseberg
@@ -21,9 +22,9 @@ parkLinks:
 rideLinks:
   - liseberg/radiobilarna
 seo:
-  title: 'Radiobilarna de Liseberg fermées : le bâtiment sera démoli'
+  title: 'Les autos tamponneuses Radiobilarna de Liseberg ont fermé'
   description: >-
-    Liseberg a fermé les Radiobilarna le 4 octobre 2026. Le bâtiment sera démoli, et un nouvel emplacement reste à décider.
+    Liseberg a fermé ses autos tamponneuses Radiobilarna le 4 octobre 2026. Le bâtiment sera démoli. Un nouvel emplacement dans le parc reste à décider.
   keywords:
     - Radiobilarna Liseberg
     - Radiobilarna fermées
@@ -47,14 +48,14 @@ d'Halloween du parc. Le bâtiment sera ensuite démoli.
 
 Le directeur du parc, Andreas Andersen, dit que le parc veut faire de la place
 pour du nouveau. Liseberg étudie si les Radiobilarna peuvent retrouver une place
-dans le parc plus tard. Rien n'est décidé. Le parc n'a pas dit quelle attraction
-occupera l'ancien bâtiment.
+dans le parc plus tard. Rien n'est décidé. Le parc n'a pas encore annoncé quelle
+attraction prendra la place du bâtiment.
 
 L'historien de Liseberg Patrik Källström parle d'un adieu à un classique aimé.
 
 Du 2 au 4 octobre, tous les visiteurs avec une entrée au parc ont roulé
-gratuitement. Nous avons relevé le dernier temps d'attente le 4 octobre à 20 h 01,
-heure suédoise, et nous indiquons l'attraction comme fermée depuis.
+gratuitement. Nous avons relevé le dernier temps d'attente des Radiobilarna le 4 octobre à
+20 h 01, heure suédoise. Depuis, l'attraction apparaît comme fermée sur park.fan.
 
 ## Depuis 1927
 
@@ -67,7 +68,7 @@ l'attraction. Ensuite, Liseberg l'a reprise pour 5 000 couronnes. Depuis, elle a
 occupé quatre emplacements différents dans le parc, et elle a déménagé pour la
 dernière fois en 1998.
 
-Le parc cite huit modèles de voitures et plusieurs remaniements profonds. Plus de
+Selon le parc, il y a eu huit modèles de voitures et plusieurs remaniements profonds. Plus de
 300 000 visiteurs par an l'ont empruntée ces dernières années. D'après le
 communiqué, Michael Jackson et Stevie Wonder comptent aussi parmi les passagers.
 
@@ -79,15 +80,15 @@ bilar, une confiserie suédoise en forme de voiture.
 
 ## Tuta & Kör et Oceana
 
-Les Radiobilarna sont fermées. Les petites autos tamponneuses pour enfants
-« Tuta & Kör », à Kaninlandet, restent inchangées. Le communiqué ne dit pas s'il y
-aura un remplacement.
+Les petites autos tamponneuses pour enfants « Tuta & Kör », à Kaninlandet, restent
+inchangées. Le communiqué du 29 septembre ne mentionne aucun remplaçant pour les
+Radiobilarna.
 
 Une autre nouveauté du parc est le monde aquatique Oceana, environ 13 600 mètres
 carrés, dont 6 000 à l'intérieur et 4 000 à l'extérieur. Sont prévus quatre grands
 toboggans, trois espaces pour enfants, une piscine à vagues et une rivière pour les
-familles. Selon Liseberg, Oceana doit ouvrir « début 2027 », plus dans notre aperçu
-des [nouveautés 2027](/blog/nouveautes-parcs-attractions-2027).
+familles. Selon Liseberg, Oceana doit ouvrir « début 2027 », et notre aperçu des
+[nouveautés 2027](/blog/nouveautes-parcs-attractions-2027) en dit plus.
 
 Liseberg travaille à son achèvement depuis l'incendie de février 2024. Dans un
 communiqué du 26 septembre, le parc écrit que près d'une centaine d'arbres et de
@@ -96,13 +97,13 @@ fin novembre.
 
 ## Halloween et Noël à Liseberg
 
-La saison d'Halloween dure du 2 octobre au 1er novembre. Les Radiobilarna n'en ont
-connu que le premier week-end. Les 14 et 15 octobre s'ajoutent deux jours où seul Kaninlandet ouvre,
+La saison d'Halloween dure du 2 octobre au 1er novembre. Les Radiobilarna n'ont
+tourné que le premier week-end. Les 14 et 15 octobre s'ajoutent deux jours où seul Kaninlandet ouvre,
 sous le nom « Höst i Kaninlandet ».
 
-Tuta & Kör roulent l'été, à Halloween et à Noël, et leurs voitures viennent du même
-fabricant que celles des Radiobilarna, Preston & Barbieri. L'attraction est conçue
-pour les enfants de 90 à 140 centimètres et accueille, selon le parc, environ 240
+Tuta & Kör roulent l'été, à Halloween et à Noël. Comme celles des Radiobilarna,
+leurs voitures viennent de chez Preston & Barbieri. L'attraction est conçue pour
+les enfants de 90 à 140 centimètres et accueille, selon le parc, environ 240
 passagers par heure.
 
 Liseberg fête Noël depuis 2000. Cette année, le spectacle de la scène de l'Avent se
@@ -114,7 +115,7 @@ Liseberg ne donne pas de date pour la démolition.
 
 ## Temps d'attente des Radiobilarna sur l'année écoulée
 
-La fenêtre de mesure va du 8 octobre 2025 au 7 octobre 2026.
+Le tableau couvre les temps d'attente du 8 octobre 2025 au 7 octobre 2026.
 
 ```ride-waits-widget rides=liseberg/radiobilarna|Radiobilarna|Autos tamponneuses columns=type,peak,days
 
@@ -123,8 +124,7 @@ La fenêtre de mesure va du 8 octobre 2025 au 7 octobre 2026.
 ## Les montagnes russes du parc
 
 Parmi les montagnes russes de Liseberg figurent Lisebergbanan (1987), Balder (2003),
-Rabalder (2009), Stampbanan (2013), Helix (2014), Valkyria (2018) et Luna (2023). Le
-parc lui-même a ouvert en 1923.
+Rabalder (2009), Stampbanan (2013), Helix (2014), Valkyria (2018) et Luna (2023).
 
 Le FlumeRide, une descente en rondins, est plus ancien que toutes ces montagnes
 russes. Liseberg indique 1973 comme année de construction et l'américain Arrow

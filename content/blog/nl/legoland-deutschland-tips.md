@@ -6,9 +6,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Legoland Deutschland is gebouwd voor kinderen van twee tot twaalf jaar, en bij
-  geen van de negen headliners levert een vroege start genoeg tijd op voor een
-  rope-droptip. Met een volwassene is de hoogste minimumlengte 1,25 meter, en Halloween loopt tot 8 november.
+  In Legoland Deutschland scheelt een vroege start bij geen enkele grote
+  attractie veel wachttijd. Een kind dat met een volwassene meerijdt, hoeft
+  nergens langer te zijn dan 1,25 meter. Halloween loopt tot 8 november.
 tags:
   - legoland
   - guenzburg
@@ -25,8 +25,9 @@ rideLinks:
 seo:
   title: 'Legoland Deutschland tips: wachttijden, Fastrack, tickets en Halloween'
   description: >-
-    Legoland Deutschland 2026: minimumlengtes van de attracties, wachttijden per
-    weekdag, tickets, Fastrack, parkeren en Halloween tot 8 november.
+    In Legoland Deutschland is het op vrijdag het rustigst en op zaterdag het
+    drukst. Met een volwassene hoeft een kind nergens langer te zijn dan 1,25
+    meter.
   keywords:
     - Legoland Deutschland
     - Legoland Deutschland tips
@@ -47,9 +48,9 @@ seo:
     - Legoland vakantiedorp
 ---
 
-**Legoland Deutschland** zegt zelf dat het gebouwd is voor kinderen van **twee tot twaalf jaar**. Voor meerijden met een volwassene is de hoogste minimumlengte van het hele park **1,25 meter**, bij
-[Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare). En bij geen van de negen headliners
-levert een vroege start zoveel tijd op dat wij een rope-droptip zouden geven. Wie een dag in
+**Legoland Deutschland** zegt zelf dat het gebouwd is voor kinderen van **twee tot twaalf jaar**. Voor kinderen die met een volwassene meerijden, is de hoogste minimumlengte van het hele park
+**1,25 meter**, bij [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare). Bij geen van de
+negen headliners scheelt een vroege start zoveel wachttijd dat de wekker het waard is. Wie een dag in
 Günzburg plant, heeft dus minder tactiek nodig dan in Rust of Brühl en meer aandacht voor centimeters
 en leeftijden.
 
@@ -66,24 +67,25 @@ opruimen duurde twee jaar en kostte 34 miljoen Duitse mark.
 Op **17 mei 2002** ging het park open, negen maanden eerder dan gepland, met meer dan 40 attracties en
 kosten van ongeveer € 153 miljoen. In het eerste jaar kwamen 1,3 miljoen gasten, in 2020 nog maar
 750.000, en in 2024 waren het volgens de index van de Themed Entertainment Association zo’n **twee
-miljoen**. Daarmee is Legoland na Europa-Park en Phantasialand het op twee na drukst bezochte pretpark van Duitsland. Merlin Entertainments exploiteert het sinds 2005. In 2019 namen Kirkbi, de
-beleggingsmaatschappij van de Lego-eigenaars, Blackstone en een Canadees pensioenfonds Merlin over
-voor € 6,6 miljard, en het park wordt nog steeds door Merlin beheerd.
+miljoen**. Daarmee is Legoland na Europa-Park en Phantasialand het op twee na drukst bezochte pretpark van Duitsland. Merlin Entertainments exploiteert het sinds 2005. In 2019 kochten drie
+investeerders Merlin voor € 6,6 miljard: Blackstone, een Canadees pensioenfonds en Kirkbi, de
+beleggingsmaatschappij van de Lego-eigenaars. Het park wordt nog steeds door Merlin beheerd.
 
 Volgens het park zelf telt het nu **68 attracties in 11 themawerelden** en meer dan 58 miljoen
 Lego-steentjes. Miniland bestaat volgens het park uit meer dan 23 miljoen daarvan, gebouwd door 140
-modelontwerpers. De Allianz Arena staat er met ruim een miljoen steentjes, volgens Wikipedia 1,5 ton
-zwaar en met 30.000 minifiguren op de tribunes, en in het Reichstaggebouw uit Berlijn zitten ongeveer
-1,07 miljoen steentjes. De jongste themawereld is **LEGO Mythica**, geopend op 25 maart 2023. Met ruim
-€ 15 miljoen was het de duurste uitbreiding van het park, en de wing coaster daar is de eerste nieuwe achtbaan in Legoland Deutschland in zo’n 20 jaar.
+modelontwerpers. De Allianz Arena daar bestaat uit ruim een miljoen steentjes en weegt volgens
+Wikipedia 1,5 ton. Op de tribunes zitten 30.000 minifiguren. In het Reichstaggebouw uit Berlijn
+zitten ongeveer 1,07 miljoen steentjes. De jongste themawereld is **LEGO Mythica**, geopend op 25 maart 2023. Met ruim
+€ 15 miljoen was het de duurste uitbreiding van het park. De wing coaster daar is de eerste nieuwe
+achtbaan in Legoland Deutschland in zo’n 20 jaar.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
 ## Minimumlengte en leeftijd bij de attracties
 
 In Legoland gelden bijna overal twee grenzen: een lengte en een leeftijd, apart voor meerijden met een
-volwassene en voor alleen rijden. Een attractie die een kind van 1,10 meter met een volwassene
-meeneemt, vraagt voor alleen rijden vaak 1,20. Het park bepaalt dat per attractie, en bij de ingang beslist het
+volwassene en voor alleen rijden. Waar een kind van 1,10 meter met een volwassene mee mag,
+heeft het voor alleen rijden vaak 1,20 nodig. Het park bepaalt dat per attractie, en bij de ingang beslist het
 personeel of iemand mee mag.
 
 | Attractie                                                                                 | Wat is het                       | met volwassene     | alleen                  |
@@ -114,7 +116,8 @@ Maximus van 2,00 meter. Dat raakt vooral ouders die mee willen.
 ## De grote attracties
 
 **[Maximus](ref:legoland-deutschland/maximus-the-guardians-flight)** is de eerste wing coaster in een
-Legoland, gebouwd door Bolliger & Mabillard, 17 meter hoog, met 15 meter per seconde, dus 54 km/u. Bij
+Legoland en komt van Bolliger & Mabillard. De baan is 17 meter hoog en rijdt 15 meter per seconde,
+dus 54 km/u. Bij
 de rit horen een helix en een kurkentrekker, en je benen hangen vrij in de lucht. Het park raadt de
 baan aan vanaf de basisschoolleeftijd.
 
@@ -153,10 +156,10 @@ luchtstoten op geanimeerde tegenstanders. Mist en warme lucht horen bij de show,
 staat vast wie de meeste punten had. De rit duurt ongeveer drieënhalve minuut, en het verhaal hoef je
 volgens het park niet te kennen.
 
-Voor de kleinere kinderen zijn er de **[Drachenjagd](ref:legoland-deutschland/dragon-hunt)**, een
-junior coaster van Gerstlauer uit 2003, vanaf een meter met een volwassene, en de
-**[Fire & Ice Tower](ref:legoland-deutschland/fire-and-ice-tower)**, waar je op negen meter hoogte
-draait en dan valt, al vanaf drie jaar. Bij de Wellenreiter en bij Käpt'n Nicks Piratenschlacht kunnen
+Voor de kleinere kinderen is er de **[Drachenjagd](ref:legoland-deutschland/dragon-hunt)**, een
+junior coaster van Gerstlauer uit 2003, waar ze met een volwassene vanaf een meter in mogen. In de
+**[Fire & Ice Tower](ref:legoland-deutschland/fire-and-ice-tower)** mogen ze al vanaf drie jaar. Je
+draait daar op negen meter hoogte en valt dan. Bij de Wellenreiter en bij Käpt'n Nicks Piratenschlacht kunnen
 toeschouwers aan de kant meedoen en de boten nat spuiten.
 
 ## Voor de allerkleinsten, vanaf twee
@@ -170,22 +173,23 @@ die er volgens Wikipedia sinds de opening staan.
 
 De twee **rijscholen** bestaan sinds 2002. In de
 **[Junior-rijschool](ref:legoland-deutschland/legoland-junior-driving-school-powered-by-hyundai)**
-rijden kinderen van drie tot zes jaar een eenvoudig parcours, in de
+rijden kinderen van drie tot zes jaar een eenvoudig parcours. In de
 **[rijschool](ref:legoland-deutschland/legoland-driving-school-powered-by-hyundai)** voor kinderen
 van zeven tot dertien jaar is er eerst theorieles en dan een parcours met stoplichten en
-verkeersborden, en aan het eind krijg je een Legoland-rijbewijs. Beide worden volgens Wikipedia
+verkeersborden. Aan het eind krijgen ze een Legoland-rijbewijs. Beide worden volgens Wikipedia
 samen met Hyundai uitgebaat.
 
 In **Miniland** staan de meeste modellen op schaal 1:20. Kasteel
 Neuschwanstein bestaat uit ruim 300.000 steentjes en was het eerste model dat de werkplaats van het
-park helemaal zelf ontwierp, en sinds 2025 staat er een 2,30 meter lange Fortnite-dino van 73.000
+park helemaal zelf ontwierp. Sinds 2025 staat er ook een 2,30 meter lange Fortnite-dino van 73.000
 onderdelen.
 
 ## Wachttijden per attractie en weekdag
 
-De tabel toont de tien attracties met de langste wachttijden, met de mediaan, het themagebied en de
-meetdagen. Ze gebruikt de Engelse namen van het park: Fire Dragon staat voor de Feuerdrache, Dragon
-Hunt voor de Drachenjagd, Pedal-A-Car voor de Tret-o-Mobil en Harbour Cruise voor de Hafenrundfahrt.
+In de tabel staan de tien attracties met de langste wachttijden, elk met de mediaan, het themagebied
+en het aantal dagen waarop we er gemeten hebben. De attracties staan er onder hun Engelse namen: Fire
+Dragon is de Feuerdrache, Dragon Hunt de Drachenjagd, Pedal-A-Car de Tret-o-Mobil en Harbour Cruise
+de Hafenrundfahrt.
 
 ```ride-waits-widget park=legoland-deutschland top=10 columns=land,days
 
@@ -201,18 +205,18 @@ De weekdag maakt in onze metingen het grootste verschil:
 
 ```
 
-De zaterdag is de drukste dag van de week en de vrijdag de rustigste. Elke weekdag heeft meer dan
-twintig meetdagen, maar uit één seizoen. In de
-[gids over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland) ligt de vrijdag ook onder de
-vakantiewerkdagen het laagst, en Legoland hangt sterker af van de vakanties in Beieren en
-Baden-Württemberg dan elk van de zes parken die daar worden vergeleken.
+De zaterdag is de drukste dag van de week en de vrijdag de rustigste. Elke weekdag hebben we op meer
+dan twintig dagen gemeten, maar wel in één seizoen. Ook in de
+vakantie is de vrijdag in onze metingen de werkdag met de kortste wachttijden. Van de zes parken die
+we in de [gids over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland) vergelijken, hangt
+Legoland het sterkst af van de vakanties in Beieren en Baden-Württemberg.
 
 ```stats-widget slug=legoland-deutschland show=months
 
 ```
 
-Augustus was de drukste maand. Juni en september lagen onder mei en juli. Oktober heeft tot nu toe
-maar vijf meetdagen, daar zeggen we niets over.
+Augustus was de drukste maand. In juni en september was het rustiger dan in mei en juli. In oktober
+hebben we tot nu toe maar vijf dagen gemeten, te weinig om er iets over te zeggen.
 
 De volgende tabel splitst de dag uit, met één rij per attractie en één kolom per uur. Het
 park gaat om 10.00 uur open, en de attracties sluiten een uur voor sluitingstijd.
@@ -221,28 +225,30 @@ park gaat om 10.00 uur open, en de attracties sluiten een uur voor sluitingstijd
 
 ```
 
-Bij Das Große LEGO Rennen en de Hafenrundfahrt ligt de hoogste waarde in de ochtend. Bij de Dschungel
-X-pedition en de Tret-o-Mobil stijgt de lijn vanaf de opening en blijft dan hoog. Bij de Feuerdrache,
-de Drachenjagd en Flying NINJAGO stijgt de lijn tot het middaguur en blijft dan op een vergelijkbaar niveau, en bij Maximus blijft de
-wachttijd bijna de hele dag gelijk.
+Bij Das Große LEGO Rennen en de Hafenrundfahrt is de wachttijd in de ochtend het langst. Bij de
+Dschungel X-pedition en de Tret-o-Mobil loopt hij vanaf de opening op en blijft dan hoog. Bij de
+Feuerdrache, de Drachenjagd en Flying NINJAGO loopt hij op tot het middaguur en verandert daarna
+weinig. Bij Maximus blijft de wachttijd bijna de hele dag gelijk.
 
-Op regendagen waren de wachttijden in Legoland volgens onze metingen 17 procent korter dan op
-vergelijkbare droge dagen, de cijfers van alle twaalf parken staan in de [regenvergelijking](/blog/pretpark-bij-regen). Het park zegt hetzelfde op zijn weerpagina: bij minder mooi weer is de wachttijd bij veel
+Op regendagen waren de wachttijden in Legoland volgens onze metingen 17 procent korter dan op droge
+dagen. We vergeleken daarbij alleen dagen uit dezelfde maand: doordeweeks met doordeweeks, weekend
+met weekend, vakantie met vakantie. De cijfers van alle twaalf parken staan in de
+[regenvergelijking](/blog/pretpark-bij-regen). Het park zegt hetzelfde op zijn weerpagina: bij minder mooi weer is de wachttijd bij veel
 attracties vaak korter.
 
 ## Rope drop loont hier niet
 
-Een rope-droptip geven we alleen als de dagpiek bij een attractie hoog genoeg is en de vroege start
-daar zoveel van scheelt dat de wekker het waard is. De drempels en de uitleg staan in het artikel
-[Is 70 minuten veel?](/blog/is-70-minuten-veel). Bij Legoland haalt geen van de negen attracties die
-het park als headliner aanmerkt die drempels, doordeweeks niet en in het weekend niet. Op de pagina
-van elk van deze attracties staat daarom geen rope-dropadvies.
+Vroeg komen raden we alleen aan als de wachttijd bij een attractie later op de dag lang wordt en je
+bij de opening zoveel korter wacht dat de wekker het waard is. Waar die grenzen liggen en waarom,
+staat in het artikel [Is 70 minuten veel?](/blog/is-70-minuten-veel). Bij Legoland haalt geen van de
+negen headliners die grenzen, doordeweeks niet en in het weekend niet. Op hun pagina’s bij ons staat
+daarom geen rope-dropadvies.
 
 ```glossary-widget slug=rope-drop
 
 ```
 
-Je hoeft niet om zeven uur op de parkeerplaats te staan. Wie vroeg komt, begint met de twee attracties waarvan de lijn alleen stijgt, de Dschungel X-pedition en de Tret-o-Mobil. Das Große LEGO Rennen en de Hafenrundfahrt zijn in de ochtend het drukst en passen daarom beter in de middag. Maximus, de Feuerdrache en Flying NINJAGO rijd je wanneer je wilt, omdat hun lijn nauwelijks beweegt. Wie het liever rustig heeft, komt op een vrijdag.
+Je hoeft niet om zeven uur op de parkeerplaats te staan. Wie vroeg komt, begint met de twee attracties waar de wachttijd in de loop van de dag alleen oploopt: de Dschungel X-pedition en de Tret-o-Mobil. Das Große LEGO Rennen en de Hafenrundfahrt zijn in de ochtend het drukst en passen daarom beter in de middag. Maximus, de Feuerdrache en Flying NINJAGO rijd je wanneer je wilt, omdat de wachttijd daar in de loop van de dag weinig verandert. Wie het liever rustig heeft, komt op een vrijdag.
 
 ## Fastrack: drie niveaus en de attracties
 
@@ -253,9 +259,9 @@ Fastrack geldt per persoon, bevat **geen toegang tot het park** en is alleen gel
 dag.
 
 Er zijn drie niveaus. **Brons** kost vanaf € 25, **Zilver** vanaf € 42 en **Goud** vanaf € 89. Goud
-geldt voor alle Fastrack-attracties van de dag, en het park kan om een id vragen omdat het niet
-doorgegeven mag worden. Bij Brons en Zilver gaat elke rit van je tegoed af. Een Fastrack-pakket
-wordt eens per drie minuten gescand, en het dagelijkse tegoed is beperkt. Fastrack werkt bij 18
+geldt voor alle Fastrack-attracties van de dag. Je mag het niet doorgeven, dus het park kan om een id
+vragen. Bij Brons en Zilver gaat elke rit van je tegoed af. Een Fastrack-pakket kan maar eens per
+drie minuten gescand worden. Het dagelijkse tegoed is beperkt. Fastrack werkt bij 18
 attracties, waaronder Maximus, Feuerdrache, Das Große LEGO Rennen, LEGO NINJAGO The Ride, Flying
 NINJAGO, Dschungel X-pedition, LEGOLAND Express, de uitkijktoren, Pyramiden Rallye, Wüsten X-kursion,
 Safari Tour, Piratenschule en LEGO Studios.
@@ -305,10 +311,10 @@ Het Halloween-evenement loopt van **3 oktober tot 8 november 2026** en zit in de
 zegt zelf dat er geen schrikmomenten zijn, alleen pompoenen, spoken en skeletten in het
 Land der Ritter. Wie geen versiering wil, vindt in het park gebieden zonder Halloween-thema.
 
-Tot het programma horen de “BOOlevard”, het versierde pad van de ingang door het park, de “Hexen
-BOOde” als beloning voor een opgeloste speurtocht, een monsterdans op het kasteelpodium op zaterdag,
-en de 4D-film “Die Monster sind los!” in de LEGO Studios. Die draait elk uur vanaf 11.00 uur, de
-laatste film een uur voor sluitingstijd. De **parade** begint op de Halloween-zaterdagen, 3, 10, 17,
+Tot het programma horen de “BOOlevard”, het versierde pad van de ingang door het park, en de “Hexen
+BOOde”, die je krijgt als beloning voor een opgeloste speurtocht. Op zaterdag dansen monsters op het
+kasteelpodium. In de LEGO Studios draait de 4D-film “Die Monster sind los!” elk uur vanaf 11.00 uur,
+de laatste een uur voor sluitingstijd. De **parade** begint op de Halloween-zaterdagen, 3, 10, 17,
 24 en 31 oktober, om 16.00 uur, en kan bij slecht weer vervallen. Op die zaterdagen blijft het park
 open tot **20.00 uur**, op 7 november tot 19.00 uur en op de andere dagen tot 18.00 uur. Wie op een
 Halloween-zaterdag komt, krijgt dus twee uur extra, maar ook de drukste weekdag.
@@ -324,8 +330,8 @@ Studios**, **LEGOLAND ATLANTIS by SEA LIFE** en de **LEGO Fabrik**. Atlantis hee
 meter lang. Daarnaast is er een **Regen Rallye**, een puzzelronde voor natte dagen.
 
 Tussen 24 december 2025 en 5 oktober 2026 viel in Legoland Deutschland
-op 18 procent van de openingsdagen minstens twee millimeter regen, zoals de
-[regenvergelijking](/blog/pretpark-bij-regen) voor twaalf parken laat zien. Het park zelf raadt een
+op 18 procent van de openingsdagen minstens twee millimeter regen. De cijfers voor alle twaalf parken
+staan in de [regenvergelijking](/blog/pretpark-bij-regen). Het park zelf raadt een
 paraplu, een regenponcho, waterdichte schoenen en droge kleren aan.
 
 ```weather-widget slug=legoland-deutschland
@@ -390,15 +396,17 @@ op feestdagen langer. Het park is dicht op 5 en 6 mei, van 18 tot 20 mei, op 8 e
 ### Wanneer is het in Legoland het rustigst?
 
 In onze metingen sinds december 2025 op vrijdag, in juni en in september. Het drukst waren de
-zaterdag en augustus. De kalender op de [parkpagina](ref:legoland-deutschland?calendar) toont de
-rustigere komende dagen, en op regendagen waren de wachttijden 17 procent korter dan op
-vergelijkbare droge dagen.
+zaterdag en augustus. De rustigere komende dagen zijn gemarkeerd in de kalender op de
+[parkpagina](ref:legoland-deutschland?calendar). Op regendagen waren de wachttijden 17 procent korter
+dan op vergelijkbare droge dagen in dezelfde maand.
 
 ### Hoe lang moet mijn kind zijn om mee te mogen?
 
 Met een volwassene vanaf 0,80 meter bij Käpt'n Nicks Piratenschlacht en vanaf 1,00 meter bij de
-Drachenjagd, de Dschungel X-pedition en de Fire & Ice Tower. Vanaf 1,10 meter Das Große LEGO Rennen
-en de Feuerdrache, vanaf 1,20 meter Maximus en vanaf 1,25 meter Flying NINJAGO. Voor alleen rijden vragen de meeste attracties 1,20 meter, Maximus, Power Builder en Käpt'n Nicks Piratenschlacht 1,30 meter. Daarbij hoort telkens een minimumleeftijd: met een volwassene tussen een en zeven jaar, alleen tussen zes en negen.
+Drachenjagd, de Dschungel X-pedition en de Fire & Ice Tower. Vanaf 1,10 meter mag een kind in Das Große
+LEGO Rennen en de Feuerdrache, vanaf 1,20 meter in Maximus en vanaf 1,25 meter in Flying NINJAGO. Om
+alleen te rijden heeft het bij de meeste attracties 1,20 meter nodig, bij Maximus, Power Builder en
+Käpt'n Nicks Piratenschlacht 1,30 meter. Daarbij hoort telkens een minimumleeftijd: met een volwassene tussen een en zeven jaar, alleen tussen zes en negen.
 
 ### Wat kost Legoland Deutschland?
 

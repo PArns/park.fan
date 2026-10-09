@@ -6,10 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Bij regen sta je in een pretpark korter in de rij. In alle twaalf parken die
-  we hebben onderzocht, waren de wachttijden op regendagen korter, in Movie Park
-  met bijna een derde. In Toverland zijn 22 van de 44 attracties overdekt, in
-  Phantasialand 14 van de 40 en in Walibi Holland geen enkele.
+  In alle twaalf pretparken die we vergeleken, sta je bij regen korter in de
+  rij. In Movie Park Germany waren de wachttijden op regendagen bijna een derde
+  korter. In Toverland is de helft van de attracties overdekt, in Walibi Holland
+  geen enkele.
 tags:
   - pretpark
   - regen
@@ -74,13 +74,13 @@ rideLinks:
 
 Wie op een regendag naar een pretpark gaat, staat gemiddeld korter in de rij. In
 alle twaalf parken die we hebben onderzocht, was de wachttijd bij de headliners
-op regendagen korter dan op vergelijkbare droge dagen, in Disneyland Paris met
-ongeveer 4 procent en in Movie Park met ongeveer 31 procent. Op zo'n dag heb je
-vooral wat aan de overdekte attracties. In Toverland is de helft van de 44
+op regendagen korter dan op vergelijkbare droge dagen. Het verschil loopt van
+ongeveer 4 procent in Disneyland Paris tot ongeveer 31 procent in Movie Park. Op
+zo'n dag heb je vooral wat aan de overdekte attracties. In Toverland is de helft van de 44
 attracties overdekt, in Walibi Holland geen enkele.
 
-Voor negen parken hebben we attractie voor attractie uitgezocht welke overdekt
-zijn, aan de hand van wat de parken zelf opgeven. Het gaat om Europa-Park,
+Voor negen parken vergelijken we attractie voor attractie welke overdekt zijn,
+aan de hand van wat de parken zelf opgeven. Het gaat om Europa-Park,
 Phantasialand, de Efteling, Toverland, Movie Park Germany, Plopsaland
 Deutschland, Heide Park, Walibi Belgium en Walibi Holland.
 
@@ -152,9 +152,10 @@ was.
 Met het aantal overdekte attracties heeft het verschil weinig te maken. In
 Walibi Holland staat geen enkele attractie in een hal, en op regendagen was de
 wachttijd er 6 procent korter. In Toverland zijn 22 van de 44 attracties
-overdekt, bij een verschil van 13 procent, in Heide Park drie van de 39, bij 12
-procent. Europa-Park heeft de meeste overdekte attracties en het op één na
-kleinste verschil, Movie Park met zijn horrorhuizen het grootste. Ik vermoed dat
+overdekt, en daar was de wachttijd 13 procent korter. In Heide Park zijn het er
+maar drie van de 39, en daar was hij 12 procent korter. Europa-Park heeft de
+meeste overdekte attracties, maar het op één na kleinste verschil. Het grootste
+verschil heeft Movie Park met zijn horrorhuizen. Ik vermoed dat
 er op regendagen overal minder mensen komen en dat de rest zich per park over
 meer of minder overdekte attracties verdeelt. Met deze cijfers kan ik dat niet
 aantonen.
@@ -180,9 +181,9 @@ Park samen ziet dat er per maand zo uit:
 | augustus   |                             185 |                            18 % |
 | september  |                             162 |                            16 % |
 
-Dit is maar één jaar. In 2026 was juli droog en waren mei en juni nat, en in
-2027 kan dat er heel anders uitzien. Als grove indicatie kun je er wel mee
-werken. In het hoogseizoen was ongeveer één op de vijf openingsdagen een
+Dit is maar één jaar. In 2026 was juli droog en waren mei en juni nat. In 2027
+kan dat er heel anders uitzien. Als grove indicatie kun je er wel mee werken: in
+het hoogseizoen was ongeveer één op de vijf openingsdagen een
 regendag, in sommige maanden één op de drie.
 
 ## Europa-Park
@@ -236,16 +237,15 @@ lift. Op één plek kantelt een stuk rails met de wagen erop, bij Fear naar vore
 en bij Force opzij. Crazy Bats rijdt sinds 1988 in dezelfde hal, sinds 2019 met
 VR-brillen. Mystery Castle is een droptower van 65 meter die helemaal binnen in
 een toren zit. Voor kleinere kinderen zijn er verder Bumper Klumpen, Wözl's
-Duck Washer en Wupi's Wabi Wipper vanaf 100 centimeter, de Tittle Tattle Tree
-vanaf 110 en in Berlin de paardencarrousel, Die 3 Mausketiere en het Verrückte
-Hotel Tartüff.
+Duck Washer en Wupi's Wabi Wipper vanaf 100 centimeter en de Tittle Tattle Tree
+vanaf 110. Voor hen staan in Berlin ook de paardencarrousel, Die 3 Mausketiere
+en het Verrückte Hotel Tartüff.
 
 ![Een reusachtige aardewerken pot met open deksel, er staat een ladder tegenaan | In de hal van Winja’s Fear & Force in Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
 Taron, Black Mamba en de andere grote achtbanen rijden buiten. Bij aanhoudende
-regen heb je in Brühl de 14 overdekte attracties, met daarbij drie achtbanen: de
-twee in Wuze Town en Crazy Bats. De rest zijn darkrides, madhouses, een
-droptower en attracties voor gezinnen.
+regen heb je in Brühl drie achtbanen onder een dak: de twee in Wuze Town en
+Crazy Bats.
 
 ```ride-waits-widget rides=phantasialand/winjas-fear|Winja's Fear|Spinning Coaster;phantasialand/winjas-force|Winja's Force|Spinning Coaster;phantasialand/mystery-castle|Mystery Castle|Drop Tower;phantasialand/maus-au-chocolat|Maus au Chocolat|Dark Ride;phantasialand/crazy-bats|Crazy Bats|Indoor-coaster columns=type,peak,days
 
@@ -291,9 +291,9 @@ Meer over het park lees je in
 
 [Toverland](ref:attractiepark-toverland) in Sevenum is begonnen als hal voor
 regendagen. Oprichter Jean Gelissen kwam op het idee toen een regenbui een eind
-maakte aan een uitstapje met zijn kinderen, en op 19 mei 2001 ging de
-eerste hal open, het huidige Land van Toos. In 2004 kwam het Wunderwald erbij
-als tweede hal. Vandaag zijn 22 van de 44 attracties overdekt. Dat is precies
+maakte aan een uitstapje met zijn kinderen. Op 19 mei 2001 ging de eerste hal
+open, het huidige Land van Toos, en in 2004 kwam het Wunderwald erbij als tweede
+hal. Vandaag zijn 22 van de 44 attracties overdekt. Dat is precies
 de helft en daarmee het grootste aandeel van de negen parken. Twaalf daarvan
 staan in Land van Toos, vijf in het Wunderwald, twee in Port Laguna en telkens
 één in de Magische Vallei en in Avalon. De 22e is Morrels BOEderij.
@@ -351,7 +351,7 @@ Alles over het park staat in de [Movie Park-gids](/blog/movie-park-germany-wacht
 ## Plopsaland Deutschland
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch heette tot juni
-2025 Holiday Park. Van de 57 attracties zijn er 13 overdekt, en vijf daarvan zijn
+2025 Holiday Park. Van de 57 attracties zijn er 13 overdekt. Vijf daarvan zijn
 horrorhuizen van de Halloween Fright Nights: NEXUS AI, Academy of Freaks, Titty
 Twister, Mad Rat en het Schnitzelhaus. De andere acht zijn de darkride The
 Smurfs' Adventure, die in een eigen gebouw staat, en zeven ritten en
@@ -443,11 +443,9 @@ Stand van 6 oktober 2026:
 | Heide Park             |        3 |     28 |
 | Walibi Holland         |        0 |     39 |
 
-In de kolom “Overdekt” tellen alle attracties mee, ook die waarin je niet rijdt.
-Bij Europa-Park zijn dat tien stations, drie doolhoven en een ballenbad, bij
-Toverland veel klim- en speelplekken, bij Movie Park en Plopsaland horrorhuizen
-die alleen rond Halloween 's avonds opengaan, en bij de Efteling onder meer het
-Diorama en het museum.
+In de kolom “Overdekt” tellen alle attracties mee, ook die waarin je niet rijdt:
+stations, doolhoven, ballenbaden, speelplekken, een museum en horrorhuizen die
+alleen rond Halloween 's avonds opengaan.
 
 In deze vergelijking van de typische wachttijden in de negen parken is
 Europa-Park gemarkeerd:
@@ -456,9 +454,9 @@ Europa-Park gemarkeerd:
 
 ```
 
-Regent het de hele dag, dan zou ik naar de Efteling gaan voor de darkrides en
-naar Phantasialand als ik ook in een achtbaan wil. Daar zijn drie achtbanen
-overdekt. Europa-Park heeft ook zonder de stations en doolhoven meer overdekte
+Regent het de hele dag en wil ik darkrides zien, dan zou ik naar de Efteling
+gaan. Wil ik ook in een achtbaan, dan naar Phantasialand, waar drie achtbanen
+overdekt zijn. Europa-Park heeft ook zonder de stations en doolhoven meer overdekte
 attracties dan die twee, maar op regendagen waren de wachttijden daar maar 5
 procent korter. Met kleine kinderen zou ik naar Toverland of Plopsaland gaan.
 Movie Park, Heide Park en Walibi Holland zou ik niet uitkiezen voor een
@@ -489,12 +487,13 @@ daar “Je kunt nat worden”, en op de pagina van elke attractie staat of ze bi
 onder een dak is of buiten zonder dak. Wordt er voor de komende uren regen
 voorspeld, dan verschijnt op de parkpagina de melding “Regen in het park” met de
 tijd tot de regen begint en hoe hard het gaat regenen. Tik je erop, dan zie je
-eronder tot vier overdekte attracties die op dat moment draaien. Deel je je locatie, dan staan de attracties met de kortste looptijd
-plus wachttijd bovenaan, anders die met de kortste wachttijd.
+eronder tot vier overdekte attracties die op dat moment draaien. Deel je je
+locatie, dan staan de attracties met de kortste looptijd plus wachttijd bovenaan,
+anders die met de kortste wachttijd.
 
 Het filter “Overdekt” en de lijst onder de regenmelding zijn er voorlopig alleen
-in parken waarvan we weten welke attracties overdekt zijn, waaronder alle parken
-hierboven.
+in parken waarvan we weten welke attracties overdekt zijn, waaronder alle negen
+parken uit dit artikel.
 
 ## Veelgestelde vragen
 
@@ -506,15 +505,15 @@ van het park met ongeveer 4 tot 31 procent. We vergeleken elke regendag met
 droge dagen uit dezelfde maand, doordeweekse dagen met doordeweekse dagen,
 weekend- en feestdagen met weekend- en feestdagen, en dagen in de schoolvakantie
 met dagen in de schoolvakantie. Meegeteld zijn de openingsdagen van 24 december
-2025 tot en met 5 oktober 2026, en een regendag is een dag met minstens 2
-millimeter neerslag.
+2025 tot en met 5 oktober 2026. Een regendag is een dag met minstens 2 millimeter
+neerslag.
 
 ### Welke pretparken hebben veel overdekte attracties?
 
-Van de negen parken waarvoor we attractie voor attractie hebben uitgezocht wat
-overdekt is, heeft Europa-Park er met 34 de meeste, al zijn 14 daarvan stations,
-doolhoven en een ballenbad. In Toverland zijn 22 van de 44 attracties overdekt,
-het grootste aandeel, en in Phantasialand 14 van de 40. In Walibi Holland staat
+Van de negen parken in onze vergelijking heeft Europa-Park met 34 de meeste
+overdekte attracties, al zijn 14 daarvan stations, doolhoven en een ballenbad.
+Het grootste aandeel heeft Toverland, waar 22 van de 44 attracties overdekt zijn.
+In Phantasialand zijn het er 14 van de 40. In Walibi Holland staat
 geen enkele attractie in een hal.
 
 ### Rijden achtbanen bij regen?
@@ -528,7 +527,7 @@ status wordt elke vijf minuten bijgewerkt.
 
 Afgaande op onze cijfers Toverland of Plopsaland Deutschland. In Toverland zijn
 22 van de 44 attracties overdekt, bijna allemaal voor gezinnen met kleine
-kinderen, en 17 daarvan staan in de hallen Land van Toos en Wunderwald. Voor de
+kinderen. Daarvan staan er 17 in de twee hallen Land van Toos en Wunderwald. Voor de
 Toos-Express, de enige overdekte achtbaan, geldt een minimumlengte van 90
 centimeter. In Plopsaland in Haßloch zijn acht ritten en speelplekken
 overdekt, zeven daarvan in de indoorhal, van Tabaluga's Rollercoaster tot het
@@ -546,8 +545,8 @@ gemiddelde over meerdere jaren hebben we nog niet.
 
 ## Bronnen & verder lezen
 
-- Wachttijden op regendagen en aantal regendagen: eigen meting van park.fan uit de dagcijfers van wachttijden en weer, 24 december 2025 tot en met 5 oktober 2026, weergegevens van [Open-Meteo](https://open-meteo.com/)
-- Welke attracties overdekt zijn, minimumlengtes, fabrikanten en openingsjaren: door park.fan vastgelegd op basis van de gegevens van de parken, stand van 6 oktober 2026
+- Wachttijden op regendagen en aantal regendagen: eigen meting van park.fan uit de dagelijkse wachttijden en neerslag, 24 december 2025 tot en met 5 oktober 2026, weergegevens van [Open-Meteo](https://open-meteo.com/)
+- Welke attracties overdekt zijn, minimumlengtes, fabrikanten en openingsjaren: op basis van de gegevens van de parken, stand van 6 oktober 2026
 - Plopsaland Deutschland, voorheen Holiday Park, naamswijziging in 2025 en indoorhal: [Plopsaland Deutschland (Wikipedia)](https://nl.wikipedia.org/wiki/Plopsaland_Deutschland)
 - Turbine, Shuttle Loop van Schwarzkopf uit 1982: [Turbine op RCDB](https://rcdb.com/921.htm)
 - Details over Wuze Town, Mystery Castle, Dämonen Gruft, Ghostbusters 5D, Van Helsing's Factory, Turbine, de geschiedenis van Toverland, het weer in Phantasialand en de winteropenstelling van Walibi Holland: onze gidsen over [Phantasialand](/blog/phantasialand-wachttijden-tips), [Heide Park](/blog/heide-park-wachttijden-tips), [Movie Park](/blog/movie-park-germany-wachttijden-tips), [Toverland](/blog/toverland-troy-wachttijden-tips), [Walibi Belgium](/blog/walibi-belgium-wachttijden-tips) en [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), plus de [gids over pretparken in de winter](/blog/winter-pretparken-2026)

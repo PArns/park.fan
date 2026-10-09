@@ -6,12 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Sinds juni 2025 heet het Holiday Park in Haßloch Plopsaland Deutschland, en
-  veel mensen zoeken het nog steeds onder de oude naam. Er staat een achtbaan
-  die twee keer tot beste ter wereld is gekozen, en sinds maart 2026 staat er
-  een tweede naast. Op 225 gemeten dagen stond je bij de meeste attracties maar
-  een paar minuten in de rij, op vrijdagen buiten het Halloweenseizoen het
-  kortst, en de Express Pass van 35 euro loont het meest op een zaterdag in juli.
+  In Plopsaland Deutschland, het vroegere Holiday Park in Haßloch, sta je bij de
+  meeste attracties maar een paar minuten in de rij. Het rustigst is het op
+  vrijdag, behalve op de Halloween-vrijdagen in oktober. De Express Pass van
+  35 euro loont het meest op een zaterdag in juli.
 tags:
   - plopsaland-deutschland
   - holiday-park
@@ -34,8 +32,9 @@ rideLinks:
 seo:
   title: 'Plopsaland Deutschland 2026: wachttijden, prijzen, beste dagen'
   description: >-
-    Gemeten wachttijden uit 225 dagen, prijzen van de Express Pass, minimale
-    lengtes en de weekdag met de kortste wachtrijen in het vroegere Holiday Park.
+    In het vroegere Holiday Park in Haßloch wacht je bij de meeste attracties
+    maar een paar minuten. Het rustigst is het op vrijdag, behalve met
+    Halloween.
   keywords:
     - Plopsaland Deutschland
     - Holiday Park
@@ -55,15 +54,14 @@ seo:
 ---
 
 Wie in Haßloch het Holiday Park zoekt, vindt het nog steeds. De straat heet nog altijd
-Holiday-Park-Straße, het huisnummer is hetzelfde gebleven, en de achtbaan waarvoor de meesten
-komen staat sinds 2001 op dezelfde plek. Alleen het park heet sinds 28 juni 2025 anders:
-[Plopsaland Deutschland](ref:plopsaland-deutschland), naar de Belgische uitbater die het al
-sinds november 2010 in handen heeft.
+Holiday-Park-Straße, en het huisnummer is hetzelfde gebleven. Ook de achtbaan waarvoor de meesten
+komen, staat sinds 2001 op dezelfde plek. Alleen het park heet sinds 28 juni 2025 anders:
+[Plopsaland Deutschland](ref:plopsaland-deutschland). De naam komt van de Belgische uitbater, die
+het park al sinds november 2010 in handen heeft.
 
 Wie in 2026 een ticket zoekt en “Holiday Park” intikt, vindt ook pagina's uit eerdere jaren, met
 prijzen die niet meer gelden. Een ticket met vaste datum kost in 2026 online vanaf 36 euro. De
-uitbater voert de oude merknaam sinds de naamswijziging niet meer; de straat en het huisnummer
-wel.
+uitbater gebruikt de oude naam sinds de naamswijziging niet meer.
 
 Het park ligt in de Palts, tussen Neustadt an der Weinstraße en Ludwigshafen, op 40 hectare. In
 2025 kwamen er 804.218 bezoekers, volgens de uitbater het beste jaar uit de parkgeschiedenis.
@@ -79,8 +77,8 @@ Rijnland-Palts. Wij meten hier al twee jaar wachttijden, op dit moment bij 57 at
 [bigFM Expedition GeForce](ref:plopsaland-deutschland/bigfm-expedition-geforce) is een
 Intamin-baan uit 2001, en hij is de reden dat mensen uit Hamburg naar de Palts rijden. Het park
 geeft 55 meter hoogte op, 120 km/u, 1.220 meter baanlengte, 1:15 minuut rijtijd en tot 4,5 g.
-De Duitse Wikipedia noemt 53 meter; dat is de hoogte van het spoor tegenover de opgave van het
-park, dat vanaf het hoogste punt van de lifthill meet. Waar de twee uiteenlopen, nemen we het
+In de Duitse Wikipedia staat 53 meter. Daar gaat het om de hoogte van het spoor, terwijl het
+park vanaf het hoogste punt van de lifthill meet. Waar de twee uiteenlopen, nemen we het
 getal van het park.
 
 ```glossary-widget slug=hyper-coaster
@@ -88,21 +86,20 @@ getal van het park.
 ```
 
 Bij de opening was het de snelste achtbaan van Europa en na The Big One in het Engelse Pleasure
-Beach Resort de op een na hoogste. Allebei is hij allang niet meer. Wat hij wel gebleven is,
-laat zich moeilijker in een tabel zetten: hij kreeg meermaals de Golden Ticket Award van het
+Beach Resort de op een na hoogste. Allebei is hij allang niet meer. Maar hij kreeg meermaals de Golden Ticket Award van het
 vakblad _Amusement Today_ als beste achtbaan van Europa en werd in de _Internet Coaster Poll_
 meer dan eens tot beste achtbaan ter wereld gekozen. Het park telt inmiddels 40 onderscheidingen.
 
 De reden ligt achter de eerste afdaling. De baan heeft geen inversie, geen launch en geen
-wissel. Hij heeft drie heuvels die zo gebouwd zijn dat de trein bovenaan lichter is dan zijn
-passagiers, en een helix aan het eind waarin dat effect omslaat. Wie om airtime komt, zit hier
+wissel. Hij heeft drie heuvels waarop je bovenaan uit je stoel wordt getild, en aan het eind een helix
+waarin je juist in je stoel wordt gedrukt. Wie om airtime komt, zit hier
 goed.
 
 ![Blik van bovenaf op een rode stalen achtbaan waarvan het spoor in lange heuvels en een brede bocht door bebost terrein loopt. | Expedition GeForce vanaf de Free Fall Tower. De drie heuvels na de eerste afdaling zijn waar de baan haar reputatie verdiende. Foto: Hetamin1000, Wikimedia Commons (Public Domain) | right](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
 
-Praktisch: vanaf 140 centimeter, daaronder helemaal niet. De baan rijdt vanaf 8 graden Celsius,
-wat in maart en november het verschil kan maken tussen een rit en een wandeling. De Express Pass
-geldt.
+Meerijden mag vanaf 140 centimeter, ook met begeleiding niet daaronder. De baan rijdt pas vanaf
+8 graden Celsius, wat in maart en november het verschil kan maken tussen een rit en een wandeling.
+De Express Pass geldt ook hier.
 
 ## De andere drie achtbanen
 
@@ -117,12 +114,12 @@ gemeten aan de temperatuur van het spoor.
 
 **100% Wolf – De familieachtbaan** is de nieuwigheid van 2026, geopend op 22 maart. Gerstlauer
 bouwde hem: 17,5 meter hoog, 760 meter lang, 55 km/u, met een launchgedeelte, een wissel voor de
-achterwaartse rit en een spike als slotelement. Hij is de reden dat het park dit jaar überhaupt
-in de nieuwighedenlijsten staat, en het is een familiebaan: vanaf 100 centimeter met begeleiding,
-vanaf 130 alleen, en hij rijdt al vanaf 5 graden.
+achterwaartse rit en een spike als slotelement. Door hem staat het park dit jaar überhaupt in
+de nieuwighedenlijsten. Het is een familiebaan: kinderen mogen vanaf 100 centimeter met begeleiding
+mee en vanaf 130 alleen. Hij rijdt al vanaf 5 graden.
 
-In onze metingen staat hij bovenaan bij de wachttijden van het park, en dat zegt meer over het
-park dan over de baan. Daarover verderop meer.
+In onze metingen wacht je hier langer dan bij elke andere attractie in het park. Veel betekent
+dat niet, want in Plopsaland sta je bij bijna alle attracties maar kort in de rij.
 
 **Tabaluga's Rollercoaster** van Zierer is met 9 meter en 39 km/u de kleinste van de vier en de
 enige onder een dak: hij hoort bij de hal Holiday Indoor, die in 2018 op 5.000 vierkante meter
@@ -133,7 +130,7 @@ openging. Op een regendag is dat het deel van het park dat ineens vol staat.
 De Free Fall Tower was in 1997 de eerste valtoren van Duitsland, een Giant Drop van Intamin,
 70 meter hoog, vanaf 120 centimeter. Het is wat je vanaf de A65 ziet voordat je de afslag neemt.
 
-Twee waterattracties vullen de zomer:
+Voor warme dagen zijn er twee waterattracties:
 
 - **DinoSplash**, tot 2019 Donnerfluss, is uit 1984 en was de eerste rapid river van Duitsland.
   500 meter, gevoed met grondwater, vanaf 110 centimeter met begeleiding en vanaf 130 alleen.
@@ -143,8 +140,8 @@ Twee waterattracties vullen de zomer:
   achterwaartse schot. Vanaf 100 centimeter met begeleiding, vanaf 140 alleen.
 
 Daarnaast staat **Splash Battle** in het Wickieland, waar bootbemanningen en omstanders elkaar
-natspuiten, en **Die große Welle**, een Disk'O van Zamperla. Alle drie horen bij hetzelfde
-themagebied.
+natspuiten, en **Die große Welle**, een Disk'O van Zamperla. Ze staan allebei in het
+Wickieland, net als Wickie Splash.
 
 ![Platte boten met drakenkoppen drijven door een turquoise bassin, ernaast schietschijven en een grijze rots met een glijbaan. | Splash Battle in Wickieland, daarachter het spoor van Expedition GeForce. Foto: Freak-Line-Community, Wikimedia Commons (CC BY-SA 4.0) | right](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
 
@@ -182,7 +179,7 @@ Dat is plan B bij regen en de reden dat een bezoek in oktober hier minder riskan
 park dat alleen buiten ligt.
 
 In het **Palts-dorp** staan DinoSplash en De Smurfen Avontuur, plus restaurant Pfalzgraf en het
-reuzenwijnvat van Maurer Söhne. Het **Wickieland** draagt Wickie Splash, Splash Battle en Die
+reuzenwijnvat van Maurer Söhne. In het **Wickieland** staan Wickie Splash, Splash Battle en Die
 große Welle. **Air Show 71** werd tot juli 2016 aangelegd op de plek van de verkochte Bounty
 Tower en heeft Sky Fly, Balloon Race, De Rode Baron en de Wellenflug. Daarbij komen de kleinere
 gebieden **The Beach** met de Lighthouse Tower en de vissersboten, **Blinky Bill** met de
@@ -191,51 +188,50 @@ waterspeeltuin.
 
 ### Shows en meet-and-greets
 
-Het park voert 16 programmapunten, en op drie na zijn het ontmoetingen met de figuren van
+Op het programma van het park staan 16 punten, en op drie na zijn het ontmoetingen met de figuren van
 Studio 100: Maja en haar vrienden, Wickie en Halvar, Tabaluga, Heidi en Peter, de Smurfen,
 Blinky Bill en sinds 2026 Freddy Lupin uit 100% Wolf. Daarbij komen de Smurfenshow, de Plopsa
 Heroes Show en een dansprogramma.
 
-Voor de planning betekent dat twee dingen. Ten eerste staan de tijden pas 's ochtends vast en
-hangen ze aan het dagprogramma dat het park per datum op zijn openingstijdenpagina publiceert.
-Ten tweede trekken de meet-and-greets publiek weg bij de attracties: terwijl Maja om 10.50 uur
+De tijden staan pas 's ochtends vast. Ze hangen aan het dagprogramma dat het park voor elke datum
+op zijn openingstijdenpagina publiceert. Bovendien trekken de meet-and-greets publiek weg bij de
+attracties: terwijl Maja om 10.50 uur
 op het Majaland-podium staat, is het bij de Free Fall Tower rustiger.
 
 ## Hoe lang je hier echt aanschuift
 
-Wij verzamelen de wachttijden van dit park sinds 7 oktober 2024, inmiddels op 225 dagen met
-bedrijf. De cijfers hieronder komen uit dat venster en niet uit één seizoen.
+Wij meten de wachttijden in dit park sinds 7 oktober 2024, inmiddels op 225 openingsdagen. De
+cijfers hieronder komen uit die hele periode en niet uit één seizoen.
 
 ```ride-waits-widget park=plopsaland-deutschland top=8 columns=land,peak,days highlight=bigfm-expedition-geforce
 
 ```
 
-Het getal dat bij de eerste blik op deze tabel opvalt, is hoe laag ze allemaal zijn. De mediaan
-ligt bij de meeste attracties op 5 of 10 minuten, en zelfs in het drukkere deel van een gewone
-dag worden dat er 10 tot 20. De attractie met de langste gemeten wachtrij van het park is
-100% Wolf, en die staat er met een mediaan van 10 minuten.
+Bij de eerste blik op de tabel valt op hoe kort de wachttijden zijn. De mediaan ligt bij de
+meeste attracties op 5 of 10 minuten. Zelfs in het drukkere deel van een gewone dag worden dat er
+maar 10 tot 20. Het langst wacht je bij 100% Wolf, met een mediaan van 10 minuten.
 
-Dat is geen meetfout maar de schaal van dit park: 804.218 bezoekers per jaar over 57 attracties
-verdelen zich anders dan 6 miljoen over honderd. Wie uit Europa-Park of Phantasialand komt en
+Een meetfout is het niet. 804.218 bezoekers per jaar verdelen zich over 57 attracties anders dan
+6 miljoen over honderd. Wie uit Europa-Park of Phantasialand komt en
 daar 60 minuten voor de hoofdattracties inplant, plant hier verkeerd.
 
-Daaruit volgt een planningsregel die eigen is aan dit park: de beperkende factor is niet de
-wachtrij maar de openingsduur. Acht uur, waarvan één voor lunch en lopen, laten bij een mediaan
+Hoeveel je op een dag rijdt, hangt hier daarom af van de openingstijden en nauwelijks van de
+wachtrijen. Acht uur, waarvan één voor lunch en lopen, laten bij een mediaan
 van tien minuten ruimte voor twintig ritten en meer. Wie een lijst met acht attracties meebrengt,
 is in de vroege middag klaar en beslist dan wat hij herhaalt. Dat is het verschil met een groot
 park, waar dezelfde lijst de hele dag vult.
 
-Het werkt ook andersom. Op een koude maartdag, waarop de twee achtgradenbanen stilstaan, blijft
-er voor volwassenen weinig over. De korte wachttijd is geen buffer tegen een gesloten attractie.
+Op een koude maartdag, waarop Expedition GeForce en Sky Scream door de kou stilstaan, blijft er
+voor volwassenen daarentegen weinig over.
 
 ```hourly-profile-widget slug=plopsaland-deutschland top=8
 
 ```
 
-Binnen de dag zie je het vertrouwde patroon: de curve stijgt in de ochtend, houdt over de
-middag aan en zakt in de namiddag weg. Wie de drie grote banen in het eerste uur na opening
-rijdt, komt er praktisch zonder aanschuiven langs, en bij een park van deze omvang komt dat
-neer op op tijd zijn.
+Over de dag lopen de wachttijden zoals in de meeste parken: ze stijgen in de ochtend, houden over
+de middag aan en zakken in de namiddag weg. Wie de drie grote banen in het eerste uur na opening
+rijdt, kan er praktisch zonder aanschuiven in. In een park van deze omvang hoef je daarvoor alleen
+bij de opening aanwezig te zijn.
 
 ### De Express Pass
 
@@ -243,17 +239,17 @@ neer op op tijd zijn.
 
 ```
 
-De Express Pass kost 7 euro voor één rit, 35 euro voor negen ritten en 95 euro voor onbeperkt
+De Express Pass kost 7 euro voor één rit, 35 euro voor negen ritten (Classic) en 95 euro voor onbeperkt
 veel, telkens per persoon per dag. Hij geldt bij acht attracties: 100% Wolf, DinoSplash, Wickie
 Splash, Die große Welle, bigFM Expedition GeForce, Sky Scream, Free Fall Tower en Sky Fly.
 Tussen twee ritten moeten minstens 15 minuten zitten, en het park verkoopt er maar een beperkt
 aantal.
 
-Rekenen loont hier meer dan elders. Bij een mediaan van 10 minuten bij de drukste baan koop je
-met de Classic van 35 euro negen keer ongeveer tien minuten af, dus grofweg anderhalf uur op een
-dag die toch om 18.00 uur eindigt. Op een zaterdag in juli of tijdens een Fright Night ziet die
-rekensom er anders uit dan op een vrijdag in september. Het prijskaartje is het hele jaar
-hetzelfde, de wachtrij niet.
+Rekenen loont hier meer dan elders. Bij de attractie met de langste wachttijden ligt de mediaan op
+10 minuten. Met de Classic van 35 euro bespaar je dus negen keer ongeveer tien minuten, grofweg
+anderhalf uur op een dag die toch om 18.00 uur eindigt. Op een zaterdag in juli of tijdens een Fright Night ziet die
+rekensom er anders uit dan op een vrijdag in september. De prijs blijft het hele jaar
+hetzelfde.
 
 ## Wanneer je moet gaan
 
@@ -264,10 +260,9 @@ hetzelfde, de wachtrij niet.
 ### De weekdag
 
 Zaterdag is met afstand de drukste dag van de week: mediaan 15 minuten, in het drukkere deel 20,
-gemeten over 39 zaterdagen. Alle andere dagen liggen op 10 minuten mediaan.
+gemeten over 39 zaterdagen. De meeste andere dagen liggen op 10 minuten mediaan.
 
-De rustigste dag is **vrijdag**, en dat is het ene resultaat van deze analyse dat je niet had
-geraden. Op 38 gemeten vrijdagen ligt de mediaan op 5 minuten en daarmee onder die van dinsdag,
+De rustigste dag is **vrijdag**, en dat had je niet geraden. Op 38 gemeten vrijdagen ligt de mediaan op 5 minuten en daarmee onder die van dinsdag,
 woensdag en donderdag. Wie een brugdag kan opnemen en kan kiezen tussen vrijdag en woensdag,
 neemt de vrijdag.
 
@@ -281,20 +276,19 @@ vrijdagavond het drukste deel van de week.
 
 ```
 
-Juli is de drukste maand en met een mediaan van 15 minuten naast oktober de enige die boven de
-10 van de overige hoogseizoensmaanden uitkomt. **September** is de rustigste maand met volledig
-bedrijf: mediaan 10 minuten, en in het drukkere deel van een dag eveneens maar 10, de laagste
-waarde van alle maanden tussen april en oktober. Daar komt bij dat het park dan nog dagelijks
-open is en het weer in de Palts in september vaak beter is dan in juni.
+Juli is de drukste maand. Met een mediaan van 15 minuten ligt hij net als oktober boven de
+10 minuten van de rest van het hoogseizoen. **September** is de rustigste maand waarin het park
+nog dagelijks open is. De mediaan ligt dan op 10 minuten, en ook in het drukkere deel van een dag
+is het maar 10, de laagste waarde van alle maanden van april tot oktober. Bovendien is het weer in
+de Palts in september vaak beter dan in juni.
 
 Maart en november zijn randmaanden. Dan rijden Expedition GeForce en Sky Scream alleen als de
 spoortemperatuur acht graden haalt, en een koude dag kost je precies de twee banen waarvoor je
 gekomen bent.
 
-Januari en februari staan in onze data op nul minuten. Dat is geen lege wachtrij maar de
-winterstop: het park is dan dicht, en het seizoen 2026 loopt van 22 maart tot 1 november. Wie
-een bezoek plant heeft dus ruim zevenenhalve maand om uit te kiezen, waarvan de randweken aan
-de achtgradenregel hangen.
+Bij januari en februari staat nul minuten, omdat het park dan dicht is. Het seizoen 2026 loopt
+van 22 maart tot 1 november. Voor een bezoek heb je dus ruim zevenenhalve maand om uit te kiezen,
+en in de eerste en laatste weken hangt veel af van de achtgradenregel.
 
 ```best-days-widget slug=plopsaland-deutschland
 
@@ -307,15 +301,14 @@ De Halloween Fright Nights lopen in oktober op elke vrijdag en zaterdag: op 9 en
 plaats van tot 18.00 uur. Op alle andere oktoberdagen blijft het bij 10.00 tot 18.00 uur.
 
 Overdag komen daar het Plopsa Herfstfeest en een pompoententoonstelling in het pompoendorp bij,
-die ook met kleine kinderen werken. De mazes lopen uitsluitend op de Fright Nights, en ze duiken
-bij ons als eigen attracties op zodra ze opengaan: Skrämma, NEXUS AI, Murder District, Academy
+die ook geschikt zijn voor kleine kinderen. De mazes, griezelhuizen waar je doorheen loopt, gaan
+alleen op de Fright Nights open: Skrämma, NEXUS AI, Murder District, Academy
 of Freaks, Scarecrow, Titty Twister en LOST: Deep in the woods, plus Holly's Halloween Party en
-een ontmoeting met King Pumpkin voor de jongere gasten. Op de overige dagen staan ze op de
-parkpagina als gesloten, en zo is het ook bedoeld.
+een ontmoeting met King Pumpkin voor de jongere gasten. Op onze parkpagina staan ze als eigen
+attracties, op de overige dagen als gesloten. Dat is geen fout.
 
-Twee dingen lopen op een Fright Night anders dan overdag. De dagattracties sluiten deels eerder
-dan het park, DinoSplash bijvoorbeeld om 20.00 uur. En de acht uur die je anders hebt zijn er
-twaalf, waarvan de laatste vier aan de mazes toebehoren. Wat het park voor dit seizoen heeft
+Op een Fright Night sluiten sommige dagattracties eerder dan het park, DinoSplash bijvoorbeeld om
+20.00 uur. In plaats van acht uur heb je er dan twaalf, en de laatste vier zijn voor de mazes. Wat het park voor dit seizoen heeft
 aangekondigd, staat in ons bericht over de
 [Halloween Fright Nights 2026](/blog/plopsaland-deutschland-halloween-fright-nights-2026).
 
@@ -326,7 +319,7 @@ leiding, eerst met een houten wilde muis, een dolfijnenshow en een dorp dat late
 heette. De familie had al generaties een circus met kleine artiesten, en het park gaf dat een
 vaste plek; dat deel bestond tot 1996. De naam Holiday Park kwam er in 1973.
 
-Daarna gebeurde veertig jaar lang wat er in Duitse parken van deze omvang gebeurt: in 1973 de
+Daarna groeide het park stap voor stap: in 1973 de
 monorail Holiday Transit, in 1978 brandde de wilde muis af, in 1979 kwam de Superwirbel als
 eerste Duitse achtbaan met inversies, in 1984 de Donnerfluss, in 1997 de Free Fall Tower, in
 2001 de Expedition GeForce. Van de 70.000 vierkante meter uit het eerste seizoen werden het tot
@@ -337,8 +330,8 @@ Bij de Expedition GeForce hoort een episode die de reputatie van de baan mee hee
 doorrijden. Naast de baan staat sindsdien een monument daarvoor, en zijn recordpogingen leverden
 het park in die twee jaren berichtgeving ver buiten de regio op.
 
-De breuk kwam in november 2010, toen de Belgische Plopsa-groep het park overnam, een dochter van
-Studio 100. Sindsdien is het een themapark met samenhangende gebieden, en de mascottes heten
+De breuk kwam in november 2010, toen de Belgische Plopsa-groep, een dochter van Studio 100, het
+park overnam. Sindsdien is het een themapark met samenhangende gebieden, en de mascottes heten
 Maja, Wickie, Heidi, Mia en Tabaluga in plaats van Holly, de papegaai die hier eerder woonde. In
 2012 ontstond het Majaland op de plek van de oude ingang, en daarmee de huidige hoofdingang. In
 2018 volgde de indoorhal, in 2026 de nieuwe achtbaan.
@@ -349,13 +342,13 @@ daarvoor droeg. Voor bezoekers verandert er niets behalve de zoekopdracht.
 
 ## Wat er nog komt
 
-Voor 2028 bouwt het park aan een baan die in de lijst van huidige achtbanen nog geen naam heeft:
+Voor 2028 bouwt het park aan een achtbaan die nog geen naam heeft:
 een Xtreme Spinning Coaster van Mack Rides, die een Tomorrowland-thematisering moet krijgen
 zoals The Ride to Happiness in het Belgische zusterpark Plopsaland Belgium die al heeft. Hij
 staat in het masterplan van het park en bij RCDB als in aanbouw.
 
-Daarmee zou het park zijn vijfde achtbaan krijgen en de eerste sinds 100% Wolf die zich op
-volwassenen richt. Tot die tijd blijft de Expedition GeForce waarvoor je hierheen rijdt.
+Het zou de vijfde achtbaan van het park zijn en de eerste nieuwe sinds 100% Wolf. Anders dan de
+familiebaan richt hij zich op volwassenen. Tot die tijd blijft de Expedition GeForce waarvoor je hierheen rijdt.
 
 ## Overnachten en eten
 
@@ -364,15 +357,14 @@ Haßloch, Speyer, Deidesheim, Neustadt en Mannheim en verkoopt pakketten van tic
 overnachting. Wie toch in de Palts op vakantie is, heeft dat niet nodig: de afstanden zijn klein,
 en vanuit Neustadt of Speyer sta je in twintig minuten op de parkeerplaats.
 
-Bij het eten voert het park 22 punten, van snackkraam tot restaurant. Het adres voor een warme
+Eten kan in het park op 22 plekken, van snackkraam tot restaurant. Het adres voor een warme
 maaltijd aan tafel is restaurant Pfalzgraf, dat tussen 2015 en 2023 Casa Palatina heette;
 abonnementhouders krijgen er tien procent korting. Daarnaast staan er de Paltser wijn- en
 biertuin, Pasta Point, Koala Joe's Roadhouse in het Blinky-Bill-gebied, de Maja Burger in het
 Majaland, een Super Wings Fuel Station en een Dunkin' parkcafé.
 
-De regionale toets is geen toeval: het park ligt midden in een wijngebied, en een flammkuchen of
-een glas riesling horen hier bij het aanbod, wat je bij een park met tekenfilmmascottes niet per
-se verwacht.
+Het park ligt midden in een wijngebied, en een flammkuchen of een glas riesling krijg je hier ook,
+wat je bij een park met tekenfilmmascottes niet per se verwacht.
 
 ## Een dag in Haßloch, grof gepland
 
@@ -382,20 +374,20 @@ Het park opent om 10.00 uur en sluit buiten de Fright Nights om 18.00 uur. Acht 
 1. **10.00** Meteen naar de Expedition GeForce. Het eerste halfuur is hij leeg, en twee ritten
    achter elkaar zijn hier normaal en geen toeval.
 2. **10.45** Door naar Sky Scream, die er vlak naast ligt. Beide hangen aan de achtgradenregel,
-   dus het heeft zin ze vroeg af te werken als de dag koud begint.
-3. **11.30** 100% Wolf. De baan is nieuw en heeft daarom de langste wachtrij van het park, wat
-   bij tien minuten mediaan een te verdragen uitspraak is.
+   dus het loont ze vroeg af te werken als de dag koud begint.
+3. **11.30** 100% Wolf. De baan is nieuw en heeft daarom de langste wachtrij van het park, maar
+   bij tien minuten mediaan is dat goed te doen.
 4. **12.30** Lunch, daarna de waterattracties: DinoSplash en Wickie Splash liggen zo dat je ze
-   in één keer doet. Bij allebei word je nat, en in oktober is dat een beslissing en geen
-   bijeffect.
+   in één keer doet. Bij allebei word je nat, iets om in oktober vooraf over na te
+   denken.
 5. **14.30** Free Fall Tower en Sky Fly, plus de Lighthouse Tower voor het uitzicht over het
    terrein.
 6. **15.30** Met kinderen naar het Majaland en de indoorhal, zonder kinderen nog een keer naar
    de Expedition GeForce. De namiddag is de tweede rustige fase van de dag.
 7. **17.00** De Smurfen Avontuur of Splash Battle als laatste, dan naar de uitgang.
 
-Op een Fright Night schuift alles vier uur naar achteren: de mazes gaan 's avonds open, en de
-dagattracties lopen deels korter dan het park. DinoSplash bijvoorbeeld stopt om 20.00 uur.
+Op een Fright Night schuift alles vier uur naar achteren, omdat de mazes pas 's avonds opengaan.
+Sommige dagattracties sluiten dan eerder dan het park.
 
 ## Praktisch: bereikbaarheid, tickets, openingstijden
 
@@ -405,7 +397,7 @@ parknaam. Wie een navigatieadres intikt, heeft de nieuwe dus helemaal niet nodig
 **Met de auto.** Via de A65 of de B9, parkeerplaatsen direct aan het terrein. Wie alleen iemand
 brengt of ophaalt, kan tot 45 minuten gratis het terrein op; de slagboom gaat open via de
 kentekenherkenning. Wie de dag blijft staan heeft een parkeerkaart nodig, die het park naast de
-toegangskaarten verkoopt; in de Plopsa Pass Europe Premium van 235 euro zit een parkeerabonnement
+toegangskaarten verkoopt. In de Plopsa Pass Europe Premium van 235 euro zit een parkeerabonnement
 inbegrepen.
 
 **Met de trein.** Tot station Haßloch, vandaar rijdt meermaals per dag een shuttlebus naar het
@@ -416,7 +408,7 @@ gevraagd hem vooraf te reserveren.
 **Tickets.** Een ticket met vaste datum kost online vanaf 36 euro. Gezinstickets voor drie tot
 zes personen zijn er vanaf 43 euro per persoon. Een ticket zonder datum, een jaar lang geldig op
 één dag naar keuze, kost 58 euro. De dagprijs hangt van de datum af: voor donderdag 8 oktober
-2026 geeft de kalender van het park 42 euro aan.
+2026 staat in de kalender van het park 42 euro.
 
 **Abonnementen.** De Pass Light kost 120 euro per jaar en heeft tot 35 uitsluitingsdagen. De
 Plopsaland Deutschland Pass kost 150 euro, geldt op alle openingsdagen en levert korting op
@@ -445,27 +437,30 @@ minuut en 15 seconden.
 
 ### Vanaf welke lengte mag mijn kind mee?
 
-De twee grote achtbanen beginnen bij 140 centimeter, Sky Scream bovendien bij een
-minimumleeftijd van 14 jaar. De Free Fall Tower begint bij 120 centimeter. 100% Wolf en Wickie
-Splash laten kinderen vanaf 100 centimeter met begeleiding mee, DinoSplash vanaf 110. Alleen
+Voor de twee grote achtbanen, Expedition GeForce en Sky Scream, heeft een kind 140 centimeter
+nodig, voor Sky Scream bovendien een minimumleeftijd van 14 jaar. Voor de Free Fall Tower is dat
+120 centimeter. Met begeleiding mogen kinderen vanaf 100 centimeter in 100% Wolf en Wickie Splash,
+in DinoSplash vanaf 110. Alleen
 rijden vraagt bij 100% Wolf en DinoSplash 130 centimeter, bij Wickie Splash 140.
 
 ### Wanneer is het in Plopsaland Deutschland het rustigst?
 
 Op vrijdagen buiten het Halloween-seizoen, en in september. Op 38 gemeten vrijdagen lag de
-mediaan op 5 minuten, in de overige hoogseizoensmaanden op 10. Zaterdag is met 15 minuten de
+mediaan op 5 minuten. In september lag hij zoals in de meeste hoogseizoensmaanden op 10 minuten,
+maar ook in het drukkere deel van een dag op maar 10. Zaterdag is met 15 minuten de
 drukste dag.
 
 ### Hoe lang wacht je hier gemiddeld?
 
-Korter dan je uit andere parken gewend bent. Over alle gemeten dagen ligt het typische gemiddelde
-van het park op ruim 18 minuten, en bij de afzonderlijke attracties ligt de mediaan meestal op 5
-tot 10 minuten.
+Korter dan je uit andere parken gewend bent. Over alle gemeten dagen wacht je in het park
+gemiddeld ruim 18 minuten. Bij de afzonderlijke attracties ligt de mediaan meestal op 5 tot
+10 minuten.
 
 ### Is de Express Pass de moeite waard?
 
-Op een zaterdag in juli en tijdens de Fright Nights eerder dan op een vrijdag in september. De
-Classic van 35 euro koopt negen ritten via de verkorte ingang, met minstens 15 minuten ertussen.
+Op een zaterdag in juli en tijdens de Fright Nights eerder dan op een vrijdag in september. Met
+de Classic van 35 euro krijg je negen ritten via de verkorte ingang, met minstens 15 minuten
+ertussen.
 Bij de gemeten wachttijden van dit park bespaar je daarmee eerder anderhalf uur dan een halve
 dag.
 

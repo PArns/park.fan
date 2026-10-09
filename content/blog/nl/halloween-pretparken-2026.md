@@ -6,11 +6,10 @@ updatedAt: '2026-10-07'
 author: patrick
 mode: published
 excerpt: >-
-  Kettingzaag in Bottrop, slagershaak in Biddinghuizen, geduld met glühwein in
-  Brühl: Halloween 2026 in Duitsland, Nederland, België, Frankrijk, het
-  Verenigd Koninkrijk en Spanje, met alle data, de twee topparken die de hele
-  poppenkast uitzitten, en de vraag op welke avonden je niet eindeloos in de
-  rij staat.
+  Bij bijna alle grote Halloween-events van 2026 betaal je de spookhuizen apart,
+  bovenop je dagticket. Phantasialand en de Efteling doen helemaal niet aan
+  Halloween. Volgens onze prognose is het in de weekenden en op 31 oktober het
+  drukst.
 tags:
   - halloween
   - pretpark
@@ -36,8 +35,9 @@ coverImage:
 seo:
   title: 'Halloween pretparken 2026: data en durfproeven'
   description: >-
-    Halloween 2026 in Europa: Movie Park, Traumatica, Walibi, Toverland, Alton
-    Towers, PortAventura, twee parken zonder Halloween en de leegste avonden.
+    Het Halloween Horror Festival in Movie Park en Traumatica in het Europa-Park
+    lopen tot begin november. Phantasialand en de Efteling vieren geen
+    Halloween.
   keywords:
     - Halloween pretpark 2026
     - Halloween Horror Festival Movie Park 2026
@@ -71,12 +71,11 @@ avonden je die rookmachines in loopt zonder er eerst in de oktoberkou voor vast
 te vriezen.
 
 > [!NOTE]
-> **Bijgewerkt op 29 september 2026:** Alle data, leeftijdsgrenzen en prijzen
-> hieronder hebben we die dag naast de officiële eventpagina’s gelegd, die bij
-> elk park gelinkt staan. PortAventura draait sinds 19 september, Traumatica
-> sinds de voorpremière op 23 september, Movie Park, Disneyland Paris en Alton
-> Towers doen sinds 26 september mee. De rest begint in oktober. Veel prijzen
-> hangen af van de avond en lopen op naarmate die dichterbij komt.
+> **Data, leeftijdsgrenzen en prijzen per 29 september 2026.** PortAventura
+> draait sinds 19 september, Traumatica sinds de voorpremière op 23 september,
+> Movie Park, Disneyland Paris en Alton Towers doen sinds 26 september mee. De
+> rest begint in oktober. Veel prijzen hangen af van de avond en lopen op
+> naarmate die dichterbij komt.
 
 ## De grote horror-events ('s avonds, vaak vanaf 16)
 
@@ -199,9 +198,9 @@ middernacht in bed liggen.
 pyroshows en een kabaal dat je op de A5 richting huis nog in je oren hebt.
 
 Overdag is Rust een ander park, en een met verrassend korte rijen voor zijn
-formaat. In de [Europa-Park-gids](/blog/europa-park-wachttijden-tips) heb ik dat
-nagerekend, en daar staat ook waarom een Traumatica-ticket in november je het
-laatste parkuur kost.
+formaat. Hoe kort die rijen zijn en waarom een Traumatica-ticket in november je het
+laatste parkuur kost, staat in onze
+[Europa-Park-gids](/blog/europa-park-wachttijden-tips).
 
 [Europa-Park](ref:europa-park?full)
 
@@ -484,7 +483,7 @@ de lange dagen tot 21 uur.
 
 [Heide-Park](ref:heide-park?full)
 
-Bron: [persbericht van het Heide-Park van 4 oktober 2026](https://www.heide-park.de/presse/pressemeldungen/halloween-2026/) (in het Duits), geraadpleegd op 7 oktober 2026.
+Bron: [persbericht van het Heide-Park van 4 oktober 2026](https://www.heide-park.de/presse/pressemeldungen/halloween-2026/) (in het Duits).
 
 Actuele data en leeftijdsindicaties:
 [heide-park.de → Halloween](https://www.heide-park.de/en/explore/events/halloween/).
@@ -671,9 +670,8 @@ Het bezoekersplafond van vijf miljoen en de Winter Efteling staan in de
 
 Meer dan welke line-up ook beslist over de avond **wanneer je komt.** Het
 drukst wordt het in de weekenden en op 31 oktober, en zo staat het ook in onze
-druktekalender voor bijna alle parken in deze gids. Onze metingen beginnen
-alleen pas eind december 2025, en een Halloween-oktober hadden we op 29
-september 2026 bij geen van die parken gemeten, dit is dus een prognose. Voor
+druktekalender voor bijna alle parken in deze gids. Het blijft wel een prognose, want onze metingen beginnen pas eind december 2025
+en bevatten nog geen Halloween-oktober. Voor
 doordeweekse dagen en de randweken van het seizoen staat er merkbaar minder
 drukte in (en hebben de acteurs dan meer tijd om zich exclusief met
 _jou_ bezig te houden, afhankelijk van je perspectief een voor- of nadeel).
@@ -695,11 +693,9 @@ dagen** uit onze AI-druktekalender bekijken:
 
 ```
 
-Voor Movie Park zit er nog geen gemeten Halloween-herfst in de kalender, neem
-zijn prognose voor de horroravonden dus met een korrel zout. Hoe druk het in
-Bottrop per weekdag en maand doorgaans wordt, staat in de statistiek. We meten daar pas
-sinds eind december 2025, tot 29 september 2026 zat er nog geen oktober bij, en
-Halloween moet je er voorlopig zelf bij denken:
+Neem de prognose voor de horroravonden in Movie Park met een korrel zout. Hoe
+druk het in Bottrop per weekdag en maand doorgaans wordt, staat in de
+statistiek, en Halloween moet je er voorlopig zelf bij denken:
 
 **Movie Park Germany, typische wachttijden per weekdag & maand**
 

@@ -7,9 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Op acht avonden tussen 23 oktober 2026 en 7 januari 2027 varen gasten met een
-  aperitief door Piraten in Batavia en eten ze daarna in restaurant Bamboe
-  Baai. Volwassenen betalen € 155, kinderen van 4 tot en met 11 jaar € 105.
+  Op acht avonden tussen 23 oktober 2026 en 7 januari 2027 is er in Europa-Park
+  een diner met show. Het aperitief krijg je tijdens een rit door Piraten in
+  Batavia, het eten daarna in restaurant Bamboe Baai. Volwassenen betalen
+  € 155, kinderen van 4 tot en met 11 jaar € 105.
 tags:
   - news
   - europa-park
@@ -29,8 +30,9 @@ coverImage:
 seo:
   title: 'Adventure in Batavia: dinner in Europa-Park vanaf 23 oktober'
   description: >-
-    Dinnershow in Europa-Park: acht avonden van 23 oktober 2026 tot 7 januari
-    2027, € 155 voor volwassenen, € 105 voor kinderen, rit en drankjes inbegrepen.
+    Europa-Park houdt de dinnershow “Adventure in Batavia” op acht avonden van
+    23 oktober 2026 tot 7 januari 2027. Volwassenen betalen € 155, kinderen
+    € 105.
   keywords:
     - Adventure in Batavia
     - Europa-Park dinner
@@ -47,8 +49,7 @@ persbericht.
 
 ## Wanneer en waar
 
-De evenementenpagina van het park noemt acht data, telkens met begin om 19.30
-uur en einde om 23.00 uur:
+Alle acht avonden beginnen om 19.30 uur en eindigen om 23.00 uur:
 
 | Datum            | Dag       |
 | ---------------- | --------- |
@@ -61,8 +62,9 @@ uur en einde om 23.00 uur:
 | 2 januari 2027   | zaterdag  |
 | 7 januari 2027   | donderdag |
 
-Je gaat naar binnen via de hoteltoegang van Europa-Park, en parkeren is gratis op de
-parkeerplaats van hotel “El Andaluz”. Je eet in restaurant Bamboe Baai, dat Aziatisch kookt en in het Nederlandse themagebied ligt.
+Je gaat naar binnen via de hoteltoegang van Europa-Park. Parkeren kan gratis op
+de parkeerplaats van hotel “El Andaluz”. Je eet in het Aziatische restaurant
+Bamboe Baai in het Nederlandse themagebied.
 
 ## Wat het kost en wat erbij zit
 
@@ -75,46 +77,46 @@ Volwassenen vanaf 12 jaar betalen € 155, kinderen van 4 tot en met 11 jaar
 - de show tussen de gangen
 - toegang tot Europa-Park vanaf 17.00 uur, zolang het seizoen loopt
 
-Alle acht avonden vallen in een seizoen. Volgens de seizoensdata van het park
-loopt Halloween tot en met 1 november, HALLOWinter van 2 tot en met 27 november
-en Winterzauber van 28 november tot en met 9 januari 2027. Andere kosten noemt
-de pagina niet. Een hotelovernachting is een apart aanbod. De
-evenementenpagina verwijst naar een combinatie van evenement en hotel, zonder
-daar een prijs bij te zetten.
+Alle acht avonden vallen in een seizoen van het park. Halloween loopt tot en
+met 1 november, HALLOWinter van 2 tot en met 27 november en Winterzauber van
+28 november tot en met 9 januari 2027. Andere kosten noemt de
+evenementenpagina niet. Een hotelovernachting boek je apart. Op de
+evenementenpagina staat een link naar een pakket met diner en hotel, maar geen
+prijs.
 
 ## Menu en show
 
 Het standaardmenu begint met een glasnoedelsalade met gemarineerde zalm in een
 bamboemandje. Daarna volgen een tomkhasoep met garnaal, een biryani met
 poularde en als dessert ananas in een knapperig jasje met pandan, honing en
-pistachenoten. Het vegetarische menu vervangt zalm en garnaal door tofu en een
-veganistische soep met groentedumpling, en heeft paneer in de biryani in plaats
-van poularde. Het kindermenu bestaat uit een tramezzinorol, wortelroomsoep,
+pistachenoten. In het vegetarische menu zit tofu in plaats van zalm en een
+veganistische soep met groentedumpling in plaats van de soep met garnaal. In de
+biryani zit dan paneer in plaats van poularde. Het kindermenu bestaat uit een tramezzinorol, wortelroomsoep,
 maïspoularde met aardappelgratin (op verzoek met “veganistisch rund van het
 veld”) en chocolademousse met framboos.
 
 Katja Mack voert de regie. Zangers, dansers, acteurs en acrobaten spelen vaste
 rollen, onder wie figuren uit de rit zoals Bartholomeus van Robbemond. Een deel
 van de muziek is speciaal gecomponeerd, en het park ontwikkelde twee
-luchtacrobatiekacts met langjarige leden van de TALENT ACADEMY Europa-Park. Hoe lang de rit aan het begin duurt en hoeveel plaatsen er per avond
-zijn, staat noch in het persbericht noch op de evenementenpagina.
+luchtacrobatiekacts met langjarige leden van de TALENT ACADEMY Europa-Park.
+Hoe lang de rit aan het begin duurt en hoeveel plaatsen er per avond zijn,
+vermeldt het park niet in het persbericht en ook niet op de evenementenpagina.
 
 ## De attractie erachter
 
 Piraten in Batavia opende in 1987. Op 26 mei 2018 brak in een opslaghal brand
 uit die oversloeg op de attractie. Sinds 28 juli 2020 varen de boten weer, in
 een nieuw gebouw, en acht figuren komen nog uit de oude versie. De bronnen
-staan in de [Europa-Park-gids](/blog/europa-park-wachttijden-tips).
+daarvoor zijn gelinkt in de [Europa-Park-gids](/blog/europa-park-wachttijden-tips).
 
 ## Boeken
 
-De kaartjes staan op de evenementenpagina van het park, en groepen vanaf 20
+Kaartjes koop je op de evenementenpagina van het park. Groepen vanaf 20
 personen sturen een aanvraag via het contactformulier. Het park mag het programma wijzigen. Het telefoonnummer van het resort is +49 7822 77-6688.
 
-Kom je op een van de twee oktoberavonden, dan staat in het
+Wat er op de twee oktoberavonden verder in het park te doen is, staat in het
 [Halloween-overzicht](/blog/halloween-pretparken-2026) en in het bericht over
-[tien jaar Traumatica](/blog/traumatica-tien-jaar-europa-park) wat er verder in
-het park te doen is. Voor de avonden in december en januari is er het
+[tien jaar Traumatica](/blog/traumatica-tien-jaar-europa-park). Voor de avonden in december en januari is er het
 [winteroverzicht](/blog/winter-pretparken-2026).
 
 ```best-days-widget slug=europa-park

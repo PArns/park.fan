@@ -7,9 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Eine Wild Swing XL in Portugal, ein Turm zum Selbststeuern in Island und
-  Enzo's Piccolo Mondo in neuer Gestalt: Der Park hat am 8. Oktober die ersten
-  drei Neuheiten für 2027 genannt. Öffnungstermine nennt er noch nicht.
+  Der Europa-Park baut für 2027 in Portugal eine Wild Swing XL, eine
+  Riesenschaukel über dem See. In Island kommt ein Turm dazu, den die Fahrgäste
+  selbst steuern. Die Gondelfahrt Enzo's Piccolo Mondo kehrt neu gestaltet
+  zurück.
 tags:
   - news
   - europa-park
@@ -26,10 +27,11 @@ coverImage:
   caption: 'Wodan im Themenbereich Island. Der neue Turm soll zwischen dieser Bahn und blue fire stehen.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Europa-Park 2027: Wild Swing XL, Turm und Piccolo Mondo'
+  title: 'Europa-Park plant 2027 drei neue Familienattraktionen'
   description: >-
-    Der Europa-Park hat am 8. Oktober 2026 drei Familienattraktionen für 2027
-    angekündigt. Was der Park sagt und was er noch offen lässt.
+    Der Europa-Park hat am 8. Oktober 2026 drei neue Familienattraktionen für
+    2027 angekündigt. Eröffnungstermin und Mindestgröße nennt der Park noch
+    nicht.
   keywords:
     - Europa-Park Neuheiten 2027
     - Wild Swing XL Europa-Park
@@ -40,10 +42,11 @@ seo:
 ---
 
 Der [Europa-Park](ref:europa-park) hat am 8. Oktober 2026 die ersten drei
-Neuheiten für 2027 angekündigt, alle für Familien: eine Wild Swing XL im
-portugiesischen Themenbereich, einen Turm zum Selbststeuern in Island und eine
-neu gestaltete Gondelfahrt in Italien. Termine für die Eröffnung fehlen. Weitere Informationen will der Park „zu
-einem späteren Zeitpunkt“ veröffentlichen.
+Neuheiten für 2027 angekündigt, alle für Familien. Im portugiesischen
+Themenbereich kommt eine Wild Swing XL dazu, in Island ein Turm, den die
+Fahrgäste selbst steuern. Die Gondelfahrt in Italien wird neu gestaltet.
+Eröffnungstermine hat der Park noch nicht genannt. Weitere Informationen will er
+„zu einem späteren Zeitpunkt“ veröffentlichen.
 
 ## Wild Swing XL in Portugal
 
@@ -53,16 +56,16 @@ Nach Angaben des Parks soll sie Nervenkitzel und Fahrspaß mischen und für alle
 Altersgruppen gedacht sein. Als Vorbild nennt er die Leichtigkeit der portugiesischen
 Küste, kreativen Tüftlergeist und eine außergewöhnliche Erfindergeschichte.
 
-Zum Hersteller der Schaukel schweigt die Mitteilung. Einzelne Medien
-nennen einen Namen, der Park hat ihn bisher offen gelassen. Mindesthöhe,
-Fahrgäste pro Fahrt und Fahrdauer fehlen ebenfalls.
+Die Mitteilung nennt keinen Hersteller. In einzelnen Medien steht ein Name,
+bestätigt hat der Park ihn bisher nicht. Auch Mindestgröße, Plätze pro Fahrt und
+Fahrdauer stehen nicht darin.
 
 Gefahren wird in Portugal bisher nur auf der Wasserachterbahn
 [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash). MACK Rides hat
-sie 2005 gebaut, sie ist 30 Meter hoch, und ein Boot fasst 16 Fahrgäste.
+sie 2005 gebaut. Sie ist 30 Meter hoch, ein Boot fasst 16 Fahrgäste.
 Mitfahren darf, wer mindestens vier Jahre alt und 100 Zentimeter groß ist.
-Daneben stehen seit 2003 das Spielhaus Casa da Aventura für Kinder von drei bis
-zwölf Jahren und die Magellan Lounge auf einem Segelschiff. Die Schaukel wird
+Daneben stehen das Spielhaus Casa da Aventura, seit 2003 für Kinder von drei bis
+zwölf Jahren, und die Magellan Lounge auf einem Segelschiff. Die Schaukel wird
 die zweite Fahrattraktion im Themenbereich.
 
 ## Ein Turm zum Selbststeuern in Island
@@ -73,17 +76,18 @@ eine Turmattraktion öffnen. Die Fahrgäste steuern sie nach Angaben des Parks
 selbst und sehen von oben über den isländischen Themenbereich, auch hinunter
 auf den Hafen.
 
-Der Turm ist noch namenlos, Höhe und Hersteller fehlen. Gesagt ist nur, wo er
-steht und dass die Fahrt interaktiv ist.
+Einen Namen hat der Turm noch nicht. Höhe und Hersteller hat der Park nicht
+genannt.
 
-Island ist bisher der Themenbereich der großen Achterbahnen. blue fire fährt
-seit 2009, ist 38 Meter hoch und von MACK Rides. Einsteigen darf man ab sieben
-Jahren und 130 Zentimetern. WODAN hat GCI gebaut, die Bahn ist von 2012, 40
-Meter hoch und nimmt Kinder ab sechs Jahren und 120 Zentimetern mit. Für
+Island ist bisher der Themenbereich der großen Achterbahnen. blue fire ist von
+MACK Rides und fährt seit 2009. Die Bahn ist 38 Meter hoch, einsteigen darf man
+ab sieben Jahren und 130 Zentimetern. WODAN hat GCI 2012 gebaut. Die
+Holzachterbahn ist 40 Meter hoch und nimmt Kinder ab sechs Jahren und 120
+Zentimetern mit. Für
 Kleinere gibt es die Bootsfahrt Whale Adventures - Northern Lights von 2010,
 den Wasserspielplatz Lítill Island und die Monorail.
 
-Ob der Turm eine Mindestgröße hat, sagt der Park nicht. In der Mitteilung
+Eine Mindestgröße für den Turm nennt der Park nicht. In der Mitteilung
 schreibt er nur, dass „Klein und Groß“ ihn selbst steuern können. Auf seiner
 Seite zu den Neuheiten 2027 erzählt er außerdem von Möwen und
 Papageientauchern, die über dem Hafen kreisen. Ob der Turm so gestaltet wird,
@@ -91,48 +95,47 @@ lässt er offen.
 
 ## Enzo's Piccolo Mondo kommt zurück
 
-Die Gondelfahrt im italienischen Themenbereich begleitet laut Park seit über
+In die Gondelfahrt im italienischen Themenbereich steigen laut Park seit über
 40 Jahren die kleinsten Besucher. 2027 soll sie „in neuem Glanz“
-zurückkehren. Ob und ab wann sie vorher geschlossen ist, lässt die Mitteilung
-offen, ein Schließtermin fehlt.
+zurückkehren. Ob und ab wann sie dafür schließt, steht nicht in der Mitteilung.
 
-Zum Inhalt nennt der Park Kunst, klassisches Schauspiel und italienische Musik.
+Zu sehen und zu hören sein sollen laut Park Kunst, klassisches Schauspiel und
+italienische Musik.
 Wie viele Szenen es gibt und was davon neu ist, hat er nicht gesagt.
 
 Die Bahn ist so alt wie der Themenbereich. Italien eröffnete 1982 als erster
 Themenbereich des Parks, Piccolo Mondo im selben Jahr. Gebaut hat sie MACK
 Rides. Die Gondeln fassen je sechs Personen und fahren in einer Halle an Pisa,
-Venedig und Florenz vorbei, eine Fahrt dauert gut drei Minuten. Kinder unter
-120 Zentimetern fahren nur mit einem Erwachsenen. Die Parkseite führt die Bahn
+Venedig und Florenz vorbei. Eine Fahrt dauert gut drei Minuten. Kinder unter
+120 Zentimetern fahren nur mit einem Erwachsenen. Laut Parkseite fährt die Bahn
 in allen vier Saisons, auch im Winter.
 
 Laut der Neuheitenseite des Parks ist Enzo ein Papagei. Im selben Themenbereich
-hat schon eine Bahn von 1982 ein zweites Eröffnungsjahr bekommen. Für das
-[Castello dei Medici](ref:europa-park/castello-dei-medici) nennt die Parkseite
-1982 und 2024. Daneben fährt seit 2011 Volo da Vinci, eine Fahrt mit
+steht schon eine Bahn von 1982 mit zwei Eröffnungsjahren: Für das
+[Castello dei Medici](ref:europa-park/castello-dei-medici) gibt die Parkseite
+1982 und 2024 an. Daneben fährt seit 2011 Volo da Vinci, eine Fahrt mit
 Flugmaschinen in sieben Metern Höhe, gebaut von ETF.
 
 [Piccolo Mondo](ref:europa-park/piccolo-mondo?full)
 
 ## Was du jetzt planen kannst
 
-Fürs Erste ist nur eines belegt: Die drei Attraktionen sind für 2027
-angekündigt. Die [Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027)
-laufen vom 7. bis 19. März, und der Park sagt dazu, dass nicht alle
-Attraktionen geöffnet sind. Welche der drei Neuheiten dann schon laufen, ist
-offen. Wie voll der Park zu welcher Jahreszeit ist, steht im
+Die [Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027) laufen
+vom 7. bis 19. März 2027. In dieser Zeit sind laut Park nicht alle Attraktionen
+geöffnet. Welche der drei Neuheiten dann schon laufen, ist offen. Wie voll der
+Park zu welcher Jahreszeit ist, steht im
 [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps). Welche anderen Parks
-und Hersteller 2027 etwas bestätigt haben, steht in der Übersicht
+und Hersteller 2027 etwas bestätigt haben, steht in unserer Übersicht
 [Freizeitpark-Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
 
 Die laufende Saison endet am 9. Januar 2027, Übernachtungsgäste kommen am 10. Januar noch in den Park. In diesem Winter fährt auch die Euro-Mir zum
-letzten Mal, mehr dazu im
+letzten Mal, mehr dazu in unserem
 [Beitrag zum Abschied der Euro-Mir](/news/europa-park-verabschiedet-euro-mir).
 
-Alle drei Neuheiten sind für Familien angekündigt, eine große Achterbahn ist
-nicht dabei. Für Kinder, die für blue fire und WODAN noch zu klein sind, kommt
-in Portugal und Island also etwas in der Höhe dazu. Wie klein sie sein dürfen,
-hängt an der Mindestgröße, und die nennt der Park noch nicht.
+Unter den drei Neuheiten ist keine große Achterbahn. Für Kinder, die für
+blue fire und WODAN noch zu klein sind, kommt in Portugal und Island etwas in der
+Höhe dazu, sofern sie die Mindestgröße erreichen, die der Park noch nicht genannt
+hat.
 
 In der Tabelle stehen die Bahnen, neben denen die drei Neuheiten entstehen.
 

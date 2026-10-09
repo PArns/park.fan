@@ -6,9 +6,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Das Legoland Deutschland baut für Kinder von zwei bis zwölf, und an keiner der
-  neun Headliner-Bahnen spart ein früher Start genug Zeit für einen
-  Rope-Drop-Tipp. Mit Erwachsenem liegt die höchste Mindestgröße bei 1,25 Metern, und Halloween läuft bis zum 8. November.
+  Im Legoland Deutschland spart ein früher Start an keiner der großen Bahnen viel
+  Wartezeit. Ein Kind, das mit einem Erwachsenen fährt, braucht nirgends mehr als
+  1,25 Meter. Halloween läuft bis zum 8. November.
 tags:
   - legoland
   - guenzburg
@@ -25,8 +25,8 @@ rideLinks:
 seo:
   title: 'Legoland Deutschland Tipps: Wartezeiten, Fastrack, Tickets und Halloween'
   description: >-
-    Legoland Deutschland 2026: Mindestgrößen der Bahnen, Wartezeiten nach
-    Wochentag, Tickets, Fastrack, Parken und Halloween bis 8. November.
+    Im Legoland Deutschland ist freitags am wenigsten los und samstags am
+    meisten. In Begleitung braucht ein Kind an keiner Bahn mehr als 1,25 Meter.
   keywords:
     - Legoland Deutschland
     - Legoland Deutschland Tipps
@@ -47,10 +47,12 @@ seo:
     - Legoland Feriendorf
 ---
 
-Das **Legoland Deutschland** sagt über sich selbst, dass es für Kinder zwischen **zwei und
-zwölf Jahren** gebaut ist. Für Fahrten mit Erwachsenem liegt die höchste Mindestgröße im ganzen Park bei **1,25 Metern**, an der Bahn [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare). Und an keiner der neun
-Headliner-Bahnen spart ein früher Start so viel Zeit, dass wir einen Rope-Drop-Tipp geben würden. Wer einen Tag in Günzburg plant, braucht deshalb weniger Taktik als in Rust oder Brühl
-und mehr Aufmerksamkeit für Zentimeter und Alter.
+Das **Legoland Deutschland** ist nach eigener Angabe für Kinder zwischen **zwei und zwölf
+Jahren** gebaut. Für Kinder in Begleitung eines Erwachsenen liegt die höchste Mindestgröße im
+ganzen Park bei **1,25 Metern**, an [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare).
+An keiner der neun Headliner-Bahnen spart ein früher Start so viel Wartezeit, dass sich der
+Wecker lohnt. Wer einen Tag in Günzburg plant, braucht deshalb weniger Taktik als in Rust oder
+Brühl und mehr Aufmerksamkeit für Zentimeter und Alter.
 
 Dieser Guide geht von Kindern zwischen drei und zwölf aus, vom Kinderwagen bis zur ersten
 Achterbahn ohne Elternhand. Unsere Wartezeiten stammen aus Messungen seit Dezember 2025, das sind eine
@@ -67,25 +69,25 @@ Am **17. Mai 2002** machte der Park auf, neun Monate früher als geplant, mit me
 Attraktionen und Kosten von rund 153 Millionen Euro. Im ersten Jahr kamen 1,3 Millionen Gäste, 2020
 nur noch 750.000, und 2024 waren es nach dem Index der Themed Entertainment Association rund **zwei
 Millionen**. Damit ist das Legoland nach dem Europa-Park und dem Phantasialand der drittmeistbesuchte
-Freizeitpark Deutschlands. Betrieben wird er seit 2005 von Merlin Entertainments. 2019 übernahmen
-Kirkbi, die Beteiligungsfirma der Lego-Eigner, Blackstone und ein kanadischer Pensionsfonds Merlin
-für 6,6 Milliarden Euro. Den Park führt weiterhin Merlin.
+Freizeitpark Deutschlands. Betrieben wird er seit 2005 von Merlin Entertainments. 2019 kauften drei Investoren Merlin für
+6,6 Milliarden Euro: Blackstone, ein kanadischer Pensionsfonds und Kirkbi, die Beteiligungsfirma
+der Lego-Eigner. Den Park führt weiterhin Merlin.
 
 Heute hat der Park nach eigener Angabe **68 Attraktionen in 11 Themenwelten** und mehr als 58
 Millionen Lego-Steine. Das Miniland besteht laut Park aus über 23 Millionen davon, gebaut von 140
-Modelldesignern. Die Allianz Arena steht dort aus über einer Million Steinen, nach Wikipedia 1,5
-Tonnen schwer und mit 30.000 Minifiguren auf den Rängen, und im Reichstagsgebäude aus Berlin stecken
-rund 1,07 Millionen Steine. Die jüngste Themenwelt ist **LEGO Mythica**, die am 25. März 2023
-eröffnet hat. Sie war mit über 15 Millionen Euro die teuerste Erweiterung des Parks, und ihr Wing
-Coaster ist die erste neue Achterbahn im Legoland Deutschland seit gut 20 Jahren.
+Modelldesignern. Die Allianz Arena dort besteht aus über einer Million Steinen und wiegt laut Wikipedia 1,5
+Tonnen. Auf ihren Rängen sitzen 30.000 Minifiguren. Im Reichstagsgebäude aus Berlin stecken rund
+1,07 Millionen Steine. Die jüngste Themenwelt ist **LEGO Mythica**, die am 25. März 2023
+eröffnet hat. Sie war mit über 15 Millionen Euro die teuerste Erweiterung des Parks. Ihr Wing Coaster ist die
+erste neue Achterbahn im Legoland Deutschland seit gut 20 Jahren.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
 ## Mindestgröße und Alter an den Bahnen
 
 Im Legoland gelten fast überall zwei Grenzen: eine Größe und ein Alter, jeweils getrennt für die
-Fahrt mit einem Erwachsenen und die Fahrt allein. Eine Bahn, die ein Kind mit 1,10 Metern mitnimmt,
-verlangt allein oft 1,20. Der Park legt das pro Bahn fest, und ob jemand mitfahren darf, entscheidet
+Fahrt mit einem Erwachsenen und die Fahrt allein. Wo ein Kind mit 1,10 Metern in Begleitung mitfahren darf, braucht es
+für die Fahrt allein oft 1,20. Der Park legt das pro Bahn fest, und ob jemand mitfahren darf, entscheidet
 am Eingang der Bahn das Personal.
 
 | Bahn                                                                                      | Was es ist                       | mit Erwachsenem       | allein             |
@@ -118,8 +120,8 @@ mitfahren wollen.
 ## Die großen Bahnen
 
 **[Maximus](ref:legoland-deutschland/maximus-the-guardians-flight)** ist der erste Wing Coaster in
-einem Legoland, gebaut von Bolliger & Mabillard, 17 Meter hoch, mit 15 Metern pro Sekunde, also
-54 km/h. Zur Fahrt gehören eine Helix und ein Korkenzieher, und die Beine hängen frei in der Luft.
+einem Legoland und stammt von Bolliger & Mabillard. Die Bahn ist 17 Meter hoch und fährt mit
+15 Metern pro Sekunde, also 54 km/h. Zur Fahrt gehören eine Helix und ein Korkenzieher, und die Beine hängen frei in der Luft.
 Der Park empfiehlt die Bahn ab dem Grundschulalter.
 
 ```glossary-widget slug=wing-coaster
@@ -134,7 +136,7 @@ Sekunde durch die Kurven, das sind knapp 29 km/h. Ein Kind darf mit Erwachsenem 
 sechs Jahren mitfahren.
 
 **[Das Große LEGO Rennen](ref:legoland-deutschland/the-great-lego-race)** ist eine Wilde Maus von
-Mack Rides, 18 Meter hoch, nach Angaben der Wikipedia 400 Meter lang und bis zu 56 km/h schnell. Sie
+Mack Rides, 18 Meter hoch, laut Wikipedia 400 Meter lang und bis zu 56 km/h schnell. Sie
 fuhr zuvor als Project X und ist seit 2018 als Rennstrecke aus Lego City gestaltet. Mit Erwachsenem
 reichen 1,10 Meter, und für ein Kind, das die Drachenjagd hinter sich hat, ist es der nächste Schritt.
 
@@ -158,10 +160,10 @@ Feuerbälle, Eisfontänen und Luftstöße auf animierte Gegner. Nebel und warme 
 und am Ende steht fest, wer die meisten Punkte hatte. Die Fahrt dauert etwa dreieinhalb Minuten, die
 Geschichte muss man laut Park nicht kennen.
 
-Für die Kleineren stehen die **[Drachenjagd](ref:legoland-deutschland/dragon-hunt)**, eine
-Junior-Achterbahn von Gerstlauer von 2003, ab einem Meter mit Erwachsenem, und der
-**[Fire & Ice Tower](ref:legoland-deutschland/fire-and-ice-tower)**, bei dem man sich auf neun
-Metern Höhe dreht und dann fallen lässt, schon ab drei Jahren. Beim Wellenreiter und bei Käpt'n
+Für die Kleineren gibt es die **[Drachenjagd](ref:legoland-deutschland/dragon-hunt)**, eine
+Junior-Achterbahn von Gerstlauer von 2003, auf der Kinder mit einem Erwachsenen ab einem
+Meter mitfahren. Auf den **[Fire & Ice Tower](ref:legoland-deutschland/fire-and-ice-tower)** dürfen sie
+schon ab drei Jahren. Dort dreht man sich auf neun Metern Höhe und lässt sich dann fallen. Beim Wellenreiter und bei Käpt'n
 Nicks Piratenschlacht können außerdem Zuschauer an Land mitmachen und die Boote nass spritzen.
 
 ## Für die Kleinsten ab zwei Jahren
@@ -175,23 +177,23 @@ Werft, die laut Wikipedia seit der Eröffnung im Park stehen.
 
 Die beiden **Fahrschulen** gibt es seit 2002. In der
 **[Junior Fahrschule](ref:legoland-deutschland/legoland-junior-driving-school-powered-by-hyundai)** fahren
-Kinder von drei bis sechs Jahren eine einfache Strecke, in der
+Kinder von drei bis sechs Jahren eine einfache Strecke. In der
 **[Fahrschule](ref:legoland-deutschland/legoland-driving-school-powered-by-hyundai)** für Kinder von
 sieben bis dreizehn Jahren gibt es erst Theorieunterricht und dann einen Parcours mit Ampeln und
-Verkehrsschildern, am Ende steht ein Legoland-Führerschein. Betrieben werden beide laut Wikipedia in
+Verkehrsschildern. Am Ende bekommen die Kinder einen Legoland-Führerschein. Betrieben werden beide laut Wikipedia in
 Kooperation mit Hyundai.
 
 Im **Miniland** stehen die meisten Modelle im Maßstab 1:20. Das
 Schloss Neuschwanstein besteht aus über 300.000 Steinen und war das erste Modell, das die Werkstatt
-im Park komplett selbst entworfen hat, und seit 2025 steht dort ein 2,30 Meter langer Fortnite-Dino
-aus 73.000 Teilen.
+im Park komplett selbst entworfen hat. Seit 2025 steht dort außerdem ein 2,30 Meter langer
+Fortnite-Dino aus 73.000 Teilen.
 
 ## Wartezeiten nach Bahn und Wochentag
 
-Die Tabelle führt die zehn Bahnen mit den längsten Wartezeiten auf, mit dem Median, dem
-Themenbereich und den Messtagen. Sie benutzt die englischen Namen des Parks: Fire Dragon steht für
-den Feuerdrachen, Dragon Hunt für die Drachenjagd, Pedal-A-Car für das Tret-o-Mobil, Harbour
-Cruise für die Hafenrundfahrt.
+In der Tabelle stehen die zehn Bahnen mit den längsten Wartezeiten, jeweils mit Median,
+Themenbereich und der Zahl der Tage, an denen wir gemessen haben. Die Bahnen tragen dort ihre
+englischen Namen: Fire Dragon ist der Feuerdrache, Dragon Hunt die Drachenjagd, Pedal-A-Car das
+Tret-o-Mobil und Harbour Cruise die Hafenrundfahrt.
 
 ```ride-waits-widget park=legoland-deutschland top=10 columns=land,days
 
@@ -207,18 +209,18 @@ Der Wochentag macht in unseren Messungen den größten Unterschied:
 
 ```
 
-Der Samstag ist der vollste Tag der Woche und der Freitag der ruhigste. Jeder Wochentag hat mehr als
-zwanzig Messtage, allerdings aus einer einzigen Saison. Im
-[Ferienguide](/blog/schulferien-freizeitparks-deutschland) liegt der Freitag auch unter den
-Ferienwerktagen am niedrigsten, und das Legoland hängt von den Ferien in Bayern und
-Baden-Württemberg stärker ab als jeder der sechs Parks, die dort verglichen werden.
+Der Samstag ist der vollste Tag der Woche und der Freitag der ruhigste. Für jeden Wochentag haben wir an
+mehr als zwanzig Tagen gemessen, allerdings nur in einer Saison. Auch in den
+Ferien ist der Freitag nach unseren Messungen der Werktag mit den kürzesten Wartezeiten. Von den
+sechs Parks, die wir im [Ferienguide](/blog/schulferien-freizeitparks-deutschland) vergleichen,
+hängt das Legoland am stärksten von den Ferien in Bayern und Baden-Württemberg ab.
 
 ```stats-widget slug=legoland-deutschland show=months
 
 ```
 
-Der August war der vollste Monat. Juni und September lagen unter Mai und Juli. Der Oktober hat bisher
-erst fünf Messtage, darüber sagen wir nichts.
+Der August war der vollste Monat. Im Juni und im September war weniger los als im Mai und im Juli.
+Für den Oktober haben wir erst fünf Tage gemessen, zu wenig für eine Aussage.
 
 Der Park öffnet um 10 Uhr, die Fahrgeschäfte schließen eine Stunde vor Parkschluss. Die nächste Tabelle hat eine Zeile pro Bahn und eine Spalte pro Stunde.
 
@@ -226,28 +228,30 @@ Der Park öffnet um 10 Uhr, die Fahrgeschäfte schließen eine Stunde vor Parksc
 
 ```
 
-Beim Großen LEGO Rennen und bei der Hafenrundfahrt liegt der höchste Wert am Vormittag. An der
-Dschungel X-pedition und am Tret-o-Mobil steigt die Kurve dagegen von der Öffnung an und bleibt dann
-oben. Beim Feuerdrachen, bei der Drachenjagd und bei Flying NINJAGO steigt die Kurve bis Mittag und bleibt dann auf ähnlichem Niveau, und bei Maximus bleibt die Wartezeit fast den ganzen Tag gleich.
+Beim Großen LEGO Rennen und bei der Hafenrundfahrt ist die Wartezeit am Vormittag am längsten. An
+der Dschungel X-pedition und am Tret-o-Mobil steigt sie dagegen von der Öffnung an und bleibt dann
+hoch. Beim Feuerdrachen, bei der Drachenjagd und bei Flying NINJAGO steigt sie bis Mittag und
+ändert sich danach wenig. Bei Maximus bleibt die Wartezeit fast den ganzen Tag gleich.
 
 An Regentagen waren die Wartezeiten im Legoland nach unseren Messungen um 17 Prozent kürzer als an
-trockenen Vergleichstagen, wie der [Regen-Vergleich](/blog/freizeitpark-bei-regen) für zwölf Parks
-im Einzelnen aufführt. Der Park schreibt das selbst auf seine Allwetter-Seite: Bei nicht so gutem
+trockenen Tagen. Verglichen haben wir dabei nur Tage aus demselben Monat, Werktag mit Werktag,
+Wochenende mit Wochenende und Ferien mit Ferien. Die Werte für zwölf Parks stehen im
+[Regen-Vergleich](/blog/freizeitpark-bei-regen). Der Park schreibt das selbst auf seine Allwetter-Seite: Bei nicht so gutem
 Wetter sei die Wartezeit bei vielen Attraktionen oft kürzer.
 
 ## Rope Drop lohnt sich hier nicht
 
-Einen Rope-Drop-Tipp geben wir nur, wenn die Tagesspitze an einer Bahn so hoch ist und der frühe
-Start davon so viel spart, dass sich der Wecker lohnt. Die Schwellen und ihre Begründung stehen im
-Artikel [Sind 70 Minuten viel?](/blog/sind-70-minuten-viel). Im Legoland erreicht keine der neun
-Bahnen, die der Park als Headliner führt, diese Schwellen, weder an Werktagen noch am Wochenende.
-Auf der Seite jeder dieser Bahnen steht deshalb keine Rope-Drop-Empfehlung.
+Früh zu kommen empfehlen wir nur, wenn die Wartezeit an einer Bahn im Lauf des Tages lang wird und
+man zur Öffnung so viel weniger ansteht, dass sich der Wecker lohnt. Wo diese Grenzen liegen und
+warum, steht im Artikel [Sind 70 Minuten viel?](/blog/sind-70-minuten-viel). Im Legoland erreicht
+keine der neun Headliner-Bahnen diese Grenzen, weder an Werktagen noch am Wochenende. Auf ihren
+Seiten bei uns steht deshalb keine Rope-Drop-Empfehlung.
 
 ```glossary-widget slug=rope-drop
 
 ```
 
-Um sieben Uhr musst du deshalb nicht am Parkplatz stehen. Wer früh kommt, nimmt sich zuerst die beiden Bahnen, deren Kurve nur steigt, die Dschungel X-pedition und das Tret-o-Mobil. Das Große LEGO Rennen und die Hafenrundfahrt sind am Vormittag am vollsten und gehören deshalb eher in den Nachmittag. Maximus, Feuerdrache und Flying NINJAGO fährst du, wann du willst, weil sich ihre Kurve kaum bewegt. Wer es lieber ruhig mag, kommt an einem Freitag.
+Um sieben Uhr musst du deshalb nicht am Parkplatz stehen. Wer früh kommt, nimmt sich zuerst die beiden Bahnen, an denen die Wartezeit über den Tag nur steigt: die Dschungel X-pedition und das Tret-o-Mobil. Das Große LEGO Rennen und die Hafenrundfahrt sind am Vormittag am vollsten und gehören deshalb eher in den Nachmittag. Maximus, Feuerdrache und Flying NINJAGO fährst du, wann du willst, weil sich die Wartezeit dort über den Tag wenig ändert. Wer es lieber ruhig mag, kommt an einem Freitag.
 
 ## Fastrack: drei Stufen und die Bahnen
 
@@ -257,14 +261,14 @@ hat das alte System, bei dem man sich eine bestimmte Zeitersparnis kaufte, nach 
 abgeschafft und zählt jetzt die Fahrten. Fastrack gilt pro Person und nur für den gebuchten Tag, es enthält **keinen Parkeintritt**.
 
 Es gibt drei Stufen. **Bronze** kostet ab 25 €, **Silber** ab 42 € und **Gold** ab 89 €. Gold gilt
-für alle Fastrack-Bahnen des Tages, und der Park kann einen Ausweis verlangen, weil es nicht
-weitergegeben werden darf. Bei Bronze und Silber verbraucht jede Fahrt einen Teil des Kontingents. Ein
-Fastrack-Paket wird einmal alle drei Minuten gescannt, und das Kontingent pro Tag ist begrenzt.
+für alle Fastrack-Bahnen des Tages. Weitergeben darf man es nicht, deshalb kann der Park einen
+Ausweis verlangen. Bei Bronze und Silber verbraucht jede Fahrt einen Teil des Kontingents. Ein
+Fastrack-Paket kann nur einmal alle drei Minuten gescannt werden. Das Kontingent pro Tag ist begrenzt.
 Fastrack gilt an 18 Attraktionen, darunter Maximus, Feuerdrache, Das Große LEGO Rennen, LEGO NINJAGO
 The Ride, Flying NINJAGO, Dschungel X-pedition, LEGOLAND Express, Aussichtsturm, Pyramiden Rallye,
 Wüsten X-kursion, Safari Tour, Piratenschule und LEGO Studios.
 
-Ob es sich lohnt, hängt am Tag. Bei vier Personen sind selbst 25 € je Kopf 100 € zusätzlich zum
+Ob es sich lohnt, hängt vom Tag ab. Bei vier Personen sind selbst 25 € je Kopf 100 € zusätzlich zum
 Eintritt, für eine Bahn, an der die Tabelle oben ohnehin keine Ausreißer zeigt. An einem Freitag im Juni würde
 ich Fastrack nicht kaufen. An einem Samstag in den bayerischen Ferien, dem vollsten Wochentag in unseren Messungen, würde ich Bronze für die Bahn nehmen, die dann in der Tabelle
 ganz oben steht.
@@ -308,10 +312,10 @@ Das Halloween-Event läuft vom **3. Oktober bis zum 8. November 2026** und ist i
 enthalten. Der Park sagt selbst, dass es keine Erschrecker-Momente gibt, nur Kürbisse, Gespenster und
 Skelette im Land der Ritter. Wer keine Dekoration will, findet im Park Bereiche ohne Halloween-Thema.
 
-Zum Programm gehören der „BOOlevard“, der dekorierte Weg vom Eingang durch den Park, die „Hexen
-BOOde“ als Belohnung für eine gelöste Schnitzeljagd, ein Monster-Tanz an der Burgbühne an den
-Samstagen und der 4D-Film „Die Monster sind los!“ in den LEGO Studios. Er läuft stündlich ab 11 Uhr,
-der letzte Film eine Stunde vor Parkschluss. Die **Parade** startet an den Halloween-Samstagen,
+Zum Programm gehören der „BOOlevard“, der dekorierte Weg vom Eingang durch den Park, und die
+„Hexen BOOde“, die es als Belohnung für eine gelöste Schnitzeljagd gibt. Samstags tanzen Monster an
+der Burgbühne. In den LEGO Studios zeigt der Park den 4D-Film „Die Monster sind los!“, stündlich ab
+11 Uhr, den letzten eine Stunde vor Parkschluss. Die **Parade** startet an den Halloween-Samstagen,
 dem 3., 10., 17., 24. und 31. Oktober, um 16 Uhr, und bei schlechtem Wetter kann sie ausfallen.
 An diesen Samstagen bleibt der Park bis **20 Uhr** offen, am 7. November bis 19 Uhr, sonst bis 18 Uhr.
 Wer an einem Halloween-Samstag kommt, bekommt also zwei Stunden mehr, aber auch den vollsten
@@ -327,7 +331,7 @@ Studios**, **LEGOLAND ATLANTIS by SEA LIFE** und die **LEGO Fabrik**. Atlantis h
 lang. Dazu kommt eine **Regen Rallye**, eine Rätselrunde für nasse Tage.
 
 Zwischen dem 24. Dezember 2025 und dem 5. Oktober 2026 fielen im
-Legoland Deutschland an 18 Prozent der Öffnungstage mindestens zwei Millimeter Regen, die Werte für alle zwölf Parks stehen im [Regen-Vergleich](/blog/freizeitpark-bei-regen). Der Park selbst rät zu
+Legoland Deutschland an 18 Prozent der Öffnungstage mindestens zwei Millimeter Regen. Die Werte für alle zwölf Parks stehen im [Regen-Vergleich](/blog/freizeitpark-bei-regen). Der Park selbst rät zu
 Regenschirm, Regenponcho, wasserfesten Schuhen und Wechselkleidung.
 
 ```weather-widget slug=legoland-deutschland
@@ -390,16 +394,17 @@ zum 10. Januar 2027 an einzelnen Tagen.
 ### Wann ist im Legoland am wenigsten los?
 
 In unseren Messungen seit Dezember 2025 am Freitag, im Juni und im September. Am vollsten waren der
-Samstag und der August. Der Kalender auf der [Parkseite](ref:legoland-deutschland?calendar) zeigt die
-ruhigeren kommenden Tage, und an Regentagen waren die Wartezeiten um 17 Prozent kürzer als an
-trockenen Vergleichstagen.
+Samstag und der August. Die ruhigeren kommenden Tage sind im Kalender auf der
+[Parkseite](ref:legoland-deutschland?calendar) markiert. An Regentagen waren die Wartezeiten um
+17 Prozent kürzer als an vergleichbaren trockenen Tagen im selben Monat.
 
 ### Ab welcher Größe darf mein Kind mitfahren?
 
 Mit Erwachsenem ab 0,80 Metern bei Käpt'n Nicks Piratenschlacht und ab 1,00 Metern bei der Drachenjagd,
-der Dschungel X-pedition und dem Fire & Ice Tower. Ab 1,10 Metern fahren das Große LEGO Rennen und der
-Feuerdrache, ab 1,20 Metern Maximus und ab 1,25 Metern Flying NINJAGO. Allein verlangen die meisten
-Bahnen 1,20 Meter, Maximus, Power Builder und Käpt'n Nicks Piratenschlacht 1,30 Meter. Dazu kommt jeweils ein Mindestalter: mit Erwachsenem zwischen einem und sieben Jahren, allein zwischen sechs und neun.
+der Dschungel X-pedition und dem Fire & Ice Tower. Ab 1,10 Metern darf ein Kind auf das Große LEGO Rennen
+und den Feuerdrachen, ab 1,20 Metern auf Maximus und ab 1,25 Metern auf Flying NINJAGO. Allein
+braucht es an den meisten Bahnen 1,20 Meter, an Maximus, Power Builder und Käpt'n Nicks Piratenschlacht
+1,30 Meter. Dazu kommt jeweils ein Mindestalter: mit Erwachsenem zwischen einem und sieben Jahren, allein zwischen sechs und neun.
 
 ### Was kostet das Legoland Deutschland?
 

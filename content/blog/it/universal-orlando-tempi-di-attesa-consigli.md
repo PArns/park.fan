@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  All’Epic Universe nelle nostre misurazioni si aspetta più a lungo, agli Studios meno. L’Express Unlimited vale solo agli Studios e alle Islands of Adventure, l’Express semplice costa lì da 119,99 a 319,99 dollari, e l’altezza minima delle grandi attrazioni sta tra 1,22 e 1,38 metri.
+  Si aspetta più a lungo all’Epic Universe e meno agli Studios. Proprio all’Epic Universe l’Express Unlimited non vale. Per le grandi montagne russe servono, a seconda dell’attrazione, da 122 a 138 centimetri di altezza.
 category: guides
 tags:
   - universal-orlando
@@ -56,14 +56,14 @@ seo:
 ---
 
 L’Universal Orlando Resort gestisce quattro parchi: Universal Studios Florida dal
-7 giugno 1990, Islands of Adventure dal 28 maggio 1999, il parco acquatico Volcano
+7 giugno 1990, Islands of Adventure dal 28 maggio 1999, Volcano
 Bay dal 2017 e, dal 22 maggio 2025, l’Epic Universe. Volcano Bay è un parco acquatico, le montagne russe ce l’hanno gli altri tre. Secondo Wikipedia nel 2024 Universal Studios Florida
 ha contato poco più di 9,5 milioni di visite, al 13° posto nel mondo, Islands of
-Adventure 9,45 milioni, al 14°. Per l’Epic Universe Wikipedia non riporta un
-numero di visitatori, e Universal finora non ne ha pubblicato nessuno.
+Adventure 9,45 milioni, al 14°. Per l’Epic Universe Universal finora non ha
+pubblicato alcun numero di visitatori.
 
-Le code dei tre parchi sono molto diverse. Nelle nostre misurazioni degli ultimi
-due anni l’Epic Universe è in testa e gli Studios in fondo:
+Quanto si sta in coda cambia molto da un parco all’altro. Nelle nostre misurazioni
+degli ultimi due anni si aspetta più a lungo all’Epic Universe e meno agli Studios:
 
 ```park-comparison-widget slugs=universal-studios-florida,universal-islands-of-adventure,universal-epic-universe highlight=universal-epic-universe
 
@@ -95,10 +95,9 @@ Diagon Alley ed Escape from Gringotts hanno aperto l’8 luglio 2014. Kongfronta
 nel 2002 ha lasciato il posto a Revenge of the Mummy, e per i Simpson nel 2007 è
 sparita Back to the Future: The Ride.
 
-Queste sette attrazioni le metterei a confronto per una visita.
-Mancano di proposito le case delle Halloween Horror Nights, che in autunno nella
-classifica del parco stanno davanti. Non sono attrazioni vere e proprie e restano
-aperte solo fino al 1° novembre.
+Per una visita sceglierei fra queste sette attrazioni. Ho lasciato fuori le case
+delle Halloween Horror Nights, anche se in autunno è lì che si aspetta di più: non
+sono attrazioni vere e proprie e restano aperte solo fino al 1° novembre.
 
 ```ride-waits-widget rides=universal-studios-florida/harry-potter-and-the-escape-from-gringotts|Escape from Gringotts|Montagna russa indoor;universal-studios-florida/revenge-of-the-mummy|Revenge of the Mummy|Montagna russa indoor;universal-studios-florida/despicable-me-minion-mayhem|Minion Mayhem|Simulatore;universal-studios-florida/transformers-the-ride-3d|Transformers: The Ride-3D|Dark ride 3D;universal-studios-florida/men-in-black-alien-attack|Men in Black: Alien Attack|Dark ride a bersagli;universal-studios-florida/the-simpsons-ride|The Simpsons Ride|Simulatore;universal-studios-florida/et-adventure|E.T. Adventure|Dark ride columns=type,peak,days highlight=universal-studios-florida/harry-potter-and-the-escape-from-gringotts
 
@@ -106,20 +105,20 @@ aperte solo fino al 1° novembre.
 
 In testa c’è **[Harry Potter and the Escape from
 Gringotts](ref:universal-studios-florida/harry-potter-and-the-escape-from-gringotts)**.
-L’ha costruita Intamin, dura cinque minuti ed è una montagna russa al coperto
-raccontata come una dark ride con gli schermi. Sopra l’ingresso c’è un drago di
+È una montagna russa al coperto di Intamin che racconta la sua storia come una
+dark ride, sugli schermi. Un giro dura cinque minuti. Sopra l’ingresso c’è un drago di
 18 metri. L’altezza minima è 107 centimetri.
 
 Poi viene **[Revenge of the Mummy](ref:universal-studios-florida/revenge-of-the-mummy)**,
 in funzione dal 21 maggio 2004. La montagna russa al coperto è di Premier Rides.
-Parte tre volte con un motore lineare, arriva a 64 km/h e dura poco meno di tre
-minuti. I lettori della rivista di settore Amusement Today l’hanno votata per sette
+Il treno viene lanciato tre volte da un motore lineare e arriva a 64 km/h. Un
+giro dura poco meno di tre minuti. I lettori della rivista di settore Amusement Today l’hanno votata per sette
 anni la migliore montagna russa al coperto, prima che la categoria venisse
 eliminata dopo il 2019. Altezza minima 122 centimetri.
 
-Le soglie più basse del resort le hanno le attrazioni per bambini.
-**[E.T. Adventure](ref:universal-studios-florida/et-adventure)** parte da 87
-centimetri. È una dark ride e gira dal giorno dell’apertura, nel 1990. Il
+L’altezza minima più bassa del parco è quella di
+**[E.T. Adventure](ref:universal-studios-florida/et-adventure)**: 87 centimetri.
+Questa dark ride gira dal giorno dell’apertura, nel 1990. Il
 **[Trolls Trollercoaster](ref:universal-studios-florida/trolls-trollercoaster)** di
 Vekoma a DreamWorks Land parte da 92, **[Despicable Me Minion
 Mayhem](ref:universal-studios-florida/despicable-me-minion-mayhem)** a Minion Land
@@ -128,7 +127,7 @@ da 102 centimetri.
 **[Transformers: The Ride-3D](ref:universal-studios-florida/transformers-the-ride-3d)**,
 **[Men in Black: Alien Attack](ref:universal-studios-florida/men-in-black-alien-attack)**
 e **[The Simpsons Ride](ref:universal-studios-florida/the-simpsons-ride)** sono le
-attrazioni per quando le grandi sono piene. Si sale da 102 a 107 centimetri.
+attrazioni per quando le grandi sono piene. La loro altezza minima va da 102 a 107 centimetri.
 
 Fra gli spettacoli del parco ci sono The Bourne Stuntacular (dal 2020), Animal
 Actors on Location e la Horror Make-Up Show, tutti e due dall’anno dell’apertura,
@@ -160,16 +159,18 @@ tre isole vicine.
 
 La classifica la guida **[Hagrid's Magical Creatures Motorbike
 Adventure](ref:universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure)**.
-Intamin l’ha aperta il 13 giugno 2019. Parte sette volte con un motore lineare, è
-alta 20 metri, veloce 80 km/h e lunga 1.540 metri, e non ha inversioni. Sorge dove
+Questa montagna russa di Intamin ha aperto il 13 giugno 2019. È alta 20 metri,
+veloce 80 km/h e lunga 1.540 metri, con sette lanci da motore lineare e nessuna
+inversione. Sorge dove
 c’era Dragon Challenge, i vecchi Dueling Dragons, chiusi nel 2017. Altezza minima
-122 centimetri. Nelle nostre misurazioni la distanza dalla seconda è grande.
+122 centimetri. Nelle nostre misurazioni qui si aspetta molto più che
+all’attrazione al secondo posto.
 
 Al secondo posto c’è **[Jurassic World
 VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)**.
-Intamin l’ha aperta il 10 giugno 2021. È alta 47 metri, veloce 110 km/h e lunga
-1.400 metri, ha quattro inversioni e due lanci, e all’apertura era la montagna
-russa più veloce di tutti i parchi Universal. Altezza minima 130 centimetri.
+Questa montagna russa di Intamin ha aperto il 10 giugno 2021. È alta 47 metri,
+veloce 110 km/h e lunga 1.400 metri, con due lanci e quattro inversioni.
+All’apertura era la montagna russa più veloce di tutti i parchi Universal. Altezza minima 130 centimetri.
 
 ![L’insegna illuminata all’ingresso del Jurassic World VelociCoaster, di notte | Dietro questo ingresso la fila passa in mezzo al paddock dei raptor di Jurassic World. | wide](/media/velocicoaster/01-eingang.jpg)
 
@@ -181,22 +182,22 @@ Fino a poco prima della partenza, nell’atrio c’è ancora qualcosa da guardar
 **[The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)**
 è la più vecchia delle tre. Bolliger & Mabillard l’hanno costruita per
 l’apertura del parco, il 28 maggio 1999. Ha sette inversioni, è alta 34 metri e
-veloce 108 km/h. Il treno non sale con una catena. Dei pneumatici lo portano a
-64 km/h in due secondi. Altezza minima 138 centimetri, la più alta del parco.
+veloce 108 km/h. La prima salita il treno la fa senza catena: dei pneumatici
+lo portano a 64 km/h in due secondi. Altezza minima 138 centimetri, la più alta del parco.
 
 Per chi non sale sulle montagne russe ci sono le dark ride. In **[Harry Potter and
 the Forbidden Journey](ref:universal-islands-of-adventure/harry-potter-and-the-forbidden-journey)**
 siedi su un braccio robotico di KUKA e voli attraverso Hogwarts. L’attrazione ha
 aperto il 18 giugno 2010, dura più di quattro minuti e si sale da 122 centimetri.
 **[Skull Island: Reign of Kong](ref:universal-islands-of-adventure/skull-island-reign-of-kong)**
-va senza binario. I truck attraversano libere la giungla, in ognuno siedono 72
-ospiti e il giro dura sei minuti. A queste si aggiunge **[The Amazing Adventures
+va senza binario: i truck, da 72 ospiti ciascuno, attraversano liberi la giungla.
+Il giro dura sei minuti. A queste si aggiunge **[The Amazing Adventures
 of Spider-Man](ref:universal-islands-of-adventure/the-amazing-adventures-of-spider-man)**,
 una dark ride in 3D del 1999 da 102 centimetri.
 
 Ti bagni su **[Dudley Do-Right's Ripsaw
 Falls](ref:universal-islands-of-adventure/dudley-do-rights-ripsaw-falls)**, un
-percorso acquatico di Mack con una discesa di 23 metri, da 112 centimetri. Il giro
+percorso acquatico di Mack con una discesa di 23 metri. Si sale da 112 centimetri. Il giro
 in gommone **[Popeye & Bluto's Bilge-Rat
 Barges](ref:universal-islands-of-adventure/popeye-and-blutos-bilge-rat-barges)** e
 la **[Jurassic Park River Adventure](ref:universal-islands-of-adventure/jurassic-park-river-adventure)**
@@ -239,8 +240,8 @@ una dark ride in un ascensore di Simtec, anch’essa da 102 centimetri.
 carrelli. Dura cinque minuti ed esisteva già a Osaka (dal 2021) e a Hollywood (dal
 2023).
 
-Le montagne russe, all’Epic Universe, stanno più in fondo alla classifica, anche
-se sono nuove. **[Stardust Racers](ref:universal-epic-universe/stardust-racers)**,
+Alle altre montagne russe dell’Epic Universe si aspetta meno che a Mine-Cart
+Madness. **[Stardust Racers](ref:universal-epic-universe/stardust-racers)**,
 al Celestial Park, è una montagna russa a duello di Mack con due tracciati, 40,5
 metri d’altezza, 100 km/h e un’inversione. Nel 2025 ha ricevuto il Golden Ticket
 Award come migliore nuova montagna russa. Altezza minima 122 centimetri. **[Curse
@@ -255,8 +256,8 @@ Adventure](ref:universal-epic-universe/yoshis-adventure)** parte da 87 centimetr
 La giostra **[Constellation Carousel](ref:universal-epic-universe/constellation-carousel)**
 e il giro in barca **[Fyre Drill](ref:universal-epic-universe/fyre-drill)** non
 hanno un’altezza minima, e i bambini sotto i 122 centimetri salgono accompagnati.
-Da 122 centimetri valgono poi Dragon Racer's Rally e Monsters Unchained: The
-Frankenstein Experiment, una dark ride con braccio robotico. Come spettacoli ci
+Per Dragon Racer's Rally e Monsters Unchained: The Frankenstein Experiment, una
+dark ride con braccio robotico, servono invece almeno 122 centimetri. Come spettacoli ci
 sono Le Cirque Arcanus al Ministry of Magic e The Untrainable Dragon sull’Isle of
 Berk.
 
@@ -266,8 +267,8 @@ Harry Potter è il tema che lega tutti e tre i parchi, e ognuno ha un’area sua
 più antica è Hogsmeade alle Islands of Adventure, aperta il 18 giugno 2010 su 8
 ettari. Lì prima c’era la montagna russa Flying Unicorn, chiusa nel 2008 e tornata
 come **[Flight of the
-Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**, una
-junior coaster di Vekoma da 92 centimetri. A questo si aggiungono Forbidden
+Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**. Questa
+junior coaster di Vekoma parte da 92 centimetri. A questo si aggiungono Forbidden
 Journey, Hagrid's e il negozio di bacchette Ollivanders.
 
 Diagon Alley agli Studios è arrivata nel 2014, insieme a Escape from Gringotts e
@@ -277,8 +278,8 @@ ministero britannico degli anni Novanta. In Harry Potter and the Battle at the
 Ministry aiuti Harry, Ron e Hermione a fermare Dolores Umbridge.
 
 Chi vuole vedere Hogsmeade e Diagon Alley nello stesso giorno o salire
-sull’Hogwarts Express ha bisogno di un biglietto Park-to-Park. Il Ministry of
-Magic si merita un giorno intero all’Epic Universe.
+sull’Hogwarts Express ha bisogno di un biglietto Park-to-Park. Per il Ministry of
+Magic metti in conto un giorno a parte all’Epic Universe.
 
 ## Seuss Landing, Marvel e Jurassic Park
 
@@ -293,8 +294,8 @@ solo con un bambino di quell’altezza), e il parco giochi Camp Jurassic.
 
 ## All’apertura o la sera
 
-Quando la coda a un’attrazione è corta lo dice il profilo orario. Ecco le otto
-attrazioni dell’Epic Universe con la coda più lunga:
+Nel profilo orario vedi a che ora la coda a un’attrazione è corta. Per l’Epic
+Universe, ecco le otto attrazioni con la coda più lunga:
 
 ```hourly-profile-widget slug=universal-epic-universe top=8
 
@@ -318,9 +319,8 @@ da King's Cross e Revenge of the Mummy seguono come «buon consiglio».
 ### Hogwarts Express: solo con il biglietto Park-to-Park
 
 L’**Hogwarts Express** collega Diagon Alley agli Studios con Hogsmeade alle
-Islands of Adventure. L’ha costruito Doppelmayr Garaventa, ha aperto l’8 luglio
-2014 e dura circa quattro minuti. Sale solo chi ha un biglietto Park-to-Park o un
-abbonamento annuale. Con il biglietto di un solo parco sul treno non si sale.
+Islands of Adventure. L’ha costruito Doppelmayr Garaventa, e ha aperto l’8 luglio 2014. Il viaggio dura circa quattro minuti. Sale solo chi ha un biglietto
+Park-to-Park o un abbonamento annuale.
 
 ## Biglietti: un parco o Park-to-Park
 
@@ -330,8 +330,8 @@ e sali sull’Hogwarts Express. I biglietti Park-to-Park esistono per tre, quatt
 cinque giorni e ti fanno entrare ogni giorno in tutti e quattro i parchi, anche
 all’Epic Universe e a Volcano Bay.
 
-Sulla pagina dei biglietti di Universal l’8 ottobre 2026 c’erano questi prezzi di
-partenza, per giorno e biglietto, tasse escluse:
+I prezzi di partenza sulla pagina dei biglietti di Universal, per giorno e
+biglietto, tasse escluse, all’8 ottobre 2026:
 
 | Parco                          | Prezzo da      |
 | ------------------------------ | -------------- |
@@ -340,7 +340,7 @@ partenza, per giorno e biglietto, tasse escluse:
 | Universal Islands of Adventure | 124,99 dollari |
 | Volcano Bay                    | 80,99 dollari  |
 
-I prezzi cambiano di giorno in giorno, e la pagina indica il più basso. Universal
+I prezzi cambiano di giorno in giorno, e questi sono i più bassi. Universal
 ha in programma due offerte. Il biglietto da 3 giorni con un parco al giorno,
 Studios, Islands of Adventure ed Epic Universe, parte da 99 dollari al giorno e
 297 in tutto. Il biglietto Park-to-Park per due giorni agli Studios e alle Islands
@@ -360,14 +360,14 @@ text: I prezzi di ogni giorno sono nel calendario di Universal.
 
 ## Express Pass: quanto costa e dove vale
 
-L’Express Pass è il modo che Universal ha per farti saltare la fila a pagamento.
+Con l’Express Pass paghi Universal per saltare la fila.
 Esiste in tre forme, e differiscono più di quanto il nome faccia pensare.
 
 **Universal Express** vale una volta per attrazione. Universal lo vende per gli
 Studios, le Islands of Adventure, l’Epic Universe e Volcano Bay, come supplemento
 al biglietto. Per gli Studios e le Islands of Adventure Universal sulla pagina dei
 biglietti indica da 119,99 a 319,99 dollari a persona e per parco, a seconda del
-giorno. Un prezzo per l’Epic Universe la pagina non lo indica.
+giorno. Per l’Epic Universe lì non c’è un prezzo.
 
 **Universal Express Unlimited** vale più volte per attrazione, ma solo agli Studios
 e alle Islands of Adventure. All’Epic Universe e a Volcano Bay non è valido. Gli
@@ -383,7 +383,7 @@ All’Epic Universe, dunque, se vuoi un pass non c’è alternativa all’Expres
 singolo. Le code più lunghe del resort stanno lì, per questo un pass lì rende di
 più. Chi all’apertura fa prima Mine-Cart Madness e il Battle at the Ministry non
 ne ha bisogno per queste due. Agli Studios e alle Islands of Adventure, senza il
-vantaggio dell’hotel, non comprerei il pass. Arrivando presto, alle attrazioni dell’elenco del rope drop, cioè VelociCoaster, Ripsaw Falls, Skull Island e Spider-Man, arrivi anche senza pass. Hagrid's non è nell’elenco.
+vantaggio dell’hotel, non comprerei il pass. Arrivando presto, alle attrazioni dell’elenco del rope drop, cioè VelociCoaster, Ripsaw Falls, Skull Island e Spider-Man, arrivi anche senza pass. Per Hagrid's non è così.
 È una mia valutazione dai profili orari. Quanti minuti faccia risparmiare un pass
 nella realtà, non lo misuriamo.
 
@@ -403,12 +403,12 @@ L’attesa tipica per mese, per ognuno dei tre parchi:
 
 ```
 
-In tutti e tre i parchi dicembre è il mese con l’attesa più lunga, ma finora per
-dicembre ci sono solo nove giorni misurati. All’Epic Universe gennaio e febbraio
-sono alti uguale. L’attesa è più corta alle Islands of Adventure a settembre,
-all’Epic Universe ad agosto e a settembre e agli Studios a maggio. Quanto ai
-giorni della settimana, agli Studios e alle Islands of Adventure è in testa il
-sabato. All’Epic Universe i giorni della settimana differiscono appena.
+In tutti e tre i parchi si aspetta di più a dicembre, ma finora di dicembre
+abbiamo misurato solo nove giorni. All’Epic Universe si aspetta altrettanto a
+gennaio e febbraio. L’attesa è più corta alle Islands of Adventure a settembre,
+all’Epic Universe ad agosto e a settembre e agli Studios a maggio. Fra i
+giorni della settimana, agli Studios e alle Islands of Adventure il più affollato
+è il sabato. All’Epic Universe i giorni della settimana differiscono appena.
 
 In autunno gli Studios, nelle sere delle Halloween Horror Nights, chiudono prima
 per gli ospiti normali. Tutte le date, i prezzi e le case sono nella nostra
@@ -419,7 +419,7 @@ Parigi](/blog/natale-capodanno-orlando-parigi-2026). All’Epic Universe c’è 
 tutto suo, Universal Nights, da 179 dollari a persona. Le date sono il 17 e il 24
 ottobre e il 6 e il 20 novembre.
 
-I giorni più tranquilli delle prossime settimane li ricalcoliamo ogni giorno:
+Ogni giorno ricalcoliamo quali saranno i giorni più tranquilli delle prossime settimane:
 
 ```best-days-widget slug=universal-epic-universe
 
@@ -472,9 +472,9 @@ Revenge of the Mummy da 122 centimetri, VelociCoaster da 130, Doctor Doom's
 Fearfall da 133 e l’Hulk da 138. Per la maggior parte di queste, prima
 dell’imbarco c’è un sedile di prova in cui puoi vedere se ci stai.
 
-Seuss Landing alle Islands of Adventure è l’area per i più piccoli. Sulla pagina
-di Universal, di Seuss Landing risultano solo due attrazioni con un’altezza
-minima, tutte e due a 92 centimetri. Agli Studios Minion Land e DreamWorks Land
+Seuss Landing alle Islands of Adventure è l’area per i più piccoli. Secondo
+Universal, lì solo due attrazioni hanno un’altezza minima, tutte e due di 92
+centimetri. Agli Studios Minion Land e DreamWorks Land
 sono dei bambini, all’Epic Universe l’Isle of Berk con il Viking Training Camp.
 
 ## Come arrivare, parcheggio e hotel
@@ -499,8 +499,8 @@ Portofino Bay, Hard Rock e Royal Pacific. Per un soggiorno di almeno cinque nott
 Universal dà fino al 30 per cento di sconto dall’8 settembre al 25 dicembre 2026 e
 dal 3 gennaio al 15 marzo 2027.
 
-**Mangiare.** Il nostro database conta (all’8 ottobre 2026) 64 locali agli
-Studios, 31 alle Islands of Adventure e 32 all’Epic Universe.
+**Mangiare.** Agli Studios ci sono 64 ristoranti e chioschi, alle Islands of
+Adventure 31 e all’Epic Universe 32 (all’8 ottobre 2026).
 
 ## Domande frequenti su Universal Orlando
 

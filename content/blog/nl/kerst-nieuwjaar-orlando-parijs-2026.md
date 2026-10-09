@@ -69,10 +69,10 @@ lang Kerst, beide adverteren dezelfde weken, en op de vraag wat je op 28
 december te wachten staat geven ze een heel ander antwoord. De data komen telkens van
 de officiële pagina van het park.
 
-> **Over de data:** dit is de stand van 4 oktober 2026. Alle datums, tijden en
-> prijzen heb ik die dag nagelezen op de officiële pagina's die onderaan bij de
-> bronnen staan. Parken schuiven avonddata tot ver in november nog heen en weer.
-> Even controleren voordat je boekt.
+> **Over de data:** dit is de stand van 4 oktober 2026. Ook tijden en prijzen
+> komen van de officiële pagina's, gelinkt onderaan bij de bronnen. Parken
+> schuiven avonddata tot ver in november nog heen en weer. Even controleren
+> voordat je boekt.
 
 ## Walt Disney World: 13 november tot 6 januari
 
@@ -377,6 +377,6 @@ moment zijn, staat het hele seizoen op de betreffende parkpagina.
 - EPCOT International Festival of the Holidays, de verhalenvertellers en het volledige vertellersschema van de Candlelight Processional: [Candlelight Processional & Holiday Festivities at EPCOT (officieel)](https://disneyworld.disney.go.com/entertainment/epcot/candlelight-processional/)
 - Universal Orlando, 14 november tot 3 januari, Grinchmas, Wizarding World, de Macy's-parade, Epic Universe en de Holiday Tour: [persbericht van 6 augustus 2026 (officieel)](https://media.universalparksusa.com/press-releases/universal-orlando-resort-holidays-2026-trade-080626/) · [Holidays at Universal (officieel)](https://www.universalorlando.com/web/en/us/things-to-do/events/holidays-at-universal)
 - Disneyland Paris, 7 november tot 6 januari, de kerstparade, World of Frozen en oudjaarsavond in beide parken: [Disney Betoverende Kerst 2026 (officieel)](https://www.disneylandparis.com/nl-nl/deseizoenen/kerst-in-disneyland-paris)
-- Wachttijden, drukte-kalender en meetdagen: eigen metingen, venster 2 oktober 2024 tot 2 oktober 2026, opgehaald op 4 oktober 2026
+- Wachttijden, drukte-kalender en meetdagen: eigen metingen, venster 2 oktober 2024 tot 2 oktober 2026
 - Europese parken in de winter, van Brühl tot het Gardameer: [Welke pretparken in de winter 2026/27 open zijn](/blog/winter-pretparken-2026)
 - Het Magic Kingdom de rest van het jaar: [Magic Kingdom: wachttijden en tips](/blog/magic-kingdom-wachttijden-tips) · Disneyland Paris de rest van het jaar: [Disneyland Paris: wachttijden en tips](/blog/disneyland-paris-wachttijden-tips)

@@ -8,8 +8,8 @@ mode: published
 featured: false
 excerpt: >-
   Merlin Entertainments ferme le Berlin Dungeon de la Spandauer Straße après
-  plus de 13 ans. Le dernier jour est le 6 novembre 2026. L'annonce n'en donne
-  pas la raison.
+  plus de 13 ans. Le dernier jour est le 6 novembre 2026. Merlin ne donne pas
+  de raison précise.
 tags:
   - news
   - merlin-entertainments
@@ -20,8 +20,9 @@ rideLinks: false
 seo:
   title: 'Berlin Dungeon : fermeture définitive le 6 novembre 2026'
   description: >-
-    Le Berlin Dungeon ferme après plus de 13 ans. Dernier jour le 6 novembre
-    2026. Ce que l'on sait et ce qu'il advient des billets réservés.
+    Le Berlin Dungeon ferme après plus de 13 ans. Le dernier jour est le
+    6 novembre 2026. Les billets pour une date ultérieure peuvent déjà être
+    reportés.
   keywords:
     - Berlin Dungeon ferme
     - fermeture Berlin Dungeon
@@ -31,9 +32,9 @@ seo:
 
 Le **Berlin Dungeon** ouvre ses portes pour la dernière fois le 6 novembre 2026.
 À partir du 7 novembre, l'attraction d'horreur de la Spandauer Straße, dans le
-quartier de Berlin-Mitte, restera fermée pour de bon, a annoncé l'exploitant
-Merlin Entertainments sur son site et sur Instagram. Le Dungeon a ouvert en 2013
-et a donc tourné un peu plus de 13 ans.
+quartier de Berlin-Mitte, restera fermée pour de bon. L'exploitant Merlin
+Entertainments l'a annoncé sur son site et sur Instagram. Le Dungeon avait
+ouvert en 2013, il y a un peu plus de 13 ans.
 
 ## Ce que dit Merlin
 
@@ -48,10 +49,10 @@ Merlin écrit :
 >
 > Berlin Dungeon, [annonce sur son site et sur Instagram](https://www.freizeitparknews.de/berlin-dungeon/schliessung-2026/), citée par FreizeitparkNEWS le 6 octobre 2026, traduit de l'allemand
 
-L'annonce ne dit pas pourquoi. Interrogé par la Berliner Zeitung, Merlin a
-évoqué une « évaluation régulière de l'évolution de son propre portefeuille
-d'attractions » et a écrit qu'il remerciait vivement l'équipe, les visiteurs et
-les partenaires.
+Merlin ne donne aucune raison dans l'annonce. Interrogé par la Berliner
+Zeitung, le groupe a évoqué une « évaluation régulière de l'évolution de son
+propre portefeuille d'attractions ». Il a aussi écrit qu'il remerciait vivement
+l'équipe, les visiteurs et les partenaires.
 
 Le site néerlandais Looopings soupçonne de mauvais résultats. C'est
 l'appréciation de sa rédaction, Merlin ne l'a pas confirmée.
@@ -60,11 +61,11 @@ l'appréciation de sa rédaction, Merlin ne l'a pas confirmée.
 
 Selon l'annonce, les personnes qui ont réservé pour une date après le 6 novembre
 seront contactées individuellement. Le report est déjà possible via le portail
-de réservation, et Merlin compte envoyer par e-mail d'autres options de report
-ou d'annulation.
+de réservation. Merlin compte envoyer par e-mail d'autres options de report ou
+d'annulation.
 
-Pour le personnel, l'exploitant dit vouloir étudier la possibilité de continuer à
-travailler dans d'autres attractions du groupe.
+Merlin dit vouloir étudier si le personnel peut continuer à travailler dans
+d'autres attractions du groupe.
 
 ## Les fermetures précédentes de Merlin à Berlin
 
@@ -76,22 +77,21 @@ depuis l'éclatement de l'Aquadom en décembre 2022. Le même communiqué disait
 Madame Tussauds, le Berlin Dungeon et le Legoland Discovery Centre devaient
 rester ouverts.
 
-Le propriétaire du Legoland Discovery Centre a changé depuis : selon
+Le Legoland Discovery Centre a changé de propriétaire depuis. Selon
 FreizeitparkNEWS et Looopings, Merlin a cédé les Discovery Centres au groupe
-Lego. Le site de Berlin n'est donc pas fermé, mais il n'appartient plus au
-groupe.
+Lego. Le site de Berlin reste ouvert, mais il n'appartient plus à Merlin.
 
-Merlin a aussi arrêté des Dungeons ailleurs. L'Alton Towers Dungeon, en
+Merlin a aussi fermé des Dungeons ailleurs. L'Alton Towers Dungeon, en
 Angleterre, a ouvert en 2019 et fermé en 2024 après environ cinq ans, écrit la
 Berliner Zeitung. D'après FreizeitparkNEWS, des Dungeons continuent de tourner
 notamment à Hambourg, Londres et Amsterdam.
 
 ## Ce que les visiteurs peuvent faire
 
-L'exploitation normale continue jusqu'au 6 novembre. Pour visiter Merlin
-ailleurs en Allemagne : le groupe exploite [Heide Park](ref:heide-park?bare) et
-[Legoland Deutschland](ref:legoland-deutschland?bare), et nous avons un
-[guide Legoland](/blog/legoland-deutschland-conseils).
+Jusqu'au 6 novembre, le Dungeon reste ouvert comme d'habitude. En Allemagne,
+Merlin exploite aussi [Heide Park](ref:heide-park?bare) et
+[Legoland Deutschland](ref:legoland-deutschland?bare). Pour Legoland, il y a
+notre [guide Legoland](/blog/legoland-deutschland-conseils).
 
 — Patrick
 

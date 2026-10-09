@@ -85,7 +85,7 @@ et a son propre billet.
 ## Les prix
 
 Tous les prix viennent de la page des options payantes du parc, en dollars
-américains, relevés le 28 septembre. Chaque achat ajoute jusqu’à 9,99 $ de
+américains, état au 28 septembre. Chaque achat ajoute jusqu’à 9,99 $ de
 frais, plus les taxes.
 
 | Billet                              | Prix     | Comprend                                               |

@@ -6,10 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Cuando llueve, en el parque de atracciones haces menos cola. En los doce
-  parques que hemos analizado, la espera fue más corta los días de lluvia, y en
-  Movie Park, casi un tercio más corta. En Toverland están cubiertas 22 de las
-  44 atracciones, en Phantasialand 14 de 40 y en Walibi Holland, ninguna.
+  En los doce parques de atracciones de nuestra comparación haces menos cola
+  cuando llueve. En Movie Park Germany, la espera fue casi un tercio más corta
+  los días de lluvia. En Toverland está cubierta la mitad de las atracciones, y
+  en Walibi Holland, ninguna.
 tags:
   - parque-atracciones
   - lluvia
@@ -82,8 +82,8 @@ un 31 % en Movie Park. Un día así, lo que suele merecer la pena son las
 atracciones cubiertas. En Toverland está cubierta la mitad de sus 44
 atracciones, y en Walibi Holland, ninguna.
 
-Hemos comprobado atracción por atracción, con lo que publica cada parque, cuáles
-están cubiertas en nueve parques: Europa-Park, Phantasialand, Efteling,
+En nueve parques comparamos atracción por atracción cuáles están cubiertas,
+según lo que publica cada parque: Europa-Park, Phantasialand, Efteling,
 Toverland, Movie Park Germany, Plopsaland Deutschland, Heide Park, Walibi
 Belgium y Walibi Holland.
 
@@ -101,16 +101,17 @@ todos los días de apertura entre el 24 de diciembre de 2025 y el 5 de octubre d
 
 Comparar un martes lluvioso de mayo con un sábado soleado de las vacaciones de
 verano no sería justo, porque un sábado de vacaciones hay más gente de todas
-formas. Por eso hemos comparado cada día de lluvia solo con días secos del mismo
-tipo: del mismo mes, también laborables o también fines de semana o festivos, y
-también dentro de las vacaciones escolares o también fuera de ellas. Un sábado
+formas. Por eso comparamos un día de lluvia solo con días secos que se le
+parecen en tres cosas. Son del mismo mes, son laborables si él lo es o fines de
+semana o festivos si él lo es, y caen, como él, dentro o fuera de las vacaciones
+escolares. Un sábado
 de julio lluvioso y en vacaciones lo comparamos, por tanto, con los fines de
-semana y festivos secos de julio que también cayeron en vacaciones. Cuando de un
-tipo de día había menos de dos días de lluvia o menos de dos días secos, lo
-hemos descartado, porque con un solo día pesa demasiado el azar. Con eso
-calculamos para cada parque en qué porcentaje fue más corta la espera los días
-de lluvia. Los tipos de día con muchos días de lluvia cuentan más en ese
-porcentaje.
+semana y festivos secos de julio que también cayeron en vacaciones. Cuando una
+de estas comparaciones tenía menos de dos días de lluvia o menos de dos días
+secos, la hemos descartado, porque con un solo día pesa demasiado el azar. Al
+final, cada parque tiene un porcentaje: cuánto más corta fue la espera los días
+de lluvia. Una comparación con muchos días de lluvia cuenta más que una con
+pocos.
 
 La cantidad de lluvia es la de todo el día, así que un chaparrón a las tres de
 la madrugada cuenta igual que uno a mediodía. La temperatura no la hemos
@@ -153,9 +154,10 @@ días de lluvia.
 La diferencia tiene poco que ver con cuántas atracciones cubiertas tenga cada
 parque. En Walibi Holland no hay ninguna atracción dentro de una nave, y los
 días de lluvia la espera fue un 6 % más corta. En Toverland están cubiertas 22
-de 44 y la espera bajó un 13 %, y en Heide Park, con tres de 39, un 12 %.
-Europa-Park tiene más atracciones cubiertas que ningún otro y la segunda
-diferencia más pequeña, y Movie Park, con sus casas del terror, la mayor.
+de 44 y la espera bajó un 13 %. En Heide Park solo lo están tres de 39, y bajó
+un 12 %. Europa-Park tiene más atracciones cubiertas que ningún otro, pero la
+segunda diferencia más pequeña. La mayor es la de Movie Park, con sus casas del
+terror.
 Sospecho que los días de lluvia va menos gente a todos los parques y que la que
 va se reparte entre más o menos atracciones cubiertas según el parque. Con estas
 cifras no lo puedo demostrar.
@@ -183,8 +185,8 @@ y Heide Park:
 | Septiembre  |                                  162 |                        16 % |
 
 Son las cifras de un solo año. En 2026, julio fue seco y mayo y junio,
-lluviosos, y 2027 puede ser muy distinto. Aun así, sirven para hacerse una idea.
-En temporada alta llovió más o menos uno de cada cinco días de apertura, y en
+lluviosos. 2027 puede ser muy distinto. Aun así, sirven para hacerse una idea:
+en temporada alta llovió más o menos uno de cada cinco días de apertura, y en
 algunos meses, uno de cada tres.
 
 ## Europa-Park
@@ -221,8 +223,8 @@ Europa-Park](/blog/europa-park-tiempos-de-espera-consejos).
 ## Phantasialand
 
 En [Phantasialand](ref:phantasialand), en Brühl, están cubiertas 14 de las 40
-atracciones. Siete están en Fantasy, cuatro en Berlin, dos en China Town y una
-en Mystery.
+atracciones. Siete de ellas están en la zona Fantasy, cuatro en Berlin, dos en
+China Town y una en Mystery.
 
 | Atracción                                              | Zona       | Tipo                  | Fabricante       | Apertura | Altura mínima |
 | ------------------------------------------------------ | ---------- | --------------------- | ---------------- | -------- | ------------- |
@@ -240,15 +242,15 @@ encima, hacia delante en Fear y hacia un lado en Force. Crazy Bats funciona
 desde 1988 en la misma nave, y desde 2019 con gafas de realidad virtual. Mystery
 Castle es una torre de caída de 65 metros que está entera dentro de un torreón.
 Para los niños más pequeños hay además Bumper Klumpen, Wözl's Duck Washer y
-Wupi's Wabi Wipper desde 100 centímetros, el Tittle Tattle Tree desde 110 y, en
-Berlin, el carrusel de caballos, Die 3 Mausketiere y el Verrückte Hotel Tartüff.
+Wupi's Wabi Wipper desde 100 centímetros y el Tittle Tattle Tree desde 110. En
+Berlin tienen además el carrusel de caballos, Die 3 Mausketiere y el Verrückte
+Hotel Tartüff.
 
 ![Una vasija de barro gigante con la tapa abierta y una escalera apoyada. | Dentro de la nave de Winja’s Fear & Force, Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
 Taron, Black Mamba y las demás montañas rusas grandes van al aire libre. Si
-llueve todo el día, en Brühl te quedan las 14 atracciones cubiertas, entre ellas
-tres montañas rusas: las dos de Wuze Town y Crazy Bats. El resto son dark rides,
-madhouses, una torre de caída y atracciones familiares.
+llueve todo el día, en Brühl te quedan tres montañas rusas bajo techo: las dos
+de Wuze Town y Crazy Bats.
 
 ```ride-waits-widget rides=phantasialand/winjas-fear|Winja's Fear|Spinning Coaster;phantasialand/winjas-force|Winja's Force|Spinning Coaster;phantasialand/mystery-castle|Mystery Castle|Torre de caída;phantasialand/maus-au-chocolat|Maus au Chocolat|Dark Ride;phantasialand/crazy-bats|Crazy Bats|Coaster indoor columns=type,peak,days
 
@@ -294,12 +296,12 @@ Bajos](/blog/efteling-el-disney-de-los-paises-bajos).
 
 [Toverland](ref:attractiepark-toverland), en Sevenum, empezó siendo una nave
 para los días de lluvia. A su fundador, Jean Gelissen, se le ocurrió la idea
-cuando un chaparrón acabó con una excursión que hacía con sus hijos, y el 19 de
-mayo de 2001 abrió la primera nave, el actual Land van Toos. En 2004 se sumó la
+cuando un chaparrón acabó con una excursión que hacía con sus hijos. El 19 de
+mayo de 2001 abrió la primera nave, el actual Land van Toos, y en 2004 se sumó la
 segunda, el Wunderwald. Hoy están cubiertas 22 de las 44 atracciones, justo la
-mitad y la mayor proporción de todos los parques de esta lista: doce en Land van
-Toos, cinco en el Wunderwald, dos en Port Laguna, una en la Magische Vallei, una
-en Avalon y, además, Morrels BOEderij.
+mitad y la mayor proporción de todos los parques de esta lista. Doce de ellas
+están en Land van Toos y cinco en el Wunderwald, dos en Port Laguna, una en la
+Magische Vallei y otra en Avalon, además de Morrels BOEderij.
 
 | Atracción                                                | Zona          | Tipo                  | Fabricante       | Apertura | Altura mínima |
 | -------------------------------------------------------- | ------------- | --------------------- | ---------------- | -------- | ------------- |
@@ -357,8 +359,8 @@ Park](/blog/movie-park-germany-tiempos-de-espera-consejos).
 ## Plopsaland Deutschland
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland), en Haßloch, se llamó
-Holiday Park hasta junio de 2025. De sus 57 atracciones, 13 están cubiertas, y
-cinco de ellas son casas del terror de las Halloween Fright Nights: NEXUS AI,
+Holiday Park hasta junio de 2025. De sus 57 atracciones, 13 están cubiertas.
+Cinco de ellas son casas del terror de las Halloween Fright Nights: NEXUS AI,
 Academy of Freaks, Titty Twister, Mad Rat y la Schnitzelhaus. Las otras ocho son
 el dark ride The Smurfs' Adventure, que tiene un edificio propio, y siete
 atracciones y zonas de juego de la nave cubierta que abrió en 2018 como Holiday
@@ -454,10 +456,8 @@ Datos a 6 de octubre de 2026:
 | Walibi Holland         |         0 |            39 |
 
 La columna «Cubiertas» cuenta atracciones de todo tipo, también las que no son
-para montarse. En Europa-Park entran ahí diez estaciones, tres laberintos y una
-piscina de bolas, y en Toverland, muchas zonas para trepar y jugar. En Movie
-Park y Plopsaland entran casas del terror que solo abren las noches de
-Halloween, y en Efteling, entre otras, el Diorama y el museo.
+para montarse: estaciones, laberintos, piscinas de bolas, zonas de juego, un
+museo y casas del terror que solo abren las noches de Halloween.
 
 Aquí tienes los tiempos de espera habituales de los nueve parques, con
 Europa-Park resaltado:
@@ -466,8 +466,8 @@ Europa-Park resaltado:
 
 ```
 
-Si va a llover todo el día, yo iría a Efteling si lo que quiero son dark rides,
-y a Phantasialand si además quiero montañas rusas, porque allí hay tres
+Si va a llover todo el día y lo que quiero son dark rides, yo iría a Efteling.
+Si además quiero montañas rusas, iría a Phantasialand, donde hay tres
 cubiertas. Europa-Park, aun sin contar estaciones ni laberintos, tiene más
 atracciones cubiertas que esos dos, pero los días de lluvia la espera allí solo
 fue un 5 % más corta. Con niños pequeños iría a Toverland o a Plopsaland. Movie
@@ -513,17 +513,17 @@ entre ellos todos los de este artículo.
 Según nuestra medición, sí. En los doce parques que hemos analizado, la espera
 en las atracciones con más cola de cada parque fue más corta los días de lluvia
 que en días secos del mismo mes y del mismo tipo (laborables o fines de semana y
-festivos, dentro o fuera de las vacaciones escolares), entre un 4 % y un 31 %
-según el parque. Analizamos los días de apertura del 24 de diciembre de 2025 al
-5 de octubre de 2026 y contamos como día de lluvia el que tuvo al menos 2
-milímetros de precipitación.
+festivos, dentro o fuera de las vacaciones escolares). Según el parque, fue
+entre un 4 % y un 31 % más corta. Analizamos los días de apertura del 24 de
+diciembre de 2025 al 5 de octubre de 2026. Contamos como día de lluvia el que
+tuvo al menos 2 milímetros de precipitación.
 
 ### ¿Qué parques de atracciones tienen muchas atracciones cubiertas?
 
-De los nueve parques que hemos revisado atracción por atracción, Europa-Park es
-el que más tiene, con 34, aunque 14 de ellas son estaciones, laberintos y una
-piscina de bolas. La mayor proporción está en Toverland, con 22 atracciones
-cubiertas de 44, y Phantasialand tiene 14 de 40. En Walibi Holland no hay
+De los nueve parques de nuestra comparación, Europa-Park es el que más
+atracciones cubiertas tiene, con 34, aunque 14 de ellas son estaciones,
+laberintos y una piscina de bolas. La mayor proporción está en Toverland, con 22
+atracciones cubiertas de 44. Phantasialand tiene 14 de 40. En Walibi Holland no hay
 ninguna atracción dentro de una nave.
 
 ### ¿Funcionan las montañas rusas con lluvia?
@@ -537,7 +537,7 @@ cada cinco minutos.
 
 Según nuestras cifras, Toverland o Plopsaland Deutschland. En Toverland están
 cubiertas 22 de las 44 atracciones, casi todas pensadas para familias con niños
-pequeños, y 17 de ellas están en las naves de Land van Toos y Wunderwald. Para
+pequeños. De ellas, 17 están en las dos naves de Land van Toos y Wunderwald. Para
 el Toos-Express, la única montaña rusa cubierta, la altura mínima es de 90
 centímetros. En Plopsaland, en Haßloch, hay ocho atracciones y zonas de juego
 cubiertas, siete de ellas en la nave Holiday Indoor, desde Tabaluga's
@@ -555,8 +555,8 @@ muchos años.
 
 ## Fuentes y lecturas adicionales
 
-- Tiempos de espera en días de lluvia y número de días de lluvia: medición propia de park.fan a partir de las medias diarias de espera y de los datos diarios del tiempo, del 24 de diciembre de 2025 al 5 de octubre de 2026, datos meteorológicos de [Open-Meteo](https://open-meteo.com/)
-- Qué atracciones están cubiertas, alturas mínimas, fabricantes y años de apertura: recopilado por park.fan según lo que publica cada parque, a 6 de octubre de 2026
+- Tiempos de espera en días de lluvia y número de días de lluvia: medición propia de park.fan a partir de las esperas medias y la lluvia de cada día, del 24 de diciembre de 2025 al 5 de octubre de 2026, datos meteorológicos de [Open-Meteo](https://open-meteo.com/)
+- Qué atracciones están cubiertas, alturas mínimas, fabricantes y años de apertura: según lo que publica cada parque, a 6 de octubre de 2026
 - Plopsaland Deutschland, antes Holiday Park, cambio de nombre en 2025 y nave cubierta: [Plopsaland Deutschland (Wikipedia en alemán)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
 - Turbine, Shuttle Loop de Schwarzkopf de 1982: [Turbine en RCDB](https://rcdb.com/921.htm)
 - Detalles sobre Wuze Town, Mystery Castle, Dämonen Gruft, Ghostbusters 5D, Van Helsing's Factory, Turbine, la historia de Toverland, el tiempo en Phantasialand y el fin de la apertura en invierno de Walibi Holland: nuestras guías de [Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos), [Heide Park](/blog/heide-park-tiempos-de-espera-consejos), [Movie Park](/blog/movie-park-germany-tiempos-de-espera-consejos), [Toverland](/blog/toverland-troy-tiempos-de-espera-consejos), [Walibi Belgium](/blog/walibi-belgium-tiempos-de-espera-consejos) y [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), más la [guía de parques en invierno](/blog/parques-atracciones-invierno-2026)

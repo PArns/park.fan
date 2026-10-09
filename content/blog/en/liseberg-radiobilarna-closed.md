@@ -7,10 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg opened its bumper-car ride Radiobilarna for the last time on 4
-  October 2026. The building will be demolished and a new attraction will take
-  its place. Whether the Radiobilarna can run elsewhere in the park is still
-  being looked at.
+  Liseberg opened its bumper cars, the Radiobilarna, for the last time on 4
+  October 2026, after nearly 100 years. The building is coming down to make way
+  for a new attraction. Liseberg is still looking into whether the ride can run
+  somewhere else in the park.
 tags:
   - news
   - liseberg
@@ -22,9 +22,10 @@ parkLinks:
 rideLinks:
   - liseberg/radiobilarna
 seo:
-  title: 'Radiobilarna at Liseberg closed: building to be demolished'
+  title: 'Radiobilarna bumper cars at Liseberg have closed'
   description: >-
-    Liseberg closed the Radiobilarna on 4 October 2026. The building will be demolished, and whether the ride gets a new place is open.
+    Liseberg closed its Radiobilarna bumper cars on 4 October 2026, after nearly
+    100 years. The building is coming down to make way for a new attraction.
   keywords:
     - Radiobilarna Liseberg
     - Radiobilarna closed
@@ -48,14 +49,14 @@ Halloween weekend. The building will then be demolished.
 
 CEO Andreas Andersen says the park wants to make room for something new. Liseberg
 is looking into whether the Radiobilarna can get a new place in the park later.
-Nothing has been decided. The park has not said which attraction will go into the
-old building.
+Nothing has been decided. The park hasn't announced which attraction will take the
+building's place.
 
 Liseberg historian Patrik Källström calls it a farewell to a beloved classic.
 
-From 2 to 4 October, every guest with park admission rode for free. We recorded
-the last wait time on 4 October at 20:01 Swedish time, and we have listed the
-ride as closed since.
+From 2 to 4 October, every guest with park admission rode for free. We measured the
+Radiobilarna's last wait time on 4 October at 20:01 Swedish time. Since then the
+ride has been marked as closed on park.fan.
 
 ## Since 1927
 
@@ -67,7 +68,7 @@ For the first five years the entrepreneur Arnold Neble ran the ride. After that
 Liseberg took it over for 5,000 kronor. Since then it has stood in four different
 places in the park, and it moved for the last time in 1998.
 
-The park names eight car models and several substantial rebuilds. More than
+According to the park, there were eight car models and several major rebuilds. More than
 300,000 guests a year rode it most recently. According to the announcement,
 Michael Jackson and Stevie Wonder were among the riders.
 
@@ -79,15 +80,14 @@ ride's partner.
 
 ## Tuta & Kör and Oceana
 
-The Radiobilarna are closed. The small children's bumper cars "Tuta & Kör" in
-Kaninlandet stay unchanged. Whether there will be a replacement, the announcement
-does not say.
+The small children's bumper cars "Tuta & Kör" in Kaninlandet stay as they are.
+The announcement of 29 September doesn't mention a replacement for the Radiobilarna.
 
 Another new attraction at the park is the water world Oceana, about 13,600 square
 metres, 6,000 of them indoors and 4,000 outdoors. Planned are four larger
 slides, three children's areas, a wave pool and a river for families. According
-to Liseberg, Oceana is due to open in "early 2027"; more in our overview of the
-[2027 novelties](/blog/new-theme-park-attractions-2027).
+to Liseberg, Oceana is due to open in "early 2027", and there's more on it in our overview
+of the [2027 novelties](/blog/new-theme-park-attractions-2027).
 
 Liseberg has been working to finish it since the fire in February 2024. In an
 announcement on 26 September the park wrote that almost a hundred trees and plants
@@ -95,14 +95,14 @@ now stand under the roof, and that the first tickets go on sale at the end of No
 
 ## Halloween and Christmas at Liseberg
 
-The Halloween season runs from 2 October to 1 November. The Radiobilarna only saw
-its first weekend. On 14 and 15 October there are two extra days when only Kaninlandet opens, as "Höst i
+The Halloween season runs from 2 October to 1 November. The Radiobilarna only ran
+on its first weekend. On 14 and 15 October there are two extra days when only Kaninlandet opens, as "Höst i
 Kaninlandet".
 
-Tuta & Kör run in summer, at Halloween and at Christmas, and their cars come from the
-same maker as the Radiobilarna's, Preston & Barbieri. The ride is built for children
-between 90 and 140 centimetres and, according to the park, handles about 240 riders
-an hour.
+Tuta & Kör run in summer, at Halloween and at Christmas. Like the Radiobilarna's,
+their cars come from Preston & Barbieri. The ride is built for children between 90
+and 140 centimetres, and according to the park it handles about 240 riders an
+hour.
 
 Liseberg has held a Christmas season since 2000. This year the show on the Advent
 stage runs from 14 November to 30 December. Until 30 December the park also shows an
@@ -112,7 +112,7 @@ park's website places it "between Radiobilarna and Slänggungan". Liseberg hasn'
 
 ## Wait times of the Radiobilarna over the past year
 
-The measurement window runs from 8 October 2025 to 7 October 2026.
+The table covers wait times from 8 October 2025 to 7 October 2026.
 
 ```ride-waits-widget rides=liseberg/radiobilarna|Radiobilarna|Bumper cars columns=type,peak,days
 
@@ -121,8 +121,7 @@ The measurement window runs from 8 October 2025 to 7 October 2026.
 ## The roller coasters in the park
 
 Liseberg's roller coasters include Lisebergbanan (1987), Balder (2003), Rabalder
-(2009), Stampbanan (2013), Helix (2014), Valkyria (2018) and Luna (2023). The park
-itself opened in 1923.
+(2009), Stampbanan (2013), Helix (2014), Valkyria (2018) and Luna (2023).
 
 The FlumeRide log flume is older than any of these coasters. Liseberg gives 1973 as
 its year of manufacture and Arrow Development from the US as its maker. The channel

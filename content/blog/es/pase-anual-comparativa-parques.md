@@ -6,9 +6,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Efteling, Europa-Park y Toverland venden pase anual, Phantasialand ya no
-  desde 2022. Precios, días bloqueados y el punto de equilibrio frente a la
-  entrada de un día, a 6 de octubre de 2026.
+  En el Efteling, Europa-Park y Toverland, el pase anual más barato se amortiza
+  con entre cuatro y seis visitas. En el Efteling no vale 68 días en 2027. El
+  ResortPass de Europa-Park no se puede comprar ahora mismo.
 tags:
   - pase-anual
   - parque-tematico
@@ -29,8 +29,9 @@ coverImage:
 seo:
   title: 'Pase anual parque temático: precios y punto de equilibrio'
   description: >-
-    Efteling, Europa-Park, Toverland y Phantasialand comparados: precio, días
-    bloqueados y número de visitas a partir del cual compensa un pase anual.
+    En el Efteling, Europa-Park y Toverland, el pase anual más barato se
+    amortiza con cuatro a seis visitas. Phantasialand no tiene pase anual desde
+    2022.
   keywords:
     - pase anual parque temático merece la pena
     - pase anual parque temático comparativa
@@ -54,14 +55,13 @@ son justo los días en que tienes libre.
 
 Esta guía hace la cuenta para cuatro parques: el [Efteling](ref:efteling) en los Países Bajos,
 [Europa-Park](ref:europa-park) en Rust, [Toverland](ref:attractiepark-toverland) en Sevenum y
-[Phantasialand](ref:phantasialand) en Brühl. Los tres primeros venden pase anual. Phantasialand no, y
-aparece aquí igualmente porque allí la pregunta es la contraria: ¿cuánto cuesta un año de visitas si cada
+[Phantasialand](ref:phantasialand) en Brühl. Los tres primeros tienen pase anual, Phantasialand no. Lo
+incluimos igualmente porque allí la pregunta es la contraria: ¿cuánto cuesta un año de visitas si cada
 una paga el precio del día?
 
-Todos los precios proceden de las páginas de los parques y llevan la fecha del 6 de octubre de 2026. Las
-direcciones están al final. Nuestros tiempos de espera entran en el texto solo a través de los widgets,
-nunca como cifra. Responden a la segunda pregunta que hay detrás de un pase anual: ¿qué días quieres ir, y
-son los días en que el parque está lleno?
+Todos los precios proceden de las páginas de los parques, enlazadas al final, a 6 de octubre de 2026. A
+eso se suma una segunda pregunta: ¿qué días quieres ir, y está lleno el parque esos días? Para eso hay,
+bajo cada parque, un widget con nuestros tiempos de espera.
 
 ## Los cuatro parques de un vistazo
 
@@ -112,8 +112,8 @@ en que valen. Un descuento para visitantes de 65 años o más ya no existe desde
 Los tres niveles dan un 25 % en las entradas del espectáculo CARO y en la fiesta de Nochevieja, hasta un
 25 % en pernoctaciones en el parque y entrada gratuita o reducida en parques asociados y zoos. Premium añade
 un recuerdo y el acceso a un evento solo para titulares. Pagar al mes obliga a un mínimo de doce meses y
-cuesta más: doce meses de Classic suman 252 €, o sea 12 € por encima del pago anual, y en Plus y Premium
-son 32 € cada uno. La fecha de inicio la fijas al contratar, hasta un mes antes.
+cuesta más. Doce meses de Classic suman 252 €, 12 € más que pagando el año entero. En Plus y Premium son
+32 € más cada uno. La fecha de inicio la fijas al contratar, hasta un mes antes.
 
 ### Los días bloqueados en el calendario del parque
 
@@ -127,8 +127,8 @@ Premium no tiene días bloqueados y no aparece en ellos.
 | Año natural 2027                         | 68 días           | 25 días        |
 | Días abiertos 2027                       | 297               | 340            |
 
-Los mínimos prometidos se cumplen. 297 días abiertos en Classic superan en siete los 290 prometidos, y en
-Plus son exactamente 340. El bloqueo cae sobre todo en fines de semana y en bloques de varias semanas: en
+Los mínimos prometidos se cumplen: Classic vale 297 días en 2027, siete más que los 290 prometidos. Plus
+vale exactamente 340 días. El bloqueo cae sobre todo en fines de semana y en bloques de varias semanas: en
 2027, 42 de los 68 días de Classic son sábado o domingo, y 16 de los 25 en Plus. De lunes a viernes hay 26
 días en Classic.
 
@@ -140,7 +140,7 @@ Los días bloqueados de Classic, en el orden del calendario:
 - Otoño de 2027: 11, 12, 18, 19, 25 y 26 de septiembre, 2, 3, 9 y 10 de octubre, 16 de octubre al 7 de noviembre, 13 y 14 de noviembre, 21 de noviembre, 27 y 28 de noviembre
 - Diciembre de 2027: 4, 5, 12 y 14 de diciembre, 25 al 31 de diciembre
 
-Plus bloquea mucho menos: el 22 y 29 de noviembre, 5 y 6 de diciembre y del 26 al 31 de diciembre de 2026, y
+Con Plus hay muchos menos días bloqueados: el 22 y 29 de noviembre, 5 y 6 de diciembre y del 26 al 31 de diciembre de 2026, y
 en 2027 el 10, 16, 23 y 24 de enero, 6 y 7 de marzo, 20 y 21 de marzo, 6, 7, 16 y 17 de mayo, 21, 27 y 28
 de noviembre, 4, 12 y 14 de diciembre y del 25 al 31 de diciembre. La mayor diferencia son las tres semanas
 de mediados de octubre a principios de noviembre: del 17 de octubre al 8 de noviembre en 2026, del 16 de
@@ -158,25 +158,25 @@ Una entrada de un día en el Efteling cuesta entre 40 y 56 € en 2026, más 15 
 | Plus    | 310 €  | 6 a 8 visitas        | 5 a 7 visitas        |
 | Premium | 400 €  | 8 a 10 visitas       | 7 a 9 visitas        |
 
-«Con coche» cuenta el descuento en el ticket de parking como ahorro: 6 €, 7,50 € y 9 € por visita. El
+En la columna «con coche», el descuento en el ticket de parking cuenta como ahorro: 6 €, 7,50 € y 9 € por
+visita. El
 precio es por persona en todos los niveles. Dos adultos con Classic pagan 480 €.
 
-El salto de Classic a Plus cuesta 70 €, el de Plus a Premium 90 €. Ambos compran días, no una ventaja el
-propio día: de Classic a Plus se añaden 43 días en la cuenta de 2027, de Plus a Premium 25. Por cada día
-extra, Plus cuesta 1,63 € más que Classic y Premium 3,60 € más que Plus. Es menos que cualquier precio de
-un día. Lo que cuenta no es el precio de un día, sino si quieres venir esos días. Si nunca vienes en esas
-semanas, no necesitas los 43 días.
+El salto de Classic a Plus cuesta 70 €, el de Plus a Premium 90 €. En los dos casos compras días de más,
+no una ventaja el propio día. En 2027, Plus vale 43 días más que Classic, y Premium 25 más que Plus. Por
+cada día extra, Plus cuesta 1,63 € más que Classic y Premium 3,60 € más que Plus. Es menos que cualquier
+precio de un día. Lo que cuenta es si quieres venir esos días. Si nunca vienes en esas semanas, no
+necesitas los 43 días.
 
-El día de la semana también influye. En el Efteling entre el día de semana más tranquilo y el más lleno
-solo hay un escalón, y solo el sábado queda un escalón por encima del resto, como dice nuestra
-[guía del Efteling](/blog/efteling-el-disney-de-los-paises-bajos). Classic bloquea sobre todo fines de
+El día de la semana también influye. Según [nuestras mediciones](/blog/efteling-el-disney-de-los-paises-bajos), en el
+Efteling las esperas solo son algo más largas los sábados que los demás días. Classic bloquea sobre todo fines de
 semana, pero también 26 días de lunes a viernes. Si puedes venir entre semana, pierdes poco. Si tienes que
 venir en los tramos bloqueados, pierdes mucho.
 
 El parque está a una hora y media o dos de coche de Düsseldorf, y a dos buenas horas de Colonia y del Ruhr.
-A esa distancia, la pregunta es el número de visitas: con tres visitas al año te quedas con la entrada de
-un día, con seis o más sale más barato Classic, y con el coche y el descuento de parking el pase compensa ya
-a partir de la cuarta a la sexta visita.
+A esa distancia, todo depende del número de visitas. Con tres visitas al año te quedas con la entrada de
+un día. A partir de seis visitas sale más barato Classic, y con el coche y el descuento de parking ya desde
+la cuarta a la sexta.
 
 El widget muestra los próximos días tranquilos del Efteling. Puedes compararlos con los días en que Classic
 no vale.
@@ -203,8 +203,7 @@ impresa cuesta 5 € más con Silver y viene incluida con Gold.
 Ahora mismo no se puede comprar ningún pase nuevo. El parque escribe en su página que el cupo está agotado y
 que el ResortPass no está disponible hasta nuevo aviso, tampoco por teléfono, por correo electrónico ni en
 el parque. A los titulares actuales se les informa de la renovación antes de que termine su pase. La cuenta
-para un pase nuevo solo importa, por tanto, cuando se reabra la venta, y cuándo será no consta en ninguna
-parte.
+para un pase nuevo solo importa, por tanto, cuando se reabra la venta. El parque no dice cuándo será.
 
 Una entrada de un día cuesta 67 a 76 € para adultos y 56,50 a 65 € para niños y mayores.
 
@@ -234,8 +233,8 @@ como el mejor comienzo de la temporada 2027, con las entradas más baratas del a
 hace en el portal del ResortPass. Es la primera fecha en la que podrías usar un pase nuevo.
 
 Europa-Park está más vacío un domingo o un jueves de mayo o junio y más lleno el sábado (más en la
-[guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos)). Qué días cubre Silver lo fija el parque en el
-portal. El widget muestra qué días de las próximas semanas son tranquilos.
+[guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos)). El widget muestra qué días de las
+próximas semanas son tranquilos.
 
 ```best-days-widget slug=europa-park
 
@@ -289,16 +288,17 @@ día.
 | 30 €, día más barato con early bird  | 6 visitas             | 5 visitas                                     |
 | 42,50 €, día más caro con early bird | 4 visitas             | 4 visitas                                     |
 
-La columna «con coche» compara 13,50 € de parking por día con el parking anual de 50 €. El parking anual se
+En la columna «con coche» comparamos 13,50 € de parking por día con el parking anual de 50 €. El parking anual se
 amortiza tras cuatro visitas en coche.
 
 En 2026 el parque vendió por primera vez un Summer Pass: 79 € para adultos, 59 € para niños de 90 a 140 cm,
 visitas ilimitadas del 1 de julio al 30 de septiembre. Si volverá en 2027, el parque no lo ha dicho. Quien
 solo viene en verano paga 81 € menos que por el pase anual.
 
-Qué días están tranquilos en Toverland está en la [guía de Toverland](/blog/toverland-troy-tiempos-de-espera-consejos):
-apenas hay diferencia entre los días de la semana, y destacan las vacaciones de Navidad. Un pase sin días
-bloqueados te ayuda, por tanto, menos a elegir el día que en un parque con un patrón semanal claro.
+Según [nuestras mediciones](/blog/toverland-troy-tiempos-de-espera-consejos), en Toverland apenas
+hay diferencia entre los días de la semana, y en las vacaciones de Navidad hay más gente. Un pase sin días
+bloqueados te ayuda, por tanto, menos a elegir el día que en un parque donde algunos días de la semana
+están claramente más vacíos.
 
 ```best-days-widget slug=attractiepark-toverland
 
@@ -307,14 +307,14 @@ bloqueados te ayuda, por tanto, menos a elegir el día que en un parque con un p
 ## Phantasialand: sin pase anual
 
 Phantasialand retiró de la venta su tarjeta Club durante la pandemia, y las últimas caducaron en el verano
-de 2022. Las preguntas frecuentes de la tienda de entradas del parque no mencionan ni pase anual ni tarjeta
-Club, y las entradas solo existen con fecha y en línea. Por qué sigue así y qué hicieron los aficionados está
-en la [guía de Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
+de 2022. En las preguntas frecuentes de la tienda de entradas no aparece ni un pase anual ni una tarjeta
+Club, y las entradas solo se venden con fecha y en línea. Por qué sigue así y qué hicieron los aficionados
+está en nuestra [guía de Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
 
 Queda el precio del día, y salta. En el calendario de octubre de la tienda, una entrada para adultos desde
 12 años cuesta entre 44 y 78 €. La diferencia entre el día más barato y el más caro es de 34 €, un 77 %
-más sobre el día barato. Tres visitas al año cuestan entre 132 y 234 €, y la diferencia procede
-enteramente de lo pronto que reserves y del día que elijas. Un pase anual allanaría esa cuenta, pero no
+más sobre el día barato. Tres visitas al año cuestan entre 132 y 234 €. La diferencia depende solo de lo
+pronto que reserves y del día que elijas. Un pase anual allanaría esa cuenta, pero no
 existe. Queda la elección del día, y barato y vacío no siempre coinciden. En Phantasialand el sábado está
 claramente más lleno que el martes.
 
@@ -329,9 +329,9 @@ por días que de todos modos quieres evitar. Es malo cuando los días bloqueados
 libre y el parque está vacío.
 
 En el Efteling eso solo se cumple en parte. Classic bloquea sobre todo fines de semana y tramos de
-vacaciones. Como el día de la semana influye poco allí, no bloquea solo días llenos, y con 26 días laborables
-bloqueados en 2027 también se pierden días tranquilos. En Europa-Park el sábado es el día más lleno, y si
-Silver lo bloquea lo decide el parque en el portal. En Toverland no hay días bloqueados y el día de la semana
+vacaciones. Como el día de la semana influye poco allí, no bloquea solo días llenos. Con 26 días
+laborables bloqueados en 2027, también pierdes días tranquilos. En Europa-Park el sábado es el día más
+lleno, y si Silver vale los sábados lo fija el parque en el portal. En Toverland no hay días bloqueados y el día de la semana
 apenas importa. En Phantasialand todo queda en el precio del día.
 
 El widget pone lado a lado el día de la semana más tranquilo de los cuatro parques. Si tu día de la semana
@@ -341,29 +341,17 @@ está en la columna y el pase vale ese día, el pase encaja con tu plan.
 
 ```
 
-La columna es lo que un pase anual no compra. Vende acceso, no el día adecuado. Si puedes venir entre
-semana, Classic en el Efteling y Magic Member en Toverland dan más libertad por el menor precio. Si solo
+Si puedes venir entre semana, Classic en el Efteling y Magic Member en Toverland dan más libertad por el menor precio. Si solo
 tienes libre el fin de semana, en el Efteling encaja mejor Plus o Premium, y en Europa-Park Gold.
 
 ## Quién necesita qué pase
 
-Esta es mi lectura de las cifras de arriba, no un consejo de compra. No sé dónde vives ni qué días tienes
-libres.
+Esta es mi lectura de las cifras de arriba. No sé dónde vives ni qué días tienes libres.
 
-El Efteling con Classic funciona si puedes venir fuera de las semanas bloqueadas y estás en el parque al
-menos seis veces al año. Quien quiera ir entre mediados de octubre y principios de noviembre necesita
-Plus. Quien quiera ir entre Navidad y Año Nuevo necesita Premium, porque Plus también está bloqueado entonces. Premium elimina los 25 días bloqueados de Plus de 2027 y solo compensa a partir de
+En el Efteling basta con Classic si puedes venir fuera de las vacaciones y estás en el parque al menos seis
+veces al año. Si quieres ir entre mediados de octubre y principios de noviembre, necesitas Plus. Entre
+Navidad y Año Nuevo Plus también está bloqueado, y solo queda Premium. Premium solo compensa a partir de
 ocho a diez visitas. Por debajo de cuatro visitas no compensa ninguno de los tres niveles.
-
-Europa-Park con Silver funciona si vienes cinco veces o más y puedes vivir con los días que fija el parque.
-Si consigues un pase lo decide la venta, no la cuenta. Gold es el pase para quien no quiere fijar días con
-antelación y para familias que visitan dos veces el mundo acuático.
-
-Toverland tiene la cuenta más sencilla. A partir de cuatro a seis visitas el Magic Member sale más barato
-que la entrada de un día, y en coche ya desde cuatro a cinco.
-
-En Phantasialand no hay nada que calcular salvo el día. Una visita el día más barato cuesta 44 €, el día más
-caro 78 €.
 
 ## Cuándo comprar
 
@@ -372,18 +360,17 @@ ponerlo hasta un mes antes. Si empiezas en octubre, arrancas en medio de las sem
 desde el 10 de octubre de 2026 tiene 44 días bloqueados hasta fin de año. El año natural 2027 tiene 68 en
 total.
 
-Ningún parque ha dado todavía precios para 2027. En el Efteling siguen valiendo los de 2026 hasta que el
-parque indique otros. En Toverland el parque solo puede cambiar el precio al vencer el pase. El ResortPass no
-está a la venta, y para las entradas de la temporada 2027 la fecha es el 10 de noviembre de 2026. En cuanto
+En el Efteling siguen valiendo los precios de 2026 hasta que el parque indique otros. En Toverland el
+parque solo puede cambiar el precio de un pase cuando vence. El ResortPass no está a la venta. En cuanto
 un parque publique precios nuevos, esta guía se actualizará.
 
 ## Preguntas frecuentes
 
 ### ¿Merece la pena un pase anual de parque temático?
 
-A partir de cinco a seis visitas en el Efteling con Classic, a partir de cinco visitas en Europa-Park con
-Silver y a partir de cuatro a cinco en Toverland, en cada caso frente al precio de la entrada de un día.
-Phantasialand no tiene pase anual.
+En el Efteling, Classic compensa a partir de cinco o seis visitas al año, y en Europa-Park el ResortPass
+Silver a partir de cinco. En Toverland, el Magic Member compensa a partir de cuatro o cinco visitas.
+Phantasialand no vende pase anual.
 
 ### ¿Cuántos días bloqueados tiene el pase anual del Efteling?
 
@@ -391,12 +378,13 @@ Según el calendario del parque, Classic está bloqueado 68 días en 2027, Plus 
 
 ### ¿Se puede todavía comprar el ResortPass de Europa-Park?
 
-A 6 de octubre de 2026, no. El parque escribe que el cupo está agotado y que el ResortPass no está
-disponible hasta nuevo aviso.
+Ahora mismo no. Europa-Park escribe en su web que el cupo está agotado y que el ResortPass no está
+disponible hasta nuevo aviso, tampoco por teléfono, por correo electrónico ni en el parque.
 
 ### ¿Tiene Toverland días bloqueados para el pase anual?
 
-Según las condiciones del pase del 21 de marzo de 2024, no. Solo quedan excluidos los días en que el parque
+No. Según las condiciones del pase del 21 de marzo de 2024, el pase vale todos los días de apertura. Solo
+quedan excluidos los días en que el parque
 está cerrado o alquilado. En días de mucha afluencia el parque puede denegar la entrada.
 
 ### ¿Tiene Phantasialand todavía pase anual?
@@ -404,8 +392,6 @@ está cerrado o alquilado. En días de mucha afluencia el parque puede denegar l
 No. La tarjeta Club terminó durante la pandemia y las últimas caducaron en el verano de 2022.
 
 ## Fuentes
-
-Precios y condiciones, cada uno a 6 de octubre de 2026:
 
 - Efteling, precios de las entradas: [efteling.com](https://www.efteling.com/de/park/informationen/ticketpreise)
 - Efteling, pases anuales Classic, Plus y Premium: [efteling.com](https://www.efteling.com/en/park/annual-pass)

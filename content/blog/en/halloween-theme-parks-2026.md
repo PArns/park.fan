@@ -6,10 +6,9 @@ updatedAt: '2026-10-07'
 author: patrick
 mode: published
 excerpt: >-
-  A chainsaw in Bottrop, a meat hook in Biddinghuizen, mulled-wine patience in
-  Brühl: Halloween 2026 in Germany, the Netherlands, Belgium, France, the UK and
-  Spain, with every date, the two top parks that sit the whole circus out, and
-  which evenings you can go without queueing forever.
+  At almost every big Halloween event in 2026, you pay for the mazes on top of
+  your day ticket. Phantasialand and Efteling don’t do Halloween at all. Our
+  forecast puts the biggest crowds on weekends and on 31 October.
 tags:
   - halloween
   - theme-park
@@ -35,8 +34,9 @@ coverImage:
 seo:
   title: 'Halloween Theme Parks 2026: Dates & Dares'
   description: >-
-    Halloween 2026 in Europe: Movie Park, Traumatica, Walibi, Toverland, Alton
-    Towers, PortAventura, two parks with no Halloween and the emptiest evenings.
+    Movie Park’s Halloween Horror Festival and Traumatica at Europa-Park both
+    run until early November. Phantasialand and Efteling don’t celebrate
+    Halloween.
   keywords:
     - Halloween theme park 2026
     - Halloween Horror Festival Movie Park 2026
@@ -69,12 +69,11 @@ you can walk into those fog machines without first freezing solid in the
 October cold in front of them.
 
 > [!NOTE]
-> **As of 29 September 2026:** We checked every date, age limit and price below
-> against the official event pages on that day; each park section links its
-> own. PortAventura has been running since 19 September, Traumatica since its
-> preview on 23 September, and Movie Park, Disneyland Paris and Alton Towers
-> joined in on 26 September. Everything else starts in October. Many prices
-> depend on the evening and go up as it gets closer.
+> **Dates, age limits and prices as of 29 September 2026.** PortAventura has
+> been running since 19 September, Traumatica since its preview on 23
+> September, and Movie Park, Disneyland Paris and Alton Towers joined in on 26
+> September. Everything else starts in October. Many prices depend on the
+> evening and go up as it gets closer.
 
 ## The big horror events (evenings, often 16+)
 
@@ -193,9 +192,9 @@ individuals in fog-shrouded alleys, and the pyro shows make a racket that’s
 still in your ears halfway up the A5.
 
 By daylight Rust is a different park, and one with surprisingly short queues
-for its size. The maths is in the
-[Europa-Park guide](/blog/europa-park-wait-times-tips), along with why a
-Traumatica ticket in November costs you the last hour in the park.
+for its size. How short they are, and why a Traumatica ticket in November costs you the
+last hour in the park, is in our
+[Europa-Park guide](/blog/europa-park-wait-times-tips).
 
 [Europa-Park](ref:europa-park?full)
 
@@ -475,7 +474,7 @@ until 9 p.m. on the long days.
 
 [Heide-Park](ref:heide-park?full)
 
-Source: [Heide-Park press release of 4 October 2026](https://www.heide-park.de/presse/pressemeldungen/halloween-2026/) (in German), retrieved 7 October 2026.
+Source: [Heide-Park press release of 4 October 2026](https://www.heide-park.de/presse/pressemeldungen/halloween-2026/) (in German).
 
 Current dates and age ratings:
 [heide-park.de → Halloween](https://www.heide-park.de/en/explore/events/halloween/).
@@ -659,10 +658,8 @@ The five-million visitor cap and the Winter Efteling are covered in the
 
 More than any line-up, what decides the evening is **when you turn up.** The
 weekends and 31 October are the busiest, and that’s also the forecast in our
-crowd calendar for almost every park in this guide. Our measurements only
-begin in late December 2025, though, and as of 29 September 2026 we hadn’t
-measured a Halloween October at any of these parks, so this is a forecast.
-Midweek and in the fringe weeks of the season it has noticeably fewer
+crowd calendar for almost every park in this guide. It’s still a forecast, though, because our measurements only go back to late
+December 2025 and don’t include a Halloween October yet. Midweek and in the fringe weeks of the season it has noticeably fewer
 people (and the performers then have more time to attend to _you_ exclusively,
 which is either an advantage or a drawback depending on your point of view).
 
@@ -683,9 +680,9 @@ choice from our AI crowd calendar:
 
 ```
 
-At Movie Park the calendar has no measured Halloween autumn to learn from yet,
-so take its forecast for the horror evenings with a pinch of salt. How busy Bottrop typically gets by weekday and month is in the statistics. Our measurements there only start in late December 2025 and no October had been measured by 29
-September 2026, so Halloween is left to your imagination for now:
+Take the forecast for Movie Park’s horror evenings with a pinch of salt. How
+busy Bottrop typically gets by weekday and month is in the statistics, and
+for now Halloween is left to your imagination there:
 
 **Movie Park Germany, typical wait times by weekday & month**
 
