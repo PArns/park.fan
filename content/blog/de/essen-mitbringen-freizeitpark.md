@@ -241,7 +241,7 @@ Gastronomiebereichen. Jeder Ausgang aus der Aquascope ist endgültig, auch für 
 
 Brote, Obst und Snacks packst du in einen Rucksack oder eine weiche Kühltasche. Eine Kühlbox ist im Parc Astérix und in
 Disneyland Paris verboten, im Futuroscope die harte, und Walibi Belgium lässt nur Taschen bis 55 × 40 × 20 cm hinein.
-Für Getränke nimmst du eine Flasche aus Kunststoff oder Metall, denn Glas ist in sechs der fünfzehn Parks verboten. Grill,
+Für Getränke nimmst du eine Flasche aus Kunststoff oder Metall, denn Glas ist in fünf der fünfzehn Parks verboten, dazu in Rulantica. Grill,
 Kocher und Alkohol bleiben zu Hause.
 
 Gegessen wird auf den Picknickplätzen. Wo ein Park Essen in Warteschlangen oder Attraktionen erwähnt, verbietet er es. Im

@@ -245,7 +245,7 @@ una pausa en el coche.
 
 Los bocadillos, la fruta y algo para picar van en una mochila o en una bolsa isotérmica blanda. Parc Astérix y Disneyland
 París prohíben las neveras, y Futuroscope, las rígidas. Walibi Belgium solo deja entrar bolsas de hasta 55 × 40 × 20 cm.
-Para beber, lleva una botella de plástico o de metal, porque el vidrio está prohibido en seis de los quince parques. La
+Para beber, lleva una botella de plástico o de metal, porque el vidrio está prohibido en cinco de los quince parques y en Rulantica. La
 barbacoa, el hornillo y el alcohol se quedan en casa.
 
 Se come en las zonas de picnic. Cuando un parque menciona comer en las colas o en las atracciones, es para prohibirlo. En
