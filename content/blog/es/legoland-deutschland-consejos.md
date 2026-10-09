@@ -87,7 +87,7 @@ reciente es **LEGO Mythica**, inaugurado el 25 de marzo de 2023. Con más de 15 
 ampliación más cara del parque. Su wing coaster es la primera montaña rusa nueva de Legoland
 Deutschland en unos 20 años.
 
-![La maqueta del estadio abierta, con las gradas llenas, el césped verde y un autobús de equipo rojo delante. | El Allianz Arena del Miniland, abierto para que se vean las gradas. Foto: Gzen92, Wikimedia Commons (CC BY-SA 4.0) | wide](/media/legoland-deutschland/allianz-arena-16x9.jpg)
+![La maqueta del estadio abierta, con las gradas llenas, el césped verde y un autobús de equipo rojo delante. | El Allianz Arena del Miniland, abierto para que se vean las gradas. | wide](/media/legoland-deutschland/allianz-arena-16x9.jpg)
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
@@ -141,7 +141,7 @@ Lego. Luego el dragón se da cuenta de los pasajeros, y en el recorrido exterior
 a una velocidad de hasta ocho metros por segundo, algo menos de 29 km/h. Un niño puede subir con un adulto desde 1,10
 metros y seis años.
 
-![El tren-dragón en lo alto del recorrido exterior y debajo los raíles de la segunda parte. | La segunda parte del recorrido empieza cuando el dragón se da cuenta de los pasajeros. Foto: GT1976, Wikimedia Commons (CC BY-SA 4.0) | wide](/media/legoland-deutschland/fire-dragon-16x9.jpg)
+![El tren-dragón en lo alto del recorrido exterior y debajo los raíles de la segunda parte. | La segunda parte del recorrido empieza cuando el dragón se da cuenta de los pasajeros. | wide](/media/legoland-deutschland/fire-dragon-16x9.jpg)
 
 **[Das Große LEGO Rennen](ref:legoland-deutschland/the-great-lego-race)** es una wild mouse de Mack Rides, de 18 metros de altura, según Wikipedia de 400 metros de longitud y de hasta 56 km/h. Antes
 funcionaba como Project X y desde 2018 está ambientado como un circuito de Lego City. Con un adulto
