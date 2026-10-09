@@ -298,13 +298,9 @@ Koelboxen zijn in drie parken uitdrukkelijk uitgesloten: bij Parc Astérix als k
 uitrusting die een maaltijd vraagt en bij Futuroscope als “rigid icebox”. Een zachte koeltas komt in de bronnen niet als
 verboden en niet als toegestaan voor. Walibi Belgium begrenst tassen en dozen op 55 × 40 × 20 cm.
 
-Barbecue en kookapparatuur zijn in zeven parken verboden. Dat geldt voor Europa-Park, Heide Park, Hansa-Park, Legoland
-Deutschland, Plopsaland Deutschland, Parc Astérix en Disneyland Paris (daar als kooktoestel bij groepspicknicks).
-Bobbejaanland verbiedt grillen, kamperen en picknicken op de parking.
+Barbecueën of kookapparatuur is in zeven parken verboden. Dat geldt voor Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland, Plopsaland Deutschland, Parc Astérix en Disneyland Paris (daar als kooktoestel bij groepspicknicks). Bobbejaanland verbiedt grillen, kamperen en picknicken op de parking, Walibi Belgium kamperen en barbecueën daar.
 
-Alcohol uit de rugzak speelt in acht parken. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi
-Belgium en Disneyland Paris verbieden het helemaal, Parc Astérix verbiedt wat het park niet zelf verkocht, en Europa-Park
-verbiedt grote hoeveelheden en sterke drank.
+Alcohol uit de rugzak speelt in acht parken. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium en Disneyland Paris verbieden het helemaal, Parc Astérix verbiedt wat het park niet zelf verkocht, en Europa-Park verbiedt het gebruik van grote hoeveelheden en sterke drank. Daar komt het Halloween Horror Festival van Movie Park bij, waar alcohol verboden is.
 
 Eten in de attracties is verboden waar een park het noemt: Hansa-Park, Plopsaland Deutschland, Bobbejaanland, Walibi
 Belgium, Parc Astérix en Disneyland Paris. Wie een boterham koopt of meeneemt, eet die voor de rit.
@@ -364,15 +360,11 @@ Paris op de picknickplek tussen de parking en de ingang. Bij Futuroscope op elk 
 
 ### Mag je alcohol meenemen naar een pretpark?
 
-Meestal niet. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium en Disneyland Paris
-verbieden het helemaal. Parc Astérix verbiedt alcohol die het park niet zelf verkocht, en Europa-Park verbiedt grote
-hoeveelheden en sterke drank. Phantasialand noemt uitdrukkelijk alcohol in elke verpakking.
+Meestal niet. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium en Disneyland Paris verbieden het helemaal. Parc Astérix verbiedt alcohol die het park niet zelf verkocht, en Europa-Park het gebruik van grote hoeveelheden en sterke drank. Ook bij het Halloween Horror Festival van Movie Park is alcohol verboden. Phantasialand noemt uitdrukkelijk alcohol in elke verpakking.
 
 ### Mag je in een pretpark barbecueën?
 
-Nee. Barbecue en kookapparatuur zijn verboden bij Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland, Plopsaland
-Deutschland, Parc Astérix en Disneyland Paris. Bobbejaanland verbiedt grillen, kamperen en picknicken op de parking. Wie wil
-picknicken, doet dat koud en op de aangewezen plekken.
+Nee. Barbecueën of kookapparatuur is verboden bij Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland, Plopsaland Deutschland, Parc Astérix en Disneyland Paris. Bobbejaanland verbiedt grillen, kamperen en picknicken op de parking, Walibi Belgium kamperen en barbecueën daar. Wie wil picknicken, doet dat koud en op de aangewezen plekken.
 
 ### Waar staat de regel van een park?
 

@@ -305,13 +305,9 @@ Les glacières sont expressément exclues dans trois parcs : au Parc Astérix c
 comme équipement qu’un repas exige et au Futuroscope comme « rigid icebox ». Un sac isotherme souple apparaît dans les sources
 ni comme interdit ni comme autorisé. Walibi Belgium plafonne sacs et boîtes à 55 × 40 × 20 cm.
 
-Barbecue et matériel de cuisson sont interdits dans sept parcs. Cela concerne Europa-Park, Heide Park, Hansa-Park, Legoland
-Deutschland, Plopsaland Deutschland, Parc Astérix et Disneyland Paris (là comme réchaud lors des pique-niques de groupe).
-Bobbejaanland interdit grillades, camping et pique-nique sur le parking.
+Barbecue ou matériel de cuisson sont interdits dans sept parcs. Cela concerne Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland, Plopsaland Deutschland, Parc Astérix et Disneyland Paris (là comme réchaud lors des pique-niques de groupe). Bobbejaanland interdit grillades, camping et pique-nique sur le parking, Walibi Belgium le camping et les barbecues.
 
-L’alcool du sac à dos est un sujet dans huit parcs. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi
-Belgium et Disneyland Paris l’interdisent totalement, le Parc Astérix interdit ce que le parc n’a pas vendu, et Europa-Park
-interdit les grandes quantités et l’alcool fort.
+L’alcool du sac à dos est un sujet dans huit parcs. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium et Disneyland Paris l’interdisent totalement, le Parc Astérix interdit ce que le parc n’a pas vendu, et Europa-Park interdit la consommation de grandes quantités et d’alcool fort. S’y ajoute le Halloween Horror Festival de Movie Park, où l’alcool est interdit.
 
 Manger dans les attractions est interdit partout où un parc le mentionne : Hansa-Park, Plopsaland Deutschland, Bobbejaanland,
 Walibi Belgium, Parc Astérix et Disneyland Paris. Qui achète ou apporte un sandwich le mange avant le manège.
@@ -372,15 +368,11 @@ pelouses.
 
 ### Peut-on apporter de l’alcool dans un parc d’attractions ?
 
-Le plus souvent non. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium et Disneyland Paris
-l’interdisent totalement. Le Parc Astérix interdit l’alcool que le parc n’a pas vendu, et Europa-Park interdit les grandes
-quantités et l’alcool fort. Phantasialand nomme expressément l’alcool sous toute forme d’emballage.
+Le plus souvent non. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium et Disneyland Paris l’interdisent totalement. Le Parc Astérix interdit l’alcool que le parc n’a pas vendu, et Europa-Park la consommation de grandes quantités et d’alcool fort. Au Halloween Horror Festival de Movie Park, l’alcool est aussi interdit. Phantasialand nomme expressément l’alcool sous toute forme d’emballage.
 
 ### Peut-on faire des grillades dans un parc d’attractions ?
 
-Non. Barbecue et matériel de cuisson sont interdits à Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland, Plopsaland
-Deutschland, au Parc Astérix et à Disneyland Paris. Bobbejaanland interdit grillades, camping et pique-nique sur le parking.
-Qui veut pique-niquer le fait à froid, aux endroits désignés.
+Non. Barbecue ou matériel de cuisson sont interdits à Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland, Plopsaland Deutschland, au Parc Astérix et à Disneyland Paris. Bobbejaanland interdit grillades, camping et pique-nique sur le parking, Walibi Belgium le camping et les barbecues. Qui veut pique-niquer le fait à froid, aux endroits désignés.
 
 ### Où trouve-t-on la règle d’un parc ?
 

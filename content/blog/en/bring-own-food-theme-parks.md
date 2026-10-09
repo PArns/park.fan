@@ -292,13 +292,9 @@ Coolers are banned in three parks, in so many words: at Parc Astérix as a kitch
 a meal needs, and at Futuroscope as a "rigid icebox". A soft cooler bag appears in the sources as neither banned nor allowed.
 Walibi Belgium caps bags and boxes at 55 × 40 × 20 cm.
 
-Grills and cooking equipment are banned in seven parks. That covers Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland,
-Plopsaland Deutschland, Parc Astérix and Disneyland Paris (there as a stove at group picnics). Bobbejaanland bans grilling,
-camping and picnicking on the car park.
+Grilling or cooking equipment is banned in seven parks. That covers Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland, Plopsaland Deutschland, Parc Astérix and Disneyland Paris (there as a stove at group picnics). Bobbejaanland bans camping, grilling and picnicking on the car park, Walibi Belgium camping and barbecues there.
 
-Alcohol from your backpack is a topic in eight parks. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland,
-Walibi Belgium and Disneyland Paris ban it outright, Parc Astérix bans what the park didn't sell, and Europa-Park bans large
-amounts and high-proof drinks.
+Alcohol from your backpack is a topic in eight parks. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium and Disneyland Paris ban it outright, Parc Astérix bans what the park didn't sell itself, and Europa-Park bans drinking large amounts or high-proof drinks. Add the Halloween Horror Festival at Movie Park, where alcohol is banned.
 
 Eating in the attractions is banned wherever a park mentions it: Hansa-Park, Plopsaland Deutschland, Bobbejaanland, Walibi
 Belgium, Parc Astérix and Disneyland Paris. If you buy or bring a sandwich, you eat it before the ride.
@@ -356,15 +352,11 @@ Paris in the picnic area between the car park and the entrance. At Futuroscope o
 
 ### Can you bring alcohol into a theme park?
 
-Mostly not. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium and Disneyland Paris ban it
-outright. Parc Astérix bans alcohol the park didn't sell itself, and Europa-Park bans large amounts and high-proof drinks.
-Phantasialand names alcohol in any packaging.
+Mostly not. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium and Disneyland Paris ban it outright. Parc Astérix bans alcohol the park didn't sell itself, and Europa-Park bans drinking large amounts or high-proof drinks. Alcohol is banned at the Halloween Horror Festival at Movie Park too. Phantasialand names alcohol in any packaging.
 
 ### Can you grill in a theme park?
 
-No. Grills and cooking equipment are banned at Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland, Plopsaland
-Deutschland, Parc Astérix and Disneyland Paris. Bobbejaanland bans grilling, camping and picnicking on the car park. If you
-want to picnic, you do it cold, at the designated areas.
+No. Grilling or cooking equipment is banned at Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland, Plopsaland Deutschland, Parc Astérix and Disneyland Paris. Bobbejaanland bans grilling, camping and picnicking on the car park, Walibi Belgium camping and barbecues there. If you want to picnic, you do it cold, at the designated areas.
 
 ### Where can you find a park's rule?
 

@@ -57,14 +57,13 @@ Die Antwort steht in der Hausordnung des Parks, und die liest vor dem Besuch kau
 Parks in Deutschland, den Niederlanden, Belgien und Frankreich gelesen, jeweils auf der Seite des Parks selbst:
 Parkreglement, Parkordnung, Besucherregeln oder offizielle FAQ. Abgerufen wurde alles am 9. Oktober 2026.
 
-Das Ergebnis ist unordentlicher, als die Frage klingt. Sechs Parks erlauben eigenes Essen ausdrücklich. Das sind Heide Park,
+Sechs Parks erlauben eigenes Essen ausdrücklich. Das sind Heide Park,
 Efteling, Toverland, Walibi Holland, Futuroscope und Disneyland Paris, der Letzte mit Einschränkung. Vier weitere
 schreiben nur vor, wo man es isst, und setzen damit voraus, dass man es dabeihat. Das gilt für Bobbejaanland, Walibi Belgium, Parc
 Astérix und Plopsaland Deutschland. Europa-Park, Phantasialand, Hansa-Park, Legoland Deutschland und Movie Park schweigen zu eigenem Essen. Ihre
 Regeln verbieten Grill, Kochgerät oder Alkohol, aber Brote und Obst erwähnen sie nirgends.
 
-Dieser Guide geht die Parks nach Land durch, nennt zu jedem die Zeile, auf die er sich stützt, und fasst am Ende zusammen,
-was die Hausordnungen gemeinsam haben. Preise für Essen im Park fehlen, weil die gelesenen Seiten sie nirgends
+Preise für Essen im Park fehlen, weil die gelesenen Seiten sie nirgends
 nennen. Die Wartezeiten und Öffnungszeiten der Parks findest du auf den jeweiligen Parkseiten bei park.fan.
 
 ## Die fünfzehn Parks im Überblick
@@ -97,7 +96,7 @@ In der Spalte „Eigenes Essen“ steht, was der Park selbst schreibt. „Ausdr�
 
 Die Parkregeln des [Europa-Park](ref:europa-park) erwähnen Verpflegung nirgends. Was sie regeln, steht in Ziffer 3: Grillen und Kochgerät sind
 verboten (3.12). Der Konsum großer Mengen oder hochprozentigen
-Alkohols ist verboten (3.20), Wer unter Alkohol- oder Drogeneinfluss steht, kann vom Parkgelände ausgeschlossen werden (3.21). Große
+Alkohols ist verboten (3.20). Wer unter Alkohol- oder Drogeneinfluss steht, kann vom Parkgelände ausgeschlossen werden (3.21). Große
 Koffer gehören in die Schließfächer am Haupteingang (3.7). Ein Satz, der Brote erlaubt oder verbietet, fehlt.
 
 Der Park selbst nennt auf der Seite „Tipps für Ihren Besuch“ Picknickplätze, und zwar im Historischen Schlosspark Balthasar im
@@ -134,7 +133,7 @@ ausschließen, und im Park könne die Küche keine Sonderwünsche erfüllen.
 
 Die Parkordnung des [Hansa-Park](ref:hansa-park), unterschrieben in Sierksdorf am 2. März 2026, regelt in Abschnitt 3 mehrere Verbote auf
 einmal. „Essen und Trinken sind in den Attraktionen und in den Indoorshows untersagt.“ Alkohol und Drogen mitzubringen ist
-verboten. Grillen ist auf dem gesamten Parkgelände untersagt, Grill- und Kochgeräte dürfen draußen bleiben. In der
+verboten. Grillen ist auf dem gesamten Parkgelände untersagt, Grill- und Kochgeräte mitzubringen ist ebenfalls verboten. In der
 Beispielliste für gefährliche Gegenstände stehen neben Pistolen, Messern, Schlagringen und Laserpointern auch
 Glasflaschen.
 
@@ -159,7 +158,7 @@ Für den normalen Betrieb des [Movie Park Germany](ref:movie-park-germany) haben
 Die Seite „Tipps für Deinen Besuch“ beschreibt die Gastronomie im Park und lässt Mitgebrachtes aus. Die Parkordnung, auf die
 die Fußzeile verweist, haben wir nicht gelesen.
 
-Eine Regel gibt es für das Halloween Horror Festival, und sie ist hart. Laut FAQ des Festivals sind Alkohol und
+Für das Halloween Horror Festival gibt es eine eigene Regel. Laut FAQ des Festivals sind Alkohol und
 Getränke jeder Art in Glasflaschen verboten. Deospray ist ebenfalls verboten, Roll-on und Stift sind erlaubt. Vor dem
 Einlass finden Personen- und Taschenkontrollen statt. Die FAQ nennt diese Regeln für die Dauer des Festivals.
 
@@ -301,13 +300,9 @@ Ausrüstung, die eine Mahlzeit braucht, und im Futuroscope als „rigid icebox�
 den Quellen weder als verboten noch als erlaubt auf. Walibi Belgium begrenzt Taschen und Boxen auf
 55 × 40 × 20 cm.
 
-Grill und Kochgerät sind in sieben Parks verboten. Das betrifft Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland, Plopsaland
-Deutschland, Parc Astérix und Disneyland Paris (dort als Kocher bei Gruppenpicknicks). Bobbejaanland verbietet Campen,
-Grillen und Picknicken auf dem Parkplatz.
+Grillen oder Kochgerät ist in sieben Parks verboten. Das betrifft Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland, Plopsaland Deutschland, Parc Astérix und Disneyland Paris (dort als Kocher bei Gruppenpicknicks). Bobbejaanland verbietet Campen, Grillen und Picknicken auf dem Parkplatz, Walibi Belgium Campen und Grillen dort.
 
-Alkohol aus dem Rucksack ist in acht Parks Thema. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi
-Belgium und Disneyland Paris verbieten ihn ganz, der Parc Astérix verbietet, was nicht im Park gekauft wurde, und der
-Europa-Park verbietet große Mengen und hochprozentige Getränke.
+Alkohol aus dem Rucksack ist in acht Parks Thema. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium und Disneyland Paris verbieten ihn ganz, der Parc Astérix verbietet, was der Park nicht selbst verkauft hat, und der Europa-Park verbietet den Konsum großer Mengen und hochprozentiger Getränke. Dazu kommt das Halloween Horror Festival im Movie Park, auf dem Alkohol verboten ist.
 
 Essen in Attraktionen ist überall verboten, wo ein Park es erwähnt: im Hansa-Park, in Plopsaland Deutschland, in
 Bobbejaanland, in Walibi Belgium, im Parc Astérix und in Disneyland Paris. Wer sein Brot kauft oder mitbringt, isst es vor
@@ -315,7 +310,7 @@ der Bahn.
 
 ## Der Rucksack für einen Tag mit eigener Verpflegung
 
-Aus den gelesenen Texten ergibt sich eine kurze Liste. Als Trinkflasche taugt Kunststoff oder Metall,
+Als Trinkflasche taugt Kunststoff oder Metall,
 denn Glas steht in sechs Regelwerken auf der Verbotsliste. Das Essen kommt in einen Rucksack oder eine weiche Tasche. Harte
 Kühlboxen sind im Futuroscope ausgeschlossen, im Parc Astérix und in Disneyland Paris fallen Kühlboxen ebenfalls unter
 die Verbote, und Walibi Belgium lässt nur Taschen bis 55 × 40 × 20 cm ein. Kocher, Grill und Alkohol bleiben zu Hause.
@@ -326,8 +321,7 @@ Rasenfläche. Im Europa-Park nennt der Park die Plätze im Historischen Schlossp
 Picknick in Bobbejaanland und Plopsaland Deutschland verboten.
 
 Das Toverland stellt kostenlose Mikrowellen an der Waldstube und an der Katara Plaza bereit, etwa für Fläschchen.
-Wer eine starke Unverträglichkeit wie Zöliakie hat, bekommt im Heide Park eine schriftliche Empfehlung für eigene Speisen
-mitbringen. In den anderen Parks haben wir keine entsprechende Zeile gelesen. Dort fragst du den Park, bevor du fährst. Die
+Wer eine starke Unverträglichkeit wie Zöliakie hat, bekommt im Heide Park eine schriftliche Empfehlung, eigene Speisen mitzubringen. In den anderen Parks haben wir keine entsprechende Zeile gelesen. Dort fragst du den Park, bevor du fährst. Die
 Allergene der Restaurants behandelt dieser Guide nicht.
 
 ## Häufige Fragen
@@ -369,25 +363,21 @@ Rasenflächen.
 
 ### Darf man Alkohol in den Freizeitpark mitbringen?
 
-Meistens nicht. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium und Disneyland Paris
-verbieten ihn ganz. Der Parc Astérix verbietet Alkohol, den der Park nicht selbst verkauft hat, und der Europa-Park verbietet
-große Mengen und hochprozentige Getränke. Das Phantasialand schließt ausdrücklich Alkohol in jeglicher Verpackung ein.
+Meistens nicht. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium und Disneyland Paris verbieten ihn ganz. Der Parc Astérix verbietet Alkohol, den der Park nicht selbst verkauft hat, und der Europa-Park den Konsum großer Mengen und hochprozentiger Getränke. Beim Halloween Horror Festival im Movie Park ist Alkohol ebenfalls verboten. Das Phantasialand nennt ausdrücklich Alkohol in jeglicher Verpackung.
 
 ### Darf man im Freizeitpark grillen?
 
-Nein. Grill und Kochgerät sind im Europa-Park, im Heide Park, im Hansa-Park, in Legoland Deutschland, in Plopsaland
-Deutschland, im Parc Astérix und in Disneyland Paris verboten. Bobbejaanland verbietet Grillen, Campen und Picknicken auf
-dem Parkplatz. Wer picknicken will, tut das mit kalter Küche an den ausgewiesenen Plätzen.
+Nein. Grillen oder Kochgerät ist im Europa-Park, im Heide Park, im Hansa-Park, in Legoland Deutschland, in Plopsaland Deutschland, im Parc Astérix und in Disneyland Paris verboten. Bobbejaanland verbietet Grillen, Campen und Picknicken auf dem Parkplatz, Walibi Belgium Campen und Grillen dort. Wer picknicken will, tut das mit kalter Küche an den ausgewiesenen Plätzen.
 
 ### Wo steht die Regel eines Parks?
 
 In der Hausordnung, die je nach Park Parkreglement, Parkordnung, Park Rules oder Règlement intérieur heißt, und oft in
-der FAQ. Die Links zu den Quellen aller Parks stehen in der Tabelle am Anfang und in der Liste unten.
+der FAQ.
 
 ## Was in diesem Guide fehlt
 
 Die Auswahl endet bei fünfzehn Parks in vier Ländern. Österreich und die Schweiz fehlen. Auch von den gelesenen Parks haben
-nicht alle ihre Verpflegungsregel öffentlich aufgeschrieben, das betrifft fünf Zeilen der Tabelle. Beim Movie Park konnten wir die Parkordnung selbst nicht lesen, nur die Seite zum Halloween Horror Festival und die
+bei fünf Parks der Tabelle steht in den gelesenen Texten nichts zu eigenem Essen. Beim Movie Park konnten wir die Parkordnung selbst nicht lesen, nur die Seite zum Halloween Horror Festival und die
 Besuchertipps.
 
 Preise für Essen und Trinken im Park nennen wir nicht, weil kein gelesener Text sie angibt. Für Allergien und

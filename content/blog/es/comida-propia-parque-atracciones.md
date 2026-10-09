@@ -301,13 +301,9 @@ Las neveras están excluidas expresamente en tres parques: en Parc Astérix como
 equipo que exige una comida y en Futuroscope como «rigid icebox». Una bolsa isotérmica blanda no aparece en las fuentes ni
 como prohibida ni como permitida. Walibi Belgium limita bolsas y cajas a 55 × 40 × 20 cm.
 
-La barbacoa y el equipo de cocina están prohibidos en siete parques. Es el caso de Europa-Park, Heide Park, Hansa-Park,
-Legoland Deutschland, Plopsaland Deutschland, Parc Astérix y Disneyland París (allí como hornillo en los picnics de grupo).
-Bobbejaanland prohíbe asar, acampar y hacer picnic en el aparcamiento.
+La barbacoa o el equipo de cocina están prohibidos en siete parques. Es el caso de Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland, Plopsaland Deutschland, Parc Astérix y Disneyland París (allí como hornillo en los picnics de grupo). Bobbejaanland prohíbe asar, acampar y hacer picnic en el aparcamiento, Walibi Belgium acampar y hacer barbacoas.
 
-El alcohol de la mochila es tema en ocho parques. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi
-Belgium y Disneyland París lo prohíben del todo, Parc Astérix prohíbe lo que el parque no vendió y Europa-Park prohíbe las
-grandes cantidades y las bebidas de alta graduación.
+El alcohol de la mochila es tema en ocho parques. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium y Disneyland París lo prohíben del todo, Parc Astérix prohíbe lo que el parque no vendió y Europa-Park prohíbe el consumo de grandes cantidades y de bebidas de alta graduación. A ello se suma el Halloween Horror Festival de Movie Park, donde el alcohol está prohibido.
 
 Comer en las atracciones está prohibido donde un parque lo menciona: Hansa-Park, Plopsaland Deutschland, Bobbejaanland, Walibi
 Belgium, Parc Astérix y Disneyland París. Quien compra o trae un bocadillo se lo come antes de la atracción.
@@ -366,15 +362,11 @@ París, en la zona de picnic entre el aparcamiento y la entrada. En Futuroscope,
 
 ### ¿Se puede llevar alcohol a un parque de atracciones?
 
-Casi siempre no. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium y Disneyland París lo
-prohíben del todo. Parc Astérix prohíbe el alcohol que el parque no vendió, y Europa-Park prohíbe las grandes cantidades y
-las bebidas de alta graduación. Phantasialand nombra expresamente el alcohol en cualquier envase.
+Casi siempre no. Phantasialand, Hansa-Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium y Disneyland París lo prohíben del todo. Parc Astérix prohíbe el alcohol que el parque no vendió, y Europa-Park el consumo de grandes cantidades y de bebidas de alta graduación. En el Halloween Horror Festival de Movie Park el alcohol también está prohibido. Phantasialand nombra expresamente el alcohol en cualquier envase.
 
 ### ¿Se puede hacer barbacoa en un parque de atracciones?
 
-No. La barbacoa y el equipo de cocina están prohibidos en Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland,
-Plopsaland Deutschland, Parc Astérix y Disneyland París. Bobbejaanland prohíbe asar, acampar y hacer picnic en el
-aparcamiento. Quien quiera hacer picnic lo hace en frío y en las zonas señaladas.
+No. La barbacoa o el equipo de cocina están prohibidos en Europa-Park, Heide Park, Hansa-Park, Legoland Deutschland, Plopsaland Deutschland, Parc Astérix y Disneyland París. Bobbejaanland prohíbe asar, acampar y hacer picnic en el aparcamiento, Walibi Belgium acampar y hacer barbacoas. Quien quiera hacer picnic lo hace en frío y en las zonas señaladas.
 
 ### ¿Dónde está la norma de cada parque?
 
