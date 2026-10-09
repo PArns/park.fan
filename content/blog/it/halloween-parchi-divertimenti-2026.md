@@ -35,8 +35,8 @@ coverImage:
 seo:
   title: 'Halloween 2026 nei parchi: date e prove di coraggio'
   description: >-
-    L’Halloween Horror Festival del Movie Park e Traumatica all’Europa-Park
-    durano fino a inizio novembre. Phantasialand e l’Efteling non festeggiano
+    L’Halloween Horror Festival del Movie Park e Traumatica a Europa-Park durano
+    fino a inizio novembre. Phantasialand e l’Efteling non festeggiano
     Halloween.
   keywords:
     - Halloween parco divertimenti 2026

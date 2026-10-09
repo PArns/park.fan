@@ -30,9 +30,9 @@ coverImage:
 seo:
   title: 'Adventure in Batavia: cena a Europa-Park dal 23 ottobre'
   description: >-
-    Europa-Park propone la cena con spettacolo «Adventure in Batavia» in otto
-    serate, dal 23 ottobre 2026 al 7 gennaio 2027. Gli adulti pagano 155 €, i
-    bambini 105 €. Il giro e le bevande sono compresi nel prezzo.
+    Europa-Park offre la cena con spettacolo «Adventure in Batavia» in otto
+    serate dal 23 ottobre al 7 gennaio 2027. Gli adulti pagano 155 €, i bambini
+    105 €.
   keywords:
     - Adventure in Batavia
     - cena Europa-Park

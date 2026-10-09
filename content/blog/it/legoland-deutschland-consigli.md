@@ -26,8 +26,8 @@ seo:
   title: 'Legoland Deutschland: tempi di attesa, Fastrack, biglietti e Halloween'
   description: >-
     Al Legoland Deutschland il venerdì è il giorno più tranquillo e il sabato il
-    più pieno. Con un adulto, un bambino non ha mai bisogno di più di 1,25 metri.
-    Il biglietto giornaliero costa da 39 € online.
+    più pieno. Con un adulto, a un bambino bastano 1,25 metri per ogni
+    attrazione.
   keywords:
     - Legoland Deutschland
     - Legoland Deutschland consigli

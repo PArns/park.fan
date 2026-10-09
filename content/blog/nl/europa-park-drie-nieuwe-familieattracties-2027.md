@@ -29,8 +29,7 @@ seo:
   title: 'Europa-Park plant drie nieuwe gezinsattracties voor 2027'
   description: >-
     Europa-Park kondigde op 8 oktober 2026 drie nieuwe familieattracties voor
-    2027 aan. Wanneer ze openen en hoe lang kinderen moeten zijn, heeft het park
-    nog niet gezegd.
+    2027 aan. Het park noemt nog geen openingsdatum en geen minimumlengte.
   keywords:
     - Europa-Park nieuw 2027
     - Wild Swing XL Europa-Park

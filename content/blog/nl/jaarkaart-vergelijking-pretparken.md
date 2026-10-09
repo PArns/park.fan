@@ -29,8 +29,8 @@ coverImage:
 seo:
   title: 'Jaarkaart pretpark: prijzen, geblokkeerde dagen, break-even'
   description: >-
-    Bij de Efteling, Europa-Park en Toverland verdient de goedkoopste jaarkaart
-    zich na vier tot zes bezoeken terug. Phantasialand heeft sinds 2022 geen jaarkaart meer.
+    Bij de Efteling, Europa-Park en Toverland loont de goedkoopste jaarkaart na
+    vier tot zes bezoeken. Phantasialand heeft sinds 2022 geen jaarkaart meer.
   keywords:
     - jaarkaart pretpark lonend
     - jaarkaart pretpark vergelijking

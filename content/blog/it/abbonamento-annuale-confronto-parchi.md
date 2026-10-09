@@ -29,8 +29,9 @@ coverImage:
 seo:
   title: 'Abbonamento annuale parchi: prezzi, giorni bloccati, pareggio'
   description: >-
-    All’Efteling, a Europa-Park e a Toverland l’abbonamento annuale più economico
-    si ripaga con quattro-sei visite. Phantasialand non ha più un abbonamento annuale dal 2022.
+    All’Efteling, a Europa-Park e a Toverland l’abbonamento annuale più
+    economico si ripaga con quattro-sei visite. Phantasialand non lo vende più
+    dal 2022.
   keywords:
     - abbonamento annuale parco divertimenti conviene
     - abbonamento annuale parchi confronto

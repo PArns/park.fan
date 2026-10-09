@@ -32,9 +32,9 @@ rideLinks:
 seo:
   title: 'Plopsaland Deutschland 2026: wachttijden, prijzen, beste dagen'
   description: >-
-    Volgens onze metingen op 225 dagen sta je in het vroegere Holiday Park in
-    Haßloch bij de meeste attracties maar een paar minuten in de rij. Het
-    rustigst is het op vrijdag, behalve op de Halloween-vrijdagen in oktober.
+    In het vroegere Holiday Park in Haßloch wacht je bij de meeste attracties
+    maar een paar minuten. Het rustigst is het op vrijdag, behalve met
+    Halloween.
   keywords:
     - Plopsaland Deutschland
     - Holiday Park

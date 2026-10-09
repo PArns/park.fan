@@ -58,9 +58,8 @@ coverImage:
 seo:
   title: 'Halloween 2026 VS: HHN, Scary Farm, Fright Fest'
   description: >-
-    Een avond Halloween Horror Nights in Orlando kost vanaf 94,99 $. De
-    Disneyfeesten zijn uitverkocht. Overdag vieren veel parken Halloween bij de
-    gewone toegang.
+    Een avond Halloween Horror Nights in Orlando kost vanaf 94,99 $. Overdag
+    vieren veel Amerikaanse pretparken Halloween bij de gewone toegang.
   keywords:
     - Halloween pretpark Amerika 2026
     - Halloween Horror Nights 2026 Orlando

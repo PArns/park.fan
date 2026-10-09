@@ -32,7 +32,7 @@ seo:
   description: >-
     Europa-Park houdt de dinnershow “Adventure in Batavia” op acht avonden van
     23 oktober 2026 tot 7 januari 2027. Volwassenen betalen € 155, kinderen
-    € 105. De rit en de drankjes zitten bij de prijs in.
+    € 105.
   keywords:
     - Adventure in Batavia
     - Europa-Park dinner

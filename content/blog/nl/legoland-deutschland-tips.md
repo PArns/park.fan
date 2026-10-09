@@ -27,7 +27,7 @@ seo:
   description: >-
     In Legoland Deutschland is het op vrijdag het rustigst en op zaterdag het
     drukst. Met een volwassene hoeft een kind nergens langer te zijn dan 1,25
-    meter. Een dagkaart kost online vanaf € 39.
+    meter.
   keywords:
     - Legoland Deutschland
     - Legoland Deutschland tips

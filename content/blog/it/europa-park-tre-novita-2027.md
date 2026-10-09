@@ -28,9 +28,8 @@ coverImage:
 seo:
   title: 'Europa-Park prepara tre attrazioni per famiglie per il 2027'
   description: >-
-    Europa-Park ha annunciato l'8 ottobre 2026 tre nuove attrazioni per famiglie
-    per il 2027. Il parco non ha ancora detto quando apriranno né quanto
-    dovranno essere alti i bambini per salire.
+    Europa-Park ha annunciato l'8 ottobre 2026 tre novità per famiglie per il
+    2027. Il parco non ha ancora comunicato date di apertura e altezza minima.
   keywords:
     - Europa-Park novità 2027
     - Wild Swing XL Europa-Park

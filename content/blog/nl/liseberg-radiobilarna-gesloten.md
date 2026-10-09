@@ -24,7 +24,7 @@ rideLinks:
 seo:
   title: "Botsauto's Radiobilarna in Liseberg gesloten"
   description: >-
-    Liseberg sloot zijn botsauto's Radiobilarna op 4 oktober 2026. Het gebouw wordt gesloopt. Of de attractie een nieuwe plek in het park krijgt, is nog niet bekend.
+    Liseberg sloot zijn botsauto's Radiobilarna op 4 oktober 2026, na bijna 100 jaar. Het park onderzoekt nog of ze ergens anders verder kunnen rijden.
   keywords:
     - Radiobilarna Liseberg
     - Radiobilarna gesloten

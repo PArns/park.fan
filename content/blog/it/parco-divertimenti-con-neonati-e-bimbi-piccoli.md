@@ -35,9 +35,9 @@ coverImage:
 seo:
   title: 'Parco divertimenti con neonato o bimbo piccolo: 10 parchi'
   description: >-
-    I bambini fino a 3 anni entrano gratis all’Efteling, all’Europa-Park e al
-    Phantasialand. Il passeggino a noleggio più economico è al Phantasialand, a
-    3 euro al giorno.
+    I bambini fino a 3 anni entrano gratis all’Efteling, a Europa-Park e al
+    Phantasialand. Il passeggino a noleggio costa meno al Phantasialand, 3 € al
+    giorno.
   keywords:
     - parco divertimenti con bambini piccoli
     - parco divertimenti con neonato

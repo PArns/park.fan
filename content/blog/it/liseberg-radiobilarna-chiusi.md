@@ -24,7 +24,7 @@ rideLinks:
 seo:
   title: 'Chiuse le auto scontro Radiobilarna di Liseberg'
   description: >-
-    Liseberg ha chiuso le sue auto scontro Radiobilarna il 4 ottobre 2026. L'edificio sarà demolito. Non si sa ancora se l'attrazione avrà un nuovo posto nel parco.
+    Liseberg ha chiuso le auto scontro Radiobilarna il 4 ottobre 2026, dopo quasi 100 anni. Il parco sta ancora valutando se rimetterle in funzione altrove.
   keywords:
     - Radiobilarna Liseberg
     - Radiobilarna chiuse
