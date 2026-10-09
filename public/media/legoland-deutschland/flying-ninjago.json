@@ -1,0 +1,36 @@
+{
+  "title": "Flying NINJAGO",
+  "park": "legoland-deutschland",
+  "ride": "flying-ninjago",
+  "area": "LEGO NINJAGO WORLD",
+  "roles": ["ride-card"],
+  "tags": ["photo", "coaster", "day", "sunny", "outdoor", "spring"],
+  "alt": {
+    "de": "Der rote Flugarm steht schräg in der Luft, an beiden Seiten hängen die Gondeln mit den Fahrgästen.",
+    "en": "The red flying arm sits at an angle in the air, the gondolas with their riders hanging off both sides.",
+    "nl": "De rode vliegarm staat schuin in de lucht, aan weerszijden hangen de gondels met de inzittenden.",
+    "fr": "Le bras rouge est incliné en l'air, les nacelles et leurs passagers suspendues de part et d'autre.",
+    "es": "El brazo rojo está inclinado en el aire y a ambos lados cuelgan las góndolas con los pasajeros.",
+    "it": "Il braccio rosso è inclinato in aria e ai due lati pendono le navicelle con i passeggeri."
+  },
+  "caption": {
+    "de": "Flying NINJAGO, gebaut von Gerstlauer zum zehnten Geburtstag des Parks.",
+    "en": "Flying NINJAGO, built by Gerstlauer for the park's tenth birthday.",
+    "nl": "Flying NINJAGO, door Gerstlauer gebouwd voor de tiende verjaardag van het park.",
+    "fr": "Flying NINJAGO, construit par Gerstlauer pour les dix ans du parc.",
+    "es": "Flying NINJAGO, construido por Gerstlauer para el décimo aniversario del parque.",
+    "it": "Flying NINJAGO, costruito da Gerstlauer per il decimo compleanno del parco."
+  },
+  "credit": {
+    "author": "Alex234",
+    "license": "cc0-1.0",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flying_Ninjago_20161.jpg",
+    "year": 2016
+  },
+  "shotAt": "2016-03-19",
+  "focus": {
+    "x": 0.62,
+    "y": 0.5
+  }
+}

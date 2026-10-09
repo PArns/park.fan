@@ -18,6 +18,11 @@ tags:
   - duitsland
   - seizoen-2026
 category: guides
+coverImage:
+  src: /media/legoland-deutschland/flying-ninjago-16x9.jpg
+  alt: 'De rode vliegarm staat schuin in de lucht, aan weerszijden hangen de gondels met de inzittenden.'
+  caption: 'Flying NINJAGO, de enige attractie in het park met één grens voor iedereen.'
+  credit: 'Alex234 / Wikimedia Commons (CC0 1.0)'
 parkLinks:
   - legoland-deutschland
 rideLinks:
@@ -79,6 +84,8 @@ zitten ongeveer 1,07 miljoen steentjes. De jongste themawereld is **LEGO Mythica
 € 15 miljoen was het de duurste uitbreiding van het park. De wing coaster daar is de eerste nieuwe
 achtbaan in Legoland Deutschland in zo’n 20 jaar.
 
+![Het opengesneden stadionmodel met volle tribunes, een groen veld en een rode spelersbus ervoor. | De Allianz Arena in Miniland, opengesneden zodat de tribunes zichtbaar blijven. | wide](/media/legoland-deutschland/allianz-arena-16x9.jpg)
+
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
 ## Minimumlengte en leeftijd bij de attracties
@@ -130,6 +137,8 @@ gezinsachtbaan van Zierer in twee delen. Eerst gaat de trein door de vertrekken 
 langs de voorraadkamer, de keuken, de feestzaal en Merlins schatkamer, alles van Lego. Dan merkt de
 draak de passagiers op, en op het buitenparcours gaat het met tot acht meter per seconde door de
 bochten, dat is net geen 29 km/u. Een kind mag met een volwassene mee vanaf 1,10 meter en zes jaar.
+
+![De drakentrein op de top van het buitenparcours, daaronder de rails van het tweede deel. | Het tweede deel van de rit begint zodra de draak de passagiers opmerkt. | wide](/media/legoland-deutschland/fire-dragon-16x9.jpg)
 
 **[Das Große LEGO Rennen](ref:legoland-deutschland/the-great-lego-race)** is een wilde muis van Mack
 Rides, 18 meter hoog, volgens Wikipedia 400 meter lang en tot 56 km/u snel. De baan reed eerder als

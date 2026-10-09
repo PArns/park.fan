@@ -18,6 +18,11 @@ tags:
   - germany
   - season-2026
 category: guides
+coverImage:
+  src: /media/legoland-deutschland/flying-ninjago-16x9.jpg
+  alt: 'The red flying arm sits at an angle in the air, the gondolas with their riders hanging off both sides.'
+  caption: 'Flying NINJAGO, the one ride in the park with a single limit for everybody.'
+  credit: 'Alex234 / Wikimedia Commons (CC0 1.0)'
 parkLinks:
   - legoland-deutschland
 rideLinks:
@@ -79,6 +84,8 @@ area is **LEGO Mythica**, which opened on 25 March 2023. At over €15 million i
 expensive expansion in the park's history. Its wing coaster is the first new coaster at Legoland
 Deutschland in about 20 years.
 
+![The stadium model cut open, with packed stands, a green pitch and a red team bus in front. | The Allianz Arena in Miniland, cut open so the stands stay visible. | wide](/media/legoland-deutschland/allianz-arena-16x9.jpg)
+
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
 ## Minimum height and age on the rides
@@ -128,6 +135,8 @@ The **[Feuerdrache](ref:legoland-deutschland/fire-dragon)** has been running sin
 residents, past the pantry, kitchen, banquet hall and Merlin's treasure chamber, all built from Lego.
 Then the dragon notices the passengers, and the outdoor track takes the curves at up to eight metres
 per second, just under 29 km/h. A child can ride it with an adult from 1.10 metres and six years.
+
+![The dragon train on the crest of the outdoor section, the rails of the second half below it. | The second half of the ride starts once the dragon notices its passengers. | wide](/media/legoland-deutschland/fire-dragon-16x9.jpg)
 
 **[Das Große LEGO Rennen](ref:legoland-deutschland/the-great-lego-race)** is a wild mouse by Mack
 Rides, 18 metres tall, according to Wikipedia 400 metres long with a top speed of 56 km/h. It used to run

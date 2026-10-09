@@ -48,6 +48,13 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "germany",
     "path": "europe/germany/bruehl/phantasialand"
   },
+  "europe/germany/guenzburg/legoland-deutschland": {
+    "slug": "legoland-deutschland",
+    "name": "LEGOLAND Deutschland",
+    "city": "Günzburg",
+    "countrySlug": "germany",
+    "path": "europe/germany/guenzburg/legoland-deutschland"
+  },
   "europe/germany/hassloch/plopsaland-deutschland": {
     "slug": "plopsaland-deutschland",
     "name": "Plopsaland Deutschland",
@@ -160,6 +167,7 @@ export const MEDIA_PARK_PATH_BY_SLUG: Record<string, string> = {
   "parc-asterix": "europe/france/plailly/parc-asterix",
   "movie-park-germany": "europe/germany/bottrop/movie-park-germany",
   "phantasialand": "europe/germany/bruehl/phantasialand",
+  "legoland-deutschland": "europe/germany/guenzburg/legoland-deutschland",
   "plopsaland-deutschland": "europe/germany/hassloch/plopsaland-deutschland",
   "europa-park": "europe/germany/rust/europa-park",
   "hansa-park": "europe/germany/sierksdorf/hansa-park",
