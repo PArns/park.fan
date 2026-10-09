@@ -2,7 +2,7 @@
 title: 'Novità dei parchi divertimento 2027: quello che parchi e costruttori hanno confermato'
 translationKey: park-novelties-2027
 date: '2026-10-04'
-updatedAt: '2026-10-05'
+updatedAt: '2026-10-09'
 author: patrick
 mode: published
 featured: false
@@ -78,6 +78,9 @@ alla sua fonte, l’elenco completo è in fondo.
 | Parco                                                                 | Novità                          | Tipo                                    | Quando                        |
 | --------------------------------------------------------------------- | ------------------------------- | --------------------------------------- | ----------------------------- |
 | [Hansa-Park](ref:hansa-park?bare)                                     | Buddenbrook-Turm                | torre nell’Hansa-Garten                 | nel corso della stagione 2027 |
+| [Europa-Park](ref:europa-park?bare)                                   | Wild Swing XL                   | altalena gigante in Portogallo          | 2027                          |
+| [Europa-Park](ref:europa-park?bare)                                   | Torre da guidare da soli        | torre in Islanda                        | 2027                          |
+| [Europa-Park](ref:europa-park?bare)                                   | Enzo's Piccolo Mondo            | giro in gondola rinnovato               | 2027                          |
 | [Rulantica](ref:rulantica?bare)                                       | Nørd Havn                       | ristorante e zone relax                 | fine 2027                     |
 | [Plopsaland Belgium](ref:plopsaland-belgium?bare)                     | Flying Cinema                   | flying theatre, Mack Rides              | 13 marzo 2027                 |
 | [Efteling](ref:efteling?bare)                                         | Biblioteca delle fiabe          | 32ª fiaba del bosco delle fiabe         | dal 2027                      |
@@ -128,14 +131,30 @@ All’Hansa-Park i tempi di attesa non li misuriamo, il parco li pubblica soltan
 Calendario, serate di ottobre e tutte e otto le montagne russe sono nella
 [guida all’Hansa-Park](/blog/hansa-park-consigli).
 
-### Europa-Park e Rulantica
+### Europa-Park: Pre-Opening Weeks e tre attrazioni per famiglie
 
-All’[Europa-Park](ref:europa-park) nel 2027 non arriva nessuna nuova attrazione. In compenso il
+All’[Europa-Park](ref:europa-park) nel 2027 non arriva nessuna nuova montagna russa. In compenso il
 parco apre prima del solito. Dal 7 al 19 marzo ci sono per la prima volta le Pre-Opening Weeks con
 biglietti più economici, e la stagione estiva comincia il 20 marzo. I dettagli sono nella
 [nostra notizia sulle Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027).
 L’[Euro-Mir](ref:europa-park/euro-mir) resta aperta solo fino al 9 gennaio 2027, e ne parlo più in
 basso, in «Cosa sparisce nel 2027».
+
+A queste si aggiungono tre attrazioni per famiglie che il parco ha annunciato l’8 ottobre 2026. Non indica una data di apertura per nessuna delle tre e promette altre informazioni «in un secondo momento». Il resto è nella [nostra notizia sulle tre novità](/news/europa-park-tre-novita-2027).
+
+### Europa-Park: Wild Swing XL in Portogallo
+
+Nell’area portoghese arriva una Wild Swing XL, un’altalena gigante a oltre 14 metri d’altezza, sopra il lago portoghese. Secondo il parco unisce brivido e divertimento ed è pensata per tutte le età. Il parco non indica costruttore, altezza minima, passeggeri per giro né durata. Finora l’unica attrazione su cui si viaggia in Portogallo è la montagna russa acquatica [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), costruita da MACK Rides nel 2005. L’altalena sarà la seconda attrazione su cui si viaggia nell’area, e una data di apertura non c’è.
+
+### Europa-Park: una torre in Islanda
+
+Tra la montagna russa in legno [WODAN - Timburcoaster](ref:europa-park/wodan-timburcoaster) e la megacoaster [blue fire](ref:europa-park/blue-fire-megacoaster) nel 2027 dovrebbe aprire un’attrazione a torre. Secondo il parco i visitatori la guidano da soli e guardano dall’alto l’area islandese, anche giù verso il porto. La torre non ha ancora un nome, e mancano altezza, costruttore, altezza minima e data di apertura.
+
+### Europa-Park: Enzo's Piccolo Mondo
+
+Il giro in gondola [Piccolo Mondo](ref:europa-park/piccolo-mondo) nell’area italiana accompagna da oltre 40 anni i visitatori più piccoli, secondo il parco, e nel 2027 tornerà «in nuovo splendore». Il parco cita arte, teatro classico e musica italiana. L’annuncio non dice se l’attrazione chiude prima, né quante scene ha e quali sono nuove. Ha aperto nel 1982 ed è di MACK Rides, e ogni gondola porta sei persone. Il parco non indica una data di apertura.
+
+### Rulantica: Nørd Havn
 
 Nel parco acquatico [Rulantica](ref:rulantica) sta nascendo Nørd Havn, un edificio su due piani. Al
 piano terra c’è un ristorante, di sopra ci sono zone per sdraiarsi in tre ambienti diversi, al
@@ -591,7 +610,7 @@ Europa è Supersonic 1887 a Nigloland, con 47 metri e quasi 100 km/h.
 ### Nel 2027 c’è una nuova montagna russa in Germania?
 
 Al 5 ottobre 2026 no. L’Hansa-Park costruisce una torre, Rulantica un ristorante, e l’Europa-Park
-prevede la sua prossima nuova montagna russa per il 2028. Le nuove montagne russe più vicine sono a
+prevede la sua prossima nuova montagna russa per il 2028. L’8 ottobre ha annunciato tre attrazioni per famiglie per il 2027, ma nessuna montagna russa. Le nuove montagne russe più vicine sono a
 Nigloland, nella Champagne, e a Djurs Sommerland, in Danimarca.
 
 ### Qual è la prima novità ad aprire nel 2027?
@@ -617,6 +636,7 @@ settembre 2026, Merlin le sue a marzo e a settembre.
 
 - Hansa-Park, Buddenbrook-Turm: [Nuovo 2027: Buddenbrook-Turm (Hansa-Park)](https://www.hansapark.de/attraktion/276/details/neu-2027-buddenbrook-turm?language=de), stagione 2027: [Abbonamenti stagionali (Hansa-Park)](https://www.hansapark.de/saisonkarten/?language=de), apertura nel 1977: [Numeri, date, fatti (Hansa-Park)](https://www.hansapark.de/zahlen-daten-fakten/?language=de), Cornwall Coaster: [Informazioni per i media (Hansa-Park)](https://www.hansapark.de/medien-informationen/?language=de)
 - Rulantica: [Nørd Havn (Europa-Park)](https://www.europapark.de/de/rulantica/nord-havn)
+- Europa-Park, tre attrazioni per famiglie, 14 metri, oltre 40 anni, data dell’annuncio: [Europa-Park kündigt drei neue Familienattraktionen an (MACK Group, 8 ottobre 2026)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an), Atlantica SuperSplash: [Atlantica SuperSplash (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/atlantica-supersplash), Piccolo Mondo: [Piccolo Mondo (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/piccolo-mondo)
 - Plopsaland Belgium: [Comunicato stampa del 3 agosto 2026 (Plopsa)](https://www.plopsanews.com/en/press-releases/vliegende-cinema-opent-op-13-maart-2027-als-blikvanger-van-grootste-investering-ooit-in-plopsaland-belgium), [Flying Cinema (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/attractions/flying-cinema), [Plopsaland Plaza (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/plopsaland-plaza), Mack Rides: [Comunicato stampa del 30 settembre 2025 (Plopsa)](https://plopsanews.com/nl/persberichten/plopsaland-vliegt-naar-de-toekomst-een-recordinvestering-met-vliegende-cinema-als-blikvanger)
 - Efteling: [Novità all’Efteling](https://www.efteling.com/en/new-in-efteling), [Comunicato stampa sulla Biblioteca delle fiabe del 22 luglio 2026](https://www.efteling.com/en/press/first-look-at-eftelings-32nd-fairytale-the-fairytale-library/), [Blog sull’Usignolo Cinese](https://www.efteling.com/en/blog/nieuws/nieuws-over-de-sprookjesbibliotheek-en-de-chinese-nachtegaal)
 - Bobbejaanland: [Home page (Bobbejaanland)](https://www.bobbejaanland.be/)
