@@ -6,10 +6,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Epic Universe sta je in onze metingen het langst in de rij, in de Studios het kortst. De
-  Express Unlimited geldt alleen in de Studios en Islands of Adventure, de gewone Express kost
-  daar 119,99 tot 319,99 dollar, en de minimale lengte van de grote attracties ligt tussen 1,22
-  en 1,38 meter.
+  In Epic Universe sta je het langst in de rij, in de Studios het kortst. Juist in Epic Universe
+  geldt de Express Unlimited niet. Voor de grote achtbanen moet je, afhankelijk van de baan, 1,22
+  tot 1,38 meter lang zijn.
 category: guides
 tags:
   - universal-orlando
@@ -60,14 +59,13 @@ seo:
 ---
 
 Het Universal Orlando Resort heeft vier parken: Universal Studios Florida sinds 7 juni 1990, Islands of
-Adventure sinds 28 mei 1999, het waterpark Volcano Bay sinds 2017 en sinds 22 mei 2025 Epic Universe.
+Adventure sinds 28 mei 1999, Volcano Bay sinds 2017 en sinds 22 mei 2025 Epic Universe.
 Volcano Bay is een waterpark, achtbanen hebben de andere drie. Volgens Wikipedia kwam Universal Studios Florida in
 2024 op ruim 9,5 miljoen bezoeken en plaats 13 ter wereld, Islands of Adventure op 9,45 miljoen en
-plaats 14. Voor Epic Universe geeft Wikipedia geen bezoekersaantal, en Universal heeft er tot nu toe geen
-gepubliceerd.
+plaats 14. Voor Epic Universe heeft Universal tot nu toe geen bezoekersaantal gepubliceerd.
 
-De drie parken hebben heel verschillende rijen. In onze metingen van de afgelopen twee jaar staat Epic
-Universe bovenaan en de Studios onderaan:
+Hoe lang je in de rij staat, verschilt flink tussen de drie parken. In onze metingen van de afgelopen
+twee jaar wacht je in Epic Universe het langst en in de Studios het kortst:
 
 ```park-comparison-widget slugs=universal-studios-florida,universal-islands-of-adventure,universal-epic-universe highlight=universal-epic-universe
 
@@ -95,34 +93,34 @@ parken: New York, San Francisco, World Expo, Springfield, Hollywood, Diagon Alle
 Kongfrontation maakte in 2002 plaats voor Revenge of the Mummy, en voor The Simpsons verdween in 2007 Back to
 the Future: The Ride.
 
-Deze zeven attracties zou ik bij een bezoek tegen elkaar afwegen. De huizen van de
-Halloween Horror Nights ontbreken met opzet, die staan in de herfst bovenaan de ranglijst van het park. Het
-zijn geen attracties en ze lopen maar tot 1 november.
+Uit deze zeven attracties zou ik bij een bezoek kiezen. De huizen van de Halloween Horror Nights heb
+ik weggelaten, ook al sta je daar in de herfst het langst in de rij: het zijn geen attracties en ze
+lopen maar tot 1 november.
 
 ```ride-waits-widget rides=universal-studios-florida/harry-potter-and-the-escape-from-gringotts|Escape from Gringotts|Indoor-achtbaan;universal-studios-florida/revenge-of-the-mummy|Revenge of the Mummy|Indoor-achtbaan;universal-studios-florida/despicable-me-minion-mayhem|Minion Mayhem|Simulator;universal-studios-florida/transformers-the-ride-3d|Transformers: The Ride-3D|3D-darkride;universal-studios-florida/men-in-black-alien-attack|Men in Black: Alien Attack|Schietrit;universal-studios-florida/the-simpsons-ride|The Simpsons Ride|Simulator;universal-studios-florida/et-adventure|E.T. Adventure|Darkride columns=type,peak,days highlight=universal-studios-florida/harry-potter-and-the-escape-from-gringotts
 
 ```
 
 Helemaal bovenaan staat **[Harry Potter and the Escape from
-Gringotts](ref:universal-studios-florida/harry-potter-and-the-escape-from-gringotts)**. Intamin heeft de
-attractie gebouwd, ze duurt vijf minuten en is een achtbaan in een gebouw die als darkride met
-projectieschermen wordt verteld. Boven de ingang zit een draak van 18 meter. De minimale lengte is 1,07 meter.
+Gringotts](ref:universal-studios-florida/harry-potter-and-the-escape-from-gringotts)**. Intamin heeft
+deze indoorachtbaan gebouwd, die haar verhaal vertelt als een darkride, op projectieschermen. Een rit
+duurt vijf minuten. Boven de ingang zit een draak van 18 meter. De minimale lengte is 1,07 meter.
 
 Daarna komt **[Revenge of the Mummy](ref:universal-studios-florida/revenge-of-the-mummy)**, sinds 21 mei
-2004 in bedrijf. Premier Rides heeft deze indoorachtbaan gebouwd. Ze wordt drie keer met een lineaire motor
-gelanceerd, haalt 64 km/u en duurt bijna drie minuten. De lezers van het vakblad Amusement Today kozen haar
+2004 in bedrijf. Premier Rides heeft deze indoorachtbaan gebouwd. De trein wordt drie keer met een
+lineaire motor gelanceerd en haalt 64 km/u. Een rit duurt bijna drie minuten. De lezers van het vakblad Amusement Today kozen haar
 zeven jaar lang tot beste indoorachtbaan, tot de categorie na 2019 verdween. Minimale lengte 1,22 meter.
 
-De laagste drempels van het resort hebben de kinderattracties. **[E.T. Adventure](ref:universal-studios-florida/et-adventure)**
-is toegankelijk vanaf 0,87 meter. Het is een darkride en rijdt sinds de openingsdag in 1990. De
+De laagste minimale lengte in het park heeft **[E.T. Adventure](ref:universal-studios-florida/et-adventure)**:
+0,87 meter. De darkride rijdt sinds de openingsdag in 1990. De
 **[Trolls Trollercoaster](ref:universal-studios-florida/trolls-trollercoaster)** van Vekoma in DreamWorks
-Land is toegankelijk vanaf 0,92 meter en **[Despicable Me Minion
+Land is toegankelijk vanaf 0,92 meter, **[Despicable Me Minion
 Mayhem](ref:universal-studios-florida/despicable-me-minion-mayhem)** in Minion Land vanaf 1,02 meter.
 
 **[Transformers: The Ride-3D](ref:universal-studios-florida/transformers-the-ride-3d)**,
 **[Men in Black: Alien Attack](ref:universal-studios-florida/men-in-black-alien-attack)** en
 **[The Simpsons Ride](ref:universal-studios-florida/the-simpsons-ride)** zijn er voor de momenten waarop de
-grote attracties vol zijn. Ze zijn toegankelijk vanaf 1,02 tot 1,07 meter.
+grote attracties vol zijn. Hun minimale lengte ligt tussen 1,02 en 1,07 meter.
 
 Aan shows draaien in het park onder meer The Bourne Stuntacular (sinds 2020), Animal Actors on Location en
 de Horror Make-Up Show, allebei sinds het openingsjaar 1990. De tijden wisselen per dag en staan in de app van Universal.
@@ -150,17 +148,17 @@ op drie aangrenzende eilanden.
 ```
 
 De ranglijst wordt aangevoerd door **[Hagrid's Magical Creatures Motorbike
-Adventure](ref:universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure)**. Intamin
-opende de attractie op 13 juni 2019. Ze wordt zeven keer met een lineaire motor gelanceerd, is 20 meter
-hoog, haalt 80 km/u, is 1.540 meter lang en heeft geen inversie. Ze staat op de plek van Dragon Challenge,
-de vroegere Dueling Dragons, die in 2017 sloot. Minimale lengte 1,22 meter. De afstand tot de tweede
-attractie is in onze metingen groot.
+Adventure](ref:universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure)**. De
+achtbaan van Intamin ging op 13 juni 2019 open. Ze is 20 meter hoog, haalt 80 km/u en is 1.540 meter
+lang, met zeven lanceringen door een lineaire motor en geen inversie. Ze staat op de plek van Dragon Challenge,
+de vroegere Dueling Dragons, die in 2017 sloot. Minimale lengte 1,22 meter. In onze metingen sta je bij
+Hagrid's een stuk langer in de rij dan bij de attractie op de tweede plaats.
 
 Op de tweede plaats staat **[Jurassic World
-VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)**. Intamin opende haar op
-10 juni 2021. Ze is 47 meter hoog, haalt 110 km/u, is 1.400 meter lang, heeft vier inversies en twee
-lanceringen, en was bij de opening de snelste achtbaan van alle Universal-parken. Minimale lengte 1,30
-meter.
+VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)**. De achtbaan van
+Intamin ging op 10 juni 2021 open. Ze is 47 meter hoog, haalt 110 km/u en is 1.400 meter lang, met twee
+lanceringen en vier inversies. Bij de opening was ze de snelste achtbaan van alle Universal-parken.
+Minimale lengte 1,30 meter.
 
 ![De verlichte ingangsletters van de Jurassic World VelociCoaster bij nacht | Achter deze ingang loopt de rij dwars door de raptorpaddock van Jurassic World. | wide](/media/velocicoaster/01-eingang.jpg)
 
@@ -171,21 +169,21 @@ er in het atrium nog iets te zien.
 
 **[The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)** is de
 oudste van de drie. Bolliger & Mabillard bouwden haar voor de opening van het park op 28 mei 1999. Ze heeft
-zeven inversies, is 34 meter hoog en haalt 108 km/u. De trein gaat niet met een ketting omhoog. Banden
-versnellen hem in twee seconden tot 64 km/u. Minimale lengte 1,38 meter, de hoogste in het park.
+zeven inversies, is 34 meter hoog en haalt 108 km/u. De eerste helling neemt de trein zonder ketting:
+banden versnellen hem in twee seconden tot 64 km/u. Minimale lengte 1,38 meter, de hoogste in het park.
 
 Voor wie geen achtbaan wil, zijn er de darkrides. In **[Harry Potter and the Forbidden
 Journey](ref:universal-islands-of-adventure/harry-potter-and-the-forbidden-journey)** zit je in een
 robotarm van KUKA en vlieg je door Hogwarts. De attractie opende op 18 juni 2010, duurt ruim vier minuten
 en is toegankelijk vanaf 1,22 meter. **[Skull Island: Reign of
-Kong](ref:universal-islands-of-adventure/skull-island-reign-of-kong)** rijdt zonder rails. De trucks rijden
-vrij door de jungle, er zitten 72 gasten in één truck en de rit duurt zes minuten. Daarbij komt **[The
+Kong](ref:universal-islands-of-adventure/skull-island-reign-of-kong)** rijdt zonder rails: de trucks,
+met elk 72 gasten, rijden vrij door de jungle. De rit duurt zes minuten. Daarbij komt **[The
 Amazing Adventures of Spider-Man](ref:universal-islands-of-adventure/the-amazing-adventures-of-spider-man)**,
 een 3D-darkride uit 1999 vanaf 1,02 meter.
 
 Nat word je op **[Dudley Do-Right's Ripsaw
 Falls](ref:universal-islands-of-adventure/dudley-do-rights-ripsaw-falls)**, een wildwaterbaan van Mack met
-een val van 23 meter, vanaf 1,12 meter. De vlottentocht **[Popeye & Bluto's Bilge-Rat
+een val van 23 meter. Je mag mee vanaf 1,12 meter. De vlottentocht **[Popeye & Bluto's Bilge-Rat
 Barges](ref:universal-islands-of-adventure/popeye-and-blutos-bilge-rat-barges)** en de **[Jurassic Park
 River Adventure](ref:universal-islands-of-adventure/jurassic-park-river-adventure)** zijn allebei
 toegankelijk vanaf 1,07 meter. **[Doctor Doom's
@@ -223,7 +221,7 @@ lift van Simtec, ook vanaf 1,02 meter.
 darkride met augmented reality waarin je schildpadschilden naar de andere wagens gooit. De rit duurt vijf
 minuten en draaide eerder al in Osaka (sinds 2021) en Hollywood (sinds 2023).
 
-De achtbanen staan in Epic Universe verder naar achteren, ook al zijn ze nieuw. **[Stardust
+Bij de andere achtbanen van Epic Universe sta je korter in de rij dan bij Mine-Cart Madness. **[Stardust
 Racers](ref:universal-epic-universe/stardust-racers)** in Celestial Park is een duelbaan van Mack met twee
 sporen, 40,5 meter hoogte, 100 km/u en één inversie. Ze won in 2025 de Golden Ticket Award voor beste
 nieuwe achtbaan. Minimale lengte 1,22 meter. **[Curse of the
@@ -235,7 +233,7 @@ Voor kinderen onder 1,02 meter is er meer dan alleen speeltuinen: **[Yoshi's
 Adventure](ref:universal-epic-universe/yoshis-adventure)** is toegankelijk vanaf 0,87 meter. De draaimolen
 **[Constellation Carousel](ref:universal-epic-universe/constellation-carousel)** en de boottocht **[Fyre
 Drill](ref:universal-epic-universe/fyre-drill)** hebben geen minimale lengte, kinderen onder 1,22 meter gaan
-met een begeleider mee. Vanaf 1,22 meter gelden daarnaast Dragon Racer's Rally en Monsters Unchained: The
+met een begeleider mee. Pas vanaf 1,22 meter mag je in Dragon Racer's Rally en Monsters Unchained: The
 Frankenstein Experiment, een darkride met robotarm. Als shows draaien Le Cirque Arcanus in het Ministry of
 Magic en The Untrainable Dragon op de Isle of Berk.
 
@@ -244,8 +242,8 @@ Magic en The Untrainable Dragon op de Isle of Berk.
 Harry Potter is het thema dat alle drie de parken verbindt, en elk heeft een eigen gebied. Het oudste is
 Hogsmeade in Islands of Adventure, dat op 18 juni 2010 opende op 8 hectare. Daar stond eerst de achtbaan
 Flying Unicorn, die in 2008 sloot en terugkwam als **[Flight of the
-Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**, een junior-achtbaan van Vekoma
-vanaf 0,92 meter. Daarnaast zijn er Forbidden Journey, Hagrid's en de toverstokkenwinkel Ollivanders.
+Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**. De junior-achtbaan van Vekoma
+is toegankelijk vanaf 0,92 meter. Daarnaast zijn er Forbidden Journey, Hagrid's en de toverstokkenwinkel Ollivanders.
 
 Diagon Alley in de Studios kwam in 2014 erbij, samen met Escape from Gringotts en de Hogwarts Express. Het
 Ministry of Magic in Epic Universe is het jongste van de drie gebieden. Het loopt van het Parijs van de jaren
@@ -253,7 +251,7 @@ twintig uit de “Fantastic Beasts”-films tot het Britse ministerie van de jar
 the Battle at the Ministry help je Harry, Ron en Hermelien om Dolores Omber tegen te houden.
 
 Wie Hogsmeade en Diagon Alley op dezelfde dag wil zien of met de Hogwarts Express wil rijden, heeft een
-Park-to-Park-ticket nodig. Het Ministry of Magic krijgt een eigen dag in Epic Universe.
+Park-to-Park-ticket nodig. Voor het Ministry of Magic plan je een eigen dag in Epic Universe in.
 
 ## Seuss Landing, Marvel en Jurassic Park
 
@@ -267,8 +265,8 @@ Jurassic.
 
 ## Bij de opening of 's avonds
 
-Wanneer de rij bij een attractie kort is, zie je in het uurprofiel. Hier de acht attracties van Epic
-Universe met de langste rij:
+In het uurprofiel zie je hoe laat de rij bij een attractie kort is. Voor Epic Universe zijn dit de
+acht attracties met de langste rij:
 
 ```hourly-profile-widget slug=universal-epic-universe top=8
 
@@ -291,9 +289,8 @@ Revenge of the Mummy volgen als “goede tip”.
 ### Hogwarts Express: alleen met een Park-to-Park-ticket
 
 De **Hogwarts Express** verbindt Diagon Alley in de Studios met Hogsmeade in Islands of Adventure.
-Doppelmayr Garaventa heeft hem gebouwd, hij opende op 8 juli 2014 en rijdt ongeveer vier minuten. Instappen
-mag alleen met een Park-to-Park-ticket of een jaarkaart. Met een ticket voor één park kom je de trein niet
-in.
+Doppelmayr Garaventa heeft hem gebouwd, en hij ging op 8 juli 2014 open. Een rit duurt ongeveer vier
+minuten. Instappen mag alleen met een Park-to-Park-ticket of een jaarkaart.
 
 ## Tickets: één park of Park-to-Park
 
@@ -302,8 +299,8 @@ Park-to-Park-ticket wissel je op dezelfde dag tussen de parken en rijd je met de
 Park-to-Park-tickets voor drie, vier en vijf dagen, waarmee je elke dag in alle vier de parken mag, ook in
 Epic Universe en Volcano Bay.
 
-Op de ticketpagina van Universal staan op 8 oktober 2026 deze instapprijzen, per dag en per ticket, exclusief
-belasting:
+De instapprijzen op de ticketpagina van Universal, per dag en per ticket, exclusief belasting, stand 8
+oktober 2026:
 
 | Park                           | Prijs vanaf   |
 | ------------------------------ | ------------- |
@@ -312,7 +309,7 @@ belasting:
 | Universal Islands of Adventure | 124,99 dollar |
 | Volcano Bay                    | 80,99 dollar  |
 
-De prijzen veranderen van dag tot dag en de pagina noemt de laagste. Twee aanbiedingen heeft Universal
+De prijzen veranderen van dag tot dag, dit zijn telkens de laagste. Twee aanbiedingen heeft Universal
 daarnaast. Het 3-dagenticket met één park per dag, Studios, Islands of Adventure en Epic Universe, begint
 bij 99 dollar per dag en 297 dollar samen. Het Park-to-Park-ticket voor twee dagen in de Studios en
 Islands of Adventure plus één dag in Epic Universe begint bij 119 dollar per dag, 357 dollar in totaal.
@@ -329,13 +326,13 @@ text: De prijzen per dag staan in de kalender van Universal.
 
 ## Express Pass: wat hij kost en waar hij geldt
 
-De Express Pass is Universals manier om je langs de rij te kopen. Hij komt in drie vormen, en die
+Met de Express Pass koop je je bij Universal langs de rij. Hij bestaat in drie vormen, en die
 verschillen meer dan de naam doet vermoeden.
 
 **Universal Express** geldt één keer per attractie. Universal verkoopt hem voor de Studios, Islands of
 Adventure, Epic Universe en Volcano Bay, als toeslag op het ticket. Voor de Studios en Islands of Adventure
 noemt Universal op de ticketpagina 119,99 tot 319,99 dollar per persoon en park, afhankelijk van de dag.
-Een prijs voor Epic Universe noemt de pagina niet.
+Voor Epic Universe staat daar geen prijs.
 
 **Universal Express Unlimited** geldt meerdere keren per attractie, maar alleen in de Studios en Islands of
 Adventure. In Epic Universe en Volcano Bay is hij niet geldig. Gasten van de hotels Loews Portofino Bay,
@@ -350,7 +347,7 @@ van het resort staan daar, dus een pas levert daar het meeste op. Wie bij de ope
 Madness en Battle at the Ministry rijdt, heeft hem voor die twee niet nodig. In de Studios en Islands of
 Adventure zou ik zonder hotelvoordeel geen pas kopen. Met een vroege aankomst kom je ook zonder pas
 aan bij de attracties van de rope-drop-lijst, dus VelociCoaster, Ripsaw Falls, Skull Island en
-Spider-Man. Hagrid's staat niet op de lijst. Dat is mijn inschatting op basis van
+Spider-Man. Voor Hagrid's geldt dat niet. Dat is mijn inschatting op basis van
 de uurprofielen. Hoeveel minuten een pas echt scheelt, meten we niet.
 
 ## Wanneer je het beste kunt gaan
@@ -369,11 +366,11 @@ De typische wachttijd per maand, voor elk van de drie parken:
 
 ```
 
-In alle drie de parken is december de maand met de langste wachttijd, al zijn er voor die maand pas negen
-gemeten dagen. In Epic Universe zijn januari en februari even hoog. Het kortst is hij in Islands of
-Adventure in september, in Epic Universe in augustus en september en in de Studios in mei. Bij de
-weekdagen staat in de Studios en Islands of Adventure de zaterdag bovenaan. In Epic Universe verschillen de
-weekdagen nauwelijks.
+In alle drie de parken wacht je in december het langst, al hebben we december pas op negen dagen
+gemeten. In Epic Universe wacht je in januari en februari even lang. Het kortst is de wachttijd in
+Islands of Adventure in september, in Epic Universe in augustus en september en in de Studios in mei. Van
+de dagen van de week is zaterdag in de Studios en Islands of Adventure het drukst. In Epic Universe
+verschillen de weekdagen nauwelijks.
 
 In de herfst gaan de Studios op de avonden van de Halloween Horror Nights voor gewone gasten eerder dicht.
 Alle data, prijzen en huizen staan in ons overzicht [Halloween in de VS](/blog/halloween-vs-pretparken-2026).
@@ -432,8 +429,8 @@ hogere grens: Stardust Racers en Revenge of the Mummy vanaf 1,22 meter, VelociCo
 Doctor Doom's Fearfall vanaf 1,33 meter en de Hulk vanaf 1,38 meter. Bij de meeste van deze attracties
 staat voor de instap een proefstoel waarin je kunt uitproberen of je erin past.
 
-Seuss Landing in Islands of Adventure is het gebied voor de kleinsten. Op de pagina van Universal staan voor
-Seuss Landing maar twee attracties met een minimale lengte, allebei 0,92 meter. In de Studios zijn Minion Land en
+Seuss Landing in Islands of Adventure is het gebied voor de kleinsten. Volgens Universal geldt daar maar
+bij twee attracties een minimale lengte, bij allebei 0,92 meter. In de Studios zijn Minion Land en
 DreamWorks Land van de kinderen, in Epic Universe de Isle of Berk met het Viking Training Camp.
 
 ## Reis, parkeren en hotels
@@ -454,8 +451,8 @@ Express Unlimited krijg je alleen in Portofino Bay, Hard Rock en Royal Pacific g
 minstens vijf nachten biedt Universal van 8 september tot 25 december 2026 en van 3 januari tot 15 maart
 2027 tot 30 procent korting.
 
-**Eten.** Onze database telt (stand 8 oktober 2026) 64 horecagelegenheden in de Studios, 31 in Islands of
-Adventure en 32 in Epic Universe.
+**Eten.** In de Studios zijn 64 restaurants en eetkramen, in Islands of Adventure 31 en in Epic
+Universe 32 (stand 8 oktober 2026).
 
 ## Veelgestelde vragen over Universal Orlando
 

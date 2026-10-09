@@ -6,10 +6,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In our measurements you wait longest in Epic Universe and shortest in the
-  Studios. Express Unlimited is valid only in the Studios and Islands of
-  Adventure, the single Express costs $119.99 to $319.99 there, and the minimum
-  height of the big rides is between 1.22 and 1.38 metres.
+  You wait longest in Epic Universe and shortest in the Studios. Express
+  Unlimited isn't valid in Epic Universe, of all places. The big coasters need
+  riders between 1.22 and 1.38 metres tall, depending on the ride.
 category: guides
 tags:
   - universal-orlando
@@ -60,14 +59,13 @@ seo:
 ---
 
 Universal Orlando Resort runs four parks: Universal Studios Florida since 7 June 1990, Islands of
-Adventure since 28 May 1999, the water park Volcano Bay since 2017 and, since 22 May 2025, Epic
+Adventure since 28 May 1999, Volcano Bay since 2017 and, since 22 May 2025, Epic
 Universe. Volcano Bay is a water park, the other three have coasters. According to Wikipedia, Universal Studios
 Florida had just over 9.5 million visits in 2024, ranking 13th in the world, and Islands of Adventure
-9.45 million, ranking 14th. Wikipedia lists no attendance figure for Epic Universe, and Universal
-hasn't published one so far.
+9.45 million, ranking 14th. Universal hasn't published an attendance figure for Epic Universe so far.
 
-The three parks have very different queues. In our measurements of the last two years, Epic Universe
-is ahead and the Studios are at the back:
+How long you queue differs a lot between the three parks. In our measurements of the last two years,
+you wait longest in Epic Universe and shortest in the Studios:
 
 ```park-comparison-widget slugs=universal-studios-florida,universal-islands-of-adventure,universal-epic-universe highlight=universal-epic-universe
 
@@ -95,9 +93,9 @@ Amity were open until 2 January 2012. Diagon Alley and Escape from Gringotts ope
 Kongfrontation made way for Revenge of the Mummy in 2002, and Back to the Future: The Ride disappeared in
 2007 for the Simpsons.
 
-These are the seven rides I'd weigh against each other for a visit. The houses of Halloween
-Horror Nights are left out on purpose, although in autumn they rank at the top of the park's list. They
-aren't rides, and they only run until 1 November.
+These are the seven rides I'd choose between for a visit. I've left out the Halloween Horror Nights
+houses, even though in autumn that's where you queue longest: they aren't rides, and they only run
+until 1 November.
 
 ```ride-waits-widget rides=universal-studios-florida/harry-potter-and-the-escape-from-gringotts|Escape from Gringotts|Indoor coaster;universal-studios-florida/revenge-of-the-mummy|Revenge of the Mummy|Indoor coaster;universal-studios-florida/despicable-me-minion-mayhem|Minion Mayhem|Simulator;universal-studios-florida/transformers-the-ride-3d|Transformers: The Ride-3D|3D dark ride;universal-studios-florida/men-in-black-alien-attack|Men in Black: Alien Attack|Shooting ride;universal-studios-florida/the-simpsons-ride|The Simpsons Ride|Simulator;universal-studios-florida/et-adventure|E.T. Adventure|Dark ride columns=type,peak,days highlight=universal-studios-florida/harry-potter-and-the-escape-from-gringotts
 
@@ -105,24 +103,24 @@ aren't rides, and they only run until 1 November.
 
 At the top is **[Harry Potter and the Escape from
 Gringotts](ref:universal-studios-florida/harry-potter-and-the-escape-from-gringotts)**. Intamin built
-it, it lasts five minutes, and it's an indoor coaster told like a dark ride with screens. A dragon 18
-metres long sits above the entrance. The minimum height is 1.07 m.
+the indoor coaster, which tells its story like a dark ride, on screens. A ride lasts five minutes. A
+dragon 18 metres long sits above the entrance. The minimum height is 1.07 m.
 
 Next comes **[Revenge of the Mummy](ref:universal-studios-florida/revenge-of-the-mummy)**, open since 21
-May 2004. Premier Rides built the indoor coaster. It launches three times by linear motor, reaches 64
-km/h and lasts just under three minutes. Readers of the trade magazine Amusement Today voted it the best
+May 2004. Premier Rides built the indoor coaster. Linear motors launch the train three times, and it
+reaches 64 km/h. A ride lasts just under three minutes. Readers of the trade magazine Amusement Today voted it the best
 indoor coaster in seven years, before the category was dropped after 2019. Minimum height 1.22 m.
 
-The kids' rides have the lowest hurdles in the resort. **[E.T. Adventure](ref:universal-studios-florida/et-adventure)**
-goes from 0.87 m. It's a dark ride and has run since opening day in 1990. The
-**[Trolls Trollercoaster](ref:universal-studios-florida/trolls-trollercoaster)** by Vekoma in DreamWorks
-Land goes from 0.92 m, and **[Despicable Me Minion
+The lowest minimum height in the park is at **[E.T. Adventure](ref:universal-studios-florida/et-adventure)**:
+0.87 m. The dark ride has run since opening day in 1990. Vekoma's
+**[Trolls Trollercoaster](ref:universal-studios-florida/trolls-trollercoaster)** in DreamWorks
+Land takes riders from 0.92 m, and **[Despicable Me Minion
 Mayhem](ref:universal-studios-florida/despicable-me-minion-mayhem)** in Minion Land from 1.02 m.
 
 **[Transformers: The Ride-3D](ref:universal-studios-florida/transformers-the-ride-3d)**,
 **[Men in Black: Alien Attack](ref:universal-studios-florida/men-in-black-alien-attack)** and
 **[The Simpsons Ride](ref:universal-studios-florida/the-simpsons-ride)** are the rides for when the big
-ones are full. They go from 1.02 to 1.07 m.
+ones are full. Their minimum heights are between 1.02 and 1.07 m.
 
 Shows in the park include The Bourne Stuntacular (since 2020), Animal Actors on Location and the Horror
 Make-Up Show, both since the opening year 1990. Showtimes change daily and are in Universal's app.
@@ -151,15 +149,15 @@ stand on three neighbouring islands.
 
 **[Hagrid's Magical Creatures Motorbike
 Adventure](ref:universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure)** leads
-the ranking. Intamin opened it on 13 June 2019. It launches seven times by linear motor, is 20 metres
-high, reaches 80 km/h, is 1,540 metres long and has no inversion. It stands where Dragon Challenge, the
+the ranking. The Intamin coaster opened on 13 June 2019. It's 20 metres high, reaches 80 km/h and is
+1,540 metres long, with seven linear-motor launches and no inversion. It stands where Dragon Challenge, the
 former Dueling Dragons, used to be until it closed in 2017. Minimum height 1.22 m. In our measurements
-the gap to the second ride is large.
+you queue much longer at Hagrid's than at the ride in second place.
 
 Second is **[Jurassic World
-VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)**. Intamin opened it on
-10 June 2021. It's 47 metres high, reaches 110 km/h, is 1,400 metres long, has four inversions and two
-launches, and at opening it was the fastest coaster in any Universal park. Minimum height 1.30 m.
+VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)**. The Intamin coaster
+opened on 10 June 2021. It's 47 metres high, reaches 110 km/h and is 1,400 metres long, with two launches
+and four inversions. At opening it was the fastest coaster in any Universal park. Minimum height 1.30 m.
 
 ![The lit entrance lettering of the Jurassic World VelociCoaster at night | Behind this entrance the queue leads straight through the raptor paddock from Jurassic World. | wide](/media/velocicoaster/01-eingang.jpg)
 
@@ -170,22 +168,22 @@ the launch there's still something to see in the atrium.
 
 **[The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)** is the
 oldest of the three. Bolliger & Mabillard built it for the park's opening on 28 May 1999. It has seven
-inversions, is 34 metres high and reaches 108 km/h. The train isn't pulled up by a chain. Tyres
-accelerate it to 64 km/h in two seconds. Minimum height 1.38 m, the highest in the park.
+inversions, is 34 metres high and reaches 108 km/h. The train takes the first climb without a chain:
+tyres accelerate it to 64 km/h in two seconds. Minimum height 1.38 m, the highest in the park.
 
 For everyone who doesn't ride coasters, there are the dark rides. In **[Harry Potter and the Forbidden
 Journey](ref:universal-islands-of-adventure/harry-potter-and-the-forbidden-journey)** you sit in a KUKA
 robot arm and fly through Hogwarts. The ride opened on 18 June 2010, lasts a good four minutes and goes
 from 1.22 m. **[Skull Island: Reign of
-Kong](ref:universal-islands-of-adventure/skull-island-reign-of-kong)** runs without a track. The trucks
-drive freely through the jungle, 72 guests sit in one, and the ride lasts six minutes. Then there's
+Kong](ref:universal-islands-of-adventure/skull-island-reign-of-kong)** runs without a track: the trucks,
+each carrying 72 guests, drive freely through the jungle. The ride lasts six minutes. Then there's
 **[The Amazing Adventures of
 Spider-Man](ref:universal-islands-of-adventure/the-amazing-adventures-of-spider-man)**, a 3D dark ride
 from 1999 from 1.02 m.
 
 You get wet on **[Dudley Do-Right's Ripsaw
 Falls](ref:universal-islands-of-adventure/dudley-do-rights-ripsaw-falls)**, a water ride by Mack with a
-23-metre drop, from 1.12 m. The raft ride **[Popeye & Bluto's Bilge-Rat
+23-metre drop. You can ride from 1.12 m. The raft ride **[Popeye & Bluto's Bilge-Rat
 Barges](ref:universal-islands-of-adventure/popeye-and-blutos-bilge-rat-barges)** and the
 **[Jurassic Park River Adventure](ref:universal-islands-of-adventure/jurassic-park-river-adventure)**
 both go from 1.07 m. **[Doctor Doom's Fearfall](ref:universal-islands-of-adventure/doctor-dooms-fearfall)**
@@ -224,7 +222,7 @@ elevator by Simtec, also from 1.02 m.
 ride with augmented reality in which you throw shells at the other karts. It lasts five minutes and
 already ran in Osaka (since 2021) and Hollywood (since 2023).
 
-The coasters stand further back in Epic Universe, even though they're new. **[Stardust
+At the other coasters in Epic Universe you queue less than at Mine-Cart Madness. **[Stardust
 Racers](ref:universal-epic-universe/stardust-racers)** in Celestial Park is a dueling coaster by Mack
 with two tracks, 40.5 metres of height, 100 km/h and one inversion. It won the 2025 Golden Ticket Award
 for best new coaster. Minimum height 1.22 m. **[Curse of the
@@ -236,8 +234,8 @@ For children under 1.02 m there's more than playgrounds: **[Yoshi's
 Adventure](ref:universal-epic-universe/yoshis-adventure)** goes from 0.87 m. The carousel
 **[Constellation Carousel](ref:universal-epic-universe/constellation-carousel)** and the boat ride
 **[Fyre Drill](ref:universal-epic-universe/fyre-drill)** have no minimum height, and children under 1.22
-m ride with an escort. From 1.22 m there are also Dragon Racer's Rally and Monsters Unchained: The
-Frankenstein Experiment, a dark ride with a robot arm. The shows are Le Cirque Arcanus in the Ministry of
+m ride with an escort. Dragon Racer's Rally and Monsters Unchained: The
+Frankenstein Experiment, a dark ride with a robot arm, only take riders from 1.22 m. The shows are Le Cirque Arcanus in the Ministry of
 Magic and The Untrainable Dragon on the Isle of Berk.
 
 ## Harry Potter three times
@@ -245,8 +243,8 @@ Magic and The Untrainable Dragon on the Isle of Berk.
 Harry Potter is the theme that connects all three parks, and each has its own area. The oldest is
 Hogsmeade in Islands of Adventure, which opened on 18 June 2010 on 8 hectares. The coaster Flying
 Unicorn stood there before, closed in 2008 and came back as **[Flight of the
-Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**, a junior coaster by Vekoma
-from 0.92 m. Forbidden Journey, Hagrid's and the wand shop Ollivanders come on top of that.
+Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**. The Vekoma junior coaster
+takes riders from 0.92 m. Forbidden Journey, Hagrid's and the wand shop Ollivanders come on top of that.
 
 Diagon Alley in the Studios was added in 2014, together with Escape from Gringotts and the Hogwarts
 Express. The Ministry of Magic in Epic Universe is the youngest of the three areas. It stretches from
@@ -254,7 +252,7 @@ the Paris of the 1920s in the "Fantastic Beasts" films to the British ministry o
 Potter and the Battle at the Ministry you help Harry, Ron and Hermione stop Dolores Umbridge.
 
 If you want to see Hogsmeade and Diagon Alley on the same day or ride the Hogwarts Express, you need a
-park-to-park ticket. The Ministry of Magic gets a day of its own in Epic Universe.
+park-to-park ticket. For the Ministry of Magic, plan a day of its own in Epic Universe.
 
 ## Seuss Landing, Marvel and Jurassic Park
 
@@ -267,8 +265,8 @@ taller than 1.43 m rides only together with a child of that height), and the pla
 
 ## At rope drop or in the evening
 
-The hourly profile shows when the queue at a ride is short. Here are the eight rides in Epic Universe
-with the longest queues:
+In the hourly profile you can see at what time of day the queue at a ride is short. For Epic
+Universe, these are the eight rides with the longest queues:
 
 ```hourly-profile-widget slug=universal-epic-universe top=8
 
@@ -291,9 +289,8 @@ and Revenge of the Mummy follow as a "good tip".
 ### Hogwarts Express: park-to-park ticket only
 
 The **Hogwarts Express** connects Diagon Alley in the Studios with Hogsmeade in Islands of Adventure.
-Doppelmayr Garaventa built it, it opened on 8 July 2014 and takes about four minutes. Only guests with a
-park-to-park ticket or an annual pass may board. With a ticket for one park you don't get onto the
-train.
+Doppelmayr Garaventa built it, and it opened on 8 July 2014. A ride takes about four minutes. Only
+guests with a park-to-park ticket or an annual pass may board.
 
 ## Tickets: one park or park-to-park
 
@@ -302,7 +299,7 @@ park-to-park ticket you switch between parks on the same day and ride the Hogwar
 park-to-park tickets for three, four and five days, which let you into all four parks every day,
 including Epic Universe and Volcano Bay.
 
-On 8 October 2026, Universal's ticket page lists these starting prices, per day and ticket, plus tax:
+Starting prices on Universal's ticket page, per day and ticket, plus tax, as of 8 October 2026:
 
 | Park                           | Price from |
 | ------------------------------ | ---------- |
@@ -311,7 +308,7 @@ On 8 October 2026, Universal's ticket page lists these starting prices, per day 
 | Universal Islands of Adventure | $124.99    |
 | Volcano Bay                    | $80.99     |
 
-Prices change from day to day, and the page shows the lowest. Universal has two offers in its programme
+Prices change from day to day, and these are the lowest. Universal has two offers in its programme
 on top of that. The 3-day ticket with one park per day, Studios, Islands of Adventure and Epic Universe,
 starts at $99 per day and $297 in total. The park-to-park ticket for two days in the Studios and Islands
 of Adventure plus one day in Epic Universe starts at $119 per day, $357 in total.
@@ -328,13 +325,13 @@ text: The prices for each day are in Universal's calendar.
 
 ## Express Pass: what it costs and where it's valid
 
-The Express Pass is Universal's way of buying your way past the queue. It comes in three forms, and they
+With the Express Pass you buy your way past the queue at Universal. It comes in three forms, and they
 differ more than the name suggests.
 
 **Universal Express** is valid once per ride. Universal sells it for the Studios, Islands of Adventure,
 Epic Universe and Volcano Bay, as a surcharge on the ticket. For the Studios and Islands of Adventure,
-Universal's ticket page lists $119.99 to $319.99 per person and park, depending on the day. The page
-gives no price for Epic Universe.
+Universal's ticket page lists $119.99 to $319.99 per person and park, depending on the day. There's
+no price there for Epic Universe.
 
 **Universal Express Unlimited** is valid several times per ride, but only in the Studios and Islands of
 Adventure. It isn't valid in Epic Universe or Volcano Bay. Guests of the hotels Loews Portofino Bay, Hard
@@ -349,7 +346,7 @@ queues of the resort are there, which is why a pass brings the most there. If yo
 and the Battle at the Ministry at opening first, you don't need it for those two. In the Studios and
 Islands of Adventure I wouldn't buy a pass without the hotel benefit. With an early arrival you get onto the
 rides from the rope-drop list, that is VelociCoaster, Ripsaw Falls, Skull Island and Spider-Man, without
-a pass too. Hagrid's isn't on the list. That's my assessment from the
+a pass too. That doesn't apply to Hagrid's. That's my assessment from the
 hourly profiles. How many minutes a pass actually saves, we don't measure.
 
 ## When to go
@@ -368,11 +365,11 @@ The typical wait time by month, for each of the three parks:
 
 ```
 
-In all three parks December is the month with the longest wait, although only nine measured days exist
-for it so far. In Epic Universe January and February are just as high. The shortest wait is in Islands
-of Adventure in September, in Epic Universe in August and September, and in the Studios in May. By
-weekday, Saturday leads in the Studios and Islands of Adventure. In Epic Universe the weekdays barely
-differ.
+In all three parks you wait longest in December, though we've only measured nine December days so
+far. In Epic Universe you wait just as long in January and February. The shortest wait is in Islands
+of Adventure in September, in Epic Universe in August and September, and in the Studios in May. Of the
+days of the week, Saturday is the busiest in the Studios and Islands of Adventure. In Epic Universe the
+weekdays barely differ.
 
 In autumn the Studios close earlier for regular guests on the evenings of Halloween Horror Nights. All
 dates, prices and houses are in our overview [Halloween in the US](/blog/halloween-usa-theme-parks-2026).
@@ -380,7 +377,7 @@ The holiday season runs from 14 November to 3 January, more on that in [Christma
 Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026). Epic Universe has an evening event of
 its own, Universal Nights, from $179 per person. The dates are 17 and 24 October and 6 and 20 November.
 
-Which days are quietest in the coming weeks, we recalculate every day:
+We work out every day which days in the coming weeks will be quietest:
 
 ```best-days-widget slug=universal-epic-universe
 
@@ -430,8 +427,8 @@ Stardust Racers and Revenge of the Mummy from 1.22 m, VelociCoaster from 1.30 m,
 from 1.33 m and the Hulk from 1.38 m. At most of these rides there's a test seat before boarding where
 you can try whether you fit.
 
-Seuss Landing in Islands of Adventure is the area for the youngest. On Universal's page only two rides
-from Seuss Landing have a minimum height, both at 0.92 m. In the Studios, Minion Land and DreamWorks
+Seuss Landing in Islands of Adventure is the area for the youngest. According to Universal, only two
+rides there have a minimum height, both 0.92 m. In the Studios, Minion Land and DreamWorks
 Land belong to the kids, in Epic Universe the Isle of Berk with the Viking Training Camp.
 
 ## Getting there, parking and hotels
@@ -452,8 +449,8 @@ room. Express Unlimited is free only at Portofino Bay, Hard Rock and Royal Pacif
 least five nights, Universal offers up to 30 percent off from 8 September to 25 December 2026 and from 3
 January to 15 March 2027.
 
-**Food.** Our database lists (as of 8 October 2026) 64 restaurants and food outlets in the Studios, 31
-in Islands of Adventure and 32 in Epic Universe.
+**Food.** The Studios have 64 restaurants and food outlets, Islands of Adventure 31 and Epic Universe
+32 (as of 8 October 2026).
 
 ## Frequently asked questions about Universal Orlando
 
