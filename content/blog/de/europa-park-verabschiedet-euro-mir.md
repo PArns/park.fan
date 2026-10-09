@@ -55,7 +55,7 @@ Am 26. März 2026 bestätigte der Park es selbst. Laut
 schrieb der Europa-Park in einer Mitteilung: „Es ist Zeit, sich von einer Ikone
 zu verabschieden.“ Die Bahn werde durch eine neue Familienattraktion ersetzt, das
 Weltraumthema zu einem neuen Areal ausgebaut, der russische Themenbereich
-dafür kleiner. Und: „Die ikonischen Türme kommen zurück.“
+dafür kleiner. Außerdem sollen die Türme zurückkommen.
 
 ## Bis wann du sie fahren kannst
 

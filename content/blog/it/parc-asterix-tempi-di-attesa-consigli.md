@@ -529,7 +529,7 @@ Online costa meno, a seconda della data. Il Billet Malin costa 49 euro, uguale p
 adulti e bambini, ma solo in alcune date. Il Billet Futé parte da 56 euro per gli
 adulti e 53 per i bambini se prenoti almeno sette giorni prima. Due giorni di
 fila costano 125 e 109 euro alla cassa. I biglietti comprati online sono per una
-data precisa, e non serve prenotare altro. Al 2 ottobre il parco non vendeva
+data precisa, e non serve prenotare altro. Il parco non vende
 ancora i pass stagionali per il 2027.
 
 ### Come arrivare

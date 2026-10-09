@@ -141,7 +141,7 @@ Wintergarten und auf Terrassen draußen. Eine Rutsche gehört nicht dazu. Der Pa
 
 Das [Phantasialand](ref:phantasialand), der [Heide Park](ref:heide-park), der [Movie Park
 Germany](ref:movie-park-germany), das [Legoland Deutschland](ref:legoland-deutschland) und das
-[Plopsaland Deutschland](ref:plopsaland-deutschland) haben bis zum 5. Oktober keine Neuheit für 2027
+[Plopsaland Deutschland](ref:plopsaland-deutschland) haben noch keine Neuheit für 2027
 bestätigt. Beim Phantasialand hängt alles Größere an der Erweiterung ins Gebiet am
 Ententeich, für die es noch keinen Bebauungsplan gibt und gegen die seit dem 28. September
 Naturschützer Unterschriften sammeln. Was der Park dort plant, steht in [unserer Meldung zum
@@ -578,7 +578,7 @@ Europa ist es Supersonic 1887 in Nigloland mit 47 Metern und fast 100 km/h.
 
 ### Gibt es 2027 eine neue Achterbahn in Deutschland?
 
-Nach dem Stand vom 5. Oktober 2026 nicht. Der Hansa-Park baut einen Turm, Rulantica ein Restaurant,
+Nein. Der Hansa-Park baut einen Turm, Rulantica ein Restaurant,
 und der Europa-Park plant seine nächste neue Achterbahn für 2028. Die nächstgelegenen neuen
 Achterbahnen stehen in Nigloland in der Champagne und in Djurs Sommerland in Dänemark.
 

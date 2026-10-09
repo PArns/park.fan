@@ -148,7 +148,7 @@ prévu. Le parc écrit que « Nørd Havn ouvrira ses portes fin 2027 ».
 
 [Phantasialand](ref:phantasialand), [Heide Park](ref:heide-park), [Movie Park
 Germany](ref:movie-park-germany), [Legoland Deutschland](ref:legoland-deutschland) et [Plopsaland
-Deutschland](ref:plopsaland-deutschland) n’avaient confirmé au 5 octobre aucune nouveauté pour 2027. À Phantasialand, tout projet d’envergure dépend de l’extension vers le terrain de
+Deutschland](ref:plopsaland-deutschland) n’ont confirmé aucune nouveauté pour 2027 pour l’instant. À Phantasialand, tout projet d’envergure dépend de l’extension vers le terrain de
 l’Ententeich, pour laquelle il n’existe pas encore de plan d’urbanisme et contre laquelle des
 défenseurs de la nature recueillent des signatures depuis le 28 septembre. Ce que le parc prévoit
 d’y construire est expliqué dans [notre article sur la
@@ -600,7 +600,7 @@ En Europe, c’est Supersonic 1887 à Nigloland, avec 47 mètres et près de 100
 
 ### Y a-t-il une nouvelle montagne russe en Allemagne en 2027 ?
 
-Non, en l’état du 5 octobre 2026. Le Hansa-Park construit une tour, Rulantica un restaurant, et
+Non. Le Hansa-Park construit une tour, Rulantica un restaurant, et
 Europa-Park prévoit sa prochaine nouvelle montagne russe pour 2028. Les nouvelles montagnes russes
 les plus proches de l’Allemagne se trouvent à Nigloland, en Champagne, et à Djurs Sommerland, au
 Danemark.
