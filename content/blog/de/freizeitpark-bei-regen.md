@@ -6,10 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Bei Regen stehst du im Freizeitpark kürzer an. In allen zwölf Parks, die wir
-  ausgewertet haben, waren die Wartezeiten an Regentagen kürzer, im Movie Park
-  um fast ein Drittel. Überdacht sind im Toverland 22 von 44 Attraktionen, im
-  Phantasialand 14 von 40 und in Walibi Holland keine.
+  In allen zwölf Freizeitparks unseres Vergleichs stehst du bei Regen kürzer
+  an. Im Movie Park Germany waren die Wartezeiten an Regentagen um fast ein
+  Drittel kürzer. Überdacht ist im Toverland die Hälfte der Attraktionen, in
+  Walibi Holland keine einzige.
 tags:
   - freizeitpark
   - regen
@@ -74,15 +74,16 @@ rideLinks:
 
 Wer an einem Regentag in einen Freizeitpark fährt, steht im Schnitt kürzer an.
 In allen zwölf Parks, die wir ausgewertet haben, waren die Wartezeiten an den
-Headlinern an Regentagen kürzer als an vergleichbaren trockenen Tagen, im
-Disneyland Paris um etwa 4 Prozent, im Movie Park um etwa 31 Prozent. An so
-einem Tag lohnen sich in der Regel die überdachten Attraktionen. Im Toverland
-ist die Hälfte der 44 Attraktionen überdacht, in Walibi Holland keine.
+Headlinern an Regentagen kürzer als an vergleichbaren trockenen Tagen. Der
+Unterschied reicht von etwa 4 Prozent im Disneyland Paris bis etwa 31 Prozent im
+Movie Park. An so einem Tag lohnen sich in der Regel die überdachten
+Attraktionen. Im Toverland ist die Hälfte der 44 Attraktionen überdacht, in
+Walibi Holland keine.
 
-Welche Attraktionen überdacht sind, haben wir für neun Parks Bahn für Bahn nach
-den Angaben der Parks zusammengetragen: Europa-Park, Phantasialand, Efteling,
-Toverland, Movie Park Germany, Plopsaland Deutschland, Heide Park, Walibi
-Belgium und Walibi Holland.
+Bahn für Bahn verglichen sind die überdachten Attraktionen in neun Parks, nach
+den Angaben der Parks selbst: Europa-Park, Phantasialand, Efteling, Toverland,
+Movie Park Germany, Plopsaland Deutschland, Heide Park, Walibi Belgium und
+Walibi Holland.
 
 ## Wie wir die Regentage gemessen haben
 
@@ -99,15 +100,16 @@ vom 24. Dezember 2025 bis zum 5. Oktober 2026.
 
 Einen verregneten Dienstag im Mai mit einem sonnigen Samstag in den
 Sommerferien zu vergleichen, wäre unfair, denn an einem Samstag in den Ferien
-ist es sowieso voller. Deshalb haben wir jeden Regentag nur mit trockenen Tagen
-derselben Sorte verglichen: aus demselben Monat, ebenfalls Werktag oder ebenfalls
-Wochenende oder Feiertag, ebenfalls in den Schulferien oder ebenfalls nicht. Einen
-verregneten Ferien-Samstag im Juli vergleichen wir also mit trockenen Wochenend-
-und Feiertagen im Juli, die auch in den Ferien lagen. Wo es von einer Sorte
-weniger als zwei Regentage oder weniger als zwei trockene Tage gab, haben wir sie
-weggelassen, weil ein einzelner Tag zu zufällig ist. Daraus ergibt sich für jeden
-Park ein Prozentwert, um den die Wartezeit an Regentagen kürzer war. Sorten mit
-vielen Regentagen zählen dabei stärker.
+ist es sowieso voller. Deshalb vergleichen wir einen Regentag nur mit trockenen
+Tagen, die ihm in drei Punkten gleichen. Sie liegen im selben Monat, sie sind wie
+er ein Werktag oder aber ein Wochenend- oder Feiertag, und sie liegen wie er in
+den Schulferien oder außerhalb. Einen verregneten Ferien-Samstag im Juli
+vergleichen wir also mit trockenen Wochenend- und Feiertagen im Juli, die auch in
+den Ferien lagen. Hatte ein solcher Vergleich weniger als zwei Regentage oder
+weniger als zwei trockene Tage, haben wir ihn weggelassen, weil ein einzelner Tag
+zu zufällig ist. Am Ende steht für jeden Park, um wie viel Prozent die Wartezeit
+an Regentagen kürzer war. Ein Vergleich mit vielen Regentagen zählt dabei stärker
+als einer mit wenigen.
 
 Die Regenmenge gilt für den ganzen Tag, ein Schauer um drei Uhr nachts zählt also
 genauso wie einer zur Mittagszeit. Die Temperatur haben wir nicht
@@ -141,17 +143,18 @@ Die Zeile für Plopsaland Deutschland beruht auf nur neun Regentagen.
 
 Setzt man die Grenze auf 5 Millimeter, sind die Wartezeiten an Regentagen
 weiterhin in allen zwölf Parks kürzer. Wie viel kürzer, schwankt dann stark, weil
-es nur noch wenige solche Tage gibt: Im Europa-Park sind es auf acht Tagen etwa
-23 Prozent, im Movie Park auf sechs Tagen etwa 27. Als Rangliste würde ich die
+es nur noch wenige solche Tage gibt: Im Europa-Park sind es an acht Tagen etwa
+23 Prozent, im Movie Park an sechs Tagen etwa 27. Als Rangliste würde ich die
 Tabelle deshalb nicht lesen. Sicher ist, dass es in keinem der zwölf Parks an
 Regentagen voller war.
 
 Mit der Zahl der überdachten Attraktionen hat der Unterschied wenig zu tun. In
 Walibi Holland liegt keine Attraktion in einer Halle, und an Regentagen war die
-Wartezeit dort um 6 Prozent kürzer. Im Toverland sind 22 von 44 überdacht, bei
-13 Prozent, im Heide Park drei von 39, bei 12 Prozent. Der Europa-Park hat die
-meisten überdachten Attraktionen und den zweitkleinsten Unterschied, der Movie
-Park mit seinen Horrorhäusern den größten. Ich vermute,
+Wartezeit dort um 6 Prozent kürzer. Im Toverland sind 22 von 44 Attraktionen
+überdacht, und die Wartezeit war um 13 Prozent kürzer. Im Heide Park sind es nur
+drei von 39, und sie war um 12 Prozent kürzer. Der Europa-Park hat die meisten
+überdachten Attraktionen, aber den zweitkleinsten Unterschied. Den größten hat
+der Movie Park mit seinen Horrorhäusern. Ich vermute,
 dass an Regentagen überall weniger Leute kommen und sich die übrigen je nach Park
 auf mehr oder weniger überdachte Bahnen verteilen. Belegen kann ich das mit
 diesen Zahlen nicht.
@@ -177,8 +180,8 @@ zusammen, nach Monaten:
 | August     |                          185 |                            18 % |
 | September  |                          162 |                            16 % |
 
-Das ist nur ein Jahr. 2026 war der Juli trocken, Mai und Juni waren nass, und
-2027 kann das ganz anders aussehen. Als grobe Richtung reicht es trotzdem. In der
+Das ist nur ein Jahr. 2026 war der Juli trocken, Mai und Juni waren nass. 2027
+kann das ganz anders aussehen. Als grobe Richtung reicht es trotzdem: In der
 Hauptsaison war etwa jeder fünfte Öffnungstag verregnet, in einzelnen Monaten
 jeder dritte.
 
@@ -215,8 +218,8 @@ Mehr zum Park im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
 ## Phantasialand
 
 Im [Phantasialand](ref:phantasialand) in Brühl sind 14 der 40 Attraktionen
-überdacht. Sieben stehen in Fantasy, vier in Berlin, zwei in China Town und eine
-in Mystery.
+überdacht. Sieben davon stehen im Bereich Fantasy, vier in Berlin, zwei in China
+Town und eine in Mystery.
 
 | Bahn                                                   | Bereich    | Typ                    | Hersteller       | Eröffnung | Mindestgröße |
 | ------------------------------------------------------ | ---------- | ---------------------- | ---------------- | --------- | ------------ |
@@ -233,16 +236,15 @@ Vertikallift. An einer Stelle kippt ein Schienenstück mitsamt Wagen, bei Fear
 nach vorn, bei Force zur Seite. Crazy Bats fährt seit 1988 in derselben Halle,
 seit 2019 mit VR-Brillen. Mystery Castle ist ein 65 Meter hoher Drop Tower, der
 komplett im Inneren eines Turms steckt. Für kleinere Kinder kommen Bumper
-Klumpen, Wözl's Duck Washer und Wupi's Wabi Wipper ab 100 Zentimetern dazu, der
-Tittle Tattle Tree ab 110 und in Berlin das Pferdekarussell, Die 3 Mausketiere
-und das Verrückte Hotel Tartüff.
+Klumpen, Wözl's Duck Washer und Wupi's Wabi Wipper ab 100 Zentimetern dazu und
+der Tittle Tattle Tree ab 110. Für sie gibt es in Berlin außerdem das
+Pferdekarussell, Die 3 Mausketiere und das Verrückte Hotel Tartüff.
 
 ![Ein riesiger Tontopf mit offenem Deckel, daran lehnt eine Leiter | In der Halle von Winja's Fear & Force in Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
 Taron, Black Mamba und die anderen großen Achterbahnen fahren im Freien. Bei
-Dauerregen bleiben dir in Brühl die 14 überdachten Attraktionen, darunter drei
-Achterbahnen: die beiden in Wuze Town und Crazy Bats. Dazu kommen Dark Rides,
-Madhouses, ein Drop Tower und Fahrten für Familien.
+Dauerregen bleiben dir in Brühl drei Achterbahnen unter Dach: die beiden in Wuze
+Town und Crazy Bats.
 
 ```ride-waits-widget rides=phantasialand/winjas-fear|Winja's Fear|Spinning Coaster;phantasialand/winjas-force|Winja's Force|Spinning Coaster;phantasialand/mystery-castle|Mystery Castle|Drop Tower;phantasialand/maus-au-chocolat|Maus au Chocolat|Dark Ride;phantasialand/crazy-bats|Crazy Bats|Indoor-Coaster columns=type,peak,days
 
@@ -287,12 +289,12 @@ Mehr zum Park im Artikel
 
 Das [Toverland](ref:attractiepark-toverland) in Sevenum hat als Halle für
 Regentage angefangen. Gründer Jean Gelissen kam auf die Idee, als ein
-Regenschauer einen Ausflug mit seinen Kindern beendete, und am 19. Mai 2001
-eröffnete die erste Halle, das heutige Land van Toos. 2004 kam der Wunderwald
+Regenschauer einen Ausflug mit seinen Kindern beendete. Am 19. Mai 2001
+eröffnete die erste Halle, das heutige Land van Toos, 2004 kam der Wunderwald
 als zweite Halle dazu. Heute sind 22 der 44 Attraktionen überdacht, genau die
-Hälfte und damit der größte Anteil aller Parks hier: zwölf im Land van Toos, fünf
-im Wunderwald, zwei in Port Laguna, je eine in der Magischen Vallei und in
-Avalon, dazu Morrels BOEderij.
+Hälfte und damit der größte Anteil aller Parks in diesem Vergleich. Zwölf davon
+stehen im Land van Toos und fünf im Wunderwald, zwei in Port Laguna und je eine in
+der Magischen Vallei und in Avalon, dazu kommt Morrels BOEderij.
 
 | Bahn                                                     | Bereich       | Typ                | Hersteller       | Eröffnung | Mindestgröße |
 | -------------------------------------------------------- | ------------- | ------------------ | ---------------- | --------- | ------------ |
@@ -348,11 +350,11 @@ Alles zum Park steht im
 ## Plopsaland Deutschland
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch hieß bis Juni
-2025 Holiday Park. 13 der 57 Attraktionen sind überdacht, fünf davon sind
+2025 Holiday Park. 13 der 57 Attraktionen sind überdacht. Fünf davon sind
 Horrorhäuser der Halloween Fright Nights: NEXUS AI, Academy of Freaks, Titty
-Twister, Mad Rat und das Schnitzelhaus. Die anderen acht sind der Dark Ride The
-Smurfs' Adventure in einem eigenen Gebäude und sieben Fahrten und Spielbereiche
-in der Indoor-Halle, die 2018 als Holiday Indoor eröffnet hat: Tabaluga's
+Twister, Mad Rat und das Schnitzelhaus. Dazu kommen der Dark Ride The Smurfs'
+Adventure in einem eigenen Gebäude und sieben Fahrten und Spielbereiche in der
+Indoor-Halle, die 2018 als Holiday Indoor eröffnet hat: Tabaluga's
 Rollercoaster, Mia's Elf Flight, ein Farm-Karussell, eine Riesenrutsche, ein
 Bällebad, ein Abenteuerwald und Heidi's Playground.
 
@@ -403,8 +405,8 @@ Januar, „Festive Adventure“.
 **Turbine** ist ein Shuttle Loop von Schwarzkopf. Der Zug wird mit 85,3 km/h aus
 der Station geschossen, fährt durch einen Looping, einen Turm hinauf und
 dieselbe Strecke rückwärts zurück. Sie ist die einzige überdachte Achterbahn im
-Park, Kondaa, Vampire und Cobra fahren im Freien. Dazu kommen der Palais du
-Génie und das Spinning Taxi.
+Park, Kondaa, Vampire und Cobra fahren im Freien. Überdacht sind außerdem der
+Palais du Génie und das Spinning Taxi.
 
 An Regentagen waren die Wartezeiten in Walibi Belgium um 13 Prozent kürzer.
 
@@ -441,10 +443,9 @@ Stand 6. Oktober 2026:
 | Heide Park             |         3 |        28 |
 | Walibi Holland         |         0 |        39 |
 
-„Überdacht“ zählt Attraktionen, nicht nur Fahrten. Im Europa-Park stecken darin
-zehn Bahnhöfe, drei Labyrinthe und ein Ballbad, im Toverland viele Kletter- und
-Spielbereiche, im Movie Park und in Plopsaland Horrorhäuser, die nur zu
-Halloween abends öffnen, im Efteling unter anderem das Diorama und das Museum.
+„Überdacht“ zählt alle Attraktionen, nicht nur Fahrten, also auch Bahnhöfe,
+Labyrinthe, Bällebäder, Spielbereiche, ein Museum und Horrorhäuser, die nur zu
+Halloween abends öffnen.
 
 Die typischen Wartezeiten der neun Parks, der Europa-Park ist hervorgehoben:
 
@@ -452,9 +453,9 @@ Die typischen Wartezeiten der neun Parks, der Europa-Park ist hervorgehoben:
 
 ```
 
-Wenn es den ganzen Tag regnet, würde ich ins Efteling fahren, wenn ich Dark Rides
-sehen will, und ins Phantasialand, wenn ich auch Achterbahn fahren will. Dort sind
-drei Achterbahnen überdacht. Der Europa-Park hat auch ohne Bahnhöfe und
+Wenn es den ganzen Tag regnet und ich Dark Rides sehen will, würde ich ins
+Efteling fahren. Will ich auch Achterbahn fahren, dann ins Phantasialand, wo drei
+Achterbahnen überdacht sind. Der Europa-Park hat auch ohne Bahnhöfe und
 Labyrinthe mehr überdachte Attraktionen als beide, aber an Regentagen waren die
 Wartezeiten dort nur 5 Prozent kürzer. Mit kleinen Kindern würde ich ins
 Toverland oder nach Plopsaland fahren. Den Movie Park, den Heide Park und Walibi
@@ -489,7 +490,8 @@ freigegeben, stehen die mit dem kürzesten Fußweg plus Wartezeit vorn, sonst di
 mit der kürzesten Wartezeit.
 
 Den Filter und die Liste unter der Regenwarnung gibt es bisher nur in Parks,
-deren überdachte Attraktionen wir kennen, darunter alle Parks oben.
+deren überdachte Attraktionen wir kennen, darunter alle neun Parks dieses
+Beitrags.
 
 ## Häufige Fragen
 
@@ -497,18 +499,19 @@ deren überdachte Attraktionen wir kennen, darunter alle Parks oben.
 
 Nach unserer Messung ja. In allen zwölf Parks, die wir ausgewertet haben, waren
 die Wartezeiten an den Headlinern an Regentagen kürzer als an vergleichbaren
-trockenen Tagen, je nach Park um etwa 4 bis 31 Prozent. Ausgewertet sind die
-Öffnungstage vom 24. Dezember 2025 bis zum 5. Oktober 2026, als Regentag zählte
-ein Tag mit mindestens 2 Millimetern Niederschlag.
+trockenen Tagen, je nach Park um etwa 4 bis 31 Prozent. Jeder Regentag wurde mit
+trockenen Tagen aus demselben Monat verglichen, die wie er Werktag oder
+Wochenende waren und wie er in den Schulferien lagen oder außerhalb. Ausgewertet
+sind die Öffnungstage vom 24. Dezember 2025 bis zum 5. Oktober 2026. Als Regentag
+zählte ein Tag mit mindestens 2 Millimetern Niederschlag.
 
 ### Welche Freizeitparks haben viele überdachte Attraktionen?
 
-Von den neun Parks, die wir Bahn für Bahn eingetragen haben, hat der Europa-Park
-mit 34 die meisten, 14 davon sind allerdings Bahnhöfe, Labyrinthe und ein
-Ballbad. Im Toverland sind 22 von 44 Attraktionen überdacht, der größte
-Anteil,
-im Phantasialand 14 von 40. In Walibi Holland liegt keine Attraktion in einer
-Halle.
+Von den neun Parks in unserem Vergleich hat der Europa-Park mit 34 die meisten
+überdachten Attraktionen, 14 davon sind allerdings Bahnhöfe, Labyrinthe und ein
+Ballbad. Den größten Anteil hat das Toverland, wo 22 von 44 Attraktionen
+überdacht sind. Im Phantasialand sind es 14 von 40. In Walibi Holland liegt keine
+Attraktion in einer Halle.
 
 ### Fahren Achterbahnen bei Regen?
 
@@ -519,9 +522,9 @@ steht auf ihrer Seite bei park.fan, alle fünf Minuten aktualisiert.
 ### Welcher Freizeitpark ist bei Regen mit kleinen Kindern am besten?
 
 Nach unseren Zahlen das Toverland oder Plopsaland Deutschland. Im Toverland sind
-22 von 44 Attraktionen überdacht, fast alle für Familien mit kleinen Kindern, 17
-davon in den Hallen Land van Toos und Wunderwald. Für den Toos-Express, die
-einzige überdachte Achterbahn, gelten 90 Zentimeter. In Plopsaland in Haßloch
+22 von 44 Attraktionen überdacht, fast alle für Familien mit kleinen Kindern.
+Davon stehen 17 in den beiden Hallen Land van Toos und Wunderwald. Für den
+Toos-Express, die einzige überdachte Achterbahn, gelten 90 Zentimeter. In Plopsaland in Haßloch
 sind acht Fahrten und Spielbereiche überdacht, sieben davon in der Indoor-Halle,
 von Tabaluga's Rollercoaster bis zum Bällebad. Die Mindestgröße jeder Bahn steht
 auf ihrer Seite bei park.fan.
@@ -536,8 +539,8 @@ nassesten (32 Prozent). Das ist ein einziges Jahr, kein langjähriger Schnitt.
 
 ## Quellen & Weiterlesen
 
-- Wartezeiten an Regentagen und Zahl der Regentage: eigene Messung von park.fan aus den Tageswerten der Wartezeiten und des Wetters, 24. Dezember 2025 bis 5. Oktober 2026, Wetterdaten von [Open-Meteo](https://open-meteo.com/)
-- Welche Attraktionen überdacht sind, Mindestgrößen, Hersteller und Eröffnungsjahre der Bahnen: von park.fan eingetragen nach den Angaben der Parks, Stand 6. Oktober 2026
+- Wartezeiten an Regentagen und Zahl der Regentage: eigene Messung von park.fan aus den täglichen Wartezeiten und Regenmengen, 24. Dezember 2025 bis 5. Oktober 2026, Wetterdaten von [Open-Meteo](https://open-meteo.com/)
+- Welche Attraktionen überdacht sind, Mindestgrößen, Hersteller und Eröffnungsjahre der Bahnen: nach den Angaben der Parks, Stand 6. Oktober 2026
 - Plopsaland Deutschland, früher Holiday Park, Umbenennung 2025 und Indoor-Halle: [Plopsaland Deutschland (Wikipedia)](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
 - Turbine, Schwarzkopf Shuttle Loop von 1982: [Turbine auf RCDB](https://rcdb.com/921.htm)
 - Details zu Wuze Town, Mystery Castle, Dämonen Gruft, Ghostbusters 5D, Van Helsing's Factory, Turbine, zur Geschichte des Toverland, zum Wetter im Phantasialand und zum Winterbetrieb von Walibi Holland: unsere Guides zu [Phantasialand](/blog/phantasialand-tipps), [Heide Park](/blog/heide-park-wartezeiten-tipps), [Movie Park](/blog/movie-park-germany-wartezeiten-tipps), [Toverland](/blog/toverland-troy-wartezeiten-tipps), [Walibi Belgium](/blog/walibi-belgium-wartezeiten-tipps) und [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan), dazu der [Winterparks-Guide](/blog/winter-freizeitparks-2026)
