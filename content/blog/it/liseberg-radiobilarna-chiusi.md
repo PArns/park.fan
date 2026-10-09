@@ -1,8 +1,8 @@
 ---
 title: 'Liseberg chiude le Radiobilarna dopo quasi 100 anni'
 translationKey: liseberg-radiobilarna-closed
-date: '2026-10-08'
-time: '21:15'
+date: '2026-10-09'
+time: '10:05'
 author: patrick
 mode: published
 featured: false
@@ -72,6 +72,15 @@ Il parco cita otto modelli di vettura e diverse ricostruzioni profonde. Ultimame
 la usavano più di 300.000 ospiti all'anno. Secondo il comunicato, tra i passeggeri
 ci furono anche Michael Jackson e Stevie Wonder.
 
+L'ultimo impianto l'ha costruito Preston & Barbieri nel 2010, secondo Liseberg. Su
+una pista di 17,4 per 31,4 metri giravano 36 vetture da due posti, fino a 72 persone
+alla volta, a circa 7 km/h. Per salire bisognava essere alti almeno 130 centimetri.
+Come partner dell'attrazione il parco indica Ahlgrens bilar, un dolciume svedese a
+forma di automobile.
+
+Liseberg conta come destinazione circa tre milioni di ospiti all'anno e si presenta
+come la meta più visitata della Svezia.
+
 ## Tuta & Kör e Oceana
 
 Le Radiobilarna sono chiuse. I piccoli autoscontri per bambini «Tuta & Kör» a
@@ -82,6 +91,27 @@ Un'altra novità del parco è il mondo acquatico Oceana, circa 13.600 metri quad
 per bambini, una piscina a onde e un fiume per le famiglie. Secondo Liseberg,
 Oceana dovrebbe aprire «all'inizio del 2027»; di più nella nostra panoramica delle
 [novità 2027](/blog/novita-parchi-divertimento-2027).
+
+Liseberg lavora al completamento dall'incendio del febbraio 2024. In un comunicato
+del 26 settembre il parco scrive che sotto il tetto ci sono ormai quasi cento alberi
+e piante, e che i primi biglietti saranno in vendita a fine novembre.
+
+## Halloween e Natale a Liseberg
+
+La stagione di Halloween va dal 2 ottobre al 1° novembre. Le Radiobilarna ne hanno
+visto solo il primo fine settimana. Il 14 e 15 ottobre ci sono due giorni in più in cui apre solo Kaninlandet, come «Höst i Kaninlandet».
+
+Tuta & Kör funzionano d'estate, a Halloween e a Natale, e le vetture sono dello stesso
+costruttore di quelle delle Radiobilarna, Preston & Barbieri. L'attrazione è pensata
+per bambini tra 90 e 140 centimetri e, secondo il parco, porta circa 240 passeggeri
+all'ora.
+
+Liseberg festeggia il Natale dal 2000. Quest'anno lo spettacolo sul palco
+dell'Avvento va in scena dal 14 novembre al 30 dicembre. Fino al 30 dicembre il parco
+allestisce anche, nella torre Lisebergstornet, una mostra sulla sua storia, con
+vetture di attrazioni del passato. Il Tyrolermarknad, uno dei mercatini di Natale, si
+è aggiunto nel 2024. Sul sito del parco si trova «tra Radiobilarna e Slänggungan».
+Liseberg non indica una data per la demolizione.
 
 ## Tempi di attesa delle Radiobilarna nell'ultimo anno
 
@@ -97,6 +127,13 @@ Tra le montagne russe di Liseberg ci sono Lisebergbanan (1987), Balder (2003),
 Rabalder (2009), Stampbanan (2013), Helix (2014), Valkyria (2018) e Luna (2023). Il
 parco ha aperto nel 1923.
 
+Il FlumeRide, un percorso con tronchi sull'acqua, è più vecchio di tutte queste
+montagne russe. Liseberg indica come anno di costruzione il 1973 e come costruttore
+l'americana Arrow Development. Il canale è lungo 610 metri e la seconda discesa è
+alta 14 metri. Le tazze Kaffekoppen di Mack sono del 1985. La più recente è
+l'attrazione per famiglie Stormvåg, aperta il 14 maggio 2026, poco meno di quattro
+settimane dopo l'inizio della stagione il 18 aprile.
+
 [Radiobilarna](ref:liseberg/radiobilarna?full)
 
 — Patrick
@@ -105,6 +142,18 @@ parco ha aperto nel 1923.
 
 ### Fonti e approfondimenti
 
-- Chiusura il 4 ottobre 2026, giri gratuiti dal 2 al 4 ottobre, demolizione, inaugurazione il 12 maggio 1927, Arnold Neble, 5.000 corone, quattro sedi, trasloco nel 1998, otto modelli di vettura, ricostruzioni, oltre 300.000 ospiti all'anno, Tuta & Kör, passeggeri, dichiarazioni di Andreas Andersen e Patrik Källström, sostituto aperto: [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29 settembre 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
+- Chiusura il 4 ottobre 2026, giri gratuiti dal 2 al 4 ottobre, demolizione, inaugurazione il 12 maggio 1927, Arnold Neble, 5.000 corone, quattro sedi, trasloco nel 1998, otto modelli di vettura, ricostruzioni, oltre 300.000 ospiti all'anno, Tuta & Kör, passeggeri, dichiarazioni di Andreas Andersen e Patrik Källström, sostituto aperto, circa tre milioni di ospiti all'anno: [Efter nära 100 år på Liseberg tar nu Radiobilarna sina sista svängar (Liseberg, 29 settembre 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/efter-naera-100-aar-paa-liseberg-tar-nu-radiobilarna-sina-sista-svaengar-3469681)
 - Apertura del parco l'8 maggio 1923 come sito provvisorio dell'Esposizione del Giubileo, proprietaria la città di Göteborg, anni di apertura delle montagne russe: [Liseberg (Wikipedia)](https://en.wikipedia.org/wiki/Liseberg)
 - Oceana 2027: [Oceana (Liseberg)](https://www.liseberg.se/oceana/)
+- Impianto di Preston & Barbieri del 2010, 36 vetture, 72 posti, circa 7 km/h, superficie, altezza minima, partner Ahlgrens bilar: [Radiobilarna (Liseberg)](https://www.liseberg.se/parken/attraktioner/radiobilarna/)
+- Lavori dall'incendio del febbraio 2024, alberi e piante, vendita dei biglietti da fine novembre: [Så blir Oceana (Liseberg, 26 settembre 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/saa-blir-oceana-traed-och-vatten-paa-plats-i-lisebergs-nya-vattenvaerld-3469348)
+- Halloween dal 2 ottobre al 1° novembre, Höst i Kaninlandet il 14 e 15 ottobre: [Halloween i Lisebergsparken (Liseberg)](https://www.liseberg.se/halloween/)
+- Tuta & Kör, costruttore, altezze, capacità, stagioni: [Tuta & Kör (Liseberg)](https://www.liseberg.se/parken/attraktioner/tuta-kor/)
+- Palco dell'Avvento dal 14 novembre al 30 dicembre: [Jul i Lisebergsparken (Liseberg)](https://www.liseberg.se/parken/jul-i-lisebergsparken/)
+- Mostra nella Lisebergstornet fino al 30 dicembre: [Liseberg genom tiderna (Liseberg)](https://www.liseberg.se/parken/jul-i-lisebergsparken/liseberg-genom-tiderna/)
+- Posizione del Tyrolermarknad: [Julmarknad (Liseberg)](https://www.liseberg.se/parken/jul-i-lisebergsparken/julmarknad/)
+- Natale dal 2000, Tyrolermarknad dal 2024: [Jul på Liseberg firar 25 år (Liseberg, 6 novembre 2025)](https://www.mynewsdesk.com/se/liseberg/pressreleases/jul-paa-liseberg-firar-25-aar-ett-gnistrande-jubileum-i-vintermagi-3414625)
+- FlumeRide, anno, costruttore, canale e discesa: [FlumeRide (Liseberg)](https://www.liseberg.se/parken/attraktioner/flumeride/)
+- Kaffekoppen, costruttore e anno: [Kaffekoppen (Liseberg)](https://www.liseberg.se/parken/attraktioner/kaffekoppen/)
+- Stormvåg il 14 maggio 2026: [Stormvåg är här (Liseberg, 14 maggio 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/stormvaag-aer-haer-idag-doeps-och-invigs-lisebergs-nya-familjeattraktion-3448456)
+- Inizio della stagione il 18 aprile 2026: [Liseberg har öppnat för sommaren (Liseberg, 18 aprile 2026)](https://www.mynewsdesk.com/se/liseberg/pressreleases/liseberg-har-oeppnat-foer-sommaren-premiaerfest-markerar-starten-paa-sommarsaesongen-2026-3443726)
