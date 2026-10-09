@@ -208,8 +208,8 @@ https://www.youtube.com/watch?v=qYmcIgmW8Hk
 **[Joris en de Draak](ref:efteling/joris-en-de-draak)** is the dueling wooden
 coaster by **GCI**, open since 2010, water against fire, two trains that leave
 side by side and overtake each other on the way round. It replaced the old Pegasus
-and it’s the most in-demand attraction in the park in our data. I’ve written
-about it before in the
+and it’s the most in-demand attraction in the park in our data. We wrote
+about it in our
 [Toverland guide](/blog/toverland-troy-wait-times-tips), and not especially
 kindly, because seventy kilometres to the south-east there’s a better GCI coaster
 with less than half the queue. That still stands. As a race you can watch the other train

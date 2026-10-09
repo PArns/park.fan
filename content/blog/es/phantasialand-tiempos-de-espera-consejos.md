@@ -96,7 +96,7 @@ una sola atracción, llenas el día.
 
 Tanta densidad tiene su lado malo. En un día lleno, todos quieren subirse a la
 vez a las mismas dos o tres atracciones. En [el arte de esperar](/blog/el-arte-de-esperar)
-ya expliqué con números por qué
+explicamos con números por qué
 [Taron](ref:phantasialand/taron), un sábado de vacaciones, entra en saturación
 igual de rápido que Peter Pan’s Flight en París. Un público pequeño no te protege
 de las colas largas cuando hay pocas atracciones entre las que repartir la
@@ -532,7 +532,7 @@ tortuga con unos cuantos miles de personas igual de felices.
 
 ## Wintertraum: vino caliente, luces y Taron en la oscuridad
 
-En la [guía de Halloween](/blog/halloween-parques-atracciones-2026) conté al
+En la [guía de Halloween](/blog/halloween-parques-atracciones-2026) contamos al
 Phantasialand, con cariño, entre los «que se niegan», porque a propósito no monta
 ningún festival de terror. En invierno, en cambio, se pone un disfraz
 completamente distinto, el

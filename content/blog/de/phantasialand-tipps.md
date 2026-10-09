@@ -97,7 +97,7 @@ als in jeder Pressemitteilung. Wer keine einzige Bahn fährt, hat trotzdem einen
 vollen Tag.
 
 Diese Dichte hat eine Kehrseite. An einem vollen Tag will jeder zur selben Zeit
-auf dieselben zwei, drei Bahnen. In der [Kunst des Wartens](/blog/die-kunst-des-wartens) habe ich vorgerechnet, warum
+auf dieselben zwei, drei Bahnen. In der [Kunst des Wartens](/blog/die-kunst-des-wartens) rechnen wir vor, warum
 [Taron](ref:phantasialand/taron) an einem Ferien-Samstag genauso schnell in die
 Sättigung läuft wie Peter Pan’s Flight in Paris. Ein kleines Publikum schützt dich
 nicht vor langen Warteschlangen, wenn es nur wenige Attraktionen gibt, auf die sich der
@@ -532,8 +532,8 @@ durch die Parkplatzausfahrt zu schieben.
 
 ## Wintertraum: Glühwein, Lichter und Taron im Dunkeln
 
-Im [Halloween-Guide](/blog/halloween-freizeitparks-2026) habe ich das
-Phantasialand liebevoll unter die „Verweigerer“ gezählt, es macht bewusst kein
+Im [Halloween-Guide](/blog/halloween-freizeitparks-2026) zählen wir das
+Phantasialand liebevoll zu den „Verweigerern“, es macht bewusst kein
 Gruselfestival. Stattdessen zieht es im Winter ein ganz anderes, wunderschönes
 Kostüm an: den
 **[Wintertraum](https://www.phantasialand.de/de/themenpark/wintertraum/)**.

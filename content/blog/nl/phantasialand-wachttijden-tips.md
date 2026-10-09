@@ -94,7 +94,7 @@ toch een volle dag.
 Die dichtheid heeft een keerzijde. Op een volle dag wil iedereen tegelijk op
 dezelfde twee, drie banen.
 In de [kunst van het wachten](/blog/de-kunst-van-het-wachten)
-heb ik voorgerekend waarom [Taron](ref:phantasialand/taron) op een vakantiezaterdag
+rekenen we voor waarom [Taron](ref:phantasialand/taron) op een vakantiezaterdag
 net zo snel in de verzadiging loopt als Peter Pan’s Flight in Parijs: een klein
 publiek beschermt je niet tegen lange rijen als er maar weinig attracties zijn
 waarover de drukte zich kan verdelen. De wiskunde is in het Phantasialand
@@ -509,8 +509,8 @@ gelukkige mensen het parkeerterrein af te schuifelen.
 
 ## Wintertraum: glühwein, lichtjes en Taron in het donker
 
-In de [Halloween-gids](/blog/halloween-pretparken-2026) heb ik het Phantasialand
-liefdevol tot de “weigeraars” gerekend, omdat het bewust geen griezelfestival
+In onze [Halloween-gids](/blog/halloween-pretparken-2026) rekenen we het Phantasialand
+liefdevol tot de “weigeraars”, omdat het bewust geen griezelfestival
 doet. In plaats daarvan heeft het in de winter de
 **[Wintertraum](https://www.phantasialand.de/de/themenpark/wintertraum/)**.
 
