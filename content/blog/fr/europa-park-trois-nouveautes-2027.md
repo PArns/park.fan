@@ -7,9 +7,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Une Wild Swing XL au Portugal, une tour que l’on pilote soi-même en Islande
-  et un Enzo's Piccolo Mondo remis à neuf : le 8 octobre, le parc a nommé ses
-  trois premières nouveautés pour 2027. Il ne donne pas encore de dates.
+  Europa-Park construit pour 2027 une Wild Swing XL au Portugal, une balançoire
+  géante au-dessus du lac. L’Islande aura une tour que l’on pilote soi-même. La
+  balade en gondole Enzo's Piccolo Mondo revient remise à neuf.
 tags:
   - news
   - europa-park
@@ -26,10 +26,11 @@ coverImage:
   caption: 'Wodan dans le thème Islande. La nouvelle tour doit se dresser entre ce coaster et blue fire.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Europa-Park 2027 : Wild Swing XL, tour et Piccolo Mondo'
+  title: 'Europa-Park prévoit trois attractions familiales en 2027'
   description: >-
-    Europa-Park a annoncé le 8 octobre 2026 trois attractions familiales pour
-    2027. Ce que dit le parc et ce qu’il laisse ouvert.
+    Europa-Park a annoncé le 8 octobre 2026 trois nouvelles attractions
+    familiales pour 2027. Le parc n’a pas encore dit quand elles ouvriront ni
+    quelle taille il faudra pour y monter.
   keywords:
     - Europa-Park nouveautés 2027
     - Wild Swing XL Europa-Park
@@ -40,10 +41,10 @@ seo:
 ---
 
 [Europa-Park](ref:europa-park) a annoncé le 8 octobre 2026 ses trois premières
-nouveautés pour 2027, toutes pour les familles : une Wild Swing XL dans le
-quartier portugais, une tour que les visiteurs pilotent eux-mêmes en Islande et
-une balade en gondole remise à neuf en Italie. L’annonce ne dit pas quand elles
-ouvrent. Le parc promet d’autres informations « à une date ultérieure ».
+nouveautés pour 2027, toutes pour les familles. Le quartier portugais aura une
+Wild Swing XL, l’Islande une tour que les visiteurs pilotent eux-mêmes. La
+balade en gondole d’Italie sera remise à neuf. Le parc n’a pas encore donné de
+dates d’ouverture. Il promet d’autres informations « à une date ultérieure ».
 
 ## Wild Swing XL au Portugal
 
@@ -55,13 +56,13 @@ bricoleur et une histoire d’inventeur hors du commun.
 
 L’annonce ne nomme pas de constructeur. Quelques médias en citent un, mais le
 parc ne l’a pas confirmé. La taille minimale, le nombre de passagers par tour et
-la durée du trajet manquent aussi.
+la durée du trajet ne figurent pas non plus dans l’annonce.
 
 Pour l’instant, le seul manège du Portugal est le water coaster
 [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash). MACK Rides l’a
-construit en 2005, il mesure 30 mètres et un bateau embarque 16 passagers. Il
+construit en 2005. Il mesure 30 mètres et un bateau embarque 16 passagers. Il
 faut avoir au moins quatre ans et mesurer 100 centimètres. À côté se trouvent
-depuis 2003 la maison de jeux Casa da Aventura, pour les enfants de trois à
+la maison de jeux Casa da Aventura, ouverte depuis 2003 aux enfants de trois à
 douze ans, et le Magellan Lounge sur un voilier. La balançoire sera le deuxième
 manège du quartier.
 
@@ -73,17 +74,18 @@ attraction en forme de tour doit ouvrir en 2027. D’après le parc, les visiteu
 la pilotent eux-mêmes et regardent d’en haut le quartier islandais, jusqu’au
 port.
 
-La tour n’a pas encore de nom, et l’annonce ne donne ni hauteur ni constructeur.
-Elle dit seulement où elle se trouve et que le trajet est interactif.
+La tour n’a pas encore de nom. Le parc n’a donné ni sa hauteur ni son
+constructeur.
 
-L’Islande est jusqu’ici le quartier des grands coasters. blue fire roule
-depuis 2009, mesure 38 mètres et vient de MACK Rides. On y monte à partir de
-sept ans et de 130 centimètres. WODAN a été construit par GCI, date de 2012,
-mesure 40 mètres et accepte les enfants dès six ans et 120 centimètres. Pour les
+L’Islande est jusqu’ici le quartier des grands coasters. blue fire vient de
+MACK Rides et roule depuis 2009. Il mesure 38 mètres, et on y monte à partir de
+sept ans et de 130 centimètres. WODAN a été construit par GCI en 2012. Le
+coaster en bois mesure 40 mètres et accepte les enfants dès six ans et 120
+centimètres. Pour les
 plus petits, il y a la balade en bateau Whale Adventures - Northern Lights,
 ouverte en 2010, l’aire de jeux d’eau Lítill Island et le monorail.
 
-Le parc ne dit pas si la tour impose une taille minimale. L’annonce dit
+Le parc ne donne pas de taille minimale pour la tour. Dans l’annonce, on lit
 seulement que les enfants comme les adultes pourront la piloter eux-mêmes. Sur sa page
 consacrée aux nouveautés 2027, le parc parle aussi de mouettes et de macareux
 qui tournent au-dessus du port. Si la tour sera décorée dans ce sens, il ne le
@@ -91,51 +93,49 @@ dit pas.
 
 ## Enzo's Piccolo Mondo revient
 
-Selon le parc, la balade en gondole du quartier italien accompagne les plus
-petits depuis plus de 40 ans. En 2027, elle doit revenir « dans un nouvel
-éclat ». L’annonce ne dit pas si elle ferme avant, ni à partir de quand, et le
-parc ne donne pas de date de fermeture.
+Selon le parc, les plus petits montent dans les gondoles du quartier italien
+depuis plus de 40 ans. En 2027, la balade doit revenir « dans un nouvel
+éclat ». Si elle ferme pour les travaux, et à partir de quand, l’annonce ne le
+précise pas.
 
-Sur le contenu, le parc cite l’art, le théâtre classique et la musique
-italienne. Combien de scènes il y aura et lesquelles sont nouvelles, il ne l’a
+Selon le parc, on y verra et entendra de l’art, du théâtre classique et de la
+musique italienne. Combien de scènes il y aura et lesquelles sont nouvelles, il ne l’a
 pas dit.
 
 Le manège a l’âge du quartier. L’Italie a ouvert en 1982, premier quartier
 thématique du parc, et Piccolo Mondo la même année. MACK Rides l’a construit.
 Les gondoles accueillent six personnes chacune et passent à l’intérieur d’un
-hall devant Pise, Venise et Florence, un tour dure un peu plus de trois minutes.
-Les enfants de moins de 120 centimètres ne montent qu’avec un adulte. La page du
-parc indique le manège pour les quatre saisons, hiver compris.
+hall devant Pise, Venise et Florence. Un tour dure un peu plus de trois minutes.
+Les enfants de moins de 120 centimètres ne montent qu’avec un adulte. D’après la
+page du parc, le manège tourne aux quatre saisons, hiver compris.
 
-Selon la page du parc sur les nouveautés 2027, Enzo est un perroquet. Dans le
-même quartier, un autre manège de 1982 a déjà reçu une deuxième année
-d’ouverture. Pour le [Castello dei Medici](ref:europa-park/castello-dei-medici),
-la page du parc donne 1982 et 2024. Juste à côté tourne depuis 2011 Volo da
+Selon la page du parc sur les nouveautés 2027, Enzo est un perroquet. Le même
+quartier a déjà un manège de 1982 avec deux années d’ouverture : pour le
+[Castello dei Medici](ref:europa-park/castello-dei-medici), la page du parc
+donne 1982 et 2024. Juste à côté tourne depuis 2011 Volo da
 Vinci, un trajet en machines volantes à sept mètres de haut, construit par ETF.
 
 [Piccolo Mondo](ref:europa-park/piccolo-mondo?full)
 
 ## Ce que tu peux planifier dès maintenant
 
-Une seule chose est confirmée : les trois attractions sont annoncées pour 2027.
 Les [Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027) ont lieu du
-7 au 19 mars, et le parc précise que toutes les attractions ne sont pas
-ouvertes. Lesquelles des trois nouveautés tourneront alors, c’est ouvert.
-Quand le parc est le plus fréquenté selon la saison, le
-[guide d’Europa-Park](/blog/europa-park-temps-d-attente-conseils) le montre.
-L’[aperçu des nouveautés 2027](/blog/nouveautes-parcs-attractions-2027) liste ce
+7 au 19 mars 2027. Selon le parc, toutes les attractions ne sont pas ouvertes
+pendant cette période. On ne sait pas encore lesquelles des trois nouveautés
+tourneront alors. La fréquentation du parc selon la saison est détaillée dans
+notre [guide d’Europa-Park](/blog/europa-park-temps-d-attente-conseils). Notre
+[aperçu des nouveautés 2027](/blog/nouveautes-parcs-attractions-2027) liste ce
 que d’autres parcs et constructeurs ont confirmé.
 
 La saison en cours se termine le 9 janvier 2027, et les clients des hôtels
 peuvent encore entrer le 10 janvier. Cet hiver est aussi le dernier de
 l’Euro-Mir, à lire dans
-l’[article sur les adieux à l’Euro-Mir](/news/europa-park-adieu-euro-mir).
+notre [article sur les adieux à l’Euro-Mir](/news/europa-park-adieu-euro-mir).
 
-Les trois nouveautés sont annoncées pour les familles, et aucune n’est un grand
-coaster. Pour les enfants encore trop petits pour blue fire et WODAN, le
-Portugal et l’Islande gagnent donc un manège qui monte en hauteur. La taille
-qu’il leur faudra dépend de la taille minimale, que le parc n’a pas encore
-donnée.
+Aucune des trois nouveautés n’est un grand coaster. Pour les enfants encore
+trop petits pour blue fire et WODAN, le Portugal et l’Islande gagnent un manège
+qui monte en hauteur, à condition qu’ils atteignent la taille minimale, que le
+parc n’a pas encore donnée.
 
 Le tableau reprend les manèges à côté desquels les trois nouveautés vont
 s’installer.

@@ -7,10 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg heeft zijn botsauto's Radiobilarna op 4 oktober 2026 voor het laatst
-  geopend. Het gebouw wordt gesloopt en er komt een nieuwe attractie voor in de
-  plaats. Of de Radiobilarna elders in het park kunnen blijven rijden, wordt nog
-  onderzocht.
+  Liseberg heeft zijn botsauto's Radiobilarna op 4 oktober 2026 na bijna 100 jaar
+  voor het laatst geopend. Het gebouw wordt gesloopt voor een nieuwe attractie.
+  Liseberg onderzoekt nog of de Radiobilarna elders in het park verder kunnen
+  rijden.
 tags:
   - news
   - liseberg
@@ -22,9 +22,9 @@ parkLinks:
 rideLinks:
   - liseberg/radiobilarna
 seo:
-  title: 'Radiobilarna in Liseberg gesloten: gebouw wordt gesloopt'
+  title: "Botsauto's Radiobilarna in Liseberg gesloten"
   description: >-
-    Liseberg sloot de Radiobilarna op 4 oktober 2026. Het gebouw wordt gesloopt, of de attractie een nieuwe plek krijgt is nog open.
+    Liseberg sloot zijn botsauto's Radiobilarna op 4 oktober 2026. Het gebouw wordt gesloopt. Of de attractie een nieuwe plek in het park krijgt, is nog niet bekend.
   keywords:
     - Radiobilarna Liseberg
     - Radiobilarna gesloten
@@ -48,15 +48,15 @@ Halloween-weekend van het park. Daarna wordt het gebouw gesloopt.
 
 Parkchef Andreas Andersen zegt dat het park ruimte wil maken voor iets nieuws.
 Liseberg onderzoekt of de Radiobilarna later een nieuwe plek in het park kunnen
-krijgen. Er is niets besloten. Welke attractie in het oude gebouw komt, heeft het
-park nog niet gezegd.
+krijgen. Er is niets besloten. Welke attractie op de plek van het gebouw komt, heeft
+het park nog niet bekendgemaakt.
 
 Liseberg-historicus Patrik Källström noemt het een afscheid van een geliefde
 klassieker.
 
 Van 2 tot 4 oktober reed iedere gast met parkentree gratis. De laatste wachttijd
-hebben we op 4 oktober om 20:01 uur Zweedse tijd vastgelegd, sindsdien staat de
-attractie bij ons als gesloten.
+bij de Radiobilarna hebben we op 4 oktober om 20:01 uur Zweedse tijd gemeten.
+Sindsdien staat de attractie op park.fan als gesloten.
 
 ## Sinds 1927
 
@@ -68,7 +68,7 @@ De eerste vijf jaar exploiteerde ondernemer Arnold Neble de attractie. Daarna na
 Liseberg haar over voor 5.000 kronen. Sindsdien stond ze op vier verschillende
 plekken in het park, voor het laatst verhuisde ze in 1998.
 
-Het park noemt acht wagenmodellen en meerdere ingrijpende verbouwingen. Meer dan
+Volgens het park waren er acht wagenmodellen en meerdere ingrijpende verbouwingen. Meer dan
 300.000 gasten per jaar reden er het laatst in. Volgens het bericht zaten ook
 Michael Jackson en Stevie Wonder in de wagens.
 
@@ -80,13 +80,13 @@ snoepje in de vorm van een auto.
 
 ## Tuta & Kör en Oceana
 
-De Radiobilarna zijn gesloten. De kleine kinderbotsauto's "Tuta & Kör" in
-Kaninlandet blijven ongewijzigd. Of er een vervanger komt, zegt het bericht niet.
+De kleine kinderbotsauto's "Tuta & Kör" in Kaninlandet blijven ongewijzigd. Een
+vervanger voor de Radiobilarna noemt het bericht van 29 september niet.
 
 Een andere nieuwe attractie van het park is de waterwereld Oceana, ongeveer 13.600
 vierkante meter, waarvan 6.000 binnen en 4.000 buiten. Gepland zijn vier grotere
 glijbanen, drie kindergebieden, een golfslagbad en een rivier voor gezinnen. Volgens
-Liseberg opent Oceana "begin 2027"; meer in ons overzicht van de
+Liseberg opent Oceana "begin 2027", meer daarover lees je in ons overzicht van de
 [nieuwe attracties van 2027](/blog/nieuwe-attracties-pretparken-2027).
 
 Sinds de brand in februari 2024 werkt Liseberg aan de afbouw. In een bericht van
@@ -95,13 +95,13 @@ het dak staan, en dat de eerste tickets eind november in de verkoop gaan.
 
 ## Halloween en kerst in Liseberg
 
-Het Halloweenseizoen loopt van 2 oktober tot 1 november. De Radiobilarna hebben
-daarvan alleen het eerste weekend meegemaakt. Op 14 en 15 oktober komen er twee dagen bij waarop alleen Kaninlandet open is, als "Höst i Kaninlandet".
+Het Halloweenseizoen loopt van 2 oktober tot 1 november. De Radiobilarna reden
+daarvan alleen het eerste weekend. Op 14 en 15 oktober komen er twee dagen bij waarop alleen Kaninlandet open is, als "Höst i Kaninlandet".
 
-Tuta & Kör rijden in de zomer, met Halloween en met kerst, en de wagentjes komen van
-dezelfde fabrikant als die van de Radiobilarna, Preston & Barbieri. De attractie is
-gebouwd voor kinderen tussen 90 en 140 centimeter en verwerkt volgens het park
-ongeveer 240 passagiers per uur.
+Tuta & Kör rijden in de zomer, met Halloween en met kerst. De wagentjes komen net
+als die van de Radiobilarna van Preston & Barbieri. De attractie is gebouwd voor
+kinderen tussen 90 en 140 centimeter, en volgens het park verwerkt ze ongeveer 240
+passagiers per uur.
 
 Kerst viert Liseberg sinds 2000. Dit jaar loopt de show op het Adventspodium van
 14 november tot 30 december. Tot 30 december toont het park in de toren
@@ -112,7 +112,7 @@ Een datum voor de sloop noemt Liseberg niet.
 
 ## Wachttijden van de Radiobilarna in het afgelopen jaar
 
-Het meetvenster loopt van 8 oktober 2025 tot 7 oktober 2026.
+De tabel beslaat de wachttijden van 8 oktober 2025 tot 7 oktober 2026.
 
 ```ride-waits-widget rides=liseberg/radiobilarna|Radiobilarna|Botsauto's columns=type,peak,days
 
@@ -121,8 +121,7 @@ Het meetvenster loopt van 8 oktober 2025 tot 7 oktober 2026.
 ## De achtbanen in het park
 
 Tot de achtbanen van Liseberg horen Lisebergbanan (1987), Balder (2003), Rabalder
-(2009), Stampbanan (2013), Helix (2014), Valkyria (2018) en Luna (2023). Het park
-zelf opende in 1923.
+(2009), Stampbanan (2013), Helix (2014), Valkyria (2018) en Luna (2023).
 
 Ouder dan al deze achtbanen is de wildwaterbaan FlumeRide. Liseberg geeft als
 bouwjaar 1973 op en als fabrikant het Amerikaanse Arrow Development. De goot is 610

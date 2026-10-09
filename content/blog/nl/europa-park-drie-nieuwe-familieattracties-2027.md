@@ -7,9 +7,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Een Wild Swing XL in Portugal, een toren die je zelf bestuurt in IJsland en
-  een vernieuwde Enzo's Piccolo Mondo: op 8 oktober noemde het park de eerste
-  drie nieuwtjes voor 2027. Openingsdata geeft het nog niet.
+  Europa-Park bouwt voor 2027 in Portugal een Wild Swing XL, een reuzenschommel
+  boven het meer. In IJsland komt een toren die je zelf bestuurt. De gondelrit
+  Enzo's Piccolo Mondo komt vernieuwd terug.
 tags:
   - news
   - europa-park
@@ -26,10 +26,11 @@ coverImage:
   caption: 'Wodan in het themagebied IJsland. De nieuwe toren komt tussen deze achtbaan en blue fire te staan.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Europa-Park 2027: Wild Swing XL, toren en Piccolo Mondo'
+  title: 'Europa-Park plant drie nieuwe gezinsattracties voor 2027'
   description: >-
-    Europa-Park kondigde op 8 oktober 2026 drie familieattracties voor 2027 aan.
-    Wat het park zegt en wat het openlaat.
+    Europa-Park kondigde op 8 oktober 2026 drie nieuwe familieattracties voor
+    2027 aan. Wanneer ze openen en hoe lang kinderen moeten zijn, heeft het park
+    nog niet gezegd.
   keywords:
     - Europa-Park nieuw 2027
     - Wild Swing XL Europa-Park
@@ -40,10 +41,10 @@ seo:
 ---
 
 [Europa-Park](ref:europa-park) kondigde op 8 oktober 2026 de eerste drie
-nieuwtjes voor 2027 aan, alle voor gezinnen: een Wild Swing XL in het
-Portugese themagebied, een toren die gasten zelf besturen in IJsland en een
-vernieuwde gondelrit in Italië. Wanneer ze openen, staat niet in de
-aankondiging. Meer informatie volgt volgens het park “op een later moment”.
+nieuwtjes voor 2027 aan, alle voor gezinnen. In het Portugese themagebied komt
+een Wild Swing XL, in IJsland een toren die gasten zelf besturen. De gondelrit in
+Italië wordt vernieuwd. Openingsdata heeft het park nog niet genoemd. Meer
+informatie volgt volgens het park “op een later moment”.
 
 ## Wild Swing XL in Portugal
 
@@ -53,16 +54,16 @@ spanning met rijplezier en is hij bedoeld voor alle leeftijden. Als inspiratie n
 het park de lichtheid van de Portugese kust, creatief knutselwerk en een
 bijzonder uitvindersverhaal.
 
-Welke fabrikant de schommel bouwt, staat niet in de aankondiging. Enkele media
-schrijven er een naam aan toe, het park heeft die niet bevestigd. Ook minimumlengte,
-passagiers per rit en ritduur ontbreken.
+De aankondiging noemt geen fabrikant. In enkele media staat een naam, maar het
+park heeft die niet bevestigd. Ook minimumlengte, passagiers per rit en ritduur
+staan niet in de aankondiging.
 
 In Portugal rijdt tot nu toe alleen de waterachtbaan
 [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash). MACK Rides
-bouwde hem in 2005, hij is 30 meter hoog en een boot biedt plaats aan 16
+bouwde hem in 2005. Hij is 30 meter hoog en een boot biedt plaats aan 16
 passagiers. Meerijden mag vanaf vier jaar en 100 centimeter. Daarnaast staan
-sinds 2003 het speelhuis Casa da Aventura voor kinderen van drie tot twaalf jaar
-en de Magellan Lounge op een zeilschip. De schommel wordt de tweede rit-attractie
+het speelhuis Casa da Aventura, sinds 2003 voor kinderen van drie tot twaalf
+jaar, en de Magellan Lounge op een zeilschip. De schommel wordt de tweede rit-attractie
 in het themagebied.
 
 ## Een toren die je zelf bestuurt in IJsland
@@ -72,64 +73,64 @@ en de megacoaster [blue fire](ref:europa-park/blue-fire-megacoaster) opent in
 2027 een torenattractie. Volgens het park besturen gasten hem zelf en kijken ze
 van boven over het IJslandse gebied, ook naar beneden op de haven.
 
-De toren heeft nog geen naam, en de aankondiging noemt geen hoogte en geen
-fabrikant. Er staat alleen waar hij staat en dat de rit interactief is.
+De toren heeft nog geen naam. Hoogte en fabrikant heeft het park niet genoemd.
 
-IJsland is tot nu toe het gebied van de grote achtbanen. blue fire rijdt
-sinds 2009, is 38 meter hoog en gebouwd door MACK Rides. Instappen mag vanaf
-zeven jaar en 130 centimeter. WODAN is gebouwd door GCI, komt uit 2012, is 40
-meter hoog en neemt kinderen vanaf zes jaar en 120 centimeter mee. Voor kleinere
+IJsland is tot nu toe het gebied van de grote achtbanen. blue fire is van
+MACK Rides en rijdt sinds 2009. De baan is 38 meter hoog, instappen mag vanaf
+zeven jaar en 130 centimeter. WODAN is in 2012 gebouwd door GCI. De houten
+achtbaan is 40 meter hoog en neemt kinderen vanaf zes jaar en 120 centimeter
+mee. Voor kleinere
 kinderen zijn er de bootrit Whale Adventures - Northern Lights uit 2010, de
 waterspeelplaats Lítill Island en de monorail.
 
-Of de toren een minimumlengte heeft, zegt het park niet. In de aankondiging
+Een minimumlengte voor de toren noemt het park niet. In de aankondiging
 staat alleen dat jong en oud hem zelf kunnen besturen. Op zijn pagina over de
 nieuwtjes voor 2027 schrijft het park ook over meeuwen en papegaaiduikers die
 boven de haven cirkelen. Of de toren zo wordt aangekleed, laat het open.
 
 ## Enzo's Piccolo Mondo komt terug
 
-De gondelrit in het Italiaanse gebied vermaakt volgens het park al meer dan
-40 jaar de jongste bezoekers. In 2027 komt hij “in nieuwe glans” terug. Of en
-vanaf wanneer hij daarvoor dicht is, staat niet in de aankondiging, een
-sluitingsdatum noemt het park niet.
+In de gondels in het Italiaanse gebied stappen volgens het park al meer dan
+40 jaar de jongste bezoekers. In 2027 komt de rit “in nieuwe glans” terug. Of en
+vanaf wanneer hij daarvoor dichtgaat, staat niet in de aankondiging.
 
-Over de inhoud noemt het park kunst, klassiek toneel en Italiaanse muziek. Hoeveel
+Volgens het park zijn er kunst, klassiek toneel en Italiaanse muziek te zien en
+te horen. Hoeveel
 scènes er zijn en welke nieuw zijn, heeft het niet gezegd.
 
 De rit is even oud als het themagebied. Italië opende in 1982 als eerste
 themagebied van het park, Piccolo Mondo in hetzelfde jaar. MACK Rides bouwde
 hem. De gondels bieden elk plaats aan zes personen en varen in een hal langs
-Pisa, Venetië en Florence, een rit duurt iets meer dan drie minuten. Kinderen
-onder 120 centimeter rijden alleen mee met een volwassene. De parkpagina noemt
-de rit voor alle vier de seizoenen, ook de winter.
+Pisa, Venetië en Florence. Een rit duurt iets meer dan drie minuten. Kinderen
+onder 120 centimeter rijden alleen mee met een volwassene. Volgens de parkpagina
+rijdt hij in alle vier de seizoenen, ook in de winter.
 
 Volgens de pagina van het park over de nieuwtjes voor 2027 is Enzo een
-papegaai. In hetzelfde gebied kreeg al eerder een rit uit 1982 een tweede
-openingsjaar. Voor [Castello dei Medici](ref:europa-park/castello-dei-medici)
-noemt de parkpagina 1982 en 2024. Ernaast rijdt sinds 2011 Volo da Vinci, een
+papegaai. In hetzelfde gebied staat al een rit uit 1982 met twee openingsjaren: voor
+[Castello dei Medici](ref:europa-park/castello-dei-medici) geeft de parkpagina
+1982 en 2024. Ernaast rijdt sinds 2011 Volo da Vinci, een
 rit in vliegmachines op zeven meter hoogte, gebouwd door ETF.
 
 [Piccolo Mondo](ref:europa-park/piccolo-mondo?full)
 
 ## Wat je nu kunt plannen
 
-Eén ding is tot nu toe bevestigd: de drie attracties zijn aangekondigd voor 2027. De [Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027) lopen van
-7 tot 19 maart, en het park zegt dat dan niet alle attracties open zijn. Welke
+De [Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027) lopen van 7
+tot 19 maart 2027. Volgens het park zijn dan niet alle attracties open. Welke
 van de drie nieuwtjes dan al draaien, is open. Hoe druk het park in welk seizoen
 is, staat in de [Europa-Park-gids](/blog/europa-park-wachttijden-tips). Wat
-andere parken en fabrikanten voor 2027 hebben bevestigd, staat in het
+andere parken en fabrikanten voor 2027 hebben bevestigd, staat in ons
 [overzicht van de nieuwtjes voor 2027](/blog/nieuwe-attracties-pretparken-2027).
 
 Het lopende seizoen eindigt op 9 januari 2027, gasten die overnachten
 kunnen op 10 januari nog het park in. Deze winter rijdt ook de Euro-Mir voor het
-laatst, meer daarover in het
+laatst, meer daarover in ons
 [bericht over het afscheid van de Euro-Mir](/news/europa-park-neemt-afscheid-van-euro-mir).
 
-Alle drie de nieuwtjes zijn aangekondigd voor gezinnen, een grote achtbaan zit
-er niet bij. Voor kinderen die nog te klein zijn voor blue fire en WODAN komt er
-in Portugal en IJsland dus iets in de hoogte bij. Hoe klein ze mogen zijn, hangt
-af van de minimumlengte, en die noemt het park nog niet.
+Bij de drie nieuwtjes zit geen grote achtbaan. Voor kinderen die nog te klein
+zijn voor blue fire en WODAN komt er in Portugal en IJsland iets in de hoogte
+bij, als ze lang genoeg zijn voor de minimumlengte die het park nog niet heeft
+genoemd.
 
 In de tabel staan de ritten waarnaast de drie nieuwtjes komen.
 

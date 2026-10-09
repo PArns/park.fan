@@ -7,10 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg hat seinen Autoscooter Radiobilarna am 4. Oktober 2026 zum letzten
-  Mal geöffnet. Das Gebäude wird abgerissen, an seine Stelle kommt eine neue
-  Attraktion. Ob die Radiobilarna an anderer Stelle im Park weiterfahren,
-  prüft Liseberg noch.
+  Liseberg hat seinen Autoscooter Radiobilarna am 4. Oktober 2026 nach fast 100
+  Jahren zum letzten Mal geöffnet. Das Gebäude wird für eine neue Attraktion
+  abgerissen. Ob die Radiobilarna anderswo im Park weiterfahren, prüft Liseberg
+  noch.
 tags:
   - news
   - liseberg
@@ -22,9 +22,9 @@ parkLinks:
 rideLinks:
   - liseberg/radiobilarna
 seo:
-  title: 'Radiobilarna in Liseberg geschlossen, Abriss folgt'
+  title: 'Autoscooter Radiobilarna in Liseberg geschlossen'
   description: >-
-    Liseberg hat die Radiobilarna am 4. Oktober 2026 geschlossen. Das Gebäude wird abgerissen, ob die Bahn einen neuen Platz bekommt, ist offen.
+    Liseberg hat seinen Autoscooter Radiobilarna am 4. Oktober 2026 geschlossen. Das Gebäude wird abgerissen. Ob die Bahn einen neuen Platz im Park bekommt, ist offen.
   keywords:
     - Radiobilarna Liseberg
     - Radiobilarna geschlossen
@@ -48,14 +48,15 @@ abgerissen.
 
 Parkchef Andreas Andersen sagt, der Park wolle Platz für Neues schaffen. Ob die
 Radiobilarna später einen neuen Platz im Park bekommen, prüft Liseberg. Beschlossen
-ist nichts. Welche Attraktion ins alte Gebäude kommt, nennt der Park bisher nicht.
+ist nichts. Welche Attraktion an die Stelle des Gebäudes kommt, hat der Park noch
+nicht bekanntgegeben.
 
 Liseberg-Historiker Patrik Källström nennt es den Abschied von einem geliebten
 Klassiker.
 
 Vom 2. bis 4. Oktober fuhren alle Gäste mit Parkeintritt kostenlos. Die letzte
-Wartezeit haben wir am 4. Oktober um 20:01 Uhr schwedischer Zeit erfasst,
-seitdem führen wir die Bahn als geschlossen.
+Wartezeit an den Radiobilarna haben wir am 4. Oktober um 20:01 Uhr schwedischer
+Zeit gemessen. Seitdem steht die Bahn auf park.fan als geschlossen.
 
 ## Seit 1927
 
@@ -67,7 +68,7 @@ In den ersten fünf Jahren betrieb der Unternehmer Arnold Neble die Anlage. Dana
 übernahm Liseberg sie für 5.000 Kronen. Seitdem stand sie an vier verschiedenen
 Stellen im Park, zuletzt zog sie 1998 um.
 
-Der Park nennt acht Wagenmodelle und mehrere grundlegende Umbauten. Zuletzt
+Laut Park gab es acht Wagenmodelle und mehrere grundlegende Umbauten. Zuletzt
 fuhren mehr als 300.000 Gäste pro Jahr. Zu den Fahrgästen zählten laut
 Mitteilung auch Michael Jackson und Stevie Wonder.
 
@@ -79,14 +80,13 @@ Süßigkeit in Autoform.
 
 ## Tuta & Kör und Oceana
 
-Die Radiobilarna sind geschlossen. Die kleinen Kinder-Autoscooter „Tuta & Kör“ im
-Kaninlandet bleiben unverändert. Ob es einen Ersatz gibt, sagt die Mitteilung
-nicht.
+Die kleinen Kinder-Autoscooter „Tuta & Kör“ im Kaninlandet bleiben unverändert.
+Einen Ersatz für die Radiobilarna nennt die Mitteilung vom 29. September nicht.
 
 Eine andere Neuheit des Parks ist die Wasserwelt Oceana mit rund 13.600
 Quadratmetern, davon 6.000 drinnen und 4.000 draußen. Geplant sind vier größere
 Rutschen, drei Kinderbereiche, ein Wellenbad und ein Fluss für Familien. Laut
-Liseberg soll Oceana „Anfang 2027“ öffnen, mehr dazu in der Übersicht der
+Liseberg soll Oceana „Anfang 2027“ öffnen, mehr dazu steht in unserer Übersicht der
 [Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
 
 An der Fertigstellung arbeitet Liseberg seit dem Brand im Februar 2024. In einer
@@ -96,13 +96,13 @@ Verkauf gehen.
 
 ## Halloween und Weihnachten in Liseberg
 
-Die Halloween-Saison läuft vom 2. Oktober bis 1. November. Die Radiobilarna haben
-davon nur das erste Wochenende erlebt. Am 14. und 15. Oktober kommen zwei Tage dazu, an denen nur das Kaninlandet öffnet, als „Höst i Kaninlandet“.
+Die Halloween-Saison läuft vom 2. Oktober bis 1. November. Die Radiobilarna fuhren
+davon nur am ersten Wochenende. Am 14. und 15. Oktober kommen zwei Tage dazu, an denen nur das Kaninlandet öffnet, als „Höst i Kaninlandet“.
 
-Tuta & Kör fahren im Sommer, zu Halloween und zu Weihnachten, und ihre Wagen kommen vom
-selben Hersteller wie die der Radiobilarna, von Preston & Barbieri. Die Bahn ist
-für Kinder zwischen 90 und 140 Zentimetern gebaut und schafft laut Park etwa 240
-Fahrgäste pro Stunde.
+Tuta & Kör fahren im Sommer, zu Halloween und zu Weihnachten. Die Wagen sind wie
+die der Radiobilarna von Preston & Barbieri. Gebaut ist die Bahn für Kinder
+zwischen 90 und 140 Zentimetern, und laut Park schafft sie etwa 240 Fahrgäste pro
+Stunde.
 
 Weihnachten feiert Liseberg seit dem Jahr 2000. Die Show auf der Adventsbühne läuft
 in diesem Jahr vom 14. November bis 30. Dezember. Bis 30. Dezember zeigt der Park
@@ -113,7 +113,7 @@ Ein Datum für den Abriss nennt Liseberg nicht.
 
 ## Wartezeiten der Radiobilarna im letzten Jahr
 
-Das Messfenster reicht vom 8. Oktober 2025 bis zum 7. Oktober 2026.
+Die Tabelle umfasst die Wartezeiten vom 8. Oktober 2025 bis zum 7. Oktober 2026.
 
 ```ride-waits-widget rides=liseberg/radiobilarna|Radiobilarna|Autoscooter columns=type,peak,days
 
@@ -123,7 +123,6 @@ Das Messfenster reicht vom 8. Oktober 2025 bis zum 7. Oktober 2026.
 
 Zu den Achterbahnen in Liseberg zählen die Lisebergbanan (1987), Balder (2003),
 Rabalder (2009), Stampbanan (2013), Helix (2014), Valkyria (2018) und Luna (2023).
-Der Park selbst eröffnete 1923.
 
 Älter als jede dieser Achterbahnen ist die Wildwasserbahn FlumeRide. Liseberg gibt
 für sie das Baujahr 1973 und den US-Hersteller Arrow Development an. Die Rinne ist

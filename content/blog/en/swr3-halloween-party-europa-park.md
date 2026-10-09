@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  On Saturday, 31 October 2026, SWR3 and Europa-Park hold their Halloween party: 18 and over, event ticket €39, Jaden Bojsen on the main stage. Traumatica is a separate event.
+  SWR3 and Europa-Park hold their Halloween party for guests aged 18 and over on Saturday, 31 October 2026. The event ticket costs €39. DJ Jaden Bojsen headlines in the Europa-Park Arena.
 tags:
   - news
   - halloween
@@ -18,7 +18,7 @@ rideLinks: false
 seo:
   title: 'SWR3 Halloween Party at Europa-Park: 31 October 2026'
   description: >-
-    SWR3 Halloween Party at Europa-Park on 31 October 2026: 18+, tickets from €39, programme with Jaden Bojsen, silent disco and karaoke.
+    The SWR3 Halloween Party at Europa-Park on 31 October 2026 is for over-18s only. Tickets start at €39. Besides DJ Jaden Bojsen, there's a silent disco and karaoke.
   keywords:
     - SWR3 Halloween Party
     - SWR3 Halloween Party Europa-Park
@@ -40,13 +40,13 @@ The event page lists this for the Europa-Park Arena:
 - 23:30 to 01:00: Jaden Bojsen
 - 01:00 to 02:00: SWR3 DJ BeOne
 
-The event page says the Michael Jackson tribute show premieres that night. According to the press release, it has a live band with singers and a dance crew.
+The event page says the Michael Jackson tribute show premieres that night. According to the Mack Group's press release, it has a live band with singers and a dance crew.
 
 The Europa-Park Dome hosts a silent disco from 20:00 to 02:00 with the SWR3 DJs Michael Leupold, D White and fabioless. Last entry to the Dome is 01:30. Guests there dance with headphones and, according to the press release, pick the sound they want to hear. "Das Studio" has the NightLiveBand alternating with SWR3 Deejay Bene from 20:00 to 01:00. The 4D cinema runs karaoke from 21:00 to 01:00. Food and drink are at Mario-Botta-Platz, which the event page gives as open from 18:00 to 01:00.
 
 ## What the tickets include
 
-The event ticket covers entry to the park from 18:00 and to the party in the Confertainment Center. Neither the event page nor the press release says whether rides run during that time. The event page only states that all attractions close at park closing and cannot be reached afterwards. It does not say when the park closes that evening.
+The event ticket covers entry to the park from 18:00 and to the party in the Confertainment Center. Neither the event page nor the press release says whether rides run during that time. All the event page states is that every attraction closes at park closing and can't be reached afterwards. Neither that page nor the park's Halloween page gives a closing time for that evening.
 
 The VIP ticket includes, per person:
 
@@ -59,25 +59,25 @@ VIP guests pay for food and drink outside the VIP area themselves. The tattoo st
 
 ## Tickets and overnight stay
 
-Tickets are sold in advance at swr3tickets.de and europapark.de, and according to the press release also at the box office on the night. Neither the event page nor the press release says how well the tickets are selling; only the ticket shop shows what is still available. Guests who cannot get a room in the resort can book the "Sleep & Party" package at the VOYA Hotel in Ringsheim. It includes the party ticket but not the journey there and back.
+Tickets are sold in advance at swr3tickets.de and europapark.de, and according to the press release also at the box office on the night. You can only see how many tickets are left in the ticket shop. Guests who can't get a room in the resort can book the "Sleep & Party" package at the VOYA Hotel in Ringsheim. It includes the party ticket but not the journey there and back.
 
 ## Getting there and getting home
 
-By car, take the A5 to exit 57b Rust; the satnav address is Europa-Park-Straße 2, 77977 Rust. According to the event page, parking is paid and on the visitor car park. The park's arrival page puts a day ticket for it at €10.00, and "Reserved Parking" at the main entrance at €32.00. Neither page says whether a separate rate applies on the party night. VIP guests get their exit ticket at the VIP cloakroom. If someone's dropping you off and picking you up, they can stop for up to three hours free of charge on the Neuer Festplatz in Rust, near the main entrance.
+By car, take the A5 to exit 57b Rust. The satnav address is Europa-Park-Straße 2, 77977 Rust. According to the event page, parking is paid and on the visitor car park. The park's arrival page puts a day ticket for it at €10.00, and "Reserved Parking" at the main entrance at €32.00. Neither page says whether a separate rate applies on the party night. VIP guests get their exit ticket at the VIP cloakroom. If someone's dropping you off and picking you up, they can stop for up to three hours free of charge on the Neuer Festplatz in Rust, near the main entrance.
 
-By train, go to Ringsheim/Europa-Park or Herbolzheim. From there, buses 7231, 570 and 572 run to the main entrance, €3.20 single and €6.40 return (as of December 2025). For timetables, the park refers to DB Regio Bus Baden-Württemberg. None of the pages says whether a bus still runs to the station after the party ends at 2 a.m. If you aren't staying at the resort, sort out the way home before the night.
+By train, go to Ringsheim/Europa-Park or Herbolzheim. From there, buses 7231, 570 and 572 run to the main entrance, €3.20 single and €6.40 return (as of December 2025). For timetables, the park refers to DB Regio Bus Baden-Württemberg. Whether a bus still runs to the station after the party ends at 2 a.m. isn't on any of the park's pages. If you aren't staying at the resort, sort out the way home before the night.
 
-Hotel guests have a shuttle from 16:00 to 01:00. It leaves Kronasar every quarter hour and reaches Rulantica three minutes later, Bell Rock after eight and El Andaluz after twelve minutes. So the last bus leaves an hour before the party ends. The event page says the EP-Express runs until 3 a.m. According to the park's bus and train page, it's one of the trains that link the themed areas inside the park.
+Hotel guests have a shuttle from 16:00 to 01:00. It leaves Kronasar every quarter of an hour. It gets to Rulantica in three minutes, to Bell Rock in eight and to El Andaluz in twelve. So the last bus leaves an hour before the party ends. The event page says the EP-Express runs until 3 a.m. According to the park's bus and train page, it's one of the trains that link the themed areas inside the park.
 
-The cloakroom in the Ballsaal Berlin is open from 18:00 to 02:00. You enter the park through the main entrance and the party through the Confertainment Center. Prohibited items are listed in a PDF that the event page links to; the page itself doesn't name them.
+The cloakroom in the Ballsaal Berlin is open from 18:00 to 02:00. You enter the park through the main entrance and the party through the Confertainment Center. Prohibited items are listed in a PDF linked from the event page.
 
 ## The Halloween season around it
 
-According to the park, Europa-Park's Halloween season runs from 26 September to 1 November 2026, with about 180,000 pumpkins. The party falls on the second-to-last day of the season. During that time the park is open daily from 9:00 to at least 18:00; the page doesn't give the exact closing time on 31 October. The one-day ticket costs from €56.50 according to the Halloween page, up to €76.00 depending on the day. Traumatica runs from 23 September to 7 November, so beyond the season. There the food court opens at 18:00 and the scare attractions start at 19:00.
+According to the park, Europa-Park's Halloween season runs from 26 September to 1 November 2026, with about 180,000 pumpkins. The party falls on the second-to-last day of the season. During that time the park is open daily from 9:00 to at least 18:00. The one-day ticket costs from €56.50 according to the Halloween page, up to €76.00 depending on the day. Traumatica runs from 23 September to 7 November, so beyond the season. There the food court opens at 18:00 and the scare attractions start at 19:00.
 
 ## And Traumatica?
 
-The party is its own ticket and not part of [Traumatica](/blog/traumatica-ten-years-europa-park). According to our post on its tenth edition, the horror event runs until 7 November; the party's event page does not mention it. How the other parks celebrate Halloween is in the [Halloween overview](/blog/halloween-theme-parks-2026).
+The party has its own ticket and isn't part of the horror event [Traumatica](/blog/traumatica-ten-years-europa-park), which is in its tenth year this autumn. Traumatica doesn't appear on the party's event page. For how other parks celebrate Halloween, see our [Halloween overview](/blog/halloween-theme-parks-2026).
 
 ```best-days-widget slug=europa-park
 
@@ -89,8 +89,8 @@ The party is its own ticket and not part of [Traumatica](/blog/traumatica-ten-ye
 
 ### Sources & further reading
 
-- Date, prices, ticket contents, schedule, age limit, hotel package: [SWR3 Halloween-Party (Europa-Park, retrieved 8 October 2026)](https://www.europapark.de/de/events/swr3-halloween-party)
-- Arrival, shuttle, cloakroom and payment are on the same event page. Halloween season, opening hours, day ticket and Traumatica dates: [Halloween im Europa-Park (europapark.de, retrieved 8 October 2026)](https://www.europapark.de/de/halloween)
+- Date, prices, ticket contents, schedule, age limit, hotel package: [SWR3 Halloween-Party (Europa-Park)](https://www.europapark.de/de/events/swr3-halloween-party)
+- Arrival, shuttle, cloakroom and payment are on the same event page. Halloween season, opening hours, day ticket and Traumatica dates: [Halloween im Europa-Park (europapark.de)](https://www.europapark.de/de/halloween)
 - Headliner, Dome, Studio, karaoke, advance sales and box office: [SWR3 Halloween-Party im Europa-Park mit Top-Act Jaden Bojsen (Mack Group, 7 October 2026)](https://mack.group/de/presse-medien/pressemitteilungen/2026-10-07/swr3-halloween-party-im-europa-park-mit-top-act-jaden-bojsen)
-- Motorway, parking prices, drop-off area: [Anreise zum Europa-Park (europapark.de, retrieved 9 October 2026)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park)
-- Stations, bus lines, fares and EP-Express: [Mit Bus und Bahn zum Europa-Park Erlebnis-Resort (europapark.de, retrieved 9 October 2026)](https://www.europapark.de/de/mit-bus-und-bahn-zum-europa-park-erlebnis-resort)
+- Motorway, parking prices, drop-off area: [Anreise zum Europa-Park (europapark.de)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park)
+- Stations, bus lines, fares and EP-Express: [Mit Bus und Bahn zum Europa-Park Erlebnis-Resort (europapark.de)](https://www.europapark.de/de/mit-bus-und-bahn-zum-europa-park-erlebnis-resort)

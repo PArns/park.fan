@@ -7,9 +7,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  A Wild Swing XL in Portugal, a tower you steer yourself in Iceland, and a
-  redesigned Enzo's Piccolo Mondo: on 8 October the park named its first three
-  novelties for 2027. It gives no opening dates yet.
+  Europa-Park is building a Wild Swing XL in Portugal for 2027, a giant swing
+  above the lake. Iceland gets a tower that riders steer themselves. The gondola
+  ride Enzo's Piccolo Mondo comes back with a new look.
 tags:
   - news
   - europa-park
@@ -26,10 +26,11 @@ coverImage:
   caption: 'Wodan in the Iceland themed area. The new tower is meant to stand between this coaster and blue fire.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Europa-Park 2027: Wild Swing XL, tower and Piccolo Mondo'
+  title: 'Europa-Park plans three new family rides for 2027'
   description: >-
-    Europa-Park announced three family attractions for 2027 on 8 October 2026.
-    What the park says and what it leaves open.
+    Europa-Park announced three new family attractions for 2027 on 8 October
+    2026. The park hasn't said yet when they open or how tall children must be
+    to ride.
   keywords:
     - Europa-Park new for 2027
     - Wild Swing XL Europa-Park
@@ -40,9 +41,9 @@ seo:
 ---
 
 [Europa-Park](ref:europa-park) announced its first three novelties for 2027 on
-8 October 2026, all for families: a Wild Swing XL in the Portuguese themed area,
-a tower guests steer themselves in Iceland, and a redesigned gondola ride in
-Italy. The announcement doesn't say when they open. The park says more
+8 October 2026, all of them for families. The Portuguese themed area gets a Wild
+Swing XL, and Iceland a tower that guests steer themselves. The gondola ride in
+Italy is being redesigned. The park hasn't given opening dates yet. It says more
 information will follow "at a later date".
 
 ## Wild Swing XL in Portugal
@@ -54,12 +55,12 @@ the Portuguese coast, creative tinkering and an unusual inventor's story as its
 inspiration.
 
 The announcement doesn't name a manufacturer. A few media outlets do, but the
-park hasn't confirmed it. Minimum height, riders per cycle and ride length are
-missing too.
+park hasn't confirmed it. Minimum height, riders per cycle and ride length
+aren't in the announcement either.
 
 So far the only ride in Portugal is the water coaster
 [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash). MACK Rides
-built it in 2005, it is 30 metres tall, and a boat holds 16 riders. You have to
+built it in 2005. It's 30 metres tall, and a boat holds 16 riders. You have to
 be at least four years old and 100 centimetres tall. Next to it are the Casa da
 Aventura play house for children aged three to twelve, open since 2003, and
 the Magellan Lounge on a sailing ship. The swing will be the second ride in the
@@ -73,17 +74,17 @@ attraction is due to open in 2027. According to the park, guests steer it
 themselves and look out over the Icelandic area from above, down to the harbour
 as well.
 
-The tower has no name yet, and the announcement gives neither a height nor a
-manufacturer. All it says is where it stands and that the ride is interactive.
+The tower doesn't have a name yet. The park hasn't given its height or its
+manufacturer.
 
-Iceland is where the big coasters are. blue fire has run since 2009, is 38
-metres tall and was built by MACK Rides. Riders must be seven years old and 130
-centimetres tall. GCI built WODAN, which dates from 2012, stands 40 metres tall
-and takes children from six years and 120 centimetres. For smaller children
+Iceland is where the big coasters are. MACK Rides built blue fire, which has run
+since 2009. It's 38 metres tall, and riders must be seven years old and 130
+centimetres tall. GCI built WODAN in 2012. The wooden coaster stands 40 metres
+tall and takes children from six years and 120 centimetres. For smaller children
 there is the boat ride Whale Adventures - Northern Lights from 2010, the Lítill
 Island water playground and the monorail.
 
-The park doesn't say whether the tower has a minimum height. The announcement
+The park hasn't given a minimum height for the tower. The announcement
 only says that children and adults will be able to steer it themselves. On its page
 about the 2027 novelties, the park also writes about seagulls and puffins
 circling above the harbour. Whether the tower will be themed that way, it
@@ -91,24 +92,24 @@ leaves open.
 
 ## Enzo's Piccolo Mondo comes back
 
-According to the park, the gondola ride in the Italian area has carried the
-youngest visitors for more than 40 years. In 2027 it is due to return "in new
-splendour". Whether and from when it closes beforehand isn't in the
-announcement, and the park names no closing date.
+According to the park, the youngest visitors have been riding the gondolas in
+the Italian area for more than 40 years. In 2027 the ride is due to return "in
+new splendour". Whether and from when it closes for the work isn't in the
+announcement.
 
-On content, the park mentions art, classical theatre and Italian music. How
+The park says there'll be art, classical theatre and Italian music. How
 many scenes there are and which of them are new, it hasn't said.
 
 The ride is as old as the themed area. Italy opened in 1982 as the park's
 first themed area, and Piccolo Mondo opened the same year. MACK Rides built it.
-The gondolas seat six each and pass Pisa, Venice and Florence inside a hall,
-and a ride takes just over three minutes. Children under 120 centimetres ride
-only with an adult. The park's page lists the ride for all four seasons,
+The gondolas seat six each and pass Pisa, Venice and Florence inside a hall.
+A ride takes just over three minutes. Children under 120 centimetres ride only
+with an adult. According to the park's page, the ride runs in all four seasons,
 winter included.
 
-According to the park's page on the 2027 novelties, Enzo is a parrot. Another
-ride from 1982 in the same area has already been given a second opening year:
-for [Castello dei Medici](ref:europa-park/castello-dei-medici) the park's page
+According to the park's page on the 2027 novelties, Enzo is a parrot. The same area
+already has a ride from 1982 with two opening years: for
+[Castello dei Medici](ref:europa-park/castello-dei-medici) the park's page
 gives 1982 and 2024. Next to it, Volo da Vinci has run since 2011, a ride in
 flying machines seven metres up, built by ETF.
 
@@ -116,21 +117,20 @@ flying machines seven metres up, built by ETF.
 
 ## What you can plan for now
 
-Only one thing is confirmed so far: the three attractions are announced for 2027. The [Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027) run
-from 7 to 19 March, and the park says not all attractions are open then. Which
-of the three novelties will be running by then is open. How busy the park is in
-which season is in the [Europa-Park guide](/blog/europa-park-wait-times-tips).
-The [overview of 2027 novelties](/blog/new-theme-park-attractions-2027) lists
+The [Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027) run from 7
+to 19 March 2027. According to the park, not all attractions are open then.
+It isn't known yet which of the three novelties will be running by then. How
+busy the park is in which season is in the [Europa-Park guide](/blog/europa-park-wait-times-tips).
+Our [overview of 2027 novelties](/blog/new-theme-park-attractions-2027) lists
 what other parks and manufacturers have confirmed.
 
 The current season ends on 9 January 2027, and overnight guests can still
 get into the park on 10 January. This winter is also the Euro-Mir's last, as
-covered in the [post on the Euro-Mir farewell](/news/europa-park-euro-mir-farewell).
+covered in our [post on the Euro-Mir farewell](/news/europa-park-euro-mir-farewell).
 
-All three novelties are announced for families, and none of them is a big
-coaster. For children who are still too short for blue fire and WODAN, Portugal
-and Iceland get something that goes up high. How short they may be depends on
-the minimum height, and the park hasn't given it yet.
+None of the three novelties is a big coaster. For children who are still too
+short for blue fire and WODAN, Portugal and Iceland get something that goes up
+high, as long as they meet a minimum height the park hasn't given yet.
 
 The table lists the rides the three novelties will stand next to.
 
