@@ -57,9 +57,8 @@ coverImage:
 seo:
   title: 'Halloween 2026 USA: HHN, Scary Farm, Fright Fest'
   description: >-
-    A night at Halloween Horror Nights in Orlando starts at $94.99. The Disney
-    parties are sold out. Many parks hold daytime Halloween events included in
-    regular admission.
+    A night at Halloween Horror Nights in Orlando starts at $94.99. During the
+    day, many parks include their Halloween events in regular admission.
   keywords:
     - Halloween theme parks USA 2026
     - Halloween Horror Nights 2026 Orlando

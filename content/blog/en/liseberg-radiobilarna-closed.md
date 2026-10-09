@@ -24,7 +24,8 @@ rideLinks:
 seo:
   title: 'Radiobilarna bumper cars at Liseberg have closed'
   description: >-
-    Liseberg closed its Radiobilarna bumper cars on 4 October 2026. The building will be demolished. It's still open whether the ride gets a new spot in the park.
+    Liseberg closed its Radiobilarna bumper cars on 4 October 2026, after nearly
+    100 years. The building is coming down to make way for a new attraction.
   keywords:
     - Radiobilarna Liseberg
     - Radiobilarna closed

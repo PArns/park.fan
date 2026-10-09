@@ -25,9 +25,8 @@ rideLinks:
 seo:
   title: 'Legoland Deutschland Tips: Wait Times, Fastrack, Tickets and Halloween'
   description: >-
-    Legoland Deutschland is quietest on Fridays and busiest on Saturdays. With an
-    adult, a child never needs more than 1.25 metres on any ride. Day tickets cost
-    from €39 online.
+    Legoland Deutschland is quietest on Fridays and busiest on Saturdays. A
+    child riding with an adult never needs more than 1.25 metres on any ride.
   keywords:
     - Legoland Deutschland
     - Legoland Deutschland tips

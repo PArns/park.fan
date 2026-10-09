@@ -32,9 +32,9 @@ rideLinks:
 seo:
   title: 'Plopsaland Deutschland 2026: wait times, prices, best days'
   description: >-
-    Across 225 measured days, most rides at the former Holiday Park in Haßloch
-    had a wait of only a few minutes. Fridays are quietest, except for the
-    Halloween Fridays in October.
+    At the former Holiday Park in Haßloch, you'll queue only a few minutes for
+    most rides. Fridays are quietest, except for the Halloween Fridays in
+    October.
   keywords:
     - Plopsaland Deutschland
     - Holiday Park

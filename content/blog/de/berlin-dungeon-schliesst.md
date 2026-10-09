@@ -20,9 +20,8 @@ rideLinks: false
 seo:
   title: 'Berlin Dungeon schließt am 6. November 2026 dauerhaft'
   description: >-
-    Das Berlin Dungeon schließt nach mehr als 13 Jahren. Letzter Tag ist der
-    6. November 2026. Wer für einen späteren Termin gebucht hat, kann schon
-    jetzt umbuchen.
+    Das Berlin Dungeon schließt nach mehr als 13 Jahren am 6. November 2026. Wer
+    für einen späteren Termin gebucht hat, kann schon jetzt umbuchen.
   keywords:
     - Berlin Dungeon schließt
     - Berlin Dungeon Schließung

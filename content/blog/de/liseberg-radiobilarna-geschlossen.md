@@ -24,7 +24,9 @@ rideLinks:
 seo:
   title: 'Autoscooter Radiobilarna in Liseberg geschlossen'
   description: >-
-    Liseberg hat seinen Autoscooter Radiobilarna am 4. Oktober 2026 geschlossen. Das Gebäude wird abgerissen. Ob die Bahn einen neuen Platz im Park bekommt, ist offen.
+    Liseberg hat seinen Autoscooter Radiobilarna am 4. Oktober 2026 nach fast
+    100 Jahren geschlossen. Das Gebäude wird für eine neue Attraktion
+    abgerissen.
   keywords:
     - Radiobilarna Liseberg
     - Radiobilarna geschlossen

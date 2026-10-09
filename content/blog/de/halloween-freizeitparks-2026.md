@@ -36,7 +36,7 @@ seo:
   title: 'Halloween Freizeitparks 2026: Termine & Mutproben'
   description: >-
     Das Halloween Horror Festival im Movie Park und Traumatica im Europa-Park
-    laufen bis Anfang November. Das Phantasialand und das Efteling feiern kein
+    enden Anfang November. Das Phantasialand und das Efteling feiern kein
     Halloween.
   keywords:
     - Halloween Freizeitpark 2026

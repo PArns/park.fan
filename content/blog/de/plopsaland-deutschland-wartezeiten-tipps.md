@@ -32,9 +32,9 @@ rideLinks:
 seo:
   title: 'Plopsaland Deutschland 2026: Wartezeiten, Preise, beste Tage'
   description: >-
-    Nach unseren Messungen an 225 Tagen stehst du im früheren Holiday Park in
-    Haßloch an den meisten Bahnen nur wenige Minuten an. Am wenigsten los ist
-    freitags, außer an den Halloween-Freitagen im Oktober.
+    Im früheren Holiday Park in Haßloch stehst du an den meisten Bahnen nur
+    wenige Minuten an. Am wenigsten los ist freitags, außer an den
+    Halloween-Freitagen.
   keywords:
     - Plopsaland Deutschland
     - Holiday Park

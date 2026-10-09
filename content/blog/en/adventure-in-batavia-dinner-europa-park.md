@@ -31,8 +31,7 @@ seo:
   title: 'Adventure in Batavia: Europa-Park dinner from 23 October'
   description: >-
     Europa-Park runs the dinner show "Adventure in Batavia" on eight evenings
-    from 23 October 2026 to 7 January 2027. Adults pay €155, children €105. The
-    ride and the drinks are included in the price.
+    from 23 October 2026 to 7 January 2027. Adults pay €155, children €105.
   keywords:
     - Adventure in Batavia
     - Europa-Park dinner

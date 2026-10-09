@@ -29,8 +29,7 @@ seo:
   title: 'Europa-Park plans three new family rides for 2027'
   description: >-
     Europa-Park announced three new family attractions for 2027 on 8 October
-    2026. The park hasn't said yet when they open or how tall children must be
-    to ride.
+    2026. The park hasn't announced opening dates or height requirements yet.
   keywords:
     - Europa-Park new for 2027
     - Wild Swing XL Europa-Park

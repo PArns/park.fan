@@ -27,7 +27,6 @@ seo:
   description: >-
     Im Legoland Deutschland ist freitags am wenigsten los und samstags am
     meisten. In Begleitung braucht ein Kind an keiner Bahn mehr als 1,25 Meter.
-    Tageskarten kosten online ab 39 €.
   keywords:
     - Legoland Deutschland
     - Legoland Deutschland Tipps

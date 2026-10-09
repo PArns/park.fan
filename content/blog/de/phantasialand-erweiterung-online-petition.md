@@ -28,8 +28,8 @@ coverImage:
 seo:
   title: 'Gegenpetition für die Phantasialand-Erweiterung in Brühl'
   description: >-
-    Eine Gegenpetition fordert, das Phantasialand zu erweitern und den Verlust
-    an Natur auszugleichen. Sie läuft bis zum 23. November. Ich habe sie
+    Eine Gegenpetition fordert, das Phantasialand zu erweitern und den
+    Naturverlust auszugleichen. Sie läuft bis zum 23. November. Ich habe sie
     unterschrieben.
   keywords:
     - Phantasialand Erweiterung Petition

@@ -30,8 +30,8 @@ seo:
   title: 'Europa-Park plant 2027 drei neue Familienattraktionen'
   description: >-
     Der Europa-Park hat am 8. Oktober 2026 drei neue Familienattraktionen für
-    2027 angekündigt. Wann sie öffnen und ab welcher Größe Kinder mitfahren
-    dürfen, hat der Park noch nicht gesagt.
+    2027 angekündigt. Eröffnungstermin und Mindestgröße nennt der Park noch
+    nicht.
   keywords:
     - Europa-Park Neuheiten 2027
     - Wild Swing XL Europa-Park

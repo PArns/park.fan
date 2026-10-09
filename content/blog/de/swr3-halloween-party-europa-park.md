@@ -20,9 +20,8 @@ rideLinks: false
 seo:
   title: 'SWR3 Halloween-Party im Europa-Park: 31. Oktober 2026'
   description: >-
-    Die SWR3 Halloween-Party im Europa-Park am 31. Oktober 2026 ist nur für Gäste
-    ab 18. Tickets kosten ab 39 €. Neben DJ Jaden Bojsen gibt es eine Silent Disco
-    und Karaoke.
+    Die SWR3 Halloween-Party im Europa-Park am 31. Oktober 2026 ist nur für
+    Gäste ab 18. Tickets kosten ab 39 €. Den Hauptact spielt DJ Jaden Bojsen.
   keywords:
     - SWR3 Halloween-Party
     - SWR3 Halloween-Party Europa-Park
