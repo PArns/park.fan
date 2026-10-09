@@ -2,7 +2,7 @@
 title: 'Welche Freizeitparks im Winter 2026/27 geöffnet haben'
 translationKey: winter-parks-2026
 date: '2026-09-03'
-updatedAt: '2026-10-03'
+updatedAt: '2026-10-08'
 author: patrick
 mode: published
 featured: false
@@ -270,6 +270,20 @@ Weihnachtsmarkt. Geöffnet ist an 20 Tagen von 11 bis 19 Uhr, am 24. und 31.
 Dezember bis 18 Uhr. Ein Datum musst du nicht buchen, Ticket und Abo gelten
 an jedem Wintertag. Drei Attraktionen bleiben zu: Radja River, Vampire und Flash
 Back. Bei einer Wildwasserbahn im Dezember ist das keine Überraschung.
+
+Am Vorabend, **Freitag, 4. Dezember 2026**, findet im Park zum ersten Mal ein
+Abendlauf statt, der **Walibi Winter Run**. Tagsüber bleibt der Park zu. Die
+Startnummern gibt es ab 16:30 Uhr, um 18:00 Uhr starten die 10 km, um 18:15 Uhr
+die 5 km. Start, Ziel und Verpflegung liegen auf dem Parkplatz. Die 5 km führen
+in einer Runde durch den Park und durch Backstage-Bereiche, die 10 km sind zwei
+Runden. Ein Teil der Strecke ist unbeleuchtet, deshalb empfiehlt der Park eine
+Stirn- oder Brustlampe. Die Anmeldung kostet **24 €** für die 5 km und **29 €**
+für die 10 km, Parken ist kostenlos, und 1 € je Anmeldung geht an eine
+Organisation. Eine Begleitperson je Läufer zahlt 15 €. Nach dem Lauf ist der
+Park für die Läufer von etwa 19 bis 22 Uhr offen, mit einer Auswahl an
+Attraktionen, darunter Melody Road, Wave Swinger, [Loup-Garou](ref:walibi-belgium/loup-garou), Cinéma 4D,
+Spinning Vibe, Silverton, Dalton Terror und Calamity Mine, dazu Weihnachtsmarkt
+und Sugar Rush. Angemeldet wird über Chronorace.
 
 [Walibi Belgium](ref:walibi-belgium?full)
 
@@ -567,7 +581,7 @@ und die Eisbahn steht wieder im Berliner Themenbereich._
 - Plopsaland Deutschland, Wintersaison 2025/26 und Majaland Pfalz: [Pressemitteilung vom 5. November 2025 (Plopsa)](https://plopsanews.com/de/pressemitteilungen/das-plopsaland-deutschland-feiert-die-wintersaison-so-einmalig-schoen-und-lang-wie-noch-nie)
 - Winter Efteling 2026/27: [Winter Efteling (offiziell)](https://www.efteling.com/de/park/events/winter-efteling) · [Öffnungszeiten ab 16. November (Looopings)](https://www.looopings.nl/weblog/34023/De-Efteling-gaat-komende-winter-op-veel-dagen-een-uurtje-eerder-open.html) · [Attraktionen in Wartung (offiziell)](https://www.efteling.com/en/park/information/in-maintenance)
 - Toverland, Termine, Hallen und Winter Laguna: [Jahreskalender 2026 (offiziell)](https://www.toverland.com/toverblog/blog-jaarkalender2026) · [Winter Feelings (offiziell)](https://www.toverland.com/magie/winter-feelings) · Pay-per-Ride vom 28. November bis 16. Dezember: [Toverland test gratis entree (Pretwerk)](https://pretwerk.nl/recreatie-actueel/deelsectoren/attracties/toverland-test-gratis-entree-en-betalen-per-attractie-tijdens-winter-feelings/102669/)
-- Walibi Belgium: [Walibi Winter mit FAQ und geschlossenen Attraktionen (offiziell)](https://www.walibi.be/walibi-winter/en)
+- Walibi Belgium: [Walibi Winter mit FAQ und geschlossenen Attraktionen (offiziell)](https://www.walibi.be/walibi-winter/en) · [Walibi Winter Run, Pressemitteilung vom 10. August 2026 (offiziell)](https://walibibelgium.prezly.com/walibi-winter-run-une-premiere-course-nocturne-au-coeur-de-la-magie-de-noel)
 - Bobbejaanland: [Wintert, Öffnungszeiten und Programm (offiziell)](https://www.bobbejaanland.be/bobbejaanland-wintert/openingstijden) · [erste Winteröffnung 2025 (VRT)](https://www.vrt.be/vrtnws/nl/2025/12/30/kasterlee-bobbejaanland-wintert-succes/)
 - Movie Park: [Hollywood Christmas (offiziell)](https://www.movieparkgermany.de/christmas) · [Pressemitteilung vom 4. März 2026, mehr als eine Million Lichter](https://www.movieparkgermany.de/presse/pm-04-03-2026-30-jahre) · [Programm 2025 (Themenpark.de)](https://www.themenpark.de/news/movie-park-germany/movie-parks-hollywood-christmas-2025/32359)
 - Legoland Deutschland: [WinterWonder LEGOLAND (offiziell)](https://www.legoland.de/legoland-entdecken/der-park/winterwonder-legoland/) · [dritte Winteröffnung 2025/26 (FreizeitparkNEWS)](https://www.freizeitparknews.de/legoland-deutschland-resort/winterwonder-legoland-2025-2026/)
