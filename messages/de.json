@@ -500,7 +500,7 @@
     "planner": "Tagesplaner",
     "glossary": "Wörterbuch",
     "glossaryHint": "Begriffe aus Warteschlange und Achterbahn, erklärt.",
-    "blog": "Backstage",
+    "blog": "Guides",
     "more": "Mehr",
     "fancast": "Fancast",
     "fancastHint": "Das Prognosemodell hinter dem Crowd-Kalender.",
@@ -508,6 +508,10 @@
     "bestTime": "Beste Reisezeit",
     "bestTimeHint": "Die ruhigsten Wochentage und Monate, Park für Park.",
     "latestPosts": "Neueste Beiträge",
+    "searchArticles": "Guides durchsuchen…",
+    "searchResults": "{count, plural, =1 {# Treffer} other {# Treffer}}",
+    "searchEmpty": "Keine Guides für „{query}“ gefunden.",
+    "searchFailed": "Die Suche ist gerade nicht erreichbar.",
     "latestNews": "Neueste Meldungen",
     "allNews": "Alle News",
     "moreCities": "{count, plural, =1 {1 weitere Stadt} other {# weitere Städte}}",
@@ -2414,7 +2418,8 @@
       "composedHint": "Die Tageshöhe ist vorhergesagt, der Verlauf kommt aus früheren Tagen.",
       "composedHintError": "Tageshöhe vorhergesagt, Verlauf aus früheren Tagen, typisch {minutes} Min. daneben.",
       "longRangeHint": "So weit im Voraus ist schon die Höhe des ganzen Tages unsicher. Die Stundenwerte zeigen nur eine grobe Richtung.",
-      "unmeasuredHint": "Für so weit im Voraus gibt es noch keine Auswertung, wie gut die Prognose trifft. Die Werte zeigen nur eine grobe Richtung."
+      "unmeasuredHint": "Für so weit im Voraus gibt es noch keine Auswertung, wie gut die Prognose trifft. Die Werte zeigen nur eine grobe Richtung.",
+      "climatology": "Frühere Jahre"
     },
     "band": {
       "plusMinus": "± {minutes} Min."
@@ -2463,6 +2468,12 @@
       "no_forecast": "Für diesen Tag hat das Modell noch keine Prognose berechnet. Schau nach dem nächsten Modelllauf wieder rein.",
       "no_observations": "Für diesen vergangenen Tag haben wir keine Messwerte dieses Parks.",
       "data_unavailable": "Ein Dienst hinter dem Plan hat nicht geantwortet. Warum keine Kurven kommen, wissen wir gerade nicht. Versuch es gleich noch einmal."
+    },
+    "climatology": {
+      "title": "Rückblick auf vergleichbare Tage, keine Prognose.",
+      "regular": "Grundlage sind {days, plural, one {# gewöhnlicher Tag} other {# gewöhnliche Tage}} aus früheren Jahren.",
+      "holiday": "Grundlage sind {days, plural, one {# Feiertag oder Brückentag} other {# Feiertage oder Brückentage}} aus früheren Jahren.",
+      "school_vacation": "Grundlage sind {days, plural, one {# Ferientag} other {# Ferientage}} aus früheren Jahren."
     },
     "overview": {
       "empty": "Noch keine Tage geplant.",

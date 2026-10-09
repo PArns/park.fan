@@ -500,7 +500,7 @@
     "planner": "Planificateur",
     "glossary": "Dictionnaire",
     "glossaryHint": "Les termes des files d'attente et des montagnes russes, expliqués.",
-    "blog": "Backstage",
+    "blog": "Guides",
     "more": "Plus",
     "fancast": "Fancast",
     "fancastHint": "Le modèle de prévision derrière le calendrier d’affluence.",
@@ -508,6 +508,10 @@
     "bestTime": "Meilleure période",
     "bestTimeHint": "Les jours et les mois les plus calmes, parc par parc.",
     "latestPosts": "Derniers articles",
+    "searchArticles": "Rechercher un guide…",
+    "searchResults": "{count, plural, one {# résultat} other {# résultats}}",
+    "searchEmpty": "Aucun guide trouvé pour « {query} ».",
+    "searchFailed": "La recherche n’est pas disponible pour le moment.",
     "latestNews": "Dernières actualités",
     "allNews": "Toutes les actualités",
     "moreCities": "{count, plural, =1 {1 autre ville} other {# autres villes}}",
@@ -2414,7 +2418,8 @@
       "composedHint": "Le niveau du jour est prévu, le profil vient des jours précédents.",
       "composedHintError": "Niveau du jour prévu, profil des jours passés, écart habituel {minutes} min.",
       "longRangeHint": "Aussi longtemps à l’avance, même le niveau de la journée entière est incertain. Les valeurs heure par heure ne donnent qu’une tendance.",
-      "unmeasuredHint": "Pour une date aussi lointaine, la précision de la prévision n’a pas encore été évaluée. Les valeurs ne donnent qu’un ordre de grandeur."
+      "unmeasuredHint": "Pour une date aussi lointaine, la précision de la prévision n’a pas encore été évaluée. Les valeurs ne donnent qu’un ordre de grandeur.",
+      "climatology": "Années précédentes"
     },
     "band": {
       "plusMinus": "± {minutes} min"
@@ -2463,6 +2468,12 @@
       "no_forecast": "Le modèle n’a pas encore calculé de prévision pour ce jour. Repasse après le prochain calcul du modèle.",
       "no_observations": "Nous n’avons aucune mesure de ce parc pour ce jour passé.",
       "data_unavailable": "Un service derrière le plan n’a pas répondu. Nous ne savons pas pour l’instant pourquoi il n’y a pas de courbes. Réessaie dans un instant."
+    },
+    "climatology": {
+      "title": "Un retour sur des jours comparables, pas une prévision.",
+      "regular": "Basé sur {days, plural, one {# jour ordinaire} other {# jours ordinaires}} des années précédentes.",
+      "holiday": "Basé sur {days, plural, one {# jour férié ou pont} other {# jours fériés ou ponts}} des années précédentes.",
+      "school_vacation": "Basé sur {days, plural, one {# jour} other {# jours}} de vacances scolaires des années précédentes."
     },
     "overview": {
       "empty": "Aucune journée planifiée.",

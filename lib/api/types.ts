@@ -2120,9 +2120,28 @@ export interface PopularPark {
  * trustworthy and a rendered bar does not say which it is. `observed` points backwards: a past date
  * answered from what the queues did. `measured` is the model's hourly prediction (today and
  * tomorrow). `composed` scales a day-level prediction by the ride's historical hour shape, and
- * `long_range` is the same past the 60-day daily horizon. A surface MUST draw them differently.
+ * `long_range` is the same past the 60-day daily horizon. `climatology` fills the days beyond the
+ * forecast with what was measured on comparable days a year earlier: a look back, never a
+ * forecast, and it carries no error figure. A surface MUST draw them differently.
  */
-export type PlanDayTier = 'observed' | 'measured' | 'composed' | 'long_range';
+export type PlanDayTier = 'observed' | 'measured' | 'composed' | 'climatology' | 'long_range';
+
+/**
+ * The holiday situation a `climatology` day is matched on. Every reference date sits in the same
+ * one as the date asked about.
+ */
+export type PlanDayHolidayState = 'holiday' | 'school_vacation' | 'regular';
+
+/** Where a `climatology` day's curves come from (`PlanDay.climatology`). */
+export interface PlanDayClimatology {
+  /** Always `how_it_was_last_year`: a look back at comparable days. */
+  label: 'how_it_was_last_year';
+  holidayState: PlanDayHolidayState;
+  /** The measured days the curves are the median of. */
+  referenceDates: string[];
+  /** The fewest reference days a ride needs to be served; below it the day stays `long_range`. */
+  minObservationDays: number;
+}
 
 /** One hour of a ride's planned day. */
 export interface PlanDayHour {
@@ -2322,6 +2341,8 @@ export interface PlanDay {
   parkBackgroundImage?: string | null;
   /** `object-position` from the image's curated focal point. */
   parkBackgroundPosition?: string;
+  /** Present exactly when `tier` is `climatology`. */
+  climatology?: PlanDayClimatology;
   rides: PlanDayRide[];
   /** Why `rides` is empty; absent whenever it is not. */
   ridesUnavailable?: PlanDayUnavailable;

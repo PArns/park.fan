@@ -500,7 +500,7 @@
     "planner": "Dagplanner",
     "glossary": "Woordenboek",
     "glossaryHint": "Begrippen uit de wachtrij en de achtbaan, uitgelegd.",
-    "blog": "Backstage",
+    "blog": "Gidsen",
     "more": "Meer",
     "fancast": "Fancast",
     "fancastHint": "Het voorspelmodel achter de druktekalender.",
@@ -508,6 +508,10 @@
     "bestTime": "Beste reistijd",
     "bestTimeHint": "De rustigste weekdagen en maanden, park voor park.",
     "latestPosts": "Nieuwste berichten",
+    "searchArticles": "Gidsen zoeken…",
+    "searchResults": "{count, plural, =1 {# resultaat} other {# resultaten}}",
+    "searchEmpty": "Geen gidsen gevonden voor “{query}”.",
+    "searchFailed": "Zoeken is nu niet beschikbaar.",
     "latestNews": "Laatste nieuws",
     "allNews": "Al het nieuws",
     "moreCities": "{count, plural, =1 {nog 1 stad} other {nog # steden}}",
@@ -2414,7 +2418,8 @@
       "composedHint": "De hoogte van de dag is voorspeld, het verloop komt uit eerdere dagen.",
       "composedHintError": "Dagniveau voorspeld, verloop uit eerdere dagen, meestal {minutes} min ernaast.",
       "longRangeHint": "Zo ver vooruit is zelfs de hoogte van de hele dag nog onzeker. De uurwaarden geven alleen een ruwe richting.",
-      "unmeasuredHint": "Voor zo ver vooruit is er nog geen evaluatie van hoe goed de voorspelling klopt. De waarden geven alleen een ruwe richting."
+      "unmeasuredHint": "Voor zo ver vooruit is er nog geen evaluatie van hoe goed de voorspelling klopt. De waarden geven alleen een ruwe richting.",
+      "climatology": "Eerdere jaren"
     },
     "band": {
       "plusMinus": "± {minutes} min"
@@ -2463,6 +2468,12 @@
       "no_forecast": "Het model heeft voor deze dag nog geen prognose berekend. Kijk na de volgende modelrun nog eens.",
       "no_observations": "Voor deze verleden dag hebben we geen metingen van dit park.",
       "data_unavailable": "Een dienst achter het plan heeft niet geantwoord. We weten nu niet waarom er geen curves zijn. Probeer het zo nog eens."
+    },
+    "climatology": {
+      "title": "Terugblik op vergelijkbare dagen, geen voorspelling.",
+      "regular": "Gebaseerd op {days, plural, one {# gewone dag} other {# gewone dagen}} uit eerdere jaren.",
+      "holiday": "Gebaseerd op {days, plural, one {# feestdag of brugdag} other {# feestdagen of brugdagen}} uit eerdere jaren.",
+      "school_vacation": "Gebaseerd op {days, plural, one {# dag} other {# dagen}} in schoolvakanties uit eerdere jaren."
     },
     "overview": {
       "empty": "Nog geen dagen gepland.",

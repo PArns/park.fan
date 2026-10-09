@@ -6,10 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  El sábado es el día más lleno en nueve de los doce parques; lo más tranquilo
-  suele ser el jueves o el viernes. Con las horas, la cola crece desde la
-  apertura hasta media mañana. En Toverland, Plopsaland Deutschland y Disneyland
-  Paris, el día de la semana apenas importa.
+  En un parque de atracciones suele haber menos gente el jueves o el viernes, y
+  más el sábado. En la mayoría de los parques haces menos cola justo al abrir
+  que a media mañana. En Toverland, Plopsaland Deutschland y Disneyland Paris,
+  el día de la semana apenas importa.
 tags:
   - parque-atracciones
   - tiempos-de-espera
@@ -36,9 +36,7 @@ coverImage:
 seo:
   title: 'Parque de atracciones con poca gente: día y hora'
   description: >-
-    El sábado es el día más lleno en nueve de doce parques, y el jueves y el
-    viernes los más tranquilos. Nuestra medición en Europa-Park, Phantasialand,
-    Efteling y nueve parques más.
+    El sábado es el día con más gente en nueve de doce parques. En Europa-Park el día más tranquilo es el viernes; en Phantasialand y Efteling, el jueves.
   keywords:
     - mejor hora parque de atracciones
     - parque de atracciones con poca gente
@@ -65,49 +63,52 @@ parkLinks:
 ---
 
 El sábado es, en nueve de los doce parques que medimos, el día con los tiempos de
-espera más largos; en Movie Park empata con el martes y el miércoles. Lo más
+espera más largos. En Movie Park empata con el martes y el miércoles. Lo más
 tranquilo suele ser un jueves o un viernes: el viernes en Europa-Park, Heide
 Park, Movie Park, Legoland y Disneyland Paris, el jueves en Phantasialand,
 Efteling y Walibi Holland. Tres parques se salen de ese patrón. En Toverland
-todos los días de la semana se parecen, en Plopsaland Deutschland seis días
-quedan muy juntos, y en Walibi Holland el sábado es uno de los días más vacíos.
+todos los días de la semana se parecen, y en Plopsaland Deutschland seis días
+quedan muy juntos. En Walibi Holland el sábado es incluso uno de los días más
+vacíos.
 
 Con las horas también hay un patrón. En la mayoría de los parques, la espera de
 la primera hora tras la apertura es claramente más corta que después. Luego la
 cola crece y en nueve parques alcanza su máximo entre las diez y las doce. En
-ocho parques, la última o la penúltima hora es la más tranquila. En Phantasialand y
-Heide Park la espera apenas cambia el resto del día, y en Legoland y Movie Park por la
-tarde vuelve a haber más gente.
+ocho parques, la última o la penúltima hora es la más tranquila. En
+Phantasialand y Heide Park la espera apenas cambia después del pico hasta la
+noche. En Legoland y Movie Park por la tarde vuelve a haber más gente.
 
-La página [Mejor época para visitar](/mejor-epoca-para-visitar) te muestra los
-días más tranquilos para el mes en que viajas. Más abajo comparamos
-doce parques con los datos que park.fan recoge desde el 24 de diciembre de 2025.
+Los días más tranquilos para el mes en que viajas están en la página
+[Mejor época para visitar](/mejor-epoca-para-visitar). Los doce parques los
+comparamos con los tiempos de espera que park.fan recoge desde el 24 de
+diciembre de 2025.
 
 ## De dónde salen las cifras
 
 De cada atracción con tiempo de espera en directo, park.fan guarda cada cinco
 minutos la espera que se muestra. De ahí salen los valores que ves en las páginas
-de los parques y en las tablas de este artículo. Las tablas vienen de widgets que
-cargan los datos actuales al abrir el artículo, por eso aquí no copio los minutos
-a mano. En el texto van días de la semana y proporciones que no cambian de un día
-para otro.
+de los parques y en las tablas de este artículo. Las tablas cargan los valores
+actuales cuando abres el artículo. Por eso en el texto no doy minutos, solo días
+de la semana y proporciones que no cambian de un día para otro.
 
-Datos a 6 de octubre de 2026. La comparación por días de la semana usa, para cada
-parque, todos los días en que estuvo abierto y calcula la media de las esperas en
-las grandes atracciones. La curva horaria es la media de las ocho atracciones con
-más cola en cada hora, a lo largo del horario de apertura de cada parque. Los
-tiempos de espera están redondeados a cinco minutos, y en muchos parques varios
-días laborables caen en el mismo escalón. Por eso un «día más tranquilo» suele
-significar que dos o tres días van empatados. Donde cito uno solo, ese día
-también iba por delante en el Crowd-Score, más fino, de la estadística.
+Datos a 6 de octubre de 2026. Para el día de la semana hemos tomado, en cada
+parque, todos los días en que estuvo abierto y hemos calculado la media de las
+esperas en las grandes atracciones. Para la hora hemos promediado, hora a hora,
+las esperas en las ocho atracciones con más cola de cada parque, a lo largo de
+su horario de apertura. Los tiempos de espera están redondeados a cinco minutos,
+y en muchos parques varios días laborables dan el mismo valor. Por eso un «día
+más tranquilo» suele significar que dos o tres días van empatados. Donde cito
+uno solo, ese día también fue el más tranquilo en la puntuación de afluencia,
+más fina, de nuestra estadística.
 
 Las vacaciones las he analizado del 13 de abril al 30 de septiembre de 2026.
-Comparo días laborables, de lunes a viernes sin festivo, que según el calendario
-del parque caían en vacaciones escolares, con días laborables sin vacaciones. El
-recargo dice cuánto más larga fue de media la espera en las grandes atracciones.
-El tiempo y los eventos no están descontados. El
+Comparo días laborables, de lunes a viernes sin festivo, en los que según
+nuestro calendario el parque tenía vacaciones escolares, con días laborables sin
+vacaciones. El recargo es el porcentaje en que la espera en las grandes
+atracciones fue más larga de media. El tiempo y los eventos no están
+descontados. En nuestro
 [artículo sobre las vacaciones escolares en Alemania](/blog/vacaciones-escolares-parques-de-atracciones-alemania)
-analiza bloques concretos, como Semana Santa y verano, y toma como referencia los
+analizamos bloques concretos, como Semana Santa y verano, y los comparamos con
 días laborables en que ningún estado federado tenía vacaciones. Sus valores no
 son, por tanto, directamente comparables con los de aquí.
 
@@ -119,50 +120,50 @@ Los doce parques se pueden repartir en tres grupos.
 
 El primer grupo son los parques con pico de fin de semana: Europa-Park,
 Phantasialand, Efteling, Heide Park, Legoland, Parc Astérix y Walibi Belgium. El
-sábado está arriba, el domingo va detrás o empata con un día laborable, según el
-parque, y el valle cae en miércoles, jueves o viernes.
+sábado es cuando más gente hay; el domingo, según el parque, algo menos o tanta
+como un día laborable. Hay menos gente el miércoles, el jueves o el viernes.
 
-El segundo grupo son parques donde el día de la semana casi no explica nada.
-Toverland tiene la misma media todos los días. En Plopsaland Deutschland seis
-días están en el mismo escalón y solo el sábado va algo más lleno. En Disneyland
-Paris los días se separan por un escalón de redondeo, con sábado y martes arriba
-y viernes abajo. En estos parques las esperas se parecen todos los días, y en
-Plopsaland y Toverland, además, son cortas.
+El segundo grupo son parques donde el día de la semana casi no explica nada. En
+Toverland se espera de media lo mismo todos los días. En Plopsaland Deutschland
+seis días van igual de llenos y solo el sábado va algo más. En Disneyland Paris
+solo hay cinco minutos entre el día más lleno y el más tranquilo: sábado y martes
+son los más llenos, el viernes el más tranquilo. En estos parques las esperas se
+parecen todos los días, y en Plopsaland y Toverland, además, son cortas.
 
 El tercer grupo son parques que desordenan la clasificación. En Walibi Holland el
 martes es el día más lleno y el sábado uno de los más tranquilos. En Movie Park
-sábado, martes y miércoles empatan en cabeza, pero de lunes a miércoles solo hay
-medición en unos 15 días de apertura, frente a unos 30 en fin de semana.
+sábado, martes y miércoles empatan en cabeza. Pero de lunes a miércoles solo hay
+medición en unos 15 días de apertura, y en fin de semana en unos 30.
 
 ```park-comparison-widget slugs=europa-park,phantasialand,efteling,heide-park,movie-park-germany,plopsaland-deutschland,legoland-deutschland,parc-asterix,attractiepark-toverland,walibi-holland,walibi-belgium,/parks/europe/france/paris/disneyland-park show=quietest
 
 ```
 
-Un guion en la última columna significa que los datos no dan un día más
+Un guion en la última columna significa que ningún día es claramente el más
 tranquilo, por ejemplo porque tres días están empatados o porque un día de la
-semana se midió muy pocas veces. Es un resultado, no un hueco. Afecta sobre todo
+semana se midió muy pocas veces. También eso es un resultado, y afecta sobre todo
 a Toverland y a Plopsaland.
 
 ## La hora del día de un vistazo
 
 La curva a lo largo del día se parece en la mayoría de los parques. En la primera
 hora tras la apertura, la espera es en casi todos claramente más corta que
-después; en Plopsaland, Heide Park y Walibi Holland ronda la mitad o menos. Luego
-salta hacia arriba. En Europa-Park el máximo llega a las diez, en Efteling, Parc
-Astérix y los dos Walibi a las once, y en Phantasialand, Heide Park, Plopsaland y
-Disneyland Paris a las doce. Después la curva baja, unas veces despacio y otras
-deprisa.
+después. En Plopsaland, Heide Park y Walibi Holland dura entonces más o menos la
+mitad que en el pico, o menos. Luego salta hacia arriba. En Europa-Park el máximo
+llega a las diez, en Efteling, Parc Astérix y los dos Walibi a las once, y en
+Phantasialand, Heide Park, Plopsaland y Disneyland Paris a las doce. Después la
+curva baja, unas veces despacio y otras deprisa.
 
-Los parques se diferencian en cuánto baja. En Disneyland Paris, la hora más
-tranquila está algo por encima de un tercio de la más llena; en Parc Astérix, algo
-por encima de dos quintos; en Walibi Holland, en la mitad, y en Europa-Park, en
-unos seis décimos. En Phantasialand la hora más tranquila queda solo un sexto por
-debajo de la más llena, y en Heide Park y Movie Park, un séptimo. Quien espera
-allí a la tarde ahorra poco.
+Los parques se diferencian en cuánto baja. En Disneyland Paris, la espera en la
+hora más tranquila es algo más de un tercio de la de la hora más llena; en Parc
+Astérix, algo más de dos quintos; en Walibi Holland, la mitad, y en Europa-Park,
+unos seis décimos. En Phantasialand la espera en la hora más tranquila es solo
+un sexto más corta que en la más llena, y en Heide Park y Movie Park, un séptimo.
+Quien espera allí a la tarde ahorra poco.
 
 Dos parques van contra el patrón. En Legoland Deutschland y Movie Park Germany la
-última hora con datos, las 17 h, es una de las más llenas. La curva de Heide Park
-también termina a las 17 h, pero allí no sube al final.
+última hora que medimos, las 17 h, es una de las más llenas. En Heide Park las
+17 h son también la última hora medida, pero allí no se llena más al final.
 
 La curva de Europa-Park, atracción por atracción:
 
@@ -172,22 +173,23 @@ La curva de Europa-Park, atracción por atracción:
 
 ## Europa-Park
 
-[Europa-Park](ref:europa-park) es un parque de sábado. El sábado queda claramente
-por encima del resto, y los otros seis días están muy juntos. El más tranquilo es
-el viernes, seguido de cerca por domingo, miércoles y jueves; el domingo es aquí
-uno de los días más vacíos de la semana. Si quieres el parque despejado de día,
-planifica de miércoles a viernes o el domingo.
+[Europa-Park](ref:europa-park) es un parque de sábado. El sábado hay claramente
+más gente que el resto de días, y los otros seis están muy juntos. El más
+tranquilo es el viernes, seguido de cerca por domingo, miércoles y jueves. El
+domingo es, por tanto, uno de los días más vacíos de la semana aquí. Si quieres
+hacer poca cola, planifica de miércoles a viernes o el domingo.
 
-A lo largo del día, el máximo llega pronto, hacia las diez, y baja a una meseta
-que dura hasta primera hora de la tarde-noche. La hora más tranquila es la
-penúltima antes del cierre, y después vuelve a subir un poco.
+Las esperas más largas llegan pronto, hacia las diez. Después se acortan y se
+mantienen más o menos igual hasta primera hora de la tarde-noche. La hora más
+tranquila es la penúltima antes del cierre, y en la última vuelve a haber algo
+más de gente.
 
-Las vacaciones cambian poco en Europa-Park: un laborable de vacaciones quedó
-alrededor de un 11 % por encima de un laborable de clases, con 40 días de
-vacaciones y 79 de clases. Es el valor más pequeño entre los parques alemanes. Un
-fin de semana con clases queda algo más arriba, con un 16 %. La
-[guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos) explica en
-qué atracciones subir primero.
+Las vacaciones cambian poco en Europa-Park. En un laborable de vacaciones se
+esperaba alrededor de un 11 % más que en un laborable de clases, con 40 días de
+vacaciones y 79 de clases. Es el valor más pequeño entre los parques alemanes. En
+un fin de semana con clases era un 16 %, algo más. En qué atracciones subir
+primero lo tienes en la
+[guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos).
 
 ```stats-widget slug=europa-park show=weekdays
 
@@ -198,200 +200,200 @@ qué atracciones subir primero.
 En [Phantasialand](ref:phantasialand) hay mucha gente cualquier día, y menos el
 jueves. El sábado es el más lleno, seguido del domingo. Lunes, martes, viernes y
 miércoles quedan en medio y apenas se distinguen. La diferencia entre sábado y
-jueves es una de las mayores que comparamos aquí.
+jueves es una de las mayores de esta comparación.
 
 La curva del día es plana. Tras la subida temprana hasta mediodía, la espera se
-mantiene casi igual de alta hasta el cierre, y la hora más tranquila queda solo
-un sexto por debajo de la más llena. Quien espera a la noche en Phantasialand no
+mantiene casi igual de larga hasta el cierre. En la hora más tranquila es solo un
+sexto más corta que en la más llena. Quien espera a la noche en Phantasialand no
 se encuentra una atracción vacía.
 
-Solo en Heide Park el recargo de vacaciones es mayor: un laborable de vacaciones
-quedó alrededor de un 65 % por encima de un laborable de clases, y un fin de
-semana con clases, alrededor de un 39 %. Las vacaciones llenan el parque más que
-un fin de semana. Eso encaja con el
-[artículo sobre las vacaciones escolares](/blog/vacaciones-escolares-parques-de-atracciones-alemania),
-según el cual Phantasialand ya está lleno antes de que empiecen las vacaciones en
-Renania del Norte-Westfalia. Cómo aguantarlo igualmente lo explica la
+Solo en Heide Park las vacaciones pesan todavía más. Un laborable de vacaciones
+iba alrededor de un 65 % más lleno que un laborable de clases, y un fin de semana
+con clases, alrededor de un 39 %. Las vacaciones llenan el parque más que un fin
+de semana. Eso encaja con nuestro
+[artículo sobre las vacaciones escolares](/blog/vacaciones-escolares-parques-de-atracciones-alemania):
+Phantasialand ya está lleno antes de que empiecen las vacaciones en Renania del
+Norte-Westfalia. Cómo aguantarlo igualmente está en la
 [guía de Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
 
 ## Efteling
 
-En [Efteling](ref:efteling) los días de la semana apenas se diferencian. Sábado y domingo
-van algo más llenos, el lunes queda en medio, y el jueves es el día más tranquilo,
-seguido de martes y miércoles. Un lunes en Efteling va algo más lleno que un
-martes.
+En [Efteling](ref:efteling) los días de la semana apenas se diferencian. Sábado y
+domingo van algo más llenos, y el lunes queda en medio. El jueves es el día más
+tranquilo, seguido de martes y miércoles. Un lunes en Efteling va algo más lleno
+que un martes.
 
-A lo largo del día la curva baja claramente por la tarde-noche; la última hora es
-la más tranquila y queda en unos siete décimos del máximo. El punto más alto
-llega a las once, a mediodía y a primera hora de la tarde sigue más o menos igual
-de lleno, y luego la afluencia afloja.
+El pico llega a las once. A mediodía y a primera hora de la tarde sigue más o
+menos igual de lleno, y luego la afluencia afloja. Por la tarde-noche la espera
+se acorta claramente: en la última hora, la más tranquila, dura unos siete
+décimos de la del pico.
 
-Las vacaciones solo suben la espera un 11 % en Efteling, con 36 días de
-vacaciones y 84 de clases. El fin de semana con clases queda alrededor de un
-14 % por encima de un laborable. Las atracciones y el orden están en la
-[guía de Efteling](/blog/efteling-el-disney-de-los-paises-bajos).
+En vacaciones, la espera en Efteling solo fue un 11 % más larga en días
+laborables, con 36 días de vacaciones y 84 de clases. El fin de semana con clases
+era alrededor de un 14 % más que un laborable. Las atracciones y el orden están en
+la [guía de Efteling](/blog/efteling-el-disney-de-los-paises-bajos).
 
 ## Heide Park
 
-[Heide Park](ref:heide-park) tiene la mayor diferencia por vacaciones de todos.
-Un laborable de vacaciones quedó alrededor de un 84 % por encima de un laborable
-de clases, con 32 días de vacaciones y 75 de clases. Un fin de semana con clases
-llega a un 47 %. Entre semana, en vacaciones, el parque puede estar más lleno que
-un día de fin de semana con clases. El sábado es también por lo demás el día más
-lleno y el viernes el más tranquilo; el domingo queda en medio y cerca del
-viernes.
+En [Heide Park](ref:heide-park) las vacaciones pesan más que en ningún otro
+parque. En un laborable de vacaciones se esperaba alrededor de un 84 % más que en
+un laborable de clases, con 32 días de vacaciones y 75 de clases. En un fin de
+semana con clases era un 47 %. Entre semana, en vacaciones, el parque puede estar
+más lleno que un día de fin de semana con clases. Por lo demás, el sábado es
+también el día más lleno y el viernes el más tranquilo. El domingo queda en
+medio, cerca del viernes.
 
-La curva del día es una de las más planas, parecida a la de Phantasialand. El
-máximo llega hacia las doce, y la hora más tranquila, a las dieciséis, queda solo
-un séptimo por debajo. También en Heide Park se gana poco por la tarde. La
-[guía de Heide Park](/blog/heide-park-tiempos-de-espera-consejos) dice con qué
-empezar.
+La curva del día es una de las más planas, parecida a la de Phantasialand. Hacia
+las doce es cuando más gente hay. En la hora más tranquila, a las dieciséis, la espera es
+solo un séptimo más corta. También en Heide Park se gana poco por la tarde. Con
+qué empezar lo tienes en la
+[guía de Heide Park](/blog/heide-park-tiempos-de-espera-consejos).
 
 ## Movie Park Germany
 
-En [Movie Park Germany](ref:movie-park-germany) el viernes está abajo, y con
-claridad. Sábado, martes y miércoles están arriba, pero esos tres días laborables
-se midieron en solo unos 15 o 16 días de apertura. Por eso el día más tranquilo
-lo damos solo con cautela: viernes, y después jueves y domingo. El artículo sobre
-las vacaciones escolares señala que fuera de vacaciones el parque cierra muchos
-días laborables.
+En [Movie Park Germany](ref:movie-park-germany) el viernes es, con clara ventaja,
+el día con las esperas más cortas. Sábado, martes y miércoles son los más llenos,
+pero el martes y el miércoles se midieron en solo unos 15 o 16 días de apertura.
+Por eso el día más tranquilo lo damos solo con cautela: viernes, y después jueves
+y domingo. Fuera de vacaciones el parque cierra muchos días laborables, como
+también cuenta nuestro
+[artículo sobre las vacaciones escolares](/blog/vacaciones-escolares-parques-de-atracciones-alemania).
 
 La curva del día no tiene pico de mañana. La espera se mantiene más o menos igual
-de las once a las diecisiete horas, la hora más tranquila cae por la tarde, y en
-la última hora vuelve a haber tanta gente como a mediodía.
+de las once a las diecisiete horas. Hay menos gente por la tarde, y en la última
+hora vuelve a haber tanta como a mediodía.
 
-En vacaciones, un laborable va alrededor de un 54 % más lleno que con clases, con
-33 días de vacaciones y 47 de clases. El fin de semana con clases queda solo un
-15 % por encima de un laborable. En Movie Park, un laborable de vacaciones pesa
-claramente más que un fin de semana. Los detalles sobre atracciones y el
-funcionamiento en Halloween están en la
+En vacaciones, un laborable iba alrededor de un 54 % más lleno que con clases,
+con 33 días de vacaciones y 47 de clases. En un fin de semana con clases se
+esperaba solo un 15 % más que en un laborable. En Movie Park, un laborable de
+vacaciones pesa claramente más que un fin de semana. Los detalles sobre
+atracciones y el funcionamiento en Halloween están en la
 [guía de Movie Park](/blog/movie-park-germany-tiempos-de-espera-consejos).
 
 ## Plopsaland Deutschland
 
 En [Plopsaland Deutschland](ref:plopsaland-deutschland), en Haßloch, seis días de
-la semana están al mismo nivel y solo el sábado va algo más lleno. Martes y
-viernes son formalmente los más bajos, pero la diferencia cae dentro del
-redondeo de cinco minutos. Un «día más tranquilo» no existe aquí.
+la semana van igual de llenos y solo el sábado va algo más. Martes y viernes son
+los más bajos sobre el papel, pero la diferencia es menor que los cinco minutos a
+los que redondeamos. Un «día más tranquilo» no existe aquí.
 
-La curva del día lo muestra mejor: las dos primeras horas están casi vacías,
-luego la espera sube hacia las doce, se mantiene más o menos igual hasta el cierre
-y, aun así, es muy baja. La hora más tranquila queda algo por encima de la mitad
-de la más llena.
+A lo largo del día se ve aún mejor lo poco que hay. Las dos primeras horas están
+casi vacías, luego la espera sube hasta las doce y se mantiene más o menos igual
+hasta el cierre, en un nivel muy bajo. En la hora más tranquila dura algo más de
+la mitad que en la más llena.
 
-Las vacaciones, en cambio, se notan: un laborable de vacaciones quedó alrededor
-de un 49 % por encima de un laborable de clases, y un fin de semana con clases,
+Las vacaciones, en cambio, pesan mucho. Un laborable de vacaciones iba alrededor
+de un 49 % más lleno que un laborable de clases, y un fin de semana con clases,
 alrededor de un 53 %. Un laborable de vacaciones va, pues, más o menos tan lleno
-en Plopsaland como un día de fin de semana con clases. La relación con las
-vacaciones en Renania-Palatinado y Renania del Norte-Westfalia la muestra el
+en Plopsaland como un día de fin de semana con clases. Cómo se relaciona con las
+vacaciones en Renania-Palatinado y Renania del Norte-Westfalia está en el
 [artículo sobre las vacaciones escolares](/blog/vacaciones-escolares-parques-de-atracciones-alemania).
 
 ## Legoland Deutschland
 
 [Legoland Deutschland](ref:legoland-deutschland), en Günzburg, es un parque de
-fin de semana. El sábado es el día más lleno y el domingo el segundo; el más
+fin de semana. El sábado es el día más lleno y el domingo el segundo. El más
 tranquilo es el viernes, seguido de cerca por miércoles y jueves. De miércoles a
 viernes es cuando menos cola haces allí.
 
-La espera sube hasta las doce, baja un poco a mediodía y en la última hora con
-datos, a las 17 h, es la más alta. Un momento tranquilo solo llega justo después
+La espera sube hasta las doce y baja un poco a mediodía. Es más larga que nunca
+en la última hora que medimos, a las 17 h. Aquí solo hay poca cola justo después
 de la apertura.
 
-En vacaciones, un laborable quedó alrededor de un 54 % por encima de un laborable
-de clases, y un fin de semana con clases, alrededor de un 46 %. Un laborable de
-vacaciones va, pues, más lleno en Legoland que un día de fin de semana con clases,
-aunque con menos margen que en Heide Park.
+En vacaciones, en un laborable se esperaba alrededor de un 54 % más que en un
+laborable de clases, y en un fin de semana con clases, alrededor de un 46 %. Un
+laborable de vacaciones va, pues, más lleno en Legoland que un día de fin de
+semana con clases, aunque con menos margen que en Heide Park.
 
 ## Parc Astérix
 
 En [Parc Astérix](ref:parc-asterix), cerca de París, el sábado es el día más
-lleno, el domingo el segundo y el miércoles el más tranquilo. El martes queda
-justo detrás, y luego vienen jueves, viernes y lunes. La diferencia entre sábado
-y miércoles es una de las mayores de esta comparación.
+lleno y el domingo el segundo. El más tranquilo es el miércoles, justo por
+delante del martes, y luego vienen jueves, viernes y lunes. La diferencia entre
+sábado y miércoles es una de las mayores de esta comparación.
 
-El parque tiene la curva diaria más pronunciada después de Disneyland Paris. El
-máximo llega hacia las once, y hasta la noche la espera baja a algo más de dos
-quintos de él. La hora más tranquila es la última, y la curva llega hasta las
-21 h. A las 17 h la curva está solo en unos dos tercios del pico, y a partir de
-las 19 h, en alrededor de la mitad. Quien llega al parque a partir de las 19 h
-espera en las grandes atracciones solo la mitad que a las once.
+El parque tiene la curva diaria más pronunciada después de Disneyland Paris. Hacia
+las once es cuando más gente hay, y hasta la noche la espera baja a algo más de dos
+quintos de ese nivel. La curva llega hasta las 21 h, y la última hora es la más
+tranquila. A las 17 h la espera sigue siendo unos dos tercios de la del pico.
+Quien está en el parque a partir de las 19 h espera en las grandes atracciones
+solo la mitad que a las once.
 
-Las vacaciones llenan el parque alrededor de un 35 %, con 50 días de vacaciones y
-51 de clases. Un fin de semana con clases llega a un 32 %. La
-[guía de Parc Astérix](/blog/parc-asterix-tiempos-de-espera-consejos) tiene el
-orden de las atracciones.
+En vacaciones, en días laborables se esperaba alrededor de un 35 % más, con 50
+días de vacaciones y 51 de clases. En un fin de semana con clases era alrededor
+de un 32 %. El orden de las atracciones está en la
+[guía de Parc Astérix](/blog/parc-asterix-tiempos-de-espera-consejos).
 
 ## Toverland
 
-En [Toverland](ref:attractiepark-toverland), en Sevenum, todos los días de la
-semana se parecen; la media es la misma de lunes a domingo. Aquí no hay un día
-más tranquilo ni uno más lleno, y a la pregunta de si es mejor ir un martes o un
-sábado los datos no responden.
+En [Toverland](ref:attractiepark-toverland), en Sevenum, esperas de media lo
+mismo de lunes a domingo. No hay un día más tranquilo ni uno más lleno. Según
+nuestras mediciones, da igual que vayas un martes o un sábado.
 
-La espera en las grandes atracciones es baja en comparación con los demás parques
-de este artículo. Eso sí, un laborable de vacaciones quedó alrededor de un 27 %
-por encima de un laborable de clases, con 31 días de vacaciones y 88 de clases, y
-un fin de semana con clases, alrededor de un 22 %.
+En las grandes atracciones esperas aquí menos que en la mayoría de los demás
+parques de esta comparación. Eso sí, en vacaciones la espera en días laborables
+fue alrededor de un 27 % más larga que con clases, con 31 días de vacaciones y 88
+de clases. En un fin de semana con clases fue alrededor de un 22 %.
 
-La curva diaria de Toverland la omito. Contiene horas entre cero y las 23 h,
-también fuera del horario de apertura, y así no se puede leer. En la
+Para Toverland no hay curva diaria: nuestros valores allí van de las cero a las
+23 h, también fuera del horario de apertura. En la
 [guía de Toverland](/blog/toverland-troy-tiempos-de-espera-consejos) están las
 atracciones una por una.
 
 ## Walibi Holland
 
-[Walibi Holland](ref:walibi-holland), en Biddinghuizen, es el parque donde el día
-de la semana invierte la clasificación. El día más lleno es el martes, seguido de
-domingo y lunes. El sábado es de los más tranquilos, y el más tranquilo de todos
-es el jueves. El martes y el lunes se midieron en solo unos 14 y 15 días, frente a
-entre 21 y 28 en los demás, así que el martes lo tomo solo con reservas.
+En [Walibi Holland](ref:walibi-holland), en Biddinghuizen, el orden de los días
+está casi invertido. El día más lleno es el martes, seguido de domingo y lunes.
+El sábado es de los más tranquilos, y el más tranquilo de todos es el jueves. El
+martes y el lunes, eso sí, se midieron en solo unos 14 y 15 días, los demás en
+entre 21 y 28. Así que el martes como día más lleno lo tomo solo con reservas.
 
-Quien va a Walibi Holland un sábado no espera más que un día laborable. El
-recargo de un fin de semana con clases frente a un laborable con clases es de
-−3 %, y un laborable de vacaciones queda solo un 1 % por encima de uno con
-clases. En Walibi Holland no mueven nada ni las vacaciones ni el fin de semana.
+Quien va a Walibi Holland un sábado no espera más que un día laborable. En un fin
+de semana con clases la espera fue incluso un 3 % más corta que en un laborable
+con clases. En un laborable de vacaciones fue solo alrededor de un 1 % más larga.
+Ni las vacaciones ni el fin de semana cambian nada allí.
 
-La curva del día baja de forma constante desde media mañana y termina en la mitad
-del máximo. A las once es cuando hay más gente, y a partir de las 16 h se nota
-que afloja. Más sobre el parque en la
+A las once es cuando hay más gente. Después la espera se acorta de forma
+constante, de manera notable desde las 16 h, y en la última hora dura la mitad
+que en el pico. Más sobre el parque en la
 [guía de Walibi Holland](/blog/walibi-holland-untamed-hard-gaan).
 
 ## Walibi Belgium
 
-[Walibi Belgium](ref:walibi-belgium), en Wavre, es más fácil de leer. El sábado
-es el día más lleno y el miércoles el más tranquilo. Lunes, martes y jueves
-quedan empatados en medio, y el domingo llega justo antes del sábado. El miércoles
-se midió en solo unos 16 días, el sábado en 29.
+En [Walibi Belgium](ref:walibi-belgium), en Wavre, el orden es más claro. El
+sábado es el día más lleno y el miércoles el más tranquilo. Lunes, martes y
+jueves quedan empatados en medio, y el domingo llega justo antes del sábado. El
+miércoles se midió en solo unos 16 días, el sábado en 29.
 
-Para las vacaciones no puedo dar ninguna cifra en este parque. El calendario no
-registra ni un solo día de vacaciones de Walibi Belgium en el periodo, y por eso
-falta toda comparación. El fin de semana con clases queda alrededor de un 10 %
-por encima de un laborable, menos que en la mayoría de los otros parques.
+Para las vacaciones no hay valor en Walibi Belgium, porque en nuestro calendario
+el parque no tiene ni un día de vacaciones en todo el periodo. En un fin de
+semana con clases se esperaba alrededor de un 10 % más que en un laborable, menos
+que en la mayoría de los otros parques.
 
-La curva del día se parece a la de Walibi Holland: máximo temprano hacia las
-once, después un descenso constante, y la última hora queda en algo más de la
-mitad del máximo. Las atracciones y el mejor orden están en la
+A lo largo del día se parece a Walibi Holland. El pico llega pronto, hacia las
+once, y después la espera se acorta de forma constante. En la última hora dura
+algo más de la mitad que en el pico. Las atracciones y el mejor orden están en la
 [guía de Walibi Belgium](/blog/walibi-belgium-tiempos-de-espera-consejos).
 
 ## Disneyland Paris
 
 En [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), en
-Marne-la-Vallée, las esperas son las más largas de esta comparación y el día de
-la semana casi no marca diferencia. Sábado y martes son los más llenos y el
-viernes el más tranquilo, seguido de cerca por miércoles, domingo, lunes y jueves.
-La diferencia entre el día más lleno y el más tranquilo es de un escalón de
-redondeo, es decir, de cinco minutos.
+Marne-la-Vallée, las esperas son las más largas de esta comparación. El día de
+la semana casi no marca diferencia allí. Sábado y martes son los más llenos y el
+viernes el más tranquilo, seguido de cerca por miércoles, domingo, lunes y
+jueves. Entre el día más lleno y el más tranquilo hay cinco minutos, el escalón
+más pequeño de nuestro redondeo.
 
+En vacaciones la espera solo fue alrededor de un 3 % más larga en días
+laborables que con clases, y en fines de semana con clases, alrededor de un 5 %.
 Sospecho que el parque recibe visitantes de toda Europa y que en algún sitio
-siempre hay vacaciones. No puedo demostrarlo. Un laborable de vacaciones quedó
-solo alrededor de un 3 % por encima de un laborable de clases, y un fin de
-semana con clases, alrededor de un 5 % por encima.
+siempre hay vacaciones. No puedo demostrarlo.
 
-Con la hora, aquí la diferencia es grande. El máximo llega hacia las doce, luego
-se mantiene alto hasta primera hora de la tarde-noche, y la última hora queda
-algo por encima de un tercio de él, la mayor distancia de esta comparación. En la
-[guía de Disneyland Paris](/blog/disneyland-paris-tiempos-de-espera-consejos)
-verás cómo repartir el día.
+La hora, en cambio, pesa mucho aquí. Hacia las doce es cuando más esperas, y la
+espera sigue siendo larga hasta primera hora de la tarde-noche. En la última hora dura
+solo algo más de un tercio, la mayor distancia de esta comparación. Cómo repartir
+el día está en la
+[guía de Disneyland Paris](/blog/disneyland-paris-tiempos-de-espera-consejos).
 
 ```hourly-profile-widget slug=/parks/europe/france/paris/disneyland-park top=8
 
@@ -399,8 +401,8 @@ verás cómo repartir el día.
 
 ## Vacaciones frente a clases
 
-En la tabla figura el recargo de un laborable de vacaciones frente a un laborable
-con clases, y al lado el de un fin de semana con clases.
+En la tabla figura cuánto más se esperaba en un laborable de vacaciones y en un
+fin de semana con clases que en un laborable con clases.
 
 | Parque                 | Laborable de vacaciones, recargo | Fin de semana con clases, recargo |
 | ---------------------- | -------------------------------: | --------------------------------: |
@@ -417,46 +419,45 @@ con clases, y al lado el de un fin de semana con clases.
 | Walibi Holland         |                              1 % |                              −3 % |
 | Walibi Belgium         |  sin vacaciones en el calendario |                              10 % |
 
-Las dos columnas toman como referencia un laborable con clases entre el 13 de
-abril y el 30 de septiembre de 2026. El número de días por celda va de 24 a 88.
-Las cifras salen de una sola temporada, y parte de las vacaciones cae en los
-meses de verano, que ya van llenos de por sí, de modo que vacaciones y estación
-se mezclan. Una comparación dentro de un mismo parque es, por tanto, más sólida
-que una entre dos parques.
+El periodo va del 13 de abril al 30 de septiembre de 2026, y cada valor se basa
+en entre 24 y 88 días. Las cifras salen de una sola temporada. Parte de las
+vacaciones cae en los meses de verano, que ya van llenos de por sí, de modo que
+vacaciones y estación se mezclan. Una comparación dentro de un mismo parque es,
+por tanto, más sólida que una entre dos parques.
 
-En Heide Park, Phantasialand, Movie Park y Legoland el laborable de vacaciones
-queda claramente por encima del fin de semana, con entre un 54 y un 84 % frente a
-entre un 15 y un 47. En Parc Astérix y Toverland queda un poco por encima. Quien
-allí quiera evitar el sábado y elija en vacaciones un martes, espera en un
-laborable de vacaciones más bien más que en un fin de semana con clases. En
-cuatro parques, Europa-Park, Efteling, Disneyland Paris y Walibi Holland, los
-cuatro casos quedan muy cerca. Allí elegir el día apenas sirve de algo, y por la
-tarde-noche la espera baja, en cambio, a entre la mitad y un tercio del máximo, en
-Europa-Park a unos seis décimos.
+En Heide Park, Phantasialand, Movie Park y Legoland las vacaciones pesan más que
+el fin de semana: entre un 54 y un 84 % en los laborables de vacaciones, y solo
+entre un 15 y un 47 en los fines de semana con clases. En Parc Astérix y
+Toverland el laborable de vacaciones queda justo por encima del fin de semana.
+Quien en estos parques elige un martes de vacaciones para evitar el sábado
+espera, por tanto, más bien más que en un fin de semana con clases. En
+Europa-Park, Efteling, Disneyland Paris y Walibi Holland ni las vacaciones ni el
+fin de semana pesan mucho. Allí elegir el día sirve de poco, y la noche, de más:
+en Disneyland Paris y Walibi Holland la espera baja entonces a entre un tercio y
+la mitad del pico, en Europa-Park y Efteling a unos seis o siete décimos.
 
 ## Cómo planificar la visita
 
-**Primero, el parque.** Si solo quieres una atracción sin cola, encajan Plopsaland
-o Toverland, porque allí ningún día hay mucha gente. Si quieres sacar el máximo
-de un parque lleno, lo más seguro es el viernes en Europa-Park o Heide Park, y el
+**Primero, el parque.** Si quieres hacer la menor cola posible, encajan
+Plopsaland o Toverland, porque allí ningún día hay mucha gente. Si vas a uno de
+los parques llenos, lo más seguro es el viernes en Europa-Park o Heide Park, y el
 jueves en Phantasialand y Efteling.
 
-**Después, el día.** En nueve parques el sábado está arriba. Si solo puedes ir en
-sábado, elige parques donde la diferencia es pequeña: Walibi Holland, Disneyland
-Paris, Walibi Belgium o Plopsaland Deutschland. En Phantasialand y Parc Astérix el
-sábado es cuando más pagas.
+**Después, el día.** Si solo puedes ir en sábado, elige un parque donde la
+diferencia sea pequeña: Walibi Holland, Disneyland Paris, Walibi Belgium o
+Plopsaland Deutschland. En Phantasialand y Parc Astérix el sábado es cuando más
+pagas.
 
-**Luego, las vacaciones.** Antes de reservar un día laborable, mira si tu parque
-tiene recargo en vacaciones. En Heide Park, Phantasialand y Movie Park, un día de
-vacaciones entre semana puede ser un sábado. Las fechas de vacaciones de los
-estados alemanes están en el
+**Luego, las vacaciones.** Antes de reservar un laborable de vacaciones, mira en
+la tabla de arriba cuánto pesan las vacaciones en tu parque. Las fechas de
+vacaciones de los estados alemanes están en el
 [artículo sobre las vacaciones escolares](/blog/vacaciones-escolares-parques-de-atracciones-alemania).
 
 **Por último, la hora.** Llega a la apertura: hasta que se forma el pico, hacia
 las diez o las doce, pasas por las grandes atracciones con menos espera. Quien se
 queda hasta la noche gana en Disneyland Paris, Parc Astérix, Europa-Park,
 Efteling y los dos Walibi, pero casi nada en Phantasialand y Heide Park. Cómo
-repartir las horas te lo muestra el [planificador](/blog/planificador).
+repartir las horas está en el artículo sobre el [planificador](/blog/planificador).
 
 Los días más tranquilos de las próximas semanas en Europa-Park:
 
@@ -483,8 +484,8 @@ sábado.
 
 ### ¿Cuál es la mejor hora en un parque de atracciones?
 
-Justo a la apertura y, después, a última hora de la tarde o por la noche. El
-máximo cae en la mayoría de los parques hacia las diez o las doce, y en los
+Justo a la apertura y, después, a última hora de la tarde o por la noche. En la
+mayoría de los parques es entre las diez y las doce cuando más se espera. En los
 parques que cierran tarde, la espera baja después a entre un tercio y la mitad.
 
 ### ¿Las vacaciones escolares son peores que un sábado?
@@ -497,9 +498,9 @@ Disneyland Paris y Walibi Holland la diferencia importa poco.
 ### ¿Vale también para otros años?
 
 Todavía no lo sabemos. Las cifras cubren del 24 de diciembre de 2025 al 5 de
-octubre de 2026, y los valores de vacaciones dependen de las fechas de este año.
-Si la clasificación de los días de la semana se mantiene en un segundo año, solo
-lo dirá un segundo año.
+octubre de 2026. Los valores de vacaciones dependen además de las fechas de este
+año. Si la clasificación de los días de la semana se mantiene en un segundo año,
+solo lo sabremos después de medir una segunda temporada.
 
 ## Fuentes y lecturas adicionales
 

@@ -11,6 +11,7 @@ One standing rule, indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md). It co
 | end a paragraph, a section or a post   | [§2.8](../blog.md#28-the-aphoristic-closer), [§2.17](../blog.md#217-the-wink)                                                       |
 | write about a park, a ride or an event | [§3.4](../blog.md#34-travel-guide-copy-in-all-six-languages)                                                                        |
 | write a post from our own data         | [§2.19](../blog.md#219-the-database-instead-of-the-park)                                                                            |
+| write a guide that compares parks      | [§5.4](../blog.md#54-blog-posts), [§3.3 rules 21 and 22](../blog.md#33-ours-and-non-negotiable)                                     |
 | write a heading or a title             | [§4.3](../blog.md#43-headings), [§5.6](../blog.md#56-a-heading-and-the-line-under-it)                                               |
 | write a news post                      | [§5.0](../blog.md#50-news-posts-category-news)                                                                                      |
 | write a UI string or an FAQ answer     | [§5.1](../blog.md#51-ui-strings-messagesjson)                                                                                       |

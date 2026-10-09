@@ -70,10 +70,10 @@ beide bewerben dieselben Wochen, und bei der Frage, was dich am 28. Dezember
 erwartet, liegen sie weit auseinander. Die Termine stammen jeweils von der
 offiziellen Seite des Parks.
 
-> **Zu den Terminen:** Stand ist der 4. Oktober 2026. Alle Daten, Uhrzeiten und
-> Preise habe ich an diesem Tag auf den offiziellen Seiten nachgelesen, die
-> unten in den Quellen stehen. Parks verschieben Abendtermine bis in den
-> November hinein. Vor der Buchung kurz gegenprüfen.
+> **Zu den Terminen:** Stand ist der 4. Oktober 2026. Auch Uhrzeiten und Preise
+> stammen von den offiziellen Seiten, die unten in den Quellen verlinkt sind.
+> Parks verschieben Abendtermine bis in den November hinein. Vor der Buchung
+> kurz gegenprüfen.
 
 ## Walt Disney World: 13. November bis 6. Januar
 
@@ -379,6 +379,6 @@ Parkseite.
 - EPCOT International Festival of the Holidays, Geschichtenerzähler und Candlelight Processional mit vollständigem Sprecherplan: [Candlelight Processional & Holiday Festivities at EPCOT (offiziell)](https://disneyworld.disney.go.com/entertainment/epcot/candlelight-processional/)
 - Universal Orlando, 14. November bis 3. Januar, Grinchmas, Wizarding World, Macy's-Parade, Epic Universe und Holiday Tour: [Pressemitteilung vom 6. August 2026 (offiziell)](https://media.universalparksusa.com/press-releases/universal-orlando-resort-holidays-2026-trade-080626/) · [Holidays at Universal (offiziell)](https://www.universalorlando.com/web/en/us/things-to-do/events/holidays-at-universal)
 - Disneyland Paris, 7. November bis 6. Januar, Weihnachtsparade, World of Frozen und Silvester in beiden Parks: [Die Märchenhafte Disney Weihnachtszeit 2026 (offiziell)](https://www.disneylandparis.com/de-de/saison-veranstaltungen/weihnachten-in-disneyland-paris)
-- Wartezeiten, Crowd-Kalender und Messtage: eigene Messungen, Fenster 2. Oktober 2024 bis 2. Oktober 2026, abgerufen am 4. Oktober 2026
+- Wartezeiten, Crowd-Kalender und Messtage: eigene Messungen, Fenster 2. Oktober 2024 bis 2. Oktober 2026
 - Europäische Parks im Winter, von Brühl bis zum Gardasee: [Welche Freizeitparks im Winter 2026/27 geöffnet haben](/blog/winter-freizeitparks-2026)
 - Das Magic Kingdom im Rest des Jahres: [Magic Kingdom: Wartezeiten und Tipps](/blog/magic-kingdom-wartezeiten-tipps) · Disneyland Paris im Rest des Jahres: [Disneyland Paris: Wartezeiten und Tipps](/blog/disneyland-paris-wartezeiten-tipps)

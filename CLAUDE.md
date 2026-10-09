@@ -179,7 +179,7 @@ carries the reasoning, the measurements and the counter-examples.
   post body into the bundle of a route the root layout imports.
 - **[News is set apart from the articles](docs/rules/news-is-set-apart-from-the-articles.md)** — `/blog` lists articles only
   (`listArticles`, category tree, tags), `/news` news only, and the header has a News entry of its own beside
-  „Backstage" (`NewsMenuPanel`). Teasers list both separately (`NewsRow`/`NewsList`). News shows its age (`NewsAge`)
+  „Guides" (`NewsMenuPanel`). Teasers list both separately (`NewsRow`/`NewsList`). News shows its age (`NewsAge`)
   and is never hidden for it. Every news post carries `time: 'HH:MM'` (Berlin) and a day sorts by it
   (`lib/blog/published-at.ts`). `pnpm test:news-split`, `pnpm check:blog-updated-at`.
 - **[News lives under `/news`](docs/rules/news-live-under-news.md)** — every post URL comes from `postPath` /

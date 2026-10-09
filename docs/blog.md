@@ -456,7 +456,7 @@ question est recevable.` stays open and is not a hit.
 Warteschlangen gerade jetzt anzeigen`, `Welche Tage die ruhigsten sind, zeigt der Kalender`, `weil
 die Daten sagen, dass ich ihn nicht brauche`, `Was verrät die Wartezeit-Historie wirklich?`, `die
 Karte verschweigt das nicht`, `the data says`, `the numbers tell a different story`. Each hands a
-person's verb (sagen, zeigen, verraten, wissen, verschweigen, lügen) to an object, so that the
+person's verb (sagen, zeigen, verraten, wissen, verschweigen, schweigen, lügen) to an object, so that the
 sentence sounds like a scene instead of a statement. Write what is there and where: `Die
 aktuellen Wartezeiten stehen auf der Parkseite, alle fünf Minuten neu.` `Im Kalender sind die
 ruhigsten Tage grün.` `Nach unseren Messungen brauche ich ihn nicht.` A display or a board that
@@ -684,7 +684,7 @@ sentences on the first run.
 
 ### 3.3 Ours, and non-negotiable
 
-Twenty house rules that are not in anybody's research. They came out of real reviews of shipped
+Twenty-two house rules that are not in anybody's research. They came out of real reviews of shipped
 text:
 
 1. **Never `ehrlich`, in any form.** No `ehrlich gesagt`, no `der ehrlichste Woodie`, no
@@ -882,6 +882,43 @@ Zug von Sky Scream über den 45 Meter hohen Top Hat.` Patrick put it on the list
     2026-10-08. `pnpm check:prose` fails on `anwerfen` and `anschmeißen` with a train, a car or
     the riders as the object, so `den Motor anwerfen` stays. German only: `launch`, `lanceert`,
     `lance`, `lanza` and `lancia` are the right words.
+21. **Never the research diary.** Not `Abgerufen wurde alles am 9. Oktober 2026.`, not a table
+    column headed `Quelle, abgerufen am 9.10.2026`, not `Preise fehlen, weil die gelesenen Seiten
+sie nirgends nennen`, `Auf den abgerufenen Seiten nennt der Park keine Mindestgröße` or `Die
+Parkordnung haben wir nicht gelesen`. Rule 12 banned the first-person version; the food guide
+    and the toddler guide of 2026-10-08/09 wrote the same thing in the passive, as an adjective and
+    as a table header, about forty times across six languages (`retrieved 9 Oct 2026`, `op de
+geraadpleegde pagina's`, `pages consultées`, `páginas consultadas`, `pagine consultate`). The
+    reader asks what the park allows; which pages we opened, and on which day, is our notebook.
+    Say what the park says and where (`Auf seiner Website nennt der Park keine Mindestgröße`,
+    `In der Parkordnung steht nichts zu Glas`), and link the page. The source list carries the
+    links without a date; `updatedAt` dates the post, and a table that needs a date gets a
+    `Stand …` stamp above it (rule 12). A gap the reader does not need goes (§2.19), and so does
+    the sentence that explains why we did not look. Patrick put it on the list on 2026-10-09.
+    `pnpm check:prose` fails in posts and news on every form of `abgerufen` and on `aufgerufen
+am`, on `die gelesenen Seiten` and its kin, on `haben wir nicht gelesen`, and on their twins in
+    the other five languages, including in tables and source lists. The source line of a
+    `[!QUOTE]` is a citation and keeps its date.
+22. **Never a tally that drops its noun.** `Sechs von fünfzehn Parks erlauben eigenes Essen
+ausdrücklich, vier regeln nur den Ort, fünf schweigen.` opened the excerpt of the food guide
+    in six languages (`four only say where to eat it, five say nothing`, `vier regelen alleen
+waar je het opeet, vijf zwijgen erover`, `cinq n'en disent rien`, `cinco callan`, `cinque
+tacciono`). The noun is said once and then dropped; each bare number gets a verb of its own;
+    the middle verb is our table's category read aloud (`nur Ortsregel`, §2.19), and the last is
+    a person's (§2.13). The reader has to hold fifteen parks in their head and add up three
+    groups they cannot see. Give one count with its parks, or name the parks and let the reader
+    count: `Heide Park, Efteling, Toverland, Walibi Holland, Futuroscope und Disneyland Paris
+erlauben eigenes Essen ausdrücklich.` A number or a document does not `schweigen` either:
+    `In der Parkordnung steht nichts zu eigenem Essen`, `Die Mitteilung nennt keinen Hersteller`.
+    A company that declines to answer may (`Merlin schweigt zu den Gründen`). Patrick put it on
+    the list on 2026-10-09 with the words „solche Floskeln will ich verhindern“. `pnpm
+check:prose` fails on a sentence with two or more clauses that open on a bare number word
+    and a verb (`, vier regeln`, `, five say`, `, quatre fixent`, `, cuatro solo fijan`, `,
+quattro fissano`, `, vier regelen`), on a number word followed by a verb of silence (`fünf
+schweigen`, `five say nothing`, `cinq n'en disent rien`), and on a document that keeps quiet
+    (`schweigt die Mitteilung`, `the terms stay silent`, `les conditions se taisent`), on every
+    surface. The copula is left out (`zehn sind Stationen, drei sind Labyrinthe` says what each
+    group is), and so is a count followed by its noun (`drei Shows, vier Labyrinthe`).
 
 ### 3.4 Travel-guide copy, in all six languages
 
@@ -1169,6 +1206,27 @@ Toverland 21 von 44 Attraktionen, im Phantasialand 14 von 40 und in Walibi Holla
 `pnpm check:prose` warns on `häufigsten Fragen`, `FAQ`, `Reiseplanung` and their twins in either
 field.
 
+**One finding per sentence, and read it aloud.** The excerpt is the line most people read and
+nobody re-reads, and it is where the week of 2026-10-05 went wrong most often: `Das Legoland
+Deutschland baut für Kinder von zwei bis zwölf, und an keiner der neun Headliner-Bahnen spart ein
+früher Start genug Zeit für einen Rope-Drop-Tipp.`, `Der Express Unlimited gilt nur in den Studios
+und den Islands of Adventure, der einfache Express kostet dort 119,99 bis 319,99 Dollar, und die
+Mindestgröße der großen Bahnen liegt zwischen 1,22 und 1,38 Metern.` and the tally of rule 22.
+Three findings in one sentence, joined by commas and `und`, is a sentence nobody can say in one
+breath. Two short sentences that each answer the reader's question beat one that answers three;
+the rest of the findings are what the post is for.
+
+**A guide across many parks says each fact once.** The food guide of 2026-10-09 listed the same
+parks in its intro, its table, a section per park, a section `Was die Hausordnungen gemeinsam
+haben`, a packing section and eight FAQ answers, so that every park name stood in it a dozen
+times and the article numbers of each rulebook (`Ziffer 3.12`, `Artikel 17`) stood in the running
+text. The table answers the question for every park; a section per park adds what does not fit
+in a cell, in the reader's words; a closing section that walks the parks again is a summary block
+(§1.5). The article number belongs in the link, not in the sentence. FAQ answers may repeat a
+fact, because they are read alone (below), but they give the answer and the parks, not a second
+copy of the body. A length floor is reached with facts the reader needs, never with a second pass
+over the same ones.
+
 **An FAQ answer stands alone.** It is read without the post around it, in a search result or an
 answer engine, so it never points elsewhere: `Zeitraum und Schwellenwerte stehen im Abschnitt ganz
 oben.` and `die Tabelle weiter oben schlüsselt es nach Monaten auf` became the period, the
@@ -1349,7 +1407,8 @@ output the way a regex can actually be trusted to:
   Dutch twin, a model that grades itself in any of its six languages, `ob der Tag aufgeht` and its
   five translations, `zwölf von zwölf`, `kürzer besetzt`, `der Park ist ruhig` with its
   flat waits, `hier steht` and its kin, `unterschiedliche Preise nennen` with no price in sight,
-  and a train that is angeworfen (§3.3).
+  a train that is angeworfen, the research diary (`abgerufen am`, `die gelesenen Seiten`) and a
+  tally that drops its noun (`vier regeln nur den Ort, fünf schweigen`) (§3.3).
 - **Warnings** are budgets and signals a person decides on. `eerlijke prijzen` in a paragraph
   about a restaurant means _fair_ prices and stays; the same word in a UI string does not.
 

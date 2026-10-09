@@ -433,11 +433,11 @@ export function Header({
               alone, with the name in its label and tooltip, because the chip does not fit the row
               in every locale; from 1280 the name comes back, truncated where the bar is narrow. */}
           <HeaderNearbyPark variant="bar" />
-          {/* The order is the phone menu's: Backstage, News, Parks entdecken, „Mehr" where the
+          {/* The order is the phone menu's: Guides, News, Parks entdecken, „Mehr" where the
               sheet lists its three hubs, then the planner. No home entry, the logo is its link.
               Every entry carries its sheet icon (`NavEntryLabel`). */}
 
-          {/* Backstage, the blog: an entry of its own rather than inside „Mehr", because it is
+          {/* Guides, the blog: an entry of its own rather than inside „Mehr", because it is
               the site's strongest SEO driver. A `NavMenu` with `href="/blog"` (a real `<a>` plus a
               chevron button, see NavMenu rule 2); without panel data, the bare link. */}
           {showBlog &&
@@ -450,7 +450,7 @@ export function Header({
                 <NavEntryLabel icon={Newspaper}>{t('blog')}</NavEntryLabel>
               </Link>
             ))}
-          {/* News, an entry of its own beside Backstage, since the two sections share no post.
+          {/* News, an entry of its own beside Guides, since the two sections share no post.
               Same pattern, `href="/news"` plus a chevron; no news, no entry. The label is the news
               category's (`categories.json`). */}
           {newsMenu && newsMenu.items.length > 0 && (

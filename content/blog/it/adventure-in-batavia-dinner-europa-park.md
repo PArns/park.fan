@@ -7,9 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In otto serate tra il 23 ottobre 2026 e il 7 gennaio 2027 gli ospiti salgono su
-  Pirates in Batavia con un aperitivo e poi cenano al ristorante Bamboe Baai. Gli
-  adulti pagano 155 €, i bambini da 4 a 11 anni 105 €.
+  In otto serate tra il 23 ottobre 2026 e il 7 gennaio 2027 Europa-Park propone
+  una cena con spettacolo. L’aperitivo si prende durante un giro su Pirates in
+  Batavia, la cena poi al ristorante Bamboe Baai. Gli adulti pagano 155 €, i
+  bambini da 4 a 11 anni 105 €.
 tags:
   - news
   - europa-park
@@ -29,8 +30,9 @@ coverImage:
 seo:
   title: 'Adventure in Batavia: cena a Europa-Park dal 23 ottobre'
   description: >-
-    Cena con spettacolo a Europa-Park: otto serate dal 23 ottobre 2026 al 7
-    gennaio 2027, 155 € adulti, 105 € bambini, giro e bevande inclusi.
+    Europa-Park offre la cena con spettacolo «Adventure in Batavia» in otto
+    serate dal 23 ottobre al 7 gennaio 2027. Gli adulti pagano 155 €, i bambini
+    105 €.
   keywords:
     - Adventure in Batavia
     - cena Europa-Park
@@ -47,7 +49,7 @@ ottobre 2026.
 
 ## Quando e dove
 
-La pagina dell’evento elenca otto date, con inizio alle 19:30 e fine alle 23:00:
+Tutte e otto le serate iniziano alle 19:30 e finiscono alle 23:00:
 
 | Data             | Giorno  |
 | ---------------- | ------- |
@@ -60,8 +62,9 @@ La pagina dell’evento elenca otto date, con inizio alle 19:30 e fine alle 23:0
 | 2 gennaio 2027   | sabato  |
 | 7 gennaio 2027   | giovedì |
 
-L’ingresso è all’entrata dell’hotel di Europa-Park, e il parcheggio dell’hotel
-«El Andaluz» è gratuito. Si cena al ristorante Bamboe Baai, che serve cucina asiatica e si trova nell’area a tema olandese.
+L’ingresso è all’entrata dell’hotel di Europa-Park. Il parcheggio dell’hotel
+«El Andaluz» è gratuito. Si cena al Bamboe Baai, un ristorante asiatico
+nell’area a tema olandese.
 
 ## Quanto costa e cosa comprende
 
@@ -74,20 +77,20 @@ inclusa. Secondo la pagina dell’evento, il prezzo comprende:
 - lo spettacolo tra una portata e l’altra
 - l’ingresso a Europa-Park dalle 17:00, durante la stagione
 
-Tutte e otto le serate cadono in una stagione. Secondo le date del parco,
-Halloween dura fino al 1° novembre, HALLOWinter va dal 2 al 27 novembre e
-Winterzauber dal 28 novembre al 9 gennaio 2027. La pagina non indica altri
-costi. Il pernottamento è un’offerta a parte. La pagina dell’evento rimanda a un
-pacchetto evento più hotel, senza indicarne il prezzo.
+Tutte e otto le serate cadono in una stagione del parco. Halloween dura fino al
+1° novembre, HALLOWinter va dal 2 al 27 novembre e Winterzauber dal 28 novembre
+al 9 gennaio 2027. La pagina dell’evento non indica altri costi. Il
+pernottamento si prenota a parte. La pagina dell’evento rimanda a un pacchetto
+cena più hotel, ma senza prezzo.
 
 ## Menu e spettacolo
 
 Il menu standard comincia con un’insalata di vermicelli di soia con salmone
 marinato in un cestino di bambù. Seguono una zuppa Tom Kha con gambero, un
 biryani con pollastra e, per dessert, ananas in una crosticina croccante con
-pandan, miele e pistacchi. Il menu vegetariano sostituisce salmone e gambero con
-tofu e una zuppa vegana con raviolo di verdure, e usa il paneer nel biryani al
-posto della pollastra. Il menu bambini è composto da un rotolo di tramezzino,
+pandan, miele e pistacchi. Nel menu vegetariano c’è il tofu al posto del
+salmone e una zuppa vegana con raviolo di verdure al posto della zuppa con
+gambero. Nel biryani c’è il paneer invece della pollastra. Il menu bambini è composto da un rotolo di tramezzino,
 crema di carote, pollastra al mais con gratin di patate (o, su richiesta,
 «manzo vegano dei campi») e mousse al cioccolato con lampone.
 
@@ -95,27 +98,26 @@ La regia è di Katja Mack. Cantanti, ballerini, attori e acrobati recitano ruoli
 fissi, tra cui personaggi dell’attrazione come Bartholomeus van Robbemond. Una
 parte della musica è stata composta apposta, e il parco ha sviluppato due numeri
 di acrobatica aerea con membri di lunga data della TALENT ACADEMY Europa-Park.
-Quanto dura il giro iniziale e quanti posti ci sono ogni sera non è scritto né
-nel comunicato né sulla pagina dell’evento.
+Quanto dura il giro iniziale e quanti posti ci sono ogni sera, il parco non lo
+dice né nel comunicato né sulla pagina dell’evento.
 
 ## L’attrazione dietro la cena
 
 Pirates in Batavia ha aperto nel 1987. Il 26 maggio 2018 è scoppiato un incendio
 in un magazzino che si è esteso all’attrazione. Le barche navigano di nuovo dal
 28 luglio 2020, in un edificio nuovo, e otto figure vengono ancora dalla vecchia
-versione. Le fonti sono nella
+versione. I link alle fonti sono nella
 [guida di Europa-Park](/blog/europa-park-tempi-di-attesa-consigli).
 
 ## Prenotare
 
-I biglietti sono sulla pagina dell’evento del parco, e i gruppi da 20 persone in
-su inviano la richiesta con il modulo di contatto. Il parco si riserva di
+I biglietti si comprano sulla pagina dell’evento del parco. I gruppi da 20
+persone in su inviano la richiesta con il modulo di contatto. Il parco si riserva di
 apportare modifiche. Il telefono del resort è +49 7822 77-6688.
 
-Se vieni in una delle due serate di ottobre, la
-[panoramica di Halloween](/blog/halloween-parchi-divertimenti-2026) e la notizia
-sui [dieci anni di Traumatica](/blog/traumatica-dieci-anni-europa-park)
-raccontano cos’altro c’è nel parco. Per le serate di dicembre e gennaio c’è la
+Cos’altro c’è nel parco nelle due serate di ottobre lo trovi nella
+[panoramica di Halloween](/blog/halloween-parchi-divertimenti-2026) e nella
+notizia sui [dieci anni di Traumatica](/blog/traumatica-dieci-anni-europa-park). Per le serate di dicembre e gennaio c’è la
 [panoramica dell’inverno](/blog/parchi-divertimenti-inverno-2026).
 
 ```best-days-widget slug=europa-park

@@ -67,10 +67,9 @@ Le due mete festeggiano il Natale più o
 meno per lo stesso tempo, tutte e due pubblicizzano le stesse settimane, e su
 cosa ti aspetta il 28 dicembre dicono cose molto diverse. Ogni data viene dal sito ufficiale del parco.
 
-> **Sulle date:** questa è la situazione al 4 ottobre 2026. Quel giorno ho
-> riletto ogni data, ogni orario e ogni prezzo sulle pagine ufficiali elencate
-> fra le fonti. I parchi spostano le serate fino a novembre inoltrato.
-> Controlla prima di prenotare.
+> **Sulle date:** questa è la situazione al 4 ottobre 2026. Anche orari e prezzi
+> vengono dalle pagine ufficiali, linkate fra le fonti. I parchi spostano le
+> serate fino a novembre inoltrato. Controlla prima di prenotare.
 
 ## Walt Disney World: dal 13 novembre al 6 gennaio
 
@@ -380,6 +379,6 @@ momento lo trovi per tutta la stagione sulla pagina del parco.
 - EPCOT International Festival of the Holidays, i narratori e il calendario completo del Candlelight Processional: [Candlelight Processional & Holiday Festivities at EPCOT (ufficiale)](https://disneyworld.disney.go.com/entertainment/epcot/candlelight-processional/)
 - Universal Orlando, dal 14 novembre al 3 gennaio, Grinchmas, Wizarding World, la parata Macy's, Epic Universe e l'Holiday Tour: [comunicato del 6 agosto 2026 (ufficiale)](https://media.universalparksusa.com/press-releases/universal-orlando-resort-holidays-2026-trade-080626/) · [Holidays at Universal (ufficiale)](https://www.universalorlando.com/web/en/us/things-to-do/events/holidays-at-universal)
 - Disneyland Paris, dal 7 novembre al 6 gennaio, la parata, World of Frozen e il Capodanno nei due parchi: [Il Magico Natale Disney 2026 (ufficiale)](https://www.disneylandparis.com/it-it/le-stagioni/natale-a-disneyland-paris)
-- Tempi di attesa, calendario dell'affluenza e giorni di misurazione: misurazioni nostre, finestra dal 2 ottobre 2024 al 2 ottobre 2026, consultate il 4 ottobre 2026
+- Tempi di attesa, calendario dell'affluenza e giorni di misurazione: misurazioni nostre, finestra dal 2 ottobre 2024 al 2 ottobre 2026
 - I parchi europei d'inverno, da Brühl al lago di Garda: [Quali parchi divertimenti sono aperti nell'inverno 2026/27](/blog/parchi-divertimenti-inverno-2026)
 - Il Magic Kingdom nel resto dell'anno: [Magic Kingdom: tempi di attesa e consigli](/blog/magic-kingdom-tempi-di-attesa-consigli) · Disneyland Paris nel resto dell'anno: [Disneyland Paris: tempi di attesa e consigli](/blog/disneyland-paris-tempi-di-attesa-consigli)

@@ -6,11 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Der Samstag ist in neun von zwölf Parks der vollste Tag, ruhig ist es
-  meistens donnerstags oder freitags. Bei der Uhrzeit baut sich nach dem
-  Öffnen bis zum späten Vormittag die Warteschlange auf. Im Toverland, im
-  Plopsaland Deutschland und im Disneyland Paris macht der Wochentag kaum
-  etwas aus.
+  Am wenigsten los ist im Freizeitpark meistens donnerstags oder freitags, am
+  meisten samstags. In den meisten Parks stehst du direkt nach dem Öffnen
+  kürzer an als am späten Vormittag. Im Toverland, im Plopsaland Deutschland
+  und im Disneyland Paris macht der Wochentag kaum etwas aus.
 tags:
   - freizeitpark
   - wartezeiten
@@ -37,9 +36,7 @@ coverImage:
 seo:
   title: 'Freizeitpark wenig los: Wochentag und Uhrzeit im Vergleich'
   description: >-
-    Samstag ist in neun von zwölf Freizeitparks am vollsten, am ruhigsten sind
-    Donnerstag und Freitag. Unsere Messung für Europa-Park, Phantasialand,
-    Efteling und neun weitere.
+    In neun von zwölf Freizeitparks ist samstags am meisten los. Am wenigsten los ist im Europa-Park freitags, im Phantasialand und im Efteling donnerstags.
   keywords:
     - beste Zeit Freizeitpark
     - Freizeitpark wenig los
@@ -66,53 +63,51 @@ parkLinks:
 ---
 
 Der Samstag ist in neun von zwölf Parks, die wir messen, der Tag mit den längsten
-Wartezeiten, im Movie Park liegt er gleichauf mit Dienstag und Mittwoch. Am
+Wartezeiten. Im Movie Park liegt er gleichauf mit Dienstag und Mittwoch. Am
 ruhigsten ist es meistens an einem Donnerstag oder Freitag: im Europa-Park, im
 Heide Park, im Movie Park, im Legoland und im Disneyland Paris am Freitag, im
 Phantasialand, im Efteling und in Walibi Holland am Donnerstag. Drei Parks
-passen nicht in dieses Muster. Im Toverland sieht jeder Wochentag gleich aus, im
-Plopsaland Deutschland liegen sechs Tage dicht beieinander, und in Walibi
-Holland ist der Samstag einer der leereren Tage.
+passen nicht in dieses Muster. Im Toverland sieht jeder Wochentag gleich aus,
+und im Plopsaland Deutschland liegen sechs Tage dicht beieinander. In Walibi
+Holland ist der Samstag sogar einer der leereren Tage.
 
 Auch bei der Uhrzeit gibt es ein Muster. In den meisten Parks ist die Wartezeit
 in der ersten Stunde nach dem Öffnen deutlich kürzer als später. Danach baut sich
 die Warteschlange auf und erreicht in neun Parks zwischen zehn und zwölf Uhr ihren
 Höchststand. In acht Parks ist die letzte oder vorletzte Stunde die ruhigste.
-Im Phantasialand und im Heide Park bleibt die Wartezeit danach bis zum Abend fast
-gleich, und im Legoland und im Movie Park wird es abends wieder voller.
+Im Phantasialand und im Heide Park bleibt die Wartezeit nach der Spitze bis zum
+Abend fast gleich. Im Legoland und im Movie Park wird es abends wieder voller.
 
-Die Seite [Beste Reisezeit](/beste-reisezeit) zeigt dir die ruhigsten Tage für
-deinen Reisemonat. Unten
-vergleichen wir zwölf Parks mit den Daten, die park.fan seit dem 24. Dezember 2025
-sammelt.
+Die ruhigsten Tage für deinen Reisemonat stehen auf der Seite
+[Beste Reisezeit](/beste-reisezeit). Die zwölf Parks vergleichen wir mit den
+Wartezeiten, die park.fan seit dem 24. Dezember 2025 sammelt.
 
 ## Woher die Zahlen kommen
 
 Für jede Attraktion mit Live-Wartezeit speichert park.fan alle fünf Minuten die
 angezeigte Wartezeit. Daraus entstehen die Werte, die du auf den Parkseiten und
-in den Tabellen dieses Beitrags siehst. Die Tabellen kommen aus Widgets, die
-beim Laden des Beitrags die aktuellen Daten holen, deshalb tippe ich hier keine
-Minutenwerte ab. Im Text stehen Wochentage und Verhältnisse, die sich nicht von
-einem Tag auf den anderen ändern.
+in den Tabellen dieses Beitrags siehst. Die Tabellen laden beim Öffnen des
+Beitrags die aktuellen Werte. Im Text nenne ich deshalb keine Minuten, nur
+Wochentage und Verhältnisse, die sich nicht von einem Tag auf den anderen ändern.
 
-Stand 6. Oktober 2026. Der Wochentagsvergleich nutzt je Park alle Tage, an denen
-der Park geöffnet war, und bildet den Mittelwert der Wartezeiten an den großen
-Bahnen. Die Uhrzeitkurve ist der Mittelwert der acht längsten Bahnen je Stunde,
-über die Öffnungsstunden des jeweiligen Parks. Wartezeiten sind auf fünf Minuten
-gerundet, und in vielen Parks liegen mehrere Werktage in derselben Rundungsstufe.
-Ein „ruhigster Tag“ heißt deshalb oft, dass zwei oder drei Tage gleichauf liegen.
-Wo ich nur einen nenne, hat der Tag auch beim genaueren Crowd-Score aus der
-Statistik vorn gelegen.
+Stand 6. Oktober 2026. Für den Wochentag haben wir je Park alle Tage genommen, an
+denen er geöffnet war, und die Wartezeiten an den großen Bahnen gemittelt. Für
+die Uhrzeit haben wir je Stunde die Wartezeiten an den acht Bahnen gemittelt, an
+denen man im Park am längsten ansteht, über die Öffnungsstunden des jeweiligen
+Parks. Wartezeiten sind auf fünf Minuten gerundet, und in vielen Parks landen
+mehrere Werktage auf demselben Wert. Ein „ruhigster Tag“ heißt deshalb oft, dass
+zwei oder drei Tage gleichauf liegen. Wo ich nur einen nenne, war er auch beim
+genaueren Andrangs-Score unserer Statistik der ruhigste.
 
 Die Ferien habe ich für den Zeitraum vom 13. April bis zum 30. September 2026
 ausgewertet. Verglichen sind Werktage, Montag bis Freitag ohne Feiertag, an
-denen im Kalender des Parks Schulferien standen, mit Werktagen ohne Ferien.
-Der Aufschlag sagt, um wie viel länger die Wartezeit an den großen Bahnen im
-Schnitt war. Das Wetter und Events sind nicht herausgerechnet. Der
-[Beitrag zu den Schulferien in Deutschland](/blog/schulferien-freizeitparks-deutschland)
-wertet einzelne Ferienblöcke wie Ostern und Sommer aus und nimmt als Maßstab
-Werktage, an denen in keinem einzigen Bundesland Ferien waren. Seine Werte sind
-deshalb nicht direkt mit denen hier vergleichbar.
+denen laut unserem Kalender für den Park Schulferien waren, mit Werktagen ohne
+Ferien. Der Aufschlag ist der Prozentwert, um den die Wartezeit an den großen
+Bahnen im Schnitt länger war. Das Wetter und Events sind nicht herausgerechnet.
+Im [Beitrag zu den Schulferien in Deutschland](/blog/schulferien-freizeitparks-deutschland)
+werten wir einzelne Ferienblöcke wie Ostern und Sommer aus und vergleichen mit
+Werktagen, an denen in keinem einzigen Bundesland Ferien waren. Die Werte dort
+lassen sich deshalb nicht direkt mit denen hier vergleichen.
 
 Der Hansa-Park fehlt, weil er seine Wartezeiten nur in der eigenen App zeigt.
 
@@ -121,52 +116,54 @@ Der Hansa-Park fehlt, weil er seine Wartezeiten nur in der eigenen App zeigt.
 Die zwölf Parks lassen sich in drei Gruppen teilen.
 
 Die erste Gruppe sind Parks mit Wochenendspitze: Europa-Park, Phantasialand,
-Efteling, Heide Park, Legoland, Parc Astérix und Walibi Belgium. Der Samstag liegt
-oben, der Sonntag je nach Park dahinter oder gleichauf mit einem Werktag, und
-das Tal liegt am Mittwoch, Donnerstag oder Freitag.
+Efteling, Heide Park, Legoland, Parc Astérix und Walibi Belgium. Samstags ist
+dort am meisten los, sonntags je nach Park etwas weniger oder so viel wie an
+einem Werktag. Am wenigsten los ist am Mittwoch, Donnerstag oder Freitag.
 
-Die zweite Gruppe sind Parks, in denen der Wochentag fast nichts erklärt. Das
-Toverland hat an jedem Tag denselben Mittelwert. Im Plopsaland Deutschland liegen
-sechs Tage auf derselben Stufe, nur der Samstag ist etwas voller. Im Disneyland
-Paris liegen die Tage eine Rundungsstufe auseinander, Samstag und Dienstag oben,
-Freitag unten. Die Wartezeiten sind in diesen Parks an jedem Tag ähnlich, im
-Plopsaland und im Toverland dazu kurz.
+Die zweite Gruppe sind Parks, in denen der Wochentag fast nichts erklärt. Im
+Toverland steht man an jedem Tag im Schnitt gleich lange an. Im Plopsaland
+Deutschland sind sechs Tage gleich voll, nur der Samstag ist etwas voller. Im
+Disneyland Paris liegen zwischen dem vollsten und dem ruhigsten Tag nur fünf
+Minuten: Samstag und Dienstag sind am vollsten, Freitag am ruhigsten. Die
+Wartezeiten sind in diesen Parks an jedem Tag ähnlich, im Plopsaland und im
+Toverland dazu kurz.
 
 Die dritte Gruppe sind Parks, die die Rangfolge durcheinanderbringen. In Walibi
 Holland ist der Dienstag der vollste Tag und der Samstag einer der ruhigeren. Im
-Movie Park liegen Samstag, Dienstag und Mittwoch gleichauf vorn, aber Montag bis
-Mittwoch sind dort nur an rund 15 Öffnungstagen gemessen, gegen rund 30 am
-Wochenende.
+Movie Park liegen Samstag, Dienstag und Mittwoch gleichauf vorn. Montag bis
+Mittwoch sind dort aber nur an rund 15 Öffnungstagen gemessen, das Wochenende an
+rund 30.
 
 ```park-comparison-widget slugs=europa-park,phantasialand,efteling,heide-park,movie-park-germany,plopsaland-deutschland,legoland-deutschland,parc-asterix,attractiepark-toverland,walibi-holland,walibi-belgium,/parks/europe/france/paris/disneyland-park show=quietest
 
 ```
 
-Ein Strich in der letzten Spalte heißt, dass die Daten keinen ruhigsten Tag
-hergeben, zum Beispiel weil drei Tage gleichauf liegen oder ein Wochentag zu
-selten gemessen wurde. Das ist ein Befund. Er trifft vor allem das Toverland und
-das Plopsaland.
+Ein Strich in der letzten Spalte heißt, dass kein Tag eindeutig der ruhigste
+ist, zum Beispiel weil drei Tage gleichauf liegen oder ein Wochentag zu selten
+gemessen wurde. Auch das ist ein Ergebnis, und es betrifft vor allem das
+Toverland und das Plopsaland.
 
 ## Die Uhrzeit im Überblick
 
 Die Kurve über den Tag sieht in den meisten Parks ähnlich aus. In der ersten
 Stunde nach dem Öffnen ist die Wartezeit in den meisten Parks deutlich kürzer als
-später, im Plopsaland, im Heide Park und in Walibi Holland liegt sie bei etwa
-der Hälfte oder darunter. Dann springt sie hoch. Im Europa-Park ist die Spitze
-um zehn Uhr erreicht, im Efteling, im Parc Astérix und in beiden Walibis um elf,
-im Phantasialand, im Heide Park, im Plopsaland und im Disneyland Paris um zwölf.
-Danach fällt die Kurve, mal langsam und mal schnell.
+später. Im Plopsaland, im Heide Park und in Walibi Holland ist sie dann etwa halb
+so lang wie zur Spitze oder noch kürzer. Danach springt sie hoch. Im Europa-Park
+ist die Spitze um zehn Uhr erreicht, im Efteling, im Parc Astérix und in beiden
+Walibis um elf, im Phantasialand, im Heide Park, im Plopsaland und im Disneyland
+Paris um zwölf. Danach fällt die Kurve, mal langsam und mal schnell.
 
-Die Parks unterscheiden sich darin, wie weit sie fällt. Im Disneyland Paris
-liegt die ruhigste Stunde bei gut einem Drittel der vollsten, im Parc Astérix bei
-gut zwei Fünfteln, in Walibi Holland bei der Hälfte und im Europa-Park bei etwa
-sechs Zehnteln. Im Phantasialand liegt die ruhigste Stunde nur etwa ein Sechstel
-unter der vollsten, im Heide Park und im Movie Park etwa ein Siebtel. Wer dort
-auf den Abend wartet, spart nur wenig.
+Die Parks unterscheiden sich darin, wie weit sie fällt. Im Disneyland Paris ist
+die Wartezeit in der ruhigsten Stunde nur gut ein Drittel so lang wie in der
+vollsten, im Parc Astérix gut zwei Fünftel, in Walibi Holland halb so lang und
+im Europa-Park etwa sechs Zehntel. Im Phantasialand ist sie in der ruhigsten
+Stunde nur etwa ein Sechstel kürzer als in der vollsten, im Heide Park und im
+Movie Park etwa ein Siebtel. Wer dort auf den Abend wartet, spart nur wenig.
 
 Zwei Parks laufen gegen das Muster. Im Legoland Deutschland und im Movie Park
-Germany ist die letzte Stunde mit Daten, 17 Uhr, eine der vollsten. Im Heide
-Park endet die Kurve ebenfalls um 17 Uhr, dort zieht sie am Ende nicht an.
+Germany ist die letzte gemessene Stunde, 17 Uhr, eine der vollsten. Im Heide Park
+ist 17 Uhr ebenfalls die letzte gemessene Stunde, dort wird es am Ende aber nicht
+wieder voller.
 
 Die Kurve für den Europa-Park, jede Bahn einzeln:
 
@@ -176,22 +173,22 @@ Die Kurve für den Europa-Park, jede Bahn einzeln:
 
 ## Europa-Park
 
-Der [Europa-Park](ref:europa-park) ist ein Samstagspark. Der Samstag liegt
-deutlich über den anderen Tagen, alle sechs übrigen liegen dicht beieinander.
-Am ruhigsten ist der Freitag, dicht gefolgt von Sonntag, Mittwoch und Donnerstag,
-und der Sonntag ist hier einer der leereren Tage der Woche. Wer den Park
-tagsüber leer haben will, plant Mittwoch bis Freitag oder den Sonntag.
+Der [Europa-Park](ref:europa-park) ist ein Samstagspark. Samstags ist deutlich
+mehr los als an den anderen Tagen, und die sechs übrigen liegen dicht
+beieinander. Am ruhigsten ist der Freitag, dicht gefolgt von Sonntag, Mittwoch
+und Donnerstag. Der Sonntag gehört hier also zu den leereren Tagen der Woche.
+Wer kurz anstehen will, plant Mittwoch bis Freitag oder den Sonntag.
 
-Über den Tag liegt der Höchststand früh, gegen zehn Uhr, und fällt danach auf
-ein Plateau, das bis in den frühen Abend reicht. Die ruhigste Stunde ist die
-vorletzte vor dem Schluss, danach zieht es noch einmal leicht an.
+Die längsten Wartezeiten gibt es früh, gegen zehn Uhr. Danach werden sie kürzer
+und bleiben bis in den frühen Abend etwa gleich. Am ruhigsten ist die vorletzte
+Stunde vor Parkschluss, in der letzten wird es noch einmal etwas voller.
 
-Ferien machen im Europa-Park wenig aus: ein Werktag in den Ferien lag etwa 11
-Prozent über einem Werktag in der Schulzeit, gemessen an 40 Ferientagen und 79
-Schultagen. Das ist der kleinste Wert unter den deutschen Parks. Ein
-Wochenende in der Schulzeit liegt mit 16 Prozent etwas darüber. Der
-[Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps) erklärt, welche Bahnen
-du zuerst fährst.
+Ferien machen im Europa-Park wenig aus. An einem Werktag in den Ferien stand man
+etwa 11 Prozent länger an als an einem Werktag in der Schulzeit, gemessen an 40
+Ferientagen und 79 Schultagen. Das ist der kleinste Wert unter den deutschen
+Parks. An einem Wochenende in der Schulzeit waren es 16 Prozent, also etwas
+mehr. Welche Bahnen du zuerst fährst, steht im
+[Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
 
 ```stats-widget slug=europa-park show=weekdays
 
@@ -202,196 +199,200 @@ du zuerst fährst.
 Im [Phantasialand](ref:phantasialand) ist an jedem Tag viel los, am wenigsten am
 Donnerstag. Der Samstag ist am vollsten, gefolgt vom Sonntag. Montag, Dienstag,
 Freitag und Mittwoch liegen dazwischen und sind kaum zu trennen. Der Abstand
-zwischen Samstag und Donnerstag gehört zu den größten, die wir hier vergleichen.
+zwischen Samstag und Donnerstag gehört zu den größten in diesem Vergleich.
 
 Die Tageskurve ist flach. Nach dem frühen Anstieg bis mittags bleibt die
-Wartezeit bis zum Schluss fast gleich hoch, die ruhigste Stunde liegt nur
-etwa ein Sechstel unter der vollsten. Wer im Phantasialand auf den Abend wartet,
-bekommt keine leere Bahn.
+Wartezeit bis zum Schluss fast gleich hoch. In der ruhigsten Stunde ist sie nur
+etwa ein Sechstel kürzer als in der vollsten. Wer im Phantasialand auf den Abend
+wartet, bekommt keine leere Bahn.
 
-Nur im Heide Park ist der Ferienaufschlag größer: ein Ferienwerktag lag etwa
-65 Prozent über einem Schulwerktag, ein Wochenende in der Schulzeit etwa 39
-Prozent. Die Ferien füllen den Park also stärker als ein Wochenende. Das passt
-zum [Schulferien-Beitrag](/blog/schulferien-freizeitparks-deutschland), nach dem
-das Phantasialand schon voll ist, bevor in Nordrhein-Westfalen die Ferien
-beginnen. Wie du ihn trotzdem schaffst, steht im
+Nur im Heide Park machen die Ferien noch mehr aus. Ein Werktag in den Ferien war
+etwa 65 Prozent voller als einer in der Schulzeit, ein Wochenende in der
+Schulzeit etwa 39 Prozent. Die Ferien füllen den Park also stärker als ein
+Wochenende. Das passt zu unserem
+[Schulferien-Beitrag](/blog/schulferien-freizeitparks-deutschland): Das
+Phantasialand ist schon voll, bevor in Nordrhein-Westfalen die Ferien beginnen.
+Wie du den Park trotzdem schaffst, steht im
 [Phantasialand-Guide](/blog/phantasialand-tipps).
 
 ## Efteling
 
-Im [Efteling](ref:efteling) unterscheiden sich die Wochentage kaum. Samstag und Sonntag sind
-etwas voller, Montag liegt dazwischen, und Donnerstag ist der ruhigste Tag,
-gefolgt von Dienstag und Mittwoch. Ein Montag ist im Efteling etwas voller als ein
-Dienstag.
+Im [Efteling](ref:efteling) unterscheiden sich die Wochentage kaum. Samstag und
+Sonntag sind etwas voller, Montag liegt dazwischen. Donnerstag ist der ruhigste
+Tag, gefolgt von Dienstag und Mittwoch. Ein Montag ist im Efteling etwas voller
+als ein Dienstag.
 
-Über den Tag fällt die Kurve am Abend deutlich, die letzte Stunde ist die
-ruhigste und liegt bei etwa sieben Zehnteln des Höchststands. Der Höhepunkt
-liegt um elf Uhr, mittags und am frühen Nachmittag bleibt es etwa gleich voll,
-dann nimmt der Andrang ab.
+Die Spitze liegt um elf Uhr. Mittags und am frühen Nachmittag bleibt es etwa
+gleich voll, dann nimmt der Andrang ab. Am Abend wird die Wartezeit deutlich
+kürzer: In der letzten Stunde, der ruhigsten, ist sie etwa sieben Zehntel so lang
+wie zur Spitze.
 
-Ferien lassen im Efteling die Wartezeit nur um 11 Prozent steigen, an 36 Ferien-
-und 84 Schultagen. Das Wochenende liegt in der Schulzeit etwa 14 Prozent über
-einem Werktag. Die Bahnen und die Reihenfolge stehen im
-[Efteling-Guide](/blog/efteling-disney-der-niederlande).
+In den Ferien war die Wartezeit im Efteling an Werktagen nur 11 Prozent länger,
+gemessen an 36 Ferien- und 84 Schultagen. Am Wochenende waren es in der
+Schulzeit etwa 14 Prozent mehr als an einem Werktag. Die Bahnen und die
+Reihenfolge stehen im [Efteling-Guide](/blog/efteling-disney-der-niederlande).
 
 ## Heide Park
 
-Der [Heide Park](ref:heide-park) hat den größten Ferienunterschied von allen. Ein
-Werktag in den Ferien lag etwa 84 Prozent über einem Schulwerktag, bei 32
-Ferientagen und 75 Schultagen. Ein Wochenende in der Schulzeit kommt auf etwa 47
-Prozent. Unter der Woche kann der Park in den Ferien also voller sein als an einem
-Wochenendtag der Schulzeit. Der Samstag ist auch sonst der vollste Tag, der
-Freitag der ruhigste, der Sonntag liegt dazwischen und nahe am Freitag.
+Im [Heide Park](ref:heide-park) machen die Ferien mehr aus als in jedem anderen
+Park. An einem Werktag in den Ferien stand man etwa 84 Prozent länger an als an
+einem Werktag in der Schulzeit, bei 32 Ferientagen und 75 Schultagen. An einem
+Wochenende in der Schulzeit waren es etwa 47 Prozent. Unter der Woche kann der
+Park in den Ferien also voller sein als an einem Wochenendtag der Schulzeit.
+Auch sonst ist der Samstag der vollste Tag und der Freitag der ruhigste. Der
+Sonntag liegt dazwischen, nahe am Freitag.
 
-Die Tageskurve ist eine der flachsten, ähnlich wie im Phantasialand. Der
-Höchststand liegt gegen zwölf Uhr, die ruhigste Stunde um sechzehn Uhr
-liegt nur etwa ein Siebtel darunter. Auch im Heide Park gewinnst du am Abend
-wenig. Der [Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps) sagt, womit du
-beginnst.
+Die Tageskurve ist eine der flachsten, ähnlich wie im Phantasialand. Am vollsten
+ist es gegen zwölf Uhr. In der ruhigsten Stunde, um sechzehn Uhr, ist die
+Wartezeit nur etwa ein Siebtel kürzer. Auch im Heide Park gewinnst du am Abend
+wenig. Womit du beginnst, steht im
+[Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps).
 
 ## Movie Park Germany
 
-Beim [Movie Park Germany](ref:movie-park-germany) steht der Freitag unten, und
-zwar deutlich. Samstag, Dienstag und Mittwoch liegen oben, aber die drei
-Werktage sind an nur etwa 15 bis 16 Öffnungstagen gemessen. Den ruhigsten Tag
-nennen wir deshalb nur mit Vorsicht: Freitag, danach Donnerstag und Sonntag. Der
-Schulferien-Beitrag weist darauf hin, dass der Park außerhalb der Ferien an
-vielen Werktagen geschlossen hat.
+Im [Movie Park Germany](ref:movie-park-germany) ist der Freitag mit deutlichem
+Abstand der Tag mit den kürzesten Wartezeiten. Samstag, Dienstag und Mittwoch
+sind am vollsten, aber Dienstag und Mittwoch sind nur an etwa 15 bis 16
+Öffnungstagen gemessen. Den ruhigsten Tag nennen wir deshalb nur mit Vorsicht:
+Freitag, danach Donnerstag und Sonntag. Außerhalb der Ferien hat der Park an
+vielen Werktagen geschlossen, wie auch in unserem
+[Schulferien-Beitrag](/blog/schulferien-freizeitparks-deutschland) steht.
 
 Die Tageskurve hat keine Vormittagsspitze. Die Wartezeit bleibt von elf bis
-siebzehn Uhr etwa gleich, die ruhigste Stunde liegt am Nachmittag, und in der
-letzten Stunde ist es wieder so voll wie mittags.
+siebzehn Uhr etwa gleich. Am ruhigsten ist es am Nachmittag, und in der letzten
+Stunde ist es wieder so voll wie mittags.
 
-In den Ferien ist ein Werktag etwa 54 Prozent voller als in der Schulzeit, an 33
-Ferien- und 47 Schultagen. Das Wochenende in der Schulzeit liegt nur 15 Prozent
-über einem Werktag. Im Movie Park macht ein Ferienwerktag also deutlich mehr aus
-als ein Wochenende. Details zu Bahnen und Halloween-Betrieb stehen im
+In den Ferien war ein Werktag etwa 54 Prozent voller als in der Schulzeit,
+gemessen an 33 Ferien- und 47 Schultagen. An einem Wochenende in der Schulzeit
+stand man nur 15 Prozent länger an als an einem Werktag. Im Movie Park macht ein
+Ferienwerktag also deutlich mehr aus als ein Wochenende. Details zu Bahnen und
+Halloween-Betrieb stehen im
 [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).
 
 ## Plopsaland Deutschland
 
-Im [Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch liegen sechs
-Tage der Woche auf demselben Niveau, nur der Samstag ist etwas voller. Dienstag
-und Freitag sind formal am niedrigsten, der Unterschied liegt aber innerhalb der
-Fünf-Minuten-Rundung. Den „ruhigsten Tag“ gibt es hier nicht.
+Im [Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch sind sechs
+Tage der Woche gleich voll, nur der Samstag ist etwas voller. Dienstag und
+Freitag liegen auf dem Papier am niedrigsten, aber der Abstand ist kleiner als
+die fünf Minuten, auf die wir runden. Einen „ruhigsten Tag“ gibt es hier nicht.
 
-Die Kurve über den Tag zeigt es deutlicher: Die ersten zwei Stunden sind fast
-leer, dann steigt die Wartezeit gegen zwölf Uhr, bleibt bis zum Schluss etwa
-gleich und liegt dabei sehr niedrig. Die ruhigste Stunde liegt bei gut der
-Hälfte der vollsten.
+Über den Tag sieht man noch deutlicher, wie wenig hier los ist. Die ersten zwei
+Stunden sind fast leer, dann steigt die Wartezeit bis gegen zwölf Uhr und bleibt
+bis zum Schluss etwa gleich, auf sehr niedrigem Niveau. In der ruhigsten Stunde
+ist sie gut halb so lang wie in der vollsten.
 
-Die Ferien fallen dagegen deutlich aus: ein Werktag in den Ferien lag etwa 49
-Prozent über einem Schulwerktag, ein Schulwochenende etwa 53 Prozent. Ein
-Ferienwerktag ist im Plopsaland damit etwa so voll wie ein Wochenendtag in der
-Schulzeit. Den Zusammenhang mit den Ferien in Rheinland-Pfalz und
-Nordrhein-Westfalen zeigt der
+Die Ferien machen dagegen viel aus. Ein Werktag in den Ferien war etwa 49 Prozent
+voller als einer in der Schulzeit, ein Wochenende in der Schulzeit etwa 53
+Prozent. Ein Ferienwerktag ist im Plopsaland damit etwa so voll wie ein
+Wochenendtag in der Schulzeit. Wie das mit den Ferien in Rheinland-Pfalz und
+Nordrhein-Westfalen zusammenhängt, steht im
 [Schulferien-Beitrag](/blog/schulferien-freizeitparks-deutschland).
 
 ## Legoland Deutschland
 
 Das [Legoland Deutschland](ref:legoland-deutschland) in Günzburg ist ein
-Wochenendpark. Der Samstag ist der vollste Tag, der
-Sonntag der zweitvollste, am ruhigsten ist der Freitag, dicht gefolgt von
-Mittwoch und Donnerstag. Von Mittwoch bis Freitag stehst du dort am kürzesten an.
+Wochenendpark. Der Samstag ist der vollste Tag, der Sonntag der zweitvollste. Am
+ruhigsten ist der Freitag, dicht gefolgt von Mittwoch und Donnerstag. Von
+Mittwoch bis Freitag stehst du dort am kürzesten an.
 
-Die Wartezeit steigt bis zwölf Uhr, fällt am Mittag leicht ab und liegt in der
-letzten Stunde mit Daten, um 17 Uhr, am höchsten. Ein ruhiger Moment kommt hier
+Die Wartezeit steigt bis zwölf Uhr und geht am Mittag leicht zurück. Am längsten
+ist sie in der letzten gemessenen Stunde, um 17 Uhr. Kurz anstehen kannst du hier
 nur direkt nach dem Öffnen.
 
-In den Ferien lag ein Werktag etwa 54 Prozent über einem Schulwerktag, ein
-Wochenende in der Schulzeit etwa 46. Ein Ferienwerktag ist im Legoland also
-voller als ein Wochenendtag der Schulzeit, wenn auch knapper als im Heide Park.
+In den Ferien stand man an einem Werktag etwa 54 Prozent länger an als an einem
+Werktag in der Schulzeit, an einem Wochenende in der Schulzeit etwa 46 Prozent.
+Ein Ferienwerktag ist im Legoland also voller als ein Wochenendtag der
+Schulzeit, wenn auch knapper als im Heide Park.
 
 ## Parc Astérix
 
-Im [Parc Astérix](ref:parc-asterix) bei Paris ist der Samstag am vollsten, der
-Sonntag der zweitvollste, am ruhigsten der Mittwoch. Dienstag liegt knapp
-dahinter, danach kommen Donnerstag, Freitag und Montag. Der Unterschied
-zwischen Samstag und Mittwoch gehört zu den größeren in diesem Vergleich.
+Im [Parc Astérix](ref:parc-asterix) bei Paris ist der Samstag am vollsten und
+der Sonntag der zweitvollste Tag. Am ruhigsten ist der Mittwoch, knapp vor dem
+Dienstag, danach kommen Donnerstag, Freitag und Montag. Der Unterschied zwischen
+Samstag und Mittwoch gehört zu den größeren in diesem Vergleich.
 
-Der Park hat die steilste Tageskurve nach dem Disneyland Paris. Gegen elf Uhr
-liegt der Höchststand, und bis zum Abend sinkt die Wartezeit auf gut zwei
-Fünftel davon. Die ruhigste Stunde ist die letzte, die Kurve reicht bis 21 Uhr.
-Um 17 Uhr liegt die Kurve erst bei etwa zwei Dritteln der Spitze, ab 19 Uhr bei
-etwa der Hälfte. Wer ab 19 Uhr im Park ist, steht an den großen Bahnen also nur
-noch etwa halb so lange an wie um elf.
+Der Park hat nach dem Disneyland Paris die steilste Tageskurve. Gegen elf Uhr ist
+es am vollsten, bis zum Abend sinkt die Wartezeit auf gut zwei Fünftel davon. Die
+Kurve reicht bis 21 Uhr, und die letzte Stunde ist die ruhigste. Um 17 Uhr ist
+die Wartezeit noch etwa zwei Drittel so lang wie zur Spitze. Wer ab 19 Uhr im
+Park ist, steht an den großen Bahnen nur noch etwa halb so lange an wie um elf.
 
-Ferien füllen den Park um etwa 35 Prozent, bei 50 Ferien- und 51 Schultagen. Ein
-Schulwochenende kommt auf etwa 32 Prozent. Der
-[Parc-Astérix-Guide](/blog/parc-asterix-wartezeiten-tipps) hat die Reihenfolge
-der Bahnen.
+In den Ferien stand man an Werktagen etwa 35 Prozent länger an, gemessen an 50
+Ferien- und 51 Schultagen. An einem Wochenende in der Schulzeit waren es etwa 32
+Prozent. In welcher Reihenfolge du die Bahnen fährst, steht im
+[Parc-Astérix-Guide](/blog/parc-asterix-wartezeiten-tipps).
 
 ## Toverland
 
-Im [Toverland](ref:attractiepark-toverland) in Sevenum sieht jeder Wochentag
-gleich aus, der Mittelwert ist von Montag bis Sonntag derselbe. Es gibt hier
-keinen ruhigsten Tag und keinen vollsten, und die Frage, ob du lieber Dienstag
-oder Samstag fährst, beantworten die Daten nicht.
+Im [Toverland](ref:attractiepark-toverland) in Sevenum stehst du von Montag bis
+Sonntag im Schnitt gleich lange an. Es gibt keinen ruhigsten und keinen vollsten
+Tag. Ob du an einem Dienstag oder an einem Samstag fährst, macht nach unseren
+Messungen keinen Unterschied.
 
-Die Wartezeit an den großen Bahnen ist im Vergleich mit den anderen
-Parks dieses Beitrags niedrig. Ein Ferienwerktag lag allerdings etwa 27 Prozent
-über einem Schulwerktag, bei 31 Ferien- und 88 Schultagen, ein Schulwochenende
-etwa 22 Prozent.
+An den großen Bahnen stehst du hier kürzer an als in den meisten anderen Parks
+dieses Vergleichs. In den Ferien war die Wartezeit an Werktagen allerdings etwa
+27 Prozent länger als in der Schulzeit, gemessen an 31 Ferien- und 88
+Schultagen. An einem Wochenende in der Schulzeit waren es etwa 22 Prozent.
 
-Die Tageskurve des Toverland lasse ich weg. Sie enthält Stunden zwischen null
-und 23 Uhr, auch solche außerhalb der Öffnungszeit, und ist so nicht lesbar. Im
-[Toverland-Guide](/blog/toverland-troy-wartezeiten-tipps) stehen die einzelnen
-Bahnen.
+Eine Tageskurve gibt es für das Toverland nicht: Unsere Werte reichen dort von
+null bis 23 Uhr, auch über die Öffnungszeit hinaus. Die einzelnen Bahnen stehen
+im [Toverland-Guide](/blog/toverland-troy-wartezeiten-tipps).
 
 ## Walibi Holland
 
-[Walibi Holland](ref:walibi-holland) in Biddinghuizen ist der Park, in dem der
-Wochentag die Rangfolge umkehrt. Der vollste Tag ist der Dienstag, gefolgt von
-Sonntag und Montag. Der Samstag gehört zu den ruhigeren Tagen, am ruhigsten ist
-der Donnerstag. Dienstag und Montag sind dabei nur an etwa 14 und 15 Tagen
-gemessen, gegen 21 bis 28 an den anderen Tagen, also nehme ich den Dienstag nur
-mit Vorbehalt.
+In [Walibi Holland](ref:walibi-holland) in Biddinghuizen ist die Reihenfolge der
+Tage fast umgekehrt. Der vollste Tag ist der Dienstag, gefolgt von Sonntag und
+Montag. Der Samstag gehört zu den ruhigeren Tagen, am ruhigsten ist der
+Donnerstag. Dienstag und Montag sind allerdings nur an etwa 14 und 15 Tagen
+gemessen, die anderen Tage an 21 bis 28. Den Dienstag als vollsten Tag nehme ich
+deshalb nur mit Vorbehalt.
 
 Wer in Walibi Holland an einem Samstag fährt, steht nicht länger an als an einem
-Werktag. Der Aufschlag eines Schulwochenendes gegenüber einem Schulwerktag liegt
-bei minus 3 Prozent, und ein Ferienwerktag liegt nur etwa 1 Prozent über einem
-Schulwerktag. In Walibi Holland verschieben weder Ferien noch Wochenende etwas.
+Werktag. An einem Wochenende in der Schulzeit war die Wartezeit sogar 3 Prozent
+kürzer als an einem Werktag in der Schulzeit. An einem Werktag in den Ferien war
+sie nur etwa 1 Prozent länger. Weder Ferien noch Wochenende machen dort einen
+Unterschied.
 
-Die Tageskurve fällt ab dem späten Vormittag stetig und endet bei der Hälfte des
-Höchststands. Um elf Uhr ist es am vollsten, ab 16 Uhr geht es spürbar zurück.
-Mehr zum Park im
-[Walibi-Holland-Guide](/blog/walibi-holland-untamed-hard-gaan).
+Am vollsten ist es um elf Uhr. Danach wird die Wartezeit stetig kürzer, ab 16 Uhr
+spürbar, und in der letzten Stunde ist sie halb so lang wie zur Spitze. Mehr zum
+Park im [Walibi-Holland-Guide](/blog/walibi-holland-untamed-hard-gaan).
 
 ## Walibi Belgium
 
-[Walibi Belgium](ref:walibi-belgium) in Wavre ist leichter zu lesen. Der Samstag
-ist der vollste Tag, der Mittwoch der ruhigste. Montag, Dienstag und Donnerstag
-liegen gleichauf dazwischen, der Sonntag kommt kurz vor dem Samstag. Der
-Mittwoch ist an nur etwa 16 Tagen gemessen, der Samstag an 29.
+In [Walibi Belgium](ref:walibi-belgium) in Wavre ist die Reihenfolge klarer. Der
+Samstag ist der vollste Tag, der Mittwoch der ruhigste. Montag, Dienstag und
+Donnerstag liegen gleichauf dazwischen, der Sonntag kommt kurz vor dem Samstag.
+Der Mittwoch ist an nur etwa 16 Tagen gemessen, der Samstag an 29.
 
-Für die Ferien kann ich in diesem Park keine Zahl nennen. Der Kalender führt für
-Walibi Belgium im Zeitraum keinen einzigen Ferientag, und deshalb fehlt jede
-Gegenüberstellung. Das Wochenende in der Schulzeit liegt etwa 10 Prozent über
-einem Werktag. Das ist weniger als in den meisten anderen Parks.
+Einen Wert für die Ferien gibt es in Walibi Belgium nicht, weil in unserem
+Kalender für den Park im ganzen Zeitraum kein Ferientag eingetragen ist. An einem
+Wochenende in der Schulzeit stand man etwa 10 Prozent länger an als an einem
+Werktag. Das ist weniger als in den meisten anderen Parks.
 
-Die Tageskurve ähnelt der von Walibi Holland: früher Höchststand gegen elf Uhr,
-danach stetiger Rückgang, die letzte Stunde liegt bei etwas mehr als der Hälfte
-des Höchststands. Die Bahnen und die beste Reihenfolge stehen im
-[Walibi-Belgium-Guide](/blog/walibi-belgium-wartezeiten-tipps).
+Über den Tag sieht es aus wie in Walibi Holland. Die Spitze kommt früh, gegen elf
+Uhr, danach wird die Wartezeit stetig kürzer. In der letzten Stunde ist sie etwas
+mehr als halb so lang wie zur Spitze. Die Bahnen und die beste Reihenfolge stehen
+im [Walibi-Belgium-Guide](/blog/walibi-belgium-wartezeiten-tipps).
 
 ## Disneyland Paris
 
-Beim [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) in
-Marne-la-Vallée sind die Wartezeiten die längsten dieses Vergleichs und der
-Wochentag macht fast keinen Unterschied. Samstag und Dienstag sind am vollsten,
-am ruhigsten ist der Freitag, dicht gefolgt von Mittwoch, Sonntag, Montag und
-Donnerstag. Der Unterschied zwischen dem vollsten und dem ruhigsten Tag liegt
-bei einer Rundungsstufe, also bei fünf Minuten.
+Im [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) in
+Marne-la-Vallée sind die Wartezeiten die längsten dieses Vergleichs. Der
+Wochentag macht dort fast keinen Unterschied. Samstag und Dienstag sind am
+vollsten, am ruhigsten ist der Freitag, dicht gefolgt von Mittwoch, Sonntag,
+Montag und Donnerstag. Zwischen dem vollsten und dem ruhigsten Tag liegen fünf
+Minuten, die kleinste Stufe unserer Rundung.
 
-Ich vermute, dass der Park Besucher aus ganz Europa hat und irgendwo immer
-Ferien sind. Belegen kann ich das nicht. Ein Ferienwerktag lag nur etwa
-3 Prozent über einem Schulwerktag, ein Schulwochenende etwa 5 Prozent darüber.
+In den Ferien war die Wartezeit an Werktagen nur etwa 3 Prozent länger als in der
+Schulzeit, an Wochenenden in der Schulzeit etwa 5 Prozent. Ich vermute, dass der
+Park Besucher aus ganz Europa hat und irgendwo immer Ferien sind. Belegen kann
+ich das nicht.
 
-Bei der Uhrzeit ist der Unterschied hier groß. Der Höchststand liegt gegen zwölf
-Uhr, danach bleibt es bis in den frühen Abend hoch, und die letzte Stunde liegt
-bei gut einem Drittel davon, dem größten Abstand in diesem Vergleich. Im
-[Disneyland-Paris-Guide](/blog/disneyland-paris-wartezeiten-tipps) steht, wie du
-den Tag aufteilst.
+Die Uhrzeit macht hier dafür viel aus. Am längsten stehst du gegen zwölf Uhr an,
+und bis in den frühen Abend bleibt die Wartezeit hoch. In der letzten Stunde ist
+sie nur noch gut ein Drittel so lang, der größte Abstand in diesem Vergleich. Wie
+du den Tag aufteilst, steht im
+[Disneyland-Paris-Guide](/blog/disneyland-paris-wartezeiten-tipps).
 
 ```hourly-profile-widget slug=/parks/europe/france/paris/disneyland-park top=8
 
@@ -399,8 +400,9 @@ den Tag aufteilst.
 
 ## Ferien gegen Schulzeit im Vergleich
 
-In der Tabelle steht der Aufschlag, den ein Werktag in den Ferien gegenüber einem
-Werktag in der Schulzeit hat, und daneben der eines Wochenendes in der Schulzeit.
+In der Tabelle steht, um wie viel länger man an einem Werktag in den Ferien und
+an einem Wochenende in der Schulzeit anstand als an einem Werktag in der
+Schulzeit.
 
 | Park                   | Werktag in den Ferien, Aufschlag | Wochenende in der Schulzeit, Aufschlag |
 | ---------------------- | -------------------------------: | -------------------------------------: |
@@ -417,44 +419,46 @@ Werktag in der Schulzeit hat, und daneben der eines Wochenendes in der Schulzeit
 | Walibi Holland         |                              1 % |                                   −3 % |
 | Walibi Belgium         |         keine Ferien im Kalender |                                   10 % |
 
-Beide Spalten haben als Bezugsgröße einen Werktag in der Schulzeit, zwischen dem 13. April und dem 30. September 2026. Die Zahl der Tage je Zelle liegt zwischen
-24 und 88. Die Zahlen stammen aus einer Saison, und die Ferien fallen zum Teil in
-die ohnehin vollen Sommermonate, so dass Ferien und Jahreszeit sich vermischen.
-Ein Vergleich innerhalb eines Parks ist daher belastbarer als einer zwischen zwei
-Parks.
+Gemessen ist zwischen dem 13. April und dem 30. September 2026, und jeder Wert
+beruht auf 24 bis 88 Tagen. Die Zahlen stammen aus einer einzigen Saison. Die
+Ferien fallen zum Teil in die ohnehin vollen Sommermonate, deshalb vermischen sich
+Ferien und Jahreszeit. Ein Vergleich innerhalb eines Parks ist daher belastbarer
+als einer zwischen zwei Parks.
 
-Im Heide Park, im Phantasialand, im Movie Park und im Legoland liegt der
-Ferienwerktag deutlich über dem Wochenende, mit 54 bis 84 Prozent gegen 15 bis 47. Im Parc Astérix und im Toverland liegt er leicht darüber. Wer dort den
-Samstag meiden will und dafür in den Ferien einen Dienstag nimmt, steht an einem
-Ferienwerktag eher länger an als an einem Wochenende in der Schulzeit. In vier
-Parks, im Europa-Park, im Efteling, im Disneyland Paris und in Walibi Holland,
-liegen alle vier Fälle nahe beieinander. Dort bringt die Wahl des Tages kaum etwas,
-abends fällt die Wartezeit dagegen auf die Hälfte bis ein Drittel der Spitze, im
-Europa-Park auf etwa sechs Zehntel.
+Im Heide Park, im Phantasialand, im Movie Park und im Legoland machen die Ferien
+mehr aus als das Wochenende: An Ferienwerktagen waren es 54 bis 84 Prozent, an
+Wochenenden in der Schulzeit nur 15 bis 47. Im Parc Astérix und im Toverland
+liegt der Ferienwerktag knapp über dem Wochenende. Wer in diesen Parks in den
+Ferien einen Dienstag nimmt, um den Samstag zu meiden, steht also eher länger an
+als an einem Wochenende in der Schulzeit. Im Europa-Park, im Efteling, im
+Disneyland Paris und in Walibi Holland machen weder Ferien noch Wochenende viel
+aus. Dort bringt die Wahl des Tages wenig, der Abend dafür mehr: Im Disneyland
+Paris und in Walibi Holland ist die Wartezeit dann nur noch ein Drittel bis halb
+so lang wie zur Spitze, im Europa-Park und im Efteling etwa sechs bis sieben
+Zehntel.
 
 ## Reiseplanung
 
-**Zuerst der Park.** Willst du nur eine Bahn ohne Warteschlange, passt das
-Plopsaland oder das Toverland, weil dort an keinem Tag viel los ist. Willst du
-das Maximum aus einem vollen Park holen, ist der Freitag im Europa-Park oder im
-Heide Park die sicherste Wahl, der Donnerstag im Phantasialand und im Efteling.
+**Zuerst der Park.** Wenn du möglichst wenig anstehen willst, passen das
+Plopsaland oder das Toverland, weil dort an keinem Tag viel los ist. Willst du in
+einen der vollen Parks, ist der Freitag im Europa-Park oder im Heide Park die
+sicherste Wahl, im Phantasialand und im Efteling der Donnerstag.
 
-**Dann der Tag.** In neun Parks liegt der Samstag oben. Wenn du nur samstags
-kannst, fahr in den Parks, in denen der Unterschied klein ist: Walibi Holland,
-Disneyland Paris, Walibi Belgium oder Plopsaland Deutschland. Im Phantasialand
-und im Parc Astérix kostet dich der Samstag am meisten.
+**Dann der Tag.** Wenn du nur samstags kannst, fahr in einen Park, in dem der
+Unterschied klein ist: Walibi Holland, Disneyland Paris, Walibi Belgium oder
+Plopsaland Deutschland. Im Phantasialand und im Parc Astérix kostet dich der
+Samstag am meisten.
 
-**Dann die Ferien.** Schau, bevor du einen Werktag buchst, ob dein Park in
-den Ferien einen Aufschlag hat. Im Heide Park, im Phantasialand und im Movie
-Park kann ein Ferientag unter der Woche ein Samstag sein. Die Ferientermine
-deutscher Länder stehen im
+**Dann die Ferien.** Bevor du einen Werktag in den Ferien buchst, sieh in der
+Tabelle oben nach, wie viel die Ferien in deinem Park ausmachen. Die
+Ferientermine der Bundesländer stehen im
 [Schulferien-Beitrag](/blog/schulferien-freizeitparks-deutschland).
 
-**Dann die Uhrzeit.** Komm zum Öffnen: Bis zum Aufbau der Spitze gegen zehn bis
-zwölf Uhr kommst du an den großen Bahnen mit kürzerer Wartezeit durch. Wer abends
-bleibt, gewinnt im Disneyland Paris, im Parc Astérix, im Europa-Park, im Efteling
-und in beiden Walibis, aber kaum im Phantasialand und im Heide Park. Wie du die
-Stunden aufteilst, zeigt der [Tagesplaner](/blog/tagesplaner).
+**Dann die Uhrzeit.** Komm zum Öffnen: Bis sich gegen zehn bis zwölf Uhr die
+Spitze aufbaut, stehst du an den großen Bahnen kürzer an. Wer abends bleibt,
+gewinnt im Disneyland Paris, im Parc Astérix, im Europa-Park, im Efteling und in
+beiden Walibis, im Phantasialand und im Heide Park dagegen kaum. Wie du die
+Stunden aufteilst, steht im Beitrag zum [Tagesplaner](/blog/tagesplaner).
 
 Die ruhigsten Tage der nächsten Wochen im Europa-Park:
 
@@ -481,9 +485,9 @@ Samstag.
 
 ### Wann ist die beste Uhrzeit im Freizeitpark?
 
-Direkt zum Öffnen, danach am späten Nachmittag oder abends. Der Höchststand
-liegt in den meisten Parks gegen zehn bis zwölf Uhr, und in Parks, die abends
-lange offen sind, fällt die Wartezeit danach auf ein Drittel bis die Hälfte.
+Direkt zum Öffnen, danach am späten Nachmittag oder abends. Am längsten stehst
+du in den meisten Parks zwischen zehn und zwölf Uhr an. In Parks, die abends
+lange offen haben, ist die Wartezeit danach nur noch ein Drittel bis halb so lang.
 
 ### Sind Schulferien schlimmer als ein Samstag?
 
@@ -494,9 +498,10 @@ Paris und in Walibi Holland macht der Unterschied wenig aus.
 
 ### Gilt das auch für andere Jahre?
 
-Das wissen wir noch nicht. Die Zahlen decken den 24. Dezember 2025 bis 5. Oktober 2026 ab, und die Ferienwerte hängen an den Ferienterminen dieses
-Jahres. Ob die Rangfolge der Wochentage in einem zweiten Jahr gleich bleibt, zeigt
-erst ein zweites Jahr.
+Das wissen wir noch nicht. Die Zahlen decken den 24. Dezember 2025 bis 5. Oktober
+2026 ab. Die Ferienwerte hängen außerdem an den Ferienterminen dieses Jahres. Ob
+die Rangfolge der Wochentage in einem zweiten Jahr gleich bleibt, können wir erst
+nach einer zweiten Saison sagen.
 
 ## Quellen & Weiterlesen
 
