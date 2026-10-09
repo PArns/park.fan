@@ -36,7 +36,7 @@ or "News" on `/news` left it open and looked broken. Only that case — a locale
 the sheet open, and a modifier click opens a tab without closing it.
 
 **The bar follows the sheet's order and carries the sheet's icons** (Patrick, 2026-09-25):
-Backstage, News, Parks entdecken, „Mehr", Tagesplaner, then the favorites star, which stays on the
+Guides, News, Parks entdecken, „Mehr", Tagesplaner, then the favorites star, which stays on the
 right. „Mehr" stands where the sheet lists its three hubs (between the parks and the planner); the
 homepage has no entry, the logo is its link. Each entry leads with the sheet's glyph at 14 px in
 the accent (`NavEntryLabel` in `nav-menu.tsx`, required `icon` on `NavMenu`), „Mehr" with
@@ -184,7 +184,8 @@ empty before, 0 of 23 after**.
 
 ## The blog panel: three categories, six posts, no tags
 
-It hangs off a bar entry of its own, labelled **"Backstage"**. It spent one release inside the
+It hangs off a bar entry of its own, labelled **"Guides"** (["Backstage" before
+2026-10-09](#backstage-becomes-guides-and-the-panel-can-search)). It spent one release inside the
 "Mehr" panel, as the block the three reading-material sections stood beside — see
 ["Backstage" comes back out of "Mehr"](#backstage-comes-back-out-of-mehr) for why it did not stay
 there.
@@ -495,8 +496,8 @@ The blog is the site's strongest entry point, and behind a catch-all trigger it 
 somebody who opened one. It is a bar entry again, a fourth `NavMenu` beside "Parks entdecken" and
 "Tagesplaner" and before "Mehr", opening the panel it already had.
 
-**The label is "Backstage", unchanged in all six locales.** It is an international loanword, so it
-needs no transcreation, and it says what the posts are.
+**The label was "Backstage", unchanged in all six locales**, an international loanword that needed
+no transcreation. It is "Guides" now; see the next section.
 
 `navigation.blog` carries it, and it has **three** readers, not the two a first count of the
 components gives: this entry, the phone sheet's link, and `app/[locale]/layout.tsx`, which builds
@@ -528,6 +529,48 @@ renders the same `navigation.blog`, so it says "Backstage" now and is otherwise 
 runs on parent and child, so the block starts 20 px high instead of 10 and three stagger steps late.
 That trap is gone with the "Mehr" rail — `NavMenu` hands the panel straight to `MenuBand` — but it is
 the reason nothing between the two may grow a stagger attribute.
+
+---
+
+## "Backstage" becomes "Guides", and the panel can search
+
+26 of the 32 articles behind the entry are filed under `guides` (3 `park-fan`, 2
+`behind-the-scenes`, 1 `new-attractions`; the same in every locale), so "Backstage" promised a look
+behind the scenes the panel mostly did not hold. The entry is labelled with the guides category's
+own name from `content/blog/categories.json`: **Guides, Guides, Gidsen, Guides, Guías, Guide**
+(en, de, nl, fr, es, it). Every one is shorter than "Backstage" (5 to 6 characters against 9), so
+the bar's slack grows rather than shrinks. `navigation.blog` keeps its key; its three readers (the
+bar entry, the phone sheet's link and the `SiteNavigationElement` the locale layout emits for
+`/blog`) all print the new word, and `footer.blog` and `blog.blog` stay as they were, for the reason
+given above. The URL stays `/blog`.
+
+**A search field sits on the panel's heading rule**, at its right (`MenuSectionHeading` grew an
+`aside` slot for it). Two letters or more swap both columns for the matching articles, best first,
+in two columns of four (`BLOG_MENU_SEARCH_LIMIT`), down the first column and then the second; the
+heading then reads the number of hits, and a polite live region says the same. Enter opens the first
+hit. The first Escape empties the field and leaves the band open, the second closes it as anywhere
+else: `useMenuTrigger` skips an Escape whose default was prevented.
+
+- **The list is fetched, not rendered.** `/api/nav/articles/[locale]` serves every article of the
+  locale as panel rows plus a `terms` string (the words of the SEO keywords and tags, each once),
+  built by `getBlogMenuSearchIndex` from the same row mapping as the newest posts (`toMenuPost`).
+  It is static per deployment and asked for once per tab, on the first pointer over the field or
+  its first focus. Measured from the manifest on 2026-10-09: 32 articles, **6.3 to 6.9 KB brotli**
+  per locale (22.4 to 23.9 KB raw). In the chrome it would have cost every page view that much; as
+  it is, the chrome grew by the four strings the field needs (+203 B raw in the layout's messages,
+  `pnpm check:client-messages`).
+- **Matching** (`lib/navigation/blog-menu-search.ts`): every word of the query has to match, accents,
+  case and "ß" folded with `foldText` (the search palette's fold, moved to `lib/utils/text-fold.ts`).
+  A word that starts a word counts fully, one inside a word counts half and only from four letters,
+  so „karte" finds „Jahreskarte" and „dis" does not find „Paradis". Title 8, category and terms 4,
+  teaser 1; equal scores keep the panel's recency order. `pnpm test:blog-menu-search`.
+- **Typing holds the band open.** A band closes 180 ms after the pointer leaves it, which threw a
+  half-typed query away the moment the pointer drifted onto the page. While the focus is in a text
+  field inside the band (`holdsTextEntry`, `pnpm test:menu-focus`), leaving for the page does not
+  close it; leaving for the bar still does, or two bands would hang open at once. A click outside,
+  Tab out and Escape close it as before.
+- **News stays out.** The index is `listArticlesByRecency`, like the panel; news keeps its own entry
+  ([news is set apart](../rules/news-is-set-apart-from-the-articles.md)).
 
 ---
 

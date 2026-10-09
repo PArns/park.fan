@@ -2,6 +2,7 @@ import 'server-only';
 import type { Locale } from '@/i18n/config';
 import { buildCategoryTree, resolveCategoryLabel } from '@/lib/blog/categories';
 import { lastTouched, listArticlesByRecency } from '@/lib/blog/listing';
+import type { BlogListItem } from '@/lib/blog/types';
 import { postPath } from '@/lib/blog/paths';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 
@@ -73,6 +74,34 @@ export interface BlogMenu {
 }
 
 /**
+ * One article as a row of the panel. The opener's teaser is longer than a row's
+ * (`LEAD_EXCERPT_CHARS`), which is the only difference between the two.
+ */
+function toMenuPost(post: BlogListItem, locale: Locale, excerptChars: number): BlogMenuPost {
+  return {
+    path: postPath(post),
+    title: post.frontmatter.title,
+    date: lastTouched(post.frontmatter),
+    updated: lastTouched(post.frontmatter) !== post.frontmatter.date,
+    readingTimeMinutes: post.readingTimeMinutes,
+    excerpt: trimExcerpt(post.frontmatter.excerpt, excerptChars),
+    // Every row, like every other list of posts on the site; the repeated labels compress
+    // to almost nothing.
+    category: post.frontmatter.category
+      ? resolveCategoryLabel(
+          post.frontmatter.category,
+          locale,
+          post.frontmatter.category.split('/').filter(Boolean).pop() ?? ''
+        )
+      : undefined,
+    // Already a 16:9 crop, so no optimizer pass, but versioned: retargeting a focal point
+    // rewrites a crop's bytes at an unchanged URL.
+    image: versionedPath(post.frontmatter.coverImage?.src) ?? post.frontmatter.coverImage?.src,
+    imagePosition: objectPositionForSrc(post.frontmatter.coverImage?.src, '50% 50%'),
+  };
+}
+
+/**
  * Builds the header's blog panel for a locale: the article categories by post count and the five
  * most recently touched articles with trimmed excerpts and covers.
  */
@@ -92,29 +121,39 @@ export function getBlogMenu(locale: Locale): BlogMenu {
     // (docs/rules/updated-at-is-for-new-content.md).
     recent: listArticlesByRecency(locale)
       .slice(0, RECENT_LIMIT)
-      .map((post, index) => ({
-        path: postPath(post),
-        title: post.frontmatter.title,
-        date: lastTouched(post.frontmatter),
-        updated: lastTouched(post.frontmatter) !== post.frontmatter.date,
-        readingTimeMinutes: post.readingTimeMinutes,
-        excerpt: trimExcerpt(
-          post.frontmatter.excerpt,
-          index === 0 ? LEAD_EXCERPT_CHARS : EXCERPT_CHARS
-        ),
-        // Every row, like every other list of posts on the site; the repeated labels compress
-        // to almost nothing.
-        category: post.frontmatter.category
-          ? resolveCategoryLabel(
-              post.frontmatter.category,
-              locale,
-              post.frontmatter.category.split('/').filter(Boolean).pop() ?? ''
-            )
-          : undefined,
-        // Already a 16:9 crop, so no optimizer pass, but versioned: retargeting a focal point
-        // rewrites a crop's bytes at an unchanged URL.
-        image: versionedPath(post.frontmatter.coverImage?.src) ?? post.frontmatter.coverImage?.src,
-        imagePosition: objectPositionForSrc(post.frontmatter.coverImage?.src, '50% 50%'),
-      })),
+      .map((post, index) =>
+        toMenuPost(post, locale, index === 0 ? LEAD_EXCERPT_CHARS : EXCERPT_CHARS)
+      ),
   };
+}
+
+/** An article as the panel's search sees it: its row, plus words the row does not print. */
+export interface BlogMenuSearchEntry extends BlogMenuPost {
+  /** The words of the post's SEO keywords and tags, each once; matched but never shown. */
+  terms?: string;
+}
+
+/**
+ * Every article of a locale, in the panel's order, for the search field in the blog panel. Served
+ * by `/api/nav/articles/[locale]` and fetched when the field is first pointed at or focused, never
+ * rendered into the layout: the whole list in the chrome would be paid for by every page view,
+ * searched or not.
+ */
+export function getBlogMenuSearchIndex(locale: Locale): BlogMenuSearchEntry[] {
+  return listArticlesByRecency(locale).map((post) => {
+    const keywords = post.frontmatter.seo?.keywords ?? [];
+    // Tags are slugs ("hansa-park"), keywords are phrases that repeat their words ("Hansa-Park",
+    // "Hansa-Park Tipps"); each word once keeps the list short.
+    const words = new Map<string, string>();
+    for (const phrase of [
+      ...(typeof keywords === 'string' ? keywords.split(',') : keywords),
+      ...(post.frontmatter.tags ?? []).map((tag) => tag.replace(/-/g, ' ')),
+    ]) {
+      for (const word of phrase.split(/\s+/).filter(Boolean)) {
+        if (!words.has(word.toLowerCase())) words.set(word.toLowerCase(), word);
+      }
+    }
+    const terms = [...words.values()].join(' ');
+    return { ...toMenuPost(post, locale, EXCERPT_CHARS), ...(terms ? { terms } : {}) };
+  });
 }

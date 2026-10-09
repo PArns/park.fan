@@ -296,6 +296,14 @@ Route `/api/ml/[...path]` (route).
 - `runtime` _const_
 - `dynamic` _const_
 
+### [`nav/articles/[locale]/route.ts`](../../app/api/nav/articles/%5Blocale%5D/route.ts)
+
+Route `/api/nav/articles/[locale]` (route).
+
+- `generateStaticParams` _function_
+- `GET` _function_
+- `dynamic` _const_: Every article of one locale, for the search field in the header's blog panel.
+
 ### [`nav/geo/[continent]/[country]/route.ts`](../../app/api/nav/geo/%5Bcontinent%5D/%5Bcountry%5D/route.ts)
 
 Route `/api/nav/geo/[continent]/[country]` (route).

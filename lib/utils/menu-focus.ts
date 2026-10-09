@@ -27,3 +27,19 @@ export function escapeRefocusesTrigger(
 ): boolean {
   return active === null || nowhere.includes(active) || root.contains(active);
 }
+
+/**
+ * Whether a header band may stay open when the pointer leaves it for the page: yes while the focus
+ * is in a text field inside it, since a pointer drifting off the band mid-word would throw the
+ * query away. A click outside, Tab out and Escape still close it.
+ */
+export function holdsTextEntry(
+  root: { contains: (node: Node | null) => boolean },
+  active: Element | null
+): boolean {
+  return (
+    active !== null &&
+    root.contains(active) &&
+    (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')
+  );
+}

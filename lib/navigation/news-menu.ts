@@ -7,7 +7,7 @@ import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { trimExcerpt } from '@/lib/navigation/blog-menu';
 
 /**
- * The news menu: its own bar entry beside "Backstage", and the only place in the header news
+ * The news menu: its own bar entry beside "Guides", and the only place in the header news
  * appears. A news item is chosen by what happened and when, so the panel is one lead with its
  * cover and teaser, then a time line of headlines each led by its age (`NewsAge`). No image loads
  * until the panel opens: the band is `hidden` and `next/image` is lazy. See
