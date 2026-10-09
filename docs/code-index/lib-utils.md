@@ -222,6 +222,7 @@ Cached `Intl` formatter factories. Constructing a formatter costs far more than 
 
 - `focusLeftMenu` _function_: Whether a `blur` raised inside a header menu means the focus really left it.
 - `escapeRefocusesTrigger` _function_: Whether Escape, after closing a header band, may move the focus back onto its trigger: yes from inside the band or from nowhere (`<body>`, `<html>`, `null`), where removing an alert leaves it; no from a real element elsewhere, or Escape in …
+- `holdsTextEntry` _function_: Whether a header band may stay open when the pointer leaves it for the page: yes while the focus is in a text field inside it, since a pointer drifting off the band mid-word would throw the query away.
 
 ### [`metadata.ts`](../../lib/utils/metadata.ts)
 
@@ -437,6 +438,7 @@ Server-side „current time" helpers. On per-request pages they are fresh; on pr
 
 ### [`text-fold.ts`](../../lib/utils/text-fold.ts)
 
+- `foldText` _function_: Text reduced for matching: lower case, accents off, "ß" as "ss", so "farup" finds "Fårup" and "strasse" finds "Straße". "ß" has no Unicode decomposition, hence the explicit replace.
 - `foldRideName` _function_: A ride name reduced for matching, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.".
 
 ### [`touch-target.ts`](../../lib/utils/touch-target.ts)

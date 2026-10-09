@@ -90,6 +90,7 @@
     "test:trip-share": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-trip-share.mjs",
     "test:favorites-band": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-favorites-band-plan.mjs",
     "test:menu-focus": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-menu-focus.mjs",
+    "test:blog-menu-search": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-blog-menu-search.mjs",
     "test:park-phrase": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-phrase.mjs",
     "test:park-null-wait-stats": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-null-wait-stats.mjs",
     "test:park-kids": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-kids.mjs",

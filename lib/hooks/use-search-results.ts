@@ -6,21 +6,13 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import type { SearchResult, SearchResultItem } from '@/lib/api/types';
 import { trackSearchNoResults } from '@/lib/analytics/umami';
 import { useHeroBrowseParks, type HeroBrowseParks } from '@/lib/hooks/use-hero-browse-parks';
+import { foldText } from '@/lib/utils/text-fold';
 
 /**
- * Folds accents the way the API's matcher does, so scoring here agrees with the order the API
- * already sorted the results into (`farup` finds "Fårup Sommerland"). "ß" has no Unicode
- * decomposition, hence the explicit replace.
+ * `foldText` plus punctuation removal — "F.L.Y." becomes "fly". `foldText` folds accents the way
+ * the API's matcher does, so the scoring here agrees with the order the API sorted the results into.
  */
-const fold = (value: string): string =>
-  value
-    .replace(/\u00df/g, 'ss')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase();
-
-/** `fold` plus punctuation removal — "F.L.Y." becomes "fly". */
-const foldAlphanumeric = (value: string): string => fold(value).replace(/[^a-z0-9]/g, '');
+const foldAlphanumeric = (value: string): string => foldText(value).replace(/[^a-z0-9]/g, '');
 
 /** Shape of a single glossary hit returned by /api/glossary-search. */
 export interface GlossarySearchItem {
@@ -108,8 +100,8 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
   const browse = useHeroBrowseParks();
 
   const calculateMatchScore = (item: SearchResultItem): number => {
-    const name = fold(item.name);
-    const query = fold(debouncedQuery);
+    const name = foldText(item.name);
+    const query = foldText(debouncedQuery);
     const plainName = foldAlphanumeric(item.name);
     const plainQuery = foldAlphanumeric(debouncedQuery);
     const hasPlainQuery = plainQuery.length > 0;

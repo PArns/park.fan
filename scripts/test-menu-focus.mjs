@@ -15,7 +15,7 @@
  * Run: pnpm test:menu-focus
  */
 
-import { escapeRefocusesTrigger, focusLeftMenu } from '../lib/utils/menu-focus.ts';
+import { escapeRefocusesTrigger, focusLeftMenu, holdsTextEntry } from '../lib/utils/menu-focus.ts';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -70,6 +70,18 @@ test(
   escapeRefocusesTrigger(root, outside, nowhere),
   false
 );
+
+// ── Leaving for the page while typing: the guides panel's search field ───────
+// A pointer that drifts off the band mid-word must not throw the query away. Only a text field
+// holds it: a focused link or button in the band closes on leave as before.
+const field = { tagName: 'INPUT' };
+const link = { tagName: 'A' };
+const fieldRoot = { contains: (node) => node === fieldRoot || node === field || node === link };
+const fieldElsewhere = { tagName: 'INPUT' };
+test('a field in the band holds it open', holdsTextEntry(fieldRoot, field), true);
+test('a link in the band does not', holdsTextEntry(fieldRoot, link), false);
+test('a field elsewhere on the page does not', holdsTextEntry(fieldRoot, fieldElsewhere), false);
+test('no focus does not', holdsTextEntry(fieldRoot, null), false);
 
 // ---------------------------------------------------------------------------
 

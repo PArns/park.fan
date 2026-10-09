@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from '@/i18n/navigation';
-import { escapeRefocusesTrigger, focusLeftMenu } from '@/lib/utils/menu-focus';
+import { escapeRefocusesTrigger, focusLeftMenu, holdsTextEntry } from '@/lib/utils/menu-focus';
 
 /**
  * The open/close behaviour every entry in the header's mega-menu bar shares, so no entry opens
@@ -57,7 +57,8 @@ export function useMenuTrigger() {
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      // An Escape the focused control used (a search field emptying itself) is not a way out.
+      if (e.key === 'Escape' && !e.defaultPrevented) {
         setOpenedOn(null);
         // Focus goes back to the trigger, inside the wrapper, so its bubbling `focusin` would
         // reopen the band in the same batch; the flag holds for that synchronous dispatch. Only
@@ -99,6 +100,13 @@ export function useMenuTrigger() {
     },
     onPointerLeave: (e: React.PointerEvent) => {
       if (e.pointerType === 'touch') return;
+      // Into the page, a band somebody is typing in stays; into the bar is heading for another
+      // entry, and closes as always, or two bands would hang open at once.
+      const intoBar = e.relatedTarget instanceof Element && e.relatedTarget.closest('header');
+      if (!intoBar && holdsTextEntry(e.currentTarget, document.activeElement)) {
+        clearTimer();
+        return;
+      }
       schedule(false, CLOSE_DELAY_MS);
     },
     onFocus: () => !closingRef.current && setRequested(true),
