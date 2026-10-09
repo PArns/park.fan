@@ -141,8 +141,8 @@ Havn will open its doors at the end of 2027.
 
 [Phantasialand](ref:phantasialand), [Heide Park](ref:heide-park),
 [Movie Park Germany](ref:movie-park-germany), [Legoland Deutschland](ref:legoland-deutschland)
-and [Plopsaland Deutschland](ref:plopsaland-deutschland) hadn't confirmed a new attraction for
-2027 by 5 October. At Phantasialand anything bigger depends on the expansion into the land by the
+and [Plopsaland Deutschland](ref:plopsaland-deutschland) haven't confirmed a new attraction for
+2027 yet. At Phantasialand anything bigger depends on the expansion into the land by the
 Ententeich, the duck pond, which still has no development plan, and a petition against it has been
 collecting signatures since 28 September. What the park wants to build there is in
 [our report on the petition](/blog/phantasialand-expansion-petition). Movie Park is up for sale
@@ -565,7 +565,7 @@ the fastest. In Europe it's Supersonic 1887 at Nigloland, with 47 metres and alm
 
 ### Is there a new roller coaster in Germany in 2027?
 
-Not as of 5 October 2026. Hansa-Park is building a tower, Rulantica a restaurant, and Europa-Park
+No. Hansa-Park is building a tower, Rulantica a restaurant, and Europa-Park
 plans its next new coaster for 2028. The nearest new coasters are at Nigloland in Champagne and
 Djurs Sommerland in Denmark.
 

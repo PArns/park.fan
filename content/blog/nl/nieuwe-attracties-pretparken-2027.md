@@ -108,7 +108,7 @@ In het waterpark [Rulantica](ref:rulantica) komt Nørd Havn, een gebouw met twee
 
 ### Phantasialand, Heide Park, Movie Park en de andere parken
 
-[Phantasialand](ref:phantasialand), [Heide Park](ref:heide-park), [Movie Park Germany](ref:movie-park-germany), [Legoland Deutschland](ref:legoland-deutschland) en [Plopsaland Deutschland](ref:plopsaland-deutschland) hadden tot 5 oktober geen nieuwigheid voor 2027 bevestigd. Bij Phantasialand hangt alles wat groter is af van de uitbreiding naar het gebied bij de Ententeich. Daarvoor bestaat nog geen bestemmingsplan, en sinds 28 september worden er handtekeningen tegen verzameld. Wat het park daar wil bouwen, staat in [ons bericht over het burgerinitiatief](/blog/phantasialand-uitbreiding-burgerinitiatief). Movie Park staat samen met zijn moederbedrijf Parques Reunidos te koop, en een aankondiging voor 2027 is er van die kant niet.
+[Phantasialand](ref:phantasialand), [Heide Park](ref:heide-park), [Movie Park Germany](ref:movie-park-germany), [Legoland Deutschland](ref:legoland-deutschland) en [Plopsaland Deutschland](ref:plopsaland-deutschland) hebben nog geen nieuwigheid voor 2027 bevestigd. Bij Phantasialand hangt alles wat groter is af van de uitbreiding naar het gebied bij de Ententeich. Daarvoor bestaat nog geen bestemmingsplan, en sinds 28 september worden er handtekeningen tegen verzameld. Wat het park daar wil bouwen, staat in [ons bericht over het burgerinitiatief](/blog/phantasialand-uitbreiding-burgerinitiatief). Movie Park staat samen met zijn moederbedrijf Parques Reunidos te koop, en een aankondiging voor 2027 is er van die kant niet.
 
 ## Benelux
 
@@ -330,7 +330,7 @@ Bakunawa in Six Flags Great Adventure, met 116 meter, en met 161 km/u is hij ook
 
 ### Komt er in 2027 een nieuwe achtbaan in Duitsland?
 
-Volgens de stand van 5 oktober 2026 niet. Hansa-Park bouwt een toren, Rulantica een restaurant, en Europa-Park plant zijn volgende nieuwe achtbaan voor 2028. Vanuit Duitsland liggen de dichtstbijzijnde nieuwe achtbanen in Nigloland in de Champagne en in Djurs Sommerland in Denemarken.
+Nee. Hansa-Park bouwt een toren, Rulantica een restaurant, en Europa-Park plant zijn volgende nieuwe achtbaan voor 2028. Vanuit Duitsland liggen de dichtstbijzijnde nieuwe achtbanen in Nigloland in de Champagne en in Djurs Sommerland in Denemarken.
 
 ### Welke nieuwigheid gaat in 2027 als eerste open?
 
