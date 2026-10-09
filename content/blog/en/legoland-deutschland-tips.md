@@ -6,9 +6,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Legoland Deutschland is built for children from two to twelve, and on none of
-  its nine headliner rides does an early start save enough time for a rope drop
-  tip. With an adult, the highest minimum height is 1.25 metres, and Halloween runs until 8 November.
+  At Legoland Deutschland, an early start doesn't save much waiting at any of the
+  big rides. A child riding with an adult never needs more than 1.25 metres.
+  Halloween runs until 8 November.
 tags:
   - legoland
   - guenzburg
@@ -25,8 +25,9 @@ rideLinks:
 seo:
   title: 'Legoland Deutschland Tips: Wait Times, Fastrack, Tickets and Halloween'
   description: >-
-    Legoland Deutschland 2026: minimum heights, wait times by weekday, tickets,
-    Fastrack, parking and Halloween until 8 November.
+    Legoland Deutschland is quietest on Fridays and busiest on Saturdays. With an
+    adult, a child never needs more than 1.25 metres on any ride. Day tickets cost
+    from €39 online.
   keywords:
     - Legoland Deutschland
     - Legoland Deutschland tips
@@ -47,9 +48,10 @@ seo:
     - Legoland holiday village
 ---
 
-**Legoland Deutschland** describes itself as built for children between **two and twelve**. For riding with an adult, the highest minimum height in the whole park is **1.25 metres**, on
-[Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare). And on none of the nine headliner
-rides does an early start save enough time for us to give a rope drop tip. Anyone planning a day in
+**Legoland Deutschland** describes itself as built for children between **two and twelve**. For
+children riding with an adult, the highest minimum height in the whole park is **1.25 metres**, on
+[Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare). On none of the nine headliner rides
+does an early start save enough waiting to be worth the alarm clock. Anyone planning a day in
 Günzburg needs less tactical planning than in Rust or Brühl, and more attention to centimetres and ages.
 
 This guide assumes children between three and twelve, from the stroller to the first coaster without a parent holding their hand. Our wait times come from measurements since December 2025, which is one
@@ -66,25 +68,25 @@ The park opened on **17 May 2002**, nine months ahead of schedule, with more tha
 costs of around €153 million. In the first year 1.3 million guests came, in 2020 only 750,000, and in
 2024 the Themed Entertainment Association's index put it at about **two million**. That makes
 Legoland the third most visited theme park in Germany after Europa-Park and Phantasialand. Merlin
-Entertainments has run it since 2005. In 2019 Kirkbi, the holding company of the Lego owners,
-Blackstone and a Canadian pension fund bought Merlin for €6.6 billion, and Merlin still operates
-the park.
+Entertainments has run it since 2005. In 2019 three investors bought Merlin for €6.6 billion:
+Blackstone, a Canadian pension fund and Kirkbi, the holding company of the Lego owners. Merlin still
+runs the park.
 
 By the park's own count it now has **68 attractions in 11 themed areas** and more than 58 million
 Lego bricks. Miniland is made of over 23 million of them, built by 140 model designers. The Allianz
-Arena there uses more than a million bricks, weighs 1.5 tonnes according to Wikipedia and seats
-30,000 minifigures, and the Reichstag building from Berlin takes about 1.07 million. The newest
+Arena there uses more than a million bricks and, according to Wikipedia, weighs 1.5 tonnes. Its
+stands hold 30,000 minifigures. The Reichstag building from Berlin takes about 1.07 million bricks. The newest
 area is **LEGO Mythica**, which opened on 25 March 2023. At over €15 million it was the most
-expensive expansion in the park's history, and its wing coaster is the first new coaster in
-Legoland Deutschland in about 20 years.
+expensive expansion in the park's history. Its wing coaster is the first new coaster at Legoland
+Deutschland in about 20 years.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
 ## Minimum height and age on the rides
 
 Almost everywhere in Legoland two limits apply: a height and an age, set separately for riding with
-an adult and for riding alone. A ride that takes a child of 1.10 metres with an adult often asks for
-1.20 when they ride alone. The park sets this ride by ride, and at the ride entrance the staff decide
+an adult and for riding alone. Where a child of 1.10 metres may ride with an adult, they often need
+1.20 to ride alone. The park sets this ride by ride, and at the ride entrance the staff decide
 whether someone may board.
 
 | Ride                                                                                      | What it is                       | with an adult      | alone              |
@@ -115,8 +117,8 @@ metres, Maximus one of 2.00 metres. That mostly affects parents who want to come
 ## The big rides
 
 **[Maximus](ref:legoland-deutschland/maximus-the-guardians-flight)** is the first wing coaster in
-any Legoland, built by Bolliger & Mabillard, 17 metres tall, at 15 metres per second, which is
-54 km/h. The ride includes a helix and a corkscrew, and your legs dangle in the air. The park
+any Legoland, built by Bolliger & Mabillard. It's 17 metres tall and runs at 15 metres per second,
+which is 54 km/h. The ride includes a helix and a corkscrew, and your legs dangle in the air. The park
 recommends it from primary-school age.
 
 ```glossary-widget slug=wing-coaster
@@ -153,10 +155,10 @@ fountains and blasts of air at animated opponents. Fog and warm air are part of 
 end you find out who scored the most points. The ride takes about three and a half minutes, and
 according to the park you don't need to know the story.
 
-For the smaller ones there are the **[Drachenjagd](ref:legoland-deutschland/dragon-hunt)**, a junior
-coaster by Gerstlauer from 2003, from one metre with an adult, and the
-**[Fire & Ice Tower](ref:legoland-deutschland/fire-and-ice-tower)**, where you spin nine metres up
-and then drop, from as young as three. At the Wellenreiter and at Käpt'n Nicks Piratenschlacht,
+For the smaller ones there's the **[Drachenjagd](ref:legoland-deutschland/dragon-hunt)**, a junior
+coaster by Gerstlauer from 2003 that children can ride with an adult from one metre. On the
+**[Fire & Ice Tower](ref:legoland-deutschland/fire-and-ice-tower)** they can go from as young as
+three. You spin nine metres up and then drop. At the Wellenreiter and at Käpt'n Nicks Piratenschlacht,
 spectators on shore can join in and splash the boats.
 
 ## For the youngest, from two
@@ -170,21 +172,22 @@ which according to Wikipedia have been in the park since it opened.
 
 The two **driving schools** have been there since 2002. In the
 **[Junior driving school](ref:legoland-deutschland/legoland-junior-driving-school-powered-by-hyundai)**
-children from three to six drive a simple track, in the
+children from three to six drive a simple track. In the
 **[driving school](ref:legoland-deutschland/legoland-driving-school-powered-by-hyundai)** for children
 from seven to thirteen there's a theory lesson first and then a course with traffic lights and road
-signs, and at the end they get a Legoland driving licence. According to Wikipedia both run in
+signs. At the end they get a Legoland driving licence. According to Wikipedia both run in
 cooperation with Hyundai.
 
 In **Miniland**, most models are built at 1:20 scale. Neuschwanstein
 Castle is made of over 300,000 bricks and was the first model the park's workshop designed entirely
-by itself, and since 2025 a 2.30-metre Fortnite dino of 73,000 pieces has stood there.
+by itself. Since 2025 there's also a 2.30-metre Fortnite dino made of 73,000 pieces.
 
 ## Wait times by ride and weekday
 
-The table lists the ten rides with the longest wait times, with the median, the themed area and the
-measured days. It uses the park's English names: Fire Dragon stands for the Feuerdrache, Dragon Hunt
-for the Drachenjagd, Pedal-A-Car for the Tret-o-Mobil, Harbour Cruise for the Hafenrundfahrt.
+The table has the ten rides with the longest wait times, each with its median, its themed area and
+the number of days we measured it on. The rides appear under the park's English names: Fire Dragon
+is the Feuerdrache, Dragon Hunt the Drachenjagd, Pedal-A-Car the Tret-o-Mobil and Harbour Cruise the
+Hafenrundfahrt.
 
 ```ride-waits-widget park=legoland-deutschland top=10 columns=land,days
 
@@ -199,18 +202,18 @@ The weekday makes the biggest difference in our measurements:
 
 ```
 
-Saturday is the busiest day of the week and Friday the quietest. Every weekday has more than twenty
-measured days, though from a single season. In the
-[school holidays guide](/blog/school-holidays-theme-parks-germany) Friday is also the lowest among
-the holiday weekdays, and Legoland depends on the holidays in Bavaria and Baden-Württemberg more than
-any of the six parks compared there.
+Saturday is the busiest day of the week and Friday the quietest. We've measured each weekday on more
+than twenty days, though only in one season. In our
+measurements, Friday is also the weekday with the shortest waits during the school holidays. Of the
+six parks we compare in our [school holidays guide](/blog/school-holidays-theme-parks-germany),
+Legoland depends most on the holidays in Bavaria and Baden-Württemberg.
 
 ```stats-widget slug=legoland-deutschland show=months
 
 ```
 
-August was the busiest month. June and September came in below May and July. October has only five
-measured days so far, and we're not saying anything about it.
+August was the busiest month. June and September were quieter than May and July. We've only measured
+five days in October so far, too few to say anything.
 
 The next table breaks the day down, one row per ride and one column per hour. The park
 opens at 10, and the rides close an hour before the park does.
@@ -219,29 +222,31 @@ opens at 10, and the rides close an hour before the park does.
 
 ```
 
-At Das Große LEGO Rennen and the Hafenrundfahrt the highest value comes in the morning. At the
-Dschungel X-pedition and the Tret-o-Mobil the curve rises from opening and then stays up. At the
-Feuerdrache, the Drachenjagd and Flying NINJAGO the curve rises until midday and then stays at a similar level, and at Maximus
-the wait stays almost the same all day.
+At Das Große LEGO Rennen and the Hafenrundfahrt the wait is longest in the morning. At the
+Dschungel X-pedition and the Tret-o-Mobil it climbs from opening and then stays high. At the
+Feuerdrache, the Drachenjagd and Flying NINJAGO it climbs until midday and changes little after
+that. At Maximus the wait stays almost the same all day.
 
-On rainy days, wait times at Legoland were 17 percent shorter than on comparable dry days in our
-measurements, as the [rain comparison](/blog/theme-parks-in-the-rain) lists for twelve parks. The
+In our measurements, wait times at Legoland were 17 percent shorter on rainy days than on dry ones.
+We only compared days from the same month: weekday with weekday, weekend with weekend, school
+holidays with school holidays. The figures for twelve parks are in the
+[rain comparison](/blog/theme-parks-in-the-rain). The
 park says the same on its all-weather page: when the weather isn't great, the wait is often shorter
 at many attractions.
 
 ## Rope drop doesn't pay off here
 
-We only give a rope drop tip when the day's peak at a ride is high enough, and the early start saves
-enough of it, that the alarm clock is worth it. The thresholds and the reasoning are in the article
-[Is 70 Minutes a Long Wait?](/blog/is-70-minutes-a-long-wait). At Legoland none of the nine rides the park lists as
-headliners reaches those thresholds, on weekdays or at weekends. So the page of each of these
-rides carries no rope drop recommendation.
+We only recommend arriving at opening when the wait at a ride gets long later in the day and you'd
+queue so much less at opening that the alarm clock is worth it. Where those limits sit, and why, is
+in the article [Is 70 Minutes a Long Wait?](/blog/is-70-minutes-a-long-wait). At Legoland none of
+the nine headliner rides reaches them, on weekdays or at weekends. That's why their pages on our
+site carry no rope drop recommendation.
 
 ```glossary-widget slug=rope-drop
 
 ```
 
-You don't have to be at the car park at seven. If you arrive early, start with the two rides whose curve only rises, the Dschungel X-pedition and the Tret-o-Mobil. Das Große LEGO Rennen and the Hafenrundfahrt are busiest in the morning, so they fit better in the afternoon. Ride Maximus, the Feuerdrache and Flying NINJAGO whenever you like, because their curve hardly moves. If you'd rather have it quiet, come on a Friday.
+You don't have to be at the car park at seven. If you arrive early, start with the two rides where the wait only goes up during the day: the Dschungel X-pedition and the Tret-o-Mobil. Das Große LEGO Rennen and the Hafenrundfahrt are busiest in the morning, so they fit better in the afternoon. Ride Maximus, the Feuerdrache and Flying NINJAGO whenever you like, because the wait there changes little over the day. If you'd rather have it quiet, come on a Friday.
 
 ## Fastrack: three tiers and the rides
 
@@ -251,9 +256,9 @@ old system, where you bought a certain time saving, and now counts rides. Fastra
 includes **no park admission** and is valid only on the booked day.
 
 There are three tiers. **Bronze** costs from €25, **Silver** from €42 and **Gold** from €89. Gold
-covers all Fastrack rides of the day, and the park may ask for ID because it can't be passed on. With
-Bronze and Silver each ride uses up part of your allowance. A Fastrack package is scanned once every
-three minutes, and the daily allowance is limited. Fastrack works at 18 attractions, among them
+covers all Fastrack rides of the day. You can't pass it on, so the park may ask for ID. With Bronze
+and Silver each ride uses up part of your allowance. A Fastrack package can only be scanned once
+every three minutes. The daily allowance is limited. Fastrack works at 18 attractions, among them
 Maximus, Feuerdrache, Das Große LEGO Rennen, LEGO NINJAGO The Ride, Flying NINJAGO, Dschungel
 X-pedition, LEGOLAND Express, the observation tower, Pyramiden Rallye, Wüsten X-kursion, Safari
 Tour, Piratenschule and LEGO Studios.
@@ -301,10 +306,10 @@ The Halloween event runs from **3 October to 8 November 2026** and is included i
 says there are no jump scares, only pumpkins, ghosts and skeletons in the Knights' Kingdom. If you'd
 rather skip the decorations, the park has areas without a Halloween theme.
 
-The programme includes the “BOOlevard”, the decorated path from the entrance through the park, the
-“Hexen BOOde” as a reward for solving a scavenger hunt, a monster dance at the castle stage on
-Saturdays, and the 4D film “Die Monster sind los!” in the LEGO Studios. It runs hourly from 11 am, with
-the last film an hour before closing. The **parade** starts at 4 pm on the Halloween Saturdays,
+The programme includes the “BOOlevard”, the decorated path from the entrance through the park, and
+the “Hexen BOOde”, which you get as a reward for solving a scavenger hunt. On Saturdays monsters
+dance at the castle stage. In the LEGO Studios the 4D film “Die Monster sind los!” runs hourly from
+11 am, the last one an hour before closing. The **parade** starts at 4 pm on the Halloween Saturdays,
 3, 10, 17, 24 and 31 October, and it can be cancelled in bad weather. On those Saturdays the park stays
 open until **8 pm**, on 7 November until 7 pm, and otherwise until 6 pm. Come on a Halloween
 Saturday and you get two more hours, but also the busiest day of the week.
@@ -320,7 +325,7 @@ are under cover. According to Wikipedia Atlantis has over 2,000 fish, and its gl
 metres long. There's also a **Regen Rallye**, a puzzle round for wet days.
 
 Between 24 December 2025 and 5 October 2026, at Legoland
-Deutschland at least two millimetres of rain fell on 18 percent of opening days; the figures for all twelve parks are in the [rain comparison](/blog/theme-parks-in-the-rain). The park itself recommends an
+Deutschland at least two millimetres of rain fell on 18 percent of opening days. The figures for all twelve parks are in the [rain comparison](/blog/theme-parks-in-the-rain). The park itself recommends an
 umbrella, a rain poncho, waterproof shoes and a change of clothes.
 
 ```weather-widget slug=legoland-deutschland
@@ -384,16 +389,17 @@ public holidays. The park is closed on 5 and 6 May, 18 to 20 May, 8 and 9 June, 
 ### When is Legoland quietest?
 
 In our measurements since December 2025, on Friday, in June and in September. Saturday and August
-were the busiest. The calendar on the [park page](ref:legoland-deutschland?calendar) shows the
-quieter upcoming days, and on rainy days wait times were 17 percent shorter than on comparable dry
-days.
+were the busiest. The quieter upcoming days are marked in the calendar on the
+[park page](ref:legoland-deutschland?calendar). On rainy days, wait times were 17 percent shorter than
+on comparable dry days in the same month.
 
 ### What height does my child need to ride?
 
 With an adult from 0.80 metres at Käpt'n Nicks Piratenschlacht and from 1.00 metres at the
-Drachenjagd, the Dschungel X-pedition and the Fire & Ice Tower. From 1.10 metres Das Große LEGO
-Rennen and the Feuerdrache, from 1.20 metres Maximus and from 1.25 metres Flying NINJAGO. Riding
-alone, most rides ask for 1.20 metres, Maximus, Power Builder and Käpt'n Nicks Piratenschlacht for 1.30 metres. Each also has a minimum age: one to seven years with an adult, six to nine alone.
+Drachenjagd, the Dschungel X-pedition and the Fire & Ice Tower. From 1.10 metres a child can ride Das
+Große LEGO Rennen and the Feuerdrache, from 1.20 metres Maximus and from 1.25 metres Flying NINJAGO.
+To ride alone, a child needs 1.20 metres on most rides and 1.30 metres on Maximus, Power Builder and
+Käpt'n Nicks Piratenschlacht. Each also has a minimum age: one to seven years with an adult, six to nine alone.
 
 ### How much does Legoland Deutschland cost?
 
