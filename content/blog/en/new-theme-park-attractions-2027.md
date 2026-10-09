@@ -2,7 +2,7 @@
 title: 'New theme park attractions 2027: what parks and manufacturers have confirmed'
 translationKey: park-novelties-2027
 date: '2026-10-04'
-updatedAt: '2026-10-05'
+updatedAt: '2026-10-09'
 author: patrick
 mode: published
 featured: false
@@ -74,6 +74,9 @@ section links its source, and the full list is at the end.
 | Park                                                                  | New attraction                  | Type                                   | When                   |
 | --------------------------------------------------------------------- | ------------------------------- | -------------------------------------- | ---------------------- |
 | [Hansa-Park](ref:hansa-park?bare)                                     | Buddenbrook-Turm                | Tower in the Hansa-Garten              | during the 2027 season |
+| [Europa-Park](ref:europa-park?bare)                                   | Wild Swing XL                   | Giant swing in Portugal                | 2027                   |
+| [Europa-Park](ref:europa-park?bare)                                   | Tower you steer yourself        | Tower in Iceland                       | 2027                   |
+| [Europa-Park](ref:europa-park?bare)                                   | Enzo's Piccolo Mondo            | Gondola ride, redesigned               | 2027                   |
 | [Rulantica](ref:rulantica?bare)                                       | Nørd Havn                       | Restaurant and lounging areas          | late 2027              |
 | [Plopsaland Belgium](ref:plopsaland-belgium?bare)                     | Flying Cinema                   | Flying theatre, Mack Rides             | 13 March 2027          |
 | [Efteling](ref:efteling?bare)                                         | Fairytale Library               | 32nd fairytale in the Fairytale Forest | from 2027              |
@@ -123,14 +126,44 @@ attraction page, the Gerstlauer ride has seven launches over about 570 metres, r
 measure wait times at Hansa-Park, and the park only puts them in its own app. Everything else you
 need to know there is in the [Hansa-Park guide](/blog/hansa-park-tips).
 
-### Europa-Park and Rulantica
+### Europa-Park: Pre-Opening Weeks and three family attractions
 
-[Europa-Park](ref:europa-park) has no new ride for 2027. Instead it opens earlier than usual, with
+[Europa-Park](ref:europa-park) has no new coaster for 2027. Instead it opens earlier than usual, with
 its first Pre-Opening Weeks and cheaper tickets from 7 to 19 March, and the summer season starts
 on 20 March. The details are in
 [our report on the Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027).
 [Euro-Mir](ref:europa-park/euro-mir) only runs until 9 January 2027, and its section is further
 down under "What goes away in 2027".
+
+On top of that come three family attractions the park announced on 8 October 2026. It gives no
+opening dates for any of them and says it will publish more information "at a later date". The rest is
+in [our report on the three novelties](/news/europa-park-three-new-family-attractions-2027).
+
+### Europa-Park: Wild Swing XL in Portugal
+
+The Portuguese area is getting a Wild Swing XL, a giant swing more than 14 metres up, above the
+Portuguese lake. According to the park it combines thrills with ride fun and is meant for all ages.
+The park doesn't name a manufacturer, a minimum height, riders per cycle or ride length. So far the
+only ride in Portugal is the water coaster
+[Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), which MACK Rides built in 2005. The
+swing will be the second ride in the area, and there is no opening date.
+
+### Europa-Park: a tower in Iceland
+
+Between the wooden coaster [WODAN - Timburcoaster](ref:europa-park/wodan-timburcoaster) and the
+megacoaster [blue fire](ref:europa-park/blue-fire-megacoaster), a tower attraction is due to open in 2027. According to the park, guests steer it themselves and look out over the Icelandic area from
+above, down to the harbour as well. The tower has no name yet, and height, manufacturer, minimum
+height and opening date are missing.
+
+### Europa-Park: Enzo's Piccolo Mondo
+
+The gondola ride [Piccolo Mondo](ref:europa-park/piccolo-mondo) in the Italian area has looked after
+the youngest guests for more than 40 years, says the park, and is due back in 2027 "in new splendour".
+The park names art, classic theatre and Italian music as the content. Whether the ride closes
+beforehand is left open, as is how many scenes it has and which of them are new. It opened in 1982 and
+comes from MACK Rides, and each gondola holds six people. The park gives no opening date.
+
+### Rulantica: Nørd Havn
 
 At the [Rulantica](ref:rulantica) water park, a two-storey building called Nørd Havn is going up.
 There's a restaurant on the ground floor, and upstairs you'll find lounging areas in three places:
@@ -566,7 +599,7 @@ the fastest. In Europe it's Supersonic 1887 at Nigloland, with 47 metres and alm
 ### Is there a new roller coaster in Germany in 2027?
 
 Not as of 5 October 2026. Hansa-Park is building a tower, Rulantica a restaurant, and Europa-Park
-plans its next new coaster for 2028. The nearest new coasters are at Nigloland in Champagne and
+plans its next new coaster for 2028. On 8 October it announced three family attractions for 2027, but no coaster. The nearest new coasters are at Nigloland in Champagne and
 Djurs Sommerland in Denmark.
 
 ### Which new attraction opens first in 2027?
@@ -592,6 +625,7 @@ The next chance is the IAAPA Expo trade show in Orlando, with the exhibition run
 
 - Hansa-Park, Buddenbrook-Turm: [New for 2027: Buddenbrook-Turm (Hansa-Park)](https://www.hansapark.de/attraktion/276/details/neu-2027-buddenbrook-turm?language=de), 2027 season: [Season passes (Hansa-Park)](https://www.hansapark.de/saisonkarten/?language=de), opening in 1977: [Facts and figures (Hansa-Park)](https://www.hansapark.de/zahlen-daten-fakten/?language=de), Cornwall Coaster: [Media information (Hansa-Park)](https://www.hansapark.de/medien-informationen/?language=de)
 - Rulantica: [Nørd Havn (Europa-Park)](https://www.europapark.de/de/rulantica/nord-havn)
+- Europa-Park, three family attractions, 14 metres, more than 40 years, date of the announcement: [Europa-Park kündigt drei neue Familienattraktionen an (MACK Group, 8 October 2026)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an), Atlantica SuperSplash: [Atlantica SuperSplash (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/atlantica-supersplash), Piccolo Mondo: [Piccolo Mondo (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/piccolo-mondo)
 - Plopsaland Belgium: [Press release of 3 August 2026 (Plopsa)](https://www.plopsanews.com/en/press-releases/vliegende-cinema-opent-op-13-maart-2027-als-blikvanger-van-grootste-investering-ooit-in-plopsaland-belgium), [Flying Cinema (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/attractions/flying-cinema), [Plopsaland Plaza (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/plopsaland-plaza), Mack Rides: [Press release of 30 September 2025 (Plopsa)](https://plopsanews.com/nl/persberichten/plopsaland-vliegt-naar-de-toekomst-een-recordinvestering-met-vliegende-cinema-als-blikvanger)
 - Efteling: [New in Efteling](https://www.efteling.com/en/new-in-efteling), [Press release on the Fairytale Library of 22 July 2026](https://www.efteling.com/en/press/first-look-at-eftelings-32nd-fairytale-the-fairytale-library/), [Blog post on the Chinese Nightingale](https://www.efteling.com/en/blog/nieuws/nieuws-over-de-sprookjesbibliotheek-en-de-chinese-nachtegaal)
 - Bobbejaanland: [Home page (Bobbejaanland)](https://www.bobbejaanland.be/)
