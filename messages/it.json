@@ -2414,7 +2414,8 @@
       "composedHint": "Il livello del giorno è previsto, l’andamento viene dai giorni passati.",
       "composedHintError": "Livello del giorno previsto, andamento dai giorni passati, di solito {minutes} min di scarto.",
       "longRangeHint": "Così in anticipo è già incerto il livello dell’intera giornata. I valori ora per ora danno solo un’indicazione di massima.",
-      "unmeasuredHint": "Per date così lontane non c’è ancora una verifica di quanto la previsione ci prenda. I valori danno solo un’indicazione di massima."
+      "unmeasuredHint": "Per date così lontane non c’è ancora una verifica di quanto la previsione ci prenda. I valori danno solo un’indicazione di massima.",
+      "climatology": "Anni precedenti"
     },
     "band": {
       "plusMinus": "± {minutes} min"
@@ -2463,6 +2464,12 @@
       "no_forecast": "Il modello non ha ancora calcolato una previsione per questo giorno. Ripassa dopo la prossima esecuzione del modello.",
       "no_observations": "Non abbiamo misurazioni di questo parco per quel giorno passato.",
       "data_unavailable": "Un servizio dietro il piano non ha risposto. Al momento non sappiamo perché non ci siano curve. Riprova tra un attimo."
+    },
+    "climatology": {
+      "title": "Uno sguardo indietro su giorni comparabili, non una previsione.",
+      "regular": "Basato su {days, plural, one {# giorno ordinario} other {# giorni ordinari}} degli anni precedenti.",
+      "holiday": "Basato su {days, plural, one {# giorno festivo o ponte} other {# giorni festivi o ponti}} degli anni precedenti.",
+      "school_vacation": "Basato su {days, plural, one {# giorno} other {# giorni}} di vacanze scolastiche degli anni precedenti."
     },
     "overview": {
       "empty": "Ancora nessun giorno pianificato.",

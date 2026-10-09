@@ -54,6 +54,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `BAND_FADE` _const_: How the band leaves off: full at the queue's end, gone at its own. A one-sided spread is a likelihood running out, so a hard edge would claim certainty at its least sure minute.
 - Types: `BlockBand`
 
+### [`climatology.ts`](../../lib/planner/climatology.ts)
+
+- `climatologyNote` _function_: What to tell the visitor about a `climatology` day, or `null` for any other.
+- Types: `ClimatologyNote`
+
 ### [`day-grid.ts`](../../lib/planner/day-grid.ts)
 
 - `dayStartMin` _function_: The first minute anything on this day may be filed at: the early-entry opening where there is one, the park's opening otherwise.

@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { Precip, Temp } from '@/components/common/unit-display';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
+import { climatologyNote } from '@/lib/planner/climatology';
 import type { PlanDay } from '@/lib/api/types';
 
 /** What the panel knows about the day, which is not the same as what it holds. */
@@ -82,7 +83,10 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
    * Whether anybody has ever checked how wrong the forecast is this far out. Not on an `observed`
    * day: it also answers `basis: 'unmeasured'`, but its figures are measurements.
    */
-  const unmeasured = tier !== 'observed' && day.accuracy?.basis === 'unmeasured';
+  const unmeasured =
+    tier !== 'observed' && tier !== 'climatology' && day.accuracy?.basis === 'unmeasured';
+
+  const lookBack = climatologyNote(day);
 
   /**
    * The day's own typical error, rounded to the minute. A typical error, not a bound, so it is
@@ -104,28 +108,33 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
   const tierLabel =
     tier === 'observed'
       ? t('tier.observed')
-      : unmeasured
-        ? t('tier.unmeasured')
-        : tier === 'measured'
-          ? t('tier.measured')
-          : tier === 'composed'
-            ? t('tier.composed')
-            : t('tier.longRange');
+      : tier === 'climatology'
+        ? t('tier.climatology')
+        : unmeasured
+          ? t('tier.unmeasured')
+          : tier === 'measured'
+            ? t('tier.measured')
+            : tier === 'composed'
+              ? t('tier.composed')
+              : t('tier.longRange');
 
+  // A look-back day says what it rests on in the visible note below, so there is no hint to hide.
   const tierHint =
     tier === 'observed'
       ? t('tier.observedHint')
-      : unmeasured
-        ? t('tier.unmeasuredHint')
-        : tier === 'measured'
-          ? typicalError !== null
-            ? t('tier.measuredHintError', { minutes: typicalError })
-            : t('tier.measuredHint')
-          : tier === 'composed'
+      : tier === 'climatology'
+        ? null
+        : unmeasured
+          ? t('tier.unmeasuredHint')
+          : tier === 'measured'
             ? typicalError !== null
-              ? t('tier.composedHintError', { minutes: typicalError })
-              : t('tier.composedHint')
-            : t('tier.longRangeHint');
+              ? t('tier.measuredHintError', { minutes: typicalError })
+              : t('tier.measuredHint')
+            : tier === 'composed'
+              ? typicalError !== null
+                ? t('tier.composedHintError', { minutes: typicalError })
+                : t('tier.composedHint')
+              : t('tier.longRangeHint');
 
   const crowd = context.crowdLevel;
   const hasCrowd = Boolean(crowd) && crowd !== 'closed';
@@ -229,6 +238,13 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
           <span className="planner-phone:sr-only">{tierHint}</span>
         </span>
       </div>
+
+      {lookBack && (
+        <p className="text-muted-foreground text-[11px]" data-planner-climatology="">
+          <span className="text-foreground/80 font-medium">{t('climatology.title')}</span>{' '}
+          {t(`climatology.${lookBack.holidayState}`, lookBack.values)}
+        </p>
+      )}
     </div>
   );
 }

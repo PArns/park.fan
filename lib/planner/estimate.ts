@@ -189,10 +189,12 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
   const point = ride.hours.find((h) => h.hour === hour);
   if (!point) return readable ? assumed(day) : noSource(day);
 
+  // A look back has no spread and no error to print, whatever the ride carries.
+  const lookBack = day.tier === 'climatology';
   return {
     wait: point.wait,
-    uncertaintyMinutes: ride.uncertaintyMinutes ?? null,
-    expectedError: ride.expectedError ?? null,
+    uncertaintyMinutes: lookBack ? null : (ride.uncertaintyMinutes ?? null),
+    expectedError: lookBack ? null : (ride.expectedError ?? null),
     // The HOUR's regime where it names one, the day's otherwise. `source` is set
     // only on the exceptions, so an absent one means "the day's tier" and never
     // "unknown".
@@ -326,6 +328,8 @@ export function bandCarriesFigure(day: PlanDay | null | undefined): boolean {
   // An observed day has no band: a measurement has no spread, and the API sends
   // `uncertaintyMinutes: null` for every ride of it.
   if (day.tier === 'observed') return false;
+  // A `climatology` day is a look back: no forecast error describes it, so no band carries a figure.
+  if (day.tier === 'climatology') return false;
   return day.tier === 'measured' || typeof day.leadTimeMae === 'number';
 }
 
