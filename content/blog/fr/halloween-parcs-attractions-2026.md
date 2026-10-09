@@ -6,11 +6,10 @@ updatedAt: '2026-10-07'
 author: patrick
 mode: published
 excerpt: >-
-  Tronçonneuse à Bottrop, crochet de boucher à Biddinghuizen, vin chaud et
-  patience à Brühl : Halloween 2026 en Allemagne, aux Pays-Bas, en Belgique, en
-  France, au Royaume-Uni et en Espagne, avec toutes les dates, les deux grands
-  parcs qui boudent tout ce cirque, et les soirs où l’on ne fait pas la queue
-  une éternité.
+  Pour presque tous les grands événements d’Halloween 2026, les maisons hantées
+  se paient en plus du billet d’entrée. Phantasialand et l’Efteling ne fêtent
+  pas Halloween du tout. D’après nos prévisions, les week-ends et le 31 octobre
+  seront les jours les plus chargés.
 tags:
   - halloween
   - parc-attractions
@@ -36,8 +35,9 @@ coverImage:
 seo:
   title: 'Halloween parcs d’attractions 2026 : dates et frissons'
   description: >-
-    Halloween 2026 en Europe : Movie Park, Traumatica, Walibi, Toverland, Alton
-    Towers, PortAventura, deux parcs sans Halloween et les soirs les plus calmes.
+    Le Halloween Horror Festival du Movie Park et Traumatica à l’Europa-Park
+    durent jusqu’à début novembre. Phantasialand et l’Efteling ne fêtent pas
+    Halloween.
   keywords:
     - Halloween parc attractions 2026
     - Halloween Horror Festival Movie Park 2026
@@ -72,13 +72,11 @@ personne ne traite la question ennuyeuse de savoir quels soirs on entre dans ces
 machines à fumée sans d’abord geler sur place dans le froid d’octobre.
 
 > [!NOTE]
-> **Au 29 septembre 2026 :** ce jour-là, nous avons vérifié toutes les dates,
-> limites d’âge et prix ci-dessous sur les pages officielles des événements,
-> liées dans la section de chaque parc. PortAventura joue depuis le 19
-> septembre, Traumatica depuis l’avant-première du 23 septembre, et le Movie
-> Park, Disneyland Paris et Alton Towers ont suivi le 26 septembre. Tout le
-> reste démarre en octobre. Beaucoup de prix dépendent du soir et montent à
-> mesure qu’il approche.
+> **Dates, limites d’âge et prix au 29 septembre 2026.** PortAventura joue
+> depuis le 19 septembre, Traumatica depuis l’avant-première du 23 septembre,
+> et le Movie Park, Disneyland Paris et Alton Towers ont suivi le 26 septembre.
+> Tout le reste démarre en octobre. Beaucoup de prix dépendent du soir et
+> montent à mesure qu’il approche.
 
 ## Les grands événements d’horreur (le soir, souvent à partir de 16 ans)
 
@@ -207,10 +205,10 @@ individus, spectacles pyrotechniques et un vacarme qui vous reste dans
 l’oreille jusque sur l’A5 du retour.
 
 De jour, Rust est un autre parc, et un parc aux files étonnamment courtes pour
-sa taille. J’ai fait le calcul dans le
-[guide Europa-Park](/blog/europa-park-temps-d-attente-conseils), et j’y explique
-aussi pourquoi un billet Traumatica en novembre vous coûte la dernière heure
-dans le parc.
+sa taille. Les chiffres sont dans notre
+[guide Europa-Park](/blog/europa-park-temps-d-attente-conseils), tout comme la
+raison pour laquelle un billet Traumatica en novembre vous coûte la dernière
+heure dans le parc.
 
 [Europa-Park](ref:europa-park?full)
 
@@ -510,7 +508,7 @@ des attractions tournent jusqu’à 21 h les jours longs.
 
 [Heide-Park](ref:heide-park?full)
 
-Source : [communiqué de presse du Heide-Park du 4 octobre 2026](https://www.heide-park.de/presse/pressemeldungen/halloween-2026/) (en allemand), consulté le 7 octobre 2026.
+Source : [communiqué de presse du Heide-Park du 4 octobre 2026](https://www.heide-park.de/presse/pressemeldungen/halloween-2026/) (en allemand).
 
 Dates actuelles et âges autorisés :
 [heide-park.de → Halloween](https://www.heide-park.de/en/explore/events/halloween/).
@@ -704,9 +702,8 @@ le [guide Efteling](/blog/efteling-le-disney-des-pays-bas).
 Plus qu’aucune programmation, ce qui décide de la soirée, c’est **le moment où
 vous venez.** Les week-ends et le 31 octobre sont les plus chargés, et c’est
 aussi ce que prévoit notre calendrier d’affluence pour presque tous les parcs de
-ce guide. Nos mesures ne commencent toutefois que fin décembre 2025 : au 25
-septembre 2026, nous n’avions encore mesuré aucun mois d’octobre d’Halloween
-dans aucun d’eux, il s’agit donc d’une prévision. En semaine et dans les
+ce guide. Cela reste une prévision, car nos mesures ne commencent que fin décembre 2025
+et ne comptent encore aucun mois d’octobre d’Halloween. En semaine et dans les
 semaines périphériques de la saison, il prévoit sensiblement moins de monde (et
 les acteurs ont alors plus de temps pour s’occuper exclusivement de _vous_, pour
 le meilleur ou pour le pire).
@@ -728,12 +725,9 @@ les plus calmes** dans notre calendrier d’affluence par IA :
 
 ```
 
-Pour le Movie Park, aucun automne d’Halloween n’est encore mesuré dans le
-calendrier, prenez donc sa prévision pour les soirées d’horreur avec prudence.
-L’affluence habituelle à Bottrop par jour de la semaine et par mois, d’après nos
-mesures : elles ne commencent que fin décembre 2025, aucun mois d’octobre
-n’avait été mesuré au 29 septembre 2026, et Halloween, il faudra l’imaginer pour
-l’instant :
+Pour les soirées d’horreur du Movie Park, prenez la prévision avec prudence.
+Voici l’affluence habituelle à Bottrop par jour de la semaine et par mois,
+d’après nos mesures, où Halloween reste pour l’instant à imaginer :
 
 **Movie Park Germany, temps d’attente typiques par jour de semaine & mois**
 

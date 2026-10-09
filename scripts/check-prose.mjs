@@ -296,6 +296,23 @@ const ACCESS_DATE = {
   },
 };
 /**
+ * `Abgerufen wurde alles am 9. Oktober 2026.`, a table column `Quelle, abgerufen am 9.10.2026`,
+ * `die gelesenen Seiten`, `auf den abgerufenen Seiten`, `ein PDF, das wir nicht abgerufen haben`
+ * (§3.3, rule 21): the research diary. ACCESS_DATE above wants a person, a page and a date in one
+ * sentence; the food and toddler guides of 2026-10-08/09 wrote the same thing in the passive, as
+ * an adjective and as a table header, about forty times in six languages, and none of it matched.
+ * Here the word alone is enough, because a post has no other use for it. A `[!QUOTE]` source line
+ * is a citation and may carry the date; researchNarration() strips those blocks first.
+ */
+const RESEARCH_DIARY = {
+  de: /(?<!\p{L})(?:abgerufen\p{L}*|aufgerufen am|(?:gelesenen|geprüften|durchgesehenen|eingesehenen|ausgewerteten) (?:Seiten|Texten?|Quellen|Dokumenten?|Regelwerken?|Hausordnungen|Parkordnungen|Regeln)|(?:haben|hatten) wir (?:[\p{L}-]+ ){0,4}?nicht (?:gelesen|eingesehen|geöffnet)|(?:das|die|den) wir nicht (?:gelesen|eingesehen|geöffnet) haben)(?!\p{L})/giu,
+  en: /(?<!\p{L})(?:retrieved|accessed (?:on )?\d|accessed (?:on )?(?:january|february|march|april|may|june|july|august|september|october|november|december)|(?:on )?the pages (?:we|I) (?:read|checked|consulted|looked at|opened)|(?:we|I) (?:didn['’]t|did not|haven['’]t|have not|couldn['’]t) (?:read|open|consult)(?!\p{L}))(?!\p{L})/giu,
+  nl: /(?<!\p{L})(?:geraadpleegd\p{L}*|geraadpleegde|opgevraagd op|(?:gelezen|geraadpleegde|bekeken) pagina['’]?s|(?:hebben|heb) (?:we|ik) (?:[\p{L}-]+ ){0,3}?niet (?:geraadpleegd|gelezen|bekeken|geopend))(?!\p{L})/giu,
+  fr: /(?<!\p{L})(?:consulté(?:e|s|es)? (?:le|ce jour|l['’])|(?:pages|textes|sources|documents) consulté(?:e|s|es)?|notre consultation|(?:n['’]avons|n['’]ai) pas (?:consulté|lu|ouvert))(?!\p{L})/giu,
+  es: /(?<!\p{L})(?:consultad[oa]s? (?:el \d|ese mismo día|ese día)|(?:páginas|textos|fuentes|documentos) consultad[oa]s|no (?:hemos|he) (?:consultado|leído|abierto))(?!\p{L})/giu,
+  it: /(?<!\p{L})(?:consultat[oaie] (?:il \d|l['’]\d|quel giorno)|(?:pagine|testi|fonti|documenti) consultat[ei]|non (?:abbiamo|ho) (?:consultato|letto|aperto))(?!\p{L})/giu,
+};
+/**
  * `Einen Zwischenstand hat es auf seiner Website bis zum 7. Oktober nicht genannt.` (§3.3, rule
  * 15), in a news post dated 7 October: a non-event pinned to the post's own `date` or
  * `updatedAt`, which is the day of the research. The post is dated already; the sentence says
@@ -453,6 +470,106 @@ const X_OF_X = Object.fromEntries(
     new RegExp(`(?<!\\p{L})(${COUNT_WORDS[l]}) ${OF_ITSELF[l]}\\s*\\1(?!\\p{L})`, 'giu'),
   ])
 );
+/**
+ * `Sechs von fünfzehn Parks erlauben eigenes Essen ausdrücklich, vier regeln nur den Ort, fünf
+ * schweigen.` (§3.3, rule 22): a tally that names its noun once and then hands bare numbers a verb
+ * each, so the reader keeps the fifteen in their head and adds up. It opened the excerpt of the
+ * food guide in six languages (`four only say where to eat it, five say nothing`, `cinco callan`)
+ * until Patrick put it on the list on 2026-10-09. Matched per sentence: two or more clauses that
+ * open on a bare number word followed by a verb. German needs no verb list, because a noun after
+ * the number would be capitalised (`vier weitere schreiben` is a hit, `vier weitere Parks` is
+ * not), and the verb ends in `-en`, `-ern` or `-eln`; French, Spanish and Italian look for the
+ * ending of the third person plural (`fixent`, `fijan`, `fissano`), English for a word that is
+ * neither a plural noun nor the adjective in front of one, and Dutch, where nouns end in `-en`
+ * too (`vier seizoenen`), for a verb from a list. The copula is left out everywhere: `zehn sind
+ * Stationen, drei sind Labyrinthe` says what each group is.
+ */
+const TALLY_WORDS = {
+  de: `${COUNT_WORDS.de}|dreizehn|vierzehn|fünfzehn|sechzehn|siebzehn|achtzehn|neunzehn|zwanzig`,
+  en: `${COUNT_WORDS.en}|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty`,
+  nl: `${COUNT_WORDS.nl}|dertien|veertien|vijftien|zestien|zeventien|achttien|negentien|twintig`,
+  fr: `${COUNT_WORDS.fr}|treize|quatorze|quinze|seize|dix-sept|dix-huit|dix-neuf|vingt`,
+  es: `${COUNT_WORDS.es}|trece|catorce|quince|dieciséis|diecisiete|dieciocho|diecinueve|veinte`,
+  it: `${COUNT_WORDS.it}|tredici|quattordici|quindici|sedici|diciassette|diciotto|diciannove|venti`,
+};
+const CLAUSE_START = {
+  de: '(?:^|[,;:]\\s+|\\s(?:und|aber|oder|während)\\s+)',
+  en: '(?:^|[,;:]\\s+|\\s(?:and|but|or|while)\\s+)',
+  nl: '(?:^|[,;:]\\s+|\\s(?:en|maar|of|terwijl)\\s+)',
+  fr: '(?:^|[,;:]\\s+|\\s(?:et|mais|ou|tandis que)\\s+)',
+  es: '(?:^|[,;:]\\s+|\\s(?:y|pero|o|mientras)\\s+)',
+  it: '(?:^|[,;:]\\s+|\\s(?:e|ma|o|mentre)\\s+)',
+};
+const BARE_COUNT_VERB = {
+  de: '(?:weitere\\s+|andere\\s+)?(?!(?:sind|waren)(?!\\p{L}))[a-zäöüß]\\p{L}*(?:en|ern|eln)(?!\\p{L})',
+  en: "(?:more\\s+|others?\\s+)?(?:(?:only|just|also|merely|simply|still|never|don['’]t|do\\s+not)\\s+)?(?!(?:of|out|or|and|to|in|at|on|by|for|with|from|into|about|after|before|under|over|each|per|a|an|the|than|percent|hundred|thousand|million|more|less|people|children|men|women|feet|km|cm|m|o|according|are|were)(?!\\p{L}))[a-z]+(?<!s)(?!\\p{L})(?!\\s+[a-z]+s(?!\\p{L}))",
+  nl: '(?:andere\\s+|anderen\\s+)?(?:(?:alleen|maar|niet|ook|nog|zelfs)\\s+)?(?:staan|laten|regelen|zwijgen|noemen|verbieden|vragen|geven|hebben|bieden|zeggen|melden|vermelden|schrijven|houden|sluiten|openen|tonen|eisen|rekenen|tellen|beperken|verkopen|gebruiken|kennen|zetten|leggen|maken)(?!\\p{L})',
+  fr: "(?:autres\\s+)?(?:(?:seulement|ne|n['’]en|n['’]y|n['’]|en|y|se|s['’])\\s*)*(?!(?:sont|étaient)(?!\\p{L}))\\p{L}+ent(?!\\p{L})",
+  es: '(?:otros\\s+|otras\\s+)?(?:(?:solo|sólo|no|ya|también|apenas|únicamente|se|lo|la|los|las)\\s+)*(?!(?:son|eran|están|estaban)(?!\\p{L}))\\p{L}+(?:an|en)(?!\\p{L})',
+  it: '(?:altri\\s+|altre\\s+)?(?:(?:solo|soltanto|non|ne|già|anche|si|lo|la|li|le)\\s+)*(?!(?:sono|erano)(?!\\p{L}))\\p{L}+(?:ano|ono)(?!\\p{L})',
+};
+// German matches case-sensitively, so that a capitalised noun after the number is not a verb;
+// the number itself may open the sentence.
+const capitalisedToo = (words) =>
+  words
+    .split('|')
+    .map((w) => `[${w[0]}${w[0].toUpperCase()}]${w.slice(1)}`)
+    .join('|');
+const BARE_COUNT = Object.fromEntries(
+  LOCALES.map((l) => [
+    l,
+    l === 'de'
+      ? new RegExp(
+          `${CLAUSE_START.de}(?:${capitalisedToo(TALLY_WORDS.de)})\\s+${BARE_COUNT_VERB.de}`,
+          'gu'
+        )
+      : new RegExp(`${CLAUSE_START[l]}(?:${TALLY_WORDS[l]})\\s+${BARE_COUNT_VERB[l]}`, 'giu'),
+  ])
+);
+/**
+ * `fünf schweigen`, `Zum Hersteller schweigt die Mitteilung`, `schweigen die Bedingungen` (§2.13,
+ * §3.3 rule 22): silence handed to a number or a document. A rulebook does not keep quiet about
+ * glass; there is nothing about glass in it. A company that declines to answer may schweigen
+ * (`Merlin schweigt zu den Gründen`), so only a count word or a document is matched.
+ */
+const SILENT_DOCUMENT = {
+  de: 'regeln?|regelwerke?|bedingungen|hausordnung(?:en)?|parkordnung(?:en)?|reglements?|seiten?|faqs?|texte?|agb|websites?|webseiten?|pressemitteilung(?:en)?|mitteilung(?:en)?|quellen?|dokumente?|unterlagen|antwort(?:en)?|liste',
+  en: 'rules|regulations|rulebooks?|terms|pages?|faqs?|texts?|websites?|press releases?|releases?|announcements?|sources|documents?',
+  nl: "regels|reglementen?|huisregels|voorwaarden|pagina['’]?s?|faqs?|teksten?|websites?|persberichten?|berichten?|bronnen|documenten?",
+  fr: 'règles|règlements?|conditions|pages?|faqs?|textes?|sites?|communiqués?|sources|documents?',
+  es: 'normas|reglamentos?|condiciones|páginas?|faqs?|textos?|webs?|comunicados?|fuentes|documentos?',
+  it: 'regole|regolamenti?|condizioni|pagine?|faq|testi|testo|siti|sito|comunicati?|fonti|documenti?',
+};
+const SILENT_VERB = {
+  de: 'schweig(?:t|en)',
+  en: '(?:is|are|stays?|remains?|keeps?) (?:silent|quiet)',
+  nl: 'zwijg(?:t|en)',
+  fr: 'se tai(?:t|sent)|reste(?:nt)? muet(?:te)?s?',
+  es: 'calla(?:n)?|guarda(?:n)? silencio',
+  it: 'tace|tacciono',
+};
+/** A count may also "say nothing": `five say nothing`, `cinq n’en disent rien`. A rulebook may. */
+const COUNT_SILENT_VERB = {
+  ...SILENT_VERB,
+  en: `(?:say|says) nothing|${SILENT_VERB.en}`,
+  fr: `(?:n['’]en |ne )dis(?:ent|e) rien|${SILENT_VERB.fr}`,
+  es: `no dicen nada|${SILENT_VERB.es}`,
+  it: `non dicono (?:nulla|niente)|${SILENT_VERB.it}`,
+  nl: `zeggen (?:er )?niets|${SILENT_VERB.nl}`,
+};
+const SILENCE = Object.fromEntries(
+  LOCALES.map((l) => [
+    l,
+    new RegExp(
+      `(?<!\\p{L})(?:(?:${TALLY_WORDS[l]})\\s+(?:\\p{L}+\\s+)?(?:${COUNT_SILENT_VERB[l]})|(?:${SILENT_DOCUMENT[l]})\\s+(?:[\\p{L}-]+\\s+){0,3}?(?:${SILENT_VERB[l]})|(?:${SILENT_VERB[l]})\\s+(?:[\\p{L}-]+\\s+){0,2}?(?:the|die|der|das|beide|alle|de|het|les|la|le|las|los|el|i|gli|il)\\s+(?:[\\p{L}-]+\\s+)?(?:${SILENT_DOCUMENT[l]}))(?!\\p{L})`,
+      'giu'
+    ),
+  ])
+);
+/** Sentences of `text` with two or more bare-number clauses (rule 22). */
+function tallies(text, locale) {
+  return splitSentences(text).filter((s) => (s.trim().match(BARE_COUNT[locale]) ?? []).length >= 2);
+}
 /**
  * `die Headliner sind kürzer besetzt` (§3.3, rule 14): a verb that does not fit its noun. A ride
  * is not "besetzt", short or long; the wait at it is shorter. It stood in the same excerpt, and the
@@ -1275,6 +1392,21 @@ function hardRules(file, text, locale) {
       file,
       `"zwölf von zwölf" (§3.3), write "alle zwölf": ${[...new Set(selfCount)].slice(0, 3).join(' · ')}`
     );
+  const tally = tallies(text, locale);
+  if (tally.length)
+    fail(
+      file,
+      `a tally that drops its noun (§3.3, rule 22), name the parks or give one count: ${tally
+        .slice(0, 2)
+        .map((s) => `"${s.trim().match(BARE_COUNT[locale]).join(' … ').trim()}"`)
+        .join(' · ')}`
+    );
+  const silence = flat.match(SILENCE[locale]);
+  if (silence)
+    fail(
+      file,
+      `a number or a document that keeps quiet (§3.3, rule 22), say what is in it or that nothing is: ${[...new Set(silence)].slice(0, 3).join(' · ')}`
+    );
   const wrongNoun = WRONG_NOUN[locale] && flat.match(WRONG_NOUN[locale]);
   if (wrongNoun)
     fail(
@@ -1337,10 +1469,10 @@ function hardRules(file, text, locale) {
  * block is someone else's words and its source line is the citation, where `abgerufen am 1.
  * Oktober 2026` belongs (docs/rules/a-quote-names-its-source.md), so the blocks are left out.
  */
-function researchNarration(file, raw, locale) {
-  const text = raw.replace(/(?:^>.*(?:\n|$))+/gm, (block) =>
-    /^>\s*\[!QUOTE\]/.test(block) ? '' : block
-  );
+function researchNarration(file, raw, locale, diaryRaw = raw) {
+  const withoutQuotes = (t) =>
+    t.replace(/(?:^>.*(?:\n|$))+/gm, (block) => (/^>\s*\[!QUOTE\]/.test(block) ? '' : block));
+  const text = withoutQuotes(raw);
   const anonymous =
     ANONYMOUS_SOURCE[locale] && text.replace(/\s+/g, ' ').match(ANONYMOUS_SOURCE[locale]);
   if (anonymous)
@@ -1359,6 +1491,15 @@ function researchNarration(file, raw, locale) {
         .slice(0, 2)
         .map((s) => `"${s.trim().replace(/(\d)_/g, '$1.').slice(0, 90)}"`)
         .join(' · ')}`
+    );
+  // The diary also hides in a table header (`Quelle, abgerufen am 9.10.2026`) and in the link
+  // text of a source list, both of which postBody() drops, so it reads the whole body.
+  const diaryText = withoutQuotes(diaryRaw).replace(/\s+/g, ' ');
+  const diary = RESEARCH_DIARY[locale] && diaryText.match(RESEARCH_DIARY[locale]);
+  if (diary)
+    fail(
+      file,
+      `the research diary (§3.3, rule 21), say what the park says and where: ${[...new Set(diary)].slice(0, 3).join(' · ')}`
     );
 }
 
@@ -1455,7 +1596,12 @@ for (const locale of runs('blog') ? LOCALES : []) {
       ...[...raw.matchAll(/!\[([^\]]+)\]\(/g)].map((m) => m[1]),
     ].join('\n');
     scan(`${file} (frontmatter and image text)`, frontAndImages, { skip: [SIGN_RULE] });
-    researchNarration(file, `${body}\n\n${frontAndImages}`, locale);
+    researchNarration(
+      file,
+      `${body}\n\n${frontAndImages}`,
+      locale,
+      `${raw.replace(/^---\n[\s\S]*?\n---\n/, '').replace(/```[\s\S]*?```/g, '')}\n\n${frontAndImages}`
+    );
     researchVoice(file, raw, locale);
     databaseProse(file, raw, body, locale);
 
