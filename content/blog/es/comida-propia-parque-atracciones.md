@@ -22,6 +22,11 @@ tags:
   - toverland
   - disneyland-paris
 category: guides
+coverImage:
+  src: /media/picknick/picknicktisch-santa-cruz-boardwalk-16x9.jpg
+  alt: 'Una mesa de picnic de madera vacía sobre una loma, con una playa, una montaña rusa de madera y una noria detrás.'
+  caption: 'Mesa de picnic sobre la playa del Santa Cruz Beach Boardwalk, en California, con la Giant Dipper al fondo.'
+  credit: 'Polina Lavor / Unsplash'
 seo:
   title: 'Parque de atracciones: ¿se puede llevar comida propia?'
   description: >-

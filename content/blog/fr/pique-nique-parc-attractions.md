@@ -22,6 +22,11 @@ tags:
   - toverland
   - disneyland-paris
 category: guides
+coverImage:
+  src: /media/picknick/picknicktisch-santa-cruz-boardwalk-16x9.jpg
+  alt: 'Une table de pique-nique en bois vide sur une butte, avec derrière une plage, des montagnes russes en bois et une grande roue.'
+  caption: 'Une table de pique-nique au-dessus de la plage du Santa Cruz Beach Boardwalk, en Californie, avec le Giant Dipper au fond.'
+  credit: 'Polina Lavor / Unsplash'
 seo:
   title: 'Parc d’attractions : apporter à manger, c’est permis ?'
   description: >-

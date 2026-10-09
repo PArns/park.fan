@@ -22,6 +22,11 @@ tags:
   - toverland
   - disneyland-paris
 category: guides
+coverImage:
+  src: /media/picknick/picknicktisch-santa-cruz-boardwalk-16x9.jpg
+  alt: 'Ein leerer Picknicktisch aus Holz auf einer Anhöhe, dahinter ein Strand, eine Holzachterbahn und ein Riesenrad.'
+  caption: 'Picknicktisch über dem Strand am Santa Cruz Beach Boardwalk in Kalifornien, hinten der Giant Dipper.'
+  credit: 'Polina Lavor / Unsplash'
 seo:
   title: 'Freizeitpark: Essen und Trinken mitbringen erlaubt?'
   description: >-

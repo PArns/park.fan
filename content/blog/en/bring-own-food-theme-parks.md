@@ -22,6 +22,11 @@ tags:
   - toverland
   - disneyland-paris
 category: guides
+coverImage:
+  src: /media/picknick/picknicktisch-santa-cruz-boardwalk-16x9.jpg
+  alt: 'An empty wooden picnic table on a bluff, with a beach, a wooden roller coaster and a Ferris wheel behind it.'
+  caption: 'A picnic table above the beach at the Santa Cruz Beach Boardwalk in California, with the Giant Dipper behind it.'
+  credit: 'Polina Lavor / Unsplash'
 seo:
   title: 'Theme park: can you bring your own food and drink?'
   description: >-

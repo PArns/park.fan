@@ -22,6 +22,11 @@ tags:
   - toverland
   - disneyland-paris
 category: guides
+coverImage:
+  src: /media/picknick/picknicktisch-santa-cruz-boardwalk-16x9.jpg
+  alt: 'Een lege houten picknicktafel op een heuvel, met daarachter een strand, een houten achtbaan en een reuzenrad.'
+  caption: 'Picknicktafel boven het strand bij de Santa Cruz Beach Boardwalk in Californië, met de Giant Dipper erachter.'
+  credit: 'Polina Lavor / Unsplash'
 seo:
   title: 'Pretpark: eigen eten en drinken meenemen toegestaan?'
   description: >-

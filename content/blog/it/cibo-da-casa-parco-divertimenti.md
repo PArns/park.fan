@@ -22,6 +22,11 @@ tags:
   - toverland
   - disneyland-paris
 category: guides
+coverImage:
+  src: /media/picknick/picknicktisch-santa-cruz-boardwalk-16x9.jpg
+  alt: 'Un tavolo da picnic di legno vuoto su un’altura, dietro una spiaggia, un ottovolante di legno e una ruota panoramica.'
+  caption: 'Un tavolo da picnic sopra la spiaggia del Santa Cruz Beach Boardwalk, in California, con il Giant Dipper sullo sfondo.'
+  credit: 'Polina Lavor / Unsplash'
 seo:
   title: 'Parco divertimenti: si può portare il cibo da casa?'
   description: >-
