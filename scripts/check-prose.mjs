@@ -307,8 +307,8 @@ const ACCESS_DATE = {
 const RESEARCH_DIARY = {
   de: /(?<!\p{L})(?:abgerufen\p{L}*|aufgerufen am|(?:gelesenen|geprüften|durchgesehenen|eingesehenen|ausgewerteten) (?:Seiten|Texten?|Quellen|Dokumenten?|Regelwerken?|Hausordnungen|Parkordnungen|Regeln)|(?:haben|hatten) wir (?:[\p{L}-]+ ){0,4}?nicht (?:gelesen|eingesehen|geöffnet)|(?:das|die|den) wir nicht (?:gelesen|eingesehen|geöffnet) haben)(?!\p{L})/giu,
   en: /(?<!\p{L})(?:retrieved|accessed (?:on )?\d|accessed (?:on )?(?:january|february|march|april|may|june|july|august|september|october|november|december)|(?:on )?the pages (?:we|I) (?:read|checked|consulted|looked at|opened)|(?:we|I) (?:didn['’]t|did not|haven['’]t|have not|couldn['’]t) (?:read|open|consult)(?!\p{L}))(?!\p{L})/giu,
-  nl: /(?<!\p{L})(?:geraadpleegd\p{L}*|geraadpleegde|opgevraagd op|(?:gelezen|geraadpleegde|bekeken) pagina['’]?s|(?:hebben|heb) (?:we|ik) (?:[\p{L}-]+ ){0,3}?niet (?:geraadpleegd|gelezen|bekeken|geopend))(?!\p{L})/giu,
-  fr: /(?<!\p{L})(?:consulté(?:e|s|es)? (?:le|ce jour|l['’])|(?:pages|textes|sources|documents) consulté(?:e|s|es)?|notre consultation|(?:n['’]avons|n['’]ai) pas (?:consulté|lu|ouvert))(?!\p{L})/giu,
+  nl: /(?<!\p{L})(?:geraadpleegd\p{L}*|geraadpleegde|opgevraagd op|opgehaald op \d|(?:gelezen|geraadpleegde|bekeken) pagina['’]?s|(?:hebben|heb) (?:we|ik) (?:[\p{L}-]+ ){0,3}?niet (?:geraadpleegd|gelezen|bekeken|geopend))(?!\p{L})/giu,
+  fr: /(?<!\p{L})(?:consulté(?:e|s|es)? (?:le|ce jour|l['’])|relevé(?:e|s|es)? le \d|(?:pages|textes|sources|documents) consulté(?:e|s|es)?|notre consultation|(?:n['’]avons|n['’]ai) pas (?:consulté|lu|ouvert))(?!\p{L})/giu,
   es: /(?<!\p{L})(?:consultad[oa]s? (?:el \d|ese mismo día|ese día)|(?:páginas|textos|fuentes|documentos) consultad[oa]s|no (?:hemos|he) (?:consultado|leído|abierto))(?!\p{L})/giu,
   it: /(?<!\p{L})(?:consultat[oaie] (?:il \d|l['’]\d|quel giorno)|(?:pagine|testi|fonti|documenti) consultat[ei]|non (?:abbiamo|ho) (?:consultato|letto|aperto))(?!\p{L})/giu,
 };

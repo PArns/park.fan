@@ -319,8 +319,7 @@ da King's Cross e Revenge of the Mummy seguono come «buon consiglio».
 ### Hogwarts Express: solo con il biglietto Park-to-Park
 
 L’**Hogwarts Express** collega Diagon Alley agli Studios con Hogsmeade alle
-Islands of Adventure. L’ha costruito Doppelmayr Garaventa, e ha aperto l’8 luglio
-2014. Il viaggio dura circa quattro minuti. Sale solo chi ha un biglietto
+Islands of Adventure. L’ha costruito Doppelmayr Garaventa, e ha aperto l’8 luglio 2014. Il viaggio dura circa quattro minuti. Sale solo chi ha un biglietto
 Park-to-Park o un abbonamento annuale.
 
 ## Biglietti: un parco o Park-to-Park

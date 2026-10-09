@@ -338,8 +338,7 @@ consejo».
 ### Hogwarts Express: solo con entrada Park-to-Park
 
 El **Hogwarts Express** une el callejón Diagon, en los Studios, con Hogsmeade, en
-Islands of Adventure. Lo construyó Doppelmayr Garaventa, y abrió el 8 de julio de
-2014. El viaje dura unos cuatro minutos. Solo puede subir quien tenga una entrada
+Islands of Adventure. Lo construyó Doppelmayr Garaventa, y abrió el 8 de julio de 2014. El viaje dura unos cuatro minutos. Solo puede subir quien tenga una entrada
 Park-to-Park o un pase anual.
 
 ## Entradas: un parque o Park-to-Park

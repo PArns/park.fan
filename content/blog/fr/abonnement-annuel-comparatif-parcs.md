@@ -6,9 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Efteling, Europa-Park et Toverland vendent un abonnement annuel, Phantasialand
-  plus depuis 2022. Tarifs, jours bloqués et seuil de rentabilité face au billet
-  à la journée, au 6 octobre 2026.
+  À l’Efteling, à Europa-Park et à Toverland, l’abonnement annuel le moins cher
+  est rentabilisé au bout de quatre à six visites. À l’Efteling, il n’est pas
+  valable 68 jours en 2027. Le ResortPass d’Europa-Park n’est pas en vente en ce
+  moment.
 tags:
   - abonnement-annuel
   - parc-d-attractions
@@ -29,8 +30,8 @@ coverImage:
 seo:
   title: 'Abonnement annuel parc d’attractions : tarifs et rentabilité'
   description: >-
-    Efteling, Europa-Park, Toverland et Phantasialand comparés : tarif, jours
-    bloqués et nombre de visites à partir duquel un abonnement annuel est rentable.
+    À l’Efteling, à Europa-Park et à Toverland, l’abonnement annuel le moins cher
+    est rentabilisé au bout de quatre à six visites. Phantasialand n’en a plus depuis 2022.
   keywords:
     - abonnement annuel parc d’attractions rentable
     - abonnement annuel parc comparatif
@@ -54,14 +55,13 @@ valable, et ce sont souvent justement les jours où tu es libre.
 
 Ce guide fait le calcul pour quatre parcs : l’[Efteling](ref:efteling) aux Pays-Bas,
 [Europa-Park](ref:europa-park) à Rust, [Toverland](ref:attractiepark-toverland) à Sevenum et
-[Phantasialand](ref:phantasialand) à Brühl. Les trois premiers vendent un abonnement annuel.
-Phantasialand non, et il figure ici quand même, parce que la question s’y pose à l’envers : combien coûte
+[Phantasialand](ref:phantasialand) à Brühl. Les trois premiers ont un abonnement annuel, Phantasialand
+non. Il fait quand même partie du comparatif, parce que la question s’y pose à l’envers : combien coûte
 une année de visites quand chacune paie le tarif du jour ?
 
-Tous les tarifs viennent des pages des parcs et datent du 6 octobre 2026. Les adresses sont en fin de
-page. Nos temps d’attente n’entrent dans le texte que par les widgets, jamais sous forme de chiffre. Ils
-répondent à la seconde question derrière un abonnement : quels jours veux-tu y aller, et sont-ce les jours
-où le parc est plein ?
+Tous les tarifs viennent des pages des parcs, en lien en fin de page, au 6 octobre 2026. S’y ajoute une
+seconde question : quels jours veux-tu y aller, et le parc est-il plein ces jours-là ? Pour cela, il y a
+sous chaque parc un widget avec nos temps d’attente.
 
 ## Les quatre parcs en un coup d’œil
 
@@ -114,8 +114,8 @@ jours où ils sont valables. Une réduction pour les visiteurs de 65 ans et plus
 Les trois formules donnent 25 % sur les billets du spectacle CARO et sur la soirée du Nouvel An, jusqu’à
 25 % sur les nuitées dans le parc et l’entrée gratuite ou réduite dans des parcs partenaires et des zoos.
 Premium ajoute un souvenir et l’accès à un événement réservé aux abonnés. Payer au mois engage pour au
-moins douze mois et coûte plus : douze mois de Classic font 252 €, soit 12 € de plus que le paiement
-annuel, et pour Plus et Premium 32 € chacun. Tu fixes la date de début à la souscription, jusqu’à un mois
+moins douze mois et coûte plus. Douze mois de Classic font 252 €, 12 € de plus qu’en payant à l’année.
+Pour Plus et Premium, c’est 32 € de plus chacun. Tu fixes la date de début à la souscription, jusqu’à un mois
 à l’avance.
 
 ### Les jours bloqués dans le calendrier du parc
@@ -130,8 +130,8 @@ au 6 octobre 2026. Premium n’a pas de jours bloqués et n’y figure pas.
 | Année civile 2027              | 68 jours       | 25 jours    |
 | Jours ouverts 2027             | 297            | 340         |
 
-Les minimums promis sont respectés. 297 jours ouverts en Classic dépassent de sept les 290 promis, en Plus
-ce sont exactement 340. Le blocage tombe surtout sur les week-ends et sur des blocs de plusieurs semaines :
+Les minimums promis sont respectés : Classic est valable 297 jours en 2027, sept de plus que les 290
+promis. Plus est valable exactement 340 jours. Le blocage tombe surtout sur les week-ends et sur des blocs de plusieurs semaines :
 en 2027, 42 des 68 jours Classic sont un samedi ou un dimanche, et 16 des 25 pour Plus. Du lundi au
 vendredi, cela fait 26 jours en Classic.
 
@@ -143,7 +143,7 @@ Les jours bloqués Classic, dans l’ordre du calendrier :
 - Automne 2027 : 11, 12, 18, 19, 25 et 26 septembre, 2, 3, 9 et 10 octobre, 16 octobre au 7 novembre, 13 et 14 novembre, 21 novembre, 27 et 28 novembre
 - Décembre 2027 : 4, 5, 12 et 14 décembre, 25 au 31 décembre
 
-Plus bloque beaucoup moins : les 22 et 29 novembre, 5 et 6 décembre et du 26 au 31 décembre 2026, puis en
+Avec Plus, beaucoup moins de jours sont bloqués : les 22 et 29 novembre, 5 et 6 décembre et du 26 au 31 décembre 2026, puis en
 2027 les 10, 16, 23 et 24 janvier, 6 et 7 mars, 20 et 21 mars, 6, 7, 16 et 17 mai, 21, 27 et 28 novembre,
 4, 12 et 14 décembre et du 25 au 31 décembre. La plus grande différence, ce sont les trois semaines de
 la mi-octobre au début de novembre : du 17 octobre au 8 novembre en 2026, du 16 octobre au 7 novembre en 2027. Avec Classic, le parc reste fermé pour toi pendant ce temps, avec Plus il est ouvert. Pâques 2027 est
@@ -160,24 +160,24 @@ Un billet à la journée coûte à l’Efteling entre 40 et 56 € en 2026, plus
 | Plus    | 310 € | 6 à 8 visites      | 5 à 7 visites      |
 | Premium | 400 € | 8 à 10 visites     | 7 à 9 visites      |
 
-« Avec voiture » compte la réduction sur le ticket de parking comme économie : 6 €, 7,50 € et 9 € par
-visite. Le prix vaut par personne pour chaque formule. Deux adultes en Classic paient 480 €.
+Dans la colonne « avec voiture », la réduction sur le ticket de parking est comptée comme économie : 6 €,
+7,50 € et 9 € par visite. Le prix vaut par personne pour chaque formule. Deux adultes en Classic paient 480 €.
 
-Le passage de Classic à Plus coûte 70 €, celui de Plus à Premium 90 €. Les deux achètent des jours, pas un
-avantage le jour même : de Classic à Plus, 43 jours s’ajoutent dans le décompte de 2027, de Plus à Premium 25. Par jour supplémentaire, Plus coûte 1,63 € de plus que Classic et Premium 3,60 € de plus que Plus. C’est
-moins que n’importe quel prix du jour. Ce qui compte n’est pas le prix d’un jour, mais si tu veux venir
-ces jours-là. Si tu ne viens jamais pendant ces semaines, tu n’as pas besoin des 43 jours.
+Le passage de Classic à Plus coûte 70 €, celui de Plus à Premium 90 €. Dans les deux cas, tu achètes des
+jours en plus, pas un avantage le jour même. En 2027, Plus est valable 43 jours de plus que Classic, et
+Premium 25 de plus que Plus. Par jour supplémentaire, Plus coûte 1,63 € de plus que Classic et Premium
+3,60 € de plus que Plus. C’est moins que n’importe quel prix du jour. Ce qui compte, c’est de savoir si tu
+veux venir ces jours-là. Si tu ne viens jamais pendant ces semaines, tu n’as pas besoin des 43 jours.
 
-Le jour de la semaine compte aussi. À l’Efteling, il n’y a qu’un cran entre le jour de semaine le plus
-calme et le plus chargé, et seul le samedi se situe un cran au-dessus des autres, comme le dit notre
-[guide de l’Efteling](/blog/efteling-le-disney-des-pays-bas). Classic bloque surtout les week-ends, mais
+Le jour de la semaine compte aussi. D’après [nos mesures](/blog/efteling-le-disney-des-pays-bas), il n’y a que le
+samedi où l’attente est un peu plus longue à l’Efteling. Classic bloque surtout les week-ends, mais
 aussi 26 jours du lundi au vendredi. Si tu peux venir en semaine, tu perds peu. Si tu dois venir pendant
 les blocs bloqués, tu perds beaucoup.
 
 Le parc est à bien une heure et demie à deux heures de route de Düsseldorf, à deux bonnes heures de
-Cologne et de la Ruhr. À cette distance, le nombre de visites est la question : trois visites par an,
-on reste au billet à la journée, six ou plus coûtent moins cher en Classic, et avec la voiture et la
-réduction de parking, l’abonnement est rentable dès la quatrième à la sixième visite.
+Cologne et de la Ruhr. À cette distance, tout dépend du nombre de visites. Avec trois visites par an, on
+reste au billet à la journée. À partir de six visites, Classic revient moins cher, et avec la voiture et
+la réduction de parking dès la quatrième à la sixième visite.
 
 Le widget montre les prochains jours calmes à l’Efteling. Tu peux y comparer les jours où Classic n’est
 pas valable.
@@ -204,8 +204,8 @@ quatrième visite en voiture. La carte imprimée coûte 5 € de plus avec Silve
 Actuellement, aucun nouvel abonnement n’est en vente. Le parc écrit sur sa page que le contingent est
 épuisé et que le ResortPass n’est pas disponible jusqu’à nouvel ordre, ni par téléphone, ni par e-mail,
 ni sur place. Les titulaires actuels sont informés de la reconduction avant la fin de leur abonnement. Le
-calcul pour un nouvel abonnement n’a donc d’intérêt que quand la vente reprend, et la date n’est indiquée
-nulle part.
+calcul pour un nouvel abonnement n’a donc d’intérêt que quand la vente reprendra. Le parc ne dit pas
+quand.
 
 Un billet à la journée coûte 67 à 76 € pour les adultes et 56,50 à 65 € pour les enfants et les seniors.
 
@@ -235,10 +235,9 @@ semaines avant l’ouverture de la saison. Sur la page du ResortPass, le parc le
 début de la saison 2027, avec les billets les moins chers de l’année. La réservation du jour passe par le
 portail ResortPass. C’est la première date à laquelle tu pourrais utiliser un nouvel abonnement.
 
-D’après notre [guide d’Europa-Park](/blog/europa-park-temps-d-attente-conseils), le parc est le plus
-calme un dimanche ou un jeudi de mai ou de juin et le plus chargé le samedi. Les jours que Silver couvre,
-c’est le parc qui les fixe dans le portail. Le widget montre quels jours des prochaines semaines sont
-calmes.
+D’après [nos mesures](/blog/europa-park-temps-d-attente-conseils), Europa-Park est le plus
+calme un dimanche ou un jeudi de mai ou de juin et le plus chargé le samedi. Le widget montre quels jours
+des prochaines semaines sont calmes.
 
 ```best-days-widget slug=europa-park
 
@@ -292,16 +291,17 @@ horaires et le programme du jour.
 | 30 €, jour le moins cher avec early bird   | 6 visites        | 5 visites                                          |
 | 42,50 €, jour le plus cher avec early bird | 4 visites        | 4 visites                                          |
 
-La colonne « avec voiture » met 13,50 € de parking par jour en regard du parking annuel à 50 €. Le parking
-annuel est amorti après quatre visites en voiture.
+Dans la colonne « avec voiture », nous comparons 13,50 € de parking par jour au parking annuel à 50 €. Le
+parking annuel est amorti après quatre visites en voiture.
 
 En 2026, le parc a vendu pour la première fois un Summer Pass : 79 € pour les adultes, 59 € pour les
 enfants de 90 à 140 cm, visites illimitées du 1er juillet au 30 septembre. Le parc n’a pas dit s’il
 reviendra en 2027. Qui ne vient qu’en été paie 81 € de moins que pour l’abonnement annuel.
 
-Les jours calmes à Toverland sont dans le [guide de Toverland](/blog/toverland-troy-temps-d-attente-conseils) :
-il n’y a guère de différence entre les jours de semaine, les vacances de Noël ressortent. Un abonnement
-sans jours bloqués t’aide donc moins à choisir le jour que dans un parc au rythme hebdomadaire marqué.
+D’après [nos mesures](/blog/toverland-troy-temps-d-attente-conseils), il n’y a guère de
+différence entre les jours de semaine à Toverland, et il y a plus de monde pendant les vacances de Noël.
+Un abonnement sans jours bloqués t’aide donc moins à choisir ton jour que dans un parc où certains jours
+de semaine sont nettement plus vides.
 
 ```best-days-widget slug=attractiepark-toverland
 
@@ -310,14 +310,14 @@ sans jours bloqués t’aide donc moins à choisir le jour que dans un parc au r
 ## Phantasialand : pas d’abonnement annuel
 
 Phantasialand a retiré sa carte Club de la vente pendant la pandémie, et les dernières cartes ont expiré à
-l’été 2022. La FAQ de la boutique en ligne du parc ne mentionne ni abonnement annuel ni carte Club, et les
-billets n’existent que datés et en ligne. Pourquoi cela n’a pas changé et ce que les fans ont fait, c’est
-dans le [guide de Phantasialand](/blog/phantasialand-temps-d-attente-conseils).
+l’été 2022. Dans la FAQ de la boutique en ligne, il n’est question ni d’abonnement annuel ni de carte
+Club, et les billets ne se vendent que datés et en ligne. Pourquoi cela n’a pas changé et ce que les fans
+ont fait, c’est dans notre [guide de Phantasialand](/blog/phantasialand-temps-d-attente-conseils).
 
 Reste le prix du jour, et il bondit. Dans le calendrier d’octobre de la boutique, un billet adulte dès
 12 ans coûte entre 44 et 78 €. L’écart entre le jour le moins cher et le plus cher est de 34 €, soit 77 %
-de plus que le jour bon marché. Trois visites par an coûtent entre 132 et 234 €, et la différence vient
-entièrement de la date de réservation et du jour choisi. Un abonnement annuel lisserait ce calcul, mais il
+de plus que le jour bon marché. Trois visites par an coûtent entre 132 et 234 €. La différence tient
+uniquement à la date de réservation et au jour choisi. Un abonnement annuel lisserait ce calcul, mais il
 n’y en a pas. Reste le choix du jour, et bon marché et calme ne coïncident pas toujours. À Phantasialand, le
 samedi est nettement plus chargé que le mardi.
 
@@ -332,9 +332,9 @@ pas pour des jours que tu veux éviter de toute façon. Il est mauvais quand les
 es libre et où le parc est vide.
 
 À l’Efteling, c’est seulement en partie vrai. Classic bloque surtout les week-ends et les périodes de
-vacances. Comme le jour de la semaine y change peu, il ne bloque pas que des jours chargés, et avec 26 jours
-de semaine bloqués en 2027, des jours calmes sont perdus aussi. À Europa-Park, le samedi est le jour le plus
-chargé, et c’est le parc qui décide dans le portail si Silver le bloque. À Toverland, il n’y a pas de jours
+vacances. Comme le jour de la semaine y change peu, il ne bloque pas que des jours chargés. Avec 26 jours
+de semaine bloqués en 2027, tu perds aussi des jours calmes. À Europa-Park, le samedi est le jour le plus
+chargé, et c’est le parc qui fixe dans le portail si Silver est valable le samedi. À Toverland, il n’y a pas de jours
 bloqués et le jour de la semaine compte à peine. À Phantasialand, on reste au prix du jour.
 
 Le widget place côte à côte le jour de semaine le plus calme des quatre parcs. Si ton jour figure dans la
@@ -344,30 +344,18 @@ colonne et que l’abonnement y est valable, il convient à ton plan.
 
 ```
 
-La colonne, c’est ce qu’un abonnement annuel n’achète pas. Il vend l’accès, pas le bon jour. Si tu peux
-venir en semaine, Classic à l’Efteling et Magic Member à Toverland donnent le plus de liberté pour le plus
-petit prix. Si tu n’es libre que le week-end, Plus ou Premium convient mieux à l’Efteling, et Gold à
-Europa-Park.
+Si tu peux venir en semaine, Classic à l’Efteling et Magic Member à Toverland donnent le plus de liberté
+pour le plus petit prix. Si tu n’es libre que le week-end, mieux vaut Plus ou Premium à l’Efteling, et
+Gold à Europa-Park.
 
 ## Qui a besoin de quel abonnement
 
-C’est ma lecture des chiffres ci-dessus, pas un conseil d’achat. Je ne connais ni ton lieu de résidence ni
-tes jours libres.
+C’est ma lecture des chiffres ci-dessus. Je ne connais ni ton lieu de résidence ni tes jours libres.
 
-L’Efteling avec Classic convient si tu peux venir hors des semaines bloquées et que tu es au parc au moins
-six fois par an. Qui veut y aller entre la mi-octobre et le début de novembre a besoin de
-Plus. Qui veut y aller entre Noël et le Nouvel An a besoin de Premium, car Plus y est bloqué aussi. Premium supprime les 25 jours bloqués de Plus en 2027 et ne devient rentable qu’à
-partir de huit à dix visites. En dessous de quatre visites, aucune des trois formules n’est rentable.
-
-Europa-Park avec Silver convient si tu viens cinq fois ou plus et que tu peux vivre avec les jours que le
-parc fixe. Savoir si tu obtiens un abonnement dépend de la vente, pas du calcul. Gold est l’abonnement de
-ceux qui ne veulent pas fixer de jours à l’avance, et des familles qui vont deux fois au monde aquatique.
-
-Toverland a le calcul le plus simple. À partir de quatre à six visites, le Magic Member coûte moins cher que
-le billet à la journée, en voiture dès quatre à cinq.
-
-À Phantasialand, il n’y a rien à calculer sauf le jour. Une visite le jour le moins cher coûte 44 €, le
-jour le plus cher 78 €.
+À l’Efteling, Classic suffit si tu peux venir hors vacances et que tu es au parc au moins six fois par an.
+Pour y aller entre la mi-octobre et le début de novembre, il te faut Plus. Entre Noël et le Nouvel An,
+Plus est bloqué aussi, et il ne reste que Premium. Il n’est rentable qu’à partir de huit à dix visites. En
+dessous de quatre visites, aucune des trois formules n’est rentable.
 
 ## Quand acheter
 
@@ -376,18 +364,17 @@ et peux le placer jusqu’à un mois à l’avance. Si tu commences en octobre, 
 bloquées : un Classic à partir du 10 octobre 2026 compte 44 jours bloqués d’ici la fin de l’année. L’année
 civile 2027 en compte 68 au total.
 
-Aucun parc n’a encore indiqué de tarifs pour 2027. À l’Efteling, les tarifs de 2026 restent valables
-jusqu’à ce que le parc en indique de nouveaux. Chez Toverland, le parc ne peut modifier le prix qu’à
-l’échéance de l’abonnement. Le ResortPass n’est pas en vente, et pour les billets de la saison 2027, la
-date est le 10 novembre 2026. Dès qu’un parc publie de nouveaux tarifs, ce guide sera mis à jour.
+À l’Efteling, les tarifs de 2026 restent valables jusqu’à ce que le parc en indique de nouveaux. Chez
+Toverland, le parc ne peut modifier le prix d’un abonnement qu’à son échéance. Le ResortPass n’est pas en
+vente. Dès qu’un parc publie de nouveaux tarifs, ce guide sera mis à jour.
 
 ## Questions fréquentes
 
 ### Un abonnement annuel en parc d’attractions est-il rentable ?
 
-À partir de cinq à six visites à l’Efteling avec Classic, à partir de cinq visites à Europa-Park avec Silver
-et à partir de quatre à cinq à Toverland, à chaque fois face au prix du billet à la journée. Phantasialand n’a
-pas d’abonnement annuel.
+À l’Efteling, Classic est rentable à partir de cinq à six visites par an, à Europa-Park le ResortPass
+Silver à partir de cinq. À Toverland, le Magic Member est rentable à partir de quatre à cinq visites.
+Phantasialand ne vend pas d’abonnement annuel.
 
 ### Combien de jours bloqués pour l’abonnement de l’Efteling ?
 
@@ -395,12 +382,13 @@ Classic est bloqué 68 jours en 2027 d’après le calendrier du parc, Plus 25 j
 
 ### Peut-on encore acheter le ResortPass d’Europa-Park ?
 
-Pas au 6 octobre 2026. Le parc écrit que le contingent est épuisé et que le ResortPass n’est pas disponible
-jusqu’à nouvel ordre.
+Pas en ce moment. Europa-Park écrit sur son site que le contingent est épuisé et que le ResortPass n’est
+pas disponible jusqu’à nouvel ordre, ni par téléphone, ni par e-mail, ni sur place.
 
 ### Toverland a-t-il des jours bloqués pour l’abonnement ?
 
-D’après les conditions d’abonnement du 21 mars 2024, non. Seuls sont exclus les jours où le parc est fermé ou
+Non. D’après les conditions d’abonnement du 21 mars 2024, l’abonnement est valable chaque jour
+d’ouverture. Seuls sont exclus les jours où le parc est fermé ou
 loué. Les jours de forte affluence, le parc peut refuser l’entrée.
 
 ### Phantasialand a-t-il encore un abonnement annuel ?
@@ -408,8 +396,6 @@ loué. Les jours de forte affluence, le parc peut refuser l’entrée.
 Non. La carte Club a pris fin pendant la pandémie, les dernières cartes ont expiré à l’été 2022.
 
 ## Sources
-
-Tarifs et conditions, chacun au 6 octobre 2026 :
 
 - Efteling, tarifs des billets : [efteling.com](https://www.efteling.com/de/park/informationen/ticketpreise)
 - Efteling, abonnements Classic, Plus et Premium : [efteling.com](https://www.efteling.com/en/park/annual-pass)

@@ -417,8 +417,7 @@ Die ruhigsten Tage der nächsten Wochen in Knott's Berry Farm stehen im Kalender
 
 ```
 
-Wer nicht an Halloween selbst gehen muss, spart: Bei den Horror Nights in Orlando kostet der
-31. Oktober 140 $, der 14. Oktober 95 $. An welchem Wochentag die Warteschlangen in den großen
+Wer nicht an Halloween selbst gehen muss, spart: Bei den Horror Nights in Orlando kostet der 31. Oktober 140 $, der 14. Oktober 95 $. An welchem Wochentag die Warteschlangen in den großen
 Parks mit Abend-Event am kürzesten sind, über die laufende Saison gemessen:
 
 ```park-comparison-widget slugs=universal-studios-florida,knotts-berry-farm,six-flags-magic-mountain,six-flags-great-adventure,kings-island,busch-gardens-tampa,seaworld-orlando show=quietest
