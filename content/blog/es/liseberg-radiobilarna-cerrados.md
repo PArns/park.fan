@@ -24,7 +24,8 @@ rideLinks:
 seo:
   title: 'Cerrados los coches de choque Radiobilarna de Liseberg'
   description: >-
-    Liseberg cerró sus coches de choque Radiobilarna el 4 de octubre de 2026. El edificio se demolerá. Aún no se sabe si la atracción tendrá un nuevo sitio en el parque.
+    Liseberg cerró sus coches de choque Radiobilarna el 4 de octubre de 2026,
+    tras casi 100 años. Aún no se sabe si tendrán un nuevo sitio en el parque.
   keywords:
     - Radiobilarna Liseberg
     - Radiobilarna cerrados

@@ -31,8 +31,7 @@ seo:
   title: 'Adventure in Batavia : dîner à Europa-Park dès le 23 octobre'
   description: >-
     Europa-Park propose le dîner-spectacle « Adventure in Batavia » pendant huit
-    soirées, du 23 octobre 2026 au 7 janvier 2027. Les adultes paient 155 €, les
-    enfants 105 €. Le trajet et les boissons sont compris dans le prix.
+    soirées, du 23 octobre 2026 au 7 janvier 2027. Les adultes paient 155 €.
   keywords:
     - Adventure in Batavia
     - dîner Europa-Park

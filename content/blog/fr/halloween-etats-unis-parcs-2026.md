@@ -59,8 +59,8 @@ seo:
   title: 'Halloween 2026 aux USA : HHN, Scary Farm, Fright Fest'
   description: >-
     Une soirée aux Halloween Horror Nights d’Orlando coûte à partir de 94,99 $.
-    Les soirées Disney sont complètes. En journée, beaucoup de parcs fêtent
-    Halloween sans supplément.
+    Les deux soirées d’Halloween de Disney aux États-Unis sont complètes pour
+    2026.
   keywords:
     - Halloween parc d’attractions États-Unis 2026
     - Halloween Horror Nights 2026 Orlando

@@ -30,9 +30,9 @@ coverImage:
 seo:
   title: 'Parc d’attractions : apporter à manger, c’est permis ?'
   description: >-
-    Apporter son repas au parc d’attractions : ce que 15 parcs en DE, NL, BE et FR
-    autorisent, où pique-niquer, et où le verre, les glacières et les barbecues
-    restent dehors.
+    Heide Park, l’Efteling, Toverland, Walibi Holland, le Futuroscope et
+    Disneyland Paris autorisent la nourriture apportée. Les parcs aquatiques la
+    refusent.
   keywords:
     - pique-nique parc d’attractions
     - apporter à manger parc d’attractions

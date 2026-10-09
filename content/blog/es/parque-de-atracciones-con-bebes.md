@@ -37,7 +37,7 @@ seo:
   description: >-
     Los niños hasta 3 años entran gratis en Efteling, Europa-Park y
     Phantasialand. El cochecito de alquiler más barato está en Phantasialand,
-    por 3 euros al día.
+    por 3 € al día.
   keywords:
     - parque de atracciones con niños pequeños
     - parque de atracciones con bebé

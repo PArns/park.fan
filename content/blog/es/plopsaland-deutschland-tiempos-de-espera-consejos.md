@@ -32,9 +32,9 @@ rideLinks:
 seo:
   title: 'Plopsaland Deutschland 2026: tiempos de espera, precios, mejores días'
   description: >-
-    Según nuestras mediciones en 225 días, en el antiguo Holiday Park de Haßloch
-    se espera solo unos minutos en la mayoría de las atracciones. El viernes es
-    el día más tranquilo, salvo los viernes de Halloween en octubre.
+    En el antiguo Holiday Park de Haßloch se espera solo unos minutos en la
+    mayoría de las atracciones. Fuera de Halloween, el viernes es el día más
+    tranquilo.
   keywords:
     - Plopsaland Deutschland
     - Holiday Park

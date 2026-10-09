@@ -29,8 +29,9 @@ coverImage:
 seo:
   title: 'Pase anual parque temático: precios y punto de equilibrio'
   description: >-
-    En el Efteling, Europa-Park y Toverland, el pase anual más barato se amortiza
-    con entre cuatro y seis visitas. Phantasialand no tiene pase anual desde 2022.
+    En el Efteling, Europa-Park y Toverland, el pase anual más barato se
+    amortiza con cuatro a seis visitas. Phantasialand no tiene pase anual desde
+    2022.
   keywords:
     - pase anual parque temático merece la pena
     - pase anual parque temático comparativa

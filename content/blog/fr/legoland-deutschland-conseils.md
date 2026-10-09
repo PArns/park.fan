@@ -25,9 +25,8 @@ rideLinks:
 seo:
   title: 'Legoland Deutschland : temps d’attente, Fastrack, billets et Halloween'
   description: >-
-    À Legoland Deutschland, le vendredi est le jour le plus calme et le samedi le
-    plus chargé. Accompagné d’un adulte, un enfant n’a besoin nulle part de plus
-    de 1,25 mètre. Le billet journée coûte à partir de 39 € en ligne.
+    À Legoland Deutschland, le vendredi est le jour le plus calme et le samedi
+    le plus chargé. Avec un adulte, un enfant de 1,25 mètre peut monter partout.
   keywords:
     - Legoland Deutschland
     - Legoland Deutschland conseils

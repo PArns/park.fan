@@ -30,8 +30,9 @@ coverImage:
 seo:
   title: 'Abonnement annuel parc d’attractions : tarifs et rentabilité'
   description: >-
-    À l’Efteling, à Europa-Park et à Toverland, l’abonnement annuel le moins cher
-    est rentabilisé au bout de quatre à six visites. Phantasialand n’en a plus depuis 2022.
+    À l’Efteling, à Europa-Park et à Toverland, l’abonnement annuel le moins
+    cher est amorti en quatre à six visites. Phantasialand n’en a plus depuis
+    2022.
   keywords:
     - abonnement annuel parc d’attractions rentable
     - abonnement annuel parc comparatif

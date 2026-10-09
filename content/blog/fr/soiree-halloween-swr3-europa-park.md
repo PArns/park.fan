@@ -18,7 +18,8 @@ rideLinks: false
 seo:
   title: 'Soirée Halloween SWR3 à Europa-Park : 31 octobre 2026'
   description: >-
-    La soirée Halloween SWR3 à Europa-Park, le 31 octobre 2026, est réservée aux plus de 18 ans. Les billets coûtent à partir de 39 €. En plus du DJ Jaden Bojsen, il y a une silent disco et du karaoké.
+    La soirée Halloween SWR3 à Europa-Park, le samedi 31 octobre 2026, est
+    réservée aux plus de 18 ans. Les billets d'entrée coûtent à partir de 39 €.
   keywords:
     - soirée Halloween SWR3
     - SWR3 Halloween Party Europa-Park

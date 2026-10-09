@@ -25,9 +25,8 @@ rideLinks:
 seo:
   title: 'Legoland Deutschland: tiempos de espera, Fastrack, entradas y Halloween'
   description: >-
-    En Legoland Deutschland, el viernes es el día más tranquilo y el sábado el más
-    lleno. Con un adulto, un niño nunca necesita más de 1,25 metros. La entrada de
-    un día cuesta desde 39 € en línea.
+    En Legoland Deutschland, el viernes es el día más tranquilo y el sábado el
+    más lleno. Con un adulto, un niño nunca necesita más de 1,25 metros.
   keywords:
     - Legoland Deutschland
     - Legoland Deutschland consejos

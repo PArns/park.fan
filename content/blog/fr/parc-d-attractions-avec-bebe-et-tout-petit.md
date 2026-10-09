@@ -35,9 +35,9 @@ coverImage:
 seo:
   title: 'Parc d’attractions avec bébé : dix parcs comparés'
   description: >-
-    Les enfants jusqu’à 3 ans entrent gratuitement à l’Efteling, à l’Europa-Park
-    et au Phantasialand. La poussette de location la moins chère est au
-    Phantasialand, à 3 euros par jour.
+    Jusqu’à 3 ans, l’entrée est gratuite à l’Efteling, à l’Europa-Park et au
+    Phantasialand. Le Phantasialand loue la poussette la moins chère, à 3 € par
+    jour.
   keywords:
     - parc d’attractions avec un tout-petit
     - parc d’attractions avec bébé

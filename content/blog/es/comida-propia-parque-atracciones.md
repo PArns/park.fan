@@ -30,8 +30,9 @@ coverImage:
 seo:
   title: 'Parque de atracciones: ¿se puede llevar comida propia?'
   description: >-
-    Comida propia en el parque de atracciones: qué permiten 15 parques de DE, NL,
-    BE y FR, dónde hacer picnic y dónde se quedan fuera vidrio, neveras y barbacoas.
+    Heide Park, Efteling, Toverland, Walibi Holland, Futuroscope y Disneyland
+    París permiten llevar comida propia. Los parques acuáticos no la dejan
+    entrar.
   keywords:
     - llevar comida parque de atracciones
     - picnic parque de atracciones
