@@ -36,9 +36,7 @@ coverImage:
 seo:
   title: 'Parco divertimenti poca gente: giorno e ora a confronto'
   description: >-
-    Il sabato è il giorno più pieno in nove parchi su dodici, il giovedì e il
-    venerdì i più tranquilli. La nostra misurazione per Europa-Park,
-    Phantasialand, Efteling e altri nove parchi.
+    Il sabato è il giorno più pieno in nove parchi su dodici, giovedì e venerdì i più tranquilli. Misurato a Europa-Park, Efteling e altri dieci.
   keywords:
     - parco divertimenti poca gente
     - quando andare al parco divertimenti

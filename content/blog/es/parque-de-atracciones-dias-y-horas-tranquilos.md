@@ -36,9 +36,7 @@ coverImage:
 seo:
   title: 'Parque de atracciones con poca gente: día y hora'
   description: >-
-    El sábado es el día más lleno en nueve de doce parques, y el jueves y el
-    viernes los más tranquilos. Nuestra medición en Europa-Park, Phantasialand,
-    Efteling y nueve parques más.
+    El sábado es el día más lleno en nueve de doce parques; jueves y viernes, los más tranquilos. Medido en Europa-Park, Efteling y diez más.
   keywords:
     - mejor hora parque de atracciones
     - parque de atracciones con poca gente

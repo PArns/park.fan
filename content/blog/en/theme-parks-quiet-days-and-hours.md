@@ -36,9 +36,7 @@ coverImage:
 seo:
   title: 'Quietest Day and Hour at a Theme Park: 12 Parks Compared'
   description: >-
-    Saturday is the busiest day at nine of twelve theme parks, Thursday and
-    Friday the quietest. Our measurement for Europa-Park, Phantasialand,
-    Efteling and nine more.
+    Saturday is the busiest day at nine of twelve theme parks, Thursday and Friday the quietest. Measured at Europa-Park, Efteling and ten more.
   keywords:
     - best time to go to a theme park
     - quietest day at a theme park
