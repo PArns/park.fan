@@ -892,8 +892,8 @@ geraadpleegde pagina's`, `pages consultées`, `páginas consultadas`, `pagine co
     reader asks what the park allows; which pages we opened, and on which day, is our notebook.
     Say what the park says and where (`Auf seiner Website nennt der Park keine Mindestgröße`,
     `In der Parkordnung steht nichts zu Glas`), and link the page. The source list carries the
-    links without a date; `updatedAt` dates the post, and a table that needs a date gets `Stand
-9. Oktober 2026` above it (rule 12). A gap the reader does not need goes (§2.19), and so does
+    links without a date; `updatedAt` dates the post, and a table that needs a date gets a
+    `Stand …` stamp above it (rule 12). A gap the reader does not need goes (§2.19), and so does
     the sentence that explains why we did not look. Patrick put it on the list on 2026-10-09.
     `pnpm check:prose` fails in posts and news on every form of `abgerufen` and on `aufgerufen
 am`, on `die gelesenen Seiten` and its kin, on `haben wir nicht gelesen`, and on their twins in

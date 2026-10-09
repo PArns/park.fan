@@ -74,8 +74,7 @@ festzufrieren.
 > [!NOTE]
 > **Termine, Altersgrenzen und Preise: Stand 29. September 2026.**
 > PortAventura läuft seit dem 19. September, Traumatica seit der Vorpremiere
-> am 23. September, Movie Park, Disneyland Paris und Alton Towers sind seit dem
-> 26. September dabei. Alle anderen starten im Oktober. Viele Preise hängen vom
+> am 23. September, Movie Park, Disneyland Paris und Alton Towers sind seit dem 26. September dabei. Alle anderen starten im Oktober. Viele Preise hängen vom
 > Abend ab und steigen, je näher er rückt.
 
 ## Die großen Horror-Events (abends, oft ab 16)
