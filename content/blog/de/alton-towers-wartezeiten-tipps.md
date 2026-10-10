@@ -144,7 +144,7 @@ Versuchsanstalt thematisiert ist. Vor dem Smiler stand hier das **Black Hole**,
 eine Jet-Star-Bahn unter einem Zeltdach.
 
 Am **2. Juni 2015** fuhren auf dem Smiler zwei Züge ineinander. Sechzehn
-Menschen wurden verletzt, zwei Fahrgästinnen verloren später ein Bein. Merlin
+Menschen wurden verletzt, zwei von ihnen verloren später ein Bein. Merlin
 sprach zunächst von menschlichem Versagen, zog diese Darstellung vor Gericht
 aber zurück und bekannte sich schuldig. Die britische Arbeitsschutzbehörde kam
 zu dem Ergebnis, dass der Konzern keine tragfähigen Abläufe für den Betrieb der
@@ -552,7 +552,7 @@ Bahnen.
 ### Wie sicher ist The Smiler nach dem Unfall von 2015?
 
 Am 2. Juni 2015 stießen zwei Züge zusammen, sechzehn Menschen wurden verletzt,
-zwei Fahrgästinnen verloren ein Bein. Die britische Arbeitsschutzbehörde führte
+zwei von ihnen verloren ein Bein. Die britische Arbeitsschutzbehörde führte
 den Unfall auf fehlende Betriebsabläufe bei Merlin zurück, der Konzern bekannte
 sich schuldig und zahlte 5 Millionen Pfund Strafe. Die Bahn fährt seit 2016
 wieder, mit geänderten Abläufen und unter behördlicher Aufsicht.
