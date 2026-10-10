@@ -1,5 +1,5 @@
 ---
-title: "Alton Towers : les attractions n'ont pas le droit de dépasser les arbres"
+title: 'Alton Towers : interdit de dépasser la cime des arbres'
 translationKey: alton-towers-guide
 date: '2026-10-11'
 author: patrick
