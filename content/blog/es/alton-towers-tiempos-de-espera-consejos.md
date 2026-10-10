@@ -60,7 +60,7 @@ Baja del coche en Staffordshire, cruza el aparcamiento hasta la entrada y no
 verás ni una montaña rusa. De los once circuitos del parque apenas se distingue
 nada desde fuera, y no es casualidad. La finca está dentro de una
 **Conservation Area**, una zona protegida, y de ahí sale la condición que
-gobierna cada proyecto: nada puede sobresalir de las copas de los árboles, y lo
+gobierna cada proyecto. Nada puede sobresalir de las copas de los árboles. Lo
 que se acerque tiene que desaparecer desde el exterior. En
 [Rita](ref:alton-towers/rita) se comprueba: los tramos de vía más altos están
 pintados de verde.

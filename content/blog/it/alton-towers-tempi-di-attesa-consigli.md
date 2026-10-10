@@ -59,8 +59,8 @@ Scendi dall'auto nello Staffordshire, attraversi il parcheggio verso
 l'ingresso e non vedi nemmeno un ottovolante. Degli undici tracciati del parco
 dall'esterno non si distingue quasi nulla, e non è un caso. La tenuta ricade in
 una **Conservation Area**, area vincolata, e da lì discende la condizione che
-governa qui ogni progetto: niente può superare le chiome degli alberi, e ciò
-che ci si avvicina deve sparire alla vista da fuori. Su
+governa qui ogni progetto. Niente può superare le chiome degli alberi. Ciò che
+ci si avvicina deve sparire alla vista da fuori. Su
 [Rita](ref:alton-towers/rita) lo si verifica: i tratti di binario più alti sono
 verniciati di verde.
 

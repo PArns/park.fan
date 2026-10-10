@@ -59,8 +59,8 @@ Descendez de voiture dans le Staffordshire, traversez le parking jusqu'à
 l'entrée. Vous ne verrez aucune montagne russe. Des onze circuits du parc, on
 ne distingue pratiquement rien depuis l'extérieur, et ce n'est pas un hasard.
 Le domaine se trouve en **Conservation Area**, zone protégée, et la condition
-qui en découle gouverne ici chaque projet : rien ne doit dépasser la cime des
-arbres, et ce qui s'en approche doit disparaître de la vue extérieure. Sur
+qui en découle gouverne ici chaque projet. Rien ne doit dépasser la cime des
+arbres. Ce qui s'en approche doit disparaître de la vue extérieure. Sur
 [Rita](ref:alton-towers/rita), ça se vérifie, parce que les portions de voie
 les plus hautes sont peintes en vert.
 

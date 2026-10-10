@@ -60,8 +60,8 @@ Stap in Staffordshire uit de auto, loop over het parkeerterrein naar de ingang,
 en je ziet geen enkele achtbaan. Van de elf banen van het park is van buitenaf
 vrijwel niets te zien, en dat is geen toeval. Het terrein ligt in een
 **Conservation Area**, en daaruit volgt een voorwaarde die elk bouwplan hier
-bepaalt: niets mag boven de boomtoppen uitkomen, en wat toch hoog wordt, moet
-vanaf de buitenkant verdwijnen. Bij [Rita](ref:alton-towers/rita) kun je het
+bepaalt. Niets mag boven de boomtoppen uitkomen. Wat toch hoog wordt, moet vanaf
+de buitenkant verdwijnen. Bij [Rita](ref:alton-towers/rita) kun je het
 natellen: de hoogste stukken rails zijn groen geschilderd.
 
 Dus bouwen ze omlaag. **[Nemesis Reborn](ref:alton-towers/nemesis-reborn)**
