@@ -607,13 +607,13 @@ record mondiale.
   [Alton Towers](https://rcdb.com/4796.htm) come panoramica del parco
 - Nemesis, Oblivion, Galactica, Rita, TH13TEEN, The Smiler e Wicker Man nel
   dettaglio:
-  [Nemesis Reborn](https://en.wikipedia.org/wiki/Nemesis_(roller_coaster)) ·
-  [Oblivion](https://en.wikipedia.org/wiki/Oblivion_(roller_coaster)) ·
-  [Galactica](https://en.wikipedia.org/wiki/Galactica_(roller_coaster)) ·
-  [Rita](https://en.wikipedia.org/wiki/Rita_(roller_coaster)) ·
+  [Nemesis Reborn](<https://en.wikipedia.org/wiki/Nemesis_(roller_coaster)>) ·
+  [Oblivion](<https://en.wikipedia.org/wiki/Oblivion_(roller_coaster)>) ·
+  [Galactica](<https://en.wikipedia.org/wiki/Galactica_(roller_coaster)>) ·
+  [Rita](<https://en.wikipedia.org/wiki/Rita_(roller_coaster)>) ·
   [Thirteen](https://en.wikipedia.org/wiki/Th13teen) ·
   [The Smiler](https://en.wikipedia.org/wiki/The_Smiler) ·
-  [Wicker Man](https://en.wikipedia.org/wiki/Wicker_Man_(roller_coaster))
+  [Wicker Man](<https://en.wikipedia.org/wiki/Wicker_Man_(roller_coaster)>)
 - Orari, stagione, monorotaia dalle 9:30, periodi di maggiore affluenza:
   [Opening Times (ufficiale)](https://www.altontowers.com/plan-your-visit/before-you-visit/opening-times/)
 - Prezzi dei biglietti, abbonamento annuale, prenotazione anticipata:

@@ -345,8 +345,8 @@ familie: de Talbots, de Earls of Shrewsbury. Het huidige gebouw stamt
 grotendeels uit het begin van de 19e eeuw en werd verbouwd door **Augustus
 Welby Pugin**, dezelfde architect die het Palace of Westminster mee vormgaf.
 Het raam van de banketzaal is ruim tien meter hoog en zes meter breed, telt 27
-ruiten in drie rijen en geldt als het belangrijkste in zijn soort buiten het
-parlement.
+ruiten in drie rijen. Het park noemt het het belangrijkste raam in zijn soort
+buiten het parlement.
 
 De tuin ging in **1860** voor het eerst open, onder de 18e Earl. De opbrengst
 van dat eerste jaar: 116 pond, 17 shilling en 5 pence. Dertig jaar later kwamen
@@ -519,7 +519,7 @@ en de hotels wel. De gepubliceerde kalender staat op de
 Buiten de Britse schoolvakanties, en daarbinnen op een doordeweekse dag. De
 Engelse vakanties vallen anders dan de Nederlandse: de herfst-half-term begint
 in 2026 op 26 oktober. Welke van de komende openingsdagen het rustigst worden,
-rekent de widget hierboven dagelijks uit.
+staat dagelijks bijgewerkt in de widget hierboven.
 
 ### Loont Fastrack in Alton Towers?
 
@@ -606,13 +606,13 @@ vandaag wereldrecord.
   [Alton Towers](https://rcdb.com/4796.htm) als parkoverzicht
 - Nemesis, Oblivion, Galactica, Rita, TH13TEEN, The Smiler en Wicker Man
   afzonderlijk:
-  [Nemesis Reborn](https://en.wikipedia.org/wiki/Nemesis_(roller_coaster)) ·
-  [Oblivion](https://en.wikipedia.org/wiki/Oblivion_(roller_coaster)) ·
-  [Galactica](https://en.wikipedia.org/wiki/Galactica_(roller_coaster)) ·
-  [Rita](https://en.wikipedia.org/wiki/Rita_(roller_coaster)) ·
+  [Nemesis Reborn](<https://en.wikipedia.org/wiki/Nemesis_(roller_coaster)>) ·
+  [Oblivion](<https://en.wikipedia.org/wiki/Oblivion_(roller_coaster)>) ·
+  [Galactica](<https://en.wikipedia.org/wiki/Galactica_(roller_coaster)>) ·
+  [Rita](<https://en.wikipedia.org/wiki/Rita_(roller_coaster)>) ·
   [Thirteen](https://en.wikipedia.org/wiki/Th13teen) ·
   [The Smiler](https://en.wikipedia.org/wiki/The_Smiler) ·
-  [Wicker Man](https://en.wikipedia.org/wiki/Wicker_Man_(roller_coaster))
+  [Wicker Man](<https://en.wikipedia.org/wiki/Wicker_Man_(roller_coaster)>)
 - Openingstijden, seizoen, monorail vanaf 9.30 uur, drukste periodes:
   [Opening Times (officieel)](https://www.altontowers.com/plan-your-visit/before-you-visit/opening-times/)
 - Ticketprijzen, jaarkaart, vooruit boeken:

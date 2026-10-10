@@ -2,17 +2,9 @@
   "title": "Oblivion und The Smiler im X-Sector",
   "park": "alton-towers",
   "ride": "the-smiler",
-  "alsoRides": [
-    "oblivion"
-  ],
+  "alsoRides": ["oblivion"],
   "area": "X-Sector",
-  "tags": [
-    "day",
-    "sunny",
-    "outdoor",
-    "photo",
-    "coaster"
-  ],
+  "tags": ["day", "sunny", "outdoor", "photo", "coaster"],
   "alt": {
     "de": "Rechts das graugelbe Schienengewirr des Smiler mit mehreren Überschlägen, links die abfallende Schiene der Oblivion vor Wald.",
     "en": "On the right the grey and yellow tangle of The Smiler with several inversions, on the left Oblivion's descending track against woodland.",

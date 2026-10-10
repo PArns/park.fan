@@ -58,9 +58,8 @@ seo:
 
 Wer in Staffordshire aus dem Auto steigt und über den Parkplatz zum Eingang
 läuft, sieht keine Achterbahn. Von den elf Anlagen des Parks ist von außen
-praktisch nichts zu erkennen, und das ist kein Zufall: Das Gelände liegt in
-einer **Conservation Area**, und daraus folgt eine Auflage, die jede Planung
-hier bestimmt. Kein Bauwerk darf über die Baumkronen ragen, und wo es doch
+praktisch nichts zu erkennen. Dahinter steckt eine Auflage, die jede Planung
+hier bestimmt, denn das Gelände liegt in einer **Conservation Area**. Kein Bauwerk darf über die Baumkronen ragen, und wo es doch
 knapp wird, muss es aus der Ferne verschwinden. An
 [Rita](ref:alton-towers/rita) kann man das nachzählen: Die höchsten
 Streckenteile sind grün lackiert.
@@ -316,9 +315,7 @@ Betrieb.
 
 ### Scarefest: 26. September bis 1. November 2026
 
-Das Halloween-Event heißt hier **Scarefest** und läuft an ausgewählten Tagen:
-26. und 27. September, 2. bis 4. Oktober, 9. bis 11. Oktober, dann vom
-16. Oktober bis zum 1. November durchgehend. An diesen Tagen hat der Park bis
+Das Halloween-Event heißt hier **Scarefest** und läuft an ausgewählten Tagen: 26. und 27. September, 2. bis 4. Oktober, 9. bis 11. Oktober, dann vom 16. Oktober bis zum 1. November durchgehend. An diesen Tagen hat der Park bis
 **21 Uhr** geöffnet, und Nemesis Reborn, Wicker Man, The Smiler, Oblivion und
 Toxicator fahren im Dunkeln.
 
@@ -355,8 +352,8 @@ derselben Familie: den Talbots, den Earls of Shrewsbury. Das heutige Gebäude
 geht im Wesentlichen auf das frühe 19. Jahrhundert zurück und wurde von
 **Augustus Welby Pugin** umgestaltet, demselben Architekten, der den Palace of
 Westminster mitgeprägt hat. Das Fenster des Bankettsaals ist rund zehn Meter
-hoch und sechs Meter breit, trägt 27 Scheiben in drei Reihen und gilt als das
-bedeutendste seiner Art außerhalb des Parlaments.
+hoch und sechs Meter breit und trägt 27 Scheiben in drei Reihen. Der Park nennt
+es das bedeutendste Fenster seiner Art außerhalb des Parlaments.
 
 Geöffnet wurde der Garten erstmals **1860**, vom 18. Earl. Die Einnahmen des
 ersten Jahres: 116 Pfund, 17 Shilling und 5 Pence. Dreißig Jahre später kamen
@@ -501,8 +498,7 @@ klärt die aktuellen Bedingungen deshalb vor der Buchung.
 Nemesis Reborn, eröffnet 1994 als Nemesis und damit als erste
 Inverted-Achterbahn Europas. Sie liegt in einem ausgehobenen Steinbruch,
 ist 716 Meter lang, 13 Meter hoch und fährt 81 km/h mit vier Überschlägen.
-2023 bekam sie eine komplette Saison lang neue Schienen und heißt seit dem
-16. März 2024 Nemesis Reborn.
+2023 bekam sie eine komplette Saison lang neue Schienen und heißt seit dem 16. März 2024 Nemesis Reborn.
 
 ### Wie viele Achterbahnen hat Alton Towers?
 
@@ -524,16 +520,17 @@ Preise stehen auf
 
 Von März bis Anfang November, täglich ab 10 Uhr. Geschlossen wird je nach
 Jahreszeit zwischen 16 und 21 Uhr; an den Scarefest-Terminen bis zum
+
 1. November sind es 21 Uhr. Im Winter läuft der Themenpark nicht, Wasserpark
-und Hotels dagegen schon. Der veröffentlichte Kalender steht auf der
-[Parkseite](ref:alton-towers).
+   und Hotels dagegen schon. Der veröffentlichte Kalender steht auf der
+   [Parkseite](ref:alton-towers).
 
 ### Wann ist in Alton Towers am wenigsten los?
 
 Außerhalb der britischen Schulferien, und dort an einem Wochentag. Die Ferien
 in England liegen anders als die deutschen: Das Half Term im Herbst 2026
 beginnt am 26. Oktober. Welche der nächsten Öffnungstage am ruhigsten werden,
-rechnet das Widget weiter oben tagesaktuell aus.
+steht tagesaktuell im Widget weiter oben.
 
 ### Lohnt sich Fastrack in Alton Towers?
 
@@ -621,13 +618,13 @@ heute Weltrekord.
   [Alton Towers](https://rcdb.com/4796.htm) als Parkübersicht
 - Nemesis, Oblivion, Galactica, Rita, TH13TEEN, The Smiler und Wicker Man im
   Einzelnen:
-  [Nemesis Reborn](https://en.wikipedia.org/wiki/Nemesis_(roller_coaster)) ·
-  [Oblivion](https://en.wikipedia.org/wiki/Oblivion_(roller_coaster)) ·
-  [Galactica](https://en.wikipedia.org/wiki/Galactica_(roller_coaster)) ·
-  [Rita](https://en.wikipedia.org/wiki/Rita_(roller_coaster)) ·
+  [Nemesis Reborn](<https://en.wikipedia.org/wiki/Nemesis_(roller_coaster)>) ·
+  [Oblivion](<https://en.wikipedia.org/wiki/Oblivion_(roller_coaster)>) ·
+  [Galactica](<https://en.wikipedia.org/wiki/Galactica_(roller_coaster)>) ·
+  [Rita](<https://en.wikipedia.org/wiki/Rita_(roller_coaster)>) ·
   [Thirteen](https://en.wikipedia.org/wiki/Th13teen) ·
   [The Smiler](https://en.wikipedia.org/wiki/The_Smiler) ·
-  [Wicker Man](https://en.wikipedia.org/wiki/Wicker_Man_(roller_coaster))
+  [Wicker Man](<https://en.wikipedia.org/wiki/Wicker_Man_(roller_coaster)>)
 - Öffnungszeiten, Saison, Monorail ab 9:30 Uhr, besucherstärkste Zeiten:
   [Opening Times (offiziell)](https://www.altontowers.com/plan-your-visit/before-you-visit/opening-times/)
 - Ticketpreise, Jahreskarte, Vorausbuchung:

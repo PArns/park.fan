@@ -2,12 +2,7 @@
   "title": "Die Towers",
   "park": "alton-towers",
   "area": "The Towers & Gardens",
-  "tags": [
-    "day",
-    "overcast",
-    "outdoor",
-    "photo"
-  ],
+  "tags": ["day", "overcast", "outdoor", "photo"],
   "alt": {
     "de": "Ein graues Herrenhaus mit Zinnen, Türmen und gläsernen Wintergärten hinter beschnittenen Eiben und einem Lavendelbeet.",
     "en": "A grey stately home with battlements, towers and glazed conservatories behind clipped yews and a lavender bed.",

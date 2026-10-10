@@ -3,13 +3,7 @@
   "park": "alton-towers",
   "ride": "rita",
   "area": "Dark Forest",
-  "tags": [
-    "day",
-    "sunny",
-    "outdoor",
-    "photo",
-    "coaster"
-  ],
+  "tags": ["day", "sunny", "outdoor", "photo", "coaster"],
   "alt": {
     "de": "Ein voll besetzter Zug steigt an einer rostroten Gitterschiene steil nach oben, davor graue Stützen vor blauem Himmel.",
     "en": "A full train climbs steeply up a rust-red lattice track, grey supports in front of a blue sky.",

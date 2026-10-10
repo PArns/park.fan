@@ -1,5 +1,5 @@
 ---
-title: 'Alton Towers : les attractions n''ont pas le droit de dépasser les arbres'
+title: "Alton Towers : les attractions n'ont pas le droit de dépasser les arbres"
 translationKey: alton-towers-guide
 date: '2026-10-11'
 author: patrick
@@ -24,7 +24,7 @@ tags:
 category: guides
 coverImage:
   src: /media/alton-towers/nemesis-reborn.jpg
-  alt: 'Des rails noirs veinés de rouge sortent d''une carrière, un hélicoptère réformé posé à côté.'
+  alt: "Des rails noirs veinés de rouge sortent d'une carrière, un hélicoptère réformé posé à côté."
   caption: 'Nemesis Reborn dans la carrière de Forbidden Valley.'
   credit: 'BWard 1997 / Wikimedia Commons (CC BY 4.0)'
 parkLinks:
@@ -57,13 +57,13 @@ seo:
 ---
 
 Descendez de voiture dans le Staffordshire, traversez le parking jusqu'à
-l'entrée : vous ne verrez aucune montagne russe. Des onze circuits du parc, on
+l'entrée. Vous ne verrez aucune montagne russe. Des onze circuits du parc, on
 ne distingue pratiquement rien depuis l'extérieur, et ce n'est pas un hasard.
 Le domaine se trouve en **Conservation Area**, zone protégée, et la condition
 qui en découle gouverne ici chaque projet : rien ne doit dépasser la cime des
 arbres, et ce qui s'en approche doit disparaître de la vue extérieure. Sur
-[Rita](ref:alton-towers/rita), ça se vérifie : les portions de voie les plus
-hautes sont peintes en vert.
+[Rita](ref:alton-towers/rita), ça se vérifie, parce que les portions de voie
+les plus hautes sont peintes en vert.
 
 Alors ils construisent vers le bas.
 **[Nemesis Reborn](ref:alton-towers/nemesis-reborn)** est posée dans une
@@ -105,14 +105,14 @@ toute la saison 2023 pour un changement de rails et s'appelle depuis le
 
 ```
 
-**Oblivion** a suivi le **14 mars 1998** pour 12 millions de livres : le premier
+**Oblivion** a suivi le **14 mars 1998** pour 12 millions de livres, le premier
 dive coaster au monde. Le train s'arrête sur l'arête, reste suspendu une à
 trois secondes, puis tombe à **87,5 degrés** dans un tunnel, à 109 km/h et
 4,5 g. Le tour entier dure 75 secondes sur 372 mètres de voie, et seize
 personnes prennent place côte à côte dans un wagon.
 
 **Air**, aujourd'hui **[Galactica](ref:alton-towers/galactica)**, a ouvert le
-**16 mars 2002** : le tout premier flying coaster signé B&M. On roule à plat
+**16 mars 2002**, en tout premier flying coaster signé B&M. On roule à plat
 ventre sous le rail, au ras du sol, sous les allées et contre les rochers.
 840 mètres, 20 mètres de haut, 75 km/h, deux inversions, 1 500 passagers par
 heure. De 2016 à 2018, des casques de réalité virtuelle complétaient le tour ;
@@ -163,9 +163,9 @@ c'est une attraction remise en service depuis dix ans, dont les procédures ont
 dernière grande installation et fut la première montagne russe en bois
 construite au Royaume-Uni depuis 22 ans. Great Coasters International l'a bâtie
 pour 16 millions de livres : 795 mètres, 22 mètres de chute, 70 km/h, trois
-minutes et demie. Sa particularité se trouve au début du parcours : une figure
-de bois haute de six étages, que le train traverse pendant qu'un feu brûle à
-l'intérieur. Personne n'avait encore associé la flamme et le bois.
+minutes et demie. Sa particularité se trouve au début du parcours. Une figure
+de bois haute de six étages s'y dresse, et le train la traverse pendant qu'un
+feu brûle à l'intérieur. Personne n'avait encore associé la flamme et le bois.
 
 ```glossary-widget slug=wooden-coaster
 
@@ -173,7 +173,7 @@ l'intérieur. Personne n'avait encore associé la flamme et le bois.
 
 ![Un train complet grimpe en pente raide sur une voie en treillis rouille, piliers gris devant un ciel bleu | Rita accélère au sol jusqu'à 98 km/h et ne monte qu'ensuite. | right](/media/alton-towers/rita.jpg)
 
-**Rita** se dresse depuis le **1er avril 2005** dans le Dark Forest : une
+**Rita** se dresse depuis le **1er avril 2005** dans le Dark Forest, une
 catapulte hydraulique Intamin qui passe **de 0 à 98,3 km/h en 2,5 secondes**,
 à 4,7 g, et c'est fini au bout de 25 secondes. Elle est mise en scène comme une
 piste de dragsters à l'abandon, ce qui érige la brièveté en concept.
@@ -250,7 +250,7 @@ Voici comment les files grossissent au fil de la journée :
 
 Le parc ouvre à **10 heures**, et l'entrée comme le monorail ouvrent dès
 **9 h 30**. Cette demi-heure fait la différence entre une matinée réussie et
-une matinée perdue, car les distances sont longues : depuis le parking
+une matinée perdue, car les distances sont longues. Depuis le parking
 standard, comptez 10 à 28 minutes à pied selon la rangée.
 
 Notre analyse du rope drop retient pour Alton Towers cinq attractions où un
@@ -288,8 +288,8 @@ précisément les deux circuits dont les files s'allongent le plus. **Silver à
 partir de 65 £** couvre dix-sept attractions, ces deux-là comprises, à raison
 d'un passage chacune. **Gold à partir de 95 £** vaut toute la journée sur ces
 mêmes dix-sept, sans limite. Dans les trois niveaux, votre billet n'est scanné
-qu'une fois toutes les trois minutes : viser deux attractions en même temps est
-donc exclu.
+qu'une fois toutes les trois minutes, et viser deux attractions en même temps
+est donc exclu.
 
 CBeebies Land dispose depuis 2026 de son propre petit forfait : **7 £** pour
 deux tours, **10 £** pour trois, une fois par attraction. Si l'affluence monte
@@ -370,8 +370,8 @@ aussi pour les jardins.
 en 1918, le reste est passé à un groupe de commerçants locaux qui en ont fait
 Alton Towers Ltd. Pendant la Seconde Guerre mondiale, l'armée a réquisitionné
 les bâtiments et ne les a rendus qu'au milieu des années cinquante, dans un
-état qui a fini devant les tribunaux. Ensuite le site s'est étoffé : un chemin
-de fer, une fête foraine, dans les années soixante un plan d'eau et un
+état qui a fini devant les tribunaux. Ensuite le site s'est étoffé, avec un chemin
+de fer, une fête foraine et, dans les années soixante, un plan d'eau et un
 télésiège.
 
 Le parc à thème naît en **1980** sous John Broome. Entre 1985 et 1988
@@ -386,7 +386,7 @@ hôtel.
 En **2007**, le fonds d'investissement Blackstone rachète Tussauds Group pour
 1,9 milliard de dollars et le fusionne avec **Merlin Entertainments**. Depuis,
 le parc relève du même groupe que Heide Park, Thorpe Park et le LEGOLAND
-Windsor Resort. Le terrain n'appartient pas à Merlin : en 2007, 622 millions de
+Windsor Resort. Le terrain n'appartient pas à Merlin. En 2007, 622 millions de
 livres d'actifs immobiliers ont été vendus puis reloués ; en décembre 2021, les
 baux ont été prolongés de 35 ans contre un versement de 33,45 millions ; et en
 octobre 2022, les terrains d'Alton Towers et de Thorpe Park ont changé de
@@ -423,10 +423,10 @@ Village** de 2015, avec 120 cabanes et cinq maisons dans les arbres, et les
 **Stargazing Pods** de 2019, 102 capsules de quatre personnes chacune, sans
 restaurant propre.
 
-Le gain pratique est le même partout : être au tourniquet à dix heures plutôt
-que sur l'A50 à dix heures. Merlin y ajoute un avantage concret qu'on oublie
-facilement : les clients qui dorment sur place ne paient pas le parking, et
-ceux du CBeebies Land Hotel obtiennent l'Express sans supplément. Pour une
+Le gain pratique est le même partout, et c'est d'être au tourniquet à dix
+heures plutôt que sur l'A50 à dix heures. Merlin y ajoute un avantage concret qu'on oublie
+facilement. Les clients qui dorment sur place ne paient pas le parking, et ceux
+du CBeebies Land Hotel obtiennent l'Express sans supplément. Pour une
 famille arrivée en deux voitures, cela représente une part visible du prix de
 la chambre.
 
@@ -449,9 +449,9 @@ soir.
 Le **Skyride** n'est pas qu'un panorama, c'est un raccourci. Il relie Towers
 Street, Forbidden Valley et le secteur du manoir, et sur un terrain aussi
 pentu cela fait gagner du temps. Le monorail circule jusqu'à une heure après la
-dernière attraction : inutile de courir en fin de journée.
+dernière attraction, donc inutile de courir en fin de journée.
 
-Avec de jeunes enfants, la journée s'inverse : CBeebies Land d'abord, tant que
+Avec de jeunes enfants, la journée s'inverse. CBeebies Land d'abord, tant que
 c'est vide, puis Mutiny Bay et Katanga Canyon, et l'après-midi pour les
 spectacles.
 
@@ -565,8 +565,8 @@ sous contrôle de l'autorité.
 ### Pourquoi ne voit-on aucune montagne russe de l'extérieur ?
 
 Le domaine est protégé en Conservation Area, et aucune construction ne peut
-dépasser la cime des arbres. Ce qui doit tout de même monter est camouflé : sur
-Rita, les portions de voie les plus hautes sont peintes en vert. D'où des
+dépasser la cime des arbres. Ce qui doit tout de même monter est camouflé, et sur
+Rita les portions de voie les plus hautes sont peintes en vert. D'où des
 attractions logées dans des creux, des carrières et des tunnels plutôt que sur
 des collines.
 
@@ -626,13 +626,13 @@ posée. C'est toujours le record du monde.
   [Alton Towers](https://rcdb.com/4796.htm) comme vue d'ensemble du parc
 - Nemesis, Oblivion, Galactica, Rita, TH13TEEN, The Smiler et Wicker Man en
   détail :
-  [Nemesis Reborn](https://en.wikipedia.org/wiki/Nemesis_(roller_coaster)) ·
-  [Oblivion](https://en.wikipedia.org/wiki/Oblivion_(roller_coaster)) ·
-  [Galactica](https://en.wikipedia.org/wiki/Galactica_(roller_coaster)) ·
-  [Rita](https://en.wikipedia.org/wiki/Rita_(roller_coaster)) ·
+  [Nemesis Reborn](<https://en.wikipedia.org/wiki/Nemesis_(roller_coaster)>) ·
+  [Oblivion](<https://en.wikipedia.org/wiki/Oblivion_(roller_coaster)>) ·
+  [Galactica](<https://en.wikipedia.org/wiki/Galactica_(roller_coaster)>) ·
+  [Rita](<https://en.wikipedia.org/wiki/Rita_(roller_coaster)>) ·
   [Thirteen](https://en.wikipedia.org/wiki/Th13teen) ·
   [The Smiler](https://en.wikipedia.org/wiki/The_Smiler) ·
-  [Wicker Man](https://en.wikipedia.org/wiki/Wicker_Man_(roller_coaster))
+  [Wicker Man](<https://en.wikipedia.org/wiki/Wicker_Man_(roller_coaster)>)
 - Horaires, saison, monorail dès 9 h 30, périodes les plus chargées :
   [Opening Times (officiel)](https://www.altontowers.com/plan-your-visit/before-you-visit/opening-times/)
 - Tarifs des billets, pass annuel, réservation préalable :

@@ -3,13 +3,7 @@
   "park": "alton-towers",
   "ride": "galactica",
   "area": "Forbidden Valley",
-  "tags": [
-    "day",
-    "sunny",
-    "outdoor",
-    "photo",
-    "coaster"
-  ],
+  "tags": ["day", "sunny", "outdoor", "photo", "coaster"],
   "alt": {
     "de": "Ein Zug mit bäuchlings hängenden Fahrgästen fährt durch einen blau-weißen Ring aus Metall.",
     "en": "A train of riders lying face down passes through a blue and white metal ring.",

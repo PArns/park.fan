@@ -113,8 +113,7 @@ dieciséis personas van juntas en un mismo vagón.
 de 2002** como el primer flying coaster que construyó B&M. Se viaja boca abajo
 bajo la vía, rozando el suelo, por debajo de los caminos y junto a las rocas.
 840 metros, 20 metros de altura, 75 km/h, dos inversiones, 1.500 pasajeros por
-hora. De 2016 a 2018 llevó gafas de realidad virtual, retiradas de nuevo en
-2019.
+hora. De 2016 a 2018 llevó gafas de realidad virtual, retiradas de nuevo en 2019.
 
 **[TH13TEEN](ref:alton-towers/th13teen)** fue, el **20 de marzo de 2010**, la
 primera montaña rusa con una caída libre vertical en mitad del recorrido. El
@@ -611,13 +610,13 @@ mundo.
   [Alton Towers](https://rcdb.com/4796.htm) como vista general del parque
 - Nemesis, Oblivion, Galactica, Rita, TH13TEEN, The Smiler y Wicker Man en
   detalle:
-  [Nemesis Reborn](https://en.wikipedia.org/wiki/Nemesis_(roller_coaster)) ·
-  [Oblivion](https://en.wikipedia.org/wiki/Oblivion_(roller_coaster)) ·
-  [Galactica](https://en.wikipedia.org/wiki/Galactica_(roller_coaster)) ·
-  [Rita](https://en.wikipedia.org/wiki/Rita_(roller_coaster)) ·
+  [Nemesis Reborn](<https://en.wikipedia.org/wiki/Nemesis_(roller_coaster)>) ·
+  [Oblivion](<https://en.wikipedia.org/wiki/Oblivion_(roller_coaster)>) ·
+  [Galactica](<https://en.wikipedia.org/wiki/Galactica_(roller_coaster)>) ·
+  [Rita](<https://en.wikipedia.org/wiki/Rita_(roller_coaster)>) ·
   [Thirteen](https://en.wikipedia.org/wiki/Th13teen) ·
   [The Smiler](https://en.wikipedia.org/wiki/The_Smiler) ·
-  [Wicker Man](https://en.wikipedia.org/wiki/Wicker_Man_(roller_coaster))
+  [Wicker Man](<https://en.wikipedia.org/wiki/Wicker_Man_(roller_coaster)>)
 - Horarios, temporada, monorraíl desde las 9:30, épocas de más afluencia:
   [Opening Times (oficial)](https://www.altontowers.com/plan-your-visit/before-you-visit/opening-times/)
 - Precios de entrada, pase anual, reserva previa:

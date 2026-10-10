@@ -1,5 +1,5 @@
 ---
-title: 'Alton Towers: the rides aren''t allowed above the trees'
+title: "Alton Towers: the rides aren't allowed above the trees"
 translationKey: alton-towers-guide
 date: '2026-10-11'
 author: patrick
@@ -62,7 +62,7 @@ from outside, and that isn't luck. The estate sits inside a **Conservation
 Area**, and the planning condition that follows shapes everything built here:
 nothing may rise above the treeline, and whatever comes close has to disappear
 from the view outside. You can check it on
-[Rita](ref:alton-towers/rita) — the highest pieces of track are painted green.
+[Rita](ref:alton-towers/rita). The highest pieces of track are painted green.
 
 So they build downwards. **[Nemesis Reborn](ref:alton-towers/nemesis-reborn)**
 lies inside an excavated quarry, riders hanging under the track between rock
@@ -156,8 +156,8 @@ regulator has been through since.
 newest big ride and was the first new wooden coaster in Britain in 22 years.
 Great Coasters International built it for £16 million: 795 metres, a 22-metre
 drop, 70 km/h, three and a half minutes. What sets it apart sits at the start
-of the layout — a six-storey wooden figure the train passes straight through
-while fire burns inside it. Nobody had put flame and a wooden coaster together
+of the layout. A six-storey wooden figure stands there, and the train passes
+straight through it while fire burns inside. Nobody had put flame and a wooden coaster together
 before.
 
 ```glossary-widget slug=wooden-coaster
@@ -382,7 +382,7 @@ What comes next has been the same project for years: an indoor attraction on
 the former Alton Mouse plot, internally **Project Horizon**. The public
 consultation ran in September 2022, approval with conditions came in June 2023,
 construction hasn't started and the park gives no date. That it has a code name
-at all is tradition — big projects here have been called **Secret Weapon** and
+at all is tradition. Big projects here have been called **Secret Weapon** and
 numbered for decades. TH13TEEN was SW6, Wicker Man SW8.
 
 ## Staying at the park
@@ -401,7 +401,7 @@ from 2015 with 120 lodges and five treehouses, and the **Stargazing Pods** from
 
 The practical gain is the usual one: standing at the turnstile at ten rather
 than sitting on the A50 at ten. Merlin adds a concrete one on top that's easy
-to miss — resort guests park free, and CBeebies Land Hotel guests get Express
+to miss. Resort guests park free, and CBeebies Land Hotel guests get Express
 parking at no charge. For a family arriving in two cars that's a visible slice
 of the room rate.
 
@@ -590,13 +590,13 @@ record.
   [Alton Towers](https://rcdb.com/4796.htm) as a park overview
 - Nemesis, Oblivion, Galactica, Rita, TH13TEEN, The Smiler and Wicker Man in
   detail:
-  [Nemesis Reborn](https://en.wikipedia.org/wiki/Nemesis_(roller_coaster)) ·
-  [Oblivion](https://en.wikipedia.org/wiki/Oblivion_(roller_coaster)) ·
-  [Galactica](https://en.wikipedia.org/wiki/Galactica_(roller_coaster)) ·
-  [Rita](https://en.wikipedia.org/wiki/Rita_(roller_coaster)) ·
+  [Nemesis Reborn](<https://en.wikipedia.org/wiki/Nemesis_(roller_coaster)>) ·
+  [Oblivion](<https://en.wikipedia.org/wiki/Oblivion_(roller_coaster)>) ·
+  [Galactica](<https://en.wikipedia.org/wiki/Galactica_(roller_coaster)>) ·
+  [Rita](<https://en.wikipedia.org/wiki/Rita_(roller_coaster)>) ·
   [Thirteen](https://en.wikipedia.org/wiki/Th13teen) ·
   [The Smiler](https://en.wikipedia.org/wiki/The_Smiler) ·
-  [Wicker Man](https://en.wikipedia.org/wiki/Wicker_Man_(roller_coaster))
+  [Wicker Man](<https://en.wikipedia.org/wiki/Wicker_Man_(roller_coaster)>)
 - Opening times, season, monorail from 9:30am, busiest periods:
   [Opening Times (official)](https://www.altontowers.com/plan-your-visit/before-you-visit/opening-times/)
 - Ticket prices, annual pass, advance booking:

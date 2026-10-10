@@ -3,14 +3,7 @@
   "park": "alton-towers",
   "ride": "nemesis-reborn",
   "area": "Forbidden Valley",
-  "tags": [
-    "day",
-    "overcast",
-    "outdoor",
-    "photo",
-    "coaster",
-    "theming"
-  ],
+  "tags": ["day", "overcast", "outdoor", "photo", "coaster", "theming"],
   "alt": {
     "de": "Schwarze Achterbahnschiene mit roten Adern führt aus einem Steinbruch heraus, daneben steht ein ausgemusterter Hubschrauber.",
     "en": "Black coaster track with red veins climbs out of a quarry, a decommissioned helicopter parked beside it.",
