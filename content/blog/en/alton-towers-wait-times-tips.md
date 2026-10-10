@@ -202,8 +202,9 @@ almost five metres above the path.
 walls of the house itself since 2000: first a walkthrough with a narration,
 then a Vekoma Madhouse where the room turns around the riders. The actor Jim
 Carter reads the story. And the
-**[Congo River Rapids](ref:alton-towers/congo-river-rapids)** from 1986 is the
-rapids ride that shares a tunnel with the mine train.
+**[Congo River Rapids](ref:alton-towers/congo-river-rapids)** are the rapids
+ride that shares a tunnel with the mine train, built during the big expansion
+between 1985 and 1988.
 
 One change this year is a downgrade. At
 **[Battle Galleons](ref:alton-towers/battle-galleons)** in Mutiny Bay the park
@@ -298,9 +299,9 @@ daylight.
 The park names UK school holidays as its busiest periods: Easter, the summer
 holidays and half terms. For anyone travelling from mainland Europe that's the
 single most useful line in this guide, because the British holidays don't line
-up with the German ones. The English October half term falls in the week from
-26 October 2026, so arriving a week earlier buys you the same Scarefest decor
-with noticeably fewer people in it.
+up with the German ones. The autumn half term in England falls in the second
+half of October, so coming before it buys you the same Scarefest decor on one of
+the weekend dates from 26 September, with fewer people in it.
 
 ### Scarefest: 26 September to 1 November 2026
 
@@ -503,8 +504,8 @@ published calendar is on the
 ### When is Alton Towers quietest?
 
 Outside the British school holidays, and on a weekday within those. The English
-holidays fall differently from the German ones: the autumn half term in 2026
-starts on 26 October. Which of the coming opening days will be quietest is
+holidays fall differently from the German ones, and the autumn half term lands
+in the second half of October. Which of the coming opening days will be quietest is
 worked out daily by the widget above.
 
 ### Is Fastrack worth it at Alton Towers?

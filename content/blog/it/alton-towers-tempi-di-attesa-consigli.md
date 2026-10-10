@@ -206,8 +206,9 @@ calcestruzzo alta quasi cinque metri sopra il vialetto.
 **[Hex](ref:alton-towers/hex-the-legend-of-the-towers)** sta dal 2000 dentro le
 mura della dimora stessa: prima un percorso narrato, poi un Madhouse Vekoma in
 cui la stanza gira attorno ai visitatori. Il testo è letto dall'attore Jim
-Carter. E i **[Congo River Rapids](ref:alton-towers/congo-river-rapids)** del
-1986 condividono un tunnel con il treno della miniera.
+Carter. E i **[Congo River Rapids](ref:alton-towers/congo-river-rapids)**
+condividono un tunnel con il treno della miniera; sono stati costruiti nella
+grande espansione tra il 1985 e il 1988.
 
 Un cambiamento di quest'anno è un passo indietro. Sui
 **[Battle Galleons](ref:alton-towers/battle-galleons)** della Mutiny Bay il
@@ -305,9 +306,10 @@ luce.
 Come periodi di maggiore affluenza il parco indica le vacanze scolastiche
 britanniche: Pasqua, l'estate e gli half term. Per chi arriva dal continente è
 la riga più utile di tutta la guida, perché le vacanze britanniche non
-coincidono con quelle italiane. L'half term autunnale del 2026 comincia il
-26 ottobre, quindi arrivare una settimana prima dà lo stesso allestimento di
-Scarefest con sensibilmente meno gente.
+coincidono con quelle italiane. L'half term autunnale in Inghilterra cade nella
+seconda metà di ottobre, quindi arrivare prima dà lo stesso allestimento di
+Scarefest in una delle date del fine settimana dal 26 settembre, con
+sensibilmente meno gente.
 
 ### Scarefest: dal 26 settembre al 1° novembre 2026
 
@@ -518,8 +520,8 @@ sì. Il calendario pubblicato sta sulla
 ### Quando c'è meno gente ad Alton Towers?
 
 Fuori dalle vacanze scolastiche britanniche e, dentro quelle finestre, in un
-giorno feriale. Le vacanze inglesi cadono diversamente da quelle italiane:
-l'half term autunnale del 2026 comincia il 26 ottobre. Quali fra i prossimi
+giorno feriale. Le vacanze inglesi cadono diversamente da quelle italiane,
+e l'half term autunnale cade nella seconda metà di ottobre. Quali fra i prossimi
 giorni di apertura saranno i più tranquilli lo calcola ogni giorno il widget
 qui sopra.
 

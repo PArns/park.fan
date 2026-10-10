@@ -208,8 +208,9 @@ fünf Meter hohen Betonplattform über dem Weg.
 Mauern des Herrenhauses selbst: erst ein Rundgang mit Erzählung, dann ein
 Vekoma-Madhouse, in dem sich der Raum um die Fahrgäste dreht. Gesprochen hat
 den Text der Schauspieler Jim Carter. Und die
-**[Congo River Rapids](ref:alton-towers/congo-river-rapids)** von 1986 ist die
-Wildwasser-Rundfahrt, die sich mit dem Minenzug einen Tunnel teilt.
+**[Congo River Rapids](ref:alton-towers/congo-river-rapids)** sind die
+Wildwasser-Rundfahrt, die sich mit dem Minenzug einen Tunnel teilt; gebaut
+wurden sie beim großen Ausbau zwischen 1985 und 1988.
 
 Eine Änderung aus diesem Jahr ist eine Verschlechterung: Bei den
 **[Battle Galleons](ref:alton-towers/battle-galleons)** in der Mutiny Bay hat
@@ -308,9 +309,9 @@ Tageslicht zwischen 16 und 21 Uhr.
 Als besucherstärkste Zeiten nennt der Park die britischen Schulferien, also
 Ostern, die Sommerferien und die Half Terms. Das ist für Reisende aus
 Mitteleuropa die nützlichste Information des ganzen Beitrags, weil die
-britischen Ferien nicht mit den deutschen zusammenfallen: Das englische
-Half Term im Oktober liegt 2026 in der Woche ab dem 26. Oktober, und wer eine
-Woche früher kommt, hat dieselbe Scarefest-Dekoration bei deutlich weniger
+britischen Ferien nicht mit den deutschen zusammenfallen. Das Half Term im
+Herbst fällt in England in die zweite Oktoberhälfte; wer davor kommt, trifft an
+den Scarefest-Wochenenden ab dem 26. September dieselbe Dekoration bei weniger
 Betrieb.
 
 ### Scarefest: 26. September bis 1. November 2026
@@ -528,8 +529,8 @@ Jahreszeit zwischen 16 und 21 Uhr; an den Scarefest-Terminen bis zum
 ### Wann ist in Alton Towers am wenigsten los?
 
 Außerhalb der britischen Schulferien, und dort an einem Wochentag. Die Ferien
-in England liegen anders als die deutschen: Das Half Term im Herbst 2026
-beginnt am 26. Oktober. Welche der nächsten Öffnungstage am ruhigsten werden,
+in England liegen anders als die deutschen, und das Half Term im Herbst fällt
+dort in die zweite Oktoberhälfte. Welche der nächsten Öffnungstage am ruhigsten werden,
 steht tagesaktuell im Widget weiter oben.
 
 ### Lohnt sich Fastrack in Alton Towers?

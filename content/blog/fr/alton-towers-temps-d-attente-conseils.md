@@ -209,8 +209,9 @@ plateforme de béton de près de cinq mètres au-dessus de l'allée.
 **[Hex](ref:alton-towers/hex-the-legend-of-the-towers)** loge depuis 2000 dans
 les murs du manoir : d'abord un parcours narré, puis un Madhouse Vekoma où la
 pièce tourne autour des visiteurs. Le texte est dit par l'acteur Jim Carter. Et
-les **[Congo River Rapids](ref:alton-towers/congo-river-rapids)** de 1986
-partagent un tunnel avec le train de la mine.
+les **[Congo River Rapids](ref:alton-towers/congo-river-rapids)** partagent un
+tunnel avec le train de la mine ; ils datent de la grande extension menée entre
+1985 et 1988.
 
 Un changement de cette année est une régression. Sur les
 **[Battle Galleons](ref:alton-towers/battle-galleons)** de Mutiny Bay, le parc a
@@ -311,9 +312,10 @@ saison et la lumière.
 Le parc désigne comme périodes les plus chargées les vacances scolaires
 britanniques : Pâques, l'été et les half terms. Pour qui vient du continent,
 c'est la ligne la plus utile de tout ce guide, car les vacances britanniques ne
-coïncident pas avec les françaises. Le half term d'automne 2026 commence le
-26 octobre : arriver une semaine plus tôt donne le même décor de Scarefest avec
-nettement moins de monde.
+coïncident pas avec les françaises. Le half term d'automne tombe en Angleterre
+dans la seconde moitié d'octobre, et venir avant donne le même décor de
+Scarefest, sur l'une des dates de week-end à partir du 26 septembre, avec moins
+de monde.
 
 ### Scarefest : du 26 septembre au 1er novembre 2026
 
@@ -534,8 +536,8 @@ les hôtels si. Le calendrier publié est sur la
 ### Quand y a-t-il le moins de monde à Alton Towers ?
 
 Hors vacances scolaires britanniques, et alors en semaine. Les vacances
-anglaises tombent autrement que les françaises : le half term d'automne 2026
-commence le 26 octobre. Lesquels des prochains jours d'ouverture seront les
+anglaises tombent autrement que les françaises, et le half term d'automne se
+situe dans la seconde moitié d'octobre. Lesquels des prochains jours d'ouverture seront les
 plus calmes, le widget plus haut le calcule chaque jour.
 
 ### Le Fastrack vaut-il le coup à Alton Towers ?

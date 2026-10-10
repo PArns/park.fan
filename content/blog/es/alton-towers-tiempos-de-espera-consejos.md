@@ -207,8 +207,8 @@ plataforma de hormigón de casi cinco metros por encima del camino.
 de los muros de la casa: primero un recorrido narrado, luego un Madhouse de
 Vekoma en el que la sala gira alrededor de los visitantes. El texto lo pone el
 actor Jim Carter. Y los
-**[Congo River Rapids](ref:alton-towers/congo-river-rapids)** de 1986 comparten
-túnel con el tren minero.
+**[Congo River Rapids](ref:alton-towers/congo-river-rapids)** comparten túnel
+con el tren minero; se construyeron en la gran ampliación entre 1985 y 1988.
 
 Un cambio de este año es un retroceso. En los
 **[Battle Galleons](ref:alton-towers/battle-galleons)** de Mutiny Bay el parque
@@ -305,9 +305,10 @@ la temporada y la luz.
 Como épocas de más afluencia el parque señala las vacaciones escolares
 británicas: Pascua, el verano y los half terms. Para quien viaja desde el
 continente, esa es la línea más útil de toda la guía, porque las vacaciones
-británicas no coinciden con las españolas. El half term de otoño de 2026
-empieza el 26 de octubre, así que llegar una semana antes da la misma decoración
-de Scarefest con bastante menos gente.
+británicas no coinciden con las españolas. El half term de otoño cae en
+Inglaterra en la segunda mitad de octubre, así que llegar antes da la misma
+decoración de Scarefest en una de las fechas de fin de semana desde el 26 de
+septiembre, con bastante menos gente.
 
 ### Scarefest: del 26 de septiembre al 1 de noviembre de 2026
 
@@ -521,8 +522,8 @@ acuático y los hoteles sí. El calendario publicado está en la
 ### ¿Cuándo hay menos gente en Alton Towers?
 
 Fuera de las vacaciones escolares británicas, y dentro de eso entre semana. Las
-vacaciones inglesas caen distinto a las españolas: el half term de otoño de 2026
-empieza el 26 de octubre. Cuáles de los próximos días de apertura serán los más
+vacaciones inglesas caen distinto a las españolas, y el half term de otoño cae
+en la segunda mitad de octubre. Cuáles de los próximos días de apertura serán los más
 tranquilos lo calcula a diario el widget de más arriba.
 
 ### ¿Merece la pena el Fastrack en Alton Towers?

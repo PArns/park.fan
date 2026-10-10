@@ -203,8 +203,9 @@ betonnen plateau van bijna vijf meter boven het pad.
 muren van het landhuis zelf: eerst een rondgang met verhaal, dan een Vekoma
 Madhouse waarin de kamer om de bezoekers heen draait. De tekst is ingesproken
 door acteur Jim Carter. En de
-**[Congo River Rapids](ref:alton-towers/congo-river-rapids)** uit 1986 is de
-wildwaterbaan die een tunnel deelt met de mijntrein.
+**[Congo River Rapids](ref:alton-towers/congo-river-rapids)** zijn de
+wildwaterbaan die een tunnel deelt met de mijntrein, gebouwd tijdens de grote
+uitbreiding tussen 1985 en 1988.
 
 Eén verandering van dit jaar is een verslechtering. Bij de
 **[Battle Galleons](ref:alton-towers/battle-galleons)** in Mutiny Bay heeft het
@@ -301,9 +302,9 @@ uur.
 Als drukste periodes noemt het park de Britse schoolvakanties: Pasen, de
 zomervakantie en de half terms. Voor reizigers van het vasteland is dat de
 nuttigste zin van dit hele stuk, want de Britse vakanties vallen niet samen met
-de Nederlandse. De Engelse herfst-half-term begint in 2026 op 26 oktober, dus
-wie een week eerder komt, krijgt hetzelfde Scarefest-decor bij merkbaar minder
-drukte.
+de Nederlandse. De Engelse herfst-half-term valt in de tweede helft van oktober,
+dus wie daarvóór komt, treft op de Scarefest-weekenden vanaf 26 september
+hetzelfde decor bij minder drukte.
 
 ### Scarefest: 26 september tot 1 november 2026
 
@@ -517,8 +518,8 @@ en de hotels wel. De gepubliceerde kalender staat op de
 ### Wanneer is het in Alton Towers het rustigst?
 
 Buiten de Britse schoolvakanties, en daarbinnen op een doordeweekse dag. De
-Engelse vakanties vallen anders dan de Nederlandse: de herfst-half-term begint
-in 2026 op 26 oktober. Welke van de komende openingsdagen het rustigst worden,
+Engelse vakanties vallen anders dan de Nederlandse, en de herfst-half-term valt
+daar in de tweede helft van oktober. Welke van de komende openingsdagen het rustigst worden,
 staat dagelijks bijgewerkt in de widget hierboven.
 
 ### Loont Fastrack in Alton Towers?
