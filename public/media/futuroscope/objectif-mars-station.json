@@ -1,0 +1,34 @@
+{
+  "title": "Station von Objectif Mars",
+  "park": "futuroscope",
+  "ride": "destination-mars",
+  "tags": ["photo", "coaster", "station", "indoor", "day"],
+  "alt": {
+    "de": "Blick von oben in die Station von Objectif Mars: zwei Züge stehen hintereinander an der Schiene, links verlässt eine Gruppe Gäste die Plattform.",
+    "en": "A view down into the Objectif Mars station: two trains sit one behind the other on the track while a group of guests leaves the platform on the left.",
+    "nl": "Blik van bovenaf in het station van Objectif Mars: twee treinen staan achter elkaar op de baan, links verlaat een groep gasten het perron.",
+    "fr": "Vue plongeante sur la gare d'Objectif Mars : deux trains se suivent sur la voie tandis qu'un groupe de visiteurs quitte le quai à gauche.",
+    "es": "Vista desde arriba de la estación de Objectif Mars: dos trenes están uno detrás de otro sobre la vía mientras un grupo de visitantes sale del andén por la izquierda.",
+    "it": "Veduta dall'alto della stazione di Objectif Mars: due treni sono uno dietro l'altro sul binario mentre un gruppo di visitatori lascia la banchina a sinistra."
+  },
+  "caption": {
+    "de": "Der Innenteil der Strecke beginnt an dieser Station, danach geht es ins Freie.",
+    "en": "The indoor half of the layout starts at this station, and the track then runs outside.",
+    "nl": "Het binnendeel van de baan begint bij dit station, daarna gaat het naar buiten.",
+    "fr": "La partie intérieure du parcours commence à cette gare, puis la voie sort à l'air libre.",
+    "es": "La parte interior del recorrido empieza en esta estación y después la vía sale al exterior.",
+    "it": "La parte interna del tracciato comincia in questa stazione, poi il percorso esce all'aperto."
+  },
+  "credit": {
+    "author": "Philippe-Minh Nguyen",
+    "license": "cc-by-sa-4.0",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Objectif_Mars_IMG_20220514_104322-1.jpg",
+    "year": 2022
+  },
+  "shotAt": "2022-05-14",
+  "focus": {
+    "x": 0.7,
+    "y": 0.66
+  }
+}

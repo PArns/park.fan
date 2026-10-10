@@ -22,6 +22,11 @@ tags:
   - stagione-2026
   - futuroween
 category: guides
+coverImage:
+  src: /media/futuroscope/objectif-mars-16x9.jpg
+  alt: 'Un treno di Objectif Mars si inclina sulla cima della prima collina, le vetture sospese di lato sopra un pilone azzurro a traliccio.'
+  caption: 'Objectif Mars sulla prima collina, l’unico grande coaster del parco.'
+  credit: 'Philippe-Minh Nguyen / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - futuroscope
 rideLinks:
@@ -111,6 +116,8 @@ Si sale da 1,10 metri se accompagnati, da 1,20 metri da soli, e il limite massim
 Il parco esclude chi ha problemi cardiaci, epilessia, disturbi alla schiena o al collo e le donne
 in gravidanza. All'ingresso c'è un sedile di prova su cui verificare se le barre di sicurezza si
 chiudono.
+
+![Veduta dall'alto della stazione di Objectif Mars: due treni sono uno dietro l'altro sul binario mentre un gruppo di visitatori lascia la banchina a sinistra. | La parte interna del tracciato comincia in questa stazione, poi il percorso esce all’aperto. Foto: Philippe-Minh Nguyen, Wikimedia Commons (CC BY-SA 4.0) | wide](/media/futuroscope/objectif-mars-station-16x9.jpg)
 
 ### Mission Bermudes
 

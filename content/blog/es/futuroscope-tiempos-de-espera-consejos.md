@@ -22,6 +22,11 @@ tags:
   - temporada-2026
   - futuroween
 category: guides
+coverImage:
+  src: /media/futuroscope/objectif-mars-16x9.jpg
+  alt: 'Un tren de Objectif Mars se inclina sobre la cima de la primera colina y sus vagones cuelgan hacia un lado sobre un soporte azul de celosía.'
+  caption: 'Objectif Mars en la primera colina, la única montaña rusa grande del parque.'
+  credit: 'Philippe-Minh Nguyen / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - futuroscope
 rideLinks:
@@ -112,6 +117,8 @@ Se sube desde 1,10 metros acompañado y desde 1,20 metros solo, y el máximo es 
 parque excluye a personas con problemas de corazón, epilepsia, molestias de espalda o cuello y
 a las embarazadas. En la entrada hay un asiento de prueba para comprobar si las barras de
 sujeción cierran.
+
+![Vista desde arriba de la estación de Objectif Mars: dos trenes están uno detrás de otro sobre la vía mientras un grupo de visitantes sale del andén por la izquierda. | La parte interior del recorrido empieza en esta estación y después la vía sale al exterior. Foto: Philippe-Minh Nguyen, Wikimedia Commons (CC BY-SA 4.0) | wide](/media/futuroscope/objectif-mars-station-16x9.jpg)
 
 ### Mission Bermudes
 

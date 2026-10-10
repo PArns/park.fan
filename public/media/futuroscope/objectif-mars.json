@@ -1,0 +1,35 @@
+{
+  "title": "Objectif Mars",
+  "park": "futuroscope",
+  "ride": "destination-mars",
+  "roles": ["ride-card"],
+  "tags": ["photo", "coaster", "day", "sunny", "outdoor", "spring"],
+  "alt": {
+    "de": "Ein Zug von Objectif Mars kippt über die Kuppe des ersten Hügels, die Wagen hängen seitlich über einer blauen Gitterstütze.",
+    "en": "A train on Objectif Mars tips over the crest of the first hill, its cars hanging out to the side above a blue lattice support.",
+    "nl": "Een trein van Objectif Mars kantelt over de top van de eerste heuvel, de wagens hangen zijwaarts boven een blauwe vakwerksteun.",
+    "fr": "Un train d'Objectif Mars bascule au sommet de la première bosse, ses voitures suspendues sur le côté au-dessus d'un pylône bleu en treillis.",
+    "es": "Un tren de Objectif Mars se inclina sobre la cima de la primera colina y sus vagones cuelgan hacia un lado sobre un soporte azul de celosía.",
+    "it": "Un treno di Objectif Mars si inclina sulla cima della prima collina, le vetture sospese di lato sopra un pilone azzurro a traliccio."
+  },
+  "caption": {
+    "de": "Objectif Mars fährt seit Juni 2020 und ist neben der Kinderachterbahn Le Balancier die einzige Achterbahn des Parks.",
+    "en": "Objectif Mars has run since June 2020 and is the park's only coaster apart from the Le Balancier kiddie ride.",
+    "nl": "Objectif Mars rijdt sinds juni 2020 en is naast de kinderachtbaan Le Balancier de enige achtbaan van het park.",
+    "fr": "Objectif Mars tourne depuis juin 2020 et reste, avec le petit Balancier, le seul coaster du parc.",
+    "es": "Objectif Mars funciona desde junio de 2020 y es, junto a la montaña rusa infantil Le Balancier, la única del parque.",
+    "it": "Objectif Mars è in funzione da giugno 2020 ed è, insieme al coaster per bambini Le Balancier, l'unico del parco."
+  },
+  "credit": {
+    "author": "Philippe-Minh Nguyen",
+    "license": "cc-by-sa-4.0",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:20220514_Objectif_Mars_P1110461.jpg",
+    "year": 2022
+  },
+  "shotAt": "2022-05-14",
+  "focus": {
+    "x": 0.46,
+    "y": 0.4
+  }
+}

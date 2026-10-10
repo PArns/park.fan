@@ -21,6 +21,11 @@ tags:
   - season-2026
   - futuroween
 category: guides
+coverImage:
+  src: /media/futuroscope/objectif-mars-16x9.jpg
+  alt: 'A train on Objectif Mars tips over the crest of the first hill, its cars hanging out to the side above a blue lattice support.'
+  caption: 'Objectif Mars on the first hill, the only big coaster in the park.'
+  credit: 'Philippe-Minh Nguyen / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - futuroscope
 rideLinks:
@@ -107,6 +112,8 @@ open. It was due to open on 28 March 2020; because of the pandemic closure it st
 With an adult you can ride from 1.10 metres, alone from 1.20 metres, and the upper limit is
 1.95 metres. The park excludes heart problems, epilepsy, back or neck trouble and pregnancy. There
 is a test seat at the entrance where you can check whether the restraints will close.
+
+![A view down into the Objectif Mars station: two trains sit one behind the other on the track while a group of guests leaves the platform on the left. | The indoor half of the layout starts at this station, and the track then runs outside. Photo: Philippe-Minh Nguyen, Wikimedia Commons (CC BY-SA 4.0) | wide](/media/futuroscope/objectif-mars-station-16x9.jpg)
 
 ### Mission Bermudes
 

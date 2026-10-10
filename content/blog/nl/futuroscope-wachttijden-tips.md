@@ -21,6 +21,11 @@ tags:
   - seizoen-2026
   - futuroween
 category: guides
+coverImage:
+  src: /media/futuroscope/objectif-mars-16x9.jpg
+  alt: 'Een trein van Objectif Mars kantelt over de top van de eerste heuvel, de wagens hangen zijwaarts boven een blauwe vakwerksteun.'
+  caption: 'Objectif Mars op de eerste heuvel, de enige grote achtbaan van het park.'
+  credit: 'Philippe-Minh Nguyen / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - futuroscope
 rideLinks:
@@ -106,6 +111,8 @@ alleen in het weekend.
 Met begeleiding mag je vanaf 1,10 meter, alleen vanaf 1,20 meter, en de bovengrens ligt bij
 1,95 meter. Hartproblemen, epilepsie, rug- of nekklachten en zwangerschap sluit het park uit. Bij
 de ingang staat een proefstoel waarin je kunt controleren of de beugels sluiten.
+
+![Blik van bovenaf in het station van Objectif Mars: twee treinen staan achter elkaar op de baan, links verlaat een groep gasten het perron. | Het binnendeel van de baan begint bij dit station, daarna gaat het naar buiten. Foto: Philippe-Minh Nguyen, Wikimedia Commons (CC BY-SA 4.0) | wide](/media/futuroscope/objectif-mars-station-16x9.jpg)
 
 ### Mission Bermudes
 

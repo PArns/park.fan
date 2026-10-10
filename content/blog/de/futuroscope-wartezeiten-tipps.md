@@ -22,6 +22,11 @@ tags:
   - saison-2026
   - futuroween
 category: guides
+coverImage:
+  src: /media/futuroscope/objectif-mars-16x9.jpg
+  alt: 'Ein Zug von Objectif Mars kippt über die Kuppe des ersten Hügels, die Wagen hängen seitlich über einer blauen Gitterstütze.'
+  caption: 'Objectif Mars auf dem ersten Hügel, die einzige große Achterbahn des Parks.'
+  credit: 'Philippe-Minh Nguyen / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - futuroscope
 rideLinks:
@@ -108,6 +113,8 @@ Mit Begleitung geht es ab 1,10 Metern, allein ab 1,20 Metern, und die Obergrenze
 1,95 Metern. Herzprobleme, Epilepsie, Rücken- oder Nackenbeschwerden und Schwangerschaft
 schließt der Park aus. Am Eingang steht ein Testsitz, an dem man prüfen kann, ob die Bügel
 schließen.
+
+![Blick von oben in die Station von Objectif Mars: zwei Züge stehen hintereinander an der Schiene, links verlässt eine Gruppe Gäste die Plattform. | Der Innenteil der Strecke beginnt in dieser Station, danach geht es ins Freie. Foto: Philippe-Minh Nguyen, Wikimedia Commons (CC BY-SA 4.0) | wide](/media/futuroscope/objectif-mars-station-16x9.jpg)
 
 ### Mission Bermudes
 

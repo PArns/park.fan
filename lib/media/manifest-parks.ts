@@ -20,6 +20,13 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "belgium",
     "path": "europe/belgium/wavre/walibi-belgium"
   },
+  "europe/france/chasseneuil-du-poitou/futuroscope": {
+    "slug": "futuroscope",
+    "name": "Futuroscope",
+    "city": "Chasseneuil-du-Poitou",
+    "countrySlug": "france",
+    "path": "europe/france/chasseneuil-du-poitou/futuroscope"
+  },
   "europe/france/paris/disneyland-park": {
     "slug": "disneyland-park",
     "name": "Disneyland Park",
@@ -156,6 +163,7 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
 export const MEDIA_PARK_PATH_BY_SLUG: Record<string, string> = {
   "bobbejaanland": "europe/belgium/kasterlee/bobbejaanland",
   "walibi-belgium": "europe/belgium/wavre/walibi-belgium",
+  "futuroscope": "europe/france/chasseneuil-du-poitou/futuroscope",
   "disneyland-park": "europe/france/paris/disneyland-park",
   "parc-asterix": "europe/france/plailly/parc-asterix",
   "movie-park-germany": "europe/germany/bottrop/movie-park-germany",

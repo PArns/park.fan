@@ -22,6 +22,11 @@ tags:
   - saison-2026
   - futuroween
 category: guides
+coverImage:
+  src: /media/futuroscope/objectif-mars-16x9.jpg
+  alt: "Un train d'Objectif Mars bascule au sommet de la première bosse, ses voitures suspendues sur le côté au-dessus d'un pylône bleu en treillis."
+  caption: 'Objectif Mars au sommet de la première bosse, le seul grand coaster du parc.'
+  credit: 'Philippe-Minh Nguyen / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - futuroscope
 rideLinks:
@@ -111,6 +116,8 @@ seulement le week-end.
 On y monte accompagné à partir de 1,10 m, seul à partir de 1,20 m, et la taille maximale est de
 1,95 m. Le parc exclut les problèmes cardiaques, l'épilepsie, les troubles du dos ou de la nuque
 et la grossesse. À l'entrée, un siège d'essai permet de vérifier que les barres se ferment.
+
+![Vue plongeante sur la gare d'Objectif Mars : deux trains se suivent sur la voie tandis qu'un groupe de visiteurs quitte le quai à gauche. | La partie intérieure du parcours commence à cette gare, puis la voie sort à l’air libre. Photo : Philippe-Minh Nguyen, Wikimedia Commons (CC BY-SA 4.0) | wide](/media/futuroscope/objectif-mars-station-16x9.jpg)
 
 ### Mission Bermudes
 
