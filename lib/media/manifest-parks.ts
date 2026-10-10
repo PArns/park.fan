@@ -97,6 +97,13 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "netherlands",
     "path": "europe/netherlands/sevenum/attractiepark-toverland"
   },
+  "europe/united-kingdom/farley/alton-towers": {
+    "slug": "alton-towers",
+    "name": "Alton Towers",
+    "city": "Farley",
+    "countrySlug": "united-kingdom",
+    "path": "europe/united-kingdom/farley/alton-towers"
+  },
   "north-america/united-states/anaheim/disneyland-park": {
     "slug": "disneyland-park",
     "name": "Disneyland Park",
@@ -167,6 +174,7 @@ export const MEDIA_PARK_PATH_BY_SLUG: Record<string, string> = {
   "walibi-holland": "europe/netherlands/biddinghuizen/walibi-holland",
   "efteling": "europe/netherlands/kaatsheuvel/efteling",
   "attractiepark-toverland": "europe/netherlands/sevenum/attractiepark-toverland",
+  "alton-towers": "europe/united-kingdom/farley/alton-towers",
   "universal-studios-hollywood": "north-america/united-states/los-angeles/universal-studios-hollywood",
   "disneys-animal-kingdom-theme-park": "north-america/united-states/orlando/disneys-animal-kingdom-theme-park",
   "disneys-hollywood-studios": "north-america/united-states/orlando/disneys-hollywood-studios",

@@ -1,0 +1,42 @@
+{
+  "title": "Nemesis Reborn",
+  "park": "alton-towers",
+  "ride": "nemesis-reborn",
+  "area": "Forbidden Valley",
+  "tags": [
+    "day",
+    "overcast",
+    "outdoor",
+    "photo",
+    "coaster",
+    "theming"
+  ],
+  "alt": {
+    "de": "Schwarze Achterbahnschiene mit roten Adern führt aus einem Steinbruch heraus, daneben steht ein ausgemusterter Hubschrauber.",
+    "en": "Black coaster track with red veins climbs out of a quarry, a decommissioned helicopter parked beside it.",
+    "nl": "Zwarte achtbaanrails met rode aders komt uit een steengroeve, ernaast staat een afgedankte helikopter.",
+    "fr": "Des rails noirs veinés de rouge sortent d'une carrière, un hélicoptère réformé posé à côté.",
+    "es": "Una vía negra con vetas rojas sale de una cantera y, al lado, un helicóptero fuera de servicio.",
+    "it": "Un binario nero venato di rosso esce da una cava, accanto un elicottero dismesso."
+  },
+  "caption": {
+    "de": "Nemesis Reborn liegt im Steinbruch, nicht darüber. Der Hubschrauber gehört zur Kulisse der Phalanx.",
+    "en": "Nemesis Reborn sits inside the quarry rather than above it. The helicopter belongs to the Phalanx theming.",
+    "nl": "Nemesis Reborn ligt in de steengroeve, niet erboven. De helikopter hoort bij het Phalanx-decor.",
+    "fr": "Nemesis Reborn est posée dans la carrière, pas au-dessus. L'hélicoptère fait partie du décor Phalanx.",
+    "es": "Nemesis Reborn está metida en la cantera, no por encima. El helicóptero forma parte de la ambientación Phalanx.",
+    "it": "Nemesis Reborn sta dentro la cava, non sopra. L'elicottero fa parte della scenografia Phalanx."
+  },
+  "credit": {
+    "author": "BWard 1997",
+    "license": "cc-by-4.0",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alton_Towers_-_Nemesis_Reborn_5-9-2025_(1).jpg",
+    "year": 2025
+  },
+  "shotAt": "2025-09-05",
+  "focus": {
+    "x": 0.62,
+    "y": 0.52
+  }
+}
