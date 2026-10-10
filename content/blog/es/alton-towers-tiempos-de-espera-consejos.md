@@ -7,11 +7,11 @@ mode: published
 featured: false
 excerpt: >-
   El parque de Staffordshire ocupa el terreno de una casa señorial que
-  perteneció a la misma familia de 1412 a 1924. Como la finca está protegida,
-  nada construido aquí puede sobresalir de las copas de los árboles. Por eso
-  Nemesis Reborn está metida en una cantera, Oblivion cae a un túnel y The
-  Smiler esconde catorce inversiones entre las ramas. Además: cuándo ir y qué
-  cuestan entradas, aparcamiento y Fastrack.
+  perteneció a la misma familia de 1412 a 1924. La finca es una Conservation
+  Area, y dentro de una nada puede sobresalir de las copas de los árboles. Por
+  eso Nemesis Reborn está metida en una cantera excavada. Oblivion mide 19
+  metros y aun así baja 55. Además: cuándo ir y qué cuestan entradas,
+  aparcamiento y Fastrack.
 tags:
   - alton-towers
   - nemesis
@@ -82,8 +82,8 @@ Oblivion, porque hacía gritar a la gente.
 
 ## Cinco veces este parque fue el primero
 
-Eso es lo que hace interesante a Alton Towers para los aficionados, y la serie
-se extiende por tres décadas.
+La serie se extiende por tres décadas y empieza con la atracción que convirtió
+el recinto en un parque temático.
 
 Empezó en **1980** con el **Corkscrew**, la primera montaña rusa de Europa con
 dos inversiones seguidas. Fue también el arranque del parque temático: ese
@@ -523,8 +523,8 @@ acuático y los hoteles sí. El calendario publicado está en la
 
 Fuera de las vacaciones escolares británicas, y dentro de eso entre semana. Las
 vacaciones inglesas caen distinto a las españolas, y el half term de otoño cae
-en la segunda mitad de octubre. Cuáles de los próximos días de apertura serán los más
-tranquilos lo calcula a diario el widget de más arriba.
+en la segunda mitad de octubre. También se llena en las fechas de Scarefest
+hasta el 1 de noviembre y los fines de semana de temporada alta.
 
 ### ¿Merece la pena el Fastrack en Alton Towers?
 

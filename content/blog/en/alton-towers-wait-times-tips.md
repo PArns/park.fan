@@ -7,11 +7,10 @@ mode: published
 featured: false
 excerpt: >-
   The Staffordshire park sits on the grounds of a country house that belonged
-  to one family from 1412 to 1924. Because the estate is protected, nothing
-  built here may rise above the treeline. So Nemesis Reborn lies in a quarry,
-  Oblivion drops into a tunnel, and The Smiler hides fourteen inversions
-  between the treetops. Plus when to go, and what tickets, parking and
-  Fastrack cost.
+  to one family from 1412 to 1924. The estate is a Conservation Area, and
+  nothing built inside one may rise above the treeline. So Nemesis Reborn lies
+  in an excavated quarry. Oblivion stands 19 metres tall and still drops 55.
+  Plus when to go, and what tickets, parking and Fastrack cost.
 tags:
   - alton-towers
   - nemesis
@@ -59,9 +58,9 @@ seo:
 Get out of the car in Staffordshire, walk across to the entrance, and you won't
 see a roller coaster. Almost nothing of the park's eleven tracks is visible
 from outside, and that isn't luck. The estate sits inside a **Conservation
-Area**, and the planning condition that follows shapes everything built here:
-nothing may rise above the treeline, and whatever comes close has to disappear
-from the view outside. You can check it on
+Area**, and the planning condition that follows shapes everything built here.
+Nothing may rise above the treeline. Whatever comes close has to disappear from
+the view outside. You can check it on
 [Rita](ref:alton-towers/rita). The highest pieces of track are painted green.
 
 So they build downwards. **[Nemesis Reborn](ref:alton-towers/nemesis-reborn)**
@@ -80,8 +79,8 @@ Oblivion's drop, because it encouraged people to scream.
 
 ## Five times this park went first
 
-That's what makes Alton Towers interesting to coaster fans, and the run spans
-three decades.
+The run spans three decades and starts with the ride that turned the place into
+a theme park.
 
 It started in **1980** with the **Corkscrew**, Europe's first coaster with two
 inversions back to back. It was also the moment the place became a theme park:
@@ -505,8 +504,8 @@ published calendar is on the
 
 Outside the British school holidays, and on a weekday within those. The English
 holidays fall differently from the German ones, and the autumn half term lands
-in the second half of October. Which of the coming opening days will be quietest is
-worked out daily by the widget above.
+in the second half of October. It also fills up on the Scarefest dates until
+1 November and on the weekends of the main season.
 
 ### Is Fastrack worth it at Alton Towers?
 

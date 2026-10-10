@@ -7,11 +7,11 @@ mode: published
 featured: false
 excerpt: >-
   Het park in Staffordshire ligt op het terrein van een landhuis dat van 1412
-  tot 1924 van dezelfde familie was. Omdat het landgoed beschermd is, mag hier
-  niets boven de boomtoppen uitkomen. Dus ligt Nemesis Reborn in een
-  steengroeve, duikt Oblivion een tunnel in en verstopt The Smiler veertien
-  inversies tussen de kruinen. Verder: wanneer je moet gaan en wat tickets,
-  parkeren en Fastrack kosten.
+  tot 1924 van dezelfde familie was. Het terrein is een Conservation Area, en
+  daarin mag niets boven de boomtoppen uitkomen. Dus ligt Nemesis Reborn in een
+  uitgegraven steengroeve. Oblivion is 19 meter hoog en gaat toch 55 meter
+  omlaag. Verder: wanneer je moet gaan en wat tickets, parkeren en Fastrack
+  kosten.
 tags:
   - alton-towers
   - nemesis
@@ -81,8 +81,8 @@ die vóór de val van Oblivion speelde, omdat die mensen aan het gillen bracht.
 
 ## Vijf keer was dit park de eerste
 
-Dat is wat Alton Towers voor achtbaanliefhebbers interessant maakt, en de reeks
-loopt over drie decennia.
+De reeks loopt over drie decennia en begint met de baan die van het terrein een
+themapark maakte.
 
 Ze begon in **1980** met de **Corkscrew**, de eerste achtbaan van Europa met
 twee inversies achter elkaar. Het was tegelijk het begin van het themapark: in
@@ -519,8 +519,8 @@ en de hotels wel. De gepubliceerde kalender staat op de
 
 Buiten de Britse schoolvakanties, en daarbinnen op een doordeweekse dag. De
 Engelse vakanties vallen anders dan de Nederlandse, en de herfst-half-term valt
-daar in de tweede helft van oktober. Welke van de komende openingsdagen het rustigst worden,
-staat dagelijks bijgewerkt in de widget hierboven.
+daar in de tweede helft van oktober. Druk wordt het verder op de
+Scarefest-data tot 1 november en in de weekenden van het hoogseizoen.
 
 ### Loont Fastrack in Alton Towers?
 

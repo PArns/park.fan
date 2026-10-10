@@ -7,11 +7,10 @@ mode: published
 featured: false
 excerpt: >-
   Il parco dello Staffordshire sorge sul terreno di una dimora appartenuta alla
-  stessa famiglia dal 1412 al 1924. Poiché la tenuta è vincolata, nulla di
-  costruito qui può superare le chiome degli alberi. Così Nemesis Reborn sta
-  dentro una cava, Oblivion precipita in un tunnel e The Smiler nasconde
-  quattordici inversioni tra le fronde. Più: quando andarci e quanto costano
-  biglietti, parcheggio e Fastrack.
+  stessa famiglia dal 1412 al 1924. La tenuta è una Conservation Area, e lì
+  dentro nulla può superare le chiome degli alberi. Così Nemesis Reborn sta
+  dentro una cava scavata. Oblivion è alta 19 metri e scende comunque di 55.
+  Più: quando andarci e quanto costano biglietti, parcheggio e Fastrack.
 tags:
   - alton-towers
   - nemesis
@@ -82,8 +81,8 @@ della caduta di Oblivion, perché faceva urlare la gente.
 
 ## Cinque volte questo parco è stato il primo
 
-È ciò che rende Alton Towers interessante per gli appassionati, e la serie
-attraversa tre decenni.
+La serie attraversa tre decenni e comincia con l'attrazione che ha reso l'area
+un parco a tema.
 
 È cominciata nel **1980** con il **Corkscrew**, il primo ottovolante d'Europa
 con due inversioni di fila. Fu anche l'avvio del parco a tema: nello stesso anno
@@ -521,9 +520,8 @@ sì. Il calendario pubblicato sta sulla
 
 Fuori dalle vacanze scolastiche britanniche e, dentro quelle finestre, in un
 giorno feriale. Le vacanze inglesi cadono diversamente da quelle italiane,
-e l'half term autunnale cade nella seconda metà di ottobre. Quali fra i prossimi
-giorni di apertura saranno i più tranquilli lo calcola ogni giorno il widget
-qui sopra.
+e l'half term autunnale cade nella seconda metà di ottobre. Si riempie inoltre nelle date di Scarefest fino al
+1° novembre e nei fine settimana dell'alta stagione.
 
 ### Conviene il Fastrack ad Alton Towers?
 

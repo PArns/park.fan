@@ -6,12 +6,12 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Staffordshire steht der Park auf dem Grundstück eines Landsitzes, der
-  seit 1412 derselben Familie gehörte. Weil das Gelände unter Denkmalschutz
-  steht, darf kein Bauwerk über die Baumkronen ragen. Also liegt Nemesis
-  Reborn in einem Steinbruch, Oblivion stürzt in einen Tunnel, und der
-  Smiler versteckt vierzehn Überschläge zwischen den Wipfeln. Dazu kommt,
-  wann du hinfahren solltest und was Tickets, Parken und Fastrack kosten.
+  In Staffordshire steht der Park auf dem Grundstück eines Landsitzes, der von
+  1412 bis 1924 derselben Familie gehörte. Das Gelände ist eine Conservation
+  Area, und darin darf kein Bauwerk über die Baumkronen ragen. Also liegt
+  Nemesis Reborn in einem ausgehobenen Steinbruch. Oblivion ist 19 Meter hoch
+  und stürzt trotzdem 55 Meter tief. Dazu kommt, wann du hinfahren solltest und
+  was Tickets, Parken und Fastrack kosten.
 tags:
   - alton-towers
   - nemesis
@@ -82,8 +82,8 @@ zum Schreien brachte.
 
 ## Fünf Mal war dieser Park der Erste
 
-Für Achterbahnfans ist Alton Towers vor allem deshalb interessant, und die Reihe
-zieht sich über drei Jahrzehnte.
+Die Reihe zieht sich über drei Jahrzehnte und beginnt mit der Bahn, die aus dem
+Gelände überhaupt erst einen Themenpark gemacht hat.
 
 Angefangen hat sie **1980** mit der **Corkscrew**, der ersten Achterbahn
 Europas mit zwei Überschlägen hintereinander. Sie war zugleich der Startschuss
@@ -530,8 +530,8 @@ Jahreszeit zwischen 16 und 21 Uhr; an den Scarefest-Terminen bis zum
 
 Außerhalb der britischen Schulferien, und dort an einem Wochentag. Die Ferien
 in England liegen anders als die deutschen, und das Half Term im Herbst fällt
-dort in die zweite Oktoberhälfte. Welche der nächsten Öffnungstage am ruhigsten werden,
-steht tagesaktuell im Widget weiter oben.
+dort in die zweite Oktoberhälfte. Voll wird es außerdem an den
+Scarefest-Terminen bis zum 1. November und an den Wochenenden der Hauptsaison.
 
 ### Lohnt sich Fastrack in Alton Towers?
 

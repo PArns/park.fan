@@ -7,11 +7,10 @@ mode: published
 featured: false
 excerpt: >-
   Le parc du Staffordshire occupe le terrain d'un manoir resté dans la même
-  famille de 1412 à 1924. Comme le domaine est protégé, aucune construction ne
-  peut dépasser la cime des arbres. Nemesis Reborn est donc posée dans une
-  carrière, Oblivion plonge dans un tunnel, et The Smiler cache quatorze
-  inversions entre les frondaisons. Plus : quand y aller, et ce que coûtent
-  billets, parking et Fastrack.
+  famille de 1412 à 1924. Le domaine est une Conservation Area, et rien n'y doit
+  dépasser la cime des arbres. Nemesis Reborn est donc posée dans une carrière
+  creusée. Oblivion culmine à 19 mètres et descend pourtant de 55. Plus : quand
+  y aller, et ce que coûtent billets, parking et Fastrack.
 tags:
   - alton-towers
   - nemesis
@@ -83,8 +82,8 @@ avant la chute d'Oblivion, parce qu'elle faisait crier les gens.
 
 ## Cinq fois, ce parc a été le premier
 
-C'est ce qui rend Alton Towers intéressant pour les amateurs de montagnes
-russes, et la série couvre trois décennies.
+La série couvre trois décennies et commence avec l'attraction qui a fait du
+domaine un parc à thème.
 
 Elle commence en **1980** avec le **Corkscrew**, première montagne russe
 d'Europe à enchaîner deux inversions. C'était aussi le départ du parc à thème :
@@ -537,8 +536,8 @@ les hôtels si. Le calendrier publié est sur la
 
 Hors vacances scolaires britanniques, et alors en semaine. Les vacances
 anglaises tombent autrement que les françaises, et le half term d'automne se
-situe dans la seconde moitié d'octobre. Lesquels des prochains jours d'ouverture seront les
-plus calmes, le widget plus haut le calcule chaque jour.
+situe dans la seconde moitié d'octobre. La fréquentation monte aussi aux dates de
+Scarefest jusqu'au 1er novembre et les week-ends de la pleine saison.
 
 ### Le Fastrack vaut-il le coup à Alton Towers ?
 
