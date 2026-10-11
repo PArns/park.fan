@@ -107,7 +107,7 @@ export function NewsStream({
             data-parks={[...new Set(group.items.map((item) => item.park).filter(Boolean))].join(
               ' '
             )}
-            className="grid gap-3 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-8"
+            className="grid grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-8"
           >
             <div className="sm:sticky sm:top-20 sm:self-start sm:pt-4">{group.heading}</div>
             <ol className="sm:border-border/60 space-y-3 sm:border-l sm:pl-8">
