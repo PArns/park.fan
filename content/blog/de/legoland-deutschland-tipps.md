@@ -18,6 +18,11 @@ tags:
   - deutschland
   - saison-2026
 category: guides
+coverImage:
+  src: /media/legoland-deutschland/flying-ninjago-16x9.jpg
+  alt: 'Der rote Flugarm steht schräg in der Luft, an beiden Seiten hängen die Gondeln mit den Fahrgästen.'
+  caption: 'Flying NINJAGO, die einzige Bahn im Park mit nur einer Grenze für alle.'
+  credit: 'Alex234 / Wikimedia Commons (CC0 1.0)'
 parkLinks:
   - legoland-deutschland
 rideLinks:
@@ -81,6 +86,8 @@ Tonnen. Auf ihren Rängen sitzen 30.000 Minifiguren. Im Reichstagsgebäude aus B
 eröffnet hat. Sie war mit über 15 Millionen Euro die teuerste Erweiterung des Parks. Ihr Wing Coaster ist die
 erste neue Achterbahn im Legoland Deutschland seit gut 20 Jahren.
 
+![Das aufgeschnittene Stadionmodell mit vollen Rängen, grünem Spielfeld und einem roten Mannschaftsbus davor. | Die Allianz Arena im Miniland, aufgeschnitten, damit die Ränge sichtbar bleiben. | wide](/media/legoland-deutschland/allianz-arena-16x9.jpg)
+
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
 ## Mindestgröße und Alter an den Bahnen
@@ -134,6 +141,8 @@ Burgbewohner, vorbei an Vorratskammer, Küche, Festsaal und Merlins Schatzkammer
 Dann bemerkt der Drache die Fahrgäste, und auf der Außenstrecke geht es mit bis zu acht Metern pro
 Sekunde durch die Kurven, das sind knapp 29 km/h. Ein Kind darf mit Erwachsenem ab 1,10 Metern und
 sechs Jahren mitfahren.
+
+![Der Drachenzug auf der Kuppe der Außenstrecke, darunter die Schienen des zweiten Streckenteils. | Der zweite Teil der Fahrt beginnt, wenn der Drache die Fahrgäste bemerkt. | wide](/media/legoland-deutschland/fire-dragon-16x9.jpg)
 
 **[Das Große LEGO Rennen](ref:legoland-deutschland/the-great-lego-race)** ist eine Wilde Maus von
 Mack Rides, 18 Meter hoch, laut Wikipedia 400 Meter lang und bis zu 56 km/h schnell. Sie

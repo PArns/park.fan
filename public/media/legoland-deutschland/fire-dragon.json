@@ -1,0 +1,36 @@
+{
+  "title": "Feuerdrache",
+  "park": "legoland-deutschland",
+  "ride": "fire-dragon",
+  "area": "Land der Ritter",
+  "roles": ["ride-card"],
+  "tags": ["photo", "coaster", "day", "sunny", "outdoor", "summer"],
+  "alt": {
+    "de": "Ein grüner Drachenzug fährt über die Kuppe der Strecke, darunter kreuzen Schienen und dunkle Stützen.",
+    "en": "A green dragon train crests the track, with rails and dark supports crossing below it.",
+    "nl": "Een groene drakentrein rijdt over de top van de baan, daaronder kruisen rails en donkere steunen.",
+    "fr": "Un train-dragon vert passe le sommet du parcours, sous lui se croisent les rails et des piliers sombres.",
+    "es": "Un tren con forma de dragón verde corona el recorrido y debajo se cruzan los raíles y los soportes oscuros.",
+    "it": "Un treno a forma di drago verde supera il punto più alto del tracciato, sotto si incrociano i binari e i piloni scuri."
+  },
+  "caption": {
+    "de": "Hinter der Burg beginnt die Außenstrecke des Feuerdrachen, einer Familienachterbahn von Zierer.",
+    "en": "Behind the castle the Feuerdrache runs outdoors, a Zierer family coaster.",
+    "nl": "Achter de burcht begint het buitendeel van de Feuerdrache, een familieachtbaan van Zierer.",
+    "fr": "Derrière le château commence la partie extérieure du Feuerdrache, un coaster familial de Zierer.",
+    "es": "Detrás del castillo empieza el tramo exterior del Feuerdrache, una montaña rusa familiar de Zierer.",
+    "it": "Dietro il castello inizia il tratto esterno del Feuerdrache, un coaster per famiglie di Zierer."
+  },
+  "credit": {
+    "author": "GT1976",
+    "license": "cc-by-sa-4.0",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2017-07-04_Legoland_Deutschland_G%C3%BCnzburg_(034).jpg",
+    "year": 2017
+  },
+  "shotAt": "2017-07-04",
+  "focus": {
+    "x": 0.5,
+    "y": 0.37
+  }
+}
