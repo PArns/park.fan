@@ -60,8 +60,11 @@ export function DayComparison({ fixture }: { fixture: boolean }) {
   const rides = park ? headlinersFirst(park.rides) : [];
   const origin = options?.origins.find((o) => o.id === originId) ?? options?.origins[0] ?? null;
 
+  // The parks and rides on hand must belong to the day being asked for: while a new day's
+  // options load, the previous answer is still shown and would pair its rides with the new date.
+  const optionsMatchDay = options?.date === activeDate;
   const dayPath =
-    !fixture && park && ride && activeDate && origin
+    !fixture && optionsMatchDay && park && ride && activeDate && origin
       ? `${DAY_PATH}?${new URLSearchParams({
           parkId: park.id,
           date: activeDate,
@@ -91,7 +94,7 @@ export function DayComparison({ fixture }: { fixture: boolean }) {
       />
       {!fixture && !options && optionsQuery.isLoading ? (
         <LoadingState />
-      ) : !fixture && optionsQuery.error ? (
+      ) : !fixture && optionsQuery.error && !options ? (
         <ErrorState message={optionsQuery.error.message} onRetry={() => optionsQuery.refetch()} />
       ) : !options || options.parks.length === 0 ? (
         <EmptyState
@@ -101,6 +104,15 @@ export function DayComparison({ fixture }: { fixture: boolean }) {
         />
       ) : (
         <>
+          {!fixture && optionsQuery.error && (
+            <p className="px-4 pt-3 text-xs text-amber-400">
+              Die Auswahl für diesen Tag ließ sich nicht laden ({optionsQuery.error.message}).{' '}
+              <button type="button" className="underline" onClick={() => optionsQuery.refetch()}>
+                Erneut versuchen
+              </button>{' '}
+              oder einen anderen Tag wählen.
+            </p>
+          )}
           <div className="border-border/50 grid gap-3 border-b px-4 py-3 sm:grid-cols-2 lg:grid-cols-4">
             <Field label="Datum" htmlFor={ids.date}>
               <Select
