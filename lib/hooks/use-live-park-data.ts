@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { mergeLiveParkSnapshot, type LiveParkSnapshot } from '@/lib/api/parks';
 import { readParkSimulationParam } from '@/lib/parks/park-simulation';
 import type { ParkWithAttractions } from '@/lib/api/types';
-import { LIVE_POLL_QUERY_OPTIONS } from '@/lib/hooks/live-poll-options';
+import { LIVE_POLL_QUERY_OPTIONS, LIVE_POLL_TIMEOUT_MS } from '@/lib/hooks/live-poll-options';
 
 interface UseLiveParkDataParams {
   continent: string;
@@ -78,7 +78,13 @@ export function useLiveParkData({
         !previousPoll || Date.now() - previousPoll.lastFullAt >= DAILY_BLOCK_INTERVAL_MS;
       if (wantsDailyBlock) url.searchParams.set('full', '1');
 
-      const response = await fetch(url, { cache: 'no-store' });
+      const response = await fetch(url, {
+        cache: 'no-store',
+        signal:
+          typeof AbortSignal.timeout === 'function'
+            ? AbortSignal.timeout(LIVE_POLL_TIMEOUT_MS)
+            : undefined,
+      });
 
       if (!response.ok) {
         throw new Error(`Failed to fetch park: ${response.statusText}`);

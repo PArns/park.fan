@@ -35,7 +35,8 @@ export type LiveDataHint = 'offline' | 'outdated' | null;
  * An old answer with a poll in flight is not yet a warning: a phone back from the pocket after ten
  * minutes has its clock re-read and the refetch sent in the same `visibilitychange`, and the line
  * would otherwise appear for the second the request takes and push the ride list down with it.
- * A poll that fails turns the warning on through `failed`.
+ * The caller passes `fetching` for a first attempt only, which the poll's timeout bounds; a poll
+ * that fails turns the warning on through `failed`.
  */
 export function liveDataHint({
   now,
@@ -48,7 +49,7 @@ export function liveDataHint({
   dataUpdatedAt: number;
   failed: boolean;
   paused: boolean;
-  /** A poll is on its way. */
+  /** A poll's first attempt is on its way. */
   fetching?: boolean;
 }): LiveDataHint {
   if (now === null) return null;

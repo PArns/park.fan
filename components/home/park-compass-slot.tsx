@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { splitInParkRides } from '@/components/parks/nearby-in-park-view';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
+import { usePlacedOutOfSight } from '@/lib/hooks/use-placed-out-of-sight';
 import { resolveCompassDemo } from '@/lib/nearby-simulation';
 import { PARK_COMPASS_ID, setCompassPresent } from '@/lib/home/compass-presence';
 import type { NearbyAttractionsData, NearbyResponse } from '@/types/nearby';
@@ -14,31 +15,14 @@ const subscribeNever = () => () => {};
 const readSim = () => new URLSearchParams(window.location.search).get('sim');
 
 /**
- * How much of the viewport may lie below the slot when the compass goes in for a reader who has
- * scrolled: pushing a sliver out of view scores its share of the screen, so a tenth scores about
- * 0.1 at most.
- */
-const VISIBLE_SLICE = 0.1;
-
-/**
- * Whether the compass may go in now: at the top of the page always, anywhere else only while the
- * slot lies below the viewport, give or take VISIBLE_SLICE. The top is the exception because
- * waiting there can mean never: the hero's height follows its welcome line, and on common phones
- * the slot sits inside the viewport at y = 0 (docs/features/park-compass.md has the table).
- */
-function mayPlace(slotTop: number): boolean {
-  return window.scrollY < 1 || slotTop >= window.innerHeight * (1 - VISIBLE_SLICE);
-}
-
-/**
  * Directly under the homepage hero: the in-park compass, or nothing. It reads the same
  * `/api/nearby` answer as the hero's welcome and, like it, waits for the mount. Only for `in_park`
  * with a headliner in season, the filter `ParkCompass` lists by (`splitInParkRides`).
  *
  * Where it appears, and when: no box is held open for it (a screen of nothing for everyone at
- * home), so its arrival would shove down a reader who has scrolled past, and a compensating
- * `scrollBy` is still scored as a shift. So the module is fetched only for a visitor in a park,
- * and the compass goes in only where it moves nothing the reader is looking at (`mayPlace`).
+ * home), so the module is fetched only for a visitor in a park, and the compass goes in only where
+ * it moves nothing the reader is looking at (`usePlacedOutOfSight`). Here even Chromium's scroll
+ * anchoring did not absorb it, so the rule holds in every browser.
  */
 export function ParkCompassSlot() {
   const mounted = useMounted();
@@ -87,33 +71,8 @@ export function ParkCompassSlot() {
   const [ParkCompass, setParkCompass] = useState<ParkCompassComponent | null>(null);
   useLoadParkCompass(shown && !ParkCompass, setParkCompass);
 
-  // Put in only while the slot is below the viewport — see „where it appears" above. Once in, it
-  // stays.
   const slotRef = useRef<HTMLDivElement>(null);
-  const [placed, setPlaced] = useState(false);
-  useEffect(() => {
-    if (!shown || !ParkCompass || placed) return;
-    const el = slotRef.current;
-    if (!el) return;
-    // At most one layout read per frame. A listener rather than an IntersectionObserver, because
-    // `mayPlace` also asks whether the page is back at its top.
-    let frame = 0;
-    const check = () => {
-      frame = 0;
-      if (mayPlace(el.getBoundingClientRect().top)) setPlaced(true);
-    };
-    const schedule = () => {
-      if (frame === 0) frame = requestAnimationFrame(check);
-    };
-    schedule();
-    window.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule);
-    return () => {
-      if (frame !== 0) cancelAnimationFrame(frame);
-      window.removeEventListener('scroll', schedule);
-      window.removeEventListener('resize', schedule);
-    };
-  }, [shown, ParkCompass, placed]);
+  const placed = usePlacedOutOfSight(slotRef, shown && ParkCompass !== null);
   const visible = shown && placed && ParkCompass !== null;
 
   // The hero's pill to this section appears while it is here (`useCompassPresent`).

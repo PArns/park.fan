@@ -24,12 +24,12 @@ import {
  */
 const IDLE_MAX_AGE_MS = 8 * 60 * 1000;
 /**
- * The same inside a park, shorter than the 60-second refresh. With the idle value a minute's tick
- * got the same fix back for eight minutes, and so did the read on coming back to the tab, so the
- * distances to the rides and whether the visitor is still in the park lagged behind them by up to
- * eight minutes unless the compass's own GPS watch happened to be running.
+ * The same for a read that has to be current: the 60-second refresh inside a park, and the read on
+ * coming back to the tab, in a park or not. With the idle value both got the fix from before back
+ * for eight minutes, unless the compass's own GPS watch happened to be running, so the distances
+ * to the rides lagged behind the visitor and a walk into the park went unnoticed.
  */
-const IN_PARK_MAX_AGE_MS = 30 * 1000;
+const FRESH_MAX_AGE_MS = 30 * 1000;
 
 export interface GeolocationPosition {
   lat: number;
@@ -324,22 +324,24 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
   useEffect(() => {
     if (position === null || permissionDenied || !permissionGranted) return;
 
-    const refreshSilently = () => {
+    const refreshSilently = (maximumAge: number) => {
       if (document.hidden) return;
       // Read live: the `change` event for an expired grant may arrive after this tick.
       const state = permissionStatusRef.current?.state ?? null;
       if (state === 'granted') grantSeenRef.current = true;
       if (canRefreshSilently(state, promptReliableRef.current, grantSeenRef.current)) {
-        requestLocation(true, isInPark ? IN_PARK_MAX_AGE_MS : IDLE_MAX_AGE_MS);
+        requestLocation(true, maximumAge);
       }
     };
+    const onTick = () => refreshSilently(isInPark ? FRESH_MAX_AGE_MS : IDLE_MAX_AGE_MS);
+    const onReturn = () => refreshSilently(FRESH_MAX_AGE_MS);
     const refreshInterval = isInPark ? 60 * 1000 : 5 * 60 * 1000;
-    const interval = setInterval(refreshSilently, refreshInterval);
-    document.addEventListener('visibilitychange', refreshSilently);
+    const interval = setInterval(onTick, refreshInterval);
+    document.addEventListener('visibilitychange', onReturn);
 
     return () => {
       clearInterval(interval);
-      document.removeEventListener('visibilitychange', refreshSilently);
+      document.removeEventListener('visibilitychange', onReturn);
     };
   }, [position, permissionDenied, permissionGranted, isInPark, requestLocation]);
 

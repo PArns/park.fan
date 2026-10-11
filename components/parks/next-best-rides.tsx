@@ -31,10 +31,13 @@ export function NextBestRides({
   park,
   rides,
   showDistance,
+  headingAs: Heading = 'h4',
 }: {
   park: { slug: string; timezone: string };
   rides: AttractionWithDistance[];
   showDistance: boolean;
+  /** The label's level: `h4` under the homepage's in-park heading, `h3` on the park page. */
+  headingAs?: 'h3' | 'h4';
 }) {
   const t = useTranslations('nearby.nextRide');
   const tNearby = useTranslations('nearby');
@@ -82,10 +85,10 @@ export function NextBestRides({
 
   return (
     <div data-next-best-rides>
-      <h4 className="text-muted-foreground mb-1 flex items-center gap-1.5 text-sm font-medium">
+      <Heading className="text-muted-foreground mb-1 flex items-center gap-1.5 text-sm font-medium">
         <Hourglass className="text-park-primary h-4 w-4" aria-hidden="true" />
         {t('heading')}
-      </h4>
+      </Heading>
       <ul className={IN_PARK_LIST}>
         {suggestions.map((s) => {
           const ride = bySlug.get(s.slug);

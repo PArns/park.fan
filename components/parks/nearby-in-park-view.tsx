@@ -91,14 +91,14 @@ export function splitInParkRides(rides: AttractionWithDistance[] | undefined) {
   // seasonal ride with unknown months (`null`) stays.
   const inSeasonRides = (rides || []).filter((a) => a.isCurrentlyInSeason !== false);
 
-  // Every headliner, nearest first. Closed ones stay with a status badge: a headliner is worth
+  // Every headliner, nearest first. Closed ones stay, their status written out: a headliner is worth
   // pointing out even when the park, or just that ride, is not running.
   const headliners = inSeasonRides
     .filter((a) => a.isHeadliner)
     .sort((a, b) => a.distance - b.distance);
   const headlinerIds = new Set(headliners.map((h) => h.id));
 
-  // Closed rides stay (with a status badge), so the list is not empty while the park is closed.
+  // Closed rides stay (their status written out), so the list is not empty while the park is closed.
   const attractions = inSeasonRides
     .filter((a) => !headlinerIds.has(a.id))
     .sort((a, b) => a.distance - b.distance)
@@ -115,20 +115,23 @@ export function InParkRideLists({
   headliners,
   attractions,
   showDistance = true,
+  headingAs: Heading = 'h4',
 }: {
   headliners: AttractionWithDistance[];
   attractions: AttractionWithDistance[];
   showDistance?: boolean;
+  /** The labels' level: `h4` under the homepage's in-park heading, `h3` on the park page. */
+  headingAs?: 'h3' | 'h4';
 }) {
   const t = useTranslations('nearby');
   return (
     <>
       {headliners.length > 0 && (
         <div>
-          <h4 className="text-muted-foreground mb-1 flex items-center gap-1.5 text-sm font-medium">
+          <Heading className="text-muted-foreground mb-1 flex items-center gap-1.5 text-sm font-medium">
             <Star className="h-4 w-4 fill-amber-500 text-amber-500" aria-hidden="true" />
             {t('headliners')}
-          </h4>
+          </Heading>
           <ul className={IN_PARK_LIST}>
             {headliners.map((attraction) => (
               <InParkAttractionRow
@@ -144,9 +147,9 @@ export function InParkRideLists({
 
       {attractions.length > 0 && (
         <div>
-          <h4 className="text-muted-foreground mb-1 text-sm font-medium">
+          <Heading className="text-muted-foreground mb-1 text-sm font-medium">
             {t('nearestAttractions')}
-          </h4>
+          </Heading>
           <ul className={IN_PARK_LIST}>
             {attractions.map((attraction) => (
               <InParkAttractionRow

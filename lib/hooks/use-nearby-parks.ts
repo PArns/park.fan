@@ -6,7 +6,7 @@ import {
   CACHE_MAX_AGE_MS,
   isMeaningful,
   readCache,
-  readCacheEntry,
+  readSeedEntry,
   writeCache,
 } from '@/lib/nearby/nearby-cache';
 import { resolveCompassDemo } from '@/lib/nearby-simulation';
@@ -121,24 +121,22 @@ function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
     placeholderData: (prev) =>
       simMode ? undefined : (prev ?? readCache(position?.lat ?? null, position?.lng ?? null)),
     // `placeholderData` only paints; seeding the persisted entry as `initialData`, with its real
-    // `cachedAt`, lets `staleTime` apply, so a load within the window sends no request. When GPS
-    // arrives, only an entry written from coordinates within 10 km seeds the new key, so the first
-    // request with real coordinates goes out at once. Off while simulating.
+    // `cachedAt`, lets `staleTime` apply, so a load within the window sends no request. A new fix
+    // is seeded only by an answer its move cannot have overturned (`readSeedEntry`): walking
+    // inside a park sends nothing extra, walking in or out asks at once. Off while simulating.
     initialData: simMode
       ? undefined
-      : () => readCacheEntry(position?.lat ?? null, position?.lng ?? null)?.data,
+      : () => readSeedEntry(position?.lat ?? null, position?.lng ?? null, radiusInMeters)?.data,
     initialDataUpdatedAt: simMode
       ? undefined
-      : () => readCacheEntry(position?.lat ?? null, position?.lng ?? null)?.cachedAt,
+      : () => readSeedEntry(position?.lat ?? null, position?.lng ?? null, radiusInMeters)?.cachedAt,
     staleTime: CACHE_MAX_AGE_MS,
     gcTime: 10 * 60 * 1000,
     // Only the GeoIP answer refetches on focus, which covers a change of network. A
     // position-keyed answer would go out with the coordinates from before the tab was hidden, in
-    // the same `visibilitychange` that asks for a new fix, and land in the localStorage cache in
-    // time to seed the new fix's key: a visitor who walked into the park with the phone in their
-    // pocket then read „away" for up to five minutes. The new fix's key fetches by itself; the
-    // effect below covers a fix that does not move. A simulation places the visitor on the
-    // server, so its coordinates cannot be stale.
+    // the same `visibilitychange` that asks for a new fix, for an answer the new fix replaces a
+    // moment later. The new fix's key fetches by itself; the effect below covers a fix that does
+    // not move. A simulation places the visitor on the server, so its coordinates cannot be stale.
     refetchOnWindowFocus: !hasCoords || !!simMode,
     // Poll only with real coordinates, to notice somebody walking into a park. A GeoIP answer is
     // city-level, cannot resolve the in-park radius and does not move while the tab is open.

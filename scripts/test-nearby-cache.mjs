@@ -11,7 +11,9 @@
 import {
   CACHE_KEY,
   CACHE_MAX_AGE_MS,
+  answerSurvivesMove,
   readCacheEntry,
+  readSeedEntry,
   sameLocationBasis,
   writeCache,
 } from '../lib/nearby/nearby-cache.ts';
@@ -31,6 +33,16 @@ const IP_CITY = { lat: 50.9595, lng: 6.1176 };
 
 const IP_ANSWER = { type: 'nearby_parks', data: { parks: [{ name: 'Toverland' }] } };
 const GPS_ANSWER = { type: 'in_park', data: { park: { name: 'Phantasialand' } } };
+/** An in-park answer whose park lies `distance` metres from where it was asked. */
+const IN_PARK_AT = (distance) => ({
+  type: 'in_park',
+  data: { park: { name: 'Phantasialand', distance }, rides: [] },
+});
+/** A nearby answer listing parks at these distances in metres. */
+const NEARBY_AT = (distances) => ({
+  type: 'nearby_parks',
+  data: { parks: distances.map((distance, i) => ({ name: `park ${i}`, distance })) },
+});
 
 /** Write an entry directly so its age can be controlled. */
 function seed(entry) {
@@ -135,6 +147,70 @@ const testCases = [
       return readCacheEntry(null, null)?.data.type;
     },
     expected: 'nearby_parks',
+  },
+  // ---- Seeding a new fix (readSeedEntry): an answer may hold back the request only when the
+  // move since it was asked cannot have crossed a park's 1 km in-park radius. ----
+  {
+    name: 'seed: inside the park, 300 m from the park, moved 200 m → still seeds',
+    actual: () => answerSurvivesMove(IN_PARK_AT(300), 200, 1000),
+    expected: true,
+  },
+  {
+    name: 'seed: inside the park, 800 m from the park, moved 300 m → may have left, no seed',
+    actual: () => answerSurvivesMove(IN_PARK_AT(800), 300, 1000),
+    expected: false,
+  },
+  {
+    name: 'seed: outside, nearest park 1,300 m away, moved 400 m → may have walked in, no seed',
+    actual: () => answerSurvivesMove(NEARBY_AT([1300, 90000]), 400, 1000),
+    expected: false,
+  },
+  {
+    name: 'seed: outside, nearest park 30 km away, moved 500 m → still seeds',
+    actual: () => answerSurvivesMove(NEARBY_AT([30000, 90000]), 500, 1000),
+    expected: true,
+  },
+  {
+    name: 'seed: an in-park answer without the park distance never seeds a moved fix',
+    actual: () => answerSurvivesMove(GPS_ANSWER, 1, 1000),
+    expected: false,
+  },
+  {
+    name: 'THE POCKET: the answer from the car park does not seed the fix inside the park',
+    actual: () => {
+      reset();
+      // Asked 1,298 m from Phantasialand, where the API answers nearby_parks.
+      writeCache(NEARBY_AT([1298, 90350]), PHANTASIALAND.lat + 0.0117, PHANTASIALAND.lng);
+      return readSeedEntry(PHANTASIALAND.lat, PHANTASIALAND.lng, 1000);
+    },
+    expected: undefined,
+  },
+  {
+    name: 'but it still paints as a placeholder (readCacheEntry keeps its 10 km)',
+    actual: () => {
+      reset();
+      writeCache(NEARBY_AT([1298, 90350]), PHANTASIALAND.lat + 0.0117, PHANTASIALAND.lng);
+      return readCacheEntry(PHANTASIALAND.lat, PHANTASIALAND.lng)?.data.type;
+    },
+    expected: 'nearby_parks',
+  },
+  {
+    name: 'a walk of 100 m inside the park is seeded: no extra request',
+    actual: () => {
+      reset();
+      writeCache(IN_PARK_AT(173), PHANTASIALAND.lat + 0.0009, PHANTASIALAND.lng);
+      return readSeedEntry(PHANTASIALAND.lat, PHANTASIALAND.lng, 1000)?.data.type;
+    },
+    expected: 'in_park',
+  },
+  {
+    name: 'the same coordinates seed whatever the answer says',
+    actual: () => {
+      reset();
+      writeCache(GPS_ANSWER, PHANTASIALAND.lat, PHANTASIALAND.lng);
+      return readSeedEntry(PHANTASIALAND.lat, PHANTASIALAND.lng, 1000)?.data.type;
+    },
+    expected: 'in_park',
   },
   {
     name: 'sameLocationBasis: coordinates on both sides',

@@ -79,23 +79,27 @@ real visit placed at Disneyland in Anaheim.
 A visitor standing in the park gets the same compass on that park's page, directly under the title
 card, from `ParkInParkBlock`. It replaced the block's headliner list, which named the same rides
 with the same waits and no direction. Under it, on the title card's glass (`GlassCard` `tile`), sit
-„Jetzt kürzer als später" (`NextBestRides`) and the five nearest other rides; without an in-season
-headliner there is no compass and the headliners stay in that panel. Nothing in the block stands on
-the bare photo any more: its heading and the two list labels did, and over a bright photo they were
+„Jetzt kürzer als später" (`NextBestRides`) and the five nearest other rides, labelled `h3` under a
+visually hidden `h2` („In deiner Nähe"). If the compass's chunk does not arrive, the headliners
+stay in that panel instead of the block waiting for it for good. Nothing in the block stands on the
+bare photo any more: its heading and the two list labels did, and over a bright photo they were
 unreadable. The block is 1,885 px on a 390 px phone with the compass, against 1,512 px for the old
 lists (`?sim=phantasialand`).
 
-The block reads the nearby answer the header already holds and fetches the compass's module only
-once it places the visitor in this park; the lists wait for the module, so the page moves once.
-Unlike the homepage's slot, the block needs no `mayPlace`: inserted above a reader who has
-scrolled, it is absorbed by the browser's scroll anchoring. The homepage's rule would only
-move the shift to the moment the reader comes back to the top. The
-panel's rows are the compass list's rows (`InParkRow`, `IN_PARK_ROW_LINK`, `LiveWaitPill`): name,
-distance and, without a wait, the status as text on the second line, the wait as the solid pill.
-The homepage's in-park view and the nowcast banner's covered rides draw the same row.
+The block reads the in-park answer through `useInParkBlock` (the state carries it, with the point
+it was asked for) and fetches the compass's module only once that answer places the visitor in this
+park; the lists wait for the module, so the page moves once. Inserted above a reader who has
+scrolled, the block is absorbed by the browser's scroll anchoring, so where there is anchoring
+(`useScrollAnchoring`: Chromium, Firefox) it goes in at once; the homepage's rule would only move the
+shift to the moment the reader comes back to the top. Where there is none (WebKit, so every iPhone),
+it waits for `usePlacedOutOfSight`, the homepage's rule, rather than shove a reader 1,900 px down
+the ride list. The panel's rows are the compass list's rows (`InParkRow`, `IN_PARK_ROW_LINK`,
+`LiveWaitPill`): name, distance and, without a wait, the status as text on the second line, the
+wait as the solid pill. The homepage's in-park view and the nowcast banner's covered rides draw the
+same row.
 
-Layout shift against `pnpm build && pnpm start`, 390 × 844, a real fix inside Phantasialand (no
-`?sim`), Playwright's `layout-shift` entries over 15 s:
+Layout shift against `pnpm build && pnpm start`, 390 × 844, Chromium, a real fix inside
+Phantasialand (no `?sim`), Playwright's `layout-shift` entries over 15 s:
 
 | reader at | before (headliner list)     | now (compass)               |
 | --------- | --------------------------- | --------------------------- |
@@ -105,9 +109,8 @@ Layout shift against `pnpm build && pnpm start`, 390 × 844, a real fix inside P
 Before, „Jetzt kürzer als später" arrived a second later at the top of the lists and moved them
 again (the 0.0724); now it arrives in the panel under the compass, below the first screen. At
 y = 1100 every entry in both columns is a ride card in the list below, which shifts by itself; the
-block moves the scroll position by its own height (to 2,932 px) and nothing on screen. At y = 0 the
-block costs 0.4211 on 412 × 915 and 0.4729 on 1280 × 800, once per page view, for a visitor in the
-park.
+block moves the scroll position by its own height (to 2,932 px) and nothing on screen. WebKit was
+not measured: no WebKit build is installed where this was written.
 
 ## Back from the pocket
 
@@ -116,29 +119,44 @@ block has to stand where it stood and then catch up with where the visitor is no
 of „away" and without asking again for anything already granted. What happens on the
 `visibilitychange` that brings the tab back:
 
-- **The position.** The geolocation provider reads a new fix. Inside a park it allows a cached fix
-  of at most 30 s (`IN_PARK_MAX_AGE_MS`); outside, 8 minutes. With 8 minutes everywhere, the read on
-  return and every in-park 60-second tick got the fix from before the pocket back.
+- **The position.** The geolocation provider reads a fix no older than 30 s
+  (`FRESH_MAX_AGE_MS`), in a park or not, and so does the 60-second tick inside a park; the 5-minute
+  tick outside keeps 8 minutes. With 8 minutes for every read, the read on return got the fix from
+  before the pocket back unless the pocket lasted longer, and so did the in-park tick, unless the
+  compass's own GPS watch happened to be running. In a park that is about 60 low-accuracy position
+  lookups an hour with the tab in front, against about 8 before, when most ticks were answered from
+  the browser's cache; none while it is hidden.
 - **The nearby answer.** A position-keyed answer no longer refetches on focus: that request went
-  out with the coordinates from before the pocket, and its answer, written to the localStorage
-  cache, seeded the new fix's key for five minutes. The new fix changes the key and fetches by
-  itself; a fix that does not move is refetched 6 s after the return if older than five minutes
-  (`RETURN_REFETCH_DELAY_MS`). One request, with the coordinates of where the visitor is now. The
-  GeoIP answer still refetches on focus.
-- **A failed request** keeps the last answer (`heldNearby` in `resolveInParkBlock`), the way the
-  park's live poll keeps its last state. It used to read as „away" and take the block, and the
-  compass in it, off the page until the next poll.
-- **The compass** keeps an iOS grant for the page (`iosGrantedThisPage`), and the „as of" line over
-  the ride list says nothing about age while a poll is in flight (`liveDataHint`).
+  out with the coordinates from before the pocket, for an answer the new fix replaced a moment
+  later. The new fix's key fetches by itself; a fix that does not move is refetched 6 s after the
+  return if older than five minutes (`RETURN_REFETCH_DELAY_MS`). The GeoIP answer still refetches
+  on focus.
+- **Seeding a new key.** The localStorage entry still paints any key within 10 km, but it seeds one
+  (counts as fresh data, so no request) only when the move since it was asked cannot have crossed
+  the 1 km in-park radius of a park it names (`readSeedEntry`, `answerSurvivesMove`): inside, the
+  park's distance plus the move stays within it; outside, the nearest park's distance minus the
+  move stays beyond it. Walking around inside the park keeps the 5-minute cadence; walking in or out
+  asks at once. With 10 km for both, an answer asked from the car park, written by any request with
+  the old coordinates, kept the visitor reading „away" inside the park until the next poll.
+- **A failed request** keeps the last answer (`heldNearby` in `resolveInParkBlock`, which hands it to
+  the block through the state), the way the park's live poll keeps its last state. It used to read
+  as „away" and take the block, and the compass in it, off the page until the next poll.
+- **The compass** keeps an iOS grant for the page (`iosGrantedThisPage`). The „as of" line over the
+  ride list says nothing about age during a poll's first attempt (`liveDataHint`); the poll times
+  out after 15 s (`LIVE_POLL_TIMEOUT_MS`), so a stalled request cannot keep it quiet.
 
-Checked in Playwright against `next dev`: park page with a fix inside Phantasialand, the tab hidden
-for 25 minutes on the page's clock and 31 s of real time (the browser's position cache ages in real
-time), the device moved 280 m, the tab shown again. Before, one `/api/nearby` went out at once with
-the old coordinates, and the read on return got the old fix back from the browser's cache. Now the
-read gets the new fix and one request goes out with it, 0.2 s after the return. After more than 8
-minutes of real time the old code did read a new fix, but its focus request with the old
-coordinates went out first, which is the race in the second point. Coming back still costs the
-same number of requests the [byte budget](../rules/a-day-in-the-park-has-a-byte-budget.md) counts.
+Checked in Playwright against `next dev`, park page, the tab hidden for 6 or 25 minutes on the
+page's clock and 31 s of real time (the browser's position cache ages in real time), the tab then
+shown again:
+
+| case                                     | before                                | now                                     |
+| ---------------------------------------- | ------------------------------------- | --------------------------------------- |
+| in the park, moved 280 m                 | one request, old coordinates; old fix | one request, new coordinates, at +0.2 s |
+| 1.3 km outside, walked in                | (the race above)                      | one request, new coordinates; block in  |
+| in the park, every `/api/nearby` aborted | block and compass gone                | block, compass and „im Park" stay       |
+
+The in-park answer is 2.6 KB brotli (11.6 KB raw, 38 rides at Phantasialand). Coming back costs
+the same requests the [byte budget](../rules/a-day-in-the-park-has-a-byte-budget.md) counts.
 
 ## The dial
 

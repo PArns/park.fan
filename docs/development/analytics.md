@@ -203,8 +203,10 @@ at the cost of a slightly less strict privacy posture. It was reviewed in August
 
 ### The in-park compass's five events (Sep 2026)
 
-One question, whether anybody standing in a park uses the compass under the homepage hero, as a
-funnel of five events, four without a property and one with one:
+One question, whether anybody standing in a park uses the compass, under the homepage hero and at
+the top of that park's own page, as a funnel of five events, four without a property and one with
+one. The two pages send the same events: Umami records the page, so they are told apart without a
+property.
 
 | Event                  | Fires                                                       | Property           |
 | ---------------------- | ----------------------------------------------------------- | ------------------ |
@@ -227,8 +229,10 @@ in_park`.
   distance. Nothing fires under `?sim=` (the compass demo and the server simulation), which is the
   team testing on its own phones.
 
-Cost: one row each for the two once-per-view events, for the small share of homepage views that
-come from inside a park and reach the compass; one or two rows per click.
+Cost: one row each for the two once-per-view events, for the small share of homepage and park page
+views that come from inside a park and reach the compass; one or two rows per click. The park page
+is where most of them come from, since a visitor in the park keeps that page open. Its block keeps
+the compass mounted through a failed nearby request, so a view counts once there too.
 
 ---
 

@@ -4,7 +4,12 @@
  * `pnpm test:in-park-block` can run it without a browser.
  */
 import { calculateDistance } from '@/lib/utils/distance-utils';
-import type { AttractionWithDistance, NearbyAttractionsData, NearbyResponse } from '@/types/nearby';
+import type {
+  AttractionWithDistance,
+  NearbyAttractionsData,
+  NearbyResponse,
+  UserLocation,
+} from '@/types/nearby';
 import { IN_PARK_FALLBACK_DISTANCE_M } from '@/types/nearby';
 
 /** What the in-park line and block show. */
@@ -19,9 +24,17 @@ export type InParkBlockState =
   | { kind: 'away'; distanceM: number | null }
   /**
    * Inside this park. `showDistances` is false when the fix is coarser than the in-park radius,
-   * where a per-ride distance would be noise.
+   * where a per-ride distance would be noise. `nearby` is the answer that placed the visitor
+   * here, with the API's own distances, and `userLocation` the point it was computed for: the
+   * compass measures from them itself.
    */
-  | { kind: 'inPark'; rides: AttractionWithDistance[]; showDistances: boolean };
+  | {
+      kind: 'inPark';
+      rides: AttractionWithDistance[];
+      showDistances: boolean;
+      nearby: NearbyAttractionsData;
+      userLocation: UserLocation;
+    };
 
 /** Everything {@link resolveInParkBlock} decides from. */
 export interface InParkBlockInput {
@@ -90,11 +103,19 @@ export function withCurrentDistances(
 export function resolveInParkBlock(input: InParkBlockInput): InParkBlockState {
   const nearby = input.nearby ?? (input.nearbyFailed ? input.heldNearby : undefined);
   const data = inParkDataFor(nearby, input.parkId);
+  // Set exactly when `data` is: `inParkDataFor` only answers for an `in_park` response.
+  const userLocation = nearby?.userLocation as UserLocation;
 
   if (input.simulated && data) {
     // Computed from preset coordinates; a real fix (the developer's desk) would make every distance
     // kilometres, so the API's numbers are the only honest ones.
-    return { kind: 'inPark', rides: data.rides ?? [], showDistances: true };
+    return {
+      kind: 'inPark',
+      rides: data.rides ?? [],
+      showDistances: true,
+      nearby: data,
+      userLocation,
+    };
   }
 
   if (!input.initialCheckDone) return { kind: 'pending' };
@@ -113,6 +134,8 @@ export function resolveInParkBlock(input: InParkBlockInput): InParkBlockState {
         ? withCurrentDistances(rides, input.position, input.rideCoordinates)
         : rides,
       showDistances,
+      nearby: data,
+      userLocation,
     };
   }
 

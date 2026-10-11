@@ -48,7 +48,8 @@ interface ParkTitleHeaderProps {
   location?: React.ReactNode;
   /**
    * What sits at the end of the location control's line (`RiddenCounter`). That line has one fixed
-   * height in every state, so something that appears there after hydration moves nothing.
+   * height in every state, so something that appears there after hydration moves nothing. Drawn
+   * only together with `location`, since without it there is no such line.
    */
   besideLocation?: React.ReactNode;
   /**
