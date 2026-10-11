@@ -5,14 +5,12 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
 import { MapPin, Clock, TrendingUp, ChevronRight, Star } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { BackgroundOverlayImage } from '@/components/common/background-overlay-image';
-import { FavoriteStar } from '@/components/common/favorite-star';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
-import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { LiveWaitPill, RIDE_STATUS_TEXT } from '@/components/parks/live-wait-pill';
+import { IN_PARK_LIST, InParkRow } from '@/components/parks/in-park-row';
 import { NextBestRides } from '@/components/parks/next-best-rides';
 import { formatDistance } from '@/lib/utils/distance-utils';
-import { waitTimeBadgeClass } from '@/lib/blog/live-display';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl, getParkUrlFromAttractionUrl } from '@/lib/utils/url-utils';
 import type { AttractionWithDistance, NearbyAttractionsData, NearbyParkInfo } from '@/types/nearby';
@@ -23,10 +21,11 @@ import type { CrowdLevel } from '@/lib/api/types';
 const NEAREST_LIMIT = 5;
 
 /**
- * A single in-park attraction row (name, distance, live wait/crowd badges). Shared by the
- * headliner list, the "nearest attractions" list and the nowcast banner's covered rides
- * (`NowcastCoveredRides`) so all three render identically. When the ride is a
- * headliner and `headlinerLabel` is set, a "Top" badge is shown next to the name in either list.
+ * A single in-park attraction row: the name, how far and, without a posted wait, the ride's status
+ * as text on the second line, and the wait as the compass's solid pill. Shared by the headliner
+ * list, the "nearest attractions" list and the nowcast banner's covered rides
+ * (`NowcastCoveredRides`) so all three render identically. With `headlinerLabel` a headliner gets
+ * a star before its name, for a list that mixes them with other rides.
  */
 export function InParkAttractionRow({
   attraction,
@@ -43,63 +42,42 @@ export function InParkAttractionRow({
   /** The row's link was followed. */
   onOpen?: () => void;
 }) {
-  const showStatusBadge =
-    attraction.status === 'DOWN' ||
-    attraction.status === 'CLOSED' ||
-    attraction.status === 'REFURBISHMENT';
+  const tStatus = useTranslations('parks.status');
+  const wait =
+    attraction.status === 'OPERATING' && typeof attraction.waitTime === 'number'
+      ? attraction.waitTime
+      : null;
+  const status = wait === null && tStatus.has(attraction.status) ? attraction.status : null;
+  const distance = showDistance ? `${formatDistance(attraction.distance)} ${awayLabel}` : null;
   return (
-    <li>
-      <Link
-        href={convertApiUrlToFrontendUrl(attraction.url)}
-        prefetch={false}
-        className="group block"
-        onClick={onOpen}
-      >
-        <div className="bg-background/60 hover:bg-background/80 hover:border-primary/50 relative flex items-center justify-between rounded-lg border p-3 backdrop-blur-md transition-all hover:shadow-sm">
-          {attraction.id && (
-            <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
-              <FavoriteStar type="attraction" id={attraction.id} />
-            </div>
+    <InParkRow
+      href={convertApiUrlToFrontendUrl(attraction.url)}
+      onOpen={onOpen}
+      title={
+        <>
+          {attraction.isHeadliner && headlinerLabel && (
+            <>
+              <Star
+                aria-hidden="true"
+                className="size-3.5 shrink-0 fill-amber-500 text-amber-500"
+              />
+              <span className="sr-only">{headlinerLabel}: </span>
+            </>
           )}
-          <div className="min-w-0 flex-1 pr-2">
-            <div className="flex items-center gap-2">
-              <p className="group-hover:text-primary truncate font-medium transition-colors">
-                {stripNewPrefix(attraction.name)}
-              </p>
-              {attraction.isHeadliner && headlinerLabel && (
-                <Badge className="shrink-0 gap-1 border-transparent bg-amber-500/15 text-amber-700 dark:text-amber-400">
-                  <Star className="h-3 w-3 fill-current" />
-                  {headlinerLabel}
-                </Badge>
-              )}
-            </div>
-            {showDistance && (
-              <p className="text-muted-foreground text-xs">
-                {formatDistance(attraction.distance)} {awayLabel}
-              </p>
-            )}
-          </div>
-          <div className="flex items-center gap-2">
-            {attraction.status === 'OPERATING' ? (
-              <>
-                {typeof attraction.waitTime === 'number' && (
-                  <Badge className={waitTimeBadgeClass(attraction.waitTime)}>
-                    <span>⏱️</span>
-                    {attraction.waitTime} min
-                  </Badge>
-                )}
-                {attraction.crowdLevel && (
-                  <CrowdLevelBadge level={attraction.crowdLevel} showLabel={false} />
-                )}
-              </>
-            ) : (
-              showStatusBadge && <ParkStatusBadge status={attraction.status} />
-            )}
-            <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 flex-shrink-0 transition-colors" />
-          </div>
-        </div>
-      </Link>
-    </li>
+          <span className="truncate">{stripNewPrefix(attraction.name)}</span>
+        </>
+      }
+      meta={
+        (distance || status) && (
+          <>
+            {distance}
+            {distance && status && ' · '}
+            {status && <span className={RIDE_STATUS_TEXT[status]}>{tStatus(status)}</span>}
+          </>
+        )
+      }
+      trailing={wait !== null && <LiveWaitPill minutes={wait} />}
+    />
   );
 }
 
@@ -147,17 +125,16 @@ export function InParkRideLists({
     <>
       {headliners.length > 0 && (
         <div>
-          <h4 className="text-muted-foreground mb-2 flex items-center gap-1.5 text-sm font-medium">
-            <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
+          <h4 className="text-muted-foreground mb-1 flex items-center gap-1.5 text-sm font-medium">
+            <Star className="h-4 w-4 fill-amber-500 text-amber-500" aria-hidden="true" />
             {t('headliners')}
           </h4>
-          <ul className="space-y-2">
+          <ul className={IN_PARK_LIST}>
             {headliners.map((attraction) => (
               <InParkAttractionRow
                 key={attraction.id}
                 attraction={attraction}
                 awayLabel={t('awayFrom')}
-                headlinerLabel={t('headlinerBadge')}
                 showDistance={showDistance}
               />
             ))}
@@ -167,16 +144,15 @@ export function InParkRideLists({
 
       {attractions.length > 0 && (
         <div>
-          <h4 className="text-muted-foreground mb-2 text-sm font-medium">
+          <h4 className="text-muted-foreground mb-1 text-sm font-medium">
             {t('nearestAttractions')}
           </h4>
-          <ul className="space-y-2">
+          <ul className={IN_PARK_LIST}>
             {attractions.map((attraction) => (
               <InParkAttractionRow
                 key={attraction.id}
                 attraction={attraction}
                 awayLabel={t('awayFrom')}
-                headlinerLabel={t('headlinerBadge')}
                 showDistance={showDistance}
               />
             ))}

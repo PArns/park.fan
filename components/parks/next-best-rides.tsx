@@ -2,9 +2,9 @@
 
 import { useMemo, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
-import { ChevronRight, Hourglass } from 'lucide-react';
-import { Link } from '@/i18n/navigation';
+import { Hourglass } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { IN_PARK_LIST, InParkRow } from '@/components/parks/in-park-row';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { suggestNextRides } from '@/lib/planner/next-best-ride';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
@@ -82,53 +82,44 @@ export function NextBestRides({
 
   return (
     <div data-next-best-rides>
-      <h4 className="text-muted-foreground mb-2 flex items-center gap-1.5 text-sm font-medium">
+      <h4 className="text-muted-foreground mb-1 flex items-center gap-1.5 text-sm font-medium">
         <Hourglass className="text-park-primary h-4 w-4" aria-hidden="true" />
         {t('heading')}
       </h4>
-      <ul className="space-y-2">
+      <ul className={IN_PARK_LIST}>
         {suggestions.map((s) => {
           const ride = bySlug.get(s.slug);
           if (!ride) return null;
           const now = roundWaitTo5(s.waitNow);
           const later = roundWaitTo5(s.laterWait);
           return (
-            <li key={s.slug}>
-              <Link
-                href={convertApiUrlToFrontendUrl(ride.url)}
-                prefetch={false}
-                className="group block"
-              >
-                <div className="bg-background/60 hover:bg-background/80 hover:border-primary/50 flex min-h-11 items-center justify-between gap-2 rounded-lg border p-3 backdrop-blur-md transition-all hover:shadow-sm">
-                  <div className="min-w-0 flex-1">
-                    <p className="group-hover:text-primary truncate font-medium transition-colors">
-                      {stripNewPrefix(s.name)}
-                    </p>
-                    <p className="text-muted-foreground text-xs">
-                      {t('reason', {
-                        now,
-                        later,
-                        time: formatGridTime(s.laterHour * 60),
-                      })}
-                      {showDistance && (
-                        <>
-                          {' · '}
-                          {formatDistance(ride.distance)} {tNearby('awayFrom')}
-                        </>
-                      )}
-                    </p>
-                  </div>
-                  <div className="flex shrink-0 items-center gap-2">
-                    <Badge className="border-transparent bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">
-                      {/* The difference of the two numbers printed beside it, not the raw gap
-                          rounded on its own, or 22 → 33 would read "20 … 35" next to "−10". */}
-                      {t('saving', { minutes: roundWaitDeltaTo5(later - now) })}
-                    </Badge>
-                    <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 flex-shrink-0 transition-colors" />
-                  </div>
-                </div>
-              </Link>
-            </li>
+            <InParkRow
+              key={s.slug}
+              href={convertApiUrlToFrontendUrl(ride.url)}
+              title={<span className="truncate">{stripNewPrefix(s.name)}</span>}
+              meta={
+                <>
+                  {t('reason', {
+                    now,
+                    later,
+                    time: formatGridTime(s.laterHour * 60),
+                  })}
+                  {showDistance && (
+                    <>
+                      {' · '}
+                      {formatDistance(ride.distance)} {tNearby('awayFrom')}
+                    </>
+                  )}
+                </>
+              }
+              trailing={
+                <Badge className="border-transparent bg-emerald-500/15 px-2.5 py-1 font-bold text-emerald-700 tabular-nums dark:text-emerald-400">
+                  {/* The difference of the two numbers printed beside it, not the raw gap
+                      rounded on its own, or 22 → 33 would read "20 … 35" next to "−10". */}
+                  {t('saving', { minutes: roundWaitDeltaTo5(later - now) })}
+                </Badge>
+              }
+            />
           );
         })}
       </ul>

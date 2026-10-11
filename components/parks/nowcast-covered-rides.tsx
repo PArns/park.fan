@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Umbrella } from 'lucide-react';
 import { trackCoveredRideOpened } from '@/lib/analytics/umami';
 import { InParkAttractionRow } from '@/components/parks/nearby-in-park-view';
+import { IN_PARK_LIST } from '@/components/parks/in-park-row';
 import { useInParkBlock, useRideCoordinates } from '@/lib/hooks/use-in-park-block';
 import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
@@ -76,11 +77,11 @@ export function NowcastCoveredRides({ park }: { park: ParkWithAttractions }) {
 
   return (
     <div className="mt-3">
-      <h4 className="mb-2 flex items-center gap-1.5 text-sm font-semibold">
+      <h4 className="mb-1 flex items-center gap-1.5 text-sm font-semibold">
         <Umbrella className="h-4 w-4 shrink-0" aria-hidden="true" />
         {showDistance ? t('headingNearby') : t('heading')}
       </h4>
-      <ul className="space-y-2">
+      <ul className={IN_PARK_LIST}>
         {rides.map((ride) => (
           <InParkAttractionRow
             key={ride.id}

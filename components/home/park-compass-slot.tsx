@@ -8,6 +8,7 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 import { resolveCompassDemo } from '@/lib/nearby-simulation';
 import { PARK_COMPASS_ID, setCompassPresent } from '@/lib/home/compass-presence';
 import type { NearbyAttractionsData, NearbyResponse } from '@/types/nearby';
+import { useLoadParkCompass, type ParkCompassComponent } from './use-load-park-compass';
 
 const subscribeNever = () => () => {};
 const readSim = () => new URLSearchParams(window.location.search).get('sim');
@@ -28,9 +29,6 @@ const VISIBLE_SLICE = 0.1;
 function mayPlace(slotTop: number): boolean {
   return window.scrollY < 1 || slotTop >= window.innerHeight * (1 - VISIBLE_SLICE);
 }
-
-/** The compass's own module, loaded by hand — see „where it appears" below. */
-type ParkCompassComponent = typeof import('./park-compass').ParkCompass;
 
 /**
  * Directly under the homepage hero: the in-park compass, or nothing. It reads the same
@@ -87,16 +85,7 @@ export function ParkCompassSlot() {
 
   // The module, fetched the moment there is a park to show and not before.
   const [ParkCompass, setParkCompass] = useState<ParkCompassComponent | null>(null);
-  useEffect(() => {
-    if (!shown || ParkCompass) return;
-    let live = true;
-    import('./park-compass').then((m) => {
-      if (live) setParkCompass(() => m.ParkCompass);
-    });
-    return () => {
-      live = false;
-    };
-  }, [shown, ParkCompass]);
+  useLoadParkCompass(shown && !ParkCompass, setParkCompass);
 
   // Put in only while the slot is below the viewport — see „where it appears" above. Once in, it
   // stays.

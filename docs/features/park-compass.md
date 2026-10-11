@@ -1,10 +1,13 @@
 # The in-park compass
 
-Under the homepage hero, for a visitor the nearby answer places inside a park: the park's
-headliners on a compass dial, the ride the phone points at in a bar under it, and the same rides
-as a list with the way to go, the distance and the wait. Code: `components/home/park-compass-slot.tsx`
-(mount point), `park-compass.tsx` (state, bar, list), `park-compass-dial.tsx` (the dial),
-`lib/utils/compass.ts` (all the arithmetic, `pnpm test:compass`), `lib/hooks/use-compass-heading.ts`.
+Under the homepage hero and at the top of that park's own page, for a visitor the nearby answer
+places inside a park: the park's headliners on a compass dial, the ride the phone points at in a bar
+under it, and the same rides as a list with the way to go, the distance and the wait. Code:
+`components/home/park-compass-slot.tsx` (homepage mount point), `components/parks/park-in-park-block.tsx`
+(park page mount point), `use-load-park-compass.ts` (the module, fetched by hand),
+`park-compass.tsx` (state, bar, list),
+`park-compass-dial.tsx` (the dial), `lib/utils/compass.ts` (all the arithmetic, `pnpm test:compass`),
+`lib/hooks/use-compass-heading.ts`.
 
 The first version is described in [homepage-hero.md](homepage-hero.md#under-the-hero-the-headliners-on-a-compass);
 this page is what it became after a design, an architecture and a usability review on 2026-09-27,
@@ -70,6 +73,41 @@ Suspense streaming, and this is geolocation-driven client state), so every figur
 comes from Playwright's `layout-shift` entries against `pnpm build && pnpm start`: these with the
 device placed at Cologne Cathedral under `?sim=compass:disneylandparis`, the table above from a
 real visit placed at Disneyland in Anaheim.
+
+## On the park page
+
+A visitor standing in the park gets the same compass on that park's page, directly under the title
+card, from `ParkInParkBlock`. It replaced the block's headliner list, which named the same rides
+with the same waits and no direction. Under it, on the title card's glass (`GlassCard` `tile`), sit
+„Jetzt kürzer als später" (`NextBestRides`) and the five nearest other rides; without an in-season
+headliner there is no compass and the headliners stay in that panel. Nothing in the block stands on
+the bare photo any more: its heading and the two list labels did, and over a bright photo they were
+unreadable. The block is 1,885 px on a 390 px phone with the compass, against 1,512 px for the old
+lists (`?sim=phantasialand`).
+
+The block reads the nearby answer the header already holds and fetches the compass's module only
+once it places the visitor in this park; the lists wait for the module, so the page moves once.
+Unlike the homepage's slot, the block needs no `mayPlace`: inserted above a reader who has
+scrolled, it is absorbed by the browser's scroll anchoring. The homepage's rule would only
+move the shift to the moment the reader comes back to the top. The
+panel's rows are the compass list's rows (`InParkRow`, `IN_PARK_ROW_LINK`, `LiveWaitPill`): name,
+distance and, without a wait, the status as text on the second line, the wait as the solid pill.
+The homepage's in-park view and the nowcast banner's covered rides draw the same row.
+
+Layout shift against `pnpm build && pnpm start`, 390 × 844, a real fix inside Phantasialand (no
+`?sim`), Playwright's `layout-shift` entries over 15 s:
+
+| reader at | before (headliner list)     | now (compass)               |
+| --------- | --------------------------- | --------------------------- |
+| y = 0     | 0.4123 (0.3399 + 0.0724)    | 0.3757 (one shift)          |
+| y = 1100  | 0.0573, none from the block | 0.0688, none from the block |
+
+Before, „Jetzt kürzer als später" arrived a second later at the top of the lists and moved them
+again (the 0.0724); now it arrives in the panel under the compass, below the first screen. At
+y = 1100 every entry in both columns is a ride card in the list below, which shifts by itself; the
+block moves the scroll position by its own height (to 2,932 px) and nothing on screen. At y = 0 the
+block costs 0.4211 on 412 × 915 and 0.4729 on 1280 × 800, once per page view, for a visitor in the
+park.
 
 ## The dial
 
@@ -216,7 +254,8 @@ says the reader now stands still at one point in the park.
 
 Five Umami events, four of them without a property: `compass_viewed` and `compass_heading_on`
 once per page view, `compass_ride_pinned`, `compass_ride_opened` (`from`: bar or list) and
-`compass_pill_clicked`. None fires under `?sim=`. Pricing and the reasoning are in
+`compass_pill_clicked`. None fires under `?sim=`. The homepage and the park page send the same
+events; Umami records the page, so the two are told apart without a property. Pricing and the reasoning are in
 [analytics](../development/analytics.md#the-in-park-compasss-five-events-sep-2026).
 
 ## What the review asked for and did not get

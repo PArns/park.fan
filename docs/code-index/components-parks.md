@@ -178,6 +178,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `HourlyP90Sparkline` _component_: Sparkline of one day's hourly P90 wait times for a ride, as a day cell of the ride's history calendar draws it.
 
+### [`in-park-row.tsx`](../../components/parks/in-park-row.tsx)
+
+- `InParkRow` _component_: One row of an in-park list: the name, a muted second line, whatever the row ends on (a wait, a saving) and a chevron, the whole row a link. Shared by the ride lists and `NextBestRides` so every in-park list reads the same.
+- `IN_PARK_LIST` _const_: An in-park list: hairlines between the rows instead of a box around each, so a row is a line of text over whatever glass or photo the list sits on. The compass's list draws the same.
+- `IN_PARK_ROW_LINK` _const_: The link that is an in-park row, shared with the compass's list so a row hovers alike.
+
 ### [`kids-planner-button.tsx`](../../components/parks/kids-planner-button.tsx)
 
 - `KidsPlannerButton` _component_: "Plan a day for this height", on a step of a park's "with kids" page.
@@ -222,13 +228,18 @@ by hand: change the comment in the code and re-run the script. -->
 - `LiveParkGrid` _component_: Renders a grid of park cards whose STRUCTURE (name, link, city, photo) is prerendered and edge-cached, while the live status / crowd / wait time / schedule is layered on the client via `useRegionParks`.
 - Types: `StaticPark`
 
+### [`live-wait-pill.tsx`](../../components/parks/live-wait-pill.tsx)
+
+- `LiveWaitPill` _component_: A posted wait as an opaque pill in the crowd colours, the one the in-park compass and the in-park ride lists share.
+- `RIDE_STATUS_TEXT` _const_: The colour a ride's status is written in where it is text rather than a badge, on the second line of an in-park row. Only read when the ride posts no wait; closed and unknown keep the muted line's colour.
+
 ### [`nearby-heading.tsx`](../../components/parks/nearby-heading.tsx)
 
 - `NearbyHeading` _component_: The heading of the nearby-parks card, in every state of it (skeleton, prompt, error, empty list, list), so whichever state replaces another opens with the same node.
 
 ### [`nearby-in-park-view.tsx`](../../components/parks/nearby-in-park-view.tsx)
 
-- `InParkAttractionRow` _component_: A single in-park attraction row (name, distance, live wait/crowd badges). Shared by the headliner list, the "nearest attractions" list and the nowcast banner's covered rides (`NowcastCoveredRides`) so all three render identically.
+- `InParkAttractionRow` _component_: A single in-park attraction row: the name, how far and, without a posted wait, the ride's status as text on the second line, and the wait as the compass's solid pill.
 - `InParkRideLists` _component_: The two ride lists of an in-park view (headliners, then the nearest other rides), from the output of `splitInParkRides`. `showDistance={false}` drops the "120 m away" line on every row.
 - `InParkView` _component_: "You are in a park" view: full-bleed park banner with headliners and the nearest attractions. Rendered when the nearby response classifies the user as inside a park.
 - `splitInParkRides` _function_: The rides an in-park view lists: every in-season headliner, then the nearest other rides. Shared by the homepage's `InParkView` and the park page's "near you" block, so both list the same rides in the same order.
@@ -418,7 +429,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-in-park-block.tsx`](../../components/parks/park-in-park-block.tsx)
 
-- `ParkInParkBlock` _component_: „Near you" at the top of the park page, for a visitor standing in this park. It reads the same `/api/nearby` answer the header already asks for (`useHomeNearbyParks`, deduped by React Query), so it adds no request.
+- `ParkInParkBlock` _component_: „Near you" at the top of the park page, for a visitor standing in this park: the homepage's compass with the park's headliners, then a glass panel with the rides whose queue is shorter now than later and the nearest other rides.
 
 ### [`park-info-card.tsx`](../../components/parks/park-info-card.tsx)
 
@@ -578,7 +589,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`ridden-counter.tsx`](../../components/parks/ridden-counter.tsx)
 
-- `RiddenCounter` _component_: „x of y rides ridden" in the park header, once at least one ride is marked. The line is always in the layout at its own height (`h-5`), so the number appearing after hydration moves nothing; until then it holds its place hidden.
+- `RiddenCounter` _component_: „x of y rides ridden" at the end of the title card's location line, once at least one ride is marked; „✓ x/y" below `sm`, where the line has no room for the sentence.
 
 ### [`ridden-toggle.tsx`](../../components/parks/ridden-toggle.tsx)
 

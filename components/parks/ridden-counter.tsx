@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
+import { Check } from 'lucide-react';
 import {
   getRiddenSnapshot,
   getServerRiddenSnapshot,
@@ -14,9 +15,12 @@ interface RiddenCounterProps {
 }
 
 /**
- * „x of y rides ridden" in the park header, once at least one ride is marked. The line is always
- * in the layout at its own height (`h-5`), so the number appearing after hydration moves nothing;
- * until then it holds its place hidden. Marks for rides the park no longer lists are not counted.
+ * „x of y rides ridden" at the end of the title card's location line, once at least one ride is
+ * marked; „✓ x/y" below `sm`, where the line has no room for the sentence. That line has a fixed
+ * height, so the number appearing after hydration moves nothing, and the card holds no empty line
+ * open for it on every park page for the few readers who mark rides. The element stays in the DOM
+ * while empty, so the live region exists before the first mark. Marks for rides the park no
+ * longer lists are not counted.
  */
 export function RiddenCounter({ rideIds }: RiddenCounterProps) {
   const t = useTranslations('attractions');
@@ -32,8 +36,21 @@ export function RiddenCounter({ rideIds }: RiddenCounterProps) {
   );
 
   return (
-    <p className="text-muted-foreground mt-3 h-5 text-sm leading-5 tabular-nums" aria-live="polite">
-      {count > 0 ? t('riddenProgress', { count, total: rideIds.length }) : null}
+    <p
+      className="text-muted-foreground flex shrink-0 items-center gap-1.5 text-sm tabular-nums"
+      aria-live="polite"
+    >
+      {count > 0 && (
+        <>
+          <Check className="text-status-operating size-4" aria-hidden="true" />
+          <span className="sm:hidden" aria-hidden="true">
+            {count}/{rideIds.length}
+          </span>
+          <span className="max-sm:sr-only">
+            {t('riddenProgress', { count, total: rideIds.length })}
+          </span>
+        </>
+      )}
     </p>
   );
 }
