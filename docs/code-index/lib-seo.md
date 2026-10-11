@@ -51,6 +51,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`not-found-metadata.ts`](../../lib/seo/not-found-metadata.ts)
 
 - `notFoundMetadata` _function_: The head of a locale 404. Without it the page inherits the `[locale]` layout's metadata: the homepage title and canonical, and an `index, follow` beside the `noindex` Next injects.
+- `notFoundMetadataWithoutLocale` _function_: The same head with no locale, for `not-found.tsx`. Its `generateMetadata` gets no params, and `getLocale()` there reads `headers()`: on a prerendered route (`/blog/[slug]`, `/parks/…`) that turns an unknown slug into a 500 instead of a 404.
 
 ### [`sitemap-xml.ts`](../../lib/seo/sitemap-xml.ts)
 
