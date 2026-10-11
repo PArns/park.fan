@@ -184,8 +184,8 @@ tard son successeur porte le nom de ce morceau exact. Ce qu’on entend aujourd�
 est une nouvelle orchestration de la même œuvre ; le parc a mis en ligne 29
 minutes de bande-son.
 
-Matériellement aussi, il reste plus du Spookslot que l’extérieur ne le laisse
-croire. Quand le bâtiment a été vidé en septembre 2022, tout ce qui était
+Il reste aussi dans le parc des éléments de l’ancien Spookslot. Quand le
+bâtiment a été vidé en septembre 2022, tout ce qui était
 utilisable est parti aux archives. Les **candélabres** de la file dans la tour
 octogonale ont été réparés, repeints et remis à l’identique. Les **satyres**
 étaient assez détaillés pour être réutilisés tels quels. Les **gargouilles** ont eu droit à une promotion : scannées en 3D puis agrandies, elles portent aujourd’hui les poutres du plafond.

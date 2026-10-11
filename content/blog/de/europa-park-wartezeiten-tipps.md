@@ -91,8 +91,7 @@ Unsere Wartezeit-Historie für den Europa-Park beginnt am 26. Dezember 2025, umf
 also Ende September 2026 rund neun Monate, und ist seit April bis auf einen Tag
 im Juli lückenlos. Über
 alle Wochentage gerechnet ist die typische Wartezeit im Parkschnitt (der Median)
-**kürzer, als man es bei diesem Andrang erwarten würde**; an vollen Tagen liegt sie
-deutlich darüber.
+**kurz für diesen Andrang**; an vollen Tagen liegt sie deutlich darüber.
 
 Die zehn Attraktionen, an denen du am längsten stehst, mit dem Wert von heute
 daneben:

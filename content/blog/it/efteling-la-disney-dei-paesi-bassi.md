@@ -184,7 +184,7 @@ successore porta il nome di quello stesso brano. Quello che si sente oggi sotto 
 una nuova orchestrazione della stessa opera; il parco ha pubblicato 29 minuti di
 colonna sonora.
 
-Anche materialmente dello Spookslot resta più di quanto sembri da fuori. Quando
+Nel parco restano anche pezzi del vecchio Spookslot. Quando
 l’edificio è stato svuotato nel settembre 2022, tutto ciò che era utilizzabile è
 finito in archivio. I **candelabri** della fila nella torre ottagonale sono stati
 riparati, riverniciati e rimessi uno per uno. I **satiri** erano abbastanza

@@ -89,9 +89,8 @@ Après la saison d’hiver, l’attraction sera démontée. Le parc a annoncé u
 Notre historique des temps d’attente pour l’Europa-Park commence le 26 décembre
 2025, couvre donc fin septembre 2026 environ neuf mois, et ne connaît plus de
 trou depuis avril, à un jour de juillet près. Tous jours de la semaine
-confondus, l’attente typique sur l’ensemble du parc (la médiane) est **plus
-courte qu’on ne l’attendrait avec une telle affluence** ; les jours chargés,
-elle passe nettement au-dessus.
+confondus, l’attente typique sur l’ensemble du parc (la médiane) est **courte
+pour une telle affluence** ; les jours chargés, elle passe nettement au-dessus.
 
 Les dix attractions devant lesquelles tu patientes le plus longtemps, avec la
 valeur du jour à côté :

@@ -88,8 +88,8 @@ event for **9 January 2027**.
 Our wait-time history for Europa-Park starts on 26 December 2025, so at the end
 of September 2026 it covers about nine months, and it has been gapless since
 April apart from one day in July. Across all days of the week the typical
-park-wide wait (the median) is **shorter than a crowd this size would lead you
-to expect**; on busy days it sits well above that.
+park-wide wait (the median) is **short for a crowd this size**; on busy days it
+sits well above that.
 
 The ten attractions you queue longest for, with today’s number beside them:
 

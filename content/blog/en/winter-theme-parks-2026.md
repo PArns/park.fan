@@ -333,7 +333,7 @@ pieces: **28 and 29 November**, then **4 to 6**, **11 to 13**, **18 to 23** and
 Bavarian ice stock sport, and shows every half hour. Early-bird tickets cost €19
 instead of €36 until 4 October and are valid on any winter day you pick.
 
-The park’s winter list is longer than you might expect, a good 30 entries, among
+The park’s winter list has a good 30 entries, among
 them MAXIMUS, Tempel X-pedition, LEGO NINJAGO The Ride and the Techno Schleuder.
 Most of the outdoor rides, though, carry the note "open depending on the
 weather". Travelling with a child who wants one particular ride? Read the park’s

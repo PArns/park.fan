@@ -195,8 +195,7 @@ chantier depuis l’automne 2025 : plus de 30 000 mètres carrés autour d’un
 attraction aquatique à trois descentes, dont la plus haute plonge de 16 mètres
 depuis le Rocher des Lions. Disney n’a pas encore donné de date d’ouverture.
 
-Les attractions déjà là sont plus anciennes que ce chantier ne le laisse penser.
-**[The Twilight Zone Tower of
+Parmi les attractions qui étaient déjà là, **[The Twilight Zone Tower of
 Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror)** et
 **Crush's Coaster** datent toutes les deux de 2007, **[Ratatouille : L’Aventure
 Totalement Toquée de

@@ -188,10 +188,9 @@ Leeuwenkoning** gebouwd: meer dan 30.000 vierkante meter rond een waterattractie
 met drie afdalingen, de hoogste 16 meter omlaag vanaf Pride Rock. Een
 openingsdatum heeft Disney nog niet genoemd.
 
-De attracties die er al stonden zijn ouder dan de verbouwing doet vermoeden.
-**[The Twilight Zone Tower of
+Van de attracties die er al stonden zijn **[The Twilight Zone Tower of
 Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror)** en
-**Crush's Coaster** zijn allebei van 2007,
+**Crush's Coaster** allebei van 2007,
 **[Ratatouille](ref:disney-adventure-world/ratatouille-laventure-totalement-toquee-de-remy)**
 met zijn wagentjes zonder rails van 2014. **[Spider-Man W.E.B.
 Adventure](ref:disney-adventure-world/spider-man-web-adventure)** kwam in juli

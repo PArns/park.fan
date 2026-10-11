@@ -189,7 +189,7 @@ teléfono, y 46 años después su sucesora lleva el nombre de esa misma pieza. L
 suena hoy debajo es una nueva orquestación de la misma obra; el parque publicó
 29 minutos de banda sonora.
 
-También en lo material queda más del Spookslot de lo que parece desde fuera.
+También quedan en el parque piezas del antiguo Spookslot.
 Cuando el edificio se vació en septiembre de 2022, todo lo aprovechable fue al
 archivo. Los **candelabros** de la cola de la torre octogonal están reparados,
 repintados y de vuelta uno por uno. Los **sátiros** tenían suficiente detalle para

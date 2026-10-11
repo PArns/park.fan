@@ -339,7 +339,7 @@ specie di curling bavarese) e spettacoli ogni mezz’ora. I biglietti in
 prevendita costano 19 € invece di 36 € fino al 4 ottobre e valgono per il giorno
 d’inverno che scegli tu.
 
-La lista invernale del parco è più lunga di quanto si pensi, una buona trentina
+La lista invernale del parco conta una buona trentina
 di voci, tra cui MAXIMUS, la Tempel X-pedition, LEGO NINJAGO The Ride e il
 Techno Schleuder. Accanto alla maggior parte delle attrazioni all’aperto, però,
 c’è scritto “aperta a seconda del meteo”. Viaggi con un bambino che vuole

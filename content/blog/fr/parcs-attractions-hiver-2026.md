@@ -346,7 +346,7 @@ Eisstockschießen (une sorte de curling bavarois) et des spectacles toutes les
 demi-heures. Les billets en prévente coûtent 19 € au lieu de 36 € jusqu’au
 4 octobre et valent pour le jour d’hiver de votre choix.
 
-La liste d’hiver du parc est plus longue qu’on ne le pense, une bonne trentaine
+La liste d’hiver du parc compte une bonne trentaine
 d’entrées, dont MAXIMUS, la Tempel X-pedition, LEGO NINJAGO The Ride et le
 Techno Schleuder. La plupart des attractions en plein air portent toutefois la
 mention « ouvert selon la météo ». Si vous voyagez avec un enfant qui veut une
