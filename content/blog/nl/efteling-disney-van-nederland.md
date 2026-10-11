@@ -210,8 +210,8 @@ https://www.youtube.com/watch?v=qYmcIgmW8Hk
 **[Joris en de Draak](ref:efteling/joris-en-de-draak)** is de dubbele houten
 achtbaan van **GCI**, open sinds 2010, water tegen vuur, twee treinen die naast
 elkaar vertrekken en elkaar onderweg inhalen. Ze is de opvolger van de oude
-Pegasus en in onze data de meest gevraagde attractie van het park. Ik heb er in de
-[Toverland-gids](/blog/toverland-troy-wachttijden-tips) al over geschreven, en
+Pegasus en in onze data de meest gevraagde attractie van het park. In onze
+[Toverland-gids](/blog/toverland-troy-wachttijden-tips) staat al iets over, en
 niet bijzonder vriendelijk, omdat zeventig kilometer zuidoostelijker een betere
 GCI-baan met minder dan de halve rij staat. Dat blijft zo. Als racebaan waarop je de andere
 trein kunt zien verliezen doet Joris wel iets wat Troy niet kan.
@@ -731,9 +731,8 @@ dat de lichtgrens wil doorbreken. Gebouwd wordt ze op het Eiland van de Vijf
 Zintuigen, dus pal achter de hoofdingang.
 
 Wat het park daarentegen blijft laten: Halloween. “Wees gerust, de Efteling viert
-geen Halloween” staat letterlijk op de eigen site. Waarom een bezoek in de herfst tóch loont, heb
-ik in de
-[Halloween-gids](/blog/halloween-pretparken-2026) opgeschreven. Het gaat om lange
+geen Halloween” staat letterlijk op de eigen site. Waarom een bezoek in de herfst tóch loont, staat in de
+[Halloween-gids](/blog/halloween-pretparken-2026). Het gaat om lange
 avonden tot 20 uur, lantaarns in de bomen, het Huyverwoud en niemand met een
 kettingzaag.
 

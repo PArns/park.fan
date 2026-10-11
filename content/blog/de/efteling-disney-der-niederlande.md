@@ -210,8 +210,8 @@ https://www.youtube.com/watch?v=qYmcIgmW8Hk
 Doppelstrecken-Holzachterbahn von **GCI**, seit 2010, Wasser gegen Feuer, zwei
 Züge, die nebeneinander losfahren und sich unterwegs überholen. Sie ist der
 Nachfolger der alten Pegasus und in unseren Daten die gefragteste Attraktion des
-Parks. Über sie habe ich im
-[Toverland-Guide](/blog/toverland-troy-wartezeiten-tipps) schon geschrieben, und
+Parks. Über sie steht im
+[Toverland-Guide](/blog/toverland-troy-wartezeiten-tipps) schon etwas, und
 zwar nicht besonders freundlich, weil siebzig Kilometer weiter südöstlich eine
 bessere GCI-Bahn mit weniger als der halben Warteschlange steht. Das bleibt so. Als Rennstrecke,
 auf der du dem anderen Zug beim Verlieren zusehen kannst, macht Joris trotzdem
@@ -736,8 +736,8 @@ dem Eiland van de Vijf Zintuigen, also gleich hinter dem Haupteingang.
 
 Was der Park dagegen weiterhin nicht macht: Halloween. „Wees gerust, de Efteling
 viert geen Halloween“, keine Sorge, wir feiern kein Halloween, steht wörtlich auf
-der eigenen Website. Warum sich ein Herbstbesuch trotzdem lohnt, habe ich im
-[Halloween-Guide](/blog/halloween-freizeitparks-2026) aufgeschrieben: lange Abende
+der eigenen Website. Warum sich ein Herbstbesuch trotzdem lohnt, steht im
+[Halloween-Guide](/blog/halloween-freizeitparks-2026): lange Abende
 bis 20 Uhr, Laternen in den Bäumen, das Huyverwoud und niemand mit einer
 Kettensäge.
 

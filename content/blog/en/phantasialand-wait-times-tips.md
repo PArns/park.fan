@@ -91,7 +91,7 @@ and its own smell, and in summer you notice the smell most outside the churros
 stand in China Town. Ride nothing at all and you still have a full day.
 
 All that density has a downside. On a busy day, everyone wants the same two or
-three rides at the same time. In [the art of waiting](/blog/the-art-of-waiting) I
+three rides at the same time. In [the art of waiting](/blog/the-art-of-waiting) we
 worked out why [Taron](ref:phantasialand/taron) runs into saturation on a
 holiday Saturday just as fast as Peter Pan’s Flight in Paris. A small crowd
 doesn’t protect you from long lines when there are only a few attractions for
@@ -510,7 +510,7 @@ inching out of the car park with a few thousand other happy people.
 
 ## Wintertraum: mulled wine, lights and Taron in the dark
 
-In the [Halloween guide](/blog/halloween-theme-parks-2026) I fondly counted
+In our [Halloween guide](/blog/halloween-theme-parks-2026) we fondly counted
 Phantasialand among the “refuseniks”, because it deliberately doesn’t do a scare
 festival. Instead, in winter it dons a completely different, beautiful costume:
 the **[Wintertraum](https://www.phantasialand.de/de/themenpark/wintertraum/)**.

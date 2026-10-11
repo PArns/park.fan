@@ -213,9 +213,8 @@ https://www.youtube.com/watch?v=qYmcIgmW8Hk
 **[Joris en de Draak](ref:efteling/joris-en-de-draak)** est la montagne russe en
 bois à double piste de **GCI**, ouverte en 2010, l’eau contre le feu, deux trains
 qui partent côte à côte et se doublent en chemin. Elle a remplacé l’ancienne
-Pegasus et c’est, dans nos données, l’attraction la plus demandée du parc. J’en ai
-déjà parlé dans le
-[guide Toverland](/blog/toverland-troy-temps-d-attente-conseils), et pas très
+Pegasus et c’est, dans nos données, l’attraction la plus demandée du parc. Notre
+[guide Toverland](/blog/toverland-troy-temps-d-attente-conseils) en parle déjà, et pas très
 gentiment, parce qu’à soixante-dix kilomètres au sud-est se trouve une meilleure
 GCI avec moins de la moitié de la file. Cela reste vrai. En tant que course où l’on peut
 regarder l’autre train perdre, Joris fait tout de même quelque chose dont Troy est
@@ -756,7 +755,7 @@ l’Eiland van de Vijf Zintuigen, c’est-à-dire juste derrière l’entrée pr
 Halloween, en revanche, le parc ne le fête toujours pas. « Wees gerust, de
 Efteling viert geen Halloween », rassurez-vous, nous ne fêtons pas Halloween, est
 écrit mot pour mot sur son propre site. Pourquoi une visite en automne vaut quand
-même le coup, je l’ai écrit dans le
+même le coup, c’est expliqué dans notre
 [guide Halloween](/blog/halloween-parcs-attractions-2026). Il y a de longues soirées jusqu’à 20 heures, des lanternes dans les arbres, le Huyverwoud, et
 personne avec une tronçonneuse.
 

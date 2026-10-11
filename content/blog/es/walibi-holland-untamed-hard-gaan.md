@@ -493,7 +493,7 @@ Walibi Belgium está casi a la par con Walibi Holland.
 Apenas un millón de visitantes al año se reparten aquí entre **diez montañas
 rusas** y, según el parque, más de 40 atracciones, en 40 hectáreas. Untamed por sí sola mueve
 900 personas por hora. Mucha capacidad, demanda contenida, y es esa proporción
-la que fija la espera, como expliqué en [el arte de
+la que fija la espera, como explicamos en [el arte de
 esperar](/blog/el-arte-de-esperar).
 
 Una salvedad antes de que alguien se tome las cifras demasiado en serio: nuestro
