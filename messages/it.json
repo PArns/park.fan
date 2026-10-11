@@ -398,8 +398,8 @@
     },
     "families": {
       "kicker": "Con bambini",
-      "title": "Su quali giostre può salire mio figlio? Filtra per altezza",
-      "lead": "Per ogni attrazione park.fan mostra l’altezza minima indicata dal parco. Prima della visita puoi controllare quali attrazioni potete fare insieme e per quali tuo figlio è ancora troppo piccolo.",
+      "title": "Altezze minime a colpo d’occhio",
+      "lead": "Il parco fissa un limite per ogni attrazione. Prima della visita vedi quali potete fare insieme e per quali non si arriva ancora.",
       "cardBody": "Tutte le attrazioni per altezza minima."
     }
   },

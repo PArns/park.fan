@@ -398,8 +398,8 @@
     },
     "families": {
       "kicker": "Mit Kindern",
-      "title": "Welche Bahnen darf mein Kind fahren? Nach Größe filtern",
-      "lead": "Für jede Bahn zeigt park.fan die Mindestgröße, die der Park angibt. So prüfst du schon vor dem Besuch, welche Bahnen ihr zusammen fahren könnt und für welche die Größe noch nicht reicht.",
+      "title": "Mindestgrößen auf einen Blick",
+      "lead": "Der Park gibt für jede Bahn eine Größe vor. Vor dem Besuch siehst du, welche ihr zusammen fahren könnt und für welche es noch nicht reicht.",
       "cardBody": "Alle Bahnen nach Mindestgröße."
     }
   },
