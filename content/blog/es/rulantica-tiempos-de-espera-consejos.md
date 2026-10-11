@@ -25,6 +25,11 @@ parkLinks:
   - rulantica
 rideLinks:
   - rulantica/*
+coverImage:
+  src: /media/rulantica/wasserwelt-mit-piratenschiff.jpg
+  alt: 'Vista elevada del interior de la nave de Rulantica: un río lento con visitantes en flotadores, filas de tumbonas al lado y, detrás, un barco pirata de madera y un puente de cuerda sobre una piscina.'
+  caption: "El río lento Snorri's Saga pasa junto a los pecios y recorre toda la nave."
+  credit: 'Simone Graffi / Wikimedia Commons (Public Domain Mark)'
 seo:
   title: 'Rulantica 2026: toboganes, precios y los días más tranquilos'
   description: >-
@@ -95,6 +100,8 @@ toboganes Nordiskturn con Vikingløp. Desde principios del verano de 2025, el
 exterior tiene su propia piscina, la Svømmepøl. Según las cifras de TEA y AECOM,
 el recinto recibió en 2023 a unos 1,2 millones de visitantes, y en el estreno la
 Süddeutsche Zeitung daba 6.000 personas al día como límite máximo.
+
+![La nave vacía de Rulantica con cerchas de madera y lucernarios, tumbonas libres, el barco pirata y el agua en calma de las piscinas. | La misma nave antes de abrir. Mide 20 metros de alto y la cubierta de madera abarca 10.500 metros cuadrados. | wide](/media/rulantica/halle-vor-der-oeffnung.jpg)
 
 ## Las zonas temáticas
 
@@ -215,6 +222,8 @@ no se permiten gafas. El máximo teórico es de 600 personas por hora, la altura
 mínima es de 110 centímetros, desde los diez años.
 
 ## Agua sin tobogán
+
+![Una gran piscina de olas ante una pared rocosa con estalactitas iluminadas en naranja y violeta, algunos bañistas en el agua y agua abierta en primer plano. | El Surf Fjørd está en la cueva Lumåfals. El agua ronda los 27 a 32 grados, también en enero. | right](/media/rulantica/surf-fjord-wellenbad.jpg)
 
 Si después de tres horas subiendo escaleras quieres otra cosa, la encuentras aquí.
 

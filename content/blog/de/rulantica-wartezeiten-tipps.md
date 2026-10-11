@@ -24,6 +24,11 @@ parkLinks:
   - rulantica
 rideLinks:
   - rulantica/*
+coverImage:
+  src: /media/rulantica/wasserwelt-mit-piratenschiff.jpg
+  alt: 'Blick von oben in die Halle von Rulantica: ein Strömungskanal mit Gästen in Reifen, daneben Reihen von Liegen, dahinter ein hölzernes Piratenschiff und eine Hängebrücke über einem Becken.'
+  caption: "Der Strömungskanal Snorri's Saga führt an den Schiffswracks entlang durch die ganze Halle."
+  credit: 'Simone Graffi / Wikimedia Commons (Public Domain Mark)'
 seo:
   title: 'Rulantica 2026: Rutschen, Preise und die ruhigsten Tage'
   description: >-
@@ -95,6 +100,8 @@ Frühsommer 2025 hat der Außenbereich einen eigenen Pool, den Svømmepøl. Nach
 den Zahlen von TEA und AECOM besuchten 2023 rund 1,2 Millionen Gäste die
 Anlage, und zum Start nannte die Süddeutsche Zeitung 6.000 Gäste pro Tag als
 Obergrenze.
+
+![Die leere Halle von Rulantica mit Holzbindern und Oberlichtern, leeren Liegen, dem Piratenschiff und ruhigem Wasser in den Becken. | Dieselbe Halle vor dem Einlass. Sie ist 20 Meter hoch, das Holzdach misst 10.500 Quadratmeter. | wide](/media/rulantica/halle-vor-der-oeffnung.jpg)
 
 ## Die Themenbereiche
 
@@ -216,6 +223,8 @@ die Füße an. Brillen sind hier nicht erlaubt. Das theoretische Maximum
 liegt bei 600 Gästen pro Stunde, Mindestgröße ist 110 Zentimeter, ab zehn Jahren.
 
 ## Wasser ohne Rutsche
+
+![Ein großes Wellenbad vor einer Felswand mit beleuchteten Tropfsteinen in Orange und Violett, im Wasser einzelne Badende, der Vordergrund ist offenes Wasser. | Der Surf Fjørd liegt in der Höhle Lumåfals. Das Wasser hat 27 bis 32 Grad, auch im Januar. | right](/media/rulantica/surf-fjord-wellenbad.jpg)
 
 Wer nach drei Stunden Treppensteigen etwas anderes will, findet es hier.
 

@@ -1,0 +1,29 @@
+{
+  "title": "Die Halle vor der Öffnung",
+  "park": "rulantica",
+  "tags": ["photo", "indoor", "park", "theming", "day"],
+  "alt": {
+    "de": "Die leere Halle von Rulantica mit Holzbindern und Oberlichtern, leeren Liegen, dem Piratenschiff und ruhigem Wasser in den Becken.",
+    "en": "The empty Rulantica hall with wooden roof trusses and skylights, empty loungers, the pirate ship and still water in the pools.",
+    "nl": "De lege hal van Rulantica met houten spanten en daklichten, lege ligbedden, het piratenschip en stil water in de baden.",
+    "fr": "La halle vide de Rulantica avec ses fermes en bois et ses verrières, des transats inoccupés, le navire pirate et l'eau immobile des bassins.",
+    "es": "La nave vacía de Rulantica con cerchas de madera y lucernarios, tumbonas libres, el barco pirata y el agua en calma de las piscinas.",
+    "it": "La sala vuota di Rulantica con capriate di legno e lucernari, lettini liberi, il veliero pirata e l'acqua ferma nelle vasche."
+  },
+  "caption": {
+    "de": "Dieselbe Halle vor dem Einlass. Sie ist 20 Meter hoch, das Holzdach misst 10.500 Quadratmeter.",
+    "en": "The same hall before opening time. It stands 20 metres tall, and the timber roof covers 10,500 square metres.",
+    "nl": "Dezelfde hal voor openingstijd. Ze is 20 meter hoog, het houten dak meet 10.500 vierkante meter.",
+    "fr": "La même halle avant l'ouverture. Elle fait 20 mètres de haut et la toiture en bois couvre 10 500 mètres carrés.",
+    "es": "La misma nave antes de abrir. Mide 20 metros de alto y la cubierta de madera abarca 10.500 metros cuadrados.",
+    "it": "La stessa sala prima dell'apertura. È alta 20 metri e il tetto di legno copre 10.500 metri quadrati."
+  },
+  "credit": {
+    "author": "Simone Graffi",
+    "license": "public-domain",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rulantica_EuropaPark.jpg",
+    "year": 2020
+  },
+  "shotAt": "2020-01-16"
+}

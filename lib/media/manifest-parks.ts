@@ -62,6 +62,13 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "germany",
     "path": "europe/germany/rust/europa-park"
   },
+  "europe/germany/rust/rulantica": {
+    "slug": "rulantica",
+    "name": "Rulantica",
+    "city": "Rust",
+    "countrySlug": "germany",
+    "path": "europe/germany/rust/rulantica"
+  },
   "europe/germany/sierksdorf/hansa-park": {
     "slug": "hansa-park",
     "name": "Hansa-Park",
@@ -162,6 +169,7 @@ export const MEDIA_PARK_PATH_BY_SLUG: Record<string, string> = {
   "phantasialand": "europe/germany/bruehl/phantasialand",
   "plopsaland-deutschland": "europe/germany/hassloch/plopsaland-deutschland",
   "europa-park": "europe/germany/rust/europa-park",
+  "rulantica": "europe/germany/rust/rulantica",
   "hansa-park": "europe/germany/sierksdorf/hansa-park",
   "heide-park": "europe/germany/soltau/heide-park",
   "walibi-holland": "europe/netherlands/biddinghuizen/walibi-holland",

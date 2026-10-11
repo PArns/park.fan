@@ -25,6 +25,11 @@ parkLinks:
   - rulantica
 rideLinks:
   - rulantica/*
+coverImage:
+  src: /media/rulantica/wasserwelt-mit-piratenschiff.jpg
+  alt: "Vue en hauteur dans la halle de Rulantica : une rivière à courant avec des visiteurs en bouées, des rangées de transats à côté, et derrière un navire pirate en bois et un pont de corde au-dessus d'un bassin."
+  caption: "La rivière à courant Snorri's Saga longe les épaves et traverse toute la halle."
+  credit: 'Simone Graffi / Wikimedia Commons (Public Domain Mark)'
 seo:
   title: 'Rulantica 2026 : toboggans, prix et jours les plus calmes'
   description: >-
@@ -98,6 +103,8 @@ la zone extérieure a son propre bassin, le Svømmepøl. D’après les chiffres
 TEA et d’AECOM, l’établissement a reçu environ 1,2 million de visiteurs en
 2023, et au lancement la Süddeutsche Zeitung fixait la limite haute à 6 000
 visiteurs par jour.
+
+![La halle vide de Rulantica avec ses fermes en bois et ses verrières, des transats inoccupés, le navire pirate et l'eau immobile des bassins. | La même halle avant l'ouverture. Elle fait 20 mètres de haut et la toiture en bois couvre 10 500 mètres carrés. | wide](/media/rulantica/halle-vor-der-oeffnung.jpg)
 
 ## Les zones thématiques
 
@@ -222,6 +229,8 @@ lunettes n’y sont pas admises. Le maximum théorique est de 600 visiteurs par
 heure, la taille minimale de 110 cm, à partir de dix ans.
 
 ## De l’eau sans toboggan
+
+![Un grand bassin à vagues devant une paroi rocheuse aux stalactites éclairées en orange et violet, quelques baigneurs dans l'eau et un premier plan d'eau libre. | Le Surf Fjørd se trouve dans la grotte Lumåfals. L'eau y est entre 27 et 32 degrés, en janvier aussi. | right](/media/rulantica/surf-fjord-wellenbad.jpg)
 
 Si, après trois heures d’escaliers, tu veux autre chose, c’est ici.
 

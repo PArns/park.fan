@@ -24,6 +24,11 @@ parkLinks:
   - rulantica
 rideLinks:
   - rulantica/*
+coverImage:
+  src: /media/rulantica/wasserwelt-mit-piratenschiff.jpg
+  alt: 'A raised view into the Rulantica hall: a lazy river with guests in tubes, rows of loungers beside it, and behind them a wooden pirate ship and a rope bridge over a pool.'
+  caption: "The Snorri's Saga lazy river runs past the shipwrecks and through the whole hall."
+  credit: 'Simone Graffi / Wikimedia Commons (Public Domain Mark)'
 seo:
   title: 'Rulantica 2026: slides, prices and the quietest days'
   description: >-
@@ -92,6 +97,8 @@ Vikingløp. Since early summer 2025 the outdoor area has had a pool of its own,
 the Svømmepøl. According to TEA and AECOM, around 1.2 million guests visited
 in 2023, and at the start the Süddeutsche Zeitung gave 6,000 guests a day as
 the upper limit.
+
+![The empty Rulantica hall with wooden roof trusses and skylights, empty loungers, the pirate ship and still water in the pools. | The same hall before opening time. It stands 20 metres tall, and the timber roof covers 10,500 square metres. | wide](/media/rulantica/halle-vor-der-oeffnung.jpg)
 
 ## The themed areas
 
@@ -211,6 +218,8 @@ Glasses aren't allowed here. The theoretical maximum is 600 guests an hour, the
 minimum height is 110 centimetres, and the minimum age is ten.
 
 ## Water without a slide
+
+![A large wave pool in front of a rock wall with stalactites lit in orange and violet, a few bathers in the water and open water in the foreground. | Surf Fjørd lies inside the Lumåfals cave. The water sits between 27 and 32 degrees, in January too. | right](/media/rulantica/surf-fjord-wellenbad.jpg)
 
 If you're after something different once you've climbed stairs for three hours,
 here it is.
