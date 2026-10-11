@@ -9,6 +9,7 @@ import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { OWN_PHOTO_AUTHOR } from '@/lib/media/types';
 import { PhotoCredit } from '@/components/media/photo-credit';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
+import { HERO_CREDIT_POSITION } from '@/components/marketing/editorial-ui';
 import type { Locale } from '@/i18n/config';
 import type { BlogPost } from '@/lib/blog/types';
 import { avatarUrl } from '@/lib/utils/image-loader';
@@ -80,7 +81,7 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
       ) : (
         <BlogCoverFallback slug={post.slug} mark="side" />
       )}
-      {showCredit && <PhotoCredit credit={coverCredit} />}
+      {showCredit && <PhotoCredit credit={coverCredit} className={HERO_CREDIT_POSITION} />}
       {/* Title/excerpt/byline sit directly on the cover (no panel). Readability
           comes from a theme-aware tint that fades into the page background — a dark
           tint in dark mode, a light tint in light mode — so the cover never gets a

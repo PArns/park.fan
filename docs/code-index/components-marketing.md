@@ -22,6 +22,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `TouchpointGrid` _component_: Grid of icon cards for an editorial page. `title` is a node, so a card can carry a glossary link on the term it is named after.
 - `FaqList` _component_: The editorial pages' FAQ: the shared `FaqAccordion` rows plus its own `FAQPage`, emitted from the same array it renders, so the markup cannot drift from the page.
 - `HERO_FLOW_INTO_PULL` _const_: What the section after a `flowInto` hero must carry, so it overlaps the lower part of the photo on a phone and sits normally from `sm` up.
+- `HERO_CREDIT_POSITION` _const_: Where an on-image `<PhotoCredit>` sits in a `flowInto` hero: the 2 px above the pulled-up section on a phone (11rem = the `-mt-44` of `HERO_FLOW_INTO_PULL`), the usual corner from `sm` up.
 - Types: `LandingAction`, `LandingDestination`, `CrowdLevel`
 
 ### [`scroll-reveal.tsx`](../../components/marketing/scroll-reveal.tsx)
