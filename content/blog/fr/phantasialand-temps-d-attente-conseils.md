@@ -2,6 +2,7 @@
 title: 'Phantasialand : temps d’attente, conseils et jour parfait, par un récidiviste'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
+updatedAt: '2026-10-09'
 author: patrick
 mode: published
 featured: false
@@ -244,16 +245,7 @@ sur ton téléphone, tu risques de te retrouver devant une porte close.
 
 Les prix sont **dynamiques**. Chaque palier de prix a un contingent limité par
 jour, et plus le jour de visite approche et plus il est prisé, plus c’est cher.
-Au printemps 2026, les billets les moins chers partaient à **28 €** ; le palier
-le plus haut du calendrier de billetterie est à **78 €** (adultes dès 12 ans),
-soit presque le triple pour exactement la même journée de parc. On peut aussi
-venir sur un coup de tête, mais seulement en ligne et seulement jusqu’à 14 h le
-jour même, au prix du jour et à condition que la date ne soit pas complète ; le
-25 septembre 2026, un billet pour le jour même coûtait 64 €. **Qui réserve tôt paie
-moins.** Que le jour bon marché
-soit aussi le plus vide, c’est souvent vrai, mais pas toujours : ce même jour, le
-dimanche suivant coûtait 49 € et le lundi 64 €, alors que dans notre calendrier, le
-lundi est le plus calme des deux.
+Le calendrier de billetterie de la boutique en ligne connaît trois paliers pour octobre et novembre 2026 : **35 €, 59 € et 78 €**, soit plus du double pour la même journée de parc. La boutique met en avant des billets dès **44 €**. On peut aussi venir sur un coup de tête, mais seulement en ligne et seulement jusqu’à 14 h le jour même, au prix du jour et à condition que la date ne soit pas complète. **Qui réserve tôt paie moins.** Que le jour bon marché soit aussi le plus vide, c’est souvent vrai, mais pas toujours. L’affluence d’un jour figure dans le calendrier d’affluence, son prix dans le calendrier de billetterie.
 
 **Il n’y a plus de cartes annuelles**, et cela ronge encore aujourd’hui les fans
 les plus fidèles. Le Phantasialand a retiré sa
@@ -290,7 +282,7 @@ Quelques règles empiriques qui se vérifient presque toujours :
 
 - **La semaine bat le week-end.** Du lundi au vendredi, les jours font jeu égal
   dans nos mesures, le samedi et le dimanche sont au-dessus (mesures depuis fin
-  décembre 2025, au 25 septembre 2026). Il n’y a donc pas ici de jour de semaine
+  décembre 2025). Il n’y a donc pas ici de jour de semaine
   miracle. Les parcs qui en ont un figurent sur la
   [page des meilleures périodes](/meilleure-periode-pour-visiter).
 - **Éviter les vacances scolaires de Rhénanie-du-Nord-Westphalie**, surtout celles
@@ -348,7 +340,7 @@ au Kaiserplatz. Il existe désormais deux variantes :
   [Black Mamba](ref:phantasialand/black-mamba) et
   [Chiapas](ref:phantasialand/chiapas-die-wasserbahn), 12 € pour
   [River Quest](ref:phantasialand/river-quest) et
-  [Taron](ref:phantasialand/taron) (au 25 septembre 2026).
+  [Taron](ref:phantasialand/taron).
 - **Quick Pass Ultimate** à 80 € : un passage sur chacune de ces onze attractions,
   plus un sur [F.L.Y.](ref:phantasialand/fly). C’est celui qui compte pour les fans
   de F.L.Y. : **seul l’Ultimate permet de faire F.L.Y. en Quick Pass**, à l’unité,
@@ -390,7 +382,7 @@ aussi compact, cette heure-là fait la différence entre « trois tours » et
 
 Mon ordre de passage, éprouvé au fil des ans, abandonné plusieurs fois et remanié
 sur un point grâce à nos données heure par heure (mesures depuis fin décembre
-2025, au 25 septembre 2026) :
+2025) :
 
 1. **Directement à [Taron](ref:phantasialand/taron)**, dans Klugheim. Le
    multi-launch coaster a la plus longue file du parc, et elle est dès la première
@@ -556,7 +548,7 @@ En 2026, la saison estivale court jusqu’au 13 novembre, et dès le 14, sans
 pause, le parc rouvre en village d’hiver illuminé,
 avec selon lui des millions de lumières, un décor de neige (la neige est factice,
 le froid, lui, est bien réel), des sapins et une féerie de chalets, sept
-spectacles dont le final « Magic Symphony » chaque soir, et une patinoire devant
+spectacles dont le final « Magic Symphony » chaque soir vers 19 h 50 sur le Kaiserplatz (il peut être annulé par mauvais temps), et une patinoire devant
 le grand sapin de Noël du Kaiserplatz. À la tombée du jour, un gobelet de vin chaud
 à la main et [Taron](ref:phantasialand/taron) dans une mer de lumières au-dessus
 de toi, c’est ma manière préférée de clore une année de parc.
@@ -576,17 +568,13 @@ journée** (le week-end, ils sont partis à midi), et fais ensuite Taron dans le
 noir, aussi souvent que tu peux.
 
 **Les dates 2026/27 :** du **14 novembre 2026 au 24 janvier 2027**, tous les jours
-de **11 h à 20 h**. Fermé les 24 et 25 décembre et le 1er janvier, et, selon la
-page Wintertraum du parc, aussi les 12 et 13 janvier 2027 ; à la Saint-Sylvestre,
-ouvert seulement jusqu’à 18 h. Les billets fonctionnent comme en été, via des
-billets journaliers datés en ligne ; fin septembre 2026, le parc mettait en avant
-un contingent de prévente dès 29 €. Trois choses encore :
+de **11 h à 20 h**. Fermé les 24 et 25 décembre 2026 ainsi que les 1er, 12 et 13 janvier 2027 ; à la Saint-Sylvestre, ouvert seulement jusqu’à 18 h. Les billets fonctionnent comme en été, via des
+billets journaliers datés en ligne ; selon le parc, des billets en prévente dès 30 € sont en vente jusqu’au 12 octobre. Trois choses encore :
 
 - **Tout ne tourne pas.** Taron, F.L.Y., Black Mamba et les Winja’s continuent
   leurs tours, et [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) fonctionne
   aussi pendant le Wintertraum selon le parc, jusqu’à moins cinq degrés (Taron
-  jusqu’à moins dix). [River Quest](ref:phantasialand/river-quest), en revanche,
-  est fermé l’hiver, et par temps extrême n’importe quelle attraction en extérieur
+  jusqu’à moins dix). [River Quest](ref:phantasialand/river-quest), Wakobato et Wözl’s Wassertreter, en revanche, sont fermés l’hiver, et par temps extrême n’importe quelle attraction en extérieur
   peut fermer au pied levé. Qui fait Chiapas en décembre emporte des vêtements de
   rechange.
 - **Prévoir les week-ends comme des jours de vacances.** Notre calendrier prévoit
@@ -607,7 +595,7 @@ un contingent de prévente dès 29 €. Trois choses encore :
 En semaine, hors vacances scolaires de Rhénanie-du-Nord-Westphalie ; du lundi au
 vendredi, les jours font jeu égal dans nos données, et le mois le plus calme que
 nous ayons mesuré est septembre, après les vacances d’été (mesures depuis fin
-décembre 2025, au 25 septembre 2026).
+décembre 2025).
 Mais ne te fie pas à ton intuition. Les jours calmes sont dans le
 [calendrier d’affluence du Phantasialand](ref:phantasialand?calendar), aussi loin
 que le parc a publié ses horaires ; en ce
@@ -625,7 +613,7 @@ spectacles). Les temps d’attente en direct, tu les vérifies en chemin sur la
 
 [Taron](ref:phantasialand/taron). Derrière, [Chiapas](ref:phantasialand/chiapas-die-wasserbahn)
 et [F.L.Y.](ref:phantasialand/fly) font jeu égal (mesures depuis fin décembre
-2025, au 25 septembre 2026). C’est
+2025). C’est
 pour cela que tu fais Taron dès l’ouverture, Chiapas dans la première heure et
 F.L.Y. en fin d’après-midi, quand sa file est la plus courte.
 
@@ -633,7 +621,7 @@ F.L.Y. en fin d’après-midi, quand sa file est la plus courte.
 
 Un jour calme (vert), non : en arrivant tôt, tu fais tout avec de courts temps
 d’attente. Un jour de foule, il peut sauver Taron et F.L.Y. : Taron coûte 12 € à
-l’unité, et F.L.Y. n’est inclus que dans l’Ultimate à 80 € (au 25 septembre 2026).
+l’unité, et F.L.Y. n’est inclus que dans l’Ultimate à 80 €.
 Avant, regarde les temps d’attente en direct : si les chiffres sont bas, garde ton
 argent.
 
@@ -686,7 +674,7 @@ Pass et le prix du samedi._
 
 ### Sources et lectures complémentaires
 
-- Prix, billets & horaires 2026 : [Billets & offres (officiel)](https://www.phantasialand.de/fr/parc/billets-offres/) · [Calendrier de la billetterie en ligne](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Préparez votre visite, avec horaires et prix du Quick Pass (officiel)](https://www.phantasialand.de/fr/parc/preparez-votre-visite/) · [Des billets dès 28 € plutôt que jusqu’à 78 € (mydealz, avril 2026)](https://www.mydealz.de/magazin/phantasialand-tickets-ab-28-euro-warum-sich-fruehes-buchen-jetzt-lohnt-61424)
+- Prix, billets & horaires 2026 : [Billets & offres (officiel)](https://www.phantasialand.de/fr/parc/billets-offres/) · [Calendrier de la billetterie en ligne](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Préparez votre visite, avec horaires et prix du Quick Pass (officiel)](https://www.phantasialand.de/fr/parc/preparez-votre-visite/)
 - Fin des cartes annuelles & pétitions de fans : [La Club-Karte est supprimée (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html) · [Pétition « Rétablissement des cartes annuelles du Phantasialand » (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)
 - Le Quick Pass à son lancement au Wintertraum 2025/26 : [« QUICK Pass Switches to Dynamic Pricing » (Wartezeiten.APP)](https://www.wartezeiten.app/en/phantasialand/news/phantasialand-quick-pass-switches-to-dynamic-pricing-fans-outraged-2429.html)
 - Histoire, incendie de 2001 et Märchenwald : [Phantasialand (Wikipédia, en allemand)](https://de.wikipedia.org/wiki/Phantasialand) · [30 avril 1967 (WDR Stichtag)](https://www1.wdr.de/stichtag/stichtag-eroeffnung-phantasialand-100.html) · [Märchenwald (Frei-Zeit Blog)](https://frei-zeit-blog.de/phantasialand/attraktionen/maerchenwald/)

@@ -2,6 +2,7 @@
 title: 'Phantasialand wachttijden & tips: de perfecte dag, gepland door een herhalingsdader'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
+updatedAt: '2026-10-09'
 author: patrick
 mode: published
 featured: false
@@ -233,15 +234,7 @@ gesloten poort.
 
 De prijzen zijn **dynamisch**. Elke prijsstap heeft per dag een beperkt
 contingent, en hoe dichter de bezoekdag nadert en hoe gewilder hij is, hoe duurder
-het wordt. In het voorjaar van 2026 kostten de goedkoopste tickets **28 €**, de
-hoogste stap in de ticketkalender ligt op **78 €** (volwassenen vanaf 12), dus
-bijna het drievoudige voor exact dezelfde parkdag. Spontaan kan ook, maar alleen
-online en alleen tot 14 uur op de bezoekdag zelf, tegen de dan geldende dagprijs
-en alleen als de dag niet is uitverkocht; op 25 september 2026 kostte een ticket
-voor diezelfde dag 64 €. **Wie vroeg boekt, betaalt minder.** Dat de goedkope
-dag ook de legere is, klopt vaak, maar niet altijd. Op diezelfde dag kostte de
-zondag erna 49 € en de maandag 64 €, terwijl in onze kalender de maandag de
-rustigste van de twee is.
+het wordt. De ticketkalender in de online shop kent voor oktober en november 2026 drie prijsstappen: **35 €, 59 € en 78 €**, dus meer dan het dubbele voor dezelfde parkdag. De shop adverteert met tickets vanaf **44 €**. Spontaan kan ook, maar alleen online en alleen tot 14 uur op de bezoekdag zelf, tegen de dan geldende dagprijs en alleen als de dag niet is uitverkocht. **Wie vroeg boekt, betaalt minder.** Dat de goedkope dag ook de legere is, klopt vaak, maar niet altijd. Hoe druk een dag wordt, staat in de druktekalender, wat hij kost in de ticketkalender.
 
 **Jaarkaarten zijn er niet meer**, en dat zit de trouwste fans tot vandaag dwars.
 Het Phantasialand haalde zijn Club-Karte in de pandemie uit de verkoop en bracht
@@ -275,7 +268,7 @@ Een paar vuistregels die bijna altijd kloppen:
 
 - **Doordeweeks verslaat weekend.** Maandag tot en met vrijdag liggen in onze
   metingen gelijk op, zaterdag en zondag erboven (gemeten sinds eind december
-  2025, stand 25 september 2026). Een doordeweekse dag die eruit springt, is er
+  2025). Een doordeweekse dag die eruit springt, is er
   dus niet. Welke parken er wel een hebben, staat op de
   [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 - **NRW-schoolvakanties mijden**, vooral zomer- en herfstvakantie. Het verzorgingsgebied
@@ -327,7 +320,7 @@ de Kaiserplatz geld uitgeeft. Er zijn nu twee varianten:
   [Black Mamba](ref:phantasialand/black-mamba) en
   [Chiapas](ref:phantasialand/chiapas-die-wasserbahn), 12 € voor
   [River Quest](ref:phantasialand/river-quest) en
-  [Taron](ref:phantasialand/taron) (stand 25 september 2026).
+  [Taron](ref:phantasialand/taron).
 - **Quick Pass Ultimate** voor 80 €: één keer elk van die elf banen plus één keer
   [F.L.Y.](ref:phantasialand/fly). Voor F.L.Y.-fans is dit de belangrijke:
   **alleen met Ultimate kom je via Quick Pass in F.L.Y.**, los is de baan niet te
@@ -364,8 +357,7 @@ Phantasialand klinkende munt waard, het is het verschil tussen “drie ritten”
 “tien”.
 
 Mijn volgorde, over de jaren beproefd, een paar keer verworpen en met onze
-gegevens per uur op één punt omgebouwd (gemeten sinds eind december 2025, stand
-25 september 2026):
+gegevens per uur op één punt omgebouwd (gemeten sinds eind december 2025):
 
 1. **Meteen naar [Taron](ref:phantasialand/taron)** in Klugheim. De
    multi-launch-coaster heeft de langste rij van het park, en die is in het eerste
@@ -517,7 +509,7 @@ doet. In plaats daarvan heeft het in de winter de
 In 2026 zit er geen pauze tussen zomer en winter: het zomerseizoen loopt tot 13
 november, op de 14e gaat het park open als lichtgevend winterdorp, volgens het
 park met miljoenen lichtjes, plus sneeuwlook (de sneeuw is decor, de kou is echt),
-dennen en kraampjes, zeven shows met elke avond de finale “Magic Symphony”, en
+dennen en kraampjes, zeven shows met elke avond de finale “Magic Symphony” rond 19:50 uur op de Kaiserplatz (bij slecht weer kan hij vervallen), en
 een ijsbaan voor de grote kerstboom op de Kaiserplatz. In de schemering, met een
 beker glühwein in de hand en [Taron](ref:phantasialand/taron) in de lichtzee boven
 je, is dat mijn favoriete manier om een parkjaar af te sluiten.
@@ -535,16 +527,14 @@ Koop de **Quick Pass meteen vroeg op de dag** (in het weekend zijn ze rond het m
 Taron in het donker, zo vaak je kunt.
 
 De Wintertraum 2026/27 loopt van **14 november 2026 tot 24 januari 2027**,
-dagelijks van **11 tot 20 uur**. Gesloten op 24 en 25 december en op 1 januari, en volgens de
-Wintertraum-pagina van het park ook op 12 en 13 januari 2027; op oudjaarsdag alleen
-tot 18 uur. De tickets lopen net als in de zomer via gedateerde online dagtickets;
-eind september 2026 adverteerde het park met een voorverkoopcontingent vanaf 29 €.
+dagelijks van **11 tot 20 uur**. Gesloten op 24 en 25 december 2026 en op 1, 12 en 13 januari 2027; op oudjaarsdag alleen tot 18 uur. De tickets lopen net als in de zomer via gedateerde online dagtickets;
+volgens het park zijn voorverkooptickets vanaf 30 € nog tot 12 oktober te koop.
 Nog drie dingen:
 
 - **Niet alles rijdt.** Taron, F.L.Y., Black Mamba en de Winja’s draaien hun
   rondjes door, en ook [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) rijdt
   volgens het park tijdens de Wintertraum, tot min vijf graden (Taron tot min tien).
-  [River Quest](ref:phantasialand/river-quest) is in de winter daarentegen dicht,
+  [River Quest](ref:phantasialand/river-quest), Wakobato en Wözl’s Wassertreter zijn in de winter daarentegen dicht,
   en bij extreem weer kan elke buitenbaan op korte termijn sluiten. Wie in december
   Chiapas rijdt, neemt droge kleren mee.
 - **Plan de weekenden als vakantiedagen.** In onze kalender staat voor de eerste
@@ -561,7 +551,7 @@ Nog drie dingen:
 
 Op weekdagen buiten de NRW-schoolvakanties; maandag tot en met vrijdag liggen in
 onze data gelijk op, en de rustigste gemeten maand was september, na de
-zomervakantie (gemeten sinds eind december 2025, stand 25 september 2026).
+zomervakantie (gemeten sinds eind december 2025).
 Vertrouw echter niet op je onderbuikgevoel. In de
 [druktekalender voor het Phantasialand](ref:phantasialand?calendar) staat, zo ver
 vooruit als het park zijn openingstijden heeft gepubliceerd, wanneer je op weinig
@@ -579,8 +569,7 @@ Kies eerst **de juiste dag** (levert het meest op), wees dan **vroeg present**
 
 [Taron](ref:phantasialand/taron). Daarachter liggen
 [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) en
-[F.L.Y.](ref:phantasialand/fly) gelijk op (gemeten sinds eind december 2025,
-stand 25 september 2026). Daarom rijd je
+[F.L.Y.](ref:phantasialand/fly) gelijk op (gemeten sinds eind december 2025). Daarom rijd je
 Taron meteen bij opening, Chiapas in het eerste uur en F.L.Y. aan het eind van de
 middag, als de rij daar het kortst is.
 
@@ -588,7 +577,7 @@ middag, als de rij daar het kortst is.
 
 Op een rustige (groene) dag niet, met een vroege aankomst rijd je alles met korte
 wachttijd. Op een volle dag kan hij Taron en F.L.Y. redden. Taron kost los 12 €,
-F.L.Y. zit alleen in de Ultimate van 80 € (stand 25 september 2026). Kijk vooraf
+F.L.Y. zit alleen in de Ultimate van 80 €. Kijk vooraf
 naar de live wachttijden, en staan de cijfers laag, hou dan je geld op zak.
 
 ### Zijn er in het Phantasialand nog jaarkaarten?
@@ -635,7 +624,7 @@ geboekt en me allebei bespaard, de Quick Pass en de zaterdagprijs._
 
 ### Bronnen & verder lezen
 
-- Prijzen, tickets & openingstijden 2026: [Ticketprijzen & aanbiedingen (officieel)](https://www.phantasialand.de/nl/themapark/ticketprijzen-aanbiedingen/) · [Ticketkalender in de online shop](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Plan je bezoek, met openingstijden en Quick Pass-prijzen (officieel)](https://www.phantasialand.de/nl/themapark/plan-je-bezoek/) · [Tickets vanaf 28 € in plaats van tot 78 € (mydealz, april 2026)](https://www.mydealz.de/magazin/phantasialand-tickets-ab-28-euro-warum-sich-fruehes-buchen-jetzt-lohnt-61424)
+- Prijzen, tickets & openingstijden 2026: [Ticketprijzen & aanbiedingen (officieel)](https://www.phantasialand.de/nl/themapark/ticketprijzen-aanbiedingen/) · [Ticketkalender in de online shop](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Plan je bezoek, met openingstijden en Quick Pass-prijzen (officieel)](https://www.phantasialand.de/nl/themapark/plan-je-bezoek/)
 - Einde van de jaarkaarten & fanpetities: [Club-Karte wordt afgeschaft (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html) · [Petitie “Herinvoering van de Phantasialand jaarkaarten” (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)
 - Quick Pass bij de start in de Wintertraum 2025/26: [“QUICK Pass Switches to Dynamic Pricing” (Wartezeiten.APP)](https://www.wartezeiten.app/en/phantasialand/news/phantasialand-quick-pass-switches-to-dynamic-pricing-fans-outraged-2429.html)
 - Geschiedenis, de brand van 2001 en de Märchenwald: [Phantasialand (Wikipedia, Duits)](https://de.wikipedia.org/wiki/Phantasialand) · [30 april 1967 (WDR Stichtag)](https://www1.wdr.de/stichtag/stichtag-eroeffnung-phantasialand-100.html) · [Märchenwald (Frei-Zeit Blog)](https://frei-zeit-blog.de/phantasialand/attraktionen/maerchenwald/)
