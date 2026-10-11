@@ -138,6 +138,12 @@ The text never talks about itself, its chapters, its thesis, or how it is organi
 - `Es ist wichtig zu beachten, dass X` → `X`. The importance is shown by the sentence existing.
 - `Als langjähriger Freizeitpark-Fan …`, `As a long-time coaster fan, I …` → the byline already
   says who writes. Say the thing.
+- `Das ist für Reisende aus Mitteleuropa die nützlichste Information des ganzen Beitrags`, `the
+most useful line in this guide` → the post grading its own sentences. Put the fact where it is
+  found first and let it carry itself. It stood in the Alton Towers guide of 2026-10-11 in six
+  languages; `pnpm check:prose` fails on the shape in all six.
+- `Wer davon noch nichts wusste, soll es nicht erst an der Warteschlange erfahren.` → the author
+  explaining why a section exists. The section is there; that is the explanation.
 
 ### 1.5 No summary blocks
 
@@ -145,6 +151,14 @@ The text never talks about itself, its chapters, its thesis, or how it is organi
 `Overall`, `In summary`, `Key takeaways`. A closing section that repeats what the reader just
 read is a scientific-paper convention that generated text applies to everything. Our posts end on
 a fact or on the signature.
+
+**The take-home section** is the same block with a byline: `## Was ich dir für Staffordshire
+mitgebe`, `What I'd take away from Staffordshire`, `Ce que je retiens de Soltau`. Three guides
+closed that way on 2026-10-11, and every one restated the post and ended on a maxim (`Dass
+vierzehn Überschläge in Reihe möglich sind, war 2013 eine Frage, die sich noch niemand gestellt
+hatte.`, which is also wrong). The reader of a guide stops after the FAQ or after the part they
+came for; nothing in such a section is new to them. End on the FAQ and the signature. `pnpm
+check:prose` warns on the heading in six languages.
 
 ### 1.6 No "challenges and future outlook"
 
@@ -220,6 +234,9 @@ lie a post can tell, because the reader has no way to see it. The anti-ai-slop-w
 zehn am Eingang`.
 - **No invented number.** A figure has a source or a measurement next to it (§1.2), and an
   estimate says it is one.
+- **No invented comparison.** `vierzehn Überschläge auf der Fläche einer Turnhalle` measured
+  nothing: nobody had compared the footprint of the Smiler with a sports hall. A comparison is
+  as much a figure as a number and needs the same source.
 - **No invented or tidied quote.** Somebody's words stay theirs, translated faithfully, marked as
   translated and linked to where they were said
   ([a quote names its source](rules/a-quote-names-its-source.md)). Reported speech is fine; a
@@ -536,6 +553,14 @@ Einordnungen aus unseren Guides.`, `Three limitations come with it.` A sentence 
 caveats follow is a heading in disguise. Start with the first caveat. `pnpm check:prose` warns on a
 sentence of up to seven words that counts caveats, notes or remarks; `Drei Dinge noch:` in front of
 a list is the same habit in five posts and left to the review pass.
+
+The expectation version is the **expectation teaser**: `und keine davon ist die, die man
+erwartet`, `die Unterschiede sind größer, als die Preise vermuten lassen`, `than you might think`,
+`plus long qu'on ne le pense`. It tells the reader they are about to be surprised, which is the
+reader's call, and in the Alton Towers guide of 2026-10-11 it was also untrue: the list it
+introduced held Nemesis Reborn, the ride everybody expects. `pnpm check:prose` warns on the shape
+in six languages. The ordinal version of the count announcement (`Ein zweiter Grund kommt dazu.`,
+`There's a second reason.`) is counted with the others.
 
 Cut the teaser and start with the fact. If the fact is not remarkable without the announcement,
 the announcement was covering for it. `pnpm check:prose` flags the common forms in German and
@@ -1021,6 +1046,13 @@ Daten stehen`, `Parks, für die wir keine Hallen kennen` and `Die sechs Parks ne
   three headings of one guide. `Überdachte Bahnen auf der Parkseite finden`, `Toverland` and `Die
 neun Parks im Vergleich` say what is under them in the words people search for. `pnpm check:prose`
   warns on a heading with `in unseren Daten` and its twins.
+- **A title is a sentence a person would say, with its verb.** `Alton Towers: Die Bahnen dürfen
+nicht über die Bäume` dropped the infinitive after the modal, the way speech does (`Ich muss
+nach Hause`). In a title the reader has to guess the missing verb, and with it what the post is
+  about; Patrick's first reaction on 2026-10-11 was the question „Die Bahnen dürfen nicht über
+  die Bäume?“. Say the whole thing (`Alton Towers: Achterbahnen unter den Baumkronen`). `pnpm
+check:prose` warns on a German modal followed by a prepositional phrase and no verb in a title
+  or heading.
 - Do not fragment a text into a heading every three sentences. A section with two sentences under
   it should be a paragraph.
 - No title case in German. Sentence case, always.
@@ -1051,6 +1083,14 @@ Prose is the default. A list is for things that are genuinely a set: opening hou
 limits, steps in an order. Turning an argument into five bullets is what a model does when it
 does not know how to connect two thoughts. And a list whose every item has the same grammatical
 shape reads generated even when its content is fine.
+
+**A date never opens a line.** CommonMark lets a line that starts with `1.` interrupt a
+paragraph, so a German paragraph hard-wrapped before `1. November` renders the rest of it as a
+numbered list. Prettier then rewrites the list, and it renumbers the items: in the Adventure in
+Batavia post `Winterzauber vom 28. November` became `2. November`, and the post said so in public
+from 2026-10-08 to 2026-10-11. The Alton Towers guide had the same break in an FAQ answer. Wrap
+the line before the day number, or keep `zum 1. November` on one line. `pnpm check:prose` fails on
+a line that opens with a German day and month.
 
 ### 4.5 Emoji, quotes, separators
 
@@ -1226,6 +1266,14 @@ in a cell, in the reader's words; a closing section that walks the parks again i
 fact, because they are read alone (below), but they give the answer and the parks, not a second
 copy of the body. A length floor is reached with facts the reader needs, never with a second pass
 over the same ones.
+
+**A catalogue is sorted one way.** The Alton Towers guide listed its rides twice: a chapter
+`Fünf Mal war dieser Park der Erste` with six rides (one of them a record, not a first) and a
+chapter `Die übrigen Bahnen` with the rest, so that a reader looking for Wicker Man had to know
+whether it counted as a first. Sort rides by where they stand in the park, one subheading per
+area, and put the first or the record into the ride's own paragraph. A heading that counts
+(`Fünf Mal …`) must match what is under it, and a count is the first thing to go wrong when a
+section is edited.
 
 **An FAQ answer stands alone.** It is read without the post around it, in a search result or an
 answer engine, so it never points elsewhere: `Zeitraum und Schwellenwerte stehen im Abschnitt ganz
@@ -1408,7 +1456,8 @@ output the way a regex can actually be trusted to:
   five translations, `zwölf von zwölf`, `kürzer besetzt`, `der Park ist ruhig` with its
   flat waits, `hier steht` and its kin, `unterschiedliche Preise nennen` with no price in sight,
   a train that is angeworfen, the research diary (`abgerufen am`, `die gelesenen Seiten`) and a
-  tally that drops its noun (`vier regeln nur den Ort, fünf schweigen`) (§3.3).
+  tally that drops its noun (`vier regeln nur den Ort, fünf schweigen`) (§3.3), a post that rates
+  its own information (§1.4) and a German date that opens a line (§4.4).
 - **Warnings** are budgets and signals a person decides on. `eerlijke prijzen` in a paragraph
   about a restaurant means _fair_ prices and stays; the same word in a UI string does not.
 
@@ -1464,7 +1513,8 @@ agency and a document that does the sums (§2.13), crowd opinions (§1.2) and tr
 paragraphs.
 
 What it still cannot see is the wink at the end of a paragraph (§2.17), the quiet teaser
-(§2.16), and whether a sentence claims anything at all (§1.7). That is the review pass.
+(§2.16), whether a sentence claims anything at all (§1.7), and whether the post agrees with
+itself (§7.2). That is the review pass.
 
 ### 7.1 Measured state
 
@@ -1524,6 +1574,24 @@ handing the post over, with this instruction:
   are their own step ([a quote names its source](rules/a-quote-names-its-source.md)).
 - A correction that comes back becomes a rule here, with the example that caused it. A rule that
   keeps producing worse sentences is changed or dropped. That is how every section above started.
+
+The pass gets a second instruction, run as its own read, because the Alton Towers guide of
+2026-10-11 passed `pnpm check:prose` without a single hit and still contradicted itself four
+times: the walk from the car park took 10 to 28 minutes in one section and 15 to 25 in the next,
+an FAQ answer denied children under 140 cm any of the seven big rides although two of them start
+at 120 cm, `Fünf Mal war dieser Park der Erste` stood over six rides, and the Heide Park had
+`ebenfalls vier` firsts where the post had counted five.
+
+> Read the finished text once for agreement only. List every figure, date, price, height and
+> count that occurs more than once, and every heading that counts, and check each occurrence
+> against the others and against the source list. List every claim about where something is in
+> the park and name the source that places it there. Change nothing; report each conflict with
+> both lines.
+
+Each conflict is settled against the source, then the duplicate goes (§5.4, each fact once). A
+place in the park (`liegt am weitesten vom Eingang`, `hinter der ersten Kuppe`) needs a source
+like any other claim; the park map and the area list on Wikipedia are sources, a guess from the
+order of a list is not.
 
 ---
 

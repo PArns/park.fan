@@ -18,6 +18,7 @@ One standing rule, indexed from the repo's [`CLAUDE.md`](../../CLAUDE.md). It co
 | write `alt` or `caption`               | [§5.2](../blog.md#52-alt-and-caption-media-sidecars), [public/media/README.md](../../public/media/README.md)                        |
 | write a glossary definition            | [§5.7](../blog.md#57-the-glossary-contentglossaryts)                                                                                |
 | translate                              | [§6](../blog.md#6-german-is-the-source-the-other-five-are-derived)                                                                  |
+| check that a post agrees with itself   | [§7.2](../blog.md#72-the-review-pass), second instruction: every figure, count and place in the park                                |
 | hand a text over                       | `pnpm check:prose` ([§7](../blog.md#7-the-check-before-you-publish)), then the review pass ([§7.2](../blog.md#72-the-review-pass))  |
 
 Frontmatter, `ref:` links and widget fences for posts: [blog authoring guide](../../content/blog/README.md).
