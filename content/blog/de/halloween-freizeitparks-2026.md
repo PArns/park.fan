@@ -2,7 +2,7 @@
 title: 'Halloween 2026 in Europas Freizeitparks: Kettensäge, Kürbis oder gar nichts'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-10-07'
+updatedAt: '2026-10-11'
 author: patrick
 mode: published
 excerpt: >-
@@ -376,7 +376,7 @@ Die eigentliche Neuheit für **2026** ist **„Entwined: The Maze“** (der Name
 heißt so viel wie „verwoben“), ein **sieben Hektar großes Maisfeld** mit
 meterhohen Wänden hinter der Fenix-Achterbahn, also gar nicht im Park. Der Mais
 wächst dort seit dem Sommer, und laut Park ist das Feld _doppelt so groß wie das
-gesamte Avalon-Gebiet_. Es ersetzt das alte Ratten-Labyrinth „Trapped“ (2018–2025);
+gesamte Avalon-Gebiet_. Es ersetzt das alte Ratten-Labyrinth „Trapped“ (2019–2025);
 das Toverland hat also von Nagetieren direkt auf zehn Fußballfelder Mais
 aufgerüstet. Die Prämisse liefert der Park gleich mit: _Bist du dem Bösen
 gewachsen, das in den dicht bewachsenen Maisfeldern haust?_ Und die einzige
@@ -394,7 +394,9 @@ plus einen eigenen Bereich an der Parade, die jeden Abend um 18 Uhr startet.
 Einzeln kosten die Experiences 6,50 bis 13 € pro Zeitfenster, Entwined allein
 13 €, und vom Fear Pass gibt es pro Abend nur ein begrenztes Kontingent. An
 vollen Nächten ist das der Unterschied zwischen „drei Häuser geschafft“ und
-„alle sechs, und dazu heil aus dem Mais gekommen“.
+„alle sechs, und dazu heil aus dem Mais gekommen“. Für 2026 ist der Fear Pass
+allerdings für alle Halloween Nights ausverkauft; die Experiences gibt es weiter
+einzeln.
 
 Für den normalen Betrieb, Troy und die Frage, wann Sevenum wirklich leer ist,
 gibt es den [Toverland-Guide](/blog/toverland-troy-wartezeiten-tipps).
@@ -403,6 +405,7 @@ gibt es den [Toverland-Guide](/blog/toverland-troy-wartezeiten-tipps).
 
 Details zu Experiences, Scare Zones und Fear Pass:
 [toverland.com/halloween](https://www.toverland.com/de/veranstaltungen/halloween/scare-zones-experiences).
+Abschied von Trapped, auf Niederländisch: [Toverblog](https://www.toverland.com/toverblog/blog-afscheiditems-trapped).
 
 ### Walibi Belgium: „Ibilaw“
 
