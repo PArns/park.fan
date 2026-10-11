@@ -54,6 +54,23 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `UNIQUE_ROLES` _const_: The roles only one image may hold per park (`park-background`) or per ride (`ride-card`).
 - Types: `UniqueRole`, `RoleHolder`, `Handover`
 
+### [`ml-overview-fixture.ts`](../../lib/admin/ml-overview-fixture.ts)
+
+- `FIXTURE_OVERVIEW` _const_: The sample overview the ML page shows with `?beispiel=1`: the decisions and the operating data of the approved mockup, as production stood on 2026-10-11 at 20:20 UTC. The matrix counters are that day's `/admin/ml/vergleich` summary.
+
+### [`ml-overview.ts`](../../lib/admin/ml-overview.ts)
+
+- `decisionStateMeta` _function_: The pill for a decision state; a state this build does not know reads neutral.
+- `componentStatusMeta` _function_: The dot and word for a component status, and its place in the table: failures first, then late runs, then anything nobody can vouch for. An unknown status counts as unknown.
+- `componentRoleLabel` _function_: Whether the app shows what a component delivers, in two or three words; null for a new role.
+- `sortComponentsProblemsFirst` _function_: The components with problems on top, otherwise in the backend's order.
+- `sortDecisionsReadyFirst` _function_: The decisions ready to take on top, otherwise in the backend's order.
+- `progressPercent` _function_: How full the live-measurement bar is, 0 to 100. The switch rule needs both the days and the parks, so the bar follows whichever is further from done.
+- `progressDaysLabel` _function_: "live gemessen: 1 von 14 Tagen".
+- `progressParksLabel` _function_: "in 3 von 10 Parks".
+- `noProgressLabel` _function_: What stands where the bar would be when a decision has no live measurement.
+- `formatLastRun` _function_: A last run as "11.10. 20:16" in UTC, the clock the backend states every cadence in ("täglich 06:00"), so the two columns can be compared; no park's zone, since a model runs for all of them.
+
 ### [`model-comparison-fixture.ts`](../../lib/admin/model-comparison-fixture.ts)
 
 - `fixtureDay` _function_: One replayed day as `GET /api/admin/model-comparison/day` would send it. Only the morning origin was archived for the sample, so every other origin comes back without series.

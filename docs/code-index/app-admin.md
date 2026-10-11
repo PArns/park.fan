@@ -67,7 +67,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `formatDisplayName` _function_: A display name with the first letter of each part capitalised, fixed on the way out rather than in the account. Only first letters change, so `McMahon` does not become `Mcmahon`.
 - `formatUptime` _function_: Formats an uptime given in hours as `3d 4h` from one day up, otherwise as `5h 12m`.
 - `formatDay` _function_: A timestamp as a German calendar day for admin lists, `—` when there is none.
-- `formatAge` _function_: Formats a `{ days, hours, minutes }` age as its two largest units: `2d 5h`, `3h 10m`, `45m`.
 - `maeColor` _function_: Returns the text colour class for a model's MAE: green below 10, amber below 15, red above.
 
 ### [`_lib/media-upload.ts`](../../app/admin/_lib/media-upload.ts)
@@ -166,6 +165,7 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 - `Meta` _component_: Label above a value, the densest way to show a fact.
 - `Chip` _component_: Small rounded label in one of the five `ChipTone`s, the admin's only pill.
 - `StatusDot` _component_: A small round dot, green when `ok` and red otherwise.
+- `ToneDot` _component_: A small round dot in one of the five `ChipTone`s, for a state with more than two values.
 - `LoadingState` _component_: Centred spinner with a label (`Lädt…` by default), for a panel whose data is loading.
 - `ErrorState` _component_: Red error box showing a message, with an `Erneut` retry button when `onRetry` is given.
 - `EmptyState` _component_: Centred empty-panel message: optional icon, title, description and an action below.
@@ -603,11 +603,19 @@ Route `/admin/media` (page).
 
 - `default (MediaAdminPage)` _component_
 
+### [`ml/_components/matrix-summary.tsx`](../../app/admin/ml/_components/matrix-summary.tsx)
+
+- `MatrixSummary` _component_: The model matrix in four counts: better than what the app shows today, still measuring, no reliable difference, worse. Shown above the matrix and on the ML overview, so both read alike.
+
+### [`ml/_components/ml-details.tsx`](../../app/admin/ml/_components/ml-details.tsx)
+
+- `MlDetails` _component_: The ML page's three folds for troubleshooting: training, single rides, warnings. Each loads its data only while open.
+
 ### [`ml/page.tsx`](../../app/admin/ml/page.tsx)
 
 Route `/admin/ml` (page).
 
-- `default (MlPage)` _component_
+- `default (MlOverviewPage)` _component_: The ML-Zentrale: what is up for a decision, where which model is better, whether every model and job ran, and the troubleshooting folds below. `?beispiel=1` shows the sample data.
 
 ### [`ml/vergleich/_components/day-comparison.tsx`](../../app/admin/ml/vergleich/_components/day-comparison.tsx)
 

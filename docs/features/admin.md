@@ -496,6 +496,33 @@ refetches on focus) used to replace them with the server's list, and a reload lo
 the names of photos still in the queue. Both now stay reserved, per collection.
 `pnpm test:capture-session`.
 
+## ML-Zentrale — `/admin/ml`
+
+The page the owner opens to decide something, so it answers three questions in this order and
+nothing else above the fold: what is up for a decision, where which model is better, whether
+every model and job ran. Everything comes from one backend call (`GET /v1/admin/ml-overview`,
+PAR-861); the page derives only wording, order and the bar width
+(`lib/admin/ml-overview.ts`, `pnpm test:ml-overview`).
+
+- **A ready decision moves to the top** and is drawn with a green edge; the rest keep the
+  backend's order. The bar follows whichever of days and parks is further from the switch rule.
+- **Problems sort to the top of „Läuft alles?“**: failed, late, unknown, warming, running.
+- **Times are UTC**, the clock the backend states each cadence in („täglich 06:00“), so the
+  last run and the expected one can be read against each other; no park's zone, since a model
+  runs for all parks at once. A bare `YYYY-MM-DD` in `lastRunAt` is a job that scores a whole day
+  and reads „Tag 10.10.“.
+- **A state, status or role this build does not know reads neutral** („unbekannt“, no role
+  label) instead of breaking the row, so the backend can add one first.
+- **„Details“ is three folds that fetch only while open** — training progress and the CatBoost
+  training-vs-live table, the best and worst rides, alerts and anomalies. The page itself costs
+  one request.
+- **`?beispiel=1` shows `lib/admin/ml-overview-fixture.ts`**, the approved mockup's values of
+  2026-10-11; a 404 from the backend offers it.
+
+The PCN, Shape, lead-curve and TFT boards that used to fill this page are gone: each compared one
+model against CatBoost instead of against what the app serves, and the matrix on
+`/admin/ml/vergleich` replaces all four.
+
 ## Modellvergleich — `/admin/ml/vergleich`
 
 The page a decision about which model the app serves is made on, so it is written for someone
@@ -533,8 +560,8 @@ one line of meta under the park's name. One markup, not two — a phone-only
 component rendering the same parks would drift, and the half nobody looks at on a
 laptop would be the half that rots.
 
-The dense monitoring grids (`ml`, `system`) scroll sideways instead. That page is
-read at a desk, and "you can still get at it" is the honest answer rather than a
+The dense tables (the ML-Zentrale's „Läuft alles?“, `system`) scroll sideways inside their
+card instead. They are read at a desk, and "you can still get at it" is the honest answer rather than a
 redesign nobody asked for.
 
 ## Things that will bite

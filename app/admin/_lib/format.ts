@@ -29,13 +29,6 @@ export function formatDay(value: string | null): string {
   );
 }
 
-/** Formats a `{ days, hours, minutes }` age as its two largest units: `2d 5h`, `3h 10m`, `45m`. */
-export function formatAge(age: { days: number; hours: number; minutes: number }) {
-  if (age.days > 0) return `${age.days}d ${age.hours}h`;
-  if (age.hours > 0) return `${age.hours}h ${age.minutes}m`;
-  return `${age.minutes}m`;
-}
-
 /** Returns the text colour class for a model's MAE: green below 10, amber below 15, red above. */
 export function maeColor(mae: number) {
   if (mae < 10) return 'text-emerald-400';

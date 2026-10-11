@@ -5,6 +5,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`admin-ml-overview.ts`](../../lib/api/admin-ml-overview.ts)
+
+- Types: `MlDecisionState`, `MlDecisionProgress`, `MlDecision`, `MlComponentRole`, `MlComponentStatus`, `MlComponent`, `MlOverview`
+
 ### [`admin-model-comparison.ts`](../../lib/api/admin-model-comparison.ts)
 
 - Types: `ModelCellState`, `ModelCheckState`, `ModelCellLive`, `ModelCellOffline`, `ModelCell`, `ModelComparisonQuestion`, `ComparisonModel`, `ModelComparisonReport`, `ForecastOrigin`, `ModelComparisonDayOptions`, `ModelComparisonDay`
@@ -15,7 +19,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`admin.ts`](../../lib/api/admin.ts)
 
-- Types: `CpuLoad`, `HostCpu`, `HostMemory`, `HostDisk`, `HostSwap`, `HostSensor`, `HostMetrics`, `FreshnessMetrics`, `PostgresMetrics`, `RedisMetrics`, `TftTrainingProgress`, `MlTrainingStatus`, `MlActiveModel`, `MlTftHealth`, `CatBoostMetrics`, `MlTftActiveModel`, `TftMetrics`, `ComparisonRow`, `MlMetrics`, `ShadowComparisonRow`, `IntradayVerdict`, `ChallengerVerdict`, `LeadCurveVerdict`, `ComparisonSection`, `MlComparisonBoard`, `GpuDevice`, `GpuMetrics`, `SystemHealthResponse`, `QueueEntry`, `QueueStatusResponse`
+- Types: `CpuLoad`, `HostCpu`, `HostMemory`, `HostDisk`, `HostSwap`, `HostSensor`, `HostMetrics`, `FreshnessMetrics`, `PostgresMetrics`, `RedisMetrics`, `TftTrainingProgress`, `MlTrainingStatus`, `MlActiveModel`, `MlTftHealth`, `CatBoostMetrics`, `MlTftActiveModel`, `TftMetrics`, `MlMetrics`, `GpuDevice`, `GpuMetrics`, `SystemHealthResponse`, `QueueEntry`, `QueueStatusResponse`
 
 ### [`analytics.ts`](../../lib/api/analytics.ts)
 

@@ -275,6 +275,24 @@ export function StatusDot({ ok }: { ok: boolean }) {
   );
 }
 
+const DOT_TONES: Record<ChipTone, string> = {
+  muted: 'bg-muted-foreground/60',
+  primary: 'bg-primary',
+  success: 'bg-emerald-500',
+  warning: 'bg-amber-500',
+  danger: 'bg-red-500',
+};
+
+/** A small round dot in one of the five `ChipTone`s, for a state with more than two values. */
+export function ToneDot({ tone }: { tone: ChipTone }) {
+  return (
+    <span
+      aria-hidden
+      className={cn('inline-block h-2 w-2 shrink-0 rounded-full', DOT_TONES[tone])}
+    />
+  );
+}
+
 /** Centred spinner with a label (`Lädt…` by default), for a panel whose data is loading. */
 export function LoadingState({ label = 'Lädt…' }: { label?: string }) {
   return (
