@@ -2,7 +2,7 @@
 title: 'Halloween 2026 dans les parcs d’Europe : tronçonneuse, citrouille ou rien du tout'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-10-07'
+updatedAt: '2026-10-11'
 author: patrick
 mode: published
 excerpt: >-
@@ -382,7 +382,7 @@ La nouveauté **2026** a poussé vers le ciel tout l’été, et elle ne se trou
 même pas dans le parc. **« Entwined: The Maze »** est un
 **champ de maïs de sept hectares** aux murs de plusieurs mètres derrière les
 montagnes russes Fenix, selon le parc _deux fois plus grand que toute la zone
-Avalon_. Il remplace l’ancien labyrinthe aux rats « Trapped » (2018-2025) ;
+Avalon_. Il remplace l’ancien labyrinthe aux rats « Trapped » (2019-2025) ;
 Toverland est donc passé des rongeurs directement à dix terrains de football de
 maïs. Le parc fournit la prémisse avec : _êtes-vous de taille face au mal qui
 habite les champs de maïs touffus ?_ Qui
@@ -400,7 +400,8 @@ plus une place réservée pour la parade qui démarre chaque soir à 18 h. À
 l’unité, les experiences coûtent 6,50 à 13 € le créneau, Entwined seul 13 €, et
 le nombre de Fear Pass est limité chaque soir. Les nuits chargées, c’est la
 différence entre « trois maisons faites » et « toutes les six, et sorti indemne
-du maïs ».
+du maïs ». Pour 2026, le Fear Pass est toutefois complet pour toutes les
+Halloween Nights ; les experiences restent en vente à l’unité.
 
 Pour l’exploitation normale, Troy compris, et pour savoir quand Sevenum est
 vraiment vide, il y a le [guide
@@ -410,6 +411,7 @@ Toverland](/blog/toverland-troy-temps-d-attente-conseils).
 
 Détails sur les experiences, les scare zones et le Fear Pass :
 [toverland.com/halloween](https://www.toverland.com/fr/evenements/halloween/scare-zones-experiences).
+Les adieux à Trapped, en néerlandais : [Toverblog](https://www.toverland.com/toverblog/blog-afscheiditems-trapped).
 
 ### Walibi Belgium : « Ibilaw »
 

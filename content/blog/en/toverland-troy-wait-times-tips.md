@@ -2,6 +2,7 @@
 title: 'Toverland: Troy, the wooden coaster everyone drives past'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
+updatedAt: '2026-10-11'
 author: patrick
 mode: published
 featured: false
@@ -387,7 +388,9 @@ manager came by the same evening and took time for us.
 > between "made it through three houses" and "all six, and got out of the corn
 > in one piece".
 >
-> The Fear Pass is sold online only, in a limited number per night. Admission
+> The Fear Pass is sold online only, in a limited number per night, and for the
+> 2026 Halloween Nights it's sold out; the haunted experiences are still sold one
+> by one. Admission
 > to the Halloween Nights is included with the **Magic Member** annual pass, the
 > haunted experiences and the Fear Pass aren’t.
 
@@ -464,9 +467,9 @@ them is **August** and **December**. Behind December, though, our data only has
 the last days of 2025, from 26 December, in the middle of the Christmas
 holidays. Among the months with a solid basis, **September** has been
 the quietest so far, after the summer holidays ended. One caveat: January and
-March rest on a handful of measured days, and February, October and November
-are still missing entirely (as of 25 September 2026). Outside the main season
-the park only opens on Wednesdays and weekends anyway.
+March rest on a handful of measured days, we have no February at all, and
+October and November are being measured for the first time in 2026. Outside the
+main season the park only opens on Wednesdays and weekends anyway.
 
 **By weekday** the numbers barely spread out at all, and no day of the week
 stands out. At Phantasialand a Saturday is noticeably busier than a Tuesday.
@@ -594,7 +597,7 @@ difference. Individual days are in the [wait-time calendar](ref:attractiepark-to
 
 There isn’t one. Toverland sells no fast pass at all; the only exception is the
 **Fear Pass** for the haunted experiences during the Halloween Nights
-(69.95 €). A free single rider line exists only at the Dragonwatch drop tower.
+(69.95 €, sold out for 2026). A free single rider line exists only at the Dragonwatch drop tower.
 At the headliners’ medians you don’t need a shortcut on a
 normal day anyway.
 

@@ -2,6 +2,7 @@
 title: 'Toverland: Troy, de houten achtbaan waar iedereen langsrijdt'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
+updatedAt: '2026-10-11'
 author: patrick
 mode: published
 featured: false
@@ -387,7 +388,9 @@ voor ons nam, past bij dit park.
 > verschil tussen “drie huizen gehaald” en “alle zes, en ook nog heelhuids uit
 > de mais gekomen”.
 >
-> De Fear Pass is alleen online te koop en per avond beperkt. De toegang tot de
+> De Fear Pass is alleen online te koop en per avond beperkt. Voor de Halloween
+> Nights van 2026 is hij uitverkocht; de haunted experiences zijn nog los te koop.
+> De toegang tot de
 > Halloween Nights zit bij het **Magic Member**-abonnement inbegrepen, de haunted
 > experiences en de Fear Pass niet.
 
@@ -466,8 +469,8 @@ Het antwoord valt ontspannen uit: bijna altijd.
 de laatste dagen van 2025, vanaf 26 december, midden in de kerstvakantie.
 Van de goed gemeten maanden was **september** tot nu toe het rustigst, na het
 einde van de zomervakantie. Eén beperking daarbij: januari en maart staan op een
-handvol meetdagen, februari, oktober en november ontbreken nog helemaal (stand
-25 september 2026), en buiten het hoogseizoen is het park sowieso alleen op
+handvol meetdagen, februari hebben we helemaal niet, en oktober en november meten
+we in 2026 voor het eerst. Buiten het hoogseizoen is het park sowieso alleen op
 woensdag en in het weekend open.
 
 **Per weekdag** lopen de cijfers zo goed als niet uiteen, geen enkele dag van de
@@ -596,7 +599,7 @@ Per dag staat het in de [wachttijden-kalender](ref:attractiepark-toverland?calen
 
 Die is er niet. Toverland verkoopt helemaal geen fastpass; de enige
 uitzondering is de **Fear Pass** voor de haunted experiences tijdens de
-Halloween Nights (69,95 €). Een gratis single rider-rij bestaat alleen bij de
+Halloween Nights (69,95 €, voor 2026 uitverkocht). Een gratis single rider-rij bestaat alleen bij de
 vrijevaltoren Dragonwatch. Bij de medianen die op de headliners staan heb je op
 een normale dag sowieso geen kortere weg nodig.
 
