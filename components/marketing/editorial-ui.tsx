@@ -31,6 +31,12 @@ import { ParkPlannerLink } from '@/components/parks/park-planner-link';
  */
 export const HERO_FLOW_INTO_PULL = '-mt-44 sm:mt-0';
 
+/**
+ * Where an on-image `<PhotoCredit>` sits in a `flowInto` hero: the 2 px above the pulled-up section
+ * on a phone (11rem = the `-mt-44` of `HERO_FLOW_INTO_PULL`), the usual corner from `sm` up.
+ */
+export const HERO_CREDIT_POSITION = 'bottom-[calc(11rem+2px)] sm:bottom-1.5';
+
 /** The one primary action a landing page names in its head (docs/product/landing-pages.md §4). */
 export interface LandingAction {
   href: string;
