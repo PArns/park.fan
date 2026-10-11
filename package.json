@@ -80,6 +80,7 @@
     "test:compass": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-compass.mjs",
     "test:compare-selection": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-compare-selection.mjs",
     "test:model-comparison": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-model-comparison.mjs",
+    "test:ml-overview": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ml-overview.mjs",
     "test:is-uuid": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-is-uuid.mjs",
     "test:threshold-minutes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-threshold-minutes.mjs",
     "test:show-follows-store": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-show-follows-store.mjs",

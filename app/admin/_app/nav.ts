@@ -165,10 +165,10 @@ const NAV_GROUPS: NavGroup[] = [
       },
       {
         href: '/admin/ml',
-        label: 'ML',
+        label: 'ML-Zentrale',
         icon: Brain,
-        description: 'Modelle, Drift, Vorhersagegüte',
-        keywords: ['catboost', 'tft', 'prognose', 'drift'],
+        description: 'Was ansteht, welches Modell besser ist, ob alles läuft',
+        keywords: ['ml', 'catboost', 'tft', 'pcn', 'chronos', 'prognose', 'entscheidung', 'drift'],
       },
       {
         href: '/admin/ml/vergleich',

@@ -17,8 +17,8 @@ import {
   Panel,
   PanelBody,
   PanelHeader,
-  StatTile,
 } from '../../_ui/primitives';
+import { MatrixSummary } from '../_components/matrix-summary';
 import { ModelMatrix } from './_components/model-matrix';
 import { DayComparison } from './_components/day-comparison';
 
@@ -117,32 +117,7 @@ function ReportView({ report }: { report: ModelComparisonReport }) {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <StatTile
-          label="Besser als heute"
-          value={
-            <span className="text-emerald-600 dark:text-emerald-400">{report.summary.better}</span>
-          }
-          sub="warten auf Live-Bestätigung"
-        />
-        <StatTile
-          label="Messung läuft"
-          value={
-            <span className="text-amber-600 dark:text-amber-400">{report.summary.pending}</span>
-          }
-          sub="Ergebnis kommt noch"
-        />
-        <StatTile
-          label="Kein sicherer Unterschied"
-          value={<span className="text-muted-foreground">{report.summary.unclear}</span>}
-          sub="weder klar besser noch schlechter"
-        />
-        <StatTile
-          label="Schlechter als heute"
-          value={<span className="text-red-600 dark:text-red-400">{report.summary.worse}</span>}
-          sub="bleibt, wie es ist"
-        />
-      </div>
+      <MatrixSummary summary={report.summary} />
 
       <Panel>
         <PanelHeader
