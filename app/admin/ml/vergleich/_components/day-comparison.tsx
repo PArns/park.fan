@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState, type PointerEvent } from 'react';
+import { useCallback, useMemo, useState, type PointerEvent } from 'react';
 import { ChartLine } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type {
@@ -10,14 +10,20 @@ import type {
 import {
   chartTop,
   formatFigure,
-  hourTickIndexes,
+  headlinersFirst,
+  hourTicks,
+  LOW_TRUTH_COVERAGE,
   modelColors,
+  resolveDaySelection,
   splitSegments,
+  suggestedOptionsDate,
+  truthCoverage,
+  type DayChoice,
 } from '@/lib/admin/model-comparison';
 import { FIXTURE_DAY_OPTIONS, fixtureDay } from '@/lib/admin/model-comparison-fixture';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { adminKeys, useAdminQuery } from '../../../_lib/api';
-import { Field, Select, useFieldId } from '../../../_ui/controls';
+import { Field, SearchSelect, Select, useFieldId } from '../../../_ui/controls';
 import { EmptyState, ErrorState, LoadingState, Panel, PanelHeader } from '../../../_ui/primitives';
 
 const OPTIONS_PATH = '/api/admin/model-comparison/day/options';
@@ -28,35 +34,37 @@ const DAY_PATH = '/api/admin/model-comparison/day';
  * every model's curve against the measured wait, and each model's error on that day.
  */
 export function DayComparison({ fixture }: { fixture: boolean }) {
-  const [date, setDate] = useState<string | null>(null);
-  const [parkId, setParkId] = useState<string | null>(null);
-  const [rideId, setRideId] = useState<string | null>(null);
+  const [choice, setChoice] = useState<DayChoice>({ date: null, parkId: null, rideId: null });
   const [originId, setOriginId] = useState<string>('morning');
 
-  const optionsPath = fixture ? null : date ? `${OPTIONS_PATH}?date=${date}` : OPTIONS_PATH;
-  const optionsQuery = useAdminQuery<ModelComparisonDayOptions>(
-    adminKeys.raw(optionsPath ?? 'fixture-options'),
-    optionsPath,
+  // Unpicked, the options are asked for once without a date; when the backend suggests a day
+  // other than the one it answered for, they are asked for again for that day.
+  const baseQuery = useAdminQuery<ModelComparisonDayOptions>(
+    adminKeys.raw(OPTIONS_PATH),
+    fixture ? null : OPTIONS_PATH
+  );
+  const requestDate = choice.date ?? suggestedOptionsDate(baseQuery.data);
+  const datedPath = !fixture && requestDate ? `${OPTIONS_PATH}?date=${requestDate}` : null;
+  const datedQuery = useAdminQuery<ModelComparisonDayOptions>(
+    adminKeys.raw(datedPath ?? 'day-options-undated'),
+    datedPath,
     { placeholderData: (previous) => previous }
   );
-  const options = fixture ? FIXTURE_DAY_OPTIONS : optionsQuery.data;
+  const optionsQuery = datedPath ? datedQuery : baseQuery;
+  const options = fixture ? FIXTURE_DAY_OPTIONS : (optionsQuery.data ?? baseQuery.data);
 
-  // Every choice falls back to the first valid one, so a date whose parks differ needs no reset.
-  const activeDate = date && options?.dates.includes(date) ? date : (options?.date ?? null);
-  const park = options?.parks.find((p) => p.id === parkId) ?? options?.parks[0] ?? null;
-  const rides = useMemo(
-    () =>
-      [...(park?.rides ?? [])].sort(
-        // Headliners first, otherwise in the order the backend sends.
-        (a, b) => Number(b.isHeadliner) - Number(a.isHeadliner)
-      ),
-    [park]
-  );
-  const ride = rides.find((r) => r.id === rideId) ?? rides[0] ?? null;
+  const selection = options ? resolveDaySelection(options, choice) : null;
+  const activeDate = selection?.date ?? null;
+  const park = selection?.park ?? null;
+  const ride = selection?.ride ?? null;
+  const rides = park ? headlinersFirst(park.rides) : [];
   const origin = options?.origins.find((o) => o.id === originId) ?? options?.origins[0] ?? null;
 
+  // The parks and rides on hand must belong to the day being asked for: while a new day's
+  // options load, the previous answer is still shown and would pair its rides with the new date.
+  const optionsMatchDay = options?.date === activeDate;
   const dayPath =
-    !fixture && park && ride && activeDate && origin
+    !fixture && optionsMatchDay && park && ride && activeDate && origin
       ? `${DAY_PATH}?${new URLSearchParams({
           parkId: park.id,
           date: activeDate,
@@ -84,9 +92,9 @@ export function DayComparison({ fixture }: { fixture: boolean }) {
         title="Tagesvergleich"
         hint="Ein gespeicherter Tag zum Nachsehen: alle Prognosen gegen die echte Wartezeit."
       />
-      {!fixture && optionsQuery.isLoading ? (
+      {!fixture && !options && optionsQuery.isLoading ? (
         <LoadingState />
-      ) : !fixture && optionsQuery.error ? (
+      ) : !fixture && optionsQuery.error && !options ? (
         <ErrorState message={optionsQuery.error.message} onRetry={() => optionsQuery.refetch()} />
       ) : !options || options.parks.length === 0 ? (
         <EmptyState
@@ -96,38 +104,59 @@ export function DayComparison({ fixture }: { fixture: boolean }) {
         />
       ) : (
         <>
+          {!fixture && optionsQuery.error && (
+            <p className="px-4 pt-3 text-xs text-amber-400">
+              Die Auswahl für diesen Tag ließ sich nicht laden ({optionsQuery.error.message}).{' '}
+              <button type="button" className="underline" onClick={() => optionsQuery.refetch()}>
+                Erneut versuchen
+              </button>{' '}
+              oder einen anderen Tag wählen.
+            </p>
+          )}
           <div className="border-border/50 grid gap-3 border-b px-4 py-3 sm:grid-cols-2 lg:grid-cols-4">
             <Field label="Datum" htmlFor={ids.date}>
               <Select
                 id={ids.date}
                 value={activeDate}
                 allowEmpty={false}
-                onValueChange={(value) => value && setDate(value)}
+                // A new day keeps the park and ride when it still has them.
+                onValueChange={(value) =>
+                  value &&
+                  setChoice({ date: value, parkId: park?.id ?? null, rideId: ride?.id ?? null })
+                }
                 options={options.dates.map((value) => ({ value, label: formatLongDate(value) }))}
               />
             </Field>
             <Field label="Park" htmlFor={ids.park}>
-              <Select
+              <SearchSelect
                 id={ids.park}
                 value={park?.id ?? null}
-                allowEmpty={false}
-                onValueChange={(value) => {
-                  setParkId(value);
-                  setRideId(null);
-                }}
-                options={options.parks.map((p) => ({ value: p.id, label: p.name }))}
+                searchPlaceholder="Park suchen…"
+                emptyLabel="Kein Park gefunden"
+                onValueChange={(value) =>
+                  setChoice({ date: activeDate, parkId: value, rideId: null })
+                }
+                options={options.parks.map((p) => ({
+                  value: p.id,
+                  label: p.name,
+                  hint: [p.city, p.country].filter(Boolean).join(', ') || undefined,
+                  keywords: [p.city, p.country],
+                }))}
               />
             </Field>
             <Field label="Fahrgeschäft" htmlFor={ids.ride}>
-              <Select
+              <SearchSelect
                 id={ids.ride}
                 value={ride?.id ?? null}
-                allowEmpty={false}
-                onValueChange={setRideId}
+                searchPlaceholder="Fahrgeschäft suchen…"
+                emptyLabel="Kein Fahrgeschäft gefunden"
+                onValueChange={(value) =>
+                  setChoice({ date: activeDate, parkId: park?.id ?? null, rideId: value })
+                }
                 options={rides.map((r) => ({
                   value: r.id,
                   label: r.name,
-                  hint: r.isHeadliner ? 'Headliner' : undefined,
+                  badge: r.isHeadliner ? 'Hauptattraktion' : undefined,
                 }))}
               />
             </Field>
@@ -164,20 +193,43 @@ function formatLongDate(date: string): string {
   }).format(new Date(`${date}T12:00:00Z`));
 }
 
-const W = 640;
+const DEFAULT_W = 640;
+const MIN_W = 300;
 const H = 280;
-const PAD = { left: 36, right: 10, top: 24, bottom: 26 };
+const PAD = { left: 36, right: 22, top: 24, bottom: 26 };
+
+/**
+ * The rendered width of an element, so the chart draws in real pixels: an 11 px label stays
+ * 11 px on a phone, and the hour labels are thinned against the width they actually get.
+ */
+function useRenderedWidth(): [
+  (element: HTMLDivElement | null) => (() => void) | void,
+  number | null,
+] {
+  const [width, setWidth] = useState<number | null>(null);
+  const ref = useCallback((element: HTMLDivElement | null) => {
+    if (!element) return;
+    const observer = new ResizeObserver(([entry]) => setWidth(Math.round(entry.contentRect.width)));
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+  return [ref, width];
+}
 
 function DayView({ day }: { day: ModelComparisonDay }) {
   const [hover, setHover] = useState<number | null>(null);
+  const [chartRef, renderedWidth] = useRenderedWidth();
+  const W = Math.max(MIN_W, renderedWidth ?? DEFAULT_W);
   const count = day.slots.length;
   const colors = useMemo(() => modelColors(day.series.map((s) => s.model)), [day.series]);
   const top = chartTop([...day.truth, ...day.series.flatMap((s) => s.values)]);
   const x = (index: number) =>
     PAD.left + (count > 1 ? index / (count - 1) : 0.5) * (W - PAD.left - PAD.right);
   const y = (value: number) => PAD.top + (1 - value / top) * (H - PAD.top - PAD.bottom);
-  const ticks = hourTickIndexes(day.slots);
+  const ticks = hourTicks(day.slots, W - PAD.left - PAD.right);
   const hasForecast = day.series.some((s) => s.values.some((v) => v !== null));
+  const coverage = truthCoverage(day);
+  const hasTruth = coverage > 0 && day.truth.some((v) => v !== null);
 
   const pick = (event: PointerEvent<SVGSVGElement>) => {
     const box = event.currentTarget.getBoundingClientRect();
@@ -198,8 +250,9 @@ function DayView({ day }: { day: ModelComparisonDay }) {
           , {formatLongDate(day.date)}
           {day.openingHours
             ? `, geöffnet ${day.openingHours.open} bis ${day.openingHours.close} Uhr.`
-            : '.'}{' '}
-          Die dicke Linie ist die echte Wartezeit, Lücken heißen: Fahrgeschäft war gestört.
+            : '.'}
+          {hasTruth &&
+            ' Die dicke Linie ist die echte Wartezeit, Lücken heißen: Fahrgeschäft war gestört.'}
         </p>
         {day.origin.localLabel && (
           <p>
@@ -209,7 +262,13 @@ function DayView({ day }: { day: ModelComparisonDay }) {
         )}
       </div>
 
-      {!hasForecast ? (
+      {!hasTruth ? (
+        <EmptyState
+          icon={ChartLine}
+          title="Keine Messwerte an diesem Tag"
+          description="Für dieses Fahrgeschäft gibt es an diesem Tag keine Messwerte. Bitte ein anderes wählen."
+        />
+      ) : !hasForecast ? (
         <EmptyState
           icon={ChartLine}
           title="Für diesen Zeitpunkt ist keine Prognose gespeichert"
@@ -218,10 +277,18 @@ function DayView({ day }: { day: ModelComparisonDay }) {
       ) : (
         <div className="grid lg:grid-cols-[minmax(0,1fr)_280px]">
           <div className="min-w-0 px-2 pt-3">
-            <div className="overflow-x-auto">
+            {coverage < LOW_TRUTH_COVERAGE && (
+              <p className="text-muted-foreground mx-2 mb-2 rounded-md border border-amber-500/30 bg-amber-500/10 px-3 py-1.5 text-xs">
+                Nur {Math.round(coverage * 100)} % der Viertelstunden haben einen Messwert. Der
+                Vergleich stützt sich an diesem Tag auf wenige Messungen.
+              </p>
+            )}
+            <div ref={chartRef}>
               <svg
                 viewBox={`0 0 ${W} ${H}`}
-                className="block h-auto w-full min-w-[520px] touch-pan-x select-none"
+                width={W}
+                height={H}
+                className="block w-full touch-pan-y select-none"
                 role="img"
                 aria-label={`Wartezeit-Verlauf ${day.ride.name}`}
                 onPointerMove={pick}

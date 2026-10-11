@@ -3,7 +3,15 @@
 import { useId, useState, type ComponentProps, type ReactNode } from 'react';
 import { Check, ChevronDown } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import {
+  Command,
+  CommandEmpty,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from '@/components/ui/command';
 import { cn } from '@/lib/utils';
+import { matchesQuery } from '@/lib/utils/text-fold';
 
 /**
  * The form controls the admin edits with, built here because the Radix select, switch, checkbox,
@@ -201,11 +209,15 @@ export function Switch({
   );
 }
 
-/** One option of `Select`. */
+/** One option of `Select` and `SearchSelect`. */
 export interface SelectOption {
   value: string;
   label: string;
   hint?: string;
+  /** A short marker beside the label, such as „Hauptattraktion". */
+  badge?: string;
+  /** Further text `SearchSelect` matches on (a park's town and country), never shown. */
+  keywords?: Array<string | null | undefined>;
 }
 
 /**
@@ -282,6 +294,115 @@ export function Select({
             />
           ))}
         </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+/**
+ * A select whose list is filtered as you type, for lists too long to scroll (a hundred parks, a
+ * park's seventy rides). Matching ignores case and accents and also reads `keywords`; arrows,
+ * Enter and Escape work as in any combobox.
+ */
+export function SearchSelect({
+  value,
+  onValueChange,
+  options,
+  placeholder = '—',
+  searchPlaceholder = 'Suchen…',
+  emptyLabel = 'Nichts gefunden',
+  className,
+  disabled,
+  id,
+}: {
+  value: string | null;
+  onValueChange: (value: string) => void;
+  options: SelectOption[];
+  placeholder?: string;
+  searchPlaceholder?: string;
+  emptyLabel?: string;
+  className?: string;
+  disabled?: boolean;
+  id?: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const selected = options.find((option) => option.value === value) ?? null;
+  const matches = options.filter((option) =>
+    matchesQuery([option.label, ...(option.keywords ?? [])], query)
+  );
+
+  return (
+    <Popover
+      open={open}
+      onOpenChange={(next) => {
+        setOpen(next);
+        if (!next) setQuery('');
+      }}
+    >
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          id={id}
+          aria-expanded={open}
+          aria-haspopup="listbox"
+          disabled={disabled}
+          className={cn(
+            CONTROL_BASE,
+            CONTROL_HEIGHT,
+            'flex items-center justify-between gap-2 text-left',
+            className
+          )}
+        >
+          <span className={cn('truncate', !selected && 'text-muted-foreground')}>
+            {selected ? selected.label : placeholder}
+          </span>
+          <ChevronDown className="text-muted-foreground h-4 w-4 shrink-0" />
+        </button>
+      </PopoverTrigger>
+      <PopoverContent
+        align="start"
+        className="w-[min(var(--radix-popover-trigger-width),calc(100vw-2rem))] min-w-64 p-0"
+      >
+        {/* cmdk's own fuzzy ranking reorders the list; the backend's order (richest park,
+            headliners first) is the point, so filtering stays ours. */}
+        <Command shouldFilter={false}>
+          <CommandInput value={query} onValueChange={setQuery} placeholder={searchPlaceholder} />
+          <CommandList className="max-h-72 sm:max-h-72">
+            {matches.length === 0 && <CommandEmpty>{emptyLabel}</CommandEmpty>}
+            {matches.map((option) => (
+              <CommandItem
+                key={option.value}
+                value={option.value}
+                onSelect={() => {
+                  onValueChange(option.value);
+                  setOpen(false);
+                  setQuery('');
+                }}
+              >
+                <Check
+                  className={cn(
+                    'h-3.5 w-3.5 shrink-0',
+                    option.value === value ? 'opacity-100' : 'opacity-0'
+                  )}
+                />
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate">{option.label}</span>
+                  {option.hint && (
+                    <span className="text-muted-foreground block truncate text-xs">
+                      {option.hint}
+                    </span>
+                  )}
+                </span>
+                {option.badge && (
+                  <span className="bg-primary/10 text-primary shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium">
+                    {option.badge}
+                  </span>
+                )}
+              </CommandItem>
+            ))}
+          </CommandList>
+        </Command>
       </PopoverContent>
     </Popover>
   );

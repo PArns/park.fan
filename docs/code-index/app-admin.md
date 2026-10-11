@@ -111,6 +111,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `TriSwitch` _component_: A three-state switch (true, false, "nothing said"), because a curated boolean must be able to say `false` and to withdraw the correction without that becoming `false`.
 - `Switch` _component_: The ordinary two-state switch, for UI preferences rather than data.
 - `Select` _component_: A select on the installed popover with an explicit empty option, since choosing nothing is how an editor withdraws a correction on a curated enum.
+- `SearchSelect` _component_: A select whose list is filtered as you type, for lists too long to scroll (a hundred parks, a park's seventy rides). Matching ignores case and accents and also reads `keywords`; arrows, Enter and Escape work as in any combobox.
 - `MonthPicker` _component_: The twelve months as a grid, because a season is a shape: April to October reads as a block, and an artefact like `[1,2,3,4,12]`, a recording window that began in December, shows at once.
 - `useFieldId` _hook_: A labelled input id, for the many places a Field wraps one control.
 - `FIELD_CLASS` _const_: The same look for a bare `<input>` or `<textarea>`, exported so no call site keeps its own copy. Padded rather than fixed-height, because the textareas carry their own `min-h-*`.

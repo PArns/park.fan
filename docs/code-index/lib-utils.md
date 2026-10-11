@@ -440,6 +440,7 @@ Server-side „current time" helpers. On per-request pages they are fresh; on pr
 
 - `foldText` _function_: Text reduced for matching: lower case, accents off, "ß" as "ss", so "farup" finds "Fårup" and "strasse" finds "Straße". "ß" has no Unicode decomposition, hence the explicit replace.
 - `foldRideName` _function_: A ride name reduced for matching, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.".
+- `matchesQuery` _function_: Whether every word of `query` occurs, folded, in at least one of `fields`, so "phanta" finds Phantasialand and "rust europa" finds Europa-Park by its town. An empty query matches all.
 
 ### [`touch-target.ts`](../../lib/utils/touch-target.ts)
 

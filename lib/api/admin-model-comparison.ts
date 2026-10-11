@@ -84,14 +84,23 @@ export interface ForecastOrigin {
 /** `GET /api/admin/model-comparison/day/options?date=YYYY-MM-DD`. */
 export interface ModelComparisonDayOptions {
   date: string;
+  /** Days with a complete archive, newest first. */
   dates: string[];
+  /** Parks by data richness, richest first; each park's rides headliners first. */
   parks: {
     id: string;
     name: string;
     timezone: string;
+    city?: string | null;
+    country?: string | null;
     rides: { id: string; name: string; isHeadliner: boolean }[];
   }[];
   origins: ForecastOrigin[];
+  /**
+   * A day, park and ride that have both forecasts and measurements, for the first view. Absent
+   * from older backends and null when no day qualifies.
+   */
+  suggested?: { date: string; parkId: string; attractionId: string } | null;
 }
 
 /** `GET /api/admin/model-comparison/day?parkId&date&attractionId&origin`. */
@@ -103,10 +112,15 @@ export interface ModelComparisonDay {
   origin: ForecastOrigin & { at: string | null; localLabel: string };
   /** The park's hours that day, park-local; null when no schedule is known. */
   openingHours: { open: string; close: string } | null;
-  /** `HH:MM`, park-local. */
+  /**
+   * `HH:MM`, park-local, clipped to the operating window. A window past midnight runs on in
+   * order (`23:45`, `00:00`), so a slot's position is its index, never its clock value.
+   */
   slots: string[];
   /** The measured wait per slot; null where the ride was not running. */
   truth: (number | null)[];
+  /** Share of slots with a measured wait, 0 to 1. Absent from older backends. */
+  truthCoverage?: number;
   series: { model: string; label: string; values: (number | null)[] }[];
   /** Ascending by error, best first. */
   scores: { model: string; label: string; mae: number; n: number }[];
