@@ -25,6 +25,9 @@ export type MediaLicense =
   | 'all-rights-reserved'
   | 'cc-by-4.0'
   | 'cc-by-sa-4.0'
+  | 'cc-by-sa-3.0'
+  | 'cc-by-sa-2.0'
+  | 'cc-by-2.0'
   | 'cc-by-nc-4.0'
   | 'cc0-1.0'
   | 'public-domain'
@@ -35,6 +38,9 @@ export const MEDIA_LICENSES: readonly MediaLicense[] = [
   'all-rights-reserved',
   'cc-by-4.0',
   'cc-by-sa-4.0',
+  'cc-by-sa-3.0',
+  'cc-by-sa-2.0',
+  'cc-by-2.0',
   'cc-by-nc-4.0',
   'cc0-1.0',
   'public-domain',

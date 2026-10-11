@@ -340,6 +340,23 @@ check(
   getCreditLine({ ...troy, credit: { ...troy.credit, license: 'cc-by-4.0', year: 2025 } }),
   '© 2025 Patrick Arns (CC BY 4.0)'
 );
+for (const [license, shown] of [
+  ['cc-by-sa-3.0', 'CC BY-SA 3.0'],
+  ['cc-by-sa-2.0', 'CC BY-SA 2.0'],
+  ['cc-by-2.0', 'CC BY 2.0'],
+]) {
+  const credit = { ...troy.credit, license, year: 2019 };
+  check(
+    `${license} is accepted by the sidecar`,
+    normalizeSidecar({ credit: { license } }).issues.filter((i) => /licen[cs]e/i.test(String(i))),
+    []
+  );
+  check(
+    `${license} is shown as ${shown}`,
+    getCreditLine({ ...troy, credit }),
+    `© 2019 Patrick Arns (${shown})`
+  );
+}
 
 console.log('\n── geo ──────────────────────────────────────────────────────\n');
 
