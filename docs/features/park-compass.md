@@ -98,19 +98,30 @@ the ride list. The panel's rows are the compass list's rows (`InParkRow`, `IN_PA
 wait as the solid pill. The homepage's in-park view and the nowcast banner's covered rides draw the
 same row.
 
-Layout shift against `pnpm build && pnpm start`, 390 × 844, Chromium, a real fix inside
-Phantasialand (no `?sim`), Playwright's `layout-shift` entries over 15 s:
+Layout shift against `pnpm build && pnpm start`, Chromium, a real fix inside Phantasialand (no
+`?sim`), Playwright's `layout-shift` entries over 15 s, `main` (`410b3d5`) and this change built
+side by side and measured alternately, so both saw the same live data:
 
-| reader at | before (headliner list)     | now (compass)               |
-| --------- | --------------------------- | --------------------------- |
-| y = 0     | 0.4123 (0.3399 + 0.0724)    | 0.3757 (one shift)          |
-| y = 1100  | 0.0573, none from the block | 0.0688, none from the block |
+| viewport, reader at | before (headliner list)  | now (compass)      |
+| ------------------- | ------------------------ | ------------------ |
+| 390 × 844, y = 0    | 0.4425 (0.3399 + 0.1025) | 0.3757 (one shift) |
+| 412 × 915, y = 0    | 0.4996 (0.3880 + 0.1116) | 0.4211 (one shift) |
+| 1280 × 800, y = 0   | 0.4340                   | 0.4422             |
+| 390 × 844, y = 1100 | 0.0564                   | 0.0727             |
 
 Before, „Jetzt kürzer als später" arrived a second later at the top of the lists and moved them
-again (the 0.0724); now it arrives in the panel under the compass, below the first screen. At
-y = 1100 every entry in both columns is a ride card in the list below, which shifts by itself; the
-block moves the scroll position by its own height (to 2,932 px) and nothing on screen. WebKit was
-not measured: no WebKit build is installed where this was written.
+again (the second figure); now it arrives in the panel under the compass, below the first screen.
+At y = 1100 neither block moves anything on screen: every entry in both columns is the ride list
+shifting by itself (the tile row 16 px down, a 72 px line appearing inside two ride cards), five
+runs each with the same result. The totals differ because the title card is 32 px shorter now, so a
+reader at 1100 has other cards on screen. WebKit was not measured: no WebKit build is installed
+where this was written.
+
+The compass costs a visitor in the park its own chunk (13.2 KB gzip), the dial's photo (3.5 KB)
+and `/positions` (0.7 KB brotli). First visit on the wire, 360 × 780, cache disabled, the budget's
+harness (`/api/*` uncompressed under `next start`): in the park 876.8 → 898.4 KB, outside it
+865.6 → 867.0 KB. `main` is past the [byte budget](../rules/a-day-in-the-park-has-a-byte-budget.md)'s
+850 KB on this harness already; its table dates from 2026-09-24.
 
 ## Back from the pocket
 
