@@ -71,11 +71,19 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `whiskerGeometry` _function_: Horizontal positions, in a box `width` wide, for a difference and its interval drawn around a centred zero. The scale is symmetric so the zero line never moves between cells.
 - `splitSegments` _function_: Runs of consecutive non-null values as `[index, value]` pairs, so a line can break where the ride was down instead of bridging the outage.
 - `hourTickIndexes` _function_: Indexes of the slots that fall on a full hour, for the time axis.
+- `hourTicks` _function_: The hour labels that fit a plot `plotWidth` px wide: every hour if they fit, else every 2nd, 3rd, … hour of the clock, the smallest step whose neighbours stay `minSpacing` apart.
 - `chartTop` _function_: The y-axis top: the largest value rounded up to a multiple of 20, at least 60.
 - `modelColors` _function_: One colour per model id for the given ids, stable for known models and distinct for the rest.
 - `dayMae` _function_: Mean absolute error of a series against the measured waits, over the slots where both exist. Null when no slot has both.
+- `truthCoverage` _function_: Share of slots with a measured wait. The backend's `truthCoverage` wins; an older response without it is counted here.
+- `suggestedOptionsDate` _function_: The date the options must be fetched for before anything is picked: the suggested day when the backend suggests one other than the day it answered for, else none (the answer stands).
+- `resolveDaySelection` _function_: The day, park and ride the view shows. A pick that is still on offer stands; with nothing picked the backend's suggestion is used; otherwise the first park and its first ride.
+- `headlinersFirst` _function_: A park's rides with headliners first, otherwise in the order the backend sent them.
 - `CELL_STATE_META` _const_: How each matrix state reads: the label in the legend and detail panel, the symbol in the circle.
 - `CHECK_STATE_META` _const_: How each check state reads beside O, L and S.
+- `HOUR_LABEL_MIN_SPACING` _const_: Centre-to-centre distance two hour labels need, in px: `00:00` in 11 px mono is about 34 px wide, and the rest keeps neighbours from reading as one string.
+- `LOW_TRUTH_COVERAGE` _const_: Below this coverage the day view says the comparison rests on few measurements.
+- Types: `DayChoice`
 
 ### [`proxy-path.ts`](../../lib/admin/proxy-path.ts)
 

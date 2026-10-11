@@ -18,3 +18,17 @@ export function foldRideName(value: string): string {
     .replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9]/g, '');
 }
+
+/**
+ * Whether every word of `query` occurs, folded, in at least one of `fields`, so "phanta" finds
+ * Phantasialand and "rust europa" finds Europa-Park by its town. An empty query matches all.
+ */
+export function matchesQuery(
+  fields: ReadonlyArray<string | null | undefined>,
+  query: string
+): boolean {
+  const words = foldText(query).split(/\s+/).filter(Boolean);
+  if (words.length === 0) return true;
+  const haystack = fields.flatMap((field) => (field ? [foldText(field)] : []));
+  return words.every((word) => haystack.some((field) => field.includes(word)));
+}

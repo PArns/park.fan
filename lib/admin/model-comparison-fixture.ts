@@ -14,7 +14,8 @@ import { dayMae } from '@/lib/admin/model-comparison';
  * Sample payloads for the admin model comparison, opened with `?beispiel=1`. The verdicts and
  * notes are the offline benchmark from the approved mockup and the day curves are the real
  * archive rows for Europa-Park on 2026-10-10; the two `live` blocks are made up to show the
- * interval drawing before two weeks of live data exist.
+ * interval drawing before two weeks of live data exist, and the ride without measurements is made
+ * up to show the empty state.
  */
 
 const RULE = { minDays: 14, minParks: 10 };
@@ -382,7 +383,12 @@ const PARK = { id: 'fixture-europa-park', name: 'Europa-Park', timezone: 'Europe
 const _ = null;
 const DAY_ROWS: Record<
   string,
-  { name: string; truth: (number | null)[]; series: Record<string, number[]> }
+  {
+    name: string;
+    isHeadliner?: boolean;
+    truth: (number | null)[];
+    series: Record<string, number[]>;
+  }
 > = {
   'fixture-voltron': {
     name: 'Voltron Nevera',
@@ -514,6 +520,12 @@ const DAY_ROWS: Record<
       ],
     },
   },
+  'fixture-no-measurements': {
+    name: 'Beispiel ohne Messwerte',
+    isHeadliner: false,
+    truth: Array.from({ length: 36 }, () => null),
+    series: { served: [10, 10, 15, 15, 15, 15, 15, 10, 10, 10] },
+  },
 };
 
 const SERIES_LABELS: Record<string, string> = {
@@ -542,14 +554,17 @@ export const FIXTURE_DAY_OPTIONS: ModelComparisonDayOptions = {
   parks: [
     {
       ...PARK,
+      city: 'Rust',
+      country: 'Deutschland',
       rides: Object.entries(DAY_ROWS).map(([id, row]) => ({
         id,
         name: row.name,
-        isHeadliner: true,
+        isHeadliner: row.isHeadliner ?? true,
       })),
     },
   ],
   origins: ORIGINS,
+  suggested: { date: '2026-10-10', parkId: PARK.id, attractionId: 'fixture-voltron' },
 };
 
 /**
@@ -587,6 +602,7 @@ export function fixtureDay(attractionId: string, originId: string): ModelCompari
     openingHours: { open: '09:00', close: '18:00' },
     slots: SLOTS,
     truth: row.truth,
+    truthCoverage: row.truth.filter((value) => value !== null).length / row.truth.length,
     series,
     scores,
   };

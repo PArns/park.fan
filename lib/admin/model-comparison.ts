@@ -2,6 +2,8 @@ import type {
   ComparisonModel,
   ModelCellState,
   ModelCheckState,
+  ModelComparisonDay,
+  ModelComparisonDayOptions,
   ModelComparisonReport,
 } from '@/lib/api/admin-model-comparison';
 import { getNumberFormat } from '@/lib/utils/intl-format';
@@ -144,6 +146,37 @@ export function hourTickIndexes(slots: string[]): number[] {
   return slots.flatMap((slot, index) => (slot.endsWith(':00') ? [index] : []));
 }
 
+/**
+ * Centre-to-centre distance two hour labels need, in px: `00:00` in 11 px mono is about 34 px
+ * wide, and the rest keeps neighbours from reading as one string.
+ */
+export const HOUR_LABEL_MIN_SPACING = 46;
+
+const HOUR_STEPS = [1, 2, 3, 4, 6, 12];
+
+/**
+ * The hour labels that fit a plot `plotWidth` px wide: every hour if they fit, else every 2nd,
+ * 3rd, … hour of the clock, the smallest step whose neighbours stay `minSpacing` apart. Positions
+ * come from the slot index, so a window past midnight reads 23:00, 00:00, 01:00 in order.
+ */
+export function hourTicks(
+  slots: string[],
+  plotWidth: number,
+  minSpacing = HOUR_LABEL_MIN_SPACING
+): number[] {
+  const hours = hourTickIndexes(slots);
+  if (slots.length < 2 || hours.length < 2) return hours;
+  const perSlot = plotWidth / (slots.length - 1);
+  for (const step of HOUR_STEPS) {
+    const picked = hours.filter((index) => Number(slots[index].slice(0, 2)) % step === 0);
+    if (picked.length === 0) continue;
+    if (picked.every((index, k) => k === 0 || (index - picked[k - 1]) * perSlot >= minSpacing)) {
+      return picked;
+    }
+  }
+  return [hours[0]];
+}
+
 /** The y-axis top: the largest value rounded up to a multiple of 20, at least 60. */
 export function chartTop(values: Array<number | null>): number {
   const max = Math.max(60, ...values.filter((v): v is number => v !== null && Number.isFinite(v)));
@@ -229,4 +262,86 @@ export function dayMae(
     n++;
   });
   return n > 0 ? { mae: sum / n, n } : null;
+}
+
+/**
+ * Share of slots with a measured wait. The backend's `truthCoverage` wins; an older response
+ * without it is counted here.
+ */
+export function truthCoverage(day: Pick<ModelComparisonDay, 'truth' | 'truthCoverage'>): number {
+  if (typeof day.truthCoverage === 'number' && Number.isFinite(day.truthCoverage)) {
+    return day.truthCoverage;
+  }
+  if (day.truth.length === 0) return 0;
+  return (
+    day.truth.filter((value) => value !== null && Number.isFinite(value)).length / day.truth.length
+  );
+}
+
+/** Below this coverage the day view says the comparison rests on few measurements. */
+export const LOW_TRUTH_COVERAGE = 0.5;
+
+/** What the user picked in the day view; null means "not picked yet". */
+export interface DayChoice {
+  date: string | null;
+  parkId: string | null;
+  rideId: string | null;
+}
+
+type DayPark = ModelComparisonDayOptions['parks'][number];
+type DayRide = DayPark['rides'][number];
+
+/**
+ * The date the options must be fetched for before anything is picked: the suggested day when the
+ * backend suggests one other than the day it answered for, else none (the answer stands).
+ */
+export function suggestedOptionsDate(
+  options: ModelComparisonDayOptions | undefined
+): string | null {
+  const suggested = options?.suggested;
+  if (!options || !suggested || suggested.date === options.date) return null;
+  return options.dates.includes(suggested.date) ? suggested.date : null;
+}
+
+/**
+ * The day, park and ride the view shows. A pick that is still on offer stands; with nothing
+ * picked the backend's suggestion is used; otherwise the first park and its first ride.
+ */
+export function resolveDaySelection(
+  options: ModelComparisonDayOptions,
+  choice: DayChoice
+): { date: string | null; park: DayPark | null; ride: DayRide | null } {
+  const suggested = options.suggested ?? null;
+  const fallbackDate = options.dates.includes(options.date)
+    ? options.date
+    : (options.dates[0] ?? options.date ?? null);
+  const date =
+    choice.date && options.dates.includes(choice.date)
+      ? choice.date
+      : suggested && options.dates.includes(suggested.date)
+        ? suggested.date
+        : fallbackDate;
+  // The suggestion names a park and ride of its own day; the parks on offer belong to `options.date`.
+  const suggestion = suggested && suggested.date === options.date ? suggested : null;
+  const park =
+    options.parks.find((p) => p.id === choice.parkId) ??
+    (choice.parkId === null && suggestion
+      ? options.parks.find((p) => p.id === suggestion.parkId)
+      : undefined) ??
+    options.parks[0] ??
+    null;
+  const rides = park ? headlinersFirst(park.rides) : [];
+  const ride =
+    rides.find((r) => r.id === choice.rideId) ??
+    (choice.rideId === null && suggestion && suggestion.parkId === park?.id
+      ? rides.find((r) => r.id === suggestion.attractionId)
+      : undefined) ??
+    rides[0] ??
+    null;
+  return { date, park, ride };
+}
+
+/** A park's rides with headliners first, otherwise in the order the backend sent them. */
+export function headlinersFirst(rides: DayRide[]): DayRide[] {
+  return [...rides].sort((a, b) => Number(b.isHeadliner) - Number(a.isHeadliner));
 }
