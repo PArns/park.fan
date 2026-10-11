@@ -608,6 +608,21 @@ Route `/admin/ml` (page).
 
 - `default (MlPage)` _component_
 
+### [`ml/vergleich/_components/day-comparison.tsx`](../../app/admin/ml/vergleich/_components/day-comparison.tsx)
+
+- `DayComparison` _component_: One stored day replayed: date, park, ride and forecast moment chosen from the options endpoint, every model's curve against the measured wait, and each model's error on that day.
+
+### [`ml/vergleich/_components/model-matrix.tsx`](../../app/admin/ml/vergleich/_components/model-matrix.tsx)
+
+- `MatrixLegend` _component_: The six circle meanings, above the matrix.
+- `ModelMatrix` _component_: Every question the app answers against every model, one circle per cell; a click opens the cell's sentence, its live and offline figures and the three checks below the table.
+
+### [`ml/vergleich/page.tsx`](../../app/admin/ml/vergleich/page.tsx)
+
+Route `/admin/ml/vergleich` (page).
+
+- `default (ModelComparisonPage)` _component_: Which model answers which question in the app better than the one shown today, as one circle per cell, with one stored day to check the curves against. `?beispiel=1` shows the sample data.
+
 ### [`page.tsx`](../../app/admin/page.tsx)
 
 Route `/admin` (page).

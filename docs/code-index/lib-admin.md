@@ -54,6 +54,29 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `UNIQUE_ROLES` _const_: The roles only one image may hold per park (`park-background`) or per ride (`ride-card`).
 - Types: `UniqueRole`, `RoleHolder`, `Handover`
 
+### [`model-comparison-fixture.ts`](../../lib/admin/model-comparison-fixture.ts)
+
+- `fixtureDay` _function_: One replayed day as `GET /api/admin/model-comparison/day` would send it. Only the morning origin was archived for the sample, so every other origin comes back without series.
+- `FIXTURE_REPORT` _const_: The matrix as `GET /api/admin/model-comparison` would send it.
+- `FIXTURE_DAY_OPTIONS` _const_: The selectors as `GET /api/admin/model-comparison/day/options` would send them.
+
+### [`model-comparison.ts`](../../lib/admin/model-comparison.ts)
+
+- `matrixColumns` _function_: The matrix columns: the report's models in its order, then any model a cell names that the report forgot to list, labelled with its id so a new backend model still shows up.
+- `groupQuestions` _function_: The questions under each group, in the report's group order; a group with none is left out.
+- `measuredDays` _function_: Calendar days from the first to the last live day, both included; 0 when nothing was measured.
+- `formatDiff` _function_: A difference with its sign, in German: `−0,42 min`, `+0,026`. A rate gets three decimals.
+- `formatFigure` _function_: A plain figure in German with `digits` decimals: `12,4`.
+- `diffFavoursModel` _function_: Whether a difference favours the model, given which direction of the metric is good.
+- `whiskerGeometry` _function_: Horizontal positions, in a box `width` wide, for a difference and its interval drawn around a centred zero. The scale is symmetric so the zero line never moves between cells.
+- `splitSegments` _function_: Runs of consecutive non-null values as `[index, value]` pairs, so a line can break where the ride was down instead of bridging the outage.
+- `hourTickIndexes` _function_: Indexes of the slots that fall on a full hour, for the time axis.
+- `chartTop` _function_: The y-axis top: the largest value rounded up to a multiple of 20, at least 60.
+- `modelColors` _function_: One colour per model id for the given ids, stable for known models and distinct for the rest.
+- `dayMae` _function_: Mean absolute error of a series against the measured waits, over the slots where both exist. Null when no slot has both.
+- `CELL_STATE_META` _const_: How each matrix state reads: the label in the legend and detail panel, the symbol in the circle.
+- `CHECK_STATE_META` _const_: How each check state reads beside O, L and S.
+
 ### [`proxy-path.ts`](../../lib/admin/proxy-path.ts)
 
 The path guard for `/api/admin/[...path]`, pure so it can be tested without Next.

@@ -496,6 +496,24 @@ refetches on focus) used to replace them with the server's list, and a reload lo
 the names of photos still in the queue. Both now stay reserved, per collection.
 `pnpm test:capture-session`.
 
+## Modellvergleich — `/admin/ml/vergleich`
+
+The page a decision about which model the app serves is made on, so it is written for someone
+who does not know what `d5` means: every row is a question the app answers, in plain German with
+its forecast distance (`leadLabel`), and every cell is one circle. The verdicts come from the
+backend (`GET /v1/admin/model-comparison`, PAR-855); the page derives nothing it could get wrong,
+only columns for model ids the report forgot to list and the chart geometry
+(`lib/admin/model-comparison.ts`, `pnpm test:model-comparison`).
+
+- **`diff` is the model's error minus the reference's.** With `lowerIsBetter` a negative value
+  favours the model; a hit rate (`unit: 'rate'`) runs the other way, and the whisker labels follow.
+- **Before 14 days of live data most cells are `pending` or `unclear`.** The page says so above
+  the matrix, counting from `window.firstDate`, so a grey board reads as a measurement in progress
+  rather than as a broken one.
+- **`?beispiel=1` shows the sample payloads** in `lib/admin/model-comparison-fixture.ts`: the
+  approved mockup's verdicts and the real Europa-Park archive rows of 2026-10-10. The two `live`
+  blocks in it are invented to show the interval drawing.
+
 ## The admin on a phone
 
 Two things were actually broken, and neither was a layout.

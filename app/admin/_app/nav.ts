@@ -5,6 +5,7 @@ import {
   Camera,
   CalendarRange,
   Copy,
+  GitCompare,
   HeartPulse,
   History,
   ImageIcon,
@@ -168,6 +169,13 @@ const NAV_GROUPS: NavGroup[] = [
         icon: Brain,
         description: 'Modelle, Drift, Vorhersagegüte',
         keywords: ['catboost', 'tft', 'prognose', 'drift'],
+      },
+      {
+        href: '/admin/ml/vergleich',
+        label: 'Modellvergleich',
+        icon: GitCompare,
+        description: 'Welches Modell wo besser trifft als das, was die App zeigt',
+        keywords: ['modelle', 'vergleich', 'matrix', 'chronos', 'tft', 'pcn', 'prognose'],
       },
       {
         href: '/admin/actions',
