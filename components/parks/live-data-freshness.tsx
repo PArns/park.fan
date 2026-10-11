@@ -73,6 +73,7 @@ export const LiveDataFreshness = memo(function LiveDataFreshness({
     dataUpdatedAt,
     failed: isError,
     paused: fetchStatus === 'paused',
+    fetching: isFetching,
   });
 
   // The date joins the time once the value is from another day in the park: the seed of a page

@@ -31,21 +31,30 @@ export type LiveDataHint = 'offline' | 'outdated' | null;
  * where no clock is read, so no warning. `offline` is React Query's paused fetch (no network);
  * `outdated` is a failed poll or an answer older than {@link LIVE_DATA_STALE_AFTER_MS}. Age is
  * measured only against `dataUpdatedAt`: a closed park's seed queues report closing time all night.
+ *
+ * An old answer with a poll in flight is not yet a warning: a phone back from the pocket after ten
+ * minutes has its clock re-read and the refetch sent in the same `visibilitychange`, and the line
+ * would otherwise appear for the second the request takes and push the ride list down with it.
+ * A poll that fails turns the warning on through `failed`.
  */
 export function liveDataHint({
   now,
   dataUpdatedAt,
   failed,
   paused,
+  fetching = false,
 }: {
   now: number | null;
   dataUpdatedAt: number;
   failed: boolean;
   paused: boolean;
+  /** A poll is on its way. */
+  fetching?: boolean;
 }): LiveDataHint {
   if (now === null) return null;
   if (paused) return 'offline';
   if (failed) return 'outdated';
+  if (fetching) return null;
   if (dataUpdatedAt > 0 && now - dataUpdatedAt > LIVE_DATA_STALE_AFTER_MS) return 'outdated';
   return null;
 }

@@ -183,7 +183,9 @@ the chips show the compass point („SW") and the rows say „Richtung Südweste
 up and says so.
 
 - **iOS**: „Kompass einschalten", with the line „Safari fragt einmal nach Zugriff auf Bewegung und
-  Ausrichtung. Bis dahin ist Norden oben." After a denial, „Nochmal fragen".
+  Ausrichtung. Bis dahin ist Norden oben." After a denial, „Nochmal fragen". A grant is kept for
+  the page (`iosGrantedThisPage`), not the component: the park page's block unmounts the compass
+  whenever its nearby answer drops out for a moment, and the reader is not asked to tap again.
 - **A stream that stops** (no event for 3 s, or none within 1.5 s of listening again) drops back to
   north up. It used to stay „active" forever, a frozen arrow under a pulsing live dot.
 - **Calibration**: Safari reports its own error; over 25° or unknown, the line says „Kompass
