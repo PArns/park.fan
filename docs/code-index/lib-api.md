@@ -5,6 +5,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`admin-model-comparison.ts`](../../lib/api/admin-model-comparison.ts)
+
+- Types: `ModelCellState`, `ModelCheckState`, `ModelCellLive`, `ModelCellOffline`, `ModelCell`, `ModelComparisonQuestion`, `ComparisonModel`, `ModelComparisonReport`, `ForecastOrigin`, `ModelComparisonDayOptions`, `ModelComparisonDay`
+
 ### [`admin-stats.ts`](../../lib/api/admin-stats.ts)
 
 - Types: `MlMetrics`, `MlHealth`, `MlLivePerformance`, `MlPerformer`, `MlDriftDaily`, `MlHorizonDrift`, `MlDrift`, `MlServedIntraday`, `MlDashboard`, `MlAlert`, `MlAnomalyStats`, `RealtimePark`, `RealtimeRide`, `AnalyticsRealtime`, `TickerItem`, `AnalyticsTicker`, `GeoLiveCountry`, `GeoLiveContinent`, `AnalyticsGeoLive`, `ParkListItem`, `ParksPagination`, `ParksListResponse`, `SearchResultType`, `SearchResult`, `SearchResponse`

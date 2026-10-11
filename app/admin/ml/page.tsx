@@ -420,7 +420,9 @@ function aggregateLeadCurve(rows: ShadowComparisonRow[]): LeadCurveCell[] {
   for (const r of rows) {
     const key = `${r.leadBucket}|${r.segment}`;
     const cell = cells.get(key) ?? {};
-    const slot = r.model === 'pcn' ? 'pcn' : 'persist';
+    // The board also carries `pcn_blend`, which is neither column.
+    const slot = r.model === 'pcn' ? 'pcn' : r.model === 'persist' ? 'persist' : null;
+    if (!slot) continue;
     const acc = (cell[slot] ??= { n: 0, maeW: 0, biasW: 0, actW: 0, predW: 0 });
     const n = num(r.n);
     acc.n += n;
