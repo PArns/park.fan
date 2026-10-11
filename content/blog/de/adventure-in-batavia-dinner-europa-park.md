@@ -77,12 +77,10 @@ inklusive Mehrwertsteuer. Im Preis enthalten sind laut Eventseite:
 - die Show zwischen den Gängen
 - der Eintritt in den Europa-Park ab 17:00 Uhr, solange Saison ist
 
-Alle acht Abende liegen in einer Saison des Parks. Halloween läuft bis zum
-
-1. November, HALLOWinter vom 2. bis 27. November und Winterzauber vom
-2. November bis zum 9. Januar 2027. Weitere Kosten nennt die Eventseite nicht.
-   Eine Übernachtung buchst du getrennt. Für ein Paket aus Dinner und Hotel gibt
-   es auf der Eventseite einen Link, aber keinen Preis.
+Alle acht Abende liegen in einer Saison des Parks. Halloween läuft bis zum 1. November,
+HALLOWinter vom 2. bis 27. November und Winterzauber vom 28. November bis zum 9. Januar 2027.
+Weitere Kosten nennt die Eventseite nicht. Eine Übernachtung buchst du getrennt. Für ein Paket
+aus Dinner und Hotel gibt es auf der Eventseite einen Link, aber keinen Preis.
 
 ## Menü und Show
 

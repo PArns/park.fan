@@ -738,18 +738,57 @@ const THROWN_ON = {
   ),
 };
 /**
+ * The post rating its own information (§1.4): `die nützlichste Information des ganzen Beitrags`
+ * stood in the Alton Towers guide of 2026-10-11, in six languages. A fact that matters is put
+ * first; a sentence that says so about itself is the text talking about its structure.
+ */
+const SELF_RATING = {
+  de: /(?<!\p{L})(?:nützlichste|wichtigste|beste|interessanteste)\p{L}* (?:\p{L}+ ){0,2}(?:des|dieses) (?:ganzen )?(?:beitrags|guides|artikels|textes)(?!\p{L})/giu,
+  en: /(?<!\p{L})(?:most useful|most important|best|most interesting) (?:\p{L}+ ){0,3}(?:in|of) (?:this|the whole|the entire) (?:post|guide|article|piece)(?!\p{L})/giu,
+  nl: /(?<!\p{L})(?:nuttigste|belangrijkste|beste|interessantste) (?:\p{L}+ ){0,3}(?:van|in|uit) (?:dit|deze|het hele|de hele) (?:artikel|stuk|bericht|gids)(?!\p{L})/giu,
+  fr: /(?<!\p{L})plus (?:utiles?|importante?s?|intéressante?s?) (?:de|du) (?:cet article|ce guide|tout l['’]article|tout ce guide|tout le guide)(?!\p{L})/giu,
+  es: /(?<!\p{L})más (?:útil|importante|interesante) (?:de|en) (?:este artículo|esta guía|todo el artículo|toda la guía)(?!\p{L})/giu,
+  it: /(?<!\p{L})più (?:utile|importante|interessante) (?:di|in|dell['’]|della) ?(?:questo articolo|questa guida|tutto l['’]articolo|tutta la guida|intero articolo|intera guida)(?!\p{L})/giu,
+};
+/**
+ * The take-home section (§1.5): `Was ich dir für Staffordshire mitgebe`, `What I'd take away from
+ * Staffordshire`, `Ce que je retiens de Soltau`. A closing chapter that walks the post again in
+ * the first person is a summary block with a byline, and it ends on a maxim more often than not.
+ * Three guides carried it on 2026-10-11; the post ends on its last fact or the signature.
+ */
+const TAKE_HOME_HEADING =
+  /^(?:was ich dir\b.*\bmitgebe|was (?:du|ihr) mitnehm\p{L}*|was (?:mir )?bleibt\b|what i(?:['’]d| would) (?:take away|tell you|send you off with|leave you with)|(?:key )?takeaways?\b|wat ik je\b.*\bmeegeef|wat ik (?:onthoud|meeneem)|ce que je (?:te |vous )?(?:donne|laisse|retiens)|lo que (?:me llevo|te llevas|te dejo|me gustaría que te llevaras)|(?:che )?cosa (?:mi porto via|ti lascio|ti porti)|quello che (?:ti lascio|mi porto))/iu;
+/**
+ * A German modal without its verb in a title or heading: `Die Bahnen dürfen nicht über die Bäume`
+ * (Alton Towers, 2026-10-11). Spoken German drops the infinitive after a modal (`Ich muss nach
+ * Hause`); in a title it reads as a riddle, because the reader has to guess the verb and with it
+ * what the post is about. Warned, because `Kinder dürfen ins Wasser` is fine in a paragraph.
+ */
+const MODAL_WITHOUT_VERB =
+  /(?<!\p{L})(?:darf|dürfen|muss|müssen|kann|können|soll|sollen|will|wollen)\s+(?:nicht\s+|nie\s+|kein\p{L}*\s+)?(?:über|unter|in|ins|nach|an|ans|auf|aufs|durch|vor|hinter|zu|zum|zur|aus)\s+(?:\p{L}+\s+){0,2}\p{Lu}[\p{L}-]*$/u;
+/**
+ * A German date that opens a line becomes a numbered list (§4.4): CommonMark lets `1.` interrupt
+ * a paragraph, so a paragraph wrapped before `1. November` renders the rest as list item one,
+ * and Prettier then indents it as one. The Alton Towers guide and the Adventure in Batavia post
+ * shipped that way until 2026-10-11. Any other day number after a blank line does the same.
+ */
+const DATE_LINE_START =
+  /^[ \t]*\d{1,2}\.[ \t]+(?:Januar|Jänner|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)\b.*$/gm;
+
+/**
  * `Drei Einschränkungen gehören dazu.`, `Zwei Einordnungen aus unseren Guides.` (§2.16): a short
  * sentence that counts what follows instead of saying it. Only the nouns of a text talking about
  * its own caveats are matched; `Drei Dinge noch:` introduces a list in five posts and is left to
- * the review pass.
+ * the review pass. `Ein zweiter Grund kommt dazu.` opened a paragraph of the Alton Towers guide
+ * on 2026-10-11: the ordinal reason counts the same way.
  */
 const COUNT_ANNOUNCEMENT = {
-  de: /(?<!\p{L})(?:zwei|drei|vier|fünf)\s+(?:\p{L}+\s+)?(?:einschränkungen|einordnungen|anmerkungen|vorbehalte)(?!\p{L})/iu,
-  en: /(?<!\p{L})(?:two|three|four|five)\s+(?:\p{L}+\s+)?(?:caveats|limitations|notes|remarks)(?!\p{L})/iu,
-  nl: /(?<!\p{L})(?:twee|drie|vier|vijf)\s+(?:\p{L}+\s+)?(?:kanttekeningen|opmerkingen|beperkingen|inschattingen)(?!\p{L})/iu,
-  fr: /(?<!\p{L})(?:deux|trois|quatre|cinq)\s+(?:\p{L}+\s+)?(?:réserves|remarques|limites|repères)(?!\p{L})/iu,
-  es: /(?<!\p{L})(?:dos|tres|cuatro|cinco)\s+(?:\p{L}+\s+)?(?:salvedades|limitaciones|apuntes|matices)(?!\p{L})/iu,
-  it: /(?<!\p{L})(?:due|tre|quattro|cinque)\s+(?:\p{L}+\s+)?(?:avvertenze|limiti|precisazioni|indicazioni)(?!\p{L})/iu,
+  de: /(?<!\p{L})(?:(?:zwei|drei|vier|fünf)\s+(?:\p{L}+\s+)?(?:einschränkungen|einordnungen|anmerkungen|vorbehalte)|(?:ein|der)\s+(?:zweiter?|dritter?|weiterer?|anderer?)\s+grund)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:(?:two|three|four|five)\s+(?:\p{L}+\s+)?(?:caveats|limitations|notes|remarks)|(?:a|the)\s+(?:second|third|further|other)\s+reason)(?!\p{L})/iu,
+  nl: /(?<!\p{L})(?:(?:twee|drie|vier|vijf)\s+(?:\p{L}+\s+)?(?:kanttekeningen|opmerkingen|beperkingen|inschattingen)|(?:een|de)\s+(?:tweede|derde|andere)\s+reden)(?!\p{L})/iu,
+  fr: /(?<!\p{L})(?:(?:deux|trois|quatre|cinq)\s+(?:\p{L}+\s+)?(?:réserves|remarques|limites|repères)|une\s+(?:deuxième|seconde|troisième|autre)\s+raison)(?!\p{L})/iu,
+  es: /(?<!\p{L})(?:(?:dos|tres|cuatro|cinco)\s+(?:\p{L}+\s+)?(?:salvedades|limitaciones|apuntes|matices)|(?:una|la)\s+(?:segunda|tercera|otra)\s+razón)(?!\p{L})/iu,
+  it: /(?<!\p{L})(?:(?:due|tre|quattro|cinque)\s+(?:\p{L}+\s+)?(?:avvertenze|limiti|precisazioni|indicazioni)|(?:un|il)\s+(?:secondo|terzo|altro)\s+motivo)(?!\p{L})/iu,
 };
 /**
  * Words for our database instead of the park (§2.19): `Einträge`, `ohne Wert`, `führen wir`, and
@@ -915,6 +954,14 @@ const WATCH = [
     re: /(?<!\p{L})(?:this matters|that matters|here['’]s the (?:part|thing) that|the honest answer|load-bearing|earns? (?:its|their) (?:keep|place)|deserves a moment|worth internali[sz]ing|das ist wichtig, weil|der knackpunkt|die falle ist|verdient sich seinen platz|tragende[nr]? (?:rolle|teil))(?!\p{L})/giu,
   },
   {
+    // `und keine davon ist die, die man erwartet`, `größer, als die Preise vermuten lassen`
+    // (§2.16): the surprise announced before the fact. Both stood in the Alton Towers guide of
+    // 2026-10-11. Say the fact; the reader decides whether it surprises them.
+    what: 'expectation teaser (§2.16)',
+    // `más dura de lo que parece` is how Spanish says "harder than it looks" and stays out.
+    re: /(?<!\p{L})(?:als man (?:es )?(?:erwartet|erwarten würde|denkt|glaubt)|als (?:die|der|das) \p{L}+ vermuten l(?:ä|a)ss\p{L}*|die man (?:nicht )?erwartet|than (?:you|one)(?:['’]d| would| might| may)? (?:expect|think|imagine)|than the \p{L}+ suggests?|(?:the|not the) ones? you['’]d expect|dan je (?:zou )?(?:verwachten|verwacht|denkt)|qu['’]on ne (?:le )?(?:pense|croit|imagine)|que ne le laissent (?:penser|supposer)|de lo que (?:crees|piensas|esperas|cabría esperar)|di quanto (?:si pensi|pensi|ci si aspetti|immagini))(?!\p{L})/giu,
+  },
+  {
     what: 'colon set-up (§2.16)',
     re: /(?<=^|[.!?]\s+)(?:das beste|kurz gesagt|der clou|die gute nachricht|die schlechte nachricht|pro-?tipp|profi-?tipp|spoiler|das problem|der knackpunkt|die falle|bottom line|pro tip|here['’]s why|plot twist|the good news|the bad news|the trap)\s*:/gim,
   },
@@ -955,7 +1002,7 @@ const WATCH = [
   },
   {
     what: 'ad copy (§3)',
-    re: /(?<!\p{L})(?:atemberaubend\p{L}*|beeindruckend\p{L}*|unvergesslich\p{L}*|einzigartig\p{L}*|faszinierend\p{L}*|spektakulär\p{L}*|legendär\p{L}*|ikonisch\p{L}*|nervenkitzel pur|adrenalin pur|pures adrenalin|für die ganze familie|für groß und klein|ein echtes highlight|ein absolutes muss|im herzen von|herzstück|aushängeschild|thrill-?seekers?|adrenaline junkies?|something for everyone|fun for the whole family|hidden gem|must-(?:see|visit|do)|unforgettable|breathtaking|iconic|legendary|world-class|jaw-dropping|heart-pounding|white-knuckle|exhilarating|visceral|hallmark|centerpiece|centrepiece|showpiece|in the heart of|rich history|onvergetelijk\p{L}*|een echte aanrader|voor jong en oud|voor het hele gezin|adembenemend\p{L}*|in het hart van|sensatiezoekers?|incontournables?|inoubliables?|à couper le souffle|pour toute la famille|petits et grands|au cœur de|plongez|n[’']hésitez pas|imprescindibles?|inolvidables?|no te pierdas|sumérgete|para toda la familia|grandes y pequeños|en el corazón de|toda una experiencia|imperdibil\p{L}*|indimenticabil\p{L}*|immergiti|per tutta la famiglia|grandi e piccini|nel cuore di|da non perdere|geheimtipp\p{L}*|kronjuwel|wow-effekt|tauch(?:e|t) (?:\p{L}+ )?ein|lass dich verzaubern|kommt jede[rs]? auf (?:seine|ihre) kosten|für jeden (?:geschmack )?etwas|liegt in der luft|erfüllt die luft|bustling|gleaming|towering|shimmering|palpable|look no further|bucket[- ]list|once[- ]in[- ]a[- ]lifetime|step into a world|voor ieder wat wils|verborgen parel|laat je betoveren|kloppend hart|il y en a pour tous les goûts|laissez-vous (?:emporter|séduire|transporter)|à ne pas manquer|immanquable|hay para todos los gustos|joya (?:escondida|oculta)|de visita obligada|déjate (?:llevar|sorprender)|ce n['’]è per tutti i gusti|gemma nascosta|lasciati (?:conquistare|trasportare)|tappa obbligata|mozzafiato)(?!\p{L})/giu,
+    re: /(?<!\p{L})(?:alleinstellungsmerkmal\p{L}*|unique selling (?:point|proposition)s?|atemberaubend\p{L}*|beeindruckend\p{L}*|unvergesslich\p{L}*|einzigartig\p{L}*|faszinierend\p{L}*|spektakulär\p{L}*|legendär\p{L}*|ikonisch\p{L}*|nervenkitzel pur|adrenalin pur|pures adrenalin|für die ganze familie|für groß und klein|ein echtes highlight|ein absolutes muss|im herzen von|herzstück|aushängeschild|thrill-?seekers?|adrenaline junkies?|something for everyone|fun for the whole family|hidden gem|must-(?:see|visit|do)|unforgettable|breathtaking|iconic|legendary|world-class|jaw-dropping|heart-pounding|white-knuckle|exhilarating|visceral|hallmark|centerpiece|centrepiece|showpiece|in the heart of|rich history|onvergetelijk\p{L}*|een echte aanrader|voor jong en oud|voor het hele gezin|adembenemend\p{L}*|in het hart van|sensatiezoekers?|incontournables?|inoubliables?|à couper le souffle|pour toute la famille|petits et grands|au cœur de|plongez|n[’']hésitez pas|imprescindibles?|inolvidables?|no te pierdas|sumérgete|para toda la familia|grandes y pequeños|en el corazón de|toda una experiencia|imperdibil\p{L}*|indimenticabil\p{L}*|immergiti|per tutta la famiglia|grandi e piccini|nel cuore di|da non perdere|geheimtipp\p{L}*|kronjuwel|wow-effekt|tauch(?:e|t) (?:\p{L}+ )?ein|lass dich verzaubern|kommt jede[rs]? auf (?:seine|ihre) kosten|für jeden (?:geschmack )?etwas|liegt in der luft|erfüllt die luft|bustling|gleaming|towering|shimmering|palpable|look no further|bucket[- ]list|once[- ]in[- ]a[- ]lifetime|step into a world|voor ieder wat wils|verborgen parel|laat je betoveren|kloppend hart|il y en a pour tous les goûts|laissez-vous (?:emporter|séduire|transporter)|à ne pas manquer|immanquable|hay para todos los gustos|joya (?:escondida|oculta)|de visita obligada|déjate (?:llevar|sorprender)|ce n['’]è per tutti i gusti|gemma nascosta|lasciati (?:conquistare|trasportare)|tappa obbligata|mozzafiato)(?!\p{L})/giu,
   },
 ];
 
@@ -1605,6 +1652,26 @@ for (const locale of runs('blog') ? LOCALES : []) {
     researchVoice(file, raw, locale);
     databaseProse(file, raw, body, locale);
 
+    const selfRating = body.replace(/\s+/g, ' ').match(SELF_RATING[locale]);
+    if (selfRating)
+      fail(
+        file,
+        `the post rates its own information (§1.4), put the fact first instead: ${[...new Set(selfRating)].slice(0, 3).join(' · ')}`
+      );
+    for (const m of raw.matchAll(/^## (.+)$/gm))
+      if (TAKE_HOME_HEADING.test(m[1].trim()))
+        warn(file, `a take-home section (§1.5), end on the last fact or the signature — "${m[1]}"`);
+    const markdown = raw.replace(/^---\n[\s\S]*?\n---\n/, '').replace(/```[\s\S]*?```/g, '');
+    const dateLines = markdown.match(DATE_LINE_START);
+    if (dateLines)
+      fail(
+        file,
+        `a date opens a line and renders as a numbered list (§4.4), move it into the line before: ${dateLines
+          .slice(0, 2)
+          .map((l) => `"${l.trim().slice(0, 50)}"`)
+          .join(' · ')}`
+      );
+
     if (/^category:\s*['"]?news\b/m.test(raw.match(/^---\n([\s\S]*?)\n---\n/)?.[1] ?? '')) {
       const title = plainTextFields(raw).find(([f]) => f === 'title')?.[1] ?? '';
       const length = [...title].length;
@@ -1669,8 +1736,14 @@ for (const locale of runs('blog') ? LOCALES : []) {
         .filter(([f]) => f === 'title')
         .map(([, v]) => v),
       ...[...raw.matchAll(/^#{2,3} (.+)$/gm)].map((m) => m[1]),
-    ])
+    ]) {
       headingCheck(file, 'heading', heading);
+      if (locale === 'de' && MODAL_WITHOUT_VERB.test(heading.replace(/^[^:]{2,40}:\s*/, '')))
+        warn(
+          file,
+          `a modal without its verb in a heading (§4.3), say the whole sentence — "${heading}"`
+        );
+    }
 
     const staccato = staccatoRuns(body);
     if (staccato.length)
