@@ -2,7 +2,7 @@
 title: 'Nieuwe attracties 2027: wat pretparken en fabrikanten hebben bevestigd'
 translationKey: park-novelties-2027
 date: '2026-10-04'
-updatedAt: '2026-10-05'
+updatedAt: '2026-10-09'
 author: patrick
 mode: published
 featured: false
@@ -64,6 +64,9 @@ Tijdstip, fabrikant en cijfers staan er zoals park of fabrikant ze geeft. “202
 | Park                                                                  | Nieuwigheid                        | Soort                            | Wanneer                     |
 | --------------------------------------------------------------------- | ---------------------------------- | -------------------------------- | --------------------------- |
 | [Hansa-Park](ref:hansa-park?bare)                                     | Buddenbrook-Turm                   | toren in de Hansa-Garten         | in de loop van seizoen 2027 |
+| [Europa-Park](ref:europa-park?bare)                                   | Wild Swing XL                      | reuzenschommel in Portugal       | 2027                        |
+| [Europa-Park](ref:europa-park?bare)                                   | Toren die je zelf bestuurt         | toren in IJsland                 | 2027                        |
+| [Europa-Park](ref:europa-park?bare)                                   | Enzo's Piccolo Mondo               | gondelrit, vernieuwd             | 2027                        |
 | [Rulantica](ref:rulantica?bare)                                       | Nørd Havn                          | restaurant en ligplekken         | eind 2027                   |
 | [Plopsaland Belgium](ref:plopsaland-belgium?bare)                     | Flying Cinema                      | flying theatre, Mack Rides       | 13 maart 2027               |
 | [Efteling](ref:efteling?bare)                                         | Sprookjesbibliotheek               | 32e sprookje in het Sprookjesbos | vanaf 2027                  |
@@ -100,9 +103,25 @@ Waar de naam vandaan komt, schrijft het park er ook niet bij. “De Buddenbrooks
 
 Op 23 mei 2026 opende het park met de Cornwall Coaster zijn achtste achtbaan. Volgens de attractiepagina heeft de baan van Gerstlauer zeven launches over zo'n 570 meter, haalt hij tot 50 km/u en is hij 18 meter hoog. In het persbericht van maart stonden nog zes launches. Wachttijden meten we in Hansa-Park niet, het park toont ze alleen in zijn eigen app. Wat je verder moet weten, staat in de [gids over Hansa-Park](/blog/hansa-park-tips).
 
-### Europa-Park en Rulantica
+### Europa-Park: Pre-Opening Weeks en drie gezinsattracties
 
-In [Europa-Park](ref:europa-park) komt er in 2027 geen nieuwe baan bij. Het park gaat in plaats daarvan eerder open dan anders. Van 7 tot en met 19 maart lopen voor het eerst Pre-Opening Weeks met goedkopere tickets, en het zomerseizoen begint op 20 maart. De details staan in [ons bericht over de Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027). [Euro-Mir](ref:europa-park/euro-mir) rijdt nog tot 9 januari 2027, daarover gaat het verderop onder “Wat in 2027 verdwijnt”.
+In [Europa-Park](ref:europa-park) komt er in 2027 geen nieuwe achtbaan bij. Het park gaat in plaats daarvan eerder open dan anders. Van 7 tot en met 19 maart lopen voor het eerst Pre-Opening Weeks met goedkopere tickets, en het zomerseizoen begint op 20 maart. De details staan in [ons bericht over de Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027). [Euro-Mir](ref:europa-park/euro-mir) rijdt nog tot 9 januari 2027, daarover gaat het verderop onder “Wat in 2027 verdwijnt”.
+
+Daar komen drie gezinsattracties bij die het park op 8 oktober 2026 heeft aangekondigd. Openingsdata noemt het voor geen van drieën, meer informatie wil het “op een later moment” publiceren. De rest staat in [ons bericht over de drie nieuwtjes](/news/europa-park-drie-nieuwe-familieattracties-2027).
+
+### Europa-Park: Wild Swing XL in Portugal
+
+In het Portugese themagebied komt een Wild Swing XL, een reuzenschommel op meer dan 14 meter hoogte boven het Portugese meer. Volgens het park combineert hij spanning met rijplezier en is hij bedoeld voor alle leeftijden. Fabrikant, minimumlengte, passagiers per rit en ritduur noemt het park niet. In Portugal rijdt tot nu toe alleen de waterachtbaan [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), die MACK Rides in 2005 bouwde. De schommel wordt de tweede rit-attractie in het themagebied, een openingsdatum is er niet.
+
+### Europa-Park: een toren in IJsland
+
+Tussen de houten achtbaan [WODAN - Timburcoaster](ref:europa-park/wodan-timburcoaster) en de megacoaster [blue fire](ref:europa-park/blue-fire-megacoaster) opent in 2027 een torenattractie. Volgens het park besturen gasten hem zelf en kijken ze van boven over het IJslandse gebied, ook naar beneden op de haven. De toren heeft nog geen naam, en hoogte, fabrikant, minimumlengte en openingsdatum ontbreken.
+
+### Europa-Park: Enzo's Piccolo Mondo
+
+De gondelrit [Piccolo Mondo](ref:europa-park/piccolo-mondo) in het Italiaanse themagebied begeleidt volgens het park al meer dan 40 jaar de kleinste bezoekers en komt in 2027 “in nieuwe glans” terug. Als inhoud noemt het park kunst, klassiek toneel en Italiaanse muziek. Of de rit eerst dichtgaat, laat de aankondiging open, net als hoeveel scènes er zijn en welke nieuw zijn. De rit opende in 1982 en komt van MACK Rides, in elke gondel passen zes personen. Een openingsdatum noemt het park niet.
+
+### Rulantica: Nørd Havn
 
 In het waterpark [Rulantica](ref:rulantica) komt Nørd Havn, een gebouw met twee verdiepingen. Beneden zit een restaurant, boven liggen ligplekken in drie zones: binnen, in een wintertuin en buiten op terrassen. Een glijbaan hoort er niet bij. Het park schrijft dat Nørd Havn “eind 2027 zijn deuren opent”.
 
@@ -330,7 +349,7 @@ Bakunawa in Six Flags Great Adventure, met 116 meter, en met 161 km/u is hij ook
 
 ### Komt er in 2027 een nieuwe achtbaan in Duitsland?
 
-Volgens de stand van 5 oktober 2026 niet. Hansa-Park bouwt een toren, Rulantica een restaurant, en Europa-Park plant zijn volgende nieuwe achtbaan voor 2028. Vanuit Duitsland liggen de dichtstbijzijnde nieuwe achtbanen in Nigloland in de Champagne en in Djurs Sommerland in Denemarken.
+Volgens de stand van 5 oktober 2026 niet. Hansa-Park bouwt een toren, Rulantica een restaurant, en Europa-Park plant zijn volgende nieuwe achtbaan voor 2028. Op 8 oktober kondigde het park drie gezinsattracties voor 2027 aan, maar geen achtbaan. Vanuit Duitsland liggen de dichtstbijzijnde nieuwe achtbanen in Nigloland in de Champagne en in Djurs Sommerland in Denemarken.
 
 ### Welke nieuwigheid gaat in 2027 als eerste open?
 
@@ -350,6 +369,7 @@ De volgende gelegenheid is de vakbeurs IAAPA Expo in Orlando, waar de beursvloer
 
 - Hansa-Park, Buddenbrook-Turm: [Nieuw 2027: Buddenbrook-Turm (Hansa-Park)](https://www.hansapark.de/attraktion/276/details/neu-2027-buddenbrook-turm?language=de), seizoen 2027: [Seizoenskaarten (Hansa-Park)](https://www.hansapark.de/saisonkarten/?language=de), opening in 1977: [Cijfers, data, feiten (Hansa-Park)](https://www.hansapark.de/zahlen-daten-fakten/?language=de), Cornwall Coaster: [Persinformatie (Hansa-Park)](https://www.hansapark.de/medien-informationen/?language=de)
 - Rulantica: [Nørd Havn (Europa-Park)](https://www.europapark.de/de/rulantica/nord-havn)
+- Europa-Park, drie gezinsattracties, 14 meter, meer dan 40 jaar, datum van de aankondiging: [Europa-Park kündigt drei neue Familienattraktionen an (MACK Group, 8 oktober 2026)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an), Atlantica SuperSplash: [Atlantica SuperSplash (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/atlantica-supersplash), Piccolo Mondo: [Piccolo Mondo (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/piccolo-mondo)
 - Plopsaland Belgium: [Persbericht van 3 augustus 2026 (Plopsa)](https://www.plopsanews.com/en/press-releases/vliegende-cinema-opent-op-13-maart-2027-als-blikvanger-van-grootste-investering-ooit-in-plopsaland-belgium), [Flying Cinema (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/attractions/flying-cinema), [Plopsaland Plaza (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/plopsaland-plaza), Mack Rides: [Persbericht van 30 september 2025 (Plopsa)](https://plopsanews.com/nl/persberichten/plopsaland-vliegt-naar-de-toekomst-een-recordinvestering-met-vliegende-cinema-als-blikvanger)
 - Efteling: [Nieuw in de Efteling](https://www.efteling.com/en/new-in-efteling), [Persbericht over de Sprookjesbibliotheek van 22 juli 2026](https://www.efteling.com/en/press/first-look-at-eftelings-32nd-fairytale-the-fairytale-library/), [Blog over de Chinese Nachtegaal](https://www.efteling.com/en/blog/nieuws/nieuws-over-de-sprookjesbibliotheek-en-de-chinese-nachtegaal)
 - Bobbejaanland: [Homepage (Bobbejaanland)](https://www.bobbejaanland.be/)
