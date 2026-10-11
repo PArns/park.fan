@@ -238,8 +238,9 @@ function DayView({ day }: { day: ModelComparisonDay }) {
           , {formatLongDate(day.date)}
           {day.openingHours
             ? `, geöffnet ${day.openingHours.open} bis ${day.openingHours.close} Uhr.`
-            : '.'}{' '}
-          Die dicke Linie ist die echte Wartezeit, Lücken heißen: Fahrgeschäft war gestört.
+            : '.'}
+          {hasTruth &&
+            ' Die dicke Linie ist die echte Wartezeit, Lücken heißen: Fahrgeschäft war gestört.'}
         </p>
         {day.origin.localLabel && (
           <p>
