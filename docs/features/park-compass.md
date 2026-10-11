@@ -109,6 +109,37 @@ block moves the scroll position by its own height (to 2,932 px) and nothing on s
 block costs 0.4211 on 412 × 915 and 0.4729 on 1280 × 800, once per page view, for a visitor in the
 park.
 
+## Back from the pocket
+
+A visitor in the park keeps the park page open and the phone in a pocket. Coming back to it, the
+block has to stand where it stood and then catch up with where the visitor is now, without a flash
+of „away" and without asking again for anything already granted. What happens on the
+`visibilitychange` that brings the tab back:
+
+- **The position.** The geolocation provider reads a new fix. Inside a park it allows a cached fix
+  of at most 30 s (`IN_PARK_MAX_AGE_MS`); outside, 8 minutes. With 8 minutes everywhere, the read on
+  return and every in-park 60-second tick got the fix from before the pocket back.
+- **The nearby answer.** A position-keyed answer no longer refetches on focus: that request went
+  out with the coordinates from before the pocket, and its answer, written to the localStorage
+  cache, seeded the new fix's key for five minutes. The new fix changes the key and fetches by
+  itself; a fix that does not move is refetched 6 s after the return if older than five minutes
+  (`RETURN_REFETCH_DELAY_MS`). One request, with the coordinates of where the visitor is now. The
+  GeoIP answer still refetches on focus.
+- **A failed request** keeps the last answer (`heldNearby` in `resolveInParkBlock`), the way the
+  park's live poll keeps its last state. It used to read as „away" and take the block, and the
+  compass in it, off the page until the next poll.
+- **The compass** keeps an iOS grant for the page (`iosGrantedThisPage`), and the „as of" line over
+  the ride list says nothing about age while a poll is in flight (`liveDataHint`).
+
+Checked in Playwright against `next dev`: park page with a fix inside Phantasialand, the tab hidden
+for 25 minutes on the page's clock and 31 s of real time (the browser's position cache ages in real
+time), the device moved 280 m, the tab shown again. Before, one `/api/nearby` went out at once with
+the old coordinates, and the read on return got the old fix back from the browser's cache. Now the
+read gets the new fix and one request goes out with it, 0.2 s after the return. After more than 8
+minutes of real time the old code did read a new fix, but its focus request with the old
+coordinates went out first, which is the race in the second point. Coming back still costs the
+same number of requests the [byte budget](../rules/a-day-in-the-park-has-a-byte-budget.md) counts.
+
 ## The dial
 
 A bezel (the „Lünette", 43–49.5 of a 100-unit drawing) with 5° ticks and the four letters upright

@@ -1,4 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
+import { useEffect, useEffectEvent } from 'react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useAfterLoad } from '@/lib/hooks/use-after-load';
 import {
@@ -26,6 +27,13 @@ export interface UseNearbyParksOptions {
  */
 export const HOME_NEARBY_RADIUS_M = IN_PARK_FALLBACK_DISTANCE_M; // 1 km
 export const HOME_NEARBY_LIMIT = 6;
+
+/**
+ * How long after the tab comes back a position-keyed answer waits for the fix the geolocation
+ * provider asks for on the same `visibilitychange` (its read times out after 5 s) before it is
+ * refetched where it stands.
+ */
+const RETURN_REFETCH_DELAY_MS = 6000;
 
 /**
  * Nearby parks for the visitor's position, or for the backend's GeoIP guess without one. The last
@@ -58,8 +66,10 @@ function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
   // runs. A simulation overrides the location server-side, so it skips both gates.
   const canRun = !!simMode || ((hasCoords || (initialCheckDone && !geoLoading)) && afterLoad);
 
-  return useQuery<NearbyResponse>({
-    queryKey: ['nearby-parks', position?.lat, position?.lng, radiusInMeters, limit, simMode],
+  const queryClient = useQueryClient();
+  const queryKey = ['nearby-parks', position?.lat, position?.lng, radiusInMeters, limit, simMode];
+  const query = useQuery<NearbyResponse>({
+    queryKey,
     queryFn: async () => {
       const url = new URL('/api/nearby', window.location.origin);
       const coords = position ?? null;
@@ -122,12 +132,45 @@ function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
       : () => readCacheEntry(position?.lat ?? null, position?.lng ?? null)?.cachedAt,
     staleTime: CACHE_MAX_AGE_MS,
     gcTime: 10 * 60 * 1000,
-    refetchOnWindowFocus: true,
+    // Only the GeoIP answer refetches on focus, which covers a change of network. A
+    // position-keyed answer would go out with the coordinates from before the tab was hidden, in
+    // the same `visibilitychange` that asks for a new fix, and land in the localStorage cache in
+    // time to seed the new fix's key: a visitor who walked into the park with the phone in their
+    // pocket then read „away" for up to five minutes. The new fix's key fetches by itself; the
+    // effect below covers a fix that does not move. A simulation places the visitor on the
+    // server, so its coordinates cannot be stale.
+    refetchOnWindowFocus: !hasCoords || !!simMode,
     // Poll only with real coordinates, to notice somebody walking into a park. A GeoIP answer is
-    // city-level, cannot resolve the in-park radius and does not move while the tab is open;
-    // focus refetching covers a change of network.
+    // city-level, cannot resolve the in-park radius and does not move while the tab is open.
     refetchInterval: hasCoords ? 5 * 60 * 1000 : false,
   });
+
+  // Coming back to the tab with a position: once the provider's new fix has had its chance to
+  // change the key, refetch whatever key stands if its answer is past `staleTime`. Every consumer
+  // of the hook runs this, so the refetch joins one in flight instead of cancelling it. The state
+  // is read from the cache, not from `query`, whose fields a read would subscribe every consumer to.
+  const refetchIfStale = useEffectEvent(() => {
+    if (!canRun) return;
+    const state = queryClient.getQueryState(queryKey);
+    if (state?.fetchStatus === 'fetching') return;
+    if (state && Date.now() - state.dataUpdatedAt < CACHE_MAX_AGE_MS) return;
+    void queryClient.refetchQueries({ queryKey, exact: true }, { cancelRefetch: false });
+  });
+  useEffect(() => {
+    if (!hasCoords || simMode) return;
+    let timer = 0;
+    const onVisibility = () => {
+      window.clearTimeout(timer);
+      if (!document.hidden) timer = window.setTimeout(refetchIfStale, RETURN_REFETCH_DELAY_MS);
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibility);
+      window.clearTimeout(timer);
+    };
+  }, [hasCoords, simMode]);
+
+  return query;
 }
 
 /**

@@ -32,6 +32,17 @@ export interface InParkBlockInput {
   rideCoordinates: ReadonlyMap<string, { lat: number; lng: number }>;
   nearby: NearbyResponse | undefined;
   /**
+   * The current key's request failed and has no answer of its own: a phone back from the pocket
+   * on a radio that is not up yet. Then `heldNearby` stands in for `nearby`.
+   */
+  nearbyFailed?: boolean;
+  /**
+   * The last answer that arrived for any key. A failed request keeps the last known state, as the
+   * park's own live poll does, rather than reading as „away" and taking the block, and the compass
+   * in it, off the page until the next poll.
+   */
+  heldNearby?: NearbyResponse;
+  /**
    * The nearby query has no answer for the current key yet (`isPending`, or still showing the
    * previous key's `placeholderData`). With a fix in hand this must not read as „away".
    */
@@ -77,7 +88,8 @@ export function withCurrentDistances(
 
 /** Decides what the in-park line and block show for the current location state. */
 export function resolveInParkBlock(input: InParkBlockInput): InParkBlockState {
-  const data = inParkDataFor(input.nearby, input.parkId);
+  const nearby = input.nearby ?? (input.nearbyFailed ? input.heldNearby : undefined);
+  const data = inParkDataFor(nearby, input.parkId);
 
   if (input.simulated && data) {
     // Computed from preset coordinates; a real fix (the developer's desk) would make every distance

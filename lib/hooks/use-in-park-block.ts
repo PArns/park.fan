@@ -1,10 +1,11 @@
 'use client';
 
-import { useMemo, useSyncExternalStore } from 'react';
+import { useMemo, useState, useSyncExternalStore } from 'react';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { resolveInParkBlock, type InParkBlockState } from '@/lib/utils/in-park-block';
+import type { NearbyResponse } from '@/types/nearby';
 
 type RideCoordinates = ReadonlyMap<string, { lat: number; lng: number }>;
 
@@ -52,6 +53,10 @@ export function useInParkBlock(
   // `placeholderData` counts too: when the fix arrives, the query key changes and React Query
   // paints the previous answer (usually the GeoIP one) until the request with coordinates returns.
   const nearbyPending = nearbyQuery.isPending || nearbyQuery.isPlaceholderData;
+  const nearbyFailed = nearbyQuery.isError;
+  // The last answer that arrived, for the moment a request fails (`heldNearby`).
+  const [heldNearby, setHeldNearby] = useState<NearbyResponse | undefined>(undefined);
+  if (nearby !== undefined && nearby !== heldNearby) setHeldNearby(nearby);
 
   const mounted = useMounted();
   const simulated = useSyncExternalStore(
@@ -70,6 +75,8 @@ export function useInParkBlock(
             rideCoordinates,
             nearby,
             nearbyPending,
+            nearbyFailed,
+            heldNearby,
             position,
             accuracy,
             permissionGranted,
@@ -87,6 +94,8 @@ export function useInParkBlock(
       rideCoordinates,
       nearby,
       nearbyPending,
+      nearbyFailed,
+      heldNearby,
       position,
       accuracy,
       permissionGranted,
