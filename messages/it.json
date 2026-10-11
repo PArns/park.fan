@@ -2650,7 +2650,8 @@
         "next-up": "Quando è ora di andare alla prossima attrazione",
         "show-times": "Orari degli spettacoli",
         "ride-status": "Quando un’attrazione in programma chiude o riapre",
-        "wait-change": "Quando un’attesa in programma cambia molto"
+        "wait-change": "Quando un’attesa in programma cambia molto",
+        "rain-soon": "Avviso di pioggia con le attrazioni coperte"
       },
       "share": "Condividi un link a questo piano",
       "shareCopied": "Link copiato",
