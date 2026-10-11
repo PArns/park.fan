@@ -221,8 +221,8 @@ opengaat, staan in de tabel alleen dagen uit het seizoen 2026 (stand
 
 ```
 
-Colossos staat bovenaan, en het gat naar beneden is kleiner dan je zou
-verwachten bij een park met zo’n bekende baan. Wie in Soltau lang aanstaat,
+Colossos staat bovenaan, met een kleine voorsprong op de banen eronder. Wie in
+Soltau lang aanstaat,
 staat niet per se voor de houten achtbaan: vlak daaronder liggen naast Flug der
 Dämonen en Krake ook de Bobbahn uit 1993 en de wildwaterbaan uit 1980, twee
 attracties die in geen enkel reisverslag als reden voor de rit naar Soltau
@@ -298,9 +298,9 @@ staat in de kalender op de [parkpagina](ref:heide-park).
 
 ### De weekdag
 
-Aan de weekdag hangt hier minder dan je denkt. Bovenaan staat de zaterdag,
-onderaan de vrijdag, en de dagen daartussen liggen in de tabel hierboven dicht
-bij elkaar. De maandag staat op maar ongeveer half zoveel meetdagen als de
+Bovenaan staat de zaterdag, onderaan de vrijdag, en het verschil tussen die
+twee is klein. De dagen daartussen liggen in de tabel hierboven dicht bij
+elkaar. De maandag staat op maar ongeveer half zoveel meetdagen als de
 andere dagen, omdat het park hem in het voorjaar en in september regelmatig uit
 de kalender haalt. Wat er aan maandagen meetelt, valt dus vooral in het
 hoogseizoen, en rustig zijn die niet. De rustigste weekdag van andere parken staat
@@ -501,20 +501,6 @@ En wie nu het noorden plant: ook bij
 [Movie Park Germany](/blog/movie-park-germany-wachttijden-tips) vallen buiten
 de vakanties weekdagen uit de kalender, en ook daar hoort de vrijdag bij de
 rustigste dagen. De twee gidsen kun je prima naast elkaar leggen.
-
-## Wat ik je over Soltau meegeef
-
-In Brühl loopt één verhaal door het hele park en in Rust staan 18 landen. In
-Soltau staan banen, en vier daarvan waren de eerste van hun soort in Duitsland.
-
-Daar betaal je voor met oppervlakte. 85 hectare met weinig schaduw en lange
-loopafstanden tussen de grote banen, en op een zaterdag in augustus voel je
-elke meter. Wie dat niet wil, neemt een vrijdag in september in plaats van een
-zaterdag in augustus, en die keuze maak je thuis, niet pas in de rij voor
-Colossos.
-
-En kom je in oktober: de lange zaterdagen beginnen pas om twaalf uur. Wie om
-tien uur voor de poort staat, wacht twee uur op een weiland.
 
 — Patrick
 

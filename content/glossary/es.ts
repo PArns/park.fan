@@ -1849,7 +1849,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un looping vertical girado sobre su eje: el tren entra y sale en diagonal en lugar de de frente.',
     definition:
-      'Un looping inclinado (en inglés inclined loop o tilted loop) es un looping vertical normal girado sobre su eje, normalmente entre 45 y 80 grados respecto a la dirección de marcha del tren. En un looping vertical clásico el tren entra y sale en línea recta; en uno inclinado entra y sale en diagonal, y el looping se ve asimétrico.\n\nLa inclinación cambia cómo se vive la inversión: la entrada se nota más lateral que en un looping normal, y la salida por la parte inferior del círculo llega desde una dirección que el pasajero no espera. Desde fuera, un looping inclinado se distingue enseguida de uno recto. Los hay en varias montañas rusas de B&M e Intamin, a menudo en la parte media o final del recorrido.',
+      'Un looping inclinado (en inglés inclined loop o tilted loop) es un looping vertical normal girado sobre su eje, normalmente entre 45 y 80 grados respecto a la dirección de marcha del tren. En un looping vertical clásico el tren entra y sale en línea recta; en uno inclinado entra y sale en diagonal, y el looping se ve asimétrico.\n\nLa inclinación cambia cómo se vive la inversión: la entrada se nota más lateral que en un looping normal, y por la parte inferior del círculo el tren sale en otra dirección que la de entrada. Desde fuera, un looping inclinado se distingue enseguida de uno recto. Los hay en varias montañas rusas de B&M e Intamin, a menudo en la parte media o final del recorrido.',
     relatedTermIds: ['b-and-m', 'intamin', 'inversion', 'vertical-loop'],
     aliases: ['tilted loop', 'looping torcido', 'inclined loop', 'looping inclinado'],
   },
@@ -1974,7 +1974,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un tipo de montaña rusa con pequeños vehículos individuales y un circuito compacto de curvas cerradas y planas en el borde de plataformas elevadas.',
     definition:
-      'Una wild mouse (ratón salvaje) usa vehículos pequeños de dos a cuatro personas en lugar de trenes largos. Lo típico son las curvas cerradas en horquilla, con poco peralte, en el borde exterior de la vía. Otras montañas rusas peraltan mucho las curvas; aquí, con tan poco peralte, los pasajeros salen despedidos contra el lateral del vehículo, y por la inercia la curva parece llegar más tarde de lo esperado. Da la sensación de que el vehículo se va a salir de la vía.\n\nLas wild mouse aprovechan mucho el espacio: apilan niveles de curvas en horquilla y meten mucha vía en poca superficie. Las hay en parques de todo el mundo y de todos los tamaños. Entre los fabricantes están Mack Rides, Maurer y Gerstlauer.',
+      'Una wild mouse (ratón salvaje) usa vehículos pequeños de dos a cuatro personas en lugar de trenes largos. Lo típico son las curvas cerradas en horquilla, con poco peralte, en el borde exterior de la vía. Otras montañas rusas peraltan mucho las curvas; aquí, con tan poco peralte, los pasajeros salen despedidos contra el lateral del vehículo, y los vehículos, a menudo más anchos que la vía, parecen salirse por el borde en cada curva.\n\nLas wild mouse aprovechan mucho el espacio: apilan niveles de curvas en horquilla y meten mucha vía en poca superficie. Las hay en parques de todo el mundo y de todos los tamaños. Entre los fabricantes están Mack Rides, Maurer y Gerstlauer.',
     relatedTermIds: [
       'bobsled-coaster',
       'gerstlauer',

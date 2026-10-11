@@ -181,7 +181,7 @@ later its successor is named after that exact piece. What plays underneath today
 is a new orchestration of the same work; the park has released 29 minutes of
 soundtrack.
 
-There’s more of the Spookslot left physically, too, than the outside suggests.
+Parts of the old Spookslot are still in the park, too.
 When the building was cleared out in September 2022, everything usable went into
 the archive. The **candelabra** from the queue in the octagonal tower are
 repaired, repainted and back one to one. The **satyrs** were detailed enough to

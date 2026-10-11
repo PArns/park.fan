@@ -102,7 +102,9 @@ explicamos con números por qué
 igual de rápido que Peter Pan’s Flight en París. Un público pequeño no te protege
 de las colas largas cuando hay pocas atracciones entre las que repartir la
 afluencia. La matemática es más implacable en el Phantasialand que en el extenso
-[Europa-Park](ref:europa-park) con sus catorce montañas rusas. A eso se suma que el
+[Europa-Park](ref:europa-park) con sus catorce montañas rusas. El Phantasialand tiene
+alrededor de un tercio del público del Europa-Park y, aun así, según nuestros datos,
+aquí haces más cola. A eso se suma que el
 parque fija el precio de sus entradas de forma tan agresiva que llena bien incluso
 muchos fines de semana. El legendario «sábado vacío» pertenece ya más al bosque
 de los cuentos que al calendario.
@@ -399,6 +401,11 @@ compran la capacidad delante de las narices, aquí no lo hay.
 Tu mejor arma es sencillamente el timing, y eso, al contrario que el tiempo, lo
 tienes por completo en tu propia mano.
 
+Taron y F.L.Y., en vivo desde nuestros datos:
+
+[Taron](ref:phantasialand/taron?full)
+[F.L.Y.](ref:phantasialand/fly?full)
+
 ## La comida: aquí merece la pena sentarse
 
 El Phantasialand merece el viaje también por la **comida**, y eso no lo diría de
@@ -522,6 +529,12 @@ aparcamiento en los días llenos, y tras un día de parque largo y feliz, por la
 noche simplemente te subes, en lugar de salir del aparcamiento a paso de
 tortuga con unos cuantos miles de personas igual de felices.
 
+Antes de salir, un vistazo al tiempo en Brühl, justo ahora:
+
+```weather-widget slug=phantasialand
+
+```
+
 ## Wintertraum: vino caliente, luces y Taron en la oscuridad
 
 En la [guía de Halloween](/blog/halloween-parques-atracciones-2026) contamos al
@@ -622,35 +635,7 @@ Sí. Con un día bien elegido y el orden de arriba, todo lo importante cabe en u
 jornada. Dos días son más relajados (y, con los hoteles temáticos, una pequeña
 fiesta).
 
-## Lo que me gustaría que te llevaras
-
-El Phantasialand tiene alrededor de un tercio del público del Europa-Park y, aun
-así, según nuestros datos, aquí haces más cola. En los días correctos, con el
-orden correcto y una pausa en Rutmor’s Taverne, es el parque al que llevo treinta
-años volviendo. Casi todo lo que separa un buen día de uno magnífico lo decides
-**antes**, al mirar el calendario.
-
-Antes de salir, un último vistazo al tiempo en Brühl, justo ahora:
-
-```weather-widget slug=phantasialand
-
-```
-
-Y los dos protagonistas, en vivo desde nuestros datos:
-
-[Taron](ref:phantasialand/taron?full)
-[F.L.Y.](ref:phantasialand/fly?full)
-
-Nos vemos en Klugheim. Soy el que a las 10 es el primero en la cola de Taron, a
-mediodía desaparece a escondidas por los pancakes de Phenie’s, y por la noche, a
-la hora azul, sigue sin querer irse a casa.
-
 — Patrick
-
-_P.D.: No, en un martes verde no compro ningún Quick Pass. Por principio, y porque
-según nuestras mediciones no lo necesito. Para el sábado rojo sí lo habría comprado. O habría
-reservado a tiempo un día verde y me habría ahorrado las dos cosas, el Quick Pass
-y el precio del sábado._
 
 ---
 

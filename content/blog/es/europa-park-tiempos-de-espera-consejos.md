@@ -92,8 +92,8 @@ Nuestro historial de tiempos de espera del Europa-Park empieza el 26 de
 diciembre de 2025, así que a finales de septiembre de 2026 abarca unos nueve
 meses, y desde abril no tiene huecos salvo un día de julio. Contando todos los
 días de la semana, el tiempo de espera típico en el conjunto del parque (la
-mediana) es **más corto de lo que cabría esperar con semejante afluencia**; los
-días llenos queda bastante por encima.
+mediana) es **corto para semejante afluencia**; los días llenos queda bastante
+por encima.
 
 Las diez atracciones en las que más cola haces, con el valor de hoy al lado:
 

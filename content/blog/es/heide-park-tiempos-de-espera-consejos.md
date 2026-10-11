@@ -226,9 +226,8 @@ medidos:
 
 ```
 
-Colossos está arriba, y la distancia con lo que viene después es menor de lo
-que cabría esperar en un parque con una atracción tan conocida. Quien espera
-mucho en Soltau no espera necesariamente delante de la montaña rusa de madera:
+Colossos está arriba, con poca ventaja sobre las atracciones que le siguen.
+Quien espera mucho en Soltau no espera necesariamente delante de la montaña rusa de madera:
 muy cerca, junto a Flug der Dämonen y Krake, están la Bobbahn de 1993 y el
 tronco de agua de 1980, dos atracciones que no aparecen en ninguna crónica de
 viaje como motivo para conducir hasta Soltau. En el tronco es cosa del tiempo,
@@ -306,9 +305,9 @@ el calendario de la [página del parque](ref:heide-park).
 
 ### El día de la semana
 
-El día de la semana pesa aquí menos de lo que parece. Arriba está el sábado,
-abajo el viernes, y los días intermedios quedan muy juntos en la tabla de
-arriba. El lunes descansa sobre más o menos la mitad de los días medidos que
+Arriba está el sábado, abajo el viernes, y la diferencia entre los dos es
+pequeña. Los días intermedios quedan muy juntos en la tabla de arriba. El lunes
+descansa sobre más o menos la mitad de los días medidos que
 tienen los demás, porque el parque lo saca del calendario con regularidad en
 primavera y en septiembre. Los lunes que cuentan caen sobre todo en temporada
 alta, y esos no son tranquilos. Un lunes tranquilo en Soltau suele ser un lunes
@@ -514,19 +513,6 @@ Y para quien esté planificando el norte ahora mismo: también en el
 desaparecen días entre semana del calendario fuera de las vacaciones, y también
 allí el viernes está entre los días más tranquilos. Las dos guías se pueden
 leer una al lado de la otra.
-
-## Lo que me llevo de Soltau
-
-Donde Brühl tiene un relato continuo y Rust 18 países, el Heide Park tiene
-atracciones, y con cuatro de ellas fue el primero de Alemania.
-
-Eso se paga en superficie. 85 hectáreas con poca sombra y trayectos largos
-entre las grandes atracciones, y un sábado de agosto se nota cada metro. Si
-prefieres ahorrártelo, elige un viernes de septiembre en lugar de un sábado de
-agosto, y decídelo en casa, no en la cola de Colossos.
-
-Y si vienes en octubre: los sábados largos no empiezan hasta las doce. Quien se
-planta a las diez delante de la puerta espera dos horas en un prado.
 
 — Patrick
 

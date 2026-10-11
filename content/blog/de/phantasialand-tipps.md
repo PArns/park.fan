@@ -104,6 +104,8 @@ Sättigung läuft wie Peter Pan’s Flight in Paris. Ein kleines Publikum schüt
 nicht vor langen Warteschlangen, wenn es nur wenige Attraktionen gibt, auf die sich der
 Andrang verteilen kann. Die Mathematik ist im Phantasialand unerbittlicher als im
 weitläufigen [Europa-Park](ref:europa-park) mit seinen vierzehn Achterbahnen.
+Das Phantasialand hat rund ein Drittel des Europa-Park-Publikums, und trotzdem
+stehst du hier laut unseren Daten länger an.
 Dazu bepreist der Park seine Tickets so aggressiv, dass er selbst viele Wochenenden
 gut füllt. Der sagenumwobene „leere Samstag“ gehört inzwischen eher in den
 Märchenwald als in den Kalender.
@@ -407,6 +409,11 @@ in Orlando pausenlos die Kapazität wegkauft, steht vor dir also nicht.
 Deine beste Waffe ist schlicht das Timing, und das hast du, anders als das Wetter,
 komplett selbst in der Hand.
 
+Taron und F.L.Y., live aus unseren Daten:
+
+[Taron](ref:phantasialand/taron?full)
+[F.L.Y.](ref:phantasialand/fly?full)
+
 ## Essen: hier lohnt sich das Hinsetzen
 
 Das Phantasialand ist auch wegen des **Essens** eine Reise wert, und das würde
@@ -529,6 +536,12 @@ Parkplatz-Stress komplett, und nach einem langen, glücklichen Parktag steigst d
 abends einfach ein, statt dich mit ein paar tausend anderen glücklichen Menschen
 durch die Parkplatzausfahrt zu schieben.
 
+Bevor du losfährst, noch ein Blick aufs Wetter in Brühl, genau jetzt:
+
+```weather-widget slug=phantasialand
+
+```
+
 ## Wintertraum: Glühwein, Lichter und Taron im Dunkeln
 
 Im [Halloween-Guide](/blog/halloween-freizeitparks-2026) zählen wir das
@@ -630,36 +643,7 @@ Online-Tagesticket, dessen Preis dynamisch mit der Nachfrage steigt.
 Ja, mit einem gut gewählten Tag und der Reihenfolge oben passt alles Wichtige in
 einen Tag. Entspannter (und mit den Themenhotels ein kleines Fest) sind zwei Tage.
 
-## Was ich dir für deinen Tag mitgebe
-
-Das Phantasialand ist kein Park, den man nebenbei mitnimmt. Er hat rund ein
-Drittel des Europa-Park-Publikums, und trotzdem stehst du hier laut unseren Daten
-länger an. An den richtigen Tagen, mit der richtigen Reihenfolge und einer Pause
-in Rutmor’s Taverne, ist er der Park, in den ich seit dreißig Jahren zurückgehe.
-Fast alles, was einen guten von einem großartigen Tag trennt,
-entscheidest du **vorher**, beim Blick auf den Kalender.
-
-Bevor du losfährst, noch ein Blick aufs Wetter in Brühl, genau jetzt:
-
-```weather-widget slug=phantasialand
-
-```
-
-Und die beiden Hauptdarsteller, live aus unseren Daten:
-
-[Taron](ref:phantasialand/taron?full)
-[F.L.Y.](ref:phantasialand/fly?full)
-
-Wir sehen uns in Klugheim. Ich bin der, der um 10 Uhr als Erstes bei Taron steht,
-mittags heimlich für die Pancakes bei Phenie’s verschwindet, und abends in der
-blauen Stunde immer noch nicht heimwill.
-
 — Patrick
-
-_P.S.: Nein, ich kaufe an einem grünen Dienstag keinen Quick Pass. Aus Prinzip, und
-weil ich ihn nach unseren Messungen nicht brauche. Für den roten Samstag hätte ich
-ihn gekauft. Oder rechtzeitig einen grünen Tag gebucht und mir beides gespart,
-den Quick Pass und den Samstagspreis._
 
 ---
 

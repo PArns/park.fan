@@ -343,7 +343,7 @@ Eisstockschießen (een soort curling) en shows om het halfuur. Vroegboektickets
 kosten tot 4 oktober €19 in plaats van €36 en gelden op een winterdag naar
 keuze.
 
-De winterlijst van het park is langer dan je denkt, ruim 30 regels, met onder
+De winterlijst van het park telt ruim 30 regels, met onder
 meer MAXIMUS, Tempel X-pedition, LEGO NINJAGO The Ride en de Techno Schleuder.
 Bij de meeste buitenattracties staat wel “open afhankelijk van het weer”. Reis je
 met een kind dat precies één bepaalde baan wil, lees dan eerst de lijst van het

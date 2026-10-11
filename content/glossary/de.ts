@@ -1825,7 +1825,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Looping, der aus der Senkrechten gekippt ist. Der Zug fährt schräg ein und schräg wieder aus.',
     definition:
-      'Ein geneigter Looping (englisch: Inclined Loop oder Tilted Loop) ist ein klassischer Looping, der zur Seite gekippt ist, meist um 45 bis 80 Grad gegenüber der Fahrtrichtung. Der Zug fährt schräg ein und schräg wieder aus, der Looping sieht dadurch schief aus und fährt sich anders als ein aufrechter.\n\nBei der Einfahrt wirken mehr seitliche Kräfte als im klassischen Looping, und die Ausfahrt unten kommt aus einer anderen Richtung, als man erwartet. Von außen ist ein geneigter Looping sofort als ungewöhnlich zu erkennen. Geneigte Loopings haben verschiedene B&M- und Intamin-Coaster, oft im mittleren oder letzten Teil der Strecke.',
+      'Ein geneigter Looping (englisch: Inclined Loop oder Tilted Loop) ist ein klassischer Looping, der zur Seite gekippt ist, meist um 45 bis 80 Grad gegenüber der Fahrtrichtung. Der Zug fährt schräg ein und schräg wieder aus, der Looping sieht dadurch schief aus und fährt sich anders als ein aufrechter.\n\nBei der Einfahrt wirken mehr seitliche Kräfte als im klassischen Looping, und unten verlässt der Zug den Looping in eine andere Richtung, als er hineingefahren ist. Von außen ist ein geneigter Looping sofort als ungewöhnlich zu erkennen. Geneigte Loopings haben verschiedene B&M- und Intamin-Coaster, oft im mittleren oder letzten Teil der Strecke.',
     relatedTermIds: ['b-and-m', 'intamin', 'inversion', 'vertical-loop'],
     aliases: ['geneigter Looping'],
     alternateNames: ['Tilted Loop', 'Inclined Loop'],
@@ -1952,7 +1952,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Achterbahntyp mit kleinen Einzelwagen und engen, kaum geneigten Spitzkehren am Rand erhöhter Plattformen.',
     definition:
-      'Eine Wilde Maus (englisch: Wild Mouse) fährt mit kleinen Wagen für zwei bis vier Personen statt mit langen Zügen. Typisch sind enge, kaum geneigte Haarnadelkurven ganz am Rand der Strecke. Weil die Kurven, anders als bei anderen Achterbahnen, kaum geneigt sind, drückt es die Fahrgäste seitlich gegen die Wagenwand, und die Kurve kommt später, als man erwartet. Man hat den Eindruck, gleich von der Strecke zu rutschen.\n\nWilde Mäuse brauchen sehr wenig Platz, weil die Ebenen mit den Haarnadelkurven übereinander liegen und so viel Strecke auf eine kleine Fläche passt. Sie stehen in ganz Europa und weltweit, in Deutschland kennen viele Parkbesucher den Namen „Wilde Maus“. Hersteller sind unter anderem Mack Rides, Maurer und Gerstlauer.',
+      'Eine Wilde Maus (englisch: Wild Mouse) fährt mit kleinen Wagen für zwei bis vier Personen statt mit langen Zügen. Typisch sind enge, kaum geneigte Haarnadelkurven ganz am Rand der Strecke. Weil die Kurven, anders als bei anderen Achterbahnen, kaum geneigt sind, drückt es die Fahrgäste seitlich gegen die Wagenwand. Die Wagen sind oft breiter als die Schiene, deshalb sieht es in jeder Kurve so aus, als rutschten sie gleich über den Rand.\n\nWilde Mäuse brauchen sehr wenig Platz, weil die Ebenen mit den Haarnadelkurven übereinander liegen und so viel Strecke auf eine kleine Fläche passt. Sie stehen in ganz Europa und weltweit, in Deutschland kennen viele Parkbesucher den Namen „Wilde Maus“. Hersteller sind unter anderem Mack Rides, Maurer und Gerstlauer.',
     relatedTermIds: [
       'bobsled-coaster',
       'gerstlauer',

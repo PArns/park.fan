@@ -181,7 +181,7 @@ geschüttelt hatte, und 46 Jahre später ist der Nachfolgebau nach genau diesem
 Stück benannt. Die Fassung, die heute darunterliegt, ist eine neue Orchestrierung
 desselben Werks. Der Park hat 29 Minuten Soundtrack veröffentlicht.
 
-Auch materiell ist mehr vom Spookslot übrig, als es von außen aussieht. Als das
+Auch Teile des alten Spookslot sind noch im Park. Als das
 Gebäude im September 2022 ausgeräumt wurde, ging alles Brauchbare ins Archiv.
 Die **Kerzenhalter** aus der Warteschlange im achteckigen Turm sind repariert,
 neu lackiert und eins zu eins zurück. Die **Satyrn** waren detailliert genug, um

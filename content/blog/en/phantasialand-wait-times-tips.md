@@ -98,6 +98,8 @@ holiday Saturday just as fast as Peter Pan’s Flight in Paris. A small crowd
 doesn’t protect you from long lines when there are only a few attractions for
 the demand to spread across. The math is more merciless at Phantasialand than at
 the sprawling [Europa-Park](ref:europa-park) with its fourteen roller coasters.
+Phantasialand gets about a third of Europa-Park’s visitors, and by our measurements
+you still queue longer here.
 On top of that, the park prices its tickets so aggressively that it fills plenty
 of weekends on its own. The fabled “empty Saturday” now belongs in the
 fairy-tale forest rather than the calendar.
@@ -382,6 +384,11 @@ You’ll still watch a few people walk past you here, but the Quick Pass is
 strictly limited. There’s no Orlando-style army of
 express-pass guests buying the capacity out from under you all day.
 
+Taron and F.L.Y., live from our data:
+
+[Taron](ref:phantasialand/taron?full)
+[F.L.Y.](ref:phantasialand/fly?full)
+
 ## Food worth sitting down for
 
 Phantasialand is worth the trip for the **food**, too, and I wouldn’t say that
@@ -500,6 +507,12 @@ If you have the choice, train plus shuttle spares you the parking stress entirel
 on busy days, and after a long, happy day at the park you just get on instead of
 inching out of the car park with a few thousand other happy people.
 
+Before you set off, here’s the weather in Brühl right now:
+
+```weather-widget slug=phantasialand
+
+```
+
 ## Wintertraum: mulled wine, lights and Taron in the dark
 
 In our [Halloween guide](/blog/halloween-theme-parks-2026) we fondly counted
@@ -593,35 +606,7 @@ Yes. With a well-chosen day and the order above, everything important fits into
 one day. Two days are more relaxed (and, with the themed hotels, a bit of a
 treat).
 
-## What I’d send you off with
-
-Phantasialand isn’t a park you squeeze in on the side. It gets about a third of
-Europa-Park’s visitors, and by our measurements you still queue longer here. On
-the right days, with the right order and a break in Rutmor’s Taverne, it is the
-park I’ve been going back to for thirty years. Almost everything that separates
-a good day from a great one, you decide **beforehand**, with a look at the
-calendar.
-
-Before you set off, one last look at the weather in Brühl, right now:
-
-```weather-widget slug=phantasialand
-
-```
-
-And the two stars of the show, live from our data:
-
-[Taron](ref:phantasialand/taron?full)
-[F.L.Y.](ref:phantasialand/fly?full)
-
-See you in Klugheim. I’m the one who’s first in line at Taron at 10 a.m., who
-slips off secretly at midday for the pancakes at Phenie’s, and who in the blue
-hour of the evening still doesn’t want to go home.
-
 — Patrick
-
-_P.S.: No, I don’t buy a Quick Pass on a green Tuesday. On principle, and because
-by our measurements I don’t need it. For the red Saturday I would have bought one. Or booked a
-green day in time and saved myself both, the Quick Pass and the Saturday price._
 
 ---
 

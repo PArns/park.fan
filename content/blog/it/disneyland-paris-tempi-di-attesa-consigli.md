@@ -192,8 +192,7 @@ quadrati attorno a un’attrazione acquatica con tre discese, la più alta di 16
 metri giù dalla Rupe dei Re. Una data di apertura Disney non l’ha ancora
 comunicata.
 
-Le attrazioni che c’erano già sono più vecchie di quanto la ristrutturazione
-lasci pensare. **[The Twilight Zone Tower of
+Tra le attrazioni che c’erano già, **[The Twilight Zone Tower of
 Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror)** e
 **Crush's Coaster** sono entrambe del 2007,
 **[Ratatouille](ref:disney-adventure-world/ratatouille-laventure-totalement-toquee-de-remy)**

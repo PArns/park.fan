@@ -181,7 +181,7 @@ een stuk dat iemand aan de telefoon uit zijn mouw had geschud, en 46 jaar later 
 de opvolger naar precies dat stuk vernoemd. Wat er nu onder ligt is een nieuwe
 orkestratie van hetzelfde werk; het park zette 29 minuten soundtrack online.
 
-Ook materieel is er meer van het Spookslot over dan het van buiten lijkt. Toen het
+Ook delen van het oude Spookslot zijn nog in het park. Toen het
 gebouw in september 2022 werd leeggehaald, ging alles wat bruikbaar was het
 archief in. De **kandelaars** uit de wachtrij in de achthoekige toren zijn
 gerepareerd, opnieuw gelakt en één op één terug. De **saters** waren gedetailleerd

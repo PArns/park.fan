@@ -59,7 +59,7 @@ const FAQ = [
   {
     question: 'In quali mesi i parchi divertimenti sono meno affollati?',
     answer:
-      'Dipende dal parco più di quanto lasci intendere la regola generale: in media su tutti i parchi i mesi estivi non sono i più affollati, e dicembre spicca verso l’alto, perché d’inverno restano aperti solo i parchi con programma natalizio. Mese per mese è tutto nel riepilogo qui sopra. Per un parco preciso conta il suo calendario.',
+      'In media su tutti i parchi i mesi estivi non sono i più affollati, e dicembre spicca verso l’alto, perché d’inverno restano aperti solo i parchi con programma natalizio. Mese per mese è tutto nel riepilogo qui sopra. Per un parco preciso conta il suo calendario.',
   },
   {
     question: 'Vale la pena visitare con la pioggia?',

@@ -224,9 +224,8 @@ misurati:
 
 ```
 
-Colossos sta in cima, e la distanza da quello che segue è minore di quanto ci
-si aspetterebbe in un parco con un’attrazione così nota. Chi a Soltau aspetta a
-lungo non aspetta per forza davanti alle montagne russe di legno: subito dietro,
+Colossos sta in cima, con poco margine sulle attrazioni che seguono. Chi a
+Soltau aspetta a lungo non aspetta per forza davanti alle montagne russe di legno: subito dietro,
 accanto a Flug der Dämonen e Krake, ci sono la Bobbahn del 1993 e la log flume
 del 1980, due attrazioni che in nessun racconto di viaggio compaiono come motivo
 per guidare fino a Soltau. Per la log flume è il tempo che fa, come si vede nel
@@ -304,9 +303,9 @@ pubblicato per le prossime settimane sta nel calendario sulla
 
 ### Il giorno della settimana
 
-Il giorno della settimana qui conta meno di quanto si pensi. In cima c’è il
-sabato, in fondo il venerdì, e i giorni in mezzo stanno vicini nella tabella
-qui sopra. Il lunedì poggia su circa la metà dei giorni misurati degli altri,
+In cima c’è il sabato, in fondo il venerdì, e la differenza fra i due è
+piccola. I giorni in mezzo stanno vicini nella tabella qui sopra. Il lunedì
+poggia su circa la metà dei giorni misurati degli altri,
 perché il parco in primavera e a settembre lo toglie regolarmente dal
 calendario. I lunedì che contano cadono quindi soprattutto in alta stagione, e
 quelli tranquilli non sono. Un lunedì tranquillo, a Soltau, di solito è un
@@ -513,19 +512,6 @@ E per chi sta pianificando il nord proprio adesso: anche al
 dalle vacanze spariscono dal calendario alcuni giorni feriali, e anche lì il
 venerdì è fra i giorni più tranquilli. Le due guide si possono tenere una
 accanto all’altra.
-
-## Che cosa mi porto via da Soltau
-
-Brühl ha un racconto continuo, Rust ha 18 paesi. L’Heide Park ha le
-attrazioni, e con quattro di queste è stato il primo in Germania.
-
-Lo si paga in superficie. 85 ettari con poca ombra e lunghi tragitti fra le
-grandi attrazioni, e un sabato di agosto se ne sente ogni metro. Se vuoi
-risparmiartelo, prendi un venerdì di settembre invece di un sabato di agosto,
-e decidilo a casa, non nella fila di Colossos.
-
-E se vieni in ottobre: i sabati lunghi cominciano solo a mezzogiorno. Chi alle
-dieci sta davanti al cancello aspetta due ore su un prato.
 
 — Patrick
 

@@ -327,7 +327,7 @@ text: De prijzen per dag staan in de kalender van Universal.
 ## Express Pass: wat hij kost en waar hij geldt
 
 Met de Express Pass koop je je bij Universal langs de rij. Hij bestaat in drie vormen, en die
-verschillen meer dan de naam doet vermoeden.
+verschillen in hoe vaak hij per attractie geldt en in welke parken.
 
 **Universal Express** geldt één keer per attractie. Universal verkoopt hem voor de Studios, Islands of
 Adventure, Epic Universe en Volcano Bay, als toeslag op het ticket. Voor de Studios en Islands of Adventure

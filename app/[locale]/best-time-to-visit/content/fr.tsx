@@ -59,7 +59,7 @@ const FAQ = [
   {
     question: 'Quels mois les parcs d’attractions sont-ils les moins fréquentés ?',
     answer:
-      'Cela dépend du parc plus que la règle empirique ne le laisse croire : sur l’ensemble des parcs, les mois d’été ne sont pas les plus chargés, et décembre ressort vers le haut, parce qu’en hiver seuls les parcs à programme de Noël sont ouverts. Mois par mois, tout est dans l’aperçu ci-dessus. Pour un parc précis, c’est son propre calendrier qui compte.',
+      'Sur l’ensemble des parcs, les mois d’été ne sont pas les plus chargés, et décembre ressort vers le haut, parce qu’en hiver seuls les parcs à programme de Noël sont ouverts. Mois par mois, tout est dans l’aperçu ci-dessus. Pour un parc précis, c’est son propre calendrier qui compte.',
   },
   {
     question: 'Est-ce que ça vaut le coup de venir sous la pluie ?',

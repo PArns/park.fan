@@ -190,8 +190,7 @@ se construye desde el otoño de 2025 la zona de **El Rey León**: más de 30.000
 metros cuadrados en torno a una atracción acuática con tres caídas, la mayor de
 16 metros desde la Roca del Rey. Disney aún no ha dado fecha de apertura.
 
-Las atracciones que ya estaban son más antiguas de lo que la reforma sugiere.
-**[The Twilight Zone Tower of
+De las atracciones que ya estaban, **[The Twilight Zone Tower of
 Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror)** y
 **Crush's Coaster** son ambas de 2007,
 **[Ratatouille](ref:disney-adventure-world/ratatouille-laventure-totalement-toquee-de-remy)**,

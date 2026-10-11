@@ -188,9 +188,9 @@ Herbst 2025 der Bereich zum **König der Löwen** gebaut: mehr als 30.000
 Quadratmeter rund um eine Wasserbahn mit drei Abfahrten, die höchste 16 Meter
 tief vom Königsfelsen. Ein Eröffnungsdatum hat Disney noch nicht genannt.
 
-Die Bahnen davor sind älter, als der Umbau vermuten lässt. **[The Twilight Zone
+Von den Bahnen, die schon vor dem Umbau standen, sind **[The Twilight Zone
 Tower of Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror)**
-und **Crush's Coaster** sind beide von 2007,
+und **Crush's Coaster** beide von 2007,
 **[Ratatouille](ref:disney-adventure-world/ratatouille-laventure-totalement-toquee-de-remy)**
 mit seinen fahrerlosen Wagen von 2014. **[Spider-Man W.E.B.
 Adventure](ref:disney-adventure-world/spider-man-web-adventure)** kam im Juli

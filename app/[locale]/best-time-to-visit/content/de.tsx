@@ -59,7 +59,7 @@ const FAQ = [
   {
     question: 'In welchen Monaten sind Freizeitparks am leersten?',
     answer:
-      'Das hängt stärker vom Park ab, als die Faustregel vermuten lässt: Über alle Parks gerechnet sind die Sommermonate nicht die vollsten, und der Dezember sticht nach oben heraus, weil im Winter nur die Parks mit Weihnachtsprogramm geöffnet haben. Monat für Monat steht es in der Übersicht oben. Für einen konkreten Park zählt sein eigener Kalender.',
+      'Über alle Parks gerechnet sind die Sommermonate nicht die vollsten, und der Dezember sticht nach oben heraus, weil im Winter nur die Parks mit Weihnachtsprogramm geöffnet haben. Monat für Monat steht es in der Übersicht oben. Für einen konkreten Park zählt sein eigener Kalender.',
   },
   {
     question: 'Lohnt sich ein Besuch bei Regen?',
