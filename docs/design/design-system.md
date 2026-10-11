@@ -965,7 +965,7 @@ card on the site. `ParkCard` and `AttractionCard` put it in their own 34 px circ
 circle's **top-left** corner, and the star — centred in the button, not in the circle — came to
 rest 6 px right and 6 px down of the ring drawn around it. Measured at 390 px: the star's centre
 sat 23 px from the card's right edge and 35 px from its top where the circle's centre is at 29/29,
-on 12 of 12 cards on the homepage and 19 of 19 on a park page. The show, restaurant and in-park
+on 12 of 12 cards on the homepage and 19 of 19 on a park page. The show and restaurant
 cards anchor an `absolute top-2 right-2` wrapper by **its** top-right instead, so the same 28 px
 went the other way and pushed the star 14 px down and to the left, into the card: 31/31 from the
 corner against the 17/17 the wrapper asks for. Both are the same bug, and both look like a

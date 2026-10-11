@@ -4,7 +4,12 @@
  * `pnpm test:in-park-block` can run it without a browser.
  */
 import { calculateDistance } from '@/lib/utils/distance-utils';
-import type { AttractionWithDistance, NearbyAttractionsData, NearbyResponse } from '@/types/nearby';
+import type {
+  AttractionWithDistance,
+  NearbyAttractionsData,
+  NearbyResponse,
+  UserLocation,
+} from '@/types/nearby';
 import { IN_PARK_FALLBACK_DISTANCE_M } from '@/types/nearby';
 
 /** What the in-park line and block show. */
@@ -19,9 +24,17 @@ export type InParkBlockState =
   | { kind: 'away'; distanceM: number | null }
   /**
    * Inside this park. `showDistances` is false when the fix is coarser than the in-park radius,
-   * where a per-ride distance would be noise.
+   * where a per-ride distance would be noise. `nearby` is the answer that placed the visitor
+   * here, with the API's own distances, and `userLocation` the point it was computed for: the
+   * compass measures from them itself.
    */
-  | { kind: 'inPark'; rides: AttractionWithDistance[]; showDistances: boolean };
+  | {
+      kind: 'inPark';
+      rides: AttractionWithDistance[];
+      showDistances: boolean;
+      nearby: NearbyAttractionsData;
+      userLocation: UserLocation;
+    };
 
 /** Everything {@link resolveInParkBlock} decides from. */
 export interface InParkBlockInput {
@@ -31,6 +44,17 @@ export interface InParkBlockInput {
   /** Ride id → coordinates, from the park page's own attraction list. */
   rideCoordinates: ReadonlyMap<string, { lat: number; lng: number }>;
   nearby: NearbyResponse | undefined;
+  /**
+   * The current key's request failed and has no answer of its own: a phone back from the pocket
+   * on a radio that is not up yet. Then `heldNearby` stands in for `nearby`.
+   */
+  nearbyFailed?: boolean;
+  /**
+   * The last answer that arrived for any key. A failed request keeps the last known state, as the
+   * park's own live poll does, rather than reading as „away" and taking the block, and the compass
+   * in it, off the page until the next poll.
+   */
+  heldNearby?: NearbyResponse;
   /**
    * The nearby query has no answer for the current key yet (`isPending`, or still showing the
    * previous key's `placeholderData`). With a fix in hand this must not read as „away".
@@ -77,12 +101,21 @@ export function withCurrentDistances(
 
 /** Decides what the in-park line and block show for the current location state. */
 export function resolveInParkBlock(input: InParkBlockInput): InParkBlockState {
-  const data = inParkDataFor(input.nearby, input.parkId);
+  const nearby = input.nearby ?? (input.nearbyFailed ? input.heldNearby : undefined);
+  const data = inParkDataFor(nearby, input.parkId);
+  // Set exactly when `data` is: `inParkDataFor` only answers for an `in_park` response.
+  const userLocation = nearby?.userLocation as UserLocation;
 
   if (input.simulated && data) {
     // Computed from preset coordinates; a real fix (the developer's desk) would make every distance
     // kilometres, so the API's numbers are the only honest ones.
-    return { kind: 'inPark', rides: data.rides ?? [], showDistances: true };
+    return {
+      kind: 'inPark',
+      rides: data.rides ?? [],
+      showDistances: true,
+      nearby: data,
+      userLocation,
+    };
   }
 
   if (!input.initialCheckDone) return { kind: 'pending' };
@@ -101,6 +134,8 @@ export function resolveInParkBlock(input: InParkBlockInput): InParkBlockState {
         ? withCurrentDistances(rides, input.position, input.rideCoordinates)
         : rides,
       showDistances,
+      nearby: data,
+      userLocation,
     };
   }
 

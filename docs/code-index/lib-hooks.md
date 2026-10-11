@@ -8,6 +8,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`live-poll-options.ts`](../../lib/hooks/live-poll-options.ts)
 
 - `LIVE_POLL_QUERY_OPTIONS` _const_: React Query timing shared by every client query that polls live data on the five-minute cycle.
+- `LIVE_POLL_TIMEOUT_MS` _const_: How long one live poll of the park may take before it counts as failed.
 
 ### [`use-active-on-screen.ts`](../../lib/hooks/use-active-on-screen.ts)
 
@@ -194,6 +195,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useParkWaitTimes` _hook_: The live status and standby wait of every ride in a park, keyed by attraction slug: one request per park, shared by every ride reference in a blog post. Client-only, polling like `useRegionParks`.
 - Types: `LiveRideFields`, `ParkWaitTimesSnapshot`
+
+### [`use-placed-out-of-sight.ts`](../../lib/hooks/use-placed-out-of-sight.ts)
+
+- `usePlacedOutOfSight` _hook_: Whether a late block with no box held open for it may go into the slot `ref` marks: once `ready`, the first moment its arrival moves nothing the reader is looking at. Once true it stays true.
+- `useScrollAnchoring` _hook_: Whether the browser keeps what the reader is looking at in place when something is inserted above it (CSS scroll anchoring).
 
 ### [`use-plan-day.ts`](../../lib/hooks/use-plan-day.ts)
 

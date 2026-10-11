@@ -74,6 +74,30 @@ const testCases = [
     expected: null,
   },
   {
+    name: 'liveDataHint: answer 40 min old, poll in flight (back from the pocket) → no warning',
+    actual: () =>
+      liveDataHint({
+        now: NOW,
+        dataUpdatedAt: NOW - 40 * MIN,
+        failed: false,
+        paused: false,
+        fetching: true,
+      }),
+    expected: null,
+  },
+  {
+    name: 'liveDataHint: failed poll being retried → still outdated',
+    actual: () =>
+      liveDataHint({
+        now: NOW,
+        dataUpdatedAt: NOW - 40 * MIN,
+        failed: true,
+        paused: false,
+        fetching: true,
+      }),
+    expected: 'outdated',
+  },
+  {
     name: 'liveDataHint: answer 11 min old → outdated',
     actual: () =>
       liveDataHint({ now: NOW, dataUpdatedAt: NOW - 11 * MIN, failed: false, paused: false }),

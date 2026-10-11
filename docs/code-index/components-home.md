@@ -245,3 +245,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`story/why-park-fan.tsx`](../../components/home/story/why-park-fan.tsx)
 
 - `WhyParkFan` _component_: The six differentiators, and the two pages that back them up.
+
+### [`use-load-park-compass.ts`](../../components/home/use-load-park-compass.ts)
+
+- `useLoadParkCompass` _hook_: Fetches the in-park compass's own module by hand once `wanted` is true and never before, so a reader who is not standing in a park downloads none of it, then hands its component to `set`.
+- Types: `ParkCompassComponent`

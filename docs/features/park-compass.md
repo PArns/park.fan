@@ -1,10 +1,13 @@
 # The in-park compass
 
-Under the homepage hero, for a visitor the nearby answer places inside a park: the park's
-headliners on a compass dial, the ride the phone points at in a bar under it, and the same rides
-as a list with the way to go, the distance and the wait. Code: `components/home/park-compass-slot.tsx`
-(mount point), `park-compass.tsx` (state, bar, list), `park-compass-dial.tsx` (the dial),
-`lib/utils/compass.ts` (all the arithmetic, `pnpm test:compass`), `lib/hooks/use-compass-heading.ts`.
+Under the homepage hero and at the top of that park's own page, for a visitor the nearby answer
+places inside a park: the park's headliners on a compass dial, the ride the phone points at in a bar
+under it, and the same rides as a list with the way to go, the distance and the wait. Code:
+`components/home/park-compass-slot.tsx` (homepage mount point), `components/parks/park-in-park-block.tsx`
+(park page mount point), `use-load-park-compass.ts` (the module, fetched by hand),
+`park-compass.tsx` (state, bar, list),
+`park-compass-dial.tsx` (the dial), `lib/utils/compass.ts` (all the arithmetic, `pnpm test:compass`),
+`lib/hooks/use-compass-heading.ts`.
 
 The first version is described in [homepage-hero.md](homepage-hero.md#under-the-hero-the-headliners-on-a-compass);
 this page is what it became after a design, an architecture and a usability review on 2026-09-27,
@@ -70,6 +73,101 @@ Suspense streaming, and this is geolocation-driven client state), so every figur
 comes from Playwright's `layout-shift` entries against `pnpm build && pnpm start`: these with the
 device placed at Cologne Cathedral under `?sim=compass:disneylandparis`, the table above from a
 real visit placed at Disneyland in Anaheim.
+
+## On the park page
+
+A visitor standing in the park gets the same compass on that park's page, directly under the title
+card, from `ParkInParkBlock`. It replaced the block's headliner list, which named the same rides
+with the same waits and no direction. Under it, on the title card's glass (`GlassCard` `tile`), sit
+„Jetzt kürzer als später" (`NextBestRides`) and the five nearest other rides, labelled `h3` under a
+visually hidden `h2` („In deiner Nähe"). If the compass's chunk does not arrive, the headliners
+stay in that panel instead of the block waiting for it for good. Nothing in the block stands on the
+bare photo any more: its heading and the two list labels did, and over a bright photo they were
+unreadable. The block is 1,885 px on a 390 px phone with the compass, against 1,512 px for the old
+lists (`?sim=phantasialand`).
+
+The block reads the in-park answer through `useInParkBlock` (the state carries it, with the point
+it was asked for) and fetches the compass's module only once that answer places the visitor in this
+park; the lists wait for the module, so the page moves once. Inserted above a reader who has
+scrolled, the block is absorbed by the browser's scroll anchoring, so where there is anchoring
+(`useScrollAnchoring`: Chromium, Firefox) it goes in at once; the homepage's rule would only move the
+shift to the moment the reader comes back to the top. Where there is none (WebKit, so every iPhone),
+it waits for `usePlacedOutOfSight`, the homepage's rule, rather than shove a reader 1,900 px down
+the ride list. The panel's rows are the compass list's rows (`InParkRow`, `IN_PARK_ROW_LINK`,
+`LiveWaitPill`): name, distance and, without a wait, the status as text on the second line, the
+wait as the solid pill. The homepage's in-park view and the nowcast banner's covered rides draw the
+same row.
+
+Layout shift against `pnpm build && pnpm start`, Chromium, a real fix inside Phantasialand (no
+`?sim`), Playwright's `layout-shift` entries over 15 s, `main` (`410b3d5`) and this change built
+side by side and measured alternately, so both saw the same live data:
+
+| viewport, reader at | before (headliner list)  | now (compass)      |
+| ------------------- | ------------------------ | ------------------ |
+| 390 × 844, y = 0    | 0.4425 (0.3399 + 0.1025) | 0.3757 (one shift) |
+| 412 × 915, y = 0    | 0.4996 (0.3880 + 0.1116) | 0.4211 (one shift) |
+| 1280 × 800, y = 0   | 0.4340                   | 0.4422             |
+| 390 × 844, y = 1100 | 0.0564                   | 0.0727             |
+
+Before, „Jetzt kürzer als später" arrived a second later at the top of the lists and moved them
+again (the second figure); now it arrives in the panel under the compass, below the first screen.
+At y = 1100 neither block moves anything on screen: every entry in both columns is the ride list
+shifting by itself (the tile row 16 px down, a 72 px line appearing inside two ride cards), five
+runs each with the same result. The totals differ because the title card is 32 px shorter now, so a
+reader at 1100 has other cards on screen. WebKit was not measured: no WebKit build is installed
+where this was written.
+
+The compass costs a visitor in the park its own chunk (13.2 KB gzip), the dial's photo (3.5 KB)
+and `/positions` (0.7 KB brotli). First visit on the wire, 360 × 780, cache disabled, the budget's
+harness (`/api/*` uncompressed under `next start`): in the park 876.8 → 898.4 KB, outside it
+865.6 → 867.0 KB. `main` is past the [byte budget](../rules/a-day-in-the-park-has-a-byte-budget.md)'s
+850 KB on this harness already; its table dates from 2026-09-24.
+
+## Back from the pocket
+
+A visitor in the park keeps the park page open and the phone in a pocket. Coming back to it, the
+block has to stand where it stood and then catch up with where the visitor is now, without a flash
+of „away" and without asking again for anything already granted. What happens on the
+`visibilitychange` that brings the tab back:
+
+- **The position.** The geolocation provider reads a fix no older than 30 s
+  (`FRESH_MAX_AGE_MS`), in a park or not, and so does the 60-second tick inside a park; the 5-minute
+  tick outside keeps 8 minutes. With 8 minutes for every read, the read on return got the fix from
+  before the pocket back unless the pocket lasted longer, and so did the in-park tick, unless the
+  compass's own GPS watch happened to be running. In a park that is about 60 low-accuracy position
+  lookups an hour with the tab in front, against about 8 before, when most ticks were answered from
+  the browser's cache; none while it is hidden.
+- **The nearby answer.** A position-keyed answer no longer refetches on focus: that request went
+  out with the coordinates from before the pocket, for an answer the new fix replaced a moment
+  later. The new fix's key fetches by itself; a fix that does not move is refetched 6 s after the
+  return if older than five minutes (`RETURN_REFETCH_DELAY_MS`). The GeoIP answer still refetches
+  on focus.
+- **Seeding a new key.** The localStorage entry still paints any key within 10 km, but it seeds one
+  (counts as fresh data, so no request) only when the move since it was asked cannot have crossed
+  the 1 km in-park radius of a park it names (`readSeedEntry`, `answerSurvivesMove`): inside, the
+  park's distance plus the move stays within it; outside, the nearest park's distance minus the
+  move stays beyond it. Walking around inside the park keeps the 5-minute cadence; walking in or out
+  asks at once. With 10 km for both, an answer asked from the car park, written by any request with
+  the old coordinates, kept the visitor reading „away" inside the park until the next poll.
+- **A failed request** keeps the last answer (`heldNearby` in `resolveInParkBlock`, which hands it to
+  the block through the state), the way the park's live poll keeps its last state. It used to read
+  as „away" and take the block, and the compass in it, off the page until the next poll.
+- **The compass** keeps an iOS grant for the page (`iosGrantedThisPage`). The „as of" line over the
+  ride list says nothing about age during a poll's first attempt (`liveDataHint`); the poll times
+  out after 15 s (`LIVE_POLL_TIMEOUT_MS`), so a stalled request cannot keep it quiet.
+
+Checked in Playwright against `next dev`, park page, the tab hidden for 6 or 25 minutes on the
+page's clock and 31 s of real time (the browser's position cache ages in real time), the tab then
+shown again:
+
+| case                                     | before                                | now                                     |
+| ---------------------------------------- | ------------------------------------- | --------------------------------------- |
+| in the park, moved 280 m                 | one request, old coordinates; old fix | one request, new coordinates, at +0.2 s |
+| 1.3 km outside, walked in                | (the race above)                      | one request, new coordinates; block in  |
+| in the park, every `/api/nearby` aborted | block and compass gone                | block, compass and „im Park" stay       |
+
+The in-park answer is 2.6 KB brotli (11.6 KB raw, 38 rides at Phantasialand). Coming back costs
+the same requests the [byte budget](../rules/a-day-in-the-park-has-a-byte-budget.md) counts.
 
 ## The dial
 
@@ -145,7 +243,9 @@ the chips show the compass point („SW") and the rows say „Richtung Südweste
 up and says so.
 
 - **iOS**: „Kompass einschalten", with the line „Safari fragt einmal nach Zugriff auf Bewegung und
-  Ausrichtung. Bis dahin ist Norden oben." After a denial, „Nochmal fragen".
+  Ausrichtung. Bis dahin ist Norden oben." After a denial, „Nochmal fragen". A grant is kept for
+  the page (`iosGrantedThisPage`), not the component: the park page's block unmounts the compass
+  whenever its nearby answer drops out for a moment, and the reader is not asked to tap again.
 - **A stream that stops** (no event for 3 s, or none within 1.5 s of listening again) drops back to
   north up. It used to stay „active" forever, a frozen arrow under a pulsing live dot.
 - **Calibration**: Safari reports its own error; over 25° or unknown, the line says „Kompass
@@ -216,7 +316,8 @@ says the reader now stands still at one point in the park.
 
 Five Umami events, four of them without a property: `compass_viewed` and `compass_heading_on`
 once per page view, `compass_ride_pinned`, `compass_ride_opened` (`from`: bar or list) and
-`compass_pill_clicked`. None fires under `?sim=`. Pricing and the reasoning are in
+`compass_pill_clicked`. None fires under `?sim=`. The homepage and the park page send the same
+events; Umami records the page, so the two are told apart without a property. Pricing and the reasoning are in
 [analytics](../development/analytics.md#the-in-park-compasss-five-events-sep-2026).
 
 ## What the review asked for and did not get

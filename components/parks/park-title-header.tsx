@@ -47,6 +47,12 @@ interface ParkTitleHeaderProps {
    */
   location?: React.ReactNode;
   /**
+   * What sits at the end of the location control's line (`RiddenCounter`). That line has one fixed
+   * height in every state, so something that appears there after hydration moves nothing. Drawn
+   * only together with `location`, since without it there is no such line.
+   */
+  besideLocation?: React.ReactNode;
+  /**
    * The `.ics` download of the park's coming opening days (`/api/parks/hours/…`). Only the park
    * page passes it, and only for a park with at least one coming opening day: the page decides,
    * because it holds the schedule and this header is shared with pages that offer no download.
@@ -80,6 +86,7 @@ export async function ParkTitleHeader({
   suffix,
   intro,
   location,
+  besideLocation,
   hoursIcsHref,
   children,
 }: ParkTitleHeaderProps) {
@@ -140,7 +147,12 @@ export async function ParkTitleHeader({
               about 250 px, and every locale's "At the park? Show rides near you" is longer. From
               `lg` up it takes what is left of the line (`basis-0`), so its own width never decides
               whether the row wraps and no state of it can move the card. */}
-            {location && <div className="min-w-0 basis-full lg:flex-1 lg:basis-0">{location}</div>}
+            {location && (
+              <div className="flex min-w-0 basis-full items-center gap-3 lg:flex-1 lg:basis-0">
+                {location}
+                {besideLocation}
+              </div>
+            )}
           </div>
         </div>
         {park.id && <ParkFavoriteButton parkId={park.id} />}

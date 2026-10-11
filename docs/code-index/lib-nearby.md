@@ -9,6 +9,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `isMeaningful` _function_: Only count results that are worth showing — in_park always qualifies, nearby_parks needs ≥1 park.
 - `sameLocationBasis` _function_: An entry answers "where am I" asked either with real coordinates or without them (a city-level GeoIP answer that cannot resolve the in-park radius), so one may not stand in for the other.
+- `answerSurvivesMove` _function_: Whether an answer still holds after the visitor moved `movedM` metres from where it was asked: true only when the move cannot have carried them across the in-park radius of a park it names.
+- `readSeedEntry` _function_: The entry that may seed a query as `initialData`, which suppresses its request for the rest of `CACHE_MAX_AGE_MS`: `readCacheEntry`, and on top of it `answerSurvivesMove` for an entry asked from other coordinates.
 - `readCacheEntry` _function_: Read from localStorage. Returns undefined when: - No entry exists, or it is unreadable - The entry is older than CACHE_MAX_AGE_MS - The entry and the current query do not share a location basis (see sameLocationBasis) - Both carry …
 - `readCache` _function_: Returns the cached nearby answer that still fits the current coordinates (see `readCacheEntry`), or undefined.
 - `writeCache` _function_: Stores a nearby answer in localStorage with the time and the coordinates it was asked with (null for a GeoIP answer); storage errors are ignored.

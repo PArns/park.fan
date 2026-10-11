@@ -33,6 +33,14 @@ const STREAM_LOST_MS = 3000;
 
 type PermissionRequester = { requestPermission?: () => Promise<'granted' | 'denied'> };
 
+/**
+ * An iOS grant, kept for the page rather than for the component: the compass unmounts whenever its
+ * block goes away for a moment (a failed nearby poll after the phone comes back from the pocket),
+ * and Safari does not ask twice, but a fresh `unknown` would make the reader tap „Kompass
+ * einschalten" again.
+ */
+let iosGrantedThisPage = false;
+
 /** What the browser offers at all — a fact about the device, read once, never changing. */
 type Capability = 'none' | 'ios' | 'standard';
 
@@ -63,7 +71,9 @@ export function useCompassHeading(
   enabled: boolean
 ): { status: CompassStatus; enable: () => void; unreliable: boolean } {
   const capability = useSyncExternalStore(subscribeNever, readCapability, (): Capability => 'none');
-  const [permission, setPermission] = useState<'unknown' | 'granted' | 'denied'>('unknown');
+  const [permission, setPermission] = useState<'unknown' | 'granted' | 'denied'>(() =>
+    iosGrantedThisPage ? 'granted' : 'unknown'
+  );
   const [stream, setStream] = useState<'pending' | 'active' | 'silent'>('pending');
   const [unreliable, setUnreliable] = useState(false);
   const emit = useEffectEvent((heading: number) => onHeading(heading));
@@ -129,7 +139,10 @@ export function useCompassHeading(
     // Called straight from the tap handler: Safari refuses a request that is not inside a gesture.
     requester
       .requestPermission()
-      .then((answer) => setPermission(answer === 'granted' ? 'granted' : 'denied'))
+      .then((answer) => {
+        if (answer === 'granted') iosGrantedThisPage = true;
+        setPermission(answer === 'granted' ? 'granted' : 'denied');
+      })
       .catch(() => setPermission('denied'));
   }, []);
 
