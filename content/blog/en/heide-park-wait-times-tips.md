@@ -219,8 +219,7 @@ of 25 September 2026), each ride with its own number of measured days:
 
 ```
 
-Colossos is on top, and the gap to what follows is smaller than you’d
-expect at a park with a ride that famous. Queueing for a long time in Soltau
+Colossos is on top, but not by much. Queueing for a long time in Soltau
 doesn’t necessarily mean queueing for the woodie: close behind it, alongside
 Flug der Dämonen and Krake, sit the Bobbahn from 1993 and the log flume from
 1980, two rides that appear in nobody’s trip report as a reason to drive to
@@ -294,9 +293,9 @@ for the coming weeks is in the calendar on the [park page](ref:heide-park).
 
 ### The weekday
 
-The weekday matters less here than you might think. Saturday sits at the top,
-Friday at the bottom, and the days in between sit close together in the table
-above. Monday rests on only about half as many measured days as the rest,
+Saturday sits at the top, Friday at the bottom, and the gap between the two is
+small. The days in between sit close together in the table above. Monday rests
+on only about half as many measured days as the rest,
 because the park regularly takes it out of the calendar in spring and in
 September. So the Mondays that do get counted are mostly high-season ones, and
 those aren’t quiet. A quiet Monday in Soltau is usually a closed Monday. For other parks, the
@@ -495,19 +494,6 @@ And if you’re planning the north right now:
 [Movie Park Germany](/blog/movie-park-germany-wait-times-tips) also drops some
 weekdays from its calendar outside the holidays, and there too Friday is one of
 the quietest days.
-
-## What I would tell you about Soltau
-
-Brühl has its continuous story, Rust its 18 countries. Heide Park has rides,
-and with four of them it was first in Germany.
-
-You pay for that in acreage. 85 hectares with little shade and long distances
-between the big rides, and on a Saturday in August you feel every metre of it.
-If you’d rather not, take a Friday in September instead of a Saturday in
-August.
-
-And if you come in October: the long Saturdays don’t start until noon. Stand
-in front of the gate at ten and you’ll spend two hours on a meadow.
 
 — Patrick
 

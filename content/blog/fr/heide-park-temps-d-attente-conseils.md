@@ -230,9 +230,8 @@ mesurés :
 
 ```
 
-Colossos est en tête, et l’écart avec la suite est plus faible qu’on ne
-l’attendrait dans un parc doté d’une attraction aussi connue. Attendre
-longtemps à Soltau ne veut pas forcément dire attendre devant le coaster en
+Colossos est en tête, avec une faible avance sur les attractions suivantes.
+Attendre longtemps à Soltau ne veut pas forcément dire attendre devant le coaster en
 bois : juste derrière, à côté de Flug der Dämonen et de Krake, se trouvent la
 Bobbahn de 1993 et la bûche de 1980, deux attractions qu’aucun récit de voyage
 ne cite comme motif du trajet jusqu’à Soltau. Pour la bûche, c’est la météo
@@ -312,9 +311,9 @@ effectivement publié pour les prochaines semaines figure au calendrier sur la
 
 ### Le jour de la semaine
 
-Le jour de la semaine pèse ici moins qu’on ne le croit. Le samedi est en haut,
-le vendredi en bas, et les jours intermédiaires se tiennent de près dans le
-tableau ci-dessus. Le lundi ne repose que sur environ la moitié des jours
+Le samedi est en haut, le vendredi en bas, et l’écart entre les deux est
+faible. Les jours intermédiaires se tiennent de près dans le tableau ci-dessus.
+Le lundi ne repose que sur environ la moitié des jours
 mesurés des autres, parce que le parc le retire régulièrement du calendrier au
 printemps et en septembre. Les lundis comptés tombent donc surtout en haute
 saison, et ceux-là n’ont rien de calme. Un lundi calme, à Soltau, est le plus
@@ -528,19 +527,6 @@ Et pour qui planifie le nord en ce moment : au
 certains jours de semaine disparaissent du calendrier hors vacances, et là
 aussi le vendredi compte parmi les jours les plus calmes. On peut poser les deux
 guides côte à côte.
-
-## Ce que je retiens de Soltau
-
-Là où Brühl a un récit continu et Rust 18 pays, le Heide Park a des
-attractions, et pour quatre d’entre elles il a été le premier en Allemagne.
-
-Cela se paie en superficie. 85 hectares avec peu d’ombre et de longs trajets
-entre les grandes attractions, et un samedi d’août on en sent chaque mètre.
-Si vous voulez vous l’épargner, prenez un vendredi de septembre plutôt qu’un
-samedi d’août, et décidez-le à la maison, pas dans la file de Colossos.
-
-Et si vous venez en octobre : les longs samedis ne commencent qu’à midi. Qui se
-présente à dix heures devant les portes attend deux heures dans un pré.
 
 — Patrick
 

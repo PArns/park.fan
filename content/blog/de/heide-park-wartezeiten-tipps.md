@@ -218,9 +218,9 @@ März öffnet, stehen in der Tabelle nur Tage aus der Saison 2026
 
 ```
 
-Colossos steht oben, und der Abstand nach unten ist kleiner, als man ihn bei
-einem Park mit einer so bekannten Bahn erwarten würde. Wer in Soltau lange
-ansteht, steht dabei nicht zwangsläufig vor der Holzachterbahn, denn knapp
+Colossos steht oben, mit kleinem Vorsprung vor den Bahnen darunter. Wer in
+Soltau lange ansteht, steht dabei nicht zwangsläufig vor der Holzachterbahn,
+denn knapp
 dahinter liegen neben Flug der Dämonen und der Krake auch die Bobbahn von 1993
 und die Wildwasserbahn von 1980, zwei Anlagen, die in keinem Reisebericht als
 Grund für die Fahrt nach Soltau auftauchen. Bei der Wildwasserbahn liegt es am
@@ -297,8 +297,8 @@ nächsten Wochen tatsächlich veröffentlicht ist, steht im Kalender auf der
 
 ### Der Wochentag
 
-Am Wochentag hängt hier nicht viel. Oben steht der Samstag, unten
-der Freitag, und die Tage dazwischen liegen in der Tabelle darüber dicht
+Oben steht der Samstag, unten der Freitag, und der Abstand zwischen den beiden
+ist klein. Die Tage dazwischen liegen in der Tabelle darüber dicht
 beieinander. Der Montag steht auf nur etwa halb so vielen Messtagen wie die
 anderen, weil der Park ihn im Frühjahr und im September regelmäßig aus dem
 Kalender nimmt. Gezählt werden also vor allem Montage in der Hauptsaison, und
@@ -507,19 +507,6 @@ Auch im
 außerhalb der Ferien einzelne Wochentage im Kalender, und auch dort gehört der
 Freitag zu den ruhigsten Tagen. Die beiden Guides lassen sich gut
 nebeneinanderlegen.
-
-## Was ich dir für Soltau mitgebe
-
-Bei vier Bauarten war der Heide Park in Deutschland der Erste, auch ohne
-durchgehende Erzählung wie in Brühl oder 18 Länder wie in Rust.
-
-Die Bahnen verteilen sich auf 85 Hektar, mit wenig Schatten und langen Wegen
-dazwischen, und an einem Augustsamstag merkst du jeden Meter. Wer das nicht will,
-nimmt einen Freitag im September statt eines Samstags im August, und diese
-Entscheidung fällt zu Hause, nicht erst in der Warteschlange vor Colossos.
-
-Im Oktober fangen die langen Samstage erst um zwölf an. Wer
-um zehn vor dem Tor steht, wartet zwei Stunden auf einer Wiese.
 
 — Patrick
 
