@@ -1,0 +1,35 @@
+{
+  "title": "Galactica",
+  "park": "alton-towers",
+  "ride": "galactica",
+  "area": "Forbidden Valley",
+  "tags": ["day", "sunny", "outdoor", "photo", "coaster"],
+  "alt": {
+    "de": "Ein Zug mit bäuchlings hängenden Fahrgästen fährt durch einen blau-weißen Ring aus Metall.",
+    "en": "A train of riders lying face down passes through a blue and white metal ring.",
+    "nl": "Een trein met voorover hangende passagiers gaat door een blauw-witte metalen ring.",
+    "fr": "Un train de passagers suspendus à plat ventre traverse un anneau métallique bleu et blanc.",
+    "es": "Un tren con pasajeros boca abajo atraviesa un aro metálico azul y blanco.",
+    "it": "Un treno con passeggeri a pancia in giù attraversa un anello metallico bianco e blu."
+  },
+  "caption": {
+    "de": "Auf Galactica liegt man bäuchlings unter der Schiene. Das Portal steht gleich hinter der Station.",
+    "en": "On Galactica you lie face down under the track. The portal sits right behind the station.",
+    "nl": "Op Galactica lig je voorover onder de rails. Het portaal staat vlak achter het station.",
+    "fr": "Sur Galactica, on roule à plat ventre sous la voie. Le portail se trouve juste derrière la gare.",
+    "es": "En Galactica se viaja boca abajo bajo la vía. El aro está justo detrás de la estación.",
+    "it": "Su Galactica si viaggia a pancia in giù sotto il binario. Il portale è subito dietro la stazione."
+  },
+  "credit": {
+    "author": "BBell245",
+    "license": "cc0-1.0",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Galactica_(Alton_Towers)_29.07.2023.jpg",
+    "year": 2023
+  },
+  "shotAt": "2023-07-29",
+  "focus": {
+    "x": 0.52,
+    "y": 0.55
+  }
+}

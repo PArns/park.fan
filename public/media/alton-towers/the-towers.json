@@ -1,0 +1,34 @@
+{
+  "title": "Die Towers",
+  "park": "alton-towers",
+  "area": "The Towers & Gardens",
+  "tags": ["day", "overcast", "outdoor", "photo"],
+  "alt": {
+    "de": "Ein graues Herrenhaus mit Zinnen, Türmen und gläsernen Wintergärten hinter beschnittenen Eiben und einem Lavendelbeet.",
+    "en": "A grey stately home with battlements, towers and glazed conservatories behind clipped yews and a lavender bed.",
+    "nl": "Een grijs landhuis met kantelen, torens en glazen serres achter gesnoeide taxussen en een lavendelbed.",
+    "fr": "Une demeure grise à créneaux, tours et jardins d'hiver vitrés derrière des ifs taillés et un parterre de lavande.",
+    "es": "Una casa señorial gris con almenas, torres e invernaderos acristalados tras tejos recortados y un arriate de lavanda.",
+    "it": "Una dimora grigia con merlature, torri e giardini d'inverno vetrati dietro tassi potati e un'aiuola di lavanda."
+  },
+  "caption": {
+    "de": "Die Towers mit den Wintergärten. Das Haus gibt dem Park seinen Namen, und Hex fährt in seinem Inneren.",
+    "en": "The Towers and their conservatories. The house gives the park its name, and Hex runs inside it.",
+    "nl": "De Towers met hun serres. Het huis geeft het park zijn naam, en Hex draait binnenin.",
+    "fr": "Les Towers et leurs jardins d'hiver. La maison donne son nom au parc, et Hex tourne à l'intérieur.",
+    "es": "Las Towers y sus invernaderos. La casa da nombre al parque, y Hex funciona en su interior.",
+    "it": "Le Towers e i loro giardini d'inverno. La casa dà il nome al parco, e Hex gira al suo interno."
+  },
+  "credit": {
+    "author": "Christophe Badoux",
+    "license": "cc0-1.0",
+    "source": "wikimedia-commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Castle_Alton_Towers.JPG",
+    "year": 2012
+  },
+  "shotAt": "2012-08-16",
+  "focus": {
+    "x": 0.5,
+    "y": 0.3
+  }
+}
