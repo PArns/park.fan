@@ -100,7 +100,9 @@ net zo snel in de verzadiging loopt als Peter Pan’s Flight in Parijs: een klei
 publiek beschermt je niet tegen lange rijen als er maar weinig attracties zijn
 waarover de drukte zich kan verdelen. De wiskunde is in het Phantasialand
 meedogenlozer dan in het weidse [Europa-Park](ref:europa-park) met zijn veertien
-achtbanen. Daarbij beprijst het park zijn tickets zo agressief dat het zelfs veel
+achtbanen. Het Phantasialand heeft zo’n derde van het publiek van het Europa-Park,
+en toch sta je hier volgens onze data langer in de rij.
+Daarbij beprijst het park zijn tickets zo agressief dat het zelfs veel
 weekenden goed vult. De legendarische “lege zaterdag” hoort inmiddels eerder in
 het sprookjesbos thuis dan in de agenda.
 
@@ -384,6 +386,11 @@ beperkt. Een leger express-pass-gasten dat je zoals in Orlando onophoudelijk de
 capaciteit wegkoopt, staat er dus niet voor je. Je beste wapen is simpelweg de
 timing, en die heb je, anders dan het weer, volledig zelf in de hand.
 
+Taron en F.L.Y., live uit onze data:
+
+[Taron](ref:phantasialand/taron?full)
+[F.L.Y.](ref:phantasialand/fly?full)
+
 ## Eten: hier loont het om te gaan zitten
 
 Het Phantasialand is ook vanwege het **eten** een reis waard, en dat zou ik bij
@@ -499,9 +506,15 @@ Als je de keuze hebt: trein plus shuttle bespaart je op volle dagen de parkeerst
 lange, gelukkige parkdag stap je ’s avonds gewoon in, in plaats van met een paar duizend andere
 gelukkige mensen het parkeerterrein af te schuifelen.
 
+Voordat je vertrekt, nog even een blik op het weer in Brühl, precies nu:
+
+```weather-widget slug=phantasialand
+
+```
+
 ## Wintertraum: glühwein, lichtjes en Taron in het donker
 
-In onze [Halloween-gids](/blog/halloween-pretparken-2026) rekenen we het Phantasialand
+Het Phantasialand rekenen we in onze [Halloween-gids](/blog/halloween-pretparken-2026)
 liefdevol tot de “weigeraars”, omdat het bewust geen griezelfestival
 doet. In plaats daarvan heeft het in de winter de
 **[Wintertraum](https://www.phantasialand.de/de/themenpark/wintertraum/)**.
@@ -592,33 +605,7 @@ dynamisch met de vraag meestijgt.
 Ja, met een goed gekozen dag en de volgorde hierboven past al het belangrijke in één dag. Ontspannener (en met de
 themahotels een klein feest) zijn twee dagen.
 
-## Wat ik je voor je dag meegeef
-
-Het Phantasialand is geen park dat je er even bij pakt. Het heeft zo’n derde van
-het publiek van het Europa-Park, en toch sta je hier volgens onze data langer in de
-rij. Op de juiste dagen, met de juiste volgorde en een pauze in Rutmor’s Taverne, is
-het het park waar ik al dertig jaar naar terugga. Bijna alles wat een goede van
-een geweldige dag scheidt, beslis je **vooraf**, bij de blik op de kalender.
-
-Voordat je vertrekt, nog even een blik op het weer in Brühl, precies nu:
-
-```weather-widget slug=phantasialand
-
-```
-
-En de twee hoofdrolspelers, live uit onze data:
-
-[Taron](ref:phantasialand/taron?full)
-[F.L.Y.](ref:phantasialand/fly?full)
-
-We zien elkaar in Klugheim. Ik ben degene die om 10 uur als eerste bij Taron staat, ’s middags stiekem voor de
-pancakes bij Phenie’s verdwijnt, en ’s avonds in het blauwe uur nog steeds niet naar huis wil.
-
 — Patrick
-
-_P.S.: Nee, ik koop op een groene dinsdag geen Quick Pass. Uit principe, en omdat ik hem volgens onze metingen
-niet nodig heb. Voor de rode zaterdag had ik hem wél gekocht. Of op tijd een groene dag
-geboekt en me allebei bespaard, de Quick Pass en de zaterdagprijs._
 
 ---
 

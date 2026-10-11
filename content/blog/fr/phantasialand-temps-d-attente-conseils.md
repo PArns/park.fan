@@ -106,6 +106,8 @@ saturation aussi vite que Peter Pan’s Flight à Paris : un petit public ne te
 protège pas des longues files quand il n’y a que peu d’attractions sur lesquelles
 répartir l’affluence. Les mathématiques sont plus impitoyables au Phantasialand
 que dans le vaste [Europa-Park](ref:europa-park) et ses quatorze montagnes russes.
+Le Phantasialand accueille environ un tiers du public de l’Europa-Park, et pourtant,
+d’après nos données, on y fait plus longtemps la queue.
 À cela s’ajoute que le parc fixe le prix de ses billets de façon si agressive
 qu’il se remplit bien même de nombreux week-ends. Le légendaire « samedi vide »
 relève désormais davantage de la forêt des contes que du calendrier.
@@ -410,6 +412,11 @@ est strictement limité. Pas d’armée de détenteurs d’Express Pass qui, com
 Orlando, t’achètent la capacité sous le nez à longueur de journée. Ta meilleure arme, c’est tout simplement le timing, et celui-là,
 contrairement à la météo, tu le tiens entièrement en main.
 
+Taron et F.L.Y., en direct de nos données :
+
+[Taron](ref:phantasialand/taron?full)
+[F.L.Y.](ref:phantasialand/fly?full)
+
 ## Manger : ici, ça vaut la peine de s’asseoir
 
 Le Phantasialand vaut aussi le voyage pour sa **cuisine**, et je ne dirais cela
@@ -536,6 +543,12 @@ le stress du parking, et après une longue et heureuse journée de parc, tu n’
 soir qu’à monter à bord au lieu de quitter le parking au pas avec quelques
 milliers d’autres gens heureux.
 
+Avant de prendre la route, un coup d’œil à la météo à Brühl, à l’instant même :
+
+```weather-widget slug=phantasialand
+
+```
+
 ## Wintertraum : vin chaud, lumières et Taron dans le noir
 
 Dans notre [guide Halloween](/blog/halloween-parcs-attractions-2026), nous avons rangé
@@ -638,37 +651,7 @@ Oui, avec un jour bien choisi et l’ordre de passage ci-dessus, tout l’essent
 tient en une journée. Deux jours sont plus détendus (et, avec les hôtels à thème,
 une petite fête).
 
-## Ce que je te donne pour ta journée
-
-Le Phantasialand accueille environ
-un tiers du public de l’Europa-Park, et pourtant, d’après nos données, on y fait
-plus longtemps la queue. Les bons jours, avec le bon ordre de passage et une pause
-à la Rutmor’s Taverne, c’est le parc où je retourne depuis trente ans. Presque
-tout ce qui sépare une bonne journée d’une journée grandiose,
-tu le décides **à l’avance**, en jetant un œil au calendrier.
-
-Avant de prendre la route, un dernier coup d’œil à la météo à Brühl, à l’instant
-même :
-
-```weather-widget slug=phantasialand
-
-```
-
-Et les deux têtes d’affiche, en direct de nos données :
-
-[Taron](ref:phantasialand/taron?full)
-[F.L.Y.](ref:phantasialand/fly?full)
-
-On se voit à Klugheim. Je suis celui qui, à 10 h, est le premier devant Taron, qui
-s’éclipse en douce à midi pour les pancakes de chez Phenie’s, et qui, le soir, à
-l’heure bleue, ne veut toujours pas rentrer.
-
 — Patrick
-
-_P.-S. : Non, un mardi vert, je n’achète pas de Quick Pass. Par principe, et parce
-que, d’après nos données, je n’en ai pas besoin. Pour le samedi rouge, je l’aurais
-acheté. Ou j’aurais réservé à temps un jour vert et économisé les deux, le Quick
-Pass et le prix du samedi._
 
 ---
 

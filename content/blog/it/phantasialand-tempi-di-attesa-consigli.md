@@ -102,7 +102,9 @@ dell’attesa](/blog/l-arte-dell-attesa) abbiamo spiegato coi conti alla mano pe
 tanto in fretta quanto Peter Pan’s Flight a Parigi: un pubblico ridotto non ti
 mette al riparo dalle code lunghe se ci sono poche attrazioni su cui la calca
 possa distribuirsi. Al Phantasialand la matematica è più inesorabile che
-nell’esteso [Europa-Park](ref:europa-park) con i suoi quattordici ottovolanti. In più
+nell’esteso [Europa-Park](ref:europa-park) con i suoi quattordici ottovolanti.
+Il Phantasialand ha circa un terzo del pubblico dell’Europa-Park, eppure, stando ai
+nostri dati, qui fai più coda. In più
 il parco prezza i suoi biglietti in modo così aggressivo da riempire bene anche
 molti weekend. Il leggendario “sabato vuoto” ormai appartiene più al bosco delle
 fiabe che al calendario.
@@ -400,6 +402,11 @@ rigorosamente limitato. Un esercito di ospiti con l’Express Pass che, come a
 Orlando, ti comprano la capacità sotto il naso tutto il giorno, qui non c’è. La tua arma migliore è semplicemente il timing, e quello, a differenza
 del meteo, ce l’hai completamente in mano tu.
 
+Taron e F.L.Y., live dai nostri dati:
+
+[Taron](ref:phantasialand/taron?full)
+[F.L.Y.](ref:phantasialand/fly?full)
+
 ## Il cibo: qui vale la pena sedersi
 
 Il Phantasialand vale il viaggio anche per il **cibo**, e non lo direi di nessun
@@ -522,6 +529,12 @@ lo stress del parcheggio, e dopo una lunga, felice giornata al parco, la sera
 sali e basta, invece di uscire dal parcheggio a passo d’uomo insieme ad altre
 migliaia di persone felici.
 
+Prima di metterti in viaggio, un’occhiata al meteo a Brühl, proprio adesso:
+
+```weather-widget slug=phantasialand
+
+```
+
 ## Wintertraum: vin brulé, luci e Taron al buio
 
 Nella [guida di Halloween](/blog/halloween-parchi-divertimenti-2026) abbiamo annoverato
@@ -619,36 +632,7 @@ Sì. Con un giorno ben scelto e l’ordine qui sopra, tutto l’essenziale ci st
 una giornata. Due giorni sono più rilassati (e, con gli hotel a tema, una piccola
 festa).
 
-## Quello che ti lascio per la tua giornata
-
-Il Phantasialand non è un parco che ci si fa così, di sfuggita. Ha circa un terzo
-del pubblico dell’Europa-Park, eppure, stando ai nostri dati, qui fai più coda. Nei
-giorni giusti, con l’ordine giusto e una pausa a Rutmor’s Taverne, è il parco in
-cui torno da trent’anni. Quasi tutto ciò che separa una bella giornata da una
-straordinaria lo decidi **prima**, con uno sguardo al calendario.
-
-Prima di metterti in viaggio, un’ultima occhiata al meteo a Brühl, proprio
-adesso:
-
-```weather-widget slug=phantasialand
-
-```
-
-E i due protagonisti, live dai nostri dati:
-
-[Taron](ref:phantasialand/taron?full)
-[F.L.Y.](ref:phantasialand/fly?full)
-
-Ci vediamo a Klugheim. Sono quello che alle 10 è il primo in coda al Taron, a
-mezzogiorno sparisce di nascosto per i pancake da Phenie’s, e la sera, nell’ora
-blu, non vuole ancora tornare a casa.
-
 — Patrick
-
-_P.S.: No, in un martedì verde non compro nessun Quick Pass. Per principio, e
-perché secondo i nostri dati non mi serve. Per il sabato rosso l’avrei comprato. Oppure avrei
-prenotato in tempo un giorno verde e mi sarei risparmiato tutti e due, il Quick
-Pass e il prezzo del sabato._
 
 ---
 
