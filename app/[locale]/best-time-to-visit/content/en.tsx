@@ -59,7 +59,7 @@ const FAQ = [
   {
     question: 'Which months are theme parks least crowded?',
     answer:
-      'It depends more on the park than the rule of thumb suggests. Averaged across all parks, the summer months aren’t the busiest, and December sticks out at the top, because in winter only the parks with a Christmas programme are open. It’s broken down month by month in the overview further up. For a particular park, its own calendar is what counts.',
+      'Averaged across all parks, the summer months aren’t the busiest, and December sticks out at the top, because in winter only the parks with a Christmas programme are open. It’s broken down month by month in the overview further up. For a particular park, its own calendar is what counts.',
   },
   {
     question: 'Is it worth visiting in the rain?',

@@ -6,7 +6,7 @@
  * content that did change, so `pnpm check:glossary-content-date` fails when
  * `GLOSSARY_CONTENT_HASH` moves without it. Bump both, with the date the content changed.
  */
-export const GLOSSARY_CONTENT_DATE = '2026-10-03';
+export const GLOSSARY_CONTENT_DATE = '2026-10-11';
 
 /**
  * SHA-256 (16 hex chars) over the glossary's reader-visible content: term ids, categories, player
@@ -14,4 +14,4 @@ export const GLOSSARY_CONTENT_DATE = '2026-10-03';
  * values, not their spelling, so a quote-style pass does not move it.
  * `scripts/check-glossary-content-date.mjs` prints the new value when it fails.
  */
-export const GLOSSARY_CONTENT_HASH = '33a87233c05fb2d1';
+export const GLOSSARY_CONTENT_HASH = '5f53aab3ae148781';

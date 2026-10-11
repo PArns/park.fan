@@ -59,7 +59,7 @@ const FAQ = [
   {
     question: 'In welke maanden zijn pretparken het minst druk?',
     answer:
-      'Dat hangt sterker van het park af dan de vuistregel doet vermoeden: over alle parken gerekend zijn de zomermaanden niet de drukste, en december steekt naar boven uit, omdat in de winter alleen de parken met kerstprogramma open zijn. Maand voor maand staat het in het overzicht hierboven. Voor een concreet park telt zijn eigen kalender.',
+      'Over alle parken gerekend zijn de zomermaanden niet de drukste, en december steekt naar boven uit, omdat in de winter alleen de parken met kerstprogramma open zijn. Maand voor maand staat het in het overzicht hierboven. Voor een concreet park telt zijn eigen kalender.',
   },
   {
     question: 'Is een bezoek in de regen de moeite waard?',
