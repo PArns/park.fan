@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Das Futuroscope wird 2027 vierzig Jahre alt und schickt ab dem 5. Dezember
   2026 zum ersten Mal eine Lichterparade durch den Park. „Nuits magiques“ läuft
-  an den Öffnungsabenden bis zum 27. März. Im Januar hat der Park geschlossen.
+  an den Öffnungsabenden bis zum 27. März. Vom 4. Januar bis zum Saisonstart am 6. Februar steht kein Öffnungstag im Kalender.
 tags:
   - news
   - futuroscope
@@ -28,7 +28,7 @@ rideLinks:
 seo:
   title: 'Futuroscope wird 40 und zeigt erstmals eine Lichterparade'
   description: >-
-    Zum 40. Geburtstag zeigt das Futuroscope erstmals eine Lichterparade. Nuits magiques läuft vom 5. Dezember 2026 bis 27. März, im Januar ist der Park zu.
+    Futuroscope wird 40 und zeigt ab 5. Dezember erstmals eine Lichterparade. Vom 4. Januar bis 5. Februar steht kein Öffnungstag im Kalender.
   keywords:
     - Futuroscope Nuits magiques
     - Futuroscope Lichterparade
@@ -51,23 +51,19 @@ Fünf Wagen und 23 Künstlerinnen und Künstler ziehen über eine Strecke von ei
 Kilometer durch den Park. Entwickelt hat das Futuroscope die Parade zusammen mit
 der Agence Tetro. In der Mitteilung beschreibt der Park sie als Mischung aus
 Kunst, Design und Technik, unterwegs gibt es Lichtinstallationen und
-Auftritte. Eine Uhrzeit nennt er nicht, nur „à la tombée de la nuit“, also wenn
-es dunkel wird. Welchen Weg die Wagen durch den Park nehmen, steht in der
+Auftritte. Eine Uhrzeit nennt er nicht. Dort steht nur „à la tombée de la nuit“, also wenn es dunkel wird. Welchen Weg die Wagen durch den Park nehmen, steht in der
 Mitteilung ebenfalls nicht.
 
 ## An welchen Tagen die Parade zu sehen ist
 
 Das Futuroscope nennt die Parade einen täglichen Umzug. Täglich heißt im Winter
-aber: an den Tagen, an denen der Park geöffnet hat. Laut dem Öffnungskalender
-des Parks, den wir auf der Parkseite führen, öffnet das Futuroscope im November
+aber: an den Tagen, an denen der Park geöffnet hat. Laut dem Öffnungskalender des Parks öffnet das Futuroscope im November
 und bis zum 13. Dezember nur an Wochenenden. Vom 19. Dezember 2026 bis zum 3.
-Januar 2027 hat es jeden Tag geöffnet. Danach steht bis zum Saisonstart am 6.
+Januar 2027 hat es jeden Tag geöffnet, danach steht bis zum Saisonstart am 6.
 Februar kein Öffnungstag im Kalender.
 
-Für die Parade bedeutet das zwei Lücken. Unter der Woche gibt es vor dem 19.
-Dezember keinen Öffnungstag, und zwischen dem 4. Januar und dem 5. Februar ist
-der Park ganz zu. Die meisten Abende mit „Nuits magiques“ liegen also in den
-Weihnachtsferien und ab Februar. Welche anderen Parks im Dezember und Januar
+Das ergibt zwei Lücken. Unter der Woche gibt es vor dem 19.
+Dezember keinen Öffnungstag, und zwischen dem 4. Januar und dem 5. Februar steht gar keiner im Kalender. Sicher zu sehen ist „Nuits magiques“ also an den Dezember-Wochenenden bis zum 13. Dezember und vom 19. Dezember bis zum 3. Januar an jedem Tag. Februar und März fehlen noch. Welche anderen Parks im Dezember und Januar
 geöffnet haben, steht im [Winter-Überblick](/blog/winter-freizeitparks-2026).
 
 [Futuroscope](ref:futuroscope?full)
@@ -79,10 +75,9 @@ geöffnet haben, steht im [Winter-Überblick](/blog/winter-freizeitparks-2026).
 ## Was ein Besuch kostet
 
 Auf seiner Ticketseite nennt das Futuroscope für das Tagesticket je nach Datum
-47 bis 59 Euro für Erwachsene und 39 bis 49 Euro für Kinder. Kinder unter fünf
-Jahren kommen kostenlos in den Park.
+47 bis 59 Euro für Erwachsene und 39 bis 49 Euro für Kinder. Unter fünf Jahren ist der Eintritt frei.
 
-Günstiger wird es ab vier Personen mit dem Billet Tribu. Es kostet je nach Datum
+Für Erwachsene wird es ab vier Personen mit dem Billet Tribu günstiger. Es kostet je nach Datum
 ab 37 Euro pro Person, an teureren Tagen 43, 49 oder 54 Euro. Alle vier müssen
 am selben Tag kommen, und gekauft werden muss es spätestens drei Tage vorher, am
 Besuchstag selbst nicht mehr. Pro Reservierung kommen 4 Euro Buchungsgebühr
@@ -95,11 +90,11 @@ Weihnachtsferien passt es, für die Abende im Februar und März nicht.
 
 ## Was im Ticket enthalten ist
 
-Laut Tribu-Seite gehört die Abendshow am Besuchstag zum Ticket, je nach
+Laut Tribu-Seite gehört die Nachtshow am Besuchstag zum Ticket, je nach
 Programm des Tages. Nicht enthalten sind die Attraktion Les Yeux Grands Fermés,
 einige kostenpflichtige Aktivitäten, Sonderveranstaltungen und das Aquascope.
 
-Ob „Nuits magiques“ als Abendshow zählt oder als Sonderveranstaltung, sagt das
+Ob „Nuits magiques“ als Nachtshow zählt oder als Sonderveranstaltung, sagt das
 Futuroscope in der Pressemitteilung nicht. Wer wegen der Parade fährt, fragt das vor
 dem Kauf besser beim Park nach.
 
@@ -111,12 +106,8 @@ Kunstflugstaffel Patrouille de France, er dauert 40 Minuten. Bei
 [Danse avec les robots](ref:futuroscope/dances-with-robots) tanzen die zehn
 Roboter 2027 zu einer neuen Playlist.
 
-Im April kommt eine neue Illusionsshow dazu, „Imagine, Live show“. Inszeniert
-haben sie Arthur Jugnot und sein Partner Bertran Lotth. Im Kinoprogramm nennt
-der Park außerdem die Großformatfilme „Les Ailes du courage“, „Grand canyon“,
-„Van Gogh“, „Everest“, „Blue Whales“ und „Flight of the Butterflies“, dazu eine
-Zusammenarbeit mit der Kunsthochschule ESMA (École Supérieure des Métiers
-Artistiques).
+Im April kommt eine neue Illusionsshow dazu, „Imagine, Live show“, inszeniert von Arthur Jugnot und seinem Partner Bertran Lotth. Im Kinoprogramm nennt der Park unter anderem die Großformatfilme „Les Ailes du courage“, „Grand canyon“,
+„Van Gogh“, „Everest“, „Blue Whales“ und „Flight of the Butterflies“. Dazu kommt eine Carte blanche für Studierende der Kunsthochschule ESMA (École Supérieure des Métiers Artistiques), die Kurzfilme zeigen.
 
 Zwei Neuheiten schauen auf die vierzig Jahre zurück. Die „Maison à
 l'envers“, ein Haus, das auf dem Kopf steht, bekommt eine Fassung im Stil von
@@ -131,8 +122,7 @@ angekündigt haben, steht in unserer Übersicht
 ## Das neue Hotel
 
 Neben den Shows kündigt das Futuroscope ein Vier-Sterne-Hotel mit
-Science-Fiction-Thema an, das gerade gebaut wird. Geplant sind 240 Zimmer, dazu
-Premium- und VIP-Suiten. Das Restaurant soll 400 Plätze haben, die Bar 120 und
+Science-Fiction-Thema an, das gerade gebaut wird. Geplant sind 240 Zimmer, darunter Premium- und VIP-Suiten. Das Restaurant soll 400 Plätze haben, die Bar 120 und
 auf der Terrasse noch einmal 70. Für Tagungen gibt es einen Bereich für 350
 Personen mit einem Hörsaal für 200 und vier Nebenräumen.
 
@@ -145,7 +135,7 @@ das Hotel öffnet, sagt die Pressemitteilung nicht.
 Das Hotel gehört zu einer Reihe von Projekten, die das Futuroscope unter dem
 Namen „Vision 2025“ gebaut hat. Der Investitionsplan umfasst 304 Millionen Euro
 und wird von der Banque des Territoires, der SEM Patrimoniale de la Vienne und
-der Compagnie des Alpes getragen. Daraus entstanden sind das Aquascope, die
+der Compagnie des Alpes getragen. Daraus entstanden sind unter anderem das Aquascope, die
 Bahnen [Objectif Mars](ref:futuroscope/destination-mars),
 [Chasseurs de Tornades](ref:futuroscope/tornado-chasers) und
 [Mission Bermudes](ref:futuroscope/mission-bermudes), die Hotels Station Cosmos

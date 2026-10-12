@@ -9,8 +9,7 @@ featured: false
 excerpt: >-
   Futuroscope cumple cuarenta años en 2027 y, a partir del 5 de diciembre de
   2026, recorre el parque por primera vez con un desfile de luces. «Nuits
-  magiques» sale las noches en que el parque abre, hasta el 27 de marzo. En
-  enero el parque cierra.
+  magiques» sale las noches en que el parque abre, hasta el 27 de marzo. Del 4 de enero al inicio de temporada, el 6 de febrero, el calendario no muestra ningún día de apertura.
 tags:
   - news
   - futuroscope
@@ -29,7 +28,7 @@ rideLinks:
 seo:
   title: 'Futuroscope cumple 40 años con su primer desfile de luces'
   description: >-
-    Por su 40 aniversario, Futuroscope estrena un desfile de luces. Nuits magiques va del 5 de diciembre de 2026 al 27 de marzo; en enero el parque cierra.
+    Futuroscope cumple 40 años y estrena su desfile de luces el 5 de diciembre. Del 4 de enero al 5 de febrero el calendario no tiene días de apertura.
   keywords:
     - Futuroscope Nuits magiques
     - Futuroscope desfile de luces
@@ -59,16 +58,13 @@ carrozas.
 ## Qué días sale el desfile
 
 Futuroscope habla de un desfile diario. En invierno, diario quiere decir los días
-en que el parque abre. Según su calendario de apertura, que recogemos en la
-página del parque, Futuroscope abre en noviembre y hasta el 13 de diciembre solo
+en que el parque abre. Según el calendario de apertura del parque, Futuroscope abre en noviembre y hasta el 13 de diciembre solo
 los fines de semana. Del 19 de diciembre de 2026 al 3 de enero de 2027 abre todos
 los días. Después, el calendario no tiene ningún día de apertura hasta el inicio
 de temporada, el 6 de febrero.
 
 Para el desfile eso deja dos huecos. Antes del 19 de diciembre no hay ningún día
-laborable con el parque abierto, y entre el 4 de enero y el 5 de febrero cierra
-del todo. La mayoría de las noches de «Nuits magiques» caen, por tanto, en las
-vacaciones de Navidad y a partir de febrero. Qué otros parques abren en
+laborable con el parque abierto, y entre el 4 de enero y el 5 de febrero el calendario no muestra ningún día de apertura. Lo seguro es que «Nuits magiques» se puede ver los fines de semana de diciembre hasta el día 13 y todos los días del 19 de diciembre al 3 de enero. Los días de febrero y marzo todavía no están en el calendario del parque. Qué otros parques abren en
 diciembre y enero lo contamos en nuestro
 [repaso de parques en invierno](/blog/parques-atracciones-invierno-2026).
 
@@ -84,7 +80,7 @@ En su página de entradas, Futuroscope pide por la entrada de un día entre 47 y
 59 euros por adulto y entre 39 y 49 euros por niño, según la fecha. Los menores
 de cinco años entran gratis.
 
-A partir de cuatro personas sale más barato el Billet Tribu. Cuesta desde 37
+Para los adultos, el Billet Tribu sale más barato a partir de cuatro personas. Cuesta desde 37
 euros por persona según el día, y 43, 49 o 54 euros en las fechas más caras. Los
 cuatro tienen que ir el mismo día y hay que comprarlo como muy tarde tres días
 antes; el mismo día de la visita ya no se vende. Cada reserva suma 4 euros de
@@ -117,10 +113,9 @@ bailarán en 2027 con una lista de canciones nueva.
 
 En abril se suma un espectáculo de ilusionismo, «Imagine, Live show», dirigido
 por Arthur Jugnot y su socio Bertran Lotth. En la programación de cine, el
-parque menciona además las películas de gran formato «Les Ailes du courage»,
+parque menciona además, entre otras, las películas de gran formato «Les Ailes du courage»,
 «Grand canyon», «Van Gogh», «Everest», «Blue Whales» y «Flight of the
-Butterflies», y una colaboración con la escuela de arte ESMA (École Supérieure
-des Métiers Artistiques).
+Butterflies», y una carta blanca para estudiantes de la escuela de arte ESMA (École Supérieure des Métiers Artistiques), que proyectan cortometrajes.
 
 Dos novedades miran atrás, a estos cuarenta años. La «Maison à l'envers», una
 casa puesta del revés, tendrá una versión al estilo de 1987, amueblada con
@@ -134,8 +129,7 @@ parques para 2027 está en nuestro resumen de
 ## El nuevo hotel
 
 Además de los espectáculos, Futuroscope anuncia un hotel de cuatro estrellas
-con temática de ciencia ficción, ya en obras. Tendrá 240 habitaciones y suites
-premium y VIP. El restaurante tendrá 400 plazas, el bar 120 y la terraza otras 70. Para congresos habrá un espacio para 350 personas, con un auditorio de 200
+con temática de ciencia ficción, ya en obras. Tendrá 240 habitaciones, entre ellas suites premium y VIP. El restaurante tendrá 400 plazas, el bar 120 y la terraza otras 70. Para congresos habrá un espacio para 350 personas, con un auditorio de 200
 y cuatro salas auxiliares.
 
 Una pasarela peatonal unirá el hotel directamente con el Aquascope. Futuroscope
@@ -147,7 +141,7 @@ dice cuándo abrirá el hotel.
 El hotel forma parte de los proyectos que Futuroscope ha construido bajo el
 nombre «Vision 2025». El plan de inversión asciende a 304 millones de euros y lo
 financian la Banque des Territoires, la SEM Patrimoniale de la Vienne y la
-Compagnie des Alpes. De él salieron el Aquascope, las atracciones
+Compagnie des Alpes. De él salieron, entre otros, el Aquascope, las atracciones
 [Objectif Mars](ref:futuroscope/destination-mars),
 [Chasseurs de Tornades](ref:futuroscope/tornado-chasers) y
 [Mission Bermudes](ref:futuroscope/mission-bermudes), los hoteles Station Cosmos

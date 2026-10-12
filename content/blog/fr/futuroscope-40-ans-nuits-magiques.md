@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Le Futuroscope aura quarante ans en 2027. À partir du 5 décembre 2026, une
   parade lumineuse traverse le parc pour la première fois. « Nuits magiques »
-  passe les soirs d’ouverture jusqu’au 27 mars. En janvier, le parc est fermé.
+  passe les soirs d’ouverture jusqu’au 27 mars. Du 4 janvier à l’ouverture de la saison, le 6 février, le calendrier n’affiche aucun jour d’ouverture.
 tags:
   - news
   - futuroscope
@@ -28,7 +28,7 @@ rideLinks:
 seo:
   title: 'Le Futuroscope fête ses 40 ans avec une parade lumineuse'
   description: >-
-    Pour ses 40 ans, le Futuroscope lance sa première parade lumineuse. Nuits magiques se tient du 5 décembre 2026 au 27 mars, le parc est fermé en janvier.
+    Le Futuroscope a 40 ans et lance le 5 décembre sa première parade lumineuse. Du 4 janvier au 5 février, aucun jour d’ouverture au calendrier.
   keywords:
     - Futuroscope Nuits magiques
     - Futuroscope parade lumineuse
@@ -58,16 +58,13 @@ dans le parc n’est pas indiqué non plus.
 ## Les jours où passe la parade
 
 Le Futuroscope parle d’une parade quotidienne. En hiver, quotidienne veut dire :
-chaque jour où le parc ouvre. Selon le calendrier d’ouverture du parc, que nous
-reprenons sur la page du parc, le Futuroscope n’ouvre en novembre et jusqu’au
+chaque jour où le parc ouvre. Selon le calendrier d’ouverture du parc, le Futuroscope n’ouvre en novembre et jusqu’au
 13 décembre que le week-end. Du 19 décembre 2026 au 3 janvier 2027, il ouvre
 tous les jours. Ensuite, le calendrier n’affiche plus aucun jour d’ouverture
 avant le début de la saison, le 6 février.
 
 Il y a donc deux trous pour la parade. Avant le 19 décembre, le parc n’ouvre
-aucun jour de semaine, et du 4 janvier au 5 février il reste entièrement fermé.
-La plupart des soirées « Nuits magiques » tombent ainsi pendant les vacances de
-Noël et à partir de février. Les parcs ouverts en décembre et en janvier sont
+aucun jour de semaine, et du 4 janvier au 5 février le calendrier n’affiche aucun jour d’ouverture. On est donc sûr de voir « Nuits magiques » les week-ends de décembre jusqu’au 13 décembre et tous les jours du 19 décembre au 3 janvier. Les dates de février et de mars ne figurent pas encore dans le calendrier du parc. Les parcs ouverts en décembre et en janvier sont
 réunis dans notre [tour d’horizon de l’hiver](/blog/parcs-attractions-hiver-2026).
 
 [Futuroscope](ref:futuroscope?full)
@@ -82,7 +79,7 @@ Sur sa page billetterie, le Futuroscope affiche pour le billet à la journée de
 47 à 59 euros par adulte et de 39 à 49 euros par enfant, selon la date. L’entrée
 est gratuite pour les enfants de moins de cinq ans.
 
-À partir de quatre personnes, le Billet Tribu revient moins cher. Il coûte à
+Pour les adultes, le Billet Tribu revient moins cher à partir de quatre personnes. Il coûte à
 partir de 37 euros par personne selon la date, et 43, 49 ou 54 euros les jours
 plus chers. Les quatre doivent venir le même jour, et le billet s’achète au plus
 tard trois jours avant, jamais le jour même. Chaque réservation ajoute 4 euros
@@ -96,12 +93,12 @@ février et de mars.
 
 ## Ce que comprend le billet
 
-D’après la page du billet Tribu, le spectacle du soir le jour de la visite est
+D’après la page du billet Tribu, le spectacle nocturne le jour de la visite est
 inclus, selon la programmation du jour. Ne sont pas compris l’attraction Les
 Yeux Grands Fermés, certaines activités payantes, les événements spéciaux et
 l’Aquascope.
 
-Le communiqué ne dit pas si « Nuits magiques » compte comme spectacle du soir ou
+Le communiqué ne dit pas si « Nuits magiques » compte comme spectacle nocturne ou
 comme événement spécial. Si vous venez pour la parade, mieux vaut poser la
 question au parc avant d’acheter.
 
@@ -115,9 +112,8 @@ dansent en 2027 sur une nouvelle playlist.
 
 En avril arrive un nouveau spectacle d’illusion, « Imagine, Live show », mis en
 scène par Arthur Jugnot et son complice Bertran Lotth. Côté cinéma, le parc
-annonce aussi les films grand format « Les Ailes du courage », « Grand canyon »,
-« Van Gogh », « Everest », « Blue Whales » et « Flight of the Butterflies », ainsi
-qu’une collaboration avec l’ESMA (École Supérieure des Métiers Artistiques).
+annonce aussi, entre autres, les films grand format « Les Ailes du courage », « Grand canyon »,
+« Van Gogh », « Everest », « Blue Whales » et « Flight of the Butterflies », ainsi qu’une carte blanche aux étudiants de l’école d’art ESMA (École Supérieure des Métiers Artistiques), qui présentent des courts métrages.
 
 Deux nouveautés regardent en arrière, vers ces quarante ans. La « Maison à
 l’envers » passe en version 1987 et se remplit d’objets cultes des années 80.
@@ -132,7 +128,7 @@ prévoient pour 2027 est rassemblé dans notre article sur les
 
 En plus des spectacles, le Futuroscope annonce un hôtel quatre étoiles sur le
 thème de la science-fiction, en cours de construction. Il doit compter
-240 chambres, plus des suites premium et VIP. Le restaurant aura 400 places, le
+240 chambres, dont des suites premium et VIP. Le restaurant aura 400 places, le
 bar 120 et la terrasse 70 de plus. Pour les séminaires, un espace de
 350 personnes comprend un amphithéâtre de 200 places et quatre salles annexes.
 
@@ -145,7 +141,7 @@ d’ouverture de l’hôtel ne figure pas dans le communiqué.
 L’hôtel fait partie des projets que le Futuroscope a menés sous le nom
 « Vision 2025 ». Ce plan d’investissement de 304 millions d’euros est porté par
 la Banque des Territoires, la SEM Patrimoniale de la Vienne et la Compagnie des
-Alpes. Il a donné l’Aquascope, les attractions
+Alpes. Il a notamment donné l’Aquascope, les attractions
 [Objectif Mars](ref:futuroscope/destination-mars),
 [Chasseurs de Tornades](ref:futuroscope/tornado-chasers) et
 [Mission Bermudes](ref:futuroscope/mission-bermudes), les hôtels Station Cosmos

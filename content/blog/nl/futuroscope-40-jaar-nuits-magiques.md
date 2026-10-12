@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Futuroscope wordt in 2027 veertig en laat vanaf 5 december 2026 voor het eerst
   een lichtparade door het park trekken. “Nuits magiques” loopt op de avonden dat
-  het park open is, tot 27 maart. In januari is het park dicht.
+  het park open is, tot 27 maart. Van 4 januari tot de seizoensstart op 6 februari staat er geen openingsdag in de kalender.
 tags:
   - news
   - futuroscope
@@ -28,7 +28,7 @@ rideLinks:
 seo:
   title: 'Futuroscope wordt 40 en krijgt zijn eerste lichtparade'
   description: >-
-    Voor zijn 40e verjaardag krijgt Futuroscope een lichtparade. Nuits magiques loopt van 5 december 2026 tot 27 maart, in januari is het park dicht.
+    Futuroscope wordt 40 en toont vanaf 5 december zijn eerste lichtparade. Van 4 januari tot 5 februari staat er geen openingsdag in de kalender.
   keywords:
     - Futuroscope Nuits magiques
     - Futuroscope lichtparade
@@ -56,15 +56,11 @@ het park nemen, meldt Futuroscope evenmin.
 ## Op welke dagen je de parade ziet
 
 Futuroscope noemt het een dagelijkse optocht. In de winter betekent dagelijks
-wel: op de dagen dat het park open is. In de openingskalender die we op de
-parkpagina bijhouden, is Futuroscope in november en tot 13 december alleen in
-het weekend open. Van 19 december 2026 tot en met 3 januari 2027 kun je er elke
-dag terecht. Daarna gaat het park dicht. Tot de seizoensstart op 6 februari staat er geen enkele openingsdag in de kalender.
+wel: op de dagen dat het park open is. Volgens de openingskalender van het park is Futuroscope in november en tot 13 december alleen in
+het weekend open. Van 19 december 2026 tot en met 3 januari 2027 kun je er elke dag terecht, en daarna staat er tot de seizoensstart op 6 februari geen enkele openingsdag in de kalender.
 
 Voor de parade levert dat twee gaten op. Doordeweeks is het park vóór 19
-december niet open, en van 4 januari tot 5 februari zit het helemaal dicht. De
-meeste avonden met “Nuits magiques” vallen dus in de kerstvakantie en vanaf
-februari. Welke parken in december en januari wel open zijn, lees je in ons
+december niet open, en van 4 januari tot 5 februari toont de kalender geen enkele openingsdag. Zeker te zien is “Nuits magiques” dus in de weekenden van december tot en met 13 december en elke dag van 19 december tot en met 3 januari. Februari en maart ontbreken nog. Welke parken in december en januari wel open zijn, lees je in ons
 [winteroverzicht](/blog/winter-pretparken-2026).
 
 [Futuroscope](ref:futuroscope?full)
@@ -76,11 +72,10 @@ februari. Welke parken in december en januari wel open zijn, lees je in ons
 ## Wat een dag kost
 
 Op de ticketpagina vraagt Futuroscope voor een dagticket, afhankelijk van de
-datum, 47 tot 59 euro voor volwassenen en 39 tot 49 euro voor kinderen. Kinderen
-onder de vijf mogen gratis naar binnen.
+datum, 47 tot 59 euro voor volwassenen en 39 tot 49 euro voor kinderen. Onder de vijf is het gratis.
 
-Met vier personen of meer is het Billet Tribu goedkoper. Dat kost afhankelijk
-van de datum vanaf 37 euro per persoon, op duurdere dagen 43, 49 of 54 euro. Alle vier moeten op dezelfde dag komen. Kopen doe je uiterlijk drie dagen van tevoren, want op de dag zelf verkoopt het park het ticket niet meer. Per reservering betaal je 4 euro
+Voor volwassenen is het Billet Tribu vanaf vier personen goedkoper. Dat kost afhankelijk
+van de datum vanaf 37 euro per persoon, op duurdere dagen 43, 49 of 54 euro. Alle vier moeten op dezelfde dag komen, en kopen doe je uiterlijk drie dagen van tevoren, want op de dag zelf verkoopt het park het ticket niet meer. Per reservering betaal je 4 euro
 boekingskosten. Op een goedkope dag ben je met z'n vieren zo 152 euro kwijt, op
 een dure dag 220 euro.
 
@@ -90,12 +85,12 @@ kerstvakantie kun je het gebruiken, voor de avonden in februari en maart niet.
 
 ## Wat bij het ticket hoort
 
-Volgens de Tribu-pagina is de avondshow op de dag van je bezoek inbegrepen, voor
+Volgens de Tribu-pagina is de nachtshow op de dag van je bezoek inbegrepen, voor
 zover die op het programma staat. Niet inbegrepen zijn de attractie Les Yeux
 Grands Fermés, een paar betaalde activiteiten, speciale evenementen en het
 Aquascope.
 
-Of “Nuits magiques” als avondshow telt of als speciaal evenement, staat niet in
+Of “Nuits magiques” als nachtshow telt of als speciaal evenement, staat niet in
 het persbericht. Ga je speciaal voor de parade, vraag dat dan voor je koopt na
 bij het park.
 
@@ -108,10 +103,8 @@ in 2027 op een nieuwe playlist.
 
 In april komt er een nieuwe illusieshow bij, “Imagine, Live show”, geregisseerd
 door Arthur Jugnot en zijn partner Bertran Lotth. In het filmprogramma zet het
-park verder de grootformaatfilms “Les Ailes du courage”, “Grand canyon”, “Van
-Gogh”, “Everest”, “Blue Whales” en “Flight of the Butterflies”, en een
-samenwerking met de kunstacademie ESMA (École Supérieure des Métiers
-Artistiques).
+park verder onder meer de grootformaatfilms “Les Ailes du courage”, “Grand canyon”, “Van
+Gogh”, “Everest”, “Blue Whales” en “Flight of the Butterflies”. Studenten van de kunstacademie ESMA (École Supérieure des Métiers Artistiques) krijgen er een carte blanche om korte films te vertonen.
 
 Twee nieuwigheden blikken terug op veertig jaar park. De “Maison à l'envers”, een
 huis dat op zijn kop staat, krijgt een versie in de stijl van 1987, ingericht met
@@ -125,8 +118,7 @@ parken voor 2027 hebben aangekondigd, staat in ons overzicht
 ## Het nieuwe hotel
 
 Naast de shows kondigt Futuroscope een viersterrenhotel met een
-sciencefictionthema aan, dat nu in aanbouw is. Er komen 240 kamers, plus premium-
-en vip-suites. Het restaurant krijgt 400 plaatsen, de bar 120 en het terras nog
+sciencefictionthema aan, dat nu in aanbouw is. Er komen 240 kamers, waaronder premium- en vip-suites. Het restaurant krijgt 400 plaatsen, de bar 120 en het terras nog
 eens 70. Voor congressen is er een ruimte voor 350 mensen, met een collegezaal
 voor 200 en vier kleinere zalen.
 
@@ -139,7 +131,7 @@ Aquascope. Wanneer het hotel opengaat, zegt het persbericht niet.
 Het hotel is een van de projecten die Futuroscope onder de naam “Vision 2025”
 heeft gebouwd. Het investeringsplan bedraagt 304 miljoen euro en wordt gedragen
 door de Banque des Territoires, de SEM Patrimoniale de la Vienne en de Compagnie
-des Alpes. Eruit voortgekomen zijn het Aquascope, de attracties
+des Alpes. Eruit voortgekomen zijn onder meer het Aquascope, de attracties
 [Objectif Mars](ref:futuroscope/destination-mars),
 [Chasseurs de Tornades](ref:futuroscope/tornado-chasers) en
 [Mission Bermudes](ref:futuroscope/mission-bermudes), de hotels Station Cosmos en

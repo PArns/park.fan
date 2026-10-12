@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Futuroscope turns forty in 2027, and from 5 December 2026 a light parade
   will go through the park for the first time. "Nuits magiques" runs on the
-  evenings the park is open until 27 March. The park is closed in January.
+  evenings the park is open until 27 March. From 4 January until the season opens on 6 February, the calendar shows no opening day.
 tags:
   - news
   - futuroscope
@@ -28,7 +28,7 @@ rideLinks:
 seo:
   title: 'Futuroscope turns 40 with its first ever light parade'
   description: >-
-    For its 40th birthday Futuroscope adds its first light parade. Nuits magiques runs from 5 December 2026 to 27 March, and the park is shut in January.
+    Futuroscope turns 40 with its first light parade from 5 December. From 4 January to 5 February the calendar shows no opening day.
   keywords:
     - Futuroscope Nuits magiques
     - Futuroscope light parade
@@ -57,15 +57,12 @@ park either.
 ## Which days you can see it
 
 Futuroscope calls it a daily parade. In winter, daily means every day the park
-is open. The park's opening calendar, which we keep on the park page, has
-Futuroscope open only at weekends in November and up to 13 December. From 19
+is open. According to the park's opening calendar, Futuroscope opens only at weekends in November and up to 13 December. From 19
 December 2026 to 3 January 2027 it's open every day. After that, the calendar
 has no opening day until the season starts on 6 February.
 
 That leaves two gaps for the parade. Before 19 December there's no weekday
-opening, and from 4 January to 5 February the park is closed altogether. Most
-"Nuits magiques" evenings therefore fall in the Christmas holidays and from
-February on. Our [winter overview](/blog/winter-theme-parks-2026) lists the other
+opening, and from 4 January to 5 February the calendar shows no opening day at all. You can count on seeing "Nuits magiques" on the December weekends up to 13 December and on every day from 19 December to 3 January. The February and March dates are not in the park's calendar yet. Our [winter overview](/blog/winter-theme-parks-2026) lists the other
 parks open in December and January.
 
 [Futuroscope](ref:futuroscope?full)
@@ -79,7 +76,7 @@ parks open in December and January.
 On its ticket page, Futuroscope charges €47 to €59 for an adult day ticket and
 €39 to €49 for a child, depending on the date. Children under five get in free.
 
-Groups of four or more pay less with the Billet Tribu. It starts at €37 per
+For adults, the Billet Tribu is cheaper once there are four or more of you. It starts at €37 per
 person, rising to €43, €49 or €54 on dearer days. All four have to come on the
 same day, and the ticket must be bought at least three days ahead; you can't buy
 it on the day of the visit. Each booking adds a €4 fee. Four people pay €152 on a
@@ -91,12 +88,11 @@ Christmas, but not for the evenings in February and March.
 
 ## What the ticket includes
 
-The Tribu page says the evening show on the day of the visit is included,
+The Tribu page says the night show on the day of the visit is included,
 depending on that day's programme. Les Yeux Grands Fermés, some paid activities,
 special events and the Aquascope are not.
 
-The press release doesn't say whether "Nuits magiques" counts as the evening
-show or as a special event. If the parade is why you're going, ask the park
+The press release doesn't say whether "Nuits magiques" counts as the night show or as a special event. If the parade is why you're going, ask the park
 before you buy.
 
 ## New for 2027
@@ -108,10 +104,8 @@ about the Patrouille de France aerobatic team. At
 dance to a new playlist in 2027.
 
 A new illusion show, "Imagine, Live show", joins in April. It's staged by Arthur
-Jugnot and his partner Bertran Lotth. The park's film line-up also lists the
-large-format films "Les Ailes du courage", "Grand canyon", "Van Gogh",
-"Everest", "Blue Whales" and "Flight of the Butterflies", plus a collaboration
-with the art school ESMA (École Supérieure des Métiers Artistiques).
+Jugnot and his partner Bertran Lotth. The park's film line-up also lists, among others, the large-format films "Les Ailes du courage", "Grand canyon", "Van Gogh",
+"Everest", "Blue Whales" and "Flight of the Butterflies", plus a carte blanche for students of the art school ESMA (École Supérieure des Métiers Artistiques), who show short films.
 
 Two additions look back over the forty years. The "Maison à l'envers", a house
 standing on its head, gets a 1987 version furnished with cult objects from the
@@ -125,7 +119,7 @@ is in our round-up of
 ## The new hotel
 
 Futuroscope is also building a four-star hotel with a science-fiction theme. It
-is to have 240 rooms plus premium and VIP suites, a restaurant with 400 seats, a
+is to have 240 rooms, including premium and VIP suites, as well as a restaurant with 400 seats, a
 bar with 120 and another 70 on the terrace. A conference area holds 350 people,
 with a 200-seat lecture hall and four breakout rooms.
 
@@ -138,7 +132,7 @@ when the hotel opens.
 The hotel is one of a series of projects Futuroscope has built under the name
 "Vision 2025". The investment plan comes to €304 million and is funded by the
 Banque des Territoires, the SEM Patrimoniale de la Vienne and the Compagnie des
-Alpes. It paid for the Aquascope, the rides
+Alpes. Among other things, it paid for the Aquascope, the rides
 [Objectif Mars](ref:futuroscope/destination-mars),
 [Chasseurs de Tornades](ref:futuroscope/tornado-chasers) and
 [Mission Bermudes](ref:futuroscope/mission-bermudes), the Station Cosmos and
