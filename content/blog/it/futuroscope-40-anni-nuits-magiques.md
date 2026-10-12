@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Nel 2027 il Futuroscope compie quarant'anni. Dal 5 dicembre 2026 fa sfilare
   per la prima volta una parata di luci nel parco. «Nuits magiques» va in scena
-  nelle sere di apertura fino al 27 marzo. Dal 4 gennaio all'inizio della stagione, il 6 febbraio, il calendario non segna nessun giorno di apertura.
+  nelle sere di apertura fino al 27 marzo. Dal 4 gennaio al 5 febbraio il parco è chiuso, e la stagione 2027 parte il 6 febbraio.
 tags:
   - news
   - futuroscope
@@ -28,7 +28,7 @@ rideLinks:
 seo:
   title: 'Futuroscope, 40 anni e la prima parata di luci'
   description: >-
-    Il Futuroscope compie 40 anni e dal 5 dicembre presenta la prima parata di luci. Dal 4 gennaio al 5 febbraio il calendario non segna aperture.
+    Il Futuroscope compie 40 anni e dal 5 dicembre presenta la prima parata di luci. Dal 4 gennaio al 5 febbraio il parco è chiuso.
   keywords:
     - Futuroscope Nuits magiques
     - Futuroscope parata di luci
@@ -42,7 +42,7 @@ seo:
 
 Sabato 5 dicembre 2026 il [Futuroscope](ref:futuroscope), vicino a Poitiers,
 fa partire la prima parata di luci della sua storia. Nel 2027 il parco compie
-40 anni. Secondo il comunicato stampa del 16 settembre, «Nuits magiques» resta
+40 anni. «Nuits magiques» resta
 in programma fino a sabato 27 marzo 2027.
 
 ## Cinque carri lungo un chilometro
@@ -59,11 +59,9 @@ nemmeno il percorso dei carri all'interno del parco.
 Il Futuroscope parla di una parata quotidiana. D'inverno, però, quotidiana vuol
 dire nei giorni in cui il parco è aperto. Secondo il calendario di apertura del
 parco, a novembre e fino al 13 dicembre il Futuroscope apre solo nel fine
-settimana. Dal 19 dicembre 2026 al 3 gennaio 2027 è aperto tutti i giorni, poi
-fino all'inizio della stagione, il 6 febbraio, il calendario non segna nessun
-giorno di apertura.
+settimana. Dal 19 dicembre 2026 al 3 gennaio 2027 è aperto tutti i giorni, poi resta chiuso dal 4 gennaio al 5 febbraio.
 
-Di sicuro «Nuits magiques» si può vedere nei fine settimana di dicembre fino al 13 e ogni giorno dal 19 dicembre al 3 gennaio. I giorni di febbraio e marzo non sono ancora nel calendario del parco. Quali altri parchi aprono a
+Di sicuro «Nuits magiques» si può vedere nei fine settimana di dicembre fino al 13 e ogni giorno dal 19 dicembre al 3 gennaio. Il calendario di apertura non indica ancora in quali giorni di febbraio e marzo il parco è aperto. Quali altri parchi aprono a
 dicembre e gennaio lo trovi nella nostra
 [panoramica sull'inverno](/blog/parchi-divertimenti-inverno-2026).
 
@@ -81,8 +79,7 @@ data. Sotto i cinque anni l'ingresso è gratuito.
 
 Per gli adulti, in quattro o più si risparmia con il Billet Tribu, che parte da 37 euro a
 persona e nelle date più care sale a 43, 49 o 54 euro. Tutti e quattro devono
-venire lo stesso giorno. Il biglietto va comprato al più tardi tre giorni
-prima: il giorno della visita non si può più acquistare. A ogni prenotazione si
+venire lo stesso giorno. Il biglietto va comprato al più tardi tre giorni prima. A ogni prenotazione si
 aggiungono 4 euro di diritti di prenotazione. In una giornata economica quattro
 persone spendono così 152 euro, in una cara 220.
 
@@ -130,20 +127,13 @@ fantascienza, oggi in costruzione. Sono previste 240 camere, tra cui suite Premi
 congressi c'è uno spazio da 350 persone con un auditorium da 200 e quattro sale
 annesse.
 
-Una passerella pedonale collega l'hotel direttamente all'Aquascope: oggi il
+Una passerella pedonale collegherà l'hotel direttamente all'Aquascope: oggi il
 Futuroscope gestisce due parchi, quello di divertimenti e appunto l'Aquascope.
 Il comunicato non dice quando l'hotel aprirà.
 
 ## Vision 2025
 
-L'hotel fa parte di una serie di progetti che il Futuroscope ha costruito sotto
-il nome di «Vision 2025». Il piano di investimenti vale 304 milioni di euro ed è
-sostenuto dalla Banque des Territoires, dalla SEM Patrimoniale de la Vienne e
-dalla Compagnie des Alpes. Ne sono nati, tra gli altri, l'Aquascope, le attrazioni
-[Objectif Mars](ref:futuroscope/destination-mars),
-[Chasseurs de Tornades](ref:futuroscope/tornado-chasers) e
-[Mission Bermudes](ref:futuroscope/mission-bermudes), gli hotel Station Cosmos
-ed Ecolodgee e il ristorante Space Loop.
+Prima dell'hotel il Futuroscope aveva già costruito, sotto il nome di «Vision 2025», tra gli altri l'Aquascope, le attrazioni [Objectif Mars](ref:futuroscope/destination-mars), [Chasseurs de Tornades](ref:futuroscope/tornado-chasers) e [Mission Bermudes](ref:futuroscope/mission-bermudes), gli hotel Station Cosmos ed Ecolodgee e il ristorante Space Loop. Il piano di investimenti valeva 304 milioni di euro ed era sostenuto dalla Banque des Territoires, dalla SEM Patrimoniale de la Vienne e dalla Compagnie des Alpes.
 
 ```ride-waits-widget rides=futuroscope/destination-mars|Objectif Mars;futuroscope/tornado-chasers|Chasseurs de Tornades;futuroscope/mission-bermudes|Mission Bermudes;futuroscope/dances-with-robots|Danse avec les robots columns=peak,days
 

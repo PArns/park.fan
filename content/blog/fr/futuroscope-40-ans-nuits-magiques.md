@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Le Futuroscope aura quarante ans en 2027. À partir du 5 décembre 2026, une
   parade lumineuse traverse le parc pour la première fois. « Nuits magiques »
-  passe les soirs d’ouverture jusqu’au 27 mars. Du 4 janvier au début de la saison, le 6 février, le calendrier n’affiche aucun jour d’ouverture.
+  passe les soirs d’ouverture jusqu’au 27 mars. Le parc est fermé du 4 janvier au 5 février, et la saison 2027 commence le 6 février.
 tags:
   - news
   - futuroscope
@@ -28,7 +28,7 @@ rideLinks:
 seo:
   title: 'Le Futuroscope fête ses 40 ans avec une parade lumineuse'
   description: >-
-    Le Futuroscope a 40 ans et lance le 5 décembre sa première parade lumineuse. Du 4 janvier au 5 février, aucun jour d’ouverture au calendrier.
+    Le Futuroscope a 40 ans et lance le 5 décembre sa première parade lumineuse. Le parc est fermé du 4 janvier au 5 février.
   keywords:
     - Futuroscope Nuits magiques
     - Futuroscope parade lumineuse
@@ -42,8 +42,7 @@ seo:
 
 À partir du samedi 5 décembre 2026, le [Futuroscope](ref:futuroscope), près de
 Poitiers, fait défiler la première parade lumineuse de son histoire. Le parc
-aura 40 ans en 2027. D’après le communiqué de presse du 16 septembre,
-« Nuits magiques » se joue jusqu’au samedi 27 mars 2027.
+aura 40 ans en 2027. « Nuits magiques » se joue jusqu’au samedi 27 mars 2027.
 
 ## Cinq chars sur un kilomètre
 
@@ -59,10 +58,9 @@ non plus le trajet des chars.
 Le Futuroscope parle d’une parade quotidienne. En hiver, quotidienne veut dire :
 chaque jour où le parc ouvre. Selon le calendrier d’ouverture du parc, le Futuroscope n’ouvre en novembre et jusqu’au
 13 décembre que le week-end. Du 19 décembre 2026 au 3 janvier 2027, il ouvre
-tous les jours. Ensuite, le calendrier n’affiche plus aucun jour d’ouverture
-avant le début de la saison, le 6 février.
+tous les jours. Il est ensuite fermé du 4 janvier au 5 février.
 
-On est donc sûr de voir « Nuits magiques » les week-ends de décembre jusqu’au 13 décembre et tous les jours du 19 décembre au 3 janvier. Les dates de février et de mars ne figurent pas encore dans le calendrier du parc. Les parcs ouverts en décembre et en janvier sont
+On est donc sûr de voir « Nuits magiques » les week-ends de décembre jusqu’au 13 décembre et tous les jours du 19 décembre au 3 janvier. Le calendrier d’ouverture n’indique pas encore quels jours le parc ouvre en février et en mars. Les parcs ouverts en décembre et en janvier sont
 réunis dans notre [tour d’horizon de l’hiver](/blog/parcs-attractions-hiver-2026).
 
 [Futuroscope](ref:futuroscope?full)
@@ -80,7 +78,7 @@ est gratuite pour les enfants de moins de cinq ans.
 Pour les adultes, le Billet Tribu revient moins cher à partir de quatre personnes. Il coûte à
 partir de 37 euros par personne selon la date, et 43, 49 ou 54 euros les jours
 plus chers. Les quatre doivent venir le même jour, et le billet s’achète au plus
-tard trois jours avant, jamais le jour même. Chaque réservation ajoute 4 euros
+tard trois jours avant. Chaque réservation ajoute 4 euros
 de frais. Quatre personnes paient ainsi 152 euros un jour bon marché et
 220 euros un jour cher.
 
@@ -130,20 +128,13 @@ thème de la science-fiction, en cours de construction. Il doit compter
 bar 120 et la terrasse 70 de plus. Pour les séminaires, un espace de
 350 personnes comprend un amphithéâtre de 200 places et quatre salles annexes.
 
-Une passerelle piétonne relie l’hôtel directement à l’Aquascope. Le Futuroscope
+Une passerelle piétonne reliera l’hôtel directement à l’Aquascope. Le Futuroscope
 exploite désormais deux parcs : le parc d’attractions et l’Aquascope. La date
 d’ouverture de l’hôtel ne figure pas dans le communiqué.
 
 ## Vision 2025
 
-L’hôtel fait partie des projets que le Futuroscope a menés sous le nom
-« Vision 2025 ». Ce plan d’investissement de 304 millions d’euros est porté par
-la Banque des Territoires, la SEM Patrimoniale de la Vienne et la Compagnie des
-Alpes. Il a notamment donné l’Aquascope, les attractions
-[Objectif Mars](ref:futuroscope/destination-mars),
-[Chasseurs de Tornades](ref:futuroscope/tornado-chasers) et
-[Mission Bermudes](ref:futuroscope/mission-bermudes), les hôtels Station Cosmos
-et Ecolodgee, et le restaurant Space Loop.
+Avant l’hôtel, le Futuroscope a déjà réalisé sous le nom « Vision 2025 » l’Aquascope, les attractions [Objectif Mars](ref:futuroscope/destination-mars), [Chasseurs de Tornades](ref:futuroscope/tornado-chasers) et [Mission Bermudes](ref:futuroscope/mission-bermudes), les hôtels Station Cosmos et Ecolodgee et le restaurant Space Loop, entre autres. Ce plan d’investissement de 304 millions d’euros a été porté par la Banque des Territoires, la SEM Patrimoniale de la Vienne et la Compagnie des Alpes.
 
 ```ride-waits-widget rides=futuroscope/destination-mars|Objectif Mars;futuroscope/tornado-chasers|Chasseurs de Tornades;futuroscope/mission-bermudes|Mission Bermudes;futuroscope/dances-with-robots|Danse avec les robots columns=peak,days
 

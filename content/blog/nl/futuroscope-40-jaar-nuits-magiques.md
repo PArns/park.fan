@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Futuroscope wordt in 2027 veertig. Vanaf 5 december 2026 trekt er voor het
   eerst een lichtparade door het park. “Nuits magiques” loopt op de avonden dat
-  het park open is, tot 27 maart. Van 4 januari tot de seizoensstart op 6 februari staat er geen openingsdag in de kalender.
+  het park open is, tot 27 maart. Van 4 januari tot en met 5 februari is het park gesloten, en het seizoen 2027 begint op 6 februari.
 tags:
   - news
   - futuroscope
@@ -28,7 +28,7 @@ rideLinks:
 seo:
   title: 'Futuroscope wordt 40 en krijgt zijn eerste lichtparade'
   description: >-
-    Futuroscope wordt 40 en toont vanaf 5 december zijn eerste lichtparade. Van 4 januari tot 5 februari staat er geen openingsdag in de kalender.
+    Futuroscope wordt 40 en toont vanaf 5 december zijn eerste lichtparade. Van 4 januari tot en met 5 februari is het park gesloten.
   keywords:
     - Futuroscope Nuits magiques
     - Futuroscope lichtparade
@@ -42,8 +42,7 @@ seo:
 
 Vanaf zaterdag 5 december 2026 trekt er voor het eerst in de geschiedenis van
 [Futuroscope](ref:futuroscope) een lichtparade door het park bij Poitiers. Het
-park wordt in 2027 veertig jaar. Volgens het persbericht van 16 september is de
-laatste avond van “Nuits magiques” zaterdag 27 maart 2027.
+park wordt in 2027 veertig jaar. De laatste avond van “Nuits magiques” is zaterdag 27 maart 2027.
 
 ## Vijf wagens over een kilometer
 
@@ -57,9 +56,9 @@ het park nemen, meldt Futuroscope evenmin.
 
 Futuroscope noemt het een dagelijkse optocht. In de winter betekent dagelijks
 wel: op de dagen dat het park open is. Volgens de openingskalender van het park is Futuroscope in november en tot 13 december alleen in
-het weekend open. Van 19 december 2026 tot en met 3 januari 2027 kun je er elke dag terecht, en daarna staat er tot de seizoensstart op 6 februari geen enkele openingsdag in de kalender.
+het weekend open. Van 19 december 2026 tot en met 3 januari 2027 kun je er elke dag terecht. Van 4 januari tot en met 5 februari is het park gesloten.
 
-Zeker te zien is “Nuits magiques” dus in de decemberweekenden tot en met 13 december en elke dag van 19 december tot en met 3 januari. Februari en maart ontbreken nog. Welke parken in december en januari wel open zijn, lees je in ons
+Zeker te zien is “Nuits magiques” dus in de decemberweekenden tot en met 13 december en elke dag van 19 december tot en met 3 januari. Op welke dagen het park in februari en maart open is, staat nog niet in de openingskalender. Welke parken in december en januari wel open zijn, lees je in ons
 [winteroverzicht](/blog/winter-pretparken-2026).
 
 [Futuroscope](ref:futuroscope?full)
@@ -74,7 +73,7 @@ Op de ticketpagina vraagt Futuroscope voor een dagticket, afhankelijk van de
 datum, 47 tot 59 euro voor volwassenen en 39 tot 49 euro voor kinderen. Onder de vijf is het gratis.
 
 Voor volwassenen is het Billet Tribu vanaf vier personen goedkoper. Dat kost afhankelijk
-van de datum vanaf 37 euro per persoon, op duurdere dagen 43, 49 of 54 euro. Alle vier moeten op dezelfde dag komen. Kopen doe je uiterlijk drie dagen van tevoren, want op de dag zelf verkoopt het park het ticket niet meer. Per reservering betaal je 4 euro
+van de datum vanaf 37 euro per persoon, op duurdere dagen 43, 49 of 54 euro. Alle vier moeten op dezelfde dag komen. Kopen doe je uiterlijk drie dagen van tevoren. Per reservering betaal je 4 euro
 boekingskosten. Op een goedkope dag ben je met z'n vieren zo 152 euro kwijt, op
 een dure dag 220 euro.
 
@@ -122,20 +121,12 @@ sciencefictionthema aan, dat nu in aanbouw is. Er komen 240 kamers, waaronder pr
 eens 70. Voor congressen is er een ruimte voor 350 mensen, met een collegezaal
 voor 200 en vier kleinere zalen.
 
-Vanaf het hotel loop je over een voetgangersbrug rechtstreeks naar het
-Aquascope. Futuroscope heeft inmiddels twee parken: het pretpark en het
+Er komt een voetgangersbrug die het hotel rechtstreeks met het Aquascope verbindt. Futuroscope heeft inmiddels twee parken: het pretpark en het
 Aquascope. Wanneer het hotel opengaat, zegt het persbericht niet.
 
 ## Vision 2025
 
-Het hotel is een van de projecten die Futuroscope onder de naam “Vision 2025”
-heeft gebouwd. Het investeringsplan bedraagt 304 miljoen euro en wordt gedragen
-door de Banque des Territoires, de SEM Patrimoniale de la Vienne en de Compagnie
-des Alpes. Eruit voortgekomen zijn onder meer het Aquascope, de attracties
-[Objectif Mars](ref:futuroscope/destination-mars),
-[Chasseurs de Tornades](ref:futuroscope/tornado-chasers) en
-[Mission Bermudes](ref:futuroscope/mission-bermudes), de hotels Station Cosmos en
-Ecolodgee en het restaurant Space Loop.
+Vóór het hotel heeft Futuroscope onder de naam “Vision 2025” al onder meer het Aquascope gebouwd, net als de attracties [Objectif Mars](ref:futuroscope/destination-mars), [Chasseurs de Tornades](ref:futuroscope/tornado-chasers) en [Mission Bermudes](ref:futuroscope/mission-bermudes), de hotels Station Cosmos en Ecolodgee en het restaurant Space Loop. Het investeringsplan bedroeg 304 miljoen euro en werd gedragen door de Banque des Territoires, de SEM Patrimoniale de la Vienne en de Compagnie des Alpes.
 
 ```ride-waits-widget rides=futuroscope/destination-mars|Objectif Mars;futuroscope/tornado-chasers|Chasseurs de Tornades;futuroscope/mission-bermudes|Mission Bermudes;futuroscope/dances-with-robots|Danse avec les robots columns=peak,days
 

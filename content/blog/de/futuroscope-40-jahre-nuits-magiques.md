@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Das Futuroscope wird 2027 vierzig Jahre alt und schickt ab dem 5. Dezember
   2026 zum ersten Mal eine Lichterparade durch den Park. „Nuits magiques“ läuft
-  an den Öffnungsabenden bis zum 27. März. Vom 4. Januar bis zum Saisonstart am 6. Februar ist der Park geschlossen.
+  an den Öffnungsabenden bis zum 27. März. Vom 4. Januar bis zum 5. Februar ist der Park geschlossen, die Saison 2027 beginnt am 6. Februar.
 tags:
   - news
   - futuroscope
@@ -43,7 +43,7 @@ seo:
 Ab Samstag, 5. Dezember 2026, schickt das [Futuroscope](ref:futuroscope) bei
 Poitiers zum ersten Mal in seiner Geschichte eine Lichterparade durch den Park.
 2027 feiert es seinen 40. Geburtstag. „Nuits magiques“ beginnt bei Einbruch der
-Dunkelheit und läuft laut der Pressemitteilung vom 16. September bis Samstag, 27. März 2027.
+Dunkelheit und läuft bis Samstag, 27. März 2027.
 
 ## Fünf Wagen auf einem Kilometer
 
@@ -58,9 +58,9 @@ Auftritte. Eine Uhrzeit nennt er nicht. Dort steht nur „à la tombée de la nu
 Das Futuroscope nennt die Parade einen täglichen Umzug. Täglich heißt im Winter
 aber: an den Tagen, an denen der Park geöffnet hat. Laut dem Öffnungskalender des Parks öffnet das Futuroscope im November
 und bis zum 13. Dezember nur an Wochenenden. Vom 19. Dezember 2026 bis zum 3.
-Januar 2027 hat es jeden Tag geöffnet, danach bleibt es bis zum Saisonstart am 6. Februar geschlossen.
+Januar 2027 hat es jeden Tag geöffnet, vom 4. Januar bis zum 5. Februar ist es geschlossen.
 
-Sicher zu sehen ist „Nuits magiques“ also an den Dezember-Wochenenden bis zum 13. Dezember und vom 19. Dezember bis zum 3. Januar an jedem Tag. Die Öffnungstage im Februar und März hat der Park noch nicht veröffentlicht. Welche anderen Parks im Dezember und Januar
+Sicher zu sehen ist „Nuits magiques“ also an den Dezember-Wochenenden bis zum 13. Dezember und vom 19. Dezember bis zum 3. Januar an jedem Tag. Welche Tage im Februar und März geöffnet sind, steht im Öffnungskalender noch nicht. Welche anderen Parks im Dezember und Januar
 geöffnet haben, steht im [Winter-Überblick](/blog/winter-freizeitparks-2026).
 
 [Futuroscope](ref:futuroscope?full)
@@ -122,20 +122,13 @@ Science-Fiction-Thema an, das gerade gebaut wird. Geplant sind 240 Zimmer, darun
 auf der Terrasse noch einmal 70. Für Tagungen gibt es einen Bereich für 350
 Personen mit einem Hörsaal für 200 und vier Nebenräumen.
 
-Eine Fußgängerbrücke führt vom Hotel direkt zum Aquascope. Das Futuroscope
+Eine Fußgängerbrücke soll vom Hotel direkt zum Aquascope führen. Das Futuroscope
 betreibt inzwischen zwei Parks, den Freizeitpark und eben dieses Aquascope. Wann
 das Hotel öffnet, sagt die Pressemitteilung nicht.
 
 ## Vision 2025
 
-Das Hotel gehört zu einer Reihe von Projekten, die das Futuroscope unter dem
-Namen „Vision 2025“ gebaut hat. Der Investitionsplan umfasst 304 Millionen Euro
-und wird von der Banque des Territoires, der SEM Patrimoniale de la Vienne und
-der Compagnie des Alpes getragen. Daraus entstanden sind unter anderem das Aquascope, die
-Bahnen [Objectif Mars](ref:futuroscope/destination-mars),
-[Chasseurs de Tornades](ref:futuroscope/tornado-chasers) und
-[Mission Bermudes](ref:futuroscope/mission-bermudes), die Hotels Station Cosmos
-und Ecolodgee und das Restaurant Space Loop.
+Vor dem Hotel hat das Futuroscope unter dem Namen „Vision 2025“ bereits unter anderem das Aquascope gebaut, dazu die Bahnen [Objectif Mars](ref:futuroscope/destination-mars), [Chasseurs de Tornades](ref:futuroscope/tornado-chasers) und [Mission Bermudes](ref:futuroscope/mission-bermudes), die Hotels Station Cosmos und Ecolodgee und das Restaurant Space Loop. Der Investitionsplan umfasste 304 Millionen Euro und wurde von der Banque des Territoires, der SEM Patrimoniale de la Vienne und der Compagnie des Alpes getragen.
 
 ```ride-waits-widget rides=futuroscope/destination-mars|Objectif Mars;futuroscope/tornado-chasers|Chasseurs de Tornades;futuroscope/mission-bermudes|Mission Bermudes;futuroscope/dances-with-robots|Danse avec les robots columns=peak,days
 
