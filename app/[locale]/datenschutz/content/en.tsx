@@ -200,10 +200,12 @@ export function DatenschutzEN() {
         </p>
         <p>
           Umami processes the data on our behalf. Umami and some of its service providers are based
-          in the USA, so a transfer there is possible. The legal basis is our legitimate interest in
-          improving the service with usage statistics (Art. 6(1)(f) GDPR). If your browser has "Do
-          Not Track" switched on, nothing is sent. Below, you can also exclude your visits from the
-          statistics. More information: <LegalLink href="https://umami.is/privacy" />.
+          in the USA, so a transfer there is possible. It rests on the EU Commission's Standard
+          Contractual Clauses, which are part of the data processing agreement with Umami. The legal
+          basis is our legitimate interest in improving the service with usage statistics (Art.
+          6(1)(f) GDPR). If your browser has "Do Not Track" switched on, nothing is sent. Below, you
+          can also exclude your visits from the statistics. More information:{' '}
+          <LegalLink href="https://umami.is/privacy" />.
         </p>
         <AnalyticsOptOut />
 

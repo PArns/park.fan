@@ -20,7 +20,7 @@ export function HeroImageInfoSwitch({ children }: { children: ReactNode }) {
     const country = tGeo.has(`countries.${meta.countrySlug}`)
       ? tGeo(`countries.${meta.countrySlug}` as never)
       : meta.countrySlug;
-    return <HeroImageInfoPanel meta={meta} country={country} />;
+    return <HeroImageInfoPanel meta={meta} country={country} src={activeSrc} />;
   }
 
   return <>{children}</>;

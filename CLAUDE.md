@@ -263,7 +263,7 @@ carries the reasoning, the measurements and the counter-examples.
   `rideLinks` override it, independently of each other and **per post, not per locale**.
 - **[Media database](docs/rules/media-database.md)** — one filesystem-backed database under `public/media/<collection>/`, and the
   sidecar is the index: never infer park, ride or role from a filename or folder.
-  `@/lib/media/hero` is the only client-safe import.
+  `@/lib/media/hero`, `/credit` and `/attribution` are the only client-safe imports.
 - **[No Creative Commons photos](docs/rules/no-creative-commons-photos.md)** — no CC BY/BY-SA/BY-NC/BY-ND
   photo anywhere, and no new CC0: own shoots, `/contribute` uploads, approved press kits, Unsplash.
   Wikimedia Commons is not a source. `pnpm generate:media` fails on a `cc-by*` sidecar.

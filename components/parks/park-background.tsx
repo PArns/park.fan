@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { BACKDROP_CREDIT_POSITION, PhotoCredit } from '@/components/media/photo-credit';
 import { backgroundImageLoader } from '@/lib/utils/image-loader';
 import { BACKGROUND_BLUR_DATA_URL } from '@/lib/utils/image-placeholder';
 import { cn } from '@/lib/utils';
@@ -63,6 +64,7 @@ export function ParkBackground({
           fetchPriority="high"
         />
         <div className="bg-background/70 absolute inset-0" />
+        <PhotoCredit src={imageSrc} className={BACKDROP_CREDIT_POSITION} />
       </div>
     );
   }
@@ -100,6 +102,7 @@ export function ParkBackground({
         {/* Transparent for the top 80% so the photo shows; the fade sits low, not mid-image. */}
         <div className="via-background/70 to-background absolute inset-0 bg-gradient-to-b from-transparent from-80% via-90%" />
         <div className="to-background absolute inset-0 bg-gradient-to-b from-transparent from-90%" />
+        <PhotoCredit src={imageSrc} className={BACKDROP_CREDIT_POSITION} />
       </div>
     </div>
   );

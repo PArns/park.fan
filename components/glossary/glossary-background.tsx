@@ -1,5 +1,6 @@
 import { getLocale } from 'next-intl/server';
 import { RandomHeroImage } from '@/components/layout/hero-background';
+import { BACKDROP_CREDIT_POSITION, PhotoCredit } from '@/components/media/photo-credit';
 import { heroImageSrcs } from '@/lib/media/hero';
 import { getMediaAltBySrc } from '@/lib/media/text';
 
@@ -49,6 +50,7 @@ export async function GlossaryBackground({
         {headTint && (
           <div className="from-background/85 via-background/60 absolute inset-x-0 top-0 h-2/3 bg-gradient-to-b to-transparent" />
         )}
+        <PhotoCredit src={imageSrc} className={BACKDROP_CREDIT_POSITION} />
       </div>
     </div>
   );

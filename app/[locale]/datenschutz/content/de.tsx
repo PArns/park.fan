@@ -212,11 +212,13 @@ export function DatenschutzDE() {
         </p>
         <p>
           Umami verarbeitet die Daten in unserem Auftrag. Umami und einige seiner Dienstleister
-          sitzen in den USA, eine Übermittlung dorthin ist daher möglich. Rechtsgrundlage ist unser
-          berechtigtes Interesse, das Angebot anhand von Nutzungsstatistiken zu verbessern (Art. 6
-          Abs. 1 lit. f DSGVO). Hat Ihr Browser „Do Not Track“ eingeschaltet, wird nichts gesendet.
-          Unten können Sie Ihre Besuche außerdem von der Statistik ausschließen. Weitere
-          Informationen: <LegalLink href="https://umami.is/privacy" />.
+          sitzen in den USA, eine Übermittlung dorthin ist daher möglich. Sie stützt sich auf die
+          Standardvertragsklauseln der EU-Kommission, die Teil des Auftragsverarbeitungsvertrags mit
+          Umami sind. Rechtsgrundlage ist unser berechtigtes Interesse, das Angebot anhand von
+          Nutzungsstatistiken zu verbessern (Art. 6 Abs. 1 lit. f DSGVO). Hat Ihr Browser „Do Not
+          Track“ eingeschaltet, wird nichts gesendet. Unten können Sie Ihre Besuche außerdem von der
+          Statistik ausschließen. Weitere Informationen:{' '}
+          <LegalLink href="https://umami.is/privacy" />.
         </p>
         <AnalyticsOptOut />
 
