@@ -31,6 +31,12 @@ const HEAD_CELL = 'px-2 py-1.5 text-xs font-medium text-muted-foreground/70';
 const VALUE_CELL = 'px-2 py-1.5 text-right text-sm tabular-nums whitespace-nowrap';
 
 /**
+ * The quietest-day cell may hold two weekday names and the wait. Below `sm` it wraps onto lines so
+ * all four columns fit a 360 px card; the park name and the average stay on one line.
+ */
+const QUIETEST_CELL = 'text-foreground/70 whitespace-normal sm:whitespace-nowrap';
+
+/**
  * The park name is never the cell that gives way. The longest-queue cell holds long unbreakable
  * ride names, so `w-full max-w-0` goes on that cell (below): `w-full` takes what is left, `max-w-0`
  * lets it give all of it back, and its `truncate` gets a box to act on. See
@@ -138,7 +144,7 @@ export function ParkComparisonCard({
                   )}
                 </td>
                 {showQuietest && (
-                  <td className={cn(VALUE_CELL, 'text-foreground/70')}>
+                  <td className={cn(VALUE_CELL, QUIETEST_CELL)}>
                     {isPending && row.quietestP50 == null ? (
                       <Skeleton className="ml-auto h-4 w-20" />
                     ) : row.quietestDays.length === 0 || row.quietestP50 == null ? (
