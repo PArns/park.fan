@@ -39,9 +39,9 @@ interface FooterProps {
 }
 
 /**
- * The site footer: popular parks by country, tools, content and legal links, feed, preferred-source
- * and install buttons, copyright and the build version. Server Component; the blog and news links
- * show only when those sections have posts.
+ * The site footer: popular parks by country, tools, content, legal and data-source links, feed,
+ * preferred-source and install buttons, copyright, the build version and the disclaimer as its last
+ * line. Server Component; the blog and news links show only when those sections have posts.
  */
 export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps) {
   const t = await getTranslations({ locale, namespace: 'footer' });
@@ -288,17 +288,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                 <span className="sr-only"> ({t('opensInNewTab')})</span>
                 <ExternalLink className="h-3 w-3" aria-hidden="true" />
               </a>
-              <span className="text-muted-foreground/60 hidden @min-[20rem]:inline">•</span>
-              <a
-                href="https://arns.dev"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
-              >
-                Arns.dev
-                <span className="sr-only"> ({t('opensInNewTab')})</span>
-                <ExternalLink className="h-3 w-3" aria-hidden="true" />
-              </a>
             </nav>
           </section>
 
@@ -335,9 +324,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
           <div className="flex flex-col items-center text-center md:col-span-2 md:items-start md:text-left">
             <p>{t('copyright', { year: currentYear })}</p>
             <BuildInfo />
-            <p className="text-muted-foreground/80 mt-4 max-w-sm text-xs leading-relaxed">
-              {t('disclaimer')}
-            </p>
           </div>
           <div className="flex w-full flex-col gap-6 md:col-span-4">
             {/* Named columns, so no `•` is left at the end of a line and the grid decides
@@ -425,23 +411,12 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                 </span>
               </FooterLinkGroup>
             </nav>
-            {/* `gap-1` because the word and the name are two flex items, and the space between
-                them in the source was collapsing: the line read "Powered byArns.dev". The gap
-                disappears with the span below `md`, where only the name shows. Not drawn at all
-                below `sm`: the same link is the last one in the brand block at the top. */}
-            <p className="max-sm:hidden md:text-right">
-              <a
-                href="https://arns.dev"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
-              >
-                <span className="hidden md:inline">{t('poweredBy')}</span> Arns.dev
-                <span className="sr-only"> ({t('opensInNewTab')})</span>
-              </a>
-            </p>
           </div>
         </div>
+
+        <p className="text-muted-foreground/80 border-border/60 mt-8 border-t pt-6 text-center text-xs leading-relaxed md:text-left">
+          {t('disclaimer')}
+        </p>
       </div>
     </footer>
   );

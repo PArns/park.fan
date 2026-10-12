@@ -40,7 +40,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`footer.tsx`](../../components/layout/footer.tsx)
 
-- `Footer` _component_: The site footer: popular parks by country, tools, content and legal links, feed, preferred-source and install buttons, copyright and the build version. Server Component; the blog and news links show only when those sections have posts.
+- `Footer` _component_: The site footer: popular parks by country, tools, content, legal and data-source links, feed, preferred-source and install buttons, copyright, the build version and the disclaimer as its last line.
 
 ### [`header-nearby-park.tsx`](../../components/layout/header-nearby-park.tsx)
 
