@@ -25,6 +25,15 @@ overrides:
   # (GHSA-c76h-2ccp-4975 family), patched on the 6.x line in 6.28.1
   # (via @vercel/blob).
   undici@6: ^6.28.1
+  # seroval fromJSON() Promise thenable assimilation (patched 1.6.1) and
+  # TypedArray memory exhaustion (patched 1.6.3); 1.6.3 covers both. Reached
+  # through the React Query devtools (@tanstack/react-query-devtools >
+  # @tanstack/query-devtools > solid-js). seroval-plugins tracks the same line.
+  seroval@<1.6.3: ^1.6.3
+  seroval-plugins@<1.6.3: ^1.6.3
+  # source-map-js event-loop DoS (GHSA-vfj7-8cjw-p6xm), patched in 1.2.2,
+  # build-time only via beasties > postcss.
+  source-map-js@<1.2.2: ^1.2.2
 onlyBuiltDependencies:
   - '@swc/core'
   - esbuild
