@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { BookOpen, CalendarRange, Compass, LineChart, type LucideIcon } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { MoreMenuLinks } from '@/components/layout/more-menu-links';
+import { PhotoCredit, TILE_CREDIT_POSITION } from '@/components/media/photo-credit';
 import type { MoreMenu, MoreMenuChapter, MoreMenuPhoto } from '@/lib/navigation/more-menu';
 
 /**
@@ -74,6 +75,7 @@ function HubBanner({
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/65 via-45% to-black/0"
       />
+      <PhotoCredit src={photo?.src} className={TILE_CREDIT_POSITION} />
       <span className="absolute inset-x-3.5 bottom-3 flex flex-col gap-1">
         <span className="flex items-center gap-2 text-white">
           <Icon className="size-4 shrink-0" aria-hidden="true" />
@@ -227,6 +229,7 @@ function FancastCard({ photo }: { photo: MoreMenuPhoto | null }) {
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )}
+        <PhotoCredit src={photo?.src} />
       </span>
       <span className="block px-3 py-2.5">
         <span className="text-foreground flex items-center gap-1.5 text-sm font-semibold">

@@ -11,7 +11,7 @@ export function ImpressumDE() {
 
       <div className="space-y-6 text-base leading-7">
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold first:mt-0">
-          Angaben gemäß § 5 TMG
+          Angaben gemäß § 5 DDG
         </h2>
 
         <address className="my-4 not-italic">
@@ -37,7 +37,9 @@ export function ImpressumDE() {
           Tel: <ObfuscatedPhone number="+49 2451 611 00 68" />
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Redaktionell verantwortlich</h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">
+          Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
+        </h3>
         <address className="my-4 not-italic">
           <Link
             href={'/blog/authors/patrick' as '/'}
@@ -64,9 +66,10 @@ export function ImpressumDE() {
         </h2>
         <p className="mb-4">
           Diese Webseite ist keine offizielle Webseite der hier aufgeführten Freizeit- und
-          Themenparks. Die angezeigten Wartezeiten werden ausschließlich von den jeweiligen
-          Freizeit- und Themenparks ermittelt und entweder über Infotafeln vor den Attraktionen oder
-          über Infobildschirme im Park angezeigt.
+          Themenparks. Die Wartezeiten stammen von den Parks selbst und erreichen uns über die unten
+          genannten Plattformen. Prognosen, Durchschnittswerte und Statistiken berechnet park.fan
+          daraus selbst. Eine Prognose ist eine Schätzung und kann deutlich von der tatsächlichen
+          Wartezeit abweichen.
         </p>
         <p className="mb-4">
           Der Betreiber dieser Webseite übernimmt keine Haftung oder Verantwortung für den Inhalt,
@@ -123,7 +126,9 @@ export function ImpressumDE() {
               className="group flex items-center justify-between py-3"
             >
               <div>
-                <span className="group-hover:text-primary font-medium">Queue-Times.com</span>
+                <span className="group-hover:text-primary font-medium">
+                  Powered by Queue-Times.com
+                </span>
                 <p className="text-muted-foreground text-sm">
                   Live-Wartezeiten & historische Daten
                 </p>
@@ -162,9 +167,7 @@ export function ImpressumDE() {
             >
               <div>
                 <span className="group-hover:text-primary font-medium">Open-Meteo.com</span>
-                <p className="text-muted-foreground text-sm">
-                  Wetterdaten und Vorhersagen (CC-BY 4.0)
-                </p>
+                <p className="text-muted-foreground text-sm">Wetterdaten und Vorhersagen</p>
               </div>
               <ExternalLink
                 className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
@@ -173,6 +176,18 @@ export function ImpressumDE() {
             </a>
           </li>
         </ul>
+        <p className="mb-4">
+          Die Wetterdaten von Open-Meteo stehen unter der Lizenz{' '}
+          <a
+            href="https://creativecommons.org/licenses/by/4.0/deed.de"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 underline"
+          >
+            CC BY 4.0
+          </a>
+          .
+        </p>
 
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Bildnachweise</h2>
         <p className="mb-4">

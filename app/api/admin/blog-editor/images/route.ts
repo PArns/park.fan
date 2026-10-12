@@ -4,7 +4,8 @@ import { NextResponse } from 'next/server';
 import { denyUnlessAdmin } from '@/lib/admin/session';
 import { MEDIA_REVISION, searchMedia } from '@/lib/media';
 import { versionedSrc } from '@/lib/media/focus';
-import { getMediaAlt, getMediaCaption, getCreditLine } from '@/lib/media/text';
+import { getCreditLine } from '@/lib/media/credit';
+import { getMediaAlt, getMediaCaption } from '@/lib/media/text';
 import type { MediaLicense, MediaRole } from '@/lib/media/types';
 
 /**

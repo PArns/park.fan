@@ -7,6 +7,7 @@ import { X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { DialogClose, DialogDescription, DialogTitle } from '@/components/ui/dialog';
+import { PhotoCredit } from '@/components/media/photo-credit';
 import { cn } from '@/lib/utils';
 
 /** The tinted field behind a band without a photograph, shared with `PushDialogHero`. */
@@ -116,6 +117,9 @@ export function DialogHero({
             className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent"
             aria-hidden="true"
           />
+          {/* Top left: the close button holds the other corner and the title the foot. Not a
+              link, which would take the focus a dialog hands its first control on open. */}
+          <PhotoCredit src={photo} className="top-1.5 right-auto bottom-auto left-1.5" />
         </>
       ) : (
         <>

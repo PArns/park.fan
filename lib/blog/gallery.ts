@@ -1,7 +1,8 @@
 import { getCollection, getMediaImageBySrc, getMediaImageForPath } from '@/lib/media';
 import { cropDimensionsForPath } from '@/lib/media/crop-box.mjs';
 import { versionedPath, versionedSrc } from '@/lib/media/focus';
-import { getCreditLine, getMediaAlt, getMediaCaption } from '@/lib/media/text';
+import { getCreditLine } from '@/lib/media/credit';
+import { getMediaAlt, getMediaCaption } from '@/lib/media/text';
 import type { MediaImage } from '@/lib/media/types';
 import type { BlogImage } from './types';
 

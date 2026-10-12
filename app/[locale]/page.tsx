@@ -263,7 +263,7 @@ export default async function HomePage({ params }: HomePageProps) {
             ) : (
               heroMeta && (
                 <HeroImageInfoSwitch>
-                  <HeroImageInfo meta={heroMeta} />
+                  <HeroImageInfo meta={heroMeta} src={randomHeroImage} />
                 </HeroImageInfoSwitch>
               )
             )}

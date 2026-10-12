@@ -9,6 +9,7 @@ import { Link, useRouter } from '@/i18n/navigation';
 import { Input } from '@/components/ui/input';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { BlogCoverFallback, slugFromPostPath } from '@/components/blog/blog-cover-fallback';
+import { PhotoCredit } from '@/components/media/photo-credit';
 import type { BlogMenu, BlogMenuPost, BlogMenuSearchEntry } from '@/lib/navigation/blog-menu';
 import { isBlogMenuQuery, searchBlogMenu } from '@/lib/navigation/blog-menu-search';
 import { categoryPath } from '@/lib/blog/paths';
@@ -212,6 +213,7 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }:
                         className="transition-transform duration-500 group-hover:scale-105"
                       />
                     )}
+                    <PhotoCredit src={lead.image} />
                   </span>
                   {lead.category && (
                     <span className="text-primary mb-1 block text-[11px] font-semibold tracking-wide uppercase">

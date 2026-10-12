@@ -451,9 +451,10 @@
       "iosHint": "Dans Safari, touchez le bouton Partager, puis « Sur l’écran d’accueil »."
     },
     "copyright": "© {year} park.fan. Tous droits réservés.",
-    "poweredBy": "Propulsé par",
     "legalLinks": "Légal",
-    "disclaimer": "Toutes les informations sont fournies sans garantie. Les temps d’attente et statuts affichés sont fournis automatiquement et peuvent différer de la situation réelle sur place."
+    "disclaimer": "Toutes les informations sont fournies sans garantie. Les temps d’attente et statuts affichés sont fournis automatiquement et peuvent différer de la situation réelle sur place.",
+    "dataSources": "Sources des données",
+    "weatherSource": "Météo"
   },
   "explore": {
     "title": "Temps d’attente des Parcs d’attractions à {location}",
@@ -2235,6 +2236,14 @@
     "video": {
       "play": "Lire la vidéo",
       "playHint": "Charge le lecteur YouTube seulement au clic."
+    },
+    "audio": {
+      "play": "Écouter la chanson",
+      "playHint": "Charge le lecteur de suno.com seulement au clic."
+    },
+    "instagram": {
+      "load": "Charger la publication",
+      "loadHint": "Charge la publication depuis Instagram (Meta) seulement au clic."
     }
   },
   "blogToast": {

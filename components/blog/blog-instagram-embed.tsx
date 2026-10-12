@@ -1,6 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { Button } from '@/components/ui/button';
 
 declare global {
   interface Window {
@@ -23,42 +25,25 @@ function loadAndProcess() {
 }
 
 /**
- * Official Instagram post/reel embed. The provider blockquote renders
- * immediately (with a plain link fallback), but the ~50 KB embed.js is only
- * loaded once the embed scrolls near the viewport — readers who never reach
- * it never pay for the third-party script.
+ * Official Instagram post/reel embed behind a button: embed.js and the post it fetches come from
+ * Instagram (Meta), and scrolling past a post is not asking for that. Until the press this is the
+ * blockquote's plain link, the button and a hint; the press injects the script.
  */
 export function BlogInstagramEmbed({ url }: { url: string }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const t = useTranslations('blog');
+  const [loaded, setLoaded] = useState(false);
 
+  // After the commit, so `process()` finds the class the press just added.
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    // Script already present (e.g. second embed or client navigation):
-    // just re-process so the new blockquote hydrates.
-    if (document.getElementById(SCRIPT_ID)) {
-      window.instgrm?.Embeds.process();
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (observedEntries) => {
-        if (observedEntries.some((entry) => entry.isIntersecting)) {
-          observer.disconnect();
-          loadAndProcess();
-        }
-      },
-      { rootMargin: '600px 0px' }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [url]);
+    if (loaded) loadAndProcess();
+  }, [loaded]);
 
   return (
-    <div ref={ref} className="not-prose my-8 flex justify-center">
+    <div className="not-prose my-8 flex flex-col items-center gap-3">
       <blockquote
-        className="instagram-media"
+        // embed.js converts every `.instagram-media` on the page, on its first run and on each
+        // `process()`, so the class waits for this embed's own press.
+        className={loaded ? 'instagram-media' : undefined}
         data-instgrm-permalink={url}
         data-instgrm-version="14"
         style={{ width: '100%', maxWidth: 540, margin: 0 }}
@@ -67,6 +52,14 @@ export function BlogInstagramEmbed({ url }: { url: string }) {
           {url}
         </a>
       </blockquote>
+      {!loaded && (
+        <div className="flex flex-col items-center gap-1.5 text-center">
+          <Button type="button" variant="outline" size="sm" onClick={() => setLoaded(true)}>
+            {t('instagram.load')}
+          </Button>
+          <p className="text-muted-foreground text-xs">{t('instagram.loadHint')}</p>
+        </div>
+      )}
     </div>
   );
 }

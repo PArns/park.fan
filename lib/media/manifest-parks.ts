@@ -27,13 +27,6 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "france",
     "path": "europe/france/paris/disneyland-park"
   },
-  "europe/france/plailly/parc-asterix": {
-    "slug": "parc-asterix",
-    "name": "Parc Asterix",
-    "city": "Plailly",
-    "countrySlug": "france",
-    "path": "europe/france/plailly/parc-asterix"
-  },
   "europe/germany/bottrop/movie-park-germany": {
     "slug": "movie-park-germany",
     "name": "Movie Park Germany",
@@ -68,13 +61,6 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "city": "Rust",
     "countrySlug": "germany",
     "path": "europe/germany/rust/europa-park"
-  },
-  "europe/germany/sierksdorf/hansa-park": {
-    "slug": "hansa-park",
-    "name": "Hansa-Park",
-    "city": "Sierksdorf",
-    "countrySlug": "germany",
-    "path": "europe/germany/sierksdorf/hansa-park"
   },
   "europe/germany/soltau/heide-park": {
     "slug": "heide-park",
@@ -171,13 +157,11 @@ export const MEDIA_PARK_PATH_BY_SLUG: Record<string, string> = {
   "bobbejaanland": "europe/belgium/kasterlee/bobbejaanland",
   "walibi-belgium": "europe/belgium/wavre/walibi-belgium",
   "disneyland-park": "europe/france/paris/disneyland-park",
-  "parc-asterix": "europe/france/plailly/parc-asterix",
   "movie-park-germany": "europe/germany/bottrop/movie-park-germany",
   "phantasialand": "europe/germany/bruehl/phantasialand",
   "legoland-deutschland": "europe/germany/guenzburg/legoland-deutschland",
   "plopsaland-deutschland": "europe/germany/hassloch/plopsaland-deutschland",
   "europa-park": "europe/germany/rust/europa-park",
-  "hansa-park": "europe/germany/sierksdorf/hansa-park",
   "heide-park": "europe/germany/soltau/heide-park",
   "walibi-holland": "europe/netherlands/biddinghuizen/walibi-holland",
   "efteling": "europe/netherlands/kaatsheuvel/efteling",

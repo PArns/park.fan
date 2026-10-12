@@ -12,7 +12,7 @@ export function ImpressumEN() {
 
       <div className="space-y-6 text-base leading-7">
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold first:mt-0">
-          Information according to § 5 TMG
+          Information according to § 5 DDG
         </h2>
 
         <address className="my-4 not-italic">
@@ -38,7 +38,9 @@ export function ImpressumEN() {
           Tel: <ObfuscatedPhone number="+49 2451 611 00 68" />
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Editorially responsible</h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">
+          Responsible for content under § 18(2) MStV
+        </h3>
         <address className="my-4 not-italic">
           <Link
             href={'/blog/authors/patrick' as '/'}
@@ -63,9 +65,9 @@ export function ImpressumEN() {
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Disclaimer</h2>
         <p className="mb-4">
           This website is not an official website of any of the theme and amusement parks listed
-          here. The displayed wait times are determined exclusively by the respective theme or
-          amusement park and are shown either via information boards in front of the attractions or
-          via information screens in the park.
+          here. Wait times come from the parks themselves and reach us through the platforms listed
+          below. Forecasts, averages and statistics are calculated by park.fan. A forecast is an
+          estimate and can differ considerably from the actual wait.
         </p>
         <p className="mb-4">
           The operator of this website assumes no liability or responsibility for the content,
@@ -121,7 +123,9 @@ export function ImpressumEN() {
               className="group flex items-center justify-between py-3"
             >
               <div>
-                <span className="group-hover:text-primary font-medium">Queue-Times.com</span>
+                <span className="group-hover:text-primary font-medium">
+                  Powered by Queue-Times.com
+                </span>
                 <p className="text-muted-foreground text-sm">Live wait times & historical data</p>
               </div>
               <ExternalLink
@@ -158,9 +162,7 @@ export function ImpressumEN() {
             >
               <div>
                 <span className="group-hover:text-primary font-medium">Open-Meteo.com</span>
-                <p className="text-muted-foreground text-sm">
-                  Weather data and forecasts (CC-BY 4.0)
-                </p>
+                <p className="text-muted-foreground text-sm">Weather data and forecasts</p>
               </div>
               <ExternalLink
                 className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
@@ -169,6 +171,18 @@ export function ImpressumEN() {
             </a>
           </li>
         </ul>
+        <p className="mb-4">
+          Weather data from Open-Meteo is licensed under{' '}
+          <a
+            href="https://creativecommons.org/licenses/by/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 underline"
+          >
+            CC BY 4.0
+          </a>
+          .
+        </p>
 
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Image Credits</h2>
         <p className="mb-4">Many thanks to everyone who contributed to the look of park.fan:</p>

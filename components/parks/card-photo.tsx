@@ -2,6 +2,7 @@
 
 import { useCallback, useState } from 'react';
 import Image from 'next/image';
+import { PhotoCredit } from '@/components/media/photo-credit';
 import { cn } from '@/lib/utils';
 
 // Park & ride cards render in a 1- / 2- / 3-column responsive grid.
@@ -132,7 +133,8 @@ export function CardPhoto({
  * Goes inside the card's photo-spacer row, which already is that strip, so nothing needs to know
  * how tall the panels came out. The spacer stays at `z-0` so the scrim keeps darkening it.
  * Decorative, because the bleed layer carries the alt text. `priority` belongs here when a card is
- * the page's LCP: this is the layer whose paint the reader waits for.
+ * the page's LCP: this is the layer whose paint the reader waits for. It also draws the photo's
+ * credit when the photo is not ours, so every card that frames a photo carries it.
  */
 export function CardPhotoFrame({
   src,
@@ -150,36 +152,39 @@ export function CardPhotoFrame({
   }, []);
 
   return (
-    <div
-      aria-hidden="true"
-      // Stable hook for the render check that asserts this layer's box stays wide
-      // — the moment a panelled card's box goes square, the focal point's Y axis
-      // is silently dead again. See `scripts/check-card-framing.mjs`.
-      data-card-photo="frame"
-      className={cn(
-        'pointer-events-none absolute inset-0 overflow-hidden transition-opacity duration-500',
-        loaded ? 'opacity-100' : 'opacity-0',
-        hideOnMobile && 'hidden sm:block'
-      )}
-    >
+    <>
       <div
+        aria-hidden="true"
+        // Stable hook for the render check that asserts this layer's box stays wide
+        // — the moment a panelled card's box goes square, the focal point's Y axis
+        // is silently dead again. See `scripts/check-card-framing.mjs`.
+        data-card-photo="frame"
         className={cn(
-          'pk-photo-zoom relative h-full w-full overflow-hidden',
-          closed && 'pk-photo-closed'
+          'pointer-events-none absolute inset-0 overflow-hidden transition-opacity duration-500',
+          loaded ? 'opacity-100' : 'opacity-0',
+          hideOnMobile && 'hidden sm:block'
         )}
       >
-        <Image
-          ref={captureImg}
-          src={src}
-          alt=""
-          fill
-          className="object-cover"
-          style={{ objectPosition: position }}
-          sizes={sizes}
-          priority={priority}
-          onLoad={() => setLoaded(true)}
-        />
+        <div
+          className={cn(
+            'pk-photo-zoom relative h-full w-full overflow-hidden',
+            closed && 'pk-photo-closed'
+          )}
+        >
+          <Image
+            ref={captureImg}
+            src={src}
+            alt=""
+            fill
+            className="object-cover"
+            style={{ objectPosition: position }}
+            sizes={sizes}
+            priority={priority}
+            onLoad={() => setLoaded(true)}
+          />
+        </div>
       </div>
-    </div>
+      <PhotoCredit src={src} className={cn(hideOnMobile && 'hidden sm:block')} />
+    </>
   );
 }

@@ -6,7 +6,7 @@ import { Link } from '@/i18n/navigation';
 import { BLOG_TOP_ID } from '@/lib/blog/toc';
 import { resolveAuthor } from '@/lib/blog/authors';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
-import { OWN_PHOTO_AUTHOR } from '@/lib/media/types';
+import { isOwnPhotoAuthor } from '@/lib/media/credit';
 import { PhotoCredit } from '@/components/media/photo-credit';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { HERO_CREDIT_POSITION } from '@/components/marketing/editorial-ui';
@@ -39,10 +39,10 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
       ? versionedPath(frontmatter.coverImage.src)
       : null;
   const coverAlt = frontmatter.coverImage?.alt ?? frontmatter.title;
-  // Own shoots carry `credit: 'Patrick Arns'` on every existing post — the same name
-  // `needsAttribution()` uses to stay quiet for the media database's own images.
+  // The frontmatter credit is free text, so it is checked against the same own names
+  // `needsAttribution()` uses. Without one, `PhotoCredit` falls back to the cover's sidecar.
   const coverCredit = frontmatter.coverImage?.credit;
-  const showCredit = cover && coverCredit && coverCredit !== OWN_PHOTO_AUTHOR;
+  const frontmatterCredit = coverCredit && !isOwnPhotoAuthor(coverCredit) ? coverCredit : null;
 
   const author = resolveAuthor(frontmatter.author, currentLocale);
   const authorHref = author.key ? (`/blog/authors/${author.key}` as '/') : null;
@@ -81,7 +81,14 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
       ) : (
         <BlogCoverFallback slug={post.slug} mark="side" />
       )}
-      {showCredit && <PhotoCredit credit={coverCredit} className={HERO_CREDIT_POSITION} />}
+      {cover && (
+        <PhotoCredit
+          credit={frontmatterCredit}
+          src={cover}
+          linked
+          className={HERO_CREDIT_POSITION}
+        />
+      )}
       {/* Title/excerpt/byline sit directly on the cover (no panel). Readability
           comes from a theme-aware tint that fades into the page background — a dark
           tint in dark mode, a light tint in light mode — so the cover never gets a

@@ -63,6 +63,15 @@ slice (`manifest-hero.ts`) holding only the hero images and only the caption fie
 **Never import `@/lib/media` from a Client Component** — that ships the ~107 KB
 catalog to every visitor.
 
+### `@/lib/media/attribution` — client-safe
+
+`getPhotoAttribution(src)` answers with the on-image credit of a photo by the path a component
+already paints, `?v=` and crops included, or `null` for an own shoot. It reads
+`manifest-attribution.ts`, which lists only the photos `needsAttribution()` is true for, so
+`PhotoCredit` can take a bare `src` in any Client Component. The rules behind it
+(`OWN_PHOTO_AUTHORS`, `needsAttribution`, `getCreditLine`) live in `@/lib/media/credit`, which
+imports nothing at runtime so the generator can load it too.
+
 ### `@/lib/media/hero-lqip` — deliberately NOT client-safe
 
 `heroBlurDataUrl(src)` answers with a 16 px WebP of that photo, as a `data:` URL, for
@@ -87,7 +96,8 @@ So a **card never resolves its own photo or focal point**. Both are handed in:
 `backgroundPosition` together, `getCardObjectPosition` serves direct server call
 sites, and the two API proxies that feed client-rendered grids (`/api/discovery`,
 `/api/parks/[...path]`) enrich on the way out. `ParkCard`, `AttractionCard`,
-`CardPhoto` and `ParkBackground` import nothing from `lib/media` at all.
+`CardPhoto` and `ParkBackground` import nothing from `lib/media` but the client-safe
+`@/lib/media/attribution`, through `PhotoCredit`.
 
 The cheap check, after a build:
 
@@ -143,14 +153,15 @@ with nothing else to notice.
 
 `pnpm generate:media` walks `public/media` and writes:
 
-| file                    | size    | holds                                                                |
-| ----------------------- | ------- | -------------------------------------------------------------------- |
-| `manifest.ts`           | ~107 KB | structural rows: paths, size, park/ride, roles, credit, focus, crops |
-| `manifest-text.ts`      | ~37 KB  | localized alt/caption per id                                         |
-| `manifest-search.ts`    | ~81 KB  | the search index (below) + `MEDIA_REVISION`                          |
-| `manifest-parks.ts`     | small   | park name/city/country per park, from the API catalog                |
-| `manifest-hero.ts`      | ~21 KB  | the client-safe hero slice                                           |
-| `manifest-hero-lqip.ts` | ~13 KB  | a 16 px inline preview per hero image — **server-side only**         |
+| file                      | size    | holds                                                                |
+| ------------------------- | ------- | -------------------------------------------------------------------- |
+| `manifest.ts`             | ~107 KB | structural rows: paths, size, park/ride, roles, credit, focus, crops |
+| `manifest-text.ts`        | ~37 KB  | localized alt/caption per id                                         |
+| `manifest-search.ts`      | ~81 KB  | the search index (below) + `MEDIA_REVISION`                          |
+| `manifest-parks.ts`       | small   | park name/city/country per park, from the API catalog                |
+| `manifest-hero.ts`        | ~21 KB  | the client-safe hero slice                                           |
+| `manifest-hero-lqip.ts`   | ~13 KB  | a 16 px inline preview per hero image — **server-side only**         |
+| `manifest-attribution.ts` | ~2 KB   | the client-safe on-image credits, only photos that need one          |
 
 It runs in `prebuild`, **after** `generate:image-crops` — the manifest records which
 crops exist, so the structured-data image set never advertises a file that was not

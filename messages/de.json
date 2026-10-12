@@ -451,9 +451,10 @@
       "iosHint": "Tippe in Safari auf „Teilen“ und dann auf „Zum Home-Bildschirm“."
     },
     "copyright": "© {year} park.fan. Alle Rechte vorbehalten.",
-    "poweredBy": "Powered by",
     "legalLinks": "Rechtliches",
-    "disclaimer": "Alle Angaben ohne Gewähr. Die angezeigten Wartezeiten und Statusinformationen werden automatisiert bereitgestellt und können von der tatsächlichen Situation vor Ort abweichen."
+    "disclaimer": "Alle Angaben ohne Gewähr. Die angezeigten Wartezeiten und Statusinformationen werden automatisiert bereitgestellt und können von der tatsächlichen Situation vor Ort abweichen.",
+    "dataSources": "Datenquellen",
+    "weatherSource": "Wetter"
   },
   "explore": {
     "title": "Freizeitpark Wartezeiten in {location}",
@@ -2235,6 +2236,14 @@
     "video": {
       "play": "Video abspielen",
       "playHint": "Lädt den YouTube-Player erst beim Tippen."
+    },
+    "audio": {
+      "play": "Song abspielen",
+      "playHint": "Lädt den Player von suno.com erst beim Tippen."
+    },
+    "instagram": {
+      "load": "Beitrag laden",
+      "loadHint": "Lädt den Beitrag von Instagram (Meta) erst beim Tippen."
     }
   },
   "blogToast": {

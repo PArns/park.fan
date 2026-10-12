@@ -18,6 +18,15 @@ import { NEWS_INDEX_PATH } from '@/lib/blog/paths';
 import { CHANGELOG_PATH } from '@/lib/changelog/paths';
 import type { Locale } from '@/i18n/config';
 
+/** The wait-time sources the footer credits, in the order the imprint lists them. */
+const DATA_SOURCES: { href: string; label: string; prefix?: string }[] = [
+  { href: 'https://themeparks.wiki', label: 'ThemeParks.wiki' },
+  { href: 'https://queue-times.com/', prefix: 'Powered by', label: 'Queue-Times.com' },
+  { href: 'https://wartezeiten.app', label: 'Wartezeiten.app' },
+];
+
+const SOURCE_LINK_PROPS = { target: '_blank', rel: 'noopener noreferrer' } as const;
+
 interface FooterProps {
   locale: string;
   /** Whether the blog has at least one published post. */
@@ -30,9 +39,9 @@ interface FooterProps {
 }
 
 /**
- * The site footer: popular parks by country, tools, content and legal links, feed, preferred-source
- * and install buttons, copyright and the build version. Server Component; the blog and news links
- * show only when those sections have posts.
+ * The site footer: popular parks by country, tools, content, legal and data-source links, feed,
+ * preferred-source and install buttons, copyright, the build version and the disclaimer as its last
+ * line. Server Component; the blog and news links show only when those sections have posts.
  */
 export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps) {
   const t = await getTranslations({ locale, namespace: 'footer' });
@@ -279,17 +288,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                 <span className="sr-only"> ({t('opensInNewTab')})</span>
                 <ExternalLink className="h-3 w-3" aria-hidden="true" />
               </a>
-              <span className="text-muted-foreground/60 hidden @min-[20rem]:inline">•</span>
-              <a
-                href="https://arns.dev"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
-              >
-                Arns.dev
-                <span className="sr-only"> ({t('opensInNewTab')})</span>
-                <ExternalLink className="h-3 w-3" aria-hidden="true" />
-              </a>
             </nav>
           </section>
 
@@ -320,10 +318,6 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
 
         <Separator className="my-6 sm:my-8" />
 
-        <div className="mb-4 text-center sm:mt-4 sm:mb-6">
-          <p className="text-muted-foreground/80 text-sm">{t('disclaimer')}</p>
-        </div>
-
         {/* The same six columns and 2/4 split as the block above the separator, so the link
             columns start where „Beliebte Parks" starts and the copyright sits under the brand. */}
         <div className="text-muted-foreground grid gap-6 text-sm sm:gap-8 md:grid-cols-6">
@@ -332,13 +326,13 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
             <BuildInfo />
           </div>
           <div className="flex w-full flex-col gap-6 md:col-span-4">
-            {/* Three named columns, so no `•` is left at the end of a line and the grid decides
-                where groups break. Each heading is `MenuSectionHeading` without `href`: a group
+            {/* Named columns, so no `•` is left at the end of a line and the grid decides
+                where groups break: two by two until `xl`, where four fit beside the brand. Each heading is `MenuSectionHeading` without `href`: a group
                 here is not a hub page. Every link keeps `max-sm:min-h-11`, the button scale's
                 phone tier. Below `sm` each column folds into one 44 px row (`FooterLinkGroup`),
                 with the links still in the HTML. */}
             <nav
-              className="grid w-full sm:grid-cols-3 sm:gap-x-8 sm:gap-y-6"
+              className="grid w-full sm:grid-cols-2 sm:gap-x-8 sm:gap-y-6 xl:grid-cols-4"
               aria-label={t('siteSections')}
             >
               {linkGroups.map((group) => (
@@ -368,24 +362,61 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                   )}
                 </FooterLinkGroup>
               ))}
+              {/* Queue-Times' terms ask for this exact wording, linked, somewhere prominent, and
+                  Open-Meteo's CC BY 4.0 for a link to the licence; the imprint alone is noindex. */}
+              <FooterLinkGroup heading={t('dataSources')}>
+                {DATA_SOURCES.map((source) => (
+                  <a
+                    key={source.href}
+                    href={source.href}
+                    {...SOURCE_LINK_PROPS}
+                    className="hover:text-foreground py-1 text-sm transition-colors max-sm:flex max-sm:min-h-11 max-sm:items-center"
+                  >
+                    {/* One child, so the flex row below `sm` cannot swallow the space after
+                        the prefix. */}
+                    <span>
+                      {source.prefix && `${source.prefix} `}
+                      <span className="whitespace-nowrap">
+                        {source.label}
+                        <ExternalLink
+                          className="ml-1 inline size-3 align-[-1px]"
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </span>
+                    <span className="sr-only"> ({t('opensInNewTab')})</span>
+                  </a>
+                ))}
+                <span className="inline-flex flex-wrap items-center gap-x-1 py-1 text-sm max-sm:min-h-11">
+                  <a
+                    href="https://open-meteo.com/"
+                    {...SOURCE_LINK_PROPS}
+                    className="hover:text-foreground"
+                  >
+                    Open-Meteo.com
+                    <ExternalLink className="ml-1 inline size-3 align-[-1px]" aria-hidden="true" />
+                    <span className="sr-only"> ({t('opensInNewTab')})</span>
+                  </a>
+                  <span className="text-muted-foreground/80">
+                    ({t('weatherSource')},{' '}
+                    <a
+                      href="https://creativecommons.org/licenses/by/4.0/"
+                      {...SOURCE_LINK_PROPS}
+                      className="hover:text-foreground underline-offset-2 hover:underline"
+                    >
+                      CC BY 4.0
+                    </a>
+                    )
+                  </span>
+                </span>
+              </FooterLinkGroup>
             </nav>
-            {/* `gap-1` because the word and the name are two flex items, and the space between
-                them in the source was collapsing: the line read "Powered byArns.dev". The gap
-                disappears with the span below `md`, where only the name shows. Not drawn at all
-                below `sm`: the same link is the last one in the brand block at the top. */}
-            <p className="max-sm:hidden md:text-right">
-              <a
-                href="https://arns.dev"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
-              >
-                <span className="hidden md:inline">{t('poweredBy')}</span> Arns.dev
-                <span className="sr-only"> ({t('opensInNewTab')})</span>
-              </a>
-            </p>
           </div>
         </div>
+
+        <p className="text-muted-foreground/80 border-border/60 mt-8 border-t pt-6 text-center text-sm leading-relaxed">
+          {t('disclaimer')}
+        </p>
       </div>
     </footer>
   );

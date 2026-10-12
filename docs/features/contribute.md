@@ -76,7 +76,7 @@ Four rules in that hand-over:
 - **The credit is the visitor's or nobody's.** `credit.author` is set only when the visitor gave a
   name, with `license: all-rights-reserved` (they keep the copyright, we hold the licence they
   granted) and `source: contribution`. Without a name there is no author, so `getCreditLine()`
-  returns null and no credit is drawn. It is never filled with `OWN_PHOTO_AUTHOR`. The old hover
+  returns null and no credit is drawn. It is never filled with one of `OWN_PHOTO_AUTHORS`. The old hover
   button wrote `credit.name`, a key the sidecar does not have, and lost the name every time.
 - **No visitor EXIF reaches `public/media/`.** A phone JPEG under the size cap used to be committed
   byte for byte, with its GPS fix, capture time, camera serial and sometimes the owner's name, in

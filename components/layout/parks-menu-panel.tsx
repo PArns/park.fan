@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { CountryFlag } from '@/components/common/icons/flags';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
+import { PhotoCredit, TILE_CREDIT_POSITION } from '@/components/media/photo-credit';
 import { translateContinent, translateCountry } from '@/lib/i18n/helpers';
 import type { GeoMenuContinent } from '@/lib/navigation/geo-menu';
 import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
@@ -261,6 +262,7 @@ export const ParksMenuPanel = memo(function ParksMenuPanel({
                     {/* The scrim is what makes the name legible on a bright photo — the cards are
                       145 px wide and there is no room to put the label anywhere else. */}
                     <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+                    <PhotoCredit src={park.image} className={TILE_CREDIT_POSITION} />
                     <span className="absolute right-2.5 bottom-2 left-2.5 block">
                       <span className="block text-[13px] leading-tight font-semibold text-white">
                         {park.name}

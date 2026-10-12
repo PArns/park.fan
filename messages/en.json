@@ -451,9 +451,10 @@
       "iosHint": "Tap the Share button in Safari, then “Add to Home Screen”."
     },
     "copyright": "© {year} park.fan. All rights reserved.",
-    "poweredBy": "Powered by",
     "legalLinks": "Legal",
-    "disclaimer": "All information provided without warranty. The displayed wait times and status information are automatically provided and may differ from the actual situation on site."
+    "disclaimer": "All information provided without warranty. The displayed wait times and status information are automatically provided and may differ from the actual situation on site.",
+    "dataSources": "Data sources",
+    "weatherSource": "Weather"
   },
   "explore": {
     "title": "Theme Park Wait Times in {location}",
@@ -2235,6 +2236,14 @@
     "video": {
       "play": "Play video",
       "playHint": "Loads the YouTube player only when you tap."
+    },
+    "audio": {
+      "play": "Play song",
+      "playHint": "Loads the player from suno.com only when you tap."
+    },
+    "instagram": {
+      "load": "Load post",
+      "loadHint": "Loads the post from Instagram (Meta) only when you tap."
     }
   },
   "blogToast": {
