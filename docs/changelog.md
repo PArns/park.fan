@@ -11,6 +11,321 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
+## 2.16.0 (2026-10-12) – Parks selbst vergleichen, Alarm bei Wiederöffnung, Öffnungszeiten im Kalender und Halloween-Mazes
+
+Geschnitten am 2026-10-12 aus 39 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.16.0.md`. Neueste Abschnitte zuerst.
+
+### Planer-Push: Das Topic „rain-soon" hat in allen sechs Sprachen eine Beschriftung
+
+`push.topics.rain-soon` steht jetzt in `messages/{de,en,es,fr,it,nl}.json` neben `push.topics.next-up`. `PlannerPushToggle` zeigt für das neue Regen-Topic der API damit einen Satz statt der rohen Id.
+
+### Admin-Sidebar markiert unter `/admin/ml/vergleich` nur noch den Modellvergleich
+
+Die Sidebar prüfte den aktiven Eintrag mit eigenem `pathname.startsWith(item.href)`, und `/admin/ml/vergleich` beginnt auch mit `/admin/ml`: ML-Zentrale und Modellvergleich standen beide als aktiv da. Sie fragt jetzt `activeNavItem()` aus `app/admin/_app/nav.ts`, das Breadcrumb und Gruppenname schon benutzen, und dort gewinnt der längste Treffer. Damit greift in der Sidebar auch `covers`: Auf einer Fahrgeschäftsseite (`/admin/attractions/<id>`) ist jetzt Parks markiert, vorher war es kein Eintrag.
+
+### Admin: `/admin/ml` ist die ML-Zentrale
+
+Die ML-Seite beantwortet jetzt drei Fragen untereinander. „Was ansteht“ zeigt je anstehende Umstellung eine Zeile mit einem Satz Begründung, dem Balken „live gemessen: X von 14 Tagen“ samt Parks, dem frühesten Termin und einem Stand (bereit, wartet auf Live, offen, später, Entscheidung offen); eine bereite Entscheidung steht oben und ist grün abgesetzt. „Wer ist besser?“ zeigt die vier Zähler der Matrix und verlinkt auf `/admin/ml/vergleich`. „Läuft alles?“ ist eine Tabelle mit einer Zeile je Modell oder Job: was es liefert, ob die App es zeigt, letzter Lauf in UTC (wie die Takte), erwarteter Takt und Status, Probleme oben. Darunter drei eingeklappte Details (Training, einzelne Fahrgeschäfte, Warnungen), deren Abfragen erst beim Aufklappen laufen; die Seite selbst braucht eine Anfrage statt sechs. Daten aus `GET /v1/admin/ml-overview` (PAR-861); bis das ausgeliefert ist, zeigt `?beispiel=1` die Werte aus dem Entwurf vom 11.10.2026.
+
+Entfernt: die Boards PCN gegen CatBoost, Shape gegen CatBoost, die Lead-Kurve gegen Persistence und das TFT-Scoreboard samt Modellkarte, weil jedes ein Modell gegen CatBoost statt gegen das Ausgelieferte gemessen hat (die Matrix ersetzt alle vier), dazu die doppelten TFT- und Versionskacheln und die Statusleiste. Mit ihnen gehen `aggregateShadowRows`, `aggregateLeadCurve`, `ShadowBoard`, `LeadCurveBoard`, `TftScoreboard`, `VerdictBar`, `TftModelCard`, `formatAge` und die Typen `MlComparisonBoard`, `ShadowComparisonRow`, `ComparisonRow` und die drei Verdict-Typen. Die vier Zähler sind jetzt eine Komponente (`MatrixSummary`), die beide Seiten zeigen. Reine Logik in `lib/admin/ml-overview.ts`, `pnpm test:ml-overview` (9 Fälle).
+
+### Admin-Modellvergleich: Tagesvergleich mit Vorschlag, lesbarer Zeitachse und Suche
+
+Der Tagesvergleich unter `/admin/ml/vergleich` öffnete auf einem Fahrgeschäft ohne Messwerte (Adventureland Resort, Draken Falls, 11.10.) und schrieb die 22 Stundenmarken von 06:00 bis 03:00 übereinander. Jetzt öffnet er auf `suggested` aus `…/day/options` (fehlt das Feld, wie beim derzeit ausgelieferten Backend, nimmt er den ersten Park und dessen erste Hauptattraktion); ein neues Datum behält Park und Fahrgeschäft, solange es sie gibt. Die Grafik zeichnet in echten Pixeln und lässt nur so viele Stundenmarken stehen, dass zwei mindestens 46 px auseinanderliegen (jede, jede 2., 3., 4., 6. oder 12. Stunde der Uhr); ein Fenster über Mitternacht läuft 23:00, 00:00, 01:00 in der Reihenfolge der Slots (`hourTicks`). Bei `truthCoverage` 0 steht statt der Kurven ein Hinweis und die Fehlerbalken fallen weg, unter 50 % ein Satz, dass der Vergleich auf wenigen Messungen beruht. Park und Fahrgeschäft sind jetzt durchsuchbar (`SearchSelect` in `app/admin/_ui/controls.tsx`, auf cmdk): Groß- und Kleinschreibung und Akzente zählen nicht, ein Park wird auch über Ort und Land gefunden (`matchesQuery` in `lib/utils/text-fold.ts`), Hauptattraktionen tragen eine Marke. `pnpm test:model-comparison` 24 Fälle (vorher 13).
+
+### Admin: Modellvergleich unter `/admin/ml/vergleich`
+
+Neue Seite im Admin (Navigation „Betrieb → Modellvergleich“): oben vier Zähler, darunter eine Matrix mit einer Zeile je Frage aus der App (Live, Heute, Tagesplaner, Kalender) und einer Spalte je Modell. Ein Kreis je Zelle sagt, ob das Modell besser trifft als das, was die App dort heute zeigt; ein Klick zeigt den Satz dazu, die Live- und Offline-Zahlen getrennt (Differenz mit 95 %-Intervall als kleiner Forest-Plot), die drei Prüfungen O/L/S und wann ein Ergebnis erwartet wird. Darunter der Tagesvergleich: Datum, Park, Fahrgeschäft und Prognosezeitpunkt wählen, alle Kurven gegen die echte Wartezeit mit Lücken bei Störung, Fadenkreuz mit Ablesezeile und der Fehler je Modell an diesem Tag. Daten kommen aus `GET /v1/admin/model-comparison` und `…/day(/options)` (PAR-855); bis die ausgeliefert sind, zeigt `?beispiel=1` die Werte aus dem Entwurf (Europa-Park, 10.10.2026). Reine Logik in `lib/admin/model-comparison.ts`, `pnpm test:model-comparison` (13 Fälle).
+
+Behoben in `/admin/ml`: `aggregateLeadCurve` hat jede Zeile, die nicht `pcn` war, in die Persistence-Spalte gezählt, also auch `pcn_blend`. Jetzt landen dort nur `persist`-Zeilen, wie im `leadCurveVerdict` des Backends.
+
+### Eine unbekannte Blog-, News- oder Park-URL antwortet mit 404 statt 500
+
+`app/[locale]/not-found.tsx` rief in `generateMetadata` `getLocale()` auf. Ohne Params liest next-intl die Locale dann aus `headers()`, und auf einer vorgerenderten Route (`/blog/[slug]`, `/news/[slug]`, `/parks/…`) bricht Next das mit „Page changed from static to dynamic“ ab. `/de/blog/gibt-es-nicht-xyz`, `/en/blog/nope-123`, `/de/news/gibt-es-nicht` und `/de/parks/gibt-es-nicht` antworteten deshalb mit 500, alle vier jetzt mit 404. Der Kopf der 404-Seite kommt ohne Locale aus (`notFoundMetadataWithoutLocale()`, Titel `404 · park.fan`, `noindex, follow`, kein Canonical); der sichtbare Inhalt bleibt in der Sprache des Besuchers.
+
+### Admin-Parkseite: Mindestgröße in der Einheit der Parkbeschilderung
+
+Die Zeile einer Attraktion schrieb `ab 102 in`, obwohl `minimumHeight` immer Zentimeter sind und `minimumHeightUnit` nur die Einheit der Parkbeschilderung nennt. `app/admin/parks/[id]/page.tsx` rechnet jetzt über `formatRiderHeight`, denselben Helper wie `RiderHeight`: Test Track zeigt `ab 40 in` statt `ab 102 in`, Parks mit `cm` bleiben bei `ab 140 cm`. Die öffentlichen Seiten waren nicht betroffen.
+
+### News: keine seitliche Verschiebung mehr auf 360 px
+
+Die Tagesgruppen auf `/news` (`NewsStream`) haben unter `sm` jetzt eine `minmax(0,1fr)`-Spalte statt der impliziten `auto`-Spalte. Deren Mindestbreite war der Min-Content der breitesten Karte, sodass `scrollWidth` auf `/de/news` und `/en/news` bei 362 px lag. Jetzt sind es 360 px. Ab `sm` ändert sich nichts.
+
+### Die Credit-Zeile des Titelbilds bleibt auf dem Handy auf dem Bild
+
+Der Abschnitt nach dem Banner wird unter `sm` mit `HERO_FLOW_INTO_PULL` (11 rem) über das Titelbild gezogen. Die Credit-Zeile hing am unteren Rand des Banners und lag deshalb bei 360 px unter dem ersten Absatz. `BlogPostBanner` setzt sie jetzt mit `HERO_CREDIT_POSITION` 2 px über den eingezogenen Abschnitt, ab `sm` bleibt sie in der Ecke.
+
+### Der Kompass steht auch auf der Park-Seite, und die Titelkarte hält keine leere Zeile mehr frei
+
+Wer im Park steht, bekam den Kompass bisher nur auf der Startseite. Auf der Park-Seite stand an seiner Stelle eine Liste der Top-Attraktionen mit denselben Bahnen und Wartezeiten, aber ohne Richtung. `ParkInParkBlock` rendert jetzt `ParkCompass` direkt unter der Titelkarte. Darunter liegen „Jetzt kürzer als später" (`NextBestRides`) und die fünf nächsten anderen Bahnen auf dem Glas der Titelkarte (`GlassCard` `tile`). Ohne Headliner in der Saison gibt es keinen Kompass, dann stehen die Headliner wieder in diesem Panel. Die Überschrift „In deiner Nähe" und die Listenüberschriften standen vorher direkt auf dem Parkfoto und waren über einem hellen Foto nicht lesbar. Jetzt steht nichts mehr ohne Glas auf dem Foto.
+
+Das Kompass-Modul wird wie auf der Startseite erst geladen, wenn die Nearby-Antwort den Besucher in diesen Park setzt (`useLoadParkCompass`, aus `park-compass-slot.tsx` herausgelöst). Die Listen warten auf das Modul, damit sich die Seite einmal verschiebt und nicht zweimal. Gemessen gegen `pnpm build && pnpm start` mit einem echten Standort in Phantasialand, `main` und dieser Stand nebeneinander gebaut und abwechselnd gemessen: Für einen Leser oben auf der Seite sinkt der Layout Shift bei 390 × 844 von 0,4425 auf 0,3757 und bei 412 × 915 von 0,4996 auf 0,4211, bei 1280 × 800 steigt er von 0,4340 auf 0,4422. Vorher kam „Jetzt kürzer als später" eine Sekunde nach den Listen oben in sie hinein (0,10 bis 0,11), jetzt landet es im Panel unter dem Kompass, außerhalb des ersten Bildschirms. Der erste Besuch im Park kostet 21,6 KB mehr (876,8 → 898,4 KB, Kompass-Chunk 13,2 KB, Foto 3,5 KB, `/positions`), außerhalb 1,4 KB (865,6 → 867,0 KB). Für einen Leser bei y = 1100 verschiebt der Block vorher wie nachher nichts, das Scroll-Anchoring von Chromium gleicht ihn aus (0,0564 gegen 0,0727, in beiden Fällen nur Bahnkarten, die sich selbst verschieben). WebKit hat kein Scroll-Anchoring (`useScrollAnchoring`), dort wartet der Block nach der Regel des Startseiten-Kompasses (`usePlacedOutOfSight`, aus `park-compass-slot.tsx` herausgelöst), bis er niemanden verschiebt. Lädt das Kompass-Modul nicht, zeigt das Panel die Headliner selbst, statt dass der Block für immer auf das Modul wartet. Die Listenüberschriften im Panel sind `h3` unter einem nur für Screenreader sichtbaren `h2` „In deiner Nähe".
+
+Die Zeilen der Listen sind jetzt die Zeilen der Kompass-Liste (`InParkRow`, `IN_PARK_LIST`, `IN_PARK_ROW_LINK`, `LiveWaitPill`): Name, Entfernung und ohne Wartezeit der Status als Text in der zweiten Zeile, die Wartezeit als deckende Pille. Weggefallen sind der „Top"-Badge in der Top-Liste, die ⏱️-Emoji, das Crowd-Symbol ohne Beschriftung und der Favoriten-Stern über der Zeile. Die Startseite und die überdachten Bahnen im Regen-Banner (`NowcastCoveredRides`) nutzen dieselbe Zeile. In gemischten Listen steht vor einem Headliner ein kleiner Stern.
+
+`RiddenCounter` hatte unter den Buttons der Titelkarte eine eigene Zeile (`mt-3 h-5`), auf jeder Park-Seite und für jeden Leser, auch ohne markierte Bahn. Er steht jetzt am Ende der Standort-Zeile (`besideLocation`), die in jedem Zustand gleich hoch ist. Unter `sm` zeigt er „✓ 3/40", darüber den ganzen Satz. Die Titelkarte ist auf Phantasialand 32 px kürzer: 447,5 → 415,5 px bei 390 px und 302,25 → 270,25 px bei 1280 px.
+
+#### Zurück aus der Hosentasche
+
+Wer das Handy nach mehr als zehn Minuten wieder entsperrt, sah auf der Park-Seite für die Dauer eines Requests „nicht aktuell" mit drehendem Button. Die Minuten-Uhr liest beim `visibilitychange` sofort die neue Zeit, der Refetch läuft im selben Event erst los. Auf dem Telefon ist die Zeile ohne Warnung ausgeblendet, sie erschien also kurz und schob die Bahnliste um 36 px. `liveDataHint` warnt jetzt nicht wegen des Alters, solange ein Poll unterwegs ist. Schlägt er fehl, kommt die Warnung über `failed` wie bisher (`pnpm test:live-data-freshness`, zwei neue Fälle).
+
+Die iOS-Freigabe für den Kompass hing am State der Komponente. Fiel die Nearby-Antwort nach der Rückkehr kurz aus, verschwand der Block, und der Kompass verlangte beim Wiederauftauchen erneut „Kompass einschalten", obwohl Safari nicht noch einmal fragt. Die Freigabe gilt jetzt für die Seite (`iosGrantedThisPage` in `use-compass-heading.ts`).
+
+Die Standort-Abfrage bei der Rückkehr zum Tab und der 60-s-Takt im Park lesen jetzt einen Fix, der höchstens 30 s alt ist (`FRESH_MAX_AGE_MS` in `geolocation-context.tsx`), der 5-Minuten-Takt außerhalb bleibt bei 8 Minuten. Mit 8 Minuten für jede Abfrage bekam der Takt im Park acht Minuten lang denselben Fix zurück, solange nicht der GPS-Watch des Kompasses lief. Im Park sind das etwa 60 Standortabfragen pro Stunde statt etwa 8, nur mit dem Tab im Vordergrund.
+
+Die Nearby-Abfrage mit Koordinaten lädt bei Fokus nicht mehr neu (`refetchOnWindowFocus: !hasCoords`). Dieser Request ging mit dem Standort von vor dem Wegstecken raus. Der neue Fix ändert den Key und lädt selbst, ein unveränderter Fix wird 6 s nach der Rückkehr neu geladen, wenn er älter als fünf Minuten ist. Der localStorage-Eintrag darf einen neuen Key weiter im Umkreis von 10 km als Platzhalter malen, aber nur noch dann als frische Daten gelten (und den Request unterdrücken), wenn die Bewegung seitdem den 1-km-Radius eines Parks nicht überquert haben kann (`readSeedEntry`, `answerSurvivesMove`, neun neue Fälle in `pnpm test:nearby-cache`). Wer mit dem Handy in der Tasche vom Parkplatz in den Park ging, las vorher bis zu fünf Minuten „entfernt". Beim Laufen im Park bleibt es beim 5-Minuten-Takt, die In-Park-Antwort ist 2,6 KB groß (Brotli, 38 Bahnen). Ein fehlgeschlagener Nearby-Request behält die letzte Antwort (`heldNearby` in `resolveInParkBlock`, drei neue Fälle in `pnpm test:in-park-block`). Der Block bekommt sie über den State und bleibt samt Kompass stehen, statt bis zum nächsten Poll zu verschwinden.
+
+Geprüft in Playwright gegen `next dev`, Tab 6 oder 25 Minuten im Hintergrund (davon 31 s Echtzeit für den Standort-Cache des Browsers): Im Park 280 m bewegt, geht genau ein Request mit den neuen Koordinaten raus, 0,2 s nach der Rückkehr, vorher einer mit den alten. Von 1,3 km außerhalb in den Park gegangen, steht nach der Rückkehr der Block mit Kompass. Mit abgebrochenen `/api/nearby`-Requests bleiben Block, Kompass und „Du bist im Park" stehen.
+
+Die Warnung „nicht aktuell" schweigt nur während des ersten Versuchs eines Polls. Der Park-Poll bricht nach 15 s ab (`LIVE_POLL_TIMEOUT_MS`), ein hängender Request hält sie also nicht unbegrenzt zurück.
+
+### Medien-Lizenzen kennen CC BY-SA 3.0, CC BY-SA 2.0 und CC BY 2.0
+
+`MEDIA_LICENSES` in `lib/media/types.ts` und `lib/media/sidecar.mjs` führt neben `cc-by-sa-4.0` jetzt `cc-by-sa-3.0`, `cc-by-sa-2.0` und `cc-by-2.0`. Commons-Fotos unter diesen Versionen (alle 8 Radiobilarna-Fotos) lassen sich damit im Sidecar ablegen. Die Credit-Zeile zeigt sie wie bisher über `formatLicense`, zum Beispiel „CC BY-SA 3.0“.
+
+### „Backstage" heißt jetzt „Guides", und das Panel hat eine Suche
+
+26 der 32 Artikel hinter dem Eintrag liegen in `guides`, deshalb trägt `navigation.blog` jetzt den Namen dieser Kategorie aus `categories.json`: Guides, Gidsen, Guías, Guide. In jeder Sprache kürzer als „Backstage" (5 bis 6 statt 9 Zeichen). Leiste, Handy-Menü und `SiteNavigationElement` lesen denselben Schlüssel; Footer, Breadcrumb und die URL `/blog` bleiben.
+
+Rechts auf der Linie unter „Neueste Beiträge" sitzt ein Suchfeld (`MenuSectionHeading` hat dafür einen `aside`-Platz). Ab zwei Buchstaben ersetzen die Treffer beide Spalten, höchstens acht, die Überschrift nennt die Zahl. Enter öffnet den ersten Treffer, das erste Escape leert das Feld, das zweite schließt das Band (`useMenuTrigger` überspringt ein Escape mit `defaultPrevented`). Die Liste kommt aus `/api/nav/articles/[locale]` (statisch, `getBlogMenuSearchIndex`), geladen beim ersten Zeigen auf das Feld oder beim ersten Fokus: 32 Artikel, 6,3 bis 6,9 KB brotli je Sprache. Im Chrome jeder Seite landen nur die vier Texte des Feldes (+203 B roh). Gesucht wird in Titel, Kategorie, SEO-Keywords, Tags und Teaser, mit Akzenten, Groß/Klein und „ß" gefaltet (`foldText`, aus `use-search-results.ts` nach `lib/utils/text-fold.ts` gezogen). Ein Wortanfang zählt ganz, ein Treffer im Wort erst ab vier Buchstaben und halb, damit „karte" „Jahreskarte" findet und „dis" nicht „Paradis".
+
+Solange der Fokus in einem Textfeld im Band liegt, schließt es nicht mehr, wenn der Zeiger auf die Seite wandert (`holdsTextEntry`); Richtung Leiste schließt es wie bisher. `pnpm test:blog-menu-search`, `pnpm test:menu-focus`.
+
+### `check:prose` fängt das Recherche-Tagebuch und den Zählsatz ohne Nomen
+
+Zwei neue Hausregeln in `docs/blog.md` §3.3, beide als Fehler in `scripts/check-prose.mjs`. Regel 21 (`RESEARCH_DIARY`): `abgerufen am`, `die gelesenen Seiten`, `haben wir nicht gelesen` und ihre Gegenstücke in den anderen fünf Sprachen, jetzt auch in Tabellenköpfen und Quellenlisten, die `postBody()` vorher wegließ. `ACCESS_DATE` verlangte Person, Seite und Datum im selben Satz und sah deshalb keinen der rund vierzig Fälle im Essen- und im Kleinkind-Guide. Regel 22 (`BARE_COUNT`, `SILENCE`): ein Satz mit zwei oder mehr Teilsätzen, die mit einer nackten Zahl und einem Verb anfangen (`, vier regeln … , fünf schweigen`), und eine Zahl oder ein Dokument, das schweigt (`schweigt die Mitteilung`). Am Korpus vom 2026-10-09 traf der Zählsatz nur den Auszug des Essen-Guides in allen sechs Sprachen. Die niederländischen Treffer `vier seizoenen` und `elf overwinningen` fielen nach der Umstellung auf eine Verbliste weg.
+
+### Ein fremdes Foto im Beitragstext nennt seinen Urheber auf dem Bild
+
+`BlogInlineImage` rendert jetzt wie `BlogPostBanner` die `PhotoCredit`-Zeile `© <Autor> (<Lizenz>)` unten rechts, auch im Lightbox-Bild. `blog-content.tsx` löst die Zeile auf dem Server über `getMediaImageForPath()`, `needsAttribution()` und `getCreditLine()` auf und reicht nur den String weiter, damit der 107-KB-Katalog nicht in den Client-Bundle gerät. Eigene Aufnahmen (`OWN_PHOTO_AUTHOR`) und Bilder außerhalb der Media-Datenbank bekommen weiter keine Zeile.
+
+### Der Tagesplaner zeigt Tage jenseits der Prognose als Rückblick
+
+Für Tage hinter dem Prognosehorizont schickt `/plan/day` seit PAR-445 `tier: "climatology"` mit Kurven aus vergleichbaren Tagen früherer Jahre. Das Frontend kannte den Wert nicht (0 Treffer für `climatology` in `lib/`, `components/`, `app/`). `PlanDayTier` und `PlanDay` tragen jetzt `climatology` mit `holidayState` und `referenceDates`. `PlannerContextBand` nennt so einen Tag „Frühere Jahre“ und schreibt darunter, dass es ein Rückblick auf vergleichbare Tage und keine Prognose ist, mit der Feiertagslage und der Zahl der Vergleichstage (`climatologyNote()`, `lib/planner/climatology.ts`), in sechs Sprachen. `bandCarriesFigure()` liefert für den Tier `false`, und `estimateFor()` lässt Spreizung und `expectedError` weg, damit kein `±` und keine Fehlerzahl erscheint. `pnpm test:planner-climatology` prüft 51 Fälle.
+
+### Der Neue-Beiträge-Toast zeigt die zuletzt erschienene News zuerst
+
+`app/api/blog-latest/[locale]/route.ts` sortierte nur nach `date` und bei gleichem Tag alphabetisch nach `translationKey`. Der Toast zeigt den ersten Eintrag groß und zählt den Rest als „N weitere“, also führte am 2026-10-07 die News von 12:18 (`adventure-in-batavia-dinner-europa-park`) und die von 14:10 (`phantasialand-expansion-online-petition`) stand dahinter. Die Route sortiert jetzt mit `newestPublishedFirst` aus `lib/blog/published-at.ts`, also nach Datum und `time`, wie jede andere Liste. `pnpm test:new-posts` prüft das (16 Tests).
+
+### check:prose lehnt „hier steht“, Preisunterschiede ohne Preise und angeworfene Züge ab
+
+Drei Wendungen aus dem Plopsaland-Guide stehen jetzt als Regeln 18 bis 20 in `docs/blog.md` §3.3, und `scripts/check-prose.mjs` meldet sie als **Fehler** auf jeder Oberfläche:
+
+- **`hier steht`** (`SAYS_HERE`): der Text, der auf sich selbst zeigt (`Hier steht, wie lang man … angestanden hat`, `Was hier steht, ist live`, `[die Einzelheiten stehen hier](…)`). Auf Deutsch zählt `hier steht` überall, `steht hier` vor Komma, Doppelpunkt oder Linkende, dazu `hier findest du` und ein Satz, der mit `Unten steht` beginnt. Eine Zahl dahinter (`Unten stehen 96 Attraktionen`, ein Bruch) und `Ganz unten` (eine Rangfolge) bleiben erlaubt. In den anderen fünf Sprachen zählen die Formen, die die Übersetzungen genommen hatten (`What’s in there is live`, `Wat hier staat`, `Ce qui s’affiche ici`, `Lo que ves aquí`, `Quello che c’è qui`, `[the details are here](…)`).
+- **`unterschiedliche Preise nennen`** (`DIFFERENT_FIGURES`, `unnamedDifferences()`): ein Unterschied, von dem keine Zahl genannt wird, in sechs Sprachen, auf Deutsch auch `die Angaben gehen auseinander`. Geprüft wird pro Satz, und nur wenn weder dieser noch der nächste Satz eine Zahl enthält; eine Jahreszahl zählt nicht.
+- **`wirft seine Züge an`** (`THROWN_ON`): nur Deutsch, mit Zug, Wagen oder Fahrgästen als Objekt, damit `den Motor anwerfen` erlaubt bleibt.
+
+Gegen den alten Stand meldet die Prüfung 57 Fehler, danach keinen; die 33 Warnungen sind dieselben wie vorher. Umgeschrieben sind der Plopsaland-Guide (Teaser, Preissatz, Bildunterschrift von Sky Scream, auch im Sidecar), Parc Astérix, „Sind 70 Minuten viel?“, „Die Kunst des Wartens“, Winter, Disneyland Paris, Magic Kingdom, Weihnachten und Silvester, ruhige Tage und Uhrzeiten, Halloween USA, Hansa-Park, Efteling und Walibi Holland, jeweils in den betroffenen Sprachen, dazu `planner.wizard.facts.pickFirst` und `seo.homepage.faq.liveDataA`, die Seiten „So funktioniert park.fan“ und „Beste Reisezeit“ in sechs Sprachen und die Bildunterschrift des Tagesplaners. Die Übersetzungen des Winter-Beitrags hatten einen Ankündigungssatz behalten, den das Deutsche schon gestrichen hatte. `updatedAt` bleibt, weil sich nur der Wortlaut ändert.
+
+### `check:media-urls` wird rot, wenn es nichts geprüft hat
+
+`scripts/check-media-urls.mjs` meldete ohne laufenden Server „0 media URLs across 11 pages“ und vier grüne Haken, obwohl mit Server 3.517 URLs geprüft werden. Jetzt fängt es Abruffehler je Seite ab, zählt die geladenen Seiten und endet mit Exit-Code 1, wenn eine Seite nicht lädt oder keine Medien-URL gefunden wurde. Die Meldung nennt `CHECK_BASE` und `pnpm start`. Zusätzliche Seiten kommen über Argumente oder `CHECK_PAGES` (kommagetrennt), damit ein neuer Beitrag seine eigenen Seiten mitprüft. Die Zusammenfassung nennt `n von m Seiten`.
+
+### Ein Guide zum Plopsaland Deutschland, dem früheren Holiday Park
+
+Der Park in Haßloch liefert seit zwei Jahren Live-Wartezeiten, hatte aber keinen Guide — und
+seit der Umbenennung am 28. Juni 2025 suchen ihn viele noch unter „Holiday Park“. Der Beitrag
+steht in allen sechs Sprachen und trägt die Messung aus 225 Betriebstagen: Der Median liegt an
+den meisten Attraktionen bei 5 bis 10 Minuten, der Samstag ist mit 15 der vollste Tag und der
+Freitag mit 5 der ruhigste. Dazu vier Fotos von Wikimedia Commons, alle als Original geladen.
+
+### Der Tagesplaner nennt den Grund, wenn für einen Tag keine Kurven kommen
+
+`/plan/day` schickt bei `rides: []` seit Längerem `ridesUnavailable.reason` mit, das Frontend las das Feld nicht (0 Treffer in `lib/`, `components/`, `app/`). Der Planer zeigte ein leeres Raster mit dem Satz „Such unten eine Bahn aus". `PlanDay` trägt jetzt `ridesUnavailable`, und `unavailableNote()` (`lib/planner/unavailable.ts`) wählt je Grund einen Satz in sechs Sprachen für die Leerkarte von `PlannerDayGrid` und den Leerzustand ohne Achse in `PlannerDayColumn`. `no_wait_time_source` folgt `noLiveWaitTimesReason()`, `feed_stale` nennt die Tage und sagt, dass die Störung bei uns liegt. `insufficient_history`, `park_closed` und `rides_cannot_open` verweisen auf einen anderen Tag. Der Optimieren-Button bleibt aus, weil `canOptimize()` bei leerer Ride-Liste `false` liefert. `pnpm test:planner-unavailable` prüft 15 Fixtures über alle 12 Gründe gegen alle sechs Locales.
+
+### check:prose lehnt den ruhigen Park und die flache Wartezeit ab
+
+Der Tagesplaner aus PAR-740 erklärte einen Tag ohne Kurven mit `Die Störung liegt bei uns, der Park ist deshalb nicht ruhig.` So redet niemand über einen Park, und der Nachsatz wehrt eine Lesart ab, auf die ein leeres Raster niemanden bringt. `planner.unavailable.feed_stale` und `feed_stale_unknown` lauten jetzt `Von diesem Park kommen seit 96 Tagen keine Wartezeiten mehr bei uns an. Der Fehler liegt bei uns.`, in allen sechs Sprachen.
+
+`scripts/check-prose.mjs` meldet die Wendung als **Fehler** auf jeder Oberfläche (`docs/blog.md` §3.3, Regel 15). Auf Deutsch trifft sie einen Park, eine Wartezeit oder eine Warteschlange mit `ruhig`, `flach`, `entspannt`, `gemütlich`, `gelassen`, `still` oder `friedlich`, im Hauptsatz, in der Frage und im Nebensatz. In den anderen fünf Sprachen ist ein ruhiger Park normale Sprache, dort trifft sie nur die ausgelieferte Verneinung (`not simply quiet`, `niet zomaar rustig` …) und einen Park, der flach ist. `am ruhigsten`, `ruhiger`, `Im Park ist es morgens ruhig` und `Die Tageskurve ist flach` bleiben erlaubt.
+
+Gegen den alten Stand meldet die Prüfung 19 Fehler, danach keinen: die zwölf Planer-Strings, `bleiben dazwischen flach` und `liegt beim Wochentag flach` im Beitrag über ruhige Tage und Uhrzeiten in allen sechs Sprachen und `in der kein Park ruhig blieb` im deutschen Schulferien-Beitrag. Die Beiträge sagen jetzt, was gemessen wurde (`bleibt die Wartezeit danach bis zum Abend fast gleich`, `unterscheiden sich die Wochentage kaum`). `updatedAt` bleibt, weil sich nur der Wortlaut ändert.
+
+### Park- und Bahnseite nennen den späteren Start einer Bahn und Early Entry
+
+Viele Bahnen starten nach dem Park: bei Phantasialand haben 23 von 34 Bahnen ein `opensAt` (09:30, 10:00, 10:15) bei einer Parköffnung um 09:00. Karte und Bahnseite zeigten dazu nur „Geschlossen". `RideOpensAtNote` sagt jetzt „Öffnet um 10:00 Uhr" (`opensAtConfidence: high`) oder „Öffnet ca. 10:15 Uhr" und verschwindet, sobald die Parkzeit diese Minute erreicht hat. Eine Bahn ohne `opensAt` bekommt keine Zeile, nie „öffnet mit dem Park". Die Parköffnung kommt aus dem Schedule und nicht aus `context.openHour`, das nur die Stunde nennt. Bei `hasEarlyEntry` zeigt `ParkTodayPanel` unter den Öffnungszeiten „Early Entry", mit Minuten nur, wenn `earlyEntryMinutesPeak` gesetzt ist.
+
+Der Abruf ist `/plan/day` von heute hinter `useLoadLast` (`useParkPlanDay`): Parkseite 8 → 9 Aufrufe (75,4 → 99,0 KB unkomprimiert, das Dokument bleibt bei 1.112 KB), der Body ist 2.893 B brotli. `pnpm measure:cls --late` ist gleich wie auf `main`: Europa-Park mobil 0,0001, desktop 0,0066 am oberen Rand. Test: `pnpm test:ride-openings`.
+
+### Blog: `cta-widget` zeigt eine Handlung als Button, und News ordnen einen Tag nach Uhrzeit
+
+#### `cta-widget`
+
+Ein Beitrag kann eine Handlung jetzt als Button zeigen statt als Link in einem Callout. Der Fence
+`cta-widget` mit `href`, `label` und optional `text` rendert `BlogCtaWidget`
+(`components/blog/blog-cta-widget.tsx`): einen Kasten mit einer Zeile Text und einem Link in
+`buttonLinkProps` (Größe `lg`, auf Phones volle Breite und 44 px Mindesthöhe, das Label bricht um
+statt die Spalte zu verbreitern). Gerendert wird nur eine http(s)-URL oder ein Pfad der Seite;
+externe Ziele öffnen wie alle externen Links in Beiträgen in einem neuen Tab. Im Blog-Editor steht
+der Fence im Widget-Katalog (`app/admin/blog-editor/_lib/widgets.ts`), dokumentiert ist er in
+`content/blog/README.md` §6. Erster Einsatz ist der Petitionslink im News-Beitrag zur
+Phantasialand-Erweiterung.
+
+#### News tragen eine Uhrzeit
+
+Jeder News-Beitrag hat jetzt `time: 'HH:MM'` (Europe/Berlin, in allen sechs Sprachen gleich).
+Vorher sortierten `/news`, das News-Panel im Header, der Hero-Chip, der Feed und die News-Sitemap
+nur nach `date`, und der Vergleich gab bei gleichem Tag nie 0 zurück. Die vier News vom 1. Oktober
+und die vier vom 23. September standen so in zufälliger Reihenfolge. `lib/blog/published-at.ts`
+liest die Uhrzeit an einer Stelle (`publishedAt`, `newestPublishedFirst`, `withZoneOffset`); sie
+geht auch in `datePublished`, in `<news:publication_date>` und in das `pubDate` des Feeds. Die 19
+bestehenden News haben die Minute bekommen, in der sie auf `main` kamen.
+`pnpm check:blog-updated-at` lässt keinen News-Beitrag ohne gültige, einheitliche Uhrzeit durch,
+`pnpm test:news-split` prüft die Reihenfolge in allen sechs Sprachen.
+
+### Die Wartezeit-Alarme stehen im Kopf des Headliner-Abschnitts
+
+Der Hinweis aus PAR-375 war eine eigene Karte über die volle Breite, zwischen dem Headliner-Abschnitt und dem ersten Bereich. Auf der Movie-Park-Seite stand „Van Helsing's Factory" als zehnter Headliner allein in der letzten Reihe, darunter die Karte, darunter „Halloween-Mazes". Sie gehörte zu keinem der beiden Abschnitte.
+
+`RideAlertsEntryButton` hat statt `nudge` jetzt die Variante `heading`, einen Button am Ende der Headliner-Überschrift hinter einer Haarlinie. `LandSection` nimmt ihn als `action` entgegen, `TabsWithHash` memoisiert ihn, damit der Abschnitt sein `memo` auch bei einem Tab-Wechsel behält. Auf dem Telefon zeigt er nur die Glocke und die Zahl der gesetzten Alarme, die Beschriftung bleibt für Screenreader im Button. Sind für den Park Alarme gesetzt, trägt er die amberfarbene Glocke der Karten. Der Satz, was ein Alarm tut (`pushAlerts.rideDialog.nudge`), steht jetzt im `title`. Die Überschrift bleibt mit Button so hoch wie ohne, 50 px auf 390 px und 62 px auf 1305 px, gemessen gegen „Halloween-Mazes". Die Seite wird auf Movie Park 138 px (390 px) und 98 px (1305 px) kürzer, die Karte und ihr Abstand. Ein gesetzter Filter blendet den Button nicht mehr aus, während der Suche ist der Headliner-Abschnitt wie bisher ganz verborgen.
+
+Die Farbe der Haarlinien und Slider-Schienen auf Glas (`bg-foreground/12 dark:bg-foreground/15`) stand an vier Stellen und wäre mit der neuen Linie die fünfte gewesen. Sie liegt jetzt als `HAIRLINE_FILL` in `components/common/glass-card.tsx`.
+
+### Mark rides as ridden
+
+Every ride card on the park page has a ridden switch in the corner, beside the bell and the star. Marks are kept per ride in the browser's `localStorage` (`ridden-rides`), with no account and no sync. The park header shows "x of y rides ridden" once one ride is marked; `closedAttractions` are not counted. The counter line is reserved at 20 px (`h-5`) on every park page, so the number appearing after hydration moves nothing.
+
+On a phone the card's corner circles are 30 px instead of 34 and sit 3 px apart instead of 12, with 14 px icons and a 33 × 40 px tap area each, so neighbours no longer overlap; in the park page's ride rows the star is as far from the card's right edge as from its top (8 px), and the row's content keeps the same 8 px from the left, right and bottom edges (14, 12 and 8 before). The phone row's wait time drops its "min" (screen readers still hear it), the headliner crown leaves the row, and so does the "Open" badge while a wait time is shown; closed, down and refurbishment keep theirs. All of it gives the ride's name and the badges more room.
+
+On a phone the park page's rope-drop tip moves below the headliners, so the first screen shows rides, and the "As of" time above the ride list is gone; the line still appears there when the wait times are out of date or the phone is offline.
+
+The land headings of the ride list ("Headliners", "Austria" …) take the filter panel's glass, border and corners, and the headliners' heading carries the cards' amber crown instead of the grid icon. On a phone they span the column like the panel and the rows below, on one line with the open count at the end.
+
+On a phone the filter panel above the ride list is 50 px instead of 62, its search field and "Filters" button 36 px tall.
+
+On a phone every box of the ride list stands 8 px from the next, the gap between the ride rows: tiles, filter panel, land headings, the alert prompt and the rope-drop tip (24, 16 and 32 px before). Every ride row there is 72 px; one with a tooltip badge at the end of its line was 74.
+
+### `test:calendar-park-projection` ist wieder grün
+
+Der Fall „the poll does not smuggle comparison/baseline back in either" war veraltet: `leanParkForLivePoll` sendet `baseline` seit PAR-678 mit jedem Poll, weil `attraction-card` es dem Crowd-Tooltip übergibt. Der Test prüft jetzt, dass `comparison` draußen bleibt und `baseline` ankommt (26/26). Die Projektion selbst ist unverändert.
+
+### Glocke an der Bahn: Dialog öffnet auf der Bahn, „wieder offen“ nur für stehende Bahnen
+
+Die Glocke an einer Attraktionskarte öffnet `RideAlertDialog` jetzt mit genau dieser Bahn gewählt und geschlossener Bahnliste. Beim Öffnen bekommt der Dialog selbst den Fokus statt des Suchfelds (`onOpenAutoFocus`), am Handy geht keine Tastatur auf. Der Button „Andere Bahn“ öffnet Suche und Liste und fokussiert das Suchfeld.
+
+`RideAlertBell` und `RideAlertDialogAttraction` tragen den Live-Status der Karte (`status`). `rideAlertKindsFor()` in `lib/push/ride-alert-picker.ts` entscheidet je Bahn: eine laufende Bahn bietet nur den Wartezeit-Alarm ohne Schalter, eine stehende (`DOWN`, `CLOSED`, `REFURBISHMENT`) beide Arten mit „Bescheid, wenn sie wieder öffnet“ vorausgewählt, sofern `reopenAvailable` wahr ist. Das gilt auch für die Bahn, die man über „Andere Bahn“ wählt. Die Glocke einer stehenden Bahn bleibt sichtbar, weil der Reopen-Alarm keine Wartezeit braucht; vorher blendete `hasUsableThresholdRange` sie dort aus.
+
+`pnpm test:threshold-minutes` deckt die Regel ab (32 Assertions, davon die Fälle für die drei Stopp-Status, `OPERATING`, `UNKNOWN` und fehlenden Status).
+
+### Halloween-Mazes bekommen ein Badge und eine eigene Gruppe auf der Parkseite
+
+`AttractionKind` kennt jetzt `MAZE`. Die Attraktionskarte und die Bahnseite zeigen dafür das neue `HalloweenMazeBadge` (orange, neben dem `TransportSystemBadge`). Die Parkseite fasst alle Mazes eines Parks in einer Gruppe „Halloween-Mazes“ zusammen, unabhängig vom Land, und sortiert sie hinter die Länder und vor „Weitere Attraktionen“ (`groupAttractionsByLand`, `sortLandNames` in `lib/utils/park-utils.ts`). Ein Park ohne Maze bekommt keine Gruppe. Die Saisonregel bleibt unverändert. Der Admin-Editor zeigt `MAZE` als „Halloween-Maze“. Neue Strings `parks.halloweenMaze` und `parks.mazeSection` in sechs Sprachen.
+
+### Öffnungszeiten eines Parks als Kalenderdatei
+
+Die Parkseite hat neben den Park-Links einen Eintrag „Öffnungszeiten in den Kalender“. Er lädt `<park-slug>.ics` von `/api/parks/hours/<continent>/<country>/<city>/<park>` mit einem Ereignis je Öffnungstag der kommenden Tage aus `/v1/parks/<geo>/schedule`. Für Europa-Park sind das am 2026-10-06 31 Ereignisse (32 `OPERATING`-Tage, der heutige ist schon geschlossen); `EXTRA_HOURS` und `CLOSED` erzeugen kein Ereignis. Die Zeiten stehen in UTC (`…Z`), die `UID` ist je Park und Datum stabil, ein zweiter Import ersetzt die Ereignisse also. Ein Tag mit `isEstimated` trägt im Ereignistext den Hinweis, dass die Zeit geschätzt ist. Titel und Hinweis kommen in der Sprache der Seite (`?locale=`), `parks.hoursCalendar` hat alle sechs Sprachen. Der Link erscheint nur bei einem Park mit Öffnungstag im Fahrplan. Die Route prüft die Segmente mit `isSlugPath()`, cached 3600 s (`CACHE_TTL.schedule`, wie die API selbst) und antwortet bei einem Upstream-Fehler mit 502 ohne Cache-Header. `pnpm test:park-hours-ics` prüft 40 Fälle.
+
+### Disneys 13 Minuten bleiben 13 Minuten
+
+Disney meldet 13 Minuten, wenn man ohne Wartezeit einsteigen kann. `roundWaitTo5` hat daraus 15 gemacht, auf der Ride-Karte, im Live-Panel der Ride-Seite, bei den Favoriten im Header und an jeder anderen Stelle, die eine Wartezeit über diese Funktion anzeigt. Aus „kein Anstehen" wurde so eine kurze Schlange.
+
+`roundWaitTo5` (`lib/utils/wait-time.ts`) gibt genau 13 jetzt unverändert zurück (`WALK_ON_WAIT_MINUTES`). Alles andere landet weiter auf dem Fünf-Minuten-Raster, 12 auf 10, 14 auf 15. `roundWaitDeltaTo5` rundet weiter streng auf fünf, denn ein Trend von +13 ist kein Walk-on. Bei den Ride-Alerts liegt zehn unter 13 bei 3, und das hebt die Untergrenze auf 5 an: Der Regler bleibt auf seinem Raster, `pnpm test:threshold-minutes` prüft das jetzt mit.
+
+Die API speichert Live-Wartezeiten mit PAR-715 ebenfalls auf dem Fünf-Minuten-Raster, nachdem Movie Park am 2026-10-04 „61" statt „60" zeigte, und lässt 13 dort genauso stehen.
+
+### Alarm-Glocke: zweite Alarmart „Bescheid, wenn sie wieder öffnet“
+
+`RideAlertDialog` bietet im Formular zwei Arten an: Wartezeit unter einer Marke oder eine Nachricht, sobald das Fahrgeschäft nach einer Schließung oder Störung wieder läuft (`kind: "reopen"` an `POST /v1/push/ride-alerts`, Backend aus PAR-214). Je Fahrgeschäft gilt eine Art, so wie die API es hält: ein Fahrgeschäft mit Alarm steht nicht mehr im Picker und wird über das X in der Liste entfernt, danach lässt sich die andere Art setzen. Der Reopen-Alarm braucht keine Schwelle, deshalb ist im Picker auch ein Fahrgeschäft mit 0 oder 5 Minuten Wartezeit oder ohne Anzeige wählbar. Bei einem Park ohne lesbare Wartezeiten (`hasReadableWaitTimes()` false) fehlt die Option. Die Alarmliste im Dialog, auf `/alerts` und im Header-Menü nennt einen Reopen-Alarm „wenn sie wieder öffnet“ statt einer Schwelle, und `RideAlertLocal` trägt `kind` mit `thresholdMinutes: null`.
+
+### Besucher stellen Parks selbst nebeneinander: `/compare?parks=a,b`
+
+Die Vergleichstabelle (`ParkComparisonCard`: typische Wartezeit, längste Schlange, ruhigster Wochentag) gab es nur redaktionell gesetzt in Blogposts und auf der Best-Time-Seite. Neu ist die Seite `/[locale]/compare`: zwei bis vier Parks über die Suche wählen (`CompareParkPicker`, gleiche Quelle wie die Planer-Suche), die Auswahl steht in der URL und lässt sich teilen. Ein Slug, den zwei Parks tragen (`disneyland-park`), wird in der Langform `continent/country/city/slug` geschrieben, sonst käme im Link der falsche Park an.
+
+Die Stats laden wie in den Posts erst nach den Live-Daten (`useLoadLast`). Ein Park ohne Messwerte bekommt unter der Tabelle eine Zeile statt nur Strichen. Die Seite trägt `noindex` und steht in keiner Sitemap; ob sie in den Index soll, entscheidet Patrick. `parkHits` aus der Planer-Suche liegt jetzt in `lib/utils/search-park-hits.ts`, damit der Picker nicht den `planner`-Namespace (17 KB) mitliefert. Die Seite liefert nur `compare.tool` an den Client.
+
+### Die Kapitel der Parkseite halten auf dem Handy denselben Abstand wie die übrigen
+
+`ChapterPanel`, `PageSection` und `AttractionHistoryPanel` beginnen unter `sm` mit 24 statt 40 px Abstand (PAR-433). Die Kapitel der Parkseite setzten ihren Abstand selbst mit `mt-8` und behielten 32 px. Neu liegen beide Werte in `components/common/chapter-spacing.ts`: `CHAPTER_GAP` (`mt-10 max-sm:mt-6`) und `CHAPTER_GAP_COMPACT` (`mt-8 max-sm:mt-6`). Beste Reisezeit, Statistik, Statistik-Methode, Stunden-Kapitel, Nearby, Blog-Kapitel und das Tipp-Kapitel der Attraktionsseite nutzen die zweite, jede Sektion mit ihrem Skeleton. Ab `sm` bleibt es bei 32 px, darunter sind es 24 px.
+
+### Parkseite: Hinweis auf Wartezeit-Alarme nach dem Headliner-Abschnitt
+
+`RideAlertsEntryButton` hat eine zweite Variante, `nudge`: ein Satz zu dem, was ein Alarm tut, und derselbe Button, der `RideAlertDialog` öffnet. `TabsWithHash` setzt sie hinter den Headliner-Abschnitt der Attraktionsliste, nicht über die Wartezeiten. Auf 360 px ist die Karte 130 px hoch, auf 1280 px 66 px. Während der Suche und bei Parks ohne Attraktionen erscheint sie nicht.
+
+Es gibt keinen zweiten Weg zum Alarm: derselbe Dialog, dieselbe Registrierung nach dem Wunsch des Besuchers, keine Permission-Abfrage beim Laden. Der neue String `pushAlerts.rideDialog.nudge` steht in allen sechs Sprachen.
+
+### Code-Index, drei neue Regeln und ein Aufräumdurchgang über die ganze Codebase
+
+`docs/code-index/` listet jeden exportierten Baustein aus `app/`, `components/`, `lib/`, `i18n/`, `types/` und `proxy.ts` mit dem ersten Satz seines Doc-Kommentars, eine Seite pro Verzeichnis. `scripts/generate-code-index.mjs` schreibt ihn aus dem Quelltext (`pnpm generate:code-index`, rund 3 s), `pnpm check:code-index` schlägt bei einer veralteten Seite fehl und läuft in CI als eigener Job `code-index-drift`. Beim ersten Lauf hatten 646 Komponenten, Hooks und Funktionen keine Beschreibung, jetzt ist es eine (`leanParkForAttractionShell` in `lib/api/parks.ts`, den ein offener Pull-Request ändert). Die Seiten tragen keine Zählzeile, damit zwei Pull-Requests im selben Verzeichnis nicht auf derselben Zeile kollidieren.
+
+Drei neue Regeln stehen in `CLAUDE.md` und unter `docs/rules/`: DRY (`dry-one-place-for-each-piece-of-logic.md`), der Code-Index (`the-code-index-is-generated-from-the-doc-comments.md`) und Kommentare (`a-comment-says-why-once.md`).
+
+#### Kommentare
+
+Ein Kommentar sagt jetzt, warum, in ein bis drei Sätzen, und verweist auf die Regelseite, die die Messungen trägt. Entfernt wurden Kommentare, die die nächste Zeile nacherzählen, JSX-Abschnittslabels, Trennbanner, Ticketnummern, Daten, Messwerte und Geschichten über frühere Fassungen. Von 210.028 Zeilen in `app/`, `components/`, `lib/`, `i18n/` und `proxy.ts` waren am 2026-10-06 39.473 Kommentar (18,8 %), jetzt sind es 23.149 von 187.084 (12,4 %). Kommentare mit Ticket, Datum oder Historie sanken von 680 auf 69, JSX-Labels von 135 auf 2, Banner von 191 auf 1. Jeder Commit dieser Art ist gegen seinen Vorgänger auf gleichen Token-Strom ohne Kommentare geprüft. Dabei wurden auch rund zwei Dutzend Kommentare korrigiert, die dem Code widersprachen.
+
+#### Fehler, die beim Aufräumen aufgefallen sind
+
+- Die Wettervorschau auf `/it` zeigte englische Wochentage: eine von fünf Kopien der date-fns-Sprachtabelle hatte kein Italienisch. Alle fünf lesen jetzt `dateFnsLocale()`.
+- Der Tagesdialog im Kalender schrieb auf `/en` „Tuesday, 10. November 2026". Der Titel kommt jetzt aus `getDateTimeFormat`.
+- Die Stundenköpfe des Tagesprofils formatierten eine UTC-Zeit ohne Zeitzone: 9 Uhr stand in Berlin als „10 Uhr", in Los Angeles als „1 AM", und der Client widersprach dem Server-Render.
+- Die Startseite gruppierte die Gesamtwartezeit ohne Locale, und eine lokale Kopie von `formatCompact` schrieb auf Deutsch „1.2M". Beide nehmen jetzt die Seitensprache.
+- Im Tagesplaner ignorierten das Flyout auf dem Telefon und die Passt-Prüfung im Wizard die Early-Entry-Antwort, weil beide eine Kopie der Tagesableitung ohne `withEarlyEntry` trugen.
+- Das Trend-Delta auf der Ride-Seite rundet über `roundWaitDeltaTo5`.
+- Blog-OG-Bilder schickten `Cache-Control: max-age=0`, Park- und Glossar-Karten 30 Tage. Blog und Glossar zeichnen jetzt dieselbe Karte (`lib/og/text-card.tsx`) mit denselben Headern.
+
+#### Sicherheit
+
+`/api/parks-list` ist entfernt: Die Route hatte keinen Aufrufer, war anonym erreichbar und schickte jede Anfrage mit `x-auth-key` an die API. Der Analytics-Proxy leitet keine Query-Parameter mehr weiter, vorher war jedes `?x=…` ein eigener Upstream-Aufruf mit Schlüssel, am 60-s-Fenster vorbei.
+
+#### Duplikate und toter Code
+
+jscpd fand 44 exakte Klone (2,1 % der Zeilen). Zusammengeführt sind unter anderem der Push- und Trip-Relay (`lib/api/relay.ts`), `getApiBaseUrl` (vorher vier gleiche Kopien und ein Dutzend Inline-Konstanten), die Sitemap-Helfer, die Glossar-Segmente (drei Kopien), die Kuratierfelder im Admin, die Admin-Rollen (drei Kopien, jetzt `lib/admin/roles.ts`), die GitHub-Helfer des Blog-Editors, die Planer-Spannen (`spansFor`, fünf Kopien) und die Spurgeometrie (`laneBox`). Wo `Intl`-Formatter im Render gebaut wurden, kommen sie jetzt aus `lib/utils/intl-format.ts`, gegen die alte Ausgabe in sechs Sprachen und mehreren Zeitzonen verglichen. `FavoriteStar` liest den Favoriten-Store über `useSyncExternalStore` statt per Effekt, das spart pro Karte einen Commit beim Mounten. Ungenutzte Exporte sind gelöscht oder nicht mehr exportiert.
+
+### Eine laufende Störung steht in einem eigenen Block, auf der Karte wie auf der Ride-Seite
+
+Bisher standen „Störung gemeldet seit …" und die Schätzung, wie lange so etwas meist dauert, als zwei bis vier graue Zeilen in 11 px unter den Badges. Auf der Karte brachen sie an den 92 px um, die rechts für Glocke und Stern frei bleiben, und lasen sich wie Kleingedrucktes.
+
+`OutageNote` zeichnet jetzt einen orange getönten Block mit dem Warndreieck des Störungs-Badges als rundem Icon. Das gilt für beide Signale, für die gemeldete Störung (`down`) wie für die Bahn, die nur still steht (`closed_gap`, etwa in Phantasialand). Den Unterschied trägt der Satz („Störung gemeldet seit …" oder „Steht seit … still"). Die erste Zeile ist fett, die Dauer bei offenem Park steht darunter, und `OutageEstimateNote` sitzt unter einer Haarlinie im selben Block. Die bestehenden Texte sind unverändert. Auf der Karte reicht der Block unter den Kreisen bis 16 px vor den rechten Rand. In der Telefonzeile bleibt er innerhalb des Rands. Die Ride-Seite nutzt dieselbe Komponente mit `variant="full"`.
+
+Die Schiene unter den beiden Balken ist jetzt weiß (`bg-white/70`, dunkel `bg-white/10`) statt `bg-muted/40`. Im getönten Block war die alte Schiene nicht zu sehen, gemessen 1,00 : 1 (dunkel) und 1,03 : 1 (hell) gegen den Block. Jetzt steht sie bei 1,08 bis 1,35 : 1 ab, und die blaue Füllung erreicht gegen sie 3,31 bis 3,93 : 1, auf der Karte wie auf der Ride-Seite. `formatStart` holt seinen Formatter jetzt aus `getDateTimeFormat`.
+
+Jede Zeile im Block ist auf Großbuchstabenhöhe und Grundlinie zugeschnitten (`text-box: trim-both cap alphabetic`), damit `items-center` die Schrift auf das Icon zentriert und nicht die Zeilenbox. Eine einzelne Zeile stand vorher sichtbar zu hoch, gemessen an einem Screenshot 24 px Block über den Großbuchstaben und 28 px unter der Grundlinie. Browser ohne `text-box` behalten die alten Abstände (`supports-[…]`).
+
+#### Eine behobene Störung verschwindet wieder von der Karte
+
+Die Live-Abfrage alle fünf Minuten schickte für eine Bahn ohne Störung `outage: undefined`. Über `NextResponse.json` fällt ein undefinierter Schlüssel weg, und `mergeLiveParkSnapshot` ließ deshalb die Störung aus dem Server-Render stehen. Crazy Bats zeigte am 2026-10-05 „Steht seit Sonntag, 16:10 still" unter „GEÖFFNET", während die API die Bahn schon ohne `outage` meldete. `leanParkForLivePoll` schickt jetzt `null`. `pnpm test:live-outage` geht dafür über denselben JSON-Weg wie die Abfrage und schlug vor dem Fix in zwei von zehn Fällen fehl. Die Ride-Seite war nicht betroffen, sie führt ohne JSON zusammen.
+
+#### Eigene Prognose-Sätze für eine Bahn, die nur still steht
+
+Die API liefert die „Wie lange noch"-Prognose künftig auch für `closed_gap` (Backend PAR-157), gelesen aus einer eigenen Kurve. Die bisherigen Sätze passen dazu nicht: „Störungen wie diese waren meist … behoben" hebt eine Zeile tiefer wieder auf, dass niemand eine Störung gemeldet hat. `OutageEstimateNote` nimmt deshalb das Signal entgegen und liest für alles außer `down` aus `parks.outage.estimateClosed`: „Stillstände wie dieser dauerten meist noch …", „… waren meist zwischen … und … Uhr vorbei", „Rund … % waren binnen einer Stunde vorbei." Das gilt in allen sechs Sprachen. „jetzt" an der Skala bleibt für beide Signale unter `estimate`. `pnpm test:outage-estimate` prüft die neuen Schlüssel und Platzhalter in allen Sprachen und schlägt fehl, wenn in einem Stillstands-Satz das Wort für „behoben", „gemeldet" oder „Störung" der jeweiligen Sprache auftaucht (58 Fälle).
+
+#### „Heute noch nicht in Betrieb", mit dem letzten bekannten Betrieb
+
+Eine Bahn, die bei offenem Park geschlossen ist und seit dem letzten Parkschluss gar nicht gefahren ist, bekam bisher keine Zeile: Die Stillstands-Erkennung meldet bewusst nur Bahnen, die am selben Tag schon gefahren sind, weil eine ganztägig geschlossene Bahn genauso gut Kälte, Wartung oder eine spätere eigene Öffnungszeit sein kann. Die API liefert dafür jetzt `notRunToday: { lastRunAt }` (Backend, PR zu PAR-157), und `NotRunTodayNote` zeigt „Heute noch nicht in Betrieb · Zuletzt in Betrieb: Sonntag, 18:00" auf der Karte und im Live-Panel der Ride-Seite, in allen sechs Sprachen. Der Block ist neutral grau mit Uhr-Symbol statt orange, weil er keine Störung behauptet. Er erscheint nur unter einem GESCHLOSSEN-Badge und nie neben einer Störungszeile. Damit beide Blöcke garantiert gleich aussehen, zeichnen sie jetzt dieselbe Komponente (`RideStatusBlock`), und `formatWeekdayTime` formatiert beide Zeitpunkte. Das Feld reist in der Live-Abfrage als `null`, wie `outage`. `pnpm test:live-outage` prüft das über den JSON-Weg (12 Fälle) und schlägt fehl, wenn es als `undefined` geschickt wird.
+
+#### Die Uhrzeit im Block sagt „Uhr"
+
+„Störung gemeldet seit Montag, 12:59" und „Zuletzt in Betrieb: Sonntag, 21:00" standen ohne das Wort für die Uhrzeit da. Beide Blöcke setzen Wochentag und Uhrzeit jetzt über `parks.rideStatus.weekdayTime` zusammen: „Sonntag, 21:00 Uhr", „Sunday at 09:00 PM", „zondag 21:00 uur", „dimanche à 21:00", „el domingo a las 21:00", „domenica alle 21:00". Die Uhrzeit kommt aus `formatShowClock`, also in der Zeitzone des Parks und so formatiert wie jede andere Uhrzeit auf der Seite. `useWeekdayTime` ersetzt `formatWeekdayTime`. Eine Zeitzone, die `Intl` nicht kennt, führt zum Satz für einen unbekannten Beginn statt zu einer Uhrzeit in der falschen Zone. `pnpm test:outage-estimate` prüft die Vorlage in allen sechs Sprachen und den fertigen Satz für Brühl und Orlando (60 Fälle).
+
+### check:prose erkennt Datenbank-Prosa, und der Regen-Guide ist neu geschrieben
+
+Der Guide „Freizeitpark bei Regen“ war aus dem Ergebnis einer Abfrage geschrieben und trug dessen Wörter: `Einträge`, `ohne Wert`, `führen wir` und 30-mal `Bahnen im Gebäude`, das Feld `indoor` vorgelesen. Im deutschen Text standen 18 solcher Wörter pro 1.000, in keinem anderen deutschen Beitrag mehr als zwei. Der Excerpt („An Regentagen sind die Headliner in zwölf von zwölf ausgewerteten Parks kürzer besetzt als an trockenen Tagen gleicher Art …“) war für Patrick nach dreimaligem Lesen nicht zu verstehen. Alle sechs Sprachen sind neu geschrieben: Sie sagen „überdacht“ wie der Filter auf der Parkseite, nennen keine Datenlücken mehr, lassen die überdachte Warteschlange weg und führen neben den sechs bisherigen Parks jetzt auch Toverland (22 von 44 Attraktionen überdacht), Walibi Belgium (7 von 42) und Walibi Holland (keine), deren Werte am 6. Oktober kuratiert wurden.
+
+`scripts/check-prose.mjs` kennt die Muster jetzt:
+
+- **Fehler** in allen sechs Sprachen und auf jeder Oberfläche: eine Zahl gegen sich selbst gezählt (`zwölf von zwölf`, `twelve of twelve`, `twaalf van de twaalf`, `douze sur douze`, `doce de doce`, `dodici su dodici`, nur Zahlwörter ohne Wort dazwischen) und `kürzer besetzt` / `korter bezet` (`docs/blog.md` §3.3, Regeln 13 und 14).
+- **Warnungen** in Beiträgen: Datenbank-Wörter über 4 pro 1.000 Wörter, eine Überschrift über „unsere Daten“, ein Excerpt oder eine Meta-Beschreibung mit Inhaltsverzeichnis (`die häufigsten Fragen`, `FAQ`, `Reiseplanung`), dieselbe Einleitungszeile vor zwei Widgets, eine Zählankündigung (`Drei Einschränkungen gehören dazu.`), eine Frage, die sich im selben Satz beantwortet (`Offen bleibt, welche …, und das sind …`), ein Versprechen über eine Lücke (`füllen die Lücke nicht mit Annahmen`), der eigene Guide als Beleg, Daten oder ein Jahr als Handelnde und ein Vergleich gegen eine nie genannte Gruppe (`Tage gleicher Art`).
+
+Gegen die alten sechs Fassungen meldet die Prüfung 5 Fehler und 64 Warnungen, gegen die übrigen 248 Beiträge keinen neuen Treffer. Die Regeln stehen in `docs/blog.md` §2.19 („The database instead of the park“) und als Ergänzungen in §1.2, §2.7, §2.12, §2.13, §2.14, §2.16, §4.3 und §5.4.
+
+### `/dev/blog-editor` ist entfernt
+
+Die Seite war ein Testaufbau für den Editor und lief in Produktion ohne Login: Sie renderte `EditorCanvas` und `MarkdownPreview` aus dem Admin für jeden Besucher, geschützt nur durch `noindex`. Ihre Aufrufe gegen `/api/admin/*` antworteten zwar mit 401, die Oberfläche selbst war aber öffentlich. Der echte Editor unter `/admin/blog-editor` steht hinter dem Login und bleibt unverändert. Mit der Seite fallen die `/dev`-Einträge in `robots.txt`, in den Noindex-Headern von `next.config.ts` und im Ausschluss des `proxy.ts`-Matchers weg.
+
+### °F an jeder Temperatur, Mount-Gates über Stores, ein UI-Kit im Admin
+
+#### Temperatur, Wind und Regen in der gewählten Einheit
+
+Vier Stellen zeigten °C, auch wenn der Besucher °F gewählt hatte: die Temperatur im Heute-Panel der Parkseite samt „Gefühlt", die Wetter-Kachel am Parkeingang, das Wetter im Startseiten-Hero und das Aria-Label der Spalten im Stundenchart. Die ersten drei rendern jetzt `Temp` mit der neuen Option `withUnit` und zeigen „13 °C" oder „55 °F", gewählt per CSS wie überall sonst, ohne dass ein Render die Einheit liest. Das Aria-Label nennt beide Skalen („14 °C (57 °F)"), weil ein Attribut nicht per CSS umschaltet. Der Kalender-Tagesdialog schrieb Wind fest in km/h und Regen in mm; er rendert jetzt `Wind` und `Precip`.
+
+#### Kein `setTimeout(…, 0)` mehr als Mount-Gate
+
+Sprachbanner, Analytics-Opt-out, Theme-Schalter, Hero-Fallbackbild, Countdown-Uhr, Blog-Editor-Entwurf, das Hero-Foto im Admin und die Standortanzeige der Capture-Seite setzten ihren Client-Zustand per Timer oder Microtask in einem Effekt, was pro Mount einen zusätzlichen Paint kostet. Sie lesen ihn jetzt über `useSyncExternalStore` (`useMounted`, `useBrowserNow` oder einen eigenen Store über `localStorage` mit `storage`-Event). Sprachbanner und Blog-Sprachhinweis teilen sich dafür `useBrowserLocale`. Sichtbar wird das am Theme-Schalter im Telefonmenü: Im hellen Theme stand der Knopf beim Öffnen bisher erst links und glitt dann hinüber, jetzt steht er sofort richtig. Die Ausnahmen stehen in `docs/rules/a-mount-gate-reads-a-store-never-a-timer.md`.
+
+#### Ein UI-Kit im Admin
+
+`app/admin/_lib/ui.tsx` und `app/admin/_ui/primitives.tsx` waren zwei Kits für dieselben Aufgaben. Es gibt nur noch `_ui/primitives.tsx`: Abschnitte sind `Panel`, Kästen darin `Tile` und `StatTile`, Kennzahlen `Meta`, Pillen `Chip`. Die Formatter liegen in `_lib/format.ts`. Die Crowd-Pille im Admin nutzt die Farben der öffentlichen Seite, „moderate" ist also grün statt bernsteinfarben.
+
 ## 2.15.0 (2026-10-06) – Shows im Tagesplaner, der ruhigste Tag je Favorit und die App im Footer
 
 Geschnitten am 2026-10-06 aus 61 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.15.0.md`. Neueste Abschnitte zuerst.
