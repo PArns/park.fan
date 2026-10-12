@@ -1022,6 +1022,8 @@
       "subtitle": "Basierend auf {days} gemessenen Öffnungstagen",
       "byMonthTitle": "Durchschnittlicher Besucherandrang nach Monat",
       "byDowTitle": "Durchschnittlicher Besucherandrang nach Wochentag",
+      "busiestDaysTitle": "Vollste gemessene Tage",
+      "quietestDaysTitle": "Ruhigste gemessene Tage",
       "topAttractionsTitle": "Attraktionen mit längsten Wartezeiten",
       "avgWait": "Ø Wartezeit",
       "p50": "Typisch",
