@@ -35,7 +35,7 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
         </p>
 
         <p className="mb-4">
-          Tel: <ObfuscatedPhone number="+49 2451 611 00 68" />
+          Tel: <ObfuscatedPhone number="+49 163 666 50 35" />
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">
