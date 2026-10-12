@@ -47,11 +47,7 @@ park turns 40 in 2027. "Nuits magiques" starts at nightfall and runs until Satur
 ## Five floats over one kilometre
 
 The parade has five floats and 23 performers, and its route through the park is
-a kilometre long. Futuroscope developed it with the Agence Tetro. The release
-calls it a mix of art, design and technology, with light installations and
-performances along the way. It gives no start time, only "à la tombée de la
-nuit", when it gets dark, and it doesn't say which way the floats go through the
-park either.
+a kilometre long. Futuroscope developed it with the Agence Tetro. There are light installations and performances along the way. It gives no start time, only "à la tombée de la nuit", when it gets dark, and no route for the floats.
 
 ## Which days you can see it
 
@@ -59,7 +55,7 @@ Futuroscope calls it a daily parade. In winter, daily means every day the park
 is open. According to the park's opening calendar, Futuroscope opens only at weekends in November and up to 13 December. From 19
 December 2026 to 3 January 2027 it's open every day. It's then closed from 4 January to 5 February.
 
-You can count on seeing "Nuits magiques" on the December weekends up to 13 December and on every day from 19 December to 3 January. Which days in February and March it's open isn't in the opening calendar yet. Our [winter overview](/blog/winter-theme-parks-2026) lists the other
+Which days in February and March it's open isn't in the opening calendar yet. Our [winter overview](/blog/winter-theme-parks-2026) lists the other
 parks open in December and January.
 
 [Futuroscope](ref:futuroscope?full)
@@ -103,12 +99,11 @@ A new illusion show, "Imagine, Live show", joins in April. It's staged by Arthur
 Jugnot and his partner Bertran Lotth. The park's film line-up also lists, among others, the large-format films "Les Ailes du courage", "Grand canyon", "Van Gogh",
 "Everest", "Blue Whales" and "Flight of the Butterflies". Students of the art school ESMA (École Supérieure des Métiers Artistiques) get a carte blanche to show short films.
 
-Two additions look back over the forty years. The "Maison à l'envers", a house
-standing on its head, gets a 1987 version furnished with cult objects from the
+For the anniversary, the "Maison à l'envers", a house standing on its head, gets a 1987 version furnished with cult objects from the
 eighties. Outdoors, the park and the INA are putting on an exhibition about 40
 years of innovation and technical change.
 
-The release doesn't mention a new ride. What other parks have announced for 2027
+What other parks have announced for 2027
 is in our round-up of
 [new theme park attractions for 2027](/blog/new-theme-park-attractions-2027).
 
@@ -119,9 +114,8 @@ is to have 240 rooms, including premium and VIP suites. The restaurant is to sea
 400, the bar 120 and the terrace another 70. A conference area holds 350 people,
 with a 200-seat lecture hall and four breakout rooms.
 
-A footbridge will lead from the hotel straight to the Aquascope. Futuroscope now
-runs two parks, the theme park and that Aquascope. The press release doesn't say
-when the hotel opens.
+Futuroscope hasn't given an opening date for the hotel yet. A footbridge will lead from the hotel straight to the Aquascope. Futuroscope now
+runs two parks, the theme park and that Aquascope.
 
 ## Vision 2025
 

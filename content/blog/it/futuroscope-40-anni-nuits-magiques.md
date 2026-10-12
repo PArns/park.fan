@@ -47,21 +47,15 @@ in programma fino a sabato 27 marzo 2027.
 
 ## Cinque carri lungo un chilometro
 
-Il percorso è lungo un chilometro e lo coprono cinque carri con 23 artisti. Il
-Futuroscope ha ideato la parata insieme all'Agence Tetro e nel comunicato la
-presenta come un incontro tra arte, design e tecnologia, con installazioni
-luminose e numeri dal vivo lungo il tragitto. Un orario preciso non c'è: il
-parco scrive soltanto «à la tombée de la nuit», cioè quando fa buio. Non indica
-nemmeno il percorso dei carri all'interno del parco.
+Il percorso è lungo un chilometro e lo coprono cinque carri con 23 artisti. Il Futuroscope ha ideato la parata insieme all'Agence Tetro. Lungo il tragitto ci sono installazioni luminose e numeri dal vivo. Il parco non dà un orario, solo «à la tombée de la nuit», cioè quando fa buio, e nemmeno il percorso dei carri.
 
 ## In quali giorni si vede la parata
 
-Il Futuroscope parla di una parata quotidiana. D'inverno, però, quotidiana vuol
-dire nei giorni in cui il parco è aperto. Secondo il calendario di apertura del
+Il Futuroscope parla di una parata quotidiana. D'inverno vuol dire ogni giorno in cui il parco è aperto. Secondo il calendario di apertura del
 parco, a novembre e fino al 13 dicembre il Futuroscope apre solo nel fine
 settimana. Dal 19 dicembre 2026 al 3 gennaio 2027 è aperto tutti i giorni, poi resta chiuso dal 4 gennaio al 5 febbraio.
 
-Di sicuro «Nuits magiques» si può vedere nei fine settimana di dicembre fino al 13 e ogni giorno dal 19 dicembre al 3 gennaio. Il calendario di apertura non indica ancora in quali giorni di febbraio e marzo il parco è aperto. Quali altri parchi aprono a
+Il calendario di apertura non indica ancora in quali giorni di febbraio e marzo il parco è aperto. Quali altri parchi aprono a
 dicembre e gennaio lo trovi nella nostra
 [panoramica sull'inverno](/blog/parchi-divertimenti-inverno-2026).
 
@@ -111,12 +105,11 @@ dei film il parco elenca, tra gli altri, i titoli in grande formato «Les Ailes 
 courage», «Grand canyon», «Van Gogh», «Everest», «Blue Whales» e «Flight of the
 Butterflies», oltre a una carta bianca per gli studenti della scuola d'arte ESMA (École Supérieure des Métiers Artistiques), che presentano dei cortometraggi.
 
-Due novità richiamano i quarant'anni del parco. La «Maison à l'envers», una casa
-capovolta, riceve una versione in stile 1987, arredata con oggetti di culto
+Per l'anniversario la «Maison à l'envers», una casa capovolta, riceve una versione in stile 1987, arredata con oggetti di culto
 degli anni Ottanta. All'aperto, insieme all'INA, il parco allestisce una mostra
 su 40 anni di innovazioni e svolte tecnologiche.
 
-Nel comunicato non compare una nuova attrazione. Cosa hanno annunciato gli
+Cosa hanno annunciato gli
 altri parchi per il 2027 lo trovi nella nostra panoramica sulle
 [novità dei parchi divertimento 2027](/blog/novita-parchi-divertimento-2027).
 
@@ -127,9 +120,7 @@ fantascienza, oggi in costruzione. Sono previste 240 camere, tra cui suite Premi
 congressi c'è uno spazio da 350 persone con un auditorium da 200 e quattro sale
 annesse.
 
-Una passerella pedonale collegherà l'hotel direttamente all'Aquascope: oggi il
-Futuroscope gestisce due parchi, quello di divertimenti e appunto l'Aquascope.
-Il comunicato non dice quando l'hotel aprirà.
+Una data di apertura per l'hotel il Futuroscope non l'ha ancora indicata. Una passerella pedonale collegherà l'hotel direttamente all'Aquascope: oggi il Futuroscope gestisce due parchi, quello di divertimenti e appunto l'Aquascope.
 
 ## Vision 2025
 

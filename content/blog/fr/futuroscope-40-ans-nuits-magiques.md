@@ -47,20 +47,15 @@ aura 40 ans en 2027. « Nuits magiques » se joue jusqu’au samedi 27 mars 2027
 ## Cinq chars sur un kilomètre
 
 La parade compte cinq chars et 23 artistes, qui parcourent un kilomètre dans le
-parc. Le Futuroscope l’a conçue avec l’Agence Tetro et la présente dans son
-communiqué comme un mélange d’art, de design et de technologie, avec des
-installations lumineuses et des numéros le long du parcours. Le parc ne donne
-pas d’horaire précis, seulement « à la tombée de la nuit ». Il n’indique pas
-non plus le trajet des chars.
+parc. Le Futuroscope l’a conçue avec l’Agence Tetro. Des installations lumineuses et des numéros ponctuent le parcours. Le parc ne donne pas d’horaire, seulement « à la tombée de la nuit », et pas non plus de trajet pour les chars.
 
 ## Les jours où passe la parade
 
-Le Futuroscope parle d’une parade quotidienne. En hiver, quotidienne veut dire :
-chaque jour où le parc ouvre. Selon le calendrier d’ouverture du parc, le Futuroscope n’ouvre en novembre et jusqu’au
+Le Futuroscope parle d’une parade quotidienne. En hiver, cela veut dire chaque jour où le parc ouvre. Selon le calendrier d’ouverture du parc, le Futuroscope n’ouvre en novembre et jusqu’au
 13 décembre que le week-end. Du 19 décembre 2026 au 3 janvier 2027, il ouvre
 tous les jours. Il est ensuite fermé du 4 janvier au 5 février.
 
-On est donc sûr de voir « Nuits magiques » les week-ends de décembre jusqu’au 13 décembre et tous les jours du 19 décembre au 3 janvier. Le calendrier d’ouverture n’indique pas encore quels jours le parc ouvre en février et en mars. Les parcs ouverts en décembre et en janvier sont
+Le calendrier d’ouverture n’indique pas encore quels jours le parc ouvre en février et en mars. Les parcs ouverts en décembre et en janvier sont
 réunis dans notre [tour d’horizon de l’hiver](/blog/parcs-attractions-hiver-2026).
 
 [Futuroscope](ref:futuroscope?full)
@@ -111,12 +106,11 @@ scène par Arthur Jugnot et son complice Bertran Lotth. Côté cinéma, le parc
 annonce aussi, entre autres, les films grand format « Les Ailes du courage », « Grand canyon »,
 « Van Gogh », « Everest », « Blue Whales » et « Flight of the Butterflies », ainsi qu’une carte blanche aux étudiants de l’école d’art ESMA (École Supérieure des Métiers Artistiques), qui présentent des courts métrages.
 
-Deux nouveautés reviennent sur ces quarante ans. La « Maison à
-l’envers » passe en version 1987 et se remplit d’objets cultes des années 80.
+Pour l’anniversaire, la « Maison à l’envers » passe en version 1987 et se remplit d’objets cultes des années 80.
 En plein air, le parc présente avec l’INA une exposition sur 40 ans
 d’innovations et de ruptures technologiques.
 
-Le communiqué n’annonce aucune nouvelle attraction. Ce que les autres parcs
+Ce que les autres parcs
 prévoient pour 2027 est rassemblé dans notre article sur les
 [nouveautés 2027 des parcs d’attractions](/blog/nouveautes-parcs-attractions-2027).
 
@@ -128,9 +122,8 @@ thème de la science-fiction, en cours de construction. Il doit compter
 bar 120 et la terrasse 70 de plus. Pour les séminaires, un espace de
 350 personnes comprend un amphithéâtre de 200 places et quatre salles annexes.
 
-Une passerelle piétonne reliera l’hôtel directement à l’Aquascope. Le Futuroscope
-exploite désormais deux parcs : le parc d’attractions et l’Aquascope. La date
-d’ouverture de l’hôtel ne figure pas dans le communiqué.
+Le Futuroscope ne donne pas encore de date d’ouverture pour l’hôtel. Une passerelle piétonne reliera l’hôtel directement à l’Aquascope. Le Futuroscope
+exploite désormais deux parcs : le parc d’attractions et l’Aquascope.
 
 ## Vision 2025
 

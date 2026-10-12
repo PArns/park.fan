@@ -46,21 +46,15 @@ cumple 40 años en 2027. «Nuits magiques» se podrá ver hasta el sábado 27 de
 
 ## Cinco carrozas en un kilómetro
 
-El recorrido mide un kilómetro y lo hacen cinco carrozas con 23 artistas. El
-parque ha creado el desfile junto con la Agence Tetro y en el comunicado lo
-presenta como una mezcla de arte, diseño y tecnología, con instalaciones de luz y
-actuaciones por el camino. No da una hora concreta, solo «à la tombée de la
-nuit», es decir, cuando oscurece. Tampoco dice por qué zonas del parque pasan las
-carrozas.
+El recorrido mide un kilómetro y lo hacen cinco carrozas con 23 artistas. El parque ha creado el desfile junto con la Agence Tetro. Por el camino hay instalaciones de luz y actuaciones. No da una hora, solo «à la tombée de la nuit», es decir, cuando oscurece, y tampoco el recorrido de las carrozas.
 
 ## Qué días sale el desfile
 
-Futuroscope habla de un desfile diario. En invierno, diario quiere decir los días
-en que el parque abre. Según el calendario de apertura del parque, Futuroscope abre en noviembre y hasta el 13 de diciembre solo
+Futuroscope habla de un desfile diario. En invierno, eso significa cada día que el parque abre. Según el calendario de apertura del parque, Futuroscope abre en noviembre y hasta el 13 de diciembre solo
 los fines de semana. Del 19 de diciembre de 2026 al 3 de enero de 2027 abre todos
 los días. Después cierra del 4 de enero al 5 de febrero.
 
-Lo seguro es que «Nuits magiques» se puede ver los fines de semana de diciembre hasta el día 13 y todos los días del 19 de diciembre al 3 de enero. Qué días abre en febrero y marzo todavía no figura en el calendario de apertura. Qué otros parques abren en
+Qué días abre en febrero y marzo todavía no figura en el calendario de apertura. Qué otros parques abren en
 diciembre y enero lo contamos en nuestro
 [repaso de parques en invierno](/blog/parques-atracciones-invierno-2026).
 
@@ -112,12 +106,11 @@ parque menciona además, entre otras, las películas de gran formato «Les Ailes
 «Grand canyon», «Van Gogh», «Everest», «Blue Whales» y «Flight of the
 Butterflies», y una carta blanca para estudiantes de la escuela de arte ESMA (École Supérieure des Métiers Artistiques), que proyectan cortometrajes.
 
-Dos novedades recuerdan los cuarenta años del parque. La «Maison à l'envers», una
-casa puesta del revés, tendrá una versión al estilo de 1987, amueblada con
+Por el aniversario, la «Maison à l'envers», una casa puesta del revés, tendrá una versión al estilo de 1987, amueblada con
 objetos de culto de los años ochenta. Y al aire libre, el parque monta con el
 INA una exposición sobre 40 años de innovaciones y cambios tecnológicos.
 
-El comunicado no anuncia ninguna atracción nueva. Lo que han anunciado otros
+Lo que han anunciado otros
 parques para 2027 está en nuestro resumen de
 [novedades en parques temáticos para 2027](/blog/novedades-parques-tematicos-2027).
 
@@ -127,9 +120,8 @@ Además de los espectáculos, Futuroscope anuncia un hotel de cuatro estrellas
 con temática de ciencia ficción, ya en obras. Tendrá 240 habitaciones, entre ellas suites premium y VIP. El restaurante tendrá 400 plazas, el bar 120 y la terraza otras 70. Para congresos habrá un espacio para 350 personas, con un auditorio de 200
 y cuatro salas auxiliares.
 
-Una pasarela peatonal unirá el hotel directamente con el Aquascope. Futuroscope
-gestiona ya dos parques: el parque temático y el Aquascope. El comunicado no
-dice cuándo abrirá el hotel.
+Futuroscope aún no ha dado fecha de apertura para el hotel. Una pasarela peatonal unirá el hotel directamente con el Aquascope. Futuroscope
+gestiona ya dos parques: el parque temático y el Aquascope.
 
 ## Vision 2025
 

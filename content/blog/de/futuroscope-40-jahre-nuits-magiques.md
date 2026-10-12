@@ -49,18 +49,15 @@ Dunkelheit und läuft bis Samstag, 27. März 2027.
 
 Fünf Wagen und 23 Künstlerinnen und Künstler ziehen über eine Strecke von einem
 Kilometer durch den Park. Entwickelt hat das Futuroscope die Parade zusammen mit
-der Agence Tetro. In der Mitteilung beschreibt der Park sie als Mischung aus
-Kunst, Design und Technik. Unterwegs gibt es Lichtinstallationen und
-Auftritte. Eine Uhrzeit nennt er nicht. Dort steht nur „à la tombée de la nuit“, also wenn es dunkel wird. Auch den Weg der Wagen nennt er nicht.
+der Agence Tetro. Unterwegs gibt es Lichtinstallationen und Auftritte. Eine Uhrzeit nennt der Park nicht, nur „à la tombée de la nuit“, also wenn es dunkel wird, und auch keinen Weg für die Wagen.
 
 ## An welchen Tagen die Parade zu sehen ist
 
-Das Futuroscope nennt die Parade einen täglichen Umzug. Täglich heißt im Winter
-aber: an den Tagen, an denen der Park geöffnet hat. Laut dem Öffnungskalender des Parks öffnet das Futuroscope im November
+Das Futuroscope nennt die Parade einen täglichen Umzug. Im Winter heißt das an jedem Tag, an dem der Park geöffnet hat. Laut dem Öffnungskalender des Parks öffnet das Futuroscope im November
 und bis zum 13. Dezember nur an Wochenenden. Vom 19. Dezember 2026 bis zum 3.
 Januar 2027 hat es jeden Tag geöffnet, vom 4. Januar bis zum 5. Februar ist es geschlossen.
 
-Sicher zu sehen ist „Nuits magiques“ also an den Dezember-Wochenenden bis zum 13. Dezember und vom 19. Dezember bis zum 3. Januar an jedem Tag. Welche Tage im Februar und März geöffnet sind, steht im Öffnungskalender noch nicht. Welche anderen Parks im Dezember und Januar
+Welche Tage im Februar und März geöffnet sind, steht im Öffnungskalender noch nicht. Welche anderen Parks im Dezember und Januar
 geöffnet haben, steht im [Winter-Überblick](/blog/winter-freizeitparks-2026).
 
 [Futuroscope](ref:futuroscope?full)
@@ -105,13 +102,12 @@ Roboter 2027 zu einer neuen Playlist.
 Im April kommt eine neue Illusionsshow dazu, „Imagine, Live show“, inszeniert von Arthur Jugnot und seinem Partner Bertran Lotth. Im Kinoprogramm nennt der Park unter anderem die Großformatfilme „Les Ailes du courage“, „Grand canyon“,
 „Van Gogh“, „Everest“, „Blue Whales“ und „Flight of the Butterflies“. Studierende der Kunsthochschule ESMA (École Supérieure des Métiers Artistiques) bekommen eine Carte blanche und zeigen Kurzfilme.
 
-Zwei Neuheiten schauen auf die vierzig Jahre zurück. Die „Maison à
-l'envers“, ein Haus, das auf dem Kopf steht, bekommt eine Fassung im Stil von
+Zum Jubiläum bekommt die „Maison à l'envers“, ein Haus, das auf dem Kopf steht, eine Fassung im Stil von
 1987 und wird mit Kultobjekten der Achtzigerjahre eingerichtet. Unter freiem
 Himmel zeigt der Park zusammen mit dem INA eine Ausstellung über 40 Jahre
 Innovationen und technische Umbrüche.
 
-Eine neue Bahn steht nicht in der Mitteilung. Was andere Parks für 2027
+Was andere Parks für 2027
 angekündigt haben, steht in unserer Übersicht
 [Freizeitpark-Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
 
@@ -122,9 +118,8 @@ Science-Fiction-Thema an, das gerade gebaut wird. Geplant sind 240 Zimmer, darun
 auf der Terrasse noch einmal 70. Für Tagungen gibt es einen Bereich für 350
 Personen mit einem Hörsaal für 200 und vier Nebenräumen.
 
-Eine Fußgängerbrücke soll vom Hotel direkt zum Aquascope führen. Das Futuroscope
-betreibt inzwischen zwei Parks, den Freizeitpark und eben dieses Aquascope. Wann
-das Hotel öffnet, sagt die Pressemitteilung nicht.
+Einen Eröffnungstermin für das Hotel nennt das Futuroscope noch nicht. Eine Fußgängerbrücke soll vom Hotel direkt zum Aquascope führen. Das Futuroscope
+betreibt inzwischen zwei Parks, den Freizeitpark und eben dieses Aquascope.
 
 ## Vision 2025
 

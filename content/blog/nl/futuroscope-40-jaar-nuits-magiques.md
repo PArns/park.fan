@@ -46,19 +46,14 @@ park wordt in 2027 veertig jaar. De laatste avond van “Nuits magiques” is za
 
 ## Vijf wagens over een kilometer
 
-Vijf wagens en 23 artiesten leggen samen een kilometer af door het park. Futuroscope heeft de parade met de Agence Tetro bedacht. Het park spreekt in
-het persbericht van een mengeling van kunst, design en techniek, met
-lichtinstallaties en optredens onderweg. Een tijdstip staat er niet in, alleen
-“à la tombée de la nuit”: bij het vallen van de avond. Welke route de wagens door
-het park nemen, meldt Futuroscope evenmin.
+Vijf wagens en 23 artiesten leggen samen een kilometer af door het park. Futuroscope heeft de parade met de Agence Tetro bedacht. Onderweg zijn er lichtinstallaties en optredens. Een tijdstip noemt het park niet, alleen “à la tombée de la nuit”, bij het vallen van de avond, en ook geen route voor de wagens.
 
 ## Op welke dagen je de parade ziet
 
-Futuroscope noemt het een dagelijkse optocht. In de winter betekent dagelijks
-wel: op de dagen dat het park open is. Volgens de openingskalender van het park is Futuroscope in november en tot 13 december alleen in
+Futuroscope noemt het een dagelijkse optocht. In de winter is dat elke dag waarop het park open is. Volgens de openingskalender van het park is Futuroscope in november en tot 13 december alleen in
 het weekend open. Van 19 december 2026 tot en met 3 januari 2027 kun je er elke dag terecht. Van 4 januari tot en met 5 februari is het park gesloten.
 
-Zeker te zien is “Nuits magiques” dus in de decemberweekenden tot en met 13 december en elke dag van 19 december tot en met 3 januari. Op welke dagen het park in februari en maart open is, staat nog niet in de openingskalender. Welke parken in december en januari wel open zijn, lees je in ons
+Op welke dagen het park in februari en maart open is, staat nog niet in de openingskalender. Welke parken in december en januari wel open zijn, lees je in ons
 [winteroverzicht](/blog/winter-pretparken-2026).
 
 [Futuroscope](ref:futuroscope?full)
@@ -105,12 +100,11 @@ door Arthur Jugnot en zijn partner Bertran Lotth. Op het filmprogramma staan
 verder onder meer de grootformaatfilms “Les Ailes du courage”, “Grand canyon”, “Van
 Gogh”, “Everest”, “Blue Whales” en “Flight of the Butterflies”. Studenten van de kunstacademie ESMA (École Supérieure des Métiers Artistiques) krijgen er een carte blanche om korte films te vertonen.
 
-Twee nieuwigheden blikken terug op veertig jaar park. De “Maison à l'envers”, een
-huis dat op zijn kop staat, krijgt een versie in de stijl van 1987, ingericht met
+Voor het jubileum krijgt de “Maison à l'envers”, een huis dat op zijn kop staat, een versie in de stijl van 1987, ingericht met
 cultvoorwerpen uit de jaren tachtig. In de openlucht toont het park samen met het
 INA een tentoonstelling over 40 jaar innovatie en technische omwentelingen.
 
-Over een nieuwe achtbaan of andere rit gaat het persbericht niet. Wat andere
+Wat andere
 parken voor 2027 hebben aangekondigd, staat in ons overzicht
 [nieuwe attracties in 2027](/blog/nieuwe-attracties-pretparken-2027).
 
@@ -121,8 +115,8 @@ sciencefictionthema aan, dat nu in aanbouw is. Er komen 240 kamers, waaronder pr
 eens 70. Voor congressen is er een ruimte voor 350 mensen, met een collegezaal
 voor 200 en vier kleinere zalen.
 
-Er komt een voetgangersbrug die het hotel rechtstreeks met het Aquascope verbindt. Futuroscope heeft inmiddels twee parken: het pretpark en het
-Aquascope. Wanneer het hotel opengaat, zegt het persbericht niet.
+Een openingsdatum voor het hotel noemt Futuroscope nog niet. Er komt een voetgangersbrug die het hotel rechtstreeks met het Aquascope verbindt. Futuroscope heeft inmiddels twee parken: het pretpark en het
+Aquascope.
 
 ## Vision 2025
 
