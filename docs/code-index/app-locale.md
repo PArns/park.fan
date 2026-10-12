@@ -343,6 +343,10 @@ Route `/[locale]/how-park-fan-works` (page).
 
 - `ImpressumEN` _component_: The legal notice (Impressum) in English, shown on every locale but `de`.
 
+### [`impressum/content/story.ts`](../../app/%5Blocale%5D/impressum/content/story.ts)
+
+- Types: `ImpressumStory`
+
 ### [`impressum/page.tsx`](../../app/%5Blocale%5D/impressum/page.tsx)
 
 Route `/[locale]/impressum` (page).

@@ -2,9 +2,10 @@ import { Link } from '@/i18n/navigation';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
+import type { ImpressumStory } from './story';
 
 /** The legal notice (Impressum) in German, shown on the `de` locale. */
-export function ImpressumDE() {
+export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
   return (
     <>
       <h1 className="mb-8 text-4xl font-bold">Impressum</h1>
@@ -52,6 +53,22 @@ export function ImpressumDE() {
           <br />
           52511 Geilenkirchen
         </address>
+
+        <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Über park.fan</h2>
+        <p className="mb-4">
+          park.fan ist mein privates Hobbyprojekt, und ich mache damit keinen Gewinn. Es gibt keine
+          Werbung und keine Affiliate-Links. Ich bin ein Freizeitpark-Nerd, und eine Seite wie diese
+          hat mir immer gefehlt. Also baue ich sie, und das macht mir Spaß.
+        </p>
+        {story && (
+          <p className="mb-4">
+            Wie es dazu kam, erzähle ich im Blog:{' '}
+            <Link href={story.href as '/'} className="text-primary hover:text-primary/80 underline">
+              {story.title}
+            </Link>
+            .
+          </p>
+        )}
 
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">
           Verbraucherstreitbeilegung / Universalschlichtungsstelle

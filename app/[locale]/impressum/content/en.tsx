@@ -3,9 +3,10 @@ import { Link } from '@/i18n/navigation';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
+import type { ImpressumStory } from './story';
 
 /** The legal notice (Impressum) in English, shown on every locale but `de`. */
-export function ImpressumEN() {
+export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
   return (
     <>
       <h1 className="mb-8 text-4xl font-bold">Imprint</h1>
@@ -53,6 +54,24 @@ export function ImpressumEN() {
           <br />
           52511 Geilenkirchen
         </address>
+
+        <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">
+          About park.fan
+        </h2>
+        <p className="mb-4">
+          park.fan is my private hobby project, and I make no profit from it. There are no ads and
+          no affiliate links. I'm a theme park nerd, and a site like this was always missing. So I
+          build it, and I enjoy doing it.
+        </p>
+        {story && (
+          <p className="mb-4">
+            How it started is in the blog:{' '}
+            <Link href={story.href as '/'} className="text-primary hover:text-primary/80 underline">
+              {story.title}
+            </Link>
+            .
+          </p>
+        )}
 
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">
           Consumer Dispute Resolution / Universal Arbitration Board
