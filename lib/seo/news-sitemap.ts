@@ -67,8 +67,8 @@ export function buildNewsSitemap(
       if (post.isFallback) continue;
       const { title, date, time, category } = post.frontmatter;
       if (!isNewsCategory(category)) continue;
-      // A future date is a scheduled post the listing does not hide yet (see `resolveEntryForLocale`);
-      // it is not news before its day.
+      // The listing already holds back a post dated after now; this also drops one dated after
+      // the `today` the caller passed.
       if (date < from || date > today) continue;
       const loc = `${SITE_URL}/${locale}${postPath(post)}`;
       const publicationDate = time ? withZoneOffset(date, time) : date;

@@ -28,6 +28,22 @@ export function publishedAt(fm: Published): string {
 }
 
 /**
+ * Berlin's wall clock at `ms`, in the same fixed-width shape as {@link publishedAt}
+ * (`2026-10-07T13:20`), so the two compare as strings.
+ */
+export function berlinStamp(ms: number): string {
+  return formatInTimeZone(ms, POST_TIME_ZONE, "yyyy-MM-dd'T'HH:mm");
+}
+
+/**
+ * Whether a post is dated after `stamp` (a {@link berlinStamp}) and so not out yet. A post without
+ * a time counts from 00:00 Berlin: the bare date sorts before every timed stamp of its day.
+ */
+export function isScheduled(fm: Published, stamp: string): boolean {
+  return publishedAt(fm) > stamp;
+}
+
+/**
  * Comparator, newest first by {@link publishedAt}. Equal stamps return 0, so a stable sort keeps
  * them in the order it was given; a comparator that never returns 0 left same-day posts in
  * whatever order the engine's sort happened to produce.

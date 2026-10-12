@@ -75,6 +75,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`listing.ts`](../../lib/blog/listing.ts)
 
+- `setBlogClockForTest` _function_: Test hook: pins the clock the scheduling gate reads. `null` returns to the real one.
 - `getMetaIndex` _function_: Map from translationKey → { locale: entry }.
 - `resolveEntryForLocale` _function_: Pick the entry to serve for a requested locale: that locale, else EN, else whichever translation exists.
 - `findTranslationKeyBySlug` _function_: Find a post's translationKey from a URL slug: the requested locale's slug first, then EN, then any other locale (which the post page turns into a redirect to the canonical URL).
@@ -145,6 +146,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`published-at.ts`](../../lib/blog/published-at.ts)
 
 - `publishedAt` _function_: When a post went out, as a sortable local stamp: `2026-10-07T13:20`, or the bare date for a post without a time, which then sorts before every timed post of its day. Both halves are fixed-width, so string comparison is time comparison.
+- `berlinStamp` _function_: Berlin's wall clock at `ms`, in the same fixed-width shape as `publishedAt` (`2026-10-07T13:20`), so the two compare as strings.
+- `isScheduled` _function_: Whether a post is dated after `stamp` (a `berlinStamp`) and so not out yet. A post without a time counts from 00:00 Berlin: the bare date sorts before every timed stamp of its day.
 - `newestPublishedFirst` _function_: Comparator, newest first by `publishedAt`. Equal stamps return 0, so a stable sort keeps them in the order it was given; a comparator that never returns 0 left same-day posts in whatever order the engine's sort happened to produce.
 - `withZoneOffset` _function_: A calendar day, and the post's time when it has one, as a timestamp with Berlin's offset, which Google wants on every Article type: `2026-10-07` → `2026-10-07T00:00:00+02:00`, with `13:20` → `2026-10-07T13:20:00+02:00`.
 - `publishedInstant` _function_: The instant a post went out, for a feed's `pubDate`: feed readers order by it, and every news post of a day used to share one. A post without a time keeps UTC midnight, the instant the feed has always given it, so no existing item moves.

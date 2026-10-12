@@ -3,7 +3,7 @@ import { locales, defaultLocale, SITE_URL, type Locale } from '@/i18n/config';
 import type { BlogFrontmatter, BlogListItem } from './types';
 import { BLOG_POSTS_META } from './manifest';
 import { isNewsCategory, postPath } from './paths';
-import { newestPublishedFirst } from './published-at';
+import { berlinStamp, isScheduled, newestPublishedFirst } from './published-at';
 
 /**
  * Everything a blog listing needs (cards, feeds, hreflang, the nav gate, the park pages'
@@ -11,10 +11,47 @@ import { newestPublishedFirst } from './published-at';
  * layout does not drag every post body into every route's bundle; see
  * docs/rules/blog-manifest-is-split.md.
  *
- * Memoised per process, not per request: everything here derives from the generated manifest and
- * reads no clock or request state. The returned lists are frozen and shared, so copy before
- * sorting.
+ * Memoised per process, not per request, and dropped when Berlin's minute changes: a post dated
+ * after now is not in the index until its `date` (and `time`) is reached, and static routes pick
+ * that up at the next build. The returned lists are frozen and shared, so copy before sorting.
  */
+
+let clockOverride: number | null = null;
+let clockMinute = Number.NaN;
+let clockStamp = '';
+
+/** Test hook: pins the clock the scheduling gate reads. `null` returns to the real one. */
+export function setBlogClockForTest(ms: number | null): void {
+  clockOverride = ms;
+}
+
+/**
+ * Berlin's current minute as a {@link berlinStamp}. Every memo below is dropped when it moves, so
+ * a long-lived process (dev server, a regeneration) lets a scheduled post in on time; the format
+ * runs once per minute, not once per call.
+ */
+function currentStamp(): string {
+  const ms = clockOverride ?? Date.now();
+  const minute = Math.floor(ms / 60_000);
+  if (minute !== clockMinute) {
+    clockMinute = minute;
+    clockStamp = berlinStamp(ms);
+    META_INDEX = null;
+    TRANSLATION_INDEX = null;
+    for (const memo of [
+      RESOLVED,
+      HAS_POSTS,
+      POSTS_BY_LOCALE,
+      POSTS_BY_RECENCY,
+      ARTICLES,
+      ARTICLES_BY_RECENCY,
+      NEWS_BY_DATE,
+    ] as Array<Map<unknown, unknown>>) {
+      memo.clear();
+    }
+  }
+  return clockStamp;
+}
 
 function isValidSlug(slug: string): boolean {
   return /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(slug);
@@ -39,12 +76,14 @@ let META_INDEX: Map<string, Map<Locale, MetaEntry>> | null = null;
 
 /** Map from translationKey → { locale: entry }. */
 export function getMetaIndex(): Map<string, Map<Locale, MetaEntry>> {
+  const stamp = currentStamp();
   if (META_INDEX) return META_INDEX;
   const index = new Map<string, Map<Locale, MetaEntry>>();
   for (const entry of BLOG_POSTS_META) {
     const locale = entry.locale as Locale;
     if (!(locales as readonly string[]).includes(locale)) continue;
     if (!isValidSlug(entry.slug)) continue;
+    if (isScheduled(entry.frontmatter, stamp)) continue;
     const key = getTranslationKey(entry.slug, entry.frontmatter);
     const inner = index.get(key) ?? new Map<Locale, MetaEntry>();
     inner.set(locale, {
@@ -76,6 +115,7 @@ export function resolveEntryForLocale(
   translationKey: string,
   requestedLocale: Locale
 ): ResolvedEntry | null {
+  getMetaIndex();
   const cacheKey = `${requestedLocale}|${translationKey}`;
   const memo = RESOLVED.get(cacheKey);
   if (memo !== undefined) return memo;
@@ -105,15 +145,12 @@ export function resolveEntryForLocale(
 
     if (!loadedLocale || !entry) return null;
 
+    // A post dated after now never reaches the index (`getMetaIndex`), so it is unknown here too.
     // draft → invisible everywhere. hidden → reachable via direct URL but
     // excluded from every listing surface (listPosts filters it out below,
     // which also keeps it off the index, category/tag pages, RSS and the
     // sitemap). published → everywhere.
     if ((entry.fm.mode ?? 'published') === 'draft') return null;
-
-    // TODO: reinstate future-date scheduling under Cache Components — reading the
-    // clock at render is forbidden, so this needs to thread `getServerToday`
-    // through `listPosts`/`getPostByLocaleSlug` before it can come back.
 
     return { entry, loadedLocale, availableLocales };
   }
@@ -174,6 +211,7 @@ const HAS_POSTS = new Map<string, boolean>();
  * with nothing published shows no blog at all.
  */
 export function hasPublishedPosts(locale?: Locale): boolean {
+  getMetaIndex();
   const cacheKey = locale ?? '*';
   const memo = HAS_POSTS.get(cacheKey);
   if (memo !== undefined) return memo;
@@ -199,6 +237,7 @@ let TRANSLATION_INDEX: Map<string, Map<Locale, string>> | null = null;
 
 /** Map from translationKey → { locale: slug } — kept for hreflang / canonical lookups. */
 export function getTranslationIndex(): Map<string, Map<Locale, string>> {
+  currentStamp();
   if (TRANSLATION_INDEX) return TRANSLATION_INDEX;
   const out = new Map<string, Map<Locale, string>>();
   for (const [key, localeMap] of getMetaIndex()) {
@@ -222,6 +261,7 @@ const POSTS_BY_LOCALE = new Map<Locale, readonly BlogListItem[]>();
  * spread it, never sort it in place.
  */
 export function listPosts(requestedLocale: Locale): readonly BlogListItem[] {
+  currentStamp();
   const memo = POSTS_BY_LOCALE.get(requestedLocale);
   if (memo) return memo;
 
@@ -316,6 +356,7 @@ export function lastTouched(fm: BlogFrontmatter): string {
  * and prev/next keep publication order on purpose. `featured` still wins. Frozen and memoised.
  */
 function listPostsByRecency(requestedLocale: Locale): readonly BlogListItem[] {
+  currentStamp();
   const memo = POSTS_BY_RECENCY.get(requestedLocale);
   if (memo) return memo;
 
@@ -359,6 +400,7 @@ const NEWS_BY_DATE = new Map<Locale, readonly BlogListItem[]>();
  * `listPosts` (featured first, then publication date). Frozen and memoised.
  */
 export function listArticles(requestedLocale: Locale): readonly BlogListItem[] {
+  currentStamp();
   const memo = ARTICLES.get(requestedLocale);
   if (memo) return memo;
   const frozen = Object.freeze(listPosts(requestedLocale).filter((p) => !isNewsPost(p)));
@@ -368,6 +410,7 @@ export function listArticles(requestedLocale: Locale): readonly BlogListItem[] {
 
 /** {@link listPostsByRecency} without the news posts. Frozen and memoised. */
 export function listArticlesByRecency(requestedLocale: Locale): readonly BlogListItem[] {
+  currentStamp();
   const memo = ARTICLES_BY_RECENCY.get(requestedLocale);
   if (memo) return memo;
   const frozen = Object.freeze(listPostsByRecency(requestedLocale).filter((p) => !isNewsPost(p)));
@@ -380,6 +423,7 @@ export function listArticlesByRecency(requestedLocale: Locale): readonly BlogLis
  * corrected typo does not make an anniversary note news again. Frozen and memoised.
  */
 export function listNewsByDate(requestedLocale: Locale): readonly BlogListItem[] {
+  currentStamp();
   const memo = NEWS_BY_DATE.get(requestedLocale);
   if (memo) return memo;
   const frozen = Object.freeze(
