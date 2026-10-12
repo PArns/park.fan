@@ -509,6 +509,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkStatsCrowdCard` _component_: Statistics table of crowd level, typical (P50) and peak (P90) wait per month or per weekday, with the measured days behind each row when `labelDays` is set. Waits are rounded to five.
 
+### [`park-stats-extreme-days-card.tsx`](../../components/parks/park-stats-extreme-days-card.tsx)
+
+- `ParkStatsExtremeDaysCard` _component_: The fullest and the quietest measured days of a park, five each, every date a link to the crowd calendar of its month.
+
 ### [`park-stats-frame.tsx`](../../components/parks/park-stats-frame.tsx)
 
 - `CardFrame` _component_: The standalone shape of a statistics card, with its own glass and padding (the guide page's demo).

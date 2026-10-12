@@ -1022,6 +1022,8 @@
       "subtitle": "Based on {days} measured operating days",
       "byMonthTitle": "Average Crowd Level by Month",
       "byDowTitle": "Average Crowd Level by Day of Week",
+      "busiestDaysTitle": "Busiest measured days",
+      "quietestDaysTitle": "Quietest measured days",
       "topAttractionsTitle": "Longest Queues on Average",
       "avgWait": "Avg wait",
       "p50": "Typical",

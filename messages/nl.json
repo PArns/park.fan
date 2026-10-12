@@ -1022,6 +1022,8 @@
       "subtitle": "Gebaseerd op {days} gemeten openingsdagen",
       "byMonthTitle": "Gemiddelde drukte per maand",
       "byDowTitle": "Gemiddelde drukte per dag van de week",
+      "busiestDaysTitle": "Drukste gemeten dagen",
+      "quietestDaysTitle": "Rustigste gemeten dagen",
       "topAttractionsTitle": "Attracties met langste wachtrijen gemiddeld",
       "avgWait": "Gem. wacht",
       "p50": "Typisch",

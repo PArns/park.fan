@@ -1022,6 +1022,8 @@
       "subtitle": "Basato su {days} giorni di apertura misurati",
       "byMonthTitle": "Livello di affluenza medio per mese",
       "byDowTitle": "Livello di affluenza medio per giorno della settimana",
+      "busiestDaysTitle": "Giorni misurati più affollati",
+      "quietestDaysTitle": "Giorni misurati più tranquilli",
       "topAttractionsTitle": "Code più lunghe in media",
       "avgWait": "Attesa media",
       "p50": "Tipico",

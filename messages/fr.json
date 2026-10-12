@@ -1022,6 +1022,8 @@
       "subtitle": "Basé sur {days} jours d’ouverture mesurés",
       "byMonthTitle": "Affluence moyenne par mois",
       "byDowTitle": "Affluence moyenne par jour de la semaine",
+      "busiestDaysTitle": "Jours mesurés les plus chargés",
+      "quietestDaysTitle": "Jours mesurés les plus calmes",
       "topAttractionsTitle": "Attractions avec les files les plus longues",
       "avgWait": "Attente moy.",
       "p50": "Typique",
