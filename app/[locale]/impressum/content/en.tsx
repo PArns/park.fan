@@ -59,13 +59,13 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
           About park.fan
         </h2>
         <p className="mb-4">
-          park.fan is my private hobby project, and I make no profit from it. There are no ads and
-          no affiliate links. I'm a theme park nerd, and a site like this was always missing. So I
-          build it, and I enjoy doing it.
+          park.fan is a private hobby project with no commercial intent. There are no ads and no
+          affiliate links. I build the site in my spare time, because theme parks have fascinated me
+          since childhood and I always missed a site like this one myself.
         </p>
         {story && (
           <p className="mb-4">
-            How it started is in the blog:{' '}
+            The story behind it is on the blog:{' '}
             <Link href={story.href as '/'} className="text-primary hover:text-primary/80 underline">
               {story.title}
             </Link>

@@ -56,13 +56,13 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
 
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Über park.fan</h2>
         <p className="mb-4">
-          park.fan ist mein privates Hobbyprojekt, und ich mache damit keinen Gewinn. Es gibt keine
-          Werbung und keine Affiliate-Links. Ich bin ein Freizeitpark-Nerd, und eine Seite wie diese
-          hat mir immer gefehlt. Also baue ich sie, und das macht mir Spaß.
+          park.fan ist ein privates Hobbyprojekt ohne Gewinnabsicht. Es gibt keine Werbung und keine
+          Affiliate-Links. Ich entwickle die Seite in meiner Freizeit, weil mich Freizeitparks seit
+          meiner Kindheit begeistern und mir ein Angebot wie dieses selbst immer gefehlt hat.
         </p>
         {story && (
           <p className="mb-4">
-            Wie es dazu kam, erzähle ich im Blog:{' '}
+            Die Geschichte dahinter steht im Blog:{' '}
             <Link href={story.href as '/'} className="text-primary hover:text-primary/80 underline">
               {story.title}
             </Link>
