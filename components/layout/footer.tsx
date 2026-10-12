@@ -414,7 +414,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
           </div>
         </div>
 
-        <p className="text-muted-foreground/80 border-border/60 mt-8 border-t pt-6 text-center text-xs leading-relaxed md:text-left">
+        <p className="text-muted-foreground/80 border-border/60 mt-8 border-t pt-6 text-center text-sm leading-relaxed">
           {t('disclaimer')}
         </p>
       </div>
