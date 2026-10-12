@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { AnalyticsOptOut } from '@/components/common/analytics-opt-out';
 import { LegalH2, LegalH3, LegalLink, LegalList } from '@/components/legal/legal-blocks';
@@ -118,7 +117,7 @@ export function DatenschutzDE() {
           jederzeit in den Einstellungen Ihres Browsers löschen.
         </p>
 
-        <LegalH3>Standort und „Parks in der Nähe"</LegalH3>
+        <LegalH3>Standort und „Parks in der Nähe“</LegalH3>
         <p>
           Auf der Startseite und auf Parkseiten zeigen wir Parks in Ihrer Nähe und, wenn Sie in
           einem Park stehen, Hinweise für diesen Park. Erteilen Sie in Ihrem Browser die
@@ -148,10 +147,10 @@ export function DatenschutzDE() {
         <p>
           Sie können sich benachrichtigen lassen, wenn die Wartezeit einer Attraktion unter einen
           Wert fällt, eine Show beginnt oder der nächste Punkt Ihres Tagesplans ansteht. Erst wenn
-          Sie das einschalten und Ihr Browser um Erlaubnis fragt, wird ein Abonnement angelegt. Auf
-          unserem API-Server speichern wir dann die Push-Adresse Ihres Browsers mit den zugehörigen
-          Schlüsseln, Ihre Sprache, Ihre Zeitzone und wem oder was Sie folgen, samt der gewählten
-          Schwellenwerte.
+          Sie das einschalten und Ihrem Browser die Erlaubnis geben, wird ein Abonnement angelegt.
+          Auf unserem API-Server speichern wir dann die Push-Adresse Ihres Browsers mit den
+          zugehörigen Schlüsseln, Ihre Sprache, Ihre Zeitzone und wem oder was Sie folgen, samt der
+          gewählten Schwellenwerte.
         </p>
         <p>
           Zugestellt werden die Nachrichten über den Push-Dienst des Herstellers Ihres Browsers, zum
@@ -161,25 +160,26 @@ export function DatenschutzDE() {
         </p>
         <p>
           Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können die
-          Benachrichtigungen jederzeit auf der Seite „Alarme" oder in den Einstellungen Ihres
+          Benachrichtigungen jederzeit auf der Seite „Alarme“ oder in den Einstellungen Ihres
           Browsers abbestellen. Bestellen Sie alle ab, löschen wir das Abonnement.
         </p>
 
         <LegalH3>Fotos einsenden</LegalH3>
         <p>
-          Über das Formular „Fotos hochladen" können Sie uns Fotos schicken. Wir speichern die
+          Über das Formular „Fotos hochladen“ können Sie uns Fotos schicken. Wir speichern die
           Fotos, den Park oder die Attraktion, die Bildunterschrift und den Namen, unter dem Sie
           genannt werden möchten. Fotos bis 4 MB laden wir unverändert hoch, mit allen Metadaten der
           Datei. Dazu gehören oft Aufnahmezeit und Kamera und, je nach Gerät, der Aufnahmeort. Mit
-          dem Aufnahmeort prüfen wir, ob das Foto im angegebenen Park entstanden ist. Bevor wir ein
-          Foto veröffentlichen, entfernen wir alle Metadaten aus der Datei.
+          dem Aufnahmeort prüfen wir, ob das Foto im angegebenen Park entstanden ist. Größere Fotos
+          verkleinert Ihr Browser vor dem Hochladen, dabei gehen die Metadaten verloren. Bevor wir
+          ein Foto veröffentlichen, entfernen wir alle Metadaten aus der Datei.
         </p>
         <p>
           Die Einsendungen liegen in einem nicht öffentlichen Speicher bei Vercel (Vercel Blob,
-          siehe oben). Wir speichern sie, bis wir sie geprüft haben. Abgelehnte Einsendungen löschen
-          wir, veröffentlichte Fotos bleiben gespeichert, solange sie auf park.fan zu sehen sind.
-          Rechtsgrundlage ist die Lizenz, die Sie uns mit der Einsendung einräumen (Art. 6 Abs. 1
-          lit. b DSGVO). Auf Wunsch per E-Mail löschen wir Ihre Einsendung.
+          siehe oben). Abgelehnte Einsendungen löschen wir nach der Prüfung. Veröffentlichte Fotos
+          bleiben gespeichert, solange sie auf park.fan zu sehen sind. Rechtsgrundlage ist die
+          Lizenz, die Sie uns mit der Einsendung einräumen (Art. 6 Abs. 1 lit. b DSGVO). Auf Wunsch
+          per E-Mail löschen wir Ihre Einsendung.
         </p>
         <p>
           Gegen automatisierte Einsendungen setzen wir Cloudflare Turnstile ein. Das Skript wird
@@ -214,7 +214,7 @@ export function DatenschutzDE() {
           Umami verarbeitet die Daten in unserem Auftrag. Umami und einige seiner Dienstleister
           sitzen in den USA, eine Übermittlung dorthin ist daher möglich. Rechtsgrundlage ist unser
           berechtigtes Interesse, das Angebot anhand von Nutzungsstatistiken zu verbessern (Art. 6
-          Abs. 1 lit. f DSGVO). Hat Ihr Browser „Do Not Track" eingeschaltet, wird nichts gesendet.
+          Abs. 1 lit. f DSGVO). Hat Ihr Browser „Do Not Track“ eingeschaltet, wird nichts gesendet.
           Unten können Sie Ihre Besuche außerdem von der Statistik ausschließen. Weitere
           Informationen: <LegalLink href="https://umami.is/privacy" />.
         </p>
@@ -236,7 +236,7 @@ export function DatenschutzDE() {
         <LegalH3>YouTube</LegalH3>
         <p>
           Einige Blogbeiträge enthalten YouTube-Videos der Google Ireland Limited, Gordon House,
-          Barrow Street, Dublin 4, Irland. Bis Sie auf „Video abspielen" tippen, sehen Sie nur ein
+          Barrow Street, Dublin 4, Irland. Bis Sie auf „Video abspielen“ tippen, sehen Sie nur ein
           Vorschaubild, das über unseren eigenen Server ausgeliefert wird. Erst mit dem Tippen lädt
           Ihr Browser den Player im erweiterten Datenschutzmodus (youtube-nocookie.com). Dann erhält
           YouTube Ihre IP-Adresse und Angaben zu Ihrem Gerät und kann Daten im Browser speichern.
@@ -249,7 +249,7 @@ export function DatenschutzDE() {
         <LegalH3>Suno</LegalH3>
         <p>
           Ein Blogbeitrag enthält einen Musik-Player von Suno, Inc., USA. Auch er wird erst geladen,
-          wenn Sie auf „Abspielen" tippen. Dann erhält Suno Ihre IP-Adresse und Angaben zu Ihrem
+          wenn Sie auf „Abspielen“ tippen. Dann erhält Suno Ihre IP-Adresse und Angaben zu Ihrem
           Gerät und kann Daten im Browser speichern. Rechtsgrundlage ist Ihre Einwilligung durch das
           Tippen (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG). Für die USA besteht kein
           Angemessenheitsbeschluss, der Suno erfasst. Weitere Informationen:{' '}
@@ -259,7 +259,7 @@ export function DatenschutzDE() {
         <LegalH3>Instagram</LegalH3>
         <p>
           Bettet ein Beitrag einen Instagram-Post ein, sehen Sie zunächst nur einen Link. Erst wenn
-          Sie auf „Beitrag laden" tippen, lädt Ihr Browser Inhalte der Meta Platforms Ireland
+          Sie auf „Beitrag laden“ tippen, lädt Ihr Browser Inhalte der Meta Platforms Ireland
           Limited, Merrion Road, Dublin 4, Irland. Meta erhält dann Ihre IP-Adresse und Angaben zu
           Ihrem Gerät und kann Cookies setzen. Dabei können Daten an die Meta Platforms, Inc. in den
           USA übermittelt werden, die nach dem EU-US Data Privacy Framework zertifiziert ist.
