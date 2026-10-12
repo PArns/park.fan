@@ -937,6 +937,12 @@
       },
       "gustsLabel": "Raffiche",
       "visibilityLabel": "Visibilità",
+      "outlook": {
+        "upTo": "fino a",
+        "downTo": "scende a",
+        "around": "verso le {time}",
+        "note": "Può influire sul funzionamento delle attrazioni."
+      },
       "snowLabel": "Neve",
       "nowLabel": "Ora",
       "compressedAxisHint": "Al di fuori dell’orario di apertura l’asse del tempo è compresso.",

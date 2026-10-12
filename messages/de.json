@@ -700,6 +700,12 @@
       },
       "gustsLabel": "Böen",
       "visibilityLabel": "Sicht",
+      "outlook": {
+        "upTo": "bis zu",
+        "downTo": "sinkt auf",
+        "around": "gegen {time} Uhr",
+        "note": "Kann den Fahrbetrieb beeinflussen."
+      },
       "snowLabel": "Schnee",
       "nowLabel": "Jetzt",
       "compressedAxisHint": "Außerhalb der Öffnungszeiten ist die Zeitachse gestaucht.",

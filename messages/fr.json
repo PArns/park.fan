@@ -937,6 +937,12 @@
       },
       "gustsLabel": "Rafales",
       "visibilityLabel": "Visibilité",
+      "outlook": {
+        "upTo": "jusqu’à",
+        "downTo": "tombe à",
+        "around": "vers {time}",
+        "note": "Peut perturber l’exploitation des attractions."
+      },
       "snowLabel": "Neige",
       "nowLabel": "Maintenant",
       "compressedAxisHint": "En dehors des horaires d’ouverture, l’axe du temps est compressé.",

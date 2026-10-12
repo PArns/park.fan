@@ -289,6 +289,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `NowcastUpdateCountdown` _component_: Small monospaced "Update in mm:ss" countdown until the next backend refresh of the weather nowcast. Renders nothing once the countdown reaches zero.
 
+### [`nowcast-wind-visibility-timeline.tsx`](../../components/parks/nowcast-wind-visibility-timeline.tsx)
+
+- `NowcastWindVisibilityTimeline` _component_: Gusts and visibility for the rest of the nowcast window, drawn from the steps the weather card already holds.
+
 ### [`off-season-toggle.tsx`](../../components/parks/off-season-toggle.tsx)
 
 - `OffSeasonToggle` _component_: Glass "N off season" toggle — reveals/hides off-season attractions or shows. Only rendered when `count > 0` (callers guard).

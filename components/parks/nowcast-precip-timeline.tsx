@@ -7,7 +7,7 @@ import { Clock, Droplets, Umbrella } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import type { WeatherNowcastStep } from '@/lib/api/types';
-import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
+import { formatStepTime, upcomingNowcastSteps } from '@/lib/utils/nowcast-conditions';
 
 interface NowcastPrecipTimelineProps {
   steps: WeatherNowcastStep[];
@@ -31,21 +31,6 @@ const SCALE_TOP_MM = 2.25;
 const MODERATE_LINE_PCT = (LIGHT_MAX_MM / SCALE_TOP_MM) * 100;
 const HEAVY_LINE_PCT = (HEAVY_MIN_MM / SCALE_TOP_MM) * 100;
 
-/** Format an instant (ms) as a naive park-local ISO ("YYYY-MM-DDTHH:MM"). */
-function toLocalIso(ms: number, timezone: string): string {
-  return getDateTimeFormat('sv-SE', {
-    timeZone: timezone,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  })
-    .format(ms)
-    .replace(' ', 'T');
-}
-
 /**
  * Compact bar chart of upcoming precipitation (mm per slot) for the nowcast
  * banner. Step times are naive park-local strings, so we filter/label them in
@@ -63,13 +48,7 @@ export const NowcastPrecipTimeline = memo(function NowcastPrecipTimeline({
   const locale = useLocale();
   const t = useTranslations('parks.weatherNowcast');
 
-  // Slot length derived from the series (the diff is timezone-independent).
-  const slotMs =
-    steps.length >= 2 ? Date.parse(steps[1].time) - Date.parse(steps[0].time) : 15 * 60_000;
-
-  // Drop slots whose 15-min window has fully passed, compared in park-local time.
-  const cutoff = toLocalIso(Date.parse(observedAt) - slotMs, timezone);
-  const upcoming = steps.filter((s) => s.time.slice(0, 16) >= cutoff);
+  const upcoming = upcomingNowcastSteps(steps, observedAt, timezone);
 
   // Auto-size to the rain event: up to the last wet slot, plus one dry slot for context.
   const lastWet = upcoming.reduce((idx, s, i) => ((s.precipitation ?? 0) > 0 ? i : idx), -1);
@@ -79,12 +58,7 @@ export const NowcastPrecipTimeline = memo(function NowcastPrecipTimeline({
   const peakMm = Math.max(...visible.map((s) => s.precipitation ?? 0));
   if (peakMm <= 0) return null;
 
-  const fmtTime = (localIso: string) =>
-    formatTime(new Date(`${localIso}Z`), locale, {
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: 'UTC',
-    });
+  const fmtTime = (localIso: string) => formatStepTime(localIso, locale);
 
   const until = fmtTime(visible[visible.length - 1].time);
 
