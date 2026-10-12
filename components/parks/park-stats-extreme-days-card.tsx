@@ -2,7 +2,12 @@ import { TrendingDown, TrendingUp } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { BareFrame } from '@/components/parks/park-stats-frame';
-import { parkCalendarPath } from '@/lib/parks/calendar-segments';
+import {
+  parkCalendarMonthIndex,
+  parkCalendarMonthsBack,
+  parkCalendarPath,
+} from '@/lib/parks/calendar-segments';
+import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
@@ -45,6 +50,13 @@ export function ParkStatsExtremeDaysCard({
 }: ParkStatsExtremeDaysCardProps) {
   // The weekday is the first thing to go when the list is narrow: a phone row holds the date, the
   // badge and the peak wait on one line only without it.
+  // A month the calendar no longer serves 308s to the hub, so such a day links to the hub itself.
+  // Until the clock is read (server render, hydration) every day does, which is also where a
+  // crawler lands without a redirect hop.
+  const now = useBrowserNow();
+  const nowMonth = now && { year: now.getFullYear(), month: now.getMonth() + 1 };
+  const oldestMonthIndex =
+    nowMonth && parkCalendarMonthIndex(nowMonth) - parkCalendarMonthsBack(nowMonth);
   const dayOptions = { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' } as const;
   const dateFormat = getDateTimeFormat(locale, dayOptions);
   const dateWithWeekday = getDateTimeFormat(locale, { ...dayOptions, weekday: 'short' });
@@ -70,10 +82,17 @@ export function ParkStatsExtremeDaysCard({
                   className="hover:bg-primary/5 flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg px-2 py-1.5 text-sm transition-colors"
                 >
                   <Link
-                    href={parkCalendarPath(locale, continent, country, city, parkSlug, {
-                      year,
-                      month,
-                    })}
+                    href={parkCalendarPath(
+                      locale,
+                      continent,
+                      country,
+                      city,
+                      parkSlug,
+                      oldestMonthIndex != null &&
+                        parkCalendarMonthIndex({ year, month }) >= oldestMonthIndex
+                        ? { year, month }
+                        : undefined
+                    )}
                     className={cn(
                       'min-w-0 flex-1 font-medium whitespace-nowrap hover:underline',
                       PHONE_HIT_AREA
