@@ -19,17 +19,13 @@ import { CHANGELOG_PATH } from '@/lib/changelog/paths';
 import type { Locale } from '@/i18n/config';
 
 /** The wait-time sources the footer credits, in the order the imprint lists them. */
-const DATA_SOURCES = [
+const DATA_SOURCES: { href: string; label: string; prefix?: string }[] = [
   { href: 'https://themeparks.wiki', label: 'ThemeParks.wiki' },
-  { href: 'https://queue-times.com/', label: 'Powered by Queue-Times.com' },
+  { href: 'https://queue-times.com/', prefix: 'Powered by', label: 'Queue-Times.com' },
   { href: 'https://wartezeiten.app', label: 'Wartezeiten.app' },
 ];
 
-const SOURCE_LINK_PROPS = {
-  target: '_blank',
-  rel: 'noopener noreferrer',
-  className: 'hover:text-foreground underline-offset-2 hover:underline',
-} as const;
+const SOURCE_LINK_PROPS = { target: '_blank', rel: 'noopener noreferrer' } as const;
 
 interface FooterProps {
   locale: string;
@@ -333,48 +329,24 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
 
         <Separator className="my-6 sm:my-8" />
 
-        <div className="mb-4 space-y-2 text-center sm:mt-4 sm:mb-6">
-          <p className="text-muted-foreground/80 text-sm">{t('disclaimer')}</p>
-          {/* Queue-Times' terms ask for this exact wording, linked, somewhere prominent, and
-              Open-Meteo's CC BY 4.0 for a link to the licence; the imprint alone is noindex. */}
-          <p className="text-muted-foreground/80 text-xs">
-            {t('dataSources')}:{' '}
-            {DATA_SOURCES.map((source, i) => (
-              <span key={source.href}>
-                {i > 0 && ' · '}
-                <a href={source.href} {...SOURCE_LINK_PROPS}>
-                  {source.label}
-                </a>
-              </span>
-            ))}
-            {' · '}
-            {t('weatherSource')}:{' '}
-            <a href="https://open-meteo.com/" {...SOURCE_LINK_PROPS}>
-              Open-Meteo.com
-            </a>{' '}
-            (
-            <a href="https://creativecommons.org/licenses/by/4.0/" {...SOURCE_LINK_PROPS}>
-              CC BY 4.0
-            </a>
-            )
-          </p>
-        </div>
-
         {/* The same six columns and 2/4 split as the block above the separator, so the link
             columns start where „Beliebte Parks" starts and the copyright sits under the brand. */}
         <div className="text-muted-foreground grid gap-6 text-sm sm:gap-8 md:grid-cols-6">
           <div className="flex flex-col items-center text-center md:col-span-2 md:items-start md:text-left">
             <p>{t('copyright', { year: currentYear })}</p>
             <BuildInfo />
+            <p className="text-muted-foreground/80 mt-4 max-w-sm text-xs leading-relaxed">
+              {t('disclaimer')}
+            </p>
           </div>
           <div className="flex w-full flex-col gap-6 md:col-span-4">
-            {/* Three named columns, so no `•` is left at the end of a line and the grid decides
-                where groups break. Each heading is `MenuSectionHeading` without `href`: a group
+            {/* Named columns, so no `•` is left at the end of a line and the grid decides
+                where groups break: two by two until `xl`, where four fit beside the brand. Each heading is `MenuSectionHeading` without `href`: a group
                 here is not a hub page. Every link keeps `max-sm:min-h-11`, the button scale's
                 phone tier. Below `sm` each column folds into one 44 px row (`FooterLinkGroup`),
                 with the links still in the HTML. */}
             <nav
-              className="grid w-full sm:grid-cols-3 sm:gap-x-8 sm:gap-y-6"
+              className="grid w-full sm:grid-cols-2 sm:gap-x-8 sm:gap-y-6 xl:grid-cols-4"
               aria-label={t('siteSections')}
             >
               {linkGroups.map((group) => (
@@ -404,6 +376,54 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                   )}
                 </FooterLinkGroup>
               ))}
+              {/* Queue-Times' terms ask for this exact wording, linked, somewhere prominent, and
+                  Open-Meteo's CC BY 4.0 for a link to the licence; the imprint alone is noindex. */}
+              <FooterLinkGroup heading={t('dataSources')}>
+                {DATA_SOURCES.map((source) => (
+                  <a
+                    key={source.href}
+                    href={source.href}
+                    {...SOURCE_LINK_PROPS}
+                    className="hover:text-foreground py-1 text-sm transition-colors max-sm:flex max-sm:min-h-11 max-sm:items-center"
+                  >
+                    {/* One child, so the flex row below `sm` cannot swallow the space after
+                        the prefix. */}
+                    <span>
+                      {source.prefix && `${source.prefix} `}
+                      <span className="whitespace-nowrap">
+                        {source.label}
+                        <ExternalLink
+                          className="ml-1 inline size-3 align-[-1px]"
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </span>
+                    <span className="sr-only"> ({t('opensInNewTab')})</span>
+                  </a>
+                ))}
+                <span className="inline-flex flex-wrap items-center gap-x-1 py-1 text-sm max-sm:min-h-11">
+                  <a
+                    href="https://open-meteo.com/"
+                    {...SOURCE_LINK_PROPS}
+                    className="hover:text-foreground"
+                  >
+                    Open-Meteo.com
+                    <ExternalLink className="ml-1 inline size-3 align-[-1px]" aria-hidden="true" />
+                    <span className="sr-only"> ({t('opensInNewTab')})</span>
+                  </a>
+                  <span className="text-muted-foreground/80">
+                    ({t('weatherSource')},{' '}
+                    <a
+                      href="https://creativecommons.org/licenses/by/4.0/"
+                      {...SOURCE_LINK_PROPS}
+                      className="hover:text-foreground underline-offset-2 hover:underline"
+                    >
+                      CC BY 4.0
+                    </a>
+                    )
+                  </span>
+                </span>
+              </FooterLinkGroup>
             </nav>
             {/* `gap-1` because the word and the name are two flex items, and the space between
                 them in the source was collapsing: the line read "Powered byArns.dev". The gap
