@@ -112,8 +112,6 @@ La parade, le feu d'artifice et le spectacle devant le château sautent tous les
 trois en cas de vent et d'orage. En Floride, en décembre, c'est rare, mais c'est
 écrit dans les petites lignes de Disney, sous chacun des trois séparément.
 
-![Main Street U. S. A. au Magic Kingdom, vers le château de Cendrillon | Main Street reçoit en décembre de la neige artificielle. Les soirs de fête à partir de 19 h, pas autrement. | wide](/media/magic-kingdom-park/main-street-usa.jpg)
-
 ### EPCOT : Festival of the Holidays et Candlelight Processional
 
 Le **EPCOT International Festival of the Holidays** se tient du **27 novembre au

@@ -25,11 +25,6 @@ parkLinks:
   - parc-asterix
 rideLinks:
   - parc-asterix/*
-coverImage:
-  src: /media/parc-asterix/oziris.jpg
-  alt: 'An OzIris train hangs upside down at the top of an inversion against a blue sky, treetops and a beige support column in front.'
-  caption: 'OzIris, a Bolliger & Mabillard inverted coaster at Parc Astérix since 2012.'
-  credit: 'Jules-leconnaisseurd’attraction / Wikimedia Commons (CC BY-SA 4.0)'
 seo:
   title: 'Parc Astérix: Wait Times, Coasters & Tips'
   description: >-

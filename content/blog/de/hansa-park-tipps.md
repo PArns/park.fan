@@ -20,11 +20,6 @@ tags:
   - deutschland
   - saison-2026
 category: guides
-coverImage:
-  src: /media/hansa-park/kaernan-ueber-der-westernstadt-16x9.jpg
-  alt: 'Ein hoher Steinturm mit Zinnen ragt hinter Bäumen auf, links daneben schwingt eine hellgrüne Achterbahnschiene in einem steilen Bogen nach oben.'
-  caption: 'Der Kärnan über der Westernstadt, die 2018 noch Bonanza City hieß.'
-  credit: 'Tobiasi0 / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - hansa-park
 rideLinks:

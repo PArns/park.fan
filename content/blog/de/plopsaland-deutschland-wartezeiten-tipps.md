@@ -20,11 +20,6 @@ tags:
   - deutschland
   - saison-2026
 category: guides
-coverImage:
-  src: /media/plopsaland-deutschland/haupteingang-free-fall-tower-16x9.jpg
-  alt: 'Ein gepflasterter Vorplatz führt auf ein sandfarbenes Torhaus zu, dahinter ragt ein schmaler weißer Fallturm über die Baumwipfel.'
-  caption: 'Der Haupteingang in Haßloch. Der Free Fall Tower dahinter ist 70 Meter hoch und von der A65 aus zu sehen.'
-  credit: 'Fischer.H / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - plopsaland-deutschland
 rideLinks:
@@ -112,8 +107,6 @@ dreimal aus der Station geschossen, vorwärts und rückwärts, bevor er über de
 Top Hat kommt. Mindestgröße 140 Zentimeter, Mindestalter 14 Jahre, und auch hier gilt die
 Acht-Grad-Grenze, gemessen an der Schienentemperatur.
 
-![Eine rote Schiene steigt an einem grauen Stützgerüst senkrecht auf, kippt oben über und fällt in einer Schleife hinter ein Backsteingebäude. | Erst nach dem dritten Abschuss kommt der Zug von Sky Scream über den 45 Meter hohen Top Hat. Foto: Freddo, Wikimedia Commons (CC BY-SA 4.0) | left](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
-
 **100% Wolf – Die Familienachterbahn** ist die Neuheit der Saison 2026, eröffnet am 22. März. Gebaut hat sie Gerstlauer: 17,5 Meter hoch, 760 Meter lang, 55 km/h, ein
 Beschleunigungselement, eine Schienenweiche für die Rückwärtsfahrt und ein Spike als
 Schlusselement. Ihretwegen steht der Park dieses Jahr überhaupt in den Neuheitenlisten. Es ist eine
@@ -146,8 +139,6 @@ Für heiße Tage gibt es zwei Wasserbahnen:
 Dazu kommt **Splash Battle** im Wickieland, bei der man vom Boot aus und vom Ufer aus
 aufeinander schießt, sowie **Die große Welle**, ein Disk'O von Zamperla. Beide stehen wie Wickie
 Splash im Wickieland.
-
-![Flache Boote mit Drachenköpfen treiben durch ein türkisfarbenes Becken, daneben Zielscheiben und ein grauer Felsen mit einer Rutschbahn. | Splash Battle im Wickieland, dahinter die Schiene von Expedition GeForce. Foto: Freak-Line-Community, Wikimedia Commons (CC BY-SA 4.0) | right](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
 
 **Sky Fly** von Gerstlauer, seit 2015 an der Stelle des verkauften Bounty Tower, ist das Gerät
 für Leute, die sich selbst überschlagen wollen. Der **Lighthouse Tower** von Funtime steht seit

@@ -20,11 +20,6 @@ tags:
   - england
   - saison-2026
 category: guides
-coverImage:
-  src: /media/alton-towers/nemesis-reborn.jpg
-  alt: 'Zwarte achtbaanrails met rode aders komt uit een steengroeve, ernaast staat een afgedankte helikopter.'
-  caption: 'Nemesis Reborn in de steengroeve van Forbidden Valley.'
-  credit: 'BWard 1997 / Wikimedia Commons (CC BY 4.0)'
 parkLinks:
   - alton-towers
 rideLinks:
@@ -113,8 +108,6 @@ meter hoog boven het pad, zodat je van onderaf kunt toekijken.
 
 ### X-Sector: Oblivion en The Smiler
 
-![Rechts het grijsgele railkluwen van The Smiler met meerdere inversies, links de dalende rails van Oblivion voor het bos | Links duikt Oblivion haar tunnel in, rechts stapelt The Smiler haar inversies. | wide](/media/alton-towers/oblivion-the-smiler.jpg)
-
 De X-Sector is vormgegeven als proefinstallatie. Oblivion kwam daar op **14 maart 1998** voor 12
 miljoen pond en was de eerste dive coaster ter wereld. De wagen stopt aan de rand, hangt een tot
 drie seconden boven de afgrond en valt dan onder 87,5 graden de tunnel in. Beneden haalt hij 109
@@ -139,8 +132,6 @@ de baan konden werken terwijl die in bedrijf was. Het Crown Court in Stafford le
 Smiler rijdt sinds 19 maart 2016 weer, met extra beveiligingen.
 
 ### Dark Forest: Rita en TH13TEEN
-
-![Een volle trein klimt steil omhoog over een roestrode vakwerkrail, grijze steunen tegen een blauwe lucht | Rita versnelt op de grond naar 98 km/u en klimt pas daarna. | right](/media/alton-towers/rita.jpg)
 
 **[Rita](ref:alton-towers/rita)** rijdt sinds **1 april 2005** in het Dark Forest. De baan van
 Intamin wordt hydraulisch gelanceerd en gaat in 2,5 seconde van 0 naar 98,3 km/u, met 4,7 g. Ze is

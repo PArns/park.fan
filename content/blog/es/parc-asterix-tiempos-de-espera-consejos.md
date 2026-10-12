@@ -26,11 +26,6 @@ parkLinks:
   - parc-asterix
 rideLinks:
   - parc-asterix/*
-coverImage:
-  src: /media/parc-asterix/oziris.jpg
-  alt: 'Un tren de OzIris cuelga boca abajo en lo alto de una inversión contra un cielo azul, con copas de árboles y un pilar beige en primer plano.'
-  caption: 'OzIris, una montaña rusa invertida de Bolliger & Mabillard, en el Parc Astérix desde 2012.'
-  credit: 'Jules-leconnaisseurd’attraction / Wikimedia Commons (CC BY-SA 4.0)'
 seo:
   title: 'Parc Astérix: tiempos de espera, montañas rusas y consejos'
   description: >-
