@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { objectPositionForSrc } from '@/lib/media/focus';
+import { PhotoCredit } from '@/components/media/photo-credit';
 import { FaqAccordion } from '@/components/faq/faq-accordion';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
@@ -236,6 +237,8 @@ export function LandingHero(props: LandingHeroProps) {
       ) : (
         <ScrollCue label={scrollLabel} />
       )}
+      {/* Last, so the link comes after the page's own action in the tab order. */}
+      <PhotoCredit src={imageSrc} linked className={flowInto ? HERO_CREDIT_POSITION : undefined} />
     </header>
   );
 }

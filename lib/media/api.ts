@@ -1,6 +1,7 @@
 import { getParkRef } from './index';
 import { versioned, versionedSrc } from './focus';
-import { getCreditLine, getMediaAlt, getMediaCaption } from './text';
+import { getCreditLine } from './credit';
+import { getMediaAlt, getMediaCaption } from './text';
 import type { MediaImage } from './types';
 
 /**

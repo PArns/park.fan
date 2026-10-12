@@ -48,7 +48,7 @@ import { BlogInlineImage, type BlogImageAlign } from './blog-inline-image';
 import { getBlogImageDimensions } from '@/lib/blog/image-dimensions';
 import { versionedPath } from '@/lib/media/focus';
 import { getMediaImageForPath } from '@/lib/media';
-import { getCreditLine, needsAttribution } from '@/lib/media/text';
+import { getCreditLine, needsAttribution } from '@/lib/media/credit';
 import { BlogParkWidget } from './blog-park-widget';
 import { BlogAttractionWidget } from './blog-attraction-widget';
 import { BlogYouTubeEmbed } from './blog-youtube-embed';

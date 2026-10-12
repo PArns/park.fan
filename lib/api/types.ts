@@ -1939,6 +1939,16 @@ export interface DayOfWeekStat {
   sampleDays: number;
 }
 
+/** One measured day in a park's busiest or quietest ranking. */
+export interface ExtremeDayStat {
+  /** Park-local calendar day, `yyyy-MM-dd`. */
+  date: string;
+  avgCrowdScore: number;
+  avgCrowdLevel: CrowdLevel;
+  avgWaitP50: number;
+  avgWaitP90: number;
+}
+
 /** One ride in a park's historical ranking. */
 export interface TopAttractionStat {
   attractionSlug: string;
@@ -1964,6 +1974,12 @@ export interface ParkHistoricalStats {
   byMonth: MonthStat[];
   byDayOfWeek: DayOfWeekStat[];
   topAttractions: TopAttractionStat[];
+  /**
+   * The up to 5 fullest and quietest measured days, most extreme first. Optional because older
+   * cached responses carry neither; an empty list means the park has too few measured days.
+   */
+  busiestDays?: ExtremeDayStat[];
+  quietestDays?: ExtremeDayStat[];
   meta: {
     totalSampleDays: number;
     windowYears: number;

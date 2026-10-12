@@ -34,15 +34,15 @@ export function rot13(text: string): string {
 }
 
 /**
- * An email address kept from scrapers: the server HTML carries a ROT13-shifted string, and the
- * clickable mailto link is assembled on the client after hydration.
+ * An email address kept from scrapers: the clickable mailto link is assembled on the client after
+ * hydration. The server HTML carries `displayText` when given, so the imprint's address stays
+ * readable without JavaScript (§ 5 DDG wants it directly reachable); without one, a ROT13 string.
  */
 export function ObfuscatedEmail({ local, domain, displayText }: ObfuscatedEmailProps) {
   const mounted = useMounted();
 
   if (!mounted) {
-    // SSR: show ROT13-encrypted so bots can't scrape the address from initial HTML
-    return <span>{`${rot13(local)}M${rot13(domain)}`}</span>;
+    return <span>{displayText || `${rot13(local)}M${rot13(domain)}`}</span>;
   }
 
   const email = `${local}@${domain}`;

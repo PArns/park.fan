@@ -4,7 +4,8 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import { getMediaImage } from '@/lib/media';
 import { versionedSrc } from '@/lib/media/focus';
-import { getCreditLine, getMediaAlt, getMediaCaption } from '@/lib/media/text';
+import { getCreditLine } from '@/lib/media/credit';
+import { getMediaAlt, getMediaCaption } from '@/lib/media/text';
 import type {
   ChangelogEntry,
   ChangelogFrontmatter,

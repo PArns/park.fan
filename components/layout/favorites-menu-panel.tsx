@@ -6,6 +6,7 @@ import { Bell, Clock, Star } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
+import { PhotoCredit } from '@/components/media/photo-credit';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { FavoritesHowTo } from '@/components/parks/favorites-how-to';
 import {
@@ -147,6 +148,7 @@ function Card({
             />
           )}
           {badge && <span className="absolute top-2 right-2">{badge}</span>}
+          <PhotoCredit src={image} />
         </span>
 
         <span className="flex min-w-0 flex-1 flex-col gap-0.5 p-3">

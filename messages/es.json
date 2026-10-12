@@ -451,9 +451,10 @@
       "iosHint": "En Safari, toca el botón Compartir y luego «Añadir a pantalla de inicio»."
     },
     "copyright": "© {year} park.fan. Todos los derechos reservados.",
-    "poweredBy": "Impulsado por",
     "legalLinks": "Legal",
-    "disclaimer": "Toda la información se proporciona sin garantía. Los tiempos de espera y estados mostrados se proporcionan automáticamente y pueden diferir de la situación real en el lugar."
+    "disclaimer": "park.fan es un proyecto personal hecho por afición. Toda la información se proporciona sin garantía. Los tiempos de espera y estados mostrados se proporcionan automáticamente y pueden diferir de la situación real en el lugar.",
+    "dataSources": "Fuentes de datos",
+    "weatherSource": "Tiempo"
   },
   "explore": {
     "title": "Tiempos de espera de Parques Temáticos en {location}",
@@ -936,6 +937,12 @@
       },
       "gustsLabel": "Ráfagas",
       "visibilityLabel": "Visibilidad",
+      "outlook": {
+        "upTo": "hasta",
+        "downTo": "baja a",
+        "around": "hacia las {time}",
+        "note": "Puede afectar al funcionamiento de las atracciones."
+      },
       "snowLabel": "Nieve",
       "nowLabel": "Ahora",
       "compressedAxisHint": "Fuera del horario de apertura, el eje de tiempo está comprimido.",
@@ -1021,6 +1028,8 @@
       "subtitle": "Basado en {days} días de apertura medidos",
       "byMonthTitle": "Afluencia media por mes",
       "byDowTitle": "Afluencia media por día de la semana",
+      "busiestDaysTitle": "Días medidos con más afluencia",
+      "quietestDaysTitle": "Días medidos más tranquilos",
       "topAttractionsTitle": "Atracciones con colas más largas de media",
       "avgWait": "Espera media",
       "p50": "Típico",
@@ -2235,6 +2244,14 @@
     "video": {
       "play": "Reproducir vídeo",
       "playHint": "Carga el reproductor de YouTube solo al pulsar."
+    },
+    "audio": {
+      "play": "Reproducir canción",
+      "playHint": "Carga el reproductor de suno.com solo al pulsar."
+    },
+    "instagram": {
+      "load": "Cargar publicación",
+      "loadHint": "Carga la publicación de Instagram (Meta) solo al pulsar."
     }
   },
   "blogToast": {

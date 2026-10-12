@@ -451,9 +451,10 @@
       "iosHint": "Tik in Safari op de knop Deel en kies “Zet op beginscherm”."
     },
     "copyright": "© {year} park.fan. Alle rechten voorbehouden.",
-    "poweredBy": "Aangedreven door",
     "legalLinks": "Juridisch",
-    "disclaimer": "Alle informatie wordt verstrekt zonder garantie. De getoonde wachttijden en statusinformatie worden automatisch verstrekt en kunnen afwijken van de actuele situatie ter plaatse."
+    "disclaimer": "park.fan is een privé-hobbyproject. Alle informatie wordt verstrekt zonder garantie. De getoonde wachttijden en statusinformatie worden automatisch verstrekt en kunnen afwijken van de actuele situatie ter plaatse.",
+    "dataSources": "Databronnen",
+    "weatherSource": "Weer"
   },
   "explore": {
     "title": "Attractiepark Wachttijden in {location}",
@@ -936,6 +937,12 @@
       },
       "gustsLabel": "Windstoten",
       "visibilityLabel": "Zicht",
+      "outlook": {
+        "upTo": "tot",
+        "downTo": "daalt tot",
+        "around": "rond {time}",
+        "note": "Kan de werking van attracties beïnvloeden."
+      },
       "snowLabel": "Sneeuw",
       "nowLabel": "Nu",
       "compressedAxisHint": "Buiten de openingstijden is de tijdas samengedrukt.",
@@ -1021,6 +1028,8 @@
       "subtitle": "Gebaseerd op {days} gemeten openingsdagen",
       "byMonthTitle": "Gemiddelde drukte per maand",
       "byDowTitle": "Gemiddelde drukte per dag van de week",
+      "busiestDaysTitle": "Drukste gemeten dagen",
+      "quietestDaysTitle": "Rustigste gemeten dagen",
       "topAttractionsTitle": "Attracties met langste wachtrijen gemiddeld",
       "avgWait": "Gem. wacht",
       "p50": "Typisch",
@@ -2235,6 +2244,14 @@
     "video": {
       "play": "Video afspelen",
       "playHint": "Laadt de YouTube-speler pas als je tikt."
+    },
+    "audio": {
+      "play": "Nummer afspelen",
+      "playHint": "Laadt de speler van suno.com pas als je tikt."
+    },
+    "instagram": {
+      "load": "Bericht laden",
+      "loadHint": "Laadt het bericht van Instagram (Meta) pas als je tikt."
     }
   },
   "blogToast": {

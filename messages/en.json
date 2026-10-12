@@ -451,9 +451,10 @@
       "iosHint": "Tap the Share button in Safari, then “Add to Home Screen”."
     },
     "copyright": "© {year} park.fan. All rights reserved.",
-    "poweredBy": "Powered by",
     "legalLinks": "Legal",
-    "disclaimer": "All information provided without warranty. The displayed wait times and status information are automatically provided and may differ from the actual situation on site."
+    "disclaimer": "park.fan is a private hobby project. All information provided without warranty. The displayed wait times and status information are automatically provided and may differ from the actual situation on site.",
+    "dataSources": "Data sources",
+    "weatherSource": "Weather"
   },
   "explore": {
     "title": "Theme Park Wait Times in {location}",
@@ -936,6 +937,12 @@
       },
       "gustsLabel": "Gusts",
       "visibilityLabel": "Visibility",
+      "outlook": {
+        "upTo": "up to",
+        "downTo": "down to",
+        "around": "around {time}",
+        "note": "Can affect ride operations."
+      },
       "snowLabel": "Snow",
       "nowLabel": "Now",
       "compressedAxisHint": "Outside opening hours the time axis is compressed.",
@@ -1021,6 +1028,8 @@
       "subtitle": "Based on {days} measured operating days",
       "byMonthTitle": "Average Crowd Level by Month",
       "byDowTitle": "Average Crowd Level by Day of Week",
+      "busiestDaysTitle": "Busiest measured days",
+      "quietestDaysTitle": "Quietest measured days",
       "topAttractionsTitle": "Longest Queues on Average",
       "avgWait": "Avg wait",
       "p50": "Typical",
@@ -2235,6 +2244,14 @@
     "video": {
       "play": "Play video",
       "playHint": "Loads the YouTube player only when you tap."
+    },
+    "audio": {
+      "play": "Play song",
+      "playHint": "Loads the player from suno.com only when you tap."
+    },
+    "instagram": {
+      "load": "Load post",
+      "loadHint": "Loads the post from Instagram (Meta) only when you tap."
     }
   },
   "blogToast": {

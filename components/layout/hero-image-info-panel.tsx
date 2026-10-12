@@ -1,12 +1,23 @@
 import { Link } from '@/i18n/navigation';
+import { PhotoCredit } from '@/components/media/photo-credit';
 import type { HeroImageMeta } from '@/lib/media/hero';
 
 /**
  * Hero photo attribution panel (bottom-right, desktop only), pure markup shared by the server
  * caption and the client in-park caption. Bottom-right because the hero's left column runs the
- * full height of the section.
+ * full height of the section. A photo that is not ours gets its credit under the panel, and in the
+ * same corner on the widths that have no panel.
  */
-export function HeroImageInfoPanel({ meta, country }: { meta: HeroImageMeta; country: string }) {
+export function HeroImageInfoPanel({
+  meta,
+  country,
+  src,
+}: {
+  meta: HeroImageMeta;
+  country: string;
+  /** The photo being captioned, for its credit. */
+  src?: string | null;
+}) {
   const titleParts = [meta.attractionName, meta.area].filter(Boolean);
   const subtitleParts = [meta.parkName, meta.city, country]
     .filter(Boolean)
@@ -25,23 +36,33 @@ export function HeroImageInfoPanel({ meta, country }: { meta: HeroImageMeta; cou
     </div>
   );
 
+  // `right-4` lines it up with the panel, whose `bottom-6` leaves the badge room beneath it. A
+  // sibling of the panel's link, not inside it, so it may link to the photo's source.
+  const credit = <PhotoCredit src={src} linked className="right-4" />;
+
   if (meta.parkUrl) {
     return (
-      <div className="absolute right-4 bottom-6 hidden lg:block">
-        <Link
-          href={meta.parkUrl}
-          prefetch={false}
-          className="block transition-opacity hover:opacity-80"
-        >
-          {panel}
-        </Link>
-      </div>
+      <>
+        {credit}
+        <div className="absolute right-4 bottom-6 hidden lg:block">
+          <Link
+            href={meta.parkUrl}
+            prefetch={false}
+            className="block transition-opacity hover:opacity-80"
+          >
+            {panel}
+          </Link>
+        </div>
+      </>
     );
   }
 
   return (
-    <div className="pointer-events-none absolute right-4 bottom-6 hidden select-none lg:block">
-      {panel}
-    </div>
+    <>
+      {credit}
+      <div className="pointer-events-none absolute right-4 bottom-6 hidden select-none lg:block">
+        {panel}
+      </div>
+    </>
   );
 }
