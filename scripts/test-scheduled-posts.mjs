@@ -59,6 +59,11 @@ test('a date with time: today counts from its minute', () => {
   assert.equal(isScheduled({ date: '2026-10-13', time: '00:00' }, stamp), true);
 });
 
+test('a malformed or missing date is never held back', () => {
+  assert.equal(isScheduled({ date: undefined }, stamp), false);
+  assert.equal(isScheduled({ date: 'soon' }, stamp), false);
+});
+
 test('the day turns at Berlin midnight, not UTC midnight', () => {
   const lateUtc = Date.UTC(2026, 9, 12, 22, 30); // 00:30 Berlin on the 13th
   assert.equal(isScheduled({ date: '2026-10-13' }, berlinStamp(lateUtc)), false);

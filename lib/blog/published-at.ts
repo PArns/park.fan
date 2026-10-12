@@ -37,9 +37,10 @@ export function berlinStamp(ms: number): string {
 
 /**
  * Whether a post is dated after `stamp` (a {@link berlinStamp}) and so not out yet. A post without
- * a time counts from 00:00 Berlin: the bare date sorts before every timed stamp of its day.
+ * a time counts from 00:00 Berlin, and a malformed `date` is never held back: the bare date sorts before every timed stamp of its day.
  */
 export function isScheduled(fm: Published, stamp: string): boolean {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(fm.date)) return false;
   return publishedAt(fm) > stamp;
 }
 

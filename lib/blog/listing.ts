@@ -26,11 +26,15 @@ export function setBlogClockForTest(ms: number | null): void {
 }
 
 /**
- * Berlin's current minute as a {@link berlinStamp}. Every memo below is dropped when it moves, so
- * a long-lived process (dev server, a regeneration) lets a scheduled post in on time; the format
- * runs once per minute, not once per call.
+ * Berlin's current minute as a {@link berlinStamp}. A production process reads the clock once, so
+ * a build sees one consistent set of posts even when a post falls due halfway through it; a
+ * scheduled post then appears with the next build, as intended. Elsewhere (the dev server, the
+ * test clock) every memo below is dropped when the minute moves.
  */
 function currentStamp(): string {
+  if (clockOverride === null && process.env.NODE_ENV === 'production' && clockStamp) {
+    return clockStamp;
+  }
   const ms = clockOverride ?? Date.now();
   const minute = Math.floor(ms / 60_000);
   if (minute !== clockMinute) {
