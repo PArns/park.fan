@@ -7,8 +7,8 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Futuroscope cumple cuarenta años en 2027 y, a partir del 5 de diciembre de
-  2026, recorre el parque por primera vez con un desfile de luces. «Nuits
+  Futuroscope cumple cuarenta años en 2027. A partir del 5 de diciembre de 2026,
+  un desfile de luces recorre el parque por primera vez. «Nuits
   magiques» sale las noches en que el parque abre, hasta el 27 de marzo. Del 4 de enero al inicio de temporada, el 6 de febrero, el calendario no muestra ningún día de apertura.
 tags:
   - news
@@ -40,11 +40,10 @@ seo:
     - Futuroscope nuevo hotel
 ---
 
-El [Futuroscope](ref:futuroscope), junto a Poitiers, cumple 40 años en 2027 y lo
-celebra con algo que nunca había tenido: un desfile de luces que recorrerá el
-parque a partir del sábado 5 de diciembre de 2026. «Nuits magiques» empieza al
-caer la noche y, según el comunicado de prensa del 16 de septiembre, se podrá ver
-hasta el sábado 27 de marzo de 2027.
+A partir del sábado 5 de diciembre de 2026, un desfile de luces recorrerá por
+primera vez el [Futuroscope](ref:futuroscope), junto a Poitiers. El parque
+cumple 40 años en 2027. Según el comunicado de prensa del 16 de septiembre,
+«Nuits magiques» se podrá ver hasta el sábado 27 de marzo de 2027.
 
 ## Cinco carrozas en un kilómetro
 
@@ -63,8 +62,7 @@ los fines de semana. Del 19 de diciembre de 2026 al 3 de enero de 2027 abre todo
 los días. Después, el calendario no tiene ningún día de apertura hasta el inicio
 de temporada, el 6 de febrero.
 
-Para el desfile eso deja dos huecos. Antes del 19 de diciembre no hay ningún día
-laborable con el parque abierto, y entre el 4 de enero y el 5 de febrero el calendario no muestra ningún día de apertura. Lo seguro es que «Nuits magiques» se puede ver los fines de semana de diciembre hasta el día 13 y todos los días del 19 de diciembre al 3 de enero. Los días de febrero y marzo todavía no están en el calendario del parque. Qué otros parques abren en
+Lo seguro es que «Nuits magiques» se puede ver los fines de semana de diciembre hasta el día 13 y todos los días del 19 de diciembre al 3 de enero. Los días de febrero y marzo todavía no están en el calendario del parque. Qué otros parques abren en
 diciembre y enero lo contamos en nuestro
 [repaso de parques en invierno](/blog/parques-atracciones-invierno-2026).
 
@@ -82,8 +80,8 @@ de cinco años entran gratis.
 
 Para los adultos, el Billet Tribu sale más barato a partir de cuatro personas. Cuesta desde 37
 euros por persona según el día, y 43, 49 o 54 euros en las fechas más caras. Los
-cuatro tienen que ir el mismo día y hay que comprarlo como muy tarde tres días
-antes; el mismo día de la visita ya no se vende. Cada reserva suma 4 euros de
+cuatro tienen que ir el mismo día. Hay que comprarlo como muy tarde tres días
+antes, porque el mismo día de la visita ya no se vende. Cada reserva suma 4 euros de
 gastos de gestión. Cuatro personas pagan así 152 euros en un día barato y 220
 euros en uno caro.
 
@@ -117,7 +115,7 @@ parque menciona además, entre otras, las películas de gran formato «Les Ailes
 «Grand canyon», «Van Gogh», «Everest», «Blue Whales» y «Flight of the
 Butterflies», y una carta blanca para estudiantes de la escuela de arte ESMA (École Supérieure des Métiers Artistiques), que proyectan cortometrajes.
 
-Dos novedades miran atrás, a estos cuarenta años. La «Maison à l'envers», una
+Dos novedades recuerdan los cuarenta años del parque. La «Maison à l'envers», una
 casa puesta del revés, tendrá una versión al estilo de 1987, amueblada con
 objetos de culto de los años ochenta. Y al aire libre, el parque monta con el
 INA una exposición sobre 40 años de innovaciones y cambios tecnológicos.
@@ -133,7 +131,7 @@ con temática de ciencia ficción, ya en obras. Tendrá 240 habitaciones, entre 
 y cuatro salas auxiliares.
 
 Una pasarela peatonal unirá el hotel directamente con el Aquascope. Futuroscope
-gestiona ya dos parques: el parque temático y ese Aquascope. El comunicado no
+gestiona ya dos parques: el parque temático y el Aquascope. El comunicado no
 dice cuándo abrirá el hotel.
 
 ## Vision 2025

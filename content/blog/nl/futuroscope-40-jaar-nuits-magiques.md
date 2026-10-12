@@ -7,8 +7,8 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Futuroscope wordt in 2027 veertig en laat vanaf 5 december 2026 voor het eerst
-  een lichtparade door het park trekken. “Nuits magiques” loopt op de avonden dat
+  Futuroscope wordt in 2027 veertig. Vanaf 5 december 2026 trekt er voor het
+  eerst een lichtparade door het park. “Nuits magiques” loopt op de avonden dat
   het park open is, tot 27 maart. Van 4 januari tot de seizoensstart op 6 februari staat er geen openingsdag in de kalender.
 tags:
   - news
@@ -42,12 +42,12 @@ seo:
 
 Vanaf zaterdag 5 december 2026 trekt er voor het eerst in de geschiedenis van
 [Futuroscope](ref:futuroscope) een lichtparade door het park bij Poitiers. Het
-park wordt in 2027 veertig jaar. Volgens het persbericht van 16 september begint
-“Nuits magiques” zodra het donker wordt, en de laatste avond is zaterdag 27 maart 2027.
+park wordt in 2027 veertig jaar. Volgens het persbericht van 16 september is de
+laatste avond van “Nuits magiques” zaterdag 27 maart 2027.
 
-## Vijf wagens, één kilometer
+## Vijf wagens over een kilometer
 
-Vijf wagens en 23 artiesten leggen samen een kilometer af door het park, in een parade die Futuroscope met de Agence Tetro heeft bedacht. Het park spreekt in
+Vijf wagens en 23 artiesten leggen samen een kilometer af door het park. Futuroscope heeft de parade met de Agence Tetro bedacht. Het park spreekt in
 het persbericht van een mengeling van kunst, design en techniek, met
 lichtinstallaties en optredens onderweg. Een tijdstip staat er niet in, alleen
 “à la tombée de la nuit”: bij het vallen van de avond. Welke route de wagens door
@@ -59,8 +59,7 @@ Futuroscope noemt het een dagelijkse optocht. In de winter betekent dagelijks
 wel: op de dagen dat het park open is. Volgens de openingskalender van het park is Futuroscope in november en tot 13 december alleen in
 het weekend open. Van 19 december 2026 tot en met 3 januari 2027 kun je er elke dag terecht, en daarna staat er tot de seizoensstart op 6 februari geen enkele openingsdag in de kalender.
 
-Voor de parade levert dat twee gaten op. Doordeweeks is het park vóór 19
-december niet open, en van 4 januari tot 5 februari toont de kalender geen enkele openingsdag. Zeker te zien is “Nuits magiques” dus in de weekenden van december tot en met 13 december en elke dag van 19 december tot en met 3 januari. Februari en maart ontbreken nog. Welke parken in december en januari wel open zijn, lees je in ons
+Zeker te zien is “Nuits magiques” dus in de decemberweekenden tot en met 13 december en elke dag van 19 december tot en met 3 januari. Februari en maart ontbreken nog. Welke parken in december en januari wel open zijn, lees je in ons
 [winteroverzicht](/blog/winter-pretparken-2026).
 
 [Futuroscope](ref:futuroscope?full)
@@ -75,7 +74,7 @@ Op de ticketpagina vraagt Futuroscope voor een dagticket, afhankelijk van de
 datum, 47 tot 59 euro voor volwassenen en 39 tot 49 euro voor kinderen. Onder de vijf is het gratis.
 
 Voor volwassenen is het Billet Tribu vanaf vier personen goedkoper. Dat kost afhankelijk
-van de datum vanaf 37 euro per persoon, op duurdere dagen 43, 49 of 54 euro. Alle vier moeten op dezelfde dag komen, en kopen doe je uiterlijk drie dagen van tevoren, want op de dag zelf verkoopt het park het ticket niet meer. Per reservering betaal je 4 euro
+van de datum vanaf 37 euro per persoon, op duurdere dagen 43, 49 of 54 euro. Alle vier moeten op dezelfde dag komen. Kopen doe je uiterlijk drie dagen van tevoren, want op de dag zelf verkoopt het park het ticket niet meer. Per reservering betaal je 4 euro
 boekingskosten. Op een goedkope dag ben je met z'n vieren zo 152 euro kwijt, op
 een dure dag 220 euro.
 
@@ -96,14 +95,15 @@ bij het park.
 
 ## Nieuw in 2027
 
-Het seizoen 2027 begint op 6 februari, en vanaf die eerste dag draait in het [Kinemax](ref:futuroscope/kinemax) de nieuwe IMAX-film “ATHOS” van 40 minuten,
+Het seizoen 2027 begint op 6 februari. Vanaf die eerste dag draait in het
+[Kinemax](ref:futuroscope/kinemax) de nieuwe IMAX-film “ATHOS” van 40 minuten
 over het kunstvliegteam Patrouille de France. Bij
 [Danse avec les robots](ref:futuroscope/dances-with-robots) dansen de tien robots
 in 2027 op een nieuwe playlist.
 
 In april komt er een nieuwe illusieshow bij, “Imagine, Live show”, geregisseerd
-door Arthur Jugnot en zijn partner Bertran Lotth. In het filmprogramma zet het
-park verder onder meer de grootformaatfilms “Les Ailes du courage”, “Grand canyon”, “Van
+door Arthur Jugnot en zijn partner Bertran Lotth. Op het filmprogramma staan
+verder onder meer de grootformaatfilms “Les Ailes du courage”, “Grand canyon”, “Van
 Gogh”, “Everest”, “Blue Whales” en “Flight of the Butterflies”. Studenten van de kunstacademie ESMA (École Supérieure des Métiers Artistiques) krijgen er een carte blanche om korte films te vertonen.
 
 Twee nieuwigheden blikken terug op veertig jaar park. De “Maison à l'envers”, een
@@ -123,7 +123,7 @@ eens 70. Voor congressen is er een ruimte voor 350 mensen, met een collegezaal
 voor 200 en vier kleinere zalen.
 
 Vanaf het hotel loop je over een voetgangersbrug rechtstreeks naar het
-Aquascope. Futuroscope heeft inmiddels twee parken: het pretpark en dat
+Aquascope. Futuroscope heeft inmiddels twee parken: het pretpark en het
 Aquascope. Wanneer het hotel opengaat, zegt het persbericht niet.
 
 ## Vision 2025

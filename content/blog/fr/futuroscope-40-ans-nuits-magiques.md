@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Le Futuroscope aura quarante ans en 2027. À partir du 5 décembre 2026, une
   parade lumineuse traverse le parc pour la première fois. « Nuits magiques »
-  passe les soirs d’ouverture jusqu’au 27 mars. Du 4 janvier à l’ouverture de la saison, le 6 février, le calendrier n’affiche aucun jour d’ouverture.
+  passe les soirs d’ouverture jusqu’au 27 mars. Du 4 janvier au début de la saison, le 6 février, le calendrier n’affiche aucun jour d’ouverture.
 tags:
   - news
   - futuroscope
@@ -40,20 +40,19 @@ seo:
     - Futuroscope nouvel hôtel
 ---
 
-Le [Futuroscope](ref:futuroscope), près de Poitiers, fait défiler à partir du
-samedi 5 décembre 2026 la première parade lumineuse de son histoire, à
-l’approche de ses 40 ans en 2027. D’après le communiqué de presse du
-16 septembre, « Nuits magiques » démarre à la tombée de la nuit et se joue
-jusqu’au samedi 27 mars 2027.
+À partir du samedi 5 décembre 2026, le [Futuroscope](ref:futuroscope), près de
+Poitiers, fait défiler la première parade lumineuse de son histoire. Le parc
+aura 40 ans en 2027. D’après le communiqué de presse du 16 septembre,
+« Nuits magiques » se joue jusqu’au samedi 27 mars 2027.
 
 ## Cinq chars sur un kilomètre
 
 La parade compte cinq chars et 23 artistes, qui parcourent un kilomètre dans le
 parc. Le Futuroscope l’a conçue avec l’Agence Tetro et la présente dans son
 communiqué comme un mélange d’art, de design et de technologie, avec des
-installations lumineuses et des numéros le long du parcours. Aucun horaire
-précis n’est donné, seulement « à la tombée de la nuit ». Le trajet des chars
-dans le parc n’est pas indiqué non plus.
+installations lumineuses et des numéros le long du parcours. Le parc ne donne
+pas d’horaire précis, seulement « à la tombée de la nuit ». Il n’indique pas
+non plus le trajet des chars.
 
 ## Les jours où passe la parade
 
@@ -63,8 +62,7 @@ chaque jour où le parc ouvre. Selon le calendrier d’ouverture du parc, le Fut
 tous les jours. Ensuite, le calendrier n’affiche plus aucun jour d’ouverture
 avant le début de la saison, le 6 février.
 
-Il y a donc deux trous pour la parade. Avant le 19 décembre, le parc n’ouvre
-aucun jour de semaine, et du 4 janvier au 5 février le calendrier n’affiche aucun jour d’ouverture. On est donc sûr de voir « Nuits magiques » les week-ends de décembre jusqu’au 13 décembre et tous les jours du 19 décembre au 3 janvier. Les dates de février et de mars ne figurent pas encore dans le calendrier du parc. Les parcs ouverts en décembre et en janvier sont
+On est donc sûr de voir « Nuits magiques » les week-ends de décembre jusqu’au 13 décembre et tous les jours du 19 décembre au 3 janvier. Les dates de février et de mars ne figurent pas encore dans le calendrier du parc. Les parcs ouverts en décembre et en janvier sont
 réunis dans notre [tour d’horizon de l’hiver](/blog/parcs-attractions-hiver-2026).
 
 [Futuroscope](ref:futuroscope?full)
@@ -115,7 +113,7 @@ scène par Arthur Jugnot et son complice Bertran Lotth. Côté cinéma, le parc
 annonce aussi, entre autres, les films grand format « Les Ailes du courage », « Grand canyon »,
 « Van Gogh », « Everest », « Blue Whales » et « Flight of the Butterflies », ainsi qu’une carte blanche aux étudiants de l’école d’art ESMA (École Supérieure des Métiers Artistiques), qui présentent des courts métrages.
 
-Deux nouveautés regardent en arrière, vers ces quarante ans. La « Maison à
+Deux nouveautés reviennent sur ces quarante ans. La « Maison à
 l’envers » passe en version 1987 et se remplit d’objets cultes des années 80.
 En plein air, le parc présente avec l’INA une exposition sur 40 ans
 d’innovations et de ruptures technologiques.
@@ -133,7 +131,7 @@ bar 120 et la terrasse 70 de plus. Pour les séminaires, un espace de
 350 personnes comprend un amphithéâtre de 200 places et quatre salles annexes.
 
 Une passerelle piétonne relie l’hôtel directement à l’Aquascope. Le Futuroscope
-exploite désormais deux parcs : le parc d’attractions et cet Aquascope. La date
+exploite désormais deux parcs : le parc d’attractions et l’Aquascope. La date
 d’ouverture de l’hôtel ne figure pas dans le communiqué.
 
 ## Vision 2025

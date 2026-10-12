@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Futuroscope turns forty in 2027, and from 5 December 2026 a light parade
   will go through the park for the first time. "Nuits magiques" runs on the
-  evenings the park is open until 27 March. From 4 January until the season opens on 6 February, the calendar shows no opening day.
+  evenings the park is open until 27 March. From 4 January until the season opens on 6 February, the park is closed.
 tags:
   - news
   - futuroscope
@@ -28,7 +28,7 @@ rideLinks:
 seo:
   title: 'Futuroscope turns 40 with its first ever light parade'
   description: >-
-    Futuroscope turns 40 with its first light parade from 5 December. From 4 January to 5 February the calendar shows no opening day.
+    Futuroscope turns 40 with its first light parade from 5 December. From 4 January to 5 February the park is closed.
   keywords:
     - Futuroscope Nuits magiques
     - Futuroscope light parade
@@ -41,8 +41,8 @@ seo:
 ---
 
 From Saturday 5 December 2026, [Futuroscope](ref:futuroscope) near Poitiers will
-send a light parade through the park for the first time in its history, ahead of
-its 40th birthday in 2027. "Nuits magiques" starts at nightfall, and according
+send a light parade through the park for the first time in its history. The
+park turns 40 in 2027. "Nuits magiques" starts at nightfall, and according
 to the park's press release of 16 September it runs until Saturday 27 March 2027.
 
 ## Five floats over one kilometre
@@ -58,11 +58,10 @@ park either.
 
 Futuroscope calls it a daily parade. In winter, daily means every day the park
 is open. According to the park's opening calendar, Futuroscope opens only at weekends in November and up to 13 December. From 19
-December 2026 to 3 January 2027 it's open every day. After that, the calendar
-has no opening day until the season starts on 6 February.
+December 2026 to 3 January 2027 it's open every day. After that, it stays closed
+until the season starts on 6 February.
 
-That leaves two gaps for the parade. Before 19 December there's no weekday
-opening, and from 4 January to 5 February the calendar shows no opening day at all. You can count on seeing "Nuits magiques" on the December weekends up to 13 December and on every day from 19 December to 3 January. The February and March dates are not in the park's calendar yet. Our [winter overview](/blog/winter-theme-parks-2026) lists the other
+You can count on seeing "Nuits magiques" on the December weekends up to 13 December and on every day from 19 December to 3 January. The park hasn't published its opening days for February and March yet. Our [winter overview](/blog/winter-theme-parks-2026) lists the other
 parks open in December and January.
 
 [Futuroscope](ref:futuroscope?full)
@@ -78,8 +77,7 @@ On its ticket page, Futuroscope charges €47 to €59 for an adult day ticket a
 
 For adults, the Billet Tribu is cheaper once there are four or more of you. It starts at €37 per
 person, rising to €43, €49 or €54 on dearer days. All four have to come on the
-same day, and the ticket must be bought at least three days ahead; you can't buy
-it on the day of the visit. Each booking adds a €4 fee. Four people pay €152 on a
+same day, and the ticket must be bought at least three days ahead. Each booking adds a €4 fee. Four people pay €152 on a
 cheap day and €220 on an expensive one.
 
 The Tribu ticket is only valid for visits up to 3 January 2027, where the 2026
@@ -105,7 +103,7 @@ dance to a new playlist in 2027.
 
 A new illusion show, "Imagine, Live show", joins in April. It's staged by Arthur
 Jugnot and his partner Bertran Lotth. The park's film line-up also lists, among others, the large-format films "Les Ailes du courage", "Grand canyon", "Van Gogh",
-"Everest", "Blue Whales" and "Flight of the Butterflies", plus a carte blanche for students of the art school ESMA (École Supérieure des Métiers Artistiques), who show short films.
+"Everest", "Blue Whales" and "Flight of the Butterflies". Students of the art school ESMA (École Supérieure des Métiers Artistiques) get a carte blanche to show short films.
 
 Two additions look back over the forty years. The "Maison à l'envers", a house
 standing on its head, gets a 1987 version furnished with cult objects from the
@@ -119,8 +117,8 @@ is in our round-up of
 ## The new hotel
 
 Futuroscope is also building a four-star hotel with a science-fiction theme. It
-is to have 240 rooms, including premium and VIP suites, as well as a restaurant with 400 seats, a
-bar with 120 and another 70 on the terrace. A conference area holds 350 people,
+is to have 240 rooms, including premium and VIP suites. The restaurant is to seat
+400, the bar 120 and the terrace another 70. A conference area holds 350 people,
 with a 200-seat lecture hall and four breakout rooms.
 
 A footbridge will lead from the hotel straight to the Aquascope. Futuroscope now

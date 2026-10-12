@@ -9,7 +9,7 @@ featured: false
 excerpt: >-
   Das Futuroscope wird 2027 vierzig Jahre alt und schickt ab dem 5. Dezember
   2026 zum ersten Mal eine Lichterparade durch den Park. „Nuits magiques“ läuft
-  an den Öffnungsabenden bis zum 27. März. Vom 4. Januar bis zum Saisonstart am 6. Februar steht kein Öffnungstag im Kalender.
+  an den Öffnungsabenden bis zum 27. März. Vom 4. Januar bis zum Saisonstart am 6. Februar ist der Park geschlossen.
 tags:
   - news
   - futuroscope
@@ -28,7 +28,7 @@ rideLinks:
 seo:
   title: 'Futuroscope wird 40 und zeigt erstmals eine Lichterparade'
   description: >-
-    Futuroscope wird 40 und zeigt ab 5. Dezember erstmals eine Lichterparade. Vom 4. Januar bis 5. Februar steht kein Öffnungstag im Kalender.
+    Futuroscope wird 40 und zeigt ab 5. Dezember erstmals eine Lichterparade. Vom 4. Januar bis 5. Februar ist der Park geschlossen.
   keywords:
     - Futuroscope Nuits magiques
     - Futuroscope Lichterparade
@@ -40,9 +40,9 @@ seo:
     - Futuroscope neues Hotel
 ---
 
-Das [Futuroscope](ref:futuroscope) bei Poitiers feiert 2027 seinen 40. Geburtstag
-und schickt ab Samstag, 5. Dezember 2026, zum ersten Mal in seiner Geschichte
-eine Lichterparade durch den Park. „Nuits magiques“ beginnt bei Einbruch der
+Ab Samstag, 5. Dezember 2026, schickt das [Futuroscope](ref:futuroscope) bei
+Poitiers zum ersten Mal in seiner Geschichte eine Lichterparade durch den Park.
+2027 feiert es seinen 40. Geburtstag. „Nuits magiques“ beginnt bei Einbruch der
 Dunkelheit und läuft laut der Pressemitteilung vom 16. September bis Samstag, 27. März 2027.
 
 ## Fünf Wagen auf einem Kilometer
@@ -50,20 +50,17 @@ Dunkelheit und läuft laut der Pressemitteilung vom 16. September bis Samstag, 2
 Fünf Wagen und 23 Künstlerinnen und Künstler ziehen über eine Strecke von einem
 Kilometer durch den Park. Entwickelt hat das Futuroscope die Parade zusammen mit
 der Agence Tetro. In der Mitteilung beschreibt der Park sie als Mischung aus
-Kunst, Design und Technik, unterwegs gibt es Lichtinstallationen und
-Auftritte. Eine Uhrzeit nennt er nicht. Dort steht nur „à la tombée de la nuit“, also wenn es dunkel wird. Welchen Weg die Wagen durch den Park nehmen, steht in der
-Mitteilung ebenfalls nicht.
+Kunst, Design und Technik. Unterwegs gibt es Lichtinstallationen und
+Auftritte. Eine Uhrzeit nennt er nicht. Dort steht nur „à la tombée de la nuit“, also wenn es dunkel wird. Auch den Weg der Wagen nennt er nicht.
 
 ## An welchen Tagen die Parade zu sehen ist
 
 Das Futuroscope nennt die Parade einen täglichen Umzug. Täglich heißt im Winter
 aber: an den Tagen, an denen der Park geöffnet hat. Laut dem Öffnungskalender des Parks öffnet das Futuroscope im November
 und bis zum 13. Dezember nur an Wochenenden. Vom 19. Dezember 2026 bis zum 3.
-Januar 2027 hat es jeden Tag geöffnet, danach steht bis zum Saisonstart am 6.
-Februar kein Öffnungstag im Kalender.
+Januar 2027 hat es jeden Tag geöffnet, danach bleibt es bis zum Saisonstart am 6. Februar geschlossen.
 
-Das ergibt zwei Lücken. Unter der Woche gibt es vor dem 19.
-Dezember keinen Öffnungstag, und zwischen dem 4. Januar und dem 5. Februar steht gar keiner im Kalender. Sicher zu sehen ist „Nuits magiques“ also an den Dezember-Wochenenden bis zum 13. Dezember und vom 19. Dezember bis zum 3. Januar an jedem Tag. Februar und März fehlen noch. Welche anderen Parks im Dezember und Januar
+Sicher zu sehen ist „Nuits magiques“ also an den Dezember-Wochenenden bis zum 13. Dezember und vom 19. Dezember bis zum 3. Januar an jedem Tag. Die Öffnungstage im Februar und März hat der Park noch nicht veröffentlicht. Welche anderen Parks im Dezember und Januar
 geöffnet haben, steht im [Winter-Überblick](/blog/winter-freizeitparks-2026).
 
 [Futuroscope](ref:futuroscope?full)
@@ -79,8 +76,7 @@ Auf seiner Ticketseite nennt das Futuroscope für das Tagesticket je nach Datum
 
 Für Erwachsene wird es ab vier Personen mit dem Billet Tribu günstiger. Es kostet je nach Datum
 ab 37 Euro pro Person, an teureren Tagen 43, 49 oder 54 Euro. Alle vier müssen
-am selben Tag kommen, und gekauft werden muss es spätestens drei Tage vorher, am
-Besuchstag selbst nicht mehr. Pro Reservierung kommen 4 Euro Buchungsgebühr
+am selben Tag kommen, und gekauft werden muss es spätestens drei Tage vorher. Pro Reservierung kommen 4 Euro Buchungsgebühr
 dazu. Vier Personen zahlen damit an einem günstigen Tag 152 Euro, an einem
 teuren 220 Euro.
 
@@ -102,12 +98,12 @@ dem Kauf besser beim Park nach.
 
 Die Saison 2027 beginnt am 6. Februar. Ab dem ersten Tag zeigt das
 [Kinemax](ref:futuroscope/kinemax) den neuen IMAX-Film „ATHOS“ über die
-Kunstflugstaffel Patrouille de France, er dauert 40 Minuten. Bei
+Kunstflugstaffel Patrouille de France. Er dauert 40 Minuten. Bei
 [Danse avec les robots](ref:futuroscope/dances-with-robots) tanzen die zehn
 Roboter 2027 zu einer neuen Playlist.
 
 Im April kommt eine neue Illusionsshow dazu, „Imagine, Live show“, inszeniert von Arthur Jugnot und seinem Partner Bertran Lotth. Im Kinoprogramm nennt der Park unter anderem die Großformatfilme „Les Ailes du courage“, „Grand canyon“,
-„Van Gogh“, „Everest“, „Blue Whales“ und „Flight of the Butterflies“. Dazu kommt eine Carte blanche für Studierende der Kunsthochschule ESMA (École Supérieure des Métiers Artistiques), die Kurzfilme zeigen.
+„Van Gogh“, „Everest“, „Blue Whales“ und „Flight of the Butterflies“. Studierende der Kunsthochschule ESMA (École Supérieure des Métiers Artistiques) bekommen eine Carte blanche und zeigen Kurzfilme.
 
 Zwei Neuheiten schauen auf die vierzig Jahre zurück. Die „Maison à
 l'envers“, ein Haus, das auf dem Kopf steht, bekommt eine Fassung im Stil von

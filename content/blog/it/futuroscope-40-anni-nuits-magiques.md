@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Nel 2027 il Futuroscope compie quarant'anni e dal 5 dicembre 2026 fa sfilare
+  Nel 2027 il Futuroscope compie quarant'anni. Dal 5 dicembre 2026 fa sfilare
   per la prima volta una parata di luci nel parco. «Nuits magiques» va in scena
   nelle sere di apertura fino al 27 marzo. Dal 4 gennaio all'inizio della stagione, il 6 febbraio, il calendario non segna nessun giorno di apertura.
 tags:
@@ -41,9 +41,9 @@ seo:
 ---
 
 Sabato 5 dicembre 2026 il [Futuroscope](ref:futuroscope), vicino a Poitiers,
-fa partire la prima parata di luci della sua storia, in vista dei 40 anni che
-compie nel 2027. Secondo il comunicato stampa del 16 settembre, «Nuits magiques»
-comincia al calar della sera e resta in programma fino a sabato 27 marzo 2027.
+fa partire la prima parata di luci della sua storia. Nel 2027 il parco compie
+40 anni. Secondo il comunicato stampa del 16 settembre, «Nuits magiques» resta
+in programma fino a sabato 27 marzo 2027.
 
 ## Cinque carri lungo un chilometro
 
@@ -51,19 +51,19 @@ Il percorso è lungo un chilometro e lo coprono cinque carri con 23 artisti. Il
 Futuroscope ha ideato la parata insieme all'Agence Tetro e nel comunicato la
 presenta come un incontro tra arte, design e tecnologia, con installazioni
 luminose e numeri dal vivo lungo il tragitto. Un orario preciso non c'è: il
-parco scrive soltanto «à la tombée de la nuit», cioè quando fa buio. Nemmeno il
-percorso dei carri all'interno del parco è indicato.
+parco scrive soltanto «à la tombée de la nuit», cioè quando fa buio. Non indica
+nemmeno il percorso dei carri all'interno del parco.
 
 ## In quali giorni si vede la parata
 
 Il Futuroscope parla di una parata quotidiana. D'inverno, però, quotidiana vuol
-dire nei giorni in cui il parco è aperto. Il calendario di apertura del parco dice questo: a novembre e fino al 13 dicembre
-il Futuroscope apre solo nel fine settimana, dal 19 dicembre 2026 al 3 gennaio
-2027 è aperto tutti i giorni, e poi fino all'inizio della stagione, il 6
-febbraio, il calendario non segna nessun giorno di apertura.
+dire nei giorni in cui il parco è aperto. Secondo il calendario di apertura del
+parco, a novembre e fino al 13 dicembre il Futuroscope apre solo nel fine
+settimana. Dal 19 dicembre 2026 al 3 gennaio 2027 è aperto tutti i giorni, poi
+fino all'inizio della stagione, il 6 febbraio, il calendario non segna nessun
+giorno di apertura.
 
-Per chi vuole vedere la parata restano quindi due buchi. Prima del 19 dicembre
-non si può andare in un giorno feriale, e dal 4 gennaio al 5 febbraio il calendario non segna nessun giorno di apertura. Di sicuro «Nuits magiques» si può vedere nei fine settimana di dicembre fino al 13 e ogni giorno dal 19 dicembre al 3 gennaio. I giorni di febbraio e marzo non sono ancora nel calendario del parco. Quali altri parchi aprono a
+Di sicuro «Nuits magiques» si può vedere nei fine settimana di dicembre fino al 13 e ogni giorno dal 19 dicembre al 3 gennaio. I giorni di febbraio e marzo non sono ancora nel calendario del parco. Quali altri parchi aprono a
 dicembre e gennaio lo trovi nella nostra
 [panoramica sull'inverno](/blog/parchi-divertimenti-inverno-2026).
 
@@ -81,7 +81,7 @@ data. Sotto i cinque anni l'ingresso è gratuito.
 
 Per gli adulti, in quattro o più si risparmia con il Billet Tribu, che parte da 37 euro a
 persona e nelle date più care sale a 43, 49 o 54 euro. Tutti e quattro devono
-venire lo stesso giorno, e il biglietto va comprato al più tardi tre giorni
+venire lo stesso giorno. Il biglietto va comprato al più tardi tre giorni
 prima: il giorno della visita non si può più acquistare. A ogni prenotazione si
 aggiungono 4 euro di diritti di prenotazione. In una giornata economica quattro
 persone spendono così 152 euro, in una cara 220.
@@ -114,7 +114,7 @@ dei film il parco elenca, tra gli altri, i titoli in grande formato «Les Ailes 
 courage», «Grand canyon», «Van Gogh», «Everest», «Blue Whales» e «Flight of the
 Butterflies», oltre a una carta bianca per gli studenti della scuola d'arte ESMA (École Supérieure des Métiers Artistiques), che presentano dei cortometraggi.
 
-Due novità guardano indietro ai quarant'anni. La «Maison à l'envers», una casa
+Due novità richiamano i quarant'anni del parco. La «Maison à l'envers», una casa
 capovolta, riceve una versione in stile 1987, arredata con oggetti di culto
 degli anni Ottanta. All'aperto, insieme all'INA, il parco allestisce una mostra
 su 40 anni di innovazioni e svolte tecnologiche.
