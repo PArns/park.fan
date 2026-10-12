@@ -20,11 +20,6 @@ tags:
   - england
   - saison-2026
 category: guides
-coverImage:
-  src: /media/alton-towers/nemesis-reborn.jpg
-  alt: 'Black coaster track with red veins climbs out of a quarry, a decommissioned helicopter parked beside it.'
-  caption: 'Nemesis Reborn in the Forbidden Valley quarry.'
-  credit: 'BWard 1997 / Wikimedia Commons (CC BY 4.0)'
 parkLinks:
   - alton-towers
 rideLinks:
@@ -113,8 +108,6 @@ a concrete platform just under five metres high above the path, so you can watch
 
 ### X-Sector: Oblivion and The Smiler
 
-![On the right the grey and yellow tangle of The Smiler with several inversions, on the left Oblivion's descending track against woodland | On the left Oblivion heads into its tunnel, on the right The Smiler stacks its inversions. | wide](/media/alton-towers/oblivion-the-smiler.jpg)
-
 X-Sector is themed as a testing facility. Oblivion arrived there on **14 March 1998** at a cost of
 £12 million and was the world's first dive coaster. The car stops at the edge, hangs over the drop
 for one to three seconds and then falls at 87.5 degrees into the tunnel. At the bottom it reaches
@@ -139,8 +132,6 @@ Stafford Crown Court imposed a fine of £5 million; without the guilty plea it w
 million. The Smiler has been running again since 19 March 2016, with additional safeguards.
 
 ### Dark Forest: Rita and TH13TEEN
-
-![A full train climbs steeply up a rust-red lattice track, grey supports in front of a blue sky | Rita accelerates at ground level to 98 km/h and only climbs afterwards. | right](/media/alton-towers/rita.jpg)
 
 **[Rita](ref:alton-towers/rita)** has run in the Dark Forest since **1 April 2005**. The Intamin
 coaster is launched hydraulically and goes from 0 to 98.3 km/h in 2.5 seconds, at 4.7 g. It's just

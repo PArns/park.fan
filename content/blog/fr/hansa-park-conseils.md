@@ -21,11 +21,6 @@ tags:
   - allemagne
   - saison-2026
 category: guides
-coverImage:
-  src: /media/hansa-park/kaernan-ueber-der-westernstadt-16x9.jpg
-  alt: 'Une haute tour de pierre crénelée se dresse derrière les arbres, une voie vert clair s’élève en courbe raide à sa gauche.'
-  caption: 'Le Kärnan au-dessus de la ville western, qui s’appelait encore Bonanza City en 2018.'
-  credit: 'Tobiasi0 / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - hansa-park
 rideLinks:

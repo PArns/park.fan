@@ -20,11 +20,6 @@ tags:
   - alemania
   - temporada-2026
 category: guides
-coverImage:
-  src: /media/plopsaland-deutschland/haupteingang-free-fall-tower-16x9.jpg
-  alt: 'Una explanada adoquinada lleva hasta un portal de color arena; detrás, una esbelta torre de caída blanca sobresale por encima de las copas.'
-  caption: 'La entrada principal en Haßloch. La Free Fall Tower que asoma detrás mide 70 metros y se ve desde la A65.'
-  credit: 'Fischer.H / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - plopsaland-deutschland
 rideLinks:
@@ -111,8 +106,6 @@ estación, hacia delante y hacia atrás, antes de superar el top hat vertical. A
 140 centímetros, edad mínima 14 años, y también aquí rige el límite de ocho grados, medido en la
 temperatura de la vía.
 
-![Una vía roja sube en vertical por una estructura gris, vuelca arriba y cae en un rizo detrás de un edificio de ladrillo. | Sky Scream lanza sus trenes tres veces antes de que superen el top hat de 45 metros. Foto: Freddo, Wikimedia Commons (CC BY-SA 4.0) | left](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
-
 **100% Wolf – La montaña rusa familiar** es la novedad de 2026, inaugurada el 22 de marzo. La
 construyó Gerstlauer: 17,5 metros de alto, 760 metros de largo, 55 km/h, con un tramo de
 lanzamiento, un cambio de vía para la marcha atrás y un spike como elemento final. Es la razón
@@ -144,8 +137,6 @@ Para los días de calor hay dos atracciones acuáticas:
 Junto a ellas está **Splash Battle** en el Wickieland, donde las tripulaciones de los botes y la
 gente de la orilla se mojan unos a otros, y **Die große Welle**, un Disk'O de Zamperla. Las dos están,
 como Wickie Splash, en el Wickieland.
-
-![Barcas planas con cabezas de dragón flotan en una pila turquesa, con dianas al lado y una roca gris que sostiene una rampa. | Splash Battle en Wickieland y, al fondo, la vía de Expedition GeForce. Foto: Freak-Line-Community, Wikimedia Commons (CC BY-SA 4.0) | right](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
 
 **Sky Fly** de Gerstlauer, instalada desde 2015 donde estaba la Bounty Tower vendida, es el
 aparato para quien quiera darse la vuelta por su cuenta. La **Lighthouse Tower** de Funtime está

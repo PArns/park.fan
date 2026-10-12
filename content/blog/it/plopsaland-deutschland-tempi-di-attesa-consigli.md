@@ -20,11 +20,6 @@ tags:
   - germania
   - stagione-2026
 category: guides
-coverImage:
-  src: /media/plopsaland-deutschland/haupteingang-free-fall-tower-16x9.jpg
-  alt: 'Un piazzale lastricato porta a un portale color sabbia, dietro il quale una sottile torre di caduta bianca supera le chiome degli alberi.'
-  caption: "L'ingresso principale a Haßloch. La Free Fall Tower dietro è alta 70 metri e si vede dalla A65."
-  credit: 'Fischer.H / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - plopsaland-deutschland
 rideLinks:
@@ -106,8 +101,6 @@ stazione tre volte, in avanti e all'indietro, prima di superare il top hat verti
 minima 140 centimetri, età minima 14 anni, e vale anche qui il limite degli otto gradi, misurato
 sulla temperatura del binario.
 
-![Un binario rosso sale in verticale lungo un telaio grigio, si ribalta in cima e ricade in un giro dietro un edificio in mattoni. | Sky Scream lancia i suoi treni tre volte prima che superino il top hat di 45 metri. Foto: Freddo, Wikimedia Commons (CC BY-SA 4.0) | left](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
-
 **100% Wolf – L'ottovolante per famiglie** è la novità del 2026, aperta il 22 marzo. L'ha
 costruita Gerstlauer: 17,5 metri di altezza, 760 metri di lunghezza, 55 km/h, con un tratto di
 lancio, uno scambio per la corsa all'indietro e uno spike come elemento finale. È il motivo per
@@ -139,8 +132,6 @@ Per le giornate calde ci sono due attrazioni acquatiche:
 Accanto c'è **Splash Battle** nel Wickieland, dove gli equipaggi delle barche e chi sta a riva si
 bagnano a vicenda, e **Die große Welle**, un Disk'O di Zamperla. Entrambe stanno, come Wickie
 Splash, nel Wickieland.
-
-![Barche piatte con teste di drago scivolano in una vasca turchese, con bersagli di lato e una roccia grigia che regge uno scivolo. | Splash Battle nel Wickieland e, sullo sfondo, il binario di Expedition GeForce. Foto: Freak-Line-Community, Wikimedia Commons (CC BY-SA 4.0) | right](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
 
 **Sky Fly** di Gerstlauer, dal 2015 al posto della Bounty Tower venduta, è l'attrezzo per chi
 vuole ribaltarsi da sé. La **Lighthouse Tower** di Funtime sta lì dal 2006 ed è il punto da cui

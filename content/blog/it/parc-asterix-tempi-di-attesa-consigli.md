@@ -25,11 +25,6 @@ parkLinks:
   - parc-asterix
 rideLinks:
   - parc-asterix/*
-coverImage:
-  src: /media/parc-asterix/oziris.jpg
-  alt: 'Un treno di OzIris è capovolto in cima a un’inversione contro il cielo azzurro, in primo piano le chiome degli alberi e un pilone beige.'
-  caption: 'OzIris, una montagna russa invertita di Bolliger & Mabillard, al Parc Astérix dal 2012.'
-  credit: 'Jules-leconnaisseurd’attraction / Wikimedia Commons (CC BY-SA 4.0)'
 seo:
   title: 'Parc Astérix: tempi di attesa, montagne russe e consigli'
   description: >-

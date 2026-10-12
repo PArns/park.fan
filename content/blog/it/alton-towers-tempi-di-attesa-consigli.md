@@ -20,11 +20,6 @@ tags:
   - england
   - saison-2026
 category: guides
-coverImage:
-  src: /media/alton-towers/nemesis-reborn.jpg
-  alt: 'Un binario nero venato di rosso esce da una cava, accanto un elicottero dismesso.'
-  caption: 'Nemesis Reborn nella cava della Forbidden Valley.'
-  credit: 'BWard 1997 / Wikimedia Commons (CC BY 4.0)'
 parkLinks:
   - alton-towers
 rideLinks:
@@ -115,8 +110,6 @@ piattaforma di cemento alta quasi cinque metri sopra il vialetto, così lo si pu
 
 ### X-Sector: Oblivion e The Smiler
 
-![A destra l'intreccio grigio e giallo di The Smiler con più inversioni, a sinistra il binario in discesa di Oblivion davanti al bosco | A sinistra Oblivion entra nel tunnel, a destra The Smiler impila le sue inversioni. | wide](/media/alton-towers/oblivion-the-smiler.jpg)
-
 L'X-Sector è allestito come un centro di sperimentazione. Oblivion vi è arrivata il **14 marzo
 1998**, per 12 milioni di sterline, ed era il primo dive coaster al mondo. Il vagone si ferma sul
 bordo, resta sospeso da uno a tre secondi sopra il vuoto e poi cade a 87,5 gradi nel tunnel. In
@@ -142,8 +135,6 @@ inflitto una multa di 5 milioni di sterline, che senza l'ammissione di colpa sar
 milioni. The Smiler è di nuovo in funzione dal 19 marzo 2016, con sicurezze aggiuntive.
 
 ### Dark Forest: Rita e TH13TEEN
-
-![Un treno pieno sale ripido su un binario a traliccio rosso ruggine, piloni grigi contro un cielo azzurro | Rita accelera a terra fino a 98 km/h e solo dopo sale. | right](/media/alton-towers/rita.jpg)
 
 **[Rita](ref:alton-towers/rita)** è nel Dark Forest dal **1° aprile 2005**. L'attrazione di Intamin
 parte con un lancio idraulico e passa da 0 a 98,3 km/h in 2,5 secondi, con 4,7 g. È alta poco più di

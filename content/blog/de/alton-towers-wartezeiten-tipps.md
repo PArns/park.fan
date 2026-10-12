@@ -20,11 +20,6 @@ tags:
   - england
   - saison-2026
 category: guides
-coverImage:
-  src: /media/alton-towers/nemesis-reborn.jpg
-  alt: 'Schwarze Achterbahnschiene mit roten Adern führt aus einem Steinbruch heraus, daneben steht ein ausgemusterter Hubschrauber.'
-  caption: 'Nemesis Reborn im Steinbruch des Forbidden Valley.'
-  credit: 'BWard 1997 / Wikimedia Commons (CC BY 4.0)'
 parkLinks:
   - alton-towers
 rideLinks:
@@ -114,8 +109,6 @@ Betonplattform über dem Weg, sodass man von unten zusehen kann.
 
 ### X-Sector: Oblivion und The Smiler
 
-![Rechts das graugelbe Schienengewirr des Smiler mit mehreren Überschlägen, links die abfallende Schiene der Oblivion vor Wald | Links fährt Oblivion in ihren Tunnel, rechts stapelt der Smiler seine Überschläge. | wide](/media/alton-towers/oblivion-the-smiler.jpg)
-
 Der X-Sector ist als Versuchsanstalt gestaltet. Oblivion kam am **14. März 1998** für 12
 Millionen Pfund dorthin und war der erste Dive Coaster der Welt. Der Wagen hält an der Kante,
 hängt ein bis drei Sekunden über dem Abgrund und fällt dann mit 87,5 Grad in den Tunnel. Unten
@@ -142,8 +135,6 @@ eine Strafe von 5 Millionen Pfund; ohne das Geständnis wären es 7,5 Millionen 
 Smiler fährt seit dem 19. März 2016 wieder, mit zusätzlichen Sicherungen.
 
 ### Dark Forest: Rita und TH13TEEN
-
-![Ein voll besetzter Zug steigt an einer rostroten Gitterschiene steil nach oben, davor graue Stützen vor blauem Himmel | Rita beschleunigt am Boden auf 98 km/h und steigt erst danach. | right](/media/alton-towers/rita.jpg)
 
 **[Rita](ref:alton-towers/rita)** fährt seit dem **1. April 2005** im Dark Forest. Die Intamin-Bahn wird hydraulisch
 abgeschossen und beschleunigt in 2,5 Sekunden von 0 auf 98,3 km/h, mit 4,7 g. Sie ist gut 18

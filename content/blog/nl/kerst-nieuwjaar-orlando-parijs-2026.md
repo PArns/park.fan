@@ -113,8 +113,6 @@ Parade, vuurwerk en de kasteelshow vervallen alle drie bij wind en onweer. In
 Florida is dat in december zeldzaam, maar het staat in Disney's eigen kleine
 lettertjes, en wel bij alle drie apart.
 
-![Main Street U. S. A. in het Magic Kingdom, met zicht op Cinderella Castle | Main Street krijgt in december sneeuw uit de machine. Op feestavonden vanaf 19.00 uur, anders niet. | wide](/media/magic-kingdom-park/main-street-usa.jpg)
-
 ### EPCOT: Festival of the Holidays en de Candlelight Processional
 
 Het **EPCOT International Festival of the Holidays** loopt van **27 november tot

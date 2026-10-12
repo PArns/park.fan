@@ -111,8 +111,6 @@ La cabalgata, los fuegos y el espectáculo ante el castillo se cancelan los tres
 con viento y tormenta. En Florida, en diciembre, eso es raro, pero está en la
 letra pequeña de Disney, bajo cada uno de los tres por separado.
 
-![Main Street U. S. A. en el Magic Kingdom, con el castillo de Cenicienta al fondo | En diciembre, Main Street recibe nieve de máquina. Las noches de fiesta a partir de las 19:00, el resto del tiempo no. | wide](/media/magic-kingdom-park/main-street-usa.jpg)
-
 ### EPCOT: Festival of the Holidays y Candlelight Processional
 
 El **EPCOT International Festival of the Holidays** va del **27 de noviembre al

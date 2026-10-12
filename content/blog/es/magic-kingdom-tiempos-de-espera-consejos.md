@@ -24,11 +24,6 @@ tags:
   - parque-atracciones
   - florida
   - temporada-2026
-coverImage:
-  src: /media/magic-kingdom-park/main-street-usa-16x9.jpg
-  alt: 'Main Street vista desde la plaza del pueblo: parterres, un mástil alto, tiendas a ambos lados y el castillo al fondo de la calle.'
-  caption: 'Main Street está construida con perspectiva forzada: los pisos superiores son más bajos que la planta baja.'
-  credit: 'Jedi94 / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - magic-kingdom-park
 rideLinks:
@@ -544,5 +539,4 @@ Christmas Party se celebra 25 noches: [Navidad y Nochevieja en Orlando y París]
 - Novedades y cierres: [Piston Peak (Disney Parks Blog)](https://disneyparksblog.com/wdw/piston-peak-national-park-builds-on-the-story-of-frontierland/) · [Villains Land (Disney Parks Blog)](https://disneyparksblog.com/wdw/villains-land-rides-details-and-more-walt-disney-world/) · [Carousel of Progress (Disney)](https://disneyworld.disney.go.com/attractions/magic-kingdom/walt-disney-carousel-of-progress/) · [Walt Disney World Railroad (Disney)](https://disneyworld.disney.go.com/attractions/magic-kingdom/walt-disney-world-railroad/) · [los nuevos colores del castillo (Disney Parks Blog)](https://disneyparksblog.com/wdw/meet-the-team-behind-cinderella-castles-sparkling-refresh/) · [Disney After Hours 2027 (Disney Parks Blog)](https://disneyparksblog.com/wdw/walt-disney-world-spring-offers-and-returning-events/)
 - Cómo llegar y aparcar: [Parking (Disney)](https://disneyworld.disney.go.com/guest-services/parking/) · [Monorail (Disney)](https://disneyworld.disney.go.com/guest-services/monorail-transportation/) · [Autobuses (Disney)](https://disneyworld.disney.go.com/guest-services/bus-transportation/) · [Mears Connect (FAQ)](https://www.mearsconnect.com/faq)
 - Restaurantes y hoteles: [Be Our Guest (Disney)](https://disneyworld.disney.go.com/dining/magic-kingdom/be-our-guest-restaurant/) · [Cinderella's Royal Table (Disney)](https://disneyworld.disney.go.com/dining/magic-kingdom/cinderella-royal-table/) · [Mobile Order (Disney)](https://disneyworld.disney.go.com/guest-services/mobile-food-orders/) · [Lakeshore Lodge (Disney Parks Blog)](https://disneyparksblog.com/wdw/lakeshore-lodge-disney-world-updates/)
-- Foto de portada: [Jedi94 en Wikimedia Commons, CC BY-SA 4.0](<https://commons.wikimedia.org/wiki/File:Main_Street_USA,_Magic_Kingdom_Walt_Disney_World_(2024).jpg>)
 - Datos de espera y afluencia, perfil por horas, análisis de rope drop, precios de Lightning Lane, horarios, número de locales de restauración, estado de mantenimiento: historial propio, [Magic Kingdom](ref:magic-kingdom-park) en park.fan

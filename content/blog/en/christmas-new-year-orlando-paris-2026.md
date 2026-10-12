@@ -107,8 +107,6 @@ The parade, the fireworks and the castle stage show are all cancelled in wind
 and storms. That's rare in Florida in December, but it's in Disney's own small
 print, and it's there under each of the three separately.
 
-![Main Street U. S. A. at the Magic Kingdom, looking towards Cinderella Castle | Main Street gets machine-made snowfall in December. On party nights from 7 p.m., not otherwise. | wide](/media/magic-kingdom-park/main-street-usa.jpg)
-
 ### EPCOT: Festival of the Holidays and the Candlelight Processional
 
 The **EPCOT International Festival of the Holidays** runs from **27 November to

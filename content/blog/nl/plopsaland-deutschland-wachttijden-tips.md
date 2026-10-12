@@ -20,11 +20,6 @@ tags:
   - duitsland
   - seizoen-2026
 category: guides
-coverImage:
-  src: /media/plopsaland-deutschland/haupteingang-free-fall-tower-16x9.jpg
-  alt: 'Een geplaveid voorplein loopt naar een zandkleurige toegangspoort, daarachter steekt een slanke witte valtoren boven de boomtoppen uit.'
-  caption: 'De hoofdingang in Haßloch. De Free Fall Tower erachter is 70 meter hoog en vanaf de A65 te zien.'
-  credit: 'Fischer.H / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - plopsaland-deutschland
 rideLinks:
@@ -110,8 +105,6 @@ station uit geschoten, vooruit en achteruit, voordat hij over de verticale top h
 Minimale lengte 140 centimeter, minimumleeftijd 14 jaar, en ook hier geldt de achtgradengrens,
 gemeten aan de temperatuur van het spoor.
 
-![Een rood spoor klimt verticaal langs een grijs steunframe, kantelt bovenaan en valt in een lus achter een bakstenen gebouw. | Sky Scream lanceert zijn treinen drie keer voordat ze over de 45 meter hoge top hat komen. Foto: Freddo, Wikimedia Commons (CC BY-SA 4.0) | left](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
-
 **100% Wolf – De familieachtbaan** is de nieuwigheid van 2026, geopend op 22 maart. Gerstlauer
 bouwde hem: 17,5 meter hoog, 760 meter lang, 55 km/u, met een launchgedeelte, een wissel voor de
 achterwaartse rit en een spike als slotelement. Door hem staat het park dit jaar überhaupt in
@@ -142,8 +135,6 @@ Voor warme dagen zijn er twee waterattracties:
 Daarnaast staat **Splash Battle** in het Wickieland, waar bootbemanningen en omstanders elkaar
 natspuiten, en **Die große Welle**, een Disk'O van Zamperla. Ze staan allebei in het
 Wickieland, net als Wickie Splash.
-
-![Platte boten met drakenkoppen drijven door een turquoise bassin, ernaast schietschijven en een grijze rots met een glijbaan. | Splash Battle in Wickieland, daarachter het spoor van Expedition GeForce. Foto: Freak-Line-Community, Wikimedia Commons (CC BY-SA 4.0) | right](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
 
 **Sky Fly** van Gerstlauer staat sinds 2015 op de plek van de verkochte Bounty Tower en is het
 toestel voor wie zichzelf over de kop wil draaien. De **Lighthouse Tower** van Funtime staat er

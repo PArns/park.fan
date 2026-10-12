@@ -20,11 +20,6 @@ tags:
   - allemagne
   - saison-2026
 category: guides
-coverImage:
-  src: /media/plopsaland-deutschland/haupteingang-free-fall-tower-16x9.jpg
-  alt: 'Un parvis pavé mène à un portail couleur sable, derrière lequel une fine tour de chute blanche dépasse la cime des arbres.'
-  caption: "L'entrée principale à Haßloch. La Free Fall Tower derrière elle mesure 70 mètres et se voit depuis l'A65."
-  credit: 'Fischer.H / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - plopsaland-deutschland
 rideLinks:
@@ -113,8 +108,6 @@ catapulté trois fois hors de la gare, en avant et en arrière, avant de franchi
 vertical. Taille minimale 140 centimètres, âge minimal 14 ans, et la règle des huit degrés
 s'applique aussi, mesurée à la température de la voie.
 
-![Une voie rouge grimpe verticalement le long d'une ossature grise, bascule au sommet et retombe en boucle derrière un bâtiment en brique. | Sky Scream lance ses trains trois fois avant qu'ils ne franchissent le top hat de 45 mètres. Foto: Freddo, Wikimedia Commons (CC BY-SA 4.0) | left](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
-
 **100% Wolf – Les montagnes russes familiales** sont la nouveauté 2026, ouverte le 22 mars.
 Gerstlauer les a construites : 17,5 mètres de haut, 760 mètres de long, 55 km/h, avec une
 section de lancement, un aiguillage pour la marche arrière et un spike en guise d'élément final.
@@ -148,8 +141,6 @@ Pour les jours de chaleur, il y a deux attractions aquatiques :
 S'y ajoutent **Splash Battle** dans le Wickieland, où les équipages des bateaux et les passants
 s'arrosent, et **Die große Welle**, un Disk'O de Zamperla. Toutes deux se trouvent, comme
 Wickie Splash, dans le Wickieland.
-
-![Des barques plates à tête de dragon dérivent dans un bassin turquoise, avec des cibles sur le côté et un rocher gris portant une descente. | Splash Battle dans le Wickieland, et derrière la voie d'Expedition GeForce. Foto: Freak-Line-Community, Wikimedia Commons (CC BY-SA 4.0) | right](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
 
 **Sky Fly** de Gerstlauer, installée depuis 2015 à la place de la Bounty Tower revendue, est
 l'engin pour qui veut se retourner lui-même. La **Lighthouse Tower** de Funtime se dresse depuis

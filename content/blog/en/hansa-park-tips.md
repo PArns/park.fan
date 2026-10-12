@@ -20,11 +20,6 @@ tags:
   - germany
   - season-2026
 category: guides
-coverImage:
-  src: /media/hansa-park/kaernan-ueber-der-westernstadt-16x9.jpg
-  alt: 'A tall battlemented stone tower rises behind trees, a pale green coaster track sweeping up and over to its left.'
-  caption: 'Kärnan above the western town, which was still called Bonanza City in 2018.'
-  credit: 'Tobiasi0 / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - hansa-park
 rideLinks:
