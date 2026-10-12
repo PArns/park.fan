@@ -2237,6 +2237,14 @@
     "video": {
       "play": "Video abspielen",
       "playHint": "Lädt den YouTube-Player erst beim Tippen."
+    },
+    "audio": {
+      "play": "Song abspielen",
+      "playHint": "Lädt den Player von suno.com erst beim Tippen."
+    },
+    "instagram": {
+      "load": "Beitrag laden",
+      "loadHint": "Lädt den Beitrag von Instagram (Meta) erst beim Tippen."
     }
   },
   "blogToast": {

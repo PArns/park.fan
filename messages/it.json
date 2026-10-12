@@ -2237,6 +2237,14 @@
     "video": {
       "play": "Riproduci video",
       "playHint": "Carica il player di YouTube solo al tocco."
+    },
+    "audio": {
+      "play": "Riproduci brano",
+      "playHint": "Carica il player di suno.com solo al tocco."
+    },
+    "instagram": {
+      "load": "Carica il post",
+      "loadHint": "Carica il post da Instagram (Meta) solo al tocco."
     }
   },
   "blogToast": {

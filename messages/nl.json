@@ -2237,6 +2237,14 @@
     "video": {
       "play": "Video afspelen",
       "playHint": "Laadt de YouTube-speler pas als je tikt."
+    },
+    "audio": {
+      "play": "Nummer afspelen",
+      "playHint": "Laadt de speler van suno.com pas als je tikt."
+    },
+    "instagram": {
+      "load": "Bericht laden",
+      "loadHint": "Laadt het bericht van Instagram (Meta) pas als je tikt."
     }
   },
   "blogToast": {

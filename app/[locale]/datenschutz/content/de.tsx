@@ -249,9 +249,9 @@ export function DatenschutzDE() {
         <LegalH3>Suno</LegalH3>
         <p>
           Ein Blogbeitrag enthält einen Musik-Player von Suno, Inc., USA. Auch er wird erst geladen,
-          wenn Sie auf „Abspielen“ tippen. Dann erhält Suno Ihre IP-Adresse und Angaben zu Ihrem
-          Gerät und kann Daten im Browser speichern. Rechtsgrundlage ist Ihre Einwilligung durch das
-          Tippen (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG). Für die USA besteht kein
+          wenn Sie auf „Song abspielen“ tippen. Dann erhält Suno Ihre IP-Adresse und Angaben zu
+          Ihrem Gerät und kann Daten im Browser speichern. Rechtsgrundlage ist Ihre Einwilligung
+          durch das Tippen (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG). Für die USA besteht kein
           Angemessenheitsbeschluss, der Suno erfasst. Weitere Informationen:{' '}
           <LegalLink href="https://suno.com/privacy" />.
         </p>

@@ -234,10 +234,10 @@ export function DatenschutzEN() {
         <LegalH3>Suno</LegalH3>
         <p>
           One blog post contains a music player from Suno, Inc., USA. It also loads only when you
-          tap "Play". Suno then receives your IP address and details about your device and can store
-          data in your browser. The legal basis is the consent you give by tapping (Art. 6(1)(a)
-          GDPR, § 25(1) TDDDG). There is no adequacy decision for the USA that covers Suno. More
-          information: <LegalLink href="https://suno.com/privacy" />.
+          tap "Play song". Suno then receives your IP address and details about your device and can
+          store data in your browser. The legal basis is the consent you give by tapping (Art.
+          6(1)(a) GDPR, § 25(1) TDDDG). There is no adequacy decision for the USA that covers Suno.
+          More information: <LegalLink href="https://suno.com/privacy" />.
         </p>
 
         <LegalH3>Instagram</LegalH3>

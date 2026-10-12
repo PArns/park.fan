@@ -2237,6 +2237,14 @@
     "video": {
       "play": "Lire la vidéo",
       "playHint": "Charge le lecteur YouTube seulement au clic."
+    },
+    "audio": {
+      "play": "Écouter la chanson",
+      "playHint": "Charge le lecteur de suno.com seulement au clic."
+    },
+    "instagram": {
+      "load": "Charger la publication",
+      "loadHint": "Charge la publication depuis Instagram (Meta) seulement au clic."
     }
   },
   "blogToast": {

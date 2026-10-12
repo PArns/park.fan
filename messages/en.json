@@ -2237,6 +2237,14 @@
     "video": {
       "play": "Play video",
       "playHint": "Loads the YouTube player only when you tap."
+    },
+    "audio": {
+      "play": "Play song",
+      "playHint": "Loads the player from suno.com only when you tap."
+    },
+    "instagram": {
+      "load": "Load post",
+      "loadHint": "Loads the post from Instagram (Meta) only when you tap."
     }
   },
   "blogToast": {

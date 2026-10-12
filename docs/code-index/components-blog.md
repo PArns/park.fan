@@ -72,7 +72,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-instagram-embed.tsx`](../../components/blog/blog-instagram-embed.tsx)
 
-- `BlogInstagramEmbed` _component_: Official Instagram post/reel embed. The provider blockquote renders immediately (with a plain link fallback), but the ~50 KB embed.js is only loaded once the embed scrolls near the viewport — readers who never reach it never pay for the …
+- `BlogInstagramEmbed` _component_: Official Instagram post/reel embed behind a button: embed.js and the post it fetches come from Instagram (Meta), and scrolling past a post is not asking for that.
 
 ### [`blog-language-notice.tsx`](../../components/blog/blog-language-notice.tsx)
 
@@ -168,7 +168,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-suno-embed.tsx`](../../components/blog/blog-suno-embed.tsx)
 
-- `BlogSunoEmbed` _component_: Suno song player embed. Optional caption comes from the link text.
+- `BlogSunoEmbed` _component_: Suno song player behind a facade, like `BlogYouTubeEmbed`: the iframe is a whole suno.com page, and `loading="lazy"` still loads it, with its requests to Suno, as soon as it scrolls near.
 
 ### [`blog-tag-cloud.tsx`](../../components/blog/blog-tag-cloud.tsx)
 
