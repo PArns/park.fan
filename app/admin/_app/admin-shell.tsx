@@ -140,7 +140,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
     <div className="flex min-h-[100dvh]">
       <Sidebar
         groups={groups}
-        pathname={pathname}
+        activeHref={active?.href}
         collapsed={collapsed}
         mobileOpen={mobileOpen}
         onCloseMobile={closeMobile}
@@ -230,14 +230,14 @@ export function AdminShell({ children }: { children: ReactNode }) {
 
 function Sidebar({
   groups,
-  pathname,
+  activeHref,
   collapsed,
   mobileOpen,
   onCloseMobile,
   onToggleCollapsed,
 }: {
   groups: ReturnType<typeof visibleGroups>;
-  pathname: string;
+  activeHref: string | undefined;
   collapsed: boolean;
   mobileOpen: boolean;
   onCloseMobile: () => void;
@@ -301,11 +301,7 @@ function Sidebar({
                   <SidebarLink
                     key={item.href}
                     item={item}
-                    active={
-                      item.href === '/admin'
-                        ? pathname === '/admin'
-                        : pathname.startsWith(item.href)
-                    }
+                    active={item.href === activeHref}
                     collapsed={collapsed && !mobileOpen}
                     onNavigate={onCloseMobile}
                   />
