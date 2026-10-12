@@ -65,11 +65,11 @@ export function ImpressumDE() {
           Haftungsausschluss
         </h2>
         <p className="mb-4">
-          Diese Webseite ist keine offizielle Webseite der hier aufgeführten Freizeit- und
-          Themenparks. Die Wartezeiten stammen von den Parks selbst und erreichen uns über die unten
-          genannten Plattformen. Prognosen, Durchschnittswerte und Statistiken berechnet park.fan
-          daraus selbst. Eine Prognose ist eine Schätzung und kann deutlich von der tatsächlichen
-          Wartezeit abweichen.
+          park.fan ist ein privates Hobbyprojekt und keine offizielle Webseite der hier aufgeführten
+          Freizeit- und Themenparks. Die Wartezeiten stammen von den Parks selbst und erreichen uns
+          über die unten genannten Plattformen. Prognosen, Durchschnittswerte und Statistiken
+          berechnet park.fan daraus selbst. Eine Prognose ist eine Schätzung und kann deutlich von
+          der tatsächlichen Wartezeit abweichen.
         </p>
         <p className="mb-4">
           Der Betreiber dieser Webseite übernimmt keine Haftung oder Verantwortung für den Inhalt,

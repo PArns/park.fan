@@ -64,10 +64,10 @@ export function ImpressumEN() {
 
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Disclaimer</h2>
         <p className="mb-4">
-          This website is not an official website of any of the theme and amusement parks listed
-          here. Wait times come from the parks themselves and reach us through the platforms listed
-          below. Forecasts, averages and statistics are calculated by park.fan. A forecast is an
-          estimate and can differ considerably from the actual wait.
+          park.fan is a private hobby project and not an official website of any of the theme and
+          amusement parks listed here. Wait times come from the parks themselves and reach us
+          through the platforms listed below. Forecasts, averages and statistics are calculated by
+          park.fan. A forecast is an estimate and can differ considerably from the actual wait.
         </p>
         <p className="mb-4">
           The operator of this website assumes no liability or responsibility for the content,
