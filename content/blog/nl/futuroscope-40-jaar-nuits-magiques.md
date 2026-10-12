@@ -96,9 +96,7 @@ over het kunstvliegteam Patrouille de France. Bij
 in 2027 op een nieuwe playlist.
 
 In april komt er een nieuwe illusieshow bij, “Imagine, Live show”, geregisseerd
-door Arthur Jugnot en zijn partner Bertran Lotth. Op het filmprogramma staan
-verder onder meer de grootformaatfilms “Les Ailes du courage”, “Grand canyon”, “Van
-Gogh”, “Everest”, “Blue Whales” en “Flight of the Butterflies”. Studenten van de kunstacademie ESMA (École Supérieure des Métiers Artistiques) krijgen er een carte blanche om korte films te vertonen.
+door Arthur Jugnot en zijn partner Bertran Lotth. In mei en juni houdt het Kinemax een “festival des grandes images” met grootformaatfilms uit de geschiedenis van het park, onder meer “Les Ailes du courage”, “Grand canyon” en “Van Gogh”. In september en oktober draaien ze opnieuw, afgewisseld met “ATHOS”. Het Omnimax heeft een nieuwe laserkoepel en vertoont gerestaureerde en geremasterde films, onder meer “Everest”, “Blue Whales” en “Flight of the Butterflies”, afgewisseld met de film “T-Rex”. Studenten van de kunstacademie ESMA (École Supérieure des Métiers Artistiques) krijgen er een carte blanche om korte films te vertonen.
 
 Voor het jubileum krijgt de “Maison à l'envers”, een huis dat op zijn kop staat, een versie in de stijl van 1987, ingericht met
 cultvoorwerpen uit de jaren tachtig. In de openlucht toont het park samen met het

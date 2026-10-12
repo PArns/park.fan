@@ -99,8 +99,7 @@ Kunstflugstaffel Patrouille de France. Er dauert 40 Minuten. Bei
 [Danse avec les robots](ref:futuroscope/dances-with-robots) tanzen die zehn
 Roboter 2027 zu einer neuen Playlist.
 
-Im April kommt eine neue Illusionsshow dazu, „Imagine, Live show“, inszeniert von Arthur Jugnot und seinem Partner Bertran Lotth. Im Kinoprogramm nennt der Park unter anderem die Großformatfilme „Les Ailes du courage“, „Grand canyon“,
-„Van Gogh“, „Everest“, „Blue Whales“ und „Flight of the Butterflies“. Studierende der Kunsthochschule ESMA (École Supérieure des Métiers Artistiques) bekommen eine Carte blanche und zeigen Kurzfilme.
+Im April kommt eine neue Illusionsshow dazu, „Imagine, Live show“, inszeniert von Arthur Jugnot und seinem Partner Bertran Lotth. Im Mai und Juni zeigt das Kinemax beim „festival des grandes images“ Großformatfilme aus der Geschichte des Parks, unter anderem „Les Ailes du courage“, „Grand canyon“ und „Van Gogh“. Im September und Oktober laufen sie noch einmal, abwechselnd mit „ATHOS“. Das Omnimax hat eine neue Laserkuppel und zeigt restaurierte und remasterte Filme, unter anderem „Everest“, „Blue Whales“ und „Flight of the Butterflies“, im Wechsel mit dem Film „T-Rex“. Studierende der Kunsthochschule ESMA (École Supérieure des Métiers Artistiques) bekommen eine Carte blanche und zeigen Kurzfilme.
 
 Zum Jubiläum bekommt die „Maison à l'envers“, ein Haus, das auf dem Kopf steht, eine Fassung im Stil von
 1987 und wird mit Kultobjekten der Achtzigerjahre eingerichtet. Unter freiem

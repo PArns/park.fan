@@ -102,9 +102,7 @@ La saison 2027 commence le 6 février. Dès le premier jour, le
 dansent en 2027 sur une nouvelle playlist.
 
 En avril arrive un nouveau spectacle d’illusion, « Imagine, Live show », mis en
-scène par Arthur Jugnot et son complice Bertran Lotth. Côté cinéma, le parc
-annonce aussi, entre autres, les films grand format « Les Ailes du courage », « Grand canyon »,
-« Van Gogh », « Everest », « Blue Whales » et « Flight of the Butterflies », ainsi qu’une carte blanche aux étudiants de l’école d’art ESMA (École Supérieure des Métiers Artistiques), qui présentent des courts métrages.
+scène par Arthur Jugnot et son complice Bertran Lotth. En mai et juin, le Kinemax organise un « festival des grandes images » avec des films grand format tirés de l’histoire du parc, entre autres « Les Ailes du courage », « Grand canyon » et « Van Gogh ». Ils reviennent en septembre et octobre, en alternance avec « ATHOS ». L’Omnimax a un nouveau dôme laser et projette des films restaurés et remastérisés, entre autres « Everest », « Blue Whales » et « Flight of the Butterflies », en alternance avec « T-Rex ». Les étudiants de l’école d’art ESMA (École Supérieure des Métiers Artistiques) ont aussi carte blanche et présentent des courts métrages.
 
 Pour l’anniversaire, la « Maison à l’envers » passe en version 1987 et se remplit d’objets cultes des années 80.
 En plein air, le parc présente avec l’INA une exposition sur 40 ans

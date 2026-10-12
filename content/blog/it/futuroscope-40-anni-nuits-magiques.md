@@ -100,10 +100,7 @@ minuti sulla pattuglia acrobatica Patrouille de France. A
 ballano nel 2027 su una playlist nuova.
 
 Ad aprile arriva uno spettacolo di illusionismo inedito, «Imagine, Live show»,
-messo in scena da Arthur Jugnot e dal suo socio Bertran Lotth. Nel programma
-dei film il parco elenca, tra gli altri, i titoli in grande formato «Les Ailes du
-courage», «Grand canyon», «Van Gogh», «Everest», «Blue Whales» e «Flight of the
-Butterflies», oltre a una carta bianca per gli studenti della scuola d'arte ESMA (École Supérieure des Métiers Artistiques), che presentano dei cortometraggi.
+messo in scena da Arthur Jugnot e dal suo socio Bertran Lotth. A maggio e giugno il Kinemax ospita un «festival des grandes images» con film in grande formato della storia del parco, tra gli altri «Les Ailes du courage», «Grand canyon» e «Van Gogh». Tornano a settembre e ottobre, in alternanza con «ATHOS». L'Omnimax ha una nuova cupola laser e proietta film restaurati e rimasterizzati, tra gli altri «Everest», «Blue Whales» e «Flight of the Butterflies», in alternanza con «T-Rex». Gli studenti della scuola d'arte ESMA (École Supérieure des Métiers Artistiques) hanno inoltre carta bianca e presentano dei cortometraggi.
 
 Per l'anniversario la «Maison à l'envers», una casa capovolta, riceve una versione in stile 1987, arredata con oggetti di culto
 degli anni Ottanta. All'aperto, insieme all'INA, il parco allestisce una mostra

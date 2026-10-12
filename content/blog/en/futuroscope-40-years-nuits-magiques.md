@@ -96,8 +96,7 @@ about the Patrouille de France aerobatic team. At
 dance to a new playlist in 2027.
 
 A new illusion show, "Imagine, Live show", joins in April. It's staged by Arthur
-Jugnot and his partner Bertran Lotth. The park's film line-up also lists, among others, the large-format films "Les Ailes du courage", "Grand canyon", "Van Gogh",
-"Everest", "Blue Whales" and "Flight of the Butterflies". Students of the art school ESMA (École Supérieure des Métiers Artistiques) get a carte blanche to show short films.
+Jugnot and his partner Bertran Lotth. In May and June the Kinemax holds a "festival des grandes images" with large-format films from the park's history, such as "Les Ailes du courage", "Grand canyon" and "Van Gogh". They come back in September and October, alternating with "ATHOS". The Omnimax has a new laser dome and shows restored and remastered films, such as "Everest", "Blue Whales" and "Flight of the Butterflies", alternating with "T-Rex". Students of the art school ESMA (École Supérieure des Métiers Artistiques) get a carte blanche to show short films.
 
 For the anniversary, the "Maison à l'envers", a house standing on its head, gets a 1987 version furnished with cult objects from the
 eighties. Outdoors, the park and the INA are putting on an exhibition about 40

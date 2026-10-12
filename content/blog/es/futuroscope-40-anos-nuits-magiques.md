@@ -101,10 +101,7 @@ La temporada 2027 arranca el 6 de febrero. Desde el primer día, el
 bailarán en 2027 con una lista de canciones nueva.
 
 En abril se suma un espectáculo de ilusionismo, «Imagine, Live show», dirigido
-por Arthur Jugnot y su socio Bertran Lotth. En la programación de cine, el
-parque menciona además, entre otras, las películas de gran formato «Les Ailes du courage»,
-«Grand canyon», «Van Gogh», «Everest», «Blue Whales» y «Flight of the
-Butterflies», y una carta blanca para estudiantes de la escuela de arte ESMA (École Supérieure des Métiers Artistiques), que proyectan cortometrajes.
+por Arthur Jugnot y su socio Bertran Lotth. En mayo y junio, el Kinemax celebra un «festival des grandes images» con películas de gran formato de la historia del parque, entre otras «Les Ailes du courage», «Grand canyon» y «Van Gogh». Vuelven en septiembre y octubre, en alternancia con «ATHOS». El Omnimax tiene una cúpula láser nueva y proyecta películas restauradas y remasterizadas, entre otras «Everest», «Blue Whales» y «Flight of the Butterflies», en alternancia con «T-Rex». Los estudiantes de la escuela de arte ESMA (École Supérieure des Métiers Artistiques) reciben además carta blanca y proyectan cortometrajes.
 
 Por el aniversario, la «Maison à l'envers», una casa puesta del revés, tendrá una versión al estilo de 1987, amueblada con
 objetos de culto de los años ochenta. Y al aire libre, el parque monta con el
