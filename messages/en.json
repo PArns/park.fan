@@ -2650,7 +2650,8 @@
         "next-up": "When it is time to head to the next ride",
         "show-times": "Show times",
         "ride-status": "When a planned ride closes or reopens",
-        "wait-change": "When a planned wait changes a lot"
+        "wait-change": "When a planned wait changes a lot",
+        "rain-soon": "Rain warning with covered rides"
       },
       "share": "Share a link to this plan",
       "shareCopied": "Link copied",

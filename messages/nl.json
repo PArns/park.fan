@@ -2650,7 +2650,8 @@
         "next-up": "Wanneer je naar de volgende attractie moet",
         "show-times": "Speeltijden van de shows",
         "ride-status": "Als een geplande attractie sluit of weer opengaat",
-        "wait-change": "Als een geplande wachttijd flink verandert"
+        "wait-change": "Als een geplande wachttijd flink verandert",
+        "rain-soon": "Regenwaarschuwing met overdekte attracties"
       },
       "share": "Link naar dit plan delen",
       "shareCopied": "Link gekopieerd",

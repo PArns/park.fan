@@ -2650,7 +2650,8 @@
         "next-up": "Wenn du zur nächsten Bahn losmusst",
         "show-times": "Vorstellungszeiten der Shows",
         "ride-status": "Wenn eine geplante Bahn schließt oder wieder öffnet",
-        "wait-change": "Wenn sich eine geplante Wartezeit deutlich ändert"
+        "wait-change": "Wenn sich eine geplante Wartezeit deutlich ändert",
+        "rain-soon": "Regenwarnung mit überdachten Bahnen"
       },
       "share": "Link zum Plan teilen",
       "shareCopied": "Link kopiert",
