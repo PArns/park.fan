@@ -181,6 +181,12 @@ both, what the tells are and how `pnpm check:prose` judges a caption series:
 
 ### `credit` — never invent one
 
+**No Creative Commons photos.** Nothing under CC BY, BY-SA, BY-NC or BY-ND goes in here, and no
+new CC0 either, which rules out Wikimedia Commons as a source. A photo is our own, a `/contribute`
+upload, a press-kit photo with written approval or an Unsplash photo; otherwise there is no photo.
+`pnpm generate:media` fails on a `cc-by*` licence. Why:
+[docs/rules/no-creative-commons-photos.md](../../docs/rules/no-creative-commons-photos.md).
+
 `"license": "unknown"` means nobody has established the rights yet. That is a
 legitimate, expected state, and the build counts how many are outstanding. Do not
 fill in an author to make the warning go away.

@@ -264,6 +264,9 @@ carries the reasoning, the measurements and the counter-examples.
 - **[Media database](docs/rules/media-database.md)** — one filesystem-backed database under `public/media/<collection>/`, and the
   sidecar is the index: never infer park, ride or role from a filename or folder.
   `@/lib/media/hero` is the only client-safe import.
+- **[No Creative Commons photos](docs/rules/no-creative-commons-photos.md)** — no CC BY/BY-SA/BY-NC/BY-ND
+  photo anywhere, and no new CC0: own shoots, `/contribute` uploads, approved press kits, Unsplash.
+  Wikimedia Commons is not a source. `pnpm generate:media` fails on a `cc-by*` sidecar.
 - **[One photo can index two rides (`alsoRides`)](docs/rules/one-photo-can-index-two-rides-alsorides.md)** — names the further rides a photo answers for, every
   slug validated against the park's attractions.
 - **[Card photos are two layers](docs/rules/card-photos-are-two-layers.md)** — the framing reference is the strip between the glass panels

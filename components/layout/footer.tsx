@@ -18,6 +18,19 @@ import { NEWS_INDEX_PATH } from '@/lib/blog/paths';
 import { CHANGELOG_PATH } from '@/lib/changelog/paths';
 import type { Locale } from '@/i18n/config';
 
+/** The wait-time sources the footer credits, in the order the imprint lists them. */
+const DATA_SOURCES = [
+  { href: 'https://themeparks.wiki', label: 'ThemeParks.wiki' },
+  { href: 'https://queue-times.com/', label: 'Powered by Queue-Times.com' },
+  { href: 'https://wartezeiten.app', label: 'Wartezeiten.app' },
+];
+
+const SOURCE_LINK_PROPS = {
+  target: '_blank',
+  rel: 'noopener noreferrer',
+  className: 'hover:text-foreground underline-offset-2 hover:underline',
+} as const;
+
 interface FooterProps {
   locale: string;
   /** Whether the blog has at least one published post. */
@@ -320,8 +333,31 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
 
         <Separator className="my-6 sm:my-8" />
 
-        <div className="mb-4 text-center sm:mt-4 sm:mb-6">
+        <div className="mb-4 space-y-2 text-center sm:mt-4 sm:mb-6">
           <p className="text-muted-foreground/80 text-sm">{t('disclaimer')}</p>
+          {/* Queue-Times' terms ask for this exact wording, linked, somewhere prominent, and
+              Open-Meteo's CC BY 4.0 for a link to the licence; the imprint alone is noindex. */}
+          <p className="text-muted-foreground/80 text-xs">
+            {t('dataSources')}:{' '}
+            {DATA_SOURCES.map((source, i) => (
+              <span key={source.href}>
+                {i > 0 && ' · '}
+                <a href={source.href} {...SOURCE_LINK_PROPS}>
+                  {source.label}
+                </a>
+              </span>
+            ))}
+            {' · '}
+            {t('weatherSource')}:{' '}
+            <a href="https://open-meteo.com/" {...SOURCE_LINK_PROPS}>
+              Open-Meteo.com
+            </a>{' '}
+            (
+            <a href="https://creativecommons.org/licenses/by/4.0/" {...SOURCE_LINK_PROPS}>
+              CC BY 4.0
+            </a>
+            )
+          </p>
         </div>
 
         {/* The same six columns and 2/4 split as the block above the separator, so the link

@@ -453,7 +453,9 @@
     "copyright": "© {year} park.fan. Todos los derechos reservados.",
     "poweredBy": "Impulsado por",
     "legalLinks": "Legal",
-    "disclaimer": "Toda la información se proporciona sin garantía. Los tiempos de espera y estados mostrados se proporcionan automáticamente y pueden diferir de la situación real en el lugar."
+    "disclaimer": "Toda la información se proporciona sin garantía. Los tiempos de espera y estados mostrados se proporcionan automáticamente y pueden diferir de la situación real en el lugar.",
+    "dataSources": "Fuentes de datos",
+    "weatherSource": "Tiempo"
   },
   "explore": {
     "title": "Tiempos de espera de Parques Temáticos en {location}",
