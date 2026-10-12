@@ -24,11 +24,6 @@ parkLinks:
   - rulantica
 rideLinks:
   - rulantica/*
-coverImage:
-  src: /media/rulantica/wasserwelt-mit-piratenschiff.jpg
-  alt: 'Een blik van bovenaf in de hal van Rulantica: een stroomkanaal met gasten in banden, daarnaast rijen ligbedden en daarachter een houten piratenschip en een touwbrug over een bad.'
-  caption: "Het stroomkanaal Snorri's Saga voert langs de scheepswrakken door de hele hal."
-  credit: 'Simone Graffi / Wikimedia Commons (Public Domain Mark)'
 seo:
   title: 'Rulantica 2026: glijbanen, prijzen en de rustigste dagen'
   description: >-
@@ -99,8 +94,6 @@ met Vikingløp. Sinds het begin van de zomer van 2025 heeft het buitengedeelte
 een eigen zwembad, de Svømmepøl. Volgens de cijfers van TEA en AECOM bezochten
 in 2023 zo’n 1,2 miljoen gasten het park, en bij de start noemde de Süddeutsche
 Zeitung 6.000 gasten per dag als maximum.
-
-![De lege hal van Rulantica met houten spanten en daklichten, lege ligbedden, het piratenschip en stil water in de baden. | Dezelfde hal voor openingstijd. Ze is 20 meter hoog, het houten dak meet 10.500 vierkante meter. | wide](/media/rulantica/halle-vor-der-oeffnung.jpg)
 
 ## De themagebieden
 
@@ -220,8 +213,6 @@ op. Brillen zijn hier niet toegestaan. Het theoretische maximum is 600 gasten pe
 uur, de minimale lengte is 110 centimeter, vanaf tien jaar.
 
 ## Water zonder glijbaan
-
-![Een groot golfbad voor een rotswand met druipstenen in oranje en violet verlicht, enkele badgasten in het water en open water op de voorgrond. | De Surf Fjørd ligt in de grot Lumåfals. Het water is 27 tot 32 graden, ook in januari. | right](/media/rulantica/surf-fjord-wellenbad.jpg)
 
 Wie na drie uur trappen op en af iets anders wil, vindt het hier.
 

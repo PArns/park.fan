@@ -24,11 +24,6 @@ parkLinks:
   - rulantica
 rideLinks:
   - rulantica/*
-coverImage:
-  src: /media/rulantica/wasserwelt-mit-piratenschiff.jpg
-  alt: "Vista dall'alto della sala di Rulantica: un fiume lento con ospiti sui gommoni, file di lettini accanto e, dietro, un veliero pirata di legno e un ponte di corda sopra una vasca."
-  caption: "Il fiume lento Snorri's Saga costeggia i relitti e attraversa tutta la sala."
-  credit: 'Simone Graffi / Wikimedia Commons (Public Domain Mark)'
 seo:
   title: 'Rulantica 2026: scivoli, prezzi e i giorni più tranquilli'
   description: >-
@@ -98,8 +93,6 @@ la torre degli scivoli Nordiskturn con Vikingløp. Da inizio estate 2025 l’are
 esterna ha una piscina tutta sua, la Svømmepøl. Secondo i numeri di TEA e AECOM
 nel 2023 la struttura ha accolto circa 1,2 milioni di ospiti, e al lancio la
 Süddeutsche Zeitung indicava 6.000 ospiti al giorno come tetto massimo.
-
-![La sala vuota di Rulantica con capriate di legno e lucernari, lettini liberi, il veliero pirata e l'acqua ferma nelle vasche. | La stessa sala prima dell'apertura. È alta 20 metri e il tetto di legno copre 10.500 metri quadrati. | wide](/media/rulantica/halle-vor-der-oeffnung.jpg)
 
 ## Le aree tematiche
 
@@ -218,8 +211,6 @@ del traguardo sollevi i piedi. Gli occhiali qui non sono ammessi. Il massimo
 teorico è di 600 ospiti all’ora, altezza minima 110 centimetri, da dieci anni.
 
 ## Acqua senza scivoli
-
-![Una grande piscina a onde davanti a una parete rocciosa con stalattiti illuminate in arancione e viola, alcuni bagnanti nell'acqua e acqua libera in primo piano. | Il Surf Fjørd si trova nella grotta Lumåfals. L'acqua è fra 27 e 32 gradi, anche a gennaio. | right](/media/rulantica/surf-fjord-wellenbad.jpg)
 
 Se dopo tre ore di scale vuoi qualcosa di diverso, lo trovi qui.
 
