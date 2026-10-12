@@ -937,6 +937,12 @@
       },
       "gustsLabel": "Ráfagas",
       "visibilityLabel": "Visibilidad",
+      "outlook": {
+        "upTo": "hasta",
+        "downTo": "baja a",
+        "around": "hacia las {time}",
+        "note": "Puede afectar al funcionamiento de las atracciones."
+      },
       "snowLabel": "Nieve",
       "nowLabel": "Ahora",
       "compressedAxisHint": "Fuera del horario de apertura, el eje de tiempo está comprimido.",

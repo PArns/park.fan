@@ -937,6 +937,12 @@
       },
       "gustsLabel": "Windstoten",
       "visibilityLabel": "Zicht",
+      "outlook": {
+        "upTo": "tot",
+        "downTo": "daalt tot",
+        "around": "rond {time}",
+        "note": "Kan de werking van attracties beïnvloeden."
+      },
       "snowLabel": "Sneeuw",
       "nowLabel": "Nu",
       "compressedAxisHint": "Buiten de openingstijden is de tijdas samengedrukt.",

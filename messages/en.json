@@ -937,6 +937,12 @@
       },
       "gustsLabel": "Gusts",
       "visibilityLabel": "Visibility",
+      "outlook": {
+        "upTo": "up to",
+        "downTo": "down to",
+        "around": "around {time}",
+        "note": "Can affect ride operations."
+      },
       "snowLabel": "Snow",
       "nowLabel": "Now",
       "compressedAxisHint": "Outside opening hours the time axis is compressed.",
