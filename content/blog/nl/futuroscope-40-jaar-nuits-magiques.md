@@ -2,7 +2,7 @@
 title: 'Futuroscope toont vanaf 5 december zijn eerste lichtparade'
 translationKey: futuroscope-40-years-nuits-magiques
 date: '2026-10-12'
-time: '06:30'
+time: '06:55'
 author: patrick
 mode: published
 featured: false
@@ -46,15 +46,14 @@ park wordt in 2027 veertig jaar. De laatste avond van “Nuits magiques” is za
 
 ## Vijf wagens over een kilometer
 
-Vijf wagens en 23 artiesten leggen samen een kilometer af door het park. Futuroscope heeft de parade met de Agence Tetro bedacht. Onderweg zijn er lichtinstallaties en optredens. Een tijdstip noemt het park niet, alleen “à la tombée de la nuit”, bij het vallen van de avond, en ook geen route voor de wagens.
+Vijf wagens en 23 artiesten leggen samen een kilometer af door het park. Futuroscope heeft de parade met de Agence Tetro bedacht. Onderweg zijn er lichtinstallaties en optredens. Het park zegt alleen dat ze “à la tombée de la nuit” begint, bij het vallen van de avond, en noemt geen route voor de wagens.
 
 ## Op welke dagen je de parade ziet
 
 Futuroscope noemt het een dagelijkse optocht. In de winter is dat elke dag waarop het park open is. Volgens de openingskalender van het park is Futuroscope in november en tot 13 december alleen in
 het weekend open. Van 19 december 2026 tot en met 3 januari 2027 kun je er elke dag terecht. Van 4 januari tot en met 5 februari is het park gesloten.
 
-Op welke dagen het park in februari en maart open is, staat nog niet in de openingskalender. Welke parken in december en januari wel open zijn, lees je in ons
-[winteroverzicht](/blog/winter-pretparken-2026).
+Voor februari en maart staan in de openingskalender nog geen dagen. In ons [winteroverzicht](/blog/winter-pretparken-2026) staan de parken die in december en januari wel open zijn.
 
 [Futuroscope](ref:futuroscope?full)
 
@@ -83,8 +82,7 @@ zover die op het programma staat. Niet inbegrepen zijn de attractie Les Yeux
 Grands Fermés, een paar betaalde activiteiten, speciale evenementen en het
 Aquascope.
 
-Of “Nuits magiques” als nachtshow telt of als speciaal evenement, staat niet in
-het persbericht. Ga je speciaal voor de parade, vraag dat dan voor je koopt na
+In het persbericht staat niet of “Nuits magiques” als nachtshow telt of als speciaal evenement. Ga je speciaal voor de parade, vraag dat dan voor je koopt na
 bij het park.
 
 ## Nieuw in 2027
@@ -102,9 +100,7 @@ Voor het jubileum krijgt de “Maison à l'envers”, een huis dat op zijn kop s
 cultvoorwerpen uit de jaren tachtig. In de openlucht toont het park samen met het
 INA een tentoonstelling over 40 jaar innovatie en technische omwentelingen.
 
-Wat andere
-parken voor 2027 hebben aangekondigd, staat in ons overzicht
-[nieuwe attracties in 2027](/blog/nieuwe-attracties-pretparken-2027).
+De nieuwtjes van andere parken voor 2027 staan in ons overzicht [nieuwe attracties in 2027](/blog/nieuwe-attracties-pretparken-2027).
 
 ## Het nieuwe hotel
 
@@ -113,8 +109,7 @@ sciencefictionthema aan, dat nu in aanbouw is. Er komen 240 kamers, waaronder pr
 eens 70. Voor congressen is er een ruimte voor 350 mensen, met een collegezaal
 voor 200 en vier kleinere zalen.
 
-Een openingsdatum voor het hotel noemt Futuroscope nog niet. Er komt een voetgangersbrug die het hotel rechtstreeks met het Aquascope verbindt. Futuroscope heeft inmiddels twee parken: het pretpark en het
-Aquascope.
+Een openingsdatum voor het hotel noemt Futuroscope nog niet. Er komt een voetgangersbrug die het hotel rechtstreeks verbindt met het Aquascope, het tweede park van Futuroscope.
 
 ## Vision 2025
 

@@ -2,7 +2,7 @@
 title: 'Il Futuroscope porta in scena la sua prima parata di luci'
 translationKey: futuroscope-40-years-nuits-magiques
 date: '2026-10-12'
-time: '06:30'
+time: '06:55'
 author: patrick
 mode: published
 featured: false
@@ -47,7 +47,7 @@ in programma fino a sabato 27 marzo 2027.
 
 ## Cinque carri lungo un chilometro
 
-Il percorso è lungo un chilometro e lo coprono cinque carri con 23 artisti. Il Futuroscope ha ideato la parata insieme all'Agence Tetro. Lungo il tragitto ci sono installazioni luminose e numeri dal vivo. Il parco non dà un orario, solo «à la tombée de la nuit», cioè quando fa buio, e nemmeno il percorso dei carri.
+Il percorso è lungo un chilometro e lo coprono cinque carri con 23 artisti. Il Futuroscope ha ideato la parata insieme all'Agence Tetro. Lungo il tragitto ci sono installazioni luminose e numeri dal vivo. Il parco dice solo che comincia «à la tombée de la nuit», cioè quando fa buio, e non ha pubblicato il percorso dei carri.
 
 ## In quali giorni si vede la parata
 
@@ -55,9 +55,7 @@ Il Futuroscope parla di una parata quotidiana. D'inverno vuol dire ogni giorno i
 parco, a novembre e fino al 13 dicembre il Futuroscope apre solo nel fine
 settimana. Dal 19 dicembre 2026 al 3 gennaio 2027 è aperto tutti i giorni, poi resta chiuso dal 4 gennaio al 5 febbraio.
 
-Il calendario di apertura non indica ancora in quali giorni di febbraio e marzo il parco è aperto. Quali altri parchi aprono a
-dicembre e gennaio lo trovi nella nostra
-[panoramica sull'inverno](/blog/parchi-divertimenti-inverno-2026).
+Nel calendario di apertura non ci sono ancora date per febbraio e marzo. Nella nostra [panoramica sull'inverno](/blog/parchi-divertimenti-inverno-2026) trovi gli altri parchi aperti a dicembre e gennaio.
 
 [Futuroscope](ref:futuroscope?full)
 
@@ -106,9 +104,7 @@ Per l'anniversario la «Maison à l'envers», una casa capovolta, riceve una ver
 degli anni Ottanta. All'aperto, insieme all'INA, il parco allestisce una mostra
 su 40 anni di innovazioni e svolte tecnologiche.
 
-Cosa hanno annunciato gli
-altri parchi per il 2027 lo trovi nella nostra panoramica sulle
-[novità dei parchi divertimento 2027](/blog/novita-parchi-divertimento-2027).
+La nostra panoramica sulle [novità dei parchi divertimento 2027](/blog/novita-parchi-divertimento-2027) raccoglie gli altri parchi.
 
 ## Il nuovo hotel
 
@@ -117,7 +113,7 @@ fantascienza, oggi in costruzione. Sono previste 240 camere, tra cui suite Premi
 congressi c'è uno spazio da 350 persone con un auditorium da 200 e quattro sale
 annesse.
 
-Una data di apertura per l'hotel il Futuroscope non l'ha ancora indicata. Una passerella pedonale collegherà l'hotel direttamente all'Aquascope: oggi il Futuroscope gestisce due parchi, quello di divertimenti e appunto l'Aquascope.
+Una data di apertura per l'hotel il Futuroscope non l'ha ancora indicata. Una passerella pedonale collegherà l'hotel direttamente all'Aquascope, il secondo parco del Futuroscope.
 
 ## Vision 2025
 

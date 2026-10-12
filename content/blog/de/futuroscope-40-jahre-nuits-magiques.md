@@ -2,7 +2,7 @@
 title: 'Futuroscope zeigt ab 5. Dezember seine erste Lichterparade'
 translationKey: futuroscope-40-years-nuits-magiques
 date: '2026-10-12'
-time: '06:30'
+time: '06:55'
 author: patrick
 mode: published
 featured: false
@@ -49,7 +49,7 @@ Dunkelheit und läuft bis Samstag, 27. März 2027.
 
 Fünf Wagen und 23 Künstlerinnen und Künstler ziehen über eine Strecke von einem
 Kilometer durch den Park. Entwickelt hat das Futuroscope die Parade zusammen mit
-der Agence Tetro. Unterwegs gibt es Lichtinstallationen und Auftritte. Eine Uhrzeit nennt der Park nicht, nur „à la tombée de la nuit“, also wenn es dunkel wird, und auch keinen Weg für die Wagen.
+der Agence Tetro. Unterwegs gibt es Lichtinstallationen und Auftritte. Der Park sagt nur, dass sie „à la tombée de la nuit“ beginnt, also wenn es dunkel wird, und nennt keinen Weg für die Wagen.
 
 ## An welchen Tagen die Parade zu sehen ist
 
@@ -57,8 +57,7 @@ Das Futuroscope nennt die Parade einen täglichen Umzug. Im Winter heißt das an
 und bis zum 13. Dezember nur an Wochenenden. Vom 19. Dezember 2026 bis zum 3.
 Januar 2027 hat es jeden Tag geöffnet, vom 4. Januar bis zum 5. Februar ist es geschlossen.
 
-Welche Tage im Februar und März geöffnet sind, steht im Öffnungskalender noch nicht. Welche anderen Parks im Dezember und Januar
-geöffnet haben, steht im [Winter-Überblick](/blog/winter-freizeitparks-2026).
+Für Februar und März sind im Öffnungskalender noch keine Tage eingetragen. Im [Winter-Überblick](/blog/winter-freizeitparks-2026) stehen die Parks, die im Dezember und Januar geöffnet haben.
 
 [Futuroscope](ref:futuroscope?full)
 
@@ -87,8 +86,7 @@ Laut Tribu-Seite gehört die Nachtshow am Besuchstag zum Ticket, je nach
 Programm des Tages. Nicht enthalten sind die Attraktion Les Yeux Grands Fermés,
 einige kostenpflichtige Aktivitäten, Sonderveranstaltungen und das Aquascope.
 
-Ob „Nuits magiques“ als Nachtshow zählt oder als Sonderveranstaltung, sagt das
-Futuroscope in der Pressemitteilung nicht. Wer wegen der Parade fährt, fragt das vor
+In der Pressemitteilung sagt das Futuroscope nicht, ob „Nuits magiques“ als Nachtshow zählt oder als Sonderveranstaltung. Wer wegen der Parade fährt, fragt das vor
 dem Kauf besser beim Park nach.
 
 ## Was 2027 neu ist
@@ -106,9 +104,7 @@ Zum Jubiläum bekommt die „Maison à l'envers“, ein Haus, das auf dem Kopf s
 Himmel zeigt der Park zusammen mit dem INA eine Ausstellung über 40 Jahre
 Innovationen und technische Umbrüche.
 
-Was andere Parks für 2027
-angekündigt haben, steht in unserer Übersicht
-[Freizeitpark-Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
+Die Neuheiten der anderen Parks für 2027 stehen in unserer Übersicht [Freizeitpark-Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
 
 ## Das neue Hotel
 
@@ -117,8 +113,7 @@ Science-Fiction-Thema an, das gerade gebaut wird. Geplant sind 240 Zimmer, darun
 auf der Terrasse noch einmal 70. Für Tagungen gibt es einen Bereich für 350
 Personen mit einem Hörsaal für 200 und vier Nebenräumen.
 
-Einen Eröffnungstermin für das Hotel nennt das Futuroscope noch nicht. Eine Fußgängerbrücke soll vom Hotel direkt zum Aquascope führen. Das Futuroscope
-betreibt inzwischen zwei Parks, den Freizeitpark und eben dieses Aquascope.
+Einen Eröffnungstermin für das Hotel nennt das Futuroscope noch nicht. Eine Fußgängerbrücke soll vom Hotel direkt zum Aquascope führen, dem zweiten Park des Futuroscope.
 
 ## Vision 2025
 

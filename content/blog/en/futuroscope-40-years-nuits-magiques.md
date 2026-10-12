@@ -2,7 +2,7 @@
 title: 'Futuroscope runs its first light parade from 5 December'
 translationKey: futuroscope-40-years-nuits-magiques
 date: '2026-10-12'
-time: '06:30'
+time: '06:55'
 author: patrick
 mode: published
 featured: false
@@ -47,7 +47,7 @@ park turns 40 in 2027. "Nuits magiques" starts at nightfall and runs until Satur
 ## Five floats over one kilometre
 
 The parade has five floats and 23 performers, and its route through the park is
-a kilometre long. Futuroscope developed it with the Agence Tetro. There are light installations and performances along the way. It gives no start time, only "à la tombée de la nuit", when it gets dark, and no route for the floats.
+a kilometre long. Futuroscope developed it with the Agence Tetro. There are light installations and performances along the way. Futuroscope only says it starts "à la tombée de la nuit", when it gets dark, and has published no route for the floats.
 
 ## Which days you can see it
 
@@ -55,7 +55,7 @@ Futuroscope calls it a daily parade. In winter, daily means every day the park
 is open. According to the park's opening calendar, Futuroscope opens only at weekends in November and up to 13 December. From 19
 December 2026 to 3 January 2027 it's open every day. It's then closed from 4 January to 5 February.
 
-Which days in February and March it's open isn't in the opening calendar yet. Our [winter overview](/blog/winter-theme-parks-2026) lists the other
+The opening calendar has no February or March dates yet. Our [winter overview](/blog/winter-theme-parks-2026) lists the other
 parks open in December and January.
 
 [Futuroscope](ref:futuroscope?full)
@@ -102,9 +102,7 @@ For the anniversary, the "Maison à l'envers", a house standing on its head, get
 eighties. Outdoors, the park and the INA are putting on an exhibition about 40
 years of innovation and technical change.
 
-What other parks have announced for 2027
-is in our round-up of
-[new theme park attractions for 2027](/blog/new-theme-park-attractions-2027).
+Our round-up of [new theme park attractions for 2027](/blog/new-theme-park-attractions-2027) covers the other parks.
 
 ## The new hotel
 
@@ -113,8 +111,7 @@ is to have 240 rooms, including premium and VIP suites. The restaurant is to sea
 400, the bar 120 and the terrace another 70. A conference area holds 350 people,
 with a 200-seat lecture hall and four breakout rooms.
 
-Futuroscope hasn't given an opening date for the hotel yet. A footbridge will lead from the hotel straight to the Aquascope. Futuroscope now
-runs two parks, the theme park and that Aquascope.
+Futuroscope hasn't given an opening date for the hotel yet. A footbridge will lead from the hotel straight to the Aquascope, Futuroscope's second park.
 
 ## Vision 2025
 
