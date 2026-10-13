@@ -154,6 +154,7 @@
     },
     "worldPanel": {
       "title": "Parchi in {continent}",
+      "openWorldwide": "{count, plural, =1 {1 parco aperto nel mondo} other {# parchi aperti nel mondo}}",
       "subtitle": "{count, plural, =1 {1 paese} other {# paesi}} · cambia continente",
       "openWord": "aperti",
       "countryOpen": "{count, plural, one {# aperto} other {# aperti}}",

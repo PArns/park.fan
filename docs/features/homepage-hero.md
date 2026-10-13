@@ -5,7 +5,8 @@ search on the left, a clickable world map on the right. Every number in it is li
 
 ```
 ┌─────────────────────────────────────────────┐┌──────────────────────────┐
-│ ● 72 PARKS GERADE OFFEN        (glass pill) ││ Parks in Europa   40/49  │
+│ [NEWS] 13. Okt. · Efteling verkauft …   →   ││ ● 72 PARKS WELTWEIT OFFEN│
+│                                             ││ Parks in Europa   40/49  │
 │                                             ││ ┌──────────────────────┐ │
 │ Wo lohnt sich heute das Anstehen?           ││ │  world map, one      │ │
 │ park.fan zählt live an 218 Freizeitparks …  ││ │  bubble per          │ │
@@ -122,6 +123,7 @@ static shell carries an hourly seed, the browser replaces it with live values on
 | Value                                 | Server seed                                | Client overlay                     |
 | ------------------------------------- | ------------------------------------------ | ---------------------------------- |
 | Open-parks badge + intro counts       | `HeroStats` → `getGlobalStats(3600)`       | `useGlobalStats` (5-min poll)      |
+| Panel's worldwide badge               | `HeroWorldPanel` → `getGlobalStats(3600)`  | `useGlobalStats` (the same query)  |
 | Panel open counts (continent/country) | `HeroWorldPanel` → `getGeoLiveStats(3600)` | `useGeoLiveStats` (5-min poll)     |
 | Panel geo structure (names, totals)   | `getGeoStructure()` (24 h)                 | —                                  |
 | Nearby bubbles + pre-query list       | —                                          | `useHeroBrowseParks` (client only) |
@@ -384,6 +386,12 @@ the real photo.
 
 The open-parks pill is one element whose **content** swaps, not a skeleton replaced by a badge:
 two separate elements measured a small but real shift even at identical heights.
+
+**The badge lives in one column at a time.** Where the world-map panel is shown
+(`@container/page` from 1280 px, the column's own threshold) it heads the panel as „N Parks
+weltweit offen", and the text column hides its copy, so the news chip has the row to itself. Below
+that it stays above the headline. Both draw `OpenParksBadge`, and the panel's skeleton draws it
+in its pending state, so the header's height is the real one before the map arrives.
 
 `HeroWorldPanelGate` renders its skeleton even below `xl`, where the panel will never appear —
 both its hooks are false during SSR, so that branch is the server output, and the parent column
