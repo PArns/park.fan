@@ -99,7 +99,7 @@ iSpeed replaced Sierra Tonante in 2009, the wooden coaster from 1992. You can ri
 
 [Desmo Race](ref:mirabilandia/desmo-race?full)
 
-Desmo Race opened in 2019 in the Ducati area. It's two tracks side by side, each 525 metres long and 22 metres high, and the ride takes one minute at up to 80 km/h. You sit astride, and according to the park the ride is meant to feel like a Panigale V4. According to the park it's interactive, and you can accelerate and brake to leave the other track behind. The manufacturer is Maurer Rides, and the type is called a Spike Coaster. Riders must be between 120 and 195 centimetres and weigh no more than 135 kilograms. Children under ten and under 140 centimetres ride with an adult.
+Desmo Race opened in 2019 in the Ducati area. It's two tracks side by side, each 525 metres long and 22 metres high, and the ride takes one minute at up to 80 km/h. You sit astride, and according to the park the ride is meant to feel like a Panigale V4. You can accelerate and brake to leave the other track behind. The manufacturer is Maurer Rides, and the type is called a Spike Coaster. Riders must be between 120 and 195 centimetres and weigh no more than 135 kilograms. Children under ten and under 140 centimetres ride with an adult.
 
 ### Master Thai, Gold Digger and the family coasters
 
@@ -111,7 +111,7 @@ Two more run in the children's area: [PAW Patrol To The Rescue](ref:mirabilandia
 
 ## Water rides, dark rides and towers
 
-You get wet in four places. [Rio Bravo](ref:mirabilandia/rio-bravo) is the Intamin rafting ride from the opening year, in inflatable boats through a canyon with rapids, from 110 centimetres. [Autosplash](ref:mirabilandia/autosplash) opened the same year as an Intamin white-water ride. You sit in a Cadillac with tail fins, and at the end you drop 15 metres. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) by Hopkins is a shoot-the-chute from 1999 with a 15-metre wave at the end. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) is an interactive boat ride where you shoot at totem poles. Autosplash, El Dorado Falls and Raratonga are open from 90 centimetres.
+[Rio Bravo](ref:mirabilandia/rio-bravo) is the Intamin rafting ride from the opening year, in inflatable boats through a canyon with rapids, from 110 centimetres. [Autosplash](ref:mirabilandia/autosplash) opened the same year as an Intamin white-water ride. You sit in a Cadillac with tail fins, and at the end you drop 15 metres. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) by Hopkins is a shoot-the-chute from 1999 with a 15-metre wave at the end. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) is an interactive boat ride where you shoot at totem poles. Autosplash, El Dorado Falls and Raratonga are open from 90 centimetres.
 
 [Blu River](ref:mirabilandia/blu-river) is a Preston & Barbieri slide for two-person tubes from 1992, also from 90 centimetres.
 
@@ -182,13 +182,13 @@ For none of the eight rides that our park page has a rope-drop analysis for does
 
 ## When to go
 
-In our data Friday is the quietest weekday and Tuesday the busiest. Saturday and Wednesday are above the middle, Sunday below, Monday and Thursday in between. Each rests on five to nine days, and until the end of October the park is open on weekends only. The finding is thin, and a single packed Friday can change the order.
+In our data Friday is the quietest weekday and Tuesday the busiest. Saturday and Wednesday are above the middle, Sunday below, Monday and Thursday in between. Each rests on five to nine days, and until the end of October the park is open on weekends only. A single packed Friday can change the order.
 
 ```stats-widget slug=mirabilandia show=weekdays
 
 ```
 
-For months we only have August, September and October. August is the busiest, September and October are clearly below it. We can't show spring and early summer until next year.
+For months we only have August, September and October. August is the busiest, September and October are clearly below it.
 
 ```stats-widget slug=mirabilandia show=months
 

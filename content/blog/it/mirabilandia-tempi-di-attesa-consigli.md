@@ -99,7 +99,7 @@ iSpeed nel 2009 ha sostituito la Sierra Tonante, la montagna russa in legno del 
 
 [Desmo Race](ref:mirabilandia/desmo-race?full)
 
-Desmo Race ha aperto nel 2019 nell’area Ducati. Sono due binari affiancati, ciascuno lungo 525 metri e alto 22, la corsa dura un minuto a un massimo di 80 km/h. Si sta a cavalcioni, e secondo il parco la corsa dovrebbe dare la sensazione di guidare una Panigale V4. Secondo il parco è interattiva, si può accelerare e frenare e così staccare chi corre sull’altro binario. Il costruttore è Maurer Rides, il tipo si chiama Spike Coaster. Si sale da 120 a 195 centimetri e fino a 135 chili, i bambini sotto i dieci anni e sotto i 140 centimetri salgono con un accompagnatore.
+Desmo Race ha aperto nel 2019 nell’area Ducati. Sono due binari affiancati, ciascuno lungo 525 metri e alto 22, la corsa dura un minuto a un massimo di 80 km/h. Si sta a cavalcioni, e secondo il parco la corsa dovrebbe dare la sensazione di guidare una Panigale V4. Si può accelerare e frenare e così staccare chi corre sull’altro binario. Il costruttore è Maurer Rides, il tipo si chiama Spike Coaster. Si sale da 120 a 195 centimetri e fino a 135 chili, i bambini sotto i dieci anni e sotto i 140 centimetri salgono con un accompagnatore.
 
 ### Master Thai, Gold Digger e le attrazioni per famiglie
 
@@ -111,7 +111,7 @@ Nell’area bambini ce ne sono altre due: [PAW Patrol To The Rescue](ref:mirabil
 
 ## Acqua, dark ride e torri
 
-Ci si bagna in quattro punti. [Rio Bravo](ref:mirabilandia/rio-bravo) è la rafting di Intamin dell’anno d’apertura: in gommone lungo un canyon con rapide, da 110 centimetri. [Autosplash](ref:mirabilandia/autosplash) ha aperto lo stesso anno come rapida di Intamin, si viaggia su una Cadillac con le pinne e alla fine si cade per 15 metri. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) di Hopkins è uno shoot-the-chute del 1999, con un’onda di 15 metri in chiusura. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) è un giro interattivo in barca in cui si spara ai totem. Autosplash, El Dorado Falls e Raratonga si salgono da 90 centimetri.
+[Rio Bravo](ref:mirabilandia/rio-bravo) è la rafting di Intamin dell’anno d’apertura: in gommone lungo un canyon con rapide, da 110 centimetri. [Autosplash](ref:mirabilandia/autosplash) ha aperto lo stesso anno come rapida di Intamin, si viaggia su una Cadillac con le pinne e alla fine si cade per 15 metri. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) di Hopkins è uno shoot-the-chute del 1999, con un’onda di 15 metri in chiusura. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) è un giro interattivo in barca in cui si spara ai totem. Autosplash, El Dorado Falls e Raratonga si salgono da 90 centimetri.
 
 [Blu River](ref:mirabilandia/blu-river) è uno scivolo per gommoni doppi di Preston & Barbieri del 1992, anch’esso da 90 centimetri.
 
@@ -182,13 +182,13 @@ Per nessuna delle otto attrazioni per cui la pagina del parco ha un’analisi de
 
 ## Quando andare
 
-Il venerdì è, nei nostri dati, il giorno della settimana più tranquillo, il martedì il più pieno. Sabato e mercoledì stanno sopra la metà, la domenica sotto, lunedì e giovedì in mezzo. Alla base ci sono da cinque a nove giorni per giorno della settimana, e fino a fine ottobre il parco apre solo nei fine settimana. Il dato è sottile, e un singolo venerdì pieno può cambiare l’ordine.
+Il venerdì è, nei nostri dati, il giorno della settimana più tranquillo, il martedì il più pieno. Sabato e mercoledì stanno sopra la metà, la domenica sotto, lunedì e giovedì in mezzo. Alla base ci sono da cinque a nove giorni per giorno della settimana, e fino a fine ottobre il parco apre solo nei fine settimana. Un singolo venerdì pieno può cambiare l’ordine.
 
 ```stats-widget slug=mirabilandia show=weekdays
 
 ```
 
-Dei mesi abbiamo solo agosto, settembre e ottobre. Agosto è il più pieno, settembre e ottobre stanno nettamente sotto. Primavera e inizio estate potremo mostrarle solo l’anno prossimo.
+Dei mesi abbiamo solo agosto, settembre e ottobre. Agosto è il più pieno, settembre e ottobre stanno nettamente sotto.
 
 ```stats-widget slug=mirabilandia show=months
 

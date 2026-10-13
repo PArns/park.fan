@@ -99,7 +99,7 @@ iSpeed hat 2009 die Sierra Tonante ersetzt, die Holzachterbahn von 1992. Gefahre
 
 [Desmo Race](ref:mirabilandia/desmo-race?full)
 
-Desmo Race eröffnete 2019 im Ducati-Bereich. Es sind zwei Schienen nebeneinander, jede 525 Meter lang und 22 Meter hoch, die Fahrt dauert eine Minute bei bis zu 80 km/h. Man sitzt rittlings, und die Fahrt soll sich nach Parkangabe anfühlen wie auf einer Panigale V4. Laut Park ist die Bahn interaktiv, man kann beschleunigen und bremsen und so die andere Schiene abhängen. Hersteller ist Maurer Rides, der Typ heißt Spike Coaster. Zugelassen sind 120 bis 195 Zentimeter und höchstens 135 Kilogramm, Kinder unter zehn Jahren und unter 140 Zentimetern fahren mit Begleitung.
+Desmo Race eröffnete 2019 im Ducati-Bereich. Es sind zwei Schienen nebeneinander, jede 525 Meter lang und 22 Meter hoch, die Fahrt dauert eine Minute bei bis zu 80 km/h. Man sitzt rittlings, und die Fahrt soll sich nach Parkangabe anfühlen wie auf einer Panigale V4. Man kann beschleunigen und bremsen und so die andere Schiene abhängen. Hersteller ist Maurer Rides, der Typ heißt Spike Coaster. Zugelassen sind 120 bis 195 Zentimeter und höchstens 135 Kilogramm, Kinder unter zehn Jahren und unter 140 Zentimetern fahren mit Begleitung.
 
 ### Master Thai, Gold Digger und die Familienbahnen
 
@@ -111,7 +111,7 @@ Im Kinderbereich fahren zwei weitere: [PAW Patrol To The Rescue](ref:mirabilandi
 
 ## Wasser, Dunkelfahrten und Türme
 
-Nass wird man an vier Stellen. [Rio Bravo](ref:mirabilandia/rio-bravo) ist die Rafting-Fahrt von Intamin aus dem Eröffnungsjahr, in Schlauchbooten durch einen Canyon mit Stromschnellen, ab 110 Zentimetern. [Autosplash](ref:mirabilandia/autosplash) hat im selben Jahr als Wildwasserbahn von Intamin eröffnet, man fährt in einem Cadillac mit Heckflossen, und am Ende fällt man 15 Meter tief. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) von Hopkins ist ein Shoot-the-Chute von 1999, mit einer 15 Meter hohen Welle am Schluss. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) ist eine interaktive Bootsfahrt, bei der man auf Totempfähle schießt. Autosplash, El Dorado Falls und Raratonga fahren ab 90 Zentimetern.
+[Rio Bravo](ref:mirabilandia/rio-bravo) ist die Rafting-Fahrt von Intamin aus dem Eröffnungsjahr, in Schlauchbooten durch einen Canyon mit Stromschnellen, ab 110 Zentimetern. [Autosplash](ref:mirabilandia/autosplash) hat im selben Jahr als Wildwasserbahn von Intamin eröffnet, man fährt in einem Cadillac mit Heckflossen, und am Ende fällt man 15 Meter tief. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) von Hopkins ist ein Shoot-the-Chute von 1999, mit einer 15 Meter hohen Welle am Schluss. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) ist eine interaktive Bootsfahrt, bei der man auf Totempfähle schießt. Autosplash, El Dorado Falls und Raratonga fahren ab 90 Zentimetern.
 
 [Blu River](ref:mirabilandia/blu-river) ist eine Rutsche für Zweier-Schlauchboote von Preston & Barbieri aus dem Jahr 1992, ebenfalls ab 90 Zentimetern.
 
@@ -182,13 +182,13 @@ Bei keiner der acht Bahnen, für die unsere Parkseite eine Rope-Drop-Auswertung 
 
 ## Wann du hinfahren solltest
 
-Der Freitag ist in unseren Daten der ruhigste Wochentag, der Dienstag der vollste. Samstag und Mittwoch liegen über der Mitte, der Sonntag darunter, Montag und Donnerstag dazwischen. Basis sind jeweils fünf bis neun Tage, bis Ende Oktober hat der Park nur an Wochenenden geöffnet. Die Aussage ist dünn, und ein einzelner voller Freitag kann die Reihenfolge ändern.
+Der Freitag ist in unseren Daten der ruhigste Wochentag, der Dienstag der vollste. Samstag und Mittwoch liegen über der Mitte, der Sonntag darunter, Montag und Donnerstag dazwischen. Basis sind jeweils fünf bis neun Tage, bis Ende Oktober hat der Park nur an Wochenenden geöffnet. Ein einzelner voller Freitag kann die Reihenfolge ändern.
 
 ```stats-widget slug=mirabilandia show=weekdays
 
 ```
 
-Zu den Monaten haben wir nur August, September und Oktober. Der August ist der vollste, September und Oktober liegen deutlich darunter. Frühling und Frühsommer können wir erst im nächsten Jahr zeigen.
+Zu den Monaten haben wir nur August, September und Oktober. Der August ist der vollste, September und Oktober liegen deutlich darunter.
 
 ```stats-widget slug=mirabilandia show=months
 

@@ -99,7 +99,7 @@ iSpeed verving in 2009 de Sierra Tonante, de houten achtbaan uit 1992. Je rijdt 
 
 [Desmo Race](ref:mirabilandia/desmo-race?full)
 
-Desmo Race opende in 2019 in het Ducati-gebied. Er liggen twee rails naast elkaar, elk 525 meter lang en 22 meter hoog, de rit duurt een minuut met snelheden tot 80 km/u. Je zit schrijlings, en volgens het park moet de rit aanvoelen als op een Panigale V4. Volgens het park is de baan interactief, je kunt optrekken en remmen en zo de andere rail achter je laten. De fabrikant is Maurer Rides, het type heet Spike Coaster. Toegelaten zijn mensen van 120 tot 195 centimeter en maximaal 135 kilogram, kinderen onder tien jaar en onder 140 centimeter rijden mee met een begeleider.
+Desmo Race opende in 2019 in het Ducati-gebied. Er liggen twee rails naast elkaar, elk 525 meter lang en 22 meter hoog, de rit duurt een minuut met snelheden tot 80 km/u. Je zit schrijlings, en volgens het park moet de rit aanvoelen als op een Panigale V4. Je kunt optrekken en remmen en zo de andere rail achter je laten. De fabrikant is Maurer Rides, het type heet Spike Coaster. Toegelaten zijn mensen van 120 tot 195 centimeter en maximaal 135 kilogram, kinderen onder tien jaar en onder 140 centimeter rijden mee met een begeleider.
 
 ### Master Thai, Gold Digger en de gezinsbanen
 
@@ -111,7 +111,7 @@ In het kindergebied rijden nog twee banen: [PAW Patrol To The Rescue](ref:mirabi
 
 ## Water, darkrides en torens
 
-Nat word je op vier plekken. [Rio Bravo](ref:mirabilandia/rio-bravo) is de raftingrit van Intamin uit het openingsjaar, in rubberboten door een canyon met stroomversnellingen, vanaf 110 centimeter. [Autosplash](ref:mirabilandia/autosplash) opende datzelfde jaar als wildwaterbaan van Intamin, je zit in een Cadillac met staartvinnen en aan het eind val je 15 meter diep. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) van Hopkins is een shoot-the-chute uit 1999, met aan het slot een golf van 15 meter hoog. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) is een interactieve boottocht waarbij je op totempalen schiet. Autosplash, El Dorado Falls en Raratonga rijden vanaf 90 centimeter.
+[Rio Bravo](ref:mirabilandia/rio-bravo) is de raftingrit van Intamin uit het openingsjaar, in rubberboten door een canyon met stroomversnellingen, vanaf 110 centimeter. [Autosplash](ref:mirabilandia/autosplash) opende datzelfde jaar als wildwaterbaan van Intamin, je zit in een Cadillac met staartvinnen en aan het eind val je 15 meter diep. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) van Hopkins is een shoot-the-chute uit 1999, met aan het slot een golf van 15 meter hoog. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) is een interactieve boottocht waarbij je op totempalen schiet. Autosplash, El Dorado Falls en Raratonga rijden vanaf 90 centimeter.
 
 [Blu River](ref:mirabilandia/blu-river) is een glijbaan voor tweepersoonsbanden van Preston & Barbieri uit 1992, eveneens vanaf 90 centimeter.
 
@@ -182,13 +182,13 @@ Bij geen van de acht banen waarvoor onze parkpagina een rope-drop-analyse heeft,
 
 ## Wanneer je het best gaat
 
-Vrijdag is in onze gegevens de rustigste weekdag, dinsdag de drukste. Zaterdag en woensdag liggen boven het midden, zondag eronder, maandag en donderdag ertussenin. De basis is steeds vijf tot negen dagen, tot eind oktober is het park alleen in het weekend open. De uitspraak is dun, en één volle vrijdag kan de volgorde veranderen.
+Vrijdag is in onze gegevens de rustigste weekdag, dinsdag de drukste. Zaterdag en woensdag liggen boven het midden, zondag eronder, maandag en donderdag ertussenin. De basis is steeds vijf tot negen dagen, tot eind oktober is het park alleen in het weekend open. Eén volle vrijdag kan de volgorde veranderen.
 
 ```stats-widget slug=mirabilandia show=weekdays
 
 ```
 
-Over de maanden hebben we alleen augustus, september en oktober. Augustus is het drukst, september en oktober liggen duidelijk lager. Lente en vroege zomer kunnen we pas volgend jaar laten zien.
+Over de maanden hebben we alleen augustus, september en oktober. Augustus is het drukst, september en oktober liggen duidelijk lager.
 
 ```stats-widget slug=mirabilandia show=months
 

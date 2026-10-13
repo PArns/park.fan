@@ -99,7 +99,7 @@ iSpeed a remplacé en 2009 la Sierra Tonante, les montagnes russes en bois de 19
 
 [Desmo Race](ref:mirabilandia/desmo-race?full)
 
-Desmo Race a ouvert en 2019 dans la zone Ducati. Ce sont deux rails côte à côte, longs chacun de 525 mètres et hauts de 22 mètres, le tour dure une minute à 80 km/h au plus. On est assis à califourchon, et d’après le parc la sensation doit rappeler une Panigale V4. D’après le parc, l’attraction est interactive, et on peut accélérer et freiner pour distancer l’autre rail. Le constructeur est Maurer Rides, le type s’appelle Spike Coaster. L’accès est autorisé de 120 à 195 centimètres et jusqu’à 135 kilogrammes, et les enfants de moins de dix ans et de moins de 140 centimètres montent avec un accompagnateur.
+Desmo Race a ouvert en 2019 dans la zone Ducati. Ce sont deux rails côte à côte, longs chacun de 525 mètres et hauts de 22 mètres, le tour dure une minute à 80 km/h au plus. On est assis à califourchon, et d’après le parc la sensation doit rappeler une Panigale V4. On peut accélérer et freiner pour distancer l’autre rail. Le constructeur est Maurer Rides, le type s’appelle Spike Coaster. L’accès est autorisé de 120 à 195 centimètres et jusqu’à 135 kilogrammes, et les enfants de moins de dix ans et de moins de 140 centimètres montent avec un accompagnateur.
 
 ### Master Thai, Gold Digger et les montagnes russes familiales
 
@@ -111,7 +111,7 @@ Deux autres tournent dans la zone enfants : [PAW Patrol To The Rescue](ref:mira
 
 ## Eau, dark rides et tours
 
-On se mouille à quatre endroits. [Rio Bravo](ref:mirabilandia/rio-bravo) est la descente de rapides d’Intamin de l’année d’ouverture, en bouées à travers un canyon, à partir de 110 centimètres. [Autosplash](ref:mirabilandia/autosplash) a ouvert la même année comme rivière sauvage d’Intamin, on y roule dans une Cadillac à ailerons et on tombe de 15 mètres à la fin. [El Dorado Falls](ref:mirabilandia/el-dorado-falls), de Hopkins, est un shoot-the-chute de 1999, avec une vague de 15 mètres de haut à l’arrivée. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) est un tour de bateau interactif où l’on tire sur des totems. Autosplash, El Dorado Falls et Raratonga sont accessibles à partir de 90 centimètres.
+[Rio Bravo](ref:mirabilandia/rio-bravo) est la descente de rapides d’Intamin de l’année d’ouverture, en bouées à travers un canyon, à partir de 110 centimètres. [Autosplash](ref:mirabilandia/autosplash) a ouvert la même année comme rivière sauvage d’Intamin, on y roule dans une Cadillac à ailerons et on tombe de 15 mètres à la fin. [El Dorado Falls](ref:mirabilandia/el-dorado-falls), de Hopkins, est un shoot-the-chute de 1999, avec une vague de 15 mètres de haut à l’arrivée. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) est un tour de bateau interactif où l’on tire sur des totems. Autosplash, El Dorado Falls et Raratonga sont accessibles à partir de 90 centimètres.
 
 [Blu River](ref:mirabilandia/blu-river) est un toboggan à bouées doubles de Preston & Barbieri, de 1992, lui aussi à partir de 90 centimètres.
 
@@ -182,13 +182,13 @@ Sur aucune des huit attractions pour lesquelles la page du parc propose une anal
 
 ## Quand y aller
 
-Le vendredi est dans nos données le jour le plus calme, le mardi le plus chargé. Le samedi et le mercredi sont au-dessus de la moyenne, le dimanche en dessous, le lundi et le jeudi entre les deux. La base est à chaque fois de cinq à neuf jours, et jusqu’à fin octobre le parc n’ouvre que le week-end. Le constat est mince, et un seul vendredi bondé peut changer l’ordre.
+Le vendredi est dans nos données le jour le plus calme, le mardi le plus chargé. Le samedi et le mercredi sont au-dessus de la moyenne, le dimanche en dessous, le lundi et le jeudi entre les deux. La base est à chaque fois de cinq à neuf jours, et jusqu’à fin octobre le parc n’ouvre que le week-end. Un seul vendredi bondé peut changer l’ordre.
 
 ```stats-widget slug=mirabilandia show=weekdays
 
 ```
 
-Pour les mois, nous n’avons que août, septembre et octobre. Août est le plus chargé, septembre et octobre sont nettement en dessous. Le printemps et le début de l’été, nous ne pourrons les montrer que l’an prochain.
+Pour les mois, nous n’avons que août, septembre et octobre. Août est le plus chargé, septembre et octobre sont nettement en dessous.
 
 ```stats-widget slug=mirabilandia show=months
 

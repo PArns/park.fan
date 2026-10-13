@@ -99,7 +99,7 @@ iSpeed sustituyó en 2009 a la Sierra Tonante, la montaña rusa de madera de 199
 
 [Desmo Race](ref:mirabilandia/desmo-race?full)
 
-Desmo Race abrió en 2019 en la zona Ducati. Son dos raíles paralelos de 525 metros de longitud y 22 de altura cada uno; el viaje dura un minuto y llega a 80 km/h. Se va a horcajadas y, según el parque, la sensación debe parecerse a la de una Panigale V4. Según el parque es interactiva, y puedes acelerar y frenar para dejar atrás al otro raíl. La fabrica Maurer Rides y el tipo se llama Spike Coaster. Pueden subir personas de 120 a 195 centímetros y de hasta 135 kilos; los niños de menos de diez años y de menos de 140 centímetros suben acompañados.
+Desmo Race abrió en 2019 en la zona Ducati. Son dos raíles paralelos de 525 metros de longitud y 22 de altura cada uno; el viaje dura un minuto y llega a 80 km/h. Se va a horcajadas y, según el parque, la sensación debe parecerse a la de una Panigale V4. Puedes acelerar y frenar para dejar atrás al otro raíl. La fabrica Maurer Rides y el tipo se llama Spike Coaster. Pueden subir personas de 120 a 195 centímetros y de hasta 135 kilos; los niños de menos de diez años y de menos de 140 centímetros suben acompañados.
 
 ### Master Thai, Gold Digger y las montañas rusas familiares
 
@@ -111,7 +111,7 @@ En la zona infantil hay otras dos: [PAW Patrol To The Rescue](ref:mirabilandia/p
 
 ## Agua, dark rides y torres
 
-Te mojas en cuatro sitios. [Rio Bravo](ref:mirabilandia/rio-bravo) es la atracción de rafting de Intamin del año de apertura: en botes neumáticos por un cañón con rápidos, a partir de 110 centímetros. [Autosplash](ref:mirabilandia/autosplash) abrió el mismo año como atracción de aguas bravas de Intamin; vas en un Cadillac con aletas traseras y al final caes 15 metros. [El Dorado Falls](ref:mirabilandia/el-dorado-falls), de Hopkins, es un shoot-the-chute de 1999 con una ola de 15 metros de altura al final. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) es un paseo interactivo en barca en el que se dispara a tótems. Autosplash, El Dorado Falls y Raratonga se suben a partir de 90 centímetros.
+[Rio Bravo](ref:mirabilandia/rio-bravo) es la atracción de rafting de Intamin del año de apertura: en botes neumáticos por un cañón con rápidos, a partir de 110 centímetros. [Autosplash](ref:mirabilandia/autosplash) abrió el mismo año como atracción de aguas bravas de Intamin; vas en un Cadillac con aletas traseras y al final caes 15 metros. [El Dorado Falls](ref:mirabilandia/el-dorado-falls), de Hopkins, es un shoot-the-chute de 1999 con una ola de 15 metros de altura al final. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) es un paseo interactivo en barca en el que se dispara a tótems. Autosplash, El Dorado Falls y Raratonga se suben a partir de 90 centímetros.
 
 [Blu River](ref:mirabilandia/blu-river) es un tobogán para botes neumáticos de dos plazas, de Preston & Barbieri, de 1992, también a partir de 90 centímetros.
 
@@ -182,13 +182,13 @@ En ninguna de las ocho atracciones para las que la página del parque tiene un a
 
 ## Cuándo ir
 
-El viernes es en nuestros datos el día más tranquilo de la semana y el martes el más lleno. El sábado y el miércoles quedan por encima de la mitad, el domingo por debajo, y el lunes y el jueves entre medias. La base son entre cinco y nueve días por cada uno, y hasta finales de octubre el parque solo abre los fines de semana. El dato es débil, y un solo viernes lleno puede cambiar el orden.
+El viernes es en nuestros datos el día más tranquilo de la semana y el martes el más lleno. El sábado y el miércoles quedan por encima de la mitad, el domingo por debajo, y el lunes y el jueves entre medias. La base son entre cinco y nueve días por cada uno, y hasta finales de octubre el parque solo abre los fines de semana. Un solo viernes lleno puede cambiar el orden.
 
 ```stats-widget slug=mirabilandia show=weekdays
 
 ```
 
-De los meses solo tenemos agosto, septiembre y octubre. Agosto es el más lleno; septiembre y octubre quedan claramente por debajo. La primavera y el principio del verano no podremos mostrarlos hasta el año que viene.
+De los meses solo tenemos agosto, septiembre y octubre. Agosto es el más lleno; septiembre y octubre quedan claramente por debajo.
 
 ```stats-widget slug=mirabilandia show=months
 
