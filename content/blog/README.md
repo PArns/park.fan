@@ -88,6 +88,11 @@ pass, a prose-rule fix, a typo or a link. News never carries it. The rule:
 without one. Articles may leave it out. The rule:
 [order within a day](../../docs/rules/news-is-set-apart-from-the-articles.md#order-within-a-day).
 
+A post whose `date` (and `time`, when set) is after now in Europe/Berlin is held back: it is in no
+listing, feed, sitemap or hreflang set and its URL answers 404, from the build that finds it still
+in the future. It appears with the first production build after that moment; nothing revalidates
+for it. `pnpm test:scheduled-posts` pins the gate.
+
 ### 2.1 Authors
 
 Define each author once as a Markdown file in [`authors/`](./authors) and
