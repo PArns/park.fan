@@ -147,8 +147,6 @@ The Pokémon Trainer Centre at the LEGO Festival, which ran from 20 July to 31 A
 
 The current wait times are on the [park page](ref:legoland-windsor), refreshed every five minutes. The Legoland app shows the queues as well.
 
-The weekday makes the biggest difference in our measurements.
-
 ```stats-widget slug=legoland-windsor show=weekdays
 
 ```
@@ -171,13 +169,13 @@ At Pirate Falls and Hydra's Challenge the queue grows from the morning and is lo
 
 ## Rope drop pays off at four rides
 
-Rope drop means you're at the entrance at opening and ride the first rides before the queues fill. For Legoland Windsor we give this recommendation for four rides: Pirate Falls, Hydra's Challenge, The Dragon and Laser Raiders. At all four the queue is short at opening in our measurements and rises clearly over the morning.
+At Pirate Falls, Hydra's Challenge, The Dragon and Laser Raiders the queue is short at opening in our measurements and rises clearly over the morning.
 
 ```glossary-widget slug=rope-drop
 
 ```
 
-That doesn't apply to Flight of the Sky Lion and Coastguard HQ. Both already have a queue at opening, and it hardly moves afterwards. If you're there early, you can ride them just as well at midday.
+That doesn't apply to Flight of the Sky Lion and Coastguard HQ. Both already have a queue at opening, and it hardly moves afterwards.
 
 A sequence for children from seven: The Dragon and Hydra's Challenge first, and both should be done before half past eleven. Then Laser Raiders, by around half past eleven at the latest. At Pirate Falls the queue stays short the longest, and the ride can wait until about 1 pm. In October that's also the warmer time for wet clothes. Flight of the Sky Lion, Coastguard HQ and the other rides follow.
 
@@ -193,7 +191,7 @@ On a Tuesday in September I wouldn't buy Fastrack: Bronze doesn't cover the thre
 
 A day ticket costs **from £32** online, and booking ahead saves up to £36, according to the park. Prices depend on the day. Children under 90 centimetres get in free. Tickets are non-refundable, but the date can be changed. The park says there are currently no two-for-one offers. Tickets for Brick or Treat start at £37 per person, for LEGOLAND at Christmas at £34.
 
-The annual passes cost between £64 and £299. The **LEGOLAND Annual Pass** costs from £64 and has 17 blackout days. The **Merlin Essential Pass** costs £139 with 25 blackout days. The **Merlin Gold Pass** costs £239 and includes parking, with only the fireworks at Alton Towers excluded. The **Merlin Platinum Pass** costs £299 and has no blackout days, four friends' tickets a year and a single Fastrack per visit. If you want to come on a blackout day, you pay £15 per person for an upgrade ticket. All pass holders have to book their visit in advance. The passes include Brick or Treat and LEGOLAND at Christmas.
+The **LEGOLAND Annual Pass** costs from £64 and has 17 blackout days. The **Merlin Essential Pass** costs £139 with 25 blackout days. The **Merlin Gold Pass** costs £239 and includes parking, with only the fireworks at Alton Towers excluded. The **Merlin Platinum Pass** costs £299 and has no blackout days, four friends' tickets a year and a single Fastrack per visit. If you want to come on a blackout day, you pay £15 per person for an upgrade ticket. All pass holders have to book their visit in advance. The passes include Brick or Treat and LEGOLAND at Christmas.
 
 ## Opening hours, season and events
 
@@ -204,8 +202,6 @@ Some rides run in autumn only on weekdays or only from the afternoon. From 25 Se
 **Brick or Treat**, the park's Halloween event, runs on 10 and 11 October and from 17 October to 1 November. The programme includes the show "Lord Vampyre's House Party", the show "Monster Jam", a disco in The Dragon, the Haunted House Monster Party, photo spots and meetings with Lego monsters. Costumes are welcome, face masks and toy weapons aren't. The Halloween dates of other parks are in the [Halloween overview](/blog/halloween-theme-parks-2026).
 
 Pirate Falls closes on **2 November** and reopens in March 2027. On **9 November** Aero Nomad, Balloon School, Fire Academy, Jolly Rocker and Minifigure Speedway close until February 2027, and Coastguard HQ, Fairy Tale Brook, Fire & Ice Freefall and Hydra's Challenge until March. **LEGOLAND at Christmas** runs on selected days from 21 November to 2 January 2027, with more than 20 rides, a meeting with the LEGO Santa and several shows. Christmas at other parks is in our [winter overview](/blog/winter-theme-parks-2026).
-
-The quietest upcoming days at Legoland Windsor:
 
 ```best-days-widget slug=legoland-windsor
 

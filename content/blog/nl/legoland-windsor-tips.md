@@ -147,8 +147,6 @@ Het Pokémon Trainer Centre van het LEGO Festival, dat van 20 juli tot 31 august
 
 De actuele wachttijden staan op de [parkpagina](ref:legoland-windsor), om de vijf minuten vernieuwd. De Legoland-app toont de wachtrijen ook.
 
-De weekdag maakt in onze metingen het grootste verschil.
-
 ```stats-widget slug=legoland-windsor show=weekdays
 
 ```
@@ -171,13 +169,13 @@ Bij Pirate Falls en Hydra's Challenge wordt de wachtrij vanaf de ochtend langer 
 
 ## Rope drop loont bij vier attracties
 
-Rope drop betekent dat je bij de opening bij de ingang staat en de eerste attracties rijdt voordat de wachtrijen vollopen. Voor Legoland Windsor geven we die tip bij vier attracties: Pirate Falls, Hydra's Challenge, The Dragon en Laser Raiders. Bij alle vier is de wachtrij bij de opening volgens onze metingen kort en loopt hij in de loop van de voormiddag duidelijk op.
+Bij Pirate Falls, Hydra's Challenge, The Dragon en Laser Raiders is de wachtrij bij de opening volgens onze metingen kort en loopt hij in de loop van de voormiddag duidelijk op.
 
 ```glossary-widget slug=rope-drop
 
 ```
 
-Voor Flight of the Sky Lion en Coastguard HQ geldt dat niet. Beide hebben al bij de opening een wachtrij die daarna nauwelijks beweegt. Wie vroeg is, rijdt ze net zo goed rond de middag.
+Voor Flight of the Sky Lion en Coastguard HQ geldt dat niet. Beide hebben al bij de opening een wachtrij die daarna nauwelijks beweegt.
 
 Een route voor kinderen vanaf zeven: eerst The Dragon en Hydra's Challenge, beide liefst voor half twaalf. Dan de Laser Raiders, uiterlijk tegen half twaalf. Bij Pirate Falls blijft de wachtrij het langst kort, die attractie kun je tot ongeveer 13 uur uitstellen. In oktober is dat voor natte kleren ook het warmste moment. Daarna volgen Flight of the Sky Lion, Coastguard HQ en de overige attracties.
 
@@ -193,7 +191,7 @@ Op een dinsdag in september zou ik Fastrack niet kopen: Bronze dekt de drie lang
 
 Een dagkaart kost online **vanaf £ 32**, en vooraf boeken scheelt volgens het park tot £ 36. De prijzen hangen van de dag af. Kinderen onder de 90 centimeter hebben gratis toegang. Tickets worden niet terugbetaald, maar de datum kun je wel wijzigen. Twee-voor-een-acties zijn er volgens het park op dit moment niet. Tickets voor Brick or Treat beginnen bij £ 37 per persoon, voor LEGOLAND at Christmas bij £ 34.
 
-De Annual Passes kosten tussen £ 64 en £ 299. De **LEGOLAND Annual Pass** kost vanaf £ 64 en heeft 17 uitsluitingsdagen. De **Merlin Essential Pass** kost £ 139 met 25 uitsluitingsdagen. De **Merlin Gold Pass** kost £ 239 en omvat parkeren, met als enige uitzondering de vuurwerkshows in Alton Towers. De **Merlin Platinum Pass** kost £ 299 en heeft geen uitsluitingsdagen, vier vriendentickets per jaar en één Fastrack per bezoek. Wie op een uitsluitingsdag wil komen, betaalt £ 15 per persoon voor een upgradeticket. Alle passhouders moeten hun bezoek vooraf boeken. De passen omvatten Brick or Treat en LEGOLAND at Christmas.
+De **LEGOLAND Annual Pass** kost vanaf £ 64 en heeft 17 uitsluitingsdagen. De **Merlin Essential Pass** kost £ 139 met 25 uitsluitingsdagen. De **Merlin Gold Pass** kost £ 239 en omvat parkeren, met als enige uitzondering de vuurwerkshows in Alton Towers. De **Merlin Platinum Pass** kost £ 299 en heeft geen uitsluitingsdagen, vier vriendentickets per jaar en één Fastrack per bezoek. Wie op een uitsluitingsdag wil komen, betaalt £ 15 per persoon voor een upgradeticket. Alle passhouders moeten hun bezoek vooraf boeken. De passen omvatten Brick or Treat en LEGOLAND at Christmas.
 
 ## Openingstijden, seizoen en evenementen
 
@@ -204,8 +202,6 @@ Sommige attracties draaien in de herfst alleen doordeweeks of pas in de middag. 
 **Brick or Treat**, het Halloween-evenement van het park, loopt op 10 en 11 oktober en van 17 oktober tot 1 november. Tot het programma horen de show “Lord Vampyre's House Party”, de show “Monster Jam”, een disco in The Dragon, het Haunted House Monster Party, fotopunten en ontmoetingen met Lego-monsters. Kostuums zijn welkom, gezichtsmaskers en nepwapens niet. De Halloween-data van andere parken staan in het [Halloween-overzicht](/blog/halloween-pretparken-2026).
 
 Pirate Falls sluit op **2 november** en gaat in maart 2027 weer open. Op **9 november** sluiten Aero Nomad, Balloon School, Fire Academy, Jolly Rocker en Minifigure Speedway tot februari 2027, en Coastguard HQ, Fairy Tale Brook, Fire & Ice Freefall en Hydra's Challenge tot maart. **LEGOLAND at Christmas** loopt op geselecteerde dagen van 21 november tot 2 januari 2027, met meer dan 20 attracties, een ontmoeting met de LEGO-kerstman en meerdere shows. Kerst in andere parken staat in het [winteroverzicht](/blog/winter-pretparken-2026).
-
-De rustigste komende dagen in Legoland Windsor:
 
 ```best-days-widget slug=legoland-windsor
 

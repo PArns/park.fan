@@ -147,8 +147,6 @@ Il Pokémon Trainer Centre del LEGO Festival, in corso dal 20 luglio al 31 agost
 
 I tempi di attesa attuali sono sulla [pagina del parco](ref:legoland-windsor), aggiornati ogni cinque minuti. Anche l'app del Legoland mostra le code.
 
-Il giorno della settimana fa la differenza maggiore nelle nostre misurazioni.
-
 ```stats-widget slug=legoland-windsor show=weekdays
 
 ```
@@ -171,13 +169,13 @@ A Pirate Falls e Hydra's Challenge la coda si allunga dalla mattina ed è più l
 
 ## Il rope drop conviene su quattro attrazioni
 
-Rope drop significa essere all'ingresso all'apertura e fare le prime attrazioni prima che le code si riempiano. Per il Legoland Windsor diamo questo consiglio su quattro attrazioni: Pirate Falls, Hydra's Challenge, The Dragon e Laser Raiders. Su tutte e quattro la coda all'apertura è corta, nelle nostre misurazioni, e durante la mattinata sale in modo netto.
+Su Pirate Falls, Hydra's Challenge, The Dragon e Laser Raiders la coda all'apertura è corta, nelle nostre misurazioni, e durante la mattinata sale in modo netto.
 
 ```glossary-widget slug=rope-drop
 
 ```
 
-Per Flight of the Sky Lion e Coastguard HQ non vale. Entrambe hanno già all'apertura una coda che poi si muove appena. Chi arriva presto le fa tanto bene quanto a mezzogiorno.
+Per Flight of the Sky Lion e Coastguard HQ non vale. Entrambe hanno già all'apertura una coda che poi si muove appena.
 
 Un percorso per bambini dai sette anni: prima The Dragon e Hydra's Challenge, da fare entrambe prima delle undici e mezza. Poi i Laser Raiders, al più tardi verso le undici e mezza. A Pirate Falls la coda resta corta più a lungo, e l'attrazione si può rimandare fino alle 13 circa. In ottobre è l'ora più calda per i vestiti bagnati. Dopo vengono Flight of the Sky Lion, Coastguard HQ e le altre attrazioni.
 
@@ -193,7 +191,7 @@ Un martedì di settembre non comprerei il Fastrack: Bronze non copre le tre code
 
 Un biglietto giornaliero costa online **da 32 £**, e prenotare in anticipo fa risparmiare, secondo il parco, fino a 36 £. I prezzi dipendono dal giorno. I bambini sotto i 90 centimetri entrano gratis. I biglietti non sono rimborsabili, ma la data si può cambiare. Offerte due per uno al momento non ci sono, secondo il parco. I biglietti per Brick or Treat partono da 37 £ a persona, quelli per LEGOLAND at Christmas da 34 £.
 
-Gli Annual Pass costano tra 64 e 299 £. Il **LEGOLAND Annual Pass** costa da 64 £ e ha 17 giorni di esclusione. Il **Merlin Essential Pass** costa 139 £ con 25 giorni di esclusione. Il **Merlin Gold Pass** costa 239 £ e comprende il parcheggio, con l'unica eccezione dei fuochi d'artificio ad Alton Towers. Il **Merlin Platinum Pass** costa 299 £ e non ha giorni di esclusione, ha quattro biglietti amico all'anno e un Fastrack singolo per ogni visita. Chi vuole venire in un giorno di esclusione paga 15 £ a persona per un biglietto di upgrade. Tutti i titolari di un pass devono prenotare la visita in anticipo. I pass comprendono Brick or Treat e LEGOLAND at Christmas.
+Il **LEGOLAND Annual Pass** costa da 64 £ e ha 17 giorni di esclusione. Il **Merlin Essential Pass** costa 139 £ con 25 giorni di esclusione. Il **Merlin Gold Pass** costa 239 £ e comprende il parcheggio, con l'unica eccezione dei fuochi d'artificio ad Alton Towers. Il **Merlin Platinum Pass** costa 299 £ e non ha giorni di esclusione, ha quattro biglietti amico all'anno e un Fastrack singolo per ogni visita. Chi vuole venire in un giorno di esclusione paga 15 £ a persona per un biglietto di upgrade. Tutti i titolari di un pass devono prenotare la visita in anticipo. I pass comprendono Brick or Treat e LEGOLAND at Christmas.
 
 ## Orari, stagione ed eventi
 
@@ -204,8 +202,6 @@ Alcune attrazioni in autunno funzionano solo nei giorni feriali o solo dal pomer
 **Brick or Treat**, l'evento di Halloween del parco, si tiene il 10 e l'11 ottobre e dal 17 ottobre al 1° novembre. Il programma comprende lo spettacolo «Lord Vampyre's House Party», lo spettacolo «Monster Jam», una disco su The Dragon, la Haunted House Monster Party, punti per le foto e incontri con mostri Lego. I costumi sono benvenuti, le maschere sul viso e le armi giocattolo no. Le date di Halloween degli altri parchi sono nella [panoramica su Halloween](/blog/halloween-parchi-divertimenti-2026).
 
 Pirate Falls chiude il **2 novembre** e riapre a marzo 2027. Il **9 novembre** chiudono Aero Nomad, Balloon School, Fire Academy, Jolly Rocker e Minifigure Speedway fino a febbraio 2027, e Coastguard HQ, Fairy Tale Brook, Fire & Ice Freefall e Hydra's Challenge fino a marzo. **LEGOLAND at Christmas** si tiene in giorni scelti dal 21 novembre al 2 gennaio 2027, con più di 20 attrazioni, un incontro con Babbo Natale in versione LEGO e diversi spettacoli. Il Natale negli altri parchi è nella [panoramica dell'inverno](/blog/parchi-divertimenti-inverno-2026).
-
-I prossimi giorni più tranquilli al Legoland Windsor:
 
 ```best-days-widget slug=legoland-windsor
 
