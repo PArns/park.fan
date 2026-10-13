@@ -6,11 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  En Vila-seca está Shambhala, la montaña rusa más alta del parque, con 76
-  metros y 134 km/h. Dragon Khan tuvo en su apertura, en 1995, más inversiones
-  que ninguna otra del mundo. Además: los seis productos Express con sus
-  precios, lo que cuestan aparte Ferrari Land y Caribe Aquatic Park y los días
-  en que, según el parque, hay menos gente.
+  Shambhala es la montaña rusa más alta del PortAventura Park, con 76 metros,
+  y Dragon Khan tenía en 1995 más inversiones que ninguna otra del mundo.
+  Express cuesta desde 7 € por una atracción, y Ferrari Land y Caribe se pagan
+  aparte. Según el parque, de martes a jueves es cuando hay menos gente.
 tags:
   - portaventura
   - shambhala
@@ -46,7 +45,7 @@ seo:
     - parque de atracciones Costa Dorada
 ---
 
-PortAventura World reúne tres parques con entradas propias: PortAventura Park, Ferrari Land y el parque acuático Caribe Aquatic Park. Esta guía trata del PortAventura Park, que abrió en **mayo de 1995**. Los otros dos tienen su propio apartado, porque para ellos hacen falta entradas propias. Todos los precios y horarios salen de la web del parque, a fecha de 7 de octubre de 2026. Los tiempos de espera aparecen solo en las tablas que calculan en directo nuestras mediciones.
+PortAventura World reúne tres parques con entradas propias: PortAventura Park, Ferrari Land y el parque acuático Caribe Aquatic Park. El PortAventura Park abrió en **mayo de 1995**. Todos los precios y horarios salen de la web del parque, a fecha de 7 de octubre de 2026.
 
 ## Cómo nació el parque
 
@@ -58,11 +57,11 @@ El parque tiene seis áreas temáticas: Mediterrània en la entrada, y después 
 
 ## Las montañas rusas: fabricante, altura, altura mínima
 
-Según Wikipedia, el resort cuenta con diez montañas rusas y cinco atracciones de agua, contando Ferrari Land. Las siguientes están en el PortAventura Park.
+Según Wikipedia, el resort cuenta con diez montañas rusas y cinco atracciones de agua, contando Ferrari Land.
 
 ### Shambhala
 
-Shambhala abrió el 12 de mayo de 2012 y es de Bolliger & Mabillard, el mismo fabricante que Dragon Khan. Es un hypercoaster sin inversiones: la colina de elevación mide **76 metros**, la primera caída 78, y el tren alcanza **134 km/h** en un recorrido de 1.564 metros. Son las cifras de la RCDB, y Coasterpedia da las mismas. La altura mínima es de **1,40 m** y no hay opción de ir acompañado. Sobre este tipo de diseño hay más en el glosario:
+Shambhala abrió el 12 de mayo de 2012 y es de Bolliger & Mabillard, el mismo fabricante que Dragon Khan. Es un hypercoaster sin inversiones: la colina de elevación mide **76 metros**, la primera caída 78, y el tren alcanza **134 km/h** en un recorrido de 1.564 metros. Son las cifras de la RCDB, y Coasterpedia da las mismas. La altura mínima es de **1,40 m** y no hay opción de ir acompañado.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -147,13 +146,11 @@ Templo del Fuego (desde 1,40 m, y desde 1,00 m con un adulto) y Serpiente Emplum
 
 ## Cuánta gente hay de verdad
 
-En la tabla aparece cada atracción con su propio número de días medidos:
-
 ```ride-waits-widget park=portaventura-park top=8 columns=land,peak,days highlight=shambhala
 
 ```
 
-En la tabla se ve si la más alta es también la que tiene la cola más larga. Quien la lea debería mirar también la columna de días medidos: una atracción que solo estuvo abierta unos pocos días figura con una cifra más endeble que otra que funcionó todo el verano.
+Una atracción que solo estuvo abierta unos pocos días tiene menos mediciones detrás de su cifra que otra que funcionó todo el verano, así que mira también la columna de días medidos.
 
 Cómo crecen las colas a lo largo del día:
 
@@ -188,9 +185,9 @@ Ferrari Land tiene pases propios (Express Ferrari Land, 26 € por cinco accesos
 
 Express 10 da un acceso por atracción. Quien quiera repetir una atracción necesita por eso el Unlimited, que cuesta 16 euros más. Según el parque, los clientes de los hoteles tienen precios especiales en los pases.
 
-## Rope drop: tres atracciones primero
+## Rope drop
 
-Para la página del parque calculamos en qué atracciones se ahorra más espera llegando temprano. Ahora mismo son tres: Silver River Flume, Tutuki Splash y Hurakan Condor.
+Para la página del parque calculamos en qué atracciones se ahorra más espera llegando temprano. Ahora mismo son Silver River Flume, Tutuki Splash y Hurakan Condor.
 
 ```glossary-widget slug=rope-drop
 
@@ -206,7 +203,7 @@ Los meses y los días de la semana según nuestras mediciones:
 
 ```
 
-Para el curso 2026/27, 3Cat da para Cataluña los festivos del 12 de octubre y el 8 de diciembre. Las vacaciones de Navidad van del 22 de diciembre de 2026 al 7 de enero de 2027, y las de Semana Santa del 20 al 29 de marzo de 2027. Son datos de la cadena 3Cat sobre el calendario escolar, y en los colegios del resto de España las fechas son otras.
+Para el curso 2026/27, 3Cat da para Cataluña los festivos del 12 de octubre y el 8 de diciembre. Las vacaciones de Navidad van del 22 de diciembre de 2026 al 7 de enero de 2027, y las de Semana Santa del 20 al 29 de marzo de 2027. En los colegios del resto de España las fechas son otras.
 
 ### Halloween: del 19 de septiembre al 15 de noviembre de 2026
 
@@ -214,7 +211,7 @@ El parque celebra Halloween del 19 de septiembre al 15 de noviembre de 2026. Los
 
 ### Navidad
 
-Según la web del parque, la Navidad va del 20 de noviembre de 2026 al 6 de enero de 2027. En el programa figuran los espectáculos «Bubble Magic Christmas», «El bosque encantado», el «Circo de Navidad» (nuevo), «Christmas Time» y la «Gran fiesta de Navidad», además del desfile navideño, la llegada de los Reyes Magos como «La llegada de los emisarios reales» y, en SésamoAventura, «Ya es Navidad». Los horarios de diciembre solo se ven en el calendario de reservas de la web del parque, que se carga únicamente en el navegador. Compruébalos allí antes de ir.
+Según la web del parque, la Navidad va del 20 de noviembre de 2026 al 6 de enero de 2027. En el programa figuran los espectáculos «Bubble Magic Christmas», «El bosque encantado», el «Circo de Navidad» (nuevo), «Christmas Time» y la «Gran fiesta de Navidad», además del desfile navideño, la llegada de los Reyes Magos como «La llegada de los emisarios reales» y, en SésamoAventura, «Ya es Navidad». Los horarios de diciembre solo se ven en el calendario de reservas de la web del parque, que se carga únicamente en el navegador.
 
 ## Entradas y precios
 
@@ -254,7 +251,7 @@ La entrada del parque vale para el PortAventura Park y para nada más. Lo escrib
 
 Un billete de un día solo para Ferrari Land cuesta desde 21 euros, y uno para Caribe desde 32 euros, en ambos casos para adultos. Quien duerme en un hotel del resort recibe, además del acceso al parque, un día en Ferrari Land.
 
-Ferrari Land abrió el 7 de abril de 2017, y el resort invirtió más de 100 millones de euros. La atracción más alta es Red Force, un acelerador de Intamin con 112 metros de altura, 180 km/h y 880 metros de recorrido. Otras atracciones son Maranello Grand Race, Thrill Towers, Flying Dreams y Racing Legends. Taquilla indica que Ferrari Land abre a diario del 1 de abril al 31 de diciembre de 2026, y un blog de viajes (El Viaje de Sofi) solo algunos días de noviembre y diciembre. Mira el calendario antes de ir.
+Ferrari Land abrió el 7 de abril de 2017, y el resort invirtió más de 100 millones de euros. La atracción más alta es Red Force, un acelerador de Intamin con 112 metros de altura, 180 km/h y 880 metros de recorrido. Otras atracciones son Maranello Grand Race, Thrill Towers, Flying Dreams y Racing Legends. Taquilla indica que Ferrari Land abre a diario del 1 de abril al 31 de diciembre de 2026, y un blog de viajes (El Viaje de Sofi) solo algunos días de noviembre y diciembre.
 
 El Caribe Aquatic Park es un parque acuático con 16 atracciones en unos 50.000 metros cuadrados. Su temporada 2026 terminó el 20 de septiembre según Taquilla, y en octubre está cerrado. En el verano de 2026, según el Diari de Tarragona, se sumó allí Coral Bay con la Leyenda Perdida y una montaña rusa acuática de la familia Cyclone.
 
@@ -262,13 +259,13 @@ El Caribe Aquatic Park es un parque acuático con 16 atracciones en unos 50.000 
 
 En el verano de 2026 llegó a Polynesia **Makamanu Jungle**, un sendero de aventura en una antigua cantera: 135 metros de largo, 18 cabañas en altura, 20 túneles de cuerda, 3 escalas de red y 4 toboganes. Incluye las zonas Forest para niños de hasta 3 años, Nest, Trail y Summit, además de un camino accesible. El acceso parte directamente de Far West, y allí no hay Express.
 
-El parque anunció además en mayo de 2026 un Hard Rock Cafe en la entrada, con unas 430 plazas. Ninguna de las páginas enlazadas dice si ya está abierto. Según el Diari de Tarragona, sustituye al restaurante LaLiga.
+El parque anunció además en mayo de 2026 un Hard Rock Cafe en la entrada, con unas 430 plazas. El parque no da fecha de apertura en su anuncio. Según el Diari de Tarragona, sustituye al restaurante LaLiga.
 
 Para 2027, el parque todavía no ha confirmado nada nuevo.
 
 ## Un día en el parque, a grandes rasgos
 
-Quien espera en la entrada a la apertura va primero a las tres atracciones del apartado de rope drop: Hurakan Condor en México, Tutuki Splash en Polynesia y Silver River Flume en Far West. Después compensa avanzar por áreas, en vez de cruzar el parque de un lado a otro. China tiene Shambhala y Dragon Khan, con taquillas entre las dos. Far West tiene Stampida, Tomahawk, Uncharted y Grand Canyon Rapids, México tiene El Diablo y Templo del Fuego, y Mediterrània, Furius Baco. Para los niños que son demasiado pequeños para las atracciones grandes, SésamoAventura tiene Street Mission y Tami-Tami.
+Quien espera en la entrada a la apertura va primero a las tres atracciones del apartado de rope drop: Hurakan Condor en México, Tutuki Splash en Polynesia y Silver River Flume en Far West. China tiene Shambhala y Dragon Khan, con taquillas entre las dos. Far West tiene Stampida, Tomahawk, Uncharted y Grand Canyon Rapids, México tiene El Diablo y Templo del Fuego, y Mediterrània, Furius Baco. Para los niños que son demasiado pequeños para las atracciones grandes, SésamoAventura tiene Street Mission y Tami-Tami.
 
 El plano del parque, para planificar los recorridos:
 
@@ -300,8 +297,6 @@ El parque no cierra con lluvia ni devuelve las entradas, y algunas atracciones p
 
 ## El tiempo
 
-Qué tiempo hará sobre el parque cuando vayas:
-
 ```weather-widget slug=portaventura-park
 
 ```
@@ -326,7 +321,7 @@ No, solo en las entradas de tres parques y en las de Caribe. En octubre el parqu
 
 ### ¿Merece la pena el Express?
 
-Express 5 Adrenaline vale para siete atracciones y cuesta desde 46 €, Express 10 desde 59 € y Unlimited desde 75 €. Qué atracciones tienen colas largas lo dice la tabla de más arriba.
+Express 5 Adrenaline vale para siete atracciones y cuesta desde 46 €, Express 10 desde 59 € y Unlimited desde 75 €. Quien quiera repetir una atracción necesita Unlimited, porque Express 10 cuenta cada atracción una sola vez.
 
 ### ¿Cuándo abre el parque en 2026?
 
@@ -338,17 +333,11 @@ Con la línea R17 de Rodalies desde Barcelona-França hasta la parada PortAventu
 
 ### ¿Hay cola de single rider?
 
-En las páginas del parque no hay nada al respecto. El glosario explica en qué consiste el sistema:
+En las páginas del parque no hay nada al respecto.
 
 ```glossary-widget slug=single-rider
 
 ```
-
-## Lo que me llevo de Vila-seca
-
-Con Shambhala y Dragon Khan, el parque tiene dos atracciones de Bolliger & Mabillard separadas por 17 años, y con Furius Baco y Uncharted, dos de Intamin. Quien solo tenga un día compra la entrada por internet, elige un martes, miércoles o jueves que no sea festivo y a la apertura va a las tres atracciones del rope drop.
-
-Ferrari Land y Caribe necesitan una entrada propia o una entrada combinada. Quien quiera verlos compra la entrada adecuada antes de viajar.
 
 — Patrick
 

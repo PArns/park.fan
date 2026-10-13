@@ -6,11 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Vila-seca has Shambhala, the park's tallest coaster at 76 metres and 134 km/h.
-  When Dragon Khan opened in 1995, it had more inversions than any other coaster
-  in the world. Also here: the six Express products and their prices, what
-  Ferrari Land and Caribe Aquatic Park cost extra, and the days the park itself
-  says are quietest.
+  Shambhala is PortAventura Park's tallest coaster at 76 metres, and in 1995
+  Dragon Khan had more inversions than any other coaster in the world. Express
+  starts at €7 for one ride, and Ferrari Land and Caribe cost extra. The park
+  says Tuesday to Thursday is quietest.
 tags:
   - portaventura
   - shambhala
@@ -46,7 +45,7 @@ seo:
     - Costa Daurada theme park
 ---
 
-PortAventura World has three parks with their own tickets: PortAventura Park, Ferrari Land and the water park Caribe Aquatic Park. This guide covers PortAventura Park, which opened in **May 1995**. The other two get a section of their own, because they need tickets of their own. All prices and opening hours come from the park's website. Wait times appear only in the tables that our measurements calculate live.
+PortAventura World has three parks with their own tickets: PortAventura Park, Ferrari Land and the water park Caribe Aquatic Park. PortAventura Park opened in **May 1995**. All prices and opening hours come from the park's website.
 
 ## How the park came about
 
@@ -58,11 +57,11 @@ The park has six themed areas: Mediterrània at the entrance, then Polynesia, Ch
 
 ## The coasters: manufacturer, height, minimum height
 
-Wikipedia counts ten coasters and five water rides at the resort, Ferrari Land included. The ones below are in PortAventura Park.
+Wikipedia counts ten coasters and five water rides at the resort, Ferrari Land included.
 
 ### Shambhala
 
-Shambhala opened on 12 May 2012 and comes from Bolliger & Mabillard, the same manufacturer as Dragon Khan. It's a hypercoaster with no inversion: the lift hill is **76 metres** tall, the first drop measures 78 metres, and the train reaches **134 km/h** over 1,564 metres of track. Those are RCDB's numbers, and Coasterpedia gives the same ones. The minimum height is **1.40 m**, and there's no option to ride with an adult. The glossary has more on the design:
+Shambhala opened on 12 May 2012 and comes from Bolliger & Mabillard, the same manufacturer as Dragon Khan. It's a hypercoaster with no inversion: the lift hill is **76 metres** tall, the first drop measures 78 metres, and the train reaches **134 km/h** over 1,564 metres of track. Those are RCDB's numbers, and Coasterpedia gives the same ones. The minimum height is **1.40 m**, and there's no option to ride with an adult.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -147,13 +146,11 @@ Templo del Fuego (from 1.40 m, with an adult from 1.00 m) and Serpiente Emplumad
 
 ## How busy it really gets
 
-The table lists each ride with its own number of measured days:
-
 ```ride-waits-widget park=portaventura-park top=8 columns=land,peak,days highlight=shambhala
 
 ```
 
-Whether the tallest ride also has the longest queue is in the table. Read the column with the measured days alongside it: a ride that was open on only a few days shows a thinner number than one that ran all summer.
+A ride that was open on only a few days has fewer measurements behind its figure than one that ran all summer, so read the column with the measured days alongside it.
 
 How queues build through the day:
 
@@ -188,9 +185,9 @@ Ferrari Land has its own passes (Express Ferrari Land €26 for five entries, Ex
 
 Express 10 gives one entry per ride. If you want a second go on a ride, you need Unlimited, which costs €16 more. According to the park, hotel guests get special prices on the passes.
 
-## Rope drop: three rides first
+## Rope drop
 
-For the park page we calculate which rides save the most waiting time if you arrive early. Right now there are three: Silver River Flume, Tutuki Splash and Hurakan Condor.
+For the park page we calculate which rides save the most waiting time if you arrive early. Right now they are Silver River Flume, Tutuki Splash and Hurakan Condor.
 
 ```glossary-widget slug=rope-drop
 
@@ -206,7 +203,7 @@ The months and weekdays from our measurements:
 
 ```
 
-For the 2026/27 school year, 3Cat lists the Catalan holidays as 12 October and 8 December. Christmas holidays run from 22 December 2026 to 7 January 2027, Easter holidays from 20 to 29 March 2027. Those are the TV broadcaster 3Cat's figures from the school calendar, and schools in the rest of Spain follow other dates.
+For the 2026/27 school year, 3Cat lists the Catalan holidays as 12 October and 8 December. Christmas holidays run from 22 December 2026 to 7 January 2027, Easter holidays from 20 to 29 March 2027. Schools in the rest of Spain follow other dates.
 
 ### Halloween: 19 September to 15 November 2026
 
@@ -214,7 +211,7 @@ The park celebrates Halloween from 19 September to 15 November 2026. The five Pa
 
 ### Christmas
 
-According to the park's website, Christmas runs from 20 November 2026 to 6 January 2027. The programme includes the shows "Bubble Magic Christmas", "El bosque encantado", the "Circo de Navidad" (new), "Christmas Time" and the "Gran fiesta de Navidad", plus the Christmas parade, the arrival of the Three Kings as "La llegada de los emisarios reales" and "Ya es Navidad" in SésamoAventura. December opening hours are visible on the park's site only in the booking calendar, which loads in the browser. Check them there before you go.
+According to the park's website, Christmas runs from 20 November 2026 to 6 January 2027. The programme includes the shows "Bubble Magic Christmas", "El bosque encantado", the "Circo de Navidad" (new), "Christmas Time" and the "Gran fiesta de Navidad", plus the Christmas parade, the arrival of the Three Kings as "La llegada de los emisarios reales" and "Ya es Navidad" in SésamoAventura. December opening hours are visible on the park's site only in the booking calendar, which loads in the browser.
 
 ## Tickets and prices
 
@@ -254,7 +251,7 @@ The park ticket is valid for PortAventura Park and nothing else. The park says s
 
 A day ticket for Ferrari Land alone costs from €21, one for Caribe from €32, in each case for adults. If you sleep in one of the resort's hotels, you get a day in Ferrari Land on top of park access.
 
-Ferrari Land opened on 7 April 2017, and the resort spent more than 100 million euros on it. The tallest ride is Red Force, an Intamin accelerator coaster 112 metres tall, with a top speed of 180 km/h and 880 metres of track. Other rides are Maranello Grand Race, Thrill Towers, Flying Dreams and Racing Legends. Taquilla lists Ferrari Land as open daily from 1 April to 31 December 2026, while a travel blog (El Viaje de Sofi) lists it open only on single days in November and December. Check the calendar before you travel.
+Ferrari Land opened on 7 April 2017, and the resort spent more than 100 million euros on it. The tallest ride is Red Force, an Intamin accelerator coaster 112 metres tall, with a top speed of 180 km/h and 880 metres of track. Other rides are Maranello Grand Race, Thrill Towers, Flying Dreams and Racing Legends. Taquilla lists Ferrari Land as open daily from 1 April to 31 December 2026, while a travel blog (El Viaje de Sofi) lists it open only on single days in November and December.
 
 Caribe Aquatic Park is a water park with 16 attractions on around 50,000 square metres. According to Taquilla, its 2026 season ended on 20 September, and it's closed in October. In summer 2026, according to the Diari de Tarragona, Coral Bay opened there with the Leyenda Perdida and a water coaster from the Cyclone family.
 
@@ -262,13 +259,13 @@ Caribe Aquatic Park is a water park with 16 attractions on around 50,000 square 
 
 In summer 2026 **Makamanu Jungle** opened in Polynesia, an adventure trail in a former quarry: 135 metres long, with 18 huts up high, 20 rope tunnels, 3 net ladders and 4 slides. It includes the areas Forest for children up to 3, Nest, Trail and Summit, as well as an accessible path. The entrance leads straight from Far West, and there's no Express there.
 
-In May 2026 the park also announced a Hard Rock Cafe at the entrance, with around 430 seats. None of the linked pages says whether it's open yet. According to the Diari de Tarragona, it replaces the LaLiga restaurant.
+In May 2026 the park also announced a Hard Rock Cafe at the entrance, with around 430 seats. The park's announcement gives no opening date. According to the Diari de Tarragona, it replaces the LaLiga restaurant.
 
 For 2027, the park hasn't confirmed anything new.
 
 ## A day in the park, roughly planned
 
-If you're at the entrance when the gates open, go first to the three rides from the rope drop section: Hurakan Condor in México, Tutuki Splash in Polynesia and Silver River Flume in Far West. After that it pays to work through the park area by area instead of crossing it back and forth. China has Shambhala and Dragon Khan, with lockers between the two. Far West has Stampida, Tomahawk, Uncharted and Grand Canyon Rapids, México has El Diablo and Templo del Fuego, and Mediterrània has Furius Baco. For children too small for the big rides, SésamoAventura has Street Mission and Tami-Tami.
+If you're at the entrance when the gates open, go first to the three rides from the rope drop section: Hurakan Condor in México, Tutuki Splash in Polynesia and Silver River Flume in Far West. China has Shambhala and Dragon Khan, with lockers between the two. Far West has Stampida, Tomahawk, Uncharted and Grand Canyon Rapids, México has El Diablo and Templo del Fuego, and Mediterrània has Furius Baco. For children too small for the big rides, SésamoAventura has Street Mission and Tami-Tami.
 
 The park's map, for planning your routes:
 
@@ -300,8 +297,6 @@ The park doesn't close in rain and doesn't refund tickets, but individual rides 
 
 ## The weather
 
-What the weather over the park looks like when you travel there:
-
 ```weather-widget slug=portaventura-park
 
 ```
@@ -326,7 +321,7 @@ No, only in the three-park tickets and the Caribe tickets. In October the water 
 
 ### Is Express worth it?
 
-Express 5 Adrenaline covers seven rides and costs from €46, Express 10 from €59, Unlimited from €75. Which rides have long queues is in the table further up.
+Express 5 Adrenaline covers seven rides and costs from €46, Express 10 from €59, Unlimited from €75. If you want to ride something twice, you need Unlimited, because Express 10 counts each ride only once.
 
 ### When is the park open in 2026?
 
@@ -338,17 +333,11 @@ By Rodalies line R17 from Barcelona-França to the PortAventura World stop, by b
 
 ### Is there a single-rider queue?
 
-The park's pages say nothing about it. The glossary explains what the principle is:
+The park's pages say nothing about it.
 
 ```glossary-widget slug=single-rider
 
 ```
-
-## What I'd take with me to Vila-seca
-
-With Shambhala and Dragon Khan, the park has two Bolliger & Mabillard coasters built 17 years apart, and with Furius Baco and Uncharted two from Intamin. If you only have one day, book the ticket online, pick a Tuesday to Thursday outside the holidays and head to the three rope drop rides at opening.
-
-Ferrari Land and Caribe need their own ticket or a combination ticket. If you want to see them, buy the right ticket before you travel.
 
 — Patrick
 

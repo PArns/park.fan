@@ -6,11 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Vila-seca steht mit Shambhala die höchste Achterbahn des Parks, 76 Meter
-  hoch und 134 km/h schnell. Dragon Khan hatte bei der Eröffnung 1995 mehr
-  Inversionen als jede andere Bahn der Welt. Dazu kommen die sechs
-  Express-Produkte mit ihren Preisen, die Frage, was Ferrari Land und Caribe
-  Aquatic Park extra kosten, und die Tage, an denen laut Park am wenigsten los ist.
+  Shambhala ist mit 76 Metern die höchste Achterbahn im PortAventura Park, und
+  Dragon Khan hatte 1995 die meisten Inversionen der Welt. Express gibt es ab
+  7 Euro für eine Bahn, Ferrari Land und Caribe kosten extra. Am wenigsten los
+  ist laut Park von Dienstag bis Donnerstag.
 tags:
   - portaventura
   - shambhala
@@ -46,7 +45,7 @@ seo:
     - Costa Daurada Freizeitpark
 ---
 
-Zu PortAventura World gehören drei Parks mit eigenen Tickets: der PortAventura Park, Ferrari Land und der Wasserpark Caribe Aquatic Park. Dieser Guide behandelt den PortAventura Park, der im **Mai 1995** eröffnet hat. Die beiden anderen bekommen einen eigenen Abschnitt, weil für sie eigene Tickets gelten. Alle Preise und Öffnungszeiten stammen von der Seite des Parks, Stand 7. Oktober 2026. Wartezeiten stehen nur in den Tabellen, die unsere Messungen live berechnen.
+Zu PortAventura World gehören drei Parks mit eigenen Tickets: der PortAventura Park, Ferrari Land und der Wasserpark Caribe Aquatic Park. Der PortAventura Park hat im **Mai 1995** eröffnet. Alle Preise und Öffnungszeiten stammen von der Seite des Parks, Stand 7. Oktober 2026.
 
 ## Wie der Park entstanden ist
 
@@ -58,11 +57,11 @@ Der Park hat sechs Themenbereiche: Mediterrània am Eingang, dazu Polynesia, Chi
 
 ## Die Achterbahnen: Hersteller, Höhe, Mindestgröße
 
-Laut Wikipedia zählt das Resort zehn Achterbahnen und fünf Wasserbahnen, Ferrari Land eingerechnet. Die folgenden stehen im PortAventura Park.
+Laut Wikipedia zählt das Resort zehn Achterbahnen und fünf Wasserbahnen, Ferrari Land eingerechnet.
 
 ### Shambhala
 
-Shambhala hat am 12. Mai 2012 eröffnet und kommt von Bolliger & Mabillard, also vom selben Hersteller wie Dragon Khan. Die Bahn ist ein Hypercoaster ohne Inversion: Der Lifthügel ist **76 Meter** hoch, die erste Abfahrt misst 78 Meter, und der Zug erreicht **134 km/h** auf einer Strecke von 1.564 Metern. Das sind die Zahlen von RCDB, und Coasterpedia nennt dieselben. Die Mindestgröße liegt bei **1,40 m**, und es gibt keine Begleitoption. Mehr zur Bauart steht im Glossar:
+Shambhala hat am 12. Mai 2012 eröffnet und kommt von Bolliger & Mabillard, also vom selben Hersteller wie Dragon Khan. Die Bahn ist ein Hypercoaster ohne Inversion: Der Lifthügel ist **76 Meter** hoch, die erste Abfahrt misst 78 Meter, und der Zug erreicht **134 km/h** auf einer Strecke von 1.564 Metern. Das sind die Zahlen von RCDB, und Coasterpedia nennt dieselben. Die Mindestgröße liegt bei **1,40 m**, und es gibt keine Begleitoption.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -147,13 +146,11 @@ Templo del Fuego (ab 1,40 m, mit Erwachsenem ab 1,00 m) und Serpiente Emplumada 
 
 ## Wie voll es wirklich ist
 
-In der Tabelle steht jede Bahn mit ihrer eigenen Zahl an Messtagen:
-
 ```ride-waits-widget park=portaventura-park top=8 columns=land,peak,days highlight=shambhala
 
 ```
 
-Ob die höchste Bahn auch die längste Warteschlange hat, steht in der Tabelle. Wer sie liest, sollte die Spalte mit den Messtagen mitlesen, denn eine Bahn, die nur an wenigen Tagen offen war, steht dort mit einer dünneren Zahl als eine, die den ganzen Sommer lief.
+Eine Bahn, die nur an wenigen Tagen offen war, hat weniger Messungen hinter ihrer Zahl als eine, die den ganzen Sommer lief. Lies deshalb die Spalte mit den Messtagen mit.
 
 Wie die Warteschlangen über den Tag wachsen:
 
@@ -188,9 +185,9 @@ Für Ferrari Land gibt es eigene Pässe (Express Ferrari Land 26 € für fünf 
 
 Express 10 gibt einen Zugang pro Bahn. Wer eine Bahn ein zweites Mal fahren will, braucht deshalb Unlimited, das 16 Euro mehr kostet. Hotelgäste bekommen laut Park Sonderpreise auf die Pässe.
 
-## Rope Drop: drei Bahnen zuerst
+## Rope Drop
 
-Für die Parkseite berechnen wir, bei welchen Bahnen frühes Kommen die meiste Wartezeit spart. Aktuell stehen dort drei: Silver River Flume, Tutuki Splash und Hurakan Condor.
+Für die Parkseite berechnen wir, bei welchen Bahnen frühes Kommen die meiste Wartezeit spart. Derzeit sind das Silver River Flume, Tutuki Splash und Hurakan Condor.
 
 ```glossary-widget slug=rope-drop
 
@@ -206,7 +203,7 @@ Die Monate und Wochentage aus unseren Messungen:
 
 ```
 
-Im Schuljahr 2026/27 nennt 3Cat für Katalonien die Feiertage 12. Oktober und 8. Dezember. Die Weihnachtsferien laufen vom 22. Dezember 2026 bis zum 7. Januar 2027, die Osterferien vom 20. bis 29. März 2027. Das sind Angaben des Fernsehsenders 3Cat zum Schulkalender, und für Schulen im Rest Spaniens gelten andere Termine.
+Im Schuljahr 2026/27 nennt 3Cat für Katalonien die Feiertage 12. Oktober und 8. Dezember. Die Weihnachtsferien laufen vom 22. Dezember 2026 bis zum 7. Januar 2027, die Osterferien vom 20. bis 29. März 2027. Für Schulen im Rest Spaniens gelten andere Termine.
 
 ### Halloween: 19. September bis 15. November 2026
 
@@ -214,7 +211,7 @@ Der Park feiert Halloween vom 19. September bis zum 15. November 2026. Die fünf
 
 ### Weihnachten
 
-Die Weihnachtszeit läuft laut Seite des Parks vom 20. November 2026 bis zum 6. Januar 2027. Auf dem Programm stehen die Shows „Bubble Magic Christmas“, „El bosque encantado“, der „Circo de Navidad“ (neu), „Christmas Time“ und die „Gran fiesta de Navidad“, dazu die Weihnachtsparade, der Einzug der Heiligen Drei Könige als „La llegada de los emisarios reales“ und in SésamoAventura „Ya es Navidad“. Die Öffnungszeiten für Dezember sind auf der Parkseite nur im Buchungskalender sichtbar, der erst im Browser lädt. Prüfe sie dort, bevor du fährst.
+Die Weihnachtszeit läuft laut Seite des Parks vom 20. November 2026 bis zum 6. Januar 2027. Auf dem Programm stehen die Shows „Bubble Magic Christmas“, „El bosque encantado“, der „Circo de Navidad“ (neu), „Christmas Time“ und die „Gran fiesta de Navidad“, dazu die Weihnachtsparade, der Einzug der Heiligen Drei Könige als „La llegada de los emisarios reales“ und in SésamoAventura „Ya es Navidad“. Die Öffnungszeiten für Dezember sind auf der Parkseite nur im Buchungskalender sichtbar, der erst im Browser lädt.
 
 ## Tickets und Preise
 
@@ -254,7 +251,7 @@ Das Park-Ticket gilt für den PortAventura Park und sonst nichts. Das schreibt d
 
 Ein Tagesticket für Ferrari Land allein kostet ab 21 Euro, eins für Caribe ab 32 Euro, jeweils für Erwachsene. Wer im Hotel des Resorts schläft, bekommt zusätzlich zum Park-Zugang einen Tag in Ferrari Land.
 
-Ferrari Land hat am 7. April 2017 eröffnet, das Resort hat dafür mehr als 100 Millionen Euro ausgegeben. Die höchste Bahn ist Red Force, ein Intamin-Beschleuniger mit 112 Metern Höhe, 180 km/h und 880 Metern Strecke. Weitere Fahrten sind Maranello Grand Race, Thrill Towers, Flying Dreams und Racing Legends. Taquilla nennt Ferrari Land vom 1. April bis 31. Dezember 2026 täglich geöffnet, ein Reiseblog (El Viaje de Sofi) nur an einzelnen Tagen im November und Dezember. Prüfe den Kalender vor der Fahrt.
+Ferrari Land hat am 7. April 2017 eröffnet, das Resort hat dafür mehr als 100 Millionen Euro ausgegeben. Die höchste Bahn ist Red Force, ein Intamin-Beschleuniger mit 112 Metern Höhe, 180 km/h und 880 Metern Strecke. Weitere Fahrten sind Maranello Grand Race, Thrill Towers, Flying Dreams und Racing Legends. Taquilla nennt Ferrari Land vom 1. April bis 31. Dezember 2026 täglich geöffnet, ein Reiseblog (El Viaje de Sofi) nur an einzelnen Tagen im November und Dezember.
 
 Der Caribe Aquatic Park ist ein Wasserpark mit 16 Attraktionen auf rund 50.000 Quadratmetern. Seine Saison 2026 endete nach Angaben von Taquilla am 20. September, im Oktober ist er geschlossen. Im Sommer 2026 ist dort laut Diari de Tarragona die Coral Bay mit der Leyenda Perdida und einer Wasserachterbahn der Cyclone-Familie dazugekommen.
 
@@ -262,13 +259,13 @@ Der Caribe Aquatic Park ist ein Wasserpark mit 16 Attraktionen auf rund 50.000 Q
 
 Im Sommer 2026 ist in Polynesia **Makamanu Jungle** dazugekommen, ein Abenteuerpfad in einem ehemaligen Steinbruch: 135 Meter lang, 18 Hütten in der Höhe, 20 Seiltunneln, 3 Netzleitern und 4 Rutschen. Dazu gehören die Bereiche Forest für Kinder bis 3 Jahre, Nest, Trail und Summit sowie ein barrierefreier Weg. Der Zugang führt direkt aus Far West, und Express gibt es dort nicht.
 
-Der Park hat dazu im Mai 2026 ein Hard Rock Cafe am Eingang angekündigt, mit rund 430 Plätzen. Ob es schon geöffnet ist, steht auf keiner der verlinkten Seiten. Es ersetzt das LaLiga-Restaurant, sagt der Diari de Tarragona.
+Der Park hat dazu im Mai 2026 ein Hard Rock Cafe am Eingang angekündigt, mit rund 430 Plätzen. Einen Eröffnungstermin nennt der Park in seiner Ankündigung nicht. Es ersetzt das LaLiga-Restaurant, sagt der Diari de Tarragona.
 
 Für 2027 hat der Park noch nichts Neues bestätigt.
 
 ## Ein Tag im Park, grob geplant
 
-Wer zur Öffnung am Eingang steht, geht zuerst zu den drei Bahnen aus dem Rope-Drop-Abschnitt: Hurakan Condor in México, Tutuki Splash in Polynesia und Silver River Flume in Far West. Danach lohnt es sich, nach Bereichen vorzugehen, statt quer durch den Park zu laufen. China hat Shambhala und Dragon Khan, zwischen den beiden stehen Schließfächer. Far West hat Stampida, Tomahawk, Uncharted und Grand Canyon Rapids, México El Diablo und Templo del Fuego, Mediterrània Furius Baco. Für Kinder, die für die großen Bahnen zu klein sind, gibt es in SésamoAventura Street Mission und Tami-Tami.
+Wer zur Öffnung am Eingang steht, geht zuerst zu den drei Bahnen aus dem Rope-Drop-Abschnitt: Hurakan Condor in México, Tutuki Splash in Polynesia und Silver River Flume in Far West. China hat Shambhala und Dragon Khan, zwischen den beiden stehen Schließfächer. Far West hat Stampida, Tomahawk, Uncharted und Grand Canyon Rapids, México El Diablo und Templo del Fuego, Mediterrània Furius Baco. Für Kinder, die für die großen Bahnen zu klein sind, gibt es in SésamoAventura Street Mission und Tami-Tami.
 
 Die Karte des Parks, mit der du die Wege planen kannst:
 
@@ -300,8 +297,6 @@ Der Park schließt bei Regen nicht und erstattet keine Tickets, einzelne Bahnen 
 
 ## Das Wetter
 
-Wie das Wetter über dem Park aussieht, wenn du hinfährst:
-
 ```weather-widget slug=portaventura-park
 
 ```
@@ -326,7 +321,7 @@ Nein, nur in den Drei-Parks-Tickets und in den Caribe-Tickets. Im Oktober ist de
 
 ### Lohnt sich Express?
 
-Express 5 Adrenaline gilt für sieben Bahnen und kostet ab 46 €, Express 10 ab 59 €, Unlimited ab 75 €. Welche Bahnen lange Warteschlangen haben, steht in der Tabelle weiter oben.
+Express 5 Adrenaline gilt für sieben Bahnen und kostet ab 46 €, Express 10 ab 59 €, Unlimited ab 75 €. Wer eine Bahn zweimal fahren will, braucht Unlimited, weil Express 10 jede Bahn nur einmal zählt.
 
 ### Wann hat der Park 2026 geöffnet?
 
@@ -338,17 +333,11 @@ Mit der Rodalies-Linie R17 ab Barcelona-França bis zur Haltestelle PortAventura
 
 ### Gibt es eine Single-Rider-Warteschlange?
 
-Auf den Seiten des Parks steht dazu nichts. Das Glossar erklärt, was das Prinzip ist:
+Auf den Seiten des Parks steht dazu nichts.
 
 ```glossary-widget slug=single-rider
 
 ```
-
-## Was ich dir für Vila-seca mitgebe
-
-Der Park hat mit Shambhala und Dragon Khan zwei Bahnen von Bolliger & Mabillard, die 17 Jahre auseinanderliegen, und mit Furius Baco und Uncharted zwei von Intamin. Wer nur einen Tag hat, bucht das Ticket online, nimmt einen Dienstag bis Donnerstag außerhalb der Feiertage und geht zur Öffnung zu den drei Rope-Drop-Bahnen.
-
-Ferrari Land und Caribe brauchen ein eigenes Ticket oder ein Kombiticket. Wer sie sehen will, kauft das passende Ticket vor der Anreise.
 
 — Patrick
 

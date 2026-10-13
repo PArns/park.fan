@@ -6,11 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Vila-seca staat met Shambhala de hoogste achtbaan van het park, 76 meter
-  hoog en 134 km/u snel. Dragon Khan had bij de opening in 1995 meer inversies
-  dan welke baan ter wereld ook. Verder: de zes Express-producten met hun
-  prijzen, wat Ferrari Land en Caribe Aquatic Park extra kosten en de dagen
-  waarop het volgens het park het rustigst is.
+  Shambhala is met 76 meter de hoogste achtbaan van PortAventura Park, en
+  Dragon Khan had in 1995 meer inversies dan welke baan ter wereld ook.
+  Express kost vanaf € 7 voor één baan, en Ferrari Land en Caribe kosten
+  extra. Volgens het park is het van dinsdag tot donderdag het rustigst.
 tags:
   - portaventura
   - shambhala
@@ -46,7 +45,7 @@ seo:
     - pretpark Costa Daurada
 ---
 
-PortAventura World bestaat uit drie parken met eigen tickets: PortAventura Park, Ferrari Land en het waterpark Caribe Aquatic Park. Deze gids gaat over PortAventura Park, dat in **mei 1995** opende. De twee andere krijgen een eigen stuk, want daar gelden eigen tickets. Alle prijzen en openingstijden komen van de website van het park, stand 7 oktober 2026. Wachttijden staan alleen in de tabellen die onze metingen live berekenen.
+PortAventura World bestaat uit drie parken met eigen tickets: PortAventura Park, Ferrari Land en het waterpark Caribe Aquatic Park. PortAventura Park opende in **mei 1995**. Alle prijzen en openingstijden komen van de website van het park, stand 7 oktober 2026.
 
 ## Hoe het park is ontstaan
 
@@ -58,11 +57,11 @@ Het park heeft zes themagebieden: Mediterrània bij de ingang, daarnaast Polynes
 
 ## De achtbanen: fabrikant, hoogte, minimale lengte
 
-Volgens Wikipedia telt het resort tien achtbanen en vijf waterbanen, Ferrari Land meegerekend. De volgende staan in PortAventura Park.
+Volgens Wikipedia telt het resort tien achtbanen en vijf waterbanen, Ferrari Land meegerekend.
 
 ### Shambhala
 
-Shambhala opende op 12 mei 2012 en komt van Bolliger & Mabillard, dezelfde fabrikant als Dragon Khan. Het is een hypercoaster zonder inversie: de lifthill is **76 meter** hoog, de eerste afdaling meet 78 meter en de trein haalt **134 km/u** over 1.564 meter spoor. Dat zijn de cijfers van RCDB, en Coasterpedia noemt dezelfde. De minimale lengte is **1,40 m**, en meerijden met een begeleider kan niet. Meer over dit bouwtype staat in de woordenlijst:
+Shambhala opende op 12 mei 2012 en komt van Bolliger & Mabillard, dezelfde fabrikant als Dragon Khan. Het is een hypercoaster zonder inversie: de lifthill is **76 meter** hoog, de eerste afdaling meet 78 meter en de trein haalt **134 km/u** over 1.564 meter spoor. Dat zijn de cijfers van RCDB, en Coasterpedia noemt dezelfde. De minimale lengte is **1,40 m**, en meerijden met een begeleider kan niet.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -147,13 +146,11 @@ Templo del Fuego (vanaf 1,40 m, met volwassene vanaf 1,00 m) en Serpiente Emplum
 
 ## Hoe druk het echt is
 
-In de tabel staat elke baan met zijn eigen aantal meetdagen:
-
 ```ride-waits-widget park=portaventura-park top=8 columns=land,peak,days highlight=shambhala
 
 ```
 
-Of de hoogste baan ook de langste rij heeft, staat in de tabel. Lees de kolom met meetdagen mee: een baan die maar op weinig dagen open was, staat daar met een dunner getal dan een baan die de hele zomer reed.
+Een baan die maar op weinig dagen open was, heeft minder metingen achter zijn getal dan een baan die de hele zomer reed. Lees daarom de kolom met meetdagen mee.
 
 Zo groeien de rijen over de dag:
 
@@ -188,9 +185,9 @@ Voor Ferrari Land bestaan eigen passen (Express Ferrari Land € 26 voor vijf to
 
 Express 10 geeft één toegang per baan. Wie een baan een tweede keer wil rijden, heeft dus Unlimited nodig, dat € 16 meer kost. Hotelgasten krijgen volgens het park speciale prijzen op de passen.
 
-## Rope drop: eerst drie banen
+## Rope drop
 
-Voor de parkpagina berekenen we bij welke banen vroeg komen de meeste wachttijd bespaart. Op dit moment zijn dat er drie: Silver River Flume, Tutuki Splash en Hurakan Condor.
+Voor de parkpagina berekenen we bij welke banen vroeg komen de meeste wachttijd bespaart. Op dit moment zijn dat Silver River Flume, Tutuki Splash en Hurakan Condor.
 
 ```glossary-widget slug=rope-drop
 
@@ -206,7 +203,7 @@ De maanden en weekdagen uit onze metingen:
 
 ```
 
-Voor het schooljaar 2026/27 noemt 3Cat voor Catalonië de vrije dagen 12 oktober en 8 december. De kerstvakantie loopt van 22 december 2026 tot en met 7 januari 2027, de paasvakantie van 20 tot en met 29 maart 2027. Dit zijn gegevens van zender 3Cat over de schoolkalender, en voor scholen in de rest van Spanje gelden andere data.
+Voor het schooljaar 2026/27 noemt 3Cat voor Catalonië de vrije dagen 12 oktober en 8 december. De kerstvakantie loopt van 22 december 2026 tot en met 7 januari 2027, de paasvakantie van 20 tot en met 29 maart 2027. Voor scholen in de rest van Spanje gelden andere data.
 
 ### Halloween: 19 september tot 15 november 2026
 
@@ -214,7 +211,7 @@ Het park viert Halloween van 19 september tot 15 november 2026. De vijf Pasajes 
 
 ### Kerst
 
-De kersttijd loopt volgens de site van het park van 20 november 2026 tot 6 januari 2027. Op het programma staan de shows “Bubble Magic Christmas”, “El bosque encantado”, het “Circo de Navidad” (nieuw), “Christmas Time” en de “Gran fiesta de Navidad”, plus de kerstparade, de intocht van de Drie Koningen als “La llegada de los emisarios reales” en in SésamoAventura “Ya es Navidad”. De openingstijden voor december staan op de parkpagina alleen in de boekingskalender, die pas in de browser laadt. Controleer ze daar voordat je gaat.
+De kersttijd loopt volgens de site van het park van 20 november 2026 tot 6 januari 2027. Op het programma staan de shows “Bubble Magic Christmas”, “El bosque encantado”, het “Circo de Navidad” (nieuw), “Christmas Time” en de “Gran fiesta de Navidad”, plus de kerstparade, de intocht van de Drie Koningen als “La llegada de los emisarios reales” en in SésamoAventura “Ya es Navidad”. De openingstijden voor december staan op de parkpagina alleen in de boekingskalender, die pas in de browser laadt.
 
 ## Tickets en prijzen
 
@@ -254,7 +251,7 @@ Het parkticket geldt voor PortAventura Park en voor niets anders. Dat schrijft h
 
 Een dagticket voor Ferrari Land alleen kost vanaf € 21, een voor Caribe vanaf € 32, telkens voor volwassenen. Wie in een hotel van het resort slaapt, krijgt naast de toegang tot het park een dag in Ferrari Land.
 
-Ferrari Land opende op 7 april 2017, en het resort gaf er meer dan 100 miljoen euro aan uit. De hoogste baan is Red Force, een Intamin-versneller van 112 meter hoog, met 180 km/u en 880 meter spoor. Verdere attracties zijn Maranello Grand Race, Thrill Towers, Flying Dreams en Racing Legends. Taquilla noemt Ferrari Land van 1 april tot en met 31 december 2026 dagelijks open, een reisblog (El Viaje de Sofi) alleen op losse dagen in november en december. Controleer de kalender voordat je gaat.
+Ferrari Land opende op 7 april 2017, en het resort gaf er meer dan 100 miljoen euro aan uit. De hoogste baan is Red Force, een Intamin-versneller van 112 meter hoog, met 180 km/u en 880 meter spoor. Verdere attracties zijn Maranello Grand Race, Thrill Towers, Flying Dreams en Racing Legends. Taquilla noemt Ferrari Land van 1 april tot en met 31 december 2026 dagelijks open, een reisblog (El Viaje de Sofi) alleen op losse dagen in november en december.
 
 Caribe Aquatic Park is een waterpark met 16 attracties op ongeveer 50.000 vierkante meter. Het seizoen 2026 eindigde volgens Taquilla op 20 september, in oktober is het dicht. In de zomer van 2026 is er volgens de Diari de Tarragona de Coral Bay bijgekomen, met de Leyenda Perdida en een waterachtbaan uit de Cyclone-familie.
 
@@ -262,13 +259,13 @@ Caribe Aquatic Park is een waterpark met 16 attracties op ongeveer 50.000 vierka
 
 In de zomer van 2026 is in Polynesia **Makamanu Jungle** geopend, een avonturenpad in een voormalige steengroeve: 135 meter lang, met 18 hutten op hoogte, 20 touwtunnels, 3 netladders en 4 glijbanen. Daarbij horen de zones Forest voor kinderen tot 3 jaar, Nest, Trail en Summit, en een rolstoeltoegankelijk pad. De toegang loopt rechtstreeks vanuit Far West, en Express is er niet.
 
-Het park kondigde daarnaast in mei 2026 een Hard Rock Cafe bij de ingang aan, met ongeveer 430 plaatsen. Op geen van de gelinkte pagina’s staat of het al open is. Het vervangt het LaLiga-restaurant, meldt de Diari de Tarragona.
+Het park kondigde daarnaast in mei 2026 een Hard Rock Cafe bij de ingang aan, met ongeveer 430 plaatsen. Een openingsdatum noemt het park in zijn aankondiging niet. Het vervangt het LaLiga-restaurant, meldt de Diari de Tarragona.
 
 Voor 2027 heeft het park nog niets nieuws bevestigd.
 
 ## Een dag in het park, globaal gepland
 
-Wie bij opening aan de ingang staat, gaat eerst naar de drie banen uit het rope-drop-stuk: Hurakan Condor in México, Tutuki Splash in Polynesia en Silver River Flume in Far West. Daarna loont het om per gebied te werken in plaats van kriskras door het park te lopen. China heeft Shambhala en Dragon Khan, met kluisjes tussen die twee. Far West heeft Stampida, Tomahawk, Uncharted en Grand Canyon Rapids, México El Diablo en Templo del Fuego, Mediterrània Furius Baco. Voor kinderen die te klein zijn voor de grote attracties zijn er in SésamoAventura Street Mission en Tami-Tami.
+Wie bij opening aan de ingang staat, gaat eerst naar de drie banen uit het rope-drop-stuk: Hurakan Condor in México, Tutuki Splash in Polynesia en Silver River Flume in Far West. China heeft Shambhala en Dragon Khan, met kluisjes tussen die twee. Far West heeft Stampida, Tomahawk, Uncharted en Grand Canyon Rapids, México El Diablo en Templo del Fuego, Mediterrània Furius Baco. Voor kinderen die te klein zijn voor de grote attracties zijn er in SésamoAventura Street Mission en Tami-Tami.
 
 De plattegrond van het park, om je route uit te stippelen:
 
@@ -300,8 +297,6 @@ Het park sluit niet bij regen en betaalt tickets niet terug, maar afzonderlijke 
 
 ## Het weer
 
-Zo ziet het weer boven het park eruit als je erheen gaat:
-
 ```weather-widget slug=portaventura-park
 
 ```
@@ -326,7 +321,7 @@ Nee, alleen in de tickets voor drie parken en in de Caribe-tickets. In oktober i
 
 ### Loont Express?
 
-Express 5 Adrenaline geldt voor zeven banen en kost vanaf € 46, Express 10 vanaf € 59, Unlimited vanaf € 75. Welke banen lange rijen hebben, staat in de tabel hierboven.
+Express 5 Adrenaline geldt voor zeven banen en kost vanaf € 46, Express 10 vanaf € 59, Unlimited vanaf € 75. Wie een baan twee keer wil rijden, heeft Unlimited nodig, want Express 10 telt elke baan maar één keer.
 
 ### Wanneer is het park in 2026 open?
 
@@ -338,17 +333,11 @@ Met Rodalies-lijn R17 vanaf Barcelona-França tot de halte PortAventura World, m
 
 ### Is er een single-riderrij?
 
-Op de pagina's van het park staat daar niets over. De woordenlijst legt uit wat het principe is:
+Op de pagina's van het park staat daar niets over.
 
 ```glossary-widget slug=single-rider
 
 ```
-
-## Wat ik je voor Vila-seca meegeef
-
-Met Shambhala en Dragon Khan heeft het park twee banen van Bolliger & Mabillard die 17 jaar uit elkaar liggen, en met Furius Baco en Uncharted twee van Intamin. Wie maar één dag heeft, boekt het ticket online, kiest een dinsdag tot donderdag buiten de feestdagen en gaat bij opening naar de drie rope-drop-banen.
-
-Ferrari Land en Caribe vragen een eigen ticket of een combiticket. Wie ze wil zien, koopt vóór de reis het juiste ticket.
 
 — Patrick
 
