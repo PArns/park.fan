@@ -259,7 +259,7 @@ een plateau, na 21 uur zakt het.
 
 ```
 
-Vroeg aankomen scheelt bij Hugin, Munin en
+Na 13 uur verdubbelt in onze gegevens bij geen enkele glijbaan de wachttijd van het ene uur op het andere. Vroeg aankomen scheelt bij Hugin, Munin en
 Stormvind iets en bij de vierpersoonsringen weinig.
 
 ## Wanneer je moet gaan
@@ -406,7 +406,7 @@ daarna volgen Halloween (tot 1 november) en HALLOWinter (2 tot 27 november), en
 van 28 november 2026 tot 9 januari 2027 de Winterzauber. Dan is er tot 19 maart
 pauze.
 
-Voor beide samen verkoopt het park in de zomer het **Ride & Slide Ticket** (vanaf
+In de zomer kun je het Europa-Park en Rulantica combineren. Het park verkoopt daarvoor het **Ride & Slide Ticket** (vanaf
 75 euro, alleen in bepaalde periodes) en hotelpakketten. “Alles erleben” bevat
 een dag Europa-Park, een dag Rulantica en een overnachting met ontbijt, vanaf 192
 euro per persoon in de vijfpersoonskamer. In het laagseizoen is er “2 für 1”

@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg sorge nel centro di Göteborg, è aperto dal 1923 e conta circa tre
+  Liseberg sorge ai margini del centro di Göteborg, è aperto dal 1923 e conta circa tre
   milioni di ospiti l’anno. In autunno ci sono cinque case stregate, d’inverno
   il più grande mercatino di Natale della Svezia. Un Express da comprare non
   esiste, e la coda virtuale nell’app è gratuita.
@@ -245,7 +245,7 @@ anni per Vinden, Zombie, Nattsvart på Gasten e Skogen, **15 anni** per «7».
 
 Lo **Spökhotellet Gasten** ha aperto nel 1998 e nell’autunno del 1999 ha ricevuto
 un THEA Award della Themed Entertainment Association in California. Compare
-nell’elenco delle attrazioni con coda virtuale. Zombie esiste, secondo il parco, dal 2015, Vinden dal 2017, la casa «7»
+nell’elenco delle attrazioni con coda virtuale. Fra le case di Halloween, Zombie esiste, secondo il parco, dal 2015, Vinden dal 2017, la casa «7»
 dal 2022 e Nattsvart på Gasten dal 2024.
 
 Fra la fermata Korsvägen e l’ingresso principale passa la **Stjärnstigen**, una
@@ -513,7 +513,7 @@ Secondo Liseberg all’inizio del 2027, con vendita dei biglietti da fine novemb
 Il quadro dei [parchi invernali 2026](/blog/parchi-divertimenti-inverno-2026)
 mette il mercatino di Natale accanto agli altri, e la
 [guida di Halloween 2026](/blog/halloween-parchi-divertimenti-2026) confronta i
-programmi d’autunno. Colossos, anch’essa una montagna russa di legno di Intamin, è nella guida all’[Heide Park](/blog/heide-park-tempi-di-attesa-consigli).
+programmi d’autunno. Un’altra montagna russa di legno è nella guida all’[Heide Park](/blog/heide-park-tempi-di-attesa-consigli).
 
 — Patrick
 

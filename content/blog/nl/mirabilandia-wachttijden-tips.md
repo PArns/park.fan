@@ -208,7 +208,7 @@ Het seizoen 2026 loopt van 2 april tot 1 november. Tot 24 oktober is het park vo
 
 Stel dat je om 10:30 uur bij de ingang staat en overal in mag. Voor Katun en Master Thai hebben we geen cijfers per uur. Geen van beide hoort bij de banen met de langste wachttijden, dus ze passen in de ochtend.
 
-Eerst Katun, Master Thai en iSpeed, iSpeed ongeveer 30 minuten na de opening. Daarna Divertical, dat om twaalf uur nog vóór zijn stijging zit. Tussen 13 en 14 uur, als Autosplash, Rio Bravo en El Dorado Falls hun piek hebben, is het tijd voor de lunch. Desmo Race is in onze gegevens vanaf 13 uur het kortst en wordt tot 18 uur langer, dus vroeg in de middag loont het. De waterbanen rijd je vroeg in de avond, na hun piek. Autosplash en Rio Bravo zijn vanaf 20 uur het kortst, op de zaterdagen in oktober is het park tot 22 uur open.
+Eerst Katun, Master Thai en iSpeed, die laatste ongeveer 30 minuten na de opening. Daarna Divertical, dat om twaalf uur nog vóór zijn stijging zit. Tussen 13 en 14 uur, als Autosplash, Rio Bravo en El Dorado Falls hun piek hebben, is het tijd voor de lunch. Desmo Race is in onze gegevens vanaf 13 uur het kortst en wordt tot 18 uur langer, dus vroeg in de middag loont het. De waterbanen rijd je vroeg in de avond, na hun piek. Autosplash en Rio Bravo zijn vanaf 20 uur het kortst, op de zaterdagen in oktober is het park tot 22 uur open.
 
 Twee dagen heb je nodig als je met kinderen komt, Nickelodeon Land en Dinoland helemaal wilt doen of in de zomer Mirabeach erbij neemt. Het waterpark heeft een eigen ticket.
 

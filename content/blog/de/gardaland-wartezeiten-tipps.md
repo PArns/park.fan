@@ -99,7 +99,7 @@ Shaman ist die älteste Achterbahn des Parks. Sie eröffnete 1985 unter dem Name
 
 ### Mammut, Dragon Rush und Ortobruco Tour
 
-[Mammut](ref:gardaland/mammut) ist eine Minenzug-Achterbahn von Vekoma mit drei Lifthills (12, 13 und 14 Meter), 2:45 Minuten Fahrzeit. Am Eingang steht die Statue eines Mammuts, das Thema ist arktisch.
+[Mammut](ref:gardaland/mammut) ist eine Minenzug-Achterbahn von Vekoma mit drei Lifthills (12, 13 und 14 Meter), 2:45 Minuten Fahrzeit. Am Eingang steht die Statue eines Mammuts, das Thema ist arktisch. Ein Zug hat 36 Plätze.
 
 [Dragon Rush](ref:gardaland/dragon-rush) ist ein Spinning Coaster von der Fabbri Group, 2016 eröffnet im damaligen Kung-Fu-Panda-Bereich. 2025 wurde die Bahn umgestaltet, nachdem die DreamWorks-Lizenz für Kung Fu Panda geendet hatte. Der Bereich heißt jetzt Dragon Empire. Dragon Rush fährt ab 110 Zentimetern und hat nach unseren Messungen die längste Warteschlange des Parks.
 
@@ -157,7 +157,7 @@ Wer zur besten Zeit einsteigt, steht an den meisten Bahnen 20 bis 45 Minuten kü
 
 ## Wann du hinfahren solltest
 
-Am vollsten ist es samstags, am ruhigsten mittwochs, und der Sonntag ist etwas voller als der Montag.
+Am vollsten ist es samstags, am ruhigsten mittwochs. Der Sonntag ist etwas voller als der Montag.
 
 ```stats-widget slug=gardaland show=weekdays
 

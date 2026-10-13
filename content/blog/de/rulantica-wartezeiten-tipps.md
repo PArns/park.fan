@@ -260,8 +260,7 @@ Plateau, nach 21 Uhr fällt es ab.
 
 ```
 
-Früh
-anzukommen spart bei Hugin, Munin und Stormvind etwas und an den Vierer-Reifen
+Nach 13 Uhr verdoppelt sich in unseren Daten an keiner Rutsche die Wartezeit von einer Stunde zur nächsten. Früh anzukommen spart bei Hugin, Munin und Stormvind etwas und an den Vierer-Reifen
 wenig.
 
 ## Wann du hinfahren solltest
@@ -404,7 +403,7 @@ in der Sommersaison geöffnet, danach folgen Halloween (bis 1. November) und
 HALLOWinter (2. bis 27. November), vom 28. November 2026 bis 9. Januar 2027 der
 Winterzauber. Dann ist bis zum 19. März Pause.
 
-Für beide zusammen verkauft der Park im Sommer das **Ride & Slide Ticket** (ab 75 Euro,
+Im Sommer lassen sich Europa-Park und Rulantica verbinden. Der Park verkauft dafür das **Ride & Slide Ticket** (ab 75 Euro,
 nur in bestimmten Zeiträumen) und Hotelpakete. „Alles erleben“ enthält einen Tag
 Europa-Park, einen Tag Rulantica und eine Übernachtung mit Frühstück, ab 192 Euro
 pro Person im Fünfbettzimmer. In der Nebensaison gibt es „2 für 1“ (zwei Nächte

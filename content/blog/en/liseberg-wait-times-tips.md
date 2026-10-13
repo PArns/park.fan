@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg is in the middle of Gothenburg, has been open since 1923 and counts
+  Liseberg is on the edge of Gothenburg’s city centre, has been open since 1923 and counts
   around three million guests a year. In autumn it has five haunted houses, in
   winter Sweden’s biggest Christmas market. There’s no Express pass to buy, and
   the virtual queue in the app is free.
@@ -241,7 +241,7 @@ for Vinden, Zombie, Nattsvart på Gasten and Skogen, **15 years** for "7".
 
 The **Spökhotellet Gasten** opened in 1998 and won a THEA Award from the Themed
 Entertainment Association in California in autumn 1999. It’s on the list of
-rides with a virtual queue. According to the park, Zombie has run since 2015, Vinden since 2017, the house "7" since 2022 and
+rides with a virtual queue. Of the Halloween houses, Zombie has run since 2015 according to the park, Vinden since 2017, the house "7" since 2022 and
 Nattsvart på Gasten since 2024.
 
 Between the Korsvägen stop and the main entrance runs the **Stjärnstigen**, a
@@ -512,7 +512,7 @@ According to Liseberg, in early 2027, with ticket sales from the end of November
 The overview of [winter parks 2026](/blog/winter-theme-parks-2026) sets the
 Christmas market next to the others, and the
 [Halloween guide 2026](/blog/halloween-theme-parks-2026) compares the autumn
-programmes. Colossos, another Intamin wooden coaster, is in the guide to [Heide Park](/blog/heide-park-wait-times-tips).
+programmes. Another wooden coaster is in the guide to [Heide Park](/blog/heide-park-wait-times-tips).
 
 — Patrick
 

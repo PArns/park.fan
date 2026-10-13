@@ -270,7 +270,7 @@ Quatre : le [Minifigure Speedway](ref:legoland-windsor/minifigure-speedway?bare
 
 ## Pour aller plus loin
 
-Pour son pendant allemand, il y a le guide de [Legoland Deutschland](/blog/legoland-deutschland-conseils), et le classement des parcs allemands se trouve dans l’aperçu des [meilleurs parcs d’attractions en Allemagne](/blog/meilleurs-parcs-d-attractions-en-allemagne). Nous expliquons comment nous évaluons le rope drop dans [70 minutes, est-ce beaucoup ?](/blog/70-minutes-est-ce-beaucoup).
+Pour le pendant allemand de Legoland Windsor, il y a le guide de [Legoland Deutschland](/blog/legoland-deutschland-conseils), et le classement des parcs allemands se trouve dans l’aperçu des [meilleurs parcs d’attractions en Allemagne](/blog/meilleurs-parcs-d-attractions-en-allemagne). Nous expliquons comment nous évaluons le rope drop dans [70 minutes, est-ce beaucoup ?](/blog/70-minutes-est-ce-beaucoup).
 
 ## Pour qui Legoland Windsor convient moins
 

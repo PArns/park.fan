@@ -145,7 +145,7 @@ the park's 30th birthday, and lasts about five minutes.
 
 From 1.05 metres with an adult, from 1.20 metres alone, up to 2.00 metres.
 
-### The rest of the seated rides
+### Other attractions
 
 - [Arthur, l'aventure 4D](ref:futuroscope/arthur-the-4d-adventure) in the IMAX dome: you're
   shrunk to the size of the Minimoys and fly through their world in a moving seat. From 1.05 and

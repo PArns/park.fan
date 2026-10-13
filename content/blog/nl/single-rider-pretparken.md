@@ -92,10 +92,10 @@ Het loont niet in deze gevallen:
 
 **Heeft de baan een single-riderrij?** Zo ja, dan toont park.fan op de attractiepagina het teken
 “Single Rider”. Een ontbrekend teken betekent niet dat er geen is, vaak weten we het voor die baan
-gewoon niet.
+gewoon niet. Het teken zegt niet of de rij vandaag open is.
 
-**Hoe lang is hij nu?** Op 8 oktober 2026 hadden de 18 parken samen
-41 single-riderrijen in twaalf parken, 19 daarvan geopend, in zeven parken.
+**Hoe lang is hij nu?** Op 8 oktober 2026 meldden twaalf van de 18 parken
+samen 41 single-riderrijen. Daarvan waren er 19 geopend, in zeven parken.
 Geen enkele van de 41 had een wachttijd. De parken melden ons dat de rij open is, maar niet hoe lang
 hij is. Op de attractiepagina toont park.fan dan “Single Rider” zonder tijd, en de tabellen in dit
 artikel tonen de gewone rij.
@@ -106,26 +106,26 @@ Hoeveel tijd de ingang bespaart, valt uit onze gegevens daarom op dit moment nie
 
 De cijfers zijn van 8 oktober 2026.
 
-| Park                           | Banen met single rider | Attracties |
-| ------------------------------ | ---------------------- | ---------- |
-| Efteling                       | 7                      | 37         |
-| Disney Adventure World         | 7                      | 14         |
-| Europa-Park                    | 6                      | 97         |
-| Universal Epic Universe        | 6                      | 14         |
-| Universal Islands of Adventure | 5                      | 25         |
-| PortAventura Park              | 4                      | 51         |
-| Alton Towers                   | 4                      | 55         |
-| Disney California Adventure    | 4                      | 29         |
-| Disney’s Hollywood Studios     | 3                      | 11         |
-| Universal Studios Florida      | 3                      | 44         |
-| Phantasialand                  | 3                      | 40         |
-| Hong Kong Disneyland           | 3                      | 47         |
-| Disneyland Park (Anaheim)      | 2                      | 56         |
-| Disneyland Park (Parijs)       | 2                      | 43         |
-| Shanghai Disneyland            | 2                      | 37         |
-| EPCOT                          | 2                      | 34         |
-| Thorpe Park                    | 2                      | 45         |
-| Disney’s Animal Kingdom        | 1                      | 17         |
+| Park                           | Banen met single rider | Attracties | Opgave onbekend |
+| ------------------------------ | ---------------------- | ---------- | --------------- |
+| Efteling                       | 7                      | 37         | 30              |
+| Disney Adventure World         | 7                      | 14         | 7               |
+| Europa-Park                    | 6                      | 97         | 1               |
+| Universal Epic Universe        | 6                      | 14         | 8               |
+| Universal Islands of Adventure | 5                      | 25         | 20              |
+| PortAventura Park              | 4                      | 51         | 45              |
+| Alton Towers                   | 4                      | 55         | 48              |
+| Disney California Adventure    | 4                      | 29         | 25              |
+| Disney’s Hollywood Studios     | 3                      | 11         | 8               |
+| Universal Studios Florida      | 3                      | 44         | 41              |
+| Phantasialand                  | 3                      | 40         | 0               |
+| Hong Kong Disneyland           | 3                      | 47         | 44              |
+| Disneyland Park (Anaheim)      | 2                      | 56         | 54              |
+| Disneyland Park (Parijs)       | 2                      | 43         | 41              |
+| Shanghai Disneyland            | 2                      | 37         | 35              |
+| EPCOT                          | 2                      | 34         | 32              |
+| Thorpe Park                    | 2                      | 45         | 38              |
+| Disney’s Animal Kingdom        | 1                      | 17         | 16              |
 
 ## Europa-Park
 
@@ -265,7 +265,7 @@ gesplitst om de plaatsen te vullen die gasten uit de gewone rij niet innemen.
 
 ## Universal Orlando
 
-In [Universal Studios Florida](ref:universal-studios-florida) zijn het Revenge of the Mummy, MEN IN
+In [Universal Studios Florida](ref:universal-studios-florida) zijn het er drie: Revenge of the Mummy, MEN IN
 BLACK Alien Attack en Harry Potter and the Escape from Gringotts. In
 [Islands of Adventure](ref:universal-islands-of-adventure) zijn het er vijf: Harry Potter and the
 Forbidden Journey, Hagrid’s Magical Creatures Motorbike Adventure, The Incredible Hulk Coaster,
@@ -349,7 +349,7 @@ Anaheim bij 54 van de 56. Daar kunnen meer banen met single rider zijn, net als 
 waar we er geen enkele kennen.
 
 Voor het Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal en de
-Aziatische Disney-parken bevestigt geen pagina van het park de lijst.
+Aziatische Disney-parken konden we geen pagina van het park lezen die de lijst bevestigt.
 
 ## Verder lezen
 

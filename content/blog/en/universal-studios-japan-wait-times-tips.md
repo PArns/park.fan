@@ -378,7 +378,7 @@ and it says that depending on the crowds, this can stop without warning. Even
 with a ticket, the ride inside the area can already be fully booked.
 
 **Yoyakunori (Reserve & Ride)** reserves a ride time for selected rides, in the
-park for example at The Flying Snoopy and Freeze Ray Sliders. The **Attraction Timed Entry
+park for example at The Flying Snoopy and Freeze Ray Sliders. Until your reserved time, you can ride other rides or eat. The **Attraction Timed Entry
 Ticket** applies to individual rides, including the Frieren walk. Both are only
 available in the park and can't be transferred, and each group can pick only one
 ride. If you uninstall the app before your ride time, the ticket becomes

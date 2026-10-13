@@ -8,7 +8,7 @@ featured: false
 excerpt: >-
   Plopsaland Belgium a De Panne è appartenuto fino al 1999 alla famiglia di un
   commerciante di miele e dal 2000 a Studio 100, che ci ha messo il folletto Plop e l’ape Maia.
-  Le code sono corte, e un biglietto con data costa da 36 €.
+  Le code sono corte e un biglietto con data costa da 36 €.
   The Ride to Happiness è stata eletta nel 2021 miglior nuovo coaster d’Europa.
 tags:
   - plopsaland-belgium

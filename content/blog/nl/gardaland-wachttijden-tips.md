@@ -98,7 +98,7 @@ Shaman is de oudste achtbaan van het park. Hij opende in 1985 onder de naam Magi
 
 ### Mammut, Dragon Rush en Ortobruco Tour
 
-[Mammut](ref:gardaland/mammut) is een mine train van Vekoma met drie lifthills (12, 13 en 14 meter) en een ritduur van 2:45 minuten. Bij de ingang staat het standbeeld van een mammoet, het thema is arctisch.
+[Mammut](ref:gardaland/mammut) is een mine train van Vekoma met drie lifthills (12, 13 en 14 meter) en een ritduur van 2:45 minuten. Bij de ingang staat het standbeeld van een mammoet, het thema is arctisch. Een trein heeft 36 plaatsen.
 
 [Dragon Rush](ref:gardaland/dragon-rush) is een spinning coaster van de Fabbri Group, in 2016 geopend in het toenmalige Kung Fu Panda-gebied. In 2025 is de baan omgebouwd, nadat de DreamWorks-licentie voor Kung Fu Panda was afgelopen. Het gebied heet nu Dragon Empire. Dragon Rush rijdt vanaf 110 centimeter en heeft volgens onze metingen de langste wachtrij van het park.
 
@@ -156,7 +156,7 @@ Wie op het beste moment instapt, staat bij de meeste attracties 20 tot 45 minute
 
 ## Wanneer je het best gaat
 
-Zaterdag is de drukste dag en woensdag de rustigste, zondag is iets voller dan maandag.
+Zaterdag is de drukste dag en woensdag de rustigste. Zondag is iets voller dan maandag.
 
 ```stats-widget slug=gardaland show=weekdays
 

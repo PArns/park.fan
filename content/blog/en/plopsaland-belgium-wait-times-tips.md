@@ -54,7 +54,7 @@ from the beach and close to the French border. Most of the rides are built for
 children. Three coasters aren’t: The Ride to Happiness, Anubis and Heidi, and
 they’re why coaster collectors make the trip.
 
-Half a day is enough for me for the three big ones. With children up to about
+For the three big ones, half a day is enough for me. With children up to about
 twelve it becomes a full day, and the queues are mostly short either way.
 
 ## From honey park to Studio 100 park

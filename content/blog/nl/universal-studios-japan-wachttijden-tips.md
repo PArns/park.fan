@@ -9,7 +9,7 @@ excerpt: >-
   Universal Studios Japan in Osaka had in 2024 zo’n 16 miljoen bezoekers, meer
   dan welk park in Azië ook. Op drukke dagen kom je alleen met een tijdslot uit
   de app of een Express Pass vanaf 10.800 yen in Super Nintendo World. De
-  weekdag maakt weinig uit, en in juli is het het rustigst.
+  weekdag maakt weinig uit, en juli is de rustigste maand.
 tags:
   - universal-studios-japan
   - osaka
@@ -384,7 +384,7 @@ waarschuwing kan stoppen. Heb je een ticket, dan kan de attractie in het gebied
 alsnog vol zitten.
 
 **Yoyakunori (Reserve & Ride)** reserveert een rijtijd voor geselecteerde
-attracties, in het park bijvoorbeeld bij The Flying Snoopy en Freeze Ray Sliders. Het **Attraction
+attracties, in het park bijvoorbeeld bij The Flying Snoopy en Freeze Ray Sliders. Tot de gereserveerde tijd kun je andere attracties doen of eten. Het **Attraction
 Timed Entry Ticket** geldt voor afzonderlijke attracties, de Frieren-wandeling
 inbegrepen. Beide krijg je alleen in het park en ze zijn niet overdraagbaar, en
 per groep kun je maar één attractie kiezen. Verwijder je de app voor de rijtijd,

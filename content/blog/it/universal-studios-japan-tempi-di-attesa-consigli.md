@@ -380,7 +380,7 @@ senza preavviso. Anche con il biglietto in mano, l’attrazione dentro l’area 
 risultare di nuovo al completo.
 
 **Yoyakunori (Reserve & Ride)** prenota un orario di salita per alcune
-attrazioni, nel parco per esempio The Flying Snoopy e Freeze Ray Sliders. L’**Attraction Timed
+attrazioni, nel parco per esempio The Flying Snoopy e Freeze Ray Sliders. Fino all’orario prenotato si può salire su altro o mangiare. L’**Attraction Timed
 Entry Ticket** vale per singole attrazioni, compresa la passeggiata di Frieren.
 Entrambi si trovano solo nel parco e non sono trasferibili, e per gruppo si può
 scegliere una sola attrazione. Se si disinstalla l’app prima dell’orario, il

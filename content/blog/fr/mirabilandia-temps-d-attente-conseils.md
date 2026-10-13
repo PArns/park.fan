@@ -208,7 +208,7 @@ La saison 2026 court du 2 avril au 1er novembre. Jusqu’au 24 octobre, le pa
 
 Supposons que tu sois à l’entrée à 10 h 30 et que tu puisses tout faire. Pour Katun et Master Thai, nous n’avons pas de chiffres heure par heure. Aucune des deux n’est parmi les attractions aux attentes les plus longues, elles trouvent donc leur place le matin.
 
-D’abord Katun, Master Thai et iSpeed, iSpeed environ 30 minutes après l’ouverture. Puis Divertical, qui est encore avant sa montée à midi. Entre 13 h et 14 h, quand Autosplash, Rio Bravo et El Dorado Falls ont leur pic, c’est l’heure du déjeuner. Dans nos données, Desmo Race est la plus courte à partir de 13 h et s’allonge jusqu’à 18 h, mieux vaut donc la faire tôt dans l’après-midi. Les attractions aquatiques, tu les fais en début de soirée, après leur sommet. Autosplash et Rio Bravo sont les plus courtes à partir de 20 h, et les samedis d’octobre le parc est ouvert jusqu’à 22 h.
+D’abord Katun, Master Thai et iSpeed, cette dernière environ 30 minutes après l’ouverture. Puis Divertical, qui est encore avant sa montée à midi. Entre 13 h et 14 h, quand Autosplash, Rio Bravo et El Dorado Falls ont leur pic, c’est l’heure du déjeuner. Dans nos données, Desmo Race est la plus courte à partir de 13 h et s’allonge jusqu’à 18 h, mieux vaut donc la faire tôt dans l’après-midi. Les attractions aquatiques, tu les fais en début de soirée, après leur sommet. Autosplash et Rio Bravo sont les plus courtes à partir de 20 h, et les samedis d’octobre le parc est ouvert jusqu’à 22 h.
 
 Il te faut deux jours si tu viens avec des enfants, si tu veux faire tout Nickelodeon Land et Dinoland ou si tu ajoutes Mirabeach en été. Le parc aquatique a son propre billet.
 
