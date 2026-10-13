@@ -196,7 +196,7 @@ bei 120.
 
 ## Disneyland Paris
 
-Der Resort hat zwei Parks. In
+Das Resort hat zwei Parks. In
 [Disney Adventure World](ref:disney-adventure-world) sind es sieben: Spider-Man W.E.B. Adventure
 und Avengers Assemble: Flight Force im Marvel Avengers Campus, Frozen Ever After in der World of
 Frozen, Ratatouille: L’Aventure Totalement Toquée de Rémy im Toon Studio, dazu im Toon Studio
@@ -250,7 +250,7 @@ Die drei Single-Rider-Warteschlangen in Disney’s Hollywood Studios standen am 
 
 ## Disneyland Resort in Kalifornien
 
-Der Resort in Anaheim nennt auf seiner Seite elf Bahnen. Im Disneyland Park sind es Millennium Falcon:
+Das Resort in Anaheim nennt auf seiner Seite elf Bahnen. Im Disneyland Park sind es Millennium Falcon:
 Smugglers Run, Matterhorn Bobsleds, Space Mountain, Tiana’s Bayou Adventure und Indiana Jones
 Adventure. Im Disney California Adventure Park sind es Goofy’s Sky School, Incredicoaster, Radiator
 Springs Racers, Grizzly River Run, WEB SLINGERS und Soarin’ Over California.
