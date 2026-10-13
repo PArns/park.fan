@@ -73,7 +73,7 @@ citeren ooggetuigen die een passagier zagen vallen.
 > Cobb County Police Department in een mededeling van maandag, gepubliceerd door [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/), vertaald uit het Engels
 
 ’s Avonds vertelden functionarissen aan de zender WSB-TV uit Atlanta dat vier
-mensen gewond waren geraakt. Hoe ernstig, zeggen de politie en Six Flags niet.
+mensen gewond waren geraakt. Over hun toestand hebben de politie en Six Flags zich niet uitgelaten.
 
 Na het incident bleef een trein boven op het parcours staan, meldde WSB-TV. Een
 bezoeker vertelde CNN dat de baan op de lifthill stilstond. Luchtbeelden van
@@ -111,8 +111,8 @@ voorlopige vergunning draait.
 >
 > John F. King, Insurance and Safety Fire Commissioner van Georgia, tegenover [FOX 5 Atlanta](https://www.fox5atlanta.com/news/six-flags-over-georgia-police-respond-after-goliath-coaster-stops), vertaald uit het Engels
 
-Wat er op Goliath is gebeurd, hebben de politie en Six Flags niet gezegd. Wie er
-is overleden, heeft geen van beide bekendgemaakt, ook geen leeftijd.
+Over de oorzaak hebben de politie en Six Flags niets gezegd, en ook niet over de
+naam of leeftijd van de overledene.
 
 ## Negen andere achtbanen staan stil
 
@@ -132,12 +132,13 @@ bedrijf noemde de banen tegenover WSB-TV en NBC News.
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                 |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                 |
 
-Waarin de banen op elkaar lijken, zegt Six Flags niet. Volgens de RCDB zijn de acht banen van B&M Hyper Coasters, hetzelfde model als Goliath in Georgia. Kings
+Six Flags heeft niet uitgelegd waarin de overeenkomst zit. Volgens de RCDB zijn acht van de negen banen Hyper Coasters van B&M, hetzelfde model als Goliath in Georgia. Kings
 Island, Carowinds en Canada’s Wonderland horen bij Six Flags sinds het bedrijf
 in 2024 met Cedar Fair is gefuseerd.
 
-Six Flags noemt voor geen van de banen een datum voor de heropening. Een vertegenwoordiger van Magic Mountain zei tegen NBC Los Angeles dat het park voor
-Goliath geen planning heeft. Bijna twee weken eerder, op 29 september, had Six
+Een vertegenwoordiger van Magic Mountain zei tegen NBC Los Angeles dat het park voor
+Goliath geen planning heeft. Ook voor de andere acht banen heeft Six Flags geen
+datum voor de heropening genoemd. Bijna twee weken eerder, op 29 september, had Six
 Flags aangekondigd [X2 in Six Flags Magic Mountain definitief te
 sluiten](/news/x2-six-flags-magic-mountain-gesloten).
 
@@ -158,8 +159,8 @@ was.
 
 Six Flags Over Georgia is in oktober alleen in het weekend open, meldde CNN. Op maandag was het park volgens CNN open vanwege de feestdag Columbus Day. Op dinsdag zou het
 park volgens een woordvoerder sowieso dicht zijn. Op zijn website kondigt het
-park Fright Fest aan op een aantal avonden tot en met 1 november. Of Goliath
-op de volgende openingsdag rijdt, heeft Six Flags niet gezegd.
+park Fright Fest aan op een aantal avonden tot en met 1 november. Six Flags heeft
+in het midden gelaten of Goliath op de volgende openingsdag weer rijdt.
 
 Bronnen:
 [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/),

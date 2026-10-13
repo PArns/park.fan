@@ -8,8 +8,8 @@ mode: published
 featured: false
 excerpt: >-
   One person died and several were hurt after an incident on the Goliath roller
-  coaster at Six Flags Over Georgia, near Atlanta, on Monday. Neither the police
-  nor Six Flags has given a cause. Six Flags has shut nine similar coasters at
+  coaster at Six Flags Over Georgia, near Atlanta, on Monday. The police and Six
+  Flags have given no cause. Six Flags has shut nine similar coasters at
   six parks for now, with no date for reopening.
 tags:
   - news
@@ -68,7 +68,7 @@ First and FOX 5 Atlanta also quote witnesses who saw a rider fall.
 > Cobb County Police Department in its statement on Monday, published by [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/)
 
 Officials told the Atlanta station WSB-TV that evening that four people had been
-injured. Neither the police nor Six Flags has said how badly.
+injured. The police and Six Flags have not said how badly they were hurt.
 
 A train was left standing high up on the track after the incident, WSB-TV
 reported. A visitor told CNN it had stopped on the lift hill. Aerial footage
@@ -96,8 +96,8 @@ the ride is running on a temporary permit.
 >
 > John F. King, Georgia’s Insurance and Safety Fire Commissioner, speaking to [FOX 5 Atlanta](https://www.fox5atlanta.com/news/six-flags-over-georgia-police-respond-after-goliath-coaster-stops)
 
-Neither the police nor Six Flags has said what happened on Goliath. Neither has
-named the person who died or given their age.
+The police and Six Flags have not said what happened on Goliath, who died or how
+old they were.
 
 ## Nine more coasters stand still
 
@@ -117,13 +117,14 @@ coasters to WSB-TV and NBC News.
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                     |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                     |
 
-Six Flags hasn't said what makes them similar. According to RCDB, the eight B&M
-rides are Hyper Coasters, the same model as Goliath in Georgia. Kings Island, Carowinds and
+Six Flags has not explained what the similarity is. According to RCDB, eight of
+the nine are Hyper Coasters by B&M, the same model as Goliath in Georgia. Kings Island, Carowinds and
 Canada’s Wonderland have belonged to Six Flags since the company merged with
 Cedar Fair in 2024.
 
-Six Flags hasn't given a reopening date for any of them. A Magic Mountain
-representative told NBC Los Angeles the park had no timeline for its Goliath.
+A Magic Mountain representative told NBC Los Angeles the park had no timeline
+for its Goliath. Six Flags has not given a reopening date for the other eight
+either.
 Almost two weeks earlier, on 29 September, Six Flags had announced that
 [X2 at Six Flags Magic Mountain would close for good](/news/x2-six-flags-magic-mountain-closed).
 
@@ -144,7 +145,7 @@ time that the ride had been inspected, had worked properly and had reopened.
 Six Flags Over Georgia only opens at weekends in October, CNN reported; on
 Monday it was open for the Columbus Day holiday. A spokesperson said the park
 had been due to stay closed on Tuesday anyway. Its website lists Fright Fest on
-selected evenings until 1 November. Six Flags hasn't said whether Goliath will
+selected evenings until 1 November. Six Flags has left open whether Goliath will
 run on the next operating day.
 
 Sources:

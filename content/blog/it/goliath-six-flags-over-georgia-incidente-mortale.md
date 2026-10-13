@@ -75,7 +75,7 @@ un passeggero.
 > Dipartimento di polizia della contea di Cobb nel comunicato di lunedì, pubblicato da [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/), tradotto dall’inglese
 
 In serata alcuni funzionari hanno detto a WSB-TV, emittente di Atlanta, che i
-feriti erano quattro. Quanto siano gravi, non lo dicono né la polizia né Six Flags.
+feriti erano quattro. Sulle loro condizioni la polizia e Six Flags non si sono espressi.
 
 Dopo l’incidente un treno è rimasto fermo in alto sul percorso, ha riferito WSB-TV. Un visitatore ha detto a CNN che era bloccato sul lift hill. Le
 riprese aeree di WSB-TV e, secondo CNN, di WXIA mostravano i passeggeri mentre
@@ -112,8 +112,7 @@ Fanno eccezione le attrazioni che funzionano con un permesso provvisorio.
 >
 > John F. King, Insurance and Safety Fire Commissioner della Georgia, a [FOX 5 Atlanta](https://www.fox5atlanta.com/news/six-flags-over-georgia-police-respond-after-goliath-coaster-stops), tradotto dall’inglese
 
-La polizia e Six Flags non hanno detto che cosa sia successo su Goliath. Nessuna
-delle due parti ha reso noto chi sia la persona morta, e nemmeno la sua età.
+Sulla causa la polizia e Six Flags non hanno detto nulla, e nemmeno sul nome o sull’età della persona morta.
 
 ## Altre nove montagne russe sono ferme
 
@@ -133,12 +132,11 @@ ha fornito l’elenco a WSB-TV e a NBC News.
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                      |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                      |
 
-Six Flags non spiega in che cosa queste attrazioni siano simili. Secondo la RCDB le otto attrazioni di B&M sono Hyper Coaster, lo stesso modello di Goliath in Georgia.
+Six Flags non ha spiegato in che cosa consista la somiglianza. Secondo la RCDB otto delle nove attrazioni sono Hyper Coaster di B&M, lo stesso modello di Goliath in Georgia.
 Kings Island, Carowinds e Canada’s Wonderland appartengono a Six Flags dal 2024,
 quando l’azienda si è fusa con Cedar Fair.
 
-Per nessuna delle attrazioni Six Flags indica una data di riapertura. Un rappresentante di Magic Mountain ha detto a NBC Los Angeles che il parco non ha
-tempi previsti per Goliath. Poco meno di due settimane prima, il 29 settembre,
+Un rappresentante di Magic Mountain ha detto a NBC Los Angeles che il parco non ha tempi previsti per Goliath. Neanche per le altre otto attrazioni Six Flags ha indicato una data di riapertura. Poco meno di due settimane prima, il 29 settembre,
 Six Flags aveva annunciato la
 [chiusura definitiva di X2 a Six Flags Magic Mountain](/news/x2-six-flags-magic-mountain-chiude).
 
@@ -158,8 +156,7 @@ riaperta.
 
 A ottobre Six Flags Over Georgia apre solo nei fine settimana, ha riferito CNN. Lunedì, sempre secondo CNN, era aperto per la festività del Columbus Day. Secondo un portavoce,
 martedì il parco sarebbe rimasto chiuso in ogni caso. Sul suo sito il parco
-annuncia Fright Fest in alcune serate fino al 1º novembre. Six Flags non ha
-detto se Goliath funzionerà nel prossimo giorno di apertura.
+annuncia Fright Fest in alcune serate fino al 1º novembre. Six Flags ha lasciato aperta la questione se Goliath funzionerà nel prossimo giorno di apertura.
 
 Fonti:
 [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/),

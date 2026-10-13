@@ -8,8 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Una persona murió el lunes en Six Flags Over Georgia, cerca de Atlanta, tras
-  un incidente en la montaña rusa Goliath, y varias resultaron heridas. Ni la
-  policía ni Six Flags dicen qué lo causó. Six Flags ha cerrado de momento nueve
+  un incidente en la montaña rusa Goliath, y varias resultaron heridas. La policía y Six Flags no han indicado la causa. Six Flags ha cerrado de momento nueve
   montañas rusas parecidas en seis parques, sin fecha para reabrirlas.
 tags:
   - noticias
@@ -74,7 +73,7 @@ FOX 5 Atlanta también citan a testigos que vieron caer a un pasajero.
 > Departamento de Policía del condado de Cobb, en su comunicado del lunes, publicado por [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/), traducido del inglés
 
 Por la noche, representantes de las autoridades dijeron a WSB-TV, una cadena de
-Atlanta, que había cuatro heridos. Ni la policía ni Six Flags dicen cuál es su estado.
+Atlanta, que había cuatro heridos. Sobre su estado no se han pronunciado ni la policía ni Six Flags.
 
 Tras el incidente, un tren se quedó parado en lo alto del recorrido, según WSB-TV. Un visitante contó a CNN que la atracción se había detenido en la
 subida. Las imágenes aéreas de WSB-TV y, según CNN, de WXIA mostraron cómo
@@ -113,8 +112,7 @@ con un permiso provisional.
 >
 > John F. King, Insurance and Safety Fire Commissioner de Georgia, en declaraciones a [FOX 5 Atlanta](https://www.fox5atlanta.com/news/six-flags-over-georgia-police-respond-after-goliath-coaster-stops), traducido del inglés
 
-Ni la policía ni Six Flags han dicho qué pasó en Goliath. Ninguna de las dos ha
-dado el nombre de la persona fallecida, ni tampoco su edad.
+La policía y Six Flags no han dicho nada sobre la causa, ni sobre el nombre o la edad de la persona fallecida.
 
 ## Otras nueve montañas rusas están paradas
 
@@ -134,12 +132,11 @@ empresa dio a WSB-TV y a NBC News la lista de montañas rusas.
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                      |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                      |
 
-Six Flags no explica en qué se parecen. Según la RCDB, las ocho montañas rusas de B&M son Hyper Coaster, el mismo modelo que el Goliath de Georgia. Kings Island,
+Six Flags no ha explicado en qué consiste el parecido. Según la RCDB, ocho de las nueve son Hyper Coaster de B&M, el mismo modelo que el Goliath de Georgia. Kings Island,
 Carowinds y Canada’s Wonderland pertenecen a Six Flags desde que la empresa se
 fusionó con Cedar Fair en 2024.
 
-Six Flags no ha dado fecha de reapertura para ninguna de ellas. Un representante de Magic Mountain dijo a NBC Los Angeles que el parque no tiene
-calendario para Goliath. Casi dos semanas antes, el 29 de septiembre, Six Flags
+Un representante de Magic Mountain dijo a NBC Los Angeles que el parque no tiene calendario para Goliath. Para las otras ocho, Six Flags tampoco ha dado fecha de reapertura. Casi dos semanas antes, el 29 de septiembre, Six Flags
 había anunciado el
 [cierre definitivo de X2 en Six Flags Magic Mountain](/news/x2-six-flags-magic-mountain-cierra).
 
@@ -159,8 +156,7 @@ correctamente y que había vuelto a abrir.
 
 En octubre, Six Flags Over Georgia solo abre los fines de semana, informó CNN. El lunes, según CNN, abrió por el festivo de Columbus Day. Según un portavoz, el martes el
 parque iba a estar cerrado de todos modos. En su web, el parque anuncia Fright
-Fest algunas noches hasta el 1 de noviembre. Six Flags no ha dicho si
-Goliath funcionará el próximo día que abra el parque.
+Fest algunas noches hasta el 1 de noviembre. Six Flags ha dejado abierto si Goliath funcionará el próximo día que abra el parque.
 
 Fuentes:
 [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/),
