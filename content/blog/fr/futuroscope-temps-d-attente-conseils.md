@@ -52,8 +52,7 @@ seo:
 
 Qui arrivait le 31 mai 1987 à Chasseneuil-du-Poitou trouvait un pavillon avec une sphère posée sur
 un plan incliné, et une salle de cinéma. Selon Wikipédia en français, ce plan devait représenter un
-lever de soleil sur un monde qui change, c'est ainsi que l'architecte Denis Laming l'a dessiné. La
-salle s'appelait le Kinémax et figurait déjà dans la première saison. Presque toutes les attractions
+lever de soleil sur un monde qui change, c'est ainsi que l'architecte Denis Laming l'a dessiné. La salle s'appelait le Kinémax. Presque toutes les attractions
 du [Futuroscope](ref:futuroscope) sont encore aujourd'hui une projection, un parcours dans le noir
 ou un siège qui bouge avec le film.
 
@@ -72,7 +71,7 @@ parc en 2024. Nous mesurons les temps d'attente ici depuis le 6 octobre 2024, ac
 Le 11 décembre 1984, René Monory, président du conseil général de la Vienne, pose la première
 pierre. Il avait imaginé dès le début des années quatre-vingt une ville du futur, dont le parc
 était la première partie. Il ouvre le 31 mai 1987, avec le pavillon, le Kinémax et une aire de
-jeux. Les salles se succèdent ensuite : en 1988 le premier Cinéma Dynamique, en 1990 l'Omnimax et
+jeux. Suivent en 1988 le premier Cinéma Dynamique, en 1990 l'Omnimax et
 la tour panoramique Gyrotour, en 1996 l'IMAX 3D, en 2000 la gare TGV avec une passerelle piétonne
 qui mène directement au parc.
 
@@ -90,7 +89,7 @@ restaurant Space Loop (tous deux ouverts le 29 avril 2022), l'hôtel Ecolodgee (
 (15 juillet 2024) et Mission Bermudes (juin 2025). Depuis le 29 mai 2024, l'ensemble s'appelle
 Futuroscope Xperiences.
 
-## Les grandes attractions, et ce que chacune exige
+## Les grandes attractions et leurs tailles minimales
 
 Le parc fixe les tailles minimales attraction par attraction, et il y en a le plus souvent deux :
 une pour les enfants accompagnés d'un adulte, une pour les enfants seuls. En dessous de la
@@ -140,8 +139,7 @@ bout du bras d'un robot industriel qui danse sur des tubes du DJ Martin Solveig.
 environ une minute. Le pavillon des robots a ouvert en 2006, l'année des robots, et la version
 avec Solveig date de décembre 2012. Le parc parle d'un robot de neuf mètres de haut.
 
-Il n'y a ici qu'une seule limite : à partir de 1,20 m, jusqu'à 2,00 m. En dessous, on ne monte
-pas, même accompagné.
+À partir de 1,20 m, même accompagné, jusqu'à 2,00 m.
 
 ### L'Extraordinaire Voyage
 
@@ -239,16 +237,13 @@ Objectif Mars et L'Extraordinaire Voyage se partagent la première place. Derri�
 Chasseurs de Tornades, La Maison à l'envers, Aventure Éclabousse et Danse avec les Robots, très
 proches les uns des autres.
 
-La Maison à l'envers figure parmi les cinq premières. Selon le parc, la maison n'a pas de limite de
+Selon le parc, La Maison à l'envers n'a pas de limite de
 taille et sert de solution de repli aux familles dont les enfants n'ont pas encore le droit de
 monter dans les attractions. Le Pass Premium+ n'y est pas valable.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
 ```
-
-Le tableau indique pour chaque attraction l'heure où sa file est la plus longue, et comment elle
-évolue avant et après.
 
 ### Des pass qui évitent la file
 
@@ -304,7 +299,6 @@ Cela explique que nos mesures de novembre et de décembre soient maigres.
 
 ```
 
-Le calendrier indique, pour les semaines à venir, les jours où la file attendue est la plus courte.
 Qui est flexible choisit un jeudi ou un vendredi hors des vacances scolaires françaises.
 
 ### Futuroween 2026
@@ -429,7 +423,7 @@ un adulte et de 55 euros pour un enfant. Avec la Carte Saison, on a dix pour cen
 le vol « Adrénaline » et sur le vol « Kid ».
 
 L'**Arena Futuroscope** est une salle de spectacles et de sport de 6 144 places, ouverte le
-7 avril 2022. Elle n'a rien à voir avec la visite du parc, mais se trouve sur le même terrain.
+7 avril 2022.
 
 ## Une journée au parc, en gros
 

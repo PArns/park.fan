@@ -51,8 +51,7 @@ seo:
 
 Anyone who arrived in Chasseneuil-du-Poitou on 31 May 1987 found a pavilion with a sphere on a
 sloping surface, and a cinema. According to the French Wikipedia, the surface was meant to show a
-sunrise over a changing world, which is how the architect Denis Laming designed it. The cinema was
-called Kinémax and was in the park from its first season. Almost every attraction at
+sunrise over a changing world, which is how the architect Denis Laming designed it. The cinema was called Kinémax. Almost every attraction at
 [Futuroscope](ref:futuroscope) is still a show, a walk-through in the dark or a seat that moves with
 the film.
 
@@ -70,8 +69,7 @@ attractions.
 
 On 11 December 1984, René Monory, the president of the Vienne departmental council, laid the
 foundation stone. He had dreamed up a city of the future in the early 1980s, and the park was its
-first part. It opened on 31 May 1987 with the pavilion, the Kinémax and a play area. Cinema after
-cinema followed: the first Cinéma Dynamique in 1988, the Omnimax and the Gyrotour observation
+first part. It opened on 31 May 1987 with the pavilion, the Kinémax and a play area. After that came the first Cinéma Dynamique in 1988, the Omnimax and the Gyrotour observation
 tower in 1990, the IMAX 3D in 1996, and in 2000 the TGV station with a footbridge straight into
 the park.
 
@@ -87,7 +85,7 @@ Chasseurs de Tornades (2022), the Station Cosmos hotel and the Space Loop restau
 on 29 April 2022), the Ecolodgee hotel (2023), the Aquascope (15 July 2024) and Mission Bermudes
 (June 2025). The whole site has been called Futuroscope Xperiences since 29 May 2024.
 
-## The big attractions, and what each one asks for
+## The big attractions and their minimum heights
 
 The park sets minimum heights ride by ride, and there are usually two: one for children with an
 adult and one for children on their own. A child below the first can't ride. At the info points
@@ -136,8 +134,7 @@ of an industrial robot that dances to hits by the DJ Martin Solveig. The ride la
 minute. The robot pavilion opened in 2006, the year of the robots, and the version with Solveig
 dates from December 2012. The park talks about a robot nine metres tall.
 
-There's just one limit here: from 1.20 metres, up to 2.00 metres. Anyone shorter can't ride, not
-even with an adult.
+From 1.20 metres, even with an adult, up to 2.00 metres.
 
 ### L'Extraordinaire Voyage
 
@@ -232,16 +229,13 @@ Objectif Mars and L'Extraordinaire Voyage share first place. Behind them Arthur,
 Tornades, La Maison à l'envers, Aventure Éclabousse and Danse avec les Robots sit very close
 together.
 
-La Maison à l'envers is in the top five. By the park's own account the house has no height limit,
+By the park's own account La Maison à l'envers has no height limit,
 and it's the fallback for families whose children can't ride the bigger attractions yet. The
 Premium+ pass isn't valid there.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
 ```
-
-The table gives, for each ride, the hour when its queue is longest and how it behaves before and
-after.
 
 ### Passes that get you past the queue
 
@@ -293,7 +287,7 @@ why our readings for November and December are thin.
 
 ```
 
-The calendar shows the days with the shortest expected queue over the coming weeks. If you're
+If you're
 flexible, pick a Thursday or Friday outside the French school holidays.
 
 ### Futuroween 2026
@@ -408,7 +402,7 @@ need an adult with them, teenagers aged 12 to 17 need written parental consent, 
 capped at 120 kilograms. The price is 69 euros for adults and 55 euros for children. With the
 Carte Saison you get ten percent off the "Adrénaline" flight and the "Kid" flight.
 
-The **Arena Futuroscope** is a hall for shows and sport with 6,144 seats, which opened on 7 April 2022. It has nothing to do with a park visit, but it's on the same site.
+The **Arena Futuroscope** is a hall for shows and sport with 6,144 seats, which opened on 7 April 2022.
 
 ## A day in the park, roughly planned
 

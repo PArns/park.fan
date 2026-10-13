@@ -51,8 +51,7 @@ seo:
 
 Wer am 31. Mai 1987 in Chasseneuil-du-Poitou ankam, fand einen Pavillon mit einer Kugel auf einer
 schrägen Fläche und ein Kino. Die Fläche sollte nach der französischen Wikipedia einen Sonnenaufgang
-über einer sich wandelnden Welt darstellen, so hat es der Architekt Denis Laming entworfen. Das Kino
-hieß Kinémax und stand schon in der ersten Saison im Park. Fast jede Attraktion im
+über einer sich wandelnden Welt darstellen, so hat es der Architekt Denis Laming entworfen. Das Kino hieß Kinémax. Fast jede Attraktion im
 [Futuroscope](ref:futuroscope) ist bis heute eine Vorführung, ein Parcours im Dunkeln oder ein Sitz,
 der sich zum Film bewegt.
 
@@ -69,7 +68,7 @@ im Jahr, die Themed Entertainment Association zählt für den Park allein 2,05 M
 Am 11. Dezember 1984 legte René Monory, der Präsident des Départementrats der Vienne, den
 Grundstein. Er hatte sich schon Anfang der Achtzigerjahre eine Stadt der Zukunft ausgedacht, und
 der Park war ihr erster Teil. Am 31. Mai 1987 machte er auf, mit dem Pavillon, dem Kinémax und
-einem Spielbereich. Es folgten Kino um Kino: 1988 das erste Cinéma Dynamique, 1990 das Omnimax
+einem Spielbereich. Danach kamen 1988 das erste Cinéma Dynamique, 1990 das Omnimax
 und der Aussichtsturm Gyrotour, 1996 das IMAX 3D, 2000 die TGV-Station mit einem Fußgängersteg
 direkt in den Park.
 
@@ -136,8 +135,7 @@ Arm eines Industrieroboters, der zu Hits des DJs Martin Solveig tanzt. Die Fahrt
 eine Minute. Der Pavillon der Roboter eröffnete 2006, im Jahr der Roboter, die Version mit
 Solveig stammt vom Dezember 2012. Der Park spricht von einem Roboter von neun Metern Höhe.
 
-Hier gilt eine einzige Grenze: ab 1,20 Metern, bis 2,00 Meter. Wer kleiner ist, fährt nicht, auch
-nicht mit Begleitung.
+Ab 1,20 Metern, auch mit Begleitung, bis 2,00 Meter.
 
 ### L'Extraordinaire Voyage
 
@@ -233,16 +231,12 @@ Objectif Mars und L'Extraordinaire Voyage teilen sich den ersten Rang. Dahinter 
 Chasseurs de Tornades, La Maison à l'envers, Aventure Éclabousse und Danse avec les Robots dicht
 beieinander.
 
-La Maison à l'envers steht unter den ersten fünf. Das Haus
-hat nach den Angaben des Parks keine Größengrenze und ist die Ausweichmöglichkeit für Familien,
+La Maison à l'envers hat nach den Angaben des Parks keine Größengrenze und ist die Ausweichmöglichkeit für Familien,
 deren Kinder die Bahnen noch nicht fahren dürfen. Der Pass Premium+ gilt dort nicht.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
 ```
-
-In der Tabelle steht für jede Bahn die Stunde, in der ihre Warteschlange am längsten ist, und wie
-sie sich davor und danach verhält.
 
 ### Pässe, die an der Warteschlange vorbeiführen
 
@@ -292,7 +286,6 @@ Die Saison 2026 läuft nach dem Kalender der Carte Saison vom 7. Februar 2026 bi
 
 ```
 
-Im Kalender stehen für die nächsten Wochen die Tage mit der erwarteten kürzesten Warteschlange.
 Wer flexibel ist, wählt einen Donnerstag oder Freitag außerhalb der französischen Schulferien.
 
 ### Futuroween 2026
@@ -410,8 +403,7 @@ eine Einverständniserklärung der Eltern, und das Gewicht ist auf 120 Kilogramm
 liegt bei 69 Euro für Erwachsene und 55 Euro für Kinder. Mit der Carte Saison gibt es zehn Prozent
 Rabatt auf den Flug „Adrénaline“ und den Flug „Kid“.
 
-Die **Arena Futuroscope** ist eine Halle für Shows und Sport mit 6.144 Plätzen, die am 7. April 2022 eröffnete. Sie hat mit dem Parkbesuch nichts zu tun, liegt aber auf demselben
-Gelände.
+Die **Arena Futuroscope** ist eine Halle für Shows und Sport mit 6.144 Plätzen, die am 7. April 2022 eröffnete.
 
 ## Ein Tag im Park, grob geplant
 

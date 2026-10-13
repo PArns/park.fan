@@ -51,8 +51,7 @@ seo:
 
 Wie op 31 mei 1987 in Chasseneuil-du-Poitou aankwam, vond een paviljoen met een bol op een schuin
 vlak en een bioscoop. Het vlak moest volgens de Franse Wikipedia een zonsopgang boven een
-veranderende wereld voorstellen, zo ontwierp architect Denis Laming het. De bioscoop heette Kinémax
-en stond al in het eerste seizoen in het park. Bijna elke attractie in
+veranderende wereld voorstellen, zo ontwierp architect Denis Laming het. De bioscoop heette Kinémax. Bijna elke attractie in
 [Futuroscope](ref:futuroscope) is nog altijd een voorstelling, een parcours in het donker of een
 stoel die met de film meebeweegt.
 
@@ -70,7 +69,7 @@ meten hier sinds 6 oktober 2024 wachttijden, op dit moment bij 55 attracties.
 Op 11 december 1984 legde René Monory, voorzitter van de departementsraad van de Vienne, de
 eerste steen. Hij had al begin jaren tachtig een stad van de toekomst bedacht, en het park was
 daarvan het eerste deel. Op 31 mei 1987 ging het open, met het paviljoen, de Kinémax en een
-speelgebied. Daarna volgde de ene bioscoop na de andere: in 1988 de eerste Cinéma Dynamique, in
+speelgebied. Daarna kwamen in 1988 de eerste Cinéma Dynamique, in
 1990 de Omnimax en de uitkijktoren Gyrotour, in 1996 de IMAX 3D en in 2000 het TGV-station met
 een voetgangersbrug rechtstreeks het park in.
 
@@ -87,7 +86,7 @@ restaurant Space Loop (allebei op 29 april 2022 geopend), het hotel Ecolodgee (2
 Aquascope (15 juli 2024) en Mission Bermudes (juni 2025). Sinds 29 mei 2024 heet het geheel
 Futuroscope Xperiences.
 
-## De grote attracties en wat elke attractie vraagt
+## De grote attracties en hun minimumlengte
 
 De minimale lengtes stelt het park per attractie vast, en meestal zijn het er twee: een voor
 kinderen met een volwassene erbij en een voor kinderen alleen. Wie onder de eerste grens blijft,
@@ -136,8 +135,7 @@ van een industriële robot die danst op hits van dj Martin Solveig. De rit duurt
 minuut. Het paviljoen van de robots opende in 2006, het jaar van de robots, de versie met Solveig
 dateert van december 2012. Het park spreekt van een robot van negen meter hoog.
 
-Hier geldt maar één grens: vanaf 1,20 meter, tot 2,00 meter. Wie kleiner is, mag niet mee, ook
-niet met begeleiding.
+Vanaf 1,20 meter, ook met begeleiding, tot 2,00 meter.
 
 ### L'Extraordinaire Voyage
 
@@ -236,16 +234,13 @@ Objectif Mars en L'Extraordinaire Voyage delen de eerste plek. Daarachter volgen
 Chasseurs de Tornades, La Maison à l'envers, Aventure Éclabousse en Danse avec les Robots vlak
 bij elkaar.
 
-La Maison à l'envers staat bij de eerste vijf. Het huis heeft volgens het park geen lengtegrens en
+La Maison à l'envers heeft volgens het park geen lengtegrens en
 is de uitwijkmogelijkheid voor gezinnen met kinderen die de attracties nog niet in mogen. De Pass
 Premium+ geldt er niet.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
 ```
-
-In de tabel staat per attractie het uur waarin de wachtrij het langst is en hoe die zich daarvoor en
-daarna gedraagt.
 
 ### Passen die langs de wachtrij gaan
 
@@ -300,7 +295,7 @@ waarom onze meetwaarden voor november en december dun zijn.
 
 ```
 
-In de kalender staan voor de komende weken de dagen met de verwachte kortste wachtrij. Wie
+Wie
 flexibel is, kiest een donderdag of vrijdag buiten de Franse schoolvakanties.
 
 ### Futuroween 2026
@@ -418,7 +413,7 @@ van de ouders, en het gewicht is beperkt tot 120 kilogram. De prijs is 69 euro v
 en de vlucht “Kid”.
 
 De **Arena Futuroscope** is een hal voor shows en sport met 6.144 plaatsen, die op 7 april 2022
-opende. Ze heeft niets met een bezoek aan het park te maken, maar ligt wel op hetzelfde terrein.
+opende.
 
 ## Een dag in het park, globaal gepland
 

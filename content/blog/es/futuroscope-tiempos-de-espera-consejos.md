@@ -52,7 +52,7 @@ seo:
 Quien llegó a Chasseneuil-du-Poitou el 31 de mayo de 1987 se encontró con un pabellón con una
 esfera sobre una superficie inclinada y con un cine. Según la Wikipedia francesa, esa superficie
 debía representar un amanecer sobre un mundo en transformación, y así la diseñó el arquitecto Denis
-Laming. El cine se llamaba Kinémax y estaba en el parque desde la primera temporada. Casi todas las
+Laming. El cine se llamaba Kinémax. Casi todas las
 atracciones del [Futuroscope](ref:futuroscope) siguen siendo una proyección, un recorrido a oscuras
 o un asiento que se mueve con la película.
 
@@ -71,7 +71,7 @@ parque en 2024. Medimos aquí los tiempos de espera desde el 6 de octubre de 202
 El 11 de diciembre de 1984 René Monory, presidente del consejo departamental de la Vienne, puso
 la primera piedra. Ya a principios de los años ochenta había imaginado una ciudad del futuro, y
 el parque fue su primera parte. Abrió el 31 de mayo de 1987 con el pabellón, el Kinémax y una
-zona de juegos. Después fueron llegando cines uno tras otro: en 1988 el primer Cinéma Dynamique,
+zona de juegos. Después llegaron en 1988 el primer Cinéma Dynamique,
 en 1990 el Omnimax y la torre mirador Gyrotour, en 1996 el IMAX 3D y en 2000 la estación del TGV
 con una pasarela peatonal directa al parque.
 
@@ -89,7 +89,7 @@ el restaurante Space Loop (ambos inaugurados el 29 de abril de 2022), el hotel E
 el Aquascope (15 de julio de 2024) y Mission Bermudes (junio de 2025). Desde el 29 de mayo de
 2024 el conjunto se llama Futuroscope Xperiences.
 
-## Las grandes atracciones y lo que pide cada una
+## Las grandes atracciones y sus alturas mínimas
 
 El parque fija la altura mínima atracción por atracción, y casi siempre son dos: una para niños
 acompañados por un adulto y otra para niños solos. Quien no llega a la primera no puede subir. En
@@ -141,8 +141,7 @@ alrededor de un minuto. El pabellón de los robots abrió en 2006, el año de lo
 versión con Solveig es de diciembre de 2012. El parque habla de un robot de nueve metros de
 altura.
 
-Aquí hay un único límite: desde 1,20 metros hasta 2,00 metros. Quien es más bajo no sube, ni
-siquiera acompañado.
+Desde 1,20 metros, también acompañado, hasta 2,00 metros.
 
 ### L'Extraordinaire Voyage
 
@@ -242,16 +241,13 @@ Objectif Mars y L'Extraordinaire Voyage comparten el primer puesto. Detrás vien
 Arthur, Chasseurs de Tornades, La Maison à l'envers, Aventure Éclabousse y Danse avec les
 Robots.
 
-La Maison à l'envers está entre las cinco primeras. Según el parque, la casa no tiene límite de
+Según el parque, La Maison à l'envers no tiene límite de
 altura y es la alternativa para las familias cuyos hijos todavía no pueden subir a las atracciones.
 El pase Premium+ no vale allí.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
 ```
-
-La tabla indica, para cada atracción, la hora en la que su cola es más larga y cómo se comporta
-antes y después.
 
 ### Pases que se saltan la cola
 
@@ -308,7 +304,7 @@ diciembre son escasos.
 
 ```
 
-En el calendario figuran, para las próximas semanas, los días con la cola más corta prevista. Quien
+Quien
 sea flexible elegirá un jueves o un viernes fuera de las vacaciones escolares francesas.
 
 ### Futuroween 2026
@@ -429,7 +425,7 @@ padres, y el peso está limitado a 120 kilogramos. El precio es de 69 euros para
 «Adrénaline» y en el vuelo «Kid».
 
 El **Arena Futuroscope** es una sala para espectáculos y deporte con 6.144 plazas que abrió el
-7 de abril de 2022. No tiene nada que ver con la visita al parque, pero está en el mismo recinto.
+7 de abril de 2022.
 
 ## Un día en el parque, a grandes rasgos
 
