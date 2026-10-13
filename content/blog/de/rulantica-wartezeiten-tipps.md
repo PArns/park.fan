@@ -100,8 +100,7 @@ Obergrenze.
 führen die großen Rutschen nach unten, und von den Komfort-Hyddas aus sieht man
 über die ganze Halle. **Vinterhal** ist der Eispalast mit der zu Eis erstarrten
 Seeschlange Svalgur, deren Körper die Rutschen trägt. Im **Frigg Tempel**
-liegt der beheizte Außenpool mit Swim-up-Bar, und hier steht auch das
-Wasserkarussell. **Lumåfals** ist die Höhle mit Wasserfall, Wellenbad und Lazy
+liegt der beheizte Außenpool mit Swim-up-Bar und das Wasserkarussell. **Lumåfals** ist die Höhle mit Wasserfall, Wellenbad und Lazy
 River, die **Skog Lagune** hat Sprudelliegen unter Kiefern.
 
 Für die Kleinen gibt es **Trølldal** mit flachem Wasser und kleinen Rutschen und
@@ -195,7 +194,7 @@ unter Aufsicht eines Erziehungsberechtigten. 240 Gäste pro Stunde.
 [Vikingløp](ref:rulantica/vikinglop) im Nordiskturn ist laut Park die größte
 Speed-Rutsche Europas. Acht Rennbahnen laufen nebeneinander, du legst dich auf
 eine Matte, Kopf voraus, und rutschst gegen die Gäste auf den anderen Bahnen.
-Unten steht eine Tribüne, von der aus Zuschauer den Sieger bejubeln. Nach den
+Am Ende der Bahnen ist eine Tribüne, von der aus Zuschauer den Sieger bejubeln. Nach den
 Regeln des Parks bleiben Arme und Ellbogen auf der Matte, Beine und Knie auch,
 in den Kurven halten beide Hände die Matte fest, und kurz vor dem Ziel hebst du
 die Füße an. Brillen sind hier nicht erlaubt. Das theoretische Maximum
