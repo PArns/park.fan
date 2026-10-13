@@ -651,6 +651,8 @@ export type DowntimeBlock =
         | 'park_never_reports'
         | 'artefact_regime'
         | 'no_schedule'
+        /** The ride has no queue (free-flow), so an outage would not show up. About the ride, not our data. */
+        | 'free_flow'
         /**
          * The park publishes opening hours, but none inside the measured window (a seasonal park
          * between seasons), so there is no operating time to divide by. `outages` is 0 and means
