@@ -38,7 +38,7 @@ seo:
 
 Das [Efteling](ref:efteling) verkauft jetzt Karten für seinen Silvesterabend am 31. Dezember 2026, von 19 bis 1 Uhr, für 62 Euro pro Person. Auf seiner Eventseite kündigt der Park Attraktionen im Dunkeln an, dazu Tausende Lichter, Winterattraktionen, Unterhaltung und ein Feuerwerk.
 
-Am 8. Oktober hatte das Efteling in seinem Blog noch geschrieben, die Tickets für das „Oud & Nieuw feest“ seien „binnenkort verkrijgbaar“, also bald zu haben. Inzwischen lässt sich der Abend im Ticketshop buchen. Der 31. Dezember ist der einzige Tag dieses Angebots, mit dem Zeitfenster 19 bis 1 Uhr.
+Am 8. Oktober hatte das Efteling in seinem Blog noch geschrieben, die Tickets für das „Oud & Nieuw feest“ seien „binnenkort verkrijgbaar“, also bald zu haben. Inzwischen lässt sich der Abend im Ticketshop buchen.
 
 ## Was die Karte einschließt
 
@@ -46,7 +46,7 @@ Zum Ticket gehören ein Oliebol, etwas Prickelndes zum Anstoßen und das Feuerwe
 
 Das Parken ist am Silvesterabend inklusive. An anderen Tagen kostet der Parkplatz am Efteling 15 Euro, Gäste der Hotels und Ferienparks parken an ihrer Unterkunft kostenlos.
 
-Die Karte gilt einmal für eine Person ab vier Jahren, am 31. Dezember von 19 bis 1 Uhr. Bei Tagestickets kommen Kinder bis einschließlich drei Jahre mit Ausweis kostenlos in den Park. Ob das am Silvesterabend genauso gilt, schreibt das Efteling auf der Ticketseite nicht, und wer ein Kleinkind mitnehmen will, fragt besser vorher beim Park nach.
+Die Karte gilt einmal für eine Person ab vier Jahren. Bei Tagestickets kommen Kinder bis einschließlich drei Jahre mit Ausweis kostenlos in den Park. Ob das am Silvesterabend genauso gilt, schreibt das Efteling auf der Ticketseite nicht, und wer ein Kleinkind mitnehmen will, fragt besser vorher beim Park nach.
 
 Pro Bestellung lassen sich bis zu 19 Karten kaufen. Zurückgeben kann man sie nicht. Für Tickets, die online über efteling.com gekauft wurden, räumt das Efteling sonst 14 Tage Rückgaberecht ein, nimmt Karten mit festem Datum oder für ein Event aber ausdrücklich aus und nennt in seinen häufigen Fragen die Silvestertickets als Beispiel.
 
@@ -62,7 +62,7 @@ Den Rabatt nennt das Efteling nur auf Niederländisch, auf der Eventseite und au
 
 Die Silvesterkarte gilt erst ab 19 Uhr. Tagsüber hat das Efteling am 31. Dezember von 10 bis 18 Uhr ganz normal geöffnet. Das Tagesticket wird getrennt verkauft und kostet an diesem Datum im Ticketshop 56 Euro. Zwischen dem Ende des Tagesbetriebs und dem Beginn des Fests liegt eine Stunde.
 
-An den übrigen Tagen der Weihnachtsferien schließt der Park später. Vom 19. bis zum 30. Dezember hat er täglich von 10 bis 20 Uhr geöffnet. Silvester ist in dieser Zeit der einzige Tag mit Schluss um 18 Uhr. Das Abendticket, das in den Weihnachtsferien vom 21. Dezember bis zum 3. Januar ab 16 Uhr gilt und 33 Euro kostet, gibt es am 31. Dezember nicht.
+Vom 19. bis zum 30. Dezember hat der Park täglich von 10 bis 20 Uhr geöffnet, an Silvester schließt er schon um 18 Uhr. Das Abendticket, das vom 21. Dezember bis zum 3. Januar ab 16 Uhr gilt und 33 Euro kostet, gibt es am 31. Dezember nicht.
 
 Der Tag fällt in die Winter Efteling, die vom 16. November 2026 bis zum 31. Januar 2027 läuft. Die Achterbahnen im Freien fahren, solange das Wetter es zulässt. Auf der Wartungsliste des Parks steht für den 31. Dezember keine Attraktion. Droomvlucht ist vom 9. November bis 4. Dezember in Wartung, Joris en de Draak vom 30. November bis 18. Dezember, die Pagode vom 15. bis 17. Dezember.
 
@@ -78,7 +78,7 @@ Für 2022 hatte der Park das Programm in seinem Blog beschrieben. Ab 23 Uhr legt
 
 Der offizielle Lageplan für 2024/25 verzeichnete unter anderem eine Silent Disco, „Grootmoeders Bingo“, „Bubbels en bollen“ und die Stelle, von der aus man das Feuerwerk am besten sieht.
 
-Ausverkauft war der Abend schon mehrfach. 2022 meldete der Park den Verkaufsstart am 9. November, am 3. Dezember ergänzte er den Beitrag um den Satz, alle Tickets seien ausverkauft. 2018 stand dieser Satz bereits am 16. November unter einem Beitrag zum Fest.
+Ausverkauft war der Abend schon mehrfach. 2022 meldete der Park den Verkaufsstart am 9. November, am 3. Dezember ergänzte er den Beitrag um den Satz, alle Tickets seien ausverkauft. 2018 ergänzte er einen Beitrag zum Fest schon am 16. November um denselben Satz.
 
 ## Übernachten
 
