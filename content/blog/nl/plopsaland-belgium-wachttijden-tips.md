@@ -471,7 +471,7 @@ neem je de E40 richting Oostende. Die loopt van Keulen via Aken, Brussel en Gent
 en bij knooppunt Jabbeke houd je links richting Veurne-Nieuwpoort en neem je
 afrit 1 Adinkerke. Daar ga je rechts over de brug over de Duinkerkevaart en de
 spoorrails. Bij de volgende rotonde ligt links de parkeerplaats voor bezoekers en
-bussen. Volgens het park zijn er vlak bij het park veel plaatsen, en een
+bussen. Volgens het park zijn er veel plaatsen dicht bij de ingang, en een
 parkeerticket kost € 15 als je het vooraf online koopt.
 
 Zonder auto rijdt de **Kusttram** tot de halte “De Panne Plopsaland” direct bij de
