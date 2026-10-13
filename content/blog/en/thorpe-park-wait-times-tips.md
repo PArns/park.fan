@@ -153,7 +153,7 @@ Hyperia is well ahead of everything else. Second place goes to Storm Surge, a wa
 
 ```
 
-Colossus, The Swarm, Nemesis Inferno, SAW and Stealth have their longest queue at eleven or twelve o'clock. It drops after that, and from 4 pm it's clearly shorter than at midday at each of these rides. Storm Surge and Tidal Wave work the other way round: both water rides have their longest queue in the afternoon. Hyperia stays at about the same level from ten to three and already has a long queue at opening.
+Colossus, The Swarm, Nemesis Inferno, SAW and Stealth have their longest queue at eleven or twelve o'clock. It drops after that, and from 4 pm it's clearly shorter than at midday at each of these rides. The water rides Storm Surge and Tidal Wave have their longest queue in the afternoon. Hyperia stays at about the same level from ten to three and already has a long queue at opening.
 
 If you're at the entrance at ten, head for Nemesis Inferno, SAW or Colossus first. In our rope drop analysis, arriving early pays off most there, and you'll find it on each ride's page. Save Hyperia for later, with Fastrack or in the single rider queue.
 
@@ -174,7 +174,7 @@ The park sells Fastrack in four packages, each per person, and the card can be s
 - **Gold** from £115: all day on 14 rides, without Hyperia.
 - **Platinum** from £135: all day on 15 rides, with Hyperia.
 
-There's also a **One Shot Fastrack** from £6, which you buy only once you're in the park, through the app or a QR code at the entrance to a coaster. The park sells Fastrack in limited numbers and tells guests to check before buying that admission tickets are available for the day, because the two are sold separately. For the Ghost Train the park contradicts itself. The Fastrack page lists it in three packages, while its own page says there's currently no Fastrack for it.
+There's also a **One Shot Fastrack** from £6, which you buy only once you're in the park, through the app or a QR code at the entrance to a coaster. The park sells Fastrack in limited numbers and tells guests to check before buying that admission tickets are available for the day, because the two are sold separately. The park's Fastrack page lists the Ghost Train in three packages, while the ride's own page says there's currently no Fastrack for it.
 
 Guests staying in the Thorpe Shark Cabins get an hour of Fastrack on the second day, at the start or the end of the park day. During Fright Nights it applies to the first hour only.
 
@@ -186,7 +186,7 @@ Guests staying in the Thorpe Shark Cabins get an hour of Fastrack on the second 
 
 ### The day of the week
 
-Saturday is the busiest day and Thursday the one with the shortest waits. Sunday to Wednesday and Friday sit level in between, and the gap between Thursday and Saturday is small. The weekdays rest on 22 to 30 measured days. That's enough for a rough direction, but I can't prove fine differences with it.
+Saturday is the busiest day and Thursday the one with the shortest waits. Sunday to Wednesday and Friday sit level in between, and the gap between Thursday and Saturday is small. The weekdays rest on 22 to 30 measured days.
 
 According to its calendar, the park is closed on 12, 13 and 14 October 2026 and open daily otherwise.
 
@@ -196,7 +196,7 @@ According to its calendar, the park is closed on 12, 13 and 14 October 2026 and 
 
 ```
 
-July is the busiest month, well ahead of the rest. August and April follow, April because of the Easter holidays. May, June and September are the lowest. For October we have only four measured days so far, which is too few to say anything.
+July is the busiest month, well ahead of the rest. August and April follow, April because of the Easter holidays. May, June and September are the lowest. For October we have four measured days so far.
 
 According to the park's calendar, the 2026 season runs until 1 November.
 

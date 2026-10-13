@@ -154,7 +154,7 @@ Hyperia staat duidelijk bovenaan. Op de tweede plaats staat met Storm Surge een 
 
 ```
 
-Bij Colossus, The Swarm, Nemesis Inferno, SAW en Stealth is de wachtrij om elf of twaalf uur het langst. Daarna wordt hij korter, en vanaf 16 uur is hij bij elk van deze banen duidelijk korter dan rond het middaguur. Storm Surge en Tidal Wave doen het omgekeerde: bij beide waterattracties is de wachtrij in de middag het langst. Bij Hyperia blijft de wachtrij van tien tot vijftien uur ongeveer even lang, en er staat al bij opening een lange rij.
+Bij Colossus, The Swarm, Nemesis Inferno, SAW en Stealth is de wachtrij om elf of twaalf uur het langst. Daarna wordt hij korter, en vanaf 16 uur is hij bij elk van deze banen duidelijk korter dan rond het middaguur. Bij de waterattracties Storm Surge en Tidal Wave is de wachtrij in de middag het langst. Bij Hyperia blijft de wachtrij van tien tot vijftien uur ongeveer even lang, en er staat al bij opening een lange rij.
 
 Wie om tien uur bij de ingang staat, gaat daarom eerst naar Nemesis Inferno, SAW of Colossus. Volgens onze rope-dropanalyse loont vroeg komen daar het meest. Die analyse staat op de pagina van elke baan. Hyperia bewaar je voor later, met Fastrack of in de wachtrij voor single riders.
 
@@ -175,7 +175,7 @@ Het park verkoopt Fastrack in vier pakketten, elk per persoon, en de kaart kan e
 - **Gold** vanaf £ 115: de hele dag op 14 banen, zonder Hyperia.
 - **Platinum** vanaf £ 135: de hele dag op 15 banen, met Hyperia.
 
-Daarnaast is er een **One Shot Fastrack** vanaf £ 6, die je pas in het park koopt, via de app of met een QR-code bij de ingang van een achtbaan. Het park verkoopt Fastrack in beperkte aantallen en schrijft dat je vóór de aankoop moet nagaan of er voor die dag ook toegangskaarten zijn, omdat beide apart worden verkocht. Over de Ghost Train spreekt het park zichzelf tegen. Op de Fastrack-pagina staat ze in drie pakketten, op haar eigen pagina staat dat er momenteel geen Fastrack voor bestaat.
+Daarnaast is er een **One Shot Fastrack** vanaf £ 6, die je pas in het park koopt, via de app of met een QR-code bij de ingang van een achtbaan. Het park verkoopt Fastrack in beperkte aantallen en schrijft dat je vóór de aankoop moet nagaan of er voor die dag ook toegangskaarten zijn, omdat beide apart worden verkocht. Op de Fastrack-pagina van het park staat de Ghost Train in drie pakketten, op haar eigen pagina staat dat er momenteel geen Fastrack voor bestaat.
 
 Wie in de Thorpe Shark Cabins overnacht, krijgt op de tweede dag een uur Fastrack aan het begin of het eind van de parkdag. Tijdens de Fright Nights geldt dat alleen voor het eerste uur.
 
@@ -187,7 +187,7 @@ Wie in de Thorpe Shark Cabins overnacht, krijgt op de tweede dag een uur Fastrac
 
 ### De dag van de week
 
-Zaterdag is de drukste dag, donderdag de dag met de kortste wachttijden. Zondag tot en met woensdag en vrijdag liggen daartussen op gelijke hoogte, en het verschil tussen donderdag en zaterdag is klein. De weekdagen rusten op 22 tot 30 gemeten dagen. Dat is genoeg voor een grove richting, fijne verschillen kan ik er niet mee aantonen.
+Zaterdag is de drukste dag, donderdag de dag met de kortste wachttijden. Zondag tot en met woensdag en vrijdag liggen daartussen op gelijke hoogte, en het verschil tussen donderdag en zaterdag is klein. De weekdagen rusten op 22 tot 30 gemeten dagen.
 
 In oktober 2026 is het park volgens de kalender op 12, 13 en 14 oktober gesloten en verder dagelijks open.
 
@@ -197,7 +197,7 @@ In oktober 2026 is het park volgens de kalender op 12, 13 en 14 oktober gesloten
 
 ```
 
-Juli is de drukste maand, met duidelijke afstand tot de rest. Augustus en april volgen, april door de paasvakantie. Mei, juni en september zijn het laagst. Voor oktober hebben we tot nu toe vier meetdagen, te weinig voor een uitspraak.
+Juli is de drukste maand, met duidelijke afstand tot de rest. Augustus en april volgen, april door de paasvakantie. Mei, juni en september zijn het laagst. Voor oktober hebben we tot nu toe vier meetdagen.
 
 Het seizoen 2026 loopt volgens de kalender van het park tot 1 november.
 

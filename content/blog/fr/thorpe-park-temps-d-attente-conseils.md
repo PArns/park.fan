@@ -154,7 +154,7 @@ Hyperia devance nettement toutes les autres. Storm Surge, une attraction aquatiq
 
 ```
 
-Sur Colossus, The Swarm, Nemesis Inferno, SAW et Stealth, la file est la plus longue à onze heures ou à midi. Elle diminue ensuite, et à partir de 16 h elle est nettement plus courte que le midi sur chacune de ces attractions. Storm Surge et Tidal Wave suivent l’ordre inverse, car ces deux attractions aquatiques ont leur file la plus longue l’après-midi. Sur Hyperia, l’attente reste à peu près la même de dix à quinze heures, et la file est déjà longue à l’ouverture.
+Sur Colossus, The Swarm, Nemesis Inferno, SAW et Stealth, la file est la plus longue à onze heures ou à midi. Elle diminue ensuite, et à partir de 16 h elle est nettement plus courte que le midi sur chacune de ces attractions. Les attractions aquatiques Storm Surge et Tidal Wave ont leur file la plus longue l’après-midi. Sur Hyperia, l’attente reste à peu près la même de dix à quinze heures, et la file est déjà longue à l’ouverture.
 
 Quand on est devant l’entrée à dix heures, on commence donc par Nemesis Inferno, SAW ou Colossus. D’après notre analyse du rope drop, c’est là qu’il est le plus utile d’arriver tôt. Cette analyse figure sur la page de chaque attraction. Hyperia se garde pour plus tard, avec le Fastrack ou dans la file single rider.
 
@@ -175,7 +175,7 @@ Le parc vend le Fastrack en quatre formules, par personne, et la carte peut êtr
 - **Gold** dès 115 £ : toute la journée sur 14 attractions, sans Hyperia.
 - **Platinum** dès 135 £ : toute la journée sur 15 attractions, Hyperia comprise.
 
-Il existe aussi un **One Shot Fastrack** dès 6 £, qu’on n’achète qu’une fois dans le parc, via l’appli ou un QR code à l’entrée d’une montagne russe. Le parc limite le nombre de Fastrack vendus et demande de vérifier avant l’achat qu’il reste des billets d’entrée pour la date, car les deux se vendent séparément. Pour le Ghost Train, les indications du parc se contredisent. La page Fastrack le place dans trois formules, alors que sa propre page dit qu’il n’y a pour l’instant pas de Fastrack pour lui.
+Il existe aussi un **One Shot Fastrack** dès 6 £, qu’on n’achète qu’une fois dans le parc, via l’appli ou un QR code à l’entrée d’une montagne russe. Le parc limite le nombre de Fastrack vendus et demande de vérifier avant l’achat qu’il reste des billets d’entrée pour la date, car les deux se vendent séparément. La page Fastrack du parc place le Ghost Train dans trois formules, alors que la page de l’attraction dit qu’il n’y a pour l’instant pas de Fastrack pour lui.
 
 Les clients des Thorpe Shark Cabins reçoivent le deuxième jour une heure de Fastrack au début ou à la fin de la journée. Pendant les Fright Nights, seule la première heure compte.
 
@@ -187,7 +187,7 @@ Les clients des Thorpe Shark Cabins reçoivent le deuxième jour une heure de Fa
 
 ### Le jour de la semaine
 
-Le samedi est le jour le plus chargé, et le jeudi celui où les attentes sont les plus courtes. Du dimanche au mercredi et le vendredi, les jours se valent entre les deux, et l’écart entre le jeudi et le samedi est faible. Chaque jour de la semaine repose sur 22 à 30 jours mesurés. Cela donne une direction approximative, mais je ne peux pas prouver de petites différences avec ces données.
+Le samedi est le jour le plus chargé, et le jeudi celui où les attentes sont les plus courtes. Du dimanche au mercredi et le vendredi, les jours se valent entre les deux, et l’écart entre le jeudi et le samedi est faible. Chaque jour de la semaine repose sur 22 à 30 jours mesurés.
 
 En octobre 2026, le parc est fermé les 12, 13 et 14 octobre selon son calendrier et ouvert tous les autres jours.
 
@@ -197,7 +197,7 @@ En octobre 2026, le parc est fermé les 12, 13 et 14 octobre selon son calendri
 
 ```
 
-Juillet est le mois le plus chargé, avec une nette avance sur les autres. Août et avril suivent, avril à cause des vacances de Pâques. Mai, juin et septembre sont les plus bas. Pour octobre, nous n’avons pour l’instant que quatre jours de mesure, ce qui ne suffit pas pour conclure.
+Juillet est le mois le plus chargé, avec une nette avance sur les autres. Août et avril suivent, avril à cause des vacances de Pâques. Mai, juin et septembre sont les plus bas. Pour octobre, nous avons pour l’instant quatre jours de mesure.
 
 D’après le calendrier du parc, la saison 2026 dure jusqu’au 1er novembre.
 

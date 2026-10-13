@@ -154,7 +154,7 @@ Hyperia steht deutlich vor allen anderen. Auf Rang zwei steht mit Storm Surge ei
 
 ```
 
-Colossus, The Swarm, Nemesis Inferno, SAW und Stealth haben ihre längste Warteschlange um elf oder zwölf Uhr. Danach sinkt sie, und ab 16 Uhr ist sie an jeder dieser Bahnen deutlich kürzer als zur Mittagszeit. Storm Surge und Tidal Wave verhalten sich umgekehrt, beide Wasserbahnen haben am Nachmittag die längste Warteschlange. Hyperia bleibt von zehn bis fünfzehn Uhr ungefähr auf demselben Wert und hat schon bei der Öffnung eine lange Warteschlange.
+Colossus, The Swarm, Nemesis Inferno, SAW und Stealth haben ihre längste Warteschlange um elf oder zwölf Uhr. Danach sinkt sie, und ab 16 Uhr ist sie an jeder dieser Bahnen deutlich kürzer als zur Mittagszeit. Die Wasserbahnen Storm Surge und Tidal Wave haben am Nachmittag die längste Warteschlange. Hyperia bleibt von zehn bis fünfzehn Uhr ungefähr auf demselben Wert und hat schon bei der Öffnung eine lange Warteschlange.
 
 Wer um zehn am Eingang steht, geht deshalb zuerst zu Nemesis Inferno, SAW oder Colossus. Nach unserer Rope-Drop-Auswertung lohnt es sich dort am meisten, früh zu sein. Sie steht auf der Seite jeder Bahn. Hyperia nimmt man sich später vor, mit Fastrack oder in der Single-Rider-Warteschlange.
 
@@ -175,7 +175,7 @@ Den Fastrack verkauft der Park in vier Paketen, jeweils pro Person, und die Kart
 - **Gold** ab 115 Pfund: ganztägig an 14 Bahnen, ohne Hyperia.
 - **Platinum** ab 135 Pfund: ganztägig an 15 Bahnen, mit Hyperia.
 
-Dazu gibt es einen **One Shot Fastrack** ab 6 Pfund, den man erst im Park über die App oder einen QR-Code am Eingang einer Achterbahn kauft. Der Park verkauft Fastrack in begrenzter Zahl, und er schreibt, man solle vor dem Kauf prüfen, ob für den Tag auch Eintrittskarten da sind, weil beide getrennt verkauft werden. Bei der Ghost Train gehen die Aussagen des Parks auseinander. Auf der Fastrack-Seite steht sie in drei Paketen, auf ihrer eigenen Seite steht, dass es dafür derzeit keinen Fastrack gibt.
+Dazu gibt es einen **One Shot Fastrack** ab 6 Pfund, den man erst im Park über die App oder einen QR-Code am Eingang einer Achterbahn kauft. Der Park verkauft Fastrack in begrenzter Zahl, und er schreibt, man solle vor dem Kauf prüfen, ob für den Tag auch Eintrittskarten da sind, weil beide getrennt verkauft werden. Die Ghost Train steht auf der Fastrack-Seite des Parks in drei Paketen, auf ihrer eigenen Seite steht, dass es dafür derzeit keinen Fastrack gibt.
 
 Wer in den Thorpe Shark Cabins übernachtet, bekommt am zweiten Tag eine Stunde Fastrack am Anfang oder am Ende des Parktags. Während der Fright Nights gilt das nur für die erste Stunde.
 
@@ -187,7 +187,7 @@ Wer in den Thorpe Shark Cabins übernachtet, bekommt am zweiten Tag eine Stunde 
 
 ### Der Wochentag
 
-Der Samstag ist der vollste Tag, der Donnerstag der mit den kürzesten Wartezeiten. Sonntag bis Mittwoch und Freitag liegen gleichauf dazwischen, und der Abstand zwischen Donnerstag und Samstag ist klein. Die Wochentage stehen auf 22 bis 30 gemessenen Tagen. Das reicht für eine grobe Richtung, feine Unterschiede kann ich damit nicht belegen.
+Der Samstag ist der vollste Tag, der Donnerstag der mit den kürzesten Wartezeiten. Sonntag bis Mittwoch und Freitag liegen gleichauf dazwischen, und der Abstand zwischen Donnerstag und Samstag ist klein. Die Wochentage stehen auf 22 bis 30 gemessenen Tagen.
 
 Im Oktober 2026 hat der Park laut Kalender am 12., 13. und 14. Oktober geschlossen und ist sonst täglich geöffnet.
 
@@ -197,7 +197,7 @@ Im Oktober 2026 hat der Park laut Kalender am 12., 13. und 14. Oktober geschloss
 
 ```
 
-Der Juli ist der vollste Monat, mit deutlichem Abstand zum Rest. August und April folgen, der April mit den Osterferien. Mai, Juni und September liegen am niedrigsten. Für den Oktober haben wir bisher vier Messtage, das ist zu wenig für eine Aussage.
+Der Juli ist der vollste Monat, mit deutlichem Abstand zum Rest. August und April folgen, der April mit den Osterferien. Mai, Juni und September liegen am niedrigsten. Für den Oktober haben wir bisher vier Messtage.
 
 Die Saison 2026 läuft nach dem Kalender des Parks bis zum 1. November.
 

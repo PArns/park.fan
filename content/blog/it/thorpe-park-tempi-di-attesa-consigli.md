@@ -153,7 +153,7 @@ Hyperia è nettamente davanti a tutte le altre. Al secondo posto c'è Storm Surg
 
 ```
 
-Colossus, The Swarm, Nemesis Inferno, SAW e Stealth hanno la coda più lunga alle undici o a mezzogiorno. Poi cala, e dalle 16 è a ogni attrazione molto più corta che all'ora di pranzo. Storm Surge e Tidal Wave fanno il contrario: le due attrazioni acquatiche hanno la coda più lunga nel pomeriggio. Hyperia resta più o meno allo stesso livello dalle dieci alle quindici e ha una coda lunga già all'apertura.
+Colossus, The Swarm, Nemesis Inferno, SAW e Stealth hanno la coda più lunga alle undici o a mezzogiorno. Poi cala, e dalle 16 è a ogni attrazione molto più corta che all'ora di pranzo. Le attrazioni acquatiche Storm Surge e Tidal Wave hanno la coda più lunga nel pomeriggio. Hyperia resta più o meno allo stesso livello dalle dieci alle quindici e ha una coda lunga già all'apertura.
 
 Se alle dieci sei all'ingresso, vai prima a Nemesis Inferno, SAW o Colossus. Secondo la nostra analisi del rope drop, è lì che arrivare presto rende di più, e il risultato è sulla pagina di ogni attrazione. Hyperia si lascia per dopo, con il Fastrack o nella coda single rider.
 
@@ -174,7 +174,7 @@ Il parco vende il Fastrack in quattro pacchetti, ciascuno a persona, e la tesser
 - **Gold** da 115 sterline: tutto il giorno su 14 attrazioni, senza Hyperia.
 - **Platinum** da 135 sterline: tutto il giorno su 15 attrazioni, con Hyperia.
 
-C'è poi un **One Shot Fastrack** da 6 sterline, che si compra solo nel parco con l'app o con un codice QR all'ingresso di una montagna russa. Il parco vende il Fastrack in numero limitato e scrive di controllare prima dell'acquisto che per quel giorno ci siano anche i biglietti d'ingresso, perché si vendono separatamente. Per la Ghost Train le indicazioni del parco non coincidono: sulla pagina del Fastrack compare in tre pacchetti, sulla sua pagina c'è scritto che per ora non esiste un Fastrack.
+C'è poi un **One Shot Fastrack** da 6 sterline, che si compra solo nel parco con l'app o con un codice QR all'ingresso di una montagna russa. Il parco vende il Fastrack in numero limitato e scrive di controllare prima dell'acquisto che per quel giorno ci siano anche i biglietti d'ingresso, perché si vendono separatamente. Sulla pagina del Fastrack del parco la Ghost Train compare in tre pacchetti, sulla pagina dell'attrazione c'è scritto che per ora non esiste un Fastrack.
 
 Chi dorme nelle Thorpe Shark Cabins ha il secondo giorno un'ora di Fastrack all'inizio o alla fine della giornata. Durante le Fright Nights vale solo per la prima ora.
 
@@ -186,7 +186,7 @@ Chi dorme nelle Thorpe Shark Cabins ha il secondo giorno un'ora di Fastrack all'
 
 ### Il giorno della settimana
 
-Il sabato è il giorno più affollato, il giovedì quello con le attese più corte. Da domenica a mercoledì e il venerdì sono allo stesso livello, in mezzo, e la differenza tra giovedì e sabato è piccola. I giorni della settimana poggiano su 22–30 giorni misurati. Bastano per una direzione di massima, ma con questi dati non posso dimostrare le differenze fini.
+Il sabato è il giorno più affollato, il giovedì quello con le attese più corte. Da domenica a mercoledì e il venerdì sono allo stesso livello, in mezzo, e la differenza tra giovedì e sabato è piccola. I giorni della settimana poggiano su 22–30 giorni misurati.
 
 Nell'ottobre 2026, secondo il calendario, il parco è chiuso il 12, il 13 e il 14 ottobre e negli altri giorni è aperto.
 
@@ -196,7 +196,7 @@ Nell'ottobre 2026, secondo il calendario, il parco è chiuso il 12, il 13 e il 1
 
 ```
 
-Luglio è il mese più affollato, con un distacco netto dagli altri. Seguono agosto e aprile, quest'ultimo per le vacanze di Pasqua. Maggio, giugno e settembre sono i più bassi. Per ottobre abbiamo finora quattro giorni di misurazione, troppo pochi per dire qualcosa.
+Luglio è il mese più affollato, con un distacco netto dagli altri. Seguono agosto e aprile, quest'ultimo per le vacanze di Pasqua. Maggio, giugno e settembre sono i più bassi. Per ottobre abbiamo finora quattro giorni di misurazione.
 
 La stagione 2026 dura, secondo il calendario del parco, fino al 1º novembre.
 
