@@ -7,9 +7,9 @@ mode: published
 featured: false
 excerpt: >-
   Plopsaland Belgium a De Panne è appartenuto fino al 1999 alla famiglia di un
-  commerciante di miele e dal 2000 a Studio 100, che ci ha messo il folletto Plop e L’ape Maia.
-  Le code sono corte, un biglietto con data costa da 36 €, e nel parco c’è The
-  Ride to Happiness, eletta nel 2021 miglior nuovo coaster d’Europa.
+  commerciante di miele e dal 2000 a Studio 100, che ci ha messo il folletto Plop e l’ape Maia.
+  Le code sono corte, e un biglietto con data costa da 36 €.
+  The Ride to Happiness è stata eletta nel 2021 miglior nuovo coaster d’Europa.
 tags:
   - plopsaland-belgium
   - the-ride-to-happiness
@@ -45,26 +45,23 @@ seo:
     - Meli Park
 ---
 
-Il treno esce dalla stazione, torna indietro di qualche metro e si ferma sul
+Su [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland) il treno esce dalla stazione, torna indietro di qualche metro e si ferma sul
 primo tratto di lancio. Poi un motore lineare lo porta a 90 km/h, la
-rotaia cade in una discesa sopra lo stagno del parco, e le vetture, che girano
-libere attorno al proprio asse, ti fanno perdere l’orientamento già nel
-looping e nel banana roll. Il percorso ha cinque inversioni, due lanci e 920
+rotaia cade in una discesa sopra lo stagno del parco, e le vetture girano libere attorno al proprio asse, così nel looping e nel banana roll perdi l’orientamento. Il percorso ha cinque inversioni, due lanci e 920
 metri di binario.
 
-Questa è [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland),
-e sta in un parco il cui personaggio principale è un folletto.
+Il coaster sta in un parco il cui personaggio principale è un folletto.
 [Plopsaland Belgium](ref:plopsaland-belgium) si trova a De Panne, a pochi
 chilometri dalla spiaggia e vicino al confine francese. La maggior parte delle
 attrazioni è pensata per i bambini. Tre coaster fanno eccezione, The Ride to
 Happiness, Anubis e Heidi, e sono loro il motivo per cui ci vanno gli
 appassionati.
 
-Per i tre coaster grandi, secondo me, basta mezza giornata. Con bambini fino a dodici anni circa ne serve una intera, e le code restano per lo più corte. I numeri stanno più sotto.
+Per i tre coaster grandi mi basta mezza giornata. Con bambini fino a dodici anni circa ne serve una intera, e le code restano per lo più corte.
 
 ## Dal parco del miele al parco di Studio 100
 
-Il parco è più vecchio di come suona il suo nome. Alberic-Joseph Florizoone,
+Alberic-Joseph Florizoone,
 commerciante di miele di Veurne, intorno al 1934 comprò un pezzo di polder ad
 Adinkerke e la domenica di Pasqua del 1935 ci aprì il **Meli Park**. Il nome
 giocava sul francese _miel_, e che «meli» voglia dire miele anche in greco e in
@@ -103,7 +100,7 @@ Plopsaland De Panne, per distinguerlo dagli altri parchi Plopsa, e nell’estate
 parchi di Studio 100, ha sette parchi e conta insieme più di 3,5 milioni di
 visitatori all’anno.
 
-Dal 2000 il parco è cresciuto passo dopo passo. Nel 2004 aprì Draak, con cui
+Nel 2004 aprì Draak, con cui
 Plopsa voleva dimostrare che il parco era più di un parco per bambini. Nel 2006
 arrivarono SuperSplash e uno Starflyer, nel 2009 Anubis The Ride, nel 2011 la
 sala indoor Mayaland, nel 2013 Wickieland e lo Studio 100 Theater con 1.400
@@ -148,7 +145,7 @@ Heidiland e Wickieland. I personaggi fiamminghi li conosciamo meno: il folletto
 **Kabouter Plop**, **Samson e Marie**, il clown **Bumba**, il gruppo di ragazze
 **K3**, il programma per giovani **Nachtwacht** e la serie **Het Huis Anubis**.
 
-L’assegnazione è cambiata più volte negli ultimi anni. L’area con il castello si
+L’area con il castello si
 chiamava da tempo Kasteelplein e dal 2025 «Nachtwacht: Schemermeer», e
 l’attrazione al suo interno all’apertura della stagione, il 29 marzo 2025, da De
 Draak è diventata Draconis. Il coaster Tivoli del 1976 è stato prima Dongo’s
@@ -171,7 +168,7 @@ cinque, o sei se si contano due volte i due giri della dive loop.
 
 ```
 
-Dall’annuncio all’apertura passarono quasi due anni. Nell’agosto 2019 i media
+Nell’agosto 2019 i media
 riportarono che Plopsaland pensava a un grande spinning coaster di Mack. Il 24
 settembre 2019 il direttore del parco Steve Van den Kerkhof presentò il progetto
 con il titolo di lavoro «Robo-Spinner» e un investimento di 15 milioni di euro.
@@ -180,7 +177,7 @@ elettronica Tomorrowland di Boom. Il 1° luglio 2021 l’attrazione funzionò pe
 prima volta per gli ospiti, il 21 luglio ci fu l’inaugurazione ufficiale. La
 musica sul treno, secondo il parco, è stata prodotta apposta per l’attrazione.
 
-I premi sono stati più d’uno. L’**European Star Award 2021** della rivista
+L’**European Star Award 2021** della rivista
 _Kirmes & Park Revue_ l’ha assegnato una giuria di esperti internazionali a
 «miglior nuovo coaster d’Europa». Ai Golden Ticket Awards della rivista
 _Amusement Today_ nel 2025 era al quinto posto fra i migliori coaster in acciaio
@@ -236,8 +233,7 @@ piani. Altezza minima 96 centimetri.
 **[SuperSplash](ref:plopsaland-belgium/supersplash)** è un Super Splash di Mack
 del 2006, alto 30 metri e veloce 70 km/h, e secondo Wikipedia in olandese è
 stato per Mack il primo impianto di questo tipo con un lift nella torre.
-**[DinoSplash](ref:plopsaland-belgium/dinosplash)** è più vecchio di come sembra:
-ha aperto nel 1989 come Splash al Meli Park e nel 2019 ha avuto un tema a
+**[DinoSplash](ref:plopsaland-belgium/dinosplash)** ha aperto nel 1989 come Splash al Meli Park e nel 2019 ha avuto un tema a
 dinosauri. Con due discese è, secondo Wikipedia in olandese, fra i log flume più
 grandi d’Europa. Il parco segna come bagnate tutte e due le attrazioni
 acquatiche. L’altezza minima è 96 centimetri per SuperSplash e 100 per
@@ -303,14 +299,11 @@ con la coda più lunga del parco, in ordine di valore tipico.
 La mediana, anche in cima alla tabella, sta a un
 quarto d’ora o sotto, e vale su tutti i giorni di apertura dell’anno, non solo
 su quelli pieni. Fra le prime otto, inoltre, ci sono diverse attrazioni per
-bambini, e The Ride to Happiness non è in testa. I bambini vogliono andare da
-Plop.
+bambini, e The Ride to Happiness non è in testa.
 
 I valori giornalieri più alti degli ultimi dodici
 mesi sono caduti nella domenica di Pentecoste, il 1° maggio, le vacanze di
 Pasqua, un lunedì di inizio giugno e alcuni giorni di piena estate.
-
-Quali mesi e quali giorni della settimana siano, sta nelle statistiche:
 
 ```stats-widget slug=plopsaland-belgium show=months
 
@@ -327,9 +320,6 @@ settembre e ottobre, quest’ultimo però su soli sei giorni. Per giorno della s
 Il sabato è il giorno più pieno, la domenica il secondo. Da lunedì a venerdì i
 giorni si distinguono poco. Se puoi scegliere, vai in un giorno feriale fuori
 dalle vacanze e lascia perdere luglio e agosto.
-
-Come si distribuisce una giornata sta nel profilo orario, cioè l’attesa tipica
-di ogni ora:
 
 ```hourly-profile-widget slug=plopsaland-belgium top=8
 
@@ -381,7 +371,7 @@ Ibilaw a Walibi Belgium.
 
 ## Una giornata nel parco
 
-Il parco apre alle 10, e l’ordine si ricava dal profilo orario qui sopra.
+Il parco apre alle 10.
 
 Vai prima a **The Ride to Happiness**, dove la coda nella prima ora è la più
 corta. Poi **Anubis**, prima che il pomeriggio si riempia, quindi **Heidi The
@@ -394,9 +384,7 @@ Secondo la pagina del parco, nell’autunno 2026 SuperSplash, i Tractors, l’An
 Farm e Willy’s Playground sono temporaneamente chiusi: controlla prima di
 partire.
 
-Lo scatto all’apertura qui rende poco. La nostra analisi del rope drop confronta,
-per ogni attrazione, l’attesa all’apertura con il picco del giorno, misurato in
-un giorno pieno, e per nessuna la differenza basta a consigliare di essere
+Lo scatto all’apertura qui rende poco. Abbiamo confrontato, per ogni attrazione, l’attesa all’apertura con il picco del giorno in un giorno pieno, e per nessuna la differenza basta a consigliare di essere
 all’ingresso prima degli altri. Il guadagno più grande dell’inizio anticipato lo
 danno i giorni del fine settimana a Heidi The Ride, SuperSplash e Plop’s Woods.
 
@@ -427,10 +415,10 @@ limitato di pass. I bambini sotto gli 85 centimetri possono usare gratis
 l’ingresso Express, se possono salire sull’attrazione. Si compra online (con
 codice QR, anche digitale nell’app), alla cassa all’ingresso o nei negozi.
 
-Se conviene dipende dal giorno. In un giorno feriale di settembre la coda tipica
+In un giorno feriale di settembre la coda tipica
 alle attrazioni più richieste è di un quarto d’ora al massimo, e con 95 € di
 Unlimited Pass si risparmia poco tempo. In un weekend di vacanza in estate, quando
-si ripetono i picchi della tabella qui sopra, è un’altra storia. Anche allora
+si ripetono i picchi della tabella qui sopra, conviene di più. Anche allora
 comincerei dal Single da 7 €, per l’unica attrazione che non si vuole perdere.
 
 ## Biglietti, abbonamenti e parcheggio
@@ -509,7 +497,7 @@ a persona e a notte in hotel, da 58 € nel Village e da 45 € negli chalet. Si
 modificare o annullare gratis fino a sette giorni prima dell’arrivo e pagare in
 tre rate.
 
-Dove mangiare nel parco non manca. Il **Pirates’ Grill** è nuovo, un ristorante
+Il **Pirates’ Grill** è nuovo, un ristorante
 dei pirati con piatti alla griglia aperto nell’estate 2026. Poi ci sono **Mr.
 Spaghetti** accanto a Mayaland, il **Plop Hamburger Restaurant**, il **Prinsessia
 Restaurant**, il **Viking Grill** a Wickieland e **De Hoeve bij Big & Betsy**. In
@@ -518,7 +506,7 @@ vende una torta al miele.
 
 ## Le novità e cosa chiude
 
-Il cambiamento più grande arriva nel 2027. **Plopsaland Plaza** è una nuova
+**Plopsaland Plaza** è una nuova
 costruzione all’ingresso che Plopsa valuta 25 milioni di euro, il più grande
 investimento della storia del parco. Il nucleo è il **Flying Cinema**, un
 simulatore di volo di Mack Rides con proiezione di Barco. Gli ospiti siedono per
@@ -538,7 +526,7 @@ novità dell’anno stanno nella
 
 ```
 
-In compenso spariscono degli edifici. Il F.C. De Kampioenen Café, il Verkeerspark,
+Il F.C. De Kampioenen Café, il Verkeerspark,
 il Panos al Dorpsplein, il barbecue al Dorpsplein e la vecchia stazione del Plopsa
 Express hanno dovuto lasciare il posto alla nuova costruzione, come si è saputo il
 30 settembre 2025 in una conferenza stampa. Il Verkeerspark non è del tutto
@@ -588,11 +576,11 @@ sotto gli 85 centimetri non pagano, i bambini da 85 a 99 centimetri e i senior d
 
 Un simulatore di volo di Mack Rides che nel 2027 apre a Plopsaland Plaza. Gli
 ospiti siedono in una gondola mobile davanti a una cupola di proiezione e volano
-per circa cinque minuti con l’ape Maia su luoghi d’Europa. Non è un coaster.
+per circa cinque minuti con l’ape Maia su luoghi d’Europa.
 
 ## Per approfondire
 
-Che tempo fa a De Panne quando ci vai lo vedi nel widget qui sopra. Il Walibi
+Il Walibi
 originale, a Wavre, ha la sua
 [guida a Walibi Belgium](/blog/walibi-belgium-tempi-di-attesa-consigli), e il
 coaster in legno del confronto qui sopra ha la

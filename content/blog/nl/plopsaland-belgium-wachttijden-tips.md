@@ -6,11 +6,11 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Plopsaland Belgium in De Panne was tot 1999 van de familie van een honinghandelaar en is
-  sinds 2000 van Studio 100, dat hier Kabouter Plop en Maya de Bij heeft
-  neergezet. De wachtrijen zijn kort, een gedateerd ticket kost vanaf 36 euro en
-  met The Ride to Happiness staat er een baan in het park die in 2021 werd
-  gekozen tot de beste nieuwe achtbaan van Europa.
+  Plopsaland Belgium in De Panne was tot 1999 van de familie van een
+  honinghandelaar en is sinds 2000 van Studio 100, dat hier Kabouter Plop en
+  Maya de Bij heeft neergezet. De wachtrijen zijn kort, en een gedateerd ticket
+  kost vanaf 36 euro. The Ride to Happiness werd in 2021 gekozen tot de beste
+  nieuwe achtbaan van Europa.
 tags:
   - plopsaland-belgium
   - the-ride-to-happiness
@@ -47,27 +47,24 @@ seo:
     - Meli Park
 ---
 
-De trein rolt het station uit, pendelt even terug en blijft op het eerste
+Bij [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland) rolt de trein het station uit, pendelt even terug en blijft op het eerste
 lanceerstuk staan. Dan versnelt een lineaire motor hem tot 90 km/u, het spoor
-kantelt in een afdaling over de vijver van het park, en de wagens, die vrij om
-hun as draaien, zorgen ervoor dat je in de looping en de banana roll nooit weet
+kantelt in een afdaling over de vijver van het park, en de wagens draaien vrij om hun as, zodat je in de looping en de banana roll nooit weet
 waar je op dat moment naar kijkt. De baan heeft vijf inversies, twee lanceringen
 en 920 meter spoor.
 
-Dat is [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland),
-en ze staat in een park waarvan de hoofdpersoon een kabouter is.
+De baan staat in een park waarvan de hoofdpersoon een kabouter is.
 [Plopsaland Belgium](ref:plopsaland-belgium) ligt in De Panne, een paar kilometer
 van het strand en vlak bij de Franse grens. De meeste attracties zijn voor
 kinderen gebouwd. Drie achtbanen zijn dat niet, The Ride to Happiness, Anubis en
 Heidi, en daarvoor komen achtbaanverzamelaars hierheen.
 
-Voor de drie grote banen is een halve dag volgens mij genoeg. Met kinderen tot
-een jaar of twaalf wordt het een hele, en de wachtrijen zijn daarbij meestal
-kort, de cijfers staan hieronder.
+Voor de drie grote banen is een halve dag voor mij genoeg. Met kinderen tot
+een jaar of twaalf wordt het een hele, en de wachtrijen zijn daarbij meestal kort.
 
 ## Van honingpark tot Studio 100-park
 
-Het park is ouder dan zijn naam doet vermoeden. Alberic-Joseph Florizoone, een
+Alberic-Joseph Florizoone, een
 honinghandelaar uit Veurne, kocht rond 1934 een stuk polderland in Adinkerke en
 opende daar op paaszondag 1935 het **Meli Park**. De naam was een woordspeling op
 het Franse _miel_, en dat ook het Griekse en het Hawaiiaanse woord voor honing
@@ -106,7 +103,7 @@ de zomer van 2025 hernoemde de groep het tot **Plopsaland Belgium**. Plopsa is d
 pretparktak van Studio 100 en heeft zeven parken, die samen meer dan 3,5 miljoen
 bezoekers per jaar tellen.
 
-Sinds 2000 groeide het park stap voor stap. In 2004 opende met De Draak een baan
+In 2004 opende met De Draak een baan
 waarmee Plopsa wilde laten zien dat het park meer is dan een kinderpark. In 2006
 volgden SuperSplash en een Starflyer, in 2009 Anubis The Ride, in 2011 de
 indoorhal Mayaland, in 2013 Wickieland en het Studio 100 Theater met 1.400
@@ -149,7 +146,7 @@ Heidiland en Wickieland. Daarnaast zijn er de Vlaamse figuren: de kabouter
 **Kabouter Plop**, **Samson en Marie**, de clown **Bumba**, de meidengroep
 **K3**, het jeugdprogramma **Nachtwacht** en de serie **Het Huis Anubis**.
 
-De indeling is de afgelopen jaren meermaals veranderd. Het gebied met het kasteel
+Het gebied met het kasteel
 heette lang Kasteelplein en sinds 2025 “Nachtwacht: Schemermeer”, de baan erin
 werd bij de start van het seizoen op 29 maart 2025 van De Draak tot Draconis. De
 Tivoli-baan uit 1976 werd achtereenvolgens Dongo’s Race, Viktor’s Race en sinds
@@ -172,7 +169,7 @@ de dive loop met twee omwentelingen dubbel telt.
 
 ```
 
-Van de aankondiging tot de opening ging bijna twee jaar voorbij. In augustus 2019
+In augustus 2019
 meldden media dat Plopsaland een grote spinning coaster van Mack plande. Op 24
 september 2019 presenteerde parkdirecteur Steve Van den Kerkhof de plannen onder
 de werktitel “Robo-Spinner”, met een investering van 15 miljoen euro. Op 15
@@ -181,7 +178,7 @@ muziekfestival Tomorrowland in Boom. Op 1 juli 2021 reed de baan voor het eerst
 met gasten, op 21 juli volgde de officiële opening. De muziek in de trein werd
 volgens het park speciaal voor de baan geproduceerd.
 
-Ze won meerdere prijzen. De **European Star Award 2021** van het tijdschrift
+De **European Star Award 2021** van het tijdschrift
 _Kirmes & Park Revue_ ging via een jury van internationale experts naar “de beste
 nieuwe achtbaan van Europa”. Bij de Golden Ticket Awards van het vakblad
 _Amusement Today_ stond ze in 2025 op plaats 5 van de beste stalen achtbanen ter
@@ -237,8 +234,7 @@ meter lang over drie verdiepingen. Minimumlengte 96 centimeter.
 **[SuperSplash](ref:plopsaland-belgium/supersplash)** is een Super Splash van Mack
 uit 2006, 30 meter hoog en 70 km/u snel, en volgens de Nederlandstalige Wikipedia
 voor Mack de eerste installatie van dit type met een lift in de toren.
-**[DinoSplash](ref:plopsaland-belgium/dinosplash)** is ouder dan hij eruitziet: de
-baan opende in 1989 als Splash in het Meli Park en kreeg in 2019 een
+**[DinoSplash](ref:plopsaland-belgium/dinosplash)** opende in 1989 als Splash in het Meli Park en kreeg in 2019 een
 dinosaurusthema. Met twee afdalingen hoort hij volgens de Nederlandstalige
 Wikipedia bij de grotere boomstambanen van Europa. Het park markeert beide
 waterbanen als nat. De minimumlengte is bij SuperSplash 96 en bij DinoSplash 100
@@ -306,12 +302,10 @@ park het langst wordt aangeschoven, gesorteerd op de typische waarde.
 De mediaan ligt ook bovenaan de tabel op een
 kwartier of minder, en hij geldt voor alle openingsdagen van het jaar, niet alleen
 voor drukke. Onder de eerste acht staan ook meerdere kinderattracties, en
-The Ride to Happiness staat niet voorop. De kinderen willen naar Plop.
+The Ride to Happiness staat niet voorop.
 
 De hoogste dagwaarden van de afgelopen twaalf maanden vielen op pinksterzondag,
 1 mei, de paasvakantie, een maandag begin juni en dagen in de hoogzomer.
-
-Welke maanden en weekdagen dat zijn, staat in de statistiek:
 
 ```stats-widget slug=plopsaland-belgium show=months
 
@@ -328,9 +322,6 @@ oktober, al staat oktober maar op zes dagen. Per weekdag:
 De zaterdag is de drukste dag, de zondag de op een na drukste. Van maandag tot en
 met vrijdag verschillen de dagen nauwelijks. Als je vrij kunt kiezen, ga dan op
 een weekdag buiten de vakanties en laat juli en augustus liggen.
-
-Hoe een dag zich verdeelt, staat in het uurprofiel, de typische wachttijd van elk
-uur:
 
 ```hourly-profile-widget slug=plopsaland-belgium top=8
 
@@ -381,7 +372,7 @@ Walibi Belgium.
 
 ## Een dag in het park
 
-Het park opent om 10 uur, en de volgorde volgt uit het uurprofiel hierboven.
+Het park opent om 10 uur.
 
 Ga eerst naar **The Ride to Happiness**, daar is de wachtrij in het eerste uur het
 kortst. Dan volgt **Anubis**, voordat het in de namiddag drukker wordt, daarna
@@ -394,9 +385,7 @@ in de gaten.
 Volgens de parkpagina zijn in de herfst van 2026 SuperSplash, de Tractors, de
 Animal Farm en Willy’s Playground tijdelijk gesloten, kijk dus voor je vertrek na.
 
-De sprint naar de opening loont in dit park nauwelijks. Onze rope-dropanalyse
-vergelijkt voor elke baan de wachttijd bij opening met de dagpiek die op een
-drukke dag werd gemeten, en bij geen enkele baan is het verschil groot genoeg om
+De sprint naar de opening loont in dit park nauwelijks. We hebben voor elke baan de wachttijd bij opening vergeleken met de dagpiek op een drukke dag, en bij geen enkele baan is het verschil groot genoeg om
 te adviseren extra vroeg bij de ingang te staan. Het meest scheelt een vroege
 start in het weekend bij Heidi The Ride, SuperSplash en Plop’s Woods.
 
@@ -427,10 +416,10 @@ een beperkt aantal passen. Kinderen onder de 85 centimeter mogen de
 express-ingang gratis gebruiken als ze in de attractie mogen. Gekocht wordt online
 (met QR-code, ook digitaal in de app), aan de kassa bij de ingang of in de shops.
 
-Of dat loont, hangt van de dag af. Op een weekdag in september ligt de typische
+Op een weekdag in september ligt de typische
 wachtrij bij de populairste banen op hooguit een kwartier, en € 95 voor de
 Unlimited Pass bespaart dan nauwelijks tijd. In een vakantieweekend in de zomer,
-als de pieken uit de tabel hierboven zich herhalen, ligt dat anders. Ik zou ook
+als de pieken uit de tabel hierboven zich herhalen, loont hij eerder. Ik zou ook
 dan beginnen met de Single voor € 7, voor die ene baan die je niet wilt missen.
 
 ## Tickets, jaarkaarten en parkeren
@@ -509,7 +498,7 @@ tent, caravan en camper. Een pakket met overnachting kost volgens het park vanaf
 in de chalets. Tot zeven dagen voor aankomst kun je gratis wijzigen of annuleren
 en in drie termijnen betalen.
 
-Eten in het park kan op veel plekken. De **Pirates’ Grill** is nieuw, een
+De **Pirates’ Grill** is nieuw, een
 piratenrestaurant met gegrild eten dat in de zomer van 2026 opende. Daarbij komen
 **Mr. Spaghetti** naast Mayaland, het **Plop Hamburger Restaurant**, het
 **Prinsessia Restaurant**, de **Viking Grill** in Wickieland en **De Hoeve bij Big &
@@ -518,7 +507,7 @@ de 50e verjaardag van Maya de Bij verkoopt het park een honingkoek.
 
 ## Wat er nieuw is en wat sluit
 
-De grootste verandering komt in 2027. **Plopsaland Plaza** is een nieuwbouw bij de
+**Plopsaland Plaza** is een nieuwbouw bij de
 ingang, die Plopsa op 25 miljoen euro stelt, de grootste investering in de
 geschiedenis van het park. De kern is het **Flying Cinema**, een vluchtsimulator
 van Mack Rides met projectie van Barco. De gasten zitten zo’n vijf minuten in een
@@ -537,7 +526,7 @@ miljoen bezoekers per jaar komen. De andere nieuwigheden van het jaar staan in h
 
 ```
 
-Daarvoor verdwijnen gebouwen. Het F.C. De Kampioenen Café, het Verkeerspark, het
+Het F.C. De Kampioenen Café, het Verkeerspark, het
 Panos aan het Dorpsplein, de barbecue aan het Dorpsplein en het oude station van
 de Plopsa Express moesten wijken voor de nieuwbouw, dat werd op 30 september 2025
 op een persconferentie bekend. Het Verkeerspark is niet helemaal weg: als
@@ -586,12 +575,11 @@ vanaf 70 jaar € 20. Het gezinsticket voor drie personen kost € 135.
 
 Een vluchtsimulator van Mack Rides die in 2027 opent in Plopsaland Plaza. De
 gasten zitten in een bewegende gondel voor een projectiekoepel en vliegen zo’n
-vijf minuten met Maya de Bij over plekken in Europa. Een achtbaan is het niet.
+vijf minuten met Maya de Bij over plekken in Europa.
 
 ## Verder lezen
 
-Hoe het weer in De Panne eruitziet als je gaat, staat in de widget hierboven. Het
-originele Walibi in Waver heeft een eigen
+Het originele Walibi in Waver heeft een eigen
 [Walibi-Belgium-gids](/blog/walibi-belgium-wachttijden-tips), en de houtbaan uit
 de vergelijking hierboven heeft een eigen gids, de
 [Toverland-Troy-gids](/blog/toverland-troy-wachttijden-tips).

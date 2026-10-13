@@ -6,11 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Plopsaland Belgium in De Panne gehörte bis 1999 der Familie eines Honighändlers und gehört
-  seit 2000 dem Studio 100, das hier Kobold Plop und Biene Maja aufgestellt hat.
-  Die Warteschlangen sind kurz, ein datiertes Ticket gibt es ab 36 Euro, und mit
-  The Ride to Happiness steht eine Bahn im Park, die 2021 zu Europas bester neuen
-  Achterbahn gewählt wurde.
+  Plopsaland Belgium in De Panne gehörte bis 1999 der Familie eines Honighändlers
+  und gehört seit 2000 Studio 100, das hier Kobold Plop und Biene Maja aufgestellt hat.
+  Die Warteschlangen sind kurz, und ein datiertes Ticket gibt es ab 36 Euro.
+  The Ride to Happiness wurde 2021 zu Europas bester neuer Achterbahn gewählt.
 tags:
   - plopsaland-belgium
   - the-ride-to-happiness
@@ -47,27 +46,24 @@ seo:
     - Meli Park
 ---
 
-Der Zug rollt aus der Station, pendelt kurz zurück und bleibt auf der ersten
+Bei [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland) rollt der Zug aus der Station, pendelt kurz zurück und bleibt auf der ersten
 Startstrecke stehen. Dann beschleunigt ein Linearmotor ihn auf 90 km/h, die
-Strecke kippt in eine Abfahrt über den Teich des Parks, und die Wagen, die sich
-frei um ihre Achse drehen, sorgen dafür, dass du in Looping und Banana Roll nie
+Strecke kippt in eine Abfahrt über den Teich des Parks, und die Wagen drehen sich frei um ihre Achse, sodass du in Looping und Banana Roll nie
 weißt, wohin du gerade schaust. Fünf Überschläge hat die Bahn, zwei Starts und
 920 Meter Strecke.
 
-Das ist [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland),
-und sie steht in einem Park, dessen Hauptfigur ein Kobold ist.
+Die Bahn steht in einem Park, dessen Hauptfigur ein Kobold ist.
 [Plopsaland Belgium](ref:plopsaland-belgium) liegt in De Panne, wenige Kilometer
 vom Strand und nah an der französischen Grenze. Die meisten Fahrgeschäfte sind
 für Kinder gebaut. Drei Achterbahnen sind es nicht, The Ride to Happiness,
 Anubis und Heidi, und wegen ihnen fahren Achterbahnsammler hierher.
 
 Für die drei großen Bahnen reicht mir ein halber Tag. Mit Kindern bis etwa
-zwölf wird es ein ganzer, und die Warteschlangen sind dabei meist kurz, die
-Zahlen stehen weiter unten.
+zwölf wird es ein ganzer, und die Warteschlangen sind dabei meist kurz.
 
 ## Vom Honigpark zum Studio-100-Park
 
-Der Park ist älter, als sein Name klingt. Alberic-Joseph Florizoone, ein
+Alberic-Joseph Florizoone, ein
 Honighändler aus Veurne, kaufte um 1934 ein Stück Polderland in Adinkerke und
 eröffnete dort am Ostersonntag 1935 den **Meli Park**. Der Name war ein Wortspiel
 mit dem französischen _miel_, und dass auch das griechische und das
@@ -105,7 +101,7 @@ konnte, und im Sommer 2025 benannte die Gruppe ihn in **Plopsaland Belgium** um.
 Plopsa ist die Freizeitpark-Sparte von Studio 100 und hat sieben Parks, die
 zusammen mehr als 3,5 Millionen Besucher im Jahr zählen.
 
-Seit 2000 wuchs der Park Schritt für Schritt. 2004 öffnete mit dem Draak eine Bahn, mit
+2004 öffnete mit dem Draak eine Bahn, mit
 der Plopsa zeigen wollte, dass der Park mehr ist als ein Kinderpark. 2006
 folgten SuperSplash und ein Starflyer, 2009 Anubis The Ride, 2011 die
 Indoor-Halle Mayaland, 2013 Wickieland und das Studio 100 Theater mit 1.400
@@ -150,7 +146,7 @@ flämischen Figuren kennen wir weniger: den Kobold **Kabouter Plop**, **Samson u
 Marie**, den Clown **Bumba**, die Mädchenband **K3**, das Jugendprogramm
 **Nachtwacht** und die Serie **Het Huis Anubis**.
 
-Die Zuordnung hat sich in den vergangenen Jahren mehrfach geändert. Das Gelände
+Das Gelände
 mit der Burg hieß lange Kasteelplein und seit 2025 „Nachtwacht: Schemermeer“,
 die Bahn darin wurde zum Saisonstart am 29. März 2025 von De Draak zu Draconis.
 Aus der Tivoli-Bahn von 1976 wurde nacheinander Dongo’s Race, Viktor’s Race und
@@ -174,7 +170,7 @@ auf einer Spinning-Achterbahn: fünf, oder sechs, wenn man die Dive Loop mit zwe
 
 ```
 
-Von der Ankündigung bis zur Eröffnung vergingen knapp zwei Jahre. Im August 2019 berichteten Medien, dass
+Im August 2019 berichteten Medien, dass
 Plopsaland eine große Spinning-Achterbahn von Mack plane. Am 24. September 2019
 stellte Parkdirektor Steve Van den Kerkhof die Pläne unter dem Arbeitstitel
 „Robo-Spinner“ vor, mit einer Investition von 15 Millionen Euro. Am 15. Januar
@@ -183,7 +179,7 @@ Tomorrowland in Boom. Am 1. Juli 2021 lief die Bahn zum ersten Mal für Gäste,
 am 21. Juli folgte die offizielle Eröffnung. Die Musik im Zug wurde nach
 Angaben des Parks eigens für die Bahn produziert.
 
-Ausgezeichnet wurde sie mehrfach. Den **European Star Award 2021** der Zeitschrift
+Den **European Star Award 2021** der Zeitschrift
 _Kirmes & Park Revue_ vergab eine Jury aus internationalen Experten an
 „Europas beste neue Achterbahn“. Bei den Golden Ticket Awards der Fachzeitschrift
 _Amusement Today_ stand sie 2025 auf Platz 5 der besten Stahlachterbahnen der
@@ -239,8 +235,7 @@ lange Burg über drei Etagen. Mindestgröße 96 Zentimeter.
 **[SuperSplash](ref:plopsaland-belgium/supersplash)** ist ein Super Splash von Mack
 aus dem Jahr 2006, 30 Meter hoch und 70 km/h schnell, und nach der niederländischen
 Wikipedia für Mack die erste Anlage dieser Art mit einem Lift im Turm.
-**[DinoSplash](ref:plopsaland-belgium/dinosplash)** ist älter, als er aussieht: Die
-Bahn öffnete 1989 als Splash im Meli Park und bekam 2019 ein Dinosaurier-Thema.
+**[DinoSplash](ref:plopsaland-belgium/dinosplash)** öffnete 1989 als Splash im Meli Park und bekam 2019 ein Dinosaurier-Thema.
 Mit zwei Abfahrten gehört sie nach der niederländischen Wikipedia zu den größeren
 Boomstammbahnen Europas. Der Park markiert beide Wasserbahnen als nass. Die
 Mindestgröße liegt bei SuperSplash bei 96 und bei DinoSplash bei 100 Zentimetern.
@@ -307,12 +302,10 @@ denen im Park am längsten angestanden wird, sortiert nach dem typischen Wert.
 Der Median liegt auch an der Spitze der Tabelle bei einer Viertelstunde oder
 darunter, und er gilt über alle Betriebstage des Jahres, nicht nur über volle.
 Unter den ersten acht stehen mehrere Kinderfahrgeschäfte, und The Ride to
-Happiness liegt nicht vorn. Die Kinder wollen zu Plop.
+Happiness liegt nicht vorn.
 
 Die höchsten Tageswerte der letzten zwölf Monate fielen auf den Pfingstsonntag,
 den 1. Mai, die Osterferien, einen Montag Anfang Juni und Tage im Hochsommer.
-
-Welche Monate und Wochentage das sind, steht in der Statistik:
 
 ```stats-widget slug=plopsaland-belgium show=months
 
@@ -329,9 +322,6 @@ September und Oktober, der Oktober allerdings nur auf sechs Tagen. Nach Wochenta
 Der Samstag ist der vollste Tag, der Sonntag der zweitvollste. Von Montag bis
 Freitag unterscheiden sich die Tage kaum. Wenn du frei wählen kannst, fahr an
 einem Wochentag außerhalb der Ferien und lass Juli und August aus.
-
-Wie sich ein Tag verteilt, steht im Stundenprofil, der typischen Wartezeit jeder
-Stunde:
 
 ```hourly-profile-widget slug=plopsaland-belgium top=8
 
@@ -383,7 +373,7 @@ bei Walibi Belgium.
 
 ## Ein Tag im Park
 
-Der Park öffnet um 10 Uhr, und die Reihenfolge ergibt sich aus dem Stundenprofil oben.
+Der Park öffnet um 10 Uhr.
 
 Geh zuerst zu **The Ride to Happiness**, dort ist die Warteschlange in der ersten
 Stunde am kürzesten. Dann folgt **Anubis**, bevor es am Nachmittag voller wird,
@@ -395,9 +385,7 @@ späten Nachmittag füllen. **K3 Roller Skater** und die **#LikeMe Coaster** pas
 Nach der Parkseite sind im Herbst 2026 SuperSplash, die Tractors, die Animal Farm und
 Willy’s Playground vorübergehend geschlossen, schau also vor der Anreise nach.
 
-Der Sprint zur Öffnung lohnt sich in diesem Park kaum. Unsere Rope-Drop-Auswertung
-vergleicht für jede Bahn die Wartezeit zur Öffnung mit der Tagesspitze, die an einem
-vollen Tag gemessen wurde, und bei keiner Bahn reicht der Unterschied für die
+Der Sprint zur Öffnung lohnt sich in diesem Park kaum. Wir haben für jede Bahn die Wartezeit zur Öffnung mit der Tagesspitze an einem vollen Tag verglichen, und bei keiner Bahn reicht der Unterschied für die
 Empfehlung, extra früh am Eingang zu stehen. Am meisten spart der frühe Start an
 Wochenendtagen bei Heidi The Ride, SuperSplash und Plop’s Woods.
 
@@ -430,11 +418,10 @@ Express-Eingang kostenlos nutzen, wenn sie in das Fahrgeschäft dürfen. Gekauft
 online (mit QR-Code, auch digital in der App), an der Kasse am Eingang oder in den
 Shops.
 
-Ob sich das lohnt, entscheidet der Tag. An einem Wochentag im September liegt die
+An einem Wochentag im September liegt die
 typische Warteschlange an den gefragtesten Bahnen bei höchstens einer Viertelstunde,
 und 95 Euro für den Unlimited Pass sparen dann kaum Zeit. An einem
-Ferienwochenende im Sommer, wenn sich die Spitzen aus der Tabelle oben wiederholen,
-sieht das anders aus. Ich würde auch dann mit dem Single für 7 Euro anfangen, für
+Ferienwochenende im Sommer, wenn sich die Spitzen aus der Tabelle oben wiederholen, lohnt er sich eher. Ich würde auch dann mit dem Single für 7 Euro anfangen, für
 die eine Bahn, die man nicht verpassen will.
 
 ## Tickets, Jahreskarten und Parken
@@ -514,7 +501,7 @@ Wohnwagen und Wohnmobil. Ein Paket mit Übernachtung kostet nach Angaben des Par
 Chalets. Man kann bis sieben Tage vor der Anreise kostenlos ändern oder stornieren
 und in drei Raten zahlen.
 
-Im Park essen gibt es an vielen Stellen. Der **Pirates’ Grill** ist neu, ein
+Der **Pirates’ Grill** ist neu, ein
 Piratenrestaurant mit Gegrilltem, das im Sommer 2026 eröffnet hat. Dazu kommen
 **Mr. Spaghetti** neben Mayaland, das **Plop Hamburger Restaurant**, das
 **Prinsessia Restaurant**, der **Viking Grill** in Wickieland und **De Hoeve bij Big &
@@ -523,7 +510,7 @@ Biene Maja verkauft der Park einen Honigkuchen.
 
 ## Was neu ist und was schließt
 
-Die größte Veränderung kommt 2027. **Plopsaland Plaza** ist ein Neubau am Eingang, den
+**Plopsaland Plaza** ist ein Neubau am Eingang, den
 Plopsa mit 25 Millionen Euro beziffert, die größte Investition in der Geschichte des
 Parks. Der Kern ist das **Flying Cinema**, ein Flugsimulator von Mack Rides mit
 Projektion von Barco. Die Gäste sitzen etwa fünf Minuten in einer bewegten Gondel
@@ -541,7 +528,7 @@ Die anderen Neuheiten des Jahres stehen im
 
 ```
 
-Dafür verschwinden Gebäude. Das F.C. De Kampioenen Café, das Verkeerspark, das Panos am
+Das F.C. De Kampioenen Café, das Verkeerspark, das Panos am
 Dorpsplein, der Barbecue am Dorpsplein und der alte Bahnhof des Plopsa Express
 mussten dem Neubau weichen, das wurde am 30. September 2025 auf einer
 Pressekonferenz bekannt. Das Verkeerspark ist nicht ganz weg, denn als „Rijschool
@@ -591,11 +578,10 @@ unter 85 Zentimetern zahlen nichts, Kinder von 85 bis 99 Zentimetern und Seniore
 
 Ein Flugsimulator von Mack Rides, der 2027 in Plopsaland Plaza eröffnet. Die Gäste
 sitzen in einer bewegten Gondel vor einer Projektionskuppel und fliegen etwa fünf
-Minuten mit Biene Maja über Orte in Europa. Eine Achterbahn ist das nicht.
+Minuten mit Biene Maja über Orte in Europa.
 
 ## Zum Weiterlesen
 
-Wie das Wetter in De Panne aussieht, wenn du hinfährst, steht im Widget oben.
 Das ursprüngliche Walibi in Wavre hat einen eigenen
 [Walibi-Belgium-Guide](/blog/walibi-belgium-wartezeiten-tipps), und die Holzbahn aus
 dem Vergleich oben hat einen eigenen Guide, den
