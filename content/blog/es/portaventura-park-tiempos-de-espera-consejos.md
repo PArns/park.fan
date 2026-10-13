@@ -341,7 +341,7 @@ En las páginas del parque no hay nada al respecto.
 
 ### Fuentes y lecturas recomendadas
 
-- Precios, Express, pases anuales, aparcamiento, taquillas, cómo llegar, franjas horarias y alturas mínimas, consultados el 7 de octubre de 2026:
+- Precios, Express, pases anuales, aparcamiento, taquillas, cómo llegar, franjas horarias y alturas mínimas:
   [Entradas](https://www.portaventuraworld.com/en/tickets) · [Express Pass](https://www.portaventuraworld.com/en/tickets/express-pass) · [Pases anuales](https://www.portaventuraworld.com/en/annual-passes) · [Servicios del parque](https://www.portaventuraworld.com/en/about-us/park-services) · [Preguntas frecuentes](https://www.portaventuraworld.com/en/preguntas-frecuentes) · [Cómo llegar](https://www.portaventuraworld.com/en/destination/planning/how-to-get-to-portaventura) · [Consejos y recomendaciones](https://www.portaventuraworld.com/en/plan-your-trip/advice-recommendations) · [Restaurantes](https://www.portaventuraworld.com/en/restaurants) · [Hoteles](https://www.portaventuraworld.com/en/hotels) · [Navidad](https://www.portaventuraworld.com/en/christmas)
 - Datos técnicos de las atracciones, fechas de apertura:
   [Dragon Khan (RCDB)](https://rcdb.com/760.htm) · [Stampida (RCDB)](https://rcdb.com/759.htm) · [Furius Baco (RCDB)](https://rcdb.com/3430.htm) · [Shambhala (RCDB)](https://rcdb.com/10239.htm) · [El Diablo (RCDB)](https://rcdb.com/762.htm) · [Tomahawk (RCDB)](https://rcdb.com/761.htm)
