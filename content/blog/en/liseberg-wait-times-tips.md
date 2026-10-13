@@ -208,7 +208,7 @@ The park has more than thirty rides in all, and the others include:
   tall that has stood in the park since 2012 and was called "Göteborgshjulet" at
   Kanaltorget in Gothenburg before that.
 
-Things are calmer in **[Underlandet](ref:liseberg/underlandet)**, a gondola ride
+**[Underlandet](ref:liseberg/underlandet)** is a gondola ride
 through several rooms in the world of the Liseberg rabbits. It dates from 2020
 and 2021, is on the list of rides with a virtual queue, and a child needs 130 cm
 for it, or 90 cm with an accompanying adult. The
@@ -237,19 +237,18 @@ for Vinden, Zombie, Nattsvart på Gasten and Skogen, **15 years** for "7".
 
 ```
 
-## Haunted hotel, stages and a path with stars
+## Haunted hotel, stages and the Stjärnstigen
 
 The **Spökhotellet Gasten** opened in 1998 and won a THEA Award from the Themed
 Entertainment Association in California in autumn 1999. It’s on the list of
-rides with a virtual queue. The Halloween houses are younger: according to the
-park, Zombie has run since 2015, Vinden since 2017, the house "7" since 2022 and
+rides with a virtual queue. According to the park, Zombie has run since 2015, Vinden since 2017, the house "7" since 2022 and
 Nattsvart på Gasten since 2024.
 
 Between the Korsvägen stop and the main entrance runs the **Stjärnstigen**, a
 path with brass stars set into it, a kind of Walk of Fame for Gothenburg. The
 earlier Hedersplatsen with the handprints of celebrities, laid out in 1977 with
 50 prints, was removed in 2012 for the 90th birthday and made way for the Farfars
-Bil. The park still has several stages. On the **Stora Scenen**, which has stood
+Bil. On the **Stora Scenen**, which has stood
 since 1923, the TV4 television show "Lotta på Liseberg" ran in summer from 2009
 to 2023, and for 21 June 2027 the park has announced a Take That concert.
 Admission to concerts on this stage costs extra (75 kronor); the Lilla Scenen is
@@ -395,7 +394,7 @@ season, online:
 Without an Åkpass a single ride costs one Åkkupong at 25 kronor, and a haunted
 house two to four coupons. On the "Höst i Kaninlandet" days admission costs 95
 kronor, and 245 kronor with the children’s rides. The park’s site no longer
-shows the 2026 summer prices; only the Halloween prices are left there. Which of
+shows the 2026 summer prices. Which of
 the seven tiers applies on which day is in the park’s price calendar as a PDF.
 
 If you come more often, you buy an annual pass (twelve months from activation):
@@ -411,13 +410,12 @@ Korsvägen, with the stops Korsvägen and Liseberg Station, and the **Södra
 entrén** at Herman Lindholms torg 1 with the stop Liseberg Södra. From the
 central station, Göteborg Central, it’s 10 to 15 minutes on foot according to the
 park, and in summer a historic tram, the Lisebergslinjen, runs between Central
-and the park. The park doesn’t give the tram’s line numbers; it refers you to
-Västtrafik.
+and the park. For the tram lines the park refers you to Västtrafik.
 
 If you come by car, there are three car parks: **P-huset Liseberg Södra** under
 World of Volvo (1,170 spaces), **P-huset Liseberg Västra** at Södra Vägen 70
 (162 spaces) and **P-huset Focus** at Fabriksgatan 45 (1,057 spaces). The parking
-fees are listed at Parkering Göteborg, not on the park’s site.
+fees are listed at Parkering Göteborg.
 
 ## Staying and eating
 
@@ -430,8 +428,7 @@ Liseberg.
 
 You’re allowed to bring food. The park writes: "Det går bra att ta med egen mat"
 (Bringing your own food is fine), and there are picnic areas. Dogs aren’t
-allowed, guide dogs are. If you eat in the park, you have a choice: the
-Lisebergs Wärdshus with Nordic cooking, the Hamnkrogen for fish, the
+allowed, guide dogs are. In the park there are the Lisebergs Wärdshus with Nordic cooking, the Hamnkrogen for fish, the
 Järnvägsrestaurangen in the Lisebergbanan station, Al Parco with pizza, and the
 Mei Rose Rooftop Bar & Bistro.
 
@@ -494,8 +491,7 @@ Yes, the park allows it and has picnic areas. Dogs aren’t allowed.
 ### What does admission cost?
 
 In autumn 2026, online, from 125 kronor for admission and from 425 kronor with
-the Åkpass. Children under 110 cm get in free. The park’s site currently doesn’t
-show the 2026 summer prices.
+the Åkpass. Children under 110 cm get in free.
 
 ### How old do I have to be for the haunted houses?
 

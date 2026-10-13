@@ -213,7 +213,7 @@ Il parco ha più di trenta giostre, fra cui:
   60 metri che sta nel parco dal 2012 e che prima, al Kanaltorget di Göteborg, si
   chiamava «Göteborgshjulet».
 
-Più tranquilla è **[Underlandet](ref:liseberg/underlandet)**, una corsa in gondola
+**[Underlandet](ref:liseberg/underlandet)** è una corsa in gondola
 attraverso diverse stanze nel mondo dei conigli di Liseberg. Risale al 2020 e al
 2021, compare nell’elenco delle attrazioni con coda virtuale, e a un bambino
 servono 130 cm, con accompagnatore 90 cm. La **[Slänggungan](ref:liseberg/slaenggungan)**,
@@ -241,20 +241,18 @@ anni per Vinden, Zombie, Nattsvart på Gasten e Skogen, **15 anni** per «7».
 
 ```
 
-## Hotel stregato, palchi e una via con le stelle
+## Hotel stregato, palchi e lo Stjärnstigen
 
 Lo **Spökhotellet Gasten** ha aperto nel 1998 e nell’autunno del 1999 ha ricevuto
 un THEA Award della Themed Entertainment Association in California. Compare
-nell’elenco delle attrazioni con coda virtuale. Le case di Halloween sono più
-recenti: Zombie esiste, secondo il parco, dal 2015, Vinden dal 2017, la casa «7»
+nell’elenco delle attrazioni con coda virtuale. Zombie esiste, secondo il parco, dal 2015, Vinden dal 2017, la casa «7»
 dal 2022 e Nattsvart på Gasten dal 2024.
 
 Fra la fermata Korsvägen e l’ingresso principale passa la **Stjärnstigen**, una
 via con stelle di ottone incassate nel suolo, una specie di Walk of Fame per
 Göteborg. La precedente Hedersplatsen, con le impronte delle mani di personaggi
 famosi, creata nel 1977 con 50 impronte, nel 2012 per il 90° compleanno è stata
-rimossa e ha lasciato il posto alla Farfars Bil. Il parco ha ancora oggi diversi
-palchi. Sulla **Stora Scenen**, che esiste dal 1923, dal 2009 al 2023 andava in
+rimossa e ha lasciato il posto alla Farfars Bil. Sulla **Stora Scenen**, che esiste dal 1923, dal 2009 al 2023 andava in
 onda d’estate lo show televisivo «Lotta på Liseberg» di TV4, e per il 21 giugno
 2027 il parco ha annunciato un concerto dei Take That. L’ingresso ai concerti su
 questo palco costa extra (75 corone), mentre la Lilla Scenen è compresa nel
@@ -401,7 +399,7 @@ online:
 Senza Åkpass una singola corsa costa una Åkkupong da 25 corone, una casa stregata
 da due a quattro kupong. Nei giorni «Höst i Kaninlandet» l’ingresso costa 95
 corone, con le attrazioni per bambini 245 corone. I prezzi estivi 2026 la pagina
-del parco non li mostra più, ci sono solo quelli di Halloween. Quale delle sette
+del parco non li mostra più. Quale delle sette
 fasce valga in quale giorno si legge nel calendario dei prezzi del parco, in PDF.
 
 Chi viene più spesso compra un abbonamento annuale (dodici mesi dall’attivazione):
@@ -416,13 +414,12 @@ Gli ingressi sono due. Il **Norra entrén** si trova in Örgrytevägen 5, presso
 Korsvägen, con le fermate Korsvägen e Liseberg Station, il **Södra entrén** in
 Herman Lindholms torg 1, con la fermata Liseberg Södra. Dalla stazione centrale di
 Göteborg Central sono, secondo il parco, 10–15 minuti a piedi, e d’estate fra
-Central e il parco corre un tram storico, la Lisebergslinjen. I numeri delle linee
-del tram il parco non li indica, rimanda a Västtrafik.
+Central e il parco corre un tram storico, la Lisebergslinjen. Per le linee del tram il parco rimanda a Västtrafik.
 
 Chi viene in auto ha tre parcheggi multipiano: il **P-huset Liseberg Södra** sotto
 il World of Volvo (1.170 posti), il **P-huset Liseberg Västra** in Södra Vägen 70
 (162 posti) e il **P-huset Focus** in Fabriksgatan 45 (1.057 posti). Le tariffe del
-parcheggio sono presso Parkering Göteborg, non sulla pagina del parco.
+parcheggio sono presso Parkering Göteborg.
 
 ## Dormire e mangiare
 
@@ -435,7 +432,7 @@ Liseberg.
 
 Il cibo puoi portarlo. Il parco scrive: «Det går bra att ta med egen mat» («Va
 bene portare il proprio cibo»), e ci sono aree picnic. I cani non sono ammessi, i
-cani guida sì. Chi mangia nel parco ha da scegliere: il Lisebergs Wärdshus con
+cani guida sì. Nel parco ci sono il Lisebergs Wärdshus con
 cucina nordica, la Hamnkrogen per il pesce, la Järnvägsrestaurangen nella
 stazione della Lisebergbanan, Al Parco con la pizza e il Mei Rose Rooftop Bar &
 Bistro.
@@ -496,8 +493,7 @@ Sì, il parco lo permette e ha aree picnic. I cani non sono ammessi.
 ### Quanto costa l’ingresso?
 
 Nell’autunno 2026 online da 125 corone per l’ingresso, da 425 corone con Åkpass. I
-bambini sotto i 110 cm entrano gratis. I prezzi estivi 2026 la pagina del parco al
-momento non li mostra.
+bambini sotto i 110 cm entrano gratis.
 
 ### Da che età si può entrare nelle case stregate?
 

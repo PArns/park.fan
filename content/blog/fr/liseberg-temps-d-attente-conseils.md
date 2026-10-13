@@ -220,7 +220,7 @@ Le parc compte plus de trente attractions à bord de véhicules, dont :
   60 mètres de haut, installée dans le parc depuis 2012 et qui s’appelait
   auparavant « Göteborgshjulet », sur le Kanaltorget à Göteborg.
 
-C’est plus calme à **[Underlandet](ref:liseberg/underlandet)**, un parcours en
+**[Underlandet](ref:liseberg/underlandet)** est un parcours en
 nacelles à travers plusieurs salles dans l’univers des lapins de Liseberg. Il
 date de 2020 et 2021, figure sur la liste des attractions avec file d’attente
 virtuelle, et un enfant doit y mesurer 130 cm, 90 cm avec accompagnateur. La
@@ -250,20 +250,18 @@ s’applique : onze ans pour Vinden, Zombie, Nattsvart på Gasten et Skogen,
 
 ```
 
-## Hôtel hanté, scènes et un chemin d’étoiles
+## Hôtel hanté, scènes et le Stjärnstigen
 
 Le **Spökhotellet Gasten** a ouvert en 1998 et a reçu à l’automne 1999 un THEA
 Award de la Themed Entertainment Association, en Californie. Il figure sur la
-liste des attractions avec file d’attente virtuelle. Les maisons d’Halloween
-sont plus récentes : Zombie fonctionne selon le parc depuis 2015, Vinden depuis
+liste des attractions avec file d’attente virtuelle. Zombie fonctionne selon le parc depuis 2015, Vinden depuis
 2017, la maison « 7 » depuis 2022 et Nattsvart på Gasten depuis 2024.
 
 Entre l’arrêt Korsvägen et l’entrée principale passe le **Stjärnstigen**, un
 chemin avec des étoiles de laiton incrustées, une sorte de Walk of Fame pour
 Göteborg. L’ancienne Hedersplatsen, avec les empreintes de mains de
 célébrités, aménagée en 1977 avec 50 empreintes, a été retirée en 2012 pour les
-90 ans et a laissé la place à Farfars Bil. Le parc compte aujourd’hui encore
-plusieurs scènes. Sur la **Stora Scenen**, qui existe depuis 1923, l’émission de
+90 ans et a laissé la place à Farfars Bil. Sur la **Stora Scenen**, qui existe depuis 1923, l’émission de
 télévision « Lotta på Liseberg » de TV4 a eu lieu chaque été de 2009 à 2023, et
 pour le 21 juin 2027 le parc a annoncé un concert de Take That. L’entrée aux
 concerts de cette scène coûte un supplément (75 couronnes) ; la Lilla Scenen est
@@ -415,7 +413,7 @@ en ligne :
 Sans Åkpass, un tour coûte un Åkkupong à 25 couronnes, une maison hantée deux à
 quatre kupongs. Les jours « Höst i Kaninlandet », l’entrée coûte 95 couronnes,
 245 couronnes avec les attractions pour enfants. Les tarifs d’été 2026, la page
-du parc ne les montre plus, on n’y voit que ceux d’Halloween. Quel niveau parmi
+du parc ne les montre plus. Quel niveau parmi
 les sept s’applique à quel jour, c’est indiqué dans le calendrier des prix du
 parc, au format PDF.
 
@@ -432,14 +430,12 @@ Il y a deux entrées. La **Norra entrén** se trouve à l’Örgrytevägen 5, pr
 Korsvägen, avec les arrêts Korsvägen et Liseberg Station ; la **Södra entrén**,
 au Herman Lindholms torg 1, avec l’arrêt Liseberg Södra. De la gare centrale de
 Göteborg Central, il y a, selon le parc, 10 à 15 minutes à pied, et en été un
-tramway historique, la Lisebergslinjen, circule entre Central et le parc. Le
-parc n’indique pas les numéros de ligne du tramway et renvoie à Västtrafik.
+tramway historique, la Lisebergslinjen, circule entre Central et le parc. Pour les lignes de tramway, le parc renvoie à Västtrafik.
 
 Qui vient en voiture a trois parkings couverts : le **P-huset Liseberg Södra**
 sous World of Volvo (1 170 places), le **P-huset Liseberg Västra** au Södra
 Vägen 70 (162 places) et le **P-huset Focus** à la Fabriksgatan 45
-(1 057 places). Les tarifs de stationnement figurent chez Parkering Göteborg,
-pas sur la page du parc.
+(1 057 places). Les tarifs de stationnement figurent chez Parkering Göteborg.
 
 ## Dormir et manger
 
@@ -453,7 +449,7 @@ Svenska Mässan, pas à Liseberg.
 Vous pouvez apporter votre repas. Le parc écrit à ce sujet : « Det går bra att
 ta med egen mat » (On peut très bien apporter sa propre nourriture), et il y a
 des aires de pique-nique. Les chiens ne sont pas autorisés, les chiens guides
-d’aveugle si. Qui mange dans le parc a le choix : le Lisebergs Wärdshus avec une
+d’aveugle si. Dans le parc, il y a le Lisebergs Wärdshus avec une
 cuisine nordique, la Hamnkrogen pour le poisson, la Järnvägsrestaurangen dans la
 gare de la Lisebergbanan, Al Parco avec des pizzas, et le Mei Rose Rooftop Bar &
 Bistro.
@@ -520,7 +516,6 @@ autorisés.
 
 À l’automne 2026, en ligne, à partir de 125 couronnes pour l’entrée, à partir de
 425 couronnes avec Åkpass. Les enfants de moins de 110 cm entrent gratuitement.
-Les tarifs d’été 2026, la page du parc ne les montre pas pour le moment.
 
 ### À partir de quel âge puis-je entrer dans les maisons hantées ?
 

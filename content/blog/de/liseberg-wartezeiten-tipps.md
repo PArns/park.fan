@@ -206,7 +206,7 @@ Liseberg hat mehr als dreißig Fahrattraktionen, darunter:
   Höhe, das seit 2012 im Park steht und davor am Kanaltorget in Göteborg
   „Göteborgshjulet“ hieß.
 
-Ruhiger geht es in **[Underlandet](ref:liseberg/underlandet)** zu, einer Gondelfahrt
+**[Underlandet](ref:liseberg/underlandet)** ist eine Gondelfahrt
 durch mehrere Räume in der Welt der Liseberg-Kaninchen. Sie stammt aus 2020 und 2021,
 steht in der Liste der Bahnen mit virtueller Warteschlange, und für sie braucht ein
 Kind 130 cm, in Begleitung 90 cm. Die **[Slänggungan](ref:liseberg/slaenggungan)**, ein
@@ -234,19 +234,18 @@ Gasten und Skogen, **15 Jahre** für „7“.
 
 ```
 
-## Spukhotel, Bühnen und ein Weg mit Sternen
+## Spukhotel, Bühnen und der Stjärnstigen
 
 Das **Spökhotellet Gasten** eröffnete 1998 und bekam im Herbst 1999 einen
 THEA Award der Themed Entertainment Association in Kalifornien. Es steht in der
-Liste der Bahnen mit virtueller Warteschlange. Die Halloween-Häuser sind jünger:
-Zombie läuft laut Park seit 2015, Vinden seit 2017, das Haus „7“ seit 2022 und
+Liste der Bahnen mit virtueller Warteschlange. Zombie läuft laut Park seit 2015, Vinden seit 2017, das Haus „7“ seit 2022 und
 Nattsvart på Gasten seit 2024.
 
 Zwischen der Haltestelle Korsvägen und dem Haupteingang führt der **Stjärnstigen**,
 ein Weg mit eingelassenen Messingsternen, eine Art Walk of Fame für Göteborg. Die
 frühere Hedersplatsen mit den Handabdrücken von Prominenten, 1977 mit 50
 Abdrücken angelegt, wurde 2012 zum 90. Geburtstag entfernt und machte der Farfars
-Bil Platz. Der Park hat bis heute mehrere Bühnen. Auf der **Stora Scenen**, die seit
+Bil Platz. Auf der **Stora Scenen**, die seit
 1923 steht, lief von 2009 bis 2023 im Sommer die Fernsehshow „Lotta på Liseberg“
 von TV4, und für den 21. Juni 2027 hat der Park ein Konzert von Take That angekündigt.
 Der Eintritt zu Konzerten auf dieser Bühne kostet extra (75 Kronen), die Lilla Scenen
@@ -387,7 +386,7 @@ Preisstufen je nach Tag. Die Preise der Halloween-Saison 2026, online:
 Ohne Åkpass kostet eine einzelne Fahrt eine Åkkupong zu 25 Kronen, ein Spukhaus
 zwei bis vier Kupongen. An den Tagen „Höst i Kaninlandet“ kostet der Eintritt 95
 Kronen, mit Kinderbahnen 245 Kronen. Die Sommerpreise 2026 zeigt die Seite des
-Parks nicht mehr, dort stehen nur noch die Halloween-Preise. Welche der sieben Stufen an welchem Tag gilt, steht im Preiskalender des Parks als PDF.
+Parks nicht mehr. Welche der sieben Stufen an welchem Tag gilt, steht im Preiskalender des Parks als PDF.
 
 Wer öfter kommt, kauft einen Jahrespass (zwölf Monate ab Aktivierung): das
 **Lisebergspasset** für 395 Kronen gilt für den Eintritt, das **Guldpasset** für 2.595
@@ -401,13 +400,12 @@ Korsvägen, mit den Haltestellen Korsvägen und Liseberg Station, der **Södra
 entrén** am Herman Lindholms torg 1 mit der Haltestelle Liseberg Södra. Vom
 Hauptbahnhof Göteborg Central sind es laut Park 10 bis 15 Minuten zu Fuß, und im
 Sommer fährt zwischen Central und dem Park eine historische Straßenbahn, die
-Lisebergslinjen. Die Liniennummern der Straßenbahn nennt der Park nicht, er
-verweist auf Västtrafik.
+Lisebergslinjen. Für die Straßenbahnlinien verweist der Park auf Västtrafik.
 
 Wer mit dem Auto kommt, hat drei Parkhäuser: **P-huset Liseberg Södra** unter World of
 Volvo (1.170 Plätze), **P-huset Liseberg Västra** an der Södra Vägen 70 (162 Plätze)
 und **P-huset Focus** an der Fabriksgatan 45 (1.057 Plätze). Die Parkgebühren stehen
-bei Parkering Göteborg, nicht auf der Seite des Parks.
+bei Parkering Göteborg.
 
 ## Übernachten und Essen
 
@@ -418,8 +416,7 @@ Stadt. Das Gothia Towers neben dem Park gehört der Stiftung
 Svenska Mässan, nicht Liseberg.
 
 Essen darfst du mitbringen. Der Park schreibt dazu: „Det går bra att ta med egen
-mat“, und es gibt Picknickplätze. Hunde sind nicht erlaubt, Blindenhunde schon. Wer im
-Park isst, hat Auswahl: das Lisebergs Wärdshus mit nordischer Küche, die Hamnkrogen
+mat“, und es gibt Picknickplätze. Hunde sind nicht erlaubt, Blindenhunde schon. Im Park gibt es das Lisebergs Wärdshus mit nordischer Küche, die Hamnkrogen
 für Fisch, die Järnvägsrestaurangen in der Station der Lisebergbanan, Al Parco mit Pizza,
 und das Mei Rose Rooftop Bar & Bistro.
 
@@ -481,7 +478,7 @@ Ja, der Park erlaubt es und hat Picknickplätze. Hunde sind nicht erlaubt.
 ### Was kostet der Eintritt?
 
 Im Herbst 2026 online ab 125 Kronen für den Eintritt, ab 425 Kronen mit Åkpass. Kinder
-unter 110 cm kommen kostenlos hinein. Die Sommerpreise 2026 zeigt die Seite des Parks derzeit nicht.
+unter 110 cm kommen kostenlos hinein.
 
 ### Ab wann darf ich in die Spukhäuser?
 

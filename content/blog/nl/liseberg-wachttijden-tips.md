@@ -213,8 +213,7 @@ Liseberg heeft meer dan dertig ritten, waaronder:
   meter hoog dat sinds 2012 in het park staat en daarvoor als “Göteborgshjulet”
   op de Kanaltorget in Göteborg stond.
 
-Rustiger gaat het toe in **[Underlandet](ref:liseberg/underlandet)**, een
-gondelrit door meerdere ruimtes in de wereld van de Liseberg-konijnen. Hij
+**[Underlandet](ref:liseberg/underlandet)** is een gondelrit door meerdere ruimtes in de wereld van de Liseberg-konijnen. Hij
 dateert uit 2020 en 2021, staat op de lijst van banen met een virtuele wachtrij,
 en een kind heeft er 130 cm voor nodig, in begeleiding 90 cm. De
 **[Slänggungan](ref:liseberg/slaenggungan)**, een kettingcarrousel van Zierer,
@@ -243,19 +242,18 @@ elf jaar voor Vinden, Zombie, Nattsvart på Gasten en Skogen, **15 jaar** voor
 
 ```
 
-## Spookhotel, podia en een pad met sterren
+## Spookhotel, podia en de Stjärnstigen
 
 Het **Spökhotellet Gasten** opende in 1998 en kreeg in het najaar van 1999 een
 THEA Award van de Themed Entertainment Association in Californië. Het staat op
-de lijst van banen met een virtuele wachtrij. De halloweenhuizen zijn jonger:
-Zombie draait volgens het park sinds 2015, Vinden sinds 2017, het huis “7”
+de lijst van banen met een virtuele wachtrij. Zombie draait volgens het park sinds 2015, Vinden sinds 2017, het huis “7”
 sinds 2022 en Nattsvart på Gasten sinds 2024.
 
 Tussen de halte Korsvägen en de hoofdingang loopt de **Stjärnstigen**, een pad
 met ingelaten messing sterren, een soort Walk of Fame voor Göteborg. De
 vroegere Hedersplatsen met de handafdrukken van beroemdheden, in 1977 aangelegd
 met 50 afdrukken, werd in 2012 voor de 90e verjaardag weggehaald en maakte
-plaats voor de Farfars Bil. Het park heeft nog steeds meerdere podia. Op de
+plaats voor de Farfars Bil. Op de
 **Stora Scenen**, die er sinds 1923 staat, liep van 2009 tot 2023 in de zomer
 de televisieshow “Lotta på Liseberg” van TV4, en voor 21 juni 2027 heeft het
 park een concert van Take That aangekondigd. De toegang tot concerten op dit
@@ -402,7 +400,7 @@ van de dag. De prijzen van het halloweenseizoen 2026, online:
 Zonder Åkpass kost een afzonderlijke rit een Åkkupong van 25 kronen, een
 spookhuis twee tot vier kupongen. Op de dagen “Höst i Kaninlandet” kost de
 entree 95 kronen, met kinderbanen 245 kronen. De zomerprijzen van 2026 toont de
-site van het park niet meer, daar staan alleen nog de halloweenprijzen. Welke
+site van het park niet meer. Welke
 van de zeven trappen op welke dag geldt, staat in de prijskalender van het park
 als pdf.
 
@@ -419,14 +417,12 @@ Korsvägen, met de haltes Korsvägen en Liseberg Station, de **Södra entrén** 
 de Herman Lindholms torg 1 met de halte Liseberg Södra. Vanaf het centraal
 station Göteborg Central is het volgens het park 10 tot 15 minuten lopen, en in
 de zomer rijdt er tussen Central en het park een historische tram, de
-Lisebergslinjen. De lijnnummers van de tram noemt het park niet, het verwijst
-naar Västtrafik.
+Lisebergslinjen. Voor de tramlijnen verwijst het park naar Västtrafik.
 
 Wie met de auto komt, heeft drie parkeergarages: **P-huset Liseberg Södra**
 onder World of Volvo (1.170 plaatsen), **P-huset Liseberg Västra** aan de
 Södra Vägen 70 (162 plaatsen) en **P-huset Focus** aan de Fabriksgatan 45
-(1.057 plaatsen). De parkeertarieven staan bij Parkering Göteborg, niet op de
-site van het park.
+(1.057 plaatsen). De parkeertarieven staan bij Parkering Göteborg.
 
 ## Overnachten en eten
 
@@ -439,8 +435,7 @@ Mässan, niet van Liseberg.
 
 Eten mag je meenemen. Het park schrijft erover: “Det går bra att ta med egen
 mat” (“Je mag gerust je eigen eten meenemen”), en er zijn picknickplekken.
-Honden zijn niet toegestaan, blindengeleidehonden wel. Wie in het park eet, kan
-kiezen: het Lisebergs Wärdshus met Noordse keuken, de Hamnkrogen voor vis, de
+Honden zijn niet toegestaan, blindengeleidehonden wel. In het park zijn er het Lisebergs Wärdshus met Noordse keuken, de Hamnkrogen voor vis, de
 Järnvägsrestaurangen in het station van de Lisebergbanan, Al Parco met pizza
 en de Mei Rose Rooftop Bar & Bistro.
 
@@ -505,8 +500,7 @@ toegestaan.
 ### Wat kost de entree?
 
 In het najaar van 2026 online vanaf 125 kronen voor de entree, vanaf 425 kronen
-met Åkpass. Kinderen onder 110 cm komen gratis binnen. De zomerprijzen van
-2026 toont de site van het park op dit moment niet.
+met Åkpass. Kinderen onder 110 cm komen gratis binnen.
 
 ### Vanaf welke leeftijd mag ik de spookhuizen in?
 

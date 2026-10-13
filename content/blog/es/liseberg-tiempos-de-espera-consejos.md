@@ -212,7 +212,7 @@ El parque tiene más de treinta atracciones, entre ellas:
   altura que está en el parque desde 2012 y que antes, en el Kanaltorget de
   Gotemburgo, se llamaba «Göteborgshjulet».
 
-Más tranquila es **[Underlandet](ref:liseberg/underlandet)**, un paseo en góndola
+**[Underlandet](ref:liseberg/underlandet)** es un paseo en góndola
 por varias salas en el mundo de los conejos de Liseberg. Es de 2020 y 2021, figura
 en la lista de atracciones con cola virtual, y un niño necesita para ella 130 cm,
 con acompañante 90 cm. La **[Slänggungan](ref:liseberg/slaenggungan)**, un
@@ -240,11 +240,11 @@ años para Vinden, Zombie, Nattsvart på Gasten y Skogen, **15 años** para «7�
 
 ```
 
-## Hotel encantado, escenarios y un camino con estrellas
+## Hotel encantado, escenarios y el Stjärnstigen
 
 El **Spökhotellet Gasten** abrió en 1998 y en otoño de 1999 recibió un THEA Award
 de la Themed Entertainment Association de California. Figura en la lista de
-atracciones con cola virtual. Las casas de Halloween son más jóvenes: Zombie
+atracciones con cola virtual. Zombie
 funciona, según el parque, desde 2015, Vinden desde 2017, la casa «7» desde 2022
 y Nattsvart på Gasten desde 2024.
 
@@ -252,7 +252,7 @@ Entre la parada Korsvägen y la entrada principal discurre el **Stjärnstigen**,
 camino con estrellas de latón incrustadas, una especie de paseo de la fama de
 Gotemburgo. La antigua Hedersplatsen, con las huellas de manos de famosos,
 creada en 1977 con 50 huellas, se retiró en 2012 por el 90.º cumpleaños y dejó su
-sitio a la Farfars Bil. El parque tiene todavía varios escenarios. En la **Stora
+sitio a la Farfars Bil. En la **Stora
 Scenen**, que está desde 1923, se emitió en verano de 2009 a 2023 el programa de
 televisión «Lotta på Liseberg» de TV4, y para el 21 de junio de 2027 el parque ha
 anunciado un concierto de Take That. La entrada a los conciertos de este
@@ -406,7 +406,7 @@ temporada de Halloween 2026, por internet:
 Sin Åkpass, un viaje suelto cuesta un Åkkupong de 25 coronas, una casa del
 terror de dos a cuatro cupones. En los días «Höst i Kaninlandet» la entrada
 cuesta 95 coronas, con atracciones infantiles 245 coronas. Los precios de verano
-de 2026 la página del parque ya no los muestra; solo quedan los de Halloween.
+de 2026 la página del parque ya no los muestra.
 Cuál de los siete niveles rige cada día figura en el calendario de precios del
 parque, en PDF.
 
@@ -423,14 +423,12 @@ con las paradas Korsvägen y Liseberg Station; la **Södra entrén**, en Herman
 Lindholms torg 1, con la parada Liseberg Södra. Desde la estación central de
 Gotemburgo (Göteborg Central) son, según el parque, de 10 a 15 minutos a pie, y
 en verano circula entre Central y el parque un tranvía histórico, la
-Lisebergslinjen. Los números de línea del tranvía el parque no los indica; remite
-a Västtrafik.
+Lisebergslinjen. Para las líneas de tranvía, el parque remite a Västtrafik.
 
 Quien viene en coche tiene tres aparcamientos: el **P-huset Liseberg Södra**,
 bajo World of Volvo (1.170 plazas), el **P-huset Liseberg Västra**, en Södra
 Vägen 70 (162 plazas) y el **P-huset Focus**, en Fabriksgatan 45 (1.057 plazas).
-Las tarifas de aparcamiento figuran en Parkering Göteborg, no en la página del
-parque.
+Las tarifas de aparcamiento figuran en Parkering Göteborg.
 
 ## Dormir y comer
 
@@ -443,8 +441,7 @@ fundación Svenska Mässan, no a Liseberg.
 
 Puedes llevar tu comida. El parque escribe: «Det går bra att ta med egen mat»
 (en español: «Se puede traer comida propia»), y hay zonas de pícnic. Los perros
-no están permitidos, los perros guía sí. Quien come en el parque tiene para
-elegir: el Lisebergs Wärdshus con cocina nórdica, la Hamnkrogen para pescado, la
+no están permitidos, los perros guía sí. En el parque están el Lisebergs Wärdshus con cocina nórdica, la Hamnkrogen para pescado, la
 Järnvägsrestaurangen en la estación de la Lisebergbanan, Al Parco con pizza y el
 Mei Rose Rooftop Bar & Bistro.
 
@@ -511,8 +508,7 @@ permitidos.
 ### ¿Cuánto cuesta la entrada?
 
 En otoño de 2026, por internet desde 125 coronas la entrada y desde 425 coronas
-con Åkpass. Los niños de menos de 110 cm entran gratis. Los precios de verano de
-2026 la página del parque no los muestra por ahora.
+con Åkpass. Los niños de menos de 110 cm entran gratis.
 
 ### ¿Desde qué edad puedo entrar en las casas del terror?
 
