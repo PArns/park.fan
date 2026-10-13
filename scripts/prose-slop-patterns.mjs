@@ -271,7 +271,7 @@ const SOURCE_SILENCE = {
 };
 
 const CAPTION_AFTER = {
-  de: /^(?:In der Tabelle|Im Kalender|In der Grafik|Im Diagramm|Auf der Karte|Die Tabelle|Der Kalender|Die Grafik|Das Diagramm|Das Widget|Die Karte)\b/,
+  de: /^(?:In der Tabelle|Im Kalender|In der Grafik|Im Diagramm|Auf der Karte|(?:Die Tabelle|Der Kalender|Die Grafik|Das Diagramm|Das Widget|Die Karte)\s+(?:zeigt|listet|enthält|fasst|nennt|vergleicht))\b/,
   en: /^(?:The table|The calendar|The chart|The graph|The widget|The map|In the table|In the calendar|In the chart|On the map)\b/i,
 };
 
@@ -292,16 +292,20 @@ function finiteVerbs(clause, locale) {
     .filter(({ w, word, prev }) => {
       if (w.length < 5 || BECAUSE_STOP.has(w)) return false;
       // German nouns are capitalised, so a lower-case `-t` word is a verb or a participle.
-      if (locale === 'de') return word[0] === w[0] && /[^e]t$/.test(w) && !/^ge/.test(w);
-      return /(?:s|ed|ing)$/.test(w) && !DETERMINER.has(prev);
+      if (locale === 'de')
+        return word[0] === w[0] && /t$/.test(w) && !/^ge/.test(w) && !ADVERB_T.has(w);
+      return /s$/.test(w) && SUBJECT.has(prev);
     })
     .map(({ w }) => w);
 }
-const DETERMINER = new Set(
-  'the a an its their our your his her this that these those more many few some all any no each every one two three four five six seven eight nine ten of'.split(
+/** German adverbs and adjectives that end in `-t` like a verb. */
+const ADVERB_T = new Set(
+  'zuerst zuletzt jetzt leicht meist nicht selbst erst bereits besonders breit hart kurz nächst'.split(
     ' '
   )
 );
+/** An English `-s` word counts as a verb only right after one of these. */
+const SUBJECT = new Set('it he she this that which everything nothing one who park'.split(' '));
 
 const headings = (bs, minLevel = 2, maxLevel = 3) =>
   bs.filter((b) => b.kind === 'heading' && b.level >= minLevel && b.level <= maxLevel);

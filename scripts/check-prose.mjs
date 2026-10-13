@@ -2224,4 +2224,5 @@ console.log(
     (STRICT ? ' — --strict: warnings count as errors.' : '')
 );
 
-process.exit(shownErrors.length || (STRICT && shownWarnings.length) ? 1 : 0);
+// `--file` narrows the report only; a failure in any file still fails the run.
+process.exit(errors.length || (STRICT && warnings.length) ? 1 : 0);

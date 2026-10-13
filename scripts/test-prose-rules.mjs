@@ -260,6 +260,9 @@ no(
   'tautological-because',
   'Ein zweiter Tag lohnt sich mit Kindern, weil die Bahnen dann kürzer sind.'
 );
+no('tautological-because', 'Fahr zuerst die Bahn, weil die Schlange zuerst kurz ist.');
+no('tautological-because', 'Rides are popular, because rides close early.', 'en');
+yes('tautological-because', 'Der Eintritt kostet viel, weil das Hotel kostet.');
 no('tautological-because', 'Der Park ist voll, weil die Schulferien beginnen.');
 no('tautological-because', 'It works best with children, because the queues are short.', 'en');
 
@@ -385,6 +388,7 @@ no(
 // 19 widget-caption-after
 yes('widget-caption-after', lines(fence, 'In der Tabelle steht für jede Bahn die Wartezeit.'));
 yes('widget-caption-after', lines(fence, 'The table shows the wait for every ride.'), 'en');
+no('widget-caption-after', lines(fence, 'Die Karte kostet 5 Euro.'));
 no('widget-caption-after', lines(fence, 'Freitags ist es am leersten.'));
 no('widget-caption-after', lines('In der Tabelle steht nichts.', fence));
 
