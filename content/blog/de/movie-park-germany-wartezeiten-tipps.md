@@ -7,10 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Batman weg, Bugs Bunny weg, und seitdem baut der Park Fahrgeschäfte über sich
-  selbst. Zum 30. Geburtstag: gemessene Wartezeiten, der Wochentag, bei dem die
-  gängigen Ratgeber danebenliegen, der Fahrplan ab September und das Halloween Horror
-  Festival, das noch bis zum 8. November läuft.
+  Von den Marken, mit denen der Movie Park 1996 als Warner Bros. Movie World
+  eröffnet hat, ist keine mehr da. Am kürzesten stehst du am Freitag an, und der
+  Sonntag ist ruhiger als der Samstag. Das Halloween Horror Festival läuft bis zum
+  8. November.
 tags:
   - movie-park
   - wartezeiten
@@ -61,11 +61,10 @@ die Warner fünf Jahre zuvor an der australischen Gold Coast eröffnet hatte. Ei
 Tag später durfte das zahlende Publikum rein.
 
 Von den Marken, für die dieser Aufwand betrieben wurde, ist heute keine einzige
-mehr da. Bugs Bunny weg, Batman weg, die Gremlins weg, Police Academy weg. Der
+mehr da, weder Bugs Bunny noch Batman, die Gremlins oder Police Academy. Der
 Park heißt seit 2005 anders, gehört seit 2010 einem spanischen Konzern und
 feiert seinen dreißigsten Geburtstag ausgerechnet mit einer Attraktion von
-Paramount. Das ist ungefähr so, als stünde auf der Torte zur Perlenhochzeit der
-Name des Nachbarn.
+Paramount.
 
 Über alle Öffnungstage, die wir bisher gemessen haben, steht man im
 [Movie Park](ref:movie-park-germany) gut ein Drittel kürzer an als im
@@ -73,27 +72,24 @@ Name des Nachbarn.
 Wie sich die übrigen deutschen Parks einordnen, steht in meinem
 [Freizeitpark-Ranking für Deutschland](/blog/beste-freizeitparks-in-deutschland).
 
-Und der Sonntag, den die gängigen Ratgeber im Netz als vollen Wochenendtag
+Der Sonntag, den die gängigen Ratgeber im Netz als vollen Wochenendtag
 abschreiben, gehört in unseren Daten zu den ruhigsten Tagen der Woche.
 
-## Bugs Bunny, Batman, Gremlins: alle ausgezogen
+## Wie aus Warner Bros. Movie World der Movie Park wurde
 
 Angefangen hat das Gelände als **Kirchhellener Märchenwald**, den die Familie
 Allekötter 1967 aufmachte. Daraus wurde der Traumlandpark, und Anfang der
 Neunziger versuchte es die Bavaria Film hier mit einem eigenen **Bavaria
 Filmpark**. Der hielt von 1992 bis 1994.
 
-Dann kam Warner, mit Michael Douglas und allem Drum und Dran. Die Rechnung
-dahinter war einfach: Ein Studio verleiht seine Figuren an einen
-Park, der Park verkauft Tickets, und beide gewinnen, solange das Studio dabei bleibt.
+Warner verlieh dem Park seine Figuren, und der Park verkaufte die Tickets.
 
-Es blieb acht Jahre. Im Oktober 1999 verkaufte Time Warner 97 Prozent an
+Das hielt acht Jahre. Im Oktober 1999 verkaufte Time Warner 97 Prozent an
 **Premier Parks**, die kurz darauf **Six Flags** hießen. 2004 verkauften die
 Amerikaner ihr europäisches Geschäft an den Finanzinvestor **Palamon Capital
 Partners**, und mit dem Verkauf endeten die Lizenzverträge. Im Winter 2004/05
 musste der Park praktisch alles umbenennen, was einen Namen aus einem Warner-Film
-trug, ein Umzug, bei dem die Möbel bleiben und nur die Klingelschilder neu
-kommen. Im März 2005 machte er als **Movie Park Germany** wieder auf. Fünf Jahre
+trug. Im März 2005 machte er als **Movie Park Germany** wieder auf. Fünf Jahre
 später, am 17. Mai 2010, übernahm der spanische Betreiber **Parques Reunidos**.
 Der Madrider Konzern gehört seit 2019 mehrheitlich dem schwedischen
 Finanzinvestor EQT, und der will ihn laut einem Bericht der spanischen
@@ -101,8 +97,7 @@ Wirtschaftszeitung Expansión vom 24. September 2026 als Ganzes verkaufen, samt
 Movie Park. Was das für Besucher und Saisonpässe heißt, steht in
 [unserer Meldung zum Verkauf](/blog/parques-reunidos-verkauf-movie-park).
 
-Fünf der bekanntesten Fahrgeschäfte leben deshalb unter neuem Namen weiter, wie
-Kronzeugen im Schutzprogramm:
+Fünf der bekanntesten Fahrgeschäfte leben deshalb unter neuem Namen weiter:
 
 | Eröffnet als              | Jahr | Heißt heute                                     |
 | ------------------------- | ---- | ----------------------------------------------- |
@@ -112,8 +107,7 @@ Kronzeugen im Schutzprogramm:
 | Wild Wild West            | 1999 | Bandit (seit 2005)                              |
 | Eraser                    | 2001 | Iron Claw (seit 2023), dazwischen FX, MP-Xpress |
 
-Zwischenstationen sind da noch gar nicht mitgezählt. Die Halle der Looney Tunes
-beherbergte von 2005 bis 2016 **Ice Age Adventure**, bis auch diese Lizenz nicht
+Die Halle der Looney Tunes beherbergte dazwischen von 2005 bis 2016 **Ice Age Adventure**, bis auch diese Lizenz nicht
 verlängert wurde und die Bootsfahrt zumachte. Danach fuhr dort vier Jahre lang
 nichts, 2018 und 2019 diente die Halle nur zu Halloween als Horrorhaus.
 
@@ -123,20 +117,15 @@ Im September 2012 stoppte der Park das Projekt. Offiziell hatte sich die
 Investitionsstrategie geändert, Parkchef Wouter Dekkers nannte als Grund die
 sinkenden Besucherzahlen in den Schwesterparks in Spanien und Italien. Auf der Wiese wurde erst 2017 wieder gebaut, und zwar Star Trek: Operation Enterprise.
 
-Diese Vorgeschichte erklärt den Ruf, den der Movie Park in der Coaster-Szene bis
-heute hat. Wer ihn zwischen 2012 und 2016 besucht hat, sah einen Park, in dem
-sich außer The Lost Temple (2014) wenig bewegte.
+Wer den Park zwischen 2012 und 2016 besucht hat, sah einen Park, in dem sich
+außer The Lost Temple (2014) wenig bewegte, und aus diesen Jahren stammt sein Ruf
+in der Coaster-Szene.
 
 ## Die Filmgeschichte, die er stattdessen erzählt
 
-Ab 2017 kam wieder Geld ins Gelände. Ein Studio-Park ohne Studio-Lizenzen hat zwei
-Möglichkeiten. Er kann neue Marken
-einkaufen, was Bottrop getan hat: 2007 entstand mit dem **Nickland** ein eigener
-Nickelodeon-Themenbereich, 2017 kam Star Trek dazu, 2026 Paramount. Oder
-er kann über das erzählen, was er selbst ist. Ein Park, der seit dreißig Jahren
-Filmkulissen baut, hat dafür mehr Material als die meisten.
-
-An zwei Attraktionen treffen sich beide Wege.
+Ab 2017 kam wieder Geld ins Gelände. Ohne Studio-Lizenzen hat der Park neue
+Marken eingekauft: 2007 entstand mit dem **Nickland** ein eigener
+Nickelodeon-Themenbereich, 2017 kam Star Trek dazu, 2026 Paramount.
 
 ### Movie Park Studio Tour
 
@@ -149,20 +138,18 @@ mitten in einer Szene in eine andere Richtung dreht, und eine Weiche in der Stre
 Erzählt wird auf zwölf Szenen die Geschichte des Parks selbst. Du fährst durch
 ein Filmarchiv, durch die Spezialeffekt-Abteilung, durch die Tonabteilung, durch
 eine Modellbauwerkstatt, und überall stehen Anspielungen auf Attraktionen, die es
-hier mal gab. King Kong schnappt zwischendurch nach dem Zug. Eröffnet hat der
-Park die Bahn zu seinem 25. Geburtstag, er hat sich also zum Jubiläum eine
-Achterbahn über sich selbst geschenkt.
+hier mal gab. King Kong schnappt zwischendurch nach dem Zug. Eröffnet hat der Park die Bahn zu seinem 25. Geburtstag.
 
 ![Ein Modell eines Parkgeländes auf einem Werkstatttisch, daneben aufgerollte Pläne und ein Kaffeebecher | Eine der zwölf Szenen: die Modellbauwerkstatt, in der das Parkgelände als Modell auf dem Tisch steht, Halle und Parkplatz inklusive. | wide](/media/movie-park-germany/movie-park-studio-tour.jpg)
 
-Als Achterbahn ist das Familienkost, 60 km/h reißen niemanden vom Sitz. Als Dark
+Als Achterbahn ist das mit höchstens 60 km/h Familienkost. Als Dark
 Ride ist sie besser als alles, was ich sonst in Deutschland in einer Halle
 gefahren bin, und sie ist die einzige Stelle im Park, an der die verschwundenen
 Attraktionen noch vorkommen.
 
 ### Journey to the Forbidden Chamber
 
-2026 hat der Park es genauso gemacht. Am **14. Mai 2026** eröffnete
+Am **14. Mai 2026** eröffnete
 **Journey to the Forbidden Chamber**, eine
 Paramount-Attraktion: ein Immersive Tunnel von **Simworx**, also eine bewegliche
 Plattform vor einer Projektion, dazu Effekte im Raum. Du spielst einen
@@ -171,8 +158,8 @@ dafür wurde im November 2025 auf dem echten Studiogelände gedreht.
 
 Gebaut ist das im Gebäude von **The Lost Temple** (2014), und darunter liegt
 noch eine Schicht: Dort stand ab 1996 **Movie Magic**, die Attraktion, mit der
-Warner den Besuchern erklärte, wie Film gemacht wird. Dreißig Jahre später
-erklärt Paramount an derselben Stelle dasselbe. Mitfahren darf man ab 100
+Warner den Besuchern erklärte, wie Film gemacht wird.
+Mitfahren darf man ab 100
 Zentimetern, und der Ausgang führt durch einen Paramount-Showroom.
 
 ## Die anderen sieben Achterbahnen
@@ -193,14 +180,13 @@ Personen.
 
 Der Ablauf ist ungewöhnlich, weil du dreimal beschleunigt wirst, bevor die Bahn
 überhaupt anfängt. Der Zug wird auf der Startstrecke vor und zurück geworfen,
-erst beim dritten Anlauf reicht das Tempo für den Top Hat, wie beim Kombi, der
-im Schnee die Einfahrt zur Tiefgarage hochwill. Danach kommen
+erst beim dritten Anlauf reicht das Tempo für den Top Hat. Danach kommen
 Immelmann, Heartline Roll und Korkenzieher. Der Soundtrack stammt von IMAscore,
 davor läuft eine Preshow mit Projektionen.
 
-Morgens hinzurennen bringt bei ihr wenig: Ihre Warteschlange ist in der zweiten
-Stunde am längsten, danach nie wieder so lang, und am kürzesten wird sie am
-Nachmittag.
+Bei Öffnung hinzurennen bringt bei ihr wenig, weil ihre Warteschlange in der
+zweiten Stunde am längsten ist, danach nie wieder so lang wird und am Nachmittag
+am kürzesten ist.
 
 [Star Trek™: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise?full)
 
@@ -228,17 +214,16 @@ Zimmerleute, darunter zwei Wandergesellen auf der Walz, im Winter 2015/16 rund
 
 ```
 
-Sie rappelt. Nach 27 Jahren ist sie laut und ruppig, hinten im Zug etwas
-erträglicher als vorne, und bei mir reicht es spätestens ab der zweiten Fahrt
-für Kopfschmerzen. Einmal gehört trotzdem dazu, wie der Pflichtbesuch bei der Großtante: Sie ist
-zu wichtig für die deutsche Achterbahngeschichte, um sie auszulassen. Wer Colossos im [Heide-Park](ref:heide-park) als
+Nach 27 Jahren ist sie laut und ruppig, hinten im Zug etwas erträglicher als
+vorne, und bei mir kommen spätestens ab der zweiten Fahrt Kopfschmerzen. Einmal
+würde ich sie trotzdem fahren, weil sie 1999 die einzige Holzachterbahn
+Deutschlands war. Wer Colossos im [Heide-Park](ref:heide-park) als
 Maßstab nimmt, sollte es bei dem einen Mal belassen.
 
 ### Van Helsing’s Factory
 
 **[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory)** ist das
-Fahrgeschäft, an dem in diesem Park am längsten angestanden wird, und die
-Eckdaten lesen sich wie die einer Bahn für den Kindergeburtstag. Eröffnet am **18. Juni 2011**, ein
+Fahrgeschäft, an dem in diesem Park am längsten angestanden wird. Eröffnet am **18. Juni 2011**, ein
 Bobsled-Coaster von **Gerstlauer** in der ehemaligen Gremlins-Halle, 3.000
 Quadratmeter, acht Meter hoch, 400 Meter lang, **36 km/h**. Die Idee legte Parkchef
 Wouter Dekkers den neuen Eigentümern einen Monat nach der Übernahme vor, Parques
@@ -254,9 +239,9 @@ Gebäude aus wie eine amerikanische Garage. Die Schiene ist verfüllt, deshalb i
 das Ding drinnen erstaunlich leise, und der zweite Lifthill zieht mit
 Reibrädern an, sodass der Wagen im Steigen schneller wird.
 
-Die lange Warteschlange liegt an der Kapazität von **848 Personen pro Stunde**. Für einen Park, der im Jahr deutlich über eine Million
-Gäste zählt, ist das eine einzige offene Kasse am Ikea-Samstag, und man sieht es
-in unseren Zahlen den ganzen Tag über.
+Die lange Warteschlange liegt an der Kapazität von **848 Personen pro Stunde**.
+Der Park zählt im Jahr deutlich über eine Million Gäste, und in unseren Zahlen
+bleibt die Warteschlange den ganzen Tag über lang.
 
 ```glossary-widget slug=ride-capacity
 
@@ -268,34 +253,29 @@ in unseren Zahlen den ganzen Tag über.
 Looping Coaster**, den es in leichten Abwandlungen weltweit dutzendfach gibt.
 Eröffnet am 6. April 2001 als **Eraser**, 689 Meter, 80 km/h, fünf Überschläge,
 zwei Züge zu zwanzig Personen. Die Beine hängen frei, der Kopf steckt zwischen
-zwei harten Schulterbügeln wie eine Walnuss im Nussknacker.
+zwei harten Schulterbügeln.
 
 ```glossary-widget slug=suspended-coaster
 
 ```
 
-Diese Bauart hat Vekoma über Jahre den Ruf eingebracht, den die Firma seit den
-Zwanzigern mühsam wieder loswird, und dieses Exemplar macht da keine Ausnahme.
+Diese Bauart hat Vekoma über Jahre einen schlechten Ruf eingebracht, den die
+Firma seit den Zwanzigern wieder loswird.
 Als der Park im Februar 2024 auf Facebook fragte, wie man Iron Claw am besten
 übersteht, rieten auffällig viele Kommentare zum Abriss.
 
-![Eine violett und blau angeleuchtete Achterbahn bei Nacht, dahinter der Mond, davor ein Parkplatz mit Autos | Vom Parkplatz aus, nach Feierabend. Der Mond stand günstig. Darunter fährt trotzdem eine Vekoma von 2001. | wide](/media/movie-park-germany/iron-claw.jpg)
+![Eine violett und blau angeleuchtete Achterbahn bei Nacht, dahinter der Mond, davor ein Parkplatz mit Autos | Vom Parkplatz aus nach Feierabend, mit dem Mond hinter der Vekoma-Bahn von 2001. | wide](/media/movie-park-germany/iron-claw.jpg)
 
 ### Die drei kleinen
 
 - **[Ghost Chasers](ref:movie-park-germany/ghost-chasers)**, eine Wilde Maus von
-  **Mack Rides** aus dem Jahr 2000, 45 km/h. Kurze Kurven, wenig Aufhebens, und
-  die Bahn, bei der in meinem Wagen zuverlässig die Erwachsenen lauter waren.
+  **Mack Rides** aus dem Jahr 2000, 45 km/h, mit kurzen Kurven.
 - **[Jimmy Neutron’s Atomic Flyer](ref:movie-park-germany/jimmy-neutrons-atomic-flyer)**
   von Vekoma (2007), ein Suspended Family Coaster mit 47 km/h, im Nickland.
 - **[Backyardigans Mission to Mars](ref:movie-park-germany/backyardigans-mission-to-mars)**,
   ein Junior Coaster von Vekoma aus dem Eröffnungsjahr 1996, 207 Meter kurz.
 
-## Und der Rest, der den Park eigentlich ausmacht
-
-Acht Achterbahnen klingen nach mehr, als sie sind: Drei davon sind klein, und
-die beiden in den Hallen kommen nicht über 60 km/h. Der Movie Park lebt ohnehin
-von den Sachen dazwischen.
+## Wasserbahnen, Freifallturm und Shows
 
 **[Excalibur – Secrets of the Dark Forest](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest)**
 ist ein Speed Rapid River von Intamin aus dem Eröffnungsjahr, der schon drei
@@ -325,13 +305,11 @@ mit dem Blick nach unten wartest. Das ist der unangenehmste Moment im ganzen Par
 ```
 
 **[Time Riders](ref:movie-park-germany/time-riders)** ist der Simulator von
-1996, in dem John Cleese durch die Zeit reist. Er sieht aus wie 1996 und ist
-genau deswegen sehenswert.
+1996, in dem John Cleese durch die Zeit reist.
 
 **[Dora’s Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**
 schließlich ist die Wildwasserbahn im **Nickland**, gebaut für Grundschulkinder,
-und trotzdem eine der längsten Warteschlangen des Parks, weil an heißen Nachmittagen
-der halbe Park gleichzeitig sein inneres Kind entdeckt.
+und trotzdem eine der längsten Warteschlangen des Parks, weil sich an heißen Nachmittagen auch die Erwachsenen anstellen.
 
 Die Bühnen gehören hier seit dem ersten Tag dazu, zur Eröffnung lief die
 Police Academy Stunt Show. 2026 laufen drei neue Shows: **Black
@@ -360,9 +338,8 @@ Den längsten Median im Park hat Van Helsing’s Factory, eine Hallenfahrt mit
 aus dem Kinderbereich. Star Trek, die größte Bahn im Park, liegt mit ihren
 90 km/h im Mittelfeld.
 
-Das liegt vor allem am Durchsatz. Van Helsing schafft
-848 Personen pro Stunde, und weil die Fahrt drinnen liegt, ist sie außerdem das
-Vordach, unter das sich bei Regen alle gleichzeitig stellen wollen. Wie aus Kapazität und Nachfrage eine
+Van Helsing schafft nur 848 Personen pro Stunde, und weil die Fahrt drinnen
+liegt, wollen bei Regen besonders viele hinein. Wie aus Kapazität und Nachfrage eine
 Wartezeit wird, steht ausführlich in der
 [Kunst des Wartens](/blog/die-kunst-des-wartens).
 
@@ -372,7 +349,7 @@ Derselbe Tag, nach Stunden aufgeschlüsselt:
 
 ```
 
-Zwei Rhythmen liegen hier übereinander. Die großen Achterbahnen im Freien
+Die großen Achterbahnen im Freien
 füllen sich am Vormittag und bauen danach ab: Star Trek hat seine stärkste
 Stunde am späten Vormittag, Bandit und Iron Claw um die Mittagszeit, und gegen
 drei Uhr sind alle drei kürzer. Die **Wasserbahnen laufen
@@ -380,8 +357,7 @@ genau andersherum**. Dora, Excalibur und Area 51 haben ihre volle Stunde am
 späten Nachmittag, weil bei dreißig Grad irgendwann alle nass werden wollen.
 
 Die Zeile von Van Helsing springt in der zweiten Stunde hoch und
-bleibt danach bis zum Schluss auf demselben Wert stehen, wie eine
-Autobahnbaustelle, die nicht schlimmer wird, aber auch nie aufhört. Wer nicht in den ersten
+bleibt danach bis zum Schluss auf demselben Wert stehen. Wer nicht in den ersten
 sechzig Minuten dort war, findet den ganzen Tag keinen besseren Moment mehr.
 
 Im Vergleich mit der Nachbarschaft:
@@ -391,9 +367,7 @@ Im Vergleich mit der Nachbarschaft:
 ```
 
 Von diesen sechs Parks stehst du nur im [Toverland](ref:attractiepark-toverland)
-kürzer an, im Walibi Holland ungefähr gleich lang. Gegen die beiden großen
-deutschen Parks in der Tabelle gewinnt Bottrop deutlich. Den besten Coaster der Region hat
-der Movie Park nicht, dafür fährst du an einem normalen Tag mehr.
+kürzer an, im Walibi Holland ungefähr gleich lang. Im Phantasialand und im Europa-Park stehst du deutlich länger an.
 
 > [!NOTE]
 > Unsere Historie
@@ -403,8 +377,6 @@ der Movie Park nicht, dafür fährst du an einem normalen Tag mehr.
 > Prognose, keine Messung.
 
 ## Wann du hinfahren solltest, und der Fahrplan ab September
-
-Die verbreitetste Empfehlung für diesen Park ist falsch.
 
 ### Der Wochentag
 
@@ -416,45 +388,37 @@ Am kürzesten stehst du am **Freitag**, dicht dahinter liegen **Sonntag** und
 **Donnerstag**, am längsten am **Dienstag**. Wer nach Movie-Park-Tipps sucht,
 liest meist etwas anderes: Unter der Woche sei es ruhig, das Wochenende sei voll.
 Am Samstag stehst du tatsächlich länger als am Sonntag, und beide sind bei uns
-etwa gleich oft gemessen, also direkt vergleichbar. Nur gehört der Sonntag eben
-nicht zu den vollen Tagen, und der Samstag ist nicht der vollste der Woche.
+etwa gleich oft gemessen, also direkt vergleichbar.
 
-Montag und Dienstag lassen sich so nicht vergleichen, und der Grund steckt in der
-Zahl der Messtage. Außerhalb der Ferien hat der Park an diesen Tagen meist zu,
+Montag und Dienstag lassen sich so nicht vergleichen. Außerhalb der Ferien hat der Park an diesen Tagen meist zu,
 also stammen unsere Montage und Dienstage fast ausschließlich aus den Ferien, vor
 allem aus den Sommerferien, und Sommerferientage sind die vollsten des Jahres. Auf der
 [Beste-Reisezeit-Seite](/beste-reisezeit) fallen diese beiden Tage deshalb aus
 dem Parkvergleich heraus, statt ihn zu verzerren.
 
-Warum ausgerechnet der Sonntag? Beweisen kann ich es nicht, aber die Erklärung
-liegt nahe: Der Movie Park hat kein eigenes Hotel. Übernachtungen laufen über
+Beweisen kann ich es nicht, aber ich vermute, der Sonntag ist so ruhig, weil
+der Movie Park kein eigenes Hotel hat. Übernachtungen laufen über
 Partnerhäuser in der Umgebung, das Publikum kommt am selben Tag und fährt am
 selben Tag zurück, und im Ruhrgebiet mit seinen Millionen Menschen in Fahrweite
-ist der klassische Ausflugstag der Samstag. Am Sonntag steht bei vielen schon
-der Montag im Weg.
+ist der klassische Ausflugstag der Samstag. Am Sonntag müssen viele am nächsten Tag arbeiten.
 
 Beim [Europa-Park](ref:europa-park) ist der Sonntag sogar der leerste Tag,
 dort aber aus dem umgekehrten Grund: Rust lebt von Hotelgästen, die samstags
 anreisen und sonntags abfahren, nachzulesen im
 [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps). Im [Heide-Park](ref:heide-park), der strukturell dem
-Movie Park ähnelt, sieht die Woche übrigens fast genauso aus, nachgerechnet im
+Movie Park ähnelt, sieht die Woche fast genauso aus, nachgerechnet im
 [Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps).
 
 ### Der Fahrplan ab dem 2. September
 
-Wer diesen Herbst hinwill, braucht den Kalender dringender als jede
-Wartezeit-Tabelle.
-
 Die **Sommerferien in Nordrhein-Westfalen endeten am 1. September 2026**. Seitdem
 läuft der Herbstbetrieb, und der Park öffnet nur noch von **Donnerstag bis
-Sonntag**. Montag, Dienstag und Mittwoch ist zu. Der Rat „geh
-unter der Woche“ war vorher schon schlecht, ab September kannst du ihn nicht mal
-mehr befolgen.
+Sonntag**. Montag, Dienstag und Mittwoch ist zu.
 
-Damit bleibt für die Wochen bis zum Saisonende eine sehr kurze Empfehlung:
-**Donnerstag, Freitag oder Sonntag, nicht Samstag.**
+Bis zum Saisonende fährst du also am besten am **Donnerstag, Freitag oder
+Sonntag, nicht am Samstag.**
 
-Zwei Ausnahmen von diesem Rhythmus gibt es:
+Ausnahmen gibt es in den Herbstferien und danach:
 
 - In den **Herbstferien vom 17. bis 31. Oktober** öffnet der Park täglich, dazu
   am Sonntag, dem 1. November.
@@ -476,9 +440,7 @@ Die ruhigsten der kommenden Öffnungstage laut unserem Kalender:
 ```
 
 April bis Juni tragen jeweils rund zwanzig bis fünfundzwanzig Messtage, Juli und
-August noch ein paar mehr. Diese fünf Monate sind belastbar, und in den
-Sommerferien wird es voll, wie jeder vermutet, der schon einmal im August auf dem
-Parkplatz einen Platz gesucht hat.
+August noch ein paar mehr. Diese fünf Monate sind belastbar.
 
 Bei Januar, März und Dezember stehen dagegen nur drei bis vier Messtage hinter
 dem Wert. Die Größenordnung stimmt, auf die Minute würde ich mich da nicht
@@ -487,35 +449,28 @@ Halloween Horror Festivals, Oktober und November fehlen noch ganz.
 
 ## Halloween Horror Festival: 26. September bis 8. November
 
-Sechs Wochen im Jahr heißt dieser Park **Horrorwood Studios**, und dann kommen
-Leute, die sonst nie in einen Freizeitpark gehen.
+Sechs Wochen im Jahr heißt dieser Park **Horrorwood Studios**.
 
 Das **Halloween Horror Festival** läuft 2026 in seiner **28. Ausgabe** an 22
 ausgewählten Abenden vom **26. September bis 8. November**, unter dem Jahresmotto
-„Legends Never Die“. Der Park selbst nennt es das größte Halloween-Event Europas,
-und nach Zahlen lässt sich dagegen wenig sagen: über **300 Monster**, neun
-Horror-Mazes, vier Scare Zones und ein Monsteraufmarsch. Tagsüber läuft der Park
+„Legends Never Die“. Der Park selbst nennt es das größte Halloween-Event Europas, mit über **300
+Monstern**, neun Horror-Mazes, vier Scare Zones und einem Monsteraufmarsch. Tagsüber läuft der Park
 ab 10 Uhr normal, die Horrorbereiche starten am frühen Abend.
 
-Neu ist genau ein Haus, dafür eines mit einem Namen, den auch Leute kennen, die
-das Genre nicht mögen: **Jason Universe** holt Jason Voorhees nach Bottrop und
+Neu ist nur ein Haus: **Jason Universe** holt Jason Voorhees nach Bottrop und
 arbeitet sich durch die Teile zwei bis sechs der Reihe. Die anderen acht kommen
 aus den Vorjahren, zwei davon überarbeitet. Das **Ahoj-Brause Horror Lab** hat
 zusätzliche Schreckmomente und eine neue Storyline um Geschmackstest und
-Testlabor bekommen (ein Satz, den über Brausepulver auch erst einmal jemand
-schreiben muss), das True-Crime-Haus **Murder Museum** eine Pathologieszene.
+Testlabor bekommen, das True-Crime-Haus **Murder Museum** eine Pathologieszene.
 Dazu kommt **PHOBIA – The Live Horror Game Show** im Studio 7, eine Bühnenshow,
 bei der das Publikum mitspielt statt zuzusehen.
 
-Einen Tag würde ich mir extra vormerken. Am **17. Oktober** läuft zum fünften Mal
-der Event Day **Haunters Against Hate**. Bottrop hat den 2022 als erster
-Freizeitpark überhaupt veranstaltet, und die Idee dahinter gefällt mir. Leute, deren Job
-sechs Wochen lang darin besteht, Fremde zu erschrecken, stellen sich einen Tag
-lang öffentlich gegen Ausgrenzung.
+Am **17. Oktober**, den ich mir extra vormerken würde, läuft zum fünften Mal der
+Event Day **Haunters Against Hate**. Bottrop hat den 2022 als erster
+Freizeitpark überhaupt veranstaltet, und mir gefällt, dass sich die Darsteller an diesem Tag öffentlich gegen Ausgrenzung stellen.
 
-Was das Ganze gegen Traumatica, Walibi und Toverland taugt, welche Häuser wie
-viel kosten und wo es wirklich weh tut, steht ausführlich in unserem
-[Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
+Den Vergleich mit Traumatica, Walibi und Toverland und die Preise der Häuser
+hat unser [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
 
 Die Mazes sind im Tagesticket nicht enthalten und werden mit
 festem Zeitfenster separat gebucht. Wer alle neun mitnehmen will, rechnet am
@@ -524,12 +479,11 @@ Eintritt, dafür kommst du einmal ohne Zeitfenster in jedes Haus.
 
 Der Tagesbesuch und der Horrorabend sind zwei verschiedene
 Veranstaltungen am selben Ticket. Für kleinere Kinder gibt es tagsüber
-**Halloween for Kids** im Nickelodeon LAND, mit Basteln und Spielen und ohne
-Kettensäge. Ab dem frühen Abend laufen die Darsteller durch den Park, und die
+**Halloween for Kids** im Nickelodeon LAND, mit Basteln und Spielen. Ab dem frühen Abend laufen die Darsteller durch den Park, und die
 Scare Zones sind ausdrücklich nicht für Sechsjährige gemacht. Wer mit
 Grundschulkindern da ist, plant die Abfahrt vorher ein.
 
-Nebenbei bekommst du an einem Halloween-Abend fast den längsten Parktag des
+An einem Halloween-Abend bekommst du fast den längsten Parktag des
 Jahres. Der Park hat dann freitags und samstags bis 22 Uhr offen, sonntags bis
 21 Uhr, das Tagesticket läuft weiter, und damit kommst du auf bis zu zwölf
 Stunden am Stück. Länger offen war nur am Geburtstag im
@@ -537,7 +491,7 @@ Juli.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
-## Der perfekte Tag, in fünf Sätzen
+## Eine Reihenfolge für den Tag
 
 Lauf bei Öffnung direkt zu
 **[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory?bare)**,
@@ -567,7 +521,7 @@ Danach folgt vom **27. November 2026 bis 5. Januar 2027** das Winterevent
 Terminen und eigenen Tagestickets. In den Saisonpässen 2027 ab Silber ist es
 schon enthalten.
 
-**Tickets.** Der Kassenpreis ist hoch, der Onlinepreis ist es nicht:
+**Tickets.** Online ist das Ticket deutlich billiger als an der Kasse:
 
 | Ticket                                                        | Kasse   | Online      |
 | ------------------------------------------------------------- | ------- | ----------- |
@@ -580,14 +534,13 @@ schon enthalten.
 | Parken                                                        | 9 €     | 9 €         |
 
 Der Aufschlag an der Tageskasse liegt bei fünfundzwanzig Euro pro Erwachsenem
-und zwanzig pro Kind. Bei zwei Erwachsenen und zwei Kindern sind das neunzig Euro
-dafür, dass vorher niemand aufs Handy geschaut hat. Gäste mit einem GdB von 100 und einem der Merkzeichen aG, Bl, B
+und zwanzig pro Kind. Bei zwei Erwachsenen und zwei Kindern sind das neunzig Euro. Gäste mit einem GdB von 100 und einem der Merkzeichen aG, Bl, B
 oder H kommen frei rein, die Begleitperson zahlt 29,90 €. Bevorzugtes Parken
 näher am Eingang kostet 19,90 € und gibt es nur online. Das Geburtstagsticket gibt
 es nur am Geburtstag selbst an der Infokasse, zum selben Preis auch für eine
 Begleitperson.
 
-**Saisonpässe.** Hier liegt der eigentliche Preistipp. Vier Stufen, für
+**Saisonpässe.** Vier Stufen, für
 Erwachsene und Kinder zum selben Preis: Bronze 89,90 €, Silber 135,90 €, Gold
 155,90 € und Platin 179,90 €. Verkauft wird schon der Pass für 2027, und der gilt
 ab sofort bis zum **7. November 2027**. Wer jetzt kauft, hat also den Rest dieser
@@ -600,8 +553,8 @@ Zwischen Bronze und Gold liegen 66 €. Dafür fallen sämtliche Sperrtage weg, 
 Parken ist drin, und dazu kommen die Freieintritte in den Schwesterparks und der
 Bonus Club.
 
-**Die Schwesterparks** sind der Teil, den in Bottrop kaum jemand auf dem Zettel
-hat. Für Gold und Platin 2027 stehen sie schon in der Leistungsbeschreibung:
+Für Gold und Platin 2027 stehen freie Eintritte in den **Schwesterparks** schon
+in der Leistungsbeschreibung:
 
 - **Dreimal freier Eintritt** im [Bobbejaanland](ref:bobbejaanland), im
   Freizeitpark Slagharen und im Weltvogelpark Walsrode.
@@ -621,17 +574,16 @@ darin stecken kann, steht in der Liste für 2026:
 - **Rabatte**: 40 % in beiden Walibi-Parks und in den Plopsa-Parks, 50 % bei
   Belantis, Fort Fun und im Schwaben Park.
 
-Ein paar Haken hatte die Liste für 2026 auch. Alle Vorteile galten nur mit der
+Alle Vorteile galten 2026 nur mit der
 endgültigen Plastikkarte mit Foto und nicht zusammen mit anderen Angeboten,
 Slagharen ohne Aqua Mexicana, und Tropical Islands war an Samstagen, an
 Feiertagen und in den Ferien von Berlin, Brandenburg und Sachsen ausgenommen.
 
-Beim Pass selbst stehen drei Dinge im Kleingedruckten:
+Für den Pass selbst gilt:
 
 - **Bronze hat die meisten Sperrtage**: Dezember und Januar komplett, vorher
   schon die Tage vom 28. bis 30. November, dazu alle Feiertage, die Samstage in
-  den NRW-Ferien, die Oktober-Samstage und Halloween selbst. Das sind
-  ausgerechnet die Tage, an denen du hinwillst.
+  den NRW-Ferien, die Oktober-Samstage und Halloween selbst.
 - **Parken ist erst ab Gold enthalten.** Bei Bronze und Silber kostet die
   Saisonkarte fürs Parken 25 € extra, sonst zahlst du die 9 € bei jedem Besuch.
 - **Es gibt ein Tageskontingent.** Jeder Besuch muss vorher angemeldet werden,
@@ -645,17 +597,14 @@ ausgeschildert. Aus Essen
 sind es rund zwanzig Minuten, aus Düsseldorf gut vierzig, aus Köln etwa eine
 Stunde.
 
-Und in einem Punkt schlägt Bottrop jeden anderen großen deutschen Park, den ich
-kenne: **Der Bahnhof Feldhausen liegt rund 400 Meter vom Eingang entfernt.**
+**Der Bahnhof Feldhausen liegt rund 400 Meter vom Eingang entfernt**, näher als
+bei jedem anderen großen deutschen Park, den ich kenne.
 Dorthin fahren der RE14 ab Essen Hauptbahnhof und der RB43 ab Dortmund über
 Herne. Bis einschließlich 30. September 2026 hält dort allerdings kein Zug, bis
 dahin fährt ein Ersatzbus ab Dorsten. Wer lieber im Bus sitzt, nimmt die
-**SB16** ab Essen Hauptbahnhof, die an der Haltestelle Movie Park direkt am
-Haupteingang hält. Ohne Auto in einen deutschen
-Freizeitpark zu kommen, ist sonst eine Tagesaufgabe. Hier ist es eine
-Regionalbahn und ein Fußweg von fünf Minuten.
+**SB16** ab Essen Hauptbahnhof, die an der Haltestelle Movie Park direkt am Haupteingang hält.
 
-**Essen.** Hier bin ich kurz: Pizza und Pasta, seit 2024 als All-you-can-eat in
+**Essen.** Pizza und Pasta, seit 2024 als All-you-can-eat in
 der Trattoria Hollywood, dazu Burger, Pommes und eine Bäckerei. Für das, was auf
 den Teller kommt, finde ich die Preise hoch, und ich esse hier so schnell wie
 möglich.
@@ -733,39 +682,21 @@ aufgehoben.
 
 ## Warum ich trotzdem gern hinfahre
 
-Ich bin diesem Park lange nicht gerecht geworden. Aus dem Rheinland fährt man am
-Phantasialand vorbei, um nach Bottrop zu kommen, und wer das tut, will einen
-Grund. Kurze Warteschlangen sind erst mal keiner, die klingen nach einem Park, in dem
-nichts los ist. Dabei ist genau das der Grund: Du fährst hier an einem
-normalen Tag mehr als im Phantasialand oder im Europa-Park, und sechs Wochen im
+Aus dem Rheinland fährt man am Phantasialand vorbei, um nach Bottrop zu kommen.
+Wegen der kurzen Warteschlangen fährst du hier an einem normalen Tag mehr als im Phantasialand oder im Europa-Park, und sechs Wochen im
 Jahr steht in denselben Kulissen das nach eigener Zählung größte Halloween-Event
 des Kontinents.
 
-Der zweite Teil gehört genauso dazu, und ich sage ihn als jemand, der gerne
-hinfährt: **Seine besten Jahre hat dieser Park hinter sich.** Die lagen in der
+**Seine besten Jahre hat dieser Park allerdings hinter sich.** Die lagen in der
 Warner-Zeit, als ein Studio Geld und Figuren hineinsteckte. Gebaut wird seitdem
 weiter, 2011, 2017, 2018, 2021 und 2026, aber ohne die Marken, die den Park einmal
 ausgemacht haben. Die letzte Achterbahn für Erwachsene kam 2017, und die Neuheit
 im Jubiläumsjahr ist ein Filmtunnel im Gebäude einer Attraktion von 2014.
 
-Und trotzdem kommen die Leute. 2024 zählte der Park so viele Besucher wie seit dem
-Jahr 2002 nicht mehr, mit einem Besucherrekord beim Halloween Horror Festival. Im
-Oktober reisen sie aus dem ganzen Land nach Bottrop an, viele davon jedes Jahr,
-und wer hier mit dem Saisonpass durch die Streets of New York läuft, tut das
-nicht wegen der letzten Neuheit. Auf 45 Hektar steht
-eine Kulissenstadt, die 1996 mit dem Geld eines Hollywood-Studios gebaut wurde
-und deren Fassaden
-immer noch stehen, obwohl das Studio seit zweiundzwanzig Jahren weg ist. Der Park
-hat dreimal den Besitzer gewechselt, gehört zu einem Konzern, den EQT gerade
-verkaufen will, hat jede Marke verloren, mit der er angetreten war, und irgendwann
-angefangen, Fahrgeschäfte über die eigene Vergangenheit zu bauen.
-
-Wenn du in diesem Herbst hinfährst: Nimm den Freitag oder den Sonntag, nicht den
-Samstag, sei um zehn am Eingang und stell dich zuerst bei Van Helsing’s Factory
-an. Und wenn du nach
-Feierabend über den Parkplatz zurückgehst, dreh dich noch einmal um. Die alte
-Vekoma-Bahn, die so viele abreißen wollen, leuchtet dann violett, und mit etwas Glück
-steht der Mond dahinter.
+2024 zählte der Park so viele Besucher wie seit dem
+Jahr 2002 nicht mehr, mit einem Besucherrekord beim Halloween Horror Festival. Im Oktober reisen die Besucher aus dem ganzen Land nach Bottrop an, viele davon
+jedes Jahr. Die Kulissenstadt
+auf 45 Hektar mit den Streets of New York, 1996 mit dem Geld eines Hollywood-Studios gebaut, steht noch.
 
 — Patrick
 

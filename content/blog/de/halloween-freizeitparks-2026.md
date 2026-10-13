@@ -31,7 +31,7 @@ category: guides
 coverImage:
   src: /media/halloween-2026/cover.jpg
   alt: 'Riesiger, aus tausenden leuchtenden Kürbissen geformter Phönix mit ausgebreiteten Flügeln bei Nacht, davor ein Darsteller mit Vorschlaghammer'
-  caption: 'Tausende Kürbisse für einen Phönix, und der Mann mit dem Vorschlaghammer passt auf, dass keiner einen mitnimmt.'
+  caption: 'Ein Phönix aus tausenden Kürbissen, davor ein Darsteller mit Vorschlaghammer.'
 seo:
   title: 'Halloween Freizeitparks 2026: Termine & Mutproben'
   description: >-
@@ -55,21 +55,7 @@ seo:
     - Halloween Freizeitpark wann am wenigsten los
 ---
 
-Es gibt diese sechs Wochen im Jahr, in denen Freizeitparks eine kleine
-Persönlichkeitsstörung entwickeln. Dieselbe Achterbahn, die im Juli nach
-Sonnencreme und Zuckerwatte roch, liegt im Oktober im Bodennebel; wo tagsüber
-Familien Softeis schlecken, schiebt sich abends ein Typ mit laufender
-Kettensäge zwischen dich und den Ausgang. Für die großen Parks ist
-**Halloween** längst eine eigene Saison, mit eigenen Tickets, eigenen
-Altersgrenzen und einem Publikum, das genau für diesen kontrollierten
-Herzinfarkt anreist.
-
-Der Grusel schert sich dabei wenig um Landesgrenzen. Das Event, das sich selbst
-das größte des Kontinents nennt, steht in Bottrop, die berüchtigten Experiences
-von Walibi stehen rund zwei Autostunden weiter in Biddinghuizen, nur eben in
-einem anderen Land. Fast nie beantwortet wird die langweiligste Frage, an welchen Abenden man
-in diese Nebelmaschinen läuft, ohne vorher in der Oktoberkälte davor
-festzufrieren.
+In den großen Parks ist **Halloween** eine eigene Saison von rund sechs Wochen, mit eigenen Tickets und eigenen Altersgrenzen.
 
 > [!NOTE]
 > **Termine, Altersgrenzen und Preise: Stand 29. September 2026.**
@@ -82,31 +68,22 @@ festzufrieren.
 Der harte Kern sind Abend-Events mit aufwendig begehbaren Spukhäusern (im
 Fachjargon **Mazes** oder **Haunted Houses**), Scare Zones voller
 Live-Darsteller und mancherorts einer Altersgrenze, die ernst gemeint ist.
-Erstbesucher übersehen dabei zuverlässig und teuer, dass die Mazes fast überall
-_nicht_ im Tagesticket enthalten sind. Sie werden separat gebucht,
-und an starken Abenden sind die guten Slots weg, bevor du „Nebelmaschine“ sagen
-kannst.
+Die Mazes sind fast überall _nicht_ im Tagesticket enthalten. Sie werden separat gebucht, und an starken Abenden sind die guten Slots früh weg.
 
 ![Verlassener Wohnwagen mit Holzkisten im Morgennebel | Ein einsamer Wohnwagen im Morgennebel. | wide](/media/halloween-2026/beispiel-wohnwagen.jpg)
 
 ### Movie Park Germany: Halloween Horror Festival
 
 Das **Halloween Horror Festival** im [Movie Park Germany](ref:movie-park-germany)
-in Bottrop trägt den Titel „größtes Halloween-Event Europas“ vor sich her wie
-eine Trophäe. Nachprüfen lässt sich so ein Titel kaum, weil jeder Park anders
+in Bottrop nennt sich „größtes Halloween-Event Europas“. Nachprüfen lässt sich so ein Titel kaum, weil jeder Park anders
 zählt. Nach Angaben des Parks hat die **28. Ausgabe** unter dem Jahresmotto „Legends
-Never Die“ über **300 Monster**, neun Horrorhäuser und vier Scare Zones. Wer
-schon mal an einem Oktober-Samstag zwischen Nebelschwaden und quietschender
-Kettensäge durch die „Streets of New York“ getrieben wurde, weiß, warum die
-Leute trotzdem wiederkommen.
+Never Die“ über **300 Monster**, neun Horrorhäuser und vier Scare Zones. Abends ziehen Darsteller mit Kettensägen durch die „Streets of New York“.
 
-Neu ist genau ein Haus, **Jason Universe** (ab 16), mit einem Namen, den auch
-Leute kennen, die das Genre nicht mögen. Es holt Jason Voorhees nach Bottrop,
+Neu ist genau ein Haus, **Jason Universe** (ab 16). Es holt Jason Voorhees nach Bottrop,
 arbeitet sich in 14 Szenen durch die Teile zwei bis sechs der Reihe und ersetzt
 Secrets of St. Elmo, das seit 2020 lief. Die anderen acht kommen
 aus den Vorjahren, zwei davon überarbeitet. Das **Ahoj-Brause Horror Lab**,
-weiterhin die Werksführung, bei der in den kleinen Tütchen nicht nur
-Brausepulver steckt, hat zusätzliche Schreckmomente und eine neue Storyline um
+weiterhin als Werksführung inszeniert, hat zusätzliche Schreckmomente und eine neue Storyline um
 einen Geschmackstest bekommen, das True-Crime-Haus **Murder Museum** eine
 Pathologieszene. Dazu kommen **Blood Moon Trailer Park**, ein verlassener,
 verfallender Wohnwagenplatz fünf Autostunden nördlich von Los Angeles am Rand
@@ -117,13 +94,7 @@ zuzusehen. Ebenfalls neu sind die Feuer- und Tanzshow **„El Despertar“** und
 eine Séance mit dem Hypnotiseur Stephan Nölle, dazu kommen der Monsteraufmarsch
 und DJ-Sets von Max Bering.
 
-„Am größten“ heißt allerdings nicht automatisch „am besten“. Das HHF ist der
-Volkswagen unter den Halloween-Events: riesig, solide, für jeden was dabei, an
-vollen Abenden aber eben auch Fließbandware mit Stau vor dem Maze. Die
-kleineren, persönlicheren Formate stehen rund zwei Autostunden nordwestlich in
-Biddinghuizen, und wer sich dort einmal auf eine Trage hat schnallen lassen,
-findet neun Mazes im Durchlaufbetrieb hinterher zahm. Wer Masse und
-Kettensägen-Romantik sucht, ist in Bottrop trotzdem richtig.
+An vollen Abenden staut es sich im Movie Park vor den neun Mazes, die im Durchlaufbetrieb laufen.
 
 Gespielt wird an **22 ausgewählten Abenden vom 26. September bis 8. November
 2026**, überwiegend Freitag bis Sonntag; tagsüber ist der Park ab 10 Uhr normal
@@ -136,17 +107,14 @@ S.I.K. Pass hat unsere
 Extra vormerken würde ich mir den **17. Oktober**, an dem zum fünften Mal der
 Event Day **Haunters Against Hate** läuft.
 
-Was der Park tagsüber und außerhalb dieser sechs Wochen kann, welcher Wochentag
+Was der Park tagsüber und außerhalb der Halloween-Saison kann, welcher Wochentag
 dort wirklich der ruhigste ist und warum ab September nur noch von Donnerstag
 bis Sonntag geöffnet wird, steht im
 [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
-Schon im Sommer hat Bottrop eines seiner Halloween-Häuser einfach früher
-aufgesperrt. **Slaughterhouse** lief unter dem Label „Summerween“ an allen
-Augustwochenenden, 5 € pro Person. Wer bei Tageslicht und Hochsommer verschwitzt
-aus einem Spukhaus kommt, muss immerhin nicht zugeben, dass es Angstschweiß war.
+Schon im Sommer hat Bottrop eines seiner Halloween-Häuser früher aufgesperrt. **Slaughterhouse** lief unter dem Label „Summerween“ an allen Augustwochenenden, 5 € pro Person.
 
 Termine, Maze-Line-up und Ticketstufen stehen auf der
 [offiziellen Halloween-Horror-Festival-Seite](https://www.movieparkgermany.de/halloween).
@@ -154,8 +122,7 @@ Termine, Maze-Line-up und Ticketstufen stehen auf der
 ### Europa-Park: Traumatica (Festival of Fear)
 
 Der [Europa-Park](ref:europa-park) macht Halloween in zwei Schichten.
-Tagsüber, vom 26. September bis 1. November, gibt es eine bunte Herbstkulisse
-mit über 180.000 Kürbissen, gruselfrei, familientauglich, sehr instagrammabel.
+Tagsüber, vom 26. September bis 1. November, gibt es für Familien eine bunte Herbstkulisse mit über 180.000 Kürbissen, ohne Grusel.
 Abends übernimmt **Traumatica**, das „Festival of Fear“, das 2026 doppelt
 feiert, **20 Jahre Horror und 10 Jahre Traumatica**.
 
@@ -163,31 +130,22 @@ feiert, **20 Jahre Horror und 10 Jahre Traumatica**.
 die ersten „Terenzi Horror Nights“ aus. Bis 2012 trug Terenzi das Event mit,
 danach trennten sich die Wege, 2015 war er noch einmal für eine Saison dabei.
 Von 2013 bis 2016 lief es schlicht als „Horror Nights“, ehe es sich **2017** als
-**Traumatica** neu erfand. Seitdem sammelt das einstige Experiment Preise wie
-andere Leute Kühlschrankmagnete: „Best Live Horror Attraction“ (European Travel
+**Traumatica** neu erfand. Seitdem hat Traumatica „Best Live Horror Attraction“ (European Travel
 Awards 2024), den Board of Directors Award der US-amerikanischen Haunted
 Attraction Association (2025) und bei den britischen ScareCON-Awards 2025 den
 Preis für die Darsteller auf dem Gelände, 2026 dann den für das beste
-Scream-Park-Event Europas.
+Scream-Park-Event Europas gewonnen.
 
-Traumatica ist **strikt ab 16**, und zwar so strikt, dass auch Mamas
-Unterschrift und der beste Dackelblick nichts nützen. Wer jünger ist, kommt
-nicht rein, Punkt (einzelne Experiences wie **THE HOTEL** und der Club **THE
-FORBIDDEN** sogar erst ab 18). Dafür gibt es **acht Horror-Attraktionen**, jede
-Menge Darsteller, Bühnenshows und eben jenen Club, in dem man den
-überstandenen Schrecken freitags und samstags ab 23 Uhr wegtanzen kann. Die
+Traumatica ist **strikt ab 16**, auch mit Unterschrift der Eltern kommt niemand Jüngeres hinein (einzelne Experiences wie **THE HOTEL** und der Club **THE FORBIDDEN** sogar erst ab 18). Es gibt **acht Horror-Attraktionen**, viele Darsteller, Bühnenshows und den Club, in dem freitags und samstags ab 23 Uhr getanzt wird. Die
 Vorpremiere lief am **Mittwoch, 23. September**, Premiere war am **Freitag,
 dem 25. September**. Danach wird bis zum **7. November 2026** von Freitag bis
 Sonntag gespielt (nur am Sonntag, dem 27. September, nicht), dazu an drei
 Donnerstagen: am 22. und 29. Oktober sowie am 5. November.
 
-Der Ablauf ist durchgetaktet: Einlass 17:45 Uhr, Food Court ab 18 Uhr
-(Henkersmahlzeit sozusagen), Horror-Welten ab 19 Uhr, Schluss um 23:30 Uhr. Der
+Einlass ist um 17:45 Uhr, der Food Court öffnet um 18 Uhr, die Horror-Welten um 19 Uhr, Schluss ist um 23:30 Uhr. Der
 Eintritt läuft über gestaffelte Pässe, vom **Event Pass** (der Preis hängt vom
 Abend ab, Stand 29. September ab 45 €) über den **Shoxter Pass** mit
-Priority-Zugang (ab 96 €, inzwischen ausverkauft) bis zum **Psycho Pass** für
-Hartgesottene mit belastbarem Dispo (ab 18, All-inclusive, 349 €). Manche Extra-Kitzel kosten
-obendrauf: die Vollkontakt-Experience THE HOTEL (29 €), der Club THE FORBIDDEN
+Priority-Zugang (ab 96 €, inzwischen ausverkauft) bis zum **Psycho Pass** (ab 18, All-inclusive, 349 €). Extra bezahlt werden die Vollkontakt-Experience THE HOTEL (29 €), der Club THE FORBIDDEN
 (10 €) und eine kurze Horror-VR (6 €). Was in THE HOTEL passiert, soweit der
 Park es verrät, steht in unserer
 [Meldung zum Jubiläum](/blog/traumatica-zehn-jahre-europa-park).
@@ -195,16 +153,10 @@ Park es verrät, steht in unserer
 Zum Jubiläum kam der **Vampire’s Club** für genau vier Nächte zurück, am 25.
 und 26. September (vorbei) sowie am 2. und 3. Oktober. An diesen Abenden tritt er an
 die Stelle von THE FORBIDDEN, und Marc Terenzi steht dort selbst auf der Bühne.
-Nach über einem Jahrzehnt Abstand zwischen ihm und dem Event ist das die Art
-Randnotiz, über die sich vor allem die freuen, die 2007 dabei waren und heute
-lieber vor Mitternacht im Bett liegen.
 
-Abends ist das Gelände eher Jagdrevier als Spukhaus-Rundgang. In
-nebelverhangenen Gassen machen ganze Rudel von Darstellern gezielt Jagd auf
-Einzelne, dazu kommen Pyro-Shows.
+In nebelverhangenen Gassen machen ganze Gruppen von Darstellern gezielt Jagd auf einzelne Besucher, dazu kommen Pyro-Shows.
 
-Tagsüber ist Rust ein anderer Park, und einer mit erstaunlich kurzen Warteschlangen
-für seine Größe. Wie kurz sie sind und warum ein Traumatica-Ticket im November die letzte
+Tagsüber sind die Warteschlangen in Rust für einen Park dieser Größe kurz. Wie kurz sie sind und warum ein Traumatica-Ticket im November die letzte
 Parkstunde kostet, steht in unserem
 [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
 
@@ -212,26 +164,14 @@ Parkstunde kostet, steht in unserem
 
 Programm, Termine und Altersregeln: [traumatica.com](https://traumatica.com/).
 
-### Walibi Holland: freiwillig für das eigene Elend bezahlen
+### Walibi Holland: Halloween Fright Nights
 
 Rund zwei Autostunden nordwestlich von Bottrop liegt in Biddinghuizen
-[Walibi Holland](ref:walibi-holland). Der Park betreibt eines der härtesten Halloween-Events der
-Niederlande und sortiert es so sauber nach Eskalationsstufen, dass sich
-Erstbesucher garantiert einmal in der falschen Warteschlange wiederfinden.
+[Walibi Holland](ref:walibi-holland). Der Park teilt sein Halloween-Event in mehrere Stufen.
 
-Ganz unten stehen die **Halloween Spooky Days**: die Tagvariante, herbstlich
-dekoriert, harmlos, Kinder willkommen, Kürbis-Schnitzen-Niveau. Darüber die
-**Halloween Fright Nights**, das Abend-Event, in dem es dann tatsächlich zur
-Sache geht (2026 mit vier Haunted Houses, zwei Walkthroughs, vier Scare Zones
-und zwei Fright Areas). Und _dort_ trennt Walibi noch einmal: **Haunted Houses**
-sind die klassischen begehbaren Spukhäuser, durch die du in der Gruppe läufst.
-Die **Experiences** dagegen sind eine eigene Erfindung: kleinste Gruppen oder
-allein, maximale Nähe, und das ausdrückliche Versprechen, dass dir hier etwas
-_passiert_. Du zahlst dort im Vorverkauf 20 bis 25 € pro
-Experience, zusätzlich zum Parkticket, dafür, dass fremde Menschen dich sehr
-schlecht behandeln, und bedankst dich hinterher auch noch.
+Die **Halloween Spooky Days** sind die harmlose Tagvariante mit Herbstdeko für Kinder. Die **Halloween Fright Nights** sind das Abend-Event, 2026 mit vier Haunted Houses, zwei Walkthroughs, vier Scare Zones und zwei Fright Areas. Bei den Fright Nights unterscheidet Walibi noch einmal. **Haunted Houses** sind die klassischen begehbaren Spukhäuser, durch die du in der Gruppe läufst. Die **Experiences** sind eine eigene Erfindung von Walibi, für kleinste Gruppen oder einzelne Besucher, die Darsteller kommen dir sehr nah, und der Park verspricht ausdrücklich, dass dir etwas _passiert_. Eine Experience kostet im Vorverkauf 20 bis 25 €, zusätzlich zum Parkticket.
 
-Nehmen wir **The Clinic**. Der Empfang sieht aus wie eine normale Klinik, und
+In **The Clinic** sieht der Empfang aus wie eine normale Klinik, und
 dann wirst du auf eine Trage geschnallt und liegend durch den Rest geschoben,
 Blickrichtung ausschließlich Decke. Über dir rasen flackernde Leuchtstoffröhren
 und schimmelige Fliesen vorbei, dann blendendes OP-Licht, eine Spritze, das
@@ -242,37 +182,28 @@ kommen der Zehenanhänger und das satte Zuknallen einer Kühlfach-Schublade.
 Oder **Below**, seit 2017 im Programm und laut Walibi bei der Eröffnung das
 exklusivste und intensivste Spukhaus, das der Park je gebaut hatte. Es beginnt
 damit, dass du Schuhe und Hose ausziehst und in einen
-Wathose-Anzug steigst. Ja, das ist der Moment, in dem dir dämmert, dass das
-kein normaler Abend wird. Die Wathose brauchst du, weil
+Wathose-Anzug steigst. Die Wathose brauchst du, weil
 du in ein Kanalsystem hinabsteigst und durch **kniehohes Wasser** watest,
 angeblich auf der Jagd nach einem Ungeziefer-Befall. Die Darsteller
 kommen durch echte Wasserfälle auf dich zugestürmt, mit, Zitat eines Besuchers,
-beachtlichem „Spritzschaden“. Man verliert komplett die Orientierung.
+beachtlichem „Spritzschaden“.
 
 ![Darsteller mit Schweißmaske und Lederschurz vor einer Containertür | Der Metzger wartet schon. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
 Seit 2022 dabei ist **Slaughterhouse**, ein
 Fleischverarbeitungsbetrieb, in dem du die Rolle des Rohmaterials übernimmst.
 Erst wirst du in einem Viehwaggon-artigen Warteraum „begutachtet“, dann in
-einen an der Deckenschiene hängenden Sitz geschnallt. Das Vorbild ist
-der Fleischerhaken, und du bist völlig wehrlos, die Arme nutzlos, die Beine in
-bequemer Greifhöhe. Es wird geschoren, ein Bolzenschussgerät an die Brust
+einen an der Deckenschiene hängenden Sitz geschnallt. Vorbild ist der Fleischerhaken, du kannst die Arme nicht benutzen, und die Beine hängen in Greifhöhe. Es wird geschoren, ein Bolzenschussgerät an die Brust
 gesetzt, ordentlich zugelangt, und zum Schluss bekommst du deinen **Stempel**
-aufgedrückt, „Qualitätskontrolle bestanden, Premium-Fleisch“. Deshalb siehst du
-an guten Abenden Leute mit ihrem Stempel aus dem Ausgang taumeln, halb
-traumatisiert, halb seltsam stolz, und alle riechen dezent nach Räucherspeck.
-Freiwillig. Für Geld. Man muss die Niederländer einfach mögen.
+aufgedrückt, „Qualitätskontrolle bestanden, Premium-Fleisch“.
 
-Wenn du „Halloween in Walibi“ sagst, entscheide zuerst, welches Level du
-meinst. Der Weg von Spooky Days zu einer Experience ist der von „Kürbis
-schnitzen“ zu „an einen Fleischerhaken gehängt und abgestempelt“. Alle drei
+Alle drei
 Experiences sind 2026 wieder dabei, dazu **The Unhappy Hour** und eine
 Backstage-Tour. Neu sind die Zonen **Camp Dead End**, ein Zeltplatz am See
 mit einem Slasher, und **Halloween Town**, wo die Monster abends singen, tanzen und
 mit Feuer spielen.
 
-Einen Teil der Entscheidung nimmt dir der Park 2026 allerdings ab, denn die
-beiden Level liegen erstmals auf **verschiedenen Tagen**. Bis 2025 teilten sie
+2026 liegen Spooky Days und Fright Nights erstmals auf **verschiedenen Tagen**. Bis 2025 teilten sie
 sich dasselbe Datum, tagsüber Kürbis, abends Kettensäge. Laut Park war es
 tagsüber oft voll mit Leuten, die schon auf den Abend warteten, sodass für
 Familien mit kleinen Kindern wenig Platz blieb, und die Darsteller mussten
@@ -282,15 +213,12 @@ fünf: **14., 15., 19., 20. und 21. Oktober**, alles Werktage in den
 niederländischen Herbstferien, die je nach Region vom 10. bis 18. oder vom 17.
 bis 25. Oktober dauern. Die **Fright Nights** bekommen alle Wochenenden
 zwischen dem **3. Oktober und dem 1. November**, dazu Freitag, den 16.,
-Donnerstag, den 22., und Freitag, den 23. Oktober. Halloween selbst fällt 2026
-auf einen Samstag und ist damit natürlich dabei. An diesen 13 Tagen ist der
+Donnerstag, den 22., und Freitag, den 23. Oktober. Halloween selbst fällt 2026 auf einen Samstag und ist dabei. An diesen 13 Tagen ist der
 Park von 10 bis 23 Uhr offen, das erste Haunted House öffnet um 13 Uhr. Der
 Preis hängt vom Abend ab, an den ruhigeren sparst du bis zu 10 € pro Ticket.
 Empfohlen ist das Ganze ab 16, kontrolliert wird das nicht.
 
-Den Trailer dazu gibt es seit dem 19. August, und er ist verdächtig nett.
-„Back to Reality“ zeigt eine Minute lang einen ausgesprochen
-netten Eddie. Der Horrorclown drückt einem Jungen an der Speed of Sound ein
+Der Trailer „Back to Reality“ ist seit dem 19. August online und zeigt eine Minute lang einen netten Eddie. Der Horrorclown drückt einem Jungen an der Speed of Sound ein
 rosa Plüschtier in die Hand, verteilt Eis und Zuckerwatte, posiert lachend für
 Fotos und tanzt durch den Park, bis er in einem Meer aus rosa Kuscheltieren
 steht. Dann wacht er schweißgebadet in seiner Höhle auf, Axt in der Hand.
@@ -299,16 +227,14 @@ um 14 und 15 Uhr als Show auf der Main Stage weiter.
 
 https://www.youtube.com/watch?v=fFPGRQAs-Xk
 
-Den Ton versteht man besser, wenn man den Spot vom Vorjahr kennt. „Souls for
-Sale“ zeigte 2025 eine verängstigte Frau in einem Glaskasten, die als „Objekt
+Der Spot vom Vorjahr, „Souls for Sale“, zeigte 2025 eine verängstigte Frau in einem Glaskasten, die als „Objekt
 666“ versteigert wurde und danach durch den Boden verschwand, während sich das
 Glas mit Blut füllte. Mit **889 Beschwerden** wurde daraus die
 meistbeanstandete niederländische Werbung des Jahres; die Reclame Code
 Commissie sah die Menschenwürde verletzt. Walibi zog den Spot am 22. August 2025
-zurück, erst vorläufig, vier Tage später endgültig. Ein Jahr später verteilt
-derselbe Clown Zuckerwatte und schläft schlecht.
+zurück, erst vorläufig, vier Tage später endgültig.
 
-Wie sich Biddinghuizen ohne Nebelmaschine anfühlt und was Untamed an einem
+Wie es in Biddinghuizen ohne Halloween aussieht und was Untamed an einem
 normalen Tag an Wartezeit kostet, steht im
 [Walibi-Guide](/blog/walibi-holland-untamed-hard-gaan).
 
@@ -324,7 +250,7 @@ Aktuelles Line-up und Termine: [walibi.nl/halloween](https://www.walibi.nl/hallo
 
 ```
 
-### Bobbejaanland: Kino zum Reinlaufen
+### Bobbejaanland: Halloween in Kasterlee
 
 Das belgische [Bobbejaanland](ref:bobbejaanland) hat 2025 mit
 **„Paranormal Activity: Next of Kin“** sein bis dahin größtes Spukhaus
@@ -332,8 +258,7 @@ Das belgische [Bobbejaanland](ref:bobbejaanland) hat 2025 mit
 Kooperation mit dem Filmstudio Paramount in den früheren „Forbidden Caves“, auf
 **520 Quadratmetern mit siebzehn Szenen und zwei Etagen**, dazu kommen 14
 Darsteller, drinnen wie draußen. Die Story dreht sich um eine Dokumentarfilmerin auf der Suche nach
-ihrer verschwundenen Mutter, ein Amish-Dorf und eine Familie, die man lieber
-nicht zum Grillen einlädt. Damit stehen im Bobbejaanland **sieben Spukhäuser**;
+ihrer verschwundenen Mutter, ein Amish-Dorf und eine unheimliche Familie. Damit stehen im Bobbejaanland **sieben Spukhäuser**;
 neben dem Paramount-Haus laufen Klassiker wie _Wrecked_, _Alice in Horrorland_
 oder _Texas Butcher_. Jedes kostet extra, Next of Kin ab 14 €, die anderen ab
 7 bis 9 €.
@@ -358,7 +283,7 @@ in unserer [Meldung vom 25. September](/blog/parques-reunidos-verkauf-movie-park
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
-### Toverland: sieben Hektar Mais, und bloß nicht stehenbleiben
+### Toverland: Halloween Nights und ein Maislabyrinth
 
 Das [Toverland](ref:attractiepark-toverland) im niederländischen Sevenum (für viele
 aus NRW der nächste Benelux-Park überhaupt) baut seine **Halloween Nights** Jahr
@@ -374,27 +299,18 @@ abgetrennte Gliedmaßen und viel Blut.
 
 Die eigentliche Neuheit für **2026** ist **„Entwined: The Maze“** (der Name
 heißt so viel wie „verwoben“), ein **sieben Hektar großes Maisfeld** mit
-meterhohen Wänden hinter der Fenix-Achterbahn, also gar nicht im Park. Der Mais
+meterhohen Wänden hinter der Fenix-Achterbahn, außerhalb des Parks. Der Mais
 wächst dort seit dem Sommer, und laut Park ist das Feld _doppelt so groß wie das
-gesamte Avalon-Gebiet_. Es ersetzt das alte Ratten-Labyrinth „Trapped“ (2019–2025);
-das Toverland hat also von Nagetieren direkt auf zehn Fußballfelder Mais
-aufgerüstet. Die Prämisse liefert der Park gleich mit: _Bist du dem Bösen
-gewachsen, das in den dicht bewachsenen Maisfeldern haust?_ Und die einzige
-Regel, die zählt: Wer stehenbleibt, wird geschnappt. Also immer schön weiter,
-auch wenn du längst nicht mehr weißt, wohin.
+gesamte Avalon-Gebiet_. Es ersetzt das alte Ratten-Labyrinth „Trapped“ (2019–2025). Der Park fragt: _Bist du dem Bösen gewachsen, das in den dicht bewachsenen Maisfeldern haust?_ Die Regel lautet, dass geschnappt wird, wer stehenbleibt.
 
 Das Toverland vermarktet Entwined als „größte Halloween-Experience Europas“.
-Damit reklamieren binnen gut einer Autostunde gleich zwei Parks „das Größte in
-Europa“ für sich, Bottrop für das größte _Event_ und Sevenum für die größte
-_Experience_.
+Sevenum liegt gut eine Autostunde von Bottrop entfernt.
 
 **Wenn du im Toverland für irgendetwas extra zahlst, dann für den Fear Pass.**
 Für 69,95 € gibt es einmaligen, schnelleren Zugang zu allen sechs Experiences
 plus einen eigenen Bereich an der Parade, die jeden Abend um 18 Uhr startet.
 Einzeln kosten die Experiences 6,50 bis 13 € pro Zeitfenster, Entwined allein
-13 €, und vom Fear Pass gibt es pro Abend nur ein begrenztes Kontingent. An
-vollen Nächten ist das der Unterschied zwischen „drei Häuser geschafft“ und
-„alle sechs, und dazu heil aus dem Mais gekommen“. Für 2026 ist der Fear Pass
+13 €, und vom Fear Pass gibt es pro Abend nur ein begrenztes Kontingent. An vollen Abenden entscheidet er, ob du drei oder alle sechs schaffst. Für 2026 ist der Fear Pass
 allerdings für alle Halloween Nights ausverkauft; die Experiences gibt es weiter
 einzeln.
 
@@ -409,23 +325,16 @@ Abschied von Trapped, auf Niederländisch: [Toverblog](https://www.toverland.com
 
 ### Walibi Belgium: „Ibilaw“
 
-![Clown mit Fez am Messerwurfstand bei Tag | Ein Clown am Messerwurfstand, zwei Ängste zum Preis von einer. | right](/media/halloween-2026/beispiel-fez-clown.jpg)
+![Clown mit Fez am Messerwurfstand bei Tag | Ein Clown mit Fez am Messerwurfstand. | right](/media/halloween-2026/beispiel-fez-clown.jpg)
 
-Auch der zweite Walibi mischt mit. [Walibi Belgium](ref:walibi-belgium) in
-Wavre verwandelt seinen Herbst in **„Ibilaw“**, und das ist „Walibi“ rückwärts. Wobei „Walibi“ selbst ein
+[Walibi Belgium](ref:walibi-belgium) in Wavre verwandelt seinen Herbst in **„Ibilaw“**, und das ist „Walibi“ rückwärts. Wobei „Walibi“ selbst ein
 Kürzel ist, zusammengesetzt aus den drei Nachbargemeinden **Wa**vre, **Li**mal
-und **Bi**erges. Zu Halloween wird der Park also im Wortsinn von hinten
-aufgezäumt, als Spiegel-Walibi, in dem alles ein bisschen verkehrt herum läuft,
-inszeniert seit 2024 rund um das Maskottchen **Bill** und sein „grimmiges
-Königreich“.
+und **Bi**erges. Zu Halloween ist der Park ein Spiegel-Walibi, seit 2024 rund um das Maskottchen **Bill** und sein „grimmiges Königreich“.
 
-Auf dem Programm steht das komplette Fright-Nights-Besteck: vier begehbare
-Spukhäuser, nämlich **Mine Blast**, **Silence**, das **Aquarium** (das alte
+Auf dem Programm stehen vier begehbare Spukhäuser, **Mine Blast**, **Silence**, das **Aquarium** (das alte
 Schauaquarium in Dock World, in dem noch etwas lauert) und
 neu **The Grand Hotel**, ein Luxuspalast aus den Dreißigern, der The Curse of
-Amun ablöst. Dazu kommen Scare Zones wie das clowneske **Psycho Circus**, der
-Fez-Clown oben lässt grüßen, 2026 als „The Final Act“ zum letzten Mal, oder
-**Arachnophobia** für alle, die Spinnen schon in Normalgröße nicht abkönnen. Bis
+Amun ablöst. Dazu kommen Scare Zones wie das clowneske **Psycho Circus**, 2026 als „The Final Act“ zum letzten Mal, oder **Arachnophobia** mit Spinnen. Bis
 auf Mine Blast kosten die Spukhäuser **extra**, als Zeitfenster-Ticket rund
 **6,50 bis 8,50 € pro Haus**; wer Anstehen hasst, nimmt den **Speedy
 Pass** als Fast-Lane.
@@ -448,8 +357,7 @@ gleich bei Kondaa. Der Rest des Jahres, mit Kondaa, der
 Parkgeschichte und dem Vergleich zum bekannteren Walibi Holland, steht in
 unserem [Walibi-Belgium-Guide](/blog/walibi-belgium-wartezeiten-tipps).
 
-Das Gelände ist kompakt, die Wege zwischen den Schrecken sind kurz, und von
-Mindestabstand halten die Darsteller wenig. [Bobbejaanland](ref:bobbejaanland) liegt gut eine
+Das Gelände ist kompakt, und die Darsteller kommen nah heran. [Bobbejaanland](ref:bobbejaanland) liegt gut eine
 Autostunde entfernt; wer ohnehin nach Belgien fährt, legt beide auf ein
 Wochenende.
 
@@ -469,17 +377,13 @@ Society Pass lohnt, stehen in unserer
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 
-## Familientauglich: Grusel mit Sicherheitsnetz
+## Familientaugliche Events
 
-Nicht jeder will (oder darf) an einen Fleischerhaken. Für Familien mit Kindern
-gibt es die entschärfte Version, bei der der Grusel nur Stimmung macht.
-
-![Darstellerin als zerbrochene Porzellanpuppe vor buntem Kinderweltzaun | Es sind immer die Puppen. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
+![Darstellerin als zerbrochene Porzellanpuppe vor buntem Kinderweltzaun | Eine Darstellerin als zerbrochene Porzellanpuppe. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
 ### Heide-Park: Halloween mit Wahlmöglichkeit
 
-Der [Heide-Park](ref:heide-park) in Soltau macht beides und überlässt dir die
-Dosis. Halloween läuft **vom 10. bis 31. Oktober 2026**, tagsüber mit
+Der [Heide-Park](ref:heide-park) in Soltau macht beides. Halloween läuft **vom 10. bis 31. Oktober 2026**, tagsüber mit
 familientauglicher Deko, Shows und einer Rallye für Kinder. Abends gruselt es
 nur an **fünf langen Tagen** (Sa 10., Sa 17., Sa 24., Fr 30. und Sa 31.
 Oktober), an denen die Fahrgeschäfte von 12 bis 21 Uhr laufen und der Park eine
@@ -487,9 +391,7 @@ Stunde später schließt. Ab etwa 16 Uhr öffnen dann eine Scare Zone und **drei
 Horror-Mazes ab 16**, mit Ausweiskontrolle: _Parasomnis_ in einer verlassenen
 Kapelle, das _Grand Hotel Morton_ im Stil der Zwanziger und _SubTerra_, ein
 Erntebankett mit Masken. Jedes Maze braucht ein eigenes Zeitfenster-Ticket für
-9 €, alle drei kosten im Bundle 22 €. Für den Familienfrieden ist das
-ideal, denn alle fahren tagsüber zusammen Achterbahn, und wer alt und mutig genug ist, verschwindet
-abends im Maze, während der Rest sich an der Bratwurst festhält.
+9 €, alle drei kosten im Bundle 22 €.
 
 Für Familien gibt es zwei eigene Angebote. Der _Zauberwald_ richtet sich an
 Kinder von 3 bis 10 Jahren, und _Mission Meeresgrund_ läuft in einer
@@ -510,21 +412,17 @@ es im [Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps).
 
 ### Parc Astérix: Peur sur le Parc
 
-Wer den Ausflug größer denkt, fährt nach Frankreich: [Parc Astérix](ref:parc-asterix)
-nördlich von Paris zieht sein **Peur sur le Parc** vom **3. Oktober bis 8.
+Der [Parc Astérix](ref:parc-asterix) nördlich von Paris zieht sein **Peur sur le Parc** vom **3. Oktober bis 8.
 November 2026** durch, tagsüber familienfreundlich, an zwölf ausgewählten
 Abenden als **Nocturnes** mit ordentlich mehr Nervenkitzel, nämlich am
 10., 16., 17., 21., 22., 23., 24., 28., 29., 30. und 31. Oktober sowie am 7.
 November, jeweils von 19 bis 1 Uhr und mit eigenem Ticket (53 € online, an der
 Kasse 58 €). Neu sind 2026 die Angst-Zone **„Les Bas-fonds du Souk“**
-im Ägypten-Bereich, der nächtliche Rundgang **„La Forêt sans Retour“** und eine
-Illusionsshow in der Arena. Der Grusel
-kommt hier mit gallischem Augenzwinkern: Irgendwo zwischen zwei Menhiren lauert
-garantiert auch ein Wildschwein.
+im Ägypten-Bereich, der nächtliche Rundgang **„La Forêt sans Retour“** und eine Illusionsshow in der Arena.
 
 [Parc Astérix](ref:parc-asterix?full)
 
-### Disneyland Paris: Schurken statt Kettensäge
+### Disneyland Paris: Disney Halloween Festival
 
 Das Gegenprogramm zu Bottrop, das **Disney Halloween Festival**, läuft vom
 **26. September bis 1. November 2026** im
@@ -550,8 +448,7 @@ Oktober bis 1. November. An diesen Tagen ist der Park bis 21 Uhr offen, das sind
 mit dem Auto gut eine Stunde unterwegs.
 
 Neu ist das Maze [Final Exhibit](ref:alton-towers/final-exhibit): die
-vergessene Sammlung eines Mannes, den der Park nur „The Curator“ nennt, und nicht
-jedes Ausstellungsstück ist so leblos, wie es aussieht. Empfohlen ist es ab 12
+vergessene Sammlung eines Mannes, den der Park nur „The Curator“ nennt. Empfohlen ist es ab 12
 Jahren, wie alle vier Thrill-Mazes. Die anderen drei sind
 COMPOUND, Edge of the Forest und Altonville Mine Tours: Tiny's Revenge. Die
 Mazes stecken nicht im Eintritt und laufen mit Zeitfenster. Ohne Zeitfenster
@@ -579,10 +476,7 @@ Das spanische [PortAventura Park](ref:portaventura-park) an der Costa Dorada
 feiert schon seit dem 19. September Halloween und macht damit bis zum **15.
 November 2026** weiter, also fast zwei Monate. Ohne Aufpreis gibt es die
 Halloween-Parade, Truco o Trato, den Día de los Muertos, neue Figuren im Park,
-die neue Show **Resurrection** im Saloon und abends die Scare Zone **La
-Maldición del Emperador**. Das ist die Familienseite.
-
-Die Horror-Seite sind die **Pasajes del Terror**, Walkthroughs mit Darstellern,
+die neue Show **Resurrection** im Saloon und abends die Scare Zone **La Maldición del Emperador**. Für den Horror gibt es die **Pasajes del Terror**, Walkthroughs mit Darstellern,
 und keiner davon steckt im Parkeintritt. Neu ist der fünfte,
 **El Carnicero de Penitence** (ab 10 €): Im Westernstädtchen Penitence beim
 [Uncharted](ref:portaventura-park/uncharted) verschwinden Leute, der Sheriff
@@ -606,27 +500,21 @@ Gardaland am Gardasee hat diesen Herbst ein neues Labyrinth, durch das du
 schweigend gehen musst, und unsere [Meldung zu
 Gardaland](/blog/gardaland-magic-halloween-2026) hat Termine und Preise.
 
-## Die Verweigerer: zwei Top-Parks, die Halloween aussitzen
+Was auf der anderen Seite des Atlantiks läuft, steht im [Halloween-Überblick für
+die USA](/blog/halloween-usa-freizeitparks-2026), und Cedar Point in Ohio hat
+einen eigenen Beitrag zu den
+[HalloWeekends](/blog/cedar-point-halloweekends-2026).
 
-Zwei der meistbesuchten Parks der Region machen bei dem ganzen
-Nebel-und-Kettensägen-Zirkus überhaupt nicht mit, und das Efteling sagt es
-sogar ausdrücklich.
+## Parks ohne Halloween
 
-### Phantasialand: nichts. Gar nichts.
+Zwei der meistbesuchten Parks der Region machen bei Halloween nicht mit.
 
-Das [Phantasialand](ref:phantasialand) in Brühl bietet **kein Halloween-Event**,
-nicht mal einen symbolischen Kürbis mit schlechter Laune. Für einen Park, der Theming
-sonst mit der Akribie eines Uhrmachers betreibt, ist das fast schon
-demonstrativ. Das Phantasialand ist der
-eine Freund auf der Party, der „so richtig auf Halloween eigentlich nicht
-steht“, und dann im November mit Glühwein und einer kompletten Winterlandschaft
-um die Ecke kommt und alle wieder einsammelt.
+### Phantasialand
 
-Brühl zündet seine große Saison einfach **später**. Ab **14. November
-2026** läuft **Wintertraum** bis in den Januar (24. Januar 2027), mit Eisbahn,
-Winter-Shows und abendlicher Illumination. Wer im Oktober auf
-Phantasialand-Grusel hofft, fährt also für den Schrecken in einen Nachbarpark
-oder wartet ein paar Wochen bis zum Zuckerguss. Wer in Europa sonst noch
+Das [Phantasialand](ref:phantasialand) in Brühl bietet **kein Halloween-Event**.
+
+Brühls große Saison beginnt **später**. Ab **14. November 2026** läuft **Wintertraum** bis in den Januar (24. Januar 2027), mit Eisbahn,
+Winter-Shows und abendlicher Illumination. Wer in Europa sonst noch
 zwischen November und Januar aufmacht, steht im
 [Winter-Guide](/blog/winter-freizeitparks-2026).
 
@@ -636,23 +524,18 @@ anders funktioniert.
 
 [Phantasialand](ref:phantasialand?full)
 
-### Efteling: zu vornehm für Kettensägen
+### Efteling
 
 Das [Efteling](ref:efteling) im niederländischen Kaatsheuvel stellt sogar
 offiziell klar: **„De Efteling viert geen Halloween“**, das Efteling feiert kein
-Halloween, zu gruseln gebe es aber genug. Schockmomente und Motorsägen gibt es
-dort nirgends, und trotzdem ist im Herbst kaum ein Park stimmungsvoller.
-Das Efteling gruselt eben märchenhaft statt blutig, wie die elegante Großtante,
-die keine Gespensterlaken braucht, um dir eine Gänsehaut zu verpassen.
+Halloween, zu gruseln gebe es aber genug.
 
 Sein **Herfst** (Herbst) bringt an Wochenenden und in den Herbstferien lange
 Abende bis 20 Uhr und einen dunklen, gotischen Kern im Huyverwoud, das der Park
 selbst sein gruseligstes Stück nennt. Dort steht **Danse Macabre**, der
 totentanzende Nachfolger des _Spookslot_, das nach 44 Jahren 2022 schloss.
 Danse Macabre hat im Frühjahr 2026 einen **Thea Award** der Themed
-Entertainment Association bekommen, quasi den Oscar der Branche. Wer das
-gemütlich-schaurige Herbstgefühl sucht statt des Adrenalinschocks, und wer
-Kinder dabei hat, fährt nach Kaatsheuvel.
+Entertainment Association bekommen. Wer mit Kindern kommt oder keine Schreckmomente will, fährt im Herbst nach Kaatsheuvel.
 
 **Danse Macabre ist bis einschließlich 30. September wegen
 Wartung zu und dann noch einmal vom 26. Oktober bis 6. November 2026.** Max &
@@ -675,30 +558,20 @@ Das Besucherlimit von fünf Millionen Gästen und der Winter Efteling stehen im
 
 1. **Wo „ab 16“ als Grenze gilt, wird sie durchgesetzt.** Traumatica, die
    meisten Horrorhäuser im Movie Park und die Mazes im Heide-Park kontrollieren
-   den Ausweis und lassen Jüngere auch _mit_ Eltern nicht rein. Vorher klären,
-   sonst wird die halbe Familie am Einlass abgewiesen und der Abend ist
-   gelaufen, bevor er anfing. Bei Walibi Holland ist „ab 16“ dagegen nur eine Empfehlung, im Plopsaland kommen Jüngere mit einem Erziehungsberechtigten hinein, und im Toverland gilt „ab 12“.
+   den Ausweis und lassen Jüngere auch _mit_ Eltern nicht rein. Vorher klären, sonst wird ein Teil der Familie am Einlass abgewiesen. Bei Walibi Holland ist „ab 16“ dagegen nur eine Empfehlung, im Plopsaland kommen Jüngere mit einem Erziehungsberechtigten hinein, und im Toverland gilt „ab 12“.
 2. **Mazes und Experiences kosten extra.** Bei fast allen großen Events sind die
    Häuser und Experiences nicht im Tagesticket. Einrechnen, und früh buchen,
    wenn dir ein bestimmtes Datum wichtig ist.
-3. **Fast-Lanes lohnen sich hier ausnahmsweise wirklich.**
-   [Toverlands](ref:attractiepark-toverland) **Fear Pass** oder
-   [Walibi Belgiums](ref:walibi-belgium) **Speedy Pass** rechnen sich an vollen
-   Halloween-Nächten ganz nüchtern: Ein Halloween-Abend ist kürzer als ein normaler Parktag, und jede Minute, die du
-   _nicht_ in der Warteschlange stehst, ist eine Minute mehr Panik fürs Geld.
+3. **Fast-Lanes lohnen sich hier.** [Toverlands](ref:attractiepark-toverland) **Fear Pass** oder [Walibi Belgiums](ref:walibi-belgium) **Speedy Pass** rechnen sich an vollen Halloween-Abenden, weil ein Halloween-Abend kürzer ist als ein normaler Parktag.
 
-Mehr als jedes Line-up entscheidet über den Abend aber, **wann du kommst.** Am
-vollsten wird es an den Wochenenden und am 31. Oktober, so steht es auch in
+Am vollsten wird es an den Wochenenden und am 31. Oktober, so steht es auch in
 unserem Crowd-Kalender für fast alle Parks in diesem Guide. Das bleibt eine Prognose, denn unsere Messungen beginnen erst Ende Dezember 2025
 und enthalten noch keinen Halloween-Oktober. Für
-Werktage und die Randwochen der Saison liegt die Prognose spürbar niedriger
-(und die Darsteller haben dann mehr Zeit, sich exklusiv um _dich_ zu
-kümmern, je nach Sichtweise ein Vor- oder Nachteil).
+Werktage und die Randwochen der Saison liegt die Prognose spürbar niedriger.
 
-![Beleuchteter Torbogen Psycho Circus mit Menschenmenge bei Nacht | Volle Nacht: ab hier stehst du mehr an, als dir lieb ist. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
+![Beleuchteter Torbogen Psycho Circus mit Menschenmenge bei Nacht | Psycho Circus an einem vollen Abend. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
 
-Statt zu raten, schau dir für deinen Wunschpark die **ruhigsten kommenden Tage**
-aus unserem KI-Crowd-Kalender an:
+Die **ruhigsten kommenden Tage** aus unserem KI-Crowd-Kalender:
 
 **Europa-Park, die ruhigsten kommenden Tage**
 
@@ -714,7 +587,7 @@ aus unserem KI-Crowd-Kalender an:
 
 Die Prognose für die Horrorabende im Movie Park nimmst du besser mit Vorsicht.
 Wie voll es in Bottrop nach Wochentag und Monat typischerweise wird, steht in
-der Statistik, und Halloween musst du dir dort vorerst dazudenken:
+der Statistik, in der Halloween noch nicht enthalten ist:
 
 **Movie Park Germany, typische Wartezeiten nach Wochentag & Monat**
 
@@ -725,19 +598,5 @@ der Statistik, und Halloween musst du dir dort vorerst dazudenken:
 ```gallery-widget folder=/media/halloween-2026/kulissen heading="Kulissen und Zonen"
 
 ```
-
-## Wann du hingehst
-
-Für welche Nervenstärke du dich entscheidest, ist deine Sache. Nur springt dich
-in einer Warteschlange garantiert _niemand_ an, was bei diesen Preisen ärgerlich
-ist. Welcher Tag der leerste ist, siehst du den ganzen Herbst über an den
-Live-Wartezeiten und im Crowd-Kalender auf park.fan.
-
-Was auf der anderen Seite des Atlantiks läuft, steht im [Halloween-Überblick für
-die USA](/blog/halloween-usa-freizeitparks-2026), und Cedar Point in Ohio hat
-einen eigenen Beitrag zu den
-[HalloWeekends](/blog/cedar-point-halloweekends-2026).
-
-Wer Below bucht, packt Wechselsocken ein. Ich habe das einmal nicht getan.
 
 — Patrick

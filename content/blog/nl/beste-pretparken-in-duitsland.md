@@ -2,17 +2,14 @@
 title: 'De beste pretparken in Duitsland 2026'
 translationKey: best-theme-parks-germany
 date: '2026-10-03'
-updatedAt: '2026-10-04'
+updatedAt: '2026-10-13'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Op park.fan staan negen pretparken in Duitsland, bij zeven meten we de
-  wachtrijen. Europa-Park won in september voor de elfde keer de Golden Ticket
-  Award voor beste park ter wereld, maar in Phantasialand sta je het langst in de
-  rij en in Plopsaland het kortst. Een ranglijst voor achtbaanfans, een voor
-  gezinnen met jonge kinderen, en verder minimumlengtes, fast passes, de reis
-  erheen, het tijdstip en de weekdag.
+  Europa-Park won in september voor de elfde keer de Golden Ticket Award voor beste park ter wereld,
+  maar in Phantasialand sta je het langst in de rij en in Plopsaland het kortst. Ik zet de parken in
+  twee ranglijsten, een voor achtbaanfans en een voor gezinnen met jonge kinderen.
 tags:
   - pretpark
   - duitsland
@@ -56,17 +53,13 @@ parkLinks:
   - legoland-deutschland
 ---
 
-Op park.fan staan **negen pretparken in Duitsland**. Bij zeven meten we de wachttijden, attractie
+Op park.fan staan **negen pretparken in Duitsland**. Bij zes meten we de wachttijden, attractie
 voor attractie. Bij [Hansa-Park](ref:hansa-park) komt geen enkel getal binnen, omdat het park ze
-alleen in de eigen app laat zien. Voor [Traumatica](ref:traumatica) hebben we maar vier meetdagen,
-en [Rulantica](ref:rulantica) is een waterwereld. Beide horen bij het Europa-Park Resort en komen
+alleen in de eigen app laat zien. [Traumatica](ref:traumatica), waarvoor we nog maar vier meetdagen hebben, en de waterwereld
+[Rulantica](ref:rulantica) horen bij het Europa-Park Resort en komen
 daarom niet als eigen park voor.
 
-Eén ranglijst zou oneerlijk zijn. Een achtbaanfan en een gezin met een vierjarige zoeken niet
-hetzelfde park, en allebei willen ze weten hoe lang ze in de rij staan. Voor achtbanen ga je
-naar Rust, voor decors naar Brühl en met een kind onder de tien naar Günzburg. Of je op een van die
-drie plekken in een rij staat die langer duurt dan de rit ernaartoe, hangt af van tijdstip,
-weekdag en maand.
+Er zijn twee ranglijsten, een voor achtbaanfans en een voor gezinnen met kinderen onder de tien.
 
 ## Waarop ik sorteer
 
@@ -76,8 +69,7 @@ mogen en wat er op een regendag open blijft. Dat is mijn weging. De cijfers erna
 eigen meting, stand 3 oktober 2026, en de technische gegevens komen van de parken, uit de Roller
 Coaster DataBase en uit onze gidsen over de afzonderlijke parken, die verderop gelinkt staan.
 
-Prijzen laat ik weg. Ze hangen af van dag, voorverkoop en seizoen, en elk bedrag zou bij
-verschijnen al achterhaald zijn. In de parkgidsen staan ze, met datum erbij.
+Prijzen laat ik weg. In de parkgidsen staan ze, met datum erbij.
 
 ## De zeven parken in één oogopslag
 
@@ -95,7 +87,7 @@ verschijnen al achterhaald zijn. In de parkgidsen staan ze, met datum erbij.
 
 **1. [Europa-Park](ref:europa-park), Rust.** Op 12 september 2026 won het park in Austin voor de
 elfde keer de Golden Ticket Award als “Best Park”. De stemmers komen uit de branche, het is geen
-publieksprijs. De lijst met banen draagt de plek toch: veertien achtbanen, onder andere
+publieksprijs. Het park heeft veertien achtbanen, onder andere
 [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac), die in de ranglijst van stalen
 achtbanen van Amusement Today op plaats 9 staat, en de [Silver Star](ref:europa-park/silver-star).
 De Silver Star is 73 meter hoog, rijdt 127 km/u en deelt beide titels met de Kärnan in Hansa-Park.
@@ -111,9 +103,8 @@ International gebouwd uit 21.000 balken en twee miljoen spijkers. De lijst gaat 
 [blue fire](ref:europa-park/blue-fire-megacoaster), de eerste lanceerachtbaan van het park uit
 2009, de [Eurosat](ref:europa-park/eurosat-cancan-coaster), die sinds 1989 in haar zilveren bol in
 het donker rijdt, en de waterachtbaan [Poseidon](ref:europa-park/water-rollercoaster-poseidon).
-Wie alle veertien op één dag wil rijden, heeft goede schoenen nodig. De themagebieden zijn als
-landen gebouwd en liggen in een lange ketting, en de weg van Kroatië naar Ierland duurt als een
-zaterdag bij IKEA zonder de sluiproutes.
+De themagebieden zijn als landen gebouwd en liggen in een lange ketting achter elkaar. Wie alle
+veertien achtbanen op één dag wil rijden, loopt daarom ver, bijvoorbeeld van Kroatië tot Ierland.
 
 Een fast pass verkoopt het park niet. Er zijn single-riderrijen bij zes attracties, een gratis
 Virtual Line in de app voor een paar banen en voor hotelgasten vroege toegang, in het zomerseizoen
@@ -125,16 +116,13 @@ Lake City met tipi’s, huifkarren en blokhutten.
 **2. [Phantasialand](ref:phantasialand), Brühl.** De decors zijn de beste van de parken in deze lijst.
 [Taron](ref:phantasialand/taron) staat op plaats 8 van de ranglijst van stalen achtbanen, en
 [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) is door Amusement Today voor de vierde keer
-uitgeroepen tot beste waterbaan in een park. Daar staan acht headliners tegenover waarover 2,1
-miljoen gasten per jaar verdeeld zijn, en dat merk je aan de wachtrij. Plek 2 krijgt het park toch,
-omdat de baan hier deel is van een dorp en geen stellage op een weiland.
+uitgeroepen tot beste waterbaan in een park. Over acht headliners verdelen zich 2,1 miljoen gasten per jaar, en daar zijn de wachtrijen ook naar.
+Plek 2 krijgt het park toch, omdat de banen in de themawerelden zijn ingebouwd.
 
 Taron schiet je twee keer door Klugheim, een dorp van basaltzuilen dat tegelijk de wachtrij is.
 [F.L.Y.](ref:phantasialand/fly) in Rookburgh is een flying coaster waarin je staand instapt en op je
-buik liggend rijdt, door een victoriaanse vliegtuigwerkplaats waarvoor ik ook entree zou betalen als
-er aan het eind helemaal geen baan stond. [Black Mamba](ref:phantasialand/black-mamba) is een
-inverted coaster uit 2006 die zo dicht langs rotsen en hutten rijdt dat je bij elk element je hoofd
-intrekt, ook al helpt dat niets. Daarbij komen de mijntrein
+buik liggend rijdt, door een victoriaanse vliegtuigwerkplaats. [Black Mamba](ref:phantasialand/black-mamba) is een
+inverted coaster uit 2006 die dicht langs rotsen en hutten rijdt. Daarbij komen de mijntrein
 [Colorado Adventure](ref:phantasialand/colorado-adventure) uit 1996, de twee spinning coasters
 Winja’s Fear en Winja’s Force en de 65 meter hoge toren
 [Mystery Castle](ref:phantasialand/mystery-castle).
@@ -180,8 +168,8 @@ afdaling van 67 meter komt. De [Flucht von Novgorod](ref:hansa-park/escape-of-no
 seconden naar 100 km/u en valt later onder 97 graden voorbij de verticaal.
 [Nessie](ref:hansa-park/nessie) van Anton Schwarzkopf rijdt sinds 1980 en was toen de grootste
 loopingachtbaan van Europa. De Highlander is 120 meter hoog en pakte in 2019 het record af van de
-Scream in Soltau, wat ze in Nedersaksen niet graag horen. In oktober verandert Herbstzauber am Meer
-het park met zo’n 2.000 lichtfiguren, in 2026 van 10 tot 25 oktober tot 21.00 uur. Met de stoptrein
+Scream in Soltau. Bij Herbstzauber am Meer staan zo’n 2.000 lichtfiguren in het park, in 2026 van
+10 tot 25 oktober, open tot 21.00 uur. Met de stoptrein
 van Lübeck tot Sierksdorf en dan tien minuten lopen, met de auto via de A1. In 2027 bestaat het
 park vijftig jaar, en daarvoor bouwt het een 86 meter hoge uitkijktoren.
 
@@ -194,13 +182,13 @@ Het park heeft acht achtbanen. De grootste is
 Rides uit 2017, 40 meter hoog, 90 km/u, vanaf 130 centimeter, en de trein wordt voor de start drie
 keer heen en weer geslingerd voordat de snelheid genoeg is voor de eerste heuvel.
 [The Bandit](ref:movie-park-germany/the-bandit) uit 1999 was bij de opening de enige houten achtbaan
-van Duitsland en rammelt na 27 jaar zo hard dat ik na de tweede rit hoofdpijn heb. De
+van Duitsland en rammelt na 27 jaar flink. De
 [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) uit 2021 is een
 achtbaan-darkride van Intamin met twee lanceringen en een draaischijf, en
 [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory) heeft de langste wachtrij van
 het park, omdat de baan maar 848 mensen per uur verwerkt.
 
-Zijn grootste avonden beleeft het park in de herfst. Het Halloween Horror Festival loopt in 2026 van
+Het Halloween Horror Festival loopt in 2026 van
 26 september tot 8 november, en 8 november is ook de laatste dag van het seizoen. Sinds september is
 het park buiten de schoolvakanties alleen van donderdag tot en met zondag open. Van 27 november tot
 5 januari volgt Movie Park’s Hollywood Christmas. Station Feldhausen ligt zo’n 400 meter van de
@@ -212,21 +200,18 @@ Dortmund.
 **1. [Legoland Deutschland](ref:legoland-deutschland), Günzburg.** Het park is sinds 2002 open. In
 de winter van 2026/27 gaat het voor de vierde keer op losse dagen open tussen november en januari,
 met ijsbaan en shows, en bij de meeste attracties buiten staat dan “weersafhankelijk geopend”. Losse
-sluitingsdagen zijn er in 2026 in mei, juni en september, dus het loont om voor je vertrekt even in
-de kalender te kijken.
+sluitingsdagen zijn er in 2026 in mei, juni en september.
 
 Het park heeft elf themawerelden, de jongste is Lego Mythica uit 2023. Daar staat
 [Maximus](ref:legoland-deutschland/maximus-the-guardians-flight), een wing coaster van Bolliger &
 Mabillard en de allereerste in een Legoland: 17 meter hoog, 54 km/u, vanaf 120 centimeter met een
-volwassene, alleen vanaf 130 centimeter en acht jaar. Voor kinderen is dat de baan waaraan je merkt
-dat ze gegroeid zijn. Daarvoor komen de [Feuerdrache](ref:legoland-deutschland/fire-dragon) van
+volwassene, alleen vanaf 130 centimeter en acht jaar. Daarvoor komen de [Feuerdrache](ref:legoland-deutschland/fire-dragon) van
 Zierer uit het openingsjaar, vanaf 110 centimeter en zes jaar onder begeleiding, en de
 [Drachenjagd](ref:legoland-deutschland/dragon-hunt) van Gerstlauer, waar vierjarigen vanaf een
 meter al in mogen. [Flying Ninjago](ref:legoland-deutschland/flying-ninjago) is een Sky Fly uit
-2012 waarin je je gondel zelf om zijn as draait, zo vaak als je maag het toelaat.
+2012 waarin je je gondel zelf om zijn as draait.
 
-Miniland bestaat volgens Wikipedia uit meer dan 25 miljoen steentjes, en op geen ervan stap je ’s
-nachts op blote voeten in de kinderkamer. In 2024 kwamen er volgens Wikipedia zo’n twee miljoen
+Miniland bestaat volgens Wikipedia uit meer dan 25 miljoen steentjes. In 2024 kwamen er volgens Wikipedia zo’n twee miljoen
 gasten. Het seizoen loopt in 2026 van 28 maart tot 8 november, Halloween van 3 oktober tot het
 einde van het seizoen. Betaalde voorrang heet hier **Fastrack**, in drie niveaus, voor 18
 attracties en zonder entree erbij. Overnachten kan in het vakantiedorp direct naast het park, in
@@ -253,8 +238,7 @@ Voor de ouders staat de
 2001 met 120 km/u, die volgens het park meer dan 40 prijzen heeft verzameld, waaronder de Golden
 Ticket Award voor beste achtbaan van Europa. Ze wordt in 2026 vijfentwintig en vraagt 140
 centimeter. Daarbij komt [Sky Scream](ref:plopsaland-deutschland/sky-scream) van Premier Rides,
-vanaf 140 centimeter en veertien jaar. Wie met een peuter en een tiener komt, krijgt hier dus
-allebei op één dag, zonder dat iemand urenlang op een bankje zit.
+vanaf 140 centimeter en veertien jaar.
 
 In 2026 is het park tot 1 november elke dag open, volgens het park zelf het langste seizoen in zijn
 geschiedenis. Voorrang verkoopt het als **Express Pass** voor acht attracties. Een hotel bij het
@@ -266,22 +250,18 @@ kinderachtbanen. De Kleine Zar en de Schlange von Midgard nemen kinderen vanaf 9
 de in 2026 geopende Cornwall Coaster ook.
 
 De [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster) opende op 23 mei 2026, 18 meter
-hoog, 50 km/u, en het park telt zeven lanceringen in één rondje, vooruit en achteruit. Voor een
-familieachtbaan is dat veel. In Hansa-Park staat bij veel banen naast de lengte ook een leeftijd
+hoog, 50 km/u, en het park telt zeven lanceringen in één rondje, vooruit en achteruit. In Hansa-Park staat bij veel banen naast de lengte ook een leeftijd
 vanaf wanneer een kind alleen mag: bij de Schlange von Midgard vanaf zes, bij de Cornwall Coaster
 vanaf acht, bij Nessie en de Royal Scotsman pas vanaf tien. Een kind van zeven met 1,25 meter kan
-zo in zeven van de acht achtbanen, maar in vier daarvan alleen met een volwassene ernaast. Wie als
-enige volwassene met twee kinderen komt, rijdt Nessie twee keer.
+zo in zeven van de acht achtbanen, maar in vier daarvan alleen met een volwassene ernaast.
 
 **[Heide Park](ref:heide-park?bare), Soltau.** Het is geen familiepark, maar met Peppa Pig Land heeft het een hoek voor de
 kleinsten, en Schorschs Dino-Abenteuer neemt kinderen al vanaf 86 centimeter mee. De grote banen
-vragen daar 140 centimeter. Tussen 86 en 140 centimeter liggen een paar jaren waarin een kind al
-veel mag, maar geen van de banen waarvoor de ouders gekomen zijn.
+vragen daar 140 centimeter.
 
 ## Hoe lang je kind moet zijn
 
-Met kinderen bepaalt voor mij vaak de minimumlengte welk park het wordt, niet de lijst met banen.
-De waarden voor de grote banen, stand oktober 2026, volgens de parken:
+De minimumlengtes voor de grote banen, stand oktober 2026, volgens de parken:
 
 | Park          | Vanaf 140 cm                                   | Vanaf 130 cm                    | Lager                                                                                            |
 | ------------- | ---------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -297,37 +277,25 @@ Bij Taron en F.L.Y. is 130 centimeter alleen genoeg met een volwassene ernaast, 
 mag je pas vanaf 140. Een lege cel betekent dat het park op dat niveau
 geen grote attractie heeft.
 
-De dag verloopt rustiger als het kind vooraf weet welke baan het niet mag rijden, en dat niet pas
-na veertig minuten in de rij voor de meetlat te horen krijgt.
-
 ## Waar je het kortst in de rij staat
 
-De vergelijking over alle gemeten dagen, met voor elk park dezelfde rekenmethode. De rijen staan
-in de volgorde van de meting van 3 oktober 2026 en worden niet opnieuw gesorteerd:
+De vergelijking over alle gemeten dagen, voor elk park op dezelfde manier berekend. De rijen staan in de volgorde van de meting van 3 oktober 2026 en worden niet opnieuw gesorteerd:
 
 ```park-comparison-widget slugs=phantasialand,legoland-deutschland,europa-park,heide-park,movie-park-germany,plopsaland-deutschland show=quietest
 
 ```
 
 In Phantasialand ligt de mediaan het hoogst en in Plopsaland het laagst. Europa-Park, Heide Park en
-Movie Park liggen dicht bij elkaar, hoewel Europa-Park de meeste bezoekers heeft. Het verdeelt ze
-over meer banen, en hoe meer attracties de drukte delen, hoe korter de langste wachtrij wordt.
+Movie Park liggen dicht bij elkaar, hoewel Europa-Park de meeste bezoekers heeft. Het verdeelt ze over meer banen, en daarom wordt ook de langste wachtrij daar minder lang.
 
-Bij Legoland ontbreekt de kolom met de langste wachtrij. Geen van de tien banen met de hoogste
-mediaan komt aan de 100 meetdagen waarop we een baan voor een heel park laten spreken.
+Bij Legoland ontbreekt de kolom met de langste wachtrij. In die kolom nemen we een baan pas op vanaf 100 meetdagen, en in Legoland haalt geen van de tien
+banen met de hoogste mediaan dat aantal.
 
-Hoe lang een wachtrij wordt, hangt af van twee getallen: hoeveel mensen in de rij willen staan en
-hoeveel de baan er per uur wegrijdt. Voltron stuurt volgens het park elke 36 seconden een trein weg
-en haalt 1.600 passagiers per uur. Van Helsing’s Factory in Bottrop rijdt met losse wagentjes voor
-vier personen en komt op 848. Dat is één open kassa op zaterdagmiddag, en daarom sta je in Bottrop
-bij een baan van 36 km/u langer in de rij dan bij de grote lanceerachtbaan ernaast. Wie een park
-uitkiest op de lijst met banen, kan dus beter ook altijd vragen hoeveel treinen er rijden.
+Hoe lang een wachtrij wordt, hangt ook af van hoeveel passagiers een baan per uur wegrijdt. Voltron stuurt volgens het park elke 36 seconden een trein weg en haalt er 1.600. Van Helsing’s Factory in Bottrop rijdt 36 km/u met losse wagentjes voor vier personen en komt op 848.
 
-Voorrang die je kunt kopen, maakt de wachttijd niet voor iedereen korter. Hij verschuift die, van
-wie betaalt naar wie niet betaalt. In Europa-Park, waar die voorrang niet bestaat, ligt onze mediaan
+Gekochte voorrang maakt de wachttijd langer voor iedereen zonder. In Europa-Park, waar die voorrang niet bestaat, ligt onze mediaan
 daarom dicht bij wat iedereen meemaakt. In Phantasialand en Heide Park staan op drukke dagen twee
-groepen voor dezelfde baan, en voor wie geen pass heeft duurt het langer dan ons getal alleen
-zegt.
+groepen voor dezelfde baan, en wie geen pass heeft, wacht daar langer dan onze mediaan.
 
 ## Op welk tijdstip je waar in de rij staat
 
@@ -340,11 +308,10 @@ In Phantasialand ziet de dag er zo uit, attractie voor attractie over alle gemet
 Taron is bij de opening en in het laatste uur het drukst, als iedereen nog snel een rit wil
 meepakken. F.L.Y. is in het eerste uur kort en heeft zijn piek een uur later, zodra de rest van het
 park in Rookburgh is aangekomen. Allebei hebben ze hun rustigste uur in de middag. Wie
-beide wil rijden, gaat bij de opening naar F.L.Y. en bewaart Taron voor de middag, als half het park
-aan de koffie zit.
+beide wil rijden, gaat bij de opening naar F.L.Y. en bewaart Taron voor de middag.
 
-In Rust is het andersom. De Eurosat heeft haar langste wachtrij al om tien uur, omdat ze dicht bij
-de ingang staat en binnen rijdt, en bij regen bedenkt iedereen dat tegelijk. In Heide Park loopt
+In Europa-Park heeft de Eurosat haar langste wachtrij al om tien uur, omdat ze dicht bij de ingang
+staat en binnen rijdt, en bij regen gaat iedereen er tegelijk heen. In Heide Park loopt
 Colossos rond het middaguur vol, in Movie Park wordt de wachtrij bij Van Helsing’s Factory tot de
 avond niet korter. De curves van alle andere parken staan op hun eigen parkpagina.
 
@@ -352,21 +319,16 @@ avond niet korter. De curves van alle andere parken staan op hun eigen parkpagin
 
 De rustigste weekdag is per park een andere, en de tabel hierboven noemt hem. Die kan
 leeg zijn: bij parken die buiten het hoogseizoen op meerdere weekdagen sluiten, vergelijken we
-geen dagen die op verschillende delen van het jaar berusten. Voor Heide Park geldt bovendien dat
-een rustige maandag in Soltau meestal een gesloten maandag is. Voor Hansa-Park ontbreekt de
-meting, daar helpt alleen de openingskalender, en die heeft in 2026 geen gat.
+geen dagen die op verschillende delen van het jaar berusten.
 
 Zaterdag is in Europa-Park, Phantasialand, Heide Park en Legoland de drukste dag, in Brühl met het
 grootste verschil met de rest van de week. Zondag is daar bijna net zo druk, in Rust, Soltau en
 Bottrop juist een van de rustigere dagen. Wie met kinderen alleen in het weekend kan, gaat dus op
-zondag en niet op zaterdag, behalve naar Brühl. In Movie Park staat dinsdag bovenaan, omdat het
-park buiten de vakanties op dinsdag dicht is en onze dinsdagen bijna allemaal uit de zomervakantie
-komen. In Plopsaland is elke dag even rustig, zaterdag ook.
+zondag en niet op zaterdag, behalve naar Brühl. In Plopsaland is elke dag even rustig, zaterdag ook.
 
-Per maand is het beeld duidelijker. Juli en augustus zijn in bijna alle parken de drukste maanden,
+Juli en augustus zijn in bijna alle parken de drukste maanden,
 in Phantasialand met grote afstand. September is in Brühl, Soltau en Bottrop een van de rustigste,
-omdat de zomervakantie in de meeste deelstaten voorbij is en de herfstvakantie nog niet begonnen.
-Wie vrij kan nemen wanneer hij wil, gaat in september. De brugdagen na Hemelvaart en Sacramentsdag
+omdat de zomervakantie in de meeste deelstaten voorbij is en de herfstvakantie nog niet begonnen. De brugdagen na Hemelvaart en Sacramentsdag
 (Fronleichnam) zijn daarentegen druk, in onze gegevens voor Europa-Park ook als het regent.
 
 In vijf van de zes gemeten parken was een werkdag in de schoolvakantie van de eigen deelstaat
@@ -392,19 +354,17 @@ Europa-Park:
 | Plopsaland Deutschland | Halloween Fright Nights, op vrijdag en zaterdag in oktober    | niet aangekondigd                                         |
 | Legoland Deutschland   | Halloween 3 okt. t/m 8 nov., overdag                          | WinterWonder 28 nov. t/m 10 jan., op losse dagen          |
 
-Phantasialand slaat Halloween helemaal over en haalt dat in de winter in, met glühwein,
-lichtslingers en Taron in het donker. Wie in december wil gaan, moet weten dat onze decembercijfers
+Phantasialand doet geen Halloween, maar gaat in de winter open met glühwein,
+lichtslingers en Taron in het donker. Onze decembercijfers
 voor Brühl en Rust berusten op een paar dagen rond de jaarwisseling, de drukste tijd van de
-winter. Een dinsdag begin december ziet er anders uit. Alle data en prijzen staan in de
+winter. Alle data en prijzen staan in de
 [Halloweengids](/blog/halloween-pretparken-2026) en de [wintergids](/blog/winter-pretparken-2026).
 
 ## Twee parken op één reis
 
-Wie van verder komt, kan twee parken combineren. De afstanden zijn hemelsbreed tussen de ingangen
-gemeten, over de weg is het altijd iets meer.
+De afstanden zijn hemelsbreed tussen de ingangen gemeten.
 
-- Phantasialand en Movie Park, **91 kilometer.** De meest voor de hand liggende combinatie in dit
-  land. Beide liggen in Noordrijn-Westfalen en zijn met de trein bereikbaar. Brühl heeft de decors
+- Phantasialand en Movie Park, **91 kilometer.** Beide liggen in Noordrijn-Westfalen en zijn met de trein bereikbaar. Brühl heeft de decors
   en de lange wachtrijen, Bottrop de kortere en Halloween. In de herfst
   past dat extra goed, omdat Phantasialand geen Halloween doet.
 - Heide Park en Hansa-Park, **131 kilometer.** Soltau ligt ten zuiden van Hamburg aan de A7,
@@ -417,16 +377,12 @@ gemeten, over de weg is het altijd iets meer.
   heeft een eigen parkeerplaats. Twee dagen Europa-Park zijn voor de meesten toch de betere keuze,
   want met veertien achtbanen en 96 attracties blijft er na één dag bijna altijd iets over.
 
-Europa-Park en Phantasialand in één weekend is daarentegen geen goed idee. 288 kilometer
-hemelsbreed wordt over de A5 en de A61 ruim vier uur rijden, en die breng je dan door tussen twee
-parken die allebei een hele dag verdienen.
+Europa-Park en Phantasialand in één weekend raad ik af. De 288 kilometer hemelsbreed worden over de
+A5 en de A61 ruim vier uur rijden.
 
 ## Welke parken hier ontbreken
 
-Duitsland heeft meer dan negen pretparken. Tripsdrill, Fort Fun, Skyline Park, Belantis en
-Freizeitpark Plohn staan nog niet op park.fan. We krijgen van hen geen wachttijden, en een
-ranglijst die bij twee derde van de parken op metingen berust en bij de rest op mijn onderbuik, is
-geen ranglijst. Komt er een van die parken bij, dan komt het ook in deze lijst.
+Tripsdrill, Fort Fun, Skyline Park, Belantis en Freizeitpark Plohn staan nog niet op park.fan en ontbreken daarom in deze ranglijst.
 
 ## Veelgestelde vragen
 

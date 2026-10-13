@@ -55,7 +55,7 @@ Bauwerk über die Baumkronen hinausragen. Was trotzdem höher wird, muss so gest
 man es aus der Umgebung nicht erkennt. Bei [Rita](ref:alton-towers/rita) ist die Schiene deshalb
 rot gestrichen und nur an den höchsten Stellen dunkelgrün.
 
-Die großen Bahnen des Parks gehen darum in die Tiefe. **[Nemesis Reborn](ref:alton-towers/nemesis-reborn)**
+Die großen Bahnen des Parks sind deshalb niedrig gebaut oder liegen unter dem Geländeniveau. **[Nemesis Reborn](ref:alton-towers/nemesis-reborn)**
 fährt durch einen ausgehobenen Steinbruch, und die Fahrgäste hängen unter der Schiene zwischen
 den Felswänden. **[Oblivion](ref:alton-towers/oblivion)** ist knapp 20 Meter hoch und stürzt
 trotzdem 55 Meter tief, weil der größere Teil des Gefälles in einem Tunnel unter der Erde liegt.
@@ -101,8 +101,7 @@ jeder Fahrgast eine VR-Brille, seit 2019 fährt Galactica wieder ohne.
 
 ```
 
-Zwei Fahrgeschäfte ohne Schiene stehen ebenfalls im Forbidden Valley.
-**[Nemesis Sub-Terra](ref:alton-towers/nemesis-sub-terra)** ist ein Fallturm in einem Gebäude;
+**[Nemesis Sub-Terra](ref:alton-towers/nemesis-sub-terra)**, ebenfalls im Forbidden Valley, ist ein Fallturm in einem Gebäude;
 er lief von 2012 bis 2015 und fährt seit 2023 wieder. **[Toxicator](ref:alton-towers/toxicator)**
 ist ein Top Spin, der am 15. März 2025 eröffnete. Er steht auf einer knapp fünf Meter hohen
 Betonplattform über dem Weg, sodass man von unten zusehen kann.
@@ -225,20 +224,16 @@ von knapp zwei Metern. Kinder unter 90 cm kommen kostenlos in den Park.
 
 Wir messen die Wartezeiten seit Ende Dezember 2025 alle fünf Minuten, für jede Attraktion des
 Parks. Weil der Themenpark im Winter geschlossen ist, stammen alle Messtage aus der Saison 2026.
-Wie viele Tage es je Bahn sind, steht in der letzten Spalte.
 
 ```ride-waits-widget park=alton-towers top=8 columns=land,peak,days highlight=nemesis-reborn
 
 ```
 
-So wachsen die Warteschlangen über den Tag:
-
 ```hourly-profile-widget slug=alton-towers top=8
 
 ```
 
-Neben zwei anderen Merlin-Parks und dem Europa-Park sieht Alton Towers so aus, jeden Tag neu
-berechnet:
+Den Vergleich mit Thorpe Park, Heide Park und dem Europa-Park rechnen wir jeden Tag neu.
 
 ```park-comparison-widget slugs=alton-towers,thorpe-park,heide-park,europa-park highlight=alton-towers
 
@@ -255,8 +250,6 @@ die Octonauts-Bahn. Oblivion, The Smiler und Wicker Man gehören nicht dazu.
 ```glossary-widget slug=rope-drop
 
 ```
-
-Die ruhigsten Öffnungstage der nächsten Wochen:
 
 ```best-days-widget slug=alton-towers
 
@@ -279,8 +272,6 @@ anders als die deutschen, und wer aus Deutschland, Österreich oder der Schweiz 
 deshalb vor der Buchung den englischen Ferienkalender. Das Half Term im Herbst fällt in die
 zweite Oktoberhälfte. Die Scarefest-Wochenenden davor, ab dem 26. September, haben dieselbe
 Dekoration, ohne dass in England Ferien sind.
-
-So sieht das Wetter über dem Park in den nächsten Tagen aus:
 
 ```weather-widget slug=alton-towers
 
@@ -329,14 +320,12 @@ Für das CBeebies Land gibt es seit 2026 ein eigenes Paket: 7 Pfund für zwei Fa
 für drei, jede Attraktion einmal. Am Tag selbst lassen sich in der App einzelne Fahrten als
 One-Shot-Ticket nachkaufen, solange der Vorrat reicht.
 
-Ob sich Fastrack lohnt, hängt an dem Tag, den du erwischst. An einem Wochentag außerhalb der
-englischen Ferien kommst du mit einem frühen Start ohne aus. An einem Samstag in den Ferien
+An einem Wochentag außerhalb der englischen Ferien kommst du mit einem frühen Start ohne Fastrack aus. An einem Samstag in den Ferien
 würde ich für den Smiler und den Wicker Man Silber kaufen, nicht Bronze.
 
 ## Ein Tag in Alton Towers
 
-Um **9:30 Uhr** an der Monorail oder am Eingang sein, damit du um zehn drin bist. Die erste
-Stunde gehört den vier Bahnen für Größere, an denen ein früher Start am meisten spart. Ich würde
+Um **9:30 Uhr** an der Monorail oder am Eingang sein, damit du um zehn drin bist. Ein früher Start spart am meisten an den vier Bahnen für Größere. Ich würde
 mit Spinball Whizzer anfangen, danach Rita und TH13TEEN im Dark Forest fahren und von dort mit
 der Skyride ins Forbidden Valley zu Nemesis Reborn wechseln. Der Sessellift erspart dir auf dem
 hügeligen Gelände lange Fußwege.
@@ -345,10 +334,8 @@ Galactica steht im selben Bereich wie Nemesis und passt direkt danach. Oblivion 
 im X-Sector fährst du am späten Vormittag oder am Nachmittag. Den Wicker Man kannst du dir an
 einem Scarefest-Tag für den Abend aufheben, dann fährt er im Dunkeln.
 
-Mit kleinen Kindern sieht der Tag anders aus. Zuerst ins CBeebies Land und an die
-Octonauts-Bahn, solange dort noch wenig los ist, danach die Mutiny Bay und der Katanga Canyon.
-Die Monorail fährt bis eine Stunde nach Ende des Fahrbetriebs zurück zum Parkplatz und zu den
-Hotels, am Abend musst du also nicht hetzen.
+Mit kleinen Kindern geht es zuerst ins CBeebies Land und an die Octonauts-Bahn, solange dort noch wenig los ist, danach in die Mutiny Bay und den Katanga Canyon.
+Die Monorail fährt bis eine Stunde nach Ende des Fahrbetriebs zurück zum Parkplatz und zu den Hotels.
 
 ## Tickets, Parken und Anreise
 
@@ -401,7 +388,7 @@ und sagte, das Symbol für Schwierigkeiten mit Menschenmengen werde weiter anerk
 
 ## Übernachten am Park
 
-Aus Deutschland ist Alton Towers kein Tagesausflug, und der Park hat fünf Unterkünfte auf dem
+Der Park hat fünf Unterkünfte auf dem
 eigenen Gelände.
 
 Das **Alton Towers Hotel** von 1996 hat 180 Zimmer in dreizehn Kategorien und ist um einen
@@ -421,7 +408,7 @@ Aufpreis. Ein Kurzaufenthalt mit Übernachtung, Frühstück und einem Tag im Par
 
 ![Ein graues Herrenhaus mit Zinnen, Türmen und gläsernen Wintergärten hinter beschnittenen Eiben und einem Lavendelbeet | Die Towers mit ihren Wintergärten. Im Inneren fährt Hex. | wide](/media/alton-towers/the-towers.jpg)
 
-Der Park ist nach einem Haus benannt, das noch steht. Auf dem Gelände lag schon in der
+Auf dem Gelände lag schon in der
 Eisenzeit eine befestigte Siedlung, und von 1412 bis 1924 gehörte der Besitz derselben Familie,
 den Talbots, den Earls of Shrewsbury. Das heutige Haus stammt im Wesentlichen aus dem frühen 19.
 Jahrhundert. Umgebaut hat es **Augustus Welby Pugin**, der auch am Palace of Westminster
@@ -504,7 +491,7 @@ es außerdem an den Scarefest-Tagen bis zum 1. November und an den Wochenenden i
 
 ### Lohnt sich Fastrack in Alton Towers?
 
-Das hängt an der Stufe. Bronze für 35 Pfund gilt weder am Smiler noch am Wicker Man, den beiden
+Bronze für 35 Pfund gilt weder am Smiler noch am Wicker Man, den beiden
 Bahnen mit den längsten Warteschlangen. Wer vor allem ihretwegen kommt, braucht Silber für 65
 Pfund oder Gold für 95 Pfund. An einem Wochentag außerhalb der Ferien reicht meistens ein früher
 Start.

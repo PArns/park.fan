@@ -1,18 +1,15 @@
 ---
-title: 'Walibi Belgium: der Walibi, an den keiner denkt, mit der höchsten Bahn im Benelux'
+title: 'Walibi Belgium: der erste Walibi und Kondaa, die höchste Bahn im Benelux'
 translationKey: walibi-belgium-guide
 date: '2026-09-11'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Wer in Deutschland „Walibi“ hört, denkt an Holland und an Untamed. Das
-  Original steht aber in Wavre, eine halbe Autostunde hinter Brüssel, heißt
-  seit 1975 so (abgesehen von vier Saisons als Six Flags Belgium) und hat seit
-  2021 mit Kondaa die höchste und schnellste Achterbahn der Beneluxstaaten.
-  Wartezeiten, Technik, ein Gründer, der eigentlich nur einen Wasserski-Teich
-  wollte, ein Investitionsplan, der 2023 fertig sein sollte und jetzt bis 2030
-  reicht, und der Abschied von Loup-Garou, den RMC bis 2028 umbaut.
+  Der erste Walibi steht in Wavre, eine halbe Autostunde hinter Brüssel.
+  Seit 2021 fährt dort mit Kondaa die höchste und schnellste Achterbahn der
+  Beneluxstaaten. Loup-Garou fährt nur noch bis zum 3. Januar 2027, danach
+  baut RMC die Holzbahn bis 2028 um.
 tags:
   - walibi-belgium
   - kondaa
@@ -28,14 +25,13 @@ rideLinks:
 coverImage:
   src: /media/walibi-belgium/kondaa.jpg
   alt: 'Ein blau angeleuchtetes Skelettboot im Wasser, dahinter der Lifthill von Kondaa'
-  caption: 'Kondaa in der Ibilaw-Saison 2025. Tagsüber fehlt das Skelettboot, an der Physik der Bahn ändert das nichts.'
+  caption: 'Kondaa in der Ibilaw-Saison 2025. Tagsüber fehlt das Skelettboot.'
   credit: 'Patrick Arns'
 seo:
   title: 'Walibi Belgium: Kondaa, Wartezeiten & Tipps vom Original'
   description: >-
     Das erste Walibi steht in Wavre. Wartezeiten zu Kondaa, der höchsten
-    Achterbahn im Benelux, dazu Ibilaw und warum trotzdem alle an Holland
-    denken.
+    Achterbahn im Benelux, dazu Ibilaw, Tickets und Anreise.
   keywords:
     - Walibi Belgium
     - Walibi Belgium Wartezeiten
@@ -56,19 +52,17 @@ seo:
     - Loup-Garou RMC
 ---
 
-Der Lift zieht dich auf 50 Meter, langsam genug, um über die Baumkronen bis
+Kondaas Lift zieht dich auf 50 Meter, langsam genug, um über die Baumkronen bis
 nach Wavre hinein zu sehen. Dann kippt der Zug, 80 Grad
 abwärts, 113 km/h, und mittendrin verdreht sich die Strecke in ein Element, das
 es vorher auf keiner Achterbahn der Welt gab: eine Cobra Roll, durch die der
-Zug fährt, ohne sich dabei einmal auf den Kopf zu stellen. Der Sitz bleibt
-oben. Der Magen nicht.
+Zug fährt, ohne sich dabei einmal auf den Kopf zu stellen.
 
-Das ist [Kondaa](ref:walibi-belgium/kondaa), und wenn du in Deutschland
-„Walibi“ sagst, denkt so gut wie niemand zuerst an diese Bahn. Die meisten
-denken an [Walibi Holland](ref:walibi-holland) und an
-[Untamed](ref:walibi-holland/untamed). Dabei ist Wavre das Original: der erste Walibi überhaupt, der Namensgeber der ganzen
-Kette, und seit Mai 2021 auch noch der mit der höchsten und schnellsten
-Achterbahn der Beneluxstaaten.
+[Kondaa](ref:walibi-belgium/kondaa) steht in Wavre, dem ersten Walibi überhaupt und dem Namensgeber der ganzen Kette.
+Kondaa ist seit Mai 2021 die höchste
+und schnellste Achterbahn der Beneluxstaaten. In Deutschland bekannter ist
+[Walibi Holland](ref:walibi-holland) mit
+[Untamed](ref:walibi-holland/untamed).
 
 ## Walibi Belgium und Walibi Holland
 
@@ -79,24 +73,19 @@ niederländisches Pendant 1994 den Walibi-Namen bekam (das Gelände in
 Biddinghuizen ist älter, dort lief ab 1971 der Landwirtschafts-Themenpark
 Flevohof, den die Walibi-Gruppe 1992 kaufte). Der Name „Walibi“ ist eine
 Abkürzung der drei Gemeinden, auf deren Gebiet der Park steht: **Wa**vre,
-**Li**mal und **Bi**erges. Was der Park zu Halloween aus diesem Namen macht,
-steht in unserem [Halloween-Guide](/blog/halloween-freizeitparks-2026).
+**Li**mal und **Bi**erges.
 
 Beide Parks gehören seit 2006 demselben Konzern, dem französischen
 **Compagnie des Alpes** (über die Tochter Grévin & Cie), zu dem auch der
-[Parc Astérix](ref:parc-asterix) zählt. Verwechseln lassen sie sich trotzdem
-kaum, jedenfalls nicht, sobald man drinsteht: Wavre ist kompakter, älter im
-Baubestand und fährt ein völlig anderes Flaggschiff. Vorher, beim Eintippen ins
-Navi, sieht das anders aus.
+[Parc Astérix](ref:parc-asterix) zählt. Wavre ist kompakter und älter im Baubestand.
 
-So stehen Wavre, Biddinghuizen und das flämische Bobbejaanland gerade
-zueinander:
+Wavre, Biddinghuizen und das flämische Bobbejaanland im Vergleich:
 
 ```park-comparison-widget slugs=walibi-belgium,walibi-holland,bobbejaanland show=quietest highlight=walibi-belgium
 
 ```
 
-## Kondaa: 50 Meter hoch und kein einziger Überschlag
+## Kondaa
 
 ```ride-waits-widget rides=walibi-belgium/kondaa|Kondaa|Intamin Mega Coaster, 2021;walibi-holland/goliath|Goliath|Intamin Mega Coaster, 2002;bobbejaanland/fury|Fury columns=park,type,peak highlight=walibi-belgium/kondaa
 
@@ -104,30 +93,23 @@ zueinander:
 
 **[Kondaa](ref:walibi-belgium/kondaa)** eröffnete am 8. Mai 2021 als
 **Intamin Mega Coaster**: 50 Meter hoch, 1.200 Meter lang, Spitzentempo
-113 km/h, kein einziges Überkopfelement. Dafür die eingangs erwähnte Cobra
-Roll ohne Überschlag, damals eine Weltneuheit, dazu ein seitlich geneigtes
-Double-Down-Element und laut Park fünfzehn Airtime-Momente auf einer einzigen
-Fahrt.
+113 km/h, kein einziges Überkopfelement. Dazu kommen die Cobra Roll ohne Überschlag,
+damals eine Weltneuheit, ein seitlich geneigtes Double-Down-Element und laut
+Park fünfzehn Airtime-Momente auf einer einzigen Fahrt.
 
 ```glossary-widget slug=airtime
 
 ```
 
-Mit der Eröffnung holte Kondaa zwei Rekorde auf einmal. Sie
-wurde die höchste und die schnellste Achterbahn der Beneluxstaaten und
-verdrängte damit ausgerechnet [Goliath](ref:walibi-holland/goliath) im
-eigenen Schwesterpark [Walibi Holland](ref:walibi-holland) von der Höhe
-(Konzernfeiern stelle ich mir seitdem etwas angespannt vor) und
+Mit der Eröffnung wurde Kondaa die höchste und die schnellste Achterbahn der
+Beneluxstaaten und verdrängte damit [Goliath](ref:walibi-holland/goliath) im
+eigenen Schwesterpark [Walibi Holland](ref:walibi-holland) von der Höhe und
 [Fury](ref:bobbejaanland/fury) im belgischen
 [Bobbejaanland](ref:bobbejaanland) vom Tempo. 25 Millionen Euro hat der Park
 2021 in Kondaa und den neuen Bereich drumherum gesteckt, etwa die Hälfte davon
 in die Bahn selbst. Zwei Züge mit je sechs Wagen zu vier Personen befördern rund 1.080
 Gäste pro Stunde durch die anderthalb Minuten Fahrzeit. Mitfahren darf, wer
 zwischen 130 und 195 cm groß ist.
-
-Ich fahre für einzelne Achterbahnen Strecken, die andere nur für Hochzeiten
-fahren, und Kondaa ist eine davon. Den fehlenden Looping vermisst man nach der
-ersten Airtime nicht mehr.
 
 [Kondaa](ref:walibi-belgium/kondaa?full)
 
@@ -137,20 +119,16 @@ ersten Airtime nicht mehr.
 
 ```
 
-Die ruhigsten Tage der kommenden Wochen, live berechnet, damit du nicht
-ausgerechnet an dem Samstag kommst, an dem halb Wallonien dieselbe Idee hatte:
+Die ruhigsten Tage der kommenden Wochen, live berechnet:
 
 ```best-days-widget slug=walibi-belgium
 
 ```
 
-## Der Rest des Parks, vom Oldtimer bis zum Hafen
+## Die anderen Bahnen und Dock World
 
-Kondaa bekommt die Schlagzeilen. Die älteste Achterbahn im Park ist 39 Jahre
-älter und fährt immer noch.
-
-**[Turbine](ref:walibi-belgium/turbine)** ist diese Bahn, ein
-**Schwarzkopf Shuttle Loop** von 1982. Der Zug
+Die älteste Achterbahn im Park ist **[Turbine](ref:walibi-belgium/turbine)**,
+ein **Schwarzkopf Shuttle Loop** von 1982. Der Zug
 wird mit 85,3 km/h vorwärts aus der Station geschossen, seit 2013 von einem
 Linearmotor und nicht mehr vom ursprünglichen Schwungrad, nimmt den einzigen
 Looping der Anlage, steigt den Turm dahinter hinauf und rollt dieselbe Strecke
@@ -166,19 +144,14 @@ zu Dock World hat ihr den Namen Turbine zurückgegeben.
 Bahn dieses Typs in Belgien. Der Zug hängt unter der Schiene, und die Füße
 baumeln in jeder Kurve frei. Laut Park fährt Vampire noch bis Oktober 2027 und wird dann abgerissen.
 **[Calamity Mine](ref:walibi-belgium/calamity-mine)**
-(1992, ursprünglich „Colorado“ getauft) ist die klassische Minenachterbahn auf
-785 Metern Strecke, gemütliches Tempo, enge Kurven, ideal zum Reinkommen oder
-für alle, die nach Kondaa „erst mal was Ruhiges“ brauchen.
+(1992, ursprünglich „Colorado“ getauft) ist eine Minenachterbahn auf 785 Metern Strecke, mit gemütlichem Tempo und engen Kurven.
 **[Cobra](ref:walibi-belgium/cobra)** (2001) ist ein **Boomerang**: Der Zug
 wird rückwärts einen Lifthill hochgezogen, durchfährt vorwärts eine Cobra Roll
-und einen Looping, zusammen drei Überschläge, und fährt dieselbe Strecke danach
-rückwärts noch einmal. Damit hat der Park zwei Cobra Rolls, und nur die von
-Cobra stellt dich auf den Kopf.
+und einen Looping, zusammen drei Überschläge, und fährt dieselbe Strecke danach rückwärts noch einmal.
 **[Loup-Garou](ref:walibi-belgium/loup-garou)**, ebenfalls seit 2001,
 ist eine hölzerne Konstruktion von Vekoma, einem Hersteller, den man eher mit
-Stahl verbindet. Ein Holz-Vekoma ist ungefähr so häufig wie ein Belgier, der
-seine Pommes ohne Mayo bestellt, und dieser hier fährt nur noch bis
-zum 3. Januar 2027. Danach baut Rocky Mountain Construction ihn zur Hybridbahn um.
+Stahl verbindet. Sie fährt nur noch bis zum 3. Januar 2027, danach baut Rocky
+Mountain Construction sie zur Hybridbahn um.
 
 Jünger sind **[Pulsar](ref:walibi-belgium/pulsar)** (2016, Mack Rides,
 Launched-Wasserachterbahn), **[Tiki-Waka](ref:walibi-belgium/tiki-waka)**
@@ -192,38 +165,31 @@ Gerstlauer), ein Launch Coaster, den der Park unter seinen Familienattraktionen
 führt: 925 Meter, drei Abschüsse, 65 km/h, knapp über dem Wasser. Er steht im
 komplett neu gebauten Areal **Dock World**.
 Dazu gehört der fiktive Hafenort **Port Wavre**, mit Leuchtturm,
-Bootsstegen und Stelzenhäusern, in den der Park gleich drei ältere Bahnen mit
-eingebaut hat, statt sie einfach stehen zu lassen: die Wildwasserbahn
+Bootsstegen und Stelzenhäusern, in den der Park drei ältere Bahnen eingebaut hat: die Wildwasserbahn
 **[Flash Back](ref:walibi-belgium/flash-back)**, den Splash-Shuttle
 **Pulsar** und eben
 **[Turbine](ref:walibi-belgium/turbine)**, zurück unter altem Namen.
 **Kondaala** dagegen, die Kinderattraktion, die sich ihren Namen bei Kondaa
 geliehen hat, steht drüben in Exotic World neben der großen Namensgeberin.
 
-Von den beiden Neuheiten im Park ist Mecalodon die, die mich mehr überrascht hat.
-Ein Familiencoaster neben einer 50-Meter-Bahn ist normalerweise die Vorband,
-bei der alle noch am Bierstand stehen. Dock World schafft es trotzdem, dass man
-hinschaut. Der Hafen wirkt
-gebaut und nicht hingestellt, mit Details, an denen man auch ohne Fahrgeschäft
-lange stehen bleibt.
+Von den beiden Neuheiten im Park hat mich Mecalodon mehr überrascht. Vor den
+Details im Hafen bleibt man auch ohne Fahrgeschäft lange stehen.
 
-Wer nach der Achterbahn-Runde noch Zeit und die Badehose im Kofferraum hat,
-zahlt für **Aqualibi**, das angeschlossene Freizeitbad mit Wellenbecken und
-Rutschen, eigenen Eintritt. Im Walibi-Tagesticket ist es nicht enthalten.
+**Aqualibi**, das angeschlossene Freizeitbad mit Wellenbecken und Rutschen,
+kostet eigenen Eintritt und ist im Walibi-Tagesticket nicht enthalten.
 
 ```map-widget slug=walibi-belgium
 
 ```
 
-## Vom Wasserski-Teich zum Freizeitpark
+## Geschichte des Parks
 
-Am Anfang stand ein Teich. 1970 kaufte der Unternehmer **Eddy Meeùs** ein
+1970 kaufte der Unternehmer **Eddy Meeùs** ein
 Gewässer in Limal, um dort Wasserski-Lifte vorzuführen, für die er gerade die
 Vertriebsrechte im Benelux erworben hatte. Aus der Vorführfläche wurde in
 wenigen Jahren ein richtiger Park, und am **26. Juli 1975** öffnete Walibi
-seine Tore, mit rund **47.000 Besuchern** in der ersten Saison. Der Name kommt
-von den drei Gemeinden, das Maskottchen ist das Wortspiel dazu: ein Känguru,
-weil „Walibi“ fast wie „wallaby“ klingt.
+seine Tore, mit rund **47.000 Besuchern** in der ersten Saison. Das Maskottchen ist ein
+Känguru, weil „Walibi“ fast wie „wallaby“ klingt.
 
 Der Park wuchs schnell über Wavre hinaus. 1981 stieg Meeùs bei Avenir Land
 ein, dem späteren Walibi Rhône-Alpes in Frankreich, 1990 kaufte die Gruppe
@@ -232,8 +198,7 @@ US-Gruppe Premier Parks, die sich 2000 in Six Flags umbenannte, die ganze
 Gruppe, und von 2001 bis 2004 hieß der Standort in Wavre
 **Six Flags Belgium**, in derselben Übernahmewelle, in der Six Flags auch das
 heutige [Walibi Holland](ref:walibi-holland) bekam. Eddy Meeùs starb am
-**24. November 2001**, in dem Jahr, in dem sein
-Park zum ersten Mal einen anderen Namen trug.
+**24. November 2001**.
 
 2004 verkaufte Six Flags seine europäischen Parks an den Londoner Investor
 Palamon Capital Partners, der sie als Star Parks führte und Wavre zur Saison
@@ -242,7 +207,7 @@ französischen **Compagnie des Alpes**, den Park und mit ihm alle übrigen
 Walibi-Standorte außer Walibi Lorraine. Seitdem gehören Wavre, Biddinghuizen und der
 [Parc Astérix](ref:parc-asterix) demselben Konzern.
 
-Das bislang härteste Jahr kam dann ganz ohne Umbenennung. Am **15. Juli 2021**
+Am **15. Juli 2021**
 traf das Hochwasser, das weite Teile West- und Mitteleuropas verwüstete, auch
 das Tal der Dyle, an der der Park liegt. Die Schäden reichten für eine
 mehrmonatige Schließung mitten in der Hauptsaison, zehn Wochen nach Kondaas
@@ -250,27 +215,23 @@ Eröffnung. Wieder geöffnet hat der Park erst Anfang Oktober, zu Halloween.
 
 ## Worlds of Walibi: hundert Millionen Euro für acht neue Themenwelten
 
-Am **22. Juni 2017** stellte der Park einen Investitionsplan vor, der bis
-dahin nichts Vergleichbares in seiner Geschichte hatte: **„Worlds of Walibi“**,
-rund **100 Millionen Euro**, mit denen 75 % der Fläche in acht neue
+Am **22. Juni 2017** stellte der Park den größten Investitionsplan seiner Geschichte vor,
+**„Worlds of Walibi“**, rund **100 Millionen Euro**, mit denen 75 % der Fläche in acht neue
 Themenwelten verwandelt werden sollten, dazu zehn neue Attraktionen. Fertig
 sein sollte das Ganze 2023. Los ging es 2018 mit Tiki-Waka, 2019 kamen der
 Darkride Popcorn Revenge und Fun Pilot dazu, 2021 **Kondaa** und 2025
 **Dock World** mit Mecalodon. Vier neue Welten zählt der Park seit 2016 (Exotic,
 Karma, Fun und Dock World), also die Hälfte, und die bislang letzte kam zwei
-Jahre nach dem Zieltermin. Am BER hätte man dafür Sekt aufgemacht.
+Jahre nach dem Zieltermin.
 
-Durchgezogen wird der Plan trotzdem. Im Schwesterpark
+Im Schwesterpark
 [Walibi Holland](ref:walibi-holland) hat die **Compagnie des Alpes** im selben
 Zeitraum mit [Untamed](ref:walibi-holland/untamed) (2019) und der
-YOY-Doppelbahn (2025) zwei weitere große Neuheiten gebaut. Und Wavre, das in
-Deutschland kaum jemand auf dem Zettel hat, bekam binnen vier Jahren zwei neue
-Achterbahnen und ein komplett neues Areal.
+YOY-Doppelbahn (2025) zwei weitere große Neuheiten gebaut.
 
-Die nächste Welt hat inzwischen einen Namen. Am 1. Juni 2026 hat der Park
-**Festival World** angekündigt, ein Areal im Stil von New Orleans, und den
-ersten Schritt gleich mit: Nach der letzten Fahrt von Loup-Garou am 3. Januar
-2027 baut Rocky Mountain Construction die Holzbahn zur Hybrid-Achterbahn mit
+Am 1. Juni 2026 hat der Park die nächste Welt angekündigt, **Festival World**,
+ein Areal im Stil von New Orleans. Als ersten Schritt baut nach der letzten
+Fahrt von Loup-Garou am 3. Januar 2027 Rocky Mountain Construction die Holzbahn zur Hybrid-Achterbahn mit
 Stahlschienen um. Eröffnen soll sie 2028, mit 49 Metern Höhe, 106 km/h, einem
 47 Meter tiefen Drop mit 89 Grad und 1.231 Metern Strecke. Das wäre die längste
 Achterbahn im Benelux, Höhe und Tempo bleiben bei Kondaa. Für die neue Station
@@ -279,20 +240,19 @@ Familien-Falltürmen, einem Wasserspielplatz und einem großen Themenrestaurant
 folgen. Was nach dem Abriss von Vampire auf dessen Fläche kommt, hat der Park
 noch nicht gesagt.
 
-## Ibilaw: Halloween rückwärts gelesen
+## Ibilaw zu Halloween
 
 ![Verfallenes Holzgebäude mit Schriftzug Aquarium, blau-grün beleuchtet bei Nacht | Das Spukhaus Aquarium, direkt in Dock World, dort wo tagsüber Mecalodon fährt. | right](/media/halloween-2026/kulissen/06-aquarium-fassade.jpg)
 
-Zu Halloween dreht der Park seinen eigenen Namen um: **„Ibilaw“** ist
-„Walibi“ rückwärts, so heißt das Event seit 2024, mit einem eigenen Maskottchen
-namens **Bill**. 2026 läuft es vom 10. Oktober bis 11. November an 20 Tagen,
+Das Halloween-Event heißt seit 2024 **„Ibilaw“**, „Walibi“ rückwärts, und hat
+ein eigenes Maskottchen namens **Bill**. 2026 läuft es vom 10. Oktober bis 11. November an 20 Tagen,
 zehn davon bis 22 Uhr, mit vier Spukhäusern (neu ist The Grand Hotel) und vier
 Scare Zones, darunter der Clownzirkus **Psycho Circus** und **Arachnophobia**.
 Eine Altersgrenze gibt es nicht: Die Monster bleiben im Bereich zwischen Wave
 Swinger und Buzzsaw, und Kinder unter zwölf bekommen an der Information einen
 Anti-Monster-Button. Eines der Spukhäuser, **Aquarium**, steht im selben Dock-World-Areal,
 in dem tagsüber Mecalodon fährt, in einem angeblich seit den Neunzigern
-geschlossenen Schauaquarium, nach dessen Fischen man besser nicht fragt. Bis auf
+geschlossenen Schauaquarium. Bis auf
 Mine Blast kosten die Spukhäuser extra. Den
 **Speedy Pass**, die Fast-Lane des Parks, gibt es zu Ibilaw in sechs Paketen
 für Fahrgeschäfte und Spukhäuser, den Parkeintritt enthält keines davon. Wie
@@ -306,29 +266,23 @@ schlägt, steht in unserem
 
 ```
 
-Außerhalb der Saison und der Weihnachtsferien ist Walibi Belgium zu. Wer im
-Februar einen leeren Dienstag sucht, findet ihn, allerdings hinter einem
-geschlossenen Tor. Innerhalb der Saison entscheiden vor allem die belgischen
+Außerhalb der Saison und der Weihnachtsferien ist Walibi Belgium zu. Innerhalb der Saison entscheiden vor allem die belgischen
 Schulferien, wie voll es wird, und die fallen seit dem Schuljahr 2022/23 nicht
 mehr zusammen: Die französischsprachigen Schulen in Wallonien und Brüssel haben
 2026 vom 19. bis 30. Oktober Herbstferien, die flämischen vom 2. bis 8.
-November, und Ibilaw läuft über beide. Dazu kommen die Wochentage außerhalb
-der Sommerferien, an denen der Park ohnehin nicht täglich öffnet. Welche der kommenden Öffnungstage
-die ruhigsten sind, steht im Kalender weiter oben, tagesaktuell. Wie Monate und
+November, und Ibilaw läuft über beide. Außerhalb der Sommerferien öffnet der Park nicht täglich. Wie Monate und
 Wochentage bei anderen Parks ausfallen, steht auf der [Beste-Reisezeit-Seite](/beste-reisezeit).
 
 ## Die Reihenfolge für einen Tag
 
-Bei Öffnung zuerst zu **Kondaa**, weil sie der Grund ist, aus dem die meisten
-überhaupt herkommen, und weil die erste Stunde in unseren Messungen (seit Ende
+Bei Öffnung zuerst zu **Kondaa**, weil die erste Stunde in unseren Messungen (seit Ende
 Dezember 2025) die kürzeste Warteschlange des Tages hat. Bei **Mecalodon** in Dock World
 messen wir dasselbe Muster, morgens und in der letzten Stunde kurz, gegen elf am vollsten: also
 direkt nach Kondaa oder erst am späten Nachmittag. **Turbine**, **Cobra** und
 **Calamity Mine** schwanken über den Tag kaum und passen in jede Lücke, während
 **Vampire** und **Loup-Garou** morgens am vollsten sind und ab Mittag deutlich
 nachlassen. Wasserfahrten wie
-**Pulsar** und **Flash Back** hebst du dir für die heißeste Stunde des Tages
-auf, dann sind die Socken bis zum Parkplatz wieder trocken, und wer noch Zeit
+**Pulsar** und **Flash Back** hebst du dir für die heißeste Stunde des Tages auf. Wer noch Zeit
 und ein zweites Ticket hat, hängt einen Nachmittag im **Aqualibi** dran.
 
 ## Praktisches: Anreise, Tickets, Öffnungszeiten

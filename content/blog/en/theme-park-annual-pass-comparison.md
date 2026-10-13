@@ -47,19 +47,11 @@ parkLinks:
   - phantasialand
 ---
 
-An annual pass is a bet that you'll go more often than you plan to today. The stake is on the price
-list, and the check is short: pass price divided by day ticket price, rounded up. Blocked days are the
-harder part. The pass isn't valid on them, and they're often exactly the days you have off.
+The number of visits an annual pass needs to pay off is the pass price divided by the day ticket price, rounded up. On blocked days the pass isn't valid.
 
-This guide compares four parks: [Efteling](ref:efteling) in the Netherlands,
-[Europa-Park](ref:europa-park) in Rust, [Toverland](ref:attractiepark-toverland) in Sevenum and
-[Phantasialand](ref:phantasialand) in Brühl. The first three have an annual pass, Phantasialand doesn't.
-It's included anyway because there the question runs the other way: what does a year of visits cost
-when every single one pays the day price?
+[Efteling](ref:efteling) in the Netherlands, [Europa-Park](ref:europa-park) in Rust and [Toverland](ref:attractiepark-toverland) in Sevenum sell an annual pass, [Phantasialand](ref:phantasialand) in Brühl doesn't.
 
-All prices come from the parks' own pages, linked at the end, as of 6 October 2026. Then there's a
-second question: which days do you want to go, and is the park full on those days? For that, there's a
-widget with our wait times under each park.
+All prices come from the parks' own pages, linked at the end, as of 6 October 2026. Under each park a widget shows the quiet days by our wait times.
 
 ## The four parks at a glance
 
@@ -79,23 +71,13 @@ prices for 2027. Europa-Park has announced that tickets for the 2027 summer seas
 
 ## How the break-even works
 
-The break-even is the smallest whole number of visits at which the annual pass costs no more than the same
-number of day tickets. It hangs on two quantities, and both move. The first is the day price. Between the
-cheapest and the dearest day the gap is €16 at Efteling, €9 at Europa-Park, €12.50 at Toverland and €34 at
-Phantasialand. So I calculate with both ends and give a range. If you mostly go on Saturdays, you sit at
-the upper end of the prices and the lower end of the visit count.
+The break-even is the smallest whole number of visits at which the annual pass costs no more than the same number of day tickets. The day price moves. Between the cheapest and the dearest day the gap is €16 at Efteling, €9 at Europa-Park, €12.50 at Toverland and €34 at Phantasialand. So I calculate with both ends and give a range. If you mostly go on Saturdays, you pay the higher prices and reach the break-even with fewer visits.
 
-The second is the car. Each of the three parks with a pass sells a parking permit or discounts the
-parking ticket. If you come by train, that part drops out and the "without car" columns in the tables
-below apply.
+Each of the three parks with a pass sells a parking permit or discounts the parking ticket. If you come by train, that part drops out and the "without car" columns in the tables below apply.
 
-Two things are missing from the sum because they can't be put in a figure. One is the discount on food
-and souvenirs, which depends on what you buy. The other is the visit you wouldn't have made without the
-pass. That's usually the real reason to buy, and it makes the break-even a floor: anyone who goes more
-often with a pass also spends more on those days.
+I haven't counted the discount on food and souvenirs, because it depends on what you buy, or the visits you wouldn't have made without the pass.
 
-All passes are tied to a person. At Toverland the terms say so outright: one pass per person, not
-transferable. A family adds up the passes member by member.
+All passes are tied to a person. At Toverland the terms say so outright: one pass per person, not transferable.
 
 ## Efteling: Classic, Plus and Premium
 
@@ -126,10 +108,7 @@ Premium has no blocked days and doesn't appear in them.
 | Calendar year 2027             | 68 days         | 25 days      |
 | Open days 2027                 | 297             | 340          |
 
-The promised minimums hold: Classic is valid on 297 days in 2027, seven more than the promised 290.
-Plus is valid on exactly 340. Blocking falls mostly on weekends and in blocks of several weeks: in 2027, 42 of the 68
-Classic days are a Saturday or Sunday, and 16 of the 25 for Plus. Monday to Friday account for 26 Classic
-days.
+Classic is valid on 297 days in 2027, seven more than the promised 290, and Plus on exactly the promised 340. Blocking falls mostly on weekends and in blocks of several weeks: in 2027, 42 of the 68 Classic days are a Saturday or Sunday, and 16 of the 25 for Plus. Monday to Friday account for 26 Classic days.
 
 The Classic blocked days in calendar order:
 
@@ -139,12 +118,7 @@ The Classic blocked days in calendar order:
 - Autumn 2027: 11, 12, 18, 19, 25 and 26 September, 2, 3, 9 and 10 October, 16 October to 7 November, 13 and 14 November, 21 November, 27 and 28 November
 - December 2027: 4, 5, 12 and 14 December, 25 to 31 December
 
-Far fewer days are blocked on Plus: 22 and 29 November, 5 and 6 December and 26 to 31 December 2026, and in 2027 10,
-16, 23 and 24 January, 6 and 7 March, 20 and 21 March, 6, 7, 16 and 17 May, 21, 27 and 28 November, 4, 12
-and 14 December and 25 to 31 December. The biggest difference is the three weeks from mid-October to
-early November: 17 October to 8 November in 2026, 16 October to 7 November in 2027. On Classic the park is
-shut to you in that time, on Plus it's open. Easter 2027 is the second example. On 28 and 29 March Plus
-is valid and Classic isn't. Ascension (6 May) and Whitsun (16 and 17 May) are blocked for both.
+Far fewer days are blocked on Plus: 22 and 29 November, 5 and 6 December and 26 to 31 December 2026, and in 2027 10, 16, 23 and 24 January, 6 and 7 March, 20 and 21 March, 6, 7, 16 and 17 May, 21, 27 and 28 November, 4, 12 and 14 December and 25 to 31 December. The biggest difference is the three weeks from mid-October to early November: 17 October to 8 November in 2026, 16 October to 7 November in 2027. At Easter 2027, on 28 and 29 March, Plus is valid and Classic isn't. Ascension (6 May) and Whitsun (16 and 17 May) are blocked for both.
 
 ### What pays off
 
@@ -159,23 +133,13 @@ A day ticket at Efteling costs between €40 and €56 in 2026, plus €15 for p
 The "with car" column counts the parking discount as savings: €6, €7.50 and €9 per visit. The price
 applies per person on every tier. Two adults on Classic pay €480.
 
-The step from Classic to Plus costs €70, the step from Plus to Premium €90. Both steps buy you extra
-days and nothing extra on the day itself. In 2027 Plus is valid on 43 more days than Classic, and Premium
-on 25 more than Plus. Per extra day, Plus costs €1.63 more than Classic and Premium €3.60 more than Plus.
-That's less than any day price. What matters is whether you want to come on those days. If you never
-come in those weeks, you don't need the 43 days.
+The step from Classic to Plus costs €70, the step from Plus to Premium €90. In 2027 Plus is valid on 43 more days than Classic, and Premium on 25 more than Plus. Per extra day, Plus costs €1.63 more than Classic and Premium €3.60 more than Plus. That's less than any day price.
 
-The weekday matters too. By [our measurements](/blog/efteling-disney-of-the-netherlands), waits at
-Efteling are only a little longer on Saturdays than on other days. Classic does block mostly weekends, but also 26 days from Monday to Friday. If you can come on
-weekdays you lose little. If you have to come in the blocked stretches you lose a lot.
+By [our measurements](/blog/efteling-disney-of-the-netherlands), waits at Efteling are only a little longer on Saturdays than on other days. Classic does block mostly weekends, but also 26 days from Monday to Friday. If you can come on weekdays, you lose little with Classic.
 
-The park is a good one and a half to two hours' drive from Düsseldorf, a good two from Cologne and the
-Ruhr. At that distance it comes down to how often you go. If you go three times a year, stick with day
-tickets. From six visits Classic is cheaper, and with the car and the parking discount it pays off from
-the fourth to the sixth.
+The park is a good one and a half to two hours' drive from Düsseldorf, a good two from Cologne and the Ruhr. If you go three times a year, stick with day tickets.
 
-The widget shows the next quiet days at Efteling. You can check them against the list of days on which
-Classic isn't valid.
+You can check the quiet days in the widget against the list of blocked days above.
 
 ```best-days-widget slug=efteling
 
@@ -196,10 +160,7 @@ platform and free or reduced entry to partner parks. A ParkingPass costs €39 e
 €10 parking fee per day it's cheaper from the fourth visit by car. The printed card costs €5 extra on
 Silver and comes with Gold.
 
-At the moment no new pass can be bought. The park writes on its page that the allotment is used up and
-the ResortPass is unavailable until further notice, also by phone, by e-mail or on site. Existing holders
-are told about renewal before their pass ends. So the sums for a new pass only matter once sales
-reopen. The park hasn't said when that will be.
+At the moment no new pass can be bought. The park writes on its page that the allotment is used up and the ResortPass is unavailable until further notice, also by phone, by e-mail or on site. Existing holders are told about renewal before their pass ends. The park hasn't said when sales will reopen.
 
 A day ticket costs €67 to €76 for adults and €56.50 to €65 for children and seniors.
 
@@ -208,11 +169,7 @@ A day ticket costs €67 to €76 for adults and €56.50 to €65 for children 
 | Silver | 5 visits      | 5 visits             | 5 visits (€1,200 against €247 to €282 a day)      |
 | Gold   | 7 to 8 visits | 7 to 8 visits        | 7 to 8 visits (€1,850 against €247 to €282 a day) |
 
-For Silver the break-even is the same at both ends of the price range, five visits. Finding the cheap day
-is therefore not enough. What counts is that you come five times on days Silver covers. Which days those
-are isn't on the price page but in the ResortPass portal. The page gives only the count: over 230 days.
-The 2026 season runs from 28 March 2026 to 9 January 2027, which is 288 calendar days, less the two rest
-days at Christmas. Silver leaves out part of the opening days, and the park chooses which, not you.
+For Silver the break-even is the same at both ends of the price range, five visits. So you have to come five times on days Silver covers. Which days those are is in the ResortPass portal, and the price page gives only their number, over 230. The 2026 season runs from 28 March 2026 to 9 January 2027, which is 288 calendar days, less the two rest days at Christmas. Silver leaves out part of the opening days, and the park chooses which.
 
 Gold costs €170 more, €155 for children. That's a little over two extra adult day tickets at the top
 price. In return Gold is valid on every opening day, and the two Rulantica tickets are included. The
@@ -223,14 +180,10 @@ Gold pays off if you don't want to fix days in advance or if you visit the water
 pays off if you come five times and can plan your visit days around the park's calendar. If you come only
 two to four days a year, stay with the day ticket.
 
-One date that helps pass holders: the park has announced the Pre-Opening Weeks from 7 to 19 March 2027,
-two weeks before the season opens. On the ResortPass page the park calls them the best start to the 2027
-season, with the cheapest tickets of the year. Day reservations for them go through the ResortPass portal.
-That's the first date on which you could use a new pass.
+The park has announced the Pre-Opening Weeks from 7 to 19 March 2027, two weeks before the season opens. On the ResortPass page the park lists the cheapest tickets of the year for them. Day reservations for them go through the ResortPass portal. That's the first date on which you could use a new pass.
 
 By [our measurements](/blog/europa-park-wait-times-tips), Europa-Park is emptiest on a Sunday
-or Thursday in May or June and fullest on Saturday. The widget shows which days in the coming weeks are
-quiet.
+or Thursday in May or June and fullest on Saturday.
 
 ```best-days-widget slug=europa-park
 
@@ -238,8 +191,7 @@ quiet.
 
 ## Toverland: Magic Member
 
-Toverland in Sevenum has the cheapest annual pass of the four, and the simplest. It's called Magic
-Member.
+Toverland in Sevenum has the cheapest annual pass of the four, Magic Member.
 
 | Group                       | Annual price | Monthly (minimum twelve months) | Parking per year | Parking per month |
 | --------------------------- | ------------ | ------------------------------- | ---------------- | ----------------- |
@@ -258,9 +210,8 @@ difference is payable for each remaining month.
 The price page lists no blocked days. The pass terms, version of 21 March 2024, say: the pass entitles you
 to one day visit per opening day. Days on which the park is closed or hired out are excluded and are
 listed on the opening-times page. On busy days the park may refuse entry without refunding the price.
-There's no blocked-day list like Efteling's.
 
-Further points from the terms that matter for the purchase:
+Further points from the terms:
 
 - One pass per person, not transferable, with a photo that is checked at the entrance.
 - Bought at the desk, it runs for one year from the date of purchase. Bought online, it runs from the date of collection, provided it is collected within two months.
@@ -290,9 +241,7 @@ In 2026 the park sold a Summer Pass for the first time: €79 for adults, €59 
 140 cm, unlimited visits from 1 July to 30 September. Whether it returns in 2027 the park hasn't said.
 If you come only in summer, you pay €81 less than for the annual pass.
 
-By [our measurements](/blog/toverland-troy-wait-times-tips), weekdays at Toverland hardly differ,
-and it's busier in the Christmas holidays. So a pass without blocked
-days helps you less in choosing a day than it would at a park where some weekdays are clearly emptier.
+By [our measurements](/blog/toverland-troy-wait-times-tips), weekdays at Toverland hardly differ, and it's busier in the Christmas holidays.
 
 ```best-days-widget slug=attractiepark-toverland
 
@@ -305,12 +254,7 @@ Neither an annual pass nor a Club card comes up in the ticket shop's FAQ, and ti
 dated and online. Why it stayed that way and what fans did about it is in our
 [Phantasialand guide](/blog/phantasialand-wait-times-tips).
 
-What remains is the day price, and it jumps. In the ticket shop's October calendar a ticket for adults
-from 12 years costs between €44 and €78. The gap between the cheapest and the dearest day is €34, which is
-77% on top of the cheap day. Three visits a year cost between €132 and €234. The difference comes
-entirely from how early you book and which day you pick. An annual pass would smooth that out, but there
-isn't one. That leaves the choice of day, and cheap and empty don't always coincide. At Phantasialand a
-Saturday is noticeably fuller than a Tuesday.
+In the ticket shop's October calendar a ticket for adults from 12 years costs between €44 and €78. The gap between the cheapest and the dearest day is €34, which is 77% on top of the cheap day. Three visits a year cost between €132 and €234. The difference comes entirely from how early you book and which day you pick. At Phantasialand a Saturday is noticeably fuller than a Tuesday.
 
 ```best-days-widget slug=phantasialand
 
@@ -318,30 +262,17 @@ Saturday is noticeably fuller than a Tuesday.
 
 ## Blocked days against full days
 
-An annual pass with blocked days is good when the blocked days are the full days. Then you don't pay for
-days you'd avoid anyway. It's bad when the blocked days are the days you have off and the park is
-empty.
+At Europa-Park Saturday is the fullest day, and the park sets in the portal whether Silver is valid on Saturdays.
 
-At Efteling that only holds in part. Classic blocks mostly weekends and holiday stretches. Because the
-weekday makes little difference there, it doesn't only block full days. With 26 blocked weekdays in 2027,
-you lose quiet days too. At Europa-Park Saturday is the fullest day, and the park sets in the portal
-whether Silver is valid on Saturdays. At Toverland there are no blocked days, and the weekday hardly
-matters. At Phantasialand it stays with the day price.
-
-The widget sets the quietest weekday of the four parks side by side. If your weekday is in the column and
-the pass is valid on it, the pass fits your plan.
+The widget sets the quietest weekday of the four parks side by side.
 
 ```park-comparison-widget slugs=efteling,europa-park,attractiepark-toverland,phantasialand show=quietest
 
 ```
 
-If you can come during the week, Classic at Efteling and Magic Member at Toverland give you the most
-freedom for the smallest price. If you're only free at weekends, you're better off with Plus or Premium
-at Efteling and with Gold at Europa-Park.
+If you can come during the week, you pay least with Classic at Efteling and Magic Member at Toverland. If you're only free at weekends, you're better off with Plus or Premium at Efteling and with Gold at Europa-Park.
 
 ## Who needs which pass
-
-This is my reading of the figures above. I don't know where you live or which days you have free.
 
 At Efteling, Classic is enough if you can come outside the holidays and are at the park at least six
 times a year. If you want to go between mid-October and early November, you need Plus. Between Christmas
@@ -350,14 +281,9 @@ four visits none of the three tiers pays off.
 
 ## When to buy
 
-An annual pass runs for one year from purchase or from its start date. At Efteling you set the start and
-can place it up to one month ahead. If you start in October, you begin in the middle of the blocked weeks:
-a Classic from 10 October 2026 has 44 blocked days by the end of the year. The calendar year 2027 has 68
-in all.
+An annual pass runs for one year from purchase or from its start date. At Efteling you set the start and can place it up to one month ahead. If you start in October, you begin in the middle of the blocked weeks. A Classic from 10 October 2026 has 44 blocked days by the end of the year. The calendar year 2027 has 68 in all.
 
-At Efteling the 2026 prices stand until the park names new ones. At Toverland the park can only change
-the price of a pass when it expires. The ResortPass isn't on sale. As soon as a park publishes new
-prices, this guide will be updated.
+At Efteling the 2026 prices stand until the park names new ones. At Toverland the park can only change the price of a pass when it expires.
 
 ## Frequently asked questions
 

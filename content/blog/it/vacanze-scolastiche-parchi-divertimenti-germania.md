@@ -2,17 +2,17 @@
 title: 'Quali vacanze scolastiche riempiono quale parco divertimenti in Germania'
 translationKey: school-holidays-germany
 date: '2026-10-04'
+updatedAt: '2026-10-13'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Nel fine settimana le vacanze scolastiche contano poco nei parchi
-  divertimenti tedeschi, in settimana trasformano un martedì in un sabato.
-  Quali vacanze riempiono quale parco cambia da parco a parco. L'Heide Park ha
-  bisogno della Bassa Sassonia e della Renania Settentrionale-Vestfalia
-  insieme, il Legoland è l'unico che si riempie con le vacanze di Pentecoste, e
-  alla fine delle vacanze estive al sud a Soltau c'è meno gente che in un
-  giorno di scuola. Con le date delle vacanze fino all'estate 2027.
+  Nella maggior parte dei parchi divertimenti tedeschi un giorno feriale
+  durante le vacanze scolastiche è più pieno di un sabato o di una domenica media, mentre nel fine
+  settimana le vacanze contano poco. L'Heide Park si riempie solo quando Bassa
+  Sassonia e Renania Settentrionale-Vestfalia sono in vacanza insieme, e il
+  Legoland è l'unico che si riempie con le vacanze di Pentecoste. Con le date
+  delle vacanze fino all'estate 2027.
 tags:
   - parco-divertimenti
   - germania
@@ -55,11 +55,9 @@ parkLinks:
   - legoland-deutschland
 ---
 
-In settimana le vacanze scolastiche trasformano un martedì al parco divertimenti in un sabato. In
-cinque dei sei parchi tedeschi in cui misuriamo i tempi di attesa, un giorno feriale durante le
+In cinque dei sei parchi tedeschi in cui misuriamo i tempi di attesa, un giorno feriale durante le
 vacanze del proprio Land è più pieno di un sabato o di una domenica medi, all'Heide Park di quasi
-un quarto. All'Europa-Park resta appena sotto. Nel fine settimana invece le vacanze contano poco,
-perché di sabato il tempo ce l'hanno comunque tutti.
+un quarto. All'Europa-Park resta appena sotto. Nel fine settimana invece le vacanze contano poco.
 
 In Germania ogni Land fissa da sé le proprie vacanze scolastiche, e quali contano dipende dal
 parco, e non sempre dal Land in cui il parco si trova. L'Heide Park si riempie davvero solo quando
@@ -67,9 +65,8 @@ sono in vacanza contemporaneamente la Bassa Sassonia e la Renania Settentrionale
 il Plopsaland di Haßloch quando si sovrappongono Renania-Palatinato e NRW. Il Phantasialand è già
 pieno prima che in NRW comincino le vacanze. Il Legoland è l'unico parco in cui le vacanze di
 Pentecoste di Baviera e Baden-Württemberg si fanno sentire, e l'Europa-Park è quello che reagisce
-meno di tutti alle vacanze. Ci sono anche settimane di vacanza tranquille: le vacanze di
-Pentecoste, Günzburg a parte, e la fine delle vacanze estive al sud, quando il resto del paese è
-tornato in classe da un pezzo.
+meno di tutti alle vacanze. Durante le vacanze di Pentecoste, Günzburg a parte, e alla fine delle vacanze estive al sud, nella maggior parte dei parchi,
+c'era appena più gente che in un giorno di scuola.
 
 ## Da dove vengono i numeri
 
@@ -84,7 +81,7 @@ parco mostra i tempi di attesa solo nella propria app e a noi non ne arriva ness
 
 Il periodo va dal 24 dicembre 2025 al 3 ottobre 2026, per l'Heide Park e il Plopsaland
 dall'apertura della stagione il 22 marzo. Sono le date delle vacanze di un solo anno. Meteo, eventi
-e cantieri non li ho scorporati, quindi un giorno di vacanza piovoso conta quanto uno di sole.
+e cantieri non li ho scorporati.
 
 Ho confrontato soprattutto i giorni feriali, dal lunedì al venerdì, festivi esclusi. Il valore di
 riferimento è un giorno feriale tra il 13 aprile e il 30 settembre in cui nessun Land era in vacanza.
@@ -110,14 +107,12 @@ vacanze il parco è chiuso in molti giorni feriali.
 
 In cinque dei sei parchi un fine settimana di vacanza e uno in periodo di scuola si discostano al
 massimo del 6%, a volte in un senso, a volte nell'altro. Solo al Movie Park i fine settimana di
-vacanza sono un po' più pieni, del 13%. Chi può andare comunque solo di sabato, il calendario delle
-vacanze può quasi ignorarlo.
+vacanza sono un po' più pieni, del 13%.
 
-In settimana è un'altra storia. Un giorno feriale durante le vacanze del proprio Land era più
+Un giorno feriale durante le vacanze del proprio Land era più
 pieno di un giorno medio di fine settimana del 23% all'Heide Park, del 16% al Movie Park, del 9%
 al Plopsaland, del 7% al Phantasialand e del 5% al Legoland. Solo all'Europa-Park c'era il 3% di
-gente in meno. Chi in vacanza si prende apposta un martedì per evitare il sabato, a Soltau finisce
-quindi per fare più coda che di sabato.
+gente in meno.
 
 Un sabato senza vacanze stava sopra il riferimento dal 42% del Plopsaland al 123% del Legoland. La domenica successiva arrivava all'8% al Movie Park, al 9% all'Europa-Park, al 10% al
 Plopsaland e al 15% all'Heide Park, quindi era appena più piena di un giorno feriale. Solo il
@@ -128,9 +123,7 @@ Chi deve andare nel fine settimana, fuori da Brühl e Günzburg fa meglio a sceg
 
 Nel 2026 le vacanze estive erano molto sfalsate. Renania-Palatinato, Assia e Saarland hanno
 cominciato a fine giugno, la Baviera ha chiuso per ultima il 14 settembre. Solo in una settimana,
-dal 3 al 7 agosto, tutti i 16 Länder erano in vacanza insieme. Proprio questo scaglionamento
-rende l'estate la parte più utile del calcolo, perché qui si vede quali vacanze riempiono quale
-parco.
+dal 3 al 7 agosto, tutti i 16 Länder erano in vacanza insieme.
 
 ### Heide Park: servono sia la Bassa Sassonia sia la NRW
 
@@ -143,8 +136,7 @@ rimasto un +19%.
 
 Ne deduco che a Soltau servono due bacini di provenienza per fare il pieno. Con una sola estate
 non posso dimostrarlo, perché le settimane in cui erano in vacanza entrambi i Länder erano anche
-quelle in cui era in vacanza quasi tutto il resto della Germania. Le vacanze di Baviera e
-Baden-Württemberg comunque non aiutano l'Heide Park. Nei giorni feriali di settembre, con in
+quelle in cui era in vacanza quasi tutto il resto della Germania. Nei giorni feriali di settembre, con in
 vacanza solo il sud, il parco stava il 33% sotto il riferimento.
 
 Il giorno più pieno di tutto il periodo misurato, a Soltau, è stato martedì 28 luglio. Al secondo
@@ -157,16 +149,15 @@ qualsiasi.
 
 ```
 
-Nelle settimane in cui Bassa Sassonia e NRW sono in vacanza insieme conta soprattutto arrivare
-presto, e come si fa lo trovi nella [guida all'Heide Park](/blog/heide-park-tempi-di-attesa-consigli).
+Come arrivare presto a Soltau lo trovi nella
+[guida all'Heide Park](/blog/heide-park-tempi-di-attesa-consigli).
 
 ### Phantasialand: pieno prima che la NRW vada in vacanza
 
 A Brühl è andata al contrario. Dal 2 al 17 luglio, con le vacanze in Bassa Sassonia, Assia,
 Renania-Palatinato e diversi altri Länder e le scuole ancora aperte in NRW, il
 [Phantasialand](ref:phantasialand) stava già il 77% sopra il riferimento. Con l'arrivo della NRW si è
-saliti al 102%, con la sola NRW da metà agosto si è rimasti al 67%. Le vacanze del sud a Brühl non
-spostano nulla. Nei giorni feriali in cui erano in vacanza solo Baviera e Baden-Württemberg c'era
+saliti al 102%, con la sola NRW da metà agosto si è rimasti al 67%. Nei giorni feriali in cui erano in vacanza solo Baviera e Baden-Württemberg c'era
 il 6% di gente in meno che in un normale giorno di scuola.
 
 Il Phantasialand è quindi il parco che resta pieno più a lungo. Dalla settimana del 6 luglio fino a
@@ -188,10 +179,6 @@ della settimana prima, e i quattro giorni più pieni di tutto il periodo misurat
 quella sola settimana, da martedì a venerdì. Già la settimana dopo era finita, e il perché dal
 calendario non riesco a ricavarlo.
 
-Fuori dall'estate, al Movie Park spicca il fine settimana di Pentecoste, ne parlo più sotto. Che
-cosa fare per primo a Bottrop lo trovi nella
-[guida al Movie Park](/blog/movie-park-germany-tempi-di-attesa-consigli).
-
 ### Plopsaland: Renania-Palatinato e NRW insieme
 
 Al [Plopsaland](ref:plopsaland-deutschland) di Haßloch né la Renania-Palatinato né la NRW sono
@@ -203,8 +190,7 @@ Renania-Palatinato e NRW in vacanza insieme, si è arrivati a +63%.
 Il 10 agosto la Renania-Palatinato è tornata a scuola, la NRW e altri dodici Länder invece no. In
 quella settimana la media dei giorni feriali è scesa a poco più di un terzo di quella della
 settimana prima, e fino alla fine delle vacanze in NRW il parco è rimasto il 23% sotto un giorno
-feriale senza vacanze. Era pieno solo nelle tre settimane in cui erano in vacanza entrambi i
-Länder, e di più una sola estate non permette di dire.
+feriale senza vacanze.
 
 I suoi giorni più pieni, comunque, il Plopsaland non li ha avuti in estate. Quattro dei dieci
 giorni più pieni cadevano nella settimana dal 7 al 10 aprile, durante le vacanze di Pasqua. Che
@@ -220,11 +206,9 @@ stesso 37%, più che nelle cinque settimane successive con le vacanze del propri
 fine, quando erano in vacanza ormai solo Baden-Württemberg e Baviera, restava un 11%.
 
 Per Rust il calendario considera regioni vicine anche Basilea Città, Basilea Campagna, l'Argovia e
-il Grand Est. Se siano le loro vacanze a fare la differenza non l'ho analizzato a parte. Anche il
-giorno più pieno di tutto il periodo misurato, a Rust, non è caduto d'estate. È stato lunedì 29
-dicembre 2025, tra Natale e Capodanno, quando tutti i 16 Länder erano in vacanza. Quali attrazioni
-fare e a che ora in una giornata così lo trovi nella
-[guida all'Europa-Park](/blog/europa-park-tempi-di-attesa-consigli).
+il Grand Est. Se siano le loro vacanze a fare la differenza non l'ho analizzato a parte. Il giorno
+più pieno di tutto il periodo misurato, a Rust, è stato lunedì 29 dicembre 2025, tra Natale e
+Capodanno, quando tutti i 16 Länder erano in vacanza.
 
 ### Legoland: il più legato al sud
 
@@ -233,8 +217,7 @@ anche se si riempie pure con quelle degli altri. Nelle vacanze di Pentecoste, ch
 solo Baviera e Baden-Württemberg, il sovrappiù era del 123%, misurato sui quattro giorni feriali
 della seconda settimana. A settembre, quando tutti tranne questi due Länder erano tornati a scuola,
 era del 69%. Dal 20 al 31 luglio però, con la Baviera ancora a scuola e la NRW e il nord in
-vacanza, si è arrivati lo stesso al 120%. A Günzburg arrivano visitatori da ogni parte, e dal sud
-anche nelle settimane in cui nessun altro è in vacanza.
+vacanza, si è arrivati lo stesso al 120%.
 
 Il distacco tra giorno feriale e fine settimana è al Legoland il più grande di tutti. Un sabato
 senza vacanze stava il 123% sopra un giorno feriale senza vacanze. I giorni più pieni il parco li
@@ -247,7 +230,7 @@ ha avuti durante le vacanze di Pasqua, e il più pieno in assoluto è stato giov
 ## A Pasqua era pieno dappertutto
 
 Nel 2026 le vacanze di Pasqua cadevano in quasi tutti i Länder nelle stesse due settimane, dal 30
-marzo al 10 aprile, e in nessun parco ci si poteva sottrarre. Il Plopsaland stava il 153% sopra il
+marzo al 10 aprile. Il Plopsaland stava il 153% sopra il
 riferimento, il Legoland il 129%, l'Heide Park il 74%, il Phantasialand il 54% e il Movie Park il 52%.
 L'Europa-Park è arrivato al 13%.
 
@@ -265,8 +248,7 @@ il mercoledì.
 
 ## Festivi e ponti
 
-I festivi sono singoli giorni, cioè un solo valore per parco, e vanno letti con la dovuta
-cautela.
+Per i festivi ogni cifra poggia su un solo giorno per parco.
 
 **Il 1° maggio** nel 2026 è caduto di venerdì, e nessun Land era in vacanza. In cinque dei sei
 parchi c'era più gente che in un sabato medio senza vacanze, al Plopsaland il 64% in più, al Movie
@@ -277,8 +259,7 @@ dei parchi è stata solo moderatamente affollata, al Movie Park addirittura il 2
 Il ponte del 15 maggio, con le scuole chiuse in nove Länder, è stato più pieno della festa stessa
 in tutti e cinque i parchi in cui abbiamo misurato entrambi i giorni. All'Heide Park stava il 110%
 sopra il riferimento, al Legoland il 136%, all'Europa-Park il 75%. Al Plopsaland la festa manca nella
-misurazione, e il venerdì lì stava il 48% sotto il riferimento. Una spiegazione nel calendario non l'ho
-trovata.
+misurazione, e il venerdì lì stava il 48% sotto il riferimento.
 
 **La domenica e il lunedì di Pentecoste** al Movie Park sono stati tra i dieci giorni più pieni di
 tutta la misurazione. Il lunedì, 25 maggio, stava il 179% sopra il riferimento e l'80% sopra un sabato
@@ -291,15 +272,11 @@ successivo stavano entrambi il 136% sopra il riferimento, e lì cadevano tutti e
 Pentecoste. Al Plopsaland il ponte del 5 giugno è stato più pieno della festa, +80% contro +3%. Al
 Movie Park in nessuno dei due giorni c'era più gente che in un normale giorno feriale.
 
-Come regola, da questi giorni si ricava una sola osservazione. Nel 2026 il venerdì dopo un festivo
-di giovedì era il più delle volte più pieno del festivo stesso.
-
 ## Il giorno più tranquillo della settimana durante le vacanze
 
-Chi deve andare durante le vacanze può ancora guadagnare qualcosa scegliendo il giorno. Ho ordinato
+Ho ordinato
 per giorno della settimana i giorni feriali di vacanza nel Land di ciascun parco e ho confrontato il
-più tranquillo con la media degli altri quattro. Per giorno e parco sono da 6 a 12 giorni, quindi
-una tendenza e non una garanzia.
+più tranquillo con la media degli altri quattro. Per giorno e parco sono da 6 a 12 giorni.
 
 | Parco         | giorno feriale di vacanza più tranquillo | rispetto agli altri quattro |
 | ------------- | ---------------------------------------- | --------------------------- |
@@ -310,17 +287,13 @@ una tendenza e non una garanzia.
 | Plopsaland    | lunedì                                   | −24%                        |
 | Legoland      | venerdì                                  | −22%                        |
 
-All'Heide Park, al Movie Park e al Plopsaland il giorno più tranquillo era quindi il lunedì, a Rust
-e a Günzburg il venerdì. Un motivo nei nostri dati non l'ho trovato. Chi vuole può inventarsene
-uno, magari con dentro il viaggio di andata e il fine settimana lungo.
-
 ## I giorni con più folla
 
 Nel nostro calendario ogni giorno ha un livello di affluenza, da molto bassa a estrema. Su
 tutti e sei i parchi, nel periodo misurato ci sono stati 143 giorni con affluenza molto alta o
 estrema. Di questi, 126 cadevano nelle vacanze scolastiche di almeno un Land e 60 in un fine
 settimana. In un normale giorno feriale senza vacanze e senza festivi ne è caduto esattamente uno,
-al Plopsaland. Chi va in un giorno di scuola, i giorni più pieni dell'anno non li becca quasi mai.
+al Plopsaland.
 
 ## Natale e Capodanno
 
@@ -339,8 +312,6 @@ offrono i parchi in inverno lo trovi nella
 
 ## Le settimane di vacanza tranquille
 
-Nel 2026 due periodi di vacanza si sono sentiti appena nella maggior parte dei parchi.
-
 **Le vacanze di Pentecoste.** In Baviera e Baden-Württemberg sono durate fino al 5 giugno, negli
 altri Länder c'erano al massimo un paio di giorni intorno a Pentecoste. Al Phantasialand la seconda
 settimana di Pentecoste stava l'1% sotto il riferimento, al Plopsaland il 3% sopra, all'Europa-Park il 7%
@@ -350,8 +321,7 @@ Günzburg, vedi sopra.
 **La fine delle vacanze estive al sud.** Dal 2 al 14 settembre erano in vacanza solo Baviera e
 Baden-Württemberg. All'Heide Park questo periodo stava il 33% sotto il riferimento, al Plopsaland il 20%
 e al Phantasialand il 7%. Chi abita a Monaco o a Stoccarda ha quindi due settimane di vacanza in
-cui a Soltau c'è meno gente che in un normale giorno di scuola. Deve solo essere disposto a farsi
-tutta la strada fino alla Landa di Luneburgo per un paio di code vuote. All'Europa-Park e al
+cui a Soltau c'è meno gente che in un normale giorno di scuola. All'Europa-Park e al
 Legoland, cioè sotto casa, le stesse settimane erano più piene di un giorno di scuola, al Legoland
 di parecchio.
 
@@ -369,8 +339,7 @@ questi quattro parchi la fine delle vacanze è quindi chiaramente la scelta migl
 All'Heide Park e al Plopsaland è il contrario. A Soltau i primi dieci giorni delle vacanze della
 Bassa Sassonia stavano il 27% sopra il riferimento, gli ultimi dieci il 120%. A Haßloch era il 16% contro
 il 76%. Entrambi i parchi si riempiono solo quando arriva anche la NRW, e nel 2026 è successo in
-tutti e due i casi alla fine delle vacanze del loro Land. Chi abita in Bassa Sassonia o in
-Renania-Palatinato fa quindi meglio ad andarci nella prima settimana di vacanza.
+tutti e due i casi alla fine delle vacanze del loro Land.
 
 ## Le vacanze autunnali 2026
 
@@ -382,10 +351,9 @@ ottobre. Bassa Sassonia e NRW si sovrappongono dal 17 al 25 ottobre. Se lo schem
 regge, saranno quelli i giorni più pieni all'Heide Park. L'ultimo giorno di apertura in calendario,
 lì, è il 31 ottobre.
 
-Poi c'è Halloween. Heide Park, Movie Park e Plopsaland in ottobre hanno eventi serali (tutte le date
+Heide Park, Movie Park e Plopsaland in ottobre hanno eventi serali di Halloween (tutte le date
 nella [guida di Halloween](/blog/halloween-parchi-divertimenti-2026)), e i fine settimana sono
-pieni anche senza vacanze. A Soltau il 3 ottobre è stato il secondo giorno più pieno di tutta la
-misurazione.
+pieni anche senza vacanze.
 
 Nel calendario di ogni parco sono segnati i giorni di vacanza, sia del Land del parco sia delle
 regioni vicine da cui arrivano i visitatori in giornata. Qui sotto i giorni più tranquilli tra
@@ -397,16 +365,16 @@ quelli in arrivo al [Phantasialand](ref:phantasialand?calendar):
 
 ## Le settimane di vacanza fino all'estate 2027, parco per parco
 
-Anche le date delle vacanze del prossimo anno sono già nel calendario. Quello che segue è lo schema
-del 2026 applicato alle date del 2027. Se regge lo sapremo solo il prossimo autunno. I giorni di
+Anche le date delle vacanze del prossimo anno sono già nel calendario. Se lo schema del
+2026 si applica alle date del 2027 lo sapremo solo il prossimo autunno. I giorni di
 apertura del 2027 i parchi non li hanno ancora pubblicati.
 
 **Pasqua 2027** cade di nuovo quasi ovunque nello stesso periodo, in NRW, Bassa Sassonia,
 Renania-Palatinato e Baviera dal 20 marzo al 4 aprile, in Baden-Württemberg dal 25 marzo. Per
 ognuno dei sei parchi è il periodo più pieno della primavera, appena apre.
 
-**Pentecoste 2027** non riguarda più solo il sud. Baviera e Baden-Württemberg sono in vacanza dal
-15 al 30 maggio, ma anche NRW e Bassa Sassonia dal 15 al 18 maggio. Chi cerca la tranquilla
+**A Pentecoste 2027** Baviera e Baden-Württemberg sono in vacanza dal 15 al 30 maggio, NRW e
+Bassa Sassonia dal 15 al 18 maggio. Chi cerca la tranquilla
 settimana di Pentecoste del 2026, nel 2027 la trova al più presto da mercoledì 19 maggio, e al
 Legoland non la trova proprio.
 
@@ -418,8 +386,7 @@ Baden-Württemberg, e nel 2026 quelle sono state le settimane più tranquille de
 
 La Renania-Palatinato è in vacanza dal 26 giugno all'8 agosto, quindi la sovrapposizione con la NRW
 va dal 17 luglio all'8 agosto. Sono tre settimane abbondanti come nel 2026, e secondo la nostra
-misurazione il periodo in cui il Plopsaland è pieno. Per Brühl e Bottrop l'estate comincia prima.
-Assia, Renania-Palatinato e Saarland iniziano a fine giugno, la Bassa Sassonia l'8 luglio. Al
+misurazione il periodo in cui il Plopsaland è pieno. Assia, Renania-Palatinato e Saarland iniziano a fine giugno, la Bassa Sassonia l'8 luglio. Al
 Phantasialand e al Movie Park probabilmente sarà pieno dall'inizio di luglio fino alla fine delle
 vacanze in NRW, il 31 agosto.
 
@@ -445,15 +412,14 @@ prima settimana di vacanza, dalla Renania-Palatinato al Plopsaland nelle prime t
 Baden-Württemberg userei le ultime due settimane di vacanza per un parco al nord invece che per il
 Legoland.
 
-In autunno l'Heide Park conviene prima del 17 ottobre o nella settimana dal 26, quando la Bassa
-Sassonia è tornata a scuola e la NRW non ancora. Il 31 ottobre lì si chiude comunque.
+In autunno l'Heide Park conviene di più prima del 17 ottobre o nella settimana dal 26 che nei giorni in mezzo, quando Bassa Sassonia e NRW sono in vacanza insieme.
 
 A Natale l'Europa-Park è aperto fino al 9 gennaio, il Legoland fino al 10, il Phantasialand fino al
 24 gennaio. Dopo il 12 gennaio tutti i Länder hanno finito le vacanze di Natale, e a Brühl restano
 ancora quasi due settimane di Wintertraum. Secondo la nostra misurazione, lì i giorni di gennaio
 dopo le vacanze erano pieni la metà di quelli tra Natale e Capodanno.
 
-Restano i festivi. Il ponte dopo l'Ascensione lo evito, la festa in sé non per forza, e un 1° maggio
+Il ponte dopo l'Ascensione lo evito, la festa in sé non per forza, e un 1° maggio
 in un giorno feriale lo pianifico come un sabato.
 
 Quale mese è il più tranquillo in quale parco lo trovi nella pagina sul

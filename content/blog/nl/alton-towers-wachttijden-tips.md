@@ -55,7 +55,7 @@ boven de boomkruinen uitkomen. Wat toch hoger wordt, moet zo zijn vormgegeven da
 omgeving niet herkent. Daarom zijn de rails van [Rita](ref:alton-towers/rita) rood geschilderd, en
 alleen op de hoogste punten donkergroen.
 
-De grote banen van het park gaan dus de diepte in. **[Nemesis Reborn](ref:alton-towers/nemesis-reborn)**
+De grote banen van het park zijn daarom laag gebouwd of liggen onder het maaiveld. **[Nemesis Reborn](ref:alton-towers/nemesis-reborn)**
 rijdt door een uitgegraven steengroeve, en de passagiers hangen onder de rails tussen de rotswanden.
 **[Oblivion](ref:alton-towers/oblivion)** is net geen 20 meter hoog en gaat toch 55 meter omlaag,
 omdat het grootste deel van de val in een tunnel onder de grond ligt.
@@ -100,8 +100,7 @@ tot 2018 droeg elke passagier een vr-bril; sinds 2019 rijdt Galactica weer zonde
 
 ```
 
-Ook in Forbidden Valley staan twee attracties zonder rails.
-**[Nemesis Sub-Terra](ref:alton-towers/nemesis-sub-terra)** is een valtoren in een gebouw; hij
+**[Nemesis Sub-Terra](ref:alton-towers/nemesis-sub-terra)**, ook in Forbidden Valley, is een valtoren in een gebouw; hij
 draaide van 2012 tot 2015 en is sinds 2023 weer open. **[Toxicator](ref:alton-towers/toxicator)**
 is een Top Spin die op 15 maart 2025 openging. Hij staat op een betonnen platform van net geen vijf
 meter hoog boven het pad, zodat je van onderaf kunt toekijken.
@@ -218,21 +217,17 @@ net geen twee meter. Kinderen onder 90 cm komen gratis het park in.
 ## Hoe druk het in Alton Towers is
 
 Sinds eind december 2025 meten we elke vijf minuten de wachttijden, bij elke attractie van het park.
-Omdat het themapark in de winter dicht is, komen alle meetdagen uit het seizoen 2026. Hoeveel dagen
-het per attractie zijn, zie je in de laatste kolom.
+Omdat het themapark in de winter dicht is, komen alle meetdagen uit het seizoen 2026.
 
 ```ride-waits-widget park=alton-towers top=8 columns=land,peak,days highlight=nemesis-reborn
 
 ```
 
-Zo groeien de wachtrijen in de loop van de dag:
-
 ```hourly-profile-widget slug=alton-towers top=8
 
 ```
 
-Naast twee andere Merlin-parken en het Europa-Park ziet Alton Towers er zo uit, elke dag opnieuw
-berekend:
+De vergelijking met Thorpe Park, Heide Park en het Europa-Park rekenen we elke dag opnieuw uit.
 
 ```park-comparison-widget slugs=alton-towers,thorpe-park,heide-park,europa-park highlight=alton-towers
 
@@ -248,8 +243,6 @@ Smiler en Wicker Man horen daar niet bij.
 ```glossary-widget slug=rope-drop
 
 ```
-
-De rustigste openingsdagen van de komende weken:
 
 ```best-days-widget slug=alton-towers
 
@@ -272,8 +265,6 @@ anders dan de Nederlandse en Belgische, dus wie uit Nederland of België komt, k
 in de Engelse vakantiekalender. De half term in de herfst valt in de tweede helft van oktober. De
 Scarefest-weekenden daarvoor, vanaf 26 september, hebben dezelfde aankleding, zonder dat het in
 Engeland vakantie is.
-
-Het weer boven het park voor de komende dagen:
 
 ```weather-widget slug=alton-towers
 
@@ -321,14 +312,12 @@ Voor CBeebies Land is er sinds 2026 een eigen pakket: 7 pond voor twee ritten, 1
 elke attractie één keer. Op de dag zelf kun je in de app losse ritten bijkopen als One Shot-ticket,
 zolang de voorraad strekt.
 
-Of Fastrack de moeite waard is, hangt af van de dag die je treft. Op een doordeweekse dag buiten de
-Engelse vakanties red je het zonder, als je vroeg begint. Op een zaterdag in de vakantie zou ik voor
+Op een doordeweekse dag buiten de Engelse vakanties red je het zonder Fastrack, als je vroeg begint. Op een zaterdag in de vakantie zou ik voor
 The Smiler en Wicker Man Silver kopen, niet Bronze.
 
 ## Een dag in Alton Towers
 
-Zorg dat je om **9.30 uur** bij de monorail of de ingang staat, zodat je om tien uur binnen bent. Het
-eerste uur is voor de vier banen voor grotere bezoekers, waar een vroege start het meest scheelt. Ik
+Zorg dat je om **9.30 uur** bij de monorail of de ingang staat, zodat je om tien uur binnen bent. Een vroege start scheelt het meest bij de vier banen voor grotere bezoekers. Ik
 zou met Spinball Whizzer beginnen, daarna Rita en TH13TEEN in het Dark Forest rijden en vandaar met
 de Skyride naar Forbidden Valley gaan, naar Nemesis Reborn. Op het heuvelige terrein scheelt de
 stoeltjeslift je lange wandelingen.
@@ -337,10 +326,9 @@ Galactica staat in hetzelfde gebied als Nemesis en past er direct achter. Oblivi
 de X-Sector rijd je laat in de ochtend of in de middag. Wicker Man kun je op een Scarefest-dag voor
 de avond bewaren, want dan rijdt hij in het donker.
 
-Met kleine kinderen ziet de dag er anders uit. Ga eerst naar CBeebies Land en de Octonauts-baan,
+Met kleine kinderen ga je eerst naar CBeebies Land en de Octonauts-baan,
 zolang het daar nog rustig is, en daarna naar Mutiny Bay en Katanga Canyon. De monorail rijdt tot een
-uur na het einde van de attracties terug naar het parkeerterrein en de hotels, dus 's avonds hoef je
-je niet te haasten.
+uur na het einde van de attracties terug naar het parkeerterrein en de hotels.
 
 ## Tickets, parkeren en bereikbaarheid
 
@@ -392,7 +380,7 @@ erkend blijft.
 
 ## Overnachten bij het park
 
-Vanuit Nederland of België is Alton Towers geen dagtrip, en het park heeft vijf accommodaties op het
+Het park heeft vijf accommodaties op het
 eigen terrein.
 
 Het **Alton Towers Hotel** uit 1996 heeft 180 kamers in dertien categorieën en is vormgegeven rond
@@ -412,7 +400,7 @@ Scarefest-data bij 100 pond.
 
 ![Een grijs landhuis met kantelen, torens en glazen serres achter gesnoeide taxussen en een lavendelbed | De Towers met hun serres. Binnenin draait Hex. | wide](/media/alton-towers/the-towers.jpg)
 
-Het park is genoemd naar een huis dat er nog staat. Op het terrein lag al in de ijzertijd een
+Op het terrein lag al in de ijzertijd een
 versterkte nederzetting, en van 1412 tot 1924 was het bezit van dezelfde familie, de Talbots, de
 Earls of Shrewsbury. Het huidige huis stamt grotendeels uit het begin van de 19e eeuw.
 **Augustus Welby Pugin**, die ook aan het Palace of Westminster werkte, heeft het verbouwd. Het raam
@@ -492,7 +480,7 @@ Druk is het verder op de Scarefest-dagen tot 1 november en in de weekenden in de
 
 ### Is Fastrack in Alton Towers de moeite waard?
 
-Dat hangt af van het niveau. Bronze voor 35 pond geldt niet bij The Smiler en ook niet bij Wicker
+Bronze voor 35 pond geldt niet bij The Smiler en ook niet bij Wicker
 Man, de twee banen met de langste wachtrijen. Kom je vooral voor die twee, dan heb je Silver voor 65
 pond of Gold voor 95 pond nodig. Op een doordeweekse dag buiten de vakanties is een vroege start
 meestal genoeg.

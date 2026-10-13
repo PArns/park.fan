@@ -66,17 +66,11 @@ rideLinks:
   - efteling/pagode
 ---
 
-A child under four is too small for most roller coasters. If you're taking one
-to a theme park, you want to know beforehand at what age or height admission
-starts to cost money, whether you can rent a stroller or bring your own, where
-to change a diaper and whether two adults can take turns on a ride without
-queuing twice. Every park puts that information in a different corner of its
-website.
+A child under four is too small for most roller coasters.
 
-The ten parks in this guide are in four countries: Europa-Park, Phantasialand,
-Legoland Deutschland, Heide Park and Plopsaland Deutschland in Germany,
-Efteling, Toverland and Walibi Holland in the Netherlands, Walibi Belgium in
-Belgium and Parc Astérix in France.
+Europa-Park, Phantasialand, Legoland Deutschland, Heide Park and Plopsaland
+Deutschland are in Germany, Efteling, Toverland and Walibi Holland in the
+Netherlands, Walibi Belgium in Belgium and Parc Astérix in France.
 
 ## Where the information comes from
 
@@ -106,14 +100,10 @@ As of 8 October 2026:
 | [Walibi Belgium](ref:walibi-belgium)                 | under 1 m     | yes, free of charge                                     | unclear ("trolleys", €10) |
 | [Plopsaland Deutschland](ref:plopsaland-deutschland) | under 85 cm   | not mentioned                                           | not mentioned             |
 
-Parks change their prices at the start of the season.
-
 Efteling, Europa-Park, Phantasialand, Parc Astérix, Legoland Deutschland and
 Walibi Holland base free entry on age. At Heide Park, Toverland, Walibi Belgium
 and Plopsaland it's height that counts, and Plopsaland and Walibi Belgium
-measure children with their shoes on. A child can be free under one park's age
-rule and not under another's height rule, and the other way round. If your
-child is tall for their age, check each park.
+measure children with their shoes on.
 
 ## Efteling
 
@@ -142,17 +132,12 @@ Vliegende Hollander, Halve Maen, Joris en de Draak and Python; in Anderrijk Dans
 Macabre, Fata Morgana, Max & Moritz and Piraña; in Fantasierijk Symbolica.
 
 For the youngest there are two playgrounds, Kleuterhof in Reizenrijk and
-Kindervreugd in Marerijk. For several rides the park gives no minimum height,
-only a rule: children under 1.00 m ride with adult supervision on the
-[Stoomcarrousel](ref:efteling/stoomcarrousel), in Villa Volta, on the steam train
-and in Sirocco. With a companion aged 16 or older, children under 1.00 m may go
+Kindervreugd in Marerijk. On the [Stoomcarrousel](ref:efteling/stoomcarrousel),
+in Villa Volta, on the steam train and in Sirocco, children under 1.00 m ride
+with adult supervision, and the park gives no minimum height for them. With a companion aged 16 or older, children under 1.00 m may go
 on [Droomvlucht](ref:efteling/droomvlucht), in the [Pagode](ref:efteling/pagode)
 and on the Anton Pieckplein. In Symbolica, babies must be able to sit up on
-their own, and nobody may ride on a lap. The park doesn't mention quiet zones or
-nap spots.
-
-The rest of the park is covered in our guide
-[Efteling: the Disney of the Netherlands](/blog/efteling-disney-of-the-netherlands).
+their own, and nobody may ride on a lap.
 
 ## Europa-Park
 
@@ -170,8 +155,8 @@ friends the park sells selected baby food. The website doesn't say where you
 can warm it up and sends you to guest services instead.
 
 The rental stroller costs €5 plus a €50 deposit and is handed out at the main
-entrance or at the entrance to the hotel car park. By the park's own account it
-only suits children who can already sit, because nobody can lie down in it. The
+entrance or at the entrance to the hotel car park. According to the park it is
+only for children who can already sit, because a child can't lie down in it. The
 park doesn't rent out wagons, and they don't appear in the park rules. The rules
 ban non-motorised vehicles such as skates, bikes and scooters, and it isn't
 clear whether a wagon counts as one. If you want to bring one, ask guest
@@ -189,8 +174,7 @@ Wies'n Playground, the Water Playground, the ball pit, the Adventure Playground,
 Paul's Playboat and the Mul-Muls Carousel. According to our data, children need
 at least 90 centimetres for the Quipse Paddle Boats, the Mini-Scooters and Red
 Baron, and 100 for the Mul-Muls Carousel. The park's website gives no minimum
-age for its children's rides. More on the rides is
-in our guide [Europa-Park: Germany's biggest park, and where everybody went](/blog/europa-park-wait-times-tips).
+age for its children's rides.
 
 ## Phantasialand
 
@@ -208,15 +192,14 @@ kettle.
 
 The rental stroller costs €3 a day plus a €20 deposit and is handed out at guest
 services in the Berlin themed area. The number is limited, and you can reserve
-one by e-mail. A stroller carries children up to 22 kilograms. Phantasialand is
-very strict about strollers you bring and gives exact dimensions: only narrow,
-classic strollers and buggies up to 105 centimetres long, 75 centimetres wide and
-125 centimetres high are allowed, and only for carrying children. Wagons, bike
+one by e-mail. A stroller carries children up to 22 kilograms. Of the strollers
+you bring, only narrow, classic strollers and buggies up to 105 centimetres long,
+75 centimetres wide and 125 centimetres high are allowed, and only for carrying
+children. Wagons, bike
 trailers and dog carts are banned. An exception on medical grounds has to be
 e-mailed to guest services at least 14 days ahead.
 
-There is a Baby Switch: one parent rides, the other stays with the toddler, then
-you swap without the second one queuing again. You ask for it at the ride. The
+You ask for Baby Switch at the ride. The
 park doesn't say which rides take part.
 
 In a table in its terms of use, the park lists under "Attractions for children"
@@ -228,8 +211,6 @@ Bolles Flugschule, Bumper Klumpen, Wupi's Wabi Wipper and Wözl's Duck Washer.
 The park writes that children from 1.00 m can ride more
 than three quarters of the attractions. As a play area for the little ones it
 names Mopti's Monkey Depot.
-
-Our [Phantasialand guide](/blog/phantasialand-wait-times-tips) has the rest.
 
 ## Legoland Deutschland
 
@@ -249,8 +230,7 @@ Buggies are available in limited numbers at the entrance for €6 plus a €4
 deposit, and you return them there too. They have no mount for infant car seats.
 According to the FAQ you're welcome to bring your own wagon, and there are
 dedicated parking spots in the park for buggies and strollers. Neither the FAQ
-nor the toddler page mentions a Rider Switch. If you want to know whether
-there's an arrangement anyway, ask before your visit.
+nor the toddler page mentions a Rider Switch.
 
 The park's toddler page names the Junior Driving School (from 3 years), the Duplo
 Express, the Safari Tour, the Harbour Cruise, the Airport, the Knight's Tournament,
@@ -264,9 +244,7 @@ Land, Shipyard and LavaLand. The park publishes a full list with the age and
 height for each ride as a PDF.
 
 There's a quiet room and loungers in the first aid station, meant for guests with
-circulation problems. Our guide
-[Legoland Deutschland: tips for a day with kids from three to twelve](/blog/legoland-deutschland-tips)
-has the details on the rides.
+circulation problems.
 
 ## Heide Park
 
@@ -294,16 +272,12 @@ children need at least 86 centimetres for George's Dino Adventure in Peppa Pig
 Land, 95 for Raffnuss & Taffnuss Wasserflieger and 100 each for Indy-Blitz, La
 Ola, Screamie and Wüstenflitzer. For Peppas Ballonfahrt, Peppas Bootsfahrt, Opa
 Pigs Zugfahrt, Peppas House, Käpt'ns Törn, Heide Park Express and Monorail, the
-minimum height is still missing on our side. That doesn't mean the park doesn't
-set one.
-
-Our guide [Heide Park: Colossos in wood, surrounded by one German first after another](/blog/heide-park-wait-times-tips)
-has more.
+minimum height is still missing on our side.
 
 ## Plopsaland Deutschland
 
-[Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch gives only a
-height for free entry: children under 85 centimetres pay nothing. From 85 to 99
+[Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch bases free
+entry on height alone, and children under 85 centimetres pay nothing. From 85 to 99
 centimetres the ticket costs €22, and from one metre the adult price applies. The
 price page gives no year. The family ticket for three to six people costs between
 €139 and €259, depending on group size. The family ticket page still lists €170
@@ -323,7 +297,7 @@ Neither the FAQ pages nor the park rules mention a Rider Switch or swapping.
 Every guest has to leave the ride after each trip, and anyone who wants a second
 go queues again.
 
-On the other hand, Plopsaland gives the height bands on each ride's page. A
+Plopsaland gives the height bands on each ride's page. A
 companion must be at least 15 years old. Without a minimum height, but with a companion, children under 100
 centimetres ride, for example, the ball pit, Fischerboote, Frösche, Tanzende
 Fontänen, Red Baron, the Historisches Karussell (under 105 centimetres with a
@@ -335,9 +309,6 @@ Marienkäferflug without a companion. The park's page filters by "Ideal for
 babies" and "Ideal for toddlers" but doesn't name any areas. When it rains, the
 indoor attractions stay open, and there's more on that in our guide
 [Theme parks in the rain](/blog/theme-parks-in-the-rain).
-
-More on the rides is in the guide
-[Plopsaland Deutschland: the park that used to be Holiday Park](/blog/plopsaland-deutschland-wait-times-tips).
 
 ## Toverland
 
@@ -352,7 +323,7 @@ If you want to pump, ask the staff at the main entrance.
 
 You may bring a buggy or wagon, and the park recommends a chain lock. Toverland
 doesn't rent anything out. Baby Switch applies on selected rides, with no age
-limit: you pick up a special ticket at the entrance, and one parent may ride
+limit. You pick up a special ticket at the entrance, and one parent may ride
 through the exit. The park doesn't say which rides they are.
 
 In Land van Toos, an area with halls, children ride with a companion from 0 centimetres
@@ -366,9 +337,6 @@ playgrounds are Sparky's Splash Dock and Waku Waku. On its website the park
 gives no age limits, only heights. It describes itself as partly covered. How
 many of its attractions are under a roof is in our guide
 [Theme parks in the rain](/blog/theme-parks-in-the-rain).
-
-The park guide with everything else:
-[Toverland: Troy, the wooden coaster everyone drives past](/blog/toverland-troy-wait-times-tips).
 
 ## Walibi Holland
 
@@ -386,20 +354,18 @@ Guest Service.
 
 Buggies cost €10 plus a €50 deposit at the Gift Shop and can't be booked in
 advance. The park's website doesn't say whether your own stroller or wagon is
-allowed. You may bring food and drinks. The swap system is called "baby change":
-one adult waits with the child at the exit, the other rides, then they swap, and
-the second goes through the exit without queuing. The park doesn't say which
+allowed. You may bring food and drinks. The swap system is called "baby change".
+One adult waits with the child at the exit and boards there afterwards without
+queuing. The park doesn't say which
 rides take part.
 
-For the little ones, the kids page lists Merrie Go'Round (from 0 with a
+The kids page lists Merrie Go'Round (from 0 with a
 companion, alone from 120 centimetres), Walibi's Fun Recorder, Garage, Bubble
 Swirl and Walibi's World Tour (from 0 with a companion, alone from 105) and
 Walibi's Shuttle (from 0, alone from 120). Wind Seekers starts at 90 with a
 companion, and children ride Mini Taxi's, Stunt Flight and Space Kidz alone from
 90 or 105 centimetres respectively. On park.fan the minimum height is still
 missing for all 39 of the park's rides, so these heights all come from the park.
-You'll find more on the park in the post
-[Walibi Holland: "hard gaan", Untamed and a field where fish swam in 1957](/blog/walibi-holland-untamed-hard-gaan).
 
 ## Walibi Belgium
 
@@ -425,9 +391,7 @@ lowest limit is 50, with a companion, on Stormy, 4x4 Adventure, Mini Tour,
 Spinning Taxi and Tchou-Tchou Express. The park's page gives the number without
 a unit, and it means centimetres. Every ride has a minimum height on the park's
 website. During the Ibilaw days, Kondaala, Spinning Taxi, Guitar Riff, Kids
-Airlines, Tchou-Tchou Express and Little Swing, among others, are closed. More
-background in the guide
-[Walibi Belgium: the Walibi nobody thinks of, with the tallest Benelux coaster](/blog/walibi-belgium-wait-times-tips).
+Airlines, Tchou-Tchou Express and Little Swing, among others, are closed.
 
 ## Parc Astérix
 
@@ -442,9 +406,8 @@ hotel, at reception. Rental strollers cost €15. Picnics are only allowed in
 designated areas. The park's website doesn't say whether you may bring baby
 food.
 
-Baby Switch has its own explanatory page: one parent rides alone, the other stays
-with the child, then both go to the ride operator, who lets the second ride
-without queuing again. It applies to children below the minimum height. The
+The park explains Baby Switch on a page of its own. After the first ride, both
+parents go to the ride operator, who lets the other parent ride without queuing again. It applies to children below the minimum height. The
 page doesn't give a complete list of rides.
 
 The children's area is called "Attractions for Little Gauls". The park gives a
@@ -453,16 +416,12 @@ Flying Chairs, Ace Flying Squadron and Laundromatix (3). The Baby Switch page
 lists the playgrounds Golden Boar, Getafix and Little Oaks with no age or height
 restriction. The activities page gives Golden Boar from 2 years. For
 Aerodynamix, Enigmatix and Hydrolix, one page says from 5 years and another says
-they're accessible to children under one metre. Which is right is best checked
-at reception. Children are measured there and get a wristband listing the rides
-they're allowed on. Our guide
-[Parc Astérix: Toutatis, OzIris and the Christmas queues](/blog/parc-asterix-wait-times-tips)
-covers the rest.
+they're accessible to children under one metre. At reception, children are
+measured and get a wristband listing the rides they're allowed on.
 
 ## When a park is quiet
 
-With a toddler you're better off going on a day when little is going on, because
-swapping, changing and parking the stroller all take time. The table shows the
+The table shows the
 weekday with the lowest average wait for eight of the ten parks.
 
 ```park-comparison-widget slugs=efteling,europa-park,phantasialand,attractiepark-toverland,legoland-deutschland,heide-park,plopsaland-deutschland,walibi-holland show=quietest
@@ -473,15 +432,12 @@ A cell stays empty when a park has no clearly quietest day. More on that and on
 times of day is in our guide
 [Theme park crowds: weekday, hour and holidays at 12 parks](/blog/theme-parks-quiet-days-and-hours).
 
-## What the parks' pages add up to
+## Rest, sleep and bringing food
 
 No park mentions quiet zones, naps or shade on its website. The closest are the
 quiet and nursing room at Phantasialand, the three nursing rooms at Efteling,
 the first aid post at Walibi Belgium and the quiet room in Legoland's first aid
-station. So a child will mostly sleep in the stroller. Nobody can lie down in
-Europa-Park's rental stroller, and Efteling's is a wooden single seat. At
-Phantasialand, your own stroller can't be larger than 105 by 75 by 125
-centimetres.
+station.
 
 Plopsaland explicitly allows baby food you bring, even in the restaurants. At
 Walibi Holland you may bring your own food. For the other eight parks, the
@@ -492,7 +448,7 @@ grills and cooking equipment.
 
 ### Up to what age are children free at a theme park?
 
-It varies. At Efteling it's up to and including age 3, at Europa-Park and
+At Efteling it's up to and including age 3, at Europa-Park and
 Phantasialand ages 0 to 3, at Parc Astérix under 3. At Legoland Deutschland
 children under 2 are free, and at Walibi Holland children up to 2, so until
 their third birthday. At Heide Park and Toverland it's height that counts, and
@@ -512,7 +468,7 @@ height at all.
 ### What is Baby Switch?
 
 One parent rides while the other stays with the child who's too small, then rides
-afterwards without queuing again. Parks handle it differently: at Efteling staff
+afterwards without queuing again. At Efteling staff
 give you a ticket when you get off, at Europa-Park a card, and at Heide Park it's
 a pass you get at the Service Center.
 
@@ -531,7 +487,7 @@ deposit and at Parc Astérix €15. Toverland has no rental.
 
 ### How small can a child be to ride a roller coaster?
 
-Each park sets that ride by ride. On children's and family rides, kids with a
+On children's and family rides, kids with a
 companion can ride from 0 centimetres at Toverland and Walibi Holland, and from
 50 at Walibi Belgium (the page gives no unit). At Legoland Deutschland, minimum
 heights start at 80 centimetres according to our data, and at Plopsaland
@@ -550,4 +506,5 @@ ride is on its page at park.fan.
 - Walibi Holland: [Tickets](https://www.walibi.nl/en/tickets), [Facilities](https://www.walibi.nl/en/plan-your-visit/facilities), [FAQ](https://www.walibi.nl/en/plan-your-visit/faq), [Kids rides](https://www.walibi.nl/en/park/attractions/kids)
 - Walibi Belgium: [Tickets](https://www.walibi.be/en/tickets), [FAQ](https://www.walibi.be/en/faq), [Park rules](https://www.walibi.be/en/regulations/park-regulations), [Services](https://www.walibi.be/en/plan-your-visit/services)
 - Parc Astérix: [Tickets](https://www.parcasterix.fr/en/offers/tickets), [Baby Switch Service](https://www.parcasterix.fr/en/parc/services/baby-switch-service), [Activities for children](https://www.parcasterix.fr/en/to-do-in-park/activities-for-children)
+- Our guides to the parks: [Efteling: the Disney of the Netherlands](/blog/efteling-disney-of-the-netherlands), [Europa-Park: Germany's biggest park, and where everybody went](/blog/europa-park-wait-times-tips), [Phantasialand guide](/blog/phantasialand-wait-times-tips), [Legoland Deutschland: tips for a day with kids from three to twelve](/blog/legoland-deutschland-tips), [Heide Park: Colossos in wood, surrounded by one German first after another](/blog/heide-park-wait-times-tips), [Plopsaland Deutschland: the park that used to be Holiday Park](/blog/plopsaland-deutschland-wait-times-tips), [Toverland: Troy, the wooden coaster everyone drives past](/blog/toverland-troy-wait-times-tips), [Walibi Holland: "hard gaan", Untamed and a field where fish swam in 1957](/blog/walibi-holland-untamed-hard-gaan), [Walibi Belgium: the Walibi nobody thinks of, with the tallest Benelux coaster](/blog/walibi-belgium-wait-times-tips), [Parc Astérix: Toutatis, OzIris and the Christmas queues](/blog/parc-asterix-wait-times-tips)
 - Minimum heights of the rides from our data: park.fan

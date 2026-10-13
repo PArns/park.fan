@@ -8,8 +8,7 @@ featured: false
 excerpt: >-
   Heide Park, Efteling, Toverland, Walibi Holland, Futuroscope y Disneyland París
   permiten expresamente la comida propia. En Bobbejaanland, Walibi Belgium, Parc
-  Astérix y Plopsaland Deutschland se come en las zonas de picnic. En los parques
-  acuáticos, la comida de casa se queda fuera.
+  Astérix y Plopsaland Deutschland se come en las zonas de picnic. En los parques acuáticos está prohibida.
 tags:
   - freizeitpark
   - essen
@@ -94,8 +93,7 @@ Situación a 9 de octubre de 2026:
 | Disneyland París       | permitida, sin nevera ni mesa  | botellas de vidrio y alcohol prohibidos, zona de picnic delante de la entrada | [FAQ](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages), [Theme Parks Rules](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules) |
 | Futuroscope            | permitida, en cualquier césped | neveras rígidas prohibidas, control de bolsos                                 | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3)                                                                                           |
 
-«No regulada» quiere decir que las normas del parque ni la prohíben ni la permiten. Si quieres estar seguro antes del
-viaje, pregunta al servicio de atención al cliente del parque.
+«No regulada» quiere decir que las normas del parque ni la prohíben ni la permiten.
 
 ## Alemania
 
@@ -108,8 +106,7 @@ la entrada principal.
 Las zonas de picnic las indica el parque en su página de consejos para la visita: en el histórico parque del castillo
 Balthasar, en el área temática de Alemania, junto al Wodan Timburcoaster.
 
-En el parque acuático Rulantica, en cambio, la comida traída está prohibida. Más sobre esto abajo, con los parques
-acuáticos.
+En el parque acuático Rulantica, en cambio, la comida traída está prohibida.
 
 ### Phantasialand
 
@@ -122,17 +119,16 @@ La comida, las botellas de agua, las neveras y el vidrio no aparecen en esa list
 
 ### Heide Park
 
-[Heide Park](ref:heide-park) permite expresamente la comida propia. En su centro de ayuda, el parque escribe que puedes
+En su centro de ayuda, [Heide Park](ref:heide-park) escribe que puedes
 traer la comida para todo el día y comerla dentro. Solo las botellas de vidrio deben quedarse en casa. Asar a la parrilla
 está prohibido en todo el recinto, según las normas del parque.
 
-A quien tenga una intolerancia grave, como la celiaquía, el parque le recomienda incluso traer su propia comida. Sus
+A quien tenga una intolerancia grave, como la celiaquía, el parque le recomienda traer su propia comida. Sus
 cocinas no pueden descartar del todo la contaminación cruzada y no atienden peticiones especiales.
 
 ### Hansa-Park
 
-En la Parkordnung de [Hansa-Park](ref:hansa-park) no hay ni una frase sobre la comida traída. Prohíbe asar a la parrilla,
-las parrillas y los aparatos de cocina, el alcohol y las drogas. Las botellas de vidrio aparecen entre los objetos
+La Parkordnung de [Hansa-Park](ref:hansa-park) prohíbe asar a la parrilla, las parrillas y los aparatos de cocina, el alcohol y las drogas. Sobre la comida traída no dice nada. Las botellas de vidrio aparecen entre los objetos
 peligrosos, junto a los cuchillos y los punteros láser.
 
 En las atracciones y en los espectáculos bajo techo no se puede comer ni beber. Vale para todos los visitantes, también
@@ -146,8 +142,7 @@ propios. Sobre comida, bebida, vidrio o bolsas isotérmicas dentro del parque no
 
 ### Movie Park Germany
 
-Las normas de [Movie Park Germany](ref:movie-park-germany) prohíben traer alcohol y hacer barbacoa en todo el recinto. Las
-maletas grandes y otros objetos voluminosos se quedan fuera. Sobre la comida traída no hay nada en ellas.
+Las normas de [Movie Park Germany](ref:movie-park-germany) prohíben traer alcohol y hacer barbacoa en todo el recinto. Sobre la comida traída no hay nada en ellas. Las maletas grandes y otros objetos voluminosos se quedan fuera.
 
 Durante el Halloween Horror Festival rigen reglas propias. Según la FAQ del festival, están prohibidos el alcohol y
 cualquier bebida en botella de vidrio, y también el desodorante en spray, mientras que el de bola y el de barra se
@@ -166,7 +161,7 @@ en las colas no puedes comer ni beber, y tampoco puedes traer alcohol.
 
 ### Efteling
 
-[Efteling](ref:efteling) es el parque que lo escribe con más claridad. En su reglamento, bajo el título «Eigen eten en
+En el reglamento de [Efteling](ref:efteling), bajo el título «Eigen eten en
 drinken», pone que puedes traer tu propia comida y bebida. Lo repite en sus preguntas frecuentes.
 
 Cuando hay mucha gente, el parque pide que comas lo que traes en una de las zonas de picnic y no en los restaurantes ni en
@@ -177,13 +172,12 @@ sus terrazas.
 [Toverland](ref:attractiepark-toverland) permite la comida propia y tiene dos microondas de uso gratuito, en la Waldstube y
 en Katara Plaza. El parque los menciona también para calentar biberones.
 
-Todo lo demás lo regula el reglamento del parque, que está a la vista en la entrada y se puede descargar en su web.
+El reglamento del parque está a la vista en la entrada y se puede descargar en su web.
 
 ### Walibi Holland
 
 [Walibi Holland](ref:walibi-holland) permite expresamente la comida y la bebida propias y señala zonas de picnic en el
-parque. Según sus normas, no puedes traer vidrio ni alcohol. Fuera de los caminos y de las zonas de picnic no se puede
-pasar, así que un césped libre para comer solo lo encuentras donde aparece en el plano del parque.
+parque. Según sus normas, no puedes traer vidrio ni alcohol. Fuera de los caminos y de las zonas de picnic no se puede pasar.
 
 ## Bélgica
 
@@ -202,7 +196,7 @@ zonas que marca el plano del parque y está prohibido en los restaurantes y sus 
 
 El alcohol está prohibido en el parque. Las bolsas, cajas y recipientes pueden medir como máximo 55 cm de ancho, 40 cm de
 largo y 20 cm de fondo, y una nevera también tiene que caber en esa medida. En las atracciones y en las colas está
-prohibido comer y beber. En el parque acuático Aqualibi la regla es más estricta.
+prohibido comer y beber.
 
 ## Francia
 
@@ -216,7 +210,7 @@ En las atracciones no puedes comer ni beber por seguridad, y en las colas, por h
 
 ### Disneyland París
 
-[Disneyland París](ref:/parks/europe/france/paris/disneyland-park) permite la comida propia, con dos restricciones. Las
+[Disneyland París](ref:/parks/europe/france/paris/disneyland-park) permite la comida propia. Las
 comidas para las que necesites una nevera, una mesa o recipientes voluminosos están prohibidas en Disneyland Park y en Walt
 Disney Studios Park. Para un picnic así hay una zona entre el aparcamiento y la entrada.
 
@@ -226,13 +220,11 @@ parque pide que no se coma ni se beba.
 
 ### Futuroscope
 
-En [Futuroscope](ref:futuroscope) puedes hacer picnic en cualquier césped, según sus preguntas frecuentes. Ningún otro de
-los quince parques lo permite en tantos sitios.
+En [Futuroscope](ref:futuroscope) puedes hacer picnic en cualquier césped, según sus preguntas frecuentes.
 
-Las neveras rígidas están prohibidas, conviene no llevar bolsos voluminosos y en la entrada se revisan los bolsos. Deja la
-nevera en el coche, porque durante el día puedes salir del parque y volver a entrar.
+Las neveras rígidas están prohibidas, conviene no llevar bolsos voluminosos y en la entrada se revisan los bolsos. Como durante el día puedes salir del parque y volver a entrar, la nevera puede quedarse en el coche.
 
-## Los parques acuáticos: la comida de casa se queda fuera
+## Los parques acuáticos
 
 En los cuatro parques acuáticos cuyas reglas hemos comparado, la comida traída está prohibida.
 
@@ -251,13 +243,9 @@ una pausa en el coche.
 
 Los bocadillos, la fruta y algo para picar van en una mochila o en una bolsa isotérmica blanda. Parc Astérix y Disneyland
 París prohíben las neveras, y Futuroscope, las rígidas. Walibi Belgium solo deja entrar bolsas de hasta 55 × 40 × 20 cm.
-Para beber, lleva una botella de plástico o de metal, porque el vidrio está prohibido en cinco de los quince parques y en Rulantica. La
-barbacoa, el hornillo y el alcohol se quedan en casa.
+Para beber, lleva una botella de plástico o de metal, porque el vidrio está prohibido en cinco de los quince parques y en Rulantica.
 
-Se come en las zonas de picnic. Cuando un parque menciona comer en las colas o en las atracciones, es para prohibirlo. En
-Futuroscope puedes sentarte en cualquier césped, en Disneyland París la zona de picnic está delante de la entrada y en
-Europa-Park son los sitios del parque del castillo Balthasar. En Toverland calientas la comida o un biberón gratis en el
-microondas.
+Cuando un parque menciona comer en las colas o en las atracciones, es para prohibirlo.
 
 ## Preguntas frecuentes
 
@@ -310,8 +298,6 @@ En el reglamento del parque, que según el parque se llama Parkordnung, Parkregl
 menudo también en las preguntas frecuentes de su web.
 
 ## Fuentes
-
-Las normas de los parques cambian, a menudo al empezar la temporada. Antes de la visita conviene mirar la versión vigente.
 
 - Europa-Park, Park Rules: [europapark.de](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations)
 - Europa-Park, Tipps für Ihren Besuch (zonas de picnic): [europapark.de](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park)

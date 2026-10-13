@@ -1,5 +1,5 @@
 ---
-title: 'Magic Kingdom : le parc le plus visité du monde, et c’est devant une montagne russe de 2023 qu’on attend le plus longtemps'
+title: 'Magic Kingdom : la plus longue file d’attente est à TRON'
 translationKey: magic-kingdom-guide
 date: '2026-09-30'
 updatedAt: '2026-10-05'
@@ -8,12 +8,10 @@ mode: published
 featured: false
 excerpt: >-
   Le Magic Kingdom a reçu environ 17,8 millions de visites en 2024, plus que
-  n’importe quel autre parc à thème au monde, et pourtant le temps d’attente
+  n’importe quel autre parc à thème au monde. Pourtant, le temps d’attente
   typique y est plus court que dans les trois autres parcs Disney de Floride.
-  C’est surtout à TRON Lightcycle / Run, dans Tomorrowland, que l’attente
-  devient longue. Au programme aussi : quelle grande attraction a une file
-  plus courte le soir et laquelle non, ce que coûtait Lightning Lane le 30
-  septembre et ce qui a disparu avec Rivers of America.
+  On attend le plus longtemps à TRON Lightcycle / Run, dans Tomorrowland,
+  surtout le soir.
 category: guides
 tags:
   - magic-kingdom
@@ -56,18 +54,13 @@ D’après le TEA Global Experience Index, le Magic Kingdom a reçu **17,8 milli
 de visites** en 2024, 0,7 % de plus que l’année précédente. Le parc s’est ainsi
 classé premier au monde, juste devant le Disneyland Park de Californie et ses
 17,3 millions. Selon le tableau de fréquentation de Wikipédia, c’était la
-dix-huitième année de suite, et avec un tel chiffre, on s’attend aux plus
-longues files d’attente de la planète. Elles sont
-ailleurs. Des quatre parcs Disney de Floride, le
+dix-huitième année de suite. Des quatre parcs Disney de Floride, le
 [Magic Kingdom](ref:magic-kingdom-park) a dans nos données le temps d’attente
 typique le plus court, et EPCOT le plus long.
 
 ```park-comparison-widget slugs=magic-kingdom-park,epcot,disneys-hollywood-studios,disneys-animal-kingdom-theme-park highlight=magic-kingdom-park
 
 ```
-
-Nous ne pouvons pas expliquer cet écart à partir de nos données. On n’attend
-longtemps qu’à une poignée d’attractions.
 
 ## Six zones thématiques et les utilidors
 
@@ -85,11 +78,11 @@ Birthdayland, elle a fini sous celui de Mickey's Toontown Fair et a fermé le
 11 février 2011 pour faire place à New Fantasyland. Cet agrandissement s’est
 achevé le 28 mai 2014 avec le Seven Dwarfs Mine Train.
 
-Sous tout le parc se cache un étage de plus. En Floride, la nappe phréatique
+En Floride, la nappe phréatique
 est trop haute pour creuser des tunnels, alors les couloirs de service, les
 utilidors, ont été construits au niveau du sol, et le parc a été bâti
 par-dessus, sur la terre extraite de la Seven Seas Lagoon. Le Magic Kingdom se
-trouve donc lui-même à l’étage, à 33 mètres au-dessus du niveau de la mer, et
+trouve donc un étage au-dessus des couloirs, à 33 mètres au-dessus du niveau de la mer, et
 en dessous, le personnel va d’un bout à l’autre sans qu’aucun visiteur ne le
 voie. En haut, sur Main Street, les étages des bâtiments sont moins hauts
 que le rez-de-chaussée, si bien que les façades paraissent plus hautes qu’elles
@@ -112,9 +105,7 @@ Tout en haut figure
 **[TRON Lightcycle / Run](ref:magic-kingdom-park/tron-lightcycle-run)**. Elle a
 ouvert le 4 avril 2023, après des tours réservés aux salariés de Disney dès
 février. C’est une montagne russe à lancement de Vekoma qui atteint 59 mph, soit
-environ 95 km/h, et un tour dure à peu près une minute. Pour un trajet aussi
-court, c’est dans la file que tu passes l’essentiel de ton temps à TRON, et le
-tableau indique combien.
+environ 95 km/h, et un tour dure à peu près une minute.
 
 Juste derrière viennent **[Seven Dwarfs Mine
 Train](ref:magic-kingdom-park/seven-dwarfs-mine-train)**, la montagne russe de
@@ -123,11 +114,10 @@ Train](ref:magic-kingdom-park/seven-dwarfs-mine-train)**, la montagne russe de
 Adventure](ref:magic-kingdom-park/tianas-bayou-adventure)**, la rivière à bûches
 qui a remplacé Splash Mountain le 28 juin 2024.
 
-Les attractions plus anciennes sont plus bas dans le classement, à une
-exception près. **[Peter Pan's
-Flight](ref:magic-kingdom-park/peter-pans-flight)** est un dark ride de 1971,
-ouvert deux jours après le parc, et il figure dans le tableau avant même Space
-Mountain.
+Les attractions plus anciennes sont plus bas dans le classement. Seul
+**[Peter Pan's Flight](ref:magic-kingdom-park/peter-pans-flight)**, un dark
+ride de 1971 ouvert deux jours après le parc, figure dans le tableau avant
+Space Mountain.
 
 ## Les cinq montagnes russes
 
@@ -156,8 +146,8 @@ des personnages animés trient des pierres précieuses. La taille minimale est d
 
 **[Space Mountain](ref:magic-kingdom-park/space-mountain)** roule depuis le 15
 janvier 1975 dans Tomorrowland, sous un dôme blanc et presque entièrement dans
-le noir. Le train ne dépasse pas 43 km/h, ce qui paraît peu, mais sans lumière,
-tu ne vois pas venir le virage suivant. Le parcours fait presque un kilomètre et
+le noir. Le train ne dépasse pas 43 km/h, et sans lumière, tu ne vois pas
+venir le virage suivant. Le parcours fait presque un kilomètre et
 le trajet dure un peu plus de deux minutes et demie. Avec 112 centimètres, sa
 taille minimale est la plus haute du parc après celle de TRON.
 
@@ -222,22 +212,17 @@ Voici comment évoluent les huit plus longues files de 8 h à 22 h, heure locale
 
 ```
 
-**À TRON, la file ne raccourcit pas.** Elle est la plus courte pendant la
-première heure, s’allonge l’après-midi et atteint son maximum le soir. Si tu as
-raté TRON à l’ouverture, inutile d’espérer une bonne affaire après le dîner.
-Dans notre analyse du rope drop, TRON est un « conseil fort », la seule
+À TRON, la file est la plus courte pendant la première heure, s’allonge
+l’après-midi et atteint son maximum le soir. Dans notre analyse du rope drop, TRON est un « conseil fort », la seule
 attraction du parc dans ce cas.
 
-**Tiana's Bayou Adventure démarre presque à vide.** Pendant la première heure,
-la file ne fait qu’une fraction de ce qu’elle sera à midi, et elle reste à ce
+À Tiana's Bayou Adventure, pendant la première heure, la file ne fait qu’une fraction de ce qu’elle sera à midi, et elle reste à ce
 niveau jusqu’en début de soirée. À Buzz Lightyear's Space Ranger Spin, la
 journée se déroule de la même façon. Les deux ont droit à un « bon conseil »
 dans notre analyse du rope drop.
 
-**Seven Dwarfs Mine Train se calme le soir.** De midi jusqu’au soir, la file
-reste au même niveau, puis elle raccourcit dans les dernières heures avant la
-fermeture. Si TRON et Tiana's remplissent ta matinée, c’est l’attraction de la
-fin de journée.
+À Seven Dwarfs Mine Train, la file reste au même niveau de midi jusqu’au soir,
+puis elle raccourcit dans les dernières heures avant la fermeture.
 
 Fais donc TRON à l’ouverture, Tiana's juste après et le Mine Train dans la
 dernière heure. À Space Mountain, la file est la plus longue vers midi, celle de
@@ -281,12 +266,11 @@ d’après les temps d’attente prévus pour la journée.
 
 ## Avec de jeunes enfants
 
-Pour une famille avec de jeunes enfants, la journée se passe dans Fantasyland.
+Avec de jeunes enfants, tu passes surtout la journée dans Fantasyland.
 On y trouve Peter Pan's Flight, « it's a small world », le Mine Train, les
 tasses du Mad Tea Party et, dans Storybook Circus, Dumbo the Flying Elephant, où
 chaque enfant décide lui-même à quelle hauteur vole son éléphant. Dumbo n’a pas
-de taille minimale, et The Barnstormer, juste à côté, se fait dès 89
-centimètres. Pour beaucoup d’enfants, c’est la première montagne russe.
+de taille minimale, et The Barnstormer, juste à côté, se fait dès 89 centimètres.
 
 Si un enfant est trop petit pour une attraction, les parents n’ont pas à faire
 la queue deux fois. Avec Rider Switch, un adulte monte pendant que l’autre
@@ -296,9 +280,7 @@ seul dehors. Pour changer une couche, réchauffer un biberon ou trouver un coin
 calme, il y a le Baby Care Center du parc, et c’est là que le personnel amène
 aussi les enfants qui ont perdu leurs parents.
 
-Avec de jeunes enfants, prévois une journée plus courte, avec les spectacles
-climatisés à midi, une pause à l’hôtel l’après-midi s’il est sur la ligne du
-monorail, et un retour au parc pour le feu d’artifice.
+À midi, emmène-les aux spectacles climatisés, l’après-midi à l’hôtel s’il est sur la ligne du monorail, et de nouveau au parc pour le feu d’artifice.
 
 ## Lightning Lane
 
@@ -325,12 +307,9 @@ Les prix changent d’un jour à l’autre. Le 30 septembre 2026, un mercredi de
 faible affluence, nous avons relevé en direct 27 dollars pour le Multi Pass et
 329 dollars pour le Premier Pass, puis 23 et 299 dollars le lendemain. Le
 Single Pass de TRON coûtait 19 dollars les deux jours, celui de Seven Dwarfs
-Mine Train 11 dollars le 30 septembre. Ce jour-là, les deux étaient marqués
-comme indisponibles. Celui de TRON était de nouveau en vente le 30 septembre
+Mine Train 11 dollars le 30 septembre. Ce jour-là, on ne pouvait acheter ni
+l’un ni l’autre. Celui de TRON était de nouveau en vente le 30 septembre
 pour le lendemain.
-
-D’après notre analyse du rope drop, c’est aussi à TRON qu’arriver tôt fait
-gagner le plus de temps. Les 19 dollars font donc concurrence au réveil matinal.
 
 ## Quand y aller
 
@@ -338,17 +317,15 @@ gagner le plus de temps. Les 19 dollars font donc concurrence au réveil matinal
 
 ```
 
-Les écarts sont plus nets d’un mois à l’autre que d’un jour de la semaine à
-l’autre. Le mois le plus calme que nous ayons mesuré est septembre, et nous
+Le mois le plus calme que nous ayons mesuré est septembre, et nous
 avons des valeurs pour presque chacun de ses jours. Les mois tout en haut de
 l’échelle reposent en revanche sur peu de jours, cinq en janvier, quatre en mars
-et huit en décembre, alors prends-les comme un indice, pas comme un résultat.
+et huit en décembre.
 Pour février, octobre et novembre, nous n’avons encore aucune valeur. Au 28
 septembre 2026, nous comptons 196 jours mesurés, pour la plupart depuis avril.
 
 La courbe des jours de la semaine est plate, et les médianes ne s’écartent que
-d’un cran. Il n’y a pas de jour de la semaine à viser en particulier. Dans
-certains autres parcs, il y en a un, et la [page des meilleures périodes](/meilleure-periode-pour-visiter) le nomme.
+d’un cran. Il n’y a pas de jour de la semaine à viser en particulier. Quand un autre parc en a un, il figure sur la [page des meilleures périodes](/meilleure-periode-pour-visiter).
 
 Depuis son ouverture, le Magic Kingdom a fermé temporairement neuf fois à cause
 d’ouragans, la dernière fois en octobre 2024, pour l’ouragan Milton.
@@ -366,8 +343,7 @@ Mickey's Not-So-Scary Halloween Party a lieu 38 soirs entre le 7 août et le 31
 octobre 2026, et d’après Disney, toutes les dates affichent complet. Ces
 soirs-là, le parc ferme dès 18 h pour les autres visiteurs, et la soirée dure de
 19 h à minuit. En octobre, il reste les 6, 8, 9, 13, 15, 16, 18, 22, 23, 25, 27,
-29 et 31. Si tu viens l’un de ces jours sans billet pour la soirée, ta journée
-sera courte. Ce que propose la soirée, tu le trouves dans notre tour d’horizon
+29 et 31. Ce que propose la soirée, tu le trouves dans notre tour d’horizon
 [Halloween aux États-Unis](/blog/halloween-etats-unis-parcs-2026).
 
 Vient ensuite Mickey's Very Merry Christmas Party, 25 soirs du 8 novembre au 22
@@ -433,13 +409,12 @@ octobre et le 14 décembre 2026, d’après Disney, le parc ouvre à 8 h ou 9 h 
 ferme à 22 h ou 23 h, et dès 18 h les soirs de fête.
 
 **Billets.** Disney fixe les prix selon la date, et ils figurent dans le
-calendrier de [disneyworld.com](https://disneyworld.com/). Nous ne relevons pas
-les prix d’entrée, seulement ce que coûte Lightning Lane en plus. Avec le Park
+calendrier de [disneyworld.com](https://disneyworld.com/). Avec le Park
 Hopper, tu peux passer du premier parc à l’un des trois autres à n’importe
 quelle heure, tant qu’il y reste de la place.
 
-**Restauration.** Notre base de données recense (au 30 septembre 2026) 23
-points de restauration dans le parc, du Cinderella's Royal Table au comptoir de
+**Restauration.** Le parc compte (au 30 septembre 2026) 23 points de
+restauration, du Cinderella's Royal Table au comptoir de
 Casey's Corner. L’alcool y a été interdit jusqu’en 2012, et depuis 2018, il est
 servi dans tous les restaurants avec service à table. Dans le château lui-même,
 on mange au Cinderella's Royal Table, et dans celui de la Bête, tiré de _La
@@ -463,7 +438,7 @@ octobre 2026.
 
 Non. Dans la comparaison plus haut, le Magic Kingdom a le temps d’attente
 typique le plus court des quatre parcs Disney de Floride, et EPCOT le plus long.
-Pourquoi, nous ne le voyons pas dans nos données. Dans le parc, c’est une seule
+Dans le parc, c’est une seule
 attraction, TRON, qui a de loin la plus longue file.
 
 ### Quelle attraction a la plus longue file au Magic Kingdom ?
@@ -474,8 +449,7 @@ tableau plus haut.
 ### Quand la file de TRON est-elle la plus courte ?
 
 Pendant la première heure après l’ouverture du parc. Elle s’allonge ensuite au
-fil de la journée et atteint son maximum le soir, donc tu attends plus
-longtemps le soir que le matin.
+fil de la journée et atteint son maximum le soir.
 
 ### Splash Mountain existe-t-elle encore ?
 
@@ -528,8 +502,8 @@ petit des deux parcs qui a les files les plus longues. Les détails sont dans
 notre article sur
 [Disneyland Paris](/blog/disneyland-paris-temps-d-attente-conseils).
 
-Le Magic Kingdom devient un autre parc en décembre. La semaine entre Noël et le
-Nouvel An est la ligne la plus chargée de tout notre tableau annuel, et la Very
+La semaine entre Noël et le Nouvel An est la plus chargée de notre tableau
+annuel, et la Very
 Merry Christmas Party se tient 25 soirées. Les dates et les chiffres sont dans
 [Noël et Nouvel An à Orlando et à Paris](/blog/noel-nouvel-an-orlando-paris-2026).
 

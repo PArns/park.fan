@@ -72,17 +72,10 @@ rideLinks:
   - walibi-belgium/popcorn-revenge
 ---
 
-Wie op een regendag naar een pretpark gaat, staat gemiddeld korter in de rij. In
-alle twaalf parken die we hebben onderzocht, was de wachttijd bij de headliners
+In alle twaalf parken die we hebben onderzocht, was de wachttijd bij de headliners
 op regendagen korter dan op vergelijkbare droge dagen. Het verschil loopt van
-ongeveer 4 procent in Disneyland Paris tot ongeveer 31 procent in Movie Park. Op
-zo'n dag heb je vooral wat aan de overdekte attracties. In Toverland is de helft van de 44
+ongeveer 4 procent in Disneyland Paris tot ongeveer 31 procent in Movie Park. In Toverland is de helft van de 44
 attracties overdekt, in Walibi Holland geen enkele.
-
-Voor negen parken vergelijken we attractie voor attractie welke overdekt zijn,
-aan de hand van wat de parken zelf opgeven. Het gaat om Europa-Park,
-Phantasialand, de Efteling, Toverland, Movie Park Germany, Plopsaland
-Deutschland, Heide Park, Walibi Belgium en Walibi Holland.
 
 ## Hoe we regendagen hebben gemeten
 
@@ -146,8 +139,7 @@ steeds in alle twaalf parken korter. Hoeveel korter ze zijn, loopt dan sterk
 uiteen, omdat er nog maar weinig van zulke dagen overblijven. In Europa-Park is
 het verschil dan ongeveer 23 procent, gemeten op acht dagen, in Movie Park
 ongeveer 27 procent op zes dagen. Ik zou de tabel daarom niet als ranglijst
-lezen. Wel staat vast dat het in geen van de twaalf parken op regendagen drukker
-was.
+lezen.
 
 Met het aantal overdekte attracties heeft het verschil weinig te maken. In
 Walibi Holland staat geen enkele attractie in een hal, en op regendagen was de
@@ -181,9 +173,7 @@ Park samen ziet dat er per maand zo uit:
 | augustus   |                             185 |                            18 % |
 | september  |                             162 |                            16 % |
 
-Dit is maar één jaar. In 2026 was juli droog en waren mei en juni nat. In 2027
-kan dat er heel anders uitzien. Als grove indicatie kun je er wel mee werken: in
-het hoogseizoen was ongeveer één op de vijf openingsdagen een
+De cijfers komen uit één jaar, en in 2026 was juli droog en waren mei en juni nat. In het hoogseizoen was ongeveer één op de vijf openingsdagen een
 regendag, in sommige maanden één op de drie.
 
 ## Europa-Park
@@ -243,9 +233,7 @@ en het Verrückte Hotel Tartüff.
 
 ![Een reusachtige aardewerken pot met open deksel, er staat een ladder tegenaan | In de hal van Winja’s Fear & Force in Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
-Taron, Black Mamba en de andere grote achtbanen rijden buiten. Bij aanhoudende
-regen heb je in Brühl drie achtbanen onder een dak: de twee in Wuze Town en
-Crazy Bats.
+Taron, Black Mamba en de andere grote achtbanen rijden buiten.
 
 ```ride-waits-widget rides=phantasialand/winjas-fear|Winja's Fear|Spinning Coaster;phantasialand/winjas-force|Winja's Force|Spinning Coaster;phantasialand/mystery-castle|Mystery Castle|Drop Tower;phantasialand/maus-au-chocolat|Maus au Chocolat|Dark Ride;phantasialand/crazy-bats|Crazy Bats|Indoor-coaster columns=type,peak,days
 
@@ -272,13 +260,7 @@ Efteling Museum overdekt.
 
 ![De ingang van Droomvlucht bij nacht, roze en groen aangelicht | Overdag is deze muur wit. | right](/media/efteling/droomvlucht.jpg)
 
-Joris en de Draak, Baron 1898 en Python rijden buiten. Kom je voor de
-achtbanen, dan neem je een regenjas mee en stap je in wat er op dat moment
-rijdt. Hou je van darkrides, dan kom je in de Efteling ook zonder de
-buitenattracties goed een regendag door. Of een overdekte attractie op dit
-moment voor onderhoud dicht is, staat op de pagina van die attractie en in de
-kalender van het park. Ga je speciaal voor de darkrides, kijk dat dan de avond
-ervoor na.
+Joris en de Draak, Baron 1898 en Python rijden buiten. Of een overdekte attractie voor onderhoud dicht is, staat op de pagina van die attractie en in de kalender van het park, en dat kijk je het best de avond ervoor na.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Hangbaan;efteling/symbolica|Symbolica|Trackless Ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Indoor-coaster columns=type,peak,days
 
@@ -311,10 +293,6 @@ openingsjaar staat. Troy, Fēnix, Booster Bike en Dwervelwind rijden buiten. In
 de Wirbelbaum, een reuzenrad van 13 meter hoog, bepaal je zelf hoe wild je
 mandje ronddraait. In Land van Toos draait Djinn, een zweefmolen van 12,8 meter
 hoog, zijn rondjes boven de oosterse markt. Je mag erin vanaf 100 centimeter.
-
-Op regendagen waren de wachttijden in Toverland 13 procent korter. Met kleine
-kinderen zit je er op zo'n dag goed. Voor Troy en Fēnix heb je een regenjas
-nodig.
 
 ```ride-waits-widget rides=attractiepark-toverland/toos-express|Toos-Express|Familieachtbaan;attractiepark-toverland/villa-fiasko|Villa Fiasko|Funhouse;attractiepark-toverland/wirbelbaum|Wirbelbaum|Reuzenrad columns=type,peak,days
 
@@ -364,8 +342,6 @@ kleine kinderen heb je op een regendag in de hal genoeg te doen. Voor tieners
 die voor de achtbanen komen, blijft onder een dak alleen Tabaluga's
 Rollercoaster over, een familieachtbaan.
 
-Of de hal de 16 procent verklaart, valt met negen regendagen niet te zeggen.
-
 ```ride-waits-widget rides=plopsaland-deutschland/tabalugas-rollercoaster|Tabaluga's Rollercoaster|Familieachtbaan;plopsaland-deutschland/mias-elf-flight|Mia's Elf Flight|Kinderrit;plopsaland-deutschland/the-smurfs-adventure|The Smurfs' Adventure|Dark Ride columns=type,peak,days
 
 ```
@@ -380,8 +356,7 @@ tweede wildwaterbaan, die in 2011 dichtging. De derde is de **Drachengrotte** in
 het themagebied Exploria.
 
 Naar Heide Park ga je bij regen het best als je toch al voor Colossos en de
-andere buitenattracties komt en op een droge middag hoopt. Regent het van 's
-ochtends tot 's avonds, dan heb je er drie overdekte attracties.
+andere buitenattracties komt en op een droge middag hoopt.
 
 ```ride-waits-widget rides=heide-park/ghostbusters-5d|Ghostbusters 5D|Simulator;heide-park/daemonen-gruft|Dämonen Gruft|Dark Ride columns=type,peak,days
 
@@ -408,8 +383,6 @@ hetzelfde traject achteruit terug. Van de achtbanen in het park is alleen
 Turbine overdekt, Kondaa, Vampire en Cobra rijden buiten. Verder zijn het Palais
 du Génie en de Spinning Taxi overdekt.
 
-Op regendagen waren de wachttijden in Walibi Belgium 13 procent korter.
-
 ```ride-waits-widget rides=walibi-belgium/turbine|Turbine|Shuttle Coaster;walibi-belgium/popcorn-revenge|Popcorn Revenge|Dark Ride;walibi-belgium/challenge-of-tutankhamon|Challenge of Tutankhamon|Dark Ride columns=type,peak,days
 
 ```
@@ -421,9 +394,7 @@ Meer over het park lees je in de [Walibi Belgium-gids](/blog/walibi-belgium-wach
 In [Walibi Holland](ref:walibi-holland) in Biddinghuizen staat geen van de 39
 attracties in een hal. Toen het park in april 2026 zijn winteropenstelling
 schrapte, noemde algemeen directeur Mascha Taminiau de afhankelijkheid van het
-weer als een van de redenen. Op regendagen waren de wachttijden er 6 procent
-korter. Voor een dag waarop het blijft regenen, zou ik niet naar Biddinghuizen
-rijden.
+weer als een van de redenen.
 
 Meer over het park lees je in de [Walibi Holland-gids](/blog/walibi-holland-untamed-hard-gaan).
 
@@ -540,8 +511,7 @@ Tussen 24 december 2025 en 5 oktober 2026 viel er, afhankelijk van het park, op
 15 tot 26 procent van de openingsdagen minstens 2 millimeter regen. Voor
 Europa-Park, Phantasialand, de Efteling, Movie Park, Plopsaland en Heide Park
 samen was juli de droogste maand van april tot en met september (10 procent van
-de openingsdagen) en juni de natste (32 procent). Het gaat om één jaar, een
-gemiddelde over meerdere jaren hebben we nog niet.
+de openingsdagen) en juni de natste (32 procent). De cijfers komen uit één jaar.
 
 ## Bronnen & verder lezen
 

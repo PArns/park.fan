@@ -7,11 +7,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Der Parc Astérix hat 1989 für 15.000 Besucher am Tag eröffnet, im ersten Jahr
-  150.000 am Tor abgewiesen und zählt heute fast drei Millionen Gäste im Jahr.
-  Alle Achterbahnen mit ihren Daten, Wartezeiten aus unseren Messungen, die
-  Reihenfolge für einen Tag, was Filotomatix kostet, wie du ohne Auto hinkommst,
-  Peur sur le Parc, Noël Gaulois und was bis 2028 schließt oder neu kommt.
+  Der Parc Astérix hat 1989 für 15.000 Besucher am Tag eröffnet und im ersten
+  Jahr 150.000 am Tor abgewiesen. Heute kommen fast drei Millionen im Jahr. Zur
+  Öffnung lohnt sich Tonnerre 2 Zeus, Toutatis erst am frühen Nachmittag.
 tags:
   - parc-asterix
   - toutatis
@@ -74,10 +72,7 @@ zweitgrößten, weil er Disneyland Paris als ein Ziel rechnet. Zu seinen Achterb
 gehören Goudurix, die schon am Eröffnungstag fuhr, und
 [Toutatis](ref:parc-asterix/toutatis), die höchste Achterbahn Frankreichs.
 
-Die Wartezeiten stammen aus unseren Messungen seit Weihnachten 2025, die übrigen
-Angaben von den Seiten des Parks mit dem Stand vom 2. Oktober 2026 und aus den
-Artikeln und Datenbanken, die am Ende verlinkt sind. Wo sich zwei davon widersprechen,
-stehen beide Zahlen da.
+Die Wartezeiten messen wir seit Weihnachten 2025, Preise und Termine sind auf dem Stand vom 2. Oktober 2026.
 
 ## Parc Astérix Wartezeiten, Bahn für Bahn
 
@@ -86,15 +81,12 @@ stehen beide Zahlen da.
 ```
 
 Ganz oben stehen Anfang Oktober 2026 zwei Familienachterbahnen, Cétautomatix und
-Pégase Express, und erst dahinter der Headliner. Das hat mit der Kapazität zu
-tun. Toutatis schafft laut der Roller Coaster DataBase (RCDB) 1.260 Fahrgäste
+Pégase Express, und erst dahinter der Headliner. Toutatis schafft laut der Roller Coaster DataBase (RCDB) 1.260 Fahrgäste
 pro Stunde, OzIris 1.600. Für Cétautomatix kam das Fachportal Androland vor der
 Eröffnung auf rund 700, mit neun Wagen zu vier Plätzen und einer Abfahrt alle 20
-Sekunden. Eine kleine Bahn mit niedriger Mindestgröße, auf die ganze Familien
-gemeinsam wollen, füllt ihre Warteschlange schneller als eine große, auf die nur
-die Hälfte der Gruppe darf.
+Sekunden. Bei Cétautomatix und Pégase Express stellt sich die ganze Familie an, weil Kinder mit Begleitung ab 100 Zentimetern mitdürfen, bei Toutatis erst ab 130.
 
-Die Tabelle vergleicht den Parc Astérix mit dem Disneyland Park, mit Walibi Belgium, das demselben Konzern gehört, und mit dem Europa-Park. Sie wird laufend neu berechnet:
+Die Tabelle vergleicht den Parc Astérix mit dem Disneyland Park, mit Walibi Belgium, das demselben Konzern gehört, und mit dem Europa-Park.
 
 ```park-comparison-widget slugs=parc-asterix,/parks/europe/france/paris/disneyland-park,walibi-belgium,europa-park show=quietest highlight=parc-asterix
 
@@ -137,7 +129,7 @@ Der Konzern, dem auch [Walibi Belgium](ref:walibi-belgium) und
 [Walibi Holland](ref:walibi-holland) gehören, betreibt den Park bis heute;
 Direktorin ist seit Mai 2021 Delphine Pons.
 
-Seitdem ist er stetig gewachsen. 2012 kamen das Égypte-Viertel und OzIris, für
+2012 kamen das Égypte-Viertel und OzIris, für
 zusammen 20 Millionen Euro, damals die größte Investition der Parkgeschichte.
 2017 folgte Pégase Express für 16 Millionen, 2023 Toutatis. Nach dem Index der Themed Entertainment Association (TEA) und den Angaben des Parks kamen 2.326.000 Besucher im Jahr 2019, 2.632.000 im Jahr 2022, 2.815.000 im Jahr 2023,
 2.842.000 im Jahr 2024 und 2,9 Millionen in der Saison 2024/25. Am 20. Oktober
@@ -196,11 +188,9 @@ einmal über eine Kante mit 101 Grad Neigung, also über die Senkrechte hinaus.
 
 ```
 
-Bei den Zahlen sind sich die Quellen nicht ganz einig. RCDB nennt 51 Meter Höhe
+RCDB nennt 51 Meter Höhe
 und 107 km/h, Intamin 53 Meter und ebenfalls 107 km/h, der Park 51 Meter und
-110 km/h; mit diesen 110 km/h nennt er Toutatis „die schnellste Attraktion Frankreichs“. Wie
-viele Abschüsse es sind, hängt vom Zählen ab: sieben laut Intamin, fünf vorwärts
-und zwei rückwärts, vier laut Wikipedia, drei davon auf derselben
+110 km/h; mit diesen 110 km/h nennt er Toutatis „die schnellste Attraktion Frankreichs“. Intamin zählt sieben Abschüsse, fünf vorwärts und zwei rückwärts, Wikipedia vier, drei davon auf derselben
 Abschussstrecke. RCDB nennt 1.075 Meter Schiene und, weil der Zug
 Teile davon zweimal fährt, 1.361 Meter Fahrstrecke; daher die „mehr als 1.300
 Meter“ auf der Seite des Parks. Drei Inversionen, gut zwei Minuten Fahrt. Der Park wirbt außerdem mit 23 Momenten Airtime und
@@ -213,8 +203,7 @@ Euro, der ganze Bereich Festival Toutatis nach Angaben des Parks 36 Millionen.
 Zur Öffnung musst du hier nicht rennen. Die Warteschlange ist um zehn schon so
 lang wie am Mittag, und am kürzesten wird sie nach unserer Analyse etwa
 dreieinhalb Stunden nach Öffnung. Hotelgäste dürfen eine halbe Stunde vor allen
-anderen in die Bereiche Toutatis und Égypte; ob das der ganze Grund ist, lässt
-sich aus unseren Messungen nicht ablesen. Wenn du allein fahren kannst, nimm die
+anderen in die Bereiche Toutatis und Égypte. Wenn du allein fahren kannst, nimm die
 Single-Rider-Spur, die es nur hier und bei OzIris gibt.
 
 ### OzIris
@@ -223,8 +212,7 @@ Single-Rider-Spur, die es nur hier und bei OzIris gibt.
 Bereich Égypte. Für beides zusammen gab der Park 20 Millionen Euro aus, nach
 einem Bericht von NewsParcs die Hälfte davon für die Kulisse. Bolliger &
 Mabillard hat den Inverted Coaster gebaut. Der Zug hängt unter der Schiene, die
-Beine baumeln frei. 40 Meter Lift, 1.000 Meter Strecke, 90 km/h, fünf
-Inversionen. Welche fünf, ist strittig. RCDB nennt Dive Loop, Looping, Immelmann
+Beine baumeln frei. 40 Meter Lift, 1.000 Meter Strecke, 90 km/h, fünf Inversionen. RCDB nennt Dive Loop, Looping, Immelmann
 und zwei Zero-G Rolls, die Wikipedia setzt einen Korkenzieher statt der ersten
 Zero-G Roll. Laut Wikipedia taucht der Zug in einen Tunnel unter einem
 Wasserbecken. Drei Züge zu 32 Plätzen, 1.600 Fahrgäste pro Stunde, Mindestgröße
@@ -372,13 +360,7 @@ Cétautomatix, Discobélix und La Trace du Hourra. Bei den anderen fünf liegt d
 schlimmste Tag im Sommer 2026, zwischen Mai und August (Stand 2. Oktober 2026).
 
 Zu Noël Gaulois öffnet der Park dieses Jahr vom 19. Dezember 2026 bis zum 3.
-Januar 2027, genau in den französischen Weihnachtsferien, an sechzehn Tagen. Es
-gibt zwei Erklärungen für die Rekorde, und aus unseren Messungen lässt sich
-nicht ablesen, welche den Ausschlag gibt. Die eine ist, dass sich alle, die über
-Weihnachten kommen wollen, auf diese sechzehn Tage drängen. Die andere steht in
-den FAQ des Parks: Im Winter sind
-die Wasserbahnen zu, bei Minusgraden auch einzelne andere Attraktionen, und wer
-da ist, verteilt sich auf weniger Bahnen.
+Januar 2027, genau in den französischen Weihnachtsferien, an sechzehn Tagen. Im Winter sind laut den FAQ des Parks die Wasserbahnen zu, bei Minusgraden auch einzelne andere Attraktionen, und wer da ist, verteilt sich auf weniger Bahnen.
 
 ## Wann du hinfahren solltest
 
@@ -390,8 +372,7 @@ da ist, verteilt sich auf weniger Bahnen.
 
 Der Samstag ist in unseren Messungen der vollste Tag, mit Abstand, und der
 Mittwoch der ruhigste. Wenn du dir den Tag aussuchen kannst,
-nimm den Mittwoch. Andere Parks haben ihren eigenen ruhigen Tag, gesammelt auf der
-[Beste-Reisezeit-Seite](/beste-reisezeit).
+nimm den Mittwoch. Die ruhigsten Tage der anderen Parks stehen auf der [Beste-Reisezeit-Seite](/beste-reisezeit).
 
 ### Der Monat
 
@@ -446,7 +427,7 @@ heb sie dir für den späten Nachmittag auf.
 
 Mittags laufen die Shows. Toutatis kommt am frühen Nachmittag dran, denn nach
 unserer Analyse liegt das beste Fenster dort etwa dreieinhalb Stunden nach
-Öffnung. Wer allein fahren kann, nimmt die Single-Rider-Spur.
+Öffnung.
 
 Gegen Abend folgen La Trace du Hourra und noch einmal OzIris. In der letzten
 Stunde sind die meisten Warteschlangen wieder kurz, nur Toutatis und Cétautomatix
@@ -522,22 +503,19 @@ Herbstferien offen, vorher schloss er im September, und Winterbetrieb gab es von
 
 ## Was schließt und was neu kommt
 
-Die Rue de Paris ist weg. Der Park hat ihre Schließung am 7. November 2025
-bekannt gegeben, mit ihr endeten das Karussell Les Chevaux du Roy und drei
+Die Schließung der Rue de Paris hat der Park am 7. November 2025 bekannt gegeben. Mit ihr endeten das Karussell Les Chevaux du Roy und drei
 Halloween-Häuser; die Automaten im Hôtel des Artistes und in der Maison du 14
 juillet standen schon seit September still. Ein Karussell und Teile der Kulisse
 gehen laut Park an den Freizeitpark Festiland, weitere Stücke an das Musée des
 Arts Forains in Paris.
 
-2027 wächst die Grèce. Angekündigt sind zwei Familienattraktionen, ein
-Spielplatz und ein Restaurant, La Table de Dionysos, mit 450 Plätzen. Nach
+Für 2027 hat der Park in der Grèce zwei Familienattraktionen, einen Spielplatz und das Restaurant La Table de Dionysos mit 450 Plätzen angekündigt. Nach
 Berichten von Androland und Parcs Actus orientiert sich die Gestaltung an der
 griechischen Insel Symi; Androland nennt zwei kleine Freifalltürme von Zierer und
 eine Go Go Bounce von Zamperla, offiziell ist das nicht. Im selben Jahr soll das
 vierte Hotel öffnen, L'Odyssée, mit 300 Zimmern und vier Sternen.
 
-2028 kommt Londinium. Auf dem Gelände des alten Paris baut der Park ein
-überdachtes Viertel nach dem Album „Asterix bei den Briten“. Angekündigt sind
+Auf dem Gelände des alten Paris baut der Park bis 2028 Londinium, ein überdachtes Viertel nach dem Album „Asterix bei den Briten“. Angekündigt sind
 eine große Achterbahn mit Kulissen, ein interaktiver Dark Ride für Familien, ein
 Kletterspielplatz, ein Pub und Läden. RCDB führt die Achterbahn bereits: ein
 Multi Dimension Coaster von Intamin mit drehbaren Wagen, 17 Meter hoch, in der
@@ -555,8 +533,7 @@ Euro, für Erwachsene und Kinder gleich, gibt es aber nur an wenigen Tagen. Das 
 beginnt bei 56 Euro für Erwachsene und 53 für Kinder, wenn du mindestens sieben
 Tage vorher buchst. Zwei Tage hintereinander kosten an der Kasse 125 und 109
 Euro. Online gekaufte Tickets gelten für ein festes Datum; reservieren musst du
-sonst nichts. Für die Saison 2027 hatte der Park am 2. Oktober noch keine
-Jahreskarten im Verkauf.
+sonst nichts. Jahreskarten für die Saison 2027 verkauft der Park noch nicht.
 
 ### Anreise
 

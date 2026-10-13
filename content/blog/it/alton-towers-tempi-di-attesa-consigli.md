@@ -55,7 +55,7 @@ britanniche, e lì nessuna costruzione può superare le chiome degli alberi. Ci�
 quell'altezza va progettato in modo che dai dintorni non si riconosca. Per questo il binario di
 [Rita](ref:alton-towers/rita) è dipinto di rosso, e di verde scuro solo nei punti più alti.
 
-Le grandi attrazioni del parco vanno quindi verso il basso.
+Le grandi attrazioni del parco sono quindi basse o scavate sotto il livello del terreno.
 **[Nemesis Reborn](ref:alton-towers/nemesis-reborn)** corre dentro una cava scavata, con i
 passeggeri appesi sotto il binario tra le pareti di roccia.
 **[Oblivion](ref:alton-towers/oblivion)** è alta poco meno di 20 metri ma precipita per 55, perché
@@ -102,8 +102,7 @@ virtuale, e dal 2019 Galactica viaggia di nuovo senza.
 
 ```
 
-Nella Forbidden Valley ci sono anche due attrazioni senza binario.
-**[Nemesis Sub-Terra](ref:alton-towers/nemesis-sub-terra)** è una torre di caduta dentro un
+**[Nemesis Sub-Terra](ref:alton-towers/nemesis-sub-terra)**, anch'essa nella Forbidden Valley, è una torre di caduta dentro un
 edificio, in funzione dal 2012 al 2015 e di nuovo dal 2023.
 **[Toxicator](ref:alton-towers/toxicator)** è un Top Spin aperto il 15 marzo 2025. Sta su una
 piattaforma di cemento alta quasi cinque metri sopra il vialetto, così lo si può guardare da sotto.
@@ -223,19 +222,17 @@ di due metri. I bambini sotto i 90 cm entrano gratis.
 
 Dalla fine di dicembre 2025 misuriamo ogni cinque minuti i tempi di attesa di tutte le attrazioni
 del parco. Dato che d'inverno il parco tematico è chiuso, tutti i giorni misurati sono della
-stagione 2026. Il numero di giorni per ogni attrazione è nell'ultima colonna.
+stagione 2026.
 
 ```ride-waits-widget park=alton-towers top=8 columns=land,peak,days highlight=nemesis-reborn
 
 ```
 
-Così si allungano le code nel corso della giornata:
-
 ```hourly-profile-widget slug=alton-towers top=8
 
 ```
 
-Alton Towers accanto ad altri due parchi Merlin e a Europa-Park, con il calcolo rifatto ogni giorno:
+Il confronto con Thorpe Park, Heide Park ed Europa-Park lo ricalcoliamo ogni giorno.
 
 ```park-comparison-widget slugs=alton-towers,thorpe-park,heide-park,europa-park highlight=alton-towers
 
@@ -251,8 +248,6 @@ giornata. Oblivion, The Smiler e Wicker Man non sono tra queste.
 ```glossary-widget slug=rope-drop
 
 ```
-
-I giorni di apertura più tranquilli delle prossime settimane:
 
 ```best-days-widget slug=alton-towers
 
@@ -274,8 +269,6 @@ coincidono con quelle italiane, quindi se parti dall'Italia controlla il calenda
 inglese prima di prenotare. L'half term d'autunno cade nella seconda metà di ottobre. I fine
 settimana di Scarefest che lo precedono, dal 26 settembre, hanno le stesse decorazioni senza che in
 Inghilterra ci siano vacanze.
-
-Il meteo sul parco nei prossimi giorni:
 
 ```weather-widget slug=alton-towers
 
@@ -323,14 +316,12 @@ Dal 2026 il CBeebies Land ha un pacchetto suo, a 7 sterline per due corse o 10 s
 volta per attrazione. Il giorno stesso, nell'app si possono comprare singole corse con i biglietti
 One-Shot, finché ce ne sono.
 
-Se il Fastrack convenga dipende dal giorno che ti capita. In un giorno feriale fuori dalle vacanze
-inglesi, arrivando presto ne fai a meno. Un sabato durante le vacanze, per The Smiler e Wicker Man
+In un giorno feriale fuori dalle vacanze inglesi, arrivando presto fai a meno del Fastrack. Un sabato durante le vacanze, per The Smiler e Wicker Man
 comprerei Silver, non Bronze.
 
 ## Una giornata ad Alton Towers
 
-Fatti trovare alla monorotaia o all'ingresso alle **9:30**, così alle dieci sei dentro. La prima ora
-va alle quattro attrazioni per i più alti, quelle dove arrivare presto fa risparmiare di più. Io
+Fatti trovare alla monorotaia o all'ingresso alle **9:30**, così alle dieci sei dentro. Arrivare presto fa risparmiare di più alle quattro attrazioni per i più alti. Io
 comincerei con Spinball Whizzer, poi Rita e TH13TEEN nel Dark Forest, e da lì prenderei lo Skyride
 fino alla Forbidden Valley per Nemesis Reborn. Su un terreno così collinare, la seggiovia ti
 risparmia lunghe camminate.
@@ -339,10 +330,8 @@ Galactica è nella stessa area di Nemesis e ci sta subito dopo. Oblivion e The S
 sono per la tarda mattinata o il pomeriggio. In un giorno di Scarefest puoi tenere Wicker Man per la
 sera, quando viaggia al buio.
 
-Con bambini piccoli la giornata va diversamente. Prima il CBeebies Land e la montagna russa degli
-Octonauts, finché c'è poca gente, poi la Mutiny Bay e il Katanga Canyon. La monorotaia riporta al
-parcheggio e agli hotel fino a un'ora dopo la chiusura delle attrazioni, quindi la sera non serve
-correre.
+Con bambini piccoli, vai prima al CBeebies Land e alla montagna russa degli Octonauts, finché c'è poca gente, poi alla Mutiny Bay e al Katanga Canyon. La monorotaia riporta al
+parcheggio e agli hotel fino a un'ora dopo la chiusura delle attrazioni.
 
 ## Biglietti, parcheggio e come arrivare
 
@@ -395,7 +384,7 @@ le difficoltà con la folla continuerà a essere riconosciuto.
 
 ## Dormire al parco
 
-Dall'Italia Alton Towers non è una gita di un giorno, e il parco ha cinque strutture per dormire sul
+Il parco ha cinque strutture per dormire sul
 proprio terreno.
 
 L'**Alton Towers Hotel** del 1996 ha 180 camere in tredici categorie ed è costruito intorno a un
@@ -415,7 +404,7 @@ persona, nelle date di Scarefest da 100 sterline.
 
 ![Una dimora grigia con merlature, torri e giardini d'inverno vetrati dietro tassi potati e un'aiuola di lavanda | Le Towers e i loro giardini d'inverno. All'interno gira Hex. | wide](/media/alton-towers/the-towers.jpg)
 
-Il parco porta il nome di una dimora che esiste ancora. Sul terreno sorgeva già un insediamento
+Sul terreno sorgeva già un insediamento
 fortificato dell'età del ferro, e dal 1412 al 1924 la proprietà è appartenuta alla stessa famiglia,
 i Talbot, conti di Shrewsbury. La casa di oggi risale per lo più all'inizio dell'Ottocento. A
 ristrutturarla fu **Augustus Welby Pugin**, che lavorò anche al Palazzo di Westminster. La finestra
@@ -498,7 +487,7 @@ d'estate.
 
 ### Il Fastrack ad Alton Towers conviene?
 
-Dipende dalla fascia. Bronze da 35 sterline non vale né per The Smiler né per Wicker Man, le due
+Bronze da 35 sterline non vale né per The Smiler né per Wicker Man, le due
 attrazioni con le code più lunghe. Se vieni soprattutto per loro, ti serve Silver da 65 sterline o
 Gold da 95 sterline. In un giorno feriale fuori dalle vacanze di solito basta arrivare presto.
 

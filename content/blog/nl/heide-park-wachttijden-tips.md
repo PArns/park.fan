@@ -1,17 +1,15 @@
 ---
-title: 'Heide Park: Colossos van hout, en ernaast de ene Duitse primeur na de andere'
+title: 'Heide Park: Colossos van hout en vier Duitse primeurs'
 translationKey: heide-park-guide
 date: '2026-09-20'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Soltau staat de hoogste volledig houten achtbaan van Europa, en bijna drie
-  jaar lang mocht niemand erin. Hij opende in 2001. Daaromheen haalde
-  het park vier bouwsoorten als eerste naar Duitsland, en zijn toren van 103
-  meter begon als uitkijkpunt. Verder: wanneer het druk wordt, waarom een
-  rustige maandag in Soltau meestal een gesloten maandag is en waarom de Big
-  Loop op zijn 43e treinen kreeg in de stijl van 1983.
+  In Soltau staat de hoogste volledig houten achtbaan van Europa, en van juli
+  2016 tot april 2019 mocht niemand erin. Heide Park was het eerste park in
+  Duitsland met vier soorten achtbanen. Het rustigst is het op een vrijdag in
+  september.
 tags:
   - heide-park
   - colossos
@@ -62,21 +60,19 @@ waar niemand in mocht. Op **28 juli 2016** ging
 uit de lucht, omdat de rails na vijftien jaar versleten waren. Pas op
 **19 april 2019** reed hij weer.
 
-Hij kwam terug als houten achtbaan, en vanzelfsprekend was dat niet. Sinds 2011
+Sinds 2011
 zet het bedrijf Rocky Mountain Construction stalen rails op het oude houtwerk
 van versleten woodies en maakt er hybrides van. In hetzelfde jaar dat Colossos
-terugkwam, opende Walibi Holland precies zo’n ombouw:
-[Untamed](ref:walibi-holland/untamed?bare), voorheen de houten baan Robin Hood.
+terugkwam, opende Walibi Holland [Untamed](ref:walibi-holland/untamed?bare), zo’n ombouw van de houten baan Robin Hood.
 Merlin koos in Soltau de andere weg en liet nieuw houten spoor leggen, met
 nieuwe treinen erbij. Op 13 april 2026 was de eerste rit **25 jaar** geleden;
 het park vierde dat op 12 september met een avondfeest waar alleen winnaars van
 een gouden ticket bij waren.
 
-## Wat hier het eerst stond
+## Vier Duitse primeurs
 
-Voor Colossos rijden achtbaanfans naar Soltau. Bij vier bouwsoorten die eromheen
-staan, was dit park de eerste in Duitsland, en de laatste drie daarvan kwamen
-binnen zeven jaar.
+Bij vier bouwsoorten die rond Colossos staan, was Heide Park de eerste in
+Duitsland, en de laatste drie daarvan kwamen binnen zeven jaar.
 
 De reeks begon in **1999**, twee jaar vóór Colossos, met een baan die toen
 Limit heette en vandaag **[Toxic Garden](ref:heide-park/toxic-garden)**: de
@@ -96,25 +92,23 @@ meter en 49 seconden is hij terug in het station.
 **[Krake](ref:heide-park/krake)** volgde op **16 april 2011** als de eerste
 dive coaster van Duitsland, gebouwd door Bolliger & Mabillard voor 12 miljoen
 euro, met het station op de plek van het vroegere dolfinarium. 41 meter hoog,
-zes mensen naast elkaar in één rij, en boven stopt de trein tot de voorste rij
-over de rand hangt. Dan gaat het er 87 graden af, dus bijna verticaal, met
-**103 km/u** door een splashdown en een immelmann in. Het wachten boven de rand
-duurt een paar seconden en voelt een stuk langer.
+zes mensen naast elkaar in één rij, en boven stopt de trein een paar seconden
+als de voorste rij over de rand hangt. Dan gaat het er 87 graden af, dus bijna
+verticaal, met **103 km/u** door een splashdown en een immelmann in.
 
 **[Flug der Dämonen](ref:heide-park/flug-der-daemonen)** was op **29 maart
-2014** de eerste wing coaster van het land. Bij die bouwwijze zit niemand boven
-of onder de rails, maar links en rechts ernaast, met niets voor je voeten. 40
+2014** de eerste wing coaster van het land. Bij die bouwwijze zitten de passagiers links en rechts naast de rails, met niets voor je voeten. 40
 meter hoog, 772 meter lang, 100 km/u, vijf inversies, drie minuten rijtijd,
 1.060 gasten per uur.
 
-Zo staat het park ten opzichte van drie andere [grote Duitse parken](/blog/beste-pretparken-in-duitsland), met de
-cijfers van vandaag:
+De tabel vergelijkt Heide Park met drie andere
+[grote Duitse parken](/blog/beste-pretparken-in-duitsland), elke dag opnieuw berekend.
 
 ```park-comparison-widget slugs=heide-park,europa-park,phantasialand,movie-park-germany highlight=heide-park
 
 ```
 
-## Colossos: twee keer houten spoor
+## De houten achtbaan Colossos
 
 ```glossary-widget slug=wooden-coaster
 
@@ -129,26 +123,23 @@ hoogste volledig houten achtbaan. Wildfire in het Zweedse Kolmården is met
 115 km/u sneller en volgens de Roller Coaster DataBase ook hoger, maar rijdt op
 stalen toplagen (Topper Track) van Rocky Mountain Construction.
 
-De cijfers hangen af van wie je het vraagt. De Roller Coaster DataBase noemt
+De Roller Coaster DataBase noemt
 **50 meter** hoogte, een eerste afdaling van **48,5 meter** onder 61 graden,
 **110 km/u** en **1.344 meter** spoor in twee minuten en 25 seconden; het park
 zelf houdt het op 60 meter en 1.500 meter. Het ontwerp kwam van
 ingenieursbureau Stengel, gebouwd heeft Intamin hem samen met houtbouwbedrijf
 Cordes.
 
-De rails waren het probleem. Intamin had voor Colossos een methode gebruikt
+Intamin had voor Colossos een methode gebruikt
 waarbij het rijvlak uit verlijmde houtlagen wordt voorgefabriceerd en daarna
 gemonteerd. Na vijftien jaar was het op, de baan ging in 2016 dicht, in juni
 2018 ging de eerste oude rail eruit, en toen hij weer openging heette hij
 **Colossos – Kampf der Giganten**. Op de laatste heuvel staat sindsdien een
 vuurspuwende reus, en de trein rijdt dwars door hem heen.
 
-Een stalen rail ligt er tot op vandaag niet op. Wie van houten achtbanen houdt,
-merkt dat vanaf de eerste drop, en zijn rug uiterlijk in de eerste bocht.
-
 [Colossos](ref:heide-park/colossos-kampf-der-giganten?full)
 
-## De rest van het park: oudere heren en een toren
+## De andere banen en de toren
 
 De eerste achtbaan van het park is de
 **[Big Loop](ref:heide-park/big-loop)** uit **1983**, een Vekoma-looper met
@@ -156,11 +147,11 @@ twee loopings en een dubbele kurkentrekker, ruim 700 meter lang en in minder dan
 twee minuten voorbij. In
 2010 kreeg hij de treinen van de gesloopte Corkscrew uit Alton Towers, en voor
 het seizoen 2026 leverde Vekoma nieuwe treinen, vormgegeven naar de originele
-wagens uit 1983, de tweede treinwissel in zestien jaar.
+wagens uit 1983.
 
 Toxic Garden heet pas sinds **mei 2023** zo. Vekoma verving bij de verbouwing
 een stuk spoor, ingang en station staan sindsdien in een tuin vol giftige
-planten, en daarmee hoort de baan er eindelijk zichtbaar bij in het themagebied
+planten, en sindsdien is de baan aangekleed zoals het themagebied
 Transsylvanië, waar zijn plek sinds 2011 onder valt.
 
 De **[Bobbahn](ref:heide-park/bobbahn)** van Mack Rides rijdt sinds **1993**
@@ -172,7 +163,6 @@ rondjes voor iedereen die nog te klein is voor de grote banen, en de
 **[Indy-Blitz](ref:heide-park/indy-blitz)** uit 2008 is met 4,5 meter de
 kleinste achtbaan op het terrein.
 
-Het opvallendste bouwwerk staat helemaal niet op rails.
 **[Scream](ref:heide-park/scream)** is **103 meter** hoog en laat je 71 meter
 daarvan vrij vallen, met bijna 100 km/u (het park noemt 98,3). De toren begon
 in 1992 als uitkijktoren; Intamin bouwde hem tussen oktober 2002 en april 2003
@@ -184,34 +174,29 @@ toch pas sinds **maart 2022**: tot die tijd stond ernaast een tweede toren uit
 meer aan de huidige veiligheidsnormen voldeed. Drie dagen na de aankondiging
 begon de afbraak.
 
-De jongste rit staat in een gebouw dat dertien jaar leeg stond. De
-**[Dämonen Gruft](ref:heide-park/daemonen-gruft)** van Preston & Barbieri
-rijdt sinds **2024** door het oude station van de in 2011 gesloten tweede
-wildwaterbaan, zo’n drie minuten lang. Waar die waterbaan liep, staat nu Flug
-der Dämonen; de gebouwen bleven staan, en een ervan heeft het park nu weer in
-gebruik genomen.
+De jongste rit is de
+**[Dämonen Gruft](ref:heide-park/daemonen-gruft)** van Preston & Barbieri. Hij
+rijdt sinds **2024** zo’n drie minuten lang door het oude station van de tweede
+wildwaterbaan, die in 2011 sloot en dertien jaar leeg stond. Waar die waterbaan
+liep, staat nu Flug der Dämonen.
 
-Daar komen twee attracties bij waar bijna niemand over schrijft en die in onze
-wachttijdentabel toch hoog staan: de
-**[Wildwasserbahn](ref:heide-park/wildwasserbahn)** uit 1980 en
+De **[Wildwasserbahn](ref:heide-park/wildwasserbahn)** uit 1980 en
 **[Ghostbusters 5D](ref:heide-park/ghostbusters-5d)**, dat sinds 2017 in de hal
-zit waar vroeger Hallo Spencer woonde. Nat word je ook in
+zit waar vroeger Hallo Spencer woonde, staan hoog in onze wachttijdentabel. Nat word je ook in
 **[Mountain Rafting](ref:heide-park/mountain-rafting)** (1992, een rapid river
 van Intamin). De allerkleinsten hebben met Peppa Pig Land en het gebied “Hoe
 tem je een draak” twee eigen hoekjes.
 
-Wie met kinderen plant, plant in centimeters. De vier grote banen beginnen alle
+De vier grote banen beginnen alle
 bij **140 cm**, Toxic Garden en Scream bij 130, Big Loop en Bobbahn bij 120. De
 laagste drempel in het park ligt op **86 cm**, bij Schorschs Dino-avontuur in
-Peppa Pig Land. Tussen 86 en 140 centimeter liggen een paar jaren waarin een
-kind al van alles mag, alleen geen van de banen waarvoor de ouders gekomen
-zijn.
+Peppa Pig Land.
 
 ```map-widget slug=heide-park
 
 ```
 
-## Hoe druk het echt is
+## Hoe druk het wordt
 
 Onze metingen lopen sinds eind december 2025. Omdat Heide Park pas eind maart
 opengaat, staan in de tabel alleen dagen uit het seizoen 2026 (stand
@@ -221,14 +206,9 @@ opengaat, staan in de tabel alleen dagen uit het seizoen 2026 (stand
 
 ```
 
-Colossos staat bovenaan, met een kleine voorsprong op de banen eronder. Wie in
-Soltau lang aanstaat,
-staat niet per se voor de houten achtbaan: vlak daaronder liggen naast Flug der
-Dämonen en Krake ook de Bobbahn uit 1993 en de wildwaterbaan uit 1980, twee
-attracties die in geen enkel reisverslag als reden voor de rit naar Soltau
-opduiken. Bij de wildwaterbaan ligt het aan het weer, zoals je in het dagprofiel
-hieronder ziet; waarom de Bobbahn zo hoog staat, is uit de tabel niet op te
-maken.
+Colossos staat bovenaan, vlak vóór Flug der Dämonen, Krake, de Bobbahn uit
+1993 en de wildwaterbaan uit 1980. Bij de wildwaterbaan ligt het aan het weer,
+zoals je in het dagprofiel hieronder ziet.
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -236,16 +216,12 @@ maken.
 
 Bij de achtbanen liggen de dikke cellen allemaal in hetzelfde venster, tussen
 elf en twee uur. De wildwaterbaan piekt pas ’s middags, als het warm geworden
-is. Dat past bij een park waarvan de gasten overwegend ’s ochtends met de auto
-aankomen: iedereen staat op hetzelfde moment voor dezelfde drie banen, zoals op
-zaterdagochtend bij de Gamma, en ’s middags trekt het uit elkaar.
+is. De meeste gasten komen ’s ochtends met de auto en staan daardoor op
+hetzelfde moment voor dezelfde drie banen; ’s middags verspreidt de drukte
+zich.
 
-Het eerste uur is daarom voor Colossos en Krake, omdat ze dan allebei op hun
-kortst zijn en vanaf elf uur tegelijk oplopen. Daarna
-loont het meer om te blijven in het gebied waar op dat moment niemand is dan om
-dwars over het terrein naar de volgende hoofdattractie te lopen.
-
-De rustigste van de komende openingsdagen, live berekend:
+In het eerste uur rijd je daarom Colossos en Krake, omdat ze dan allebei op hun
+kortst zijn en vanaf elf uur tegelijk oplopen.
 
 ```best-days-widget slug=heide-park
 
@@ -257,8 +233,7 @@ De rustigste van de komende openingsdagen, live berekend:
 
 ```
 
-Wordt het toch een van de drukke dagen, dan kun je een deel van het aanstaan
-afkopen. Het **Express Ticket** bestaat in vier trappen: Bronze vanaf **€ 25**
+Het **Express Ticket** bestaat in vier trappen: Bronze vanaf **€ 25**
 voor wildwaterbaan, Big Loop en Bobbahn, Silver vanaf € 39 voor vijf van de
 grote attracties, Gold vanaf € 59 voor alle acht, Platinum vanaf € 99 voor alle
 acht zonder limiet. Welke vijf er in Silver zitten, staat op de site van het
@@ -266,8 +241,8 @@ park op twee manieren: in de vergelijkingstabel staan Colossos, Desert Race,
 Flug der Dämonen, Krake en Scream, in de lijst eronder staan Colossos en Scream
 pas bij Gold. Toxic Garden zit in geen enkele trap.
 
-Twee dingen zie je er makkelijk overheen. In de drie onderste trappen zit
-**één rit per attractie**, niet zo veel als je wilt: wie met Gold een tweede
+In de drie onderste trappen zit
+**één rit per attractie**. Wie met Gold een tweede
 keer Colossos wil, sluit gewoon achteraan aan. En het ticket is er alleen op
 geselecteerde dagen, in 2026 vooral in weekenden en vakanties. Het park raadt
 aan het vooraf online te boeken, want is het voor die dag uitverkocht, dan is
@@ -284,8 +259,7 @@ een voorpretzondag op 22 maart. Winteropening is er in Soltau niet en een
 kerstmarkt ook niet, anders dan bij andere Duitse parken
 ([hier het overzicht](/blog/winter-pretparken-2026)).
 
-In september is het park niet elke dag open: de maandagen 7, 14, 21 en 28
-september zijn sluitingsdagen, in oktober is het weer dagelijks open. Een
+In september zijn de maandagen 7, 14, 21 en 28 september sluitingsdagen, in oktober is het weer dagelijks open. Een
 gewone openingsdag loopt van 10 tot 17 uur, op zondag een uur langer. Die tijden
 gelden voor de attracties; het park zelf sluit telkens een uur later.
 
@@ -299,8 +273,7 @@ staat in de kalender op de [parkpagina](ref:heide-park).
 ### De weekdag
 
 Bovenaan staat de zaterdag, onderaan de vrijdag, en het verschil tussen die
-twee is klein. De dagen daartussen liggen in de tabel hierboven dicht bij
-elkaar. De maandag staat op maar ongeveer half zoveel meetdagen als de
+twee is klein. De maandag staat op maar ongeveer half zoveel meetdagen als de
 andere dagen, omdat het park hem in het voorjaar en in september regelmatig uit
 de kalender haalt. Wat er aan maandagen meetelt, valt dus vooral in het
 hoogseizoen, en rustig zijn die niet. De rustigste weekdag van andere parken staat
@@ -308,8 +281,7 @@ op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 
 ### De maand
 
-De maand verschuift ongeveer evenveel als de weekdag, en dat is precies de
-reden om de twee te combineren. Juli en augustus liggen hoog, september valt
+De maand verschuift ongeveer evenveel als de weekdag. Juli en augustus liggen hoog, september valt
 daarna duidelijk terug. Voor oktober hebben we nog geen meetdagen (stand 25
 september 2026); het park noemt zelf de schoolvakanties als zijn drukste
 periodes, en in oktober vallen herfstvakantie en Halloween samen. Wie een
@@ -322,10 +294,9 @@ Op vijf halloweendagen wordt er gereden van 12 tot 21 uur (za 10, za 17, za 24,
 vr 30 en za 31), en het park blijft open tot 22 uur; de andere dagen houden de
 gewone tijden. Overdag is de versiering gezinsvriendelijk, met een tovenaarsbos
 en een snoeptocht voor kinderen. Op de vijf lange dagen worden vanaf ongeveer
-16 uur de scare zone en drie horrormazes wakker: Parasomnis, Grand Hotel Morton
+16 uur de scare zone en drie horrormazes open: Parasomnis, Grand Hotel Morton
 en SubTerra. Voor de mazes geldt een minimumleeftijd van **16 jaar** met
-legitimatieplicht, en de maze-ingang laat daar net zo weinig over met zich
-praten als een portier op het Leidseplein. Elke maze vraagt een eigen
+legitimatieplicht. Elke maze vraagt een eigen
 tijdslotticket dat je alleen online krijgt, € 9 per maze of € 22 voor alle
 drie. Wie alleen de avond wil, komt met het avondticket vanaf € 24 vanaf 17 uur
 het park in. Hoe zich dat verhoudt tot Toverland, Movie Park en Walibi staat in
@@ -333,12 +304,10 @@ de [halloweengids 2026](/blog/halloween-pretparken-2026).
 
 ## Van kermisbedrijf tot Merlin-park
 
-Heide Park opende op **19 augustus 1978**, met zes attracties en een oprichter
-uit een kermisfamilie: **Hans-Jürgen Tiemann**. Bij de koop van het terrein
-hoorde een voorwaarde die je een pretpark niet aanziet: de **Heidenhofkapel uit
-1350** moest blijven staan, en er moesten inheemse dieren gehouden blijven
-worden. Op de eerste dag kwamen 2.000 gasten, en uit die zes attracties groeide
-85 hectare park.
+Heide Park opende op **19 augustus 1978** met zes attracties. Oprichter **Hans-Jürgen Tiemann** kwam uit een kermisfamilie. Bij de koop van het terrein
+hoorde de voorwaarde dat de **Heidenhofkapel uit
+1350** moest blijven staan en dat er inheemse dieren gehouden moesten blijven
+worden. Op de eerste dag kwamen 2.000 gasten. Vandaag is het park 85 hectare groot.
 
 Drie van die zes rijden vandaag nog: de vlottentocht, de hoogbaan (nu de
 Panoramabahn) en de westernspoorbaan, die sinds 1997 Heide Park Express heet.
@@ -348,8 +317,7 @@ tot 2025; toen sloot het park hem zonder veel aankondiging.
 Van **1986** tot de winter van 2011/2012 stond hier een 35 meter hoge replica
 van het Vrijheidsbeeld, ingewijd op 4 juli 1986 voor de honderdste verjaardag
 van het origineel, met een felicitatie van Ronald Reagan. Na de afbraak stond
-de bovenste helft nog een paar jaar als decoratie bij Colossos, een late
-carrière die de Vrijheid zich vast anders had voorgesteld, en bij de
+de bovenste helft nog een paar jaar als decoratie bij Colossos, en bij de
 heropening in 2019 ging ook de rest naar de sloop.
 
 Op **31 december 2001** kocht de Britse **Tussauds Group** het park. In de jaren negentig telde Soltau tot twee miljoen
@@ -364,9 +332,6 @@ september 2026 noemde de Spaanse krant Expansión Merlin bovendien als mogelijke
 koper van Parques Reunidos, het concern achter Movie Park
 ([meer daarover](/blog/parques-reunidos-te-koop-movie-park)).
 
-Je ziet beide fases aan het park: de kermisherkomst aan de dichtheid van de
-attracties, het concern aan de licentiegebieden voor Peppa Pig en Ghostbusters.
-
 ## Overnachten bij het park
 
 Wie uit Zuid-Duitsland komt, maakt er beter twee dagen van. Het
@@ -378,8 +343,7 @@ uit 81 houten huisjes met samen 536 bedden. De zeven omgebouwde VW T2’s van he
 **Bulli Camp**, waarin je vanaf juli 2014 kon slapen, zijn er sinds 2025 niet
 meer; in het camp boek je nu alleen nog hutten.
 
-Het praktische voordeel is dat je om tien uur voor de ingang staat en niet op
-de A7. Op de lange dagen in het
+Op de lange dagen in het
 najaar mogen hotel- en campgasten al om 11 uur het park in, een uur vóór
 iedereen, en dan rijden er al een paar attracties, Krake bijvoorbeeld.
 
@@ -389,11 +353,9 @@ Bij opening eerst naar **Colossos**, meteen daarna naar **Krake**, omdat ze
 vanaf elf uur allebei tegelijk oplopen. **Flug der Dämonen** en
 **Desert Race** passen daar goed achteraan, en het laatste uur voor sluiting is
 bij de grote banen de op één na beste kans van de dag. De waterbanen bewaar je
-voor het warmste uur, ook al heeft de wildwaterbaan dan juist zijn langste rij;
-nat worden in de hitte is tenminste geen straf. Op de lange najaarsdagen vervalt
+voor het warmste uur, ook al heeft de wildwaterbaan dan juist zijn langste rij. Op de lange najaarsdagen vervalt
 dat, want dan sluiten de waterbanen met de schemering. **Scream** en de
-**Big Loop** zijn de vullers tussen twee grote banen, en wie de mazes geboekt
-heeft, plant de avond niet verder.
+**Big Loop** zijn de vullers tussen twee grote banen.
 
 ## Praktisch: route, tickets, openingstijden
 
@@ -497,10 +459,10 @@ Hoe het weer boven het park eruitziet wanneer je gaat:
 
 ```
 
-En wie nu het noorden plant: ook bij
+Ook bij
 [Movie Park Germany](/blog/movie-park-germany-wachttijden-tips) vallen buiten
 de vakanties weekdagen uit de kalender, en ook daar hoort de vrijdag bij de
-rustigste dagen. De twee gidsen kun je prima naast elkaar leggen.
+rustigste dagen.
 
 — Patrick
 

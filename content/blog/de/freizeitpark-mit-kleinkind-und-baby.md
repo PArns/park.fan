@@ -68,17 +68,11 @@ rideLinks:
   - efteling/pagode
 ---
 
-Ein Kind unter vier Jahren ist für die meisten Achterbahnen zu klein. Wer mit
-ihm in einen Freizeitpark fährt, will vorher wissen, ab welchem Alter oder
-welcher Größe der Eintritt etwas kostet, ob man einen Wagen leihen oder selbst
-mitbringen kann, wo man wickelt und ob sich zwei Erwachsene an einer Bahn
-abwechseln dürfen, ohne zweimal anzustehen. Bei jedem Park steht das an einer
-anderen Stelle der Website.
+Ein Kind unter vier Jahren ist für die meisten Achterbahnen zu klein.
 
-Die zehn Parks in diesem Guide liegen in vier Ländern: Europa-Park,
-Phantasialand, Legoland Deutschland, Heide Park und Plopsaland Deutschland in
-Deutschland, Efteling, Toverland und Walibi Holland in den Niederlanden, Walibi
-Belgium in Belgien und Parc Astérix in Frankreich.
+Europa-Park, Phantasialand, Legoland Deutschland, Heide Park und Plopsaland
+Deutschland liegen in Deutschland, Efteling, Toverland und Walibi Holland in den
+Niederlanden, Walibi Belgium in Belgien und Parc Astérix in Frankreich.
 
 ## Woher die Angaben stammen
 
@@ -108,15 +102,10 @@ Stand 8. Oktober 2026:
 | [Walibi Belgium](ref:walibi-belgium)                 | unter 1 m      | ja, kostenlos                                         | unklar („Trolleys“, 10 €) |
 | [Plopsaland Deutschland](ref:plopsaland-deutschland) | unter 85 cm    | nicht genannt                                         | nicht genannt             |
 
-Die Parks ändern ihre Preise zum Saisonstart.
-
 Efteling, Europa-Park, Phantasialand, Parc Astérix, Legoland Deutschland und
 Walibi Holland richten den freien Eintritt nach dem Alter. Im Heide Park, im
 Toverland, in Walibi Belgium und in Plopsaland zählt die Körpergröße, und
-Plopsaland und Walibi Belgium messen mit Schuhen. Ein Kind kann nach der
-Altersregel eines Parks gratis sein und nach der Größenregel eines anderen
-nicht, und umgekehrt. Wer ein großes Kind hat, rechnet deshalb bei jedem Park
-nach.
+Plopsaland und Walibi Belgium messen mit Schuhen.
 
 ## Efteling
 
@@ -147,17 +136,12 @@ Anderrijk Danse Macabre, Fata Morgana, Max & Moritz und Piraña; in Fantasierijk
 Symbolica.
 
 Für die Kleinsten gibt es zwei Spielplätze, Kleuterhof in Reizenrijk und
-Kindervreugd in Marerijk. Für mehrere Bahnen gibt der Park keine Mindestgröße
-an, sondern nur eine Regel: Kinder unter 1,00 m fahren unter Aufsicht
-eines Erwachsenen im [Stoomcarrousel](ref:efteling/stoomcarrousel), in Villa
-Volta, in der Dampfeisenbahn und in Sirocco. Mit Begleitung ab 16
+Kindervreugd in Marerijk. Im [Stoomcarrousel](ref:efteling/stoomcarrousel), in
+Villa Volta, in der Dampfeisenbahn und in Sirocco fahren Kinder unter 1,00 m
+unter Aufsicht eines Erwachsenen, eine Mindestgröße nennt der Park dort nicht. Mit Begleitung ab 16
 Jahren dürfen Kinder unter 1,00 m in [Droomvlucht](ref:efteling/droomvlucht), in
 der [Pagode](ref:efteling/pagode) und auf dem Anton Pieckplein. In Symbolica
-müssen Babys selbstständig sitzen können, auf den Schoß darf niemand. Ruhezonen
-oder Mittagsschlaf nennt der Park nicht.
-
-Den Rest des Parks beschreibt unser Guide
-[Efteling, das Disney der Niederlande](/blog/efteling-disney-der-niederlande).
+müssen Babys selbstständig sitzen können, auf den Schoß darf niemand.
 
 ## Europa-Park
 
@@ -175,8 +159,8 @@ Park ausgewählte Babynahrung. Wo man sie aufwärmen kann, steht nicht auf der
 Website, sie verweist dafür auf den Gästeservice.
 
 Der Leihwagen kostet 5 Euro plus 50 Euro Pfand und wird am Haupteingang oder am
-Eingang des Hotelparkplatzes ausgegeben. Er eignet sich nach Angabe des Parks
-nur für Kinder, die schon sitzen können, denn liegen lässt sich darin niemand.
+Eingang des Hotelparkplatzes ausgegeben. Laut Park ist er nur für Kinder, die schon
+sitzen können, weil ein Kind darin nicht liegen kann.
 Einen Bollerwagen verleiht der Park nicht. In der Parkordnung kommen Bollerwagen
 nicht vor. Sie verbietet nicht motorisierte Fahrzeuge wie Skates, Fahrräder und
 Roller, und ob ein Bollerwagen dazuzählt, ist nicht eindeutig. Wer einen
@@ -194,8 +178,7 @@ Playground, der Water Playground, das Ballbad, der Adventure Playground, Paul's
 Playboat und das Mul-Muls Carousel. Nach unseren Daten brauchen Kinder für die
 Quipse Paddle Boats, die Mini-Scooters und Red Baron mindestens 90 Zentimeter,
 für das Mul-Muls Carousel 100. Ein Mindestalter für die Kinderbahnen nennt der
-Park auf seiner Website nicht. Mehr zu den Bahnen steht in unserem Guide
-[Europa-Park: Wartezeiten und Tipps](/blog/europa-park-wartezeiten-tipps).
+Park auf seiner Website nicht.
 
 ## Phantasialand
 
@@ -212,17 +195,13 @@ Gästeservice am Kaiserplatz mit eigener Stillecke, Wickeltisch und Wasserkocher
 
 Der Leihwagen kostet 3 Euro am Tag plus 20 Euro Pfand, ausgegeben wird er im
 Gästeservice im Themenbereich Berlin. Die Zahl der Wagen ist begrenzt,
-reservieren kann man per E-Mail. Ein Wagen trägt Kinder bis 22 Kilogramm. Bei
-mitgebrachten Wagen ist das Phantasialand sehr streng und nennt genaue Maße:
-Erlaubt sind nur schmale, klassische Kinderwagen und Buggys bis 105 Zentimeter
-Länge, 75 Zentimeter Breite und 125 Zentimeter Höhe, und nur zum Transport von
-Kindern. Bollerwagen,
-Fahrradanhänger und Hundewagen sind verboten. Eine Ausnahme aus medizinischen
+reservieren kann man per E-Mail. Ein Wagen trägt Kinder bis 22 Kilogramm. Von
+mitgebrachten Wagen sind nur schmale, klassische Kinderwagen und Buggys bis 105
+Zentimeter Länge, 75 Zentimeter Breite und 125 Zentimeter Höhe erlaubt, und nur
+zum Transport von Kindern. Bollerwagen, Fahrradanhänger und Hundewagen sind verboten. Eine Ausnahme aus medizinischen
 Gründen muss mindestens 14 Tage vorher per E-Mail an den Gästeservice gehen.
 
-Einen Baby Switch gibt es: Ein Elternteil fährt, das andere bleibt beim
-Kleinkind, danach wird getauscht, ohne dass der zweite noch einmal ansteht. Man
-fragt an der Bahn danach. Welche Bahnen mitmachen, nennt der Park nicht.
+Nach dem Baby Switch fragt man an der Bahn. Welche Bahnen mitmachen, nennt der Park nicht.
 
 In seinen Nutzungsbedingungen führt der Park in einer Tabelle unter
 „Attraktionen für Kinder“ Der lustige Papagei, Die fröhliche Bienchenjagd, Bolles
@@ -233,8 +212,6 @@ Zentimeter, für Bolles Flugschule, Bumper Klumpen, Wupi's Wabi Wipper und Wözl
 Duck Washer 100. Der Park schreibt, dass Kinder ab 1,00 m mehr als drei Viertel
 der Attraktionen fahren können. Als Spielbereich für die Kleinen nennt er
 Mopti's Monkey Depot.
-
-Unser [Phantasialand-Guide](/blog/phantasialand-tipps) hat den Rest.
 
 ## Legoland Deutschland
 
@@ -255,8 +232,7 @@ Buggys gibt es in begrenzter Zahl am Eingang für 6 Euro plus 4 Euro Pfand,
 zurückgegeben wird dort auch. Eine Halterung für Babyschalen haben sie nicht.
 Bollerwagen darfst du laut FAQ gern mitbringen, und für Buggys und Kinderwagen
 gibt es eigene Parkplätze im Park. Einen Rider Switch erwähnen weder die FAQ
-noch die Kleinkinderseite. Ob es trotzdem eine Regelung gibt, fragt man am
-besten vor dem Besuch nach.
+noch die Kleinkinderseite.
 
 Die Kleinkinderseite des Parks nennt die Junior Fahrschule (ab 3 Jahren), den
 Duplo Express, die Safari Tour, die Hafenrundfahrt, den Flughafen, das
@@ -270,8 +246,7 @@ Playgrounds von Pirate Land, Shipyard und LavaLand. Eine vollständige Liste mit
 Alter und Größe für jede Bahn veröffentlicht der Park als PDF.
 
 Ruheraum und Liegen gibt es in der Ersten-Hilfe-Station, gedacht für Gäste mit
-Kreislaufproblemen. Unser Guide [Legoland Deutschland: Tipps](/blog/legoland-deutschland-tipps)
-hat die Details zu den Bahnen.
+Kreislaufproblemen.
 
 ## Heide Park
 
@@ -300,16 +275,12 @@ brauchen Kinder für George's Dino Adventure im Peppa Pig Land mindestens 86
 Zentimeter, für Raffnuss & Taffnuss Wasserflieger 95 und für Indy-Blitz, La Ola,
 Screamie und Wüstenflitzer je 100. Für Peppas Ballonfahrt, Peppas Bootsfahrt,
 Opa Pigs Zugfahrt, Peppas House, Käpt'ns Törn, Heide Park Express und Monorail
-fehlt die Mindestgröße bei uns noch. Das heißt nicht, dass der Park keine
-vorschreibt.
-
-Weitere Hinweise gibt unser Guide
-[Heide Park: Wartezeiten und Tipps](/blog/heide-park-wartezeiten-tipps).
+fehlt die Mindestgröße bei uns noch.
 
 ## Plopsaland Deutschland
 
-[Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch nennt für den
-freien Eintritt nur eine Größe: Kinder unter 85 Zentimetern zahlen nichts. Von 85
+[Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch richtet den
+freien Eintritt nur nach der Größe, Kinder unter 85 Zentimetern zahlen nichts. Von 85
 bis 99 Zentimetern kostet das Ticket 22 Euro, ab einem Meter gilt der
 Erwachsenenpreis. Die Preisseite nennt kein Jahr. Das Familienticket für drei bis
 sechs Personen kostet je nach Größe der Gruppe zwischen 139 und 259 Euro. Die
@@ -329,7 +300,7 @@ steht in der Parkordnung nicht. Einen Rider Switch oder Wechselbetrieb erwähnen
 weder die Fragen-Seiten noch die Parkordnung. Nach jeder Fahrt muss jeder Gast
 die Bahn verlassen, und wer ein zweites Mal fahren will, steht wieder an.
 
-Dafür gibt Plopsaland auf der Seite jeder Bahn die Größenstufen an. Eine
+Plopsaland gibt auf der Seite jeder Bahn die Größenstufen an. Eine
 Begleitperson muss mindestens 15 Jahre alt sein. Ohne Mindestgröße, aber in
 Begleitung fahren Kinder unter 100 Zentimetern zum Beispiel Bällchenbad, Fischerboote, Frösche, Tanzende Fontänen, Red Baron,
 Historisches Karussell (unter 105 Zentimeter in Begleitung) und die Spielplätze
@@ -340,9 +311,6 @@ Bienchenwirbel, Willis Floßfahrt und Laras Marienkäferflug. Die Seite des Park
 filtert nach „Ideal für Babys“ und „Ideal für Kleinkinder“, benennt aber keine
 Bereiche. Bei Regen bleiben die Indoor-Attraktionen geöffnet, mehr dazu in unserem
 Guide [Freizeitpark bei Regen](/blog/freizeitpark-bei-regen).
-
-Mehr zu den Bahnen steht im Guide
-[Plopsaland Deutschland: Wartezeiten und Tipps](/blog/plopsaland-deutschland-wartezeiten-tipps).
 
 ## Toverland
 
@@ -357,7 +325,7 @@ Park nicht. Wer abpumpen will, spricht das Personal am Haupteingang an.
 
 Einen Buggy oder Bollerwagen darf man mitbringen, der Park empfiehlt ein
 Kettenschloss. Einen Verleih gibt es im Toverland nicht. Der Baby Switch gilt an
-ausgewählten Bahnen, ohne Altersgrenze: Man holt am Einstieg ein Spezialticket,
+ausgewählten Bahnen, ohne Altersgrenze. Am Einstieg holt man ein Spezialticket,
 und ein Elternteil darf über den Ausgang fahren. Welche Bahnen es sind, nennt
 der Park nicht.
 
@@ -372,8 +340,6 @@ Splash Dock und Waku Waku. Auf seiner Website nennt der Park keine
 Altersgrenzen, nur Größen. Er beschreibt sich als zum Teil überdacht. Wie viele
 seiner Attraktionen überdacht sind, steht in unserem Guide
 [Freizeitpark bei Regen](/blog/freizeitpark-bei-regen).
-
-Der Park-Guide mit allem Weiteren: [Toverland: Wartezeiten und Tipps](/blog/toverland-troy-wartezeiten-tipps).
 
 ## Walibi Holland
 
@@ -392,18 +358,16 @@ Armband.
 Buggys kosten 10 Euro plus 50 Euro Pfand im Gift Shop und lassen sich nicht
 vorab buchen. Ob ein eigener Kinderwagen oder Bollerwagen erlaubt ist, steht
 nicht auf der Website des Parks. Essen und Getränke darf man mitbringen. Der
-Wechsel an der Bahn heißt „baby change“: Ein Erwachsener wartet mit dem Kind am
-Ausgang, der andere fährt, danach tauschen sie, und der zweite geht über den
-Ausgang ohne Anstehen. Welche Bahnen mitmachen, nennt der Park nicht.
+Wechsel an der Bahn heißt „baby change“. Ein Erwachsener wartet mit dem Kind am
+Ausgang und steigt danach dort ohne Anstehen ein. Welche Bahnen mitmachen, nennt der Park nicht.
 
-Für die Kleinen führt die Kids-Seite Merrie Go'Round (in Begleitung ab 0,
+Die Kids-Seite führt Merrie Go'Round (in Begleitung ab 0,
 allein ab 120 Zentimetern), Walibi's Fun Recorder, Garage, Bubble Swirl und
 Walibi's World Tour (in Begleitung ab 0, allein ab 105) und Walibi's Shuttle (ab
 0, allein ab 120). Wind Seekers startet in Begleitung bei 90, Mini Taxi's, Stunt
 Flight und Space Kidz fahren Kinder allein ab 90 beziehungsweise 105 Zentimetern.
 Auf park.fan fehlt die Mindestgröße noch bei allen 39 Bahnen des Parks, diese
-Größen stammen also alle vom Park. Mehr zum Park findest du im Beitrag
-[Walibi Holland: Untamed und Hard Gaan](/blog/walibi-holland-untamed-hard-gaan).
+Größen stammen also alle vom Park.
 
 ## Walibi Belgium
 
@@ -430,8 +394,7 @@ Mini Tour, Spinning Taxi und Tchou-Tchou Express. Die Seite des Parks führt die
 Zahl ohne Einheit, gemeint sind Zentimeter. Jede Bahn hat auf der Website des
 Parks eine Mindestgröße. Während der Ibilaw-Tage sind unter anderem Kondaala,
 Spinning Taxi, Guitar Riff, Kids Airlines, Tchou-Tchou Express und Little Swing
-geschlossen. Mehr Hintergrund im Guide
-[Walibi Belgium: Wartezeiten und Tipps](/blog/walibi-belgium-wartezeiten-tipps).
+geschlossen.
 
 ## Parc Astérix
 
@@ -446,9 +409,9 @@ Hotel, an der Rezeption. Leihwagen kosten 15 Euro. Picknicken darf man nur in
 ausgewiesenen Bereichen. Ob man Babynahrung mitbringen darf, steht nicht auf der
 Website des Parks.
 
-Der Baby Switch ist auf einer eigenen Seite erklärt: Ein Elternteil fährt allein,
-das andere bleibt mit dem Kind, danach gehen beide zum Personal an der Bahn, das
-den zweiten ohne neues Anstehen fahren lässt. Er gilt für Kinder unter der Mindestgröße.
+Den Baby Switch erklärt der Park auf einer eigenen Seite. Nach der ersten Fahrt
+gehen beide Eltern zum Personal an der Bahn, das dann das andere Elternteil ohne neues
+Anstehen fahren lässt. Er gilt für Kinder unter der Mindestgröße.
 Eine vollständige Bahnliste nennt die Seite nicht.
 
 Der Kinderbereich heißt „Attractions for Little Gauls“. Ein Mindestalter nennt
@@ -458,16 +421,12 @@ Baby-Switch-Seite stehen die Spielplätze Golden Boar, Getafix und Little Oaks
 ohne Alters- oder Größenbeschränkung. Die Aktivitätenseite gibt für den Golden
 Boar ab 2 Jahren an. Für Aerodynamix, Enigmatix und Hydrolix steht an einer
 Stelle ab 5 Jahren und an einer anderen, dass Kinder unter einem Meter
-hineindürfen. Welche Angabe stimmt, klärt man am besten am Empfang. Dort werden
-Kinder gemessen und bekommen ein Armband mit den Bahnen, die sie fahren dürfen.
-Unser Guide
-[Parc Astérix: Wartezeiten und Tipps](/blog/parc-asterix-wartezeiten-tipps)
-erklärt den Rest.
+hineindürfen. Am Empfang werden Kinder gemessen und bekommen ein Armband mit
+den Bahnen, die sie fahren dürfen.
 
 ## Wann ein Park leer ist
 
-Mit einem Kleinkind fährt man besser an einem Tag, an dem wenig los ist, weil
-Abwechseln an der Bahn, Wickeln und Wagenparken Zeit kosten. Die Tabelle nennt für
+Die Tabelle nennt für
 acht der zehn Parks den Wochentag mit der niedrigsten mittleren Wartezeit.
 
 ```park-comparison-widget slugs=efteling,europa-park,phantasialand,attractiepark-toverland,legoland-deutschland,heide-park,plopsaland-deutschland,walibi-holland show=quietest
@@ -478,15 +437,12 @@ Eine Zelle bleibt leer, wenn ein Park keinen eindeutig ruhigsten Tag hat. Mehr
 dazu und zu den Uhrzeiten steht in unserem Guide
 [Freizeitpark mit wenig los: Wochentag und Uhrzeit](/blog/freizeitpark-wenig-los-wochentag-uhrzeit).
 
-## Was sich aus den Seiten der Parks ergibt
+## Ruhe, Schlaf und mitgebrachtes Essen
 
 Ruhezonen, Mittagsschlaf und Schatten erwähnt kein Park auf seiner Website. Am
 nächsten kommen dem der Ruhe- und Stillraum im Phantasialand, die drei
 Stillräume im Efteling, die Krankenstation in Walibi Belgium und der Ruheraum in
-der Ersten-Hilfe-Station des Legolands. Schlafen wird ein Kind deshalb meist im
-Wagen. Im Leihwagen des Europa-Parks kann es nicht liegen, und der Leihwagen im
-Efteling ist ein hölzerner Einsitzer. Ein eigener Kinderwagen darf im
-Phantasialand höchstens 105 mal 75 mal 125 Zentimeter messen.
+der Ersten-Hilfe-Station des Legolands.
 
 Plopsaland erlaubt mitgebrachte Babynahrung ausdrücklich, auch in den
 Restaurants. In Walibi Holland darf man eigenes Essen mitbringen. Bei den
@@ -497,7 +453,7 @@ darf. Der Europa-Park verbietet nur Grills und Kochgeräte.
 
 ### Bis zu welchem Alter sind Kinder im Freizeitpark gratis?
 
-Das ist verschieden. Im Efteling gilt es bis einschließlich 3 Jahre, im
+Im Efteling gilt es bis einschließlich 3 Jahre, im
 Europa-Park und im Phantasialand für 0 bis 3 Jahre, im Parc Astérix unter 3
 Jahren. Im Legoland Deutschland sind Kinder unter 2 Jahren frei, in Walibi
 Holland Kinder bis 2 Jahre, also bis zum dritten Geburtstag. Im Heide Park und
@@ -517,8 +473,7 @@ Mindestgröße.
 ### Was ist ein Baby Switch?
 
 Ein Elternteil fährt eine Bahn, das andere bleibt mit dem Kind, das zu klein ist,
-und fährt danach, ohne noch einmal anzustehen. Die Parks regeln das verschieden:
-Im Efteling gibt das Personal beim Aussteigen ein Ticket, im Europa-Park eine
+und fährt danach, ohne noch einmal anzustehen. Im Efteling gibt das Personal beim Aussteigen ein Ticket, im Europa-Park eine
 Karte, im Heide Park ist es ein Pass, den man im Service Center bekommt.
 
 ### Darf ich einen Kinderwagen mit in den Freizeitpark nehmen?
@@ -538,7 +493,7 @@ keinen Verleih.
 
 ### Ab wann darf ein Kind in die Achterbahn?
 
-Das legt jeder Park für jede Bahn fest. An Kinder- und Familienbahnen dürfen
+An Kinder- und Familienbahnen dürfen
 Kinder in Begleitung im Toverland und in Walibi Holland schon ab 0 Zentimetern
 mitfahren, in Walibi Belgium ab 50 (die Seite nennt keine Einheit). Im Legoland Deutschland beginnen die Mindestgrößen nach
 unseren Daten bei 80 Zentimetern, in Plopsaland fahren Kinder ab 85 Zentimetern
@@ -556,4 +511,5 @@ allein. Die Mindestgröße jeder Bahn steht auf ihrer Seite bei park.fan.
 - Walibi Holland: [Tickets](https://www.walibi.nl/en/tickets), [Einrichtungen](https://www.walibi.nl/en/plan-your-visit/facilities), [FAQ](https://www.walibi.nl/en/plan-your-visit/faq), [Kids-Bahnen](https://www.walibi.nl/en/park/attractions/kids)
 - Walibi Belgium: [Tickets](https://www.walibi.be/en/tickets), [FAQ](https://www.walibi.be/en/faq), [Parkordnung](https://www.walibi.be/en/regulations/park-regulations), [Services](https://www.walibi.be/en/plan-your-visit/services)
 - Parc Astérix: [Tickets](https://www.parcasterix.fr/en/offers/tickets), [Baby Switch Service](https://www.parcasterix.fr/en/parc/services/baby-switch-service), [Aktivitäten für Kinder](https://www.parcasterix.fr/en/to-do-in-park/activities-for-children)
+- Unsere Guides zu den Parks: [Efteling, das Disney der Niederlande](/blog/efteling-disney-der-niederlande), [Europa-Park: Wartezeiten und Tipps](/blog/europa-park-wartezeiten-tipps), [Phantasialand-Guide](/blog/phantasialand-tipps), [Legoland Deutschland: Tipps](/blog/legoland-deutschland-tipps), [Heide Park: Wartezeiten und Tipps](/blog/heide-park-wartezeiten-tipps), [Plopsaland Deutschland: Wartezeiten und Tipps](/blog/plopsaland-deutschland-wartezeiten-tipps), [Toverland: Wartezeiten und Tipps](/blog/toverland-troy-wartezeiten-tipps), [Walibi Holland: Untamed und Hard Gaan](/blog/walibi-holland-untamed-hard-gaan), [Walibi Belgium: Wartezeiten und Tipps](/blog/walibi-belgium-wartezeiten-tipps), [Parc Astérix: Wartezeiten und Tipps](/blog/parc-asterix-wartezeiten-tipps)
 - Mindestgrößen der Bahnen nach unseren Daten: park.fan

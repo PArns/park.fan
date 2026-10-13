@@ -73,18 +73,11 @@ rideLinks:
   - walibi-belgium/popcorn-revenge
 ---
 
-Se vai in un parco divertimenti in un giorno di pioggia, in media fai meno coda.
 In tutti e dodici i parchi che abbiamo analizzato, nei giorni di pioggia l’attesa
 alle attrazioni principali è stata più breve che nei giorni asciutti dello stesso
 mese. La differenza va da circa il 4 per cento a Disneyland Paris a circa il 31
-per cento al Movie Park. In una giornata così, di solito conviene puntare sulle attrazioni al
-coperto. Al Toverland è al coperto metà delle 44 attrazioni, a Walibi Holland
+per cento al Movie Park. Al Toverland è al coperto metà delle 44 attrazioni, a Walibi Holland
 nessuna.
-
-Per nove parchi confrontiamo attrazione per attrazione quali sono al coperto, in
-base alle indicazioni dei parchi stessi: Europa-Park, Phantasialand,
-Efteling, Toverland, Movie Park Germany, Plopsaland Deutschland, Heide Park,
-Walibi Belgium e Walibi Holland.
 
 ## Come abbiamo misurato i giorni di pioggia
 
@@ -147,8 +140,7 @@ Se alziamo la soglia a 5 millimetri, l’attesa nei giorni di pioggia resta più
 breve in tutti e dodici i parchi. La riduzione però varia molto, perché di
 giorni così piovosi ce ne sono pochi: all’Europa-Park è di circa il 23 per cento
 su otto giorni, al Movie Park di circa il 27 su sei. Per questo non leggerei la
-tabella come una classifica. Resta il fatto che in nessuno dei dodici parchi i
-giorni di pioggia sono stati più affollati.
+tabella come una classifica.
 
 La riduzione dell’attesa ha poco a che fare con il numero di attrazioni al
 coperto. A Walibi Holland nessuna attrazione è al chiuso, eppure nei giorni di
@@ -182,9 +174,7 @@ insieme, mese per mese:
 | Agosto    |                               185 |                       18 % |
 | Settembre |                               162 |                       16 % |
 
-Si tratta di un solo anno. Nel 2026 luglio è stato asciutto, maggio e giugno
-piovosi. Nel 2027 potrebbe andare in tutt’altro modo. Come indicazione di
-massima va comunque bene: in alta stagione ha piovuto più o meno un giorno di
+Si tratta di un solo anno, in cui luglio è stato asciutto, maggio e giugno piovosi. In alta stagione ha piovuto più o meno un giorno di
 apertura su cinque, in certi mesi uno su tre.
 
 ## Europa-Park
@@ -244,9 +234,7 @@ più la giostra dei cavalli, Die 3 Mausketiere e il Verrückte Hotel Tartüff.
 
 ![Un enorme vaso di terracotta col coperchio aperto e una scala appoggiata. | Nella sala di Winja’s Fear & Force, Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
-Taron, Black Mamba e le altre grandi montagne russe sono all’aperto. Se piove
-tutto il giorno, a Brühl ti restano tre montagne russe al coperto: le due di
-Wuze Town e Crazy Bats.
+Taron, Black Mamba e le altre grandi montagne russe sono all’aperto.
 
 ```ride-waits-widget rides=phantasialand/winjas-fear|Winja's Fear|Spinning Coaster;phantasialand/winjas-force|Winja's Force|Spinning Coaster;phantasialand/mystery-castle|Mystery Castle|Drop Tower;phantasialand/maus-au-chocolat|Maus au Chocolat|Dark Ride;phantasialand/crazy-bats|Crazy Bats|Indoor coaster columns=type,peak,days
 
@@ -272,12 +260,9 @@ Diorama e l’Efteling Museum.
 
 ![L’ingresso di Droomvlucht di notte, illuminato di rosa e verde. | Di giorno questa parete è bianca. | right](/media/efteling/droomvlucht.jpg)
 
-Joris en de Draak, Baron 1898 e Python sono all’aperto. Chi ci va per le
-montagne russe si porta una giacca impermeabile e sale su quello che è aperto in
-quel momento. Con i dark ride, invece, a Efteling una giornata di pioggia passa
-bene anche senza attrazioni all’aperto. Le chiusure per manutenzione delle
+Joris en de Draak, Baron 1898 e Python sono all’aperto. Le chiusure per manutenzione delle
 attrazioni al coperto sono indicate sulla pagina di ciascuna e nel calendario del
-parco, e se vai apposta per i dark ride conviene controllare la sera prima.
+parco, e conviene controllare la sera prima.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Dark ride sospesa;efteling/symbolica|Symbolica|Trackless Ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Indoor coaster columns=type,peak,days
 
@@ -310,10 +295,6 @@ c’è dall’anno dell’apertura. Troy, Fēnix, Booster Bike e Dwervelwind son
 all’aperto. Sul Wirbelbaum, una ruota panoramica alta 13 metri, decidi tu quanto
 far girare la tua cesta. Djinn, una giostra a catene alta 12,8 metri (altezza
 minima 100 centimetri), gira sopra il mercato orientale del Land van Toos.
-
-Al Toverland, nei giorni di pioggia, l’attesa è stata più breve del 13 per cento.
-Con bambini piccoli, in una giornata così, è una buona scelta. Se ci vai per Troy
-e Fēnix, mettiti in borsa una giacca impermeabile.
 
 ```ride-waits-widget rides=attractiepark-toverland/toos-express|Toos-Express|Coaster per famiglie;attractiepark-toverland/villa-fiasko|Villa Fiasko|Casa dei giochi;attractiepark-toverland/wirbelbaum|Wirbelbaum|Ruota panoramica columns=type,peak,days
 
@@ -361,9 +342,6 @@ Con bambini piccoli, in un giorno di pioggia, nel padiglione hai abbastanza da
 fare. Ai ragazzi che vengono per le montagne russe, al coperto resta solo
 Tabaluga's Rollercoaster, un coaster per famiglie.
 
-Con soli nove giorni di pioggia non si può dire se l’attesa più breve del 16 per
-cento dipenda dal padiglione.
-
 ```ride-waits-widget rides=plopsaland-deutschland/tabalugas-rollercoaster|Tabaluga's Rollercoaster|Coaster per famiglie;plopsaland-deutschland/mias-elf-flight|Mia's Elf Flight|Giro per bambini;plopsaland-deutschland/the-smurfs-adventure|The Smurfs' Adventure|Dark Ride columns=type,peak,days
 
 ```
@@ -378,8 +356,7 @@ stazione del secondo percorso in tronchi, chiuso nel 2011. La terza è la
 **Drachengrotte**, nell’area Exploria.
 
 Con la pioggia, l’Heide Park ha senso soprattutto se ci vai comunque per Colossos
-e le altre attrazioni all’aperto e speri in un pomeriggio asciutto. Se piove
-tutto il giorno, hai tre attrazioni al coperto.
+e le altre attrazioni all’aperto e speri in un pomeriggio asciutto.
 
 ```ride-waits-widget rides=heide-park/ghostbusters-5d|Ghostbusters 5D|Simulatore;heide-park/daemonen-gruft|Dämonen Gruft|Dark Ride columns=type,peak,days
 
@@ -404,9 +381,6 @@ percorso all’indietro. È l’unica montagna russa al coperto del parco, mentr
 Kondaa, Vampire e Cobra sono all’aperto. Al coperto ci sono anche il Palais du
 Génie e lo Spinning Taxi.
 
-Nei giorni di pioggia, a Walibi Belgium l’attesa è stata più breve del 13 per
-cento.
-
 ```ride-waits-widget rides=walibi-belgium/turbine|Turbine|Shuttle Coaster;walibi-belgium/popcorn-revenge|Popcorn Revenge|Dark Ride;walibi-belgium/challenge-of-tutankhamon|Challenge of Tutankhamon|Dark Ride columns=type,peak,days
 
 ```
@@ -417,9 +391,7 @@ Di più sul parco nella [guida a Walibi Belgium](/blog/walibi-belgium-tempi-di-a
 
 [Walibi Holland](ref:walibi-holland), a Biddinghuizen, non ha nessuna attrazione
 al chiuso tra le sue 39. Quando, nell’aprile 2026, il parco ha rinunciato
-all’apertura invernale, la direttrice Mascha Taminiau ha indicato tra i motivi la
-dipendenza dal meteo. Nei giorni di pioggia l’attesa è stata più breve del 6 per
-cento. Per una giornata di pioggia continua non andrei a Biddinghuizen.
+all’apertura invernale, la direttrice Mascha Taminiau ha indicato tra i motivi la dipendenza dal meteo.
 
 Di più sul parco nella [guida a Walibi Holland](/blog/walibi-holland-untamed-hard-gaan).
 
@@ -533,8 +505,7 @@ apertura con almeno 2 millimetri di pioggia sono stati tra il 15 e il 26 per
 cento. Considerando insieme Europa-Park, Phantasialand,
 Efteling, Movie Park, Plopsaland e Heide Park, da aprile a settembre il mese più
 asciutto è stato luglio (pioggia nel 10 per cento dei giorni di apertura) e il
-più piovoso giugno (32 per cento). Sono misure di un solo anno, non una media su
-più anni.
+più piovoso giugno (32 per cento). Sono misure di un solo anno.
 
 ## Fonti e letture
 

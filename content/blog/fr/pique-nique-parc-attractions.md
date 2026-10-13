@@ -9,7 +9,7 @@ excerpt: >-
   Heide Park, l’Efteling, Toverland, Walibi Holland, le Futuroscope et Disneyland
   Paris autorisent expressément la nourriture apportée. À Bobbejaanland, à Walibi
   Belgium, au Parc Astérix et à Plopsaland Deutschland, vous la mangez aux aires
-  de pique-nique. Dans les parcs aquatiques, elle reste dehors.
+  de pique-nique. Dans les parcs aquatiques, elle est interdite.
 tags:
   - freizeitpark
   - essen
@@ -95,7 +95,6 @@ Situation au 9 octobre 2026 :
 | Futuroscope            | autorisé, sur toutes les pelouses | glacières rigides interdites, contrôle des sacs                                  | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3)                                                                                           |
 
 « Non précisé » signifie que le règlement du parc n’interdit pas la nourriture apportée et ne l’autorise pas non plus.
-Pour en être sûr avant de partir, demandez au service clientèle du parc.
 
 ## Allemagne
 
@@ -108,8 +107,7 @@ vont dans les casiers de l’entrée principale.
 Sur sa page de conseils pour la visite, le parc indique des aires de pique-nique : dans le parc historique du château
 Balthasar, dans le quartier thématique Allemagne, à côté du Wodan Timburcoaster.
 
-Au parc aquatique Rulantica, en revanche, la nourriture apportée est interdite. La règle figure plus bas, avec les parcs
-aquatiques.
+Au parc aquatique Rulantica, en revanche, la nourriture apportée est interdite.
 
 ### Phantasialand
 
@@ -121,18 +119,17 @@ La nourriture, les gourdes, les glacières et le verre ne figurent pas sur cette
 
 ### Heide Park
 
-[Heide Park](ref:heide-park) autorise expressément la nourriture apportée. Dans son centre d’aide, le parc écrit que vous
+Dans son centre d’aide, [Heide Park](ref:heide-park) écrit que vous
 pouvez apporter votre repas pour la journée et le manger dans le parc. Seules les bouteilles en verre doivent rester à la
 maison. Le règlement du parc interdit les grillades sur tout le site.
 
-Aux visiteurs atteints d’une intolérance grave comme la maladie cœliaque, le parc conseille même d’apporter leurs repas.
+Aux visiteurs atteints d’une intolérance grave comme la maladie cœliaque, le parc conseille d’apporter leurs repas.
 Ses cuisines ne peuvent pas exclure totalement une contamination croisée, et elles ne répondent pas aux demandes
 particulières.
 
 ### Hansa-Park
 
-Le règlement de [Hansa-Park](ref:hansa-park) ne contient pas une phrase sur la nourriture apportée. Les grillades, les
-barbecues et appareils de cuisson, l’alcool et les drogues sont interdits. Les bouteilles en verre y sont rangées parmi les
+Le règlement de [Hansa-Park](ref:hansa-park) interdit les grillades, les barbecues et appareils de cuisson, l’alcool et les drogues. Il ne dit rien de la nourriture apportée. Les bouteilles en verre y sont rangées parmi les
 objets dangereux, à côté des couteaux et des pointeurs laser.
 
 Il est interdit de manger et de boire dans les attractions et dans les spectacles en salle. Cela vaut pour tous les
@@ -148,8 +145,7 @@ rien.
 ### Movie Park Germany
 
 Le règlement de [Movie Park Germany](ref:movie-park-germany) interdit d’apporter de l’alcool et de faire des grillades
-sur tout le site. Les grandes valises et les autres objets encombrants restent dehors. Sur la nourriture apportée, il n’y
-a rien.
+sur tout le site. Sur la nourriture apportée, il n’y a rien. Les grandes valises et les autres objets encombrants restent dehors.
 
 Le Halloween Horror Festival a ses propres règles. Selon la FAQ du festival, l’alcool et toutes les boissons en bouteille
 de verre sont interdits, tout comme les déodorants en spray, alors que le roll-on et le stick sont permis. Les personnes
@@ -168,7 +164,7 @@ boire dans les attractions et les files d’attente, et vous ne pouvez pas appor
 
 ### Efteling
 
-L’[Efteling](ref:efteling) l’écrit le plus clairement. Son règlement a un article intitulé « Eigen eten en drinken », et on
+Le règlement de l’[Efteling](ref:efteling) a un article intitulé « Eigen eten en drinken », et on
 y lit que vous pouvez apporter votre nourriture et vos boissons. La même chose figure dans la FAQ du parc.
 
 Quand il y a foule, le parc demande de manger ce que vous avez apporté à l’une des aires de pique-nique plutôt que dans
@@ -179,14 +175,13 @@ les restaurants ou sur leurs terrasses.
 [Toverland](ref:attractiepark-toverland) autorise la nourriture apportée et met à votre disposition deux micro-ondes
 gratuits, à la Waldstube et à Katara Plaza. Le parc les propose aussi pour réchauffer les biberons.
 
-Pour tout le reste, il faut se reporter au règlement du parc, disponible à l’entrée et en téléchargement sur le site.
+Le règlement du parc est disponible à l’entrée et en téléchargement sur le site.
 
 ### Walibi Holland
 
 [Walibi Holland](ref:walibi-holland) autorise expressément la nourriture et les boissons apportées, et signale des aires
 de pique-nique dans le parc. Selon le règlement, le verre et l’alcool restent dehors. En dehors des chemins et des aires
-de pique-nique, les zones sont interdites d’accès : une pelouse pour manger, vous n’en trouverez que là où le plan du
-parc en montre une.
+de pique-nique, les zones sont interdites d’accès.
 
 ## Belgique
 
@@ -205,7 +200,7 @@ zones que le plan du parc prévoit pour cela, et interdit dans les restaurants e
 
 L’alcool est interdit dans le parc. Les sacs, boîtes et contenants ne doivent pas dépasser 55 cm de large, 40 cm de long
 et 20 cm de profondeur, et une glacière doit elle aussi tenir dans ces dimensions. Il est interdit de manger et de boire
-dans les attractions et les files d’attente. Le parc aquatique Aqualibi a une règle plus stricte.
+dans les attractions et les files d’attente.
 
 ## France
 
@@ -220,8 +215,7 @@ des raisons d’hygiène.
 
 ### Disneyland Paris
 
-[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) autorise la nourriture apportée, avec deux
-restrictions. Les repas qui demandent une glacière, une table ou des contenants volumineux sont interdits au parc
+[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) autorise la nourriture apportée. Les repas qui demandent une glacière, une table ou des contenants volumineux sont interdits au parc
 Disneyland et au parc Walt Disney Studios. Pour ce genre de pique-nique, une aire est prévue entre le parking et
 l’entrée.
 
@@ -231,13 +225,11 @@ attractions, les théâtres et les files d’attente, le parc demande de ne pas 
 
 ### Futuroscope
 
-Selon sa FAQ, le [Futuroscope](ref:futuroscope) permet de pique-niquer sur toutes les pelouses. C’est la règle la plus
-souple des quinze parcs.
+Selon sa FAQ, le [Futuroscope](ref:futuroscope) permet de pique-niquer sur toutes les pelouses.
 
-Les glacières rigides sont interdites, les sacs volumineux sont à éviter, et un contrôle des sacs a lieu à l’entrée. La
-glacière reste dans la voiture : vous pouvez quitter le parc dans la journée et y revenir.
+Les glacières rigides sont interdites, les sacs volumineux sont à éviter, et un contrôle des sacs a lieu à l’entrée. Comme vous pouvez quitter le parc dans la journée et y revenir, la glacière peut rester dans la voiture.
 
-## Les parcs aquatiques : la nourriture apportée reste dehors
+## Les parcs aquatiques
 
 Dans les quatre parcs aquatiques dont nous avons comparé les règles, la nourriture apportée est interdite.
 
@@ -257,12 +249,10 @@ voiture.
 Sandwichs, fruits et en-cas vont dans un sac à dos ou un sac isotherme souple. La glacière est interdite au Parc Astérix
 et à Disneyland Paris, la glacière rigide au Futuroscope, et Walibi Belgium n’accepte que les sacs jusqu’à
 55 × 40 × 20 cm. Pour les boissons, prenez une gourde en plastique ou en métal, car le verre est interdit dans cinq des
-quinze parcs, et aussi à Rulantica. Barbecue, réchaud et alcool restent à la maison.
+quinze parcs, et aussi à Rulantica.
 
-On mange aux aires de pique-nique. Quand un parc parle de manger dans les files d’attente ou les attractions, c’est pour
-l’interdire. Au Futuroscope, vous pouvez vous installer sur n’importe quelle pelouse, à Disneyland Paris l’aire de
-pique-nique se trouve devant l’entrée, et à Europa-Park ce sont les aires du parc du château Balthasar. À Toverland,
-vous réchauffez gratuitement votre repas ou un biberon au micro-ondes.
+Quand un parc parle de manger dans les files d’attente ou les attractions, c’est pour
+l’interdire.
 
 ## Questions fréquentes
 
@@ -314,8 +304,6 @@ Dans le règlement, qui s’appelle Parkordnung, Parkreglement, Park Rules ou r�
 aussi dans la FAQ du site du parc.
 
 ## Sources
-
-Les règlements changent, souvent en début de saison. Avant la visite, mieux vaut jeter un œil à la version en vigueur.
 
 - Europa-Park, Park Rules : [europapark.de](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations)
 - Europa-Park, Tipps für Ihren Besuch (aires de pique-nique) : [europapark.de](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park)

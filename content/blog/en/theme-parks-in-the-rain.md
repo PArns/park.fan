@@ -71,18 +71,11 @@ rideLinks:
   - walibi-belgium/popcorn-revenge
 ---
 
-If you go to a theme park on a rainy day, you’ll queue for less time on average.
 At all twelve parks we analysed, waits at the headliners were shorter on rainy
 days than on dry days in the same month, weekday against weekday and weekend
 against weekend. The difference ranged from about 4% at Disneyland Paris to
-about 31% at Movie Park. On a day like that, the covered attractions are usually the ones
-worth doing. At Toverland half of the 44 attractions are covered, at Walibi
+about 31% at Movie Park. At Toverland half of the 44 attractions are covered, at Walibi
 Holland none.
-
-Ride by ride, we compare which attractions are covered at nine parks, going by
-what the parks themselves say: Europa-Park, Phantasialand,
-Efteling, Toverland, Movie Park Germany, Plopsaland Deutschland, Heide Park,
-Walibi Belgium and Walibi Holland.
 
 ## How we measured rainy days
 
@@ -140,8 +133,7 @@ rests on just nine rainy days.
 With the threshold at 5 millimetres, waits on rainy days are still shorter at all
 twelve parks. The size of the difference swings a lot, though, because there are
 far fewer such days. At Europa-Park it’s about 23% over eight days, at Movie Park
-about 27% over six. So I wouldn’t read the table as a ranking. Still, none of the
-twelve parks was busier on rainy days.
+about 27% over six. So I wouldn’t read the table as a ranking.
 
 The difference has little to do with how many attractions are covered. At
 Walibi Holland none of them is indoors, and waits on rainy days were 6% shorter
@@ -172,9 +164,7 @@ and Heide Park together:
 | August     |                             185 |                        18% |
 | September  |                             162 |                        16% |
 
-That’s a single year. In 2026 July was dry and May and June were wet. 2027
-could look quite different. It’s still good enough as a rough guide: in the main
-season about one operating day in five was wet, and in some months one in three.
+The figures come from a single year, and in 2026 July was dry while May and June were wet. In the main season about one operating day in five was wet, and in some months one in three.
 
 ## Europa-Park
 
@@ -232,9 +222,7 @@ Verrücktes Hotel Tartüff.
 
 ![A giant clay pot with its lid open, a ladder leaning against it. | Inside the Winja’s Fear & Force building in Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
-Taron, Black Mamba and the other big coasters are outdoors. In steady rain you’re
-left with three coasters under a roof in Brühl: the two in Wuze Town and Crazy
-Bats.
+Taron, Black Mamba and the other big coasters are outdoors.
 
 ```ride-waits-widget rides=phantasialand/winjas-fear|Winja's Fear|Spinning Coaster;phantasialand/winjas-force|Winja's Force|Spinning Coaster;phantasialand/mystery-castle|Mystery Castle|Drop Tower;phantasialand/maus-au-chocolat|Maus au Chocolat|Dark Ride;phantasialand/crazy-bats|Crazy Bats|Indoor coaster columns=type,peak,days
 
@@ -261,11 +249,7 @@ Museum are covered too.
 
 ![The Droomvlucht entrance at night, lit pink and green. | In daylight this wall is white. | right](/media/efteling/droomvlucht.jpg)
 
-Joris en de Draak, Baron 1898 and Python are outdoors. If you’re coming for the
-coasters, pack a rain jacket and ride whatever’s open. If you like dark rides,
-you’ll get through a rainy day at Efteling fine without the outdoor rides.
-Whether a covered ride is closed for maintenance is on its page and in the park’s
-calendar, so if the dark rides are why you’re going, check the evening before.
+Joris en de Draak, Baron 1898 and Python are outdoors. Whether a covered ride is closed for maintenance is on its page and in the park’s calendar, so check it the evening before.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Suspended ride;efteling/symbolica|Symbolica|Trackless Ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Indoor coaster columns=type,peak,days
 
@@ -297,10 +281,6 @@ Fēnix, Booster Bike and Dwervelwind are outdoors. On the Wirbelbaum, a 13-metre
 Ferris wheel, you decide yourself how wildly your basket spins. Djinn, a
 12.8-metre swing carousel with a minimum height of 100 centimetres, turns above
 the oriental market in Land van Toos.
-
-At Toverland, waits on rainy days were 13% shorter. With small children it’s a
-good choice for a day like that. If you’re coming for Troy and Fēnix, pack a rain
-jacket.
 
 ```ride-waits-widget rides=attractiepark-toverland/toos-express|Toos-Express|Family coaster;attractiepark-toverland/villa-fiasko|Villa Fiasko|Funhouse;attractiepark-toverland/wirbelbaum|Wirbelbaum|Ferris wheel columns=type,peak,days
 
@@ -348,9 +328,6 @@ children you’ll have plenty to do in the hall on a rainy day. For teenagers wh
 come for the coasters, the only one under a roof is Tabaluga’s Rollercoaster, a
 family coaster.
 
-Nine rainy days are too few to tell whether the hall is the reason waits were 16%
-shorter.
-
 ```ride-waits-widget rides=plopsaland-deutschland/tabalugas-rollercoaster|Tabaluga's Rollercoaster|Family coaster;plopsaland-deutschland/mias-elf-flight|Mia's Elf Flight|Kiddie ride;plopsaland-deutschland/the-smurfs-adventure|The Smurfs' Adventure|Dark Ride columns=type,peak,days
 
 ```
@@ -365,8 +342,7 @@ of about three minutes through the old station of the second log flume, which
 closed in 2011. The third is the **Drachengrotte** in the Exploria area.
 
 Go to Heide Park in the rain if you were coming for Colossos and the other
-outdoor rides anyway and are counting on a dry afternoon. If it rains all day,
-you have three covered attractions.
+outdoor rides anyway and are counting on a dry afternoon.
 
 ```ride-waits-widget rides=heide-park/ghostbusters-5d|Ghostbusters 5D|Simulator;heide-park/daemonen-gruft|Dämonen Gruft|Dark Ride columns=type,peak,days
 
@@ -392,8 +368,6 @@ track backwards. It’s the only covered coaster in the park, while Kondaa, Vamp
 and Cobra are outdoors. The Palais du Génie and the Spinning Taxi are covered as
 well.
 
-At Walibi Belgium, waits on rainy days were 13% shorter.
-
 ```ride-waits-widget rides=walibi-belgium/turbine|Turbine|Shuttle Coaster;walibi-belgium/popcorn-revenge|Popcorn Revenge|Dark Ride;walibi-belgium/challenge-of-tutankhamon|Challenge of Tutankhamon|Dark Ride columns=type,peak,days
 
 ```
@@ -405,8 +379,7 @@ More on the park in the [Walibi Belgium guide](/blog/walibi-belgium-wait-times-t
 At [Walibi Holland](ref:walibi-holland) in Biddinghuizen, none of the 39
 attractions is indoors. When the park dropped its winter opening in April
 2026, managing director Mascha Taminiau named its dependence on the weather as
-one of the reasons. On rainy days, waits there were 6% shorter. I wouldn’t go to
-Biddinghuizen on a day when it rains non-stop.
+one of the reasons.
 
 More on the park in the [Walibi Holland guide](/blog/walibi-holland-untamed-hard-gaan).
 
@@ -513,7 +486,7 @@ Between 24 December 2025 and 5 October 2026, at least 2 millimetres of rain fell
 on 15% to 26% of operating days, depending on the park. Across Europa-Park,
 Phantasialand, Efteling, Movie Park, Plopsaland and Heide Park, July was the
 driest month from April to September, with 10% of operating days wet, and June
-the wettest, with 32%. That’s one year, not a long-term average.
+the wettest, with 32%. The figures come from a single year.
 
 ## Sources and further reading
 

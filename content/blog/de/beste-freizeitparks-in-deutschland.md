@@ -2,17 +2,14 @@
 title: 'Die besten Freizeitparks in Deutschland 2026'
 translationKey: best-theme-parks-germany
 date: '2026-10-03'
-updatedAt: '2026-10-04'
+updatedAt: '2026-10-13'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Auf park.fan stehen neun Freizeitparks in Deutschland, bei sieben messen wir
-  die Warteschlangen. Der Europa-Park hat im September zum elften Mal den
-  Golden Ticket Award als bester Park der Welt gewonnen, aber im
-  Phantasialand stehst du am längsten an und beim Plopsaland am kürzesten.
-  Eine Rangliste für Achterbahnfans, eine für Familien mit kleinen Kindern,
-  dazu Mindestgrößen, Fast Pass, Anreise, Uhrzeit und Wochentag.
+  Der Europa-Park hat im September zum elften Mal den Golden Ticket Award als bester Park der Welt
+  gewonnen, aber im Phantasialand stehst du am längsten an und im Plopsaland am kürzesten. Ich sortiere die Parks in zwei Ranglisten, eine für Achterbahnfans und eine für
+  Familien mit kleinen Kindern.
 tags:
   - freizeitpark
   - deutschland
@@ -56,17 +53,13 @@ parkLinks:
   - legoland-deutschland
 ---
 
-Auf park.fan stehen **neun Freizeitparks in Deutschland**. Bei sieben messen wir die
+Auf park.fan stehen **neun Freizeitparks in Deutschland**. Bei sechs messen wir die
 Wartezeiten, Bahn für Bahn. Beim [Hansa-Park](ref:hansa-park) kommt keine einzige Zahl an, weil
-der Park sie nur in seiner eigenen App zeigt. Für die [Traumatica](ref:traumatica) haben wir
-nur vier Messtage, und [Rulantica](ref:rulantica) ist eine Wasserwelt. Beide gehören zum
+der Park sie nur in seiner eigenen App zeigt. Die [Traumatica](ref:traumatica), für die wir erst vier Messtage haben, und die Wasserwelt
+[Rulantica](ref:rulantica) gehören zum
 Europa-Park-Resort und kommen deshalb nicht als eigene Parks vor.
 
-Eine einzige Rangliste wäre unfair. Ein Achterbahnfan und eine Familie mit einem Vierjährigen
-suchen nicht denselben Park, und beide wollen wissen, wie lange sie anstehen. Für Achterbahnen
-fährst du nach Rust, für Kulissen nach Brühl, mit einem Kind unter zehn nach Günzburg. Ob du an
-einem der drei Orte vor einer Warteschlange stehst, die länger ist als die Fahrt dorthin, hängt
-von Uhrzeit, Wochentag und Monat ab.
+Es gibt zwei Ranglisten, eine für Achterbahnfans und eine für Familien mit Kindern unter zehn.
 
 ## Nach welchen Kriterien ich sortiere
 
@@ -77,8 +70,7 @@ Zahlen daneben sind unsere eigene Messung, Stand 3. Oktober 2026, und die techni
 von den Parks, aus der Roller Coaster DataBase und aus unseren Guides zu den einzelnen Parks, die
 weiter unten verlinkt sind.
 
-Preise lasse ich draußen. Sie hängen von Tag, Vorverkauf und Saison ab, und jede Zahl wäre beim
-Erscheinen schon überholt. In den Park-Guides stehen sie mit Datum.
+Preise lasse ich draußen. In den Park-Guides stehen sie mit Datum.
 
 ## Die sieben Parks auf einen Blick
 
@@ -96,7 +88,7 @@ Erscheinen schon überholt. In den Park-Guides stehen sie mit Datum.
 
 **1. [Europa-Park](ref:europa-park), Rust.** Am 12. September 2026 hat der Park in Austin zum elften
 Mal den Golden Ticket Award als „Best Park“ gewonnen. Abgestimmt haben Leute aus der Branche, kein
-Publikum. Die Bahnliste trägt den Platz trotzdem: vierzehn Achterbahnen, darunter
+Publikum. Der Park hat vierzehn Achterbahnen, darunter
 [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac), die in der Stahlbahn-Wertung
 von Amusement Today auf Platz 9 steht, und der [Silver Star](ref:europa-park/silver-star). Der Silver
 Star ist 73 Meter hoch, fährt 127 km/h und teilt sich beide Titel mit dem Kärnan im Hansa-Park. Mit
@@ -112,9 +104,8 @@ Great Coasters International aus 21.000 Balken und zwei Millionen Nägeln. Die L
 [blue fire](ref:europa-park/blue-fire-megacoaster), der ersten Katapultbahn des Parks von 2009,
 der [Eurosat](ref:europa-park/eurosat-cancan-coaster), die seit 1989 in ihrer silbernen Kugel im
 Dunkeln fährt, und der Wasserachterbahn [Poseidon](ref:europa-park/water-rollercoaster-poseidon).
-Wer alle vierzehn an einem Tag fahren will, braucht gute Schuhe: Die Themenbereiche sind als Länder
-gebaut und liegen in einer langen Kette, und der Weg von Kroatien nach Irland zieht sich wie ein
-Ikea-Samstag ohne Abkürzung.
+Die Themenbereiche sind als Länder gebaut und liegen in einer langen Kette hintereinander. Wer alle
+vierzehn Achterbahnen an einem Tag fahren will, läuft deshalb weit, etwa von Kroatien bis nach Irland.
 
 Einen Fast Pass verkauft der Park nicht. Es gibt Single-Rider-Warteschlangen an sechs Attraktionen,
 eine kostenlose Virtual Line in der App für einzelne Bahnen und für Hotelgäste einen Frühzutritt,
@@ -126,17 +117,13 @@ Silver Lake City mit Tipis, Planwagen und Blockhütten.
 **2. [Phantasialand](ref:phantasialand), Brühl.** Die Kulissen sind die besten der Parks in dieser Liste.
 [Taron](ref:phantasialand/taron) steht auf Platz 8 der Stahlbahn-Wertung, und
 [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) hat Amusement Today zum vierten Mal als beste
-Wasserbahn in einem Park ausgezeichnet. Dem stehen acht Headliner gegenüber, auf die sich 2,1
-Millionen Gäste im Jahr verteilen, und das merkst du an der Warteschlange. Platz 2 gibt es für den
-Park trotzdem, weil die Bahn hier als Teil eines Dorfes kommt und nicht als Gerüst auf einer Wiese.
+Wasserbahn in einem Park ausgezeichnet. Auf acht Headliner verteilen sich 2,1 Millionen Gäste im Jahr, entsprechend lang sind die
+Warteschlangen. Platz 2 bekommt der Park trotzdem, weil die Bahnen in die Themenwelten eingebaut sind.
 
 Taron schießt dich zweimal durch Klugheim, ein Dorf aus Basaltsäulen, das gleichzeitig die
 Warteschlange ist. [F.L.Y.](ref:phantasialand/fly) in Rookburgh ist ein Flying Coaster, in den du
-im Stehen einsteigst und auf dem Bauch liegend fährst, durch eine viktorianische Fliegerwerkstatt,
-für die ich auch dann Eintritt zahlen würde, wenn am Ende gar keine Bahn stünde.
-[Black Mamba](ref:phantasialand/black-mamba) ist ein Inverted Coaster von 2006, der so dicht an
-Felsen und Hütten vorbeifährt, dass du bei jedem Element den Kopf einziehst, obwohl das nichts
-bringt. Dazu kommen die Minenbahn [Colorado Adventure](ref:phantasialand/colorado-adventure) von
+im Stehen einsteigst und auf dem Bauch liegend fährst, durch eine viktorianische Fliegerwerkstatt.
+[Black Mamba](ref:phantasialand/black-mamba) ist ein Inverted Coaster von 2006, der dicht an Felsen und Hütten vorbeifährt. Dazu kommen die Minenbahn [Colorado Adventure](ref:phantasialand/colorado-adventure) von
 1996, die beiden Spinning Coaster Winja’s Fear und Winja’s Force und der 65 Meter hohe Turm
 [Mystery Castle](ref:phantasialand/mystery-castle).
 
@@ -181,8 +168,8 @@ der erste Abgang aus 67 Metern kommt. Die [Flucht von Novgorod](ref:hansa-park/e
 von 2009 beschleunigt in 1,4 Sekunden auf 100 km/h und fällt später mit 97 Grad über die Senkrechte
 hinaus. [Nessie](ref:hansa-park/nessie) von Anton Schwarzkopf fährt seit 1980 und war damals die
 größte Loopingbahn Europas. Der Highlander ist 120 Meter hoch und hat 2019 dem Scream in Soltau den
-Rekord abgenommen, was man in Niedersachsen nicht gern hört. Im Oktober verwandelt der Herbstzauber
-am Meer den Park mit rund 2.000 Leuchtfiguren, 2026 vom 10. bis zum 25. Oktober bis 21 Uhr.
+Rekord abgenommen. Beim Herbstzauber am Meer stehen rund 2.000 Leuchtfiguren im Park, 2026 vom 10.
+bis zum 25. Oktober, geöffnet bis 21 Uhr.
 Anreise mit der Regionalbahn von Lübeck bis Sierksdorf und zehn Minuten zu Fuß, mit dem Auto über
 die A1. 2027 wird der Park fünfzig und baut dafür einen 86 Meter hohen Aussichtsturm.
 
@@ -195,13 +182,13 @@ Acht Achterbahnen hat der Park. Die größte ist
 Rides aus dem Jahr 2017, 40 Meter hoch, 90 km/h, ab 130 Zentimetern, und der Zug wird vor dem Start
 dreimal vor und zurück geworfen, bevor das Tempo für den ersten Hügel reicht.
 [The Bandit](ref:movie-park-germany/the-bandit) von 1999 war bei der Eröffnung die einzige
-Holzachterbahn Deutschlands und rappelt nach 27 Jahren so, dass ich nach der zweiten Fahrt
-Kopfschmerzen habe. Die [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) von
+Holzachterbahn Deutschlands und rappelt nach 27 Jahren stark. Die [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) von
 2021 ist ein Achterbahn-Dark-Ride von Intamin mit zwei Launches und einer Drehscheibe, und
 [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory) hat die längste Warteschlange
 im Park, weil die Bahn nur 848 Personen in der Stunde schafft.
 
-Seinen größten Abend hat der Park im Herbst. Das Halloween Horror Festival läuft 2026 vom 26. September bis zum 8. November, und der 8. November ist auch der letzte Tag der Saison. Seit
+Das Halloween Horror Festival läuft 2026 vom 26. September bis zum 8. November, und der 8. November
+ist auch der letzte Tag der Saison. Seit
 September öffnet der Park außerhalb der Ferien nur von Donnerstag bis Sonntag. Vom 27. November bis
 zum 5. Januar folgt Movie Park’s Hollywood Christmas. Der Bahnhof Feldhausen liegt rund 400 Meter
 vom Eingang entfernt, näher als bei jedem anderen Park dieser Liste, mit dem RE14 ab Essen und dem
@@ -212,22 +199,19 @@ RB43 ab Dortmund.
 **1. [Legoland Deutschland](ref:legoland-deutschland), Günzburg.** Der Park ist seit 2002 offen. Im
 Winter 2026/27 öffnet er zum vierten Mal an einzelnen Tagen zwischen November und Januar, mit
 Eisbahn und Shows, bei den meisten Bahnen draußen steht dann „witterungsabhängig geöffnet“.
-Einzelne Schließtage gibt es 2026 im Mai, Juni und September, vor der Anreise lohnt sich also ein
-Blick in den Kalender.
+Einzelne Schließtage gibt es 2026 im Mai, Juni und September.
 
 Elf Themenwelten hat der Park, die jüngste ist Lego Mythica von 2023. Dort steht
 [Maximus](ref:legoland-deutschland/maximus-the-guardians-flight), ein Wing Coaster von Bolliger &
 Mabillard und der erste in einem Legoland überhaupt: 17 Meter hoch, 54 km/h, ab 120 Zentimetern mit
-einem Erwachsenen, allein ab 130 Zentimetern und acht Jahren. Für Kinder ist das die Bahn, an der
-man merkt, dass sie gewachsen sind. Davor kommen der
+einem Erwachsenen, allein ab 130 Zentimetern und acht Jahren. Davor kommen der
 [Feuerdrache](ref:legoland-deutschland/fire-dragon) von Zierer aus dem Eröffnungsjahr, ab 110
 Zentimetern und sechs Jahren in Begleitung, und die
 [Drachenjagd](ref:legoland-deutschland/dragon-hunt) von Gerstlauer, auf die schon Vierjährige ab
 einem Meter dürfen. [Flying Ninjago](ref:legoland-deutschland/flying-ninjago) ist ein Sky Fly von
-2012, bei dem du deine Gondel selbst um die eigene Achse drehst, so oft, wie dein Magen es erlaubt.
+2012, bei dem du deine Gondel selbst um die eigene Achse drehst.
 
-Das Miniland besteht nach Wikipedia aus über 25 Millionen Steinen, und keiner davon liegt nachts
-barfuß im Kinderzimmer. 2024 kamen laut Wikipedia rund zwei Millionen Gäste. Die Saison läuft 2026
+Das Miniland besteht nach Wikipedia aus über 25 Millionen Steinen. 2024 kamen laut Wikipedia rund zwei Millionen Gäste. Die Saison läuft 2026
 vom 28. März bis zum 8. November, Halloween vom 3. Oktober bis zum Saisonende. Gekaufter Vorrang
 heißt hier **Fastrack**, in drei Stufen, für 18 Attraktionen und ohne Eintritt. Übernachten kann man
 im Feriendorf direkt am Park, im Pirateninsel-Hotel, in drei Burgen, im Ninjago Quartier oder seit
@@ -253,8 +237,7 @@ Für die Eltern steht die
 2001 mit 120 km/h, die laut Park über 40 Auszeichnungen gesammelt hat, darunter den Golden Ticket
 Award als beste Achterbahn Europas. Sie wird 2026 fünfundzwanzig und verlangt 140 Zentimeter. Dazu
 kommt [Sky Scream](ref:plopsaland-deutschland/sky-scream) von Premier Rides, ab 140 Zentimetern und
-vierzehn Jahren. Wer also mit einem Kleinkind und einem Teenager anreist, bekommt hier beides an
-einem Tag, ohne dass jemand stundenlang auf einer Bank sitzt.
+vierzehn Jahren.
 
 2026 hat der Park bis zum 1. November jeden Tag geöffnet, nach eigener Angabe die längste Saison
 seiner Geschichte. Vorrang verkauft er als **Express Pass** für acht Attraktionen. Ein Hotel am Park
@@ -266,23 +249,18 @@ Kinderachterbahnen. Der Kleine Zar und die Schlange von Midgard nehmen Kinder ab
 mit, der 2026 eröffnete Cornwall Coaster ebenfalls.
 
 Der [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster) hat am 23. Mai 2026 eröffnet, 18
-Meter hoch, 50 km/h, und der Park zählt sieben Launches auf einer Runde, vorwärts und rückwärts. Für
-eine Familienbahn ist das viel. Im Hansa-Park steht an vielen Bahnen neben der Größe ein Alter, ab
+Meter hoch, 50 km/h, und der Park zählt sieben Launches auf einer Runde, vorwärts und rückwärts. Im Hansa-Park steht an vielen Bahnen neben der Größe ein Alter, ab
 dem ein Kind allein fahren darf: bei der Schlange von Midgard ab sechs, beim Cornwall Coaster ab
 acht, bei Nessie und dem Royal Scotsman erst ab zehn. Ein siebenjähriges Kind mit 1,25 Metern kommt
-damit auf sieben der acht Achterbahnen, auf vier davon aber nur mit einem Erwachsenen daneben. Wer
-als einziger Erwachsener mit zwei Kindern kommt, fährt Nessie zweimal.
+damit auf sieben der acht Achterbahnen, auf vier davon aber nur mit einem Erwachsenen daneben.
 
 **[Heide Park](ref:heide-park?bare), Soltau.** Er ist kein Familienpark, aber er hat mit dem Peppa Pig Land eine Ecke
 für die Kleinsten, und Schorschs Dino-Abenteuer nimmt Kinder schon ab 86 Zentimetern mit. Die
-großen Bahnen verlangen dort 140 Zentimeter. Zwischen 86 und 140 Zentimetern liegen ein paar Jahre,
-in denen ein Kind schon viel fahren darf, aber keine der Bahnen, wegen derer die Eltern gekommen
-sind.
+großen Bahnen verlangen dort 140 Zentimeter.
 
 ## Wie groß dein Kind sein muss
 
-Mit Kindern entscheidet für mich oft die Mindestgröße über den Park, nicht die Bahnliste. Die Werte für die
-großen Bahnen, Stand Oktober 2026, nach Angabe der Parks:
+Die Mindestgrößen für die großen Bahnen, Stand Oktober 2026, nach Angabe der Parks:
 
 | Park          | Ab 140 cm                                      | Ab 130 cm                       | Darunter                                                                                 |
 | ------------- | ---------------------------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------- |
@@ -297,13 +275,9 @@ großen Bahnen, Stand Oktober 2026, nach Angabe der Parks:
 Bei Taron und F.L.Y. reichen 130 Zentimeter nur mit einem Erwachsenen daneben, allein geht es erst
 ab 140. In einer leeren Zelle hat der Park für diese Stufe keine große Bahn.
 
-Der Tag ist entspannter, wenn das Kind vorher weiß, welche Bahn es nicht fahren darf, und nicht
-erst nach vierzig Minuten in der Warteschlange vor der Messlatte.
-
 ## Wo du am kürzesten ansteht
 
-Der Vergleich über alle gemessenen Tage, mit derselben Rechenmethode für jeden Park. Die Zeilen
-stehen in der Reihenfolge der Messung vom 3. Oktober 2026 und werden nicht neu sortiert:
+Der Vergleich über alle gemessenen Tage, für jeden Park gleich gerechnet. Die Zeilen stehen in der Reihenfolge der Messung vom 3. Oktober 2026 und werden nicht neu sortiert:
 
 ```park-comparison-widget slugs=phantasialand,legoland-deutschland,europa-park,heide-park,movie-park-germany,plopsaland-deutschland show=quietest
 
@@ -311,24 +285,16 @@ stehen in der Reihenfolge der Messung vom 3. Oktober 2026 und werden nicht neu s
 
 Im Phantasialand liegt der Median am höchsten und im Plopsaland am niedrigsten. Europa-Park, Heide
 Park und Movie Park liegen dicht beieinander, obwohl der Europa-Park die größten Besucherzahlen hat.
-Er verteilt sie auf mehr Bahnen: Je mehr Attraktionen sich den Andrang teilen, desto kürzer wird
-die längste Warteschlange.
+Er verteilt sie auf mehr Bahnen, und deshalb wird dort auch die längste Warteschlange nicht so lang.
 
-Beim Legoland fehlt die Spalte mit der längsten Warteschlange. Keine der zehn Bahnen mit dem
-höchsten Median kommt auf die 100 Messtage, ab denen wir eine Bahn für einen ganzen Park sprechen
-lassen.
+Beim Legoland fehlt die Spalte mit der längsten Warteschlange. In diese Spalte nehmen wir eine Bahn erst ab 100 Messtagen auf, und im Legoland erreicht keine der
+zehn Bahnen mit dem höchsten Median diese Zahl.
 
-Wie lang eine Warteschlange wird, hängt an zwei Zahlen: wie viele Leute anstehen wollen und wie
-viele die Bahn in der Stunde wegfährt. Voltron schickt laut Park alle 36 Sekunden einen Zug los und
-schafft 1.600 Fahrgäste in der Stunde. Van Helsing’s Factory in Bottrop fährt mit Einzelwagen zu vier
-Personen und kommt auf 848. Das ist eine einzige offene Kasse am Samstagnachmittag, und deshalb
-steht man in Bottrop an einer Bahn mit 36 km/h länger an als an der großen Katapultbahn nebenan. Wer
-einen Park nach der Bahnliste plant, sollte deshalb immer auch fragen, wie viele Züge dort fahren.
+Wie lang eine Warteschlange wird, hängt auch davon ab, wie viele Fahrgäste eine Bahn in der Stunde schafft. Voltron schickt laut Park alle 36 Sekunden einen Zug los und schafft 1.600. Van Helsing’s Factory in Bottrop fährt mit 36 km/h und Einzelwagen zu vier Personen und kommt auf 848.
 
-Ein Vorrang, den man kaufen kann, verkürzt die Wartezeit nicht für alle. Er verteilt sie um, von
-denen, die zahlen, zu denen, die nicht zahlen. Im Europa-Park, wo es keinen gibt, liegt unser Median
+Ein gekaufter Vorrang verlängert die Wartezeit für alle ohne ihn. Im Europa-Park, wo es keinen gibt, liegt unser Median
 deshalb nah an dem, was jeder erlebt. Im Phantasialand und im Heide Park stehen an vollen Tagen zwei
-Gruppen vor derselben Bahn, und für die ohne Pass dauert es länger, als unsere Zahl allein sagt.
+Gruppen vor derselben Bahn, und wer keinen Pass hat, wartet dort länger als unser Median.
 
 ## Zu welcher Uhrzeit du wo anstehst
 
@@ -341,11 +307,10 @@ Im Phantasialand sieht der Tag so aus, Bahn für Bahn über alle gemessenen Tage
 Taron ist zur Öffnung und in der letzten Stunde am vollsten, wenn alle noch schnell eine Fahrt
 mitnehmen wollen. F.L.Y. ist in der ersten Stunde kurz und hat seine Spitze eine Stunde später,
 sobald der Rest des Parks in Rookburgh angekommen ist. Beide haben am Nachmittag ihre ruhigste
-Stunde. Wer beide fahren will, geht zur Öffnung zu F.L.Y. und hebt sich Taron für den
-Nachmittag auf, wenn der halbe Park beim Kaffee sitzt.
+Stunde. Wer beide fahren will, geht zur Öffnung zu F.L.Y. und hebt sich Taron für den Nachmittag auf.
 
-In Rust ist es umgekehrt. Die Eurosat hat ihre längste Warteschlange schon um zehn Uhr, weil sie nahe
-am Eingang steht und drinnen fährt, und bei Regen fällt das allen gleichzeitig ein. Im Heide Park
+Im Europa-Park hat die Eurosat ihre längste Warteschlange schon um zehn Uhr, weil sie nahe am
+Eingang steht und drinnen fährt, und bei Regen gehen alle gleichzeitig dorthin. Im Heide Park
 zieht Colossos um die Mittagszeit an, im Movie Park wird die Warteschlange an Van Helsing’s Factory
 bis zum Abend nicht kürzer. Die Kurven aller anderen Parks stehen auf den jeweiligen Parkseiten.
 
@@ -353,21 +318,17 @@ bis zum Abend nicht kürzer. Die Kurven aller anderen Parks stehen auf den jewei
 
 Der ruhigste Wochentag ist je Park ein anderer, und die Tabelle oben nennt ihn. Sie
 kann leer sein: Bei Parks, die außerhalb der Hauptsaison an mehreren Wochentagen schließen,
-vergleichen wir keine Tage, die auf verschiedenen Teilen des Jahres beruhen. Für den Heide Park
-gilt außerdem, dass ein ruhiger Montag in Soltau meistens ein geschlossener ist. Für den
-Hansa-Park fehlt die Messung, dort hilft nur der Öffnungskalender, und der hat 2026 keine Lücke.
+vergleichen wir keine Tage, die auf verschiedenen Teilen des Jahres beruhen.
 
 Der Samstag ist im Europa-Park, im Phantasialand, im Heide Park und im Legoland der vollste Tag,
 in Brühl mit dem größten Abstand zum Rest der Woche. Der Sonntag ist dort fast genauso voll, in
 Rust, Soltau und Bottrop dagegen einer der ruhigeren Tage. Wer mit Kindern nur am Wochenende kann,
-fährt also sonntags und nicht samstags, außer nach Brühl. Im Movie Park liegt der Dienstag vorn,
-weil der Park außerhalb der Ferien dienstags geschlossen hat und unsere Dienstage fast nur aus den
-Sommerferien stammen. Im Plopsaland ist jeder Tag gleich ruhig, auch der Samstag.
+fährt also sonntags und nicht samstags, außer nach Brühl. Im Plopsaland ist jeder Tag gleich ruhig, auch der Samstag.
 
-Beim Monat ist das Bild klarer. Juli und August sind in fast allen Parks die vollsten Monate, im
+Juli und August sind in fast allen Parks die vollsten Monate, im
 Phantasialand mit großem Abstand. Der September ist in Brühl, Soltau und Bottrop einer der
 ruhigsten, weil die Sommerferien in den meisten Ländern vorbei sind und die Herbstferien noch nicht
-angefangen haben. Wer frei hat, wann er will, fährt im September. Die Brückentage nach Christi
+angefangen haben. Die Brückentage nach Christi
 Himmelfahrt und Fronleichnam sind dagegen voll, in unseren Daten für den Europa-Park auch dann,
 wenn es regnet.
 
@@ -394,19 +355,17 @@ Europa-Parks:
 | Plopsaland Deutschland | Halloween Fright Nights, freitags und samstags im Oktober | nicht angekündigt                                 |
 | Legoland Deutschland   | Halloween 03.10.–08.11., tagsüber                         | WinterWonder 28.11.–10.01., an einzelnen Tagen    |
 
-Das Phantasialand sitzt Halloween komplett aus und holt das im Winter nach, mit Glühwein,
-Lichterketten und Taron im Dunkeln. Wer im Dezember fahren will, sollte wissen, dass unsere
-Dezember-Werte für Brühl und Rust auf wenigen Tagen um den Jahreswechsel beruhen, der vollsten Zeit
-des Winters. Ein Dienstag Anfang Dezember sieht anders aus. Alle Termine und Preise
+Das Phantasialand macht kein Halloween, öffnet aber im Winter mit Glühwein,
+Lichterketten und Taron im Dunkeln. Unsere Dezember-Werte für Brühl und Rust beruhen auf wenigen Tagen um den Jahreswechsel, der vollsten Zeit
+des Winters. Alle Termine und Preise
 stehen im [Halloween-Guide](/blog/halloween-freizeitparks-2026) und im
 [Winter-Guide](/blog/winter-freizeitparks-2026).
 
 ## Zwei Parks auf einer Reise
 
-Wer weiter anreist, kann zwei Parks verbinden. Die Entfernungen sind Luftlinie zwischen den
-Eingängen, die Straße ist immer etwas länger.
+Die Entfernungen sind Luftlinie zwischen den Eingängen.
 
-- Phantasialand und Movie Park, **91 Kilometer.** Die naheliegendste Kombination in diesem Land.
+- Phantasialand und Movie Park, **91 Kilometer.**
   Beide liegen in Nordrhein-Westfalen und sind mit dem Zug erreichbar. Brühl hat die Kulissen und
   die langen Warteschlangen, Bottrop die kürzeren und Halloween. Im Herbst passt das besonders gut,
   weil das Phantasialand kein Halloween macht.
@@ -416,20 +375,16 @@ Eingängen, die Straße ist immer etwas länger.
 - Europa-Park und Plopsaland, **124 Kilometer.** Rust und Haßloch liegen beide im Oberrheingraben.
   Mit einem Kind ist das die bessere Kombination als zwei Tage Rust, weil der zweite Tag in Haßloch
   kürzer und ruhiger ausfällt.
-- Europa-Park und Rulantica, **im selben Resort.** Die Wasserwelt liegt im selben Resort, braucht ein eigenes Ticket
+- Europa-Park und Rulantica, **im selben Resort.** Die Wasserwelt braucht ein eigenes Ticket
   und hat einen eigenen Parkplatz. Zwei Tage Europa-Park sind für die meisten trotzdem die bessere
   Wahl, denn bei vierzehn Achterbahnen und 96 Attraktionen bleibt nach einem Tag fast immer etwas übrig.
 
-Europa-Park und Phantasialand an einem Wochenende ist dagegen keine gute Idee. 288 Kilometer
-Luftlinie sind auf der A5 und der A61 gut vier Stunden, und die verbringst du dann zwischen zwei
-Parks, die beide einen ganzen Tag verdienen.
+Von Europa-Park und Phantasialand an einem Wochenende rate ich ab. Die 288 Kilometer Luftlinie sind
+auf der A5 und der A61 gut vier Stunden Fahrt.
 
 ## Welche Parks hier fehlen
 
-Deutschland hat mehr Freizeitparks als neun. Tripsdrill, Fort Fun, der Skyline Park, Belantis und
-der Freizeitpark Plohn stehen noch nicht auf park.fan. Wir bekommen von ihnen keine Wartezeiten,
-und eine Rangliste, die bei zwei Dritteln der Parks auf Messungen beruht und beim Rest auf meinem
-Bauchgefühl, wäre keine. Wenn einer davon dazukommt, kommt er auch in diese Liste.
+Tripsdrill, Fort Fun, der Skyline Park, Belantis und der Freizeitpark Plohn stehen noch nicht auf park.fan und fehlen deshalb in dieser Rangliste.
 
 ## Häufige Fragen
 

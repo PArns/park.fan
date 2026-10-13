@@ -6,8 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Epic Universe sta je het langst in de rij, in de Studios het kortst. Juist in Epic Universe
-  geldt de Express Unlimited niet. Voor de grote achtbanen moet je, afhankelijk van de baan, 1,22
+  In Epic Universe sta je het langst in de rij, en daar geldt de Express Unlimited niet. Voor de grote achtbanen moet je, afhankelijk van de baan, 1,22
   tot 1,38 meter lang zijn.
 category: guides
 tags:
@@ -24,7 +23,7 @@ tags:
 coverImage:
   src: /media/universal-islands-of-adventure/welcome-cover.jpg
   alt: 'Een trein van de VelociCoaster rijdt door een bocht, erachter de torens van Hogwarts.'
-  caption: 'Twee themawerelden op één foto: Jurassic World en Hogwarts.'
+  caption: 'Jurassic World en Hogwarts in Islands of Adventure.'
   credit: 'Patrick Arns'
 parkLinks:
   - universal-studios-florida
@@ -64,14 +63,14 @@ Volcano Bay is een waterpark, achtbanen hebben de andere drie. Volgens Wikipedia
 2024 op ruim 9,5 miljoen bezoeken en plaats 13 ter wereld, Islands of Adventure op 9,45 miljoen en
 plaats 14. Voor Epic Universe heeft Universal tot nu toe geen bezoekersaantal gepubliceerd.
 
-Hoe lang je in de rij staat, verschilt flink tussen de drie parken. In onze metingen van de afgelopen
+In onze metingen van de afgelopen
 twee jaar wacht je in Epic Universe het langst en in de Studios het kortst:
 
 ```park-comparison-widget slugs=universal-studios-florida,universal-islands-of-adventure,universal-epic-universe highlight=universal-epic-universe
 
 ```
 
-Epic Universe is 16 maanden oud. Mine-Cart Madness heeft in onze metingen de langste rij van het hele
+Mine-Cart Madness heeft in onze metingen de langste rij van het hele
 resort, op gelijke hoogte daarachter volgen Battle at the Ministry en Hagrid's Magical Creatures
 Motorbike Adventure uit Islands of Adventure.
 
@@ -93,9 +92,7 @@ parken: New York, San Francisco, World Expo, Springfield, Hollywood, Diagon Alle
 Kongfrontation maakte in 2002 plaats voor Revenge of the Mummy, en voor The Simpsons verdween in 2007 Back to
 the Future: The Ride.
 
-Uit deze zeven attracties zou ik bij een bezoek kiezen. De huizen van de Halloween Horror Nights heb
-ik weggelaten, ook al sta je daar in de herfst het langst in de rij: het zijn geen attracties en ze
-lopen maar tot 1 november.
+In de herfst sta je het langst in de rij bij de huizen van de Halloween Horror Nights, die tot 1 november lopen.
 
 ```ride-waits-widget rides=universal-studios-florida/harry-potter-and-the-escape-from-gringotts|Escape from Gringotts|Indoor-achtbaan;universal-studios-florida/revenge-of-the-mummy|Revenge of the Mummy|Indoor-achtbaan;universal-studios-florida/despicable-me-minion-mayhem|Minion Mayhem|Simulator;universal-studios-florida/transformers-the-ride-3d|Transformers: The Ride-3D|3D-darkride;universal-studios-florida/men-in-black-alien-attack|Men in Black: Alien Attack|Schietrit;universal-studios-florida/the-simpsons-ride|The Simpsons Ride|Simulator;universal-studios-florida/et-adventure|E.T. Adventure|Darkride columns=type,peak,days highlight=universal-studios-florida/harry-potter-and-the-escape-from-gringotts
 
@@ -132,9 +129,7 @@ Hollywood Drift**, een achtbaan van Intamin waarbij de wagens om hun eigen as dr
 haar op 20 januari 2026 aan en plant haar voor 2027. De versie in Californië staat in ons artikel
 [Hollywood Drift in Universal Studios Hollywood](/news/hollywood-drift-universal-studios-hollywood).
 
-Fast & Furious: Supercharged is sinds 17 augustus 2026 dicht, een jaar eerder dan eerst aangekondigd. De
-wachtrij van de attractie was in de herfst tot nu toe de plek voor een huis van de Halloween Horror
-Nights. Wat daar daarna komt, heeft Universal niet gezegd.
+Fast & Furious: Supercharged is sinds 17 augustus 2026 dicht, een jaar eerder dan eerst aangekondigd. In de wachtrij van de attractie stond in de herfst tot nu toe een huis van de Halloween Horror Nights. Wat daar daarna komt, heeft Universal niet gezegd.
 
 ## Islands of Adventure
 
@@ -162,8 +157,7 @@ Minimale lengte 1,30 meter.
 
 ![De verlichte ingangsletters van de Jurassic World VelociCoaster bij nacht | Achter deze ingang loopt de rij dwars door de raptorpaddock van Jurassic World. | wide](/media/velocicoaster/01-eingang.jpg)
 
-De rij loopt door de raptorpaddock, waar animatronische velociraptors staan. Tot vlak voor de lancering is
-er in het atrium nog iets te zien.
+De rij loopt door de raptorpaddock, waar animatronische velociraptors staan.
 
 ![Het beeld van een velociraptor in het groene atrium van het VelociCoaster-station | In het atrium staat de raptor tussen de planten, vlak voor het station. | right](/media/velocicoaster/03-atrium.jpg)
 
@@ -172,7 +166,7 @@ oudste van de drie. Bolliger & Mabillard bouwden haar voor de opening van het pa
 zeven inversies, is 34 meter hoog en haalt 108 km/u. De eerste helling neemt de trein zonder ketting:
 banden versnellen hem in twee seconden tot 64 km/u. Minimale lengte 1,38 meter, de hoogste in het park.
 
-Voor wie geen achtbaan wil, zijn er de darkrides. In **[Harry Potter and the Forbidden
+In **[Harry Potter and the Forbidden
 Journey](ref:universal-islands-of-adventure/harry-potter-and-the-forbidden-journey)** zit je in een
 robotarm van KUKA en vlieg je door Hogwarts. De attractie opende op 18 juni 2010, duurt ruim vier minuten
 en is toegankelijk vanaf 1,22 meter. **[Skull Island: Reign of
@@ -221,7 +215,7 @@ lift van Simtec, ook vanaf 1,02 meter.
 darkride met augmented reality waarin je schildpadschilden naar de andere wagens gooit. De rit duurt vijf
 minuten en draaide eerder al in Osaka (sinds 2021) en Hollywood (sinds 2023).
 
-Bij de andere achtbanen van Epic Universe sta je korter in de rij dan bij Mine-Cart Madness. **[Stardust
+**[Stardust
 Racers](ref:universal-epic-universe/stardust-racers)** in Celestial Park is een duelbaan van Mack met twee
 sporen, 40,5 meter hoogte, 100 km/u en één inversie. Ze won in 2025 de Golden Ticket Award voor beste
 nieuwe achtbaan. Minimale lengte 1,22 meter. **[Curse of the
@@ -229,7 +223,7 @@ Werewolf](ref:universal-epic-universe/curse-of-the-werewolf)** is een spinning c
 Universe, **[Hiccup's Wing Gliders](ref:universal-epic-universe/hiccup-wing-glider)** op de Isle of Berk een
 familieachtbaan van Intamin met 72 km/u. Allebei zijn ze toegankelijk vanaf 1,02 meter.
 
-Voor kinderen onder 1,02 meter is er meer dan alleen speeltuinen: **[Yoshi's
+**[Yoshi's
 Adventure](ref:universal-epic-universe/yoshis-adventure)** is toegankelijk vanaf 0,87 meter. De draaimolen
 **[Constellation Carousel](ref:universal-epic-universe/constellation-carousel)** en de boottocht **[Fyre
 Drill](ref:universal-epic-universe/fyre-drill)** hebben geen minimale lengte, kinderen onder 1,22 meter gaan
@@ -239,7 +233,7 @@ Magic en The Untrainable Dragon op de Isle of Berk.
 
 ## Drie keer Harry Potter
 
-Harry Potter is het thema dat alle drie de parken verbindt, en elk heeft een eigen gebied. Het oudste is
+Elk van de drie parken heeft een eigen Harry Potter-gebied. Het oudste is
 Hogsmeade in Islands of Adventure, dat op 18 juni 2010 opende op 8 hectare. Daar stond eerst de achtbaan
 Flying Unicorn, die in 2008 sloot en terugkwam als **[Flight of the
 Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**. De junior-achtbaan van Vekoma
@@ -255,7 +249,7 @@ Park-to-Park-ticket nodig. Voor het Ministry of Magic plan je een eigen dag in E
 
 ## Seuss Landing, Marvel en Jurassic Park
 
-Drie eilanden van Islands of Adventure zijn gezinseilanden. **Seuss Landing** heeft een darkride, een
+**Seuss Landing** heeft een darkride, een
 draaimolen van D. H. Morgan en de trolleybaan van Mack, die sinds 2006 op twee sporen van elk 460 meter
 boven je hoofd rijdt. **Marvel Super Hero Island** heeft naast de Hulk, Spider-Man en Doctor Doom's
 Fearfall de theekopjesrit Storm Force Accelatron van Mack uit 2000. **Jurassic Park** heeft naast
@@ -294,7 +288,7 @@ minuten. Instappen mag alleen met een Park-to-Park-ticket of een jaarkaart.
 
 ## Tickets: één park of Park-to-Park
 
-Universal verkoopt twee soorten tickets. Met een ticket voor één park ga je per dag naar één park. Met een
+Met een ticket voor één park ga je per dag naar één park. Met een
 Park-to-Park-ticket wissel je op dezelfde dag tussen de parken en rijd je met de Hogwarts Express. Er zijn
 Park-to-Park-tickets voor drie, vier en vijf dagen, waarmee je elke dag in alle vier de parken mag, ook in
 Epic Universe en Volcano Bay.
@@ -309,12 +303,11 @@ oktober 2026:
 | Universal Islands of Adventure | 124,99 dollar |
 | Volcano Bay                    | 80,99 dollar  |
 
-De prijzen veranderen van dag tot dag, dit zijn telkens de laagste. Twee aanbiedingen heeft Universal
-daarnaast. Het 3-dagenticket met één park per dag, Studios, Islands of Adventure en Epic Universe, begint
+De prijzen veranderen van dag tot dag, dit zijn telkens de laagste. Het 3-dagenticket met één park per dag, Studios, Islands of Adventure en Epic Universe, begint
 bij 99 dollar per dag en 297 dollar samen. Het Park-to-Park-ticket voor twee dagen in de Studios en
 Islands of Adventure plus één dag in Epic Universe begint bij 119 dollar per dag, 357 dollar in totaal.
 
-Mijn advies hangt af van de duur. Voor drie dagen neem ik het 3-dagenticket met één park per dag, omdat Epic
+Voor drie dagen neem ik het 3-dagenticket met één park per dag, omdat Epic
 Universe sowieso een eigen dag nodig heeft. Het Park-to-Park-ticket loont als je met de Hogwarts Express wilt
 rijden of op één dag tussen de Studios en Islands of Adventure wilt wisselen.
 
@@ -326,8 +319,7 @@ text: De prijzen per dag staan in de kalender van Universal.
 
 ## Express Pass: wat hij kost en waar hij geldt
 
-Met de Express Pass koop je je bij Universal langs de rij. Hij bestaat in drie vormen, en die
-verschillen in hoe vaak hij per attractie geldt en in welke parken.
+Met de Express Pass koop je je bij Universal langs de rij.
 
 **Universal Express** geldt één keer per attractie. Universal verkoopt hem voor de Studios, Islands of
 Adventure, Epic Universe en Volcano Bay, als toeslag op het ticket. Voor de Studios en Islands of Adventure
@@ -342,13 +334,11 @@ passen beschikbaar zijn.
 **Universal Express Now** is er alleen in de app in het park, op dezelfde dag, voor losse attracties in
 een tijdvenster. Universal biedt hem volgens eigen zeggen sporadisch aan.
 
-In Epic Universe kom je dus niet langs de eenmalige Express heen als je er een pas wilt. De langste rijen
-van het resort staan daar, dus een pas levert daar het meeste op. Wie bij de opening eerst Mine-Cart
+Wie in Epic Universe een pas wil, neemt dus de eenmalige Express. Wie bij de opening eerst Mine-Cart
 Madness en Battle at the Ministry rijdt, heeft hem voor die twee niet nodig. In de Studios en Islands of
 Adventure zou ik zonder hotelvoordeel geen pas kopen. Met een vroege aankomst kom je ook zonder pas
 aan bij de attracties van de rope-drop-lijst, dus VelociCoaster, Ripsaw Falls, Skull Island en
-Spider-Man. Voor Hagrid's geldt dat niet. Dat is mijn inschatting op basis van
-de uurprofielen. Hoeveel minuten een pas echt scheelt, meten we niet.
+Spider-Man, maar niet bij Hagrid's. Dat schat ik in op basis van de uurprofielen, want hoeveel minuten een pas scheelt, meten we niet.
 
 ## Wanneer je het beste kunt gaan
 
@@ -401,8 +391,7 @@ november Forbidden Journey, Flight of the Hippogriff, VelociCoaster, Ollivanders
 
 Een dag in Islands of Adventure zonder hotel zou ik zo indelen: bij de opening ga je naar
 VelociCoaster, omdat de vroege start daar volgens de rope-drop-analyse het meeste oplevert. Daarna Hagrid's
-en dan Forbidden Journey. Rond lunchtijd zijn de waterattracties aan de beurt, want je droogt daarna toch
-wel in de zon. Met hotel hangt het ervan af welke attracties Universal voor die dag in de app voor de Early Park
+en dan Forbidden Journey. Rond lunchtijd zijn de waterattracties aan de beurt. Met hotel hangt het ervan af welke attracties Universal voor die dag in de app voor de Early Park
 Admission vrijgeeft. Staat VelociCoaster of Hagrid's op de lijst, dan rijd je die attractie in het uur voor
 de opening en de andere bij de opening.
 
@@ -504,8 +493,7 @@ Hoe het weer de komende dagen in het resort wordt, en wat dat betekent voor de a
 
 ```
 
-Het tweede grote park in Orlando is Magic Kingdom, dat in onze data de kortste typische wachttijd van de
-vier Disneyparken in Florida heeft: [Magic Kingdom, wachttijden en
+Magic Kingdom heeft in onze metingen de kortste typische wachttijd van de vier Disneyparken in Florida: [Magic Kingdom, wachttijden en
 tips](/blog/magic-kingdom-wachttijden-tips).
 
 — Patrick

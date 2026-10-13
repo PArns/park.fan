@@ -6,12 +6,11 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Walibi Holland staat op een akker die in 1957 nog zee was, adverteert met
-  een slogan die het ooit zelfs op condooms drukte, en heeft met Untamed een
-  achtbaan die ik tot de beste van Europa reken, waarvoor je op een normale dag
-  nauwelijks wacht. Plus Halloween-experiences waarvoor mensen vrijwillig
-  bijbetalen om aan een plafondrail vastgegespt te worden, en een
-  kerstevenement dat het park in april heeft geschrapt.
+  Walibi Holland staat op een polder die in 1957 nog zee was en adverteert
+  met de slogan “hard gaan”. Untamed reken ik tot de beste achtbanen van
+  Europa, en op een normale dag wacht je er nauwelijks. Met Halloween laten
+  gasten zich tegen bijbetaling aan een plafondrail vastgespen, en het
+  kerstevenement heeft het park in april 2026 geschrapt.
 tags:
   - walibi-holland
   - untamed
@@ -52,16 +51,11 @@ seo:
     - Walibi Holland wanneer rustig
 ---
 
-De grond waar Untamed op staat, lag in 1957 nog onder water.
-
 Op 29 juni 1957 viel Oostelijk Flevoland droog, in 1963
 werd in deze polder het dorp Biddinghuizen gesticht, en het ligt tot op vandaag
 zo’n drie meter onder zeeniveau. Als je boven op de lifthill van
 [Untamed](ref:walibi-holland/untamed) zit, hang je 36,5 meter boven een akker
-die zelf onder zeeniveau ligt. Het land onder deze achtbaan is jonger dan menige gepensioneerde in de
-wachtrij.
-
-Daarna stort de trein zich onder 80 graden 35 meter naar beneden.
+die zelf onder zeeniveau ligt.
 
 Ik rijd graag ver voor achtbanen, maar Walibi Holland is zelfs voor mijn doen
 een aanslag: ruim tweeënhalf uur vanaf Keulen, en in de tweede helft kom je
@@ -70,23 +64,18 @@ vaak over het hoofd gezien. De [Efteling](ref:efteling) en
 [Toverland](ref:attractiepark-toverland) liggen dichterbij,
 [Phantasialand](ref:phantasialand) ligt om de hoek, en wie vanuit Noordrijn-Westfalen een dag Nederland plant, plakt er zelden vrijwillig nog een uur polder aan vast.
 
-Dat is een fout. Untamed alleen zou al genoeg zijn, en dan is er nog **hard
-gaan**, twee woorden die op half Biddinghuizen geplakt staan en die bij een
-eerste bezoek volstrekt zinloos lijken en bij het derde alles verklaren.
+Dat vind ik een fout, want Untamed alleen is de rit al waard.
 
 ## Eerst zee, dan koeien, dan achtbanen
 
-Het begon hier allemaal met koeien.
-
 Op **21 mei 1971** opende prinses Beatrix op het verse polderland de
-**Flevohof**, een landbouwpark van 150 hectare, waar stadskinderen moesten zien
-dat melk niet in pakken groeit. Er waren stallen, kassen, een kaasmakerij, een paar
+**Flevohof**, een landbouwpark van 150 hectare, waar stadskinderen de landbouw moesten leren kennen. Er waren stallen, kassen, een kaasmakerij, een paar
 speeltoestellen. Twee decennia lang was het een uitje voor schoolklassen en
 gezinnen, daarna liep het financieel niet meer, en begin jaren negentig ging het
 bedrijf failliet. In 1992 opende de Flevohof voor het laatst.
 
 De Belgische **Walibi-groep** nam het over, verbouwde een jaar lang achter
-gesloten poorten en opende in **1994** als **Walibi Flevo**. Wat daarna kwam, is een naamsgeschiedenis waarbij je aantekeningen moet maken:
+gesloten poorten en opende in **1994** als **Walibi Flevo**. Daarna veranderde het park meerdere keren van naam:
 
 | Jaren      | Naam              |
 | ---------- | ----------------- |
@@ -96,8 +85,7 @@ gesloten poorten en opende in **1994** als **Walibi Flevo**. Wat daarna kwam, is
 | 2005–2010  | Walibi World      |
 | sinds 2011 | Walibi Holland    |
 
-Vier nieuwe namen in zeventien jaar, en elke naam bracht een ander idee mee van
-wat dit park moest zijn. De Amerikanen van Premier Parks, dat zich in 2000
+De Amerikanen van Premier Parks, dat zich in 2000
 omdoopte tot **Six Flags**, kochten in 1998 de hele Walibi-groep. Voor het
 seizoen 2000 gooiden ze geld op het terrein, dertig nieuwe attracties in één
 keer, en met kortingsacties en een gigantische reclamecampagne haalden ze ruim
@@ -108,7 +96,7 @@ Partners. Sinds **2006** is
 het park eigendom van het Franse concern **Compagnie des Alpes**, dat ook
 [Walibi Belgium](ref:walibi-belgium) en [Parc Astérix](ref:parc-asterix) bezit.
 
-![Een oude kever staat op een stalen frame boven het opschrift “Speed Zone” | De ingang van de Speed Zone. Subtiliteit was nooit het doel. | wide](/media/walibi-holland/background.jpg)
+![Een oude kever staat op een stalen frame boven het opschrift “Speed Zone” | De ingang van de Speed Zone. | wide](/media/walibi-holland/background.jpg)
 
 Vandaag beslaat het park zo’n **40 hectare**, plus 20 hectare vakantiepark
 (Walibi Village) en een **evenemententerrein van 80 hectare** er direct naast.
@@ -117,17 +105,15 @@ Na de Six Flags-jaren schommelden de bezoekersaantallen lang tussen 700.000 en
 900.000, en pas sinds kort kruipen ze richting het miljoen: 936.000 in boekjaar 2023, 919.000 in 2024 en laatstelijk **972.000** in het boekjaar
 oktober 2024 tot september 2025, een plus van bijna zes procent.
 Marketingdirecteur Marc Guffens noemde dat “het beste jaar ooit, als je de
-bezoekersaantallen uit de Six Flags-tijd niet meetelt” (een record met een sterretje), omdat er destijds per
+bezoekersaantallen uit de Six Flags-tijd niet meetelt”, omdat er destijds per
 gast veel minder bleef hangen. Ter vergelijking: de Efteling telde in 2025
-zo’n 5,8 miljoen bezoeken, bijna het zesvoudige, en daar heeft iedereen die in
-Biddinghuizen in de rij staat alleen maar plezier van.
+zo’n 5,8 miljoen bezoeken, bijna het zesvoudige.
 
-## “Hard gaan”: het concept
+## De slogan “hard gaan”
 
 In **2014** begon Walibi Holland te adverteren met één enkel woord: `#Hardgaan`.
 Letterlijk betekent het hard gaan, bedoeld is vol gas zonder terughoudendheid.
-Jongerentaal, festivaltaal, en in het Nederlands heeft het een bijklank die je
-er niet uit praat.
+Het woord komt uit de jongeren- en festivaltaal en heeft in het Nederlands ook een seksuele bijklank.
 
 Het park is met die bijklank nooit voorzichtig omgegaan. Vanaf **2015** lagen er
 in de souvenirwinkel `#Hardgaan`-condooms, plus T-shirts met de opdruk “F#ck
@@ -140,35 +126,24 @@ niet meer.
 In **2017** trok de marketingafdeling aan de noodrem en verving de slogan door
 **“Dare to get Real”**. Dat hield precies één seizoen stand. In een intern stuk
 uit het najaar van 2017 stond dat het resultaat “achterbleef bij de
-verwachtingen”, de boodschap “te ingewikkeld en te diepzinnig” was (dat verwijt moet
-een pretparkslogan maar eens verdienen), en dat men
+verwachtingen”, de boodschap “te ingewikkeld en te diepzinnig” was, en dat men
 “waarschijnlijk een te kleine doelgroep had aangesproken”. In **2018** was
 `#Hardgaan` terug, en het is sindsdien de huisstijl.
-
-Meer dan een reclamekreet wordt het pas door de buren.
 
 Op het evenemententerrein ernaast, dat Walibi verhuurt, vindt sinds **2011**
 **Defqon.1** plaats: het grootste hardstylefestival ter
 wereld, vier dagen, ruim boven de 50.000 mensen uit meer dan honderd landen. Op
-hetzelfde terrein draait **Lowlands**. Wie in juni bij Defqon.1 vooraan staat,
-kijkt over het hek naar dezelfde lifthill die hij in augustus op gaat.
+hetzelfde terrein draait **Lowlands**.
 
-Geen reclamebureau hoefde deze jongerentaal dus te verzinnen. Het park heeft
-gewoon het vocabulaire overgenomen van de mensen die toch al op zijn terrein
-staan te springen.
-
-Als je dat eenmaal doorhebt, valt de rest opeens op zijn plek. De gebieden heten
+De gebieden heten
 **Speed Zone** en **Zero Zone**. De banen heten Untamed, Lost Gravity, Speed of
-Sound, Xpress, Goliath. Er is een achtbaan waarvan het station als
-opnamestudio is ingericht. Er zijn zomeravonden waarop dj’s draaien en het park tot
-22 uur doorgaat. En er is een Halloween-evenement waarvan de reclamespot in
-2025 meer klachten opleverde dan welke andere reclame in Nederland ook.
+Sound, Xpress, Goliath. Op sommige zomeravonden draaien dj’s en gaat het park door tot 22 uur.
 
-De Efteling vertelt je een sprookje, Phantasialand bouwt je een decor dat nergens ophoudt.
-Walibi Holland kan decor ook, op zijn beste plekken heel goed, alleen mikt hier
-alles op iets anders: het wil dat je schreeuwt. Zes achtbanen met inversies, nauwelijks een gebouw
-waar je bij regen kunt schuilen, wel muziek op elk pad en een volume dat niemand
-per ongeluk heeft ingesteld.
+In de Efteling, open sinds 1952, loop je door sprookjes, in Phantasialand door decors die
+nergens ophouden. Walibi Holland heeft zes achtbanen met inversies, nauwelijks
+een gebouw waar je bij regen kunt schuilen, en harde muziek op elk pad. De ingang van de Wilderness, de Zero Zone rond Lost Gravity en
+het station van Untamed met de waterval en de letters boven de lifthill zijn
+zorgvuldig aangekleed.
 
 ### Als het concept te ver gaat
 
@@ -176,7 +151,7 @@ In augustus 2025 wierf het park voor de Halloween Fright Nights met een filmpje
 rond het jaarthema “Souls for Sale”: Eddie de Clown veilt lotnummer 666, een
 doodsbange vrouw in een glazen kast. Na het hoogste bod zakt ze omlaag, de wanden
 kleuren rood. Het filmpje verscheen in de week waarin in Abcoude een meisje van
-17 werd vermoord, en Nederland vond het niet grappig. Walibi haalde het op 22
+17 werd vermoord. Walibi haalde het op 22
 augustus tijdelijk offline en een paar dagen later definitief uit alle kanalen.
 Bij de Stichting Reclame Code kwamen **889 klachten** binnen, meer dan bij
 welke andere Nederlandse reclame van 2025 ook (nummer twee kwam op 442). De
@@ -184,10 +159,7 @@ Reclame Code Commissie oordeelde dat een vrouw ook binnen een horrorverhaal
 niet als handelswaar mag worden getoond die geweld ondergaat. Omdat de spot
 toen al was ingetrokken, bleef het bij een aanbeveling.
 
-De commissie heeft daar wat mij betreft juist geoordeeld. Uit de lucht kwam de
-uitglijder toch niet vallen. Een park dat al jaren adverteert met verder gaan
-dan alle anderen, heeft geen rempedaal ingebouwd, en deze keer trapte het
-publiek er voor het park op.
+De commissie heeft daar wat mij betreft juist geoordeeld. Verrast heeft de spot me niet, bij een park dat al jaren adverteert met verder gaan dan alle anderen.
 
 De veilingspot bekijken kan tegenwoordig alleen nog via omwegen. Op het kanaal
 van het park staat nog steeds een tweede filmpje uit dezelfde campagne, en dat
@@ -195,8 +167,6 @@ laat goed zien hoe het geheel eruitziet zonder het deel dat de klachten
 veroorzaakte:
 
 https://www.youtube.com/watch?v=5uXmHjiLbG4
-
-Een jaar later probeert Eddie het met pluche.
 
 De spot van 19 augustus 2026 heet “Back to Reality” en laat een minuut lang een
 uitgesproken aardige horrorclown zien: hij drukt een jongetje bij Speed of Sound
@@ -211,8 +181,7 @@ https://www.youtube.com/watch?v=fFPGRQAs-Xk
 ## Untamed
 
 Op de plek waar Untamed nu staat, stond van 2000 tot 2018 **Robin Hood**, een
-houten achtbaan van Vekoma met een twijfelachtige reputatie: luid, en elk jaar een
-stukje dichter bij een hernia. Op **28 oktober 2018** reed hij voor het laatst.
+houten achtbaan van Vekoma met een twijfelachtige reputatie: luid, en elk jaar ruwer. Op **28 oktober 2018** reed hij voor het laatst.
 Daarna kwam **Rocky Mountain Construction** uit Idaho (sinds september 2026
 heet het bedrijf Rocky Mountain Coasters, de afkorting RMC blijft), sloopte de houten rails,
 liet een groot deel van de houten constructie staan en legde daarop een stalen
@@ -224,13 +193,12 @@ Europa.
 
 ```
 
-![De roestige letters “Untamed” voor de houten constructie van de baan | De roest op het opschrift is bedoeld. Het hout erachter is echt en stond hier al toen de baan nog Robin Hood heette. | left](/media/walibi-holland/untamed-4x3.jpg)
+![De roestige letters “Untamed” voor de houten constructie van de baan | Het opschrift is met opzet roestig. Het hout erachter stond hier al toen de baan nog Robin Hood heette. | left](/media/walibi-holland/untamed-4x3.jpg)
 
 De cijfers: **36,5 meter hoog**, first drop **35,4 meter**, **92 km/u**,
 **1.085 meter** lang, **vijf inversies**, volgens de fabrikant **14
 airtimemomenten**, rittijd 1:46 minuut, capaciteit 900 personen per uur,
-minimumlengte 120 cm. Op papier is dat een middelgrote achtbaan. In de trein
-gelooft niemand dat.
+minimumlengte 120 cm.
 
 De first drop gaat onder 80 graden naar beneden, en na één piepklein heuveltje
 volgt al de **Double Inverting 270 Degree Corner Stall**, twee inversies direct
@@ -243,20 +211,14 @@ RMC.
 
 ```
 
-Wat na dat element komt, is nog beter. Een gedraaide airtimeheuvel, een naar
+De elementen daarna vind ik nog beter: een gedraaide airtimeheuvel, een naar
 buiten gekantelde, een step-up under-flip, een outside stall van 97 graden, een
 double up/double down, een stall van 140 graden, nog meer airtime en als
-afsluiter een barrel roll omhoog. Bijna niets herhaalt zich,
-geen enkel komt waar je het verwacht, en de baan neemt tussendoor nooit gas
-terug. Na 106 seconden sta je terug in het station en heb je geen idee meer
-welke kant je zojuist op keek.
+afsluiter een barrel roll omhoog. Bijna niets herhaalt zich, en de baan neemt tussendoor nooit gas terug.
 
 ```glossary-widget slug=ejector-airtime
 
 ```
-
-Op geen enkel gegevensblad staat het deel dat Untamed boven een goede achtbaan
-uittilt: de baan is als een feest geënsceneerd, en dat begint al in de wachtrij.
 
 De lifthill steekt van ver zichtbaar boven het groen van het
 **Wilderness**-gebied uit, en bovenop staan manshoge letters bezet met
@@ -266,30 +228,25 @@ de complete trein de handen omhoog doet en de start tegemoet klapt, ook mensen d
 is de hele constructie roze en paars verlicht.
 
 Bij mijn eerste rit begon ik ergens halverwege te lachen, met tranen in mijn
-ogen, en hield daar tot aan de rem niet meer mee op. In het station draaide de
-halve trein zich naar me om, en in elke andere situatie was me dat ongemakkelijk
-geweest, daar niet.
+ogen, en hield daar tot aan de rem niet meer mee op. In het station draaide de halve trein zich naar me om.
 
 Dat is me sindsdien precies één keer weer overkomen, in mei van dit jaar bij
 mijn eerste rit in de
 [Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
-in Orlando. Het zijn twee banen in vele jaren, en een daarvan staat in
-Flevoland.
+in Orlando.
 
 Bij de Golden Ticket Awards eindigde Untamed in 2019 op plek vijf van de beste
 nieuwe achtbanen van het jaar. In de wereldwijde stalen ranglijst stond hij in
 2024 op plek 42 en in 2025 op plek 48, in de lijst van 2026 ontbreekt hij. Ik zou hem
-duidelijk hoger zetten, en wel om een eigenschap die zich slecht laat meten: hij is na zeven jaar nog altijd
-soepel, op hetzelfde houten frame waarop Robin Hood reed.
+duidelijk hoger zetten, omdat hij na zeven jaar op het oude houten frame van Robin Hood nog altijd soepel rijdt.
 
 [Untamed](ref:walibi-holland/untamed?full)
 
 ## YOY, Goliath en de rest
 
-Untamed is de reden om te gaan. Maar het park heeft nog negen andere achtbanen,
-en twee daarvan zijn eveneens een omweg waard.
+Naast Untamed heeft het park nog negen andere achtbanen.
 
-![Twee treinen rijden naast elkaar door een bocht over de groene en de blauwe baan van YoY | YOY Chill en YOY Thrill naast elkaar. De rail is hier precies één buis breed. | wide](/media/walibi-holland/yoy-chill.jpg)
+![Twee treinen rijden naast elkaar door een bocht over de groene en de blauwe baan van YoY | YOY Chill en YOY Thrill naast elkaar. | wide](/media/walibi-holland/yoy-chill.jpg)
 
 **[YOY](ref:walibi-holland/yoy-thrill)** is de nieuwigheid van **2025** en
 kostte bijna **18 miljoen euro**. Opnieuw
@@ -310,87 +267,78 @@ nergens ter wereld.
 lifthill en lopen de hele rit naast, om en langs elkaar. De opening was op
 **5 april 2025**.
 
-Wie met een kind op pad is dat precies op de grens zit tussen “wil wel” en
-“durft nog niet”, vindt hier de elegantste oplossing die ik ken: jullie rijden
-tegelijk, jullie zien elkaar de hele tijd, ieder rijdt de baan die bij hem past,
-en achteraf kan niemand beweren dat de ander heeft afgehaakt.
+Met een kind dat inversies nog niet aandurft, rijden jullie tegelijk, ieder op
+zijn eigen baan, en zien jullie elkaar de hele tijd.
 
 ![De letters “Goliath” bij de ingang, daarachter de lifthill van de baan | Goliath, sinds 2002 de hoogste achtbaan van het park. | left](/media/walibi-holland/goliath-4x3.jpg)
 
 **[Goliath](ref:walibi-holland/goliath)** is de erfenis van Six Flags uit
 **2002** en nog altijd de grootste baan van het park: een **Mega Coaster van
 Intamin**, **46,8 meter** hoog, **106 km/u**, **1.214 meter** lang, in 92
-seconden voorbij. Geen inversies, wel een Stengel dive en volgens het park zeven
-airtimemomenten waarin de beugel je telkens even behoorlijk alleen laat. Na vierentwintig jaar
+seconden voorbij. Geen inversies, wel een Stengel dive en volgens het park zeven airtimemomenten. Na vierentwintig jaar
 rammelt hij op sommige plekken, maar de airtime op de terugweg is onveranderd
 eersteklas. Ga achterin zitten.
 
-![Een wagen van Lost Gravity naast een zeecontainer, op de voorgrond oude spoorseinen | De Zero Zone verzamelt dingen die uit de zwaartekracht zijn gevallen. | right](/media/walibi-holland/lost-gravity-4x3.jpg)
+![Een wagen van Lost Gravity naast een zeecontainer, op de voorgrond oude spoorseinen | Lost Gravity in de Zero Zone, tussen zeecontainer en oude spoorseinen. | right](/media/walibi-holland/lost-gravity-4x3.jpg)
 
 **[Lost Gravity](ref:walibi-holland/lost-gravity)** van **Mack Rides** kwam in
 **2016**: 32 meter, 87 km/u, 680 meter, twee inversies, plus stoelen zonder
 bodem op de buitenste rijen. Het themagebied eromheen is een verzameling dingen
 die er niet horen, een zeecontainer, een omgekiepte auto, oude spoorseinen, en
-de baan zelf stuurt je via een gedraaide drop de diepte in. Hij is kort, en een stuk heftiger dan hij eruitziet.
+de baan zelf stuurt je via een gedraaide drop de diepte in. De rit is kort en heftig.
 
-En dan zijn er de drie oude, die in elk verslag als bijzaak worden afgedaan,
-terwijl juist zij het parkmotto het letterlijkst nemen.
-
-### Xpress: Platform 13, de baan die je al kent
+### Xpress: Platform 13
 
 Je wacht in een buiten gebruik gesteld metrostation. Het heet **Glenbrook
 Station**, is sinds de verbouwing van 2013 volledig overdekt en zo donker
 gehouden dat bezoekers de wachtrij geregeld voor een walkthrough aanzien. Op het
-vertrekbord staat als volgende vertrek **06:66**. De trein waar je op wacht,
-komt niet.
+vertrekbord staat als volgende vertrek **06:66**.
 
-![Een stationsbord in de wachtrij: “Next Departure 06:66”, Platform 13 | Het vertrekbord in de wachtrij van Glenbrook Station. | left](/media/walibi-holland/xpress-platform-13-4x3.jpg)
+![Een stationsbord in de wachtrij: “Next Departure 06:66”, Platform 13 | Het vertrekbord in Glenbrook Station. | left](/media/walibi-holland/xpress-platform-13-4x3.jpg)
 
-Wat wel komt, is een LSM-launch: **0 naar 90 km/u in 2,8 seconden**, daarna een
+De trein vertrekt met een LSM-launch, **0 naar 90 km/u in 2,8 seconden**, daarna een
 sea serpent en een kurkentrekker, drie inversies, volgens het park tot **5 g**,
 996 meter, en
 na 75 seconden is alles voorbij.
 
-**Deze layout ken je waarschijnlijk al.** Vekoma bouwde dezelfde baanvoering voor Disney: hij zit
+Vekoma bouwde dezelfde baanvoering voor Disney, en hij zit
 vrijwel identiek in de **Rock 'n' Roller Coaster** in Orlando (sinds mei 2026
 met de Muppets in plaats van Aerosmith) en in **Avengers Assemble: Flight
 Force** in Disneyland Paris. Bij Disney is de baan iets ruimer getrokken, omdat
 de treinen daar met hun geluidsinstallatie zwaarder zijn en sneller gelanceerd
-moeten worden. Dezelfde baan als bij Disney, alleen zonder de Disney-rij.
+moeten worden.
 
-Hij opende in april 2000 als **Superman The Ride**, heette vanaf 2005 simpelweg
+Hij opende in april 2000 als **Superman The Ride**, de eerste
+LSM-launchachtbaan van Europa, heette vanaf 2005 simpelweg
 **Xpress** en draagt sinds 2014 de stationsnaam.
 
 ### Condor, het prototype
 
-**[Condor](ref:walibi-holland/condor)** heeft historisch meer gewicht dan je hem aanziet. Hij opende in 1994 als **El Condor** en was de **eerste
+**[Condor](ref:walibi-holland/condor)** opende in 1994 als **El Condor** en was de **eerste
 Suspended Looping Coaster ter wereld**, de bouwwijze waarvan Vekoma er
 vervolgens tientallen over de hele wereld verkocht. Van het prototypemodel zijn
 er maar twee gebouwd. De andere, T3 in Kentucky Kingdom, sloot in 2022, en deze
 rijdt na ruim dertig jaar nog steeds.
 
-![Een oranje vogelsculptuur op een sokkel, daarachter de baan van Condor | De naamgever staat bij de ingang. Daarachter de baan waarvan Vekoma de bouwwijze vanaf hier de wereld over verkocht. | wide](/media/walibi-holland/condor.jpg)
+![Een oranje vogelsculptuur op een sokkel, daarachter de baan van Condor | Het condorbeeld bij de ingang, daarachter de baan. | wide](/media/walibi-holland/condor.jpg)
 
-Lang reed hij ook als 1994: **oorvijgen** links, rechts en nog eens links,
-omdat je hoofd tussen de harde schouderbeugels heen en weer sloeg. Sinds 2021
+Met de oude treinen sloeg je hoofd links, rechts en weer links tegen de harde schouderbeugels. Sinds 2021
 rijdt Condor met nieuwe Vekoma-treinen met vestbeugels, die je hoofd uit de
-vuurlinie halen. Als prototype gaat hij nog
-altijd krapper de eerste inversie in dan de latere seriemodellen. 31 meter,
+vuurlinie halen. Helemaal soepel is hij daarmee niet geworden, want als prototype gaat hij krapper de eerste inversie in dan de latere seriemodellen. 31 meter,
 80 km/u. Die nieuwe treinen ontwikkelde Vekoma voor precies deze bouwwijze, om
 de reputatie kwijt te raken die het zich ermee had verworven.
 
 ### Speed of Sound, 5,2 g uit het jaar 2000
 
 **[Speed of Sound](ref:walibi-holland/speed-of-sound)** is een
-**Vekoma-Boomerang**. Eerst word je
+**Vekoma-Boomerang**, 35,5 meter hoog en 285 meter lang. Eerst word je
 achteruit een toren op getrokken, dan losgelaten: vooruit door de cobra roll en
 de looping, de tweede toren op, en dan dezelfde baan achteruit weer terug. Het
 park telt daarom **zes inversies**, terwijl er maar drie zijn gebouwd.
 
-Hij trekt **5,2 g**.
-Ter vergelijking: Xpress komt volgens het park op 5 g, YOY THRILL volgens
-ThemeParks-EU op 4. De hoogste krachten in het park staan dus op een bouwklassieker uit 2000
-met boordgeluid, 35,5 meter hoog en 285 meter kort.
+Hij trekt **5,2 g**, meer dan elke andere baan in het park.
+Xpress komt volgens het park op 5 g, YOY THRILL volgens
+ThemeParks-EU op 4.
 
 Hij opende in april 2000 als **La Via Volta**, werd in 2007 stilgelegd en in
 2011 onder een nieuwe naam en met muziekthema teruggehaald. Sinds die
@@ -403,14 +351,13 @@ Dezelfde baan staat overigens ook in Waver. **[Cobra](ref:walibi-belgium/cobra)*
 in [Walibi Belgium](ref:walibi-belgium) is dezelfde Boomerang, een jaar jonger,
 met identieke cijfers. Alleen rijdt Speed of Sound merkbaar beter, omdat hij bij
 de verbouwing van 2011 nieuwe treinen kreeg: schouderbanden in plaats van de
-oude beugels. Rijd ze achter elkaar en je weet binnen een seconde hoeveel een
-beveiliging uitmaakt.
+oude beugels.
 
-![Het opschrift van Speed of Sound tussen enorme luidsprekers en een gitaar | Een gevel als een concertpodium. Erachter staat een Boomerang uit 2000. | wide](/media/walibi-holland/speed-of-sound.jpg)
+![Het opschrift van Speed of Sound tussen enorme luidsprekers en een gitaar | Luidsprekers en een gitaar aan de gevel, daarachter de baan. | wide](/media/walibi-holland/speed-of-sound.jpg)
 
 ### De rest
 
-![Een geel-rode buggy hangt aan kettingen onder een kraanbalk | Eat my Dust in de Speed Zone. Het themagebied heet “Off Road” en bedoelt dat letterlijk. | right](/media/walibi-holland/eat-my-dust-4x3.jpg)
+![Een geel-rode buggy hangt aan kettingen onder een kraanbalk | Eat my Dust in het themagebied “Off Road” van de Speed Zone. | right](/media/walibi-holland/eat-my-dust-4x3.jpg)
 
 - **[Eat my Dust](ref:walibi-holland/eat-my-dust)** van Zamperla en
   **[Drako](ref:walibi-holland/drako)**, een Tivoli-coaster van Zierer, zijn de
@@ -425,20 +372,11 @@ beveiliging uitmaakt.
   **[Merlin’s Magic Castle](ref:walibi-holland/merlins-magic-castle)** is een
   madhouse, het dichtst bij een darkride dat het park heeft.
 
-![Boten in de watergoot van Crazy River, daarachter een houten gebouw | Crazy River is de wildwaterbaan van de Zero Zone. Zoals altijd bij dit type geldt: voorin word je natter. | left](/media/walibi-holland/crazy-river-4x3.jpg)
-
-Vier banen hier waren overigens premières. In 1994 kwam de eerste SLC ter
-wereld, in 2000 met Xpress de eerste LSM-launchachtbaan van Europa, in 2019
-volgens het park de eerste hybride achtbaan van Europa en in 2025 de eerste
-duelinstallatie op enkele rail überhaupt. Een park met net geen miljoen gasten
-laat hier al dertig jaar met enige regelmaat dingen bouwen die nergens eerder
-bestonden.
+![Boten in de watergoot van Crazy River, daarachter een houten gebouw | Crazy River is de wildwaterbaan van de Zero Zone. Voorin word je natter dan achterin. | left](/media/walibi-holland/crazy-river-4x3.jpg)
 
 En dan is er nog **Walibi Play Land**, sinds 2026 met een Australisch thema, als
 thuis van de kangoeroemascotte die sinds 2021 in zijn huidige vorm door het park
-loopt. Op hetzelfde terrein, op dezelfde dagen, voor een publiek dat niets met
-`#Hardgaan` kan. Die spanning loopt door alles wat het park de afgelopen twee
-jaar heeft besloten. Voor 2027 staat in Play Land een nieuwe kinderattractie
+loopt. Het ligt op hetzelfde terrein en is op dezelfde dagen open, voor een publiek dat niets met `#Hardgaan` kan. Voor 2027 staat in Play Land een nieuwe kinderattractie
 gepland, blijkt uit een vergunningsaanvraag bij de gemeente Dronten; zelf heeft
 het park die nog niet aangekondigd.
 
@@ -446,7 +384,7 @@ het park die nog niet aangekondigd.
 
 ```
 
-## Wat Untamed echt kost
+## Wachttijden bij Untamed en in het park
 
 Berekend uit **meer dan 150 openingsdagen met bruikbare wachttijddata**, ligt de
 **typische wachttijd in het parkgemiddelde ruim onder het half uur** (mediaan). Op
@@ -459,14 +397,11 @@ Per baan ziet het er zo uit:
 
 ```
 
-De beste baan van het park heeft niet de langste rij, die is voor de
-nieuwigheid. Untamed zit in de middenmoot, op één lijn met een SLC uit 1994 en
-een Mack-baan van 680 meter. Een nieuwe baan trekt altijd, en half Nederland gaat uit principe eerst daar in de rij staan waar de verf
-nog nat is. Maar het betekent wel: loop je ’s ochtends meteen de Wilderness in, dan
+De langste rij staat bij de nieuwe YOY THRILL. Untamed zit in de middenmoot, op één lijn met Condor en
+Lost Gravity. Loop je ’s ochtends meteen de Wilderness in, dan
 heb je Untamed al gereden voordat de YOY-rij echt is opgeschoven.
 
-Ter vergelijking de buurt, met dezelfde databasis, dezelfde rekenmethode en alle
-gemeten openingsdagen:
+Untamed naast achtbanen in de buurparken, over alle gemeten openingsdagen:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
 
@@ -484,18 +419,14 @@ Walibi Belgium ligt vrijwel gelijk met Walibi Holland.
 
 Net geen miljoen gasten per jaar verdelen zich hier over **tien achtbanen** en
 volgens het park meer dan 40 attracties, op 40 hectare. Untamed alleen doet 900 personen per
-uur. Veel capaciteit, overzichtelijke vraag, en juist die verhouding bepaalt de
-wachttijd, na te lezen in [de kunst van het
-wachten](/blog/de-kunst-van-het-wachten).
+uur. De capaciteit is hoog en de vraag overzichtelijk, en die verhouding bepaalt de wachttijd (meer daarover in [de kunst van het wachten](/blog/de-kunst-van-het-wachten)).
 
-Eén kanttekening voordat iemand de cijfers te serieus neemt: onze historie voor
+Onze historie voor
 dit park begint op 26 december 2025, beslaat dus ruim negen maanden, en Walibi is
 alleen van april tot begin november open. Achter de maandwaarden voor april tot augustus zitten telkens 25
 tot 30 meetdagen, dat houdt stand. September staat tot nu toe op negen dagen
 (stand 25 september 2026), de rijen voor december, januari en maart op één tot
-vier dagen uit de laatste Bright Nights-winter en één losse dag. Om te zien of je in
-het juiste seizoen gaat, zijn negen meetdagen genoeg. Om vijf
-bespaarde minuten zou ik er niet op wedden.
+vier dagen uit de laatste Bright Nights-winter en één losse dag. Negen meetdagen zijn te weinig om een verschil van vijf minuten te onderbouwen.
 
 ## Halloween: Fright Nights en Spooky Days
 
@@ -503,22 +434,16 @@ bespaarde minuten zou ik er niet op wedden.
 > **Stand 25 september 2026:** kalender, huizen en pakketprijzen voor 2026
 > liggen vast en zijn in dit hoofdstuk verwerkt. De Fright Nights lopen sinds 3 oktober, tot 1 november.
 
-Op de avonden in oktober houdt dit park op een pretpark te zijn.
-
 De **Halloween Fright Nights** bestaan sinds de Six Flags-tijd,
 **2025 was de 25e editie**. Op 31 oktober vierde het park dat met een eigen
 jubileumavond met een beperkt aantal tickets, een show met Eddie de Clown en een
 pin voor elke gast. Het begon rond het jaar 2000 met één enkel
 spookhuis vol geanimeerde poppen.
 
-![Een actrice als gebroken porseleinen pop met breuklijnen in haar gezicht, achter haar een kleurrijk kinderdeel met opgehangen teddyberen | Het kinderdeel waar ’s middags zesjarigen pompoenen beschilderen. Vanaf 2026 gebeurt dat niet meer op dezelfde dag. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
+![Een actrice als gebroken porseleinen pop met breuklijnen in haar gezicht, achter haar een kleurrijk kinderdeel met opgehangen teddyberen | Het kinderdeel waar ’s middags zesjarigen pompoenen beschilderen. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
 Hoe zich dat verhoudt tot Movie Park, Traumatica en Toverland staat in onze
-[Halloween-gids](/blog/halloween-pretparken-2026). Waar eerste bezoekers
-daarentegen steevast op stuklopen, is de opbouw.
-
-Walibi sorteert Halloween in **vier niveaus**, en tussen het eerste en het
-vierde liggen werelden:
+[Halloween-gids](/blog/halloween-pretparken-2026). Walibi deelt Halloween op in **vier niveaus**:
 
 1. **Halloween Spooky Days.** Overdag, herfstig versierd, pompoenen,
    vriendelijke monsters, voor kinderen van 6 tot 12. Inbegrepen bij het
@@ -531,18 +456,14 @@ vierde liggen werelden:
 4. **Experiences.** Kleinste groepjes of alleen, lichamelijke nabijheid, en de
    uitdrukkelijke belofte dat je hier iets _overkomt_. Kosten fors extra.
 
-Niveau vier is de reden dat er over Walibi wordt gepraat.
-
-![Een acteur met lashelm, bloederig leren schort en rubberen handschoenen staat voor een containerdeur | Let op de oormerken aan het schort. | left](/media/halloween-2026/beispiel-metzger.jpg)
+![Een acteur met lashelm, bloederig leren schort en rubberen handschoenen staat voor een containerdeur | Aan het schort hangen oormerken. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
 **Slaughterhouse** werft met een nepvacature en maakt je vervolgens tot
 grondstof: eerst een keuring in de wachtruimte, dan vastgesnoerd in een stoel aan
 een plafondrail, armen nutteloos, benen op comfortabele grijphoogte. Aan het
-eind krijg je je stempel, “kwaliteitscontrole doorstaan”. Daarom zie je op goede
-avonden mensen met een stempel op hun voorhoofd de uitgang uit strompelen, half
-kapot, half vreemd trots.
+eind krijg je een stempel op je voorhoofd, “kwaliteitscontrole doorstaan”.
 
-Het park promoot dat zelf, met weinig terughoudendheid:
+Het park promoot Slaughterhouse met een eigen filmpje:
 
 https://www.youtube.com/watch?v=A5AZcy7PIkc
 
@@ -561,7 +482,7 @@ vandaag op zijn kanaal:
 
 https://www.youtube.com/watch?v=YHXW1odvwvE
 
-Daar komen twee formats bij die niet op schrik mikken. **The Unhappy Hour** zet
+**The Unhappy Hour** zet
 je tussen verroeste caravans aan een tafel, met twee drankjes, een shot en een
 plank, terwijl de figuren van het Camp of Curiosities je in gesprekken
 betrekken die je niet wilde voeren. En de **Backstage Tour** laat je de techniek
@@ -569,15 +490,12 @@ achter de spookhuizen zien, de geschiedenis van het evenement en de
 kostuumruimtes. Hij loopt uitsluitend in het Nederlands, kost € 75 en heeft maar
 weinig plekken.
 
-En omdat de vraag hier altijd komt: het “grootste Halloween-evenement van
+Het “grootste Halloween-evenement van
 Europa” staat naar eigen zeggen in [Movie Park](ref:movie-park-germany) in
-Bottrop, met negen mazes en ruim 300 monsters. Groot en hard zijn echter twee
-verschillende disciplines. De werkelijk zieke shit gebeurt twee autouren
-noordelijker, in een polder waar ze je aan een plafondrail hangen en
-afstempelen.
+Bottrop, met negen mazes en ruim 300 monsters.
 
-Voor de orde van grootte de prijstabel van seizoen 2025 (voorverkoop / aan de
-kassa). Voor 2026 verkoopt het park de huizen vooral in pakketten, daarover zo meer:
+Voor 2026 verkoopt het park de huizen vooral in pakketten. Voor de orde van
+grootte de prijstabel van seizoen 2025 (voorverkoop / aan de kassa):
 
 | Categorie                                           | Prijs                |
 | --------------------------------------------------- | -------------------- |
@@ -602,8 +520,7 @@ Wie in 2025 werkelijk alles wilde meepakken, betaalde **minimaal € 116,50 per
 persoon**, en dan nog bovenop de entree. Dat was de goedkoopst denkbare
 combinatie, met het Before Dark-pakket voor de vier eenvoudige huizen en alles in
 de voorverkoop. Met de R.I.P. Pass in plaats van losse tickets kwam je op zo’n
-€ 149, en wie ’s avonds pas aan de kassa boekte, kwam boven de € 156 uit. De
-entree kwam er telkens bovenop.
+€ 149, en wie ’s avonds pas aan de kassa boekte, kwam boven de € 156 uit.
 
 Voor 2026 heeft het park de pakketten opnieuw ingedeeld. **Before-Before Dark**
 brengt je vóór 16 uur één keer in The Villa en US vs YOU (€ 13,50, tot 30
@@ -624,22 +541,20 @@ het bij twee huizen en één experience laten.
 > parkeerplaats staat. Ook de huizen hebben dagcontingenten, en op de bezoekdag
 > kost elk ticket een paar euro meer dan in de voorverkoop.
 
-**Voor 2026 verandert de belangrijkste regel.** Tot nu toe liepen Spooky Days en
-Fright Nights op dezelfde dag, overdag pompoen, ’s avonds kettingzaag. Vanaf dit
-seizoen **splitst het park beide evenementen over verschillende dagen**. De
-motivering uit Biddinghuizen is verfrissend onromantisch: ’s middags liep het
-park vol met avondgasten, gezinnen met kleine kinderen bleven weg, en de acteurs
-moesten binnen enkele uren van kindvriendelijk naar compromisloos omschakelen.
+Tot nu toe liepen Spooky Days en
+Fright Nights op dezelfde dag. Vanaf dit
+seizoen **splitst het park beide evenementen over verschillende dagen**. Als redenen noemt Walibi dat het park ’s middags volliep met avondgasten, dat
+gezinnen met kleine kinderen wegbleven en dat de acteurs binnen enkele uren van
+kindvriendelijk naar compromisloos moesten omschakelen.
 Voor Fright Nights-bezoekers gaat in plaats daarvan om 13 uur al het eerste
 huis open, en om 14 en 15 uur speelt op de Main Stage de nieuwe show _Eddie
 Presents: Back to Reality_.
 
-Inmiddels is de kalender er, en daarin staat de splitsing zwart op wit. De
+Inmiddels is de kalender er. De
 **Fright Nights** krijgen alle weekenden tussen **3 oktober en 1 november**, plus
 vrijdag de 16e, donderdag de 22e en vrijdag de 23e oktober, dertien avonden in
 totaal. Halloween valt op een zaterdag en zit erbij. De **Spooky Days** liggen op **14, 15, 19, 20 en 21
-oktober**, doordeweekse dagen midden in de Nederlandse herfstvakantie: precies de
-dagen waarop gezinnen komen en avondgasten niet. Early-birdtickets voor de avond
+oktober**, doordeweekse dagen midden in de Nederlandse herfstvakantie, waarop gezinnen komen en avondgasten niet. Early-birdtickets voor de avond
 kostten € 32,50 tot € 38,50; begin september lag de entree afhankelijk van de
 datum op € 35,50 tot € 44,50. Sinds 1 september zijn ook de huizen te koop: The
 Villa, US vs YOU, Psychoshock en Jefferson Manor keren terug, met daarbij de
@@ -663,7 +578,7 @@ over kerst 2025 en januari 2026.
 Op **23 april 2026** heeft het park het evenement zonder vooraankondiging en
 zonder opvolger geschrapt. Walibi Holland blijft ’s winters weer helemaal dicht.
 
-![De ingang van Walibi Belgium, versierd met kerstballen, daarboven de letters “Walibi Winter” | Walibi Winter in Waver. Het Belgische zusterpark gaat in december door, het Nederlandse niet meer. | wide](/media/walibi-belgium/background.jpg)
+![De ingang van Walibi Belgium, versierd met kerstballen, daarboven de letters “Walibi Winter” | Walibi Winter in Waver. | wide](/media/walibi-belgium/background.jpg)
 
 Officieel heet het dat de korte openingsperiode en de sterke afhankelijkheid van
 het winterweer het moeilijk maakten de gewenste kwaliteit betrouwbaar te
@@ -671,14 +586,8 @@ leveren. Algemeen directeur **Mascha Taminiau** formuleerde het zo: Walibi is in
 de kern een seizoensbedrijf, in de zomermaanden kan het de meest complete
 ervaring bieden.
 
-Het rekende niet, en de reden is dezelfde die het park in de zomer sterk maakt.
-
-Wie helemaal op achtbanen inzet, heeft ’s winters een natuurkundig probleem.
 Achtbanen rijden niet bij vorst, storm en ijzel, en **Walibi Holland heeft
-vrijwel geen overdekte attracties**. Valt de techniek uit, dan blijft voor de
-gasten de lichtshow over, en een lichtshow draagt geen ticket. De Efteling vult dezelfde periode met darkrides en een park
-dat er in de regen zelfs beter uitziet. Walibi kan dat niet, en het heeft
-blijkbaar vier jaar geduurd om dat uit te spreken.
+vrijwel geen overdekte attracties**. Vallen de banen uit, dan blijft voor de gasten alleen de lichtshow over. De Efteling vult dezelfde periode met darkrides.
 
 Medewerkers en acteurs hoorden de aankondiging dezelfde ochtend als de fans. Een
 promovideo voor de komende winter
@@ -689,22 +598,19 @@ in het zomerseizoen iemand mee te nemen.
 
 [Walibi Belgium](ref:walibi-belgium) in Waver gaat met zijn **Walibi Winter**
 wel door, in 2026/27 van 5 december tot 3 januari. Vanaf
-Biddinghuizen is dat bijna drie uur rijden, en met zijn hallen heeft het Belgische park precies wat het Nederlandse
-mist.
+Biddinghuizen is dat bijna drie uur rijden, en het Belgische park heeft overdekte attracties in hallen.
 
 ## #Lekkergaan en de Zomerse Zaterdagen
 
-De energie die de geschrapte winter vrijmaakt, schuift het park naar de zomer
+De vrijgekomen wintertijd schuift het park naar de zomer
 en naar het onderhoud, dat tot nu toe rond het kerstbedrijf heen geperst moest worden.
 
-Concreet waren er in de zomer van 2026 twee avondformats, opgedeeld zoals alles
-hier:
+In de zomer van 2026 waren er twee avondformats op verschillende dagen.
 
 **#Lekkergaan** draaide op zes woensdagen, op **15, 22 en 29 juli en op 5, 12 en
 19 augustus 2026**, telkens tot 22 uur. Dat is de voortzetting van het
 zomerfestival dat in 2017 startte: muziek, een strandgebied bij de Main Stage en
-tot slot nog een achtbaanrit in de avondzon. De naam is het vriendelijke zusje van “hard gaan”:
-“lekker gaan” betekent zoiets als goed lopen, en is de versie die je ook aan je ouders kunt uitleggen.
+tot slot nog een achtbaanrit in de avondzon. “Lekker gaan” betekent zoiets als goed lopen en is een mildere variant van “hard gaan”.
 
 **Zomerse Zaterdagen** waren de exacte tegenhanger, op **25 juli en op 1, 8, 15
 en 22 augustus 2026**, eveneens tot 22 uur. Overdag draaide de familieshow Walibi
@@ -712,14 +618,14 @@ en 22 augustus 2026**, eveneens tot 22 uur. Overdag draaide de familieshow Walib
 Op die dagen was er een **Half Day Half Price**-ticket waarmee je vanaf 16 uur
 naar binnen kon.
 
-Achter die verdeling zit dezelfde beslissing als bij de Halloween-splitsing en bij het einde van Bright Nights: het park
-houdt op om op één dag twee dingen tegelijk te willen zijn. Na twaalf jaar
-`#Hardgaan` naast een mascotte voor zesjarigen was dat hoognodig.
+Daarachter zit dezelfde beslissing als bij de Halloween-splitsing en het einde
+van Bright Nights: gezinnen en avondpubliek komen op verschillende dagen. Na
+twaalf jaar `#Hardgaan` naast een mascotte voor zesjarigen vind ik dat
+hoognodig.
 
 ## Wanneer je moet gaan
 
-Het seizoen loopt van **april tot begin november**, daarna houdt de polder
-winterslaap. In het voorjaar opent het park van woensdag tot en met zondag en op
+Het seizoen loopt van **april tot begin november**, daarna is het park dicht. In het voorjaar opent het park van woensdag tot en met zondag en op
 feest- en vakantiedagen, van eind juni tot eind augustus dagelijks, in
 september bijna alleen nog in het weekend en in oktober in de weekenden en de
 herfstvakantie. Zo staat het in de kalender voor 2026.
@@ -735,17 +641,14 @@ zomervakantie valt in onze data nauwelijks op.
 
 ```
 
-In de mediaan is tussen de weekdagen helemaal geen verschil te meten: alle
-zeven liggen op dezelfde waarde. Het weekend is hier dus gewoon geen
-uitzondering, en de reden is banaal: buiten vakanties en feestdagen is het park
+In de mediaan liggen alle zeven weekdagen op dezelfde waarde. Het weekend is hier geen uitzondering, omdat buiten vakanties en feestdagen is het park
 op maandag en dinsdag bijna altijd dicht, dus de weinige gemeten maandagen en
 dinsdagen zijn bovengemiddeld vaak vakantiedagen. Wie de keuze heeft, neemt
 een doordeweekse dag in juni buiten de vakanties: in 2026 lag in onze kalender
 elke donderdag in juni op lage drukte. De laatste week van juni, als het park al
 dagelijks open is, was juist niet rustiger dan hartje zomer.
 
-In plaats van te gokken, hier de rustigste komende dagen uit onze
-drukte-kalender:
+De rustigste komende dagen uit onze drukte-kalender:
 
 ```best-days-widget slug=walibi-holland
 
@@ -758,22 +661,19 @@ openingsdagen:
 
 ```
 
-## De perfecte dag, in vijf zinnen
+## Een volgorde voor de dag
 
 Loop bij opening langs alles heen de Wilderness in naar
 **[Untamed](ref:walibi-holland/untamed?bare)** en rijd hem twee of drie keer
 achter elkaar, zolang de massa nog bij YOY staat.
 **[Goliath](ref:walibi-holland/goliath?bare)** schuif je in waar het uitkomt,
-want zijn rij verandert de hele dag nauwelijks, omdat hij er sinds 2002 staat en
-niemand meer opwindt. **[YOY](ref:walibi-holland/yoy-thrill?bare)** neem je
+want zijn rij verandert de hele dag nauwelijks. **[YOY](ref:walibi-holland/yoy-thrill?bare)** neem je
 tegen het einde van de dag, als de rij daar iets korter wordt dan rond het
-middaguur, en rijd beide banen, anders heb je de helft van het concept gemist.
+middaguur, en rijd beide banen.
 **[El Rio Grande](ref:walibi-holland/el-rio-grande?bare)** en
 **[Crazy River](ref:walibi-holland/crazy-river?bare)** passen in de middagshitte,
-**[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** pak je mee
-wanneer je tussendoor 5,2 g nodig hebt. En het laatste uur is weer voor Untamed: de baan loopt ’s avonds
-merkbaar sneller dan ’s ochtends, en in het tegenlicht zie je vanaf de lifthill
-hoe vlak dit land werkelijk is.
+**[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** past ertussen. Rijd in het laatste uur nog een keer Untamed, want de baan loopt ’s avonds
+merkbaar sneller dan ’s ochtends.
 
 ## Praktisch: tickets, route, eten
 
@@ -784,7 +684,7 @@ datum verschillend.
   uitdrukkelijk een richtprijs, de dynamische dagprijs kan ook hoger liggen. Wie
   online, vroeg en voor een rustige dag boekt, betaalt afhankelijk van de datum
   vanaf zo’n **€ 25**, met acties ook minder. Spontaan aan de kassa kopen is
-  hier bijna altijd de duurste keuze, nog voor het derde softijsje.
+  hier bijna altijd de duurste keuze.
 - **Kinderen:** 3 tot 5 jaar € 23, 6 tot 11 jaar € 36, tot en met 2 jaar gratis.
   Senioren vanaf 55 en gasten met een beperking eveneens € 36.
 - **Parkeren:** € 12 per auto per dag, online € 12,50. Op het terrein staan
@@ -798,17 +698,13 @@ datum verschillend.
   winkels en tot 50 % korting bij andere pretparken en dierentuinen.
 - **Halloween zit in het abonnement, maar begrensd:** elke pass brengt **twee
   gratis bezoeken** aan de Fright Nights mee, die je vooraf moet reserveren. Wie
-  vaker wil, betaalt **€ 27,50 toeslag** voor onbeperkte toegang. De huizen en experiences kosten nog steeds
-  extra, daar verandert geen pass iets aan.
+  vaker wil, betaalt **€ 27,50 toeslag** voor onbeperkte toegang. De huizen en experiences kosten nog steeds extra.
 - **Fast Lane** is los te koop, als dagvariant of als jaarpas. Voor Untamed heb
   je hem op een normale dag niet nodig. Op een drukke dag, bij de Fright Nights
   en voor YOY is hij een overweging waard.
 
-Een vergelijking die me elke keer opvalt: het
-[Toverland](ref:attractiepark-toverland), ruim honderd kilometer zuidelijker,
-verkoopt helemaal geen fast pass, terwijl Walibi er meteen een heel schap van
-heeft, inclusief jaarabonnement op voordringen. Bij de wachttijden hierboven verkoopt het park daarmee de oplossing voor een probleem dat de meeste
-gasten op de meeste dagen niet hebben.
+Het [Toverland](ref:attractiepark-toverland), ruim honderd kilometer zuidelijker,
+verkoopt helemaal geen fast pass. Bij de wachttijden hierboven hebben ook in Walibi Holland de meeste gasten er op de meeste dagen geen nodig.
 
 **Route.** Het park ligt aan de Spijkweg 30 in **Biddinghuizen**, gemeente
 Dronten. Vanuit het Ruhrgebied is het afhankelijk van het verkeer ruim twee uur,
@@ -823,11 +719,11 @@ vertrekt.
 Wie de rit niet op één dag wil doen: direct bij het park ligt **Walibi Village**
 met vakantiehuizen voor vier, acht of zestien personen, overnachting inclusief
 een parkdag. Juist voor de Fright Nights is dat de meest ontspannen oplossing,
-omdat je na een nacht in het slachthuis niet ook nog tweeënhalf uur snelweg voor
+omdat je na een avond in de spookhuizen niet ook nog tweeënhalf uur snelweg voor
 de boeg hebt.
 
 **Eten.** De horeca is het zwakste deel van het park. Er
-zijn friet, burgers, pizza, degelijke kantinekost, niets waarvoor je terugkomt.
+zijn friet, burgers, pizza en degelijke kantinekost.
 Restaurant **Flavors** bij het YOY-gebied met terras aan het water is het
 aangenaamste adres, alleen al vanwege het uitzicht op de twee banen. Eet vroeg,
 rond half twaalf, of laat vanaf half drie.
@@ -854,8 +750,7 @@ decor en weerbestendigheid zoekt, zit in de [Efteling](ref:efteling) of
 
 Letterlijk hard gaan, in de praktijk vol gas geven. Walibi Holland adverteert
 sinds 2014 met `#Hardgaan`, onderbroken door één mislukt jaar met “Dare to get
-Real” (2017). Het woord komt uit de Nederlandse festival- en hardstylescene, en
-dat past geografisch: op het evenemententerrein van het park vindt sinds 2011
+Real” (2017). Het woord komt uit de Nederlandse festival- en hardstylescene, en op het evenemententerrein van het park vindt sinds 2011
 Defqon.1 plaats, het grootste hardstylefestival ter wereld.
 
 ### Hoe lang zijn de wachttijden in Walibi Holland?
@@ -867,9 +762,7 @@ cijfers staan op de [parkpagina van Walibi Holland](ref:walibi-holland).
 
 ### Wanneer is het in Walibi Holland het rustigst?
 
-Over het seizoen heen verschillen de maanden nauwelijks, en in de mediaan is
-per weekdag helemaal geen verschil meetbaar: alle zeven liggen op dezelfde
-waarde. Iets drukker is het in april rond Pasen, Koningsdag en het begin van de
+Over het seizoen heen verschillen de maanden nauwelijks, en in de mediaan liggen alle zeven weekdagen op dezelfde waarde. Iets drukker is het in april rond Pasen, Koningsdag en het begin van de
 meivakantie; de zomervakantie valt in onze data nauwelijks op. De Fright
 Nights-avonden zijn het meest gewild: de early-birdtickets voor 17, 24 en 31
 oktober 2026 waren als eerste uitverkocht. Voor een concrete datum helpt de
@@ -906,41 +799,8 @@ december tot 3 januari.
 
 ### Heb je een Fast Lane-pas nodig?
 
-Op een normale dag niet. Bij de mediaan die dit park draait, betaal je voor
-bespaarde minuten die je helemaal niet hebt. Op drukke dagen, bij de
+Op een normale dag niet. Bij de korte wachttijden van dit park bespaar je er nauwelijks tijd mee. Op drukke dagen, bij de
 avondevenementen en voor YOY kan het lonen.
-
-## Rijd dat extra uur
-
-Ik houd van parken die weten wat ze zijn. De [Efteling](ref:efteling) weet het
-sinds 1952, [Phantasialand](ref:phantasialand) heeft het zich moeizaam eigen
-gemaakt, en Walibi Holland merkte na vier nieuwe namen en één mislukte slogan
-uiteindelijk dat het antwoord al op het eigen terrein stond, tussen een
-hardstylefestival en een akker waar een paar decennia geleden nog vissen
-zwommen.
-
-Dit park doet niet alles goed. Het eten is middelmatig, een paar banen zijn
-vooral hun eigen verleden, en in de winter stort het hele concept in, zoals april
-2026 liet zien.
-
-Wat het park wél kan, kan het goed. In de Wilderness staat een achtbaan die na
-de first drop twee keer achter elkaar over de kop gaat en daarna negentig
-seconden lang niet meer ophoudt. Een paar honderd meter verderop jagen twee
-treinen elkaar over twee enkele rails. En in oktober betalen mensen vrijwillig twintig euro
-extra om in een waadpak te mogen stappen.
-
-En waar het park zich inspant, doorstaat het ook qua aankleding elke
-vergelijking. De ingang van de Wilderness, de Zero Zone rond Lost Gravity, het
-station van Untamed met de waterval en de letters boven de lifthill: daar blijf
-je staan en haal je de camera tevoorschijn, en dat hoeft zich noch voor Disney
-noch voor Phantasialand te verstoppen.
-
-Untamed kost je op een normale dag minder aanschuiven dan Taron, F.L.Y. of
-Black Mamba in Phantasialand.
-
-Rijd dat extra uur. En als je boven op de lifthill zit en over die vlakke,
-rechte, volstrekt kunstmatige polder kijkt, denk dan even aan het feit dat hier
-in 1957 nog de zee lag.
 
 — Patrick
 

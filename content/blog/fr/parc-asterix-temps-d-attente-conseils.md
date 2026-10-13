@@ -7,12 +7,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Le Parc Astérix a ouvert en 1989 pour 15 000 visiteurs par jour, en a refoulé
-  150 000 la première année et accueille aujourd’hui presque trois millions de
-  personnes par an. Toutes les montagnes russes et leurs chiffres, les temps
-  d’attente mesurés, l’ordre pour une journée, le prix de Filotomatix, venir
-  sans voiture, Peur sur le Parc, le Noël Gaulois et ce qui ferme ou arrive d’ici
-  2028.
+  Le Parc Astérix a ouvert en 1989 pour 15 000 visiteurs par jour et en a
+  refoulé 150 000 la première année. Aujourd’hui, il accueille presque trois
+  millions de personnes par an. À l’ouverture, allez à Tonnerre 2 Zeus, et
+  gardez Toutatis pour le début d’après-midi.
 tags:
   - parc-asterix
   - toutatis
@@ -74,9 +72,7 @@ compte les parcs un par un, il arrive troisième en France, derrière le
 Adventure World ; le parc se dit deuxième, parce qu’il compte Disneyland Paris
 comme une seule destination. Parmi ses montagnes russes, il y a Goudurix, qui roulait déjà le jour de l’ouverture, et [Toutatis](ref:parc-asterix/toutatis), la plus haute de France.
 
-Les temps d’attente viennent de nos mesures depuis Noël 2025, le reste du site du
-parc tel qu’il était le 2 octobre 2026 et des articles et bases de données
-listés en fin d’article. Quand deux sources se contredisent, nous donnons les deux chiffres.
+Nous mesurons les temps d’attente depuis Noël 2025, et les prix et les dates sont ceux du 2 octobre 2026.
 
 ## Temps d’attente au Parc Astérix, attraction par attraction
 
@@ -85,15 +81,12 @@ listés en fin d’article. Quand deux sources se contredisent, nous donnons les
 ```
 
 Début octobre 2026, le haut du tableau revient à deux montagnes russes
-familiales, Cétautomatix et Pégase Express, et la tête d’affiche arrive
-derrière. C’est une question de débit. Selon la Roller Coaster DataBase (RCDB),
+familiales, Cétautomatix et Pégase Express, et la tête d’affiche arrive derrière. Selon la Roller Coaster DataBase (RCDB),
 Toutatis embarque 1 260 personnes par heure et OzIris 1 600. Pour Cétautomatix,
 le site Androland tablait avant l’ouverture sur environ 700 : neuf chars de quatre
-places, un départ toutes les 20 secondes. Une petite attraction avec une taille
-minimum basse, où toute la famille monte ensemble, remplit sa file plus vite
-qu’une grande où seule la moitié du groupe peut monter.
+places, un départ toutes les 20 secondes. À Cétautomatix et à Pégase Express, toute la famille fait la queue, parce que les enfants accompagnés peuvent monter dès 1,00 m, à Toutatis seulement dès 1,30 m.
 
-Le tableau compare le Parc Astérix au Parc Disneyland, à Walibi Belgium, qui appartient au même groupe, et à Europa-Park. Il est recalculé en continu :
+Le tableau compare le Parc Astérix au Parc Disneyland, à Walibi Belgium, qui appartient au même groupe, et à Europa-Park.
 
 ```park-comparison-widget slugs=parc-asterix,/parks/europe/france/paris/disneyland-park,walibi-belgium,europa-park show=quietest highlight=parc-asterix
 
@@ -136,7 +129,7 @@ d’euros. Le groupe, qui possède aussi [Walibi Belgium](ref:walibi-belgium) et
 [Walibi Holland](ref:walibi-holland), exploite toujours le parc ; Delphine Pons
 le dirige depuis mai 2021.
 
-Depuis, il n’a pas cessé de grandir. En 2012 arrivent le quartier Égypte et
+En 2012 arrivent le quartier Égypte et
 OzIris, 20 millions d’euros pour l’ensemble, le plus gros investissement de
 l’histoire du parc à l’époque. Pégase Express suit en 2017 pour 16 millions,
 Toutatis en 2023. D’après l’index de la Themed Entertainment Association (TEA) et les chiffres du parc, la fréquentation a été de 2 326 000 en 2019, 2 632 000 en
@@ -194,10 +187,9 @@ construit ce coaster lancé sans lift à chaîne. Des moteurs linéaires propuls
 
 ```
 
-Les sources ne s’accordent pas tout à fait sur les chiffres. RCDB indique 51
+RCDB indique 51
 mètres et 107 km/h, Intamin 53 mètres et 107 km/h également, le parc 51 mètres
-et 110 km/h ; avec ces 110 km/h, le parc appelle Toutatis « l’attraction la plus rapide de France ». Le nombre de lancements dépend de la façon de compter : sept selon
-Intamin, cinq en avant et deux en arrière, quatre selon Wikipédia, dont trois
+et 110 km/h ; avec ces 110 km/h, le parc appelle Toutatis « l’attraction la plus rapide de France ». Intamin compte sept lancements, cinq en avant et deux en arrière, Wikipédia quatre, dont trois
 sur la même section de lancement. RCDB indique 1 075 mètres de rail et, comme le train en parcourt une partie deux fois, 1 361 mètres parcourus ; d’où les « plus de 1 300 mètres » annoncés par le parc. Trois inversions, un peu
 plus de deux minutes. Le parc revendique aussi 23 moments d’airtime, un record du
 monde pour une montagne russe en acier selon lui. Taille minimum 1,30 m.
@@ -210,7 +202,7 @@ le Festival Toutatis 36 millions selon le parc.
 Inutile de courir à l’ouverture. La file est déjà aussi longue à 10 h qu’à midi,
 et d’après notre analyse elle est au plus court environ trois heures et demie
 après l’ouverture. Les clients des hôtels entrent une demi-heure avant les
-autres dans les zones Toutatis et Égypte. Nos mesures ne permettent pas de dire si c’est toute l’explication. Si vous pouvez monter seul, prenez la file
+autres dans les zones Toutatis et Égypte. Si vous pouvez monter seul, prenez la file
 single rider, qui n’existe qu’ici et à OzIris.
 
 ### OzIris
@@ -218,8 +210,7 @@ single rider, qui n’existe qu’ici et à OzIris.
 **[OzIris](ref:parc-asterix/oziris)** a ouvert le 7 avril 2012 avec le quartier
 Égypte. Le parc a dépensé 20 millions d’euros pour l’ensemble, dont la moitié
 pour les décors selon NewsParcs. Sur ce coaster inversé de Bolliger & Mabillard, le train est suspendu sous le rail et les jambes pendent dans le vide.
-Un lift de 40 mètres, 1 000 mètres de parcours, 90 km/h, cinq inversions.
-Lesquelles, c’est discuté. RCDB cite un dive loop, un looping, un Immelmann et
+Un lift de 40 mètres, 1 000 mètres de parcours, 90 km/h, cinq inversions. RCDB cite un dive loop, un looping, un Immelmann et
 deux zero-g rolls, Wikipédia un tire-bouchon à la place du premier zero-g roll.
 Selon Wikipédia, le train plonge aussi dans un tunnel sous un bassin. Trois
 trains de 32 places, 1 600 personnes par heure, taille minimum 1,30 m.
@@ -365,9 +356,7 @@ Toutatis, OzIris, Cétautomatix, Discobélix et La Trace du Hourra. Pour les cin
 autres, le pire jour tombe à l’été 2026, entre mai et août (au 2 octobre 2026).
 
 Cette année, le Noël Gaulois ouvre du 19 décembre 2026 au 3 janvier 2027, soit
-exactement les vacances de Noël, seize jours en tout. Il y a deux explications aux records, et nos mesures ne permettent pas de dire laquelle pèse le plus. L’une est que tous ceux qui veulent venir pour les fêtes n’ont que ces seize jours. L’autre figure dans la FAQ du parc : en hiver, les attractions aquatiques sont fermées,
-et par temps de gel d’autres attractions aussi, si bien que la foule se répartit
-sur moins d’attractions.
+exactement les vacances de Noël, seize jours en tout. Selon la FAQ du parc, les attractions aquatiques sont fermées en hiver, et par temps de gel d’autres attractions aussi, si bien que la foule se répartit sur moins d’attractions.
 
 ## Quand y aller
 
@@ -378,9 +367,7 @@ sur moins d’attractions.
 ```
 
 Dans nos mesures, le samedi est de loin le jour le plus chargé et le mercredi le
-plus calme. Si vous pouvez choisir le jour, prenez le mercredi.
-Chaque autre parc a son propre jour calme, et la [page des meilleures périodes](/meilleure-periode-pour-visiter) les
-réunit.
+plus calme. Si vous pouvez choisir le jour, prenez le mercredi. Les jours les plus calmes des autres parcs sont sur la [page des meilleures périodes](/meilleure-periode-pour-visiter).
 
 ### Le mois
 
@@ -430,8 +417,7 @@ l’ouverture et atteint son pic en début d’après-midi, quand il fait chaud.
 La file d’OzIris est courte, elle aussi, pendant la première demi-heure ; si vous la ratez,
 gardez-la pour la fin d’après-midi.
 
-Les spectacles occupent le milieu de journée. Toutatis vient en début d’après-midi, car d’après notre analyse son meilleur créneau tombe environ trois heures et demie après l’ouverture. Si vous pouvez monter seul, prenez la file single
-rider.
+Les spectacles occupent le milieu de journée. Toutatis vient en début d’après-midi, car d’après notre analyse son meilleur créneau tombe environ trois heures et demie après l’ouverture.
 
 En fin de journée, La Trace du Hourra et un second tour d’OzIris. Pendant la
 dernière heure, la plupart des files redeviennent courtes ; seules Toutatis et
@@ -506,21 +492,18 @@ l’hiver de 2007 à 2010, puis de nouveau depuis 2019.
 
 ## Ce qui ferme et ce qui arrive
 
-La rue de Paris n’existe plus. Le parc a annoncé sa fermeture le 7 novembre
-2025, et avec elle ont disparu le carrousel des Chevaux du Roy et trois maisons
+Le parc a annoncé la fermeture de la rue de Paris le 7 novembre 2025. Avec elle ont disparu le carrousel des Chevaux du Roy et trois maisons
 hantées d’Halloween ; les automates de l’Hôtel des Artistes et de la Maison du 14
 juillet s’étaient déjà arrêtés en septembre. Un carrousel et une partie des
 décors partent au parc Festiland selon le parc, d’autres éléments au Musée des
 Arts Forains à Paris.
 
-En 2027, la Grèce s’agrandit. Le parc annonce deux attractions familiales, une
-aire de jeux et un restaurant, La Table de Dionysos, de 450 places. D’après
+Pour 2027, le parc annonce dans la Grèce deux attractions familiales, une aire de jeux et un restaurant, La Table de Dionysos, de 450 places. D’après
 Androland et Parcs Actus, le décor s’inspire de l’île grecque de Symi ; Androland
 cite deux petites tours de chute de Zierer et un Go Go Bounce de Zamperla. Le parc ne l’a pas confirmé. Un quatrième hôtel, L’Odyssée, 300 chambres et quatre
 étoiles, doit ouvrir la même année.
 
-En 2028 arrive Londinium. Sur le terrain de l’ancien Paris, le parc construit un
-quartier couvert inspiré de l’album « Astérix chez les Bretons ». Il annonce une
+Sur le terrain de l’ancien Paris, le parc construit pour 2028 Londinium, un quartier couvert inspiré de l’album « Astérix chez les Bretons ». Il annonce une
 grande montagne russe immersive, un dark ride interactif familial, une aire de
 jeux verticale, un pub et des boutiques. RCDB liste déjà la montagne russe : un
 Multi Dimension Coaster d’Intamin à wagons pivotants, 17 mètres de haut, à
@@ -538,8 +521,7 @@ Billet Malin coûte 49 euros, même prix pour adultes et enfants, mais seulement
 certaines dates. Le Billet Futé démarre à 56 euros pour les adultes et 53 pour
 les enfants si vous réservez au moins sept jours avant. Deux jours consécutifs
 coûtent 125 et 109 euros au guichet. Les billets achetés en ligne sont datés, et
-il n’y a rien d’autre à réserver. Le 2 octobre, le parc ne vendait pas encore de
-Pass Saison 2027.
+il n’y a rien d’autre à réserver. Le parc ne vend pas encore de Pass Saison 2027.
 
 ### Venir au parc
 

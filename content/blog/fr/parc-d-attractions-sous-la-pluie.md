@@ -73,18 +73,11 @@ rideLinks:
   - walibi-belgium/popcorn-revenge
 ---
 
-Si tu vas dans un parc d’attractions un jour de pluie, tu attends en moyenne
-moins longtemps. Dans les douze parcs que nous avons analysés, l’attente aux
+Dans les douze parcs que nous avons analysés, l’attente aux
 attractions phares était plus courte les jours de pluie que les jours secs du
 même mois et du même type (semaine ou week-end, vacances scolaires ou non).
-L’écart va d’environ 4 % à Disneyland Paris à environ 31 % au Movie Park. Ces
-jours-là, mieux vaut viser les attractions couvertes. À Toverland, la moitié
+L’écart va d’environ 4 % à Disneyland Paris à environ 31 % au Movie Park. À Toverland, la moitié
 des 44 attractions sont couvertes, à Walibi Holland aucune.
-
-Pour Europa-Park, le Phantasialand, Efteling, Toverland, le Movie Park Germany,
-le Plopsaland Deutschland, le Heide Park, Walibi Belgium et Walibi Holland, nous
-comparons attraction par attraction celles qui sont couvertes, d’après les
-indications des parcs.
 
 ## Comment nous avons mesuré les jours de pluie
 
@@ -148,8 +141,7 @@ Avec un seuil de 5 millimètres, l’attente reste plus courte les jours de plui
 dans les douze parcs. L’écart varie alors beaucoup, parce que ces jours-là sont
 rares. À Europa-Park, il est d’environ 23 % sur huit jours, au Movie Park
 d’environ 27 % sur six jours. Je ne lirais donc pas le tableau comme un
-classement. Ce qui est sûr, c’est qu’aucun des douze parcs n’était plus
-fréquenté les jours de pluie.
+classement.
 
 L’écart n’a pas grand-chose à voir avec le nombre d’attractions couvertes. À
 Walibi Holland, aucune attraction ne se trouve dans un bâtiment, et l’attente y
@@ -183,9 +175,7 @@ le Heide Park réunis, mois par mois :
 | Août      |                             185 |                             18 % |
 | Septembre |                             162 |                             16 % |
 
-Ces chiffres portent sur une seule année. En 2026, juillet a été sec, mai et
-juin pluvieux. 2027 peut tout à fait se présenter autrement. Comme ordre de
-grandeur, ils suffisent quand même : en haute saison, environ un jour d’ouverture
+Ces chiffres portent sur une seule année, et en 2026 juillet a été sec, mai et juin pluvieux. En haute saison, environ un jour d’ouverture
 sur cinq a été pluvieux, certains mois un sur trois.
 
 ## Europa-Park
@@ -245,8 +235,6 @@ Verrückte Hotel Tartüff.
 ![Un pot en terre géant au couvercle ouvert, une échelle appuyée contre lui. | Dans le bâtiment de Winja’s Fear & Force, Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
 Taron, Black Mamba et les autres grandes montagnes russes roulent en plein air.
-S’il pleut toute la journée, il te reste à Brühl trois montagnes russes à
-l’abri : les deux de Wuze Town et Crazy Bats.
 
 ```ride-waits-widget rides=phantasialand/winjas-fear|Winja's Fear|Spinning Coaster;phantasialand/winjas-force|Winja's Force|Spinning Coaster;phantasialand/mystery-castle|Mystery Castle|Tour de chute;phantasialand/maus-au-chocolat|Maus au Chocolat|Dark Ride;phantasialand/crazy-bats|Crazy Bats|Coaster indoor columns=type,peak,days
 
@@ -273,12 +261,7 @@ Museum sont eux aussi couverts.
 
 ![L’entrée de Droomvlucht la nuit, éclairée de rose et de vert. | De jour, ce mur est blanc. | right](/media/efteling/droomvlucht.jpg)
 
-Joris en de Draak, Baron 1898 et Python roulent en plein air. Si tu viens pour
-les montagnes russes, emporte une veste de pluie et fais celles qui tournent à
-ce moment-là. Si tu aimes les dark rides, une journée de pluie à Efteling se
-passe très bien sans les attractions extérieures. Quand une attraction couverte
-est fermée pour maintenance, c’est indiqué sur sa page et dans le calendrier du
-parc. Si tu fais le trajet pour les dark rides, vérifie la veille au soir.
+Joris en de Draak, Baron 1898 et Python roulent en plein air. Quand une attraction couverte est fermée pour maintenance, c’est indiqué sur sa page et dans le calendrier du parc, et le mieux est de vérifier la veille au soir.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Train suspendu;efteling/symbolica|Symbolica|Trackless ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Coaster indoor columns=type,peak,days
 
@@ -313,10 +296,6 @@ roulent en plein air. Dans le Wirbelbaum, une grande roue de 13 mètres, c’est
 toi qui décides à quelle vitesse ta nacelle tourne sur elle-même. Djinn, un
 carrousel à chaînes de 12,8 mètres accessible dès 100 centimètres, tourne
 au-dessus du marché oriental du Land van Toos.
-
-Les jours de pluie, l’attente à Toverland était plus courte de 13 %. Avec de
-jeunes enfants, c’est un bon choix pour une journée pareille. Si tu viens pour
-Troy et Fēnix, prends une veste de pluie.
 
 ```ride-waits-widget rides=attractiepark-toverland/toos-express|Toos-Express|Montagnes russes familiales;attractiepark-toverland/villa-fiasko|Villa Fiasko|Maison de l’illusion;attractiepark-toverland/wirbelbaum|Wirbelbaum|Grande roue columns=type,peak,days
 
@@ -369,9 +348,6 @@ air. Avec de jeunes enfants, tu as de quoi occuper une journée de pluie dans la
 halle. Pour des ados qui viennent pour les montagnes russes, il ne reste sous un
 toit que Tabaluga's Rollercoaster, des montagnes russes familiales.
 
-Sur neuf jours de pluie, on ne peut pas dire si la halle explique la baisse de
-16 %.
-
 ```ride-waits-widget rides=plopsaland-deutschland/tabalugas-rollercoaster|Tabaluga's Rollercoaster|Montagnes russes familiales;plopsaland-deutschland/mias-elf-flight|Mia's Elf Flight|Attraction enfants;plopsaland-deutschland/the-smurfs-adventure|The Smurfs' Adventure|Dark Ride columns=type,peak,days
 
 ```
@@ -387,8 +363,7 @@ gare de la deuxième rivière à bûches, fermée en 2011. La troisième est la
 
 Un jour de pluie, le Heide Park vaut surtout le trajet si tu viens de toute
 façon pour Colossos et les autres attractions en plein air et que tu comptes sur
-un après-midi sec. S’il pleut toute la journée, il te reste trois attractions
-couvertes.
+un après-midi sec.
 
 ```ride-waits-widget rides=heide-park/ghostbusters-5d|Ghostbusters 5D|Simulateur;heide-park/daemonen-gruft|Dämonen Gruft|Dark Ride columns=type,peak,days
 
@@ -415,8 +390,6 @@ parcours en marche arrière. C’est la seule montagne russe couverte du parc.
 Kondaa, Vampire et Cobra roulent en plein air. Le Palais du Génie et le Spinning
 Taxi sont eux aussi couverts.
 
-Les jours de pluie, l’attente à Walibi Belgium était plus courte de 13 %.
-
 ```ride-waits-widget rides=walibi-belgium/turbine|Turbine|Shuttle Coaster;walibi-belgium/popcorn-revenge|Popcorn Revenge|Dark Ride;walibi-belgium/challenge-of-tutankhamon|Challenge of Tutankhamon|Dark Ride columns=type,peak,days
 
 ```
@@ -427,9 +400,7 @@ Plus sur le parc dans le [guide de Walibi Belgium](/blog/walibi-belgium-temps-d-
 
 À [Walibi Holland](ref:walibi-holland), à Biddinghuizen, aucune des 39
 attractions ne se trouve dans un bâtiment. Quand le parc a renoncé à ouvrir
-l’hiver, en avril 2026, il a invoqué entre autres sa dépendance à la météo. Les
-jours de pluie, l’attente y était plus courte de 6 %. Pour une journée où il
-pleut sans arrêt, je ne ferais pas le trajet jusqu’à Biddinghuizen.
+l’hiver, en avril 2026, il a invoqué entre autres sa dépendance à la météo.
 
 Plus sur le parc dans le [guide de Walibi Holland](/blog/walibi-holland-untamed-hard-gaan).
 

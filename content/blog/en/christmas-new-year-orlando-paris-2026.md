@@ -2,15 +2,12 @@
 title: 'Christmas and New Year 2026 in Orlando and Disneyland Paris'
 translationKey: christmas-new-year-orlando-paris-2026
 date: '2026-10-04'
+updatedAt: '2026-10-13'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Orlando, the week between Christmas and New Year is the busiest stretch
-  we've ever measured in those parks, in all seven of them. In Paris it isn't.
-  Plus the dates: 25 nights of Very Merry Christmas Party, 15 nights of
-  Jollywood Nights, Candlelight Processional every evening, 51 days at
-  Universal, and a Paris season that starts on 7 November.
+  In all seven Orlando parks, the week between Christmas and New Year 2025 was busier than any other month we've measured there. In Paris it wasn't. Plus the dates of the Christmas events at Disney and Universal, and of the Paris season, which starts on 7 November.
 tags:
   - christmas
   - new-year
@@ -48,8 +45,7 @@ seo:
     - Orlando between Christmas and New Year
 ---
 
-We measured every day from 24 to 31 December 2025, in Orlando and in Paris. In
-Orlando that week is the busiest row of the whole yearly table in **all seven
+We measured every day from 24 to 31 December 2025, in Orlando and in Paris. In Orlando that week was busier than any other month of the year in **all seven
 parks**: [Magic Kingdom](ref:magic-kingdom-park), [EPCOT](ref:epcot),
 [Hollywood Studios](ref:disneys-hollywood-studios),
 [Animal Kingdom](ref:disneys-animal-kingdom-theme-park),
@@ -57,18 +53,13 @@ parks**: [Magic Kingdom](ref:magic-kingdom-park), [EPCOT](ref:epcot),
 [Islands of Adventure](ref:universal-islands-of-adventure) and
 [Epic Universe](ref:universal-epic-universe).
 
-Paris puts the same week somewhere else entirely. At
-[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) it sits on the
-yearly average, and at
-[Disney Adventure World](ref:disney-adventure-world) it's the **quietest row of
-the year**.
+In Paris the same week sat on the yearly average at
+[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park), and at
+[Disney Adventure World](ref:disney-adventure-world) it was **quieter than any
+other month of the year**.
 
-Both destinations run a Christmas season of
-roughly the same length, both advertise the same weeks, and when you ask what
-27 December actually looks like, they answer very differently. Each date comes from the park's own site.
-
-> **About the dates:** this is where things stood on 4 October 2026. Times and
-> prices also come from the official pages, linked in the sources below. Parks
+> **About the dates:** this is where things stood on 4 October 2026. Dates,
+> times and prices come from the parks' official pages, linked in the sources below. Parks
 > move evening dates around well into November, so check again before you book.
 
 ## Walt Disney World: 13 November to 6 January
@@ -76,8 +67,7 @@ roughly the same length, both advertise the same weeks, and when you ask what
 Disney runs its Orlando Christmas season from **13 November 2026 to 6 January
 2027**. Two of the four parks add a separately ticketed evening event, and both
 of them start before the season officially does: Very Merry Christmas Party on
-8 November, Jollywood Nights on the 7th. Those five or six days of head start
-are also why the earliest party nights are reliably the cheapest ones.
+8 November, Jollywood Nights on the 7th. The earliest party nights are reliably the cheapest ones.
 
 ### Mickey's Very Merry Christmas Party: 25 nights
 
@@ -94,7 +84,7 @@ with $10 off for children aged three to nine. Annual Passholders and Disney
 Vacation Club members save another $10, but only on selected nights from 8 to 20
 November and from 29 November to 3 December.
 
-What you get: Mickey's Once Upon a Christmastime Parade, the Minnie's Wonderful
+The ticket includes Mickey's Once Upon a Christmastime Parade, the Minnie's Wonderful
 Christmastime fireworks, the Mickey's Most Merriest Celebration stage show at
 Cinderella Castle, snowfall on Main Street, and cookies and hot drinks at
 set locations around the park at no extra charge. Five attractions get a holiday
@@ -103,16 +93,14 @@ different music and different interior lighting, the Tomorrowland Speedway and
 the Mad Tea Party. Jungle Cruise runs as Jingle Cruise all December, during the
 day as well, no party ticket needed.
 
-The parade, the fireworks and the castle stage show are all cancelled in wind
-and storms. That's rare in Florida in December, but it's in Disney's own small
-print, and it's there under each of the three separately.
+The parade, the fireworks and the castle stage show are cancelled in wind and
+storms, and Disney notes this under each of the three. In December that's rare
+in Florida.
 
 ### EPCOT: Festival of the Holidays and the Candlelight Processional
 
 The **EPCOT International Festival of the Holidays** runs from **27 November to
-30 December** and costs nothing extra. Storytellers around World Showcase tell
-the Christmas customs of their pavilion, and the line-up is more specific than
-that sentence makes it sound: Las Posadas with Mariachi Cobre in Mexico, a
+30 December** and costs nothing extra. Storytellers around World Showcase tell the Christmas customs of their pavilion: Las Posadas with Mariachi Cobre in Mexico, a
 mischievous Barn Santa in Norway, Micha's Adventskalender puppet theatre in
 Germany, La Befana in Italy, a Hanukkah storyteller between Morocco and France,
 Père Noël in France, Father Christmas in the United Kingdom. China uses the same
@@ -128,9 +116,9 @@ Harris, Lauren Daigle, Ralph Macchio, Henry Winkler, Lacey Chabert, Jodi Benson,
 Simu Liu, and Eva Longoria closing from 28 to 30 December. Two slots, 2 and 3
 December and 13 and 14 December, still read "To Be Announced".
 
-Admission is free; a seat isn't always. If you want a guaranteed one, book the
-Candlelight Processional Dining Package, a meal at one of the EPCOT restaurants
-with seating included. [Living with the Land](ref:epcot/living-with-the-land)
+Admission is free, but a seat isn't guaranteed. The Candlelight Processional
+Dining Package, a meal at one of the EPCOT restaurants, comes with a guaranteed
+seat. [Living with the Land](ref:epcot/living-with-the-land)
 runs as Glimmering Greenhouses in these weeks, with lights through the
 greenhouses.
 
@@ -146,12 +134,10 @@ November 2026 to 5 January 2027**:
 
 Five hours again, 7:30 p.m. to 12:30 a.m., with entry from 5:30 p.m. Tickets are
 **$169 to $199 plus tax**, $10 off for children aged three to nine, and the
-Passholder and DVC discount is valid on **all** nights here rather than selected
-ones. If you're choosing between the two events on price, a Jollywood night is
-the cheaper evening.
+Passholder and DVC discount is valid on **all** nights here rather than selected ones.
 
-During the day the Hollywood Studios programme needs no extra ticket: Sunset
-Seasons Greetings projects onto the Hollywood Tower Hotel every evening, Toy
+Without an extra ticket, Sunset Seasons Greetings projects onto the Hollywood
+Tower Hotel every evening, Toy
 Story Land gets oversized decorations, and the Frozen sing-along show gets a
 holiday finale with Olaf.
 
@@ -165,16 +151,14 @@ of a little over 16 metres at the entrance, and the village of Harambe is hung
 with garlands made from recycled materials and traditional African textiles.
 
 Disney Springs runs the **Christmas Tree Stroll**, a walk past elaborately
-decorated trees, plus Santa for photos. Neither costs admission, because Disney
-Springs doesn't charge any. For an afternoon when you've had enough of queueing,
-it's the cheapest hour of Christmas in Orlando.
+decorated trees, plus Santa for photos. Neither costs admission.
 
-## Universal Orlando: 51 days, three parks, Epic Universe for the first time
+## Universal Orlando: 14 November to 3 January
 
 Universal pulled its season forward by a week this year and celebrates from **14
-November 2026 to 3 January 2027**. That's 51 days, six more than in 2025. Unlike
-Disney, none of what follows needs an extra ticket: it's all included with
-regular park admission.
+November 2026 to 3 January 2027**. That's 51 days, six more than in 2025. Unlike Disney, Grinchmas, the Wizarding World, the parade and the holiday
+decorations at Epic Universe need no extra ticket; they're included with regular
+park admission.
 
 **Grinchmas** is where it always is, in Seuss Landing at Islands of Adventure,
 with the "Grinchmas Who-liday Spectacular" stage show after the Dr. Seuss book,
@@ -191,13 +175,13 @@ goes down the street every evening, with the oversized balloons from the New
 York Thanksgiving parade and floats for Despicable Me, Shrek and Madagascar.
 Santa lights the Christmas tree at the end of it.
 
-The new part is **Epic Universe**. In the park's second winter, SUPER NINTENDO
+At **Epic Universe**, in the park's second winter, SUPER NINTENDO
 WORLD and How to Train Your Dragon – Isle of Berk get holiday decorations for
 the first time, and Celestial Park returns as a winter wonderland with lit trees
 and holiday fountain displays at the Cosmos Fountain. Universal calls the Isle
 of Berk version **Snoggletog**, the winter feast from the Dragons films.
 
-If you want more, book the **Universal Holiday Tour**, two and a half hours
+You can also book the **Universal Holiday Tour**, two and a half hours
 guided, with a meet-and-greet with the Grinch and his dog Max, reserved seating
 for the Grinchmas show, a meeting with Santa, and optionally a reserved viewing
 area for the parade. It needs a park-to-park ticket for the Studios and the
@@ -205,7 +189,7 @@ Islands, and it runs on selected dates from 14 November 2026 to 2 January 2027.
 
 ## Disneyland Paris: 7 November to 6 January
 
-Paris opens earliest of the three. **Disney Enchanted Christmas** runs from
+**Disney Enchanted Christmas** runs from
 **7 November 2026 to 6 January 2027** across both parks.
 
 At Disneyland Park, **Mickey's Dazzling Christmas Parade** goes round twice a
@@ -218,25 +202,20 @@ with Santa you need a reservation through the virtual queue.
 
 New this winter is Christmas in **World of Frozen**, the land Disney Adventure
 World opened in 2026. Arendelle holds its first Christmas there, with garlands,
-advent wreaths and the Arendelle Carollers, a Christmas choir. If you're
-travelling with children who have talked about
-[Frozen Ever After](ref:disney-adventure-world/frozen-ever-after) since the
-summer, that's your reason not to pencil the second park in as a half day.
+advent wreaths and the Arendelle Carollers, a Christmas choir. With children who know
+[Frozen Ever After](ref:disney-adventure-world/frozen-ever-after), I wouldn't
+plan Disney Adventure World as just a half day.
 
 The parade is included with the park ticket. Disney sells a reserved spot for it
 separately, while they last.
 
-## How busy it actually gets
+## How busy it gets between Christmas and New Year
 
-**Our December row for these nine parks is not a monthly average.** It rests on
-exactly eight measured days, 24 to 31 December 2025, and before that we measured
-nothing at all in Orlando or Paris. From January 2026 the series is unbroken, 28
-to 31 days a month. **For November 2025 we have not one measured day in any of
-the nine parks**, so there's nothing in our table about the first half of the
-Christmas season.
-
-What those eight days do describe very precisely is the week between Christmas
-and New Year. Which is what this guide is about.
+**We measured December in these nine parks on only eight days**, 24 to 31
+December 2025. Before that we didn't measure in Orlando or Paris at all; since
+January 2026 we have 28 to 31 days a month. **For November 2025 we have no
+figures for any of the nine parks**, and none for the first half of the
+Christmas season either.
 
 **Magic Kingdom, typical wait by month**
 
@@ -244,21 +223,19 @@ and New Year. Which is what this guide is about.
 
 ```
 
-The December row sits above every other one, and the gap to February and March,
+December sits above every other month, and the gap to February and March,
 the next two busiest months, is wider than the gap between February and the
 quietest summer month. The days column tells you how many measured days each row
 rests on.
 
-At Islands of Adventure it's starker still. December there is the only row in
-all nine parks that our model puts in the top band.
+At Islands of Adventure, December is the only month in all nine parks that our
+model puts in the top band.
 
 **Universal Islands of Adventure, typical wait by month**
 
 ```stats-widget slug=universal-islands-of-adventure show=months
 
 ```
-
-Paris gets the same period, the same eight days and the same method.
 
 **Disneyland Park Paris, typical wait by month**
 
@@ -273,13 +250,13 @@ Paris gets the same period, the same eight days and the same method.
 ```
 
 At Disneyland Park the week between Christmas and New Year sits where an ordinary
-summer month sits. At Disney Adventure World it's the lowest row in the whole table,
-below every month of the year.
+summer month sits. At Disney Adventure World it's quieter than any other month of the year.
 
-Two explanations suggest themselves, and both can be checked against other
-figures. The first is capacity: Magic Kingdom has 37 active attractions, Disney
-Adventure World has 14, and the Paris parks spread their guests across two
-entrances on one resort. The second is catchment. In that week Orlando lives off
+One reason is probably capacity. Magic Kingdom has 37 active attractions,
+Disney Adventure World has 14, and the Paris parks spread their guests across
+two entrances on one resort.
+
+In that week Orlando lives off
 guests who flew in and booked a week; Paris sits two hours by train from a large
 share of its visitors, and a day trip on 28 December competes with the rest of
 the family holidays.
@@ -290,10 +267,9 @@ Side by side, with each park's quietest weekday, the nine look like this:
 
 ```
 
-The weekday column won't help you much between Christmas and New Year, though.
-Every day that week is a holiday, and the quietest weekday of the year is then
-just a weekday. For the weeks before it the column is useful, and the whole
-first half of the season lies there.
+Between Christmas and New Year the weekday column won't help you much, because
+every day that week is a holiday. For the first half of the season before it,
+the column is useful.
 
 Which days our calendar calls quiet over the coming weeks:
 
@@ -301,14 +277,10 @@ Which days our calendar calls quiet over the coming weeks:
 
 ```
 
-Every park has the same calendar on its own page, day by day. Treat it carefully
-for December 2026: only those eight holiday days have gone into the model so
-far, and eight days of that week teach it very little about the second week
-of Advent.
+Every park has the same calendar on its own page, day by day, next to the current wait times all season. For December 2026 it's uncertain, because the only December days in the model
+so far are those eight holiday days, and none from Advent.
 
 ## New Year's Eve
-
-The three destinations are at very different stages here.
 
 **Disneyland Paris** has published its programme and splits the night between
 the two parks. Disney Adventure World gets a fireworks and drone show built
@@ -323,21 +295,17 @@ aren't on the page, and they aren't in the 6 August press release either.
 **Walt Disney World** has published no New Year's Eve programme on its Christmas
 page. Disney lists Magic Kingdom, Hollywood Studios, EPCOT, Animal Kingdom,
 Disney Springs, the hotels and Blizzard Beach there, and 31 December appears in
-none of those sections. It may still come; Disney often publishes New Year's Eve
-in November. Until then it's a gap for Disney to close.
+none of those sections. It may still come; Disney often publishes New Year's Eve in November.
 
 ## What I'd book in your place
 
-**November gets you the full decoration and the shortest queues.** In
+**November already gets you the full decoration.** In
 Orlando both evening events start before the season officially does, Universal
 celebrates from the 14th, and Paris from the 7th. The week between Christmas and New
 Year gets you the same programme at the highest waits of the year.
 
-**If you have to travel between Christmas and New Year, go to Paris.** That's the finding
-above in one sentence: the same week is no outlier upwards there, and at Disney
-Adventure World it's the quietest point of the year. You get a Christmas parade
-twice a day, a 24-metre tree, and a New Year's Eve programme that's already
-confirmed.
+**If you have to travel between Christmas and New Year, go to Paris.** There the same week was no outlier upwards, and at Disney Adventure World it
+was the quietest time of the year.
 
 **If you want one ticketed evening in Orlando and you're watching the price,
 take Jollywood Nights.** It's cheaper than the Very Merry Christmas Party on
@@ -345,12 +313,8 @@ every date, the Passholder discount applies on all nights instead of selected
 ones, and it runs to 5 January, which is two weeks after the Magic Kingdom party
 has finished.
 
-**With a date in mind, check the list of nights before the price.** Very Merry Christmas Party happens on 25 of the 45 days in its
-window, Jollywood Nights on 15 of 60. Both windows sound like "most nights", and
-neither is.
-
-What's actually running on the day you've picked, and how long the queues are
-right now, is on each park's page all season.
+Very Merry Christmas Party happens on 25 of the 45 days in its
+window, Jollywood Nights on 15 of 60.
 
 — Patrick
 

@@ -47,20 +47,11 @@ parkLinks:
   - phantasialand
 ---
 
-Eine Jahreskarte ist eine Wette darauf, dass du öfter hingehst, als du es heute vorhast. Der Einsatz steht
-in der Preisliste, und die Gegenrechnung ist kurz: Jahreskartenpreis geteilt durch Tageskartenpreis,
-aufgerundet. Schwieriger sind die Sperrtage. An denen gilt die Karte nicht, und oft sind das genau
-die Tage, an denen du frei hast.
+Wie viele Besuche eine Jahreskarte braucht, bis sie sich lohnt, ist Jahreskartenpreis geteilt durch Tageskartenpreis, aufgerundet. An den Sperrtagen gilt die Karte nicht.
 
-Dieser Guide vergleicht vier Parks: das [Efteling](ref:efteling) in den Niederlanden, den
-[Europa-Park](ref:europa-park) in Rust, das [Toverland](ref:attractiepark-toverland) in Sevenum und das
-[Phantasialand](ref:phantasialand) in Brühl. Die ersten drei haben eine Jahreskarte, das
-Phantasialand nicht. Es ist trotzdem dabei, weil sich dort die umgekehrte Frage stellt: Was kostet
-ein Jahr voller Besuche, wenn jeder einzelne den Tagespreis hat?
+Das [Efteling](ref:efteling) in den Niederlanden, der [Europa-Park](ref:europa-park) in Rust und das [Toverland](ref:attractiepark-toverland) in Sevenum verkaufen eine Jahreskarte, das [Phantasialand](ref:phantasialand) in Brühl nicht.
 
-Alle Preise stammen von den Seiten der Parks, die am Ende verlinkt sind, Stand 6. Oktober 2026.
-Dazu kommt eine zweite Frage: An welchen Tagen willst du hin, und ist der Park an diesen Tagen voll?
-Dafür steht unter jedem Park ein Widget mit unseren Wartezeiten.
+Alle Preise stammen von den Seiten der Parks, die am Ende verlinkt sind, Stand 6. Oktober 2026. Unter jedem Park zeigt ein Widget nach unseren Wartezeiten die ruhigen Tage.
 
 ## Die vier Parks auf einen Blick
 
@@ -81,24 +72,13 @@ Sommersaison 2027 ab dem 10. November 2026 in den Verkauf gehen.
 
 ## So rechnet sich der Break-even
 
-Der Break-even ist die kleinste ganze Zahl an Besuchen, bei der die Jahreskarte nicht mehr kostet als
-dieselbe Zahl Tageskarten. Er hängt an zwei Größen, die beide schwanken. Die erste ist der Tagespreis:
-Zwischen billigstem und teuerstem Tag liegen im Efteling 16 €, im Europa-Park 9 €, im Toverland
-12,50 € und im Phantasialand 34 €. Ich rechne deshalb mit beiden Enden und gebe eine Spanne an. Wer
-vor allem Samstage besucht, liegt am oberen Ende der Preise und am unteren Ende der Besuchszahl.
+Der Break-even ist die kleinste ganze Zahl an Besuchen, bei der die Jahreskarte nicht mehr kostet als dieselbe Zahl Tageskarten. Der Tagespreis schwankt. Zwischen billigstem und teuerstem Tag liegen im Efteling 16 €, im Europa-Park 9 €, im Toverland 12,50 € und im Phantasialand 34 €. Ich rechne deshalb mit beiden Enden und gebe eine Spanne an. Wer vor allem samstags kommt, zahlt die höheren Preise und erreicht den Break-even mit weniger Besuchen.
 
-Die zweite Größe ist das Auto. Jeder der drei Parks mit Jahreskarte verkauft eine Parkberechtigung
-oder gibt Rabatt auf den Parkschein. Kommst du mit dem Zug, fällt dieser Teil weg, und die Spalten
-„ohne Auto“ in den Tabellen unten gelten.
+Jeder der drei Parks mit Jahreskarte verkauft eine Parkberechtigung oder gibt Rabatt auf den Parkschein. Kommst du mit dem Zug, fällt dieser Teil weg, und die Spalten „ohne Auto“ in den Tabellen unten gelten.
 
-Zwei Dinge fehlen in der Rechnung, weil sie sich nicht beziffern lassen. Das eine ist der Rabatt auf
-Essen und Souvenirs, der davon abhängt, was du dort kaufst. Das andere ist der Besuch, den du ohne
-Karte nicht gemacht hättest. Der ist meist der eigentliche Grund für den Kauf, und er macht den
-Break-even zu einer Untergrenze: Wer mit Karte öfter geht, gibt an den Tagen auch mehr aus.
+Nicht eingerechnet habe ich den Rabatt auf Essen und Souvenirs, weil er davon abhängt, was du dort kaufst, und die Besuche, die du ohne Karte nicht gemacht hättest.
 
-Alle Karten sind personengebunden. Beim Toverland steht das in den Bedingungen ausdrücklich: Pro
-Person gibt es eine Karte, und sie ist nicht übertragbar. Wer eine Familie versorgt, rechnet die Karten
-für jedes Mitglied einzeln.
+Alle Karten sind personengebunden. Beim Toverland steht das in den Bedingungen ausdrücklich: Pro Person gibt es eine Karte, und sie ist nicht übertragbar.
 
 ## Efteling: Classic, Plus und Premium
 
@@ -129,10 +109,7 @@ Google, Apple oder Outlook abonnieren kannst. Die Zahlen unten sind aus beiden K
 | Kalenderjahr 2027                 | 68 Tage          | 25 Tage       |
 | Offene Tage 2027                  | 297              | 340           |
 
-Die zugesagten Mindestzahlen stimmen: Die Classic gilt 2027 an 297 Tagen, sieben mehr als die
-versprochenen 290. Die Plus gilt an genau 340 Tagen. Gesperrt wird vor allem an Wochenenden und in mehrwöchigen
-Blöcken: 2027 liegen 42 der 68 Classic-Tage auf einem Samstag oder Sonntag, bei der Plus 16 der 25. Auf
-Montag bis Freitag entfallen bei der Classic 26 Tage.
+Die Classic gilt 2027 an 297 Tagen, sieben mehr als die zugesagten 290, die Plus an genau den zugesagten 340. Gesperrt wird vor allem an Wochenenden und in mehrwöchigen Blöcken: 2027 liegen 42 der 68 Classic-Tage auf einem Samstag oder Sonntag, bei der Plus 16 der 25. Auf Montag bis Freitag entfallen bei der Classic 26 Tage.
 
 Die Classic-Sperrtage in der Reihenfolge des Kalenders:
 
@@ -142,12 +119,7 @@ Die Classic-Sperrtage in der Reihenfolge des Kalenders:
 - Herbst 2027: 11., 12., 18., 19., 25. und 26. September, 2., 3., 9. und 10. Oktober, 16. Oktober bis 7. November, 13. und 14. November, 21. November, 27. und 28. November
 - Dezember 2027: 4., 5., 12. und 14. Dezember, 25. bis 31. Dezember
 
-Bei der Plus sind viel weniger Tage gesperrt: am 22. und 29. November, 5. und 6. Dezember und vom 26. bis 31. Dezember
-2026, im Jahr 2027 am 10., 16., 23. und 24. Januar, am 6. und 7. März, 20. und 21. März, 6., 7., 16. und 17. Mai, 21., 27. und 28. November, 4., 12. und 14. Dezember und vom 25. bis 31. Dezember. Der größte
-Unterschied sind die drei Wochen von Mitte Oktober bis Anfang November: 2026 vom 17. Oktober bis 8. November,
-2027 vom 16. Oktober bis 7. November. Mit der Classic bleibt der Park in dieser Zeit zu, mit der Plus ist er offen.
-Ostern 2027 ist das zweite Beispiel. Am 28. und 29. März gilt die Plus, die Classic nicht. Himmelfahrt
-(6. Mai) und Pfingsten (16. und 17. Mai) sind für beide gesperrt.
+Bei der Plus sind viel weniger Tage gesperrt: am 22. und 29. November, 5. und 6. Dezember und vom 26. bis 31. Dezember 2026, im Jahr 2027 am 10., 16., 23. und 24. Januar, am 6. und 7. März, 20. und 21. März, 6., 7., 16. und 17. Mai, 21., 27. und 28. November, 4., 12. und 14. Dezember und vom 25. bis 31. Dezember. Der größte Unterschied sind die drei Wochen von Mitte Oktober bis Anfang November: 2026 vom 17. Oktober bis 8. November, 2027 vom 16. Oktober bis 7. November. An Ostern 2027, am 28. und 29. März, gilt die Plus, die Classic nicht. Himmelfahrt (6. Mai) und Pfingsten (16. und 17. Mai) sind für beide gesperrt.
 
 ### Was sich rechnet
 
@@ -163,24 +135,13 @@ In der Spalte „mit Auto“ ist der Rabatt auf den Parkschein als Ersparnis ein
 pro Besuch.
 Bei allen Stufen gilt der Preis pro Person. Zwei Erwachsene mit Classic zahlen 480 €.
 
-Der Sprung von Classic auf Plus kostet 70 €, der von Plus auf Premium 90 €. Mit beiden Sprüngen kaufst
-du Tage dazu, keine Leistung am Tag selbst. 2027 gilt die Plus an 43 Tagen mehr als die Classic, die
-Premium an 25 Tagen mehr als die Plus. Auf einen zusätzlichen Tag gerechnet kostet die Plus gegenüber der
-Classic 1,63 €, die Premium gegenüber der Plus 3,60 €. Das ist weniger als jeder Tagespreis. Entscheidend
-ist, ob du an diesen Tagen kommen willst. Wer in diesen Wochen nie kommt, braucht die 43 Tage nicht.
+Der Sprung von Classic auf Plus kostet 70 €, der von Plus auf Premium 90 €. 2027 gilt die Plus an 43 Tagen mehr als die Classic, die Premium an 25 Tagen mehr als die Plus. Auf einen zusätzlichen Tag gerechnet kostet die Plus gegenüber der Classic 1,63 €, die Premium gegenüber der Plus 3,60 €. Das ist weniger als jeder Tagespreis.
 
-Dazu kommt der Wochentag. Nach [unseren Messungen](/blog/efteling-disney-der-niederlande) sind die
-Wartezeiten im Efteling nur samstags etwas länger als an den übrigen Tagen. Die Classic sperrt zwar überwiegend Wochenenden, aber auch 26 Tage von Montag bis Freitag. Wer an
-Wochentagen kommen kann, verliert also nur wenig. Wer in den gesperrten Blöcken kommen muss, verliert
-viel.
+Nach [unseren Messungen](/blog/efteling-disney-der-niederlande) sind die Wartezeiten im Efteling nur samstags etwas länger als an den übrigen Tagen. Die Classic sperrt zwar überwiegend Wochenenden, aber auch 26 Tage von Montag bis Freitag. Wer an Wochentagen kommen kann, verliert mit der Classic also wenig.
 
-Der Park liegt von Düsseldorf aus gut anderthalb bis zwei Stunden Fahrt entfernt, aus Köln und dem Ruhrgebiet
-gut zwei. Bei dieser Entfernung kommt es auf die Zahl der Besuche an. Wer dreimal im Jahr fährt, bleibt
-bei der Tageskarte. Ab sechs Besuchen ist die Classic billiger, mit dem Auto und dem Rabatt auf den
-Parkschein schon ab dem vierten bis sechsten.
+Der Park liegt von Düsseldorf aus gut anderthalb bis zwei Stunden Fahrt entfernt, aus Köln und dem Ruhrgebiet gut zwei. Wer dreimal im Jahr fährt, bleibt bei der Tageskarte.
 
-Die nächsten ruhigen Tage im Efteling zeigt das Widget. Die Tage, an denen die Classic nicht gilt, kannst du
-mit der Sperrtagsliste oben abgleichen.
+Die ruhigen Tage im Widget kannst du mit der Sperrtagsliste oben abgleichen.
 
 ```best-days-widget slug=efteling
 
@@ -201,10 +162,7 @@ Inhalte der Streamingplattform VEEJOY und Eintritt oder Ermäßigung in Partnerp
 gibt es für beide Stufen für 39 € dazu. Bei 10 € Parkgebühr pro Tag ist er ab dem vierten Besuch mit dem
 Auto günstiger. Die gedruckte Karte kostet bei Silber 5 € extra, bei Gold ist sie dabei.
 
-Derzeit gibt es keine neue Karte. Der Park schreibt auf seiner Seite, das Kontingent sei erschöpft und
-der ResortPass bis auf Weiteres nicht erhältlich, auch nicht am Telefon, per E-Mail oder vor Ort.
-Wer schon eine Karte hat, wird vor dem Ablauf über die Verlängerung informiert. Die Rechnung für eine
-neue Karte zählt deshalb erst, wenn der Verkauf wieder beginnt. Wann das sein wird, sagt der Park nicht.
+Derzeit gibt es keine neue Karte. Der Park schreibt auf seiner Seite, das Kontingent sei erschöpft und der ResortPass bis auf Weiteres nicht erhältlich, auch nicht am Telefon, per E-Mail oder vor Ort. Wer schon eine Karte hat, wird vor dem Ablauf über die Verlängerung informiert. Wann der Verkauf wieder beginnt, sagt der Park nicht.
 
 Die Tageskarte kostet für Erwachsene 67 bis 76 €, für Kinder und Senioren 56,50 bis 65 €.
 
@@ -213,12 +171,7 @@ Die Tageskarte kostet für Erwachsene 67 bis 76 €, für Kinder und Senioren 56
 | Silber | 5 Besuche       | 5 Besuche           | 5 Besuche (1.200 € gegen 247 bis 282 € pro Tag)       |
 | Gold   | 7 bis 8 Besuche | 7 bis 8 Besuche     | 7 bis 8 Besuche (1.850 € gegen 247 bis 282 € pro Tag) |
 
-Bei Silber ist der Break-even an beiden Enden der Preisspanne derselbe, nämlich fünf Besuche. Es reicht
-also nicht, den billigen Tag zu finden. Entscheidend ist, dass du fünfmal an Tagen kommst, die Silber
-abdeckt. Welche das sind, steht nicht auf der Preisseite, sondern im ResortPass-Portal. Die Seite nennt
-nur die Zahl: über 230 Tage. Die Saison 2026 läuft vom 28. März 2026 bis zum 9. Januar 2027, das sind
-288 Kalendertage, abzüglich der zwei Ruhetage an Weihnachten. Silber lässt also einen Teil der
-Öffnungstage aus, und die Auswahl der Tage legt der Park fest, nicht du.
+Bei Silber ist der Break-even an beiden Enden der Preisspanne derselbe, nämlich fünf Besuche. Du musst also fünfmal an Tagen kommen, die Silber abdeckt. Welche das sind, steht im ResortPass-Portal. Die Preisseite nennt nur ihre Zahl, über 230. Die Saison 2026 läuft vom 28. März 2026 bis zum 9. Januar 2027, das sind 288 Kalendertage, abzüglich der zwei Ruhetage an Weihnachten. Silber lässt also einen Teil der Öffnungstage aus, und welche, legt der Park fest.
 
 Gold kostet 170 € mehr, bei Kindern 155 €. Das sind gut zwei zusätzliche Tageskarten für Erwachsene zum
 Höchstpreis. Dafür gilt Gold an jedem Öffnungstag, und die zwei Rulantica-Tickets sind dabei. Das
@@ -229,14 +182,10 @@ Gold lohnt sich, wenn du keine Tage vorab festlegen willst oder die Wasserwelt z
 lohnt sich, wenn du fünfmal kommst und deine Besuchstage nach dem Plan des Parks richten kannst. Wer nur
 zwei bis vier Tage im Jahr kommt, bleibt bei der Tageskarte.
 
-Ein Termin, der Inhabern etwas bringt: Vom 7. bis 19. März 2027 hat der Park die Pre-Opening Weeks
-angekündigt, zwei Wochen vor dem Saisonstart. Der Park nennt sie auf der ResortPass-Seite den besten Start
-in die Saison 2027, mit den günstigsten Tickets des Jahres. Die Tagesreservierung dafür läuft über das
-ResortPass-Portal. Das ist der erste Termin, an dem du eine neue Karte nutzen könntest.
+Vom 7. bis 19. März 2027 hat der Park die Pre-Opening Weeks angekündigt, zwei Wochen vor dem Saisonstart. Auf der ResortPass-Seite nennt der Park für sie die günstigsten Tickets des Jahres. Die Tagesreservierung dafür läuft über das ResortPass-Portal. Das ist der erste Termin, an dem du eine neue Karte nutzen könntest.
 
 Am leersten ist der Europa-Park nach [unseren Messungen](/blog/europa-park-wartezeiten-tipps) an einem
-Sonntag oder Donnerstag im Mai oder Juni, am vollsten am Samstag. Das Widget zeigt, welche Tage
-in den nächsten Wochen ruhig sind.
+Sonntag oder Donnerstag im Mai oder Juni, am vollsten am Samstag.
 
 ```best-days-widget slug=europa-park
 
@@ -244,8 +193,7 @@ in den nächsten Wochen ruhig sind.
 
 ## Toverland: Magic Member
 
-Das Toverland in Sevenum hat die günstigste Jahreskarte der vier und die einfachste. Sie heißt Magic
-Member.
+Das Toverland in Sevenum hat mit dem Magic Member die günstigste Jahreskarte der vier.
 
 | Gruppe                          | Jahrespreis | Monatlich (mindestens zwölf Monate) | Parken im Jahr | Parken im Monat |
 | ------------------------------- | ----------- | ----------------------------------- | -------------- | --------------- |
@@ -264,10 +212,9 @@ Jahreskarte hat. Wächst das Kind aus der Größenklasse, wird für jeden Restmo
 Die Preisseite nennt keine Sperrtage. In den Abonnementbedingungen, Fassung vom 21. März 2024, steht: Die
 Karte berechtigt zu einem Tagesbesuch pro Öffnungstag. Tage, an denen der Park geschlossen oder vermietet
 ist, sind ausgenommen und stehen auf der Seite mit den Öffnungszeiten. An ausgelasteten Tagen darf der
-Park den Eintritt verweigern, ohne den Preis zu erstatten. Eine Sperrtagsliste wie beim Efteling gibt es
-nicht.
+Park den Eintritt verweigern, ohne den Preis zu erstatten.
 
-Weitere Punkte aus den Bedingungen, die für den Kauf zählen:
+Weitere Punkte aus den Bedingungen:
 
 - Eine Karte pro Person, nicht übertragbar, mit Foto, das am Eingang geprüft wird.
 - Bei Kauf am Schalter gilt sie ein Jahr ab Kaufdatum, bei Kauf online ab dem Abholdatum, sofern sie innerhalb von zwei Monaten abgeholt wird.
@@ -296,9 +243,7 @@ Jahresparken hat sich nach vier Besuchen mit dem Auto bezahlt gemacht.
 90 bis 140 cm, unbegrenzte Besuche vom 1. Juli bis 30. September. Ob es ihn 2027 wieder gibt, hat der
 Park nicht gesagt. Wer nur im Sommer kommt, zahlt damit 81 € weniger als für die Jahreskarte.
 
-Nach [unseren Messungen](/blog/toverland-troy-wartezeiten-tipps) unterscheiden sich die Wochentage im
-Toverland kaum, in den Weihnachtsferien ist es voller. Eine Jahreskarte ohne Sperrtage hilft dir dort bei der Wahl des Tages also weniger als in einem
-Park, in dem einzelne Wochentage deutlich leerer sind.
+Nach [unseren Messungen](/blog/toverland-troy-wartezeiten-tipps) unterscheiden sich die Wochentage im Toverland kaum, in den Weihnachtsferien ist es voller.
 
 ```best-days-widget slug=attractiepark-toverland
 
@@ -311,12 +256,7 @@ Sommer 2022 aus. In den häufigen Fragen des Ticketshops kommt weder eine Jahres
 Club-Karte vor, und Tickets gibt es nur mit Datum und nur online. Warum das so geblieben ist und was die
 Fans dagegen unternommen haben, steht in unserem [Guide zum Phantasialand](/blog/phantasialand-tipps).
 
-Was bleibt, ist der Tagespreis, und der springt. Im Oktoberkalender des Ticketshops kostet ein Ticket für
-Erwachsene ab 12 Jahren zwischen 44 und 78 €. Der Abstand zwischen dem günstigsten und dem teuersten Tag
-beträgt 34 €, das sind 77 % Aufpreis auf den billigen Tag. Wer dreimal im Jahr kommt, zahlt zwischen
-132 und 234 €. Der Unterschied hängt allein davon ab, wie früh du buchst und welchen Tag du nimmst. Eine
-Jahreskarte würde diese Rechnung glätten, aber es gibt keine. Bleibt die Wahl des Tages, und günstig und
-leer fallen nicht immer zusammen. Im Phantasialand ist der Samstag spürbar voller als der Dienstag.
+Im Oktoberkalender des Ticketshops kostet ein Ticket für Erwachsene ab 12 Jahren zwischen 44 und 78 €. Der Abstand zwischen dem günstigsten und dem teuersten Tag beträgt 34 €, das sind 77 % Aufpreis auf den billigen Tag. Wer dreimal im Jahr kommt, zahlt zwischen 132 und 234 €. Der Unterschied hängt allein davon ab, wie früh du buchst und welchen Tag du nimmst. Im Phantasialand ist der Samstag spürbar voller als der Dienstag.
 
 ```best-days-widget slug=phantasialand
 
@@ -324,31 +264,17 @@ leer fallen nicht immer zusammen. Im Phantasialand ist der Samstag spürbar voll
 
 ## Sperrtage gegen volle Tage
 
-Eine Jahreskarte mit Sperrtagen ist dann gut, wenn die Sperrtage die vollen Tage sind. Dann zahlst du nicht für
-Tage, die du ohnehin meiden willst. Sie ist schlecht, wenn die Sperrtage die Tage sind, an denen du frei
-hast und der Park leer ist.
+Im Europa-Park ist der Samstag der vollste Tag, und ob Silber samstags gilt, legt der Park im Portal fest.
 
-Im Efteling trifft das nur zum Teil zu. Die Classic sperrt vor allem Wochenenden und Ferienzeiten. Weil
-der Wochentag dort wenig ausmacht, sperrt sie damit nicht nur volle Tage. Mit 26 gesperrten Werktagen im
-Jahr 2027 gehen auch ruhige verloren. Im Europa-Park ist der Samstag der vollste Tag, und ob Silber
-samstags gilt, legt der Park im Portal fest. Im Toverland gibt es keine Sperrtage, und der Wochentag
-spielt fast keine Rolle. Im Phantasialand bleibt es beim Tagespreis.
-
-Das Widget stellt den ruhigsten Wochentag der vier Parks nebeneinander. Wenn dein Wochentag in der Spalte
-steht und die Karte an ihm gilt, passt sie zu deinem Plan.
+Das Widget stellt den ruhigsten Wochentag der vier Parks nebeneinander.
 
 ```park-comparison-widget slugs=efteling,europa-park,attractiepark-toverland,phantasialand show=quietest
 
 ```
 
-Wer unter der Woche kommen kann, hat mit Classic im Efteling und Magic Member im Toverland die größte
-Freiheit zum kleinsten Preis. Wer nur am Wochenende frei hat, fährt im Efteling mit Plus oder Premium
-besser und im Europa-Park mit Gold.
+Wer unter der Woche kommen kann, kommt mit der Classic im Efteling und dem Magic Member im Toverland am günstigsten weg. Wer nur am Wochenende frei hat, fährt im Efteling mit Plus oder Premium besser und im Europa-Park mit Gold.
 
 ## Wer welche Karte braucht
-
-Das ist meine Einschätzung aus den Zahlen oben. Ich kenne weder deinen Wohnort noch deine
-freien Tage.
 
 Im Efteling reicht die Classic, wenn du außerhalb der Ferien kommen kannst und mindestens sechsmal im
 Jahr im Park bist. Wer zwischen Mitte Oktober und Anfang November hinwill, braucht die Plus. Zwischen
@@ -357,13 +283,9 @@ acht bis zehn Besuchen. Unter vier Besuchen lohnt sich keine der drei Stufen.
 
 ## Wann du kaufst
 
-Eine Jahreskarte gilt ein Jahr ab Kauf oder ab Beginn. Im Efteling legst du den Beginn fest und kannst ihn
-bis zu einen Monat im Voraus setzen. Wer im Oktober beginnt, startet mitten in den gesperrten Wochen: Eine Classic ab dem 10. Oktober 2026
-hat bis Ende des Jahres 44 Sperrtage. Das Kalenderjahr 2027 hat insgesamt 68.
+Eine Jahreskarte gilt ein Jahr ab Kauf oder ab Beginn. Im Efteling legst du den Beginn fest und kannst ihn bis zu einen Monat im Voraus setzen. Wer im Oktober beginnt, startet mitten in den gesperrten Wochen. Eine Classic ab dem 10. Oktober 2026 hat bis Ende des Jahres 44 Sperrtage. Das Kalenderjahr 2027 hat insgesamt 68.
 
-Im Efteling gelten die Preise von 2026 weiter, bis der Park neue nennt. Im Toverland darf der Park den
-Preis einer Karte erst zu ihrem Ablauf ändern. Der ResortPass ist nicht im Verkauf. Sobald ein Park neue
-Preise veröffentlicht, wird dieser Guide nachgezogen.
+Im Efteling gelten die Preise von 2026 weiter, bis der Park neue nennt. Im Toverland darf der Park den Preis einer Karte erst zu ihrem Ablauf ändern.
 
 ## Häufige Fragen
 

@@ -1,5 +1,5 @@
 ---
-title: 'Magic Kingdom: het best bezochte park ter wereld, en het langst wacht je bij een achtbaan uit 2023'
+title: 'Magic Kingdom: de langste rij staat bij TRON'
 translationKey: magic-kingdom-guide
 date: '2026-09-30'
 updatedAt: '2026-10-05'
@@ -8,11 +8,9 @@ mode: published
 featured: false
 excerpt: >-
   Magic Kingdom telde in 2024 zo'n 17,8 miljoen bezoeken, meer dan elk ander
-  pretpark ter wereld, en toch is de typische wachttijd er korter dan in de
-  andere drie Disneyparken in Florida. Lange rijen staan er vooral bij
-  TRON Lightcycle / Run in Tomorrowland. Verder: bij welke grote attracties de
-  rij 's avonds korter wordt en bij welke niet, wat Lightning Lane op 30
-  september kostte en wat er met de sluiting van Rivers of America is verdwenen.
+  pretpark ter wereld. Toch is de typische wachttijd er korter dan in de andere
+  drie Disneyparken in Florida. Het langst wacht je bij TRON Lightcycle / Run in
+  Tomorrowland, vooral 's avonds.
 category: guides
 tags:
   - magic-kingdom
@@ -55,17 +53,13 @@ Volgens de TEA Global Experience Index kwam Magic Kingdom in 2024 op **17,8
 miljoen bezoeken**, 0,7 procent meer dan een jaar eerder. Daarmee stond het park
 wereldwijd op de eerste plaats, net voor het Disneyland Park in Californië met
 17,3 miljoen. Op de bezoekerstabel van Wikipedia is dat het achttiende
-jaar op rij, en bij zo'n aantal verwacht je ook de langste rijen. Die vind je
-ergens anders. Van de vier Disneyparken in Florida heeft
+jaar op rij. Van de vier Disneyparken in Florida heeft
 [Magic Kingdom](ref:magic-kingdom-park) in onze data de kortste typische
 wachttijd, EPCOT de langste.
 
 ```park-comparison-widget slugs=magic-kingdom-park,epcot,disneys-hollywood-studios,disneys-animal-kingdom-theme-park highlight=magic-kingdom-park
 
 ```
-
-Waar dat aan ligt, kunnen we uit onze data niet afleiden. Lange rijen staan er
-maar bij een handvol attracties.
 
 ## Zes themalanden en de utilidors
 
@@ -83,11 +77,11 @@ Birthdayland, heette uiteindelijk Mickey's Toontown Fair en ging op 11 februari
 2011 dicht om plaats te maken voor New Fantasyland. Die uitbreiding was op 28
 mei 2014 klaar, met de Seven Dwarfs Mine Train.
 
-Onder het hele park ligt nog een verdieping. Het grondwater staat in Florida te
+Het grondwater staat in Florida te
 hoog voor tunnels, dus werden de dienstgangen, de utilidors, op grondniveau
 gebouwd en kwam het park erbovenop te liggen, op de grond die bij het uitgraven
-van de Seven Seas Lagoon vrijkwam. Daardoor ligt het park op zijn eigen
-bovenverdieping, 33 meter boven zeeniveau, en komt het personeel beneden van het
+van de Seven Seas Lagoon vrijkwam. Daardoor ligt het park een verdieping
+boven de gangen, 33 meter boven zeeniveau, en komt het personeel beneden van het
 ene eind naar het andere zonder dat een gast het ziet. Aan Main Street zijn de
 bovenverdiepingen lager gebouwd dan de begane grond, zodat de huizen hoger
 lijken dan ze zijn.
@@ -108,9 +102,7 @@ aan de noord- en de oostkant.
 Bovenaan staat **[TRON Lightcycle / Run](ref:magic-kingdom-park/tron-lightcycle-run)**.
 De achtbaan ging op 4 april 2023 open, nadat medewerkers van Disney vanaf
 februari al mochten meerijden. Het is een lanceerachtbaan van Vekoma die 59 mph
-haalt, zo'n 95 km/u, en een rit duurt ongeveer een minuut. Bij zo'n korte rit
-breng je bij TRON de meeste tijd in de rij door, en hoeveel dat is, staat in de
-tabel.
+haalt, zo'n 95 km/u, en een rit duurt ongeveer een minuut.
 
 Daarna volgen **[Seven Dwarfs Mine
 Train](ref:magic-kingdom-park/seven-dwarfs-mine-train)**, de achtbaan uit 2014
@@ -118,7 +110,7 @@ die New Fantasyland afmaakte, en **[Tiana's Bayou
 Adventure](ref:magic-kingdom-park/tianas-bayou-adventure)**, de
 boomstamattractie die op 28 juni 2024 Splash Mountain verving.
 
-De oudere attracties staan lager in de tabel, op één na. **[Peter Pan's
+De oudere attracties staan lager in de tabel. Alleen **[Peter Pan's
 Flight](ref:magic-kingdom-park/peter-pans-flight)**, een dark ride die in 1971
 twee dagen na het park openging, staat nog boven Space Mountain.
 
@@ -147,7 +139,7 @@ sorteren. Minimale lengte 97 centimeter, een rit duurt 2:50 minuten.
 
 **[Space Mountain](ref:magic-kingdom-park/space-mountain)** rijdt sinds 15
 januari 1975 in Tomorrowland, onder een witte koepel en bijna helemaal in het
-donker. Op papier is 43 km/u weinig, maar zonder licht zie je de volgende bocht
+donker. Hij haalt 43 km/u, en zonder licht zie je de volgende bocht
 niet aankomen. De baan is bijna een kilometer lang en een rit duurt ruim
 tweeënhalve minuut. Minimale lengte 112 centimeter, na TRON de hoogste in het park.
 
@@ -209,20 +201,16 @@ Zo verlopen de acht langste rijen tussen 8 en 22 uur lokale tijd:
 
 ```
 
-**TRON wordt niet korter.** In het eerste uur is de rij het kortst, 's middags
-groeit hij en 's avonds is hij het langst. Wie TRON bij de opening heeft gemist,
-hoeft na het avondeten niet op een meevaller te rekenen. In onze
+Bij TRON is de rij in het eerste uur het kortst, 's middags groeit hij en
+'s avonds is hij het langst. In onze
 rope-drop-analyse is TRON een “sterke tip”, als enige attractie in het park.
 
-**Tiana's Bayou Adventure begint bijna leeg.** In het eerste uur is de rij maar
-een fractie van wat hij rond het middaguur is, en op dat niveau blijft hij tot
+Bij Tiana's Bayou Adventure is de rij in het eerste uur maar een fractie van wat hij rond het middaguur is, en op dat niveau blijft hij tot
 in de vroege avond. Bij Buzz Lightyear's Space Ranger Spin verloopt de dag net
 zo. Allebei zijn ze in de rope-drop-analyse een “goede tip”.
 
-**Bij Seven Dwarfs Mine Train zakt de rij 's avonds.** Van het middaguur tot in
-de avond blijft hij op hetzelfde niveau, in de laatste uren voor sluitingstijd
-wordt hij korter. Zit je ochtend al vol met TRON en Tiana's, dan is dit de
-attractie voor het eind van de dag.
+Bij Seven Dwarfs Mine Train blijft de rij van het middaguur tot in de avond op
+hetzelfde niveau, in de laatste uren voor sluitingstijd wordt hij korter.
 
 Ga dus bij de opening naar TRON, direct daarna naar Tiana's en in het laatste
 uur naar de Mine Train. Space Mountain is rond het middaguur het drukst, bij de
@@ -268,8 +256,7 @@ Als gezin met kleine kinderen breng je de dag vooral in Fantasyland door. Daar s
 Peter Pan's Flight, “it's a small world”, de Mine Train, de theekopjes van de
 Mad Tea Party en, in Storybook Circus, Dumbo the Flying Elephant, waar elk kind
 zelf bepaalt hoe hoog zijn olifant vliegt. Voor Dumbo geldt geen minimale
-lengte. Bij The Barnstormer ernaast is dat 89 centimeter, en voor veel kinderen
-is het hun eerste achtbaan.
+lengte. Bij The Barnstormer ernaast is dat 89 centimeter.
 
 Is een kind te klein voor een attractie, dan hoeven de ouders niet twee keer in
 de rij te staan. Met Rider Switch gaat de ene volwassene in de attractie terwijl
@@ -279,9 +266,7 @@ buiten kan wachten. Verschonen, flesjes opwarmen en een rustig hoekje vind je in
 het Baby Care Center van het park, en daar brengen de medewerkers ook kinderen
 naartoe die hun ouders kwijt zijn.
 
-Met kleine kinderen plan je de dag beter wat korter: rond lunchtijd naar de
-shows met airco, 's middags een pauze in het hotel als dat aan de monorail ligt,
-en voor het vuurwerk weer terug naar het park.
+Rond lunchtijd ga je met ze naar de shows met airco, 's middags naar het hotel als dat aan de monorail ligt, en voor het vuurwerk weer naar het park.
 
 ## Lightning Lane
 
@@ -307,11 +292,8 @@ De prijzen veranderen van dag tot dag. Op 30 september 2026, een woensdag met
 weinig drukte, stond de Multi Pass in onze live data op 27 dollar en de Premier
 Pass op 329 dollar, de dag erna op 23 en 299 dollar. De Single Pass voor TRON
 kostte op beide dagen 19 dollar, die voor Seven Dwarfs Mine Train op 30
-september 11 dollar. Allebei waren ze die dag als niet beschikbaar gemarkeerd.
+september 11 dollar. Die dag waren ze allebei niet te koop.
 Die voor TRON was op 30 september weer te koop voor de volgende dag.
-
-Bij TRON levert een vroege start volgens onze rope-drop-analyse ook de grootste
-besparing op. De 19 dollar moeten het dus opnemen tegen vroeg opstaan.
 
 ## Wanneer je het beste kunt gaan
 
@@ -319,17 +301,15 @@ besparing op. De 19 dollar moeten het dus opnemen tegen vroeg opstaan.
 
 ```
 
-Bij de maanden is het beeld duidelijker dan bij de weekdagen. De rustigste maand
+De rustigste maand
 die we gemeten hebben is september, en daarvoor hebben we cijfers van bijna elke
 dag. De maanden die het hoogst op de schaal staan, berusten daarentegen op
-weinig dagen, vijf in januari, vier in maart en acht in december. Zie ze dus als
-een aanwijzing, niet als een uitkomst. Voor februari, oktober en november hebben
+weinig dagen, vijf in januari, vier in maart en acht in december. Voor februari, oktober en november hebben
 we nog helemaal geen waarden. Op 28 september 2026 hadden we 196 gemeten dagen,
 de meeste daarvan sinds april.
 
 De weekdagcurve is vlak, de medianen liggen maar één stap uit elkaar. Een dag
-van de week die je speciaal moet uitkiezen, is er niet. Bij sommige andere
-parken wel, en de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken) noemt hem.
+van de week die je speciaal moet uitkiezen, is er niet. Heeft een ander park er wel een, dan staat die op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 
 Sinds de opening is Magic Kingdom negen keer tijdelijk dichtgegaan vanwege een
 orkaan, het laatst in oktober 2024 bij Milton.
@@ -347,8 +327,7 @@ Op 38 avonden tussen 7 augustus en 31 oktober 2026 is er Mickey's Not-So-Scary
 Halloween Party, en volgens Disney zijn alle data uitverkocht. Op die avonden
 gaat het park voor gewone bezoekers al om 18 uur dicht, het feest duurt van 19
 uur tot middernacht. In oktober zijn dat nog de avonden van 6, 8, 9, 13, 15, 16,
-18, 22, 23, 25, 27, 29 en 31 oktober. Wie op een van die dagen zonder kaartje
-voor het feest komt, heeft een korte dag. Wat het feest te bieden heeft, staat
+18, 22, 23, 25, 27, 29 en 31 oktober. Wat het feest te bieden heeft, staat
 in ons overzicht [Halloween in de VS](/blog/halloween-vs-pretparken-2026).
 
 Daarna komt Mickey's Very Merry Christmas Party, op 25 avonden van 8 november
@@ -414,12 +393,11 @@ december 2026 gaat het park volgens Disney om 8 of 9 uur open en om 22 of 23 uur
 dicht, op feestavonden al om 18 uur.
 
 **Tickets.** Disney bepaalt de prijzen per datum, en ze staan in de kalender op
-[disneyworld.com](https://disneyworld.com/). Toegangsprijzen houden we niet bij,
-alleen wat Lightning Lane daarbovenop kost. Met de Park Hopper mag je na je
+[disneyworld.com](https://disneyworld.com/). Met de Park Hopper mag je na je
 eerste park op elk moment naar een van de andere drie, zolang daar plaats is.
 
-**Eten.** Onze database telt (stand 30 september 2026) 23 horecagelegenheden in
-het park, van Cinderella's Royal Table tot de toonbank van Casey's Corner.
+**Eten.** Het park heeft (stand 30 september 2026) 23 restaurants en
+eetkramen, van Cinderella's Royal Table tot de toonbank van Casey's Corner.
 Alcohol was in het park tot 2012 verboden, en sinds 2018 krijg je het in alle
 restaurants met bediening aan tafel. In het kasteel zelf eet je bij Cinderella's
 Royal Table, in het kasteel van het Beest uit “Belle en het Beest” in het Be Our
@@ -440,8 +418,7 @@ Lakeshore Lodge, te boeken vanaf 8 oktober 2026.
 ### Heeft het best bezochte park ook de langste rijen?
 
 Nee. In de vergelijking hierboven heeft Magic Kingdom de kortste typische
-wachttijd van de vier Disneyparken in Florida, EPCOT de langste. Waarom dat zo
-is, kunnen we uit onze data niet afleiden. Veruit de langste rij in het park
+wachttijd van de vier Disneyparken in Florida, EPCOT de langste. Veruit de langste rij in het park
 staat bij één attractie, TRON.
 
 ### Welke attractie heeft in Magic Kingdom de langste rij?
@@ -452,8 +429,7 @@ hierboven.
 ### Wanneer is de rij bij TRON het kortst?
 
 In het eerste uur nadat het park opengaat. Daarna groeit de rij in de loop van
-de dag en is hij 's avonds het langst, dus 's avonds wacht je langer dan
-'s ochtends.
+de dag en is hij 's avonds het langst.
 
 ### Bestaat Splash Mountain nog?
 
@@ -504,8 +480,7 @@ Hetzelfde bedrijf runt ook het resort bij Parijs, en daar heeft het kleinere van
 de twee parken de langere rijen. Meer daarover staat in onze tekst over
 [Disneyland Paris](/blog/disneyland-paris-wachttijden-tips).
 
-Het Magic Kingdom wordt in december een ander park. De week tussen Kerst en
-Nieuwjaar is de drukste regel van onze hele jaartabel, en de Very Merry
+De week tussen Kerst en Nieuwjaar is de drukste week in onze jaartabel, en de Very Merry
 Christmas Party draait op 25 avonden: [Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
 
 — Patrick

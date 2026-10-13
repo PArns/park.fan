@@ -47,19 +47,11 @@ parkLinks:
   - phantasialand
 ---
 
-Een jaarkaart is een gok dat je vaker gaat dan je nu van plan bent. De inzet staat in de prijslijst, en
-de controle is kort: prijs van de jaarkaart gedeeld door de prijs van een dagkaart, naar boven afgerond.
-Moeilijker zijn de geblokkeerde dagen. Op die dagen geldt de kaart niet, en vaak zijn dat precies de
-dagen dat je vrij bent.
+Hoeveel bezoeken een jaarkaart nodig heeft om zich terug te verdienen, is de prijs van de jaarkaart gedeeld door de prijs van een dagkaart, naar boven afgerond. Op geblokkeerde dagen geldt de kaart niet.
 
-Deze gids vergelijkt vier parken: de [Efteling](ref:efteling) in Nederland, [Europa-Park](ref:europa-park)
-in Rust, [Toverland](ref:attractiepark-toverland) in Sevenum en [Phantasialand](ref:phantasialand) in
-Brühl. De eerste drie hebben een jaarkaart, Phantasialand niet. Het staat er toch bij, omdat daar de
-omgekeerde vraag speelt: wat kost een jaar vol bezoeken als elk bezoek de dagprijs kost?
+De [Efteling](ref:efteling) in Nederland, [Europa-Park](ref:europa-park) in Rust en [Toverland](ref:attractiepark-toverland) in Sevenum verkopen een jaarkaart, [Phantasialand](ref:phantasialand) in Brühl niet.
 
-Alle prijzen komen van de pagina's van de parken, onderaan gelinkt, stand 6 oktober 2026. Daarnaast is
-er een tweede vraag: op welke dagen wil je gaan, en is het park op die dagen vol? Daarvoor staat onder
-elk park een widget met onze wachttijden.
+Alle prijzen komen van de pagina's van de parken, onderaan gelinkt, stand 6 oktober 2026. Onder elk park toont een widget volgens onze wachttijden de rustige dagen.
 
 ## De vier parken in één oogopslag
 
@@ -79,23 +71,13 @@ voor het zomerseizoen 2027 vanaf 10 november 2026 in de verkoop gaan.
 
 ## Hoe het break-evenpunt werkt
 
-Het break-evenpunt is het kleinste hele aantal bezoeken waarbij de jaarkaart niet meer kost dan evenveel
-dagkaarten. Het hangt aan twee grootheden, en beide schommelen. De eerste is de dagprijs: tussen de
-goedkoopste en de duurste dag zit € 16 bij de Efteling, € 9 bij Europa-Park, € 12,50 bij Toverland en
-€ 34 bij Phantasialand. Ik reken daarom met beide uiteinden en geef een range. Wie vooral op zaterdag
-gaat, zit aan de bovenkant van de prijzen en aan de onderkant van het aantal bezoeken.
+Het break-evenpunt is het kleinste hele aantal bezoeken waarbij de jaarkaart niet meer kost dan evenveel dagkaarten. De dagprijs schommelt. Tussen de goedkoopste en de duurste dag zit € 16 bij de Efteling, € 9 bij Europa-Park, € 12,50 bij Toverland en € 34 bij Phantasialand. Ik reken daarom met beide uiteinden en geef een range. Wie vooral op zaterdag gaat, betaalt de hogere prijzen en haalt het break-evenpunt met minder bezoeken.
 
-De tweede grootheid is de auto. Elk van de drie parken met een jaarkaart verkoopt een parkeerkaart of
-geeft korting op het parkeerticket. Kom je met de trein, dan valt dat deel weg en gelden de kolommen
-‘zonder auto’ in de tabellen hieronder.
+Elk van de drie parken met een jaarkaart verkoopt een parkeerkaart of geeft korting op het parkeerticket. Kom je met de trein, dan valt dat deel weg en gelden de kolommen ‘zonder auto’ in de tabellen hieronder.
 
-Twee dingen ontbreken in de som, omdat ze zich niet in een bedrag laten uitdrukken. Het ene is de korting
-op eten en souvenirs, die afhangt van wat je daar koopt. Het andere is het bezoek dat je zonder kaart
-niet had gemaakt. Dat is meestal de eigenlijke reden om te kopen, en het maakt van het break-evenpunt een
-ondergrens: wie met een kaart vaker gaat, geeft op die dagen ook meer uit.
+Niet meegerekend heb ik de korting op eten en souvenirs, omdat die afhangt van wat je daar koopt, en de bezoeken die je zonder kaart niet had gemaakt.
 
-Alle kaarten zijn persoonsgebonden. Bij Toverland staat dat uitdrukkelijk in de voorwaarden: één kaart
-per persoon, niet overdraagbaar. Een gezin telt de kaarten per lid op.
+Alle kaarten zijn persoonsgebonden. Bij Toverland staat dat uitdrukkelijk in de voorwaarden: één kaart per persoon, niet overdraagbaar.
 
 ## Efteling: Classic, Plus en Premium
 
@@ -127,10 +109,7 @@ Premium heeft geen geblokkeerde dagen en komt er niet in voor.
 | Kalenderjaar 2027                      | 68 dagen            | 25 dagen         |
 | Open dagen 2027                        | 297                 | 340              |
 
-De toegezegde minima kloppen: Classic geldt in 2027 op 297 dagen, zeven meer dan de beloofde 290. Plus
-geldt op precies 340 dagen. Geblokkeerd wordt vooral in het weekend en in blokken van meerdere weken: in 2027
-vallen 42 van de 68 Classic-dagen op een zaterdag of zondag, bij Plus 16 van de 25. Op maandag tot en
-met vrijdag vallen bij Classic 26 dagen.
+Classic geldt in 2027 op 297 dagen, zeven meer dan de toegezegde 290, Plus op precies de toegezegde 340. Geblokkeerd wordt vooral in het weekend en in blokken van meerdere weken: in 2027 vallen 42 van de 68 Classic-dagen op een zaterdag of zondag, bij Plus 16 van de 25. Op maandag tot en met vrijdag vallen bij Classic 26 dagen.
 
 De Classic-blokkades in de volgorde van de kalender:
 
@@ -140,13 +119,7 @@ De Classic-blokkades in de volgorde van de kalender:
 - Herfst 2027: 11, 12, 18, 19, 25 en 26 september, 2, 3, 9 en 10 oktober, 16 oktober tot en met 7 november, 13 en 14 november, 21 november, 27 en 28 november
 - December 2027: 4, 5, 12 en 14 december, 25 tot en met 31 december
 
-Bij Plus zijn veel minder dagen geblokkeerd: 22 en 29 november, 5 en 6 december en 26 tot en met 31 december 2026, en in
-2027 op 10, 16, 23 en 24 januari, 6 en 7 maart, 20 en 21 maart, 6, 7, 16 en 17 mei, 21, 27 en 28
-november, 4, 12 en 14 december en 25 tot en met 31 december. Het grootste verschil zijn de drie weken
-van half oktober tot begin november: in 2026 van 17 oktober tot en met 8 november, in 2027 van 16
-oktober tot en met 7 november. Met Classic blijft het park in die tijd dicht, met Plus is het open.
-Pasen 2027 is het tweede voorbeeld. Op 28 en 29 maart geldt Plus en Classic niet. Hemelvaart (6 mei) en
-Pinksteren (16 en 17 mei) zijn voor beide geblokkeerd.
+Bij Plus zijn veel minder dagen geblokkeerd: 22 en 29 november, 5 en 6 december en 26 tot en met 31 december 2026, en in 2027 op 10, 16, 23 en 24 januari, 6 en 7 maart, 20 en 21 maart, 6, 7, 16 en 17 mei, 21, 27 en 28 november, 4, 12 en 14 december en 25 tot en met 31 december. Het grootste verschil zijn de drie weken van half oktober tot begin november: in 2026 van 17 oktober tot en met 8 november, in 2027 van 16 oktober tot en met 7 november. Met Pasen 2027, op 28 en 29 maart, geldt Plus en Classic niet. Hemelvaart (6 mei) en Pinksteren (16 en 17 mei) zijn voor beide geblokkeerd.
 
 ### Wat het oplevert
 
@@ -162,24 +135,13 @@ In de kolom ‘met auto’ is de korting op het parkeerticket als besparing meeg
 per bezoek. De prijs
 geldt bij elke variant per persoon. Twee volwassenen met Classic betalen € 480.
 
-De stap van Classic naar Plus kost € 70, die van Plus naar Premium € 90. Met beide stappen koop je extra
-dagen, geen voordeel op de dag zelf. In 2027 geldt Plus op 43 dagen meer dan Classic, Premium op 25 dagen
-meer dan Plus. Per extra dag kost Plus € 1,63 meer dan Classic en Premium € 3,60 meer dan Plus. Dat is
-minder dan elke dagprijs. Waar het om gaat, is of je op die dagen wilt komen. Wie in die weken nooit
-komt, heeft de 43 dagen niet nodig.
+De stap van Classic naar Plus kost € 70, die van Plus naar Premium € 90. In 2027 geldt Plus op 43 dagen meer dan Classic, Premium op 25 dagen meer dan Plus. Per extra dag kost Plus € 1,63 meer dan Classic en Premium € 3,60 meer dan Plus. Dat is minder dan elke dagprijs.
 
-Ook de weekdag speelt mee. Volgens [onze metingen](/blog/efteling-disney-van-nederland) zijn de
-wachttijden in de Efteling alleen op zaterdag iets langer dan op de andere dagen. Classic blokkeert vooral weekenden, maar ook 26
-dagen van maandag tot en met vrijdag. Wie op doordeweekse dagen kan komen, verliest weinig. Wie in de
-geblokkeerde blokken moet komen, verliest veel.
+Volgens [onze metingen](/blog/efteling-disney-van-nederland) zijn de wachttijden in de Efteling alleen op zaterdag iets langer dan op de andere dagen. Classic blokkeert vooral weekenden, maar ook 26 dagen van maandag tot en met vrijdag. Wie op doordeweekse dagen kan komen, verliest met Classic dus weinig.
 
-Het park ligt van Düsseldorf een goed anderhalf tot twee uur rijden, vanuit Keulen en het Ruhrgebied een
-goede twee. Bij die afstand draait het om het aantal bezoeken. Wie drie keer per jaar gaat, blijft bij
-de dagkaart. Vanaf zes bezoeken is Classic goedkoper, met de auto en de parkeerkorting al vanaf het
-vierde tot zesde bezoek.
+Het park ligt van Düsseldorf een goed anderhalf tot twee uur rijden, vanuit Keulen en het Ruhrgebied een goede twee. Wie drie keer per jaar gaat, blijft bij de dagkaart.
 
-De widget toont de eerstvolgende rustige dagen in de Efteling. De dagen waarop Classic niet geldt, kun je
-ernaast leggen.
+De rustige dagen in de widget kun je naast de lijst met geblokkeerde dagen hierboven leggen.
 
 ```best-days-widget slug=efteling
 
@@ -200,10 +162,7 @@ inhoud van het streamingplatform VEEJOY en gratis of met korting toegang tot par
 ParkingPass kost bij beide varianten € 39 extra. Bij € 10 parkeergeld per dag is hij vanaf het vierde
 bezoek met de auto goedkoper. De gedrukte kaart kost bij Silver € 5 extra en zit bij Gold inbegrepen.
 
-Op dit moment is er geen nieuwe kaart te koop. Het park schrijft op zijn pagina dat het contingent op is
-en de ResortPass tot nader order niet verkrijgbaar is, ook niet telefonisch, per e-mail of ter plaatse.
-Bestaande houders krijgen vóór het einde van hun kaart bericht over verlenging. De som voor een nieuwe
-kaart telt dus pas als de verkoop weer opengaat. Wanneer dat is, zegt het park niet.
+Op dit moment is er geen nieuwe kaart te koop. Het park schrijft op zijn pagina dat het contingent op is en de ResortPass tot nader order niet verkrijgbaar is, ook niet telefonisch, per e-mail of ter plaatse. Bestaande houders krijgen vóór het einde van hun kaart bericht over verlenging. Wanneer de verkoop weer opengaat, zegt het park niet.
 
 Een dagkaart kost voor volwassenen € 67 tot € 76 en voor kinderen en 60-plussers € 56,50 tot € 65.
 
@@ -212,12 +171,7 @@ Een dagkaart kost voor volwassenen € 67 tot € 76 en voor kinderen en 60-plus
 | Silver  | 5 bezoeken       | 5 bezoeken       | 5 bezoeken (€ 1.200 tegen € 247 tot € 282 per dag)       |
 | Gold    | 7 tot 8 bezoeken | 7 tot 8 bezoeken | 7 tot 8 bezoeken (€ 1.850 tegen € 247 tot € 282 per dag) |
 
-Bij Silver is het break-evenpunt aan beide kanten van de prijsrange hetzelfde, namelijk vijf bezoeken. De
-goedkope dag vinden is dus niet genoeg. Wat telt, is dat je vijf keer komt op dagen die Silver dekt. Welke
-dat zijn, staat niet op de prijspagina maar in het ResortPass-portaal. De pagina noemt alleen het aantal:
-meer dan 230 dagen. Het seizoen 2026 loopt van 28 maart 2026 tot en met 9 januari 2027, dat zijn 288
-kalenderdagen, min de twee rustdagen met Kerst. Silver laat dus een deel van de openingsdagen weg, en
-welke dagen dat zijn bepaalt het park, niet jij.
+Bij Silver is het break-evenpunt aan beide kanten van de prijsrange hetzelfde, namelijk vijf bezoeken. Je moet dus vijf keer komen op dagen die Silver dekt. Welke dat zijn, staat in het ResortPass-portaal. De prijspagina noemt alleen het aantal, meer dan 230. Het seizoen 2026 loopt van 28 maart 2026 tot en met 9 januari 2027, dat zijn 288 kalenderdagen, min de twee rustdagen met Kerst. Silver laat dus een deel van de openingsdagen weg, en welke dagen dat zijn, bepaalt het park.
 
 Gold kost € 170 meer, voor kinderen € 155. Dat zijn ruim twee extra dagkaarten voor volwassenen tegen de
 hoogste prijs. Daarvoor geldt Gold op elke openingsdag, en de twee Rulantica-tickets zijn inbegrepen. Het
@@ -228,14 +182,10 @@ Gold loont als je geen dagen vooraf wilt vastleggen of de waterwereld twee keer 
 je vijf keer komt en je bezoekdagen kunt richten naar de planning van het park. Wie maar twee tot vier
 dagen per jaar komt, blijft bij de dagkaart.
 
-Eén datum die houders iets oplevert: het park heeft de Pre-Opening Weeks aangekondigd van 7 tot en met
-19 maart 2027, twee weken vóór de start van het seizoen. Op de ResortPass-pagina noemt het park ze de
-beste start van het seizoen 2027, met de goedkoopste tickets van het jaar. De dagreservering daarvoor
-loopt via het ResortPass-portaal. Dat is de eerste datum waarop je een nieuwe kaart zou kunnen gebruiken.
+Het park heeft de Pre-Opening Weeks aangekondigd van 7 tot en met 19 maart 2027, twee weken vóór de start van het seizoen. Op de ResortPass-pagina noemt het park er de goedkoopste tickets van het jaar voor. De dagreservering daarvoor loopt via het ResortPass-portaal. Dat is de eerste datum waarop je een nieuwe kaart zou kunnen gebruiken.
 
 Volgens [onze metingen](/blog/europa-park-wachttijden-tips) is Europa-Park het leegst op een zondag of
-donderdag in mei of juni en het drukst op zaterdag. De widget toont welke dagen de komende weken rustig
-zijn.
+donderdag in mei of juni en het drukst op zaterdag.
 
 ```best-days-widget slug=europa-park
 
@@ -243,8 +193,7 @@ zijn.
 
 ## Toverland: Magic Member
 
-Toverland in Sevenum heeft de goedkoopste jaarkaart van de vier, en de eenvoudigste. Hij heet Magic
-Member.
+Toverland in Sevenum heeft met de Magic Member de goedkoopste jaarkaart van de vier.
 
 | Groep                                | Jaarprijs | Per maand (minimaal twaalf maanden) | Parkeren per jaar | Parkeren per maand |
 | ------------------------------------ | --------- | ----------------------------------- | ----------------- | ------------------ |
@@ -263,10 +212,9 @@ jaarkaart heeft. Groeit het kind uit zijn lengteklasse, dan wordt voor elke rest
 De prijspagina noemt geen geblokkeerde dagen. In de abonnementsvoorwaarden, versie van 21 maart 2024,
 staat: de kaart geeft recht op één dagbezoek per openingsdag. Dagen waarop het park gesloten of verhuurd
 is, zijn uitgesloten en staan op de pagina met openingstijden. Op drukke dagen mag het park de toegang
-weigeren zonder de prijs terug te betalen. Een lijst met geblokkeerde dagen zoals bij de Efteling is er
-niet.
+weigeren zonder de prijs terug te betalen.
 
-Verdere punten uit de voorwaarden die voor de aankoop tellen:
+Verdere punten uit de voorwaarden:
 
 - Eén kaart per persoon, niet overdraagbaar, met een foto die bij de ingang wordt gecontroleerd.
 - Aan de balie gekocht geldt hij een jaar vanaf de aankoopdatum, online gekocht vanaf de ophaaldatum, mits hij binnen twee maanden wordt opgehaald.
@@ -295,10 +243,7 @@ In 2026 heeft het park voor het eerst een Summer Pass verkocht: € 79 voor volw
 van 90 tot 140 cm, onbeperkt bezoek van 1 juli tot en met 30 september. Of er in 2027 weer een komt, heeft
 het park niet gezegd. Wie alleen in de zomer komt, betaalt € 81 minder dan voor de jaarkaart.
 
-Volgens [onze metingen](/blog/toverland-troy-wachttijden-tips) is er in Toverland nauwelijks
-verschil tussen de weekdagen, en in de kerstvakantie is het drukker. Een kaart zonder geblokkeerde dagen
-helpt je daar dus minder bij het kiezen van een dag dan in een park waar sommige weekdagen duidelijk
-leger zijn.
+Volgens [onze metingen](/blog/toverland-troy-wachttijden-tips) is er in Toverland nauwelijks verschil tussen de weekdagen, en in de kerstvakantie is het drukker.
 
 ```best-days-widget slug=attractiepark-toverland
 
@@ -311,12 +256,7 @@ de zomer van 2022 af. In de veelgestelde vragen van de ticketshop komen een jaar
 niet voor, en tickets zijn er alleen met datum en alleen online. Waarom dat zo is gebleven en wat fans
 ertegen hebben gedaan, staat in onze [Phantasialand-gids](/blog/phantasialand-wachttijden-tips).
 
-Wat overblijft is de dagprijs, en die springt. In de oktoberkalender van de ticketshop kost een ticket voor
-volwassenen vanaf 12 jaar tussen € 44 en € 78. Het verschil tussen de goedkoopste en de duurste dag is
-€ 34, dat is 77% bovenop de goedkope dag. Wie drie keer per jaar komt, betaalt tussen € 132 en € 234.
-Het verschil hangt alleen af van hoe vroeg je boekt en welke dag je neemt. Een jaarkaart zou die som
-gladstrijken, maar die is er niet. Blijft de keuze van de dag, en goedkoop en leeg vallen niet altijd
-samen. In Phantasialand is een zaterdag merkbaar drukker dan een dinsdag.
+In de oktoberkalender van de ticketshop kost een ticket voor volwassenen vanaf 12 jaar tussen € 44 en € 78. Het verschil tussen de goedkoopste en de duurste dag is € 34, dat is 77% bovenop de goedkope dag. Wie drie keer per jaar komt, betaalt tussen € 132 en € 234. Het verschil hangt alleen af van hoe vroeg je boekt en welke dag je neemt. In Phantasialand is een zaterdag merkbaar drukker dan een dinsdag.
 
 ```best-days-widget slug=phantasialand
 
@@ -324,30 +264,17 @@ samen. In Phantasialand is een zaterdag merkbaar drukker dan een dinsdag.
 
 ## Geblokkeerde dagen tegenover drukke dagen
 
-Een jaarkaart met geblokkeerde dagen is goed als de geblokkeerde dagen de drukke dagen zijn. Dan betaal
-je niet voor dagen die je toch wilt vermijden. Hij is slecht als de geblokkeerde dagen de dagen zijn
-waarop je vrij bent en het park leeg is.
+Bij Europa-Park is zaterdag de drukste dag, en of Silver op zaterdag geldt, legt het park vast in het portaal.
 
-Bij de Efteling klopt dat maar gedeeltelijk. Classic blokkeert vooral weekenden en vakantieblokken. Omdat
-de weekdag daar weinig uitmaakt, blokkeert hij niet alleen drukke dagen. Met 26 geblokkeerde werkdagen
-in 2027 gaan ook rustige verloren. Bij Europa-Park is zaterdag de drukste dag, en of Silver op zaterdag
-geldt, legt het park vast in het portaal. Bij Toverland zijn er geen geblokkeerde dagen en maakt de
-weekdag nauwelijks uit. Bij Phantasialand blijft het bij de dagprijs.
-
-De widget zet de rustigste weekdag van de vier parken naast elkaar. Staat jouw weekdag in de kolom en
-geldt de kaart op die dag, dan past de kaart bij je plan.
+De widget zet de rustigste weekdag van de vier parken naast elkaar.
 
 ```park-comparison-widget slugs=efteling,europa-park,attractiepark-toverland,phantasialand show=quietest
 
 ```
 
-Wie doordeweeks kan komen, heeft met Classic bij de Efteling en Magic Member bij Toverland de meeste
-vrijheid voor de laagste prijs. Wie alleen in het weekend vrij is, is bij de Efteling beter uit met Plus
-of Premium en bij Europa-Park met Gold.
+Wie doordeweeks kan komen, is met Classic bij de Efteling en Magic Member bij Toverland het goedkoopst uit. Wie alleen in het weekend vrij is, is bij de Efteling beter uit met Plus of Premium en bij Europa-Park met Gold.
 
 ## Wie welke kaart nodig heeft
-
-Dit is mijn lezing van de cijfers hierboven. Ik ken je woonplaats niet en ook niet je vrije dagen.
 
 Bij de Efteling volstaat Classic als je buiten de vakanties kunt komen en minstens zes keer per jaar in
 het park bent. Wie tussen half oktober en begin november wil gaan, heeft Plus nodig. Tussen Kerst en
@@ -356,14 +283,9 @@ bezoeken. Onder de vier bezoeken loont geen van de drie varianten.
 
 ## Wanneer je koopt
 
-Een jaarkaart geldt een jaar vanaf aankoop of vanaf de ingangsdatum. Bij de Efteling kies je de ingangsdatum
-zelf, tot een maand vooruit. Wie in oktober begint, start midden in de geblokkeerde weken: een Classic vanaf
-10 oktober 2026 heeft tot het eind van het jaar 44 geblokkeerde dagen. Het kalenderjaar 2027 telt er in
-totaal 68.
+Een jaarkaart geldt een jaar vanaf aankoop of vanaf de ingangsdatum. Bij de Efteling kies je de ingangsdatum zelf, tot een maand vooruit. Wie in oktober begint, start midden in de geblokkeerde weken. Een Classic vanaf 10 oktober 2026 heeft tot het eind van het jaar 44 geblokkeerde dagen. Het kalenderjaar 2027 telt er in totaal 68.
 
-Bij de Efteling blijven de prijzen van 2026 gelden tot het park nieuwe noemt. Bij Toverland mag het park
-de prijs van een kaart pas wijzigen als die verloopt. De ResortPass is niet in de verkoop. Zodra een park
-nieuwe prijzen publiceert, wordt deze gids bijgewerkt.
+Bij de Efteling blijven de prijzen van 2026 gelden tot het park nieuwe noemt. Bij Toverland mag het park de prijs van een kaart pas wijzigen als die verloopt.
 
 ## Veelgestelde vragen
 

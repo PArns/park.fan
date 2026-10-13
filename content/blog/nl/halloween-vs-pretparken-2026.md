@@ -75,7 +75,7 @@ seo:
 
 Begin oktober lopen er in 25 van de Amerikaanse parken op park.fan Halloween-evenementen, en bijna allemaal duren ze tot 31 oktober of 1 november. SCarowinds in Charlotte sluit als laatste, op 7 november. Voor de Horror Nights, Knott's Scary Farm en Howl-O-Scream in Tampa en Orlando heb je een apart ticket nodig. Bij sommige parken zit het evenement gewoon in de toegangsprijs. De twee Disneyfeesten zijn voor 2026 al uitverkocht.
 
-In de avond zijn er horrorhuizen, scare zones met acteurs en shows. Bijna elk park raadt af om kinderen onder de 13 mee te nemen. Overdag draait het om snoep, pompoenen en kostuums, vaak in hetzelfde park, alleen een paar uur eerder. Het overzicht voor Europa staat in onze [Halloween-gids](/blog/halloween-pretparken-2026), en over [HalloWeekends](/blog/cedar-point-halloweekends-2026) in Cedar Point in Ohio hebben we een apart bericht.
+Bijna elk park raadt af om kinderen onder de 13 mee te nemen naar de avondevenementen. Het overzicht voor Europa staat in onze [Halloween-gids](/blog/halloween-pretparken-2026), en over [HalloWeekends](/blog/cedar-point-halloweekends-2026) in Cedar Point in Ohio hebben we een apart bericht.
 
 > [!NOTE]
 > Bijgewerkt op 5 oktober 2026: de data, huizen, leeftijdsgrenzen en prijzen komen van de websites van de parken en exploitanten. Het zijn vanafprijzen in Amerikaanse dollars zonder belasting. Ze hangen af van de avond en lopen meestal op naarmate die dichterbij komt.
@@ -128,7 +128,7 @@ De andere vijf heeft Universal zelf bedacht:
 - MADLANDS: Caged Cannibals, een woestenij na het einde van de wereld
 - Cybergoria, waarin mensen duizenden jaren later uit hun cryoslaap ontwaken
 
-Daarbij komen vier scare zones, allemaal nieuw: Fortnitemares, Infernal Carnival of Nightmares, Downtown Clowntown en Sideshow of Decay. Op straat lopen verder Mel's Die-In: Zombies, Club Horror en de Chainsaw Hordes rond. Er zijn twee shows, een over Stranger Things op de lagune en Nightmare Fuel: Blood Noir. Een paar attracties draaien ook ’s avonds, waaronder Revenge of the Mummy, Harry Potter and the Escape from Gringotts, TRANSFORMERS: The Ride-3D en MEN IN BLACK Alien Attack.
+Daarbij komen vier scare zones met acteurs, allemaal nieuw: Fortnitemares, Infernal Carnival of Nightmares, Downtown Clowntown en Sideshow of Decay. Op straat lopen verder Mel's Die-In: Zombies, Club Horror en de Chainsaw Hordes rond. Er zijn twee shows, een over Stranger Things op de lagune en Nightmare Fuel: Blood Noir. Een paar attracties draaien ook ’s avonds, waaronder Revenge of the Mummy, Harry Potter and the Escape from Gringotts, TRANSFORMERS: The Ride-3D en MEN IN BLACK Alien Attack.
 
 In de webshop van Universal kost een avond vanaf 94,99 $, en op sommige data meer. Een avond op 14 oktober kost 95 $, een avond op 31 oktober 140 $. Voor meerdere nachten zijn er de Rush of Fear Pass voor maximaal 18 nachten en de Frequent Fear Pass voor maximaal 31. Op de ticketpagina staan daarvoor op twee plekken verschillende prijzen, 229,99 $ en 274,99 $ in de ene regel, 239,99 $ en 289,99 $ in de andere. De Express Pass, waarmee je elk huis één keer zonder de gewone wachtrij in loopt, kost vanaf 279,99 $, de rondleiding R.I.P. Tour vanaf 529,99 $. Passen voor meerdere nachten met Express verkoopt Universal in 2026 niet meer.
 
@@ -176,7 +176,7 @@ In [Kings Dominion](ref:kings-dominion) bij Richmond in Virginia is Halloween Ha
 
 ### Carowinds: SCarowinds
 
-Van alle evenementen in dit overzicht eindigt dat van [Carowinds](ref:carowinds), op de grens van North en South Carolina, als laatste. SCarowinds loopt van 11 september tot en met 7 november, van donderdag tot en met zaterdag van 18 uur tot middernacht en op zondag tot 23 uur. Nieuw zijn de maze **JASON: Blood Reign**, drie van de vijf scare zones en vier van de zes shows. The Conjuring: Beyond Fear kost ook hier extra. Het pakket met toegang begint bij 55 $, de Haunted Attractions Pass bij 10 $.
+SCarowinds in [Carowinds](ref:carowinds), op de grens van North en South Carolina, loopt van 11 september tot en met 7 november, van donderdag tot en met zaterdag van 18 uur tot middernacht en op zondag tot 23 uur. Nieuw zijn de maze **JASON: Blood Reign**, drie van de vijf scare zones en vier van de zes shows. The Conjuring: Beyond Fear kost ook hier extra. Het pakket met toegang begint bij 55 $, de Haunted Attractions Pass bij 10 $.
 
 ### Texas: Fright Fest in Six Flags Over Texas en Fiesta Texas
 
@@ -190,7 +190,7 @@ Van alle evenementen in dit overzicht eindigt dat van [Carowinds](ref:carowinds)
 
 ### Howl-O-Scream: Busch Gardens en SeaWorld
 
-De vier parken van exploitant United Parks noemen hun evenement allemaal Howl-O-Scream, maar het zijn vier verschillende avonden met eigen regels.
+Howl-O-Scream heet het evenement in alle vier parken van exploitant United Parks.
 
 In [Busch Gardens Tampa](ref:busch-gardens-tampa) loopt Howl-O-Scream op geselecteerde avonden van 11 september tot en met 31 oktober. Je mag vanaf 17 uur naar binnen, om 19 uur begint het. Het evenement kost extra, vanaf 48,99 $ voor één avond. Van de zes huizen is **Anaconda: Fear Has No Escape** helemaal nieuw, en drie andere hebben een nieuw verhaal gekregen. Daarnaast zijn er zes scare zones en twee shows. Volgens het park is het evenement bedoeld voor een volwassen publiek en komen er geweld en bloed in voor.
 
@@ -208,13 +208,13 @@ In [Hersheypark](ref:hersheypark) in Pennsylvania horen de Dark Nights bij Hersh
 
 ## Voor gezinnen: Halloween overdag
 
-### Disney: twee feesten, allebei uitverkocht
+### Disney: Halloweenfeesten en Halloween Time
 
 **Mickey's Not-So-Scary Halloween Party** in het [Magic Kingdom](ref:magic-kingdom-park) loopt in 2026 op 38 avonden tussen 7 augustus en 31 oktober. In oktober zijn dat nog de 6e, 8e, 9e, 13e, 15e, 16e, 18e, 22e, 23e, 25e, 27e, 29e en 31e. Volgens Disney zijn alle data uitverkocht. Het feest duurt van 19 uur tot middernacht, en met een ticket mag je vanaf 16 uur het park in. Op het programma staan de parade Mickey's Boo-To-You Halloween Parade, het vuurwerk Disney's Not-So-Spooky Spectacular met lasers en de podiumshow Hocus Pocus Villain Spelltacular voor het kasteel. Snoep haal je bij posten in alle delen van het park. Nieuw zijn A Masquerade with Stitch, een dansfeest met Stitch, Lilo en Angel in Tomorrowland, en Captain Jack Sparrow met een piratenprogramma in Adventureland. Space Mountain rijdt op deze avonden volgens Disney in volledige duisternis, met Halloween-muziek.
 
 De **Oogie Boogie Bash** in [Disney California Adventure](ref:disney-california-adventure-park) in Anaheim heeft 33 avonden, van 18 augustus tot en met 31 oktober, telkens van 18 tot 23 uur, en je mag vanaf 15 uur naar binnen. De prijzen lagen tussen 139 $ voor een avond in augustus en 199 $ voor 31 oktober. Ook hier zijn alle tickets verkocht. Nieuw is het straatfeest Madame Leota's Swinging Wake bij de Haunted Mansion. Vanaf 14 jaar zijn maskers niet toegestaan, en capes alleen als ze niet over de grond slepen.
 
-De versiering zie je ook zonder feestticket. In het Magic Kingdom hangen overdag pompoenslingers boven Main Street, en in het Disneyland Resort loopt Halloween Time tot en met 31 oktober, inbegrepen bij de gewone toegang. Daar wordt de Haunted Mansion de Haunted Mansion Holiday en Cars Land ’s avonds Radiator Screams. In het Disneyland Park draait de avondshow Halloween Screams, op sommige avonden met vuurwerk. Een dag in het Magic Kingdom plan je met de [Magic Kingdom-gids](/blog/magic-kingdom-wachttijden-tips).
+In het Magic Kingdom hangen overdag pompoenslingers boven Main Street, en in het Disneyland Resort loopt Halloween Time tot en met 31 oktober, inbegrepen bij de gewone toegang. Daar wordt de Haunted Mansion de Haunted Mansion Holiday en Cars Land ’s avonds Radiator Screams. In het Disneyland Park draait de avondshow Halloween Screams, op sommige avonden met vuurwerk. Een dag in het Magic Kingdom plan je met de [Magic Kingdom-gids](/blog/magic-kingdom-wachttijden-tips).
 
 ### Knott's Spooky Farm en de dagen bij Six Flags
 
@@ -234,7 +234,7 @@ Overdag hebben de vier parken van United Parks een programma voor kinderen, inbe
 
 ### Legoland en Knoebels
 
-[Legoland Florida](ref:legoland-florida) en [Legoland California](ref:legoland-california) houden Brick or Treat, voor gezinnen met kinderen van twee tot twaalf jaar en inbegrepen bij het dagticket. In Californië gaat het om de weekenden tot en met 1 november, met snoep vanaf 15 uur. Nieuw in beide parken is de Brick or Treat Street met monsterhuizen van Lego. Voor Florida staan op de eventpagina en op de blog van het park verschillende dagen, dus kijk voor vertrek even in de kalender.
+[Legoland Florida](ref:legoland-florida) en [Legoland California](ref:legoland-california) houden Brick or Treat, voor gezinnen met kinderen van twee tot twaalf jaar en inbegrepen bij het dagticket. In Californië gaat het om de weekenden tot en met 1 november, met snoep vanaf 15 uur. Nieuw in beide parken is de Brick or Treat Street met monsterhuizen van Lego. Voor Florida staan op de eventpagina en op de blog van het park verschillende dagen.
 
 [Knoebels](ref:knoebels-amusement-park) in Pennsylvania vraagt geen toegangsprijs, je betaalt per rit. Tijdens Hallo-Fun zijn in de weekenden van oktober meer dan 50 attracties in Halloween-versiering open, op vrijdag van 18 tot 22 uur, op zaterdag van 14 tot 22 uur en op zondag van 12 tot 18 uur.
 
@@ -258,7 +258,7 @@ De rustigste dagen van de komende weken in Knott's Berry Farm staan in de kalend
 
 ```
 
-Wie niet per se op Halloween zelf hoeft te gaan, bespaart: bij de Horror Nights in Orlando kost 31 oktober 140 $, 14 oktober 95 $. Op welke weekdag de wachtrijen in de grote parken met een avondevenement het kortst zijn, gemeten over dit seizoen:
+Op welke weekdag de wachtrijen in de grote parken met een avondevenement het kortst zijn, gemeten over dit seizoen:
 
 ```park-comparison-widget slugs=universal-studios-florida,knotts-berry-farm,six-flags-magic-mountain,six-flags-great-adventure,kings-island,busch-gardens-tampa,seaworld-orlando show=quietest
 
@@ -266,11 +266,9 @@ Wie niet per se op Halloween zelf hoeft te gaan, bespaart: bij de Horror Nights 
 
 ## Twee evenementen op één reis
 
-In Orlando liggen Universal Studios Florida en SeaWorld Orlando hemelsbreed zeven kilometer uit elkaar, en het Magic Kingdom ligt 13 kilometer van Universal. Halloween Horror Nights en Howl-O-Scream kun je op één reis op twee avonden combineren. Daartussen past een dag in een van de Disneyparken, waar de Halloween-versiering ook zonder feestticket hangt. Busch Gardens Tampa ligt hemelsbreed ruim 100 kilometer verder naar het westen.
+In Orlando liggen Universal Studios Florida en SeaWorld Orlando hemelsbreed zeven kilometer uit elkaar, en het Magic Kingdom ligt 13 kilometer van Universal. Tussen een avond bij Halloween Horror Nights en een bij Howl-O-Scream past een dag in een van de Disneyparken, waar de Halloween-versiering ook zonder feestticket hangt. Busch Gardens Tampa ligt hemelsbreed ruim 100 kilometer verder naar het westen.
 
 In de regio Los Angeles liggen Knott's Berry Farm en Disney California Adventure acht kilometer uit elkaar, Universal Studios Hollywood 46 kilometer van Knott's, en Six Flags Magic Mountain nog eens 39 kilometer noordelijker. Knott's Scary Farm en Fright Fest in Magic Mountain vallen op de vrijdagen en zaterdagen in oktober samen, en dan zijn ze allebei tot middernacht of later open.
-
-In de pakketten van Six Flags zit de parktoegang voor de hele dag. Je kunt dus bij daglicht in de attracties gaan en gewoon blijven voor het evenement, in plaats van pas tegen de avond te komen.
 
 ## Veelgestelde vragen
 
