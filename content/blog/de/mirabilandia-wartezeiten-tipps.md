@@ -51,9 +51,9 @@ seo:
 
 [Mirabilandia](ref:mirabilandia) in Savio bei Ravenna ist nach Fläche der größte Freizeitpark Italiens. Er hat am 4. Juli 1992 eröffnet und gehört seit 2006 zu Parques Reunidos. Der Park selbst nennt 850.000 Quadratmeter und über 40 Attraktionen. Die letzte Besucherzahl, die wir mit Jahr und Quelle finden, stammt von der Themed Entertainment Association und gilt für 2012: 1,39 Millionen.
 
-Die großen Bahnen sind [Katun](ref:mirabilandia/katun), ein Inverted Coaster von Bolliger & Mabillard mit sechs Inversionen, [iSpeed](ref:mirabilandia/ispeed), ein Launched Coaster von Intamin, und [Desmo Race](ref:mirabilandia/desmo-race), zwei Schienen, auf denen man das Tempo selbst mitbestimmt. Dazu kommen ein Wasserbereich um Rio Bravo und Autosplash, ein Riesenrad von 90 Metern und seit 2025 ein Nickelodeon-Bereich. Unsere Wartezeitdaten für Mirabilandia beginnen im August 2026 und reichen bis heute: 42 Messtage, davon 23 im August, 17 im September und 2 im Oktober. Ein ganzes Jahr decken sie nicht ab.
+Die großen Bahnen sind [Katun](ref:mirabilandia/katun), ein Inverted Coaster von Bolliger & Mabillard mit sechs Inversionen, [iSpeed](ref:mirabilandia/ispeed), ein Launched Coaster von Intamin, und [Desmo Race](ref:mirabilandia/desmo-race), zwei Schienen, auf denen man das Tempo selbst mitbestimmt. Dazu kommen ein Wasserbereich um Rio Bravo und Autosplash, ein Riesenrad von 90 Metern und seit 2025 ein Nickelodeon-Bereich. Unsere Wartezeitdaten für Mirabilandia beginnen im August 2026 und reichen bis heute: 42 Messtage, davon 23 im August, 17 im September und 2 im Oktober.
 
-## Von der Pineta di Classe zu Parques Reunidos
+## Geschichte des Parks
 
 Gebaut wurde der Park neben dem Pinienwald von Classe, an der Küstenstraße SS 16 Adriatica. Die Idee kam Ende der 1980er Jahre aus einer Zusammenarbeit von Finbrescia (46 Prozent), San Paolo Finance (44 Prozent) und Publitalia '80 aus der Fininvest-Gruppe (10 Prozent). Die erste baute den Park, die dritte machte die Werbung. So steht es in der italienischen Wikipedia, deren Artikel auf eine Quelle zurückgeht und selbst als unzureichend belegt markiert ist.
 
@@ -61,13 +61,13 @@ Am 4. Juli 1992 ging der Park auf. Die deutsche Wikipedia nennt den 8. Juli, die
 
 Die ersten Jahre liefen schlecht. Zwischen 1994 und 1996 fielen die Besuche nach der italienischen Wikipedia auf rund 600.000 im Jahr. Die deutsche Wikipedia nennt als Käufer die Familie Löffelhardt, der auch das [Phantasialand](ref:phantasialand) gehört, und Giancarlo Casoli, einen Eigentümer des Fahrgeschäftherstellers S.D.C. Sie datiert die Übernahme auf November 1996, die englische und die italienische Wikipedia auf 1997.
 
-Danach wurde investiert. 1997 kamen die beiden 60 Meter hohen Türme, die heute Oil Tower heißen. 1998 folgte die Wilde Maus Pakal, heute [Gold Digger](ref:mirabilandia/gold-digger), und der Eingangsbereich bekam sein Piratenthema, die Baia dei Pirati. 1999 eröffneten das Riesenrad Eurowheel und die Wasserbahn Niagara, heute [El Dorado Falls](ref:mirabilandia/el-dorado-falls). Im Jahr 2000 kam Katun. 2003 öffnete der Wasserpark Mirabilandia Beach, seit 2011 Mirabeach.
+Die neuen Eigentümer stellten 1997 die beiden 60 Meter hohen Türme auf, die heute Oil Tower heißen. 1998 folgte die Wilde Maus Pakal, heute [Gold Digger](ref:mirabilandia/gold-digger), und der Eingangsbereich bekam sein Piratenthema, die Baia dei Pirati. 1999 eröffneten das Riesenrad Eurowheel und die Wasserbahn Niagara, heute [El Dorado Falls](ref:mirabilandia/el-dorado-falls). Im Jahr 2000 kam Katun. 2003 öffnete der Wasserpark Mirabilandia Beach, seit 2011 Mirabeach.
 
 2006 kaufte Parques Reunidos den Park. Die deutsche Wikipedia nennt unter Berufung auf die spanische Zeitung Cinco Días rund 100 Millionen Euro. iSpeed ersetzte die Sierra Tonante, die seit 2007 stillstand (Eröffnung 2008 nach dem Park, 2009 nach der Wikipedia). Es folgten Master Thai (2011), Divertical (2012), der Kinderbereich Dinoland (2014), der Westernbereich Far West Valley (2016) und 2019 Ducati World mit Desmo Race. 2022 begann die Zusammenarbeit mit Nickelodeon, 2025 eröffnete Nickelodeon Land. EQT sucht für Parques Reunidos einen Käufer, Näheres steht in unserem Beitrag [EQT sucht einen Käufer für Parques Reunidos](/news/parques-reunidos-verkauf-movie-park).
 
 ## Die Achterbahnen
 
-Die fünf großen Bahnen im Überblick. Länge, Höhe und Tempo stammen aus der Roller Coaster DataBase, die Mindestgrößen von der Website des Parks, Typ und Eröffnungsjahr aus Wikipedia und vom Park:
+Länge, Höhe und Tempo der fünf großen Bahnen stammen aus der Roller Coaster DataBase, die Mindestgrößen von der Website des Parks, Typ und Eröffnungsjahr aus Wikipedia und vom Park:
 
 | Bahn        | Typ und Hersteller          | Eröffnet | Höhe | Tempo    | Inversionen | Mindestgröße |
 | ----------- | --------------------------- | -------- | ---- | -------- | ----------- | ------------ |
@@ -81,13 +81,13 @@ Die fünf großen Bahnen im Überblick. Länge, Höhe und Tempo stammen aus der 
 
 [Katun](ref:mirabilandia/katun?full)
 
-Katun ist 1.200 Meter lang, 50 Meter hoch und fährt 2:22 Minuten. Die Strecke hat nach RCDB sechs Inversionen: Looping, Zero-G-Roll, Cobra Roll und zwei Korkenzieher. Die Fahrgäste sitzen zu viert in einer Reihe, ein Zug hat acht Wagen mit 32 Plätzen, und drei Züge fahren gleichzeitig. Die Bahn fasst nach RCDB 1.700 Personen pro Stunde. Der Park gibt 110 km/h an, RCDB 104.
+Katun ist 1.200 Meter lang, 50 Meter hoch und fährt 2:22 Minuten. Die Strecke hat nach RCDB sechs Inversionen: Looping, Zero-G-Roll, Cobra Roll und zwei Korkenzieher. Die Fahrgäste sitzen zu viert in einer Reihe, ein Zug hat acht Wagen mit 32 Plätzen, und drei Züge fahren gleichzeitig. Die Bahn fasst nach RCDB 1.700 Personen pro Stunde. Nach Parkangabe fährt Katun 110 km/h, nach RCDB 104.
 
-Das Thema ist die Maya-Stadt Sian Ka'an. Der Name Katun bezeichnet im Maya-Kalender einen Zeitraum von 7.200 Tagen, rund 20 Jahren, und am Anfang und am Ende der Fahrt fährt der Zug durch ein „Stargate“. Der Park nennt Katun die längste Inverted-Achterbahn Europas. Sie fährt ab 140 Zentimetern und ab zwölf Jahren.
+Das Thema ist die Maya-Stadt Sian Ka'an. Der Name Katun bezeichnet im Maya-Kalender einen Zeitraum von 7.200 Tagen, rund 20 Jahren, und am Anfang und am Ende der Fahrt fährt der Zug durch ein „Stargate“. Nach Angabe des Parks ist Katun die längste Inverted-Achterbahn Europas. Sie fährt ab 140 Zentimetern und ab zwölf Jahren.
 
 ### iSpeed
 
-iSpeed ist ein Intamin-Launch-Coaster mit magnetischem Antrieb. Er beschleunigt laut Park in 2,2 Sekunden auf 100 km/h, erreicht bis zu 110 km/h (RCDB) und klettert auf 55 Meter. Die Strecke ist 980 Meter lang und hat zwei Inversionen. Der Park gibt 120 km/h an, die Fahrt dauert 77 Sekunden.
+iSpeed ist ein Intamin-Launch-Coaster mit magnetischem Antrieb. Er beschleunigt laut Park in 2,2 Sekunden auf 100 km/h, erreicht bis zu 110 km/h (RCDB) und klettert auf 55 Meter. Die Strecke ist 980 Meter lang und hat zwei Inversionen. Laut Park fährt iSpeed 120 km/h, die Fahrt dauert 77 Sekunden.
 
 iSpeed hat 2009 die Sierra Tonante ersetzt, die Holzachterbahn von 1992. Gefahren wird ab 140 Zentimetern, bis höchstens 195 Zentimeter, und ab zwölf Jahren.
 
@@ -99,9 +99,7 @@ iSpeed hat 2009 die Sierra Tonante ersetzt, die Holzachterbahn von 1992. Gefahre
 
 [Desmo Race](ref:mirabilandia/desmo-race?full)
 
-Desmo Race eröffnete 2019 im Ducati-Bereich. Es sind zwei Schienen nebeneinander, jede 525 Meter lang und 22 Meter hoch, die Fahrt dauert eine Minute bei bis zu 80 km/h. Man sitzt rittlings, und die Fahrt soll sich nach Parkangabe anfühlen wie auf einer Panigale V4. Der Park nennt die Bahn interaktiv: Man kann beschleunigen und bremsen und so die andere Schiene abhängen. Hersteller ist Maurer Rides, der Typ heißt Spike Coaster. Zugelassen sind 120 bis 195 Zentimeter und höchstens 135 Kilogramm, Kinder unter zehn Jahren und unter 140 Zentimetern fahren mit Begleitung.
-
-Desmo Race hat in unseren Daten die längste Warteschlange des Parks, und der Flash Pass gilt dort nicht.
+Desmo Race eröffnete 2019 im Ducati-Bereich. Es sind zwei Schienen nebeneinander, jede 525 Meter lang und 22 Meter hoch, die Fahrt dauert eine Minute bei bis zu 80 km/h. Man sitzt rittlings, und die Fahrt soll sich nach Parkangabe anfühlen wie auf einer Panigale V4. Laut Park ist die Bahn interaktiv, man kann beschleunigen und bremsen und so die andere Schiene abhängen. Hersteller ist Maurer Rides, der Typ heißt Spike Coaster. Zugelassen sind 120 bis 195 Zentimeter und höchstens 135 Kilogramm, Kinder unter zehn Jahren und unter 140 Zentimetern fahren mit Begleitung.
 
 ### Master Thai, Gold Digger und die Familienbahnen
 
@@ -136,7 +134,7 @@ Hinter dem Eingangsplatz, der Baia dei Pirati mit dem X Point für die Flash Pä
 
 ## Für kleine Kinder: Nickelodeon Land und Dinoland
 
-Kinder unter 100 Zentimetern kommen kostenlos hinein. Für sie gibt es zwei Bereiche.
+Kinder unter 100 Zentimetern kommen kostenlos hinein.
 
 **Nickelodeon Land** (2025, 25.000 Quadratmeter) hat nach Angabe des Parks zehn Attraktionen, drei Restaurants, einen Laden, zwei Meet-and-Greet-Bereiche und eine Showbühne. Der Bereich gliedert sich nach vier Serien. SpongeBob hat Jellyfish Jam (ab 100 Zentimetern, Kinder unter sechs Jahren und unter 120 Zentimetern mit Begleitung) und den Bikini Bottom Express (ab 75 Zentimetern). PAW Patrol hat den Spielplatz Adventure Bay, die Bahn PAW Patrol To The Rescue, die Wasserfahrt Rubble's Rapids und ein Karussell. Dazu kommen Dora's Train Adventure, Splish Splat als Wasserspielplatz und für die Ninja Turtles die Cowabunga Carts. Die Website des Parks nennt den Bereich „Italy's Best New Family Attraction 2025“.
 
@@ -156,7 +154,7 @@ Halloween läuft 2026 vom 26. September bis 1. November. Im Eintritt enthalten i
 
 Gegen Aufpreis gibt es drei Horrorhäuser: [The Walking Dead](ref:mirabilandia/the-walking-dead), [Paranormal Activity: Next of Kin](ref:mirabilandia/paranormal-activity-next-of-kin) (neu in 2026, nach dem Film) und [Mr. Blackmoon's Hypnotic Circus](ref:mirabilandia/mr-blackmoons-hypnotic-circus). Alle drei sind im Parkeintritt nicht enthalten, und der Flash Pass gilt für The Walking Dead nicht. Inhaber einer Saisonkarte für 2027 bekommen den Hypnotic Circus in der Saison 2026 einmal pro Tag frei (ab 12 Jahren, außer am 31. Oktober).
 
-Am 30. Oktober gibt es die Scary Night: Der Park öffnet um 19:30 Uhr zusätzlich, mit eigenem Ticket. Saisonkarten gelten an diesem Abend nicht. Vom Bahnhof Lido di Savio/Lido di Classe fahren Shuttlebusse um 19:45 und 20:45 Uhr zum Park, zurück um 22:00 und 23:00 Uhr.
+Am 30. Oktober öffnet der Park um 19:30 Uhr zusätzlich zur Scary Night, mit eigenem Ticket. Saisonkarten gelten an diesem Abend nicht. Vom Bahnhof Lido di Savio/Lido di Classe fahren Shuttlebusse um 19:45 und 20:45 Uhr zum Park, zurück um 22:00 und 23:00 Uhr.
 
 ## Wartezeiten der Bahnen
 
@@ -208,15 +206,15 @@ Die Saison 2026 läuft vom 2. April bis zum 1. November. Bis zum 24. Oktober ist
 
 ## Ein Tag im Park ab 140 Zentimetern
 
-Angenommen, du bist um 10:30 Uhr am Eingang und darfst alles fahren. Für Katun und Master Thai haben wir keine Auswertung, der Plan folgt deshalb den Bahnen mit Daten.
+Angenommen, du bist um 10:30 Uhr am Eingang und darfst alles fahren. Für Katun und Master Thai haben wir keine Werte nach Uhrzeit. Beide stehen nicht unter den Bahnen mit den längsten Wartezeiten und passen deshalb in den Vormittag.
 
-Zuerst Katun, Master Thai und iSpeed, die du ohnehin vor der Mittagszeit fährst. Danach Divertical, das um zwölf Uhr noch vor seinem Anstieg liegt. Zwischen 13 und 14 Uhr, wenn Autosplash, Rio Bravo und El Dorado Falls ihre Spitze haben, ist Zeit fürs Mittagessen. Desmo Race ist in unseren Daten ab 13 Uhr am kürzesten und wird bis 18 Uhr länger, es lohnt sich also früh am Nachmittag. Die Wasserbahnen fährst du am frühen Abend, nach ihrem Gipfel. Autosplash und Rio Bravo sind ab 20 Uhr am kürzesten, an den Oktober-Samstagen ist der Park bis 22 Uhr offen.
+Zuerst Katun, Master Thai und iSpeed, iSpeed etwa 30 Minuten nach der Öffnung. Danach Divertical, das um zwölf Uhr noch vor seinem Anstieg liegt. Zwischen 13 und 14 Uhr, wenn Autosplash, Rio Bravo und El Dorado Falls ihre Spitze haben, ist Zeit fürs Mittagessen. Desmo Race ist in unseren Daten ab 13 Uhr am kürzesten und wird bis 18 Uhr länger, es lohnt sich also früh am Nachmittag. Die Wasserbahnen fährst du am frühen Abend, nach ihrem Gipfel. Autosplash und Rio Bravo sind ab 20 Uhr am kürzesten, an den Oktober-Samstagen ist der Park bis 22 Uhr offen.
 
 Zwei Tage brauchst du, wenn du mit Kindern kommst, Nickelodeon Land und Dinoland ausfahren willst oder im Sommer Mirabeach dazu nimmst. Der Wasserpark hat ein eigenes Ticket.
 
-## Flash Pass: Vorrang über einen eigenen Eingang
+## Flash Pass
 
-Mirabilandia nennt den Fast Pass Flash Pass. Er ist ein Zusatz zum Eintritt und ersetzt ihn nicht. Nach Angabe des Parks hat man über einen eigenen Eingang Vorrang. Einen Platz in den ersten Reihen gibt er nicht.
+Mirabilandia nennt den Fast Pass Flash Pass. Er wird zum Eintritt dazugekauft. Nach Angabe des Parks hat man damit über einen eigenen Eingang Vorrang, aber keinen Platz in den ersten Reihen.
 
 Es gibt drei Varianten. Der **Gold Flash Pass** ist ein persönliches Armband mit beliebig vielen Fahrten an den Bahnen mit Flash-Pass-Eingang und kostet online ab 49,90 Euro, im Park ab 59,90 Euro. Der **Regular Flash Pass** ist eine übertragbare Karte mit einer Fahrt je Attraktion, online ab 24,90 Euro, im Park ab 29,90 Euro. Der **One Shot Flash Pass** gilt für eine Fahrt an einer einzigen Attraktion und wird nur im Park verkauft, ab 5,90 Euro, am X Point, an der Eintrittskasse, im Mayan Shop und am Fotopunkt von Autosplash.
 
@@ -230,9 +228,9 @@ Das Tagesticket für Erwachsene (über 140 Zentimeter) beginnt online bei 27,90 
 
 Für Besuche vom 19. September bis 25. Oktober 2026 gibt es online einen Halloween-Rabatt von 40 Prozent: Erwachsene zahlen mit dem Code 1HW2026 29,90 Euro statt 49,90 Euro, für höchstens vier Tickets. Der Code gilt bis zum 11. Oktober und nicht am Kauftag. Wer einen zweiten Tag anhängen will, zahlt dafür 6,90 Euro, entweder beim Kauf, im Park vor dem Gehen oder im Park-und-Hotel-Paket.
 
-Alle online gekauften Tickets enthalten die Schönwettergarantie: Regnet es während des Besuchs, kannst du kostenlos wiederkommen. Der Eintritt umfasst alle Bahnen, Shows und Bereiche. Nicht enthalten sind die Horrorhäuser The Walking Dead, Paranormal Activity: Next of Kin und Mr. Blackmoon's Hypnotic Circus, die Motion-Sphere-Simulatoren und Mirabeach.
+Regnet es während des Besuchs, kannst du mit jedem online gekauften Ticket kostenlos wiederkommen (Schönwettergarantie). Der Eintritt umfasst alle Bahnen, Shows und Bereiche. Nicht enthalten sind die Horrorhäuser The Walking Dead, Paranormal Activity: Next of Kin und Mr. Blackmoon's Hypnotic Circus, die Motion-Sphere-Simulatoren und Mirabeach.
 
-Bei den Saisonkarten läuft bis zum 18. Oktober eine Aktion: Wer eine Karte für die Saison 2027 kauft, kommt den Rest der Saison 2026 kostenlos hinein. Der Rabatt gilt gegenüber dem Listenpreis und nur für neue Karten zum „neuen“ Tarif.
+Wer bis zum 18. Oktober eine Saisonkarte für 2027 kauft, kommt den Rest der Saison 2026 kostenlos hinein. Der Rabatt gilt gegenüber dem Listenpreis und nur für neue Karten zum „neuen“ Tarif.
 
 | Karte  | Preis neu | Mit Karte 2026 | Was dabei ist (Auszug)                                                                                        |
 | ------ | --------- | -------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -257,7 +255,7 @@ Im Park gibt es kein Hotel. Das Angebot „Park + Hotel“ läuft über Mirabila
 
 Gegessen wird in Restaurants und Kiosken, darunter die Locanda del Faro, das Paddock Café, Goofy Goober's in Nickelodeon Land und das Bay Café. Im Park gibt es auch einen McDonald's, Azuki Sushi und Italy & Italy. Vorab buchen lässt sich das All-Inclusive-Menü, es erlaubt alle 60 Minuten eine Mahlzeit. Ristocredit ist ein Guthaben, das du online kaufst und an der Kasse einlöst: 15 Euro ergeben 18 Euro Guthaben, 20 Euro ergeben 24 Euro. Click & Collect lässt dich vorbestellen und zur gewählten Zeit abholen, ohne Tischreservierung. Neu in 2026 ist der Coca-Cola-Freestyle-Becher: Er kostet online 15,90 Euro, du füllst ihn alle 60 Minuten an drei Stationen kostenlos nach (Autosplash, Rio Bravo, Dino's Pizza Time), über 100 Sorten, und behältst ihn.
 
-## Was neu ist, und was geschlossen hat
+## Neuheiten und Schließungen
 
 2025 kamen Nickelodeon Land und mit ihm die Cowabunga Carts. 2026 sind unter anderem neu: Paranormal Activity: Next of Kin, die Zone Ossarium in Suburbia, die Show „I misteri di Wondy“ und der Becher von Coca-Cola Freestyle. Geschlossen haben die Monorail Mirabilandia Express (1992 bis 2019), Colazione da Papere (2003 bis 2023) und Casa Matta (2001 bis 2024), so die italienische Wikipedia. Die Sierra Tonante stand von 1992 bis 2007.
 
@@ -271,7 +269,7 @@ An den meisten Bahnen liegt der Median in unseren 42 Messtagen seit August 2026 
 
 ### Wann ist in Mirabilandia am wenigsten los?
 
-Nach unseren bisherigen Daten an einem Freitag, und im September und Oktober weniger als im August. Mit fünf bis neun Tagen je Wochentag ist das ein Hinweis und keine Regel. Bis Ende Oktober hat der Park nur an Wochenenden geöffnet.
+Nach unseren bisherigen Daten an einem Freitag, und im September und Oktober weniger als im August. Mit fünf bis neun Tagen je Wochentag kann ein einzelner voller Freitag die Reihenfolge noch ändern. Bis Ende Oktober hat der Park nur an Wochenenden geöffnet.
 
 ### Brauche ich in Mirabilandia den Flash Pass?
 
