@@ -158,8 +158,7 @@ lentamente e poi cade, in modalità Combo una segue l’altra. Altezza minima
 ```
 
 Nell’area ci sono poi il Lex Luthor Invertatron, le sedie volanti di Mr. Freeze
-(da 100 cm) e gli autoscontri Joker (da 105 cm). Chi non arriva a 132 cm in tutta
-l’area non sale su nessuna delle tre grandi montagne russe né sulla torre.
+(da 100 cm) e gli autoscontri Joker (da 105 cm).
 
 ## Le altre aree
 
@@ -230,9 +229,6 @@ attrazioni:
 | Correcaminos Bip Bip            | 100 cm         | con accompagnatore fino a 130 cm            |
 | Hotel Embrujado                 | 90 cm          | con accompagnatore fino a 120 cm            |
 
-I bambini sotto i 100 cm entrano gratis e trovano qualcosa soprattutto a Cartoon
-Village. Le quattro attrazioni veloci cominciano fra 132 e 140 cm.
-
 ## Con bambini sotto i 120 cm
 
 Senza altezza minima, ma con un adulto fino a 105 o 110 cm, si va su La Aventura
@@ -241,8 +237,7 @@ Pato Lucas, A Toda Máquina e il Convoy de Camiones. Al Cine Tour di Movie World
 Studios questa regola vale fino a 120 cm. Da 100 cm si aggiungono le due piccole
 montagne russe, Río Bravo, la sedia di Mr. Freeze e l’Hotel Embrujado, da 110 cm
 i Rápidos ACME. Sulla maggior parte di queste attrazioni i bambini fra 100 e 120
-cm salgono solo insieme a un adulto. Sulle
-altre attrazioni di solito si aspetta poco, come mostra la tabella più sotto.
+cm salgono solo insieme a un adulto.
 
 ## Quale attrazione per chi
 
@@ -251,17 +246,14 @@ inversioni e nessun pavimento, e la sua fila sta a metà classifica del parco. C
 cerca il giro più intenso va a Stunt Fall. La RCDB indica 4,5 g, e il percorso
 viene fatto due volte, la seconda all’indietro. Batman è la più moderna e quella
 con le attese più lunghe, e chi viene per lei fa bene a mettere in conto un pass.
-Il Coaster Express è una montagna russa di legno con una corsa ruvida e 1,4
-chilometri di tracciato.
 
 Shadows of Arkham è compatta, ha cinque inversioni su 823 metri e di rado ci si mette in fila.
 
 ## Spettacoli e novità 2026
 
-Il programma dura tutto il giorno, gli orari stanno nell’app del parco. La
+Gli orari degli spettacoli stanno nell’app del parco. La
 Superstars Parade per i vent’anni di attività sfila per le strade, e a chiudere
-la giornata a luglio e ad agosto c’è l’Aquaman Nighttime Spectacular, uno
-spettacolo notturno che ha debuttato nel 2019. Per i teatri con posti limitati il
+la giornata a luglio e ad agosto c’è l’Aquaman Nighttime Spectacular, che ha debuttato nel 2019. Per i teatri con posti limitati il
 parco consiglia di essere lì 30 minuti prima dell’inizio e di scegliere gli
 spettacoli che indica come meno affollati.
 
@@ -333,7 +325,7 @@ Chi viene soprattutto per Batman, secondo me, prende l’One-Pass o il Gold. Il
 Silver fa risparmiare un po’ di tempo su Superman, Venganza del Enigma e Coaster
 Express, ma proprio lì le file sono comunque corte, e il pass salta l’unica fila
 lunga del parco. Chi vuole risparmiarsi il pass va su Batman verso le 16, quando
-la fila è di qualche minuto più corta del solito, e calcola comunque del tempo.
+la fila è di qualche minuto più corta del solito.
 
 ## Quando andarci
 
@@ -442,8 +434,7 @@ per 45 € al giorno.
 Accanto al parco non c’è nessun hotel. Vende pacchetti di ingresso e pernottamento
 in hotel partner dei paesi vicini e per le visite fino al 2 novembre promuove un
 secondo giorno gratis (prenotazione entro il 12 ottobre). Chi dorme a Madrid
-percorre 30 chilometri. Conviene di più se la visita è una deviazione durante una
-vacanza a Madrid.
+percorre 30 chilometri.
 
 ## Una giornata nel parco, a grandi linee
 
@@ -514,10 +505,6 @@ Anche [PortAventura](/blog/portaventura-halloween-2026) festeggia Halloween. Le 
 ```park-comparison-widget slugs=parque-warner-madrid,portaventura-park,parque-de-atracciones-de-madrid highlight=parque-warner-madrid
 
 ```
-
-## Prima di partire
-
-A luglio e ad agosto il parco chiude a mezzanotte. L’operatore può modificare gli orari delle linee 412 e 413, conviene controllarli prima del viaggio.
 
 — Patrick
 

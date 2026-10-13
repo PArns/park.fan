@@ -162,8 +162,7 @@ hissée lentement puis tombe ; en mode Combo, l’un suit l’autre. Taille mini
 
 À cela s’ajoutent, dans la zone, le Lex Luthor Invertatron, les chaises
 volantes de Mr. Freeze (à partir de 100 cm) et les autos tamponneuses du Joker
-(à partir de 105 cm). Qui reste sous 132 cm ne monte, dans toute la zone, sur
-aucune des trois grandes attractions ni sur la tour.
+(à partir de 105 cm).
 
 ## Les autres univers
 
@@ -236,10 +235,6 @@ chaque attraction :
 | Correcaminos Bip Bip            | 100 cm          | accompagné jusqu’à 130 cm                      |
 | Hotel Embrujado                 | 90 cm           | accompagné jusqu’à 120 cm                      |
 
-Les enfants de moins de 100 cm entrent gratuitement et trouvent surtout de quoi
-faire à Cartoon Village. Les quatre attractions rapides commencent entre 132 et
-140 cm.
-
 ## Avec des enfants de moins de 120 cm
 
 Sans taille minimale, mais avec un adulte jusqu’à 105 ou 110 cm, on peut faire
@@ -248,8 +243,7 @@ Emergencias Pato Lucas, A Toda Máquina et le Convoy de Camiones. À la Cine
 Tour de Movie World Studios, cela vaut jusqu’à 120 cm. À partir de 100 cm
 s’ajoutent les deux petites montagnes russes, Río Bravo, la chaise de Mr. Freeze
 et le Hotel Embrujado, à partir de 110 cm les Rápidos ACME. Sur la plupart de
-ces attractions, les enfants de 100 à 120 cm ne montent qu’avec un adulte. Sur les autres attractions, l’attente est le
-plus souvent courte, comme le montre le tableau plus bas.
+ces attractions, les enfants de 100 à 120 cm ne montent qu’avec un adulte.
 
 ## Quelle attraction pour qui
 
@@ -258,18 +252,15 @@ pas de plancher, et sa file d’attente se situe dans la moyenne du parc. Qui ve
 le tour le plus intense va à Stunt Fall. La RCDB indique 4,5 g, et le circuit
 est parcouru deux fois, une fois à reculons. Batman est la plus moderne et celle
 qui a les temps d’attente les plus longs ; qui vient pour elle prévoit de
-préférence un pass. Le Coaster Express est un coaster en bois à la marche
-rugueuse, avec 1,4 kilomètre de voie.
+préférence un pass.
 
 Le circuit de Shadows of Arkham est compact, avec cinq inversions sur 823 mètres, et on y fait rarement la
 queue.
 
 ## Spectacles et nouveautés 2026
 
-Le programme court toute la journée, les horaires figurent dans l’application
-du parc. La Superstars Parade, pour les 20 ans du parc, défile dans les rues, et
-la clôture revient en juillet et en août à l’Aquaman Nighttime Spectacular, un
-spectacle de nuit créé en 2019. Pour les théâtres à nombre de places limité, le
+Les horaires des spectacles figurent dans l’application du parc. La Superstars Parade, pour les 20 ans du parc, défile dans les rues, et
+la clôture revient en juillet et en août à l’Aquaman Nighttime Spectacular, créé en 2019. Pour les théâtres à nombre de places limité, le
 parc conseille d’arriver 30 minutes avant le début et de choisir les séances
 qu’il indique comme moins remplies.
 
@@ -344,8 +335,7 @@ Qui vient surtout pour Batman achète, à mon avis, le One-Pass ou le Gold. Le
 Silver fait gagner un peu de temps à Superman, à la Venganza del Enigma et au
 Coaster Express, mais les files y sont déjà courtes, et le pass laisse de côté
 la seule longue file du parc. Qui veut s’en passer fait Batman vers 16 h, quand
-la file est de quelques minutes plus courte que d’habitude, et prévoit quand même
-du temps.
+la file est de quelques minutes plus courte que d’habitude.
 
 ## Quand y aller
 
@@ -461,8 +451,7 @@ avec retour la même nuit.
 Il n’y a pas d’hôtel au parc même. Il vend des packs entrée et nuit dans des
 hôtels partenaires des communes voisines, et propose pour les visites jusqu’au
 2 novembre un deuxième jour gratuit (réservation jusqu’au 12 octobre). Qui dort
-à Madrid fait 30 kilomètres. C’est plus pratique quand la visite est une
-excursion pendant un séjour à Madrid.
+à Madrid fait 30 kilomètres.
 
 ## Une journée au parc, dans les grandes lignes
 
@@ -535,10 +524,6 @@ Le temps qu’il fera au-dessus du parc le jour de votre visite :
 ```park-comparison-widget slugs=parque-warner-madrid,portaventura-park,parque-de-atracciones-de-madrid highlight=parque-warner-madrid
 
 ```
-
-## Avant de partir
-
-En juillet et en août, le parc ferme à minuit. L’exploitant peut changer les horaires des lignes de bus 412 et 413, mieux vaut les vérifier avant le départ.
 
 — Patrick
 

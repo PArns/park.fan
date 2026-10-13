@@ -157,9 +157,7 @@ en el modo Combo va uno tras otro. Altura mínima **132 cm**, máxima 195 cm.
 ```
 
 En el área están además el Lex Luthor Invertatron, las sillas voladoras de
-Mr. Freeze (desde 100 cm) y los autos de choque del Joker (desde 105 cm). Quien
-no llegue a 132 cm no sube en toda el área a ninguna de las tres grandes
-montañas rusas ni a la torre.
+Mr. Freeze (desde 100 cm) y los autos de choque del Joker (desde 105 cm).
 
 ## Las demás áreas
 
@@ -229,10 +227,6 @@ Todas las alturas mínimas, como las da el parque en la ficha de cada atracción
 | Correcaminos Bip Bip            | 100 cm        | acompañados hasta 130 cm                  |
 | Hotel Embrujado                 | 90 cm         | acompañados hasta 120 cm                  |
 
-Los niños de menos de 100 cm no pagan entrada y encuentran más cosas sobre todo
-en Cartoon Village. Las cuatro montañas rusas rápidas empiezan entre 132 y
-140 cm.
-
 ## Con niños de menos de 120 cm
 
 Sin altura mínima, pero con un adulto hasta 105 o 110 cm, funcionan La Aventura
@@ -241,8 +235,7 @@ Pato Lucas, A Toda Máquina y el Convoy de Camiones. En el Cine Tour de Movie
 World Studios esa regla llega hasta 120 cm. Desde 100 cm se añaden las dos
 montañas rusas pequeñas, Río Bravo, la silla de Mr. Freeze y el Hotel Embrujado,
 y desde 110 cm los Rápidos ACME. En la mayoría de estas atracciones los niños
-de entre 100 y 120 cm suben solo con un adulto. En el resto de atracciones se espera poco, como muestra la tabla de más
-abajo.
+de entre 100 y 120 cm suben solo con un adulto.
 
 ## Qué atracción para quién
 
@@ -251,18 +244,15 @@ siete inversiones y no tiene suelo en el vagón, y su cola está en la media del
 parque. Para el viaje más intenso hay que ir a Stunt Fall: la RCDB da 4,5 g y la
 atracción recorre dos veces el mismo trazado, una de ellas hacia atrás. Batman
 es la más moderna y la de las esperas más largas, y quien venga por ella hará
-bien en incluir un pase en el plan. El Coaster Express es una montaña rusa de
-madera de marcha áspera y 1,4 kilómetros de recorrido.
+bien en incluir un pase en el plan.
 
 Shadows of Arkham es compacta, tiene
 cinco inversiones en 823 metros y casi nunca hay cola.
 
 ## Espectáculos y novedades de 2026
 
-La programación dura todo el día y los horarios están en la app del parque. La
-Superstars Parade por el 20.º aniversario recorre las calles en forma de
-desfile, y el cierre en julio y agosto es el Aquaman Nighttime Spectacular, un
-espectáculo nocturno que se estrenó en 2019. El parque aconseja llegar 30
+Los horarios de los espectáculos están en la app del parque. La
+Superstars Parade por el 20.º aniversario recorre las calles, y el cierre en julio y agosto es el Aquaman Nighttime Spectacular, que se estrenó en 2019. El parque aconseja llegar 30
 minutos antes a los teatros con aforo limitado y elegir las funciones que él
 mismo recomienda como menos llenas.
 
@@ -336,8 +326,7 @@ Quien venga sobre todo por Batman compra, en mi opinión, el One-Pass o el Gold.
 El Silver ahorra algo de tiempo en Superman, La Venganza del Enigma y Coaster
 Express, pero justo ahí las colas ya son cortas, y el pase se salta la única cola
 larga del parque. Quien quiera ahorrarse el pase sube a Batman hacia las 16 h,
-cuando la cola es unos minutos más corta que de costumbre, y aun así reserva
-tiempo.
+cuando la cola es unos minutos más corta que de costumbre.
 
 ## Cuándo ir
 
@@ -451,8 +440,7 @@ incluido por 45 € al día.
 En el propio parque no hay hotel. Vende paquetes de entrada y noche en hoteles
 asociados de los pueblos de alrededor, y para visitas hasta el 2 de noviembre
 anuncia un segundo día gratis (reserva hasta el 12 de octubre). Quien duerme en
-Madrid recorre 30 kilómetros. Es lo más práctico cuando la visita es una
-escapada dentro de unas vacaciones en Madrid.
+Madrid recorre 30 kilómetros.
 
 ## Un día en el parque, a grandes rasgos
 
@@ -527,10 +515,6 @@ Madrid, comparados:
 ```park-comparison-widget slugs=parque-warner-madrid,portaventura-park,parque-de-atracciones-de-madrid highlight=parque-warner-madrid
 
 ```
-
-## Antes de salir
-
-En julio y agosto el parque cierra a medianoche. La empresa de autobuses puede cambiar los horarios de las líneas 412 y 413, así que conviene comprobarlos antes del viaje.
 
 — Patrick
 

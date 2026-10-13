@@ -153,8 +153,7 @@ nach oben 195 cm.
 ```
 
 Dazu kommen im Bereich der Lex Luthor Invertatron, die fliegenden Stühle von
-Mr. Freeze (ab 100 cm) und die Joker-Autoscooter (ab 105 cm). Wer unter 132 cm
-bleibt, fährt im ganzen Bereich keine der drei großen Bahnen und keinen Turm.
+Mr. Freeze (ab 100 cm) und die Joker-Autoscooter (ab 105 cm).
 
 ## Die anderen Bereiche
 
@@ -224,9 +223,6 @@ Fahrgeschäfte nennt:
 | Correcaminos Bip Bip            | 100 cm       | mit Begleitung bis 130 cm           |
 | Hotel Embrujado                 | 90 cm        | mit Begleitung bis 120 cm           |
 
-Kinder unter 100 cm zahlen keinen Eintritt und finden vor allem in Cartoon Village
-etwas. Die vier schnellen Bahnen beginnen zwischen 132 und 140 cm.
-
 ## Mit Kindern unter 120 cm
 
 Ohne Mindestgröße, aber mit Erwachsenem bis 105 oder 110 cm fahren La Aventura de
@@ -235,7 +231,7 @@ Lucas, A Toda Máquina und der Convoy de Camiones. Bei der Cine Tour in Movie
 World Studios gilt das bis 120 cm. Ab 100 cm kommen die beiden kleinen
 Achterbahnen, Río Bravo, der Mr.-Freeze-Stuhl und das Hotel Embrujado dazu, ab
 110 cm die Rápidos ACME. Auf den meisten dieser Bahnen fahren Kinder zwischen
-100 und 120 cm nur mit einem Erwachsenen mit. An den übrigen Bahnen steht man meist kurz an, wie die Tabelle weiter unten zeigt.
+100 und 120 cm nur mit einem Erwachsenen mit.
 
 ## Welche Bahn für wen
 
@@ -243,16 +239,15 @@ Wer nur eine große Bahn fährt, nimmt Superman. Sie hat sieben
 Inversionen und keinen Wagenboden, und ihre Warteschlange liegt im Mittelfeld des
 Parks. Wer die intensivste Fahrt will, geht zu Stunt Fall. Die RCDB nennt 4,5 g, und die Bahn läuft zweimal durch dieselbe Strecke, einmal rückwärts. Batman ist die modernste
 Bahn und die mit den längsten Wartezeiten, und wer wegen ihr kommt, plant am
-besten einen Pass ein. Der Coaster Express ist eine Holzbahn mit rauem Lauf und 1,4 Kilometern Strecke.
+besten einen Pass ein.
 
 Shadows of Arkham ist kompakt, hat fünf Inversionen auf 823 Metern, und man steht dort selten an.
 
 ## Shows und Neues 2026
 
-Das Programm läuft den ganzen Tag, die Zeiten stehen in der App des Parks. Die
-Superstars Parade zum 20-jährigen Jubiläum fährt als Umzug durch die Straßen, und
-den Abschluss macht im Juli und August der Aquaman Nighttime Spectacular, ein
-Nachtspektakel, das 2019 Premiere hatte. Der Park rät, bei den Theatern mit
+Die Showzeiten stehen in der App des Parks. Die
+Superstars Parade zum 20-jährigen Jubiläum fährt durch die Straßen, und
+den Abschluss macht im Juli und August der Aquaman Nighttime Spectacular, der 2019 Premiere hatte. Der Park rät, bei den Theatern mit
 begrenzter Zahl an Plätzen 30 Minuten vor Beginn da zu sein, und die Vorstellungen
 zu wählen, die er als weniger voll empfiehlt.
 
@@ -319,7 +314,7 @@ gewählten Bahn.
 Wer vor allem wegen Batman kommt, kauft meiner Meinung nach den One-Pass oder Gold. Silber spart bei Superman, Venganza del Enigma und Coaster Express etwas Zeit, aber genau dort sind die
 Warteschlangen ohnehin kurz, und der Pass lässt die einzige lange Warteschlange des Parks aus.
 Wer sich den Pass sparen will, fährt Batman gegen 16 Uhr, wenn die Warteschlange
-ein paar Minuten kürzer ist als sonst, und plant trotzdem Zeit ein.
+ein paar Minuten kürzer ist als sonst.
 
 ## Wann du hinfahren solltest
 
@@ -421,7 +416,7 @@ enthalten ist, für 45 € am Tag.
 
 Am Park selbst steht kein Hotel. Er verkauft Pakete aus Eintritt und Übernachtung
 in Partnerhotels der umliegenden Orte und wirbt für Besuche bis zum 2. November mit
-einem zweiten Tag gratis (Buchung bis 12. Oktober). Wer in Madrid schläft, fährt 30 Kilometer. Das ist praktischer, wenn der Besuch ein Abstecher im Madrid-Urlaub ist.
+einem zweiten Tag gratis (Buchung bis 12. Oktober). Wer in Madrid schläft, fährt 30 Kilometer.
 
 ## Ein Tag im Park, grob geplant
 
@@ -492,10 +487,6 @@ Auch [PortAventura](/blog/portaventura-halloween-2026) feiert Halloween. Die War
 ```park-comparison-widget slugs=parque-warner-madrid,portaventura-park,parque-de-atracciones-de-madrid highlight=parque-warner-madrid
 
 ```
-
-## Vor der Abfahrt
-
-Im Juli und August schließt der Park um Mitternacht. Die Fahrpläne der Linien 412 und 413 kann der Busbetreiber ändern, deshalb vor der Fahrt prüfen.
 
 — Patrick
 

@@ -152,9 +152,7 @@ de Combo-stand volgt het ene op het andere. Minimale lengte **132 cm**, tot 195 
 ```
 
 In dit gebied staan verder de Lex Luthor Invertatron, de vliegende stoelen van
-Mr. Freeze (vanaf 100 cm) en de Joker-botsauto’s (vanaf 105 cm). Wie onder de
-132 cm blijft, rijdt in het hele gebied geen van de drie grote banen en niet in
-de toren.
+Mr. Freeze (vanaf 100 cm) en de Joker-botsauto’s (vanaf 105 cm).
 
 ## De andere gebieden
 
@@ -224,9 +222,6 @@ attracties noemt:
 | Correcaminos Bip Bip            | 100 cm          | met begeleider tot 130 cm               |
 | Hotel Embrujado                 | 90 cm           | met begeleider tot 120 cm               |
 
-Kinderen onder 100 cm betalen geen entree en vinden vooral in Cartoon Village
-iets te doen. De vier snelle banen beginnen tussen 132 en 140 cm.
-
 ## Met kinderen onder 120 cm
 
 Zonder minimale lengte, maar met een volwassene tot 105 of 110 cm, kun je in La
@@ -235,8 +230,7 @@ Emergencias Pato Lucas, A Toda Máquina en de Convoy de Camiones. Bij de Cine To
 in Movie World Studios geldt dat tot 120 cm. Vanaf 100 cm komen de twee kleine
 achtbanen, Río Bravo, de Mr.-Freeze-stoel en het Hotel Embrujado erbij, vanaf
 110 cm de Rápidos ACME. In de meeste van deze attracties mogen kinderen tussen
-100 en 120 cm alleen mee met een volwassene. Bij
-de overige banen staat meestal weinig rij, zoals de tabel verderop laat zien.
+100 en 120 cm alleen mee met een volwassene.
 
 ## Welke baan voor wie
 
@@ -244,17 +238,15 @@ Wie maar één grote baan rijdt, kiest Superman. Hij heeft zeven inversies en ge
 wagenvloer, en zijn rij is middelmatig voor dit park. Wie de heftigste rit wil,
 gaat naar Stunt Fall. De RCDB noemt 4,5 g, en de baan loopt tweemaal door
 hetzelfde parcours, een keer achterwaarts. Batman is de modernste baan en die met
-de langste wachttijden, en wie voor hem komt, plant het best een pas in. De
-Coaster Express is een houten baan met een ruwe rit en 1,4 kilometer spoor.
+de langste wachttijden, en wie voor hem komt, plant het best een pas in.
 
 Shadows of Arkham is compact, heeft vijf inversies op 823 meter en je staat er zelden aan.
 
 ## Shows en nieuw in 2026
 
-Het programma loopt de hele dag, de tijden staan in de app van het park. De
-Superstars Parade voor het 20-jarig jubileum trekt als optocht door de straten, en
-in juli en augustus sluit het Aquaman Nighttime Spectacular de dag af, een
-nachtspektakel dat in 2019 in première ging. Het park raadt aan bij de theaters
+De showtijden staan in de app van het park. De
+Superstars Parade voor het 20-jarig jubileum trekt door de straten, en
+in juli en augustus sluit het Aquaman Nighttime Spectacular, dat in 2019 in première ging, de dag af. Het park raadt aan bij de theaters
 met een beperkt aantal plaatsen 30 minuten voor aanvang te zijn en de
 voorstellingen te kiezen die het als minder druk aanbeveelt.
 
@@ -324,7 +316,7 @@ Wie vooral voor Batman komt, koopt volgens mij de One-Pass of Gold. Silver bespa
 bij Superman, Venganza del Enigma en Coaster Express wat tijd, maar juist daar zijn
 de rijen toch al kort, en de pas laat de enige lange rij van het park links liggen.
 Wie de pas wil overslaan, rijdt Batman rond 16 uur, als de rij een paar minuten
-korter is dan anders, en plant toch tijd in.
+korter is dan anders.
 
 ## Wanneer je moet gaan
 
@@ -431,8 +423,7 @@ park is inbegrepen, voor € 45 per dag.
 Bij het park zelf staat geen hotel. Het verkoopt pakketten van entree en
 overnachting in partnerhotels in de omliggende plaatsen en biedt voor bezoeken tot
 2 november een tweede dag gratis aan (boeken tot 12 oktober). Wie in Madrid
-slaapt, rijdt 30 kilometer. Dat is praktischer als het bezoek een uitstapje is
-tijdens een Madridvakantie.
+slaapt, rijdt 30 kilometer.
 
 ## Een dag in het park, grof gepland
 
@@ -504,10 +495,6 @@ Ook [PortAventura](/blog/portaventura-halloween-2026) viert Halloween. De wachtt
 ```park-comparison-widget slugs=parque-warner-madrid,portaventura-park,parque-de-atracciones-de-madrid highlight=parque-warner-madrid
 
 ```
-
-## Voor je vertrekt
-
-In juli en augustus sluit het park om middernacht. De busmaatschappij kan de dienstregeling van lijn 412 en 413 wijzigen, kijk die dus vooraf na.
 
 — Patrick
 

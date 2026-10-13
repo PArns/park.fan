@@ -159,8 +159,7 @@ maximum 195 cm.
 ```
 
 The area also has the Lex Luthor Invertatron, Mr. Freeze’s flying chairs (from
-100 cm) and the Joker bumper cars (from 105 cm). If you stay under 132 cm, you
-can’t ride any of the three big coasters or the tower anywhere in the area.
+100 cm) and the Joker bumper cars (from 105 cm).
 
 ## The other areas
 
@@ -231,9 +230,6 @@ rides:
 | Correcaminos Bip Bip            | 100 cm         | with an adult up to 130 cm          |
 | Hotel Embrujado                 | 90 cm          | with an adult up to 120 cm          |
 
-Children under 100 cm get in free and find most of their rides in Cartoon
-Village. The four fast coasters start between 132 and 140 cm.
-
 ## With children under 120 cm
 
 With no minimum height, but with an adult up to 105 or 110 cm, you can ride La
@@ -242,8 +238,7 @@ Emergencias Pato Lucas, A Toda Máquina and the Convoy de Camiones. At the Cine
 Tour in Movie World Studios that applies up to 120 cm. From 100 cm the two small
 coasters, Río Bravo, the Mr. Freeze chair and the Hotel Embrujado join in, and
 from 110 cm the Rápidos ACME. On most of these rides, children between 100 and
-120 cm can only go with an adult. At the other
-rides the queue is usually short, as the table further down shows.
+120 cm can only go with an adult.
 
 ## Which ride for whom
 
@@ -252,17 +247,15 @@ floor, and its queue sits in the middle of the park’s range. If you want the
 most intense ride, go to Stunt Fall. The RCDB lists 4.5 g, and the ride runs
 through the same track twice, once backwards. Batman is the most modern coaster
 and the one with the longest wait times, and if you’re coming for it, you’re
-best off planning a pass. Coaster Express is a wooden coaster with a rough ride
-and 1.4 kilometres of track.
+best off planning a pass.
 
 Shadows of Arkham is compact, has five inversions on 823 metres, and you rarely queue there.
 
 ## Shows and what’s new in 2026
 
-The programme runs all day, and the times are in the park’s app. The Superstars
-Parade for the 20th anniversary moves through the streets as a procession, and
-in July and August the Aquaman Nighttime Spectacular, a night show that
-premiered in 2019, closes the day. For the theatres with a limited number of
+Show times are in the park’s app. The Superstars
+Parade for the 20th anniversary moves through the streets, and
+in July and August the Aquaman Nighttime Spectacular, which premiered in 2019, closes the day. For the theatres with a limited number of
 seats the park advises being there 30 minutes before the start and choosing the
 shows it recommends as less crowded.
 
@@ -331,8 +324,7 @@ If you’re coming mainly for Batman, I’d buy the One-Pass or Gold. Silver sav
 little time at Superman, Venganza del Enigma and Coaster Express, but those are
 exactly the places where the queues are short anyway, and the pass skips the
 one long queue in the park. If you’d rather save the pass money, ride Batman
-around 4pm, when the queue is a few minutes shorter than usual, and still plan
-time for it.
+around 4pm, when the queue is a few minutes shorter than usual.
 
 ## When to go
 
@@ -440,8 +432,7 @@ a day.
 There’s no hotel at the park itself. It sells packages of admission and an
 overnight stay in partner hotels in the surrounding towns, and for visits until
 2 November it advertises a free second day (booking until 12 October). If you
-sleep in Madrid, you drive 30 kilometres. That’s more practical when the visit is
-a side trip in a Madrid holiday.
+sleep in Madrid, you drive 30 kilometres.
 
 ## A day in the park, roughly planned
 
@@ -514,10 +505,6 @@ compared:
 ```park-comparison-widget slugs=parque-warner-madrid,portaventura-park,parque-de-atracciones-de-madrid highlight=parque-warner-madrid
 
 ```
-
-## Before you set off
-
-In July and August the park closes at midnight. The bus operator can change the timetables of lines 412 and 413, so check them before you travel.
 
 — Patrick
 
