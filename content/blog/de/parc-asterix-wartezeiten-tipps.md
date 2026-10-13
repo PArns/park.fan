@@ -25,11 +25,6 @@ parkLinks:
   - parc-asterix
 rideLinks:
   - parc-asterix/*
-coverImage:
-  src: /media/parc-asterix/oziris.jpg
-  alt: 'Ein Zug von OzIris hängt kopfüber im Scheitel einer Inversion vor blauem Himmel, im Vordergrund Baumkronen und eine beige Stütze.'
-  caption: 'OzIris, ein Inverted Coaster von Bolliger & Mabillard, seit 2012 im Parc Astérix.'
-  credit: 'Jules-leconnaisseurd’attraction / Wikimedia Commons (CC BY-SA 4.0)'
 seo:
   title: 'Parc Astérix: Wartezeiten, Achterbahnen und Tipps'
   description: >-

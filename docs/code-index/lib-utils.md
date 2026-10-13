@@ -232,6 +232,15 @@ Cached `Intl` formatter factories. Constructing a formatter costs far more than 
 - `MAX_TITLE_LENGTH` _const_: Google truncates the SERP title around 60 characters, and a keyword past that disappears behind an ellipsis. Templates fit typical names; a long name pushes them over on its own.
 - `MAX_DESCRIPTION_LENGTH` _const_: Google's snippet length, past which the description is cut.
 
+### [`nowcast-conditions.ts`](../../lib/utils/nowcast-conditions.ts)
+
+- `upcomingNowcastSteps` _function_: The steps whose slot has not fully passed. Step times are naive park-local strings, so the cutoff is compared in the park timezone, against `observedAt` (stable across SSR) as "now".
+- `formatStepTime` _function_: A step's naive park-local time as „HH:MM" in the reader's locale.
+- `nowcastOutlook` _function_: Gust and visibility highlights of the upcoming steps; both `null` when the window is calm.
+- `NOTABLE_GUST_KMH` _const_: Gust speed (km/h) from which the weather card marks wind in the nowcast window. 50 km/h is Beaufort 7 and about where the DWD starts its lowest gust warning.
+- `LOW_VISIBILITY_M` _const_: Visibility (m) below which the weather card calls it fog and marks it in the nowcast window. The same line the live conditions column already draws for „Nebel".
+- Types: `NowcastOutlook`
+
 ### [`nowcast-shelter.ts`](../../lib/utils/nowcast-shelter.ts)
 
 When the nowcast says it is time to go under a roof: the trigger for the covered rides the park page's nowcast banner offers.
@@ -440,6 +449,7 @@ Server-side „current time" helpers. On per-request pages they are fresh; on pr
 
 - `foldText` _function_: Text reduced for matching: lower case, accents off, "ß" as "ss", so "farup" finds "Fårup" and "strasse" finds "Straße". "ß" has no Unicode decomposition, hence the explicit replace.
 - `foldRideName` _function_: A ride name reduced for matching, so "winjas" finds "Winja's" and "fly" finds "F.L.Y.".
+- `matchesQuery` _function_: Whether every word of `query` occurs, folded, in at least one of `fields`, so "phanta" finds Phantasialand and "rust europa" finds Europa-Park by its town. An empty query matches all.
 
 ### [`touch-target.ts`](../../lib/utils/touch-target.ts)
 

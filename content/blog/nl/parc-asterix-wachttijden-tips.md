@@ -25,11 +25,6 @@ parkLinks:
   - parc-asterix
 rideLinks:
   - parc-asterix/*
-coverImage:
-  src: /media/parc-asterix/oziris.jpg
-  alt: 'Een trein van OzIris hangt ondersteboven bovenin een inversie tegen een blauwe lucht, vooraan boomtoppen en een beige steunpilaar.'
-  caption: 'OzIris, een inverted coaster van Bolliger & Mabillard, sinds 2012 in Parc Astérix.'
-  credit: 'Jules-leconnaisseurd’attraction / Wikimedia Commons (CC BY-SA 4.0)'
 seo:
   title: 'Parc Astérix: wachttijden, achtbanen en tips'
   description: >-

@@ -2,6 +2,7 @@
 title: 'Toverland: Troy, die Holzachterbahn, an der alle vorbeifahren'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
+updatedAt: '2026-10-11'
 author: patrick
 mode: published
 featured: false
@@ -410,7 +411,9 @@ Park.
 > gibt, und an vollen Nächten der Unterschied zwischen „drei Häuser geschafft“
 > und „alle sechs, und dazu heil aus dem Mais gekommen“.
 >
-> Den Fear Pass gibt es nur online und pro Abend nur in begrenzter Zahl. Der
+> Den Fear Pass gibt es nur online und pro Abend nur in begrenzter Zahl. Für die
+> Halloween Nights 2026 ist er ausverkauft; die Haunted Experiences gibt es weiter
+> einzeln. Der
 > Eintritt zu den Halloween Nights ist beim **Magic Member** enthalten, die
 > Haunted Experiences und der Fear Pass nicht.
 
@@ -492,9 +495,9 @@ der **August** und der **Dezember**. Hinter dem Dezember stehen in unseren Daten
 allerdings nur die letzten Tage des Jahres 2025, ab dem 26. Dezember, mitten
 in den Weihnachtsferien. Unter den gut gemessenen Monaten war bisher der **September**
 am ruhigsten, nach dem Ende der Sommerferien. Eine Einschränkung dazu: Januar und März stehen auf einer Handvoll
-Messtagen, Februar, Oktober und November fehlen noch ganz (Stand 25. September
-2026), und außerhalb der Saison öffnet der Park ohnehin nur mittwochs und am
-Wochenende.
+Messtagen, den Februar haben wir gar nicht, und Oktober und November messen wir
+2026 zum ersten Mal. Außerhalb der Saison öffnet der Park ohnehin nur mittwochs
+und am Wochenende.
 
 **Nach Wochentag** gehen die Zahlen so gut wie gar nicht auseinander, kein Tag
 der Woche sticht heraus. Im Phantasialand ist ein Samstag spürbar voller als ein
@@ -626,7 +629,7 @@ Unterschied. Tag für Tag steht das im [Wartezeiten-Kalender](ref:attractiepark-
 
 Es gibt keinen. Das Toverland verkauft überhaupt keinen Fast Pass; die einzige
 Ausnahme ist der **Fear Pass** für die Haunted Experiences während der
-Halloween Nights (69,95 €). Eine kostenlose Single-Rider-Spur gibt es nur am
+Halloween Nights (69,95 €, für 2026 ausverkauft). Eine kostenlose Single-Rider-Spur gibt es nur am
 Freifallturm Dragonwatch. Bei den Medianen, die an den Headlinern stehen, brauchst du an einem normalen
 Tag ohnehin keine Abkürzung.
 

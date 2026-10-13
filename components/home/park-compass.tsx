@@ -15,9 +15,10 @@ import { ArrowUp, ChevronRight, Compass, MapPin, Pin, X } from 'lucide-react';
 import { Link, usePathname } from '@/i18n/navigation';
 import { PANEL_FLAT, PHOTO_GLASS_FILL } from '@/components/common/glass-card';
 import { LiveDot } from '@/components/common/live-dot';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { splitInParkRides } from '@/components/parks/nearby-in-park-view';
+import { IN_PARK_LIST, IN_PARK_ROW_LINK } from '@/components/parks/in-park-row';
+import { LiveWaitPill, RIDE_STATUS_TEXT } from '@/components/parks/live-wait-pill';
 import { ParkCompassDial, type DialRide, type DialRideKind } from './park-compass-dial';
 import {
   trackCompassHeadingOn,
@@ -44,7 +45,6 @@ import {
   stableOrder,
   stableRange,
 } from '@/lib/utils/compass';
-import { CROWD_SOLID_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { calculateDistance, formatDistance } from '@/lib/utils/distance-utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
@@ -104,15 +104,6 @@ function rideKind(status: string, wait: number | null): DialRideKind {
   if (status === 'REFURBISHMENT') return 'refurb';
   return 'closed';
 }
-
-/** The colour a status is written in, where a ride's status is text rather than a badge. */
-const STATUS_TEXT: Record<DialRideKind, string> = {
-  wait: '',
-  open: 'text-status-operating',
-  down: 'text-status-down',
-  refurb: 'text-status-refurbishment',
-  closed: '',
-};
 
 /**
  * The headliners around somebody standing in a park, inside a compass bezel: which way each one
@@ -374,7 +365,7 @@ export function ParkCompass({
       {r.wait === null && (
         <>
           {' · '}
-          <span className={STATUS_TEXT[r.kind]}>{tStatus(r.status)}</span>
+          <span className={RIDE_STATUS_TEXT[r.status]}>{tStatus(r.status)}</span>
         </>
       )}
     </>
@@ -403,17 +394,6 @@ export function ParkCompass({
       />
     );
   };
-
-  const wait = (minutes: number) => (
-    <Badge
-      className={cn(
-        CROWD_SOLID_CLASS[waitTimeCrowdTier(minutes)],
-        'border-transparent px-2.5 py-1 font-bold tabular-nums'
-      )}
-    >
-      {minutes} {tCommon('min')}
-    </Badge>
-  );
 
   return (
     <div
@@ -539,7 +519,7 @@ export function ParkCompass({
                       {meta(focus, false)}
                     </span>
                   </span>
-                  {focus.wait !== null && wait(focus.wait)}
+                  {focus.wait !== null && <LiveWaitPill minutes={focus.wait} />}
                   <ChevronRight
                     aria-hidden="true"
                     className="text-foreground/60 group-hover:text-primary size-4 shrink-0 transition-colors"
@@ -565,14 +545,14 @@ export function ParkCompass({
           )}
         </div>
 
-        <ul className="divide-foreground/10 divide-y">
+        <ul className={IN_PARK_LIST}>
           {rides.map((r) => (
             <li key={r.id}>
               <Link
                 href={r.href}
                 prefetch={false}
                 onClick={() => counted && trackCompassRideOpened('list')}
-                className="group -mx-2 flex items-center gap-3 rounded-lg px-2 py-2.5 transition-colors hover:bg-white/40 dark:hover:bg-white/[0.04]"
+                className={IN_PARK_ROW_LINK}
               >
                 <span
                   className={cn(
@@ -599,7 +579,7 @@ export function ParkCompass({
                     )}
                   </span>
                 </span>
-                {r.wait !== null && wait(r.wait)}
+                {r.wait !== null && <LiveWaitPill minutes={r.wait} />}
                 <ChevronRight
                   aria-hidden="true"
                   className="text-foreground/60 group-hover:text-primary size-4 shrink-0 transition-colors max-sm:hidden"

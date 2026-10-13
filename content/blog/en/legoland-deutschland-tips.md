@@ -18,6 +18,11 @@ tags:
   - germany
   - season-2026
 category: guides
+coverImage:
+  src: /media/legoland-deutschland/flying-ninjago-16x9.jpg
+  alt: 'The red flying arm sits at an angle in the air, the gondolas with their riders hanging off both sides.'
+  caption: 'Flying NINJAGO, the one ride in the park with a single limit for everybody.'
+  credit: 'Alex234 / Wikimedia Commons (CC0 1.0)'
 parkLinks:
   - legoland-deutschland
 rideLinks:

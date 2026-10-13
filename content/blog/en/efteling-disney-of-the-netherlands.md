@@ -181,7 +181,7 @@ later its successor is named after that exact piece. What plays underneath today
 is a new orchestration of the same work; the park has released 29 minutes of
 soundtrack.
 
-There’s more of the Spookslot left physically, too, than the outside suggests.
+Parts of the old Spookslot are still in the park, too.
 When the building was cleared out in September 2022, everything usable went into
 the archive. The **candelabra** from the queue in the octagonal tower are
 repaired, repainted and back one to one. The **satyrs** were detailed enough to
@@ -208,8 +208,8 @@ https://www.youtube.com/watch?v=qYmcIgmW8Hk
 **[Joris en de Draak](ref:efteling/joris-en-de-draak)** is the dueling wooden
 coaster by **GCI**, open since 2010, water against fire, two trains that leave
 side by side and overtake each other on the way round. It replaced the old Pegasus
-and it’s the most in-demand attraction in the park in our data. I’ve written
-about it before in the
+and it’s the most in-demand attraction in the park in our data. We wrote
+about it in our
 [Toverland guide](/blog/toverland-troy-wait-times-tips), and not especially
 kindly, because seventy kilometres to the south-east there’s a better GCI coaster
 with less than half the queue. That still stands. As a race you can watch the other train

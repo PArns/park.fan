@@ -90,8 +90,8 @@ Na het winterseizoen wordt de baan afgebroken. Het park heeft voor
 Onze wachttijdhistorie voor het Europa-Park begint op 26 december 2025, beslaat
 eind september 2026 dus zo’n negen maanden, en is sinds april op één dag in juli
 na compleet. Over alle weekdagen gerekend is de typische wachttijd parkbreed
-(de mediaan) **korter dan je bij zo’n drukte zou verwachten**; op drukke dagen
-ligt hij daar duidelijk boven.
+(de mediaan) **kort voor zo’n drukte**; op drukke dagen ligt hij daar duidelijk
+boven.
 
 De tien attracties waar je het langst staat, met de waarde van vandaag ernaast:
 

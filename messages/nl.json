@@ -154,6 +154,7 @@
     },
     "worldPanel": {
       "title": "Parken in {continent}",
+      "openWorldwide": "{count, plural, =1 {1 park wereldwijd open} other {# parken wereldwijd open}}",
       "subtitle": "{count, plural, =1 {1 land} other {# landen}} · wissel van continent",
       "openWord": "open",
       "countryOpen": "{count} open",
@@ -398,8 +399,8 @@
     },
     "families": {
       "kicker": "Met kinderen",
-      "title": "Welke attracties mag mijn kind in? Filter op lengte",
-      "lead": "Bij elke attractie toont park.fan de minimumlengte die het park opgeeft. Zo check je al voor je bezoek welke attracties jullie samen kunnen doen en voor welke je kind nog te klein is.",
+      "title": "Minimumlengtes in één overzicht",
+      "lead": "Het park geeft per attractie een lengte op. Voor je bezoek zie je welke jullie samen kunnen doen en waarvoor je kind nog te klein is.",
       "cardBody": "Alle attracties op minimumlengte."
     }
   },
@@ -451,9 +452,10 @@
       "iosHint": "Tik in Safari op de knop Deel en kies “Zet op beginscherm”."
     },
     "copyright": "© {year} park.fan. Alle rechten voorbehouden.",
-    "poweredBy": "Aangedreven door",
     "legalLinks": "Juridisch",
-    "disclaimer": "Alle informatie wordt verstrekt zonder garantie. De getoonde wachttijden en statusinformatie worden automatisch verstrekt en kunnen afwijken van de actuele situatie ter plaatse."
+    "disclaimer": "park.fan is een privé-hobbyproject. Alle informatie wordt verstrekt zonder garantie. De getoonde wachttijden en statusinformatie worden automatisch verstrekt en kunnen afwijken van de actuele situatie ter plaatse.",
+    "dataSources": "Databronnen",
+    "weatherSource": "Weer"
   },
   "explore": {
     "title": "Attractiepark Wachttijden in {location}",
@@ -936,6 +938,12 @@
       },
       "gustsLabel": "Windstoten",
       "visibilityLabel": "Zicht",
+      "outlook": {
+        "upTo": "tot",
+        "downTo": "daalt tot",
+        "around": "rond {time}",
+        "note": "Kan de werking van attracties beïnvloeden."
+      },
       "snowLabel": "Sneeuw",
       "nowLabel": "Nu",
       "compressedAxisHint": "Buiten de openingstijden is de tijdas samengedrukt.",
@@ -1021,6 +1029,8 @@
       "subtitle": "Gebaseerd op {days} gemeten openingsdagen",
       "byMonthTitle": "Gemiddelde drukte per maand",
       "byDowTitle": "Gemiddelde drukte per dag van de week",
+      "busiestDaysTitle": "Drukste gemeten dagen",
+      "quietestDaysTitle": "Rustigste gemeten dagen",
       "topAttractionsTitle": "Attracties met langste wachtrijen gemiddeld",
       "avgWait": "Gem. wacht",
       "p50": "Typisch",
@@ -2235,6 +2245,14 @@
     "video": {
       "play": "Video afspelen",
       "playHint": "Laadt de YouTube-speler pas als je tikt."
+    },
+    "audio": {
+      "play": "Nummer afspelen",
+      "playHint": "Laadt de speler van suno.com pas als je tikt."
+    },
+    "instagram": {
+      "load": "Bericht laden",
+      "loadHint": "Laadt het bericht van Instagram (Meta) pas als je tikt."
     }
   },
   "blogToast": {
@@ -2650,7 +2668,8 @@
         "next-up": "Wanneer je naar de volgende attractie moet",
         "show-times": "Speeltijden van de shows",
         "ride-status": "Als een geplande attractie sluit of weer opengaat",
-        "wait-change": "Als een geplande wachttijd flink verandert"
+        "wait-change": "Als een geplande wachttijd flink verandert",
+        "rain-soon": "Regenwaarschuwing met overdekte attracties"
       },
       "share": "Link naar dit plan delen",
       "shareCopied": "Link gekopieerd",

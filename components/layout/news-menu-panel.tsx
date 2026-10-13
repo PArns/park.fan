@@ -8,6 +8,7 @@ import { Link } from '@/i18n/navigation';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { NewsAge } from '@/components/blog/news-age';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
+import { PhotoCredit } from '@/components/media/photo-credit';
 import { newsPostPath } from '@/lib/blog/paths';
 import type { NewsMenu } from '@/lib/navigation/news-menu';
 
@@ -56,6 +57,7 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
                 <Megaphone className="h-3.5 w-3.5" aria-hidden="true" />
                 {label}
               </span>
+              <PhotoCredit src={lead.image} />
             </span>
             <NewsAge date={lead.date} className="text-xs" />
             <span className="text-foreground group-hover:text-primary mt-1 block text-lg leading-snug font-bold text-pretty transition-colors">

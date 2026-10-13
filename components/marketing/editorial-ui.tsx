@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { objectPositionForSrc } from '@/lib/media/focus';
+import { PhotoCredit } from '@/components/media/photo-credit';
 import { FaqAccordion } from '@/components/faq/faq-accordion';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
@@ -30,6 +31,12 @@ import { ParkPlannerLink } from '@/components/parks/park-planner-link';
  * docs/rules/a-blog-card-is-a-row-on-phones.md.
  */
 export const HERO_FLOW_INTO_PULL = '-mt-44 sm:mt-0';
+
+/**
+ * Where an on-image `<PhotoCredit>` sits in a `flowInto` hero: the 2 px above the pulled-up section
+ * on a phone (11rem = the `-mt-44` of `HERO_FLOW_INTO_PULL`), the usual corner from `sm` up.
+ */
+export const HERO_CREDIT_POSITION = 'bottom-[calc(11rem+2px)] sm:bottom-1.5';
 
 /** The one primary action a landing page names in its head (docs/product/landing-pages.md §4). */
 export interface LandingAction {
@@ -230,6 +237,8 @@ export function LandingHero(props: LandingHeroProps) {
       ) : (
         <ScrollCue label={scrollLabel} />
       )}
+      {/* Last, so the link comes after the page's own action in the tab order. */}
+      <PhotoCredit src={imageSrc} linked className={flowInto ? HERO_CREDIT_POSITION : undefined} />
     </header>
   );
 }

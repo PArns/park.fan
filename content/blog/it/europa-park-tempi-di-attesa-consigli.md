@@ -90,8 +90,8 @@ evento d’addio per il **9 gennaio 2027**.
 Il nostro storico dei tempi di attesa per l’Europa-Park comincia il 26 dicembre
 2025, quindi a fine settembre 2026 copre circa nove mesi, e da aprile non ha buchi
 salvo un giorno di luglio. Su tutti i giorni della settimana l’attesa tipica
-nella media del parco (la mediana) è **più breve di quanto ci si aspetterebbe
-con tutta questa gente**; nei giorni pieni sta nettamente più in alto.
+nella media del parco (la mediana) è **breve per un’affluenza simile**; nei
+giorni pieni sta nettamente più in alto.
 
 Le dieci attrazioni per cui aspetti di più, con accanto il valore di oggi:
 

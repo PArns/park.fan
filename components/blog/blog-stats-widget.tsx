@@ -69,7 +69,7 @@ export async function BlogStatsWidget({ park, slug, show }: BlogStatsWidgetProps
         locale={locale}
         initialStats={initialStats}
         flat
-        {...(cards ? { show: cards, hideHeading: true } : {})}
+        {...(cards ? { show: cards, hideHeading: true } : { show: CARD_NAMES })}
       />
     </div>
   );

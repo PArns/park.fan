@@ -2,6 +2,7 @@
 title: 'Toverland: Troy, la montaña rusa de madera ante la que todos pasan de largo'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
+updatedAt: '2026-10-11'
 author: patrick
 mode: published
 featured: false
@@ -403,7 +404,9 @@ este sitio.
 > atajo que se puede comprar aquí, y con él, en las noches llenas, llegas a hacer
 > las seis.
 >
-> El Fear Pass solo se vende online y en número limitado por noche. La entrada a
+> El Fear Pass solo se vende online y en número limitado por noche, y para las
+> Halloween Nights de 2026 está agotado; las haunted experiences se siguen
+> vendiendo por separado. La entrada a
 > las Halloween Nights va incluida en el pase anual **Magic Member**; las haunted
 > experiences y el Fear Pass, no.
 
@@ -485,9 +488,9 @@ Aquí vale casi cualquier día.
 tienen los últimos días de 2025, desde el 26 de diciembre, en plenas vacaciones
 de Navidad. De los meses bien medidos, **septiembre** ha sido hasta ahora el más
 tranquilo, tras el final de las vacaciones de verano. Una salvedad: enero y marzo
-se apoyan en un puñado de días de medición, y febrero, octubre y noviembre
-todavía faltan por completo (a 25 de septiembre de 2026). Fuera de temporada el
-parque solo abre los miércoles y los fines de semana, de todos modos.
+se apoyan en un puñado de días de medición, febrero no lo tenemos, y octubre y
+noviembre los medimos por primera vez en 2026. Fuera de temporada el parque solo
+abre los miércoles y los fines de semana, de todos modos.
 
 **Por días de la semana** las cifras prácticamente no se separan, ningún día
 destaca. En Phantasialand un sábado está bastante más lleno que un martes.
@@ -621,7 +624,7 @@ diferencia. El detalle día a día está en el [calendario de tiempos de espera]
 
 No existe. Toverland no vende ningún pase rápido; la única excepción es el
 **Fear Pass** para las haunted experiences durante las Halloween Nights
-(69,95 €). Una fila gratuita de single rider solo existe en la torre de caída
+(69,95 €, agotado para 2026). Una fila gratuita de single rider solo existe en la torre de caída
 Dragonwatch. Con las medianas que marcan las atracciones principales tampoco
 necesitas ningún atajo en un día normal.
 

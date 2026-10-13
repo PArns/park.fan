@@ -1,4 +1,4 @@
-import type { NearbyResponse, NearbyParksData } from '@/types/nearby';
+import type { NearbyAttractionsData, NearbyResponse, NearbyParksData } from '@/types/nearby';
 
 /**
  * The last nearby answer, persisted so a returning visitor sees parks before the network does
@@ -73,6 +73,47 @@ function parseEntry(raw: string): CachedNearby | null {
     lastRaw = raw;
   }
   return lastParsed;
+}
+
+/**
+ * Whether an answer still holds after the visitor moved `movedM` metres from where it was asked:
+ * true only when the move cannot have carried them across the in-park radius of a park it names.
+ * Inside a park the park's distance plus the move must stay within the radius; outside, the
+ * nearest park's distance minus the move must stay beyond it. Walking around inside a park or far
+ * from one keeps the answer; walking in or out does not, and that is the only time it matters.
+ */
+export function answerSurvivesMove(
+  data: NearbyResponse,
+  movedM: number,
+  inParkRadiusM: number
+): boolean {
+  if (data.type === 'in_park') {
+    const distance = (data.data as NearbyAttractionsData).park?.distance;
+    return typeof distance === 'number' && distance + movedM <= inParkRadiusM;
+  }
+  let nearest = Infinity;
+  for (const park of (data.data as NearbyParksData).parks ?? []) {
+    if (typeof park.distance === 'number') nearest = Math.min(nearest, park.distance);
+  }
+  return nearest - movedM > inParkRadiusM;
+}
+
+/**
+ * The entry that may seed a query as `initialData`, which suppresses its request for the rest of
+ * `CACHE_MAX_AGE_MS`: `readCacheEntry`, and on top of it `answerSurvivesMove` for an entry asked
+ * from other coordinates. Painting a placeholder from 10 km away is harmless; seeding from there
+ * kept a visitor who walked into a park reading „away" until the next poll.
+ */
+export function readSeedEntry(
+  currentLat: number | null,
+  currentLng: number | null,
+  inParkRadiusM: number
+): CachedNearby | undefined {
+  const entry = readCacheEntry(currentLat, currentLng);
+  if (!entry || currentLat == null || currentLng == null || entry.lat == null || entry.lng == null)
+    return entry;
+  const movedM = haversineKm(currentLat, currentLng, entry.lat, entry.lng) * 1000;
+  return movedM === 0 || answerSurvivesMove(entry.data, movedM, inParkRadiusM) ? entry : undefined;
 }
 
 /**

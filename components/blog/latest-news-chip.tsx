@@ -46,7 +46,8 @@ export function latestNewsFrom(
  * The newest news post, in one of two shapes.
  *
  * - **`chip`** (the homepage hero): one line of label, date, headline and arrow, as tall as the
- *   open-parks badge beside it. The hero is the only news above the fold on any screen.
+ *   open-parks badge. Given a width, the headline takes the slack and the arrow sits at the end.
+ *   The hero is the only news above the fold on any screen.
  * - **`card`** (the phone menu): label and date, then two lines of headline and a few of teaser,
  *   so a 300 px column says what the news is about.
  *
@@ -129,7 +130,7 @@ export function LatestNewsChip({
       )}
     >
       {label}
-      <span className="min-w-0 truncate">
+      <span className="min-w-0 flex-1 truncate">
         {time && (
           <>
             {time}

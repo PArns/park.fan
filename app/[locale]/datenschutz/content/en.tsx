@@ -1,579 +1,304 @@
 /* eslint-disable react/no-unescaped-entities */
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { AnalyticsOptOut } from '@/components/common/analytics-opt-out';
+import { LegalH2, LegalH3, LegalLink, LegalList } from '@/components/legal/legal-blocks';
 
-/** The privacy policy in English, shown on every locale but `de`. */
+/** The privacy policy in English, shown on every locale except `de`. */
 export function DatenschutzEN() {
   return (
     <>
-      <h1 className="mb-8 text-4xl font-bold">Privacy Policy</h1>
+      <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 12 October 2026</p>
 
-      <div className="space-y-6 text-base leading-7">
-        <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold first:mt-0">
-          1. Data Protection at a Glance
-        </h2>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">General Information</h3>
-        <p className="mb-4">
-          The following information provides a simple overview of what happens to your personal data
-          when you visit this website. Personal data is any data with which you can be personally
-          identified. Detailed information on the subject of data protection can be found in our
-          privacy policy listed below this text.
-        </p>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Data Collection on This Website</h3>
-
-        <h4 className="mt-6 mb-3 text-xl font-semibold">
-          Who is responsible for data collection on this website?
-        </h4>
-        <p className="mb-4">
-          Data processing on this website is carried out by the website operator. You can find their
-          contact details in the section "Information on the Responsible Party" in this privacy
-          policy.
-        </p>
-
-        <h4 className="mt-6 mb-3 text-xl font-semibold">How do we collect your data?</h4>
-        <p className="mb-4">
-          On the one hand, your data is collected when you provide it to us. This can be, for
-          example, data that you enter in a contact form.
-        </p>
-        <p className="mb-4">
-          Other data is collected automatically or after your consent when you visit the website by
-          our IT systems. This is mainly technical data (e.g., internet browser, operating system,
-          or time of page access). This data is collected automatically as soon as you enter this
-          website.
-        </p>
-
-        <h4 className="mt-6 mb-3 text-xl font-semibold">What do we use your data for?</h4>
-        <p className="mb-4">
-          Some of the data is collected to ensure error-free provision of the website. Other data
-          may be used to analyze your user behavior. If contracts can be concluded or initiated via
-          the website, the transmitted data will also be processed for contract offers, orders, or
-          other service requests.
-        </p>
-
-        <h4 className="mt-6 mb-3 text-xl font-semibold">
-          What rights do you have regarding your data?
-        </h4>
-        <p className="mb-4">
-          You have the right at any time to receive information free of charge about the origin,
-          recipient, and purpose of your stored personal data. You also have the right to request
-          the correction or deletion of this data. If you have given consent to data processing, you
-          can revoke this consent at any time for the future. You also have the right, under certain
-          circumstances, to request the restriction of the processing of your personal data.
-          Furthermore, you have the right to lodge a complaint with the competent supervisory
-          authority.
-        </p>
-        <p className="mb-4">
-          You can contact us at any time regarding this and other questions on the subject of data
-          protection.
-        </p>
-
-        <h4 className="mt-6 mb-3 text-xl font-semibold">Analysis Tools and Third-Party Tools</h4>
-        <p className="mb-4">
-          When visiting this website, your surfing behavior may be statistically analyzed. This is
-          done primarily with so-called analysis programs.
-        </p>
-        <p className="mb-4">
-          Detailed information about these analysis programs can be found in the following privacy
-          policy.
-        </p>
-
-        <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">
-          2. Hosting and Content Delivery Networks (CDN)
-        </h2>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Hosting</h3>
-        <p className="mb-4">
-          This website is hosted externally. The personal data collected on this website is stored
-          on the servers of the host(s). This may include IP addresses, contact requests, meta and
-          communication data, contract data, contact details, names, website access and other data
-          generated via a website.
-        </p>
-        <p className="mb-4">
-          External hosting is carried out for the purpose of contract fulfillment with our potential
-          and existing customers (Art. 6 para. 1 lit. b GDPR) and in the interest of a secure, fast,
-          and efficient provision of our online offering by a professional provider (Art. 6 para. 1
-          lit. f GDPR). If a corresponding consent has been requested, processing is carried out
-          exclusively on the basis of Art. 6 para. 1 lit. a GDPR and § 25 para. 1 TTDSG, insofar as
-          the consent includes the storage of cookies or access to information on the user's device
-          (e.g., device fingerprinting) within the meaning of the TTDSG. Consent can be revoked at
-          any time.
-        </p>
-        <p className="mb-4">
-          Our host(s) will only process your data to the extent necessary to fulfill their
-          performance obligations and follow our instructions regarding this data.
-        </p>
-        <p className="mb-4">We use the following host(s):</p>
-        <address className="my-4 not-italic">
-          <strong>Vercel Inc.</strong>
-          <br />
-          Subject: Data Protection
-          <br />
-          c/o EDPO
-          <br />
-          Avenue Huart Hamoir 71
-          <br />
-          1030 Brussels
-          <br />
-          Belgium
-        </address>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Cloudflare</h3>
-        <p className="mb-4">
-          We use the "Cloudflare" service. The provider is Cloudflare Inc., 101 Townsend St., San
-          Francisco, CA 94107, USA (hereinafter "Cloudflare").
-        </p>
-
-        <p className="mb-4">
-          Cloudflare offers a globally distributed content delivery network with DNS. Technically,
-          the information transfer between your browser and our website is routed through
-          Cloudflare's network. This enables Cloudflare to analyze the data traffic between your
-          browser and our website and to serve as a filter between our servers and potentially
-          malicious data traffic from the internet. In doing so, Cloudflare may also use cookies or
-          other technologies to recognize internet users, which are used solely for the purpose
-          described here.
-        </p>
-        <p className="mb-4">
-          The use of Cloudflare is based on our legitimate interest in the most error-free and
-          secure provision of our web offering (Art. 6 para. 1 lit. f GDPR).
-        </p>
-        <p className="mb-4">
-          Data transfer to the USA is based on the standard contractual clauses of the EU
-          Commission. Details and further information on security and data protection at Cloudflare
-          can be found{' '}
-          <a
-            href="https://www.cloudflare.com/privacypolicy/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium"
-          >
-            here
-          </a>
-          .
-        </p>
-        <p className="mb-4">
-          The company is certified under the "EU-US Data Privacy Framework" (DPF). The DPF is an
-          agreement between the European Union and the USA that is intended to ensure compliance
-          with European data protection standards for data processing in the USA. Every company
-          certified under the DPF undertakes to comply with these data protection standards. Further
-          information on this can be obtained from the provider{' '}
-          <a
-            href="https://www.dataprivacyframework.gov/participant/5666"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium"
-          >
-            here
-          </a>
-          .
-        </p>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Data Processing Agreement</h3>
-        <p className="mb-4">
-          We have concluded a data processing agreement (DPA) for the use of the above-mentioned
-          service. This is a contract required by data protection law that ensures that this party
-          processes the personal data of our website visitors only in accordance with our
-          instructions and in compliance with the GDPR.
-        </p>
-
-        <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">
-          3. General Information and Mandatory Information
-        </h2>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Data Protection</h3>
-        <p className="mb-4">
-          The operators of these pages take the protection of your personal data very seriously. We
-          treat your personal data confidentially and in accordance with the statutory data
-          protection regulations and this privacy policy.
-        </p>
-        <p className="mb-4">
-          When you use this website, various personal data is collected. Personal data is data with
-          which you can be personally identified. This privacy policy explains what data we collect
-          and what we use it for. It also explains how and for what purpose this happens.
-        </p>
-        <p className="mb-4">
-          We point out that data transmission on the internet (e.g., when communicating by e-mail)
-          may have security gaps. Complete protection of data against access by third parties is not
-          possible.
-        </p>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Information on the Responsible Party</h3>
-        <p className="mb-4">The responsible party for data processing on this website is:</p>
-        <address className="my-4 not-italic">
+      <div className="space-y-4 text-base leading-7">
+        <LegalH2>1. Controller</LegalH2>
+        <p>The controller for data processing on this website is:</p>
+        <address className="not-italic">
           <strong>Patrick Arns</strong>
           <br />
           Ahrstr. 7
           <br />
           52511 Geilenkirchen
           <br />
-          Email:{' '}
-          <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello [at] park.fan" />
+          Email: <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello[at]park.fan" />
         </address>
-        <p className="mb-4">
-          The responsible party is the natural or legal person who alone or jointly with others
-          decides on the purposes and means of processing personal data (e.g., names, e-mail
-          addresses, etc.).
+        <p>
+          You can use park.fan without an account. Which data is processed depends on which features
+          you use. The sections below list each one. We show no ads and do not pass on data for
+          advertising.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Storage Period</h3>
-        <p className="mb-4">
-          Unless a more specific storage period has been specified in this privacy policy, your
-          personal data will remain with us until the purpose for data processing no longer applies.
-          If you assert a legitimate request for deletion or revoke consent to data processing, your
-          data will be deleted, unless we have other legally permissible reasons for storing your
-          personal data (e.g., tax or commercial law retention periods); in the latter case,
-          deletion will take place after these reasons no longer apply.
+        <LegalH2>2. Hosting and delivery</LegalH2>
+
+        <LegalH3>Vercel</LegalH3>
+        <p>
+          The website is hosted by Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA. Its
+          representative in the EU is EDPO, Avenue Huart Hamoir 71, 1030 Brussels, Belgium. On every
+          page view, Vercel processes the data your browser sends along: IP address, time, the
+          address requested, referrer, browser and operating system. Vercel needs this data to
+          deliver the pages and keeps it in server logs for a short time. We do not combine this
+          data with other data.
+        </p>
+        <p>
+          Vercel processes the data on our behalf under a data processing agreement. Data may be
+          transferred to the USA in the process. Vercel is certified under the EU-US Data Privacy
+          Framework. The legal basis is our legitimate interest in delivering the website securely
+          and quickly (Art. 6(1)(f) GDPR). More information:{' '}
+          <LegalLink href="https://vercel.com/legal/privacy-policy" />.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">
-          General Information on the Legal Basis for Data Processing on This Website
-        </h3>
-        <p className="mb-4">
-          If you have consented to data processing, we process your personal data on the basis of
-          Art. 6 para. 1 lit. a GDPR or Art. 9 para. 2 lit. a GDPR, if special data categories
-          according to Art. 9 para. 1 GDPR are processed. In the case of explicit consent to the
-          transfer of personal data to third countries, data processing is also carried out on the
-          basis of Art. 49 para. 1 lit. a GDPR. If you have consented to the storage of cookies or
-          access to information on your device (e.g., via device fingerprinting), data processing is
-          additionally carried out on the basis of § 25 para. 1 TTDSG. Consent can be revoked at any
-          time. If your data is required for contract fulfillment or to carry out pre-contractual
-          measures, we process your data on the basis of Art. 6 para. 1 lit. b GDPR. Furthermore, we
-          process your data if this is necessary to fulfill a legal obligation on the basis of Art.
-          6 para. 1 lit. c GDPR. Data processing may also be carried out on the basis of our
-          legitimate interest according to Art. 6 para. 1 lit. f GDPR. Information on the relevant
-          legal basis in each individual case is provided in the following paragraphs of this
-          privacy policy.
+        <LegalH3>Cloudflare</LegalH3>
+        <p>
+          Between your browser and Vercel sits the network of Cloudflare Inc., 101 Townsend St., San
+          Francisco, CA 94107, USA. Cloudflare answers DNS requests, keeps copies of our pages and
+          filters out attacks. To do this, Cloudflare processes your IP address and the technical
+          data of your request, and may set a cookie to fend off bots.
+        </p>
+        <p>
+          The legal basis is our legitimate interest in providing the website securely and without
+          errors (Art. 6(1)(f) GDPR). Cloudflare processes the data on our behalf. The transfer to
+          the USA is based on Cloudflare's certification under the{' '}
+          <LegalLink href="https://www.dataprivacyframework.gov/participant/5666">
+            EU-US Data Privacy Framework
+          </LegalLink>{' '}
+          and on the standard contractual clauses of the European Commission. More information:{' '}
+          <LegalLink href="https://www.cloudflare.com/privacypolicy/" />.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Recipients of Personal Data</h3>
-        <p className="mb-4">
-          In the course of our business activities, we work together with various external parties.
-          In doing so, it is sometimes necessary to transmit personal data to these external
-          parties. We only pass on personal data to external parties if this is necessary for the
-          fulfillment of a contract, if we are legally obliged to do so (e.g., passing on data to
-          tax authorities), if we have a legitimate interest according to Art. 6 para. 1 lit. f GDPR
-          in passing it on or if another legal basis permits the data transfer. When using data
-          processors, we only pass on personal data of our customers on the basis of a valid data
-          processing agreement. In the case of joint processing, a joint processing agreement is
-          concluded.
+        <LegalH3>Our API server (api.park.fan)</LegalH3>
+        <p>
+          Wait times, park data, favorites, the search for nearby parks, saved day plans and push
+          notifications run through our own server, api.park.fan. We run it ourselves on our own
+          hardware in Germany. No external host is involved.
+        </p>
+        <p>
+          For some requests, the website passes your IP address on to this server: to work out your
+          approximate location if you have not allowed location access, and to limit how many day
+          plans and push subscriptions one address can create in a short time. The server does not
+          log IP addresses. The legal basis is our legitimate interest in a service that works and
+          is protected against misuse (Art. 6(1)(f) GDPR).
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">
-          Revocation of Your Consent to Data Processing
-        </h3>
-        <p className="mb-4">
-          Many data processing operations are only possible with your express consent. You can
-          revoke consent you have already given at any time. The lawfulness of the data processing
-          carried out until the revocation remains unaffected by the revocation.
+        <LegalH2>3. Features of the website</LegalH2>
+
+        <LegalH3>Cookies and local storage</LegalH3>
+        <p>
+          We do not set cookies for advertising or analytics. We set the following cookies
+          ourselves, each for a feature you chose:
+        </p>
+        <LegalList>
+          <li>
+            <code>favorites</code>: your favorites. Its content goes to our API server so that the
+            server can return their wait times. Valid for one year.
+          </li>
+          <li>
+            <code>temp_unit</code>: whether temperatures are shown in Celsius or Fahrenheit.
+          </li>
+          <li>
+            <code>NEXT_LOCALE</code>: the language you chose last.
+          </li>
+        </LegalList>
+        <p>
+          In your browser's local storage we keep settings such as the color scheme, your day plan,
+          your notifications, your choices on location access and on statistics, and cached results.
+          This data stays on your device. The sections on the trip planner and on push notifications
+          say which parts of it go to our server.
+        </p>
+        <p>
+          These cookies and entries need no consent, because they are strictly necessary for the
+          feature you asked for (§ 25(2) no. 2 TDDDG). The processing that follows is based on Art.
+          6(1)(f) GDPR. You can delete all of it at any time in your browser settings.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">
-          Right to Object to Data Collection in Special Cases and to Direct Advertising (Art. 21
-          GDPR)
-        </h3>
-        <p className="mb-4">
+        <LegalH3>Location and "Nearby parks"</LegalH3>
+        <p>
+          On the home page and on park pages we show parks near you and, when you are inside a park,
+          tips for that park. If you allow location access in your browser, we send your device's
+          coordinates to our API server. Otherwise the server works out an approximate location from
+          your IP address. In both cases the location is used only for the response and is not
+          stored.
+        </p>
+        <p>
+          The legal basis for the coordinates is your consent (Art. 6(1)(a) GDPR), which you can
+          withdraw at any time in your browser's location settings. The approximation from your IP
+          address is based on our legitimate interest in showing you suitable parks (Art. 6(1)(f)
+          GDPR).
+        </p>
+
+        <LegalH3>Trip planner</LegalH3>
+        <p>
+          Your day plan is kept in your browser's local storage. It reaches our API server only
+          while you have push notifications switched on for the plan, because the server has to know
+          when to remind you. We store the park, the day and the planned items under a random ID,
+          with no details about you. Anyone who has a shared link can open the plan. If you switch
+          the notifications off, we delete the copy on the server. The legal basis is providing the
+          feature you asked for (Art. 6(1)(b) GDPR).
+        </p>
+
+        <LegalH3>Push notifications</LegalH3>
+        <p>
+          You can get a notification when the wait time of an attraction drops below a value, when a
+          show starts or when the next item in your day plan is due. A subscription is created only
+          when you switch this on and give your browser permission. Our API server then stores your
+          browser's push address with its keys, your language, your time zone and who or what you
+          follow, together with the thresholds you chose.
+        </p>
+        <p>
+          The messages are delivered through the push service of your browser's maker, for example
+          Google (Chrome, Android), Apple (Safari), Mozilla (Firefox) or Microsoft (Edge). This
+          service learns the push address and the time. It sees the content of the message only in
+          encrypted form. Data may be transferred to the USA in the process.
+        </p>
+        <p>
+          The legal basis is your consent (Art. 6(1)(a) GDPR). You can unsubscribe at any time on
+          the "Alerts" page or in your browser settings. If you unsubscribe from all notifications,
+          we delete the subscription.
+        </p>
+
+        <LegalH3>Sending photos</LegalH3>
+        <p>
+          You can send us photos through the "Upload photos" form. We store the photos, the park or
+          attraction, the caption and the name you want to be credited under. Photos up to 4 MB are
+          uploaded unchanged, with all the metadata in the file. This often includes the time the
+          photo was taken and the camera and, depending on the device, the place it was taken. We
+          use that place to check whether the photo was taken in the park you named. Larger photos
+          are scaled down by your browser before the upload, and the metadata is lost in the
+          process. Before we publish a photo, we remove all metadata from the file.
+        </p>
+        <p>
+          Submissions are kept in non-public storage at Vercel (Vercel Blob, see above). We delete
+          rejected submissions once we have reviewed them. Published photos stay stored as long as
+          they can be seen on park.fan. The legal basis is the license you grant us with your
+          submission (Art. 6(1)(b) GDPR). If you ask us by email, we delete your submission.
+        </p>
+        <p>
+          We use Cloudflare Turnstile against automated submissions. The script loads only when the
+          form appears. Turnstile uses your IP address and technical features of your browser to
+          check whether a person is filling in the form. The legal basis is our legitimate interest
+          in protection against spam and misuse (Art. 6(1)(f) GDPR). For the transfer to the USA,
+          what is said about Cloudflare above applies.
+        </p>
+
+        <LegalH3>Contact by email or phone</LegalH3>
+        <p>
+          If you write to us or call us, we process your request and your contact details in order
+          to answer you. The legal basis is our legitimate interest in answering (Art. 6(1)(f)
+          GDPR), or Art. 6(1)(b) GDPR for requests about a contract. We delete the request once it
+          is dealt with, unless a legal duty to retain it applies.
+        </p>
+
+        <LegalH2>4. Statistics with Umami</LegalH2>
+        <p>
+          To see which pages are read and which features are used, we use Umami Cloud by Umami
+          Software, Inc., USA. Umami sets no cookies and stores nothing in your browser. On every
+          page view the script sends the page address, the referrer, screen size, language, browser,
+          operating system and device type, and for some clicks also the name of the event. The
+          country is worked out from the IP address. The IP address is also combined with the
+          browser details and a value that changes every month to form an ID. This ID groups the
+          visits of the same browser within one month. The IP address itself is not stored. No
+          profile across several websites is created.
+        </p>
+        <p>
+          Umami processes the data on our behalf. Umami and some of its service providers are based
+          in the USA, so a transfer there is possible. It rests on the EU Commission's Standard
+          Contractual Clauses, which are part of the data processing agreement with Umami. The legal
+          basis is our legitimate interest in improving the service with usage statistics (Art.
+          6(1)(f) GDPR). If your browser has "Do Not Track" switched on, nothing is sent. Below, you
+          can also exclude your visits from the statistics. More information:{' '}
+          <LegalLink href="https://umami.is/privacy" />.
+        </p>
+        <AnalyticsOptOut />
+
+        <LegalH2>5. Maps and embedded content</LegalH2>
+
+        <LegalH3>Maps (CARTO)</LegalH3>
+        <p>
+          Our maps use map images from CARTO (CartoDB Inc., 307 Fifth Avenue, Floor 9, New York, NY
+          10016, USA), made from OpenStreetMap data. As soon as a map is shown, your browser loads
+          the map images directly from CARTO's servers. CARTO learns your IP address, the time and
+          the part of the map shown. CARTO is certified under the EU-US Data Privacy Framework. The
+          legal basis is our legitimate interest in showing the parks clearly (Art. 6(1)(f) GDPR).
+          More information: <LegalLink href="https://carto.com/privacy" />.
+        </p>
+
+        <LegalH3>YouTube</LegalH3>
+        <p>
+          Some blog posts contain YouTube videos from Google Ireland Limited, Gordon House, Barrow
+          Street, Dublin 4, Ireland. Until you tap "Play video", you only see a preview image, which
+          is delivered through our own server. Only when you tap does your browser load the player
+          in privacy-enhanced mode (youtube-nocookie.com). YouTube then receives your IP address and
+          details about your device and can store data in your browser. Data may be transferred to
+          Google LLC in the USA, which is certified under the EU-US Data Privacy Framework. The
+          legal basis is the consent you give by tapping (Art. 6(1)(a) GDPR, § 25(1) TDDDG). More
+          information: <LegalLink href="https://policies.google.com/privacy" />.
+        </p>
+
+        <LegalH3>Suno</LegalH3>
+        <p>
+          One blog post contains a music player from Suno, Inc., USA. It also loads only when you
+          tap "Play song". Suno then receives your IP address and details about your device and can
+          store data in your browser. The legal basis is the consent you give by tapping (Art.
+          6(1)(a) GDPR, § 25(1) TDDDG). There is no adequacy decision for the USA that covers Suno.
+          More information: <LegalLink href="https://suno.com/privacy" />.
+        </p>
+
+        <LegalH3>Instagram</LegalH3>
+        <p>
+          If a blog post embeds an Instagram post, you first see only a link. Only when you tap
+          "Load post" does your browser load content from Meta Platforms Ireland Limited, Merrion
+          Road, Dublin 4, Ireland. Meta then receives your IP address and details about your device
+          and can set cookies. Data may be transferred to Meta Platforms, Inc. in the USA, which is
+          certified under the EU-US Data Privacy Framework. The legal basis is the consent you give
+          by tapping (Art. 6(1)(a) GDPR, § 25(1) TDDDG). More information:{' '}
+          <LegalLink href="https://privacycenter.instagram.com/policy" />.
+        </p>
+
+        <LegalH2>6. Your rights</LegalH2>
+        <p>You have the right to</p>
+        <LegalList>
+          <li>access the data stored about you (Art. 15 GDPR),</li>
+          <li>have incorrect data corrected (Art. 16 GDPR),</li>
+          <li>have your data erased (Art. 17 GDPR),</li>
+          <li>have the processing restricted (Art. 18 GDPR),</li>
+          <li>receive your data in a portable format (Art. 20 GDPR),</li>
+          <li>
+            withdraw your consent with effect for the future (Art. 7(3) GDPR). Processing carried
+            out before that remains lawful.
+          </li>
+        </LegalList>
+        <p>An email to the address above is enough.</p>
+        <p>
           <strong>
-            IF DATA PROCESSING IS CARRIED OUT ON THE BASIS OF ART. 6 PARA. 1 LIT. E OR F GDPR, YOU
-            HAVE THE RIGHT AT ANY TIME TO OBJECT TO THE PROCESSING OF YOUR PERSONAL DATA FOR REASONS
-            ARISING FROM YOUR PARTICULAR SITUATION; THIS ALSO APPLIES TO PROFILING BASED ON THESE
-            PROVISIONS. THE RESPECTIVE LEGAL BASIS ON WHICH PROCESSING IS BASED CAN BE FOUND IN THIS
-            PRIVACY POLICY. IF YOU OBJECT, WE WILL NO LONGER PROCESS YOUR AFFECTED PERSONAL DATA
-            UNLESS WE CAN DEMONSTRATE COMPELLING LEGITIMATE GROUNDS FOR PROCESSING THAT OVERRIDE
-            YOUR INTERESTS, RIGHTS, AND FREEDOMS OR THE PROCESSING SERVES THE ASSERTION, EXERCISE,
-            OR DEFENSE OF LEGAL CLAIMS (OBJECTION PURSUANT TO ART. 21 PARA. 1 GDPR).
+            Right to object (Art. 21 GDPR): If processing is based on Art. 6(1)(e) or (f) GDPR, you
+            can object to it at any time on grounds relating to your particular situation. We will
+            then stop processing the data, unless we can show compelling legitimate grounds that
+            override your interests, rights and freedoms, or the processing serves to establish,
+            exercise or defend legal claims.
           </strong>
         </p>
-        <p className="mb-4">
-          <strong>
-            IF YOUR PERSONAL DATA IS PROCESSED FOR THE PURPOSE OF DIRECT ADVERTISING, YOU HAVE THE
-            RIGHT TO OBJECT AT ANY TIME TO THE PROCESSING OF PERSONAL DATA CONCERNING YOU FOR THE
-            PURPOSE OF SUCH ADVERTISING; THIS ALSO APPLIES TO PROFILING TO THE EXTENT THAT IT IS
-            CONNECTED WITH SUCH DIRECT ADVERTISING. IF YOU OBJECT, YOUR PERSONAL DATA WILL
-            SUBSEQUENTLY NO LONGER BE USED FOR THE PURPOSE OF DIRECT ADVERTISING (OBJECTION PURSUANT
-            TO ART. 21 PARA. 2 GDPR).
-          </strong>
+        <p>
+          You can also lodge a complaint with a data protection supervisory authority. The authority
+          responsible for us is the Landesbeauftragte für Datenschutz und Informationsfreiheit
+          Nordrhein-Westfalen, Kavalleriestraße 2–4, 40213 Düsseldorf,{' '}
+          <LegalLink href="https://www.ldi.nrw.de" />.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">
-          Right to Lodge a Complaint with the Competent Supervisory Authority
-        </h3>
-        <p className="mb-4">
-          In the event of violations of the GDPR, data subjects have the right to lodge a complaint
-          with a supervisory authority, in particular in the member state of their habitual
-          residence, their place of work or the place of the alleged violation. The right to lodge a
-          complaint exists without prejudice to other administrative or judicial remedies.
+        <LegalH2>7. Storage period and security</LegalH2>
+        <p>
+          Where no specific period is given above, we delete personal data as soon as the purpose no
+          longer applies and no legal duty to retain it applies. All connections to park.fan and
+          api.park.fan are encrypted with TLS.
         </p>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Right to Data Portability</h3>
-        <p className="mb-4">
-          You have the right to have data that we process automatically on the basis of your consent
-          or in fulfillment of a contract handed over to you or to a third party in a common,
-          machine-readable format. If you request the direct transfer of the data to another
-          responsible party, this will only be done to the extent technically feasible.
-        </p>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Information, Correction, and Deletion</h3>
-        <p className="mb-4">
-          Within the framework of the applicable legal provisions, you have the right at any time to
-          free information about your stored personal data, its origin and recipient, and the
-          purpose of data processing and, if applicable, a right to correction or deletion of this
-          data. For this purpose and for further questions on the subject of personal data, you can
-          contact us at any time.
-        </p>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Right to Restriction of Processing</h3>
-        <p className="mb-4">
-          You have the right to request the restriction of the processing of your personal data. You
-          can contact us at any time for this purpose. The right to restriction of processing exists
-          in the following cases:
-        </p>
-        <ul>
-          <li>
-            If you dispute the accuracy of your personal data stored by us, we usually need time to
-            verify this. For the duration of the review, you have the right to request the
-            restriction of the processing of your personal data.
-          </li>
-          <li>
-            If the processing of your personal data was/is unlawful, you can request the restriction
-            of data processing instead of deletion.
-          </li>
-          <li>
-            If we no longer need your personal data, but you need it to exercise, defend, or assert
-            legal claims, you have the right to request the restriction of the processing of your
-            personal data instead of deletion.
-          </li>
-          <li>
-            If you have lodged an objection pursuant to Art. 21 para. 1 GDPR, a balancing of your
-            and our interests must be carried out. As long as it has not been determined whose
-            interests prevail, you have the right to request the restriction of the processing of
-            your personal data.
-          </li>
-        </ul>
-        <p className="mb-4">
-          If you have restricted the processing of your personal data, this data may – apart from
-          its storage – only be processed with your consent or for the assertion, exercise, or
-          defense of legal claims or for the protection of the rights of another natural or legal
-          person or for reasons of an important public interest of the European Union or a member
-          state.
-        </p>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">SSL or TLS Encryption</h3>
-        <p className="mb-4">
-          This site uses SSL or TLS encryption for security reasons and to protect the transmission
-          of confidential content, such as orders or inquiries that you send to us as the site
-          operator. You can recognize an encrypted connection by the fact that the address line of
-          the browser changes from "http://" to "https://" and by the lock symbol in your browser
-          line.
-        </p>
-        <p className="mb-4">
-          If SSL or TLS encryption is activated, the data you transmit to us cannot be read by third
-          parties.
-        </p>
-
-        <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">
-          4. Data Collection on This Website
-        </h2>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Cookies</h3>
-        <p className="mb-4">
-          Our internet pages use so-called "cookies". Cookies are small data packages and do not
-          cause any damage to your device. They are stored either temporarily for the duration of a
-          session (session cookies) or permanently (permanent cookies) on your device. Session
-          cookies are automatically deleted after your visit ends. Permanent cookies remain stored
-          on your device until you delete them yourself or an automatic deletion is carried out by
-          your web browser.
-        </p>
-        <p className="mb-4">
-          Cookies can originate from us (first-party cookies) or from third-party companies
-          (so-called third-party cookies). Third-party cookies enable the integration of certain
-          services from third-party companies within websites (e.g., cookies for processing payment
-          services).
-        </p>
-        <p className="mb-4">
-          Cookies have various functions. Numerous cookies are technically necessary, as certain
-          website functions would not work without them (e.g., the shopping cart function or the
-          display of videos). Other cookies can be used to evaluate user behavior or for advertising
-          purposes.
-        </p>
-        <p className="mb-4">
-          Cookies that are required to carry out the electronic communication process, to provide
-          certain functions you have requested (e.g., for the shopping cart function) or to optimize
-          the website (e.g., cookies for measuring web audiences) are stored on the basis of Art. 6
-          para. 1 lit. f GDPR, unless another legal basis is specified. The website operator has a
-          legitimate interest in storing necessary cookies for the technically error-free and
-          optimized provision of its services. If consent to the storage of cookies and comparable
-          recognition technologies has been requested, processing is carried out exclusively on the
-          basis of this consent (Art. 6 para. 1 lit. a GDPR and § 25 para. 1 TTDSG); consent can be
-          revoked at any time.
-        </p>
-        <p className="mb-4">
-          You can set your browser so that you are informed about the setting of cookies and only
-          allow cookies in individual cases, exclude the acceptance of cookies for certain cases or
-          in general, and activate the automatic deletion of cookies when closing the browser. When
-          cookies are deactivated, the functionality of this website may be limited.
-        </p>
-        <p className="mb-4">
-          Which cookies and services are used on this website can be found in this privacy policy.
-        </p>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Server Log Files</h3>
-        <p className="mb-4">
-          The provider of the pages automatically collects and stores information in so-called
-          server log files, which your browser automatically transmits to us. These are:
-        </p>
-        <ul>
-          <li>Browser type and browser version</li>
-          <li>Operating system used</li>
-          <li>Referrer URL</li>
-          <li>Hostname of the accessing computer</li>
-          <li>Time of server request</li>
-          <li>IP address</li>
-        </ul>
-        <p className="mb-4">This data is not merged with other data sources.</p>
-        <p className="mb-4">
-          This data is collected on the basis of Art. 6 para. 1 lit. f GDPR. The website operator
-          has a legitimate interest in the technically error-free presentation and optimization of
-          its website – for this purpose, the server log files must be collected.
-        </p>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Location and "Parks Nearby"</h3>
-        <p className="mb-4">
-          To show you theme parks near you, we determine your approximate location. If you
-          explicitly allow location access in your browser, we use your device's precise GPS
-          coordinates. If you do not grant access, your approximate location is derived from your IP
-          address (GeoIP). The coordinates or the IP-based approximation are transmitted exclusively
-          to our own interface (api.park.fan) in order to calculate the nearest parks. This location
-          data is not permanently stored on our servers and is not shared with third parties.
-        </p>
-        <p className="mb-4">
-          The legal basis for processing precise location data is your consent (Art. 6 para. 1 lit.
-          a GDPR), which you can revoke at any time via your browser's location settings. The
-          IP-based approximation and the provision of the feature are based on our legitimate
-          interest in a useful offering (Art. 6 para. 1 lit. f GDPR).
-        </p>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Local Storage</h3>
-        <p className="mb-4">
-          For technically necessary functions and functions you have requested, we store data in
-          your browser's local storage – for example, to remember your settings and your location
-          opt-in, or to cache retrieved results so repeated requests are avoided. This is
-          exclusively first-party data without tracking; it remains on your device and is not
-          transmitted to us or to third parties. You can delete this data at any time via your
-          browser settings. Because access to this storage is strictly necessary to provide the
-          functions you have requested, no consent is required for it (§ 25 para. 2 no. 2 TTDSG);
-          processing is based on Art. 6 para. 1 lit. f GDPR.
-        </p>
-
-        <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">
-          5. Plugins and Tools
-        </h2>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">OpenStreetMap</h3>
-        <p className="mb-4">We use the map service of OpenStreetMap (OSM).</p>
-        <p className="mb-4">
-          We integrate the map material from OpenStreetMap on the server of the OpenStreetMap
-          Foundation, St John's Innovation Centre, Cowley Road, Cambridge, CB4 0WS, United Kingdom.
-          The United Kingdom is considered a data protection-safe third country. This means that the
-          United Kingdom has a data protection level that corresponds to the data protection level
-          in the European Union. When using OpenStreetMap maps, a connection is established to the
-          servers of the OpenStreetMap Foundation. In doing so, your IP address and other
-          information about your behavior on this website may be forwarded to the OSMF.
-          OpenStreetMap may store cookies in your browser for this purpose or use comparable
-          recognition technologies.
-        </p>
-        <p className="mb-4">
-          The use of OpenStreetMap is in the interest of an appealing presentation of our online
-          offerings and easy findability of the locations we have indicated on the website. This
-          constitutes a legitimate interest within the meaning of Art. 6 para. 1 lit. f GDPR. If a
-          corresponding consent has been requested, processing is carried out exclusively on the
-          basis of Art. 6 para. 1 lit. a GDPR and § 25 para. 1 TTDSG, insofar as the consent
-          includes the storage of cookies or access to information on the user's device (e.g.,
-          device fingerprinting) within the meaning of the TTDSG. Consent can be revoked at any
-          time.
-        </p>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Umami Analytics</h3>
-        <p className="mb-4">
-          We use the web analytics service Umami to analyze the use of our website and regularly
-          improve it. The statistics we obtain enable us to improve our offering and make it more
-          interesting for you as a user.
-        </p>
-        <p className="mb-4">
-          Umami is a privacy-friendly web analytics service that works without cookies and
-          completely anonymizes all collected data. No personal data is stored or processed that
-          would enable the identification of individual users. The collected data includes only
-          technical information such as browser type, operating system, pages visited, and referral
-          source, but IP addresses are not stored.
-        </p>
-        <p className="mb-4">
-          The service is hosted in a data center within the European Union, so your data does not
-          leave the EU. No data is shared with third parties.
-        </p>
-        <p className="mb-4">
-          The legal basis for the use of Umami is Art. 6 para. 1 lit. f GDPR. Our legitimate
-          interest lies in the optimization and economical operation of our website. Since Umami
-          works without cookies and does not collect personal data, no consent pursuant to TTDSG is
-          required.
-        </p>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Userback (Feedback Tool)</h3>
-        <p className="mb-4">
-          We use the feedback tool Userback, provided by Userback Pty Ltd, Level 5, 100 Edward
-          Street, Brisbane QLD 4000, Australia. Userback lets you send us feedback, bug reports, and
-          improvement suggestions via a &ldquo;Feedback&rdquo; button.
-        </p>
-        <p className="mb-4">
-          Userback is loaded solely upon your active request: the relevant program code is only
-          fetched from the provider&rsquo;s servers and executed once you click the
-          &ldquo;Feedback&rdquo; button. Before that click, no connection to Userback is established
-          and no data is transmitted to the provider.
-        </p>
-        <p className="mb-4">
-          When you click the button, Userback processes technical data such as your IP address, an
-          approximate location derived from it, browser and device information, screen resolution,
-          the page visited (URL), and the time of access. If you voluntarily provide them in the
-          feedback form, your name, email address, message, and any screenshot you create are also
-          processed. To recognize you on subsequent use, Userback stores configuration and reporter
-          data in your browser&rsquo;s local storage.
-        </p>
-        <p className="mb-4">
-          In doing so, personal data may be transferred to third countries outside the EU or EEA
-          (including the USA and Australia), where the level of data protection is not comparable to
-          that of the EU.
-        </p>
-        <p className="mb-4">
-          The legal basis for the processing as well as for the storage of and access to information
-          on your device (local storage) is your consent pursuant to Art. 6 para. 1 lit. a GDPR and
-          Section 25 para. 1 TTDSG, which you grant by actively clicking the &ldquo;Feedback&rdquo;
-          button. You are not obliged to use Userback; if you do not click the button, the tool is
-          not loaded. You can withdraw your consent at any time with effect for the future by no
-          longer using the tool and clearing your browser&rsquo;s local storage. For more
-          information, please see the provider&rsquo;s privacy policy at{' '}
-          <a
-            href="https://userback.io/privacy/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:text-primary/80 underline"
-          >
-            https://userback.io/privacy/
-          </a>
-          .
+        <p>
+          You are not obliged to provide any data. Without location access, notifications or a
+          submission, only those features are unavailable. There is no automated decision-making
+          within the meaning of Art. 22 GDPR.
         </p>
 
         <p className="text-muted-foreground mt-8 text-sm">
-          Source:{' '}
-          <a
-            href="https://www.e-recht24.de"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:text-primary/80 underline"
-          >
-            https://www.e-recht24.de
-          </a>
+          Parts of this policy are based on a template from{' '}
+          <LegalLink href="https://www.e-recht24.de">e-recht24.de</LegalLink>.
         </p>
-
-        <AnalyticsOptOut />
       </div>
     </>
   );

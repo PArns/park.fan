@@ -19,6 +19,7 @@ import {
   TriangleAlert,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { formatRiderHeight } from '@/lib/utils/temperature';
 import { adminKeys, useAdminQuery } from '../../_lib/api';
 import type { AdminAttractionListItem, AdminParkDetail } from '../../_lib/types';
 import {
@@ -355,7 +356,7 @@ function ParkAttractionsTab({ parkId }: { parkId: string }) {
                       attraction.land,
                       attraction.attractionType,
                       attraction.minimumHeight !== null
-                        ? `ab ${attraction.minimumHeight} ${attraction.minimumHeightUnit ?? 'cm'}`
+                        ? `ab ${formatRiderHeight(attraction.minimumHeight, attraction.minimumHeightUnit === 'in' ? 'F' : 'C')}`
                         : null,
                     ]
                       .filter(Boolean)

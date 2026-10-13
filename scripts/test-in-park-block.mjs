@@ -109,6 +109,39 @@ test('a fix inside the park while the nearby answer is still pending: pending, n
   assert.deepEqual(s, { kind: 'pending' });
 });
 
+test('a failed request keeps the last answer: still in the park, not away', () => {
+  const s = resolveInParkBlock({
+    ...base,
+    permissionGranted: true,
+    position: PARK,
+    nearby: undefined,
+    nearbyFailed: true,
+    heldNearby: inParkAnswer(),
+  });
+  assert.equal(s.kind, 'inPark');
+});
+
+test('a failed request with nothing held: away, as before', () => {
+  const s = resolveInParkBlock({
+    ...base,
+    permissionGranted: true,
+    position: PARK,
+    nearbyFailed: true,
+  });
+  assert.equal(s.kind, 'away');
+});
+
+test('the held answer is only read while the request has failed', () => {
+  const s = resolveInParkBlock({
+    ...base,
+    permissionGranted: true,
+    position: PARK,
+    nearbyPending: true,
+    heldNearby: inParkAnswer(),
+  });
+  assert.deepEqual(s, { kind: 'pending' });
+});
+
 test('in another park: away, with the distance to this one', () => {
   const s = resolveInParkBlock({
     ...base,

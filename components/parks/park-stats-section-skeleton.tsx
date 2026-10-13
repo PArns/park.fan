@@ -7,11 +7,12 @@ import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 
 /** The three cards <ParkStatsSection> can render. Declared here because the skeleton has to
  *  mirror the same selection and the section already imports this file. */
-export type StatsCard = 'attractions' | 'months' | 'weekdays';
+export type StatsCard = 'attractions' | 'months' | 'weekdays' | 'extremeDays';
 export const ALL_STATS_CARDS = [
   'attractions',
   'months',
   'weekdays',
+  'extremeDays',
 ] as const satisfies readonly StatsCard[];
 
 /**
@@ -154,6 +155,14 @@ export function ParkStatsSectionSkeleton({
           {show.includes('weekdays') && (
             <div className={PANEL_CELL}>
               <CrowdCardSkeleton rows={7} />
+            </div>
+          )}
+          {show.includes('extremeDays') && (
+            <div className={cn(PANEL_CELL, columnCount === 2 && 'sm:col-span-2')}>
+              <div className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
+                <CrowdCardSkeleton rows={5} />
+                <CrowdCardSkeleton rows={5} />
+              </div>
             </div>
           )}
         </PanelGrid>

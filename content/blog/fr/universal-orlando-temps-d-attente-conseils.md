@@ -226,7 +226,7 @@ text: Les prix par jour figurent dans le calendrier d’Universal.
 
 ## Express Pass : son prix et où il est valable
 
-Avec l’Express Pass, tu paies Universal pour passer devant la file. Il existe en trois formules, et elles diffèrent plus que le nom ne le laisse penser.
+Avec l’Express Pass, tu paies Universal pour passer devant la file. Il existe en trois formules, qui ne valent pas le même nombre de fois par attraction ni dans les mêmes parcs.
 
 **Universal Express** est valable une fois par attraction. Universal le vend pour les Studios, Islands of Adventure, Epic Universe et Volcano Bay, en supplément du billet. Pour les Studios et Islands of Adventure, Universal indique sur la page des billets 119,99 à 319,99 dollars par personne et par parc, selon le jour. Pour Epic Universe, il n’y a pas de prix sur cette page.
 

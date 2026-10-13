@@ -56,12 +56,13 @@ export const LiveDataFreshness = memo(function LiveDataFreshness({
   const t = useTranslations('parks.liveFreshness');
   const now = useMinuteNow();
 
-  const { dataUpdatedAt, isError, fetchStatus, isFetching, refetch } = useLiveParkData({
-    continent,
-    country,
-    city,
-    parkSlug,
-  });
+  const { dataUpdatedAt, isError, fetchStatus, isFetching, failureCount, refetch } =
+    useLiveParkData({
+      continent,
+      country,
+      city,
+      parkSlug,
+    });
 
   // A park without a wait-time source has no live numbers to date — see
   // docs/rules/parks-we-cannot-read.md. Day-stable, so both sides of hydration agree.
@@ -73,6 +74,9 @@ export const LiveDataFreshness = memo(function LiveDataFreshness({
     dataUpdatedAt,
     failed: isError,
     paused: fetchStatus === 'paused',
+    // A first attempt only: a retry means one already failed, and the poll's own timeout
+    // (`LIVE_POLL_TIMEOUT_MS`) bounds how long the first can keep the line quiet.
+    fetching: isFetching && failureCount === 0,
   });
 
   // The date joins the time once the value is from another day in the park: the seed of a page

@@ -10,6 +10,18 @@ by hand: change the comment in the code and re-run the script. -->
 - `serializeMediaImage` _function_: One database row in its wire shape, with text resolved for `locale`.
 - Types: `MediaApiImage`
 
+### [`attribution.ts`](../../lib/media/attribution.ts)
+
+- `getPhotoAttribution` _function_: The credit for a media path (`/media/heide-park/colossos-feuerfigur-16x9.jpg?v=…`), or `null` when the photo is our own, uncredited or not a database image.
+- Types: `PhotoAttribution`, `PhotoAttributionEntry`
+
+### [`credit.ts`](../../lib/media/credit.ts)
+
+- `isOwnPhotoAuthor` _function_: Whether an author name is one of the site's own, ignoring case and surrounding space.
+- `getCreditLine` _function_: Attribution line, e.g. `© 2025 Patrick Arns (CC BY 4.0)`.
+- `needsAttribution` _function_: Whether an image needs a visible, on-image credit rather than just the sidecar-only line every photo already carries.
+- `OWN_PHOTO_AUTHORS` _const_: The names the site's own shoots are signed with, in any of the three spellings the sidecars use. Every other `credit.author` needs a visible, on-image credit.
+
 ### [`focus.ts`](../../lib/media/focus.ts)
 
 - `objectPositionOf` _function_: CSS `object-position` for an image, defaulting to centre.
@@ -106,8 +118,6 @@ What the open media session already holds for one park, read off its diff.
 - `getMediaAlt` _function_: Alt text in the requested locale, falling back through de → en → anything.
 - `getMediaAltBySrc` _function_: Alt text for a public path rather than a media id (`/media/europa-park/arthur.jpg?v=…` → `europa-park/arthur`), for server callers holding a hero path: the client-safe hero slice ships paths, not ids.
 - `getMediaCaption` _function_: Caption in the requested locale, falling back through de → en → anything.
-- `getCreditLine` _function_: Attribution line, e.g. `© 2025 Patrick Arns (CC BY 4.0)`.
-- `needsAttribution` _function_: Whether an image needs a visible, on-image credit rather than just the sidecar-only line every photo already carries.
 - `resolveMediaImage` _function_: An image with its text resolved for one locale — the shape components render.
 - `resolveMediaImages` _function_: `resolveMediaImage` over a list.
 
@@ -115,5 +125,4 @@ What the open media session already holds for one park, read off its diff.
 
 - `MEDIA_ROLES` _const_
 - `MEDIA_LICENSES` _const_
-- `OWN_PHOTO_AUTHOR` _const_: The shoot's own photographer — every other `credit.author` needs a visible, on-image credit.
 - Types: `MediaRole`, `MediaLicense`, `LocalizedText`, `MediaCredit`, `MediaSidecar`, `MediaFocus`, `MediaGps`, `MediaImage`, `MediaText`, `ResolvedMediaImage`, `MediaParkRef`, `MediaQuery`

@@ -332,7 +332,7 @@ text: Die Preise stehen je Tag im Kalender von Universal.
 ## Express Pass: was er kostet und wo er gilt
 
 Mit dem Express Pass kaufst du dich bei Universal an der Warteschlange vorbei. Es gibt ihn in drei Formen,
-und die unterscheiden sich stärker, als der Name vermuten lässt.
+und die unterscheiden sich darin, wie oft er pro Bahn gilt und in welchen Parks.
 
 **Universal Express** gilt einmal pro Bahn. Universal verkauft ihn für die Studios, die Islands of
 Adventure, das Epic Universe und den Volcano Bay, als Aufschlag auf das Ticket. Für die Studios und die

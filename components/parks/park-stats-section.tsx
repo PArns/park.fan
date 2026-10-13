@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { ParkStatsHeader } from '@/components/parks/park-stats-header';
 import { ParkStatsCrowdCard } from '@/components/parks/park-stats-crowd-card';
+import { ParkStatsExtremeDaysCard } from '@/components/parks/park-stats-extreme-days-card';
 import { ParkStatsAttractionsCard } from '@/components/parks/park-stats-attractions-card';
 import {
   ALL_STATS_CARDS,
@@ -177,7 +178,7 @@ function StatsContent({
   parkSlug: string;
   locale: string;
   hasLiveWaitTimes: boolean;
-  show: ReadonlyArray<'attractions' | 'months' | 'weekdays'>;
+  show: readonly StatsCard[];
   hideHeading: boolean;
   flat: boolean;
   statsPageHref?: string;
@@ -298,6 +299,8 @@ function StatsContent({
     (show.includes('months') && monthRows.length > 0 ? 1 : 0) +
       (show.includes('weekdays') && dowRows.length > 0 ? 1 : 0) || 1;
 
+  const hasExtremeDays = (stats.busiestDays?.length ?? 0) + (stats.quietestDays?.length ?? 0) > 0;
+
   return (
     <section
       aria-labelledby={hideHeading ? undefined : 'stats-heading'}
@@ -386,6 +389,23 @@ function StatsContent({
                 labelP50={t('p50')}
                 labelP90={t('p90')}
                 labelDays={t('sampleDaysShort')}
+              />
+            </div>
+          )}
+
+          {show.includes('extremeDays') && hasExtremeDays && (
+            <div className={cn(PANEL_CELL, columnCount === 2 && 'sm:col-span-2')}>
+              <ParkStatsExtremeDaysCard
+                busiest={stats.busiestDays ?? []}
+                quietest={stats.quietestDays ?? []}
+                busiestTitle={t('busiestDaysTitle')}
+                quietestTitle={t('quietestDaysTitle')}
+                labelP90={t('p90')}
+                locale={locale}
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
               />
             </div>
           )}

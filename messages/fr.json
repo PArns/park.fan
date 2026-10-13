@@ -154,6 +154,7 @@
     },
     "worldPanel": {
       "title": "Parcs en {continent}",
+      "openWorldwide": "{count, plural, one {# parc ouvert dans le monde} other {# parcs ouverts dans le monde}}",
       "subtitle": "{count, plural, one {# pays} other {# pays}} · changer de continent",
       "openWord": "ouverts",
       "countryOpen": "{count, plural, one {# ouvert} other {# ouverts}}",
@@ -398,8 +399,8 @@
     },
     "families": {
       "kicker": "Avec enfants",
-      "title": "Quelles attractions mon enfant peut-il faire ? Filtrer par taille",
-      "lead": "Pour chaque attraction, park.fan affiche la taille minimale indiquée par le parc. Avant la visite, tu vois déjà lesquelles vous pouvez faire ensemble et pour lesquelles ton enfant est encore trop petit.",
+      "title": "Les tailles minimales d’un coup d’œil",
+      "lead": "Le parc fixe une limite pour chaque attraction. Avant la visite, tu vois lesquelles vous pouvez faire ensemble et lesquelles restent hors de portée.",
       "cardBody": "Toutes les attractions par taille minimale."
     }
   },
@@ -451,9 +452,10 @@
       "iosHint": "Dans Safari, touchez le bouton Partager, puis « Sur l’écran d’accueil »."
     },
     "copyright": "© {year} park.fan. Tous droits réservés.",
-    "poweredBy": "Propulsé par",
     "legalLinks": "Légal",
-    "disclaimer": "Toutes les informations sont fournies sans garantie. Les temps d’attente et statuts affichés sont fournis automatiquement et peuvent différer de la situation réelle sur place."
+    "disclaimer": "park.fan est un projet amateur privé. Toutes les informations sont fournies sans garantie. Les temps d’attente et statuts affichés sont fournis automatiquement et peuvent différer de la situation réelle sur place.",
+    "dataSources": "Sources des données",
+    "weatherSource": "Météo"
   },
   "explore": {
     "title": "Temps d’attente des Parcs d’attractions à {location}",
@@ -936,6 +938,12 @@
       },
       "gustsLabel": "Rafales",
       "visibilityLabel": "Visibilité",
+      "outlook": {
+        "upTo": "jusqu’à",
+        "downTo": "tombe à",
+        "around": "vers {time}",
+        "note": "Peut perturber l’exploitation des attractions."
+      },
       "snowLabel": "Neige",
       "nowLabel": "Maintenant",
       "compressedAxisHint": "En dehors des horaires d’ouverture, l’axe du temps est compressé.",
@@ -1021,6 +1029,8 @@
       "subtitle": "Basé sur {days} jours d’ouverture mesurés",
       "byMonthTitle": "Affluence moyenne par mois",
       "byDowTitle": "Affluence moyenne par jour de la semaine",
+      "busiestDaysTitle": "Jours mesurés les plus chargés",
+      "quietestDaysTitle": "Jours mesurés les plus calmes",
       "topAttractionsTitle": "Attractions avec les files les plus longues",
       "avgWait": "Attente moy.",
       "p50": "Typique",
@@ -2235,6 +2245,14 @@
     "video": {
       "play": "Lire la vidéo",
       "playHint": "Charge le lecteur YouTube seulement au clic."
+    },
+    "audio": {
+      "play": "Écouter la chanson",
+      "playHint": "Charge le lecteur de suno.com seulement au clic."
+    },
+    "instagram": {
+      "load": "Charger la publication",
+      "loadHint": "Charge la publication depuis Instagram (Meta) seulement au clic."
     }
   },
   "blogToast": {
@@ -2650,7 +2668,8 @@
         "next-up": "Quand il est temps de rejoindre la prochaine attraction",
         "show-times": "Horaires des spectacles",
         "ride-status": "Quand une attraction prévue ferme ou rouvre",
-        "wait-change": "Quand une attente prévue change nettement"
+        "wait-change": "Quand une attente prévue change nettement",
+        "rain-soon": "Alerte pluie avec les attractions couvertes"
       },
       "share": "Partager un lien vers ce plan",
       "shareCopied": "Lien copié",

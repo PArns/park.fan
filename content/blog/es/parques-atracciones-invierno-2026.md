@@ -349,7 +349,7 @@ Eisstockschießen (una especie de curling bávaro) y espectáculos cada media
 hora. Las entradas anticipadas cuestan 19 € en vez de 36 € hasta el 4 de octubre
 y valen para el día de invierno que elijas.
 
-La lista de invierno del parque es más larga de lo que parece, una buena
+La lista de invierno del parque tiene una buena
 treintena de entradas, entre ellas MAXIMUS, Tempel X-pedition, LEGO NINJAGO The
 Ride y el Techno Schleuder. Eso sí, la mayoría de las atracciones al aire libre
 llevan la nota «abierta según el tiempo». ¿Viajas con un niño que quiere una

@@ -1826,7 +1826,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een verticale looping die schuin staat ten opzichte van zijn loodrechte as, zodat de trein de looping schuin in- en uitrijdt.',
     definition:
-      'Een gekantelde looping (Engels: inclined loop of tilted loop) is een standaard verticale looping die om zijn as is gedraaid, doorgaans met 45 tot 80 graden ten opzichte van de rijrichting. Bij een gewone looping rijdt de trein recht in en recht weer uit; bij een gekantelde looping gaat dat schuin.\n\nDe aanloop voelt daardoor meer zijdelings aan dan bij een gewone looping, en de uitgang onderin de cirkel komt van een onverwachte kant. Gekantelde loopings komen voor op diverse B&M- en Intamin-achtbanen, vaak in het midden of het einde van een parcours.',
+      'Een gekantelde looping (Engels: inclined loop of tilted loop) is een standaard verticale looping die om zijn as is gedraaid, doorgaans met 45 tot 80 graden ten opzichte van de rijrichting. Bij een gewone looping rijdt de trein recht in en recht weer uit; bij een gekantelde looping gaat dat schuin.\n\nDe aanloop voelt daardoor meer zijdelings aan dan bij een gewone looping, en onderin de cirkel rijdt de trein in een andere richting uit dan hij erin kwam. Gekantelde loopings komen voor op diverse B&M- en Intamin-achtbanen, vaak in het midden of het einde van een parcours.',
     relatedTermIds: ['b-and-m', 'intamin', 'inversion', 'vertical-loop'],
     aliases: ['tilted loop', 'scheve looping', 'gekantelde loop', 'inclined loop'],
   },
@@ -1951,7 +1951,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een achtbaantype met kleine individuele wagentjes en een compact circuit van strakke, vlakke haarspeldbochten aan de rand van verhoogde platforms.',
     definition:
-      'Een wild mouse (wilde muis) gebruikt kleine wagentjes van twee tot vier personen in plaats van lange treinen. Typisch is een reeks krappe, nauwelijks gekantelde haarspeldbochten aan de buitenrand van de baan. Omdat de bochten, anders dan bij andere achtbanen, bijna niet gekanteld zijn, worden de rijders zijwaarts tegen de wand van het wagentje gedrukt. Door de aanloop lijkt elke bocht later te komen dan je verwacht, en even lijkt het of het wagentje van de baan glijdt.\n\nEen wild mouse neemt weinig ruimte in: doordat de lagen haarspeldbochten boven elkaar liggen, past er veel baan op een klein grondoppervlak. Ze zijn wereldwijd te vinden bij parken van uiteenlopende grootte. Fabrikanten zijn onder meer Mack Rides, Maurer en Gerstlauer.',
+      'Een wild mouse (wilde muis) gebruikt kleine wagentjes van twee tot vier personen in plaats van lange treinen. Typisch is een reeks krappe, nauwelijks gekantelde haarspeldbochten aan de buitenrand van de baan. Omdat de bochten, anders dan bij andere achtbanen, bijna niet gekanteld zijn, worden de rijders zijwaarts tegen de wand van het wagentje gedrukt. De wagentjes zijn vaak breder dan de baan, en daardoor lijkt het in elke bocht of ze over de rand glijden.\n\nEen wild mouse neemt weinig ruimte in: doordat de lagen haarspeldbochten boven elkaar liggen, past er veel baan op een klein grondoppervlak. Ze zijn wereldwijd te vinden bij parken van uiteenlopende grootte. Fabrikanten zijn onder meer Mack Rides, Maurer en Gerstlauer.',
     relatedTermIds: [
       'bobsled-coaster',
       'gerstlauer',

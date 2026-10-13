@@ -18,6 +18,11 @@ tags:
   - deutschland
   - saison-2026
 category: guides
+coverImage:
+  src: /media/legoland-deutschland/flying-ninjago-16x9.jpg
+  alt: 'Der rote Flugarm steht schräg in der Luft, an beiden Seiten hängen die Gondeln mit den Fahrgästen.'
+  caption: 'Flying NINJAGO, die einzige Bahn im Park mit nur einer Grenze für alle.'
+  credit: 'Alex234 / Wikimedia Commons (CC0 1.0)'
 parkLinks:
   - legoland-deutschland
 rideLinks:

@@ -2,7 +2,7 @@
 title: 'Halloween 2026 in Europa’s pretparken: kettingzaag, pompoen of helemaal niks'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-10-07'
+updatedAt: '2026-10-11'
 author: patrick
 mode: published
 excerpt: >-
@@ -364,7 +364,7 @@ De nieuwigheid voor **2026**, **“Entwined: The Maze”**, is de hele zomer de
 lucht in gegroeid en ligt niet eens in het park. Het is een **zeven hectare
 groot maisveld** met metershoge wanden achter de Fenix-achtbaan, volgens het
 park _twee keer zo groot als het hele Avalon-gebied_. Het vervangt het oude
-rattenlabyrint “Trapped” (2018–2025); Toverland is dus van knaagdieren direct
+rattenlabyrint “Trapped” (2019–2025); Toverland is dus van knaagdieren direct
 naar tien voetbalvelden mais opgeschaald. De premisse levert het park er meteen
 bij: _ben je opgewassen tegen het kwaad dat in de dicht begroeide maisvelden
 huist?_ En de enige regel die telt: wie stilstaat, wordt gegrepen. Dus vooral
@@ -381,7 +381,8 @@ experiences plus een eigen plek bij de parade, die elke avond om 18 uur begint.
 Los kosten de experiences € 6,50 tot € 13 per tijdslot, Entwined alleen al
 € 13, en per avond is er maar een beperkt aantal Fear Passes. Op volle nachten
 is dat het verschil tussen “drie huizen gehaald” en “alle zes, en ook nog
-heelhuids uit de mais gekomen”.
+heelhuids uit de mais gekomen”. Voor 2026 is de Fear Pass wel voor alle Halloween
+Nights uitverkocht; de experiences zijn nog los te koop.
 
 Voor de gewone speeldag, Troy incluis, en de vraag wanneer Sevenum echt leeg is,
 is er de [Toverland-gids](/blog/toverland-troy-wachttijden-tips).
@@ -390,6 +391,7 @@ is er de [Toverland-gids](/blog/toverland-troy-wachttijden-tips).
 
 Details over experiences, scare zones en de Fear Pass:
 [toverland.com/halloween](https://www.toverland.com/evenementen/halloween/scare-zones-experiences).
+Afscheid van Trapped: [Toverblog](https://www.toverland.com/toverblog/blog-afscheiditems-trapped).
 
 ### Walibi Belgium: “Ibilaw”
 

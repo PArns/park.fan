@@ -95,6 +95,7 @@ _A blog post, UI strings, images, captions._
 - [A wait time is never typed into a post (REQUIREMENT)](a-wait-time-is-never-typed-into-a-post.md)
 - [Park/Ride page ↔ blog link](parkride-page-and-blog-link.md)
 - [Media database (REQUIREMENT)](media-database.md)
+- [No Creative Commons photos (REQUIREMENT)](no-creative-commons-photos.md)
 - [One photo can index two rides (`alsoRides`)](one-photo-can-index-two-rides-alsorides.md)
 - [Card photos are two layers (REQUIREMENT)](card-photos-are-two-layers.md)
 - [Localized blog gallery captions](localized-blog-gallery-captions.md)

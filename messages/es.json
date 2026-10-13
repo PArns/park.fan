@@ -154,6 +154,7 @@
     },
     "worldPanel": {
       "title": "Parques en {continent}",
+      "openWorldwide": "{count, plural, =1 {1 parque abierto en el mundo} other {# parques abiertos en el mundo}}",
       "subtitle": "{count, plural, =1 {1 país} other {# países}} · cambiar de continente",
       "openWord": "abiertos",
       "countryOpen": "{count, plural, one {# abierto} other {# abiertos}}",
@@ -398,8 +399,8 @@
     },
     "families": {
       "kicker": "Con niños",
-      "title": "¿Qué atracciones puede subir mi hijo? Filtrar por estatura",
-      "lead": "De cada atracción, park.fan muestra la estatura mínima que indica el parque. Antes de la visita puedes comprobar cuáles podéis subir juntos y para cuáles tu hijo aún es demasiado pequeño.",
+      "title": "Estaturas mínimas de un vistazo",
+      "lead": "El parque fija un límite para cada atracción. Antes de la visita ves cuáles podéis subir juntos y a cuáles aún no se llega.",
       "cardBody": "Todas las atracciones por estatura mínima."
     }
   },
@@ -451,9 +452,10 @@
       "iosHint": "En Safari, toca el botón Compartir y luego «Añadir a pantalla de inicio»."
     },
     "copyright": "© {year} park.fan. Todos los derechos reservados.",
-    "poweredBy": "Impulsado por",
     "legalLinks": "Legal",
-    "disclaimer": "Toda la información se proporciona sin garantía. Los tiempos de espera y estados mostrados se proporcionan automáticamente y pueden diferir de la situación real en el lugar."
+    "disclaimer": "park.fan es un proyecto personal hecho por afición. Toda la información se proporciona sin garantía. Los tiempos de espera y estados mostrados se proporcionan automáticamente y pueden diferir de la situación real en el lugar.",
+    "dataSources": "Fuentes de datos",
+    "weatherSource": "Tiempo"
   },
   "explore": {
     "title": "Tiempos de espera de Parques Temáticos en {location}",
@@ -936,6 +938,12 @@
       },
       "gustsLabel": "Ráfagas",
       "visibilityLabel": "Visibilidad",
+      "outlook": {
+        "upTo": "hasta",
+        "downTo": "baja a",
+        "around": "hacia las {time}",
+        "note": "Puede afectar al funcionamiento de las atracciones."
+      },
       "snowLabel": "Nieve",
       "nowLabel": "Ahora",
       "compressedAxisHint": "Fuera del horario de apertura, el eje de tiempo está comprimido.",
@@ -1021,6 +1029,8 @@
       "subtitle": "Basado en {days} días de apertura medidos",
       "byMonthTitle": "Afluencia media por mes",
       "byDowTitle": "Afluencia media por día de la semana",
+      "busiestDaysTitle": "Días medidos con más afluencia",
+      "quietestDaysTitle": "Días medidos más tranquilos",
       "topAttractionsTitle": "Atracciones con colas más largas de media",
       "avgWait": "Espera media",
       "p50": "Típico",
@@ -2235,6 +2245,14 @@
     "video": {
       "play": "Reproducir vídeo",
       "playHint": "Carga el reproductor de YouTube solo al pulsar."
+    },
+    "audio": {
+      "play": "Reproducir canción",
+      "playHint": "Carga el reproductor de suno.com solo al pulsar."
+    },
+    "instagram": {
+      "load": "Cargar publicación",
+      "loadHint": "Carga la publicación de Instagram (Meta) solo al pulsar."
     }
   },
   "blogToast": {
@@ -2650,7 +2668,8 @@
         "next-up": "Cuando toca ir a la siguiente atracción",
         "show-times": "Horarios de los espectáculos",
         "ride-status": "Cuando una atracción planificada cierra o vuelve a abrir",
-        "wait-change": "Cuando una espera planificada cambia mucho"
+        "wait-change": "Cuando una espera planificada cambia mucho",
+        "rain-soon": "Aviso de lluvia con atracciones cubiertas"
       },
       "share": "Compartir un enlace a este plan",
       "shareCopied": "Enlace copiado",

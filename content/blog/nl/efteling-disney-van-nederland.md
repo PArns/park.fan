@@ -181,7 +181,7 @@ een stuk dat iemand aan de telefoon uit zijn mouw had geschud, en 46 jaar later 
 de opvolger naar precies dat stuk vernoemd. Wat er nu onder ligt is een nieuwe
 orkestratie van hetzelfde werk; het park zette 29 minuten soundtrack online.
 
-Ook materieel is er meer van het Spookslot over dan het van buiten lijkt. Toen het
+Ook delen van het oude Spookslot zijn nog in het park. Toen het
 gebouw in september 2022 werd leeggehaald, ging alles wat bruikbaar was het
 archief in. De **kandelaars** uit de wachtrij in de achthoekige toren zijn
 gerepareerd, opnieuw gelakt en één op één terug. De **saters** waren gedetailleerd
@@ -210,8 +210,8 @@ https://www.youtube.com/watch?v=qYmcIgmW8Hk
 **[Joris en de Draak](ref:efteling/joris-en-de-draak)** is de dubbele houten
 achtbaan van **GCI**, open sinds 2010, water tegen vuur, twee treinen die naast
 elkaar vertrekken en elkaar onderweg inhalen. Ze is de opvolger van de oude
-Pegasus en in onze data de meest gevraagde attractie van het park. Ik heb er in de
-[Toverland-gids](/blog/toverland-troy-wachttijden-tips) al over geschreven, en
+Pegasus en in onze data de meest gevraagde attractie van het park. In onze
+[Toverland-gids](/blog/toverland-troy-wachttijden-tips) staat al iets over, en
 niet bijzonder vriendelijk, omdat zeventig kilometer zuidoostelijker een betere
 GCI-baan met minder dan de halve rij staat. Dat blijft zo. Als racebaan waarop je de andere
 trein kunt zien verliezen doet Joris wel iets wat Troy niet kan.
@@ -731,9 +731,8 @@ dat de lichtgrens wil doorbreken. Gebouwd wordt ze op het Eiland van de Vijf
 Zintuigen, dus pal achter de hoofdingang.
 
 Wat het park daarentegen blijft laten: Halloween. “Wees gerust, de Efteling viert
-geen Halloween” staat letterlijk op de eigen site. Waarom een bezoek in de herfst tóch loont, heb
-ik in de
-[Halloween-gids](/blog/halloween-pretparken-2026) opgeschreven. Het gaat om lange
+geen Halloween” staat letterlijk op de eigen site. Waarom een bezoek in de herfst tóch loont, staat in de
+[Halloween-gids](/blog/halloween-pretparken-2026). Het gaat om lange
 avonden tot 20 uur, lantaarns in de bomen, het Huyverwoud en niemand met een
 kettingzaag.
 

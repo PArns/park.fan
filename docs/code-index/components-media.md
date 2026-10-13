@@ -8,3 +8,5 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`photo-credit.tsx`](../../components/media/photo-credit.tsx)
 
 - `PhotoCredit` _component_: Small on-image credit badge for a photo that isn't ours — stock, press, a contribution. Own shoots stay quiet; the sidecar already carries their credit and nobody needs to be told the picture is park.fan's own.
+- `BACKDROP_CREDIT_POSITION` _const_: The corner for a photo painted behind a page: top right, just under the 48 px header. The page's cards cover the rest of the photo; the strip above the first card shows at every width.
+- `TILE_CREDIT_POSITION` _const_: The corner for a tile whose label stands on the foot of the photo: top right instead.

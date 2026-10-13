@@ -552,13 +552,15 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             location={
               <ParkLocationLine
                 park={{ id: park.id, latitude: park.latitude, longitude: park.longitude }}
+                className="flex-1"
               />
             }
-          >
-            {/* The rides the list below offers a „ridden" switch on; `closedAttractions` are a
-                separate list and stay out of the total. */}
-            <RiddenCounter rideIds={(park.attractions ?? []).map((a) => a.id).filter(isUuid)} />
-          </ParkTitleHeader>
+            // The rides the list below offers a „ridden" switch on; `closedAttractions` are a
+            // separate list and stay out of the total.
+            besideLocation={
+              <RiddenCounter rideIds={(park.attractions ?? []).map((a) => a.id).filter(isUuid)} />
+            }
+          />
         }
       >
         {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks

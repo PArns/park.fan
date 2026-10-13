@@ -20,11 +20,6 @@ tags:
   - duitsland
   - seizoen-2026
 category: guides
-coverImage:
-  src: /media/hansa-park/kaernan-ueber-der-westernstadt-16x9.jpg
-  alt: 'Een hoge stenen toren met kantelen steekt boven de bomen uit, links ernaast zwaait een lichtgroene achtbaanrail in een steile boog omhoog.'
-  caption: 'De Kärnan boven het westernstadje, dat in 2018 nog Bonanza City heette.'
-  credit: 'Tobiasi0 / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - hansa-park
 rideLinks:

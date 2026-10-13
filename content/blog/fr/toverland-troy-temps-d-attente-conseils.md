@@ -2,6 +2,7 @@
 title: 'Toverland : Troy, les montagnes russes en bois que tout le monde dépasse'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
+updatedAt: '2026-10-11'
 author: patrick
 mode: published
 featured: false
@@ -411,7 +412,9 @@ ressemble bien.
 > différence entre « trois maisons faites » et « les six, et sorti du maïs
 > entier ».
 >
-> Le Fear Pass ne se vend qu’en ligne, en nombre limité par soirée. L’entrée aux
+> Le Fear Pass ne se vend qu’en ligne, en nombre limité par soirée, et il est
+> complet pour les Halloween Nights 2026 ; les haunted experiences restent en vente
+> à l’unité. L’entrée aux
 > Halloween Nights est comprise dans l’abonnement **Magic Member**, les haunted
 > experiences et le Fear Pass non.
 
@@ -496,9 +499,9 @@ Presque n’importe quand.
 **août** et **décembre**. Derrière décembre, nos données n’ont toutefois que les
 derniers jours de 2025, à partir du 26 décembre, en pleines vacances de Noël. Parmi les mois bien mesurés, **septembre** a été le plus calme jusqu’ici,
 après la fin des vacances d’été. Une réserve à ce sujet : janvier et mars
-reposent sur une poignée de jours de mesure, février, octobre et novembre
-manquent encore totalement (au 25 septembre 2026), et hors saison le parc
-n’ouvre de toute façon que le mercredi et le week-end.
+reposent sur une poignée de jours de mesure, février nous manque entièrement, et
+octobre et novembre sont mesurés pour la première fois en 2026. Hors saison, le
+parc n’ouvre de toute façon que le mercredi et le week-end.
 
 **Par jour de la semaine**, les chiffres ne s’écartent pour ainsi dire pas, aucun
 jour ne se détache. À Phantasialand, un samedi est nettement plus chargé qu’un
@@ -633,7 +636,7 @@ de différence. Le détail jour par jour est dans le [calendrier des temps d’a
 
 Il n’y en a pas. Toverland ne vend aucun coupe-file ; la seule exception est le
 **Fear Pass** pour les haunted experiences pendant les Halloween Nights
-(69,95 €). Une file single rider gratuite n’existe qu’à la tour de chute
+(69,95 €, complet pour 2026). Une file single rider gratuite n’existe qu’à la tour de chute
 Dragonwatch. Avec les médianes des têtes d’affiche, tu n’as de toute façon
 besoin d’aucun raccourci un jour normal.
 

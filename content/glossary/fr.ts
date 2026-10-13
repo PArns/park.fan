@@ -1760,7 +1760,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Un looping vertical penché hors de son axe : le train y entre et en sort de biais.',
     definition:
-      'Un looping incliné (inclined loop ou tilted loop) est un looping vertical pivoté sur son axe, en général de 45 à 80 degrés par rapport à la direction du train. Au lieu d’y entrer et d’en sortir en ligne droite comme dans un looping classique, le train l’aborde et le quitte de biais. Vu de l’extérieur, le looping est asymétrique, et le passager ne le sent pas de la même façon.\n\nL’entrée paraît plus latérale que dans un looping classique, et en bas du cercle, le train ressort dans une direction inattendue. Depuis le sol, un looping incliné se reconnaît tout de suite. On en trouve sur plusieurs montagnes russes B&M et Intamin, souvent au milieu ou à la fin du tracé.',
+      'Un looping incliné (inclined loop ou tilted loop) est un looping vertical pivoté sur son axe, en général de 45 à 80 degrés par rapport à la direction du train. Au lieu d’y entrer et d’en sortir en ligne droite comme dans un looping classique, le train l’aborde et le quitte de biais. Vu de l’extérieur, le looping est asymétrique, et le passager ne le sent pas de la même façon.\n\nL’entrée paraît plus latérale que dans un looping classique, et en bas du cercle, le train ressort dans une autre direction que celle par laquelle il est entré. Depuis le sol, un looping incliné se reconnaît tout de suite. On en trouve sur plusieurs montagnes russes B&M et Intamin, souvent au milieu ou à la fin du tracé.',
     relatedTermIds: ['b-and-m', 'intamin', 'inversion', 'vertical-loop'],
     aliases: ['tilted loop', 'looping penché', 'looping incliné', 'inclined loop'],
   },

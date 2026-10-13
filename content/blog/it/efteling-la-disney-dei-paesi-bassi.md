@@ -184,7 +184,7 @@ successore porta il nome di quello stesso brano. Quello che si sente oggi sotto 
 una nuova orchestrazione della stessa opera; il parco ha pubblicato 29 minuti di
 colonna sonora.
 
-Anche materialmente dello Spookslot resta più di quanto sembri da fuori. Quando
+Nel parco restano anche pezzi del vecchio Spookslot. Quando
 l’edificio è stato svuotato nel settembre 2022, tutto ciò che era utilizzabile è
 finito in archivio. I **candelabri** della fila nella torre ottagonale sono stati
 riparati, riverniciati e rimessi uno per uno. I **satiri** erano abbastanza
@@ -214,9 +214,8 @@ https://www.youtube.com/watch?v=qYmcIgmW8Hk
 **[Joris en de Draak](ref:efteling/joris-en-de-draak)** è l’ottovolante di legno a
 doppio percorso di **GCI**, aperto dal 2010, acqua contro fuoco, due treni che
 partono affiancati e si superano lungo il tracciato. Ha sostituito la vecchia
-Pegasus ed è, nei nostri dati, l’attrazione più richiesta del parco. Ne ho già
-scritto nella
-[guida di Toverland](/blog/toverland-troy-tempi-di-attesa-consigli), e non in modo
+Pegasus ed è, nei nostri dati, l’attrazione più richiesta del parco. La nostra
+[guida di Toverland](/blog/toverland-troy-tempi-di-attesa-consigli) ne parla già, e non in modo
 particolarmente gentile, perché settanta chilometri a sud-est c’è una GCI migliore
 con meno di metà della fila. Questo resta vero. Come gara in cui puoi guardare l’altro
 treno perdere, però, Joris fa qualcosa che Troy non può fare.
@@ -742,7 +741,7 @@ cioè subito dietro l’ingresso principale.
 Quello che il parco continua invece a non fare è Halloween. «Wees gerust, de
 Efteling viert geen Halloween», state tranquilli, non festeggiamo Halloween, sta
 scritto testualmente sul suo sito. Perché una visita in autunno valga comunque
-la pena l’ho scritto nella
+la pena lo spieghiamo nella
 [guida di Halloween](/blog/halloween-parchi-divertimenti-2026): serate
 lunghe fino alle 20, lanterne tra gli alberi, il Huyverwoud, e nessuno con una
 motosega.

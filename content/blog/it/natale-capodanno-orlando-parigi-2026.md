@@ -110,8 +110,6 @@ Parata, fuochi e lo spettacolo davanti al castello saltano tutti e tre con vento
 e temporale. In Florida, a dicembre, capita di rado, ma sta scritto nelle note
 di Disney, sotto ognuno dei tre separatamente.
 
-![Main Street U. S. A. al Magic Kingdom, verso il castello di Cenerentola | A dicembre su Main Street cade neve artificiale. Nelle sere di festa dalle 19, altrimenti no. | wide](/media/magic-kingdom-park/main-street-usa.jpg)
-
 ### EPCOT: Festival of the Holidays e Candlelight Processional
 
 L'**EPCOT International Festival of the Holidays** va dal **27 novembre al 30

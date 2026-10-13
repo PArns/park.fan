@@ -154,6 +154,7 @@
     },
     "worldPanel": {
       "title": "Parks in {continent}",
+      "openWorldwide": "{count, plural, =1 {1 Park weltweit offen} other {# Parks weltweit offen}}",
       "subtitle": "{count, plural, =1 {1 Land} other {# Länder}} · Kontinent wechseln",
       "openWord": "offen",
       "countryOpen": "{count} offen",
@@ -398,8 +399,8 @@
     },
     "families": {
       "kicker": "Mit Kindern",
-      "title": "Welche Bahnen darf mein Kind fahren? Nach Größe filtern",
-      "lead": "Für jede Bahn zeigt park.fan die Mindestgröße, die der Park angibt. So prüfst du schon vor dem Besuch, welche Bahnen ihr zusammen fahren könnt und für welche die Größe noch nicht reicht.",
+      "title": "Mindestgrößen auf einen Blick",
+      "lead": "Der Park gibt für jede Bahn eine Größe vor. Vor dem Besuch siehst du, welche ihr zusammen fahren könnt und für welche es noch nicht reicht.",
       "cardBody": "Alle Bahnen nach Mindestgröße."
     }
   },
@@ -451,9 +452,10 @@
       "iosHint": "Tippe in Safari auf „Teilen“ und dann auf „Zum Home-Bildschirm“."
     },
     "copyright": "© {year} park.fan. Alle Rechte vorbehalten.",
-    "poweredBy": "Powered by",
     "legalLinks": "Rechtliches",
-    "disclaimer": "Alle Angaben ohne Gewähr. Die angezeigten Wartezeiten und Statusinformationen werden automatisiert bereitgestellt und können von der tatsächlichen Situation vor Ort abweichen."
+    "disclaimer": "park.fan ist ein privates Hobbyprojekt. Alle Angaben ohne Gewähr. Die angezeigten Wartezeiten und Statusinformationen werden automatisiert bereitgestellt und können von der tatsächlichen Situation vor Ort abweichen.",
+    "dataSources": "Datenquellen",
+    "weatherSource": "Wetter"
   },
   "explore": {
     "title": "Freizeitpark Wartezeiten in {location}",
@@ -699,6 +701,12 @@
       },
       "gustsLabel": "Böen",
       "visibilityLabel": "Sicht",
+      "outlook": {
+        "upTo": "bis zu",
+        "downTo": "sinkt auf",
+        "around": "gegen {time} Uhr",
+        "note": "Kann den Fahrbetrieb beeinflussen."
+      },
       "snowLabel": "Schnee",
       "nowLabel": "Jetzt",
       "compressedAxisHint": "Außerhalb der Öffnungszeiten ist die Zeitachse gestaucht.",
@@ -1021,6 +1029,8 @@
       "subtitle": "Basierend auf {days} gemessenen Öffnungstagen",
       "byMonthTitle": "Durchschnittlicher Besucherandrang nach Monat",
       "byDowTitle": "Durchschnittlicher Besucherandrang nach Wochentag",
+      "busiestDaysTitle": "Vollste gemessene Tage",
+      "quietestDaysTitle": "Ruhigste gemessene Tage",
       "topAttractionsTitle": "Attraktionen mit längsten Wartezeiten",
       "avgWait": "Ø Wartezeit",
       "p50": "Typisch",
@@ -2235,6 +2245,14 @@
     "video": {
       "play": "Video abspielen",
       "playHint": "Lädt den YouTube-Player erst beim Tippen."
+    },
+    "audio": {
+      "play": "Song abspielen",
+      "playHint": "Lädt den Player von suno.com erst beim Tippen."
+    },
+    "instagram": {
+      "load": "Beitrag laden",
+      "loadHint": "Lädt den Beitrag von Instagram (Meta) erst beim Tippen."
     }
   },
   "blogToast": {
@@ -2650,7 +2668,8 @@
         "next-up": "Wenn du zur nächsten Bahn losmusst",
         "show-times": "Vorstellungszeiten der Shows",
         "ride-status": "Wenn eine geplante Bahn schließt oder wieder öffnet",
-        "wait-change": "Wenn sich eine geplante Wartezeit deutlich ändert"
+        "wait-change": "Wenn sich eine geplante Wartezeit deutlich ändert",
+        "rain-soon": "Regenwarnung mit überdachten Bahnen"
       },
       "share": "Link zum Plan teilen",
       "shareCopied": "Link kopiert",

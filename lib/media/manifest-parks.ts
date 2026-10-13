@@ -27,13 +27,6 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "france",
     "path": "europe/france/paris/disneyland-park"
   },
-  "europe/france/plailly/parc-asterix": {
-    "slug": "parc-asterix",
-    "name": "Parc Asterix",
-    "city": "Plailly",
-    "countrySlug": "france",
-    "path": "europe/france/plailly/parc-asterix"
-  },
   "europe/germany/bottrop/movie-park-germany": {
     "slug": "movie-park-germany",
     "name": "Movie Park Germany",
@@ -48,6 +41,13 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "germany",
     "path": "europe/germany/bruehl/phantasialand"
   },
+  "europe/germany/guenzburg/legoland-deutschland": {
+    "slug": "legoland-deutschland",
+    "name": "LEGOLAND Deutschland",
+    "city": "Günzburg",
+    "countrySlug": "germany",
+    "path": "europe/germany/guenzburg/legoland-deutschland"
+  },
   "europe/germany/hassloch/plopsaland-deutschland": {
     "slug": "plopsaland-deutschland",
     "name": "Plopsaland Deutschland",
@@ -61,13 +61,6 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "city": "Rust",
     "countrySlug": "germany",
     "path": "europe/germany/rust/europa-park"
-  },
-  "europe/germany/sierksdorf/hansa-park": {
-    "slug": "hansa-park",
-    "name": "Hansa-Park",
-    "city": "Sierksdorf",
-    "countrySlug": "germany",
-    "path": "europe/germany/sierksdorf/hansa-park"
   },
   "europe/germany/soltau/heide-park": {
     "slug": "heide-park",
@@ -96,6 +89,13 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "city": "Sevenum",
     "countrySlug": "netherlands",
     "path": "europe/netherlands/sevenum/attractiepark-toverland"
+  },
+  "europe/united-kingdom/farley/alton-towers": {
+    "slug": "alton-towers",
+    "name": "Alton Towers",
+    "city": "Farley",
+    "countrySlug": "united-kingdom",
+    "path": "europe/united-kingdom/farley/alton-towers"
   },
   "north-america/united-states/anaheim/disneyland-park": {
     "slug": "disneyland-park",
@@ -157,16 +157,16 @@ export const MEDIA_PARK_PATH_BY_SLUG: Record<string, string> = {
   "bobbejaanland": "europe/belgium/kasterlee/bobbejaanland",
   "walibi-belgium": "europe/belgium/wavre/walibi-belgium",
   "disneyland-park": "europe/france/paris/disneyland-park",
-  "parc-asterix": "europe/france/plailly/parc-asterix",
   "movie-park-germany": "europe/germany/bottrop/movie-park-germany",
   "phantasialand": "europe/germany/bruehl/phantasialand",
+  "legoland-deutschland": "europe/germany/guenzburg/legoland-deutschland",
   "plopsaland-deutschland": "europe/germany/hassloch/plopsaland-deutschland",
   "europa-park": "europe/germany/rust/europa-park",
-  "hansa-park": "europe/germany/sierksdorf/hansa-park",
   "heide-park": "europe/germany/soltau/heide-park",
   "walibi-holland": "europe/netherlands/biddinghuizen/walibi-holland",
   "efteling": "europe/netherlands/kaatsheuvel/efteling",
   "attractiepark-toverland": "europe/netherlands/sevenum/attractiepark-toverland",
+  "alton-towers": "europe/united-kingdom/farley/alton-towers",
   "universal-studios-hollywood": "north-america/united-states/los-angeles/universal-studios-hollywood",
   "disneys-animal-kingdom-theme-park": "north-america/united-states/orlando/disneys-animal-kingdom-theme-park",
   "disneys-hollywood-studios": "north-america/united-states/orlando/disneys-hollywood-studios",

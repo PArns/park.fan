@@ -9,9 +9,10 @@
  * the admin write path uses, so hand-edited and UI-edited files agree), bakes in
  * what only the file itself knows (intrinsic size, byte size) and emits:
  *
- *   lib/media/manifest.ts        MEDIA_IMAGES — structural rows, no prose
- *   lib/media/manifest-text.ts   MEDIA_TEXT   — localized alt/caption, keyed by id
- *   lib/media/manifest-search.ts MEDIA_SEARCH — prebuilt search strings + revision
+ *   lib/media/manifest.ts             MEDIA_IMAGES      — structural rows, no prose
+ *   lib/media/manifest-text.ts        MEDIA_TEXT        — localized alt/caption, keyed by id
+ *   lib/media/manifest-search.ts      MEDIA_SEARCH      — prebuilt search strings + revision
+ *   lib/media/manifest-attribution.ts MEDIA_ATTRIBUTION — on-image credits, client-safe
  *
  * Split for the same reason the blog manifest is split: six locales of alt and
  * caption for every image is the bulk of the bytes, and most consumers only need
@@ -43,6 +44,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { getServerApiHeaders } from '../lib/api/client.ts';
+import { getCreditLine, needsAttribution } from '../lib/media/credit.ts';
 import {
   ASPECT_SUFFIX_RE,
   MEDIA_IMAGE_EXTENSIONS,
@@ -59,6 +61,7 @@ const SEARCH_OUT = path.join(ROOT, 'lib/media/manifest-search.ts');
 const PARKS_OUT = path.join(ROOT, 'lib/media/manifest-parks.ts');
 const HERO_OUT = path.join(ROOT, 'lib/media/manifest-hero.ts');
 const HERO_LQIP_OUT = path.join(ROOT, 'lib/media/manifest-hero-lqip.ts');
+const ATTRIBUTION_OUT = path.join(ROOT, 'lib/media/manifest-attribution.ts');
 
 // sharp is a hard dependency, but a missing optional image step must never break
 // the build — without it images simply carry no intrinsic dimensions, and the
@@ -81,6 +84,11 @@ try {
 
 const warnings = [];
 const warn = (message) => warnings.push(message);
+
+/** Sidecars with a Creative Commons BY licence of any kind, which fail the build. */
+const creativeCommons = [];
+/** `cc-by-4.0`, `CC BY-SA 3.0`, `cc_by_nd`: any spelling of an attribution licence. */
+const CC_BY = /^cc[\s_-]*by/i;
 
 /** Every image file under `public/media`, recursively, ignoring generated crops. */
 function collectImages(dirAbs, collection = '') {
@@ -249,6 +257,12 @@ function readSidecar(abs, base, ext, id) {
     warn(`${id}: sidecar is not valid JSON (${err.message})`);
     return normalizeSidecar({});
   }
+  // The raw value, because a spelling the enum does not know is normalized to `unknown` below
+  // and would pass as merely unlicensed.
+  const license = raw?.credit?.license;
+  if (typeof license === 'string' && CC_BY.test(license.trim())) {
+    creativeCommons.push(`${id} (${license})`);
+  }
   const result = normalizeSidecar(raw);
   for (const issue of result.issues) warn(`${id}: ${issue}`);
   return result;
@@ -307,6 +321,16 @@ async function build() {
       if (localized.alt) text[id].alt = localized.alt;
       if (localized.caption) text[id].caption = localized.caption;
     }
+  }
+
+  // Fails before anything is written. Why: docs/rules/no-creative-commons-photos.md.
+  if (creativeCommons.length) {
+    console.error(
+      '❌ Creative Commons photos are not allowed in public/media (docs/rules/no-creative-commons-photos.md).'
+    );
+    console.error('   Replace or delete these, sidecar and all:');
+    for (const entry of creativeCommons) console.error(`   - ${entry}`);
+    process.exit(1);
   }
 
   // Gallery order: explicit `order` first, then filename — so MEDIA_IMAGES is
@@ -789,6 +813,32 @@ export const HERO_LQIP: Record<string, string> = ${JSON.stringify(heroLqip, null
   'utf8'
 );
 
+// ─── client-safe attribution slice ───────────────────────────────────────────
+
+// Cards, backgrounds and menu tiles are Client Components that only hold a path. This lists the
+// photos that need a credit on the picture, with every path they are served under (the source
+// and its crops), so `getPhotoAttribution(src)` is one map hit and the table stays a few rows.
+const attribution = images.flatMap((image) => {
+  const line = needsAttribution(image) ? getCreditLine(image) : null;
+  return line
+    ? [{ paths: [image.src, ...image.variants], line, url: image.credit.sourceUrl ?? null }]
+    : [];
+});
+
+fs.writeFileSync(
+  ATTRIBUTION_OUT,
+  `${header('generate-media-manifest.mjs')}
+import type { PhotoAttributionEntry } from './attribution';
+
+/**
+ * Every photo that carries a credit on the picture. CLIENT-SAFE: read it through
+ * \`getPhotoAttribution()\` in './attribution', never the full manifest.
+ */
+export const MEDIA_ATTRIBUTION: readonly PhotoAttributionEntry[] = ${JSON.stringify(attribution, null, 2)};
+`,
+  'utf8'
+);
+
 // ─── dangling references ─────────────────────────────────────────────────────
 
 /**
@@ -861,6 +911,7 @@ if (unassigned) console.log(`   ⚠️  ${unassigned} without a park assigned.`)
 // Counted like the other backlogs rather than warned about: a photo shot in the
 // field this morning is SUPPOSED to be sitting here until somebody tags it.
 if (awaitingReview) console.log(`   📝 ${awaitingReview} waiting for a review pass.`);
+console.log(`   ${attribution.length} carry a credit on the picture.`);
 for (const message of warnings) console.log(`   ⚠️  ${message}`);
 for (const out of [MANIFEST_OUT, TEXT_OUT, SEARCH_OUT]) {
   console.log(

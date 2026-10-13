@@ -27,6 +27,7 @@ Why it works this way: [the rule](../rules/the-code-index-is-generated-from-the-
 - [`components/glossary/`](components-glossary.md)
 - [`components/home/`](components-home.md)
 - [`components/layout/`](components-layout.md)
+- [`components/legal/`](components-legal.md)
 - [`components/marketing/`](components-marketing.md)
 - [`components/media/`](components-media.md)
 - [`components/parks/`](components-parks.md)

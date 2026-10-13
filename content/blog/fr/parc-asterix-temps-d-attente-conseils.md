@@ -26,11 +26,6 @@ parkLinks:
   - parc-asterix
 rideLinks:
   - parc-asterix/*
-coverImage:
-  src: /media/parc-asterix/oziris.jpg
-  alt: 'Un train d’OzIris passe la tête en bas au sommet d’une inversion sur fond de ciel bleu, avec des cimes d’arbres et un pilier beige au premier plan.'
-  caption: 'OzIris, un coaster inversé de Bolliger & Mabillard, au Parc Astérix depuis 2012.'
-  credit: 'Jules-leconnaisseurd’attraction / Wikimedia Commons (CC BY-SA 4.0)'
 seo:
   title: 'Parc Astérix : temps d’attente, montagnes russes et conseils'
   description: >-

@@ -147,7 +147,7 @@ Route `/[locale]/contribute/thanks` (page).
 
 ### [`datenschutz/content/en.tsx`](../../app/%5Blocale%5D/datenschutz/content/en.tsx)
 
-- `DatenschutzEN` _component_: The privacy policy in English, shown on every locale but `de`.
+- `DatenschutzEN` _component_: The privacy policy in English, shown on every locale except `de`.
 
 ### [`datenschutz/page.tsx`](../../app/%5Blocale%5D/datenschutz/page.tsx)
 
@@ -342,6 +342,10 @@ Route `/[locale]/how-park-fan-works` (page).
 ### [`impressum/content/en.tsx`](../../app/%5Blocale%5D/impressum/content/en.tsx)
 
 - `ImpressumEN` _component_: The legal notice (Impressum) in English, shown on every locale but `de`.
+
+### [`impressum/content/story.ts`](../../app/%5Blocale%5D/impressum/content/story.ts)
+
+- Types: `ImpressumStory`
 
 ### [`impressum/page.tsx`](../../app/%5Blocale%5D/impressum/page.tsx)
 

@@ -25,6 +25,9 @@ export type MediaLicense =
   | 'all-rights-reserved'
   | 'cc-by-4.0'
   | 'cc-by-sa-4.0'
+  | 'cc-by-sa-3.0'
+  | 'cc-by-sa-2.0'
+  | 'cc-by-2.0'
   | 'cc-by-nc-4.0'
   | 'cc0-1.0'
   | 'public-domain'
@@ -35,6 +38,9 @@ export const MEDIA_LICENSES: readonly MediaLicense[] = [
   'all-rights-reserved',
   'cc-by-4.0',
   'cc-by-sa-4.0',
+  'cc-by-sa-3.0',
+  'cc-by-sa-2.0',
+  'cc-by-2.0',
   'cc-by-nc-4.0',
   'cc0-1.0',
   'public-domain',
@@ -44,9 +50,6 @@ export const MEDIA_LICENSES: readonly MediaLicense[] = [
 
 /** Per-locale strings. Lookup falls back through `de` → `en` → any present value. */
 export type LocalizedText = Partial<Record<Locale, string>>;
-
-/** The shoot's own photographer — every other `credit.author` needs a visible, on-image credit. */
-export const OWN_PHOTO_AUTHOR = 'Patrick Arns';
 
 export interface MediaCredit {
   /** Who took the photo. `null` when unestablished — never guessed. */

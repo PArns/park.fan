@@ -2,16 +2,17 @@ import { Link } from '@/i18n/navigation';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
+import type { ImpressumStory } from './story';
 
 /** The legal notice (Impressum) in German, shown on the `de` locale. */
-export function ImpressumDE() {
+export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
   return (
     <>
       <h1 className="mb-8 text-4xl font-bold">Impressum</h1>
 
       <div className="space-y-6 text-base leading-7">
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold first:mt-0">
-          Angaben gemäß § 5 TMG
+          Angaben gemäß § 5 DDG
         </h2>
 
         <address className="my-4 not-italic">
@@ -34,10 +35,12 @@ export function ImpressumDE() {
         </p>
 
         <p className="mb-4">
-          Tel: <ObfuscatedPhone number="+49 2451 611 00 68" />
+          Tel: <ObfuscatedPhone number="+49 163 666 50 35" />
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Redaktionell verantwortlich</h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">
+          Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
+        </h3>
         <address className="my-4 not-italic">
           <Link
             href={'/blog/authors/patrick' as '/'}
@@ -51,6 +54,22 @@ export function ImpressumDE() {
           52511 Geilenkirchen
         </address>
 
+        <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Über park.fan</h2>
+        <p className="mb-4">
+          park.fan ist ein privates Hobbyprojekt ohne Gewinnabsicht. Es gibt keine Werbung und keine
+          Affiliate-Links. Ich entwickle die Seite in meiner Freizeit, weil mich Freizeitparks seit
+          meiner Kindheit begeistern und mir ein Angebot wie dieses selbst immer gefehlt hat.
+        </p>
+        {story && (
+          <p className="mb-4">
+            Die Geschichte dahinter steht im Blog:{' '}
+            <Link href={story.href as '/'} className="text-primary hover:text-primary/80 underline">
+              {story.title}
+            </Link>
+            .
+          </p>
+        )}
+
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">
           Verbraucherstreitbeilegung / Universalschlichtungsstelle
         </h2>
@@ -63,10 +82,11 @@ export function ImpressumDE() {
           Haftungsausschluss
         </h2>
         <p className="mb-4">
-          Diese Webseite ist keine offizielle Webseite der hier aufgeführten Freizeit- und
-          Themenparks. Die angezeigten Wartezeiten werden ausschließlich von den jeweiligen
-          Freizeit- und Themenparks ermittelt und entweder über Infotafeln vor den Attraktionen oder
-          über Infobildschirme im Park angezeigt.
+          park.fan ist ein privates Hobbyprojekt und keine offizielle Webseite der hier aufgeführten
+          Freizeit- und Themenparks. Die Wartezeiten stammen von den Parks selbst und erreichen uns
+          über die unten genannten Plattformen. Prognosen, Durchschnittswerte und Statistiken
+          berechnet park.fan daraus selbst. Eine Prognose ist eine Schätzung und kann deutlich von
+          der tatsächlichen Wartezeit abweichen.
         </p>
         <p className="mb-4">
           Der Betreiber dieser Webseite übernimmt keine Haftung oder Verantwortung für den Inhalt,
@@ -123,7 +143,9 @@ export function ImpressumDE() {
               className="group flex items-center justify-between py-3"
             >
               <div>
-                <span className="group-hover:text-primary font-medium">Queue-Times.com</span>
+                <span className="group-hover:text-primary font-medium">
+                  Powered by Queue-Times.com
+                </span>
                 <p className="text-muted-foreground text-sm">
                   Live-Wartezeiten & historische Daten
                 </p>
@@ -162,9 +184,7 @@ export function ImpressumDE() {
             >
               <div>
                 <span className="group-hover:text-primary font-medium">Open-Meteo.com</span>
-                <p className="text-muted-foreground text-sm">
-                  Wetterdaten und Vorhersagen (CC-BY 4.0)
-                </p>
+                <p className="text-muted-foreground text-sm">Wetterdaten und Vorhersagen</p>
               </div>
               <ExternalLink
                 className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
@@ -173,6 +193,18 @@ export function ImpressumDE() {
             </a>
           </li>
         </ul>
+        <p className="mb-4">
+          Die Wetterdaten von Open-Meteo stehen unter der Lizenz{' '}
+          <a
+            href="https://creativecommons.org/licenses/by/4.0/deed.de"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 underline"
+          >
+            CC BY 4.0
+          </a>
+          .
+        </p>
 
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Bildnachweise</h2>
         <p className="mb-4">

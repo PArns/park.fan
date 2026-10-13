@@ -54,6 +54,54 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `UNIQUE_ROLES` _const_: The roles only one image may hold per park (`park-background`) or per ride (`ride-card`).
 - Types: `UniqueRole`, `RoleHolder`, `Handover`
 
+### [`ml-overview-fixture.ts`](../../lib/admin/ml-overview-fixture.ts)
+
+- `FIXTURE_OVERVIEW` _const_: The sample overview the ML page shows with `?beispiel=1`: the decisions and the operating data of the approved mockup, as production stood on 2026-10-11 at 20:20 UTC. The matrix counters are that day's `/admin/ml/vergleich` summary.
+
+### [`ml-overview.ts`](../../lib/admin/ml-overview.ts)
+
+- `decisionStateMeta` _function_: The pill for a decision state; a state this build does not know reads neutral.
+- `componentStatusMeta` _function_: The dot and word for a component status, and its place in the table: failures first, then late runs, then anything nobody can vouch for. An unknown status counts as unknown.
+- `componentRoleLabel` _function_: Whether the app shows what a component delivers, in two or three words; null for a new role.
+- `sortComponentsProblemsFirst` _function_: The components with problems on top, otherwise in the backend's order.
+- `sortDecisionsReadyFirst` _function_: The decisions ready to take on top, otherwise in the backend's order.
+- `progressPercent` _function_: How full the live-measurement bar is, 0 to 100. The switch rule needs both the days and the parks, so the bar follows whichever is further from done.
+- `progressDaysLabel` _function_: "live gemessen: 1 von 14 Tagen".
+- `progressParksLabel` _function_: "in 3 von 10 Parks".
+- `noProgressLabel` _function_: What stands where the bar would be when a decision has no live measurement.
+- `formatLastRun` _function_: A last run as "11.10. 20:16" in UTC, the clock the backend states every cadence in ("täglich 06:00"), so the two columns can be compared; no park's zone, since a model runs for all of them.
+
+### [`model-comparison-fixture.ts`](../../lib/admin/model-comparison-fixture.ts)
+
+- `fixtureDay` _function_: One replayed day as `GET /api/admin/model-comparison/day` would send it. Only the morning origin was archived for the sample, so every other origin comes back without series.
+- `FIXTURE_REPORT` _const_: The matrix as `GET /api/admin/model-comparison` would send it.
+- `FIXTURE_DAY_OPTIONS` _const_: The selectors as `GET /api/admin/model-comparison/day/options` would send them.
+
+### [`model-comparison.ts`](../../lib/admin/model-comparison.ts)
+
+- `matrixColumns` _function_: The matrix columns: the report's models in its order, then any model a cell names that the report forgot to list, labelled with its id so a new backend model still shows up.
+- `groupQuestions` _function_: The questions under each group, in the report's group order; a group with none is left out.
+- `measuredDays` _function_: Calendar days from the first to the last live day, both included; 0 when nothing was measured.
+- `formatDiff` _function_: A difference with its sign, in German: `−0,42 min`, `+0,026`. A rate gets three decimals.
+- `formatFigure` _function_: A plain figure in German with `digits` decimals: `12,4`.
+- `diffFavoursModel` _function_: Whether a difference favours the model, given which direction of the metric is good.
+- `whiskerGeometry` _function_: Horizontal positions, in a box `width` wide, for a difference and its interval drawn around a centred zero. The scale is symmetric so the zero line never moves between cells.
+- `splitSegments` _function_: Runs of consecutive non-null values as `[index, value]` pairs, so a line can break where the ride was down instead of bridging the outage.
+- `hourTickIndexes` _function_: Indexes of the slots that fall on a full hour, for the time axis.
+- `hourTicks` _function_: The hour labels that fit a plot `plotWidth` px wide: every hour if they fit, else every 2nd, 3rd, … hour of the clock, the smallest step whose neighbours stay `minSpacing` apart.
+- `chartTop` _function_: The y-axis top: the largest value rounded up to a multiple of 20, at least 60.
+- `modelColors` _function_: One colour per model id for the given ids, stable for known models and distinct for the rest.
+- `dayMae` _function_: Mean absolute error of a series against the measured waits, over the slots where both exist. Null when no slot has both.
+- `truthCoverage` _function_: Share of slots with a measured wait. The backend's `truthCoverage` wins; an older response without it is counted here.
+- `suggestedOptionsDate` _function_: The date the options must be fetched for before anything is picked: the suggested day when the backend suggests one other than the day it answered for, else none (the answer stands).
+- `resolveDaySelection` _function_: The day, park and ride the view shows. A pick that is still on offer stands; with nothing picked the backend's suggestion is used; otherwise the first park and its first ride.
+- `headlinersFirst` _function_: A park's rides with headliners first, otherwise in the order the backend sent them.
+- `CELL_STATE_META` _const_: How each matrix state reads: the label in the legend and detail panel, the symbol in the circle.
+- `CHECK_STATE_META` _const_: How each check state reads beside O, L and S.
+- `HOUR_LABEL_MIN_SPACING` _const_: Centre-to-centre distance two hour labels need, in px: `00:00` in 11 px mono is about 34 px wide, and the rest keeps neighbours from reading as one string.
+- `LOW_TRUTH_COVERAGE` _const_: Below this coverage the day view says the comparison rests on few measurements.
+- Types: `DayChoice`
+
 ### [`proxy-path.ts`](../../lib/admin/proxy-path.ts)
 
 The path guard for `/api/admin/[...path]`, pure so it can be tested without Next.

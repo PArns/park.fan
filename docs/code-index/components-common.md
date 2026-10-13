@@ -156,7 +156,7 @@ These dots carry `will-change` because they animate forever inside cards with `b
 
 ### [`obfuscated-email.tsx`](../../components/common/obfuscated-email.tsx)
 
-- `ObfuscatedEmail` _component_: An email address kept from scrapers: the server HTML carries a ROT13-shifted string, and the clickable mailto link is assembled on the client after hydration.
+- `ObfuscatedEmail` _component_: An email address kept from scrapers: the clickable mailto link is assembled on the client after hydration.
 - `rot13` _function_: ROT13-style shift that keeps an address out of the server HTML.
 
 ### [`obfuscated-phone.tsx`](../../components/common/obfuscated-phone.tsx)

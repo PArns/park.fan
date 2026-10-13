@@ -28,7 +28,9 @@ import {
   searchMedia,
 } from '../lib/media/index.ts';
 import { checkParkAssignment, distanceMeters, formatDistance } from '../lib/media/geo.ts';
-import { getCreditLine, resolveMediaImage } from '../lib/media/text.ts';
+import { getCreditLine, needsAttribution } from '../lib/media/credit.ts';
+import { getPhotoAttribution } from '../lib/media/attribution.ts';
+import { resolveMediaImage } from '../lib/media/text.ts';
 import { normalizeSidecar, serializeSidecar } from '../lib/media/sidecar.mjs';
 import { pickReplacement, replacementExt } from '../app/admin/media/_lib/replace-drop.ts';
 import {
@@ -340,6 +342,58 @@ check(
   getCreditLine({ ...troy, credit: { ...troy.credit, license: 'cc-by-4.0', year: 2025 } }),
   '© 2025 Patrick Arns (CC BY 4.0)'
 );
+for (const author of ['Patrick Arns', 'Patrick', 'park.fan', ' PARK.FAN ']) {
+  check(
+    `"${author}" is an own shoot and gets no credit on the photo`,
+    needsAttribution({ credit: { ...troy.credit, author } }),
+    false
+  );
+}
+check(
+  'a borrowed photo gets a credit on the photo',
+  needsAttribution({ credit: { ...troy.credit, author: 'Anakin' } }),
+  true
+);
+check(
+  'an uncredited photo gets none',
+  needsAttribution({ credit: { ...troy.credit, author: null } }),
+  false
+);
+for (const [license, shown] of [
+  ['cc-by-sa-3.0', 'CC BY-SA 3.0'],
+  ['cc-by-sa-2.0', 'CC BY-SA 2.0'],
+  ['cc-by-2.0', 'CC BY 2.0'],
+]) {
+  const credit = { ...troy.credit, license, year: 2019 };
+  check(
+    `${license} is accepted by the sidecar`,
+    normalizeSidecar({ credit: { license } }).issues.filter((i) => /licen[cs]e/i.test(String(i))),
+    []
+  );
+  check(
+    `${license} is shown as ${shown}`,
+    getCreditLine({ ...troy, credit }),
+    `© 2019 Patrick Arns (${shown})`
+  );
+}
+
+console.log('\n── on-image credit by path ──────────────────────────────────\n');
+
+// The client-safe table must answer exactly what the rules answer, for the source and every crop,
+// with or without the content version, or a card paints a borrowed photo without its credit.
+const credited = MEDIA_IMAGES.filter((i) => needsAttribution(i) && getCreditLine(i));
+const lookupMismatches = MEDIA_IMAGES.flatMap((image) => {
+  const expected = credited.includes(image)
+    ? { line: getCreditLine(image), url: image.credit.sourceUrl }
+    : null;
+  return [image.src, `${image.src}?v=${image.version}`, ...image.variants].filter(
+    (path) => JSON.stringify(getPhotoAttribution(path)) !== JSON.stringify(expected)
+  );
+});
+check('every media path looks up the credit the rules give it', lookupMismatches, []);
+check('an own photo has no on-image credit', getPhotoAttribution(troy.src), null);
+check('a path outside the database has none', getPhotoAttribution('/images/x.jpg'), null);
+check('no path, no credit', getPhotoAttribution(undefined), null);
 
 console.log('\n── geo ──────────────────────────────────────────────────────\n');
 

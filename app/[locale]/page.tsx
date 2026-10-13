@@ -171,7 +171,7 @@ export default async function HomePage({ params }: HomePageProps) {
   const heroImage = pickHeroImage(HERO_TTL_MS);
   const randomHeroImage = heroImage?.src;
   const heroMeta = heroImage?.meta ?? null;
-  // The newest news post for the chip beside the hero's open-parks badge, out of the same news
+  // The newest news post for the chip in the hero's badge row, out of the same news
   // menu the header draws its chip from. The manifest, read synchronously, so the chip is in the
   // static shell and in the fallback alike.
   const latestNews = latestNewsFrom(getNewsMenu(locale as Locale));
@@ -263,7 +263,7 @@ export default async function HomePage({ params }: HomePageProps) {
             ) : (
               heroMeta && (
                 <HeroImageInfoSwitch>
-                  <HeroImageInfo meta={heroMeta} />
+                  <HeroImageInfo meta={heroMeta} src={randomHeroImage} />
                 </HeroImageInfoSwitch>
               )
             )}

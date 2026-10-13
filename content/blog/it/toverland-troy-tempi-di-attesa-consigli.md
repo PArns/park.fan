@@ -2,6 +2,7 @@
 title: 'Toverland: Troy, le montagne russe in legno davanti a cui passano tutti'
 translationKey: toverland-troy-guide-2026
 date: '2026-07-31'
+updatedAt: '2026-10-11'
 author: patrick
 mode: published
 featured: false
@@ -398,7 +399,9 @@ del tempo per noi.
 > È l’unica scorciatoia in vendita qui, e nelle notti piene fa la differenza tra
 > fare tre case e farle tutte e sei.
 >
-> Il Fear Pass si compra solo online e in numero limitato per serata. L’ingresso
+> Il Fear Pass si compra solo online e in numero limitato per serata, e per le
+> Halloween Nights 2026 è esaurito; le haunted experience restano in vendita
+> singolarmente. L’ingresso
 > alle Halloween Nights è compreso nell’abbonamento **Magic Member**, le haunted
 > experience e il Fear Pass no.
 
@@ -480,9 +483,9 @@ Si può andare quasi sempre.
 ultimi giorni del 2025, dal 26 dicembre, in piene vacanze di Natale. Tra i mesi
 misurati bene, **settembre** è stato finora il più tranquillo, dopo la fine
 delle vacanze estive. Una precisazione: gennaio e marzo poggiano su una manciata
-di giorni di misurazione, febbraio, ottobre e novembre mancano ancora del tutto
-(al 25 settembre 2026), e fuori stagione il parco apre comunque soltanto il
-mercoledì e nei fine settimana.
+di giorni di misurazione, febbraio non lo abbiamo affatto, e ottobre e novembre li
+misuriamo per la prima volta nel 2026. Fuori stagione il parco apre comunque
+soltanto il mercoledì e nei fine settimana.
 
 **Per giorno della settimana** i numeri praticamente non si distanziano, nessun
 giorno spicca. A Phantasialand un sabato è sensibilmente più pieno di un
@@ -612,7 +615,8 @@ dettaglio giorno per giorno è nel [calendario dei tempi di attesa](ref:attracti
 ### Serve un pass salta-fila a Toverland?
 
 Non esiste. Toverland non vende alcun pass salta-fila; l’unica eccezione è il
-**Fear Pass** per le haunted experience durante le Halloween Nights (69,95 €).
+**Fear Pass** per le haunted experience durante le Halloween Nights (69,95 €,
+esaurito per il 2026).
 Una fila single rider gratuita c’è solo alla torre di caduta Dragonwatch. Con
 le mediane dei pezzi forti, in una giornata normale non serve
 comunque nessuna scorciatoia.

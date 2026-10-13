@@ -326,7 +326,7 @@ text: The prices for each day are in Universal's calendar.
 ## Express Pass: what it costs and where it's valid
 
 With the Express Pass you buy your way past the queue at Universal. It comes in three forms, and they
-differ more than the name suggests.
+differ in how often they're valid per ride and in which parks.
 
 **Universal Express** is valid once per ride. Universal sells it for the Studios, Islands of Adventure,
 Epic Universe and Volcano Bay, as a surcharge on the ticket. For the Studios and Islands of Adventure,

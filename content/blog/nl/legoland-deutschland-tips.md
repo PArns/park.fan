@@ -18,6 +18,11 @@ tags:
   - duitsland
   - seizoen-2026
 category: guides
+coverImage:
+  src: /media/legoland-deutschland/flying-ninjago-16x9.jpg
+  alt: 'De rode vliegarm staat schuin in de lucht, aan weerszijden hangen de gondels met de inzittenden.'
+  caption: 'Flying NINJAGO, de enige attractie in het park met één grens voor iedereen.'
+  credit: 'Alex234 / Wikimedia Commons (CC0 1.0)'
 parkLinks:
   - legoland-deutschland
 rideLinks:

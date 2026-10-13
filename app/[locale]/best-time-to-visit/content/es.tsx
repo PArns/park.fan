@@ -59,7 +59,7 @@ const FAQ = [
   {
     question: '¿En qué meses están menos concurridos los parques de atracciones?',
     answer:
-      'Depende del parque más de lo que sugiere la regla general: promediados todos los parques, los meses de verano no son los más llenos, y diciembre sobresale por arriba, porque en invierno solo abren los parques con programa navideño. Mes a mes está en el resumen de arriba. Para un parque concreto cuenta su propio calendario.',
+      'Promediados todos los parques, los meses de verano no son los más llenos, y diciembre sobresale por arriba, porque en invierno solo abren los parques con programa navideño. Mes a mes está en el resumen de arriba. Para un parque concreto cuenta su propio calendario.',
   },
   {
     question: '¿Merece la pena visitar con lluvia?',

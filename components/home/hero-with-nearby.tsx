@@ -9,10 +9,9 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 import { PARK_COMPASS_ID, useCompassPresent } from '@/lib/home/compass-presence';
 import { trackCompassPillClicked } from '@/lib/analytics/umami';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
-import { stripNewPrefix, cn } from '@/lib/utils';
-import { Skeleton } from '@/components/ui/skeleton';
-import { LiveDot } from '@/components/common/live-dot';
+import { stripNewPrefix } from '@/lib/utils';
 import { HeroParkActions, type HeroPark } from '@/components/home/hero-park-actions';
+import { OpenParksBadge } from '@/components/home/open-parks-badge';
 import { LatestNewsChip, type LatestNews } from '@/components/blog/latest-news-chip';
 import type {
   NearbyAttractionsData,
@@ -36,41 +35,14 @@ export interface HeroInitialCounts {
 }
 
 /**
- * Glass pill above the headline: "N parks open right now", live via useGlobalStats. The shell
- * renders either way and only its content swaps, since a skeleton replaced by a badge shifts even
- * at identical heights. `self-start w-fit`, or the xl flex column would stretch it.
- */
-function OpenParksBadge({ openParks }: { openParks: number | null }) {
-  const tHome = useTranslations('home');
-  const pending = openParks == null;
-  return (
-    <span
-      className={cn(
-        'inline-flex h-[30px] w-fit shrink-0 items-center gap-2 self-start rounded-full border px-3.5 text-[11px] font-bold tracking-[0.14em] uppercase shadow-sm',
-        pending
-          ? 'border-border/50 bg-background/50'
-          : 'border-status-operating/40 bg-status-operating/10 text-status-operating'
-      )}
-      aria-busy={pending || undefined}
-    >
-      {pending ? (
-        <Skeleton className="h-2.5 w-36" />
-      ) : (
-        <>
-          <LiveDot color="bg-status-operating" pingColor="bg-status-operating opacity-60" />
-          {tHome('hero.openNow', { count: openParks })}
-        </>
-      )}
-    </span>
-  );
-}
-
-/**
- * The open-parks badge and, beside it, the newest news post as a chip. The row's own width decides
- * the layout, never the badge's, which changes after first paint: from 34 rem (the widest badge
- * plus 15 rem of chip) it is one line that never wraps and the chip truncates; below that, badge
- * above chip. In a park, while the compass is on the page, the chip's slot holds a pill that
- * scrolls down to it, same shape and height, so the swap moves nothing.
+ * The open-parks badge and, beside it, the newest news post as a chip that runs to the row's end.
+ * The row's own width decides the layout, never the badge's, which changes after first paint: from
+ * 34 rem (the widest badge plus 15 rem of chip) it is one line that never wraps and the chip
+ * truncates; below that, badge above chip. Where the page shows the world-map panel
+ * (`@container/page` from 1280 px, the column's own threshold) the badge sits in that panel's
+ * header instead, and the chip has the row to itself. In a park, while the compass is on the
+ * page, the chip's slot holds a pill that scrolls down to it, same height, so the swap moves
+ * nothing.
  */
 function HeroBadgeRow({
   openParks,
@@ -80,13 +52,21 @@ function HeroBadgeRow({
   latestNews: LatestNews | null | undefined;
 }) {
   const compass = useCompassPresent();
+  const tHome = useTranslations('home');
   return (
     // Two elements because a container query styles the container's descendants, never the
     // container itself: the outer box is measured, the inner one is laid out.
     <div className="@container/badges w-full">
       <div className="flex flex-col items-start gap-2 @min-[34rem]/badges:flex-row @min-[34rem]/badges:items-center">
-        <OpenParksBadge openParks={openParks} />
-        {compass ? <CompassPill /> : latestNews && <LatestNewsChip news={latestNews} />}
+        <OpenParksBadge
+          label={openParks == null ? null : tHome('hero.openNow', { count: openParks })}
+          className="@min-[1280px]/page:hidden"
+        />
+        {compass ? (
+          <CompassPill />
+        ) : (
+          latestNews && <LatestNewsChip news={latestNews} className="w-full" />
+        )}
       </div>
     </div>
   );
@@ -181,7 +161,7 @@ export function HeroWithNearby({
   latestNews,
 }: {
   initialCounts: HeroInitialCounts | null;
-  /** The newest news post, for the chip beside the badge. Resolved on the server. */
+  /** The newest news post, for the chip in the badge row. Resolved on the server. */
   latestNews?: LatestNews | null;
 }) {
   const t = useTranslations('parks');
@@ -196,7 +176,13 @@ export function HeroWithNearby({
   const nearbyData = mounted ? liveNearbyData : undefined;
   const { data: liveStats } = useGlobalStats();
 
-  const counts = liveStats?.counts ?? initialCounts;
+  /*
+   * The seed counts in the first client render, for the same reason `GlobalStatsLiveCounts` gates
+   * them: `useGlobalStats` can already hold data while this subtree hydrates, and the badge writes
+   * the number into text the server has already committed. The homepage's HTML is prerendered and
+   * served for hours, so by then the live count almost always differs.
+   */
+  const counts = (mounted ? liveStats?.counts : undefined) ?? initialCounts;
   const openParks = counts?.openParks ?? FALLBACK_COUNTS.openParks;
   const introValues = {
     parks: counts?.parks ?? FALLBACK_COUNTS.parks,

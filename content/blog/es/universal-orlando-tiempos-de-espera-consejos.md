@@ -380,7 +380,7 @@ text: Los precios de cada día están en el calendario de Universal.
 ## Express Pass: cuánto cuesta y dónde vale
 
 Con el Express Pass, en Universal pagas por saltarte la cola. Hay tres
-versiones, y se diferencian más de lo que el nombre sugiere.
+versiones, y se diferencian en cuántas veces valen por atracción y en qué parques.
 
 **Universal Express** vale una vez por atracción. Universal lo vende para los
 Studios, Islands of Adventure, Epic Universe y Volcano Bay, como suplemento de la

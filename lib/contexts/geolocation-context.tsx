@@ -17,6 +17,20 @@ import {
   wasOnlyDismissed,
 } from '@/lib/utils/geolocation-permission';
 
+/**
+ * How old a cached fix may be when the page reads the position, outside a park: longer than the
+ * 5-minute refresh, so a refresh reuses the browser's fix instead of waking the radio for a few
+ * metres that change nothing in a list of parks.
+ */
+const IDLE_MAX_AGE_MS = 8 * 60 * 1000;
+/**
+ * The same for a read that has to be current: the 60-second refresh inside a park, and the read on
+ * coming back to the tab, in a park or not. With the idle value both got the fix from before back
+ * for eight minutes, unless the compass's own GPS watch happened to be running, so the distances
+ * to the rides lagged behind the visitor and a walk into the park went unnoticed.
+ */
+const FRESH_MAX_AGE_MS = 30 * 1000;
+
 export interface GeolocationPosition {
   lat: number;
   lng: number;
@@ -157,7 +171,7 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
     isInParkRef.current = isInPark;
   }, [isInPark]);
 
-  const requestLocation = useCallback((background = false) => {
+  const requestLocation = useCallback((background = false, maximumAge = IDLE_MAX_AGE_MS) => {
     if (typeof navigator === 'undefined' || !navigator.geolocation) {
       setLoading(false);
       setError(true);
@@ -215,13 +229,7 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
           );
         }
       },
-      {
-        enableHighAccuracy: false,
-        timeout: 5000,
-        // Longer than the refresh interval (5 min / 1 min in park) so cached positions
-        // are always reused on auto-refresh instead of triggering a fresh GPS lookup.
-        maximumAge: 8 * 60 * 1000,
-      }
+      { enableHighAccuracy: false, timeout: 5000, maximumAge }
     );
   }, []);
 
@@ -316,22 +324,24 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
   useEffect(() => {
     if (position === null || permissionDenied || !permissionGranted) return;
 
-    const refreshSilently = () => {
+    const refreshSilently = (maximumAge: number) => {
       if (document.hidden) return;
       // Read live: the `change` event for an expired grant may arrive after this tick.
       const state = permissionStatusRef.current?.state ?? null;
       if (state === 'granted') grantSeenRef.current = true;
       if (canRefreshSilently(state, promptReliableRef.current, grantSeenRef.current)) {
-        requestLocation(true);
+        requestLocation(true, maximumAge);
       }
     };
+    const onTick = () => refreshSilently(isInPark ? FRESH_MAX_AGE_MS : IDLE_MAX_AGE_MS);
+    const onReturn = () => refreshSilently(FRESH_MAX_AGE_MS);
     const refreshInterval = isInPark ? 60 * 1000 : 5 * 60 * 1000;
-    const interval = setInterval(refreshSilently, refreshInterval);
-    document.addEventListener('visibilitychange', refreshSilently);
+    const interval = setInterval(onTick, refreshInterval);
+    document.addEventListener('visibilitychange', onReturn);
 
     return () => {
       clearInterval(interval);
-      document.removeEventListener('visibilitychange', refreshSilently);
+      document.removeEventListener('visibilitychange', onReturn);
     };
   }, [position, permissionDenied, permissionGranted, isInPark, requestLocation]);
 

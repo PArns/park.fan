@@ -18,6 +18,11 @@ tags:
   - alemania
   - temporada-2026
 category: guides
+coverImage:
+  src: /media/legoland-deutschland/flying-ninjago-16x9.jpg
+  alt: 'El brazo rojo está inclinado en el aire y a ambos lados cuelgan las góndolas con los pasajeros.'
+  caption: 'Flying NINJAGO, la única atracción del parque con un solo límite para todos.'
+  credit: 'Alex234 / Wikimedia Commons (CC0 1.0)'
 parkLinks:
   - legoland-deutschland
 rideLinks:

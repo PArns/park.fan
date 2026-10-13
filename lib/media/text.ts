@@ -1,12 +1,8 @@
 import type { Locale } from '@/i18n/config';
 import { MEDIA_TEXT } from './manifest-text';
+import { getCreditLine } from './credit';
 import { pickText } from './sidecar.mjs';
-import {
-  OWN_PHOTO_AUTHOR,
-  type LocalizedText,
-  type MediaImage,
-  type ResolvedMediaImage,
-} from './types';
+import type { LocalizedText, MediaImage, ResolvedMediaImage } from './types';
 
 /**
  * Localized alt/caption resolution — the half of the media database that costs
@@ -50,41 +46,6 @@ export function getMediaAltBySrc(src: string | null | undefined, locale: string)
 /** Caption in the requested locale, falling back through de → en → anything. */
 export function getMediaCaption(id: string, locale: string): string | null {
   return pickText(MEDIA_TEXT[id]?.caption, locale);
-}
-
-/**
- * Attribution line, e.g. `© 2025 Patrick Arns (CC BY 4.0)`.
- *
- * Returns null when nobody is credited — an image whose rights are unestablished
- * renders no attribution rather than an empty or misleading one.
- */
-export function getCreditLine(image: MediaImage): string | null {
-  const { author, license, year } = image.credit;
-  if (!author) return null;
-  const line = year ? `© ${year} ${author}` : `© ${author}`;
-  if (license === 'all-rights-reserved' || license === 'unknown') return line;
-  return `${line} (${formatLicense(license)})`;
-}
-
-/**
- * Whether an image needs a visible, on-image credit rather than just the
- * sidecar-only line every photo already carries. Own shoots are implicitly
- * park.fan's — everything else (stock, press, a contribution) has to say so
- * where a reader can see it, not just in metadata nobody opens.
- */
-export function needsAttribution(image: MediaImage): boolean {
-  const { author } = image.credit;
-  return author != null && author !== OWN_PHOTO_AUTHOR;
-}
-
-function formatLicense(license: string): string {
-  if (license === 'public-domain') return 'Public domain';
-  if (license === 'unsplash') return 'Unsplash License';
-  // cc-by-sa-4.0 → CC BY-SA 4.0
-  return license
-    .replace(/^cc-/, 'cc ')
-    .replace(/-(\d[\d.]*)$/, ' $1')
-    .toUpperCase();
 }
 
 /** An image with its text resolved for one locale — the shape components render. */

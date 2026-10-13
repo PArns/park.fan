@@ -2,7 +2,7 @@
 title: 'Halloween 2026 in Europe’s Theme Parks: Chainsaw, Pumpkin or Nothing at All'
 translationKey: halloween-parks-2026
 date: '2026-07-17'
-updatedAt: '2026-10-07'
+updatedAt: '2026-10-11'
 author: patrick
 mode: published
 excerpt: >-
@@ -355,7 +355,7 @@ The big novelty for **2026** isn’t even inside the park.
 **“Entwined: The Maze”** is a **seven-hectare maize field**, grown all summer
 behind the Fenix coaster, with walls metres high and, according to the park,
 _twice the size of the entire Avalon area_. It replaces the old rat labyrinth
-“Trapped” (2018–2025); Toverland has gone from rodents straight to ten football
+“Trapped” (2019–2025); Toverland has gone from rodents straight to ten football
 pitches of maize. The park supplies the premise as well: _are you a match for
 the evil that dwells in the densely grown maize fields?_ The one rule is that
 whoever stops moving gets caught, so keep walking, even once you have no idea
@@ -371,7 +371,8 @@ you get one-off, faster access to all six experiences plus your own spot for
 the parade that starts every evening at 6 p.m. Bought separately, the
 experiences cost €6.50 to €13 per time slot, Entwined alone €13, and each
 night has only a limited number of Fear Passes. On busy nights it can decide
-whether you manage three houses or all six.
+whether you manage three houses or all six. For 2026, though, the Fear Pass is
+sold out for every Halloween Night; the experiences are still sold one by one.
 
 For the normal operating day, Troy included, and the question of when Sevenum is
 actually empty, there’s the [Toverland
@@ -381,6 +382,7 @@ guide](/blog/toverland-troy-wait-times-tips).
 
 Details on experiences, scare zones and the Fear Pass:
 [toverland.com/halloween](https://www.toverland.com/en/activities/halloween/scare-zones-experiences).
+Farewell to Trapped, in Dutch: [Toverblog](https://www.toverland.com/toverblog/blog-afscheiditems-trapped).
 
 ### Walibi Belgium: “Ibilaw”
 

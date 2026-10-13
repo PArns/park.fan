@@ -19,8 +19,10 @@ import { WeatherHourlyChart } from './weather-hourly-chart';
 import { NowcastUpdateCountdown } from './nowcast-update-countdown';
 import { WeatherBackground } from './weather-background';
 import { WindCompass } from './wind-compass';
+import { NowcastWindVisibilityTimeline } from './nowcast-wind-visibility-timeline';
 import { Temp, Wind, Precip, Distance } from '@/components/common/unit-display';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
+import { LOW_VISIBILITY_M } from '@/lib/utils/nowcast-conditions';
 import { LiveDot } from '@/components/common/live-dot';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { useWeatherHourly } from '@/lib/hooks/use-weather-hourly';
@@ -161,7 +163,7 @@ export function WeatherCard({
   // Live conditions row (wind compass + visibility + snow) — only with a nowcast.
   const gustsKmh = activeNowcast?.currentWindGustsKmh ?? null;
   const visM = activeNowcast?.currentVisibilityM ?? null;
-  const isFog = visM != null && visM < 1000;
+  const isFog = visM != null && visM < LOW_VISIBILITY_M;
   const snowCm = activeNowcast?.currentSnowfallCm ?? null;
   const showSnow = snowCm != null && snowCm > 0;
 
@@ -296,6 +298,14 @@ export function WeatherCard({
               </div>
             )}
           </div>
+
+          {activeNowcast && timezone && (
+            <NowcastWindVisibilityTimeline
+              steps={activeNowcast.steps}
+              observedAt={activeNowcast.observedAt}
+              timezone={timezone}
+            />
+          )}
 
           {activeNowcast && timezone && activeHourly && activeHourly.points.length > 0 ? (
             <WeatherHourlyChart

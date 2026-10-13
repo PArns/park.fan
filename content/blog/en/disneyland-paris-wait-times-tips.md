@@ -193,8 +193,7 @@ King** area has been under construction since autumn 2025: more than 30,000
 square metres around a water ride with three drops, the biggest 16 metres down
 from Pride Rock. Disney hasn't given an opening date.
 
-The rides that were already there are older than the renovation suggests. **[The
-Twilight Zone Tower of
+Of the rides that were already there, **[The Twilight Zone Tower of
 Terror](ref:disney-adventure-world/the-twilight-zone-tower-of-terror)** and
 **Crush's Coaster** both date to 2007,
 **[Ratatouille](ref:disney-adventure-world/ratatouille-laventure-totalement-toquee-de-remy)**

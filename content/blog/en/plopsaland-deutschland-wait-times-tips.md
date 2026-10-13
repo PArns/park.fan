@@ -20,11 +20,6 @@ tags:
   - germany
   - season-2026
 category: guides
-coverImage:
-  src: /media/plopsaland-deutschland/haupteingang-free-fall-tower-16x9.jpg
-  alt: 'A paved forecourt leads to a sand-coloured gateway, with a slim white drop tower rising above the treetops behind it.'
-  caption: 'The main entrance in Haßloch. The Free Fall Tower behind it stands 70 metres tall and is visible from the A65.'
-  credit: 'Fischer.H / Wikimedia Commons (CC BY-SA 4.0)'
 parkLinks:
   - plopsaland-deutschland
 rideLinks:
@@ -110,8 +105,6 @@ Germany's first coaster with inversions. Its successor is a Sky Rocket II: 45 me
 times, forwards and backwards, before it clears the vertical top hat. Minimum height
 140 centimetres, minimum age 14, and the same eight-degree rule applies, measured at the track.
 
-![A red track climbs vertically up a grey support frame, tips over at the top and falls in a loop behind a brick building. | Sky Scream launches its trains three times before they clear the 45-metre top hat. Foto: Freddo, Wikimedia Commons (CC BY-SA 4.0) | left](/media/plopsaland-deutschland/sky-scream-top-hat-4x3.jpg)
-
 **100% Wolf – The Family Roller Coaster** is the 2026 addition, opened on 22 March. Gerstlauer
 built it: 17.5 metres tall, 760 metres long, 55 km/h, with a launch section, a track switch for
 the backwards run and a spike as the closing element. It's why the park appears in this year's
@@ -142,8 +135,6 @@ For hot days there are two water rides:
 
 Next to them sits **Splash Battle** in Wickieland, where boat crews and bystanders soak each
 other, and **The Big Wave**, a Zamperla Disk'O. Both are in Wickieland, like Wickie Splash.
-
-![Flat boats with dragon heads drift through a turquoise basin, with target discs beside them and a grey rock carrying a chute. | Splash Battle in Wickieland, with the track of Expedition GeForce behind it. Foto: Freak-Line-Community, Wikimedia Commons (CC BY-SA 4.0) | right](/media/plopsaland-deutschland/splash-battle-wikingerdorf-4x3.jpg)
 
 **Sky Fly** by Gerstlauer, in place since 2015 where the sold-off Bounty Tower stood, is the one
 for people who want to flip themselves over. The **Lighthouse Tower** by Funtime has stood since
