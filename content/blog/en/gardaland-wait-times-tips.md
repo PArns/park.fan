@@ -68,7 +68,7 @@ Attractions based on the film "Jumanji" have stood there since 2022. In 2024 the
 
 ## The coasters
 
-The five big coasters at a glance, with the technical data as the park and the Roller Coaster DataBase list them:
+The technical data comes from the park and the Roller Coaster DataBase.
 
 | Ride         | Type and manufacturer              | Opened | Height | Speed    | Inversions | Minimum height |
 | ------------ | ---------------------------------- | ------ | ------ | -------- | ---------- | -------------- |
@@ -84,13 +84,11 @@ The five big coasters at a glance, with the technical data as the park and the R
 
 At the top the train hangs over the edge for a moment, then drops 42.5 metres at an angle of 87 degrees, into a tunnel. It’s a dive coaster from Bolliger & Mabillard with seats in a single row, six people side by side, 18 per train. The track is short at 566 metres. After the drop come an Immelmann and a heartline roll, and the ride is over after about a minute.
 
-Oblivion opened on 28 March 2015, for the park’s 40th birthday. According to English Wikipedia, attendance rose after the opening. The minimum height is 140 centimetres.
+Oblivion opened on 28 March 2015, for the park’s 40th birthday. The minimum height is 140 centimetres.
 
 ### Raptor: the first wing coaster
 
-Raptor is the prototype of the wing coasters. Bolliger & Mabillard opened it on 1 April 2011. The seats hang to the left and right of the track, four people side by side, with nothing above or below you. It’s 33 metres tall and 90 km/h fast, with three inversions: a corkscrew, a zero-g roll and an inline twist.
-
-Here too the limit is 140 centimetres.
+Raptor is the prototype of the wing coasters. Bolliger & Mabillard opened it on 1 April 2011. The seats hang to the left and right of the track, four people side by side, with nothing above or below you. It’s 33 metres tall and 90 km/h fast, with three inversions: a corkscrew, a zero-g roll and an inline twist. Raptor’s minimum height is 140 centimetres.
 
 ### Blue Tornado and Shaman: Vekoma, 1998 and 1985
 
@@ -126,7 +124,7 @@ Rides with a minimum height have the Baby Switch: one parent waits with the chil
 
 ## Shows and meet and greet
 
-The Gardaland Theatre has had about 1,300 seats since 2006 and shows musicals and shows in changing seasonal programmes. The children’s shows run on the stage in the Teatro della Fantasia, the music shows on the Buffalo Stage in the Western area. The programme changes with the season, and the times are in the Gardaland app on the day of your visit.
+The Gardaland Theatre has had about 1,300 seats since 2006 and shows musicals and shows in changing seasonal programmes. The children’s shows run on the stage in the Teatro della Fantasia, the music shows on the Buffalo Stage in the Western area. The times are in the Gardaland app on the day of your visit.
 
 The Halloween programme runs until 1 November. "Halloween Manor" lasts 25 minutes and starts at 2:30 and 4:30 pm; it doesn’t run on Wednesdays. "Frankentiger – Monströse Experimente" is a ten-minute family show at 11:30 am, 3:30 pm and 6:30 pm. "Sound of Shadows" on the Buffalo Stage runs at 12:30 pm, and "Mirror – Spiegelung der Dunkelheit" at 7 pm only at weekends until 25 October. Children can meet Prezzemolo and Zenda at 10:00 am, 2:15 pm and 5 pm at the Piazza Camelot, Peppa Pig at her house several times in the morning and late afternoon, and Captain Nine Lives at Animal Treasure Island at 1:15 and 3:15 pm.
 
@@ -138,9 +136,7 @@ In the wait times measured over the past twelve months, the median at most rides
 
 ```
 
-Dragon Rush, the family spinning coaster, tops the table, followed by Jumanji – The Adventure. Blue Tornado is in the upper third, while Oblivion and Raptor are at the bottom. The three run from 140 centimetres, Dragon Rush and Jumanji from 110 and 107. We haven’t checked whether the minimum height explains the queues.
-
-A Blue Tornado train takes 20 riders, and the ride manages up to 1,500 an hour. Mammut runs with 36 seats per train, Oblivion with 18.
+Dragon Rush, the family spinning coaster, tops the table, followed by Jumanji – The Adventure. Blue Tornado is in the upper third, while Oblivion and Raptor are at the bottom. The three run from 140 centimetres, Dragon Rush and Jumanji from 110 and 107.
 
 ```stats-widget slug=gardaland show=attractions
 
@@ -148,19 +144,19 @@ A Blue Tornado train takes 20 riders, and the ride manages up to 1,500 an hour. 
 
 ### The hour after opening
 
-In high season the park opens at 10 am. Blue Tornado, Mammut, Raptor and Fuga da Atlantide peak in the hour from eleven and are much shorter for the rest of the day. Jumanji – The Adventure, Dragon Rush and Colorado Boat do the opposite: they build up during the day and peak in the afternoon. There are no wait times for Jumanji before eleven or for Dragon Rush before twelve.
+In high season the park opens at 10 am. Blue Tornado, Mammut, Raptor and Fuga da Atlantide peak in the hour from eleven and are much shorter for the rest of the day. Jumanji – The Adventure, Dragon Rush and Colorado Boat build up during the day instead and peak in the afternoon. There are no wait times for Jumanji before eleven or for Dragon Rush before twelve.
 
 ```hourly-profile-widget slug=gardaland top=8
 
 ```
 
-The rope-drop analysis on the park page gives the same order for every ride. The best time for Blue Tornado, Mammut, Raptor and Fuga da Atlantide is the first 15 minutes after opening. Oblivion follows after about 30 minutes. Wolf Legend is worth it after roughly an hour, Jumanji – The Adventure after an hour and 15 minutes, Shaman and Colorado Boat after an hour and a half. Dragon Rush is shortest two hours after opening, so around noon.
+The best time for Blue Tornado, Mammut, Raptor and Fuga da Atlantide is the first 15 minutes after opening. Oblivion follows after about 30 minutes. Wolf Legend is worth it after roughly an hour, Jumanji – The Adventure after an hour and 15 minutes, Shaman and Colorado Boat after an hour and a half. Dragon Rush is shortest two hours after opening, so around noon.
 
-Compared with the peak, the saving at most rides is between 20 and 45 minutes.
+At most rides, going at the best time means queuing 20 to 45 minutes less than at the peak.
 
 ## When to go
 
-Saturday is the full day, Wednesday the quietest. The days in between are close together, with Sunday a little busier than Monday.
+Saturday is the busiest day and Wednesday the quietest, with Sunday a little busier than Monday.
 
 ```stats-widget slug=gardaland show=weekdays
 
@@ -190,7 +186,7 @@ Say you’re at the entrance at 10 am and can ride everything, so you’re at le
 
 Blue Tornado, Mammut and Raptor come first, in the first quarter of an hour while the queues there are still short, then Fuga da Atlantide. Oblivion is on the list for around half past ten, before its queue builds up.
 
-At eleven the four early rides peak. That’s the time for Wolf Legend, and a quarter of an hour later for Jumanji – The Adventure. If it’s warm, Space Vertigo and Jungle Rapids are next, or the SEA LIFE Aquarium (separate ticket). Shaman and Colorado Boat are shortest half an hour later, Dragon Rush around twelve, and after that its queue stays about the same length until evening. There’s time for lunch. In the early afternoon the queues at Blue Tornado, Mammut, Raptor and Fuga da Atlantide are shorter again than at eleven, good for a second ride.
+At eleven the four early rides peak. That’s the time for Wolf Legend, and a quarter of an hour later for Jumanji – The Adventure. If it’s warm, Space Vertigo and Jungle Rapids are next, or the SEA LIFE Aquarium (separate ticket). Shaman and Colorado Boat are shortest half an hour later, Dragon Rush around twelve, and after that its queue stays about the same length until evening. In the early afternoon the queues at Blue Tornado, Mammut, Raptor and Fuga da Atlantide are shorter again than at eleven, good for a second ride.
 
 You need two days if you have children who want to ride the smaller areas out, or if you add the aquarium and the LEGOLAND Water Park.
 
@@ -201,8 +197,6 @@ Gardaland calls its Fast Pass Gardaland Express. It applies on top of admission 
 There are three packages. "Give me 5" allows one ride each on five attractions out of 15 and costs from 27 euros online, from 30 euros in the park. "Epic 17" is good for one ride each on 17 attractions, including Blue Tornado, Oblivion, Raptor, Mammut, Fuga da Atlantide and Jumanji – The Adventure, from 57 euros online and from 60 euros in the park. "No Limits" allows unlimited rides on those 17 attractions and costs from 87 euros online, from 90 euros in the park. All three give 20 percent off in the park’s shops.
 
 You reserve through the "Gardaland Express" app. You import the voucher or ticket there by QR code, then see the estimated wait times and join the queue for a ride. A notification ("You’re up soon") arrives about five minutes before your ride, followed by a QR code that stays valid for about five minutes. You buy it online or at the Express Points in the park, and the number of passes per day is limited.
-
-If a ride’s median is a quarter of an hour, the pass saves little. On Saturday, the busiest weekday, the queues are longer than the weekly average, and then it saves more.
 
 ## Tickets, prices and season pass
 
@@ -219,7 +213,7 @@ The 2026 season pass is valid from 28 March 2026 to 6 January 2027 and includes 
 | Platinum | €149      | €139              | plus 15 Fast Tracks per visit, LEGOLAND Water Park unlimited, free admission to more than 20 Merlin attractions in Europe |
 | Junior   | €59       | €59               | Park without restrictions, for children from 90 cm up to six years                                                        |
 
-This year the Platinum pass includes free admission on two consecutive days to all Merlin theme parks in Europe, among them LEGOLAND Deutschland, LEGOLAND Billund and Heide Park, plus a day’s admission to many other Merlin venues, including Madame Tussauds in Amsterdam, Berlin and Vienna. Platinum costs 50 euros more than Gold (149 against 99 euros), and for that you get the Merlin admissions.
+This year the Platinum pass includes free admission on two consecutive days to all Merlin theme parks in Europe, among them LEGOLAND Deutschland, LEGOLAND Billund and Heide Park, plus a day’s admission to many other Merlin venues, including Madame Tussauds in Amsterdam, Berlin and Vienna.
 
 ## Getting there and parking
 

@@ -51,7 +51,7 @@ seo:
 
 [Gardaland](ref:gardaland) a Castelnuovo del Garda è il più grande parco divertimenti d’Italia. Ha aperto nel 1975, appartiene a Merlin Entertainments e nel 2024, secondo i dati della Themed Entertainment Association, ha contato circa tre milioni di visite. In Europa basta per il settimo posto.
 
-Le grandi montagne russe del parco sono [Oblivion](ref:gardaland/oblivion-the-black-hole), un dive coaster con 87 gradi di inclinazione nella prima discesa, [Raptor](ref:gardaland/raptor), il prototipo dei wing coaster di Bolliger & Mabillard, e [Blue Tornado](ref:gardaland/blue-tornado), un inverted coaster con cinque inversioni. Abbiamo analizzato i tempi di attesa degli ultimi dodici mesi: alla maggior parte delle attrazioni le code restano corte.
+Le grandi montagne russe del parco sono [Oblivion](ref:gardaland/oblivion-the-black-hole), un dive coaster con 87 gradi di inclinazione nella prima discesa, [Raptor](ref:gardaland/raptor), il prototipo dei wing coaster di Bolliger & Mabillard, e [Blue Tornado](ref:gardaland/blue-tornado), un inverted coaster con cinque inversioni. Secondo i tempi di attesa degli ultimi dodici mesi, alla maggior parte delle attrazioni le code restano corte.
 
 ## Da Livio Furini a Merlin
 
@@ -69,7 +69,7 @@ Dal 2022 ci sono attrazioni dedicate al film «Jumanji». Nel 2024 la torre drop
 
 ## Le montagne russe
 
-Le cinque grandi montagne russe in sintesi, con i dati tecnici come li riportano il parco e la Roller Coaster DataBase:
+I dati tecnici vengono dal parco e dalla Roller Coaster DataBase.
 
 | Attrazione   | Tipo e costruttore                 | Apertura | Altezza | Velocità | Inversioni | Altezza minima |
 | ------------ | ---------------------------------- | -------- | ------- | -------- | ---------- | -------------- |
@@ -85,13 +85,11 @@ Le cinque grandi montagne russe in sintesi, con i dati tecnici come li riportano
 
 In cima il treno resta sospeso per un attimo oltre il bordo, poi precipita per 42,5 metri con un angolo di 87 gradi, dentro un tunnel. È un dive coaster di Bolliger & Mabillard con i sedili in un’unica fila, sei persone affiancate, 18 per treno. Il percorso è corto, 566 metri. Dopo la discesa vengono un Immelmann e una heartline roll, e dopo circa un minuto è finita.
 
-Oblivion ha aperto il 28 marzo 2015, per il quarantesimo compleanno del parco. Secondo Wikipedia in inglese, dopo l’apertura i visitatori sono aumentati. L’altezza minima è di 140 centimetri.
+Oblivion ha aperto il 28 marzo 2015, per il quarantesimo compleanno del parco. L’altezza minima è di 140 centimetri.
 
 ### Raptor: il primo wing coaster
 
-Raptor è il prototipo dei wing coaster. Bolliger & Mabillard l’ha aperto il 1° aprile 2011. I sedili pendono a sinistra e a destra del binario, quattro persone affiancate, e sopra e sotto di te non c’è niente. 33 metri di altezza, 90 km/h, tre inversioni: un cavatappi, una zero-g roll e un inline twist.
-
-Anche qui si sale da 140 centimetri.
+Raptor è il prototipo dei wing coaster. Bolliger & Mabillard l’ha aperto il 1° aprile 2011. I sedili pendono a sinistra e a destra del binario, quattro persone affiancate, e sopra e sotto di te non c’è niente. 33 metri di altezza, 90 km/h, tre inversioni: un cavatappi, una zero-g roll e un inline twist. Su Raptor si sale da 140 centimetri.
 
 ### Blue Tornado e Shaman: Vekoma, 1998 e 1985
 
@@ -127,7 +125,7 @@ Alle attrazioni con altezza minima vale il baby switch: un genitore aspetta con 
 
 ## Spettacoli e incontri con i personaggi
 
-Il Gardaland Theatre ha dal 2006 circa 1.300 posti a sedere e mette in scena musical e spettacoli in programmi stagionali che cambiano. Sul palco del Teatro della Fantasia si danno gli spettacoli per bambini, sulla Buffalo Stage nell’area western quelli musicali. Il programma cambia con la stagione, gli orari sono nell’app di Gardaland il giorno della visita.
+Il Gardaland Theatre ha dal 2006 circa 1.300 posti a sedere e mette in scena musical e spettacoli in programmi stagionali che cambiano. Sul palco del Teatro della Fantasia si danno gli spettacoli per bambini, sulla Buffalo Stage nell’area western quelli musicali. Gli orari sono nell’app di Gardaland il giorno della visita.
 
 Fino al 1° novembre c’è il programma di Halloween. «Halloween Manor» dura 25 minuti e comincia alle 14:30 e alle 16:30, il mercoledì salta. «Frankentiger – Esperimenti mostruosi» è uno spettacolo per famiglie di dieci minuti, alle 11:30, alle 15:30 e alle 18:30. «Sound of Shadows» sulla Buffalo Stage va in scena alle 12:30, e «Mirror – Riflesso dell’oscurità» alle 19 solo nei fine settimana fino al 25 ottobre. I bambini incontrano Prezzemolo e Zenda alle 10:00, alle 14:15 e alle 17:00 in Piazza Camelot, Peppa Pig nella sua casa più volte la mattina e nel tardo pomeriggio, e Captain Nine Lives ad Animal Treasure Island alle 13:15 e alle 15:15.
 
@@ -139,9 +137,7 @@ Nei tempi di attesa misurati negli ultimi dodici mesi la mediana alla maggior pa
 
 ```
 
-In cima alla tabella c’è Dragon Rush, lo spinning coaster per famiglie, seguito da Jumanji – The Adventure. Blue Tornado sta nel terzo superiore, Oblivion e Raptor in fondo. Le tre si salgono da 140 centimetri, Dragon Rush e Jumanji da 110 e 107. Se l’altezza minima spieghi le code, non l’abbiamo verificato.
-
-Un treno di Blue Tornado porta 20 passeggeri, l’attrazione ne smaltisce fino a 1.500 all’ora. Mammut viaggia con 36 posti per treno, Oblivion con 18.
+In cima alla tabella c’è Dragon Rush, lo spinning coaster per famiglie, seguito da Jumanji – The Adventure. Blue Tornado sta nel terzo superiore, Oblivion e Raptor in fondo. Le tre si salgono da 140 centimetri, Dragon Rush e Jumanji da 110 e 107.
 
 ```stats-widget slug=gardaland show=attractions
 
@@ -155,13 +151,13 @@ In alta stagione il parco apre alle 10. Blue Tornado, Mammut, Raptor e Fuga da A
 
 ```
 
-L’analisi del rope drop nella pagina del parco dà per ogni attrazione lo stesso ordine. Il momento migliore per Blue Tornado, Mammut, Raptor e Fuga da Atlantide sono i primi 15 minuti dopo l’apertura. Oblivion segue dopo circa 30 minuti. Wolf Legend conviene dopo un’ora, Jumanji – The Adventure dopo un’ora e un quarto, Shaman e Colorado Boat dopo un’ora e mezza. Dragon Rush è più corta due ore dopo l’apertura, quindi verso mezzogiorno.
+Il momento migliore per Blue Tornado, Mammut, Raptor e Fuga da Atlantide sono i primi 15 minuti dopo l’apertura. Oblivion segue dopo circa 30 minuti. Wolf Legend conviene dopo un’ora, Jumanji – The Adventure dopo un’ora e un quarto, Shaman e Colorado Boat dopo un’ora e mezza. Dragon Rush è più corta due ore dopo l’apertura, quindi verso mezzogiorno.
 
-Rispetto al picco si risparmiano, alla maggior parte delle attrazioni, tra 20 e 45 minuti.
+Chi sale nel momento migliore fa, alla maggior parte delle attrazioni, tra 20 e 45 minuti di coda in meno che al picco.
 
 ## Quando andare
 
-Il sabato è il giorno più pieno, il mercoledì il più tranquillo. I giorni in mezzo sono vicini tra loro, la domenica è un po’ più piena del lunedì.
+Il sabato è il giorno più pieno, il mercoledì il più tranquillo, e la domenica è un po’ più piena del lunedì.
 
 ```stats-widget slug=gardaland show=weekdays
 
@@ -191,7 +187,7 @@ Ipotizza di essere all’ingresso alle 10 e di poter salire su tutto, quindi di 
 
 Per prime vengono Blue Tornado, Mammut e Raptor, nel primo quarto d’ora, finché le code sono ancora corte, poi Fuga da Atlantide. Oblivion tocca verso le dieci e mezza, prima che la coda si formi.
 
-Alle undici le quattro attrazioni del mattino hanno il loro picco. A quell’ora conviene Wolf Legend, un quarto d’ora dopo Jumanji – The Adventure. Se fa caldo, tocca a Space Vertigo e Jungle Rapids, oppure all’acquario SEA LIFE (biglietto a parte). Shaman e Colorado Boat sono più corti mezz’ora dopo, Dragon Rush verso mezzogiorno, e poi la sua coda resta più o meno uguale fino a sera. Per pranzo il tempo c’è. Nel primo pomeriggio le code a Blue Tornado, Mammut, Raptor e Fuga da Atlantide sono di nuovo più corte che alle undici, buon momento per un secondo giro.
+Alle undici le quattro attrazioni del mattino hanno il loro picco. A quell’ora conviene Wolf Legend, un quarto d’ora dopo Jumanji – The Adventure. Se fa caldo, tocca a Space Vertigo e Jungle Rapids, oppure all’acquario SEA LIFE (biglietto a parte). Shaman e Colorado Boat sono più corti mezz’ora dopo, Dragon Rush verso mezzogiorno, e poi la sua coda resta più o meno uguale fino a sera. Nel primo pomeriggio le code a Blue Tornado, Mammut, Raptor e Fuga da Atlantide sono di nuovo più corte che alle undici, buon momento per un secondo giro.
 
 Servono due giorni se ci sono bambini che vogliono girare le aree più piccole, o se aggiungi l’acquario e il LEGOLAND Water Park.
 
@@ -202,8 +198,6 @@ Gardaland chiama il suo fast pass Gardaland Express. Si paga in aggiunta all’i
 I pacchetti sono tre. «Give me 5» permette un giro su cinque attrazioni a scelta tra 15 e costa online da 27 euro, nel parco da 30 euro. «Epic 17» vale un giro su ciascuna di 17 attrazioni, tra cui Blue Tornado, Oblivion, Raptor, Mammut, Fuga da Atlantide e Jumanji – The Adventure, online da 57 euro, nel parco da 60 euro. «No Limits» permette giri illimitati su quelle 17 attrazioni e costa online da 87 euro, nel parco da 90 euro. Tutti e tre danno il 20 per cento di sconto nei negozi del parco.
 
 La prenotazione passa dall’app «Gardaland Express». Il voucher o il biglietto si importa lì con il codice QR, poi vedi i tempi di attesa stimati e ti metti in fila virtuale per un’attrazione. Una notifica («Tocca quasi a te») arriva circa cinque minuti prima della corsa, poi compare un codice QR che resta valido per circa cinque minuti. Si compra online o agli Express Point nel parco, il numero di pass al giorno è limitato.
-
-Se la mediana di un’attrazione è un quarto d’ora, il pass fa risparmiare poco. Il sabato, il giorno feriale più pieno, le code sono più lunghe della media settimanale, e allora si risparmia di più.
 
 ## Biglietti, prezzi e abbonamento
 
@@ -220,7 +214,7 @@ L’abbonamento 2026 vale dal 28 marzo 2026 al 6 gennaio 2027 e comprende Magic 
 | Platinum | 149 €        | 139 €         | in più 15 fast track a visita, LEGOLAND Water Park illimitato, ingresso gratuito in oltre 20 attrazioni Merlin in Europa |
 | Junior   | 59 €         | 59 €          | Parco senza limitazioni, per bambini da 90 cm fino a sei anni                                                            |
 
-La tessera Platinum comprende quest’anno un ingresso gratuito per due giorni consecutivi in tutti i parchi Merlin d’Europa, tra cui LEGOLAND Deutschland, LEGOLAND Billund e l’Heide Park, e inoltre un ingresso giornaliero in molte altre strutture Merlin, tra cui Madame Tussauds ad Amsterdam, Berlino e Vienna. Platinum costa 50 euro più di Gold (149 contro 99 euro), e in più ci sono gli ingressi Merlin.
+La tessera Platinum comprende quest’anno un ingresso gratuito per due giorni consecutivi in tutti i parchi Merlin d’Europa, tra cui LEGOLAND Deutschland, LEGOLAND Billund e l’Heide Park, e inoltre un ingresso giornaliero in molte altre strutture Merlin, tra cui Madame Tussauds ad Amsterdam, Berlino e Vienna.
 
 ## Come arrivare e dove parcheggiare
 

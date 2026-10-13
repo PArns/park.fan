@@ -68,7 +68,7 @@ Sinds 2022 staan er attracties bij de film “Jumanji”. In 2024 verving de dro
 
 ## De achtbanen
 
-De vijf grote achtbanen op een rij, met de technische gegevens zoals het park en de Roller Coaster DataBase ze vermelden:
+De technische gegevens komen van het park en uit de Roller Coaster DataBase.
 
 | Attractie    | Type en fabrikant                  | Geopend | Hoogte | Snelheid | Inversies | Minimale lengte |
 | ------------ | ---------------------------------- | ------- | ------ | -------- | --------- | --------------- |
@@ -84,13 +84,11 @@ De vijf grote achtbanen op een rij, met de technische gegevens zoals het park en
 
 Op het hoogste punt hangt de trein even over de rand, en dan valt hij onder een hoek van 87 graden 42,5 meter diep een tunnel in. Het is een dive coaster van Bolliger & Mabillard met zitplaatsen in één rij, zes naast elkaar, 18 per trein. Het parcours is met 566 meter kort. Na de val volgen een Immelmann en een heartline roll, en na ongeveer een minuut is de rit voorbij.
 
-Oblivion opende op 28 maart 2015, bij de 40e verjaardag van het park. Volgens de Engelse Wikipedia steeg het aantal bezoekers na de opening. De minimale lengte is 140 centimeter.
+Oblivion opende op 28 maart 2015, bij de 40e verjaardag van het park. De minimale lengte is 140 centimeter.
 
 ### Raptor: de eerste wing coaster
 
-Raptor is het prototype van de wing coasters. Bolliger & Mabillard opende de baan op 1 april 2011. De stoelen hangen links en rechts van het spoor, vier naast elkaar, en boven of onder je zit niets. 33 meter hoog, 90 km/u, drie inversies: een kurkentrekker, een zero-g roll en een inline twist.
-
-Ook hier geldt: vanaf 140 centimeter.
+Raptor is het prototype van de wing coasters. Bolliger & Mabillard opende de baan op 1 april 2011. De stoelen hangen links en rechts van het spoor, vier naast elkaar, en boven of onder je zit niets. 33 meter hoog, 90 km/u, drie inversies: een kurkentrekker, een zero-g roll en een inline twist. Raptor rijdt vanaf 140 centimeter.
 
 ### Blue Tornado en Shaman: Vekoma, 1998 en 1985
 
@@ -126,7 +124,7 @@ Bij attracties met een minimale lengte geldt de baby switch: een ouder wacht met
 
 ## Shows en meet & greet
 
-Het Gardaland Theatre heeft sinds 2006 ongeveer 1.300 zitplaatsen en brengt musicals en shows in wisselende seizoensprogramma's. Op het podium in het Teatro della Fantasia lopen de kindershows, op de Buffalo Stage in het westerngebied de muziekshows. Het programma verandert per seizoen, de tijden staan op de dag van je bezoek in de Gardaland-app.
+Het Gardaland Theatre heeft sinds 2006 ongeveer 1.300 zitplaatsen en brengt musicals en shows in wisselende seizoensprogramma's. Op het podium in het Teatro della Fantasia lopen de kindershows, op de Buffalo Stage in het westerngebied de muziekshows. De tijden staan op de dag van je bezoek in de Gardaland-app.
 
 Tot 1 november loopt het Halloween-programma. “Halloween Manor” duurt 25 minuten en begint om 14:30 en 16:30 uur, op woensdag vervalt de show. “Frankentiger – Monströse Experimente” is een familieshow van tien minuten om 11:30, 15:30 en 18:30 uur. “Sound of Shadows” op de Buffalo Stage begint om 12:30 uur en “Mirror – Spiegelung der Dunkelheit” om 19 uur, alleen in het weekend tot 25 oktober. Kinderen ontmoeten Prezzemolo en Zenda om 10:00, 14:15 en 17:00 uur op de Piazza Camelot, Peppa Pig in haar huis meermaals in de ochtend en laat in de middag, en Captain Nine Lives bij Animal Treasure Island om 13:15 en 15:15 uur.
 
@@ -138,9 +136,7 @@ In de gemeten wachttijden van de afgelopen twaalf maanden ligt de mediaan bij de
 
 ```
 
-Bovenaan de tabel staat Dragon Rush, de spinning coaster voor het gezin, gevolgd door Jumanji – The Adventure. Blue Tornado staat in het bovenste derde deel, Oblivion en Raptor onderaan. Die drie rijden vanaf 140 centimeter, Dragon Rush en Jumanji vanaf 110 en 107 centimeter. Of de minimale lengte de wachtrijen verklaart, hebben we niet onderzocht.
-
-Een trein van Blue Tornado neemt 20 passagiers mee, de baan haalt maximaal 1.500 per uur. Mammut rijdt met 36 plaatsen per trein, Oblivion met 18.
+Bovenaan de tabel staat Dragon Rush, de spinning coaster voor het gezin, gevolgd door Jumanji – The Adventure. Blue Tornado staat in het bovenste derde deel, Oblivion en Raptor onderaan. Die drie rijden vanaf 140 centimeter, Dragon Rush en Jumanji vanaf 110 en 107 centimeter.
 
 ```stats-widget slug=gardaland show=attractions
 
@@ -154,13 +150,13 @@ In het hoogseizoen opent het park om 10 uur. Bij Blue Tornado, Mammut, Raptor en
 
 ```
 
-De rope-drop-analyse op de parkpagina komt voor elke attractie op dezelfde volgorde uit. Voor Blue Tornado, Mammut, Raptor en Fuga da Atlantide zijn de eerste 15 minuten na opening het beste moment. Oblivion volgt na ongeveer 30 minuten. Wolf Legend loont na een uur, Jumanji – The Adventure na een uur en 15 minuten, Shaman en Colorado Boat na anderhalf uur. Bij Dragon Rush is de wachtrij twee uur na opening het kortst, dus rond het middaguur.
+Voor Blue Tornado, Mammut, Raptor en Fuga da Atlantide zijn de eerste 15 minuten na opening het beste moment. Oblivion volgt na ongeveer 30 minuten. Wolf Legend loont na een uur, Jumanji – The Adventure na een uur en 15 minuten, Shaman en Colorado Boat na anderhalf uur. Bij Dragon Rush is de wachtrij twee uur na opening het kortst, dus rond het middaguur.
 
-De winst ten opzichte van de piek ligt bij de meeste attracties tussen 20 en 45 minuten.
+Wie op het beste moment instapt, staat bij de meeste attracties 20 tot 45 minuten korter in de rij dan op het piekmoment.
 
 ## Wanneer je het best gaat
 
-Zaterdag is de drukke dag, woensdag de rustigste. De dagen ertussen liggen dicht bij elkaar, zondag is iets voller dan maandag.
+Zaterdag is de drukste dag en woensdag de rustigste, zondag is iets voller dan maandag.
 
 ```stats-widget slug=gardaland show=weekdays
 
@@ -190,7 +186,7 @@ Stel dat je om 10 uur bij de ingang staat en overal in mag, je bent dus minstens
 
 Eerst Blue Tornado, Mammut en Raptor, in het eerste kwartier, zolang de wachtrijen daar nog kort zijn, daarna Fuga da Atlantide. Oblivion pak je rond half elf, voordat daar de wachtrij oploopt.
 
-Om elf uur hebben de vier vroege attracties hun piek. Dan is het tijd voor Wolf Legend, een kwartier later voor Jumanji – The Adventure. Als het warm is, zijn Space Vertigo en Jungle Rapids aan de beurt, of het SEA LIFE Aquarium (eigen ticket). Bij Shaman en Colorado Boat is de wachtrij een half uur later het kortst, bij Dragon Rush rond twaalf uur, en daarna blijft die rij tot de avond ongeveer even lang. Voor de lunch is tijd. Begin van de middag zijn de wachtrijen bij Blue Tornado, Mammut, Raptor en Fuga da Atlantide weer korter dan om elf uur, genoeg voor een tweede rit.
+Om elf uur hebben de vier vroege attracties hun piek. Dan is het tijd voor Wolf Legend, een kwartier later voor Jumanji – The Adventure. Als het warm is, zijn Space Vertigo en Jungle Rapids aan de beurt, of het SEA LIFE Aquarium (eigen ticket). Bij Shaman en Colorado Boat is de wachtrij een half uur later het kortst, bij Dragon Rush rond twaalf uur, en daarna blijft die rij tot de avond ongeveer even lang. Begin van de middag zijn de wachtrijen bij Blue Tornado, Mammut, Raptor en Fuga da Atlantide weer korter dan om elf uur, genoeg voor een tweede rit.
 
 Twee dagen heb je nodig als je kinderen bij je hebt die de kleinere gebieden helemaal willen doen, of als je ook het aquarium en het LEGOLAND Water Park meepakt.
 
@@ -201,8 +197,6 @@ Gardaland noemt de fast pass Gardaland Express. Hij geldt bovenop de entree en g
 Er zijn drie pakketten. “Give me 5” geeft één rit op vijf attracties uit 15 en kost online vanaf 27 euro, in het park vanaf 30 euro. “Epic 17” geldt voor één rit op 17 attracties, waaronder Blue Tornado, Oblivion, Raptor, Mammut, Fuga da Atlantide en Jumanji – The Adventure, online vanaf 57 euro, in het park vanaf 60 euro. “No Limits” geeft onbeperkt ritten op diezelfde 17 attracties en kost online vanaf 87 euro, in het park vanaf 90 euro. Alle drie geven 20 procent korting in de winkels van het park.
 
 De reservering loopt via de app “Gardaland Express”. Het voucher of ticket importeer je daar met een QR-code, daarna zie je de geschatte wachttijden en sluit je aan bij een attractie. Ongeveer vijf minuten voor de rit komt er een melding (“Je bent bijna aan de beurt”), dan verschijnt een QR-code die zo'n vijf minuten geldig blijft. Je koopt de pas online of bij de Express Points in het park, het aantal passen per dag is beperkt.
-
-Ligt de mediaan van een attractie op een kwartier, dan bespaart de pas weinig. Op zaterdag, de drukste weekdag, zijn de wachtrijen langer dan in het weekgemiddelde en bespaart hij meer.
 
 ## Tickets, prijzen en seizoenskaart
 
@@ -219,7 +213,7 @@ De seizoenskaart voor 2026 geldt van 28 maart 2026 tot 6 januari 2027 en omvat M
 | Platinum | 149 €       | 139 €                       | extra 15 fast tracks per bezoek, LEGOLAND Water Park onbeperkt, gratis toegang tot meer dan 20 Merlin-attracties in Europa |
 | Junior   | 59 €        | 59 €                        | Park zonder beperkingen, voor kinderen van 90 cm tot zes jaar                                                              |
 
-De Platinum-kaart bevat dit jaar gratis toegang op twee opeenvolgende dagen tot alle Merlin-pretparken in Europa, waaronder LEGOLAND Deutschland, LEGOLAND Billund en Heide Park, en daarnaast een dagentree voor veel andere Merlin-attracties, waaronder Madame Tussauds in Amsterdam, Berlijn en Wenen. Platinum kost 50 euro meer dan Gold (149 tegenover 99 euro), daarvoor krijg je de Merlin-toegang erbij.
+De Platinum-kaart bevat dit jaar gratis toegang op twee opeenvolgende dagen tot alle Merlin-pretparken in Europa, waaronder LEGOLAND Deutschland, LEGOLAND Billund en Heide Park, en daarnaast een dagentree voor veel andere Merlin-attracties, waaronder Madame Tussauds in Amsterdam, Berlijn en Wenen.
 
 ## Route en parkeren
 
