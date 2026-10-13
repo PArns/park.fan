@@ -51,7 +51,7 @@ PortAventura World has three parks with their own tickets: PortAventura Park, Fe
 
 The park opened on 2 May 1995, the same day as Dragon Khan and the mine train El Diablo, according to RCDB. Its first owners were the Tussauds Group, La Caixa, Anheuser-Busch and FECSA. In 1998 Universal bought most of the Tussauds stake, and the park was called "Universal's Port Aventura". NBCUniversal began pulling out in 2004, and since 2005 the park has no longer carried the Universal name.
 
-The resort with its hotels followed on 13 June 2002, Ferrari Land on 7 April 2017. According to Wikipedia the whole complex now belongs to Investindustrial and the investment firm KKR, which took just under half of the shares in 2013. PortAventura World reported around 5.5 million visits for 2023 (Vozpopuli) and 5.3 million for 2025, the year of its thirtieth anniversary (Diari de Tarragona), in each case for the resort with all three parks. According to Diari de Tarragona, about half the guests come from abroad, mainly France, the United Kingdom and Ireland. None of these sources gives a figure for PortAventura Park alone.
+The resort with its hotels followed on 13 June 2002, Ferrari Land on 7 April 2017. According to Wikipedia the whole complex now belongs to Investindustrial and the investment firm KKR, which took just under half of the shares in 2013. PortAventura World reported around 5.5 million visits for 2023 (Vozpopuli) and 5.3 million for 2025, the year of its thirtieth anniversary (Diari de Tarragona), in each case for the resort with all three parks. According to Diari de Tarragona, about half the guests come from abroad, mainly France, the United Kingdom and Ireland.
 
 The park has six themed areas: Mediterrània at the entrance, then Polynesia, China, México, Far West and SésamoAventura for small children.
 
@@ -144,15 +144,11 @@ According to Wikipedia, Angkor opened in 2014 and is a water playground with wat
 
 Templo del Fuego (from 1.40 m, with an adult from 1.00 m) and Serpiente Emplumada in the México area (from 1.40 m) belong to the middle category, which the park calls "moderate".
 
-## How busy it really gets
+## How busy it gets
 
 ```ride-waits-widget park=portaventura-park top=8 columns=land,peak,days highlight=shambhala
 
 ```
-
-A ride that was open on only a few days has fewer measurements behind its figure than one that ran all summer, so read the column with the measured days alongside it.
-
-How queues build through the day:
 
 ```hourly-profile-widget slug=portaventura-park top=8
 
@@ -211,7 +207,7 @@ The park celebrates Halloween from 19 September to 15 November 2026. The five Pa
 
 ### Christmas
 
-According to the park's website, Christmas runs from 20 November 2026 to 6 January 2027. The programme includes the shows "Bubble Magic Christmas", "El bosque encantado", the "Circo de Navidad" (new), "Christmas Time" and the "Gran fiesta de Navidad", plus the Christmas parade, the arrival of the Three Kings as "La llegada de los emisarios reales" and "Ya es Navidad" in SésamoAventura. December opening hours are visible on the park's site only in the booking calendar, which loads in the browser.
+According to the park's website, Christmas runs from 20 November 2026 to 6 January 2027. The programme includes the shows "Bubble Magic Christmas", "El bosque encantado", the "Circo de Navidad" (new), "Christmas Time" and the "Gran fiesta de Navidad", plus the Christmas parade, the arrival of the Three Kings as "La llegada de los emisarios reales" and "Ya es Navidad" in SésamoAventura. December opening hours are visible on the park's site only in the booking calendar.
 
 ## Tickets and prices
 
@@ -267,7 +263,7 @@ For 2027, the park hasn't confirmed anything new.
 
 If you're at the entrance when the gates open, go first to the three rides from the rope drop section: Hurakan Condor in México, Tutuki Splash in Polynesia and Silver River Flume in Far West. China has Shambhala and Dragon Khan, with lockers between the two. Far West has Stampida, Tomahawk, Uncharted and Grand Canyon Rapids, México has El Diablo and Templo del Fuego, and Mediterrània has Furius Baco. For children too small for the big rides, SésamoAventura has Street Mission and Tami-Tami.
 
-The park's map, for planning your routes:
+The park's map:
 
 ```map-widget slug=portaventura-park
 

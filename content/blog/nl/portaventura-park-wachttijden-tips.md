@@ -51,7 +51,7 @@ PortAventura World bestaat uit drie parken met eigen tickets: PortAventura Park,
 
 Het park ging op 2 mei 1995 open, volgens RCDB op dezelfde dag als Dragon Khan en de mijntrein El Diablo. De eerste aandeelhouders waren de Tussauds Group, La Caixa, Anheuser-Busch en FECSA. In 1998 kocht Universal het grootste deel van de Tussauds-aandelen, en het park heette toen “Universal's Port Aventura”. Vanaf 2004 trok NBCUniversal zich terug, en sinds 2005 draagt het park de naam Universal niet meer.
 
-Het resort met hotels kwam op 13 juni 2002 erbij, Ferrari Land op 7 april 2017. Volgens Wikipedia is het geheel nu van Investindustrial en investeerder KKR, die in 2013 bijna de helft van de aandelen overnam. PortAventura World meldde voor 2023 ongeveer 5,5 miljoen bezoeken (Vozpopuli) en voor 2025, het jaar van de dertigste verjaardag, 5,3 miljoen (Diari de Tarragona), telkens voor het resort met alle drie de parken. Volgens Diari de Tarragona komt ongeveer de helft van de gasten uit het buitenland, vooral uit Frankrijk, het Verenigd Koninkrijk en Ierland. Een getal voor PortAventura Park alleen noemen deze bronnen niet.
+Het resort met hotels kwam op 13 juni 2002 erbij, Ferrari Land op 7 april 2017. Volgens Wikipedia is het geheel nu van Investindustrial en investeerder KKR, die in 2013 bijna de helft van de aandelen overnam. PortAventura World meldde voor 2023 ongeveer 5,5 miljoen bezoeken (Vozpopuli) en voor 2025, het jaar van de dertigste verjaardag, 5,3 miljoen (Diari de Tarragona), telkens voor het resort met alle drie de parken. Volgens Diari de Tarragona komt ongeveer de helft van de gasten uit het buitenland, vooral uit Frankrijk, het Verenigd Koninkrijk en Ierland.
 
 Het park heeft zes themagebieden: Mediterrània bij de ingang, daarnaast Polynesia, China, México, Far West en SésamoAventura voor de kleinste kinderen.
 
@@ -144,15 +144,11 @@ Angkor is volgens Wikipedia in 2014 geopend en een waterspeeltuin met waterpisto
 
 Templo del Fuego (vanaf 1,40 m, met volwassene vanaf 1,00 m) en Serpiente Emplumada in het gebied México (vanaf 1,40 m) horen bij de middelste categorie, die het park “gematigd” noemt.
 
-## Hoe druk het echt is
+## Hoe druk het is
 
 ```ride-waits-widget park=portaventura-park top=8 columns=land,peak,days highlight=shambhala
 
 ```
-
-Een baan die maar op weinig dagen open was, heeft minder metingen achter zijn getal dan een baan die de hele zomer reed. Lees daarom de kolom met meetdagen mee.
-
-Zo groeien de rijen over de dag:
 
 ```hourly-profile-widget slug=portaventura-park top=8
 
@@ -211,7 +207,7 @@ Het park viert Halloween van 19 september tot 15 november 2026. De vijf Pasajes 
 
 ### Kerst
 
-De kersttijd loopt volgens de site van het park van 20 november 2026 tot 6 januari 2027. Op het programma staan de shows “Bubble Magic Christmas”, “El bosque encantado”, het “Circo de Navidad” (nieuw), “Christmas Time” en de “Gran fiesta de Navidad”, plus de kerstparade, de intocht van de Drie Koningen als “La llegada de los emisarios reales” en in SésamoAventura “Ya es Navidad”. De openingstijden voor december staan op de parkpagina alleen in de boekingskalender, die pas in de browser laadt.
+De kersttijd loopt volgens de site van het park van 20 november 2026 tot 6 januari 2027. Op het programma staan de shows “Bubble Magic Christmas”, “El bosque encantado”, het “Circo de Navidad” (nieuw), “Christmas Time” en de “Gran fiesta de Navidad”, plus de kerstparade, de intocht van de Drie Koningen als “La llegada de los emisarios reales” en in SésamoAventura “Ya es Navidad”. De openingstijden voor december staan op de parkpagina alleen in de boekingskalender.
 
 ## Tickets en prijzen
 
@@ -267,7 +263,7 @@ Voor 2027 heeft het park nog niets nieuws bevestigd.
 
 Wie bij opening aan de ingang staat, gaat eerst naar de drie banen uit het rope-drop-stuk: Hurakan Condor in México, Tutuki Splash in Polynesia en Silver River Flume in Far West. China heeft Shambhala en Dragon Khan, met kluisjes tussen die twee. Far West heeft Stampida, Tomahawk, Uncharted en Grand Canyon Rapids, México El Diablo en Templo del Fuego, Mediterrània Furius Baco. Voor kinderen die te klein zijn voor de grote attracties zijn er in SésamoAventura Street Mission en Tami-Tami.
 
-De plattegrond van het park, om je route uit te stippelen:
+De plattegrond van het park:
 
 ```map-widget slug=portaventura-park
 
