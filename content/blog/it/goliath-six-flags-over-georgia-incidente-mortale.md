@@ -140,7 +140,7 @@ Un rappresentante di Magic Mountain ha detto a NBC Los Angeles che il parco non 
 
 ## L’attrazione
 
-Goliath è stato costruito dalla svizzera Bolliger & Mabillard ed è in funzione dal 2006. L’Hyper Coaster è alto 61 metri e arriva a 113 km/h. Il percorso misura circa 1.366 metri, e le due discese più alte sono di 52 e 53 metri. Ogni treno ha nove vagoni, ciascuno con quattro posti affiancati. Per salire bisogna essere alti almeno 137 centimetri.
+Goliath è stato costruito dalla svizzera Bolliger & Mabillard ed è in funzione dal 2006. L’Hyper Coaster è alto 61 metri, e sul percorso di circa 1.366 metri i treni arrivano a 113 km/h. Le due discese più alte scendono di 52 e 53 metri. L’attrazione ha due treni, ciascuno con nove vagoni da quattro posti affiancati, ed è progettata per circa 1.220 persone all’ora. Per salire bisogna essere alti almeno 137 centimetri.
 
 Nel luglio 2006 un uomo di 45 anni perse conoscenza durante un giro e morì in
 ospedale, secondo AP per un apparente infarto. Six Flags disse allora che

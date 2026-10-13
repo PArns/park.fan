@@ -140,7 +140,7 @@ Un representante de Magic Mountain dijo a NBC Los Angeles que el parque no tiene
 
 ## La montaña rusa
 
-Goliath lo construyó la empresa suiza Bolliger & Mabillard y funciona desde 2006. Esta Hyper Coaster mide 61 metros de altura y alcanza los 113 km/h. El recorrido tiene unos 1.366 metros, y las dos bajadas más grandes son de 52 y 53 metros. Cada tren tiene nueve coches con cuatro asientos uno al lado del otro. Para subir hay que medir al menos 137 centímetros.
+Goliath lo construyó la empresa suiza Bolliger & Mabillard y funciona desde 2006. Esta Hyper Coaster mide 61 metros de altura, y en su recorrido de unos 1.366 metros los trenes alcanzan los 113 km/h. Sus dos bajadas más grandes caen 52 y 53 metros. La atracción tiene dos trenes, cada uno con nueve coches en los que se sientan cuatro personas una al lado de la otra, y está pensada para unas 1.220 personas por hora. Para subir hay que medir al menos 137 centímetros.
 
 En julio de 2006, un hombre de 45 años perdió el conocimiento durante un viaje y
 murió en el hospital, según AP de un aparente ataque al corazón. Six Flags dijo

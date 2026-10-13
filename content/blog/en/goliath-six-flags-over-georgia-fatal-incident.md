@@ -127,7 +127,7 @@ either.
 
 ## The coaster
 
-Goliath was built by the Swiss firm Bolliger & Mabillard and opened in 2006. The hyper coaster is 61 metres (200 ft) tall and reaches 113 km/h (70 mph). The track is about 1,366 metres (4,480 ft) long, and its two biggest drops are 52 and 53 metres. A train has nine cars, each seating four abreast. Riders must be at least 137 cm (54 in) tall.
+Goliath was built by the Swiss firm Bolliger & Mabillard and has run since 2006. The hyper coaster stands 61 metres (200 ft) tall, and its trains reach 113 km/h (70 mph) on a track of about 1,366 metres (4,480 ft). Its two biggest drops plunge 52 and 53 metres. The ride has two trains, each with nine cars seating four riders abreast, and is built for about 1,220 riders an hour. Riders must be at least 137 cm (54 in) tall.
 
 In July 2006 a 45-year-old man lost consciousness during a ride and died in
 hospital, according to AP of an apparent heart attack. Six Flags said at the

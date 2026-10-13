@@ -142,7 +142,7 @@ datum voor de heropening genoemd.
 
 ## De baan
 
-Goliath komt van de Zwitserse bouwer Bolliger & Mabillard en rijdt sinds 2006. De Hyper Coaster is 61 meter hoog en haalt tot 113 km/h. Het parcours is zo’n 1.366 meter lang, de twee grootste afdalingen meten 52 en 53 meter. Een trein heeft negen wagens met elk vier plaatsen naast elkaar. Wie mee wil, moet minstens 137 centimeter lang zijn.
+Goliath komt van de Zwitserse bouwer Bolliger & Mabillard en rijdt sinds 2006. De Hyper Coaster is 61 meter hoog, en op het zo’n 1.366 meter lange parcours halen de treinen tot 113 km/h. De twee grootste afdalingen gaan 52 en 53 meter naar beneden. De baan heeft twee treinen met elk negen wagens, waarin vier mensen naast elkaar zitten, en is gebouwd voor zo’n 1.220 passagiers per uur. Wie mee wil, moet minstens 137 centimeter lang zijn.
 
 In juli 2006 verloor een 45-jarige man tijdens een rit het bewustzijn. Hij
 overleed in het ziekenhuis, volgens AP aan een kennelijke hartaanval. Six Flags

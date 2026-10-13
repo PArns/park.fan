@@ -143,7 +143,7 @@ Termin genannt.
 
 ## Die Bahn
 
-Goliath stammt vom Schweizer Hersteller Bolliger & Mabillard und fährt seit 2006. Der Hyper Coaster ist 61 Meter hoch und erreicht bis zu 113 km/h. Die Strecke ist rund 1.366 Meter lang, die beiden größten Abfahrten sind 52 und 53 Meter tief. Ein Zug hat neun Wagen mit je vier Plätzen nebeneinander. Mitfahren darf, wer mindestens 137 Zentimeter groß ist.
+Goliath kommt vom Schweizer Hersteller Bolliger & Mabillard und fährt seit 2006. Der Hyper Coaster ist 61 Meter hoch, und auf der rund 1.366 Meter langen Strecke erreichen die Züge bis zu 113 km/h. Die beiden größten Abfahrten gehen 52 und 53 Meter in die Tiefe. Die Bahn hat zwei Züge mit je neun Wagen, in denen vier Fahrgäste nebeneinander sitzen, und ist auf rund 1.220 Fahrgäste pro Stunde ausgelegt. Wer mitfahren will, muss mindestens 137 Zentimeter groß sein.
 
 Im Juli 2006 verlor ein 45-jähriger Mann während einer Fahrt das Bewusstsein und
 starb im Krankenhaus, laut AP an einem offenbaren Herzinfarkt. Six Flags sagte

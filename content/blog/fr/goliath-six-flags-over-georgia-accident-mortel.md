@@ -145,7 +145,7 @@ annoncé aucune date de réouverture.
 
 ## L’attraction
 
-Goliath a été construit par le Suisse Bolliger & Mabillard et fonctionne depuis 2006. Ce Hyper Coaster mesure 61 mètres de haut et roule jusqu’à 113 km/h. Le parcours fait environ 1 366 mètres, et les deux plus grandes descentes mesurent 52 et 53 mètres. Un train compte neuf wagons de quatre places de front. Il faut mesurer au moins 137 centimètres pour monter à bord.
+Goliath a été construit par le Suisse Bolliger & Mabillard et fonctionne depuis 2006. Haut de 61 mètres, ce Hyper Coaster emmène ses trains jusqu’à 113 km/h sur un parcours d’environ 1 366 mètres. Ses deux plus grandes descentes plongent de 52 et 53 mètres. L’attraction compte deux trains de neuf wagons, avec quatre passagers assis de front, et peut accueillir environ 1 220 personnes par heure. Il faut mesurer au moins 137 centimètres pour monter à bord.
 
 En juillet 2006, un homme de 45 ans avait perdu connaissance pendant un tour et
 était mort à l’hôpital, d’une crise cardiaque apparente selon AP. Six Flags
