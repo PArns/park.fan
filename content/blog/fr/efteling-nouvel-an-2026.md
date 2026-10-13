@@ -38,7 +38,7 @@ seo:
 
 L’[Efteling](ref:efteling) a ouvert la vente des billets pour sa soirée du Nouvel An : le 31 décembre 2026, de 19 h à 1 h, à 62 euros par personne. Sa page consacrée à l’événement promet des attractions dans le noir, des milliers de lumières, des attractions d’hiver, des animations et un feu d’artifice.
 
-Le 8 octobre, le blog du parc annonçait encore que les billets pour l’« Oud & Nieuw feest » seraient « binnenkort verkrijgbaar », c’est-à-dire bientôt disponibles. La soirée se réserve désormais dans la billetterie en ligne. Elle n’a lieu que le 31 décembre, de 19 h à 1 h.
+Le 8 octobre, le blog du parc annonçait encore que les billets pour l’« Oud & Nieuw feest » seraient « binnenkort verkrijgbaar », c’est-à-dire bientôt disponibles. La soirée se réserve désormais dans la billetterie en ligne.
 
 ## Ce que comprend le billet
 
@@ -46,7 +46,7 @@ Le billet donne droit à un oliebol, à de quoi trinquer et au feu d’artifice.
 
 Le parking est compris ce soir-là. Les autres jours, il coûte 15 euros à l’Efteling ; les clients des hôtels et des parcs de vacances se garent gratuitement à leur hébergement.
 
-Chaque billet vaut pour une entrée, pour une personne à partir de quatre ans, le 31 décembre de 19 h à 1 h. Avec les billets à la journée, les enfants de trois ans et moins entrent gratuitement sur présentation d’une pièce d’identité. La page de la billetterie ne dit pas si la règle vaut aussi pour le réveillon : avec un tout-petit, mieux vaut poser la question au parc avant de venir.
+Chaque billet vaut pour une entrée, pour une personne à partir de quatre ans. Avec les billets à la journée, les enfants de trois ans et moins entrent gratuitement sur présentation d’une pièce d’identité. La page de la billetterie ne dit pas si la règle vaut aussi pour le réveillon : avec un tout-petit, mieux vaut poser la question au parc avant de venir.
 
 Une commande peut compter jusqu’à 19 billets. Ils ne sont pas remboursables. L’Efteling accorde d’ordinaire un droit de rétractation de 14 jours sur les billets achetés en ligne sur efteling.com, mais en exclut expressément les billets datés et ceux d’un événement, et sa foire aux questions cite les billets du Nouvel An en exemple.
 
@@ -62,7 +62,7 @@ La réduction n’apparaît qu’en néerlandais, sur la page de l’événement
 
 Le billet du Nouvel An n’est valable qu’à partir de 19 h. En journée, l’Efteling ouvre normalement le 31 décembre, de 10 h à 18 h. Le billet à la journée se vend à part et coûte 56 euros à cette date dans la billetterie. Une heure sépare la fermeture de la journée et le début de la fête.
 
-Les autres jours des vacances de Noël, le parc ferme plus tard : du 19 au 30 décembre, il est ouvert tous les jours de 10 h à 20 h. Sur cette période, le 31 est le seul jour qui se termine à 18 h. Le billet du soir, valable à partir de 16 h du 21 décembre au 3 janvier pendant les vacances de Noël pour 33 euros, n’est pas proposé le 31 décembre.
+Du 19 au 30 décembre, le parc est ouvert tous les jours de 10 h à 20 h ; le 31, il ferme dès 18 h. Le billet du soir, valable à partir de 16 h du 21 décembre au 3 janvier pour 33 euros, n’est pas proposé le 31 décembre.
 
 La journée tombe pendant la Winter Efteling, du 16 novembre 2026 au 31 janvier 2027. Les montagnes russes en plein air tournent tant que la météo le permet. La liste des maintenances du parc ne mentionne aucune attraction le 31 décembre. Droomvlucht est en maintenance du 9 novembre au 4 décembre, Joris en de Draak du 30 novembre au 18 décembre, la Pagode du 15 au 17 décembre.
 
@@ -78,7 +78,7 @@ Pour 2022, le parc avait détaillé le programme sur son blog. Des DJ jouaient a
 
 Le plan officiel de 2024/25 indiquait entre autres une silent disco, « Grootmoeders Bingo », « Bubbels en bollen » et l’endroit d’où l’on voit le mieux le feu d’artifice.
 
-La soirée a déjà affiché complet plusieurs fois. En 2022, le parc avait annoncé l’ouverture des ventes le 9 novembre, puis ajouté le 3 décembre une phrase à son article : tous les billets étaient vendus. En 2018, cette phrase figurait dès le 16 novembre sous un article sur la fête.
+La soirée a déjà affiché complet plusieurs fois. En 2022, le parc avait annoncé l’ouverture des ventes le 9 novembre, puis ajouté le 3 décembre une phrase à son article : tous les billets étaient vendus. En 2018, il avait ajouté la même phrase dès le 16 novembre à un article sur la fête.
 
 ## Dormir sur place
 

@@ -38,7 +38,7 @@ seo:
 
 De [Efteling](ref:efteling) verkoopt nu kaarten voor oudejaarsavond op 31 december 2026, van 19.00 tot 1.00 uur, voor 62 euro per persoon. Op de eventpagina belooft het park attracties in het donker, duizenden lichtjes, winterattracties, entertainment en vuurwerk.
 
-Op 8 oktober schreef de Efteling op haar blog nog dat de tickets voor het “Oud & Nieuw feest” “binnenkort verkrijgbaar” waren. Nu staat de avond in de ticketshop. Het aanbod geldt alleen voor 31 december, tussen 19.00 en 1.00 uur.
+Op 8 oktober schreef de Efteling op haar blog nog dat de tickets voor het “Oud & Nieuw feest” “binnenkort verkrijgbaar” waren. Nu staat de avond in de ticketshop.
 
 ## Wat er bij het ticket hoort
 
@@ -46,7 +46,7 @@ Bij de kaart horen een oliebol, iets met prik om op het nieuwe jaar te proosten 
 
 Parkeren is op oudejaarsavond inbegrepen. Op andere dagen kost de parkeerplaats bij de Efteling 15 euro; wie in een van de hotels of vakantieparken logeert, parkeert gratis bij zijn verblijf.
 
-Een kaart is eenmalig geldig voor één persoon vanaf vier jaar, op 31 december van 19.00 tot 1.00 uur. Met een dagticket mogen kinderen tot en met drie jaar met een identiteitsbewijs gratis naar binnen. Of dat ook op oudejaarsavond zo is, staat niet op de ticketpagina. Neem je een peuter mee, vraag het dan eerst na bij het park.
+Een kaart is eenmalig geldig voor één persoon vanaf vier jaar. Met een dagticket mogen kinderen tot en met drie jaar met een identiteitsbewijs gratis naar binnen. Of dat ook op oudejaarsavond zo is, staat niet op de ticketpagina. Neem je een peuter mee, vraag het dan eerst na bij het park.
 
 Je kunt tot 19 kaarten per bestelling kopen, en terugsturen kan niet. Voor tickets die online via efteling.com zijn gekocht, geldt normaal een retourrecht van 14 dagen. Kaarten met een vaste datum of voor een evenement vallen daar uitdrukkelijk buiten, en in de veelgestelde vragen noemt de Efteling de tickets voor Oud en Nieuw als voorbeeld.
 
@@ -62,7 +62,7 @@ De korting staat alleen op de Nederlandse eventpagina en op de pagina voor abonn
 
 De kaart voor oudejaarsavond geldt pas vanaf 19.00 uur. Overdag is de Efteling op 31 december gewoon open, van 10.00 tot 18.00 uur. Het dagticket wordt los verkocht en kost voor die datum 56 euro in de ticketshop. Tussen sluitingstijd en het begin van het feest zit een uur.
 
-Op de andere dagen van de kerstvakantie gaat het park later dicht. Van 19 tot en met 30 december is het elke dag open van 10.00 tot 20.00 uur, dus oudejaarsdag is in die periode de enige dag waarop om 18.00 uur de deuren sluiten. Het avondticket van 33 euro, dat in de kerstvakantie van 21 december tot 3 januari vanaf 16.00 uur geldt, is er op 31 december niet.
+Van 19 tot en met 30 december is het park elke dag open van 10.00 tot 20.00 uur, op oudejaarsdag gaat het al om 18.00 uur dicht. Het avondticket van 33 euro, dat van 21 december tot 3 januari vanaf 16.00 uur geldt, is er op 31 december niet.
 
 De dag valt in de Winter Efteling, van 16 november 2026 tot 31 januari 2027. De buitenachtbanen rijden zolang het weer het toelaat. Op de onderhoudslijst van het park staat voor 31 december geen enkele attractie. Droomvlucht is van 9 november tot 4 december in onderhoud, Joris en de Draak van 30 november tot 18 december en de Pagode van 15 tot 17 december.
 
@@ -78,7 +78,7 @@ Voor 2022 beschreef het park het programma op zijn blog. Vanaf 23.00 uur draaide
 
 Op de officiële plattegrond van 2024/25 stonden onder meer een silent disco, “Grootmoeders Bingo”, “Bubbels en bollen” en de plek met het beste zicht op het vuurwerk.
 
-De avond is al vaker uitverkocht geweest. In 2022 meldde het park op 9 november dat de verkoop was gestart, en op 3 december kwam er onder dat bericht een zin bij dat alle tickets uitverkocht waren. In 2018 stond diezelfde zin al op 16 november onder een bericht over het feest.
+De avond is al vaker uitverkocht geweest. In 2022 meldde het park op 9 november dat de verkoop was gestart, en op 3 december kwam er onder dat bericht een zin bij dat alle tickets uitverkocht waren. In 2018 zette het park diezelfde zin al op 16 november bij een bericht over het feest.
 
 ## Overnachten
 

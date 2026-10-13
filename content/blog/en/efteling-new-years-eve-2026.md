@@ -38,7 +38,7 @@ seo:
 
 [Efteling](ref:efteling) has put tickets on sale for its New Year's Eve party on 31 December 2026, which runs from 7 pm to 1 am and costs €62 a head. The event page promises rides in the dark, thousands of lights, the winter attractions, entertainment and fireworks.
 
-On 8 October the park's blog still said tickets for the "Oud & Nieuw feest" would be "binnenkort verkrijgbaar", available soon. The evening can now be booked in the ticket shop. It's a one-night offer: 31 December only, 7 pm to 1 am.
+On 8 October the park's blog still said tickets for the "Oud & Nieuw feest" would be "binnenkort verkrijgbaar", available soon. The evening can now be booked in the ticket shop.
 
 ## What the ticket covers
 
@@ -46,7 +46,7 @@ The ticket gets you an oliebol, something sparkling for the toast and the firewo
 
 Parking is included on New Year's Eve. On other days the Efteling car park costs €15, and guests at the hotels and holiday parks park free at their accommodation.
 
-Each ticket admits one person aged four or over, once, on 31 December from 7 pm to 1 am. On day tickets, children up to and including three get in free with ID. The ticket page doesn't say whether that also applies on New Year's Eve, so if you're bringing a toddler, check with the park first.
+Each ticket admits one person aged four or over, once. On day tickets, children up to and including three get in free with ID. The ticket page doesn't say whether that also applies on New Year's Eve, so if you're bringing a toddler, check with the park first.
 
 You can buy up to 19 tickets per order, and they can't be returned. Efteling normally gives 14 days to return tickets bought online at efteling.com, but it explicitly excludes dated and event tickets, and its FAQ names the New Year's Eve tickets as an example.
 
@@ -62,7 +62,7 @@ Efteling only mentions the discount in Dutch, on the event page and on the pass 
 
 The New Year's Eve ticket only starts at 7 pm. During the day Efteling is open as usual on 31 December, from 10 am to 6 pm. The day ticket is sold separately and costs €56 for that date in the ticket shop. There's an hour between the end of the normal day and the start of the party.
 
-On the other days of the Christmas holidays the park closes later. From 19 to 30 December it's open daily from 10 am to 8 pm, which makes New Year's Eve the only day in that stretch with a 6 pm close. The evening ticket, valid from 4 pm during the Christmas holidays from 21 December to 3 January at €33, isn't sold for 31 December.
+From 19 to 30 December the park is open daily from 10 am to 8 pm, while on New Year's Eve it closes at 6 pm. The evening ticket, valid from 4 pm between 21 December and 3 January at €33, isn't sold for 31 December.
 
 The day falls within Winter Efteling, which runs from 16 November 2026 to 31 January 2027. The outdoor coasters run as long as the weather allows. The park's maintenance list has no ride down for 31 December. Droomvlucht is closed for maintenance from 9 November to 4 December, Joris en de Draak from 30 November to 18 December, and the Pagode from 15 to 17 December.
 
@@ -78,7 +78,7 @@ For 2022 the park described the programme on its blog. From 11 pm DJs played at 
 
 The official map for 2024/25 marked, among other things, a silent disco, "Grootmoeders Bingo", "Bubbels en bollen" and the best spot to watch the fireworks.
 
-The evening has sold out more than once. In 2022 the park announced the start of sales on 9 November, and on 3 December it added a line to the post saying all tickets were gone. In 2018 the same line had appeared under a post about the party by 16 November.
+The evening has sold out more than once. In 2022 the park announced the start of sales on 9 November, and on 3 December it added a line to the post saying all tickets were gone. In 2018 Efteling added the same line to a post about the party as early as 16 November.
 
 ## Staying overnight
 

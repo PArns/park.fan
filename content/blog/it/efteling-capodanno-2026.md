@@ -38,7 +38,7 @@ seo:
 
 Per la notte del 31 dicembre 2026 [Efteling](ref:efteling) vende ora i biglietti della sua serata di Capodanno: si entra dalle 19 all’1 e si pagano 62 euro a persona. Sulla pagina dell’evento il parco annuncia attrazioni al buio, migliaia di luci, attrazioni invernali, intrattenimento e fuochi d’artificio.
 
-L’8 ottobre il blog di Efteling scriveva ancora che i biglietti per l’«Oud & Nieuw feest» sarebbero stati «binnenkort verkrijgbaar», cioè disponibili a breve. Adesso la serata si prenota nel negozio online. L’offerta vale solo per il 31 dicembre, con la fascia oraria dalle 19 all’1.
+L’8 ottobre il blog di Efteling scriveva ancora che i biglietti per l’«Oud & Nieuw feest» sarebbero stati «binnenkort verkrijgbaar», cioè disponibili a breve. Adesso la serata si prenota nel negozio online.
 
 ## Che cosa comprende il biglietto
 
@@ -46,7 +46,7 @@ Nel prezzo ci sono un oliebol (una frittella olandese), qualcosa di frizzante pe
 
 La sera di Capodanno il parcheggio è compreso. Negli altri giorni il parcheggio di Efteling costa 15 euro, mentre chi dorme negli hotel e nei villaggi vacanze del parco parcheggia gratis presso il proprio alloggio.
 
-Il biglietto vale una sola volta, per una persona dai quattro anni in su, il 31 dicembre dalle 19 all’1. Con i biglietti giornalieri i bambini fino a tre anni compiuti entrano gratis mostrando un documento. Se questo valga anche per la serata di Capodanno, la pagina dei biglietti non lo dice: chi vuole portare un bambino piccolo fa bene a chiedere prima al parco.
+Il biglietto vale una sola volta, per una persona dai quattro anni in su. Con i biglietti giornalieri i bambini fino a tre anni compiuti entrano gratis mostrando un documento. Se questo valga anche per la serata di Capodanno, la pagina dei biglietti non lo dice: chi vuole portare un bambino piccolo fa bene a chiedere prima al parco.
 
 Si possono acquistare fino a 19 biglietti per ordine, e non si possono restituire. Di solito Efteling concede 14 giorni per il recesso sui biglietti comprati online su efteling.com, ma esclude esplicitamente quelli a data fissa o per un evento, e nelle domande frequenti cita proprio i biglietti di Capodanno come esempio.
 
@@ -62,7 +62,7 @@ Lo sconto compare solo in olandese, sulla pagina dell’evento e su quella per g
 
 Il biglietto di Capodanno vale solo dalle 19. Durante il giorno, il 31 dicembre Efteling apre normalmente dalle 10 alle 18. Il biglietto giornaliero si compra a parte e per quella data nel negozio online costa 56 euro. Tra la chiusura diurna e l’inizio della festa passa un’ora.
 
-Negli altri giorni delle vacanze di Natale il parco chiude più tardi: dal 19 al 30 dicembre è aperto tutti i giorni dalle 10 alle 20, e in questo periodo il 31 è l’unico giorno con chiusura alle 18. Il biglietto serale, valido dalle 16 durante le vacanze di Natale dal 21 dicembre al 3 gennaio al prezzo di 33 euro, il 31 dicembre non è in vendita.
+Dal 19 al 30 dicembre il parco è aperto tutti i giorni dalle 10 alle 20, mentre il 31 chiude già alle 18. Il biglietto serale, valido dalle 16 dal 21 dicembre al 3 gennaio al prezzo di 33 euro, il 31 dicembre non è in vendita.
 
 La giornata rientra nel Winter Efteling, che va dal 16 novembre 2026 al 31 gennaio 2027. Le montagne russe all’aperto funzionano finché il tempo lo permette. Nell’elenco delle manutenzioni del parco non c’è nessuna attrazione per il 31 dicembre. Droomvlucht è in manutenzione dal 9 novembre al 4 dicembre, Joris en de Draak dal 30 novembre al 18 dicembre, la Pagode dal 15 al 17 dicembre.
 
@@ -78,7 +78,7 @@ Per il 2022 il parco aveva descritto il programma sul suo blog. Dalle 23 alcuni 
 
 La mappa ufficiale del 2024/25 segnava, tra le altre cose, una silent disco, «Grootmoeders Bingo» (la tombola della nonna), «Bubbels en bollen» e il punto da cui si vedevano meglio i fuochi.
 
-La serata è già andata esaurita più volte. Nel 2022 il parco annunciò l’apertura delle vendite il 9 novembre e il 3 dicembre aggiunse all’articolo la frase che tutti i biglietti erano esauriti. Nel 2018 la stessa frase compariva già il 16 novembre sotto un articolo dedicato alla festa.
+La serata è già andata esaurita più volte. Nel 2022 il parco annunciò l’apertura delle vendite il 9 novembre e il 3 dicembre aggiunse all’articolo la frase che tutti i biglietti erano esauriti. Nel 2018 il parco aveva aggiunto la stessa frase a un articolo dedicato alla festa già il 16 novembre.
 
 ## Dormire al parco
 

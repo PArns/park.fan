@@ -38,7 +38,7 @@ seo:
 
 [Efteling](ref:efteling) ha abierto la venta de entradas para su fiesta de Nochevieja: el 31 de diciembre de 2026, de 19:00 a 1:00, por 62 euros por persona. En la página del evento, el parque anuncia atracciones en la oscuridad, miles de luces, atracciones de invierno, espectáculos y fuegos artificiales.
 
-El 8 de octubre, Efteling todavía escribía en su blog que las entradas para la «Oud & Nieuw feest» estarían «binnenkort verkrijgbaar», es decir, a la venta en breve. Ahora la noche ya se puede reservar en la tienda online. El 31 de diciembre es la única fecha de esta oferta, siempre de 19:00 a 1:00.
+El 8 de octubre, Efteling todavía escribía en su blog que las entradas para la «Oud & Nieuw feest» estarían «binnenkort verkrijgbaar», es decir, a la venta en breve. Ahora la noche ya se puede reservar en la tienda online.
 
 ## Qué incluye la entrada
 
@@ -46,9 +46,9 @@ Con la entrada vienen un oliebol, algo espumoso para brindar y los fuegos artifi
 
 El aparcamiento está incluido esa noche. Otros días, aparcar en Efteling cuesta 15 euros; quien se aloja en los hoteles o en los parques vacacionales aparca gratis junto a su alojamiento.
 
-La entrada vale para una sola visita, para una persona a partir de cuatro años, el 31 de diciembre de 19:00 a 1:00. Con las entradas de día, los niños de hasta tres años incluidos entran gratis presentando un documento de identidad. La página de entradas no dice si en Nochevieja se aplica lo mismo, así que, si vas con un niño pequeño, conviene preguntar antes al parque.
+La entrada vale para una sola visita, para una persona a partir de cuatro años. Con las entradas de día, los niños de hasta tres años incluidos entran gratis presentando un documento de identidad. La página de entradas no dice si en Nochevieja se aplica lo mismo, así que, si vas con un niño pequeño, conviene preguntar antes al parque.
 
-Se pueden comprar hasta 19 entradas por pedido, y no se devuelven. Para las entradas compradas en efteling.com, Efteling ofrece en general 14 días para devolverlas, pero excluye de forma expresa las de fecha fija o para eventos, y en sus preguntas frecuentes pone como ejemplo las de Nochevieja.
+Se pueden comprar hasta 19 entradas por pedido, y no se devuelven. Para las entradas compradas online en efteling.com, Efteling ofrece en general 14 días para devolverlas, pero excluye de forma expresa las de fecha fija o para eventos, y en sus preguntas frecuentes pone como ejemplo las de Nochevieja.
 
 ## Con abono
 
@@ -62,7 +62,7 @@ Efteling solo menciona el descuento en neerlandés, en la página del evento y e
 
 La entrada de Nochevieja vale a partir de las 19:00. De día, Efteling abre el 31 de diciembre con normalidad, de 10:00 a 18:00. La entrada de día se vende por separado y en la tienda online cuesta 56 euros para esa fecha. Entre el cierre del horario diurno y el comienzo de la fiesta pasa una hora.
 
-El resto de las vacaciones de Navidad, el parque cierra más tarde: del 19 al 30 de diciembre abre todos los días de 10:00 a 20:00, y Nochevieja es el único día de ese periodo que termina a las 18:00. La entrada de tarde, que en vacaciones de Navidad vale del 21 de diciembre al 3 de enero a partir de las 16:00 y cuesta 33 euros, no se vende para el 31 de diciembre.
+Del 19 al 30 de diciembre el parque abre todos los días de 10:00 a 20:00, y en Nochevieja cierra ya a las 18:00. La entrada de tarde, que vale del 21 de diciembre al 3 de enero a partir de las 16:00 y cuesta 33 euros, no se vende para el 31 de diciembre.
 
 Ese día cae dentro de Winter Efteling, que va del 16 de noviembre de 2026 al 31 de enero de 2027. Las montañas rusas al aire libre funcionan mientras el tiempo lo permita. En la lista de mantenimiento del parque no figura ninguna atracción para el 31 de diciembre. Droomvlucht está en mantenimiento del 9 de noviembre al 4 de diciembre, Joris en de Draak del 30 de noviembre al 18 de diciembre y la Pagode del 15 al 17 de diciembre.
 
@@ -78,7 +78,7 @@ En 2022 el parque contó el programa en su blog. A partir de las 23:00 pinchaban
 
 El plano oficial de 2024/25 señalaba, entre otras cosas, una silent disco, «Grootmoeders Bingo», «Bubbels en bollen» y el punto desde el que mejor se veían los fuegos.
 
-La noche ya se ha agotado varias veces. En 2022 el parque anunció el inicio de la venta el 9 de noviembre, y el 3 de diciembre añadió a la entrada del blog que no quedaban entradas. En 2018 esa misma frase apareció ya el 16 de noviembre bajo una entrada sobre la fiesta.
+La noche ya se ha agotado varias veces. En 2022 el parque anunció el inicio de la venta el 9 de noviembre, y el 3 de diciembre añadió a la entrada del blog que no quedaban entradas. En 2018 añadió esa misma frase a una entrada sobre la fiesta ya el 16 de noviembre.
 
 ## Dormir en el parque
 
