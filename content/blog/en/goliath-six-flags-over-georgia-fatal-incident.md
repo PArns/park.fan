@@ -105,20 +105,19 @@ On Monday evening Six Flags said it had temporarily closed similar rides at its
 parks "out of an abundance of caution". A company representative named the
 coasters to WSB-TV and NBC News.
 
-| Park                      | Coaster                                                     | Manufacturer (per RCDB) |
-| ------------------------- | ----------------------------------------------------------- | ----------------------- |
-| Six Flags Great America   | [Raging Bull](ref:six-flags-great-america/raging-bull?bare) | B&M                     |
-| Six Flags Magic Mountain  | [Goliath](ref:six-flags-magic-mountain/goliath?bare)        | Giovanola               |
-| Six Flags Great Adventure | [Nitro](ref:six-flags-great-adventure/nitro?bare)           | B&M                     |
-| Canada’s Wonderland       | [Leviathan](ref:canadas-wonderland/leviathan?bare)          | B&M                     |
-| Canada’s Wonderland       | [Behemoth](ref:canadas-wonderland/behemoth?bare)            | B&M                     |
-| Carowinds                 | [Fury 325](ref:carowinds/fury-325?bare)                     | B&M                     |
-| Carowinds                 | [Thunder Striker](ref:carowinds/thunder-striker?bare)       | B&M                     |
-| Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                     |
-| Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                     |
+| Park                      | Coaster                                                     | Manufacturer |
+| ------------------------- | ----------------------------------------------------------- | ------------ |
+| Six Flags Great America   | [Raging Bull](ref:six-flags-great-america/raging-bull?bare) | B&M          |
+| Six Flags Magic Mountain  | [Goliath](ref:six-flags-magic-mountain/goliath?bare)        | Giovanola    |
+| Six Flags Great Adventure | [Nitro](ref:six-flags-great-adventure/nitro?bare)           | B&M          |
+| Canada’s Wonderland       | [Leviathan](ref:canadas-wonderland/leviathan?bare)          | B&M          |
+| Canada’s Wonderland       | [Behemoth](ref:canadas-wonderland/behemoth?bare)            | B&M          |
+| Carowinds                 | [Fury 325](ref:carowinds/fury-325?bare)                     | B&M          |
+| Carowinds                 | [Thunder Striker](ref:carowinds/thunder-striker?bare)       | B&M          |
+| Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M          |
+| Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M          |
 
-Six Flags has not explained what the similarity is. According to RCDB, eight of
-the nine are Hyper Coasters by B&M, the same model as Goliath in Georgia. Kings Island, Carowinds and
+Six Flags has not explained what the similarity is. Eight of the nine are Hyper Coasters by B&M, the same model as Goliath in Georgia. Kings Island, Carowinds and
 Canada’s Wonderland have belonged to Six Flags since the company merged with
 Cedar Fair in 2024.
 
@@ -128,11 +127,7 @@ either.
 
 ## The coaster
 
-Goliath is a hyper coaster built by Bolliger & Mabillard of Switzerland, and it
-opened in 2006. Six Flags gives its height as 61 metres (200 ft) and its top speed
-as 113 km/h (70 mph). RCDB puts the track at about 1,366 metres (4,480 ft), with
-the two biggest drops measuring 52 and 53 metres. A train has nine cars, each
-seating four abreast. Six Flags lists a minimum height of 137 cm (54 in).
+Goliath was built by the Swiss firm Bolliger & Mabillard and has run since 2006. The hyper coaster stands 61 metres (200 ft) tall, and its trains reach 113 km/h (70 mph) on a track of about 1,366 metres (4,480 ft). Its two biggest drops plunge 52 and 53 metres. The ride has two trains, each with nine cars seating four riders abreast, and is built for about 1,220 riders an hour. Riders must be at least 137 cm (54 in) tall.
 
 In July 2006 a 45-year-old man lost consciousness during a ride and died in
 hospital, according to AP of an apparent heart attack. Six Flags said at the

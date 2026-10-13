@@ -121,20 +121,19 @@ Am Montagabend teilte Six Flags mit, „aus Vorsicht“ ähnliche Attraktionen i
 seinen Parks vorübergehend geschlossen zu haben. Ein Vertreter des Unternehmens
 nannte WSB-TV und NBC News die Bahnen.
 
-| Park                      | Bahn                                                        | Hersteller laut RCDB |
-| ------------------------- | ----------------------------------------------------------- | -------------------- |
-| Six Flags Great America   | [Raging Bull](ref:six-flags-great-america/raging-bull?bare) | B&M                  |
-| Six Flags Magic Mountain  | [Goliath](ref:six-flags-magic-mountain/goliath?bare)        | Giovanola            |
-| Six Flags Great Adventure | [Nitro](ref:six-flags-great-adventure/nitro?bare)           | B&M                  |
-| Canada’s Wonderland       | [Leviathan](ref:canadas-wonderland/leviathan?bare)          | B&M                  |
-| Canada’s Wonderland       | [Behemoth](ref:canadas-wonderland/behemoth?bare)            | B&M                  |
-| Carowinds                 | [Fury 325](ref:carowinds/fury-325?bare)                     | B&M                  |
-| Carowinds                 | [Thunder Striker](ref:carowinds/thunder-striker?bare)       | B&M                  |
-| Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                  |
-| Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                  |
+| Park                      | Bahn                                                        | Hersteller |
+| ------------------------- | ----------------------------------------------------------- | ---------- |
+| Six Flags Great America   | [Raging Bull](ref:six-flags-great-america/raging-bull?bare) | B&M        |
+| Six Flags Magic Mountain  | [Goliath](ref:six-flags-magic-mountain/goliath?bare)        | Giovanola  |
+| Six Flags Great Adventure | [Nitro](ref:six-flags-great-adventure/nitro?bare)           | B&M        |
+| Canada’s Wonderland       | [Leviathan](ref:canadas-wonderland/leviathan?bare)          | B&M        |
+| Canada’s Wonderland       | [Behemoth](ref:canadas-wonderland/behemoth?bare)            | B&M        |
+| Carowinds                 | [Fury 325](ref:carowinds/fury-325?bare)                     | B&M        |
+| Carowinds                 | [Thunder Striker](ref:carowinds/thunder-striker?bare)       | B&M        |
+| Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M        |
+| Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M        |
 
-Six Flags hat nicht erklärt, worin die Ähnlichkeit besteht. Laut RCDB sind acht
-der neun Bahnen Hyper Coaster von B&M, dasselbe Modell wie Goliath in Georgia. Kings Island,
+Six Flags hat nicht erklärt, worin die Ähnlichkeit besteht. Acht der neun Bahnen sind Hyper Coaster von B&M, dasselbe Modell wie Goliath in Georgia. Kings Island,
 Carowinds und Canada’s Wonderland gehören zu Six Flags, seit das Unternehmen
 2024 mit Cedar Fair fusioniert hat.
 
@@ -144,12 +143,7 @@ Termin genannt.
 
 ## Die Bahn
 
-Goliath ist ein Hyper Coaster von Bolliger & Mabillard aus der Schweiz und hat
-2006 eröffnet. Laut Six Flags ist die Bahn 61 Meter hoch und fährt bis zu
-113 km/h. Die
-Strecke ist laut RCDB rund 1.366 Meter lang, die beiden größten Abfahrten messen
-52 und 53 Meter. Ein Zug hat neun Wagen mit je vier Plätzen nebeneinander. Six
-Flags gibt eine Mindestgröße von 137 Zentimetern an.
+Goliath kommt vom Schweizer Hersteller Bolliger & Mabillard und fährt seit 2006. Der Hyper Coaster ist 61 Meter hoch, und auf der rund 1.366 Meter langen Strecke erreichen die Züge bis zu 113 km/h. Die beiden größten Abfahrten gehen 52 und 53 Meter in die Tiefe. Die Bahn hat zwei Züge mit je neun Wagen, in denen vier Fahrgäste nebeneinander sitzen, und ist auf rund 1.220 Fahrgäste pro Stunde ausgelegt. Wer mitfahren will, muss mindestens 137 Zentimeter groß sein.
 
 Im Juli 2006 verlor ein 45-jähriger Mann während einer Fahrt das Bewusstsein und
 starb im Krankenhaus, laut AP an einem offenbaren Herzinfarkt. Six Flags sagte
