@@ -74,13 +74,11 @@ FOX 5 Atlanta también citan a testigos que vieron caer a un pasajero.
 > Departamento de Policía del condado de Cobb, en su comunicado del lunes, publicado por [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/), traducido del inglés
 
 Por la noche, representantes de las autoridades dijeron a WSB-TV, una cadena de
-Atlanta, que había cuatro heridos. Ni la policía ni Six Flags dicen cuál es su
-estado. La policía investiga.
+Atlanta, que había cuatro heridos. Ni la policía ni Six Flags dicen cuál es su estado.
 
-Tras el incidente, un tren se quedó parado en lo alto del recorrido, según
-WSB-TV; un visitante contó a CNN que la atracción se había detenido en la
+Tras el incidente, un tren se quedó parado en lo alto del recorrido, según WSB-TV. Un visitante contó a CNN que la atracción se había detenido en la
 subida. Las imágenes aéreas de WSB-TV y, según CNN, de WXIA mostraron cómo
-sacaban a los pasajeros del tren. Después, el parque cerró.
+sacaban a los pasajeros del tren. El parque se cerró y los visitantes tuvieron que marcharse, informó Atlanta News First.
 
 ## Qué dicen Six Flags y las autoridades
 
@@ -97,7 +95,7 @@ sacaban a los pasajeros del tren. Después, el parque cerró.
 
 Lisa Cupid, presidenta del Board of Commissioners del condado de Cobb, escribió
 el lunes por la noche que, por lo que ella sabía, ya se había avisado a los
-familiares más cercanos, y que la policía daría más información en cuanto
+familiares más cercanos. Añadió que la policía daría más información en cuanto
 estuviera confirmada.
 
 En Georgia, las atracciones dependen de la oficina del Insurance and Safety Fire
@@ -136,22 +134,19 @@ empresa dio a WSB-TV y a NBC News la lista de montañas rusas.
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                      |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                      |
 
-Six Flags no explica en qué se parecen. La RCDB clasifica las ocho de B&M como
-Hyper Coaster, el mismo modelo que el Goliath de Georgia. Kings Island,
+Six Flags no explica en qué se parecen. Según la RCDB, las ocho montañas rusas de B&M son Hyper Coaster, el mismo modelo que el Goliath de Georgia. Kings Island,
 Carowinds y Canada’s Wonderland pertenecen a Six Flags desde que la empresa se
 fusionó con Cedar Fair en 2024.
 
-Six Flags no ha dado fecha de reapertura para ninguna de ellas, y un
-representante de Magic Mountain dijo a NBC Los Angeles que el parque no tiene
+Six Flags no ha dado fecha de reapertura para ninguna de ellas. Un representante de Magic Mountain dijo a NBC Los Angeles que el parque no tiene
 calendario para Goliath. Casi dos semanas antes, el 29 de septiembre, Six Flags
 había anunciado el
 [cierre definitivo de X2 en Six Flags Magic Mountain](/news/x2-six-flags-magic-mountain-cierra).
 
 ## La montaña rusa
 
-Goliath abrió en 2006. Es una Hyper Coaster de la empresa suiza Bolliger &
-Mabillard; según Six Flags, mide 61 metros de altura y alcanza los 113 km/h.
-Según la RCDB, el recorrido tiene unos 1.365 metros, y las dos bajadas más
+Goliath es una Hyper Coaster de la empresa suiza Bolliger & Mabillard y abrió en 2006. Six Flags indica que mide 61 metros de altura y alcanza los 113 km/h.
+Según la RCDB, el recorrido tiene unos 1.366 metros, y las dos bajadas más
 grandes son de 52 y 53 metros. Cada tren tiene nueve coches con cuatro asientos
 uno al lado del otro. Six Flags exige una altura mínima de 137 centímetros.
 
@@ -162,8 +157,7 @@ correctamente y que había vuelto a abrir.
 
 ## Para los visitantes
 
-En octubre, Six Flags Over Georgia solo abre los fines de semana, según CNN; el
-lunes abrió por el festivo de Columbus Day. Según un portavoz, el martes el
+En octubre, Six Flags Over Georgia solo abre los fines de semana, informó CNN. El lunes, según CNN, abrió por el festivo de Columbus Day. Según un portavoz, el martes el
 parque iba a estar cerrado de todos modos. En su web, el parque anuncia Fright
 Fest algunas noches hasta el 1 de noviembre. Six Flags no ha dicho si
 Goliath funcionará el próximo día que abra el parque.

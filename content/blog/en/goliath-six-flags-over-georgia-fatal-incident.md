@@ -73,7 +73,7 @@ injured. Neither the police nor Six Flags has said how badly.
 A train was left standing high up on the track after the incident, WSB-TV
 reported. A visitor told CNN it had stopped on the lift hill. Aerial footage
 from WSB-TV and, according to CNN, from WXIA showed riders being brought down
-from the coaster. The park closed afterwards.
+from the coaster. The park was shut down and guests were told to leave, Atlanta News First reported.
 
 ## What Six Flags and the authorities say
 
@@ -131,7 +131,7 @@ Almost two weeks earlier, on 29 September, Six Flags had announced that
 
 Goliath is a hyper coaster built by Bolliger & Mabillard of Switzerland, and it
 opened in 2006. Six Flags gives its height as 61 metres (200 ft) and its top speed
-as 113 km/h (70 mph). RCDB puts the track at about 1,365 metres (4,480 ft), with
+as 113 km/h (70 mph). RCDB puts the track at about 1,366 metres (4,480 ft), with
 the two biggest drops measuring 52 and 53 metres. A train has nine cars, each
 seating four abreast. Six Flags lists a minimum height of 137 cm (54 in).
 

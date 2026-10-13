@@ -78,8 +78,7 @@ Flags.
 
 Nach dem Vorfall blieb ein Zug oben auf der Strecke stehen, berichtete WSB-TV.
 Ein Besucher sagte CNN, die Bahn habe am Lifthill gestanden. Luftaufnahmen von
-WSB-TV und, laut CNN, von WXIA zeigten, wie die Fahrgäste von der Bahn geholt wurden. Danach
-schloss der Park.
+WSB-TV und, laut CNN, von WXIA zeigten, wie die Fahrgäste von der Bahn geholt wurden. Der Park wurde geschlossen, die Besucher mussten gehen, berichtete Atlanta News First.
 
 ## Was Six Flags und die Behörden sagen
 
@@ -150,7 +149,7 @@ schließen](/news/x2-six-flags-magic-mountain-geschlossen).
 Goliath ist ein Hyper Coaster von Bolliger & Mabillard aus der Schweiz und hat
 2006 eröffnet. Laut Six Flags ist die Bahn 61 Meter hoch und fährt bis zu
 113 km/h. Die
-Strecke ist laut RCDB rund 1.365 Meter lang, die beiden größten Abfahrten messen
+Strecke ist laut RCDB rund 1.366 Meter lang, die beiden größten Abfahrten messen
 52 und 53 Meter. Ein Zug hat neun Wagen mit je vier Plätzen nebeneinander. Six
 Flags gibt eine Mindestgröße von 137 Zentimetern an.
 

@@ -75,13 +75,12 @@ passager tomber.
 > La police du comté de Cobb, dans son communiqué de lundi, publié par [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/), traduit de l’anglais
 
 Dans la soirée, des responsables ont parlé de quatre blessés à WSB-TV, une
-chaîne d’Atlanta. Ni la police ni Six Flags ne disent quelle est la gravité de
-leurs blessures. La police enquête.
+chaîne d’Atlanta. Ni la police ni Six Flags ne disent quelle est la gravité de leurs blessures.
 
 Après l’incident, un train est resté immobilisé en hauteur sur le parcours,
 selon WSB-TV. Un visiteur a dit à CNN que le train était arrêté dans la montée.
 Des images aériennes de WSB-TV et, selon CNN, de WXIA montrent l’évacuation des
-passagers. Le parc a fermé ensuite.
+passagers. Le parc a été fermé et les visiteurs ont dû partir, selon Atlanta News First.
 
 ## Ce que disent Six Flags et les autorités
 
@@ -98,8 +97,7 @@ passagers. Le parc a fermé ensuite.
 > Un porte-parole de Six Flags Entertainment Corporation, publié par [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/goliath-ride-six-flags-over-georgia-evacuated/5A5TSTE2ZNB3ZBTVUR64JI4JPA/) et [Atlanta News First](https://www.atlantanewsfirst.com/2026/10/12/riders-stuck-roller-coaster-six-flags-over-georgia/), traduit de l’anglais
 
 Lisa Cupid, présidente du Board of Commissioners du comté de Cobb, a écrit lundi
-soir que, à sa connaissance, les proches avaient été prévenus, et que la police
-donnerait d’autres informations dès qu’elles seraient confirmées.
+soir que, à sa connaissance, les proches avaient été prévenus. La police donnerait d’autres informations dès qu’elles seraient confirmées, a-t-elle ajouté.
 
 En Géorgie, les attractions relèvent du bureau de l’Insurance and Safety Fire
 Commissioner. D’après le règlement de l’État, ce bureau doit inspecter une
@@ -137,8 +135,7 @@ donné la liste à WSB-TV et à NBC News.
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                        |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                        |
 
-Six Flags ne dit pas en quoi ces attractions se ressemblent. La RCDB range les
-huit B&M dans le même modèle que le Goliath de Géorgie, l’Hyper Coaster. Kings
+Six Flags ne dit pas en quoi ces attractions se ressemblent. Selon la RCDB, les huit montagnes russes de B&M sont des Hyper Coasters, le même modèle que le Goliath de Géorgie. Kings
 Island, Carowinds et Canada’s Wonderland appartiennent à Six Flags depuis la
 fusion de l’entreprise avec Cedar Fair en 2024.
 
@@ -150,9 +147,8 @@ Six Flags avait annoncé la
 
 ## L’attraction
 
-Goliath a ouvert en 2006. Cet Hyper Coaster est l’œuvre du constructeur suisse
-Bolliger & Mabillard. Selon Six Flags, il mesure 61 mètres de haut et roule
-jusqu’à 113 km/h. Le parcours fait environ 1 365 mètres selon la RCDB, et les
+Goliath est un Hyper Coaster du constructeur suisse Bolliger & Mabillard et a ouvert en 2006. Selon Six Flags, il mesure 61 mètres de haut et roule
+jusqu’à 113 km/h. Le parcours fait environ 1 366 mètres selon la RCDB, et les
 deux plus grandes descentes mesurent 52 et 53 mètres. Un train compte neuf
 wagons de quatre places de front. Six Flags indique une taille minimale de
 137 centimètres.
@@ -164,8 +160,7 @@ correctement et qu’elle avait rouvert.
 
 ## Pour les visiteurs
 
-En octobre, Six Flags Over Georgia n’ouvre que le week-end, a rapporté CNN ;
-lundi, le parc était ouvert pour le jour férié de Columbus Day. Selon un
+En octobre, Six Flags Over Georgia n’ouvre que le week-end, a rapporté CNN. Lundi, selon CNN, le parc était ouvert pour le jour férié de Columbus Day. Selon un
 porte-parole, il était de toute façon fermé mardi. Sur son site, le parc
 annonce Fright Fest certains soirs jusqu’au 1er novembre. Six Flags n’a pas dit
 si Goliath fonctionnera au prochain jour d’ouverture.

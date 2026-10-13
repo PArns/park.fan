@@ -75,13 +75,11 @@ un passeggero.
 > Dipartimento di polizia della contea di Cobb nel comunicato di lunedì, pubblicato da [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/), tradotto dall’inglese
 
 In serata alcuni funzionari hanno detto a WSB-TV, emittente di Atlanta, che i
-feriti erano quattro. Quanto siano gravi, non lo dicono né la polizia né Six
-Flags. La polizia sta indagando.
+feriti erano quattro. Quanto siano gravi, non lo dicono né la polizia né Six Flags.
 
-Dopo l’incidente un treno è rimasto fermo in alto sul percorso, ha riferito
-WSB-TV, e un visitatore ha detto a CNN che era bloccato sul lift hill. Le
+Dopo l’incidente un treno è rimasto fermo in alto sul percorso, ha riferito WSB-TV. Un visitatore ha detto a CNN che era bloccato sul lift hill. Le
 riprese aeree di WSB-TV e, secondo CNN, di WXIA mostravano i passeggeri mentre
-venivano fatti scendere. Poi il parco ha chiuso.
+venivano fatti scendere. Secondo Atlanta News First, il parco è stato chiuso e i visitatori hanno dovuto lasciarlo.
 
 ## Che cosa dicono Six Flags e le autorità
 
@@ -97,8 +95,7 @@ venivano fatti scendere. Poi il parco ha chiuso.
 > Un portavoce di Six Flags Entertainment Corporation, dichiarazione pubblicata da [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/goliath-ride-six-flags-over-georgia-evacuated/5A5TSTE2ZNB3ZBTVUR64JI4JPA/) e [Atlanta News First](https://www.atlantanewsfirst.com/2026/10/12/riders-stuck-roller-coaster-six-flags-over-georgia/), tradotto dall’inglese
 
 Lisa Cupid, presidente del Board of Commissioners della contea di Cobb, ha
-scritto lunedì sera che, per quanto le risulta, i parenti più stretti sono stati
-avvisati, e che la polizia diffonderà altre informazioni appena saranno
+scritto lunedì sera che, per quanto le risulta, i parenti più stretti sono stati avvisati. Ha aggiunto che la polizia diffonderà altre informazioni appena saranno
 confermate.
 
 In Georgia le attrazioni sono di competenza dell’ufficio dell’Insurance and
@@ -136,22 +133,19 @@ ha fornito l’elenco a WSB-TV e a NBC News.
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                      |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                      |
 
-Six Flags non spiega in che cosa queste attrazioni siano simili. La RCDB
-registra le otto di B&M come Hyper Coaster, lo stesso modello di Goliath in Georgia.
+Six Flags non spiega in che cosa queste attrazioni siano simili. Secondo la RCDB le otto attrazioni di B&M sono Hyper Coaster, lo stesso modello di Goliath in Georgia.
 Kings Island, Carowinds e Canada’s Wonderland appartengono a Six Flags dal 2024,
 quando l’azienda si è fusa con Cedar Fair.
 
-Per nessuna delle attrazioni Six Flags indica una data di riapertura, e un
-rappresentante di Magic Mountain ha detto a NBC Los Angeles che il parco non ha
+Per nessuna delle attrazioni Six Flags indica una data di riapertura. Un rappresentante di Magic Mountain ha detto a NBC Los Angeles che il parco non ha
 tempi previsti per Goliath. Poco meno di due settimane prima, il 29 settembre,
 Six Flags aveva annunciato la
 [chiusura definitiva di X2 a Six Flags Magic Mountain](/news/x2-six-flags-magic-mountain-chiude).
 
 ## L’attrazione
 
-Goliath ha aperto nel 2006. È un Hyper Coaster costruito dalla svizzera
-Bolliger & Mabillard; secondo Six Flags è alto 61 metri e arriva a 113 km/h.
-Secondo la RCDB il percorso misura circa 1.365 metri, e le due discese più alte
+Goliath è un Hyper Coaster della svizzera Bolliger & Mabillard e ha aperto nel 2006. Secondo Six Flags è alto 61 metri e arriva a 113 km/h.
+Secondo la RCDB il percorso misura circa 1.366 metri, e le due discese più alte
 sono di 52 e 53 metri. Ogni treno ha nove vagoni, ciascuno con quattro posti
 affiancati. Six Flags indica un’altezza minima di 137 centimetri.
 
@@ -162,8 +156,7 @@ riaperta.
 
 ## Per i visitatori
 
-A ottobre Six Flags Over Georgia apre solo nei fine settimana, ha riferito CNN;
-lunedì era aperto per la festività del Columbus Day. Secondo un portavoce,
+A ottobre Six Flags Over Georgia apre solo nei fine settimana, ha riferito CNN. Lunedì, sempre secondo CNN, era aperto per la festività del Columbus Day. Secondo un portavoce,
 martedì il parco sarebbe rimasto chiuso in ogni caso. Sul suo sito il parco
 annuncia Fright Fest in alcune serate fino al 1º novembre. Six Flags non ha
 detto se Goliath funzionerà nel prossimo giorno di apertura.

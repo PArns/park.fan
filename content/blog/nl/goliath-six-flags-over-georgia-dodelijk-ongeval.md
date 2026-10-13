@@ -74,12 +74,11 @@ citeren ooggetuigen die een passagier zagen vallen.
 
 ’s Avonds vertelden functionarissen aan de zender WSB-TV uit Atlanta dat vier
 mensen gewond waren geraakt. Hoe ernstig, zeggen de politie en Six Flags niet.
-De politie doet onderzoek.
 
 Na het incident bleef een trein boven op het parcours staan, meldde WSB-TV. Een
 bezoeker vertelde CNN dat de baan op de lifthill stilstond. Luchtbeelden van
 WSB-TV en volgens CNN ook van WXIA lieten zien hoe de passagiers uit de achtbaan
-werden gehaald. Daarna ging het park dicht.
+werden gehaald. Het park werd gesloten en de bezoekers moesten vertrekken, meldde Atlanta News First.
 
 ## Wat Six Flags en de autoriteiten zeggen
 
@@ -133,22 +132,19 @@ bedrijf noemde de banen tegenover WSB-TV en NBC News.
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                 |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                 |
 
-Waarin de banen op elkaar lijken, zegt Six Flags niet. De acht van B&M staan in
-de RCDB onder hetzelfde model als Goliath in Georgia: Hyper Coaster. Kings
+Waarin de banen op elkaar lijken, zegt Six Flags niet. Volgens de RCDB zijn de acht banen van B&M Hyper Coasters, hetzelfde model als Goliath in Georgia. Kings
 Island, Carowinds en Canada’s Wonderland horen bij Six Flags sinds het bedrijf
 in 2024 met Cedar Fair is gefuseerd.
 
-Six Flags noemt voor geen van de banen een datum voor de heropening, en een
-vertegenwoordiger van Magic Mountain zei tegen NBC Los Angeles dat het park voor
+Six Flags noemt voor geen van de banen een datum voor de heropening. Een vertegenwoordiger van Magic Mountain zei tegen NBC Los Angeles dat het park voor
 Goliath geen planning heeft. Bijna twee weken eerder, op 29 september, had Six
 Flags aangekondigd [X2 in Six Flags Magic Mountain definitief te
 sluiten](/news/x2-six-flags-magic-mountain-gesloten).
 
 ## De baan
 
-Goliath ging in 2006 open. De Hyper Coaster komt van het Zwitserse Bolliger &
-Mabillard, is volgens Six Flags 61 meter hoog en haalt tot 113 km/h. Het
-parcours is volgens de RCDB zo’n 1.365 meter lang, en de twee grootste
+Goliath is een Hyper Coaster van het Zwitserse Bolliger & Mabillard en ging in 2006 open. Volgens Six Flags is de baan 61 meter hoog en haalt hij tot 113 km/h. Het
+parcours is volgens de RCDB zo’n 1.366 meter lang, en de twee grootste
 afdalingen meten 52 en 53 meter. Een trein heeft negen wagens met elk vier
 plaatsen naast elkaar. Six Flags hanteert een minimale lengte van 137
 centimeter.
@@ -160,8 +156,7 @@ was.
 
 ## Voor bezoekers
 
-Six Flags Over Georgia is in oktober alleen in het weekend open, meldde CNN; op
-maandag was het park open vanwege de feestdag Columbus Day. Op dinsdag zou het
+Six Flags Over Georgia is in oktober alleen in het weekend open, meldde CNN. Op maandag was het park volgens CNN open vanwege de feestdag Columbus Day. Op dinsdag zou het
 park volgens een woordvoerder sowieso dicht zijn. Op zijn website kondigt het
 park Fright Fest aan op een aantal avonden tot en met 1 november. Of Goliath
 op de volgende openingsdag rijdt, heeft Six Flags niet gezegd.
