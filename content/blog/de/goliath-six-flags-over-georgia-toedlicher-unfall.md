@@ -74,10 +74,10 @@ FOX 5 Atlanta zitieren Augenzeugen, die einen Fahrgast fallen sahen.
 
 Behördenvertreter sagten dem Atlanta-Sender WSB-TV am Abend, vier Menschen seien
 verletzt worden. Wie schwer sie verletzt sind, sagen weder die Polizei noch Six
-Flags. Die Polizei ermittelt.
+Flags.
 
-Nach dem Vorfall blieb ein Zug oben auf der Strecke stehen, berichtete WSB-TV,
-ein Besucher sagte CNN, die Bahn habe am Lifthill gestanden. Luftaufnahmen von
+Nach dem Vorfall blieb ein Zug oben auf der Strecke stehen, berichtete WSB-TV.
+Ein Besucher sagte CNN, die Bahn habe am Lifthill gestanden. Luftaufnahmen von
 WSB-TV und, laut CNN, von WXIA zeigten, wie die Fahrgäste von der Bahn geholt wurden. Danach
 schloss der Park.
 
@@ -96,13 +96,13 @@ schloss der Park.
 
 Lisa Cupid, Vorsitzende des Board of Commissioners von Cobb County, schrieb am
 Montagabend, die nächsten Angehörigen seien nach ihrem Kenntnisstand
-benachrichtigt, und weitere Informationen werde die Polizei herausgeben, sobald
-sie bestätigt seien.
+benachrichtigt. Weitere Informationen werde die Polizei herausgeben, sobald sie
+bestätigt seien.
 
 Für Fahrgeschäfte ist in Georgia das Büro des Insurance and Safety Fire
-Commissioner zuständig, das stationäre Bahnen nach der Verordnung des
-Bundesstaats vor der ersten Fahrt mit Publikum und danach mindestens einmal im
-Jahr prüfen muss, sofern die Bahn nicht mit einer vorläufigen Genehmigung läuft.
+Commissioner zuständig. Nach der Verordnung des Bundesstaats muss es eine
+stationäre Bahn vor der ersten Fahrt mit Publikum prüfen und danach mindestens
+einmal im Jahr, sofern sie nicht mit einer vorläufigen Genehmigung läuft.
 
 > [!QUOTE]
 > Sicherheitsinspektoren und Ermittler sind vor Ort, untersuchen die Anlage und
@@ -134,21 +134,22 @@ nannte WSB-TV und NBC News die Bahnen.
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                  |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                  |
 
-Was die Bahnen ähnlich macht, sagt Six Flags nicht. Die acht von B&M führt die
-RCDB unter demselben Modell wie Goliath in Georgia, Hyper Coaster. Kings Island,
+Was die Bahnen ähnlich macht, sagt Six Flags nicht. Laut RCDB sind die acht
+Bahnen von B&M Hyper Coaster, dasselbe Modell wie Goliath in Georgia. Kings Island,
 Carowinds und Canada’s Wonderland gehören zu Six Flags, seit das Unternehmen
 2024 mit Cedar Fair fusioniert hat.
 
-Einen Termin für die Wiedereröffnung nennt Six Flags für keine der Bahnen, und
-ein Vertreter von Magic Mountain sagte NBC Los Angeles, der Park habe für
+Einen Termin für die Wiedereröffnung nennt Six Flags für keine der Bahnen. Ein
+Vertreter von Magic Mountain sagte NBC Los Angeles, der Park habe für
 Goliath keinen Zeitplan. Knapp zwei Wochen zuvor, am 29. September, hatte Six
 Flags angekündigt, [X2 in Six Flags Magic Mountain dauerhaft zu
 schließen](/news/x2-six-flags-magic-mountain-geschlossen).
 
 ## Die Bahn
 
-Goliath hat 2006 eröffnet. Der Hyper Coaster stammt von Bolliger & Mabillard aus
-der Schweiz, ist laut Six Flags 61 Meter hoch und fährt bis zu 113 km/h. Die
+Goliath ist ein Hyper Coaster von Bolliger & Mabillard aus der Schweiz und hat
+2006 eröffnet. Laut Six Flags ist die Bahn 61 Meter hoch und fährt bis zu
+113 km/h. Die
 Strecke ist laut RCDB rund 1.365 Meter lang, die beiden größten Abfahrten messen
 52 und 53 Meter. Ein Zug hat neun Wagen mit je vier Plätzen nebeneinander. Six
 Flags gibt eine Mindestgröße von 137 Zentimetern an.
@@ -160,8 +161,8 @@ wieder geöffnet worden.
 
 ## Für Besucher
 
-Six Flags Over Georgia öffnet im Oktober nur an Wochenenden, berichtete CNN; am
-Montag war wegen des Feiertags Columbus Day geöffnet. Für Dienstag war der Park
+Six Flags Over Georgia öffnet im Oktober nur an Wochenenden, berichtete CNN. Am
+Montag hatte der Park laut CNN wegen des Feiertags Columbus Day geöffnet. Für Dienstag war der Park
 laut einem Sprecher ohnehin geschlossen. Auf seiner Website kündigt der Park
 Fright Fest an ausgewählten Abenden bis zum 1. November an. Ob Goliath am
 nächsten Öffnungstag fährt, hat Six Flags nicht gesagt.

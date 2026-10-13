@@ -59,7 +59,7 @@ una persona è morta lunedì 12 ottobre dopo un incidente sulle montagne russe
 [Goliath](ref:six-flags-over-georgia/goliath?bare). Secondo la polizia della
 contea di Cobb è successo intorno alle 15:58 ora locale, e diverse persone sono
 rimaste ferite. NBC News e CNN riferiscono che alcuni testimoni hanno raccontato
-a WXIA, emittente del network NBC, di aver visto un uomo cadere dall’attrazione.
+a WXIA, emittente del network NBC, che un uomo era caduto dall’attrazione.
 Anche Atlanta News First e FOX 5 Atlanta citano testimoni che hanno visto cadere
 un passeggero.
 
@@ -75,7 +75,7 @@ un passeggero.
 > Dipartimento di polizia della contea di Cobb nel comunicato di lunedì, pubblicato da [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/), tradotto dall’inglese
 
 In serata alcuni funzionari hanno detto a WSB-TV, emittente di Atlanta, che i
-feriti sono quattro. Quanto siano gravi, non lo dicono né la polizia né Six
+feriti erano quattro. Quanto siano gravi, non lo dicono né la polizia né Six
 Flags. La polizia sta indagando.
 
 Dopo l’incidente un treno è rimasto fermo in alto sul percorso, ha riferito
@@ -103,8 +103,8 @@ confermate.
 
 In Georgia le attrazioni sono di competenza dell’ufficio dell’Insurance and
 Safety Fire Commissioner. Il regolamento dello Stato gli impone di ispezionare
-le attrazioni fisse prima della prima corsa aperta al pubblico e poi almeno una
-volta l’anno, a meno che l’attrazione non funzioni con un permesso provvisorio.
+ogni attrazione fissa prima che apra al pubblico e poi almeno una volta l’anno.
+Fanno eccezione le attrazioni che funzionano con un permesso provvisorio.
 
 > [!QUOTE]
 > Ispettori della sicurezza e investigatori sono sul posto, esaminano l’impianto
@@ -122,7 +122,7 @@ delle due parti ha reso noto chi sia la persona morta, e nemmeno la sua età.
 
 Lunedì sera Six Flags ha comunicato di aver chiuso temporaneamente, «per
 precauzione», attrazioni simili nei suoi parchi. Un rappresentante dell’azienda
-ha elencato a WSB-TV e a NBC News quali sono.
+ha fornito l’elenco a WSB-TV e a NBC News.
 
 | Parco                     | Attrazione                                                  | Costruttore secondo RCDB |
 | ------------------------- | ----------------------------------------------------------- | ------------------------ |
@@ -136,8 +136,8 @@ ha elencato a WSB-TV e a NBC News quali sono.
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                      |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                      |
 
-Six Flags non spiega in che cosa queste attrazioni siano simili. Le otto di B&M
-la RCDB le registra con lo stesso modello di Goliath in Georgia, Hyper Coaster.
+Six Flags non spiega in che cosa queste attrazioni siano simili. La RCDB
+registra le otto di B&M come Hyper Coaster, lo stesso modello di Goliath in Georgia.
 Kings Island, Carowinds e Canada’s Wonderland appartengono a Six Flags dal 2024,
 quando l’azienda si è fusa con Cedar Fair.
 

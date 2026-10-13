@@ -68,11 +68,10 @@ First and FOX 5 Atlanta also quote witnesses who saw a rider fall.
 > Cobb County Police Department in its statement on Monday, published by [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/)
 
 Officials told the Atlanta station WSB-TV that evening that four people had been
-injured. Neither the police nor Six Flags has said how badly. The police are
-investigating.
+injured. Neither the police nor Six Flags has said how badly.
 
 A train was left standing high up on the track after the incident, WSB-TV
-reported, and a visitor told CNN it had stopped on the lift hill. Aerial footage
+reported. A visitor told CNN it had stopped on the lift hill. Aerial footage
 from WSB-TV and, according to CNN, from WXIA showed riders being brought down
 from the coaster. The park closed afterwards.
 
@@ -84,8 +83,8 @@ from the coaster. The park closed afterwards.
 > Spokesperson for Six Flags Entertainment Corporation, published by [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/goliath-ride-six-flags-over-georgia-evacuated/5A5TSTE2ZNB3ZBTVUR64JI4JPA/) and [Atlanta News First](https://www.atlantanewsfirst.com/2026/10/12/riders-stuck-roller-coaster-six-flags-over-georgia/)
 
 Lisa Cupid, chair of the Cobb County Board of Commissioners, wrote on Monday
-evening that, as far as she knew, the next of kin had been notified, and that
-the police would release more information once it was confirmed.
+evening that, as far as she knew, the next of kin had been notified. She added
+that the police would release more information once it was confirmed.
 
 In Georgia, rides fall under the Office of the Insurance and Safety Fire
 Commissioner. Under the state regulation, it has to inspect a permanent ride
@@ -118,20 +117,20 @@ coasters to WSB-TV and NBC News.
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                     |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                     |
 
-Six Flags hasn't said what makes them similar. RCDB lists the eight B&M rides as
-the same model as Goliath in Georgia: Hyper Coaster. Kings Island, Carowinds and
+Six Flags hasn't said what makes them similar. According to RCDB, the eight B&M
+rides are Hyper Coasters, the same model as Goliath in Georgia. Kings Island, Carowinds and
 Canada’s Wonderland have belonged to Six Flags since the company merged with
 Cedar Fair in 2024.
 
-Six Flags hasn't given a reopening date for any of them, and a Magic Mountain
+Six Flags hasn't given a reopening date for any of them. A Magic Mountain
 representative told NBC Los Angeles the park had no timeline for its Goliath.
 Almost two weeks earlier, on 29 September, Six Flags had announced that
 [X2 at Six Flags Magic Mountain would close for good](/news/x2-six-flags-magic-mountain-closed).
 
 ## The coaster
 
-Goliath opened in 2006. The hyper coaster was built by Bolliger & Mabillard of
-Switzerland. Six Flags gives its height as 61 metres (200 ft) and its top speed
+Goliath is a hyper coaster built by Bolliger & Mabillard of Switzerland, and it
+opened in 2006. Six Flags gives its height as 61 metres (200 ft) and its top speed
 as 113 km/h (70 mph). RCDB puts the track at about 1,365 metres (4,480 ft), with
 the two biggest drops measuring 52 and 53 metres. A train has nine cars, each
 seating four abreast. Six Flags lists a minimum height of 137 cm (54 in).

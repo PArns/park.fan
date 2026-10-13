@@ -38,7 +38,7 @@ rideLinks:
   - kings-island/orion
   - kings-island/diamondback
 seo:
-  title: 'Six Flags cierra nueve montañas rusas parecidas tras una muerte'
+  title: 'Six Flags cierra nueve atracciones parecidas tras una muerte'
   description: >-
     Una persona murió tras un incidente en Goliath, en Six Flags Over Georgia.
     Six Flags cierra nueve montañas rusas parecidas en seis parques.
@@ -103,8 +103,8 @@ estuviera confirmada.
 En Georgia, las atracciones dependen de la oficina del Insurance and Safety Fire
 Commissioner. Según el reglamento del estado, esta oficina tiene que
 inspeccionar las atracciones fijas antes de que lleven público por primera vez
-y después al menos una vez al año, salvo que la atracción funcione con un
-permiso provisional.
+y, después, al menos una vez al año. Quedan fuera las atracciones que funcionan
+con un permiso provisional.
 
 > [!QUOTE]
 > Hay inspectores de seguridad e investigadores sobre el terreno que examinan la
@@ -118,7 +118,7 @@ permiso provisional.
 Ni la policía ni Six Flags han dicho qué pasó en Goliath. Ninguna de las dos ha
 dado el nombre de la persona fallecida, ni tampoco su edad.
 
-## Otras nueve montañas rusas, paradas
+## Otras nueve montañas rusas están paradas
 
 El lunes por la noche, Six Flags comunicó que había cerrado temporalmente «por
 precaución» atracciones parecidas en sus parques. Un representante de la
@@ -136,8 +136,8 @@ empresa dio a WSB-TV y a NBC News la lista de montañas rusas.
 | Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                      |
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                      |
 
-Six Flags no explica en qué se parecen. La RCDB clasifica las ocho de B&M con
-el mismo modelo que el Goliath de Georgia, Hyper Coaster. Kings Island,
+Six Flags no explica en qué se parecen. La RCDB clasifica las ocho de B&M como
+Hyper Coaster, el mismo modelo que el Goliath de Georgia. Kings Island,
 Carowinds y Canada’s Wonderland pertenecen a Six Flags desde que la empresa se
 fusionó con Cedar Fair en 2024.
 
@@ -153,7 +153,7 @@ Goliath abrió en 2006. Es una Hyper Coaster de la empresa suiza Bolliger &
 Mabillard; según Six Flags, mide 61 metros de altura y alcanza los 113 km/h.
 Según la RCDB, el recorrido tiene unos 1.365 metros, y las dos bajadas más
 grandes son de 52 y 53 metros. Cada tren tiene nueve coches con cuatro asientos
-en fila. Six Flags exige una altura mínima de 137 centímetros.
+uno al lado del otro. Six Flags exige una altura mínima de 137 centímetros.
 
 En julio de 2006, un hombre de 45 años perdió el conocimiento durante un viaje y
 murió en el hospital, según AP de un aparente ataque al corazón. Six Flags dijo
@@ -165,7 +165,7 @@ correctamente y que había vuelto a abrir.
 En octubre, Six Flags Over Georgia solo abre los fines de semana, según CNN; el
 lunes abrió por el festivo de Columbus Day. Según un portavoz, el martes el
 parque iba a estar cerrado de todos modos. En su web, el parque anuncia Fright
-Fest en noches seleccionadas hasta el 1 de noviembre. Six Flags no ha dicho si
+Fest algunas noches hasta el 1 de noviembre. Six Flags no ha dicho si
 Goliath funcionará el próximo día que abra el parque.
 
 Fuentes:

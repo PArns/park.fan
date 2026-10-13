@@ -58,7 +58,7 @@ In [Six Flags Over Georgia](ref:six-flags-over-georgia?bare), bij Atlanta, is op
 maandag 12 oktober een persoon overleden na een incident met de achtbaan
 [Goliath](ref:six-flags-over-georgia/goliath?bare). Volgens de politie van Cobb
 County gebeurde het rond 15.58 uur plaatselijke tijd, en raakten meerdere mensen
-gewond. Ooggetuigen vertelden de NBC-zender WXIA dat een man uit de baan was
+gewond. Ooggetuigen vertelden de NBC-zender WXIA dat een man uit de achtbaan was
 gevallen, meldden NBC News en CNN. Ook Atlanta News First en FOX 5 Atlanta
 citeren ooggetuigen die een passagier zagen vallen.
 
@@ -78,7 +78,7 @@ De politie doet onderzoek.
 
 Na het incident bleef een trein boven op het parcours staan, meldde WSB-TV. Een
 bezoeker vertelde CNN dat de baan op de lifthill stilstond. Luchtbeelden van
-WSB-TV en volgens CNN ook van WXIA lieten zien hoe de passagiers uit de baan
+WSB-TV en volgens CNN ook van WXIA lieten zien hoe de passagiers uit de achtbaan
 werden gehaald. Daarna ging het park dicht.
 
 ## Wat Six Flags en de autoriteiten zeggen
@@ -100,8 +100,8 @@ gebracht. Verdere informatie zou de politie geven zodra die bevestigd was.
 In Georgia valt het toezicht op attracties onder het kantoor van de Insurance
 and Safety Fire Commissioner. Volgens de verordening van de staat moet dat
 kantoor vaste attracties keuren voordat ze voor het eerst met publiek rijden, en
-daarna minstens één keer per jaar, tenzij een baan met een voorlopige
-vergunning draait.
+daarna minstens één keer per jaar. Dat geldt niet voor een baan die met een
+voorlopige vergunning draait.
 
 > [!QUOTE]
 > Veiligheidsinspecteurs en onderzoekers zijn ter plaatse, onderzoeken de
@@ -163,7 +163,7 @@ was.
 Six Flags Over Georgia is in oktober alleen in het weekend open, meldde CNN; op
 maandag was het park open vanwege de feestdag Columbus Day. Op dinsdag zou het
 park volgens een woordvoerder sowieso dicht zijn. Op zijn website kondigt het
-park Fright Fest aan op geselecteerde avonden tot en met 1 november. Of Goliath
+park Fright Fest aan op een aantal avonden tot en met 1 november. Of Goliath
 op de volgende openingsdag rijdt, heeft Six Flags niet gezegd.
 
 Bronnen:

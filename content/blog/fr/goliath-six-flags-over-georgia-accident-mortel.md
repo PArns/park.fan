@@ -66,10 +66,9 @@ passager tomber.
 
 > [!QUOTE]
 > Le 12 octobre 2026, vers 15 h 58, un incident impliquant une montagne russe
-> s’est produit à Six Flags Over Georgia. Plusieurs personnes ont été signalées
-> blessées, et une personne est décédée. […] Les enquêteurs de notre Major
-> Crimes Unit se rendent sur place pour faire la lumière sur les circonstances
-> de l’incident.
+> s’est produit à Six Flags Over Georgia. Plusieurs blessés ont été signalés, et
+> une personne est décédée. […] Les inspecteurs de notre Major Crimes Unit
+> interviennent pour enquêter sur les circonstances de l’incident.
 >
 > [en] On October 12, 2026, at approximately 3:58 p.m., an incident involving a roller coaster occurred at Six Flags Over Georgia. Several people were reported injured, and one person has died. […] Detectives with our Major Crimes Unit are responding to investigate the circumstances surrounding the incident.
 >
@@ -103,9 +102,10 @@ soir que, à sa connaissance, les proches avaient été prévenus, et que la pol
 donnerait d’autres informations dès qu’elles seraient confirmées.
 
 En Géorgie, les attractions relèvent du bureau de l’Insurance and Safety Fire
-Commissioner. D’après le règlement de l’État, il doit inspecter une attraction
-fixe avant qu’elle accueille le public pour la première fois, puis au moins une
-fois par an, sauf si elle fonctionne sous une autorisation provisoire.
+Commissioner. D’après le règlement de l’État, ce bureau doit inspecter une
+attraction fixe avant qu’elle accueille le public pour la première fois, puis
+au moins une fois par an. Une attraction qui fonctionne sous autorisation
+provisoire en est dispensée.
 
 > [!QUOTE]
 > Des inspecteurs de sécurité et des enquêteurs sont sur place. Ils examinent
@@ -138,7 +138,7 @@ donné la liste à WSB-TV et à NBC News.
 | Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                        |
 
 Six Flags ne dit pas en quoi ces attractions se ressemblent. La RCDB range les
-huit B&M dans le même modèle que le Goliath de Géorgie, le Hyper Coaster. Kings
+huit B&M dans le même modèle que le Goliath de Géorgie, l’Hyper Coaster. Kings
 Island, Carowinds et Canada’s Wonderland appartiennent à Six Flags depuis la
 fusion de l’entreprise avec Cedar Fair en 2024.
 
