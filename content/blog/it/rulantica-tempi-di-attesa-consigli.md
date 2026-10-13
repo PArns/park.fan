@@ -110,12 +110,9 @@ complesso di scivoli più grande del mondo acquatico.
 Tre aree sono all’aperto e legate alla stagione: **Svalgurok** con dieci scivoli,
 **Dynstrønd** con spiaggia e yacht VIP e lo **Snorri Strand** con il parco giochi
 acquatico. Per queste il parco indica da maggio a settembre e scrive sulle sue
-pagine che dal 1° maggio 2027 saranno di nuovo a disposizione ogni giorno. Tutto
-quello che in questa guida sta al coperto è aperto tutto l’anno.
+pagine che dal 1° maggio 2027 saranno di nuovo a disposizione ogni giorno. Tutto quello che sta al coperto è aperto tutto l’anno.
 
 ## Gli scivoli grandi
-
-La tabella riassume quello che il parco pubblica sugli scivoli più grandi.
 
 | Scivolo                                         | Area        | Altezza | Lunghezza | Altezza minima | Età   | Costruttore |
 | ----------------------------------------------- | ----------- | ------- | --------- | -------------- | ----- | ----------- |
@@ -235,8 +232,7 @@ la forma lo permette. Secondo il parco la postazione è aperta ogni giorno dalle
 
 ## Tempi di attesa agli scivoli
 
-Rulantica indica i tempi di attesa per le attrazioni grandi, e noi li registriamo
-come per ogni altro parco. Nella tabella ci sono le dieci attrazioni con i tempi
+Rulantica indica i tempi di attesa per le attrazioni grandi. Nella tabella ci sono le dieci attrazioni con i tempi
 di attesa tipici più lunghi, calcolati su tutti i giorni di apertura misurati.
 
 ```ride-waits-widget park=rulantica top=10 columns=land,peak,days
@@ -272,9 +268,7 @@ maggio sono stati calmi. Tra i giorni della settimana spicca solo il sabato. Da
 lunedì a venerdì nei nostri dati le differenze sono minime, e anche la domenica
 sta lì vicino.
 
-Nel nostro
-calendario su un giorno pesano inoltre le vacanze scolastiche dei Länder tedeschi
-e dei cantoni svizzeri, e queste vacanze si spostano le une rispetto alle altre.
+Il nostro calendario tiene conto delle vacanze scolastiche dei Länder tedeschi e dei cantoni svizzeri.
 
 ```best-days-widget slug=rulantica
 
@@ -285,9 +279,6 @@ e dei cantoni svizzeri, e queste vacanze si spostano le une rispetto alle altre.
 ```
 
 ## L’ordine per una giornata a Rulantica
-
-I tempi di attesa sono troppo brevi perché valga la pena un trucco su un singolo
-scivolo.
 
 Prima dell’apertura possono entrare dalle 9:00 gli ospiti che pernottano
 nell’Europa-Park Erlebnis-Resort e chi ha il biglietto Avventura, mezz’ora prima
@@ -303,9 +294,6 @@ Surf Fjørd e i lettini idromassaggio della Skog Lagune. Il cibo non si può
 portare: quello portato da casa va nell’armadietto e si mangia nella lobby, per
 esempio al Kelpie Café. Nella stagione di Halloween allo Skip Strand ci sono
 spettacoli tra le 15:30 e le 17:30 (dati all’8 ottobre 2026).
-
-La sera vale il biglietto serale dalle 17:00 e il biglietto Moonlight dalle 19:00,
-entrambi fino alle 22:00.
 
 ## Con i bambini
 
@@ -414,7 +402,7 @@ settembre 2026, poi seguono Halloween (fino al 1° novembre) e HALLOWinter (dal 
 27 novembre), e dal 28 novembre 2026 al 9 gennaio 2027 il Winterzauber. Poi fino
 al 19 marzo c’è la pausa.
 
-In queste settimane Rulantica resta aperta. Per i due insieme il parco vende d’estate il **biglietto Ride & Slide** (da 75 €,
+Per i due insieme il parco vende d’estate il **biglietto Ride & Slide** (da 75 €,
 solo in certi periodi) e pacchetti con hotel. “Alles erleben” comprende un giorno
 all’Europa-Park, un giorno a Rulantica e un pernottamento con colazione, da 192 €
 a persona in camera a cinque letti. Nella bassa stagione ci sono “2 für 1” (due

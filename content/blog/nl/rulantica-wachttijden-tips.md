@@ -112,11 +112,9 @@ Drie gebieden liggen buiten en zijn aan het seizoen gebonden: **Svalgurok** met
 tien glijbanen, **Dynstrønd** met strand en vip-jachten en het **Snorri Strand**
 met waterspeeltuin. Het park noemt voor die drie mei tot en met september en
 schrijft op zijn pagina’s dat ze vanaf 1 mei 2027 weer dagelijks beschikbaar
-zijn. Alles wat in deze gids binnen ligt, is het hele jaar open.
+zijn. Alles binnen is het hele jaar open.
 
 ## De grote glijbanen
-
-De tabel zet samen wat het park over de grootste glijbanen publiceert.
 
 | Glijbaan                                        | Gebied      | Hoogte | Lengte | Minimale lengte | Leeftijd | Fabrikant |
 | ----------------------------------------------- | ----------- | ------ | ------ | --------------- | -------- | --------- |
@@ -239,8 +237,7 @@ station is volgens het park dagelijks van 12:00 tot 21:00 uur open.
 
 ## Wachttijden bij de glijbanen
 
-Rulantica geeft voor de grote attracties wachttijden op, en wij leggen ze vast
-zoals bij elk ander park. In de tabel staan de tien attracties met de langste
+Rulantica geeft voor de grote attracties wachttijden op. In de tabel staan de tien attracties met de langste
 typische wachttijden, berekend over alle gemeten openingsdagen.
 
 ```ride-waits-widget park=rulantica top=10 columns=land,peak,days
@@ -277,9 +274,7 @@ waren ook rustig. Bij de weekdagen valt alleen de zaterdag op. Maandag tot en me
 vrijdag verschillen in onze gegevens nauwelijks, en ook de zondag zit er dicht
 tegenaan.
 
-In onze kalender werken bovendien de schoolvakanties van Duitse deelstaten en
-Zwitserse kantons op een dag door, en die vakanties schuiven ten opzichte van
-elkaar.
+In onze kalender zijn de schoolvakanties van Duitse deelstaten en Zwitserse kantons meegerekend.
 
 ```best-days-widget slug=rulantica
 
@@ -290,8 +285,6 @@ elkaar.
 ```
 
 ## De volgorde voor een dag in Rulantica
-
-De wachttijden zijn te kort om een truc bij één glijbaan de moeite waard te maken.
 
 Voor de opening mogen logés van het Europa-Park Erlebnis-Resort en houders van
 het Abenteuerticket al om 9:00 uur naar binnen, een half uur voor alle anderen.
@@ -307,9 +300,6 @@ van de Skog Lagune een goede keuze voor de middag. Eten mag je niet meenemen:
 meegebrachte spullen horen in de kluis en eet je in de lobby, bijvoorbeeld in
 het Kelpie Café. In het Halloweenseizoen zijn er bij het Skip Strand shows tussen
 15:30 en 17:30 uur (stand 8 oktober 2026).
-
-In de avond geldt het avondticket vanaf 17:00 uur en het Moonlight-ticket vanaf
-19:00 uur, allebei tot 22:00 uur.
 
 ## Met kinderen
 
@@ -416,7 +406,7 @@ daarna volgen Halloween (tot 1 november) en HALLOWinter (2 tot 27 november), en
 van 28 november 2026 tot 9 januari 2027 de Winterzauber. Dan is er tot 19 maart
 pauze.
 
-Rulantica blijft in die weken open. Voor beide samen verkoopt het park in de zomer het **Ride & Slide Ticket** (vanaf
+Voor beide samen verkoopt het park in de zomer het **Ride & Slide Ticket** (vanaf
 75 euro, alleen in bepaalde periodes) en hotelpakketten. “Alles erleben” bevat
 een dag Europa-Park, een dag Rulantica en een overnachting met ontbijt, vanaf 192
 euro per persoon in de vijfpersoonskamer. In het laagseizoen is er “2 für 1”

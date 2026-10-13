@@ -112,11 +112,9 @@ de toboganes más grande del mundo acuático.
 Tres zonas están fuera y dependen de la temporada: **Svalgurok**, con diez
 toboganes, **Dynstrønd**, con playa y yates VIP, y la **Snorri Strand**, con su
 parque infantil de agua. El parque da de mayo a septiembre para ellas y escribe en
-sus páginas que volverán a estar disponibles cada día a partir del 1 de mayo de 2027. Todo lo que aparece en esta guía como interior abre durante todo el año.
+sus páginas que volverán a estar disponibles cada día a partir del 1 de mayo de 2027. Todo lo que está bajo techo abre durante todo el año.
 
 ## Los toboganes grandes
-
-La tabla recoge lo que el parque publica sobre los toboganes más grandes.
 
 | Tobogán                                         | Zona        | Altura | Longitud | Altura mínima | Edad     | Fabricante |
 | ----------------------------------------------- | ----------- | ------ | -------- | ------------- | -------- | ---------- |
@@ -239,8 +237,7 @@ si le encajan. Según el parque, la estación abre todos los días de 12:00 a 21
 
 ## Tiempos de espera en los toboganes
 
-Rulantica indica tiempos de espera para las atracciones grandes, y nosotros los
-registramos igual que en cualquier otro parque. La tabla recoge las diez
+Rulantica indica tiempos de espera para las atracciones grandes. La tabla recoge las diez
 atracciones con los tiempos de espera típicos más largos, calculados sobre todos los
 días de apertura medidos.
 
@@ -278,9 +275,7 @@ nivel del verano. Los más tranquilos fueron enero y marzo, y febrero y mayo tam
 fueron tranquilos. Entre los días de la semana solo destaca el sábado. De lunes a
 viernes casi no hay diferencias en nuestros datos, y el domingo queda muy cerca.
 
-En nuestro calendario influyen en cada día las vacaciones
-escolares de los estados federados alemanes y de los cantones suizos, y esas
-vacaciones no coinciden entre sí.
+Nuestro calendario tiene en cuenta las vacaciones escolares de los estados federados alemanes y de los cantones suizos.
 
 ```best-days-widget slug=rulantica
 
@@ -291,9 +286,6 @@ vacaciones no coinciden entre sí.
 ```
 
 ## El orden para un día en Rulantica
-
-Los tiempos de espera son demasiado cortos para que valga la pena un truco en un
-solo tobogán.
 
 Antes de la apertura, los clientes que duermen en el Europa-Park Erlebnis-Resort y
 quienes tienen la Abenteuerticket entran desde las 9:00 h, media hora antes que los
@@ -310,9 +302,6 @@ Surf Fjørd y las camas de burbujas de la Skog Lagune. No se puede entrar con
 comida: lo que traigas va a la taquilla y se come en el vestíbulo, por ejemplo en
 el Kelpie Café. En la temporada de Halloween hay espectáculos en la Skip Strand
 entre las 15:30 y las 17:30 h (a 8 de octubre de 2026).
-
-Por la noche vale la entrada de tarde desde las 17:00 h y la Moonlight desde las
-19:00 h, ambas hasta las 22:00 h.
 
 ## Con niños
 
@@ -421,7 +410,7 @@ Europa-Park abre su temporada de verano del 28 de marzo al 25 de septiembre de
 de noviembre), y del 28 de noviembre de 2026 al 9 de enero de 2027, el Winterzauber.
 Luego hay una pausa hasta el 19 de marzo.
 
-Rulantica sigue abierto en esas semanas. Para los dos juntos, el parque vende en verano la **entrada Ride & Slide** (desde 75
+Para los dos juntos, el parque vende en verano la **entrada Ride & Slide** (desde 75
 euros, solo en determinados periodos) y paquetes con hotel. «Vivirlo todo» incluye
 un día de Europa-Park, un día de Rulantica y una noche con desayuno, desde 192
 euros por persona en habitación de cinco camas. En temporada baja hay «2 por 1»

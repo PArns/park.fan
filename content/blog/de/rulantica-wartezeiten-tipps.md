@@ -113,12 +113,9 @@ Drei Bereiche liegen draußen und sind an die Saison gebunden: **Svalgurok** mit
 zehn Rutschen, **Dynstrønd** mit Strand und VIP-Yachten und der **Snorri
 Strand** mit Wasserspielplatz. Der Park nennt für sie Mai bis September und
 schreibt auf seinen Seiten, dass sie ab dem 1. Mai 2027 wieder täglich zur
-Verfügung stehen. Alles, was in diesem Guide drinnen liegt, ist ganzjährig
-offen.
+Verfügung stehen. Alles in der Halle ist ganzjährig offen.
 
 ## Die großen Rutschen
-
-Die Tabelle fasst zusammen, was der Park zu den größten Rutschen veröffentlicht.
 
 | Rutsche                                         | Bereich     | Höhe   | Länge  | Mindestgröße | Alter | Hersteller |
 | ----------------------------------------------- | ----------- | ------ | ------ | ------------ | ----- | ---------- |
@@ -242,8 +239,7 @@ Brille trägt, setzt sie ab oder trägt sie unter der VR-Brille, wenn das Format
 
 ## Wartezeiten an den Rutschen
 
-Rulantica gibt für die großen Attraktionen Wartezeiten an, und wir erfassen sie
-wie bei jedem anderen Park. In der Tabelle stehen die zehn Attraktionen mit den
+Rulantica gibt für die großen Attraktionen Wartezeiten an. In der Tabelle stehen die zehn Attraktionen mit den
 längsten typischen Wartezeiten, gerechnet über alle gemessenen Öffnungstage.
 
 ```ride-waits-widget park=rulantica top=10 columns=land,peak,days
@@ -281,8 +277,7 @@ Wochentag sticht nur der Samstag heraus.
 Montag bis Freitag unterscheiden sich in unseren Daten kaum, und auch der
 Sonntag liegt dicht dabei.
 
-In unserem Kalender wirken außerdem die Schulferien deutscher Bundesländer und Schweizer
-Kantone auf einen Tag ein, und diese Ferien verschieben sich gegeneinander.
+Im Kalender sind die Schulferien deutscher Bundesländer und Schweizer Kantone eingerechnet.
 
 ```best-days-widget slug=rulantica
 
@@ -293,9 +288,6 @@ Kantone auf einen Tag ein, und diese Ferien verschieben sich gegeneinander.
 ```
 
 ## Die Reihenfolge für einen Tag in Rulantica
-
-Die Wartezeiten sind zu kurz, als dass sich ein Trick an einer einzelnen Rutsche
-lohnt.
 
 Vor der Öffnung dürfen Übernachtungsgäste des Europa-Park Erlebnis-Resorts und
 Inhaber des Abenteuertickets ab 9:00 Uhr hinein, eine halbe Stunde vor
@@ -311,9 +303,6 @@ die Sprudelliegen der Skog Lagune. Essen darfst du nicht mitbringen: Mitgebracht
 gehört ins Schließfach und wird in der Lobby gegessen, zum Beispiel im Kelpie
 Café. In der Halloween-Saison laufen am Skip Strand Shows zwischen 15:30 und 17:30
 Uhr (Stand 8. Oktober 2026).
-
-Am Abend gilt das Abendticket ab 17:00 Uhr, das Moonlight-Ticket ab 19:00
-Uhr, beide bis 22:00 Uhr.
 
 ## Mit Kindern
 
@@ -416,7 +405,7 @@ in der Sommersaison geöffnet, danach folgen Halloween (bis 1. November) und
 HALLOWinter (2. bis 27. November), vom 28. November 2026 bis 9. Januar 2027 der
 Winterzauber. Dann ist bis zum 19. März Pause.
 
-Rulantica bleibt in diesen Wochen offen. Für beide zusammen verkauft der Park im Sommer das **Ride & Slide Ticket** (ab 75 Euro,
+Für beide zusammen verkauft der Park im Sommer das **Ride & Slide Ticket** (ab 75 Euro,
 nur in bestimmten Zeiträumen) und Hotelpakete. „Alles erleben“ enthält einen Tag
 Europa-Park, einen Tag Rulantica und eine Übernachtung mit Frühstück, ab 192 Euro
 pro Person im Fünfbettzimmer. In der Nebensaison gibt es „2 für 1“ (zwei Nächte

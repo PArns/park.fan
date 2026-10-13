@@ -109,12 +109,9 @@ complex, 30 metres up.
 Three areas are outdoors and tied to the season: **Svalgurok** with ten slides,
 **Dynstrønd** with a beach and VIP yachts, and the **Snorri Strand** with a
 water playground. The park gives May to September for them and says on its
-pages that they're available daily again from 1 May 2027. Everything this guide
-covers indoors is open all year.
+pages that they're available daily again from 1 May 2027. Everything indoors is open all year.
 
 ## The big slides
-
-The table sums up what the park publishes about the biggest slides.
 
 | Slide                                           | Area        | Height | Length | Min. height | Age | Manufacturer |
 | ----------------------------------------------- | ----------- | ------ | ------ | ----------- | --- | ------------ |
@@ -234,8 +231,7 @@ park the station is open daily from 12:00 to 9:00 p.m.
 
 ## Wait times at the slides
 
-Rulantica publishes wait times for the big attractions, and we record them as
-we do at every other park. The table shows the ten attractions with the longest
+Rulantica publishes wait times for the big attractions. The table shows the ten attractions with the longest
 typical waits, calculated across all the operating days we've measured.
 
 ```ride-waits-widget park=rulantica top=10 columns=land,peak,days
@@ -271,9 +267,7 @@ busy as the summer. January and March were the quietest, and February and May
 were quiet too. Among the weekdays only Saturday stands out. Monday to Friday
 barely differ in our data, and Sunday sits close to them.
 
-In our calendar
-the school holidays of German states and Swiss cantons also affect a day, and
-those holidays are staggered against each other.
+Our calendar takes in the school holidays of German states and Swiss cantons.
 
 ```best-days-widget slug=rulantica
 
@@ -284,8 +278,6 @@ those holidays are staggered against each other.
 ```
 
 ## The order for a day at Rulantica
-
-The waits are too short for a trick at a single slide to pay off.
 
 Before opening, overnight guests of the Europa-Park Erlebnis-Resort and holders
 of the Adventure Ticket can go in from 9:00 a.m., half an hour ahead of everyone
@@ -301,9 +293,6 @@ Lagune are worth a stop between slide rounds. You can't bring food in. What you
 bring goes in a locker and gets eaten in the lobby, for example at the Kelpie
 Café. In the Halloween season there are shows at the Skip Strand between 3:30
 and 5:30 p.m. (as of 8 October 2026).
-
-In the evening, the evening ticket applies from 5:00 p.m. and the Moonlight
-ticket from 7:00 p.m., both until 10:00 p.m.
 
 ## With kids
 
@@ -407,7 +396,7 @@ is open in its summer season from 28 March to 25 September 2026. Halloween
 (until 1 November) and HALLOWinter (2 to 27 November) follow, and from 28
 November 2026 to 9 January 2027 the Winterzauber. Then it pauses until 19 March.
 
-Rulantica stays open through those weeks. For both together, the park sells the **Ride & Slide Ticket** in summer
+For both together, the park sells the **Ride & Slide Ticket** in summer
 (from €75, only in certain periods) and hotel packages. "Experience it all"
 includes one day at Europa-Park, one day at Rulantica and an overnight stay with
 breakfast, from €192 per person in a five-bed room. In the off-season there's

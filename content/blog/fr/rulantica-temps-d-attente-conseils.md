@@ -116,12 +116,9 @@ Trois zones sont en plein air et liées à la saison : **Svalgurok** avec dix
 toboggans, **Dynstrønd** avec sa plage et ses yachts VIP, et la **Snorri
 Strand** avec son aire de jeux aquatique. Le parc indique de mai à septembre
 pour elles et écrit sur ses pages qu’elles seront de nouveau ouvertes tous les
-jours à partir du 1er mai 2027. Tout ce que ce guide place à l’intérieur est
-ouvert toute l’année.
+jours à partir du 1er mai 2027. Tout ce qui est à l’intérieur est ouvert toute l’année.
 
 ## Les grands toboggans
-
-Le tableau résume ce que le parc publie sur les plus grands toboggans.
 
 | Toboggan                                        | Zone        | Hauteur | Longueur | Taille minimale | Âge    | Constructeur |
 | ----------------------------------------------- | ----------- | ------- | -------- | --------------- | ------ | ------------ |
@@ -246,8 +243,7 @@ D’après le parc, la station est ouverte tous les jours de 12 h à 21 h.
 
 ## Temps d’attente aux toboggans
 
-Rulantica indique des temps d’attente pour ses grandes attractions, et nous les
-relevons comme pour n’importe quel autre parc. Dans le tableau figurent les dix
+Rulantica indique des temps d’attente pour ses grandes attractions. Dans le tableau figurent les dix
 attractions aux temps d’attente typiques les plus longs, calculés sur tous les
 jours d’ouverture mesurés.
 
@@ -286,9 +282,7 @@ au niveau de l’été. Janvier et mars ont été les plus calmes, février et m
 Du lundi au vendredi, nos données n’opposent presque rien, et le dimanche
 reste tout près.
 
-Dans notre calendrier, les vacances scolaires des Länder allemands et
-des cantons suisses pèsent en outre sur une journée, et ces vacances se
-décalent les unes par rapport aux autres.
+Notre calendrier tient compte des vacances scolaires des Länder allemands et des cantons suisses.
 
 ```best-days-widget slug=rulantica
 
@@ -299,9 +293,6 @@ décalent les unes par rapport aux autres.
 ```
 
 ## L’ordre pour une journée à Rulantica
-
-Les temps d’attente sont trop courts pour qu’une astuce sur un seul toboggan
-vaille la peine.
 
 Avant l’ouverture, les clients qui dorment au resort de l’Europa-Park et les
 détenteurs du billet Aventure entrent dès 9 h, une demi-heure avant tout le
@@ -317,9 +308,6 @@ lits à bulles de la Skog Lagune valent le détour. Tu ne peux pas apporter de
 nourriture : ce que tu as apporté va au casier et se mange dans le hall, par
 exemple au Kelpie Café. Pendant la saison d’Halloween, des spectacles ont lieu
 à la Skip Strand entre 15 h 30 et 17 h 30 (état au 8 octobre 2026).
-
-Le soir, le billet de soirée vaut à partir de 17 h, le billet Moonlight à
-partir de 19 h, tous deux jusqu’à 22 h.
 
 ## Avec des enfants
 
@@ -430,7 +418,7 @@ d’autoroute. L’Europa-Park est ouvert en saison d’été du 28 mars au
 HALLOWinter (du 2 au 27 novembre), et du 28 novembre 2026 au 9 janvier 2027 le
 Winterzauber. Ensuite, c’est la pause jusqu’au 19 mars.
 
-Rulantica reste ouvert pendant ces semaines. Pour les deux ensemble, le parc vend l’été le **billet Ride & Slide** (dès
+Pour les deux ensemble, le parc vend l’été le **billet Ride & Slide** (dès
 75 €, seulement à certaines périodes) et des forfaits avec hôtel. « Alles
 erleben » comprend un jour à l’Europa-Park, un jour à Rulantica et une nuit
 avec petit déjeuner, dès 192 € par personne en chambre à cinq lits. Hors
