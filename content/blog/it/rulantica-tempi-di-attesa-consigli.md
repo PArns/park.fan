@@ -50,13 +50,11 @@ seo:
     - Rulantica Europa-Park biglietto combinato
 ---
 
-L’Europa-Park va in letargo dall’11 gennaio al 19 marzo 2027. Montagne russe e
-aree tematiche: tutto chiuso. [Rulantica](ref:rulantica), lì accanto, in quel
+L’Europa-Park va in letargo dall’11 gennaio al 19 marzo 2027. [Rulantica](ref:rulantica), lì accanto, in quel
 periodo apre ogni giorno alle 9:30. Nella sala l’aria sta tra i 30 e i 34 gradi,
 l’acqua tra i 27 e i 32.
 
-Quanta gente ci sia allora, l’abbiamo misurato. I tempi di attesa agli scivoli
-sono brevi, e su un paio di loro si sentono lo stesso.
+I tempi di attesa agli scivoli sono brevi, e si aspetta di più a Svalgur Rytt e Vinter Rytt.
 
 ## Storia e costruzione di Rulantica
 
@@ -96,9 +94,6 @@ Süddeutsche Zeitung indicava 6.000 ospiti al giorno come tetto massimo.
 
 ## Le aree tematiche
 
-Rulantica è divisa in aree tematiche. Sulla mappa del parco ci sono tutte, le più
-importanti sono queste.
-
 **Rangnakor** è la “città su palafitte”, quattro metri sopra il suolo. Da qui
 partono gli scivoli grandi, e dalle Hydda comfort si vede tutta la sala.
 **Vinterhal** è il palazzo di ghiaccio con il serpente di mare Svalgur, pietrificato
@@ -118,12 +113,9 @@ acquatico. Per queste il parco indica da maggio a settembre e scrive sulle sue
 pagine che dal 1° maggio 2027 saranno di nuovo a disposizione ogni giorno. Tutto
 quello che in questa guida sta al coperto è aperto tutto l’anno.
 
-## Gli scivoli grandi, con i dati
+## Gli scivoli grandi
 
-La tabella riassume quello che il parco pubblica sugli scivoli più grandi. Sotto i
-125 centimetri su parecchi di questi i bambini vanno solo con un adulto. Dall’altezza
-minima in su si può salire, ma da soli i bambini possono scendere su molti di
-questi scivoli soltanto a partire da 125 centimetri.
+La tabella riassume quello che il parco pubblica sugli scivoli più grandi.
 
 | Scivolo                                         | Area        | Altezza | Lunghezza | Altezza minima | Età   | Costruttore |
 | ----------------------------------------------- | ----------- | ------- | --------- | -------------- | ----- | ----------- |
@@ -145,7 +137,7 @@ Hugin, Munin, Stormvind e Svalgur Rytt il sito del parco scrive che i bambini tr
 110 e 125 centimetri possono scendere solo accompagnati da un adulto. Stormrok è
 all’aperto e resta chiuso fino al 1° maggio 2027.
 
-### Dugdrob e Vildfål: le cabine a caduta
+### Dugdrob e Vildfål
 
 I due scivoli più alti stanno uno accanto all’altro a Rangnakor e sono gemelli.
 Sali in una cabina di vetro, parte un conto alla rovescia, poi il pavimento si
@@ -159,39 +151,34 @@ da nuoto. Qui gli occhiali non puoi portarli, e anche le action cam fissate sull
 testa sono vietate a Dugdrob, Vildfål e Isbrekker. In compenso il parco offre
 foto d’azione: a Dugdrob, Vildfål e sugli scivoli Schabernakker I e II.
 
-### Hugin e Munin: il duello
+### Hugin e Munin
 
 I due scivoli corrono paralleli, insieme si chiamano Odinrås e sono lunghi 148
 metri. Si scende su un gommone biposto. Ogni tanto la parete tra i tubi è aperta,
-così vedi il gommone accanto, e nel tratto finale si decide chi era davanti. I
-bambini sotto gli otto anni che arrivano a 110 centimetri scendono con un adulto,
-e lo stesso vale sotto i 125 centimetri. Con 300 ospiti all’ora per scivolo, il
+così vedi il gommone accanto, e nel tratto finale si decide chi era davanti. I bambini sotto gli otto anni scendono con un adulto. Con 300 ospiti all’ora per scivolo, il
 duello sulla carta smaltisce la gente più in fretta delle cabine a caduta.
 
-### Svalgur Rytt e Vinter Rytt: il serpente di mare e la halfpipe
+### Svalgur Rytt e Vinter Rytt
 
 [Svalgur Rytt](ref:rulantica/svalgur-rytt) ha uno dei gommoni più grandi della
 struttura: fino a quattro persone scendono insieme per 208 metri dentro il corpo
 del serpente di mare ghiacciato. Con 960 ospiti all’ora è, sulla carta, lo scivolo
-con la capacità più alta. Il parco ammette i bambini da 110 centimetri, sotto i
-125 con un adulto.
+con la capacità più alta.
 
 Subito accanto c’è [Vinter Rytt](ref:rulantica/vinter-rytt), la halfpipe. La
 partenza sul gommone a quattro posti è tranquilla, poi la discesa è ripida, e il
 gommone risale la parete dall’altra parte. Qui c’è l’unico limite di peso della
 struttura: 320 chilogrammi per gommone. Altezza minima 125 centimetri, da dieci
-anni. Nei nostri dati questi due scivoli sono in testa per i tempi di attesa. Di
-quanto, lo dice la tabella più sotto.
+anni. Nei nostri dati questi due scivoli sono in testa per i tempi di attesa.
 
-### Stormvind: il tamburo
+### Stormvind
 
 In [Stormvind](ref:rulantica/stormvind) il gommone parte piano, poi scende
 rapido. Il culmine è un tamburo circolare in cui gira per almeno un giro, prima
 che il tubo successivo lo riprenda. 136 metri di lunghezza, 15 di altezza,
-gommone biposto, 360 ospiti all’ora. Il parco ammette i bambini da dieci anni e
-110 centimetri, sotto i 125 con un adulto.
+gommone biposto, 360 ospiti all’ora. Il parco ammette i bambini da dieci anni.
 
-### Isbrekker: il trampolino
+### Isbrekker
 
 Isbrekker sono due scivoli con salto nel palazzo di ghiaccio, alti quattro metri e
 lunghi 13,5. Alla fine, secondo il parco, vieni catapultato nella vasca. Altezza
@@ -199,7 +186,7 @@ minima 125 centimetri, da dieci anni, solo per chi sa nuotare, e chi ha meno di
 dieci anni scende soltanto sotto la sorveglianza di un genitore o di chi ne fa le
 veci. 240 ospiti all’ora.
 
-### Vikingløp: a testa in avanti
+### Vikingløp
 
 [Vikingløp](ref:rulantica/vikinglop), nel Nordiskturn, è secondo il parco lo
 scivolo da velocità più grande d’Europa. Otto piste corrono affiancate, ti stendi
@@ -211,8 +198,6 @@ del traguardo sollevi i piedi. Gli occhiali qui non sono ammessi. Il massimo
 teorico è di 600 ospiti all’ora, altezza minima 110 centimetri, da dieci anni.
 
 ## Acqua senza scivoli
-
-Se dopo tre ore di scale vuoi qualcosa di diverso, lo trovi qui.
 
 [Snorri's Saga](ref:rulantica/snorris-saga) è un canale a corrente. Ti siedi in un
 gommone singolo, ti appoggi all’indietro e ti lasci portare per tutto il mondo
@@ -232,8 +217,7 @@ centimetri con un adulto.
 
 Il [Vildstrøm](ref:rulantica/vildstrom) è un fiume impetuoso. I bambini sotto i
 125 centimetri o sotto gli otto anni possono usarlo solo con il giubbotto di
-salvataggio e accompagnati da un adulto. Sulla riva ci sono lettini per chi ha
-bisogno di una pausa dalle rapide. Il **Surf Fjørd** è la piscina a onde in mezzo
+salvataggio e accompagnati da un adulto. Sulla riva ci sono lettini. Il **Surf Fjørd** è la piscina a onde in mezzo
 al mondo acquatico, e nello **Hoppablad** c’è un percorso a ostacoli sull’acqua,
 dove non si possono portare gli occhiali.
 
@@ -265,7 +249,6 @@ ghiaccio, poi Stormvind, la postazione VR e Två Fall. Gli scivoli del duello,
 Hugin e Munin, vengono più indietro, le cabine a caduta in fondo alla lista,
 anche se tra gli scivoli sono quelle che lasciano passare meno ospiti all’ora.
 
-Quando le code si formano nel corso della giornata lo ricavi dal profilo orario.
 Il parco apre alle 9:30. A Svalgur Rytt e Vinter Rytt l’ora dalle 10 sta appena
 sotto il livello del pomeriggio, a Hugin, Munin e Stormvind nettamente più in
 basso. Dalle 11 si resta su un altopiano fino a sera presto, dopo le 21 si scende.
@@ -274,16 +257,14 @@ basso. Dalle 11 si resta su un altopiano fino a sera presto, dopo le 21 si scend
 
 ```
 
-Dopo le 13 nei nostri dati non c’è nessuna ora in cui uno scivolo duri
-all’improvviso il doppio rispetto all’ora prima. Arrivare presto fa risparmiare
+Arrivare presto fa risparmiare
 qualcosa a Hugin, Munin e Stormvind e poco sugli scivoli a quattro.
 
 ## Quando andare
 
 La nostra serie di misure per Rulantica copre 287 giorni tra il 6 ottobre 2025 e
 il 6 ottobre 2026. Bastano per i mesi da gennaio a settembre. Dicembre e ottobre
-poggiano invece su soli sette giorni ciascuno, li leggo come un indizio, non come
-un risultato.
+poggiano invece su soli sette giorni ciascuno, lì il dato è meno sicuro.
 
 Luglio e agosto sono i mesi più pieni, agosto di gran lunga. Dicembre sta al
 livello dell’estate. I più tranquilli sono stati gennaio e marzo, anche febbraio e
@@ -291,17 +272,13 @@ maggio sono stati calmi. Tra i giorni della settimana spicca solo il sabato. Da
 lunedì a venerdì nei nostri dati le differenze sono minime, e anche la domenica
 sta lì vicino.
 
-Quando l’Europa-Park è chiuso, dall’11 gennaio al 19 marzo 2027, Rulantica apre
-ogni giorno, e gennaio e marzo per noi sono tra i mesi più tranquilli. Nel nostro
+Nel nostro
 calendario su un giorno pesano inoltre le vacanze scolastiche dei Länder tedeschi
 e dei cantoni svizzeri, e queste vacanze si spostano le une rispetto alle altre.
-Singoli giorni possono perciò discostarsi. I prossimi giorni più tranquilli:
 
 ```best-days-widget slug=rulantica
 
 ```
-
-E i mesi e i giorni della settimana, calcolati sui giorni misurati:
 
 ```stats-widget slug=rulantica show=months,weekdays
 
@@ -310,12 +287,11 @@ E i mesi e i giorni della settimana, calcolati sui giorni misurati:
 ## L’ordine per una giornata a Rulantica
 
 I tempi di attesa sono troppo brevi perché valga la pena un trucco su un singolo
-scivolo. Con un ordine fisso la giornata è comunque più tranquilla.
+scivolo.
 
 Prima dell’apertura possono entrare dalle 9:00 gli ospiti che pernottano
 nell’Europa-Park Erlebnis-Resort e chi ha il biglietto Avventura, mezz’ora prima
-di tutti gli altri. Chi vuole fare le cabine a caduta di Rangnakor può
-sbrigarle in questa mezz’ora.
+di tutti gli altri. Le cabine a caduta di Rangnakor si possono fare in questa mezz’ora.
 
 La mattina vai poi a Vinterhal, a Svalgur Rytt e Vinter Rytt, i due scivoli con i
 tempi di attesa più lunghi, poi a Stormvind e Isbrekker. Vikingløp, nel
@@ -329,15 +305,13 @@ esempio al Kelpie Café. Nella stagione di Halloween allo Skip Strand ci sono
 spettacoli tra le 15:30 e le 17:30 (dati all’8 ottobre 2026).
 
 La sera vale il biglietto serale dalle 17:00 e il biglietto Moonlight dalle 19:00,
-entrambi fino alle 22:00. Il biglietto serale costa meno di quello giornaliero.
-Nei nostri dati i tempi di attesa scendono solo dopo le 21.
+entrambi fino alle 22:00.
 
 ## Con i bambini
 
 I passeggini nel mondo acquatico, per ragioni di sicurezza, non sono ammessi; il
 parco chiede di lasciarli in auto e tiene a disposizione un numero limitato di
-armadietti adatti ai passeggini. Come consiglio indica un ovetto in cui il tuo
-bambino piccolo possa riposare in qualsiasi momento. I fasciatoi ci sono, uno
+armadietti adatti ai passeggini. Al posto del passeggino consiglia un ovetto. I fasciatoi ci sono, uno
 di questi, in collaborazione con dm e babylove, al primo piano. Giubbotti di
 salvataggio in tre misure per bambini il parco li presta gratis. La
 sorveglianza spetta ai genitori, e il parco raccomanda di valutare con realismo
@@ -351,25 +325,23 @@ secondo i dati del parco, un’altezza minima di 95 centimetri, Tønnevirvel par
 da 90. All’aperto si aggiungono **Snorri's Rutscheplads** con tre scivoli e il
 castello giochi **Snorri's Spelaborg**.
 
-Per i bambini di mezzo ci sono scivoli per cominciare. **Skiprok**, **Vragrok**,
+Per i bambini di mezzo, gli scivoli per cominciare **Skiprok**, **Vragrok**,
 **Istapprok** e **Isrok** partono da 100 centimetri, **Översnurra**,
 **Översnabb**, **Överstor**, **Falrok**, **Spiralrok**, **Slalomrok** e
 **Vågorrok** da 110. Con un bambino di 118 centimetri l’altezza basta per tutto
-fino a Vikingløp (da dieci anni), per Hugin, Munin, Stormvind e Svalgur Rytt solo
-con un adulto, e non basta ancora per le cabine a caduta e per Vinter Rytt.
+fino a Vikingløp (da dieci anni), e non basta ancora per le cabine a caduta e per Vinter Rytt.
 
 Il parco scrive per ogni attrazione se servono capacità di nuoto: a Isbrekker vale
 “solo per chi sa nuotare”, e lo stesso a Snorri Snorkling VR.
 
-## Hyggedal: la sauna sopra l’acqua
+## La sauna Hyggedal
 
 L’area sauna e benessere **Hyggedal** ha oltre 1.000 metri quadrati e si trova sopra
 il ristorante Lumålunda, con vista su tutta la sala. Comprende tre saune senza
 costume con aufguss regolari, un bagno di vapore, due terrazze esterne e un bar
 proprio. Una delle saune è il **KOTA Sauna Chalet** sulla terrazza esterna.
 L’accesso è possibile solo con il **biglietto Hyggedal Rulantica** (da 52 a
-68 €), che comprende già il normale ingresso. Chi ha già un biglietto giornaliero
-può aggiungere l’accesso al numero 07822 77 6655 oppure sul posto, se c’è posto.
+68 €), che comprende già il normale ingresso. A un biglietto giornaliero si può aggiungere l’accesso al numero 07822 77 6655 oppure sul posto, se c’è posto.
 
 I bambini sotto i 12 anni non possono entrare, e saune, bagno di vapore, docce a
 secchio e terrazze esterne sono accessibili solo dai 16 anni. Quando si fanno gli
@@ -394,12 +366,11 @@ servizio personale e una bevanda di benvenuto allo Skål Bar, più l’accesso a
 Hydda Loft con sauna, doccia e terrazza solarium. Di queste capanne ce ne sono
 otto, hanno lo stesso arredo e temi diversi.
 
-Chi vuole di più affitta una suite giornaliera nel Nordiskturn. La **Rulantica
+Un livello sopra ci sono le suite giornaliere del Nordiskturn. La **Rulantica
 Svit** (da 590 € al giorno, fino a quattro persone) ha una loggia privata, sauna,
 vasca benessere e un accesso proprio a Vikingløp. La **VIP Svit** su due piani (da
 750 € al giorno, fino a sei persone, oltre 70 metri quadrati) ha balcone e sauna
-panoramica al quinto piano. In estate Strand Eggs, Strand Sofas e tre yacht VIP
-completano l’offerta all’aperto; per il 2027 sono prenotabili da fine 2026.
+panoramica al quinto piano. In estate all’aperto si possono prenotare anche Strand Eggs, Strand Sofas e tre yacht VIP, per il 2027 da fine 2026.
 
 ## Biglietti e prezzi
 
@@ -421,14 +392,13 @@ con **6 € di sovrapprezzo**.
   paganti da 28 a 33 €.
 - Biglietto con buono: da 51 €.
 
-A questo si aggiungono le piccole voci. L’armadietto costa **1 € al giorno** e si
+L’armadietto costa **1 € al giorno** e si
 prenota all’acquisto del biglietto o sul posto; per gli ospiti dell’hotel dai
 dodici anni è incluso. Gli asciugamani come ospite giornaliero non si noleggiano,
 si possono solo comprare, e il parco consiglia di portare i propri. Si paga con il
 **RulaBand**, un braccialetto con transponder che è anche tessera d’ingresso e
 chiave dell’armadietto. Le spese vengono addebitate sul braccialetto e saldate
-all’uscita. Il WiFi è gratuito. Chi visita comunque l’Europa-Park ha con il
-**ResortPass Gold** due biglietti giornalieri per Rulantica inclusi.
+all’uscita. Il WiFi è gratuito. Il **ResortPass Gold** dell’Europa-Park comprende due biglietti giornalieri per Rulantica.
 
 Sulla sua pagina il parco cita il Parkscout plus Award dal 2020 al 2025 (“il
 miglior parco acquatico d’Europa”) e l’EWA Professional Award 2025 per
@@ -444,9 +414,7 @@ settembre 2026, poi seguono Halloween (fino al 1° novembre) e HALLOWinter (dal 
 27 novembre), e dal 28 novembre 2026 al 9 gennaio 2027 il Winterzauber. Poi fino
 al 19 marzo c’è la pausa.
 
-In queste settimane Rulantica resta aperta. Chi va a Rust a febbraio non ha niente da
-fare all’Europa-Park, ma nel mondo acquatico abbastanza. Chi viene d’estate
-combina i due. Il parco vende per questo il **biglietto Ride & Slide** (da 75 €,
+In queste settimane Rulantica resta aperta. Per i due insieme il parco vende d’estate il **biglietto Ride & Slide** (da 75 €,
 solo in certi periodi) e pacchetti con hotel. “Alles erleben” comprende un giorno
 all’Europa-Park, un giorno a Rulantica e un pernottamento con colazione, da 192 €
 a persona in camera a cinque letti. Nella bassa stagione ci sono “2 für 1” (due
@@ -472,7 +440,7 @@ mondo acquatico. Gli aeroporti di Karlsruhe/Baden-Baden e Strasburgo distano 64
 chilometri ciascuno, il Black Forest Airport Lahr 20, l’EuroAirport di Basilea 90 e
 Stoccarda 175 chilometri; ci sono navette offerte da aziende partner.
 
-Chi resta a dormire può scegliere tra sei hotel tematici: El Andaluz, Castillo
+Per dormire ci sono sei hotel tematici: El Andaluz, Castillo
 Alcazar, Santa Isabel, Colosseo, Bell Rock e Krønasår. Una navetta gratuita fa la
 spola tra gli hotel e Rulantica, nelle ore di punta ogni 15 minuti, altrimenti ogni
 15-30. Il Rust-Bus porta gli ospiti della Silver Lake City al mondo acquatico dalle
@@ -574,24 +542,16 @@ Sì. Con un biglietto giornaliero dalle 9:30 alle 22:00, con tempi di attesa cos
 brevi arrivi a tutti gli scivoli grandi, alla giostra acquatica, al canale a
 corrente e alla laguna.
 
-## Rulantica quando l’Europa-Park è chiuso
-
-Rulantica è aperta ogni giorno dalle 9:30 alle 22:00, a gennaio anche quando
-l’Europa-Park lì accanto è chiuso. Nei nostri dati gennaio è uno dei mesi più
-tranquilli.
-
-Com’è la situazione adesso al parco:
+## Il meteo e i primi scivoli
 
 ```weather-widget slug=rulantica
 
 ```
 
-E i due scivoli che farei per primi:
+Per primi farei Vinter Rytt e Vikingløp.
 
 [Vinter Rytt](ref:rulantica/vinter-rytt?full)
 [Vikingløp](ref:rulantica/vikinglop?full)
-
-Porta con te i tuoi asciugamani e lascia gli occhiali nell’armadietto.
 
 — Patrick
 

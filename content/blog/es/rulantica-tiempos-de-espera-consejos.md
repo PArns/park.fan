@@ -51,13 +51,11 @@ seo:
     - Rulantica y Europa-Park combinados
 ---
 
-El Europa-Park hiberna del 11 de enero al 19 de marzo de 2027. Montañas rusas y
-zonas temáticas, todo cerrado. [Rulantica](ref:rulantica), pegado al parque,
+El Europa-Park hiberna del 11 de enero al 19 de marzo de 2027. [Rulantica](ref:rulantica), pegado al parque,
 abre en esas semanas cada día a las 9:30 h; dentro de la nave el aire está entre
 30 y 34 grados y el agua entre 27 y 32.
 
-Fuimos a medir cuánta gente hay entonces. En los toboganes se espera poco, aunque
-en unos cuantos todavía se nota.
+En los toboganes se espera poco, y donde más se espera es en Svalgur Rytt y Vinter Rytt.
 
 ## Historia y construcción de Rulantica
 
@@ -98,9 +96,6 @@ Süddeutsche Zeitung daba 6.000 personas al día como límite máximo.
 
 ## Las zonas temáticas
 
-Rulantica se divide en zonas temáticas. El plano del parque las muestra todas; las
-principales son estas.
-
 **Rangnakor** es la «ciudad sobre pilotes», a cuatro metros del suelo. De aquí
 bajan los toboganes grandes, y desde las Komfort Hyddas se ve toda la nave.
 **Vinterhal** es el palacio de hielo, con la serpiente marina Svalgur convertida en
@@ -119,12 +114,9 @@ toboganes, **Dynstrønd**, con playa y yates VIP, y la **Snorri Strand**, con su
 parque infantil de agua. El parque da de mayo a septiembre para ellas y escribe en
 sus páginas que volverán a estar disponibles cada día a partir del 1 de mayo de 2027. Todo lo que aparece en esta guía como interior abre durante todo el año.
 
-## Los toboganes grandes, con datos
+## Los toboganes grandes
 
-La tabla recoge lo que el parque publica sobre los toboganes más grandes. Por
-debajo de 125 centímetros, en varios de ellos los niños solo pueden bajar con un
-adulto. La altura mínima es el requisito para poder subir siquiera, y en varios de
-estos toboganes los niños no pueden ir solos hasta los 125 centímetros.
+La tabla recoge lo que el parque publica sobre los toboganes más grandes.
 
 | Tobogán                                         | Zona        | Altura | Longitud | Altura mínima | Edad     | Fabricante |
 | ----------------------------------------------- | ----------- | ------ | -------- | ------------- | -------- | ---------- |
@@ -147,7 +139,7 @@ Rytt los niños de entre 110 y 125 centímetros solo pueden bajar acompañados d
 adulto. Stormrok está en la zona exterior y permanece cerrado hasta el 1 de mayo
 de 2027.
 
-### Dugdrob y Vildfål: las cabinas de caída
+### Dugdrob y Vildfål
 
 Los dos toboganes más altos están uno junto al otro en Rangnakor y son gemelos.
 Entras en una cabina de cristal, corre una cuenta atrás y el suelo se abre bajo
@@ -161,40 +153,36 @@ baño. Aquí no puedes llevar gafas, y las cámaras de acción con soporte en la
 cabeza están prohibidas en Dugdrob, Vildfål e Isbrekker. En su lugar, el parque
 ofrece fotos de acción en Dugdrob, Vildfål y en los toboganes Schabernakker I y II.
 
-### Hugin y Munin: el duelo
+### Hugin y Munin
 
 Los dos toboganes corren en paralelo, se llaman juntos Odinrås y miden 148 metros.
 Se baja en un flotador doble. A ratos la pared que separa los tubos está abierta y
-ves el flotador de al lado; en el tramo final se decide quién iba delante. Los
-niños menores de ocho años que lleguen a 110 centímetros bajan con un adulto, y lo
-mismo vale por debajo de 125 centímetros. Con 300 personas por hora en cada
+ves el flotador de al lado; en el tramo final se decide quién iba delante. Los niños menores de ocho años bajan con un adulto. Con 300 personas por hora en cada
 tobogán, sobre el papel el duelo despacha a la gente más rápido que las cabinas de
 caída.
 
-### Svalgur Rytt y Vinter Rytt: la serpiente marina y la halfpipe
+### Svalgur Rytt y Vinter Rytt
 
 [Svalgur Rytt](ref:rulantica/svalgur-rytt) tiene uno de los flotadores más grandes
 del recinto: hasta cuatro personas recorren juntas 208 metros por el cuerpo de la
 serpiente marina helada. Con 960 personas por hora es, sobre el papel, el tobogán
-con más capacidad. El parque admite niños desde los 110 centímetros, y por debajo
-de 125 centímetros con un adulto.
+con más capacidad.
 
 Justo al lado está [Vinter Rytt](ref:rulantica/vinter-rytt), la halfpipe. La salida
 en el flotador para cuatro es tranquila, luego viene una bajada empinada y el
 flotador sube disparado por la pared contraria. Es el único tobogán del recinto con
 límite de peso: 320 kilogramos por flotador. Altura mínima de 125 centímetros,
 desde los diez años. En nuestros datos, estos dos toboganes encabezan los tiempos
-de espera. La distancia que les saca el resto está en la tabla de más abajo.
+de espera.
 
-### Stormvind: el tambor
+### Stormvind
 
 En [Stormvind](ref:rulantica/stormvind) el flotador arranca despacio y después
 llega un descenso rápido. El punto álgido es un tambor circular en el que da como
 mínimo una vuelta antes de que el siguiente tubo lo recoja. 136 metros de largo, 15
-de alto, flotador doble, 360 personas por hora. El parque admite niños desde los
-diez años y 110 centímetros, y por debajo de 125 centímetros con un adulto.
+de alto, flotador doble, 360 personas por hora. El parque admite niños desde los diez años.
 
-### Isbrekker: el trampolín
+### Isbrekker
 
 Isbrekker son dos toboganes de salto en el palacio de hielo, de cuatro metros de
 altura y 13,5 metros de largo. Según el parque, al final sales catapultado a la
@@ -202,7 +190,7 @@ piscina. Altura mínima de 125 centímetros, desde los diez años, solo para qui
 sepa nadar, y los menores de diez bajan únicamente bajo la supervisión de un tutor.
 240 personas por hora.
 
-### Vikingløp: de cabeza
+### Vikingløp
 
 Según el parque, [Vikingløp](ref:rulantica/vikinglop), en el Nordiskturn, es el
 tobogán de velocidad más grande de Europa. Ocho carriles corren uno al lado de
@@ -215,8 +203,6 @@ no se permiten gafas. El máximo teórico es de 600 personas por hora, la altura
 mínima es de 110 centímetros, desde los diez años.
 
 ## Agua sin tobogán
-
-Si después de tres horas subiendo escaleras quieres otra cosa, la encuentras aquí.
 
 [Snorri's Saga](ref:rulantica/snorris-saga) es un canal de corriente. Te sientas en
 un flotador individual, te recuestas y te dejas llevar por todo el mundo acuático:
@@ -236,8 +222,7 @@ tres años, y por debajo de 120 centímetros con un adulto.
 
 El [Vildstrøm](ref:rulantica/vildstrom) es un río bravo. Los niños de menos de 125
 centímetros o de menos de ocho años solo pueden usarlo con chaleco salvavidas y
-acompañados de un adulto. En la orilla hay tumbonas para quien necesite descansar
-de los rápidos. El **Surf Fjørd** es la piscina de olas en mitad del mundo acuático,
+acompañados de un adulto. En la orilla hay tumbonas. El **Surf Fjørd** es la piscina de olas en mitad del mundo acuático,
 y en el **Hoppablad** hay un circuito de obstáculos sobre el agua en el que no se
 pueden llevar gafas.
 
@@ -270,8 +255,7 @@ virtual y Två Fall. Los toboganes del duelo, Hugin y Munin, quedan más atrás,
 cabinas de caída cierran la lista, aunque son los toboganes que menos gente dejan
 pasar por hora.
 
-Para saber a qué hora del día se forman las colas, mira el perfil horario. El
-parque abre a las 9:30 h. En Svalgur Rytt y Vinter Rytt, la hora a partir de las
+El parque abre a las 9:30 h. En Svalgur Rytt y Vinter Rytt, la hora a partir de las
 10 queda apenas por debajo del nivel de la tarde; en Hugin, Munin y Stormvind,
 claramente por debajo. Desde las 11 se mantiene en una meseta hasta primera hora de
 la noche, y después de las 21 h baja.
@@ -280,34 +264,27 @@ la noche, y después de las 21 h baja.
 
 ```
 
-Después de las 13 h no hay en nuestros datos ninguna hora en la que un tobogán pase
-de golpe a durar el doble que en la hora anterior. Llegar temprano ahorra algo en
+Llegar temprano ahorra algo en
 Hugin, Munin y Stormvind, y poco en los de flotador para cuatro.
 
 ## Cuándo ir
 
 Nuestra serie de medición de Rulantica abarca 287 días entre el 6 de octubre de
 2025 y el 6 de octubre de 2026. Con eso se cubren los meses de enero a septiembre.
-Diciembre y octubre, en cambio, tienen solo siete días cada uno, y los leo como un
-indicio, no como un resultado.
+Diciembre y octubre, en cambio, tienen solo siete días cada uno, así que ahí la afirmación es menos segura.
 
 Julio y agosto son los meses más llenos, agosto con diferencia. Diciembre está al
 nivel del verano. Los más tranquilos fueron enero y marzo, y febrero y mayo también
 fueron tranquilos. Entre los días de la semana solo destaca el sábado. De lunes a
 viernes casi no hay diferencias en nuestros datos, y el domingo queda muy cerca.
 
-Cuando el Europa-Park está cerrado, del 11 de enero al 19 de marzo de 2027,
-Rulantica abre a diario, y enero y marzo figuran entre los meses más tranquilos de
-nuestros datos. Además, en nuestro calendario influyen en cada día las vacaciones
+En nuestro calendario influyen en cada día las vacaciones
 escolares de los estados federados alemanes y de los cantones suizos, y esas
-vacaciones no coinciden entre sí. Por eso, algunos días pueden salirse de la norma.
-Los próximos días más tranquilos:
+vacaciones no coinciden entre sí.
 
 ```best-days-widget slug=rulantica
 
 ```
-
-Y los meses y días de la semana, calculados con los días medidos:
 
 ```stats-widget slug=rulantica show=months,weekdays
 
@@ -316,12 +293,11 @@ Y los meses y días de la semana, calculados con los días medidos:
 ## El orden para un día en Rulantica
 
 Los tiempos de espera son demasiado cortos para que valga la pena un truco en un
-solo tobogán. Con un orden fijo, el día resulta igualmente más tranquilo.
+solo tobogán.
 
 Antes de la apertura, los clientes que duermen en el Europa-Park Erlebnis-Resort y
 quienes tienen la Abenteuerticket entran desde las 9:00 h, media hora antes que los
-demás. Si quieres montar en las cabinas de caída de Rangnakor, puedes aprovechar
-esa media hora.
+demás. Las cabinas de caída de Rangnakor caben en esa media hora.
 
 Por la mañana vas después a Vinterhal, a Svalgur Rytt y Vinter Rytt, los dos
 toboganes con los tiempos de espera más largos, y luego a Stormvind e Isbrekker.
@@ -336,15 +312,13 @@ el Kelpie Café. En la temporada de Halloween hay espectáculos en la Skip Stran
 entre las 15:30 y las 17:30 h (a 8 de octubre de 2026).
 
 Por la noche vale la entrada de tarde desde las 17:00 h y la Moonlight desde las
-19:00 h, ambas hasta las 22:00 h. La entrada de tarde cuesta menos que la de día.
-En nuestros datos, los tiempos de espera no bajan hasta pasadas las 21 h.
+19:00 h, ambas hasta las 22:00 h.
 
 ## Con niños
 
 Por seguridad no se permiten cochecitos en el mundo acuático; el parque pide
 dejarlos en el coche y tiene un número limitado de taquillas aptas para
-cochecitos. Como consejo, menciona un portabebés en la que tu hijo pequeño
-pueda descansar en cualquier momento. Hay cambiadores, uno de ellos en
+cochecitos. En lugar de un cochecito, recomienda un portabebés. Hay cambiadores, uno de ellos en
 colaboración con dm y babylove, en la primera planta. El parque presta gratis
 chalecos salvavidas en tres tallas infantiles. La vigilancia corresponde a los
 padres, y el parque recomienda valorar con realismo si el niño sabe nadar y, ante
@@ -358,25 +332,23 @@ los tres piden una altura mínima de 95 centímetros, y Tønnevirvel empieza en 
 Fuera se suman **Snorri's Rutscheplads**, con tres toboganes, y el castillo de
 juegos **Snorri's Spelaborg**.
 
-Para los niños de en medio hay toboganes de iniciación. **Skiprok**, **Vragrok**,
+Para los niños de en medio, los toboganes de iniciación **Skiprok**, **Vragrok**,
 **Istapprok** e **Isrok** empiezan en 100 centímetros; **Översnurra**,
 **Översnabb**, **Överstor**, **Falrok**, **Spiralrok**, **Slalomrok** y
 **Vågorrok**, en 110. Un niño de 118 centímetros llega para todo hasta Vikingløp
-(desde los diez años); en Hugin, Munin, Stormvind y Svalgur Rytt solo va con un
-adulto, y a las cabinas de caída y a Vinter Rytt todavía no llega.
+(desde los diez años), y a las cabinas de caída y a Vinter Rytt todavía no llega.
 
 El parque indica en cada atracción si hace falta saber nadar: en Isbrekker rige
 «solo para nadadores», y en Snorri Snorkling VR también.
 
-## Hyggedal: la sauna sobre el agua
+## La sauna Hyggedal
 
 La zona de sauna y bienestar **Hyggedal** tiene más de 1.000 metros cuadrados y
 está sobre el restaurante Lumålunda, con vistas a toda la nave. Consta de tres
 saunas sin ropa de baño con aufguss a horas fijas, un baño de vapor, dos terrazas
 exteriores y un bar propio. Una de las saunas es el **KOTA Sauna Chalet**, en la
 terraza exterior. El acceso es solo con la **Hyggedal Rulantica Ticket** (de 52 a
-68 euros), que ya incluye la entrada normal. Si ya tienes entrada de día, puedes
-añadir el acceso llamando al 07822 77 6655 o, si hay sitio, en el propio parque.
+68 euros), que ya incluye la entrada normal. A una entrada de día se le puede añadir el acceso llamando al 07822 77 6655 o, si hay sitio, en el propio parque.
 
 Los menores de 12 años no pueden entrar, y las saunas, el baño de vapor, las
 duchas de cubo y las terrazas exteriores solo son accesibles a partir de los 16.
@@ -401,13 +373,11 @@ bebida de bienvenida en el Skål Bar, además de acceso al Hydda Loft con sauna,
 ducha y terraza solárium. Hay ocho cabañas así, con el mismo equipamiento y
 distinta ambientación.
 
-Para quien quiere más, existe el alquiler de una suite de día en el Nordiskturn. La
+Un nivel por encima están las suites de día del Nordiskturn. La
 **Rulantica Svit** (desde 590 euros al día, hasta cuatro personas) tiene logia
 privada, sauna, bañera de bienestar y acceso propio a Vikingløp. La **VIP Svit**,
 de dos plantas (desde 750 euros al día, hasta seis personas, más de 70 metros
-cuadrados), viene con balcón y sauna panorámica en la quinta planta. En verano, los
-Strand Eggs, los Strand Sofas y tres yates VIP completan la oferta al aire libre;
-para 2027 se pueden reservar desde finales de 2026.
+cuadrados), viene con balcón y sauna panorámica en la quinta planta. En verano también se pueden reservar al aire libre Strand Eggs, Strand Sofas y tres yates VIP, para 2027 desde finales de 2026.
 
 ## Entradas y precios
 
@@ -430,14 +400,13 @@ recargo**.
   alumnos de pago, de 28 a 33 euros.
 - Entrada con vale: desde 51 euros.
 
-A eso se suman gastos pequeños. La taquilla cuesta **1 euro al día** y se puede
+La taquilla cuesta **1 euro al día** y se puede
 reservar al comprar la entrada o en el propio parque; para clientes del hotel desde
 doce años está incluida. Las toallas no se pueden alquilar como visitante de un
 día, solo comprar, y el parque recomienda llevar las propias. Se paga con la
 **RulaBand**, una pulsera con transpondedor que además hace de tarjeta de acceso y
 de llave de la taquilla. Los gastos se cargan en la pulsera y se pagan al salir. El
-wifi es gratis. Quien de todos modos visita el Europa-Park tiene incluidas dos
-entradas de día de Rulantica con el **ResortPass Gold**.
+wifi es gratis. El **ResortPass Gold** del Europa-Park incluye dos entradas de día de Rulantica.
 
 En su página, el parque menciona el Parkscout plus Award de 2020 a 2025 («el mejor
 parque acuático de Europa») y el EWA Professional Award de 2025 por una oferta
@@ -452,9 +421,7 @@ Europa-Park abre su temporada de verano del 28 de marzo al 25 de septiembre de
 de noviembre), y del 28 de noviembre de 2026 al 9 de enero de 2027, el Winterzauber.
 Luego hay una pausa hasta el 19 de marzo.
 
-Rulantica sigue abierto en esas semanas. Quien vaya a Rust en febrero no tiene nada
-que hacer en el Europa-Park, pero en el mundo acuático sí. Quien venga en verano
-combina los dos. Para eso, el parque vende la **entrada Ride & Slide** (desde 75
+Rulantica sigue abierto en esas semanas. Para los dos juntos, el parque vende en verano la **entrada Ride & Slide** (desde 75
 euros, solo en determinados periodos) y paquetes con hotel. «Vivirlo todo» incluye
 un día de Europa-Park, un día de Rulantica y una noche con desayuno, desde 192
 euros por persona en habitación de cinco camas. En temporada baja hay «2 por 1»
@@ -588,24 +555,16 @@ Sí. Con una entrada de día, de 9:30 a 22:00 h, con los tiempos de espera tan c
 te da tiempo a todos los toboganes grandes, al tiovivo acuático, al canal de
 corriente y a la laguna.
 
-## Rulantica cuando el Europa-Park está cerrado
-
-Rulantica abre cada día de 9:30 a 22:00 h, y en enero también cuando el
-Europa-Park de al lado está cerrado. En nuestros datos, enero es uno de los meses
-más tranquilos.
-
-Cómo está el parque ahora mismo:
+## El tiempo y los primeros toboganes
 
 ```weather-widget slug=rulantica
 
 ```
 
-Y los dos toboganes en los que yo montaría primero:
+Yo montaría primero en Vinter Rytt y Vikingløp.
 
 [Vinter Rytt](ref:rulantica/vinter-rytt?full)
 [Vikingløp](ref:rulantica/vikinglop?full)
-
-Lleva tus propias toallas y deja las gafas en la taquilla.
 
 — Patrick
 

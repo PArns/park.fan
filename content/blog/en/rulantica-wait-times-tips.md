@@ -50,13 +50,11 @@ seo:
     - Rulantica Europa-Park combination
 ---
 
-Europa-Park hibernates from 11 January to 19 March 2027. Every coaster and
-themed area is shut. [Rulantica](ref:rulantica) next door stays open all that
+Europa-Park hibernates from 11 January to 19 March 2027. [Rulantica](ref:rulantica) next door stays open all that
 time, every day from 9:30 a.m., with the air in the hall at 30 to 34 degrees
 and the water at 27 to 32.
 
-How busy it gets then is something we've measured. The queues at the slides are
-short, though at a few of them you'll still notice one.
+The queues at the slides are short, and the longest waits are at Svalgur Rytt and Vinter Rytt.
 
 ## History and construction of Rulantica
 
@@ -95,9 +93,6 @@ the upper limit.
 
 ## The themed areas
 
-Rulantica is divided into themed areas. The park map lists them all, and these
-are the main ones.
-
 **Rangnakor** is the "city on stilts", four metres above the ground. The big
 slides run down from here, and the Comfort Hyddas look out over the whole hall.
 **Vinterhal** is the ice palace, built around the sea serpent Svalgur, frozen
@@ -117,12 +112,9 @@ water playground. The park gives May to September for them and says on its
 pages that they're available daily again from 1 May 2027. Everything this guide
 covers indoors is open all year.
 
-## The big slides, with data
+## The big slides
 
-The table sums up what the park publishes about the biggest slides. Under 125
-centimetres, children ride several of them only with an adult. The minimum
-height gets a child on at all, but riding alone is allowed on several of these
-slides only from 125 centimetres.
+The table sums up what the park publishes about the biggest slides.
 
 | Slide                                           | Area        | Height | Length | Min. height | Age | Manufacturer |
 | ----------------------------------------------- | ----------- | ------ | ------ | ----------- | --- | ------------ |
@@ -144,7 +136,7 @@ Vildfål. For Hugin, Munin, Stormvind and Svalgur Rytt, the park's page says tha
 children between 110 and 125 centimetres may ride only with an adult. Stormrok
 is outdoors and closed until 1 May 2027.
 
-### Dugdrob and Vildfål: the drop capsules
+### Dugdrob and Vildfål
 
 The two tallest slides stand side by side in Rangnakor, and they're twins. You
 step into a glass capsule, a countdown runs, and the floor drops away. You fall
@@ -158,40 +150,34 @@ Glasses are out here too, and action cameras on head mounts are banned at
 Dugdrob, Vildfål and Isbrekker. The park offers action photos instead, at
 Dugdrob, Vildfål and the Schabernakker I and II slides.
 
-### Hugin and Munin: the duel
+### Hugin and Munin
 
 The two slides run in parallel, are known together as Odinrås and are 148 metres
 long. You ride in a two-person tyre. Every so often the dividing wall between
-the tubes is open, so you see the tyre next door, and the runout decides who was
-ahead. Children under eight who reach 110 centimetres ride with an adult, and so
-does anyone under 125 centimetres. At 300 guests an hour per slide, the duel on
+the tubes is open, so you see the tyre next door, and in the runout you see who was ahead. Children under eight ride with an adult. At 300 guests an hour per slide, the duel on
 paper clears people faster than the drop capsules.
 
-### Svalgur Rytt and Vinter Rytt: the sea serpent and the half-pipe
+### Svalgur Rytt and Vinter Rytt
 
 [Svalgur Rytt](ref:rulantica/svalgur-rytt) has one of the biggest tyres in the
 complex. Up to four people ride 208 metres together through the body of the
 frozen sea serpent. At 960 guests an hour it's the slide with the highest
-capacity on paper. The park admits children from 110 centimetres, and those
-under 125 centimetres need an adult with them.
+capacity on paper.
 
 Right next to it is [Vinter Rytt](ref:rulantica/vinter-rytt), the half-pipe. The
 start in the four-person tyre is gentle, then comes a steep descent, and the tyre
 shoots up the wall on the far side. It's the only slide in the complex with a
 weight limit, 320 kilograms per tyre. The minimum height is 125 centimetres, and
-you have to be ten. In our data these two slides top the wait times. The table
-further down shows how big the gap is.
+you have to be ten. In our data these two slides top the wait times.
 
-### Stormvind: the drum
+### Stormvind
 
 In [Stormvind](ref:rulantica/stormvind) the tyre sets off slowly, followed by a
 quick descent. The high point is a circular drum where the tyre turns for at
 least one full lap before the next tube takes it. It's 136 metres long and 15
-metres high, with a two-person tyre and 360 guests an hour. The park admits
-children from ten years and 110 centimetres, and those under 125 centimetres
-need an adult.
+metres high, with a two-person tyre and 360 guests an hour. The park admits children from age ten.
 
-### Isbrekker: the springboard
+### Isbrekker
 
 Isbrekker is two jump slides in the ice palace, four metres high and 13.5 metres
 long. At the end, according to the park, you're catapulted into the pool. The
@@ -199,7 +185,7 @@ minimum height is 125 centimetres and the age ten, it's for swimmers only, and
 anyone under ten rides only under the supervision of a guardian. It handles 240
 guests an hour.
 
-### Vikingløp: head first
+### Vikingløp
 
 The park calls [Vikingløp](ref:rulantica/vikinglop) in the Nordiskturn the
 biggest speed slide in Europe. Eight racing lanes run side by side. You lie on
@@ -211,9 +197,6 @@ Glasses aren't allowed here. The theoretical maximum is 600 guests an hour, the
 minimum height is 110 centimetres, and the minimum age is ten.
 
 ## Water without a slide
-
-If you're after something different once you've climbed stairs for three hours,
-here it is.
 
 [Snorri's Saga](ref:rulantica/snorris-saga) is a current channel. You sit in a
 single tyre, lean back and drift through the whole water world, past the
@@ -234,7 +217,7 @@ centimetres.
 
 The [Vildstrøm](ref:rulantica/vildstrom) is a raging river. Children under 125
 centimetres or under eight may use it only with a life jacket and an adult.
-There are loungers on the bank for anyone who needs a break from the rapids. The
+There are loungers on the bank. The
 **Surf Fjørd** is the wave pool in the middle of the water world, and the
 **Hoppablad** is an obstacle course on the water where you can't wear glasses.
 
@@ -265,7 +248,7 @@ followed by Stormvind, the VR station and Två Fall. The duel slides Hugin and
 Munin are further back, and the drop capsules sit at the end of the list, even
 though they let through the fewest guests an hour of any slide.
 
-The hourly profile shows when the queues build up over the day. The park opens
+The park opens
 at 9:30 a.m. At Svalgur Rytt and Vinter Rytt the hour from 10 is only just
 under the afternoon level, and at Hugin, Munin and Stormvind it's well under.
 From 11 it stays on a plateau until early evening, and after 9 p.m. it drops.
@@ -274,33 +257,27 @@ From 11 it stays on a plateau until early evening, and after 9 p.m. it drops.
 
 ```
 
-After 1 p.m. there isn't an hour in our data where a slide suddenly takes twice
-as long as in the hour before. Arriving early saves a little at Hugin, Munin and
+Arriving early saves a little at Hugin, Munin and
 Stormvind and not much at the four-person tyres.
 
 ## When to go
 
 Our measurement series for Rulantica covers 287 days between 6 October 2025 and
 6 October 2026. That's enough for the months from January to September.
-December and October rest on only seven days each, so I read them as a hint,
-not a result.
+December and October rest on only seven days each, so the figures there are less certain.
 
 July and August are the busiest months, August by a long way. December is as
 busy as the summer. January and March were the quietest, and February and May
 were quiet too. Among the weekdays only Saturday stands out. Monday to Friday
 barely differ in our data, and Sunday sits close to them.
 
-Europa-Park is closed from 11 January to 19 March 2027 while Rulantica is open
-every day, and January and March are among our quietest months. In our calendar
+In our calendar
 the school holidays of German states and Swiss cantons also affect a day, and
-those holidays are staggered against each other. Single days can therefore
-differ. The quietest upcoming days:
+those holidays are staggered against each other.
 
 ```best-days-widget slug=rulantica
 
 ```
-
-And the months and weekdays, calculated from the days we measured:
 
 ```stats-widget slug=rulantica show=months,weekdays
 
@@ -308,13 +285,11 @@ And the months and weekdays, calculated from the days we measured:
 
 ## The order for a day at Rulantica
 
-The waits are too short for a trick at a single slide to pay off. A fixed order
-still makes the day calmer.
+The waits are too short for a trick at a single slide to pay off.
 
 Before opening, overnight guests of the Europa-Park Erlebnis-Resort and holders
 of the Adventure Ticket can go in from 9:00 a.m., half an hour ahead of everyone
-else. If you want the drop capsules in Rangnakor, you can ride them in that
-half hour.
+else. You can ride the drop capsules in Rangnakor in that half hour.
 
 In the morning you then head to Vinterhal for Svalgur Rytt and Vinter Rytt, the
 two slides with the longest waits, and after that to Stormvind and Isbrekker.
@@ -328,15 +303,13 @@ Café. In the Halloween season there are shows at the Skip Strand between 3:30
 and 5:30 p.m. (as of 8 October 2026).
 
 In the evening, the evening ticket applies from 5:00 p.m. and the Moonlight
-ticket from 7:00 p.m., both until 10:00 p.m. The evening ticket costs less than
-the day ticket. In our data the waits only drop after 9 p.m.
+ticket from 7:00 p.m., both until 10:00 p.m.
 
 ## With kids
 
 Strollers aren't allowed in the water world, for safety reasons. The park asks
 you to leave them in the car, and it keeps a limited number of lockers that
-fit strollers. As a tip it suggests an infant carrier in which your toddler can
-settle down at any time. There are changing rooms, one of them on the first
+fit strollers. Instead of a stroller it suggests an infant carrier. There are changing rooms, one of them on the first
 floor, run with dm and babylove. The park lends life jackets in three children's
 sizes free of charge. Parents are responsible for supervision, and the park
 recommends judging your child's swimming ability realistically and putting on a
@@ -350,26 +323,22 @@ have a minimum height of 95 centimetres, and Tønnevirvel starts at 90. Outside
 you also get **Snorri's Rutscheplads** with three slides and the play castle
 **Snorri's Spelaborg**.
 
-For children in between there are beginner slides. The beginner slides
-**Skiprok**, **Vragrok**, **Istapprok** and **Isrok** start at 100 centimetres,
+For children in between, the beginner slides **Skiprok**, **Vragrok**, **Istapprok** and **Isrok** start at 100 centimetres,
 and **Översnurra**, **Översnabb**, **Överstor**, **Falrok**, **Spiralrok**,
 **Slalomrok** and **Vågorrok** at 110. A child of 118 centimetres is tall enough
-for everything up to Vikingløp (from age ten), and for Hugin, Munin, Stormvind
-and Svalgur Rytt only with an adult, but not yet for the drop capsules and
-Vinter Rytt.
+for everything up to Vikingløp (from age ten), but not yet for the drop capsules and Vinter Rytt.
 
 The park states at each attraction whether swimming skills are needed: Isbrekker
 is "for swimmers only", and so is Snorri Snorkling VR.
 
-## Hyggedal: the sauna above the water
+## The Hyggedal sauna
 
 The sauna and wellness area **Hyggedal** covers over 1,000 square metres and sits
 above the restaurant Lumålunda, with a view across the whole hall. It has three
 clothing-free saunas with regular infusions, a steam bath, two outdoor terraces
 and a bar of its own. One of the saunas is the **KOTA Sauna Chalet** on the
 outdoor terrace. You get in only with the **Hyggedal Rulantica Ticket** (€52 to
-€68), which includes standard admission. If you already have a day ticket, you
-can add access by calling 07822 77 6655, or on the spot if there's room.
+€68), which includes standard admission. Access can be added to a day ticket by calling 07822 77 6655, or on the spot if there's room.
 
 Children under 12 aren't allowed in, and the saunas, steam bath, bucket showers
 and outdoor terraces are open only from 16. When infusions happen is posted
@@ -393,13 +362,11 @@ drink at the Skål Bar, plus access to the Hydda Loft with a sauna, shower and
 sun terrace. There are eight of these huts, equipped alike and themed
 differently.
 
-If you want more, you can rent a day suite in the Nordiskturn. The **Rulantica
+A tier above are the day suites in the Nordiskturn. The **Rulantica
 Svit** (from €590 a day, up to four people) has a private loggia, a sauna, a
 wellness tub and its own access to Vikingløp. The two-storey **VIP Svit** (from
 €750 a day, up to six people, over 70 square metres) comes with a balcony and a
-panorama sauna on the fifth floor. In summer, Strand Eggs, Strand Sofas and three
-VIP yachts add to the outdoor offer; for 2027 they can be booked from the end
-of 2026.
+panorama sauna on the fifth floor. In summer you can also book Strand Eggs, Strand Sofas and three VIP yachts outdoors, for 2027 from the end of 2026.
 
 ## Tickets and prices
 
@@ -421,13 +388,12 @@ tickets are sold only if there's capacity left, and for a **€6 surcharge**.
   pupils €28 to €33.
 - Voucher ticket: from €51.
 
-Then there are the small items. The locker costs **€1 a day** and can be booked
+The locker costs **€1 a day** and can be booked
 with your ticket or on site; it's included for hotel guests aged twelve and
 over. As a day guest you can't rent towels, only buy them, and the park
 recommends bringing your own. You pay with the **RulaBand**, a transponder
 wristband that is also your entry card and locker key. Purchases are charged to
-the band and paid when you leave. Wi-Fi is free. If you're visiting Europa-Park
-anyway, the **ResortPass Gold** includes two Rulantica day tickets.
+the band and paid when you leave. Wi-Fi is free. Europa-Park's **ResortPass Gold** includes two Rulantica day tickets.
 
 On its site the park lists the Parkscout plus Award 2020 to 2025 ("Europe's best
 water park") and the EWA Professional Award 2025 for innovative offer design.
@@ -441,9 +407,7 @@ is open in its summer season from 28 March to 25 September 2026. Halloween
 (until 1 November) and HALLOWinter (2 to 27 November) follow, and from 28
 November 2026 to 9 January 2027 the Winterzauber. Then it pauses until 19 March.
 
-Rulantica stays open through those weeks. If you're in Rust in February, there's
-nothing to do at Europa-Park, but plenty in the water world. If you come in
-summer, you combine the two. The park sells the **Ride & Slide Ticket** for that
+Rulantica stays open through those weeks. For both together, the park sells the **Ride & Slide Ticket** in summer
 (from €75, only in certain periods) and hotel packages. "Experience it all"
 includes one day at Europa-Park, one day at Rulantica and an overnight stay with
 breakfast, from €192 per person in a five-bed room. In the off-season there's
@@ -470,7 +434,7 @@ minutes to the water world. Airports are 64 kilometres away at Karlsruhe/Baden-B
 and at Strasbourg, 20 at Black Forest Airport Lahr, 90 at EuroAirport Basel and
 175 at Stuttgart; partner companies offer shuttles.
 
-If you stay overnight, you can choose between six Experience hotels: El Andaluz,
+For overnight stays there are six Experience hotels: El Andaluz,
 Castillo Alcazar, Santa Isabel, Colosseo, Bell Rock and Krønasår. A free shuttle
 runs between the hotels and Rulantica, every 15 minutes at peak times and
 otherwise every 15 to 30. The Rust bus takes guests of Silver Lake City to the
@@ -574,24 +538,16 @@ Yes. With a day ticket from 9:30 a.m. to 10:00 p.m. and the short waits, you
 can fit in all the big slides, the water carousel, the current channel and the
 lagoon.
 
-## Rulantica when Europa-Park is closed
-
-Rulantica is open daily from 9:30 a.m. to 10:00 p.m., in January even while
-Europa-Park next door is shut. In our data January is one of the quietest
-months.
-
-Here's how the park looks right now:
+## Weather and the first slides
 
 ```weather-widget slug=rulantica
 
 ```
 
-And the two slides I'd ride first:
+I'd ride Vinter Rytt and Vikingløp first.
 
 [Vinter Rytt](ref:rulantica/vinter-rytt?full)
 [Vikingløp](ref:rulantica/vikinglop?full)
-
-Bring your own towels and leave your glasses in the locker.
 
 — Patrick
 

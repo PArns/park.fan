@@ -50,13 +50,11 @@ seo:
     - Rulantica Europa-Park combinatie
 ---
 
-Van 11 januari tot 19 maart 2027 houdt het Europa-Park winterslaap. De
-achtbanen en themagebieden zijn dan allemaal dicht. [Rulantica](ref:rulantica)
+Van 11 januari tot 19 maart 2027 houdt het Europa-Park winterslaap. [Rulantica](ref:rulantica)
 ernaast gaat in die periode elke dag om 9:30 open, in de hal is de lucht 30 tot
 34 graden en het water 27 tot 32.
 
-Hoe druk het dan wordt, hebben we nagemeten. De wachttijden bij de glijbanen
-zijn kort, en bij een paar ervan merk je ze toch.
+De wachttijden bij de glijbanen zijn kort, het langst sta je bij Svalgur Rytt en Vinter Rytt.
 
 ## Geschiedenis en bouw van Rulantica
 
@@ -97,9 +95,6 @@ Zeitung 6.000 gasten per dag als maximum.
 
 ## De themagebieden
 
-Rulantica is verdeeld in themagebieden. Op de parkplattegrond staan ze allemaal,
-dit zijn de belangrijkste.
-
 **Rangnakor** is de “stad op palen”, vier meter boven de grond. Van hieruit gaan
 de grote glijbanen naar beneden, en vanaf de comfort-Hydda’s zie je over de hele
 hal. **Vinterhal** is het ijspaleis met de tot ijs verstarde zeeslang Svalgur,
@@ -119,12 +114,9 @@ met waterspeeltuin. Het park noemt voor die drie mei tot en met september en
 schrijft op zijn pagina’s dat ze vanaf 1 mei 2027 weer dagelijks beschikbaar
 zijn. Alles wat in deze gids binnen ligt, is het hele jaar open.
 
-## De grote glijbanen, met cijfers
+## De grote glijbanen
 
-De tabel zet samen wat het park over de grootste glijbanen publiceert. Onder de
-125 centimeter glijden kinderen bij meerdere ervan alleen mee met een
-volwassene. Vanaf de minimale lengte mag het sowieso, alleen glijden mogen
-kinderen bij meerdere van deze banen pas vanaf 125 centimeter.
+De tabel zet samen wat het park over de grootste glijbanen publiceert.
 
 | Glijbaan                                        | Gebied      | Hoogte | Lengte | Minimale lengte | Leeftijd | Fabrikant |
 | ----------------------------------------------- | ----------- | ------ | ------ | --------------- | -------- | --------- |
@@ -146,7 +138,7 @@ Vildfål. Bij Hugin, Munin, Stormvind en Svalgur Rytt staat op de parkpagina dat
 kinderen tussen 110 en 125 centimeter alleen onder begeleiding van een
 volwassene mogen glijden. Stormrok ligt buiten en is tot 1 mei 2027 dicht.
 
-### Dugdrob en Vildfål: de valcabines
+### Dugdrob en Vildfål
 
 De twee hoogste glijbanen staan naast elkaar in Rangnakor en zijn een tweeling.
 Je stapt in een glazen cabine, er loopt een aftelling, en dan klapt de vloer weg.
@@ -161,39 +153,36 @@ hoofdbevestiging zijn verboden bij Dugdrob, Vildfål en Isbrekker. In plaats
 daarvan biedt het park actiefoto’s aan: bij Dugdrob, Vildfål en de glijbanen
 Schabernakker I en II.
 
-### Hugin en Munin: het duel
+### Hugin en Munin
 
 De twee glijbanen lopen parallel, heten samen Odinrås en zijn 148 meter lang. Je
 glijdt in een tweepersoonsring. Steeds weer is de tussenwand tussen de buizen
 open, zodat je de ring ernaast ziet, en in de uitloop wordt beslist wie voorop
-lag. Kinderen onder de acht jaar die 110 centimeter halen, glijden mee met een
-volwassene, en onder 125 centimeter geldt dat ook. Met elk 300 gasten per uur en
+lag. Kinderen onder de acht jaar glijden mee met een volwassene. Met elk 300 gasten per uur en
 glijbaan is het duel op papier sneller afgehandeld dan de valcabines.
 
-### Svalgur Rytt en Vinter Rytt: de zeeslang en de halfpipe
+### Svalgur Rytt en Vinter Rytt
 
 [Svalgur Rytt](ref:rulantica/svalgur-rytt) heeft een van de grootste ringen van
 het park: tot vier personen glijden samen 208 meter door het lichaam van de
 bevroren zeeslang. Met 960 gasten per uur is het op papier de glijbaan met de
-meeste capaciteit. Het park laat kinderen toe vanaf 110 centimeter, onder 125
-centimeter met een volwassene erbij.
+meeste capaciteit.
 
 Meteen ernaast ligt [Vinter Rytt](ref:rulantica/vinter-rytt), de halfpipe. De
 start in de vierpersoonsring is rustig, dan gaat het steil omlaag en schiet de
 ring aan de andere kant tegen de wand omhoog. Alleen deze glijbaan van het park heeft
 een gewichtsgrens: 320 kilogram per ring. Minimale lengte 125
 centimeter, vanaf tien jaar. In onze gegevens staan deze twee glijbanen bovenaan
-bij de wachttijden. Hoe groot het verschil is, staat in de tabel verderop.
+bij de wachttijden.
 
-### Stormvind: de trommel
+### Stormvind
 
 In [Stormvind](ref:rulantica/stormvind) vertrekt de ring langzaam, daarna volgt
 een snelle afdaling. Het hoogtepunt is een ronde trommel waarin hij minstens één
 keer rondtolt voordat de volgende buis hem opvangt. 136 meter lang, 15 meter
-hoog, tweepersoonsring, 360 gasten per uur. Het park laat kinderen toe vanaf tien
-jaar en 110 centimeter, onder 125 centimeter met een volwassene erbij.
+hoog, tweepersoonsring, 360 gasten per uur. Het park laat kinderen toe vanaf tien jaar.
 
-### Isbrekker: de springplank
+### Isbrekker
 
 Isbrekker bestaat uit twee springglijbanen in het ijspaleis, vier meter hoog en
 13,5 meter lang. Aan het eind word je volgens het park het bad in gekatapulteerd.
@@ -201,7 +190,7 @@ Minimale lengte 125 centimeter, vanaf tien jaar, alleen voor zwemmers, en wie
 jonger is dan tien, glijdt alleen onder toezicht van een ouder of voogd. 240
 gasten per uur.
 
-### Vikingløp: kop voorop
+### Vikingløp
 
 [Vikingløp](ref:rulantica/vikinglop) in de Nordiskturn is volgens het park de
 grootste speedglijbaan van Europa. Acht racebanen lopen naast elkaar, je gaat op
@@ -213,8 +202,6 @@ op. Brillen zijn hier niet toegestaan. Het theoretische maximum is 600 gasten pe
 uur, de minimale lengte is 110 centimeter, vanaf tien jaar.
 
 ## Water zonder glijbaan
-
-Wie na drie uur trappen op en af iets anders wil, vindt het hier.
 
 [Snorri’s Saga](ref:rulantica/snorris-saga) is een stroomkanaal. Je gaat in een
 eenpersoonsring zitten, leunt achterover en drijft door de hele waterwereld: langs
@@ -234,8 +221,7 @@ centimeter met een volwassene.
 
 De [Vildstrøm](ref:rulantica/vildstrom) is een kolkende rivier. Kinderen onder
 125 centimeter of onder de acht jaar mogen er alleen met zwemvest en onder
-begeleiding van een volwassene in. Aan de oever staan ligbedden voor wie even
-rust van de stroomversnellingen nodig heeft. De **Surf Fjørd** is het golfbad
+begeleiding van een volwassene in. Aan de oever staan ligbedden. De **Surf Fjørd** is het golfbad
 midden in de waterwereld, en in **Hoppablad** ligt een hindernisbaan op het
 water, waar je geen bril mag dragen.
 
@@ -267,8 +253,7 @@ het ijspaleis, daarachter Stormvind, het VR-station en Två Fall. De duelbanen
 Hugin en Munin staan verder achteraan, de valcabines onderaan de lijst, terwijl
 ze van alle glijbanen de minste gasten per uur doorlaten.
 
-Wie wil weten wanneer de wachtrijen zich over de dag opbouwen, leest dat af uit
-het uurprofiel. Het park gaat om 9:30 open. Bij Svalgur Rytt en Vinter Rytt zit
+Het park gaat om 9:30 open. Bij Svalgur Rytt en Vinter Rytt zit
 het uur vanaf 10 uur maar net onder het middagniveau, bij Hugin, Munin en
 Stormvind duidelijk eronder. Vanaf 11 uur blijft het tot in de vroege avond op
 een plateau, na 21 uur zakt het.
@@ -277,16 +262,14 @@ een plateau, na 21 uur zakt het.
 
 ```
 
-Na 13 uur is er in onze gegevens geen uur waarin een glijbaan ineens twee keer zo
-lang duurt als het uur ervoor. Vroeg aankomen scheelt bij Hugin, Munin en
+Vroeg aankomen scheelt bij Hugin, Munin en
 Stormvind iets en bij de vierpersoonsringen weinig.
 
 ## Wanneer je moet gaan
 
 Onze meetreeks voor Rulantica beslaat 287 dagen tussen 6 oktober 2025 en 6
 oktober 2026. Dat is genoeg voor de maanden januari tot en met september.
-December en oktober staan daarentegen op slechts zeven dagen per maand, ik lees ze
-als aanwijzing en niet als uitkomst.
+December en oktober staan daarentegen op slechts zeven dagen per maand, daar is de uitspraak minder zeker.
 
 Juli en augustus zijn de drukste maanden, augustus met afstand. December ligt op
 het niveau van de zomer. Het rustigst waren januari en maart, februari en mei
@@ -294,17 +277,13 @@ waren ook rustig. Bij de weekdagen valt alleen de zaterdag op. Maandag tot en me
 vrijdag verschillen in onze gegevens nauwelijks, en ook de zondag zit er dicht
 tegenaan.
 
-Als het Europa-Park van 11 januari tot 19 maart 2027 dicht is, is Rulantica
-dagelijks open, en januari en maart horen bij ons tot de rustigste maanden. In
-onze kalender werken bovendien de schoolvakanties van Duitse deelstaten en
+In onze kalender werken bovendien de schoolvakanties van Duitse deelstaten en
 Zwitserse kantons op een dag door, en die vakanties schuiven ten opzichte van
-elkaar. Afzonderlijke dagen kunnen daarom afwijken. De rustigste komende dagen:
+elkaar.
 
 ```best-days-widget slug=rulantica
 
 ```
-
-En de maanden en weekdagen, berekend uit de gemeten dagen:
 
 ```stats-widget slug=rulantica show=months,weekdays
 
@@ -312,12 +291,11 @@ En de maanden en weekdagen, berekend uit de gemeten dagen:
 
 ## De volgorde voor een dag in Rulantica
 
-De wachttijden zijn te kort om een truc bij één glijbaan de moeite waard te
-maken. Met een vaste volgorde wordt de dag toch rustiger.
+De wachttijden zijn te kort om een truc bij één glijbaan de moeite waard te maken.
 
 Voor de opening mogen logés van het Europa-Park Erlebnis-Resort en houders van
 het Abenteuerticket al om 9:00 uur naar binnen, een half uur voor alle anderen.
-Wie de valcabines in Rangnakor wil rijden, kan ze in dat halve uur meepakken.
+De valcabines in Rangnakor kun je in dat halve uur meepakken.
 
 In de ochtend ga je daarna naar Vinterhal, naar Svalgur Rytt en Vinter Rytt, de
 twee glijbanen met de langste wachttijden, en dan naar Stormvind en Isbrekker.
@@ -331,15 +309,13 @@ het Kelpie Café. In het Halloweenseizoen zijn er bij het Skip Strand shows tuss
 15:30 en 17:30 uur (stand 8 oktober 2026).
 
 In de avond geldt het avondticket vanaf 17:00 uur en het Moonlight-ticket vanaf
-19:00 uur, allebei tot 22:00 uur. Het avondticket kost minder dan het dagticket.
-In onze gegevens zakken de wachttijden pas na 21 uur.
+19:00 uur, allebei tot 22:00 uur.
 
 ## Met kinderen
 
 Kinderwagens zijn in de waterwereld om veiligheidsredenen niet toegestaan; het
 park vraagt om ze in de auto te laten en heeft een beperkt aantal kluisjes
-geschikt voor kinderwagens. Als tip noemt het een babyschaal waarin je peuter op
-elk moment tot rust kan komen. Er zijn verschoonruimtes, een ervan in
+geschikt voor kinderwagens. In plaats van een kinderwagen raadt het een babyschaal aan. Er zijn verschoonruimtes, een ervan in
 samenwerking met dm en babylove op de eerste verdieping. Zwemvesten in drie
 kindermaten leent het park gratis uit. Het toezicht ligt bij de ouders, en het
 park raadt aan de zwemvaardigheid van het kind realistisch in te schatten en bij
@@ -353,26 +329,23 @@ gegevens van het park een minimale lengte van 95 centimeter, Tønnevirvel begint
 bij 90. Buiten komen **Snorri’s Rutscheplads** met drie glijbanen en de
 speelburcht **Snorri’s Spelaborg** erbij.
 
-Voor kinderen daartussen zijn er instapglijbanen. De instapglijbanen **Skiprok**,
-**Vragrok**, **Istapprok** en **Isrok** beginnen bij 100 centimeter,
+Voor kinderen daartussen beginnen de instapglijbanen **Skiprok**,
+**Vragrok**, **Istapprok** en **Isrok** bij 100 centimeter,
 **Översnurra**, **Översnabb**, **Överstor**, **Falrok**, **Spiralrok**,
 **Slalomrok** en **Vågorrok** bij 110. Met een kind van 118 centimeter is de
-lengte genoeg voor alles tot en met Vikingløp (vanaf tien jaar), voor Hugin,
-Munin, Stormvind en Svalgur Rytt alleen onder begeleiding van een volwassene, en
-de valcabines en Vinter Rytt nog niet.
+lengte genoeg voor alles tot en met Vikingløp (vanaf tien jaar), voor de valcabines en Vinter Rytt nog niet.
 
 Het park schrijft bij elke attractie uit of zwemvaardigheid nodig is: bij
 Isbrekker geldt “alleen voor zwemmers”, bij Snorri Snorkling VR ook.
 
-## Hyggedal: de sauna boven het water
+## De sauna Hyggedal
 
 De sauna- en wellnessruimte **Hyggedal** is ruim 1.000 vierkante meter groot en
 ligt boven restaurant Lumålunda, met uitzicht over de hele hal. Hij bestaat uit
 drie textielvrije sauna’s met regelmatige opgietingen, een stoombad, twee
 buitenterrassen en een eigen bar. Een van de sauna’s is het **KOTA Sauna Chalet**
 op het buitenterras. Toegang heb je alleen met het **Hyggedal Rulantica Ticket**
-(52 tot 68 euro), waarin de gewone entree al zit. Wie al een dagkaart heeft, kan
-de toegang bijboeken via 07822 77 6655 of, als er plek is, ter plaatse.
+(52 tot 68 euro), waarin de gewone entree al zit. Bij een dagkaart is de toegang bij te boeken via 07822 77 6655 of, als er plek is, ter plaatse.
 
 Kinderen onder 12 jaar mogen niet naar binnen, en sauna’s, stoombad,
 emmerdouches en buitenterrassen zijn pas vanaf 16 jaar toegankelijk. Wanneer er
@@ -397,13 +370,11 @@ en een welkomstdrankje aan de Skål Bar, plus toegang tot de Hydda Loft met saun
 douche en zonneterras. Er zijn acht van zulke hutten, ze zijn gelijk ingericht en
 verschillend gethematiseerd.
 
-Wie meer wil, huurt een dagsuite in de Nordiskturn. De **Rulantica Svit** (vanaf
+Een niveau hoger liggen de dagsuites in de Nordiskturn. De **Rulantica Svit** (vanaf
 590 euro per dag, tot vier personen) heeft een privéloggia, sauna, wellnessbad en
 een eigen toegang tot Vikingløp. De **VIP Svit** met twee verdiepingen (vanaf 750
 euro per dag, tot zes personen, meer dan 70 vierkante meter) komt met balkon en
-panoramasauna op de vijfde verdieping. In de zomer vullen Strand Eggs, Strand
-Sofas en drie vip-jachten het aanbod buiten aan; voor 2027 zijn ze vanaf eind
-2026 te boeken.
+panoramasauna op de vijfde verdieping. In de zomer kun je buiten ook Strand Eggs, Strand Sofas en drie vip-jachten boeken, voor 2027 vanaf eind 2026.
 
 ## Tickets en prijzen
 
@@ -425,14 +396,12 @@ kaarten er alleen bij vrije capaciteit en voor **6 euro toeslag**.
   betalende leerlingen 28 tot 33 euro.
 - Cadeauticket: vanaf 51 euro.
 
-Daar komen kleine posten bij. Het kluisje kost **1 euro per dag** en is bij de
+Het kluisje kost **1 euro per dag** en is bij de
 ticketaankoop of ter plaatse te boeken; voor hotelgasten vanaf twaalf jaar is het
 inbegrepen. Handdoeken kun je als dagbezoeker niet lenen, alleen kopen, het park
 raadt eigen handdoeken aan. Betaald wordt met de **RulaBand**, een
 transponderarmband die ook toegangskaart en kluissleutel is. Uitgaven worden op
-de band geboekt en bij het verlaten betaald. Wifi is gratis. Wie sowieso het
-Europa-Park bezoekt, heeft met de **ResortPass Gold** twee Rulantica-dagtickets
-inbegrepen.
+de band geboekt en bij het verlaten betaald. Wifi is gratis. De **ResortPass Gold** van het Europa-Park bevat twee Rulantica-dagtickets.
 
 Op zijn pagina noemt het park de Parkscout plus Award 2020 tot 2025 (“Europas
 bester Wasserpark”) en de EWA Professional Award 2025 voor innovatieve
@@ -447,9 +416,7 @@ daarna volgen Halloween (tot 1 november) en HALLOWinter (2 tot 27 november), en
 van 28 november 2026 tot 9 januari 2027 de Winterzauber. Dan is er tot 19 maart
 pauze.
 
-Rulantica blijft in die weken open. Wie in februari naar Rust gaat, heeft in het
-Europa-Park niets te doen, maar in de waterwereld genoeg. Wie in de zomer komt,
-combineert beide. Het park verkoopt daarvoor het **Ride & Slide Ticket** (vanaf
+Rulantica blijft in die weken open. Voor beide samen verkoopt het park in de zomer het **Ride & Slide Ticket** (vanaf
 75 euro, alleen in bepaalde periodes) en hotelpakketten. “Alles erleben” bevat
 een dag Europa-Park, een dag Rulantica en een overnachting met ontbijt, vanaf 192
 euro per persoon in de vijfpersoonskamer. In het laagseizoen is er “2 für 1”
@@ -478,7 +445,7 @@ Straatsburg elk 64 kilometer weg, met de Black Forest Airport Lahr 20, met de
 EuroAirport Bazel 90 en met Stuttgart 175 kilometer; partnerbedrijven bieden
 shuttles aan.
 
-Wie blijft slapen, kan kiezen uit zes belevenishotels: El Andaluz, Castillo
+Om te overnachten zijn er zes belevenishotels: El Andaluz, Castillo
 Alcazar, Santa Isabel, Colosseo, Bell Rock en Krønasår. Een gratis shuttle rijdt
 tussen de hotels en Rulantica, op drukke momenten elk kwartier, anders elke 15 tot
 30 minuten. De Rust-bus brengt gasten van Silver Lake City van 8:00 tot 20:00 uur
@@ -580,24 +547,16 @@ Drinken is toegestaan, alleen geen glazen flessen.
 Ja. Met een dagticket van 9:30 tot 22:00 uur kom je bij de korte wachttijden aan
 alle grote glijbanen, aan de watermolen, het stroomkanaal en de lagune.
 
-## Rulantica, als het Europa-Park dicht is
-
-Rulantica is dagelijks open van 9:30 tot 22:00 uur, in januari ook dan als het
-Europa-Park ernaast gesloten is. In onze gegevens is januari een van de rustigste
-maanden.
-
-Hoe het er nu bij ligt:
+## Het weer en de eerste glijbanen
 
 ```weather-widget slug=rulantica
 
 ```
 
-En de twee glijbanen die ik als eerste zou rijden:
+Als eerste zou ik Vinter Rytt en Vikingløp nemen.
 
 [Vinter Rytt](ref:rulantica/vinter-rytt?full)
 [Vikingløp](ref:rulantica/vikinglop?full)
-
-Neem eigen handdoeken mee en laat je bril in de kluis.
 
 — Patrick
 
