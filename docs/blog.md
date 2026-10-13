@@ -652,6 +652,55 @@ what the park page's filter says.
 `kürzer besetzt` and on `X von X` in all six languages. The genitive chain, the circular
 definition, the calque and the gap reported where it changes nothing are for the review pass.
 
+### 2.20 Twenty patterns the check did not know (2026-10-13)
+
+On 2026-10-13 the critic of §7.2 read twelve park guides that had all passed `pnpm check:prose`
+and marked every one of them as machine-written. The patterns below came up in several guides,
+and the sentences are the ones it quoted. Each is a shape a writer may use once; the tell is the
+series. `pnpm check:prose` warns on all of them and fails on none, so a published post never turns
+`main` red. The rule names are what the critic cites as `check:prose: <rule>`; the code is
+`scripts/prose-slop-patterns.mjs`, the cases are `pnpm test:prose-rules`.
+
+| #   | Rule                         | The pattern                                                                                                         | Quoted                                                                                                                  | Fires at                         |
+| --- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| 1   | `origin-refrain`             | The same sentence about where the data came from closes several sections.                                           | `Eine Seite von Universal, die das bestätigt, konnten wir nicht abrufen.` · `fehlt die Angabe bei 48 von 55`            | 2 closing sentences              |
+| 2   | `heading-triple`             | Headings that are a chain of three, often after `X:`.                                                               | `Express Pass: Pakete, Preise, Zeitfenster` · `Mindestgrößen, Begleitperson, Metalldetektor`                            | 3 headings                       |
+| 3   | `name-colon-subheading`      | A run of `Name: epithet` subheadings (§4.3).                                                                        | `Hugin und Munin: das Duell` · `Vikingløp: Kopf voraus`                                                                 | 4 headings                       |
+| 4   | `handoff-object-first`       | A paragraph ends on a sentence that hands the reader to another document, with the object put first.                | `Den Preis für deinen Tag nennt der Park im Buchungsablauf.` · `Der Winter-Überblick vergleicht das mit anderen Parks.` | 2 paragraphs                     |
+| 5   | `indirect-question-subject`  | An indirect question as the subject in front of `steht in`.                                                         | `Welcher Preis für deinen Tag gilt, steht im Kalender des Ticketshops.`                                                 | 2 sentences                      |
+| 6   | `widget-announcement`        | A paragraph ending in a colon directly above a widget fence, in changing words (§2.7 catches only identical lines). | `Wie die Warteschlangen über den Tag wachsen:` · `Die ruhigsten kommenden Tage:`                                        | 2 paragraphs                     |
+| 7   | `conditional-opener-series`  | `Wer …, …` / `If you …` opening sentence after sentence.                                                            | `Wer mit Kindern unter 120 cm kommt, … Wer ohne Auto kommt, …`                                                          | 11 per post, or 3 in a paragraph |
+| 8   | `catalog-connector-series`   | `Dazu kommt`, `Und es gibt`, `There's also`, `Then there's` as the way to add the next item.                        | `Dazu kommt Luna, 2023 eröffnet.` · `Und es gibt die Lisebergbanan.`                                                    | 6 sentences                      |
+| 9   | `attribution-opener-series`  | `Laut Park`, `Der Park nennt`, `The park says` opening sentences within one chapter.                                | `The park calls Katun …` · `The park says 110 km/h`                                                                     | 3 in a chapter                   |
+| 10  | `travel-imperative-close`    | An imperative about the trip closing a paragraph.                                                                   | `Prüfe sie dort, bevor du fährst.` · `Check the calendar before you travel.`                                            | 2 paragraphs                     |
+| 11  | `tautological-because`       | The same verb in the main clause and in the `weil` clause.                                                          | `Ein zweiter Tag lohnt sich vor allem mit Kindern, weil sich Futuropolis dann den ganzen Tag lohnt.`                    | 1 sentence                       |
+| 12  | `excerpt-announces-post`     | The excerpt or the description announces the post (§1.4) where it should say something.                             | `Hier steht, an welchen Tagen …` · `Dieser Beitrag zählt auf, …` · `This guide covers …`                                | 1 sentence                       |
+| 13  | `count-announcement-opener`  | A paragraph opens on a short sentence that counts what follows (§2.16).                                             | `Drei Bahnen stehen im Bereich.` · `Es gibt drei Pakete.`                                                               | 2 paragraphs                     |
+| 14  | `data-caveat-close`          | A paragraph about a number of measured days ends on the reservation.                                                | `das ist zu wenig für eine Aussage` · `too few to say anything`                                                         | 1 paragraph                      |
+| 15  | `double-attribution`         | Two sentences in a row carry the same attribution formula.                                                          | `nach Parkangabe … Laut Park …`                                                                                         | 1 pair                           |
+| 16  | `range-before-enumeration`   | A range whose two ends the next sentences list again.                                                               | `Die Annual Passes kosten zwischen 64 und 299 £.` over a list of passes                                                 | 1 range                          |
+| 17  | `definition-before-glossary` | A definition in the paragraph above a glossary widget for the same term.                                            | `Rope Drop heißt, dass du …` above `glossary-widget`                                                                    | 1 paragraph                      |
+| 18  | `source-silence-close`       | What the source does not say, as the end of a sentence (§1.9).                                                      | `nennt der Park nicht` · `, nicht auf der Seite des Parks`                                                              | 3 sentences                      |
+| 19  | `widget-caption-after`       | A paragraph under a widget that says what the widget shows.                                                         | `In der Tabelle steht für jede Bahn …` · `Im Kalender stehen …`                                                         | 1 paragraph                      |
+| 20  | `table-summary-before`       | A paragraph above a table or widget that says what the table shows.                                                 | `Die Tabelle fasst zusammen, …` · `The table lists …`                                                                   | 1 paragraph                      |
+
+Rules 2, 3 and 6 need no wordlist, and 15 to 18 carry a short formula per language, so all six
+locales are checked. Rules 1, 4, 5, 7 to 14, 19 and 20 have German and English wordlists; in nl, fr,
+es and it they are left to the critic.
+What stays with the critic in every language is the part no pattern can see:
+
+- **Refrain.** The core statement stands in the excerpt, the chapter, the running text and the
+  FAQ in the same words. Say it where it is found first (§5.4, each fact once).
+- **Repeated reservation.** The same gap in the data is admitted in several chapters. Name it once,
+  where the reader would otherwise draw a wrong conclusion (§2.19).
+- **Echo.** A sentence repeats the figures of the table directly above it.
+- **Implication by juxtaposition.** Numbers under a table are meant to suggest a cause the text
+  never states. State the cause with its source, or leave the numbers out.
+
+A date that opens a line and renders as a numbered list (`1. November`) is the twenty-first
+finding of that day. It was already an error (§4.4); the cure is a no-break space between the day
+and the month.
+
 ---
 
 ## 3. Vocabulary
@@ -1592,6 +1641,51 @@ Each conflict is settled against the source, then the duplicate goes (§5.4, eac
 place in the park (`liegt am weitesten vom Eingang`, `hinter der ersten Kuppe`) needs a source
 like any other claim; the park map and the area list on Wikipedia are sources, a guess from the
 order of a list is not.
+
+The critic is a third read, run last and by a fresh agent that has not seen the text or any
+earlier finding. It marks what a reader who spots machine text would mark, and since 2026-10-13 it
+also grades the check itself. The order, word for word:
+
+> Du bist der Kritiker. Du hast diesen Text nicht geschrieben und kennst keinen Entwurf davon.
+> Du suchst nur eins: Sätze, die ein Leser, der KI-Texte erkennt, als maschinengeschrieben
+> erkennen würde. Datei(en): <pfad>. Regelwerk: docs/blog.md, lies §0 bis §2 und §4.3 vor dem Text.
+>
+> Lies Titel, Auszug und Text einmal ganz wie ein Leser, dann Absatz für Absatz. Markiere jeden
+> Satz, der
+>
+> - unverändert in einem Beitrag über einen anderen Park stehen könnte (Transplantationstest),
+> - nach dem Streichen nichts fehlen lässt (Streichtest),
+> - wie ein Merksatz, eine Pointe, eine Werbezeile, eine Ankündigung oder ein Rätsel klingt,
+> - zu einem Muster gehört, das sich durch den Text zieht: gleiche Absatzenden, gleiche
+>   Satzanfänge, Doppelpunkt-Pivots, Dreierketten, Zwinker-Sätze, Dinge, die reden,
+> - zu einem der vier Muster gehört, die kein Skript sieht (§2.20): Refrain (die Kernaussage steht
+>   in Auszug, Kapitel, Fließtext und FAQ), wiederholter Vorbehalt (dieselbe Datenlücke in mehreren
+>   Kapiteln eingeräumt), Echo (ein Satz wiederholt die Tabelle direkt darüber), Andeutung durch
+>   Nebeneinanderstellen (Zahlen unter einer Tabelle sollen eine nicht ausgesprochene Ursache
+>   nahelegen).
+>
+> Auch wenn keine Regel in docs/blog.md das Muster beim Namen nennt. Fakten, Aufbau und
+> Rechtschreibung prüfst du nicht, dafür gibt es andere Prüfungen.
+>
+> Danach beurteilst du den Prosa-Check: führe `node scripts/check-prose.mjs --verbose --file=<pfad>`
+> aus und lies, was er zu dieser Datei meldet. Markiere je Befund, ob der Check ihn gefunden hat,
+> und jede Meldung des Checks, die danebenliegt.
+>
+> Antworte nur so, ohne Text davor oder danach:
+> URTEIL: KEIN SLOP | SLOP
+>
+> - "<wörtliches Zitat>" — <warum, ein Satz> — <Fassung ohne Slop, oder "streichen"> — check:prose: <Regelname> | fehlt
+>
+> Bei KEIN SLOP ohne Liste.
+> PROSA-CHECK: <n> von <m> Befunden gefunden · Fehlmeldungen: <"Zitat" — Regel — warum falsch> oder keine
+> Ein Muster, für das check:prose keine Regel hat, zusätzlich als
+> NEUE REGEL: <Muster> — <Beispiel aus dem Text> — <wie ein Skript es erkennen könnte, oder "nur Kritiker">.
+> Ändere nichts, committe nichts, schreibe nichts nach Linear.
+
+`<Regelname>` is the first word of the check's message, a rule from §2.20 (`widget-announcement`)
+or the name of an older one. A pattern the critic marks and the check misses becomes a ticket
+"Prosa-Regel: …", a message the check gives and the critic finds wrong one "Prosa-Regel falsch: …".
+The first run of this order, over the twelve guides, found 0 of 87 findings and no false alarms.
 
 ---
 

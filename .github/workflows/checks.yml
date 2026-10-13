@@ -134,6 +134,13 @@ jobs:
         if: ${{ !cancelled() }}
         run: pnpm test:changelog-fragments
 
+      # One positive and one negative case per pattern in scripts/prose-slop-patterns.mjs, with the
+      # sentences the critic quoted. A rule that stops catching its own evidence fails here instead
+      # of in the next guide. No network, under a second.
+      - name: pnpm test:prose-rules
+        if: ${{ !cancelled() }}
+        run: pnpm test:prose-rules
+
   # `lib/media/**` is generated from the media database and from the live catalog
   # (`GET /v1/parks`, `/children`), then committed. This job regenerates it and fails on any
   # diff. It is a job of its own and not a step of lint-and-format on purpose: an upstream
