@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg ligt midden in Göteborg, is sinds 1923 open en telt zo’n drie miljoen
+  Liseberg ligt aan de rand van de binnenstad van Göteborg, is sinds 1923 open en telt zo’n drie miljoen
   gasten per jaar. In de herfst zijn er vijf spookhuizen, in de winter de
   grootste kerstmarkt van Zweden. Een Express-kaart om te kopen bestaat niet, de
   virtuele wachtrij in de app is gratis.
@@ -246,7 +246,7 @@ elf jaar voor Vinden, Zombie, Nattsvart på Gasten en Skogen, **15 jaar** voor
 
 Het **Spökhotellet Gasten** opende in 1998 en kreeg in het najaar van 1999 een
 THEA Award van de Themed Entertainment Association in Californië. Het staat op
-de lijst van banen met een virtuele wachtrij. Zombie draait volgens het park sinds 2015, Vinden sinds 2017, het huis “7”
+de lijst van banen met een virtuele wachtrij. Van de halloweenhuizen draait Zombie volgens het park sinds 2015, Vinden sinds 2017, het huis “7”
 sinds 2022 en Nattsvart på Gasten sinds 2024.
 
 Tussen de halte Korsvägen en de hoofdingang loopt de **Stjärnstigen**, een pad
@@ -521,7 +521,7 @@ Volgens Liseberg begin 2027, met kaartverkoop vanaf eind november 2026.
 Het overzicht van [winterparken 2026](/blog/winter-pretparken-2026) zet de
 kerstmarkt naast de andere, en de
 [halloweengids 2026](/blog/halloween-pretparken-2026) vergelijkt de
-najaarsprogramma’s. Colossos, ook een houten achtbaan van Intamin, staat in de gids over [Heide Park](/blog/heide-park-wachttijden-tips).
+najaarsprogramma’s. Nog een houten achtbaan staat in de gids over [Heide Park](/blog/heide-park-wachttijden-tips).
 
 — Patrick
 

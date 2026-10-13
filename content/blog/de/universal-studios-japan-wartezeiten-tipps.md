@@ -388,7 +388,7 @@ sagt dazu, dass die Ausgabe je nach Andrang ohne Vorwarnung enden kann. Hat man 
 Ticket, kann die Bahn im Bereich trotzdem schon wieder ausgebucht sein.
 
 **Yoyakunori (Reserve & Ride)** reserviert eine Fahrzeit für ausgewählte Bahnen, im
-Park etwa bei The Flying Snoopy und Freeze Ray Sliders. Das **Attraction Timed Entry Ticket** gilt für einzelne
+Park etwa bei The Flying Snoopy und Freeze Ray Sliders. Bis zur reservierten Zeit kann man andere Bahnen fahren oder essen. Das **Attraction Timed Entry Ticket** gilt für einzelne
 Bahnen, den Frieren-Rundgang eingeschlossen. Beides gibt es nur im Park und ist nicht übertragbar, und pro Gruppe lässt sich nur eine Bahn wählen. Deinstalliert man
 die App vor der Fahrzeit, wird das Ticket ungültig. Die App verlangt iOS 17 oder
 Android 9.

@@ -45,7 +45,7 @@ seo:
     - Costa Daurada theme park
 ---
 
-PortAventura World has three parks with their own tickets: PortAventura Park, Ferrari Land and the water park Caribe Aquatic Park. PortAventura Park opened in **May 1995**. All prices and opening hours come from the park's website.
+PortAventura World has three parks with their own tickets: PortAventura Park, Ferrari Land and the water park Caribe Aquatic Park. PortAventura Park opened in **May 1995**. All prices and opening hours come from the park's website, as of 7 October 2026.
 
 ## How the park came about
 
@@ -199,7 +199,7 @@ The months and weekdays from our measurements:
 
 ```
 
-For the 2026/27 school year, 3Cat lists the Catalan holidays as 12 October and 8 December. Christmas holidays run from 22 December 2026 to 7 January 2027, Easter holidays from 20 to 29 March 2027. Schools in the rest of Spain follow other dates.
+For the 2026/27 school year, the TV broadcaster 3Cat lists the Catalan holidays as 12 October and 8 December. Christmas holidays run from 22 December 2026 to 7 January 2027, Easter holidays from 20 to 29 March 2027. Schools in the rest of Spain follow other dates.
 
 ### Halloween: 19 September to 15 November 2026
 
@@ -255,7 +255,7 @@ Caribe Aquatic Park is a water park with 16 attractions on around 50,000 square 
 
 In summer 2026 **Makamanu Jungle** opened in Polynesia, an adventure trail in a former quarry: 135 metres long, with 18 huts up high, 20 rope tunnels, 3 net ladders and 4 slides. It includes the areas Forest for children up to 3, Nest, Trail and Summit, as well as an accessible path. The entrance leads straight from Far West, and there's no Express there.
 
-In May 2026 the park also announced a Hard Rock Cafe at the entrance, with around 430 seats. The park's announcement gives no opening date. According to the Diari de Tarragona, it replaces the LaLiga restaurant.
+In May 2026 the park also announced a Hard Rock Cafe at the entrance, with around 430 seats. According to the Diari de Tarragona, it replaces the LaLiga restaurant.
 
 For 2027, the park hasn't confirmed anything new.
 

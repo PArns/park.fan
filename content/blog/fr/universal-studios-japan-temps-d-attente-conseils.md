@@ -212,7 +212,7 @@ Avant d’acheter un créneau, le billet doit être enregistré dans l’appli, 
 
 L’**Area Timed Entry Ticket** vaut pour des zones comme Super Nintendo World. Quand le contingent du jour est épuisé, le parc distribue le **Standby Entry Ticket**. Il précise que la distribution peut s’arrêter sans préavis selon l’affluence. Même avec un billet, l’attraction de la zone peut déjà être complète.
 
-**Yoyakunori (Reserve & Ride)** réserve une heure de passage sur certaines attractions, dans le parc par exemple à The Flying Snoopy et Freeze Ray Sliders. L’**Attraction Timed Entry Ticket** vaut pour une attraction précise, y compris la promenade Frieren. Les deux ne s’obtiennent que dans le parc, ne sont pas transférables, et un groupe ne peut choisir qu’une seule attraction. Si on désinstalle l’appli avant l’heure de passage, le billet devient invalide. L’appli demande iOS 17 ou Android 9.
+**Yoyakunori (Reserve & Ride)** réserve une heure de passage sur certaines attractions, dans le parc par exemple à The Flying Snoopy et Freeze Ray Sliders. D’ici là, on peut faire d’autres attractions ou manger. L’**Attraction Timed Entry Ticket** vaut pour une attraction précise, y compris la promenade Frieren. Les deux ne s’obtiennent que dans le parc, ne sont pas transférables, et un groupe ne peut choisir qu’une seule attraction. Si on désinstalle l’appli avant l’heure de passage, le billet devient invalide. L’appli demande iOS 17 ou Android 9.
 
 ## Billets et prix
 

@@ -261,7 +261,7 @@ la noche, y después de las 21 h baja.
 
 ```
 
-Llegar temprano ahorra algo en
+Después de las 13 h, en nuestros datos ningún tobogán duplica su espera de una hora a la siguiente. Llegar temprano ahorra algo en
 Hugin, Munin y Stormvind, y poco en los de flotador para cuatro.
 
 ## Cuándo ir
@@ -410,7 +410,7 @@ Europa-Park abre su temporada de verano del 28 de marzo al 25 de septiembre de
 de noviembre), y del 28 de noviembre de 2026 al 9 de enero de 2027, el Winterzauber.
 Luego hay una pausa hasta el 19 de marzo.
 
-Para los dos juntos, el parque vende en verano la **entrada Ride & Slide** (desde 75
+En verano se pueden combinar el Europa-Park y Rulantica. Para eso, el parque vende la **entrada Ride & Slide** (desde 75
 euros, solo en determinados periodos) y paquetes con hotel. «Vivirlo todo» incluye
 un día de Europa-Park, un día de Rulantica y una noche con desayuno, desde 192
 euros por persona en habitación de cinco camas. En temporada baja hay «2 por 1»

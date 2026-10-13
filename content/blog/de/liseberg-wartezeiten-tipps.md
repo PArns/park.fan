@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg liegt mitten in Göteborg, hat seit 1923 geöffnet und zählt rund drei
+  Liseberg liegt am Rand der Göteborger Innenstadt, hat seit 1923 geöffnet und zählt rund drei
   Millionen Gäste im Jahr. Im Herbst stehen fünf Spukhäuser im Park, im Winter
   Schwedens größter Weihnachtsmarkt. Eine Express-Karte gibt es nicht, die
   virtuelle Warteschlange in der App ist kostenlos.
@@ -238,7 +238,7 @@ Gasten und Skogen, **15 Jahre** für „7“.
 
 Das **Spökhotellet Gasten** eröffnete 1998 und bekam im Herbst 1999 einen
 THEA Award der Themed Entertainment Association in Kalifornien. Es steht in der
-Liste der Bahnen mit virtueller Warteschlange. Zombie läuft laut Park seit 2015, Vinden seit 2017, das Haus „7“ seit 2022 und
+Liste der Bahnen mit virtueller Warteschlange. Von den Halloween-Häusern läuft Zombie laut Park seit 2015, Vinden seit 2017, das Haus „7“ seit 2022 und
 Nattsvart på Gasten seit 2024.
 
 Zwischen der Haltestelle Korsvägen und dem Haupteingang führt der **Stjärnstigen**,
@@ -497,7 +497,7 @@ Nach Angaben von Liseberg Anfang 2027, mit Ticketverkauf ab Ende November 2026.
 
 Der Überblick über [Winterparks 2026](/blog/winter-freizeitparks-2026) stellt den
 Weihnachtsmarkt neben die anderen, und der
-[Halloween-Guide 2026](/blog/halloween-freizeitparks-2026) vergleicht die Herbstprogramme. Colossos, ebenfalls eine Holzachterbahn von Intamin, steht im Guide zum [Heide Park](/blog/heide-park-wartezeiten-tipps).
+[Halloween-Guide 2026](/blog/halloween-freizeitparks-2026) vergleicht die Herbstprogramme. Eine weitere Holzachterbahn steht im Guide zum [Heide Park](/blog/heide-park-wartezeiten-tipps).
 
 — Patrick
 

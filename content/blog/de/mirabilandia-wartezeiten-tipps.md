@@ -154,7 +154,7 @@ Halloween läuft 2026 vom 26. September bis 1. November. Im Eintritt enthalten i
 
 Gegen Aufpreis gibt es drei Horrorhäuser: [The Walking Dead](ref:mirabilandia/the-walking-dead), [Paranormal Activity: Next of Kin](ref:mirabilandia/paranormal-activity-next-of-kin) (neu in 2026, nach dem Film) und [Mr. Blackmoon's Hypnotic Circus](ref:mirabilandia/mr-blackmoons-hypnotic-circus). Alle drei sind im Parkeintritt nicht enthalten, und der Flash Pass gilt für The Walking Dead nicht. Inhaber einer Saisonkarte für 2027 bekommen den Hypnotic Circus in der Saison 2026 einmal pro Tag frei (ab 12 Jahren, außer am 31. Oktober).
 
-Am 30. Oktober öffnet der Park um 19:30 Uhr zusätzlich zur Scary Night, mit eigenem Ticket. Saisonkarten gelten an diesem Abend nicht. Vom Bahnhof Lido di Savio/Lido di Classe fahren Shuttlebusse um 19:45 und 20:45 Uhr zum Park, zurück um 22:00 und 23:00 Uhr.
+Am 30. Oktober öffnet der Park um 19:30 Uhr zusätzlich für die Scary Night, mit eigenem Ticket. Saisonkarten gelten an diesem Abend nicht. Vom Bahnhof Lido di Savio/Lido di Classe fahren Shuttlebusse um 19:45 und 20:45 Uhr zum Park, zurück um 22:00 und 23:00 Uhr.
 
 ## Wartezeiten der Bahnen
 
@@ -208,7 +208,7 @@ Die Saison 2026 läuft vom 2. April bis zum 1. November. Bis zum 24. Oktober ist
 
 Angenommen, du bist um 10:30 Uhr am Eingang und darfst alles fahren. Für Katun und Master Thai haben wir keine Werte nach Uhrzeit. Beide stehen nicht unter den Bahnen mit den längsten Wartezeiten und passen deshalb in den Vormittag.
 
-Zuerst Katun, Master Thai und iSpeed, iSpeed etwa 30 Minuten nach der Öffnung. Danach Divertical, das um zwölf Uhr noch vor seinem Anstieg liegt. Zwischen 13 und 14 Uhr, wenn Autosplash, Rio Bravo und El Dorado Falls ihre Spitze haben, ist Zeit fürs Mittagessen. Desmo Race ist in unseren Daten ab 13 Uhr am kürzesten und wird bis 18 Uhr länger, es lohnt sich also früh am Nachmittag. Die Wasserbahnen fährst du am frühen Abend, nach ihrem Gipfel. Autosplash und Rio Bravo sind ab 20 Uhr am kürzesten, an den Oktober-Samstagen ist der Park bis 22 Uhr offen.
+Zuerst Katun, Master Thai und iSpeed, Letztere etwa 30 Minuten nach der Öffnung. Danach Divertical, das um zwölf Uhr noch vor seinem Anstieg liegt. Zwischen 13 und 14 Uhr, wenn Autosplash, Rio Bravo und El Dorado Falls ihre Spitze haben, ist Zeit fürs Mittagessen. Desmo Race ist in unseren Daten ab 13 Uhr am kürzesten und wird bis 18 Uhr länger, es lohnt sich also früh am Nachmittag. Die Wasserbahnen fährst du am frühen Abend, nach ihrem Gipfel. Autosplash und Rio Bravo sind ab 20 Uhr am kürzesten, an den Oktober-Samstagen ist der Park bis 22 Uhr offen.
 
 Zwei Tage brauchst du, wenn du mit Kindern kommst, Nickelodeon Land und Dinoland ausfahren willst oder im Sommer Mirabeach dazu nimmst. Der Wasserpark hat ein eigenes Ticket.
 

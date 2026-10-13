@@ -199,7 +199,7 @@ I mesi e i giorni della settimana secondo le nostre rilevazioni:
 
 ```
 
-Per l’anno scolastico 2026/27 3Cat indica per la Catalogna i giorni festivi del 12 ottobre e dell’8 dicembre. Le vacanze di Natale vanno dal 22 dicembre 2026 al 7 gennaio 2027, quelle di Pasqua dal 20 al 29 marzo 2027. Per le scuole del resto della Spagna valgono altre date.
+Per l’anno scolastico 2026/27 l’emittente 3Cat indica per la Catalogna i giorni festivi del 12 ottobre e dell’8 dicembre. Le vacanze di Natale vanno dal 22 dicembre 2026 al 7 gennaio 2027, quelle di Pasqua dal 20 al 29 marzo 2027. Per le scuole del resto della Spagna valgono altre date.
 
 ### Halloween: dal 19 settembre al 15 novembre 2026
 
@@ -255,7 +255,7 @@ Il Caribe Aquatic Park è un parco acquatico con 16 attrazioni su circa 50.000 m
 
 Nell’estate 2026 a Polynesia è arrivato **Makamanu Jungle**, un percorso d’avventura in una ex cava di pietra: 135 metri di lunghezza, 18 capanne in quota, 20 tunnel di corda, 3 scale di rete e 4 scivoli. Ne fanno parte le aree Forest per i bambini fino a 3 anni, Nest, Trail e Summit e un percorso senza barriere. L’accesso parte direttamente da Far West, e lì Express non c’è.
 
-A maggio 2026 il parco ha inoltre annunciato un Hard Rock Cafe all’ingresso, con circa 430 posti. Nel suo annuncio il parco non indica una data di apertura. Prende il posto del ristorante LaLiga, scrive il Diari de Tarragona.
+A maggio 2026 il parco ha inoltre annunciato un Hard Rock Cafe all’ingresso, con circa 430 posti. Prende il posto del ristorante LaLiga, scrive il Diari de Tarragona.
 
 Per il 2027 il parco non ha ancora confermato niente di nuovo.
 

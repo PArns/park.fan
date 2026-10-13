@@ -93,10 +93,10 @@ It isn’t worth it in these cases:
 
 **Does the ride have a single rider queue?** If it does, park.fan shows a “Single rider” badge on
 the attraction page. A missing badge doesn’t mean there is none, often we just don’t know for that
-ride.
+ride. The badge doesn’t say whether the queue is open today.
 
-**How long is it right now?** On 8 October 2026 the 18 parks had
-41 single rider queues in twelve parks, 19 of them open, in seven parks. Not one
+**How long is it right now?** On 8 October 2026, twelve of the 18 parks
+reported 41 single rider queues between them. 19 of them were open, in seven parks. Not one
 of the 41 carried a wait time. The parks tell us the queue is open, but not how long it is. On the
 attraction page park.fan then shows “Single rider” without a time, and the tables in this post show
 the standard queue.
@@ -107,26 +107,26 @@ So how much time the entrance saves can’t currently be calculated from our dat
 
 The figures are from 8 October 2026.
 
-| Park                           | Rides with single rider | Attractions |
-| ------------------------------ | ----------------------- | ----------- |
-| Efteling                       | 7                       | 37          |
-| Disney Adventure World         | 7                       | 14          |
-| Europa-Park                    | 6                       | 97          |
-| Universal Epic Universe        | 6                       | 14          |
-| Universal Islands of Adventure | 5                       | 25          |
-| PortAventura Park              | 4                       | 51          |
-| Alton Towers                   | 4                       | 55          |
-| Disney California Adventure    | 4                       | 29          |
-| Disney’s Hollywood Studios     | 3                       | 11          |
-| Universal Studios Florida      | 3                       | 44          |
-| Phantasialand                  | 3                       | 40          |
-| Hong Kong Disneyland           | 3                       | 47          |
-| Disneyland Park (Anaheim)      | 2                       | 56          |
-| Disneyland Park (Paris)        | 2                       | 43          |
-| Shanghai Disneyland            | 2                       | 37          |
-| EPCOT                          | 2                       | 34          |
-| Thorpe Park                    | 2                       | 45          |
-| Disney’s Animal Kingdom        | 1                       | 17          |
+| Park                           | Rides with single rider | Attractions | Value unknown |
+| ------------------------------ | ----------------------- | ----------- | ------------- |
+| Efteling                       | 7                       | 37          | 30            |
+| Disney Adventure World         | 7                       | 14          | 7             |
+| Europa-Park                    | 6                       | 97          | 1             |
+| Universal Epic Universe        | 6                       | 14          | 8             |
+| Universal Islands of Adventure | 5                       | 25          | 20            |
+| PortAventura Park              | 4                       | 51          | 45            |
+| Alton Towers                   | 4                       | 55          | 48            |
+| Disney California Adventure    | 4                       | 29          | 25            |
+| Disney’s Hollywood Studios     | 3                       | 11          | 8             |
+| Universal Studios Florida      | 3                       | 44          | 41            |
+| Phantasialand                  | 3                       | 40          | 0             |
+| Hong Kong Disneyland           | 3                       | 47          | 44            |
+| Disneyland Park (Anaheim)      | 2                       | 56          | 54            |
+| Disneyland Park (Paris)        | 2                       | 43          | 41            |
+| Shanghai Disneyland            | 2                       | 37          | 35            |
+| EPCOT                          | 2                       | 34          | 32            |
+| Thorpe Park                    | 2                       | 45          | 38            |
+| Disney’s Animal Kingdom        | 1                       | 17          | 16            |
 
 ## Europa-Park
 
@@ -264,7 +264,7 @@ fill the seats that guests in the standard queue don’t take.
 
 ## Universal Orlando
 
-At [Universal Studios Florida](ref:universal-studios-florida) they are Revenge of the Mummy, MEN IN
+At [Universal Studios Florida](ref:universal-studios-florida) there are three: Revenge of the Mummy, MEN IN
 BLACK Alien Attack and Harry Potter and the Escape from Gringotts. At
 [Islands of Adventure](ref:universal-islands-of-adventure) there are five: Harry Potter and the
 Forbidden Journey, Hagrid’s Magical Creatures Motorbike Adventure, The Incredible Hulk Coaster,
@@ -347,7 +347,7 @@ attractions, at Disneyland Park in Paris for 41 of 43, at Disneyland Park in Ana
 There may be more single rider rides there, and in the 185 parks where we know of none.
 
 For Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal and the
-Asian Disney parks no park page confirms the list.
+Asian Disney parks we could not read a park page that confirms the list.
 
 ## Further reading
 

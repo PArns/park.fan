@@ -199,7 +199,7 @@ De maanden en weekdagen uit onze metingen:
 
 ```
 
-Voor het schooljaar 2026/27 noemt 3Cat voor Catalonië de vrije dagen 12 oktober en 8 december. De kerstvakantie loopt van 22 december 2026 tot en met 7 januari 2027, de paasvakantie van 20 tot en met 29 maart 2027. Voor scholen in de rest van Spanje gelden andere data.
+Voor het schooljaar 2026/27 noemt zender 3Cat voor Catalonië de vrije dagen 12 oktober en 8 december. De kerstvakantie loopt van 22 december 2026 tot en met 7 januari 2027, de paasvakantie van 20 tot en met 29 maart 2027. Voor scholen in de rest van Spanje gelden andere data.
 
 ### Halloween: 19 september tot 15 november 2026
 
@@ -255,7 +255,7 @@ Caribe Aquatic Park is een waterpark met 16 attracties op ongeveer 50.000 vierka
 
 In de zomer van 2026 is in Polynesia **Makamanu Jungle** geopend, een avonturenpad in een voormalige steengroeve: 135 meter lang, met 18 hutten op hoogte, 20 touwtunnels, 3 netladders en 4 glijbanen. Daarbij horen de zones Forest voor kinderen tot 3 jaar, Nest, Trail en Summit, en een rolstoeltoegankelijk pad. De toegang loopt rechtstreeks vanuit Far West, en Express is er niet.
 
-Het park kondigde daarnaast in mei 2026 een Hard Rock Cafe bij de ingang aan, met ongeveer 430 plaatsen. Een openingsdatum noemt het park in zijn aankondiging niet. Het vervangt het LaLiga-restaurant, meldt de Diari de Tarragona.
+Het park kondigde daarnaast in mei 2026 een Hard Rock Cafe bij de ingang aan, met ongeveer 430 plaatsen. Het vervangt het LaLiga-restaurant, meldt de Diari de Tarragona.
 
 Voor 2027 heeft het park nog niets nieuws bevestigd.
 

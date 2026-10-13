@@ -253,7 +253,7 @@ From 11 it stays on a plateau until early evening, and after 9 p.m. it drops.
 
 ```
 
-Arriving early saves a little at Hugin, Munin and
+After 1 p.m. no slide in our data doubles its wait from one hour to the next. Arriving early saves a little at Hugin, Munin and
 Stormvind and not much at the four-person tyres.
 
 ## When to go
@@ -396,7 +396,7 @@ is open in its summer season from 28 March to 25 September 2026. Halloween
 (until 1 November) and HALLOWinter (2 to 27 November) follow, and from 28
 November 2026 to 9 January 2027 the Winterzauber. Then it pauses until 19 March.
 
-For both together, the park sells the **Ride & Slide Ticket** in summer
+In summer you can combine Europa-Park and Rulantica. The park sells the **Ride & Slide Ticket** for that
 (from €75, only in certain periods) and hotel packages. "Experience it all"
 includes one day at Europa-Park, one day at Rulantica and an overnight stay with
 breakfast, from €192 per person in a five-bed room. In the off-season there's

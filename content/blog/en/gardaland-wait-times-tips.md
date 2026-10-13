@@ -98,7 +98,7 @@ Shaman is the oldest coaster in the park. It opened in 1985 as Magic Mountain, t
 
 ### Mammut, Dragon Rush and Ortobruco Tour
 
-[Mammut](ref:gardaland/mammut) is a mine-train coaster from Vekoma with three lift hills (12, 13 and 14 metres) and a ride time of 2:45 minutes. A statue of a mammoth stands at the entrance, and the theme is arctic.
+[Mammut](ref:gardaland/mammut) is a mine-train coaster from Vekoma with three lift hills (12, 13 and 14 metres) and a ride time of 2:45 minutes. A statue of a mammoth stands at the entrance, and the theme is arctic. A train has 36 seats.
 
 [Dragon Rush](ref:gardaland/dragon-rush) is a spinning coaster from the Fabbri Group, opened in 2016 in what was then the Kung Fu Panda area. It was reworked in 2025 after the DreamWorks licence for Kung Fu Panda had ended, and the area is now called Dragon Empire. Dragon Rush runs from 110 centimetres and, by our measurements, has the longest queue in the park.
 
@@ -156,7 +156,7 @@ At most rides, going at the best time means queuing 20 to 45 minutes less than a
 
 ## When to go
 
-Saturday is the busiest day and Wednesday the quietest, with Sunday a little busier than Monday.
+Saturday is the busiest day and Wednesday the quietest. Sunday is a little busier than Monday.
 
 ```stats-widget slug=gardaland show=weekdays
 

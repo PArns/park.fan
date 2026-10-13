@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg está en pleno Gotemburgo, abre desde 1923 y recibe unos tres millones
+  Liseberg está en el borde del centro de Gotemburgo, abre desde 1923 y recibe unos tres millones
   de visitantes al año. En otoño tiene cinco casas del terror, y en invierno, el
   mayor mercado navideño de Suecia. No se vende un pase exprés, y la cola
   virtual de la app es gratuita.
@@ -244,7 +244,7 @@ años para Vinden, Zombie, Nattsvart på Gasten y Skogen, **15 años** para «7�
 
 El **Spökhotellet Gasten** abrió en 1998 y en otoño de 1999 recibió un THEA Award
 de la Themed Entertainment Association de California. Figura en la lista de
-atracciones con cola virtual. Zombie
+atracciones con cola virtual. De las casas de Halloween, Zombie
 funciona, según el parque, desde 2015, Vinden desde 2017, la casa «7» desde 2022
 y Nattsvart på Gasten desde 2024.
 
@@ -530,7 +530,7 @@ noviembre de 2026.
 El repaso de los [parques de invierno 2026](/blog/parques-atracciones-invierno-2026)
 sitúa el mercado navideño junto a los demás, y la
 [guía de Halloween 2026](/blog/halloween-parques-atracciones-2026) compara los
-programas de otoño. Colossos, otra montaña rusa de madera de Intamin, está en la guía del [Heide Park](/blog/heide-park-tiempos-de-espera-consejos).
+programas de otoño. Otra montaña rusa de madera está en la guía del [Heide Park](/blog/heide-park-tiempos-de-espera-consejos).
 
 — Patrick
 

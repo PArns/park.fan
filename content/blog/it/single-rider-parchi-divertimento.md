@@ -93,10 +93,10 @@ Non conviene in questi casi:
 
 **L’attrazione ha una coda single rider?** Se ce l’ha, park.fan mostra un’icona “Single Rider” sulla
 pagina dell’attrazione. Se l’icona manca non vuol dire che non ci sia, spesso per quell’attrazione
-semplicemente non lo sappiamo.
+semplicemente non lo sappiamo. L’icona non dice se la coda oggi sia aperta.
 
-**Quanto è lunga adesso?** L’8 ottobre 2026 i 18 parchi
-avevano 41 code single rider in dodici parchi, 19 delle quali aperte, in sette
+**Quanto è lunga adesso?** L’8 ottobre 2026 dodici dei 18 parchi
+segnalavano in tutto 41 code single rider, 19 delle quali aperte, in sette
 parchi. Nessuna delle 41 riportava un tempo di attesa. I parchi ci comunicano che la coda è aperta,
 ma non quanto è lunga. Sulla pagina dell’attrazione park.fan mostra allora “Single Rider” senza
 tempo, e le tabelle di questo articolo mostrano la coda normale.
@@ -107,26 +107,26 @@ Quanto tempo faccia risparmiare l’ingresso, dai nostri dati al momento non si 
 
 I dati sono aggiornati all’8 ottobre 2026.
 
-| Parco                          | Attrazioni con single rider | Attrazioni |
-| ------------------------------ | --------------------------- | ---------- |
-| Efteling                       | 7                           | 37         |
-| Disney Adventure World         | 7                           | 14         |
-| Europa-Park                    | 6                           | 97         |
-| Universal Epic Universe        | 6                           | 14         |
-| Universal Islands of Adventure | 5                           | 25         |
-| PortAventura Park              | 4                           | 51         |
-| Alton Towers                   | 4                           | 55         |
-| Disney California Adventure    | 4                           | 29         |
-| Disney’s Hollywood Studios     | 3                           | 11         |
-| Universal Studios Florida      | 3                           | 44         |
-| Phantasialand                  | 3                           | 40         |
-| Hong Kong Disneyland           | 3                           | 47         |
-| Disneyland Park (Anaheim)      | 2                           | 56         |
-| Disneyland Park (Parigi)       | 2                           | 43         |
-| Shanghai Disneyland            | 2                           | 37         |
-| EPCOT                          | 2                           | 34         |
-| Thorpe Park                    | 2                           | 45         |
-| Disney’s Animal Kingdom        | 1                           | 17         |
+| Parco                          | Attrazioni con single rider | Attrazioni | Dato sconosciuto |
+| ------------------------------ | --------------------------- | ---------- | ---------------- |
+| Efteling                       | 7                           | 37         | 30               |
+| Disney Adventure World         | 7                           | 14         | 7                |
+| Europa-Park                    | 6                           | 97         | 1                |
+| Universal Epic Universe        | 6                           | 14         | 8                |
+| Universal Islands of Adventure | 5                           | 25         | 20               |
+| PortAventura Park              | 4                           | 51         | 45               |
+| Alton Towers                   | 4                           | 55         | 48               |
+| Disney California Adventure    | 4                           | 29         | 25               |
+| Disney’s Hollywood Studios     | 3                           | 11         | 8                |
+| Universal Studios Florida      | 3                           | 44         | 41               |
+| Phantasialand                  | 3                           | 40         | 0                |
+| Hong Kong Disneyland           | 3                           | 47         | 44               |
+| Disneyland Park (Anaheim)      | 2                           | 56         | 54               |
+| Disneyland Park (Parigi)       | 2                           | 43         | 41               |
+| Shanghai Disneyland            | 2                           | 37         | 35               |
+| EPCOT                          | 2                           | 34         | 32               |
+| Thorpe Park                    | 2                           | 45         | 38               |
+| Disney’s Animal Kingdom        | 1                           | 17         | 16               |
 
 ## Europa-Park
 
@@ -263,7 +263,7 @@ diviso, per riempire i posti che gli ospiti della coda normale non occupano.
 
 ## Universal Orlando
 
-Allo [Universal Studios Florida](ref:universal-studios-florida) sono Revenge of the Mummy, MEN IN
+Allo [Universal Studios Florida](ref:universal-studios-florida) sono tre: Revenge of the Mummy, MEN IN
 BLACK Alien Attack e Harry Potter and the Escape from Gringotts. Alle
 [Islands of Adventure](ref:universal-islands-of-adventure) sono cinque: Harry Potter and the
 Forbidden Journey, Hagrid’s Magical Creatures Motorbike Adventure, The Incredible Hulk Coaster,
@@ -347,7 +347,7 @@ parte delle attrazioni, al Disneyland Park di Parigi per 41 su 43, al Disneyland
 conosciamo nessuna.
 
 Per il Phantasialand, Disneyland Paris, PortAventura, Alton Towers, il Thorpe Park, Universal e i
-parchi Disney asiatici nessuna pagina del parco conferma l’elenco.
+parchi Disney asiatici non siamo riusciti a leggere nessuna pagina del parco che confermi l’elenco.
 
 ## Per approfondire
 

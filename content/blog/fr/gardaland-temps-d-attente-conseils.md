@@ -99,7 +99,7 @@ Shaman, ce sont les plus anciennes montagnes russes du parc. Elles ont ouvert en
 
 ### Mammut, Dragon Rush et Ortobruco Tour
 
-[Mammut](ref:gardaland/mammut) est un mine train de Vekoma avec trois lifts (12, 13 et 14 mètres) et 2 min 45 de trajet. À l’entrée se dresse la statue d’un mammouth, le thème est arctique.
+[Mammut](ref:gardaland/mammut) est un mine train de Vekoma avec trois lifts (12, 13 et 14 mètres) et 2 min 45 de trajet. À l’entrée se dresse la statue d’un mammouth, le thème est arctique. Un train compte 36 places.
 
 [Dragon Rush](ref:gardaland/dragon-rush) est un spinning coaster de Fabbri Group, ouvert en 2016 dans l’ancienne zone Kung Fu Panda. En 2025, l’attraction a été remaniée, la licence DreamWorks pour Kung Fu Panda ayant pris fin. La zone s’appelle désormais Dragon Empire. Dragon Rush est accessible à partir de 110 centimètres et, d’après nos mesures, c’est là que la file d’attente est la plus longue du parc.
 
@@ -157,7 +157,7 @@ Au meilleur moment, on fait la queue 20 à 45 minutes de moins qu’au pic sur l
 
 ## Quand y aller
 
-Le samedi est le jour le plus chargé, le mercredi le plus calme, et le dimanche est un peu plus chargé que le lundi.
+Le samedi est le jour le plus chargé, le mercredi le plus calme. Le dimanche est un peu plus chargé que le lundi.
 
 ```stats-widget slug=gardaland show=weekdays
 

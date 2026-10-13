@@ -267,7 +267,7 @@ plateau jusqu’en début de soirée, et après 21 h ça retombe.
 
 ```
 
-Arriver tôt fait gagner un peu
+Après 13 h, aucun toboggan de nos données ne voit son attente doubler d’une heure à l’autre. Arriver tôt fait gagner un peu
 à Hugin, Munin et Stormvind, et peu aux bouées à quatre.
 
 ## Quand venir
@@ -296,7 +296,7 @@ Notre calendrier tient compte des vacances scolaires des Länder allemands et de
 
 Avant l’ouverture, les clients qui dorment au resort de l’Europa-Park et les
 détenteurs du billet Aventure entrent dès 9 h, une demi-heure avant tout le
-monde. Les cabines à trappe de Rangnakor se font bien dans cette demi-heure.
+monde. Les cabines à trappe de Rangnakor peuvent se faire dans cette demi-heure.
 
 Le matin, tu files ensuite à Vinterhal, à Svalgur Rytt et à Vinter Rytt, les
 deux toboggans aux attentes les plus longues, puis à Stormvind et à Isbrekker.
@@ -418,7 +418,7 @@ d’autoroute. L’Europa-Park est ouvert en saison d’été du 28 mars au
 HALLOWinter (du 2 au 27 novembre), et du 28 novembre 2026 au 9 janvier 2027 le
 Winterzauber. Ensuite, c’est la pause jusqu’au 19 mars.
 
-Pour les deux ensemble, le parc vend l’été le **billet Ride & Slide** (dès
+L’été, on peut combiner l’Europa-Park et Rulantica. Le parc vend pour cela le **billet Ride & Slide** (dès
 75 €, seulement à certaines périodes) et des forfaits avec hôtel. « Alles
 erleben » comprend un jour à l’Europa-Park, un jour à Rulantica et une nuit
 avec petit déjeuner, dès 192 € par personne en chambre à cinq lits. Hors

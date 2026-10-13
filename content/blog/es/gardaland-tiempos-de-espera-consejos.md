@@ -99,7 +99,7 @@ Shaman es la montaña rusa más antigua del parque. Abrió en 1985 con el nombre
 
 ### Mammut, Dragon Rush y Ortobruco Tour
 
-[Mammut](ref:gardaland/mammut) es una montaña rusa de mina de Vekoma con tres lift hills (12, 13 y 14 metros) y 2:45 minutos de recorrido. En la entrada hay la estatua de un mamut y la temática es ártica.
+[Mammut](ref:gardaland/mammut) es una montaña rusa de mina de Vekoma con tres lift hills (12, 13 y 14 metros) y 2:45 minutos de recorrido. En la entrada hay la estatua de un mamut y la temática es ártica. Cada tren tiene 36 plazas.
 
 [Dragon Rush](ref:gardaland/dragon-rush) es un spinning coaster de Fabbri Group, abierto en 2016 en la antigua zona de Kung Fu Panda. En 2025 se rediseñó la atracción, después de que terminara la licencia de DreamWorks para Kung Fu Panda. La zona se llama ahora Dragon Empire. Dragon Rush se sube a partir de 110 centímetros y, según nuestras mediciones, tiene la cola más larga del parque.
 
@@ -157,7 +157,7 @@ Quien sube en el mejor momento hace, en la mayoría de las atracciones, entre 20
 
 ## Cuándo ir
 
-El sábado es el día con más gente y el miércoles el más tranquilo, y el domingo es algo más concurrido que el lunes.
+El sábado es el día con más gente y el miércoles el más tranquilo. El domingo es algo más concurrido que el lunes.
 
 ```stats-widget slug=gardaland show=weekdays
 

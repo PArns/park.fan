@@ -199,7 +199,7 @@ Los meses y los días de la semana según nuestras mediciones:
 
 ```
 
-Para el curso 2026/27, 3Cat da para Cataluña los festivos del 12 de octubre y el 8 de diciembre. Las vacaciones de Navidad van del 22 de diciembre de 2026 al 7 de enero de 2027, y las de Semana Santa del 20 al 29 de marzo de 2027. En los colegios del resto de España las fechas son otras.
+Para el curso 2026/27, la cadena 3Cat da para Cataluña los festivos del 12 de octubre y el 8 de diciembre. Las vacaciones de Navidad van del 22 de diciembre de 2026 al 7 de enero de 2027, y las de Semana Santa del 20 al 29 de marzo de 2027. En los colegios del resto de España las fechas son otras.
 
 ### Halloween: del 19 de septiembre al 15 de noviembre de 2026
 
@@ -255,7 +255,7 @@ El Caribe Aquatic Park es un parque acuático con 16 atracciones en unos 50.000 
 
 En el verano de 2026 llegó a Polynesia **Makamanu Jungle**, un sendero de aventura en una antigua cantera: 135 metros de largo, 18 cabañas en altura, 20 túneles de cuerda, 3 escalas de red y 4 toboganes. Incluye las zonas Forest para niños de hasta 3 años, Nest, Trail y Summit, además de un camino accesible. El acceso parte directamente de Far West, y allí no hay Express.
 
-El parque anunció además en mayo de 2026 un Hard Rock Cafe en la entrada, con unas 430 plazas. El parque no da fecha de apertura en su anuncio. Según el Diari de Tarragona, sustituye al restaurante LaLiga.
+El parque anunció además en mayo de 2026 un Hard Rock Cafe en la entrada, con unas 430 plazas. Según el Diari de Tarragona, sustituye al restaurante LaLiga.
 
 Para 2027, el parque todavía no ha confirmado nada nuevo.
 

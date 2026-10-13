@@ -253,7 +253,7 @@ basso. Dalle 11 si resta su un altopiano fino a sera presto, dopo le 21 si scend
 
 ```
 
-Arrivare presto fa risparmiare
+Dopo le 13 nei nostri dati nessuno scivolo raddoppia l’attesa da un’ora all’altra. Arrivare presto fa risparmiare
 qualcosa a Hugin, Munin e Stormvind e poco sugli scivoli a quattro.
 
 ## Quando andare
@@ -402,7 +402,7 @@ settembre 2026, poi seguono Halloween (fino al 1° novembre) e HALLOWinter (dal 
 27 novembre), e dal 28 novembre 2026 al 9 gennaio 2027 il Winterzauber. Poi fino
 al 19 marzo c’è la pausa.
 
-Per i due insieme il parco vende d’estate il **biglietto Ride & Slide** (da 75 €,
+D’estate si possono combinare Europa-Park e Rulantica. Il parco vende per questo il **biglietto Ride & Slide** (da 75 €,
 solo in certi periodi) e pacchetti con hotel. “Alles erleben” comprende un giorno
 all’Europa-Park, un giorno a Rulantica e un pernottamento con colazione, da 192 €
 a persona in camera a cinque letti. Nella bassa stagione ci sono “2 für 1” (due

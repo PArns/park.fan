@@ -150,7 +150,7 @@ des 30 ans du parc, et dure environ cinq minutes.
 
 À partir de 1,05 m accompagné, de 1,20 m seul, jusqu'à 2,00 m.
 
-### Les autres attractions à sièges
+### Autres attractions
 
 - [Arthur, l'aventure 4D](ref:futuroscope/arthur-the-4d-adventure) sous le dôme IMAX : on est
   réduit à la taille des Minimoys et on survole leur monde, dans un siège mobile. À partir de 1,05

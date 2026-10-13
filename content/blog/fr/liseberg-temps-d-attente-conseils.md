@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg se trouve en pleine ville, à Göteborg, est ouvert depuis 1923 et
+  Liseberg se trouve en bordure du centre-ville de Göteborg, est ouvert depuis 1923 et
   compte environ trois millions de visiteurs par an. En automne, il a cinq
   maisons hantées, en hiver le plus grand marché de Noël de Suède. Il n’existe
   pas de ticket Express à acheter, et la file d’attente virtuelle de l’appli est
@@ -254,7 +254,7 @@ s’applique : onze ans pour Vinden, Zombie, Nattsvart på Gasten et Skogen,
 
 Le **Spökhotellet Gasten** a ouvert en 1998 et a reçu à l’automne 1999 un THEA
 Award de la Themed Entertainment Association, en Californie. Il figure sur la
-liste des attractions avec file d’attente virtuelle. Zombie fonctionne selon le parc depuis 2015, Vinden depuis
+liste des attractions avec file d’attente virtuelle. Parmi les maisons d’Halloween, Zombie fonctionne selon le parc depuis 2015, Vinden depuis
 2017, la maison « 7 » depuis 2022 et Nattsvart på Gasten depuis 2024.
 
 Entre l’arrêt Korsvägen et l’entrée principale passe le **Stjärnstigen**, un
@@ -536,7 +536,7 @@ Selon Liseberg, début 2027, avec vente des billets à partir de fin novembre 20
 L’aperçu des [parcs d’hiver 2026](/blog/parcs-attractions-hiver-2026) met le
 marché de Noël à côté des autres, et le
 [guide Halloween 2026](/blog/halloween-parcs-attractions-2026) compare les
-programmes d’automne. Colossos, un autre grand huit en bois d’Intamin, figure dans le guide du [Heide Park](/blog/heide-park-temps-d-attente-conseils).
+programmes d’automne. D’autres montagnes russes en bois figurent dans le guide du [Heide Park](/blog/heide-park-temps-d-attente-conseils).
 
 — Patrick
 
