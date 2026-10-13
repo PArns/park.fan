@@ -36,7 +36,7 @@ seo:
     - Winter Efteling 2026
 ---
 
-De [Efteling](ref:efteling) verkoopt nu kaarten voor oudejaarsavond op 31 december 2026, van 19.00 tot 1.00 uur, voor 62 euro per persoon. Op de eventpagina kondigt het park attracties in het donker aan, duizenden lichtjes, winterattracties, entertainment en vuurwerk.
+De [Efteling](ref:efteling) verkoopt nu kaarten voor oudejaarsavond op 31 december 2026, van 19.00 tot 1.00 uur, voor 62 euro per persoon. Op de eventpagina kondigt het park attracties in het donker en vuurwerk aan.
 
 ## Wat er bij het ticket hoort
 
@@ -58,9 +58,9 @@ De korting staat op de eventpagina en de pagina voor abonnementhouders; het tick
 
 ## Overdag op 31 december
 
-Overdag is de Efteling op 31 december open van 10.00 tot 18.00 uur, twee uur korter dan van 19 tot en met 30 december. Het dagticket wordt los verkocht en kost voor die datum 56 euro. Tussen de dag en het feest zit een uur. Het avondticket van 33 euro, dat van 21 december tot 3 januari vanaf 16.00 uur geldt, is er op 31 december niet.
+Overdag is de Efteling op 31 december open van 10.00 tot 18.00 uur, twee uur korter dan van 19 tot en met 30 december. Het dagticket wordt los verkocht en kost voor die datum 56 euro. Het avondticket van 33 euro, dat van 21 december tot 3 januari vanaf 16.00 uur geldt, is er op 31 december niet.
 
-De dag valt in de Winter Efteling (16 november 2026 tot 31 januari 2027); welke parken verder tussen kerst en nieuwjaar open zijn, staat in ons [winteroverzicht](/blog/winter-pretparken-2026). De buitenachtbanen rijden zolang het weer het toelaat. Op de onderhoudslijst van het park staat voor 31 december geen enkele attractie.
+De dag valt in de Winter Efteling (16 november 2026 tot 31 januari 2027); welke parken verder tussen kerst en nieuwjaar open zijn, staat in ons [winteroverzicht](/blog/winter-pretparken-2026). Op de onderhoudslijst van het park staat voor 31 december geen enkele attractie.
 
 [Efteling](ref:efteling?full)
 
@@ -76,11 +76,11 @@ In 2022 was de avond op 3 december uitverkocht, ruim drie weken na de start van 
 
 ## Overnachten
 
-Accommodaties zijn er voor Oud & Nieuw niet meer, schreef de Efteling op 8 oktober. Op de pagina van het Oud & Nieuw arrangement staat dat niet, en een prijs noemt die pagina ook niet.
+Accommodaties zijn er voor Oud & Nieuw niet meer, schreef de Efteling op 8 oktober. Een prijs voor het arrangement noemt de Efteling niet.
 
 Bij het arrangement horen toegang tot het feest, onbeperkt naar het park tijdens je verblijf, een half uur eerder naar binnen en ontbijt. In de vakantiehuizen van Efteling Bosrijk en Efteling Loonsche Land kom je op 30 december aan en blijf je drie nachten. Het ontbijt wordt daar bezorgd. De hotelkamers in het Grand Hotel, het Wonder Hotel, Bosrijk en Loonsche Land beginnen op 31 december en gelden voor twee nachten, met ontbijt en een driegangendiner zonder drankjes.
 
-Gasten van het Grand Hotel kunnen tegen betaling het aftellen meemaken op het terras van restaurant-bar Mystique, met een snack en een drankje. Het aantal plaatsen is beperkt.
+Gasten van het Grand Hotel kunnen tegen betaling het aftellen meemaken op het terras van restaurant-bar Mystique, met een snack en een drankje.
 
 ## Bereikbaarheid
 

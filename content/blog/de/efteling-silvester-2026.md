@@ -36,7 +36,7 @@ seo:
     - Winter Efteling 2026
 ---
 
-Das [Efteling](ref:efteling) verkauft jetzt Karten für seinen Silvesterabend am 31. Dezember 2026, von 19 bis 1 Uhr, für 62 Euro pro Person. Auf seiner Eventseite kündigt der Park Attraktionen im Dunkeln an, dazu Tausende Lichter, Winterattraktionen, Unterhaltung und ein Feuerwerk.
+Das [Efteling](ref:efteling) verkauft jetzt Karten für seinen Silvesterabend am 31. Dezember 2026, von 19 bis 1 Uhr, für 62 Euro pro Person. Auf seiner Eventseite kündigt der Park Attraktionen im Dunkeln und ein Feuerwerk an.
 
 ## Was die Karte einschließt
 
@@ -56,9 +56,9 @@ Die Jahreskarte allein gilt an diesem Abend nicht, auch Abo-Inhaber brauchen ein
 
 ## Der 31. Dezember tagsüber
 
-Tagsüber hat das Efteling am 31. Dezember von 10 bis 18 Uhr geöffnet, zwei Stunden kürzer als vom 19. bis 30. Dezember. Das Tagesticket wird getrennt verkauft und kostet an diesem Datum 56 Euro. Zwischen Tagesbetrieb und Fest liegt eine Stunde. Das Abendticket für 33 Euro, das vom 21. Dezember bis 3. Januar ab 16 Uhr gilt, gibt es am 31. Dezember nicht.
+Tagsüber hat das Efteling am 31. Dezember von 10 bis 18 Uhr geöffnet, zwei Stunden kürzer als vom 19. bis 30. Dezember. Das Tagesticket wird getrennt verkauft und kostet an diesem Datum 56 Euro. Das Abendticket für 33 Euro, das vom 21. Dezember bis 3. Januar ab 16 Uhr gilt, gibt es am 31. Dezember nicht.
 
-Der Tag fällt in die Winter Efteling (16. November 2026 bis 31. Januar 2027), welche Parks sonst zwischen den Jahren öffnen, steht im [Winter-Überblick](/blog/winter-freizeitparks-2026). Die Achterbahnen im Freien fahren, solange das Wetter es zulässt. Auf der Wartungsliste des Parks steht für den 31. Dezember keine Attraktion.
+Der Tag fällt in die Winter Efteling (16. November 2026 bis 31. Januar 2027), welche Parks sonst zwischen den Jahren öffnen, steht im [Winter-Überblick](/blog/winter-freizeitparks-2026). Auf der Wartungsliste des Parks steht für den 31. Dezember keine Attraktion.
 
 [Efteling](ref:efteling?full)
 
@@ -74,11 +74,11 @@ Der offizielle Lageplan für 2024/25 verzeichnete unter anderem eine Silent Disc
 
 ## Übernachten
 
-Unterkünfte gibt es zu Oud & Nieuw keine mehr, schrieb das Efteling am 8. Oktober. Auf der Seite des Silvester-Arrangements steht das nicht, und einen Preis nennt sie auch nicht.
+Unterkünfte gibt es zu Oud & Nieuw keine mehr, schrieb das Efteling am 8. Oktober. Einen Preis für das Arrangement nennt das Efteling nicht.
 
 Das Arrangement schließt den Zugang zum Fest ein, unbegrenzten Parkeintritt während des Aufenthalts, eine halbe Stunde früheren Einlass in den Park und Frühstück. In den Ferienhäusern von Efteling Bosrijk und Efteling Loonsche Land reist man am 30. Dezember an und bleibt drei Nächte. Das Frühstück wird dort geliefert. Die Hotelzimmer im Grand Hotel, im Wonder Hotel, in Bosrijk und in Loonsche Land beginnen am 31. Dezember und gelten für zwei Nächte, mit Frühstück und einem Drei-Gänge-Menü ohne Getränke.
 
-Gäste des Grand Hotels können gegen Aufpreis auf der Terrasse der Restaurant-Bar Mystique den Countdown erleben, mit einem Snack und einem Getränk. Die Plätze sind begrenzt.
+Gäste des Grand Hotels können gegen Aufpreis auf der Terrasse der Restaurant-Bar Mystique den Countdown erleben, mit einem Snack und einem Getränk.
 
 ## Anreise
 

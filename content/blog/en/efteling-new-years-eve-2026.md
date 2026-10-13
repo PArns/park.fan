@@ -36,7 +36,7 @@ seo:
     - Winter Efteling 2026
 ---
 
-[Efteling](ref:efteling) has put tickets on sale for its New Year's Eve party on 31 December 2026, which runs from 7 pm to 1 am and costs €62 a head. The event page advertises rides in the dark, thousands of lights, the winter attractions, entertainment and fireworks.
+[Efteling](ref:efteling) has put tickets on sale for its New Year's Eve party on 31 December 2026, which runs from 7 pm to 1 am and costs €62 a head. The event page advertises rides in the dark and fireworks.
 
 ## What the ticket covers
 
@@ -56,9 +56,9 @@ The pass alone isn't valid that evening, so pass holders need a New Year's Eve t
 
 ## 31 December during the day
 
-During the day Efteling is open from 10 am to 6 pm on 31 December, two hours shorter than from 19 to 30 December. The day ticket is sold separately and costs €56 for that date. There's an hour between the day and the party. The €33 evening ticket, valid from 4 pm between 21 December and 3 January, isn't sold for 31 December.
+During the day Efteling is open from 10 am to 6 pm on 31 December, two hours shorter than from 19 to 30 December. The day ticket is sold separately and costs €56 for that date. The €33 evening ticket, valid from 4 pm between 21 December and 3 January, isn't sold for 31 December.
 
-The day falls within Winter Efteling (16 November 2026 to 31 January 2027), and our [winter round-up](/blog/winter-theme-parks-2026) lists the other parks open between Christmas and New Year. The outdoor coasters run as long as the weather allows. The park's maintenance list has no ride down for 31 December.
+The day falls within Winter Efteling (16 November 2026 to 31 January 2027), and our [winter round-up](/blog/winter-theme-parks-2026) lists the other parks open between Christmas and New Year. The park's maintenance list has no ride down for 31 December.
 
 [Efteling](ref:efteling?full)
 
@@ -74,11 +74,11 @@ In 2022 the evening sold out on 3 December, just over three weeks after sales op
 
 ## Staying overnight
 
-Efteling wrote on 8 October that no accommodation was left for Oud & Nieuw. The New Year's Eve package page doesn't say so, and it gives no price either.
+Efteling wrote on 8 October that no accommodation was left for Oud & Nieuw. Efteling gives no price for the package.
 
 The package includes entry to the party, unlimited park admission during the stay, park entry half an hour early and breakfast. In the holiday homes at Efteling Bosrijk and Efteling Loonsche Land you arrive on 30 December and stay three nights. Breakfast is delivered there. Hotel rooms at the Grand Hotel, the Wonder Hotel, Bosrijk and Loonsche Land start on 31 December for two nights, with breakfast and a three-course dinner, drinks not included.
 
-Grand Hotel guests can pay extra to watch the countdown on the terrace of the Mystique restaurant-bar, with a snack and a drink. Places are limited.
+Grand Hotel guests can pay extra to watch the countdown on the terrace of the Mystique restaurant-bar, with a snack and a drink.
 
 ## Getting there
 

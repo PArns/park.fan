@@ -36,7 +36,7 @@ seo:
     - Winter Efteling 2026
 ---
 
-[Efteling](ref:efteling) ha messo in vendita i biglietti della sua serata di Capodanno, il 31 dicembre 2026 dalle 19 all’1, a 62 euro a persona. Sulla pagina dell’evento il parco annuncia attrazioni al buio, migliaia di luci, attrazioni invernali, intrattenimento e fuochi d’artificio.
+[Efteling](ref:efteling) ha messo in vendita i biglietti della sua serata di Capodanno, il 31 dicembre 2026 dalle 19 all’1, a 62 euro a persona. Sulla pagina dell’evento il parco annuncia attrazioni al buio e fuochi d’artificio.
 
 ## Che cosa comprende il biglietto
 
@@ -56,9 +56,9 @@ L’abbonamento da solo quella sera non vale, quindi anche gli abbonati hanno bi
 
 ## Il 31 dicembre di giorno
 
-Durante il giorno Efteling apre il 31 dicembre dalle 10 alle 18, due ore in meno rispetto al periodo dal 19 al 30 dicembre. Il biglietto giornaliero si compra a parte e per quella data costa 56 euro. Tra l’apertura diurna e la festa passa un’ora. Il biglietto serale da 33 euro, valido dalle 16 dal 21 dicembre al 3 gennaio, il 31 dicembre non è in vendita.
+Durante il giorno Efteling apre il 31 dicembre dalle 10 alle 18, due ore in meno rispetto al periodo dal 19 al 30 dicembre. Il biglietto giornaliero si compra a parte e per quella data costa 56 euro. Il biglietto serale da 33 euro, valido dalle 16 dal 21 dicembre al 3 gennaio, il 31 dicembre non è in vendita.
 
-La giornata rientra nel Winter Efteling (dal 16 novembre 2026 al 31 gennaio 2027), e la nostra [panoramica invernale](/blog/parchi-divertimenti-inverno-2026) raccoglie gli altri parchi aperti tra Natale e Capodanno. Le montagne russe all’aperto funzionano finché il tempo lo permette. Nell’elenco delle manutenzioni del parco non c’è nessuna attrazione per il 31 dicembre.
+La giornata rientra nel Winter Efteling (dal 16 novembre 2026 al 31 gennaio 2027), e la nostra [panoramica invernale](/blog/parchi-divertimenti-inverno-2026) raccoglie gli altri parchi aperti tra Natale e Capodanno. Nell’elenco delle manutenzioni del parco non c’è nessuna attrazione per il 31 dicembre.
 
 [Efteling](ref:efteling?full)
 
@@ -74,11 +74,11 @@ Nel 2022 la serata andò esaurita il 3 dicembre, poco più di tre settimane dopo
 
 ## Dormire al parco
 
-Per Oud & Nieuw non ci sono più alloggi, scriveva Efteling l’8 ottobre. La pagina del pacchetto Capodanno non lo dice, e non indica nemmeno un prezzo.
+Per Oud & Nieuw non ci sono più alloggi, scriveva Efteling l’8 ottobre. Efteling non indica un prezzo per il pacchetto.
 
 Il pacchetto comprende l’accesso alla festa, l’ingresso illimitato al parco per tutto il soggiorno, l’entrata mezz’ora prima dell’apertura e la colazione. Nelle case vacanza di Efteling Bosrijk ed Efteling Loonsche Land si arriva il 30 dicembre e si resta tre notti. La colazione viene consegnata a domicilio. Le camere al Grand Hotel, al Wonder Hotel, a Bosrijk e a Loonsche Land partono dal 31 dicembre e valgono per due notti, con colazione e una cena di tre portate bevande escluse.
 
-Gli ospiti del Grand Hotel possono seguire il conto alla rovescia sulla terrazza del ristorante-bar Mystique pagando un supplemento, con uno snack e una bevanda. I posti sono limitati.
+Gli ospiti del Grand Hotel possono seguire il conto alla rovescia sulla terrazza del ristorante-bar Mystique pagando un supplemento, con uno snack e una bevanda.
 
 ## Come arrivare
 
