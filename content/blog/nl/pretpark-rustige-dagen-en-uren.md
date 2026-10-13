@@ -66,17 +66,16 @@ Zaterdag is in negen van de twaalf parken die we meten de dag met de langste
 wachttijden. In Movie Park staat hij gelijk met dinsdag en woensdag. Het
 rustigst is het meestal op donderdag of vrijdag: in Europa-Park, Heide Park,
 Movie Park, Legoland en Disneyland Paris op vrijdag, in Phantasialand, Efteling
-en Walibi Holland op donderdag. Drie parken passen niet in dit patroon. In
-Toverland ziet elke weekdag er hetzelfde uit, en in Plopsaland Deutschland
-liggen zes dagen dicht bij elkaar. In Walibi Holland is zaterdag zelfs een van
-de rustigere dagen.
+en Walibi Holland op donderdag. In Toverland ziet elke weekdag er hetzelfde uit,
+en in Plopsaland Deutschland liggen zes dagen dicht bij elkaar. In Walibi
+Holland is zaterdag zelfs een van de rustigere dagen.
 
-Ook bij het tijdstip zie je een patroon. In de meeste parken is de wachttijd in
-het eerste uur na opening duidelijk korter dan later. Daarna loopt de rij op en
-bereikt in negen parken tussen tien en twaalf uur het hoogste punt. In acht
-parken is het laatste of een-na-laatste uur het rustigst. In Phantasialand en
-Heide Park blijft de wachttijd na de piek tot de avond bijna gelijk. In Legoland
-en Movie Park wordt het in de avond weer drukker.
+In de meeste parken is de wachttijd in het eerste uur na opening duidelijk
+korter dan later. Daarna loopt de rij op en bereikt in negen parken tussen tien
+en twaalf uur het hoogste punt. In acht parken is het laatste of een-na-laatste
+uur het rustigst. In Phantasialand en Heide Park blijft de wachttijd na de piek
+tot de avond bijna gelijk. In Legoland en Movie Park wordt het in de avond weer
+drukker.
 
 De rustigste dagen voor jouw reismaand staan op de pagina
 [Beste reistijd](/beste-tijd-om-te-bezoeken). De twaalf parken vergelijken we
@@ -84,11 +83,10 @@ met de wachttijden die park.fan sinds 24 december 2025 verzamelt.
 
 ## Waar de cijfers vandaan komen
 
-Voor elke attractie met een live wachttijd bewaart park.fan elke vijf minuten
-de getoonde wachttijd. Daaruit komen de waarden die je op de parkpagina's en in
-de tabellen van dit artikel ziet. De tabellen laden de actuele waarden zodra je
-het artikel opent. In de tekst noem ik daarom geen minuten, alleen weekdagen en
-verhoudingen die niet van de ene dag op de andere veranderen.
+Voor elke attractie met een live wachttijd bewaart park.fan elke vijf minuten de
+getoonde wachttijd. Daaruit komen de waarden die je op de parkpagina's en in de
+tabellen van dit artikel ziet. De tabellen laden de actuele waarden zodra je het
+artikel opent.
 
 Stand van 6 oktober 2026. Voor de weekdag hebben we per park alle dagen genomen
 waarop het open was, en het gemiddelde van de wachttijden bij de grote
@@ -115,24 +113,21 @@ Hansa-Park ontbreekt, omdat het zijn wachttijden alleen in de eigen app toont.
 
 ## De weekdag in vogelvlucht
 
-De twaalf parken zijn in drie groepen te verdelen.
+Europa-Park, Phantasialand, Efteling, Heide Park, Legoland, Parc Astérix en
+Walibi Belgium hebben een weekendpiek. Op zaterdag is het daar het drukst, op
+zondag per park iets minder druk of even druk als op een werkdag. Het rustigst
+is het op woensdag, donderdag of vrijdag.
 
-De eerste groep zijn parken met een weekendpiek: Europa-Park, Phantasialand,
-Efteling, Heide Park, Legoland, Parc Astérix en Walibi Belgium. Op zaterdag is
-het daar het drukst, op zondag per park iets minder druk of even druk als op een
-werkdag. Het rustigst is het op woensdag, donderdag of vrijdag.
+In drie parken maakt de weekdag bijna niets uit. In Toverland sta je elke dag
+gemiddeld even lang in de rij. In Plopsaland Deutschland zijn zes dagen even
+druk, alleen zaterdag is wat drukker. In Disneyland Paris zit er maar vijf
+minuten tussen de drukste en de rustigste dag: zaterdag en dinsdag zijn het
+drukst, vrijdag het rustigst.
 
-De tweede groep zijn parken waar de weekdag bijna niets verklaart. In Toverland
-sta je elke dag gemiddeld even lang in de rij. In Plopsaland Deutschland zijn
-zes dagen even druk, alleen zaterdag is wat drukker. In Disneyland Paris zit er
-maar vijf minuten tussen de drukste en de rustigste dag: zaterdag en dinsdag zijn
-het drukst, vrijdag het rustigst. De wachttijden zijn in deze parken elke dag
-vergelijkbaar, in Plopsaland en Toverland bovendien kort.
-
-De derde groep zijn parken die de rangorde door elkaar gooien. In Walibi Holland
-is dinsdag de drukste dag en zaterdag een van de rustigere. In Movie Park liggen
-zaterdag, dinsdag en woensdag gelijk vooraan. Maandag tot en met woensdag zijn
-daar wel op slechts ongeveer 15 openingsdagen gemeten, het weekend op ongeveer 30.
+In Walibi Holland is dinsdag de drukste dag en zaterdag een van de rustigere. In
+Movie Park liggen zaterdag, dinsdag en woensdag gelijk vooraan. Maandag tot en
+met woensdag zijn daar wel op slechts ongeveer 15 openingsdagen gemeten, het
+weekend op ongeveer 30.
 
 ```park-comparison-widget slugs=europa-park,phantasialand,efteling,heide-park,movie-park-germany,plopsaland-deutschland,legoland-deutschland,parc-asterix,attractiepark-toverland,walibi-holland,walibi-belgium,/parks/europe/france/paris/disneyland-park show=quietest
 
@@ -140,30 +135,26 @@ daar wel op slechts ongeveer 15 openingsdagen gemeten, het weekend op ongeveer 3
 
 Een streepje in de laatste kolom betekent dat geen dag duidelijk de rustigste
 is, bijvoorbeeld omdat drie dagen gelijk liggen of een weekdag te weinig is
-gemeten. Ook dat is een uitkomst, en het geldt vooral voor Toverland en
-Plopsaland.
+gemeten. Dat geldt vooral voor Toverland en Plopsaland.
 
 ## Het tijdstip in vogelvlucht
 
-De curve over de dag ziet er in de meeste parken vergelijkbaar uit. In het
-eerste uur na opening is de wachttijd in de meeste parken duidelijk korter dan
-later. In Plopsaland, Heide Park en Walibi Holland is hij dan ongeveer half zo
-lang als op het hoogste punt, of nog korter. Daarna springt hij omhoog. In
-Europa-Park ligt de piek om tien uur, in Efteling, Parc Astérix en beide
-Walibi's om elf uur, in Phantasialand, Heide Park, Plopsaland en Disneyland Paris
-om twaalf uur. Daarna daalt de curve, soms langzaam en soms snel.
+In het eerste uur na opening is de wachttijd in de meeste parken duidelijk
+korter dan later. In Plopsaland, Heide Park en Walibi Holland is hij dan
+ongeveer half zo lang als op het hoogste punt, of nog korter. Daarna springt hij
+omhoog. In Europa-Park ligt de piek om tien uur, in Efteling, Parc Astérix en
+beide Walibi's om elf uur, in Phantasialand, Heide Park, Plopsaland en
+Disneyland Paris om twaalf uur.
 
-De parken verschillen in hoe ver hij daalt. In Disneyland Paris is de wachttijd
-in het rustigste uur maar ruim een derde van die in het drukste, in Parc Astérix
-ruim twee vijfde, in Walibi Holland de helft en in Europa-Park ongeveer zes
-tiende. In Phantasialand is hij in het rustigste uur maar ongeveer een zesde
-korter dan in het drukste, in Heide Park en Movie Park ongeveer een zevende. Wie
-daar op de avond wacht, wint weinig.
+In Disneyland Paris is de wachttijd in het rustigste uur maar ruim een derde van
+die in het drukste, in Parc Astérix ruim twee vijfde, in Walibi Holland de helft
+en in Europa-Park ongeveer zes tiende. In Phantasialand is hij in het rustigste
+uur maar ongeveer een zesde korter dan in het drukste, in Heide Park en Movie
+Park ongeveer een zevende.
 
-Twee parken lopen tegen het patroon in. In Legoland Deutschland en Movie Park
-Germany is het laatste uur dat we meten, 17 uur, een van de drukste. In Heide
-Park is 17 uur ook het laatste gemeten uur, maar daar wordt het aan het eind niet
-drukker.
+In Legoland Deutschland en Movie Park Germany is het laatste uur dat we meten,
+17 uur, een van de drukste. In Heide Park is 17 uur ook het laatste gemeten uur,
+maar daar wordt het aan het eind niet drukker.
 
 De curve voor Europa-Park, elke attractie apart:
 
@@ -173,22 +164,19 @@ De curve voor Europa-Park, elke attractie apart:
 
 ## Europa-Park
 
-[Europa-Park](ref:europa-park) is een zaterdagpark. Op zaterdag is het duidelijk
-drukker dan op de andere dagen, en de zes overige liggen dicht bij elkaar. Het
-rustigst is vrijdag, op de voet gevolgd door zondag, woensdag en donderdag.
-Zondag hoort hier dus bij de leegste dagen van de week. Wil je kort in de rij
-staan, plan dan woensdag tot en met vrijdag of de zondag.
+In [Europa-Park](ref:europa-park) is het op zaterdag duidelijk drukker dan op de
+andere dagen, en de zes overige liggen dicht bij elkaar. Het rustigst is
+vrijdag, op de voet gevolgd door zondag, woensdag en donderdag. Wil je kort in
+de rij staan, plan dan woensdag tot en met vrijdag of de zondag.
 
 De langste wachttijden zijn er vroeg, rond tien uur. Daarna worden ze korter en
 blijven ze tot de vroege avond ongeveer gelijk. Het rustigste uur is het
 een-na-laatste voor sluiting, in het laatste wordt het nog eens iets drukker.
 
-Vakanties maken in Europa-Park weinig uit. Op een werkdag in de vakantie stond je
-ongeveer 11 procent langer in de rij dan op een werkdag tijdens schooltijd,
-gemeten op 40 vakantiedagen en 79 schooldagen. Dat is de kleinste waarde onder de
-Duitse parken. In een weekend tijdens schooltijd was het 16 procent, iets meer.
-In welke attracties je eerst stapt, staat in de
-[Europa-Park-gids](/blog/europa-park-wachttijden-tips).
+Op een werkdag in de vakantie stond je ongeveer 11 procent langer in de rij dan
+op een werkdag tijdens schooltijd, gemeten op 40 vakantiedagen en 79
+schooldagen. Dat is de kleinste waarde onder de Duitse parken. In een weekend
+tijdens schooltijd was het 16 procent.
 
 ```stats-widget slug=europa-park show=weekdays
 
@@ -201,60 +189,49 @@ donderdag. Zaterdag is het drukst, gevolgd door zondag. Maandag, dinsdag, vrijda
 en woensdag liggen daartussen en zijn nauwelijks te scheiden. Het verschil tussen
 zaterdag en donderdag hoort bij de grootste in deze vergelijking.
 
-De dagcurve is vlak. Na de vroege stijging tot de middag blijft de wachttijd tot
-sluiting bijna even lang. In het rustigste uur is hij maar ongeveer een zesde
-korter dan in het drukste. Wie in Phantasialand op de avond wacht, krijgt geen
-lege attractie.
+Na de vroege stijging tot de middag blijft de wachttijd tot sluiting bijna even
+lang. In het rustigste uur is hij maar ongeveer een zesde korter dan in het
+drukste.
 
-Alleen in Heide Park maken de vakanties nog meer uit. Een werkdag in de vakantie
-was ongeveer 65 procent drukker dan een in de schooltijd, een weekend tijdens
-schooltijd ongeveer 39 procent. De vakanties vullen het park dus sterker dan een
-weekend. Dat past bij ons
-[artikel over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland):
-Phantasialand is al vol voordat in Noordrijn-Westfalen de vakantie begint. Hoe je
-het toch redt, staat in de [Phantasialand-gids](/blog/phantasialand-wachttijden-tips).
+Een werkdag in de vakantie was ongeveer 65 procent drukker dan een in de
+schooltijd, een weekend tijdens schooltijd ongeveer 39 procent. Phantasialand is
+al vol voordat in Noordrijn-Westfalen de vakantie begint, meer daarover in het
+[artikel over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland).
 
 ## Efteling
 
 In de [Efteling](ref:efteling) verschillen de weekdagen nauwelijks. Zaterdag en
 zondag zijn wat drukker, maandag ligt ertussen. Donderdag is de rustigste dag,
-gevolgd door dinsdag en woensdag. Een maandag is in de Efteling iets drukker dan
-een dinsdag.
+gevolgd door dinsdag en woensdag.
 
 De piek ligt om elf uur. Rond de middag en in de vroege namiddag blijft het
-ongeveer even druk, daarna neemt de drukte af. In de avond wordt de wachttijd
-duidelijk korter: in het laatste uur, het rustigste, is hij ongeveer zeven tiende
-zo lang als op het hoogste punt.
+ongeveer even druk, daarna neemt de drukte af. In het laatste uur, het
+rustigste, is de wachttijd ongeveer zeven tiende zo lang als op het hoogste
+punt.
 
 In de vakantie was de wachttijd in de Efteling op werkdagen maar 11 procent
-langer, gemeten op 36 vakantie- en 84 schooldagen. In het weekend was het tijdens
-schooltijd ongeveer 14 procent meer dan op een werkdag. De attracties en de
-volgorde staan in de [Efteling-gids](/blog/efteling-disney-van-nederland).
+langer, gemeten op 36 vakantie- en 84 schooldagen. In het weekend was het
+tijdens schooltijd ongeveer 14 procent meer dan op een werkdag.
 
 ## Heide Park
 
 In [Heide Park](ref:heide-park) maken de vakanties meer uit dan in welk ander
-park ook. Op een werkdag in de vakantie stond je ongeveer 84 procent langer in de
-rij dan op een werkdag in de schooltijd, bij 32 vakantiedagen en 75 schooldagen.
-In een weekend tijdens schooltijd was het ongeveer 47 procent. Door de week kan
-het park in de vakantie dus drukker zijn dan op een weekenddag tijdens
-schooltijd. Ook verder is zaterdag de drukste dag en vrijdag de rustigste. Zondag
-ligt daartussen, dicht bij vrijdag.
+park ook. Op een werkdag in de vakantie stond je ongeveer 84 procent langer in
+de rij dan op een werkdag in de schooltijd, bij 32 vakantiedagen en 75
+schooldagen. In een weekend tijdens schooltijd was het ongeveer 47 procent.
+Zaterdag is de drukste dag en vrijdag de rustigste. Zondag ligt daartussen,
+dicht bij vrijdag.
 
-De dagcurve is een van de vlakste, vergelijkbaar met Phantasialand. Het drukst is
-het rond twaalf uur. In het rustigste uur, om zestien uur, is de wachttijd maar
-ongeveer een zevende korter. Ook in Heide Park win je in de avond weinig. Waarmee
-je begint, staat in de [Heide-Park-gids](/blog/heide-park-wachttijden-tips).
+De dagcurve is een van de vlakste, vergelijkbaar met Phantasialand. Het drukst
+is het rond twaalf uur. In het rustigste uur, om zestien uur, is de wachttijd
+maar ongeveer een zevende korter.
 
 ## Movie Park Germany
 
 In [Movie Park Germany](ref:movie-park-germany) is vrijdag met duidelijke
 afstand de dag met de kortste wachttijden. Zaterdag, dinsdag en woensdag zijn het
 drukst, maar dinsdag en woensdag zijn op slechts ongeveer 15 tot 16
-openingsdagen gemeten. De rustigste dag noemen we daarom alleen met
-voorzichtigheid: vrijdag, daarna donderdag en zondag. Buiten de vakanties is het
-park op veel werkdagen gesloten, zoals ook in ons
-[artikel over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland) staat.
+openingsdagen gemeten. Na vrijdag zijn donderdag en zondag het rustigst. Buiten de [vakanties](/blog/schoolvakanties-pretparken-duitsland) is het park op veel werkdagen gesloten.
 
 De dagcurve heeft geen ochtendpiek. De wachttijd blijft van elf tot zeventien uur
 ongeveer gelijk. Het rustigst is het in de namiddag, en in het laatste uur is het
@@ -262,10 +239,7 @@ weer net zo druk als rond de middag.
 
 In de vakantie was een werkdag ongeveer 54 procent drukker dan tijdens
 schooltijd, gemeten op 33 vakantie- en 47 schooldagen. In een weekend tijdens
-schooltijd stond je maar 15 procent langer in de rij dan op een werkdag. In Movie
-Park maakt een werkdag in de vakantie dus duidelijk meer uit dan een weekend.
-Details over attracties en het Halloween-bedrijf staan in de
-[Movie-Park-gids](/blog/movie-park-germany-wachttijden-tips).
+schooltijd stond je maar 15 procent langer in de rij dan op een werkdag.
 
 ## Plopsaland Deutschland
 
@@ -274,24 +248,20 @@ dagen van de week even druk, alleen zaterdag is wat drukker. Dinsdag en vrijdag
 zijn op papier het laagst, maar het verschil is kleiner dan de vijf minuten
 waarop we afronden. Een “rustigste dag” bestaat hier niet.
 
-Over de dag zie je nog duidelijker hoe weinig er te doen is. De eerste twee uur
-zijn bijna leeg, dan stijgt de wachttijd tot rond twaalf uur en blijft tot
-sluiting ongeveer gelijk, op een heel laag niveau. In het rustigste uur is hij
-ruim half zo lang als in het drukste.
+De eerste twee uur zijn bijna leeg, dan stijgt de wachttijd tot rond twaalf uur
+en blijft tot sluiting ongeveer gelijk, op een heel laag niveau. In het
+rustigste uur is hij ruim half zo lang als in het drukste.
 
-De vakanties maken daarentegen veel uit. Een werkdag in de vakantie was ongeveer
-49 procent drukker dan een in de schooltijd, een weekend tijdens schooltijd
-ongeveer 53 procent. Een werkdag in de vakantie is in Plopsaland dus ongeveer zo
-druk als een weekenddag tijdens schooltijd. Hoe dat samenhangt met de vakanties
-in Rijnland-Palts en Noordrijn-Westfalen, staat in het
-[artikel over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland).
+Een werkdag in de vakantie was ongeveer 49 procent drukker dan een in de
+schooltijd, een weekend tijdens schooltijd ongeveer 53 procent. Hoe dat
+samenhangt met de vakanties in Rijnland-Palts en Noordrijn-Westfalen, staat in
+het [artikel over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland).
 
 ## Legoland Deutschland
 
-[Legoland Deutschland](ref:legoland-deutschland) in Günzburg is een weekendpark.
-Zaterdag is de drukste dag, zondag de een-na-drukste. Het rustigst is vrijdag,
-op de voet gevolgd door woensdag en donderdag. Van woensdag tot en met vrijdag
-sta je daar het kortst in de rij.
+In [Legoland Deutschland](ref:legoland-deutschland) in Günzburg is zaterdag de
+drukste dag, zondag de een-na-drukste. Het rustigst is vrijdag, op de voet
+gevolgd door woensdag en donderdag.
 
 De wachttijd stijgt tot twaalf uur en zakt rond de middag licht. Het langst is
 hij in het laatste uur dat we meten, om 17 uur. Kort in de rij staan kan hier
@@ -299,8 +269,7 @@ alleen direct na opening.
 
 In de vakanties stond je op een werkdag ongeveer 54 procent langer in de rij dan
 op een werkdag in de schooltijd, in een weekend tijdens schooltijd ongeveer 46
-procent. Een werkdag in de vakantie is in Legoland dus drukker dan een weekenddag
-tijdens schooltijd, al is het verschil kleiner dan in Heide Park.
+procent.
 
 ## Parc Astérix
 
@@ -318,23 +287,20 @@ rij als om elf uur.
 
 In de vakantie stond je op werkdagen ongeveer 35 procent langer in de rij,
 gemeten op 50 vakantie- en 51 schooldagen. In een weekend tijdens schooltijd was
-het ongeveer 32 procent. In welke volgorde je de attracties doet, staat in de
-[Parc-Astérix-gids](/blog/parc-asterix-wachttijden-tips).
+het ongeveer 32 procent.
 
 ## Toverland
 
 In [Toverland](ref:attractiepark-toverland) in Sevenum sta je van maandag tot
-zondag gemiddeld even lang in de rij. Er is geen rustigste en geen drukste dag.
-Volgens onze metingen maakt het niet uit of je op dinsdag of op zaterdag gaat.
+zondag gemiddeld even lang in de rij.
 
 Bij de grote attracties sta je hier korter in de rij dan in de meeste andere
 parken van deze vergelijking. In de vakantie was de wachttijd op werkdagen wel
 ongeveer 27 procent langer dan in de schooltijd, gemeten op 31 vakantie- en 88
 schooldagen. In een weekend tijdens schooltijd was het ongeveer 22 procent.
 
-Een dagcurve is er voor Toverland niet: onze waarden lopen daar van nul tot 23
-uur, ook buiten de openingstijd. De afzonderlijke attracties staan in de
-[Toverland-gids](/blog/toverland-troy-wachttijden-tips).
+Voor Toverland tonen we geen dagcurve, omdat onze waarden daar van nul tot 23
+uur lopen, ook buiten de openingstijd.
 
 ## Walibi Holland
 
@@ -344,15 +310,12 @@ maandag. Zaterdag hoort bij de rustigere dagen, het rustigst is donderdag.
 Dinsdag en maandag zijn wel maar op ongeveer 14 en 15 dagen gemeten, de andere
 dagen op 21 tot 28. Dinsdag als drukste dag neem ik daarom alleen met voorbehoud.
 
-Wie in Walibi Holland op een zaterdag gaat, staat niet langer in de rij dan op een
-werkdag. In een weekend tijdens schooltijd was de wachttijd zelfs 3 procent
-korter dan op een werkdag in de schooltijd. Op een werkdag in de vakantie was hij
-maar ongeveer 1 procent langer. Vakanties en weekenden maken daar geen verschil.
+In een weekend tijdens schooltijd was de wachttijd 3 procent
+korter dan op een werkdag in de schooltijd. Op een werkdag in de vakantie was
+hij maar ongeveer 1 procent langer.
 
 Het drukst is het om elf uur. Daarna wordt de wachttijd gestaag korter, vanaf 16
 uur merkbaar, en in het laatste uur is hij half zo lang als op het hoogste punt.
-Meer over het park staat in de
-[Walibi-Holland-gids](/blog/walibi-holland-untamed-hard-gaan).
 
 ## Walibi Belgium
 
@@ -366,10 +329,9 @@ kalender voor het park in de hele periode geen vakantiedag staat. In een weekend
 tijdens schooltijd stond je ongeveer 10 procent langer in de rij dan op een
 werkdag. Dat is minder dan in de meeste andere parken.
 
-Over de dag lijkt het op Walibi Holland. De piek komt vroeg, rond elf uur, daarna
-wordt de wachttijd gestaag korter. In het laatste uur is hij iets meer dan half
-zo lang als op het hoogste punt. De attracties en de beste volgorde staan in de
-[Walibi-Belgium-gids](/blog/walibi-belgium-wachttijden-tips).
+Over de dag lijkt het op Walibi Holland. De piek komt vroeg, rond elf uur,
+daarna wordt de wachttijd gestaag korter. In het laatste uur is hij iets meer
+dan half zo lang als op het hoogste punt.
 
 ## Disneyland Paris
 
@@ -385,11 +347,9 @@ in de schooltijd, in weekenden tijdens schooltijd ongeveer 5 procent. Ik vermoed
 dat het park bezoekers uit heel Europa heeft en dat er ergens altijd vakantie is.
 Bewijzen kan ik dat niet.
 
-Het tijdstip maakt hier daarentegen veel uit. Het langst sta je rond twaalf uur
-in de rij, en tot in de vroege avond blijft de wachttijd lang. In het laatste uur
-is hij nog maar ruim een derde zo lang, de grootste afstand in deze vergelijking.
-Hoe je de dag indeelt, staat in de
-[Disneyland-Paris-gids](/blog/disneyland-paris-wachttijden-tips).
+Het langst sta je rond twaalf uur in de rij, en tot in de vroege avond blijft de
+wachttijd lang. In het laatste uur is hij nog maar ruim een derde zo lang, de
+grootste afstand in deze vergelijking.
 
 ```hourly-profile-widget slug=/parks/europe/france/paris/disneyland-park top=8
 
@@ -427,28 +387,25 @@ weekenden tijdens schooltijd maar 15 tot 47. In Parc Astérix en Toverland ligt
 de werkdag in de vakantie net boven het weekend. Wie in deze parken in de
 vakantie een dinsdag neemt om zaterdag te mijden, staat dus eerder langer in de
 rij dan in een weekend tijdens schooltijd. In Europa-Park, de Efteling,
-Disneyland Paris en Walibi Holland maken vakanties en weekenden weinig uit. Daar
-levert de keuze van de dag weinig op, de avond meer: in Disneyland Paris en
-Walibi Holland is de wachttijd dan nog maar een derde tot de helft van de piek, in
-Europa-Park en de Efteling ongeveer zes tot zeven tiende.
+Disneyland Paris en Walibi Holland maken vakanties en weekenden weinig uit.
 
 ## Je reis plannen
 
-**Eerst het park.** Wil je zo weinig mogelijk in de rij staan, dan passen
+Wil je zo weinig mogelijk in de rij staan, dan passen
 Plopsaland of Toverland, omdat het daar op geen enkele dag druk is. Ga je naar
 een van de drukke parken, dan is vrijdag in Europa-Park of Heide Park de
 veiligste keuze, donderdag in Phantasialand en de Efteling.
 
-**Dan de dag.** Kun je alleen op zaterdag, ga dan naar een park waar het verschil
+Kun je alleen op zaterdag, ga dan naar een park waar het verschil
 klein is: Walibi Holland, Disneyland Paris, Walibi Belgium of Plopsaland
 Deutschland. In Phantasialand en Parc Astérix kost zaterdag je het meest.
 
-**Dan de vakantie.** Kijk voordat je een werkdag in de vakantie boekt in de tabel
+Kijk voordat je een werkdag in de vakantie boekt in de tabel
 hierboven hoeveel de vakanties in jouw park uitmaken. De vakantiedata van de
 Duitse deelstaten staan in het
 [artikel over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland).
 
-**Dan het tijdstip.** Kom bij opening: tot de piek zich rond tien tot twaalf uur
+Kom bij opening: tot de piek zich rond tien tot twaalf uur
 opbouwt, kom je bij de grote attracties met een kortere wachttijd door. Wie in de
 avond blijft, wint in Disneyland Paris, Parc Astérix, Europa-Park, de Efteling en
 beide Walibi's, maar nauwelijks in Phantasialand en Heide Park. Hoe je de uren

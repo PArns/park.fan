@@ -2,16 +2,16 @@
 title: 'Welche Schulferien welchen Freizeitpark in Deutschland füllen'
 translationKey: school-holidays-germany
 date: '2026-10-04'
+updatedAt: '2026-10-13'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Am Wochenende sind Schulferien in deutschen Freizeitparks fast egal, unter
-  der Woche machen sie aus einem Dienstag einen Samstag. Welche Ferien welchen
-  Park füllen, ist je Park verschieden: Der Heide Park braucht Niedersachsen
-  und NRW gleichzeitig, das Legoland füllt sich als einziger Park in den
-  Pfingstferien, und am Ende der Sommerferien im Süden ist es in Soltau
-  leerer als an einem Schultag. Mit den Ferienterminen bis Sommer 2027.
+  Ein Werktag in den Schulferien ist in den meisten deutschen Freizeitparks
+  voller als ein durchschnittlicher Samstag oder Sonntag, am Wochenende machen Ferien kaum einen Unterschied.
+  Der Heide Park wird erst voll, wenn Niedersachsen und NRW gleichzeitig frei
+  haben, und das Legoland ist der einzige Park, der sich in den Pfingstferien
+  füllt. Dazu die Ferientermine bis Sommer 2027.
 tags:
   - freizeitpark
   - deutschland
@@ -54,11 +54,10 @@ parkLinks:
   - legoland-deutschland
 ---
 
-Unter der Woche machen Schulferien aus einem Dienstag im Freizeitpark einen Samstag. In fünf
-der sechs deutschen Parks, in denen wir die Wartezeiten messen, ist ein Werktag in den Ferien
+In fünf der sechs deutschen Parks, in denen wir die Wartezeiten messen, ist ein Werktag in den Ferien
 des eigenen Bundeslandes voller als ein durchschnittlicher Samstag oder Sonntag, im Heide Park
-um fast ein Viertel. Im Europa-Park liegt er knapp darunter. Am Wochenende dagegen spielen
-Ferien kaum eine Rolle, weil an einem Samstag ohnehin alle Zeit haben.
+um fast ein Viertel. Im Europa-Park liegt er knapp darunter. Am Wochenende macht es kaum
+einen Unterschied, ob Ferien sind.
 
 In Deutschland legt jedes Bundesland seine Ferien selbst fest, und welche davon zählen, hängt
 vom Park ab und nicht immer von seinem eigenen Bundesland. Der Heide Park wird erst richtig voll,
@@ -66,8 +65,8 @@ wenn Niedersachsen und Nordrhein-Westfalen gleichzeitig frei haben, das Plopsala
 wenn sich Rheinland-Pfalz und NRW überschneiden. Das Phantasialand ist schon voll, bevor in NRW
 die Ferien beginnen. Das Legoland ist der einzige Park, in dem die Pfingstferien in Bayern und
 Baden-Württemberg etwas ausmachen, und der Europa-Park reagiert von allen am schwächsten auf
-Ferien. Ruhige Ferienwochen gibt es auch: die Pfingstferien, außer in Günzburg, und das Ende der
-Sommerferien im Süden, wenn der Rest des Landes längst wieder in der Schule sitzt.
+Ferien. In den meisten Parks war es in den Pfingstferien, außer in Günzburg, und am Ende der
+Sommerferien im Süden kaum voller als an Schultagen.
 
 ## Woher die Zahlen kommen
 
@@ -82,8 +81,7 @@ der Park seine Wartezeiten nur in der eigenen App zeigt und bei uns keine ankomm
 
 Der Zeitraum reicht vom 24. Dezember 2025 bis zum 3. Oktober 2026, beim Heide Park und beim
 Plopsaland ab dem Saisonstart am 22. März. Das sind die Ferientermine eines einzigen Jahres.
-Wetter, Events und Bauarbeiten habe ich nicht herausgerechnet, ein verregneter Ferientag zählt
-also genauso wie ein sonniger.
+Wetter, Events und Bauarbeiten habe ich nicht herausgerechnet.
 
 Verglichen habe ich vor allem Werktage, Montag bis Freitag ohne Feiertag. Der Maßstab ist ein
 Werktag zwischen dem 13. April und dem 30. September, an dem in keinem einzigen Bundesland Ferien
@@ -109,17 +107,13 @@ Park außerhalb der Ferien an vielen Werktagen zu hat.
 
 Ein Ferienwochenende und ein Wochenende in der Schulzeit liegen in fünf der sechs Parks
 höchstens sechs Prozent auseinander, mal in die eine, mal in die andere Richtung. Nur im Movie
-Park sind Ferienwochenenden etwas voller, um 13 Prozent. Wer sowieso nur samstags kann, muss den
-Ferienkalender kaum anschauen.
+Park sind Ferienwochenenden etwas voller, um 13 Prozent.
 
-Unter der Woche ist es anders. Ein Werktag in den Ferien des eigenen Bundeslandes lag im Heide
+Ein Werktag in den Ferien des eigenen Bundeslandes lag im Heide
 Park 23 Prozent über einem durchschnittlichen Wochenendtag, im Movie Park 16, im Plopsaland 9, im
-Phantasialand 7 und im Legoland 5 Prozent. Nur im Europa-Park war er drei Prozent leerer. Wer
-in den Ferien extra einen Dienstag nimmt, um dem Samstag auszuweichen, steht in Soltau also
-länger an als am Samstag.
+Phantasialand 7 und im Legoland 5 Prozent. Nur im Europa-Park war er drei Prozent leerer.
 
-An einem Samstag ohne Ferien lag
-der Aufschlag auf den Maßstab zwischen 42 Prozent im Plopsaland und 123 Prozent im Legoland. Der
+An einem Samstag ohne Ferien lag der Aufschlag auf den Maßstab zwischen 42 Prozent im Plopsaland und 123 Prozent im Legoland. Der
 Sonntag danach kam im Movie Park auf 8, im Europa-Park auf 9, im Plopsaland auf 10 und im Heide
 Park auf 15 Prozent, war also kaum voller als ein Werktag. Nur das Phantasialand mit 36 und das
 Legoland mit 64 Prozent haben auch sonntags spürbar mehr Andrang. Wer am Wochenende fahren muss,
@@ -129,8 +123,7 @@ fährt außerhalb von Brühl und Günzburg besser sonntags.
 
 Die Sommerferien 2026 lagen weit auseinander. Rheinland-Pfalz, Hessen und das Saarland fingen
 Ende Juni an, Bayern hörte am 14. September als letztes Land auf. Nur in einer einzigen Woche,
-vom 3. bis 7. August, hatten alle 16 Bundesländer gleichzeitig frei. Diese Staffelung macht den
-Sommer zum besten Teil der Rechnung, denn hier sieht man, wessen Ferien welchen Park füllen.
+vom 3. bis 7. August, hatten alle 16 Bundesländer gleichzeitig frei.
 
 ### Heide Park: Niedersachsen und NRW müssen beide frei haben
 
@@ -143,8 +136,7 @@ allein blieben bis zum 1. September noch 19 Prozent.
 
 Ich lese daraus, dass Soltau zwei Einzugsgebiete braucht, um voll zu werden. Beweisen kann ich
 das mit einem Sommer nicht, denn die Wochen, in denen beide frei hatten, waren auch die Wochen,
-in denen fast alle anderen Länder Ferien hatten. Die Ferien in Bayern und Baden-Württemberg
-helfen dem Heide Park jedenfalls nicht. An den Werktagen im September, als nur noch der Süden
+in denen fast alle anderen Länder Ferien hatten. An den Werktagen im September, als nur noch der Süden
 frei hatte, lag der Park 33 Prozent unter dem Maßstab.
 
 Der vollste Tag im ganzen Messzeitraum war in Soltau Dienstag, der 28. Juli. Auf Platz zwei
@@ -156,15 +148,15 @@ extrem stehen, lagen 31 in den Schulferien irgendeines Bundeslandes.
 
 ```
 
-Für die Wochen, in denen Niedersachsen und NRW beide frei haben, hilft vor allem ein früher
-Start, und wie der aussieht, steht im [Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps).
+Wie ein früher Start in Soltau aussieht, steht im
+[Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps).
 
 ### Phantasialand: voll, bevor NRW frei hat
 
 In Brühl war es umgekehrt. Vom 2. bis 17. Juli, als in Niedersachsen, Hessen, Rheinland-Pfalz und
 mehreren anderen Ländern Ferien waren und in NRW noch Schule, lag das
 [Phantasialand](ref:phantasialand) schon 77 Prozent über dem Maßstab. Mit NRW dazu wurden es 102
-Prozent, mit NRW allein ab Mitte August noch 67. Die Ferien im Süden ändern in Brühl nichts. An
+Prozent, mit NRW allein ab Mitte August noch 67. An
 den Werktagen, an denen nur Bayern und Baden-Württemberg frei hatten, war es sechs Prozent leerer
 als an einem gewöhnlichen Schultag.
 
@@ -184,9 +176,6 @@ wie in der Woche davor, und die vier vollsten Tage des ganzen Messzeitraums lieg
 einen Woche, Dienstag bis Freitag. In der Woche danach war es wieder vorbei, und woran das lag,
 kann ich am Kalender nicht ablesen.
 
-Außerhalb des Sommers fällt im Movie Park das Pfingstwochenende auf, dazu weiter unten mehr. Was du in Bottrop zuerst fährst, steht im
-[Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).
-
 ### Plopsaland: Rheinland-Pfalz und NRW zusammen
 
 Beim [Plopsaland](ref:plopsaland-deutschland) in Haßloch hat weder Rheinland-Pfalz noch NRW den
@@ -197,8 +186,7 @@ frei hatten, waren es plus 63 Prozent.
 
 Am 10. August war Rheinland-Pfalz wieder in der Schule, NRW und zwölf weitere Länder aber nicht.
 In dieser Woche fiel der Werktagsschnitt gegenüber der Vorwoche auf ein gutes Drittel, und bis
-zum Ende der NRW-Ferien lag der Park 23 Prozent unter einem ferienfreien Werktag. Voll war er nur
-in den drei Wochen, in denen beide frei hatten, und mehr gibt ein einzelner Sommer nicht her.
+zum Ende der NRW-Ferien lag der Park 23 Prozent unter einem ferienfreien Werktag.
 
 Seine vollsten Tage hatte das Plopsaland ohnehin nicht im Sommer. Vier der zehn vollsten Tage
 lagen in der Woche vom 7. bis 10. April, in den Osterferien. Was der Park im Oktober
@@ -215,17 +203,17 @@ Zum Schluss, als nur noch Baden-Württemberg und Bayern frei hatten, blieben elf
 
 Der Kalender führt für Rust als Nachbarregionen auch Basel-Stadt, Basel-Landschaft, den Aargau
 und den Grand Est. Ob deren Ferien den Unterschied machen, habe ich nicht getrennt ausgewertet.
-Der vollste Tag des ganzen Messzeitraums war in Rust auch kein Sommertag. Es war Montag, der 29. Dezember 2025, zwischen den Jahren, als alle 16 Länder frei hatten. Welche Bahnen du an so
-einem Tag wann fährst, steht im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
+Der vollste Tag des ganzen Messzeitraums war in Rust Montag, der 29. Dezember 2025, zwischen
+den Jahren, als alle 16 Länder frei hatten.
 
 ### Legoland: am stärksten vom Süden abhängig
 
 Das [Legoland](ref:legoland-deutschland) in Günzburg hängt am stärksten an den Ferien im Süden,
 aber nicht nur an ihnen. In den Pfingstferien, die 2026 nur Bayern und Baden-Württemberg hatten,
 lag der Aufschlag bei 123 Prozent, gemessen an den vier Werktagen der zweiten Ferienwoche. Im
-September, als alle außer diesen beiden Ländern wieder Schule hatten, waren es 69 Prozent. Vom 20. bis 31. Juli, als Bayern noch Schule hatte und NRW und der Norden frei, kamen aber auch 120
-Prozent zusammen. Nach Günzburg kommen Familien aus allen Richtungen, und aus dem Süden zusätzlich
-in Wochen, in denen sonst niemand frei hat.
+September, als alle außer diesen beiden Ländern wieder Schule hatten, waren es 69 Prozent. Vom 20. bis 31.
+Juli, als Bayern noch Schule hatte und NRW und der Norden frei, kamen aber auch 120 Prozent
+zusammen.
 
 Der Abstand zwischen Werktag und Wochenende ist im Legoland so groß wie nirgends sonst. Ein
 Samstag ohne Ferien lag 123 Prozent über einem ferienfreien Werktag. Die vollsten Tage hatte der
@@ -237,7 +225,7 @@ Park in den Osterferien, der vollste war Donnerstag, der 9. April.
 
 ## Ostern war überall voll
 
-Die Osterferien lagen 2026 in fast allen Ländern in denselben zwei Wochen, vom 30. März bis zum 10. April. Ausweichen konnte man in keinem Park. Das Plopsaland lag 153 Prozent über dem Maßstab,
+Die Osterferien lagen 2026 in fast allen Ländern in denselben zwei Wochen, vom 30. März bis zum 10. April. Das Plopsaland lag 153 Prozent über dem Maßstab,
 das Legoland 129, der Heide Park 74, das Phantasialand 54 und der Movie Park 52 Prozent. Der
 Europa-Park kam auf 13.
 
@@ -253,8 +241,7 @@ die beiden vollsten Tage der ganzen Messung, im Plopsaland der Mittwoch.
 
 ## Feiertage und Brückentage
 
-Bei Feiertagen geht es um einzelne Tage, also je einen Messwert pro Park, und entsprechend
-vorsichtig sind sie zu lesen.
+Bei Feiertagen steht jede Zahl auf einem einzigen Tag je Park.
 
 **Der 1. Mai** fiel 2026 auf einen Freitag, und in keinem Bundesland waren Ferien. In fünf der
 sechs Parks war es voller als an einem durchschnittlichen Samstag ohne Ferien, im Plopsaland um 64
@@ -266,8 +253,7 @@ in den meisten Parks nur mäßig voll, im Movie Park sogar 24 Prozent unter dem 
 Brückentag am 15. Mai, an dem in neun Ländern schulfrei war, war in allen fünf Parks, für die
 beide Tage gemessen sind, voller als der Feiertag selbst. Im Heide Park lag er 110 Prozent über
 dem Maßstab, im Legoland 136, im Europa-Park 75. Im Plopsaland fehlt der Feiertag in der Messung,
-und der Freitag lag dort 48 Prozent unter dem Maßstab. Eine Erklärung dafür habe ich im Kalender
-nicht gefunden.
+und der Freitag lag dort 48 Prozent unter dem Maßstab.
 
 **Pfingstsonntag und Pfingstmontag** gehörten im Movie Park zu den zehn vollsten Tagen der
 ganzen Messung. Der Montag, der 25. Mai, lag 179 Prozent über dem Maßstab und 80 Prozent über
@@ -282,15 +268,10 @@ Pfingstferien. Im Plopsaland war der Brückentag am 5. Juni voller als der Feier
 Prozent gegen plus 3. Im Movie Park war an beiden Tagen nicht mehr los als an einem normalen
 Werktag.
 
-Als Regel taugt aus diesen Tagen eine einzige Beobachtung: Der Freitag nach einem
-Donnerstagsfeiertag war 2026 meistens voller als der Feiertag selbst.
-
 ## Welcher Wochentag in den Ferien am ruhigsten ist
 
-Wer in den Ferien fahren muss, kann innerhalb der Woche noch etwas herausholen. Ich habe die
-Ferienwerktage im eigenen Bundesland nach Wochentag sortiert und den ruhigsten mit dem Schnitt der
-anderen vier verglichen. Je Wochentag und Park sind das 6 bis 12 Tage, also eine Tendenz und keine
-Garantie.
+Ich habe die Ferienwerktage im eigenen Bundesland nach Wochentag sortiert und den ruhigsten mit dem Schnitt der
+anderen vier verglichen. Je Wochentag und Park sind das 6 bis 12 Tage.
 
 | Park          | ruhigster Ferienwerktag | gegenüber den anderen vier |
 | ------------- | ----------------------- | -------------------------- |
@@ -301,17 +282,12 @@ Garantie.
 | Plopsaland    | Montag                  | −24 %                      |
 | Legoland      | Freitag                 | −22 %                      |
 
-Im Heide Park, im Movie Park und im Plopsaland war also der Montag am ruhigsten, in Rust und
-Günzburg der Freitag. Einen Grund dafür habe ich in unseren Daten nicht gefunden. Wer will, kann
-sich einen ausdenken, der mit Anreise und Wochenende zu tun hat.
-
 ## Die Tage mit dem größten Andrang
 
 Im Kalender hat jeder Tag eine Andrangsstufe, von sehr ruhig bis extrem. Über alle sechs Parks
 gab es im Messzeitraum 143 Tage mit der Stufe sehr voll oder extrem. 126 davon lagen in den
 Schulferien mindestens eines Bundeslands, 60 auf einem Wochenende. Auf einem gewöhnlichen
-Werktag ohne Ferien und ohne Feiertag lag genau einer, im Plopsaland. Wer an einem Schultag fährt,
-erwischt die vollsten Tage des Jahres also so gut wie nie.
+Werktag ohne Ferien und ohne Feiertag lag genau einer, im Plopsaland.
 
 ## Weihnachten und Neujahr
 
@@ -328,8 +304,6 @@ Oktober zu. Die Weihnachtsferien beginnen in zehn Ländern am 23. Dezember und e
 
 ## Die ruhigen Ferienwochen
 
-Zwei Ferienzeiten waren 2026 in den meisten Parks kaum zu spüren.
-
 **Die Pfingstferien.** In Bayern und Baden-Württemberg gingen sie bis zum 5. Juni, in den anderen
 Ländern gab es höchstens ein paar Tage rund um Pfingsten. Im Phantasialand lag die zweite
 Pfingstwoche ein Prozent unter dem Maßstab, im Plopsaland drei Prozent darüber, im Europa-Park
@@ -339,8 +313,7 @@ Ausnahme ist Günzburg, siehe oben.
 **Das Ende der Sommerferien im Süden.** Vom 2. bis 14. September hatten nur noch Bayern und
 Baden-Württemberg frei. Im Heide Park lag diese Zeit 33 Prozent unter dem Maßstab, im Plopsaland
 20 und im Phantasialand 7 Prozent. Wer in München oder Stuttgart wohnt, hat damit zwei
-Ferienwochen, in denen Soltau leerer ist als an einem normalen Schultag. Er muss nur bereit sein,
-für ein paar leere Warteschlangen bis an die Lüneburger Heide zu fahren. Im Europa-Park und im
+Ferienwochen, in denen Soltau leerer ist als an einem normalen Schultag. Im Europa-Park und im
 Legoland, also vor der eigenen Haustür, waren dieselben Wochen voller als ein Schultag, im
 Legoland deutlich.
 
@@ -358,8 +331,7 @@ In diesen vier Parks ist das Ende der Ferien also klar die bessere Wahl.
 Im Heide Park und im Plopsaland ist es umgekehrt. In Soltau lagen die ersten zehn Tage der
 niedersächsischen Ferien 27 Prozent über dem Maßstab, die letzten zehn 120 Prozent. In Haßloch
 waren es 16 gegen 76 Prozent. Beide Parks werden erst voll, wenn NRW dazukommt, und das war 2026
-jeweils am Ende ihrer eigenen Ferien. Wer in Niedersachsen oder Rheinland-Pfalz wohnt, fährt also
-besser in der ersten Ferienwoche.
+jeweils am Ende ihrer eigenen Ferien.
 
 ## Die Herbstferien 2026
 
@@ -371,9 +343,9 @@ NRW überschneiden sich vom 17. bis 25. Oktober. Wenn das Muster aus dem Sommer 
 die Tage, an denen es im Heide Park am vollsten wird. Der letzte Öffnungstag im Kalender ist dort
 der 31. Oktober.
 
-Dazu kommt Halloween. Heide Park, Movie Park und Plopsaland haben im Oktober Abendevents (alle Termine
-im [Halloween-Guide](/blog/halloween-freizeitparks-2026)), und die Wochenenden sind schon ohne
-Ferien voll. Der 3. Oktober war in Soltau der zweitvollste Tag der ganzen Messung.
+Heide Park, Movie Park und Plopsaland haben im Oktober Halloween-Abendevents (alle Termine im
+[Halloween-Guide](/blog/halloween-freizeitparks-2026)), und die Wochenenden sind schon ohne
+Ferien voll.
 
 Im Kalender jedes Parks sind die Ferientage markiert, die des eigenen Bundeslandes und die der
 Nachbarregionen, aus denen Tagesgäste kommen. Die ruhigsten der kommenden Tage im
@@ -385,16 +357,16 @@ Nachbarregionen, aus denen Tagesgäste kommen. Die ruhigsten der kommenden Tage 
 
 ## Die Ferienwochen bis Sommer 2027, Park für Park
 
-Die Ferientermine für das nächste Jahr stehen ebenfalls schon im Kalender. Was folgt, ist das
-Muster von 2026, gelegt auf die Termine von 2027. Ob es trägt, wissen wir erst im nächsten Herbst.
+Die Ferientermine für das nächste Jahr stehen ebenfalls schon im Kalender. Ob das Muster von
+2026 auf die Termine von 2027 passt, zeigt sich erst im nächsten Herbst.
 Die Öffnungstage für 2027 haben die Parks noch nicht veröffentlicht.
 
 **Ostern 2027** liegt wieder in fast allen Ländern gleichzeitig, in NRW, Niedersachsen,
 Rheinland-Pfalz und Bayern vom 20. März bis zum 4. April, in Baden-Württemberg ab dem 25. März.
 Für jeden der sechs Parks ist das die vollste Zeit des Frühjahrs, sobald er offen hat.
 
-**Pfingsten 2027** ist nicht mehr nur Sache des Südens. Bayern und Baden-Württemberg haben vom 15.
-bis 30. Mai frei, NRW und Niedersachsen aber auch vom 15. bis 18. Mai. Wer die ruhige Pfingstwoche
+**Pfingsten 2027** haben Bayern und Baden-Württemberg vom 15. bis 30. Mai frei, NRW und
+Niedersachsen vom 15. bis 18. Mai. Wer die ruhige Pfingstwoche
 von 2026 sucht, findet sie 2027 frühestens ab Mittwoch, dem 19. Mai, und im Legoland gar nicht.
 
 **Im Sommer 2027** haben alle 16 Länder wieder nur eine Woche lang gleichzeitig Ferien, vom 2. bis
@@ -405,8 +377,8 @@ noch Bayern und Baden-Württemberg Ferien, und das waren 2026 die ruhigsten Woch
 
 Rheinland-Pfalz hat vom 26. Juni bis zum 8. August frei, die Überschneidung mit NRW liegt also
 vom 17. Juli bis zum 8. August. Das sind gut drei Wochen wie 2026, und nach unserer Messung die
-Zeit, in der das Plopsaland voll ist. Für Brühl und Bottrop beginnt der Sommer früher: Hessen,
-Rheinland-Pfalz und das Saarland fangen Ende Juni an, Niedersachsen am 8. Juli. Voll wird es im
+Zeit, in der das Plopsaland voll ist. Hessen, Rheinland-Pfalz und das Saarland fangen Ende Juni
+an, Niedersachsen am 8. Juli. Voll wird es im
 Phantasialand und im Movie Park vermutlich ab Anfang Juli und bis zum Ende der NRW-Ferien am 31.
 August.
 
@@ -430,15 +402,14 @@ dort dann bei 19 Prozent. Aus Niedersachsen geht es in der ersten Ferienwoche in
 aus Rheinland-Pfalz in den ersten drei ins Plopsaland. Aus Bayern und Baden-Württemberg würde ich
 die letzten beiden Ferienwochen für einen Park im Norden nutzen statt fürs Legoland.
 
-Im Herbst ist der Heide Park vor dem 17. Oktober oder in der Woche ab dem 26. die bessere Wahl,
-wenn Niedersachsen wieder Schule hat und NRW noch nicht. Am 31. Oktober ist dort ohnehin Schluss.
+Im Herbst ist der Heide Park vor dem 17. Oktober oder in der Woche ab dem 26. die bessere Wahl als die Tage dazwischen, an denen Niedersachsen und NRW beide frei haben.
 
 Über Weihnachten hat der Europa-Park bis zum 9. Januar offen, das Legoland bis zum 10., das
 Phantasialand bis zum 24. Januar. Nach dem 12. Januar haben alle Länder ihre Weihnachtsferien
 hinter sich, und Brühl hat dann noch knapp zwei Wochen Wintertraum. Nach unserer Messung waren die
 Januartage nach den Ferien dort halb so voll wie die Tage zwischen den Jahren.
 
-Bleiben die Feiertage. Den Brückentag nach Christi Himmelfahrt meide ich, den Feiertag selbst
+Den Brückentag nach Christi Himmelfahrt meide ich, den Feiertag selbst
 nicht unbedingt, und einen 1. Mai an einem Werktag plane ich wie einen Samstag.
 
 Welcher Monat in welchem Park am ruhigsten ist, steht auf der

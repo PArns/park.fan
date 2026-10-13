@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  C’est à Epic Universe qu’on attend le plus longtemps, et aux Studios le moins. Or l’Express Unlimited n’est justement pas valable à Epic Universe. Pour les grandes montagnes russes, il faut mesurer entre 1,22 et 1,38 mètre selon l’attraction.
+  C’est à Epic Universe qu’on attend le plus longtemps, et l’Express Unlimited n’y est pas valable. Pour les grandes montagnes russes, il faut mesurer entre 1,22 et 1,38 mètre selon l’attraction.
 category: guides
 tags:
   - universal-orlando
@@ -22,7 +22,7 @@ tags:
 coverImage:
   src: /media/universal-islands-of-adventure/welcome-cover.jpg
   alt: 'Un train du VelociCoaster prend un virage, avec les tours de Poudlard à l’arrière-plan.'
-  caption: 'Deux mondes dans une seule image : Jurassic World et Poudlard.'
+  caption: 'Jurassic World et Poudlard à Islands of Adventure.'
   credit: 'Patrick Arns'
 parkLinks:
   - universal-studios-florida
@@ -57,13 +57,13 @@ seo:
 
 Le Universal Orlando Resort exploite quatre parcs : Universal Studios Florida depuis le 7 juin 1990, Islands of Adventure depuis le 28 mai 1999, Volcano Bay depuis 2017 et, depuis le 22 mai 2025, Epic Universe. Volcano Bay est un parc aquatique, les trois autres ont des montagnes russes. D’après Wikipédia, Universal Studios Florida a reçu en 2024 un peu plus de 9,5 millions de visites, ce qui le place au 13e rang mondial, et Islands of Adventure 9,45 millions, au 14e rang. Pour Epic Universe, Universal n’a publié jusqu’ici aucun chiffre de fréquentation.
 
-Le temps passé dans les files varie beaucoup d’un parc à l’autre. Dans nos mesures des deux dernières années, on attend le plus longtemps à Epic Universe et le moins aux Studios :
+Dans nos mesures des deux dernières années, on attend le plus longtemps à Epic Universe et le moins aux Studios :
 
 ```park-comparison-widget slugs=universal-studios-florida,universal-islands-of-adventure,universal-epic-universe highlight=universal-epic-universe
 
 ```
 
-Epic Universe a 16 mois. Mine-Cart Madness a, dans nos mesures, la plus longue file de tout le resort, suivie à égalité du Battle at the Ministry et de Hagrid’s Magical Creatures Motorbike Adventure, qui est à Islands of Adventure.
+Mine-Cart Madness a, dans nos mesures, la plus longue file de tout le resort, suivie à égalité du Battle at the Ministry et de Hagrid’s Magical Creatures Motorbike Adventure, qui est à Islands of Adventure.
 
 ## Quel parc faire en premier
 
@@ -73,7 +73,7 @@ Avec deux jours, je commencerais par Islands of Adventure. VelociCoaster, Hagrid
 
 Universal Studios Florida est à l’entrée du resort et compte le plus de zones thématiques des trois parcs : New York, San Francisco, World Expo, Springfield, Hollywood, le Chemin de Traverse de « Harry Potter », Minion Land et, depuis 2024, DreamWorks Land. À la place du Chemin de Traverse se trouvait jusqu’au 2 janvier 2012 Jaws, avec le port d’Amity. Le Chemin de Traverse et Escape from Gringotts ont ouvert le 8 juillet 2014. Kongfrontation a laissé la place à Revenge of the Mummy en 2002, et en 2007, Back to the Future: The Ride a disparu au profit des Simpson.
 
-C’est entre ces sept attractions que je choisirais pour une visite. J’ai laissé de côté les maisons des Halloween Horror Nights, même si c’est là qu’on attend le plus à l’automne : ce ne sont pas des attractions, et elles ne durent que jusqu’au 1er novembre.
+À l’automne, on attend le plus aux maisons des Halloween Horror Nights, ouvertes jusqu’au 1er novembre.
 
 ```ride-waits-widget rides=universal-studios-florida/harry-potter-and-the-escape-from-gringotts|Escape from Gringotts|montagne russe en intérieur;universal-studios-florida/revenge-of-the-mummy|Revenge of the Mummy|montagne russe en intérieur;universal-studios-florida/despicable-me-minion-mayhem|Minion Mayhem|simulateur;universal-studios-florida/transformers-the-ride-3d|Transformers: The Ride-3D|dark ride 3D;universal-studios-florida/men-in-black-alien-attack|Men in Black: Alien Attack|dark ride interactif;universal-studios-florida/the-simpsons-ride|The Simpsons Ride|simulateur;universal-studios-florida/et-adventure|E.T. Adventure|dark ride columns=type,peak,days highlight=universal-studios-florida/harry-potter-and-the-escape-from-gringotts
 
@@ -97,7 +97,7 @@ Côté spectacles, le parc propose entre autres The Bourne Stuntacular (depuis 2
 
 Hollywood Rip Ride Rockit a fermé en août 2025. À sa place, Universal construit **Fast & Furious: Hollywood Drift**, une montagne russe d’Intamin dont les voitures tournent sur elles-mêmes. Universal l’a annoncée le 20 janvier 2026 et la prévoit pour 2027. La version californienne figure dans notre article [Hollywood Drift aux Universal Studios Hollywood](/news/hollywood-drift-universal-studios-hollywood).
 
-Fast & Furious: Supercharged est fermée depuis le 17 août 2026, un an plus tôt qu’annoncé au départ. À l’automne, la file de l’attraction servait jusqu’ici d’emplacement pour une maison des Halloween Horror Nights. Universal n’a pas dit ce qui sera construit à cet endroit ensuite.
+Fast & Furious: Supercharged est fermée depuis le 17 août 2026, un an plus tôt qu’annoncé au départ. À l’automne, la file de l’attraction accueillait jusqu’ici une maison des Halloween Horror Nights. Universal n’a pas dit ce qui sera construit à cet endroit ensuite.
 
 ## Islands of Adventure
 
@@ -115,13 +115,13 @@ VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)*
 
 ![L’enseigne lumineuse de l’entrée du Jurassic World VelociCoaster, de nuit | Derrière cette entrée, la file passe au milieu de l’enclos des raptors de Jurassic World. | wide](/media/velocicoaster/01-eingang.jpg)
 
-La file traverse l’enclos des raptors, où se tiennent des vélociraptors animatroniques. Jusqu’à peu avant le départ, il y a encore de quoi regarder dans l’atrium.
+La file traverse l’enclos des raptors, où se tiennent des vélociraptors animatroniques.
 
 ![La figure d’un vélociraptor dans l’atrium verdoyant de la gare du VelociCoaster | Dans l’atrium, le raptor se tient entre les plantes, juste avant la gare. | right](/media/velocicoaster/03-atrium.jpg)
 
 **[The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)** est la plus ancienne des trois. Bolliger & Mabillard l’ont construite pour l’ouverture du parc le 28 mai 1999. Elle compte sept inversions, mesure 34 mètres de haut et atteint 108 km/h. Le train aborde la première montée sans chaîne : des pneus l’accélèrent à 64 km/h en deux secondes. Taille minimale : 1,38 mètre, la plus haute du parc.
 
-Pour ceux qui ne font pas de montagnes russes, il y a les dark rides. Dans **[Harry Potter and the Forbidden
+Dans **[Harry Potter and the Forbidden
 Journey](ref:universal-islands-of-adventure/harry-potter-and-the-forbidden-journey)**, tu es assis dans un bras robotisé de KUKA et tu voles à travers Poudlard. L’attraction a ouvert le 18 juin 2010, dure un peu plus de quatre minutes et se fait dès 1,22 mètre. **[Skull Island: Reign of
 Kong](ref:universal-islands-of-adventure/skull-island-reign-of-kong)** roule sans rail : les camions, de 72 visiteurs chacun, avancent librement dans la jungle. Le trajet dure six minutes. S’y ajoute **[The Amazing Adventures of
 Spider-Man](ref:universal-islands-of-adventure/the-amazing-adventures-of-spider-man)**, un dark ride en 3D de 1999, dès 1,02 mètre.
@@ -154,12 +154,12 @@ the Battle at the Ministry](ref:universal-epic-universe/harry-potter-and-the-bat
 
 **[Mario Kart: Bowser’s Challenge](ref:universal-epic-universe/mario-kart-bowsers-challenge)** est un dark ride en réalité augmentée où tu lances des carapaces sur les autres voitures. Il dure cinq minutes et existait déjà à Osaka (depuis 2021) et à Hollywood (depuis 2023).
 
-Aux autres montagnes russes d’Epic Universe, on attend moins qu’à Mine-Cart Madness. **[Stardust
+**[Stardust
 Racers](ref:universal-epic-universe/stardust-racers)**, à Celestial Park, est une montagne russe en duel de Mack, avec deux parcours, 40,5 mètres de haut, 100 km/h et une inversion. Elle a reçu en 2025 le Golden Ticket Award de la meilleure nouvelle montagne russe. Taille minimale : 1,22 mètre. **[Curse of the
 Werewolf](ref:universal-epic-universe/curse-of-the-werewolf)** est une montagne russe tournante de Mack à Dark
 Universe, **[Hiccup’s Wing Gliders](ref:universal-epic-universe/hiccup-wing-glider)**, sur l’Isle of Berk, une montagne russe familiale d’Intamin à 72 km/h. Les deux se font dès 1,02 mètre.
 
-Pour les enfants de moins de 1,02 mètre, il y a plus que des aires de jeux : **[Yoshi’s
+**[Yoshi’s
 Adventure](ref:universal-epic-universe/yoshis-adventure)** se fait dès 0,87 mètre. Le manège **[Constellation Carousel](ref:universal-epic-universe/constellation-carousel)** et la promenade en bateau
 **[Fyre Drill](ref:universal-epic-universe/fyre-drill)** n’ont pas de taille minimale, et les enfants de moins de 1,22
 mètre sont accompagnés. Il faut en revanche 1,22 mètre pour Dragon Racer’s Rally et Monsters Unchained:
@@ -168,7 +168,7 @@ Ministry of Magic et The Untrainable Dragon sur l’Isle of Berk.
 
 ## Trois fois Harry Potter
 
-Harry Potter est le thème qui relie les trois parcs, et chacun a sa propre zone. La plus ancienne est Hogsmeade, à Islands of Adventure, ouverte le 18 juin 2010 sur 8 hectares. Il y avait auparavant la montagne russe Flying Unicorn, fermée en 2008 et revenue sous le nom de **[Flight of the
+Chacun des trois parcs a sa propre zone Harry Potter. La plus ancienne est Hogsmeade, à Islands of Adventure, ouverte le 18 juin 2010 sur 8 hectares. Il y avait auparavant la montagne russe Flying Unicorn, fermée en 2008 et revenue sous le nom de **[Flight of the
 Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**. Cette montagne russe junior de Vekoma se fait dès 0,92 mètre. S’y ajoutent Forbidden Journey, Hagrid’s et la boutique de baguettes Ollivanders.
 
 Le Chemin de Traverse, aux Studios, est arrivé en 2014, avec Escape from Gringotts et le Poudlard Express. Le Ministry of Magic d’Epic Universe est la plus récente des trois zones. Elle va du Paris des années 1920 des films « Les Animaux fantastiques » jusqu’au ministère britannique des années 1990. Dans Harry Potter and the Battle at the Ministry, tu aides Harry, Ron et Hermione à arrêter Dolores Ombrage.
@@ -177,7 +177,7 @@ Pour voir Hogsmeade et le Chemin de Traverse le même jour ou pour prendre le Po
 
 ## Seuss Landing, Marvel et Jurassic Park
 
-Trois îles d’Islands of Adventure sont des îles pour les familles. **Seuss Landing** a un dark ride, un manège de D. H. Morgan et le Trolley de Mack, qui roule depuis 2006 sur deux parcours de 460 mètres chacun, au-dessus des têtes. **Marvel Super Hero Island** a, à côté du Hulk, de Spider-Man et de Doctor Doom’s Fearfall, les tasses Storm Force Accelatron de Mack, de l’an 2000. **Jurassic Park** a, à côté de VelociCoaster, la River Adventure, les Pteranodon Flyers, une montagne russe suspendue pour les enfants de 0,92 à 1,43 mètre (au-delà de 1,43 mètre, on n’y monte qu’avec un enfant de cette taille), et l’aire de jeux Camp Jurassic.
+**Seuss Landing** a un dark ride, un manège de D. H. Morgan et le Trolley de Mack, qui roule depuis 2006 sur deux parcours de 460 mètres chacun, au-dessus des têtes. **Marvel Super Hero Island** a, à côté du Hulk, de Spider-Man et de Doctor Doom’s Fearfall, les tasses Storm Force Accelatron de Mack, de l’an 2000. **Jurassic Park** a, à côté de VelociCoaster, la River Adventure, les Pteranodon Flyers, une montagne russe suspendue pour les enfants de 0,92 à 1,43 mètre (au-delà de 1,43 mètre, on n’y monte qu’avec un enfant de cette taille), et l’aire de jeux Camp Jurassic.
 
 ## À l’ouverture ou le soir
 
@@ -203,7 +203,7 @@ Le **Poudlard Express** relie le Chemin de Traverse, aux Studios, à Hogsmeade, 
 
 ## Billets : un parc ou Park-to-Park
 
-Universal vend deux sortes de billets. Avec un billet pour un parc, tu entres chaque jour dans un parc. Avec un billet Park-to-Park, tu changes de parc le même jour et tu prends le Poudlard Express. Il existe des billets Park-to-Park de trois, quatre et cinq jours, avec lesquels tu entres chaque jour dans les quatre parcs, Epic Universe et Volcano Bay compris.
+Avec un billet pour un parc, tu entres chaque jour dans un parc. Avec un billet Park-to-Park, tu changes de parc le même jour et tu prends le Poudlard Express. Il existe des billets Park-to-Park de trois, quatre et cinq jours, avec lesquels tu entres chaque jour dans les quatre parcs, Epic Universe et Volcano Bay compris.
 
 Les prix d’appel sur la page des billets d’Universal, par jour et par billet, hors taxes, au 8 octobre 2026 :
 
@@ -214,9 +214,9 @@ Les prix d’appel sur la page des billets d’Universal, par jour et par billet
 | Universal Islands of Adventure | 124,99 $         |
 | Volcano Bay                    | 80,99 $          |
 
-Les prix changent d’un jour à l’autre, et ce sont chaque fois les plus bas. Universal propose en plus deux offres. Le billet 3 jours avec un parc par jour, Studios, Islands of Adventure et Epic Universe, commence à 99 dollars par jour, soit 297 dollars en tout. Le billet Park-to-Park de deux jours aux Studios et à Islands of Adventure, plus un jour à Epic Universe, commence à 119 dollars par jour, soit 357 dollars au total.
+Les prix changent d’un jour à l’autre, et ce sont chaque fois les plus bas. Le billet 3 jours avec un parc par jour, Studios, Islands of Adventure et Epic Universe, commence à 99 dollars par jour, soit 297 dollars en tout. Le billet Park-to-Park de deux jours aux Studios et à Islands of Adventure, plus un jour à Epic Universe, commence à 119 dollars par jour, soit 357 dollars au total.
 
-Ma recommandation dépend de la durée. Pour trois jours, je prends le billet 3 jours avec un parc par jour, puisqu’Epic Universe demande de toute façon une journée à lui seul. Le billet Park-to-Park vaut le coup si tu veux prendre le Poudlard Express ou passer des Studios à Islands of Adventure dans la même journée.
+Pour trois jours, je prends le billet 3 jours avec un parc par jour, puisqu’Epic Universe demande de toute façon une journée à lui seul. Le billet Park-to-Park vaut le coup si tu veux prendre le Poudlard Express ou passer des Studios à Islands of Adventure dans la même journée.
 
 ```cta-widget
 href: https://www.universalorlando.com/web/en/us/tickets-packages/park-tickets
@@ -226,7 +226,7 @@ text: Les prix par jour figurent dans le calendrier d’Universal.
 
 ## Express Pass : son prix et où il est valable
 
-Avec l’Express Pass, tu paies Universal pour passer devant la file. Il existe en trois formules, qui ne valent pas le même nombre de fois par attraction ni dans les mêmes parcs.
+Avec l’Express Pass, tu paies Universal pour passer devant la file.
 
 **Universal Express** est valable une fois par attraction. Universal le vend pour les Studios, Islands of Adventure, Epic Universe et Volcano Bay, en supplément du billet. Pour les Studios et Islands of Adventure, Universal indique sur la page des billets 119,99 à 319,99 dollars par personne et par parc, selon le jour. Pour Epic Universe, il n’y a pas de prix sur cette page.
 
@@ -234,7 +234,7 @@ Avec l’Express Pass, tu paies Universal pour passer devant la file. Il existe 
 
 **Universal Express Now** n’existe que dans l’appli, dans le parc, le jour même, pour certaines attractions sur un créneau. Universal dit lui-même qu’il ne le propose que de façon sporadique.
 
-À Epic Universe, aucun chemin ne contourne donc l’Express à usage unique, si tu veux un pass. Les files les plus longues du resort sont là, c’est donc là qu’un pass rapporte le plus. Si tu as fait Mine-Cart Madness et le Battle at the Ministry à l’ouverture, tu n’en as pas besoin pour ces deux-là. Aux Studios et à Islands of Adventure, je n’achèterais pas de pass sans l’avantage d’un hôtel. En arrivant tôt, tu atteins sans pass les attractions de la liste rope drop, donc VelociCoaster, Ripsaw Falls, Skull Island et Spider-Man. Ce n’est pas le cas de Hagrid’s. C’est mon appréciation d’après les profils horaires. Combien de minutes un pass fait réellement gagner, nous ne le mesurons pas.
+Si tu veux un pass à Epic Universe, ce sera donc l’Express à usage unique. Si tu as fait Mine-Cart Madness et le Battle at the Ministry à l’ouverture, tu n’en as pas besoin pour ces deux-là. Aux Studios et à Islands of Adventure, je n’achèterais pas de pass sans l’avantage d’un hôtel. En arrivant tôt, tu atteins sans pass les attractions de la liste rope drop, donc VelociCoaster, Ripsaw Falls, Skull Island et Spider-Man, mais pas Hagrid’s. C’est mon estimation d’après les profils horaires, car nous ne mesurons pas combien de minutes un pass fait gagner.
 
 ## Quand y aller
 
@@ -272,7 +272,7 @@ Volcano Bay commence sa pause hivernale le 26 octobre 2026 et doit, selon Univer
 
 Les clients des hôtels Universal peuvent entrer jusqu’à une heure avant l’ouverture dans l’un des parcs, sur une sélection d’attractions. Lesquelles dépend du jour et figure dans l’appli d’Universal. Les détenteurs d’un pass annuel Premier ou Preferred ont aussi ce droit. Pour les détenteurs d’un pass annuel, Universal cite à Islands of Adventure, jusqu’au 30 novembre, Forbidden Journey, Flight of the Hippogriff, VelociCoaster, Ollivanders et Hagrid’s.
 
-Une journée à Islands of Adventure sans hôtel, je l’organiserais ainsi : à l’ouverture, tu vas à VelociCoaster, parce que c’est là que, d’après l’analyse du rope drop, le départ matinal rapporte le plus. Ensuite Hagrid’s, puis Forbidden Journey. À midi, c’est le tour des attractions aquatiques, puisque tu sèches de toute façon au soleil ensuite. Avec un hôtel, cela dépend des attractions qu’Universal libère ce jour-là dans l’appli pour l’Early Park Admission. Si VelociCoaster ou Hagrid’s figure sur la liste, tu la fais pendant l’heure avant l’ouverture et l’autre à l’ouverture.
+Une journée à Islands of Adventure sans hôtel, je l’organiserais ainsi : à l’ouverture, tu vas à VelociCoaster, parce que c’est là que, d’après l’analyse du rope drop, le départ matinal rapporte le plus. Ensuite Hagrid’s, puis Forbidden Journey. À midi, c’est le tour des attractions aquatiques. Avec un hôtel, cela dépend des attractions qu’Universal libère ce jour-là dans l’appli pour l’Early Park Admission. Si VelociCoaster ou Hagrid’s figure sur la liste, tu la fais pendant l’heure avant l’ouverture et l’autre à l’ouverture.
 
 À Epic Universe, tu vas à l’ouverture à Super Nintendo World pour Mine-Cart Madness, puis au Ministry of Magic. Stardust Racers a, dans nos mesures, la file la plus courte des deux, et tu gardes la montagne russe en duel pour l’après-midi.
 
@@ -341,7 +341,7 @@ La météo des prochains jours au resort, et ce qu’elle change pour les attrac
 
 ```
 
-L’autre grand parc d’Orlando est le Magic Kingdom, qui a dans nos données le temps d’attente typique le plus court des quatre parcs Disney de Floride : [Magic Kingdom, temps d’attente et conseils](/blog/magic-kingdom-temps-d-attente-conseils).
+Dans nos mesures, le Magic Kingdom a le temps d’attente typique le plus court des quatre parcs Disney de Floride : [Magic Kingdom, temps d’attente et conseils](/blog/magic-kingdom-temps-d-attente-conseils).
 
 — Patrick
 

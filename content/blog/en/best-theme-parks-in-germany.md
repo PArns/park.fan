@@ -2,17 +2,14 @@
 title: 'The Best Theme Parks in Germany 2026'
 translationKey: best-theme-parks-germany
 date: '2026-10-03'
-updatedAt: '2026-10-04'
+updatedAt: '2026-10-13'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  park.fan lists nine theme parks in Germany, and we measure the queues at
-  seven. In September Europa-Park won the Golden Ticket Award for best park in
-  the world for the eleventh time, but you wait longest at Phantasialand and
-  shortest at Plopsaland. One ranking for coaster fans, one for families with
-  small children, plus height limits, fast passes, getting there, time of day
-  and day of the week.
+  In September Europa-Park won the Golden Ticket Award for best park in the world for the eleventh
+  time, but you wait longest at Phantasialand and shortest at Plopsaland. I sort the parks into two
+  rankings, one for coaster fans and one for families with small children.
 tags:
   - theme-park
   - germany
@@ -57,16 +54,13 @@ parkLinks:
   - legoland-deutschland
 ---
 
-park.fan lists **nine theme parks in Germany**. At seven of them we measure the wait times,
+park.fan lists **nine theme parks in Germany**. At six of them we measure the wait times,
 ride by ride. Not a single number comes in for [Hansa-Park](ref:hansa-park), because the park
-only shows them in its own app. For [Traumatica](ref:traumatica) we have just four measured
-days, and [Rulantica](ref:rulantica) is a water world. Both belong to the Europa-Park resort and
+only shows them in its own app. [Traumatica](ref:traumatica), for which we have only four measured days so far, and the water world
+[Rulantica](ref:rulantica) belong to the Europa-Park resort and
 so don’t appear as parks of their own.
 
-A single ranking would be unfair. A coaster fan and a family with a four-year-old aren’t looking
-for the same park, and both want to know how long they’ll queue. Rust is the park for coasters,
-Brühl for theming, and a child under ten goes to Günzburg. Whether you stand in a queue longer
-than the drive there, at any of the three, depends on the time of day, the weekday and the month.
+There are two rankings, one for coaster fans and one for families with children under ten.
 
 ## How I sort them
 
@@ -77,8 +71,7 @@ are our own measurement, as of 3 October 2026, and the technical data comes from
 the Roller Coaster DataBase and from our guides to the individual parks, which are linked further
 down.
 
-I leave prices out. They depend on the day, advance booking and season, and any figure would be
-out of date by the time this goes up. The park guides list them with a date.
+I leave prices out. The park guides list them with a date.
 
 ## The seven parks at a glance
 
@@ -96,7 +89,7 @@ out of date by the time this goes up. The park guides list them with a date.
 
 **1. [Europa-Park](ref:europa-park), Rust.** On 12 September 2026 the park won the Golden Ticket
 Award for “Best Park” in Austin for the eleventh time. Industry people voted, not the public.
-The ride list backs up the spot anyway: fourteen roller coasters, among them
+The park has fourteen roller coasters, among them
 [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac), which is ninth in Amusement
 Today’s steel coaster ranking, and the [Silver Star](ref:europa-park/silver-star). The Silver
 Star is 73 metres tall, runs at 127 km/h and shares both titles with Kärnan at Hansa-Park. With
@@ -112,9 +105,8 @@ Coasters International out of 21,000 beams and two million nails. The list goes 
 [blue fire](ref:europa-park/blue-fire-megacoaster), the park’s first launch coaster from 2009,
 the [Eurosat](ref:europa-park/eurosat-cancan-coaster), which has been running in the dark inside
 its silver sphere since 1989, and the water coaster
-[Poseidon](ref:europa-park/water-rollercoaster-poseidon). If you want to ride all fourteen in a
-day, bring good shoes. The themed areas are built as countries and strung out in a long chain,
-and the walk from Croatia to Ireland drags on like a Saturday at Ikea with no shortcut.
+[Poseidon](ref:europa-park/water-rollercoaster-poseidon). The themed areas are built as countries and strung out in a long chain. If you want to
+ride all fourteen coasters in a day, you walk a long way, from Croatia to Ireland for instance.
 
 The park doesn’t sell a fast pass. There are single-rider queues at six attractions, a free
 Virtual Line in the app for some rides and, for hotel guests, early entry 45 minutes ahead of
@@ -126,16 +118,13 @@ plus Silver Lake City with tipis, covered wagons and log cabins.
 **2. [Phantasialand](ref:phantasialand), Brühl.** The theming is the best of the parks on this list.
 [Taron](ref:phantasialand/taron) is eighth in the steel coaster ranking, and
 [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) was named best water ride in a park by
-Amusement Today for the fourth time. Against that stand eight headliners that 2.1 million guests
-a year are spread across, and you notice it in the queue. The park still gets second place
-because here the ride comes as part of a village and not as scaffolding on a meadow.
+Amusement Today for the fourth time. Its 2.1 million guests a year are spread across eight headliners, so the queues are long. The park
+still gets second place because its rides are built into the themed areas.
 
 Taron launches you twice through Klugheim, a village of basalt columns that doubles as the queue.
 [F.L.Y.](ref:phantasialand/fly) in Rookburgh is a flying coaster you board standing up and ride
-lying on your stomach, through a Victorian aviators’ workshop I’d pay to walk around even if
-there were no ride at the end of it. [Black Mamba](ref:phantasialand/black-mamba) is an inverted
-coaster from 2006 that passes so close to rocks and huts that you duck at every element, even
-though it makes no difference. Add the mine train
+lying on your stomach, through a Victorian aviators’ workshop. [Black Mamba](ref:phantasialand/black-mamba) is an inverted
+coaster from 2006 that passes close to rocks and huts. Add the mine train
 [Colorado Adventure](ref:phantasialand/colorado-adventure) from 1996, the two spinning coasters
 Winja’s Fear and Winja’s Force and the 65-metre tower [Mystery Castle](ref:phantasialand/mystery-castle).
 
@@ -180,8 +169,8 @@ and at more than 60 metres lets the train drop backwards a little before the fir
 100 km/h in 1.4 seconds and later drops at 97 degrees, past vertical.
 [Nessie](ref:hansa-park/nessie) by Anton Schwarzkopf has run since 1980 and was Europe’s biggest
 looping coaster at the time. The Highlander is 120 metres tall and took the record off Scream in
-Soltau in 2019, which nobody in Lower Saxony likes to hear. In October, Herbstzauber am Meer turns
-the park over to around 2,000 illuminated figures, in 2026 from 10 to 25 October until 9 pm. You
+Soltau in 2019. For Herbstzauber am Meer around 2,000 illuminated figures stand in the park, in 2026 from
+10 to 25 October, open until 9 pm. You
 can get there on the regional train from Lübeck to Sierksdorf and a ten-minute walk, or by car on
 the A1. In 2027 the park turns fifty and is building an 86-metre observation tower for it.
 
@@ -194,13 +183,13 @@ The park has eight roller coasters. The biggest is
 Rides from 2017: 40 metres tall, 90 km/h, 130 centimetres minimum, and before it sets off the
 train is flung forwards and back three times until it has enough speed for the first hill.
 [The Bandit](ref:movie-park-germany/the-bandit) from 1999 was Germany’s only wooden coaster when it
-opened, and after 27 years it rattles so hard that I have a headache after the second ride. The
+opened, and after 27 years it rattles hard. The
 [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) from 2021 is a coaster dark
 ride by Intamin with two launches and a turntable, and
 [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory) has the longest queue in the
 park, because the ride only gets through 848 people an hour.
 
-The park’s big nights come in autumn. In 2026 the Halloween Horror Festival runs from 26 September
+In 2026 the Halloween Horror Festival runs from 26 September
 to 8 November, and 8 November is also the last day of the season. Since September the park opens
 only Thursday to Sunday outside the holidays. From 27 November to 5 January Movie Park’s Hollywood
 Christmas follows.
@@ -212,21 +201,18 @@ list, served by the RE14 from Essen and the RB43 from Dortmund.
 
 **1. [Legoland Deutschland](ref:legoland-deutschland), Günzburg.** The park has been open since 2002. In winter 2026/27 it opens on selected days between November and January for the fourth
 time, with an ice rink and shows, and most outdoor rides then say “open depending on weather”.
-There are individual closing days in May, June and September 2026, so it’s worth checking the
-calendar before you travel.
+There are individual closing days in May, June and September 2026.
 
 The park has eleven themed areas, the newest being Lego Mythica from 2023. That’s where you’ll find
 [Maximus](ref:legoland-deutschland/maximus-the-guardians-flight), a wing coaster by Bolliger &
 Mabillard and the first in any Legoland: 17 metres tall, 54 km/h, from 120 centimetres with an
-adult, and alone from 130 centimetres and age eight. For children it’s the ride that tells them
-they’ve grown. Before that come the [Feuerdrache](ref:legoland-deutschland/fire-dragon) by Zierer
+adult, and alone from 130 centimetres and age eight. Before that come the [Feuerdrache](ref:legoland-deutschland/fire-dragon) by Zierer
 from the opening year, from 110 centimetres and age six with an adult, and the
 [Drachenjagd](ref:legoland-deutschland/dragon-hunt) by Gerstlauer, which takes four-year-olds from
 one metre. [Flying Ninjago](ref:legoland-deutschland/flying-ninjago) is a Sky Fly from 2012 where
-you spin your own gondola round its axis as often as your stomach allows.
+you spin your own gondola round its axis.
 
-According to Wikipedia, Miniland is made of more than 25 million bricks, and not one of them is
-lying on a bedroom floor at night waiting for a bare foot. Wikipedia also puts 2024 attendance at
+According to Wikipedia, Miniland is made of more than 25 million bricks. Wikipedia also puts 2024 attendance at
 around two million. The 2026 season runs from 28 March to 8 November, with Halloween from
 3 October to the end of the season. Here the paid queue skip is called **Fastrack**, in three
 tiers, for 18 attractions and without admission. You can stay in the holiday village right next
@@ -252,8 +238,7 @@ For the parents there’s [Expedition GeForce](ref:plopsaland-deutschland/bigfm-
 an Intamin from 2001 that reaches 120 km/h and, according to the park, has collected more than 40
 awards, among them the Golden Ticket Award for best coaster in Europe. It turns twenty-five in
 2026 and asks for 140 centimetres. Then there’s [Sky Scream](ref:plopsaland-deutschland/sky-scream)
-by Premier Rides, from 140 centimetres and age fourteen. So if you arrive with a toddler and a
-teenager, you get both in one day, and nobody spends hours sitting on a bench.
+by Premier Rides, from 140 centimetres and age fourteen.
 
 In 2026 the park is open every day until 1 November, which it says is the longest season in its
 history. It sells its queue skip as the **Express Pass**, for eight attractions. There’s no hotel
@@ -265,22 +250,18 @@ coasters. The Kleine Zar and the Schlange von Midgard take children from 90 cent
 does the Cornwall Coaster, which opened in 2026.
 
 The [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster) opened on 23 May 2026, 18 metres
-tall, 50 km/h, and the park counts seven launches per lap, forwards and backwards. That’s a lot
-for a family ride. At Hansa-Park many rides set an age next to the height, from which a child may
+tall, 50 km/h, and the park counts seven launches per lap, forwards and backwards. At Hansa-Park many rides set an age next to the height, from which a child may
 ride alone: six on the Schlange von Midgard, eight on the Cornwall Coaster, and not until ten on
 Nessie and the Royal Scotsman. A seven-year-old who is 1.25 metres tall can therefore ride seven of
-the eight coasters, but four of them only with an adult alongside. If you’re the only adult with
-two kids, you ride Nessie twice.
+the eight coasters, but four of them only with an adult alongside.
 
 **[Heide Park](ref:heide-park?bare), Soltau.** It isn’t a family park, but it has a corner for the youngest in Peppa Pig
 Land, and Schorschs Dino-Abenteuer takes children from as little as 86 centimetres. The big rides
-there ask for 140 centimetres. Between 86 and 140 centimetres lie a few years in which a child can
-ride plenty, just none of the rides the parents came for.
+there ask for 140 centimetres.
 
 ## How tall your child needs to be
 
-With children, for me it is often the minimum height that decides the park, not the ride list. These are the
-limits for the big rides as of October 2026, as given by the parks:
+Height limits for the big rides as of October 2026, as given by the parks:
 
 | Park          | 140 cm and up                                  | 130 cm and up                   | Below that                                                                                |
 | ------------- | ---------------------------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------- |
@@ -294,37 +275,25 @@ limits for the big rides as of October 2026, as given by the parks:
 
 On Taron and F.L.Y., 130 centimetres is only enough with an adult alongside; riding alone takes 140. An empty cell means the park has no big ride at that level.
 
-The day is calmer when the child knows beforehand which ride it may not take, and not only after
-forty minutes in the queue in front of the measuring post.
-
 ## Where you queue the shortest
 
-The comparison across all measured days, with the same method of calculation for every park. The
-rows are in the order of the 3 October 2026 measurement and aren’t re-sorted:
+The comparison across all measured days, calculated the same way for every park. The rows are in the order of the 3 October 2026 measurement and aren’t re-sorted:
 
 ```park-comparison-widget slugs=phantasialand,legoland-deutschland,europa-park,heide-park,movie-park-germany,plopsaland-deutschland show=quietest
 
 ```
 
 At Phantasialand the median is highest and at Plopsaland it’s lowest. Europa-Park, Heide Park and
-Movie Park are close together, even though Europa-Park has the largest visitor numbers. It spreads
-them across more rides: the more attractions share the crowd, the shorter the longest queue gets.
+Movie Park are close together, even though Europa-Park has the largest visitor numbers. It spreads them across more rides, so even its longest queue doesn’t get as long.
 
-For Legoland the column with the longest queue is missing. None of the ten rides with the
-highest median reaches the 100 measured days from which we let a ride speak for a whole park.
+For Legoland the column with the longest queue is missing. We only put a ride in that column from 100 measured days, and at Legoland none of the ten rides
+with the highest median reaches that.
 
-How long a queue gets comes down to two numbers: how many people want to ride, and how many the
-ride can carry off in an hour. According to the park, Voltron sends out a train every 36 seconds
-and handles 1,600 riders an hour. Van Helsing’s Factory in Bottrop runs single cars of four and
-manages 848. That’s one open checkout on a Saturday afternoon, and it’s why you queue
-longer in Bottrop at a 36 km/h ride than at the big launch coaster next door. If you plan a park
-around its ride list, always ask how many trains each ride runs as well.
+How long a queue gets also depends on how many riders a ride can carry in an hour. According to the park, Voltron sends out a train every 36 seconds and handles 1,600. Van Helsing’s Factory in Bottrop runs at 36 km/h with single cars of four and manages 848.
 
-A queue skip you can buy doesn’t shorten the wait for everyone. It shifts it, from the people who
-pay to the people who don’t. At Europa-Park, where there isn’t one, our median is therefore close
+A paid queue skip makes the wait longer for everyone without one. At Europa-Park, where there isn’t one, our median is therefore close
 to what everybody experiences. At Phantasialand and Heide Park two groups stand in front of the
-same ride on busy days, and for those without a pass it takes longer than our number alone
-suggests.
+same ride on busy days, and without a pass you wait longer there than our median.
 
 ## Queues by time of day
 
@@ -337,11 +306,10 @@ At Phantasialand the day looks like this, ride by ride, across all measured days
 Taron is busiest at opening and in the last hour, when everyone wants to squeeze in one more
 ride. F.L.Y. is short in the first hour and peaks an hour later, once the rest of the park has
 made it to Rookburgh. Both have their quietest hour in the afternoon. If you want to ride
-both, head for F.L.Y. at opening and save Taron for the afternoon, when half the park is sitting
-over coffee and cake.
+both, head for F.L.Y. at opening and save Taron for the afternoon.
 
-Rust works the other way round. The Eurosat has its longest queue as early as ten in the morning,
-because it’s near the entrance and runs indoors, and when it rains that occurs to everyone at once.
+At Europa-Park the Eurosat has its longest queue as early as ten in the morning, because it’s near
+the entrance and runs indoors, and when it rains everyone heads there at once.
 At Heide Park, Colossos draws the crowds around midday, and at Movie Park the queue for Van
 Helsing’s Factory doesn’t get shorter until evening. The curves for all the other parks are on
 their park pages.
@@ -350,21 +318,17 @@ their park pages.
 
 The quietest weekday is different for each park, and the table above names it. It
 can be empty: for parks that close on several weekdays outside the main season, we don’t compare
-days that rest on different parts of the year. For Heide Park it also holds that a quiet Monday
-in Soltau is usually a closed one. For Hansa-Park the measurement is missing, and only the
-opening calendar helps there, which has no gap in 2026.
+days that rest on different parts of the year.
 
 Saturday is the busiest day at Europa-Park, Phantasialand, Heide Park and Legoland, and in Brühl
 it stands furthest above the rest of the week. There, Sunday is almost as busy; in Rust, Soltau
 and Bottrop it’s one of the quieter days. So if you can only go at the weekend with the kids, go
-on Sunday rather than Saturday, unless you’re heading to Brühl. At Movie Park, Tuesday comes out on
-top because the park is closed on Tuesdays outside the school holidays, and almost all of our
-Tuesdays come from the summer break. At Plopsaland every day is equally quiet, Saturday included.
+on Sunday rather than Saturday, unless you’re heading to Brühl. At Plopsaland every day is equally quiet, Saturday included.
 
-The months give a clearer picture. July and August are the busiest months at almost every park,
+July and August are the busiest months at almost every park,
 and at Phantasialand by a long way. September is one of the quietest in Brühl, Soltau and Bottrop,
 because the summer holidays are over in most German states and the autumn holidays haven’t
-started yet. If you can take time off whenever you like, go in September. The long weekends after
+started yet. The long weekends after
 Ascension Day and Corpus Christi, on the other hand, are packed, and in our data for Europa-Park
 that holds even when it rains.
 
@@ -391,21 +355,19 @@ Europa-Park:
 | Plopsaland Deutschland | Halloween Fright Nights, Fridays and Saturdays in October | not announced                                     |
 | Legoland Deutschland   | Halloween 3 Oct–8 Nov, daytime                            | WinterWonder 28 Nov–10 Jan, on selected days      |
 
-Phantasialand sits Halloween out entirely and makes up for it in winter, with mulled wine, fairy
-lights and Taron in the dark. If you want to go in December, bear in mind that our December
-figures for Brühl and Rust rest on a few days around the turn of the year, the busiest time of
-winter. A Tuesday in early December looks different. All dates and prices are in the
+Phantasialand doesn’t do Halloween, but opens in winter with mulled wine, fairy
+lights and Taron in the dark. Our December figures for Brühl and Rust rest on a few days around the turn of the year, the busiest time of
+winter. All dates and prices are in the
 [Halloween guide](/blog/halloween-theme-parks-2026) and the
 [winter guide](/blog/winter-theme-parks-2026).
 
 ## Two parks on one trip
 
-If you’re coming from further away, you can combine two parks. The distances are straight lines
-between the entrances; the road is always a bit longer.
+The distances are straight lines between the entrances.
 
-- Phantasialand and Movie Park, **91 kilometres.** The most obvious pairing in the country. Both
-  are in North Rhine-Westphalia, both can be reached by train, and they complement each other:
-  theming and long queues in Brühl, shorter queues and Halloween in Bottrop. It works especially
+- Phantasialand and Movie Park, **91 kilometres.** Both
+  are in North Rhine-Westphalia, both can be reached by train. Brühl has the theming and long queues, Bottrop shorter queues and
+  Halloween. It works especially
   well in autumn, because Phantasialand doesn’t do Halloween.
 - Heide Park and Hansa-Park, **131 kilometres.** Soltau is south of Hamburg on the A7, Sierksdorf
   north of it on the A1. Hamburg sits in between, and if you stay there, each day starts with a
@@ -418,16 +380,12 @@ between the entrances; the road is always a bit longer.
   because with fourteen roller coasters and 96 attractions, there’s almost always something left over after
   one day.
 
-Europa-Park and Phantasialand in one weekend, on the other hand, is a bad idea. 288 kilometres as
-the crow flies means a good four hours on the A5 and A61, spent between two parks that each
-deserve a full day.
+I’d advise against Europa-Park and Phantasialand in one weekend. The 288 kilometres as the crow
+flies mean a good four hours’ drive on the A5 and A61.
 
 ## The parks missing here
 
-Germany has more than nine theme parks. Tripsdrill, Fort Fun, Skyline Park, Belantis and
-Freizeitpark Plohn aren’t on park.fan yet. We get no wait times from them, and a ranking built on
-measurements for two thirds of the parks and on my gut feeling for the rest wouldn’t be a ranking.
-When one of them is added, it goes into this list too.
+Tripsdrill, Fort Fun, Skyline Park, Belantis and Freizeitpark Plohn aren’t on park.fan yet, so they’re not in this ranking.
 
 ## Frequently asked questions
 

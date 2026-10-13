@@ -72,18 +72,11 @@ rideLinks:
   - walibi-belgium/popcorn-revenge
 ---
 
-Wer an einem Regentag in einen Freizeitpark fährt, steht im Schnitt kürzer an.
 In allen zwölf Parks, die wir ausgewertet haben, waren die Wartezeiten an den
 Headlinern an Regentagen kürzer als an vergleichbaren trockenen Tagen. Der
 Unterschied reicht von etwa 4 Prozent im Disneyland Paris bis etwa 31 Prozent im
-Movie Park. An so einem Tag lohnen sich in der Regel die überdachten
-Attraktionen. Im Toverland ist die Hälfte der 44 Attraktionen überdacht, in
+Movie Park. Im Toverland ist die Hälfte der 44 Attraktionen überdacht, in
 Walibi Holland keine.
-
-Bahn für Bahn verglichen sind die überdachten Attraktionen in neun Parks, nach
-den Angaben der Parks selbst: Europa-Park, Phantasialand, Efteling, Toverland,
-Movie Park Germany, Plopsaland Deutschland, Heide Park, Walibi Belgium und
-Walibi Holland.
 
 ## Wie wir die Regentage gemessen haben
 
@@ -145,8 +138,7 @@ Setzt man die Grenze auf 5 Millimeter, sind die Wartezeiten an Regentagen
 weiterhin in allen zwölf Parks kürzer. Wie viel kürzer, schwankt dann stark, weil
 es nur noch wenige solche Tage gibt: Im Europa-Park sind es an acht Tagen etwa
 23 Prozent, im Movie Park an sechs Tagen etwa 27. Als Rangliste würde ich die
-Tabelle deshalb nicht lesen. Sicher ist, dass es in keinem der zwölf Parks an
-Regentagen voller war.
+Tabelle deshalb nicht lesen.
 
 Mit der Zahl der überdachten Attraktionen hat der Unterschied wenig zu tun. In
 Walibi Holland liegt keine Attraktion in einer Halle, und an Regentagen war die
@@ -180,9 +172,7 @@ zusammen, nach Monaten:
 | August     |                          185 |                            18 % |
 | September  |                          162 |                            16 % |
 
-Das ist nur ein Jahr. 2026 war der Juli trocken, Mai und Juni waren nass. 2027
-kann das ganz anders aussehen. Als grobe Richtung reicht es trotzdem: In der
-Hauptsaison war etwa jeder fünfte Öffnungstag verregnet, in einzelnen Monaten
+Die Zahlen stammen aus einem einzigen Jahr, und 2026 war der Juli trocken, Mai und Juni waren nass. In der Hauptsaison war etwa jeder fünfte Öffnungstag verregnet, in einzelnen Monaten
 jeder dritte.
 
 ## Europa-Park
@@ -242,9 +232,7 @@ Pferdekarussell, Die 3 Mausketiere und das Verrückte Hotel Tartüff.
 
 ![Ein riesiger Tontopf mit offenem Deckel, daran lehnt eine Leiter | In der Halle von Winja's Fear & Force in Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
-Taron, Black Mamba und die anderen großen Achterbahnen fahren im Freien. Bei
-Dauerregen bleiben dir in Brühl drei Achterbahnen unter Dach: die beiden in Wuze
-Town und Crazy Bats.
+Taron, Black Mamba und die anderen großen Achterbahnen fahren im Freien.
 
 ```ride-waits-widget rides=phantasialand/winjas-fear|Winja's Fear|Spinning Coaster;phantasialand/winjas-force|Winja's Force|Spinning Coaster;phantasialand/mystery-castle|Mystery Castle|Drop Tower;phantasialand/maus-au-chocolat|Maus au Chocolat|Dark Ride;phantasialand/crazy-bats|Crazy Bats|Indoor-Coaster columns=type,peak,days
 
@@ -271,12 +259,7 @@ Diorama und das Efteling Museum.
 
 ![Der Eingang von Droomvlucht bei Nacht, rosa und grün angeleuchtet | Bei Tag ist diese Wand weiß. | right](/media/efteling/droomvlucht.jpg)
 
-Joris en de Draak, Baron 1898 und Python fahren im Freien. Wer wegen der
-Achterbahnen kommt, packt eine Regenjacke ein und fährt, was gerade offen ist.
-Wer Dark Rides mag, kommt im Efteling auch ohne Außenbahnen gut durch einen
-Regentag. Ob eine überdachte Bahn gerade wegen Wartung geschlossen ist, steht auf
-ihrer Seite und im Kalender des Parks. Wer wegen der Dark Rides hinfährt, sieht
-am besten am Abend vorher nach.
+Joris en de Draak, Baron 1898 und Python fahren im Freien. Ob eine überdachte Bahn wegen Wartung geschlossen ist, steht auf ihrer Seite und im Kalender des Parks, und dort siehst du am besten am Abend vorher nach.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Hängebahn;efteling/symbolica|Symbolica|Trackless Ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Indoor-Coaster columns=type,peak,days
 
@@ -309,10 +292,6 @@ Troy, Fēnix, Booster Bike und Dwervelwind fahren im Freien. Im Wirbelbaum, eine
 13 Meter hohen Riesenrad, bestimmst du selbst, wie wild sich dein Korb dreht.
 Djinn, ein 12,8 Meter hohes Kettenkarussell ab 100 Zentimetern, dreht sich über
 dem orientalischen Markt im Land van Toos.
-
-An Regentagen waren die Wartezeiten im Toverland um 13 Prozent kürzer. Mit
-kleinen Kindern ist der Park an so einem Tag eine gute Wahl. Wer wegen Troy und
-Fēnix kommt, packt eine Regenjacke ein.
 
 ```ride-waits-widget rides=attractiepark-toverland/toos-express|Toos-Express|Familienachterbahn;attractiepark-toverland/villa-fiasko|Villa Fiasko|Funhouse;attractiepark-toverland/wirbelbaum|Wirbelbaum|Riesenrad columns=type,peak,days
 
@@ -363,9 +342,6 @@ Freien. Mit kleinen Kindern hast du an einem Regentag in der Halle genug zu tun.
 Für Jugendliche, die wegen der Achterbahnen kommen, bleibt unter Dach nur
 Tabaluga's Rollercoaster, eine Familienachterbahn.
 
-Ob die Halle die 16 Prozent erklärt, lässt sich mit neun Regentagen nicht
-sagen.
-
 ```ride-waits-widget rides=plopsaland-deutschland/tabalugas-rollercoaster|Tabaluga's Rollercoaster|Familienachterbahn;plopsaland-deutschland/mias-elf-flight|Mia's Elf Flight|Kinderfahrt;plopsaland-deutschland/the-smurfs-adventure|The Smurfs' Adventure|Dark Ride columns=type,peak,days
 
 ```
@@ -381,7 +357,7 @@ ist die **Drachengrotte** im Bereich Exploria.
 
 In den Heide Park fährst du bei Regen am besten dann, wenn du ohnehin wegen
 Colossos und der anderen Außenbahnen kommst und auf einen trockenen Nachmittag
-hoffst. Regnet es den ganzen Tag, hast du drei überdachte Attraktionen.
+hoffst.
 
 ```ride-waits-widget rides=heide-park/ghostbusters-5d|Ghostbusters 5D|Simulator;heide-park/daemonen-gruft|Dämonen Gruft|Dark Ride columns=type,peak,days
 
@@ -408,8 +384,6 @@ dieselbe Strecke rückwärts zurück. Sie ist die einzige überdachte Achterbahn
 Park, Kondaa, Vampire und Cobra fahren im Freien. Überdacht sind außerdem der
 Palais du Génie und das Spinning Taxi.
 
-An Regentagen waren die Wartezeiten in Walibi Belgium um 13 Prozent kürzer.
-
 ```ride-waits-widget rides=walibi-belgium/turbine|Turbine|Shuttle Coaster;walibi-belgium/popcorn-revenge|Popcorn Revenge|Dark Ride;walibi-belgium/challenge-of-tutankhamon|Challenge of Tutankhamon|Dark Ride columns=type,peak,days
 
 ```
@@ -421,9 +395,7 @@ Mehr zum Park im [Walibi-Belgium-Guide](/blog/walibi-belgium-wartezeiten-tipps).
 In [Walibi Holland](ref:walibi-holland) in Biddinghuizen liegt keine der 39
 Attraktionen in einer Halle. Als der Park im April 2026 seinen Winterbetrieb
 eingestellt hat, nannte Geschäftsführerin Mascha Taminiau die Abhängigkeit vom
-Wetter als einen der Gründe. An Regentagen waren die Wartezeiten dort um 6
-Prozent kürzer. Für einen Tag, an dem es durchregnet, würde ich nicht nach
-Biddinghuizen fahren.
+Wetter als einen der Gründe.
 
 Mehr zum Park im [Walibi-Holland-Guide](/blog/walibi-holland-untamed-hard-gaan).
 
@@ -535,7 +507,7 @@ Zwischen dem 24. Dezember 2025 und dem 5. Oktober 2026 fielen je nach Park an 15
 bis 26 Prozent der Öffnungstage mindestens 2 Millimeter Regen. In Europa-Park,
 Phantasialand, Efteling, Movie Park, Plopsaland und Heide Park war von April bis
 September der Juli am trockensten (10 Prozent der Öffnungstage) und der Juni am
-nassesten (32 Prozent). Das ist ein einziges Jahr, kein langjähriger Schnitt.
+nassesten (32 Prozent). Die Zahlen stammen aus einem einzigen Jahr.
 
 ## Quellen & Weiterlesen
 

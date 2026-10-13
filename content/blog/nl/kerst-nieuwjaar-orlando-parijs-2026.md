@@ -2,15 +2,12 @@
 title: 'Kerst en oud en nieuw 2026 in Orlando en Disneyland Paris'
 translationKey: christmas-new-year-orlando-paris-2026
 date: '2026-10-04'
+updatedAt: '2026-10-13'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In Orlando is de week tussen Kerst en Nieuwjaar de drukste periode die we ooit
-  in die parken hebben gemeten, in alle zeven. In Parijs niet. Plus de data: 25
-  avonden Very Merry Christmas Party, 15 avonden Jollywood Nights, elke avond
-  Candlelight Processional, 51 dagen Universal en een Parijs' seizoen dat op 7
-  november begint.
+  In alle zeven parken in Orlando was de week tussen Kerst en Nieuwjaar 2025 drukker dan elke andere maand die we daar hebben gemeten. In Parijs niet. Plus de data van de kerstevenementen bij Disney en Universal en van het seizoen in Parijs, dat op 7 november begint.
 tags:
   - kerst
   - oud-en-nieuw
@@ -49,8 +46,8 @@ seo:
 ---
 
 Van 24 tot en met 31 december 2025 hebben we elke dag gemeten, in Orlando en in
-Parijs. In Orlando is die week in **alle zeven parken** de drukste regel van de
-hele jaartabel: in het [Magic Kingdom](ref:magic-kingdom-park), in
+Parijs. In Orlando was die week in **alle zeven parken** drukker dan elke andere maand
+van het jaar: in het [Magic Kingdom](ref:magic-kingdom-park), in
 [EPCOT](ref:epcot), in de
 [Hollywood Studios](ref:disneys-hollywood-studios), in het
 [Animal Kingdom](ref:disneys-animal-kingdom-theme-park), in de
@@ -58,19 +55,13 @@ hele jaartabel: in het [Magic Kingdom](ref:magic-kingdom-park), in
 [Islands of Adventure](ref:universal-islands-of-adventure) en in het
 [Epic Universe](ref:universal-epic-universe).
 
-Parijs zet diezelfde week ergens anders neer. In het
-[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) ligt hij op het
-jaargemiddelde, en in de
-[Disney Adventure World](ref:disney-adventure-world) is het de **rustigste regel
-van het jaar**.
+In Parijs lag diezelfde week in het
+[Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) op het
+jaargemiddelde, en in de [Disney Adventure World](ref:disney-adventure-world)
+was hij **rustiger dan elke andere maand van het jaar**.
 
-Beide bestemmingen vieren ongeveer even
-lang Kerst, beide adverteren dezelfde weken, en op de vraag wat je op 28
-december te wachten staat geven ze een heel ander antwoord. De data komen telkens van
-de officiële pagina van het park.
-
-> **Over de data:** dit is de stand van 4 oktober 2026. Ook tijden en prijzen
-> komen van de officiële pagina's, gelinkt onderaan bij de bronnen. Parken
+> **Over de data:** dit is de stand van 4 oktober 2026. Data, tijden en prijzen
+> komen van de officiële pagina's van de parken, gelinkt onderaan bij de bronnen. Parken
 > schuiven avonddata tot ver in november nog heen en weer. Even controleren
 > voordat je boekt.
 
@@ -79,9 +70,7 @@ de officiële pagina van het park.
 Disney legt het kerstseizoen in Orlando op **13 november 2026 tot 6 januari
 2027**. Twee van de vier parken hebben in die weken ook nog een avondevenement
 met een apart kaartje, en allebei beginnen ze vóór de officiële seizoensstart:
-de Very Merry Christmas Party op 8 november, de Jollywood Nights op de 7e. Die
-vijf of zes dagen voorsprong zijn ook de reden dat de eerste feestavonden steeds
-de goedkoopste zijn.
+de Very Merry Christmas Party op 8 november, de Jollywood Nights op de 7e. De eerste feestavonden zijn steeds de goedkoopste.
 
 ### Mickey's Very Merry Christmas Party: 25 avonden
 
@@ -99,7 +88,7 @@ betalen tien dollar minder. Jaarkaarthouders en leden van de Disney Vacation
 Club krijgen nog eens tien dollar korting, maar alleen op geselecteerde avonden
 van 8 tot 20 november en van 29 november tot 3 december.
 
-Daarvoor krijg je: Mickey's Once Upon a Christmastime Parade, het vuurwerk
+In het kaartje zitten Mickey's Once Upon a Christmastime Parade, het vuurwerk
 Minnie's Wonderful Christmastime, de theatershow Mickey's Most Merriest
 Celebration bij Cinderella Castle, sneeuwval op Main Street en koekjes en warme
 dranken op vaste plekken in het park zonder bijbetaling. Vijf attracties krijgen
@@ -109,16 +98,14 @@ ander binnenlicht, de Tomorrowland Speedway en de Mad Tea Party. De Jungle
 Cruise vaart heel december als Jingle Cruise, ook overdag en zonder
 feestkaartje.
 
-Parade, vuurwerk en de kasteelshow vervallen alle drie bij wind en onweer. In
-Florida is dat in december zeldzaam, maar het staat in Disney's eigen kleine
-lettertjes, en wel bij alle drie apart.
+Parade, vuurwerk en de kasteelshow vervallen bij wind en onweer, en Disney
+vermeldt dat bij alle drie. In december is dat in Florida zeldzaam.
 
 ### EPCOT: Festival of the Holidays en de Candlelight Processional
 
 Het **EPCOT International Festival of the Holidays** loopt van **27 november tot
 30 december** en kost niets extra. In World Showcase vertellen verhalenvertellers
-de kerstgebruiken van hun paviljoen, en die bezetting is concreter dan deze zin
-klinkt: Las Posadas met Mariachi Cobre in Mexico, een ondeugende schuurkerstman
+de kerstgebruiken van hun paviljoen: Las Posadas met Mariachi Cobre in Mexico, een ondeugende schuurkerstman
 in Noorwegen, Micha's Adventskalender als poppentheater in Duitsland, La Befana
 in Italië, een chanoekaverteller tussen Marokko en Frankrijk, Père Noël in
 Frankrijk, Father Christmas in het Verenigd Koninkrijk. China gebruikt dezelfde
@@ -134,9 +121,9 @@ Harris, Lauren Daigle, Ralph Macchio, Henry Winkler, Lacey Chabert, Jodi Benson,
 Simu Liu en tot slot Eva Longoria van 28 tot 30 december. Voor 2 en 3 december en
 voor 13 en 14 december staat er nog “To Be Announced”.
 
-De toegang is gratis, een zitplaats niet altijd. Wil je zeker zitten, boek dan
-het Candlelight Processional Dining Package, een maaltijd in een van de
-EPCOT-restaurants met gegarandeerde plaats.
+De toegang is gratis, maar een zitplaats is niet gegarandeerd. Die heb je wel
+met het Candlelight Processional Dining Package, een maaltijd in een van de
+EPCOT-restaurants.
 [Living with the Land](ref:epcot/living-with-the-land) vaart in deze weken als
 Glimmering Greenhouses, met lichtjes in de kassen.
 
@@ -153,11 +140,9 @@ Vijftien avonden van **7 november 2026 tot 5 januari 2027**:
 Ook hier vijf uur, van 19.30 tot 0.30 uur, toegang vanaf 17.30 uur. Het kaartje
 kost **169 tot 199 Amerikaanse dollar plus belasting**, kinderen van drie tot
 negen jaar tien dollar minder, en de korting voor jaarkaarten en DVC geldt hier
-op **alle** avonden in plaats van op geselecteerde. Kies je tussen de twee
-evenementen op prijs, dan ben je op een Jollywood-avond goedkoper uit.
+op **alle** avonden in plaats van op geselecteerde.
 
-Overdag draait het programma in de Hollywood Studios zonder extra kaartje:
-Sunset Seasons Greetings projecteert elke avond op het Hollywood Tower Hotel,
+Zonder extra kaartje projecteert Sunset Seasons Greetings elke avond op het Hollywood Tower Hotel,
 Toy Story Land krijgt bovenmaatse versiering, en de Frozen-meezingshow krijgt
 een kerstfinale met Olaf.
 
@@ -171,16 +156,14 @@ kerstboom van ruim 16 meter, en in Harambe hangen slingers van gerecycled
 materiaal en Afrikaanse stoffen.
 
 In Disney Springs loopt de **Christmas Tree Stroll**, een wandeling langs
-uitbundig versierde bomen, plus de kerstman om mee op de foto te gaan. Allebei
-kosten ze geen entree, want Disney Springs heeft die niet. Voor een middag
-waarop je geen zin hebt om aan te sluiten, is dat het goedkoopste uur Kerst in
-Orlando.
+uitbundig versierde bomen, plus de kerstman om mee op de foto te gaan. Allebei kosten ze geen entree.
 
-## Universal Orlando: 51 dagen, drie parken, voor het eerst met Epic Universe
+## Universal Orlando: 14 november tot 3 januari
 
 Universal heeft het seizoen dit jaar een week naar voren gehaald en viert van
-**14 november 2026 tot 3 januari 2027**. Dat zijn 51 dagen, zes meer dan in 2025. Anders dan bij Disney heeft geen van de onderdelen hieronder een extra
-kaartje nodig: alles zit in de gewone parkentree.
+**14 november 2026 tot 3 januari 2027**. Dat zijn 51 dagen, zes meer dan in 2025. Anders dan bij Disney hebben Grinchmas, de Wizarding World, de parade en de
+kerstversiering in het Epic Universe geen extra kaartje nodig, ze zitten in de
+gewone parkentree.
 
 **Grinchmas** staat waar het altijd staat, in Seuss Landing op de Islands of
 Adventure, met de “Grinchmas Who-liday Spectacular” als theatershow naar het
@@ -198,13 +181,13 @@ featuring Macy's** door de straten, met de grote ballonnen uit de New Yorkse
 Thanksgiving-parade en wagens voor Despicable Me, Shrek en Madagascar. Aan het
 eind ontsteekt de kerstman de boom.
 
-Nieuw is het **Epic Universe**. In de tweede winter van het park krijgen SUPER
+In het **Epic Universe**, in de tweede winter van het park, krijgen SUPER
 NINTENDO WORLD en How to Train Your Dragon – Isle of Berk voor het eerst
 kerstversiering, en Celestial Park wordt weer een winterwonderland, met verlichte
 bomen en kerstelijke waterspelen bij de Cosmos Fountain. Voor de Isle of Berk
 gebruikt Universal de naam **Snoggletog**, het winterfeest uit de Draken-films.
 
-Wil je meer, boek dan de **Universal Holiday Tour**, tweeënhalf uur rondleiding
+Daarnaast kun je de **Universal Holiday Tour** boeken, tweeënhalf uur rondleiding
 met een ontmoeting met de Grinch en zijn hond Max, een gereserveerde plaats voor
 de Grinchmas-show, een ontmoeting met de kerstman en desgewenst een
 gereserveerd vak voor de parade. Hij vereist een park-to-park-kaartje voor de
@@ -213,7 +196,7 @@ januari 2027.
 
 ## Disneyland Paris: 7 november tot 6 januari
 
-Parijs begint van de drie het vroegst. **Disney Betoverende Kerst**
+**Disney Betoverende Kerst**
 loopt van **7 november 2026 tot 6 januari 2027** in beide parken.
 
 In het Disneyland Park trekt **Mickey's Dazzling Christmas Parade** twee keer per
@@ -227,25 +210,20 @@ wachtrij nodig.
 
 Nieuw deze winter is Kerst in **World of Frozen**, het themagebied dat de Disney
 Adventure World in 2026 heeft geopend. Arendelle viert daar zijn eerste Kerst,
-met slingers, adventskransen en de Arendelle Carollers, een kerstkoor. Reis je
-met kinderen die sinds de zomer over
-[Frozen Ever After](ref:disney-adventure-world/frozen-ever-after) praten, dan is
-dat je reden om het tweede park niet als halve dag in te plannen.
+met slingers, adventskransen en de Arendelle Carollers, een kerstkoor. Met kinderen die
+[Frozen Ever After](ref:disney-adventure-world/frozen-ever-after) kennen, zou ik
+de Disney Adventure World niet als halve dag inplannen.
 
 De parade zit in het parkticket. Een gereserveerde plek ervoor verkoopt Disney
 apart, zolang de voorraad strekt.
 
-## Hoe druk het echt wordt
+## Hoe druk het tussen Kerst en Nieuwjaar wordt
 
-**Onze decemberregel voor deze negen parken is geen maandgemiddelde.** Hij staat
-op precies acht meetdagen, 24 tot en met 31 december 2025, en daarvoor hebben we
-in Orlando en Parijs niets gemeten. Vanaf januari 2026 is de reeks aaneengesloten,
-28 tot 31 dagen per maand. **Uit november 2025 hebben we voor geen van de negen
-parken ook maar één meetdag**, en daardoor staat er in onze tabel niets over de
-eerste helft van het kerstseizoen.
-
-Wat die acht dagen wel heel precies beschrijven, is de week tussen Kerst en
-Nieuwjaar. Daar gaat het hier om.
+**December hebben we in deze negen parken maar op acht dagen gemeten**, 24 tot en
+met 31 december 2025. Daarvoor maten we in Orlando en Parijs niet. Sinds januari
+2026 hebben we 28 tot 31 dagen per maand. **Uit november 2025 hebben we voor geen
+van de negen parken cijfers**, en ook niet voor de eerste helft van het
+kerstseizoen.
 
 **Magic Kingdom, typische wachttijd per maand**
 
@@ -253,21 +231,19 @@ Nieuwjaar. Daar gaat het hier om.
 
 ```
 
-De decemberregel ligt boven elke andere, en het gat met februari en maart, de
+December ligt boven elke andere maand, en het gat met februari en maart, de
 twee eerstvolgende drukke maanden, is groter dan het gat tussen februari en de
 rustigste zomermaand. In de dagenkolom staat bij elke regel op hoeveel meetdagen
 hij berust.
 
-Op de Islands of Adventure is het nog duidelijker. December is daar de enige
-regel in alle negen parken die ons model in de hoogste band zet.
+Op de Islands of Adventure is december de enige maand in alle negen parken die
+ons model in de hoogste band zet.
 
 **Universal Islands of Adventure, typische wachttijd per maand**
 
 ```stats-widget slug=universal-islands-of-adventure show=months
 
 ```
-
-Voor Parijs gelden dezelfde periode, dezelfde acht dagen, dezelfde methode.
 
 **Disneyland Park Parijs, typische wachttijd per maand**
 
@@ -282,13 +258,12 @@ Voor Parijs gelden dezelfde periode, dezelfde acht dagen, dezelfde methode.
 ```
 
 In het Disneyland Park ligt de week tussen Kerst en Nieuwjaar op het niveau van
-een gewone zomermaand. In de Disney Adventure World is het de laagste regel van
-de hele tabel, lager dan elke maand van het jaar.
+een gewone zomermaand. In de Disney Adventure World is hij rustiger dan elke andere maand van het jaar.
 
-Twee verklaringen liggen voor de hand, en allebei zijn ze aan andere cijfers te
-toetsen. De eerste is de capaciteit: het Magic Kingdom heeft 37 actieve
+Een reden is waarschijnlijk de capaciteit. Het Magic Kingdom heeft 37 actieve
 attracties, de Disney Adventure World 14, en de Parijse parken verdelen hun
-gasten over twee ingangen op hetzelfde terrein. De tweede is het verzorgingsgebied.
+gasten over twee ingangen op hetzelfde terrein.
+
 Orlando leeft in die week van gasten die gevlogen zijn en een week hebben
 geboekt; Parijs ligt voor een groot deel van zijn bezoekers twee treinuren weg,
 en een dagje uit op 28 december concurreert met de rest van de feestdagen.
@@ -299,10 +274,9 @@ Naast elkaar zien de negen parken er zo uit, elk met de rustigste weekdag:
 
 ```
 
-Veel heb je tussen Kerst en Nieuwjaar niet aan die weekdagkolom. In die week
-zijn alle dagen vakantiedagen, en de rustigste weekdag van het jaar is dan nog
-maar een weekdag. Voor de weken ervoor is de kolom bruikbaar, en daar ligt de
-hele eerste seizoenshelft.
+Tussen Kerst en Nieuwjaar heb je weinig aan die weekdagkolom, omdat in die week
+alle dagen vakantiedagen zijn. Voor de weken ervoor, de eerste seizoenshelft,
+is de kolom bruikbaar.
 
 De dagen die onze kalender voor de komende weken als rustig aanmerkt:
 
@@ -310,14 +284,10 @@ De dagen die onze kalender voor de komende weken als rustig aanmerkt:
 
 ```
 
-Voor elk park staat dezelfde kalender op zijn eigen parkpagina, met elke
-openingsdag apart. Neem hem voor december 2026 met een korrel zout: van december
-zitten er tot nu toe alleen die acht vakantiedagen in het model, en uit acht
-dagen tussen Kerst en Nieuwjaar leert het weinig over de tweede advent.
+Voor elk park staat dezelfde kalender op zijn eigen parkpagina, met elke openingsdag apart, en ernaast het hele seizoen de actuele wachttijden. Voor december 2026 is hij onzeker, omdat de enige decemberdagen in het model tot
+nu toe die acht vakantiedagen zijn, en geen enkele uit de advent.
 
 ## Oudjaarsavond
-
-Hier zijn de drie bestemmingen verschillend ver.
 
 **Disneyland Paris** heeft zijn programma gepubliceerd en viert in beide parken
 apart. In de Disney Adventure World draait een vuurwerk- en droneshow rond
@@ -333,21 +303,17 @@ staan niet op de pagina, en ook niet in het persbericht van 6 augustus.
 **Walt Disney World** heeft op zijn kerstpagina geen oudejaarsprogramma
 gepubliceerd. Disney noemt daar Magic Kingdom, Hollywood Studios, EPCOT, Animal
 Kingdom, Disney Springs, de hotels en Blizzard Beach, en 31 december komt in
-geen van die onderdelen voor. Het kan nog komen, Disney publiceert oudjaarsavond
-vaak pas in november. Tot dan is het een gat dat Disney moet dichten.
+geen van die onderdelen voor. Het kan nog komen, Disney publiceert oudjaarsavond vaak pas in november.
 
 ## Wat ik in jouw plaats zou boeken
 
-**De volle versiering en de kortste wachttijden krijg je in november.** In Orlando beginnen beide avondevenementen vóór de officiële
+**De volle versiering krijg je al in november.** In Orlando beginnen beide avondevenementen vóór de officiële
 seizoensstart, Universal viert vanaf de 14e en Parijs al vanaf 7 november. De
 week tussen Kerst en Nieuwjaar levert je in Orlando hetzelfde programma bij de
 hoogste wachttijden van het jaar.
 
-**Moet je tussen Kerst en Nieuwjaar reizen, ga dan naar Parijs.** Dat is de
-uitkomst hierboven in één zin: dezelfde week is daar geen uitschieter naar
-boven, en in de Disney Adventure World zelfs het rustigste punt van het jaar. Je
-krijgt twee keer per dag een kerstparade, een boom van 24 meter en een
-oudejaarsprogramma dat al vaststaat.
+**Moet je tussen Kerst en Nieuwjaar reizen, ga dan naar Parijs.** Daar was dezelfde week geen uitschieter naar boven, en in de Disney Adventure
+World zelfs de rustigste tijd van het jaar.
 
 **Wil je één avondevenement in Orlando en let je op de prijs, neem dan Jollywood
 Nights.** Het is op elke datum goedkoper dan de Very Merry Christmas Party, de
@@ -355,13 +321,8 @@ korting voor jaarkaarten geldt op alle avonden in plaats van op geselecteerde,
 en het loopt tot 5 januari, dus ook nog als het feest in het Magic Kingdom al
 twee weken voorbij is.
 
-**Met een datum in je hoofd kijk je eerst naar de lijst met avonden, daarna naar
-de prijs.** De Very Merry Christmas Party vindt plaats op 25 van de
-45 dagen van haar venster, Jollywood Nights op 15 van de 60. Allebei de vensters
-klinken als “bijna elke dag”, en allebei zijn ze dat niet.
-
-Wat er op jouw wensdag daadwerkelijk rijdt en hoe lang de wachtrijen op dit
-moment zijn, staat het hele seizoen op de betreffende parkpagina.
+De Very Merry Christmas Party vindt plaats op 25 van de
+45 dagen van haar venster, Jollywood Nights op 15 van de 60.
 
 — Patrick
 

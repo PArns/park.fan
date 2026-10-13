@@ -1,5 +1,5 @@
 ---
-title: 'Magic Kingdom: the most visited park on earth, and its longest queue is a 2023 coaster'
+title: 'Magic Kingdom: the longest queue is at TRON'
 translationKey: magic-kingdom-guide
 date: '2026-09-30'
 updatedAt: '2026-10-05'
@@ -8,11 +8,9 @@ mode: published
 featured: false
 excerpt: >-
   Magic Kingdom counted about 17.8 million visits in 2024, more than any other
-  theme park in the world, and still has the shortest typical queues of the
-  four Disney parks in Florida. The crowd goes to TRON
-  Lightcycle / Run in Tomorrowland instead. Also here: which headliner gets shorter in
-  the evening and which one does not, what Lightning Lane cost on 30 September,
-  and what the Rivers of America closure took away.
+  theme park in the world. Its typical wait is still shorter than at the other
+  three Disney parks in Florida. The longest queue is at TRON Lightcycle / Run in
+  Tomorrowland, above all in the evening.
 category: guides
 tags:
   - magic-kingdom
@@ -53,17 +51,13 @@ seo:
 The TEA Global Experience Index puts Magic Kingdom at **17.8 million visits** in
 2024, 0.7 percent more than the year before. That made it the most visited theme
 park in the world, just ahead of Disneyland Park in California with 17.3 million.
-Going by Wikipedia's attendance table it was the eighteenth year running, and
-you would expect the longest queues on earth to come with a number like that.
-They don't. Of the four Disney parks in Florida, [Magic
+Going by Wikipedia's attendance table it was the eighteenth year running. Of the four Disney parks in Florida, [Magic
 Kingdom](ref:magic-kingdom-park) has the lowest typical wait in our data, and
 EPCOT the highest.
 
 ```park-comparison-widget slugs=magic-kingdom-park,epcot,disneys-hollywood-studios,disneys-animal-kingdom-theme-park highlight=magic-kingdom-park
 
 ```
-
-We can't say why. The crowd queues for a handful of rides instead.
 
 ## The six lands and the utilidors
 
@@ -81,10 +75,10 @@ up as Mickey's Toontown Fair, and closed on 11 February 2011 to make room for
 New Fantasyland. That project finished on 28 May 2014 with
 the Seven Dwarfs Mine Train.
 
-Underneath it all runs a second floor. Florida's water table is too high for
+Florida's water table is too high for
 tunnels, so the service corridors, called utilidors, were built at ground level
 and the park was piled on top with earth from the Seven Seas Lagoon. The park
-stands on its own second story, 33 metres above sea level, and staff can cross
+sits one storey above the corridors, 33 metres above sea level, and staff can cross
 it without ever being seen. The upper floors
 of the buildings on Main Street are shorter than the ground floor, so the street
 looks taller than it is.
@@ -96,7 +90,7 @@ stones, windows and doors getting smaller toward the top. On the fourth floor
 there's a suite that sleeps up to six, and from outside you can pick it out by
 the stained-glass windows on the north and east sides.
 
-## The queue is in Tomorrowland
+## The longest queue is in Tomorrowland
 
 ```ride-waits-widget park=magic-kingdom-park top=10 columns=land,peak,days
 
@@ -105,8 +99,7 @@ the stained-glass windows on the north and east sides.
 The top spot belongs to **[TRON Lightcycle / Run](ref:magic-kingdom-park/tron-lightcycle-run)**.
 It opened on 4 April 2023, after a soft opening in February, and it is a
 launched coaster from Vekoma that reaches 59 mph, about 95 km/h. The ride lasts
-around a minute. At that length the queue is the longer part of the
-experience, and how much longer is in the table.
+around a minute.
 
 Near the top of the table sit **[Seven Dwarfs Mine
 Train](ref:magic-kingdom-park/seven-dwarfs-mine-train)**, the 2014 coaster that
@@ -114,10 +107,9 @@ completed New Fantasyland, and **[Tiana's Bayou
 Adventure](ref:magic-kingdom-park/tianas-bayou-adventure)**, the log flume that
 replaced Splash Mountain on 28 June 2024.
 
-The older rides sit further down, with one exception. **[Peter Pan's
-Flight](ref:magic-kingdom-park/peter-pans-flight)** is a dark ride from 1971
-that opened two days after the park, and in the table it's ahead of Space
-Mountain.
+The older rides sit further down. Only **[Peter Pan's
+Flight](ref:magic-kingdom-park/peter-pans-flight)**, a dark ride from 1971
+that opened two days after the park, is ahead of Space Mountain in the table.
 
 ## The five coasters
 
@@ -146,7 +138,7 @@ ride lasts 2:50 minutes.
 
 **[Space Mountain](ref:magic-kingdom-park/space-mountain)** has run in
 Tomorrowland since 15 January 1975, under a white dome and almost entirely in
-the dark. A top speed of 27 mph (43 km/h) sounds tame, but without light you
+the dark. It reaches 27 mph (43 km/h), and with no light you
 can't see the next curve coming. The track is just under a kilometre long, and
 a ride lasts a little over two and a half minutes. Minimum height 44 inches
 (112 cm), the highest in the park after TRON.
@@ -211,20 +203,17 @@ This is how the eight longest queues move between 8:00 and
 
 ```
 
-**TRON does not get shorter.** Its queue is at its lowest in the first hour,
-grows through the afternoon and peaks in the evening. If you missed it at opening,
-don't come back after dinner expecting a bargain. Our rope-drop analysis
+TRON's queue is at its lowest in the first hour, grows through the afternoon
+and peaks in the evening. Our rope-drop analysis
 rates the payoff of an early start at TRON as high, the only ride in the park
 with that rating.
 
-**Tiana's Bayou Adventure starts almost empty.** In the first hour the queue is
-a fraction of what it becomes by lunch, and it stays at that level until
+At Tiana's Bayou Adventure the queue in the first hour is a fraction of what it becomes by lunch, and it stays at that level until
 early evening. Buzz Lightyear's Space Ranger Spin behaves the same way. Both
 get a moderate rope-drop rating.
 
-**Seven Dwarfs Mine Train is the one that gives in.** It holds its level from
-midday into the evening and drops in the last hours before closing. If TRON and
-Tiana's fill your morning, this is the ride for the end of the day.
+At Seven Dwarfs Mine Train the queue holds its level from midday into the
+evening and drops in the last hours before closing.
 
 Take TRON at opening, Tiana's directly after it and the Mine
 Train in the last hour. Space Mountain peaks around midday, the Jungle Cruise
@@ -265,12 +254,11 @@ forecast wait times.
 
 ## With small children
 
-For families with small children, the day happens in Fantasyland. That's
+With small children you'll spend most of the day in Fantasyland. That's
 where you'll find Peter Pan's Flight, "it's a small world", the Mine Train, the
 Mad Tea Party teacups and, in Storybook Circus, Dumbo the Flying Elephant, where
 each child decides how high their elephant flies. Dumbo has no height
-requirement. The Barnstormer next to it takes riders from 35 inches (89 cm), and
-for a lot of children it's their first roller coaster.
+requirement. The Barnstormer next to it takes riders from 35 inches (89 cm).
 
 If a child is too small for a ride, the parents don't have to queue twice. With
 Rider Switch one adult rides while the other waits with the child, and then the
@@ -279,9 +267,7 @@ group doesn't want to ride but can't wait outside alone. The park's Baby Care
 Center has changing tables, bottle warming and a quiet corner, and it's also
 where cast members bring children who have lost their parents.
 
-With small children you're better off planning a shorter day. Go to the
-air-conditioned shows at midday, take an afternoon break at the hotel if it's on
-the monorail, and come back to the park for the fireworks.
+At midday take them to the air-conditioned shows, in the afternoon back to the hotel if it's on the monorail, and to the park again for the fireworks.
 
 ## Lightning Lane
 
@@ -305,11 +291,7 @@ stay, everyone else three days before their park visit.
 Prices move by the day. On 30 September 2026, a Wednesday with a low crowd
 level, our live data listed the Multi Pass at $27 and the Premier Pass at $329.
 The next day they were $23 and $299. The Single Pass for TRON cost $19 on both
-days, and for Seven Dwarfs Mine Train $11 on 30 September. Both were marked
-unavailable that day. TRON's came back for 1 October.
-
-TRON is also the ride where our rope-drop analysis sees the biggest saving, so
-the $19 competes with getting to the gate early.
+days, and for Seven Dwarfs Mine Train $11 on 30 September. Neither could be bought that day. TRON's came back for 1 October.
 
 ## When to go
 
@@ -317,20 +299,20 @@ the $19 competes with getting to the gate early.
 
 ```
 
-The monthly chart is clearer than the weekday one. September is the
-quietest month we have measured, on 27 days. The winter months at the top of
-the scale rest on five days in January and eight in December, so treat them as
-a hint, not a finding. February, October and November are missing entirely.
+September is the
+quietest month we have measured, on 27 days. The months at the top of
+the scale rest on few days: five in January, four in March and eight in December. February, October and November are missing entirely.
 As of 28 September 2026 we have 196 measured days, most of them since April.
 
 The weekday chart is flat, with medians a single step apart. No day of the week
-is the one to pick. At some other parks there is one, and the
-[best time to visit page](/best-time-to-visit) names it.
+is the one to pick. Where another park has one, it's on the
+[best time to visit page](/best-time-to-visit).
 
 Magic Kingdom has closed temporarily for
 nine hurricanes since it opened, most recently Milton in October 2024.
 
-If you have a date range in mind, this table is recalculated every day:
+The calendar below marks the quietest days for each date range, recalculated
+every day:
 
 ```best-days-widget slug=magic-kingdom-park
 
@@ -342,8 +324,7 @@ Mickey's Not-So-Scary Halloween Party runs on 38 nights between 7 August and 31
 October 2026, and Disney lists every date as sold out. On those nights the park
 closes to regular guests at 18:00, and the party runs from 19:00 to midnight.
 The October dates still to come are the 6th, 8th, 9th, 13th, 15th, 16th, 18th,
-22nd, 23rd, 25th, 27th, 29th and 31st. Turn up on one of them without a party
-ticket and you get a short day. What the party includes is in our overview of
+22nd, 23rd, 25th, 27th, 29th and 31st. What the party includes is in our overview of
 [Halloween in the US](/blog/halloween-usa-theme-parks-2026).
 
 Mickey's Very Merry Christmas Party follows on 25 nights from 8 November to 22
@@ -403,12 +384,11 @@ December 2026, Disney has the park opening at 8:00 or 9:00 and closing at 22:00
 or 23:00, or at 18:00 on party nights.
 
 **Tickets.** Disney sets the prices by date, and they're in the calendar on
-[disneyworld.com](https://disneyworld.com/). We don't track admission, only
-what Lightning Lane costs on top of it. With Park Hopper you can switch to any
+[disneyworld.com](https://disneyworld.com/). With Park Hopper you can switch to any
 of the other three parks at any time of day after your first one, as long as
 there's room.
 
-**Food.** Our database lists 23 places to eat in the park as of 30 September
+**Food.** The park has 23 places to eat as of 30 September
 2026, from Cinderella's Royal Table to the counter at Casey's Corner. Alcohol,
 banned in the park until 2012, has been sold in all table-service restaurants
 since 2018. Inside the castle itself you eat at Cinderella's Royal Table, and in
@@ -429,7 +409,7 @@ be booked from 8 October 2026.
 ### Does the most visited park have the longest queues?
 
 No. In the comparison above, Magic Kingdom has the lowest typical wait of the
-four Disney parks in Florida, and EPCOT the highest. We can't say why.
+four Disney parks in Florida, and EPCOT the highest.
 One ride, TRON, has by far the longest queue in the park.
 
 ### Which ride has the longest queue at Magic Kingdom?
@@ -439,7 +419,7 @@ TRON Lightcycle / Run, in our data. The current ranking is in the table above.
 ### When is TRON shortest?
 
 In the first hour after the gates open. The queue then grows through the
-day and peaks in the evening, so an evening visit is worse.
+day and peaks in the evening.
 
 ### Is Splash Mountain still there?
 
@@ -487,8 +467,7 @@ The same company runs a park in France, where the smaller of the two parks is
 the one with the longer queues. That is in our write-up on [Disneyland
 Paris](/blog/disneyland-paris-wait-times-tips).
 
-The Magic Kingdom turns into a different park in December. The week between
-Christmas and New Year is the busiest row in our whole yearly table, and the
+The week between Christmas and New Year is the busiest week in our yearly table, and the
 Very Merry Christmas Party runs on 25 nights: [Christmas and New Year in Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026).
 
 — Patrick

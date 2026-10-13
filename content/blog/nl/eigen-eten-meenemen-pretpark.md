@@ -93,8 +93,7 @@ Stand van 9 oktober 2026:
 | Disneyland Paris       | toegestaan, zonder koelbox en tafel | glazen flessen en alcohol verboden, picknickplek voor de ingang          | [FAQ](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages), [Theme Parks Rules](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules) |
 | Futuroscope            | toegestaan, op alle grasvelden      | harde koelboxen verboden, tascontrole                                    | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3)                                                                                           |
 
-“Niet geregeld” betekent dat de huisregels eigen eten niet verbieden en ook niet uitdrukkelijk toestaan. Wie voor vertrek
-zeker wil zijn, vraagt het aan de gastenservice van het park.
+“Niet geregeld” betekent dat de huisregels eigen eten niet verbieden en ook niet uitdrukkelijk toestaan.
 
 ## Duitsland
 
@@ -106,7 +105,7 @@ kookapparatuur, en ook grote hoeveelheden alcohol en sterke drank. Grote koffers
 Op zijn pagina met tips voor je bezoek wijst het park picknickplaatsen aan: in het historische Schlosspark Balthasar in
 het themagebied Duitsland, naast de Wodan Timburcoaster.
 
-In de waterwereld Rulantica is meegebracht eten wel verboden. Meer daarover verderop bij de waterwerelden.
+In de waterwereld Rulantica is meegebracht eten wel verboden.
 
 ### Phantasialand
 
@@ -118,17 +117,16 @@ Eten, drinkflessen, koelboxen en glas staan niet op de lijst.
 
 ### Heide Park
 
-[Heide Park](ref:heide-park) staat eigen eten uitdrukkelijk toe. In het helpcentrum van het park staat dat je je eten
+In het helpcentrum van [Heide Park](ref:heide-park) staat dat je je eten
 voor de dag mag meenemen en in het park mag opeten. Alleen glazen flessen laat je thuis. Barbecueën is volgens het
 parkreglement op het hele terrein verboden.
 
-Heb je een ernstige intolerantie zoals coeliakie, dan raadt het park je zelfs aan om eigen eten mee te nemen. Volgens het
+Heb je een ernstige intolerantie zoals coeliakie, dan raadt het park je aan om eigen eten mee te nemen. Volgens het
 park kunnen de keukens kruisbesmetting niet helemaal uitsluiten, en speciale verzoeken nemen ze niet aan.
 
 ### Hansa-Park
 
-In het parkreglement van [Hansa-Park](ref:hansa-park) staat geen woord over meegebracht eten. Verboden zijn barbecueën,
-barbecue- en kooktoestellen, alcohol en drugs. Glazen flessen staan in het reglement bij de gevaarlijke voorwerpen, naast
+Het parkreglement van [Hansa-Park](ref:hansa-park) verbiedt barbecueën, barbecue- en kooktoestellen, alcohol en drugs. Over meegebracht eten zegt het niets. Glazen flessen staan in het reglement bij de gevaarlijke voorwerpen, naast
 messen en laserpennen.
 
 In de attracties en de indoorshows is eten en drinken verboden. Dat geldt voor iedereen, ook voor eten dat je in het park
@@ -143,8 +141,7 @@ accommodaties. Over eten, drinken, glas of koeltassen in het park staat er niets
 ### Movie Park Germany
 
 Het parkreglement van [Movie Park Germany](ref:movie-park-germany) verbiedt om alcohol mee te nemen en om op het hele
-terrein te barbecueën. Grote koffers en andere omvangrijke spullen blijven buiten. Over meegebracht eten staat er niets
-in.
+terrein te barbecueën. Over meegebracht eten staat er niets in. Grote koffers en andere omvangrijke spullen blijven buiten.
 
 Tijdens het Halloween Horror Festival gelden eigen regels. Volgens de FAQ van het festival zijn alcohol en alle dranken in
 glazen flessen verboden, net als deodorant in een spuitbus. Een roller of een stick mag wel. Voor de toegang worden
@@ -163,7 +160,7 @@ wachtrijen mag je niet eten en drinken, en alcohol mag je niet meenemen.
 
 ### Efteling
 
-Nergens is de regel zo duidelijk als bij de [Efteling](ref:efteling). In het parkreglement staat onder de kop “Eigen eten
+In het parkreglement van de [Efteling](ref:efteling) staat onder de kop “Eigen eten
 en drinken” dat je eigen eten en drinken mag meenemen. Hetzelfde staat in de veelgestelde vragen van het park.
 
 Is het druk, dan vraagt het park je om wat je hebt meegenomen op een van de picknickplaatsen op te eten, en niet in de
@@ -174,13 +171,13 @@ restaurants of op hun terrassen.
 [Toverland](ref:attractiepark-toverland) staat eigen eten toe en heeft twee magnetrons die je gratis mag gebruiken, bij de
 Waldstube en bij Katara Plaza. Volgens het park kun je er ook flesvoeding in opwarmen.
 
-De rest regelt het parkreglement. Dat ligt bij de ingang en staat als download op de website.
+Het parkreglement ligt bij de ingang en staat als download op de website.
 
 ### Walibi Holland
 
 [Walibi Holland](ref:walibi-holland) staat eigen eten en drinken uitdrukkelijk toe en wijst in het park picknickplaatsen
 aan. Glas en alcohol mag je volgens de parkregels niet meenemen. Buiten de paden en de picknickplaatsen is het terrein
-afgesloten. Een grasveld om op te eten vind je dus alleen waar de plattegrond er een aangeeft.
+afgesloten.
 
 ## België
 
@@ -198,8 +195,7 @@ Bij [Walibi Belgium](ref:walibi-belgium) heeft picknicken een eigen artikel in h
 de plattegrond daarvoor aangeeft, en niet in de restaurants en op hun terrassen.
 
 Alcohol is in het park verboden. Tassen, dozen en bakken mogen hooguit 55 cm breed, 40 cm lang en 20 cm diep zijn, en
-ook een koelbox moet binnen die maten blijven. In attracties en wachtrijen is eten en drinken verboden. Voor de
-waterwereld Aqualibi geldt een strengere regel.
+ook een koelbox moet binnen die maten blijven. In attracties en wachtrijen is eten en drinken verboden.
 
 ## Frankrijk
 
@@ -213,7 +209,7 @@ In attracties mag je om veiligheidsredenen niet eten en drinken, in de wachtrije
 
 ### Disneyland Paris
 
-[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) staat eigen eten toe, met twee beperkingen. Maaltijden
+[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) staat eigen eten toe. Maaltijden
 waarvoor je een koelbox, een tafel of omvangrijke bakken nodig hebt, zijn in Disneyland Park en Walt Disney Studios Park
 verboden. Voor zo’n picknick is er een picknickplek tussen de parkeerplaats en de ingang.
 
@@ -223,13 +219,11 @@ om niet te eten en te drinken.
 
 ### Futuroscope
 
-In [Futuroscope](ref:futuroscope) mag je volgens de FAQ op alle grasvelden picknicken. Dat is de ruimste regel van de
-vijftien parken.
+In [Futuroscope](ref:futuroscope) mag je volgens de FAQ op alle grasvelden picknicken.
 
-Harde koelboxen zijn verboden, omvangrijke tassen laat je beter buiten en bij de ingang worden tassen gecontroleerd. De
-koelbox laat je in de auto: je mag het park in de loop van de dag verlaten en weer binnengaan.
+Harde koelboxen zijn verboden, omvangrijke tassen laat je beter buiten en bij de ingang worden tassen gecontroleerd. Omdat je het park in de loop van de dag mag verlaten en weer binnengaan, kan de koelbox in de auto blijven.
 
-## De waterwerelden: eigen eten blijft buiten
+## De waterwerelden
 
 In alle vier de waterwerelden waarvan wij de regels hebben vergeleken, is meegebracht eten verboden.
 
@@ -247,13 +241,9 @@ de horecazones. Wie de Aquascope verlaat, komt er niet meer in, ook niet na een 
 
 Boterhammen, fruit en snacks gaan in een rugzak of een zachte koeltas. Een koelbox is in Parc Astérix en Disneyland Paris
 verboden, in Futuroscope geldt dat voor een harde. Walibi Belgium laat alleen tassen tot 55 × 40 × 20 cm binnen. Voor
-drinken neem je een fles van plastic of metaal mee, want glas is in vijf van de vijftien parken verboden, en ook in Rulantica. Barbecue,
-kooktoestel en alcohol blijven thuis.
+drinken neem je een fles van plastic of metaal mee, want glas is in vijf van de vijftien parken verboden, en ook in Rulantica.
 
-Je eet op de picknickplaatsen. Elk park dat iets zegt over eten in wachtrijen of attracties, verbiedt het daar. In
-Futuroscope mag je op elk grasveld gaan zitten, bij Disneyland Paris ligt de picknickplek voor de ingang, en in
-Europa-Park zijn het de plekken in het Schlosspark Balthasar. In Toverland warm je je eten of een flesje gratis op in de
-magnetron.
+Elk park dat iets zegt over eten in wachtrijen of attracties, verbiedt het daar.
 
 ## Veelgestelde vragen
 
@@ -305,8 +295,6 @@ In de huisregels, die afhankelijk van het park Parkordnung, parkreglement, Park 
 vaak ook in de veelgestelde vragen op de website van het park.
 
 ## Bronnen
-
-Huisregels veranderen, vaak aan het begin van een seizoen. Kijk voor je bezoek even in de actuele versie.
 
 - Europa-Park, Park Rules: [europapark.de](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations)
 - Europa-Park, Tipps für Ihren Besuch (picknickplaatsen): [europapark.de](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park)

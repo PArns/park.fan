@@ -1,18 +1,12 @@
 ---
-title: 'Disneyland Paris: two parks, and of course the small one has the long queues'
+title: 'Disneyland Paris: the smaller of the two parks has the longer queues'
 translationKey: disneyland-paris-guide
 date: '2026-09-11'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Disney counts 36 attractions in Disneyland Park and fourteen in Disney
-  Adventure World, and the smaller park is still the one where you queue
-  longer. In every month and on every weekday we have measured, that has never
-  once flipped. Also here: why the longest queue in the big park forms for
-  three minutes of 1992 dark ride, what the second park has done differently
-  since 29 March 2026, and which ride has been on a ten-month break since 7
-  September.
+  Disney counts 36 attractions in Disneyland Park and fourteen in Disney Adventure World, and in every month and on every weekday we have measured, you queue longer in the smaller park. The longest queue in the big park is for Peter Pan's Flight, a dark ride from 1992. Crush's Coaster is closed from 7 September 2026 until summer 2027.
 category: guides
 tags:
   - disneyland-paris
@@ -33,10 +27,9 @@ coverImage:
   caption: 'Le Château de la Belle au Bois Dormant. Under the rock base sleeps a dragon that was the largest animatronic ever built when the park opened in 1992.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Disneyland Paris 2026: Where the Queues Are Really Long'
+  title: 'Disneyland Paris 2026: Wait Times in Both Parks'
   description: >-
-    Wait-time data from both Paris parks: why the smaller one has the longer
-    queues, when it gets quieter, and which park to start your day in.
+    Why the smaller Disneyland Paris park has the longer queues, when it gets quieter, and which park to start your day in.
   keywords:
     - Disneyland Paris
     - Disneyland Paris wait times
@@ -65,9 +58,7 @@ much queuing there anyway.
 That's the wrong order. Our measurements start on 26 December 2025 and have run
 almost without a gap since late March 2026. In every single month we have data
 for, the crowd level in **Disney Adventure World** was higher than the big
-park's, and on every one of the seven weekdays. The smaller park spreads its
-guests across fewer than half as many attractions, and you feel that at every
-barrier.
+park's, and on every one of the seven weekdays. The smaller park spreads its guests across fewer than half as many attractions.
 
 ## The resort and its two parks
 
@@ -76,8 +67,7 @@ Resort, about 32 kilometres east of Paris in the new town of Marne-la-Vallée.
 The site covers roughly **2,100 hectares**, about half of it built on.
 Disneyland Park is Europe's most visited theme park according to the TEA, the
 industry association behind the annual attendance report, and with more than
-20,000 employees the resort is France's largest single-site employer. (Somebody
-has to fry all those churros.)
+20,000 employees the resort is France's largest single-site employer.
 
 Two parks stand on that site. [Disneyland
 Park](ref:/parks/europe/france/paris/disneyland-park) is the 1992 one: about 50
@@ -98,7 +88,7 @@ sit a similarly long trip from Germany:
 
 ```
 
-## Disneyland Park: five lands and a dragon in the basement
+## Disneyland Park: the castle and the rides
 
 The **Château de la Belle au Bois Dormant** is the only Disney castle in Europe,
 which is where the models for the castles in Anaheim, Orlando and Tokyo stand.
@@ -135,31 +125,23 @@ into the ride in 2019. After almost sixteen months of work, it reopened on
 **[Star Wars Hyperspace
 Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain)**
 has only carried that name since 7 May 2017. It opened on 1 June 1995 as “Space
-Mountain: De la Terre à la Lune”, after Jules Verne, with a cannon launch. That
-launch is still there: the train goes from 0 to 71 km/h up the mountain in 1.8
+Mountain: De la Terre à la Lune”, after Jules Verne, with a cannon launch. The cannon still sends the train from 0 to 71 km/h up the mountain in 1.8
 seconds. Three inversions, a kilometre of track, up to 5 g. Of every Space
 Mountain worldwide, it's the only one with a launch and the only one with
 inversions. Michael Eisner, Disney's boss at the time, called it the park's
 saviour, and in the 1995 financial year Disneyland Paris turned its first
-profit. It won't be Hyperspace Mountain for much longer: at the end of 2027
-the ride closes for several months and comes back as “Space Mountain – De la
+profit. At the end of 2027 the ride closes for several months and comes back as “Space Mountain – De la
 Terre à la Lune”, with Jules Verne and Steve Bramson's original score.
-
-And yet it doesn't top our ranking.
 
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days
 
 ```
 
 The longest queue in the park belongs to **Peter Pan's Flight**, a 1992 dark
-ride that's over in three minutes. Popularity only explains half of that. The
-other half is throughput: Hyperspace Mountain runs four trains and pushes almost
-2,000 people through per hour, so it works its queue down all day long. Little
-flying pirate ships with room for one family can't do that. Spend the morning
-on the coasters and you'll spend part of the afternoon in the park's longest
-queue, for three minutes of dark ride.
+ride that's over in three minutes. Besides popularity, that comes down to throughput. Hyperspace Mountain runs four trains and pushes almost
+2,000 people through per hour, so it works its queue down all day long. Peter Pan's little flying pirate ships each hold one family.
 
-Three more rides cost you time that same morning. **[Pirates of the
+Pirates of the Caribbean, Indiana Jones and **[“it's a small world”](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)** also cost you time in the morning. **[Pirates of the
 Caribbean](ref:/parks/europe/france/paris/disneyland-park/pirates-of-the-caribbean)**
 in Adventureland has been running since day one and lasts just over ten
 minutes, longer than any other dark ride in the park. **[Indiana Jones and
@@ -168,20 +150,15 @@ Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temp
 opened on 30 July 1993 as the first roller coaster in a Disney park with an
 inversion, built by Intamin, 600 metres of track, 58 km/h. It ran backwards
 from April 2000 to November 2004. Its minimum height of 140 centimetres is
-the highest of any Disney attraction worldwide, which regularly splits up
-families on site. And
-**[“it's a small world”](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)**
-is exactly what you're afraid it is.
+the highest of any Disney attraction worldwide.
 
 ```map-widget slug=/parks/europe/france/paris/disneyland-park
 
 ```
 
-## Disney Adventure World: the new name and the missing ride
+## Disney Adventure World: the rebuild and Crush's Coaster
 
-For a long time the second park was the part of the visit nobody looked forward
-to. It opened in 2002 as a studio backlot, stayed too small for its crowds for
-years, and anyone who saw it before 2022 probably remembers a lot of asphalt.
+The second park opened in 2002 as a studio backlot and was too small for its crowds for years. Before 2022 it had a lot of asphalt.
 In February 2018 Disney announced a **€2 billion** renovation, and three pieces
 of it now stand: **Marvel Avengers Campus** since July 2022, **World of
 Frozen** since 29 March 2026 with a 36-metre mountain and a fjord in front of
@@ -211,39 +188,27 @@ refurbishment since it opened: controls, sensors, communications technology and
 sections of track are being replaced, alongside cleaning, painting and repairs.
 The planned return is **summer 2027**, around ten months after the closure.
 
-You can see it in our data without needing a press release: the last live
-reading for this ride is timestamped **6 September, 20:21 UTC**. Nothing has
-come from it since, while the park's other rides keep reporting their status.
-The park page now lists it as closed, and until it reopens it no longer counts
+The last live reading for this ride is timestamped **6 September, 20:21 UTC**. The park's other rides have kept reporting their status since. The park page now lists it as closed, and until it reopens it no longer counts
 as one of the day's attractions.
 
 ```ride-waits-widget park=disney-adventure-world top=10 columns=land,peak,days
 
 ```
 
-For a day there, that means the ride that used to eat half your morning is gone,
-and its guests are now spread across a park that had limited capacity to begin
-with. The table above still lists Crush's Coaster with its numbers from the
-months before the closure, a bit like a dish still printed on the menu that the
-kitchen stopped making in September. Until summer 2027, Frozen Ever After is the
+Until it reopens, the park is running thirteen attractions instead of fourteen. The table above still lists Crush's Coaster with its numbers from the months before the closure. Until summer 2027, Frozen Ever After is the
 queue to plan your day there around.
 
-## How busy it really gets
+## How busy the two parks get
 
-Both parks have fed us wait times since 26 December 2025, but only since late
-March 2026 almost without a gap. From the winter in between we only have
+We have measured wait times in both parks since 26 December 2025, but only since late March 2026 almost without a gap. From the winter in between we only have
 scattered days in December and January, and none yet for February, October or
-November. As of 25 September 2026, each park has 190 measured operating days
-behind it, and how many of them sit behind each row is in the tables.
+November. As of 25 September 2026, each park has 190 measured operating days behind it. The tables show how many of them sit behind each row.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
 ```
 
-The gap between the two parks shows up in every month we have measured. Only in
-December, for which we only have the last days of 2025, did typical wait
-times draw level, and even then the crowd level in Adventure World was higher.
-The reason is arithmetic. For 2024 the TEA counted 10.2 million visits to
+In December, for which we only have the last days of 2025, typical wait times drew level, but even then the crowd level in Adventure World was higher. For 2024 the TEA counted 10.2 million visits to
 Disneyland Park and 5.5 million to the second park. Each guest is counted only
 in the park they enter first, so anyone who switches over at lunchtime doesn't
 show up in the second number at all.
@@ -256,20 +221,18 @@ Here's how a day at Disneyland Park spreads across the hours:
 
 ```
 
-## When to go to a park that never closes
+## When to go
 
 ```stats-widget slug=/parks/europe/france/paris/disneyland-park show=months,weekdays
 
 ```
 
-Disneyland Paris is open year-round, every single day, so it has none of the
-classic off-season question that decides everything at a seasonal park. What
-drives the crowds instead is French school holidays, which fall differently from
+Disneyland Paris is open year-round, every day. The crowds follow the French school holidays, which fall differently from
 the German ones and, in winter and spring, are staggered across three zones,
 plus British half-term weeks. How the seasonal parks compare month by month is
 on the [best time to visit page](/best-time-to-visit).
 
-Then there are the seasons. From 26 September to 1 November, Disneyland Park
+From 26 September to 1 November, Disneyland Park
 runs the Disney Halloween Festival, and what's on is in our [Halloween news
 piece](/blog/disneyland-paris-halloween-2026). From 7 November 2026 to 6 January
 2027 comes Disney Enchanted Christmas, for the first time in Disney Adventure
@@ -277,8 +240,7 @@ World as well: World of Frozen gets Scandinavian-style Christmas decorations and
 its own shows with Anna, Elsa and Olaf. On New Year's Eve each park throws its
 own party.
 
-The weekday curve above is flat, because a park open 365 days a year and
-advertised across half a dozen countries has no dead Tuesday to escape to.
+The weekday curve above is flat, because the park is open 365 days a year and advertised across half a dozen countries.
 Which of the coming weeks is quietest anyway is marked in the calendar below,
 recalculated continuously:
 
@@ -286,15 +248,14 @@ recalculated continuously:
 
 ```
 
-## Premier Access, and what a queue costs there
+## Premier Access
 
 The fast lane in Paris is called **Disney Premier Access**, and it comes in two
 versions. **Premier Access One** covers one ride on one attraction; you buy it
 in the app once you're inside the park and get the next free time slot.
 **Premier Access Ultimate** covers every participating ride once, with no time
 slots, and can be booked in advance. Neither has a fixed price: Disney charges
-different amounts depending on the ride, the date and demand, the same way
-airlines price the school holidays. On the morning of 25 September 2026, a
+different amounts depending on the ride, the date and demand. On the morning of 25 September 2026, a
 Friday outside the French school holidays, our live data had One between €5
 (Pirates of the Caribbean or Phantom Manor, for example) and €16 (Frozen Ever
 After). For Ultimate, the site Mickey from the UK recorded 2026 prices from €110
@@ -304,30 +265,23 @@ to over €200 per person per day.
 
 ```
 
-Before you buy it, it's worth glancing back at the ranking further up. The
-price tracks demand, and demand doesn't line up with the queue: that same
-morning Hyperspace Mountain cost €12 and Peter Pan €13, even though Peter Pan's
-queue is typically much longer. Pay for Hyperspace Mountain, then join the back
-of the line for Peter Pan, and you've spent the money on the wrong queue.
+That same morning Hyperspace Mountain cost €12 and Peter Pan €13, even though Peter Pan's queue is typically much longer. Premier Access therefore saves you more time at Peter Pan than at Hyperspace Mountain.
 
 ## How I would plan the day
 
-If you only have one day and one park, take Disneyland Park: more attractions,
-shorter queues, and the castle is the reason most people came in the first
-place. Expect it to be busy by the official opening time, though. Guests at the
+If you only have one day and one park, take Disneyland Park: more attractions and shorter queues. Expect it to be busy by the official opening time, though. Guests at the
 Disney hotels and Les Villages Nature, and Disneyland Pass Gold holders, get in
 early through Extra Magic Time, usually an hour. That's why Peter Pan already
 has a long queue when the gates open to everyone else, and in our hourly table
 it only gets noticeably shorter in the last hour before closing. Big Thunder
 Mountain, Hyperspace Mountain and Indiana Jones, on the other hand, are much
 shorter just after opening than at midday. So start there and save Peter Pan for
-the evening. Lunchtime suits none of them: all eight rides in the hourly table
+the evening. All eight rides in the hourly table
 have their longest queue between 12:00 and 14:00.
 
 And if you're booking both parks, flip the usual order and start in Adventure
 World, where, according to our rope-drop analysis, Ratatouille and the Tower of
-Terror have the biggest payoff for an early start. Frozen Ever After is shortest
-in the evening, and it has a single rider line.
+Terror have the biggest payoff for an early start. Frozen Ever After is shortest in the evening and has a single rider line.
 
 ## Practical: getting there, tickets, opening hours
 
@@ -356,10 +310,7 @@ September 2026). Prices for your date are on
 [disneylandparis.com](https://www.disneylandparis.com/).
 
 **Food.** Both parks have table-service restaurants that need a reservation,
-plus plenty of quick service in between. Our database lists (as of
-25 September 2026) 35 dining venues in Disneyland Park and 19 in Adventure
-World. At lunchtime the queue migrates from the rides to the counters, and for
-a while the chip stand is the most popular attraction in the park.
+plus plenty of quick service in between. As of 25 September 2026 there are 35 restaurants and snack bars in Disneyland Park and 19 in Adventure World.
 
 ## Frequently asked questions about Disneyland Paris
 
@@ -374,7 +325,7 @@ the morning and switch over at midday, not the other way round.
 
 Disney Adventure World, and in our data (190 measured days as of 25
 September 2026) that holds for every month and every weekday we have
-measured. The reason is capacity: the smaller park gets more than half as
+measured. The smaller park gets more than half as
 many visits as the big one, but has fewer than half as many attractions.
 Current numbers for both parks are in the comparison table above.
 
@@ -383,8 +334,7 @@ Current numbers for both parks are in the comparison table above.
 The new name has applied since 29 March 2026 and had been announced since 12
 April 2024. It arrived together with the World of Frozen area and ends the
 studio theme, which had matched what was actually there less and less every
-year since 2002. Nobody was going to buy a 36-metre Frozen mountain with its
-own fjord as a film set.
+year since 2002.
 
 ### Is Crush's Coaster running right now?
 
@@ -416,18 +366,9 @@ the queues at the outdoor rides:
 
 ```
 
-If you're looking for the comparison with parks that sit a similarly long
-trip from Germany, we already have full write-ups on [Walibi
-Belgium](/blog/walibi-belgium-wait-times-tips) and on [the
-Efteling](/blog/efteling-disney-of-the-netherlands). And if your trip falls
-between now and summer 2027: Adventure World is running thirteen attractions
-instead of fourteen during these months. Anyone who was already on the fence
-about whether the two-park ticket is worth the extra cost now has one less
-reason to say yes.
+We have full write-ups on [Walibi Belgium](/blog/walibi-belgium-wait-times-tips) and [the Efteling](/blog/efteling-disney-of-the-netherlands), which sit a similarly long trip from Germany.
 
-From 7 November to 6 January both parks run the Christmas season, and the week
-between Christmas and New Year looks different here than in Orlando: at Adventure World it's
-the quietest of the measured year. Dates, the New Year's Eve programme and the comparison are in our post [Christmas and New Year in Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026).
+From 7 November to 6 January both parks run the Christmas season. Unlike in Orlando, the week between Christmas and New Year was the quietest of the measured year at Adventure World. Dates, the New Year's Eve programme and the comparison are in our post [Christmas and New Year in Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026).
 
 — Patrick
 

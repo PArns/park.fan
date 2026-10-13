@@ -1,18 +1,12 @@
 ---
-title: 'Disneyland Paris: due parchi, e le code lunghe se le prende proprio il piccolo'
+title: 'Disneyland Paris: il più piccolo dei due parchi ha le code più lunghe'
 translationKey: disneyland-paris-guide
 date: '2026-09-11'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Disney conta 36 attrazioni nel Disneyland Park e quattordici a Disney
-  Adventure World, eppure si aspetta di più nel parco piccolo. In nessun mese
-  e in nessun giorno della settimana che abbiamo misurato è stato il
-  contrario. Dentro: perché la coda più lunga del parco grande si forma
-  davanti a tre minuti di dark ride del 1992, cosa cambia nel secondo parco
-  dal 29 marzo 2026 e quale attrazione si è presa dieci mesi di pausa dal 7
-  settembre.
+  Disney conta 36 attrazioni nel Disneyland Park e quattordici a Disney Adventure World, e in ogni mese e giorno della settimana che abbiamo misurato si aspetta di più nel parco piccolo. La coda più lunga del parco grande è quella di Peter Pan's Flight, una dark ride del 1992. Crush's Coaster è chiusa dal 7 settembre 2026 fino all’estate 2027.
 tags:
   - disneyland-paris
   - tempi-di-attesa
@@ -33,10 +27,9 @@ coverImage:
   caption: 'Le Château de la Belle au Bois Dormant. Sotto il basamento roccioso dorme un drago che, all’apertura del 1992, era l’animatronic più grande mai costruito.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Disneyland Paris 2026: dove le code sono davvero lunghe'
+  title: 'Disneyland Paris 2026: i tempi di attesa nei due parchi'
   description: >-
-    I dati sulle attese dei due parchi parigini: perché il più piccolo ha le
-    code più lunghe, quando c’è meno gente e da quale parco conviene iniziare.
+    Perché a Disneyland Paris il parco più piccolo ha le code più lunghe, quando c’è meno gente e da quale parco conviene iniziare.
   keywords:
     - Disneyland Paris
     - Disneyland Paris tempi di attesa
@@ -64,11 +57,9 @@ capatina veloce nel secondo, tanto lì non c’è mai molta fila.
 È l’ordine sbagliato. Le nostre rilevazioni partono dal 26 dicembre 2025 e da
 fine marzo 2026 sono quasi quotidiane. In ogni mese per cui abbiamo dati, il
 livello di affollamento di **Disney Adventure World** è stato più alto di quello
-del parco grande, e così in ogni giorno della settimana. Il contrario non è mai
-successo. Il parco più piccolo distribuisce i suoi visitatori su meno della metà
-delle attrazioni, e lo si nota a ogni transenna.
+del parco grande, e così in ogni giorno della settimana. Il parco più piccolo distribuisce i suoi visitatori su meno della metà delle attrazioni.
 
-## Un resort, due parchi, una stazione
+## Il resort e i suoi due parchi
 
 Disneyland Paris ha aperto il **12 aprile 1992**, allora ancora come Euro Disney
 Resort, a circa 32 chilometri a est di Parigi, nella città nuova di
@@ -76,7 +67,7 @@ Marne-la-Vallée. Il terreno misura circa **2.100 ettari**, di cui più o meno l
 metà edificati. Secondo la TEA, l’associazione di settore che pubblica i dati
 sui visitatori, il Disneyland Park è il parco a tema più visitato d’Europa, e
 con più di 20.000 dipendenti il resort è il più grande datore di lavoro di
-Francia su un unico sito. (Qualcuno i churros dovrà pur friggerli.)
+Francia su un unico sito.
 
 Su quel terreno sorgono due parchi. Il [Disneyland
 Park](ref:/parks/europe/france/paris/disneyland-park) è quello del 1992: circa
@@ -98,7 +89,7 @@ paragone, due parchi che dalla Germania distano più o meno lo stesso:
 
 ```
 
-## Disneyland Park: cinque terre e un drago in cantina
+## Disneyland Park: il castello e le attrazioni
 
 Il **Château de la Belle au Bois Dormant** è l’unico castello Disney in Europa,
 proprio dove stanno i modelli dei castelli di Anaheim, Orlando e Tokyo.
@@ -109,8 +100,7 @@ miniature delle _Très Riches Heures du Duc de Berry_ e il Mont-Saint-Michel, gl
 alberi potati a forma squadrata tutto intorno vengono dal film del 1959, e nella
 galleria al piano superiore vetrate e arazzi raccontano di nuovo la fiaba. Nel
 basamento sotto si trova **La Tanière du Dragon**, una grotta con un drago
-animatronico incatenato che si muove e sbuffa vapore. I bambini a volte non ne
-vogliono uscire, altre volte non ci vogliono nemmeno entrare.
+animatronico incatenato che si muove e sbuffa vapore.
 
 **[Big Thunder Mountain](ref:/parks/europe/france/paris/disneyland-park/big-thunder-mountain)**
 è la versione più grande di questa attrazione fra tutti i parchi Disney, ed è
@@ -123,11 +113,9 @@ tornata con freni nuovi, una bella mano di vernice e qualche effetto preso in
 prestito dalla California.
 
 **[Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)**
-è la Haunted Mansion di Parigi, con una differenza: le versioni in Florida e in California non raccontano di proposito
-una storia continua. Quella di Parigi invece sì: Melanie Ravenswood aspetta in abito da
+è la Haunted Mansion di Parigi. Le versioni in Florida e in California non raccontano di proposito una storia continua, quella di Parigi invece sì. Melanie Ravenswood aspetta in abito da
 sposa da quando il suo matrimonio è saltato, e suo padre Henry ha ucciso i
-pretendenti uno dopo l’altro (un suocero con idee tutte sue su come conoscere
-il fidanzato), cosa che solo con la revisione del 2019 è diventata
+pretendenti uno dopo l’altro, cosa che solo con la revisione del 2019 è diventata
 esplicita. Sei minuti a bordo dell’Omnimover, 92 animatronic,
 più la voce narrante inglese di Vincent Price, di cui nel 2019 sono tornate
 alcune parti nell’attrazione. Dopo quasi sedici mesi di lavori è tornata in funzione il 3 maggio 2019.
@@ -136,7 +124,7 @@ alcune parti nell’attrazione. Dopo quasi sedici mesi di lavori è tornata in f
 Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain)**
 si chiama così solo dal 7 maggio 2017. Ha aperto il 1° giugno 1995 come _Space
 Mountain: De la Terre à la Lune_, ispirata a Jules Verne, con un cannone come
-sistema di lancio. C’è ancora: il treno viene sparato su per la montagna da 0 a
+sistema di lancio. Il cannone spara ancora oggi il treno su per la montagna da 0 a
 71 km/h in 1,8 secondi. Tre capovolgimenti, un chilometro di percorso, fino a 5
 g. Fra tutte le Space Mountain del mondo è l’unica con un lancio ed è l’unica
 con inversioni. Michael Eisner, allora capo della Disney, la chiamò la
@@ -145,41 +133,30 @@ volta in utile. A fine 2027 l’attrazione
 chiude per alcuni mesi e tornerà come _Space Mountain – De la Terre à la Lune_, di nuovo
 con Jules Verne e la musica originale di Steve Bramson.
 
-Eppure nella nostra classifica non è in cima.
-
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days
 
 ```
 
-La coda più lunga del parco appartiene a **Peter Pan's Flight**, una dark ride del 1992 che dura tre minuti. In parte è popolarità, in parte portata
-oraria: Hyperspace Mountain fa
+La coda più lunga del parco appartiene a **Peter Pan's Flight**, una dark ride del 1992 che dura tre minuti. Oltre alla popolarità conta la portata oraria. Hyperspace Mountain fa
 viaggiare quattro treni e smaltisce quasi 2.000 persone all’ora, quindi si
-libera della propria coda nel corso di tutta la giornata. Dei piccoli velieri
-volanti in cui entra giusto una famiglia non ce la fanno. Chi passa la mattina sulle montagne russe si
-ritrova il pomeriggio nella coda più lunga del parco.
+libera della propria coda nel corso di tutta la giornata. In ciascuno dei piccoli velieri volanti di Peter Pan entra giusto una famiglia.
 
-Altre tre attrazioni fanno perdere tempo in quella mattinata.
+Anche Pirates of the Caribbean, Indiana Jones e **[«it's a small world»](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)** fanno perdere tempo la mattina.
 **[Pirates of the Caribbean](ref:/parks/europe/france/paris/disneyland-park/pirates-of-the-caribbean)**,
 ad Adventureland, gira dal primo giorno e dura poco più di dieci minuti, più di qualsiasi altra dark ride del parco.
 **[Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril)**
 ha aperto il 30 luglio 1993 come prima montagna russa con un capovolgimento in
 un parco Disney, costruita da Intamin, 600 metri di percorso, 58 km/h. Da
 aprile 2000 a novembre 2004 ha girato al contrario. La sua altezza minima di
-140 centimetri è la più alta fra tutte le attrazioni Disney al mondo, cosa che
-sul posto separa regolarmente le famiglie. E
-**[«it's a small world»](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)**
-è esattamente quello che temi.
+140 centimetri è la più alta fra tutte le attrazioni Disney al mondo.
 
 ```map-widget slug=/parks/europe/france/paris/disneyland-park
 
 ```
 
-## Disney Adventure World: il nome nuovo e l’attrazione mancante
+## Disney Adventure World: la ristrutturazione e Crush's Coaster
 
-Il secondo parco per anni è stato la parte scomoda della visita. Aperto nel 2002
-come set cinematografico, per anni troppo piccolo rispetto al numero di
-visitatori, e chi l’ha visto prima del 2022 probabilmente si ricorda soprattutto
-l’asfalto. A febbraio 2018 Disney ha annunciato una ristrutturazione da **due
+Il secondo parco ha aperto nel 2002 come set cinematografico ed è stato per anni troppo piccolo rispetto al numero di visitatori. Prima del 2022 c’era molto asfalto. A febbraio 2018 Disney ha annunciato una ristrutturazione da **due
 miliardi di euro**, e tre pezzi sono ormai al loro posto: **Marvel Avengers
 Campus** da luglio 2022, **World of Frozen** dal 29 marzo 2026, con una montagna
 alta 36 metri e un fiordo davanti, e **Adventure Way**, una nuova passeggiata
@@ -207,42 +184,31 @@ nostri dati la coda più lunga del parco, appena davanti a Frozen Ever After. Da
 **7 settembre 2026** non gira più. Il parco l’ha fermata per la revisione più
 grande dalla sua apertura: vengono sostituiti i sistemi di controllo, i sensori,
 la tecnologia di comunicazione e alcune parti dei binari, oltre a pulizia,
-verniciatura e riparazioni. Il ritorno previsto è l’**estate 2027**: per circa
-dieci mesi la Corrente dell’Australia Orientale dovrà fare a meno dei
-passeggeri.
+verniciatura e riparazioni. Il ritorno previsto è l’**estate 2027**, circa dieci mesi dopo la chiusura.
 
-Nei nostri dati lo si vede senza bisogno di nessun comunicato stampa: l’ultimo
-dato in diretta di questa attrazione risale al **6 settembre, alle 20:21 UTC**.
-Da allora non arriva più niente, mentre le altre attrazioni del parco continuano
-a comunicare il proprio stato. Sulla pagina del parco adesso risulta chiusa, e
+L’ultimo dato in diretta di questa attrazione risale al **6 settembre, alle 20:21 UTC**. Le altre attrazioni del parco continuano a comunicare il proprio stato. Sulla pagina del parco adesso risulta chiusa, e
 fino alla riapertura non conta più fra le attrazioni del giorno.
 
 ```ride-waits-widget park=disney-adventure-world top=10 columns=land,peak,days
 
 ```
 
-Per una giornata lì vuol dire che l’attrazione che finora si mangiava mezza
-mattinata sparisce, e i suoi visitatori si distribuiscono su un parco che di
-capacità ne ha comunque poca. Nella tabella qui sopra Crush's Coaster compare
+Fino alla riapertura il parco fa funzionare tredici attrazioni invece di quattordici. Nella tabella qui sopra Crush's Coaster compare
 ancora con i suoi valori dei mesi prima della chiusura. Fino all’estate
 2027 la coda attorno a cui organizzare la giornata lì è quella di Frozen Ever
 After.
 
-## Quanto è pieno per davvero
+## Quanto sono pieni i due parchi
 
-Entrambi i parchi ci forniscono tempi di attesa dal 26 dicembre 2025, ma quasi
-senza buchi solo da fine marzo 2026. Dell’inverno in mezzo abbiamo solo giorni
+Misuriamo i tempi di attesa in entrambi i parchi dal 26 dicembre 2025, ma quasi senza buchi solo da fine marzo 2026. Dell’inverno in mezzo abbiamo solo giorni
 sparsi a dicembre e gennaio, e per febbraio, ottobre e novembre ancora niente.
-Al 25 settembre 2026 ogni parco conta 190 giorni di apertura misurati, e quanti
-ce ne sono dietro ogni riga lo indicano le tabelle stesse.
+Al 25 settembre 2026 ogni parco conta 190 giorni di apertura misurati. Quanti ce ne sono dietro ogni riga lo indicano le tabelle stesse.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
 ```
 
-Il divario fra i due parchi si vede in ogni mese misurato. Solo a dicembre, di
-cui abbiamo soltanto gli ultimi giorni del 2025, i tempi di attesa tipici si
-sono pareggiati, e anche allora il livello di affollamento era più alto ad
+A dicembre, di cui abbiamo soltanto gli ultimi giorni del 2025, i tempi di attesa tipici si sono pareggiati, ma anche allora il livello di affollamento era più alto ad
 Adventure World. Per il 2024 la
 TEA ha contato 10,2 milioni di visite al Disneyland Park e 5,5 milioni al
 secondo parco. Ogni visitatore viene contato solo nel parco in cui entra per
@@ -256,21 +222,18 @@ Ecco come si distribuisce una giornata al Disneyland Park nell’arco delle ore:
 
 ```
 
-## Quando conviene andarci, se il parco non chiude mai
+## Quando conviene andarci
 
 ```stats-widget slug=/parks/europe/france/paris/disneyland-park show=months,weekdays
 
 ```
 
-Disneyland Paris è aperto tutto l’anno, ogni giorno, e quindi qui la classica
-domanda sulla bassa stagione, che nei parchi stagionali decide tutto, non si
-pone. A
-determinare l’affollamento sono invece le vacanze scolastiche francesi, che
+Disneyland Paris è aperto tutto l’anno, ogni giorno. L’affollamento dipende dalle vacanze scolastiche francesi, che
 cadono in periodi diversi da quelle tedesche e d’inverno e in primavera sono
 scaglionate su tre zone, più le settimane di half-term britanniche. Il confronto
 mese per mese dei parchi stagionali sta nella [pagina del periodo migliore](/periodo-migliore-per-visitare).
 
-Poi ci sono le stagioni. Dal 26 settembre al 1° novembre il Disneyland Park
+Dal 26 settembre al 1° novembre il Disneyland Park
 ospita il Disney Halloween Festival; il programma è nella nostra [notizia su
 Halloween](/blog/disneyland-paris-halloween-2026). Dal 7 novembre 2026 al 6
 gennaio 2027 segue il Natale Disney, per la prima volta anche a Disney Adventure
@@ -278,24 +241,21 @@ World: World of Frozen riceve addobbi natalizi in stile scandinavo e spettacoli
 propri con Anna, Elsa e Olaf. A Capodanno ciascuno dei due parchi festeggia con
 un programma suo.
 
-La curva dei giorni della settimana qui sopra è piatta, perché un parco aperto
-365 giorni all’anno e pubblicizzato in una mezza dozzina di paesi non ha un martedì morto su cui
-rifugiarsi. Quali fra le prossime settimane siano comunque le più tranquille
+La curva dei giorni della settimana qui sopra è piatta, perché il parco è aperto 365 giorni all’anno e pubblicizzato in una mezza dozzina di paesi. Quali fra le prossime settimane siano comunque le più tranquille
 sta in questo calendario, ricalcolato di continuo:
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
 ```
 
-## Premier Access, e quanto costa saltare la fila
+## Premier Access
 
 A Parigi la fast lane si chiama **Disney Premier Access** e ha due varianti.
 **Premier Access One** vale per una corsa su un’attrazione: la compri nell’app
 una volta dentro il parco e ricevi la prima fascia oraria libera. **Premier
 Access Ultimate** vale una volta per ogni attrazione partecipante, senza fasce
 orarie, e si può prenotare in anticipo. Nessuna delle due ha un prezzo fisso:
-Disney chiede importi diversi a seconda dell’attrazione, della data e della
-domanda, come i voli ad agosto. La mattina del 25 settembre 2026, un venerdì
+Disney chiede importi diversi a seconda dell’attrazione, della data e della domanda. La mattina del 25 settembre 2026, un venerdì
 fuori dalle vacanze scolastiche francesi, One costava secondo i nostri dati in
 diretta fra 5 euro (per esempio Pirates of the Caribbean o Phantom Manor) e 16
 euro (Frozen Ever After). Per Ultimate il sito britannico Mickey from the UK ha
@@ -305,18 +265,11 @@ registrato nel 2026 prezzi da 110 a oltre 200 euro a persona al giorno.
 
 ```
 
-Prima di comprarlo conviene dare un’occhiata alla classifica più in alto. Il
-prezzo segue la domanda, e la domanda non coincide con la coda: quella stessa
-mattina Hyperspace Mountain costava 12 euro e Peter Pan 13, anche se la coda di
-Peter Pan di solito è molto più lunga. Chi paga per Hyperspace Mountain e poi si
-mette buono in fondo alla coda di Peter Pan ha speso i soldi nella fila
-sbagliata.
+Quella stessa mattina Hyperspace Mountain costava 12 euro e Peter Pan 13, anche se la coda di Peter Pan di solito è molto più lunga. Con il Premier Access risparmi quindi più tempo a Peter Pan che a Hyperspace Mountain.
 
 ## Come organizzerei la giornata
 
-Se hai solo un giorno e scegli un solo parco, prendi il Disneyland Park: più
-attrazioni, code più corte, e il castello è il motivo per cui la maggior parte
-delle persone viene fin qui. Metti però in conto che all’apertura ufficiale c’è
+Se hai solo un giorno e scegli un solo parco, prendi il Disneyland Park: più attrazioni e code più corte. Metti però in conto che all’apertura ufficiale c’è
 già movimento. Gli ospiti degli hotel Disney e di Les Villages Nature e i
 titolari del Disneyland Pass Gold entrano prima con l’Extra Magic Time, di
 solito un’ora. Per questo Peter Pan ha già una coda lunga quando apre per tutti,
@@ -328,9 +281,7 @@ e otto le attrazioni della tabella oraria hanno la coda più lunga.
 
 E se prenoti entrambi i parchi, inverti l’ordine consueto e parti da Adventure
 World, dove la nostra analisi del rope drop indica per Ratatouille e per il
-Tower of Terror il risparmio più grande legato a una partenza anticipata. Frozen
-Ever After non fa parte del gruppo: la sua coda è più corta la sera, e c’è una
-fila single rider.
+Tower of Terror il risparmio più grande legato a una partenza anticipata. La coda di Frozen Ever After è più corta la sera, e c’è una fila single rider.
 
 ## Informazioni pratiche: come arrivare, biglietti, orari
 
@@ -358,9 +309,7 @@ raggiunto la capienza. Lì una giornata per adulti costa 129 euro per un parco e
 [disneylandparis.com](https://www.disneylandparis.com/).
 
 **Mangiare.** Entrambi i parchi hanno ristoranti con servizio al tavolo su
-prenotazione e molta ristorazione veloce nel mezzo. Il nostro database conta (al 25 settembre 2026) 35 locali nel Disneyland Park e 19 in Adventure World. All’ora di pranzo la
-coda trasloca dalle attrazioni ai banconi, e per un po’ il chiosco delle
-patatine diventa l’attrazione più richiesta del parco.
+prenotazione e molta ristorazione veloce nel mezzo. Al 25 settembre 2026 c’erano 35 ristoranti e chioschi nel Disneyland Park e 19 in Adventure World.
 
 ## Domande frequenti su Disneyland Paris
 
@@ -384,8 +333,7 @@ aggiornati per entrambi sono nella tabella di confronto più in alto.
 Il nuovo nome è in vigore dal 29 marzo 2026 ed era stato annunciato dal 12
 aprile 2024. È arrivato insieme all’area World of Frozen e chiude con il tema
 da studio cinematografico, che dal 2002 in poi corrispondeva sempre meno a
-quello che si trova davvero lì. Una montagna di Frozen alta 36 metri, con tanto
-di fiordo, non la spacci più per un set.
+quello che si trova davvero lì.
 
 ### Crush's Coaster è in funzione in questo momento?
 
@@ -416,17 +364,9 @@ attrazioni all’aperto:
 
 ```
 
-Chi cerca il confronto con i parchi che dalla Germania distano più o meno lo
-stesso: su [Walibi Belgium](/blog/walibi-belgium-tempi-di-attesa-consigli) e
-sull’[Efteling](/blog/efteling-la-disney-dei-paesi-bassi) ci sono già due
-testi a parte. E se il tuo viaggio cade fra ora e l’estate 2027: in questi
-mesi Adventure World fa funzionare tredici attrazioni invece di quattordici.
-Chi era già indeciso se il biglietto per due parchi valga il sovrapprezzo ha
-adesso un argomento in meno a favore.
+Su [Walibi Belgium](/blog/walibi-belgium-tempi-di-attesa-consigli) e sull’[Efteling](/blog/efteling-la-disney-dei-paesi-bassi), che dalla Germania distano più o meno lo stesso, ci sono due testi a parte.
 
-Dal 7 novembre al 6 gennaio i due parchi vivono la stagione natalizia, e la
-settimana fra Natale e Capodanno qui si comporta diversamente rispetto a Orlando: ad
-Adventure World è perfino la più tranquilla dell'anno misurato. Date, programma di Capodanno e confronto sono nel nostro articolo [Natale e Capodanno a Orlando e a Parigi](/blog/natale-capodanno-orlando-parigi-2026).
+Dal 7 novembre al 6 gennaio i due parchi vivono la stagione natalizia. A differenza di Orlando, ad Adventure World la settimana fra Natale e Capodanno è stata la più tranquilla dell'anno misurato. Date, programma di Capodanno e confronto sono nel nostro articolo [Natale e Capodanno a Orlando e a Parigi](/blog/natale-capodanno-orlando-parigi-2026).
 
 — Patrick
 

@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Si aspetta più a lungo all’Epic Universe e meno agli Studios. Proprio all’Epic Universe l’Express Unlimited non vale. Per le grandi montagne russe servono, a seconda dell’attrazione, da 122 a 138 centimetri di altezza.
+  Si aspetta più a lungo all’Epic Universe, e lì l’Express Unlimited non vale. Per le grandi montagne russe servono, a seconda dell’attrazione, da 122 a 138 centimetri di altezza.
 category: guides
 tags:
   - universal-orlando
@@ -22,7 +22,7 @@ tags:
 coverImage:
   src: /media/universal-islands-of-adventure/welcome-cover.jpg
   alt: 'Un treno del VelociCoaster percorre una curva, sullo sfondo le torri di Hogwarts.'
-  caption: 'Due mondi tematici in una sola immagine: Jurassic World e Hogwarts.'
+  caption: 'Jurassic World e Hogwarts alle Islands of Adventure.'
   credit: 'Patrick Arns'
 parkLinks:
   - universal-studios-florida
@@ -62,14 +62,14 @@ ha contato poco più di 9,5 milioni di visite, al 13° posto nel mondo, Islands 
 Adventure 9,45 milioni, al 14°. Per l’Epic Universe Universal finora non ha
 pubblicato alcun numero di visitatori.
 
-Quanto si sta in coda cambia molto da un parco all’altro. Nelle nostre misurazioni
+Nelle nostre misurazioni
 degli ultimi due anni si aspetta più a lungo all’Epic Universe e meno agli Studios:
 
 ```park-comparison-widget slugs=universal-studios-florida,universal-islands-of-adventure,universal-epic-universe highlight=universal-epic-universe
 
 ```
 
-L’Epic Universe ha 16 mesi. Mine-Cart Madness ha, nelle nostre misurazioni, la
+Mine-Cart Madness ha, nelle nostre misurazioni, la
 coda più lunga di tutto il resort, a pari merito dietro di lei vengono il Battle
 at the Ministry e Hagrid's Magical Creatures Motorbike Adventure delle Islands of
 Adventure.
@@ -95,9 +95,7 @@ Diagon Alley ed Escape from Gringotts hanno aperto l’8 luglio 2014. Kongfronta
 nel 2002 ha lasciato il posto a Revenge of the Mummy, e per i Simpson nel 2007 è
 sparita Back to the Future: The Ride.
 
-Per una visita sceglierei fra queste sette attrazioni. Ho lasciato fuori le case
-delle Halloween Horror Nights, anche se in autunno è lì che si aspetta di più: non
-sono attrazioni vere e proprie e restano aperte solo fino al 1° novembre.
+In autunno si aspetta di più alle case delle Halloween Horror Nights, aperte fino al 1° novembre.
 
 ```ride-waits-widget rides=universal-studios-florida/harry-potter-and-the-escape-from-gringotts|Escape from Gringotts|Montagna russa indoor;universal-studios-florida/revenge-of-the-mummy|Revenge of the Mummy|Montagna russa indoor;universal-studios-florida/despicable-me-minion-mayhem|Minion Mayhem|Simulatore;universal-studios-florida/transformers-the-ride-3d|Transformers: The Ride-3D|Dark ride 3D;universal-studios-florida/men-in-black-alien-attack|Men in Black: Alien Attack|Dark ride a bersagli;universal-studios-florida/the-simpsons-ride|The Simpsons Ride|Simulatore;universal-studios-florida/et-adventure|E.T. Adventure|Dark ride columns=type,peak,days highlight=universal-studios-florida/harry-potter-and-the-escape-from-gringotts
 
@@ -142,8 +140,7 @@ prevista per il 2027. La versione californiana è nel nostro articolo [Hollywood
 Hollywood](/news/hollywood-drift-universal-studios-hollywood).
 
 Fast & Furious: Supercharged è chiusa dal 17 agosto 2026, un anno prima di quanto
-annunciato all’inizio. In autunno la sua fila serviva finora da spazio per una casa
-delle Halloween Horror Nights. Cosa nascerà lì dopo, Universal non l’ha detto.
+annunciato all’inizio. In autunno nella sua fila finora c’era una casa delle Halloween Horror Nights. Cosa nascerà lì dopo, Universal non l’ha detto.
 
 ## Islands of Adventure
 
@@ -175,7 +172,6 @@ All’apertura era la montagna russa più veloce di tutti i parchi Universal. Al
 ![L’insegna illuminata all’ingresso del Jurassic World VelociCoaster, di notte | Dietro questo ingresso la fila passa in mezzo al paddock dei raptor di Jurassic World. | wide](/media/velocicoaster/01-eingang.jpg)
 
 La fila passa per il paddock dei raptor, dove stanno velociraptor animatronici.
-Fino a poco prima della partenza, nell’atrio c’è ancora qualcosa da guardare.
 
 ![La figura di un velociraptor nell’atrio verde della stazione del VelociCoaster | Nell’atrio il raptor sta fra le piante, poco prima della stazione. | right](/media/velocicoaster/03-atrium.jpg)
 
@@ -185,7 +181,7 @@ l’apertura del parco, il 28 maggio 1999. Ha sette inversioni, è alta 34 metri
 veloce 108 km/h. La prima salita il treno la fa senza catena: dei pneumatici
 lo portano a 64 km/h in due secondi. Altezza minima 138 centimetri, la più alta del parco.
 
-Per chi non sale sulle montagne russe ci sono le dark ride. In **[Harry Potter and
+In **[Harry Potter and
 the Forbidden Journey](ref:universal-islands-of-adventure/harry-potter-and-the-forbidden-journey)**
 siedi su un braccio robotico di KUKA e voli attraverso Hogwarts. L’attrazione ha
 aperto il 18 giugno 2010, dura più di quattro minuti e si sale da 122 centimetri.
@@ -240,8 +236,7 @@ una dark ride in un ascensore di Simtec, anch’essa da 102 centimetri.
 carrelli. Dura cinque minuti ed esisteva già a Osaka (dal 2021) e a Hollywood (dal
 2023).
 
-Alle altre montagne russe dell’Epic Universe si aspetta meno che a Mine-Cart
-Madness. **[Stardust Racers](ref:universal-epic-universe/stardust-racers)**,
+**[Stardust Racers](ref:universal-epic-universe/stardust-racers)**,
 al Celestial Park, è una montagna russa a duello di Mack con due tracciati, 40,5
 metri d’altezza, 100 km/h e un’inversione. Nel 2025 ha ricevuto il Golden Ticket
 Award come migliore nuova montagna russa. Altezza minima 122 centimetri. **[Curse
@@ -251,7 +246,7 @@ Gliders](ref:universal-epic-universe/hiccup-wing-glider)** sull’Isle of Berk u
 montagna russa per famiglie di Intamin a 72 km/h. Tutte e due partono da 102
 centimetri.
 
-Per i bambini sotto i 102 centimetri c’è più dei parchi giochi: **[Yoshi's
+**[Yoshi's
 Adventure](ref:universal-epic-universe/yoshis-adventure)** parte da 87 centimetri.
 La giostra **[Constellation Carousel](ref:universal-epic-universe/constellation-carousel)**
 e il giro in barca **[Fyre Drill](ref:universal-epic-universe/fyre-drill)** non
@@ -263,8 +258,7 @@ Berk.
 
 ## Harry Potter tre volte
 
-Harry Potter è il tema che lega tutti e tre i parchi, e ognuno ha un’area sua. La
-più antica è Hogsmeade alle Islands of Adventure, aperta il 18 giugno 2010 su 8
+Ognuno dei tre parchi ha un’area di Harry Potter tutta sua. La più antica è Hogsmeade alle Islands of Adventure, aperta il 18 giugno 2010 su 8
 ettari. Lì prima c’era la montagna russa Flying Unicorn, chiusa nel 2008 e tornata
 come **[Flight of the
 Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**. Questa
@@ -283,7 +277,7 @@ Magic metti in conto un giorno a parte all’Epic Universe.
 
 ## Seuss Landing, Marvel e Jurassic Park
 
-Tre isole delle Islands of Adventure sono isole per famiglie. **Seuss Landing** ha
+**Seuss Landing** ha
 una dark ride, una giostra di D. H. Morgan e il Trolley di Mack, che dal 2006 corre
 sopra le teste su due tracciati da 460 metri ciascuno. **Marvel Super Hero Island**
 ha, oltre all’Hulk, a Spider-Man e a Doctor Doom's Fearfall, le tazze girevoli
@@ -324,7 +318,7 @@ Park-to-Park o un abbonamento annuale.
 
 ## Biglietti: un parco o Park-to-Park
 
-Universal vende due tipi di biglietto. Con il biglietto per un parco entri ogni
+Con il biglietto per un parco entri ogni
 giorno in un parco. Con il biglietto Park-to-Park cambi parco nello stesso giorno
 e sali sull’Hogwarts Express. I biglietti Park-to-Park esistono per tre, quattro e
 cinque giorni e ti fanno entrare ogni giorno in tutti e quattro i parchi, anche
@@ -340,14 +334,13 @@ biglietto, tasse escluse, all’8 ottobre 2026:
 | Universal Islands of Adventure | 124,99 dollari |
 | Volcano Bay                    | 80,99 dollari  |
 
-I prezzi cambiano di giorno in giorno, e questi sono i più bassi. Universal
-ha in programma due offerte. Il biglietto da 3 giorni con un parco al giorno,
+I prezzi cambiano di giorno in giorno, e questi sono i più bassi. Il biglietto da 3 giorni con un parco al giorno,
 Studios, Islands of Adventure ed Epic Universe, parte da 99 dollari al giorno e
 297 in tutto. Il biglietto Park-to-Park per due giorni agli Studios e alle Islands
 of Adventure più un giorno all’Epic Universe parte da 119 dollari al giorno, 357
 in tutto.
 
-Il mio consiglio dipende dalla durata. Per tre giorni prendo il biglietto da 3
+Per tre giorni prendo il biglietto da 3
 giorni con un parco al giorno, perché l’Epic Universe ha comunque bisogno di un
 giorno suo. Il Park-to-Park conviene se vuoi salire sull’Hogwarts Express o
 cambiare in un giorno fra Studios e Islands of Adventure.
@@ -361,7 +354,6 @@ text: I prezzi di ogni giorno sono nel calendario di Universal.
 ## Express Pass: quanto costa e dove vale
 
 Con l’Express Pass paghi Universal per saltare la fila.
-Esiste in tre forme, che non valgono lo stesso numero di volte per attrazione né negli stessi parchi.
 
 **Universal Express** vale una volta per attrazione. Universal lo vende per gli
 Studios, le Islands of Adventure, l’Epic Universe e Volcano Bay, come supplemento
@@ -379,13 +371,9 @@ disponibili.
 per singole attrazioni in una fascia oraria. Universal, a quanto dice, lo offre
 solo di tanto in tanto.
 
-All’Epic Universe, dunque, se vuoi un pass non c’è alternativa all’Express a uso
-singolo. Le code più lunghe del resort stanno lì, per questo un pass lì rende di
-più. Chi all’apertura fa prima Mine-Cart Madness e il Battle at the Ministry non
+All’Epic Universe, dunque, se vuoi un pass sarà l’Express a uso singolo. Chi all’apertura fa prima Mine-Cart Madness e il Battle at the Ministry non
 ne ha bisogno per queste due. Agli Studios e alle Islands of Adventure, senza il
-vantaggio dell’hotel, non comprerei il pass. Arrivando presto, alle attrazioni dell’elenco del rope drop, cioè VelociCoaster, Ripsaw Falls, Skull Island e Spider-Man, arrivi anche senza pass. Per Hagrid's non è così.
-È una mia valutazione dai profili orari. Quanti minuti faccia risparmiare un pass
-nella realtà, non lo misuriamo.
+vantaggio dell’hotel, non comprerei il pass. Arrivando presto, alle attrazioni dell’elenco del rope drop, cioè VelociCoaster, Ripsaw Falls, Skull Island e Spider-Man, arrivi anche senza pass, a Hagrid's no. È una mia stima dai profili orari, perché quanti minuti faccia risparmiare un pass non lo misuriamo.
 
 ## Quando andarci
 
@@ -445,7 +433,7 @@ Hippogriff, VelociCoaster, Ollivanders e Hagrid's.
 Una giornata alle Islands of Adventure senza hotel la organizzerei così: all’apertura
 vai al VelociCoaster, perché secondo l’analisi del rope drop è lì che partire
 presto rende di più. Poi Hagrid's, quindi Forbidden Journey. All’ora di pranzo
-tocca alle attrazioni acquatiche, perché dopo ti asciughi comunque al sole. Con l’hotel dipende da quali attrazioni Universal libera per quel giorno nell’app per l’Early Park Admission. Se nell’elenco ci sono il VelociCoaster o Hagrid's, fai quella nell’ora prima dell’apertura e l’altra all’apertura.
+tocca alle attrazioni acquatiche. Con l’hotel dipende da quali attrazioni Universal libera per quel giorno nell’app per l’Early Park Admission. Se nell’elenco ci sono il VelociCoaster o Hagrid's, fai quella nell’ora prima dell’apertura e l’altra all’apertura.
 
 All’Epic Universe all’apertura vai a Super Nintendo World per Mine-Cart Madness e
 poi al Ministry of Magic. Stardust Racers ha, nelle nostre misurazioni, la coda
@@ -556,8 +544,7 @@ all’aperto:
 
 ```
 
-Il secondo grande parco di Orlando è il Magic Kingdom, che nei nostri dati ha
-l’attesa tipica più breve dei quattro parchi Disney in Florida: [Magic Kingdom,
+Nelle nostre misurazioni il Magic Kingdom ha l’attesa tipica più breve dei quattro parchi Disney in Florida: [Magic Kingdom,
 tempi di attesa e consigli](/blog/magic-kingdom-tempi-di-attesa-consigli).
 
 — Patrick

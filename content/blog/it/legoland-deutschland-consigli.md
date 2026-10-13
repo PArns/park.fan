@@ -56,13 +56,9 @@ seo:
 Il **Legoland Deutschland** si dice pensato per bambini **dai due ai dodici anni**.
 Per un bambino che sale con un adulto, l'altezza minima più alta del parco è di **1,25 metri**, a
 [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare). Su nessuna delle nove attrazioni
-principali arrivare presto fa risparmiare tanta attesa da valere la sveglia. Chi
-organizza una giornata a Günzburg ha quindi bisogno di meno tattica che a Rust o a Brühl e di più
-attenzione per centimetri ed età.
+principali arrivare presto fa risparmiare tanta attesa da valere la sveglia.
 
-Questa guida è pensata per bambini tra i tre e i dodici anni, dal passeggino alla prima montagna russa senza
-la mano di un genitore. I nostri tempi di attesa vengono da misurazioni fatte da dicembre 2025, cioè una
-stagione e 188 giorni di misurazione. Prezzi, orari e date valgono al **6 ottobre 2026**.
+Abbiamo misurato i tempi di attesa in 188 giorni da dicembre 2025, cioè in una stagione. Prezzi, orari e date valgono al **6 ottobre 2026**.
 
 ## Un parco sul terreno di un deposito di munizioni
 
@@ -77,7 +73,7 @@ circa 153 milioni di euro. Il primo anno vennero 1,3 milioni di visitatori, nel 
 nel 2024 l'indice della Themed Entertainment Association ne contava circa **due milioni**. Con questo il
 Legoland è, dopo l'Europa-Park e il Phantasialand, il terzo parco di divertimenti più visitato della Germania. Lo gestisce dal 2005 Merlin Entertainments. Nel 2019 tre investitori hanno rilevato Merlin per
 6,6 miliardi di euro: Blackstone, un fondo pensione canadese e Kirkbi, la società di investimento dei
-proprietari di Lego. Il parco lo gestisce ancora Merlin.
+proprietari di Lego.
 
 Secondo il parco stesso, oggi conta **68 attrazioni in 11 mondi tematici** e più di 58 milioni di
 mattoncini Lego. Il Miniland ne usa più di 23 milioni, assemblati da 140 modellisti. L'Allianz Arena lì è fatta di oltre un milione di mattoncini e pesa 1,5 tonnellate secondo Wikipedia.
@@ -112,10 +108,9 @@ solo spesso gli servono 1,20 metri. Il parco lo stabilisce attrazione per attraz
 
 Mettiamo che tuo figlio abbia sei anni e sia alto 1,15 metri. Con te può salire sul Feuerdrache, sul
 Große LEGO Rennen, sulla Drachenjagd, sulla Dschungel X-pedition, sul Fire & Ice Tower e su LEGO NINJAGO
-The Ride, ma né su Maximus né su Flying NINJAGO. Gli mancano cinque e dieci centimetri. Se hai due
-figli di altezze diverse, prepara due liste e alternatevi sulle attrazioni grandi.
+The Ride, ma né su Maximus né su Flying NINJAGO. Gli mancano cinque e dieci centimetri.
 
-Il limite per salire senza adulto è il più importante. Un bambino di otto anni alto 1,30 metri può
+Un bambino di otto anni alto 1,30 metri può
 salire da solo sulla maggior parte delle attrazioni della tabella, uno di sei anni alto 1,20 metri solo
 su quelle più piccole. A Flying NINJAGO, al Power Builder e alla Wüsten X-kursion c'è inoltre
 un'**altezza massima** di 1,95 metri, a Maximus di 2,00 metri. Questo riguarda soprattutto i genitori
@@ -140,8 +135,7 @@ drago si accorge dei passeggeri, e sul percorso esterno si affrontano le curve f
 secondo, poco meno di 29 km/h. Un bambino può salire con un adulto da 1,10 metri e sei anni.
 
 **[Das Große LEGO Rennen](ref:legoland-deutschland/the-great-lego-race)** è una wild mouse di Mack Rides, alto 18 metri, lungo 400 metri e veloce fino a 56 km/h secondo Wikipedia. Prima girava come
-Project X e dal 2018 è allestito come un circuito di Lego City. Con un adulto bastano 1,10 metri, e per
-un bambino che ha già fatto la Drachenjagd è il passo successivo.
+Project X e dal 2018 è allestito come un circuito di Lego City. Con un adulto bastano 1,10 metri.
 
 ```glossary-widget slug=wild-mouse
 
@@ -156,11 +150,10 @@ La **[Dschungel X-pedition](ref:legoland-deutschland/jungle-x-pedition)** è l'a
 Intamin dell'anno di apertura, con una discesa di dodici metri in cui, secondo il parco, 80 litri
 d'acqua al secondo si riversano nella laguna. I passeggeri ne escono bagnati. In ottobre conviene avere vestiti di ricambio nello zaino.
 
-**[LEGO NINJAGO The Ride](ref:legoland-deutschland/lego-ninjago-the-ride)** del 2017 non è una montagna
-russa ma un percorso 4D interattivo. Con i movimenti della mano lanci lampi, palle di fuoco, fontane di
+**[LEGO NINJAGO The Ride](ref:legoland-deutschland/lego-ninjago-the-ride)** è un percorso 4D interattivo del 2017. Con i movimenti della mano lanci lampi, palle di fuoco, fontane di
 ghiaccio e raffiche d'aria contro avversari animati. Nebbia e aria calda fanno parte dello spettacolo, e
 alla fine si sa chi ha fatto più punti. Il giro dura circa tre minuti e mezzo, e secondo il parco non
-serve conoscere la storia. È al coperto, quindi la pioggia non la tocca.
+serve conoscere la storia.
 
 Per le prime emozioni c'è la **[Drachenjagd](ref:legoland-deutschland/dragon-hunt)**, un junior coaster
 di Gerstlauer del 2003, su cui i bambini salgono con un adulto da un metro. Sul
@@ -204,8 +197,7 @@ la Hafenrundfahrt.
 ```
 
 I tempi di attesa attuali sono sulla [pagina del parco](ref:legoland-deutschland), aggiornati ogni
-cinque minuti. L'app del Legoland li mostra solo se sei nel parco e hai condiviso la posizione. Da noi
-puoi vederli già la sera prima.
+cinque minuti. L'app del Legoland li mostra solo se sei nel parco e hai condiviso la posizione.
 
 Il giorno della settimana fa la differenza maggiore nelle nostre misurazioni:
 
@@ -229,8 +221,7 @@ I mesi:
 Agosto è stato il mese più pieno. A giugno e a settembre c'era meno gente che a maggio e a luglio.
 Di ottobre finora abbiamo misurato solo cinque giorni, troppo pochi per trarre una conclusione.
 
-Come si distribuisce la giornata è nella tabella seguente, una riga per attrazione e una colonna per
-ora. Il parco apre alle 10:00, e le attrazioni chiudono un'ora prima del parco.
+Il parco apre alle 10:00, e le attrazioni chiudono un'ora prima del parco.
 
 ```hourly-profile-widget slug=legoland-deutschland top=8
 
@@ -253,18 +244,16 @@ Arrivare all'apertura lo consigliamo solo quando l'attesa a un'attrazione si all
 giornata e all'apertura si aspetta tanto meno da giustificare la sveglia. Dove stanno questi limiti,
 e perché, lo spieghiamo nell'articolo [70 minuti sono tanti?](/blog/70-minuti-sono-tanti). Al Legoland
 nessuna delle nove attrazioni principali li raggiunge, né nei giorni feriali né nel fine settimana.
-Per questo sulle loro pagine da noi non c'è alcuna raccomandazione di rope drop.
 
 ```glossary-widget slug=rope-drop
 
 ```
 
-Non serve quindi essere al parcheggio alle sette. Se arrivi presto, comincia dalle due attrazioni in
+Se arrivi presto, comincia dalle due attrazioni in
 cui l'attesa nel corso della giornata sale soltanto: la Dschungel X-pedition e il Tret-o-Mobil. Il
 Große LEGO Rennen e la Hafenrundfahrt, dove l'affluenza è più alta al mattino, conviene tenerli per il
 pomeriggio. Maximus, il Feuerdrache e Flying NINJAGO si fanno quando vuoi, perché lì l'attesa cambia
-poco nel corso della giornata. Se
-preferisci la calma, vieni di venerdì.
+poco nel corso della giornata.
 
 ## Fastrack: tre livelli e le attrazioni
 
@@ -281,7 +270,7 @@ scansionare solo una volta ogni tre minuti. Il contingente giornaliero è limita
 Flying NINJAGO, Dschungel X-pedition, LEGOLAND Express, la torre panoramica, Pyramiden Rallye, Wüsten
 X-kursion, Safari Tour, Piratenschule e LEGO Studios.
 
-Se conviene dipende dal giorno. In quattro persone anche 25 € a testa fanno 100 € in più rispetto
+In quattro persone anche 25 € a testa fanno 100 € in più rispetto
 all'ingresso, per un'attrazione in cui la tabella qui sopra non mostra comunque attese estreme. Un
 venerdì di giugno non comprerei il Fastrack. Un sabato nelle vacanze bavaresi, il giorno della settimana più pieno nelle nostre misurazioni, prenderei Bronzo per l'attrazione che allora sta in
 cima alla tabella.
@@ -311,8 +300,7 @@ La stagione va dal **28 marzo all'8 novembre 2026**. Il parco è chiuso il **5 e
 ancora date per il 2027.
 
 L'orario normale è **dalle 10:00 alle 18:00**, più lungo nei fine settimana, durante le vacanze e nei
-giorni festivi. Nella stagione regolare le attrazioni chiudono **un'ora prima del parco**. Se il parco
-chiude alle 18:00 e vuoi salire alle 17:30, l'attrazione è già chiusa. I prossimi giorni più tranquilli
+giorni festivi. Nella stagione regolare le attrazioni chiudono **un'ora prima del parco**. I prossimi giorni più tranquilli
 sono nel calendario:
 
 ```best-days-widget slug=legoland-deutschland
@@ -329,8 +317,7 @@ Il programma comprende il «BOOlevard», il sentiero decorato dall'ingresso attr
 ballano sul palco del castello. Ai LEGO Studios il film 4D «Die Monster sind los!» viene proiettato
 ogni ora dalle 11:00, l'ultimo un'ora prima della chiusura. La **parata** parte alle 16:00 i sabati di Halloween, il 3, 10, 17,
 24 e 31 ottobre, e con il maltempo può saltare. In quei sabati il parco resta aperto fino alle **20:00**,
-il 7 novembre fino alle 19:00 e negli altri giorni fino alle 18:00. Chi viene in un sabato di Halloween
-ha dunque due ore in più, ma anche il giorno più pieno della settimana.
+il 7 novembre fino alle 19:00 e negli altri giorni fino alle 18:00.
 
 Lo spettacolo «Battle of the Bricks» all'Affentheater, nel Land der Abenteuer, è alle 12:00 e alle
 16:00, non di lunedì. Nei sabati di Halloween la parata sostituisce lo spettacolo delle 16:00. I
@@ -342,7 +329,7 @@ Al coperto sono, secondo il parco, la **Tempel X-pedition**, **LEGO NINJAGO The 
 Studios**, **LEGOLAND ATLANTIS by SEA LIFE** e la **LEGO Fabrik**. Atlantis ha secondo Wikipedia più di 2.000 pesci, e il tunnel di vetro lì è lungo
 otto metri. In più c'è una **Regen Rallye**, un gioco a enigmi per i giorni di pioggia.
 
-Tra il 24 dicembre 2025 e il 5 ottobre 2026 al Legoland Deutschland sono caduti almeno due millimetri di pioggia nel 18 % dei giorni di apertura. I dati di tutti e dodici i parchi sono nel [confronto con la pioggia](/blog/parco-divertimenti-con-la-pioggia). Il parco stesso
+Tra il 24 dicembre 2025 e il 5 ottobre 2026 al Legoland Deutschland sono caduti almeno due millimetri di pioggia nel 18 % dei giorni di apertura. Il parco stesso
 consiglia ombrello, poncho antipioggia, scarpe impermeabili e vestiti di ricambio.
 
 ```weather-widget slug=legoland-deutschland
@@ -394,8 +381,7 @@ piste di curling e spettacoli ogni mezz'ora, e a molte attrazioni c'è scritto �
 meteo». Fino al 15 novembre un biglietto in prevendita costa 22 € invece di 36 €. La [panoramica dell'inverno](/blog/parchi-divertimenti-inverno-2026) confronta il parco con gli altri parchi tedeschi nella stagione fredda.
 
 Il Legoland ha inoltre annunciato il primo LEGO Harry Potter Land del mondo e il primo alloggio con quel
-tema. Un anno di apertura il parco non lo indica. Cosa hanno confermato gli altri parchi per il 2027 è
-nelle [novità del 2027](/blog/novita-parchi-divertimento-2027).
+tema. Un anno di apertura il parco non lo indica.
 
 ## Domande frequenti sul Legoland Deutschland
 

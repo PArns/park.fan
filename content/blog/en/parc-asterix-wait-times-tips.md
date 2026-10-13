@@ -7,11 +7,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Parc Astérix opened in 1989 for 15,000 visitors a day, turned 150,000 away at
-  the gates in its first year and now gets almost three million a year. Every
-  coaster with its numbers, wait times from our measurements, the order for a
-  day, what Filotomatix costs, how to get there without a car, Peur sur le
-  Parc, Noël Gaulois, and what closes or opens by 2028.
+  Parc Astérix opened in 1989 for 15,000 visitors a day and turned 150,000 away
+  at the gates in its first year. Now it gets almost three million a year. Go to
+  Tonnerre 2 Zeus at opening and leave Toutatis for the early afternoon.
 tags:
   - parc-asterix
   - toutatis
@@ -74,9 +72,7 @@ Paris as one destination. Its coasters include Goudurix, which was already
 running on opening day, and [Toutatis](ref:parc-asterix/toutatis), the tallest
 coaster in France.
 
-The wait times come from our own measurements since Christmas 2025, everything
-else from the park's website as it stood on 2 October 2026 and from the articles
-and databases linked at the end. Where two of them disagree, you get both numbers.
+We have measured the wait times since Christmas 2025, and prices and dates are as of 2 October 2026.
 
 ## Parc Astérix wait times, ride by ride
 
@@ -85,15 +81,12 @@ and databases linked at the end. Where two of them disagree, you get both number
 ```
 
 At the start of October 2026 the top of the table belongs to two family
-coasters, Cétautomatix and Pégase Express, with the headliner behind them.
-That's down to capacity. According to the Roller Coaster DataBase (RCDB),
+coasters, Cétautomatix and Pégase Express, with the headliner behind them. According to the Roller Coaster DataBase (RCDB),
 Toutatis handles 1,260 riders an hour and OzIris 1,600. Before Cétautomatix
 opened, the French site Androland put it at roughly 700: nine cars of
-four, one leaving every 20 seconds. A small ride with a low height limit, where
-the whole family can go together, fills its queue faster than a big one only
-half the group is allowed on.
+four, one leaving every 20 seconds. At Cétautomatix and Pégase Express the whole family queues, because children can ride with an adult from 100 cm, at Toutatis only from 130.
 
-The table compares Parc Astérix with Disneyland Park, with Walibi Belgium, which belongs to the same group, and with Europa-Park. It's recalculated as new data comes in:
+The table compares Parc Astérix with Disneyland Park, with Walibi Belgium, which belongs to the same group, and with Europa-Park.
 
 ```park-comparison-widget slugs=parc-asterix,/parks/europe/france/paris/disneyland-park,walibi-belgium,europa-park show=quietest highlight=parc-asterix
 
@@ -135,7 +128,7 @@ company, which also owns [Walibi Belgium](ref:walibi-belgium) and
 [Walibi Holland](ref:walibi-holland), still runs the park; Delphine Pons has
 been its director since May 2021.
 
-It's kept growing since. In 2012 came the Égypte area and OzIris, 20 million
+In 2012 came the Égypte area and OzIris, 20 million
 euros for the pair and the biggest investment in the park's history at that
 point. Pégase Express followed in 2017 for 16 million, Toutatis in 2023.
 According to the Themed Entertainment Association (TEA) index and the park's own figures, attendance was 2,326,000 in 2019, 2,632,000 in 2022, 2,815,000 in 2023,
@@ -196,11 +189,9 @@ steeper than vertical.
 
 ```
 
-The sources don't quite agree on the numbers. RCDB gives 51 metres and 107
+RCDB gives 51 metres and 107
 km/h, Intamin 53 metres and also 107 km/h, the park 51 metres and 110 km/h,
-and with those 110 km/h it calls Toutatis "the fastest attraction in France". The
-number of launches depends on how you count: seven according to Intamin, five
-forwards and two backwards, four according to Wikipedia, three of them on the
+and with those 110 km/h it calls Toutatis "the fastest attraction in France". Intamin counts seven launches, five forwards and two backwards, Wikipedia four, three of them on the
 same launch track. RCDB gives 1,075 metres of track and, since the train
 covers some of it twice, 1,361 metres travelled, which is where the park's "more
 than 1,300 metres" comes from. Three inversions, just over two
@@ -216,8 +207,7 @@ according to the park.
 You don't need to run here at opening. The queue is already as long at ten as
 it is at midday, and by our analysis it's shortest about three and a half hours
 after opening. Hotel guests get into the Toutatis and Égypte areas half an hour
-before everyone else; whether that's the whole explanation, we can't tell
-from our data. If you can ride alone, use the single rider line, which only exists here
+before everyone else. If you can ride alone, use the single rider line, which only exists here
 and at OzIris.
 
 ### OzIris
@@ -226,7 +216,7 @@ and at OzIris.
 Égypte area. The park spent 20 million euros on the two, half of it on theming
 according to NewsParcs. Bolliger & Mabillard built the inverted coaster. The
 train hangs below the track and your legs dangle. A 40-metre lift, 1,000 metres
-of track, 90 km/h, five inversions. Which five is disputed. RCDB lists a dive
+of track, 90 km/h, five inversions. RCDB lists a dive
 loop, a vertical loop, an Immelmann and two zero-g rolls; Wikipedia has a
 corkscrew instead of the first zero-g roll. Wikipedia also says the train dives
 into a tunnel under a pool. Three trains of 32, 1,600 riders an hour, height
@@ -366,12 +356,7 @@ Cétautomatix, Discobélix and La Trace du Hourra. For the other five, the worst
 day fell in summer 2026, between May and August (as of 2 October 2026).
 
 For Noël Gaulois the park opens this year from 19 December 2026 to 3 January
-2027, which is exactly the French Christmas school holiday, sixteen days in
-all. There are two explanations for the records, and we can't tell from our
-measurements which one matters more. One is that everyone who wants to come over Christmas has
-those sixteen days to do it. The other is in the park's FAQ: in winter the water
-rides are closed, and in sub-zero temperatures some other rides are too, so the
-crowd spreads over fewer rides.
+2027, which is exactly the French Christmas school holiday, sixteen days in all. The park's FAQ says the water rides are closed in winter, and in sub-zero temperatures some other rides are too, so the crowd spreads over fewer rides.
 
 ## When to go
 
@@ -382,8 +367,7 @@ crowd spreads over fewer rides.
 ```
 
 In our measurements Saturday is the busiest day by a distance, and Wednesday
-the quietest. If you can pick the day, pick a Wednesday. Other parks have
-their own quiet day, collected on the [best time to visit page](/best-time-to-visit).
+the quietest. If you can pick the day, pick a Wednesday. The quietest days at the other parks are on the [best time to visit page](/best-time-to-visit).
 
 ### Month
 
@@ -435,8 +419,7 @@ at its busiest in the early afternoon, when it's warm. OzIris is short in the
 first half hour as well; if you miss that, save it for late afternoon.
 
 The shows run around midday. Toutatis comes in the early afternoon, because by
-our analysis its best window is about three and a half hours after opening. If you
-can ride alone, take the single rider line.
+our analysis its best window is about three and a half hours after opening.
 
 Towards evening, do La Trace du Hourra and OzIris again. In the last hour most
 queues are short again; only Toutatis and Cétautomatix stay roughly as long as
@@ -509,21 +492,18 @@ winter from 2007 to 2010 and again since 2019.
 
 ## What's closing and what's coming
 
-The Rue de Paris is gone. The park announced its closure on 7 November 2025, and
-with it went the Chevaux du Roy carousel and three Halloween haunts; the
+The park announced the closure of the Rue de Paris on 7 November 2025. With it went the Chevaux du Roy carousel and three Halloween haunts; the
 animatronics in the Hôtel des Artistes and the Maison du 14 juillet had already
 stopped in September. A carousel and parts of the sets are going to the
 Festiland theme park, according to the park, and other pieces to the Musée des
 Arts Forains in Paris.
 
-In 2027 La Grèce gets bigger. The park has announced two family rides, a
-playground and a restaurant, La Table de Dionysos, with 450 seats. Androland and
+For 2027 the park has announced two family rides, a playground and a 450-seat restaurant, La Table de Dionysos, in La Grèce. Androland and
 Parcs Actus report that the design takes its cue from the Greek island of Symi;
 Androland mentions two small Zierer drop towers and a Zamperla Go Go Bounce. The park hasn't confirmed that. A fourth hotel, L'Odyssée, with 300 rooms and
 four stars, is due the same year.
 
-Londinium arrives in 2028. On the site of the old Paris, the park is building
-an indoor area based on the album "Asterix in Britain". It has announced a big
+On the site of the old Paris, the park is building Londinium for 2028, an indoor area based on the album "Asterix in Britain". It has announced a big
 themed coaster, an interactive family dark ride, a climbing playground, a pub
 and shops. RCDB already lists the coaster: an Intamin Multi Dimension Coaster
 with spinning cars, 17 metres tall, inside the building. Tonnerre 2 Zeus gets
@@ -539,8 +519,7 @@ date. The Billet Malin is 49 euros, the same for adults and children, but only
 on a limited number of days. The Billet Futé starts at 56 euros for adults and
 53 for children if you book at least seven days ahead. Two consecutive days cost
 125 and 109 euros at the gate. Tickets bought online are for a fixed date, and
-you don't need to book anything else. On 2 October the park wasn't selling
-season passes for 2027 yet.
+you don't need to book anything else. The park isn't selling season passes for 2027 yet.
 
 ### Getting there
 

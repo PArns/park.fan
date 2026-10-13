@@ -48,10 +48,9 @@ seo:
     - Plopsaland Deutschland Halloween
 ---
 
-Anyone driving to Haßloch looking for Holiday Park will still find it. The road is still called
+The road into the park in Haßloch is still called
 Holiday-Park-Straße, and the house number hasn't changed. The coaster most people come for has
-stood in the same spot since 2001, too. Only the park has a different name: since 28 June 2025 it's
-[Plopsaland Deutschland](ref:plopsaland-deutschland). The name comes from the Belgian operator,
+stood in the same spot since 2001, too. The park itself has been called [Plopsaland Deutschland](ref:plopsaland-deutschland) since 28 June 2025. The name comes from the Belgian operator,
 which has owned the park since November 2010.
 
 Search for "Holiday Park" in 2026 and you also get pages from earlier years, with prices that no
@@ -68,14 +67,13 @@ currently across 57 attractions.
 
 ```
 
-## Expedition GeForce, and why it has lasted 25 years
+## Expedition GeForce
 
 [bigFM Expedition GeForce](ref:plopsaland-deutschland/bigfm-expedition-geforce) is an Intamin
-machine from 2001, and it's the reason people drive to the Palatinate from Hamburg. The park
+machine from 2001. The park
 gives 55 metres, 120 km/h, 1,220 metres of track, a ride time of 1:15 and up to 4.5 g. German
 Wikipedia has 53 metres. That's the height of the track, while the park measures from the
-highest point of the lift hill. Where they disagree, this guide uses the
-park's number.
+highest point of the lift hill. Where they disagree, we use the park's number.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -86,15 +84,12 @@ in England, the second tallest. It hasn't been either for a long time. But it ha
 Today_ as Europe's best coaster several times, and the _Internet Coaster Poll_ has voted it the
 best in the world more than once. The park now counts 40 awards.
 
-The reason sits behind the first drop. The ride has no inversion, no launch and no track
-switch. It has three hills that lift riders out of their seats at the crest, and a helix at the end
-that presses them back down into them. If airtime is what you ride for,
-that's the trip.
+The ride has no inversion, no launch and no track switch. Behind the first drop it has three hills that lift riders out of their seats at the crest, and a helix at the end
+that presses them back down into them.
 
-![A view from above of a red steel coaster whose track runs through wooded ground in long hills and one wide curve. | Expedition GeForce seen from the Free Fall Tower. The three hills after the first drop are where the ride earned its reputation. Foto: Hetamin1000, Wikimedia Commons (Public Domain) | right](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
+![A view from above of a red steel coaster whose track runs through wooded ground in long hills and one wide curve. | Expedition GeForce seen from the Free Fall Tower. In the picture, the three hills after the first drop. Foto: Hetamin1000, Wikimedia Commons (Public Domain) | right](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
 
-You can ride from 140 centimetres, and not below that even with an adult. It only runs from
-8 degrees Celsius, which in March and November can decide whether you get a ride or a walk. The
+You can ride from 140 centimetres, and not below that even with an adult. It only runs from 8 degrees Celsius, so on cold days in March and November it stands still. The
 Express Pass is valid here too.
 
 ## The other three coasters
@@ -107,28 +102,25 @@ times, forwards and backwards, before it clears the vertical top hat. Minimum he
 
 **100% Wolf – The Family Roller Coaster** is the 2026 addition, opened on 22 March. Gerstlauer
 built it: 17.5 metres tall, 760 metres long, 55 km/h, with a launch section, a track switch for
-the backwards run and a spike as the closing element. It's why the park appears in this year's
-new-ride lists at all. It's a family coaster: children can ride from 100 centimetres with an adult
+the backwards run and a spike as the closing element. It's a family coaster: children can ride from 100 centimetres with an adult
 and from 130 alone. It runs from as low as 5 degrees.
 
-In our measurements you wait longer here than at any other ride in the park. That doesn't mean
-much, because at Plopsaland you only queue briefly at almost every ride.
+In our measurements you wait longer here than at any other ride in the park.
 
 **Tabaluga's Rollercoaster** by Zierer is the smallest of the four at 9 metres and 39 km/h, and
 the only one under a roof, and it belongs to the Holiday Indoor hall, opened in 2018 across
-5,000 square metres. On a wet day that is the part of the park which suddenly fills up.
+5,000 square metres. On rainy days the hall is full.
 
 ## Water, height and the rest
 
 The Free Fall Tower was Germany's first drop tower when it opened in 1997, an Intamin Giant
-Drop, 70 metres tall, from 120 centimetres. It's the thing you see from the A65 before you take
-the exit.
+Drop, 70 metres tall, from 120 centimetres. You can see it from the A65.
 
 For hot days there are two water rides:
 
 - **DinoSplash**, called Donnerfluss until 2019, dates from 1984 and was Germany's first rapid
   river ride. 500 metres, fed from groundwater, from 110 centimetres with an adult and from 130
-  alone. During the Halloween Fright Nights it runs until 20:00 and no later.
+  alone. During the Halloween Fright Nights it runs only until 20:00.
 - **Wickie Splash**, called Teufelsfässer until 2013, is a Mack log flume from 1992 with
   20 metres of height and 1,000 metres of track. It was the first log flume in Europe with a
   backwards shot. From 100 centimetres with an adult, from 140 alone.
@@ -136,11 +128,10 @@ For hot days there are two water rides:
 Next to them sits **Splash Battle** in Wickieland, where boat crews and bystanders soak each
 other, and **The Big Wave**, a Zamperla Disk'O. Both are in Wickieland, like Wickie Splash.
 
-**Sky Fly** by Gerstlauer, in place since 2015 where the sold-off Bounty Tower stood, is the one
-for people who want to flip themselves over. The **Lighthouse Tower** by Funtime has stood since
+**Sky Fly** by Gerstlauer, in place since 2015 where the sold-off Bounty Tower stood, is a ride on which you flip yourself over. The **Lighthouse Tower** by Funtime has stood since
 2006 and is where you get a look at the whole site in one go.
 
-For younger visitors the park is densely packed: Majaland from 2012 has eleven attractions, and
+For small children, Majaland from 2012 has eleven attractions, and
 Blinky Bill, Super Wings, The Beach and the indoor hall add more. **The Smurfs' Adventure** is a
 Mack dark ride that was called Burg Falkenstein until the end of 2022 and reopened for the 2025
 season with new theming.
@@ -152,27 +143,24 @@ season with new theming.
 ## The themed areas, and what is in each
 
 The park is laid out as a star. The areas branch off the Square of Fountains behind the
-entrance, and you cross the middle several times a day. That's less tiring than it sounds,
-because 40 hectares stay walkable.
+entrance, and you cross the middle several times a day. At 40 hectares the walks are short.
 
 The **Square of Fountains** holds the Free Fall Tower and the dancing fountains that turn up in
-every Plopsa park. From here it is a few minutes in any direction.
+every Plopsa park.
 
 **Majaland** was built in 2012 on the site of the old entrance and exit and holds eleven
 attractions for small children, most of them by Zamperla and Zierer: Maya's Flower Splash as a
 Flying Fish, the Flower Tower as the Free Fall Tower's little brother, the Swinging Tree, the
 Butterfly Flight, The Frogs, Mini-Cars, Lara's Ladybug Flight, Willy's Raft Circuit and the Bee
-Whirl. Arrive with a three-year-old and you will spend half the day here.
+Whirl.
 
 **Holiday Indoor** is the 2018 hall, with Tabaluga's Rollercoaster, Mia's Elf Flight, the Farm
-Carousel, a wave slide, a ball pool and a theatre seating over 500. It's the rain plan, and the
-reason an October visit here carries less risk than at an open-air-only park.
+Carousel, a wave slide, a ball pool and a theatre seating over 500.
 
 The **Palatine Village** holds DinoSplash and The Smurfs' Adventure, plus the Pfalzgraf
 restaurant and a giant wine barrel by Maurer Söhne. **Wickieland** has Wickie Splash, Splash
 Battle and The Big Wave. **Air Show 71** was finished in July 2016 on the plot of the sold Bounty
-Tower and holds Sky Fly, Balloon Race, the Red Baron and the Wellenflug. Smaller areas round it
-out: **The Beach** with the Lighthouse Tower and the fishing boats, **Blinky Bill** with the
+Tower and holds Sky Fly, Balloon Race, the Red Baron and the Wellenflug. The smaller areas are **The Beach** with the Lighthouse Tower and the fishing boats, **Blinky Bill** with the
 Greenville Bus and Blinky's Soapboxes, and **Super Wings** with three slides and a water
 playground.
 
@@ -184,10 +172,10 @@ since 2026 Freddy Lupin from 100% Wolf. The Smurfs' Show, the Plopsa Heroes Show
 session make up the rest.
 
 The times are only fixed in the morning. They depend on the daily programme the park publishes
-for each date on its opening-hours page. Meet and greets also pull people away from the rides. While Maya is on the Majaland stage at 10:50, the Free Fall
+for each date on its opening-hours page. Meet and greets pull people away from the rides. While Maya is on the Majaland stage at 10:50, the Free Fall
 Tower is emptier.
 
-## How long you actually queue here
+## How long you queue here
 
 We've been measuring wait times at this park since 7 October 2024, by now on 225 operating days.
 The figures below cover that whole period, not a single season.
@@ -196,18 +184,15 @@ The figures below cover that whole period, not a single season.
 
 ```
 
-The first thing you notice in the table is how short the waits are. The median sits at 5 or
+The median sits at 5 or
 10 minutes at most attractions. Even at the busier end of a typical day it only reaches 10 to 20.
 The longest wait is at 100% Wolf, with a median of 10 minutes.
 
-It isn't a measurement error. 804,218 visitors a year spread across 57 attractions differently
-from 6 million across a hundred. Arrive from Europa-Park
-or Phantasialand, where you budget 60 minutes for a headliner, and you'll plan this day wrong.
+Here 804,218 visitors a year share 57 attractions; at a big park it's 6 million across a hundred. Arrive from Europa-Park or Phantasialand, where you budget 60 minutes for a headliner, and you'll need a fraction of that here.
 
 So how much you ride here depends on the opening hours and hardly on the queues. Eight hours, one of them spent on lunch and walking, leave room for twenty
 rides and more at a median of ten minutes. Bring a list of eight attractions and you are through
-it by early afternoon, deciding what to repeat. That's the difference from a large park, where
-the same list fills the whole day.
+it by early afternoon, deciding what to repeat.
 
 On a cold March day, though, when Expedition GeForce and Sky Scream stand still because of the
 cold, not much is left for adults.
@@ -232,7 +217,7 @@ rides, each per person per day. It is valid at eight attractions: 100% Wolf, Din
 Splash, The Big Wave, bigFM Expedition GeForce, Sky Scream, Free Fall Tower and Sky Fly. At
 least 15 minutes have to pass between two rides, and the park sells only a limited number.
 
-Doing the sums matters more here than elsewhere. At the ride with the longest waits the median is
+At the ride with the longest waits the median is
 10 minutes. With the 35-euro Classic you save roughly ten minutes nine times, so around an hour
 and a half on a day that ends at 18:00 anyway. A Saturday in July or a Halloween Fright Night changes
 the arithmetic; a Friday in September doesn't support it. The price stays the same all year.
@@ -245,14 +230,14 @@ the arithmetic; a Friday in September doesn't support it. The price stays the sa
 
 ### The weekday
 
-Saturday is the busiest day of the week by a clear margin: a median of 15 minutes, 20 at the
+Saturday is the busiest day of the week by a clear margin, with a median of 15 minutes, 20 at the
 upper end, measured across 39 Saturdays. Most other days sit at a median of 10.
 
-The quietest day is **Friday**, which nobody would have guessed. Across
+The quietest day is **Friday**. Across
 38 measured Fridays the median is 5 minutes, below Tuesday, Wednesday and Thursday. If you can
 take a day off and are choosing between Friday and Wednesday, take the Friday.
 
-One limit on that. From late September the advantage flips, because the Halloween Fright Nights
+From late September the advantage flips, because the Halloween Fright Nights
 run on October Fridays and the park stays open until 22:00. Friday evening is then the busiest
 part of the week.
 
@@ -267,12 +252,10 @@ of the rest of the main season. **September** is the quietest month in which the
 open daily. The median is 10 minutes then, and the upper end of a day is only 10 too, the lowest
 of any month between April and October. And September weather in the Palatinate often beats June.
 
-March and November are edge months. Expedition GeForce and Sky Scream only run once the track
-reaches eight degrees, and a cold day costs you both of the rides you came for.
+March and November are edge months. Expedition GeForce and Sky Scream only run once the track reaches eight degrees.
 
 January and February show zero minutes because the park is closed then. The 2026 season runs
-from 22 March to 1 November. That gives you about seven and a half months to choose from, and in
-the first and last weeks a lot hangs on the eight-degree rule.
+from 22 March to 1 November.
 
 ```best-days-widget slug=plopsaland-deutschland
 
@@ -289,10 +272,10 @@ both fine for small children. The mazes, walk-through horror houses, open only o
 Nights: Skrämma, NEXUS AI, Murder District,
 Academy of Freaks, Scarecrow, Titty Twister and LOST: Deep in the woods, plus Holly's Halloween
 Party and a meeting with King Pumpkin for younger guests. On our park page they appear as
-attractions of their own, and as closed on all other days. That isn't a mistake.
+attractions of their own, and as closed on all other days.
 
 On a Fright Night some daytime attractions close before the park does, DinoSplash at 20:00 for
-instance. Instead of eight hours you get twelve, and the last four belong to the mazes. What the park has announced for this season is in our post
+instance. Instead of eight hours you get twelve, and the last four are for the mazes. What the park has announced for this season is in our post
 on the [Halloween Fright Nights 2026](/blog/plopsaland-deutschland-halloween-fright-nights-2026).
 
 ## From fairy-tale park to Plopsaland
@@ -303,25 +286,21 @@ as Liliputstadt. The family had run a circus of short-statured performers for ge
 the park gave it a permanent home; that part existed until 1996. The name Holiday Park arrived
 in 1973.
 
-After that the park grew step by step: the Holiday Transit monorail in
+After that the park grew: the Holiday Transit monorail in
 1973, the wild mouse burning down in 1978, Superwirbel in 1979 as Germany's first coaster with
 inversions, Donnerfluss in 1984, the Free Fall Tower in 1997, Expedition GeForce in 2001. The
 70,000 square metres of the first season had grown past 400,000 by 2015.
 
-One episode helped build Expedition GeForce's reputation: in 2002 and 2003 the American lecturer
+In 2002 and 2003 the American lecturer
 Richard Rodriguez rode his coaster marathon here, days of continuous riding. A monument next to
-the ride has stood there since, and his record attempts earned the park coverage far beyond the
-region in both years.
+the ride has stood there since.
 
-The break came in November 2010, when the Belgian Plopsa group, a subsidiary of Studio 100, took
-over. Since then it has been a themed park with connected areas, and its mascots are Maya, Vic,
+In November 2010 the Belgian Plopsa group, a subsidiary of Studio 100, took over. Since then it has been a themed park with connected areas, and its mascots are Maya, Vic,
 Heidi, Mia and Tabaluga rather than Holly, the parrot who lived here before. Majaland went up in
 2012 on the site of the old entrance, bringing today's main gate with it. The indoor hall
 followed in 2018, the new coaster in 2026.
 
-The rename of 28 June 2025 is the logical last step. The operator has long called its other
-parks Plopsaland and Plopsa, and Haßloch was the last one still carrying a name from before. For
-visitors it changes nothing except the search query.
+The rename followed on 28 June 2025. The operator had already called its other parks Plopsaland and Plopsa, and Haßloch was the last one still carrying a name from before.
 
 ## What comes next
 
@@ -330,16 +309,13 @@ Xtreme Spinning Coaster by Mack Rides, due to get Tomorrowland theming of the so
 Happiness already has at sister park Plopsaland Belgium. It's in the park's master plan and
 listed as under construction at RCDB.
 
-It would be the park's fifth coaster and the first new one since 100% Wolf. Unlike the family
-coaster, it's aimed at adults. Until
-then, Expedition GeForce is what you drive here for.
+It would be the park's fifth coaster. Unlike the family coaster 100% Wolf, it's aimed at adults.
 
 ## Staying and eating
 
 There's no park hotel. The park works with partner hotels in Haßloch, Speyer, Deidesheim,
 Neustadt and Mannheim instead and sells ticket-and-room packages. If you are on holiday in the
-Palatinate anyway you don't need them. The distances are short, and from Neustadt or Speyer the
-car park is twenty minutes away.
+Palatinate anyway you don't need them, because from Neustadt or Speyer the car park is twenty minutes away.
 
 There are 22 places to eat in the park, from snack stand to restaurant. The address for a hot meal
 sitting down is the Pfalzgraf restaurant, called Casa Palatina between 2015 and 2023; annual
@@ -348,21 +324,19 @@ Point, Koala Joe's Roadhouse in the Blinky Bill area, the Maya Burger in Majalan
 Fuel Station and a Dunkin' park café.
 
 The park sits in the middle of a wine region, and you can get a tarte flambée or a glass of
-Riesling here, which isn't what you'd expect at a park with cartoon mascots.
+Riesling here.
 
 ## A day in Haßloch, roughly planned
 
-The park opens at 10:00 and, outside the Fright Nights, closes at 18:00. Eight hours is tight
-for 57 attractions and generous for the eight you actually want.
+The park opens at 10:00 and, outside the Fright Nights, closes at 18:00.
 
-1. **10:00** Straight to Expedition GeForce. It is empty for the first half hour, and two rides
-   back to back are normal here rather than a stroke of luck.
+1. **10:00** Straight to Expedition GeForce. It is empty for the first half hour, and two rides back to back are normal.
 2. **10:45** On to Sky Scream next door. Both depend on the eight-degree rule, so it's worth
    getting them done early if the day starts cold.
 3. **11:30** 100% Wolf. The ride is new and so it has the park's longest queue, and at a
    median of ten minutes that's easy to live with.
 4. **12:30** Lunch, then the water rides: DinoSplash and Wickie Splash sit close enough to do in
-   one go. Both get you wet, which is worth thinking about in October.
+   one go. Both get you wet.
 5. **14:30** Free Fall Tower and Sky Fly, plus the Lighthouse Tower for the view across the site.
 6. **15:30** With children, Majaland and the indoor hall; without them, Expedition GeForce again.
    The afternoon is the day's second quiet stretch.
@@ -373,8 +347,7 @@ evening. Some daytime attractions then close before the park does.
 
 ## Practicalities: getting there, tickets, hours
 
-The address is Holiday-Park-Str. 1–5, 67454 Haßloch, and the street still carries the old park
-name. Type it into a sat nav and you'll never need the new one.
+The address is Holiday-Park-Str. 1–5, 67454 Haßloch.
 
 **By car.** Via the A65 or the B9, with car parks right at the site. Dropping someone off or
 picking them up is free for up to 45 minutes; the barrier opens on number-plate recognition.
@@ -430,7 +403,7 @@ of a day was only 10 too. Saturday is the busiest day at 15.
 
 ### How long is the average wait here?
 
-Shorter than you'll be used to from other parks. Across all measured days the average wait in the
+Across all measured days the average wait in the
 park is a good 18 minutes. At individual attractions the median is usually 5 to 10 minutes.
 
 ### Is the Express Pass worth it?
@@ -446,8 +419,7 @@ Four: Expedition GeForce (2001), Sky Scream (2014), Tabaluga's Rollercoaster (20
 
 ### Is one day enough for the whole park?
 
-For the big attractions, comfortably. 57 attractions sound like more than they are: a large
-share are carousels and playgrounds in Majaland, the indoor hall and Super Wings that adults
+For the big attractions, comfortably. A large share of the 57 attractions are carousels and playgrounds in Majaland, the indoor hall and Super Wings that adults
 without children skip. With children the same park fills two days, because you then ride the
 small ones round after round.
 

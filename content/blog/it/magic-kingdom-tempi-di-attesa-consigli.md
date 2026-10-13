@@ -1,5 +1,5 @@
 ---
-title: 'Magic Kingdom: il parco più visitato del mondo, e la coda più lunga è per una montagna russa del 2023'
+title: 'Magic Kingdom: la coda più lunga è quella di TRON'
 translationKey: magic-kingdom-guide
 date: '2026-09-30'
 updatedAt: '2026-10-05'
@@ -8,11 +8,9 @@ mode: published
 featured: false
 excerpt: >-
   Nel 2024 il Magic Kingdom ha contato circa 17,8 milioni di visite, più di
-  qualsiasi altro parco a tema al mondo, eppure lì l’attesa tipica è più breve
-  che negli altri tre parchi Disney della Florida. Si fa coda soprattutto a TRON
-  Lightcycle / Run, in Tomorrowland. E ancora: a quale delle grandi attrazioni
-  la coda si accorcia la sera e a quale no, quanto costava Lightning Lane il 30
-  settembre e cosa è sparito con la chiusura di Rivers of America.
+  qualsiasi altro parco a tema al mondo. Eppure lì l’attesa tipica è più breve
+  che negli altri tre parchi Disney della Florida. La coda più lunga è quella di
+  TRON Lightcycle / Run, in Tomorrowland, soprattutto la sera.
 category: guides
 tags:
   - magic-kingdom
@@ -54,18 +52,13 @@ Secondo il TEA Global Experience Index, nel 2024 il Magic Kingdom ha registrato
 **17,8 milioni di visite**, lo 0,7 per cento in più dell’anno prima. Con questo
 risultato il parco si è piazzato al primo posto nel mondo, di poco davanti al
 Disneyland Park in California, che ne ha contate 17,3 milioni. Stando alla
-tabella dei visitatori di Wikipedia è la diciottesima volta di fila, e con numeri
-del genere ti aspetti le code più lunghe del pianeta. Quelle stanno da un’altra
-parte. Dei quattro parchi Disney della Florida, nei nostri dati il [Magic
+tabella dei visitatori di Wikipedia è la diciottesima volta di fila. Dei quattro parchi Disney della Florida, nei nostri dati il [Magic
 Kingdom](ref:magic-kingdom-park) ha l’attesa tipica più breve, EPCOT la più
 lunga.
 
 ```park-comparison-widget slugs=magic-kingdom-park,epcot,disneys-hollywood-studios,disneys-animal-kingdom-theme-park highlight=magic-kingdom-park
 
 ```
-
-Da cosa dipenda, dai nostri dati non riusciamo a capirlo. Nel parco le code si
-allungano solo davanti a una manciata di attrazioni.
 
 ## Sei terre a tema e gli Utilidors
 
@@ -83,11 +76,11 @@ Birthdayland e chiamata da ultimo Mickey's Toontown Fair, ha chiuso l’11
 febbraio 2011 per lasciare spazio a New Fantasyland. Quell’ampliamento è stato
 completato il 28 maggio 2014 con il Seven Dwarfs Mine Train.
 
-Sotto tutto il parco c’è un altro piano. In Florida la falda è troppo alta per
+In Florida la falda è troppo alta per
 scavare gallerie, quindi i corridoi di servizio, gli Utilidors, sono stati
 realizzati a livello del terreno, e il parco è stato costruito sopra, su un
-terrapieno fatto con la terra scavata per la Seven Seas Lagoon. In pratica il
-parco sta al primo piano di sé stesso, a 33 metri sul livello del mare, e di
+terrapieno fatto con la terra scavata per la Seven Seas Lagoon. Il parco sta
+quindi un piano sopra i corridoi, a 33 metri sul livello del mare, e di
 sotto il personale si sposta da un capo all’altro senza che nessun ospite lo
 veda. In superficie, lungo Main Street, i piani alti delle case sono più bassi
 del piano terra, e così gli edifici sembrano più alti di quanto siano.
@@ -107,9 +100,7 @@ che da fuori si riconosce dalle vetrate colorate sui lati nord ed est.
 In cima c’è **[TRON Lightcycle / Run](ref:magic-kingdom-park/tron-lightcycle-run)**.
 La montagna russa ha aperto il 4 aprile 2023, dopo che da febbraio i dipendenti
 Disney avevano già potuto provarla, ed è un launch coaster di Vekoma che arriva a
-59 mph, circa 95 km/h. Un giro dura più o meno un minuto. Con una corsa così
-breve, a TRON passi la maggior parte del tempo in coda, e quanto tempo, lo trovi
-nella tabella.
+59 mph, circa 95 km/h. Un giro dura più o meno un minuto.
 
 Subito dietro vengono il **[Seven Dwarfs Mine
 Train](ref:magic-kingdom-park/seven-dwarfs-mine-train)**, la montagna russa del
@@ -117,10 +108,10 @@ Train](ref:magic-kingdom-park/seven-dwarfs-mine-train)**, la montagna russa del
 Adventure](ref:magic-kingdom-park/tianas-bayou-adventure)**, il percorso
 acquatico che il 28 giugno 2024 ha preso il posto di Splash Mountain.
 
-Più giù nella tabella ci sono le attrazioni più vecchie, con un’eccezione.
-**[Peter Pan's Flight](ref:magic-kingdom-park/peter-pans-flight)** è una dark
-ride del 1971, aperta due giorni dopo il parco, e nella tabella sta perfino
-davanti a Space Mountain.
+Più giù nella tabella ci sono le attrazioni più vecchie. Solo
+**[Peter Pan's Flight](ref:magic-kingdom-park/peter-pans-flight)**, una dark
+ride del 1971 aperta due giorni dopo il parco, sta nella tabella davanti a
+Space Mountain.
 
 ## Le cinque montagne russe
 
@@ -147,8 +138,8 @@ animate smistano pietre preziose. Altezza minima 97 centimetri, la corsa dura
 2:50 minuti.
 
 **[Space Mountain](ref:magic-kingdom-park/space-mountain)** gira dal 15 gennaio
-1975 in Tomorrowland, sotto una cupola bianca e quasi del tutto al buio. 43 km/h
-sembrano pochi, ma senza luce la curva successiva non la vedi arrivare. Il
+1975 in Tomorrowland, sotto una cupola bianca e quasi del tutto al buio. Arriva a
+43 km/h, e senza luce la curva successiva non la vedi arrivare. Il
 percorso è lungo poco meno di un chilometro e la corsa dura due minuti e mezzo
 abbondanti. Altezza minima 112 centimetri, la più alta del parco dopo quella di TRON.
 
@@ -212,20 +203,16 @@ Così cambiano le otto code più lunghe dalle 8 alle 22, ora locale:
 
 ```
 
-**A TRON la coda non cala.** È più corta nella prima ora, cresce nel pomeriggio
-e la sera arriva al massimo. Se all’apertura te lo sei perso, dopo cena non
-sperare in un affare. Nella nostra analisi del rope drop TRON è un «consiglio
+A TRON la coda è più corta nella prima ora, cresce nel pomeriggio e la sera
+arriva al massimo. Nella nostra analisi del rope drop TRON è un «consiglio
 forte», ed è l’unica attrazione del parco a esserlo.
 
-**Tiana's Bayou Adventure comincia quasi vuota.** Nella prima ora la coda è una
-frazione di quella che si forma entro mezzogiorno, e a quel livello resta fino
+A Tiana's Bayou Adventure, nella prima ora la coda è una frazione di quella che si forma entro mezzogiorno, e a quel livello resta fino
 all’inizio della sera. A Buzz Lightyear's Space Ranger Spin la giornata va allo
 stesso modo. Nell’analisi del rope drop sono tutte e due un «buon consiglio».
 
-**Al Seven Dwarfs Mine Train, verso sera, la coda cede.** Da mezzogiorno fino a
-sera resta stabile, poi nelle ultime ore prima della chiusura si accorcia. Se
-TRON e Tiana's ti occupano la mattina, è questa l’attrazione per la fine della
-giornata.
+Al Seven Dwarfs Mine Train la coda resta stabile da mezzogiorno fino a sera,
+poi nelle ultime ore prima della chiusura si accorcia.
 
 Sali quindi su TRON all’apertura, su Tiana's subito dopo e sul Mine Train
 nell’ultima ora. A Space Mountain la coda è più lunga verso mezzogiorno, alla
@@ -267,12 +254,11 @@ giorno.
 
 ## Con bambini piccoli
 
-Per le famiglie con bambini piccoli, la giornata si passa in Fantasyland. Lì ci
+Con bambini piccoli passi la maggior parte della giornata in Fantasyland. Lì ci
 sono Peter Pan's Flight, «it's a small world», il Mine Train, le tazze girevoli
 del Mad Tea Party e, in Storybook Circus, Dumbo the Flying Elephant, dove ogni
 bambino decide da solo quanto in alto vola il suo elefante. Per Dumbo non c’è
-un’altezza minima, per The Barnstormer lì accanto servono 89 centimetri, ed è la
-prima montagna russa per molti bambini.
+un’altezza minima, per The Barnstormer lì accanto servono 89 centimetri.
 
 Se un bambino è troppo piccolo per un’attrazione, i genitori non devono fare la
 coda due volte. Con il Rider Switch sale un adulto mentre l’altro aspetta con il
@@ -282,10 +268,7 @@ cambiare il pannolino, scaldare il biberon o trovare un angolo tranquillo c’è
 Baby Care Center del parco, ed è lì che il personale porta anche i bambini che
 hanno perso di vista i genitori.
 
-Con bambini piccoli conviene programmare una giornata più corta. A mezzogiorno
-negli spettacoli al chiuso con l’aria condizionata, il pomeriggio una pausa in
-hotel se è sulla linea della monorotaia, e per i fuochi d’artificio di nuovo al
-parco.
+A mezzogiorno portali negli spettacoli al chiuso con l’aria condizionata, il pomeriggio in hotel se è sulla linea della monorotaia, e per i fuochi d’artificio di nuovo al parco.
 
 ## Lightning Lane
 
@@ -311,13 +294,9 @@ I prezzi cambiano di giorno in giorno. Il 30 settembre 2026, un mercoledì con
 poca affluenza, nei nostri dati in diretta il Multi Pass costava 27 dollari e il
 Premier Pass 329, il giorno dopo 23 e 299 dollari. Il Single Pass per TRON
 costava 19 dollari in entrambi i giorni, quello per il Seven Dwarfs Mine Train 11
-dollari il 30 settembre. Quel giorno erano segnati tutti e due come non
-disponibili. Il 30 settembre, però, quello di TRON si poteva già comprare di
+dollari il 30 settembre. Quel giorno non si potevano comprare né l’uno né
+l’altro. Il 30 settembre, però, quello di TRON si poteva già comprare di
 nuovo per il giorno successivo.
-
-Secondo la nostra analisi del rope drop, TRON è anche l’attrazione in cui partire
-presto fa risparmiare più tempo. I 19 dollari, quindi, fanno concorrenza alla
-levataccia.
 
 ## Quando andarci
 
@@ -325,23 +304,21 @@ levataccia.
 
 ```
 
-Sui mesi il quadro è più netto che sui giorni della settimana. Il mese più
+Il mese più
 tranquillo fra quelli che abbiamo misurato è settembre, e per settembre abbiamo
 dati di quasi ogni giorno. I mesi in cima alla scala si reggono invece su pochi
-giorni, cinque a gennaio, quattro a marzo e otto a dicembre, quindi prendili come
-un indizio e non come un risultato. Per febbraio, ottobre e novembre non abbiamo
+giorni, cinque a gennaio, quattro a marzo e otto a dicembre. Per febbraio, ottobre e novembre non abbiamo
 ancora nessun valore. Al 28 settembre 2026 i giorni misurati sono 196, per lo più
 da aprile in poi.
 
 La curva dei giorni della settimana è piatta, con mediane distanti un solo
-gradino. Un giorno della settimana da scegliere apposta non c’è. In alcuni altri parchi
-c’è, e la [pagina del periodo migliore](/periodo-migliore-per-visitare) lo indica.
+gradino. Un giorno della settimana da scegliere apposta non c’è. Quando un altro parco ce l’ha, è sulla [pagina del periodo migliore](/periodo-migliore-per-visitare).
 
 Dall’apertura il Magic Kingdom ha chiuso temporaneamente nove volte a causa di
 uragani, l’ultima a ottobre 2024 per Milton.
 
-Se hai in mente un periodo preciso, nel calendario qui sotto sono segnati i giorni più
-tranquilli, ricalcolati ogni giorno:
+Nel calendario qui sotto sono segnati per ogni periodo i giorni più tranquilli,
+ricalcolati ogni giorno:
 
 ```best-days-widget slug=magic-kingdom-park
 
@@ -353,8 +330,7 @@ La Mickey's Not-So-Scary Halloween Party si tiene 38 sere fra il 7 agosto e il
 31 ottobre 2026, e secondo Disney sono tutte esaurite. In quelle sere il parco
 chiude per gli ospiti normali già alle 18, e la festa va dalle 19 a mezzanotte.
 A ottobre le sere che restano sono il 6, l’8, il 9, il 13, il 15, il 16, il 18,
-il 22, il 23, il 25, il 27, il 29 e il 31. Chi arriva in uno di questi giorni
-senza il biglietto della festa ha una giornata corta. Cosa offre la festa lo
+il 22, il 23, il 25, il 27, il 29 e il 31. Cosa offre la festa lo
 trovi nella nostra panoramica su
 [Halloween negli Stati Uniti](/blog/halloween-stati-uniti-parchi-2026).
 
@@ -419,13 +395,11 @@ Fra il 4 ottobre e il 14 dicembre 2026, secondo Disney, il parco apre alle 8 o
 alle 9 e chiude alle 22 o alle 23, nelle sere delle feste già alle 18.
 
 **Biglietti.** Disney fissa i prezzi in base alla data, e li trovi nel
-calendario su [disneyworld.com](https://disneyworld.com/). Noi i prezzi
-d’ingresso non li registriamo, solo quanto costa in più Lightning Lane. Con il
+calendario su [disneyworld.com](https://disneyworld.com/). Con il
 Park Hopper, dopo il primo parco, puoi passare a qualsiasi ora in uno degli altri
 tre, se lì c’è posto.
 
-**Mangiare.** Il nostro database conta (al 30 settembre 2026) 23 locali nel
-parco, da Cinderella's Royal Table al bancone di Casey's Corner. Fino al 2012 nel
+**Mangiare.** Nel parco ci sono (al 30 settembre 2026) 23 locali, da Cinderella's Royal Table al bancone di Casey's Corner. Fino al 2012 nel
 parco l’alcol era vietato, dal 2018 si trova in tutti i ristoranti con servizio
 al tavolo. Dentro il castello mangi al Cinderella's Royal Table, nel castello
 della Bestia del film «La bella e la bestia» al Be Our Guest Restaurant. Tutti e
@@ -445,8 +419,7 @@ il Disney's Lakeshore Lodge, prenotabile dall’8 ottobre 2026.
 ### Il parco più visitato ha anche le code più lunghe?
 
 No. Nel confronto più in alto il Magic Kingdom ha l’attesa tipica più breve dei
-quattro parchi Disney della Florida, EPCOT la più lunga. Il perché, dai nostri
-dati, non riusciamo a ricavarlo. La coda più lunga del parco, e di gran lunga, è
+quattro parchi Disney della Florida, EPCOT la più lunga. La coda più lunga del parco, e di gran lunga, è
 quella di una sola attrazione, TRON.
 
 ### Quale attrazione ha la coda più lunga al Magic Kingdom?
@@ -457,7 +430,7 @@ più in alto.
 ### Quando è più corta la coda di TRON?
 
 Nella prima ora dopo l’apertura del parco. Poi cresce nel corso della giornata e
-raggiunge il massimo la sera, quindi di sera aspetti più a lungo che di mattina.
+raggiunge il massimo la sera.
 
 ### Splash Mountain esiste ancora?
 
@@ -507,8 +480,8 @@ La stessa azienda gestisce anche il resort vicino a Parigi, dove le code più
 lunghe sono quelle del più piccolo dei due parchi. Ne parliamo nel nostro testo
 su [Disneyland Paris](/blog/disneyland-paris-tempi-di-attesa-consigli).
 
-Il Magic Kingdom diventa un altro parco a dicembre. La settimana fra Natale e
-Capodanno è la riga più affollata di tutta la nostra tabella annuale, e la Very
+La settimana fra Natale e Capodanno è la più affollata della nostra tabella
+annuale, e la Very
 Merry Christmas Party si tiene 25 sere: [Natale e Capodanno a Orlando e a Parigi](/blog/natale-capodanno-orlando-parigi-2026).
 
 — Patrick

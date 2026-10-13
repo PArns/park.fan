@@ -55,12 +55,9 @@ seo:
 
 **Legoland Deutschland** zegt zelf dat het gebouwd is voor kinderen van **twee tot twaalf jaar**. Voor kinderen die met een volwassene meerijden, is de hoogste minimumlengte van het hele park
 **1,25 meter**, bij [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare). Bij geen van de
-negen headliners scheelt een vroege start zoveel wachttijd dat de wekker het waard is. Wie een dag in
-Günzburg plant, heeft dus minder tactiek nodig dan in Rust of Brühl en meer aandacht voor centimeters
-en leeftijden.
+negen headliners scheelt een vroege start zoveel wachttijd dat de wekker het waard is.
 
-Deze gids gaat uit van kinderen van drie tot twaalf, van de kinderwagen tot de eerste achtbaan zonder ouder erbij. Onze wachttijden komen uit metingen sinds december 2025, dat is één seizoen en 188
-meetdagen. Prijzen, tijden en data gelden op **6 oktober 2026**.
+De wachttijden hebben we sinds december 2025 op 188 dagen gemeten, dus in één seizoen. Prijzen, tijden en data gelden op **6 oktober 2026**.
 
 ## Een park op het terrein van een munitiedepot
 
@@ -74,7 +71,7 @@ kosten van ongeveer € 153 miljoen. In het eerste jaar kwamen 1,3 miljoen gaste
 750.000, en in 2024 waren het volgens de index van de Themed Entertainment Association zo’n **twee
 miljoen**. Daarmee is Legoland na Europa-Park en Phantasialand het op twee na drukst bezochte pretpark van Duitsland. Merlin Entertainments exploiteert het sinds 2005. In 2019 kochten drie
 investeerders Merlin voor € 6,6 miljard: Blackstone, een Canadees pensioenfonds en Kirkbi, de
-beleggingsmaatschappij van de Lego-eigenaars. Het park wordt nog steeds door Merlin beheerd.
+beleggingsmaatschappij van de Lego-eigenaars.
 
 Volgens het park zelf telt het nu **68 attracties in 11 themawerelden** en meer dan 58 miljoen
 Lego-steentjes. Miniland bestaat volgens het park uit meer dan 23 miljoen daarvan, gebouwd door 140
@@ -110,11 +107,9 @@ personeel of iemand mee mag.
 
 Stel, je kind is zes en 1,15 meter lang. Samen met jou mag het in de Feuerdrache, Das Große LEGO
 Rennen, de Drachenjagd, de Dschungel X-pedition, de Fire & Ice Tower en LEGO NINJAGO The Ride, maar
-niet in Maximus en niet in Flying NINJAGO. Daarvoor missen vijf respectievelijk tien centimeter. Heb
-je twee kinderen van verschillende lengte, maak dan twee lijstjes en rijd bij de grote attracties om
-de beurt.
+niet in Maximus en niet in Flying NINJAGO. Daarvoor missen vijf respectievelijk tien centimeter.
 
-De grens voor alleen rijden is de belangrijkste. Een achtjarige van 1,30 meter mag bij de meeste attracties uit de tabel zonder volwassene, een zesjarige van 1,20 meter alleen bij de kleinere. Bij Flying
+Een achtjarige van 1,30 meter mag bij de meeste attracties uit de tabel zonder volwassene, een zesjarige van 1,20 meter alleen bij de kleinere. Bij Flying
 NINJAGO, Power Builder en de Wüsten X-kursion geldt bovendien een **maximumlengte** van 1,95 meter, bij
 Maximus van 2,00 meter. Dat raakt vooral ouders die mee willen.
 
@@ -139,7 +134,7 @@ bochten, dat is net geen 29 km/u. Een kind mag met een volwassene mee vanaf 1,10
 **[Das Große LEGO Rennen](ref:legoland-deutschland/the-great-lego-race)** is een wilde muis van Mack
 Rides, 18 meter hoog, volgens Wikipedia 400 meter lang en tot 56 km/u snel. De baan reed eerder als
 Project X en is sinds 2018 aangekleed als racebaan uit Lego City. Met een volwassene is 1,10 meter
-genoeg, en voor een kind dat de Drachenjagd achter de rug heeft is het de volgende stap.
+genoeg.
 
 ```glossary-widget slug=wild-mouse
 
@@ -155,8 +150,7 @@ De **[Dschungel X-pedition](ref:legoland-deutschland/jungle-x-pedition)** is de 
 Intamin uit het openingsjaar, met een afdaling van twaalf meter waarbij volgens het park 80 liter
 water per seconde in de lagune stort. Wie meerijdt, wordt nat, dus in oktober horen er droge kleren in de rugzak.
 
-**[LEGO NINJAGO The Ride](ref:legoland-deutschland/lego-ninjago-the-ride)** uit 2017 is geen achtbaan
-maar een interactieve 4D-rit. Met handbewegingen schiet je lichtflitsen, vuurballen, ijsfonteinen en
+**[LEGO NINJAGO The Ride](ref:legoland-deutschland/lego-ninjago-the-ride)** is een interactieve 4D-rit uit 2017. Met handbewegingen schiet je lichtflitsen, vuurballen, ijsfonteinen en
 luchtstoten op geanimeerde tegenstanders. Mist en warme lucht horen bij de show, en aan het eind
 staat vast wie de meeste punten had. De rit duurt ongeveer drieënhalve minuut, en het verhaal hoef je
 volgens het park niet te kennen.
@@ -201,8 +195,7 @@ de Hafenrundfahrt.
 ```
 
 De actuele wachttijden staan op de [parkpagina](ref:legoland-deutschland), om de vijf minuten
-vernieuwd. De Legoland-app toont ze alleen als je in het park bent en je locatie hebt gedeeld. Bij ons
-kun je ze al de avond ervoor bekijken.
+vernieuwd. De Legoland-app toont ze alleen als je in het park bent en je locatie hebt gedeeld.
 
 De weekdag maakt in onze metingen het grootste verschil:
 
@@ -223,7 +216,7 @@ Legoland het sterkst af van de vakanties in Beieren en Baden-Württemberg.
 Augustus was de drukste maand. In juni en september was het rustiger dan in mei en juli. In oktober
 hebben we tot nu toe maar vijf dagen gemeten, te weinig om er iets over te zeggen.
 
-De volgende tabel splitst de dag uit, met één rij per attractie en één kolom per uur. Het
+Het
 park gaat om 10.00 uur open, en de attracties sluiten een uur voor sluitingstijd.
 
 ```hourly-profile-widget slug=legoland-deutschland top=8
@@ -246,14 +239,13 @@ attracties vaak korter.
 Vroeg komen raden we alleen aan als de wachttijd bij een attractie later op de dag lang wordt en je
 bij de opening zoveel korter wacht dat de wekker het waard is. Waar die grenzen liggen en waarom,
 staat in het artikel [Is 70 minuten veel?](/blog/is-70-minuten-veel). Bij Legoland haalt geen van de
-negen headliners die grenzen, doordeweeks niet en in het weekend niet. Op hun pagina’s bij ons staat
-daarom geen rope-dropadvies.
+negen headliners die grenzen, doordeweeks niet en in het weekend niet.
 
 ```glossary-widget slug=rope-drop
 
 ```
 
-Je hoeft niet om zeven uur op de parkeerplaats te staan. Wie vroeg komt, begint met de twee attracties waar de wachttijd in de loop van de dag alleen oploopt: de Dschungel X-pedition en de Tret-o-Mobil. Das Große LEGO Rennen en de Hafenrundfahrt zijn in de ochtend het drukst en passen daarom beter in de middag. Maximus, de Feuerdrache en Flying NINJAGO rijd je wanneer je wilt, omdat de wachttijd daar in de loop van de dag weinig verandert. Wie het liever rustig heeft, komt op een vrijdag.
+Wie vroeg komt, begint met de twee attracties waar de wachttijd in de loop van de dag alleen oploopt: de Dschungel X-pedition en de Tret-o-Mobil. Das Große LEGO Rennen en de Hafenrundfahrt zijn in de ochtend het drukst en passen daarom beter in de middag. Maximus, de Feuerdrache en Flying NINJAGO rijd je wanneer je wilt, omdat de wachttijd daar in de loop van de dag weinig verandert.
 
 ## Fastrack: drie niveaus en de attracties
 
@@ -271,7 +263,7 @@ attracties, waaronder Maximus, Feuerdrache, Das Große LEGO Rennen, LEGO NINJAGO
 NINJAGO, Dschungel X-pedition, LEGOLAND Express, de uitkijktoren, Pyramiden Rallye, Wüsten X-kursion,
 Safari Tour, Piratenschule en LEGO Studios.
 
-Of het loont, hangt van de dag af. Bij vier personen is zelfs € 25 per hoofd € 100 extra bovenop de
+Bij vier personen is zelfs € 25 per hoofd € 100 extra bovenop de
 entree, voor een attractie waar de tabel hierboven toch geen uitschieters laat zien. Op een vrijdag
 in juni zou ik Fastrack niet kopen. Op een zaterdag in de Beierse vakantie, de drukste weekdag in onze metingen, zou ik Brons nemen voor de attractie die dan bovenaan de tabel
 staat.
@@ -302,8 +294,7 @@ tot 20 mei**, op **8 en 9 juni** en op **15, 16 en van 21 tot 23 september**. Da
 niet op de site van het park.
 
 De gewone openingstijd is **10.00 tot 18.00 uur**, in het weekend, in vakanties en op feestdagen
-langer. In het gewone seizoen sluiten de attracties **een uur voor sluitingstijd**. Wie bij een
-sluitingstijd van 18.00 uur om 17.30 uur nog wil rijden, staat bij een attractie die dan al dicht is.
+langer. In het gewone seizoen sluiten de attracties **een uur voor sluitingstijd**.
 De rustigste komende dagen staan in de kalender:
 
 ```best-days-widget slug=legoland-deutschland
@@ -321,8 +312,7 @@ BOOde”, die je krijgt als beloning voor een opgeloste speurtocht. Op zaterdag 
 kasteelpodium. In de LEGO Studios draait de 4D-film “Die Monster sind los!” elk uur vanaf 11.00 uur,
 de laatste een uur voor sluitingstijd. De **parade** begint op de Halloween-zaterdagen, 3, 10, 17,
 24 en 31 oktober, om 16.00 uur, en kan bij slecht weer vervallen. Op die zaterdagen blijft het park
-open tot **20.00 uur**, op 7 november tot 19.00 uur en op de andere dagen tot 18.00 uur. Wie op een
-Halloween-zaterdag komt, krijgt dus twee uur extra, maar ook de drukste weekdag.
+open tot **20.00 uur**, op 7 november tot 19.00 uur en op de andere dagen tot 18.00 uur.
 
 De show “Battle of the Bricks” in het Affentheater in het Land der Abenteuer speelt om 12.00 en 16.00
 uur, niet op maandag. Op de Halloween-zaterdagen vervangt de parade de voorstelling van 16.00 uur.
@@ -335,8 +325,7 @@ Studios**, **LEGOLAND ATLANTIS by SEA LIFE** en de **LEGO Fabrik**. Atlantis hee
 meter lang. Daarnaast is er een **Regen Rallye**, een puzzelronde voor natte dagen.
 
 Tussen 24 december 2025 en 5 oktober 2026 viel in Legoland Deutschland
-op 18 procent van de openingsdagen minstens twee millimeter regen. De cijfers voor alle twaalf parken
-staan in de [regenvergelijking](/blog/pretpark-bij-regen). Het park zelf raadt een
+op 18 procent van de openingsdagen minstens twee millimeter regen. Het park zelf raadt een
 paraplu, een regenponcho, waterdichte schoenen en droge kleren aan.
 
 ```weather-widget slug=legoland-deutschland
@@ -388,7 +377,7 @@ winter naast de andere Duitse parken staat, lees je in het
 [winteroverzicht](/blog/winter-pretparken-2026).
 
 Legoland heeft verder het eerste LEGO Harry Potter Land ter wereld aangekondigd en het eerste
-verblijf met dat thema. Een openingsjaar noemt het park daarvoor niet. De [nieuwe attracties 2027](/blog/nieuwe-attracties-pretparken-2027) zetten op een rij wat andere parken voor 2027 hebben bevestigd.
+verblijf met dat thema. Een openingsjaar noemt het park daarvoor niet.
 
 ## Veelgestelde vragen over Legoland Deutschland
 

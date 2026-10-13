@@ -7,11 +7,9 @@ mode: published
 featured: false
 excerpt: >-
   En Soltau está la montaña rusa íntegramente de madera más alta de Europa, y
-  durante casi tres años nadie pudo subirse a ella. Abrió en
-  2001. A su alrededor, el parque fue el primero en traer cuatro tipos de
-  atracción a Alemania, y su torre de 103 metros empezó como mirador. Además:
-  cuándo se llena, por qué un lunes tranquilo en Soltau suele ser un lunes
-  cerrado y por qué el Big Loop, con 43 años, estrena trenes con el aire de 1983.
+  de julio de 2016 a abril de 2019 nadie pudo subirse a ella. El Heide Park fue
+  el primer parque de Alemania con cuatro tipos de montaña rusa. Hay menos gente
+  un viernes de septiembre.
 tags:
   - heide-park
   - colossos
@@ -62,20 +60,18 @@ madera en la que nadie podía subir. El **28 de julio de 2016**,
 temporada, porque tras quince años la vía estaba desgastada. No volvió a rodar
 hasta el **19 de abril de 2019**.
 
-Volvió como montaña rusa de madera, y eso no estaba cantado. Desde 2011 la
+Desde 2011 la
 empresa Rocky Mountain Construction pone carriles de acero sobre la estructura
 de woodies desgastadas y las convierte en híbridas. El mismo año en que volvió
-Colossos, Walibi Holland abrió justo una reforma así:
-[Untamed](ref:walibi-holland/untamed?bare), antes la montaña rusa de madera
-Robin Hood. En Soltau, Merlin eligió el otro camino y mandó montar vía de
+Colossos, Walibi Holland abrió [Untamed](ref:walibi-holland/untamed?bare), una reforma de ese tipo de la montaña rusa de madera Robin Hood. En Soltau, Merlin eligió el otro camino y mandó montar vía de
 madera nueva, con trenes nuevos. El 13 de abril de 2026 se cumplieron
 **25 años** del primer viaje; el parque lo celebró el 12 de septiembre con una
 fiesta nocturna solo para ganadores de un billete dorado.
 
-## Lo que llegó aquí primero
+## Cuatro estrenos en Alemania
 
-Por Colossos conducen los aficionados hasta Soltau. En cuatro tipos de
-atracción este parque fue el primero de Alemania, y los tres últimos llegaron en siete años.
+En cuatro tipos de atracción que rodean a Colossos, el Heide Park fue el
+primero de Alemania, y los tres últimos llegaron en siete años.
 
 La serie empezó en **1999**, dos años antes que Colossos, con una atracción que
 entonces se llamaba Limit y que hoy se llama
@@ -87,8 +83,7 @@ inversiones.
 **[Desert Race](ref:heide-park/desert-race)** llegó el **15 de mayo de 2007**
 como el primer launch coaster de Alemania. No tiene rampa de subida: una
 catapulta hidráulica lleva el tren a **102 km/h** en dos segundos. Tras 650
-metros y 49 segundos está de vuelta en la estación, antes de que termine la
-discusión sobre quién se sienta delante.
+metros y 49 segundos está de vuelta en la estación.
 
 ```glossary-widget slug=launch-coaster
 
@@ -98,24 +93,22 @@ discusión sobre quién se sienta delante.
 primer dive coaster de Alemania, construido por Bolliger & Mabillard por
 12 millones de euros, con la estación en el solar del antiguo delfinario.
 41 metros de altura, seis personas en una sola fila y, arriba, el tren se
-detiene hasta que la primera fila queda colgando sobre el borde. Después baja a
-87 grados, casi en vertical, a **103 km/h**, atraviesa un splashdown y entra en
-un Immelmann. La espera en el borde dura unos segundos.
+detiene unos segundos cuando la primera fila queda colgando sobre el borde.
+Después baja a 87 grados, casi en vertical, a **103 km/h**, atraviesa un
+splashdown y entra en un Immelmann.
 
 **[Flug der Dämonen](ref:heide-park/flug-der-daemonen)** fue, el **29 de marzo
-de 2014**, el primer wing coaster del país. En ese tipo de trazado nadie se
-sienta encima ni debajo de la vía, sino a izquierda y derecha de ella, sin nada
-delante de los pies. 40 metros de altura, 772 metros de recorrido, 100 km/h,
+de 2014**, el primer wing coaster del país. En ese tipo de trazado los asientos están a izquierda y derecha de la vía, sin nada delante de los pies. 40 metros de altura, 772 metros de recorrido, 100 km/h,
 cinco inversiones, tres minutos de viaje, 1.060 visitantes por hora.
 
-Así queda el parque frente a otros tres [grandes parques alemanes](/blog/mejores-parques-de-atracciones-de-alemania), con los datos
-de hoy:
+La tabla compara el Heide Park con otros tres
+[grandes parques alemanes](/blog/mejores-parques-de-atracciones-de-alemania), recalculada cada día.
 
 ```park-comparison-widget slugs=heide-park,europa-park,phantasialand,movie-park-germany highlight=heide-park
 
 ```
 
-## Colossos: vía de madera, colocada dos veces
+## La montaña rusa de madera Colossos
 
 ```glossary-widget slug=wooden-coaster
 
@@ -131,40 +124,34 @@ siendo la más alta hecha íntegramente de madera. Wildfire, en Kolmården
 también más alta, pero rueda sobre vía recubierta de acero (Topper Track) de
 Rocky Mountain Construction.
 
-Las cifras dependen de a quién se pregunte. La Roller Coaster DataBase da
+La Roller Coaster DataBase da
 **50 metros** de altura, una primera caída de **48,5 metros** a 61 grados,
 **110 km/h** y **1.344 metros** de recorrido en dos minutos y 25 segundos; el
 propio parque habla de 60 metros y 1.500 metros. El diseño es de la oficina de
 ingeniería Stengel, y la construyó Intamin junto con la empresa de carpintería
 Cordes.
 
-La vía era el problema. Para Colossos, Intamin había usado un procedimiento en
+Para Colossos, Intamin había usado un procedimiento en
 el que la superficie de rodadura se prefabrica con capas de madera encoladas y
 luego se monta. A los quince años estaba acabada, la atracción cerró en 2016,
 en junio de 2018 salió el primer carril viejo y, cuando volvió a abrir, se
 llamaba **Colossos – Kampf der Giganten**. Desde entonces, sobre la última
 colina hay un gigante que escupe fuego, y el tren lo atraviesa por el medio.
 
-Hasta hoy no lleva ningún carril de acero. Quien disfruta de las montañas rusas
-de madera lo nota desde la primera caída, y su espalda como muy tarde en la
-primera curva.
-
 [Colossos](ref:heide-park/colossos-kampf-der-giganten?full)
 
-## El resto del parque: veteranos y una torre
+## Las demás atracciones y la torre
 
 La primera montaña rusa del parque es el
 **[Big Loop](ref:heide-park/big-loop)** de **1983**, un looper de Vekoma con
 dos loopings y un sacacorchos doble, algo más de 700 metros de recorrido y
-terminado en menos de dos minutos. En él se lee cómo trata este parque lo que
-ya tiene: en 2010 recibió los trenes del Corkscrew demolido de Alton Towers, y
+terminado en menos de dos minutos. En 2010 recibió los trenes del Corkscrew demolido de Alton Towers, y
 para la temporada 2026 Vekoma entregó trenes nuevos, diseñados a imagen de los
-vagones originales de 1983. Es su segundo cambio de trenes en dieciséis
-años.
+vagones originales de 1983.
 
 Toxic Garden se llama así solo desde **mayo de 2023**. Vekoma sustituyó un
 tramo de vía durante la reforma, la entrada y la estación están desde entonces
-en un jardín de plantas venenosas, y la atracción por fin encaja a la vista en
+en un jardín de plantas venenosas, y desde entonces la atracción está decorada como
 el área Transilvania, a la que pertenece su emplazamiento desde 2011.
 
 La **[Bobbahn](ref:heide-park/bobbahn)** de Mack Rides circula desde **1993**
@@ -176,7 +163,6 @@ todos los que aún son pequeños para las grandes, y el
 **[Indy-Blitz](ref:heide-park/indy-blitz)** de 2008 es, con 4,5 metros, la
 montaña rusa más pequeña del recinto.
 
-La construcción más llamativa no va sobre raíles.
 **[Scream](ref:heide-park/scream)** mide **103 metros** y deja caer 71 de ellos
 en caída libre, a casi 100 km/h (el parque indica 98,3). La torre empezó en 1992
 como mirador; Intamin la convirtió en gyro drop tower entre octubre de 2002 y
@@ -188,28 +174,24 @@ segunda torre de 1985, el Panoramaturm de 104 metros, cuya góndola, según el
 parque, ya no cumplía las normas de seguridad actuales. El desmontaje empezó
 tres días después del anuncio.
 
-La atracción con vehículos más reciente ocupa un edificio que estuvo trece años
-vacío. La **[Dämonen Gruft](ref:heide-park/daemonen-gruft)** de
-Preston & Barbieri recorre desde **2024** la antigua estación del segundo
-tronco de agua, cerrado en 2011, durante unos tres minutos. Donde pasaba aquel
-tronco se alza hoy Flug der Dämonen; los edificios se quedaron en pie, y el
-parque ha vuelto a poner uno en servicio.
+La atracción con vehículos más reciente es la
+**[Dämonen Gruft](ref:heide-park/daemonen-gruft)** de Preston & Barbieri. Desde
+**2024** recorre durante unos tres minutos la antigua estación del segundo
+tronco de agua, que cerró en 2011 y estuvo trece años vacía. Donde pasaba aquel
+tronco se alza hoy Flug der Dämonen.
 
-A eso se suman dos atracciones de las que casi nadie escribe y que, aun así,
-salen arriba en nuestra tabla de tiempos de espera: la
-**[Wildwasserbahn](ref:heide-park/wildwasserbahn)** de 1980 y
+La **[Wildwasserbahn](ref:heide-park/wildwasserbahn)** de 1980 y
 **[Ghostbusters 5D](ref:heide-park/ghostbusters-5d)**, que desde 2017 ocupa la
-nave donde antes vivía el programa Hallo Spencer. Para mojarse queda además
+nave donde antes vivía el programa Hallo Spencer, salen arriba en nuestra tabla
+de tiempos de espera. Para mojarse queda además
 **[Mountain Rafting](ref:heide-park/mountain-rafting)** (1992, un rapid river
 de Intamin). Los más pequeños tienen dos rincones propios, el Peppa Pig Land y
 la isla de «Cómo entrenar a tu dragón».
 
-Quien planifica con niños planifica en centímetros. Las cuatro grandes empiezan
+Las cuatro grandes empiezan
 todas en **140 cm**, Toxic Garden y Scream en 130, Big Loop y Bobbahn en 120.
 El listón más bajo del parque está en **86 cm**, en la aventura de dinosaurios
-de Jorge, en el Peppa Pig Land. Entre 86 y 140 centímetros hay unos cuantos
-años en los que un niño ya puede subir a muchísimas cosas, pero a ninguna de
-las atracciones por las que han venido los padres.
+de Jorge, en el Peppa Pig Land.
 
 ```map-widget slug=heide-park
 
@@ -226,15 +208,9 @@ medidos:
 
 ```
 
-Colossos está arriba, con poca ventaja sobre las atracciones que le siguen.
-Quien espera mucho en Soltau no espera necesariamente delante de la montaña rusa de madera:
-muy cerca, junto a Flug der Dämonen y Krake, están la Bobbahn de 1993 y el
-tronco de agua de 1980, dos atracciones que no aparecen en ninguna crónica de
-viaje como motivo para conducir hasta Soltau. En el tronco es cosa del tiempo,
-como se ve en el perfil horario de más abajo; para la Bobbahn no hay ninguna
-razón en la tabla.
-
-La hora a la que crecen las colas, atracción por atracción:
+Colossos está arriba, justo por delante de Flug der Dämonen, Krake, la Bobbahn
+de 1993 y el tronco de agua de 1980. En el tronco es cosa del tiempo, como se
+ve en el perfil horario de más abajo.
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -242,17 +218,12 @@ La hora a la que crecen las colas, atracción por atracción:
 
 En las montañas rusas, las celdas gruesas caen todas en la misma ventana, entre
 las once y las dos. El tronco de agua no alcanza su máximo hasta la tarde,
-cuando ya hace calor. Eso encaja con un parque cuyos visitantes llegan sobre
-todo en coche por la mañana: todo el mundo se pone al mismo tiempo delante de
-las mismas tres atracciones, como en el Ikea un sábado a las once, y por la
-tarde se reparte.
+cuando ya hace calor. La mayoría de los visitantes llega en coche por la
+mañana, así que todos se ponen al mismo tiempo delante de las mismas tres
+atracciones; por la tarde la afluencia se reparte.
 
-Para la planificación eso significa que la primera hora es de Colossos y de
-Krake, porque entonces las dos están en su punto más corto y a partir de las
-once suben a la vez. Después compensa más quedarse en la zona donde justo no
-hay nadie que cruzar el recinto hasta la siguiente atracción principal.
-
-Los más tranquilos de los próximos días de apertura, calculados en directo:
+En la primera hora, por tanto, toca Colossos y Krake, porque entonces las dos están en su punto más corto y a partir de las
+once suben a la vez.
 
 ```best-days-widget slug=heide-park
 
@@ -264,17 +235,16 @@ Los más tranquilos de los próximos días de apertura, calculados en directo:
 
 ```
 
-Si el día resulta ser de los llenos, una parte de la espera se puede comprar.
 El **Express Ticket** tiene cuatro niveles: Bronze desde **25 €** para el
 tronco de agua, el Big Loop y la Bobbahn, Silver desde 39 € para cinco de las
 grandes atracciones, Gold desde 59 € para las ocho, Platinum desde 99 € para
-las ocho sin límite. ¿Cuáles son las cinco del Silver? La web del parque da dos
-respuestas: la tabla comparativa nombra Colossos, Desert Race, Flug der
+las ocho sin límite. La web del parque nombra las cinco del Silver de dos
+maneras distintas: la tabla comparativa nombra Colossos, Desert Race, Flug der
 Dämonen, Krake y Scream, y la lista de debajo solo mete Colossos y Scream a
 partir del Gold. Toxic Garden no está en ningún nivel.
 
-Dos cosas se pasan por alto con facilidad. Los tres niveles inferiores incluyen
-**un viaje por atracción**, no tantos como quieras: quien quiera repetir
+Los tres niveles inferiores incluyen
+**un viaje por atracción**. Quien quiera repetir
 Colossos con el Gold vuelve al final de la cola normal, como todo el mundo. Y
 el billete solo existe en días seleccionados, en 2026 sobre todo fines de
 semana y vacaciones. El parque aconseja reservarlo antes por internet, porque
@@ -291,8 +261,7 @@ anticipo el 22 de marzo. En Soltau no hay temporada de invierno ni mercado
 navideño, a diferencia de otros parques alemanes
 ([aquí el repaso](/blog/parques-atracciones-invierno-2026)).
 
-En septiembre el parque no abre todos los días: los lunes 7, 14, 21 y 28 de
-septiembre son días de cierre, y en octubre vuelve a abrir a diario. Un día de
+En septiembre los lunes 7, 14, 21 y 28 de septiembre son días de cierre, y en octubre vuelve a abrir a diario. Un día de
 apertura corriente va de 10 a 17 horas, los domingos una hora más. Esos
 horarios son los de las atracciones; el parque en sí cierra una hora después.
 
@@ -306,18 +275,16 @@ el calendario de la [página del parque](ref:heide-park).
 ### El día de la semana
 
 Arriba está el sábado, abajo el viernes, y la diferencia entre los dos es
-pequeña. Los días intermedios quedan muy juntos en la tabla de arriba. El lunes
+pequeña. El lunes
 descansa sobre más o menos la mitad de los días medidos que
 tienen los demás, porque el parque lo saca del calendario con regularidad en
 primavera y en septiembre. Los lunes que cuentan caen sobre todo en temporada
-alta, y esos no son tranquilos. Un lunes tranquilo en Soltau suele ser un lunes
-cerrado. El día más tranquilo de los demás parques está en la
+alta, y esos no son tranquilos. El día más tranquilo de los demás parques está en la
 [página de la mejor época](/mejor-epoca-para-visitar).
 
 ### El mes
 
-El mes mueve aproximadamente lo mismo que el día de la semana, y esa es la
-razón para combinar los dos. Julio y agosto están arriba, septiembre cae con
+El mes mueve aproximadamente lo mismo que el día de la semana. Julio y agosto están arriba, septiembre cae con
 claridad después. De octubre aún no tenemos días medidos (a 25 de septiembre de
 2026); el propio parque señala las vacaciones escolares como sus épocas de más
 afluencia, y en octubre coinciden las vacaciones de otoño y Halloween. Elegir un
@@ -330,11 +297,9 @@ Cinco días de Halloween las atracciones funcionan de 12 a 21 horas (sáb. 10,
 sáb. 17, sáb. 24, vie. 30 y sáb. 31), y el parque sigue abierto hasta las 22;
 el resto de días mantiene el horario normal. De día la decoración es apta para
 familias, con un bosque de magos y una ruta de caramelos para los niños. En los
-cinco días largos, hacia las 16 horas despiertan la scare zone y tres horror
+cinco días largos, hacia las 16 horas abren la scare zone y tres horror
 mazes: Parasomnis, Grand Hotel Morton y SubTerra. Los mazes tienen una edad
-mínima de **16 años** con documento obligatorio, y ahí la puerta del maze
-negocia más o menos lo mismo que un portero de discoteca a las tres de la
-mañana. Cada maze exige su propia entrada con franja horaria, que solo se vende
+mínima de **16 años** con documento obligatorio. Cada maze exige su propia entrada con franja horaria, que solo se vende
 por internet, 9 € por maze o 22 € los tres. Quien solo quiera la noche entra
 al parque desde las 17 horas con la entrada de tarde, desde 24 €. Cómo queda
 eso frente a Toverland, Movie Park y Walibi está en la
@@ -342,27 +307,21 @@ eso frente a Toverland, Movie Park y Walibi está en la
 
 ## De feriantes a parque de Merlin
 
-Heide Park abrió el **19 de agosto de 1978**, con seis atracciones y un
-fundador de familia feriante: **Hans-Jürgen Tiemann**. La compra del terreno
-llevaba una condición: la **capilla del Heidenhof, de 1350**, tenía que seguir en pie, y había que seguir
-criando animales de la zona. El primer día vinieron 2.000 visitantes, y de
-aquellas seis atracciones salieron 85 hectáreas de parque.
+Heide Park abrió el **19 de agosto de 1978** con seis atracciones. Su fundador, **Hans-Jürgen Tiemann**, venía de una familia feriante. La compra del terreno llevaba la condición de que la **capilla del Heidenhof, de 1350**, siguiera en pie y de que se siguieran criando animales de la zona. El primer día vinieron 2.000 visitantes. Hoy el parque ocupa 85 hectáreas.
 
 Tres de esas seis siguen funcionando hoy: el paseo en balsa, el tren elevado
 (ahora la Panoramabahn) y el tren del oeste, que desde 1997 se llama Heide Park
 Express. Una cuarta, el circuito Oldtimer con sus réplicas del Ford T, funcionó
 hasta 2025; entonces el parque la cerró sin apenas anunciarlo.
 
-La construcción que mejor describe al Heide Park de los inicios ya no existe.
 De **1986** hasta el invierno de 2011/2012 hubo aquí una réplica de 35 metros
 de la Estatua de la Libertad, inaugurada el 4 de julio de 1986 por el
 centenario del original, con una felicitación de Ronald Reagan. Tras el
 desmontaje, la mitad superior se quedó unos años más plantada como decoración
-junto a Colossos, una jubilación que la Libertad seguramente no tenía en mente,
-y el resto fue a la chatarra para la reapertura de 2019.
+junto a Colossos, y el resto fue a la chatarra para la reapertura de 2019.
 
 El **31 de diciembre de 2001** el británico **Tussauds Group** compró el
-parque. Los mejores años quedaron antes: en los noventa Soltau contaba hasta
+parque. En los noventa Soltau contaba hasta
 dos millones de visitantes, en 2001 fueron 2,1 millones y en 2023 todavía
 **1,68 millones**. En 2007 el fondo Blackstone, entonces dueño de
 **Merlin Entertainments**, compró el Tussauds Group a Dubai International
@@ -375,9 +334,6 @@ diario Expansión citó además a Merlin como posible comprador de Parques
 Reunidos, el grupo detrás de Movie Park
 ([más detalles](/blog/eqt-venta-parques-reunidos-movie-park)).
 
-Las dos fases se notan en el parque: el origen ferial en la densidad de
-atracciones, el grupo en las áreas con licencia de Peppa Pig y Ghostbusters.
-
 ## Dormir junto al parque
 
 Quien viene del sur de Alemania hace mejor en dedicarle dos días. El
@@ -389,8 +345,7 @@ ampliación, de 81 casas de madera con 536 camas en total. Las siete furgonetas
 VW T2 reformadas del **Bulli Camp**, en las que se podía dormir desde julio de
 2014, ya no existen desde 2025; el camping ahora solo reserva cabañas.
 
-La ventaja práctica es plantarse a las diez delante de la entrada y no a las
-diez en la A7. En los días largos de otoño, los huéspedes
+En los días largos de otoño, los huéspedes
 del hotel y del camping entran incluso a las 11, una hora antes que el resto, y
 algunas atracciones ya funcionan, entre ellas Krake.
 
@@ -401,10 +356,9 @@ suben a la vez a partir de las once. **Flug der Dämonen** y **Desert Race**
 encajan bien a continuación, y la última hora antes del cierre es, en las
 grandes, la segunda mejor ocasión del día. Las atracciones de agua se guardan
 para la hora más calurosa, aunque justo entonces el tronco tenga su cola más
-larga; al menos con calor mojarse sienta bien. En los días largos de otoño eso
+larga. En los días largos de otoño eso
 no vale, porque las atracciones de agua cierran al anochecer. **Scream** y el
-**Big Loop** son el relleno entre dos grandes, y quien tenga reservados los
-mazes no necesita planificar más la noche.
+**Big Loop** son el relleno entre dos grandes.
 
 ## Práctico: cómo llegar, entradas, horarios
 
@@ -508,11 +462,10 @@ Qué tiempo hará sobre el parque cuando vayas:
 
 ```
 
-Y para quien esté planificando el norte ahora mismo: también en el
+También en el
 [Movie Park Germany](/blog/movie-park-germany-tiempos-de-espera-consejos)
 desaparecen días entre semana del calendario fuera de las vacaciones, y también
-allí el viernes está entre los días más tranquilos. Las dos guías se pueden
-leer una al lado de la otra.
+allí el viernes está entre los días más tranquilos.
 
 — Patrick
 

@@ -8,8 +8,7 @@ featured: false
 excerpt: >-
   Heide Park, Efteling, Toverland, Walibi Holland, Futuroscope and Disneyland
   Paris explicitly allow your own food. At Bobbejaanland, Walibi Belgium, Parc
-  Astérix and Plopsaland Deutschland, you eat it at the picnic areas. At the
-  water parks, it stays outside.
+  Astérix and Plopsaland Deutschland, you eat it at the picnic areas. At the water parks, it's banned.
 tags:
   - freizeitpark
   - essen
@@ -92,8 +91,7 @@ As of 9 October 2026:
 | Disneyland Paris       | allowed, no cooler or table | glass bottles and alcohol banned, picnic area outside the entrance   | [FAQ](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages), [Theme Parks Rules](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules) |
 | Futuroscope            | allowed, on any lawn        | rigid coolers banned, bag check                                      | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3)                                                                                           |
 
-"No rule" means the house rules neither ban your own food nor allow it. If you want to be sure before you set off, ask
-the park's guest service.
+"No rule" means the house rules neither ban your own food nor allow it.
 
 ## Germany
 
@@ -106,8 +104,7 @@ the main entrance.
 The park lists picnic areas on its page of visitor tips: in the historic Balthasar castle park in the Germany themed
 area, next to the Wodan Timburcoaster.
 
-At the Rulantica water park, on the other hand, food from home is banned. More on that with the other water parks
-below.
+At the Rulantica water park, on the other hand, food from home is banned.
 
 ### Phantasialand
 
@@ -119,17 +116,16 @@ Food, water bottles, coolers and glass aren't on the list.
 
 ### Heide Park
 
-[Heide Park](ref:heide-park) explicitly allows your own food. In its help center, the park says you can bring your food
+In its help center, [Heide Park](ref:heide-park) says you can bring your food
 for the day and eat it in the park. Glass bottles are the one thing it asks you to leave at home. Under the park rules,
 grilling is banned across the whole site.
 
-If you have a severe intolerance such as coeliac disease, the park even recommends bringing your own food. Its kitchens
+If you have a severe intolerance such as coeliac disease, the park recommends bringing your own food. Its kitchens
 can't fully rule out cross-contamination, and they don't take special requests.
 
 ### Hansa-Park
 
-There isn't a single sentence about food from home in the park rules of [Hansa-Park](ref:hansa-park). Grilling is banned,
-and so are grills, cooking equipment, alcohol and drugs. Glass bottles are on the rules' list of dangerous items, alongside
+The park rules of [Hansa-Park](ref:hansa-park) ban grilling, grills, cooking equipment, alcohol and drugs. They say nothing about food from home. Glass bottles are on the rules' list of dangerous items, alongside
 knives and laser pointers.
 
 You can't eat or drink on the rides or in the indoor shows. That applies to every guest, including food bought in the
@@ -144,8 +140,7 @@ There's nothing in them about food, drinks, glass or cooler bags in the park.
 ### Movie Park Germany
 
 Under the park rules of [Movie Park Germany](ref:movie-park-germany), you can't bring alcohol, and grilling is banned
-across the whole site. Large suitcases and other bulky items stay outside. There's nothing in the rules about food from
-home.
+across the whole site. There's nothing in the rules about food from home. Large suitcases and other bulky items stay outside.
 
 The Halloween Horror Festival has rules of its own. According to the festival FAQ, alcohol and any drink in a glass
 bottle are banned, and so is spray deodorant, while roll-on and stick are fine. People and bags are checked before
@@ -163,8 +158,7 @@ rides or in queues, and you can't bring alcohol.
 
 ### Efteling
 
-[Efteling](ref:efteling) puts it most clearly. Under the heading "Eigen eten en drinken" (own food and drink), its park
-regulations allow you to bring your own food and drink. The park's FAQ has the same line.
+Under the heading "Eigen eten en drinken" (own food and drink), the park regulations of [Efteling](ref:efteling) allow you to bring your own food and drink. The park's FAQ has the same line.
 
 When it's busy, the park asks you to eat what you've brought at one of the picnic areas, away from the restaurants and
 their terraces.
@@ -174,13 +168,12 @@ their terraces.
 [Toverland](ref:attractiepark-toverland) allows your own food and has two microwaves you can use for free, at the
 Waldstube and at Katara Plaza. The park mentions them for warming baby bottles too.
 
-Everything else is in the park regulations, which you can pick up at the entrance or download from the website.
+The park regulations are available at the entrance and as a download on the website.
 
 ### Walibi Holland
 
 [Walibi Holland](ref:walibi-holland) explicitly allows your own food and drink and marks picnic areas in the park. Under
-the park rules you can't bring glass or alcohol. Everything off the paths and picnic areas is closed off, so you'll only
-find an open lawn to eat on where the park map marks one.
+the park rules you can't bring glass or alcohol. Everything off the paths and picnic areas is closed off.
 
 ## Belgium
 
@@ -197,8 +190,7 @@ The park regulations of [Walibi Belgium](ref:walibi-belgium) have an article of 
 the areas marked on the park map and banned in the restaurants and on their terraces.
 
 Alcohol is banned in the park. Bags, boxes and containers can be 55 cm wide, 40 cm long and 20 cm deep at most, and a
-cooler has to fit within those limits too. Eating and drinking are banned on rides and in queues. The Aqualibi water
-park has a stricter rule.
+cooler has to fit within those limits too. Eating and drinking are banned on rides and in queues.
 
 ## France
 
@@ -211,7 +203,7 @@ You can't eat or drink on rides, for safety reasons, or in queues, for reasons o
 
 ### Disneyland Paris
 
-[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) allows your own food, with two restrictions. Meals
+[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) allows your own food. Meals
 that need a cooler, a table or bulky containers are banned in Disneyland Park and Walt Disney Studios Park. For a picnic
 like that, there's a picnic area between the car park and the entrance.
 
@@ -221,13 +213,11 @@ drink.
 
 ### Futuroscope
 
-According to its FAQ, you can picnic on any lawn at [Futuroscope](ref:futuroscope). That's the most generous rule of
-the fifteen parks.
+According to its FAQ, you can picnic on any lawn at [Futuroscope](ref:futuroscope).
 
-Rigid coolers are banned, bulky bags should stay outside, and bags are checked at the entrance. Leave the cooler in the
-car: you're allowed to leave the park during the day and come back in.
+Rigid coolers are banned, bulky bags should stay outside, and bags are checked at the entrance. Because you're allowed to leave the park during the day and come back in, the cooler can stay in the car.
 
-## The water parks: food from home stays outside
+## The water parks
 
 All four water parks whose rules we compared ban food from home.
 
@@ -245,11 +235,9 @@ and drink areas. At the Aquascope, every exit is final, even for a break at the 
 
 Pack sandwiches, fruit and snacks in a backpack or a soft cooler bag. Parc Astérix and Disneyland Paris ban coolers,
 Futuroscope bans rigid ones, and Walibi Belgium only lets in bags up to 55 × 40 × 20 cm. For drinks, take a plastic or
-metal bottle, because glass is banned in five of the fifteen parks and in Rulantica. Grills, stoves and alcohol stay at home.
+metal bottle, because glass is banned in five of the fifteen parks and in Rulantica.
 
-Eat at the picnic areas. Every park that mentions eating in queues or on rides bans it. At Futuroscope you can sit on
-any lawn, at Disneyland Paris the picnic area is in front of the entrance, and at Europa-Park it's the spots in the
-Balthasar castle park. At Toverland you can warm up your food or a baby bottle in the microwave for free.
+Every park that mentions eating in queues or on rides bans it.
 
 ## Frequently asked questions
 
@@ -301,8 +289,6 @@ In the house rules, which go by Parkordnung, Parkreglement, park rules or Règle
 often in the FAQ on the park's website too.
 
 ## Sources
-
-House rules change, often at the start of a season. It's worth checking the current version before you go.
 
 - Europa-Park, Park Rules: [europapark.de](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations)
 - Europa-Park, Tipps für Ihren Besuch (picnic areas): [europapark.de](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park)

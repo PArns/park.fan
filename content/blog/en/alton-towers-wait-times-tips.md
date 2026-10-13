@@ -55,7 +55,7 @@ there may rise above the treetops. Anything that does go higher has to be design
 be made out from the surrounding countryside. That's why the track of [Rita](ref:alton-towers/rita)
 is painted red, and dark green only at its highest points.
 
-So the park's big rides go down. **[Nemesis Reborn](ref:alton-towers/nemesis-reborn)** runs through
+So the park's big rides are built low or sunk below ground level. **[Nemesis Reborn](ref:alton-towers/nemesis-reborn)** runs through
 an excavated quarry, and its riders hang under the track between the rock faces.
 **[Oblivion](ref:alton-towers/oblivion)** is just under 20 metres tall and still drops 55 metres,
 because most of the drop lies in a tunnel underground. **[The Smiler](ref:alton-towers/the-smiler)**
@@ -100,8 +100,7 @@ without them again.
 
 ```
 
-Two rides without any track are in Forbidden Valley too.
-**[Nemesis Sub-Terra](ref:alton-towers/nemesis-sub-terra)** is a drop tower inside a building; it
+**[Nemesis Sub-Terra](ref:alton-towers/nemesis-sub-terra)**, also in Forbidden Valley, is a drop tower inside a building; it
 ran from 2012 to 2015 and has been back in operation since 2023.
 **[Toxicator](ref:alton-towers/toxicator)** is a Top Spin that opened on 15 March 2025. It stands on
 a concrete platform just under five metres high above the path, so you can watch it from below.
@@ -219,20 +218,17 @@ metres. Children under 90 cm get into the park free.
 ## How busy Alton Towers gets
 
 We've measured wait times every five minutes since late December 2025, for every attraction in the
-park. The theme park is closed in winter, so all the measured days come from the 2026 season. The
-number of days for each ride is in the last column.
+park. The theme park is closed in winter, so all the measured days come from the 2026 season.
 
 ```ride-waits-widget park=alton-towers top=8 columns=land,peak,days highlight=nemesis-reborn
 
 ```
 
-This is how the queues build up over the day:
-
 ```hourly-profile-widget slug=alton-towers top=8
 
 ```
 
-Here's Alton Towers next to two other Merlin parks and Europa-Park, recalculated every day:
+We recalculate the comparison with Thorpe Park, Heide Park and Europa-Park every day.
 
 ```park-comparison-widget slugs=alton-towers,thorpe-park,heide-park,europa-park highlight=alton-towers
 
@@ -248,8 +244,6 @@ The Smiler and Wicker Man aren't among them.
 ```glossary-widget slug=rope-drop
 
 ```
-
-The quietest opening days in the coming weeks:
 
 ```best-days-widget slug=alton-towers
 
@@ -272,8 +266,6 @@ travelling from mainland Europe, your own school holidays won't line up with the
 check the English holiday calendar before you book. The autumn half term falls in the second half of
 October. The Scarefest weekends before it, from 26 September, have the same decorations without the
 English school holidays.
-
-The weather over the park for the next few days:
 
 ```weather-widget slug=alton-towers
 
@@ -319,14 +311,12 @@ at the same time.
 CBeebies Land has had its own package since 2026: £7 for two rides, £10 for three, each attraction
 once. On the day itself you can buy single rides in the app as One Shot tickets, while they last.
 
-Whether Fastrack is worth it depends on the day you get. On a weekday outside the English school
-holidays, an early start means you can do without it. On a Saturday in the holidays I'd buy Silver
+On a weekday outside the English school holidays, an early start means you can do without Fastrack. On a Saturday in the holidays I'd buy Silver
 for The Smiler and Wicker Man, not Bronze.
 
 ## A day at Alton Towers
 
-Be at the monorail or the entrance at **9:30am** so you're inside at ten. The first hour belongs to
-the four rides for taller riders, where an early start saves the most. I'd begin with Spinball
+Be at the monorail or the entrance at **9:30am** so you're inside at ten. An early start saves the most at the four rides for taller riders. I'd begin with Spinball
 Whizzer, then ride Rita and TH13TEEN in the Dark Forest, and from there take the Skyride over to
 Forbidden Valley for Nemesis Reborn. On a site this hilly, the chairlift spares you some long walks.
 
@@ -334,10 +324,9 @@ Galactica is in the same area as Nemesis and fits in straight after it. Leave Ob
 Smiler in X-Sector for the late morning or the afternoon. On a Scarefest day you can save Wicker Man
 for the evening, when it runs in the dark.
 
-With small children the day looks different. Head for CBeebies Land and the Octonauts coaster first,
+With small children, head for CBeebies Land and the Octonauts coaster first,
 while it's still quiet there, then go on to Mutiny Bay and Katanga Canyon. The monorail runs back to
-the car park and the hotels until an hour after the rides close, so there's no need to rush in the
-evening.
+the car park and the hotels until an hour after the rides close.
 
 ## Tickets, parking and getting there
 
@@ -388,7 +377,7 @@ still be recognised.
 
 ## Staying at the park
 
-From mainland Europe, Alton Towers isn't a day trip, and the park has five places to stay on its own
+The park has five places to stay on its own
 grounds.
 
 The **Alton Towers Hotel** from 1996 has 180 rooms in thirteen categories and is themed around a
@@ -407,7 +396,7 @@ breakfast and a day in the park starts at **£77** per person, or £100 on Scare
 
 ![A grey stately home with battlements, towers and glazed conservatories behind clipped yews and a lavender bed | The Towers and their conservatories. Hex runs inside the house. | wide](/media/alton-towers/the-towers.jpg)
 
-The park is named after a house that's still standing. There was a fortified settlement on the site
+There was a fortified settlement on the site
 as early as the Iron Age, and from 1412 to 1924 the estate belonged to the same family, the Talbots,
 Earls of Shrewsbury. Most of today's house dates from the early 19th century.
 **Augustus Welby Pugin**, who also worked on the Palace of Westminster, remodelled it. The
@@ -484,7 +473,7 @@ October. It also gets busy on Scarefest days up to 1 November and at weekends in
 
 ### Is Fastrack worth it at Alton Towers?
 
-That depends on the tier. Bronze at £35 doesn't cover The Smiler or Wicker Man, the two rides with
+Bronze at £35 doesn't cover The Smiler or Wicker Man, the two rides with
 the longest queues. If they're the main reason you're going, you need Silver at £65 or Gold at £95.
 On a weekday outside the holidays, an early start is usually enough.
 

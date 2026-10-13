@@ -7,12 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  On est fin septembre et les chocolats de Noël sont déjà en rayon. Autant
-  regarder aussi du côté des parcs : le 14 novembre, les lumières s’allument à
-  Phantasialand, Bottrop en promet plus d’un million, et à Wavre une patinoire
-  attend sous un toit de hall. Douze parcs qui ouvrent entre novembre et
-  janvier : les dates, les tarifs et le coaster d’Europa-Park qui tourne pour la
-  dernière fois.
+  Le 14 novembre, les lumières s’allument à Phantasialand, Bottrop en promet plus d’un million, et à Wavre une patinoire attend sous un toit de hall. À Europa-Park, l’Euro-Mir tourne cet hiver pour la dernière fois.
 tags:
   - hiver
   - wintertraum
@@ -56,13 +51,9 @@ parc reste ouvert jusqu’à 20 h, et MAGIC SYMPHONY clôt la soirée avec un fe
 d’artifice, chaque soir à partir de là et jusqu’en janvier, tant que le vent le
 permet. À ce moment-là, Bottrop doit compter plus d’un million de lumières, une
 patinoire de 700 m² se dresse sous un toit de hall à Wavre, et à Kasterlee le
-père Noël est compris dans le billet journalier. Entre la mi-novembre et le
-début janvier, une bonne part des parcs européens devient autre chose, qui n’a
-plus qu’un rapport lointain avec les montagnes russes : vin chaud, patins et
-guirlandes dans les arbres.
+père Noël est compris dans le billet journalier.
 
-La plupart, non. Le gros des parcs allemands ferme fin octobre et rouvre au
-printemps, et un parc néerlandais a carrément renoncé en avril.
+Le gros des parcs allemands ferme fin octobre et rouvre au printemps.
 
 Le 23 avril 2026, [Walibi Holland](ref:walibi-holland) a arrêté son exploitation
 hivernale. **Bright Nights** a eu quatre éditions, avec des coasters illuminés et
@@ -70,72 +61,54 @@ un spectacle pyrotechnique baptisé « Light up the Night », et n’a pas de
 successeur. Le parc reste désormais fermé d’Halloween jusqu’en avril.
 
 La directrice Mascha Taminiau a pointé la brièveté de la période d’ouverture
-pendant les vacances de Noël et la dépendance à la météo. Concrètement, les
-montagnes russes ne tournent pas par gel, tempête ou pluie verglaçante, et
-Walibi Holland n’a presque rien de couvert. Quand la technique s’arrête, il
-reste aux visiteurs un spectacle de lumières, et un spectacle de lumières ne
-porte pas un billet.
+pendant les vacances de Noël et la dépendance à la météo. Les montagnes russes ne tournent pas par gel, tempête ou pluie verglaçante, et
+Walibi Holland n’a presque rien de couvert.
 
-C’est là que se décide qui ouvre en décembre. La question est de savoir combien
-de capacité il reste à un parc quand personne ne veut monter dehors.
+Qu’un parc ouvre en décembre dépend de ce qu’il a de couvert.
 [Efteling](ref:efteling) remplit les mêmes semaines avec ses dark rides et rend
 même mieux sous la pluie. [Phantasialand](ref:phantasialand) a Wuze Town, un
-hall entier rempli d’attractions, Walibi Belgium a des halls. Walibi Holland
-n’avait, en hiver, pas une seule grande attraction couverte.
-
-Ci-dessous, qui fait la saison 2026/27, avec les dates, les horaires et les
-tarifs. Et entre Noël et le
-Nouvel An, quand la nuit tombe à seize heures trente, on attend plus longtemps
-qu’en mai.
+hall entier rempli d’attractions, Walibi Belgium a des halls.
 
 > **À propos des dates :** voici la situation au 25 septembre 2026. Les parcs
 > déplacent encore leur calendrier d’hiver jusqu’à l’automne, et tous n’ont pas
 > encore tout publié. Les pages officielles figurent dans les sources en fin
 > d’article, et les jours d’ouverture du calendrier park.fan viennent
-> directement du planning du parc. Vérifiez avant de réserver.
+> directement du planning du parc.
 
 ## Les trois parcs allemands qui continuent tout simplement
 
-Deux parcs allemands traitent l’hiver comme une saison à part entière, avec tout
-le parc ouvert : programme propre, exploitation quotidienne jusqu’en janvier. Un
-troisième le fait en plus petit, mais l’hiver dernier jusqu’en mars.
-
 ### Phantasialand : Wintertraum, du 14 novembre au 24 janvier
 
-Brühl ne fait rien en octobre. Pas d’Halloween, pas de maze, pas même une
-citrouille symbolique. En revanche, [Phantasialand](ref:phantasialand) lance le
+Brühl ne fête pas Halloween. En revanche, [Phantasialand](ref:phantasialand) lance le
 Wintertraum le **14 novembre 2026**, **jusqu’au 24 janvier 2027**, tous les
 jours de **11 h à 20 h**. Cela fait 67 jours d’exploitation. La saison normale
 dure jusqu’au 13 novembre inclus, sans pause entre les deux.
 
 Le parc ferme cinq jours : les 24 et 25 décembre, le 1er janvier, puis les 12
-et 13 janvier 2027. Le 31 décembre, l’exploitation s’arrête à 18 h, à temps
-pour votre propre feu d’artifice. Les billets se vendent uniquement en ligne et
+et 13 janvier 2027. Le 31 décembre, l’exploitation s’arrête à 18 h. Les billets se vendent uniquement en ligne et
 pour une date fixe, il n’y a pas de caisse à l’entrée. Les billets en prévente sont
 moins chers que le prix du jour, et le contingent par jour de visite est limité.
 Le prix actuel s’affiche dans la boutique en ligne, et selon le parc le prix du
 jour dans le calendrier peut augmenter chaque jour.
 
-![La tour du Mystery Castle dans le brouillard, éclairée par en dessous | Mystery Castle vous fait chuter de 65 mètres, entièrement à l’intérieur de la tour. La pluie verglaçante dehors n’y change rien. | wide](/media/phantasialand/mystery-castle.jpg)
+![La tour du Mystery Castle dans le brouillard, éclairée par en dessous | Mystery Castle vous fait chuter de 65 mètres, entièrement à l’intérieur de la tour. | wide](/media/phantasialand/mystery-castle.jpg)
 
-Rien de ce programme n’existe l’été. Trois spectacles se jouent en salle : le
+Trois spectacles qui n’existent pas l’été se jouent en salle : le
 spectacle sur glace **Arctaris – The Hidden World**, **Der goldene Faden** et le
 **Spectaculum Phantastère**. Chacun a un jour de relâche : le lundi pour le
 Spectaculum, le mardi pour Der goldene Faden, le mercredi pour Arctaris. Quatre
 autres se jouent dehors : **Tiempo de Fuego**, **Pulse of Rookburgh**,
 l’illumination de la Kaiserplatz et, pour finir, **MAGIC SYMPHONY** avec
 lumière, feu et feu d’artifice. Par vent fort, il est annulé et remplacé par un
-court « Good Night Wish » en musique et en lumière. On patine sur le
+court « Good Night Wish » en musique et en lumière. On patine de nouveau sur le
 **Berliner Eislaufen**, dans la zone berlinoise du parc.
 
-Si Brühl tient le rythme, c’est grâce à sa construction. Une bonne partie des
-attractions tourne à l’intérieur :
+Une bonne partie des attractions de Brühl tourne à l’intérieur :
 [Winja’s Fear](ref:phantasialand/winjas-fear) et
 [Force](ref:phantasialand/winjas-force) dans le hall de Wuze Town,
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat),
 [Mystery Castle](ref:phantasialand/mystery-castle), la Geister Rikscha sous
-terre. Quand le vent se lève et que Taron s’arrête, le parc a encore de quoi
-justifier le billet. River Quest, Wakobato et Wözl’s Wassertreter restent
+terre. Quand Taron s’arrête à cause du vent, ces attractions continuent de tourner. River Quest, Wakobato et Wözl’s Wassertreter restent
 fermés pendant le Wintertraum. Chiapas, en revanche, tourne aussi en décembre.
 
 Le fonctionnement du Quick Pass depuis la saison 2025/26, et pourquoi il est
@@ -193,15 +166,9 @@ de nouveau ouverts, de 11 h à 18 h.
 
 ### Efteling : Winter Efteling, du 16 novembre au 31 janvier
 
-[Efteling](ref:efteling) est le parc où l’on comprend à quoi servent les dark
-rides. [Droomvlucht](ref:efteling/droomvlucht),
-[Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana,
-[Danse Macabre](ref:efteling/danse-macabre) : toute une collection d’attractions
-que la pluie, le vent et l’obscurité n’atteignent pas, et dont plusieurs
-fonctionnent mieux au crépuscule qu’en plein soleil. Pour une fois, un parc à
-qui la météo néerlandaise rend service.
+À [Efteling](ref:efteling), la pluie, le vent et l’obscurité n’atteignent pas [Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana et [Danse Macabre](ref:efteling/danse-macabre), et plusieurs d’entre elles fonctionnent mieux au crépuscule qu’en plein soleil.
 
-![Le château de Symbolica éclairé en bleu la nuit, une fontaine devant | Symbolica un soir d’hiver. En décembre, la nuit tombe ici à seize heures trente, et le parc y gagne. | wide](/media/efteling/symbolica.jpg)
+![Le château de Symbolica éclairé en bleu la nuit, une fontaine devant | Symbolica un soir d’hiver. En décembre, la nuit tombe ici à seize heures trente. | wide](/media/efteling/symbolica.jpg)
 
 La **Winter Efteling** dure cette année du **16 novembre 2026 au 31 janvier
 2027**, avec une patinoire et des décorations d’hiver dans tout le parc. À
@@ -213,8 +180,7 @@ ferme à 18 h, quatre week-ends de novembre et décembre à 19 h, et du 19 au
 janvier. Les coasters en plein air tournent tant que la météo le permet.
 
 Cela fait onze semaines, sans un seul jour de fermeture au planning jusqu’à fin
-décembre, et le plus long programme d’hiver de ce tour d’horizon qui soit déjà
-fixé. Deux classiques manquent toutefois une partie du temps : Droomvlucht est
+décembre, et le plus long programme d’hiver de ce tour d’horizon qui soit déjà fixé. Droomvlucht est toutefois
 en maintenance du 9 novembre au 4 décembre, Joris en de Draak du 30 novembre au
 18 décembre.
 
@@ -242,10 +208,7 @@ on en achète d’un coup, moins la case revient cher. L’entrée gratuite exig
 réservation préalable, gratuite elle aussi, et les places par jour sont
 limitées. Le billet journalier habituel, avec tours illimités, reste en vente.
 
-Sevenum est le parc devant lequel la moitié de Cologne et de Düsseldorf passe en
-route vers Kaatsheuvel. En hiver, le calcul change, parce qu’une journée courte
-fait moins mal dans un petit parc que dans un grand, et les jours de carte à
-cases, on ne paie que ce qu’on fait. Ce que coûte Troy en temps d’attente un
+Sevenum est sur la route de Cologne et de Düsseldorf vers Kaatsheuvel. Ce que coûte Troy en temps d’attente un
 jour ordinaire est dans le
 [guide Toverland](/blog/toverland-troy-temps-d-attente-conseils).
 
@@ -254,8 +217,6 @@ jour ordinaire est dans le
 ## Ceux qui ouvrent en décembre
 
 Ces parcs sont fermés le reste de l’hiver et rouvrent pour deux à six semaines.
-Les fenêtres sont courtes, et quand on n’a que quelques week-ends au choix, tout
-le monde a les mêmes.
 
 ### Walibi Belgium : Walibi Winter, du 5 décembre au 3 janvier
 
@@ -267,7 +228,7 @@ Chocolate Factory, Festive Tropics et, depuis l’hiver dernier, le **Northern
 Dock**, un port scandinave autour de [Mecalodon](ref:walibi-belgium/mecalodon),
 le coaster familial des 50 ans du parc.
 
-![L’entrée de Walibi Belgium décorée de boules de Noël, surmontée des lettres « Walibi Winter » | Wavre continue, Biddinghuizen non. Entre les deux : près de trois heures de route et quelques toitures de hall. | wide](/media/walibi-belgium/background.jpg)
+![L’entrée de Walibi Belgium décorée de boules de Noël, surmontée des lettres « Walibi Winter » | Walibi Winter à Wavre. Le parc frère de Biddinghuizen est à près de trois heures de route. | wide](/media/walibi-belgium/background.jpg)
 
 Sont compris une **patinoire couverte de 700 m²**, une piste de luge à six
 couloirs, un spectacle sur glace à dix artistes, un film de Noël en 4D et un
@@ -305,8 +266,7 @@ cette fenêtre, de 11 h à 19 h, jusqu’à 17 h les 24 et 31 décembre, fermé 
 25 décembre et le 1er janvier.
 
 À Kasterlee, **tout est compris dans le billet journalier**, du patinage à la
-piste de tubing. Rien à réserver en plus : le porte-monnaie peut rester dans la
-poche jusqu’à la baraque à frites. Qui vient encore pour Halloween en novembre
+piste de tubing. Qui vient encore pour Halloween en novembre
 reçoit en plus l’entrée à Wintert, d’une valeur de 19,90 €.
 
 [Bobbejaanland](ref:bobbejaanland?full)
@@ -330,10 +290,7 @@ voyage en train vers le pôle Nord, payant en supplément.
 
 Movie Park et Bobbejaanland appartiennent tous deux à Parques Reunidos, que le
 fonds EQT cherche à vendre. Pour les visiteurs, rien ne change pour l’instant
-([plus de détails sur la vente](/blog/parques-reunidos-a-vendre-movie-park)). Quel jour de
-la semaine est vraiment le plus calme à Bottrop, et où les conseils habituels se
-trompent, c’est dans le
-[guide Movie Park](/blog/movie-park-germany-temps-d-attente-conseils).
+([plus de détails sur la vente](/blog/parques-reunidos-a-vendre-movie-park)). Le jour de la semaine le plus calme à Bottrop est dans le [guide Movie Park](/blog/movie-park-germany-temps-d-attente-conseils).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
@@ -350,8 +307,7 @@ La liste d’hiver du parc compte une bonne trentaine
 d’entrées, dont MAXIMUS, la Tempel X-pedition, LEGO NINJAGO The Ride et le
 Techno Schleuder. La plupart des attractions en plein air portent toutefois la
 mention « ouvert selon la météo ». Si vous voyagez avec un enfant qui veut une
-attraction précise, lisez d’abord la liste du parc. Sinon, la discussion devant
-l’attraction fermée se fera avec quelqu’un qui mesure un mètre et qui a raison.
+attraction précise, lisez d’abord la liste du parc.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
@@ -369,7 +325,6 @@ zone viking et un marché de Noël.
 
 ### PortAventura : tous les jours jusqu’au 6 janvier
 
-Sur la Costa Daurada, l’hiver n’est pas celui de Soltau.
 [PortAventura](ref:portaventura-park) ne ferme même pas après Halloween, qui
 dure jusqu’au 15 novembre : au planning du parc, chaque jour jusqu’au
 **6 janvier 2027** est un jour d’ouverture, **Noël et Nouvel An compris**. Le
@@ -378,9 +333,7 @@ parc n’a pas encore publié la date exacte du début de son programme de Noël
 Mediterrània, le défilé des Rois mages, le soir où les enfants espagnols
 reçoivent leurs cadeaux.
 
-Un avertissement issu de nos propres mesures depuis fin décembre 2025 : à
-PortAventura, on attend en
-moyenne plus longtemps qu’à Brühl, nettement en hiver et au printemps. Il n’y a
+D’après nos propres mesures depuis fin décembre 2025, à PortAventura, on attend en moyenne plus longtemps qu’à Brühl, nettement en hiver et au printemps. Il n’y a
 qu’en juillet et en août que Brühl est plus chargé. Le tableau plus bas les met
 côte à côte.
 
@@ -392,8 +345,7 @@ côte à côte.
 6 janvier 2027** : du 5 au 8 décembre autour de l’Immaculée Conception, le
 week-end des 12 et 13 décembre, puis tous les jours du 19 décembre à
 l’Épiphanie, sauf le jour de Noël. Le 6 janvier, c’est la Befana en Italie, le
-jour où les enfants reçoivent leurs cadeaux. L’hiver dernier, pourtant, la foule
-est venue avant : le 2 janvier 2026, notre calendrier affichait Gardaland en
+jour où les enfants reçoivent leurs cadeaux. L’hiver dernier, pourtant, le 2 janvier 2026, notre calendrier affichait Gardaland en
 « Extrême », le jour de l’Épiphanie en « Normal ».
 
 [Gardaland](ref:gardaland?full)
@@ -401,33 +353,21 @@ est venue avant : le 2 janvier 2026, notre calendrier affichait Gardaland en
 ## Les parcs qui restent fermés
 
 Le [Heide-Park](ref:heide-park) fait sa saison 2026 du 28 mars au
-**31 octobre**, puis ferme. Pas d’exploitation hivernale à Soltau, pas de marché
-de Noël non plus : Colossos hiberne. Ce qui se passe pendant les sept mois
-précédents est dans le
-[guide du Heide Park](/blog/heide-park-temps-d-attente-conseils).
+**31 octobre**, puis ferme. Pas d’exploitation hivernale à Soltau, pas de marché de Noël non plus.
 
 [Walibi Holland](ref:walibi-holland) reste également fermé depuis la fin de
 Bright Nights. Les détenteurs d’un abonnement 2026 incluant l’exploitation
 hivernale 2026 et 2027 ont reçu en compensation deux billets pour venir
-accompagnés. Ce que le parc fait du temps libéré est dans le
-[guide Walibi](/blog/walibi-holland-untamed-hard-gaan).
+accompagnés.
 
-Prudence en lisant notre calendrier : s’il est vide, cela ne veut pas dire
-qu’un parc est fermé. Disneyland Paris fête Noël du 7 novembre 2026 au 6 janvier
+Un jour vide dans notre calendrier ne veut pas dire qu’un parc est fermé. Disneyland Paris fête Noël du 7 novembre 2026 au 6 janvier
 2027, et Liseberg à Göteborg lance sa saison de Noël le 14 novembre. Pourtant,
 dans notre calendrier, les deux plannings ne vont que jusqu’à la seconde moitié
-de novembre, parce que les parcs n’ont pas encore publié les jours suivants. Un
-jour n’apparaît sur park.fan qu’une fois que le parc l’a publié.
+de novembre, parce que les parcs n’ont pas encore publié les jours suivants.
 
 ## Les temps d’attente en hiver
 
-L’hiver donne une impression de vide. Il fait sombre, il fait froid, du
-brouillard traîne sur les allées et la moitié du parc est éclairée plutôt que
-peuplée. Les files, elles, ne le sont pas.
-
-C’est à Phantasialand que cela se voit le mieux. Décembre et janvier y sont plus
-proches de juillet et août que de mai et juin, et l’écart n’est pas une question
-d’arrondi.
+À Phantasialand, décembre et janvier sont plus proches de juillet et août que de mai et juin.
 
 **Phantasialand, temps d’attente typique par mois**
 
@@ -469,24 +409,17 @@ tourne neuf heures par jour, de 11 h à 20 h. Une journée de mai à Brühl dure
 exactement autant, de 9 h à 18 h. Décembre reste malgré tout la moitié la plus
 chargée.
 
-Restent deux autres raisons. La première est la capacité : les parcs publient
+En hiver, moins d’attractions tournent. Les parcs publient
 leur propre liste d’attractions pour l’hiver, Walibi Belgium et Phantasialand
 citent chacun trois attractions fermées, et chez Legoland la plupart des
-attractions en plein air sont marquées « selon la météo ». Moins de capacité
-pour la même demande donne des files plus longues, et la température n’y change
-rien.
+attractions en plein air sont marquées « selon la météo ».
 
-La seconde est le calendrier. Walibi Winter compte 20 jours d’exploitation,
+Walibi Winter compte 20 jours d’exploitation,
 Bobbejaanland 18, le Parc Astérix 16. Un visiteur d’été choisit un mardi parmi
-cinq mois ; un visiteur d’hiver choisit entre trois week-ends, avec les vacances
-de Noël au milieu. Ce sont précisément ces jours de vacances qui remplissent nos
-lignes de décembre. Pour le Wintertraum s’ajoute qu’il est une destination en
-soi : qui roule vers Brühl en décembre veut voir les spectacles, et ils
+cinq mois ; un visiteur d’hiver choisit entre trois week-ends, avec les vacances de Noël au milieu. Le Wintertraum est en outre une destination en soi : qui roule vers Brühl en décembre veut voir les spectacles, et ils
 n’existent que ces semaines-là.
 
-Et parce que la question « lequel est le plus chargé » revient à chaque trajet en
-voiture, voici les parcs de cette sélection côte à côte, chacun avec son jour de
-semaine le plus calme :
+Les parcs de cette sélection côte à côte, chacun avec son jour de semaine le plus calme :
 
 ```park-comparison-widget slugs=phantasialand,europa-park,efteling,attractiepark-toverland,walibi-belgium,portaventura-park,gardaland show=quietest highlight=phantasialand
 
@@ -502,79 +435,55 @@ d’ouverture. L’hiver 2026/27 est donc le premier que nous enregistrons en
 entier, et après lui notre modèle disposera pour la première fois d’une année
 complète.
 
-Pour une tendance, ces quelques jours d’hiver suffisent quand même, et on y voit
-surtout à quel point le jour compte en hiver. Entre Noël et le Nouvel An,
+Entre Noël et le Nouvel An,
 c’était plein partout : à Phantasialand, notre calendrier affichait « Élevée »
 chaque jour d’ouverture du 26 décembre au 5 janvier, et « Très élevée » le
 2 janvier. Après les vacances, tout a basculé. À partir du 7 janvier, tous les
 samedis et dimanches de Brühl étaient en « Élevée » ou « Très élevée », presque
 tous les jours de semaine en « Faible » ou « Très faible », et Efteling suivait
 à peu près le même schéma à partir de la mi-janvier. Europa-Park n’a pas dépassé
-« Normal » après le 6 janvier, même le week-end. De l’Avent, nous n’avons aucune
-mesure.
+« Normal » après le 6 janvier, même le week-end.
 
-À Brühl, la bascule se fait en une nuit. Jusqu’au vendredi 13 novembre inclus,
+À Brühl, jusqu’au vendredi 13 novembre inclus,
 la saison normale tourne de 9 h à 18 h, et le samedi 14 novembre le Wintertraum
-commence, de 11 h à 20 h. Les jours d’avant ne vous servent à rien si vous venez
-pour les lumières et les spectacles. Votre meilleure chance est un jour de
+commence, de 11 h à 20 h. Votre meilleure chance est un jour de
 semaine entre le 16 novembre et le début des vacances de Noël en
 Rhénanie-du-Nord-Westphalie, le 23 décembre, de préférence un jeudi ou un
-vendredi, quand les trois spectacles en salle se jouent. À partir des vacances,
-chaque journée est une journée de vacances jusque tard en janvier.
+vendredi, quand les trois spectacles en salle se jouent.
 
 Ne prenez pas le calendrier d’affluence au mot pour cet hiver-ci. Au
 25 septembre, il classe chaque jour de décembre à Brühl en « Faible » ou « Très
 faible », y compris les jours entre Noël et le Nouvel An qui étaient tous en
 « Élevée » l’hiver dernier. À Europa-Park et à Efteling, décembre a la même
-allure. Le modèle n’a été entraîné que sur quelques jours de vacances d’hiver, et il
-prévoit un hiver calme. Après cet hiver, il disposera pour la première fois d’un
-mois de décembre entier.
+allure. Le modèle n’a été entraîné que sur quelques jours de vacances d’hiver, et il prévoit un hiver calme.
 
-## La date, la liste des attractions, le gros manteau
+## Avant de partir
 
 1. **Le prix dépend de la date, et du jour où vous achetez.** Phantasialand ne
    vend que des billets datés en ligne ; la prévente est moins chère que le
    prix du jour, et le contingent par jour est limité. Legoland vend des
    billets en prévente jusqu’au 4 octobre et vous laisse choisir le jour plus
    tard, et Walibi Belgium ne demande pas de date du tout.
-2. **Lisez la liste des attractions avant de réserver.** L’été, la question est
-   de savoir combien de temps vous attendez. L’hiver, la question est de savoir
-   si l’attraction tourne. Chaque parc publie une liste d’hiver, et pour les
-   attractions aquatiques la réponse est le plus souvent non. Justement, Chiapas
+2. **Lisez la liste des attractions avant de réserver.** Chaque parc publie une liste d’hiver, et les attractions aquatiques y figurent le plus souvent comme fermées. Chiapas
    à Phantasialand fait exception.
 3. **Habillez-vous pour le soir.** Fin décembre, le soleil se couche à seize
-   heures trente sur Brühl, et le parc reste ouvert trois heures et demie
-   ensuite. Laisser la grosse veste dans le coffre parce qu’il fait beau le
-   matin, c’est revenir à la voiture en pestant le soir.
+   heures trente sur Brühl, et le parc reste ouvert trois heures et demie ensuite.
 
 ## Où aller cette année
 
-Le plus gros programme est à Brühl : 67 jours d’exploitation, trois spectacles
-en salle, quatre en plein air. Il y a du monde là-bas aussi, donc prenez un jour
-de semaine avant les vacances de Noël, de préférence un jeudi ou un vendredi. Si
+Le plus gros programme est à Brühl. Si
 la météo ne doit pas compter, Kaatsheuvel est le choix le plus sûr, parce qu’une
 bonne part des meilleures attractions y est de toute façon à l’intérieur ; pour
-Droomvlucht, il faudra toutefois attendre le 5 décembre. Et pour refaire un tour
-d’[Euro-Mir](ref:europa-park/euro-mir), il reste jusqu’au 9 janvier pour aller à
-Rust.
+Droomvlucht, il faudra toutefois attendre le 5 décembre.
 
 Avec des enfants et sans envie de suppléments : à Kasterlee, tout ce qui est
-installé dans le parc ces semaines-là est dans le prix de la journée. Après les
-semaines d’Halloween, où les maisons hantées s’y paient à part, cela déroute un
-peu, mais on s’y fait très vite.
+installé dans le parc ces semaines-là est dans le prix de la journée. Pendant les semaines d’Halloween, les maisons hantées s’y paient à part.
 
-Ce qui tourne réellement le jour que vous visez et la longueur des files en ce
-moment, c’est sur la page de chaque parc, tout l’hiver.
-
-Quittez l'Europe, et décembre change de visage. À Orlando, la semaine entre Noël et
+À Orlando, la semaine entre Noël et
 le Nouvel An est la plus chargée de l'année mesurée dans les sept parcs, et à
 Paris elle ne l'est pas. Nous avons comparé les deux dans [Noël et Nouvel An à Orlando et à Paris](/blog/noel-nouvel-an-orlando-paris-2026).
 
 — Patrick
-
-_P.S. : dans sa version de juillet, le guide Halloween se terminait sur la phrase
-que le Wintertraum arriverait en novembre en compensation. Il arrive le
-14 novembre, et la patinoire est de retour dans la zone berlinoise du parc._
 
 ---
 

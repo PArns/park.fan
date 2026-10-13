@@ -1,17 +1,16 @@
 ---
-title: 'Hansa-Park : les montagnes russes les plus rapides d’Allemagne sont à moitié sur la Baltique'
+title: 'Hansa-Park : le Kärnan roule à 127 km/h, et la saison n’a aucun jour de fermeture'
 translationKey: hansa-park-guide
 date: '2026-09-22'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  À Sierksdorf, le Kärnan partage avec Silver Star le titre des montagnes
-  russes les plus hautes et les plus rapides d’Allemagne, et juste à côté se
-  dresse la plus haute gyro drop tower du monde. Ajoute un calendrier sans un
-  seul jour de fermeture, 16 soirées d’octobre avec des figures lumineuses au
-  lieu de labyrinthes d’horreur, et huit coasters, dont la moitié sont des
-  coasters familiaux ou pour enfants.
+  Au Hansa-Park de Sierksdorf, le Kärnan partage avec Silver Star le titre des
+  montagnes russes les plus hautes et les plus rapides d’Allemagne. Juste à côté
+  se dresse la plus haute gyro drop tower du monde. La saison n’a aucun jour de
+  fermeture, et ses 16 dernières soirées ont des figures lumineuses au lieu de
+  labyrinthes d’horreur.
 tags:
   - hansa-park
   - kaernan
@@ -52,47 +51,42 @@ seo:
 ---
 
 **[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan)** mesure **73 mètres** et roule à
-**127 km/h**. Il partage ces deux chiffres avec [Silver Star](ref:europa-park/silver-star?bare) à Europa-Park depuis **2015**, si bien
-que la moitié du record allemand de hauteur et de vitesse se trouve dans une station balnéaire de la
-Baltique que la plupart des visiteurs n’auraient pas su situer.
+**127 km/h**. Il partage ces deux chiffres avec [Silver Star](ref:europa-park/silver-star?bare) à Europa-Park depuis **2015**, et à eux
+deux ce sont les montagnes russes les plus hautes et les plus rapides d’Allemagne.
 
 Sierksdorf se trouve à 24 kilomètres à vol d’oiseau au nord de Lübeck. Le parc se présente comme le
-seul parc de loisirs allemand au bord de la mer, et il est vraiment au bord de la mer : les maisons
+seul parc de loisirs allemand au bord de la mer. Les maisons
 de vacances du resort voisin donnent directement sur la Baltique, le train régional de Lübeck à
 Neustadt passe entre elles et le parc, et du haut du Highlander on voit toute la baie de Lübeck.
 
-## Des distances courtes et un record et demi
+## Un parc de 46 hectares
 
-Le Hansa-Park tient sur **46 hectares**. Le Heide Park en a 85, et cette différence-là, les jambes
-la sentent en premier : deux coasters sont rarement séparés de plus de quelques minutes ici, et les
+Le Hansa-Park tient sur **46 hectares**. Le Heide Park en a 85. Deux coasters sont rarement séparés de plus de quelques minutes de marche
+ici, et les
 onze zones thématiques se succèdent au lieu d’être coupées par des prés.
 
-Un record et demi tient sur cette surface. Le [Highlander](ref:hansa-park/highlander?bare) est la plus haute gyro drop tower du
-monde. Avec [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), le parc détient la moitié d’un titre ; l’autre moitié roule à
-Rust sous le nom de [Silver Star](ref:europa-park/silver-star?bare). Le reste du parc est résolument familial, avec une promenade en barque
-héritée du Legoland et quatre coasters familiaux ou pour enfants.
+Le [Highlander](ref:hansa-park/highlander?bare) est la plus haute gyro drop tower du monde. À
+côté, il y a une promenade en barque héritée du Legoland et quatre coasters familiaux ou pour
+enfants.
 
-Les nouveaux coasters arrivent ici par vagues. Quatre entre 2009 et 2017, dont le Kärnan, puis
+Quatre nouveaux coasters sont arrivés entre 2009 et 2017, dont le Kärnan, puis
 aucun pendant neuf ans, jusqu’à l’ouverture du Cornwall Coaster en 2026. Entre-temps sont venus le
 Highlander et quelques petites zones thématiques, et depuis 2008 le parc bâtit ville après ville une
-seule grande zone, « Hanse in Europa ». Ce qui ne change pas : le parc ouvre chaque jour de sa
-saison et accroche quelque 2 000 figures lumineuses en octobre, là où d’autres montent des
-labyrinthes.
+seule grande zone, « Hanse in Europa ».
 
 [Hansa-Park](ref:hansa-park?full)
 
-## Les montagnes russes, de la tour au petit tsar
+## Les huit montagnes russes
 
 **[Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare)** a ouvert en 2015 et a coûté environ 26 millions d’euros, alors le plus gros investissement du parc.
 Gerstlauer l’a construit en Infinity Coaster : **1 235 mètres** de voie, à partir de 1,30 mètre. Le
 lift se trouve entièrement dans une **tour de 79 mètres** qui hisse le train à la verticale, et la
 première descente tombe de 67 mètres.
 
-Pendant la montée dans la tour, invisible de l’extérieur, couché sur le dos et dans le noir, le
+Avant cette descente, pendant la montée dans la tour, couché sur le dos et dans le noir, le
 train chute en marche arrière sur quelques mètres à
 plus de 60 mètres de haut, avant que le lift ne le hisse jusqu’à la première descente. Le parc présente
-cela comme une première mondiale, mais deux ans après l’ouverture, il trouvait visiblement encore ça
-trop tranquille : en 2017, il a plus que doublé la vitesse de chute, d’environ 5 à environ 11 mètres
+cela comme une première mondiale. En 2017, il a plus que doublé la vitesse de chute, d’environ 5 à environ 11 mètres
 par seconde.
 
 ```glossary-widget slug=infinity-coaster
@@ -101,44 +95,41 @@ par seconde.
 
 La deuxième grande roule depuis **2009**, aujourd’hui dans la zone Peterhof von Novgorod.
 **[Flucht von Novgorod](ref:hansa-park/escape-of-novgorod)** est elle aussi de Gerstlauer, 40 mètres
-de haut, **100 km/h**, et elle réunit deux éléments qu’on trouve d’ordinaire séparés : un lancement
-LSM, qui te propulse dans le noir à 100 km/h en 1,4 seconde, et un lift à chaîne vertical sur la
-même installation. Le lift se trouve dans la deuxième partie, de nouveau dans le noir, et la
+de haut, **100 km/h**, et elle a un lancement LSM, qui te propulse dans le noir à 100 km/h en 1,4 seconde, ainsi qu’un
+lift à chaîne vertical. Le lift se trouve dans la deuxième partie, de nouveau dans le noir, et la
 descente qui suit atteint **97 degrés**, donc au-delà de la verticale. Jusqu’en
-2020 elle s’appelait Fluch von Novgorod, la malédiction de Novgorod ; en 2021, un t s’est ajouté et
-la malédiction est devenue une fuite.
+2020 elle s’appelait Fluch von Novgorod, la malédiction de Novgorod, et depuis 2021 Flucht von
+Novgorod, la fuite de Novgorod.
 
 Anton Schwarzkopf a construit **[Nessie](ref:hansa-park/nessie)** en **1980** : 26 mètres de haut, 741 mètres de long,
 80 km/h, un seul looping vertical, et à l’époque le plus grand looping d’Europe. Elle roule depuis
 46 ans et a reçu en 2019 une zone rethématisée.
 
-Suivent quatre plus petites, dont une seule n’est pas familiale. **[Crazy Mine](ref:hansa-park/crazy-mine)** de Maurer
+Des quatre plus petites, seule **[Crazy Mine](ref:hansa-park/crazy-mine)** n’est pas familiale. Elle est signée Maurer et
 roule depuis 1997 en souris folle dans un décor de mine, 15 mètres de haut et terminée au bout
 de 70 secondes. Le **[Royal Scotsman](ref:hansa-park/royal-scotsman)** est un junior coaster Vekoma
 de **1993** qui s’appelait Rasender Roland jusqu’en 2019 et passe au beau milieu du looping de
 Nessie. La **[Schlange von
 Midgard](ref:hansa-park/midgard-serpent)** se dresse depuis 2011 dans le Wikingerland, **[Der kleine Zar](ref:hansa-park/the-little-tsar)** depuis 2017 dans l’Alter Jahrmarkt,
-du haut de ses trois mètres. Les deux acceptent les enfants dès 90 centimètres.
+haut de trois mètres. Les deux acceptent les enfants dès 90 centimètres.
 
-La plus récente est arrivée cette saison. Le **[Cornwall
+Le **[Cornwall
 Coaster](ref:hansa-park/new-2026-cornwall-coaster)** a ouvert le **23 mai 2026** dans la zone
 Bezauberndes Britannien, de nouveau Gerstlauer, 18 mètres de haut, environ 570 mètres de long,
 50 km/h, à partir de 90 centimètres. Le parc compte
-**sept lancements** sur un tour, en avant et en arrière. Autant de redémarrages, d’ordinaire, on
-n’en fait que sur l’A7 un samedi de chassé-croisé. Pour une attraction familiale, c’est beaucoup, et
-ça se sent dans la durée du tour : une bonne minute et demie, une demi-minute de plus que [Crazy Mine](ref:hansa-park/crazy-mine?bare) ou le [Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
+**sept lancements** sur un tour, en avant et en arrière. Un tour dure une bonne minute et demie, une
+demi-minute de plus que [Crazy Mine](ref:hansa-park/crazy-mine?bare) ou le [Royal Scotsman](ref:hansa-park/royal-scotsman?bare).
 
-## La tour qui a pris le record à Soltau
+## Le Highlander
 
 Le **[Highlander](ref:hansa-park/highlander)** a ouvert en **avril 2019** comme la plus haute gyro
 drop tower du monde. **120 mètres** de construction,
 **103 mètres** de chute libre, 120 km/h, les sièges inclinés de 30 degrés vers l’avant, construite
 par Funtime. Le titre appartenait jusque-là à [Scream](ref:heide-park/scream?bare), au [Heide
-Park](/blog/heide-park-temps-d-attente-conseils), haut de 103 mètres. Ce sont exactement ces
-103 mètres que le [Highlander](ref:hansa-park/highlander?bare) te fait tomber, avec 17 de plus au-dessus.
+Park](/blog/heide-park-temps-d-attente-conseils), haut de 103 mètres. C’est exactement la hauteur de chute du [Highlander](ref:hansa-park/highlander?bare).
 
-Il n’a pas gardé le record sans interruption. Fin 2021 a ouvert en Floride l’Orlando FreeFall,
-131 mètres, lui aussi signé Funtime. Après un accident mortel en mars 2022, il a été fermé puis
+Fin 2021 a ouvert en Floride l’Orlando FreeFall,
+131 mètres, lui aussi signé Funtime, et donc plus haut. Après un accident mortel en mars 2022, il a été fermé puis
 démonté en 2023, et depuis, le Highlander est de nouveau le plus haut. Après l’accident, le
 Hansa-Park a ajouté des ceintures supplémentaires aux arceaux.
 
@@ -146,29 +137,23 @@ Hansa-Park a ajouté des ceintures supplémentaires aux arceaux.
 
 ```
 
-Pour les familles, le chiffre qui compte au Highlander, c’est sa taille minimale de 1,40 mètre,
-la barre la plus haute de tout le parc.
+Le Highlander a la taille minimale la plus haute du parc, 1,40 mètre.
 
 ## Un calendrier sans jour de fermeture
 
-La saison 2026 court du **26 mars au 25 octobre**. Nous avons interrogé le calendrier d’ouverture du
-parc jour après jour, la dernière fois le 25 septembre, et entre ces deux dates il n’y a **pas un
-seul jour de fermeture**. Cela fait 214 jours d’ouverture, dans le calendrier du parc comme dans notre flux de calendrier.
+La saison 2026 court du **26 mars au 25 octobre**. Entre ces deux dates, le calendrier du parc n’a **pas un
+seul jour de fermeture**, à la date du 25 septembre. Cela fait 214 jours d’ouverture.
 
 Europa-Park et Phantasialand font de même. Le Heide Park, lui, retire régulièrement le lundi du
 calendrier au printemps et en automne, le Movie Park ferme le plus souvent du lundi au mercredi hors
 haute saison, et même le Legoland Deutschland de Günzburg a quelques jours de fermeture en mai, juin
-et septembre 2026. Qui cherche à Sierksdorf un [jour de semaine calme](/meilleure-periode-pour-visiter) l’obtient donc vraiment comme jour
-d’ouverture et non comme portail fermé.
+et septembre 2026. Qui cherche à Sierksdorf un [jour de semaine calme](/meilleure-periode-pour-visiter) le trouve donc toujours ouvert.
 
-Les horaires sont presque aussi monotones, dans le bon sens du terme : pour planifier ici, pas
-besoin d’un calendrier bardé de notes de bas de page. Jusqu’au **9 octobre**, le parc ouvre chaque jour à
-**10 h** et les attractions ferment à **18 h**. Exactement trois jours sont sortis du lot, tous
-déjà passés : le Vendredi saint, le 3 avril, les attractions n’ont démarré qu’à 11 h. Le 11 août, le
+Jusqu’au **9 octobre**, le parc ouvre chaque jour à
+**10 h** et les attractions ferment à **18 h**. Le Vendredi saint, le 3 avril, les attractions n’ont démarré qu’à 11 h. Le 11 août, le
 site est resté ouvert jusqu’à 19 h, le 12 août jusqu’à 18 h 30, mais les attractions se sont quand
 même arrêtées à 18 h les deux soirs. Si tu viens encore en septembre, attends-toi en semaine à un
-programme de spectacles modifié, le temps que le parc prépare le Herbstzauber. Seuls les 16 derniers
-jours de la saison suivent un autre rythme, et c’est justement à cause de ce Herbstzauber.
+programme de spectacles modifié, le temps que le parc prépare le Herbstzauber.
 
 Pour 2027, le parc prévoit à ce jour une saison du **25 mars au 24 octobre**.
 
@@ -190,14 +175,12 @@ place quelque **2 000 figures lumineuses** et propose deux temps forts :
   termine par un feu d’artifice tiré des murs de l’arène.
 
 Sur la [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour), près de 1 000 figures
-lumineuses dansent sur de la musique classique une fois la nuit tombée. Du coup, la promenade en barque
-héritée du Legoland, plutôt une affaire de pause déjeuner en été, devient en octobre l’attraction où je
-ferais la queue en premier.
+lumineuses dansent sur de la musique classique une fois la nuit tombée. En octobre, c’est pour cette promenade en barque héritée du Legoland que je ferais la queue en
+premier.
 
-Trois horaires réorganisent une soirée pareille. La
+La
 [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) et le
-[Super Splash](ref:hansa-park/super-splash) ferment dès **16 h**, ce dont les chaussettes se
-réjouiront surtout un soir d’octobre. Le Super Splash, de toute façon, ne roulera plus
+[Super Splash](ref:hansa-park/super-splash) ferment dès **16 h**. Le Super Splash ne roulera plus
 après le 25 octobre. Le [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare), [Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare)
 et [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) et [Awildas Ausguck](ref:hansa-park/awildas-lookout?bare) font leur **dernier tour à 19 h 30**, parce que le feu d’artifice se
 prépare. Et pendant la parade, onze autres attractions s’arrêtent, dont le [Highlander](ref:hansa-park/highlander?bare), [Nessie](ref:hansa-park/nessie?bare) et le
@@ -209,15 +192,14 @@ plus tôt. Le reste du parc continue jusqu’à
 
 Le [guide Halloween 2026](/blog/halloween-parcs-attractions-2026) couvre dix parcs. Huit d’entre eux
 proposent des labyrinthes ou des scare zones pendant ces semaines d’octobre, deux font l’impasse
-sur Halloween. Hansa-Park fait une troisième chose : les mêmes soirées, un programme complet,
-simplement sans frayeur. Avec des enfants de moins de dix ans, tu es donc mieux ici qu’à une soirée
+sur Halloween. Hansa-Park propose les mêmes soirées un programme complet. Avec des enfants de moins de dix ans, tu es donc mieux ici qu’à une soirée
 labyrinthes. Le spectacle du soir est tout de même bruyant, et le
 parc prévient lui-même qu’il peut effrayer les plus petits.
 
 ## Tailles minimales et âges
 
-Dans la plupart des parcs, chaque entrée d’attraction affiche un nombre de centimètres. Ici, il y a
-souvent un âge en plus, et c’est lui qui décide si ton enfant peut monter seul ou uniquement avec un
+Au Hansa-Park, l’entrée de nombreuses attractions affiche un âge en plus de la taille minimale, et
+c’est l’âge qui décide si ton enfant peut monter seul ou uniquement avec un
 adulte à côté.
 
 Seules les trois grandes imposent une taille ferme : le [Highlander](ref:hansa-park/highlander?bare) 1,40 mètre, le [Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) 1,30, la [Flucht von Novgorod](ref:hansa-park/escape-of-novgorod?bare) 1,25. Sur les autres coasters, il en faut moins, à condition qu’un adulte soit assis à côté. [Crazy Mine](ref:hansa-park/crazy-mine?bare)
@@ -226,10 +208,8 @@ accepte les enfants dès 1,10 mètre, mais sans adulte **à partir de 9 ans** se
 prend les enfants dès 90 centimètres sur un siège enfant à côté d’un adulte ; pour monter seul, il faut 1,20 mètre.
 
 Un enfant de sept ans mesurant 1,25 mètre accède donc à sept des huit coasters, mais à quatre
-d’entre eux seulement avec un adulte à côté. Un adulte seul avec deux enfants fait Nessie deux
-fois. En dessous du niveau des coasters, il y a de quoi faire : notre catalogue compte
-**82 attractions** (au 25 septembre 2026), le parc en annonce lui-même plus de 125 et compte
-visiblement plus large.
+d’entre eux seulement avec un adulte à côté. Notre page du parc liste **82 attractions** (au 25 septembre 2026), le parc en annonce lui-même
+plus de 125.
 
 ## Du Legoland au Hansa-Park
 
@@ -243,18 +223,16 @@ banque a continué d’administrer le site en fiducie.
 
 Rudolf Erich Leicht l’a racheté à l’automne 1976 avec deux investisseurs. _Der Spiegel_ chiffrait
 leur participation à environ 10 millions de marks en 1977. Avec Horst Hamelberg comme premier
-directeur, Leicht a conçu un projet autour du thème de la Hanse maritime, et il s’accompagnait d’un
-changement qui paraît évident aujourd’hui : au Legoland, chaque attraction se payait séparément ; au
-Hansaland, un billet tout compris a été introduit progressivement. Qui grimace aujourd’hui à la
-caisse peut s’imaginer un instant ressortir son porte-monnaie avant chaque tour de manège.
+directeur, Leicht a conçu un projet autour du thème de la Hanse maritime. Au Legoland, chaque attraction se
+payait séparément, et au Hansaland un billet tout compris a été introduit progressivement.
 
 Beaucoup d’attractions du Legoland sont simplement restées en place avec une nouvelle apparence. La
 [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour), celle qui devient un canal de lumières
 en octobre, en fait partie. Le Hansaland a ouvert le **15 mai 1977**, et le 21 juillet de la même
 année, la première rivière à bûches authentiquement américaine d’Allemagne s’y est ajoutée. Elle navigue encore.
 
-Les vingt premières années ont surtout été des années de spectacle. En **1978** a ouvert ici le
-delphinarium à coupole le plus grand et le plus moderne d’Europe, avec 1 400 places ; depuis
+En **1978** a ouvert ici le
+delphinarium à coupole le plus grand et le plus moderne d’Europe, avec 1 400 places. Depuis
 **1994**, le parc renonce aux spectacles de dauphins. Le théâtre a ouvert en 1984 avec « Wetten Spaß »
 de Frank Elstner : les candidats qui avaient perdu leur pari à « Wetten, dass..? » avaient droit
 à une seconde chance à Sierksdorf. Wim
@@ -266,30 +244,25 @@ tournante. Celle-ci a disparu en **janvier 2025**, démontée à cause de probl�
 irréparables. Le Metroliner de 1989 a connu un sort comparable : un train électrique sur un huit
 replié sur lui-même, exploité plus tard sous le nom d’El Paso Express, fermé après la saison 2015.
 
-Le plus grand chantier du parc n’est pas une attraction. **Hanse in Europa** remplace depuis 2008 les
+Le plus grand chantier du parc est **Hanse in Europa**, qui remplace depuis 2008 les
 anciennes Landungsbrücken et se construit façade par façade, en huit phases documentées : en 2008 la
 Holstentor comme entrée, en 2010 Bruges, Visby, Lübeck, Hambourg et Rostock, en 2011 Groningue et
 Paris, en 2012 Londres, Ribe et Bergen, en 2013 six autres de Copenhague à Nuremberg, en 2018 Gdańsk
 et Cracovie, et en 2021 la plus grande phase à ce jour avec 14 façades de Cracovie, Stockholm,
-Stralsund, Helsinki, Riga et Venise. Vingt ans étaient prévus, un calendrier qu’on connaît d’ordinaire des chantiers d’autoroute. La
+Stralsund, Helsinki, Riga et Venise. Vingt ans étaient prévus. La
 dernière phase, le Palacio de
 Braga, n’est pas terminée.
 
-Les années depuis 2021 se lisent en conséquence à petite échelle : Awildas Welt, le Peterhof von
-Novgorod à la place de l’ancien camp de bûcherons, New Lübeck à la place de la ville western Bonanza
-City, le Carrousel Baltique, les Lost Trails of Roanoke, Einars Fjordfahrt. Aucune de ces nouveautés
-n’est un coaster. Celui-là est arrivé en 2026.
+Depuis 2021 sont arrivés Awildas Welt, le Peterhof von Novgorod à la place de l’ancien camp de
+bûcherons, New Lübeck à la place de la ville western Bonanza City, le Carrousel Baltique, les Lost
+Trails of Roanoke et Einars Fjordfahrt.
 
 ## Dormir sur place
 
 Le **HANSA-PARK Resort am Meer** se trouve en bordure de Sierksdorf, la ligne de chemin de fer
 passant entre le village de vacances et le parc. La réservation se fait par Landal ou Ostseezeit, le
-séjour minimum est de **trois nuits**, deux nuits uniquement sur demande. Comparé aux hôtels de parc
-de Rust ou de Brühl, c’est une autre construction : maison de vacances plutôt qu’hôtel thématisé, et
-le calcul passe davantage par les vacances à la Baltique que par la journée au parc.
-
-Pour une seule journée au parc, trois nuits se justifient rarement. Pour une semaine en juillet où le
-parc occupe deux des sept jours, si.
+séjour minimum est de **trois nuits**, deux nuits uniquement sur demande. On y loge dans une maison de vacances, alors que les hôtels de parc de Rust et de Brühl sont des hôtels thématisés. Trois nuits conviennent mieux à une semaine à la
+Baltique avec deux journées au parc qu’à une seule journée au parc.
 
 ## Pratique : accès, billets, stationnement
 
@@ -299,8 +272,8 @@ de la plage, elle aussi fléchée, et tu évites l’escalier.
 
 **Stationnement.** **7 €** par jour pour une voiture sur le grand parking, hauteur maximale
 2,30 mètres. Les motos stationnent gratuitement, les camping-cars paient 15 € par tranche de douze
-heures entamée. Les voitures électriques ont leur propre parking avec dix bornes de recharge :
-l’électricité y est gratuite, mais la journée coûte **16 €**, plus du double du grand parking, et le
+heures entamée. Les voitures électriques ont leur propre parking avec dix bornes de recharge.
+L’électricité y est gratuite, mais la journée coûte **16 €**, plus du double du grand parking, et le
 parc demande de déplacer la voiture une fois chargée. La zone de dépose est gratuite pendant
 30 minutes.
 
@@ -309,7 +282,7 @@ parc demande de déplacer la voiture une fois chargée. La zone de dépose est g
 entre gratuitement, mais uniquement à la caisse. Le billet deux jours coûte 85 € ou 65 € et est
 personnalisé par reconnaissance faciale.
 
-Le tarif en ligne est identique au tarif à la caisse. À Soltau, la caisse coûte jusqu’à 27 € de plus qu’en ligne ; ici, réserver à l’avance ne te fait économiser aucun centime, seulement la file à la
+Le tarif en ligne est identique au tarif à la caisse. À Soltau, la caisse coûte jusqu’à 27 € de plus qu’en ligne ; ici, réserver à l’avance ne te fait économiser que la file à la
 caisse.
 
 **Carte de saison.** Celle de 2026 coûtait 135 € une fois la saison commencée. Celle de 2027 coûte
@@ -329,9 +302,7 @@ Travemünde, sur la baie de Lübeck. Le chantier doit démarrer pendant l’hive
 est prévue au cours de la saison 2027. Le parc retrouve ainsi une tour d’observation un peu plus de
 deux ans après le démontage de la Holsteinturm.
 
-Après le [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare), c’est la deuxième grande
-nouveauté en deux ans ; entre le Highlander et le Cornwall Coaster, il y a eu sept ans de nouveautés
-plus modestes. Dans le même temps, le
+Le
 [Super Splash](ref:hansa-park/super-splash?bare) de 1986 sera démonté pendant l’hiver 2026/27, parce
 que le parc réaménage son secteur. Ce qui le remplacera n’a pas encore été annoncé.
 
@@ -374,29 +345,25 @@ feu d’artifice vers 20 h 30. Cela n’a rien à voir avec Halloween.
 ### Le Hansa-Park vaut-il le détour pour les amateurs de coasters ?
 
 Pour le Kärnan et la Flucht von Novgorod, sans hésiter, et pour le Highlander. Si tu viens du sud de
-l’Allemagne, planifie plutôt des vacances à la Baltique avec une journée au parc qu’un voyage au parc
-avec passage à la plage.
+l’Allemagne, intègre la journée au parc à des vacances à la Baltique.
 
 ## Pour aller plus loin
 
-La météo décide plus au bord de la Baltique qu’ailleurs, et en octobre elle décide aussi si la parade
-lumineuse et le spectacle du soir ont lieu. Par pluie ou vent fort, les deux sont annulés, et le parc
+Par pluie ou vent fort, la parade lumineuse et le spectacle du soir sont annulés, et le parc
 peut alors aussi modifier ses horaires :
 
 ```weather-widget slug=hansa-park
 
 ```
 
-Et si tu planifies le nord en ce moment : le [Heide Park](/blog/heide-park-temps-d-attente-conseils)
+Le [Heide Park](/blog/heide-park-temps-d-attente-conseils)
 se trouve à 131 kilomètres à vol d’oiseau au sud-ouest et entre dans la même semaine. Comment les deux se placent face aux autres parcs du pays, c’est
 dans mon [classement des parcs d’attractions allemands](/blog/meilleurs-parcs-d-attractions-en-allemagne).
 
 ## L’emplacement
 
-Une tour de 79 mètres avec le Kärnan dedans et une promenade en barque héritée du Legoland, pleine de
-figures lumineuses, se partagent ici les mêmes 46 hectares. Mais Hambourg est à 78 kilomètres à vol d’oiseau, tout ce qui se trouve
-plus au sud nettement plus loin, et qui vient uniquement pour les huit coasters a fini en début
-d’après-midi. Le parc part du principe que tu es de toute façon sur la Baltique.
+Hambourg est à 78 kilomètres à vol d’oiseau.
+Qui vient uniquement pour les huit coasters a fini en début d’après-midi.
 
 — Patrick
 

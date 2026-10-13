@@ -1,17 +1,12 @@
 ---
-title: 'Disneyland Paris: twee parken, en uitgerekend het kleine heeft de lange rijen'
+title: 'Disneyland Paris: in het kleinere van de twee parken zijn de rijen langer'
 translationKey: disneyland-paris-guide
 date: '2026-09-11'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Disney telt in het Disneyland Park 36 attracties en in Disney Adventure
-  World veertien, en toch sta je in het kleine park langer in de rij. In geen
-  enkele maand en op geen enkele weekdag die we gemeten hebben was het
-  andersom. Verder: waarom de langste rij van het grote park staat voor drie
-  minuten dark ride uit 1992, wat het tweede park sinds 29 maart 2026 anders
-  doet en welke achtbaan sinds 7 september tien maanden pauze heeft.
+  Disney telt in het Disneyland Park 36 attracties en in Disney Adventure World veertien, en in elke gemeten maand en op elke weekdag sta je in het kleinere park langer in de rij. De langste rij in het grote park staat bij Peter Pan's Flight, een dark ride uit 1992. Crush's Coaster is van 7 september 2026 tot de zomer van 2027 dicht.
 tags:
   - disneyland-paris
   - wachttijden
@@ -32,10 +27,9 @@ coverImage:
   caption: 'Le Château de la Belle au Bois Dormant. Onder de rotssokkel slaapt een draak die bij de opening in 1992 de grootste animatronic ooit was.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Disneyland Paris 2026: waar de rijen echt lang zijn'
+  title: 'Disneyland Paris 2026: wachttijden in beide parken'
   description: >-
-    Wachttijdcijfers uit beide Parijse parken: waarom het kleine park de langere
-    rijen heeft, wanneer het rustiger is en met welk park je begint.
+    Waarom in Disneyland Paris het kleinere park de langere rijen heeft, wanneer het rustiger is en met welk park je begint.
   keywords:
     - Disneyland Paris
     - Disneyland Paris wachttijden
@@ -63,19 +57,16 @@ middag snel het tweede park erbij, want daar staat toch niemand.
 Dat is de verkeerde volgorde. Onze metingen beginnen op 26 december 2025 en
 lopen sinds eind maart 2026 bijna zonder gaten. In elke maand waarvoor we
 cijfers hebben lag het drukteniveau in **Disney Adventure World** hoger dan in
-het grote park, en op elk van de zeven weekdagen. Andersom kwam nooit voor. Het
-kleinere park verdeelt zijn bezoekers over minder dan half zoveel attracties, en
-dat merk je bij elke afzetting.
+het grote park, en op elk van de zeven weekdagen. Het kleinere park verdeelt zijn bezoekers over minder dan half zoveel attracties.
 
-## Eén resort, twee parken, één station
+## Het resort en zijn twee parken
 
 Disneyland Paris ging open op **12 april 1992**, destijds nog als Euro Disney
 Resort, zo'n 32 kilometer ten oosten van Parijs in de nieuwe stad
 Marne-la-Vallée. Het terrein beslaat ongeveer **2.100 hectare**, ongeveer de
 helft daarvan is bebouwd. Het Disneyland Park is volgens de brancheorganisatie
 TEA het best bezochte pretpark van Europa, en met meer dan 20.000 medewerkers is
-het resort de grootste werkgever van Frankrijk op één locatie. (Iemand moet die
-churros tenslotte bakken.)
+het resort de grootste werkgever van Frankrijk op één locatie.
 
 Op dat terrein staan twee parken. Het [Disneyland
 Park](ref:/parks/europe/france/paris/disneyland-park) is dat uit 1992: zo'n 50
@@ -96,7 +87,7 @@ om mee te vergelijken:
 
 ```
 
-## Disneyland Park: vijf landen en een draak in de kelder
+## Disneyland Park: het kasteel en de attracties
 
 Het **Château de la Belle au Bois Dormant** is het enige Disneykasteel in
 Europa, en daar staan juist de voorbeelden van de kastelen in Anaheim, Orlando
@@ -133,7 +124,7 @@ animatronics, plus de Engelse vertellersstem van Vincent Price, waarvan in
 Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain)**
 draagt die naam pas sinds 7 mei 2017. Geopend werd de baan op 1 juni 1995 als
 _Space Mountain: De la Terre à la Lune_, naar Jules Verne, met een kanon als
-lanceersysteem. Dat kanon is er nog steeds: de trein wordt in 1,8 seconden van 0
+lanceersysteem. Het kanon schiet de trein nog steeds in 1,8 seconden van 0
 naar 71 km/u de berg op geschoten. Drie inversies, een kilometer traject, tot 5
 g. Van alle Space Mountains wereldwijd is dit de enige met launch en de enige
 met inversies. Michael Eisner, toen de baas van Disney, noemde haar de redder
@@ -142,40 +133,30 @@ winst. Eind 2027 gaat de baan een paar maanden dicht
 en komt ze terug als _Space Mountain – De la Terre à la Lune_, weer met Jules
 Verne en de originele muziek van Steve Bramson.
 
-Toch staat deze baan niet bovenaan onze ranglijst.
-
 ```ride-waits-widget park=/parks/europe/france/paris/disneyland-park top=10 columns=land,peak,days
 
 ```
 
 De langste rij van het park hoort bij **Peter Pan's Flight**, een dark
-ride uit 1992 die na drie minuten voorbij is. Populariteit verklaart
-daar maar de helft van. De andere helft is doorstroming: Hyperspace
-Mountain rijdt met vier treinen en verwerkt bijna 2.000 mensen per uur, en
-werkt zijn rij dus de hele dag door af. Kleine vliegende piratenschepen
-waar net één gezin in past, redden dat niet. Wie de ochtend aan de achtbanen besteedt, staat 's middags
-voor drie minuten dark ride in de langste rij van het park.
+ride uit 1992 die na drie minuten voorbij is. Dat komt naast de populariteit door de doorstroming. Hyperspace Mountain rijdt met vier treinen en verwerkt bijna 2.000 mensen per uur, en
+werkt zijn rij dus de hele dag door af. In elk van de kleine vliegende piratenschepen van Peter Pan past net één gezin.
 
-Drie andere attracties kosten die ochtend ook tijd.
+Ook Pirates of the Caribbean, Indiana Jones en **[“it's a small world”](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)** kosten 's ochtends tijd.
 **[Pirates of the Caribbean](ref:/parks/europe/france/paris/disneyland-park/pirates-of-the-caribbean)**
 in Adventureland draait sinds de allereerste dag en duurt ruim tien minuten, langer dan elke andere dark ride in het park.
 **[Indiana Jones and the Temple of Peril](ref:/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril)**
 opende op 30 juli 1993 als de eerste achtbaan in een Disneypark met een
 inversie, gebouwd door Intamin, 600 meter traject, 58 km/u. Van april 2000
 tot november 2004 reed de baan achterstevoren. De minimale lengte van 140
-centimeter is de hoogste van alle Disneyattracties wereldwijd. En
-**[“it's a small world”](ref:/parks/europe/france/paris/disneyland-park/its-a-small-world)**
-is precies wat je vreest.
+centimeter is de hoogste van alle Disneyattracties wereldwijd.
 
 ```map-widget slug=/parks/europe/france/paris/disneyland-park
 
 ```
 
-## Disney Adventure World: de nieuwe naam en de ontbrekende achtbaan
+## Disney Adventure World: verbouwing en Crush's Coaster
 
-Het tweede park was lang het minder leuke deel van het bezoek. Geopend in 2002
-als filmstudiodecor, jarenlang te klein voor het aantal bezoekers, en wie het
-park voor 2022 heeft gezien, herinnert zich waarschijnlijk vooral asfalt. In
+Het tweede park ging in 2002 open als filmstudiodecor en was jarenlang te klein voor het aantal bezoekers. Voor 2022 had het park veel asfalt. In
 februari 2018 kondigde Disney een verbouwing van **twee miljard euro** aan, en
 drie onderdelen daarvan staan er inmiddels: **Marvel Avengers Campus** sinds
 juli 2022, **World of Frozen** sinds 29 maart 2026 met een 36 meter hoge berg en
@@ -204,41 +185,29 @@ september 2026** rijdt de baan niet meer. Het park heeft haar uit bedrijf
 genomen voor de grootste renovatie sinds de opening: besturing, sensoren,
 communicatietechniek en delen van de rails worden vervangen, daarnaast wordt er
 gereinigd, geschilderd en gerepareerd. De geplande terugkeer is **zomer 2027**.
-Zo'n tien maanden lang moet de Oost-Australische Stroom het dus zonder
-passagiers stellen.
 
-In onze data was dat al zonder persbericht te zien, want de laatste live
-melding van deze attractie dateert van **6 september, 20:21 UTC**. Sindsdien komt er niets
-meer van, terwijl de andere attracties van het park gewoon hun status blijven
-doorgeven. Op de parkpagina staat ze nu als gesloten, en tot de heropening telt
+De laatste live melding van deze attractie dateert van **6 september, 20:21 UTC**. De andere attracties van het park geven hun status sindsdien gewoon door. Op de parkpagina staat ze nu als gesloten, en tot de heropening telt
 ze niet meer mee als attractie van de dag.
 
 ```ride-waits-widget park=disney-adventure-world top=10 columns=land,peak,days
 
 ```
 
-Voor een dag daar valt zo de attractie weg die tot nu toe een halve ochtend
-opslokte, en haar bezoekers verspreiden zich over een park dat toch al weinig
-capaciteit heeft. In de tabel hierboven staat Crush's Coaster nog met haar
+Tot de heropening rijdt het park met dertien attracties in plaats van veertien. In de tabel hierboven staat Crush's Coaster nog met haar
 cijfers uit de maanden voor de sluiting. Tot de zomer van 2027 is
 Frozen Ever After de rij waar je je dag daar omheen plant.
 
-## Hoe druk het echt is
+## Hoe druk de twee parken zijn
 
-Beide parken leveren ons sinds 26 december 2025 wachttijden, maar pas sinds eind
-maart 2026 bijna zonder gaten. Uit de winter daartussen hebben we alleen losse
+We meten de wachttijden in beide parken sinds 26 december 2025, maar pas sinds eind maart 2026 bijna zonder gaten. Uit de winter daartussen hebben we alleen losse
 dagen in december en januari, en voor februari, oktober en november nog helemaal
-niets. Op 25 september 2026 staan er per park 190 gemeten bedrijfsdagen, en
-hoeveel daarvan achter elke rij zitten, staat in de tabellen zelf.
+niets. Op 25 september 2026 staan er per park 190 gemeten bedrijfsdagen. Hoeveel daarvan achter elke rij zitten, staat in de tabellen zelf.
 
 ```stats-widget slug=disney-adventure-world show=attractions
 
 ```
 
-Het verschil tussen de twee parken zie je in elke gemeten maand. Alleen in
-december, waarvoor we alleen de laatste dagen van 2025 hebben, lagen de typische
-wachttijden gelijk, en zelfs toen lag het drukteniveau in Adventure World hoger.
-Dat verschil komt uit de bezoekersaantallen: over 2024 telde de TEA 10,2 miljoen bezoeken aan het Disneyland Park en 5,5 miljoen aan
+In december, waarvoor we alleen de laatste dagen van 2025 hebben, lagen de typische wachttijden gelijk, maar ook toen lag het drukteniveau in Adventure World hoger. Over 2024 telde de TEA 10,2 miljoen bezoeken aan het Disneyland Park en 5,5 miljoen aan
 het tweede park. Elke bezoeker telt daarbij alleen mee in het park waar hij als
 eerste binnenkomt; wie 's middags overstapt, zit in het tweede getal dus
 helemaal niet. Meer dan een derde van alle bezoeken komt zo terecht in een park
@@ -250,20 +219,18 @@ Zo verdeelt een dag in het Disneyland Park zich over de uren:
 
 ```
 
-## Wanneer je moet gaan als het park nooit dichtgaat
+## Wanneer je moet gaan
 
 ```stats-widget slug=/parks/europe/france/paris/disneyland-park show=months,weekdays
 
 ```
 
-Disneyland Paris is het hele jaar open, elke dag, en kent daardoor niet de
-klassieke laagseizoenvraag die bij seizoensparken over alles beslist. Wat de
-drukte wel bepaalt, zijn de Franse schoolvakanties, die anders liggen dan de
+Disneyland Paris is het hele jaar open, elke dag. De drukte hangt af van de Franse schoolvakanties, die anders liggen dan de
 Duitse en in winter en voorjaar over drie zones zijn gespreid, plus de Britse
 half-termweken. Hoe de seizoensparken zich maand voor maand verhouden, staat op de
 [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 
-Daar komen de seizoenen bij. Van 26 september tot 1 november loopt in het
+Van 26 september tot 1 november loopt in het
 Disneyland Park het Disney Halloween Festival; wat er te zien is, staat in ons
 [Halloweenbericht](/blog/disneyland-paris-halloween-2026). Van 7 november 2026
 tot 6 januari 2027 volgt Disney Enchanted Christmas, voor het eerst ook in
@@ -271,9 +238,7 @@ Disney Adventure World: World of Frozen krijgt kerstversiering in Scandinavische
 stijl en eigen optredens van Anna, Elsa en Olaf. Op oudejaarsavond viert elk van
 de twee parken met een eigen programma.
 
-De weekdagcurve hierboven is vlak, omdat een park dat 365 dagen per jaar open is
-en in een half dozijn landen wordt geadverteerd, geen dode dinsdag heeft om naar
-uit te wijken.
+De weekdagcurve hierboven is vlak, omdat het park 365 dagen per jaar open is en in een half dozijn landen wordt geadverteerd.
 Welke van de komende weken toch het rustigst zijn, is gemarkeerd in de kalender
 hieronder, doorlopend opnieuw berekend:
 
@@ -281,15 +246,14 @@ hieronder, doorlopend opnieuw berekend:
 
 ```
 
-## Premier Access, en wat een rij daar kost
+## Premier Access
 
 De fastlane heet in Parijs **Disney Premier Access** en bestaat in twee
 varianten. **Premier Access One** geldt voor één rit op één attractie; je koopt
 hem pas in het park in de app en krijgt het eerstvolgende vrije tijdslot.
 **Premier Access Ultimate** geldt eenmaal voor elke deelnemende attractie,
 zonder tijdslot, en kun je vooraf boeken. Een vaste prijs heeft geen van beide:
-Disney vraagt afhankelijk van attractie, datum en vraag verschillende bedragen,
-zoals je dat kent van vliegtickets in de zomervakantie. Op de ochtend van 25
+Disney vraagt afhankelijk van attractie, datum en vraag verschillende bedragen. Op de ochtend van 25
 september 2026, een vrijdag buiten de Franse schoolvakanties, kostte One volgens
 onze live data tussen 5 euro (bijvoorbeeld Pirates of the Caribbean of Phantom
 Manor) en 16 euro (Frozen Ever After). Voor Ultimate noteerde de Britse site
@@ -300,31 +264,22 @@ dag.
 
 ```
 
-Voordat je dat koopt, loont een blik op de ranglijst hierboven. De prijs volgt
-de vraag, en die valt niet samen met de rij: dezelfde ochtend kostte Hyperspace
-Mountain 12 euro en Peter Pan 13, terwijl de rij bij Peter Pan doorgaans
-duidelijk langer is. Wie betaalt voor Hyperspace Mountain en daarna achteraan
-aansluit bij Peter Pan, heeft het geld in de verkeerde rij uitgegeven.
+Dezelfde ochtend kostte Hyperspace Mountain 12 euro en Peter Pan 13, terwijl de rij bij Peter Pan doorgaans duidelijk langer is. Bij Peter Pan scheelt Premier Access je dus meer tijd dan bij Hyperspace Mountain.
 
 ## Hoe ik de dag zou plannen
 
-Heb je maar één dag en kies je voor één park, neem dan het Disneyland Park: meer
-attracties, kortere rijen, en het kasteel is de reden waarom de meeste bezoekers
-hier sowieso komen. Reken er wel op dat het bij de officiële opening al druk is.
+Heb je maar één dag en kies je voor één park, neem dan het Disneyland Park: meer attracties en kortere rijen. Reken er wel op dat het bij de officiële opening al druk is.
 Gasten van de Disney-hotels en Les Villages Nature en houders van de Disneyland
 Pass Gold komen via Extra Magic Time eerder de parken in, meestal een uur.
 Daarom heeft Peter Pan bij de officiële start al een lange rij, en volgens onze
 uurtabel wordt die pas in het laatste uur voor sluitingstijd duidelijk korter.
 Big Thunder Mountain, Hyperspace Mountain en Indiana Jones zijn daarentegen vlak
 na de opening veel korter dan rond het middaguur. Begin dus daar en bewaar Peter
-Pan voor de avond. Het middaguur is voor geen van alle een goed moment: alle
-acht attracties in de uurtabel hebben hun langste rij tussen 12 en 14 uur.
+Pan voor de avond. Alle acht attracties in de uurtabel hebben hun langste rij tussen 12 en 14 uur.
 
 En boek je beide parken, draai dan de gebruikelijke volgorde om en begin in
 Adventure World, waar volgens onze rope-drop-analyse een vroege start bij
-Ratatouille en de Tower of Terror de meeste tijd scheelt. Frozen Ever After hoort
-daar niet bij: die attractie is 's avonds het kortst, en er is een
-single-riderrij.
+Ratatouille en de Tower of Terror de meeste tijd scheelt. Frozen Ever After is 's avonds het kortst en heeft een single-riderrij.
 
 ## Praktisch: route, tickets, openingstijden
 
@@ -352,9 +307,7 @@ voor beide (stand september 2026). De prijzen voor jouw datum staan op
 [disneylandparis.com](https://www.disneylandparis.com/).
 
 **Eten.** Beide parken hebben tafelrestaurants met reservering en volop
-snelle horeca ertussenin. Onze database telt (stand 25 september 2026) 35 horecagelegenheden in het Disneyland Park en 19 in Adventure World. Rond het middaguur verhuist de rij
-van de attracties naar de balies, en is de patatkraam even de populairste
-attractie van het park.
+snelle horeca ertussenin. Op 25 september 2026 waren er 35 restaurants en snackbars in het Disneyland Park en 19 in Adventure World.
 
 ## Veelgestelde vragen over Disneyland Paris
 
@@ -367,8 +320,7 @@ het beste in Adventure World en wisselt rond het middaguur, niet andersom.
 ### In welk van de twee parken sta je langer in de rij?
 
 In Disney Adventure World, en in onze data (190 gemeten dagen, stand 25
-september 2026) geldt dat voor elke gemeten maand en elke weekdag. De reden is
-capaciteit: het kleinere park krijgt meer dan half zoveel bezoeken als het
+september 2026) geldt dat voor elke gemeten maand en elke weekdag. Het kleinere park krijgt meer dan half zoveel bezoeken als het
 grote, maar heeft minder dan half zoveel attracties. De actuele cijfers voor
 beide parken staan in de vergelijkingstabel hierboven.
 
@@ -377,8 +329,7 @@ beide parken staan in de vergelijkingstabel hierboven.
 De nieuwe naam geldt sinds 29 maart 2026 en was al sinds 12 april 2024
 aangekondigd. Hij ging in samen met het gebied World of Frozen en maakt een
 einde aan het studiothema, dat sinds 2002 steeds minder paste bij wat er
-daadwerkelijk staat. Een Frozen-berg van 36 meter met een eigen fjord
-verkoop je niemand meer als filmdecor.
+daadwerkelijk staat.
 
 ### Rijdt Crush's Coaster op dit moment?
 
@@ -408,16 +359,9 @@ de buitenattracties:
 
 ```
 
-Wie de vergelijking zoekt met andere grote parken: over
-[Walibi Belgium](/blog/walibi-belgium-wachttijden-tips) en over het
-[Efteling](/blog/efteling-disney-van-nederland) hebben we al elk een eigen artikel. En als jouw reis tussen nu en de zomer van 2027 valt: Adventure
-World rijdt in deze maanden dertien attracties in plaats van veertien. Wie
-toch al twijfelde of het twee-parkenticket de meerprijs waard is, heeft
-daar nu een argument minder voor.
+Over [Walibi Belgium](/blog/walibi-belgium-wachttijden-tips) en de [Efteling](/blog/efteling-disney-van-nederland), twee andere grote parken, hebben we elk een eigen artikel.
 
-Van 7 november tot 6 januari draait in beide parken het kerstseizoen, en de week
-tussen Kerst en Nieuwjaar gedraagt zich hier anders dan in Orlando: in de Adventure World
-zelfs de rustigste van het gemeten jaar. Data, oudejaarsprogramma en de vergelijking staan in ons artikel [Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
+Van 7 november tot 6 januari draait in beide parken het kerstseizoen. Anders dan in Orlando was de week tussen Kerst en Nieuwjaar in Adventure World de rustigste van het gemeten jaar. Data, oudejaarsprogramma en de vergelijking staan in ons artikel [Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
 
 — Patrick
 

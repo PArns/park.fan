@@ -48,10 +48,9 @@ seo:
     - Plopsaland Deutschland Halloween
 ---
 
-Quien busque el Holiday Park en Haßloch lo sigue encontrando. La calle se llama todavía
+En Haßloch, la calle de acceso se llama todavía
 Holiday-Park-Straße, y el número no ha cambiado. También la montaña rusa por la que vienen casi
-todos está en el mismo sitio desde 2001. Solo el parque se llama distinto desde el 28 de junio de
-2025: [Plopsaland Deutschland](ref:plopsaland-deutschland). El nombre viene del operador belga,
+todos está en el mismo sitio desde 2001. El parque en sí se llama [Plopsaland Deutschland](ref:plopsaland-deutschland) desde el 28 de junio de 2025. El nombre viene del operador belga,
 dueño del parque desde noviembre de 2010.
 
 Quien en 2026 busque entrada escribiendo «Holiday Park» encuentra también páginas de años
@@ -68,11 +67,10 @@ Renania-Palatinado. Medimos aquí los tiempos de espera desde hace dos años, ah
 
 ```
 
-## Expedition GeForce, y por qué aguanta 25 años
+## Expedition GeForce
 
 [bigFM Expedition GeForce](ref:plopsaland-deutschland/bigfm-expedition-geforce) es una máquina
-de Intamin de 2001, y es el motivo por el que hay quien conduce desde Hamburgo hasta el
-Palatinado. El parque da 55 metros de altura, 120 km/h, 1.220 metros de recorrido, 1:15 minutos
+de Intamin de 2001. El parque da 55 metros de altura, 120 km/h, 1.220 metros de recorrido, 1:15 minutos
 de trayecto y hasta 4,5 g. La Wikipedia alemana indica 53 metros. Esa es la altura de la vía,
 mientras que el parque mide desde el punto más alto del lift. Donde ambos divergen, usamos
 el del parque.
@@ -86,16 +84,13 @@ segunda más alta. Hace mucho que no es ninguna de las dos. Pero ha recibido var
 profesional _Amusement Today_ como mejor montaña rusa de Europa, y la _Internet Coaster Poll_ la
 ha elegido más de una vez la mejor del mundo. El parque cuenta ya 40 galardones.
 
-La razón está detrás de la primera caída. La máquina no tiene inversión, ni lanzamiento, ni
-cambio de vía. Tiene tres colinas en cuya cresta uno se levanta del asiento, y una hélice al final
-en la que, al contrario, uno queda pegado a él. Si lo que se busca es
-airtime, aquí está.
+La máquina no tiene inversión, ni lanzamiento, ni cambio de vía. Tras la primera caída tiene tres colinas en cuya cresta uno se levanta del asiento, y una hélice al final
+en la que, al contrario, uno queda pegado a él.
 
-![Vista desde arriba de una montaña rusa de acero roja cuyo recorrido atraviesa un terreno arbolado en colinas largas y una curva amplia. | Expedition GeForce vista desde la Free Fall Tower. Las tres colinas tras la primera caída son lo que le dio su fama. Foto: Hetamin1000, Wikimedia Commons (Public Domain) | right](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
+![Vista desde arriba de una montaña rusa de acero roja cuyo recorrido atraviesa un terreno arbolado en colinas largas y una curva amplia. | Expedition GeForce vista desde la Free Fall Tower. En la foto, las tres colinas tras la primera caída. Foto: Hetamin1000, Wikimedia Commons (Public Domain) | right](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
 
 Se puede subir a partir de 140 centímetros, y por debajo ni siquiera acompañado. Solo funciona a
-partir de 8 grados centígrados, lo que en marzo y noviembre puede marcar la diferencia entre una
-vuelta y un paseo. El Express Pass también vale aquí.
+partir de 8 grados centígrados, así que los días fríos de marzo y noviembre se queda parada. El Express Pass también vale aquí.
 
 ## Las otras tres montañas rusas
 
@@ -108,28 +103,26 @@ temperatura de la vía.
 
 **100% Wolf – La montaña rusa familiar** es la novedad de 2026, inaugurada el 22 de marzo. La
 construyó Gerstlauer: 17,5 metros de alto, 760 metros de largo, 55 km/h, con un tramo de
-lanzamiento, un cambio de vía para la marcha atrás y un spike como elemento final. Es la razón
-por la que el parque aparece este año en las listas de novedades. Es una atracción familiar: los
+lanzamiento, un cambio de vía para la marcha atrás y un spike como elemento final. Es una atracción familiar: los
 niños pueden subir acompañados desde 100 centímetros y solos desde 130. Funciona ya a partir de
 5 grados.
 
-En nuestras mediciones, aquí se espera más que en cualquier otra atracción del parque. Eso no
-significa mucho, porque en Plopsaland se espera poco en casi todas las atracciones.
+En nuestras mediciones, aquí se espera más que en cualquier otra atracción del parque.
 
 **Tabaluga's Rollercoaster** de Zierer es con 9 metros y 39 km/h la más pequeña de las cuatro y
 la única bajo techo: pertenece a la nave Holiday Indoor, abierta en 2018 sobre 5.000 metros
-cuadrados. En un día de lluvia, es la parte del parque que de pronto se llena.
+cuadrados. Los días de lluvia, la nave se llena.
 
 ## Agua, altura y lo demás
 
 La Free Fall Tower fue en 1997 la primera torre de caída de Alemania, un Giant Drop de Intamin,
-70 metros de alto, desde 120 centímetros. Es lo que se ve desde la A65 antes de tomar la salida.
+70 metros de alto, desde 120 centímetros. Se ve desde la A65.
 
 Para los días de calor hay dos atracciones acuáticas:
 
 - **DinoSplash**, llamada Donnerfluss hasta 2019, es de 1984 y fue el primer rapid river de
   Alemania. 500 metros, alimentada con agua subterránea, desde 110 centímetros acompañado y
-  desde 130 solo. Durante las Halloween Fright Nights funciona hasta las 20:00 y no más.
+  desde 130 solo. Durante las Halloween Fright Nights solo funciona hasta las 20:00.
 - **Wickie Splash**, llamada Teufelsfässer hasta 2013, es un tronco de Mack de 1992 con
   20 metros de altura y 1.000 metros de recorrido. Fue el primer tronco de Europa con disparo
   hacia atrás. Desde 100 centímetros acompañado, desde 140 solo.
@@ -138,11 +131,10 @@ Junto a ellas está **Splash Battle** en el Wickieland, donde las tripulaciones 
 gente de la orilla se mojan unos a otros, y **Die große Welle**, un Disk'O de Zamperla. Las dos están,
 como Wickie Splash, en el Wickieland.
 
-**Sky Fly** de Gerstlauer, instalada desde 2015 donde estaba la Bounty Tower vendida, es el
-aparato para quien quiera darse la vuelta por su cuenta. La **Lighthouse Tower** de Funtime está
+**Sky Fly** de Gerstlauer, instalada desde 2015 donde estaba la Bounty Tower vendida, es una atracción en la que uno mismo se da la vuelta. La **Lighthouse Tower** de Funtime está
 desde 2006 y es el punto desde el que se abarca el recinto de una vez.
 
-Para los más pequeños el parque va cargado: el Majaland de 2012 tiene once atracciones, y a eso
+Para niños pequeños, el Majaland de 2012 tiene once atracciones, y a eso
 se suman Blinky Bill, Super Wings, The Beach y la nave cubierta. **La Aventura de los Pitufos**
 es un dark ride de Mack Rides que se llamó Burg Falkenstein hasta finales de 2022 y reabrió en
 la temporada 2025 con nueva tematización.
@@ -154,22 +146,20 @@ la temporada 2025 con nueva tematización.
 ## Las zonas temáticas, y qué hay en cada una
 
 El parque tiene forma de estrella. Las zonas salen de la plaza de las Fuentes,
-detrás de la entrada, en todas las direcciones, y se cruza el centro varias veces al día. Cansa
-menos de lo que suena, porque 40 hectáreas siguen siendo caminables.
+detrás de la entrada, en todas las direcciones, y se cruza el centro varias veces al día. En 40 hectáreas, las distancias son cortas.
 
 En la **plaza de las Fuentes** están la Free Fall Tower y las fuentes danzantes, el juego de
-agua que aparece en todos los parques de Plopsa. Desde allí son unos minutos en cada dirección.
+agua que aparece en todos los parques de Plopsa.
 
 El **Majaland** nació en 2012 sobre el terreno de la antigua entrada y salida y tiene once
 atracciones para niños pequeños, la mayoría de Zamperla y Zierer: el Blütensplash de Maya como
 Flying Fish, la torre de las flores como hermana pequeña de la Free Fall Tower, el Árbol Loco,
 el Vuelo de las mariposas, Las Ranas, los Mini-Cars, el Vuelo de la mariquita de Lara, la Balsa
-de Willi y el Remolino de las abejas. Con un niño de tres años aquí se va media jornada.
+de Willi y el Remolino de las abejas.
 
 **Holiday Indoor** es la nave de 2018, con Tabaluga's Rollercoaster, el Vuelo de los elfos de
 Mia, el Carrusel de la granja, un tobogán de olas, una piscina de bolas y un teatro de más de
-500 plazas. Es el plan B para la lluvia y la razón por la que una visita en octubre aquí tiene
-menos riesgo que en un parque solo al aire libre.
+500 plazas.
 
 En el **pueblo palatino** están DinoSplash y La Aventura de los Pitufos, además del restaurante
 Pfalzgraf y el tonel gigante de Maurer Söhne. En el **Wickieland** están Wickie Splash, Splash
@@ -187,11 +177,10 @@ Freddy Lupin de 100% Wolf. A eso se suman el espectáculo de los Pitufos, el Plo
 un programa de baile.
 
 Los horarios no quedan fijados hasta la mañana. Dependen del programa del día que el parque
-publica para cada fecha en su página de horarios. Además, los encuentros se llevan público de las
-atracciones: mientras Maya está en el
+publica para cada fecha en su página de horarios. Los encuentros se llevan público de las atracciones. Mientras Maya está en el
 escenario del Majaland a las 10:50, en la Free Fall Tower hay menos gente.
 
-## Cuánto se espera aquí de verdad
+## Cuánto se espera aquí
 
 Medimos los tiempos de espera de este parque desde el 7 de octubre de 2024, a día de hoy en
 225 jornadas de apertura. Las cifras de abajo cubren todo ese periodo, no una sola temporada.
@@ -200,18 +189,15 @@ Medimos los tiempos de espera de este parque desde el 7 de octubre de 2024, a d�
 
 ```
 
-Al primer vistazo a la tabla llama la atención lo cortas que son las esperas. La mediana está en
+La mediana está en
 5 o 10 minutos en la mayoría de las atracciones. Aun en el tramo más cargado de un día normal
 solo llega a 10 o 20. Donde más se espera es en 100% Wolf, con una mediana de 10 minutos.
 
-No se trata de un error de medición. 804.218 visitantes al año se reparten entre 57 atracciones
-de otra manera que 6 millones entre cien. Quien venga de Europa-Park o de
-Phantasialand y allí calcule 60 minutos para las atracciones estrella, aquí calcula mal.
+Aquí 804.218 visitantes al año se reparten 57 atracciones; en un parque grande, 6 millones se reparten cien. Quien venga de Europa-Park o de Phantasialand y allí calcule 60 minutos para las atracciones estrella, aquí necesita una fracción de eso.
 
 Cuánto se monta en un día depende aquí, por tanto, del horario y apenas de las colas. Ocho horas, una de ellas para comer y caminar, dejan sitio para veinte vueltas
 y más con una mediana de diez minutos. Quien llegue con una lista de ocho atracciones habrá
-terminado a primera hora de la tarde y decidirá entonces qué repite. Esa es la diferencia con un
-parque grande, donde la misma lista ocupa el día entero.
+terminado a primera hora de la tarde y decidirá entonces qué repite.
 
 En un día frío de marzo, en cambio, cuando Expedition GeForce y Sky Scream están paradas por el
 frío, para los adultos no queda mucho.
@@ -236,7 +222,7 @@ ilimitadas, siempre por persona y día. Vale en ocho atracciones: 100% Wolf, Din
 Splash, Die große Welle, bigFM Expedition GeForce, Sky Scream, Free Fall Tower y Sky Fly. Entre
 dos vueltas tienen que pasar al menos 15 minutos, y el parque solo vende un número limitado.
 
-Echar cuentas importa aquí más que en otros sitios. En la atracción con las esperas más largas,
+En la atracción con las esperas más largas,
 la mediana es de 10 minutos. Con el Classic de 35 euros se ahorran, por tanto, nueve veces unos
 diez minutos, alrededor de hora y media en una jornada que de todos modos acaba a las 18:00. Un sábado de
 julio o una Fright Night cambian el cálculo; un viernes de septiembre no lo sostiene. El
@@ -250,14 +236,14 @@ precio, eso sí, es el mismo todo el año.
 
 ### El día de la semana
 
-El sábado es con diferencia el día más cargado: mediana de 15 minutos, 20 en el tramo alto,
+El sábado es con diferencia el día más cargado, con una mediana de 15 minutos, 20 en el tramo alto,
 medidos en 39 sábados. La mayoría de los demás días están en 10 minutos de mediana.
 
-El día más tranquilo es el **viernes**, y nadie lo habría adivinado. En 38 viernes medidos la mediana está en 5 minutos, por debajo del martes, el
+El día más tranquilo es el **viernes**. En 38 viernes medidos la mediana está en 5 minutos, por debajo del martes, el
 miércoles y el jueves. Quien pueda coger un día libre y dude entre viernes y miércoles, que coja
 el viernes.
 
-Una salvedad: a partir de finales de septiembre esa misma ventaja se da la vuelta, porque los
+A partir de finales de septiembre esa ventaja se da la vuelta, porque los
 viernes de octubre están las Halloween Fright Nights y el parque abre hasta las 22:00. Entonces
 el viernes por la noche es el momento más cargado de la semana.
 
@@ -274,12 +260,10 @@ abre a diario. La mediana está entonces en 10 minutos, y el tramo alto de un d�
 en septiembre suele ser mejor que en junio.
 
 Marzo y noviembre son meses de borde. Entonces Expedition GeForce y Sky Scream solo funcionan si
-la vía alcanza ocho grados, y un día frío cuesta justo las dos atracciones por las que se ha
-venido.
+la vía alcanza ocho grados.
 
 Enero y febrero aparecen con cero minutos porque el parque está cerrado. La temporada 2026 va
-del 22 de marzo al 1 de noviembre. Para la visita hay, por tanto, unos siete meses y medio donde
-elegir, y en las primeras y últimas semanas mucho depende de la regla de los ocho grados.
+del 22 de marzo al 1 de noviembre.
 
 ```best-days-widget slug=plopsaland-deutschland
 
@@ -297,7 +281,7 @@ pie, solo abren en las Fright Nights: Skrämma,
 NEXUS AI, Murder District, Academy of Freaks, Scarecrow, Titty Twister y LOST: Deep in the
 woods, además de la Holly's Halloween Party y un encuentro con King Pumpkin para los más
 pequeños. En nuestra página del parque aparecen como
-atracciones propias, y el resto de días como cerradas. No es un error.
+atracciones propias, y el resto de días como cerradas.
 
 En una Fright Night, parte de las atracciones de día cierran antes que el parque, DinoSplash por
 ejemplo a las 20:00. En lugar de ocho horas hay doce, y las últimas cuatro son para los mazes. Lo que el parque ha anunciado para esta
@@ -312,26 +296,21 @@ más tarde se llamó Liliputstadt. La familia llevaba generaciones con un circo 
 talla baja, y el parque le dio un sitio fijo; esa zona existió hasta 1996. El nombre Holiday
 Park llegó en 1973.
 
-Después el parque fue creciendo paso a paso: en 1973 el
+Después el parque fue creciendo: en 1973 el
 monorraíl Holiday Transit, en 1978 ardió la wilde Maus, en 1979 llegó el Superwirbel como
 primera montaña rusa alemana con inversiones, en 1984 el Donnerfluss, en 1997 la Free Fall
 Tower, en 2001 la Expedition GeForce. De los 70.000 metros cuadrados de la primera temporada se
 pasó a más de 400.000 en 2015.
 
-A la Expedition GeForce le pertenece un episodio que ayudó a construir su fama: en 2002 y 2003
-el profesor estadounidense Richard Rodriguez hizo aquí su maratón de montañas rusas, días
-enteros montando. Junto a la atracción hay desde entonces un monumento, y sus intentos de récord
-le dieron al parque en esos dos años cobertura mucho más allá de la región.
+En 2002 y 2003 el profesor estadounidense Richard Rodriguez hizo aquí su maratón de montañas rusas, días
+enteros montando. Junto a la atracción hay desde entonces un monumento.
 
-El corte llegó en noviembre de 2010, cuando el grupo belga Plopsa, filial de Studio 100, se hizo
-con el parque. Desde entonces es un parque temático de zonas enlazadas, y sus mascotas se llaman
+En noviembre de 2010 el grupo belga Plopsa, filial de Studio 100, se hizo con el parque. Desde entonces es un parque temático de zonas enlazadas, y sus mascotas se llaman
 Maya, Vic, Heidi, Mia y Tabaluga en vez de Holly, el loro que vivía aquí antes. En 2012 nació el
 Majaland en el sitio de la antigua entrada, y con él la entrada principal de hoy. En 2018 siguió
 la nave cubierta, en 2026 la nueva montaña rusa.
 
-El cambio de nombre del 28 de junio de 2025 es su último paso lógico: el operador lleva mucho
-llamando Plopsaland y Plopsa a sus otros parques, y Haßloch era el último que aún llevaba un
-nombre anterior. Para quien visita no cambia nada salvo la búsqueda.
+El cambio de nombre llegó el 28 de junio de 2025. El operador ya llamaba Plopsaland y Plopsa a sus otros parques, y Haßloch era el último que aún llevaba un nombre anterior.
 
 ## Lo que viene
 
@@ -339,14 +318,13 @@ Para 2028 el parque construye una montaña rusa que todavía no tiene nombre: un
 tematización de Tomorrowland como la que ya tiene The Ride to Happiness en el parque hermano
 belga Plopsaland Belgium. Figura en el plan director del parque y en RCDB como en construcción.
 
-Sería la quinta montaña rusa del parque y la primera nueva desde 100% Wolf. A diferencia de esa
-atracción familiar, está pensada para adultos. Hasta entonces, Expedition GeForce sigue siendo el motivo del viaje.
+Sería la quinta montaña rusa del parque. A diferencia de 100% Wolf, atracción familiar, está pensada para adultos.
 
 ## Dormir y comer
 
 Hotel propio del parque no hay. En su lugar, el parque trabaja con hoteles asociados en Haßloch,
 Espira, Deidesheim, Neustadt y Mannheim y vende paquetes de entrada y noche. Quien ya esté de
-vacaciones en el Palatinado no lo necesita: las distancias son cortas, y desde Neustadt o Espira
+vacaciones en el Palatinado no lo necesita, porque desde Neustadt o Espira
 se está en el aparcamiento en veinte minutos.
 
 Para comer hay en el parque 22 sitios, del puesto al restaurante. La dirección para una comida
@@ -356,21 +334,19 @@ palatino de vino y cerveza, Pasta Point, el Koala Joe's Roadhouse en la zona de 
 Maja Burger en el Majaland, una Super Wings Fuel Station y un café Dunkin'.
 
 El parque está en medio de una región vinícola, y aquí también hay flammkuchen o una copa de
-riesling, lo que no se espera sin más en un parque con mascotas de dibujos animados.
+riesling.
 
 ## Un día en Haßloch, a grandes rasgos
 
-El parque abre a las 10:00 y cierra, fuera de las Fright Nights, a las 18:00. Ocho horas son
-justas para 57 atracciones y sobradas para las ocho que de verdad se quieren.
+El parque abre a las 10:00 y cierra, fuera de las Fright Nights, a las 18:00.
 
-1. **10:00** Directos a Expedition GeForce. La primera media hora está vacía, y dos vueltas
-   seguidas aquí son lo normal, no un golpe de suerte.
+1. **10:00** Directos a Expedition GeForce. La primera media hora está vacía, y dos vueltas seguidas son lo normal.
 2. **10:45** Seguir a Sky Scream, que está al lado. Las dos dependen de la regla de los ocho
    grados, así que tiene sentido despacharlas pronto si el día empieza frío.
 3. **11:30** 100% Wolf. La atracción es nueva y por eso tiene la cola más larga del parque, pero
    con diez minutos de mediana es llevadera.
 4. **12:30** Comida, y después las acuáticas: DinoSplash y Wickie Splash están colocadas de
-   modo que se hacen del tirón. En las dos uno se moja, algo que en octubre conviene pensar antes.
+   modo que se hacen del tirón. En las dos uno se moja.
 5. **14:30** Free Fall Tower y Sky Fly, más la Lighthouse Tower para la vista del recinto.
 6. **15:30** Con niños, al Majaland y a la nave cubierta; sin ellos, otra vez a Expedition
    GeForce. La tarde es la segunda franja tranquila del día.
@@ -381,8 +357,7 @@ de las atracciones de día cierran entonces antes que el parque.
 
 ## Práctico: cómo llegar, entradas, horarios
 
-La dirección es Holiday-Park-Str. 1–5, 67454 Haßloch, y la calle sigue llevando el nombre
-antiguo del parque. Quien introduzca una dirección en el navegador no necesita el nuevo.
+La dirección es Holiday-Park-Str. 1–5, 67454 Haßloch.
 
 **En coche.** Por la A65 o la B9, con aparcamientos junto al recinto. Quien solo deja o recoge a
 alguien puede entrar gratis hasta 45 minutos; la barrera se abre por lectura de matrícula. Quien
@@ -441,7 +416,7 @@ más cargado con 15 minutos.
 
 ### ¿Cuánto se espera aquí de media?
 
-Menos de lo que uno trae aprendido de otros parques. Sobre todos los días medidos, en el parque se
+Sobre todos los días medidos, en el parque se
 espera de media algo más de 18 minutos. En las atracciones por separado, la mediana suele
 quedarse entre 5 y 10 minutos.
 
@@ -458,7 +433,7 @@ Cuatro: Expedition GeForce (2001), Sky Scream (2014), Tabaluga's Rollercoaster (
 
 ### ¿Basta un día para todo el parque?
 
-Para las grandes, de sobra. 57 atracciones suenan a más de lo que son: buena parte son carruseles
+Para las grandes, de sobra. Buena parte de las 57 atracciones son carruseles
 y zonas de juego en el Majaland, la nave cubierta y Super Wings, que los adultos sin niños se
 saltan. Con niños el mismo parque llena dos días, porque entonces se repiten vuelta tras vuelta
 en los aparatos pequeños.

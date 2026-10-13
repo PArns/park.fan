@@ -2,18 +2,15 @@
 title: 'Los mejores parques de atracciones de Alemania en 2026'
 translationKey: best-theme-parks-germany
 date: '2026-10-03'
-updatedAt: '2026-10-04'
+updatedAt: '2026-10-13'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  En park.fan hay nueve parques de atracciones de Alemania y en siete medimos
-  las colas. El Europa-Park ganó en septiembre por undécima vez el Golden
+  El Europa-Park ganó en septiembre por undécima vez el Golden
   Ticket Award al mejor parque del mundo, pero en el Phantasialand es donde
-  más esperas y en el Plopsaland donde menos. Una clasificación para los
-  aficionados a las montañas rusas, otra para familias con niños pequeños, y
-  además alturas mínimas, Fast Pass, cómo llegar, hora del día y día de la
-  semana.
+  más esperas y en el Plopsaland donde menos. Ordeno los parques en dos clasificaciones, una para los aficionados a las montañas rusas y otra
+  para familias con niños pequeños.
 tags:
   - parque-atracciones
   - alemania
@@ -58,17 +55,14 @@ parkLinks:
   - legoland-deutschland
 ---
 
-En park.fan hay **nueve parques de atracciones de Alemania**. En siete medimos los tiempos de
+En park.fan hay **nueve parques de atracciones de Alemania**. En seis medimos los tiempos de
 espera, atracción por atracción. Del [Hansa-Park](ref:hansa-park) no llega ni una sola cifra,
-porque el parque solo las enseña en su propia app. De [Traumatica](ref:traumatica) tenemos solo
-cuatro días de medición, y [Rulantica](ref:rulantica) es un mundo acuático. Ambos pertenecen al
+porque el parque solo las enseña en su propia app. [Traumatica](ref:traumatica), de la que por ahora tenemos solo cuatro días de medición, y el
+mundo acuático [Rulantica](ref:rulantica) pertenecen al
 resort del Europa-Park y por eso no aparecen como parques propios.
 
-Una única clasificación sería injusta. Un aficionado a las montañas rusas y una familia con un niño
-de cuatro años no buscan el mismo parque, y los dos quieren saber cuánto van a esperar. Para
-montañas rusas vas a Rust, para decorados a Brühl y con un niño de menos de diez años a Günzburg. Si
-en alguno de los tres esperas en una cola más larga que el viaje hasta allí depende de la hora del
-día, del día de la semana y del mes.
+Hay dos clasificaciones, una para los aficionados a las montañas rusas y otra para familias con
+niños de menos de diez años.
 
 ## Con qué criterios ordeno
 
@@ -79,8 +73,7 @@ cifras que la acompañan son nuestra propia medición, a 3 de octubre de 2026, y
 salen de los parques, de la Roller Coaster DataBase y de nuestras guías de cada parque, enlazadas
 más abajo.
 
-Los precios los dejo fuera. Dependen del día, de la venta anticipada y de la temporada, y cualquier
-cifra estaría desfasada el mismo día de la publicación. En las guías de cada parque están, con su
+Los precios los dejo fuera. En las guías de cada parque están, con su
 fecha.
 
 ## Los siete parques de un vistazo
@@ -98,8 +91,7 @@ fecha.
 ## Para aficionados a las montañas rusas
 
 **1. [Europa-Park](ref:europa-park), Rust.** El 12 de septiembre de 2026 el parque ganó en Austin
-por undécima vez el Golden Ticket Award como «Best Park». Votó gente del sector, no el público. La
-lista de atracciones sostiene el puesto igualmente: catorce montañas rusas, entre ellas
+por undécima vez el Golden Ticket Award como «Best Park». Votó gente del sector, no el público. El parque tiene catorce montañas rusas, entre ellas
 [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac), que ocupa el puesto 9 en la
 clasificación de montañas rusas de acero de Amusement Today, y el
 [Silver Star](ref:europa-park/silver-star). El Silver Star mide 73 metros, alcanza 127 km/h y
@@ -116,9 +108,8 @@ de altura, construida por Great Coasters International con 21.000 vigas y dos mi
 La lista sigue con [blue fire](ref:europa-park/blue-fire-megacoaster), la primera montaña rusa
 lanzada del parque, de 2009, con la [Eurosat](ref:europa-park/eurosat-cancan-coaster), que desde
 1989 circula a oscuras dentro de su bola plateada, y con la montaña rusa acuática
-[Poseidon](ref:europa-park/water-rollercoaster-poseidon). Para montar en las catorce en un solo día
-hacen falta buenos zapatos, porque las zonas temáticas están construidas como países y forman una
-larga cadena, y el camino de Croacia a Irlanda se hace tan largo como un sábado en Ikea sin atajo.
+[Poseidon](ref:europa-park/water-rollercoaster-poseidon). Las zonas temáticas están construidas como países y forman una larga cadena. Para montar en las
+catorce montañas rusas en un solo día hay que caminar mucho, por ejemplo de Croacia a Irlanda.
 
 El parque no vende ningún Fast Pass. Hay colas de single rider en seis atracciones, una Virtual Line
 gratuita en la app para algunas atracciones y, para los clientes de los hoteles, entrada anticipada,
@@ -130,17 +121,14 @@ temáticos, además de Silver Lake City, con tipis, carromatos y cabañas de tro
 **2. [Phantasialand](ref:phantasialand), Brühl.** Los decorados son los mejores de los parques de
 esta lista. [Taron](ref:phantasialand/taron) está en el puesto 8 de la clasificación de acero, y
 [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) ha sido premiada por Amusement Today por cuarta
-vez como mejor atracción acuática en un parque. Enfrente hay ocho atracciones estrella entre las
-que se reparten 2,1 millones de visitantes al año, y eso se nota en la cola. Aun así el parque se
-lleva el puesto 2, porque aquí la atracción viene como parte de un pueblo y no como un andamio en
-un prado.
+vez como mejor atracción acuática en un parque. Entre ocho atracciones estrella se reparten 2,1 millones de visitantes al año, y por eso las colas
+son largas. Aun así el parque se lleva el puesto 2, porque sus atracciones están integradas en los
+mundos temáticos.
 
 Taron te lanza dos veces a través de Klugheim, un pueblo de columnas de basalto que al mismo tiempo
 es la cola. [F.L.Y.](ref:phantasialand/fly), en Rookburgh, es una flying coaster: subes de pie y
-viajas tumbado boca abajo por un taller victoriano de máquinas voladoras por el que pagaría entrada
-aunque al final no hubiera ninguna atracción. [Black Mamba](ref:phantasialand/black-mamba) es una
-invertida de 2006 que pasa tan pegada a rocas y cabañas que en cada elemento agachas la cabeza,
-aunque no sirva de nada. A eso se suman el tren de la mina
+viajas tumbado boca abajo por un taller victoriano de máquinas voladoras. [Black Mamba](ref:phantasialand/black-mamba) es una
+invertida de 2006 que pasa pegada a rocas y cabañas. A eso se suman el tren de la mina
 [Colorado Adventure](ref:phantasialand/colorado-adventure), de 1996, las dos spinning coasters
 Winja’s Fear y Winja’s Force y la torre [Mystery Castle](ref:phantasialand/mystery-castle), de 65
 metros.
@@ -188,8 +176,8 @@ oscuras, y a más de 60 metros de altura deja caer el tren un trecho hacia atrá
 km/h en 1,4 segundos y más adelante cae a 97 grados, pasada la vertical.
 [Nessie](ref:hansa-park/nessie), de Anton Schwarzkopf, funciona desde 1980 y entonces era la montaña
 rusa con looping más grande de Europa. El Highlander mide 120 metros y en 2019 le quitó el récord al
-Scream de Soltau, algo que en Baja Sajonia no gusta oír. En octubre el Herbstzauber am Meer llena el
-parque de unas 2.000 figuras luminosas, en 2026 del 10 al 25 de octubre y hasta las 21:00. Se llega
+Scream de Soltau. Para el Herbstzauber am Meer se instalan en el parque unas 2.000 figuras
+luminosas, en 2026 del 10 al 25 de octubre, con apertura hasta las 21:00. Se llega
 en tren regional de Lübeck a Sierksdorf y diez minutos a pie, o en coche por la A1. En 2027 el
 parque cumple cincuenta años y para la ocasión construye una torre mirador de 86 metros.
 
@@ -202,13 +190,12 @@ El parque tiene ocho montañas rusas. La más grande es
 Rides, de 2017: 40 metros de altura, 90 km/h, desde 130 centímetros, y antes de salir el tren se
 lanza tres veces adelante y atrás hasta coger velocidad para la primera colina.
 [The Bandit](ref:movie-park-germany/the-bandit), de 1999, era al abrir la única montaña rusa de
-madera de Alemania y después de 27 años traquetea tanto que tras el segundo viaje me duele la
-cabeza. La [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour), de 2021, es un
+madera de Alemania y después de 27 años traquetea mucho. La [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour), de 2021, es un
 dark ride con montaña rusa de Intamin con dos lanzamientos y una plataforma giratoria, y
 [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory) tiene la cola más larga del
 parque, porque solo mueve 848 personas por hora.
 
-Su mejor época es el otoño. El Halloween Horror Festival va en 2026 del 26 de septiembre al 8 de
+El Halloween Horror Festival va en 2026 del 26 de septiembre al 8 de
 noviembre, y el 8 de noviembre es también el último día de la temporada. Desde septiembre, fuera de
 vacaciones, el parque solo abre de jueves a domingo. Después llega, del 27 de noviembre al 5 de
 enero, Movie Park’s Hollywood Christmas. La estación de Feldhausen está a unos 400 metros de la
@@ -219,23 +206,19 @@ desde Dortmund.
 
 **1. [Legoland Deutschland](ref:legoland-deutschland), Günzburg.** El parque está abierto desde 2002. En el invierno de 2026/27 abre por cuarta vez algunos días entre noviembre y enero, con pista
 de hielo y espectáculos, y en la mayoría de las atracciones de exterior pone entonces «abierto según
-el tiempo». En 2026 hay días sueltos de cierre en mayo, junio y septiembre, así que antes de ir
-conviene mirar el calendario.
+el tiempo». En 2026 hay días sueltos de cierre en mayo, junio y septiembre.
 
 El parque tiene once mundos temáticos, y el más reciente es Lego Mythica, de 2023. Allí está
 [Maximus](ref:legoland-deutschland/maximus-the-guardians-flight), una wing coaster de Bolliger &
 Mabillard y la primera en cualquier Legoland: 17 metros de altura, 54 km/h, desde 120 centímetros
-con un adulto y sin adulto desde 130 centímetros y ocho años. Para los niños es la atracción con la
-que notan que han crecido. Antes vienen el
+con un adulto y sin adulto desde 130 centímetros y ocho años. Antes vienen el
 [Feuerdrache](ref:legoland-deutschland/fire-dragon), de Zierer, del año de la apertura, desde 110
 centímetros y seis años con acompañante, y la
 [Drachenjagd](ref:legoland-deutschland/dragon-hunt), de Gerstlauer, en la que ya pueden montar
 niños de cuatro años desde un metro. [Flying Ninjago](ref:legoland-deutschland/flying-ninjago) es un
-Sky Fly de 2012 en el que tú mismo haces girar tu góndola sobre su eje, tantas veces como aguante tu
-estómago.
+Sky Fly de 2012 en el que tú mismo haces girar tu góndola sobre su eje.
 
-Según Wikipedia, el Miniland está hecho con más de 25 millones de piezas, y no vas a pisar ninguna
-descalzo de noche en el cuarto de los niños. En 2024, también según Wikipedia, recibió unos dos
+Según Wikipedia, el Miniland está hecho con más de 25 millones de piezas. En 2024, también según Wikipedia, recibió unos dos
 millones de visitantes. La temporada de 2026 va del 28 de marzo al 8 de noviembre, y Halloween del
 3 de octubre al final de temporada. El acceso prioritario de pago se llama aquí **Fastrack**, tiene
 tres niveles, vale para 18 atracciones y no incluye la entrada. Para dormir están el pueblo de
@@ -262,8 +245,7 @@ Para los padres está al lado la
 llega a 120 km/h y que según el parque acumula más de 40 premios, entre ellos el Golden Ticket Award
 a la mejor montaña rusa de Europa. En 2026 cumple veinticinco años y exige 140 centímetros. Se suma
 [Sky Scream](ref:plopsaland-deutschland/sky-scream), de Premier Rides, desde 140 centímetros y
-catorce años. Así que si vienes con un niño pequeño y con un adolescente, aquí tienes las dos cosas
-en un mismo día sin que nadie se pase horas sentado en un banco.
+catorce años.
 
 En 2026 el parque abre todos los días hasta el 1 de noviembre, según él mismo la temporada más larga
 de su historia. El acceso prioritario lo vende como **Express Pass**, para ocho atracciones. No hay
@@ -277,23 +259,19 @@ Coaster, inaugurado en 2026.
 
 El [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster) abrió el 23 de mayo de 2026: 18
 metros de altura, 50 km/h, y el parque cuenta siete lanzamientos en una vuelta, hacia delante y
-hacia atrás. Para una atracción familiar es mucho. En el Hansa-Park muchas atracciones fijan, además
+hacia atrás. En el Hansa-Park muchas atracciones fijan, además
 de la altura, una edad a partir de la cual un niño puede montar sin adulto: en la Schlange von
 Midgard desde los seis, en el Cornwall Coaster desde los ocho, en Nessie y el Royal Scotsman no
 hasta los diez. Un niño de siete años que mida 1,25 metros puede montar así en siete de las ocho
-montañas rusas, pero en cuatro de ellas solo con un adulto al lado. Si vas como único adulto con
-dos niños, te montas dos veces en Nessie.
+montañas rusas, pero en cuatro de ellas solo con un adulto al lado.
 
 **[Heide Park](ref:heide-park?bare), Soltau.** No es un parque familiar, pero con el Peppa Pig Land tiene un rincón
 para los más pequeños, y Schorschs Dino-Abenteuer admite a niños desde 86 centímetros. Las grandes
-atracciones de allí piden 140 centímetros. Entre 86 y 140 centímetros pasan unos cuantos años en
-los que un niño ya puede montar en muchas cosas, pero en ninguna de las atracciones por las que
-han venido sus padres.
+atracciones de allí piden 140 centímetros.
 
 ## Cuánto tiene que medir tu hijo
 
-Con niños, para mí la altura mínima decide el parque más a menudo que la lista de atracciones. Estos
-son los valores de las grandes atracciones, a octubre de 2026, según los parques:
+Estas son las alturas mínimas de las grandes atracciones, a octubre de 2026, según los parques:
 
 | Parque        | Desde 140 cm                                   | Desde 130 cm                      | Por debajo                                                                                      |
 | ------------- | ---------------------------------------------- | --------------------------------- | ----------------------------------------------------------------------------------------------- |
@@ -307,13 +285,9 @@ son los valores de las grandes atracciones, a octubre de 2026, según los parque
 
 En Taron y F.L.Y., con 130 centímetros solo se monta con un adulto al lado; sin adulto, a partir de 140. Una celda vacía significa que el parque no tiene ninguna atracción grande en ese nivel.
 
-El día es más tranquilo si el niño sabe de antemano en qué atracción no puede montar, y no lo
-descubre después de cuarenta minutos de cola delante del medidor.
-
 ## Dónde esperas menos
 
-La comparación abarca todos los días medidos, con el mismo método de cálculo para cada parque. Las
-filas van en el orden de la medición del 3 de octubre de 2026 y no se reordenan:
+La comparación abarca todos los días medidos, calculados igual para cada parque. Las filas van en el orden de la medición del 3 de octubre de 2026 y no se reordenan:
 
 ```park-comparison-widget slugs=phantasialand,legoland-deutschland,europa-park,heide-park,movie-park-germany,plopsaland-deutschland show=quietest
 
@@ -321,26 +295,16 @@ filas van en el orden de la medición del 3 de octubre de 2026 y no se reordenan
 
 En el Phantasialand la mediana es la más alta y en el Plopsaland la más baja. Europa-Park, Heide Park
 y Movie Park están muy cerca unos de otros, aunque el Europa-Park tiene las cifras de visitantes más
-grandes. Las reparte entre más atracciones: cuantas más atracciones se reparten la afluencia, más
-corta es la cola más larga.
+grandes. Las reparte entre más atracciones, y por eso también su cola más larga se queda más corta.
 
-En el Legoland falta la columna de la cola más larga. Ninguna de las diez atracciones con la mediana
-más alta llega a los 100 días de medición a partir de los cuales dejamos que una atracción hable
-por todo un parque.
+En el Legoland falta la columna de la cola más larga. Solo ponemos una atracción en esa columna a partir de 100 días de medición, y en el Legoland
+ninguna de las diez atracciones con la mediana más alta llega a esa cifra.
 
-Lo larga que se hace una cola depende de dos números: cuánta gente quiere hacerla y cuánta se lleva
-la atracción por hora. Según el parque, Voltron despacha un tren cada 36 segundos y mueve 1.600
-pasajeros por hora. Van Helsing’s Factory, en Bottrop, funciona con vagones sueltos de cuatro
-personas y se queda en 848. Es como un súper con una sola caja abierta un sábado por la tarde, y por
-eso en Bottrop se espera más en una atracción de 36 km/h que en la gran montaña rusa lanzada de al
-lado. Si planificas un parque por su lista de atracciones, pregunta siempre también cuántos trenes
-circulan en cada una.
+Lo larga que se hace una cola depende también de cuántos pasajeros se lleva la atracción por hora. Según el parque, Voltron despacha un tren cada 36 segundos y mueve 1.600. Van Helsing’s Factory, en Bottrop, va a 36 km/h con vagones sueltos de cuatro personas y se queda en 848.
 
-Un acceso prioritario de pago no acorta la espera para todos. La redistribuye, de quienes pagan a
-quienes no pagan. En el Europa-Park, donde no existe, nuestra mediana se acerca por eso a lo que
+Un acceso prioritario de pago alarga la espera de todos los que no lo tienen. En el Europa-Park, donde no existe, nuestra mediana se acerca por eso a lo que
 vive cualquiera. En el Phantasialand y en el Heide Park, los días llenos hay dos grupos ante la
-misma atracción, y para quien no tiene pase la espera es más larga de lo que indica nuestra cifra
-por sí sola.
+misma atracción, y sin pase allí esperas más que nuestra mediana.
 
 ## A qué hora hay cola en cada sitio
 
@@ -353,11 +317,10 @@ En el Phantasialand el día es así, atracción por atracción en todos los día
 Taron está más lleno a la apertura y en la última hora, cuando todo el mundo quiere un último viaje
 rápido. F.L.Y. tiene poca cola en la primera hora y su pico una hora después, en cuanto el resto del
 parque ha llegado a Rookburgh. Los dos tienen su hora más tranquila por la tarde. Si
-quieres montar en ambos, ve a F.L.Y. a la apertura y guarda Taron para la tarde, cuando medio parque
-está tomando café.
+quieres montar en ambos, ve a F.L.Y. a la apertura y guarda Taron para la tarde.
 
-En Rust pasa lo contrario. La Eurosat tiene su cola más larga ya a las diez, porque está cerca de la
-entrada y funciona a cubierto, y cuando llueve a todos se les ocurre lo mismo a la vez. En el Heide
+En el Europa-Park, la Eurosat tiene su cola más larga ya a las diez, porque está cerca de la
+entrada y funciona a cubierto, y cuando llueve todos van allí a la vez. En el Heide
 Park, Colossos se llena hacia mediodía, y en el Movie Park la cola de Van Helsing’s Factory no baja
 hasta la noche. Las curvas de los demás parques están en las páginas de cada parque.
 
@@ -365,23 +328,18 @@ hasta la noche. Las curvas de los demás parques están en las páginas de cada 
 
 El día más tranquilo de la semana es distinto en cada parque, y la tabla de arriba lo
 indica. Puede estar vacía: en los parques que fuera de la temporada alta cierran varios días de la
-semana, no comparamos días que se apoyan en partes distintas del año. Para el Heide Park vale además
-que un lunes tranquilo en Soltau suele ser un lunes cerrado. Del Hansa-Park falta la medición, allí
-solo ayuda el calendario de apertura, y en 2026 no tiene ningún hueco.
+semana, no comparamos días que se apoyan en partes distintas del año.
 
 El sábado es el día más lleno en el Europa-Park, el Phantasialand, el Heide Park y el Legoland, y en
 Brühl es donde más se distancia del resto de la semana. Allí el domingo está casi igual de lleno,
 mientras que en Rust, Soltau y Bottrop es uno de los días más tranquilos. Si con niños solo puedes
-ir el fin de semana, ve el domingo y no el sábado, salvo a Brühl. En el Movie Park el martes es el día
-más lleno, porque nuestros martes salen casi todos de las vacaciones de verano, ya que fuera de
-ellas el parque cierra los martes. En el Plopsaland todos los días están igual de tranquilos,
+ir el fin de semana, ve el domingo y no el sábado, salvo a Brühl. En el Plopsaland todos los días están igual de tranquilos,
 también el sábado.
 
-Por meses el panorama es más claro. Julio y agosto son los meses más llenos en casi todos los
+Julio y agosto son los meses más llenos en casi todos los
 parques, en el Phantasialand con mucha diferencia. Septiembre es uno de los más tranquilos en
 Brühl, Soltau y Bottrop, porque en la mayoría de los estados federados las vacaciones de verano ya
-han terminado y las de otoño todavía no han empezado. Si puedes elegir libremente, ve en
-septiembre. Los puentes de la Ascensión y del Corpus, en cambio, van llenos, y en nuestros datos del
+han terminado y las de otoño todavía no han empezado. Los puentes de la Ascensión y del Corpus, en cambio, van llenos, y en nuestros datos del
 Europa-Park también cuando llueve.
 
 En cinco de los seis parques medidos, un día laborable dentro de las vacaciones escolares del
@@ -407,19 +365,18 @@ Europa-Park:
 | Plopsaland Deutschland | Halloween Fright Nights, viernes y sábados de octubre      | sin anunciar                                   |
 | Legoland Deutschland   | Halloween 3/10–8/11, de día                                | WinterWonder 28/11–10/1, algunos días          |
 
-El Phantasialand se salta Halloween por completo y lo compensa en invierno, con vino caliente,
-guirnaldas de luces y Taron a oscuras. Si quieres ir en diciembre, ten en cuenta que nuestros datos
+El Phantasialand no celebra Halloween, pero abre en invierno con vino caliente,
+guirnaldas de luces y Taron a oscuras. Nuestros datos
 de diciembre para Brühl y Rust se apoyan en pocos días en torno a Año Nuevo, la época más llena
-del invierno. Un martes de principios de diciembre es otra cosa. Todas las fechas y precios
+del invierno. Todas las fechas y precios
 están en la [guía de Halloween](/blog/halloween-parques-atracciones-2026) y en la
 [guía de invierno](/blog/parques-atracciones-invierno-2026).
 
 ## Dos parques en un mismo viaje
 
-Si vienes de lejos, puedes juntar dos parques. Las distancias son en línea recta entre las
-entradas; por carretera siempre hay algo más.
+Las distancias son en línea recta entre las entradas.
 
-- Phantasialand y Movie Park, **91 kilómetros.** La combinación más obvia del país. Los dos están
+- Phantasialand y Movie Park, **91 kilómetros.** Los dos están
   en Renania del Norte-Westfalia y se llega a ambos en tren. Brühl tiene los decorados y las colas
   largas, Bottrop las más cortas y Halloween. En otoño encaja especialmente bien,
   porque el Phantasialand no hace Halloween.
@@ -434,16 +391,12 @@ entradas; por carretera siempre hay algo más.
   tiene su propio aparcamiento. Aun así, para la mayoría dos días de Europa-Park son mejor opción,
   porque con catorce montañas rusas y 96 atracciones, después de un día casi siempre queda algo pendiente.
 
-Europa-Park y Phantasialand en un mismo fin de semana, en cambio, no es buena idea. Los 288
-kilómetros en línea recta son por la A5 y la A61 algo más de cuatro horas, y esas horas las pasas
-entre dos parques que merecen cada uno un día entero.
+Desaconsejo Europa-Park y Phantasialand en un mismo fin de semana. Los 288 kilómetros en línea
+recta son por la A5 y la A61 algo más de cuatro horas de coche.
 
 ## Qué parques faltan aquí
 
-Alemania tiene más de nueve parques de atracciones. Tripsdrill, Fort Fun, el Skyline Park, Belantis
-y el Freizeitpark Plohn todavía no están en park.fan. No recibimos tiempos de espera de ellos, y una
-clasificación que en dos tercios de los parques se basa en mediciones y en el resto en mi
-intuición no sería una clasificación. Cuando entre alguno, entrará también en esta lista.
+Tripsdrill, Fort Fun, el Skyline Park, Belantis y el Freizeitpark Plohn todavía no están en park.fan y por eso no aparecen en esta clasificación.
 
 ## Preguntas frecuentes
 

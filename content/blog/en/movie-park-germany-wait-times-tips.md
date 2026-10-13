@@ -7,10 +7,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Batman gone, Bugs Bunny gone, and ever since the park has been building rides
-  about itself. For its 30th birthday: measured wait times, the weekday the usual
-  tip sheets get wrong, the timetable from September and the Halloween
-  Horror Festival, which runs until 8 November.
+  None of the brands Movie Park opened with in 1996, as Warner Bros. Movie World,
+  is left. You queue least on a Friday, and Sunday is quieter than Saturday. The
+  Halloween Horror Festival runs until 8 November.
 tags:
   - movie-park
   - wait-times
@@ -60,11 +59,10 @@ the grounds of a failed film park at the northern edge of the Ruhr area:
 had opened five years earlier on Australia’s Gold Coast. A day later the paying
 public was let in.
 
-Of the brands all that effort was made for, not a single one is left. Bugs Bunny
-gone, Batman gone, the Gremlins gone, Police Academy gone. The park has had a
+Of the brands all that effort was made for, not a single one is left, neither
+Bugs Bunny nor Batman, the Gremlins or Police Academy. The park has had a
 different name since 2005, has belonged to a Spanish group since 2010, and is
 celebrating its thirtieth birthday with a ride from Paramount of all studios.
-Rather like a pearl anniversary cake with the neighbour’s name iced on it.
 
 Across every operating day we’ve measured so far, you queue at
 [Movie Park](ref:movie-park-germany) a good third less than at
@@ -72,7 +70,7 @@ Across every operating day we’ve measured so far, you queue at
 Where the other German parks stand is in my
 [German theme park ranking](/blog/best-theme-parks-in-germany).
 
-And the Sunday that the usual tip sheets online write off as a crowded weekend
+The Sunday that the usual tip sheets online write off as a crowded weekend
 day is one of the quietest days of the week in our data.
 
 ## How Warner Bros. Movie World became Movie Park
@@ -82,11 +80,9 @@ family opened in 1967. That became the Traumlandpark, and in the early nineties
 Bavaria Film tried its luck here with a **Bavaria Filmpark** of its own. That
 one lasted from 1992 to 1994.
 
-Then Warner came, with Michael Douglas and all the trimmings. Under that model a
-studio lends its characters to a park, the park sells tickets, and everybody wins
-for as long as the studio stays.
+Warner lent the park its characters, and the park sold the tickets.
 
-It stayed eight years. In October 1999 Time Warner sold 97 percent to **Premier
+That lasted eight years. In October 1999 Time Warner sold 97 percent to **Premier
 Parks**, who shortly afterwards renamed themselves **Six Flags**. In 2004 the
 Americans sold their European business to the private equity firm **Palamon
 Capital Partners**, and the licence agreements ended with the sale. Over the
@@ -99,8 +95,7 @@ paper Expansión on 24 September 2026, EQT now wants to sell it as a whole,
 Movie Park included. What that means for visitors and pass holders is in
 [our news piece on the sale](/blog/parques-reunidos-sale-movie-park).
 
-Five of the best-known rides have lived under new names ever since, like
-witnesses in protection:
+Five of the best-known rides have lived under new names ever since:
 
 | Opened as              | Year | Called today                                     |
 | ---------------------- | ---- | ------------------------------------------------ |
@@ -110,33 +105,24 @@ witnesses in protection:
 | Wild Wild West         | 1999 | Bandit (since 2005)                              |
 | Eraser                 | 2001 | Iron Claw (since 2023), FX and MP-Xpress between |
 
-That doesn’t even count the stops along the way. The Looney Tunes building
-housed **Ice Age Adventure** from 2005 to 2016, until that licence too went
+In between, the Looney Tunes building housed **Ice Age Adventure** from 2005 to 2016, until that licence too went
 unrenewed and the boat ride closed. After that nothing ran there for four years,
 and in 2018 and 2019 the hall was only used as a Halloween maze.
 
 In 2012 the park presented plans to the city of Bottrop for a **45-metre roller
 coaster** right behind the entrance, ten million euros, opening in 2014. In September 2012 the park stopped the project. Officially the investment
 strategy had changed; park manager Wouter Dekkers gave falling visitor numbers
-at the sister parks in Spain and Italy as the reason. Nothing was built on that meadow until 2017, and then it was something else: Star Trek: Operation Enterprise.
+at the sister parks in Spain and Italy as the reason. Nothing was built on that meadow until 2017, and what went up was Star Trek: Operation Enterprise.
 
-This backstory explains the reputation Movie Park still has in the coaster
-scene. Anyone who visited between 2012 and 2016 saw a park where, apart from The Lost Temple (2014), little was
-moving, rather like a cinema with posters in the foyer for films it’s no
-longer allowed to show.
+Anyone who visited between 2012 and 2016 saw a park where, apart from The Lost
+Temple (2014), little was moving, and those years are where its reputation in the
+coaster scene comes from.
 
 ## The film history it tells instead
 
-From 2017 onwards money came back into the site, and the way it was spent is
-something no other German park could copy.
-
-A studio park without studio licences has two options. It can buy new brands in,
-which is what Bottrop did: **Nickland**, a Nickelodeon area of its own,
-arrived in 2007, Star Trek in 2017, Paramount in 2026. Or it can tell the story
-of what it is itself. A park that has been building film sets for thirty years
-has more material for that than most.
-
-Two attractions are where both routes meet.
+From 2017 onwards money came back into the site. Without studio licences the
+park bought new brands in: **Nickland**, a Nickelodeon area of its own, arrived in
+2007, Star Trek in 2017, Paramount in 2026.
 
 ### Movie Park Studio Tour
 
@@ -154,15 +140,13 @@ The park opened it for its own 25th birthday.
 
 ![A model of a theme park site on a workshop table, next to it rolled-up plans and a coffee mug | One of the twelve scenes: the model workshop, with the park grounds sitting on the table as a model, hall and car park included. | wide](/media/movie-park-germany/movie-park-studio-tour.jpg)
 
-As a roller coaster this is family fare, 60 km/h won’t tear anyone out of
-their seat. As a dark ride it beats anything else I’ve ridden indoors in
+At no more than 60 km/h, as a roller coaster this is family fare. As a dark ride it beats anything else I’ve ridden indoors in
 Germany, and it’s the only place in the park where the vanished attractions
 still turn up.
 
 ### Journey to the Forbidden Chamber
 
-In 2026 the park did exactly the same thing again. **Journey to the Forbidden
-Chamber** opened on **14 May 2026**, a Paramount attraction: an
+**Journey to the Forbidden Chamber** opened on **14 May 2026**, a Paramount attraction: an
 immersive tunnel by **Simworx**, meaning a moving platform in front of a
 projection, with effects in the room. You play an extra on a Paramount Studios
 production in Los Angeles. The film for it was shot on the actual studio lot in
@@ -170,10 +154,8 @@ November 2025.
 
 It’s built inside the building of **The Lost Temple** (2014), and under that
 lies another layer: from 1996 that spot held **Movie Magic**, the attraction
-Warner used to explain to visitors how films are made. Thirty years later
-Paramount explains the same thing in the same place. Minimum height 100
-centimetres. Your fee as an extra: the exit leads through a Paramount
-showroom.
+Warner used to explain to visitors how films are made. Minimum
+height 100 centimetres, and the exit leads through a Paramount showroom.
 
 ## The other seven coasters
 
@@ -193,12 +175,11 @@ each.
 
 The sequence is unusual, because you get accelerated three times before the ride
 even starts. The train is thrown forwards and backwards along the launch track,
-and only on the third run is there enough speed for the top hat, like an
-estate car trying to get up a snowy driveway. After that come an Immelmann, a heartline roll and a corkscrew. The soundtrack is by
+and only on the third run is there enough speed for the top hat. After that come an Immelmann, a heartline roll and a corkscrew. The soundtrack is by
 IMAscore, with a projection preshow before it.
 
-Racing to it at opening gains you little: its queue is at its longest in the
-second hour, never gets that long again, and is at its shortest in the
+Racing to it at opening gains you little, because its queue is at its longest
+in the second hour, never gets that long again, and is at its shortest in the
 afternoon.
 
 [Star Trek™: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise?full)
@@ -227,18 +208,15 @@ replaced around 200 metres of pine and Oregon pine track in the winter of
 
 ```
 
-It rattles. After 27 years it’s loud and rough, a bit more bearable at the back
-of the train than at the front, and for me the second ride is where the headache
-starts. It still belongs on the list once, like the obligatory visit to a
-great-aunt. If your benchmark is Colossos at [Heide-Park](ref:heide-park),
+After 27 years it’s loud and rough, a bit more bearable at the back of the train
+than at the front, and for me the second ride is where the headache starts. I’d
+still ride it once, because in 1999 it was Germany’s only wooden coaster. If your benchmark is Colossos at [Heide-Park](ref:heide-park),
 leave it at that one ride.
 
 ### Van Helsing’s Factory
 
 **[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory)** is the
-ride with the longest queue in this park, and its headline numbers read like
-those of a children’s party ride.
-Opened on **18 June 2011**, a bobsled coaster by **Gerstlauer** in the former
+ride with the longest queue in this park. Opened on **18 June 2011**, a bobsled coaster by **Gerstlauer** in the former
 Gremlins hall, 3,000 square metres, eight metres tall, 400 metres long,
 **36 km/h**. Park manager Wouter Dekkers pitched the idea to the new owners a
 month after the takeover, and Parques Reunidos signed off five million euros
@@ -254,9 +232,9 @@ building looks like an American garage. The track is filled, which makes the
 thing surprisingly quiet inside, and the second lift hill pulls with friction
 wheels, so the car speeds up as it climbs.
 
-The spec sheet has the reason for the queue one line further down, at **848
-people per hour**. For a park that counts well over a million visitors a year, that’s one open
-till at Ikea on a Saturday, and you can see it in our numbers all day long.
+The long queue comes from a capacity of **848 people per hour**. The park counts
+well over a million visitors a year, and in our numbers the queue stays long all
+day.
 
 ```glossary-widget slug=ride-capacity
 
@@ -268,34 +246,28 @@ till at Ikea on a Saturday, and you can see it in our numbers all day long.
 Looping Coaster** that exists dozens of times over worldwide in slight
 variations. It opened on 6 April 2001 as **Eraser**, 689 metres, 80 km/h, five
 inversions, two trains of twenty people. Your legs hang free and your head sits
-between two hard shoulder restraints like a walnut in a nutcracker.
+between two hard shoulder restraints.
 
 ```glossary-widget slug=suspended-coaster
 
 ```
 
-This model is what earned Vekoma the reputation the company has been slowly
-shedding since the twenties, and this particular one is no exception. When the
+This model earned Vekoma a bad reputation over the years, which the company has been shedding since the twenties. When the
 park asked on Facebook in February 2024 how people get through a ride on Iron
 Claw, a striking number of comments said to tear it down.
 
-![A roller coaster lit purple and blue at night, the moon behind it, a car park in front | From the car park, after closing. The moon was in a good spot. There’s still a Vekoma from 2001 running underneath it. | wide](/media/movie-park-germany/iron-claw.jpg)
+![A roller coaster lit purple and blue at night, the moon behind it, a car park in front | From the car park after closing, with the moon behind the 2001 Vekoma. | wide](/media/movie-park-germany/iron-claw.jpg)
 
 ### The three small ones
 
 - **[Ghost Chasers](ref:movie-park-germany/ghost-chasers)**, a wild mouse by
-  **Mack Rides** from the year 2000, 45 km/h. Short corners, no fuss, and the
-  ride where the adults in my car were reliably the louder ones.
+  **Mack Rides** from the year 2000, 45 km/h, with short corners.
 - **[Jimmy Neutron’s Atomic Flyer](ref:movie-park-germany/jimmy-neutrons-atomic-flyer)**
   by Vekoma (2007), a suspended family coaster at 47 km/h, in Nickland.
 - **[Backyardigans Mission to Mars](ref:movie-park-germany/backyardigans-mission-to-mars)**,
   a junior coaster by Vekoma from the opening year 1996, a short 207 metres.
 
-## And the rest, which is what the park actually runs on
-
-Eight coasters sounds like more than it is: three of them are small, and the two
-indoor ones never go faster than 60 km/h. Movie Park lives off the things in
-between anyway.
+## Water rides, the drop tower and the shows
 
 **[Excalibur – Secrets of the Dark Forest](ref:movie-park-germany/excalibur-secrets-of-the-dark-forest)**
 is a speed rapid river by Intamin from the opening year that has already had
@@ -325,17 +297,14 @@ straight down. It’s the most unpleasant moment in the whole park.
 ```
 
 **[Time Riders](ref:movie-park-germany/time-riders)** is the 1996 simulator in
-which John Cleese travels through time. It looks like 1996 and is worth seeing
-for exactly that reason.
+which John Cleese travels through time.
 
 **[Dora’s Big River Adventure](ref:movie-park-germany/doras-big-river-adventure)**,
 finally, is the log flume in **Nickland**, built for primary school children,
-and still one of the longest queues in the park, because on hot afternoons
-half the park discovers its inner child at once.
+and still one of the longest queues in the park, because on hot afternoons the adults queue for it too.
 
-The stages have been part of this place since day one: a studio park without a
-stunt show was unthinkable in 1996, so the Police Academy Stunt Show ran from
-opening day. Three new shows run in 2026: **Black Thunder** in the Saloon,
+The stages have been part of this place since day one, and the Police Academy
+Stunt Show ran from opening day. Three new shows run in 2026: **Black Thunder** in the Saloon,
 **Frequency** in Van Helsing’s Club and **Turn Back Time** on the New York Plaza
 Stage, a trip through thirty years of film music. On top of that, the
 twenty-minute **Parade of Celebration** with floats, live singing and
@@ -356,14 +325,12 @@ The ten attractions you stand in longest:
 
 ```
 
-Top of that list is an indoor ride doing 36 km/h. Van
-Helsing’s Factory has the longest median in the park, and behind it several
+Van Helsing’s Factory, an indoor ride doing 36 km/h, has the longest median in the park, and behind it several
 rides sit level with one another, the log flume from the children’s area among
 them. Star Trek, the biggest ride in the park, sits mid-table.
 
-That has little to do with popularity and a lot to do with throughput. Van
-Helsing manages 848 people per hour, and because the ride is indoors it’s also
-the porch everybody tries to squeeze under at once when it rains. How capacity and demand turn into a
+Van Helsing manages only 848 people per hour, and because the ride is indoors,
+a lot of people want in when it rains. How capacity and demand turn into a
 wait time is covered at length in
 [the art of waiting](/blog/the-art-of-waiting).
 
@@ -373,7 +340,7 @@ The same day, broken down by hour:
 
 ```
 
-There are two rhythms laid over each other here. The big outdoor coasters fill up
+The big outdoor coasters fill up
 during the morning and drain afterwards: Star Trek has its strongest hour in the
 late morning, Bandit and Iron Claw around midday, and by about three o’clock all
 three are shorter. The **water rides run the other
@@ -381,8 +348,7 @@ way round**. Dora, Excalibur and Area 51 have their busy hour in the late
 afternoon, because at thirty degrees everybody eventually wants to get wet.
 
 Van Helsing’s row jumps up in the second hour and then
-stays on the same value until closing, like roadworks on the M25 that never
-get worse and never end. Anyone who wasn’t there in the first
+stays on the same value until closing. Anyone who wasn’t there in the first
 sixty minutes won’t find a better moment all day.
 
 Compared with the neighbourhood:
@@ -392,9 +358,7 @@ Compared with the neighbourhood:
 ```
 
 Of these six parks, [Toverland](ref:attractiepark-toverland) is the only one
-where you stand less, and at Walibi Holland you stand about as long. Against the
-two big German parks in the table, Bottrop wins clearly. Movie Park doesn’t have the best
-coaster in the region, but on a normal day you ride more.
+where you stand less, and at Walibi Holland you stand about as long. At Phantasialand and Europa-Park you queue considerably longer.
 
 > [!NOTE]
 > Our history for this park starts in
@@ -403,8 +367,6 @@ coaster in the region, but on a normal day you ride more.
 > Festival. The autumn days in the calendar further down are forecasts.
 
 ## When to go, and the timetable from September
-
-The most widespread recommendation for this park is wrong.
 
 ### The weekday
 
@@ -416,44 +378,37 @@ You stand shortest on **Friday**, with **Sunday** and **Thursday** close
 behind, and longest on **Tuesday**. Search for Movie Park tips and you’ll
 mostly read something else: weekdays are supposedly quiet, the weekend
 supposedly full. On Saturday you do stand longer than on Sunday, and both are
-measured about equally often by us, so they’re directly comparable. It’s just
-that Sunday isn’t one of the busy days, and Saturday isn’t the busiest day of
-the week.
+measured about equally often by us, so they’re directly comparable.
 
-Monday and Tuesday can’t be compared like that, and the reason is in the number
-of measured days. Outside the holidays the park is mostly closed on those days,
+Monday and Tuesday can’t be compared like that. Outside the holidays the park is mostly closed on those days,
 so our Mondays and Tuesdays come almost entirely from school holidays, above all
 the summer holidays, and summer holiday days are the busiest of the year. On the
 [best time to visit page](/best-time-to-visit) those two days therefore drop out
 of the park comparison rather than skewing it.
 
-Why Sunday in particular? I can’t prove it, but I suspect it’s because Movie
-Park has no hotel of its own. Overnight stays run through partner
+I can’t prove it, but I suspect Sunday is this quiet because Movie Park has no
+hotel of its own. Overnight stays run through partner
 hotels nearby, the crowd arrives and leaves on the same day, and in the Ruhr
 area with millions of people within driving distance, the classic day-trip day
-is Saturday. On Sunday, Monday is already in the way for a lot of people.
+is Saturday. On Sunday a lot of people have work the next day.
 
 At [Europa-Park](ref:europa-park) Sunday is even the emptiest day of all, but there for
 the opposite reason: Rust lives off hotel guests who arrive on Saturday and
 leave on Sunday, as covered in the
 [Europa-Park guide](/blog/europa-park-wait-times-tips). At [Heide-Park](ref:heide-park), which resembles Movie Park
-structurally, the week looks almost identical, by the way. I did the sums in
+structurally, the week looks almost identical. I did the sums in
 the [Heide Park guide](/blog/heide-park-wait-times-tips).
 
 ### The timetable from 2 September
 
-If you’re heading there this autumn, you need the calendar more than any
-wait-time table.
-
 The **summer holidays in North Rhine-Westphalia ended on 1 September 2026**.
 Since then the park has been on its autumn schedule and only opens **Thursday to
-Sunday**. Monday, Tuesday and Wednesday it’s closed. The advice to "go on a
-weekday" was bad before; from September you can’t even follow it.
+Sunday**. Monday, Tuesday and Wednesday it’s closed.
 
-That leaves a very short recommendation for the weeks until the end of the
-season: **Thursday, Friday or Sunday, not Saturday.**
+Until the end of the season, your best days are **Thursday, Friday or Sunday,
+not Saturday.**
 
-There are two exceptions to that rhythm:
+The autumn holidays and the week after them are different:
 
 - During the **autumn holidays from 17 to 31 October** the park opens daily,
   plus Sunday 1 November.
@@ -475,8 +430,7 @@ The quietest of the upcoming operating days according to our calendar:
 ```
 
 April to June each carry roughly twenty to twenty-five measured days, July and
-August a few more. Those five months are solid. As anyone who has hunted for a
-parking space in August will have guessed, the summer holidays are busy.
+August a few more. Those five months are solid.
 
 January, March and December, on the other hand, have only three or four measured
 days behind their value. The order of magnitude holds, but I wouldn’t commit to
@@ -486,35 +440,27 @@ entirely.
 
 ## Halloween Horror Festival: 26 September to 8 November
 
-For six weeks a year this park is called **Horrorwood Studios**, and then people
-come who otherwise never set foot in a theme park.
+For six weeks a year this park is called **Horrorwood Studios**.
 
 The **Halloween Horror Festival** runs in its **28th edition** in 2026, on 22
 selected evenings from **26 September to 8 November**, under the year’s motto
-"Legends Never Die". The park itself calls it Europe’s biggest Halloween event,
-and by the numbers there’s not much to argue with: more than **300 monsters**,
-nine horror mazes, four scare zones and a monster parade. During the day the
+"Legends Never Die". The park itself calls it Europe’s biggest Halloween event, with more than **300
+monsters**, nine horror mazes, four scare zones and a monster parade. During the day the
 park runs normally from 10 am, the horror areas start in the early evening.
 
-Exactly one house is new, but it’s one with a name even people who dislike the
-genre will know: **Jason Universe** brings Jason Voorhees to Bottrop and works
+Only one house is new: **Jason Universe** brings Jason Voorhees to Bottrop and works
 its way through parts two to six of the series. The other eight come from
 previous years, two of them reworked. The **Ahoj-Brause Horror Lab** has been
-given extra scares and a new storyline around taste tests and a testing lab (not a
-sentence anyone expected to write about sherbet powder), the
+given extra scares and a new storyline around taste tests and a testing lab, the
 true crime house **Murder Museum** a pathology scene. On top of that there’s
 **PHOBIA – The Live Horror Game Show** in Studio 7, a stage show where the
 audience plays along instead of watching.
 
-There’s one date I’d put in the diary separately. On **17 October** the
-event day **Haunters Against Hate** runs for the fifth time. Bottrop was the
-first theme park anywhere to hold it, back in 2022, and I like the idea behind
-it. People whose job for six weeks is to frighten strangers spend a day standing
-publicly against exclusion.
+On **17 October**, a date I’d put in the diary separately, the event day **Haunters Against Hate** runs for the fifth time. Bottrop was the
+first theme park anywhere to hold it, back in 2022, and I like that the performers spend that day standing publicly against exclusion.
 
-How the whole thing stacks up against Traumatica, Walibi and Toverland, which
-houses cost what, and where it really hurts, is covered at length in our
-[Halloween guide 2026](/blog/halloween-theme-parks-2026).
+The comparison with Traumatica, Walibi and Toverland and the prices of the
+houses are in our [Halloween guide 2026](/blog/halloween-theme-parks-2026).
 
 The mazes aren’t included in the day ticket and are booked
 separately with a fixed time slot. If you want to do all nine, compare against
@@ -523,19 +469,19 @@ admission, and it gets you into every house once without a time slot.
 
 The daytime visit and the horror evening are two different events on
 the same ticket. For smaller children there’s **Halloween for Kids** in
-Nickelodeon LAND during the day, with crafts and games and no chainsaw. From the
+Nickelodeon LAND during the day, with crafts and games. From the
 early evening the performers roam the park, and the scare zones are explicitly
 not made for six-year-olds. If you’re there with primary school children, plan
 your departure in advance.
 
-Incidentally, a Halloween evening gets you very nearly the longest park day of
+A Halloween evening gets you very nearly the longest park day of
 the year. The park then stays open until 10 pm on Fridays and Saturdays and until
 9 pm on Sundays, the day ticket keeps running, and that gets you up to twelve
 hours in one go. Only the birthday in July ran later.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
-## The perfect day, in five sentences
+## An order for the day
 
 Head straight for
 **[Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory?bare)**
@@ -552,8 +498,7 @@ midday, because all three pick up in the late afternoon.
 **[Star Trek](ref:movie-park-germany/star-trek-operation-enterprise?bare)** you
 save for the afternoon, both are at their shortest around three o’clock.
 **[Journey to the Forbidden Chamber](ref:movie-park-germany/journey-to-the-forbidden-chamber?bare)**
-and the shows you take in along the way, both run on fixed schedules and
-couldn’t care less how busy the park is.
+and the shows you take in along the way, both run on fixed schedules however busy the park is.
 **[The High Fall](ref:movie-park-germany/the-high-fall?bare)** you do if you
 dare, and the last hour belongs to Star Trek again, all the more so on a
 Halloween evening in the dark.
@@ -566,7 +511,7 @@ that, from **27 November 2026 to 5 January 2027**, comes the winter event
 own dates and its own day tickets. The 2027 season passes from Silver up
 already include it.
 
-**Tickets.** The gate price is high, the online price isn’t:
+**Tickets.** Online the ticket is a lot cheaper than at the gate:
 
 | Ticket                                                      | Gate   | Online       |
 | ----------------------------------------------------------- | ------ | ------------ |
@@ -579,8 +524,7 @@ already include it.
 | Parking                                                     | €9     | €9           |
 
 The surcharge at the gate is twenty-five euros per adult and twenty per child.
-For two adults and two children that’s ninety euros for nobody having looked at
-their phone beforehand. Visitors
+For two adults and two children that’s ninety euros. Visitors
 with a GdB of 100 and one of the markers aG, Bl, B or H get in free, their
 companion pays €29.90. Preferred parking closer to the entrance costs €19.90 and
 is sold online only. The birthday ticket is only sold at the information desk on
@@ -599,8 +543,8 @@ Between Bronze and Gold lie €66. For that every blackout date disappears,
 parking is included, and on top come the free entries at the sister parks and
 the Bonus Club.
 
-**The sister parks** are the part hardly anyone in Bottrop has on their radar.
-For Gold and Platinum 2027 they’re already in the pass terms:
+For Gold and Platinum 2027, free entries at the **sister parks** are already in
+the pass terms:
 
 - **Three free entries** at [Bobbejaanland](ref:bobbejaanland), Slagharen and
   Weltvogelpark Walsrode.
@@ -620,17 +564,16 @@ The park will only publish its 2027 offers at the start of the 2027 season. The
 - **Discounts**: 40 % at both Walibi parks and at the Plopsa parks, 50 % at
   Belantis, Fort Fun and Schwaben Park.
 
-The 2026 list had its catches too. Every benefit required the final plastic card
+In 2026 every benefit required the final plastic card
 with the photo and couldn’t be combined with other offers, the Slagharen visits
 left out Aqua Mexicana, and Tropical Islands was off limits on Saturdays, on public
 holidays and during the school holidays in Berlin, Brandenburg and Saxony.
 
-The pass itself has three things in the small print:
+For the pass itself:
 
 - **Bronze has the most blackout dates**: all of December and January, before
   that the days from 28 to 30 November, plus every public holiday, the
   Saturdays during the NRW holidays, the October Saturdays and Halloween itself.
-  Which is to say exactly the days you want to go.
 - **Parking is only included from Gold up.** With Bronze and Silver the parking
   season ticket costs €25 extra, otherwise you pay the €9 on every visit.
 - **There’s a daily quota.** Every visit has to be registered beforehand, and
@@ -643,14 +586,12 @@ another one. The park recommends that explicitly, and after it everything is
 signposted. From Essen it’s
 around twenty minutes, from Düsseldorf a good forty, from Cologne about an hour.
 
-And on one point Bottrop beats every other big German park I know:
-**Feldhausen station is about 400 metres from the entrance.** The RE14 from
+**Feldhausen station is about 400 metres from the entrance**, closer than at any
+other big German park I know. The RE14 from
 Essen Hauptbahnhof and the RB43 from Dortmund via Herne stop there. Up to and
 including 30 September 2026 no train stops there, though, and a replacement bus
 runs from Dorsten instead. If you’d rather sit on a bus, take the **SB16**
-from Essen Hauptbahnhof, which stops at the Movie Park stop right by the main
-entrance. Getting to a German theme park without a car is otherwise a
-day’s work. Here it’s a regional train and a five-minute walk.
+from Essen Hauptbahnhof, which stops at the Movie Park stop right by the main entrance.
 
 **Food.** Pizza and pasta, since 2024 as all-you-can-eat
 at the Trattoria Hollywood, plus burgers, chips and a bakery. For what ends up on
@@ -729,36 +670,21 @@ big coasters above all, you’re better off at
 
 ## Why I still like going
 
-I didn’t do this park justice for a long time. Coming from the Rhineland you
-drive past Phantasialand to get to Bottrop, and anyone doing that wants a
-reason. Short queues aren’t one at first glance; they sound like a park where
-nothing is going on. Except that’s precisely the reason: on a normal day
-you ride more here than at Phantasialand or Europa-Park, and for six weeks a
+Coming from the Rhineland you drive past Phantasialand to get to Bottrop.
+Because the queues are short, you ride more on a normal day here than at Phantasialand or Europa-Park, and for six weeks a
 year the same sets host what is, by its own count, the biggest Halloween event
 on the continent.
 
-The second half belongs here just as much, and I say it as somebody who enjoys
-going: **this park’s best years are behind it.** They were in the Warner era,
+**This park’s best years are behind it, though.** They were in the Warner era,
 when a studio was putting money and characters into it. The park has kept
 building since, in 2011, 2017, 2018, 2021 and 2026, but without the brands that
 once made it. The last coaster for adults came in 2017, and the new attraction in
 the anniversary year is a film tunnel inside the building of a 2014 ride.
 
-And still, people come. In 2024 the park counted more visitors than in any year
-since 2002, with a record at the Halloween Horror Festival. In October they
-travel to Bottrop from all over the country, many of them every year, and anyone
-walking through the Streets of New York on a season pass isn’t doing it for the
-latest new ride. Across 45 hectares stands
-a backlot town built in 1996 with a Hollywood studio’s money, whose facades are
-still standing although the studio has been gone for twenty-two years. The park
-has changed hands three times, belongs to a group that EQT wants to sell, lost
-every brand it started out with, and at some point began building rides about
-its own past.
-
-If you’re going this autumn: take the Friday or the Sunday, not the
-Saturday, be at the entrance at ten and queue for Van Helsing’s Factory first. And if you walk back across the
-car park after closing, turn round once more. The old Vekoma that so many people
-want torn down will be lit purple, and with a bit of luck the moon is behind it.
+In 2024 the park counted more visitors than in any year
+since 2002, with a record at the Halloween Horror Festival. In October visitors travel to Bottrop from all over the country, many of them
+every year. The backlot town
+on 45 hectares with the Streets of New York, built in 1996 with a Hollywood studio’s money, is still standing.
 
 — Patrick
 

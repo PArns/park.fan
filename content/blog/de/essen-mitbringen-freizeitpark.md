@@ -9,7 +9,7 @@ excerpt: >-
   Im Heide Park, im Efteling, im Toverland, in Walibi Holland, im Futuroscope und
   in Disneyland Paris ist eigenes Essen ausdrücklich erlaubt. In Bobbejaanland,
   bei Walibi Belgium, im Parc Astérix und im Plopsaland Deutschland isst du es an
-  den Picknickplätzen. In den Wasserwelten bleibt es draußen.
+  den Picknickplätzen. In den Wasserwelten ist es verboten.
 tags:
   - freizeitpark
   - essen
@@ -93,8 +93,7 @@ Stand 9. Oktober 2026:
 | Disneyland Paris       | erlaubt, ohne Kühlbox und Tisch | Glasflaschen und Alkohol verboten, Picknickbereich vor dem Eingang | [FAQ](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages), [Theme Parks Rules](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules) |
 | Futuroscope            | erlaubt, auf allen Rasenflächen | harte Kühlboxen verboten, Taschenkontrolle                         | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3)                                                                                           |
 
-Bei „nicht geregelt“ steht in der Hausordnung weder ein Verbot noch eine Erlaubnis. Wer vor der Fahrt sicher sein will,
-fragt den Gästeservice des Parks.
+Bei „nicht geregelt“ steht in der Hausordnung weder ein Verbot noch eine Erlaubnis.
 
 ## Deutschland
 
@@ -107,7 +106,7 @@ Haupteingang.
 Picknickplätze nennt der Park auf seiner Seite mit Tipps für den Besuch: im Historischen Schlosspark Balthasar im
 Themenbereich Deutschland, neben dem Wodan Timburcoaster.
 
-In der Wasserwelt Rulantica ist mitgebrachtes Essen dagegen verboten, mehr dazu unten bei den Wasserwelten.
+In der Wasserwelt Rulantica ist mitgebrachtes Essen dagegen verboten.
 
 ### Phantasialand
 
@@ -119,17 +118,16 @@ Essen, Trinkflaschen, Kühlboxen und Glas kommen auf der Liste nicht vor.
 
 ### Heide Park
 
-Der [Heide Park](ref:heide-park) erlaubt eigenes Essen ausdrücklich. In seinem Hilfecenter steht, dass du dein Essen für
+Im Hilfecenter des [Heide Park](ref:heide-park) steht, dass du dein Essen für
 den Tag mitbringen und im Park essen kannst. Nur Glasflaschen sollen zu Hause bleiben. Grillen ist laut Parkordnung auf
 dem ganzen Gelände verboten.
 
-Wer eine starke Unverträglichkeit wie Zöliakie hat, dem rät der Park sogar zu eigenem Essen. Die Küchen im Park können
+Wer eine starke Unverträglichkeit wie Zöliakie hat, dem rät der Park zu eigenem Essen. Die Küchen im Park können
 eine Kreuzkontamination nicht ganz ausschließen, und Sonderwünsche erfüllen sie nicht.
 
 ### Hansa-Park
 
-In der Parkordnung des [Hansa-Park](ref:hansa-park) steht kein Satz zu mitgebrachtem Essen. Verboten sind Grillen, Grill-
-und Kochgeräte, Alkohol und Drogen. Glasflaschen zählt die Parkordnung zu den gefährlichen Gegenständen, neben Messern
+Die Parkordnung des [Hansa-Park](ref:hansa-park) verbietet Grillen, Grill- und Kochgeräte, Alkohol und Drogen. Zu mitgebrachtem Essen sagt sie nichts. Glasflaschen zählt die Parkordnung zu den gefährlichen Gegenständen, neben Messern
 und Laserpointern.
 
 In den Attraktionen und in den Indoorshows ist Essen und Trinken untersagt. Das gilt für jeden Gast, auch für Essen, das
@@ -144,8 +142,7 @@ Essen, Getränken, Glas oder Kühltaschen im Park steht darin nichts.
 ### Movie Park Germany
 
 Die Parkordnung des [Movie Park Germany](ref:movie-park-germany) verbietet, Alkohol mitzubringen, und das Grillen auf
-dem ganzen Gelände. Große Koffer und andere sperrige Gegenstände bleiben draußen. Zu mitgebrachtem Essen steht darin
-nichts.
+dem ganzen Gelände. Zu mitgebrachtem Essen steht darin nichts. Große Koffer und andere sperrige Gegenstände bleiben draußen.
 
 Beim Halloween Horror Festival gelten eigene Regeln. Laut den FAQ des Festivals sind Alkohol und alle Getränke in
 Glasflaschen verboten, ebenso Deo als Spray, während Roller und Stift erlaubt sind. Vor dem Einlass werden Personen und
@@ -164,7 +161,7 @@ Warteschlangen darfst du nicht essen und trinken, und Alkohol darfst du nicht mi
 
 ### Efteling
 
-Das [Efteling](ref:efteling) schreibt es am deutlichsten. Im Parkreglement steht unter der Überschrift „Eigen eten en
+Im Parkreglement des [Efteling](ref:efteling) steht unter der Überschrift „Eigen eten en
 drinken“, dass du eigenes Essen und Trinken mitbringen darfst. Dasselbe steht in den FAQ des Parks.
 
 Ist es voll, bittet der Park, das Mitgebrachte an einem der Picknickplätze zu essen statt in den Restaurants oder auf deren Terrassen.
@@ -174,13 +171,12 @@ Ist es voll, bittet der Park, das Mitgebrachte an einem der Picknickplätze zu e
 Das [Toverland](ref:attractiepark-toverland) erlaubt eigenes Essen und stellt zwei Mikrowellen bereit, die du kostenlos
 nutzen kannst, an der Waldstube und an der Katara Plaza. Der Park nennt sie auch zum Aufwärmen von Fläschchen.
 
-Alles Weitere regelt das Parkreglement. Es liegt am Eingang aus und steht auf der Website als Download.
+Das Parkreglement liegt am Eingang aus und steht auf der Website als Download.
 
 ### Walibi Holland
 
 [Walibi Holland](ref:walibi-holland) erlaubt eigenes Essen und Trinken ausdrücklich und weist im Park Picknickplätze aus.
-Glas und Alkohol darfst du laut Parkregeln nicht mitbringen. Abseits der Wege und der Picknickplätze sind die Flächen
-gesperrt, eine freie Wiese zum Essen gibt es also nur dort, wo der Parkplan sie zeigt.
+Glas und Alkohol darfst du laut Parkregeln nicht mitbringen. Abseits der Wege und der Picknickplätze sind die Flächen gesperrt.
 
 ## Belgien
 
@@ -198,8 +194,7 @@ Bei [Walibi Belgium](ref:walibi-belgium) hat das Picknick einen eigenen Artikel 
 Bereichen, die der Parkplan dafür zeigt, verboten in den Restaurants und auf deren Terrassen.
 
 Alkohol ist im Park verboten. Taschen, Boxen und Behälter dürfen höchstens 55 cm breit, 40 cm lang und 20 cm tief sein,
-und in dieses Maß muss auch eine Kühlbox passen. In Attraktionen und Warteschlangen ist Essen und Trinken verboten. Für
-die Wasserwelt Aqualibi gilt eine strengere Regel.
+und in dieses Maß muss auch eine Kühlbox passen. In Attraktionen und Warteschlangen ist Essen und Trinken verboten.
 
 ## Frankreich
 
@@ -213,7 +208,7 @@ In Attraktionen darfst du aus Sicherheitsgründen nicht essen und trinken, in de
 
 ### Disneyland Paris
 
-[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) erlaubt eigenes Essen, mit zwei Einschränkungen.
+[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) erlaubt eigenes Essen.
 Mahlzeiten, für die du eine Kühlbox, einen Tisch oder sperrige Behälter brauchst, sind im Disneyland Park und im Walt
 Disney Studios Park verboten. Für ein solches Picknick gibt es einen Picknickbereich zwischen Parkplatz und Eingang.
 
@@ -223,12 +218,11 @@ bittet der Park darum, nicht zu essen und zu trinken.
 
 ### Futuroscope
 
-Im [Futuroscope](ref:futuroscope) darfst du laut FAQ auf allen Rasenflächen picknicken. Das ist die freieste Regel der fünfzehn Parks.
+Im [Futuroscope](ref:futuroscope) darfst du laut FAQ auf allen Rasenflächen picknicken.
 
-Harte Kühlboxen sind verboten, sperrige Taschen sollen draußen bleiben, und am Eingang werden Taschen kontrolliert. Die
-Kühlbox lässt du im Auto: Du darfst den Park im Lauf des Tages verlassen und wieder hinein.
+Harte Kühlboxen sind verboten, sperrige Taschen sollen draußen bleiben, und am Eingang werden Taschen kontrolliert. Weil du den Park im Lauf des Tages verlassen und wieder betreten darfst, kann die Kühlbox im Auto bleiben.
 
-## Die Wasserwelten: eigenes Essen bleibt draußen
+## Die Wasserwelten
 
 In allen vier Wasserwelten, deren Regeln wir verglichen haben, ist mitgebrachtes Essen verboten.
 
@@ -246,13 +240,9 @@ Gastronomiebereichen. Jeder Ausgang aus der Aquascope ist endgültig, auch für 
 
 Brote, Obst und Snacks packst du in einen Rucksack oder eine weiche Kühltasche. Eine Kühlbox ist im Parc Astérix und in
 Disneyland Paris verboten, im Futuroscope die harte, und Walibi Belgium lässt nur Taschen bis 55 × 40 × 20 cm hinein.
-Für Getränke nimmst du eine Flasche aus Kunststoff oder Metall, denn Glas ist in fünf der fünfzehn Parks verboten, dazu in Rulantica. Grill,
-Kocher und Alkohol bleiben zu Hause.
+Für Getränke nimmst du eine Flasche aus Kunststoff oder Metall, denn Glas ist in fünf der fünfzehn Parks verboten, dazu in Rulantica.
 
-Gegessen wird auf den Picknickplätzen. Wo ein Park Essen in Warteschlangen oder Attraktionen erwähnt, verbietet er es. Im
-Futuroscope darfst du dich auf jede Rasenfläche setzen, in Disneyland Paris liegt der Picknickbereich vor dem Eingang,
-und im Europa-Park sind es die Plätze im Schlosspark Balthasar. Im Toverland wärmst du dein Essen oder ein Fläschchen
-kostenlos in der Mikrowelle auf.
+Wo ein Park Essen in Warteschlangen oder Attraktionen erwähnt, verbietet er es.
 
 ## Häufige Fragen
 
@@ -306,8 +296,6 @@ In der Hausordnung, die je nach Park Parkordnung, Parkreglement, Park Rules oder
 in den FAQ auf der Website des Parks.
 
 ## Quellen
-
-Hausordnungen ändern sich, oft zum Beginn einer Saison. Vor dem Besuch lohnt ein Blick in die aktuelle Fassung.
 
 - Europa-Park, Park Rules: [europapark.de](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations)
 - Europa-Park, Tipps für Ihren Besuch (Picknickplätze): [europapark.de](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park)

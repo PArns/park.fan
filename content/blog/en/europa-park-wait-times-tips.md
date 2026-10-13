@@ -1,5 +1,5 @@
 ---
-title: 'Europa-Park: Germany’s biggest park, and where everybody went'
+title: 'Europa-Park: Germany’s biggest park'
 translationKey: europa-park-guide
 date: '2026-08-21'
 updatedAt: '2026-10-04'
@@ -8,8 +8,9 @@ mode: published
 featured: false
 excerpt: >-
   No park in Germany sells more tickets, and yet you queue less in Rust than at
-  Phantasialand. When the park is quietest, which Swiss and Alsatian holidays
-  fill it, and why you should ride Euro-Mir now or never.
+  Phantasialand. It is quietest on Sundays and Thursdays in May and June,
+  outside the holidays in Baden-Württemberg, Switzerland and Alsace. Euro-Mir
+  runs until 9 January 2027 and then comes down.
 tags:
   - europa-park
   - voltron
@@ -65,18 +66,16 @@ seo:
 No park in Germany sells more tickets than
 [Europa-Park](ref:europa-park?long), a good six million a year. And still you
 queue less in Rust than at Phantasialand, which draws only a third of that
-crowd. It reads like a typo in the press kit.
+crowd.
 
 We’ve been recording wait times in Rust since
 26 December 2025, ride by ride, and whatever the boards are showing right now sits on the
 [park page](ref:europa-park?bare), refreshed every five minutes.
 
-Anyone going in 2026 also catches something for the last time. A training
-module from the Mir space station stands at the entrance to Euro-Mir. Not a
-replica. A real one, the kind cosmonauts trained in. Three of them, Alexander
+Anyone going in 2026 can still ride Euro-Mir. At its entrance stands a training
+module from the Mir space station in which cosmonauts really trained. Three of them, Alexander
 Viktorenko, Yuri Malenchenko and Alexander Serebrov, were there in June 1997
-when the ride opened. People have walked past it ever since, taken it for
-rather elaborate scenery, and climbed into a car that turns on its own axis out on the track.
+when the ride opened.
 
 After the winter season the ride comes down. The park has announced a farewell
 event for **9 January 2027**.
@@ -98,39 +97,32 @@ The ten attractions you queue longest for, with today’s number beside them:
 ```
 
 “Typical” is the median of all readings, “Peak” the 90th percentile, the value
-only one reading in ten went above. Neither covers how a queue
-moves over the course of a day.
+only one reading in ten went above.
 
 The Voletarium is the odd one out. Its median is the lowest of the
 ten longest, yet its peak comes close to those of the big coasters. A flying theatre
 loads in big batches. Between two showings hardly anyone is waiting, and on a
-busy morning the queue reaches out into the square. Average that over a day and
-nothing of it is left.
+busy morning the queue reaches out into the square.
 
-Otherwise nothing on the list stands out. Voltron
+Voltron
 clocked up 3.25 million rides in its first year and has the longest queue in the
 park, and for a park with over six million guests **that longest queue is
-surprisingly short**. The comparison, same data basis, same method:
+surprisingly short**. The table compares parks with the same data basis and the same method:
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
 ```
 
-The attendance figures aren’t in the table, because they behave differently
-from everything else here: they come from the TEA index, appear once a year and
-then don’t change for a year. For 2024 that’s 6.2 million in Rust for the
+The attendance figures come from the TEA index, which appears once a year. For 2024 that’s 6.2 million in Rust for the
 theme park and not the 7.4 million of the whole resort, 2.1 million at
 Phantasialand, 5.6 at the Efteling, around ten in Paris. Toverland doesn’t
 appear there at all, and the 1.17 million is the park’s own figure. For each park
 the table names the attraction with the highest median for which we have at
 least a hundred days of measurements. At Toverland, Maximus' Blitz Bahn actually
-sits above that, but on only 61 days of measurement (as of 25 September 2026), and we’re not letting a children’s
-coaster with a thin measurement base speak for a whole park, however keen it
-might be.
+sits above that, but on only 61 days of measurement (as of 25 September 2026), and we don’t take a children’s coaster with so few days of measurement as the yardstick for a whole park.
 
 With roughly a third of the crowd, Phantasialand has noticeably longer queues
-park-wide. That comes down to the shape of the site rather than the rides, and the
-arithmetic is in the [Phantasialand guide](/blog/phantasialand-wait-times-tips).
+park-wide. That comes down to the shape of the site; the arithmetic is in the [Phantasialand guide](/blog/phantasialand-wait-times-tips).
 For the [Efteling](/blog/efteling-disney-of-the-netherlands) and
 [Toverland](/blog/toverland-troy-wait-times-tips) we ran the same calculation.
 And in Paris, where a good one and a half times as many guests come through, the
@@ -144,11 +136,9 @@ the numerator. I worked through it at length in
 for it I know in Europe, because both halves of the fraction are extreme.
 
 On top, 6.2 million. Underneath, **96 attractions**, fourteen of them roller
-coasters, spread over 95 hectares. A guest working out at ten in the morning what
-to do next has thirty options here, not three. The themed areas are built as
+coasters, spread over 95 hectares. The themed areas are built as
 countries and therefore sit in one long chain instead of a ring around a central
-square. Walking from Croatia to Ireland takes about as long as getting out of Ikea
-without the shortcut. That’s hard on the legs
+square. That’s hard on the legs
 and good for the queues, because it pulls the crowd apart across the day.
 
 Then there’s the length of the season. The 2026 season runs from 28 March to 9
@@ -160,20 +150,17 @@ works out at just under 22,000 guests a day, spread over 95 hectares.
 
 ## No fast pass at Europa-Park, and what there is instead
 
-Europa-Park sells no queue pass. Wave your credit card at the line all you
-like, it won’t get you past anyone. At
+Europa-Park sells no queue pass. At
 [Phantasialand](ref:phantasialand?bare) the
 [Quick Pass](/blog/phantasialand-wait-times-tips) does that job, at the
 [Walibi parks](/blog/walibi-holland-untamed-hard-gaan) the Fast Lane.
 
-That counts for more than the acreage. Where cutting the line is for sale,
+Where cutting the line is for sale,
 waiting time moves from the people who pay to the people who don’t. Average
 wait time doesn’t drop by a single minute, it just lands more unevenly. In Rust
 nobody buys their way past the regular queue, and anyone coming through the
 VirtualLine has simply spent their wait somewhere else. The median we measure is
 therefore close to what everybody gets.
-
-Four things exist all the same:
 
 **Single rider.** Six attractions have their own line for people riding alone
 and filling up leftover seats: [Arthur](ref:europa-park/arthur?bare),
@@ -181,9 +168,7 @@ and filling up leftover seats: [Arthur](ref:europa-park/arthur?bare),
 [Eurosat](ref:europa-park/eurosat-cancan-coaster?bare),
 [Voletarium](ref:europa-park/voletarium?bare),
 [Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare) and
-[Wodan](ref:europa-park/wodan-timburcoaster?bare). It costs nothing, and you
-won’t be sitting next to whoever you came with, which, depending on who that
-is, may be a selling point. Which rides take part changes from season to season.
+[Wodan](ref:europa-park/wodan-timburcoaster?bare). It costs nothing, and you won’t be sitting next to whoever you came with. Which rides take part changes from season to season.
 
 **Virtual Line.** The park app lets you book a time slot for individual
 attractions instead of standing in the queue. In September 2026 that meant
@@ -199,9 +184,7 @@ queue somewhere else.
 **Early entry for hotel guests.** Anyone sleeping in one of the resort hotels
 may enter part of the park **45 minutes** before the official opening in the
 summer and Halloween seasons, from 8:15 a.m. In the HALLOWinter and winter
-seasons it’s a full hour, from 10 a.m. That’s the only head start that applies
-to the whole park, and it hangs on an overnight stay rather than a surcharge on
-the day ticket.
+seasons it’s a full hour, from 10 a.m. This head start comes only with an overnight stay; it can’t be added to a day ticket.
 
 **Eurosat Coastiality.** The VR version of Eurosat has its own station and its
 own trains on the same track. Pay €7 for a timed ticket and you ride Eurosat
@@ -212,15 +195,13 @@ for all three VR experiences in the park €14.
 
 ![The black Eurosat Coastiality building with a white mask and lettering | Eurosat Coastiality: its own station, its own trains, the same track as Eurosat. The ride costs €7 extra. | wide](/media/europa-park/eurosat-coastiality-16x9.jpg)
 
-## A showroom that got slightly out of hand
+## Mack Rides and the history of the park
 
-The company is older than the country it stands in. **Paul Mack** founded a
+**Paul Mack** founded a
 cartwright’s workshop in Waldkirch in the Black Forest in **1780**, and what it
 built were carriages and mail coaches. Eight generations later the workshop
 still stands in the same place, in the same family, and delivers to more than
 seventy countries.
-
-The road from the carriage to the roller coaster took a century and a half:
 
 | Year     | What happened in Waldkirch                                        |
 | -------- | ----------------------------------------------------------------- |
@@ -248,10 +229,9 @@ counted together.
 
 In the early seventies **Franz Mack** had a practical problem. His customers sat
 in Europe, in the USA, in Japan, and anybody who wants to buy a roller coaster
-wants to ride it first. A catalogue won’t do. On a trip to the USA in **1972**
+wants to ride it first. On a trip to the USA in **1972**
 he and his son **Roland Mack** hit on the idea of putting the rides up in one
-place where they could be demonstrated. A furniture store where you’re allowed
-to sit on the sofas, except the sofas loop.
+place where they could be demonstrated.
 
 The name has nothing to do with the
 country theme, which only arrived ten years later. The first plot of land lay
@@ -279,8 +259,7 @@ Europe, the Middle East and Africa, behind the Disneyland Park in Paris.
 Behind it sits a resort that, by its own account, employs more than 5,500
 people in season, and a park on 95 hectares. Eleven times the park has won the
 **Golden Ticket Award** for best theme park in the world, most recently on
-12 September 2026 in Austin, Texas. Plenty of write-ups turn that into an
-unbroken run, except that Dollywood won in 2023 and Europa-Park came second, and
+12 September 2026 in Austin, Texas. The run isn’t unbroken: Dollywood won in 2023 and Europa-Park came second, and
 there was no ceremony in 2020 because of the pandemic. It also comes first in
 my [ranking of German parks for coaster fans](/blog/best-theme-parks-in-germany).
 
@@ -294,32 +273,30 @@ lists the children’s coaster Ba-a-a Express as a ride by ART Engineering.
 
 Sorting the park by European countries wasn’t the plan in 1975. It began in
 1982, seven years after the opening, with Italy.
-After that they came thick and fast, by theme-park standards: the Netherlands (1984), England (1988),
+After that came the Netherlands (1984), England (1988),
 France (1989), Austria and Scandinavia (1992), Switzerland (1993), Spain (1994),
 Germany (1996), Russia (1998), Greece (2000), Portugal (2005), Iceland (2009),
 Ireland and Luxembourg (2016), Liechtenstein (2023), Croatia (2024). Alongside
 them sit areas that aren’t countries at all, among them the Adventure Land,
 Grimm’s fairy-tale forest and the Kingdom of the Minimoys from 2014.
 
-Two of those dates I had muddled for years. The Swiss Bob Run has stood in the
+The Swiss Bob Run has stood in the
 park since 1985, and the Swiss themed area was only built around it eight years
-later. And the German area arrived ninth, twenty-one years after the opening.
+later. The German area arrived ninth, twenty-one years after the opening.
 
 The eighteenth country arrived for the 2026 season: **Monaco**, built around the
 existing Silver Star coaster, which has thereby moved from the French part of
-the park into the Monegasque one without shifting a metre. Côte d’Azur
+the park into the Monegasque one. Côte d’Azur
 architecture, a digital aquarium made together with the Oceanographic Museum,
 racing cars from Prince Albert II’s collection and a quiz about the
 International Circus Festival of Monte-Carlo in the converted Silver Star hall,
 and a Café de Paris. The area opened with the season in March; the princely
 family inaugurated it officially on 30 June 2026.
 
-My favourite detail about this arrangement has nothing to do with a ride. In the
-Irish area, the children’s world, sits a stork’s nest older than the themed area
+In the Irish area, the children’s world, sits a stork’s nest older than the themed area
 around it. Four more sit on a staff building, on the tower of the Santa Isabel
 and on the roof of the Bell Rock. The storks are wild birds that come back
-every spring, and going by their rings, it’s the same pairs year after year. Millions of people walk
-underneath, and up top the brooding carries on undisturbed.
+every spring, and going by their rings, it’s the same pairs year after year.
 
 ## The Europa-Park roller coasters
 
@@ -348,14 +325,12 @@ head and no padding on your shoulders, through all seven inversions.
 
 ```
 
-The element list is long. Top hat, dive loop, zero-g stall, Immelmann, an
+The elements are a top hat, dive loop, zero-g stall, Immelmann, an
 element called the Ejection Drifter, two corkscrews, a cutback, and in one of
-them you hang in the restraints for 2.2 seconds straight. On paper that reads
-like any other modern launch coaster. The difference lies in the order. Most
+them you hang in the restraints for 2.2 seconds straight. Most
 rides of this kind fire you off once and then work through their programme;
 here the backwards launch comes after the turntable, and from then on you simply
-no longer know which way is forward. Nothing about that changes before the final
-brake. On the turntable
+no longer know which way is forward. On the turntable
 the whole train laughs, because nobody expects a roller coaster to stop halfway
 through and spin.
 
@@ -366,24 +341,20 @@ park’s 2024 count. The 2024 Golden Ticket Award for best new roller coaster in
 world came on top, and in 2026 the same poll put it among the ten best steel
 coasters.
 
-On a first visit you miss the setting around it, because you’re heading for the
-ride. The story told here is built around **Nikola Tesla**, born in what is now
+The story told here is built around **Nikola Tesla**, born in what is now
 Croatia, and the station is dressed as a converted hydroelectric plant. The
 **Wardenclyffe Tower** stands twice in the area, the Long Island tower with
 which Tesla set out in 1901 to transmit electricity wirelessly until the money
-ran out; in 1917 it was blown up. In Rust it stands again, lit up,
-and this time somebody else pays for the electricity.
+ran out; in 1917 it was blown up. In Rust it stands again, lit up.
 Sponsor Rimac builds electric hypercars a few hundred kilometres to the south,
 and “nevera” is Croatian for the sudden storm that blows up over the Adriatic in
 summer.
 
-Half of southern Germany drove to Rust for this ride in 2024. The first year
-brought 3.25 million rides, and its typical wait sits well above the park
+The first year brought 3.25 million rides, and its typical wait sits well above the park
 average, higher than at any other ride in the park.
 
-**[Silver Star](ref:europa-park/silver-star)** is the grande dame with the
-records. Built in 2002 by **Bolliger & Mabillard** of Monthey in the Valais,
-their first installation in Germany, and on opening the tallest and fastest
+**[Silver Star](ref:europa-park/silver-star)** was built in 2002 by **Bolliger & Mabillard** of Monthey in the Valais,
+their first installation in Germany, and on opening was the tallest and fastest
 steel roller coaster in Europe. 73 metres, 130 km/h by the park’s own figure,
 1,620 metres of track, not one inversion. The name comes from the former
 sponsor, the star from Stuttgart. After about 25 years the park and
@@ -398,9 +369,7 @@ with the Monaco makeover, the name stayed.
 
 **[Wodan](ref:europa-park/wodan-timburcoaster)** dates from 2012 and is the
 park’s only wooden coaster, built by **Great Coasters International**. Forty
-metres tall, a good kilometre long, 100 km/h and up to 3.5 g. The construction
-figures read like the shopping list for a very large garden shed: around fifty
-carpenters, 1,000 cubic metres of pine, 21,000 beams, 100,000 bolted joints and
+metres tall, a good kilometre long, 100 km/h and up to 3.5 g. Around fifty carpenters built it from 1,000 cubic metres of pine, with 21,000 beams, 100,000 bolted joints and
 two million nails.
 
 ```glossary-widget slug=wooden-coaster
@@ -417,9 +386,7 @@ feels like being turned over in slow motion.
 **[Eurosat CanCan Coaster](ref:europa-park/eurosat-cancan-coaster)** has been
 running entirely inside a silver sphere since 1989. In 2018 the ride was
 rethemed from space to Paris, with a Moulin Rouge façade in front of it. 198
-seconds in the dark. That its typical wait keeps up with the big outdoor coasters
-has a mundane explanation. It’s one of the few rides that keeps running reliably in the rain, and when it
-rains in Rust, everybody remembers that at the same moment.
+seconds in the dark. Its typical wait keeps up with the big outdoor coasters, because it’s one of the few rides that keeps running reliably in the rain.
 
 ![The silver Eurosat sphere above the Moulin Rouge façade | The whole ride happens inside the sphere. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
 
@@ -430,24 +397,21 @@ unusually long for a water coaster.
 turns you round on a platform 30 metres up, sends you nine metres down
 backwards, turns you back and then drops you forwards into the pool at 80 km/h.
 
-Then there are the rides nobody puts on a list and which carry half the day
-anyway: the **[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** from 1999,
+Then there are the **[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** from 1999,
 a wild mouse that hauls its cars up on a vertical lift, the
 **[Swiss Bob Run](ref:europa-park/swiss-bob-run)** from 1985,
 **[Pegasus](ref:europa-park/pegasus)** from 2006, the
 **[Alpenexpress Enzian](ref:europa-park/alpine-express-enzian)** from 1984, the
 **[Ba-a-a Express](ref:europa-park/ba-a-a-express)** in Ireland, and
 **[Arthur](ref:europa-park/arthur)**, a suspended powered coaster through the
-Kingdom of the Minimoys, whose queue need not hide behind any of the big
-coasters. And the **[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, the same track as the
+Kingdom of the Minimoys, whose queue is as long as those at the big coasters. And the **[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, the same track as the
 Enzian, only with a VR headset, which we list as a ride of its own.
 
 ![A mushroom house in the Arthur ride building, with the track running above it | Everything is oversized, because the Minimoys are tiny. | wide](/media/europa-park/arthur-16x9.jpg)
 
 And then there’s the **[Voletarium](ref:europa-park/voletarium)** from 2017, a
 flying theatre by Brogent that lets you glide over Europe with your legs
-dangling free. Of everything in the park, this is where bad planning costs you
-the most.
+dangling free. Not a coaster, but the attraction where being there at opening makes the biggest difference.
 
 ```glossary-widget slug=flying-theater
 
@@ -455,14 +419,12 @@ the most.
 
 ## What isn’t a roller coaster, and the fire of 2018
 
-Roller coasters are what people travel for. They’re also only a seventh of the
-inventory. Our database lists 96 attractions and 62 places to eat for the park
+The fourteen roller coasters are a seventh of the park. It has 96 attractions and 62 places to eat
 (as of September 2026), shows not included.
 
 ![A figure in a red coat pointing at an old sea chart | Eight of these figures come from the 1987 ride and survived the fire. | right](/media/europa-park/pirates-in-batavia-4x3.jpg)
 
-**[Pirates in Batavia](ref:europa-park/pirates-in-batavia)** is the boat ride
-everyone knows, and it carries a history you can’t see on it. On the evening of
+**[Pirates in Batavia](ref:europa-park/pirates-in-batavia)** is a boat ride that opened in 1987. On the evening of
 **26 May 2018**, at around 6:20 p.m., fire broke out in a storage building.
 It spread to the attraction and from there into the Norwegian part of the
 Scandinavian area. Around **25,000 guests** were in the park at the time. The
@@ -476,21 +438,15 @@ barriers only around the burnt-out section. Rebuilding the Scandinavian area
 then took until 23 July 2019 and over 350,000 working hours.
 
 The pirates took longer. **794 days** after the fire, on 28 July 2020, the boats
-ran again, in a 7,000 square metre new build with over a hundred figures. Eight
-of them are survivors, pirate figures from the 1987 ride, restored and now
-sitting in a lifeboat. The burning city from the old version didn’t come back;
+ran again, in a 7,000 square metre new build with over a hundred figures. Eight pirate figures from the 1987 ride survived the fire; restored, they now sit in a lifeboat. The burning city from the old version didn’t come back;
 all that’s left of it is a glow of fire behind a closed gate.
 
 ![A dinosaur wearing a knitted scarf, with a sign reading “Brontosaurus EVA” in front of it | An Alsatian farm with dinosaurs in the stalls. | left](/media/europa-park/madame-freudenreich-curiosites-4x3.jpg)
 
-The park has a fair collection of dark rides.
 **[Madame Freudenreich Curiosités](ref:europa-park/madame-freudenreich-curiosites)**
-from 2018 is an Alsatian farmyard story with dinosaurs in the barn. The farmer’s
-wife talks to you like an old acquaintance, the beasts wear knitted scarves, and
-at some point you notice you’re grinning your way through a dark ride.
+from 2018 is an Alsatian farmyard story with dinosaurs in the barn. The farmer’s wife talks to you like an old acquaintance, and the dinosaurs wear knitted scarves.
 **[Josefina’s Magical Imperial Journey](ref:europa-park/josefinas-magical-imperial-journey)**
-from 2022 is the Austrian answer to it: calmer, with one of the shortest queues in
-the park, and so the most relaxed quarter of an hour it has to offer.
+from 2022, in the Austrian area, is calmer and has one of the shortest queues in the park.
 **[Jim Button](ref:europa-park/jim-button-journey-through-morrowland)** from 2018
 travels through Morrowland, and the
 **[Castello dei Medici](ref:europa-park/castello-dei-medici)** is the haunted
@@ -500,9 +456,7 @@ castle in the Italian area.
 
 The **[Atlantis Adventure](ref:europa-park/atlantis-adventure)** from 2007 is an
 interactive dark ride in the Greek area: you sit in a submarine and shoot at
-light targets with an infrared gun. Anyone travelling with children rides it twice, because
-the first time round nobody is watching the score and the second time nobody
-watches anything else.
+light targets with an infrared gun.
 
 ![The “Abenteuer Atlantis” lettering with two carved heads above the entrance | The entrance is in Greece, just behind Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
 
@@ -512,19 +466,15 @@ four stations, the monorail shuttles between Luxembourg and Iceland, and the
 EP-Express takes you out to the hotels.
 
 That leaves the **shows**, from figure skating through acrobatics to the puppet
-plays. On 25 September 2026, the last day of the summer season, our database
-listed 26 shows for Rust with more than 170 performances between them, counting
-those at Rulantica, in the hotels and on the Traumatica stages. Wait-time
-statistics record none of it, though anybody watching the figure skaters isn’t
-standing in a queue.
+plays. On 25 September 2026, the last day of the summer season, we counted 26 shows for Rust with more than 170 performances between them, counting
+those at Rulantica, in the hotels and on the Traumatica stages.
 
 ## Euro-Mir: the last season
 
 **[Euro-Mir](ref:europa-park/euro-mir)** opened on **12 June 1997** and runs for
 the last time in the 2026/27 season, until 9 January 2027. Then it comes down. Our [news post on the farewell](/news/europa-park-euro-mir-farewell) covers the date and the successor.
 
-The ride is a strange machine, and that’s meant as a compliment. Just under
-five minutes of ride time, a good part of it spent circling two mirrored towers,
+A ride lasts just under five minutes, a good part of it spent circling two mirrored towers,
 with cars that rotate on their own axis along the way, so you never know what
 you’re about to be looking at. Around 980 metres, 28.3 metres tall, 80 km/h.
 Between the June opening and the end of the 1997 season in November alone,
@@ -536,9 +486,6 @@ towers have to come down for structural reasons but are to return in similar
 form, and the space theme stays. On 8 June 2026 the park signed a partnership
 with the European Space Agency, **ESA**, which is meant to play a part in the
 new area too.
-
-If you’re already thinking about going in 2026, don’t push it to 2027. There’s
-no summer left before the farewell event on 9 January 2027, only mulled wine.
 
 ## When Europa-Park is quietest
 
@@ -565,7 +512,7 @@ high”. At the other end, Sunday, Monday and Thursday sit level in the table. I
 still leave Monday out of my advice: it had nine days rated “high”, Sunday had
 six, and eleven Sundays came out “low”.
 
-That puts Europa-Park out of step with [everything else I record](/best-time-to-visit).
+In the [other parks I record](/best-time-to-visit) it’s different.
 At [Phantasialand](ref:phantasialand?bare) Sunday is the busiest day after
 Saturday, and at the [Efteling](ref:efteling?bare) Tuesday to Friday run below
 the weekend. More on both in the
@@ -580,9 +527,9 @@ from Switzerland; in 2025 the NZZ put the Swiss at one guest in five.
 Switzerland weighs heavier on the overnight side, where 27 per cent of all hotel
 bookings are down to it.
 
-A park like this lives on the weekend trip. People travel in on Saturday, drive
+Many guests come for a weekend. People travel in on Saturday, drive
 home again after breakfast on Sunday, and plenty of them never set foot in the
-park that morning, because the car is already packed and the boot only shuts with a knee.
+park that morning, because the car is already packed.
 
 ### The month
 
@@ -637,9 +584,7 @@ all eight regions were off at once, and all five weekdays were “high”.
 One region’s holidays on their own barely fill the park.
 Baden-Württemberg and Bavaria had their Whitsun holidays at the same time in
 2026, and five of those nine weekdays were rated “low”. The only “high” was the
-Friday after Corpus Christi. Where
-Baden-Württemberg goes for Whitsun, I don’t know. Not to Europa-Park, at least
-not all together.
+Friday after Corpus Christi.
 
 In autumn the regions take turns. In 2026 Basel and Aargau have had autumn
 holidays since late September, Hesse and Rhineland-Palatinate take the first
@@ -657,18 +602,17 @@ from 26 December 2025 to 4 January 2026 seven of ten days were rated “high” 
 ### The Friday in between
 
 Ascension Day always falls on a Thursday, and the busy day is the Friday after
-it, which half of Germany takes off to stretch the thing into a long weekend. In our data Thursday, 14 May 2026 is
+it, which half of Germany takes off. In our data Thursday, 14 May 2026 is
 rated “moderate” and the Friday after it “very high”. By Sunday the park was back
 to “low”. Corpus Christi follows the same pattern: the holiday on 4 June was rated
 “low”, the Friday after it, the 5th, “high”.
 
-One caveat: both Fridays had rotten weather. On 15 May 2026 a thunderstorm came
+Both Fridays had rotten weather. On 15 May 2026 a thunderstorm came
 through, it barely got above twelve degrees, and it still came to “very high”;
 on 5 June there were thunderstorms again. The Parkfan95 channel drives out on
-precisely these Fridays, voluntarily, and films the result. The 2026 video is
+precisely these Fridays and films the result. The 2026 video is
 called “The emptiest full day”, the 2025 one has “long queues” and “tips for
-full days” in its title. A Friday like that in sunshine looks nothing like our two
-measurements.
+full days” in its title.
 
 https://www.youtube.com/watch?v=aRH5xvAKE_I
 
@@ -677,7 +621,7 @@ https://www.youtube.com/watch?v=aRH5xvAKE_I
 Both from the real [Parkfan95](https://parkfan95.de), meaning Silas. He has the
 name; I just happened to buy the domain first.
 
-### The four weeks hardly anybody knows about
+### HALLOWinter in November
 
 The park runs four seasons back to back:
 
@@ -692,8 +636,7 @@ The park runs four seasons back to back:
 the Halloween decoration slowly comes down and the winter decoration goes up.
 Most attractions keep running, Voltron, Wodan and Eurosat among them. Poseidon
 and Atlantica are on the HALLOWinter schedule, but in cold, wind or ice they may
-stay shut, and the rebuilding can close the odd area. Hardly anyone plans a park
-day for early November; most people are still looking for last winter’s gloves.
+stay shut, and the rebuilding can close the odd area.
 
 Of the eight regions, only Bavaria has school holidays in these weeks, in the
 first week of November. Going by everything we measured from April to
@@ -705,7 +648,7 @@ in Rust yet.
 
 ```
 
-There’s a price for it. The park doesn’t open until 11 a.m. and closes at 7
+The park doesn’t open until 11 a.m. and closes at 7
 p.m. at the earliest, an hour less than in summer, darkness comes early, and the
 water rides can’t be relied on. If Poseidon and Atlantica mean nothing to you, a
 weekday in November is worth a try all the same. Which days look quietest right
@@ -715,7 +658,7 @@ now is in the calendar above.
 
 **Be at the gate before it opens, and then go to the Voletarium.**
 
-That sounds as if I read the list upside down. Our rope-drop analysis compares, for every
+Our rope-drop analysis compares, for every
 attraction, the wait right at opening with the highest daily peak measured there
 on a busy day. At the Voletarium the queue at opening is a fraction of that peak,
 by far the biggest saving anywhere in the park.
@@ -725,8 +668,6 @@ by far the biggest saving anywhere in the park.
 ```
 
 At Voltron, Arthur and Silver Star an early start saves less than half as much.
-All respectable, none of it worth getting up at eight for. The roller coasters
-can be spread across the day, the flying theatre can’t.
 
 How far it all spreads across the day only becomes visible hour by hour: the
 typical wait in each hour, the median across every operating day we have
@@ -738,20 +679,16 @@ measured since late December 2025. Each ride’s busiest hour is in bold.
 
 ![Lift hill and first drop of Silver Star above the treetops, evening sky | Since 2026 the ride has belonged to the new Monaco area. | right](/media/europa-park/silver-star-4x3.jpg)
 
-The row that surprised me first time round is Silver Star’s. Ten and eleven in
-the morning bring its longest queue of the day, from midday it gets noticeably
-shorter and only picks up again in the evening hours of long summer days. The
-73-metre coaster spends the whole afternoon below its potential, because
-everybody was already there in the morning.
+At Silver Star, ten and eleven in the morning bring the longest queue of the day, from midday it gets noticeably
+shorter and only picks up again in the evening hours of long summer days.
 
 **The busiest hours fall between ten and twelve.** Most rides hit their maximum
 at ten or at eleven; only Arthur, Atlantica and the fjord rafting peak in the
-afternoon. Take a leisurely breakfast, arrive at half past ten, and you walk
-straight into the day’s maximum.
+afternoon.
 
 ![A shattered wooden ship in the Poseidon water basin, with a fortress wall behind it | Nearly empty at opening, longest queue of the day at eleven. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
-Then the water rides. Both have hardly any queue when the park opens; Poseidon peaks at eleven, Atlantica only in the afternoon. Anybody willing to get wet in the morning and spend the rest of it in damp socks rides both
+Both water rides have hardly any queue when the park opens; Poseidon peaks at eleven, Atlantica only in the afternoon. Anybody happy to get wet in the morning rides both
 in the time one of them would cost at midday.
 
 A plan for the day that follows from that:
@@ -789,7 +726,7 @@ then, and the day’s peak can’t come before eleven.
 
 **Booking Saturday because the hotel has a room on Saturday.** Saturday is the
 busiest day of the week and Sunday one of the quietest, and you pay the difference at
-every single queue. Ten attractions in a day, ten times over. If you’re staying two nights anyway, turn the order
+every single queue. If you’re staying two nights anyway, turn the order
 around: arrive on Saturday, see Rulantica or the village, go into the park on
 Sunday.
 
@@ -820,10 +757,8 @@ guests and invited guests.
 
 ## Traumatica, the park inside the park
 
-In our database **[Traumatica](ref:traumatica)** is a park in its own right,
-with its own entry, its own attractions and its own calendar. That fits, because
-it has its own site, gate, ticket, age limit and opening hours. Plan a Europa-Park day on the assumption that the scary stuff
-is included in the evening, and you’ve planned it wrong.
+On park.fan **[Traumatica](ref:traumatica)** has a park page of its own, with its own attractions and its own calendar, because
+it has its own site, gate, ticket, age limit and opening hours. It isn’t included in the Europa-Park ticket.
 
 The entrance is **not the main entrance**. You walk from the big car park along
 a cycle path onto a fenced-off site, and what stands there in the dark is a
@@ -858,7 +793,7 @@ p.m., the site and the attractions from 7 p.m., last admission to the horror
 attractions at 11:30 p.m. The stage show and the ice show are in every ticket.
 The club then runs until three in the morning.
 
-**16 and over, and there’s no arguing about it.** Individual formats such as
+**16 and over.** Individual formats such as
 THE HOTEL, the clubs THE FORBIDDEN and Vampire’s Club and Eden Manor are 18 and
 over. The organisers don’t admit pregnant guests, for safety reasons.
 
@@ -908,8 +843,7 @@ day, and Rulantica has its own car park at the same price.
 
 **Food.** Our database counts **62 places to eat** in the park, and because
 every themed area is a country, every one of them cooks something different.
-Spend a day in Rust queueing only at the chip stand and you’ve done something
-wrong. Two addresses belong to the resort rather than the park. The
+Two addresses belong to the resort rather than the park. The
 **Ammolite – House of Light** in the Hotel Bell Rock, formerly “The Lighthouse
 Restaurant”, has held **two Michelin stars** since
 November 2014 and is the only two-star restaurant in a theme park anywhere
@@ -1005,20 +939,9 @@ off. Between Christmas and New Year’s Eve 2025 wait times came out at about
 August’s level, measured on six days. Measured wait times from November we
 don’t have yet.
 
-## Why I am going back once more for Euro-Mir
+## Weather and live wait times
 
-The sentence written above this park more often than any other is “best theme
-park in the world”, and it’s true insofar as an international industry vote has
-put it that way eleven times, most recently in September 2026. A different number convinces me more.
-
-Over six million people a year, and you still queue less than you would
-elsewhere. No great trick, if you spread 96 attractions over 95 hectares, open
-286 days a year and sell no pass that buys you past the line.
-
-People drive to Rust for Voltron and Silver Star. That the queue for both is so
-short is down to the eighty other things standing next to them.
-
-Whether it’s raining in Rust decides Eurosat:
+When it rains, the queue at Eurosat gets longer:
 
 ```weather-widget slug=europa-park
 
@@ -1029,9 +952,7 @@ And two you’ll queue a long time for, with their current numbers:
 [Voltron Nevera powered by Rimac](ref:europa-park/voltron-nevera-powered-by-rimac?full)
 [Arthur](ref:europa-park/arthur?full)
 
-If you do get there before 9 January, take one ride on Euro-Mir. It isn’t the best
-coaster in the park and never was. But in a few months nobody will walk past a
-real Mir training module any more on their way into a car that spins.
+If you do get there before 9 January, take one ride on Euro-Mir.
 
 — Patrick
 

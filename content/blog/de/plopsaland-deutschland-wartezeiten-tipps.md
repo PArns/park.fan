@@ -48,10 +48,9 @@ seo:
     - Plopsaland Deutschland Halloween
 ---
 
-Wer in Haßloch nach dem Holiday Park sucht, findet ihn noch. Die Zufahrt heißt weiterhin
+Die Zufahrt in Haßloch heißt weiterhin
 Holiday-Park-Straße, und die Hausnummer ist dieselbe. Auch die Achterbahn, wegen der die meisten
-kommen, steht seit 2001 an derselben Stelle. Nur der Park heißt seit dem 28. Juni 2025 anders:
-[Plopsaland Deutschland](ref:plopsaland-deutschland). Der Name kommt vom belgischen Betreiber, dem
+kommen, steht seit 2001 an derselben Stelle. Der Park selbst heißt seit dem 28. Juni 2025 [Plopsaland Deutschland](ref:plopsaland-deutschland). Der Name kommt vom belgischen Betreiber, dem
 der Park schon seit November 2010 gehört.
 
 Wer 2026 ein Ticket sucht und „Holiday Park“ eintippt, findet auch Seiten aus früheren Jahren,
@@ -68,10 +67,9 @@ alles andere in Rheinland-Pfalz. Wir messen hier seit zwei Jahren Wartezeiten, a
 
 ```
 
-## Expedition GeForce, und warum sie 25 Jahre gehalten hat
+## Expedition GeForce
 
-[bigFM Expedition GeForce](ref:plopsaland-deutschland/bigfm-expedition-geforce) ist eine
-Intamin-Bahn von 2001, und sie ist der Grund, warum Leute aus Hamburg in die Pfalz fahren. Der
+[bigFM Expedition GeForce](ref:plopsaland-deutschland/bigfm-expedition-geforce) ist eine Intamin-Bahn von 2001. Der
 Park gibt 55 Meter Höhe an, 120 km/h, 1.220 Meter Strecke, 1:15 Minuten Fahrzeit und bis zu
 4,5 g. In der deutschen Wikipedia stehen 53 Meter. Dort ist die Höhe der Schiene
 angegeben, der Park misst von der höchsten Stelle des Lifthills aus. Wo die beiden Zahlen
@@ -87,16 +85,12 @@ Award des Fachmagazins _Amusement Today_ als beste Achterbahn Europas ausgezeich
 _Internet Coaster Poll_ mehrfach zur besten Achterbahn der Welt gewählt. Der Park zählt
 inzwischen 40 Auszeichnungen.
 
-Der Grund dafür liegt hinter dem ersten Gefälle. Die Bahn hat keine Inversion, keinen Launch
-und keine Schienenweiche. Sie hat drei Hügel, auf denen es die Fahrgäste oben aus dem Sitz hebt,
-und am Ende eine Helix, in der sie in den Sitz gedrückt werden. Wer
-sich für Airtime interessiert, fährt genau deswegen hierher.
+Die Bahn hat keine Inversion, keinen Launch und keine Schienenweiche. Hinter dem ersten Gefälle hat sie drei Hügel, auf denen es die Fahrgäste oben aus dem Sitz hebt,
+und am Ende eine Helix, in der sie in den Sitz gedrückt werden.
 
-![Blick von oben auf eine rote Stahlachterbahn, deren Schiene in langen Hügeln und einer weiten Kurve durch bewaldetes Gelände läuft. | Expedition GeForce vom Free Fall Tower aus. Die drei Hügel hinter dem ersten Gefälle sind die Stellen, an denen die Bahn ihren Ruf verdient hat. Foto: Hetamin1000, Wikimedia Commons (Public Domain) | right](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
+![Blick von oben auf eine rote Stahlachterbahn, deren Schiene in langen Hügeln und einer weiten Kurve durch bewaldetes Gelände läuft. | Expedition GeForce vom Free Fall Tower aus. Im Bild die drei Hügel hinter dem ersten Gefälle. Foto: Hetamin1000, Wikimedia Commons (Public Domain) | right](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
 
-Mitfahren darfst du ab 140 Zentimetern, auch in Begleitung nicht darunter. Die Bahn fährt erst ab
-8 Grad Celsius, was im März und im November den Unterschied zwischen einem Besuch und einem
-Spaziergang ausmachen kann. Der Express Pass gilt auch hier.
+Mitfahren darfst du ab 140 Zentimetern, auch in Begleitung nicht darunter. Die Bahn fährt erst ab 8 Grad Celsius und steht deshalb an kalten Tagen im März und im November still. Der Express Pass gilt auch hier.
 
 ## Die anderen drei Achterbahnen
 
@@ -109,29 +103,26 @@ Acht-Grad-Grenze, gemessen an der Schienentemperatur.
 
 **100% Wolf – Die Familienachterbahn** ist die Neuheit der Saison 2026, eröffnet am 22. März. Gebaut hat sie Gerstlauer: 17,5 Meter hoch, 760 Meter lang, 55 km/h, ein
 Beschleunigungselement, eine Schienenweiche für die Rückwärtsfahrt und ein Spike als
-Schlusselement. Ihretwegen steht der Park dieses Jahr überhaupt in den Neuheitenlisten. Es ist eine
+Schlusselement. Es ist eine
 Familienbahn: Kinder dürfen ab 100 Zentimetern in Begleitung mitfahren und ab 130 allein. Sie
 fährt schon ab 5 Grad.
 
-In unseren Messungen wartet man an ihr länger als an jeder anderen Bahn im Park. Viel heißt das
-nicht, denn im Plopsaland steht man an fast allen Bahnen nur kurz an.
+In unseren Messungen wartet man an ihr länger als an jeder anderen Bahn im Park.
 
 **Tabalugas Achterbahn** von Zierer ist mit 9 Metern und 39 km/h die kleinste der vier und die
 einzige, die im Trockenen steht: Sie gehört zur Halle Holiday Indoor, die 2018 auf
-5.000 Quadratmetern eröffnet wurde. An einem Regentag ist das der Teil des Parks, der dann
-plötzlich voll ist.
+5.000 Quadratmetern eröffnet wurde. An Regentagen ist die Halle voll.
 
 ## Wasser, Höhe und der Rest
 
 Der Free Fall Tower war 1997 der erste Freifallturm Deutschlands, ein Giant Drop von Intamin,
-70 Meter hoch, ab 120 Zentimetern. Er ist das, was man von der A65 aus sieht, bevor man die
-Ausfahrt nimmt.
+70 Meter hoch, ab 120 Zentimetern. Man sieht ihn von der A65 aus.
 
 Für heiße Tage gibt es zwei Wasserbahnen:
 
 - **DinoSplash**, bis 2019 Donnerfluss, ist von 1984 und war der erste Rapid-River-Ride
   Deutschlands. 500 Meter, gespeist aus Grundwasser, ab 110 Zentimetern in Begleitung und ab
-  130 allein. Während der Halloween Fright Nights fährt sie bis 20 Uhr, nicht länger.
+  130 allein. Während der Halloween Fright Nights fährt sie nur bis 20 Uhr.
 - **Wickie Splash**, bis 2013 Teufelsfässer, ist eine Mack-Wildwasserbahn von 1992 mit
   20 Metern Höhe und 1.000 Metern Strecke. Sie war die erste Wildwasserbahn Europas mit
   Rückwärtsschuss. Ab 100 Zentimetern in Begleitung, ab 140 allein.
@@ -140,12 +131,10 @@ Dazu kommt **Splash Battle** im Wickieland, bei der man vom Boot aus und vom Ufe
 aufeinander schießt, sowie **Die große Welle**, ein Disk'O von Zamperla. Beide stehen wie Wickie
 Splash im Wickieland.
 
-**Sky Fly** von Gerstlauer, seit 2015 an der Stelle des verkauften Bounty Tower, ist das Gerät
-für Leute, die sich selbst überschlagen wollen. Der **Lighthouse Tower** von Funtime steht seit
+**Sky Fly** von Gerstlauer, seit 2015 an der Stelle des verkauften Bounty Tower, ist ein Fahrgeschäft, in dem man sich selbst überschlägt. Der **Lighthouse Tower** von Funtime steht seit
 2006 und ist der Aussichtspunkt, an dem man das Gelände einmal überblickt.
 
-Für die kleineren Gäste ist der Park dicht bestückt: Das Majaland von 2012 hat elf
-Attraktionen, dazu kommen Blinky Bill, Super Wings, The Beach und die Indoor-Halle. **Die
+Für kleine Kinder hat das Majaland von 2012 elf Attraktionen, dazu kommen Blinky Bill, Super Wings, The Beach und die Indoor-Halle. **Die
 Schlümpfe Abenteuer** ist eine Themenfahrt von Mack Rides, die bis Ende 2022 Burg Falkenstein
 hieß und zur Saison 2025 mit neuer Thematisierung wieder aufgemacht hat.
 
@@ -156,23 +145,20 @@ hieß und zur Saison 2025 mit neuer Thematisierung wieder aufgemacht hat.
 ## Die Themenbereiche, und was in welchem steht
 
 Der Park ist sternförmig angelegt: Vom Platz der Fontänen hinter dem Eingang gehen
-die Bereiche in alle Richtungen ab, und man kreuzt die Mitte mehrmals am Tag. Das ist bequemer,
-als es klingt, weil das Gelände mit 40 Hektar überschaubar bleibt.
+die Bereiche in alle Richtungen ab, und man kreuzt die Mitte mehrmals am Tag. Bei 40 Hektar sind die Wege kurz.
 
 Am **Platz der Fontänen** stehen der Free Fall Tower und die Tanzenden Fontänen, die
-Wasserspiele, die bei Plopsa in jedem Park vorkommen. Von hier aus sind es wenige Minuten in
-jede Richtung.
+Wasserspiele, die bei Plopsa in jedem Park vorkommen.
 
 Das **Majaland** entstand 2012 auf dem Gelände des alten Ein- und Ausgangs und hat elf
 Attraktionen für kleine Kinder, die meisten von Zamperla und Zierer: Majas Blütensplash als
 Flying Fish, der Blumenturm als kleiner Bruder des Free Fall Tower, der Verrückte Baum,
 Schmetterlingsflug, Die Frösche, Mini-Cars, Laras Marienkäferflug, Willis Floßfahrt und der
-Bienchenwirbel. Wer mit einem Dreijährigen kommt, verbringt hier den halben Tag.
+Bienchenwirbel.
 
 **Holiday Indoor** ist die Halle von 2018 mit Tabalugas Achterbahn, Mias Elfenflug, dem
 Bauernhof Karussell, einer Wellenrutsche, einem Bällebad und einem Theater mit über
-500 Sitzplätzen. Das ist der Plan B für Regen und der Grund, warum ein Oktoberbesuch hier
-weniger riskant ist als in einem reinen Freiluftpark.
+500 Sitzplätzen.
 
 Im **Pfälzer Dorf** stehen DinoSplash und Die Schlümpfe Abenteuer, dazu das Restaurant
 Pfalzgraf und das Riesenweinfass von Maurer Söhne. Im **Wickieland** stehen Wickie Splash,
@@ -190,11 +176,10 @@ Blinky Bill und seit 2026 Freddy Lupin aus 100% Wolf. Dazu kommen die Schlumpf-S
 Plopsa Heroes Show und ein Tanzprogramm.
 
 Die Zeiten stehen erst am Morgen fest. Sie hängen am Tagesprogramm, das der Park auf seiner
-Öffnungszeitenseite für jedes Datum veröffentlicht. Außerdem ziehen die Meet & Greets Publikum
-von den Bahnen ab: Während Maja um 10:50 Uhr auf der
+Öffnungszeitenseite für jedes Datum veröffentlicht. Die Meet & Greets ziehen Publikum von den Bahnen ab. Während Maja um 10:50 Uhr auf der
 Majaland-Bühne steht, ist am Free Fall Tower weniger los.
 
-## Wie lange man hier wirklich ansteht
+## Wie lange man hier ansteht
 
 Wir messen die Wartezeiten in diesem Park seit dem 7. Oktober 2024, inzwischen an 225
 Öffnungstagen. Die Zahlen unten stammen aus diesem ganzen Zeitraum, nicht aus einer einzelnen
@@ -204,20 +189,17 @@ Saison.
 
 ```
 
-Beim ersten Blick auf die Tabelle fällt auf, wie kurz die Wartezeiten sind. Der Median liegt an
+Der Median liegt an
 den meisten Attraktionen bei 5 oder 10 Minuten. Selbst im oberen Bereich eines typischen Tages
 werden daraus nur 10 bis 20. Am längsten steht man an 100% Wolf an, im Median 10 Minuten.
 
-Ein Messfehler ist das nicht. 804.218 Besucher im Jahr verteilen sich auf 57 Attraktionen anders
-als 6 Millionen auf hundert. Wer aus Europa-Park oder
-Phantasialand kommt und dort 60 Minuten für die Headliner einplant, plant hier falsch.
+Hier kommen 804.218 Besucher im Jahr auf 57 Attraktionen, in einem Großpark 6 Millionen auf hundert. Wer aus Europa-Park oder Phantasialand kommt und dort 60 Minuten für die Headliner einplant, braucht hier einen Bruchteil davon.
 
 Wie viel du an einem Tag fährst, hängt hier deshalb von den Öffnungszeiten ab und kaum von den
 Warteschlangen. Acht Stunden, davon eine für Mittagessen und
 Wege, lassen bei einem Median von zehn Minuten Platz für zwanzig und mehr Fahrten. Wer eine
 Liste mit acht Attraktionen mitbringt, ist am frühen Nachmittag durch und entscheidet dann, was
-er wiederholt. Das ist der Unterschied zu einem Großpark, in dem dieselbe Liste den ganzen Tag
-füllt.
+er wiederholt.
 
 An einem kalten Märztag, an dem Expedition GeForce und Sky Scream wegen der Kälte stillstehen,
 bleibt von den Attraktionen für Erwachsene dagegen nicht viel übrig.
@@ -243,7 +225,7 @@ DinoSplash, Wickie Splash, Die große Welle, bigFM Expedition GeForce, Sky Screa
 Tower und Sky Fly. Zwischen zwei Fahrten müssen mindestens 15 Minuten liegen, und der Park
 verkauft ihn nur in begrenzter Zahl.
 
-Rechnen lohnt sich hier mehr als anderswo. An der Bahn mit den längsten Wartezeiten liegt der Median
+An der Bahn mit den längsten Wartezeiten liegt der Median
 bei 10 Minuten. Mit dem Classic für 35 Euro sparst du also neunmal etwa zehn Minuten, grob
 anderthalb Stunden an einem Tag, an dem der Park ohnehin um 18 Uhr schließt. An einem
 Samstag im Juli oder an einer Halloween Fright Night sieht die Rechnung anders aus als an einem
@@ -257,14 +239,14 @@ Freitag im September. Der Preis bleibt dabei das ganze Jahr derselbe.
 
 ### Der Wochentag
 
-Der Samstag ist der vollste Tag der Woche, mit Abstand: Median 15 Minuten, im oberen Bereich
+Der Samstag ist mit Abstand der vollste Tag der Woche, mit einem Median von 15 Minuten, im oberen Bereich
 20, gemessen an 39 Samstagen. Die meisten anderen Tage liegen im Median bei 10 Minuten.
 
-Der ruhigste Tag ist der **Freitag**, und darauf wäre man nicht gekommen. An 38 gemessenen Freitagen liegt der Median bei 5 Minuten und damit unter
+Der ruhigste Tag ist der **Freitag**. An 38 gemessenen Freitagen liegt der Median bei 5 Minuten und damit unter
 dem von Dienstag, Mittwoch und Donnerstag. Wer einen Brückentag frei nehmen kann und die Wahl
 zwischen Freitag und Mittwoch hat, nimmt den Freitag.
 
-Eine Einschränkung dazu: Ab Ende September kippt genau dieser Vorteil, weil an den Freitagen im
+Ab Ende September kippt dieser Vorteil, weil an den Freitagen im
 Oktober die Halloween Fright Nights laufen und der Park bis 22 Uhr offen hat. Dann ist der
 Freitagabend der vollste Teil der Woche.
 
@@ -280,13 +262,10 @@ noch täglich offen hat. Der Median liegt dann bei 10 Minuten, und auch im obere
 Tages sind es nur 10, der niedrigste Wert aller Monate von April bis Oktober. Dazu ist das Wetter
 in der Pfalz im September oft besser als im Juni.
 
-März und November sind Randmonate. Da fahren Expedition GeForce und Sky Scream nur, wenn die
-Schienentemperatur acht Grad erreicht, und ein kalter Tag kostet einen die beiden Bahnen, wegen
-derer man gekommen ist.
+März und November sind Randmonate. Da fahren Expedition GeForce und Sky Scream nur, wenn die Schienentemperatur acht Grad erreicht.
 
 Bei Januar und Februar stehen null Minuten, weil der Park dann geschlossen ist. Die Saison 2026
-läuft vom 22. März bis zum 1. November. Für einen Besuch hast du also rund siebeneinhalb Monate
-zur Auswahl, und in den ersten und letzten Wochen hängt viel an der Acht-Grad-Regel.
+läuft vom 22. März bis zum 1. November.
 
 ```best-days-widget slug=plopsaland-deutschland
 
@@ -303,10 +282,9 @@ den Fright Nights: Skrämma,
 NEXUS AI, Murder District, Academy of Freaks, Scarecrow, Titty Twister und LOST: Deep in the
 woods, dazu Hollys Halloween Party und eine Begegnung mit King Pumpkin für die jüngeren Gäste.
 Auf unserer Parkseite stehen sie als eigene Attraktionen, an den übrigen Tagen als geschlossen.
-Das ist kein Fehler.
 
 An einer Fright Night schließen manche Tagesattraktionen früher als der Park, DinoSplash etwa
-um 20 Uhr. Statt acht Stunden hast du dann zwölf, und die letzten vier gehören den Mazes. Was der Park für diese Saison
+um 20 Uhr. Statt acht Stunden hast du dann zwölf, und die letzten vier sind für die Mazes. Was der Park für diese Saison
 angekündigt hat, steht im Beitrag über die
 [Halloween Fright Nights 2026](/blog/plopsaland-deutschland-halloween-fright-nights-2026).
 
@@ -318,26 +296,21 @@ Liliputstadt hieß. Die Familie betrieb seit Generationen einen Zirkus mit klein
 Künstlern, und der Park gab ihm einen festen Ort; der Bereich bestand bis 1996. Den Namen
 Holiday Park bekam der Park 1973.
 
-Danach wuchs der Park Schritt für Schritt:
+Danach wuchs der Park:
 1973 kam die Einschienenbahn Holiday Transit, 1978 brannte die Wilde Maus ab, 1979 kam der
 Superwirbel als erste deutsche Achterbahn mit Inversionen, 1984 der Donnerfluss, 1997 der
 Free Fall Tower, 2001 die Expedition GeForce. Aus 70.000 Quadratmetern in der ersten Saison
 wurden bis 2015 über 400.000.
 
-Zur Expedition GeForce gehört eine Episode, die den Ruf der Bahn mitgebaut hat: 2002 und 2003
-fuhr der amerikanische Hochschullehrer Richard Rodriguez hier seinen Coastermarathon, also
-Dauerfahrten über Tage hinweg. Neben der Bahn steht seither ein Denkmal dafür, und seine
-Rekordversuche brachten dem Park in diesen beiden Jahren Berichte weit über die Region hinaus.
+2002 und 2003 fuhr der amerikanische Hochschullehrer Richard Rodriguez hier seinen Coastermarathon, also
+Dauerfahrten über Tage hinweg. Neben der Bahn steht seither ein Denkmal dafür.
 
-Der Schnitt kam im November 2010, als die belgische Plopsa-Gruppe, eine Tochter von Studio 100,
-den Park übernahm. Seither ist er ein Themenpark mit zusammenhängenden Bereichen, und
+Im November 2010 übernahm die belgische Plopsa-Gruppe, eine Tochter von Studio 100, den Park. Seither ist er ein Themenpark mit zusammenhängenden Bereichen, und
 seine Maskottchen heißen Maja, Wickie, Heidi, Mia und Tabaluga statt Holly, dem Papagei, der
 vorher hier wohnte. 2012 entstand das Majaland auf dem Platz des alten Eingangs, und mit ihm
 der heutige Haupteingang. 2018 folgte die Indoor-Halle, 2026 die neue Achterbahn.
 
-Die Umbenennung vom 28. Juni 2025 ist die logische letzte Stufe davon: Der Betreiber hat seine
-anderen Parks längst Plopsaland und Plopsa genannt, und Haßloch war der letzte, der noch einen
-Namen aus der Zeit davor trug. Für Besucher ändert sie nichts außer der Suchanfrage.
+Am 28. Juni 2025 folgte die Umbenennung. Der Betreiber hatte seine anderen Parks schon Plopsaland und Plopsa genannt, und Haßloch war der letzte, der noch einen Namen aus der Zeit davor trug.
 
 ## Was als Nächstes kommt
 
@@ -345,15 +318,13 @@ Für 2028 baut der Park an einer Achterbahn, die noch keinen Namen hat: ein Xtre
 bekommen soll, wie sie The Ride to Happiness im belgischen Schwesterpark Plopsaland Belgium
 schon hat. Sie steht im Masterplan des Parks und bei RCDB als im Bau.
 
-Es wäre die fünfte Achterbahn des Parks und die erste neue seit 100% Wolf. Anders als die
-Familienbahn richtet sie sich an Erwachsene. Bis dahin bleibt die Expedition GeForce das, weswegen man herfährt.
+Es wäre die fünfte Achterbahn des Parks. Anders als die Familienbahn 100% Wolf richtet sie sich an Erwachsene.
 
 ## Übernachten und essen
 
 Ein parkeigenes Hotel gibt es nicht. Der Park arbeitet stattdessen mit Partnerhotels in
 Haßloch, Speyer, Deidesheim, Neustadt und Mannheim zusammen und verkauft Pakete aus Ticket und
-Übernachtung. Wer ohnehin in der Pfalz Urlaub macht, braucht das nicht: Die Entfernungen sind
-klein, und von Neustadt oder Speyer aus ist man in zwanzig Minuten am Parkplatz.
+Übernachtung. Wer ohnehin in der Pfalz Urlaub macht, braucht das nicht, denn von Neustadt oder Speyer aus ist man in zwanzig Minuten am Parkplatz.
 
 Essen gibt es im Park an 22 Stellen, vom Imbiss bis zum Restaurant. Die Adresse für eine warme
 Mahlzeit im Sitzen ist das Restaurant Pfalzgraf, das zwischen 2015 und 2023 Casa Palatina
@@ -361,23 +332,19 @@ hieß; Jahreskarteninhaber bekommen dort zehn Prozent Rabatt. Daneben stehen der
 und Biergarten, Pasta Point, das Koala Joe's Roadhouse im Blinky-Bill-Bereich, der Maja Burger
 im Majaland, eine Super Wings Fuel Station und ein Dunkin' Parkcafé.
 
-Der Park liegt mitten im Weinanbaugebiet, und Flammkuchen oder ein Glas Riesling gibt es hier
-auch, was man in einem Park mit Zeichentrickmaskottchen nicht unbedingt erwartet.
+Der Park liegt mitten im Weinanbaugebiet, und Flammkuchen oder ein Glas Riesling gibt es hier auch.
 
 ## Ein Tag in Haßloch, grob geplant
 
-Der Park öffnet um 10 Uhr und schließt außerhalb der Fright Nights um 18 Uhr. Acht Stunden sind
-für 57 Attraktionen knapp und für die acht, die man wirklich will, reichlich.
+Der Park öffnet um 10 Uhr und schließt außerhalb der Fright Nights um 18 Uhr.
 
-1. **10:00** Direkt zur Expedition GeForce. In der ersten halben Stunde ist sie leer, und zwei
-   Fahrten hintereinander sind hier normal und kein Glücksfall.
+1. **10:00** Direkt zur Expedition GeForce. In der ersten halben Stunde ist sie leer, und zwei Fahrten hintereinander sind normal.
 2. **10:45** Weiter zu Sky Scream, die gleich daneben liegt. Beide hängen an der
    Acht-Grad-Regel, deshalb lohnt es sich, sie früh abzuhaken, falls der Tag kalt anfängt.
 3. **11:30** 100% Wolf. Die Bahn ist neu und hat deshalb die längste Warteschlange des Parks,
    bei zehn Minuten im Median ist das gut auszuhalten.
 4. **12:30** Mittag, danach die Wasserbahnen: DinoSplash und Wickie Splash liegen so, dass man
-   sie in einem Rutsch fährt. Bei beiden wird man nass, was man sich im Oktober vorher überlegen
-   sollte.
+   sie in einem Rutsch fährt. Bei beiden wird man nass.
 5. **14:30** Free Fall Tower und Sky Fly, dazu der Lighthouse Tower für den Blick über das
    Gelände.
 6. **15:30** Mit Kindern ins Majaland und in die Indoor-Halle, ohne Kinder noch einmal zur
@@ -389,8 +356,7 @@ Abend öffnen. Manche Tagesattraktionen schließen dann früher als der Park.
 
 ## Praktisches: Anreise, Tickets, Öffnungszeiten
 
-Die Anschrift ist Holiday-Park-Str. 1–5 in 67454 Haßloch, und die Straße heißt weiterhin nach
-dem alten Parknamen. Wer eine Navigationsadresse eingibt, braucht den neuen also gar nicht.
+Die Anschrift ist Holiday-Park-Str. 1–5 in 67454 Haßloch.
 
 **Mit dem Auto.** Über die A65 oder die B9, Parkplätze direkt am Gelände. Wer nur jemanden
 bringt oder abholt, kann bis zu 45 Minuten kostenlos auf den Parkplatz fahren; die Schranke
@@ -450,7 +416,7 @@ der Median bei 5 Minuten. Im September lag er wie in den meisten Monaten der Hau
 
 ### Wie lange wartet man hier im Schnitt?
 
-Kürzer, als man aus anderen Parks gewohnt ist. Über alle gemessenen Tage wartet man im Park
+Über alle gemessenen Tage wartet man im Park
 im Schnitt gut 18 Minuten. An den einzelnen Attraktionen liegt der Median meist bei 5 bis
 10 Minuten.
 
@@ -473,8 +439,7 @@ und dem 1. November 2026 verkehrt und im VRN-Ticket und im Deutschlandticket ent
 
 ### Reicht ein Tag für den ganzen Park?
 
-Für die großen Attraktionen reicht ein Tag deutlich. 57 Attraktionen klingen nach mehr, als
-sie sind: Ein großer Teil davon sind Karussells und Spielplätze im Majaland, in der
+Für die großen Attraktionen reicht ein Tag deutlich. Ein großer Teil der 57 Attraktionen sind Karussells und Spielplätze im Majaland, in der
 Indoor-Halle und bei Super Wings, die Erwachsene ohne Kinder auslassen. Mit Kindern füllt
 derselbe Park zwei Tage, weil man dann an den kleinen Fahrgeschäften Runde um Runde fährt.
 

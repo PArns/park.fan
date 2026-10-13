@@ -1,5 +1,5 @@
 ---
-title: 'Europa-Park: il parco più grande della Germania, e dove finisce tutta la gente'
+title: 'Europa-Park: il parco più grande della Germania'
 translationKey: europa-park-guide
 date: '2026-08-21'
 updatedAt: '2026-10-04'
@@ -8,8 +8,9 @@ mode: published
 featured: false
 excerpt: >-
   Nessun parco in Germania vende più biglietti, eppure a Rust si aspetta meno
-  che al Phantasialand. Quando il parco è più vuoto, quali vacanze svizzere e
-  alsaziane lo riempiono, e perché l’Euro-Mir va fatta adesso o mai più.
+  che al Phantasialand. È più vuoto di domenica e giovedì a maggio e giugno, fuori dalle vacanze in
+  Baden-Württemberg, Svizzera e Alsazia. L’Euro-Mir gira fino al 9 gennaio 2027,
+  poi verrà smontata.
 tags:
   - europa-park
   - voltron
@@ -64,21 +65,17 @@ seo:
 
 Nessun parco in Germania vende più biglietti dell’[Europa-Park](ref:europa-park?long),
 circa sei milioni all’anno. Eppure a Rust si sta in coda meno che al
-Phantasialand, che di pubblico ne ha solo un terzo. Sembra un refuso nella cartella stampa.
+Phantasialand, che di pubblico ne ha solo un terzo.
 
 I tempi di attesa di Rust li registriamo dal 26
 dicembre 2025, attrazione per attrazione, e quello che in questo momento c’è all’ingresso
 delle code lo trovi sulla [pagina del parco](ref:europa-park?bare), aggiornato ogni
 cinque minuti.
 
-Chi ci va nel 2026 fa in tempo a vedere una cosa per l’ultima volta. All’ingresso
-dell’Euro-Mir c’è un modulo di addestramento della stazione spaziale Mir, uno di
+Chi ci va nel 2026 può ancora salire sull’Euro-Mir. Al suo ingresso c’è un modulo di addestramento della stazione spaziale Mir, uno di
 quelli in cui si sono allenati i cosmonauti. Tre di loro,
 Aleksandr Viktorenko, Jurij Malenčenko e Aleksandr Serebrov, erano presenti nel
-giugno 1997 all’inaugurazione dell’attrazione. Da allora la gente ci passa
-davanti, lo scambia per una scenografia
-parecchio curata e sale su un vagone che lungo il percorso
-gira su se stesso.
+giugno 1997 all’inaugurazione dell’attrazione.
 
 Dopo la stagione invernale l’attrazione verrà smontata. Il parco ha annunciato un
 evento d’addio per il **9 gennaio 2027**.
@@ -100,39 +97,32 @@ Le dieci attrazioni per cui aspetti di più, con accanto il valore di oggi:
 ```
 
 “Tipico” è la mediana di tutte le rilevazioni, “Picco” il 90° percentile, il
-valore che solo una rilevazione su dieci ha superato. Come si muove una coda
-nell’arco della giornata non si ricava da nessuno dei due.
+valore che solo una rilevazione su dieci ha superato.
 
 Il Voletarium è quello fuori scala. La sua mediana è la più bassa
 delle dieci più lunghe, eppure il picco si avvicina a quello delle grandi
 montagne russe. Un teatro volante carica a ondate. Tra due proiezioni non aspetta quasi
-nessuno, in una mattina piena la coda arriva fino al piazzale. Nella media della
-giornata non ne resta niente.
+nessuno, in una mattina piena la coda arriva fino al piazzale.
 
-Per il resto la lista è senza sorprese. Voltron
+Voltron
 nel primo anno ha totalizzato 3,25 milioni di corse e ha la coda più lunga del
 parco, eppure per un parco con oltre sei milioni di ospiti **questa coda più
-lunga è sorprendentemente corta**. Il confronto, stessa base dati, stesso metodo di
-calcolo:
+lunga è sorprendentemente corta**. La tabella confronta parchi con la stessa base dati e lo stesso metodo di calcolo:
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
 ```
 
-I numeri del pubblico non stanno nella tabella, perché si comportano
-diversamente da tutto il resto: vengono dall’indice TEA, escono una volta
-all’anno e poi per dodici mesi non cambiano più. Per il 2024 a Rust sono 6,2
+I numeri del pubblico vengono dall’indice TEA, che esce una volta all’anno. Per il 2024 a Rust sono 6,2
 milioni per il parco divertimenti e non i 7,4 milioni dell’intero resort, al
 Phantasialand 2,1 milioni, all’Efteling 5,6, a Parigi circa dieci. Il Toverland
 lì non compare, gli 1,17 milioni sono il dato dichiarato dal parco. Per ogni
 parco la tabella indica l’attrazione con la mediana più alta per cui abbiamo
 almeno cento giorni di rilevazione. Al Toverland ci sarebbe in realtà sopra anche la Maximus'
-Blitz Bahn, ma su appena 61 giorni di rilevazione (al 25 settembre 2026), e un coaster per bambini con
-una base di misura così sottile non lo prendiamo come metro di un parco intero.
+Blitz Bahn, ma su appena 61 giorni di rilevazione (al 25 settembre 2026), e un coaster per bambini con così pochi giorni di rilevazione non lo prendiamo come metro di un parco intero.
 
 Con circa un terzo del pubblico, il Phantasialand ha code sensibilmente più
-lunghe nella media del parco. La colpa è della forma del terreno, non delle
-attrazioni, e i conti sono nella
+lunghe nella media del parco. Dipende dalla forma del terreno; i conti sono nella
 [guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli). Per
 l’[Efteling](/blog/efteling-la-disney-dei-paesi-bassi) e il
 [Toverland](/blog/toverland-troy-tempi-di-attesa-consigli) abbiamo fatto lo
@@ -148,11 +138,9 @@ conti per esteso. L’Europa-Park è la prova migliore che conosca in Europa, pe
 da lui entrambi i lati della frazione sono estremi.
 
 Sopra ci sono 6,2 milioni. Sotto ci sono **96 attrazioni**, di cui quattordici
-montagne russe, distribuite su 95 ettari. Un ospite che alle dieci del mattino si chiede
-cosa fare dopo, qui non ha tre opzioni ma trenta. Le aree tematiche sono
+montagne russe, distribuite su 95 ettari. Le aree tematiche sono
 costruite come paesi e quindi si susseguono in una lunga catena, invece di
-disporsi in cerchio attorno a una piazza centrale. Dalla Croazia all’Irlanda ci
-vuole quanto a uscire dall’Ikea senza scorciatoia. Le gambe ne soffrono, ma la
+disporsi in cerchio attorno a una piazza centrale. Le gambe ne soffrono, ma la
 folla si distribuisce su tutta la giornata.
 
 Poi c’è la lunghezza della stagione. La stagione 2026 va dal 28 marzo al 9
@@ -160,24 +148,20 @@ gennaio 2027 senza interruzioni, con due giorni di riposo a Natale. Fanno **286
 giorni di apertura** secondo il calendario ufficiale delle stagioni. La stessa
 domanda si spalma così su una settantina di giorni in più rispetto a un parco che
 chiude a inizio novembre e riapre solo ad aprile. Sulla carta vengono
-poco meno di 22.000 ospiti al giorno, e per 95 ettari non sono molti.
+poco meno di 22.000 ospiti al giorno, distribuiti su 95 ettari.
 
 ## Niente fast pass all’Europa-Park, e cosa c’è al suo posto
 
-L’Europa-Park non vende nessun pass salta-coda. Puoi sventolare la carta di
-credito davanti alla fila quanto vuoi, non superi nessuno. Al
+L’Europa-Park non vende nessun pass salta-coda. Al
 [Phantasialand](ref:phantasialand?bare) ci pensa il
 [Quick Pass](/blog/phantasialand-tempi-di-attesa-consigli), nei
 [parchi Walibi](/blog/walibi-holland-untamed-hard-gaan) la Fast Lane.
 
-Sulle code questo pesa più della superficie, perché dove il sorpasso è in
-vendita il tempo di attesa migra da chi paga a chi non paga. L’attesa media non scende di un minuto,
+Dove il sorpasso è in vendita, il tempo di attesa migra da chi paga a chi non paga. L’attesa media non scende di un minuto,
 si distribuisce solo in modo più diseguale. A Rust nessuno si compra il passaggio
 davanti alla coda normale, e chi arriva dalla Virtual Line ha solo passato la sua
 attesa altrove. La mediana che misuriamo resta quindi vicina a quella che vive
 chiunque.
-
-Quattro cose però ci sono:
 
 **Single Rider.** Sei attrazioni hanno una coda a parte per chi viaggia da solo e
 riempie i posti rimasti liberi: [Arthur](ref:europa-park/arthur?bare),
@@ -185,9 +169,7 @@ riempie i posti rimasti liberi: [Arthur](ref:europa-park/arthur?bare),
 [Eurosat](ref:europa-park/eurosat-cancan-coaster?bare),
 [Voletarium](ref:europa-park/voletarium?bare),
 [Voltron](ref:europa-park/voltron-nevera-powered-by-rimac?bare) e
-[Wodan](ref:europa-park/wodan-timburcoaster?bare). Non costa niente, e non ti
-siedi accanto a chi è venuto con te. A seconda di chi è, può anche essere un
-vantaggio. Quali attrazioni siano incluse, il parco lo cambia di stagione in
+[Wodan](ref:europa-park/wodan-timburcoaster?bare). Non costa niente, e non ti siedi accanto a chi è venuto con te. Quali attrazioni siano incluse, il parco lo cambia di stagione in
 stagione.
 
 **Virtual Line.** Con l’app del parco si può prenotare una fascia oraria per
@@ -204,9 +186,7 @@ coda da un’altra parte.
 **Ingresso anticipato per gli ospiti degli hotel.** Chi dorme in uno degli hotel
 del resort, nelle stagioni estiva e di Halloween può entrare in una parte del
 parco **45 minuti** prima dell’apertura ufficiale, dalle 8:15. Nella stagione
-HALLOWinter e in quella invernale è addirittura un’ora intera, dalle 10. È l’unico
-vantaggio che vale per tutto il parco, e dipende da un pernottamento, non da un
-sovrapprezzo sul biglietto giornaliero.
+HALLOWinter e in quella invernale è addirittura un’ora intera, dalle 10. Questo vantaggio c’è solo con un pernottamento; non si può aggiungere al biglietto giornaliero.
 
 **Eurosat Coastiality.** La variante VR dell’Eurosat ha una stazione propria e
 treni propri sullo stesso percorso. Chi paga 7 € per un biglietto a orario fa
@@ -217,15 +197,13 @@ combinato per tutte e tre le esperienze VR del parco 14 €.
 
 ![L’edificio nero di Eurosat Coastiality con una maschera bianca e la scritta | Eurosat Coastiality: stazione propria, treni propri, lo stesso percorso dell’Eurosat. La corsa costa 7 € in più. | wide](/media/europa-park/eurosat-coastiality-16x9.jpg)
 
-## Una sala d’esposizione che è sfuggita un po’ di mano
+## Mack Rides e la storia del parco
 
-L’azienda è più vecchia del paese in cui si trova. **Paul Mack** aprì nel
+**Paul Mack** aprì nel
 **1780** a Waldkirch, nella Foresta Nera, una bottega da carradore: si
 costruivano carrozze e diligenze postali. Otto generazioni dopo l’officina sta
 ancora nello stesso posto, nella stessa famiglia, e oggi consegna in oltre
 settanta paesi.
-
-La strada dalla carrozza alle montagne russe ha richiesto un secolo e mezzo:
 
 | Anno     | Che cosa succedeva a Waldkirch                                    |
 | -------- | ----------------------------------------------------------------- |
@@ -253,17 +231,14 @@ altri modelli messi insieme.
 
 All’inizio degli anni Settanta **Franz Mack** aveva un problema pratico. I suoi
 clienti stavano in Europa, negli Stati Uniti, in Giappone, e chi vuole comprare
-una montagna russa prima ci vuole salire. Un catalogo non basta. Durante un
+una montagna russa prima ci vuole salire. Durante un
 viaggio negli USA nel **1972**, insieme al figlio **Roland Mack**, gli venne
-l’idea di montare le giostre in un posto dove poterle mostrare in funzione. Un
-mobilificio dove ci si può sedere sui divani, solo che questi divani fanno il
-giro della morte.
+l’idea di montare le giostre in un posto dove poterle mostrare in funzione.
 
 Il nome è più vecchio del tema dei paesi, arrivato dieci anni dopo. Il primo terreno si trovava
 vicino a Breisach am Rhein, sull’**Europaweiher**, lo stagno d’Europa, ed è da lì
 che il parco ha preso il nome. Di Breisach non se ne fece nulla, perché l’area fu
-poi classificata come zona di esondazione del Reno (comodo per le attrazioni
-acquatiche, meno per tutto il resto). Una seconda località vicino a
+poi classificata come zona di esondazione del Reno. Una seconda località vicino a
 Neuenburg am Rhein fallì sui collegamenti stradali. A Rust la famiglia comprò
 infine il parco del castello Balthasar e un adiacente parco delle fiabe, in tutto
 16 ettari.
@@ -273,14 +248,12 @@ dipendenti. L’ingresso costava cinque marchi per i bambini e sei per gli adult
 e il primo giorno di apertura al pubblico arrivarono circa 4.000 persone. La
 stampa locale andava dallo scettico al velenoso, un titolo dell’epoca diceva
 “Su Rust aleggia lo spettro del fallimento”. Alla fine di quella prima estate
-nelle statistiche c’erano **250.000 ospiti**, e lo spettro dovette andare ad
-aleggiare altrove. Nel 1978 fu raggiunto il primo
+nelle statistiche c’erano **250.000 ospiti**. Nel 1978 fu raggiunto il primo
 milione, nel 1991 il secondo.
 
 Cinquant’anni dopo, nell’anno del giubileo **2025**, il parco ha dichiarato per la
 prima volta **oltre sette milioni di ospiti** in un anno solare, e a novembre il
-**150 milionesimo visitatore** dal 1975. Su quel numero conviene un secondo
-sguardo, perché il comunicato non separa in modo pulito che cosa venga
+**150 milionesimo visitatore** dal 1975. Il comunicato non separa in modo pulito che cosa venga
 conteggiato. Solido è il TEA Global Experience Index per il 2024: **6,2 milioni
 per il parco divertimenti**, 1,23 milioni per il mondo acquatico Rulantica,
 insieme 7,4 milioni per il resort. Con quei numeri il parco era diciottesimo al
@@ -306,33 +279,30 @@ ART Engineering.
 
 Che il parco fosse ordinato per paesi europei, nel 1975 non era ancora il piano.
 È cominciata solo nel 1982, sette anni dopo l’apertura, con l’Italia.
-Poi è andata veloce, coi tempi di un parco divertimenti: i Paesi Bassi (1984), l’Inghilterra (1988), la Francia
+Poi sono arrivati i Paesi Bassi (1984), l’Inghilterra (1988), la Francia
 (1989), l’Austria e la Scandinavia (1992), la Svizzera (1993), la Spagna (1994),
 la Germania (1996), la Russia (1998), la Grecia (2000), il Portogallo (2005),
 l’Islanda (2009), l’Irlanda e il Lussemburgo (2016), il Liechtenstein (2023), la
 Croazia (2024). In più aree che paesi non sono, per esempio la terra delle
 avventure, il bosco delle fiabe dei Grimm e il regno dei Minimoys del 2014.
 
-Due date le ho confuse a lungo anch’io. Il Bob svizzero sta nel parco dal 1985, e
-l’area tematica svizzera gliel’hanno costruita intorno solo otto anni dopo. E
-l’area tedesca è arrivata per nona, ventun anni dopo l’apertura.
+Il Bob svizzero sta nel parco dal 1985, e
+l’area tematica svizzera gliel’hanno costruita intorno solo otto anni dopo. L’area tedesca è arrivata per nona, ventun anni dopo l’apertura.
 
 Per la stagione 2026 si è aggiunto il diciottesimo paese: **Monaco**, costruito
 attorno all’ottovolante Silver Star già esistente, che si è così trasferito dalla
-parte francese a quella monegasca del parco senza spostarsi di un metro.
+parte francese a quella monegasca del parco.
 Architettura da Costa Azzurra, un acquario digitale realizzato insieme al Museo
 Oceanografico, nella riconvertita sala di Silver Star auto da corsa della
 collezione del principe Alberto II e un quiz sul Festival Internazionale del Circo
 di Monte-Carlo, più un Café de Paris. L’area ha aperto con la stagione, a marzo;
 la famiglia principesca l’ha inaugurata ufficialmente il 30 giugno 2026.
 
-Il mio dettaglio preferito di questa classificazione non ha a che fare con nessuna
-attrazione. Nell’area irlandese, il mondo dei bambini, c’è un nido di cicogne più
+Nell’area irlandese, il mondo dei bambini, c’è un nido di cicogne più
 vecchio dell’area tematica che gli sta intorno. Altri quattro stanno su una
 palazzina del personale, sulla torre del Santa Isabel e sul tetto del Bell Rock.
 Sono uccelli selvatici che ogni primavera tornano, e
-dagli anelli il parco sa che di anno in anno sono le stesse coppie. Milioni di
-persone passano lì sotto, e sopra si continua a covare in tutta tranquillità.
+dagli anelli il parco sa che di anno in anno sono le stesse coppie.
 
 ## Le montagne russe dell’Europa-Park
 
@@ -361,14 +331,10 @@ archetti accanto alla testa e senza imbottiture sulle spalle.
 
 ```
 
-La lista degli elementi è lunga. Top hat, dive loop, zero-g stall,
-immelmann, un elemento chiamato Ejection Drifter, due cavatappi, un cutback, e in
-uno di questi resti appeso alla barra per 2,2 secondi di fila. Sulla carta si
-legge come su qualsiasi altro launch coaster moderno. La differenza sta
-nell’ordine. La maggior parte delle attrazioni di questo tipo ti spara via una
+Gli elementi sono un top hat, un dive loop, uno zero-g stall, un immelmann, un elemento chiamato Ejection Drifter, due cavatappi, un cutback, e in
+uno di questi resti appeso alla barra per 2,2 secondi di fila. La maggior parte delle attrazioni di questo tipo ti spara via una
 volta e poi svolge il suo programma; qui la partenza all’indietro arriva dopo la
-piattaforma girevole, e da lì semplicemente non sai più dove sia il davanti. Fino
-al freno finale non cambia niente. Sulla piattaforma girevole ride tutto il treno, perché nessuno si aspetta
+piattaforma girevole, e da lì semplicemente non sai più dove sia il davanti. Sulla piattaforma girevole ride tutto il treno, perché nessuno si aspetta
 che una montagna russa si fermi a metà corsa e ruoti su se stessa.
 
 Voltron è la montagna russa con inversioni più lunga d’Europa e la sesta al
@@ -378,24 +344,18 @@ secondo il parco nel 2024. Nel 2024 ci si è aggiunto il Golden Ticket
 Award come migliore nuova montagna russa del mondo, e nel 2026 la stessa
 votazione l’ha messa tra le dieci migliori montagne russe in acciaio.
 
-Alla prima visita la scenografia intorno te la perdi, perché vai dritto
-all’attrazione. La storia raccontata gira attorno a **Nikola Tesla**, nato
+La storia raccontata gira attorno a **Nikola Tesla**, nato
 nell’odierna Croazia, e la stazione è allestita come una centrale
 idroelettrica riconvertita. Nell’area tematica la **Wardenclyffe Tower** compare addirittura due
 volte, quella torre di Long Island con cui dal 1901 Tesla voleva trasmettere
-elettricità senza fili, finché non finì i soldi; nel 1917 fu fatta saltare. A
-Rust è di nuovo in piedi, illuminata, e stavolta la bolletta la paga qualcun
-altro. Lo sponsor Rimac costruisce
+elettricità senza fili, finché non finì i soldi; nel 1917 fu fatta saltare. A Rust è di nuovo in piedi, illuminata. Lo sponsor Rimac costruisce
 qualche centinaio di chilometri più a sud ipersportive elettriche, e “nevera” in
 croato è il temporale improvviso che d’estate si alza sull’Adriatico.
 
-Nel 2024 mezza Germania meridionale è andata a Rust per questa attrazione. Il
-primo anno ha fatto 3,25 milioni di corse, e la sua attesa tipica sta nettamente
+Il primo anno ha fatto 3,25 milioni di corse, e la sua attesa tipica sta nettamente
 sopra la media del parco, più in alto di qualsiasi altra attrazione.
 
-**[Silver Star](ref:europa-park/silver-star)** è la vecchia signora con i record.
-Costruita nel 2002 da **Bolliger & Mabillard** di Monthey, nel Vallese, come loro
-primo impianto in Germania, e all’inaugurazione la montagna russa in acciaio più
+**[Silver Star](ref:europa-park/silver-star)** è stata costruita nel 2002 da **Bolliger & Mabillard** di Monthey, nel Vallese, come loro primo impianto in Germania, e all’inaugurazione era la montagna russa in acciaio più
 alta e più veloce d’Europa. 73 metri, 130 km/h secondo il parco, 1.620 metri di
 percorso, nemmeno un’inversione. Il nome viene dall’ex sponsor, la stella di
 Stoccarda. Dopo circa 25 anni il parco e Mercedes-Benz hanno chiuso la
@@ -411,10 +371,7 @@ Monaco, il nome è rimasto.
 **[Wodan](ref:europa-park/wodan-timburcoaster)** è del 2012 ed è l’unico
 ottovolante in legno del parco, costruito da **Great Coasters International**.
 Quaranta metri d’altezza, un chilometro abbondante di percorso, 100 km/h e fino a
-3,5 g. I numeri del cantiere si leggono come la lista della spesa per una casetta da
-giardino enorme:
-una cinquantina di carpentieri, 1.000 metri cubi di legno di pino, 21.000 travi,
-100.000 giunzioni a vite e due milioni di chiodi.
+3,5 g. L’hanno costruito una cinquantina di carpentieri con 1.000 metri cubi di legno di pino, 21.000 travi, 100.000 giunzioni a vite e due milioni di chiodi.
 
 ```glossary-widget slug=wooden-coaster
 
@@ -431,8 +388,7 @@ sensazione di essere capovolti al rallentatore.
 interamente dentro una sfera argentata. Nel 2018 l’attrazione è passata dal tema
 spaziale a uno parigino, con davanti una facciata del Moulin Rouge. 198 secondi
 al buio. Con la sua attesa tipica tiene testa alle grandi montagne russe
-all’aperto perché è una delle poche attrazioni che sotto la pioggia funzionano in modo
-affidabile, e quando a Rust piove se ne ricordano tutti nello stesso momento.
+all’aperto perché è una delle poche attrazioni che sotto la pioggia funzionano in modo affidabile.
 
 ![La sfera argentata dell’Eurosat sopra la facciata del Moulin Rouge | Tutta la corsa si svolge dentro la sfera. | right](/media/europa-park/eurosat-cancan-coaster-4x3.jpg)
 
@@ -444,16 +400,14 @@ fa ruotare su una piattaforma a 30 metri d’altezza, ti manda nove metri giù
 all’indietro, ti gira di nuovo e poi ti lascia cadere in avanti a 80 km/h nella
 vasca.
 
-Poi ci sono le attrazioni che nessuno mette in lista e che reggono comunque mezza
-giornata: il **[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** del 1999, un
+Poi ci sono il **[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** del 1999, un
 wild mouse che porta su i vagoni con un ascensore verticale, il
 **[Bob svizzero](ref:europa-park/swiss-bob-run)** del 1985,
 **[Pegasus](ref:europa-park/pegasus)** del 2006,
 l’**[Alpenexpress Enzian](ref:europa-park/alpine-express-enzian)** del 1984, il
 **[Ba-a-a Express](ref:europa-park/ba-a-a-express)** in Irlanda, e
 **[Arthur](ref:europa-park/arthur)**, una powered coaster sospesa attraverso il
-regno dei Minimoys, la cui coda non ha niente da invidiare a quella delle grandi
-montagne russe. E
+regno dei Minimoys, la cui coda è lunga quanto quella delle grandi montagne russe. E
 l’**[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, lo
 stesso tracciato dell’Enzian, solo con il visore VR, che noi registriamo come
 attrazione a sé.
@@ -462,8 +416,7 @@ attrazione a sé.
 
 E poi c’è il **[Voletarium](ref:europa-park/voletarium)** del 2017, un teatro
 volante di Brogent che ti fa planare sopra l’Europa con le gambe che penzolano
-libere. È l’attrazione del parco su cui puoi sbagliare i tuoi piani nel modo più
-costoso.
+libere. Non è una montagna russa, ma è l’attrazione dove conta di più esserci all’apertura.
 
 ```glossary-widget slug=flying-theater
 
@@ -471,14 +424,11 @@ costoso.
 
 ## Quello che non è una montagna russa, e l’incendio del 2018
 
-Le montagne russe sono quello per cui la gente si mette in viaggio. Sono però
-soltanto un settimo dell’inventario. Il nostro database conta per il parco 96
-attrazioni e 62 punti di ristoro (a settembre 2026), spettacoli esclusi.
+Le quattordici montagne russe sono un settimo del parco. Ha 96 attrazioni e 62 punti di ristoro (a settembre 2026), spettacoli esclusi.
 
 ![Una figura con il mantello rosso indica una vecchia carta nautica | Otto di queste figure vengono dall’impianto del 1987 e sono sopravvissute all’incendio. | right](/media/europa-park/pirates-in-batavia-4x3.jpg)
 
-**[Pirates in Batavia](ref:europa-park/pirates-in-batavia)** è la gita in barca che
-conoscono tutti. La sera del
+**[Pirates in Batavia](ref:europa-park/pirates-in-batavia)** è una gita in barca aperta nel 1987. La sera del
 **26 maggio 2018**, verso le 18:20, in un capannone scoppiò un incendio. Si
 propagò all’attrazione e da lì alla parte norvegese dell’area scandinava. Nel
 parco in quel momento c’erano circa **25.000 ospiti**. Il parco venne evacuato,
@@ -501,14 +451,10 @@ intuisce soltanto come bagliore dietro un portone chiuso.
 
 ![Un dinosauro con una sciarpa di lana, davanti un cartello “Brontosaurus EVA” | Una fattoria alsaziana, nelle cui stalle stanno dei dinosauri. | left](/media/europa-park/madame-freudenreich-curiosites-4x3.jpg)
 
-Di dark ride il parco ne ha messe insieme parecchie.
 **[Madame Freudenreich Curiosités](ref:europa-park/madame-freudenreich-curiosites)**
-del 2018 è una storia di fattoria alsaziana con i dinosauri nella stalla. La
-contadina ti dà del tu, le bestie portano sciarpe di lana, e a un certo punto ti
-accorgi che stai sorridendo dentro una dark ride.
+del 2018 è una storia di fattoria alsaziana con i dinosauri nella stalla. La contadina ti dà del tu, e i dinosauri portano sciarpe di lana.
 **[Josefina’s Magical Imperial Journey](ref:europa-park/josefinas-magical-imperial-journey)**
-del 2022 è la risposta austriaca, più tranquilla, con una delle code più corte del
-parco e quindi il quarto d’ora più rilassato che abbia da offrire.
+del 2022, nell’area austriaca, è più tranquilla e ha una delle code più corte del parco.
 **[Jim Button](ref:europa-park/jim-button-journey-through-morrowland)** del 2018
 attraversa Lummerland, e il
 **[Castello dei Medici](ref:europa-park/castello-dei-medici)** è il castello dei
@@ -518,9 +464,7 @@ fantasmi nell’area italiana.
 
 **[Atlantis Adventure](ref:europa-park/atlantis-adventure)**, del 2007, è una
 dark ride interattiva nell’area greca: si siede in un sottomarino e si spara con
-gli infrarossi a dei punti luminosi. Chi
-ci va con dei bambini la fa due volte, perché la prima volta al punteggio non
-bada nessuno e la seconda nessuno bada ad altro.
+gli infrarossi a dei punti luminosi.
 
 ![L’insegna “Abenteuer Atlantis” con due teste intagliate sopra l’ingresso | L’ingresso è in Grecia, subito dietro Poseidon. | right](/media/europa-park/atlantis-adventure-4x3.jpg)
 
@@ -528,16 +472,12 @@ Dall’**[Euro-Tower](ref:europa-park/euro-tower)**, a Rust dal 1983, con il tem
 limpido si vede fino ai Vosgi. Il trenino panoramico ferma a quattro stazioni, la
 monorotaia fa la spola tra Lussemburgo e Islanda, e l’EP-Express ti porta agli
 hotel.
-Chi viene qui per la prima volta sottovaluta quasi sempre quanta parte di una
-giornata al parco consista nel camminare.
 
 Restano gli **spettacoli**, dal pattinaggio artistico all’acrobatica fino ai
 teatri di marionette. Il 25 settembre 2026, ultimo giorno della stagione estiva,
-il nostro database registrava per Rust 26 spettacoli con oltre 170
+abbiamo contato per Rust 26 spettacoli con oltre 170
 rappresentazioni in tutto, contando quelle di Rulantica, degli hotel e dei palchi
-di Traumatica. Nelle statistiche sui tempi di attesa non compaiono, ma sulle
-code incidono lo stesso, perché chi sta guardando il pattinaggio artistico
-intanto non è in fila da nessuna parte.
+di Traumatica.
 
 ## Euro-Mir: l’ultima stagione
 
@@ -545,8 +485,7 @@ L’**[Euro-Mir](ref:europa-park/euro-mir)** ha aperto il **12 giugno 1997** e
 gira per l’ultima volta nella stagione 2026/27, fino al 9 gennaio 2027. Poi verrà
 smontata. La [notizia sull’addio](/news/europa-park-saluta-euro-mir) riporta data e successore.
 
-L’attrazione è un oggetto strano, e lo dico come complimento. Quasi cinque minuti
-di corsa, di cui una buona parte attorno a due torri a specchi, e i vagoni lungo
+Una corsa dura quasi cinque minuti, di cui una buona parte attorno a due torri a specchi, e i vagoni lungo
 il percorso girano su se stessi, così non sai mai dove starai guardando tra un
 istante. Circa 980 metri, 28,3 metri d’altezza, 80 km/h. Solo tra l’inaugurazione
 di giugno e la fine della stagione, nel novembre 1997, ci sono salite circa 1,5
@@ -558,9 +497,6 @@ caratteristiche devono sparire per ragioni costruttive, ma torneranno in forma
 simile, e il tema spaziale resta. L’8 giugno 2026 il parco ha firmato una
 partnership con l’agenzia spaziale europea **ESA**, che dovrebbe avere un ruolo
 anche nella nuova area.
-
-Chi comunque sta pensando di andarci nel 2026, non lo rimandi al 2027. Da qui
-all’evento d’addio del 9 gennaio 2027 non arriva più nessuna estate, solo vin brulé.
 
 ## Quando l’Europa-Park è più vuoto
 
@@ -588,8 +524,7 @@ calendario non c’è stato un solo sabato su “basso”, e 18 su 26 erano su �
 tabella. Il lunedì però lo lascio fuori dal mio consiglio: ha avuto nove giorni
 su “alto”, la domenica sei, e undici domeniche sono rimaste su “basso”.
 
-Così l’Europa-Park fa di testa sua, rispetto a [tutto quello che registro
-altrove](/periodo-migliore-per-visitare). Al
+Negli [altri parchi che registro](/periodo-migliore-per-visitare) è diverso. Al
 [Phantasialand](ref:phantasialand?bare) la domenica, dopo il sabato, è il giorno
 più pieno; all’[Efteling](ref:efteling?bare) da martedì a venerdì si resta sotto
 il fine settimana. Più dettagli nella
@@ -604,7 +539,7 @@ cento dalla Francia e il 22 per cento dalla Svizzera; nel 2025 la NZZ contava
 uno svizzero ogni cinque visitatori. Sui pernottamenti la Svizzera pesa di più, a lei
 va il 27 per cento di tutte le prenotazioni alberghiere.
 
-Un parco così vive del viaggio del fine settimana. Il sabato la gente arriva, la
+Molti ospiti vengono per un fine settimana. Il sabato la gente arriva, la
 domenica dopo colazione riparte verso casa, e in molti nel parco non ci rimettono
 nemmeno piede, perché la macchina è già carica.
 
@@ -662,8 +597,7 @@ giorni feriali sono stati su “alto”.
 Le vacanze di una sola regione, invece, riempiono poco il
 parco. Nel 2026 il Baden-Württemberg e la Baviera hanno avuto le vacanze di
 Pentecoste in contemporanea, e dei nove giorni feriali cinque sono stati su
-“basso”. Su “alto” è arrivato solo il venerdì di ponte dopo il Corpus Domini. Dove vada il Baden-Württemberg a Pentecoste non lo so.
-All’Europa-Park, in ogni caso, non tutti insieme.
+“basso”. Su “alto” è arrivato solo il venerdì di ponte dopo il Corpus Domini.
 
 In autunno le regioni si danno il cambio. Nel 2026 Basilea e l’Argovia sono in
 vacanza d’autunno da fine settembre, l’Assia e la Renania-Palatinato nella prima
@@ -680,21 +614,18 @@ dal 26 dicembre 2025 al 4 gennaio 2026 sette giorni su dieci sono stati su
 
 ### Il ponte
 
-L’Ascensione cade sempre di giovedì, e a riempirsi non è il giorno di festa. Si
-riempie il venerdì dopo, quello che mezza Germania si prende libero per fare il
+L’Ascensione cade sempre di giovedì, e si riempie il venerdì dopo, quello che mezza Germania si prende libero per fare il
 ponte. Nei nostri dati giovedì 14 maggio 2026 sta su “moderato” e il venerdì
 successivo su “molto alto”. La domenica il parco era di nuovo su “basso”. Al
 Corpus Domini lo stesso schema: il giorno di festa, il 4 giugno, stava su
 “basso”, il venerdì del ponte, il 5, su “alto”.
 
-Una limitazione c’è: entrambi i venerdì di ponte hanno fatto un tempo da cani.
+Entrambi i venerdì di ponte hanno fatto un tempo da cani.
 Il 15 maggio 2026 è passato un temporale, il termometro è arrivato a malapena a
 dodici gradi, e nonostante questo è bastato per “molto alto”; il 5 giugno di
-nuovo temporali. Il canale Parkfan95 ci va proprio in questi venerdì, di sua
-spontanea volontà, e filma il risultato. Per il 2026 il titolo è “Il giorno pieno
+nuovo temporali. Il canale Parkfan95 ci va proprio in questi venerdì e filma il risultato. Per il 2026 il titolo è “Il giorno pieno
 più vuoto”, quello del 2025 promette “lunghe attese” e “consigli per i giorni
-pieni”. Un giorno di ponte con
-il sole ha tutto un altro aspetto rispetto ai nostri due dati misurati.
+pieni”.
 
 https://www.youtube.com/watch?v=aRH5xvAKE_I
 
@@ -703,7 +634,7 @@ https://www.youtube.com/watch?v=aRH5xvAKE_I
 Entrambi vengono dal vero [Parkfan95](https://parkfan95.de), cioè da Silas. Lui
 ha il nome; io avevo solo comprato il dominio prima, per caso.
 
-### Le quattro settimane che quasi nessuno conosce
+### HALLOWinter a novembre
 
 Il parco fa quattro stagioni una dietro l’altra:
 
@@ -720,8 +651,6 @@ invernali montate. La gran parte delle attrazioni continua a funzionare,
 Voltron, Wodan ed Eurosat compresi. Poseidon e Atlantica sono nel programma di
 HALLOWinter, ma con freddo, vento o ghiaccio possono restare chiuse, e i lavori di
 trasformazione possono chiudere qualche area.
-Quasi nessuno pianifica la sua visita al parco per l’inizio di novembre; in quei
-giorni si cercano piuttosto i guanti dell’inverno scorso.
 
 Delle otto regioni, in queste settimane ha vacanze scolastiche solo la Baviera,
 nella prima settimana di novembre. Da tutto quello che abbiamo misurato da
@@ -733,7 +662,7 @@ Il 4 ottobre, però, la nostra previsione metteva molti di questi giorni su
 
 ```
 
-Gratis non è. Il parco apre solo alle 11 e chiude non prima delle 19, cioè un’ora
+Il parco apre solo alle 11 e chiude non prima delle 19, cioè un’ora
 in meno che d’estate, fa buio presto, e sulle attrazioni acquatiche non si può
 contare. Se di Poseidon e Atlantica non ti importa nulla, un giorno feriale a
 novembre vale comunque un tentativo. I giorni che in questo momento sembrano più
@@ -743,7 +672,7 @@ tranquilli sono nel calendario qui sopra.
 
 **Sii al cancello prima che apra, e poi va' al Voletarium.**
 
-Sembra che abbia letto la lista al contrario. La nostra analisi del rope drop confronta per ogni attrazione
+La nostra analisi del rope drop confronta per ogni attrazione
 l’attesa all’apertura con il picco giornaliero più alto misurato lì in una
 giornata piena. Al Voletarium la coda all’apertura è solo una frazione di
 quel picco, di gran lunga il maggior risparmio di tutto il parco.
@@ -753,8 +682,6 @@ quel picco, di gran lunga il maggior risparmio di tutto il parco.
 ```
 
 Per Voltron, Arthur e Silver Star arrivare presto fa risparmiare meno della metà.
-Tutto rispettabile, ma niente per cui alzarsi alle otto. Le montagne russe si possono
-distribuire nell’arco della giornata, il teatro volante no.
 
 Quanto la cosa si distribuisca nella giornata si vede solo nel profilo orario:
 l’attesa tipica di ogni ora, la mediana di tutti i giorni di apertura misurati
@@ -766,20 +693,16 @@ dalla fine di dicembre 2025. In grassetto l’ora di punta di ogni attrazione.
 
 ![Lifthill e prima discesa di Silver Star sopra le chiome degli alberi, cielo serale | Dal 2026 l’attrazione sta nella nuova area tematica Monaco. | right](/media/europa-park/silver-star-4x3.jpg)
 
-La riga che la prima volta mi ha sorpreso è quella di Silver Star. Alle dieci e
-alle undici lì c’è la fila più lunga della giornata, da mezzogiorno si accorcia
-parecchio e risale solo nelle ultime ore delle lunghe giornate estive. Per tutto
-il pomeriggio un’attrazione da 73 metri resta sotto le sue possibilità, perché
-la mattina ci sono già stati tutti.
+A Silver Star alle dieci e alle undici c’è la fila più lunga della giornata, da mezzogiorno si accorcia
+parecchio e risale solo nelle ultime ore delle lunghe giornate estive.
 
 **Le ore più piene stanno tra le dieci e mezzogiorno.** La maggior parte delle
 attrazioni ha il massimo alle dieci o alle undici; solo Arthur, Atlantica e il
-rafting sul fiordo toccano il massimo nel pomeriggio. Chi fa colazione con calma e arriva alle dieci e
-mezza, entra a pancia piena esattamente nel picco della giornata.
+rafting sul fiordo toccano il massimo nel pomeriggio.
 
 ![Una nave di legno sfasciata nella vasca di Poseidon, dietro un muro di fortezza | Quasi vuota all’apertura, alle undici la fila più lunga della giornata. | left](/media/europa-park/water-rollercoaster-poseidon-4x3.jpg)
 
-E poi le attrazioni acquatiche. All’apertura non hanno quasi coda; Poseidon tocca il massimo alle undici, Atlantica solo nel pomeriggio. Chi è disposto a bagnarsi la mattina e a girare con i calzini umidi fino a mezzogiorno, le fa
+All’apertura le due attrazioni acquatiche non hanno quasi coda; Poseidon tocca il massimo alle undici, Atlantica solo nel pomeriggio. Chi è disposto a bagnarsi la mattina le fa
 entrambe nel tempo che a mezzogiorno gliene costerebbe una.
 
 Un programma di giornata che ne consegue:
@@ -818,7 +741,7 @@ delle undici.
 
 **Prenotare il sabato perché l’hotel è libero il sabato.** Il sabato è il giorno
 più pieno della settimana, la domenica uno dei più tranquilli, e la differenza la paghi
-a ogni coda. Con dieci attrazioni in un giorno, dieci volte. Se comunque resti due notti, gira l’ordine:
+a ogni coda. Se comunque resti due notti, gira l’ordine:
 sabato arrivo, Rulantica o un giro in paese, domenica al parco.
 
 **Prendere il martedì per un tranquillo giorno feriale.** Nei nostri dati è il
@@ -830,8 +753,7 @@ giorno infrasettimanale, prendi il giovedì.
 Dal **26 settembre** nel parco ci sono circa **180.000 zucche**, più le
 decorazioni autunnali in tutti e diciotto i paesi e, novità del 2026, un
 villaggio autunnale, il “Pumpkin Village”, nell’area tedesca. Le decorazioni non
-costano nessun sovrapprezzo e si vedono nel normale orario diurno. Del tutto
-innocua la stagione non lo è più, perché accanto a Poseidon c’è il labirinto diurno
+costano nessun sovrapprezzo e si vedono nel normale orario diurno. Accanto a Poseidon c’è inoltre il labirinto diurno
 “Tartaros”, una casa dell’orrore con attori che il parco consiglia solo dai dodici
 anni in su.
 
@@ -850,11 +772,7 @@ apre solo per gli ospiti degli hotel e gli invitati.
 
 ## Traumatica, il parco dentro il parco
 
-Da noi nel database **[Traumatica](ref:traumatica)** figura come parco a sé, con
-una scheda propria, attrazioni proprie e calendario proprio. Ci sta, perché
-Traumatica ha un terreno, un ingresso, un biglietto, un’età minima e orari tutti
-suoi. Chi pianifica una giornata all’Europa-Park pensando che la
-roba da brivido la sera sia compresa nel biglietto, pianifica male.
+Su park.fan **[Traumatica](ref:traumatica)** ha una pagina di parco propria, con attrazioni e calendario propri, perché ha un terreno, un ingresso, un biglietto, un’età minima e orari tutti suoi. Nel biglietto dell’Europa-Park non è compresa.
 
 L’ingresso **non è quello principale**. Si cammina dal grande parcheggio lungo una
 pista ciclabile fino a un’area recintata, e quello che lì sta al buio è un terreno
@@ -889,7 +807,7 @@ terreno e le attrazioni dalle 19, ultimo ingresso nelle attrazioni horror alle
 23:30. Lo spettacolo sul palco e quello sul ghiaccio sono compresi in ogni
 biglietto. Il club poi va avanti fino alle tre del mattino.
 
-**Dai 16 anni, e su questo non si tratta.** Singoli formati come THE HOTEL, i
+**Dai 16 anni.** Singoli formati come THE HOTEL, i
 club THE FORBIDDEN e Vampire’s Club e l’Eden Manor sono dai 18. Le donne incinte, per motivi di sicurezza,
 non entrano.
 
@@ -903,8 +821,7 @@ il confronto con Movie Park, Walibi e Toverland stanno nella
 
 Traumatica
 comincia alle 19, il parco divertimenti nella stagione di Halloween chiude non
-prima delle 18. Tutt’e due nello stesso giorno si può, quindi, e senza correre. Solo che devi
-sapere che dopo non potrai più fare quello che di giorno hai saltato, perché la
+prima delle 18. Tutt’e due nello stesso giorno si può, quindi, e senza correre. Dopo però non potrai più fare quello che di giorno hai saltato, perché la
 sera del parco divertimenti restano in funzione solo le tre giostre di cui sopra.
 
 Per le ultime date questo non vale più. Dal 2 novembre nel parco c’è HALLOWinter,
@@ -941,8 +858,7 @@ lì si prende la navetta. **Il parcheggio costa 10 €** al giorno, Rulantica ha
 parcheggio proprio allo stesso prezzo.
 
 **Mangiare.** Il nostro database conta **62 punti di ristoro** nel parco, e
-siccome ogni area tematica è un paese, ognuno cucina qualcosa di diverso. Chi a
-Rust si mette in fila solo al chiosco delle patatine ha sbagliato qualcosa. Due
+siccome ogni area tematica è un paese, ognuno cucina qualcosa di diverso. Due
 indirizzi però non stanno nel parco, ma nel resort: l’**Ammolite – House of
 Light** dell’hotel Bell Rock, prima “The Lighthouse Restaurant”, tiene da
 novembre 2014 **due stelle Michelin** ed è così, a livello mondiale,
@@ -1042,20 +958,9 @@ Atlantica d’inverno è ferma. Tra Natale e Capodanno 2025 i tempi di attesa so
 stati più o meno al livello di agosto, misurati su sei giorni. Tempi di attesa
 misurati a novembre non ne abbiamo ancora.
 
-## Perché per l’Euro-Mir ci torno un’altra volta
+## Meteo e tempi di attesa aggiornati
 
-La frase che sopra questo parco compare più spesso è “miglior parco divertimenti
-del mondo”, ed è vera nella misura in cui una votazione internazionale del settore
-l’ha messa nero su bianco undici volte, l’ultima a settembre 2026. Me ne convince di più un altro numero.
-
-Oltre sei milioni di persone all’anno, e si aspetta comunque meno che altrove.
-Nessuna magia, se distribuisci 96 attrazioni su 95 ettari, apri 286 giorni
-all’anno e non vendi nessun pass per saltare la coda.
-
-A Rust ci si va per Voltron e Silver Star. Che davanti a tutt’e due si stia così
-poco, dipende dalle altre ottanta cose lì accanto.
-
-Se a Rust sta piovendo o no decide di Eurosat:
+Quando piove, la coda dell’Eurosat si allunga:
 
 ```weather-widget slug=europa-park
 
@@ -1066,10 +971,7 @@ E due per cui aspetterai parecchio, con i loro numeri attuali:
 [Voltron Nevera powered by Rimac](ref:europa-park/voltron-nevera-powered-by-rimac?full)
 [Arthur](ref:europa-park/arthur?full)
 
-Se ci vai ancora prima del 9 gennaio, siediti una volta sull’Euro-Mir. La migliore attrazione
-del parco non lo è, non lo è mai stata. Ma tra qualche mese nessuno passerà più
-davanti a un vero modulo di addestramento della Mir per salire su un vagone che
-gira su se stesso.
+Se ci vai ancora prima del 9 gennaio, siediti una volta sull’Euro-Mir.
 
 — Patrick
 

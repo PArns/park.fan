@@ -6,8 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Im Epic Universe steht man am längsten an, in den Studios am kürzesten. Ausgerechnet im Epic
-  Universe gilt der Express Unlimited nicht. Für die großen Achterbahnen braucht man je nach Bahn
+  Im Epic Universe steht man am längsten an, und der Express Unlimited gilt dort nicht. Für die großen Achterbahnen braucht man je nach Bahn
   1,22 bis 1,38 Meter Körpergröße.
 category: guides
 tags:
@@ -24,7 +23,7 @@ tags:
 coverImage:
   src: /media/universal-islands-of-adventure/welcome-cover.jpg
   alt: 'Ein Zug des VelociCoaster fährt durch eine Kurve, dahinter die Türme von Hogwarts.'
-  caption: 'Zwei Themenwelten in einem Bild: Jurassic World und Hogwarts.'
+  caption: 'Jurassic World und Hogwarts in den Islands of Adventure.'
   credit: 'Patrick Arns'
 parkLinks:
   - universal-studios-florida
@@ -65,14 +64,14 @@ Universal Studios Florida 2024 auf gut 9,5 Millionen Besuche und Platz 13 der We
 Adventure auf 9,45 Millionen und Platz 14. Für das Epic Universe hat Universal bisher keine
 Besuchszahl veröffentlicht.
 
-Wie lange man ansteht, unterscheidet sich zwischen den drei Parks deutlich. In unseren Messungen der
+In unseren Messungen der
 letzten zwei Jahre wartet man im Epic Universe am längsten und in den Studios am kürzesten:
 
 ```park-comparison-widget slugs=universal-studios-florida,universal-islands-of-adventure,universal-epic-universe highlight=universal-epic-universe
 
 ```
 
-Das Epic Universe ist 16 Monate alt. Mine-Cart Madness hat in unseren Messungen die längste
+Mine-Cart Madness hat in unseren Messungen die längste
 Warteschlange des ganzen Resorts, gleichauf dahinter folgen das Battle at the Ministry und
 Hagrid's Magical Creatures Motorbike Adventure aus den Islands of Adventure.
 
@@ -94,9 +93,7 @@ Jaws mit dem Hafenort Amity. Die Winkelgasse und Escape from Gringotts haben am 
 Kongfrontation machte 2002 für Revenge of the Mummy Platz, und für die Simpsons verschwand 2007 Back to
 the Future: The Ride.
 
-Zwischen diesen sieben Bahnen würde ich für einen Besuch wählen. Die Häuser der Halloween Horror
-Nights habe ich weggelassen, obwohl man im Herbst dort am längsten ansteht: Sie sind keine Bahnen und
-laufen nur bis zum 1. November.
+Im Herbst steht man an den Häusern der Halloween Horror Nights am längsten an, sie laufen bis zum 1. November.
 
 ```ride-waits-widget rides=universal-studios-florida/harry-potter-and-the-escape-from-gringotts|Escape from Gringotts|Indoor-Achterbahn;universal-studios-florida/revenge-of-the-mummy|Revenge of the Mummy|Indoor-Achterbahn;universal-studios-florida/despicable-me-minion-mayhem|Minion Mayhem|Simulator;universal-studios-florida/transformers-the-ride-3d|Transformers: The Ride-3D|3D-Dunkelfahrt;universal-studios-florida/men-in-black-alien-attack|Men in Black: Alien Attack|Schießfahrt;universal-studios-florida/the-simpsons-ride|The Simpsons Ride|Simulator;universal-studios-florida/et-adventure|E.T. Adventure|Dunkelfahrt columns=type,peak,days highlight=universal-studios-florida/harry-potter-and-the-escape-from-gringotts
 
@@ -135,8 +132,7 @@ Kalifornien steht in unserem Beitrag [Hollywood Drift in den Universal Studios
 Hollywood](/news/hollywood-drift-universal-studios-hollywood).
 
 Fast & Furious: Supercharged ist seit dem 17. August 2026 geschlossen, ein Jahr früher als zuerst
-angekündigt. Die Warteschlange der Fahrt diente im Herbst bisher als Platz für ein Haus der Halloween
-Horror Nights. Was an der Stelle danach entsteht, hat Universal nicht gesagt.
+angekündigt. In der Warteschlange der Fahrt stand im Herbst bisher ein Haus der Halloween Horror Nights. Was an der Stelle danach entsteht, hat Universal nicht gesagt.
 
 ## Islands of Adventure
 
@@ -164,8 +160,7 @@ Universal-Parks. Mindestgröße 1,30 Meter.
 
 ![Die beleuchtete Eingangsschrift des Jurassic World VelociCoaster bei Nacht | Hinter diesem Eingang führt die Warteschlange mitten durchs Raptor-Paddock aus Jurassic World. | wide](/media/velocicoaster/01-eingang.jpg)
 
-Die Warteschlange führt durch das Raptor-Paddock, in dem animatronische Velociraptoren stehen. Bis kurz
-vor dem Start gibt es im Atrium noch etwas zu sehen.
+Die Warteschlange führt durch das Raptor-Paddock, in dem animatronische Velociraptoren stehen.
 
 ![Die Figur eines Velociraptors im begrünten Atrium der VelociCoaster-Station | Im Atrium steht der Raptor zwischen Pflanzen, kurz vor der Station. | right](/media/velocicoaster/03-atrium.jpg)
 
@@ -174,7 +169,7 @@ die älteste der drei. Bolliger & Mabillard haben sie zur Eröffnung des Parks a
 hat sieben Inversionen, ist 34 Meter hoch und 108 km/h schnell. Den ersten Anstieg nimmt der Zug ohne
 Kette: Reifen beschleunigen ihn in zwei Sekunden auf 64 km/h. Mindestgröße 1,38 Meter, die höchste im Park.
 
-Für alle, die keine Achterbahn fahren, sind die Dunkelfahrten da. In **[Harry Potter and the Forbidden
+In **[Harry Potter and the Forbidden
 Journey](ref:universal-islands-of-adventure/harry-potter-and-the-forbidden-journey)** sitzt du in einem
 Roboterarm von KUKA und fliegst durch Hogwarts. Die Fahrt hat am 18. Juni 2010 eröffnet, dauert gut vier
 Minuten und fährt ab 1,22 Metern. **[Skull Island: Reign of
@@ -225,7 +220,7 @@ eine Dunkelfahrt in einem Fahrstuhl von Simtec, ebenfalls ab 1,02 Metern.
 Dunkelfahrt mit Augmented Reality, in der du Panzer auf die anderen Wagen wirfst. Sie dauert fünf Minuten
 und lief vorher schon in Osaka (seit 2021) und Hollywood (seit 2023).
 
-An den übrigen Achterbahnen des Epic Universe steht man kürzer an als an Mine-Cart Madness. **[Stardust
+**[Stardust
 Racers](ref:universal-epic-universe/stardust-racers)** in Celestial Park ist eine Duellbahn von Mack mit
 zwei Strecken, 40,5 Metern Höhe, 100 km/h und einer Inversion. Sie hat 2025 den Golden Ticket Award als
 beste neue Achterbahn bekommen. Mindestgröße 1,22 Meter. **[Curse of the
@@ -233,7 +228,7 @@ Werewolf](ref:universal-epic-universe/curse-of-the-werewolf)** ist ein Spinning 
 Universe, **[Hiccup's Wing Gliders](ref:universal-epic-universe/hiccup-wing-glider)** auf der Isle of Berk
 eine Familien-Achterbahn von Intamin mit 72 km/h. Beide fahren ab 1,02 Metern.
 
-Für Kinder unter 1,02 Metern gibt es mehr als nur Spielplätze: **[Yoshi's
+**[Yoshi's
 Adventure](ref:universal-epic-universe/yoshis-adventure)** fährt ab 0,87 Metern. Das Karussell
 **[Constellation Carousel](ref:universal-epic-universe/constellation-carousel)** und die Bootsfahrt
 **[Fyre Drill](ref:universal-epic-universe/fyre-drill)** haben keine Mindestgröße, Kinder unter 1,22
@@ -243,7 +238,7 @@ Ministry of Magic und The Untrainable Dragon auf der Isle of Berk.
 
 ## Drei Mal Harry Potter
 
-Harry Potter ist das Thema, das alle drei Parks verbindet, und jeder hat einen eigenen Bereich. Der älteste
+Jeder der drei Parks hat einen eigenen Harry-Potter-Bereich. Der älteste
 ist Hogsmeade in den Islands of Adventure, der am 18. Juni 2010 auf 8 Hektar eröffnet hat. Dort stand
 vorher die Achterbahn Flying Unicorn, die 2008 schloss und als **[Flight of the
 Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)** wiederkam. Die Junior-Achterbahn
@@ -260,7 +255,7 @@ Park-to-Park-Ticket. Für das Ministry of Magic planst du einen eigenen Tag im E
 
 ## Seuss Landing, Marvel und Jurassic Park
 
-Drei Inseln der Islands of Adventure sind Familieninseln. **Seuss Landing** hat eine Dunkelfahrt, ein
+**Seuss Landing** hat eine Dunkelfahrt, ein
 Karussell von D. H. Morgan und die Trolley-Bahn von Mack, die seit 2006 auf zwei Strecken zu je 460 Metern
 über den Köpfen fährt. **Marvel Super Hero Island** hat neben dem Hulk, Spider-Man und Doctor Doom's
 Fearfall die Tassenfahrt Storm Force Accelatron von Mack aus dem Jahr 2000. **Jurassic Park** hat neben
@@ -298,7 +293,7 @@ rund vier Minuten. Einsteigen darf nur, wer ein Park-to-Park-Ticket oder einen J
 
 ## Tickets: ein Park oder Park-to-Park
 
-Universal verkauft zwei Arten von Tickets. Mit einem Ein-Park-Ticket gehst du pro Tag in einen Park. Mit
+Mit einem Ein-Park-Ticket gehst du pro Tag in einen Park. Mit
 einem Park-to-Park-Ticket wechselst du am selben Tag zwischen den Parks und fährst den Hogwarts Express.
 Es gibt Park-to-Park-Tickets für drei, vier und fünf Tage, mit denen du jeden Tag in alle vier Parks
 darfst, auch ins Epic Universe und in den Volcano Bay.
@@ -313,13 +308,12 @@ Oktober 2026:
 | Universal Islands of Adventure | 124,99 $ |
 | Volcano Bay                    | 80,99 $  |
 
-Die Preise ändern sich von Tag zu Tag, angegeben ist jeweils der niedrigste. Zwei Angebote hat Universal
-dazu im Programm. Das 3-Tage-Ticket mit einem Park pro Tag, Studios, Islands of Adventure und Epic
+Die Preise ändern sich von Tag zu Tag, angegeben ist jeweils der niedrigste. Das 3-Tage-Ticket mit einem Park pro Tag, Studios, Islands of Adventure und Epic
 Universe, beginnt bei 99 $ pro Tag und 297 $ zusammen. Das Park-to-Park-Ticket für zwei Tage in den
 Studios und den Islands of Adventure plus einen Tag im Epic Universe beginnt bei 119 $ pro Tag, 357 $
 insgesamt.
 
-Meine Empfehlung hängt von der Dauer ab. Für drei Tage nehme ich das 3-Tage-Ticket mit einem Park pro Tag,
+Für drei Tage nehme ich das 3-Tage-Ticket mit einem Park pro Tag,
 weil das Epic Universe ohnehin einen eigenen Tag braucht. Das Park-to-Park-Ticket lohnt sich, wenn du den
 Hogwarts Express fahren oder an einem Tag zwischen Studios und Islands of Adventure wechseln willst.
 
@@ -331,8 +325,7 @@ text: Die Preise stehen je Tag im Kalender von Universal.
 
 ## Express Pass: was er kostet und wo er gilt
 
-Mit dem Express Pass kaufst du dich bei Universal an der Warteschlange vorbei. Es gibt ihn in drei Formen,
-und die unterscheiden sich darin, wie oft er pro Bahn gilt und in welchen Parks.
+Mit dem Express Pass kaufst du dich bei Universal an der Warteschlange vorbei.
 
 **Universal Express** gilt einmal pro Bahn. Universal verkauft ihn für die Studios, die Islands of
 Adventure, das Epic Universe und den Volcano Bay, als Aufschlag auf das Ticket. Für die Studios und die
@@ -347,14 +340,12 @@ Pässe verfügbar sind.
 **Universal Express Now** gibt es nur in der App im Park, am selben Tag, für einzelne Bahnen in einem
 Zeitfenster. Universal bietet ihn nach eigener Aussage sporadisch an.
 
-Im Epic Universe führt also kein Weg am einmaligen Express vorbei, wenn du überhaupt einen Pass willst.
-Die längsten Warteschlangen des Resorts stehen dort, deshalb bringt ein Pass dort am meisten. Wer
+Wer im Epic Universe einen Pass will, nimmt also den einmaligen Express.
+Wer
 vorher zur Öffnung Mine-Cart Madness und das Battle at the Ministry fährt, braucht ihn für diese beiden
 nicht. In den Studios und den Islands of Adventure würde ich ohne Hotelvorteil keinen Pass
 kaufen. Mit einer frühen Ankunft kommst du an den Bahnen aus der Rope-Drop-Liste, also VelociCoaster,
-Ripsaw Falls, Skull Island und Spider-Man, auch ohne Pass an. Für Hagrid's gilt das nicht. Das ist
-meine Einschätzung aus den Stundenprofilen. Wie viele Minuten ein Pass tatsächlich spart, messen wir
-nicht.
+Ripsaw Falls, Skull Island und Spider-Man, auch ohne Pass an, an Hagrid's nicht. Das schätze ich nach den Stundenprofilen, denn wie viele Minuten ein Pass spart, messen wir nicht.
 
 ## Wann du hinfahren solltest
 
@@ -409,7 +400,7 @@ Adventure bis zum 30. November Forbidden Journey, Flight of the Hippogriff, Velo
 Einen Tag in den Islands of Adventure ohne Hotel würde ich so legen: Zur Öffnung gehst du zu
 VelociCoaster, weil laut Rope-Drop-Auswertung dort der frühe Start am meisten bringt. Danach Hagrid's,
 dann Forbidden Journey. In der Mittagszeit sind die
-Wasserbahnen dran, weil du danach ohnehin in der Sonne trocknest. Mit Hotel hängt es davon ab, welche
+Wasserbahnen dran. Mit Hotel hängt es davon ab, welche
 Bahnen Universal für den Tag in der App für die Early Park Admission freigibt. Steht VelociCoaster oder
 Hagrid's auf der Liste, fährst du die Bahn in der Stunde vor der Öffnung und die andere zur Öffnung.
 
@@ -511,8 +502,7 @@ Wie das Wetter in den nächsten Tagen im Resort wird, und was das für die Bahne
 
 ```
 
-Der zweite große Park in Orlando ist das Magic Kingdom, das in unseren Daten die kürzeste typische
-Wartezeit der vier Disney-Parks in Florida hat: [Magic Kingdom, Wartezeiten und
+Das Magic Kingdom hat in unseren Messungen die kürzeste typische Wartezeit der vier Disney-Parks in Florida: [Magic Kingdom, Wartezeiten und
 Tipps](/blog/magic-kingdom-wartezeiten-tipps).
 
 — Patrick

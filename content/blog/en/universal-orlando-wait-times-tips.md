@@ -6,8 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  You wait longest in Epic Universe and shortest in the Studios. Express
-  Unlimited isn't valid in Epic Universe, of all places. The big coasters need
+  You wait longest in Epic Universe, and Express Unlimited isn't valid there. The big coasters need
   riders between 1.22 and 1.38 metres tall, depending on the ride.
 category: guides
 tags:
@@ -24,7 +23,7 @@ tags:
 coverImage:
   src: /media/universal-islands-of-adventure/welcome-cover.jpg
   alt: 'A VelociCoaster train takes a curve, with the towers of Hogwarts behind it.'
-  caption: 'Two themed worlds in one picture: Jurassic World and Hogwarts.'
+  caption: 'Jurassic World and Hogwarts in Islands of Adventure.'
   credit: 'Patrick Arns'
 parkLinks:
   - universal-studios-florida
@@ -64,14 +63,14 @@ Universe. Volcano Bay is a water park, the other three have coasters. According 
 Florida had just over 9.5 million visits in 2024, ranking 13th in the world, and Islands of Adventure
 9.45 million, ranking 14th. Universal hasn't published an attendance figure for Epic Universe so far.
 
-How long you queue differs a lot between the three parks. In our measurements of the last two years,
+In our measurements of the last two years,
 you wait longest in Epic Universe and shortest in the Studios:
 
 ```park-comparison-widget slugs=universal-studios-florida,universal-islands-of-adventure,universal-epic-universe highlight=universal-epic-universe
 
 ```
 
-Epic Universe is 16 months old. In our measurements Mine-Cart Madness has the longest queue of the whole
+In our measurements Mine-Cart Madness has the longest queue of the whole
 resort, followed by the Battle at the Ministry and Hagrid's Magical Creatures Motorbike Adventure from
 Islands of Adventure, which are level with each other.
 
@@ -93,9 +92,7 @@ Amity were open until 2 January 2012. Diagon Alley and Escape from Gringotts ope
 Kongfrontation made way for Revenge of the Mummy in 2002, and Back to the Future: The Ride disappeared in
 2007 for the Simpsons.
 
-These are the seven rides I'd choose between for a visit. I've left out the Halloween Horror Nights
-houses, even though in autumn that's where you queue longest: they aren't rides, and they only run
-until 1 November.
+In autumn you queue longest at the Halloween Horror Nights houses, which run until 1 November.
 
 ```ride-waits-widget rides=universal-studios-florida/harry-potter-and-the-escape-from-gringotts|Escape from Gringotts|Indoor coaster;universal-studios-florida/revenge-of-the-mummy|Revenge of the Mummy|Indoor coaster;universal-studios-florida/despicable-me-minion-mayhem|Minion Mayhem|Simulator;universal-studios-florida/transformers-the-ride-3d|Transformers: The Ride-3D|3D dark ride;universal-studios-florida/men-in-black-alien-attack|Men in Black: Alien Attack|Shooting ride;universal-studios-florida/the-simpsons-ride|The Simpsons Ride|Simulator;universal-studios-florida/et-adventure|E.T. Adventure|Dark ride columns=type,peak,days highlight=universal-studios-florida/harry-potter-and-the-escape-from-gringotts
 
@@ -133,7 +130,7 @@ Hollywood Drift**, an Intamin coaster whose cars spin around their own axis. Uni
 Hollywood](/news/hollywood-drift-universal-studios-hollywood).
 
 Fast & Furious: Supercharged has been closed since 17 August 2026, a year earlier than first announced.
-In autumn the ride's queue has so far served as the site for a Halloween Horror Nights house. Universal
+In autumn the ride's queue has so far held a Halloween Horror Nights house. Universal
 hasn't said what will be built there afterwards.
 
 ## Islands of Adventure
@@ -161,8 +158,7 @@ and four inversions. At opening it was the fastest coaster in any Universal park
 
 ![The lit entrance lettering of the Jurassic World VelociCoaster at night | Behind this entrance the queue leads straight through the raptor paddock from Jurassic World. | wide](/media/velocicoaster/01-eingang.jpg)
 
-The queue leads through the raptor paddock, where animatronic velociraptors stand. Until just before
-the launch there's still something to see in the atrium.
+The queue leads through the raptor paddock, where animatronic velociraptors stand.
 
 ![A velociraptor figure in the planted atrium of the VelociCoaster station | In the atrium the raptor stands among plants, just before the station. | right](/media/velocicoaster/03-atrium.jpg)
 
@@ -171,7 +167,7 @@ oldest of the three. Bolliger & Mabillard built it for the park's opening on 28 
 inversions, is 34 metres high and reaches 108 km/h. The train takes the first climb without a chain:
 tyres accelerate it to 64 km/h in two seconds. Minimum height 1.38 m, the highest in the park.
 
-For everyone who doesn't ride coasters, there are the dark rides. In **[Harry Potter and the Forbidden
+In **[Harry Potter and the Forbidden
 Journey](ref:universal-islands-of-adventure/harry-potter-and-the-forbidden-journey)** you sit in a KUKA
 robot arm and fly through Hogwarts. The ride opened on 18 June 2010, lasts a good four minutes and goes
 from 1.22 m. **[Skull Island: Reign of
@@ -222,7 +218,7 @@ elevator by Simtec, also from 1.02 m.
 ride with augmented reality in which you throw shells at the other karts. It lasts five minutes and
 already ran in Osaka (since 2021) and Hollywood (since 2023).
 
-At the other coasters in Epic Universe you queue less than at Mine-Cart Madness. **[Stardust
+**[Stardust
 Racers](ref:universal-epic-universe/stardust-racers)** in Celestial Park is a dueling coaster by Mack
 with two tracks, 40.5 metres of height, 100 km/h and one inversion. It won the 2025 Golden Ticket Award
 for best new coaster. Minimum height 1.22 m. **[Curse of the
@@ -230,7 +226,7 @@ Werewolf](ref:universal-epic-universe/curse-of-the-werewolf)** is a spinning coa
 Universe, **[Hiccup's Wing Gliders](ref:universal-epic-universe/hiccup-wing-glider)** on the Isle of Berk
 a family coaster by Intamin at 72 km/h. Both go from 1.02 m.
 
-For children under 1.02 m there's more than playgrounds: **[Yoshi's
+**[Yoshi's
 Adventure](ref:universal-epic-universe/yoshis-adventure)** goes from 0.87 m. The carousel
 **[Constellation Carousel](ref:universal-epic-universe/constellation-carousel)** and the boat ride
 **[Fyre Drill](ref:universal-epic-universe/fyre-drill)** have no minimum height, and children under 1.22
@@ -240,7 +236,7 @@ Magic and The Untrainable Dragon on the Isle of Berk.
 
 ## Harry Potter three times
 
-Harry Potter is the theme that connects all three parks, and each has its own area. The oldest is
+Each of the three parks has its own Harry Potter area. The oldest is
 Hogsmeade in Islands of Adventure, which opened on 18 June 2010 on 8 hectares. The coaster Flying
 Unicorn stood there before, closed in 2008 and came back as **[Flight of the
 Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**. The Vekoma junior coaster
@@ -256,7 +252,7 @@ park-to-park ticket. For the Ministry of Magic, plan a day of its own in Epic Un
 
 ## Seuss Landing, Marvel and Jurassic Park
 
-Three islands of Islands of Adventure are family islands. **Seuss Landing** has a dark ride, a carousel
+**Seuss Landing** has a dark ride, a carousel
 by D. H. Morgan and Mack's trolley ride, which has run overhead since 2006 on two tracks of 460 metres
 each. **Marvel Super Hero Island** has, besides the Hulk, Spider-Man and Doctor Doom's Fearfall, the
 teacup ride Storm Force Accelatron by Mack from 2000. **Jurassic Park** has, besides VelociCoaster, the
@@ -294,7 +290,7 @@ guests with a park-to-park ticket or an annual pass may board.
 
 ## Tickets: one park or park-to-park
 
-Universal sells two kinds of tickets. With a one-park ticket you go into one park per day. With a
+With a one-park ticket you go into one park per day. With a
 park-to-park ticket you switch between parks on the same day and ride the Hogwarts Express. There are
 park-to-park tickets for three, four and five days, which let you into all four parks every day,
 including Epic Universe and Volcano Bay.
@@ -308,12 +304,11 @@ Starting prices on Universal's ticket page, per day and ticket, plus tax, as of 
 | Universal Islands of Adventure | $124.99    |
 | Volcano Bay                    | $80.99     |
 
-Prices change from day to day, and these are the lowest. Universal has two offers in its programme
-on top of that. The 3-day ticket with one park per day, Studios, Islands of Adventure and Epic Universe,
+Prices change from day to day, and these are the lowest. The 3-day ticket with one park per day, Studios, Islands of Adventure and Epic Universe,
 starts at $99 per day and $297 in total. The park-to-park ticket for two days in the Studios and Islands
 of Adventure plus one day in Epic Universe starts at $119 per day, $357 in total.
 
-My recommendation depends on the length of your stay. For three days I'd take the 3-day ticket with one
+For three days I'd take the 3-day ticket with one
 park per day, because Epic Universe needs a day of its own anyway. The park-to-park ticket pays off if
 you want to ride the Hogwarts Express or switch between the Studios and Islands of Adventure on one day.
 
@@ -325,8 +320,7 @@ text: The prices for each day are in Universal's calendar.
 
 ## Express Pass: what it costs and where it's valid
 
-With the Express Pass you buy your way past the queue at Universal. It comes in three forms, and they
-differ in how often they're valid per ride and in which parks.
+With the Express Pass you buy your way past the queue at Universal.
 
 **Universal Express** is valid once per ride. Universal sells it for the Studios, Islands of Adventure,
 Epic Universe and Volcano Bay, as a surcharge on the ticket. For the Studios and Islands of Adventure,
@@ -341,13 +335,10 @@ are available.
 **Universal Express Now** is only available in the app in the park, on the same day, for single rides in
 a time window. By Universal's own account, it offers it sporadically.
 
-So in Epic Universe there's no way around the one-time Express if you want a pass at all. The longest
-queues of the resort are there, which is why a pass brings the most there. If you ride Mine-Cart Madness
+So if you want a pass in Epic Universe, it's the one-time Express. If you ride Mine-Cart Madness
 and the Battle at the Ministry at opening first, you don't need it for those two. In the Studios and
 Islands of Adventure I wouldn't buy a pass without the hotel benefit. With an early arrival you get onto the
-rides from the rope-drop list, that is VelociCoaster, Ripsaw Falls, Skull Island and Spider-Man, without
-a pass too. That doesn't apply to Hagrid's. That's my assessment from the
-hourly profiles. How many minutes a pass actually saves, we don't measure.
+rides from the rope-drop list, that is VelociCoaster, Ripsaw Falls, Skull Island and Spider-Man, without a pass too, but not onto Hagrid's. That's my estimate from the hourly profiles, because we don't measure how many minutes a pass saves.
 
 ## When to go
 
@@ -400,8 +391,7 @@ November Forbidden Journey, Flight of the Hippogriff, VelociCoaster, Ollivanders
 
 I'd plan a day in Islands of Adventure without a hotel like this: at opening you go to VelociCoaster,
 because according to the rope-drop analysis the early start pays off most there. Then Hagrid's, then
-Forbidden Journey. Around midday it's the turn of the water rides, since you'll be drying in the sun
-afterwards anyway. With a hotel it depends on which rides Universal releases for Early Park Admission in the app
+Forbidden Journey. Around midday it's the turn of the water rides. With a hotel it depends on which rides Universal releases for Early Park Admission in the app
 that day. If VelociCoaster or Hagrid's is on the list, you ride it in the hour before opening and the other at opening.
 
 In Epic Universe you go to Mine-Cart Madness in Super Nintendo World at opening and then to the Ministry
@@ -503,8 +493,7 @@ rides:
 
 ```
 
-The other big park in Orlando is Magic Kingdom, which in our data has the shortest typical wait time of
-the four Disney parks in Florida: [Magic Kingdom wait times and
+In our measurements Magic Kingdom has the shortest typical wait time of the four Disney parks in Florida: [Magic Kingdom wait times and
 tips](/blog/magic-kingdom-wait-times-tips).
 
 — Patrick
