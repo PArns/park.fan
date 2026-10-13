@@ -654,6 +654,8 @@ definition, the calque and the gap reported where it changes nothing are for the
 
 ### 2.20 Twenty patterns the check did not know (2026-10-13)
 
+_Patterns 1 to 21 came from the twelve open guides, 22 to 39 from the critic's pass over the 27 older ones (PR #928) the same evening._
+
 On 2026-10-13 the critic of §7.2 read twelve park guides that had all passed `pnpm check:prose`
 and marked every one of them as machine-written. The patterns below came up in several guides,
 and the sentences are the ones it quoted. Each is a shape a writer may use once; the tell is the
@@ -683,10 +685,39 @@ series. `pnpm check:prose` warns on all of them and fails on none, so a publishe
 | 18  | `source-silence-close`       | What the source does not say, as the end of a sentence (§1.9).                                                      | `nennt der Park nicht` · `, nicht auf der Seite des Parks`                                                              | 3 sentences                      |
 | 19  | `widget-caption-after`       | A paragraph under a widget that says what the widget shows.                                                         | `In der Tabelle steht für jede Bahn …` · `Im Kalender stehen …`                                                         | 1 paragraph                      |
 | 20  | `table-summary-before`       | A paragraph above a table or widget that says what the table shows.                                                 | `Die Tabelle fasst zusammen, …` · `The table lists …`                                                                   | 1 paragraph                      |
+| 22  | `bet-opener`                 | The first paragraph opens on a wager.                                                                               | `X ist eine Wette darauf, dass …` · `is a bet`                                                                          | 1 sentence                       |
+| 23  | `mirrored-good-bad`          | One paragraph holds both halves of a mirrored pair.                                                                 | `ist gut, wenn …` and `ist schlecht, wenn …`                                                                            | 1 paragraph                      |
+| 24  | `appended-reason`            | A clause tacked on to the end of a sentence to name the reason.                                                     | `, und das ist der Grund` · `, which is exactly the reason`                                                             | 2 sentences                      |
+| 25  | `appended-advice`            | A clause tacked on to the end of a sentence to hand out advice.                                                     | `, was man sich überlegen sollte` · `, which is worth thinking about`                                                   | 2 sentences                      |
+| 26  | `link-sentence-close`        | A reference sentence with an internal link closes paragraph after paragraph.                                        | `… steht im [Winter-Guide](/blog/…).` four times, one link sentence twice, or four chapters closing on a bare link      | 4 paragraphs, or any repeat      |
+| 27  | `widget-announced-twice`     | The widget is announced in words each time, or the choice is announced before it.                                   | `Das Widget zeigt …` · `Aus diesen sechs Bahnen würde ich …`                                                            | 2 sentences, or 1 pick line      |
+| 28  | `how-teaser`                 | A `Wie …` clause that promises an answer and gives it in the next breath.                                           | `Wie voll es wird, zeigte sich am Samstag.` · `Just how full it gets became clear.`                                     | 2 sentences                      |
+| 29  | `bold-step-labels`           | Paragraphs in a row that open on a bold step word.                                                                  | `**Zuerst** …` · `**Dann** …` · `**Zum Schluss** …`                                                                     | 3 paragraphs in a row            |
+| 30  | `own-post-as-proof`          | Our own post cited as the evidence for a claim.                                                                     | `wie in unserem Beitrag steht` · `as our guide says`                                                                    | 2 sentences                      |
+| 31  | `advice-who-series`          | `Wer X, fährt Y` as the shape of the advice, sentence after sentence.                                               | `Wer früh kommt, fährt zuerst Taron.` · `If you arrive early, go to Taron.`                                             | 4 sentences                      |
+| 32  | `not-found-close`            | A paragraph closing on what the author did not find.                                                                | `nicht gefunden` · `nicht ablesen` · `couldn't find`                                                                    | 2 paragraphs                     |
+| 33  | `day-night-mirror`           | The first or last sentence of a paragraph sets day against evening.                                                 | `Tagsüber … abends …` · `By day … in the evening …`                                                                     | 2 sentences                      |
+| 34  | `looks-different-colon`      | `X looks different:` as the lead-in to a colon.                                                                     | `sieht anders aus:` · `is another matter:` · `es otra historia:`                                                        | 2 sentences                      |
+| 35  | `riddle-title-fraction`      | A title or heading that teases with a fraction.                                                                     | `zur Hälfte` · `half of` · `à moitié` · `per metà`                                                                      | 1 title or heading               |
+| 36  | `question-catalog-opener`    | A sentence that lists three things the reader wants to know before the trip.                                        | `will vorher wissen, ob …, ob … und ob …`                                                                               | 1 sentence                       |
+| 37  | `empty-faq-answer`           | The answer under a question heading says nothing: a few words with no figure, or `verschieden`.                     | `Das ist verschieden.` · `It varies.` · `Depende.` (a bare yes or no is an answer)                                      | 2 answers                        |
+| 38  | `bold-maxim`                 | A whole short sentence set in bold at the edge of a paragraph, with no figure and no link.                          | `**Wer früh kommt, wartet kürzer.**`                                                                                    | 1 sentence                       |
 
 Rules 2, 3 and 6 need no wordlist, and 15 to 18 carry a short formula per language, so all six
 locales are checked. Rules 1, 4, 5, 7 to 14, 19 and 20 have German and English wordlists; in nl, fr,
-es and it they are left to the critic.
+es and it they are left to the critic. Of rules 22 to 38 the ones whose formula is short enough to
+quote in every language cover all six (22, 24, 26, 27, 29, 30, 34, 36), 25 and 28 the four the
+critic's comment lists, 31 German, English and Dutch, 33 all but French, 35 all but Dutch and 37 all
+but French. Rules 23 and 32 are German and English. Rule 38 reads German capitals as nouns, so it
+checks for a proper name only in the other languages. In the numbers above, 26 counts any internal
+`/blog/` or `/news/` link; a link sentence that appears twice fires it at once.
+
+Captions (rule 39) are the opposite case. `check:prose` already ran the vocabulary rules and the
+series check of §5.2 over every `alt` and `caption` in the sidecars, but none of the sentence
+patterns. A caption is one sentence, so a series is out of reach; instead rules 23, 24, 25, 28, 33
+and 34 run on each caption and alt text and warn at the first hit. The others need a paragraph or a
+neighbouring block and are left to the critic.
+
 What stays with the critic in every language is the part no pattern can see:
 
 - **Refrain.** The core statement stands in the excerpt, the chapter, the running text and the
@@ -696,6 +727,17 @@ What stays with the critic in every language is the part no pattern can see:
 - **Echo.** A sentence repeats the figures of the table directly above it.
 - **Implication by juxtaposition.** Numbers under a table are meant to suggest a cause the text
   never states. State the cause with its source, or leave the numbers out.
+- **Invented comparison from everyday life and the wink in brackets.** A parenthesis that
+  nudges the reader (`(ja, wirklich)`) and a comparison with a queue at the baker's that nobody
+  measured (§1.8).
+- **Riddle apposition.** A person or thing introduced as a puzzle (`gehörte dem, dem …, Maximus
+Müller`) before it is named.
+- **The one-line punch.** A paragraph that ends on a sentence of fewer than seven words that
+  sounds like a verdict.
+- **A summary that repeats facts from the park sections.** The closing chapter says again what
+  the chapters above already said (§1.5).
+- **A comparison that restates the numbers.** The sentence says in words what the figures in the
+  same paragraph already show.
 
 A date that opens a line and renders as a numbered list (`1. November`) is the twenty-first
 finding of that day. It was already an error (§4.4); the cure is a no-break space between the day
@@ -1658,11 +1700,14 @@ also grades the check itself. The order, word for word:
 > - wie ein Merksatz, eine Pointe, eine Werbezeile, eine Ankündigung oder ein Rätsel klingt,
 > - zu einem Muster gehört, das sich durch den Text zieht: gleiche Absatzenden, gleiche
 >   Satzanfänge, Doppelpunkt-Pivots, Dreierketten, Zwinker-Sätze, Dinge, die reden,
-> - zu einem der vier Muster gehört, die kein Skript sieht (§2.20): Refrain (die Kernaussage steht
+> - zu einem der neun Muster gehört, die kein Skript sieht (§2.20): Refrain (die Kernaussage steht
 >   in Auszug, Kapitel, Fließtext und FAQ), wiederholter Vorbehalt (dieselbe Datenlücke in mehreren
 >   Kapiteln eingeräumt), Echo (ein Satz wiederholt die Tabelle direkt darüber), Andeutung durch
 >   Nebeneinanderstellen (Zahlen unter einer Tabelle sollen eine nicht ausgesprochene Ursache
->   nahelegen).
+>   nahelegen), erfundener Alltagsvergleich oder Zwinker-Klammer, Rätsel-Apposition („gehörte dem,
+>   dem …, Maximus Müller“), Pointe unter sieben Wörtern am Absatzende, Zusammenfassung, die Fakten
+>   aus den Park-Abschnitten wiederholt, Vergleich, der Zahlen aus demselben Absatz noch einmal in
+>   Worten sagt.
 >
 > Auch wenn keine Regel in docs/blog.md das Muster beim Namen nennt. Fakten, Aufbau und
 > Rechtschreibung prüfst du nicht, dafür gibt es andere Prüfungen.

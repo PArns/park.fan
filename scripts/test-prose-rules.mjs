@@ -10,6 +10,7 @@ import {
   DATE_LINE_START,
   SLOP_RULES,
   blocks,
+  captionFindings,
   slopFindings,
   splitSentences,
 } from './prose-slop-patterns.mjs';
@@ -399,6 +400,333 @@ yes(
 );
 yes('table-summary-before', lines('The table lists the rides.', fence), 'en');
 no('table-summary-before', lines('Die Pässe kosten Geld.', '| a | b |\n| - | - |\n| 1 | 2 |'));
+
+// 22 bet-opener: the first paragraph only
+yes(
+  'bet-opener',
+  lines('Der Tag im Park ist eine Wette darauf, dass das Wetter hält.', 'Zweiter.')
+);
+yes('bet-opener', lines('A day in the park is a bet on the weather.', 'Second.'), 'en');
+yes('bet-opener', lines('Een dag in het park is een gok op het weer.'), 'nl');
+yes('bet-opener', lines('Une journée au parc est un pari sur la météo.'), 'fr');
+yes('bet-opener', lines('Un día en el parque es una apuesta por el tiempo.'), 'es');
+yes('bet-opener', lines('Una giornata al parco è una scommessa sul meteo.'), 'it');
+no('bet-opener', lines('Der Park öffnet um neun.', 'Der Tag ist eine Wette darauf, dass es hält.'));
+no('bet-opener', lines('Er wettet nicht auf das Wetter.'));
+
+// 23 mirrored-good-bad
+yes(
+  'mirrored-good-bad',
+  lines('Der Montag ist gut, wenn die Schulen offen sind. Er ist schlecht, wenn Ferien beginnen.')
+);
+yes(
+  'mirrored-good-bad',
+  lines('Monday is good when schools are open. Monday is bad when holidays start.'),
+  'en'
+);
+no('mirrored-good-bad', lines('Der Montag ist gut, wenn die Schulen offen sind.'));
+no(
+  'mirrored-good-bad',
+  lines(
+    'Der Montag ist gut, wenn die Schulen offen sind.',
+    'Er ist schlecht, wenn Ferien beginnen.'
+  )
+);
+
+// 24 appended-reason (two per post)
+const reason = {
+  de: 'Die Bahn ist früh voll, und das ist der Grund.',
+  en: 'The ride fills early, which is exactly the reason.',
+  nl: 'De baan is vroeg vol, en dat is precies de reden.',
+  fr: 'Le manège est vite plein, et c’est la raison.',
+  es: 'La atracción se llena pronto, y esa es la razón.',
+  it: 'La giostra si riempie presto, ed è proprio questo il motivo.',
+};
+for (const [locale, sentence] of Object.entries(reason)) {
+  yes('appended-reason', lines(sentence, `${sentence} Noch einer.`), locale);
+  no('appended-reason', lines(sentence), locale);
+}
+no('appended-reason', lines('Das ist der Grund. Das ist der Grund.', 'Der Grund: Regen.'));
+
+// 25 appended-advice (two per post)
+const advice = {
+  de: 'Der Samstag ist teurer, was man sich vorher überlegen sollte.',
+  en: 'Saturday costs more, which is worth thinking about.',
+  fr: 'Le samedi coûte plus cher, ce qui mérite réflexion.',
+  it: 'Il sabato costa di più, cosa da valutare.',
+};
+for (const [locale, sentence] of Object.entries(advice)) {
+  yes('appended-advice', lines(sentence, `${sentence}`), locale);
+  no('appended-advice', lines(sentence), locale);
+}
+no('appended-advice', lines('Das sollte man sich überlegen.', 'Man sollte es sich überlegen.'));
+
+// 26 link-sentence-close
+const guideLink = (n) =>
+  `Absatz ${n} ist zu Ende. Alles andere steht im [Guide ${n}](/blog/guide-${n}).`;
+yes('link-sentence-close', lines(...[1, 2, 3, 4].map(guideLink)));
+no('link-sentence-close', lines(...[1, 2, 3].map(guideLink)));
+yes(
+  'link-sentence-close',
+  lines(
+    'Eins. Mehr dazu im [Guide](/blog/guide).',
+    'Zwei.',
+    'Drei. Mehr dazu im [Guide](/blog/guide).'
+  )
+);
+yes(
+  'link-sentence-close',
+  lines(
+    ...[1, 2, 3, 4].map(
+      (n) => `## Kapitel ${n}\n\nText.\n\n[Weiter im Guide ${n}](/blog/guide-${n}).`
+    )
+  )
+);
+no('link-sentence-close', lines('## Kapitel\n\nText.\n\n[Weiter im Guide](/blog/guide).'));
+yes(
+  'link-sentence-close',
+  lines(...[1, 2, 3, 4].map((n) => `Part ${n}. The rest is in the [guide ${n}](/blog/g-${n}).`)),
+  'en'
+);
+
+// 27 widget-announced-twice
+yes('widget-announced-twice', lines('Das Widget zeigt a.', 'Das Widget zeigt b.'));
+yes('widget-announced-twice', lines('The widget shows a.', 'The widget shows b.'), 'en');
+yes('widget-announced-twice', lines('De widget toont a.', 'De widget toont b.'), 'nl');
+yes('widget-announced-twice', lines('Le widget montre a.', 'Le widget montre b.'), 'fr');
+yes('widget-announced-twice', lines('El widget muestra a.', 'El widget muestra b.'), 'es');
+yes('widget-announced-twice', lines('Il widget mostra a.', 'Il widget mostra b.'), 'it');
+yes('widget-announced-twice', lines('Aus diesen sechs Bahnen würde ich zwei nehmen.', fence));
+yes('widget-announced-twice', lines("These are the six rides I'd pick from.", fence), 'en');
+no('widget-announced-twice', lines('Das Widget zeigt a.', 'Ein Absatz.', fence));
+no('widget-announced-twice', lines('Aus diesen sechs Bahnen würde ich zwei nehmen.', 'Danach.'));
+
+// 28 how-teaser (two per post)
+yes(
+  'how-teaser',
+  lines('Wie voll es wird, zeigte sich am Samstag. Wie lang das dauert, lässt sich messen.')
+);
+yes(
+  'how-teaser',
+  lines('Just how full it gets became clear on Saturday. Just how long it takes was obvious.'),
+  'en'
+);
+no('how-teaser', lines('Wie voll es wird, zeigte sich am Samstag.'));
+no('how-teaser', lines('Wie voll wird es? Wie lang dauert es?'));
+
+// 29 bold-step-labels
+yes(
+  'bold-step-labels',
+  lines('**Zuerst** gehst du los.', '**Dann** fährst du.', '**Zum Schluss** isst du.')
+);
+yes('bold-step-labels', lines('**First** go.', '**Then** ride.', '**Finally** eat.'), 'en');
+no('bold-step-labels', lines('**Zuerst** gehst du los.', '**Dann** fährst du.'));
+no(
+  'bold-step-labels',
+  lines(
+    '**Zuerst** gehst du los.',
+    '**Dann** fährst du.',
+    'Dazwischen Text.',
+    '**Zum Schluss** isst du.'
+  )
+);
+
+// 30 own-post-as-proof (two per post)
+yes(
+  'own-post-as-proof',
+  lines(
+    'Das Wetter dreht sich, wie in unserem Beitrag zum Winter steht.',
+    'Die Preise steigen, wie in unserem Guide steht.'
+  )
+);
+yes(
+  'own-post-as-proof',
+  lines('Prices rise, as our post on winter says.', 'Queues grow, as our guide says.'),
+  'en'
+);
+no('own-post-as-proof', lines('Das Wetter dreht sich, wie in unserem Beitrag zum Winter steht.'));
+no(
+  'own-post-as-proof',
+  lines('Wie lange es dauert, steht im Plan.', 'Wie viel es kostet, steht dort.')
+);
+
+// 31 advice-who-series (four per post)
+const whoDe = [
+  'Wer früh kommt, fährt zuerst Taron.',
+  'Wer spät kommt, geht zum Feuerwerk.',
+  'Wer Kinder hat, kann pausieren.',
+  'Wer allein ist, sollte Single Rider nutzen.',
+];
+yes('advice-who-series', lines(...whoDe));
+no('advice-who-series', lines(...whoDe.slice(0, 3)));
+yes(
+  'advice-who-series',
+  lines(
+    'If you arrive early, go to Taron.',
+    'If you arrive late, head to the fireworks.',
+    'If you have kids, take a break.',
+    'If you are alone, choose single rider.'
+  ),
+  'en'
+);
+yes(
+  'advice-who-series',
+  lines(
+    'Wie vroeg komt, gaat naar Taron.',
+    'Wie laat komt, gaat naar het vuurwerk.',
+    'Wie kinderen heeft, neemt pauze.',
+    'Wie alleen is, kiest single rider.'
+  ),
+  'nl'
+);
+no(
+  'advice-who-series',
+  lines(
+    'Wer früh kommt, wartet kürzer.',
+    'Wer spät kommt, wartet länger.',
+    'Wer fragt, bekommt.',
+    'Wer will, kommt.'
+  )
+);
+
+// 32 not-found-close (two per post)
+yes(
+  'not-found-close',
+  lines('Die Höhe haben wir nicht gefunden.', 'Den Preis konnten wir nicht ablesen.')
+);
+yes('not-found-close', lines("We couldn't find the height.", "We didn't find a price."), 'en');
+no('not-found-close', lines('Die Höhe haben wir nicht gefunden.'));
+no('not-found-close', lines('Nicht gefunden haben wir die Höhe, aber den Preis.', 'Gefunden.'));
+
+// 33 day-night-mirror (two per post)
+const dayNight = {
+  de: 'Tagsüber ist es voll, und abends wird es leer.',
+  en: 'By day it is full, and in the evening it empties.',
+  nl: 'Overdag is het vol en ’s avonds wordt het leeg.',
+  es: 'De día está lleno y de noche se vacía.',
+  it: 'Di giorno è pieno e di sera si svuota.',
+};
+for (const [locale, sentence] of Object.entries(dayNight)) {
+  yes('day-night-mirror', lines(sentence, sentence), locale);
+  no('day-night-mirror', lines(sentence), locale);
+}
+no('day-night-mirror', lines('Tagsüber ist es voll.', 'Abends ist es leer.'));
+no(
+  'day-night-mirror',
+  lines('Der Park ist tagsüber und abends offen.', 'Der Park öffnet um acht.'),
+  'fr'
+);
+
+// 34 looks-different-colon (two per post)
+const different = {
+  de: 'Der Sonntag sieht anders aus: die Schlangen wachsen.',
+  en: 'Sunday is another matter: queues grow.',
+  nl: 'Zondag ligt dat anders: de rijen groeien.',
+  fr: 'Le dimanche, c’est autre chose : les files grandissent.',
+  es: 'El domingo es otra historia: las colas crecen.',
+  it: 'La domenica è un’altra storia: le code crescono.',
+};
+for (const [locale, sentence] of Object.entries(different)) {
+  yes('looks-different-colon', lines(sentence, sentence), locale);
+  no('looks-different-colon', lines(sentence), locale);
+}
+no('looks-different-colon', lines('Der Sonntag sieht anders aus.', 'Der Montag sieht anders aus.'));
+
+// 35 riddle-title-fraction: title or heading
+yes('riddle-title-fraction', lines('Text.'), 'de', [
+  ['title', 'Die Hälfte? Der Park zur Hälfte leer'],
+]);
+yes('riddle-title-fraction', lines('## Ein Rekord, der zur Hälfte stimmt', 'Text.'));
+yes('riddle-title-fraction', lines('## A record that is half of the story', 'Text.'), 'en');
+yes('riddle-title-fraction', lines('## Un parc à moitié vide', 'Texte.'), 'fr');
+yes('riddle-title-fraction', lines('## Un parque a medio récord', 'Texto.'), 'es');
+yes('riddle-title-fraction', lines('## Un parco per metà vuoto', 'Testo.'), 'it');
+no('riddle-title-fraction', lines('## Die Öffnungszeiten', 'Der Park ist zur Hälfte leer.'));
+no('riddle-title-fraction', lines('Text.'), 'de', [['title', 'Die Öffnungszeiten']]);
+
+// 36 question-catalog-opener (three members)
+yes(
+  'question-catalog-opener',
+  lines('Wer in den Park fährt, will vorher wissen, ob es regnet, ob er zahlt und ob er wartet.')
+);
+yes(
+  'question-catalog-opener',
+  lines(
+    'Anyone going wants to know beforehand whether it rains, whether it costs and whether it waits.'
+  ),
+  'en'
+);
+yes(
+  'question-catalog-opener',
+  lines('Wie gaat, wil vooraf weten of het regent, of het kost en of het wacht.'),
+  'nl'
+);
+yes(
+  'question-catalog-opener',
+  lines('Tu veux savoir si la file est longue, si le parc est ouvert et si on peut manger.'),
+  'fr'
+);
+yes('question-catalog-opener', lines('Conviene saber si llueve, si cuesta y si hay cola.'), 'es');
+yes(
+  'question-catalog-opener',
+  lines('Chi parte vuole sapere prima se piove, se costa e se c’è coda.'),
+  'it'
+);
+no('question-catalog-opener', lines('Wer fährt, will vorher wissen, ob es regnet.'));
+no('question-catalog-opener', lines('Ob es regnet, ob es kostet und ob es wartet, ist offen.'));
+
+// 37 empty-faq-answer (two per post)
+yes(
+  'empty-faq-answer',
+  lines('### Was kostet das?', 'Das ist verschieden.', '### Wie voll ist es?', 'Das hängt ab.')
+);
+yes(
+  'empty-faq-answer',
+  lines('### What does it cost?', 'It varies.', '### How busy is it?', 'Busy.'),
+  'en'
+);
+yes(
+  'empty-faq-answer',
+  lines('### ¿Cuánto cuesta?', 'Depende.', '### ¿Y la cola?', 'Eso depende.'),
+  'es'
+);
+no(
+  'empty-faq-answer',
+  lines(
+    '### Was kostet das?',
+    'Das ist verschieden.',
+    '### Wie voll?',
+    'Der Park hat samstags bis zu 90 Minuten Wartezeit.'
+  )
+);
+no('empty-faq-answer', lines('### Gibt es Rabatt?', 'Nein.', '### Ist es offen?', 'Ja.'));
+no(
+  'empty-faq-answer',
+  lines('### Wann?', 'Das Frühjahr. Dann wird es voll.', '### Wo?', 'Im Süden. Nahe Rust.')
+);
+
+// 38 bold-maxim
+yes('bold-maxim', lines('Text davor. **Wer früh kommt, wartet kürzer.**'));
+yes('bold-maxim', lines('**Wer früh kommt, wartet kürzer.** Dann der Rest.'));
+yes('bold-maxim', lines('**The early visitor waits less.** Then the rest.'), 'en');
+no('bold-maxim', lines('**Wer um 9 Uhr kommt, wartet kürzer.** Der Rest.'));
+no('bold-maxim', lines('**[Der Guide](/blog/x) erklärt es.** Der Rest.'));
+no('bold-maxim', lines('**Anreise.** Der Rest steht hier.'));
+no('bold-maxim', lines('The **early** visitor waits less.'), 'en');
+no('bold-maxim', lines('**Taron and Rookburgh set the pace here.** Rest.'), 'en');
+no(
+  'bold-maxim',
+  lines(
+    '**Dies ist ein sehr langer Satz mit vielen Wörtern, der weit über die Grenze von vierzehn Wörtern hinausreicht.** Rest.'
+  )
+);
+
+// 39 captions: the patterns that fit a single sentence run on caption and alt text
+cases += 4;
+assert.equal(captionFindings('Voll am Tag, und das ist der Grund.', 'de').length, 1);
+assert.equal(captionFindings('Sunday is another matter: queues grow.', 'en').length, 1);
+assert.equal(captionFindings('Der Eingang des Parks im Herbst.', 'de').length, 0);
+assert.equal(captionFindings('A bet on the weather.', 'en').length, 0);
 
 // 21 a date that opens a line renders as a numbered list (an error since 2026-10-11)
 const dateLine = (s) => s.match(DATE_LINE_START);
