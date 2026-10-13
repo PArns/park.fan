@@ -7,10 +7,10 @@ mode: published
 featured: false
 excerpt: >-
   Le Futuroscope, près de Poitiers, a ouvert en 1987 avec une salle de cinéma,
-  et la plupart de ses attractions sont encore dans des bâtiments. Voici les
-  jours où les files sont plus courtes, la taille à partir de laquelle un enfant
-  peut monter dans chaque attraction et ce que coûte un pass pour cinq
-  attractions, avec les prix et les dates de la saison 2026.
+  et la plupart de ses attractions sont encore dans des bâtiments. Les files
+  sont les plus courtes le jeudi, le vendredi et le dimanche. Le Pass Premium+
+  donne cinq accès par la file prioritaire et coûte en 2026 de 40 à 60 euros
+  selon la date.
 tags:
   - futuroscope
   - poitiers
@@ -50,13 +50,12 @@ seo:
     - parc d'attractions France
 ---
 
-Qui arrivait le 31 mai 1987 à Chasseneuil-du-Poitou trouvait un pavillon avec une sphère posée
-sur un plan incliné, et une salle de cinéma. Selon Wikipédia en français, ce plan devait
-représenter un lever de soleil sur un monde qui change, c'est ainsi que l'architecte Denis Laming
-l'a dessiné. La salle s'appelait le Kinémax et figurait déjà dans la première saison. Le
-[Futuroscope](ref:futuroscope) n'a donc pas commencé par des montagnes russes mais par un écran,
-et cela se voit encore : presque toutes les attractions sont une projection, un parcours dans le
-noir ou un siège qui bouge avec le film.
+Qui arrivait le 31 mai 1987 à Chasseneuil-du-Poitou trouvait un pavillon avec une sphère posée sur
+un plan incliné, et une salle de cinéma. Selon Wikipédia en français, ce plan devait représenter un
+lever de soleil sur un monde qui change, c'est ainsi que l'architecte Denis Laming l'a dessiné. La
+salle s'appelait le Kinémax et figurait déjà dans la première saison. Presque toutes les attractions
+du [Futuroscope](ref:futuroscope) sont encore aujourd'hui une projection, un parcours dans le noir
+ou un siège qui bouge avec le film.
 
 Le parc se trouve à 20 minutes de Poitiers et fait partie du resort Futuroscope Xperiences, nom
 que l'ensemble porte depuis mai 2024. Sur son propre site, le resort indique environ 2,5 millions
@@ -180,8 +179,8 @@ Futuropolis est la zone extérieure pour les enfants, sur trois hectares, ouvert
 nom de Monde des Enfants et appelée ainsi depuis 2018. Wikipédia en français y compte 21
 attractions et aires de jeux, dont des manèges de Heege, Zierer et Zamperla.
 
-Le bracelet détermine ce qu'un enfant a le droit de faire. Il en existe quatre couleurs, selon la
-taille. Les limites que le parc indique aux attractions :
+Les bracelets existent en quatre couleurs, selon la taille. Les limites que le parc indique aux
+attractions :
 
 | Attraction                                                | accompagné dès | seul dès |
 | --------------------------------------------------------- | -------------- | -------- |
@@ -212,12 +211,11 @@ pour les enfants de moins de douze ans.
 
 ## La soirée au parc
 
-Le Futuroscope ne ferme pas quand les attractions ferment. Chaque soir d'ouverture, **La Clé des
-Songes**, le spectacle nocturne sur le Lac aux Images, est au programme. Selon le parc, il dure
-environ 25 minutes, il est compris dans l'entrée et a lieu aussi sous la pluie, tant que la météo
-n'est pas exceptionnelle. On y voit des images d'eau en 3D, de la lumière et de la pyrotechnie. Le
-spectacle existe depuis juin 2021 et a remplacé La Forge aux Étoiles, conçue par les créateurs du
-Cirque du Soleil.
+Chaque soir d'ouverture, **La Clé des Songes**, le spectacle nocturne sur le Lac aux Images, est au
+programme. Selon le parc, il dure environ 25 minutes, il est compris dans l'entrée et a lieu aussi
+sous la pluie, tant que la météo n'est pas exceptionnelle. On y voit des images d'eau en 3D, de la
+lumière et de la pyrotechnie. Le spectacle existe depuis juin 2021 et a remplacé La Forge aux
+Étoiles, conçue par les créateurs du Cirque du Soleil.
 
 Deux autres spectacles ont lieu en journée. **Éclipse, robotic show** a été créé en 2024 avec le
 Cirque Éloize dans l'ancien pavillon IMAX 3D et mêle vidéo mapping, lasers et drones.
@@ -229,10 +227,9 @@ Pour ne venir que le soir, on prend un billet Soirée (entrée dès 17 h) ou un 
 
 ## Combien de temps on attend ici
 
-Les temps d'attente viennent de la fenêtre qui court depuis le 6 octobre 2024 : 228 jours mesurés
-jusqu'au 6 octobre 2026. Le Futuroscope compte beaucoup de rendez-vous sans file : spectacles,
-films sous les dômes, parcours à pied. Nous mesurons les attractions pour lesquelles le parc
-signale un temps d'attente.
+Jusqu'au 6 octobre 2026, nous avons mesuré sur 228 jours. Le Futuroscope compte beaucoup de
+rendez-vous sans file : spectacles, films sous les dômes, parcours à pied. Nous mesurons les
+attractions pour lesquelles le parc signale un temps d'attente.
 
 ```ride-waits-widget park=futuroscope top=8 columns=peak,days highlight=destination-mars
 
@@ -242,18 +239,16 @@ Objectif Mars et L'Extraordinaire Voyage se partagent la première place. Derri�
 Chasseurs de Tornades, La Maison à l'envers, Aventure Éclabousse et Danse avec les Robots, très
 proches les uns des autres.
 
-Que La Maison à l'envers figure parmi les cinq premières est un résultat de cette analyse. Selon le
-parc, la maison n'a pas de limite de taille et sert de solution de repli aux familles dont les
-enfants n'ont pas encore le droit de monter dans les attractions. Le Pass Premium+ n'y est pas
-valable.
+La Maison à l'envers figure parmi les cinq premières. Selon le parc, la maison n'a pas de limite de
+taille et sert de solution de repli aux familles dont les enfants n'ont pas encore le droit de
+monter dans les attractions. Le Pass Premium+ n'y est pas valable.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
 ```
 
 Le tableau indique pour chaque attraction l'heure où sa file est la plus longue, et comment elle
-évolue avant et après. On fait les attractions de cette liste aux heures où elles sont courtes, et
-les films et spectacles sans file entre les deux.
+évolue avant et après.
 
 ### Des pass qui évitent la file
 
@@ -272,11 +267,6 @@ nombre limité.
   soir, bière et boissons sans alcool à volonté et une place de parking VIP, à partir de 500 euros
   pour un adulte.
 
-Savoir si le Premium+ vaut le coup dépend de la largeur du peloton de tête dans le tableau
-ci-dessus. Là où les attractions les plus demandées se partagent le classement, cinq accès
-achètent surtout de la prévisibilité, et elle ne rapporte pas la même chose un samedi d'août et un
-jeudi de septembre.
-
 ## Quand y aller
 
 ```stats-widget slug=futuroscope show=weekdays
@@ -289,10 +279,10 @@ Le samedi est le jour le plus chargé, avec une avance nette sur tous les autres
 et dimanche ont les temps d'attente les plus courts, de lundi à mercredi on se situe entre les
 deux. Chaque jour de la semaine repose dans nos données sur 30 à 35 journées.
 
-Une réserve : à l'automne, le parc est souvent fermé du lundi au mercredi, trois semaines en
-septembre, du 12 au 14 en octobre 2026. Les jours ouverts de ces trois jours de semaine tombent
-donc surtout au printemps et en été, quand il y a de toute façon plus de monde. La comparaison
-avec le jeudi n'est pas tout à fait propre.
+À l'automne, le parc est souvent fermé du lundi au mercredi, trois semaines en septembre, du 12 au
+14 en octobre 2026. Les jours ouverts de ces trois jours de semaine tombent donc surtout au
+printemps et en été, quand il y a de toute façon plus de monde. La comparaison avec le jeudi n'est
+pas tout à fait propre.
 
 ### Le mois
 
@@ -354,8 +344,7 @@ et de Family Park coûte moitié prix. Qui avait une carte en 2025 obtient 20 po
 sur le renouvellement. La carte se prend à l'agence Futuroscope Destination, à l'entrée
 principale, et la photo est faite sur place.
 
-L'Aquascope, le parc aquatique couvert du site, n'est pas compris dans le billet du parc (plus de
-détails plus bas, dans la partie consacrée au resort).
+L'Aquascope, le parc aquatique couvert du site, n'est pas compris dans le billet du parc.
 
 ## Comment venir
 
@@ -421,15 +410,15 @@ récente des attractions.
 
 À côté du parc, trois installations du resort demandent un billet à part.
 
-L'**Aquascope** est un parc aquatique couvert, ouvert le 15 juillet 2024. Le parc y recense
-24 entrées. Dans la rubrique des toboggans, il y en a neuf, dont huit avec une taille minimale
-(Reflex et Flash à partir de 1,10 m, Matrix, Sprint et Alien à partir de 1,20, Spiral et Quick à
-partir de 1,35, Rocket à partir de 1,40). S'y ajoutent un espace pour enfants avec des tentacules,
-un labyrinthe d'eau et une grotte musicale, ainsi qu'une plage d'été avec des terrasses. La
-capacité étant limitée, il n'y a que des billets avec créneau horaire et pas de caisse du jour ;
-le billet adulte commence à 39 euros. Les poussettes ne sont pas admises à l'Aquascope, et il n'y
-a pas de consigne. Le parc cite deux distinctions pour cette installation, de la World Waterpark
-Association et de la Themed Entertainment Association.
+L'**Aquascope** est un parc aquatique couvert, ouvert le 15 juillet 2024. Le parc y annonce 24
+attractions, dont neuf toboggans, et huit d'entre eux ont une taille minimale (Reflex et Flash à
+partir de 1,10 m, Matrix, Sprint et Alien à partir de 1,20, Spiral et Quick à partir de 1,35, Rocket
+à partir de 1,40). S'y ajoutent un espace pour enfants avec des tentacules, un labyrinthe d'eau et
+une grotte musicale, ainsi qu'une plage d'été avec des terrasses. La capacité étant limitée, il n'y
+a que des billets avec créneau horaire et pas de caisse du jour ; le billet adulte commence à 39
+euros. Les poussettes ne sont pas admises à l'Aquascope, et il n'y a pas de consigne. Le parc cite
+deux distinctions pour cette installation, de la World Waterpark Association et de la Themed
+Entertainment Association.
 
 **ZerOGravity** se trouve en face du parc et de l'Aquascope : c'est une soufflerie pour la chute
 libre. L'exploitant décrit deux vols avec un instructeur, censés correspondre à deux sauts de
@@ -444,8 +433,9 @@ L'**Arena Futuroscope** est une salle de spectacles et de sport de 6 144 places,
 
 ## Une journée au parc, en gros
 
-En octobre 2026, le parc ouvre à 10 h en semaine et à 9 h 45 le week-end, et tous les jours à 9 h 45 pendant les vacances de la Toussaint. Il ferme à 20 h 45 ou à 22 h selon le jour. La soirée appartient au spectacle, ce qui plaide pour faire les attractions
-tôt et les films plus tard.
+En octobre 2026, le parc ouvre à 10 h en semaine et à 9 h 45 le week-end, et tous les jours à 9 h 45
+pendant les vacances de la Toussaint. Il ferme à 20 h 45 ou à 22 h selon le jour. Comme le spectacle
+a lieu le soir, on fait les attractions tôt et les films plus tard.
 
 1. **Avant l'ouverture** Récupérer le bracelet des enfants à un point info. Puis directement à
    Objectif Mars ou à Mission Bermudes.
@@ -459,15 +449,15 @@ tôt et les films plus tard.
    figurent le jour même dans le calendrier du parc.
 6. **Soir** La Clé des Songes sur le Lac aux Images.
 
-Un deuxième jour vaut surtout la peine avec des enfants, car Futuropolis remplit alors la journée.
-Avec l'offre « 3e jour gratuit », il coûte peu.
+Un deuxième jour vaut surtout la peine avec des enfants, qui peuvent alors le passer entièrement à
+Futuropolis. Avec l'offre « 3e jour gratuit », il coûte peu.
 
 ## Questions fréquentes
 
 ### Combien d'attractions compte le Futuroscope ?
 
-Nous recensons 55 entrées, dont des films, des spectacles et des parcours sans file. Wikipédia en
-français indique 40 attractions dans le parc, dont 21 à Futuropolis.
+Notre page du parc compte 55 attractions, dont des films, des spectacles et des parcours sans file.
+Wikipédia en français indique 40 attractions dans le parc, dont 21 à Futuropolis.
 
 ### À partir de quelle taille mon enfant peut-il monter ?
 

@@ -7,10 +7,9 @@ mode: published
 featured: false
 excerpt: >-
   El Futuroscope, cerca de Poitiers, abrió en 1987 con un cine, y casi todas
-  sus atracciones siguen estando dentro de edificios. Aquí verás qué días hay
-  menos cola, desde qué altura puede montar cada niño en cada atracción y
-  cuánto cuesta un pase para cinco subidas, con los precios y las fechas de la
-  temporada 2026.
+  sus atracciones siguen estando dentro de edificios. Los jueves, viernes y
+  domingos hay menos cola. El pase Premium+ da cinco accesos por la vía
+  prioritaria y en 2026 cuesta de 40 a 60 euros según la fecha.
 tags:
   - futuroscope
   - poitiers
@@ -52,11 +51,10 @@ seo:
 
 Quien llegó a Chasseneuil-du-Poitou el 31 de mayo de 1987 se encontró con un pabellón con una
 esfera sobre una superficie inclinada y con un cine. Según la Wikipedia francesa, esa superficie
-debía representar un amanecer sobre un mundo en transformación, y así la diseñó el arquitecto
-Denis Laming. El cine se llamaba Kinémax y estaba en el parque desde la primera temporada. El
-[Futuroscope](ref:futuroscope) no empezó con una montaña rusa sino con una pantalla, y todavía se
-nota: casi todas las atracciones son una proyección, un recorrido a oscuras o un asiento que se
-mueve con la película.
+debía representar un amanecer sobre un mundo en transformación, y así la diseñó el arquitecto Denis
+Laming. El cine se llamaba Kinémax y estaba en el parque desde la primera temporada. Casi todas las
+atracciones del [Futuroscope](ref:futuroscope) siguen siendo una proyección, un recorrido a oscuras
+o un asiento que se mueve con la película.
 
 El parque está a 20 minutos de Poitiers y forma parte del resort Futuroscope Xperiences, nombre
 que lleva el conjunto desde mayo de 2024. El resort habla en su propia web de unos 2,5 millones
@@ -155,7 +153,7 @@ aniversario del parque, y dura unos cinco minutos.
 
 Desde 1,05 metros acompañado, desde 1,20 metros solo y hasta 2,00 metros.
 
-### Lo demás que se hace sentado
+### Otras atracciones
 
 - [Arthur, l'aventure 4D](ref:futuroscope/arthur-the-4d-adventure) en el domo IMAX: te reducen
   al tamaño de los Minimoys y vuelas por su mundo, en un asiento con movimiento. Desde 1,05 y
@@ -183,8 +181,8 @@ Futuropolis es la zona exterior para niños, de tres hectáreas, abierta en 1988
 Enfants y con el nombre actual desde 2018. La Wikipedia francesa cuenta 21 atracciones y zonas
 de juego, entre ellas carruseles de Heege, Zierer y Zamperla.
 
-La pulsera decide lo que puede hacer cada niño. Hay cuatro colores, escalonados por altura. Los
-límites que el parque indica en las atracciones:
+Hay pulseras de cuatro colores, escalonados por altura. Los límites que el parque indica en las
+atracciones:
 
 | Atracción                                            | acompañado desde | solo desde |
 | ---------------------------------------------------- | ---------------- | ---------- |
@@ -215,12 +213,11 @@ restaurantes tienen un menú para niños menores de doce años.
 
 ## La noche en el parque
 
-El Futuroscope no cierra cuando cierran las atracciones. Cada noche en que el parque está abierto
-se celebra **La Clé des Songes**, el espectáculo nocturno del Lac aux Images. Según el parque
-dura unos 25 minutos, está incluido en la entrada y se celebra también con lluvia, siempre que el
-tiempo no sea excepcional. Se ven imágenes sobre el agua en 3D, luces y pirotecnia. El
-espectáculo funciona desde junio de 2021 y sustituyó a La Forge aux Étoiles, diseñada por gente
-del Cirque du Soleil.
+Cada noche en que el parque está abierto se celebra **La Clé des Songes**, el espectáculo nocturno
+del Lac aux Images. Según el parque dura unos 25 minutos, está incluido en la entrada y se celebra
+también con lluvia, siempre que el tiempo no sea excepcional. Se ven imágenes sobre el agua en 3D,
+luces y pirotecnia. El espectáculo funciona desde junio de 2021 y sustituyó a La Forge aux Étoiles,
+diseñada por gente del Cirque du Soleil.
 
 De día hay otros dos espectáculos. **Éclipse, robotic show** se creó en 2024 con el Cirque Éloize
 en el antiguo pabellón IMAX 3D y combina videomapping, láseres y drones. **IllusiO, un destin
@@ -233,10 +230,9 @@ por la noche.
 
 ## Cuánto se espera aquí
 
-Los tiempos de espera salen de la ventana que empieza el 6 de octubre de 2024: 228 días medidos
-hasta el 6 de octubre de 2026. El Futuroscope tiene muchos puntos del programa sin cola:
-espectáculos, películas en el domo, recorridos. Medimos las atracciones en las que el parque
-comunica un tiempo de espera.
+Hasta el 6 de octubre de 2026 hemos medido 228 días. El Futuroscope tiene muchos puntos del programa
+sin cola: espectáculos, películas en el domo, recorridos. Medimos las atracciones en las que el
+parque comunica un tiempo de espera.
 
 ```ride-waits-widget park=futuroscope top=8 columns=peak,days highlight=destination-mars
 
@@ -246,17 +242,16 @@ Objectif Mars y L'Extraordinaire Voyage comparten el primer puesto. Detrás vien
 Arthur, Chasseurs de Tornades, La Maison à l'envers, Aventure Éclabousse y Danse avec les
 Robots.
 
-Que La Maison à l'envers esté entre las cinco primeras es un resultado de este análisis. Según
-el parque, la casa no tiene límite de altura y es la alternativa para las familias cuyos hijos
-todavía no pueden subir a las atracciones. El pase Premium+ no vale allí.
+La Maison à l'envers está entre las cinco primeras. Según el parque, la casa no tiene límite de
+altura y es la alternativa para las familias cuyos hijos todavía no pueden subir a las atracciones.
+El pase Premium+ no vale allí.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
 ```
 
 La tabla indica, para cada atracción, la hora en la que su cola es más larga y cómo se comporta
-antes y después. Las atracciones de esa lista conviene hacerlas en las horas en que son cortas, y
-entre medias las películas y espectáculos sin cola.
+antes y después.
 
 ### Pases que se saltan la cola
 
@@ -275,10 +270,6 @@ número limitado.
   nocturno, cerveza y bebidas sin alcohol sin límite y un aparcamiento VIP, desde 500 euros para
   adultos.
 
-Si el Premium+ compensa lo decide lo ancha que sea la cabeza de la tabla de arriba. Donde las
-atracciones más solicitadas se reparten una clasificación, con cinco accesos se compra sobre todo
-previsibilidad, y esa vale otra cosa un sábado de agosto que un jueves de septiembre.
-
 ## Cuándo ir
 
 ```stats-widget slug=futuroscope show=weekdays
@@ -291,10 +282,10 @@ El sábado es el día con más gente, con una distancia clara respecto a todos l
 viernes y domingo tienen los tiempos de espera más cortos, y de lunes a miércoles quedan en un
 punto intermedio. Cada día de la semana cuenta en nuestros datos con entre 30 y 35 jornadas.
 
-Hay una salvedad: en otoño el parque suele estar cerrado de lunes a miércoles, en septiembre
-durante tres semanas y en octubre de 2026 del 12 al 14. Por eso los días abiertos de esos días
-de la semana caen sobre todo en primavera y verano, cuando de todos modos hay más movimiento. La
-comparación con el jueves no es del todo limpia.
+En otoño el parque suele estar cerrado de lunes a miércoles, en septiembre durante tres semanas y en
+octubre de 2026 del 12 al 14. Por eso los días abiertos de esos días de la semana caen sobre todo en
+primavera y verano, cuando de todos modos hay más movimiento. La comparación con el jueves no es del
+todo limpia.
 
 ### El mes
 
@@ -356,8 +347,7 @@ Park. Quien tuvo tarjeta en 2025 recibe un 20 por ciento de descuento en la reno
 tarjeta se saca en la agencia Futuroscope Destination, en la entrada principal, y la foto se hace
 allí mismo.
 
-El Aquascope, el parque acuático cubierto del recinto, no está incluido en la entrada del parque
-(más sobre él en la sección dedicada al resort, más abajo).
+El Aquascope, el parque acuático cubierto del recinto, no está incluido en la entrada del parque.
 
 ## Cómo llegar
 
@@ -421,14 +411,14 @@ más reciente.
 
 Junto al parque, el resort cuenta con tres instalaciones que necesitan entrada propia.
 
-El **Aquascope** es un parque acuático cubierto que abrió el 15 de julio de 2024. El parque recoge
-allí 24 entradas. En la categoría de toboganes hay nueve, y para ocho rige una altura mínima
+El **Aquascope** es un parque acuático cubierto que abrió el 15 de julio de 2024. El parque cita
+allí 24 atracciones, entre ellas nueve toboganes, y para ocho de ellos rige una altura mínima
 (Reflex y Flash desde 1,10 metros, Matrix, Sprint y Alien desde 1,20, Spiral y Quick desde 1,35,
 Rocket desde 1,40). Además hay una zona infantil con tentáculos, un laberinto de agua y una gruta
-musical, y una playa de verano con terrazas. Por la capacidad limitada solo hay entradas con
-franja horaria fija y no hay taquilla de día; la entrada de adulto empieza en 39 euros. En el
-Aquascope no se permiten cochecitos y no hay consigna. El parque menciona dos premios, de la
-World Waterpark Association y de la Themed Entertainment Association.
+musical, y una playa de verano con terrazas. Por la capacidad limitada solo hay entradas con franja
+horaria fija y no hay taquilla de día; la entrada de adulto empieza en 39 euros. En el Aquascope no
+se permiten cochecitos y no hay consigna. El parque menciona dos premios, de la World Waterpark
+Association y de la Themed Entertainment Association.
 
 **ZerOGravity** está enfrente del parque y del Aquascope y es un túnel de viento para la caída
 libre. El operador describe dos vuelos con un instructor que equivalen a dos saltos desde
@@ -443,8 +433,10 @@ El **Arena Futuroscope** es una sala para espectáculos y deporte con 6.144 plaz
 
 ## Un día en el parque, a grandes rasgos
 
-En octubre de 2026 el parque abre a las 10:00 entre semana y a las 9:45 el fin de semana, y todos los días a las 9:45 durante las vacaciones de otoño. Cierra, según el día, a las 20:45 o a las 22:00. La noche es del espectáculo, y eso aconseja
-hacer las atracciones pronto y las películas más tarde.
+En octubre de 2026 el parque abre a las 10:00 entre semana y a las 9:45 el fin de semana, y todos
+los días a las 9:45 durante las vacaciones de otoño. Cierra, según el día, a las 20:45 o a las
+22:00. Como el espectáculo es por la noche, conviene hacer las atracciones pronto y las películas
+más tarde.
 
 1. **Antes de la apertura** Recoger la pulsera de los niños en un punto de información. Después,
    directos a Objectif Mars o a Mission Bermudes.
@@ -458,15 +450,15 @@ hacer las atracciones pronto y las películas más tarde.
    horarios están el mismo día en el calendario del parque.
 6. **Noche** La Clé des Songes en el Lac aux Images.
 
-Un segundo día compensa sobre todo con niños, porque entonces Futuropolis ocupa el día entero.
-Con la oferta «3.er día gratis» cuesta poco.
+Un segundo día compensa sobre todo con niños, que pueden pasarlo entero en Futuropolis. Con la
+oferta «3.er día gratis» cuesta poco.
 
 ## Preguntas frecuentes
 
 ### ¿Cuántas atracciones tiene el Futuroscope?
 
-Tenemos 55 entradas, entre ellas películas, espectáculos y recorridos sin cola. La Wikipedia
-francesa cuenta 40 atracciones en el parque, 21 de ellas en Futuropolis.
+En nuestra página del parque hay 55 atracciones, entre ellas películas, espectáculos y recorridos
+sin cola. La Wikipedia francesa cuenta 40 atracciones en el parque, 21 de ellas en Futuropolis.
 
 ### ¿Desde qué altura puede mi hijo subir a las atracciones?
 

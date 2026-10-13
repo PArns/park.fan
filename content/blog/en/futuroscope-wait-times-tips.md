@@ -7,9 +7,9 @@ mode: published
 featured: false
 excerpt: >-
   Futuroscope near Poitiers opened in 1987 with a cinema, and most of its
-  attractions still sit inside buildings. This guide covers the days with the
-  shorter queues, the height each ride asks for, and what a pass for five rides
-  costs, with the prices and dates of the 2026 season.
+  attractions still sit inside buildings. Thursdays, Fridays and Sundays have
+  the shortest queues. The Premium+ pass gets you past the queue five times
+  and costs 40 to 60 euros in 2026, depending on the date.
 tags:
   - futuroscope
   - poitiers
@@ -52,9 +52,9 @@ seo:
 Anyone who arrived in Chasseneuil-du-Poitou on 31 May 1987 found a pavilion with a sphere on a
 sloping surface, and a cinema. According to the French Wikipedia, the surface was meant to show a
 sunrise over a changing world, which is how the architect Denis Laming designed it. The cinema was
-called Kinémax and was in the park from its first season. [Futuroscope](ref:futuroscope) didn't
-start with a roller coaster but with a screen, and you can still tell: almost every attraction
-here is a show, a walk-through in the dark or a seat that moves with the film.
+called Kinémax and was in the park from its first season. Almost every attraction at
+[Futuroscope](ref:futuroscope) is still a show, a walk-through in the dark or a seat that moves with
+the film.
 
 The park is 20 minutes from Poitiers and belongs to the resort Futuroscope Xperiences, which is
 what the whole site has been called since May 2024. The resort puts its own visitor count at
@@ -175,8 +175,8 @@ Futuropolis is the outdoor area for children, three hectares in size, opened in 
 Enfants and under its current name since 2018. The French Wikipedia counts 21 attractions and
 play areas, including carousels by Heege, Zierer and Zamperla.
 
-The wristband decides what a child can do. There are four colours, graded by height. These are
-the limits the park gives at the attractions:
+There are four wristband colours, graded by height. These are the limits the park gives at the
+attractions:
 
 | Attraction                                            | with adult from | alone from |
 | ----------------------------------------------------- | --------------- | ---------- |
@@ -205,11 +205,11 @@ under fives get in free, and every restaurant has a menu for children under twel
 
 ## The evening in the park
 
-Futuroscope doesn't shut when the rides do. On every evening the park is open there's **La Clé
-des Songes**, the night spectacle on the Lac aux Images. According to the park it lasts about
-25 minutes, is included in the ticket and goes ahead in the rain unless the weather is
-exceptional. It has 3D water images, light and pyrotechnics. The show has run since June 2021 and
-replaced La Forge aux Étoiles, which people behind Cirque du Soleil had designed.
+On every evening the park is open there's **La Clé des Songes**, the night spectacle on the Lac aux
+Images. According to the park it lasts about 25 minutes, is included in the ticket and goes ahead in
+the rain unless the weather is exceptional. It has 3D water images, light and pyrotechnics. The show
+has run since June 2021 and replaced La Forge aux Étoiles, which people behind Cirque du Soleil had
+designed.
 
 There are two more shows during the day. **Éclipse, robotic show** was made in 2024 with Cirque
 Éloize in the former IMAX 3D pavilion and mixes video mapping, lasers and drones. **IllusiO, un
@@ -220,9 +220,9 @@ If you only want the evening, buy a Soirée ticket (entry from 5 pm) or a Noctur
 
 ## How long you queue here
 
-The wait times come from the window since 6 October 2024: 228 measured days up to 6 October 2026.
-Futuroscope has plenty of things with no queue at all: shows, films in the dome, walk-throughs.
-We measure the attractions where the park reports a wait time.
+Up to 6 October 2026 we measured on 228 days. Futuroscope has plenty of things with no queue at all:
+shows, films in the dome, walk-throughs. We measure the attractions where the park reports a wait
+time.
 
 ```ride-waits-widget park=futuroscope top=8 columns=peak,days highlight=destination-mars
 
@@ -232,17 +232,16 @@ Objectif Mars and L'Extraordinaire Voyage share first place. Behind them Arthur,
 Tornades, La Maison à l'envers, Aventure Éclabousse and Danse avec les Robots sit very close
 together.
 
-La Maison à l'envers ranking in the top five is a result of this analysis. By the park's own
-account the house has no height limit, and it's the fallback for families whose children can't
-ride the bigger attractions yet. The Premium+ pass isn't valid there.
+La Maison à l'envers is in the top five. By the park's own account the house has no height limit,
+and it's the fallback for families whose children can't ride the bigger attractions yet. The
+Premium+ pass isn't valid there.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
 ```
 
 The table gives, for each ride, the hour when its queue is longest and how it behaves before and
-after. You ride the attractions on this list in the hours when they're short, and fit the films
-and shows without a queue in between.
+after.
 
 ### Passes that get you past the queue
 
@@ -259,10 +258,6 @@ limited numbers.
 - **VIP Expérience**: personal welcome, priority access, VIP seats for the evening show, unlimited
   beer and soft drinks and a VIP parking space, from 500 euros for adults.
 
-Whether the Premium+ pays off depends on how wide the top of the table above is. Where the most
-popular rides share a ranking, five entries mostly buy you predictability, and that's worth
-something different on a Saturday in August than on a Thursday in September.
-
 ## When to go
 
 ```stats-widget slug=futuroscope show=weekdays
@@ -275,10 +270,9 @@ Saturday is the busiest day, by a clear margin over all the others. Thursday, Fr
 have the shortest waits, with Monday to Wednesday in between. Each weekday rests on 30 to 35 days
 in our data.
 
-One caveat: in autumn the park is often closed from Monday to Wednesday, for three weeks in
-September and from 12 to 14 in October 2026. The open days of those weekdays therefore fall
-mostly in spring and summer, when it's busier anyway. The comparison with Thursday isn't entirely
-clean for that reason.
+In autumn the park is often closed from Monday to Wednesday, for three weeks in September and from
+12 to 14 in October 2026. The open days of those weekdays therefore fall mostly in spring and
+summer, when it's busier anyway. The comparison with Thursday isn't entirely clean for that reason.
 
 ### The month
 
@@ -335,8 +329,7 @@ Miniature, Walibi Rhône-Alpes, Walibi Belgium, Bellewaerde, Walibi Holland and 
 half price. Anyone who had a card in 2025 gets 20 percent off the renewal. You get the card at
 the Futuroscope Destination agency at the main entrance, and the photo is taken on site.
 
-The Aquascope, the covered water park on the site, isn't included in the park ticket (more on
-that further down, in the section on the resort).
+The Aquascope, the covered water park on the site, isn't included in the park ticket.
 
 ## Getting there
 
@@ -399,14 +392,14 @@ June 2025.
 
 Three facilities next to the park belong to the resort and need their own ticket.
 
-The **Aquascope** is a covered water park that opened on 15 July 2024. The park lists 24 entries
-there. The slides section has nine, and eight of them have a minimum height (Reflex and Flash from
-1.10 metres, Matrix, Sprint and Alien from 1.20, Spiral and Quick from 1.35, Rocket from 1.40).
-There's also a children's area with tentacles, a water maze and a music grotto, and a summer
-beach with terraces. Because capacity is limited, there are only tickets with a fixed time slot
-and no ticket office; the adult ticket starts at 39 euros. Strollers aren't allowed in the
-Aquascope, and there's no left luggage. The park names two awards for it, from the World
-Waterpark Association and from the Themed Entertainment Association.
+The **Aquascope** is a covered water park that opened on 15 July 2024. The park names 24 attractions
+there, nine of them slides, and eight of those have a minimum height (Reflex and Flash from 1.10
+metres, Matrix, Sprint and Alien from 1.20, Spiral and Quick from 1.35, Rocket from 1.40). There's
+also a children's area with tentacles, a water maze and a music grotto, and a summer beach with
+terraces. Because capacity is limited, there are only tickets with a fixed time slot and no ticket
+office; the adult ticket starts at 39 euros. Strollers aren't allowed in the Aquascope, and there's
+no left luggage. The park names two awards for it, from the World Waterpark Association and from the
+Themed Entertainment Association.
 
 **ZerOGravity** is opposite the park and the Aquascope and is a wind tunnel for free fall. The
 operator describes two flights with an instructor that are supposed to equal two jumps from
@@ -419,8 +412,9 @@ The **Arena Futuroscope** is a hall for shows and sport with 6,144 seats, which 
 
 ## A day in the park, roughly planned
 
-In October 2026 the park opens at 10 am on weekdays and 9:45 am on weekends, and daily at 9:45 am during the autumn holidays. It closes at 8:45 pm or 10 pm depending on the day. The evening belongs to the show, which is a reason to take the
-rides early and the films later.
+In October 2026 the park opens at 10 am on weekdays and 9:45 am on weekends, and daily at 9:45 am
+during the autumn holidays. It closes at 8:45 pm or 10 pm depending on the day. Because the show
+runs in the evening, take the rides early and the films later.
 
 1. **Before opening** Pick up the wristband for the children at an info point. Then straight to
    Objectif Mars or Mission Bermudes.
@@ -434,15 +428,15 @@ rides early and the films later.
    the park's calendar on the day itself.
 6. **Evening** La Clé des Songes on the Lac aux Images.
 
-A second day is mostly worth it with children, because Futuropolis then carries the whole day.
-With the "3rd day free" offer it costs little.
+A second day is mostly worth it with children, who can then spend all of it in Futuropolis. With the
+"3rd day free" offer it costs little.
 
 ## Frequently asked questions
 
 ### How many attractions does Futuroscope have?
 
-We list 55 entries, including films, shows and walk-throughs without a queue. The French
-Wikipedia names 40 attractions in the park, 21 of which are in Futuropolis.
+Our park page has 55 attractions, including films, shows and walk-throughs without a queue. The
+French Wikipedia names 40 attractions in the park, 21 of which are in Futuropolis.
 
 ### How tall does my child have to be for the rides?
 

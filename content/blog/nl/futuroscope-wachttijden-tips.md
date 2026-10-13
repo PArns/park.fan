@@ -7,9 +7,9 @@ mode: published
 featured: false
 excerpt: >-
   Futuroscope bij Poitiers ging in 1987 open met een bioscoop, en de meeste
-  attracties staan nog steeds in een gebouw. Hier lees je op welke dagen de
-  wachtrijen korter zijn, vanaf welke lengte kinderen in welke baan mogen en wat
-  een pas voor vijf ritten kost, met de prijzen en data van seizoen 2026.
+  attracties staan nog steeds in een gebouw. Op donderdag, vrijdag en zondag
+  zijn de wachtrijen het kortst. De Pass Premium+ brengt je vijf keer langs de
+  wachtrij en kost in 2026 afhankelijk van de datum 40 tot 60 euro.
 tags:
   - futuroscope
   - poitiers
@@ -49,12 +49,12 @@ seo:
     - pretpark Frankrijk
 ---
 
-Wie op 31 mei 1987 in Chasseneuil-du-Poitou aankwam, vond een paviljoen met een bol op een
-schuin vlak en een bioscoop. Het vlak moest volgens de Franse Wikipedia een zonsopgang boven een
-veranderende wereld voorstellen, zo ontwierp architect Denis Laming het. De bioscoop heette
-Kinémax en stond al in het eerste seizoen in het park. [Futuroscope](ref:futuroscope) begon dus
-niet met een achtbaan maar met een filmdoek, en dat merk je nog altijd: bijna elke attractie is
-hier een voorstelling, een parcours in het donker of een stoel die met de film meebeweegt.
+Wie op 31 mei 1987 in Chasseneuil-du-Poitou aankwam, vond een paviljoen met een bol op een schuin
+vlak en een bioscoop. Het vlak moest volgens de Franse Wikipedia een zonsopgang boven een
+veranderende wereld voorstellen, zo ontwierp architect Denis Laming het. De bioscoop heette Kinémax
+en stond al in het eerste seizoen in het park. Bijna elke attractie in
+[Futuroscope](ref:futuroscope) is nog altijd een voorstelling, een parcours in het donker of een
+stoel die met de film meebeweegt.
 
 Het park ligt 20 minuten van Poitiers en hoort bij het resort Futuroscope Xperiences, zo heet
 het geheel sinds mei 2024. Het resort noemt op de eigen site ongeveer 2,5 miljoen bezoekers per
@@ -148,7 +148,7 @@ jaar van de 30e verjaardag van het park, en duurt ongeveer vijf minuten.
 
 Vanaf 1,05 meter met begeleiding, vanaf 1,20 meter alleen, tot 2,00 meter.
 
-### Wat verder met stoelen te maken heeft
+### Overige attracties
 
 - [Arthur, l'aventure 4D](ref:futuroscope/arthur-the-4d-adventure) in de IMAX-dome: je wordt
   verkleind tot de maat van de Minimoys en vliegt door hun wereld, in een bewegende stoel. Vanaf
@@ -176,8 +176,8 @@ Futuropolis is het buitengebied voor kinderen, drie hectare groot, in 1988 geope
 Enfants en sinds 2018 onder de huidige naam. De Franse Wikipedia telt 21 attracties en
 speelgebieden, waaronder draaimolens van Heege, Zierer en Zamperla.
 
-Het armbandje bepaalt wat een kind mag. Er zijn vier kleuren, ingedeeld naar lichaamslengte. De
-grenzen die het park bij de attracties vermeldt:
+Er zijn armbandjes in vier kleuren, ingedeeld naar lichaamslengte. De grenzen die het park bij de
+attracties vermeldt:
 
 | Attractie                                           | met begeleiding vanaf | alleen vanaf |
 | --------------------------------------------------- | --------------------- | ------------ |
@@ -207,11 +207,11 @@ menu voor kinderen onder de twaalf.
 
 ## De avond in het park
 
-Futuroscope sluit niet als de attracties sluiten. Elke avond dat het park open is, loopt **La Clé
-des Songes**, de nachtshow op het Lac aux Images. Ze duurt volgens het park ongeveer 25 minuten,
-zit in de toegangsprijs en gaat ook bij regen door, tenzij het weer buitengewoon is. Je ziet
-waterbeelden in 3D, licht en pyrotechniek. De show draait sinds juni 2021 en nam de plaats in van
-La Forge aux Étoiles, die makers van de Cirque du Soleil hadden ontworpen.
+Elke avond dat het park open is, loopt **La Clé des Songes**, de nachtshow op het Lac aux Images. Ze
+duurt volgens het park ongeveer 25 minuten, zit in de toegangsprijs en gaat ook bij regen door,
+tenzij het weer buitengewoon is. Je ziet waterbeelden in 3D, licht en pyrotechniek. De show draait
+sinds juni 2021 en nam de plaats in van La Forge aux Étoiles, die makers van de Cirque du Soleil
+hadden ontworpen.
 
 Overdag zijn er nog twee shows. **Éclipse, robotic show** ontstond in 2024 met het Cirque Éloize
 in het voormalige IMAX 3D-paviljoen en combineert videomapping, lasers en drones. **IllusiO, un
@@ -224,9 +224,9 @@ open zijn.
 
 ## Hoe lang je hier aanschuift
 
-De wachttijden komen uit het venster sinds 6 oktober 2024, 228 gemeten dagen tot 6 oktober 2026.
-Futuroscope heeft veel programmaonderdelen zonder wachtrij: shows, films in de dome, rondgangen.
-We meten de attracties waarvoor het park een wachttijd meldt.
+Tot 6 oktober 2026 hebben we op 228 dagen gemeten. Futuroscope heeft veel programmaonderdelen zonder
+wachtrij: shows, films in de dome, rondgangen. We meten de attracties waarvoor het park een
+wachttijd meldt.
 
 ```ride-waits-widget park=futuroscope top=8 columns=peak,days highlight=destination-mars
 
@@ -236,17 +236,16 @@ Objectif Mars en L'Extraordinaire Voyage delen de eerste plek. Daarachter volgen
 Chasseurs de Tornades, La Maison à l'envers, Aventure Éclabousse en Danse avec les Robots vlak
 bij elkaar.
 
-Dat La Maison à l'envers bij de eerste vijf staat, is een bevinding van deze analyse. Het huis
-heeft volgens het park geen lengtegrens en is de uitwijkmogelijkheid voor gezinnen met kinderen
-die de attracties nog niet in mogen. De Pass Premium+ geldt er niet.
+La Maison à l'envers staat bij de eerste vijf. Het huis heeft volgens het park geen lengtegrens en
+is de uitwijkmogelijkheid voor gezinnen met kinderen die de attracties nog niet in mogen. De Pass
+Premium+ geldt er niet.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
 ```
 
-In de tabel staat per attractie het uur waarin de wachtrij het langst is en hoe die zich daarvoor
-en daarna gedraagt. De attracties uit deze lijst pak je in de uren dat ze kort zijn, de films en
-shows zonder wachtrij ertussen.
+In de tabel staat per attractie het uur waarin de wachtrij het langst is en hoe die zich daarvoor en
+daarna gedraagt.
 
 ### Passen die langs de wachtrij gaan
 
@@ -265,10 +264,6 @@ en in beperkte aantallen.
   en alcoholvrije dranken zonder beperking en een VIP-parkeerplaats, vanaf 500 euro voor
   volwassenen.
 
-Of de Premium+ de moeite loont, hangt af van hoe breed de kop van de tabel hierboven is. Waar de
-populairste attracties één ranglijst delen, koop je met vijf toegangen vooral planbaarheid, en die
-levert op een zaterdag in augustus iets anders op dan op een donderdag in september.
-
 ## Wanneer je moet gaan
 
 ```stats-widget slug=futuroscope show=weekdays
@@ -281,10 +276,10 @@ De zaterdag is de drukste dag, met duidelijke afstand tot alle andere. Donderdag
 zondag hebben de kortste wachttijden, maandag tot en met woensdag zitten ertussenin. Elke weekdag
 staat in onze gegevens op 30 tot 35 dagen.
 
-Een kanttekening hoort erbij: in het najaar is het park van maandag tot en met woensdag vaak dicht,
-in september drie weken lang, in oktober 2026 van de 12e tot de 14e. De open dagen van die
-weekdagen vallen daardoor vooral in het voorjaar en de zomer, wanneer het toch al drukker is. De
-vergelijking met de donderdag is dus niet helemaal zuiver.
+In het najaar is het park van maandag tot en met woensdag vaak dicht, in september drie weken lang,
+in oktober 2026 van de 12e tot de 14e. De open dagen van die weekdagen vallen daardoor vooral in het
+voorjaar en de zomer, wanneer het toch al drukker is. De vergelijking met de donderdag is dus niet
+helemaal zuiver.
 
 ### De maand
 
@@ -341,8 +336,7 @@ Walibi Rhône-Alpes, Walibi Belgium, Bellewaerde, Walibi Holland en Family Park 
 2025 een kaart had, krijgt 20 procent korting op de verlenging. De kaart haal je bij het agentschap
 Futuroscope Destination bij de hoofdingang, de foto wordt ter plekke gemaakt.
 
-De Aquascope, het overdekte waterpark op het terrein, zit niet in het parkticket (meer daarover
-verderop in het gedeelte over het resort).
+De Aquascope, het overdekte waterpark op het terrein, zit niet in het parkticket.
 
 ## Route
 
@@ -406,15 +400,14 @@ nieuwste attractie.
 
 Naast het park horen drie voorzieningen bij het resort die een eigen ticket vragen.
 
-De **Aquascope** is een overdekt waterpark dat op 15 juli 2024 opende. Het park voert er 24
-vermeldingen voor. In de rubriek glijbanen staan er negen, voor acht geldt een minimale lengte
-(Reflex en Flash vanaf 1,10 meter, Matrix, Sprint en Alien vanaf 1,20, Spiral en Quick vanaf 1,35,
-Rocket vanaf 1,40). Daarbij komen een kindergedeelte met tentakels, een waterlabyrint en een
-muziekgrot en een zomerstrand met terrassen. Door de beperkte capaciteit zijn er alleen tickets
-met een vast tijdvenster en geen dagkassa; het ticket voor volwassenen begint bij 39 euro.
-Kinderwagens zijn in de Aquascope niet toegestaan, en er is geen bagagekluis. Het park noemt
-daarvoor twee onderscheidingen, van de World Waterpark Association en van de Themed Entertainment
-Association.
+De **Aquascope** is een overdekt waterpark dat op 15 juli 2024 opende. Het park noemt er 24
+attracties, waaronder negen glijbanen; voor acht daarvan geldt een minimale lengte (Reflex en Flash
+vanaf 1,10 meter, Matrix, Sprint en Alien vanaf 1,20, Spiral en Quick vanaf 1,35, Rocket vanaf
+1,40). Daarbij komen een kindergedeelte met tentakels, een waterlabyrint en een muziekgrot en een
+zomerstrand met terrassen. Door de beperkte capaciteit zijn er alleen tickets met een vast
+tijdvenster en geen dagkassa; het ticket voor volwassenen begint bij 39 euro. Kinderwagens zijn in
+de Aquascope niet toegestaan, en er is geen bagagekluis. Het park noemt daarvoor twee
+onderscheidingen, van de World Waterpark Association en van de Themed Entertainment Association.
 
 **ZerOGravity** ligt tegenover het park en de Aquascope en is een windtunnel voor de vrije val. De
 exploitant beschrijft twee vluchten met een instructeur, die moeten overeenkomen met twee sprongen
@@ -429,8 +422,9 @@ opende. Ze heeft niets met een bezoek aan het park te maken, maar ligt wel op he
 
 ## Een dag in het park, globaal gepland
 
-Het park opent in oktober 2026 op werkdagen om 10.00 uur en in het weekend om 9.45 uur, in de herfstvakantie dagelijks om 9.45 uur. Het sluit afhankelijk van de dag om 20.45 of 22.00 uur. De avond is van de show, en dat pleit ervoor om de
-attracties vroeg te doen en de films later.
+Het park opent in oktober 2026 op werkdagen om 10.00 uur en in het weekend om 9.45 uur, in de
+herfstvakantie dagelijks om 9.45 uur. Het sluit afhankelijk van de dag om 20.45 of 22.00 uur. Omdat
+'s avonds de show loopt, doe je de attracties vroeg en de films later.
 
 1. **Voor de opening** Het armbandje voor de kinderen halen bij een infopunt. Dan meteen naar
    Objectif Mars of Mission Bermudes.
@@ -444,15 +438,15 @@ attracties vroeg te doen en de films later.
    de dag zelf in de kalender van het park.
 6. **Avond** La Clé des Songes aan het Lac aux Images.
 
-Een tweede dag loont vooral met kinderen, omdat Futuropolis dan de hele dag draagt. Met de actie
-“3e dag gratis” kost hij weinig.
+Een tweede dag loont vooral met kinderen, die hem dan helemaal in Futuropolis kunnen doorbrengen.
+Met de actie “3e dag gratis” kost hij weinig.
 
 ## Veelgestelde vragen
 
 ### Hoeveel attracties heeft Futuroscope?
 
-Wij voeren 55 vermeldingen, waaronder films, shows en parcours zonder wachtrij. De Franse
-Wikipedia noemt 40 attracties in het park, waarvan er 21 in Futuropolis staan.
+Op onze parkpagina staan 55 attracties, waaronder films, shows en parcours zonder wachtrij. De
+Franse Wikipedia noemt 40 attracties in het park, waarvan er 21 in Futuropolis staan.
 
 ### Vanaf welke lengte mag mijn kind in de attracties?
 

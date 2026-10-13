@@ -7,10 +7,9 @@ mode: published
 featured: false
 excerpt: >-
   Das Futuroscope bei Poitiers eröffnete 1987 mit einem Kino, und die meisten
-  Attraktionen stehen bis heute im Gebäude. Hier steht, an welchen Tagen die
-  Warteschlangen kürzer sind, ab welcher Größe Kinder in welche Bahn dürfen und
-  was ein Pass für fünf Fahrten kostet, mit den Preisen und Terminen der Saison
-  2026.
+  Attraktionen stehen bis heute im Gebäude. Donnerstags, freitags und sonntags
+  sind die Warteschlangen am kürzesten. Der Pass Premium+ führt fünfmal an der
+  Warteschlange vorbei und kostet 2026 je nach Datum 40 bis 60 Euro.
 tags:
   - futuroscope
   - poitiers
@@ -50,13 +49,12 @@ seo:
     - Freizeitpark Frankreich
 ---
 
-Wer am 31. Mai 1987 in Chasseneuil-du-Poitou ankam, fand einen Pavillon mit einer Kugel auf
-einer schrägen Fläche und ein Kino. Die Fläche sollte nach der französischen Wikipedia einen
-Sonnenaufgang über einer sich wandelnden Welt darstellen, so hat es der Architekt Denis Laming
-entworfen. Das Kino hieß Kinémax und stand schon in der ersten Saison im Park. Das
-[Futuroscope](ref:futuroscope) hat also nicht mit einer Achterbahn angefangen, sondern mit einer
-Leinwand, und das merkt man heute noch: Fast jede Attraktion hier ist eine Vorführung, ein
-Parcours im Dunkeln oder ein Sitz, der sich zum Film bewegt.
+Wer am 31. Mai 1987 in Chasseneuil-du-Poitou ankam, fand einen Pavillon mit einer Kugel auf einer
+schrägen Fläche und ein Kino. Die Fläche sollte nach der französischen Wikipedia einen Sonnenaufgang
+über einer sich wandelnden Welt darstellen, so hat es der Architekt Denis Laming entworfen. Das Kino
+hieß Kinémax und stand schon in der ersten Saison im Park. Fast jede Attraktion im
+[Futuroscope](ref:futuroscope) ist bis heute eine Vorführung, ein Parcours im Dunkeln oder ein Sitz,
+der sich zum Film bewegt.
 
 Der Park liegt 20 Minuten von Poitiers entfernt und gehört zum Resort Futuroscope Xperiences, so
 heißt das Ganze seit Mai 2024. Das Resort nennt auf der eigenen Seite rund 2,5 Millionen Besucher
@@ -149,7 +147,7 @@ Boden, und fliegt über Aufnahmen von Orten der Welt. Die Fahrt eröffnete 2017,
 
 Ab 1,05 Metern mit Begleitung, ab 1,20 Metern allein, bis 2,00 Meter.
 
-### Was sonst mit Sitzen zu tun hat
+### Weitere Attraktionen
 
 - [Arthur, l'aventure 4D](ref:futuroscope/arthur-the-4d-adventure) im IMAX-Dom: Man wird auf die
   Größe der Minimoys verkleinert und fliegt durch ihre Welt, im bewegten Sitz. Ab 1,05 und
@@ -177,8 +175,8 @@ Futuropolis ist der Außenbereich für Kinder, drei Hektar groß, 1988 als Monde
 eröffnet und seit 2018 unter dem heutigen Namen. Die französische Wikipedia zählt 21 Attraktionen
 und Spielbereiche, darunter Karussells von Heege, Zierer und Zamperla.
 
-Das Armband bestimmt, was ein Kind darf. Es gibt vier Farben, abgestuft nach Körpergröße. Die
-Grenzen, die der Park an den Attraktionen angibt:
+Es gibt vier Armbandfarben, abgestuft nach Körpergröße. Die Grenzen, die der Park an den
+Attraktionen angibt:
 
 | Attraktion                                        | mit Begleitung ab | allein ab |
 | ------------------------------------------------- | ----------------- | --------- |
@@ -208,12 +206,11 @@ Kinder unter zwölf Jahren.
 
 ## Der Abend im Park
 
-Das Futuroscope schließt nicht, wenn die Attraktionen schließen. An jedem Abend, an dem der Park
-offen hat, läuft **La Clé des Songes**, das Nachtspektakel auf dem Lac aux Images. Es dauert nach
-Angaben des Parks etwa 25 Minuten, ist im Eintritt enthalten und findet auch bei Regen statt,
-sofern das Wetter nicht außergewöhnlich ist. Zu sehen sind Wasserbilder in 3D, Licht und
-Pyrotechnik. Die Show läuft seit Juni 2021 und ersetzte La Forge aux Étoiles, die Macher des
-Cirque du Soleil gestaltet hatten.
+An jedem Abend, an dem der Park offen hat, läuft **La Clé des Songes**, das Nachtspektakel auf dem
+Lac aux Images. Es dauert nach Angaben des Parks etwa 25 Minuten, ist im Eintritt enthalten und
+findet auch bei Regen statt, sofern das Wetter nicht außergewöhnlich ist. Zu sehen sind Wasserbilder
+in 3D, Licht und Pyrotechnik. Die Show läuft seit Juni 2021 und ersetzte La Forge aux Étoiles, die
+Macher des Cirque du Soleil gestaltet hatten.
 
 Tagsüber gibt es zwei weitere Shows. **Éclipse, robotic show** entstand 2024 mit dem Cirque Éloize
 im früheren IMAX-3D-Pavillon und mischt Videomapping, Laser und Drohnen. **IllusiO, un destin
@@ -224,8 +221,9 @@ Wer nur den Abend will, kauft ein Soirée-Ticket (Einlass ab 17 Uhr) oder ein No
 
 ## Wie lange man hier ansteht
 
-Die Wartezeiten stammen aus dem Fenster seit dem 6. Oktober 2024, 228 gemessene Tage bis zum 6. Oktober 2026. Das Futuroscope hat viele Programmpunkte ohne Warteschlange: Shows, Filme im Dom,
-Rundgänge. Gemessen werden die Attraktionen, bei denen der Park eine Wartezeit meldet.
+Bis zum 6. Oktober 2026 haben wir an 228 Tagen gemessen. Das Futuroscope hat viele Programmpunkte
+ohne Warteschlange: Shows, Filme im Dom, Rundgänge. Gemessen werden die Attraktionen, bei denen der
+Park eine Wartezeit meldet.
 
 ```ride-waits-widget park=futuroscope top=8 columns=peak,days highlight=destination-mars
 
@@ -244,8 +242,7 @@ deren Kinder die Bahnen noch nicht fahren dürfen. Der Pass Premium+ gilt dort n
 ```
 
 In der Tabelle steht für jede Bahn die Stunde, in der ihre Warteschlange am längsten ist, und wie
-sie sich davor und danach verhält. Die Bahnen dieser Liste fährt man in den Stunden, in denen sie
-kurz sind, die Filme und Shows ohne Warteschlange dazwischen.
+sie sich davor und danach verhält.
 
 ### Pässe, die an der Warteschlange vorbeiführen
 
@@ -261,10 +258,6 @@ und in begrenzter Zahl.
   Shops. 99 bis 149 Euro je nach Datum.
 - **VIP Expérience**: persönlicher Empfang, Prioritätszugang, VIP-Plätze für die Abendshow, Bier und
   alkoholfreie Getränke ohne Begrenzung und ein VIP-Parkplatz, ab 500 Euro für Erwachsene.
-
-Ob sich der Premium+ lohnt, entscheidet die Breite der Spitze in der Tabelle oben. Wo sich die
-beliebtesten Bahnen eine Rangliste teilen, kauft man mit fünf Zugängen vor allem Planbarkeit, und
-die zahlt sich an einem Samstag im August anders aus als an einem Donnerstag im September.
 
 ## Wann du hinfahren solltest
 
@@ -399,14 +392,15 @@ Bahn.
 
 Neben dem Park gehören drei Anlagen zum Resort, die ein eigenes Ticket brauchen.
 
-Der **Aquascope** ist ein überdachtes Erlebnisbad, das am 15. Juli 2024 eröffnete. Der Park
-führt dort 24 Einträge. In der Rubrik der Rutschen stehen neun, für acht gilt eine Mindestgröße
-(Reflex und Flash ab 1,10 Metern, Matrix, Sprint und Alien ab 1,20, Spiral und Quick ab 1,35,
-Rocket ab 1,40). Dazu kommen ein Kinderbereich mit Tentakeln, einem Wasserlabyrinth und einer
-Musikgrotte sowie ein Sommerstrand mit Terrassen. Wegen der begrenzten Kapazität gibt es nur Tickets mit festem Zeitfenster und
-keine Tageskasse; das Ticket für Erwachsene beginnt bei 39 Euro. Kinderwagen sind im Aquascope
-nicht erlaubt, und es gibt dort keine Gepäckaufbewahrung. Der Park nennt zwei Auszeichnungen
-dafür, von der World Waterpark Association und von der Themed Entertainment Association.
+Der **Aquascope** ist ein überdachtes Erlebnisbad, das am 15. Juli 2024 eröffnete. Der Park nennt
+dort 24 Attraktionen, darunter neun Rutschen; für acht davon gilt eine Mindestgröße (Reflex und
+Flash ab 1,10 Metern, Matrix, Sprint und Alien ab 1,20, Spiral und Quick ab 1,35, Rocket ab 1,40).
+Dazu kommen ein Kinderbereich mit Tentakeln, einem Wasserlabyrinth und einer Musikgrotte sowie ein
+Sommerstrand mit Terrassen. Wegen der begrenzten Kapazität gibt es nur Tickets mit festem
+Zeitfenster und keine Tageskasse; das Ticket für Erwachsene beginnt bei 39 Euro. Kinderwagen sind im
+Aquascope nicht erlaubt, und es gibt dort keine Gepäckaufbewahrung. Der Park nennt zwei
+Auszeichnungen dafür, von der World Waterpark Association und von der Themed Entertainment
+Association.
 
 **ZerOGravity** liegt gegenüber vom Park und vom Aquascope und ist ein Windkanal für den freien
 Fall. Der Betreiber beschreibt zwei Flüge mit einem Instruktor, die zwei Sprüngen aus 4.200
@@ -422,8 +416,8 @@ Gelände.
 ## Ein Tag im Park, grob geplant
 
 Der Park öffnet im Oktober 2026 an Werktagen um 10 Uhr und am Wochenende um 9:45 Uhr, in den
-Herbstferien täglich um 9:45 Uhr. Geschlossen wird je nach Tag um 20:45 oder 22 Uhr. Der Abend gehört der Show, und das spricht dafür, die
-Bahnen früh und die Filme später zu nehmen.
+Herbstferien täglich um 9:45 Uhr. Geschlossen wird je nach Tag um 20:45 oder 22 Uhr. Weil abends die
+Show läuft, nimmt man die Bahnen früh und die Filme später.
 
 1. **Vor der Öffnung** Das Armband für die Kinder an einem Info-Punkt holen. Dann direkt zu
    Objectif Mars oder Mission Bermudes.
@@ -437,15 +431,15 @@ Bahnen früh und die Filme später zu nehmen.
    am Tag selbst im Kalender des Parks.
 6. **Abend** La Clé des Songes am Lac aux Images.
 
-Ein zweiter Tag lohnt sich vor allem mit Kindern, weil sich Futuropolis dann den ganzen Tag lohnt. Mit
-der Aktion „3. Tag gratis“ kostet er wenig.
+Ein zweiter Tag lohnt sich vor allem mit Kindern, die ihn dann ganz in Futuropolis verbringen
+können. Mit der Aktion „3. Tag gratis“ kostet er wenig.
 
 ## Häufige Fragen
 
 ### Wie viele Attraktionen hat das Futuroscope?
 
-Wir führen 55 Einträge, darunter Filme, Shows und Parcours ohne Warteschlange. Die französische
-Wikipedia nennt 40 Attraktionen im Park, von denen 21 in Futuropolis stehen.
+Auf unserer Parkseite stehen 55 Attraktionen, darunter Filme, Shows und Parcours ohne Warteschlange.
+Die französische Wikipedia nennt 40 Attraktionen im Park, von denen 21 in Futuropolis stehen.
 
 ### Ab welcher Größe darf mein Kind in die Bahnen?
 
