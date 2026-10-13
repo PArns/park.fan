@@ -2,7 +2,7 @@
 title: 'Efteling pone a la venta las entradas de Nochevieja'
 translationKey: efteling-silvester-2026
 date: '2026-10-13'
-time: '00:00'
+time: '12:03'
 author: patrick
 mode: published
 featured: false
@@ -44,7 +44,7 @@ Con la entrada vienen un oliebol, una bebida para brindar y los fuegos artificia
 
 El aparcamiento está incluido esa noche. Otros días, aparcar en Efteling cuesta 15 euros; quien se aloja en los hoteles o en los parques vacacionales aparca gratis junto a su alojamiento.
 
-Cada entrada vale para una persona a partir de cuatro años y para un solo acceso. Con las entradas de día, los niños de hasta tres años incluidos entran gratis presentando un documento de identidad. Efteling no dice si en Nochevieja se aplica lo mismo. Si vas con un niño pequeño, pregunta antes al parque.
+Cada entrada vale para una persona a partir de cuatro años y para un solo acceso. Con las entradas de día, los niños de hasta tres años incluidos entran gratis presentando un documento de identidad. Efteling no dice si en Nochevieja se aplica lo mismo.
 
 Se pueden comprar hasta 19 entradas por pedido, y no se devuelven. El derecho de devolución de 14 días para las compras online no se aplica a las entradas de eventos, y Efteling menciona ahí de forma expresa la entrada de Nochevieja.
 
@@ -74,7 +74,7 @@ En 2022 la noche se agotó el 3 de diciembre, algo más de tres semanas después
 
 ## Dormir en el parque
 
-Para Oud & Nieuw ya no quedan alojamientos, escribió Efteling el 8 de octubre. Efteling no da un precio para el paquete.
+Para Oud & Nieuw ya no quedan alojamientos, escribió Efteling el 8 de octubre.
 
 El paquete incluye el acceso a la fiesta, entrada ilimitada al parque durante la estancia, acceso media hora antes de la apertura y desayuno. En las casas vacacionales de Efteling Bosrijk y Efteling Loonsche Land se llega el 30 de diciembre y se pasan tres noches. El desayuno se entrega en la casa. Las habitaciones del Grand Hotel, el Wonder Hotel, Bosrijk y Loonsche Land empiezan el 31 de diciembre y son para dos noches, con desayuno y un menú de tres platos sin bebidas.
 

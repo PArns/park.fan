@@ -2,7 +2,7 @@
 title: 'Efteling verkoopt kaarten voor oudejaarsavond'
 translationKey: efteling-silvester-2026
 date: '2026-10-13'
-time: '00:00'
+time: '12:03'
 author: patrick
 mode: published
 featured: false
@@ -44,7 +44,7 @@ Bij de kaart horen een oliebol, een drankje om op het nieuwe jaar te proosten en
 
 Parkeren is op oudejaarsavond inbegrepen. Op andere dagen kost de parkeerplaats bij de Efteling 15 euro; wie in een van de hotels of vakantieparken logeert, parkeert gratis bij zijn verblijf.
 
-Elke kaart geldt voor één persoon vanaf vier jaar en voor één keer naar binnen. Met een dagticket mogen kinderen tot en met drie jaar met een identiteitsbewijs gratis naar binnen. Of dat ook op oudejaarsavond zo is, zegt de Efteling niet. Neem je een peuter mee, vraag het dan eerst na bij het park.
+Elke kaart geldt voor één persoon vanaf vier jaar en voor één keer naar binnen. Met een dagticket mogen kinderen tot en met drie jaar met een identiteitsbewijs gratis naar binnen. Of dat ook op oudejaarsavond zo is, zegt de Efteling niet.
 
 Je kunt tot 19 kaarten per bestelling kopen. Retourneren kan niet. Het retourrecht van 14 dagen voor online aankopen geldt niet voor eventtickets, en de Efteling noemt de kaart voor Oud en Nieuw daarbij uitdrukkelijk.
 
@@ -76,7 +76,7 @@ In 2022 was de avond op 3 december uitverkocht, ruim drie weken na de start van 
 
 ## Overnachten
 
-Accommodaties zijn er voor Oud & Nieuw niet meer, schreef de Efteling op 8 oktober. Een prijs voor het arrangement noemt de Efteling niet.
+Accommodaties zijn er voor Oud & Nieuw niet meer, schreef de Efteling op 8 oktober.
 
 Bij het arrangement horen toegang tot het feest, onbeperkt naar het park tijdens je verblijf, een half uur eerder naar binnen en ontbijt. In de vakantiehuizen van Efteling Bosrijk en Efteling Loonsche Land kom je op 30 december aan en blijf je drie nachten. Het ontbijt wordt daar bezorgd. De hotelkamers in het Grand Hotel, het Wonder Hotel, Bosrijk en Loonsche Land beginnen op 31 december en gelden voor twee nachten, met ontbijt en een driegangendiner zonder drankjes.
 

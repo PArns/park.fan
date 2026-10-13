@@ -2,7 +2,7 @@
 title: "Efteling's New Year's Eve tickets are on sale"
 translationKey: efteling-silvester-2026
 date: '2026-10-13'
-time: '00:00'
+time: '12:03'
 author: patrick
 mode: published
 featured: false
@@ -44,7 +44,7 @@ The ticket includes an oliebol, a drink for the toast and the fireworks. On the 
 
 Parking is included on New Year's Eve. On other days the Efteling car park costs €15, and guests at the hotels and holiday parks park free at their accommodation.
 
-Each ticket is for one person aged four or over and admits them once. On day tickets, children up to and including three get in free with ID. Efteling doesn't say whether that also applies on New Year's Eve. If you're bringing a toddler, ask the park first.
+Each ticket is for one person aged four or over and admits them once. On day tickets, children up to and including three get in free with ID. Efteling doesn't say whether that also applies on New Year's Eve.
 
 You can buy up to 19 tickets per order, and they can't be returned. The 14-day return period for online purchases doesn't apply to event tickets, and Efteling names the New Year's Eve ticket there explicitly.
 
@@ -74,7 +74,7 @@ In 2022 the evening sold out on 3 December, just over three weeks after sales op
 
 ## Staying overnight
 
-Efteling wrote on 8 October that no accommodation was left for Oud & Nieuw. Efteling gives no price for the package.
+Efteling wrote on 8 October that no accommodation was left for Oud & Nieuw.
 
 The package includes entry to the party, unlimited park admission during the stay, park entry half an hour early and breakfast. In the holiday homes at Efteling Bosrijk and Efteling Loonsche Land you arrive on 30 December and stay three nights. Breakfast is delivered there. Hotel rooms at the Grand Hotel, the Wonder Hotel, Bosrijk and Loonsche Land start on 31 December for two nights, with breakfast and a three-course dinner, drinks not included.
 

@@ -2,7 +2,7 @@
 title: 'Efteling verkauft Karten für den Silvesterabend'
 translationKey: efteling-silvester-2026
 date: '2026-10-13'
-time: '00:00'
+time: '12:03'
 author: patrick
 mode: published
 featured: false
@@ -44,7 +44,7 @@ Zum Ticket gehören ein Oliebol, ein Getränk zum Anstoßen und das Feuerwerk. A
 
 Das Parken ist am Silvesterabend inklusive. An anderen Tagen kostet der Parkplatz am Efteling 15 Euro, Gäste der Hotels und Ferienparks parken an ihrer Unterkunft kostenlos.
 
-Jede Karte gilt für eine Person ab vier Jahren und für einen Eintritt. Bei Tagestickets kommen Kinder bis einschließlich drei Jahre mit Ausweis kostenlos in den Park. Ob das auch am Silvesterabend gilt, sagt das Efteling nicht. Wer ein Kleinkind mitnehmen will, fragt vorher beim Park nach.
+Jede Karte gilt für eine Person ab vier Jahren und für einen Eintritt. Bei Tagestickets kommen Kinder bis einschließlich drei Jahre mit Ausweis kostenlos in den Park. Ob das auch am Silvesterabend gilt, sagt das Efteling nicht.
 
 Pro Bestellung lassen sich bis zu 19 Karten kaufen. Zurückgeben kann man sie nicht. Das Rückgaberecht von 14 Tagen für Onlinekäufe gilt nicht für Event-Tickets, und die Silvesterkarte nennt das Efteling dabei ausdrücklich.
 
@@ -74,7 +74,7 @@ Der offizielle Lageplan für 2024/25 verzeichnete unter anderem eine Silent Disc
 
 ## Übernachten
 
-Unterkünfte gibt es zu Oud & Nieuw keine mehr, schrieb das Efteling am 8. Oktober. Einen Preis für das Arrangement nennt das Efteling nicht.
+Unterkünfte gibt es zu Oud & Nieuw keine mehr, schrieb das Efteling am 8. Oktober.
 
 Das Arrangement schließt den Zugang zum Fest ein, unbegrenzten Parkeintritt während des Aufenthalts, eine halbe Stunde früheren Einlass in den Park und Frühstück. In den Ferienhäusern von Efteling Bosrijk und Efteling Loonsche Land reist man am 30. Dezember an und bleibt drei Nächte. Das Frühstück wird dort geliefert. Die Hotelzimmer im Grand Hotel, im Wonder Hotel, in Bosrijk und in Loonsche Land beginnen am 31. Dezember und gelten für zwei Nächte, mit Frühstück und einem Drei-Gänge-Menü ohne Getränke.
 

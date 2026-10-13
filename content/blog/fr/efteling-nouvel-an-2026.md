@@ -2,7 +2,7 @@
 title: 'L’Efteling met en vente sa soirée du Nouvel An'
 translationKey: efteling-silvester-2026
 date: '2026-10-13'
-time: '00:00'
+time: '12:03'
 author: patrick
 mode: published
 featured: false
@@ -44,7 +44,7 @@ Le billet comprend un oliebol, une boisson pour trinquer et le feu d’artifice.
 
 Le parking est compris ce soir-là. Les autres jours, il coûte 15 euros à l’Efteling ; les clients des hôtels et des parcs de vacances se garent gratuitement à leur hébergement.
 
-Chaque billet vaut pour une personne à partir de quatre ans et pour une seule entrée. Avec les billets à la journée, les enfants de trois ans et moins entrent gratuitement sur présentation d’une pièce d’identité. L’Efteling ne dit pas si la règle vaut aussi pour le réveillon. Si vous venez avec un tout-petit, posez la question au parc avant.
+Chaque billet vaut pour une personne à partir de quatre ans et pour une seule entrée. Avec les billets à la journée, les enfants de trois ans et moins entrent gratuitement sur présentation d’une pièce d’identité. L’Efteling ne dit pas si la règle vaut aussi pour le réveillon.
 
 Une commande peut compter jusqu’à 19 billets. Ils ne sont pas remboursables. Le droit de rétractation de 14 jours sur les achats en ligne ne s’applique pas aux billets d’événement, et l’Efteling y cite expressément le billet du Nouvel An.
 
@@ -74,7 +74,7 @@ En 2022, la soirée affichait complet le 3 décembre, un peu plus de trois semai
 
 ## Dormir sur place
 
-Il ne reste plus d’hébergement pour Oud & Nieuw, écrivait l’Efteling le 8 octobre. L’Efteling n’indique pas de prix pour le séjour.
+Il ne reste plus d’hébergement pour Oud & Nieuw, écrivait l’Efteling le 8 octobre.
 
 Le séjour comprend l’accès à la fête, l’entrée illimitée au parc pendant le séjour, l’accès au parc une demi-heure plus tôt et le petit-déjeuner. Dans les maisons de vacances d’Efteling Bosrijk et d’Efteling Loonsche Land, on arrive le 30 décembre pour trois nuits. Le petit-déjeuner y est livré. Les chambres d’hôtel au Grand Hotel, au Wonder Hotel, à Bosrijk et à Loonsche Land commencent le 31 décembre pour deux nuits, avec petit-déjeuner et un menu trois plats hors boissons.
 

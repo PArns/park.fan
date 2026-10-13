@@ -2,7 +2,7 @@
 title: 'Efteling mette in vendita la serata di Capodanno'
 translationKey: efteling-silvester-2026
 date: '2026-10-13'
-time: '00:00'
+time: '12:03'
 author: patrick
 mode: published
 featured: false
@@ -44,7 +44,7 @@ Nel prezzo ci sono un oliebol (una frittella olandese), una bevanda per il brind
 
 La sera di Capodanno il parcheggio è compreso. Negli altri giorni il parcheggio di Efteling costa 15 euro, mentre chi dorme negli hotel e nei villaggi vacanze del parco parcheggia gratis presso il proprio alloggio.
 
-Ogni biglietto vale per una persona dai quattro anni in su e per un solo ingresso. Con i biglietti giornalieri i bambini fino a tre anni compiuti entrano gratis mostrando un documento. Efteling non dice se questo valga anche per la serata di Capodanno. Chi vuole portare un bambino piccolo chieda prima al parco.
+Ogni biglietto vale per una persona dai quattro anni in su e per un solo ingresso. Con i biglietti giornalieri i bambini fino a tre anni compiuti entrano gratis mostrando un documento. Efteling non dice se questo valga anche per la serata di Capodanno.
 
 Si possono acquistare fino a 19 biglietti per ordine, e non si possono restituire. Il diritto di recesso di 14 giorni per gli acquisti online non vale per i biglietti degli eventi, ed Efteling cita espressamente il biglietto di Capodanno.
 
@@ -74,7 +74,7 @@ Nel 2022 la serata andò esaurita il 3 dicembre, poco più di tre settimane dopo
 
 ## Dormire al parco
 
-Per Oud & Nieuw non ci sono più alloggi, scriveva Efteling l’8 ottobre. Efteling non indica un prezzo per il pacchetto.
+Per Oud & Nieuw non ci sono più alloggi, scriveva Efteling l’8 ottobre.
 
 Il pacchetto comprende l’accesso alla festa, l’ingresso illimitato al parco per tutto il soggiorno, l’entrata mezz’ora prima dell’apertura e la colazione. Nelle case vacanza di Efteling Bosrijk ed Efteling Loonsche Land si arriva il 30 dicembre e si resta tre notti. La colazione viene consegnata a domicilio. Le camere al Grand Hotel, al Wonder Hotel, a Bosrijk e a Loonsche Land partono dal 31 dicembre e valgono per due notti, con colazione e una cena di tre portate bevande escluse.
 
