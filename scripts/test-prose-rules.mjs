@@ -699,6 +699,8 @@ no(
     'Der Park hat samstags bis zu 90 Minuten Wartezeit.'
   )
 );
+no('empty-faq-answer', lines('### ¿Hay descuento?', 'Sí.', '### ¿Y la cola?', 'Sí, claro.'), 'es');
+no('empty-faq-answer', lines('### C’è lo sconto?', 'Sì.', '### E la coda?', 'Sì, certo.'), 'it');
 no('empty-faq-answer', lines('### Gibt es Rabatt?', 'Nein.', '### Ist es offen?', 'Ja.'));
 no(
   'empty-faq-answer',
@@ -727,6 +729,9 @@ assert.equal(captionFindings('Voll am Tag, und das ist der Grund.', 'de').length
 assert.equal(captionFindings('Sunday is another matter: queues grow.', 'en').length, 1);
 assert.equal(captionFindings('Der Eingang des Parks im Herbst.', 'de').length, 0);
 assert.equal(captionFindings('A bet on the weather.', 'en').length, 0);
+cases += 2;
+assert.equal(captionFindings('De jour comme de nuit.', 'fr').length, 0);
+assert.equal(captionFindings('', 'de').length, 0);
 
 // 21 a date that opens a line renders as a numbered list (an error since 2026-10-11)
 const dateLine = (s) => s.match(DATE_LINE_START);

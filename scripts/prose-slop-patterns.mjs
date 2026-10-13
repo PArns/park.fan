@@ -13,9 +13,8 @@
  * whose wording is a short fixed formula (`double-attribution`, `range-before-enumeration`,
  * `definition-before-glossary`, `source-silence-close`). Every rule says which locales it covers
  * in `locales`; a pattern that is not listed for a language is left to the critic (docs/blog.md
- * §7.2), not skipped by accident. Of the 22 to 38 batch, 22, 24, 26, 27, 29, 30, 33 and 36 cover
- * all six languages (33 without French, 24 to 27 as the critic's comment lists them) and 25, 28,
- * 31, 32, 34 and 35 only the ones their wordlist names; 23 and 37 to 38 are German and English.
+ * §7.2), not skipped by accident. Of the 22 to 38 batch, 23, 32 and 37 to 38 differ from the
+ * rest only in what their `locales` list says; read the list, not this paragraph.
  *
  * `pnpm test:prose-rules` holds one positive and one negative case per rule, with the sentences
  * the critic quoted as fixtures.
@@ -367,6 +366,8 @@ const POINTS_TO = {
   it: /(?<!\p{L})sta nella(?!\p{L})/iu,
 };
 const BLOG_LINK = /\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\)/;
+/** A paragraph that is nothing but one internal link. */
+const LINK_ONLY = /^\[[^\]]+\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\)\.?$/;
 const ENDS_ON_LINK = /\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\)\.$/;
 
 const WIDGET_SHOWS = {
@@ -456,7 +457,7 @@ const WHETHER = {
 };
 
 /** A bare yes or no is an answer; the rule is about the answer that says nothing. */
-const YES_NO = /^(?:ja|nein|yes|no|nee|oui|non|sí|si|sì)\b/iu;
+const YES_NO = /^(?:ja|nein|yes|no|nee|oui|non|sí|si|sì)(?!\p{L})/iu;
 const EMPTY_ANSWER_END = {
   de: /verschieden[.!]?$/iu,
   en: /varies[.!]?$/iu,
@@ -824,7 +825,7 @@ export const SLOP_RULES = [
       }
       const linkOnly = chapters
         .map((c) => c.at(-1))
-        .filter((b) => b?.kind === 'para' && b.lines.length === 1 && BLOG_LINK.test(b.raw));
+        .filter((b) => b?.kind === 'para' && LINK_ONLY.test(b.raw.trim()));
       return [
         ...(series.length >= 4 ? series.map((b) => lastRaw(b)) : []),
         ...linkSentences.filter((s) => count.get(s) > 1),
