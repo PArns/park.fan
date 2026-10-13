@@ -6,10 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In 18 der 203 Parks, für die wir Wartezeiten messen, führt unsere API mindestens
-  eine Bahn mit Single-Rider-Warteschlange, zusammen 66 Bahnen. Wer allein fährt
-  oder sich vom Rest der Gruppe trennen lässt, füllt leere Sitze und steht meist
-  kürzer an. Für Familien mit kleinen Kindern lohnt sich das nicht.
+  66 Bahnen in 18 Parks haben eine eigene Single-Rider-Warteschlange, sechs
+  davon im Europa-Park. Wer allein fährt oder sich von der Gruppe trennt, füllt
+  leere Sitze und steht meist kürzer an. Für Familien mit kleinen Kindern lohnt
+  sich das nicht.
 tags:
   - single-rider
   - wartezeiten
@@ -48,9 +48,7 @@ Warteschlange. Das Efteling beschreibt auf seiner Seite, dass die Single Riders 
 füllen, die in den Fahrzeugen entstehen.
 
 Unsere API führt diese Warteschlange als eigenen Typ, `SINGLE_RIDER`, und kennt 66 Bahnen in 18
-Parks, an denen es sie gibt. Dieser Beitrag zählt auf, welche das sind, was die Parks selbst über die
-Regeln schreiben und für wen sich der Weg über den Single-Rider-Eingang lohnt. Wie viel Zeit er
-spart, können wir nur zum Teil beantworten, die Gründe stehen weiter unten.
+Parks, an denen es sie gibt.
 
 ## Wie ein Single-Rider-Eingang funktioniert
 
@@ -60,12 +58,12 @@ Bahn fährt voller, und die Gruppen in der normalen Warteschlange verlieren nich
 ihrer Reihe vorgezogen wird. Das Efteling schreibt, das verkürze die Wartezeit für Gruppen und
 Einzelne.
 
-Daraus folgt, was du erwarten kannst. Die Single-Rider-Warteschlange wird nur so schnell abgebaut,
-wie Lücken entstehen. Auf dem Papier ist sie kürzer, ob sie es in deiner Stunde ist, hängt von den
-Lücken ab, die die Gruppen vor dir lassen. Das Efteling schreibt dazu: Einzelne warten meist weniger,
-aber wie viel, hängt von der Besucherzahl und den freien Plätzen ab.
+Die Single-Rider-Warteschlange wird nur so schnell abgebaut, wie Lücken entstehen. Auf dem Papier
+ist sie kürzer, ob sie es in deiner Stunde ist, hängt von den Lücken ab, die die Gruppen vor dir
+lassen. Das Efteling schreibt dazu: Einzelne warten meist weniger, aber wie viel, hängt von der
+Besucherzahl und den freien Plätzen ab.
 
-Drei Regeln finden sich bei jedem Park, dessen Seite wir lesen konnten:
+Bei jedem Park, dessen Seite wir lesen konnten, gilt:
 
 1. **Du suchst deinen Sitz nicht aus.** Das Efteling weist einen Platz zu, gemeinsam mit anderen
    Besuchern. Walt Disney World garantiert weder sofortiges Einsteigen noch die Wahl des Sitzes.
@@ -100,14 +98,11 @@ Es lohnt sich nicht in diesen Fällen:
 - **Die normale Warteschlange ist ohnehin kurz.** Dann entfällt der Vorteil, und die Gruppe ist
   grundlos getrennt.
 
-## Was unsere Daten über die Warteschlange wissen
+## Single Rider auf der Seite der Attraktion
 
-Es gibt zwei Fragen, und unsere Daten beantworten nur eine davon gut.
-
-**Hat die Bahn eine Single-Rider-Warteschlange?** Das steht pro Bahn im Feld `hasSingleRider`, einer
-festen Angabe. Auf der Seite der Attraktion zeigt park.fan dafür ein „Single Rider“-Zeichen. Der Wert
-`null` heißt „unbekannt“ und nie „nein“. Ein fehlendes Zeichen sagt deshalb nichts darüber, ob es die
-Warteschlange gibt.
+**Hat die Bahn eine Single-Rider-Warteschlange?** Wenn ja, zeigt park.fan auf der Seite der
+Attraktion das Zeichen „Single Rider“. Ein fehlendes Zeichen heißt nicht, dass es keine gibt, oft
+wissen wir es bei dieser Bahn nur nicht.
 
 **Wie lang ist sie gerade?** Hier fehlt oft die Zahl. Wir haben am 8. Oktober 2026 die Live-Daten aller
 18 Parks abgerufen. Darin standen 41 Single-Rider-Warteschlangen in zwölf Parks, 19 davon geöffnet, in sieben Parks.
@@ -116,49 +111,39 @@ aber nicht, wie lang sie ist. Auf der Attraktionsseite zeigt park.fan dann „Si
 und die Tabellen in diesem Beitrag zeigen die normale Warteschlange.
 
 Wie viel Zeit der Eingang spart, lässt sich aus unseren Daten deshalb zurzeit nicht ausrechnen.
-Belegt ist nur die Aussage des Efteling, dass Einzelne meist weniger warten. Das Ergebnis einer
-eigenen Messung nennen wir nicht, solange es sie nicht gibt.
+Belegt ist nur die Aussage des Efteling, dass Einzelne meist weniger warten.
 
-## Park für Park: wie viele Bahnen wir kennen
+## Single-Rider-Bahnen je Park
 
-In der Tabelle steht, wie viele Bahnen je Park das Merkmal tragen, wie viele Attraktionen der Park in
-unserer Datenbank hat und bei wie vielen die Angabe fehlt. Stand ist der 8. Oktober 2026.
+Die Zahlen sind vom 8. Oktober 2026.
 
-| Park                           | Bahnen mit Single Rider | Attraktionen | Angabe unbekannt |
-| ------------------------------ | ----------------------- | ------------ | ---------------- |
-| Efteling                       | 7                       | 37           | 30               |
-| Disney Adventure World         | 7                       | 14           | 7                |
-| Europa-Park                    | 6                       | 97           | 1                |
-| Universal Epic Universe        | 6                       | 14           | 8                |
-| Universal Islands of Adventure | 5                       | 25           | 20               |
-| PortAventura Park              | 4                       | 51           | 45               |
-| Alton Towers                   | 4                       | 55           | 48               |
-| Disney California Adventure    | 4                       | 29           | 25               |
-| Disney’s Hollywood Studios     | 3                       | 11           | 8                |
-| Universal Studios Florida      | 3                       | 44           | 41               |
-| Phantasialand                  | 3                       | 40           | 0                |
-| Hong Kong Disneyland           | 3                       | 47           | 44               |
-| Disneyland Park (Anaheim)      | 2                       | 56           | 54               |
-| Disneyland Park (Paris)        | 2                       | 43           | 41               |
-| Shanghai Disneyland            | 2                       | 37           | 35               |
-| EPCOT                          | 2                       | 34           | 32               |
-| Thorpe Park                    | 2                       | 45           | 38               |
-| Disney’s Animal Kingdom        | 1                       | 17           | 16               |
-
-Zwei Parks stechen heraus. Im Europa-Park und im Phantasialand ist die Angabe für fast jede
-Attraktion eingetragen, bei einer und bei null fehlt sie. Dort heißt „nicht in der Liste“ also
-tatsächlich „keine Single-Rider-Warteschlange“. Überall sonst ist die Liste eine Untergrenze: Im
-Disneyland Park in Paris fehlt die Angabe bei 41 von 43 Attraktionen, im Disneyland Park in Anaheim
-bei 54 von 56.
-
-Die übrigen 185 der 203 Parks haben keine einzige Bahn mit dem Merkmal. Ob das ein „nein“ oder eine
-Lücke ist, wissen wir dort nicht.
+| Park                           | Bahnen mit Single Rider | Attraktionen |
+| ------------------------------ | ----------------------- | ------------ |
+| Efteling                       | 7                       | 37           |
+| Disney Adventure World         | 7                       | 14           |
+| Europa-Park                    | 6                       | 97           |
+| Universal Epic Universe        | 6                       | 14           |
+| Universal Islands of Adventure | 5                       | 25           |
+| PortAventura Park              | 4                       | 51           |
+| Alton Towers                   | 4                       | 55           |
+| Disney California Adventure    | 4                       | 29           |
+| Disney’s Hollywood Studios     | 3                       | 11           |
+| Universal Studios Florida      | 3                       | 44           |
+| Phantasialand                  | 3                       | 40           |
+| Hong Kong Disneyland           | 3                       | 47           |
+| Disneyland Park (Anaheim)      | 2                       | 56           |
+| Disneyland Park (Paris)        | 2                       | 43           |
+| Shanghai Disneyland            | 2                       | 37           |
+| EPCOT                          | 2                       | 34           |
+| Thorpe Park                    | 2                       | 45           |
+| Disney’s Animal Kingdom        | 1                       | 17           |
 
 ## Europa-Park
 
-Im [Europa-Park](ref:europa-park) tragen sechs Bahnen das Merkmal: ARTHUR im Themenbereich Minimoys
-Kingdom, WODAN – Timburcoaster und blue fire Megacoaster in Island, Eurosat – CanCan Coaster in
-Frankreich, das Voletarium in Deutschland und Voltron Nevera powered by Rimac in Kroatien.
+Im [Europa-Park](ref:europa-park) haben sechs Bahnen einen Single-Rider-Eingang: ARTHUR im
+Themenbereich Minimoys Kingdom, WODAN – Timburcoaster und blue fire Megacoaster in Island, Eurosat –
+CanCan Coaster in Frankreich, das Voletarium in Deutschland und Voltron Nevera powered by Rimac in
+Kroatien.
 
 Zwei davon bestätigt der Park selbst. Auf der Seite von
 [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) steht unter den Merkmalen Single
@@ -176,8 +161,7 @@ steht im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
 
 ```
 
-In der Tabelle steht die normale Warteschlange, geordnet wie die Bahnen oben. Wann sie sich füllt,
-steht in der Verteilung über den Tag:
+In der Tabelle steht die normale Warteschlange.
 
 ```hourly-profile-widget slug=europa-park top=6
 
@@ -207,10 +191,9 @@ Angabe.
 
 ## Phantasialand
 
-Im [Phantasialand](ref:phantasialand) tragen drei Bahnen das Merkmal: [Taron](ref:phantasialand/taron) und
-[Raik](ref:phantasialand/raik) im Themenbereich Mystery und
-[Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn) in Mexico. Eine Seite des Parks,
-die das bestätigt, konnten wir nicht abrufen.
+Im [Phantasialand](ref:phantasialand) haben drei Bahnen einen Single-Rider-Eingang:
+[Taron](ref:phantasialand/taron) und [Raik](ref:phantasialand/raik) im Themenbereich Mystery und
+[Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn) in Mexico.
 
 Das Phantasialand ist neben dem Europa-Park der Park, in dem die Angabe für jede Attraktion
 eingetragen ist: Bei 40 Attraktionen fehlt sie bei keiner. Die drei Bahnen sind damit die vollständige
@@ -232,7 +215,6 @@ höchste Anteil unter allen Parks in der Tabelle.
 
 Im [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) sind es zwei: Star Wars
 Hyperspace Mountain in Discoveryland und Indiana Jones and the Temple of Peril in Adventureland.
-Eine Seite von Disneyland Paris zum Single-Rider-Service konnten wir nicht abrufen.
 
 ```ride-waits-widget rides=disney-adventure-world/frozen-ever-after|Frozen Ever After;disney-adventure-world/spider-man-web-adventure|Spider-Man W.E.B. Adventure;disney-adventure-world/crushs-coaster|Crush’s Coaster;disney-adventure-world/rc-racer|RC Racer;/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain|Star Wars Hyperspace Mountain;/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril|Indiana Jones and the Temple of Peril columns=park,peak
 
@@ -242,11 +224,8 @@ Eine Seite von Disneyland Paris zum Single-Rider-Service konnten wir nicht abruf
 
 In [Alton Towers](ref:alton-towers) sind es vier Bahnen im Bereich Thrills: TH13TEEN, Spinball
 Whizzer, The Smiler und Galactica. Im [Thorpe Park](ref:thorpe-park) sind es zwei, beide im Bereich
-Coasters: SAW – The Ride und Hyperia. Bei beiden Parks fehlt für die meisten Bahnen
-die Angabe, in Alton Towers fehlt sie bei 48 von 55 Attraktionen, im Thorpe Park bei 38 von 45.
-Die Mindestgröße liegt bei TH13TEEN und Spinball Whizzer bei 120 Zentimetern, bei Hyperia bei 130
-und bei The Smiler, Galactica und SAW bei 140. Eine Seite der Parks, die die Liste bestätigt, haben
-wir nicht gelesen.
+Coasters: SAW – The Ride und Hyperia. Die Mindestgröße liegt bei TH13TEEN und Spinball Whizzer bei
+120 Zentimetern, bei Hyperia bei 130 und bei The Smiler, Galactica und SAW bei 140.
 
 ```ride-waits-widget rides=alton-towers/the-smiler|The Smiler;alton-towers/galactica|Galactica;alton-towers/th13teen|TH13TEEN;alton-towers/spinball-whizzer|Spinball Whizzer;thorpe-park/hyperia|Hyperia;thorpe-park/saw-the-ride|SAW – The Ride columns=park,peak
 
@@ -255,8 +234,7 @@ wir nicht gelesen.
 ## PortAventura
 
 Im [PortAventura Park](ref:portaventura-park) kennen wir vier Bahnen: Hurakan Condor, Furius Baco,
-Shambhala und Dragon Khan. Bei 45 der 51 Attraktionen fehlt die Angabe, die Liste ist hier also
-besonders kurz gegenüber dem, was wir nicht wissen.
+Shambhala und Dragon Khan.
 
 ```ride-waits-widget rides=portaventura-park/shambhala|Shambhala;portaventura-park/dragon-khan|Dragon Khan;portaventura-park/furius-baco|Furius Baco;portaventura-park/hurakan-condor|Hurakan Condor columns=peak
 
@@ -269,10 +247,9 @@ Smugglers Run, Star Wars: Rise of the Resistance und Rock ’n’ Roller Coaster
 Disney’s Hollywood Studios sowie Remy’s Ratatouille Adventure und Test Track im EPCOT. Dazu kommt
 Expedition Everest in Disney’s Animal Kingdom, die auf der Liste des Parks nicht steht.
 
-Die Regeln stehen auf derselben Seite. Der Service erlaubt Gruppen, sich zu trennen und einzeln
-einzusteigen. Sofortiges Einsteigen und die Wahl des Sitzes sind nicht garantiert, besondere
-Sitzwünsche werden womöglich nicht erfüllt, und die teilnehmenden Attraktionen und die Wartezeiten
-können sich ändern.
+Laut derselben Seite erlaubt der Service Gruppen, sich zu trennen und einzeln einzusteigen.
+Sofortiges Einsteigen und die Wahl des Sitzes sind nicht garantiert, besondere Sitzwünsche werden
+womöglich nicht erfüllt, und die teilnehmenden Attraktionen und die Wartezeiten können sich ändern.
 
 Die drei Single-Rider-Warteschlangen in Disney’s Hollywood Studios standen am 8. Oktober 2026 auf
 „geöffnet“, ohne Wartezeit. Das gilt für alle 19 geöffneten Single-Rider-Warteschlangen in unseren
@@ -304,18 +281,13 @@ dort getrennt wird, um die Plätze zu füllen, die Gäste der normalen Warteschl
 
 ## Universal Orlando
 
-Universal Orlando hat 14 Bahnen in drei Parks, Walt Disney World sechs in drei
-Parks. Im [Universal Studios Florida](ref:universal-studios-florida) sind es Revenge of the Mummy,
-MEN IN BLACK Alien Attack und Harry Potter and the Escape from Gringotts. Im
+Im [Universal Studios Florida](ref:universal-studios-florida) sind es Revenge of the Mummy, MEN IN
+BLACK Alien Attack und Harry Potter and the Escape from Gringotts. Im
 [Islands of Adventure](ref:universal-islands-of-adventure) sind es fünf: Harry Potter and the
 Forbidden Journey, Hagrid’s Magical Creatures Motorbike Adventure, The Incredible Hulk Coaster,
 Doctor Doom’s Fearfall und The Amazing Adventures of Spider-Man. Im
 [Epic Universe](ref:universal-epic-universe) sind es sechs von 14 Attraktionen, darunter Stardust
 Racers, Mine-Cart Madness und Mario Kart: Bowser’s Challenge.
-
-Eine Seite von Universal, die das bestätigt, konnten wir nicht abrufen. Die Angaben stammen aus
-unseren Daten und sind ein Hinweis, kein Versprechen. Im Epic Universe
-fehlt die Angabe bei 8 von 14 Attraktionen, im Islands of Adventure bei 20 von 25.
 
 ```ride-waits-widget rides=universal-islands-of-adventure/harry-potter-and-the-forbidden-journey|Forbidden Journey;universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure|Hagrid’s Motorbike Adventure;universal-islands-of-adventure/the-incredible-hulk-coaster|Incredible Hulk Coaster;universal-studios-florida/harry-potter-and-the-escape-from-gringotts|Escape from Gringotts;universal-studios-florida/revenge-of-the-mummy|Revenge of the Mummy;universal-epic-universe/stardust-racers|Stardust Racers;universal-epic-universe/mario-kart-bowsers-challenge|Mario Kart columns=park,peak
 
@@ -326,8 +298,7 @@ fehlt die Angabe bei 8 von 14 Attraktionen, im Islands of Adventure bei 20 von 2
 Die beiden asiatischen Disney-Parks haben zwei und drei Bahnen. Im
 [Shanghai Disneyland](ref:shanghai-disneyland) sind es Zootopia: Hot Pursuit und Seven Dwarfs Mine
 Train, im [Hong Kong Disneyland](ref:hong-kong-disneyland-park) Hyperspace Mountain, Big Grizzly
-Mountain Runaway Mine Cars und Toy Soldier Parachute Drop. Auch hier fehlt die Angabe fast überall: bei
-35 von 37 Attraktionen in Shanghai und bei 44 von 47 in Hongkong.
+Mountain Runaway Mine Cars und Toy Soldier Parachute Drop.
 
 ## So planst du einen Tag mit Single Rider
 
@@ -389,16 +360,17 @@ der Bahn erfüllen müssen. Das Efteling schreibt dasselbe für Kinder, die alle
 
 Nein. Das Efteling weist einen Platz zu, Walt Disney World garantiert die Wahl des Sitzes nicht.
 
-## Wo die Daten Lücken haben
+## Welche Listen vollständig sind
 
-Drei Einschränkungen gelten für alles in diesem Beitrag:
+Im Europa-Park und im Phantasialand ist für fast jede Attraktion eingetragen, ob sie einen
+Single-Rider-Eingang hat, die Listen sind dort also vollständig. In den übrigen Parks fehlt diese
+Angabe bei den meisten Attraktionen, im Disneyland Park in Paris bei 41 von 43, im Disneyland Park
+in Anaheim bei 54 von 56. Dort kann es weitere Bahnen mit Single Rider geben, ebenso in den 185
+Parks, in denen wir keine einzige kennen.
 
-- `hasSingleRider` ist eine feste Angabe pro Bahn. Sie sagt nicht, ob die Warteschlange heute
-  geöffnet ist.
-- „Unbekannt“ ist kein „Nein“. Wo nichts eingetragen ist, steht die Bahn nicht in den Listen.
-- Für das Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal und die
-  asiatischen Disney-Parks stammt die Angabe aus unseren Daten, nicht von einer Seite des Parks, die
-  wir lesen konnten. Beim Efteling führen unsere Daten eine Bahn mehr als der Park.
+Für Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal und die
+asiatischen Disney-Parks haben wir keine Seite des Parks gelesen, die die Liste bestätigt. Ob eine
+Single-Rider-Warteschlange heute offen ist, zeigt nur ihr Status auf der Seite der Attraktion.
 
 ## Zum Weiterlesen
 

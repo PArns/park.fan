@@ -6,10 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In 18 dei 203 parchi di cui misuriamo i tempi di attesa, la nostra API
-  conosce almeno un’attrazione con la coda single rider, 66 in tutto. Chi sale
-  da solo o si fa separare dal gruppo riempie i posti vuoti e di solito aspetta
-  meno. Per le famiglie con bambini piccoli non conviene.
+  66 attrazioni in 18 parchi hanno una coda single rider propria, sei delle
+  quali all’Europa-Park. Chi sale da solo o si fa separare dal gruppo riempie i
+  posti vuoti e di solito aspetta meno. Per le famiglie con bambini piccoli non
+  conviene.
 tags:
   - single-rider
   - tempi-di-attesa
@@ -48,9 +48,7 @@ L’Efteling spiega sul proprio sito che i single rider riempiono i posti vuoti 
 veicoli.
 
 La nostra API registra questa coda come tipo a sé, `SINGLE_RIDER`, e conosce 66 attrazioni in 18
-parchi che ce l’hanno. Qui trovi l’elenco, quello che i parchi stessi scrivono sulle regole e per chi
-vale la pena passare dall’ingresso single rider. Quanto tempo si risparmia, possiamo dirlo solo in
-parte: i motivi sono più sotto.
+parchi che ce l’hanno.
 
 ## Come funziona un ingresso single rider
 
@@ -59,12 +57,11 @@ posto libero, il parco ci mette una persona della coda single rider. L’attrazi
 gruppi della coda normale non ci perdono niente, perché nessuno viene fatto passare davanti a loro.
 L’Efteling scrive che questo accorcia l’attesa sia per i gruppi sia per chi è solo.
 
-Ne viene fuori quello che puoi aspettarti. La coda single rider scorre solo alla velocità con cui si
-liberano i posti. Sulla carta è più corta, ma se lo sia anche nella tua ora dipende dai vuoti che
-lasciano i gruppi davanti a te. L’Efteling scrive che chi è solo di solito aspetta meno, ma quanto
-dipende dall’affluenza e dai posti liberi.
+La coda single rider scorre solo alla velocità con cui si liberano i posti. Sulla carta è più corta,
+ma se lo sia anche nella tua ora dipende dai vuoti che lasciano i gruppi davanti a te. L’Efteling
+scrive che chi è solo di solito aspetta meno, ma quanto dipende dall’affluenza e dai posti liberi.
 
-Tre regole valgono per ogni parco di cui siamo riusciti a leggere la pagina:
+In ogni parco di cui siamo riusciti a leggere la pagina:
 
 1. **Il posto non lo scegli.** L’Efteling assegna un posto, insieme ad altri visitatori. Walt Disney
    World non garantisce né di salire subito né la scelta del posto.
@@ -97,14 +94,11 @@ Non conviene in questi casi:
   rider non puoi scegliere quale delle tre visite guidate del palazzo ti tocca.
 - **La coda normale è già corta.** Il vantaggio sparisce e il gruppo si è diviso senza motivo.
 
-## Cosa sanno i nostri dati sulla coda
+## Il single rider sulla pagina dell’attrazione
 
-Le domande sono due, e i nostri dati rispondono bene solo a una.
-
-**L’attrazione ha una coda single rider?** Lo troviamo per ogni attrazione nel campo
-`hasSingleRider`, un dato fisso. Sulla pagina dell’attrazione park.fan mostra un’icona “Single
-Rider”. Il valore `null` vuol dire “sconosciuto” e mai “no”. Se l’icona manca, quindi, non si può
-dire se la coda esista.
+**L’attrazione ha una coda single rider?** Se ce l’ha, park.fan mostra un’icona “Single Rider” sulla
+pagina dell’attrazione. Se l’icona manca non vuol dire che non ci sia, spesso per quell’attrazione
+semplicemente non lo sappiamo.
 
 **Quanto è lunga adesso?** Qui il numero spesso manca. L’8 ottobre 2026 abbiamo richiesto i dati in
 tempo reale di tutti i 18 parchi. C’erano 41 code single rider in dodici parchi, 19 delle quali aperte, in sette
@@ -113,48 +107,38 @@ ma non quanto è lunga. Sulla pagina dell’attrazione park.fan mostra allora �
 tempo, e le tabelle di questo articolo mostrano la coda normale.
 
 Quanto tempo faccia risparmiare l’ingresso, dai nostri dati al momento non si può calcolare. È
-documentata solo l’affermazione dell’Efteling che chi è solo di solito aspetta meno. Il risultato di
-una misurazione nostra non lo riportiamo finché non esiste.
+documentata solo l’affermazione dell’Efteling che chi è solo di solito aspetta meno.
 
-## Parco per parco: quante attrazioni conosciamo
+## Attrazioni con single rider per parco
 
-La tabella indica quante attrazioni per parco hanno la caratteristica, quante attrazioni ha il parco
-nel nostro database e per quante il dato manca. I dati sono aggiornati all’8 ottobre 2026.
+I dati sono aggiornati all’8 ottobre 2026.
 
-| Parco                          | Attrazioni con single rider | Attrazioni | Dato sconosciuto |
-| ------------------------------ | --------------------------- | ---------- | ---------------- |
-| Efteling                       | 7                           | 37         | 30               |
-| Disney Adventure World         | 7                           | 14         | 7                |
-| Europa-Park                    | 6                           | 97         | 1                |
-| Universal Epic Universe        | 6                           | 14         | 8                |
-| Universal Islands of Adventure | 5                           | 25         | 20               |
-| PortAventura Park              | 4                           | 51         | 45               |
-| Alton Towers                   | 4                           | 55         | 48               |
-| Disney California Adventure    | 4                           | 29         | 25               |
-| Disney’s Hollywood Studios     | 3                           | 11         | 8                |
-| Universal Studios Florida      | 3                           | 44         | 41               |
-| Phantasialand                  | 3                           | 40         | 0                |
-| Hong Kong Disneyland           | 3                           | 47         | 44               |
-| Disneyland Park (Anaheim)      | 2                           | 56         | 54               |
-| Disneyland Park (Parigi)       | 2                           | 43         | 41               |
-| Shanghai Disneyland            | 2                           | 37         | 35               |
-| EPCOT                          | 2                           | 34         | 32               |
-| Thorpe Park                    | 2                           | 45         | 38               |
-| Disney’s Animal Kingdom        | 1                           | 17         | 16               |
-
-Due parchi si distinguono. All’Europa-Park e al Phantasialand il dato è compilato per quasi ogni
-attrazione: manca per una e per nessuna. Lì “non è nell’elenco” vuol dire davvero “nessuna coda single
-rider”. Ovunque altrove l’elenco è un minimo: al Disneyland Park di Parigi il dato manca per 41
-attrazioni su 43, al Disneyland Park di Anaheim per 54 su 56.
-
-Gli altri 185 dei 203 parchi non hanno nemmeno un’attrazione con la caratteristica. Se lì sia un “no”
-o una lacuna, non lo sappiamo.
+| Parco                          | Attrazioni con single rider | Attrazioni |
+| ------------------------------ | --------------------------- | ---------- |
+| Efteling                       | 7                           | 37         |
+| Disney Adventure World         | 7                           | 14         |
+| Europa-Park                    | 6                           | 97         |
+| Universal Epic Universe        | 6                           | 14         |
+| Universal Islands of Adventure | 5                           | 25         |
+| PortAventura Park              | 4                           | 51         |
+| Alton Towers                   | 4                           | 55         |
+| Disney California Adventure    | 4                           | 29         |
+| Disney’s Hollywood Studios     | 3                           | 11         |
+| Universal Studios Florida      | 3                           | 44         |
+| Phantasialand                  | 3                           | 40         |
+| Hong Kong Disneyland           | 3                           | 47         |
+| Disneyland Park (Anaheim)      | 2                           | 56         |
+| Disneyland Park (Parigi)       | 2                           | 43         |
+| Shanghai Disneyland            | 2                           | 37         |
+| EPCOT                          | 2                           | 34         |
+| Thorpe Park                    | 2                           | 45         |
+| Disney’s Animal Kingdom        | 1                           | 17         |
 
 ## Europa-Park
 
-All’[Europa-Park](ref:europa-park) hanno la caratteristica sei attrazioni: ARTHUR nell’area Minimoys
-Kingdom, WODAN – Timburcoaster e blue fire Megacoaster in Islanda, Eurosat – CanCan Coaster in Francia,
-il Voletarium in Germania e Voltron Nevera powered by Rimac in Croazia.
+All’[Europa-Park](ref:europa-park) hanno un ingresso single rider sei attrazioni: ARTHUR nell’area
+Minimoys Kingdom, WODAN – Timburcoaster e blue fire Megacoaster in Islanda, Eurosat – CanCan Coaster
+in Francia, il Voletarium in Germania e Voltron Nevera powered by Rimac in Croazia.
 
 Per due di queste è il parco stesso a confermarlo. Sulla pagina di
 [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) tra le caratteristiche c’è single
@@ -172,8 +156,7 @@ gruppo senza bambini piccoli. Come organizzare bene la giornata nel parco lo tro
 
 ```
 
-Nella tabella c’è la coda normale, nello stesso ordine delle attrazioni qui sopra. Quando si riempie
-lo mostra la distribuzione nell’arco della giornata:
+Nella tabella c’è la coda normale.
 
 ```hourly-profile-widget slug=europa-park top=6
 
@@ -201,10 +184,9 @@ Danse Macabre e 132 per Baron 1898. Per Symbolica non c’è nessun dato.
 
 ## Phantasialand
 
-Al [Phantasialand](ref:phantasialand) hanno la caratteristica tre attrazioni: [Taron](ref:phantasialand/taron)
-e [Raik](ref:phantasialand/raik) nell’area Mystery e
-[Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn) a Mexico. Una pagina del parco
-che lo confermi non siamo riusciti a consultarla.
+Al [Phantasialand](ref:phantasialand) hanno un ingresso single rider tre attrazioni:
+[Taron](ref:phantasialand/taron) e [Raik](ref:phantasialand/raik) nell’area Mystery e
+[Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn) a Mexico.
 
 Insieme all’Europa-Park, il Phantasialand è il parco in cui il dato è compilato per ogni attrazione:
 su 40 attrazioni non manca per nessuna. Le tre attrazioni sono quindi l’elenco completo. L’altezza
@@ -224,8 +206,7 @@ Crush’s Coaster, RC Racer e Toy Soldiers Parachute Drop. Sono sette attrazioni
 alta fra tutti i parchi della tabella.
 
 Nel [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) sono due: Star Wars Hyperspace
-Mountain a Discoveryland e Indiana Jones and the Temple of Peril ad Adventureland. Una pagina di
-Disneyland Paris sul servizio single rider non siamo riusciti a consultarla.
+Mountain a Discoveryland e Indiana Jones and the Temple of Peril ad Adventureland.
 
 ```ride-waits-widget rides=disney-adventure-world/frozen-ever-after|Frozen Ever After;disney-adventure-world/spider-man-web-adventure|Spider-Man W.E.B. Adventure;disney-adventure-world/crushs-coaster|Crush’s Coaster;disney-adventure-world/rc-racer|RC Racer;/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain|Star Wars Hyperspace Mountain;/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril|Indiana Jones and the Temple of Peril columns=park,peak
 
@@ -235,10 +216,8 @@ Disneyland Paris sul servizio single rider non siamo riusciti a consultarla.
 
 Ad [Alton Towers](ref:alton-towers) sono quattro attrazioni nell’area Thrills: TH13TEEN, Spinball
 Whizzer, The Smiler e Galactica. Al [Thorpe Park](ref:thorpe-park) sono due, entrambe nell’area
-Coasters: SAW – The Ride e Hyperia. In entrambi i parchi per la maggior parte delle attrazioni il dato
-manca: ad Alton Towers per 48 attrazioni su 55, al Thorpe Park per 38 su 45. L’altezza minima è 120
-centimetri per TH13TEEN e Spinball Whizzer, 130 per Hyperia e 140 per The Smiler, Galactica e SAW.
-Una pagina dei parchi che confermi l’elenco non l’abbiamo letta.
+Coasters: SAW – The Ride e Hyperia. L’altezza minima è 120 centimetri per TH13TEEN e Spinball
+Whizzer, 130 per Hyperia e 140 per The Smiler, Galactica e SAW.
 
 ```ride-waits-widget rides=alton-towers/the-smiler|The Smiler;alton-towers/galactica|Galactica;alton-towers/th13teen|TH13TEEN;alton-towers/spinball-whizzer|Spinball Whizzer;thorpe-park/hyperia|Hyperia;thorpe-park/saw-the-ride|SAW – The Ride columns=park,peak
 
@@ -247,8 +226,7 @@ Una pagina dei parchi che confermi l’elenco non l’abbiamo letta.
 ## PortAventura
 
 Al [PortAventura Park](ref:portaventura-park) conosciamo quattro attrazioni: Hurakan Condor, Furius
-Baco, Shambhala e Dragon Khan. Per 45 attrazioni su 51 il dato manca, quindi qui l’elenco è
-particolarmente corto rispetto a ciò che non sappiamo.
+Baco, Shambhala e Dragon Khan.
 
 ```ride-waits-widget rides=portaventura-park/shambhala|Shambhala;portaventura-park/dragon-khan|Dragon Khan;portaventura-park/furius-baco|Furius Baco;portaventura-park/hurakan-condor|Hurakan Condor columns=peak
 
@@ -261,9 +239,9 @@ Smugglers Run, Star Wars: Rise of the Resistance e Rock ’n’ Roller Coaster S
 Disney’s Hollywood Studios, e Remy’s Ratatouille Adventure e Test Track all’EPCOT. A queste si
 aggiunge Expedition Everest al Disney’s Animal Kingdom, che non compare nell’elenco del parco.
 
-Le regole stanno sulla stessa pagina. Il servizio permette ai gruppi di dividersi e di salire
-separatamente. Salire subito e scegliere il posto non sono garantiti, richieste particolari sul posto
-potrebbero non essere accolte, e le attrazioni che partecipano e i tempi di attesa possono cambiare.
+Secondo la stessa pagina, il servizio permette ai gruppi di dividersi e di salire separatamente.
+Salire subito e scegliere il posto non sono garantiti, richieste particolari sul posto potrebbero
+non essere accolte, e le attrazioni che partecipano e i tempi di attesa possono cambiare.
 
 Le tre code single rider del Disney’s Hollywood Studios l’8 ottobre 2026 risultavano “aperte”, senza
 tempo di attesa. Vale per tutte le 19 code single rider aperte nei nostri dati in tempo reale, anche
@@ -295,18 +273,13 @@ diviso, per riempire i posti che gli ospiti della coda normale non occupano.
 
 ## Universal Orlando
 
-Universal Orlando ha 14 attrazioni in tre parchi, Walt Disney World sei in tre parchi. Allo
-[Universal Studios Florida](ref:universal-studios-florida) sono Revenge of the Mummy, MEN IN BLACK
-Alien Attack e Harry Potter and the Escape from Gringotts. Alle
+Allo [Universal Studios Florida](ref:universal-studios-florida) sono Revenge of the Mummy, MEN IN
+BLACK Alien Attack e Harry Potter and the Escape from Gringotts. Alle
 [Islands of Adventure](ref:universal-islands-of-adventure) sono cinque: Harry Potter and the
 Forbidden Journey, Hagrid’s Magical Creatures Motorbike Adventure, The Incredible Hulk Coaster,
-Doctor Doom’s Fearfall e The Amazing Adventures of Spider-Man. All’[Epic Universe](ref:universal-epic-universe)
-sono sei su 14 attrazioni, tra cui Stardust Racers, Mine-Cart Madness e Mario Kart: Bowser’s
-Challenge.
-
-Una pagina di Universal che lo confermi non siamo riusciti a consultarla. I dati vengono dai nostri
-archivi e sono un’indicazione, non una promessa. All’Epic Universe il dato manca per 8 attrazioni su
-14, alle Islands of Adventure per 20 su 25.
+Doctor Doom’s Fearfall e The Amazing Adventures of Spider-Man.
+All’[Epic Universe](ref:universal-epic-universe) sono sei su 14 attrazioni, tra cui Stardust Racers,
+Mine-Cart Madness e Mario Kart: Bowser’s Challenge.
 
 ```ride-waits-widget rides=universal-islands-of-adventure/harry-potter-and-the-forbidden-journey|Forbidden Journey;universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure|Hagrid’s Motorbike Adventure;universal-islands-of-adventure/the-incredible-hulk-coaster|Incredible Hulk Coaster;universal-studios-florida/harry-potter-and-the-escape-from-gringotts|Escape from Gringotts;universal-studios-florida/revenge-of-the-mummy|Revenge of the Mummy;universal-epic-universe/stardust-racers|Stardust Racers;universal-epic-universe/mario-kart-bowsers-challenge|Mario Kart columns=park,peak
 
@@ -314,10 +287,10 @@ archivi e sono un’indicazione, non una promessa. All’Epic Universe il dato m
 
 ## Shanghai Disneyland e Hong Kong Disneyland
 
-I due parchi Disney asiatici hanno due e tre attrazioni. Allo [Shanghai Disneyland](ref:shanghai-disneyland)
-sono Zootopia: Hot Pursuit e Seven Dwarfs Mine Train, all’[Hong Kong Disneyland](ref:hong-kong-disneyland-park)
-Hyperspace Mountain, Big Grizzly Mountain Runaway Mine Cars e Toy Soldier Parachute Drop. Anche qui il
-dato manca quasi ovunque: per 35 attrazioni su 37 a Shanghai e per 44 su 47 a Hong Kong.
+I due parchi Disney asiatici hanno due e tre attrazioni. Allo
+[Shanghai Disneyland](ref:shanghai-disneyland) sono Zootopia: Hot Pursuit e Seven Dwarfs Mine Train,
+all’[Hong Kong Disneyland](ref:hong-kong-disneyland-park) Hyperspace Mountain, Big Grizzly Mountain
+Runaway Mine Cars e Toy Soldier Parachute Drop.
 
 ## Come organizzi una giornata con il single rider
 
@@ -376,15 +349,17 @@ requisiti dell’attrazione. L’Efteling scrive lo stesso per i bambini che ent
 
 No. L’Efteling assegna un posto, Walt Disney World non garantisce la scelta del posto.
 
-## Dove i dati hanno lacune
+## Quali elenchi sono completi
 
-Tre limiti valgono per tutto l’articolo:
+All’Europa-Park e al Phantasialand è indicato per quasi ogni attrazione se ha un ingresso single
+rider, quindi lì gli elenchi sono completi. Negli altri parchi questo dato manca per la maggior
+parte delle attrazioni, al Disneyland Park di Parigi per 41 su 43, al Disneyland Park di Anaheim per
+54 su 56. Lì possono esserci altre attrazioni con single rider, come nei 185 parchi in cui non ne
+conosciamo nessuna.
 
-- `hasSingleRider` è un dato fisso per attrazione. Non dice se la coda oggi sia aperta.
-- “Sconosciuto” non è un “no”. Dove non è inserito nulla, l’attrazione non compare negli elenchi.
-- Per il Phantasialand, Disneyland Paris, PortAventura, Alton Towers, il Thorpe Park, Universal e i
-  parchi Disney asiatici il dato viene dai nostri archivi, non da una pagina del parco che abbiamo
-  potuto leggere. All’Efteling i nostri dati contano un’attrazione in più del parco.
+Per il Phantasialand, Disneyland Paris, PortAventura, Alton Towers, il Thorpe Park, Universal e i
+parchi Disney asiatici non abbiamo letto nessuna pagina del parco che confermi l’elenco. Se una coda
+single rider oggi è aperta lo mostra solo il suo stato sulla pagina dell’attrazione.
 
 ## Per approfondire
 

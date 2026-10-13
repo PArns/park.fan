@@ -6,10 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In 18 of the 203 parks we measure wait times for, our API lists at least one
-  ride with a single rider queue, 66 rides in all. If you ride alone or let the
-  rest of your group split off, you fill empty seats and usually queue less. It
-  is not worth it for families with small children.
+  66 rides in 18 parks have their own single rider queue, six of them at
+  Europa-Park. If you ride alone or let your group split up, you fill empty
+  seats and usually queue less. It is not worth it for families with small
+  children.
 tags:
   - single-rider
   - wait-times
@@ -47,9 +47,7 @@ to strangers. In return you usually wait less than in the standard queue. Efteli
 site that single riders fill the empty seats that come up in the vehicles.
 
 Our API lists this queue as its own type, `SINGLE_RIDER`, and knows 66 rides in 18 parks that have
-one. This post lists which rides those are, what the parks themselves write about the rules and who
-benefits from the single rider entrance. How much time it saves we can only partly answer, and the
-reasons are further down.
+one.
 
 ## How a single rider entrance works
 
@@ -58,12 +56,11 @@ stays empty, the park puts someone from the single rider queue into it. The ride
 groups in the standard queue lose nothing, because nobody from their row is moved ahead. Efteling
 writes that this shortens the wait for groups and single riders alike.
 
-That tells you what to expect. The single rider queue only moves as fast as gaps appear. On paper it
-is shorter, but whether it is in your hour depends on the gaps the groups ahead of you leave.
-Efteling puts it like this: single riders usually wait less, but how much depends on the number of
-visitors and the free seats.
+The single rider queue only moves as fast as gaps appear. On paper it is shorter, but whether it is
+in your hour depends on the gaps the groups ahead of you leave. Efteling puts it like this: single
+riders usually wait less, but how much depends on the number of visitors and the free seats.
 
-Three rules apply at every park whose page we could read:
+At every park whose page we could read:
 
 1. **You don’t pick your seat.** Efteling assigns a seat, together with other guests. Walt Disney
    World guarantees neither immediate boarding nor your choice of seat.
@@ -96,14 +93,11 @@ It isn’t worth it in these cases:
 - **The standard queue is short anyway.** Then the advantage is gone, and the group is split for no
   reason.
 
-## What our data knows about the queue
+## Single rider on the attraction page
 
-There are two questions, and our data answers only one of them well.
-
-**Does the ride have a single rider queue?** That is stored per ride in the field `hasSingleRider`, a
-fixed attribute. On the attraction page park.fan shows a “Single rider” badge for it. The value
-`null` means “unknown” and never “no”. A missing badge therefore says nothing about whether the queue
-exists.
+**Does the ride have a single rider queue?** If it does, park.fan shows a “Single rider” badge on
+the attraction page. A missing badge doesn’t mean there is none, often we just don’t know for that
+ride.
 
 **How long is it right now?** Here the number is often missing. On 8 October 2026 we pulled the live
 data of all 18 parks. It contained 41 single rider queues in twelve parks, 19 of them open, in seven parks. Not one
@@ -112,48 +106,38 @@ attraction page park.fan then shows “Single rider” without a time, and the t
 the standard queue.
 
 So how much time the entrance saves can’t currently be calculated from our data. All that is backed
-up is Efteling’s statement that single riders usually wait less. We don’t quote the result of our own
-measurement as long as there is none.
+up is Efteling’s statement that single riders usually wait less.
 
-## Park by park: how many rides we know
+## Single rider rides by park
 
-The table shows how many rides per park carry the attribute, how many attractions the park has in our
-database and for how many the value is missing. The data is from 8 October 2026.
+The figures are from 8 October 2026.
 
-| Park                           | Rides with single rider | Attractions | Value unknown |
-| ------------------------------ | ----------------------- | ----------- | ------------- |
-| Efteling                       | 7                       | 37          | 30            |
-| Disney Adventure World         | 7                       | 14          | 7             |
-| Europa-Park                    | 6                       | 97          | 1             |
-| Universal Epic Universe        | 6                       | 14          | 8             |
-| Universal Islands of Adventure | 5                       | 25          | 20            |
-| PortAventura Park              | 4                       | 51          | 45            |
-| Alton Towers                   | 4                       | 55          | 48            |
-| Disney California Adventure    | 4                       | 29          | 25            |
-| Disney’s Hollywood Studios     | 3                       | 11          | 8             |
-| Universal Studios Florida      | 3                       | 44          | 41            |
-| Phantasialand                  | 3                       | 40          | 0             |
-| Hong Kong Disneyland           | 3                       | 47          | 44            |
-| Disneyland Park (Anaheim)      | 2                       | 56          | 54            |
-| Disneyland Park (Paris)        | 2                       | 43          | 41            |
-| Shanghai Disneyland            | 2                       | 37          | 35            |
-| EPCOT                          | 2                       | 34          | 32            |
-| Thorpe Park                    | 2                       | 45          | 38            |
-| Disney’s Animal Kingdom        | 1                       | 17          | 16            |
-
-Two parks stand out. At Europa-Park and Phantasialand the value is filled in for almost every
-attraction, missing for one and for none. There, “not on the list” really does mean “no single rider
-queue”. Everywhere else the list is a lower bound: at Disneyland Park in Paris the value is missing for
-41 of 43 attractions, at Disneyland Park in Anaheim for 54 of 56.
-
-The other 185 of the 203 parks don’t have a single ride with the attribute. Whether that is a “no” or
-a gap, we don’t know there.
+| Park                           | Rides with single rider | Attractions |
+| ------------------------------ | ----------------------- | ----------- |
+| Efteling                       | 7                       | 37          |
+| Disney Adventure World         | 7                       | 14          |
+| Europa-Park                    | 6                       | 97          |
+| Universal Epic Universe        | 6                       | 14          |
+| Universal Islands of Adventure | 5                       | 25          |
+| PortAventura Park              | 4                       | 51          |
+| Alton Towers                   | 4                       | 55          |
+| Disney California Adventure    | 4                       | 29          |
+| Disney’s Hollywood Studios     | 3                       | 11          |
+| Universal Studios Florida      | 3                       | 44          |
+| Phantasialand                  | 3                       | 40          |
+| Hong Kong Disneyland           | 3                       | 47          |
+| Disneyland Park (Anaheim)      | 2                       | 56          |
+| Disneyland Park (Paris)        | 2                       | 43          |
+| Shanghai Disneyland            | 2                       | 37          |
+| EPCOT                          | 2                       | 34          |
+| Thorpe Park                    | 2                       | 45          |
+| Disney’s Animal Kingdom        | 1                       | 17          |
 
 ## Europa-Park
 
-At [Europa-Park](ref:europa-park), six rides carry the attribute: ARTHUR in the Minimoys Kingdom
-themed area, WODAN – Timburcoaster and blue fire Megacoaster in Iceland, Eurosat – CanCan Coaster in
-France, the Voletarium in Germany and Voltron Nevera powered by Rimac in Croatia.
+At [Europa-Park](ref:europa-park), six rides have a single rider entrance: ARTHUR in the Minimoys
+Kingdom themed area, WODAN – Timburcoaster and blue fire Megacoaster in Iceland, Eurosat – CanCan
+Coaster in France, the Voletarium in Germany and Voltron Nevera powered by Rimac in Croatia.
 
 The park itself confirms two of them. On the page for
 [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac), single rider is listed among the
@@ -171,8 +155,7 @@ in a group without small children. How to lay out a sensible day in the park is 
 
 ```
 
-The table shows the standard queue, in the same order as the rides above. When it fills up is shown in
-the distribution over the day:
+The figures in the table are for the standard queue.
 
 ```hourly-profile-widget slug=europa-park top=6
 
@@ -200,10 +183,9 @@ Max & Moritz, 110 on Joris en de Draak, 120 on Python, De Vliegende Hollander an
 
 ## Phantasialand
 
-At [Phantasialand](ref:phantasialand), three rides carry the attribute: [Taron](ref:phantasialand/taron)
-and [Raik](ref:phantasialand/raik) in the Mystery themed area and
-[Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn) in Mexico. We could not retrieve
-a page from the park that confirms this.
+At [Phantasialand](ref:phantasialand), three rides have a single rider entrance:
+[Taron](ref:phantasialand/taron) and [Raik](ref:phantasialand/raik) in the Mystery themed area and
+[Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn) in Mexico.
 
 Next to Europa-Park, Phantasialand is the park where the value is filled in for every attraction: of
 40 attractions, it is missing for none. The three rides are therefore the complete list. The minimum
@@ -223,8 +205,7 @@ Toy Soldiers Parachute Drop, also in Toon Studio. That is seven of 14 attraction
 any park in the table.
 
 In [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) there are two: Star Wars
-Hyperspace Mountain in Discoveryland and Indiana Jones and the Temple of Peril in Adventureland. We
-could not retrieve a Disneyland Paris page on the single rider service.
+Hyperspace Mountain in Discoveryland and Indiana Jones and the Temple of Peril in Adventureland.
 
 ```ride-waits-widget rides=disney-adventure-world/frozen-ever-after|Frozen Ever After;disney-adventure-world/spider-man-web-adventure|Spider-Man W.E.B. Adventure;disney-adventure-world/crushs-coaster|Crush’s Coaster;disney-adventure-world/rc-racer|RC Racer;/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain|Star Wars Hyperspace Mountain;/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril|Indiana Jones and the Temple of Peril columns=park,peak
 
@@ -234,10 +215,8 @@ could not retrieve a Disneyland Paris page on the single rider service.
 
 At [Alton Towers](ref:alton-towers) there are four rides in the Thrills area: TH13TEEN, Spinball
 Whizzer, The Smiler and Galactica. At [Thorpe Park](ref:thorpe-park) there are two, both in the
-Coasters area: SAW – The Ride and Hyperia. At both parks the value is missing for most rides: at Alton
-Towers for 48 of 55 attractions, at Thorpe Park for 38 of 45. The minimum height is 120 centimetres on
-TH13TEEN and Spinball Whizzer, 130 on Hyperia and 140 on The Smiler, Galactica and SAW. We haven’t
-read a page from either park that confirms the list.
+Coasters area: SAW – The Ride and Hyperia. The minimum height is 120 centimetres on TH13TEEN and
+Spinball Whizzer, 130 on Hyperia and 140 on The Smiler, Galactica and SAW.
 
 ```ride-waits-widget rides=alton-towers/the-smiler|The Smiler;alton-towers/galactica|Galactica;alton-towers/th13teen|TH13TEEN;alton-towers/spinball-whizzer|Spinball Whizzer;thorpe-park/hyperia|Hyperia;thorpe-park/saw-the-ride|SAW – The Ride columns=park,peak
 
@@ -246,8 +225,7 @@ read a page from either park that confirms the list.
 ## PortAventura
 
 At [PortAventura Park](ref:portaventura-park) we know four rides: Hurakan Condor, Furius Baco,
-Shambhala and Dragon Khan. The value is missing for 45 of the 51 attractions, so the list is
-especially short compared with what we don’t know.
+Shambhala and Dragon Khan.
 
 ```ride-waits-widget rides=portaventura-park/shambhala|Shambhala;portaventura-park/dragon-khan|Dragon Khan;portaventura-park/furius-baco|Furius Baco;portaventura-park/hurakan-condor|Hurakan Condor columns=peak
 
@@ -260,7 +238,7 @@ Run, Star Wars: Rise of the Resistance and Rock ’n’ Roller Coaster Starring 
 Hollywood Studios, plus Remy’s Ratatouille Adventure and Test Track at EPCOT. Added to that is
 Expedition Everest at Disney’s Animal Kingdom, which isn’t on the park’s list.
 
-The rules are on the same page. The service lets groups split up and board separately. Immediate
+According to the same page, the service lets groups split up and board separately. Immediate
 boarding and the choice of seat aren’t guaranteed, special seating requests may not be met, and the
 participating attractions and the wait times can change.
 
@@ -293,18 +271,13 @@ fill the seats that guests in the standard queue don’t take.
 
 ## Universal Orlando
 
-Universal Orlando has 14 rides in three parks, Walt Disney World six in three parks. At
-[Universal Studios Florida](ref:universal-studios-florida) they are Revenge of the Mummy, MEN IN BLACK
-Alien Attack and Harry Potter and the Escape from Gringotts. At
+At [Universal Studios Florida](ref:universal-studios-florida) they are Revenge of the Mummy, MEN IN
+BLACK Alien Attack and Harry Potter and the Escape from Gringotts. At
 [Islands of Adventure](ref:universal-islands-of-adventure) there are five: Harry Potter and the
 Forbidden Journey, Hagrid’s Magical Creatures Motorbike Adventure, The Incredible Hulk Coaster,
 Doctor Doom’s Fearfall and The Amazing Adventures of Spider-Man. At
 [Epic Universe](ref:universal-epic-universe) there are six of 14 attractions, including Stardust
 Racers, Mine-Cart Madness and Mario Kart: Bowser’s Challenge.
-
-We could not retrieve a Universal page that confirms this. The figures come from our data and are a
-pointer, not a promise. At Epic Universe the value is missing for 8 of 14 attractions, at Islands of
-Adventure for 20 of 25.
 
 ```ride-waits-widget rides=universal-islands-of-adventure/harry-potter-and-the-forbidden-journey|Forbidden Journey;universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure|Hagrid’s Motorbike Adventure;universal-islands-of-adventure/the-incredible-hulk-coaster|Incredible Hulk Coaster;universal-studios-florida/harry-potter-and-the-escape-from-gringotts|Escape from Gringotts;universal-studios-florida/revenge-of-the-mummy|Revenge of the Mummy;universal-epic-universe/stardust-racers|Stardust Racers;universal-epic-universe/mario-kart-bowsers-challenge|Mario Kart columns=park,peak
 
@@ -315,8 +288,7 @@ Adventure for 20 of 25.
 The two Asian Disney parks have two and three rides. At
 [Shanghai Disneyland](ref:shanghai-disneyland) they are Zootopia: Hot Pursuit and Seven Dwarfs Mine
 Train, at [Hong Kong Disneyland](ref:hong-kong-disneyland-park) Hyperspace Mountain, Big Grizzly
-Mountain Runaway Mine Cars and Toy Soldier Parachute Drop. Here too the value is missing almost
-everywhere: for 35 of 37 attractions in Shanghai and for 44 of 47 in Hong Kong.
+Mountain Runaway Mine Cars and Toy Soldier Parachute Drop.
 
 ## How to plan a day with single rider
 
@@ -375,15 +347,16 @@ requirements. Efteling writes the same for children who enter alone.
 
 No. Efteling assigns a seat, and Walt Disney World doesn’t guarantee the choice of seat.
 
-## Where the data has gaps
+## Which lists are complete
 
-Three limits apply to everything in this post:
+At Europa-Park and Phantasialand it is recorded for almost every attraction whether it has a single
+rider entrance, so the lists there are complete. At the other parks this is missing for most
+attractions, at Disneyland Park in Paris for 41 of 43, at Disneyland Park in Anaheim for 54 of 56.
+There may be more single rider rides there, and in the 185 parks where we know of none.
 
-- `hasSingleRider` is a fixed attribute per ride. It doesn’t say whether the queue is open today.
-- “Unknown” is not “no”. Where nothing is entered, the ride isn’t in the lists.
-- For Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal and the Asian
-  Disney parks, the value comes from our data, not from a park page we could read. At Efteling our data
-  lists one ride more than the park does.
+For Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal and the
+Asian Disney parks we haven’t read a park page that confirms the list. Whether a single rider queue
+is open today only shows in its status on the attraction page.
 
 ## Further reading
 
