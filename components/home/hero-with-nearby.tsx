@@ -196,7 +196,13 @@ export function HeroWithNearby({
   const nearbyData = mounted ? liveNearbyData : undefined;
   const { data: liveStats } = useGlobalStats();
 
-  const counts = liveStats?.counts ?? initialCounts;
+  /*
+   * The seed counts in the first client render, for the same reason `GlobalStatsLiveCounts` gates
+   * them: `useGlobalStats` can already hold data while this subtree hydrates, and the badge writes
+   * the number into text the server has already committed. The homepage's HTML is prerendered and
+   * served for hours, so by then the live count almost always differs.
+   */
+  const counts = (mounted ? liveStats?.counts : undefined) ?? initialCounts;
   const openParks = counts?.openParks ?? FALLBACK_COUNTS.openParks;
   const introValues = {
     parks: counts?.parks ?? FALLBACK_COUNTS.parks,
