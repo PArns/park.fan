@@ -6,12 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg ligt op een heuvel tussen de beurshallen en een tramhalte, is sinds
-  1923 open en telt zo’n drie miljoen gasten per jaar. Daarbij komen de houten
-  achtbaan Balder, de launch coaster Helix, een dive coaster op de plek van de
-  Kanonen, een Halloween met vijf spookhuizen en de grootste kerstmarkt van
-  Zweden. Een Express-kaart om te kopen bestaat niet, de wachtrij reserveer je
-  gratis in de app.
+  Liseberg ligt midden in Göteborg, is sinds 1923 open en telt zo’n drie miljoen
+  gasten per jaar. In de herfst zijn er vijf spookhuizen, in de winter de
+  grootste kerstmarkt van Zweden. Een Express-kaart om te kopen bestaat niet, de
+  virtuele wachtrij in de app is gratis.
 tags:
   - liseberg
   - balder
@@ -69,7 +67,7 @@ zo’n **3 miljoen gasten** per jaar.
 
 ## Hoe een tentoonstelling een park werd
 
-De heuvel dankt zijn naam aan een vrouw. De koopman Johan Anders Lamberg, die
+De koopman Johan Anders Lamberg, die
 het terrein in 1752 overnam, noemde het rond 1753 naar zijn echtgenote
 Elisabeth Söderberg “Lisas berg”, de berg van Lisa. Daarvoor heette de 38 meter
 hoge heuvelrug Geteberget, geitenberg. In 1908 kocht de stad Göteborg het
@@ -95,12 +93,10 @@ toen werd in **1987** gesloopt en vervangen door de
 dezelfde berg had ontworpen.
 
 Sinds **2000** is Liseberg ook in de winter open (“Jul på Liseberg”), in het
-eerste jaar kwamen er 418.000 gasten. In **2015** volgde Halloween. En in
-**2020** bleef het park vanwege de pandemie het hele seizoen dicht, voor het
+eerste jaar kwamen er 418.000 gasten. In **2015** volgde Halloween. In **2020** bleef het park vanwege de pandemie het hele seizoen dicht, voor het
 eerst sinds de oprichting. In 2023 werd het 100 jaar.
 
-Hoeveel gasten er komen, is over de decennia na te lezen. In 1936 waren het er
-meer dan een miljoen, in 1954 ruim 1,7 miljoen en in 1979 1,8 miljoen. In 2003,
+In 1936 kwamen er meer dan een miljoen gasten, in 1954 ruim 1,7 miljoen en in 1979 1,8 miljoen. In 2003,
 het jaar van Balder, meldde het park met 3,4 miljoen gasten in zomer en kerst
 zijn record. In 2021, het eerste jaar na de pandemie, waren het er 1,5 miljoen,
 in 2023 volgens de Zweedse Wikipedia 2,2 miljoen. De tot dan toe duurste
@@ -162,12 +158,9 @@ De Kanonen was de eerste baan van zijn soort in het noorden. De trein werd
 hydraulisch in 1,84 seconde tot 75 km/u gelanceerd, steeg 24 meter steil
 omhoog, reed een looping en een heartroll en stond na zo’n 50 seconden weer in
 het station. In 2010 telde hij 651.000 ritten, en daarmee was het de
-vijfde populairste baan van het park. Valkyria verving hem op hetzelfde
-terrein, en het pad van de eerste afdaling loopt nu onder de grond, een tunnel
-in.
+vijfde populairste baan van het park.
 
-Verder is er de **[Lisebergbanan](ref:liseberg/lisebergbanan)**, de oudste van
-de grote banen. Hij opende op **18 april 1987**, werd door Zierer gebouwd naar
+De **[Lisebergbanan](ref:liseberg/lisebergbanan)** is de oudste van de grote banen. Hij opende op **18 april 1987**, werd door Zierer gebouwd naar
 een ontwerp van Werner Stengel en Anton Schwarzkopf en rijdt met **80 km/u**
 door het bos op de berg. Vijf treinen van elf wagens elk zorgen volgens de
 Roller Coaster DataBase voor tot 2.000 gasten per uur, en het station is
@@ -176,10 +169,10 @@ nagebouwde wagons. De minimale lengte is 130 cm, in begeleiding 110 cm. In het
 najaar en de winter rijdt hij alleen tijdens Halloween, in het Jul-programma
 staat hij niet op de lijst.
 
-Daarbij komt **[Luna](ref:liseberg/luna)**, geopend in 2023: een boomerang van
+**[Luna](ref:liseberg/luna)**, geopend in 2023, is een boomerang van
 Vekoma, 33,5 meter hoog en 242 meter lang, die de trein eerst vooruit en dan
 achteruit over hetzelfde parcours stuurt. Voor Luna geldt 120 cm plus zes jaar,
-in begeleiding 95 cm plus drie jaar. En voor de kleintjes zijn er de
+in begeleiding 95 cm plus drie jaar. Voor de kleintjes zijn er de
 **[Rabalder](ref:liseberg/rabalder)** van Zierer (2009) en de
 **[Stampbanan](ref:liseberg/stampbanan)** van Preston & Barbieri (2013), allebei
 in Kaninlandet, het konijnenland. Voor beide heeft een kind 110 cm nodig, in
@@ -196,7 +189,7 @@ volgens de Zweedse Wikipedia is het de hoogste vrije val van Europa. De
 minimale lengte is 140 cm. AtmosFear draait volgens het park alleen in de
 zomer, niet tijdens Halloween en niet met kerst.
 
-Water is er in twee varianten. De **[FlumeRide](ref:liseberg/flumeride)**, een
+De **[FlumeRide](ref:liseberg/flumeride)**, een
 boomstamvaart van Arrow Development, opende in **1973**, is meer dan 600 meter
 lang en had al in het eerste seizoen 732.000 passagiers. De
 **[Kållerado](ref:liseberg/kallerado)** uit 1997 is een wildwaterbaan van
@@ -204,8 +197,7 @@ Intamin die in 2010 qua populariteit net achter de Lisebergbanan lag (1,11
 miljoen ritten, de Lisebergbanan had er 1,32 miljoen). Voor de FlumeRide geldt
 130 cm, in begeleiding 100 cm, voor de Kållerado 130 cm, in begeleiding 110 cm.
 
-Daarnaast zijn er nog meer attracties in een park met meer dan dertig
-ritten:
+Liseberg heeft meer dan dertig ritten, waaronder:
 
 - **[Loke](ref:liseberg/loke)** (2017), een Gyro Swing van Intamin voor maximaal
   40 gasten, met de minimale lengte 130 cm plus zeven jaar,
@@ -283,8 +275,7 @@ vooral uit het zomerseizoen, in de winter rijden maar weinig banen.
 ```
 
 Bovenaan staan Helix en Valkyria, daarna Loke en Balder, en het verschil tussen
-die vier is klein. Er is hier geen enkele baan waar alles vastloopt, de
-wachtrij verdeelt zich over vier banen. De nieuwigheid
+die vier is klein. De nieuwigheid
 [Stormvåg](ref:liseberg/stormvag) en de in 2025 geopende
 [Kraftverket](ref:liseberg/kraftverket) staan al in de top tien, en ook de
 kinderbaan Rabalder staat in de tabel.
@@ -350,7 +341,7 @@ Liseberg voor dagen met een parkstart om 11 uur 15 uur. Er zijn er vijf:
 - **Vinden**, **Zombie**, **Nattsvart på Gasten** en **Skogen** vanaf 11 jaar,
 - **7**, het huis rond de zeven hoofdzonden, vanaf **15 jaar**.
 
-Daarbij komen drie gebieden met acteurs: Clown, Demonernas Skugga en Nemesis,
+Drie andere gebieden hebben acteurs: Clown, Demonernas Skugga en Nemesis,
 waarbij Nemesis geen spelers heeft, alleen filmprojecties. De acteurs zijn er
 vanaf 18 uur. Een leeftijdsgrens voor de toegang is er niet, kinderen onder 110
 cm komen gratis binnen. Verkleden mag, maar het gezicht mag niet helemaal
@@ -363,9 +354,7 @@ getheamed. Daarna kwamen Zombie, Vinden en in 2018 het decor Cirkus Bisarr
 erbij. De drukst bezochte seizoenen waren volgens de Zweedse Wikipedia 2019 en
 2024; voor 2024 noemt zij 343.581 gasten.
 
-Verder is er “Klubb Nattsvart”, een feest in het havengebied, op 9, 10, 16 en
-17 oktober van 22:30 tot 2 uur, en het Oktoberfest in het Tirolergebied van 2
-tot 31 oktober. En voor kinderen is er “Höst i Kaninlandet”: op enkele dagen is
+“Klubb Nattsvart” is een feest in het havengebied, op 9, 10, 16 en 17 oktober van 22:30 tot 2 uur. Het Oktoberfest in het Tirolergebied loopt van 2 tot 31 oktober. Voor kinderen is er “Höst i Kaninlandet”: op enkele dagen is
 alleen Kaninlandet open, van 11 tot 17 uur, op 26 en 27 september, op 30
 september en 1 oktober en op 14 en 15 oktober.
 
@@ -390,8 +379,7 @@ december blijft het park dicht.
 
 Er zijn drie markten: de Tyrolermarknad tussen de Radiobilarna en de
 Slänggungan, de Gammaldags Jul in de wijk Storgatan en de Vintermarknad bij de
-Stora Scenen. Daarbij komen het Tomtehuset, de ijsbaan en een nieuwe lichtshow
-in het havengebied. In 2025 reden er zo’n 30 banen, onder andere Balder,
+Stora Scenen. Het park heeft ook het Tomtehuset, een ijsbaan en een nieuwe lichtshow in het havengebied. In 2025 reden er zo’n 30 banen, onder andere Balder,
 Valkyria, Loke en Mechanica, maar niet Helix en de Lisebergbanan. De prijzen
 voor de entree van Jul 2026 heeft het park nog niet gepubliceerd. Kaninlandet
 is in 2026 op 42 extra dagen in de winter open, elk weekend en in de
@@ -456,7 +444,7 @@ kiezen: het Lisebergs Wärdshus met Noordse keuken, de Hamnkrogen voor vis, de
 Järnvägsrestaurangen in het station van de Lisebergbanan, Al Parco met pizza
 en de Mei Rose Rooftop Bar & Bistro.
 
-## Oceana: het waterpark dat er nog niet staat
+## Het waterpark Oceana
 
 In november 2020 begon de bouw van Oceana, een recreatiebad met 14 attracties
 op ongeveer 13.600 vierkante meter. Het zou in 2024 opengaan. Op 12 februari
@@ -468,8 +456,7 @@ tickets moeten er vanaf eind november 2026 zijn. Meer daarover in het artikel
 
 Volgens het park heeft Oceana zo’n 6.000 vierkante meter binnenbaden en 4.000
 vierkante meter buitenruimte. Het bad hoort bij het project dat in 2017 werd
-besloten en waar ook het Grand Curiosa Hotel bij hoorde. Het hotel staat er
-sinds 2023, het bad ontbreekt.
+besloten en waar ook het Grand Curiosa Hotel bij hoorde.
 
 ## Een dag op Liseberg, grof gepland
 
@@ -490,7 +477,7 @@ rijdt eerst tot het donker wordt en gaat dan de huizen in.
 
 Nee. Het park zegt zelf dat het de Express-pass niet meer heeft. In zijn plaats
 is de gratis virtuele wachtrij in de app gekomen, met één reservering per
-groep. Een betaalde snelle ingang is er niet.
+groep.
 
 ### Hoe hoog is de minimale lengte voor Balder, Helix en Valkyria?
 
@@ -502,7 +489,7 @@ jaar (en hooguit 195 cm). Voor de Lisebergbanan geldt 130 cm, in begeleiding
 
 Het zomerseizoen begon op 18 april. Halloween loopt van 2 oktober tot 1
 november, Jul på Liseberg op geselecteerde dagen van 14 november tot 30
-december. Daarbij komen winterweekenden in Kaninlandet. De kalender op de
+december. In de winter is Kaninlandet ook in de weekenden open. De kalender op de
 [parkpagina](ref:liseberg) toont steeds de komende weken.
 
 ### Wanneer is het op Liseberg het rustigst?
@@ -540,8 +527,7 @@ Volgens Liseberg begin 2027, met kaartverkoop vanaf eind november 2026.
 Het overzicht van [winterparken 2026](/blog/winter-pretparken-2026) zet de
 kerstmarkt naast de andere, en de
 [halloweengids 2026](/blog/halloween-pretparken-2026) vergelijkt de
-najaarsprogramma’s. Een houten achtbaan met een andere geschiedenis beschrijft
-de gids over [Heide Park](/blog/heide-park-wachttijden-tips).
+najaarsprogramma’s. Colossos, ook een houten achtbaan van Intamin, staat in de gids over [Heide Park](/blog/heide-park-wachttijden-tips).
 
 — Patrick
 

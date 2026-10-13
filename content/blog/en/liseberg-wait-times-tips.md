@@ -6,12 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg sits on a hill between the fairgrounds and a tram stop, has been open
-  since 1923 and counts around three million guests a year. It has the wooden
-  coaster Balder, the launch coaster Helix, a dive coaster on the site of the
-  cannons, a Halloween with five haunted houses and Sweden’s biggest Christmas
-  market. There’s no Express pass to buy; you book your place in the queue for
-  free in the app.
+  Liseberg is in the middle of Gothenburg, has been open since 1923 and counts
+  around three million guests a year. In autumn it has five haunted houses, in
+  winter Sweden’s biggest Christmas market. There’s no Express pass to buy, and
+  the virtual queue in the app is free.
 tags:
   - liseberg
   - balder
@@ -69,7 +67,7 @@ guests** for the year.
 
 ## How an exhibition became a park
 
-The hill got its name from a woman. The merchant Johan Anders Lamberg, who took
+The merchant Johan Anders Lamberg, who took
 over the land in 1752, named it "Lisas berg", Lisa’s Hill, around 1753 after his
 wife Elisabeth Söderberg. Before that the 38-metre ridge was called Geteberget,
 Goat Hill. In 1908 the city of Gothenburg bought the plot, buildings included,
@@ -94,12 +92,10 @@ mountain railway of that time was torn down in **1987** and replaced by the
 designed for the same hill.
 
 Since **2000** Liseberg has opened in winter ("Jul på Liseberg"), and 418,000
-guests came in the first year. **2015** brought Halloween. And in **2020** the
-park stayed closed the entire season because of the pandemic, for the first time
+guests came in the first year. **2015** brought Halloween. In **2020** the park stayed closed the entire season because of the pandemic, for the first time
 since it was founded. In 2023 it turned 100.
 
-You can follow how many guests come across the decades. In 1936 it was more
-than a million, in 1954 a good 1.7 million, and in 1979 1.8 million. In 2003,
+In 1936 more than a million guests came, in 1954 a good 1.7 million, and in 1979 1.8 million. In 2003,
 the year of Balder, the park reported its record of 3.4 million guests across
 summer and Christmas. In 2021, the first year after the pandemic, it was 1.5
 million, and in 2023 2.2 million according to the Swedish Wikipedia. The most
@@ -160,11 +156,8 @@ The Kanonen was the first ride of its kind in the north. The train shot out
 hydraulically to 75 km/h in 1.84 seconds, climbed 24 metres steeply, ran through
 a loop and a heartline roll, and was back in the station after about 50 seconds.
 In 2010 it had 651,000 rides, which made it the park’s fifth most popular ride.
-Valkyria replaced it on the same plot, and the path of the first drop now leads
-under the ground, into a tunnel.
 
-And there’s the **[Lisebergbanan](ref:liseberg/lisebergbanan)**, the oldest of
-the big rides. It opened on **18 April 1987**, was built by Zierer to a design by
+The **[Lisebergbanan](ref:liseberg/lisebergbanan)** is the oldest of the big rides. It opened on **18 April 1987**, was built by Zierer to a design by
 Werner Stengel and Anton Schwarzkopf, and runs at **80 km/h** through the woods
 on the hill. According to the Roller Coaster DataBase, five trains of eleven cars
 each carry up to 2,000 guests an hour, and the station is designed as a railway
@@ -172,11 +165,10 @@ station. Underneath it is a restaurant with replica carriages. The height
 requirement is 130 cm, or 110 cm with an accompanying adult. In autumn and
 winter it only runs during Halloween; it isn’t on the list for the Jul programme.
 
-Then there’s **[Luna](ref:liseberg/luna)**, opened in 2023: a Vekoma boomerang,
+**[Luna](ref:liseberg/luna)**, opened in 2023, is a Vekoma boomerang,
 33.5 metres tall and 242 metres long, that sends the train first forwards, then
 backwards through the same course. Luna requires 120 cm plus an age of six, or
-95 cm plus an age of three with an accompanying adult. And for the little ones
-there are the **[Rabalder](ref:liseberg/rabalder)** by Zierer (2009) and the
+95 cm plus an age of three with an accompanying adult. For the little ones there are the **[Rabalder](ref:liseberg/rabalder)** by Zierer (2009) and the
 **[Stampbanan](ref:liseberg/stampbanan)** by Preston & Barbieri (2013), both in
 Rabbit Land. On both a child needs 110 cm, or 90 cm with an accompanying adult.
 
@@ -191,7 +183,7 @@ Swedish Wikipedia it’s the tallest free fall in Europe. The height requirement
 is 140 cm. According to the park, AtmosFear only runs in summer, not during
 Halloween and not at Christmas.
 
-There are two kinds of water ride. The **[FlumeRide](ref:liseberg/flumeride)**,
+The **[FlumeRide](ref:liseberg/flumeride)**,
 a log flume by Arrow Development, opened in **1973**, is more than 600 metres
 long and had 732,000 riders in its first season. The
 **[Kållerado](ref:liseberg/kallerado)** from 1997 is an Intamin river rapids
@@ -277,8 +269,7 @@ comes mostly from the summer season; in winter only a few rides run.
 ```
 
 Helix and Valkyria are on top, then Loke and Balder, and the gap between the four
-is small. There’s no single ride here that everything backs up behind; the
-queue is spread across four rides. The new ride [Stormvåg](ref:liseberg/stormvag)
+is small. The new ride [Stormvåg](ref:liseberg/stormvag)
 and [Kraftverket](ref:liseberg/kraftverket), which opened in 2025, are already
 in the top ten, and the children’s coaster Rabalder is in the table too.
 
@@ -343,7 +334,7 @@ for days when the park opens at 11:00. There are five:
 - **Vinden**, **Zombie**, **Nattsvart på Gasten** and **Skogen** from age 11,
 - **7**, the house about the seven deadly sins, from **age 15**.
 
-On top of that come three areas with actors: Clown, Demonernas Skugga and
+Three more areas have actors: Clown, Demonernas Skugga and
 Nemesis, though Nemesis has no performers, only film projections. The actors are
 there from 18:00. There’s no age limit for entry, and children under 110 cm get
 in free. You can dress up, but your face must not be fully made up, masks are
@@ -356,9 +347,7 @@ performers. Zombie and Vinden followed, and in 2018 the setting Cirkus Bisarr.
 According to the Swedish Wikipedia the best-attended seasons were 2019 and 2024;
 for 2024 it gives 343,581 guests.
 
-There’s also "Klubb Nattsvart", a party in the harbour area, on 9, 10, 16 and 17
-October from 22:30 to 2:00, and the Oktoberfest in the Tyrol area from 2 to 31
-October. And for children there’s "Höst i Kaninlandet": on single days only
+"Klubb Nattsvart" is a party in the harbour area, on 9, 10, 16 and 17 October from 22:30 to 2:00. The Oktoberfest in the Tyrol area runs from 2 to 31 October. For children there’s "Höst i Kaninlandet": on single days only
 Rabbit Land is open, from 11:00 to 17:00, on 26 and 27 September, 30 September
 and 1 October, and 14 and 15 October.
 
@@ -383,8 +372,7 @@ from 15:00 to 22:00, on Saturdays from 12:00 to 22:00, on Sundays from 12:00 to
 
 There are three markets: the Tyrolermarknad between the Radiobilarna and the
 Slänggungan, the Gammaldags Jul in the Storgatan quarter and the Vintermarknad
-at the Stora Scenen. There are also the Tomtehuset, the ice rink and a new light
-show in the harbour area. In 2025 around 30 rides ran, including Balder,
+at the Stora Scenen. The park also has the Tomtehuset, an ice rink and a new light show in the harbour area. In 2025 around 30 rides ran, including Balder,
 Valkyria, Loke and Mechanica, but not Helix and the Lisebergbanan. The park
 hasn’t yet published the admission prices for Jul 2026. In 2026 Rabbit Land is
 open on 42 additional days in winter, every weekend and in the school holidays.
@@ -447,7 +435,7 @@ Lisebergs Wärdshus with Nordic cooking, the Hamnkrogen for fish, the
 Järnvägsrestaurangen in the Lisebergbanan station, Al Parco with pizza, and the
 Mei Rose Rooftop Bar & Bistro.
 
-## Oceana: the water park that isn’t there yet
+## The Oceana water park
 
 In November 2020 construction began on Oceana, an indoor-outdoor water park with
 14 attractions on around 13,600 square metres. It was due to open in 2024. On 12
@@ -460,8 +448,7 @@ November 2026. More on this in the post
 
 According to the park, Oceana has around 6,000 square metres of indoor pools and
 4,000 square metres of outdoor area. The water park belongs to the project that
-was decided in 2017 and also included the Grand Curiosa Hotel. The hotel has
-stood since 2023; the water park is missing.
+was decided in 2017 and also included the Grand Curiosa Hotel.
 
 ## A day at Liseberg, roughly planned
 
@@ -480,8 +467,7 @@ rides, ride first until it gets dark, and then go into the houses.
 ### Does Liseberg have a Fast Pass?
 
 No. The park itself says it no longer has the Express pass. The free virtual
-queue in the app has taken its place, with one reservation per group. There’s no
-paid fast lane.
+queue in the app has taken its place, with one reservation per group.
 
 ### What is the height requirement for Balder, Helix and Valkyria?
 
@@ -493,7 +479,7 @@ accompanying adult.
 
 The summer season began on 18 April. Halloween runs from 2 October to 1
 November, and Jul på Liseberg on selected days from 14 November to 30 December.
-There are also winter weekends in Rabbit Land. The calendar on the
+In winter Rabbit Land also opens on weekends. The calendar on the
 [park page](ref:liseberg) always shows the next few weeks.
 
 ### When is Liseberg least busy?
@@ -530,8 +516,7 @@ According to Liseberg, in early 2027, with ticket sales from the end of November
 The overview of [winter parks 2026](/blog/winter-theme-parks-2026) sets the
 Christmas market next to the others, and the
 [Halloween guide 2026](/blog/halloween-theme-parks-2026) compares the autumn
-programmes. A wooden coaster with a different history is described in the guide
-to [Heide Park](/blog/heide-park-wait-times-tips).
+programmes. Colossos, another Intamin wooden coaster, is in the guide to [Heide Park](/blog/heide-park-wait-times-tips).
 
 — Patrick
 

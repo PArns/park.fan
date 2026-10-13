@@ -6,12 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg está en una colina entre el recinto de ferias y una parada de tranvía,
-  abre desde 1923 y recibe unos tres millones de visitantes al año. Tiene la
-  montaña rusa de madera Balder, el launch coaster Helix, un dive coaster en el
-  solar de Kanonen, un Halloween con cinco casas del terror y el mayor mercado
-  navideño de Suecia. No se vende un pase exprés; la cola de espera se reserva
-  gratis en la app.
+  Liseberg está en pleno Gotemburgo, abre desde 1923 y recibe unos tres millones
+  de visitantes al año. En otoño tiene cinco casas del terror, y en invierno, el
+  mayor mercado navideño de Suecia. No se vende un pase exprés, y la cola
+  virtual de la app es gratuita.
 tags:
   - liseberg
   - balder
@@ -69,7 +67,7 @@ visitantes** al año.
 
 ## Cómo una exposición se convirtió en parque
 
-El nombre de la colina viene de una mujer. El comerciante Johan Anders Lamberg,
+El comerciante Johan Anders Lamberg,
 que se hizo con el terreno en 1752, lo bautizó hacia 1753 «Lisas berg», la
 montaña de Lisa, por su esposa Elisabeth Söderberg. Antes, la loma de 38 metros
 se llamaba Geteberget, la montaña de las cabras. En 1908 la ciudad de Gotemburgo
@@ -95,12 +93,11 @@ montaña de entonces se desmontó en **1987** y se sustituyó por la
 diseñado para la misma colina.
 
 Desde el **2000** Liseberg abre en invierno («Jul på Liseberg»); el primer año
-vinieron 418.000 visitantes. En **2015** llegó Halloween. Y en **2020** el parque
+vinieron 418.000 visitantes. En **2015** llegó Halloween. En **2020** el parque
 permaneció cerrado toda la temporada por la pandemia, por primera vez desde su
 fundación. En 2023 cumplió 100 años.
 
-El número de visitantes se puede seguir a lo largo de las décadas. En 1936 fueron
-más de un millón, en 1954 algo más de 1,7 millones y en 1979 1,8 millones. En
+En 1936 llegaron más de un millón de visitantes, en 1954 algo más de 1,7 millones y en 1979 1,8 millones. En
 2003, el año de Balder, el parque registró su récord con 3,4 millones de
 visitantes entre verano y Navidad. En 2021, el primer año tras la pandemia,
 fueron 1,5 millones, y en 2023, según la Wikipedia sueca, 2,2 millones. La
@@ -161,11 +158,9 @@ Kanonen fue la primera atracción de su tipo en el norte de Europa. El tren sal�
 disparado de forma hidráulica hasta 75 km/h en 1,84 segundos, subía 24 metros en
 vertical, hacía un looping y un heartroll y volvía a la estación tras unos 50
 segundos. En 2010 tuvo 651.000 viajes y fue así la quinta atracción más popular
-del parque. Valkyria la sustituyó en el mismo espacio, y el recorrido de la
-primera bajada ahora se hunde en un túnel bajo tierra.
+del parque.
 
-Y está la **[Lisebergbanan](ref:liseberg/lisebergbanan)**, la más antigua de las
-grandes. Abierta el **18 de abril de 1987**, construida por Zierer según un
+La **[Lisebergbanan](ref:liseberg/lisebergbanan)** es la más antigua de las grandes. Abierta el **18 de abril de 1987**, construida por Zierer según un
 diseño de Werner Stengel y Anton Schwarzkopf, cruza a **80 km/h** el bosque de la
 colina. Cinco trenes de once vagones cada uno dan cabida, según la Roller
 Coaster DataBase, a hasta 2.000 visitantes por hora, y la estación está
@@ -173,11 +168,10 @@ diseñada como una estación de ferrocarril. Debajo hay un restaurante con vagon
 reproducidos. La altura mínima es de 130 cm, con acompañante de 110 cm. En otoño
 e invierno solo circula durante Halloween; en el programa de Jul no figura.
 
-Se suma **[Luna](ref:liseberg/luna)**, abierta en 2023: un boomerang de Vekoma,
+**[Luna](ref:liseberg/luna)**, abierta en 2023, es un boomerang de Vekoma,
 de 33,5 metros de altura y 242 metros de largo, que envía el tren primero hacia
 delante y después hacia atrás por el mismo trazado. Para Luna rigen 120 cm más
-seis años de edad, con acompañante 95 cm más tres años. Y para los más pequeños
-están la **[Rabalder](ref:liseberg/rabalder)** de Zierer (2009) y la
+seis años de edad, con acompañante 95 cm más tres años. Para los más pequeños están la **[Rabalder](ref:liseberg/rabalder)** de Zierer (2009) y la
 **[Stampbanan](ref:liseberg/stampbanan)** de Preston & Barbieri (2013), ambas en
 la Tierra de los Conejos. Para las dos, un niño necesita 110 cm, con acompañante
 90 cm.
@@ -193,7 +187,7 @@ Wikipedia sueca, es la caída libre más alta de Europa. La altura mínima es de
 140 cm. AtmosFear funciona, según el parque, solo en verano, no en Halloween ni
 en Navidad.
 
-El agua viene en dos variantes. La **[FlumeRide](ref:liseberg/flumeride)**, un
+La **[FlumeRide](ref:liseberg/flumeride)**, un
 tronco de agua de Arrow Development, abrió en **1973**, mide más de 600 metros y
 ya en su primera temporada tuvo 732.000 viajeros. La
 **[Kållerado](ref:liseberg/kallerado)**, de 1997, es un rápido de agua de Intamin
@@ -202,7 +196,7 @@ millones de viajes, frente a 1,32 millones de la Lisebergbanan). Para la
 FlumeRide rigen 130 cm, con acompañante 100 cm; para la Kållerado, 130 cm, con
 acompañante 110 cm.
 
-Además hay más atracciones en un parque con más de treinta atracciones:
+El parque tiene más de treinta atracciones, entre ellas:
 
 - **[Loke](ref:liseberg/loke)** (2017), un gyro swing de Intamin para hasta 40
   personas, con una altura mínima de 130 cm más siete años,
@@ -280,8 +274,7 @@ unas pocas atracciones.
 ```
 
 Arriba están Helix y Valkyria, después Loke y Balder, y la distancia entre las
-cuatro es pequeña. Aquí no hay una atracción concreta ante la que se acumule
-todo; la cola de espera se reparte entre cuatro atracciones. La novedad
+cuatro es pequeña. La novedad
 [Stormvåg](ref:liseberg/stormvag) y [Kraftverket](ref:liseberg/kraftverket),
 abierta en 2025, ya están entre las diez primeras, y también la montaña rusa
 infantil Rabalder aparece en la tabla.
@@ -350,7 +343,7 @@ indica las 15 horas para los días en que el parque empieza a las 11. Hay cinco:
   años,
 - **7**, la casa de los siete pecados capitales, a partir de **15 años**.
 
-Se suman tres zonas con actores: Clown, Demonernas Skugga y Nemesis, aunque en
+Otras tres zonas tienen actores: Clown, Demonernas Skugga y Nemesis, aunque en
 Nemesis no hay intérpretes, solo proyecciones de películas. Los actores están
 desde las 18 horas. No hay límite de edad para entrar, y los niños de menos de
 110 cm entran gratis. Se puede ir disfrazado, pero la cara no puede estar
@@ -364,9 +357,7 @@ actores. Desde entonces se añadieron Zombie, Vinden y, en 2018, el escenario
 Cirkus Bisarr. Las temporadas más visitadas fueron, según la Wikipedia sueca,
 2019 y 2024; para 2024 da 343.581 visitantes.
 
-Además hay «Klubb Nattsvart», una fiesta en la zona del puerto, el 9, 10, 16 y 17
-de octubre de 22:30 a 2 horas, y el Oktoberfest en la zona del Tirol del 2 al 31
-de octubre. Y para los niños hay «Höst i Kaninlandet»: en algunos días solo abre
+«Klubb Nattsvart» es una fiesta en la zona del puerto, el 9, 10, 16 y 17 de octubre de 22:30 a 2 horas. El Oktoberfest en la zona del Tirol va del 2 al 31 de octubre. Para los niños hay «Höst i Kaninlandet»: en algunos días solo abre
 la Tierra de los Conejos de 11 a 17 horas, el 26 y 27 de septiembre, el 30 de
 septiembre y 1 de octubre, y el 14 y 15 de octubre.
 
@@ -391,8 +382,7 @@ Los viernes abre de 15 a 22 horas, los sábados de 12 a 22, los domingos de 12 a
 
 Hay tres mercados: el Tyrolermarknad entre los Radiobilarna y la Slänggungan, el
 Gammaldags Jul en el barrio Storgatan y el Vintermarknad junto a la Stora Scenen.
-Se suman la Tomtehuset, la pista de hielo y un nuevo espectáculo de luces en la
-zona del puerto. En 2025 funcionaron unas 30 atracciones, entre ellas Balder,
+El parque tiene además la Tomtehuset, una pista de hielo y un nuevo espectáculo de luces en la zona del puerto. En 2025 funcionaron unas 30 atracciones, entre ellas Balder,
 Valkyria, Loke y Mechanica, pero no Helix ni la Lisebergbanan. Los precios de
 entrada de Jul 2026 el parque todavía no los ha publicado. La Tierra de los
 Conejos abrió en 2026 en 42 días adicionales de invierno, todos los fines de
@@ -458,7 +448,7 @@ elegir: el Lisebergs Wärdshus con cocina nórdica, la Hamnkrogen para pescado, 
 Järnvägsrestaurangen en la estación de la Lisebergbanan, Al Parco con pizza y el
 Mei Rose Rooftop Bar & Bistro.
 
-## Oceana: el parque acuático que todavía no existe
+## El parque acuático Oceana
 
 En noviembre de 2020 empezó la construcción de Oceana, un parque acuático con 14
 atracciones en unos 13.600 metros cuadrados. Debía abrir en 2024. El 12 de
@@ -472,7 +462,7 @@ venta desde finales de noviembre de 2026. Más en el artículo
 Según el parque, Oceana tiene unos 6.000 metros cuadrados de piscinas
 interiores y 4.000 metros cuadrados de superficie exterior. El parque acuático
 forma parte del proyecto aprobado en 2017, que incluía también el Grand Curiosa
-Hotel. El hotel existe desde 2023; el parque acuático falta.
+Hotel.
 
 ## Un día en Liseberg, a grandes rasgos
 
@@ -491,8 +481,7 @@ atracciones sube primero hasta que oscurezca y luego entra en las casas.
 ### ¿Hay Fast Pass en Liseberg?
 
 No. El parque mismo dice que ya no tiene el Express Pass. En su lugar está la
-cola virtual gratuita de la app, con una reserva por grupo. No existe una vía
-rápida de pago.
+cola virtual gratuita de la app, con una reserva por grupo.
 
 ### ¿Cuál es la altura mínima para Balder, Helix y Valkyria?
 
@@ -504,7 +493,7 @@ cm.
 
 La temporada de verano empezó el 18 de abril. Halloween va del 2 de octubre al 1
 de noviembre, Jul på Liseberg en días seleccionados del 14 de noviembre al 30 de
-diciembre. Se suman fines de semana de invierno en la Tierra de los Conejos. El
+diciembre. En invierno, la Tierra de los Conejos abre también los fines de semana. El
 calendario de la [página del parque](ref:liseberg) muestra en cada momento las
 próximas semanas.
 
@@ -545,8 +534,7 @@ noviembre de 2026.
 El repaso de los [parques de invierno 2026](/blog/parques-atracciones-invierno-2026)
 sitúa el mercado navideño junto a los demás, y la
 [guía de Halloween 2026](/blog/halloween-parques-atracciones-2026) compara los
-programas de otoño. Una montaña rusa de madera con otra historia la describe la
-guía del [Heide Park](/blog/heide-park-tiempos-de-espera-consejos).
+programas de otoño. Colossos, otra montaña rusa de madera de Intamin, está en la guía del [Heide Park](/blog/heide-park-tiempos-de-espera-consejos).
 
 — Patrick
 

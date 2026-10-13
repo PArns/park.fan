@@ -6,12 +6,11 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg se dresse sur une colline entre le parc des expositions et l’arrêt de
-  tramway, ouvert depuis 1923, et compte environ trois millions de visiteurs par
-  an. On y trouve les montagnes russes en bois Balder, le launch coaster Helix,
-  un dive coaster sur l’emplacement de Kanonen, un Halloween avec cinq maisons
-  hantées et le plus grand marché de Noël de Suède. Il n’existe pas de ticket
-  Express à acheter : la file d’attente se réserve gratuitement dans l’appli.
+  Liseberg se trouve en pleine ville, à Göteborg, est ouvert depuis 1923 et
+  compte environ trois millions de visiteurs par an. En automne, il a cinq
+  maisons hantées, en hiver le plus grand marché de Noël de Suède. Il n’existe
+  pas de ticket Express à acheter, et la file d’attente virtuelle de l’appli est
+  gratuite.
 tags:
   - liseberg
   - balder
@@ -70,7 +69,7 @@ environ **3 millions de visiteurs** par an.
 
 ## Comment une exposition est devenue un parc
 
-La colline doit son nom à une femme. Le négociant Johan Anders Lamberg, qui a
+Le négociant Johan Anders Lamberg, qui a
 repris le terrain en 1752, l’a appelé vers 1753 « Lisas berg », la montagne de
 Lisa, d’après son épouse Elisabeth Söderberg. Auparavant, cette crête de
 38 mètres de haut s’appelait Geteberget, la montagne des chèvres. En 1908, la
@@ -98,11 +97,10 @@ de montagne d’alors a été démoli en **1987** et remplacé par la
 pour la même colline.
 
 Depuis **2000**, Liseberg ouvre en hiver (« Jul på Liseberg »), avec
-418 000 visiteurs la première année. **2015** a vu arriver Halloween. Et en
-**2020**, le parc est resté fermé toute la saison à cause de la pandémie, pour
+418 000 visiteurs la première année. **2015** a vu arriver Halloween. En **2020**, le parc est resté fermé toute la saison à cause de la pandémie, pour
 la première fois depuis sa fondation. En 2023, il a eu 100 ans.
 
-La fréquentation se suit sur des décennies. En 1936, il y avait plus d’un
+En 1936, il y avait plus d’un
 million de visiteurs, en 1954 un bon 1,7 million, et en 1979 1,8 million. En
 2003, l’année de Balder, le parc a annoncé son record avec 3,4 millions de
 visiteurs, été et Noël compris. En 2021, première année après la pandémie, ils
@@ -166,12 +164,9 @@ Kanonen était la première attraction de ce type dans le nord. Le train partait
 de façon hydraulique et passait en 1,84 seconde à 75 km/h, montait de 24 mètres
 à la verticale, faisait un looping et un heartroll, et se retrouvait en gare au
 bout d’environ 50 secondes. En 2010, elle a compté 651 000 tours et était ainsi
-la cinquième attraction la plus appréciée du parc. Valkyria l’a remplacée au
-même endroit, et la trajectoire de la première descente passe maintenant sous
-terre, dans un tunnel.
+la cinquième attraction la plus appréciée du parc.
 
-Et il y a la **[Lisebergbanan](ref:liseberg/lisebergbanan)**, la plus ancienne
-des grandes montagnes russes. Ouverte le **18 avril 1987**, construite par
+La **[Lisebergbanan](ref:liseberg/lisebergbanan)** est la plus ancienne des grandes montagnes russes. Ouverte le **18 avril 1987**, construite par
 Zierer d’après un dessin de Werner Stengel et d’Anton Schwarzkopf, elle traverse
 à **80 km/h** la forêt de la colline. Cinq trains de onze wagons chacun assurent,
 selon la Roller Coaster DataBase, jusqu’à 2 000 visiteurs par heure, et la gare
@@ -180,11 +175,10 @@ des wagons reconstitués. La taille minimale est de 130 cm, 110 cm avec
 accompagnateur. À l’automne et en hiver, elle ne roule que pendant Halloween,
 et elle ne figure pas sur la liste du programme Jul.
 
-S’y ajoute **[Luna](ref:liseberg/luna)**, ouverte en 2023 : un Boomerang de
+**[Luna](ref:liseberg/luna)**, ouverte en 2023, est un Boomerang de
 Vekoma, haut de 33,5 mètres et long de 242 mètres, qui envoie le train d’abord
 en avant, puis en arrière sur le même parcours. Pour Luna, il faut 120 cm plus
-six ans, avec accompagnateur 95 cm plus trois ans. Et pour les plus petits, il y
-a la **[Rabalder](ref:liseberg/rabalder)** de Zierer (2009) et la
+six ans, avec accompagnateur 95 cm plus trois ans. Pour les plus petits, il y a la **[Rabalder](ref:liseberg/rabalder)** de Zierer (2009) et la
 **[Stampbanan](ref:liseberg/stampbanan)** de Preston & Barbieri (2013), toutes
 deux dans le Pays des Lapins. Pour les deux, un enfant doit mesurer 110 cm, 90 cm
 avec accompagnateur.
@@ -201,7 +195,7 @@ suédois, c’est la plus haute chute libre d’Europe. La taille minimale est d
 140 cm. Selon le parc, AtmosFear ne fonctionne qu’en été, pas pendant Halloween
 ni à Noël.
 
-L’eau se décline en deux versions. La **[FlumeRide](ref:liseberg/flumeride)**,
+La **[FlumeRide](ref:liseberg/flumeride)**,
 une descente en bûche d’Arrow Development, a ouvert en **1973**, mesure plus de
 600 mètres et comptait déjà 732 000 passagers lors de sa première saison. La
 **[Kållerado](ref:liseberg/kallerado)**, de 1997, est une rivière rapide
@@ -210,8 +204,7 @@ popularité (1,11 million de tours, contre 1,32 million pour la Lisebergbanan).
 Pour la FlumeRide, il faut 130 cm, 100 cm avec accompagnateur ; pour la
 Kållerado, 130 cm, 110 cm avec accompagnateur.
 
-D’autres attractions s’y ajoutent, dans un parc qui compte plus de trente
-attractions à bord de véhicules :
+Le parc compte plus de trente attractions à bord de véhicules, dont :
 
 - **[Loke](ref:liseberg/loke)** (2017), un gyro swing d’Intamin pour jusqu’à
   40 visiteurs, avec une taille minimale de 130 cm plus sept ans,
@@ -290,8 +283,7 @@ viennent surtout de la saison d’été ; en hiver, peu d’attractions fonctio
 ```
 
 En tête se trouvent Helix et Valkyria, puis Loke et Balder, et l’écart entre
-les quatre est faible. Il n’y a pas ici une seule attraction devant laquelle
-tout s’entasse : la file d’attente se répartit sur quatre attractions. La
+les quatre est faible. La
 nouveauté [Stormvåg](ref:liseberg/stormvag) et [Kraftverket](ref:liseberg/kraftverket),
 ouverte en 2025, figurent déjà parmi les dix premières, et le petit coaster
 Rabalder apparaît lui aussi dans le tableau.
@@ -359,7 +351,7 @@ indique 15 h pour les jours où le parc ouvre à 11 h. Il y en a cinq :
   11 ans,
 - **7**, la maison des sept péchés capitaux, à partir de **15 ans**.
 
-S’y ajoutent trois zones avec des acteurs : Clown, Demonernas Skugga et Nemesis,
+Trois autres zones ont des acteurs : Clown, Demonernas Skugga et Nemesis,
 sachant qu’à Nemesis il n’y a pas d’acteurs, seulement des projections de film.
 Les acteurs sont là à partir de 18 h. Il n’y a pas de limite d’âge pour entrer,
 les enfants de moins de 110 cm entrent gratuitement. On peut se déguiser, mais le
@@ -373,9 +365,7 @@ avec des acteurs. Depuis, Zombie, Vinden et, en 2018, le décor Cirkus Bisarr s�
 sont ajoutés. Les saisons les plus fréquentées ont été, selon Wikipédia en
 suédois, 2019 et 2024 ; pour 2024, elle indique 343 581 visiteurs.
 
-Il y a aussi « Klubb Nattsvart », une soirée dans la zone du port, les 9, 10, 16
-et 17 octobre de 22 h 30 à 2 h, et l’Oktoberfest dans la zone tyrolienne du 2 au
-31 octobre. Et pour les enfants, il y a « Höst i Kaninlandet » : certains jours,
+« Klubb Nattsvart » est une soirée dans la zone du port, les 9, 10, 16 et 17 octobre de 22 h 30 à 2 h. L’Oktoberfest dans la zone tyrolienne a lieu du 2 au 31 octobre. Pour les enfants, il y a « Höst i Kaninlandet » : certains jours,
 seul le Pays des Lapins ouvre, de 11 h à 17 h, les 26 et 27 septembre, le
 30 septembre et le 1er octobre, et les 14 et 15 octobre.
 
@@ -400,8 +390,7 @@ vendredi, c’est ouvert de 15 h à 22 h, le samedi de 12 h à 22 h, le dimanche
 
 Il y a trois marchés : le Tyrolermarknad entre les Radiobilarna et la
 Slänggungan, le Gammaldags Jul dans le quartier Storgatan et le Vintermarknad
-près de la Stora Scenen. S’y ajoutent le Tomtehuset, la patinoire et un nouveau
-spectacle de lumière dans la zone du port. En 2025, une trentaine d’attractions
+près de la Stora Scenen. Le parc a aussi le Tomtehuset, une patinoire et un nouveau spectacle de lumière dans la zone du port. En 2025, une trentaine d’attractions
 fonctionnaient, dont Balder, Valkyria, Loke et Mechanica, mais pas Helix ni la
 Lisebergbanan. Le parc n’a pas encore publié les tarifs d’entrée pour Jul 2026.
 Le Pays des Lapins a ouvert en 2026 pendant 42 jours supplémentaires en hiver,
@@ -469,7 +458,7 @@ cuisine nordique, la Hamnkrogen pour le poisson, la Järnvägsrestaurangen dans 
 gare de la Lisebergbanan, Al Parco avec des pizzas, et le Mei Rose Rooftop Bar &
 Bistro.
 
-## Oceana : le parc aquatique qui n’existe pas encore
+## Le parc aquatique Oceana
 
 En novembre 2020, la construction d’Oceana a commencé, un centre aquatique avec
 14 attractions sur environ 13 600 mètres carrés. Il devait ouvrir en 2024. Le
@@ -483,7 +472,6 @@ novembre 2026. Plus de détails dans l’article
 D’après le parc, Oceana compte environ 6 000 mètres carrés de bassins
 intérieurs et 4 000 mètres carrés d’espace extérieur. Le centre aquatique fait
 partie du projet décidé en 2017, qui comprenait aussi le Grand Curiosa Hotel.
-L’hôtel existe depuis 2023, le centre aquatique manque.
 
 ## Une journée à Liseberg, dans les grandes lignes
 
@@ -505,7 +493,6 @@ dans les maisons.
 
 Non. Le parc dit lui-même qu’il n’a plus d’Express-Pass. À sa place est venue la
 file d’attente virtuelle gratuite de l’appli, avec une réservation par groupe.
-Il n’existe pas de voie rapide payante.
 
 ### Quelle est la taille minimale pour Balder, Helix et Valkyria ?
 
@@ -516,8 +503,7 @@ accompagnateur.
 ### Quand Liseberg est-il ouvert en 2026 ?
 
 La saison d’été a commencé le 18 avril. Halloween dure du 2 octobre au
-1er novembre, Jul på Liseberg à certains jours du 14 novembre au 30 décembre. S’y
-ajoutent des week-ends d’hiver dans le Pays des Lapins. Le calendrier de la
+1er novembre, Jul på Liseberg à certains jours du 14 novembre au 30 décembre. En hiver, le Pays des Lapins ouvre aussi le week-end. Le calendrier de la
 [page du parc](ref:liseberg) montre à chaque fois les prochaines semaines.
 
 ### Quand y a-t-il le moins de monde à Liseberg ?
@@ -555,8 +541,7 @@ Selon Liseberg, début 2027, avec vente des billets à partir de fin novembre 20
 L’aperçu des [parcs d’hiver 2026](/blog/parcs-attractions-hiver-2026) met le
 marché de Noël à côté des autres, et le
 [guide Halloween 2026](/blog/halloween-parcs-attractions-2026) compare les
-programmes d’automne. Des montagnes russes en bois à l’histoire différente sont
-décrites dans le guide du [Heide Park](/blog/heide-park-temps-d-attente-conseils).
+programmes d’automne. Colossos, un autre grand huit en bois d’Intamin, figure dans le guide du [Heide Park](/blog/heide-park-temps-d-attente-conseils).
 
 — Patrick
 

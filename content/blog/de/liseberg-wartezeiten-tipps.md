@@ -6,12 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg liegt auf einem Hügel zwischen Messe und Straßenbahnhaltestelle, hat
-  seit 1923 geöffnet und zählt rund drei Millionen Gäste im Jahr. Dazu kommen die
-  Holzachterbahn Balder, der Launch Coaster Helix, ein Dive Coaster auf dem
-  Gelände der Kanonen, ein Halloween mit fünf Spukhäusern und Schwedens größter
-  Weihnachtsmarkt. Eine Express-Karte zum Kaufen gibt es nicht, die Warteschlange
-  bucht man kostenlos in der App.
+  Liseberg liegt mitten in Göteborg, hat seit 1923 geöffnet und zählt rund drei
+  Millionen Gäste im Jahr. Im Herbst stehen fünf Spukhäuser im Park, im Winter
+  Schwedens größter Weihnachtsmarkt. Eine Express-Karte gibt es nicht, die
+  virtuelle Warteschlange in der App ist kostenlos.
 tags:
   - liseberg
   - balder
@@ -69,7 +67,7 @@ nennt für 2025 rund **3 Millionen Gäste** im Jahr.
 
 ## Wie aus einer Ausstellung ein Park wurde
 
-Den Namen hat der Hügel von einer Frau. Der Kaufmann Johan Anders Lamberg, der
+Der Kaufmann Johan Anders Lamberg, der
 das Gelände 1752 übernahm, nannte es um 1753 nach seiner Ehefrau Elisabeth
 Söderberg „Lisas berg“, Lisas Berg. Zuvor hieß der 38 Meter hohe Höhenzug
 Geteberget, Ziegenberg. 1908 kaufte die Stadt Göteborg das Grundstück samt
@@ -95,11 +93,10 @@ entworfen hatte.
 
 Seit **2000** hat Liseberg im
 Winter geöffnet („Jul på Liseberg“), im ersten Jahr kamen 418.000 Gäste. **2015**
-folgte Halloween. Und **2020** blieb der Park wegen der Pandemie die gesamte Saison
+folgte Halloween. **2020** blieb der Park wegen der Pandemie die gesamte Saison
 zu, zum ersten Mal seit der Gründung. 2023 wurde er 100 Jahre alt.
 
-Wie viele Gäste kommen, lässt sich über die Jahrzehnte nachlesen. 1936 waren es mehr als eine
-Million, 1954 gut 1,7 Millionen, und 1979 1,8 Millionen. 2003, im Jahr von Balder, meldete
+1936 kamen mehr als eine Million Gäste, 1954 gut 1,7 Millionen, und 1979 1,8 Millionen. 2003, im Jahr von Balder, meldete
 der Park mit 3,4 Millionen Gästen in Sommer und Weihnachten seinen Rekord. 2021, im
 ersten Jahr nach der Pandemie, waren es 1,5 Millionen, 2023 laut schwedischer Wikipedia 2,2
 Millionen. Die bis dahin teuerste Investition war **Spaceport Liseberg**: 1990 eröffnete der Park
@@ -157,12 +154,9 @@ Obergrenze von 195 cm.
 Die Kanonen war die erste Bahn ihrer Art im Norden. Der Zug schoss hydraulisch
 in 1,84 Sekunden auf 75 km/h, stieg 24 Meter steil nach oben, fuhr eine Loop und eine
 Heartroll und stand nach rund 50 Sekunden wieder in der Station. 2010 hatte sie 651.000
-Fahrten und war damit die fünftbeliebteste Bahn des Parks. Valkyria ersetzte sie
-auf derselben Fläche, und der Weg der ersten Abfahrt führt jetzt unter die Erde, in einen
-Tunnel.
+Fahrten und war damit die fünftbeliebteste Bahn des Parks.
 
-Und es gibt die **[Lisebergbanan](ref:liseberg/lisebergbanan)**, die älteste der
-großen Bahnen. Am **18. April 1987** eröffnet, von Zierer nach einem Entwurf von
+Die **[Lisebergbanan](ref:liseberg/lisebergbanan)** ist die älteste der großen Bahnen. Am **18. April 1987** eröffnet, von Zierer nach einem Entwurf von
 Werner Stengel und Anton Schwarzkopf gebaut, fährt sie mit **80 km/h** durch den
 Wald am Berg. Fünf Züge mit je elf Wagen sorgen laut Roller Coaster DataBase für
 bis zu 2.000 Gäste in der Stunde, und die Station ist als Bahnhof gestaltet.
@@ -170,10 +164,10 @@ Unter ihr liegt ein Restaurant mit nachgebauten Waggons. Die Mindestgröße lieg
 130 cm, mit Begleitung bei 110 cm. Im Herbst und Winter fährt sie nur während
 Halloween, im Jul-Programm steht sie nicht auf der Liste.
 
-Dazu kommt **[Luna](ref:liseberg/luna)**, 2023 eröffnet: ein Boomerang von
+**[Luna](ref:liseberg/luna)**, 2023 eröffnet, ist ein Boomerang von
 Vekoma, 33,5 Meter hoch und 242 Meter lang, der den Zug erst vorwärts, dann rückwärts
 durch denselben Kurs schickt. Für Luna gilt 120 cm plus sechs Jahre Alter, mit
-Begleitung 95 cm plus drei Jahre. Und für die Kleinen gibt es die
+Begleitung 95 cm plus drei Jahre. Für die Kleinen gibt es die
 **[Rabalder](ref:liseberg/rabalder)** von Zierer (2009) und die
 **[Stampbanan](ref:liseberg/stampbanan)** von Preston & Barbieri (2013), beide im
 Kaninchenland. Für beide braucht ein Kind 110 cm, in Begleitung 90 cm.
@@ -188,7 +182,7 @@ frei, in ungefähr drei Sekunden, bei bis zu 110 km/h. Der Umbau kostete etwa
 Europas. Die Mindestgröße liegt bei 140 cm. AtmosFear läuft laut Park nur im Sommer,
 nicht in Halloween und nicht zu Weihnachten.
 
-Wasser gibt es in zwei Varianten. Die **[FlumeRide](ref:liseberg/flumeride)**,
+Die **[FlumeRide](ref:liseberg/flumeride)**,
 eine Baumstammfahrt von Arrow Development, öffnete **1973**, ist mehr als 600
 Meter lang und hatte schon in der ersten Saison 732.000 Fahrgäste. Die
 **[Kållerado](ref:liseberg/kallerado)** von 1997 ist eine Wildwasserfahrt von Intamin,
@@ -196,8 +190,7 @@ die in der Beliebtheit 2010 knapp hinter der Lisebergbanan lag (1,11 Millionen
 Fahrten, die Lisebergbanan hatte 1,32 Millionen). Für die FlumeRide gelten
 130 cm, mit Begleitung 100 cm, für die Kållerado 130 cm, mit Begleitung 110 cm.
 
-Dazu kommen weitere Fahrgeschäfte in einem Park mit mehr als dreißig
-Fahrattraktionen:
+Liseberg hat mehr als dreißig Fahrattraktionen, darunter:
 
 - **[Loke](ref:liseberg/loke)** (2017), ein Gyro Swing von Intamin für bis zu 40 Gäste,
   mit der Mindestgröße 130 cm plus sieben Jahre,
@@ -272,8 +265,7 @@ Unsere Messungen für Liseberg laufen seit dem 26. Dezember 2025. Die Daten komm
 ```
 
 Oben stehen Helix und Valkyria, danach Loke und Balder, und der Abstand zwischen den
-vieren ist klein. Es gibt hier keine einzelne Bahn, vor der sich alles staut, die Warteschlange verteilt sich
-auf vier Bahnen. Die
+vieren ist klein. Die
 Neuheit [Stormvåg](ref:liseberg/stormvag) und das 2025 eröffnete
 [Kraftverket](ref:liseberg/kraftverket) liegen schon unter den ersten zehn, und
 auch die Kinderbahn Rabalder steht in der Tabelle.
@@ -338,7 +330,7 @@ für Tage mit Parkstart um 11 Uhr 15 Uhr. Es gibt fünf:
 - **Vinden**, **Zombie**, **Nattsvart på Gasten** und **Skogen** ab 11 Jahren,
 - **7**, das Haus zu den sieben Todsünden, ab **15 Jahren**.
 
-Dazu kommen drei Bereiche mit Schauspielern: Clown, Demonernas Skugga und Nemesis,
+Drei weitere Bereiche haben Schauspieler: Clown, Demonernas Skugga und Nemesis,
 wobei es bei Nemesis keine Darsteller gibt, nur Filmprojektionen. Die Schauspieler sind
 ab 18 Uhr da. Ein Alterslimit für den Eintritt gibt es nicht, Kinder unter 110 cm kommen
 kostenlos hinein. Verkleiden darf man sich, aber das Gesicht darf nicht vollständig
@@ -351,9 +343,7 @@ wurde. Seitdem kamen Zombie, Vinden und 2018 der Schauplatz Cirkus Bisarr dazu. 
 meistbesuchten Saisons waren laut schwedischer Wikipedia 2019 und 2024; für 2024 nennt sie
 343.581 Gäste.
 
-Außerdem gibt es „Klubb Nattsvart“, eine Party im Hafenbereich, am 9., 10., 16. und 17.
-Oktober von 22:30 bis 2 Uhr, und das Oktoberfest im Tirolerbereich vom 2. bis 31. Oktober.
-Und für Kinder gibt es „Höst i Kaninlandet“: an einzelnen Tagen ist nur das
+„Klubb Nattsvart“ ist eine Party im Hafenbereich, am 9., 10., 16. und 17. Oktober von 22:30 bis 2 Uhr. Das Oktoberfest im Tirolerbereich läuft vom 2. bis 31. Oktober. Für Kinder gibt es „Höst i Kaninlandet“: an einzelnen Tagen ist nur das
 Kaninchenland von 11 bis 17 Uhr geöffnet, am 26. und 27. September, am 30. September
 und 1. Oktober, und am 14. und 15. Oktober.
 
@@ -375,8 +365,7 @@ geöffnet, samstags von 12 bis 22 Uhr, sonntags von 12 bis 20 Uhr. Am 24. und 25
 Dezember bleibt der Park zu.
 
 Es gibt drei Märkte: die Tyrolermarknad zwischen Radiobilarna und Slänggungan, die
-Gammaldags Jul im Viertel Storgatan und die Vintermarknad an der Stora Scenen. Dazu
-kommen das Tomtehuset, die Eisbahn und eine neue Lichtshow im Hafenbereich. Gefahren
+Gammaldags Jul im Viertel Storgatan und die Vintermarknad an der Stora Scenen. Der Park hat außerdem das Tomtehuset, eine Eisbahn und eine neue Lichtshow im Hafenbereich. Gefahren
 wurde 2025 mit rund 30 Bahnen, darunter Balder, Valkyria, Loke und Mechanica,
 aber nicht auf Helix und der Lisebergbanan. Die Preise für den Eintritt zu Jul
 2026 hat der Park noch nicht veröffentlicht. Das Kaninchenland hat 2026 an 42
@@ -434,7 +423,7 @@ Park isst, hat Auswahl: das Lisebergs Wärdshus mit nordischer Küche, die Hamnk
 für Fisch, die Järnvägsrestaurangen in der Station der Lisebergbanan, Al Parco mit Pizza,
 und das Mei Rose Rooftop Bar & Bistro.
 
-## Oceana: der Wasserpark, der noch nicht steht
+## Der Wasserpark Oceana
 
 Im November 2020 begann der Bau von Oceana, einem Erlebnisbad mit 14
 Attraktionen auf etwa 13.600 Quadratmetern. Es sollte 2024 öffnen. Am 12. Februar
@@ -446,7 +435,7 @@ Ende November 2026 geben. Mehr dazu im Beitrag
 
 Nach den Angaben des Parks hat Oceana rund 6.000 Quadratmeter Innenbecken und 4.000
 Quadratmeter Außenfläche. Das Bad gehört zum Projekt, das 2017 beschlossen wurde und auch das
-Grand Curiosa Hotel umfasste. Das Hotel steht seit 2023, das Bad fehlt.
+Grand Curiosa Hotel umfasste.
 
 ## Ein Tag auf Liseberg, grob geplant
 
@@ -466,7 +455,7 @@ fährt zuerst, bis es dunkel wird, und geht dann in die Häuser.
 
 Nein. Der Park sagt selbst, dass er den Express-Pass nicht mehr hat. An seine Stelle ist
 die kostenlose virtuelle Warteschlange in der App getreten, mit einer Reservierung pro
-Gruppe. Eine bezahlte Schnellspur gibt es nicht.
+Gruppe.
 
 ### Wie hoch ist die Mindestgröße für Balder, Helix und Valkyria?
 
@@ -477,7 +466,7 @@ Für Balder und Helix 130 cm plus sieben Jahre, für Valkyria 132 cm plus sieben
 
 Die Sommersaison begann am 18. April. Halloween läuft vom 2. Oktober bis zum 1.
 November, Jul på Liseberg an ausgewählten Tagen vom 14. November bis zum 30. Dezember.
-Dazu kommen Winterwochenenden im Kaninchenland. Der Kalender auf der
+Im Winter öffnet das Kaninchenland zusätzlich an Wochenenden. Der Kalender auf der
 [Parkseite](ref:liseberg) zeigt jeweils die nächsten Wochen.
 
 ### Wann ist auf Liseberg am wenigsten los?
@@ -511,8 +500,7 @@ Nach Angaben von Liseberg Anfang 2027, mit Ticketverkauf ab Ende November 2026.
 
 Der Überblick über [Winterparks 2026](/blog/winter-freizeitparks-2026) stellt den
 Weihnachtsmarkt neben die anderen, und der
-[Halloween-Guide 2026](/blog/halloween-freizeitparks-2026) vergleicht die Herbstprogramme. Eine Holzachterbahn mit anderer Geschichte beschreibt der Guide zum
-[Heide Park](/blog/heide-park-wartezeiten-tipps).
+[Halloween-Guide 2026](/blog/halloween-freizeitparks-2026) vergleicht die Herbstprogramme. Colossos, ebenfalls eine Holzachterbahn von Intamin, steht im Guide zum [Heide Park](/blog/heide-park-wartezeiten-tipps).
 
 — Patrick
 
