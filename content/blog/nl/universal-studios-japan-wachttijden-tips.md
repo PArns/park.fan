@@ -104,8 +104,7 @@ ze vastzitten, bij een begeleider blijven of in een kluisje liggen.
 ## Super Nintendo World
 
 De ingang is een warpbuis naar het kasteel van Prinses Peach, met Bowsers kasteel
-aan de andere kant. In het gebied staan drie attracties, en daar komt het spel
-met de Power-Up Band bij.
+aan de andere kant.
 
 **[Mario Kart: Koopa's Challenge](ref:universal-studios-japan/mario-kart-koopas-challenge-2)**
 is sinds 2021 de belangrijkste attractie. Je loopt door Bowsers kasteel naar het
@@ -142,8 +141,7 @@ en een jubileumband.
 
 ## The Wizarding World of Harry Potter
 
-Bij het gebied horen twee attracties en de wandeling Hogwarts Castle Walk, die
-van 1 september 2026 tot 17 januari 2027 loopt.
+De wandeling Hogwarts Castle Walk loopt van 1 september 2026 tot 17 januari 2027.
 
 **[Harry Potter and the Forbidden Journey](ref:universal-studios-japan/harry-potter-and-the-forbidden-journey-2)**
 is een dark ride met bewegingssimulatie. Vier mensen zitten in één voertuig en de
@@ -164,7 +162,7 @@ bagage mag niet mee.
 
 ## Hollywood
 
-Twee attracties delen één baan. **[Hollywood Dream – The Ride](ref:universal-studios-japan/hollywood-dream-the-ride-2)**
+**[Hollywood Dream – The Ride](ref:universal-studios-japan/hollywood-dream-the-ride-2)**
 opende op **9 maart 2007** en werd door Bolliger & Mabillard gebouwd als hyper
 coaster: 44 meter hoog, 43 meter afdaling, 90 km/u, 1.200 meter spoor en ongeveer
 tweeënhalve minuut rijtijd. Met 50 miljoen Amerikaanse dollar was het na de
@@ -180,8 +178,7 @@ ook met begeleider.
 
 **[Hollywood Dream – The Ride: Backdrop](ref:universal-studios-japan/hollywood-dream-the-ride-backdrop-2)**
 is dezelfde baan achterwaarts. Deze versie liep voor het eerst van 15 maart tot
-7 juli 2013 en bleef daarna in de dienstregeling. De 43 meter van de eerste afdaling neem je met je rug vooruit, waardoor je niet
-ziet wat er komt. Minimumlengte en regels bij het instappen zijn dezelfde als bij
+7 juli 2013 en bleef daarna in de dienstregeling. De 43 meter van de eerste afdaling neem je met je rug vooruit. Minimumlengte en regels bij het instappen zijn dezelfde als bij
 Hollywood Dream.
 
 ```glossary-widget slug=hyper-coaster
@@ -261,7 +258,7 @@ De tien attracties met de hoogste mediaan van de afgelopen twee jaar, gemeten op
 
 ```
 
-Mine Cart Madness en Mario Kart staan vóór alle andere. Wie zijn volgorde op deze tabel baseert,
+Wie zijn volgorde op deze tabel baseert,
 begint bij de twee Nintendo-attracties zolang het tijdslot geldt.
 
 ```hourly-profile-widget slug=universal-studios-japan top=8
@@ -287,7 +284,7 @@ staan op de pagina met openingstijden van het park.
 ```
 
 De weekdag maakt in Osaka weinig uit. Alle zeven dagen vallen in hetzelfde
-drukteniveau en het verschil tussen de drukste en de rustigste dag is klein.
+drukteniveau.
 
 ```stats-widget slug=universal-studios-japan show=months
 
@@ -369,8 +366,7 @@ zien, en een aangepast ticket is ongeldig.
 
 Voor gasten zonder pas heeft het park een single rider-wachtrij bij Mine Cart
 Madness, Mario Kart, Forbidden Journey, Minion Mayhem, Hollywood Dream, Space
-Fantasy, The Flying Dinosaur, Jurassic Park en JAWS. Je zit dan niet bij je
-groep, maar vult een los vrij plekje op.
+Fantasy, The Flying Dinosaur, Jurassic Park en JAWS.
 
 ```glossary-widget slug=single-rider
 
@@ -388,8 +384,7 @@ waarschuwing kan stoppen. Heb je een ticket, dan kan de attractie in het gebied
 alsnog vol zitten.
 
 **Yoyakunori (Reserve & Ride)** reserveert een rijtijd voor geselecteerde
-attracties, in het park bijvoorbeeld bij The Flying Snoopy en Freeze Ray Sliders.
-Tot de gereserveerde tijd kun je andere attracties doen of eten. Het **Attraction
+attracties, in het park bijvoorbeeld bij The Flying Snoopy en Freeze Ray Sliders. Het **Attraction
 Timed Entry Ticket** geldt voor afzonderlijke attracties, de Frieren-wandeling
 inbegrepen. Beide krijg je alleen in het park en ze zijn niet overdraagbaar, en
 per groep kun je maar één attractie kiezen. Verwijder je de app voor de rijtijd,

@@ -69,7 +69,7 @@ Pour **The Flying Dinosaur**, **Hollywood Dream – The Ride** et sa version à 
 
 ## Super Nintendo World
 
-On entre par un tuyau de warp dans le château de la princesse Peach, celui de Bowser se trouve de l’autre côté. La zone compte trois attractions, plus le jeu avec le Power-Up Band.
+On entre par un tuyau de warp dans le château de la princesse Peach, celui de Bowser se trouve de l’autre côté.
 
 **[Mario Kart : Koopa's Challenge](ref:universal-studios-japan/mario-kart-koopas-challenge-2)** est l’attraction principale depuis 2021. On traverse le château de Bowser jusqu’au kart, puis quatre personnes, sur deux rangées, roulent environ cinq minutes sur des circuits du jeu et tirent des carapaces sur leurs adversaires. D’après le parc, c’est la première attraction Mario Kart interactive au monde dans un parc à thème. Taille minimale de 122 centimètres, 107 avec un accompagnateur.
 
@@ -81,7 +81,7 @@ Le **Power-Up Band** coûte un supplément et se vend au chariot devant la Super
 
 ## The Wizarding World of Harry Potter
 
-La zone comprend deux attractions et la promenade Hogwarts Castle Walk, ouverte du 1er septembre 2026 au 17 janvier 2027.
+La promenade Hogwarts Castle Walk est ouverte du 1er septembre 2026 au 17 janvier 2027.
 
 **[Harry Potter and the Forbidden Journey](ref:universal-studios-japan/harry-potter-and-the-forbidden-journey-2)** est une dark ride avec simulation de mouvement. Quatre personnes prennent place dans un véhicule, et le trajet dure environ cinq minutes. Selon le parc, les lunettes 3D ne sont plus nécessaires depuis la rénovation, et la chaleur et le froid s’ajoutent aux effets quand le dragon et le détraqueur apparaissent. Taille minimale de 122 centimètres, même avec un accompagnateur. Les bagages restent dehors, des casiers sont disponibles.
 
@@ -93,11 +93,11 @@ La zone comprend deux attractions et la promenade Hogwarts Castle Walk, ouverte 
 
 ## Hollywood
 
-Deux attractions se partagent une même voie. **[Hollywood Dream – The Ride](ref:universal-studios-japan/hollywood-dream-the-ride-2)** a ouvert le **9 mars 2007**. Bolliger & Mabillard l’ont construite comme hyper coaster : 44 mètres de haut, 43 mètres de descente, 90 km/h, 1 200 mètres de voie et environ deux minutes et demie de trajet. Elle a coûté 50 millions de dollars, soit après l’attraction Spider-Man (120 millions) le deuxième plus gros investissement du parc. D’après Wikipédia en anglais, la fréquentation a vite augmenté après l’ouverture et le bénéfice net du parc a ensuite progressé de 63,6 pour cent.
+**[Hollywood Dream – The Ride](ref:universal-studios-japan/hollywood-dream-the-ride-2)** a ouvert le **9 mars 2007**. Bolliger & Mabillard l’ont construite comme hyper coaster : 44 mètres de haut, 43 mètres de descente, 90 km/h, 1 200 mètres de voie et environ deux minutes et demie de trajet. Elle a coûté 50 millions de dollars, soit après l’attraction Spider-Man (120 millions) le deuxième plus gros investissement du parc. D’après Wikipédia en anglais, la fréquentation a vite augmenté après l’ouverture et le bénéfice net du parc a ensuite progressé de 63,6 pour cent.
 
 Avant le départ, chaque visiteur choisit un morceau qui passe pendant le trajet. Pour la saison d’Halloween 2026, le choix comprend des titres de King Gnu, d’Ado et de Sandaime J SOUL BROTHERS, ainsi que le générique du film « Chainsaw Man – Reze-Hen » par Kenshi Yonezu. Un train compte 36 places réparties sur neuf rangées. Taille minimale de 132 centimètres, même avec un accompagnateur.
 
-**[Hollywood Dream – The Ride : Backdrop](ref:universal-studios-japan/hollywood-dream-the-ride-backdrop-2)** est la même attraction à l’envers. Cette version a roulé pour la première fois du 15 mars au 7 juillet 2013 et est restée au programme ensuite. On descend les 43 mètres de la première chute dos au sens de la marche, sans voir ce qui arrive. La taille minimale et les règles à l’embarquement sont les mêmes que pour Hollywood Dream.
+**[Hollywood Dream – The Ride : Backdrop](ref:universal-studios-japan/hollywood-dream-the-ride-backdrop-2)** est la même attraction à l’envers. Cette version a roulé pour la première fois du 15 mars au 7 juillet 2013 et est restée au programme ensuite. On descend les 43 mètres de la première chute dos au sens de la marche. La taille minimale et les règles à l’embarquement sont les mêmes que pour Hollywood Dream.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -133,7 +133,7 @@ Voici les dix attractions à la médiane la plus élevée sur les deux dernière
 
 ```
 
-Mine Cart Madness et Mario Kart devancent toutes les autres. Si vous organisez votre ordre de passage d’après le tableau, commencez par les deux attractions Nintendo tant que le créneau est valable.
+Si vous organisez votre ordre de passage d’après le tableau, commencez par les deux attractions Nintendo tant que le créneau est valable.
 
 ```hourly-profile-widget slug=universal-studios-japan top=8
 
@@ -153,7 +153,7 @@ Le 9 octobre 2026, le parc était ouvert de 8 h à 22 h. Les horaires de chaque 
 
 ```
 
-À Osaka, le jour de la semaine change peu de chose. Les sept jours se situent dans le même niveau d’affluence et l’écart entre le plus chargé et le plus calme est petit.
+À Osaka, le jour de la semaine change peu de chose. Les sept jours se situent dans le même niveau d’affluence.
 
 ```stats-widget slug=universal-studios-japan show=months
 
@@ -200,7 +200,7 @@ D’après la boutique, les forfaits marqués « inclus » dans la dernière c
 
 Quand une attraction du pass est à l’arrêt, le parc indique qu’on utilise les autres attractions du pass, à l’exception de celles à horaire fixe. Le billet précise, attraction par attraction, si un horaire s’applique. Il faut présenter l’écran entier avec le QR code, un billet modifié n’est pas accepté.
 
-Pour les visiteurs sans pass, le parc propose une file d’attente single rider à Mine Cart Madness, Mario Kart, Forbidden Journey, Minion Mayhem, Hollywood Dream, Space Fantasy, The Flying Dinosaur, Jurassic Park et JAWS. On ne s’assoit alors pas avec son groupe, mais on comble une place isolée restée libre.
+Pour les visiteurs sans pass, le parc propose une file d’attente single rider à Mine Cart Madness, Mario Kart, Forbidden Journey, Minion Mayhem, Hollywood Dream, Space Fantasy, The Flying Dinosaur, Jurassic Park et JAWS.
 
 ```glossary-widget slug=single-rider
 
@@ -212,7 +212,7 @@ Avant d’acheter un créneau, le billet doit être enregistré dans l’appli, 
 
 L’**Area Timed Entry Ticket** vaut pour des zones comme Super Nintendo World. Quand le contingent du jour est épuisé, le parc distribue le **Standby Entry Ticket**. Il précise que la distribution peut s’arrêter sans préavis selon l’affluence. Même avec un billet, l’attraction de la zone peut déjà être complète.
 
-**Yoyakunori (Reserve & Ride)** réserve une heure de passage sur certaines attractions, dans le parc par exemple à The Flying Snoopy et Freeze Ray Sliders. D’ici là, on peut faire d’autres attractions ou manger. L’**Attraction Timed Entry Ticket** vaut pour une attraction précise, y compris la promenade Frieren. Les deux ne s’obtiennent que dans le parc, ne sont pas transférables, et un groupe ne peut choisir qu’une seule attraction. Si on désinstalle l’appli avant l’heure de passage, le billet devient invalide. L’appli demande iOS 17 ou Android 9.
+**Yoyakunori (Reserve & Ride)** réserve une heure de passage sur certaines attractions, dans le parc par exemple à The Flying Snoopy et Freeze Ray Sliders. L’**Attraction Timed Entry Ticket** vaut pour une attraction précise, y compris la promenade Frieren. Les deux ne s’obtiennent que dans le parc, ne sont pas transférables, et un groupe ne peut choisir qu’une seule attraction. Si on désinstalle l’appli avant l’heure de passage, le billet devient invalide. L’appli demande iOS 17 ou Android 9.
 
 ## Billets et prix
 

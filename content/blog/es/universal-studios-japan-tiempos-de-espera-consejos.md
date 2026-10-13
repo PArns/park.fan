@@ -108,8 +108,7 @@ taquilla.
 ## Super Nintendo World
 
 Se entra por una tubería de warp hasta el castillo de la princesa Peach; el
-castillo de Bowser queda al otro lado. Hay tres atracciones y, además, el juego
-con la Power-Up Band.
+castillo de Bowser queda al otro lado.
 
 **[Mario Kart: Koopa's
 Challenge](ref:universal-studios-japan/mario-kart-koopas-challenge-2)** es la
@@ -145,7 +144,7 @@ banda conmemorativa.
 
 ## The Wizarding World of Harry Potter
 
-El área tiene dos atracciones y el recorrido Hogwarts Castle Walk, que va del 1 de
+El recorrido Hogwarts Castle Walk va del 1 de
 septiembre de 2026 al 17 de enero de 2027.
 
 **[Harry Potter and the Forbidden
@@ -169,7 +168,7 @@ se puede subir con equipaje.
 
 ## Hollywood
 
-Dos atracciones comparten una vía. **[Hollywood Dream – The
+**[Hollywood Dream – The
 Ride](ref:universal-studios-japan/hollywood-dream-the-ride-2)** abrió el **9 de
 marzo de 2007**; la construyó Bolliger & Mabillard como hyper coaster, con 44
 metros de altura, 43 metros de caída, 90 km/h, 1.200 metros de recorrido y unos
@@ -187,8 +186,7 @@ centímetros, también con acompañante.
 **[Hollywood Dream – The Ride:
 Backdrop](ref:universal-studios-japan/hollywood-dream-the-ride-backdrop-2)** es
 la misma montaña rusa hacia atrás. Esta versión funcionó por primera vez del 15
-de marzo al 7 de julio de 2013 y después se quedó en el programa. Los 43 metros de la primera caída se bajan de espaldas, así que no se ve lo que
-viene. La altura mínima y las reglas en el acceso son las mismas que en
+de marzo al 7 de julio de 2013 y después se quedó en el programa. Los 43 metros de la primera caída se bajan de espaldas. La altura mínima y las reglas en el acceso son las mismas que en
 Hollywood Dream.
 
 ```glossary-widget slug=hyper-coaster
@@ -271,7 +269,7 @@ Las diez atracciones con la mediana más alta de los últimos dos años, medida 
 
 ```
 
-Mine Cart Madness y Mario Kart están por delante de todas las demás. Quien ordene su día según la tabla
+Quien ordene su día según la tabla
 empieza por las dos atracciones de Nintendo, mientras valga la franja horaria.
 
 ```hourly-profile-widget slug=universal-studios-japan top=8
@@ -297,7 +295,7 @@ día están en la página de horarios del parque.
 ```
 
 En Osaka el día de la semana influye poco. Los siete días caen en el mismo nivel
-de afluencia, y la diferencia entre el más lleno y el más vacío es pequeña.
+de afluencia.
 
 ```stats-widget slug=universal-studios-japan show=months
 
@@ -379,8 +377,7 @@ entrada modificada no vale.
 
 Para quien no lleva pase, el parque tiene cola de single rider en Mine Cart
 Madness, Mario Kart, Forbidden Journey, Minion Mayhem, Hollywood Dream, Space
-Fantasy, The Flying Dinosaur, Jurassic Park y JAWS. Uno no se sienta con su grupo,
-pero ocupa un hueco suelto.
+Fantasy, The Flying Dinosaur, Jurassic Park y JAWS.
 
 ```glossary-widget slug=single-rider
 
@@ -398,7 +395,7 @@ tenga entrada, la atracción de la zona puede estar ya completa.
 
 **Yoyakunori (Reserve & Ride)** reserva una hora de subida en atracciones
 seleccionadas, en el parque por ejemplo en The Flying Snoopy y Freeze Ray
-Sliders. Hasta la hora reservada se puede subir a otras atracciones o comer. El
+Sliders. El
 **Attraction Timed Entry Ticket** vale para atracciones concretas, incluido el
 recorrido de Frieren. Ambos se consiguen solo en el parque y no son transferibles,
 y cada grupo puede elegir una sola atracción. Si se desinstala la app antes de la

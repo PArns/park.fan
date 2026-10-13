@@ -103,8 +103,7 @@ Schließfach liegen.
 ## Super Nintendo World
 
 Der Zugang führt durch ein Warp-Rohr in das Schloss von Prinzessin Peach, Bowsers
-Schloss liegt auf der anderen Seite. Drei Bahnen stehen im Bereich, dazu
-kommt das Spiel mit dem Power-Up Band.
+Schloss liegt auf der anderen Seite.
 
 **[Mario Kart: Koopa's
 Challenge](ref:universal-studios-japan/mario-kart-koopas-challenge-2)** ist seit
@@ -139,9 +138,7 @@ einem Jubiläumsband.
 
 ## The Wizarding World of Harry Potter
 
-Zum Bereich gehören zwei Bahnen und der Rundgang Hogwarts Castle Walk, der vom
-
-1. September 2026 bis zum 17. Januar 2027 läuft.
+Der Rundgang Hogwarts Castle Walk läuft vom 1. September 2026 bis zum 17. Januar 2027.
 
 **[Harry Potter and the Forbidden
 Journey](ref:universal-studios-japan/harry-potter-and-the-forbidden-journey-2)**
@@ -164,7 +161,7 @@ Gepäck darf nicht mit.
 
 ## Hollywood
 
-Zwei Bahnen teilen sich ein Gleis. **[Hollywood Dream – The
+**[Hollywood Dream – The
 Ride](ref:universal-studios-japan/hollywood-dream-the-ride-2)** hat am **9. März
 2007** eröffnet, gebaut von Bolliger & Mabillard als Hyper Coaster: 44 Meter hoch,
 43 Meter Abfahrt, 90 km/h, 1.200 Meter Strecke und etwa zweieinhalb Minuten Fahrzeit.
@@ -182,8 +179,7 @@ Begleitperson.
 **[Hollywood Dream – The Ride:
 Backdrop](ref:universal-studios-japan/hollywood-dream-the-ride-backdrop-2)** ist
 dieselbe Bahn rückwärts. Die Fassung lief erstmals vom 15. März bis zum 7. Juli 2013
-und blieb danach im Angebot. Die 43 Meter der ersten Abfahrt fährt man mit dem Rücken voran und sieht nicht,
-was kommt. Mindestgröße und Regeln am Einstieg sind dieselben wie bei Hollywood
+und blieb danach im Angebot. Die 43 Meter der ersten Abfahrt fährt man mit dem Rücken voran. Mindestgröße und Regeln am Einstieg sind dieselben wie bei Hollywood
 Dream.
 
 ```glossary-widget slug=hyper-coaster
@@ -267,7 +263,7 @@ Die zehn Attraktionen mit dem höchsten Median der letzten zwei Jahre, gemessen 
 
 ```
 
-Mine Cart Madness und Mario Kart liegen vor allen anderen. Wer seine Reihenfolge nach der Tabelle
+Wer seine Reihenfolge nach der Tabelle
 wählt, beginnt bei den zwei Nintendo-Bahnen, solange das Zeitfenster gilt.
 
 ```hourly-profile-widget slug=universal-studios-japan top=8
@@ -293,7 +289,7 @@ jeden Tag nennt der Park auf seiner Seite mit den Betriebszeiten.
 ```
 
 Der Wochentag macht in Osaka wenig aus. Alle sieben Tage liegen in derselben
-Auslastungsstufe, der Abstand zwischen dem vollsten und dem leersten ist klein.
+Auslastungsstufe.
 
 ```stats-widget slug=universal-studios-japan show=months
 
@@ -375,8 +371,7 @@ verändertes Ticket gilt nicht.
 
 Für Gäste ohne Pass führt der Park bei Mine Cart Madness, Mario Kart, Forbidden
 Journey, Minion Mayhem, Hollywood Dream, Space Fantasy, The Flying Dinosaur,
-Jurassic Park und JAWS eine Single-Rider-Warteschlange. Man sitzt dann nicht mit
-der Gruppe zusammen, dafür füllt man eine freie Einzelplatz-Lücke.
+Jurassic Park und JAWS eine Single-Rider-Warteschlange.
 
 ```glossary-widget slug=single-rider
 
@@ -393,8 +388,7 @@ sagt dazu, dass die Ausgabe je nach Andrang ohne Vorwarnung enden kann. Hat man 
 Ticket, kann die Bahn im Bereich trotzdem schon wieder ausgebucht sein.
 
 **Yoyakunori (Reserve & Ride)** reserviert eine Fahrzeit für ausgewählte Bahnen, im
-Park etwa bei The Flying Snoopy und Freeze Ray Sliders. Bis zur reservierten Zeit kann man andere
-Bahnen fahren oder essen. Das **Attraction Timed Entry Ticket** gilt für einzelne
+Park etwa bei The Flying Snoopy und Freeze Ray Sliders. Das **Attraction Timed Entry Ticket** gilt für einzelne
 Bahnen, den Frieren-Rundgang eingeschlossen. Beides gibt es nur im Park und ist nicht übertragbar, und pro Gruppe lässt sich nur eine Bahn wählen. Deinstalliert man
 die App vor der Fahrzeit, wird das Ticket ungültig. Die App verlangt iOS 17 oder
 Android 9.
