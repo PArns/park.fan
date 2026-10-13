@@ -44,11 +44,8 @@ seo:
 
 Single rider significa che ti metti in una coda a parte e occupi un posto rimasto libero sul
 veicolo, accanto a degli sconosciuti. In cambio di solito aspetti meno che nella coda normale.
-L’Efteling spiega sul proprio sito che i single rider riempiono i posti vuoti che si creano nei
-veicoli.
 
-La nostra API registra questa coda come tipo a sé, `SINGLE_RIDER`, e conosce 66 attrazioni in 18
-parchi che ce l’hanno.
+Su park.fan, 66 attrazioni in 18 parchi hanno una coda single rider.
 
 ## Come funziona un ingresso single rider
 
@@ -57,8 +54,7 @@ posto libero, il parco ci mette una persona della coda single rider. L’attrazi
 gruppi della coda normale non ci perdono niente, perché nessuno viene fatto passare davanti a loro.
 L’Efteling scrive che questo accorcia l’attesa sia per i gruppi sia per chi è solo.
 
-La coda single rider scorre solo alla velocità con cui si liberano i posti. Sulla carta è più corta,
-ma se lo sia anche nella tua ora dipende dai vuoti che lasciano i gruppi davanti a te. L’Efteling
+La coda single rider scorre solo alla velocità con cui si liberano i posti. L’Efteling
 scrive che chi è solo di solito aspetta meno, ma quanto dipende dall’affluenza e dai posti liberi.
 
 In ogni parco di cui siamo riusciti a leggere la pagina:
@@ -69,8 +65,7 @@ In ogni parco di cui siamo riusciti a leggere la pagina:
    che i single rider devono rispettare tutti i requisiti dell’attrazione. L’Efteling lascia entrare
    da soli all’ingresso single rider i bambini che rispettano l’altezza e gli altri requisiti
    dell’attrazione.
-3. **La coda può essere chiusa.** L’Efteling lo dice chiaramente: nei giorni tranquilli può restare
-   chiusa. Walt Disney World scrive che il servizio dipende dalla disponibilità.
+3. **La coda può essere chiusa.** Secondo l’Efteling, nei giorni tranquilli può restare chiusa. Walt Disney World scrive che il servizio dipende dalla disponibilità.
 
 ```glossary-widget slug=single-rider
 
@@ -90,7 +85,7 @@ Non conviene in questi casi:
 - **Volete salire insieme.** L’Efteling permette ai gruppi di usare l’ingresso single rider, ma
   salgono uno dopo l’altro. Solo se per caso restano più posti liberi, le persone della coda single
   rider si siedono vicine.
-- **L’attrazione racconta qualcosa che volete vivere insieme.** A Symbolica all’Efteling, da single
+- **Volete vivere la stessa versione dell’attrazione.** A Symbolica all’Efteling, da single
   rider non puoi scegliere quale delle tre visite guidate del palazzo ti tocca.
 - **La coda normale è già corta.** Il vantaggio sparisce e il gruppo si è diviso senza motivo.
 
@@ -100,14 +95,13 @@ Non conviene in questi casi:
 pagina dell’attrazione. Se l’icona manca non vuol dire che non ci sia, spesso per quell’attrazione
 semplicemente non lo sappiamo.
 
-**Quanto è lunga adesso?** Qui il numero spesso manca. L’8 ottobre 2026 abbiamo richiesto i dati in
+**Quanto è lunga adesso?** L’8 ottobre 2026 abbiamo richiesto i dati in
 tempo reale di tutti i 18 parchi. C’erano 41 code single rider in dodici parchi, 19 delle quali aperte, in sette
 parchi. Nessuna delle 41 riportava un tempo di attesa. I parchi ci comunicano che la coda è aperta,
 ma non quanto è lunga. Sulla pagina dell’attrazione park.fan mostra allora “Single Rider” senza
 tempo, e le tabelle di questo articolo mostrano la coda normale.
 
-Quanto tempo faccia risparmiare l’ingresso, dai nostri dati al momento non si può calcolare. È
-documentata solo l’affermazione dell’Efteling che chi è solo di solito aspetta meno.
+Quanto tempo faccia risparmiare l’ingresso, dai nostri dati al momento non si può calcolare.
 
 ## Attrazioni con single rider per parco
 
@@ -169,8 +163,7 @@ sull’ingresso single rider cita sei attrazioni: Danse Macabre, Joris en de Dra
 1898, Max & Moritz e Python. Ognuna ha due code, una per gruppi e famiglie, una per chi è solo. I
 nostri dati aggiungono De Vliegende Hollander, che la pagina del parco non elenca.
 
-La pagina spiega anche cosa manca al single rider: scegliere il posto e, a Symbolica, scegliere una
-delle tre visite guidate del palazzo. I gruppi possono usare l’ingresso ma salgono uno dopo l’altro, e
+Secondo la pagina, il single rider non sceglie il posto né, a Symbolica, quale delle tre visite guidate del palazzo gli tocca. I gruppi possono usare l’ingresso ma salgono uno dopo l’altro, e
 i bambini possono entrare da soli se rispettano i requisiti dell’attrazione. I requisiti la pagina non
 li indica, cambiano da un’attrazione all’altra. Secondo i dati del nostro database l’altezza minima è
 90 centimetri per Max & Moritz, 110 per Joris en de Draak, 120 per Python, De Vliegende Hollander e
@@ -188,8 +181,7 @@ Al [Phantasialand](ref:phantasialand) hanno un ingresso single rider tre attrazi
 [Taron](ref:phantasialand/taron) e [Raik](ref:phantasialand/raik) nell’area Mystery e
 [Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn) a Mexico.
 
-Insieme all’Europa-Park, il Phantasialand è il parco in cui il dato è compilato per ogni attrazione:
-su 40 attrazioni non manca per nessuna. Le tre attrazioni sono quindi l’elenco completo. L’altezza
+Per tutte le 40 attrazioni del Phantasialand sappiamo se hanno un ingresso single rider, quindi le tre attrazioni sono l’elenco completo. L’altezza
 minima è 140 centimetri per Taron, 130 per Chiapas e 120 per Raik.
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/raik|Raik;phantasialand/chiapas-die-wasserbahn|Chiapas columns=land,peak
@@ -198,8 +190,7 @@ minima è 140 centimetri per Taron, 130 per Chiapas e 120 per Raik.
 
 ## Disneyland Paris
 
-Il resort ha due parchi, e le attrazioni con ingresso single rider si distribuiscono in modo
-diseguale. In [Disney Adventure World](ref:disney-adventure-world) sono sette: Spider-Man W.E.B.
+Il resort ha due parchi. In [Disney Adventure World](ref:disney-adventure-world) sono sette: Spider-Man W.E.B.
 Adventure e Avengers Assemble: Flight Force nel Marvel Avengers Campus, Frozen Ever After nella World
 of Frozen, Ratatouille: L’Aventure Totalement Toquée de Rémy nel Toon Studio, e sempre nel Toon Studio
 Crush’s Coaster, RC Racer e Toy Soldiers Parachute Drop. Sono sette attrazioni su 14, la quota più
@@ -244,8 +235,7 @@ Salire subito e scegliere il posto non sono garantiti, richieste particolari sul
 non essere accolte, e le attrazioni che partecipano e i tempi di attesa possono cambiare.
 
 Le tre code single rider del Disney’s Hollywood Studios l’8 ottobre 2026 risultavano “aperte”, senza
-tempo di attesa. Vale per tutte le 19 code single rider aperte nei nostri dati in tempo reale, anche
-quelle di Universal.
+tempo di attesa.
 
 ```ride-waits-widget rides=disneys-hollywood-studios/star-wars-rise-of-the-resistance|Rise of the Resistance;disneys-hollywood-studios/millennium-falcon-smugglers-run|Smugglers Run;disneys-hollywood-studios/rock-n-roller-coaster-starring-aerosmith|Rock ’n’ Roller Coaster;epcot/test-track|Test Track;epcot/remys-ratatouille-adventure|Remy’s Ratatouille Adventure;disneys-animal-kingdom-theme-park/expedition-everest-legend-of-the-forbidden-mountain|Expedition Everest columns=park,peak
 
@@ -311,8 +301,7 @@ Come si vive l’attesa e perché scalare posizioni in coda non serve a niente, 
 ### Cosa significa single rider in un parco divertimenti?
 
 Single rider è una coda a parte per chi è solo. Chi la usa occupa i posti che restano liberi su un
-veicolo e si siede accanto a degli sconosciuti. L’Efteling lo descrive così: i single rider riempiono
-i posti vuoti che si creano nei veicoli.
+veicolo e si siede accanto a degli sconosciuti.
 
 ### La coda single rider è sempre più corta?
 
@@ -358,8 +347,7 @@ parte delle attrazioni, al Disneyland Park di Parigi per 41 su 43, al Disneyland
 conosciamo nessuna.
 
 Per il Phantasialand, Disneyland Paris, PortAventura, Alton Towers, il Thorpe Park, Universal e i
-parchi Disney asiatici non abbiamo letto nessuna pagina del parco che confermi l’elenco. Se una coda
-single rider oggi è aperta lo mostra solo il suo stato sulla pagina dell’attrazione.
+parchi Disney asiatici non abbiamo letto nessuna pagina del parco che confermi l’elenco.
 
 ## Per approfondire
 

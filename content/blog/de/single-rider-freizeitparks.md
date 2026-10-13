@@ -44,11 +44,9 @@ seo:
 
 Single Rider heißt: Du stellst dich in eine eigene Warteschlange und nimmst einen Sitz, der im
 Fahrzeug übrig bleibt, neben Fremden. Dafür wartest du meist weniger als in der normalen
-Warteschlange. Das Efteling beschreibt auf seiner Seite, dass die Single Riders die leeren Plätze
-füllen, die in den Fahrzeugen entstehen.
+Warteschlange.
 
-Unsere API führt diese Warteschlange als eigenen Typ, `SINGLE_RIDER`, und kennt 66 Bahnen in 18
-Parks, an denen es sie gibt.
+Auf park.fan haben 66 Bahnen in 18 Parks eine Single-Rider-Warteschlange.
 
 ## Wie ein Single-Rider-Eingang funktioniert
 
@@ -58,10 +56,7 @@ Bahn fährt voller, und die Gruppen in der normalen Warteschlange verlieren nich
 ihrer Reihe vorgezogen wird. Das Efteling schreibt, das verkürze die Wartezeit für Gruppen und
 Einzelne.
 
-Die Single-Rider-Warteschlange wird nur so schnell abgebaut, wie Lücken entstehen. Auf dem Papier
-ist sie kürzer, ob sie es in deiner Stunde ist, hängt von den Lücken ab, die die Gruppen vor dir
-lassen. Das Efteling schreibt dazu: Einzelne warten meist weniger, aber wie viel, hängt von der
-Besucherzahl und den freien Plätzen ab.
+Die Single-Rider-Warteschlange wird nur so schnell abgebaut, wie Lücken entstehen. Das Efteling schreibt, Einzelne warteten meist weniger, wie viel, hänge aber von der Besucherzahl und den freien Plätzen ab.
 
 Bei jedem Park, dessen Seite wir lesen konnten, gilt:
 
@@ -71,8 +66,7 @@ Bei jedem Park, dessen Seite wir lesen konnten, gilt:
    schreiben, dass Single Riders alle Voraussetzungen der Bahn erfüllen müssen. Das Efteling lässt
    Kinder allein in den Single-Rider-Eingang, wenn sie Größe und weitere Voraussetzungen der Bahn
    erfüllen.
-3. **Die Warteschlange kann geschlossen sein.** Das Efteling nennt es ausdrücklich: An ruhigen Tagen
-   bleibt sie unter Umständen zu. Walt Disney World schreibt, der Service hänge von der Verfügbarkeit
+3. **Die Warteschlange kann geschlossen sein.** Laut Efteling bleibt sie an ruhigen Tagen unter Umständen zu. Walt Disney World schreibt, der Service hänge von der Verfügbarkeit
    ab.
 
 ```glossary-widget slug=single-rider
@@ -93,7 +87,7 @@ Es lohnt sich nicht in diesen Fällen:
 - **Ihr wollt gemeinsam fahren.** Das Efteling erlaubt Gruppen den Single-Rider-Eingang, aber sie
   fahren nacheinander. Nur wenn zufällig mehrere Plätze frei sind, sitzen Personen aus der
   Single-Rider-Warteschlange nebeneinander.
-- **Die Bahn erzählt etwas, das ihr gemeinsam erleben wollt.** Bei Symbolica im Efteling kannst du als
+- **Ihr wollt dieselbe Fahrt erleben.** Bei Symbolica im Efteling kannst du als
   Single Rider nicht wählen, welche der drei Palastführungen du bekommst.
 - **Die normale Warteschlange ist ohnehin kurz.** Dann entfällt der Vorteil, und die Gruppe ist
   grundlos getrennt.
@@ -104,14 +98,13 @@ Es lohnt sich nicht in diesen Fällen:
 Attraktion das Zeichen „Single Rider“. Ein fehlendes Zeichen heißt nicht, dass es keine gibt, oft
 wissen wir es bei dieser Bahn nur nicht.
 
-**Wie lang ist sie gerade?** Hier fehlt oft die Zahl. Wir haben am 8. Oktober 2026 die Live-Daten aller
+**Wie lang ist sie gerade?** Wir haben am 8. Oktober 2026 die Live-Daten aller
 18 Parks abgerufen. Darin standen 41 Single-Rider-Warteschlangen in zwölf Parks, 19 davon geöffnet, in sieben Parks.
 Keine einzige der 41 trug eine Wartezeit. Die Parks melden uns, dass die Warteschlange offen ist,
 aber nicht, wie lang sie ist. Auf der Attraktionsseite zeigt park.fan dann „Single Rider“ ohne Zeit,
 und die Tabellen in diesem Beitrag zeigen die normale Warteschlange.
 
 Wie viel Zeit der Eingang spart, lässt sich aus unseren Daten deshalb zurzeit nicht ausrechnen.
-Belegt ist nur die Aussage des Efteling, dass Einzelne meist weniger warten.
 
 ## Single-Rider-Bahnen je Park
 
@@ -175,8 +168,7 @@ Baron 1898, Max & Moritz und Python. Jede hat zwei Warteschlangen, eine für Gru
 für Einzelne. Unsere Daten führen zusätzlich De Vliegende Hollander, den die Seite des Parks nicht
 aufzählt.
 
-Die Seite erklärt auch, was dem Single Rider fehlt: den Sitzplatz zu wählen, und bei Symbolica die
-Wahl einer der drei Palastführungen. Gruppen dürfen den Eingang nutzen, fahren aber nacheinander, und
+Laut der Seite wählt der Single Rider weder den Sitzplatz noch bei Symbolica eine der drei Palastführungen. Gruppen dürfen den Eingang nutzen, fahren aber nacheinander, und
 Kinder dürfen allein hinein, wenn sie die Voraussetzungen der Bahn erfüllen. Die Voraussetzungen
 nennt die Seite nicht, sie unterscheiden sich je Attraktion. Nach den Angaben in unserer Datenbank
 liegt die Mindestgröße bei Max & Moritz bei 90 Zentimetern, bei Joris en de Draak bei 110, bei Python,
@@ -195,9 +187,7 @@ Im [Phantasialand](ref:phantasialand) haben drei Bahnen einen Single-Rider-Einga
 [Taron](ref:phantasialand/taron) und [Raik](ref:phantasialand/raik) im Themenbereich Mystery und
 [Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn) in Mexico.
 
-Das Phantasialand ist neben dem Europa-Park der Park, in dem die Angabe für jede Attraktion
-eingetragen ist: Bei 40 Attraktionen fehlt sie bei keiner. Die drei Bahnen sind damit die vollständige
-Liste. Die Mindestgröße liegt bei Taron bei 140 Zentimetern, bei Chiapas bei 130 und bei Raik
+Für alle 40 Attraktionen im Phantasialand wissen wir, ob sie einen Single-Rider-Eingang haben, die drei Bahnen sind also die vollständige Liste. Die Mindestgröße liegt bei Taron bei 140 Zentimetern, bei Chiapas bei 130 und bei Raik
 bei 120.
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/raik|Raik;phantasialand/chiapas-die-wasserbahn|Chiapas columns=land,peak
@@ -206,7 +196,7 @@ bei 120.
 
 ## Disneyland Paris
 
-Der Resort hat zwei Parks, und die Bahnen mit Single-Rider-Eingang verteilen sich ungleich. In
+Der Resort hat zwei Parks. In
 [Disney Adventure World](ref:disney-adventure-world) sind es sieben: Spider-Man W.E.B. Adventure
 und Avengers Assemble: Flight Force im Marvel Avengers Campus, Frozen Ever After in der World of
 Frozen, Ratatouille: L’Aventure Totalement Toquée de Rémy im Toon Studio, dazu im Toon Studio
@@ -252,8 +242,7 @@ Sofortiges Einsteigen und die Wahl des Sitzes sind nicht garantiert, besondere S
 womöglich nicht erfüllt, und die teilnehmenden Attraktionen und die Wartezeiten können sich ändern.
 
 Die drei Single-Rider-Warteschlangen in Disney’s Hollywood Studios standen am 8. Oktober 2026 auf
-„geöffnet“, ohne Wartezeit. Das gilt für alle 19 geöffneten Single-Rider-Warteschlangen in unseren
-Live-Daten, auch bei Universal.
+„geöffnet“, ohne Wartezeit.
 
 ```ride-waits-widget rides=disneys-hollywood-studios/star-wars-rise-of-the-resistance|Rise of the Resistance;disneys-hollywood-studios/millennium-falcon-smugglers-run|Smugglers Run;disneys-hollywood-studios/rock-n-roller-coaster-starring-aerosmith|Rock ’n’ Roller Coaster;epcot/test-track|Test Track;epcot/remys-ratatouille-adventure|Remy’s Ratatouille Adventure;disneys-animal-kingdom-theme-park/expedition-everest-legend-of-the-forbidden-mountain|Expedition Everest columns=park,peak
 
@@ -322,8 +311,7 @@ Wie sich Warten anfühlt und warum Aufrücken in der Warteschlange nichts bringt
 ### Was bedeutet Single Rider im Freizeitpark?
 
 Single Rider ist eine eigene Warteschlange für Einzelne. Wer sie nutzt, nimmt die Sitze, die in einem
-Fahrzeug übrig bleiben, und sitzt neben Fremden. Das Efteling beschreibt es so: Die Single Riders
-füllen die leeren Plätze, die in den Fahrzeugen entstehen.
+Fahrzeug übrig bleiben, und sitzt neben Fremden.
 
 ### Ist die Single-Rider-Warteschlange immer kürzer?
 
@@ -369,8 +357,7 @@ in Anaheim bei 54 von 56. Dort kann es weitere Bahnen mit Single Rider geben, eb
 Parks, in denen wir keine einzige kennen.
 
 Für Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal und die
-asiatischen Disney-Parks haben wir keine Seite des Parks gelesen, die die Liste bestätigt. Ob eine
-Single-Rider-Warteschlange heute offen ist, zeigt nur ihr Status auf der Seite der Attraktion.
+asiatischen Disney-Parks haben wir keine Seite des Parks gelesen, die die Liste bestätigt.
 
 ## Zum Weiterlesen
 

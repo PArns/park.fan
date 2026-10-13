@@ -43,11 +43,9 @@ seo:
 ---
 
 Single Rider, c’est une file à part où tu prends un siège resté libre dans le véhicule, à côté
-d’inconnus. En échange, tu attends le plus souvent moins que dans la file normale. L’Efteling décrit
-sur son site que les Single Riders remplissent les places vides qui restent dans les véhicules.
+d’inconnus. En échange, tu attends le plus souvent moins que dans la file normale.
 
-Notre API tient cette file pour un type à part, `SINGLE_RIDER`, et connaît 66 attractions réparties
-dans 18 parcs où elle existe.
+Sur park.fan, 66 attractions dans 18 parcs ont une file Single Rider.
 
 ## Comment fonctionne une entrée Single Rider
 
@@ -57,10 +55,7 @@ L’attraction part plus pleine, et les groupes de la file normale n’y perdent
 de leur rang ne passe devant. L’Efteling écrit que cela raccourcit l’attente pour les groupes comme
 pour les personnes seules.
 
-La file Single Rider ne s’écoule qu’au rythme où des places se libèrent. Sur le papier, elle est
-plus courte ; si elle l’est à ton heure, cela dépend des vides que laissent les groupes devant toi.
-L’Efteling l’écrit ainsi : les personnes seules attendent le plus souvent moins, mais combien dépend
-de l’affluence et des places libres.
+La file Single Rider ne s’écoule qu’au rythme où des places se libèrent. L’Efteling écrit que les personnes seules attendent le plus souvent moins, mais que l’écart dépend de l’affluence et des places libres.
 
 Dans tous les parcs dont nous avons pu lire la page :
 
@@ -70,8 +65,7 @@ Dans tous les parcs dont nous avons pu lire la page :
    précisent que les Single Riders doivent remplir toutes les conditions de l’attraction. L’Efteling
    laisse entrer seuls les enfants dans l’entrée Single Rider s’ils respectent la taille et les
    autres conditions de l’attraction.
-3. **La file peut être fermée.** L’Efteling le dit expressément : les jours calmes, elle reste
-   parfois fermée. Walt Disney World écrit que le service dépend de la disponibilité.
+3. **La file peut être fermée.** Selon l’Efteling, elle reste parfois fermée les jours calmes. Walt Disney World écrit que le service dépend de la disponibilité.
 
 ```glossary-widget slug=single-rider
 
@@ -91,7 +85,7 @@ Elle ne vaut pas le coup dans ces cas :
 - **Vous voulez monter ensemble.** L’Efteling autorise les groupes à utiliser l’entrée Single
   Rider, mais ils montent l’un après l’autre. Ce n’est que si plusieurs places sont libres par
   hasard que des personnes de la file Single Rider s’assoient côte à côte.
-- **L’attraction raconte quelque chose que vous voulez vivre ensemble.** À Symbolica, à l’Efteling,
+- **Vous voulez vivre la même version de l’attraction.** À Symbolica, à l’Efteling,
   tu ne peux pas choisir en Single Rider laquelle des trois visites du palais tu auras.
 - **La file normale est de toute façon courte.** L’avantage disparaît, et le groupe est séparé pour
   rien.
@@ -102,15 +96,14 @@ Elle ne vaut pas le coup dans ces cas :
 Rider » sur la page de l’attraction. L’absence de repère ne veut pas dire qu’il n’y en a pas,
 souvent nous ne le savons simplement pas pour cette attraction.
 
-**Quelle est sa longueur en ce moment ?** Ici, le chiffre manque souvent. Le 8 octobre 2026, nous
+**Quelle est sa longueur en ce moment ?** Le 8 octobre 2026, nous
 avons interrogé les données en direct des 18 parcs. Elles contenaient 41 files Single Rider dans douze parcs, dont 19
 ouvertes, dans sept parcs. Pas une seule des 41 n’affichait de temps d’attente. Les parcs nous
 signalent que la file est ouverte, mais pas sa longueur. Sur la page de l’attraction, park.fan montre
 alors « Single Rider » sans durée, et les tableaux de cet article montrent la file normale.
 
 Combien de temps l’entrée fait gagner ne peut donc pas se calculer à partir de nos données pour
-l’instant. Seule la déclaration de l’Efteling, selon laquelle les personnes seules attendent le plus
-souvent moins, est établie.
+l’instant.
 
 ## Attractions Single Rider par parc
 
@@ -173,8 +166,7 @@ Symbolica, Baron 1898, Max & Moritz et Python. Chacune a deux files, une pour le
 familles, une pour les personnes seules. Nos données ajoutent De Vliegende Hollander, que la page du
 parc ne mentionne pas.
 
-La page explique aussi ce qui manque au Single Rider : choisir sa place, et à Symbolica le choix de
-l’une des trois visites du palais. Les groupes peuvent utiliser l’entrée mais montent l’un après
+Selon la page, le Single Rider ne choisit ni sa place ni, à Symbolica, laquelle des trois visites du palais il aura. Les groupes peuvent utiliser l’entrée mais montent l’un après
 l’autre, et les enfants peuvent y aller seuls s’ils remplissent les conditions de l’attraction. La
 page ne précise pas ces conditions, elles varient selon l’attraction. D’après notre base de données,
 la taille minimale est de 90 centimètres pour Max & Moritz, de 110 pour Joris en de Draak, de 120
@@ -193,9 +185,7 @@ Au [Phantasialand](ref:phantasialand), trois attractions ont une entrée Single 
 [Taron](ref:phantasialand/taron) et [Raik](ref:phantasialand/raik) dans la zone Mystery, et
 [Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn) à Mexico.
 
-Avec l’Europa-Park, le Phantasialand est le parc où l’information est renseignée pour chaque
-attraction : sur 40 attractions, elle ne manque pour aucune. Les trois attractions forment donc la
-liste complète. La taille minimale est de 140 centimètres pour Taron, de 130 pour Chiapas et de 120
+Pour les 40 attractions du Phantasialand, nous savons si elles ont une entrée Single Rider, et les trois attractions forment donc la liste complète. La taille minimale est de 140 centimètres pour Taron, de 130 pour Chiapas et de 120
 pour Raik.
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/raik|Raik;phantasialand/chiapas-die-wasserbahn|Chiapas columns=land,peak
@@ -204,8 +194,7 @@ pour Raik.
 
 ## Disneyland Paris
 
-Le resort compte deux parcs, et les attractions avec entrée Single Rider se répartissent
-inégalement. À [Disney Adventure World](ref:disney-adventure-world), il y en a sept : Spider-Man
+Le resort compte deux parcs. À [Disney Adventure World](ref:disney-adventure-world), il y en a sept : Spider-Man
 W.E.B. Adventure et Avengers Assemble: Flight Force dans le Marvel Avengers Campus, Frozen Ever After
 dans la World of Frozen, Ratatouille: L’Aventure Totalement Toquée de Rémy dans le Toon Studio, et
 toujours dans le Toon Studio Crush’s Coaster, RC Racer et Toy Soldiers Parachute Drop. Cela fait sept
@@ -251,8 +240,7 @@ placement ne seront peut-être pas satisfaits, et les attractions participantes 
 d’attente peuvent changer.
 
 Les trois files Single Rider de Disney’s Hollywood Studios étaient sur « ouvert », sans temps
-d’attente, le 8 octobre 2026. C’est le cas des 19 files Single Rider ouvertes dans nos données en
-direct, chez Universal aussi.
+d’attente, le 8 octobre 2026.
 
 ```ride-waits-widget rides=disneys-hollywood-studios/star-wars-rise-of-the-resistance|Rise of the Resistance;disneys-hollywood-studios/millennium-falcon-smugglers-run|Smugglers Run;disneys-hollywood-studios/rock-n-roller-coaster-starring-aerosmith|Rock ’n’ Roller Coaster;epcot/test-track|Test Track;epcot/remys-ratatouille-adventure|Remy’s Ratatouille Adventure;disneys-animal-kingdom-theme-park/expedition-everest-legend-of-the-forbidden-mountain|Expedition Everest columns=park,peak
 
@@ -320,8 +308,7 @@ l’article [L’art d’attendre](/blog/l-art-d-attendre).
 ### Que signifie Single Rider dans un parc d’attractions ?
 
 Single Rider est une file à part pour les personnes seules. Qui l’utilise prend les sièges qui restent
-libres dans un véhicule et s’assoit à côté d’inconnus. L’Efteling le décrit ainsi : les Single Riders
-remplissent les places vides qui restent dans les véhicules.
+libres dans un véhicule et s’assoit à côté d’inconnus.
 
 ### La file Single Rider est-elle toujours plus courte ?
 
@@ -367,8 +354,7 @@ Park d’Anaheim pour 54 sur 56. Il peut y avoir d’autres attractions Single R
 comme dans les 185 parcs où nous n’en connaissons aucune.
 
 Pour le Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal et les
-parcs Disney d’Asie, nous n’avons lu aucune page du parc qui confirme la liste. Si une file Single
-Rider est ouverte aujourd’hui, seul son état sur la page de l’attraction le montre.
+parcs Disney d’Asie, nous n’avons lu aucune page du parc qui confirme la liste.
 
 ## Pour aller plus loin
 

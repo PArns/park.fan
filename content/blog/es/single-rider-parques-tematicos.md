@@ -42,11 +42,9 @@ seo:
 ---
 
 Single rider significa que te pones en una cola propia y ocupas un asiento que ha quedado libre en el
-vehículo, junto a desconocidos. A cambio, sueles esperar menos que en la cola normal. El Efteling
-explica en su web que los single riders rellenan los huecos que quedan en los vehículos.
+vehículo, junto a desconocidos. A cambio, sueles esperar menos que en la cola normal.
 
-Nuestra API registra esta cola como un tipo propio, `SINGLE_RIDER`, y conoce 66 atracciones de 18
-parques que la tienen.
+En park.fan, 66 atracciones de 18 parques tienen cola single rider.
 
 ## Cómo funciona una entrada single rider
 
@@ -55,10 +53,7 @@ queda un sitio libre, el parque sienta ahí a una persona de la cola single ride
 llena, y los grupos de la cola normal no pierden nada, porque nadie de su fila pasa por delante. El
 Efteling escribe que esto acorta la espera tanto de los grupos como de los individuales.
 
-La cola single rider solo avanza tan rápido como aparecen huecos. Sobre el papel es más corta; si lo
-es en tu hora depende de los huecos que dejen los grupos que van delante. El Efteling lo dice así:
-los individuales suelen esperar menos, pero cuánto depende del número de visitantes y de las plazas
-libres.
+La cola single rider solo avanza tan rápido como aparecen huecos. El Efteling escribe que los individuales suelen esperar menos, pero que cuánto depende del número de visitantes y de las plazas libres.
 
 En todos los parques cuya web pudimos leer:
 
@@ -68,8 +63,7 @@ En todos los parques cuya web pudimos leer:
    Resort escriben que los single riders deben cumplir todos los requisitos de la atracción. El
    Efteling deja entrar solos a los niños por la entrada single rider si cumplen la altura y los demás
    requisitos de la atracción.
-3. **La cola puede estar cerrada.** El Efteling lo dice expresamente: en días tranquilos puede
-   permanecer cerrada. Walt Disney World escribe que el servicio depende de la disponibilidad.
+3. **La cola puede estar cerrada.** Según el Efteling, en días tranquilos puede permanecer cerrada. Walt Disney World escribe que el servicio depende de la disponibilidad.
 
 ```glossary-widget slug=single-rider
 
@@ -89,7 +83,7 @@ No compensa en estos casos:
 - **Queréis montar juntos.** El Efteling permite a los grupos usar la entrada single rider, pero
   montan uno detrás de otro. Solo si por casualidad quedan varios sitios libres juntos se sientan
   una al lado de otra las personas de la cola single rider.
-- **La atracción cuenta algo que queréis vivir juntos.** En Symbolica, en el Efteling, como single
+- **Queréis vivir la misma versión de la atracción.** En Symbolica, en el Efteling, como single
   rider no puedes elegir cuál de las tres visitas guiadas al palacio te toca.
 - **La cola normal ya es corta.** Entonces desaparece la ventaja y el grupo se separa sin motivo.
 
@@ -99,14 +93,13 @@ No compensa en estos casos:
 Rider» en la página de la atracción. Que falte el distintivo no quiere decir que no la haya, a
 menudo simplemente no lo sabemos para esa atracción.
 
-**¿Qué longitud tiene ahora mismo?** Aquí suele faltar la cifra. El 8 de octubre de 2026 consultamos
+**¿Qué longitud tiene ahora mismo?** El 8 de octubre de 2026 consultamos
 los datos en vivo de los 18 parques. Contenían 41 colas single rider en doce parques, 19 de ellas abiertas, en siete
 parques. Ninguna de las 41 traía tiempo de espera. Los parques nos comunican que la cola está
 abierta, pero no su longitud. En la página de la atracción, park.fan muestra entonces «Single Rider»
 sin tiempo, y las tablas de este artículo muestran la cola normal.
 
-Cuánto tiempo ahorra la entrada no se puede calcular por ahora con nuestros datos. Solo está
-respaldada la afirmación del Efteling de que los individuales suelen esperar menos.
+Cuánto tiempo ahorra la entrada no se puede calcular por ahora con nuestros datos.
 
 ## Atracciones con single rider por parque
 
@@ -169,8 +162,7 @@ sobre la entrada single rider enumera seis atracciones: Danse Macabre, Joris en 
 Baron 1898, Max & Moritz y Python. Cada una tiene dos colas, una para grupos y familias y otra para
 individuales. Nuestros datos añaden De Vliegende Hollander, que la página del parque no enumera.
 
-La página explica también qué le falta al single rider: elegir el asiento y, en Symbolica, escoger una
-de las tres visitas guiadas al palacio. Los grupos pueden usar la entrada, pero montan uno detrás de
+Según la página, el single rider no elige el asiento ni, en Symbolica, cuál de las tres visitas guiadas al palacio le toca. Los grupos pueden usar la entrada, pero montan uno detrás de
 otro, y los niños pueden entrar solos si cumplen los requisitos de la atracción. La página no
 indica esos requisitos, que varían según la atracción. Según los datos de nuestra base de datos, la
 altura mínima es de 90 centímetros en Max & Moritz, de 110 en Joris en de Draak, de 120 en Python,
@@ -188,9 +180,7 @@ En el [Phantasialand](ref:phantasialand) tres atracciones tienen entrada single 
 [Taron](ref:phantasialand/taron) y [Raik](ref:phantasialand/raik), en la zona temática Mystery, y
 [Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn), en Mexico.
 
-Junto al Europa-Park, el Phantasialand es el parque donde el dato está registrado para todas las
-atracciones: de 40 atracciones, no falta en ninguna. Las tres atracciones son, pues, la lista
-completa. La altura mínima es de 140 centímetros en Taron, de 130 en Chiapas y de 120 en Raik.
+De las 40 atracciones del Phantasialand sabemos si tienen entrada single rider, así que las tres atracciones son la lista completa. La altura mínima es de 140 centímetros en Taron, de 130 en Chiapas y de 120 en Raik.
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/raik|Raik;phantasialand/chiapas-die-wasserbahn|Chiapas columns=land,peak
 
@@ -198,7 +188,7 @@ completa. La altura mínima es de 140 centímetros en Taron, de 130 en Chiapas y
 
 ## Disneyland Paris
 
-El resort tiene dos parques, y las atracciones con entrada single rider se reparten de forma desigual.
+El resort tiene dos parques.
 En [Disney Adventure World](ref:disney-adventure-world) son siete: Spider-Man W.E.B. Adventure y
 Avengers Assemble: Flight Force, en el Marvel Avengers Campus; Frozen Ever After, en la World of
 Frozen; Ratatouille: L’Aventure Totalement Toquée de Rémy, en el Toon Studio; y, también en el Toon
@@ -244,8 +234,7 @@ inmediato y la elección del asiento no están garantizados, puede que no se ati
 especiales de asiento, y las atracciones participantes y los tiempos de espera pueden cambiar.
 
 Las tres colas single rider de Disney’s Hollywood Studios figuraban el 8 de octubre de 2026 como
-«abiertas», sin tiempo de espera. Es así en las 19 colas single rider abiertas de nuestros datos en
-vivo, también en Universal.
+«abiertas», sin tiempo de espera.
 
 ```ride-waits-widget rides=disneys-hollywood-studios/star-wars-rise-of-the-resistance|Rise of the Resistance;disneys-hollywood-studios/millennium-falcon-smugglers-run|Smugglers Run;disneys-hollywood-studios/rock-n-roller-coaster-starring-aerosmith|Rock ’n’ Roller Coaster;epcot/test-track|Test Track;epcot/remys-ratatouille-adventure|Remy’s Ratatouille Adventure;disneys-animal-kingdom-theme-park/expedition-everest-legend-of-the-forbidden-mountain|Expedition Everest columns=park,peak
 
@@ -311,8 +300,7 @@ Cómo se siente la espera y por qué avanzar puestos en la cola no sirve de nada
 ### ¿Qué significa single rider en un parque de atracciones?
 
 Single rider es una cola propia para personas individuales. Quien la usa ocupa los asientos que quedan
-libres en un vehículo y se sienta junto a desconocidos. El Efteling lo describe así: los single
-riders rellenan los huecos que quedan en los vehículos.
+libres en un vehículo y se sienta junto a desconocidos.
 
 ### ¿La cola single rider es siempre más corta?
 
@@ -358,8 +346,7 @@ de Anaheim en 54 de 56. Allí puede haber más atracciones con single rider, igu
 parques donde no conocemos ninguna.
 
 Para el Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal y los
-parques Disney asiáticos no hemos leído ninguna página del parque que confirme la lista. Si una cola
-single rider está abierta hoy, solo lo muestra su estado en la página de la atracción.
+parques Disney asiáticos no hemos leído ninguna página del parque que confirme la lista.
 
 ## Para seguir leyendo
 

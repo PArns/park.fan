@@ -43,11 +43,9 @@ seo:
 ---
 
 Single rider means you join a separate queue and take a seat that is left over in the vehicle, next
-to strangers. In return you usually wait less than in the standard queue. Efteling explains on its
-site that single riders fill the empty seats that come up in the vehicles.
+to strangers. In return you usually wait less than in the standard queue.
 
-Our API lists this queue as its own type, `SINGLE_RIDER`, and knows 66 rides in 18 parks that have
-one.
+On park.fan, 66 rides in 18 parks have a single rider queue.
 
 ## How a single rider entrance works
 
@@ -56,9 +54,7 @@ stays empty, the park puts someone from the single rider queue into it. The ride
 groups in the standard queue lose nothing, because nobody from their row is moved ahead. Efteling
 writes that this shortens the wait for groups and single riders alike.
 
-The single rider queue only moves as fast as gaps appear. On paper it is shorter, but whether it is
-in your hour depends on the gaps the groups ahead of you leave. Efteling puts it like this: single
-riders usually wait less, but how much depends on the number of visitors and the free seats.
+The single rider queue only moves as fast as gaps appear. Efteling writes that single riders usually wait less, but that how much depends on the number of visitors and the free seats.
 
 At every park whose page we could read:
 
@@ -67,7 +63,7 @@ At every park whose page we could read:
 2. **The usual boarding requirements apply.** Walt Disney World and the Disneyland Resort write that
    single riders must meet all of the ride’s requirements. Efteling lets children enter the single
    rider entrance alone if they meet the ride’s height and other requirements.
-3. **The queue can be closed.** Efteling says so outright: on quiet days it may stay shut. Walt Disney
+3. **The queue can be closed.** According to Efteling, it may stay shut on quiet days. Walt Disney
    World writes that the service depends on availability.
 
 ```glossary-widget slug=single-rider
@@ -88,7 +84,7 @@ It isn’t worth it in these cases:
 - **You want to ride together.** Efteling lets groups use the single rider entrance, but they ride one
   after another. Only if several seats happen to be free do people from the single rider queue sit
   side by side.
-- **The ride tells a story you want to experience together.** On Symbolica at Efteling you cannot
+- **You want to ride the same version.** On Symbolica at Efteling you cannot
   choose which of the three palace tours you get as a single rider.
 - **The standard queue is short anyway.** Then the advantage is gone, and the group is split for no
   reason.
@@ -99,14 +95,13 @@ It isn’t worth it in these cases:
 the attraction page. A missing badge doesn’t mean there is none, often we just don’t know for that
 ride.
 
-**How long is it right now?** Here the number is often missing. On 8 October 2026 we pulled the live
+**How long is it right now?** On 8 October 2026 we pulled the live
 data of all 18 parks. It contained 41 single rider queues in twelve parks, 19 of them open, in seven parks. Not one
 of the 41 carried a wait time. The parks tell us the queue is open, but not how long it is. On the
 attraction page park.fan then shows “Single rider” without a time, and the tables in this post show
 the standard queue.
 
-So how much time the entrance saves can’t currently be calculated from our data. All that is backed
-up is Efteling’s statement that single riders usually wait less.
+So how much time the entrance saves can’t currently be calculated from our data.
 
 ## Single rider rides by park
 
@@ -168,8 +163,7 @@ rider entrance names six rides: Danse Macabre, Joris en de Draak, Symbolica, Bar
 and Python. Each has two queues, one for groups and families, one for single riders. Our data
 additionally lists De Vliegende Hollander, which the park’s page doesn’t name.
 
-The page also explains what a single rider gives up: choosing the seat, and on Symbolica the choice of
-one of the three palace tours. Groups may use the entrance but ride one after another, and children may
+According to the page, a single rider chooses neither the seat nor, on Symbolica, which of the three palace tours they get. Groups may use the entrance but ride one after another, and children may
 enter alone if they meet the ride’s requirements. The page doesn’t state the requirements, they differ
 by attraction. According to the figures in our database, the minimum height is 90 centimetres on
 Max & Moritz, 110 on Joris en de Draak, 120 on Python, De Vliegende Hollander and Danse Macabre, and
@@ -187,8 +181,7 @@ At [Phantasialand](ref:phantasialand), three rides have a single rider entrance:
 [Taron](ref:phantasialand/taron) and [Raik](ref:phantasialand/raik) in the Mystery themed area and
 [Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn) in Mexico.
 
-Next to Europa-Park, Phantasialand is the park where the value is filled in for every attraction: of
-40 attractions, it is missing for none. The three rides are therefore the complete list. The minimum
+For all 40 attractions at Phantasialand we know whether they have a single rider entrance, so the three rides are the complete list. The minimum
 height is 140 centimetres on Taron, 130 on Chiapas and 120 on Raik.
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/raik|Raik;phantasialand/chiapas-die-wasserbahn|Chiapas columns=land,peak
@@ -197,7 +190,7 @@ height is 140 centimetres on Taron, 130 on Chiapas and 120 on Raik.
 
 ## Disneyland Paris
 
-The resort has two parks, and the rides with a single rider entrance are spread unevenly. In
+The resort has two parks. In
 [Disney Adventure World](ref:disney-adventure-world) there are seven: Spider-Man W.E.B. Adventure and
 Avengers Assemble: Flight Force in Marvel Avengers Campus, Frozen Ever After in the World of Frozen,
 Ratatouille: L’Aventure Totalement Toquée de Rémy in Toon Studio, plus Crush’s Coaster, RC Racer and
@@ -243,7 +236,7 @@ boarding and the choice of seat aren’t guaranteed, special seating requests ma
 participating attractions and the wait times can change.
 
 The three single rider queues at Disney’s Hollywood Studios were listed as “open” on 8 October 2026,
-with no wait time. That holds for all 19 open single rider queues in our live data, Universal included.
+with no wait time.
 
 ```ride-waits-widget rides=disneys-hollywood-studios/star-wars-rise-of-the-resistance|Rise of the Resistance;disneys-hollywood-studios/millennium-falcon-smugglers-run|Smugglers Run;disneys-hollywood-studios/rock-n-roller-coaster-starring-aerosmith|Rock ’n’ Roller Coaster;epcot/test-track|Test Track;epcot/remys-ratatouille-adventure|Remy’s Ratatouille Adventure;disneys-animal-kingdom-theme-park/expedition-everest-legend-of-the-forbidden-mountain|Expedition Everest columns=park,peak
 
@@ -309,8 +302,7 @@ How waiting feels, and why moving up in the queue gets you nothing, is in the po
 ### What does single rider mean in a theme park?
 
 Single rider is a separate queue for individual guests. Whoever uses it takes the seats left over in a
-vehicle and sits next to strangers. Efteling describes it this way: single riders fill the empty seats
-that come up in the vehicles.
+vehicle and sits next to strangers.
 
 ### Is the single rider queue always shorter?
 
@@ -355,8 +347,7 @@ attractions, at Disneyland Park in Paris for 41 of 43, at Disneyland Park in Ana
 There may be more single rider rides there, and in the 185 parks where we know of none.
 
 For Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal and the
-Asian Disney parks we haven’t read a park page that confirms the list. Whether a single rider queue
-is open today only shows in its status on the attraction page.
+Asian Disney parks we haven’t read a park page that confirms the list.
 
 ## Further reading
 

@@ -43,11 +43,9 @@ seo:
 ---
 
 Single Rider betekent: je gaat in een eigen rij staan en neemt een stoel die in het voertuig overblijft,
-naast onbekenden. Daar staan tegenover dat je meestal korter wacht dan in de gewone rij. De Efteling
-schrijft op haar site dat de single riders de lege plaatsen vullen die in de voertuigen ontstaan.
+naast onbekenden. Daar staan tegenover dat je meestal korter wacht dan in de gewone rij.
 
-Onze API voert deze rij als eigen type, `SINGLE_RIDER`, en kent 66 banen in 18 parken waar hij
-bestaat.
+Op park.fan hebben 66 banen in 18 parken een single-riderrij.
 
 ## Hoe een single-rideringang werkt
 
@@ -56,10 +54,7 @@ blijft, zet het park iemand uit de single-riderrij erin. De baan rijdt voller, e
 gewone rij verliezen niets, omdat niemand uit hun rij wordt voorgetrokken. De Efteling schrijft dat dit
 de wachttijd voor groepen en alleenstaanden verkort.
 
-De single-riderrij wordt alleen afgebouwd in het tempo waarin gaten ontstaan. Op papier is hij
-korter, of hij dat in jouw uur ook is, hangt af van de gaten die de groepen voor je laten vallen. De
-Efteling schrijft erover: alleenstaanden wachten meestal minder, maar hoeveel hangt af van het
-aantal bezoekers en de vrije plaatsen.
+De single-riderrij wordt alleen afgebouwd in het tempo waarin gaten ontstaan. De Efteling schrijft dat alleenstaanden meestal minder wachten, maar dat hoeveel minder afhangt van het aantal bezoekers en de vrije plaatsen.
 
 Bij elk park waarvan we de pagina konden lezen, geldt:
 
@@ -68,8 +63,7 @@ Bij elk park waarvan we de pagina konden lezen, geldt:
 2. **De instapvoorwaarden gelden zoals overal.** Walt Disney World en het Disneyland Resort schrijven
    dat single riders aan alle voorwaarden van de baan moeten voldoen. De Efteling laat kinderen alleen
    de single-rideringang in als ze de lengte en de overige voorwaarden van de baan halen.
-3. **De rij kan gesloten zijn.** De Efteling zegt het uitdrukkelijk: op rustige dagen blijft hij
-   mogelijk dicht. Walt Disney World schrijft dat de service afhangt van de beschikbaarheid.
+3. **De rij kan gesloten zijn.** Volgens de Efteling blijft hij op rustige dagen mogelijk dicht. Walt Disney World schrijft dat de service afhangt van de beschikbaarheid.
 
 ```glossary-widget slug=single-rider
 
@@ -89,7 +83,7 @@ Het loont niet in deze gevallen:
 - **Jullie willen samen rijden.** De Efteling laat groepen de single-rideringang in, maar ze rijden
   na elkaar. Alleen als er toevallig meerdere plaatsen vrij zijn, zitten mensen uit de
   single-riderrij naast elkaar.
-- **De baan vertelt iets wat jullie samen willen beleven.** Bij Symbolica in de Efteling kun je als
+- **Jullie willen dezelfde versie van de rit beleven.** Bij Symbolica in de Efteling kun je als
   single rider niet kiezen welke van de drie paleisrondleidingen je krijgt.
 - **De gewone rij is toch al kort.** Dan vervalt het voordeel, en is het gezelschap zonder reden
   gescheiden.
@@ -100,14 +94,13 @@ Het loont niet in deze gevallen:
 “Single Rider”. Een ontbrekend teken betekent niet dat er geen is, vaak weten we het voor die baan
 gewoon niet.
 
-**Hoe lang is hij nu?** Hier ontbreekt vaak het getal. Op 8 oktober 2026 hebben we de live-gegevens van
+**Hoe lang is hij nu?** Op 8 oktober 2026 hebben we de live-gegevens van
 alle 18 parken opgehaald. Daarin stonden 41 single-riderrijen in twaalf parken, 19 daarvan geopend, in zeven parken.
 Geen enkele van de 41 had een wachttijd. De parken melden ons dat de rij open is, maar niet hoe lang
 hij is. Op de attractiepagina toont park.fan dan “Single Rider” zonder tijd, en de tabellen in dit
 artikel tonen de gewone rij.
 
 Hoeveel tijd de ingang bespaart, valt uit onze gegevens daarom op dit moment niet uit te rekenen.
-Onderbouwd is alleen de uitspraak van de Efteling dat alleenstaanden meestal minder wachten.
 
 ## Single-riderbanen per park
 
@@ -171,8 +164,7 @@ pagina over de single-rideringang noemt zes banen: Danse Macabre, Joris en de Dr
 alleenstaanden. Onze gegevens voeren daarnaast De Vliegende Hollander, die de pagina van het park niet
 opsomt.
 
-De pagina legt ook uit wat de single rider mist: de stoel kiezen, en bij Symbolica de keuze uit een van
-de drie paleisrondleidingen. Groepen mogen de ingang gebruiken, maar rijden na elkaar, en kinderen
+Volgens de pagina kiest de single rider niet zelf zijn stoel, en bij Symbolica ook niet welke van de drie paleisrondleidingen hij krijgt. Groepen mogen de ingang gebruiken, maar rijden na elkaar, en kinderen
 mogen alleen naar binnen als ze aan de voorwaarden van de baan voldoen. Die voorwaarden noemt de
 pagina niet, ze verschillen per attractie. Volgens de gegevens in onze database ligt de minimale
 lengte bij Max & Moritz op 90 centimeter, bij Joris en de Draak op 110, bij Python, De Vliegende
@@ -190,8 +182,7 @@ In het [Phantasialand](ref:phantasialand) hebben drie banen een single-rideringa
 [Taron](ref:phantasialand/taron) en [Raik](ref:phantasialand/raik) in het themagebied Mystery en
 [Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn) in Mexico.
 
-Het Phantasialand is naast het Europa-Park het park waar de opgave voor elke attractie is ingevuld: bij
-40 attracties ontbreekt ze bij geen enkele. De drie banen zijn daarmee de volledige lijst. De minimale
+Voor alle 40 attracties van het Phantasialand weten we of ze een single-rideringang hebben, de drie banen zijn dus de volledige lijst. De minimale
 lengte ligt bij Taron op 140 centimeter, bij Chiapas op 130 en bij Raik op 120.
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/raik|Raik;phantasialand/chiapas-die-wasserbahn|Chiapas columns=land,peak
@@ -200,7 +191,7 @@ lengte ligt bij Taron op 140 centimeter, bij Chiapas op 130 en bij Raik op 120.
 
 ## Disneyland Paris
 
-Het resort heeft twee parken, en de banen met single-rideringang zijn ongelijk verdeeld. In
+Het resort heeft twee parken. In
 [Disney Adventure World](ref:disney-adventure-world) zijn het er zeven: Spider-Man W.E.B. Adventure en
 Avengers Assemble: Flight Force in Marvel Avengers Campus, Frozen Ever After in de World of Frozen,
 Ratatouille: L’Aventure Totalement Toquée de Rémy in Toon Studio, plus in Toon Studio Crush’s Coaster,
@@ -246,7 +237,7 @@ instappen en de keuze van de stoel zijn niet gegarandeerd, bijzondere zitwensen 
 vervuld, en de deelnemende attracties en de wachttijden kunnen veranderen.
 
 De drie single-riderrijen in Disney’s Hollywood Studios stonden op 8 oktober 2026 op “geopend”, zonder
-wachttijd. Dat geldt voor alle 19 geopende single-riderrijen in onze live-gegevens, ook bij Universal.
+wachttijd.
 
 ```ride-waits-widget rides=disneys-hollywood-studios/star-wars-rise-of-the-resistance|Rise of the Resistance;disneys-hollywood-studios/millennium-falcon-smugglers-run|Smugglers Run;disneys-hollywood-studios/rock-n-roller-coaster-starring-aerosmith|Rock ’n’ Roller Coaster;epcot/test-track|Test Track;epcot/remys-ratatouille-adventure|Remy’s Ratatouille Adventure;disneys-animal-kingdom-theme-park/expedition-everest-legend-of-the-forbidden-mountain|Expedition Everest columns=park,peak
 
@@ -312,8 +303,7 @@ Hoe wachten voelt en waarom opschuiven in de rij niets oplevert, staat in het ar
 ### Wat betekent single rider in een pretpark?
 
 Single rider is een eigen rij voor alleenstaanden. Wie hem gebruikt, neemt de stoelen die in een
-voertuig overblijven en zit naast onbekenden. De Efteling beschrijft het zo: de single riders vullen de
-lege plaatsen die in de voertuigen ontstaan.
+voertuig overblijven en zit naast onbekenden.
 
 ### Is de single-riderrij altijd korter?
 
@@ -359,8 +349,7 @@ Anaheim bij 54 van de 56. Daar kunnen meer banen met single rider zijn, net als 
 waar we er geen enkele kennen.
 
 Voor het Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal en de
-Aziatische Disney-parken hebben we geen pagina van het park gelezen die de lijst bevestigt. Of een
-single-riderrij vandaag open is, zie je alleen aan de status op de attractiepagina.
+Aziatische Disney-parken hebben we geen pagina van het park gelezen die de lijst bevestigt.
 
 ## Verder lezen
 
