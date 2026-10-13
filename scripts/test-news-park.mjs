@@ -67,8 +67,10 @@ test('a post with parkLinks belongs to its first entry', () => {
   assert.ok(configured > 0, 'no post with parkLinks in the manifest');
 });
 
-test('every news post today names its park', () => {
-  for (const [key] of newsPosts) {
+test('every news post today names its park, unless it opts out with parkLinks: false', () => {
+  for (const [key, entries] of newsPosts) {
+    // The Berlin Dungeon is not a park in the API, so its closing note sets `parkLinks: false`.
+    if (entries.some((e) => e.frontmatter.parkLinks === false)) continue;
     assert.ok(getNewsParkRef(key), `${key} resolves to no park`);
   }
 });
