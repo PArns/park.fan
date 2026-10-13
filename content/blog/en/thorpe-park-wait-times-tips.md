@@ -9,8 +9,7 @@ excerpt: >-
   Thorpe Park, southwest of London, opened in 1979 as a water sports park with
   no roller coaster. Today it has Hyperia, the tallest and fastest coaster in
   Britain, and Stealth, which goes from 0 to 129 km/h in 1.8 seconds. Fright
-  Nights run until 1 November. Queues are shortest on Thursdays and longest on
-  Saturdays.
+  Nights run until 1 November, and queues are shortest on Thursdays.
 tags:
   - thorpe-park
   - hyperia
@@ -86,7 +85,7 @@ The minimum height is **1.30 metres**, the lowest of the park's big coasters. Ri
 
 ## The five other big coasters
 
-The park calls Hyperia and five further rides its "Top Six". The five are listed here by opening year, with The Walking Dead last.
+The park calls Hyperia and five further rides its "Top Six".
 
 **[Colossus](ref:thorpe-park/colossus)** opened on 22 March 2002 and was the world's first coaster with ten inversions. Werner Stengel designed it and Intamin built it. The train runs through a loop, a cobra roll, two corkscrews and five heartline rolls, four of them in a row just under three metres above the footpath. Colossus held the record until 2013, when The Smiler opened at Alton Towers with 14. The park gives its height as 98 feet (30 metres) and its speed as 44 mph. Its twin stands in Chimelong Paradise in Guangzhou as the "10 Inversion Roller Coaster".
 
@@ -122,7 +121,7 @@ For children there are [Flying Fish](ref:thorpe-park/flying-fish), the former Sp
 
 ### Height limits
 
-The limits come from the park's "Rider Requirements" list. Children under 1.20 metres get in free if they're booked online with a paid ticket.
+The limits come from the park's "Rider Requirements" list.
 
 | Ride                                                               | Minimum height | With an escort from | Maximum height |
 | ------------------------------------------------------------------ | -------------- | ------------------- | -------------- |
@@ -138,7 +137,7 @@ The limits come from the park's "Rider Requirements" list. Children under 1.20 m
 | Depth Charge, Mr Monkey's Banana Ride                              | 0.90 m         | 0.90 m to 1.20 m    |                |
 | Flying Fish, High Striker                                          | 0.90 m         | 0.90 m to 1.10 m    |                |
 
-An escort has to be at least 16. None of the six big coasters takes a child under 1.30 metres, and Hyperia has the lowest limit of them.
+An escort has to be at least 16.
 
 ## How long the queues are
 
@@ -221,7 +220,7 @@ All coasters keep running in the evening, and the park advertises Hyperia and SA
 
 ```
 
-In October and the shoulder season, the weather decides which rides run. The park's limits are on its Return Guarantee page: Hyperia runs in winds up to 47 mph, Nemesis Inferno and SAW up to 40 mph, Colossus and The Swarm up to 35 mph, Stealth only up to 31 mph, Zodiac up to 25 and Vortex up to 23 mph. Wind is measured at height, so it can feel calmer on the ground. The coasters run from 5 degrees Celsius, and in heavy rain Nemesis Inferno and SAW stay shut. The Return Guarantee applies on selected days only, retroactively, when the park was hit by closures for at least an hour. In 2026 those were 4 April, 25 May and 13 August, redeemable until 30 September 2026.
+In October and the shoulder season, some rides stay shut in wind, cold or heavy rain. The park's limits are on its Return Guarantee page: Hyperia runs in winds up to 47 mph, Nemesis Inferno and SAW up to 40 mph, Colossus and The Swarm up to 35 mph, Stealth only up to 31 mph, Zodiac up to 25 and Vortex up to 23 mph. Wind is measured at height, so it can feel calmer on the ground. The coasters run from 5 degrees Celsius, and in heavy rain Nemesis Inferno and SAW stay shut. The Return Guarantee applies on selected days only, retroactively, when the park was hit by closures for at least an hour. In 2026 those were 4 April, 25 May and 13 August, redeemable until 30 September 2026.
 
 ## Tickets, passes and prices
 
@@ -264,8 +263,6 @@ On normal days the park opens at 10 am, the coasters close between 5 and 7 pm de
 3. Lunch, then the Ghost Train, which opens at 12, and The Walking Dead indoors if it rains.
 4. Afternoon, Storm Surge and Tidal Wave in the warmest hours, then Vortex, Rush and Zodiac if the wind allows.
 5. In the last hour, the big coasters once more. On Fright Nights, from about 4 pm the scare zones and, with a time slot, the mazes.
-
-A second day mostly pays off with an overnight stay. The Overnight Stay package includes the second park day and an hour of Fastrack, from £77 per person.
 
 ## Frequently asked questions
 

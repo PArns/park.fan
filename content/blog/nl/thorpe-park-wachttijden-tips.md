@@ -7,10 +7,10 @@ mode: published
 featured: false
 excerpt: >-
   Thorpe Park, ten zuidwesten van Londen, opende in 1979 als watersportpark
-  zonder achtbaan. Nu staan er met Hyperia de hoogste en snelste achtbaan van
-  Groot-Brittannië en Stealth, die in 1,8 seconden van 0 naar 129 km/h versnelt.
-  De Fright Nights lopen tot 1 november. De wachtrijen zijn op donderdag het
-  kortst, zaterdag is de drukste dag.
+  zonder achtbaan. Nu staan er Hyperia, de hoogste en snelste achtbaan van
+  Groot-Brittannië, en Stealth, die in 1,8 seconden van 0 naar 129 km/h versnelt.
+  De Fright Nights lopen tot 1 november, en de wachtrijen zijn op donderdag het
+  kortst.
 tags:
   - thorpe-park
   - hyperia
@@ -86,7 +86,7 @@ De minimale lengte is **1,30 meter**, de laagste van de grote achtbanen van het 
 
 ## De vijf andere grote achtbanen
 
-Hyperia en vijf andere banen vormen samen de “Top Six” van het park. Hier staan die vijf op openingsjaar, met The Walking Dead als laatste.
+Hyperia en vijf andere banen vormen samen de “Top Six” van het park.
 
 **[Colossus](ref:thorpe-park/colossus)** ging open op 22 maart 2002 en was de eerste achtbaan ter wereld met tien inversies. Werner Stengel ontwierp haar, Intamin bouwde haar. De trein rijdt een loop, een cobra roll, twee kurkentrekkers en vijf heartline rolls, waarvan vier achter elkaar op krap drie meter boven het voetpad. Colossus hield het record tot 2013, toen The Smiler in Alton Towers opende met veertien inversies. Het park geeft 98 voet (30 meter) hoogte en 44 mph op. Haar tweeling staat als “10 Inversion Roller Coaster” in Chimelong Paradise in Guangzhou.
 
@@ -122,7 +122,7 @@ Voor kinderen blijven [Flying Fish](ref:thorpe-park/flying-fish), het voormalige
 
 ### Minimale lengtes
 
-De grenzen komen uit de lijst “Rider Requirements” van het park. Kinderen onder 1,20 meter komen gratis het park in als ze samen met een betaald ticket online worden geboekt.
+De grenzen komen uit de lijst “Rider Requirements” van het park.
 
 | Baan                                                               | Minimale lengte | Met begeleider vanaf | Maximale lengte |
 | ------------------------------------------------------------------ | --------------- | -------------------- | --------------- |
@@ -138,7 +138,7 @@ De grenzen komen uit de lijst “Rider Requirements” van het park. Kinderen on
 | Depth Charge, Mr Monkey’s Banana Ride                              | 0,90 m          | 0,90 m tot 1,20 m    |                 |
 | Flying Fish, High Striker                                          | 0,90 m          | 0,90 m tot 1,10 m    |                 |
 
-Een begeleider moet minstens 16 jaar zijn. Geen van de zes grote achtbanen neemt een kind onder 1,30 meter mee, en Hyperia heeft daarvan de laagste grens.
+Een begeleider moet minstens 16 jaar zijn.
 
 ## Hoe lang je in de rij staat
 
@@ -221,7 +221,7 @@ Alle achtbanen blijven ’s avonds rijden, en het park adverteert met Hyperia en
 
 ```
 
-In oktober en in het tussenseizoen bepaalt het weer welke banen rijden. De grenzen van het park staan op zijn pagina over de Return Guarantee: Hyperia rijdt tot 47 mph wind, Nemesis Inferno en SAW tot 40 mph, Colossus en The Swarm tot 35 mph, Stealth alleen tot 31 mph, Zodiac tot 25 en Vortex tot 23 mph. Er wordt op hoogte gemeten, dus op de grond kan het windstiller aanvoelen. De achtbanen rijden vanaf 5 graden Celsius, bij zware regen blijven Nemesis Inferno en SAW stilstaan. De Return Guarantee geldt alleen op afzonderlijke dagen, met terugwerkende kracht, als het park minstens een uur last had van storingen. In 2026 waren dat 4 april, 25 mei en 13 augustus, in te wisselen tot 30 september 2026.
+In oktober en in het tussenseizoen blijven bij wind, kou of zware regen sommige banen dicht. De grenzen van het park staan op zijn pagina over de Return Guarantee: Hyperia rijdt tot 47 mph wind, Nemesis Inferno en SAW tot 40 mph, Colossus en The Swarm tot 35 mph, Stealth alleen tot 31 mph, Zodiac tot 25 en Vortex tot 23 mph. Er wordt op hoogte gemeten, dus op de grond kan het windstiller aanvoelen. De achtbanen rijden vanaf 5 graden Celsius, bij zware regen blijven Nemesis Inferno en SAW stilstaan. De Return Guarantee geldt alleen op afzonderlijke dagen, met terugwerkende kracht, als het park minstens een uur last had van storingen. In 2026 waren dat 4 april, 25 mei en 13 augustus, in te wisselen tot 30 september 2026.
 
 ## Tickets, passen en prijzen
 
@@ -264,8 +264,6 @@ Het park opent op gewone dagen om 10 uur, de achtbanen sluiten afhankelijk van h
 3. Lunchen, daarbij de Ghost Train, die pas om 12 uur opengaat, en bij regen The Walking Dead in het gebouw.
 4. In de middag Storm Surge en Tidal Wave in het warmste deel van de dag, Vortex, Rush en Zodiac als de wind het toelaat.
 5. Het laatste uur nog een keer de grote achtbanen. Bij Fright Nights vanaf ongeveer 16 uur de scare zones en, met tijdvak, de mazes.
-
-Een tweede dag loont vooral met een overnachting. In het pakket Overnight Stay zijn de tweede parkdag en een uur Fastrack inbegrepen, vanaf £ 77 per persoon.
 
 ## Veelgestelde vragen
 

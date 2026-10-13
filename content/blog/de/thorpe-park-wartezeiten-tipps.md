@@ -7,10 +7,10 @@ mode: published
 featured: false
 excerpt: >-
   Der Thorpe Park südwestlich von London hat 1979 als Wassersportpark ohne
-  Achterbahn eröffnet. Heute steht dort mit Hyperia die höchste und schnellste
-  Achterbahn Großbritanniens, daneben Stealth mit seiner Beschleunigung von 0 auf
-  129 km/h in 1,8 Sekunden. Fright Nights laufen bis zum
-  1. November. Am kürzesten sind die Warteschlangen donnerstags, am vollsten ist der Samstag.
+  Achterbahn eröffnet. Heute stehen dort Hyperia, die höchste und schnellste
+  Achterbahn Großbritanniens, und Stealth, die in 1,8 Sekunden auf 129 km/h
+  beschleunigt. Die Fright Nights laufen bis zum 1. November, und donnerstags
+  sind die Warteschlangen am kürzesten.
 tags:
   - thorpe-park
   - hyperia
@@ -86,7 +86,7 @@ Die Mindestgröße liegt bei **1,30 Meter**, das ist die niedrigste unter den gr
 
 ## Die fünf anderen großen Achterbahnen
 
-Der Park nennt Hyperia und fünf weitere Bahnen seine „Top Six“. Hier stehen diese fünf nach dem Eröffnungsjahr, zum Schluss The Walking Dead.
+Der Park nennt Hyperia und fünf weitere Bahnen seine „Top Six“.
 
 **[Colossus](ref:thorpe-park/colossus)** eröffnete am 22. März 2002 und war die erste Achterbahn der Welt mit zehn Inversionen. Werner Stengel hat sie entworfen, Intamin gebaut. Der Zug fährt einen Looping, einen Cobra Roll, zwei Korkenzieher und fünf Heartline Rolls, vier davon hintereinander knapp drei Meter über dem Fußweg. Den Rekord hielt Colossus bis 2013, dann eröffnete The Smiler in Alton Towers mit 14. Der Park gibt 98 Fuß (30 Meter) Höhe und 44 mph an. Ihr Zwilling steht als „10 Inversion Roller Coaster“ in Chimelong Paradise in Guangzhou.
 
@@ -122,7 +122,7 @@ Für Kinder bleiben [Flying Fish](ref:thorpe-park/flying-fish), die ehemalige Sp
 
 ### Mindestgrößen
 
-Die Grenzen stammen aus der Liste „Rider Requirements“ des Parks. Kinder unter 1,20 Meter kommen kostenlos in den Park, wenn sie mit einem bezahlten Ticket online gebucht werden.
+Die Grenzen stammen aus der Liste „Rider Requirements“ des Parks.
 
 | Bahn                                                               | Mindestgröße | Mit Begleitperson ab | Höchstgröße |
 | ------------------------------------------------------------------ | ------------ | -------------------- | ----------- |
@@ -138,7 +138,7 @@ Die Grenzen stammen aus der Liste „Rider Requirements“ des Parks. Kinder unt
 | Depth Charge, Mr Monkey's Banana Ride                              | 0,90 m       | 0,90 m bis 1,20 m    |             |
 | Flying Fish, High Striker                                          | 0,90 m       | 0,90 m bis 1,10 m    |             |
 
-Eine Begleitperson muss mindestens 16 Jahre alt sein. Keine der sechs großen Achterbahnen fährt ein Kind unter 1,30 Meter, und Hyperia hat von ihnen die niedrigste Grenze.
+Eine Begleitperson muss mindestens 16 Jahre alt sein.
 
 ## Wie lange man ansteht
 
@@ -221,7 +221,7 @@ Alle Achterbahnen laufen abends weiter, und der Park wirbt mit Hyperia und SAW b
 
 ```
 
-Im Oktober und in der Übergangszeit entscheidet das Wetter, welche Bahnen laufen. Die Grenzen des Parks stehen auf seiner Seite zur Return Guarantee: Hyperia läuft bis 47 mph Wind, Nemesis Inferno und SAW bis 40 mph, Colossus und The Swarm bis 35 mph, Stealth nur bis 31 mph, Zodiac bis 25 und Vortex bis 23 mph. Gemessen wird in der Höhe, es kann sich am Boden also windstiller anfühlen. Die Achterbahnen laufen ab 5 Grad Celsius, bei starkem Regen bleiben Nemesis Inferno und SAW stehen. Die Return Guarantee gibt es nur an einzelnen Tagen, rückwirkend, wenn der Park mindestens eine Stunde lang von Ausfällen betroffen war. 2026 waren das der 4. April, der 25. Mai und der 13. August, einlösbar bis zum 30. September 2026.
+Im Oktober und in der Übergangszeit bleiben bei Wind, Kälte oder starkem Regen einzelne Bahnen stehen. Die Grenzen des Parks stehen auf seiner Seite zur Return Guarantee: Hyperia läuft bis 47 mph Wind, Nemesis Inferno und SAW bis 40 mph, Colossus und The Swarm bis 35 mph, Stealth nur bis 31 mph, Zodiac bis 25 und Vortex bis 23 mph. Gemessen wird in der Höhe, es kann sich am Boden also windstiller anfühlen. Die Achterbahnen laufen ab 5 Grad Celsius, bei starkem Regen bleiben Nemesis Inferno und SAW stehen. Die Return Guarantee gibt es nur an einzelnen Tagen, rückwirkend, wenn der Park mindestens eine Stunde lang von Ausfällen betroffen war. 2026 waren das der 4. April, der 25. Mai und der 13. August, einlösbar bis zum 30. September 2026.
 
 ## Tickets, Pässe und Preise
 
@@ -264,8 +264,6 @@ Der Park öffnet an normalen Tagen um 10 Uhr, die Achterbahnen schließen je nac
 3. Mittag essen, dazu die Ghost Train, die erst um 12 Uhr öffnet, und The Walking Dead im Gebäude, wenn es regnet.
 4. Nachmittag Storm Surge und Tidal Wave in der wärmsten Zeit, Vortex, Rush und Zodiac, wenn der Wind es zulässt.
 5. Letzte Stunde noch einmal die großen Achterbahnen. Bei Fright Nights ab etwa 16 Uhr die Scare Zones und, mit Zeitfenster, die Mazes.
-
-Ein zweiter Tag lohnt sich vor allem mit Übernachtung. Im Paket Overnight Stay sind der zweite Parktag und eine Stunde Fastrack enthalten, ab 77 Pfund pro Person.
 
 ## Häufige Fragen
 

@@ -9,8 +9,7 @@ excerpt: >-
   Il Thorpe Park, a sud-ovest di Londra, ha aperto nel 1979 come parco di sport
   acquatici senza montagne russe. Oggi ospita Hyperia, la più alta e veloce del
   Regno Unito, e Stealth, che passa da 0 a 129 km/h in 1,8 secondi. Le Fright
-  Nights durano fino al 1º novembre. Le code più corte sono il giovedì, il
-  sabato è il giorno più affollato.
+  Nights durano fino al 1º novembre, e le code più corte sono il giovedì.
 tags:
   - thorpe-park
   - hyperia
@@ -86,7 +85,7 @@ L'altezza minima è di **1,30 metri**, la più bassa tra le grandi montagne russ
 
 ## Le altre cinque grandi montagne russe
 
-Il parco chiama Hyperia e altre cinque attrazioni le sue «Top Six». Qui le cinque sono in ordine di anno di apertura, con The Walking Dead in fondo.
+Il parco chiama Hyperia e altre cinque attrazioni le sue «Top Six».
 
 **[Colossus](ref:thorpe-park/colossus)** ha aperto il 22 marzo 2002 ed era la prima montagna russa al mondo con dieci inversioni. L'ha progettata Werner Stengel, l'ha costruita Intamin. Il treno percorre un looping, un cobra roll, due cavatappi e cinque heartline roll, quattro di fila a poco meno di tre metri dal sentiero pedonale. Colossus ha tenuto il record fino al 2013, quando ad Alton Towers è arrivata The Smiler con 14. Il parco indica 98 piedi (30 metri) di altezza e 44 mph. La gemella si chiama «10 Inversion Roller Coaster» e sta a Chimelong Paradise, a Guangzhou.
 
@@ -122,7 +121,7 @@ Per i bambini restano [Flying Fish](ref:thorpe-park/flying-fish), l'ex Space Sta
 
 ### Altezze minime
 
-I limiti vengono dall'elenco Rider Requirements del parco. I bambini sotto 1,20 metri entrano gratis se vengono prenotati online insieme a un biglietto a pagamento.
+I limiti vengono dall'elenco Rider Requirements del parco.
 
 | Attrazione                                                         | Altezza minima | Con accompagnatore da | Altezza massima |
 | ------------------------------------------------------------------ | -------------- | --------------------- | --------------- |
@@ -138,7 +137,7 @@ I limiti vengono dall'elenco Rider Requirements del parco. I bambini sotto 1,20 
 | Depth Charge, Mr Monkey's Banana Ride                              | 0,90 m         | da 0,90 m a 1,20 m    |                 |
 | Flying Fish, High Striker                                          | 0,90 m         | da 0,90 m a 1,10 m    |                 |
 
-L'accompagnatore deve avere almeno 16 anni. Nessuna delle sei grandi montagne russe accetta un bambino sotto 1,30 metri, e Hyperia ha il limite più basso.
+L'accompagnatore deve avere almeno 16 anni.
 
 ## Quanto si aspetta
 
@@ -221,7 +220,7 @@ Tutte le montagne russe restano in funzione la sera, e il parco fa pubblicità a
 
 ```
 
-In ottobre e nella mezza stagione è il meteo a decidere quali attrazioni funzionano. I limiti del parco sono sulla sua pagina della Return Guarantee: Hyperia funziona fino a 47 mph di vento, Nemesis Inferno e SAW fino a 40 mph, Colossus e The Swarm fino a 35 mph, Stealth solo fino a 31 mph, Zodiac fino a 25 e Vortex fino a 23 mph. Il vento si misura in quota, quindi a terra può sembrare più calmo. Le montagne russe funzionano a partire da 5 gradi Celsius, e con pioggia forte Nemesis Inferno e SAW restano ferme. La Return Guarantee vale solo in alcuni giorni, con effetto retroattivo, quando il parco ha avuto disservizi per almeno un'ora. Nel 2026 sono stati il 4 aprile, il 25 maggio e il 13 agosto, utilizzabile fino al 30 settembre 2026.
+In ottobre e nella mezza stagione alcune attrazioni restano chiuse con vento, freddo o pioggia forte. I limiti del parco sono sulla sua pagina della Return Guarantee: Hyperia funziona fino a 47 mph di vento, Nemesis Inferno e SAW fino a 40 mph, Colossus e The Swarm fino a 35 mph, Stealth solo fino a 31 mph, Zodiac fino a 25 e Vortex fino a 23 mph. Il vento si misura in quota, quindi a terra può sembrare più calmo. Le montagne russe funzionano a partire da 5 gradi Celsius, e con pioggia forte Nemesis Inferno e SAW restano ferme. La Return Guarantee vale solo in alcuni giorni, con effetto retroattivo, quando il parco ha avuto disservizi per almeno un'ora. Nel 2026 sono stati il 4 aprile, il 25 maggio e il 13 agosto, utilizzabile fino al 30 settembre 2026.
 
 ## Biglietti, abbonamenti e prezzi
 
@@ -264,8 +263,6 @@ In un giorno normale il parco apre alle 10, le montagne russe chiudono tra le 17
 3. Pranzo, poi la Ghost Train, che apre solo alle 12, e The Walking Dead al coperto, se piove.
 4. Il pomeriggio Storm Surge e Tidal Wave nelle ore più calde, Vortex, Rush e Zodiac se il vento lo permette.
 5. L'ultima ora di nuovo le grandi montagne russe. Alle Fright Nights, da circa le 16, le Scare Zone e, con fascia oraria, i maze.
-
-Un secondo giorno vale la pena soprattutto con il pernottamento. Il pacchetto Overnight Stay comprende il secondo giorno nel parco e un'ora di Fastrack, da 77 sterline a persona.
 
 ## Domande frequenti
 
