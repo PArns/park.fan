@@ -7,10 +7,9 @@ mode: published
 featured: false
 excerpt: >-
   Universal Studios Japan in Osaka had around 16 million guests in 2024, more
-  than any other park in Asia. Depending on the crowds, Super Nintendo World
-  needs a timed entry ticket from the app, and an Express Pass costs between
-  10,800 and 99,000 yen, depending on the package. The weekday hardly matters;
-  July is the emptiest month.
+  than any other park in Asia. On busy days you only get into Super Nintendo
+  World with a timed entry ticket from the app or an Express Pass from 10,800
+  yen. The weekday hardly matters, and July is the quietest month.
 tags:
   - universal-studios-japan
   - osaka
@@ -48,8 +47,7 @@ seo:
 ---
 
 If you want to get into Super Nintendo World at [Universal Studios Japan](ref:universal-studios-japan),
-you'll need an Area Timed Entry Ticket on busy days. There are two ways to get
-one: in advance with one of the Express Passes, or on the day in the park's app.
+you'll need an Area Timed Entry Ticket on busy days. You get one in advance with an Express Pass, or on the day in the park's app.
 Since **5 January 2026**, tickets at the park are only handed out through the
 app. On quiet days the park says you can walk in without one.
 
@@ -87,7 +85,7 @@ The latest big addition was **Super Nintendo World**, which opened on **18 March
 San Francisco, Minion Park, Jurassic Park, Amity Village, Universal Wonderland,
 WaterWorld, The Wizarding World of Harry Potter and Super Nintendo World.
 
-## Height requirements, companions, metal detector
+## Rules at the boarding area
 
 Every ride has a height requirement for guests riding alone and a lower one if
 a companion rides along. The companion has to be at least middle-school age and
@@ -124,10 +122,9 @@ service. Height requirement 122 cm, or 92 cm with a companion. A child between
 **[Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2)** opened
 with Donkey Kong Country on 11 December 2024 and is a roller coaster. The cart
 is fired out of a barrel cannon at the Golden Temple, runs through the jungle
-and jumps a gap where the track has collapsed. According to English Wikipedia,
-Universal uses a new design for it, the "Boom Coaster": an arm connects the
-wheels to the cart above, so the cart seems to lift off the rail, and all of
-that happens without a screen. Four people ride in two rows, the ride lasts
+and jumps a gap where the track has collapsed. According to English Wikipedia, Universal uses a new design for it, the "Boom
+Coaster". An arm connects the wheels to the cart above, so the cart seems to
+lift off the rail without any screen effect. Four people ride in two rows, the ride lasts
 about two minutes and you can get wet. Height requirement 122 cm, or 107 cm
 with a companion. The ride has a single rider queue.
 
@@ -179,9 +176,9 @@ companion.
 
 **[Hollywood Dream – The Ride: Backdrop](ref:universal-studios-japan/hollywood-dream-the-ride-backdrop-2)**
 is the same ride backwards. This version first ran from 15 March to 7 July 2013
-and stayed afterwards. You take the 43 metres of the first drop with your back
-to the direction of travel, so you can't see where you're going or what comes
-next. Same height requirement, same rules at the boarding area.
+and stayed afterwards. You take the 43 metres of the first drop with your back to the direction of
+travel, so you can't see what's coming. The height requirement and boarding
+rules are the same as on Hollywood Dream.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -226,8 +223,8 @@ in the evenings with extra effects for its 25th anniversary, from 6:30 pm until
 
 ## Minion Park and Universal Wonderland
 
-Minion Park is home to **[Despicable Me: Minion Mayhem](ref:universal-studios-japan/despicable-me-minion-mayhem-2)**,
-which opened in 2017. A dome screen and a projection fill the room, and
+**[Despicable Me: Minion Mayhem](ref:universal-studios-japan/despicable-me-minion-mayhem-2)**
+in Minion Park opened in 2017. A dome screen and a projection fill the room, and
 according to the park you become a Minion in a vehicle designed by Gru. Each
 vehicle holds eight people, two rows of four, and the whole thing takes about 25
 minutes. Height requirement 122 cm, or 102 cm with a companion, and a single
@@ -259,10 +256,7 @@ The ten attractions with the highest median over the last two years, measured on
 
 ```
 
-Mine Cart Madness and Mario Kart sit ahead of everything else. Behind them come
-Hollywood Dream: Backdrop and the Detective Conan 4-D show, then Yoshi's
-Adventure, Hollywood Dream, Flight of the Hippogriff and Jurassic Park, and last
-The Flying Dinosaur and Forbidden Journey. If you plan your order by that table,
+Mine Cart Madness and Mario Kart sit ahead of everything else. If you plan your order by that table,
 you start with the two Nintendo rides for as long as your time slot is valid.
 
 ```hourly-profile-widget slug=universal-studios-japan top=8
@@ -270,16 +264,15 @@ you start with the two Nintendo rides for as long as your time slot is valid.
 ```
 
 At Mine Cart Madness and Mario Kart, the wait multiplies in the first hour after
-the park opens and only drops again in the evening. If you're at the gate at
-eight sharp, our rope drop measurements say you save the most time on those two
-rides and on Yoshi's Adventure. Hollywood Dream: Backdrop comes next.
+the park opens and only drops again in the evening. If you're at the gate at eight sharp, you save the most time on those two rides
+and on Yoshi's Adventure, going by our rope drop measurements. Hollywood Dream: Backdrop comes next.
 
 ```glossary-widget slug=rope-drop
 
 ```
 
-On 9 October 2026 the park is open from 8:00 am to 10:00 pm, but the hours
-change.
+On 9 October 2026 the park was open from 8:00 am to 10:00 pm. The park's
+schedule page has the hours for each day.
 
 ## When to go
 
@@ -288,14 +281,13 @@ change.
 ```
 
 In Osaka the weekday makes little difference. All seven days fall into the same
-crowd level, and the gap between the busiest and the emptiest is small. A
-Tuesday is hardly emptier than a Saturday.
+crowd level, and the gap between the busiest and the emptiest is small.
 
 ```stats-widget slug=universal-studios-japan show=months
 
 ```
 
-The months differ more. July has the lowest crowd level in our measurements, and
+July has the lowest crowd level in our measurements, and
 March sits well above it. December is highest, but it's only been measured on
 eight days. October is also still missing days.
 
@@ -320,8 +312,8 @@ During this time Hollywood Dream plays tracks by Japanese bands, and Jurassic
 Park runs in the dark as "The Ride in the Dark". For the Express Pass, the park
 has put together Halloween packages with four attractions, for example with
 Factory of Fear, Chainsaw Man: The Chaos 4-D or Resident Evil Requiem: The
-Dive. Our [Halloween guide](/blog/halloween-theme-parks-2026) covers the other
-parks in the season.
+Dive. The other parks' Halloween events are in our
+[Halloween guide](/blog/halloween-theme-parks-2026).
 
 The "Frieren: Beyond Journey's End Story Walk" in Hollywood runs from 30 May
 2026 to 11 January 2027 and requires an Attraction Timed Entry Ticket from the
@@ -378,7 +370,7 @@ group, but you fill a gap where a single seat is free.
 
 ```
 
-### The app: time slots, Yoyakunori, standby
+### Time slots and reservations in the app
 
 Before you can buy a time slot, your ticket has to be registered in the app, and
 for groups that means the tickets of every member.
@@ -444,8 +436,7 @@ Hotel & Skyspa** connects directly to the station. The **Hotel Keihan Universal
 Tower** has what the hotel says is Osaka's first natural hot spring, with a view
 from the 31st floor, and a restaurant with an airship theme. The **Hotel Kintetsu
 Universal City** has Sesame Street rooms, and **Hotel Universal Port** and **Hotel
-Universal Port Vita** (opened in July 2018) are decorated with Minions. The
-**Oriental Hotel Universal City** completes the list. If you stay at a partner
+Universal Port Vita** (opened in July 2018) are decorated with Minions. The seventh is the **Oriental Hotel Universal City**. If you stay at a partner
 hotel, you can buy Studio Passes on the day of check-in and the day after.
 
 ## Food

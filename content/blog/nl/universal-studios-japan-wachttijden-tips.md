@@ -7,10 +7,9 @@ mode: published
 featured: false
 excerpt: >-
   Universal Studios Japan in Osaka had in 2024 zo’n 16 miljoen bezoekers, meer
-  dan welk park in Azië ook. Voor Super Nintendo World heb je naargelang de drukte
-  een tijdslot uit de app nodig, en een Express Pass kost afhankelijk van het
-  pakket tussen 10.800 en 99.000 yen. De weekdag maakt weinig uit, juli is de
-  rustigste maand.
+  dan welk park in Azië ook. Op drukke dagen kom je alleen met een tijdslot uit
+  de app of een Express Pass vanaf 10.800 yen in Super Nintendo World. De
+  weekdag maakt weinig uit, en in juli is het het rustigst.
 tags:
   - universal-studios-japan
   - osaka
@@ -48,9 +47,7 @@ seo:
 ---
 
 Wie in [Universal Studios Japan](ref:universal-studios-japan) naar Super Nintendo
-World wil, heeft naargelang de drukte een Area Timed Entry Ticket nodig. Dat kan
-op twee manieren: vooraf met een van de Express Passes of op de dag zelf in de
-app van het park. Sinds **5 januari 2026** loopt de uitgifte in het park alleen
+World wil, heeft naargelang de drukte een Area Timed Entry Ticket nodig. Je krijgt het vooraf met een van de Express Passes of op de dag zelf in de app van het park. Sinds **5 januari 2026** loopt de uitgifte in het park alleen
 nog via de app. Op rustige dagen kom je volgens het park ook zonder ticket naar
 binnen.
 
@@ -90,7 +87,7 @@ York, San Francisco, Minion Park, Jurassic Park, Amity Village, Universal
 Wonderland, WaterWorld, The Wizarding World of Harry Potter en Super Nintendo
 World.
 
-## Minimumlengtes, begeleider, metaaldetector
+## Regels bij het instappen
 
 Bij elke attractie geldt een minimumlengte voor gasten die alleen rijden, en een
 lagere grens als er een begeleider meegaat. Die begeleider moet minstens de
@@ -129,10 +126,9 @@ World daarom maar in deze ene attractie.
 **[Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2)** opende
 op 11 december 2024 samen met Donkey Kong Country en is een achtbaan. Het karretje
 wordt bij de Gouden Tempel uit een vatkanon geschoten, raast door de jungle en
-springt over een ingestort stuk spoor. Daarvoor gebruikt Universal volgens de
-Engelse Wikipedia een nieuw bouwtype, de “Boom Coaster”: een arm verbindt de
-wielen met het karretje erboven, zodat het lijkt alsof het van de rails loskomt,
-en dat zonder beeldscherm. Vier mensen rijden in twee rijen, de rit duurt
+springt over een ingestort stuk spoor. Daarvoor gebruikt Universal volgens de Engelse Wikipedia een nieuw bouwtype, de
+“Boom Coaster”. Een arm verbindt de wielen met het karretje erboven, zodat het
+zonder beeldscherm lijkt alsof het van de rails loskomt. Vier mensen rijden in twee rijen, de rit duurt
 ongeveer twee minuten en je kunt nat worden. Minimumlengte 122 centimeter, met
 begeleider 107 centimeter. De attractie heeft een single rider-wachtrij.
 
@@ -184,10 +180,9 @@ ook met begeleider.
 
 **[Hollywood Dream – The Ride: Backdrop](ref:universal-studios-japan/hollywood-dream-the-ride-backdrop-2)**
 is dezelfde baan achterwaarts. Deze versie liep voor het eerst van 15 maart tot
-7 juli 2013 en bleef daarna in de dienstregeling. De 43 meter van de eerste
-afdaling neem je met je rug vooruit, waardoor je niet ziet waar je heen gaat en
-ook niet wat er daarna komt. Dezelfde minimumlengte, dezelfde regels bij het
-instappen.
+7 juli 2013 en bleef daarna in de dienstregeling. De 43 meter van de eerste afdaling neem je met je rug vooruit, waardoor je niet
+ziet wat er komt. Minimumlengte en regels bij het instappen zijn dezelfde als bij
+Hollywood Dream.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -266,10 +261,7 @@ De tien attracties met de hoogste mediaan van de afgelopen twee jaar, gemeten op
 
 ```
 
-Mine Cart Madness en Mario Kart staan vóór alle andere. Daarachter volgen
-Hollywood Dream: Backdrop en de show Detective Conan 4-D, dan Yoshi's Adventure,
-Hollywood Dream, Flight of the Hippogriff en Jurassic Park, en als laatste The
-Flying Dinosaur en Forbidden Journey. Wie zijn volgorde op deze tabel baseert,
+Mine Cart Madness en Mario Kart staan vóór alle andere. Wie zijn volgorde op deze tabel baseert,
 begint bij de twee Nintendo-attracties zolang het tijdslot geldt.
 
 ```hourly-profile-widget slug=universal-studios-japan top=8
@@ -285,7 +277,8 @@ Yoshi's Adventure de meeste tijd. Daarna volgt Hollywood Dream: Backdrop.
 
 ```
 
-Op 9 oktober 2026 is het park open van 8:00 tot 22:00 uur, al wisselen de tijden.
+Op 9 oktober 2026 was het park open van 8:00 tot 22:00 uur. De tijden per dag
+staan op de pagina met openingstijden van het park.
 
 ## Wanneer je moet gaan
 
@@ -294,14 +287,13 @@ Op 9 oktober 2026 is het park open van 8:00 tot 22:00 uur, al wisselen de tijden
 ```
 
 De weekdag maakt in Osaka weinig uit. Alle zeven dagen vallen in hetzelfde
-drukteniveau en het verschil tussen de drukste en de rustigste dag is klein. Een
-dinsdag is nauwelijks rustiger dan een zaterdag.
+drukteniveau en het verschil tussen de drukste en de rustigste dag is klein.
 
 ```stats-widget slug=universal-studios-japan show=months
 
 ```
 
-Tussen de maanden is het verschil groter. Juli heeft in de metingen de laagste
+Juli heeft in de metingen de laagste
 drukte en maart ligt er duidelijk boven. December ligt het hoogst, maar is maar op
 acht dagen gemeten. Ook voor oktober ontbreken nog dagen.
 
@@ -326,7 +318,7 @@ Op Hollywood Dream draait in deze periode muziek van Japanse bands, en Jurassic
 Park rijdt als “The Ride in the Dark” in het donker. Het park heeft daarvoor
 Halloweenpakketten met vier attracties voor de Express Pass samengesteld, bijvoorbeeld
 met Factory of Fear, Chainsaw Man: The Chaos 4-D of Resident Evil Requiem: The
-Dive. Andere parken in het seizoen staan in onze
+Dive. De andere parken rond Halloween 2026 staan in onze
 [Halloweengids](/blog/halloween-pretparken-2026).
 
 De wandeling “Frieren: Beyond Journey's End Story Walk” in Hollywood loopt van 30
@@ -384,7 +376,7 @@ groep, maar vult een los vrij plekje op.
 
 ```
 
-### De app: tijdslot, Yoyakunori, standby
+### Tijdsloten en reserveringen in de app
 
 Voor je een tijdslot koopt, moet het ticket in de app geregistreerd zijn, bij
 groepen de kaarten van alle leden.

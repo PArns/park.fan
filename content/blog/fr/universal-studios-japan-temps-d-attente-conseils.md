@@ -7,10 +7,10 @@ mode: published
 featured: false
 excerpt: >-
   Universal Studios Japan, à Osaka, a reçu environ 16 millions de visiteurs en
-  2024, plus que n’importe quel autre parc d’Asie. Pour Super Nintendo World, il
-  faut selon l’affluence un créneau réservé dans l’appli. Un Express Pass coûte
-  de 10 800 à 99 000 yens selon le forfait. Le jour de la semaine change peu de
-  chose, juillet est le mois le plus calme.
+  2024, plus que n’importe quel autre parc d’Asie. Les jours d’affluence, on
+  n’entre dans Super Nintendo World qu’avec un créneau pris dans l’appli ou un
+  Express Pass à partir de 10 800 yens. Le jour de la semaine change peu de
+  chose, et juillet est le mois le plus calme.
 tags:
   - universal-studios-japan
   - osaka
@@ -47,7 +47,7 @@ seo:
     - USJ taille minimale
 ---
 
-Pour entrer dans Super Nintendo World à [Universal Studios Japan](ref:universal-studios-japan), il faut selon l’affluence un Area Timed Entry Ticket. Il y a deux façons de l’obtenir : à l’avance avec l’un des Express Pass, ou le jour même dans l’appli du parc. Depuis le **5 janvier 2026**, la distribution sur place passe uniquement par l’appli. Les jours de faible fréquentation, le parc indique qu’on peut aussi entrer sans billet.
+Pour entrer dans Super Nintendo World à [Universal Studios Japan](ref:universal-studios-japan), il faut selon l’affluence un Area Timed Entry Ticket. On l’obtient à l’avance avec l’un des Express Pass, ou le jour même dans l’appli du parc. Depuis le **5 janvier 2026**, la distribution sur place passe uniquement par l’appli. Les jours de faible fréquentation, le parc indique qu’on peut aussi entrer sans billet.
 
 Les deux attractions où l’on attend le plus longtemps se trouvent dans Super Nintendo World. Dans nos mesures depuis octobre 2024, [Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2) arrive en tête, suivie de [Mario Kart : Koopa's Challenge](ref:universal-studios-japan/mario-kart-koopas-challenge-2).
 
@@ -61,7 +61,7 @@ Le parc est exploité par USJ LLC. Comcast a racheté en 2017 les parts restante
 
 La dernière grande extension est **Super Nintendo World**, ouvert le **18 mars 2021** pour 40 milliards de yens. Donkey Kong Country s’y ajoute depuis le **11 décembre 2024**. Le parc compte aujourd’hui dix zones thématiques : Hollywood, New York, San Francisco, Minion Park, Jurassic Park, Amity Village, Universal Wonderland, WaterWorld, The Wizarding World of Harry Potter et Super Nintendo World.
 
-## Tailles minimales, accompagnateur, détecteur de métaux
+## Règles à l’embarquement
 
 Chaque attraction fixe une taille minimale pour les visiteurs seuls et une taille plus basse quand un accompagnateur monte avec eux. L’accompagnateur doit avoir au moins l’âge du collège et remplir lui-même les conditions de l’attraction. Sur les attractions à barre de sécurité, le personnel vérifie en plus que la barre se ferme sur chaque visiteur, et celui qui n’y tient pas correctement ne monte pas.
 
@@ -75,7 +75,7 @@ On entre par un tuyau de warp dans le château de la princesse Peach, celui de B
 
 **[Yoshi's Adventure](ref:universal-studios-japan/yoshis-adventure-2)** est la plus douce de la zone. Deux personnes chevauchent Yoshi et cherchent trois œufs avec la carte de Captain Toad, jusqu’au sommet du mont Beanpole d’où l’on voit tout le Royaume Champignon. Le trajet dure environ cinq minutes, et le parc propose un service photo payant. Taille minimale de 122 centimètres, 92 avec un accompagnateur. Un enfant de 92 à 106 centimètres ne pourra donc faire que cette attraction dans Super Nintendo World.
 
-**[Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2)** a ouvert le 11 décembre 2024 avec Donkey Kong Country, et c’est un grand huit. Le wagon est tiré d’un canon à tonneau près du Temple d’or, traverse la jungle et saute par-dessus un morceau de voie effondré. Universal utilise pour cela, selon Wikipédia en anglais, un nouveau type de construction, le « Boom Coaster » : un bras relie les roues au wagon situé au-dessus, si bien que le wagon semble se détacher du rail, et cela sans écran. Quatre personnes s’installent sur deux rangées, le trajet dure environ deux minutes et on peut être mouillé. Taille minimale de 122 centimètres, 107 avec un accompagnateur. L’attraction a une file d’attente single rider.
+**[Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2)** a ouvert le 11 décembre 2024 avec Donkey Kong Country, et c’est un grand huit. Le wagon est tiré d’un canon à tonneau près du Temple d’or, traverse la jungle et saute par-dessus un morceau de voie effondré. Universal utilise pour cela, selon Wikipédia en anglais, un nouveau type de construction, le « Boom Coaster ». Un bras relie les roues au wagon situé au-dessus, si bien que le wagon semble se détacher du rail sans aucun effet d’écran. Quatre personnes s’installent sur deux rangées, le trajet dure environ deux minutes et on peut être mouillé. Taille minimale de 122 centimètres, 107 avec un accompagnateur. L’attraction a une file d’attente single rider.
 
 Le **Power-Up Band** coûte un supplément et se vend au chariot devant la Super Star Plaza. Il collecte des pièces, des clés et des points, et se connecte à l’appli du parc. Dans les Key Challenges, on rapporte trois clés dans toute la zone avant d’affronter Bowser Jr. ; le combat final est prévu pour les visiteurs à partir de cinq ans. Pour le cinquième anniversaire, une fête avec décoration en étoiles, une rencontre avec Yoshi en plusieurs couleurs et un bracelet anniversaire dure du 18 mars 2026 au 11 janvier 2027.
 
@@ -97,7 +97,7 @@ Deux attractions se partagent une même voie. **[Hollywood Dream – The Ride](r
 
 Avant le départ, chaque visiteur choisit un morceau qui passe pendant le trajet. Pour la saison d’Halloween 2026, le choix comprend des titres de King Gnu, d’Ado et de Sandaime J SOUL BROTHERS, ainsi que le générique du film « Chainsaw Man – Reze-Hen » par Kenshi Yonezu. Un train compte 36 places réparties sur neuf rangées. Taille minimale de 132 centimètres, même avec un accompagnateur.
 
-**[Hollywood Dream – The Ride : Backdrop](ref:universal-studios-japan/hollywood-dream-the-ride-backdrop-2)** est la même attraction à l’envers. Cette version a roulé pour la première fois du 15 mars au 7 juillet 2013 et est restée au programme ensuite. On descend les 43 mètres de la première chute dos au sens de la marche, sans voir où l’on va ni ce qui vient après. Même taille minimale, mêmes règles à l’embarquement.
+**[Hollywood Dream – The Ride : Backdrop](ref:universal-studios-japan/hollywood-dream-the-ride-backdrop-2)** est la même attraction à l’envers. Cette version a roulé pour la première fois du 15 mars au 7 juillet 2013 et est restée au programme ensuite. On descend les 43 mètres de la première chute dos au sens de la marche, sans voir ce qui arrive. La taille minimale et les règles à l’embarquement sont les mêmes que pour Hollywood Dream.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -119,7 +119,7 @@ Avant le départ, chaque visiteur choisit un morceau qui passe pendant le trajet
 
 ## Minion Park et Universal Wonderland
 
-Minion Park accueille **[Despicable Me : Minion Mayhem](ref:universal-studios-japan/despicable-me-minion-mayhem-2)**, ouvert en 2017. Un écran en dôme et une projection remplissent la salle où, selon le parc, on devient un Minion dans un véhicule conçu par Gru. Huit personnes par véhicule, deux rangées de quatre, et le tout dure environ 25 minutes. Taille minimale de 122 centimètres, 102 avec un accompagnateur, file d’attente single rider depuis le 21 décembre 2019.
+**[Despicable Me : Minion Mayhem](ref:universal-studios-japan/despicable-me-minion-mayhem-2)**, à Minion Park, a ouvert en 2017. Un écran en dôme et une projection remplissent la salle où, selon le parc, on devient un Minion dans un véhicule conçu par Gru. Huit personnes par véhicule, deux rangées de quatre, et le tout dure environ 25 minutes. Taille minimale de 122 centimètres, 102 avec un accompagnateur, file d’attente single rider depuis le 21 décembre 2019.
 
 **[Freeze Ray Sliders](ref:universal-studios-japan/freeze-ray-sliders-2)** est une course sur sol gelé où l’on peut être mouillé : quatre personnes, environ une minute et demie, taille minimale de 122 centimètres, 92 avec un accompagnateur. Depuis 2025, il y a aussi **[Illumination's Villain-Con Minion Blast](ref:universal-studios-japan/illuminations-villain-con-minion-blast)**, un jeu de blasters où l’on affronte les Vicious 6. Il dure environ sept minutes, la taille minimale est de 122 centimètres et il n’y a aucune limite avec un accompagnateur.
 
@@ -133,7 +133,7 @@ Voici les dix attractions à la médiane la plus élevée sur les deux dernière
 
 ```
 
-Mine Cart Madness et Mario Kart devancent toutes les autres. Viennent ensuite Hollywood Dream : Backdrop et le spectacle Detective Conan 4-D, puis Yoshi's Adventure, Hollywood Dream, Flight of the Hippogriff et Jurassic Park, et enfin The Flying Dinosaur et Forbidden Journey. Si vous organisez votre ordre de passage d’après le tableau, commencez par les deux attractions Nintendo tant que le créneau est valable.
+Mine Cart Madness et Mario Kart devancent toutes les autres. Si vous organisez votre ordre de passage d’après le tableau, commencez par les deux attractions Nintendo tant que le créneau est valable.
 
 ```hourly-profile-widget slug=universal-studios-japan top=8
 
@@ -145,7 +145,7 @@ Mine Cart Madness et Mario Kart devancent toutes les autres. Viennent ensuite Ho
 
 ```
 
-Le 9 octobre 2026, le parc est ouvert de 8 h à 22 h, mais les horaires changent.
+Le 9 octobre 2026, le parc était ouvert de 8 h à 22 h. Les horaires de chaque jour figurent sur la page des horaires du parc.
 
 ## Quand y aller
 
@@ -153,13 +153,13 @@ Le 9 octobre 2026, le parc est ouvert de 8 h à 22 h, mais les horaires changent
 
 ```
 
-À Osaka, le jour de la semaine change peu de chose. Les sept jours se situent dans le même niveau d’affluence et l’écart entre le plus chargé et le plus calme est petit. Un mardi est à peine plus vide qu’un samedi.
+À Osaka, le jour de la semaine change peu de chose. Les sept jours se situent dans le même niveau d’affluence et l’écart entre le plus chargé et le plus calme est petit.
 
 ```stats-widget slug=universal-studios-japan show=months
 
 ```
 
-L’écart est plus grand d’un mois à l’autre. Juillet a l’affluence la plus basse dans nos mesures, mars reste nettement au-dessus. Décembre est le plus haut, mais il n’est mesuré que sur huit jours. Pour octobre aussi, il manque encore des jours.
+Juillet a l’affluence la plus basse dans nos mesures, mars reste nettement au-dessus. Décembre est le plus haut, mais il n’est mesuré que sur huit jours. Pour octobre aussi, il manque encore des jours.
 
 ```best-days-widget slug=universal-studios-japan
 
@@ -169,7 +169,7 @@ L’écart est plus grand d’un mois à l’autre. Juillet a l’affluence la p
 
 La saison d’automne s’appelle « Universal Extreme Autumn » en 2026 et dure du **10 septembre au 8 novembre**. **Halloween Horror Nights** en est le cœur, du 11 septembre au 8 novembre, pour sa 15e édition. Parmi les attractions figurent « Lights Out: Nightmare Isolation », la première attraction réservée aux plus de 18 ans avec déclaration de consentement selon le parc, « Resident Evil Requiem: The Dive » et « Factory of Fear: Zombie Tour ». Jusqu’à 12 ans, l’accord des parents est requis, et jusqu’à cinq ans le parc le déconseille. D’après l’avertissement du parc, « Resident Evil Requiem: The Dive » est interdit aux enfants jusqu’à 14 ans et aux élèves de collège en raison de son contenu extrême.
 
-Pendant cette période, Hollywood Dream passe des morceaux de groupes japonais, et Jurassic Park roule dans le noir sous le nom « The Ride in the Dark ». Le parc a composé pour l’Express Pass des forfaits Halloween de quatre attractions, par exemple avec Factory of Fear, Chainsaw Man: The Chaos 4-D ou Resident Evil Requiem: The Dive. Les autres parcs en saison sont dans notre [guide Halloween](/blog/halloween-parcs-attractions-2026).
+Pendant cette période, Hollywood Dream passe des morceaux de groupes japonais, et Jurassic Park roule dans le noir sous le nom « The Ride in the Dark ». Le parc a composé pour l’Express Pass des forfaits Halloween de quatre attractions, par exemple avec Factory of Fear, Chainsaw Man: The Chaos 4-D ou Resident Evil Requiem: The Dive. Les autres parcs à Halloween 2026 figurent dans notre [guide Halloween](/blog/halloween-parcs-attractions-2026).
 
 La promenade « Frieren: Beyond Journey's End Story Walk », à Hollywood, dure du 30 mai 2026 au 11 janvier 2027 et demande un Attraction Timed Entry Ticket pris dans l’appli. « ONE PIECE Premier Summer 2026 » va du 30 juillet au 19 novembre 2026, et le spectacle de rue « Wicked: The Witches of Oz » se joue du 20 février au 27 décembre 2026.
 
@@ -206,7 +206,7 @@ Pour les visiteurs sans pass, le parc propose une file d’attente single rider 
 
 ```
 
-### L’appli : créneaux, Yoyakunori, Standby
+### Créneaux et réservations dans l’appli
 
 Avant d’acheter un créneau, le billet doit être enregistré dans l’appli, et dans un groupe les billets de tous les membres.
 

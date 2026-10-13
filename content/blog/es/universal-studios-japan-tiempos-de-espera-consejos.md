@@ -7,10 +7,10 @@ mode: published
 featured: false
 excerpt: >-
   Universal Studios Japan, en Osaka, tuvo unos 16 millones de visitantes en 2024,
-  más que ningún otro parque de Asia. Para entrar en Super Nintendo World hace
-  falta, según la afluencia, una franja horaria de la app, y un Express Pass
-  cuesta entre 10.800 y 99.000 yenes según el paquete. El día de la semana
-  cambia poco, y julio es el mes más vacío.
+  más que ningún otro parque de Asia. Los días de mucha gente solo se entra en
+  Super Nintendo World con una franja horaria de la app o con un Express Pass
+  desde 10.800 yenes. El día de la semana cambia poco, y julio es el mes más
+  tranquilo.
 tags:
   - universal-studios-japan
   - osaka
@@ -49,8 +49,7 @@ seo:
 
 Quien quiera entrar en Super Nintendo World, en
 [Universal Studios Japan](ref:universal-studios-japan), necesita, según la
-afluencia del día, un Area Timed Entry Ticket. Hay dos caminos: comprarlo antes
-con uno de los Express Pass o sacarlo el mismo día en la app del parque. Desde el
+afluencia del día, un Area Timed Entry Ticket. Se compra antes con uno de los Express Pass o se saca el mismo día en la app del parque. Desde el
 **5 de enero de 2026** la entrega en el recinto se hace solo por la app. En los
 días de poca gente, según el parque, se puede entrar también sin entrada de
 franja.
@@ -91,7 +90,7 @@ Hollywood, New York, San Francisco, Minion Park, Jurassic Park, Amity Village,
 Universal Wonderland, WaterWorld, The Wizarding World of Harry Potter y Super
 Nintendo World.
 
-## Alturas mínimas, acompañante, detector de metales
+## Reglas en el acceso
 
 En cada atracción hay una altura mínima para subir solo y otra más baja si va un
 acompañante. El acompañante debe tener al menos la edad de la escuela media y
@@ -130,10 +129,9 @@ Altura mínima de 122 centímetros, o 92 con acompañante. Por eso un niño de e
 **[Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2)** abrió el
 11 de diciembre de 2024 con Donkey Kong Country y es una montaña rusa. El vagón
 sale disparado de un cañón de barril junto al Templo Dorado, cruza la selva y
-salta por encima de un tramo de vía hundido. Según la Wikipedia en inglés,
-Universal emplea para ello un sistema nuevo, el «Boom Coaster»: un brazo une las
-ruedas con el vagón de arriba, de modo que el vagón parece despegarse del raíl, y
-todo sin pantalla. Viajan cuatro personas en dos filas, el recorrido dura unos
+salta por encima de un tramo de vía hundido. Según la Wikipedia en inglés, Universal emplea para ello un sistema nuevo, el
+«Boom Coaster». Un brazo une las ruedas con el vagón de arriba, de modo que el
+vagón parece despegarse del raíl sin ningún efecto de pantalla. Viajan cuatro personas en dos filas, el recorrido dura unos
 dos minutos y uno puede mojarse. Altura mínima de 122 centímetros, o 107 con
 acompañante. Tiene cola de single rider.
 
@@ -189,9 +187,9 @@ centímetros, también con acompañante.
 **[Hollywood Dream – The Ride:
 Backdrop](ref:universal-studios-japan/hollywood-dream-the-ride-backdrop-2)** es
 la misma montaña rusa hacia atrás. Esta versión funcionó por primera vez del 15
-de marzo al 7 de julio de 2013 y después se quedó en el programa. Los 43 metros de
-la primera caída se bajan de espaldas, así que no se ve ni adónde se va ni lo que
-viene después. Misma altura mínima y mismas reglas en el acceso.
+de marzo al 7 de julio de 2013 y después se quedó en el programa. Los 43 metros de la primera caída se bajan de espaldas, así que no se ve lo que
+viene. La altura mínima y las reglas en el acceso son las mismas que en
+Hollywood Dream.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -273,10 +271,7 @@ Las diez atracciones con la mediana más alta de los últimos dos años, medida 
 
 ```
 
-Mine Cart Madness y Mario Kart están por delante de todas las demás. Detrás vienen
-Hollywood Dream: Backdrop y el espectáculo Detective Conan 4-D, luego Yoshi's
-Adventure, Hollywood Dream, Flight of the Hippogriff y Jurassic Park, y al final
-The Flying Dinosaur y Forbidden Journey. Quien ordene su día según la tabla
+Mine Cart Madness y Mario Kart están por delante de todas las demás. Quien ordene su día según la tabla
 empieza por las dos atracciones de Nintendo, mientras valga la franja horaria.
 
 ```hourly-profile-widget slug=universal-studios-japan top=8
@@ -292,7 +287,8 @@ dos atracciones y en Yoshi's Adventure. Después viene Hollywood Dream: Backdrop
 
 ```
 
-El 9 de octubre de 2026 el parque abre de 8:00 a 22:00, pero los horarios cambian.
+El 9 de octubre de 2026 el parque abrió de 8:00 a 22:00. Los horarios de cada
+día están en la página de horarios del parque.
 
 ## Cuándo ir
 
@@ -301,14 +297,13 @@ El 9 de octubre de 2026 el parque abre de 8:00 a 22:00, pero los horarios cambia
 ```
 
 En Osaka el día de la semana influye poco. Los siete días caen en el mismo nivel
-de afluencia, y la diferencia entre el más lleno y el más vacío es pequeña. Un
-martes apenas está más vacío que un sábado.
+de afluencia, y la diferencia entre el más lleno y el más vacío es pequeña.
 
 ```stats-widget slug=universal-studios-japan show=months
 
 ```
 
-Entre los meses la diferencia es mayor. Julio tiene la afluencia más baja de las
+Julio tiene la afluencia más baja de las
 mediciones y marzo queda claramente por encima. Diciembre está arriba del todo,
 pero está medido solo en ocho días. De octubre también faltan días.
 
@@ -332,7 +327,7 @@ En Hollywood Dream suenan en estas fechas temas de bandas japonesas, y Jurassic
 Park funciona como «The Ride in the Dark», de noche. Para el Express Pass, el
 parque ha preparado paquetes de Halloween con cuatro atracciones, por ejemplo con
 Factory of Fear, Chainsaw Man: The Chaos 4-D o Resident Evil Requiem: The Dive.
-Los demás parques en esta temporada están en nuestra
+Los demás parques en Halloween de 2026 están en nuestra
 [guía de Halloween](/blog/halloween-parques-atracciones-2026).
 
 El recorrido «Frieren: Beyond Journey's End Story Walk», en Hollywood, va del 30
@@ -391,7 +386,7 @@ pero ocupa un hueco suelto.
 
 ```
 
-### La app: franja horaria, Yoyakunori, Standby
+### Franjas horarias y reservas en la app
 
 Antes de comprar una franja hay que registrar la entrada en la app, y en un grupo
 las entradas de todos sus miembros.

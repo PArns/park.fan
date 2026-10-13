@@ -7,10 +7,10 @@ mode: published
 featured: false
 excerpt: >-
   Universal Studios Japan a Osaka nel 2024 ha avuto circa 16 milioni di ospiti,
-  più di qualsiasi altro parco in Asia. Per Super Nintendo World, a seconda
-  dell’affluenza, serve una fascia oraria dall’app; un Express Pass costa da
-  10.800 a 99.000 yen a seconda del pacchetto. Il giorno della settimana conta
-  poco, luglio è il mese più tranquillo.
+  più di qualsiasi altro parco in Asia. Nei giorni affollati a Super Nintendo
+  World si entra solo con una fascia oraria dall’app o con un Express Pass da
+  10.800 yen. Il giorno della settimana conta poco, e luglio è il mese più
+  tranquillo.
 tags:
   - universal-studios-japan
   - osaka
@@ -48,9 +48,7 @@ seo:
 ---
 
 Chi vuole entrare a Super Nintendo World in [Universal Studios Japan](ref:universal-studios-japan)
-ha bisogno, a seconda dell’affluenza, di un Area Timed Entry Ticket. Ci sono due
-strade: comprarlo prima insieme a uno degli Express Pass, oppure prenderlo il
-giorno della visita nell’app del parco. Dal **5 gennaio 2026** la distribuzione
+ha bisogno, a seconda dell’affluenza, di un Area Timed Entry Ticket. Si compra prima insieme a uno degli Express Pass, oppure si prende il giorno della visita nell’app del parco. Dal **5 gennaio 2026** la distribuzione
 sul posto passa solo dall’app. Nei giorni poco frequentati, secondo il parco, si
 entra anche senza biglietto.
 
@@ -87,7 +85,7 @@ Country. Il parco ha oggi dieci aree tematiche: Hollywood, New York, San
 Francisco, Minion Park, Jurassic Park, Amity Village, Universal Wonderland,
 WaterWorld, The Wizarding World of Harry Potter e Super Nintendo World.
 
-## Altezze minime, accompagnatore, metal detector
+## Regole all’imbarco
 
 Ogni attrazione ha un’altezza minima per salire da soli e una più bassa se c’è un
 accompagnatore. L’accompagnatore deve avere almeno l’età della scuola media e
@@ -125,10 +123,9 @@ su questa.
 **[Mine Cart Madness](ref:universal-studios-japan/mine-cart-madness-2)** ha
 aperto l’11 dicembre 2024 con Donkey Kong Country ed è una montagna russa. Il
 carrello parte sparato da un barile-cannone al Tempio Dorato, corre nella giungla
-e salta un pezzo di binario crollato. Secondo Wikipedia in inglese Universal usa
-qui un tipo di costruzione nuovo, il «Boom Coaster»: un braccio collega le ruote
-al carrello sopra di loro, così il carrello sembra staccarsi dalla rotaia, e tutto
-senza schermo. Quattro persone su due file, circa due minuti di giro, ci si può
+e salta un pezzo di binario crollato. Secondo Wikipedia in inglese Universal usa qui un tipo di costruzione nuovo, il
+«Boom Coaster». Un braccio collega le ruote al carrello sopra di loro, così il
+carrello sembra staccarsi dalla rotaia senza alcun effetto video. Quattro persone su due file, circa due minuti di giro, ci si può
 bagnare. Altezza minima 122 centimetri, 107 con accompagnatore. Per questa
 attrazione c’è una coda single rider.
 
@@ -180,9 +177,8 @@ accompagnatore.
 
 **[Hollywood Dream – The Ride: Backdrop](ref:universal-studios-japan/hollywood-dream-the-ride-backdrop-2)**
 è la stessa attrazione al contrario. La versione ha girato per la prima volta dal
-15 marzo al 7 luglio 2013 ed è rimasta in programma. I 43 metri della prima
-discesa si affrontano di schiena, senza vedere dove si va né che cosa viene dopo.
-Stessa altezza minima, stesse regole all’imbarco.
+15 marzo al 7 luglio 2013 ed è rimasta in programma. I 43 metri della prima discesa si affrontano di schiena, senza vedere che cosa
+arriva. Altezza minima e regole all’imbarco sono le stesse di Hollywood Dream.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -261,10 +257,7 @@ giorni:
 
 ```
 
-Mine Cart Madness e Mario Kart stanno davanti a tutte le altre. Dietro vengono
-Hollywood Dream: Backdrop e lo spettacolo Detective Conan 4-D, poi Yoshi's
-Adventure, Hollywood Dream, Flight of the Hippogriff e Jurassic Park, per ultimi
-The Flying Dinosaur e Forbidden Journey. Chi costruisce il giro sulla tabella
+Mine Cart Madness e Mario Kart stanno davanti a tutte le altre. Chi costruisce il giro sulla tabella
 comincia dalle due attrazioni Nintendo, finché vale la fascia oraria.
 
 ```hourly-profile-widget slug=universal-studios-japan top=8
@@ -280,7 +273,8 @@ queste due e su Yoshi's Adventure. Segue Hollywood Dream: Backdrop.
 
 ```
 
-Il 9 ottobre 2026 il parco è aperto dalle 8:00 alle 22:00, ma gli orari cambiano.
+Il 9 ottobre 2026 il parco era aperto dalle 8:00 alle 22:00. Gli orari di ogni
+giorno sono sulla pagina degli orari del parco.
 
 ## Quando andare
 
@@ -290,13 +284,13 @@ Il 9 ottobre 2026 il parco è aperto dalle 8:00 alle 22:00, ma gli orari cambian
 
 Il giorno della settimana a Osaka conta poco. Tutti e sette i giorni stanno nello
 stesso livello di affluenza, e fra il più pieno e il più vuoto la distanza è
-piccola. Un martedì è appena più vuoto di un sabato.
+piccola.
 
 ```stats-widget slug=universal-studios-japan show=months
 
 ```
 
-Fra un mese e l’altro la differenza è maggiore. Luglio ha nelle misurazioni
+Luglio ha nelle misurazioni
 l’affluenza più bassa, marzo sta nettamente sopra. Dicembre è il più alto, ma è
 misurato solo su otto giorni. Anche per ottobre mancano ancora dei giorni.
 
@@ -320,7 +314,7 @@ In questo periodo su Hollywood Dream suonano brani di gruppi giapponesi, e
 Jurassic Park gira al buio con il nome «The Ride in the Dark». Per l’Express Pass
 il parco ha preparato pacchetti di Halloween con quattro attrazioni, per esempio
 con Factory of Fear, Chainsaw Man: The Chaos 4-D o Resident Evil Requiem: The
-Dive. Gli altri parchi in stagione sono nella nostra
+Dive. Gli altri parchi ad Halloween 2026 sono nella nostra
 [guida di Halloween](/blog/halloween-parchi-divertimenti-2026).
 
 La passeggiata «Frieren: Beyond Journey's End Story Walk» a Hollywood va dal 30
@@ -378,7 +372,7 @@ riempie un posto singolo rimasto libero.
 
 ```
 
-### L’app: fasce orarie, Yoyakunori, standby
+### Fasce orarie e prenotazioni nell’app
 
 Prima di comprare una fascia oraria il biglietto va registrato nell’app, e per i
 gruppi i biglietti di tutti i membri.
