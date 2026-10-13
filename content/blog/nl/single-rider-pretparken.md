@@ -94,8 +94,8 @@ Het loont niet in deze gevallen:
 “Single Rider”. Een ontbrekend teken betekent niet dat er geen is, vaak weten we het voor die baan
 gewoon niet.
 
-**Hoe lang is hij nu?** Op 8 oktober 2026 hebben we de live-gegevens van
-alle 18 parken opgehaald. Daarin stonden 41 single-riderrijen in twaalf parken, 19 daarvan geopend, in zeven parken.
+**Hoe lang is hij nu?** Op 8 oktober 2026 hadden de 18 parken samen
+41 single-riderrijen in twaalf parken, 19 daarvan geopend, in zeven parken.
 Geen enkele van de 41 had een wachttijd. De parken melden ons dat de rij open is, maar niet hoe lang
 hij is. Op de attractiepagina toont park.fan dan “Single Rider” zonder tijd, en de tabellen in dit
 artikel tonen de gewone rij.
@@ -349,7 +349,7 @@ Anaheim bij 54 van de 56. Daar kunnen meer banen met single rider zijn, net als 
 waar we er geen enkele kennen.
 
 Voor het Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal en de
-Aziatische Disney-parken hebben we geen pagina van het park gelezen die de lijst bevestigt.
+Aziatische Disney-parken bevestigt geen pagina van het park de lijst.
 
 ## Verder lezen
 
@@ -372,4 +372,4 @@ Aziatische Disney-parken hebben we geen pagina van het park gelezen die de lijst
   [Eurosat – CanCan Coaster (officieel)](https://www.europapark.de/en/theme-park/attractions/eurosat-cancan-coaster)
 - Welke banen in welk park het kenmerk dragen, de cijfers van de tabel en de live-rijen: bevraging van
   de park.fan-API (`/v1/parks/<continent>/<land>/<stad>/<park>`, velden `hasSingleRider` en `queues`),
-  opgehaald op 8 oktober 2026 voor 203 parken met live-wachttijden
+  203 parken met live-wachttijden

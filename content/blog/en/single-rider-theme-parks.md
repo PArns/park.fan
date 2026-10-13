@@ -95,8 +95,8 @@ It isn’t worth it in these cases:
 the attraction page. A missing badge doesn’t mean there is none, often we just don’t know for that
 ride.
 
-**How long is it right now?** On 8 October 2026 we pulled the live
-data of all 18 parks. It contained 41 single rider queues in twelve parks, 19 of them open, in seven parks. Not one
+**How long is it right now?** On 8 October 2026 the 18 parks had
+41 single rider queues in twelve parks, 19 of them open, in seven parks. Not one
 of the 41 carried a wait time. The parks tell us the queue is open, but not how long it is. On the
 attraction page park.fan then shows “Single rider” without a time, and the tables in this post show
 the standard queue.
@@ -347,7 +347,7 @@ attractions, at Disneyland Park in Paris for 41 of 43, at Disneyland Park in Ana
 There may be more single rider rides there, and in the 185 parks where we know of none.
 
 For Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal and the
-Asian Disney parks we haven’t read a park page that confirms the list.
+Asian Disney parks no park page confirms the list.
 
 ## Further reading
 
@@ -370,4 +370,4 @@ Asian Disney parks we haven’t read a park page that confirms the list.
   [Eurosat – CanCan Coaster (official)](https://www.europapark.de/en/theme-park/attractions/eurosat-cancan-coaster)
 - Which rides in which park carry the attribute, the figures in the table and the live queues: query
   of the park.fan API (`/v1/parks/<continent>/<country>/<city>/<park>`, fields `hasSingleRider` and
-  `queues`), retrieved on 8 October 2026 for 203 parks with live wait times
+  `queues`), 203 parks with live wait times

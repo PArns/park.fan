@@ -96,8 +96,8 @@ Elle ne vaut pas le coup dans ces cas :
 Rider » sur la page de l’attraction. L’absence de repère ne veut pas dire qu’il n’y en a pas,
 souvent nous ne le savons simplement pas pour cette attraction.
 
-**Quelle est sa longueur en ce moment ?** Le 8 octobre 2026, nous
-avons interrogé les données en direct des 18 parcs. Elles contenaient 41 files Single Rider dans douze parcs, dont 19
+**Quelle est sa longueur en ce moment ?** Le 8 octobre 2026, les 18 parcs
+comptaient 41 files Single Rider dans douze parcs, dont 19
 ouvertes, dans sept parcs. Pas une seule des 41 n’affichait de temps d’attente. Les parcs nous
 signalent que la file est ouverte, mais pas sa longueur. Sur la page de l’attraction, park.fan montre
 alors « Single Rider » sans durée, et les tableaux de cet article montrent la file normale.
@@ -354,7 +354,7 @@ Park d’Anaheim pour 54 sur 56. Il peut y avoir d’autres attractions Single R
 comme dans les 185 parcs où nous n’en connaissons aucune.
 
 Pour le Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal et les
-parcs Disney d’Asie, nous n’avons lu aucune page du parc qui confirme la liste.
+parcs Disney d’Asie, aucune page du parc ne confirme la liste.
 
 ## Pour aller plus loin
 
@@ -378,5 +378,5 @@ parcs Disney d’Asie, nous n’avons lu aucune page du parc qui confirme la lis
   [Eurosat – CanCan Coaster (officiel)](https://www.europapark.de/en/theme-park/attractions/eurosat-cancan-coaster)
 - Quelles attractions de quel parc portent la caractéristique, les chiffres du tableau et les files en
   direct : requête à l’API park.fan (`/v1/parks/<continent>/<pays>/<ville>/<parc>`, champs
-  `hasSingleRider` et `queues`), consultée le 8 octobre 2026 pour 203 parcs avec temps d’attente en
+  `hasSingleRider` et `queues`), 203 parcs avec temps d’attente en
   direct

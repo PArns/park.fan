@@ -93,8 +93,8 @@ No compensa en estos casos:
 Rider» en la página de la atracción. Que falte el distintivo no quiere decir que no la haya, a
 menudo simplemente no lo sabemos para esa atracción.
 
-**¿Qué longitud tiene ahora mismo?** El 8 de octubre de 2026 consultamos
-los datos en vivo de los 18 parques. Contenían 41 colas single rider en doce parques, 19 de ellas abiertas, en siete
+**¿Qué longitud tiene ahora mismo?** El 8 de octubre de 2026 los 18 parques
+tenían 41 colas single rider en doce parques, 19 de ellas abiertas, en siete
 parques. Ninguna de las 41 traía tiempo de espera. Los parques nos comunican que la cola está
 abierta, pero no su longitud. En la página de la atracción, park.fan muestra entonces «Single Rider»
 sin tiempo, y las tablas de este artículo muestran la cola normal.
@@ -346,7 +346,7 @@ de Anaheim en 54 de 56. Allí puede haber más atracciones con single rider, igu
 parques donde no conocemos ninguna.
 
 Para el Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal y los
-parques Disney asiáticos no hemos leído ninguna página del parque que confirme la lista.
+parques Disney asiáticos ninguna página del parque confirma la lista.
 
 ## Para seguir leyendo
 
@@ -369,5 +369,5 @@ parques Disney asiáticos no hemos leído ninguna página del parque que confirm
   [Eurosat – CanCan Coaster (oficial)](https://www.europapark.de/en/theme-park/attractions/eurosat-cancan-coaster)
 - Qué atracciones de qué parque tienen la característica, las cifras de la tabla y las colas en vivo:
   consulta a la API de park.fan (`/v1/parks/<continente>/<país>/<ciudad>/<parque>`, campos
-  `hasSingleRider` y `queues`), realizada el 8 de octubre de 2026 para 203 parques con tiempos de espera
+  `hasSingleRider` y `queues`), 203 parques con tiempos de espera
   en vivo

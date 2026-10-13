@@ -98,8 +98,7 @@ Es lohnt sich nicht in diesen Fällen:
 Attraktion das Zeichen „Single Rider“. Ein fehlendes Zeichen heißt nicht, dass es keine gibt, oft
 wissen wir es bei dieser Bahn nur nicht.
 
-**Wie lang ist sie gerade?** Wir haben am 8. Oktober 2026 die Live-Daten aller
-18 Parks abgerufen. Darin standen 41 Single-Rider-Warteschlangen in zwölf Parks, 19 davon geöffnet, in sieben Parks.
+**Wie lang ist sie gerade?** Am 8. Oktober 2026 hatten die 18 Parks zusammen 41 Single-Rider-Warteschlangen in zwölf Parks, 19 davon geöffnet, in sieben Parks.
 Keine einzige der 41 trug eine Wartezeit. Die Parks melden uns, dass die Warteschlange offen ist,
 aber nicht, wie lang sie ist. Auf der Attraktionsseite zeigt park.fan dann „Single Rider“ ohne Zeit,
 und die Tabellen in diesem Beitrag zeigen die normale Warteschlange.
@@ -357,7 +356,7 @@ in Anaheim bei 54 von 56. Dort kann es weitere Bahnen mit Single Rider geben, eb
 Parks, in denen wir keine einzige kennen.
 
 Für Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal und die
-asiatischen Disney-Parks haben wir keine Seite des Parks gelesen, die die Liste bestätigt.
+asiatischen Disney-Parks bestätigt keine Seite des Parks die Liste.
 
 ## Zum Weiterlesen
 
@@ -380,4 +379,4 @@ asiatischen Disney-Parks haben wir keine Seite des Parks gelesen, die die Liste 
   [Eurosat – CanCan Coaster (offiziell)](https://www.europapark.de/en/theme-park/attractions/eurosat-cancan-coaster)
 - Welche Bahnen in welchem Park das Merkmal tragen, die Zahlen der Tabelle und die Live-Warteschlangen:
   Abfrage der park.fan-API (`/v1/parks/<Kontinent>/<Land>/<Stadt>/<Park>`, Felder `hasSingleRider`
-  und `queues`), abgerufen am 8. Oktober 2026 für 203 Parks mit Live-Wartezeiten
+  und `queues`), 203 Parks mit Live-Wartezeiten

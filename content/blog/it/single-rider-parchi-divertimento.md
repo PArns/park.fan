@@ -95,8 +95,8 @@ Non conviene in questi casi:
 pagina dell’attrazione. Se l’icona manca non vuol dire che non ci sia, spesso per quell’attrazione
 semplicemente non lo sappiamo.
 
-**Quanto è lunga adesso?** L’8 ottobre 2026 abbiamo richiesto i dati in
-tempo reale di tutti i 18 parchi. C’erano 41 code single rider in dodici parchi, 19 delle quali aperte, in sette
+**Quanto è lunga adesso?** L’8 ottobre 2026 i 18 parchi
+avevano 41 code single rider in dodici parchi, 19 delle quali aperte, in sette
 parchi. Nessuna delle 41 riportava un tempo di attesa. I parchi ci comunicano che la coda è aperta,
 ma non quanto è lunga. Sulla pagina dell’attrazione park.fan mostra allora “Single Rider” senza
 tempo, e le tabelle di questo articolo mostrano la coda normale.
@@ -347,7 +347,7 @@ parte delle attrazioni, al Disneyland Park di Parigi per 41 su 43, al Disneyland
 conosciamo nessuna.
 
 Per il Phantasialand, Disneyland Paris, PortAventura, Alton Towers, il Thorpe Park, Universal e i
-parchi Disney asiatici non abbiamo letto nessuna pagina del parco che confermi l’elenco.
+parchi Disney asiatici nessuna pagina del parco conferma l’elenco.
 
 ## Per approfondire
 
@@ -370,5 +370,5 @@ parchi Disney asiatici non abbiamo letto nessuna pagina del parco che confermi l
   [Eurosat – CanCan Coaster (ufficiale)](https://www.europapark.de/en/theme-park/attractions/eurosat-cancan-coaster)
 - Quali attrazioni di quale parco hanno la caratteristica, i numeri della tabella e le code in tempo
   reale: interrogazione dell’API di park.fan (`/v1/parks/<continente>/<paese>/<città>/<parco>`, campi
-  `hasSingleRider` e `queues`), consultata l’8 ottobre 2026 per 203 parchi con tempi di attesa in tempo
+  `hasSingleRider` e `queues`), 203 parchi con tempi di attesa in tempo
   reale
