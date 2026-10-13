@@ -7,8 +7,8 @@ mode: published
 featured: false
 excerpt: >-
   Legoland Windsor has over 55 rides and attractions for children from two to
-  twelve. An early start pays off at four rides, while two of the longest
-  queues hardly change through the day. Brick or Treat runs until 1 November.
+  twelve. At opening the queues at Pirate Falls, Hydra's Challenge, The Dragon
+  and Laser Raiders are short. Brick or Treat runs until 1 November.
 tags:
   - legoland
   - windsor
@@ -79,11 +79,11 @@ Each ride at Legoland Windsor has two limits: a minimum height at which a child 
 
 Say your child is six and 1.15 metres tall. With you, they can ride Hydra's Challenge, The Dragon, Pirate Falls and Flight of the Sky Lion. They can ride the Minifigure Speedway too, since the limit there is 1.05 metres. They can only ride alone from 1.30 metres, or from 1.20 metres on Flight of the Sky Lion. On Flight of the Sky Lion one adult can accompany at most two children between 1.00 and 1.20 metres.
 
-According to the park, children under 90 centimetres get in free. The park doesn't recommend LEGO NINJAGO The Ride for children under three, because of the sound, smoke and light effects. The LEGO City Driving School is open to children between 1.10 and 1.50 metres who are under 13. The park lists the heights for the remaining rides on its page on height restrictions.
+Children under 90 centimetres get in free, the park says. The park doesn't recommend LEGO NINJAGO The Ride for children under three, because of the sound, smoke and light effects. The LEGO City Driving School is open to children between 1.10 and 1.50 metres who are under 13. The park lists the heights for the remaining rides on its page on height restrictions.
 
 ## The big rides
 
-According to the park, the **[Minifigure Speedway](ref:legoland-windsor/minifigure-speedway)** is the first dueling coaster in Lego design, and it runs in both directions. Two trains, Team Legends and Team AllStars, launch at the same time, and part of the track runs backwards. Zierer built it. According to Wikipedia it's 14 metres tall, 244 metres long and reaches up to 56 km/h. It stands on the site of the Raft Racers, a rubber-raft slide that ran until 2021.
+The park calls the **[Minifigure Speedway](ref:legoland-windsor/minifigure-speedway)** the first dueling coaster in Lego design, and it runs in both directions. Two trains, Team Legends and Team AllStars, launch at the same time, and part of the track runs backwards. Zierer built it. Wikipedia gives it as 14 metres tall and 244 metres long, with a top speed of 56 km/h. It stands on the site of the Raft Racers, a rubber-raft slide that ran until 2021.
 
 **[The Dragon](ref:legoland-windsor/the-dragon)** has been running since 1998. The train first rolls through a castle with animated Lego scenes, then climbs the lift and runs two figure-eights through the treetops. The park gives up to 30 miles per hour, which is about 48 km/h. According to Coasterpedia the track is 423 metres long. Two riders sit in each row, with children on the left side of the train.
 
@@ -111,13 +111,13 @@ At the **[Fire Academy](ref:legoland-windsor/fire-academy)** four people take a 
 
 ## Miniland, building and everything without a queue
 
-**[Miniland](ref:legoland-windsor/miniland)** has no minimum height and no queue. The park recommends it for busy days, as it does the building areas **The Brick**, **Creature Creation** and **LEGO Ferrari Build & Race**, where children build a car and race it against others. The park also suggests the Magical Forest in Mythica. According to the park, the LEGO Store is emptier between noon and 4 pm than at the end of the day, and purchases can be stored at Shopper Services and collected later.
+**[Miniland](ref:legoland-windsor/miniland)** has no minimum height and no queue. The park recommends it for busy days, as it does the building areas **The Brick**, **Creature Creation** and **LEGO Ferrari Build & Race**, where children build a car and race it against others. The park also suggests the Magical Forest in Mythica. The park says the LEGO Store is emptier between noon and 4 pm than at the end of the day, and purchases can be stored at Shopper Services and collected later.
 
 **LEGOLAND Adventure Golf** is, according to the park, the first indoor mini golf course with a LEGO theme, and it has its own admission. The park also sells it together with the day ticket, for one round of nine holes.
 
 ## The remaining rides by area
 
-The park is divided into eleven themed areas: The Beginning at the entrance, DUPLO Valley, Knight's Kingdom, LEGO City, Miniland, LEGO NINJAGO World, Pirate Shores, Heartlake City, Bricktopia, Kingdom of the Pharaohs and LEGO Mythica. The bigger rides are above, the smaller ones follow by area:
+The park is divided into eleven themed areas: The Beginning at the entrance, DUPLO Valley, Knight's Kingdom, LEGO City, Miniland, LEGO NINJAGO World, Pirate Shores, Heartlake City, Bricktopia, Kingdom of the Pharaohs and LEGO Mythica.
 
 In **Pirate Shores**, next to Pirate Falls, there's the **[Jolly Rocker](ref:legoland-windsor/jolly-rocker)**, a swinging pirate ship by Huss with 35 seats that came here from another park in 2010. The **[Spinning Spider](ref:legoland-windsor/spinning-spider)** is a spinning ride with gondolas shaped like tree trunks, above which a Lego spider gnashes its jaws and blows smoke. The two rides have minimum heights of 1.00 and 0.90 metres. Then there's the playground **Castaway Camp** on a pirate ship, which opened in 2014. Staff don't supervise it, so children must be supervised at all times by a person aged 16 or over.
 
@@ -131,7 +131,7 @@ In **Bricktopia** the LEGO Studios show 4D Lego films. The **[Destiny's Bounty](
 
 ## Shows and meet-and-greets
 
-Shows and meetings with characters are part of the daily programme. In DUPLO Valley the red rabbit Hopsy waits for toddlers in Hopsy's Hideaway. The programme currently includes "Meet Cake Guy!" with several slots a day. Birthday children get a free badge at Guest Services. The park's app shows the times of all shows, and the "Shows & Entertainment" page gives an overview.
+In DUPLO Valley the red rabbit Hopsy waits for toddlers in Hopsy's Hideaway. The programme currently includes "Meet Cake Guy!" with several slots a day. Birthday children get a free badge at Guest Services. Show times are in the park's app, with an overview on the "Shows & Entertainment" page.
 
 ## A day with children under six
 
@@ -139,7 +139,7 @@ For children up to five, it's worth starting the day in DUPLO Valley. The rides 
 
 ## Wait times by ride and weekday
 
-The table lists eight rides with the median, the type and the measured days. The Pokémon Trainer Centre at the LEGO Festival, which ran from 20 July to 31 August, had the longest queue in the park over the summer. It's missing here because it has only 24 measured days.
+The Pokémon Trainer Centre at the LEGO Festival, which ran from 20 July to 31 August, had the longest queue in the park over the summer. It's missing here because it has only 24 measured days.
 
 ```ride-waits-widget rides=legoland-windsor/flight-of-the-sky-lion|Flight of the Sky Lion|Flying theatre;legoland-windsor/coastguard-hq|Coastguard HQ|Boats;legoland-windsor/hydras-challenge|Hydra's Challenge|Water ride;legoland-windsor/pirate-falls-treasure-quest|Pirate Falls|Log flume;legoland-windsor/laser-raiders|Laser Raiders|Dark ride;legoland-windsor/fire-academy|Fire Academy|Interactive ride;legoland-windsor/minifigure-speedway|Minifigure Speedway|Coaster;legoland-windsor/the-dragon|The Dragon|Coaster columns=land,type,days
 
@@ -161,7 +161,7 @@ Saturday is the busiest day and Sunday the second busiest. Tuesday and Thursday 
 
 August is the busiest month and June the emptiest, with March, September and October also low. For January, February, October and December we have fewer than twelve measured days, and for November none.
 
-The park opens at 10 am, and the queues for all rides close up to 30 minutes before the park does. The next table has one row per ride and one column per hour.
+The park opens at 10 am, and the queues for all rides close up to 30 minutes before the park does.
 
 ```hourly-profile-widget slug=legoland-windsor top=8
 
@@ -177,21 +177,21 @@ Rope drop means you're at the entrance at opening and ride the first rides befor
 
 ```
 
-That doesn't apply to Flight of the Sky Lion and Coastguard HQ. Both already have a queue at opening, and it hardly moves afterwards. If you're there early, you can ride them just as well at midday. Minifigure Speedway, Fire Academy and the Driving School get no rope drop tip either.
+That doesn't apply to Flight of the Sky Lion and Coastguard HQ. Both already have a queue at opening, and it hardly moves afterwards. If you're there early, you can ride them just as well at midday.
 
-A sequence for children from seven: The Dragon and Hydra's Challenge first, and both should be done before half past eleven. Then Laser Raiders, by around half past eleven at the latest. At Pirate Falls the queue stays short the longest, and the ride can wait until about 1 pm. In October that's also the warmer time for wet clothes. Flight of the Sky Lion, Coastguard HQ and the other rides follow. If you want to do the LEGO Store before the crowds, go in between noon and 4 pm.
+A sequence for children from seven: The Dragon and Hydra's Challenge first, and both should be done before half past eleven. Then Laser Raiders, by around half past eleven at the latest. At Pirate Falls the queue stays short the longest, and the ride can wait until about 1 pm. In October that's also the warmer time for wet clothes. Flight of the Sky Lion, Coastguard HQ and the other rides follow.
 
 ## The three Fastrack packages and their rides
 
 **Fastrack** is the paid option that gives you a separate entrance with a shorter wait at many rides. The park sells three packages: Bronze with three rides, Silver with six and Gold for the whole day. Each package is valid for one person, is scanned only once every three minutes and includes no park admission. Fastrack is non-refundable and non-transferable.
 
-The packages differ in the rides they cover. Bronze excludes Hydra's Challenge, Flight of the Sky Lion and Coastguard HQ, which are the three rides among the longest in our measurements. With Silver or Gold you ride them. Altogether Fastrack works at 29 rides, including Minifigure Speedway, The Dragon, Pirate Falls, Laser Raiders and LEGO NINJAGO The Ride. The park gives the price for your day in its booking flow.
+Bronze excludes Hydra's Challenge, Flight of the Sky Lion and Coastguard HQ, which are the three rides among the longest in our measurements. With Silver or Gold you ride them. Altogether Fastrack works at 29 rides, including Minifigure Speedway, The Dragon, Pirate Falls, Laser Raiders and LEGO NINJAGO The Ride. You see the price for your day when you book.
 
-Whether it pays depends on the weekday. On a Tuesday in September I wouldn't buy Fastrack: Bronze doesn't cover the three longest queues, and at the other rides the waits on a day like that are short. On a Saturday or in the school holidays Silver or Gold can make sense, above all for Flight of the Sky Lion, since an early start saves nothing there.
+On a Tuesday in September I wouldn't buy Fastrack: Bronze doesn't cover the three longest queues, and at the other rides the waits on a day like that are short. On a Saturday or in the school holidays Silver or Gold can make sense, above all for Flight of the Sky Lion, since an early start saves nothing there.
 
 ## Tickets, prices and annual passes
 
-A day ticket costs **from £32** online, and booking ahead saves up to £36, according to the park. Prices depend on the day. Children under 90 centimetres get in free. Tickets are non-refundable, but the date can be changed. According to the park there are currently no two-for-one offers. Tickets for Brick or Treat start at £37 per person, for LEGOLAND at Christmas at £34.
+A day ticket costs **from £32** online, and booking ahead saves up to £36, according to the park. Prices depend on the day. Children under 90 centimetres get in free. Tickets are non-refundable, but the date can be changed. The park says there are currently no two-for-one offers. Tickets for Brick or Treat start at £37 per person, for LEGOLAND at Christmas at £34.
 
 The annual passes cost between £64 and £299. The **LEGOLAND Annual Pass** costs from £64 and has 17 blackout days. The **Merlin Essential Pass** costs £139 with 25 blackout days. The **Merlin Gold Pass** costs £239 and includes parking, with only the fireworks at Alton Towers excluded. The **Merlin Platinum Pass** costs £299 and has no blackout days, four friends' tickets a year and a single Fastrack per visit. If you want to come on a blackout day, you pay £15 per person for an upgrade ticket. All pass holders have to book their visit in advance. The passes include Brick or Treat and LEGOLAND at Christmas.
 
@@ -199,11 +199,11 @@ The annual passes cost between £64 and £299. The **LEGOLAND Annual Pass** cost
 
 Legoland Windsor opens at 10 am, and closing time is between 4:30 and 6 pm depending on the day. In October 2026 the park usually closes at 4:30 pm on weekdays and at 6 pm at weekends and in the autumn half-term. Guests of the resort hotels can enter the park before opening (Early Park Access), for which they need a valid park ticket.
 
-Some rides run in autumn only on weekdays or only from the afternoon. From 25 September to 16 October, for example, LEGO NINJAGO The Ride, Destiny's Bounty and Deep Sea Adventure open only at 1 pm on weekdays, and Aero Nomad closes at 1 pm. The park's "Ride & Show Availability" page lists all dates.
+Some rides run in autumn only on weekdays or only from the afternoon. From 25 September to 16 October, for example, LEGO NINJAGO The Ride, Destiny's Bounty and Deep Sea Adventure open only at 1 pm on weekdays, and Aero Nomad closes at 1 pm. All dates are on the park's "Ride & Show Availability" page.
 
 **Brick or Treat**, the park's Halloween event, runs on 10 and 11 October and from 17 October to 1 November. The programme includes the show "Lord Vampyre's House Party", the show "Monster Jam", a disco in The Dragon, the Haunted House Monster Party, photo spots and meetings with Lego monsters. Costumes are welcome, face masks and toy weapons aren't. The Halloween dates of other parks are in the [Halloween overview](/blog/halloween-theme-parks-2026).
 
-Pirate Falls closes on **2 November** and reopens in March 2027. On **9 November** Aero Nomad, Balloon School, Fire Academy, Jolly Rocker and Minifigure Speedway close until February 2027, and Coastguard HQ, Fairy Tale Brook, Fire & Ice Freefall and Hydra's Challenge until March. **LEGOLAND at Christmas** runs on selected days from 21 November to 2 January 2027, with more than 20 rides, a meeting with the LEGO Santa and several shows. The [winter overview](/blog/winter-theme-parks-2026) compares that with other parks.
+Pirate Falls closes on **2 November** and reopens in March 2027. On **9 November** Aero Nomad, Balloon School, Fire Academy, Jolly Rocker and Minifigure Speedway close until February 2027, and Coastguard HQ, Fairy Tale Brook, Fire & Ice Freefall and Hydra's Challenge until March. **LEGOLAND at Christmas** runs on selected days from 21 November to 2 January 2027, with more than 20 rides, a meeting with the LEGO Santa and several shows. Christmas at other parks is in our [winter overview](/blog/winter-theme-parks-2026).
 
 The quietest upcoming days at Legoland Windsor:
 
@@ -213,7 +213,7 @@ The quietest upcoming days at Legoland Windsor:
 
 ## When it rains
 
-The park calls the Laser Raiders an indoor ride. The LEGO Studios 4D films in Bricktopia also run in a building, and the building areas The Brick, Creature Creation and LEGO Ferrari Build & Race are places without a queue that the park recommends for busy days. The park advises waterproof clothing, because the British weather is changeable and the water rides are part of the programme.
+The park calls the Laser Raiders an indoor ride. The LEGO Studios 4D films in Bricktopia also run in a building. The park advises waterproof clothing, because the British weather is changeable and the water rides are part of the programme.
 
 ```weather-widget slug=legoland-windsor
 
@@ -221,11 +221,11 @@ The park calls the Laser Raiders an indoor ride. The LEGO Studios 4D films in Br
 
 ## Food, babies and the entrance
 
-All the park's catering outlets are **cashless**, and you pay by card, Apple Pay or Android Pay. In the park there's **City Walk Pizza & Pasta** in Heartlake City, a self-service buffet with pizza and pasta, **Pirate's Burger Kitchen**, **Farmer Joe's Chicken Company** in DUPLO Valley, **The Hungry Troll** and the **Skyline Bar** in the Resort Hotel. There are also several LEGOLAND Coffee Co. stands, a Ben & Jerry's and Wizard's Frozen Wonders. The park's list of banned items includes glass bottles and alcohol, but not food. There are drinking water stations in the park.
+All the park's catering outlets are **cashless**, and you pay by card, Apple Pay or Android Pay. In the park there's **City Walk Pizza & Pasta** in Heartlake City, a self-service buffet with pizza and pasta, **Pirate's Burger Kitchen**, **Farmer Joe's Chicken Company** in DUPLO Valley, **The Hungry Troll** and the **Skyline Bar** in the Resort Hotel. There are also several LEGOLAND Coffee Co. stands, a Ben & Jerry's and Wizard's Frozen Wonders. You can bring your own food, but not glass bottles or alcohol. There are drinking water stations in the park.
 
-For babies and toddlers there are Baby Care Centres, spread across the resort and marked on the park map. The park names DUPLO Valley as the area for families with toddlers, where many rides have no minimum height. According to the park, Priority Parking suits families with strollers, and lockers are near the main entrance. The Total Sensory Space in Heartlake City is a room with beanbags, projections and dimmed light for guests who need a break from the noise.
+For babies and toddlers there are Baby Care Centres, spread across the resort and marked on the park map. The park names DUPLO Valley as the area for families with toddlers, where many rides have no minimum height. The park recommends Priority Parking for families with strollers, and lockers are near the main entrance. The Total Sensory Space in Heartlake City is a room with beanbags, projections and dimmed light for guests who need a break from the noise.
 
-At the entrance, security staff search all bags. Banned items include glass bottles, alcohol, weapons and toy weapons, skateboards, scooters, rollerblades and drones. Allow time for that before you go to the turnstiles. The Ride Access Pass system changes at the end of 2026. The park is introducing a virtual queue, eligibility stays the same, and the requirement to book in advance is to be phased out gradually.
+At the entrance, security staff search all bags. Banned items include glass bottles, alcohol, weapons and toy weapons, skateboards, scooters, rollerblades and drones. The Ride Access Pass system changes at the end of 2026. The park is introducing a virtual queue, eligibility stays the same, and the requirement to book in advance is to be phased out gradually.
 
 ## Getting there, parking and where to stay
 
@@ -235,11 +235,11 @@ Parking costs **from £13** if you book online in advance, and £15 on the day. 
 
 By train you go from London Paddington in about 30 minutes via Slough to Windsor & Eton Central, or from Waterloo in under an hour to Windsor & Eton Riverside. A paid shuttle bus, which the park doesn't run, leaves from both stations. The Green Line routes 702 and 703 run every half hour to Windsor and Slough.
 
-There are three places to stay on site. The **LEGOLAND Resort Hotel** opened in March 2012, with a Pirate Splash pool and themed rooms. The **LEGOLAND Castle Hotel** followed on 1 July 2017, with knight and wizard rooms. According to Wikipedia the way there leads through the Resort Hotel and the park. The **LEGOLAND Woodland Village** is the newest accommodation, with huts and barrel rooms in the woods. According to the park, the hotel packages include one night, one park day, breakfast and Early Park Access.
+There are three places to stay on site. The **LEGOLAND Resort Hotel** opened in March 2012, with a Pirate Splash pool and themed rooms. The **LEGOLAND Castle Hotel** followed on 1 July 2017, with knight and wizard rooms. According to Wikipedia the way there leads through the Resort Hotel and the park. The **LEGOLAND Woodland Village** is the newest accommodation, with huts and barrel rooms in the woods. The park's hotel packages include one night, one park day, breakfast and Early Park Access.
 
 ## What's new and what's closing
 
-New since April 2024 is the Minifigure Speedway. The Sky Rider, an elevated ride with a view of Miniland, closed in 2024, and the log flume Vikings' River Splash on 25 September 2023. Autumn's Riding Adventure was shut for maintenance from 2 to 30 September 2026. The "What's New for 2026" page lists events as the year's new things: the LEGO NINJAGO Celebration from 28 March to 12 April and the LEGO Festival from 20 July to 31 August. It lists no new ride. What other parks have confirmed for 2027 is collected in the overview of [new attractions 2027](/blog/new-theme-park-attractions-2027).
+New since April 2024 is the Minifigure Speedway. The Sky Rider, an elevated ride with a view of Miniland, closed in 2024, and the log flume Vikings' River Splash on 25 September 2023. Autumn's Riding Adventure was shut for maintenance from 2 to 30 September 2026. The "What's New for 2026" page lists events as the year's new things: the LEGO NINJAGO Celebration from 28 March to 12 April and the LEGO Festival from 20 July to 31 August. It lists no new ride. For what other parks have confirmed for 2027, see [new attractions 2027](/blog/new-theme-park-attractions-2027).
 
 ## Frequently asked questions about Legoland Windsor
 
@@ -273,7 +273,7 @@ Four: [Minifigure Speedway](ref:legoland-windsor/minifigure-speedway?bare), [The
 
 ## Further reading
 
-The German counterpart is described in the guide to [Legoland Deutschland](/blog/legoland-deutschland-tips), and the ranking of the German parks is in the overview of the [best theme parks in Germany](/blog/best-theme-parks-in-germany). How we rate rope drop is explained in the article [Is 70 Minutes a Long Wait?](/blog/is-70-minutes-a-long-wait).
+For the German counterpart there's the guide to [Legoland Deutschland](/blog/legoland-deutschland-tips), and the ranking of the German parks is in the overview of the [best theme parks in Germany](/blog/best-theme-parks-in-germany). We explain how we rate rope drop in [Is 70 Minutes a Long Wait?](/blog/is-70-minutes-a-long-wait).
 
 ## Who Legoland Windsor suits less
 

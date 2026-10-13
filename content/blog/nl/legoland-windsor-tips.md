@@ -7,9 +7,8 @@ mode: published
 featured: false
 excerpt: >-
   Legoland Windsor heeft ruim 55 attracties voor kinderen van twee tot twaalf
-  jaar. Een vroege start loont bij vier ervan, terwijl twee van de langste
-  wachtrijen de hele dag nauwelijks veranderen. Brick or Treat loopt tot 1
-  november.
+  jaar. Bij de opening zijn de wachtrijen bij Pirate Falls, Hydra's Challenge,
+  The Dragon en Laser Raiders kort. Brick or Treat loopt tot 1 november.
 tags:
   - legoland
   - windsor
@@ -118,7 +117,7 @@ Bij de **[Fire Academy](ref:legoland-windsor/fire-academy)** nemen vier mensen h
 
 ## De overige attracties per themawereld
 
-Het park is verdeeld in elf themawerelden: The Beginning bij de ingang, DUPLO Valley, Knight's Kingdom, LEGO City, Miniland, LEGO NINJAGO World, Pirate Shores, Heartlake City, Bricktopia, Kingdom of the Pharaohs en LEGO Mythica. De grotere attracties staan hierboven, de kleinere volgen per gebied:
+Het park is verdeeld in elf themawerelden: The Beginning bij de ingang, DUPLO Valley, Knight's Kingdom, LEGO City, Miniland, LEGO NINJAGO World, Pirate Shores, Heartlake City, Bricktopia, Kingdom of the Pharaohs en LEGO Mythica.
 
 In **Pirate Shores** vaart naast Pirate Falls de **[Jolly Rocker](ref:legoland-windsor/jolly-rocker)**, een schommelend piratenschip van Huss met 35 plaatsen dat in 2010 uit een ander park hierheen kwam. De **[Spinning Spider](ref:legoland-windsor/spinning-spider)** is een draaimolen met gondels in de vorm van boomstammen, waarboven een Lego-spin met de kaken knarst en rook blaast. Voor die twee attracties gelden minimumlengtes van 1,00 en 0,90 meter. Daarbij komt de speeltuin **Castaway Camp** op een piratenschip, die in 2014 openging. Het personeel houdt er geen toezicht, kinderen moeten steeds onder toezicht staan van iemand van 16 jaar of ouder.
 
@@ -132,7 +131,7 @@ In **Bricktopia** draaien de LEGO Studios 4D-Legofilms. De **[Destiny's Bounty](
 
 ## Shows en ontmoetingen
 
-Bij het dagprogramma horen shows en ontmoetingen met figuren. In DUPLO Valley wacht het rode konijn Hopsy in Hopsy's Hideaway op peuters. Op het programma staat nu “Meet Cake Guy!” met meerdere tijden per dag. Jarigen krijgen bij Guest Services een gratis badge. De tijden van alle shows staan in de app van het park, en een overzicht vind je op de pagina “Shows & Entertainment”.
+In DUPLO Valley wacht het rode konijn Hopsy in Hopsy's Hideaway op peuters. Op het programma staat nu “Meet Cake Guy!” met meerdere tijden per dag. Jarigen krijgen bij Guest Services een gratis badge. De tijden van alle shows staan in de app van het park, en een overzicht vind je op de pagina “Shows & Entertainment”.
 
 ## Een dag met kinderen onder de zes
 
@@ -140,7 +139,7 @@ Met kinderen tot en met vijf jaar is het verstandig de dag in DUPLO Valley te be
 
 ## Wachttijden per attractie en weekdag
 
-De tabel toont acht attracties, met de mediaan, het type en de meetdagen. Het Pokémon Trainer Centre van het LEGO Festival, dat van 20 juli tot 31 augustus liep, had in de zomer de langste wachtrij van het park. Het ontbreekt hier omdat er maar 24 meetdagen zijn.
+Het Pokémon Trainer Centre van het LEGO Festival, dat van 20 juli tot 31 augustus liep, had in de zomer de langste wachtrij van het park. Het ontbreekt hier omdat er maar 24 meetdagen zijn.
 
 ```ride-waits-widget rides=legoland-windsor/flight-of-the-sky-lion|Flight of the Sky Lion|Flying theatre;legoland-windsor/coastguard-hq|Coastguard HQ|Boten;legoland-windsor/hydras-challenge|Hydra's Challenge|Waterrit;legoland-windsor/pirate-falls-treasure-quest|Pirate Falls|Wildwaterbaan;legoland-windsor/laser-raiders|Laser Raiders|Darkride;legoland-windsor/fire-academy|Fire Academy|Doe-rit;legoland-windsor/minifigure-speedway|Minifigure Speedway|Achtbaan;legoland-windsor/the-dragon|The Dragon|Achtbaan columns=land,type,days
 
@@ -162,7 +161,7 @@ De zaterdag is de drukste dag en de zondag de op een na drukste. Dinsdag en dond
 
 Augustus is de drukste maand, juni de rustigste, en ook maart, september en oktober scoren laag. Voor januari, februari, oktober en december hebben we minder dan twaalf meetdagen, voor november geen enkele.
 
-Het park gaat om 10 uur open, en de wachtrijen van alle attracties sluiten tot 30 minuten voor sluitingstijd. De volgende tabel heeft één rij per attractie en één kolom per uur.
+Het park gaat om 10 uur open, en de wachtrijen van alle attracties sluiten tot 30 minuten voor sluitingstijd.
 
 ```hourly-profile-widget slug=legoland-windsor top=8
 
@@ -178,17 +177,17 @@ Rope drop betekent dat je bij de opening bij de ingang staat en de eerste attrac
 
 ```
 
-Voor Flight of the Sky Lion en Coastguard HQ geldt dat niet. Beide hebben al bij de opening een wachtrij die daarna nauwelijks beweegt. Wie vroeg is, rijdt ze net zo goed rond de middag. Ook de Minifigure Speedway, de Fire Academy en de Driving School krijgen geen rope-droptip.
+Voor Flight of the Sky Lion en Coastguard HQ geldt dat niet. Beide hebben al bij de opening een wachtrij die daarna nauwelijks beweegt. Wie vroeg is, rijdt ze net zo goed rond de middag.
 
-Een route voor kinderen vanaf zeven: eerst The Dragon en Hydra's Challenge, beide liefst voor half twaalf. Dan de Laser Raiders, uiterlijk tegen half twaalf. Bij Pirate Falls blijft de wachtrij het langst kort, die attractie kun je tot ongeveer 13 uur uitstellen. In oktober is dat voor natte kleren ook het warmste moment. Daarna volgen Flight of the Sky Lion, Coastguard HQ en de overige attracties. Wie de LEGO Store voor de drukte wil afhandelen, gaat tussen 12 en 16 uur naar binnen.
+Een route voor kinderen vanaf zeven: eerst The Dragon en Hydra's Challenge, beide liefst voor half twaalf. Dan de Laser Raiders, uiterlijk tegen half twaalf. Bij Pirate Falls blijft de wachtrij het langst kort, die attractie kun je tot ongeveer 13 uur uitstellen. In oktober is dat voor natte kleren ook het warmste moment. Daarna volgen Flight of the Sky Lion, Coastguard HQ en de overige attracties.
 
 ## De drie Fastrack-pakketten en hun attracties
 
 **Fastrack** heet het betaalde aanbod dat bij veel attracties een eigen ingang met een kortere wachtrij geeft. Het park verkoopt drie pakketten: Bronze met drie ritten, Silver met zes en Gold voor de hele dag. Elk pakket geldt voor één persoon, wordt maar eens per drie minuten gescand en bevat geen toegang tot het park. Fastrack kan niet worden terugbetaald en niet worden overgedragen.
 
-De pakketten verschillen in de attracties. Bronze sluit Hydra's Challenge, Flight of the Sky Lion en Coastguard HQ uit, de drie attracties die in onze metingen bij de langste horen. Met Silver of Gold rijd je ze wel. In totaal werkt Fastrack bij 29 attracties, waaronder de Minifigure Speedway, The Dragon, Pirate Falls, Laser Raiders en LEGO NINJAGO The Ride. De prijs voor jouw dag noemt het park in het boekingsproces.
+Bronze sluit Hydra's Challenge, Flight of the Sky Lion en Coastguard HQ uit, de drie attracties die in onze metingen bij de langste horen. Met Silver of Gold rijd je ze wel. In totaal werkt Fastrack bij 29 attracties, waaronder de Minifigure Speedway, The Dragon, Pirate Falls, Laser Raiders en LEGO NINJAGO The Ride. De prijs voor jouw dag zie je bij het boeken.
 
-Of het loont, hangt van de weekdag af. Op een dinsdag in september zou ik Fastrack niet kopen: Bronze dekt de drie langste wachtrijen niet, en bij de overige attracties zijn de wachttijden op zo'n dag kort. Op een zaterdag of in de schoolvakanties kan Silver of Gold zinvol zijn, vooral voor Flight of the Sky Lion, omdat een vroege start daar niets scheelt.
+Op een dinsdag in september zou ik Fastrack niet kopen: Bronze dekt de drie langste wachtrijen niet, en bij de overige attracties zijn de wachttijden op zo'n dag kort. Op een zaterdag of in de schoolvakanties kan Silver of Gold zinvol zijn, vooral voor Flight of the Sky Lion, omdat een vroege start daar niets scheelt.
 
 ## Tickets, prijzen en jaarkaarten
 
@@ -200,11 +199,11 @@ De Annual Passes kosten tussen £ 64 en £ 299. De **LEGOLAND Annual Pass** kost
 
 Legoland Windsor gaat om 10 uur open, de sluitingstijd ligt afhankelijk van de dag tussen 16.30 en 18 uur. In oktober 2026 sluit het park doordeweeks meestal om 16.30 uur en in het weekend en in de herfstvakantie om 18 uur. Gasten van de resorthotels mogen voor de opening het park in (Early Park Access), daarvoor hebben ze een geldig parkticket nodig.
 
-Sommige attracties draaien in de herfst alleen doordeweeks of pas in de middag. Van 25 september tot 16 oktober gaan doordeweeks bijvoorbeeld LEGO NINJAGO The Ride, Destiny's Bounty en Deep Sea Adventure pas om 13 uur open, en Aero Nomad sluit om 13 uur. De pagina “Ride & Show Availability” van het park noemt alle data.
+Sommige attracties draaien in de herfst alleen doordeweeks of pas in de middag. Van 25 september tot 16 oktober gaan doordeweeks bijvoorbeeld LEGO NINJAGO The Ride, Destiny's Bounty en Deep Sea Adventure pas om 13 uur open, en Aero Nomad sluit om 13 uur. Alle data staan op de pagina “Ride & Show Availability” van het park.
 
 **Brick or Treat**, het Halloween-evenement van het park, loopt op 10 en 11 oktober en van 17 oktober tot 1 november. Tot het programma horen de show “Lord Vampyre's House Party”, de show “Monster Jam”, een disco in The Dragon, het Haunted House Monster Party, fotopunten en ontmoetingen met Lego-monsters. Kostuums zijn welkom, gezichtsmaskers en nepwapens niet. De Halloween-data van andere parken staan in het [Halloween-overzicht](/blog/halloween-pretparken-2026).
 
-Pirate Falls sluit op **2 november** en gaat in maart 2027 weer open. Op **9 november** sluiten Aero Nomad, Balloon School, Fire Academy, Jolly Rocker en Minifigure Speedway tot februari 2027, en Coastguard HQ, Fairy Tale Brook, Fire & Ice Freefall en Hydra's Challenge tot maart. **LEGOLAND at Christmas** loopt op geselecteerde dagen van 21 november tot 2 januari 2027, met meer dan 20 attracties, een ontmoeting met de LEGO-kerstman en meerdere shows. Het [winteroverzicht](/blog/winter-pretparken-2026) zet dat naast andere parken.
+Pirate Falls sluit op **2 november** en gaat in maart 2027 weer open. Op **9 november** sluiten Aero Nomad, Balloon School, Fire Academy, Jolly Rocker en Minifigure Speedway tot februari 2027, en Coastguard HQ, Fairy Tale Brook, Fire & Ice Freefall en Hydra's Challenge tot maart. **LEGOLAND at Christmas** loopt op geselecteerde dagen van 21 november tot 2 januari 2027, met meer dan 20 attracties, een ontmoeting met de LEGO-kerstman en meerdere shows. Kerst in andere parken staat in het [winteroverzicht](/blog/winter-pretparken-2026).
 
 De rustigste komende dagen in Legoland Windsor:
 
@@ -214,7 +213,7 @@ De rustigste komende dagen in Legoland Windsor:
 
 ## Als het regent
 
-Als binnenrit noemt het park de Laser Raiders. In een gebouw draaien verder de films van de LEGO Studios 4D in Bricktopia, en de bouwplekken The Brick, Creature Creation en LEGO Ferrari Build & Race zijn plekken zonder wachtrij die het park voor drukke dagen aanraadt. Het park adviseert waterdichte kleding, omdat het weer in Groot-Brittannië wisselvallig is en de waterattracties bij het programma horen.
+Als binnenrit noemt het park de Laser Raiders. In een gebouw draaien verder de films van de LEGO Studios 4D in Bricktopia. Het park adviseert waterdichte kleding, omdat het weer in Groot-Brittannië wisselvallig is en de waterattracties bij het programma horen.
 
 ```weather-widget slug=legoland-windsor
 
@@ -222,11 +221,11 @@ Als binnenrit noemt het park de Laser Raiders. In een gebouw draaien verder de f
 
 ## Eten, baby's en de ingang
 
-Alle horeca in het park is **contactloos**, je betaalt met pinpas, Apple Pay of Android Pay. In het park vind je de **City Walk Pizza & Pasta** in Heartlake City als zelfbedieningsbuffet met pizza en pasta, de **Pirate's Burger Kitchen**, **Farmer Joe's Chicken Company** in DUPLO Valley, **The Hungry Troll** en de **Skyline Bar** in het Resort Hotel. Daarbij komen meerdere kraampjes van LEGOLAND Coffee Co., een Ben & Jerry's en Wizard's Frozen Wonders. Op de verbodslijst van het park staan glazen flessen en alcohol, eten staat er niet op. Drinkwaterpunten zijn er in het park.
+Alle horeca in het park is **contactloos**, je betaalt met pinpas, Apple Pay of Android Pay. In het park vind je de **City Walk Pizza & Pasta** in Heartlake City als zelfbedieningsbuffet met pizza en pasta, de **Pirate's Burger Kitchen**, **Farmer Joe's Chicken Company** in DUPLO Valley, **The Hungry Troll** en de **Skyline Bar** in het Resort Hotel. Daarbij komen meerdere kraampjes van LEGOLAND Coffee Co., een Ben & Jerry's en Wizard's Frozen Wonders. Eigen eten mag je meenemen, glazen flessen en alcohol niet. Drinkwaterpunten zijn er in het park.
 
 Voor baby's en peuters zijn er Baby Care Centres, die over het resort verspreid liggen en op de plattegrond staan. Het park noemt DUPLO Valley als themawereld voor gezinnen met peuters, daar hebben veel attracties geen minimumlengte. De Priority Parking is volgens het park geschikt voor gezinnen met kinderwagen, en kluisjes staan bij de hoofdingang. De Total Sensory Space in Heartlake City is een ruimte met zitzakken, projecties en gedempt licht voor gasten die even rust van het lawaai nodig hebben.
 
-Bij de ingang doorzoekt de beveiliging alle tassen. Verboden zijn onder meer glazen flessen, alcohol, wapens en nepwapens, skateboards, steps, skeelers en drones. Reken daarvoor tijd in voordat je naar de draaihekken loopt. Het Ride Access Pass-systeem verandert eind 2026. Het park voert een virtuele wachtrij in, het recht blijft hetzelfde en de plicht om vooraf te boeken moet stapsgewijs vervallen.
+Bij de ingang doorzoekt de beveiliging alle tassen. Verboden zijn onder meer glazen flessen, alcohol, wapens en nepwapens, skateboards, steps, skeelers en drones. Het Ride Access Pass-systeem verandert eind 2026. Het park voert een virtuele wachtrij in, het recht blijft hetzelfde en de plicht om vooraf te boeken moet stapsgewijs vervallen.
 
 ## Aankomst, parkeren en overnachten
 
@@ -274,7 +273,7 @@ Vier: [Minifigure Speedway](ref:legoland-windsor/minifigure-speedway?bare), [The
 
 ## Verder lezen
 
-Het Duitse tegenstuk beschrijft de gids over [Legoland Deutschland](/blog/legoland-deutschland-tips), en de ranglijst van de Duitse parken staat in het overzicht van de [beste pretparken in Duitsland](/blog/beste-pretparken-in-duitsland). Hoe wij rope drop beoordelen, legt het artikel [Is 70 minuten veel?](/blog/is-70-minuten-veel) uit.
+Voor het Duitse tegenstuk is er de gids over [Legoland Deutschland](/blog/legoland-deutschland-tips), en de ranglijst van de Duitse parken staat in het overzicht van de [beste pretparken in Duitsland](/blog/beste-pretparken-in-duitsland). Hoe wij rope drop beoordelen, leggen we uit in [Is 70 minuten veel?](/blog/is-70-minuten-veel).
 
 ## Voor wie Legoland Windsor minder past
 
