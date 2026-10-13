@@ -1,5 +1,5 @@
 import { getGeoStructure } from '@/lib/api/discovery';
-import { getGeoLiveStats } from '@/lib/api/analytics';
+import { getGeoLiveStats, getGlobalStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
 import { HeroWorldPanelGate } from './hero-world-panel-gate';
 
@@ -28,14 +28,17 @@ export interface WorldPanelContinent {
 const PANEL_COUNTRY_LIMIT = 12;
 
 /**
- * Server seed for the hero's world-map panel: the static geo structure and the geo-live open
- * counts, each at its fetch helper's cache window (a seed only; the client polls live values).
- * Renders nothing when the structure is unavailable; the gate mounts the panel only on xl.
+ * Server seed for the hero's world-map panel: the static geo structure, the geo-live open counts
+ * and the worldwide open count for the badge in its header, each at its fetch helper's cache
+ * window (a seed only; the client polls live values). Renders nothing when the structure is
+ * unavailable; the gate mounts the panel only on xl.
  */
 export async function HeroWorldPanel() {
-  const [structure, live] = await Promise.all([
+  // `getGlobalStats` is the same call `HeroStats` makes for this render, so it costs no request.
+  const [structure, live, global] = await Promise.all([
     catchNonFatal(getGeoStructure()),
     catchNonFatal(getGeoLiveStats()),
+    catchNonFatal(getGlobalStats()),
   ]);
   if (!structure || structure.continents.length === 0) return null;
 
@@ -65,5 +68,10 @@ export async function HeroWorldPanel() {
     };
   });
 
-  return <HeroWorldPanelGate continents={continents} />;
+  return (
+    <HeroWorldPanelGate
+      continents={continents}
+      initialOpenParks={global?.counts.openParks ?? null}
+    />
+  );
 }

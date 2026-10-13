@@ -6,6 +6,8 @@ import { ArrowRight } from 'lucide-react';
 import { Link, useRouter } from '@/i18n/navigation';
 import { GlassCard } from '@/components/common/glass-card';
 import { useGeoLiveStats, findOpenParkCount } from '@/lib/hooks/use-geo-live-stats';
+import { useGlobalStats } from '@/lib/hooks/use-global-stats';
+import { OpenParksBadge } from '@/components/home/open-parks-badge';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { cn } from '@/lib/utils';
 import { HERO_ENTRANCE_MS, HERO_ITEM_IN_MS } from '@/components/home/hero-entrance-gate';
@@ -50,11 +52,18 @@ const BUBBLE_STEP_S = 0.055;
 const ENTRANCE_MS = 2100;
 
 /**
- * The hero's right-hand panel: a clickable world map with live open-park counts. Tapping
- * another continent switches the panel in place; tapping the selected one (its bubble or
- * its landmass) navigates to its geo route, and the country chips link to theirs.
+ * The hero's right-hand panel: a clickable world map with live open-park counts, headed by the
+ * worldwide open-parks badge. Tapping another continent switches the panel in place; tapping the
+ * selected one (its bubble or its landmass) navigates to its geo route, and the country chips
+ * link to theirs.
  */
-export function HeroWorldPanelClient({ continents }: { continents: WorldPanelContinent[] }) {
+export function HeroWorldPanelClient({
+  continents,
+  initialOpenParks,
+}: {
+  continents: WorldPanelContinent[];
+  initialOpenParks: number | null;
+}) {
   // Whether this panel's entrance still belongs to the hero's choreography. The panel waits for
   // load and idle, which can land on either side of HERO_ENTRANCE_MS, and a solo entrance after the
   // page looked finished reads as a jump. So it animates only if it can still finish inside the
@@ -64,6 +73,9 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
   const tHome = useTranslations('home');
   const router = useRouter();
   const { data: liveGeo } = useGeoLiveStats();
+  // The hero's text column polls the same query, so this adds no request.
+  const { data: liveStats } = useGlobalStats();
+  const worldOpen = liveStats?.counts.openParks ?? initialOpenParks;
 
   const [selectedSlug, setSelectedSlug] = useState('europe');
   const chipsRef = useRef<HTMLDivElement>(null);
@@ -142,28 +154,34 @@ export function HeroWorldPanelClient({ continents }: { continents: WorldPanelCon
         animateIn && 'hero-in-stagger'
       )}
     >
-      {/* `aria-live`: switching continents replaces this heading, the figure and the chip row, and
-          a screen-reader user who presses a bubble should hear about it. */}
-      <div
-        className="border-border/40 flex items-start justify-between gap-4 border-b px-5 py-4"
-        aria-live="polite"
-      >
-        <div className="min-w-0">
-          <h2 className="truncate text-lg font-bold">
-            {tHome('worldPanel.title', { continent: selectedName })}
-          </h2>
-          <p className="text-muted-foreground mt-0.5 text-xs">
-            {tHome('worldPanel.subtitle', { count: selected.countryCount })}
+      <div className="border-border/40 border-b px-5 py-4">
+        {/* `flex`, not the badge's `inline-flex`, which would sit on a line box and gain the
+            line's descender gap below it. */}
+        <OpenParksBadge
+          label={worldOpen == null ? null : tHome('worldPanel.openWorldwide', { count: worldOpen })}
+          className="mb-3 flex"
+        />
+        {/* `aria-live`: switching continents replaces this heading, the figure and the chip row,
+            and a screen-reader user who presses a bubble should hear about it. The badge stays
+            outside, or every poll that moves the worldwide count would be read out. */}
+        <div className="flex items-start justify-between gap-4" aria-live="polite">
+          <div className="min-w-0">
+            <h2 className="truncate text-lg font-bold">
+              {tHome('worldPanel.title', { continent: selectedName })}
+            </h2>
+            <p className="text-muted-foreground mt-0.5 text-xs">
+              {tHome('worldPanel.subtitle', { count: selected.countryCount })}
+            </p>
+          </div>
+          <p className="shrink-0 text-right leading-none">
+            <span className="text-status-operating text-3xl font-extrabold tabular-nums">
+              {selectedOpen ?? '–'}
+            </span>
+            <span className="text-muted-foreground ml-1.5 text-sm">
+              / {selected.parkCount} {tHome('worldPanel.openWord')}
+            </span>
           </p>
         </div>
-        <p className="shrink-0 text-right leading-none">
-          <span className="text-status-operating text-3xl font-extrabold tabular-nums">
-            {selectedOpen ?? '–'}
-          </span>
-          <span className="text-muted-foreground ml-1.5 text-sm">
-            / {selected.parkCount} {tHome('worldPanel.openWord')}
-          </span>
-        </p>
       </div>
 
       <div className="bg-muted/20 relative">

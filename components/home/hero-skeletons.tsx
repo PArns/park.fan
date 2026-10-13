@@ -1,6 +1,7 @@
 import { Skeleton } from '@/components/ui/skeleton';
 import { GlassCard } from '@/components/common/glass-card';
 import { HeroBubbleRow } from '@/components/home/hero-bubble-row';
+import { OpenParksBadge } from '@/components/home/open-parks-badge';
 import { cn } from '@/lib/utils';
 
 /**
@@ -34,13 +35,17 @@ export function HeroWorldPanelSkeleton() {
       className="border-border/50 overflow-hidden rounded-2xl p-0 shadow-2xl"
       aria-hidden="true"
     >
-      <div className="border-border/40 flex items-start justify-between gap-4 border-b px-5 py-4">
-        {/* Real: `text-lg font-bold` over `text-xs` with `mt-0.5` — 28 + 2 + 16, not 20 + 8 + 12. */}
-        <div className="space-y-0.5">
-          <Skeleton className="h-7 w-40" />
-          <Skeleton className="h-4 w-52" />
+      <div className="border-border/40 border-b px-5 py-4">
+        {/* The real badge in its pending state, so its box is the real one by construction. */}
+        <OpenParksBadge label={null} className="mb-3 flex" />
+        <div className="flex items-start justify-between gap-4">
+          {/* Real: `text-lg font-bold` over `text-xs` with `mt-0.5` — 28 + 2 + 16, not 20 + 8 + 12. */}
+          <div className="space-y-0.5">
+            <Skeleton className="h-7 w-40" />
+            <Skeleton className="h-4 w-52" />
+          </div>
+          <Skeleton className="h-8 w-24" />
         </div>
-        <Skeleton className="h-8 w-24" />
       </div>
       {/* The real map is a full-width <svg> with viewBox "0 0 2000 857", so `aspect-[2000/857]`
           tracks its height at any width. No margins: the map sits flush in its tinted band. */}

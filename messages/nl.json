@@ -154,6 +154,7 @@
     },
     "worldPanel": {
       "title": "Parken in {continent}",
+      "openWorldwide": "{count, plural, =1 {1 park wereldwijd open} other {# parken wereldwijd open}}",
       "subtitle": "{count, plural, =1 {1 land} other {# landen}} · wissel van continent",
       "openWord": "open",
       "countryOpen": "{count} open",

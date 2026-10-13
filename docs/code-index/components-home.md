@@ -81,7 +81,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-world-panel-client.tsx`](../../components/home/hero-world-panel-client.tsx)
 
-- `HeroWorldPanelClient` _component_: The hero's right-hand panel: a clickable world map with live open-park counts.
+- `HeroWorldPanelClient` _component_: The hero's right-hand panel: a clickable world map with live open-park counts, headed by the worldwide open-parks badge.
 
 ### [`hero-world-panel-gate.tsx`](../../components/home/hero-world-panel-gate.tsx)
 
@@ -89,7 +89,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-world-panel.tsx`](../../components/home/hero-world-panel.tsx)
 
-- `HeroWorldPanel` _component_: Server seed for the hero's world-map panel: the static geo structure and the geo-live open counts, each at its fetch helper's cache window (a seed only; the client polls live values).
+- `HeroWorldPanel` _component_: Server seed for the hero's world-map panel: the static geo structure, the geo-live open counts and the worldwide open count for the badge in its header, each at its fetch helper's cache window (a seed only; the client polls live values).
 - Types: `WorldPanelCountry`, `WorldPanelContinent`
 
 ### [`home-location-row.tsx`](../../components/home/home-location-row.tsx)
@@ -134,6 +134,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`ml-training-countdown.tsx`](../../components/home/ml-training-countdown.tsx)
 
 - `MLTrainingCountdown` _component_: Card with the model's age and a live countdown to the next daily retraining at 06:00 UTC, shown in the visitor's local time. Ticks only while the card is on screen.
+
+### [`open-parks-badge.tsx`](../../components/home/open-parks-badge.tsx)
+
+- `OpenParksBadge` _component_: Glass pill with a live dot: "N parks open right now". `label` is the finished sentence, `null` while the count is pending.
 
 ### [`park-compass-dial.tsx`](../../components/home/park-compass-dial.tsx)
 

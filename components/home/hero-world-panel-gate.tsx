@@ -19,7 +19,13 @@ const HeroWorldPanelClient = dynamic(
  * the server output, and the parent column's `hidden xl:block` hides it there, whereas returning
  * null would pop the skeleton in after hydration.
  */
-export function HeroWorldPanelGate({ continents }: { continents: WorldPanelContinent[] }) {
+export function HeroWorldPanelGate({
+  continents,
+  initialOpenParks,
+}: {
+  continents: WorldPanelContinent[];
+  initialOpenParks: number | null;
+}) {
   const ready = useAfterLoad();
   const hasRoom = useMediaQuery('(min-width: 1280px)');
 
@@ -27,5 +33,5 @@ export function HeroWorldPanelGate({ continents }: { continents: WorldPanelConti
   // Whether the entrance still belongs to the hero's choreography is decided inside the panel,
   // not here: this component renders from hydration onwards (showing the skeleton), so a check
   // at THIS point reads the clock long before the panel actually appears.
-  return <HeroWorldPanelClient continents={continents} />;
+  return <HeroWorldPanelClient continents={continents} initialOpenParks={initialOpenParks} />;
 }

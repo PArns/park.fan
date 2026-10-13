@@ -28,7 +28,7 @@ Every surface that shows "the newest posts" as a teaser keeps the two apart:
 
 | Surface                       | Articles                                                     | News                                            |
 | ----------------------------- | ------------------------------------------------------------ | ----------------------------------------------- |
-| Homepage, hero                | —                                                            | `LatestNewsChip` beside the open-parks badge    |
+| Homepage, hero                | —                                                            | `LatestNewsChip` in the badge row               |
 | Homepage, band under the hero | `BlogTeaserBand` — three cards, `listArticlesByRecency`      | `NewsRow` under the cards                       |
 | Homepage, blog chapter        | `LatestBlogSection variant="lead"` — `listArticlesByRecency` | `NewsRow` under the lead block                  |
 | Header menu                   | „Guides": opener + rows, `recent` in `getBlogMenu()`         | its own entry: `NewsMenuPanel`, `getNewsMenu()` |
