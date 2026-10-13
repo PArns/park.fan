@@ -123,19 +123,19 @@ Lundi soir, Six Flags a annoncé avoir fermé temporairement des attractions
 similaires dans ses parcs, « par précaution ». Un représentant de l’entreprise a
 donné la liste à WSB-TV et à NBC News.
 
-| Parc                      | Attraction                                                  | Constructeur selon la RCDB |
-| ------------------------- | ----------------------------------------------------------- | -------------------------- |
-| Six Flags Great America   | [Raging Bull](ref:six-flags-great-america/raging-bull?bare) | B&M                        |
-| Six Flags Magic Mountain  | [Goliath](ref:six-flags-magic-mountain/goliath?bare)        | Giovanola                  |
-| Six Flags Great Adventure | [Nitro](ref:six-flags-great-adventure/nitro?bare)           | B&M                        |
-| Canada’s Wonderland       | [Leviathan](ref:canadas-wonderland/leviathan?bare)          | B&M                        |
-| Canada’s Wonderland       | [Behemoth](ref:canadas-wonderland/behemoth?bare)            | B&M                        |
-| Carowinds                 | [Fury 325](ref:carowinds/fury-325?bare)                     | B&M                        |
-| Carowinds                 | [Thunder Striker](ref:carowinds/thunder-striker?bare)       | B&M                        |
-| Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                        |
-| Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                        |
+| Parc                      | Attraction                                                  | Constructeur |
+| ------------------------- | ----------------------------------------------------------- | ------------ |
+| Six Flags Great America   | [Raging Bull](ref:six-flags-great-america/raging-bull?bare) | B&M          |
+| Six Flags Magic Mountain  | [Goliath](ref:six-flags-magic-mountain/goliath?bare)        | Giovanola    |
+| Six Flags Great Adventure | [Nitro](ref:six-flags-great-adventure/nitro?bare)           | B&M          |
+| Canada’s Wonderland       | [Leviathan](ref:canadas-wonderland/leviathan?bare)          | B&M          |
+| Canada’s Wonderland       | [Behemoth](ref:canadas-wonderland/behemoth?bare)            | B&M          |
+| Carowinds                 | [Fury 325](ref:carowinds/fury-325?bare)                     | B&M          |
+| Carowinds                 | [Thunder Striker](ref:carowinds/thunder-striker?bare)       | B&M          |
+| Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M          |
+| Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M          |
 
-Six Flags n’a pas expliqué en quoi consiste la ressemblance. Selon la RCDB, huit des neuf attractions sont des Hyper Coasters de B&M, le même modèle que le Goliath de Géorgie. Kings
+Six Flags n’a pas expliqué en quoi consiste la ressemblance. Huit des neuf attractions sont des Hyper Coasters de B&M, le même modèle que le Goliath de Géorgie. Kings
 Island, Carowinds et Canada’s Wonderland appartiennent à Six Flags depuis la
 fusion de l’entreprise avec Cedar Fair en 2024.
 
@@ -145,11 +145,7 @@ annoncé aucune date de réouverture.
 
 ## L’attraction
 
-Goliath est un Hyper Coaster du constructeur suisse Bolliger & Mabillard et a ouvert en 2006. Selon Six Flags, il mesure 61 mètres de haut et roule
-jusqu’à 113 km/h. Le parcours fait environ 1 366 mètres selon la RCDB, et les
-deux plus grandes descentes mesurent 52 et 53 mètres. Un train compte neuf
-wagons de quatre places de front. Six Flags indique une taille minimale de
-137 centimètres.
+Goliath a été construit par le Suisse Bolliger & Mabillard et fonctionne depuis 2006. Ce Hyper Coaster mesure 61 mètres de haut et roule jusqu’à 113 km/h. Le parcours fait environ 1 366 mètres, et les deux plus grandes descentes mesurent 52 et 53 mètres. Un train compte neuf wagons de quatre places de front. Il faut mesurer au moins 137 centimètres pour monter à bord.
 
 En juillet 2006, un homme de 45 ans avait perdu connaissance pendant un tour et
 était mort à l’hôpital, d’une crise cardiaque apparente selon AP. Six Flags

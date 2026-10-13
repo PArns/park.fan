@@ -120,19 +120,19 @@ Maandagavond liet Six Flags weten dat het “uit voorzorg” vergelijkbare
 attracties in zijn parken tijdelijk had gesloten. Een vertegenwoordiger van het
 bedrijf noemde de banen tegenover WSB-TV en NBC News.
 
-| Park                      | Baan                                                        | Bouwer volgens RCDB |
-| ------------------------- | ----------------------------------------------------------- | ------------------- |
-| Six Flags Great America   | [Raging Bull](ref:six-flags-great-america/raging-bull?bare) | B&M                 |
-| Six Flags Magic Mountain  | [Goliath](ref:six-flags-magic-mountain/goliath?bare)        | Giovanola           |
-| Six Flags Great Adventure | [Nitro](ref:six-flags-great-adventure/nitro?bare)           | B&M                 |
-| Canada’s Wonderland       | [Leviathan](ref:canadas-wonderland/leviathan?bare)          | B&M                 |
-| Canada’s Wonderland       | [Behemoth](ref:canadas-wonderland/behemoth?bare)            | B&M                 |
-| Carowinds                 | [Fury 325](ref:carowinds/fury-325?bare)                     | B&M                 |
-| Carowinds                 | [Thunder Striker](ref:carowinds/thunder-striker?bare)       | B&M                 |
-| Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                 |
-| Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                 |
+| Park                      | Baan                                                        | Bouwer    |
+| ------------------------- | ----------------------------------------------------------- | --------- |
+| Six Flags Great America   | [Raging Bull](ref:six-flags-great-america/raging-bull?bare) | B&M       |
+| Six Flags Magic Mountain  | [Goliath](ref:six-flags-magic-mountain/goliath?bare)        | Giovanola |
+| Six Flags Great Adventure | [Nitro](ref:six-flags-great-adventure/nitro?bare)           | B&M       |
+| Canada’s Wonderland       | [Leviathan](ref:canadas-wonderland/leviathan?bare)          | B&M       |
+| Canada’s Wonderland       | [Behemoth](ref:canadas-wonderland/behemoth?bare)            | B&M       |
+| Carowinds                 | [Fury 325](ref:carowinds/fury-325?bare)                     | B&M       |
+| Carowinds                 | [Thunder Striker](ref:carowinds/thunder-striker?bare)       | B&M       |
+| Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M       |
+| Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M       |
 
-Six Flags heeft niet uitgelegd waarin de overeenkomst zit. Volgens de RCDB zijn acht van de negen banen Hyper Coasters van B&M, hetzelfde model als Goliath in Georgia. Kings
+Six Flags heeft niet uitgelegd waarin de overeenkomst zit. Acht van de negen banen zijn Hyper Coasters van B&M, hetzelfde model als Goliath in Georgia. Kings
 Island, Carowinds en Canada’s Wonderland horen bij Six Flags sinds het bedrijf
 in 2024 met Cedar Fair is gefuseerd.
 
@@ -142,11 +142,7 @@ datum voor de heropening genoemd.
 
 ## De baan
 
-Goliath is een Hyper Coaster van het Zwitserse Bolliger & Mabillard en ging in 2006 open. Volgens Six Flags is de baan 61 meter hoog en haalt hij tot 113 km/h. Het
-parcours is volgens de RCDB zo’n 1.366 meter lang, en de twee grootste
-afdalingen meten 52 en 53 meter. Een trein heeft negen wagens met elk vier
-plaatsen naast elkaar. Six Flags hanteert een minimale lengte van 137
-centimeter.
+Goliath komt van de Zwitserse bouwer Bolliger & Mabillard en rijdt sinds 2006. De Hyper Coaster is 61 meter hoog en haalt tot 113 km/h. Het parcours is zo’n 1.366 meter lang, de twee grootste afdalingen meten 52 en 53 meter. Een trein heeft negen wagens met elk vier plaatsen naast elkaar. Wie mee wil, moet minstens 137 centimeter lang zijn.
 
 In juli 2006 verloor een 45-jarige man tijdens een rit het bewustzijn. Hij
 overleed in het ziekenhuis, volgens AP aan een kennelijke hartaanval. Six Flags

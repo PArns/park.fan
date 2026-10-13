@@ -120,19 +120,19 @@ El lunes por la noche, Six Flags comunicó que había cerrado temporalmente «po
 precaución» atracciones parecidas en sus parques. Un representante de la
 empresa dio a WSB-TV y a NBC News la lista de montañas rusas.
 
-| Parque                    | Montaña rusa                                                | Fabricante según la RCDB |
-| ------------------------- | ----------------------------------------------------------- | ------------------------ |
-| Six Flags Great America   | [Raging Bull](ref:six-flags-great-america/raging-bull?bare) | B&M                      |
-| Six Flags Magic Mountain  | [Goliath](ref:six-flags-magic-mountain/goliath?bare)        | Giovanola                |
-| Six Flags Great Adventure | [Nitro](ref:six-flags-great-adventure/nitro?bare)           | B&M                      |
-| Canada’s Wonderland       | [Leviathan](ref:canadas-wonderland/leviathan?bare)          | B&M                      |
-| Canada’s Wonderland       | [Behemoth](ref:canadas-wonderland/behemoth?bare)            | B&M                      |
-| Carowinds                 | [Fury 325](ref:carowinds/fury-325?bare)                     | B&M                      |
-| Carowinds                 | [Thunder Striker](ref:carowinds/thunder-striker?bare)       | B&M                      |
-| Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M                      |
-| Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M                      |
+| Parque                    | Montaña rusa                                                | Fabricante |
+| ------------------------- | ----------------------------------------------------------- | ---------- |
+| Six Flags Great America   | [Raging Bull](ref:six-flags-great-america/raging-bull?bare) | B&M        |
+| Six Flags Magic Mountain  | [Goliath](ref:six-flags-magic-mountain/goliath?bare)        | Giovanola  |
+| Six Flags Great Adventure | [Nitro](ref:six-flags-great-adventure/nitro?bare)           | B&M        |
+| Canada’s Wonderland       | [Leviathan](ref:canadas-wonderland/leviathan?bare)          | B&M        |
+| Canada’s Wonderland       | [Behemoth](ref:canadas-wonderland/behemoth?bare)            | B&M        |
+| Carowinds                 | [Fury 325](ref:carowinds/fury-325?bare)                     | B&M        |
+| Carowinds                 | [Thunder Striker](ref:carowinds/thunder-striker?bare)       | B&M        |
+| Kings Island              | [Orion](ref:kings-island/orion?bare)                        | B&M        |
+| Kings Island              | [Diamondback](ref:kings-island/diamondback?bare)            | B&M        |
 
-Six Flags no ha explicado en qué consiste el parecido. Según la RCDB, ocho de las nueve son Hyper Coaster de B&M, el mismo modelo que el Goliath de Georgia. Kings Island,
+Six Flags no ha explicado en qué consiste el parecido. Ocho de las nueve son Hyper Coaster de B&M, el mismo modelo que el Goliath de Georgia. Kings Island,
 Carowinds y Canada’s Wonderland pertenecen a Six Flags desde que la empresa se
 fusionó con Cedar Fair en 2024.
 
@@ -140,10 +140,7 @@ Un representante de Magic Mountain dijo a NBC Los Angeles que el parque no tiene
 
 ## La montaña rusa
 
-Goliath es una Hyper Coaster de la empresa suiza Bolliger & Mabillard y abrió en 2006. Six Flags indica que mide 61 metros de altura y alcanza los 113 km/h.
-Según la RCDB, el recorrido tiene unos 1.366 metros, y las dos bajadas más
-grandes son de 52 y 53 metros. Cada tren tiene nueve coches con cuatro asientos
-uno al lado del otro. Six Flags exige una altura mínima de 137 centímetros.
+Goliath lo construyó la empresa suiza Bolliger & Mabillard y funciona desde 2006. Esta Hyper Coaster mide 61 metros de altura y alcanza los 113 km/h. El recorrido tiene unos 1.366 metros, y las dos bajadas más grandes son de 52 y 53 metros. Cada tren tiene nueve coches con cuatro asientos uno al lado del otro. Para subir hay que medir al menos 137 centímetros.
 
 En julio de 2006, un hombre de 45 años perdió el conocimiento durante un viaje y
 murió en el hospital, según AP de un aparente ataque al corazón. Six Flags dijo
