@@ -58,8 +58,9 @@ In [Six Flags Over Georgia](ref:six-flags-over-georgia?bare) bei Atlanta ist am
 Montag, 12. Oktober, nach einem Vorfall auf der Achterbahn
 [Goliath](ref:six-flags-over-georgia/goliath?bare) ein Mensch gestorben. Laut
 der Polizei von Cobb County geschah es gegen 15:58 Uhr Ortszeit, mehrere
-Menschen wurden verletzt. Augenzeugen sagten dem NBC-Sender WXIA, FOX 5 Atlanta
-und Atlanta News First, ein Mann sei von der Bahn gefallen.
+Menschen wurden verletzt. Augenzeugen sagten dem NBC-Sender WXIA, ein Mann sei
+von der Bahn gefallen, berichteten NBC News und CNN. Auch Atlanta News First und
+FOX 5 Atlanta zitieren Augenzeugen, die einen Fahrgast fallen sahen.
 
 > [!QUOTE]
 > Am 12. Oktober 2026 hat sich gegen 15:58 Uhr in Six Flags Over Georgia ein
@@ -77,7 +78,7 @@ Flags. Die Polizei ermittelt.
 
 Nach dem Vorfall blieb ein Zug oben auf der Strecke stehen, berichtete WSB-TV,
 ein Besucher sagte CNN, die Bahn habe am Lifthill gestanden. Luftaufnahmen von
-WSB-TV und WXIA zeigten, wie die Fahrgäste von der Bahn geholt wurden. Danach
+WSB-TV und, laut CNN, von WXIA zeigten, wie die Fahrgäste von der Bahn geholt wurden. Danach
 schloss der Park.
 
 ## Was Six Flags und die Behörden sagen
@@ -91,7 +92,7 @@ schloss der Park.
 >
 > [en] We are deeply saddened by the guest incident at our park today. […] The park team and local authorities responded immediately, and we are cooperating fully with local authorities as they complete their investigation. Out of respect for the family’s privacy, we will not be sharing additional details at this time.
 >
-> Sprecher von Six Flags Over Georgia, veröffentlicht von [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/goliath-ride-six-flags-over-georgia-evacuated/5A5TSTE2ZNB3ZBTVUR64JI4JPA/) und [Atlanta News First](https://www.atlantanewsfirst.com/2026/10/12/riders-stuck-roller-coaster-six-flags-over-georgia/), aus dem Englischen übersetzt
+> Sprecher der Six Flags Entertainment Corporation, veröffentlicht von [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/goliath-ride-six-flags-over-georgia-evacuated/5A5TSTE2ZNB3ZBTVUR64JI4JPA/) und [Atlanta News First](https://www.atlantanewsfirst.com/2026/10/12/riders-stuck-roller-coaster-six-flags-over-georgia/), aus dem Englischen übersetzt
 
 Lisa Cupid, Vorsitzende des Board of Commissioners von Cobb County, schrieb am
 Montagabend, die nächsten Angehörigen seien nach ihrem Kenntnisstand
@@ -101,7 +102,7 @@ sie bestätigt seien.
 Für Fahrgeschäfte ist in Georgia das Büro des Insurance and Safety Fire
 Commissioner zuständig, das stationäre Bahnen nach der Verordnung des
 Bundesstaats vor der ersten Fahrt mit Publikum und danach mindestens einmal im
-Jahr prüfen muss.
+Jahr prüfen muss, sofern die Bahn nicht mit einer vorläufigen Genehmigung läuft.
 
 > [!QUOTE]
 > Sicherheitsinspektoren und Ermittler sind vor Ort, untersuchen die Anlage und
@@ -140,17 +141,17 @@ Carowinds und Canada’s Wonderland gehören zu Six Flags, seit das Unternehmen
 
 Einen Termin für die Wiedereröffnung nennt Six Flags für keine der Bahnen, und
 ein Vertreter von Magic Mountain sagte NBC Los Angeles, der Park habe für
-Goliath keinen Zeitplan. Zwei Wochen zuvor hatte Six Flags [X2 in Magic Mountain
-dauerhaft geschlossen](/blog/x2-six-flags-magic-mountain-geschlossen).
+Goliath keinen Zeitplan. Knapp zwei Wochen zuvor, am 29. September, hatte Six
+Flags angekündigt, [X2 in Six Flags Magic Mountain dauerhaft zu
+schließen](/news/x2-six-flags-magic-mountain-geschlossen).
 
 ## Die Bahn
 
 Goliath hat 2006 eröffnet. Der Hyper Coaster stammt von Bolliger & Mabillard aus
 der Schweiz, ist laut Six Flags 61 Meter hoch und fährt bis zu 113 km/h. Die
-Strecke ist laut RCDB rund 1.365 Meter lang, mit zwei Abfahrten von 52 und 53
-Metern. Ein Zug hat neun Wagen mit je vier Plätzen nebeneinander, und jeder Sitz
-hat einen eigenen Bügel über dem Schoß, Schulterbügel gibt es nicht. Six Flags
-gibt eine Mindestgröße von 137 Zentimetern an.
+Strecke ist laut RCDB rund 1.365 Meter lang, die beiden größten Abfahrten messen
+52 und 53 Meter. Ein Zug hat neun Wagen mit je vier Plätzen nebeneinander. Six
+Flags gibt eine Mindestgröße von 137 Zentimetern an.
 
 Im Juli 2006 verlor ein 45-jähriger Mann während einer Fahrt das Bewusstsein und
 starb im Krankenhaus, laut AP an einem offenbaren Herzinfarkt. Six Flags sagte
@@ -159,10 +160,11 @@ wieder geöffnet worden.
 
 ## Für Besucher
 
-Six Flags Over Georgia öffnet im Oktober nur an Wochenenden, sagte ein Sprecher
-CNN, am Montag war wegen des Feiertags Columbus Day geöffnet. Auf seiner Website
-kündigt der Park Fright Fest an ausgewählten Abenden bis zum 1. November an. Ob
-Goliath am nächsten Öffnungstag fährt, hat Six Flags nicht gesagt.
+Six Flags Over Georgia öffnet im Oktober nur an Wochenenden, berichtete CNN; am
+Montag war wegen des Feiertags Columbus Day geöffnet. Für Dienstag war der Park
+laut einem Sprecher ohnehin geschlossen. Auf seiner Website kündigt der Park
+Fright Fest an ausgewählten Abenden bis zum 1. November an. Ob Goliath am
+nächsten Öffnungstag fährt, hat Six Flags nicht gesagt.
 
 Quellen:
 [WSB-TV](https://www.wsbtv.com/news/local/cobb-county/six-flags-over-georgia-local-officials-respond-death-goliath-ride/B2IO7XSR55DDLBDSKZY27MB4QI/),
@@ -176,6 +178,7 @@ Quellen:
 [Six Flags zu Goliath](https://www.sixflags.com/overgeorgia/attractions/goliath),
 [Six Flags Over Georgia](https://www.sixflags.com/overgeorgia),
 [RCDB](https://rcdb.com/3290.htm),
+[RCDB zu Goliath in Magic Mountain](https://rcdb.com/615.htm),
 [AP 2006](https://www.foxnews.com/story/man-dies-after-riding-goliath-roller-coaster-at-six-flags-over-georgia).
 
 — Patrick
