@@ -4,6 +4,7 @@
  * Run: pnpm check:prose            (no network, no running site)
  *      pnpm check:prose --strict   (warnings become failures)
  *      pnpm check:prose --verbose  (print every hit, not the first few)
+ *      pnpm check:prose --file=content/blog/de/x.md   (report only the files whose path contains it)
  *      pnpm check:prose --only=changelog   (one surface: blog, catalogs, media, pages, changelog, source)
  *
  * docs/blog.md is the prose half of this and stays the source of truth; the lists below are its
@@ -35,6 +36,7 @@
 import { execSync } from 'node:child_process';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { DATE_LINE_START, slopFindings, splitSentences } from './prose-slop-patterns.mjs';
 
 const STRICT = process.argv.includes('--strict');
 const VERBOSE = process.argv.includes('--verbose');
@@ -47,6 +49,15 @@ const ONLY = process.argv
   ?.slice('--only='.length)
   .split(',');
 const runs = (surface) => !ONLY || ONLY.includes(surface);
+/**
+ * `--file=<substring>[,…]` narrows the report, not the run: with 300 warnings on `main`, the first
+ * forty lines are other people's posts. The critic and the writer ask for their own file.
+ */
+const FILES = process.argv
+  .find((arg) => arg.startsWith('--file='))
+  ?.slice('--file='.length)
+  .split(',');
+const inScope = ({ file }) => !FILES || FILES.some((f) => file.includes(f));
 
 /**
  * Em dashes in `messages/<locale>.json` on the day the rule was written down (docs/blog.md §7.1).
@@ -766,14 +777,6 @@ const TAKE_HOME_HEADING =
  */
 const MODAL_WITHOUT_VERB =
   /(?<!\p{L})(?:darf|dürfen|muss|müssen|kann|können|soll|sollen|will|wollen)\s+(?:nicht\s+|nie\s+|kein\p{L}*\s+)?(?:über|unter|in|ins|nach|an|ans|auf|aufs|durch|vor|hinter|zu|zum|zur|aus)\s+(?:\p{L}+\s+){0,2}\p{Lu}[\p{L}-]*$/u;
-/**
- * A German date that opens a line becomes a numbered list (§4.4): CommonMark lets `1.` interrupt
- * a paragraph, so a paragraph wrapped before `1. November` renders the rest as list item one,
- * and Prettier then indents it as one. The Alton Towers guide and the Adventure in Batavia post
- * shipped that way until 2026-10-11. Any other day number after a blank line does the same.
- */
-const DATE_LINE_START =
-  /^[ \t]*\d{1,2}\.[ \t]+(?:Januar|Jänner|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)\b.*$/gm;
 
 /**
  * `Drei Einschränkungen gehören dazu.`, `Zwei Einordnungen aus unseren Guides.` (§2.16): a short
@@ -1262,31 +1265,6 @@ function postBody(raw) {
   );
 }
 
-/*
- * A German ordinal ends in a full stop that ends no sentence: `27. September`, `am 5. und am
- * 11. Juli`, `auf einem geteilten 41. Platz`. Until 2026-09-30 every date in a post was split
- * into two or three "sentences" of one word, which fed the burstiness figure fragments and made
- * every event calendar read as staccato.
- */
-const ORDINAL_FOLLOWERS =
-  'Januar|Jänner|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember|Jahrhundert|Platz|Mal|Geburtstag|Stock|Klasse';
-const ORDINAL = new RegExp(
-  `\\b(\\d{1,4})\\.(?=,|\\s+(?:[a-zäöü(–-]|(?:${ORDINAL_FOLLOWERS})\\b))`,
-  'g'
-);
-
-function splitSentences(text) {
-  const t = text
-    .replace(/\s+/g, ' ')
-    .replace(/(\d)\.(\d)/g, '$1_$2')
-    .replace(ORDINAL, '$1_')
-    // Weekday abbreviations in a French, Spanish or Italian date list: `sam. 17, sáb. 24`.
-    .replace(/\b(lun|mar|mer|jeu|ven|sam|dim|mié|jue|vie|sáb|dom|gio|sab)\.(?=\s*\d)/gi, '$1')
-    .replace(/\b([A-ZÄÖÜ])\./g, '$1_')
-    .replace(/\b(z\. ?B|u\. ?a|ca|bzw|evtl|inkl|ggf|Nr|St|Mr|Mrs|Dr|vs|etc)\./gi, '$1');
-  return t.split(/(?<=[.!?])\s+/).filter((s) => s.trim());
-}
-
 function sentences(text) {
   return splitSentences(text).filter((s) => s.trim().split(/\s+/).length >= 3);
 }
@@ -1651,6 +1629,8 @@ for (const locale of runs('blog') ? LOCALES : []) {
     );
     researchVoice(file, raw, locale);
     databaseProse(file, raw, body, locale);
+    for (const { rule, section, hits } of slopFindings(raw, locale, plainTextFields(raw)))
+      warn(file, `${rule} (${section}), ${hits.length}×: "${hits[0].slice(0, 90)}"`);
 
     const selfRating = body.replace(/\s+/g, ' ').match(SELF_RATING[locale]);
     if (selfRating)
@@ -2234,12 +2214,15 @@ if (metrics.length) {
   }
 }
 
-show(warnings, `Warnings — candidates, not verdicts (${warnings.length}):`);
-show(errors, `Errors (${errors.length}):`);
+const shownWarnings = warnings.filter(inScope);
+const shownErrors = errors.filter(inScope);
+show(shownWarnings, `Warnings — candidates, not verdicts (${shownWarnings.length}):`);
+show(shownErrors, `Errors (${shownErrors.length}):`);
 
 console.log(
-  `\n${errors.length} error(s), ${warnings.length} warning(s). Rules: docs/blog.md` +
+  `\n${shownErrors.length} error(s), ${shownWarnings.length} warning(s). Rules: docs/blog.md` +
     (STRICT ? ' — --strict: warnings count as errors.' : '')
 );
 
+// `--file` narrows the report only; a failure in any file still fails the run.
 process.exit(errors.length || (STRICT && warnings.length) ? 1 : 0);
