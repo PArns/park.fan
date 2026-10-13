@@ -56,8 +56,7 @@ horas, porque el aparcamiento abre una hora antes que el parque.
 El parque está en San Martín de la Vega, a unos 30 kilómetros al sur de la
 capital, y tiene cinco áreas temáticas basadas en las películas y los cómics de
 Warner Bros. Se viaja hasta allí por dos de sus siete montañas rusas: Superman, que funciona desde la apertura en 2002, y Batman: Gotham City
-Escape, desde 2023. En el resto del parque las colas suelen ser cortas. En
-Batman, no.
+Escape, desde 2023. Salvo en Batman, en el parque las colas suelen ser cortas.
 
 ## Cómo nació el parque
 
@@ -86,8 +85,7 @@ Después, según la misma fuente, el parque tuvo beneficios por primera vez.
 En 2019 llegaron 2,26 millones de visitantes, y así figura entre los veinte
 parques más visitados de Europa. Parques Reunidos pertenece hoy al fondo EQT, que
 según Expansión quiere ponerlo a la venta en septiembre de 2026
-([más detalles](/blog/eqt-venta-parques-reunidos-movie-park)). Para la visita,
-de momento no cambia nada.
+([más detalles](/blog/eqt-venta-parques-reunidos-movie-park)).
 
 El recinto mide 31,2 hectáreas. De ellas, 3,2 corresponden a la entrada, Hollywood
 Boulevard, donde no hay ninguna montaña rusa, y unas siete a cada una de las
@@ -103,11 +101,10 @@ abrieron Oso Yogui y Correcaminos Bip Bip, en 2011 Cartoon Village sumó cuatro
 atracciones, entre ellas la autoescuela de la familia Picapiedra, y en 2013 la
 Academia de Pilotos Baby Looney Tunes. El Parque Warner Beach llegó en junio de
 2014, en 2018 se añadió allí una zona DC con seis atracciones de agua y en 2019
-el Aquaman Nighttime Spectacular. Después pasaron cuatro años hasta Batman.
+el Aquaman Nighttime Spectacular.
 
 ## Superman y Gotham: DC Super Heroes World
 
-DC Super Heroes World tiene las montañas rusas por las que viene la gente.
 **[Superman: La Atracción de Acero](ref:parque-warner-madrid/superman-la-atraccion-de-acero)**
 funciona desde la apertura y fue, según la Wikipedia en español, la primera
 montaña rusa floorless de Europa. La construyó Bolliger & Mabillard. En este
@@ -122,7 +119,7 @@ metros de recorrido, alcanza **100 km/h**, cuenta con siete inversiones y tarda
 2:26 minutos en dar la vuelta. La página de la atracción habla de 55 metros y la
 del área temática de 65. Se puede subir desde **132 cm**.
 
-La más reciente y la más importante es
+La más reciente es
 **[Batman: Gotham City Escape](ref:parque-warner-madrid/batman-gotham-city-escape)**.
 La construyó Intamin, abrió el **13 de mayo de 2023** y costó más de 20 millones
 de euros, según la Wikipedia en español uno de los mayores proyectos de Parques
@@ -244,8 +241,7 @@ Pato Lucas, A Toda Máquina y el Convoy de Camiones. En el Cine Tour de Movie
 World Studios esa regla llega hasta 120 cm. Desde 100 cm se añaden las dos
 montañas rusas pequeñas, Río Bravo, la silla de Mr. Freeze y el Hotel Embrujado,
 y desde 110 cm los Rápidos ACME. En la mayoría de estas atracciones los niños
-de entre 100 y 120 cm suben solo con un adulto. Batman queda fuera para este
-grupo. En el resto de atracciones se espera poco, como muestra la tabla de más
+de entre 100 y 120 cm suben solo con un adulto. En el resto de atracciones se espera poco, como muestra la tabla de más
 abajo.
 
 ## Qué atracción para quién
@@ -258,9 +254,8 @@ es la más moderna y la de las esperas más largas, y quien venga por ella hará
 bien en incluir un pase en el plan. El Coaster Express es una montaña rusa de
 madera de marcha áspera y 1,4 kilómetros de recorrido.
 
-Shadows of Arkham es la más discreta de los grandes nombres. Es compacta, tiene
-cinco inversiones en 823 metros y casi nunca hay cola. La torre se sube desde
-132 cm. Quien sea más bajo la verá desde abajo.
+Shadows of Arkham es compacta, tiene
+cinco inversiones en 823 metros y casi nunca hay cola.
 
 ## Espectáculos y novedades de 2026
 
@@ -350,19 +345,16 @@ tiempo.
 
 ```
 
-El día de la semana pesa mucho aquí. Arriba está el sábado, con una diferencia
-clara, y abajo el miércoles y el jueves. El lunes ocupa el segundo puesto, y el
+El día con más gente es el sábado, con una diferencia clara, y los más tranquilos son el miércoles y el jueves. El lunes ocupa el segundo puesto, y el
 domingo y el martes quedan en el medio. El lunes se apoya en pocos días medidos,
 porque el parque suele cerrarlo en otoño.
 
-En los meses llama la atención agosto. Julio está bajo, aunque en los dos meses
-el parque abre todos los días de 12 h a medianoche, y agosto queda claramente más
-arriba. Por qué, no lo sabemos. Septiembre es tranquilo. Octubre tiene hasta
+Agosto queda claramente por encima de julio, aunque en los dos meses el parque abre todos los días de 12 h a medianoche. Por qué, no lo sabemos. Septiembre es tranquilo. Octubre tiene hasta
 ahora seis días medidos y es el mes más tranquilo; diciembre también tiene seis
 y un valor llamativamente alto (a 8 de octubre de 2026). Los dos datos son
 escasos.
 
-Así es el calendario de 2026. De abril a junio el parque suele abrir, unas veces
+De abril a junio de 2026 el parque suele abrir, unas veces
 hasta las 20 y otras hasta las 22 h. En julio y agosto funciona todos los días
 hasta medianoche. En septiembre se alternan las 20 y las 22 h, y en octubre
 faltan una y otra vez los lunes y los martes. En noviembre abre solo los fines
@@ -536,17 +528,9 @@ Madrid, comparados:
 
 ```
 
-## Lo que te llevas para Madrid
+## Antes de salir
 
-Como excursión desde Madrid, el parque compensa sobre todo por tres montañas
-rusas: Batman, Superman y Stunt Fall. Quien venga con niños de menos de 120 cm
-tiene en Cartoon Village un programa decente y poca cola. Quien vaya entre
-semana en septiembre u octubre caerá en los días más tranquilos.
-
-En julio y agosto el parque cierra a medianoche. Quien venga sin coche
-comprobará antes los horarios de las líneas 412 y 413, que la empresa de
-autobuses puede cambiar. Y quien quiera subir a Batman decide en casa si compra
-un pase para ello.
+En julio y agosto el parque cierra a medianoche. La empresa de autobuses puede cambiar los horarios de las líneas 412 y 413, así que conviene comprobarlos antes del viaje.
 
 — Patrick
 

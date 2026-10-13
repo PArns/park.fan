@@ -56,8 +56,7 @@ voor het park open.
 Het park ligt in San Martín de la Vega, zo’n 30 kilometer ten zuiden van de
 hoofdstad, en heeft vijf themagebieden naar de films en strips van Warner Bros.
 Mensen reizen vooral voor twee van de zeven achtbanen: Superman, er sinds de opening in
-2002, en Batman: Gotham City Escape, sinds 2023. Bij al het andere in het park
-staat meestal weinig rij, bij Batman niet.
+2002, en Batman: Gotham City Escape, sinds 2023. Behalve bij Batman staat er in het park meestal weinig rij.
 
 ## Hoe het park ontstond
 
@@ -85,8 +84,7 @@ het park volgens dezelfde bron voor het eerst winst.
 In 2019 kwamen er 2,26 miljoen gasten, waarmee het bij de twintig meest bezochte
 parken van Europa hoort. Parques Reunidos is nu van beleggingsmaatschappij EQT,
 die het concern volgens Expansión in september 2026 wil laten verkopen
-([meer daarover](/blog/parques-reunidos-te-koop-movie-park)). Voor een bezoek
-verandert dat voorlopig niets.
+([meer daarover](/blog/parques-reunidos-te-koop-movie-park)).
 
 Het terrein meet 31,2 hectare. Daarvan is 3,2 hectare de entree Hollywood
 Boulevard, waar geen achtbaan staat, en ongeveer zeven hectare elk zijn Movie World
@@ -101,11 +99,9 @@ Bip Bip, in 2011 kreeg Cartoon Village er vier attracties bij, onder meer de
 verkeersschool van de familie Flintstone, en in 2013 de Academia de Pilotos Baby
 Looney Tunes. Parque Warner Beach volgde in juni 2014, in 2018 kwam daar een
 DC-gebied met zes waterattracties bij, en in 2019 het Aquaman Nighttime Spectacular.
-Daarna duurde het vier jaar tot Batman.
 
 ## Superman en Gotham: DC Super Heroes World
 
-DC Super Heroes World heeft de banen waarvoor de mensen komen.
 **[Superman: La Atracción de Acero](ref:parque-warner-madrid/superman-la-atraccion-de-acero)**
 rijdt sinds de opening en was volgens de Spaanse Wikipedia de eerste floorless
 coaster van Europa. Bolliger & Mabillard bouwde hem. Bij dit bouwtype ontbreekt de
@@ -120,7 +116,7 @@ en rijdt hij **100 km/u**, met zeven inversies en een rondrit van 2:26 minuten.
 De pagina over de baan noemt 55 meter, die over het themagebied 65. Meerijden mag
 vanaf **132 cm**.
 
-De nieuwste en belangrijkste baan is
+De nieuwste baan is
 **[Batman: Gotham City Escape](ref:parque-warner-madrid/batman-gotham-city-escape)**.
 Intamin bouwde hem, op **13 mei 2023** ging hij open, en hij kostte meer dan
 20 miljoen euro, volgens de Spaanse Wikipedia een van de grootste projecten van
@@ -239,7 +235,7 @@ Emergencias Pato Lucas, A Toda Máquina en de Convoy de Camiones. Bij de Cine To
 in Movie World Studios geldt dat tot 120 cm. Vanaf 100 cm komen de twee kleine
 achtbanen, Río Bravo, de Mr.-Freeze-stoel en het Hotel Embrujado erbij, vanaf
 110 cm de Rápidos ACME. In de meeste van deze attracties mogen kinderen tussen
-100 en 120 cm alleen mee met een volwassene. Batman valt voor deze groep af. Bij
+100 en 120 cm alleen mee met een volwassene. Bij
 de overige banen staat meestal weinig rij, zoals de tabel verderop laat zien.
 
 ## Welke baan voor wie
@@ -251,9 +247,7 @@ hetzelfde parcours, een keer achterwaarts. Batman is de modernste baan en die me
 de langste wachttijden, en wie voor hem komt, plant het best een pas in. De
 Coaster Express is een houten baan met een ruwe rit en 1,4 kilometer spoor.
 
-De Shadows of Arkham zijn de meest onopvallende van de grote namen. De baan is
-compact, heeft vijf inversies op 823 meter en je staat er zelden aan. In de toren
-mag je vanaf 132 cm. Wie kleiner is, ziet hem van onderen.
+Shadows of Arkham is compact, heeft vijf inversies op 823 meter en je staat er zelden aan.
 
 ## Shows en nieuw in 2026
 
@@ -338,18 +332,16 @@ korter is dan anders, en plant toch tijd in.
 
 ```
 
-De weekdag maakt hier veel uit. Bovenaan staat de zaterdag met een duidelijke
-voorsprong, onderaan woensdag en donderdag. De maandag staat op plek twee,
+Het drukst is de zaterdag, met een duidelijke voorsprong, het rustigst woensdag en donderdag. De maandag staat op plek twee,
 zondag en dinsdag zitten in het midden. De maandag staat op weinig meetdagen,
 omdat het park hem in het najaar vaak sluit.
 
-Bij de maand valt augustus op. Juli ligt laag, hoewel het park in beide maanden
-dagelijks van 12 uur tot middernacht open is, en augustus ligt duidelijk hoger.
+Augustus ligt duidelijk hoger dan juli, hoewel het park in beide maanden dagelijks van 12 uur tot middernacht open is.
 Waarom, weten we niet. September is rustig. Oktober heeft tot nu toe zes
 gemeten dagen en is de rustigste maand, december staat ook op zes dagen en heeft
 een opvallend hoge waarde (stand 8 oktober 2026). Beide cijfers zijn dun.
 
-Zo ziet de kalender van 2026 eruit. Van april tot en met juni is het park meestal
+Van april tot en met juni 2026 is het park meestal
 open, soms tot 20, soms tot 22 uur. In juli en augustus draait het dagelijks tot
 middernacht. In september wisselen 20 en 22 uur, in oktober vallen maandagen en
 dinsdagen steeds weer weg. In november is het alleen in weekenden en op twee
@@ -513,16 +505,9 @@ Ook [PortAventura](/blog/portaventura-halloween-2026) viert Halloween. De wachtt
 
 ```
 
-## Wat ik je over Madrid meegeef
+## Voor je vertrekt
 
-Als uitstap vanuit Madrid loont het park vooral door drie banen: Batman, Superman
-en Stunt Fall. Wie met kinderen onder 120 cm komt, heeft in Cartoon Village een
-ruim aanbod en weinig rij. Wie doordeweeks in september of oktober gaat, treft de
-rustigste dagen.
-
-In juli en augustus sluit het park om middernacht. Wie zonder auto komt, kijkt
-vooraf naar de dienstregeling van lijn 412 en 413, want de busmaatschappij kan die
-wijzigen. En wie Batman wil rijden, beslist thuis of hij daarvoor een pas koopt.
+In juli en augustus sluit het park om middernacht. De busmaatschappij kan de dienstregeling van lijn 412 en 413 wijzigen, kijk die dus vooraf na.
 
 — Patrick
 

@@ -55,7 +55,7 @@ Park.
 Der Park liegt in San Martín de la Vega, rund 30 Kilometer südlich der
 Hauptstadt, und hat fünf Themenbereiche aus den Filmen und Comics von
 Warner Bros. Wegen zwei der sieben Achterbahnen reist man an: Superman, seit der Eröffnung 2002 da, und Batman: Gotham City Escape,
-seit 2023. Alles andere im Park hat meist kurze Warteschlangen, nur Batman nicht.
+seit 2023. Außer an Batman steht man im Park meist kurz an.
 
 ## Wie der Park entstand
 
@@ -83,8 +83,7 @@ schrieb der Park laut derselben Quelle erstmals Gewinne.
 2019 kamen 2,26 Millionen Gäste, damit gehört er zu den zwanzig meistbesuchten
 Parks Europas. Parques Reunidos gehört heute dem Finanzinvestor EQT, der den
 Konzern laut Expansión im September 2026 verkaufen lassen will
-([mehr dazu](/blog/parques-reunidos-verkauf-movie-park)). Für den Besuch ändert
-das vorerst nichts.
+([mehr dazu](/blog/parques-reunidos-verkauf-movie-park)).
 
 Das Gelände misst 31,2 Hektar. 3,2 Hektar entfallen auf den Eingangsbereich
 Hollywood Boulevard, in dem keine Bahn steht, und je rund sieben auf Movie World
@@ -100,11 +99,9 @@ Correcaminos Bip Bip, 2011 bekam Cartoon Village vier Fahrgeschäfte dazu, darun
 die Verkehrsschule der Familie Feuerstein, und 2013 die Academia de Pilotos Baby
 Looney Tunes. Der Parque Warner Beach folgte im Juni 2014, 2018 kam dort ein
 DC-Bereich mit sechs Wasserattraktionen dazu, und 2019 der Aquaman Nighttime Spectacular.
-Danach vergingen vier Jahre bis zu Batman.
 
 ## Superman und Gotham: DC Super Heroes World
 
-DC Super Heroes World hat die Bahnen, für die die Leute kommen.
 **[Superman: La Atracción de Acero](ref:parque-warner-madrid/superman-la-atraccion-de-acero)**
 fährt seit der Eröffnung und war laut spanischer Wikipedia die erste
 Floorless-Achterbahn Europas. Gebaut hat sie Bolliger & Mabillard. Bei dieser
@@ -118,7 +115,7 @@ Laut Roller Coaster DataBase ist die Bahn **50 Meter** hoch, 1.100 Meter lang
 und **100 km/h** schnell, hat sieben Inversionen und braucht 2:26 Minuten für
 den Rundkurs. Die Seite zur Bahn nennt 55 Meter, die Seite zum Themenbereich 65. Mitfahren darf man ab **132 cm**.
 
-Die jüngste und wichtigste Bahn ist
+Die jüngste Bahn ist
 **[Batman: Gotham City Escape](ref:parque-warner-madrid/batman-gotham-city-escape)**.
 Intamin hat sie gebaut, am **13. Mai 2023** ging sie auf, und sie kostete mehr als
 20 Millionen Euro, nach der spanischen Wikipedia eines der größten Projekte von
@@ -238,7 +235,7 @@ Lucas, A Toda Máquina und der Convoy de Camiones. Bei der Cine Tour in Movie
 World Studios gilt das bis 120 cm. Ab 100 cm kommen die beiden kleinen
 Achterbahnen, Río Bravo, der Mr.-Freeze-Stuhl und das Hotel Embrujado dazu, ab
 110 cm die Rápidos ACME. Auf den meisten dieser Bahnen fahren Kinder zwischen
-100 und 120 cm nur mit einem Erwachsenen mit. Batman fällt für diese Gruppe weg. An den übrigen Bahnen steht man meist kurz an, wie die Tabelle weiter unten zeigt.
+100 und 120 cm nur mit einem Erwachsenen mit. An den übrigen Bahnen steht man meist kurz an, wie die Tabelle weiter unten zeigt.
 
 ## Welche Bahn für wen
 
@@ -248,7 +245,7 @@ Parks. Wer die intensivste Fahrt will, geht zu Stunt Fall. Die RCDB nennt 4,5 g,
 Bahn und die mit den längsten Wartezeiten, und wer wegen ihr kommt, plant am
 besten einen Pass ein. Der Coaster Express ist eine Holzbahn mit rauem Lauf und 1,4 Kilometern Strecke.
 
-Die Shadows of Arkham sind der unauffälligste der großen Namen. Die Bahn ist kompakt, hat fünf Inversionen auf 823 Metern, und man steht dort selten an. Den Turm fährt man ab 132 cm. Wer kleiner ist, sieht ihn von unten.
+Shadows of Arkham ist kompakt, hat fünf Inversionen auf 823 Metern, und man steht dort selten an.
 
 ## Shows und Neues 2026
 
@@ -330,18 +327,15 @@ ein paar Minuten kürzer ist als sonst, und plant trotzdem Zeit ein.
 
 ```
 
-Der Wochentag macht hier viel aus. Oben steht der Samstag mit deutlichem Abstand, unten
-stehen Mittwoch und Donnerstag. Der Montag liegt auf Platz zwei, Sonntag und
+Am vollsten ist der Samstag, mit deutlichem Abstand, am ruhigsten sind Mittwoch und Donnerstag. Der Montag liegt auf Platz zwei, Sonntag und
 Dienstag in der Mitte. Der Montag steht auf wenig Messtagen, weil der Park ihn im
 Herbst oft schließt.
 
-Beim Monat fällt der August auf. Der Juli liegt tief, obwohl der Park in beiden
-Monaten täglich von 12 Uhr bis Mitternacht geöffnet hat, und der August liegt
-deutlich höher. Warum, wissen wir nicht. Im September ist es ruhig. Der Oktober hat bisher sechs gemessene Tage und ist der ruhigste Monat, der
+Der August liegt deutlich höher als der Juli, obwohl der Park in beiden Monaten täglich von 12 Uhr bis Mitternacht geöffnet hat. Warum, wissen wir nicht. Im September ist es ruhig. Der Oktober hat bisher sechs gemessene Tage und ist der ruhigste Monat, der
 Dezember steht ebenfalls auf sechs Tagen und hat einen auffallend hohen Wert
 (Stand 8. Oktober 2026). Beide Zahlen sind dünn.
 
-So sieht der Kalender 2026 aus. Von April bis Juni ist der Park meist geöffnet, mal
+Von April bis Juni 2026 ist der Park meist geöffnet, mal
 bis 20, mal bis 22 Uhr. Im Juli und August läuft er täglich bis Mitternacht. Im
 September wechseln 20 und 22 Uhr, im Oktober fallen Montage und Dienstage immer
 wieder aus. Im November öffnet er nur an Wochenenden und an zwei Montagen, von
@@ -499,16 +493,9 @@ Auch [PortAventura](/blog/portaventura-halloween-2026) feiert Halloween. Die War
 
 ```
 
-## Was ich dir für Madrid mitgebe
+## Vor der Abfahrt
 
-Der Park lohnt als Ausflug von Madrid aus vor allem wegen drei Bahnen: Batman,
-Superman und Stunt Fall. Wer mit Kindern unter 120 cm kommt, hat in Cartoon
-Village ein ordentliches Programm und wenig Anstehen. Wer unter der Woche im
-September oder Oktober fährt, erwischt die ruhigsten Tage.
-
-Im Juli und August schließt der Park um Mitternacht. Wer ohne Auto kommt, prüft
-vorher die Fahrpläne der Linien 412 und 413, die der Busbetreiber ändern kann. Und
-wer Batman fahren will, entscheidet zu Hause, ob er dafür einen Pass kauft.
+Im Juli und August schließt der Park um Mitternacht. Die Fahrpläne der Linien 412 und 413 kann der Busbetreiber ändern, deshalb vor der Fahrt prüfen.
 
 — Patrick
 

@@ -56,8 +56,7 @@ opens an hour before the park does.
 The park is in San Martín de la Vega, about 30 kilometres south of the capital,
 and has five themed areas built on Warner Bros. films and comics. Two of its
 seven coasters are the reason to come: Superman, there since the opening in
-2002, and Batman: Gotham City Escape, since 2023. Almost everything else in the
-park has short queues. Batman doesn’t.
+2002, and Batman: Gotham City Escape, since 2023. Apart from Batman, queues in the park are mostly short.
 
 ## How the park came about
 
@@ -86,8 +85,7 @@ first profits, according to the same source.
 In 2019 it had 2.26 million guests, which puts it among the twenty most visited
 parks in Europe. Parques Reunidos now belongs to the investment firm EQT, which,
 according to Expansión, wants to put the group up for sale in September 2026
-([more on that](/blog/parques-reunidos-sale-movie-park)). For a visit that
-changes nothing for now.
+([more on that](/blog/parques-reunidos-sale-movie-park)).
 
 The site covers 31.2 hectares. 3.2 hectares go to the Hollywood Boulevard
 entrance area, which has no coaster, and roughly seven each to Movie World
@@ -103,11 +101,10 @@ Correcaminos Bip Bip opened, in 2011 Cartoon Village got four more rides,
 including the Flintstones traffic school, and in 2013 the Academia de Pilotos
 Baby Looney Tunes. Parque Warner Beach followed in June 2014, a DC area with six
 water attractions was added there in 2018, and the Aquaman Nighttime Spectacular
-in 2019. Then four years passed before Batman.
+in 2019.
 
 ## Superman and Gotham: DC Super Heroes World
 
-DC Super Heroes World has the coasters people come for.
 **[Superman: La Atracción de Acero](ref:parque-warner-madrid/superman-la-atraccion-de-acero)**
 has run since the opening and, according to the Spanish Wikipedia, was the first
 floorless coaster in Europe. Bolliger & Mabillard built it. On this type there
@@ -122,7 +119,7 @@ metres long and **100 km/h** fast, has seven inversions and takes 2:26 minutes
 for the circuit. The ride’s own page says 55 metres, the page for the themed
 area 65. You can ride from **132 cm**.
 
-The youngest and most important coaster is
+The youngest coaster is
 **[Batman: Gotham City Escape](ref:parque-warner-madrid/batman-gotham-city-escape)**.
 Intamin built it, it opened on **13 May 2023**, and it cost more than 20 million
 euros, one of Parques Reunidos’ biggest projects of that year according to the
@@ -245,7 +242,7 @@ Emergencias Pato Lucas, A Toda Máquina and the Convoy de Camiones. At the Cine
 Tour in Movie World Studios that applies up to 120 cm. From 100 cm the two small
 coasters, Río Bravo, the Mr. Freeze chair and the Hotel Embrujado join in, and
 from 110 cm the Rápidos ACME. On most of these rides, children between 100 and
-120 cm can only go with an adult. Batman is out for this group. At the other
+120 cm can only go with an adult. At the other
 rides the queue is usually short, as the table further down shows.
 
 ## Which ride for whom
@@ -258,9 +255,7 @@ and the one with the longest wait times, and if you’re coming for it, you’re
 best off planning a pass. Coaster Express is a wooden coaster with a rough ride
 and 1.4 kilometres of track.
 
-Shadows of Arkham is the least conspicuous of the big names. The coaster is
-compact, has five inversions on 823 metres, and you rarely queue there. You can
-ride the tower from 132 cm. If you’re smaller, you’ll see it from below.
+Shadows of Arkham is compact, has five inversions on 823 metres, and you rarely queue there.
 
 ## Shows and what’s new in 2026
 
@@ -292,7 +287,7 @@ Everything below it sits close together: Rápidos ACME is in second place,
 followed by Scooby-Doo, Superman, Río Bravo and Coaster Express, and Stunt Fall
 isn’t among the top ten.
 
-Here’s how the queues spread over the day:
+How the queues spread over the day:
 
 ```hourly-profile-widget slug=parque-warner-madrid top=8
 
@@ -345,18 +340,16 @@ time for it.
 
 ```
 
-The weekday makes a big difference here. Saturday sits at the top by a clear
-margin, and Wednesday and Thursday are at the bottom. Monday is in second place,
+Saturday is the busiest day by a clear margin, and Wednesday and Thursday are the quietest. Monday is in second place,
 with Sunday and Tuesday in the middle. Monday rests on few measured days,
 because the park often closes it in autumn.
 
-In the months, August stands out. July is low, even though the park is open
-every day from noon to midnight in both months, and August is clearly higher. We
+August is clearly busier than July, even though the park is open every day from noon to midnight in both months. We
 don’t know why. September is quiet. October has six measured days so far and is
 the quietest month; December also has six days and an unusually high value (as
 of 8 October 2026). Both figures are thin.
 
-Here’s what the 2026 calendar looks like. From April to June the park is mostly
+From April to June 2026 the park is mostly
 open, sometimes until 8pm, sometimes until 10pm. In July and August it runs
 daily until midnight. In September 8pm and 10pm alternate, and in October
 Mondays and Tuesdays keep dropping out. In November it opens only on weekends
@@ -522,17 +515,9 @@ compared:
 
 ```
 
-## What I would tell you about Madrid
+## Before you set off
 
-As a day trip from Madrid, the park is worth it mainly for three coasters:
-Batman, Superman and Stunt Fall. If you come with children under 120 cm,
-Cartoon Village has a decent programme and little queueing. If you go on a
-weekday in September or October, you get the quietest days.
-
-In July and August the park closes at midnight. If you’re coming without a car,
-check the timetables of lines 412 and 413 beforehand, which the bus operator can
-change. And if you want to ride Batman, decide at home whether you’ll buy a pass
-for it.
+In July and August the park closes at midnight. The bus operator can change the timetables of lines 412 and 413, so check them before you travel.
 
 — Patrick
 

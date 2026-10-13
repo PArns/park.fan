@@ -56,8 +56,7 @@ parcheggio apre un’ora prima del parco.
 Il parco sta a San Martín de la Vega, circa 30 chilometri a sud della capitale, e
 ha cinque aree tematiche dedicate ai film e ai fumetti della Warner Bros. Si viaggia
 fin qui per due delle sette montagne russe: Superman, presente dall’apertura nel
-2002, e Batman: Gotham City Escape, dal 2023. Il resto del parco ha di solito file
-corte, Batman no.
+2002, e Batman: Gotham City Escape, dal 2023. Tranne che a Batman, nel parco le file sono di solito corte.
 
 ## Com’è nato il parco
 
@@ -86,8 +85,7 @@ Dopo, secondo la stessa fonte, il parco ha chiuso per la prima volta in utile.
 Nel 2019 sono arrivati 2,26 milioni di ospiti, e il parco rientra così fra i venti
 più visitati d’Europa. Parques Reunidos appartiene oggi al fondo EQT, che secondo
 Expansión a settembre 2026 vuole metterla in vendita
-([i dettagli](/blog/parques-reunidos-in-vendita-movie-park)). Per chi visita il
-parco, per ora non cambia nulla.
+([i dettagli](/blog/parques-reunidos-in-vendita-movie-park)).
 
 L’area misura 31,2 ettari. Di questi, 3,2 sono l’ingresso con l’Hollywood
 Boulevard, dove non c’è nessuna montagna russa, e circa sette ciascuno vanno a
@@ -103,12 +101,10 @@ di Scooby-Doo, e la prima stagione natalizia il parco l’ha celebrata nel 2006.
 ricevuto quattro attrazioni, fra cui la scuola guida della famiglia Flintstones, e
 nel 2013 l’Academia de Pilotos Baby Looney Tunes. Il Parque Warner Beach è seguito
 a giugno 2014, nel 2018 vi è stata aggiunta un’area DC con sei attrazioni
-acquatiche, e nel 2019 l’Aquaman Nighttime Spectacular. Poi sono passati quattro
-anni fino a Batman.
+acquatiche, e nel 2019 l’Aquaman Nighttime Spectacular.
 
 ## Superman e Gotham: DC Super Heroes World
 
-DC Super Heroes World ha le montagne russe per cui la gente viene.
 **[Superman: La Atracción de Acero](ref:parque-warner-madrid/superman-la-atraccion-de-acero)**
 gira dall’apertura ed è stata, secondo Wikipedia in spagnolo, la prima
 floorless d’Europa. L’ha costruita Bolliger & Mabillard. In questo tipo di
@@ -123,7 +119,7 @@ metri e arriva a **100 km/h**, ha sette inversioni e per il giro completo servon
 2:26 minuti. La pagina dedicata all’attrazione indica 55 metri, quella dell’area
 tematica 65. Si sale da **132 cm**.
 
-La più recente e importante è
+La più recente è
 **[Batman: Gotham City Escape](ref:parque-warner-madrid/batman-gotham-city-escape)**.
 L’ha costruita Intamin, ha aperto il **13 maggio 2023** ed è costata più di 20
 milioni di euro, secondo Wikipedia in spagnolo uno dei progetti più grandi di
@@ -245,7 +241,7 @@ Pato Lucas, A Toda Máquina e il Convoy de Camiones. Al Cine Tour di Movie World
 Studios questa regola vale fino a 120 cm. Da 100 cm si aggiungono le due piccole
 montagne russe, Río Bravo, la sedia di Mr. Freeze e l’Hotel Embrujado, da 110 cm
 i Rápidos ACME. Sulla maggior parte di queste attrazioni i bambini fra 100 e 120
-cm salgono solo insieme a un adulto. Batman per questo gruppo è escluso. Sulle
+cm salgono solo insieme a un adulto. Sulle
 altre attrazioni di solito si aspetta poco, come mostra la tabella più sotto.
 
 ## Quale attrazione per chi
@@ -258,9 +254,7 @@ con le attese più lunghe, e chi viene per lei fa bene a mettere in conto un pas
 Il Coaster Express è una montagna russa di legno con una corsa ruvida e 1,4
 chilometri di tracciato.
 
-Gli Shadows of Arkham sono il meno appariscente fra i nomi grandi. L’attrazione è
-compatta, ha cinque inversioni su 823 metri e di rado ci si mette in fila. La
-torre si prende da 132 cm. Chi è più basso la guarda da sotto.
+Shadows of Arkham è compatta, ha cinque inversioni su 823 metri e di rado ci si mette in fila.
 
 ## Spettacoli e novità 2026
 
@@ -347,19 +341,16 @@ la fila è di qualche minuto più corta del solito, e calcola comunque del tempo
 
 ```
 
-Qui il giorno della settimana pesa molto. In cima c’è il sabato, con un distacco
-netto, in fondo mercoledì e giovedì. Il lunedì è al secondo posto, domenica e
+Il giorno più affollato è il sabato, con un distacco netto, i più tranquilli sono mercoledì e giovedì. Il lunedì è al secondo posto, domenica e
 martedì stanno nel mezzo. Il lunedì poggia su pochi giorni misurati, perché in
 autunno il parco spesso lo tiene chiuso.
 
-Fra i mesi spicca agosto. Luglio sta in basso, benché in entrambi i mesi il
-parco sia aperto ogni giorno dalle 12 a mezzanotte, mentre agosto sta molto più in
-alto. Perché, non lo sappiamo. A settembre c’è calma. Ottobre ha finora sei giorni
+Agosto sta molto più in alto di luglio, benché in entrambi i mesi il parco sia aperto ogni giorno dalle 12 a mezzanotte. Perché, non lo sappiamo. A settembre c’è calma. Ottobre ha finora sei giorni
 misurati ed è il mese più tranquillo, dicembre poggia anch’esso su sei giorni e ha
 un valore insolitamente alto (dati all’8 ottobre 2026). Entrambi i numeri sono
 scarsi.
 
-Ecco il calendario 2026. Da aprile a giugno il parco è per lo più aperto, a volte
+Da aprile a giugno 2026 il parco è per lo più aperto, a volte
 fino alle 20, a volte fino alle 22. A luglio e ad agosto resta aperto ogni giorno
 fino a mezzanotte. A settembre si alternano le 20 e le 22, a ottobre lunedì e
 martedì saltano di continuo. A novembre apre solo nei fine settimana e in due
@@ -524,16 +515,9 @@ Anche [PortAventura](/blog/portaventura-halloween-2026) festeggia Halloween. Le 
 
 ```
 
-## Che cosa ti porto via da Madrid
+## Prima di partire
 
-Come gita da Madrid il parco vale soprattutto per tre montagne russe: Batman,
-Superman e Stunt Fall. Chi viene con bambini sotto i 120 cm trova a Cartoon
-Village un programma decente e poche file. Chi viene in settimana a settembre o a
-ottobre becca i giorni più tranquilli.
-
-A luglio e ad agosto il parco chiude a mezzanotte. Chi arriva senza auto controlla
-prima gli orari delle linee 412 e 413, che l’operatore può modificare. E chi
-vuole fare Batman decide a casa se comprare un pass.
+A luglio e ad agosto il parco chiude a mezzanotte. L’operatore può modificare gli orari delle linee 412 e 413, conviene controllarli prima del viaggio.
 
 — Patrick
 
