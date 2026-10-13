@@ -408,13 +408,7 @@ günstigsten.
 | 2 Day Studio Pass                                     | 16.000 Yen    |
 
 Als Kind zählt, wer am Besuchstag zwischen 4 und 11 Jahre alt ist. Wer im April auf
-die Mittelschule wechselt, zahlt bis zum 31. März noch den Kindertarif und ab dem
-
-1. April den Preis für Erwachsene. Ein Studio Pass erlaubt keinen erneuten Einlass
-   nach dem Verlassen, nur der Jahrespass (laut Park nur auf Japanisch buchbar). Der
-   Weiterverkauf ist verboten, und Karten von Wiederverkäufern werden nicht
-   angenommen. Bei manchen Karten für Besuche ab dem 1. September 2026 lässt sich das
-   Datum ändern.
+die Mittelschule wechselt, zahlt bis zum 31. März noch den Kindertarif und ab dem 1. April den Preis für Erwachsene. Ein Studio Pass erlaubt keinen erneuten Einlass nach dem Verlassen, nur der Jahrespass (laut Park nur auf Japanisch buchbar). Der Weiterverkauf ist verboten, und Karten von Wiederverkäufern werden nicht angenommen. Bei manchen Karten für Besuche ab dem 1. September 2026 lässt sich das Datum ändern.
 
 ## Anreise
 
