@@ -84,11 +84,11 @@ The technical data comes from the park and the Roller Coaster DataBase.
 
 At the top the train hangs over the edge for a moment, then drops 42.5 metres at an angle of 87 degrees, into a tunnel. It’s a dive coaster from Bolliger & Mabillard with seats in a single row, six people side by side, 18 per train. The track is short at 566 metres. After the drop come an Immelmann and a heartline roll, and the ride is over after about a minute.
 
-Oblivion opened on 28 March 2015, for the park’s 40th birthday. The minimum height is 140 centimetres.
+Oblivion opened on 28 March 2015, for the park’s 40th birthday.
 
 ### Raptor: the first wing coaster
 
-Raptor is the prototype of the wing coasters. Bolliger & Mabillard opened it on 1 April 2011. The seats hang to the left and right of the track, four people side by side, with nothing above or below you. It’s 33 metres tall and 90 km/h fast, with three inversions: a corkscrew, a zero-g roll and an inline twist. Raptor’s minimum height is 140 centimetres.
+Raptor is the prototype of the wing coasters. Bolliger & Mabillard opened it on 1 April 2011. The seats hang to the left and right of the track, four people side by side, with nothing above or below you. Its three inversions are a corkscrew, a zero-g roll and an inline twist.
 
 ### Blue Tornado and Shaman: Vekoma, 1998 and 1985
 
@@ -98,7 +98,7 @@ Shaman is the oldest coaster in the park. It opened in 1985 as Magic Mountain, t
 
 ### Mammut, Dragon Rush and Ortobruco Tour
 
-[Mammut](ref:gardaland/mammut) is a mine-train coaster from Vekoma with three lift hills (12, 13 and 14 metres) and a ride time of 2:45 minutes. A statue of a mammoth stands at the entrance, and the theme is arctic. It runs at 50 km/h and from 110 centimetres.
+[Mammut](ref:gardaland/mammut) is a mine-train coaster from Vekoma with three lift hills (12, 13 and 14 metres) and a ride time of 2:45 minutes. A statue of a mammoth stands at the entrance, and the theme is arctic.
 
 [Dragon Rush](ref:gardaland/dragon-rush) is a spinning coaster from the Fabbri Group, opened in 2016 in what was then the Kung Fu Panda area. It was reworked in 2025 after the DreamWorks licence for Kung Fu Panda had ended, and the area is now called Dragon Empire. Dragon Rush runs from 110 centimetres and, by our measurements, has the longest queue in the park.
 
@@ -106,17 +106,17 @@ Shaman is the oldest coaster in the park. It opened in 1985 as Magic Mountain, t
 
 ## Water, dark rides and towers
 
-You get wet on three rides. [Colorado Boat](ref:gardaland/colorado-boat) is the log flume from Mack Rides, built in 1985, with two drops, the higher one 15 metres. [Jungle Rapids](ref:gardaland/jungle-rapids) by Intamin (1999) is a river rapids ride with round boats that passes Asian scenery. [Fuga da Atlantide](ref:gardaland/fuga-da-atlantide) is an Intamin Super Splash from 2003. The boat goes up a lift and plunges into a basin that, according to German Wikipedia, was the largest water basin in Europe when it opened. The minimum height is 100 to 110 centimetres.
+[Colorado Boat](ref:gardaland/colorado-boat) is the log flume from Mack Rides, built in 1985, with two drops, the higher one 15 metres. [Jungle Rapids](ref:gardaland/jungle-rapids) by Intamin (1999) is a river rapids ride with round boats that passes Asian scenery. [Fuga da Atlantide](ref:gardaland/fuga-da-atlantide) is an Intamin Super Splash from 2003. The boat goes up a lift and plunges into a basin that, according to German Wikipedia, was the largest water basin in Europe when it opened. The minimum height is 100 to 110 centimetres.
 
 [Animal Treasure Island](ref:gardaland/animal-treasure-island) replaced the dark ride I Corsari in the same spot, which had run underground on three levels since 1992. The Intamin ride system and the set are still there, the story is new, and a young cat called Captain Nine Lives is one of the main characters. Quality Travel calls it the longest water dark ride in Europe, and the minimum height is 107 centimetres.
 
 [Jumanji – The Adventure](ref:gardaland/jumanji-the-adventure) opened in 2022 where Ramses: Il Risveglio stood, the park’s first interactive dark ride, which had itself replaced the old Valle dei Re from 1988 in 2009. According to English Wikipedia it’s the first attraction in the world based on the Jumanji franchise, with a large animatronic figure. Gardaland gives 107 centimetres for it. In 2023 Jumanji – The Labyrinth was added, a walk-through maze of mirrors and jungle.
 
-The park also has two towers. [Space Vertigo](ref:gardaland/space-vertigo) by Intamin is a 40-metre drop tower from 1998, minimum height 130 centimetres. [Wolf Legend](ref:gardaland/wolf-legend) is the drop-and-twist tower by SBF Visa from 2024, from 105 centimetres. The Flying Island from 2000 is a 50-metre observation tower with views of the park and Lake Garda, and the Magic House (2002) is an underground madhouse by Vekoma.
+[Space Vertigo](ref:gardaland/space-vertigo) by Intamin is a 40-metre drop tower from 1998, minimum height 130 centimetres. [Wolf Legend](ref:gardaland/wolf-legend) is the drop-and-twist tower by SBF Visa from 2024, from 105 centimetres. The Flying Island from 2000 is a 50-metre observation tower with views of the park and Lake Garda, and the Magic House (2002) is an underground madhouse by Vekoma.
 
 ## For small children
 
-Children under 90 centimetres get into Gardaland free. There are three areas for them. The Fantasy Kingdom has the Albero di Prezzemolo, a walk-through house of the mascot, the Volaplano with its aeroplane gondolas, the Doremifarm and the Funny Express. The Prezzemolo area has a medieval look, with playgrounds and slides. And Peppa Pig Land at the main entrance, opened in 2018, has Peppa Pig’s house, Grandpa Pig’s train, a balloon and a pirate ship.
+Children under 90 centimetres get into Gardaland free. The Fantasy Kingdom has the Albero di Prezzemolo, a walk-through house of the mascot, the Volaplano with its aeroplane gondolas, the Doremifarm and the Funny Express. The Prezzemolo area has a medieval look, with playgrounds and slides. And Peppa Pig Land at the main entrance, opened in 2018, has Peppa Pig’s house, Grandpa Pig’s train, a balloon and a pirate ship.
 
 In these areas the minimum height is 80 to 105 centimetres, where there is one at all. If you come with children under 110 centimetres you can rent an Inglesina stroller at the entrance, for a fee and against ID. Parents can get the wristband with the child’s name and mobile number at the Welcome offices. The Fantasy Kingdom has a baby room with high chairs, a bottle warmer and changing tables.
 
@@ -194,7 +194,7 @@ You need two days if you have children who want to ride the smaller areas out, o
 
 Gardaland calls its Fast Pass Gardaland Express. It applies on top of admission and lets you use a separate entrance at the included rides, with a shorter wait. It’s valid only on the day of your visit and can’t be transferred.
 
-There are three packages. "Give me 5" allows one ride each on five attractions out of 15 and costs from 27 euros online, from 30 euros in the park. "Epic 17" is good for one ride each on 17 attractions, including Blue Tornado, Oblivion, Raptor, Mammut, Fuga da Atlantide and Jumanji – The Adventure, from 57 euros online and from 60 euros in the park. "No Limits" allows unlimited rides on those 17 attractions and costs from 87 euros online, from 90 euros in the park. All three give 20 percent off in the park’s shops.
+"Give me 5" allows one ride each on five attractions out of 15 and costs from 27 euros online, from 30 euros in the park. "Epic 17" is good for one ride each on 17 attractions, including Blue Tornado, Oblivion, Raptor, Mammut, Fuga da Atlantide and Jumanji – The Adventure, from 57 euros online and from 60 euros in the park. "No Limits" allows unlimited rides on those 17 attractions and costs from 87 euros online, from 90 euros in the park. All three give 20 percent off in the park’s shops.
 
 You reserve through the "Gardaland Express" app. You import the voucher or ticket there by QR code, then see the estimated wait times and join the queue for a ride. A notification ("You’re up soon") arrives about five minutes before your ride, followed by a QR code that stays valid for about five minutes. You buy it online or at the Express Points in the park, and the number of passes per day is limited.
 

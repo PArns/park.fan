@@ -84,11 +84,11 @@ De technische gegevens komen van het park en uit de Roller Coaster DataBase.
 
 Op het hoogste punt hangt de trein even over de rand, en dan valt hij onder een hoek van 87 graden 42,5 meter diep een tunnel in. Het is een dive coaster van Bolliger & Mabillard met zitplaatsen in één rij, zes naast elkaar, 18 per trein. Het parcours is met 566 meter kort. Na de val volgen een Immelmann en een heartline roll, en na ongeveer een minuut is de rit voorbij.
 
-Oblivion opende op 28 maart 2015, bij de 40e verjaardag van het park. De minimale lengte is 140 centimeter.
+Oblivion opende op 28 maart 2015, bij de 40e verjaardag van het park.
 
 ### Raptor: de eerste wing coaster
 
-Raptor is het prototype van de wing coasters. Bolliger & Mabillard opende de baan op 1 april 2011. De stoelen hangen links en rechts van het spoor, vier naast elkaar, en boven of onder je zit niets. 33 meter hoog, 90 km/u, drie inversies: een kurkentrekker, een zero-g roll en een inline twist. Raptor rijdt vanaf 140 centimeter.
+Raptor is het prototype van de wing coasters. Bolliger & Mabillard opende de baan op 1 april 2011. De stoelen hangen links en rechts van het spoor, vier naast elkaar, en boven of onder je zit niets. De drie inversies zijn een kurkentrekker, een zero-g roll en een inline twist.
 
 ### Blue Tornado en Shaman: Vekoma, 1998 en 1985
 
@@ -98,7 +98,7 @@ Shaman is de oudste achtbaan van het park. Hij opende in 1985 onder de naam Magi
 
 ### Mammut, Dragon Rush en Ortobruco Tour
 
-[Mammut](ref:gardaland/mammut) is een mine train van Vekoma met drie lifthills (12, 13 en 14 meter) en een ritduur van 2:45 minuten. Bij de ingang staat het standbeeld van een mammoet, het thema is arctisch. De baan rijdt 50 km/u en vanaf 110 centimeter.
+[Mammut](ref:gardaland/mammut) is een mine train van Vekoma met drie lifthills (12, 13 en 14 meter) en een ritduur van 2:45 minuten. Bij de ingang staat het standbeeld van een mammoet, het thema is arctisch.
 
 [Dragon Rush](ref:gardaland/dragon-rush) is een spinning coaster van de Fabbri Group, in 2016 geopend in het toenmalige Kung Fu Panda-gebied. In 2025 is de baan omgebouwd, nadat de DreamWorks-licentie voor Kung Fu Panda was afgelopen. Het gebied heet nu Dragon Empire. Dragon Rush rijdt vanaf 110 centimeter en heeft volgens onze metingen de langste wachtrij van het park.
 
@@ -106,17 +106,17 @@ Shaman is de oudste achtbaan van het park. Hij opende in 1985 onder de naam Magi
 
 ## Water, darkrides en torens
 
-Nat word je bij drie attracties. [Colorado Boat](ref:gardaland/colorado-boat) is de boomstamwildwaterbaan van Mack Rides uit 1985, met twee afdalingen, waarvan de hoogste 15 meter meet. [Jungle Rapids](ref:gardaland/jungle-rapids) van Intamin (1999) is een wildwaterbaan met ronde boten die langs Aziatische decors voert. [Fuga da Atlantide](ref:gardaland/fuga-da-atlantide) is een Intamin Super Splash uit 2003. De boot gaat via een lift omhoog en stort in een bassin dat bij de opening volgens de Duitse Wikipedia het grootste waterbassin van Europa was. De minimale lengte is 100 tot 110 centimeter.
+[Colorado Boat](ref:gardaland/colorado-boat) is de boomstamwildwaterbaan van Mack Rides uit 1985, met twee afdalingen, waarvan de hoogste 15 meter meet. [Jungle Rapids](ref:gardaland/jungle-rapids) van Intamin (1999) is een wildwaterbaan met ronde boten die langs Aziatische decors voert. [Fuga da Atlantide](ref:gardaland/fuga-da-atlantide) is een Intamin Super Splash uit 2003. De boot gaat via een lift omhoog en stort in een bassin dat bij de opening volgens de Duitse Wikipedia het grootste waterbassin van Europa was. De minimale lengte is 100 tot 110 centimeter.
 
 [Animal Treasure Island](ref:gardaland/animal-treasure-island) staat op dezelfde plek als de darkride I Corsari, die sinds 1992 ondergronds op drie niveaus reed. Het rijsysteem van Intamin en de decors zijn gebleven, het verhaal is nieuw, en een jonge kat die Captain Nine Lives heet is een van de hoofdpersonen. Quality Travel noemt het de langste water dark ride van Europa, de minimale lengte is 107 centimeter.
 
 [Jumanji – The Adventure](ref:gardaland/jumanji-the-adventure) opende in 2022 op de plek van Ramses: Il Risveglio, de eerste interactieve darkride van het park, die in 2009 zelf de oude Valle dei Re uit 1988 had vervangen. Volgens de Engelse Wikipedia is het de eerste attractie ter wereld bij de Jumanji-franchise, met een grote animatronic. Gardaland geeft 107 centimeter op. In 2023 kwam daar met Jumanji – The Labyrinth een doolhof van spiegels en jungle bij waar je doorheen loopt.
 
-Verder staan er twee torens in het park. [Space Vertigo](ref:gardaland/space-vertigo) van Intamin is een 40 meter hoge vrijevaltoren uit 1998, minimale lengte 130 centimeter. [Wolf Legend](ref:gardaland/wolf-legend) is de drop-en-twisttoren van SBF Visa uit 2024, vanaf 105 centimeter. De Flying Island uit 2000 is een 50 meter hoge uitkijktoren met zicht op het park en het Gardameer, en het Magic House (2002) is een ondergronds madhouse van Vekoma.
+[Space Vertigo](ref:gardaland/space-vertigo) van Intamin is een 40 meter hoge vrijevaltoren uit 1998, minimale lengte 130 centimeter. [Wolf Legend](ref:gardaland/wolf-legend) is de drop-en-twisttoren van SBF Visa uit 2024, vanaf 105 centimeter. De Flying Island uit 2000 is een 50 meter hoge uitkijktoren met zicht op het park en het Gardameer, en het Magic House (2002) is een ondergronds madhouse van Vekoma.
 
 ## Voor kleine kinderen
 
-Kinderen onder 90 centimeter komen in Gardaland gratis binnen. Voor hen zijn er drie gebieden. In het Fantasy Kingdom staan de Albero di Prezzemolo, een huis van de mascotte waar je doorheen loopt, de Volaplano met vliegtuiggondels, de Doremifarm en de Funny Express. Het Prezzemolo-gebied heeft een middeleeuws thema, met speeltuinen en glijbanen. En in Peppa Pig Land bij de hoofdingang, geopend in 2018, vind je het huis van Peppa Pig, de trein van Opa Pig, een ballon en een piratenschip.
+Kinderen onder 90 centimeter komen in Gardaland gratis binnen. In het Fantasy Kingdom staan de Albero di Prezzemolo, een huis van de mascotte waar je doorheen loopt, de Volaplano met vliegtuiggondels, de Doremifarm en de Funny Express. Het Prezzemolo-gebied heeft een middeleeuws thema, met speeltuinen en glijbanen. En in Peppa Pig Land bij de hoofdingang, geopend in 2018, vind je het huis van Peppa Pig, de trein van Opa Pig, een ballon en een piratenschip.
 
 In deze gebieden ligt de minimale lengte tussen 80 en 105 centimeter, waar er al een geldt. Wie met kinderen onder 110 centimeter komt, kan bij de ingang tegen betaling en tegen overlegging van een identiteitsbewijs een kinderwagen van Inglesina huren. De armband met naam en telefoonnummer van het kind krijgen ouders bij de Welcome-kantoren. In het Fantasy Kingdom is een babyruimte met kinderstoelen, flessenwarmer en verschoningstafels.
 
@@ -194,7 +194,7 @@ Twee dagen heb je nodig als je kinderen bij je hebt die de kleinere gebieden hel
 
 Gardaland noemt de fast pass Gardaland Express. Hij geldt bovenop de entree en geeft je bij de inbegrepen attracties een eigen toegang, met een kortere wachttijd. Hij geldt alleen op de dag van je bezoek en is niet overdraagbaar.
 
-Er zijn drie pakketten. “Give me 5” geeft één rit op vijf attracties uit 15 en kost online vanaf 27 euro, in het park vanaf 30 euro. “Epic 17” geldt voor één rit op 17 attracties, waaronder Blue Tornado, Oblivion, Raptor, Mammut, Fuga da Atlantide en Jumanji – The Adventure, online vanaf 57 euro, in het park vanaf 60 euro. “No Limits” geeft onbeperkt ritten op diezelfde 17 attracties en kost online vanaf 87 euro, in het park vanaf 90 euro. Alle drie geven 20 procent korting in de winkels van het park.
+“Give me 5” geeft één rit op vijf attracties uit 15 en kost online vanaf 27 euro, in het park vanaf 30 euro. “Epic 17” geldt voor één rit op 17 attracties, waaronder Blue Tornado, Oblivion, Raptor, Mammut, Fuga da Atlantide en Jumanji – The Adventure, online vanaf 57 euro, in het park vanaf 60 euro. “No Limits” geeft onbeperkt ritten op diezelfde 17 attracties en kost online vanaf 87 euro, in het park vanaf 90 euro. Alle drie geven 20 procent korting in de winkels van het park.
 
 De reservering loopt via de app “Gardaland Express”. Het voucher of ticket importeer je daar met een QR-code, daarna zie je de geschatte wachttijden en sluit je aan bij een attractie. Ongeveer vijf minuten voor de rit komt er een melding (“Je bent bijna aan de beurt”), dan verschijnt een QR-code die zo'n vijf minuten geldig blijft. Je koopt de pas online of bij de Express Points in het park, het aantal passen per dag is beperkt.
 

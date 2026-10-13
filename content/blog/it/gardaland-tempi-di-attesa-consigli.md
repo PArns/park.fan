@@ -85,11 +85,11 @@ I dati tecnici vengono dal parco e dalla Roller Coaster DataBase.
 
 In cima il treno resta sospeso per un attimo oltre il bordo, poi precipita per 42,5 metri con un angolo di 87 gradi, dentro un tunnel. È un dive coaster di Bolliger & Mabillard con i sedili in un’unica fila, sei persone affiancate, 18 per treno. Il percorso è corto, 566 metri. Dopo la discesa vengono un Immelmann e una heartline roll, e dopo circa un minuto è finita.
 
-Oblivion ha aperto il 28 marzo 2015, per il quarantesimo compleanno del parco. L’altezza minima è di 140 centimetri.
+Oblivion ha aperto il 28 marzo 2015, per il quarantesimo compleanno del parco.
 
 ### Raptor: il primo wing coaster
 
-Raptor è il prototipo dei wing coaster. Bolliger & Mabillard l’ha aperto il 1° aprile 2011. I sedili pendono a sinistra e a destra del binario, quattro persone affiancate, e sopra e sotto di te non c’è niente. 33 metri di altezza, 90 km/h, tre inversioni: un cavatappi, una zero-g roll e un inline twist. Su Raptor si sale da 140 centimetri.
+Raptor è il prototipo dei wing coaster. Bolliger & Mabillard l’ha aperto il 1° aprile 2011. I sedili pendono a sinistra e a destra del binario, quattro persone affiancate, e sopra e sotto di te non c’è niente. Le tre inversioni sono un cavatappi, una zero-g roll e un inline twist.
 
 ### Blue Tornado e Shaman: Vekoma, 1998 e 1985
 
@@ -99,7 +99,7 @@ Shaman è la montagna russa più vecchia del parco. Aprì nel 1985 con il nome d
 
 ### Mammut, Dragon Rush e Ortobruco Tour
 
-[Mammut](ref:gardaland/mammut) è una montagna russa mine train di Vekoma con tre salite (12, 13 e 14 metri) e una corsa di 2:45 minuti. All’ingresso c’è la statua di un mammut, il tema è artico. L’attrazione va a 50 km/h e si sale da 110 centimetri.
+[Mammut](ref:gardaland/mammut) è una montagna russa mine train di Vekoma con tre salite (12, 13 e 14 metri) e una corsa di 2:45 minuti. All’ingresso c’è la statua di un mammut, il tema è artico.
 
 [Dragon Rush](ref:gardaland/dragon-rush) è uno spinning coaster della Fabbri Group, aperto nel 2016 nella zona che allora era dedicata a Kung Fu Panda. Nel 2025 è stato ridisegnato, dopo che la licenza DreamWorks per Kung Fu Panda era scaduta. La zona ora si chiama Dragon Empire. Dragon Rush si sale da 110 centimetri e, secondo le nostre misurazioni, ha la coda più lunga del parco.
 
@@ -107,17 +107,17 @@ Shaman è la montagna russa più vecchia del parco. Aprì nel 1985 con il nome d
 
 ## Acqua, dark ride e torri
 
-Ci si bagna su tre attrazioni. [Colorado Boat](ref:gardaland/colorado-boat) è la rapida con tronchi di legno di Mack Rides del 1985, con due discese, la più alta delle quali misura 15 metri. [Jungle Rapids](ref:gardaland/jungle-rapids) di Intamin (1999) è una rapida con battello rotondo che passa davanti a scenografie asiatiche. [Fuga da Atlantide](ref:gardaland/fuga-da-atlantide) è un Intamin Super Splash del 2003. Il battello sale con un lift e cade in una vasca che, secondo Wikipedia in tedesco, all’apertura era la più grande d’Europa. L’altezza minima va da 100 a 110 centimetri.
+[Colorado Boat](ref:gardaland/colorado-boat) è la rapida con tronchi di legno di Mack Rides del 1985, con due discese, la più alta delle quali misura 15 metri. [Jungle Rapids](ref:gardaland/jungle-rapids) di Intamin (1999) è una rapida con battello rotondo che passa davanti a scenografie asiatiche. [Fuga da Atlantide](ref:gardaland/fuga-da-atlantide) è un Intamin Super Splash del 2003. Il battello sale con un lift e cade in una vasca che, secondo Wikipedia in tedesco, all’apertura era la più grande d’Europa. L’altezza minima va da 100 a 110 centimetri.
 
 [Animal Treasure Island](ref:gardaland/animal-treasure-island) ha preso lo stesso posto della dark ride I Corsari, che dal 1992 correva sottoterra su tre piani. Il sistema di trasporto di Intamin e la scenografia sono rimasti, la storia è nuova, e tra i protagonisti c’è una giovane gatta di nome Captain Nine Lives. Quality Travel la chiama la water dark ride più lunga d’Europa, l’altezza minima è di 107 centimetri.
 
 [Jumanji – The Adventure](ref:gardaland/jumanji-the-adventure) ha aperto nel 2022 al posto di Ramses: Il Risveglio, la prima dark ride interattiva del parco, che a sua volta nel 2009 aveva sostituito la vecchia Valle dei Re del 1988. Secondo Wikipedia in inglese è la prima attrazione al mondo dedicata al franchise di Jumanji, con una grande figura animatronica. Gardaland indica 107 centimetri. Nel 2023 si è aggiunto Jumanji – The Labyrinth, un labirinto di specchi e giungla da percorrere a piedi.
 
-Nel parco ci sono poi due torri. [Space Vertigo](ref:gardaland/space-vertigo) di Intamin è una torre di caduta libera alta 40 metri, del 1998, altezza minima 130 centimetri. [Wolf Legend](ref:gardaland/wolf-legend) è la torre drop and twist di SBF Visa del 2024, da 105 centimetri. Il Flying Island del 2000 è una torre panoramica alta 50 metri da cui si vedono il parco e il lago di Garda, e il Magic House (2002) è un madhouse sotterraneo di Vekoma.
+[Space Vertigo](ref:gardaland/space-vertigo) di Intamin è una torre di caduta libera alta 40 metri, del 1998, altezza minima 130 centimetri. [Wolf Legend](ref:gardaland/wolf-legend) è la torre drop and twist di SBF Visa del 2024, da 105 centimetri. Il Flying Island del 2000 è una torre panoramica alta 50 metri da cui si vedono il parco e il lago di Garda, e il Magic House (2002) è un madhouse sotterraneo di Vekoma.
 
 ## Per i bambini piccoli
 
-I bambini sotto i 90 centimetri entrano gratis a Gardaland. Per loro ci sono tre aree. Nel Fantasy Kingdom si trovano l’Albero di Prezzemolo, una casa della mascotte in cui si può entrare, il Volaplano con le sue gondole a forma di aereo, la Doremifarm e il Funny Express. L’area di Prezzemolo ha un tema medievale, con parchi giochi e scivoli. E al Peppa Pig Land vicino all’ingresso principale, aperto nel 2018, ci sono la casa di Peppa Pig, il treno di Nonno Pig, un pallone e una nave pirata.
+I bambini sotto i 90 centimetri entrano gratis a Gardaland. Nel Fantasy Kingdom si trovano l’Albero di Prezzemolo, una casa della mascotte in cui si può entrare, il Volaplano con le sue gondole a forma di aereo, la Doremifarm e il Funny Express. L’area di Prezzemolo ha un tema medievale, con parchi giochi e scivoli. E al Peppa Pig Land vicino all’ingresso principale, aperto nel 2018, ci sono la casa di Peppa Pig, il treno di Nonno Pig, un pallone e una nave pirata.
 
 In queste aree l’altezza minima è tra 80 e 105 centimetri, dove ce n’è una. Chi viene con bambini sotto i 110 centimetri può noleggiare all’ingresso un passeggino Inglesina, a pagamento e dietro presentazione di un documento. Il braccialetto con il nome e il numero di cellulare del bambino i genitori lo ricevono agli uffici Welcome. Nel Fantasy Kingdom c’è una stanza per i neonati con seggioloni, scaldabiberon e fasciatoi.
 
@@ -195,7 +195,7 @@ Servono due giorni se ci sono bambini che vogliono girare le aree più piccole, 
 
 Gardaland chiama il suo fast pass Gardaland Express. Si paga in aggiunta all’ingresso e alle attrazioni incluse ti fa usare un accesso separato, con un’attesa più corta. Vale solo il giorno della visita e non è cedibile.
 
-I pacchetti sono tre. «Give me 5» permette un giro su cinque attrazioni a scelta tra 15 e costa online da 27 euro, nel parco da 30 euro. «Epic 17» vale un giro su ciascuna di 17 attrazioni, tra cui Blue Tornado, Oblivion, Raptor, Mammut, Fuga da Atlantide e Jumanji – The Adventure, online da 57 euro, nel parco da 60 euro. «No Limits» permette giri illimitati su quelle 17 attrazioni e costa online da 87 euro, nel parco da 90 euro. Tutti e tre danno il 20 per cento di sconto nei negozi del parco.
+«Give me 5» permette un giro su cinque attrazioni a scelta tra 15 e costa online da 27 euro, nel parco da 30 euro. «Epic 17» vale un giro su ciascuna di 17 attrazioni, tra cui Blue Tornado, Oblivion, Raptor, Mammut, Fuga da Atlantide e Jumanji – The Adventure, online da 57 euro, nel parco da 60 euro. «No Limits» permette giri illimitati su quelle 17 attrazioni e costa online da 87 euro, nel parco da 90 euro. Tutti e tre danno il 20 per cento di sconto nei negozi del parco.
 
 La prenotazione passa dall’app «Gardaland Express». Il voucher o il biglietto si importa lì con il codice QR, poi vedi i tempi di attesa stimati e ti metti in fila virtuale per un’attrazione. Una notifica («Tocca quasi a te») arriva circa cinque minuti prima della corsa, poi compare un codice QR che resta valido per circa cinque minuti. Si compra online o agli Express Point nel parco, il numero di pass al giorno è limitato.
 
