@@ -2,7 +2,7 @@
 title: 'Una persona muere tras un incidente en Goliath, en Georgia'
 translationKey: goliath-six-flags-over-georgia-fatal-incident
 date: '2026-10-13'
-time: '00:00'
+time: '09:37'
 author: patrick
 mode: published
 featured: false
@@ -136,9 +136,7 @@ Six Flags no ha explicado en qué consiste el parecido. Según la RCDB, ocho de 
 Carowinds y Canada’s Wonderland pertenecen a Six Flags desde que la empresa se
 fusionó con Cedar Fair en 2024.
 
-Un representante de Magic Mountain dijo a NBC Los Angeles que el parque no tiene calendario para Goliath. Para las otras ocho, Six Flags tampoco ha dado fecha de reapertura. Casi dos semanas antes, el 29 de septiembre, Six Flags
-había anunciado el
-[cierre definitivo de X2 en Six Flags Magic Mountain](/news/x2-six-flags-magic-mountain-cierra).
+Un representante de Magic Mountain dijo a NBC Los Angeles que el parque no tiene calendario para Goliath. Para las otras ocho, Six Flags tampoco ha dado fecha de reapertura.
 
 ## La montaña rusa
 

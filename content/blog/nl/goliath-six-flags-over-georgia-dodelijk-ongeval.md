@@ -2,7 +2,7 @@
 title: 'Eén dode na incident met Goliath in Six Flags Over Georgia'
 translationKey: goliath-six-flags-over-georgia-fatal-incident
 date: '2026-10-13'
-time: '00:00'
+time: '09:37'
 author: patrick
 mode: published
 featured: false
@@ -138,9 +138,7 @@ in 2024 met Cedar Fair is gefuseerd.
 
 Een vertegenwoordiger van Magic Mountain zei tegen NBC Los Angeles dat het park voor
 Goliath geen planning heeft. Ook voor de andere acht banen heeft Six Flags geen
-datum voor de heropening genoemd. Bijna twee weken eerder, op 29 september, had Six
-Flags aangekondigd [X2 in Six Flags Magic Mountain definitief te
-sluiten](/news/x2-six-flags-magic-mountain-gesloten).
+datum voor de heropening genoemd.
 
 ## De baan
 

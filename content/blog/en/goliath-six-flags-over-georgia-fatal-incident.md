@@ -2,7 +2,7 @@
 title: 'One dead after Goliath incident at Six Flags Over Georgia'
 translationKey: goliath-six-flags-over-georgia-fatal-incident
 date: '2026-10-13'
-time: '00:00'
+time: '09:37'
 author: patrick
 mode: published
 featured: false
@@ -125,8 +125,6 @@ Cedar Fair in 2024.
 A Magic Mountain representative told NBC Los Angeles the park had no timeline
 for its Goliath. Six Flags has not given a reopening date for the other eight
 either.
-Almost two weeks earlier, on 29 September, Six Flags had announced that
-[X2 at Six Flags Magic Mountain would close for good](/news/x2-six-flags-magic-mountain-closed).
 
 ## The coaster
 

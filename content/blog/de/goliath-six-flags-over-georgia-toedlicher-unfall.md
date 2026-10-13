@@ -2,7 +2,7 @@
 title: 'Ein Toter nach Vorfall auf Goliath in Six Flags Over Georgia'
 translationKey: goliath-six-flags-over-georgia-fatal-incident
 date: '2026-10-13'
-time: '00:00'
+time: '09:37'
 author: patrick
 mode: published
 featured: false
@@ -140,9 +140,7 @@ Carowinds und Canada’s Wonderland gehören zu Six Flags, seit das Unternehmen
 
 Ein Vertreter von Magic Mountain sagte NBC Los Angeles, der Park habe für
 Goliath keinen Zeitplan. Auch für die übrigen acht Bahnen hat Six Flags keinen
-Termin genannt. Knapp zwei Wochen zuvor, am 29. September, hatte Six
-Flags angekündigt, [X2 in Six Flags Magic Mountain dauerhaft zu
-schließen](/news/x2-six-flags-magic-mountain-geschlossen).
+Termin genannt.
 
 ## Die Bahn
 

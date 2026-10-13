@@ -2,7 +2,7 @@
 title: 'Un mort après un incident sur Goliath, près d’Atlanta'
 translationKey: goliath-six-flags-over-georgia-fatal-incident
 date: '2026-10-13'
-time: '00:00'
+time: '09:37'
 author: patrick
 mode: published
 featured: false
@@ -141,9 +141,7 @@ fusion de l’entreprise avec Cedar Fair en 2024.
 
 Un représentant de Magic Mountain a dit à NBC Los Angeles que le parc n’avait
 pas de calendrier pour Goliath. Pour les huit autres non plus, Six Flags n’a
-annoncé aucune date de réouverture. Moins de deux semaines plus tôt, le 29 septembre,
-Six Flags avait annoncé la
-[fermeture définitive de X2 à Six Flags Magic Mountain](/news/x2-six-flags-magic-mountain-ferme).
+annoncé aucune date de réouverture.
 
 ## L’attraction
 
