@@ -49,7 +49,6 @@ On [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-ha
 launch track. Then a linear motor takes it to 90 km/h, the track tips into a
 drop over the park’s pond, and the cars spin freely on their axis, so in the loop and the banana roll you never know which way you’re facing. The ride has five inversions, two launches and 920 metres of track.
 
-The ride stands in a park whose main character is a goblin.
 [Plopsaland Belgium](ref:plopsaland-belgium) is in De Panne, a few kilometres
 from the beach and close to the French border. Most of the rides are built for
 children. Three coasters aren’t: The Ride to Happiness, Anubis and Heidi, and
@@ -107,7 +106,7 @@ Ride to Happiness, and in 2023 the indoor world Circus Bumba.
 Dutch Wikipedia collects the attendance figures from the annual financial
 statements. In 2022 it was 1,382,632, in 2023 only
 1,278,880, in 2024 1,388,732 and in 2025 1,405,606. The park covers about 30
-hectares. The neighbouring parks for comparison:
+hectares.
 
 ```park-comparison-widget slugs=plopsaland-belgium,walibi-belgium,walibi-holland,attractiepark-toverland,efteling show=quietest highlight=plopsaland-belgium
 
@@ -246,8 +245,7 @@ Dutch Wikipedia, is the first dark ride the Plopsa group had built itself.
 
 ```
 
-Between the coasters stand the rides you’d also find at a funfair, and a few with a
-history. The **Nachtwacht-Flyer** is a 70-metre Starflyer from 2006. In 2021 Plopsa
+The **Nachtwacht-Flyer** is a 70-metre Starflyer from 2006. In 2021 Plopsa
 wanted to retheme it for a TikTok duo and stopped the conversion after a petition
 with more than 80,000 signatures; it opened with the Nachtwacht theme on 8 May 2021.
 **Wickie The Battle** is a Mack splash battle. **Wickie’s Wervelwind** (Vic’s
@@ -300,7 +298,6 @@ the Easter holidays, a Monday in early June and days in high summer.
 August is the busiest month, followed by July and December, then May, though
 December rests on only eight measured days. February, March, September and October
 are quiet, October on only six days.
-By weekday:
 
 ```stats-widget slug=plopsaland-belgium show=weekdays
 
@@ -357,8 +354,6 @@ Ibilaw at Walibi Belgium.
 ```
 
 ## A day in the park
-
-The park opens at 10 a.m.
 
 Go to **The Ride to Happiness** first, where the queue is shortest in the first
 hour. Then comes **Anubis**, before it gets busier in the afternoon, then **Heidi

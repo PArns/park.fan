@@ -51,7 +51,6 @@ lancement. Puis un moteur linéaire l’envoie à 90 km/h, le tracé plonge au-d
 de l’étang du parc, et les voitures tournent librement sur leur axe, si bien que dans le looping et le banana roll tu ne sais jamais où tu regardes. Le circuit compte
 cinq inversions, deux lancements et 920 mètres de parcours.
 
-Le coaster se dresse dans un parc dont le personnage principal est un lutin.
 [Plopsaland Belgium](ref:plopsaland-belgium) se trouve à De Panne, à quelques
 kilomètres de la plage et tout près de la frontière française. La plupart des
 attractions sont conçues pour les enfants. Trois montagnes russes font
@@ -111,7 +110,7 @@ et The Ride to Happiness en 2021, puis en 2023 l’univers couvert Circus Bumba.
 
 Wikipédia en néerlandais tire la fréquentation des comptes annuels. En 2022, 1 382 632 visiteurs ; en 2023, seulement 1 278 880 ;
 en 2024, 1 388 732 ; en 2025 enfin, 1 405 606. Le parc s’étend sur environ 30
-hectares. Les parcs voisins, pour comparer :
+hectares.
 
 ```park-comparison-widget slugs=plopsaland-belgium,walibi-belgium,walibi-holland,attractiepark-toverland,efteling show=quietest highlight=plopsaland-belgium
 
@@ -140,8 +139,7 @@ littoral belge.
 
 ## Les personnages derrière les zones
 
-Les zones suivent les séries de Studio 100, et certains noms te sont déjà
-familiers. **Maya l’abeille**, **Heidi** et **Wickie le Viking** sont là, avec
+Les zones suivent les séries de Studio 100. **Maya l’abeille**, **Heidi** et **Wickie le Viking** sont là, avec
 Mayaland, Heidiland et Wickieland. Les personnages flamands sont moins connus :
 le lutin **Kabouter Plop**, **Samson & Marie**, le clown **Bumba**, le groupe
 de filles **K3**, le programme pour adolescents **Nachtwacht** et la série
@@ -262,8 +260,7 @@ Plopsa a fait construire lui-même.
 
 ```
 
-Entre les coasters se trouvent les attractions qu’on voit aussi dans une fête
-foraine, et quelques-unes qui ont une histoire. Le **Nachtwacht-Flyer** est un
+Le **Nachtwacht-Flyer** est un
 Starflyer de 70 mètres de haut datant de 2006. Plopsa voulait le transformer en
 2021 pour un duo TikTok et a arrêté la refonte après une pétition de plus de
 80 000 signatures ; il a ouvert le 8 mai 2021 sur le thème de Nachtwacht.
@@ -319,7 +316,7 @@ vacances de Pâques, un lundi début juin et certains jours du plein été.
 
 Août est le mois le plus chargé, suivi de juillet et de décembre, puis de mai,
 mais décembre ne repose que sur huit jours mesurés. Février, mars, septembre et
-octobre sont calmes, octobre ne reposant toutefois que sur six jours. Par jour de la semaine :
+octobre sont calmes, octobre ne reposant toutefois que sur six jours.
 
 ```stats-widget slug=plopsaland-belgium show=weekdays
 
@@ -378,8 +375,6 @@ Ibilaw à Walibi Belgium.
 ```
 
 ## Une journée dans le parc
-
-Le parc ouvre à 10 h.
 
 Commence par **The Ride to Happiness**, où la file est la plus courte la
 première heure. Vient ensuite **Anubis**, avant que l’après-midi ne se remplisse,

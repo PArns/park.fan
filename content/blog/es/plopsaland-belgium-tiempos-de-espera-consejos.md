@@ -50,7 +50,6 @@ de lanzamiento. Entonces un motor lineal lo acelera hasta 90 km/h, la vía se
 inclina en una bajada sobre el estanque del parque y los vagones giran libremente sobre su eje, así que en el looping y en el banana roll nunca sabes hacia dónde estás mirando. La atracción tiene cinco inversiones, dos
 lanzamientos y 920 metros de recorrido.
 
-La atracción está en un parque cuyo personaje principal es un duende.
 [Plopsaland Belgium](ref:plopsaland-belgium) queda en De Panne, a pocos
 kilómetros de la playa y cerca de la frontera francesa. La mayoría de las
 atracciones están pensadas para niños. Tres montañas rusas no lo están: The
@@ -110,7 +109,7 @@ Circus Bumba.
 
 La Wikipedia en neerlandés reúne la afluencia a partir de las cuentas anuales. En 2022 fueron 1.382.632; en
 2023, solo 1.278.880; en 2024, 1.388.732, y en 2025, 1.405.606. El parque ocupa
-unas 30 hectáreas. Los parques vecinos, comparados:
+unas 30 hectáreas.
 
 ```park-comparison-widget slugs=plopsaland-belgium,walibi-belgium,walibi-holland,attractiepark-toverland,efteling show=quietest highlight=plopsaland-belgium
 
@@ -137,8 +136,7 @@ los balnearios de la costa belga.
 
 ## Los personajes detrás de las zonas temáticas
 
-Las zonas siguen las series del Studio 100, y para un lector español los
-nombres son a medias conocidos. **Maya la abeja** (aquí Maya), **Heidi** y
+Las zonas siguen las series del Studio 100. **Maya la abeja** (aquí Maya), **Heidi** y
 **Vicky el Vikingo** (Wickie en el parque) dan nombre a Mayaland, Heidiland y
 Wickieland. Los personajes flamencos nos suenan menos: el duende **Kabouter
 Plop**, **Samson y Marie**, el payaso **Bumba**, el grupo de chicas **K3**, el
@@ -257,8 +255,7 @@ construir por su cuenta.
 
 ```
 
-Entre las montañas rusas están las atracciones que también hay en una feria y
-alguna con historia. El **Nachtwacht-Flyer** es un Starflyer de 70 metros de 2006. En 2021 Plopsa quiso reformarlo con el tema de un dúo de TikTok y paró la
+El **Nachtwacht-Flyer** es un Starflyer de 70 metros de 2006. En 2021 Plopsa quiso reformarlo con el tema de un dúo de TikTok y paró la
 obra tras una petición con más de 80.000 firmas; el 8 de mayo de 2021 abrió con
 el tema de Nachtwacht. **Wickie The Battle** es un splash battle de Mack.
 **Wickie’s Wervelwind** (en la página en inglés del parque, Vic’s Whirlwind) es
@@ -313,7 +310,7 @@ Santa, un lunes de principios de junio y algunos días de pleno verano.
 
 Agosto es el más lleno, seguido de julio y diciembre y luego mayo, aunque
 diciembre se apoya en solo ocho días medidos. Febrero, marzo, septiembre y
-octubre son tranquilos, aunque octubre solo cuenta con seis días medidos. Por días de la semana:
+octubre son tranquilos, aunque octubre solo cuenta con seis días medidos.
 
 ```stats-widget slug=plopsaland-belgium show=weekdays
 
@@ -373,8 +370,6 @@ Ibilaw, en Walibi Belgium.
 ```
 
 ## Un día en el parque
-
-El parque abre a las 10.
 
 Ve primero a **The Ride to Happiness**, donde la cola es más corta en la primera
 hora. Sigue **Anubis**, antes de que por la tarde se llene, y después **Heidi

@@ -50,7 +50,6 @@ primo tratto di lancio. Poi un motore lineare lo porta a 90 km/h, la
 rotaia cade in una discesa sopra lo stagno del parco, e le vetture girano libere attorno al proprio asse, così nel looping e nel banana roll perdi l’orientamento. Il percorso ha cinque inversioni, due lanci e 920
 metri di binario.
 
-Il coaster sta in un parco il cui personaggio principale è un folletto.
 [Plopsaland Belgium](ref:plopsaland-belgium) si trova a De Panne, a pochi
 chilometri dalla spiaggia e vicino al confine francese. La maggior parte delle
 attrazioni è pensata per i bambini. Tre coaster fanno eccezione, The Ride to
@@ -110,7 +109,7 @@ Bumba.
 
 Wikipedia in olandese ricava le presenze dai bilanci. Nel 2022 i visitatori furono 1.382.632, nel 2023 solo 1.278.880, nel
 2024 poi 1.388.732 e nel 2025 infine 1.405.606. Il parco si estende su circa 30
-ettari. I parchi vicini a confronto:
+ettari.
 
 ```park-comparison-widget slugs=plopsaland-belgium,walibi-belgium,walibi-holland,attractiepark-toverland,efteling show=quietest highlight=plopsaland-belgium
 
@@ -138,8 +137,7 @@ belghe.
 
 ## I personaggi dietro le aree tematiche
 
-Le aree seguono le serie di Studio 100. Per un lettore italiano i nomi sono
-familiari solo a metà. **L’ape Maia** (qui Maya), **Heidi** e **Vicky il
+Le aree seguono le serie di Studio 100. **L’ape Maia** (qui Maya), **Heidi** e **Vicky il
 Vichingo** (Wickie) ci sono anche da noi, e a loro sono dedicate Mayaland,
 Heidiland e Wickieland. I personaggi fiamminghi li conosciamo meno: il folletto
 **Kabouter Plop**, **Samson e Marie**, il clown **Bumba**, il gruppo di ragazze
@@ -256,8 +254,7 @@ in proprio.
 
 ```
 
-Fra i coaster ci sono le attrazioni che si trovano anche in una fiera, e un paio
-con una storia. Il **Nachtwacht-Flyer** è uno Starflyer alto 70 metri, del 2006.
+Il **Nachtwacht-Flyer** è uno Starflyer alto 70 metri, del 2006.
 Nel 2021 Plopsa voleva ridisegnarlo su un duo di TikTok e ha fermato la
 trasformazione dopo una petizione con più di 80.000 firme; l’8 maggio 2021 ha
 aperto con il tema Nachtwacht. **Wickie The Battle** è uno splash battle di Mack.
@@ -311,7 +308,7 @@ Pasqua, un lunedì di inizio giugno e alcuni giorni di piena estate.
 
 Il più affollato è agosto, poi vengono luglio e dicembre, quindi maggio, anche
 se dicembre poggia su soli otto giorni misurati. Tranquilli sono febbraio, marzo,
-settembre e ottobre, quest’ultimo però su soli sei giorni. Per giorno della settimana:
+settembre e ottobre, quest’ultimo però su soli sei giorni.
 
 ```stats-widget slug=plopsaland-belgium show=weekdays
 
@@ -370,8 +367,6 @@ Ibilaw a Walibi Belgium.
 ```
 
 ## Una giornata nel parco
-
-Il parco apre alle 10.
 
 Vai prima a **The Ride to Happiness**, dove la coda nella prima ora è la più
 corta. Poi **Anubis**, prima che il pomeriggio si riempia, quindi **Heidi The

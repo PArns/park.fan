@@ -53,7 +53,6 @@ kantelt in een afdaling over de vijver van het park, en de wagens draaien vrij o
 waar je op dat moment naar kijkt. De baan heeft vijf inversies, twee lanceringen
 en 920 meter spoor.
 
-De baan staat in een park waarvan de hoofdpersoon een kabouter is.
 [Plopsaland Belgium](ref:plopsaland-belgium) ligt in De Panne, een paar kilometer
 van het strand en vlak bij de Franse grens. De meeste attracties zijn voor
 kinderen gebouwd. Drie achtbanen zijn dat niet, The Ride to Happiness, Anubis en
@@ -113,7 +112,7 @@ het eerste hotel en The Ride to Happiness en in 2023 de indoorwereld Circus Bumb
 De Nederlandstalige Wikipedia brengt de bezoekersaantallen uit de jaarrekeningen
 samen. In 2022 waren het er 1.382.632, in
 2023 maar 1.278.880, in 2024 dan 1.388.732 en in 2025 ten slotte 1.405.606. Het
-park beslaat zo’n 30 hectare. De buurparken ter vergelijking:
+park beslaat zo’n 30 hectare.
 
 ```park-comparison-widget slugs=plopsaland-belgium,walibi-belgium,walibi-holland,attractiepark-toverland,efteling show=quietest highlight=plopsaland-belgium
 
@@ -258,8 +257,7 @@ bouwen.
 
 ```
 
-Tussen de achtbanen staan de attracties die ook op een kermis te vinden zijn, en
-een paar met een geschiedenis. De **Nachtwacht-Flyer** is een Starflyer van 70
+De **Nachtwacht-Flyer** is een Starflyer van 70
 meter hoog uit 2006. Plopsa wilde hem in 2021 ombouwen naar een TikTok-duo en
 stopte de verbouwing na een petitie met meer dan 80.000 handtekeningen, op 8 mei
 2021 opende hij met het Nachtwacht-thema. **Wickie The Battle** is een splash
@@ -313,7 +311,7 @@ De hoogste dagwaarden van de afgelopen twaalf maanden vielen op pinksterzondag,
 
 Het drukst is augustus, daarna volgen juli en december, dan mei, al staat
 december maar op acht gemeten dagen. Rustig zijn februari, maart, september en
-oktober, al staat oktober maar op zes dagen. Per weekdag:
+oktober, al staat oktober maar op zes dagen.
 
 ```stats-widget slug=plopsaland-belgium show=weekdays
 
@@ -371,8 +369,6 @@ Walibi Belgium.
 ```
 
 ## Een dag in het park
-
-Het park opent om 10 uur.
 
 Ga eerst naar **The Ride to Happiness**, daar is de wachtrij in het eerste uur het
 kortst. Dan volgt **Anubis**, voordat het in de namiddag drukker wordt, daarna

@@ -52,7 +52,6 @@ Strecke kippt in eine Abfahrt über den Teich des Parks, und die Wagen drehen si
 weißt, wohin du gerade schaust. Fünf Überschläge hat die Bahn, zwei Starts und
 920 Meter Strecke.
 
-Die Bahn steht in einem Park, dessen Hauptfigur ein Kobold ist.
 [Plopsaland Belgium](ref:plopsaland-belgium) liegt in De Panne, wenige Kilometer
 vom Strand und nah an der französischen Grenze. Die meisten Fahrgeschäfte sind
 für Kinder gebaut. Drei Achterbahnen sind es nicht, The Ride to Happiness,
@@ -111,7 +110,7 @@ Hotel und The Ride to Happiness und 2023 die Indoor-Welt Circus Bumba.
 Wie viele Besucher kommen, trägt die niederländische Wikipedia aus den
 Jahresabschlüssen zusammen. 2022 waren es 1.382.632, 2023
 nur 1.278.880, 2024 dann 1.388.732 und 2025 schließlich 1.405.606. Der Park
-liegt auf rund 30 Hektar. Die Nachbarparks im Vergleich:
+liegt auf rund 30 Hektar.
 
 ```park-comparison-widget slugs=plopsaland-belgium,walibi-belgium,walibi-holland,attractiepark-toverland,efteling show=quietest highlight=plopsaland-belgium
 
@@ -139,8 +138,7 @@ Küste.
 
 ## Die Figuren hinter den Themenbereichen
 
-Die Bereiche folgen den Serien von Studio 100, und für deutsche Leser sind die
-Namen halb vertraut. **Biene Maja** (hier Maya), **Heidi** und **Wickie** heißen
+Die Bereiche folgen den Serien von Studio 100. **Biene Maja** (hier Maya), **Heidi** und **Wickie** heißen
 hier wie bei uns, und zu ihnen gehören Mayaland, Heidiland und Wickieland. Die
 flämischen Figuren kennen wir weniger: den Kobold **Kabouter Plop**, **Samson und
 Marie**, den Clown **Bumba**, die Mädchenband **K3**, das Jugendprogramm
@@ -258,8 +256,7 @@ bauen ließ.
 
 ```
 
-Zwischen den Achterbahnen stehen die Fahrgeschäfte, die es auch auf einer Kirmes
-gibt, und ein paar mit Geschichte. Der **Nachtwacht-Flyer** ist ein 70 Meter hoher
+Der **Nachtwacht-Flyer** ist ein 70 Meter hoher
 Starflyer von 2006. Plopsa wollte ihn 2021 auf ein TikTok-Duo umgestalten und
 stoppte den Umbau nach einer Petition mit mehr als 80.000 Unterschriften, am 8.
 Mai 2021 eröffnete er mit dem Nachtwacht-Thema. **Wickie The Battle** ist ein Splash
@@ -313,7 +310,7 @@ den 1. Mai, die Osterferien, einen Montag Anfang Juni und Tage im Hochsommer.
 
 Am vollsten ist der August, danach folgen Juli und Dezember, dann Mai, wobei
 der Dezember nur auf acht gemessenen Tagen steht. Ruhig sind Februar, März,
-September und Oktober, der Oktober allerdings nur auf sechs Tagen. Nach Wochentagen:
+September und Oktober, der Oktober allerdings nur auf sechs Tagen.
 
 ```stats-widget slug=plopsaland-belgium show=weekdays
 
@@ -372,8 +369,6 @@ bei Walibi Belgium.
 ```
 
 ## Ein Tag im Park
-
-Der Park öffnet um 10 Uhr.
 
 Geh zuerst zu **The Ride to Happiness**, dort ist die Warteschlange in der ersten
 Stunde am kürzesten. Dann folgt **Anubis**, bevor es am Nachmittag voller wird,
