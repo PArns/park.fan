@@ -297,7 +297,7 @@ Bisher nicht. Die Saison 2026 endet nach den Fright Nights am 1. November, einen
 
 ### Welche Bahnen sind für Menschen mit Behinderung geeignet?
 
-Hyperia ist derzeit für Menschen, die nicht gehen können, nicht geeignet, Bei SAW muss man 25 Meter ohne Hilfe gehen können, bei der Ghost Train mindestens 50 Schritte. Die vollständige Liste steht in den Rider Requirements des Parks.
+Hyperia ist derzeit für Menschen, die nicht gehen können, nicht geeignet. Bei SAW muss man 25 Meter ohne Hilfe gehen können, bei der Ghost Train mindestens 50 Schritte. Die vollständige Liste steht in den Rider Requirements des Parks.
 
 ## Zum Weiterlesen
 
