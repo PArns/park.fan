@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Das Efteling verkauft jetzt Karten für seinen Silvesterabend am 31. Dezember 2026 von 19 bis 1 Uhr. Das Ticket kostet 62 Euro und schließt Feuerwerk, ein Getränk zum Anstoßen, einen Oliebol und das Parken ein. Mit Abonnement kostet die Karte 46,50 Euro.
+  Das Efteling verkauft jetzt Karten für seinen Silvesterabend am 31. Dezember 2026 von 19 bis 1 Uhr. Das Ticket kostet 62 Euro, Feuerwerk, ein Getränk zum Anstoßen, ein Oliebol und das Parken sind dabei. Mit Efteling-Jahreskarte kostet es 46,50 Euro.
 tags:
   - news
   - efteling
@@ -38,35 +38,27 @@ seo:
 
 Das [Efteling](ref:efteling) verkauft jetzt Karten für seinen Silvesterabend am 31. Dezember 2026, von 19 bis 1 Uhr, für 62 Euro pro Person. Auf seiner Eventseite kündigt der Park Attraktionen im Dunkeln an, dazu Tausende Lichter, Winterattraktionen, Unterhaltung und ein Feuerwerk.
 
-Am 8. Oktober hatte das Efteling in seinem Blog noch geschrieben, die Tickets für das „Oud & Nieuw feest“ seien „binnenkort verkrijgbaar“, also bald zu haben. Inzwischen lässt sich der Abend im Ticketshop buchen.
-
 ## Was die Karte einschließt
 
-Zum Ticket gehören ein Oliebol, etwas Prickelndes zum Anstoßen und das Feuerwerk. Die niederländische Eventseite nennt das Getränk „blikje bubbels“, eine Dose, die deutsche übersetzt es mit „eine Dose Sekt“. Auf der Seite für Abo-Inhaber schreibt der Park dagegen von „een glas bubbels“, einem Glas.
+Zum Ticket gehören ein Oliebol, ein Getränk zum Anstoßen und das Feuerwerk. Auf der Eventseite ist das eine Dose Sekt, auf der Seite für Abo-Inhaber ein Glas.
 
 Das Parken ist am Silvesterabend inklusive. An anderen Tagen kostet der Parkplatz am Efteling 15 Euro, Gäste der Hotels und Ferienparks parken an ihrer Unterkunft kostenlos.
 
-Die Karte gilt einmal für eine Person ab vier Jahren. Bei Tagestickets kommen Kinder bis einschließlich drei Jahre mit Ausweis kostenlos in den Park. Ob das am Silvesterabend genauso gilt, schreibt das Efteling auf der Ticketseite nicht, und wer ein Kleinkind mitnehmen will, fragt besser vorher beim Park nach.
+Jede Karte gilt für eine Person ab vier Jahren und für einen Eintritt. Bei Tagestickets kommen Kinder bis einschließlich drei Jahre mit Ausweis kostenlos in den Park. Ob das auch am Silvesterabend gilt, sagt das Efteling nicht. Wer ein Kleinkind mitnehmen will, fragt vorher beim Park nach.
 
-Pro Bestellung lassen sich bis zu 19 Karten kaufen. Zurückgeben kann man sie nicht. Für Tickets, die online über efteling.com gekauft wurden, räumt das Efteling sonst 14 Tage Rückgaberecht ein, nimmt Karten mit festem Datum oder für ein Event aber ausdrücklich aus und nennt in seinen häufigen Fragen die Silvestertickets als Beispiel.
+Pro Bestellung lassen sich bis zu 19 Karten kaufen. Zurückgeben kann man sie nicht. Das Rückgaberecht von 14 Tagen für Onlinekäufe gilt nicht für Event-Tickets, und die Silvesterkarte nennt das Efteling dabei ausdrücklich.
 
-## Mit Abonnement
+## Mit Jahreskarte
 
-Mit einem Abonnement, der Jahreskarte des Efteling, gibt es 25 Prozent Rabatt. Das Ticket kostet dann 46,50 Euro und ist ein eigenes Angebot im Ticketshop, mit höchstens sechs Karten pro Bestellung. Am Eingang muss für jede dieser Karten ein gültiges Abonnement vorgezeigt werden.
+Mit einem Abonnement, der Jahreskarte des Efteling, gibt es 25 Prozent Rabatt. Das Ticket kostet dann 46,50 Euro und ist ein eigenes Angebot im Ticketshop, mit höchstens sechs Karten pro Bestellung. Am Eingang muss für jede dieser Karten eine gültige Jahreskarte vorgezeigt werden.
 
-Das Abonnement selbst gilt während des Fests nicht („Je abonnement is tijdens het Oud & Nieuw feest niet geldig“, schreibt der Park auf der Seite mit den Vorteilen für Abo-Inhaber), auch mit Jahreskarte braucht man also eine Silvesterkarte.
-
-Den Rabatt nennt das Efteling nur auf Niederländisch, auf der Eventseite und auf der Seite für Abo-Inhaber. Auf der deutschen und der englischen Eventseite fehlt der Abschnitt. Gebucht wird das ermäßigte Ticket über den niederländischen Ticketshop.
+Die Jahreskarte allein gilt an diesem Abend nicht, auch Abo-Inhaber brauchen eine Silvesterkarte. Buchen lässt sich das ermäßigte Ticket nur im niederländischen Ticketshop, auf der deutschen Eventseite steht der Rabatt nicht.
 
 ## Der 31. Dezember tagsüber
 
-Die Silvesterkarte gilt erst ab 19 Uhr. Tagsüber hat das Efteling am 31. Dezember von 10 bis 18 Uhr ganz normal geöffnet. Das Tagesticket wird getrennt verkauft und kostet an diesem Datum im Ticketshop 56 Euro. Zwischen dem Ende des Tagesbetriebs und dem Beginn des Fests liegt eine Stunde.
+Tagsüber hat das Efteling am 31. Dezember von 10 bis 18 Uhr geöffnet, zwei Stunden kürzer als vom 19. bis 30. Dezember. Das Tagesticket wird getrennt verkauft und kostet an diesem Datum 56 Euro. Zwischen Tagesbetrieb und Fest liegt eine Stunde. Das Abendticket für 33 Euro, das vom 21. Dezember bis 3. Januar ab 16 Uhr gilt, gibt es am 31. Dezember nicht.
 
-Vom 19. bis zum 30. Dezember hat der Park täglich von 10 bis 20 Uhr geöffnet, an Silvester schließt er schon um 18 Uhr. Das Abendticket, das vom 21. Dezember bis zum 3. Januar ab 16 Uhr gilt und 33 Euro kostet, gibt es am 31. Dezember nicht.
-
-Der Tag fällt in die Winter Efteling, die vom 16. November 2026 bis zum 31. Januar 2027 läuft. Die Achterbahnen im Freien fahren, solange das Wetter es zulässt. Auf der Wartungsliste des Parks steht für den 31. Dezember keine Attraktion. Droomvlucht ist vom 9. November bis 4. Dezember in Wartung, Joris en de Draak vom 30. November bis 18. Dezember, die Pagode vom 15. bis 17. Dezember.
-
-Welche Parks sonst noch zwischen den Jahren geöffnet haben, haben wir im [Winter-Überblick](/blog/winter-freizeitparks-2026) zusammengetragen.
+Der Tag fällt in die Winter Efteling (16. November 2026 bis 31. Januar 2027), welche Parks sonst zwischen den Jahren öffnen, steht im [Winter-Überblick](/blog/winter-freizeitparks-2026). Die Achterbahnen im Freien fahren, solange das Wetter es zulässt. Auf der Wartungsliste des Parks steht für den 31. Dezember keine Attraktion.
 
 [Efteling](ref:efteling?full)
 
@@ -74,23 +66,27 @@ Welche Parks sonst noch zwischen den Jahren geöffnet haben, haben wir im [Winte
 
 Welche Attraktionen am Abend fahren, welche Shows es gibt und wann das Feuerwerk beginnt, hat das Efteling für 2026 noch nicht veröffentlicht.
 
-Für 2022 hatte der Park das Programm in seinem Blog beschrieben. Ab 23 Uhr legten DJs an der Siervijver auf, um 23:45 Uhr begann der Countdown, danach kam ein Feuerwerk mit Lasereffekten, und die DJs spielten bis 1 Uhr weiter. Das Ticket kostete damals 49 Euro mit Parken, Abo-Inhaber zahlten 36,75 Euro. Der Einlass war auch 2022 von 19 bis 1 Uhr.
+Für 2022 hatte der Park das Programm in seinem Blog beschrieben. Ab 23 Uhr legten DJs an der Siervijver auf. Um 23:45 Uhr begann der Countdown, danach ein Feuerwerk mit Lasereffekten, und bis 1 Uhr spielten wieder die DJs. Das Ticket kostete damals 49 Euro mit Parken, Abo-Inhaber zahlten 36,75 Euro. Der Einlass war auch 2022 von 19 bis 1 Uhr.
 
 Der offizielle Lageplan für 2024/25 verzeichnete unter anderem eine Silent Disco, „Grootmoeders Bingo“, „Bubbels en bollen“ und die Stelle, von der aus man das Feuerwerk am besten sieht.
 
-Ausverkauft war der Abend schon mehrfach. 2022 meldete der Park den Verkaufsstart am 9. November, am 3. Dezember ergänzte er den Beitrag um den Satz, alle Tickets seien ausverkauft. 2018 ergänzte er einen Beitrag zum Fest schon am 16. November um denselben Satz.
+2022 war der Abend am 3. Dezember ausverkauft, gut drei Wochen nach dem Verkaufsstart am 9. November. 2018 waren die Karten schon am 16. November weg.
 
 ## Übernachten
 
-Für Übernachtungsgäste gibt es ein Silvester-Arrangement. Es schließt den Zugang zum Fest ein, unbegrenzten Parkeintritt während des Aufenthalts, eine halbe Stunde früheren Einlass in den Park und Frühstück. In den Ferienhäusern von Efteling Bosrijk und Efteling Loonsche Land reist man am 30. Dezember an und bleibt drei Nächte, das Frühstück wird geliefert. Die Hotelzimmer im Grand Hotel, im Wonder Hotel, in Bosrijk und in Loonsche Land beginnen am 31. Dezember und gelten für zwei Nächte, mit Frühstück und einem Drei-Gänge-Menü ohne Getränke. Gäste des Grand Hotel können gegen Aufpreis auf der Terrasse der Restaurant-Bar Mystique den Countdown erleben, mit einem Snack und einem Getränk und mit begrenzten Plätzen.
+Unterkünfte gibt es zu Oud & Nieuw keine mehr, schrieb das Efteling am 8. Oktober. Auf der Seite des Silvester-Arrangements steht das nicht, und einen Preis nennt sie auch nicht.
 
-Im Blogbeitrag vom 8. Oktober schrieb das Efteling allerdings, zu Oud & Nieuw seien keine Unterkünfte mehr frei. Die Seite mit dem Arrangement ist weiter online, mit einer Suchmaske, ohne Preis und ohne Hinweis, dass es ausgebucht ist.
+Das Arrangement schließt den Zugang zum Fest ein, unbegrenzten Parkeintritt während des Aufenthalts, eine halbe Stunde früheren Einlass in den Park und Frühstück. In den Ferienhäusern von Efteling Bosrijk und Efteling Loonsche Land reist man am 30. Dezember an und bleibt drei Nächte. Das Frühstück wird dort geliefert. Die Hotelzimmer im Grand Hotel, im Wonder Hotel, in Bosrijk und in Loonsche Land beginnen am 31. Dezember und gelten für zwei Nächte, mit Frühstück und einem Drei-Gänge-Menü ohne Getränke.
+
+Gäste des Grand Hotels können gegen Aufpreis auf der Terrasse der Restaurant-Bar Mystique den Countdown erleben, mit einem Snack und einem Getränk. Die Plätze sind begrenzt.
 
 ## Anreise
 
-Das Efteling liegt an der Europalaan 1, 5171 KW Kaatsheuvel. Mit Bus und Bahn fährt man bis ’s-Hertogenbosch oder Tilburg und von dort je nach Richtung mit den Linien 300, 301, 136, 800 oder 801 bis zur Haltestelle „Efteling“. Aus Brüssel und Antwerpen fährt montags und donnerstags bis sonntags der Flixbus 811 direkt zum Park. Busse nach 1 Uhr in der Neujahrsnacht nennt das Efteling auf seiner Anreiseseite nicht. Mehr zu Anreise, Tickets und Hotels steht in unserem [Efteling-Guide](/blog/efteling-disney-der-niederlande).
+Das Efteling liegt an der Europalaan 1, 5171 KW Kaatsheuvel. Mit Bus und Bahn fährt man bis ’s-Hertogenbosch oder Tilburg und von dort je nach Richtung mit den Linien 300, 301, 136, 800 oder 801 bis zur Haltestelle „Efteling“. Aus Brüssel und Antwerpen fährt montags und donnerstags bis sonntags der Flixbus 811 direkt zum Park.
 
-Der kostenlose Pendelbus Lijn 7 verbindet den Busbahnhof am Haupteingang mit dem Wonder Hotel, Villa Pardoes, Loonsche Land und Bosrijk. Er fährt mittwochs bis sonntags von 8 bis 12 Uhr und von 16:30 bis 19 Uhr, also nicht mehr, wenn das Fest um 1 Uhr endet.
+Der kostenlose Pendelbus Lijn 7 verbindet den Busbahnhof am Haupteingang mit dem Wonder Hotel, Villa Pardoes, Loonsche Land und Bosrijk. Er fährt mittwochs bis sonntags von 8 bis 12 Uhr und von 16:30 bis 19 Uhr.
+
+Busse nach 1 Uhr in der Neujahrsnacht nennt das Efteling nicht. Mehr zu Anreise, Tickets und Hotels steht in unserem [Efteling-Guide](/blog/efteling-disney-der-niederlande).
 
 Quellen:
 [Eventseite Oud & Nieuw](https://www.efteling.com/nl/park/events/oud-en-nieuw),

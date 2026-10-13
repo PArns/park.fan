@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  De Efteling verkoopt nu kaarten voor oudejaarsavond, 31 december 2026, van 19.00 tot 1.00 uur. Een ticket kost 62 euro, met vuurwerk, iets om mee te proosten, een oliebol en parkeren. Met een abonnement betaal je 46,50 euro.
+  De Efteling verkoopt nu kaarten voor oudejaarsavond, 31 december 2026, van 19.00 tot 1.00 uur. Een ticket kost 62 euro, en vuurwerk, een drankje om te proosten, een oliebol en parkeren zijn inbegrepen. Met een Efteling-abonnement kost het 46,50 euro.
 tags:
   - news
   - efteling
@@ -36,61 +36,59 @@ seo:
     - Winter Efteling 2026
 ---
 
-De [Efteling](ref:efteling) verkoopt nu kaarten voor oudejaarsavond op 31 december 2026, van 19.00 tot 1.00 uur, voor 62 euro per persoon. Op de eventpagina belooft het park attracties in het donker, duizenden lichtjes, winterattracties, entertainment en vuurwerk.
-
-Op 8 oktober schreef de Efteling op haar blog nog dat de tickets voor het “Oud & Nieuw feest” “binnenkort verkrijgbaar” waren. Nu staat de avond in de ticketshop.
+De [Efteling](ref:efteling) verkoopt nu kaarten voor oudejaarsavond op 31 december 2026, van 19.00 tot 1.00 uur, voor 62 euro per persoon. Op de eventpagina kondigt het park attracties in het donker aan, duizenden lichtjes, winterattracties, entertainment en vuurwerk.
 
 ## Wat er bij het ticket hoort
 
-Bij de kaart horen een oliebol, iets met prik om op het nieuwe jaar te proosten en het vuurwerk. Op de Nederlandse eventpagina heet dat drankje een “blikje bubbels”, de Duitse pagina maakt er “eine Dose Sekt” van. Op de pagina voor abonnementhouders heeft het park het juist over “een glas bubbels”.
+Bij de kaart horen een oliebol, een drankje om op het nieuwe jaar te proosten en het vuurwerk. Op de eventpagina is dat een “blikje bubbels”, op de pagina voor abonnementhouders “een glas bubbels”.
 
 Parkeren is op oudejaarsavond inbegrepen. Op andere dagen kost de parkeerplaats bij de Efteling 15 euro; wie in een van de hotels of vakantieparken logeert, parkeert gratis bij zijn verblijf.
 
-Een kaart is eenmalig geldig voor één persoon vanaf vier jaar. Met een dagticket mogen kinderen tot en met drie jaar met een identiteitsbewijs gratis naar binnen. Of dat ook op oudejaarsavond zo is, staat niet op de ticketpagina. Neem je een peuter mee, vraag het dan eerst na bij het park.
+Elke kaart geldt voor één persoon vanaf vier jaar en voor één keer naar binnen. Met een dagticket mogen kinderen tot en met drie jaar met een identiteitsbewijs gratis naar binnen. Of dat ook op oudejaarsavond zo is, zegt de Efteling niet. Neem je een peuter mee, vraag het dan eerst na bij het park.
 
-Je kunt tot 19 kaarten per bestelling kopen, en terugsturen kan niet. Voor tickets die online via efteling.com zijn gekocht, geldt normaal een retourrecht van 14 dagen. Kaarten met een vaste datum of voor een evenement vallen daar uitdrukkelijk buiten, en in de veelgestelde vragen noemt de Efteling de tickets voor Oud en Nieuw als voorbeeld.
+Je kunt tot 19 kaarten per bestelling kopen. Retourneren kan niet. Het retourrecht van 14 dagen voor online aankopen geldt niet voor eventtickets, en de Efteling noemt de kaart voor Oud en Nieuw daarbij uitdrukkelijk.
 
 ## Met een abonnement
 
 Abonnementhouders krijgen 25 procent korting. Hun ticket kost dan 46,50 euro en is een apart product in de ticketshop, met maximaal zes kaarten per bestelling. Bij de ingang moet voor elk van die kaarten een geldig abonnement worden getoond.
 
-Het abonnement zelf geeft tijdens het feest geen toegang. Op de pagina met voordelen voor abonnementhouders schrijft het park: “Je abonnement is tijdens het Oud & Nieuw feest niet geldig.” Ook met een jaarkaart heb je dus een kaart voor Oud en Nieuw nodig.
+Het abonnement alleen geldt die avond niet, ook abonnementhouders hebben een kaart voor Oud en Nieuw nodig. Op de pagina met voordelen schrijft het park: “Je abonnement is tijdens het Oud & Nieuw feest niet geldig.”
 
-De korting staat alleen op de Nederlandse eventpagina en op de pagina voor abonnementhouders. Op de Duitse en de Engelse eventpagina ontbreekt dat stuk. Het ticket met korting boek je via de Nederlandse ticketshop.
+De korting staat op de eventpagina en de pagina voor abonnementhouders; het ticket met korting boek je via de ticketshop.
 
 ## Overdag op 31 december
 
-De kaart voor oudejaarsavond geldt pas vanaf 19.00 uur. Overdag is de Efteling op 31 december gewoon open, van 10.00 tot 18.00 uur. Het dagticket wordt los verkocht en kost voor die datum 56 euro in de ticketshop. Tussen sluitingstijd en het begin van het feest zit een uur.
+Overdag is de Efteling op 31 december open van 10.00 tot 18.00 uur, twee uur korter dan van 19 tot en met 30 december. Het dagticket wordt los verkocht en kost voor die datum 56 euro. Tussen de dag en het feest zit een uur. Het avondticket van 33 euro, dat van 21 december tot 3 januari vanaf 16.00 uur geldt, is er op 31 december niet.
 
-Van 19 tot en met 30 december is het park elke dag open van 10.00 tot 20.00 uur, op oudejaarsdag gaat het al om 18.00 uur dicht. Het avondticket van 33 euro, dat van 21 december tot 3 januari vanaf 16.00 uur geldt, is er op 31 december niet.
-
-De dag valt in de Winter Efteling, van 16 november 2026 tot 31 januari 2027. De buitenachtbanen rijden zolang het weer het toelaat. Op de onderhoudslijst van het park staat voor 31 december geen enkele attractie. Droomvlucht is van 9 november tot 4 december in onderhoud, Joris en de Draak van 30 november tot 18 december en de Pagode van 15 tot 17 december.
-
-Welke parken verder nog tussen kerst en nieuwjaar open zijn, staat in ons [winteroverzicht](/blog/winter-pretparken-2026).
+De dag valt in de Winter Efteling (16 november 2026 tot 31 januari 2027); welke parken verder tussen kerst en nieuwjaar open zijn, staat in ons [winteroverzicht](/blog/winter-pretparken-2026). De buitenachtbanen rijden zolang het weer het toelaat. Op de onderhoudslijst van het park staat voor 31 december geen enkele attractie.
 
 [Efteling](ref:efteling?full)
 
 ## Hoe oudejaarsavond er eerder uitzag
 
-Welke attracties 's avonds draaien, welke shows er zijn en hoe laat het vuurwerk begint, heeft de Efteling voor 2026 nog niet bekendgemaakt.
+De Efteling heeft voor 2026 nog niet bekendgemaakt welke attracties 's avonds draaien, welke shows er zijn en hoe laat het vuurwerk begint.
 
-Voor 2022 beschreef het park het programma op zijn blog. Vanaf 23.00 uur draaiden dj's bij de Siervijver, om 23.45 uur begon het aftellen, daarna volgde vuurwerk met lasereffecten en de dj's gingen door tot 1.00 uur. Een ticket kostte toen 49 euro inclusief parkeren, abonnementhouders betaalden 36,75 euro. Ook in 2022 liep de avond van 19.00 tot 1.00 uur.
+Voor 2022 beschreef het park het programma op zijn blog. Vanaf 23.00 uur draaiden dj's bij de Siervijver. Om 23.45 uur begon het aftellen, daarna volgde vuurwerk met lasereffecten, en tot 1.00 uur draaiden weer de dj's. Een ticket kostte toen 49 euro inclusief parkeren, abonnementhouders betaalden 36,75 euro. Ook in 2022 liep de avond van 19.00 tot 1.00 uur.
 
 Op de officiële plattegrond van 2024/25 stonden onder meer een silent disco, “Grootmoeders Bingo”, “Bubbels en bollen” en de plek met het beste zicht op het vuurwerk.
 
-De avond is al vaker uitverkocht geweest. In 2022 meldde het park op 9 november dat de verkoop was gestart, en op 3 december kwam er onder dat bericht een zin bij dat alle tickets uitverkocht waren. In 2018 zette het park diezelfde zin al op 16 november bij een bericht over het feest.
+In 2022 was de avond op 3 december uitverkocht, ruim drie weken na de start van de verkoop op 9 november. In 2018 waren de kaarten al op 16 november op.
 
 ## Overnachten
 
-Voor wie blijft slapen, is er een Oud & Nieuw arrangement. Daarbij horen toegang tot het feest, onbeperkt naar het park tijdens je verblijf, een half uur eerder naar binnen en ontbijt. In de vakantiehuizen van Efteling Bosrijk en Efteling Loonsche Land kom je op 30 december aan en blijf je drie nachten; het ontbijt wordt bezorgd. De hotelkamers in het Grand Hotel, het Wonder Hotel, Bosrijk en Loonsche Land beginnen op 31 december en gelden voor twee nachten, met ontbijt en een driegangendiner zonder drankjes. Gasten van het Grand Hotel kunnen tegen betaling het aftellen meemaken op het terras van restaurant-bar Mystique, met een snack en een drankje en een beperkt aantal plaatsen.
+Accommodaties zijn er voor Oud & Nieuw niet meer, schreef de Efteling op 8 oktober. Op de pagina van het Oud & Nieuw arrangement staat dat niet, en een prijs noemt die pagina ook niet.
 
-In het blogbericht van 8 oktober schreef de Efteling wel dat er voor Oud & Nieuw geen accommodaties meer vrij zijn. De pagina van het arrangement staat nog online, met een zoekformulier, zonder prijs en zonder melding dat alles vol is.
+Bij het arrangement horen toegang tot het feest, onbeperkt naar het park tijdens je verblijf, een half uur eerder naar binnen en ontbijt. In de vakantiehuizen van Efteling Bosrijk en Efteling Loonsche Land kom je op 30 december aan en blijf je drie nachten. Het ontbijt wordt daar bezorgd. De hotelkamers in het Grand Hotel, het Wonder Hotel, Bosrijk en Loonsche Land beginnen op 31 december en gelden voor twee nachten, met ontbijt en een driegangendiner zonder drankjes.
+
+Gasten van het Grand Hotel kunnen tegen betaling het aftellen meemaken op het terras van restaurant-bar Mystique, met een snack en een drankje. Het aantal plaatsen is beperkt.
 
 ## Bereikbaarheid
 
-De Efteling ligt aan de Europalaan 1, 5171 KW Kaatsheuvel. Met het openbaar vervoer reis je naar ’s-Hertogenbosch of Tilburg en neem je daar, afhankelijk van de richting, lijn 300, 301, 136, 800 of 801 naar de halte “Efteling”. Vanuit Brussel en Antwerpen rijdt op maandag en van donderdag tot en met zondag Flixbus 811 rechtstreeks naar het park. Bussen na 1.00 uur in de nieuwjaarsnacht noemt de Efteling op haar pagina over openbaar vervoer niet. Meer over reizen, tickets en hotels lees je in onze [Efteling-gids](/blog/efteling-disney-van-nederland).
+De Efteling ligt aan de Europalaan 1, 5171 KW Kaatsheuvel. Met het openbaar vervoer reis je naar ’s-Hertogenbosch of Tilburg en neem je daar, afhankelijk van de richting, lijn 300, 301, 136, 800 of 801 naar de halte “Efteling”. Vanuit Brussel en Antwerpen rijdt op maandag en van donderdag tot en met zondag Flixbus 811 rechtstreeks naar het park.
 
-De gratis pendelbus Lijn 7 rijdt tussen het busstation bij de hoofdingang en het Wonder Hotel, Villa Pardoes, Loonsche Land en Bosrijk. Hij rijdt van woensdag tot en met zondag van 8.00 tot 12.00 uur en van 16.30 tot 19.00 uur, dus niet meer als het feest om 1.00 uur afloopt.
+De gratis pendelbus Lijn 7 rijdt tussen het busstation bij de hoofdingang en het Wonder Hotel, Villa Pardoes, Loonsche Land en Bosrijk. Hij rijdt van woensdag tot en met zondag van 8.00 tot 12.00 uur en van 16.30 tot 19.00 uur.
+
+Bussen na 1.00 uur in de nieuwjaarsnacht noemt de Efteling niet. Meer over reizen, tickets en hotels lees je in onze [Efteling-gids](/blog/efteling-disney-van-nederland).
 
 Bronnen:
 [Eventpagina Oud & Nieuw](https://www.efteling.com/nl/park/events/oud-en-nieuw),

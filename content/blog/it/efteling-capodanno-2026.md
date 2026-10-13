@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Sono in vendita i biglietti per la serata di Capodanno di Efteling, il 31 dicembre 2026 dalle 19 all’1. Costano 62 euro e comprendono fuochi d’artificio, una bevanda per il brindisi, un oliebol e il parcheggio. Con l’abbonamento si pagano 46,50 euro.
+  Sono in vendita i biglietti per la serata di Capodanno di Efteling, il 31 dicembre 2026 dalle 19 all’1. Il biglietto costa 62 euro, con fuochi d’artificio, una bevanda per il brindisi, un oliebol e il parcheggio inclusi. Con l’abbonamento di Efteling costa 46,50 euro.
 tags:
   - notizie
   - efteling
@@ -36,61 +36,57 @@ seo:
     - Winter Efteling 2026
 ---
 
-Per la notte del 31 dicembre 2026 [Efteling](ref:efteling) vende ora i biglietti della sua serata di Capodanno: si entra dalle 19 all’1 e si pagano 62 euro a persona. Sulla pagina dell’evento il parco annuncia attrazioni al buio, migliaia di luci, attrazioni invernali, intrattenimento e fuochi d’artificio.
-
-L’8 ottobre il blog di Efteling scriveva ancora che i biglietti per l’«Oud & Nieuw feest» sarebbero stati «binnenkort verkrijgbaar», cioè disponibili a breve. Adesso la serata si prenota nel negozio online.
+[Efteling](ref:efteling) ha messo in vendita i biglietti della sua serata di Capodanno, il 31 dicembre 2026 dalle 19 all’1, a 62 euro a persona. Sulla pagina dell’evento il parco annuncia attrazioni al buio, migliaia di luci, attrazioni invernali, intrattenimento e fuochi d’artificio.
 
 ## Che cosa comprende il biglietto
 
-Nel prezzo ci sono un oliebol (una frittella olandese), qualcosa di frizzante per il brindisi e i fuochi d’artificio. La pagina dell’evento in olandese parla di «blikje bubbels», una lattina, e quella tedesca traduce con «eine Dose Sekt», una lattina di spumante. Sulla pagina per gli abbonati, invece, il parco scrive «een glas bubbels», un bicchiere.
+Nel prezzo ci sono un oliebol (una frittella olandese), una bevanda per il brindisi e i fuochi d’artificio. Sulla pagina dell’evento è una lattina di spumante, sulla pagina per gli abbonati un bicchiere.
 
 La sera di Capodanno il parcheggio è compreso. Negli altri giorni il parcheggio di Efteling costa 15 euro, mentre chi dorme negli hotel e nei villaggi vacanze del parco parcheggia gratis presso il proprio alloggio.
 
-Il biglietto vale una sola volta, per una persona dai quattro anni in su. Con i biglietti giornalieri i bambini fino a tre anni compiuti entrano gratis mostrando un documento. Se questo valga anche per la serata di Capodanno, la pagina dei biglietti non lo dice: chi vuole portare un bambino piccolo fa bene a chiedere prima al parco.
+Ogni biglietto vale per una persona dai quattro anni in su e per un solo ingresso. Con i biglietti giornalieri i bambini fino a tre anni compiuti entrano gratis mostrando un documento. Efteling non dice se questo valga anche per la serata di Capodanno. Chi vuole portare un bambino piccolo chieda prima al parco.
 
-Si possono acquistare fino a 19 biglietti per ordine, e non si possono restituire. Di solito Efteling concede 14 giorni per il recesso sui biglietti comprati online su efteling.com, ma esclude esplicitamente quelli a data fissa o per un evento, e nelle domande frequenti cita proprio i biglietti di Capodanno come esempio.
+Si possono acquistare fino a 19 biglietti per ordine, e non si possono restituire. Il diritto di recesso di 14 giorni per gli acquisti online non vale per i biglietti degli eventi, ed Efteling cita espressamente il biglietto di Capodanno.
 
 ## Con l’abbonamento
 
 Chi ha l’abbonamento, la tessera annuale di Efteling, ha uno sconto del 25 per cento e paga il biglietto 46,50 euro. Nel negozio online è un’offerta a parte, con al massimo sei biglietti per ordine, e all’ingresso per ognuno va mostrato un abbonamento valido.
 
-Durante la festa l’abbonamento in sé non dà accesso al parco («Je abonnement is tijdens het Oud & Nieuw feest niet geldig», ovvero l’abbonamento non è valido durante la festa, scrive il parco nella pagina dei vantaggi per gli abbonati). Anche con la tessera annuale serve quindi un biglietto di Capodanno.
-
-Lo sconto compare solo in olandese, sulla pagina dell’evento e su quella per gli abbonati. Nelle pagine dell’evento in tedesco e in inglese questa parte manca. Il biglietto ridotto si prenota dal negozio online olandese.
+L’abbonamento da solo quella sera non vale, quindi anche gli abbonati hanno bisogno di un biglietto di Capodanno. Il biglietto ridotto si prenota solo nel negozio online olandese, e la pagina dell’evento in inglese non ne parla.
 
 ## Il 31 dicembre di giorno
 
-Il biglietto di Capodanno vale solo dalle 19. Durante il giorno, il 31 dicembre Efteling apre normalmente dalle 10 alle 18. Il biglietto giornaliero si compra a parte e per quella data nel negozio online costa 56 euro. Tra la chiusura diurna e l’inizio della festa passa un’ora.
+Durante il giorno Efteling apre il 31 dicembre dalle 10 alle 18, due ore in meno rispetto al periodo dal 19 al 30 dicembre. Il biglietto giornaliero si compra a parte e per quella data costa 56 euro. Tra l’apertura diurna e la festa passa un’ora. Il biglietto serale da 33 euro, valido dalle 16 dal 21 dicembre al 3 gennaio, il 31 dicembre non è in vendita.
 
-Dal 19 al 30 dicembre il parco è aperto tutti i giorni dalle 10 alle 20, mentre il 31 chiude già alle 18. Il biglietto serale, valido dalle 16 dal 21 dicembre al 3 gennaio al prezzo di 33 euro, il 31 dicembre non è in vendita.
-
-La giornata rientra nel Winter Efteling, che va dal 16 novembre 2026 al 31 gennaio 2027. Le montagne russe all’aperto funzionano finché il tempo lo permette. Nell’elenco delle manutenzioni del parco non c’è nessuna attrazione per il 31 dicembre. Droomvlucht è in manutenzione dal 9 novembre al 4 dicembre, Joris en de Draak dal 30 novembre al 18 dicembre, la Pagode dal 15 al 17 dicembre.
-
-Quali altri parchi restano aperti tra Natale e Capodanno lo abbiamo raccolto nella [panoramica invernale](/blog/parchi-divertimenti-inverno-2026).
+La giornata rientra nel Winter Efteling (dal 16 novembre 2026 al 31 gennaio 2027), e la nostra [panoramica invernale](/blog/parchi-divertimenti-inverno-2026) raccoglie gli altri parchi aperti tra Natale e Capodanno. Le montagne russe all’aperto funzionano finché il tempo lo permette. Nell’elenco delle manutenzioni del parco non c’è nessuna attrazione per il 31 dicembre.
 
 [Efteling](ref:efteling?full)
 
 ## Com’erano le serate di Capodanno degli anni scorsi
 
-Quali attrazioni funzionano la sera, quali spettacoli ci sono e a che ora partono i fuochi, per il 2026 Efteling non l’ha ancora pubblicato.
+Efteling non ha ancora pubblicato quali attrazioni funzioneranno la sera nel 2026, quali spettacoli ci saranno e a che ora partiranno i fuochi.
 
-Per il 2022 il parco aveva descritto il programma sul suo blog. Dalle 23 alcuni DJ suonavano alla Siervijver, alle 23:45 iniziava il conto alla rovescia, poi c’erano fuochi d’artificio con effetti laser e i DJ andavano avanti fino all’1. Allora il biglietto costava 49 euro con parcheggio e gli abbonati pagavano 36,75 euro. Anche nel 2022 l’ingresso era dalle 19 all’1.
+Per il 2022 il parco aveva descritto il programma sul suo blog. Dalle 23 alcuni DJ suonavano alla Siervijver. Alle 23:45 iniziava il conto alla rovescia, poi c’erano fuochi d’artificio con effetti laser, e fino all’1 tornavano a suonare i DJ. Allora il biglietto costava 49 euro con parcheggio e gli abbonati pagavano 36,75 euro. Anche nel 2022 l’ingresso era dalle 19 all’1.
 
-La mappa ufficiale del 2024/25 segnava, tra le altre cose, una silent disco, «Grootmoeders Bingo» (la tombola della nonna), «Bubbels en bollen» e il punto da cui si vedevano meglio i fuochi.
+La mappa ufficiale del 2024/25 segnava, tra le altre cose, una silent disco, «Grootmoeders Bingo» (la tombola della nonna), «Bubbels en bollen» (bollicine e frittelle) e il punto da cui si vedevano meglio i fuochi.
 
-La serata è già andata esaurita più volte. Nel 2022 il parco annunciò l’apertura delle vendite il 9 novembre e il 3 dicembre aggiunse all’articolo la frase che tutti i biglietti erano esauriti. Nel 2018 il parco aveva aggiunto la stessa frase a un articolo dedicato alla festa già il 16 novembre.
+Nel 2022 la serata andò esaurita il 3 dicembre, poco più di tre settimane dopo l’apertura delle vendite il 9 novembre. Nel 2018 i biglietti erano finiti già il 16 novembre.
 
 ## Dormire al parco
 
-Per chi pernotta c’è un pacchetto Capodanno. Comprende l’accesso alla festa, l’ingresso illimitato al parco per tutto il soggiorno, l’entrata mezz’ora prima dell’apertura e la colazione. Nelle case vacanza di Efteling Bosrijk ed Efteling Loonsche Land si arriva il 30 dicembre e si resta tre notti, con la colazione consegnata a domicilio. Le camere al Grand Hotel, al Wonder Hotel, a Bosrijk e a Loonsche Land partono dal 31 dicembre e valgono per due notti, con colazione e una cena di tre portate bevande escluse. Gli ospiti del Grand Hotel possono seguire il conto alla rovescia sulla terrazza del ristorante-bar Mystique pagando un supplemento, con uno snack e una bevanda, e i posti sono limitati.
+Per Oud & Nieuw non ci sono più alloggi, scriveva Efteling l’8 ottobre. La pagina del pacchetto Capodanno non lo dice, e non indica nemmeno un prezzo.
 
-Nell’articolo del blog dell’8 ottobre, però, Efteling scriveva che per Oud & Nieuw non c’erano più alloggi liberi. La pagina del pacchetto è ancora online, con il modulo di ricerca, senza prezzo e senza alcuna indicazione che sia tutto prenotato.
+Il pacchetto comprende l’accesso alla festa, l’ingresso illimitato al parco per tutto il soggiorno, l’entrata mezz’ora prima dell’apertura e la colazione. Nelle case vacanza di Efteling Bosrijk ed Efteling Loonsche Land si arriva il 30 dicembre e si resta tre notti. La colazione viene consegnata a domicilio. Le camere al Grand Hotel, al Wonder Hotel, a Bosrijk e a Loonsche Land partono dal 31 dicembre e valgono per due notti, con colazione e una cena di tre portate bevande escluse.
+
+Gli ospiti del Grand Hotel possono seguire il conto alla rovescia sulla terrazza del ristorante-bar Mystique pagando un supplemento, con uno snack e una bevanda. I posti sono limitati.
 
 ## Come arrivare
 
-Efteling si trova in Europalaan 1, 5171 KW Kaatsheuvel. Con i mezzi pubblici si arriva in treno a ’s-Hertogenbosch o a Tilburg e da lì, a seconda della direzione, si prendono le linee 300, 301, 136, 800 o 801 fino alla fermata «Efteling». Da Bruxelles e Anversa il Flixbus 811 va direttamente al parco il lunedì e dal giovedì alla domenica. Nella pagina su come arrivare Efteling non indica autobus dopo l’1 nella notte di Capodanno. Altre informazioni su viaggio, biglietti e hotel sono nella nostra [guida a Efteling](/blog/efteling-la-disney-dei-paesi-bassi).
+Efteling si trova in Europalaan 1, 5171 KW Kaatsheuvel. Con i mezzi pubblici si arriva in treno a ’s-Hertogenbosch o a Tilburg e da lì, a seconda della direzione, si prendono le linee 300, 301, 136, 800 o 801 fino alla fermata «Efteling». Da Bruxelles e Anversa il Flixbus 811 va direttamente al parco il lunedì e dal giovedì alla domenica.
 
-La navetta gratuita Lijn 7 collega la stazione degli autobus all’ingresso principale con il Wonder Hotel, Villa Pardoes, Loonsche Land e Bosrijk. Circola dal mercoledì alla domenica dalle 8 alle 12 e dalle 16:30 alle 19, quindi non c’è più quando la festa finisce all’1.
+La navetta gratuita Lijn 7 collega la stazione degli autobus all’ingresso principale con il Wonder Hotel, Villa Pardoes, Loonsche Land e Bosrijk. Circola dal mercoledì alla domenica dalle 8 alle 12 e dalle 16:30 alle 19.
+
+Efteling non indica autobus dopo l’1 nella notte di Capodanno. Altre informazioni su viaggio, biglietti e hotel sono nella nostra [guida a Efteling](/blog/efteling-la-disney-dei-paesi-bassi).
 
 Fonti:
 [Pagina dell’evento Oud & Nieuw](https://www.efteling.com/nl/park/events/oud-en-nieuw),
