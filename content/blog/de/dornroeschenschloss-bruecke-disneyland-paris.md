@@ -46,7 +46,7 @@ Neu gebaut wurden auch das Tragwerk, an dem die Zierteile sitzen, die Bögen, di
 
 ## Die Kompassrose in der Mitte
 
-Die Kompassrose ist aus Naturstein mit Einlagen aus Messing und trägt die Farben der drei guten Feen aus „Dornröschen“. Die blauen Strahlen von Sonnenschein (im Original Merryweather) und die roten von Flora laufen in entgegengesetzte Richtungen. Gemeint ist die Szene, in der die beiden um die Farbe von Auroras Kleid streiten, während Aurora mit Prinz Phillip tanzt. Ein grüner Bogen für Fauna, die im Film vermittelt, verbindet die beiden Farben.
+Die Kompassrose ist aus Naturstein mit Einlagen aus Messing und trägt die Farben der drei guten Feen aus „Dornröschen“. Die blauen Strahlen von Merryweather und die roten von Flora laufen in entgegengesetzte Richtungen. Gemeint ist die Szene, in der die beiden um die Farbe von Auroras Kleid streiten, während Aurora mit Prinz Philip tanzt. Ein grüner Bogen für Fauna, die im Film vermittelt, verbindet die beiden Farben.
 
 Im Zentrum sitzt ein Medaillon aus Messing mit Auroras Krone, umgeben von Dornen. Nach Norden weist eine Lilie aus Messing. Sie erinnert an vier Messingbuchstaben, die bei der Eröffnung des Parks die vier Himmelsrichtungen auf der Brücke markierten und bei einer Renovierung 2010 entfernt wurden. Alle Messingteile sind in drei Ebenen mit verschiedenen Oberflächen gearbeitet, von Hand gefertigt von einem darauf spezialisierten Kunsthandwerker.
 
@@ -71,7 +71,7 @@ Seit Juni 2024 strahlen mehr als 200 neue LED-Scheinwerfer das Schloss rundherum
 
 Das Schloss ist 167 Fuß hoch, rund 51 Meter, und hat Türme mit königsblauen Dächern. Vorbild waren das Schloss aus dem Zeichentrickfilm „Dornröschen“ und echte französische Schlösser und Baudenkmäler. Rundherum stehen würfelförmig geschnittene Bäume.
 
-Über Steinstufen geht es in den ersten Stock zur [Galerie de la Belle au Bois Dormant](ref:/parks/europe/france/paris/disneyland-park/la-galerie-de-la-belle-au-bois-dormant). Dort ist das Märchen in illustrierten Büchern, handgefertigten Aubusson-Wandteppichen und neun Buntglasfenstern nacherzählt. Die Fenster stammen von Paul Chapman, der auch Fenster von Notre-Dame de Paris restauriert hat. Auf einem küssen sich Aurora und Phillip.
+Über Stufen geht es in den ersten Stock zur [Galerie de la Belle au Bois Dormant](ref:/parks/europe/france/paris/disneyland-park/la-galerie-de-la-belle-au-bois-dormant). Dort ist das Märchen in kunstvoll gestalteten Büchern, handgefertigten Aubusson-Wandteppichen und neun Buntglasfenstern nacherzählt. Die Fenster stammen von Paul Chapman, der auch Fenster von Notre-Dame de Paris restauriert hat. Auf einem küssen sich Aurora und Philip.
 
 Unter dem Schloss liegt [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon), ein dunkles Verlies mit einem besiegten Drachen, der an Felsen gekettet ist. Ab und zu wacht er auf, stößt Rauch aus und brüllt.
 
@@ -87,7 +87,7 @@ Das Schloss steht am Ende der Main Street, U.S.A. Davor liegt Central Plaza, von
 
 Bis zum 1. November läuft noch das Disney Halloween Festival, dessen Dekoration von der Main Street bis an den Fuß des Schlosses reicht. An der Royal Castle Stage ranken sich Dornen, Raben und Wappen der Disney-Schurken um die Tore, und am Fuß des Schlosses ist eine Ruine als Fotokulisse aufgebaut. Das Théâtre du Château seitlich des Schlosses ist ebenfalls als Spukruine dekoriert. Am 31. Oktober gibt es ein Sonderprogramm bis 23 Uhr mit eigenem Feuerwerk, und nur an diesem Tag im Jahr dürfen Gäste kostümiert in den Park.
 
-Vom 7. November 2026 bis zum 6. Januar 2027 folgt Disney Enchanted Christmas, mit einem 24 Meter hohen Weihnachtsbaum auf der Main Street. Ab dem 14. November treten Minnie und Mrs. Claus an der Castle Stage auf. An Silvester geht um Mitternacht ein Feuerwerk über dem Dornröschenschloss hoch. Wie voll es zwischen den Jahren in Paris war, haben wir für [Weihnachten und Silvester in Orlando und Paris](/blog/weihnachten-silvester-orlando-paris-2026) ausgewertet.
+Vom 7. November 2026 bis zum 6. Januar 2027 folgt Disney Enchanted Christmas, mit geschmückter Main Street und einem 24 Meter hohen Weihnachtsbaum. Ab dem 14. November treten Minnie und Mrs. Claus an der Castle Stage auf. An Silvester geht um Mitternacht ein Feuerwerk über dem Dornröschenschloss hoch. Wie voll es zwischen den Jahren in Paris war, haben wir für [Weihnachten und Silvester in Orlando und Paris](/blog/weihnachten-silvester-orlando-paris-2026) ausgewertet.
 
 Geschlossen für Renovierungen sind am 14. Oktober laut Parkkalender Buzz Lightyear Laser Blast, Pirates' Beach, die Pirate Galleon, der Frontierland Playground und die Bahnhöfe Frontierland Depot und Discoveryland Station der Disneyland Railroad. Das Plaza Gardens Restaurant an der Main Street ist seit April 2026 für einen Umbau zu, der bis Anfang 2027 dauern soll.
 
