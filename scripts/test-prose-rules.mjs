@@ -756,6 +756,19 @@ no(
 );
 
 // 38 bold-maxim
+no(
+  'bold-maxim',
+  lines('**Mit Bahn und Bus.** Die Linie C-3 fährt bis Pinto, dort fährt der Bus 413 zum Tor.')
+);
+no('bold-maxim', lines('**En train et en bus.** La ligne C-3 va jusqu’à Pinto.'), 'fr');
+no(
+  'bold-maxim',
+  lines(
+    '**Included in the ticket.** Parking costs extra and is paid at the gate.',
+    '**People with disabilities.** A carer enters free.'
+  ),
+  'en'
+);
 yes('bold-maxim', lines('Text davor. **Wer früh kommt, wartet kürzer.**'));
 yes('bold-maxim', lines('**Wer früh kommt, wartet kürzer.** Dann der Rest.'));
 yes('bold-maxim', lines('**The early visitor waits less.** Then the rest.'), 'en');

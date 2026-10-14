@@ -135,6 +135,10 @@ const paragraphs = (bs) => bs.filter((b) => b.kind === 'para');
  */
 const HEADING_AND = { de: 'und', en: 'and', nl: 'en', fr: 'et', es: 'y|e', it: 'e|ed' };
 
+/** A bold lead-in that opens with one of these is a label for the paragraph, not a maxim. */
+const LABEL_PREPOSITION =
+  /^(?:mit|ohne|per|by|with|without|met|zonder|en|avec|par|sans|con|sin|in|senza)\s/i;
+
 /* ------------------------------------------------------------------ the rules */
 
 /** Sentence-level wordlists. German and English first; a language that is missing is not covered. */
@@ -1031,8 +1035,18 @@ export const SLOP_RULES = [
       const names = (s) =>
         locale !== 'de' &&
         /(?<=\s)\p{Lu}/u.test(s.replace(/^\p{Lu}[^\s]*\s/u, ' ').replace(/[.!?]\s+\p{Lu}/gu, ' '));
+      // `**Tickets.** …`, `**Anreise.** …`, `**Essen.** …`: bold lead-ins on neighbouring paragraphs
+      // label what each paragraph is about. A maxim stands alone; a lead-in question asks nothing.
+      const leadIn = (b) => b?.kind === 'para' && /^\*\*[^*]+\*\*\s+\S/.test(b.raw.trim());
+      const label = (b, s) => {
+        if (!leadIn(b)) return false;
+        const i = bs.indexOf(b);
+        return /\?$/.test(s) || leadIn(bs[i - 1]) || leadIn(bs[i + 1]) || LABEL_PREPOSITION.test(s);
+      };
       return paragraphs(bs)
-        .map((b) => edge(b.raw))
+        .map((b) => [b, edge(b.raw)])
+        .filter(([b, s]) => s && !label(b, s))
+        .map(([, s]) => s)
         .filter(
           (s) =>
             s &&
