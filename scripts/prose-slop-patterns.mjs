@@ -1,6 +1,7 @@
 /**
- * The twenty patterns the critic found in the twelve open guides of 2026-10-13, the date-line
- * regex and the sentence splitter they share with `scripts/check-prose.mjs` (docs/blog.md §2.20).
+ * The patterns the critic found in the guides of 2026-10-13 (1 to 20 in the twelve open ones, 22 to
+ * 38 in the 27 older ones), the date-line regex and the sentence splitter they share with
+ * `scripts/check-prose.mjs` (docs/blog.md §2.20).
  *
  * Every pattern below is a **warning** except the date-opens-a-line rule, which has been an error
  * since 2026-10-11. Published posts must not turn `main` red, and each of these is a shape a
@@ -12,7 +13,8 @@
  * whose wording is a short fixed formula (`double-attribution`, `range-before-enumeration`,
  * `definition-before-glossary`, `source-silence-close`). Every rule says which locales it covers
  * in `locales`; a pattern that is not listed for a language is left to the critic (docs/blog.md
- * §7.2), not skipped by accident.
+ * §7.2), not skipped by accident. Of the 22 to 38 batch, 23, 32 and 37 to 38 differ from the
+ * rest only in what their `locales` list says; read the list, not this paragraph.
  *
  * `pnpm test:prose-rules` holds one positive and one negative case per rule, with the sentences
  * the critic quoted as fixtures.
@@ -68,7 +70,8 @@ const plain = (s) =>
 /**
  * The post as a flat list of blocks: `heading`, `para`, `list`, `quote`, `table` and `fence` (a
  * widget or code fence, `info` is its first line). Frontmatter and comments are gone. Two blocks
- * are neighbours when nothing sits between them, which is what the widget rules ask about.
+ * are neighbours when nothing sits between them, which is what the widget rules ask about. `raw`
+ * keeps the markdown that `text` strips, for the rules that ask about bold or an internal link.
  */
 export function blocks(raw) {
   const lines = raw
@@ -78,7 +81,7 @@ export function blocks(raw) {
   const out = [];
   let cur = null;
   const flush = () => {
-    if (cur) out.push({ ...cur, text: plain(cur.lines.join(' ')) });
+    if (cur) out.push({ ...cur, text: plain(cur.lines.join(' ')), raw: cur.lines.join(' ') });
     cur = null;
   };
   for (let i = 0; i < lines.length; i++) {
@@ -306,6 +309,162 @@ const ADVERB_T = new Set(
 );
 /** An English `-s` word counts as a verb only right after one of these. */
 const SUBJECT = new Set('it he she this that which everything nothing one who park'.split(' '));
+
+/* ---- 22 to 38 ---- */
+
+const BET = {
+  de: /(?<!\p{L})(?:ist|sind|bleibt|bleiben|wird|war)\s+(?:\p{L}+\s+){0,2}?eine Wette(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:is|are|remains?|was)\s+(?:\w+\s+){0,2}?a bet(?!\p{L})/iu,
+  nl: /(?<!\p{L})is een gok(?!\p{L})/iu,
+  fr: /(?<!\p{L})est un pari(?!\p{L})/iu,
+  es: /(?<!\p{L})es una apuesta(?!\p{L})/iu,
+  it: /(?<!\p{L})è una scommessa(?!\p{L})/iu,
+};
+
+const GOOD_WHEN = {
+  de: /(?<!\p{L})(?:ist|sind)\s+(?:dann\s+|meist\s+|nur\s+)?gut,?\s+wenn(?!\p{L})/iu,
+  en: /(?<!\p{L})is\s+(?:then\s+|usually\s+)?good,?\s+when(?!\p{L})/iu,
+};
+const BAD_WHEN = {
+  de: /(?<!\p{L})(?:ist|sind)\s+(?:dann\s+|meist\s+)?schlecht,?\s+wenn(?!\p{L})/iu,
+  en: /(?<!\p{L})is\s+(?:then\s+|usually\s+)?bad,?\s+when(?!\p{L})/iu,
+};
+
+/** What may follow the appended clause: a few words, then the end of the sentence. */
+const CLAUSE_END = String.raw`(?:\s[^.!?]{0,60})?[.!]?$`;
+const APPENDED_REASON = {
+  de: new RegExp(String.raw`,\s+und das ist (?:genau |eben )?der Grund${CLAUSE_END}`, 'iu'),
+  en: new RegExp(String.raw`,\s+which is (?:exactly |precisely )?the reason${CLAUSE_END}`, 'iu'),
+  nl: new RegExp(String.raw`,\s+en dat is (?:precies )?de reden${CLAUSE_END}`, 'iu'),
+  fr: new RegExp(
+    String.raw`,\s+et c['’]est (?:exactement |précisément )?la raison${CLAUSE_END}`,
+    'iu'
+  ),
+  es: new RegExp(String.raw`,\s+y esa es la razón${CLAUSE_END}`, 'iu'),
+  it: new RegExp(String.raw`,\s+ed è (?:proprio )?questo il motivo${CLAUSE_END}`, 'iu'),
+};
+const APPENDED_ADVICE = {
+  de: new RegExp(
+    String.raw`,\s+was man sich\s(?:\p{L}+\s){0,3}überlegen sollte${CLAUSE_END}`,
+    'iu'
+  ),
+  en: new RegExp(String.raw`,\s+which is worth (?:thinking about|considering)${CLAUSE_END}`, 'iu'),
+  fr: new RegExp(
+    String.raw`,\s+ce qui mérite (?:réflexion|d['’]être (?:pesé|considéré))${CLAUSE_END}`,
+    'iu'
+  ),
+  it: new RegExp(String.raw`,\s+cosa da valutare${CLAUSE_END}`, 'iu'),
+};
+
+/** The sentence that says where the answer is: `steht im`, `is in the`. */
+const POINTS_TO = {
+  de: /(?<!\p{L})steht (?:im|in der|in den)(?!\p{L})/iu,
+  en: /(?<!\p{L})is in the(?!\p{L})/iu,
+  nl: /(?<!\p{L})staat in de(?!\p{L})/iu,
+  fr: /(?<!\p{L})est dans le(?!\p{L})/iu,
+  es: /(?<!\p{L})está en la(?!\p{L})/iu,
+  it: /(?<!\p{L})sta nella(?!\p{L})/iu,
+};
+const BLOG_LINK = /\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\)/;
+/** A paragraph that is nothing but one internal link. */
+const LINK_ONLY = /^\[[^\]]+\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\)\.?$/;
+const ENDS_ON_LINK = /\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\)\.$/;
+
+const WIDGET_SHOWS = {
+  de: /(?<!\p{L})Das Widget zeigt/iu,
+  en: /(?<!\p{L})The widget shows/iu,
+  nl: /(?<!\p{L})De widget toont/iu,
+  fr: /(?<!\p{L})Le widget montre/iu,
+  es: /(?<!\p{L})El widget muestra/iu,
+  it: /(?<!\p{L})Il widget mostra/iu,
+};
+const PICKS_FROM = {
+  de: /^(?:Zwischen|Aus) diesen\s[^.]{0,40}?\s(?:würde ich|würden wir)(?!\p{L})/iu,
+  en: /^(?:These|Those) are the\s[^.]{0,40}?\s(?:I['’]d|I would|we['’]d)(?!\p{L})/iu,
+};
+
+const HOW_TEASER = {
+  de: /^Wie\s[^.?!]{3,120}?,\s(?:zeigte sich|zeigt sich|sieht man|lässt sich|sieht das aus|erfährst du)(?!\p{L})/iu,
+  en: /^(?:Just how\b[^.?!]*\b(?:became|becomes|is|was) (?:clear|obvious|apparent|visible)|How\s[^.?!]{3,120}?,\s(?:you can see|you see|it (?:became|becomes) clear|one can see))(?!\p{L})/iu,
+  nl: /^Hoe\s[^.?!]{3,120}?,\s(?:bleek|blijkt|zie je|kun je zien)(?!\p{L})/iu,
+  fr: /^Comment\s[^.?!]{3,120}?,\s(?:on le voit|cela se voit|il apparaît)(?!\p{L})/iu,
+};
+
+const STEP_LABEL =
+  /^\*\*(?:Zuerst|Dann|Danach|Zum Schluss|First|Then|Finally|Eerst|Dan|D['’]abord|Ensuite|Enfin|Primero|Luego|Prima|Poi)\b[^*]*\*\*/iu;
+
+const OWN_POST_AS_PROOF = {
+  de: /(?<!\p{L})wie\b[^.]{0,40}?(?<!\p{L})(?:unserem|unserer|unseren|unser)\b[^.]{0,30}?(?<!\p{L})(?:Beitrag|Guide|Artikel)\b[^.]{0,40}?(?<!\p{L})(?:steht|schreiben|zeigt|beschrieben)(?!\p{L})/iu,
+  en: /(?<!\p{L})as\b[^.]{0,40}?(?<!\p{L})our\b[^.]{0,30}?(?<!\p{L})(?:post|guide|article)\b[^.]{0,40}?(?<!\p{L})(?:says|writes|shows|describes|puts it)(?!\p{L})/iu,
+  nl: /(?<!\p{L})zoals\b[^.]{0,40}?(?<!\p{L})(?:ons|onze)\b[^.]{0,30}?(?<!\p{L})(?:artikel|gids|bericht)\b[^.]{0,40}?(?<!\p{L})(?:staat|schrijft|laat zien)(?!\p{L})/iu,
+  fr: /(?<!\p{L})comme\b[^.]{0,40}?(?<!\p{L})(?:notre|nos)\b[^.]{0,30}?(?<!\p{L})(?:article|guide)\b[^.]{0,40}?(?<!\p{L})(?:indique|explique|écrit|dit)(?!\p{L})/iu,
+  es: /(?<!\p{L})como\b[^.]{0,40}?(?<!\p{L})(?:nuestro|nuestra)\b[^.]{0,30}?(?<!\p{L})(?:artículo|guía)\b[^.]{0,40}?(?<!\p{L})(?:cuenta|dice|explica|indica)(?!\p{L})/iu,
+  it: /(?<!\p{L})come\b[^.]{0,40}?(?<!\p{L})(?:nostro|nostra)\b[^.]{0,30}?(?<!\p{L})(?:articolo|guida)\b[^.]{0,40}?(?<!\p{L})(?:racconta|dice|spiega|indica)(?!\p{L})/iu,
+};
+
+const ADVICE_WHO = {
+  de: /^Wer\s[^,.?!]{2,90},\s(?:fährt|geht|kann|sollte|nimmt|kommt|wählt|startet)(?!\p{L})/iu,
+  en: /^If you\s[^,.?!]{2,90},\s(?:go|take|pick|choose|start|visit|head|arrive|come|book|ride|skip|plan)(?!\p{L})/iu,
+  nl: /^Wie\s[^,.?!]{2,90},\s(?:gaat|neemt|kan|moet|kiest|rijdt)(?!\p{L})/iu,
+};
+
+const NOT_FOUND_CLOSE = {
+  de: /(?:nicht gefunden|nicht ablesen|nicht ablesbar)[.]?$/iu,
+  en: /(?:couldn['’]t find|could not find|didn['’]t find|did not find)\b[^.]{0,40}[.]?$/iu,
+};
+
+const DAY_NIGHT = {
+  de: /(?<!\p{L})tagsüber(?!\p{L})[^.]*(?<!\p{L})(?:abends|nachts|am Abend)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:by day|during the day)(?!\p{L})[^.]*(?<!\p{L})(?:in the evening|at night|by night)(?!\p{L})/iu,
+  nl: /(?<!\p{L})overdag(?!\p{L})[^.]*(?:['’]s avonds|['’]s nachts)/iu,
+  es: /(?<!\p{L})de día(?!\p{L})[^.]*(?<!\p{L})de noche(?!\p{L})/iu,
+  it: /(?<!\p{L})di giorno(?!\p{L})[^.]*(?<!\p{L})di (?:sera|notte)(?!\p{L})/iu,
+};
+
+const LOOKS_DIFFERENT = {
+  de: /(?<!\p{L})(?:sieht (?:das )?anders aus|ist (?:eine )?(?:ganz )?andere (?:Geschichte|Sache)|liegt (?:das )?anders)\s?:/iu,
+  en: /(?<!\p{L})(?:is (?:quite )?(?:another|a different) (?:matter|story|thing)|looks different)\s?:/iu,
+  nl: /(?<!\p{L})ligt dat anders\s?:/iu,
+  fr: /(?<!\p{L})c['’]est autre chose\s?:/iu,
+  es: /(?<!\p{L})es otra historia\s?:/iu,
+  it: /(?<!\p{L})è un['’]altra storia\s?:/iu,
+};
+
+const RIDDLE_FRACTION = {
+  de: /(?<!\p{L})(?:zur Hälfte|halb)(?!\p{L})/iu,
+  en: /(?<!\p{L})half of(?!\p{L})/iu,
+  fr: /(?<!\p{L})à moitié(?!\p{L})/iu,
+  es: /(?<!\p{L})medio récord(?!\p{L})/iu,
+  it: /(?<!\p{L})per metà(?!\p{L})/iu,
+};
+
+const ASKS_BEFOREHAND = {
+  de: /(?<!\p{L})will vorher wissen(?!\p{L})/iu,
+  en: /(?<!\p{L})wants? to know beforehand(?!\p{L})/iu,
+  nl: /(?<!\p{L})wil vooraf weten(?!\p{L})/iu,
+  fr: /(?<!\p{L})tu veux savoir(?!\p{L})/iu,
+  es: /(?<!\p{L})conviene saber(?!\p{L})/iu,
+  it: /(?<!\p{L})vuole sapere prima(?!\p{L})/iu,
+};
+/** The word that opens each member of the list: `ob`, `whether`, `of`, `si`, `se`. */
+const WHETHER = {
+  de: /(?<!\p{L})ob(?!\p{L})/giu,
+  en: /(?<!\p{L})whether(?!\p{L})/giu,
+  nl: /(?<!\p{L})of(?!\p{L})/giu,
+  fr: /(?<!\p{L})si(?!\p{L})/giu,
+  es: /(?<!\p{L})si(?!\p{L})/giu,
+  it: /(?<!\p{L})se(?!\p{L})/giu,
+};
+
+/** A bare yes or no is an answer; the rule is about the answer that says nothing. */
+const YES_NO = /^(?:ja|nein|yes|no|nee|oui|non|sí|si|sì)(?!\p{L})/iu;
+const EMPTY_ANSWER_END = {
+  de: /verschieden[.!]?$/iu,
+  en: /varies[.!]?$/iu,
+  nl: /verschilt[.!]?$/iu,
+  es: /depende[.!]?$/iu,
+  it: /dipende[.!]?$/iu,
+};
 
 const headings = (bs, minLevel = 2, maxLevel = 3) =>
   bs.filter((b) => b.kind === 'heading' && b.level >= minLevel && b.level <= maxLevel);
@@ -596,6 +755,273 @@ export const SLOP_RULES = [
         .map((b) => firstSentence(b.text));
     },
   },
+  {
+    id: 'bet-opener',
+    section: '§2.20 #22',
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale }) {
+      const first = paragraphs(bs)[0];
+      return first ? splitSentences(first.text).filter((s) => BET[locale].test(s)) : [];
+    },
+  },
+  {
+    id: 'mirrored-good-bad',
+    section: '§2.20 #23',
+    locales: ['de', 'en'],
+    caption: true,
+    min: 1,
+    run({ bs, locale }) {
+      return paragraphs(bs)
+        .filter((b) => GOOD_WHEN[locale].test(b.text) && BAD_WHEN[locale].test(b.text))
+        .map((b) => b.text);
+    },
+  },
+  {
+    id: 'appended-reason',
+    section: '§2.20 #24',
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    caption: true,
+    min: 2,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => APPENDED_REASON[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'appended-advice',
+    section: '§2.20 #25',
+    // No Dutch or Spanish formula was quoted, so those two are left to the critic.
+    locales: ['de', 'en', 'fr', 'it'],
+    caption: true,
+    min: 2,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => APPENDED_ADVICE[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'link-sentence-close',
+    section: '§2.20 #26',
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale }) {
+      const lastRaw = (b) => splitSentences(b.raw).at(-1) ?? '';
+      const series = paragraphs(bs).filter((b) => {
+        const s = lastRaw(b);
+        return POINTS_TO[locale].test(s) && ENDS_ON_LINK.test(s.trim());
+      });
+      const count = new Map();
+      const linkSentences = paragraphs(bs).flatMap((b) =>
+        splitSentences(b.raw).filter((s) => BLOG_LINK.test(s))
+      );
+      for (const s of linkSentences) count.set(s, (count.get(s) ?? 0) + 1);
+      const chapters = [[]];
+      for (const b of bs) {
+        if (b.kind === 'heading' && b.level === 2) chapters.push([]);
+        else chapters.at(-1).push(b);
+      }
+      const linkOnly = chapters
+        .map((c) => c.at(-1))
+        .filter((b) => b?.kind === 'para' && LINK_ONLY.test(b.raw.trim()));
+      return [
+        ...(series.length >= 4 ? series.map((b) => lastRaw(b)) : []),
+        ...linkSentences.filter((s) => count.get(s) > 1),
+        ...(linkOnly.length >= 4 ? linkOnly.map((b) => b.text) : []),
+      ];
+    },
+  },
+  {
+    id: 'widget-announced-twice',
+    section: '§2.20 #27',
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale }) {
+      const shows = paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => WIDGET_SHOWS[locale].test(s))
+      );
+      const picks = PICKS_FROM[locale]
+        ? bs
+            .filter((b, i) => b.kind === 'para' && isWidget(bs[i + 1]))
+            .map((b) => lastSentence(b.text))
+            .filter((s) => PICKS_FROM[locale].test(s))
+        : [];
+      return [...(shows.length >= 2 ? shows : []), ...picks];
+    },
+  },
+  {
+    id: 'how-teaser',
+    section: '§2.20 #28',
+    locales: ['de', 'en', 'nl', 'fr'],
+    caption: true,
+    min: 2,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => HOW_TEASER[locale].test(s) && !/\?$/.test(s))
+      );
+    },
+  },
+  {
+    id: 'bold-step-labels',
+    section: '§2.20 #29',
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs }) {
+      const hits = [];
+      let run = [];
+      const close = () => {
+        if (run.length >= 3) hits.push(...run);
+        run = [];
+      };
+      for (const b of bs) {
+        if (b.kind === 'para' && STEP_LABEL.test(b.raw.trim())) run.push(b.text);
+        else close();
+      }
+      close();
+      return hits;
+    },
+  },
+  {
+    id: 'own-post-as-proof',
+    section: '§2.20 #30',
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 2,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => OWN_POST_AS_PROOF[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'advice-who-series',
+    section: '§2.20 #31',
+    locales: ['de', 'en', 'nl'],
+    min: 4,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => ADVICE_WHO[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'not-found-close',
+    section: '§2.20 #32',
+    locales: ['de', 'en'],
+    min: 2,
+    run({ bs, locale }) {
+      return paragraphs(bs)
+        .map((b) => lastSentence(b.text))
+        .filter((s) => NOT_FOUND_CLOSE[locale].test(s));
+    },
+  },
+  {
+    id: 'day-night-mirror',
+    section: '§2.20 #33',
+    // The critic's comment lists no French formula.
+    locales: ['de', 'en', 'nl', 'es', 'it'],
+    caption: true,
+    min: 2,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) =>
+        [...new Set([firstSentence(b.text), lastSentence(b.text)])].filter((s) =>
+          DAY_NIGHT[locale].test(s)
+        )
+      );
+    },
+  },
+  {
+    id: 'looks-different-colon',
+    section: '§2.20 #34',
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    caption: true,
+    min: 2,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => LOOKS_DIFFERENT[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'riddle-title-fraction',
+    section: '§2.20 #35',
+    // Dutch has no quoted formula.
+    locales: ['de', 'en', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, fields, locale }) {
+      const titles = fields.filter(([name]) => name === 'title').map(([, value]) => value);
+      return [...titles, ...headings(bs).map((h) => h.text)].filter((t) =>
+        RIDDLE_FRACTION[locale].test(t)
+      );
+    },
+  },
+  {
+    id: 'question-catalog-opener',
+    section: '§2.20 #36',
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter(
+          (s) => ASKS_BEFOREHAND[locale].test(s) && (s.match(WHETHER[locale]) ?? []).length >= 3
+        )
+      );
+    },
+  },
+  {
+    id: 'empty-faq-answer',
+    section: '§2.20 #37',
+    locales: ['de', 'en', 'nl', 'es', 'it'],
+    min: 2,
+    run({ bs, locale }) {
+      return bs
+        .map((b, i) => [b, bs[i + 1]])
+        .filter(
+          ([h, a]) =>
+            h.kind === 'heading' && h.level === 3 && /\?$/.test(h.text) && a?.kind === 'para'
+        )
+        .map(([, a]) => splitSentences(a.text))
+        .filter(
+          (list) =>
+            EMPTY_ANSWER_END[locale].test(list[0]) ||
+            (list.length === 1 &&
+              wordCount(list[0]) < 6 &&
+              !/\d/.test(list[0]) &&
+              !YES_NO.test(list[0]))
+        )
+        .map((list) => list[0]);
+    },
+  },
+  {
+    id: 'bold-maxim',
+    section: '§2.20 #38',
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ bs, locale }) {
+      const edge = (raw) => {
+        const r = raw.trim();
+        const m =
+          r.match(/^\*\*([^*]+[.!?])\*\*(?=\s|$)/) ?? r.match(/(?:^|[.!?]\s)\*\*([^*]+[.!?])\*\*$/);
+        return m?.[1] ?? null;
+      };
+      // German capitalises every noun, so a capital inside the sentence names nothing there.
+      const names = (s) =>
+        locale !== 'de' &&
+        /(?<=\s)\p{Lu}/u.test(s.replace(/^\p{Lu}[^\s]*\s/u, ' ').replace(/[.!?]\s+\p{Lu}/gu, ' '));
+      return paragraphs(bs)
+        .map((b) => edge(b.raw))
+        .filter(
+          (s) =>
+            s &&
+            wordCount(s) >= 4 &&
+            wordCount(s) < 15 &&
+            !/\d/.test(s) &&
+            !/\]\(/.test(s) &&
+            !names(s)
+        );
+    },
+  },
 ];
 
 /**
@@ -608,4 +1034,16 @@ export function slopFindings(raw, locale, fields = [], rules = SLOP_RULES) {
     .filter((r) => r.locales.includes(locale))
     .map((r) => ({ rule: r.id, section: r.section, min: r.min, hits: r.run(ctx) }))
     .filter((f) => f.hits.length >= f.min);
+}
+
+/**
+ * The patterns that read the same in one caption or alt text as in a post (`caption: true` on the
+ * rule), at one hit each: a caption is a single sentence, so a series is out of reach. The rules
+ * that ask about neighbouring blocks are not among them.
+ */
+export function captionFindings(text, locale) {
+  const ctx = { bs: blocks(text), locale, fields: [] };
+  return SLOP_RULES.filter((r) => r.caption && r.locales.includes(locale))
+    .map((r) => ({ rule: r.id, section: r.section, hits: r.run(ctx) }))
+    .filter((f) => f.hits.length > 0);
 }

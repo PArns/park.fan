@@ -36,7 +36,12 @@
 import { execSync } from 'node:child_process';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import { DATE_LINE_START, slopFindings, splitSentences } from './prose-slop-patterns.mjs';
+import {
+  DATE_LINE_START,
+  captionFindings,
+  slopFindings,
+  splitSentences,
+} from './prose-slop-patterns.mjs';
 
 const STRICT = process.argv.includes('--strict');
 const VERBOSE = process.argv.includes('--verbose');
@@ -1852,6 +1857,8 @@ for (const file of runs('media') ? filesUnder('public/media', '.json') : []) {
         skip: field === 'alt' ? [SIGN_RULE] : [],
       });
       hardRules(`${file} (${field}.${locale})`, text, locale);
+      for (const { rule, section, hits } of captionFindings(text, locale))
+        warn(`${file} (${field}.${locale})`, `${rule} (${section}): "${hits[0].slice(0, 90)}"`);
       if (field === 'caption' && captions.has(locale)) captions.get(locale).push(text.trim());
       if (field === 'caption') {
         const key = `${file.split('/').slice(0, -1).join('/')} (${locale})`;
