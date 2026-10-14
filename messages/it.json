@@ -514,6 +514,7 @@
     "searchResults": "{count, plural, =1 {# risultato} other {# risultati}}",
     "searchEmpty": "Nessuna guida trovata per «{query}».",
     "searchFailed": "La ricerca non è disponibile al momento.",
+    "allPosts": "Tutti gli articoli",
     "latestNews": "Ultime notizie",
     "allNews": "Tutte le notizie",
     "moreCities": "{count, plural, =1 {1 altra città} other {# altre città}}",
@@ -2159,6 +2160,9 @@
     },
     "breadcrumbs": "Briciole di pane",
     "categories": "Categorie",
+    "filter": {
+      "all": "Tutti"
+    },
     "category": {
       "label": "Categoria",
       "description": "Tutti gli articoli del blog park.fan nella categoria {category}: racconti di visita, analisi dei dati e guide ai parchi, dal più recente.",

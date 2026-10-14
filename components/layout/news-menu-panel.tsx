@@ -3,9 +3,10 @@
 import { memo } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { ArrowRight, Megaphone } from 'lucide-react';
+import { Megaphone } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
+import { MenuAllLink } from '@/components/layout/menu-all-link';
 import { NewsAge } from '@/components/blog/news-age';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { PhotoCredit } from '@/components/media/photo-credit';
@@ -115,15 +116,12 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
                 </li>
               ))}
             </ol>
-            <Link
-              href={path as '/'}
-              prefetch={false}
-              className="text-primary mt-3 ml-5 inline-flex items-center gap-1.5 self-start text-xs font-semibold hover:underline"
-            >
-              {t('allNews')}
-              <span className="text-muted-foreground font-normal tabular-nums">{total}</span>
-              <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-            </Link>
+            <MenuAllLink
+              href={path}
+              label={t('allNews')}
+              count={total}
+              className="mt-3 ml-5 self-start"
+            />
           </div>
         )}
       </div>

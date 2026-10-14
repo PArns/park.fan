@@ -1,27 +1,11 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
+import { locales } from '@/i18n/config';
+import { listAuthorKeys } from '@/lib/blog/authors';
+import { BlogAuthorPageBody, buildAuthorMetadata } from '@/components/blog/blog-author-page';
 import { routing, type Locale } from '@/i18n/routing';
-import {
-  generateAlternateLanguages,
-  locales,
-  localeToOpenGraphLocale,
-  SITE_URL,
-} from '@/i18n/config';
-import { BLOG_POSTS_PER_PAGE, listArticles, hasPublishedPosts } from '@/lib/blog/listing';
-import { getAuthor, listAuthorKeys, resolveAuthor } from '@/lib/blog/authors';
-import { BlogPostGrid } from '@/components/blog/blog-post-grid';
-import { BlogAuthorProfile } from '@/components/blog/blog-author-profile';
-import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
-import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
-import { PageBottomSections } from '@/components/common/page-bottom-sections';
-import { BlogStructuredData } from '@/components/seo/blog-structured-data';
-import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
-import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import type { Breadcrumb } from '@/lib/api/types';
-import { getOgImageUrl } from '@/lib/utils/og-image';
 import { RouteMessages } from '@/i18n/route-messages';
-import { blogFeedAlternates } from '@/lib/blog/feed';
 
 interface AuthorPageProps {
   params: Promise<{ locale: string; author: string }>;
@@ -40,104 +24,16 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: AuthorPageProps): Promise<Metadata> {
   const { locale, author } = await params;
-  if (!routing.locales.includes(locale as Locale)) return {};
-  const entry = getAuthor(author, locale as Locale);
-  if (!entry) return {};
-  const t = await getTranslations({ locale, namespace: 'blog' });
-  const ogImageUrl = getOgImageUrl([locale, 'blog', 'author', author]);
-  const fullTitle = `${entry.name} | ${t('title')} · park.fan`;
-  const description = entry.bio ?? t('author.description', { name: entry.name });
-
-  return {
-    title: { absolute: fullTitle },
-    description,
-    openGraph: {
-      title: fullTitle,
-      description,
-      locale: localeToOpenGraphLocale[locale as Locale],
-      url: `${SITE_URL}/${locale}/blog/authors/${author}`,
-      siteName: 'park.fan',
-      type: 'profile',
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: entry.name }],
-    },
-    twitter: { card: 'summary_large_image', title: fullTitle, description, images: [ogImageUrl] },
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/blog/authors/${author}`,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}/blog/authors/${author}`),
-        'x-default': `${SITE_URL}/en/blog/authors/${author}`,
-      },
-      types: blogFeedAlternates(locale as Locale),
-    },
-  };
+  return buildAuthorMetadata(locale, author, 1);
 }
 
 export default async function BlogAuthorPage({ params }: AuthorPageProps) {
   const { locale, author } = await params;
   if (!routing.locales.includes(locale as Locale)) notFound();
-  if (!hasPublishedPosts(locale as Locale)) notFound();
   setRequestLocale(locale);
-
-  const entry = getAuthor(author, locale as Locale);
-  if (!entry) notFound();
-
-  const t = await getTranslations('blog');
-  // The author's articles. Their news posts live under `/news`, never under `/blog`.
-  const allPosts = listArticles(locale as Locale).filter(
-    (p) => resolveAuthor(p.frontmatter.author, locale as Locale).key === author
-  );
-  const visiblePosts = allPosts.slice(0, BLOG_POSTS_PER_PAGE);
-
-  const breadcrumbs: Breadcrumb[] = [{ name: t('blog'), url: '/blog' }];
-  const seoBreadcrumbs: Breadcrumb[] = [
-    ...breadcrumbs,
-    { name: entry.name, url: `/blog/authors/${author}` },
-  ];
-
   return (
     <RouteMessages route="/blog/authors/[author]">
-      <>
-        <BlogStructuredData
-          locale={locale}
-          name={`${entry.name} · ${t('title')}`}
-          description={entry.bio ?? t('author.description', { name: entry.name })}
-          posts={visiblePosts}
-          path={`/blog/authors/${author}`}
-        />
-        <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
-
-        <div className="container mx-auto px-4 py-10 sm:py-14">
-          <BreadcrumbNav
-            breadcrumbs={breadcrumbs}
-            currentPage={entry.name}
-            variant="plain"
-            className="mb-6"
-          />
-
-          <BlogAuthorProfile author={entry} />
-
-          <h2 className="text-foreground mt-10 mb-6 text-xl font-bold sm:text-2xl">
-            {t('author.postsBy', { name: entry.name })}
-            <span className="text-muted-foreground ml-2 text-sm font-normal">
-              {t('author.postsCount', { count: allPosts.length })}
-            </span>
-          </h2>
-
-          <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
-            {visiblePosts.length > 0 ? (
-              <BlogPostGrid posts={visiblePosts} />
-            ) : (
-              <p className="text-muted-foreground">{t('author.noPosts')}</p>
-            )}
-            <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
-              <BlogCategoryTree locale={locale as Locale} />
-              <BlogTagCloud locale={locale as Locale} />
-            </aside>
-          </div>
-        </div>
-
-        <PageBottomSections locale={locale} />
-      </>
+      <BlogAuthorPageBody locale={locale} author={author} page={1} />
     </RouteMessages>
   );
 }

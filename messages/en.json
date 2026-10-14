@@ -514,6 +514,7 @@
     "searchResults": "{count, plural, =1 {# result} other {# results}}",
     "searchEmpty": "No guides found for “{query}”.",
     "searchFailed": "Search is not available right now.",
+    "allPosts": "All posts",
     "latestNews": "Latest news",
     "allNews": "All news",
     "moreCities": "{count, plural, =1 {1 more city} other {# more cities}}",
@@ -2159,6 +2160,9 @@
     },
     "breadcrumbs": "Breadcrumbs",
     "categories": "Categories",
+    "filter": {
+      "all": "All"
+    },
     "category": {
       "label": "Category",
       "description": "All park.fan blog posts filed under {category}: trip reports, data analyses and park guides, newest first.",

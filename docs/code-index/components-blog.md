@@ -17,6 +17,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `BlogAttractionWidget` _component_: Inline embeddable attraction card used inside blog posts via: `attraction-widget parkSlug=phantasialand slug=taron `
 
+### [`blog-author-page.tsx`](../../components/blog/blog-author-page.tsx)
+
+- `BlogAuthorPageBody` _component_: Renders page `page` of an author page: the profile, the author's articles in the blog's stream and the page links, plus Blog and BreadcrumbList JSON-LD.
+- `listAuthorArticles` _function_: The author's articles in a locale. Their news posts live under `/news`, never under `/blog`.
+- `buildAuthorMetadata` _function_: Metadata for page `page` of the author page at `/blog/authors/[author]`.
+
 ### [`blog-author-profile.tsx`](../../components/blog/blog-author-profile.tsx)
 
 - `BlogAuthorProfile` _component_: Profile header for the author page: avatar, name, role/location, bio, links.
@@ -27,8 +33,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-category-page.tsx`](../../components/blog/blog-category-page.tsx)
 
-- `BlogCategoryPageBody` _component_: Renders a blog category listing: breadcrumbs, the category's articles, the category tree and tag cloud, plus Blog and BreadcrumbList JSON-LD. 404s for an unknown or empty category; `news` redirects to `/news`.
-- `buildCategoryMetadata` _function_: Metadata for a blog category listing at `/blog/category/[...path]`. Articles only: the news category's posts live under `/news` (`NewsIndexPageBody`). Canonical, hreflang and breadcrumbs come from `categoryPath` (`lib/blog/paths.ts`).
+- `BlogCategoryPageBody` _component_: Renders a page of a blog category listing: breadcrumbs, the category pills, the category's articles in the blog's stream and the page links, plus Blog and BreadcrumbList JSON-LD. 404s for an unknown or empty category and for a page it does …
+- `buildCategoryMetadata` _function_: Metadata for a blog category listing at `/blog/category/[...path]`, where the path may end in `/page/<n>` (`splitPageSegments`). Articles only: the news category's posts live under `/news` (`NewsIndexPageBody`).
 
 ### [`blog-category-tree.tsx`](../../components/blog/blog-category-tree.tsx)
 
@@ -64,6 +70,11 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`blog-hourly-profile-widget.tsx`](../../components/blog/blog-hourly-profile-widget.tsx)
 
 - `BlogHourlyProfileWidget` _component_: The park's day shape inside a blog post:
+
+### [`blog-index-page.tsx`](../../components/blog/blog-index-page.tsx)
+
+- `BlogIndexPageBody` _component_: Page `page` of the blog index: the articles, newest first, in the stream `/news` draws, with the categories as pills above and the page links below.
+- `buildBlogIndexMetadata` _function_: Metadata for page `page` of the blog index. Every page is its own canonical and indexable: pointing page 2 at page 1 would tell Google the posts on it are not worth reaching. The OG card is the index's for all of them.
 
 ### [`blog-inline-image.tsx`](../../components/blog/blog-inline-image.tsx)
 
@@ -115,10 +126,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `BlogPostCard` _component_: Blog post card — resolves the author and category label, then renders `BlogPostCardView`.
 
-### [`blog-post-grid.tsx`](../../components/blog/blog-post-grid.tsx)
-
-- `BlogPostGrid` _component_: Uniform post grid shared by the blog index and category pages so both surfaces render identically: - a single post → one centered portrait tile (a full-width strip stretched portrait covers into a thin panoramic band), - multiple posts → a …
-
 ### [`blog-post-link.tsx`](../../components/blog/blog-post-link.tsx)
 
 - `BlogPostLink` _component_: Inline reference to another blog post, with a hover preview.
@@ -132,6 +139,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `BlogPostPageBody` _component_: Renders a blog or news post page: banner, body, table of contents, tags, references, related posts and JSON-LD. Redirects a news post asked for under `/blog` and a slug from another locale, 404s an article under `/news`.
 - `buildPostMetadata` _function_: Builds the metadata for a post page: title, description, canonical and hreflang across the post's translations, Open Graph and Twitter cards, robots. Returns `{}` for a post filed under the other section.
 - Types: `PostSection`
+
+### [`blog-post-stream.tsx`](../../components/blog/blog-post-stream.tsx)
+
+- `BlogPostStream` _component_: One page of a blog listing (the index, a category, a tag, an author) in the stream `/news` draws (`PostStreamGroups`), grouped by the month a post went out.
+- `BlogCategoryPills` _component_: The blog's categories as pills over a listing, the look of the park filter on `/news`, but links: each category is a page of its own. `active` is the top-level category the page lists, `null` on the index, where "all" is the chosen one.
 
 ### [`blog-quote-original.tsx`](../../components/blog/blog-quote-original.tsx)
 
@@ -174,6 +186,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `BlogTagCloud` _component_: Sidebar / footer tag cloud. Each pill scales with its post count so the tags people actually use most stand out. Same colour palette as the inline BlogTags pills, keyed by tag slug for cross-page consistency.
 
+### [`blog-tag-page.tsx`](../../components/blog/blog-tag-page.tsx)
+
+- `BlogTagPageBody` _component_: Renders page `page` of a tag archive: breadcrumbs, the tag's articles in the blog's stream and the page links, plus Blog and BreadcrumbList JSON-LD. Articles only, like `listTags` counts them; news is never listed under `/blog`.
+- `buildTagMetadata` _function_: Metadata for page `page` of the tag archive at `/blog/tag/[tag]`.
+
 ### [`blog-tags.tsx`](../../components/blog/blog-tags.tsx)
 
 - `BlogTags` _component_: Row of coloured `#tag` pills for a post, each linking to its tag archive unless `asLinks` is false.
@@ -200,6 +217,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `latestNewsFrom` _function_: The chip's data out of the news menu, which already holds the newest item and the label.
 - Types: `LatestNews`
 
+### [`listing-pagination.tsx`](../../components/blog/listing-pagination.tsx)
+
+- `ListingPagination` _component_: The page links under a blog or news listing: previous, the page numbers, next. Plain links to the `/page/<n>` URLs (`lib/blog/pagination.ts`), so a crawler walks the whole archive without running a script.
+
 ### [`new-posts-toast.tsx`](../../components/blog/new-posts-toast.tsx)
 
 - `NewPostsToast` _component_: The "new on the blog" toast. Loaded on demand by `NewPostsWatcher`, which also decides whether there is anything to say — this file only draws it.
@@ -214,8 +235,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`news-index-page.tsx`](../../components/blog/news-index-page.tsx)
 
-- `NewsIndexPageBody` _component_: The news overview at `/news`: a stream of dated notes, newest day first, not the blog's card grid. Each day opens with its date and age (`NewsAge`); each note carries its park, its title, one line of teaser and a small cover.
-- `buildNewsIndexMetadata` _function_: The news overview's own metadata: a title carrying the search phrase ("Freizeitpark-News"), the card from `/api/og/<locale>/news`, and a canonical of `/news` whatever `?park=` says (the filter adds no URLs, see `NewsStream`).
+- `NewsIndexPageBody` _component_: Page `page` of the news overview at `/news`: a stream of dated notes, newest day first (`PostStreamGroups`, the list the blog listings draw by month).
+- `buildNewsIndexMetadata` _function_: The news overview's own metadata for page `page`: a title carrying the search phrase ("Freizeitpark-News"), the card from `/api/og/<locale>/news`, and the page's own URL as the canonical whatever `?park=` says (the filter adds no URLs, see …
 
 ### [`news-list.tsx`](../../components/blog/news-list.tsx)
 
@@ -224,7 +245,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`news-park-label.tsx`](../../components/blog/news-park-label.tsx)
 
-- `NewsParkLabel` _component_: The park a news item belongs to, as a link to the park page. Drawn as a `Badge` so it reads as a label next to the title rather than as a second headline.
+- `NewsParkLabel` _component_: The park a news item belongs to, as a link to the park page (a `PostStreamLabel`).
 
 ### [`news-row.tsx`](../../components/blog/news-row.tsx)
 
@@ -233,5 +254,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`news-stream.tsx`](../../components/blog/news-stream.tsx)
 
-- `NewsStream` _component_: The news overview's stream, newest day first, with a filter by park. Every entry is rendered on the server, so the full list is in the static page.
-- Types: `NewsStreamItem`, `NewsStreamGroup`, `NewsStreamPark`
+- `NewsStream` _component_: One page of the news overview's stream (`PostStreamGroups`), newest day first, with a filter by park. Every entry is rendered on the server, so the page's list is in the static HTML.
+- Types: `NewsStreamPark`
+
+### [`post-stream.tsx`](../../components/blog/post-stream.tsx)
+
+- `PostStreamGroups` _component_: The groups, each heading in a sticky column on the left and its entries along a rule on the right; stacked on a phone.
+- `PostStreamEntry` _component_: One post in the stream: a label over the title (the park on `/news`, the category on the blog), the title, two lines of teaser, an optional meta line and a small cover on the right.
+- `PostStreamLabel` _component_: The label over an entry's title, as a link drawn as a badge, so it reads as a label rather than a second headline: the park on `/news`, the category on the blog.
+- `filterPillClass` _function_: One pill over the stream: the park filter's buttons on `/news`, the category links on the blog. `pressed` is the chosen one.
+- `FILTER_PILL_ROW_CLASS` _const_: The row the filter pills sit in, over the stream.
+- Types: `PostStreamItem`, `PostStreamGroup`

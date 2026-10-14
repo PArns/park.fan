@@ -8,6 +8,7 @@ import { useFormatter, useLocale, useTranslations } from 'next-intl';
 import { Link, useRouter } from '@/i18n/navigation';
 import { Input } from '@/components/ui/input';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
+import { MenuAllLink } from '@/components/layout/menu-all-link';
 import { BlogCoverFallback, slugFromPostPath } from '@/components/blog/blog-cover-fallback';
 import { PhotoCredit } from '@/components/media/photo-credit';
 import type { BlogMenu, BlogMenuPost, BlogMenuSearchEntry } from '@/lib/navigation/blog-menu';
@@ -67,15 +68,16 @@ function MenuPostRow({ post, meta }: { post: BlogMenuPost; meta: string }) {
 
 /**
  * The blog menu: the newest article as the opener, the rest as rows with a small cover, date,
- * reading time and teaser, and the categories as a pill row along the bottom. One heading over both
- * columns, a `MenuSectionHeading` linking to `/blog`, with a search field on its right that swaps
- * both columns for the matching articles. The teaser is cut on the server (`trimExcerpt`), because
+ * reading time and teaser, and along the bottom the categories as a pill row with the link to all
+ * articles (`MenuAllLink`) at its end. One heading over both columns, a `MenuSectionHeading`
+ * linking to `/blog`, with a search field on its right that swaps both columns for the matching
+ * articles. The teaser is cut on the server (`trimExcerpt`), because
  * this text ships in the chrome of every page and a CSS clamp would not stop the bytes; for the
  * same reason the search reads its list from `/api/nav/articles/[locale]`, fetched when the field
  * is first pointed at or focused. Articles only; news has its own panel. Memoised for the same
  * reason as `ParksMenuPanel`.
  */
-export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }: BlogMenu) {
+export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent, total }: BlogMenu) {
   /*
    * `navigation`, not `blog`: one `useTranslations('blog')` in a header component pulls the whole
    * namespace into the chrome every page serializes.
@@ -250,28 +252,32 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent }:
         )}
       </div>
 
-      {/* Categories as a pill row, not a column: three links do not earn 13 rem of the band. */}
-      {categories.length > 0 && (
-        <div
-          data-menu-stagger
-          className="border-border/60 flex flex-wrap items-center gap-2 border-t pt-4"
-        >
-          <span className="text-muted-foreground mr-1 text-[11px] font-semibold tracking-wide uppercase">
-            {t('categories')}
-          </span>
-          {categories.map((category) => (
-            <Link
-              key={category.path}
-              href={categoryPath(category.path)}
-              prefetch={false}
-              className="border-border/70 text-muted-foreground hover:border-primary/50 hover:text-primary inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors"
-            >
-              {category.label}
-              <span className="text-muted-foreground/60 tabular-nums">{category.postCount}</span>
-            </Link>
-          ))}
-        </div>
-      )}
+      {/* Categories as a pill row, not a column: three links do not earn 13 rem of the band. The
+          way to everything else closes the row on the right, where a scan of the band ends. */}
+      <div
+        data-menu-stagger
+        className="border-border/60 flex flex-wrap items-center gap-2 border-t pt-4"
+      >
+        {categories.length > 0 && (
+          <>
+            <span className="text-muted-foreground mr-1 text-[11px] font-semibold tracking-wide uppercase">
+              {t('categories')}
+            </span>
+            {categories.map((category) => (
+              <Link
+                key={category.path}
+                href={categoryPath(category.path)}
+                prefetch={false}
+                className="border-border/70 text-muted-foreground hover:border-primary/50 hover:text-primary inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors"
+              >
+                {category.label}
+                <span className="text-muted-foreground/60 tabular-nums">{category.postCount}</span>
+              </Link>
+            ))}
+          </>
+        )}
+        <MenuAllLink href="/blog" label={t('allPosts')} count={total} className="ml-auto" />
+      </div>
     </div>
   );
 });

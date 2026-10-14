@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-menu-panel.tsx`](../../components/layout/blog-menu-panel.tsx)
 
-- `BlogMenuPanel` _component_: The blog menu: the newest article as the opener, the rest as rows with a small cover, date, reading time and teaser, and the categories as a pill row along the bottom.
+- `BlogMenuPanel` _component_: The blog menu: the newest article as the opener, the rest as rows with a small cover, date, reading time and teaser, and along the bottom the categories as a pill row with the link to all articles (`MenuAllLink`) at its end.
 
 ### [`brand-lockup.tsx`](../../components/layout/brand-lockup.tsx)
 
@@ -81,6 +81,10 @@ Owns the WebGL lifecycle of the hero's three.js park; the scene itself is `lib/t
 ### [`language-banner.tsx`](../../components/layout/language-banner.tsx)
 
 - `LanguageBanner` _component_: Banner offering to switch to the browser's language when it differs from the page's, worded in that language. Dismissal is remembered per language pair in localStorage.
+
+### [`menu-all-link.tsx`](../../components/layout/menu-all-link.tsx)
+
+- `MenuAllLink` _component_: The link from a menu panel to the overview it previews ("Alle Beiträge", "Alle News") with the number of posts there: the panel shows five or six, and this says where the rest are.
 
 ### [`menu-band.tsx`](../../components/layout/menu-band.tsx)
 

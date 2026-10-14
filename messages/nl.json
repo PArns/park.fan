@@ -514,6 +514,7 @@
     "searchResults": "{count, plural, =1 {# resultaat} other {# resultaten}}",
     "searchEmpty": "Geen gidsen gevonden voor “{query}”.",
     "searchFailed": "Zoeken is nu niet beschikbaar.",
+    "allPosts": "Alle berichten",
     "latestNews": "Laatste nieuws",
     "allNews": "Al het nieuws",
     "moreCities": "{count, plural, =1 {nog 1 stad} other {nog # steden}}",
@@ -2159,6 +2160,9 @@
     },
     "breadcrumbs": "Kruimelpad",
     "categories": "Categorieën",
+    "filter": {
+      "all": "Alle"
+    },
     "category": {
       "label": "Categorie",
       "description": "Alle blogartikelen van park.fan in de categorie {category} – reisverslagen, data-analyses en gidsen over de pretparken, nieuwste eerst.",

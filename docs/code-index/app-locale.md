@@ -77,12 +77,21 @@ Route `/[locale]/blog/authors/[author]` (page).
 - `generateStaticParams` _function_: One page per (locale × registry author).
 - `generateMetadata` _function_
 
+### [`blog/authors/[author]/page/[n]/page.tsx`](../../app/%5Blocale%5D/blog/authors/%5Bauthor%5D/page/%5Bn%5D/page.tsx)
+
+Route `/[locale]/blog/authors/[author]/page/[n]` (page).
+
+- `default (BlogAuthorLaterPage)` _component_
+- `generateStaticParams` _function_
+- `generateMetadata` _function_
+- `dynamicParams` _const_: Only an author with enough articles for a second page has one; every other path is a 404.
+
 ### [`blog/category/[...path]/page.tsx`](../../app/%5Blocale%5D/blog/category/%5B...path%5D/page.tsx)
 
 Route `/[locale]/blog/category/[...path]` (page).
 
 - `default (BlogCategoryPage)` _component_
-- `generateStaticParams` _function_: Every category in every locale. News is not a category: its listing is `/news` (`lib/blog/paths.ts`).
+- `generateStaticParams` _function_: Every category in every locale, and every later page of it (`/page/<n>` ends the catch-all). News is not a category: its listing is `/news` (`lib/blog/paths.ts`).
 - `generateMetadata` _function_
 
 ### [`blog/feed.xml/route.ts`](../../app/%5Blocale%5D/blog/feed.xml/route.ts)
@@ -97,8 +106,17 @@ Route `/[locale]/blog/feed.xml` (route).
 Route `/[locale]/blog` (page).
 
 - `default (BlogIndexPage)` _component_
-- `generateStaticParams` _function_: Static: pagination via `?page=N` would force a dynamic render, so a second page of posts means a path-based `/blog/page/[n]` route.
+- `generateStaticParams` _function_: Static: a later page is the path-based `/blog/page/[n]`, never `?page=N`, which would render this page per request (`lib/blog/pagination.ts`).
 - `generateMetadata` _function_
+
+### [`blog/page/[n]/page.tsx`](../../app/%5Blocale%5D/blog/page/%5Bn%5D/page.tsx)
+
+Route `/[locale]/blog/page/[n]` (page).
+
+- `default (BlogIndexLaterPage)` _component_
+- `generateStaticParams` _function_
+- `generateMetadata` _function_
+- `dynamicParams` _const_: Every later page of every locale is built; anything else, `/page/1` included (page 1 is `/blog`), is a 404.
 
 ### [`blog/tag/[tag]/page.tsx`](../../app/%5Blocale%5D/blog/tag/%5Btag%5D/page.tsx)
 
@@ -107,6 +125,15 @@ Route `/[locale]/blog/tag/[tag]` (page).
 - `default (BlogTagPage)` _component_
 - `generateStaticParams` _function_: One page per (locale × tag).
 - `generateMetadata` _function_
+
+### [`blog/tag/[tag]/page/[n]/page.tsx`](../../app/%5Blocale%5D/blog/tag/%5Btag%5D/page/%5Bn%5D/page.tsx)
+
+Route `/[locale]/blog/tag/[tag]/page/[n]` (page).
+
+- `default (BlogTagLaterPage)` _component_
+- `generateStaticParams` _function_
+- `generateMetadata` _function_
+- `dynamicParams` _const_: Only the tags long enough for a second page have one; every other path is a 404.
 
 ### [`changelog/page.tsx`](../../app/%5Blocale%5D/changelog/page.tsx)
 
@@ -384,8 +411,17 @@ Route `/[locale]/news/[slug]` (page).
 Route `/[locale]/news` (page).
 
 - `default (NewsIndexPage)` _component_
-- `generateStaticParams` _function_: The park filter is a query parameter read in the browser, so it adds no URLs and the canonical stays `/news`.
+- `generateStaticParams` _function_: The park filter is a query parameter read in the browser, so it adds no URLs and the canonical stays `/news`. A later page is the path-based `/news/page/[n]`.
 - `generateMetadata` _function_
+
+### [`news/page/[n]/page.tsx`](../../app/%5Blocale%5D/news/page/%5Bn%5D/page.tsx)
+
+Route `/[locale]/news/page/[n]` (page).
+
+- `default (NewsLaterPage)` _component_
+- `generateStaticParams` _function_
+- `generateMetadata` _function_
+- `dynamicParams` _const_: Every later page of every locale is built; anything else, `/page/1` included (page 1 is `/news`), is a 404.
 
 ### [`not-found.tsx`](../../app/%5Blocale%5D/not-found.tsx)
 

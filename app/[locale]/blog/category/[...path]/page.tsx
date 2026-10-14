@@ -4,6 +4,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import { locales } from '@/i18n/config';
 import { buildCategoryTree } from '@/lib/blog/categories';
+import { laterPageNumbers, pagedSegments } from '@/lib/blog/pagination';
 import { BlogCategoryPageBody, buildCategoryMetadata } from '@/components/blog/blog-category-page';
 import { RouteMessages } from '@/i18n/route-messages';
 
@@ -11,15 +12,19 @@ interface CategoryPageProps {
   params: Promise<{ locale: string; path: string[] }>;
 }
 
-// Every category in every locale. News is not a category: its listing is `/news`
-// (`lib/blog/paths.ts`).
+// Every category in every locale, and every later page of it (`/page/<n>` ends the catch-all).
+// News is not a category: its listing is `/news` (`lib/blog/paths.ts`).
 
 export async function generateStaticParams() {
   const out: Array<{ locale: string; path: string[] }> = [];
   for (const locale of locales) {
     const { flat } = buildCategoryTree(locale);
-    for (const path of flat.keys()) {
-      out.push({ locale, path: path.split('/') });
+    for (const [path, node] of flat) {
+      const segments = path.split('/');
+      out.push({ locale, path: segments });
+      for (const page of laterPageNumbers(node.totalPostCount)) {
+        out.push({ locale, path: pagedSegments(segments, page) });
+      }
     }
   }
   return out;

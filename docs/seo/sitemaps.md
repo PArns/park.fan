@@ -54,7 +54,7 @@ Hub + attraction pages were re-added in July 2026: SERP checks showed competitor
 | `/{locale}/parks/…/{park}/{kids-segment}` (**gated parks only**)        | 0.6      | monthly         | –                         |
 | `/{locale}/{glossary-segment}/{term}`                                   | 0.8      | monthly         | `GLOSSARY_CONTENT_DATE`   |
 | `/{locale}/blog/{slug}` (**blog-live locales only**)                    | 0.6      | monthly         | `updatedAt ?? date`       |
-| `/{locale}/blog` + category/tag/author listings                         | 0.4–0.7  | daily–weekly    | newest post in the list   |
+| `/{locale}/blog` + category/tag/author listings (page 1 only)           | 0.4–0.7  | daily–weekly    | newest post in the list   |
 | `/{locale}/{howto-segment}` (the guide, localized slug)                 | 0.8      | monthly         | –                         |
 | `/{locale}/{glossary-segment}` (index)                                  | 0.5      | weekly          | `GLOSSARY_CONTENT_DATE`   |
 
@@ -82,6 +82,8 @@ be stale within two deploys. `GLOSSARY_CONTENT_DATE` earns its keep because the 
 reviewed as a body of text; these are not.
 
 Every `/sitemap.xml` entry carries absolute `alternates.languages` (hreflang) for all 6 locales plus `x-default` (EN); the attraction children deliberately do not (see above).
+
+**Later listing pages stay out.** `/blog/page/2`, `/news/page/2` and the `/page/<n>` of a category, tag or author page are linked from their listing and are not in any sitemap: every post they show is listed under its own URL, and a later page's posts move with every publication, so its `<lastmod>` would too. See [a listing page is a path with its own canonical](../rules/a-listing-page-is-a-path-with-its-own-canonical.md).
 
 **Blog fallback rule:** a post URL/alternate is only emitted for locales with a **real translation**. EN-fallback URLs (e.g. `/de/blog/<en-slug>`) serve duplicate EN content, canonicalize to the EN original, and are excluded from the sitemap and hreflang.
 

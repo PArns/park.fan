@@ -209,7 +209,7 @@ neighbours did not have. One row, one look; what the surrounding list wants is t
 **The gap belongs to the same decision.** The grids that hold these cards were spaced for cards
 (`gap-4` to `gap-6`); at that distance a column of rows reads as a stack of separate blocks rather
 than one list. They go to `gap-2` below `sm` and keep their own spacing from `sm` up —
-`BlogPostGrid`, `BlogRelatedPosts`, the park/ride and glossary sections, and both halves of
+`BlogRelatedPosts`, the park/ride and glossary sections, and both halves of
 `LatestBlogSection`'s `lead`, whose two gaps have to agree or the lead post detaches from its list.
 
 **Two markups, not one responsive tree.** The panels' glass is a block of inline styles
@@ -219,7 +219,7 @@ cards' panels with it.
 
 **The hidden card must not preload a cover nobody sees.** Both photo layers claim `96px` for the
 phone segment of their `sizes` (`FEATURE_SIZES` / `CARD_SIZES`), which is what the row beside them
-actually paints. Left at `100vw`, a card marked `priority` — the first one in `BlogPostGrid` —
+actually paints. Left at `100vw`, a card marked `priority` — the first one in a grid —
 preloaded a full-width cover for a `display:none` element on exactly the connection that could
 least afford it. Matching the row's `sizes` also means both elements pick the same srcset
 candidate, i.e. one request, not two.

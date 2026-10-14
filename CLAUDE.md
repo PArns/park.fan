@@ -247,6 +247,10 @@ carries the reasoning, the measurements and the counter-examples.
 - **[A feed nobody links to is a file with a URL](docs/rules/a-feed-nobody-links-to-is-a-file-with-a-url.md)** — every route carries its own
   `blogFeedAlternates(locale)`, because Next replaces the whole `alternates` object at the nearest
   declaring segment instead of merging. A widget fence must never be rendered into the feed.
+- **[A listing page is a path with its own canonical](docs/rules/a-listing-page-is-a-path-with-its-own-canonical.md)** —
+  blog and news listings show `POSTS_PER_PAGE` (20) and link `<listing>/page/<n>` with plain `<a>`s
+  (`lib/blog/pagination.ts`, `ListingPagination`); never `?page=`, never scroll-only loading. A later
+  page is its own canonical, out of the sitemap. `pnpm test:listing-pagination`.
 - **[Umami event budget](docs/rules/umami-event-budget.md)** — every event property is billed as another event. Never send what Umami
   already has, never what a sibling property implies, and price load-fired events by their property
   count.
