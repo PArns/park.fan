@@ -228,6 +228,10 @@ const ANNOUNCES_POST = {
 const MEASURE_WORD =
   /\b(?:Uhr|Minuten?|Stunden?|Sekunden?|Euro|Meter|Jahre[ns]?|Tage[ns]?|Wochen?|Monate[ns]?|minutes?|hours?|seconds?|euros?|metres?|meters?|years?|days?|weeks?|months?|o['’]clock)\b/i;
 
+/** `Um zehn gehst du …` names a time of day, not a count. */
+const CLOCK_TIME =
+  /(?<!\p{L})(?:um|ab|bis|gegen|at|by|until|around)\s+(?:zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)(?!\p{L})/iu;
+
 const COUNT_WORD = {
   de: /(?<!\p{L})(?:zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf)(?!\p{L})/iu,
   en: /(?<!\p{L})(?:two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)(?!\p{L})/iu,
@@ -499,7 +503,13 @@ export const SLOP_RULES = [
     run({ bs, locale }) {
       return paragraphs(bs)
         .map((b) => firstSentence(b.text))
-        .filter((s) => wordCount(s) <= 7 && COUNT_WORD[locale].test(s) && !MEASURE_WORD.test(s));
+        .filter(
+          (s) =>
+            wordCount(s) <= 7 &&
+            COUNT_WORD[locale].test(s) &&
+            !MEASURE_WORD.test(s) &&
+            !CLOCK_TIME.test(s)
+        );
     },
   },
   {

@@ -330,6 +330,11 @@ no(
   )
 );
 
+no(
+  'count-announcement-opener',
+  lines('Um zehn gehst du in die Grèce. Dort ist es dann leer.', 'Um elf fährst du Tonnerre.')
+);
+
 // 14 data-caveat-close
 yes(
   'data-caveat-close',
