@@ -38,17 +38,17 @@ Pour les 35 ans du [Château de la Belle au Bois Dormant](ref:/parks/europe/fran
 
 ## Ce qui change sur le pont
 
-Les pavés de granit sont plus faciles à entretenir que l’ancien revêtement en béton imprimé. Les 2 735 pavés suivent la courbe du pont. Disneyland Paris compare leur pose à un puzzle.
+Les pavés de granit sont plus faciles à entretenir que l’ancien revêtement en béton imprimé. Les 2 735 pavés suivent la courbe du pont.
 
 Les balustres du garde-corps, en pierre calcaire de Champagny, ont été entièrement reconstruits puis imperméabilisés contre les éclaboussures des fontaines situées sous le pont. Les poteaux en bois de la balustrade sont neufs, et le pont-levis a reçu un nouveau platelage en bois exotique.
 
-Les équipes ont aussi refait la structure qui porte les éléments décoratifs, les arcs, les consoles et les écoinçons ornés entre les arcs. Ce qui ressemble à de la maçonnerie sur les parois latérales et sous les arcs est de la pierre artificielle : un mortier projeté sur une armature métallique, puis façonné à la main en blocs. Chaque pièce a ensuite été peinte à la main dans cinq teintes, avec des nuances claires et foncées, pour s’accorder aux pierres du château. Pour finir, le pont a été patiné, repeint et replanté.
+Les équipes ont aussi refait la structure qui porte les éléments décoratifs, les arcs, les consoles et les écoinçons ornés entre les arcs. Ce qui ressemble à de la maçonnerie sur les parois latérales et sous les arcs est de la pierre artificielle : un mortier projeté sur une armature métallique, puis façonné à la main en blocs. Les pièces sont peintes dans cinq teintes pour s’accorder aux pierres du château. En dernier sont venues la patine et une nouvelle peinture, et les massifs le long du pont ont été replantés.
 
 ## La rose des vents au centre
 
 En pierre naturelle incrustée de laiton, la rose des vents porte les couleurs des trois bonnes fées de « La Belle au bois dormant ». Les rayons bleus de Pimprenelle et les rouges de Flora partent dans des directions opposées. Disney y voit un rappel de la scène où les deux fées se disputent la couleur de la robe d’Aurore pendant qu’elle danse avec le prince Philippe. Un arc vert pour Pâquerette, qui tente de les réconcilier dans le film, relie les deux couleurs.
 
-Au centre, un médaillon en laiton porte la couronne d’Aurore, entourée d’épines. Une fleur de lys en laiton indique le nord. Elle rappelle les quatre lettres en laiton qui marquaient les points cardinaux sur le pont depuis l’ouverture du parc. Elles ont disparu lors d’une rénovation en 2010. Un artisan a façonné à la main toutes les pièces en laiton, chacune sur trois niveaux aux finitions différentes.
+Au centre, un médaillon en laiton porte la couronne d’Aurore, entourée d’épines. Une fleur de lys en laiton indique le nord. Elle rappelle les quatre lettres en laiton qui marquaient les points cardinaux sur le pont depuis l’ouverture du parc. Elles ont disparu lors d’une rénovation en 2010. Un artisan a façonné toutes les pièces en laiton, chacune sur trois niveaux aux finitions différentes.
 
 Depuis juin 2024, l’une des fenêtres du château fait déjà allusion à cette scène : le soir, elle change régulièrement de couleur.
 
@@ -71,15 +71,15 @@ Le château mesure environ 51 mètres, et ses tours sont coiffées de toits bleu
 
 ## La galerie et la tanière du dragon
 
-Un escalier mène au premier étage, où se trouve la [Galerie de la Belle au Bois Dormant](ref:/parks/europe/france/paris/disneyland-park/la-galerie-de-la-belle-au-bois-dormant). Le conte y est retracé par des livres richement décorés, des tapisseries d’Aubusson faites à la main et neuf vitraux. Ces vitraux sont l’œuvre de Paul Chapman, qui a aussi restauré des vitraux de Notre-Dame de Paris. Sur l’un d’eux, Aurore et Philippe s’embrassent.
+Un escalier mène au premier étage, où se trouve la [Galerie de la Belle au Bois Dormant](ref:/parks/europe/france/paris/disneyland-park/la-galerie-de-la-belle-au-bois-dormant). Des tapisseries d’Aubusson et neuf vitraux y montrent des scènes du conte, et des livres y sont exposés. Ces vitraux sont l’œuvre de Paul Chapman, qui a aussi restauré des vitraux de Notre-Dame de Paris. Sur l’un d’eux, Aurore et Philippe s’embrassent.
 
-Sous le château se cache [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon), un cachot sombre où un dragon vaincu est enchaîné aux rochers. De temps en temps, il se réveille, crache de la fumée et rugit.
+Sous le château se cache [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon), un cachot sombre où un dragon vaincu est enchaîné aux rochers. De temps en temps, il se réveille en rugissant et crache de la fumée.
 
 La galerie et la tanière sont restées ouvertes pendant les travaux, tout comme La Boutique du Château et la boutique Merlin l’Enchanteur.
 
 ## Autour du château cet automne
 
-Le château se dresse au bout de Main Street, U.S.A. Devant lui, Central Plaza dessert les quatre autres lands. Le château lui-même appartient à Fantasyland.
+Le château se dresse au bout de Main Street, U.S.A. Devant lui, Central Plaza dessert les quatre autres lands. Qui traverse le pont puis le château arrive dans Fantasyland.
 
 ```ride-waits-widget rides=/parks/europe/france/paris/disneyland-park/peter-pans-flight|Peter Pan's Flight;/parks/europe/france/paris/disneyland-park/blanche-neige-et-les-sept-nains|Blanche-Neige et les Sept Nains;/parks/europe/france/paris/disneyland-park/les-voyages-de-pinocchio|Les Voyages de Pinocchio;/parks/europe/france/paris/disneyland-park/le-carrousel-de-lancelot|Le Carrousel de Lancelot columns=peak,days
 
@@ -92,8 +92,6 @@ Le Festival Halloween Disney se poursuit jusqu’au 1er novembre, avec un décor
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
 ```
-
-Plus d’informations sur Premier Access et les attractions phares des deux parcs figurent dans notre [guide Disneyland Paris](/blog/disneyland-paris-temps-d-attente-conseils).
 
 Sources :
 [communiqué sur le pont du 12 octobre 2026](https://news.disneylandparis.com/en/sleeping-beauty-castle-bridge-refurbishment/),

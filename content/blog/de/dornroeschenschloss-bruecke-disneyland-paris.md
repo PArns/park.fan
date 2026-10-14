@@ -38,17 +38,17 @@ Zum 35. Jahrestag des [Dornröschenschlosses](ref:/parks/europe/france/paris/dis
 
 ## Was an der Brücke neu ist
 
-Das Granitpflaster lässt sich leichter pflegen als der alte Belag aus gestempeltem Beton. Die 2.735 Steine folgen der Bogenform der Brücke. Disneyland Paris vergleicht das Verlegen mit einem Puzzle.
+Das Granitpflaster lässt sich leichter pflegen als der alte Belag aus gestempeltem Beton. Die 2.735 Steine folgen der Bogenform der Brücke.
 
 Die Baluster der Brüstung aus Champagny-Kalkstein wurden komplett neu aufgebaut und gegen das Spritzwasser der Brunnen unter der Brücke imprägniert. Die Holzpfosten der Balustrade sind ersetzt, und die Zugbrücke hat einen neuen Belag aus Tropenholz bekommen.
 
-Neu gebaut wurden auch das Tragwerk, an dem die Zierteile sitzen, die Bögen, die Konsolen und die verzierten Zwickel zwischen den Bögen. Was an den Seitenwänden und unter den Bögen wie Mauerwerk aussieht, ist Kunststein. Er wurde als Paste auf ein Metallgerüst gespritzt und von Hand zu Steinen geformt. Danach wurde jedes Stück von Hand bemalt, in fünf Farbtönen mit hellen und dunklen Abstufungen, damit es zu den Steinen des Schlosses passt. Zum Schluss wurde die Brücke patiniert, neu gestrichen und bepflanzt.
+Neu gebaut wurden auch das Tragwerk, an dem die Zierteile sitzen, die Bögen, die Konsolen und die verzierten Zwickel zwischen den Bögen. Was an den Seitenwänden und unter den Bögen wie Mauerwerk aussieht, ist Kunststein. Er wurde als Paste auf ein Metallgerüst gespritzt und von Hand zu Steinen geformt. Die Stücke sind in fünf Farbtönen bemalt, damit sie zu den Steinen des Schlosses passen. Zuletzt bekam die Brücke eine Patina und neue Farbe, und die Beete an den Seiten sind neu bepflanzt.
 
 ## Die Kompassrose in der Mitte
 
 Die Kompassrose aus Naturstein mit Messingeinlagen trägt die Farben der drei guten Feen aus „Dornröschen“. Die blauen Strahlen von Merryweather und die roten von Flora laufen in entgegengesetzte Richtungen. Disney bezieht das auf die Szene, in der die beiden um die Farbe von Auroras Kleid streiten, während Aurora mit Prinz Philip tanzt. Ein grüner Bogen für Fauna, die im Film vermittelt, verbindet die beiden Farben.
 
-Im Zentrum sitzt ein Medaillon aus Messing mit Auroras Krone, umgeben von Dornen. Nach Norden weist eine Lilie aus Messing. Sie erinnert an vier Messingbuchstaben, die seit der Eröffnung des Parks die vier Himmelsrichtungen auf der Brücke markierten. Bei einer Renovierung 2010 wurden sie entfernt. Ein Kunsthandwerker hat alle Messingteile von Hand gefertigt, jedes in drei Ebenen mit unterschiedlicher Oberfläche.
+Im Zentrum sitzt ein Medaillon aus Messing mit Auroras Krone, umgeben von Dornen. Nach Norden weist eine Lilie aus Messing. Sie erinnert an vier Messingbuchstaben, die seit der Eröffnung des Parks die vier Himmelsrichtungen auf der Brücke markierten. Bei einer Renovierung 2010 wurden sie entfernt. Ein Kunsthandwerker hat alle Messingteile gefertigt, jedes in drei Ebenen mit unterschiedlicher Oberfläche.
 
 Auf dieselbe Filmszene spielt seit Juni 2024 eines der Schlossfenster an, das abends immer wieder die Farbe wechselt.
 
@@ -67,19 +67,19 @@ Vorgestellt wurde das Schloss am 12. Oktober 1991 beim Event „Rendez-Vous au C
 
 Seit Juni 2024 strahlen mehr als 200 neue LED-Scheinwerfer das Schloss rundherum an. Disney Tales of Magic, eine Show auf den Fassaden der Main Street und am Schloss, läuft seit 2025 abends.
 
-Das Schloss ist rund 51 Meter (167 Fuß) hoch und hat Türme mit königsblauen Dächern. Vorbild waren das Schloss aus dem Zeichentrickfilm „Dornröschen“ und echte französische Schlösser und Baudenkmäler.
+Das Schloss ist rund 51 Meter hoch, seine Türme haben königsblaue Dächer. Vorbild waren das Schloss aus dem Zeichentrickfilm „Dornröschen“ und echte französische Schlösser und Baudenkmäler.
 
 ## Galerie und Drachenhöhle
 
-Über Stufen geht es in den ersten Stock zur [Galerie de la Belle au Bois Dormant](ref:/parks/europe/france/paris/disneyland-park/la-galerie-de-la-belle-au-bois-dormant). Dort ist das Märchen in kunstvoll gestalteten Büchern, handgefertigten Aubusson-Wandteppichen und neun Buntglasfenstern nacherzählt. Die Fenster stammen von Paul Chapman, der auch Fenster von Notre-Dame de Paris restauriert hat. Auf einem küssen sich Aurora und Philip.
+Über Stufen geht es in den ersten Stock zur [Galerie de la Belle au Bois Dormant](ref:/parks/europe/france/paris/disneyland-park/la-galerie-de-la-belle-au-bois-dormant). Dort hängen Aubusson-Wandteppiche und neun Buntglasfenster mit Szenen aus dem Märchen, dazu liegen Bücher aus. Die Fenster stammen von Paul Chapman, der auch Fenster von Notre-Dame de Paris restauriert hat. Auf einem küssen sich Aurora und Philip.
 
-Unter dem Schloss liegt [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon), ein dunkles Verlies mit einem besiegten Drachen, der an Felsen gekettet ist. Ab und zu wacht er auf, stößt Rauch aus und brüllt.
+Unter dem Schloss liegt [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon), ein dunkles Verlies mit einem besiegten Drachen, der an Felsen gekettet ist. Ab und zu wacht er brüllend auf und stößt Rauch aus.
 
 Galerie und Drachenhöhle blieben während der Bauarbeiten offen, ebenso La Boutique du Château und die Boutique Merlin l’Enchanteur.
 
 ## Rund um das Schloss im Herbst
 
-Das Schloss steht am Ende der Main Street, U.S.A. Davor liegt Central Plaza, von dort gehen die Wege in die anderen vier Themenbereiche ab. Das Schloss selbst gehört zu Fantasyland.
+Das Schloss steht am Ende der Main Street, U.S.A. Davor liegt Central Plaza, von dort gehen die Wege in die anderen vier Themenbereiche ab. Wer über die Brücke und durch das Schloss geht, steht in Fantasyland.
 
 ```ride-waits-widget rides=/parks/europe/france/paris/disneyland-park/peter-pans-flight|Peter Pan's Flight;/parks/europe/france/paris/disneyland-park/blanche-neige-et-les-sept-nains|Blanche-Neige et les Sept Nains;/parks/europe/france/paris/disneyland-park/les-voyages-de-pinocchio|Les Voyages de Pinocchio;/parks/europe/france/paris/disneyland-park/le-carrousel-de-lancelot|Le Carrousel de Lancelot columns=peak,days
 
@@ -92,8 +92,6 @@ Vom 7. November 2026 bis zum 6. Januar 2027 folgt [Disney Enchanted Christmas](/
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
 ```
-
-Mehr zu Premier Access und den Headlinern beider Parks steht im [Guide zu Disneyland Paris](/blog/disneyland-paris-wartezeiten-tipps).
 
 Quellen:
 [Mitteilung zur Brücke vom 12. Oktober 2026](https://news.disneylandparis.com/en/sleeping-beauty-castle-bridge-refurbishment/),

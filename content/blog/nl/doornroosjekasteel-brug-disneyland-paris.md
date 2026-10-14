@@ -38,17 +38,17 @@ Voor de 35e verjaardag van het [Doornroosjekasteel](ref:/parks/europe/france/par
 
 ## Wat er aan de brug nieuw is
 
-De granieten keien zijn makkelijker te onderhouden dan het oude wegdek van gestempeld beton. De 2.735 stenen volgen de boog van de brug. Disneyland Paris vergelijkt het leggen ervan met een puzzel.
+De granieten keien zijn makkelijker te onderhouden dan het oude wegdek van gestempeld beton. De 2.735 stenen volgen de boog van de brug.
 
 De balusters van de borstwering, van kalksteen uit Champagny, zijn helemaal opnieuw opgebouwd en geïmpregneerd tegen het opspattende water van de fonteinen onder de brug. Ook de houten palen van de balustrade zijn vervangen, en de ophaalbrug kreeg een nieuw dek van tropisch hardhout.
 
-Verder is de draagconstructie waaraan de sierelementen vastzitten nieuw gebouwd, net als de bogen, de consoles en de versierde zwikken tussen de bogen. Wat aan de zijwanden en onder de bogen op metselwerk lijkt, is kunststeen. Daarvoor is specie op een metalen frame gespoten en met de hand tot stenen gevormd. Daarna is elk stuk met de hand beschilderd in vijf tinten, met lichte en donkere schakeringen, zodat het aansluit bij de stenen van het kasteel. Tot slot is de brug gepatineerd, opnieuw geverfd en beplant.
+Verder is de draagconstructie waaraan de sierelementen vastzitten nieuw gebouwd, net als de bogen, de consoles en de versierde zwikken tussen de bogen. Wat aan de zijwanden en onder de bogen op metselwerk lijkt, is kunststeen. Daarvoor is specie op een metalen frame gespoten en met de hand tot stenen gevormd. De stukken zijn in vijf tinten beschilderd, zodat ze aansluiten bij de stenen van het kasteel. Als laatste kreeg de brug een patina en nieuwe verf, en de perken langs de brug zijn opnieuw beplant.
 
 ## De windroos in het midden
 
 De windroos van natuursteen met inlegwerk van messing draagt de kleuren van de drie goede feeën uit “Doornroosje”. De blauwe stralen van Mooiweer en de rode van Flora wijzen elk een andere kant op. Disney verbindt dat met de scène waarin die twee ruziën over de kleur van Aurora’s jurk, terwijl Aurora met prins Filip danst. Een groene boog voor Fauna, die in de film bemiddelt, verbindt beide kleuren.
 
-In het hart zit een medaillon van messing met de kroon van Aurora, omringd door doornen. Een messing lelie wijst naar het noorden. Die herinnert aan vier messing letters die sinds de opening van het park de vier windstreken op de brug aangaven. Bij een renovatie in 2010 zijn ze weggehaald. Een ambachtsman heeft alle messing onderdelen met de hand gemaakt, elk in drie lagen met een verschillende afwerking.
+In het hart zit een medaillon van messing met de kroon van Aurora, omringd door doornen. Een messing lelie wijst naar het noorden. Die herinnert aan vier messing letters die sinds de opening van het park de vier windstreken op de brug aangaven. Bij een renovatie in 2010 zijn ze weggehaald. Een ambachtsman heeft alle messing onderdelen gemaakt, elk in drie lagen met een verschillende afwerking.
 
 Dezelfde filmscène zit sinds juni 2024 ook in een van de kasteelramen, dat ’s avonds steeds van kleur wisselt.
 
@@ -71,15 +71,15 @@ Het kasteel is ongeveer 51 meter hoog en heeft torens met koningsblauwe daken. A
 
 ## Galerie en drakenhol
 
-Via een trap kom je op de eerste verdieping in de [Galerie de la Belle au Bois Dormant](ref:/parks/europe/france/paris/disneyland-park/la-galerie-de-la-belle-au-bois-dormant). Daar wordt het sprookje naverteld in rijk vormgegeven boeken, handgemaakte wandtapijten uit Aubusson en negen glas-in-loodramen. Die ramen zijn van Paul Chapman, die ook ramen van de Notre-Dame in Parijs heeft gerestaureerd. Op een ervan kussen Aurora en Filip elkaar.
+Via een trap kom je op de eerste verdieping in de [Galerie de la Belle au Bois Dormant](ref:/parks/europe/france/paris/disneyland-park/la-galerie-de-la-belle-au-bois-dormant). Daar hangen wandtapijten uit Aubusson en negen glas-in-loodramen met scènes uit het sprookje, en er liggen boeken. Die ramen zijn van Paul Chapman, die ook ramen van de Notre-Dame in Parijs heeft gerestaureerd. Op een ervan kussen Aurora en Filip elkaar.
 
-Onder het kasteel ligt [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon), een donkere kerker met een verslagen draak die aan de rotsen vastgeketend ligt. Af en toe wordt hij wakker, blaast rook uit en brult.
+Onder het kasteel ligt [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon), een donkere kerker met een verslagen draak die aan de rotsen vastgeketend ligt. Af en toe wordt hij brullend wakker en blaast hij rook uit.
 
 De galerie en het drakenhol bleven tijdens de werkzaamheden open, net als La Boutique du Château en de Boutique Merlin l’Enchanteur.
 
 ## Rond het kasteel in de herfst
 
-Het kasteel staat aan het eind van Main Street, U.S.A. Ervoor ligt Central Plaza, waar de paden naar de andere vier themagebieden beginnen. Het kasteel zelf hoort bij Fantasyland.
+Het kasteel staat aan het eind van Main Street, U.S.A. Ervoor ligt Central Plaza, waar de paden naar de andere vier themagebieden beginnen. Wie over de brug en door het kasteel loopt, staat in Fantasyland.
 
 ```ride-waits-widget rides=/parks/europe/france/paris/disneyland-park/peter-pans-flight|Peter Pan's Flight;/parks/europe/france/paris/disneyland-park/blanche-neige-et-les-sept-nains|Blanche-Neige et les Sept Nains;/parks/europe/france/paris/disneyland-park/les-voyages-de-pinocchio|Les Voyages de Pinocchio;/parks/europe/france/paris/disneyland-park/le-carrousel-de-lancelot|Le Carrousel de Lancelot columns=peak,days
 
@@ -92,8 +92,6 @@ Van 7 november 2026 tot 6 januari 2027 volgt [Disney Enchanted Christmas](/blog/
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
 ```
-
-Meer over Premier Access en de headliners van beide parken staat in onze [gids voor Disneyland Paris](/blog/disneyland-paris-wachttijden-tips).
 
 Bronnen:
 [mededeling over de brug van 12 oktober 2026](https://news.disneylandparis.com/en/sleeping-beauty-castle-bridge-refurbishment/),

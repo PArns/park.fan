@@ -38,17 +38,17 @@ Con motivo del 35.º aniversario del [Castillo de la Bella Durmiente](ref:/parks
 
 ## Qué hay de nuevo en el puente
 
-Los adoquines de granito son más fáciles de mantener que el antiguo hormigón estampado. Las 2735 piezas siguen la curva del arco del puente. Disneyland Paris compara su colocación con montar un puzle.
+Los adoquines de granito son más fáciles de mantener que el antiguo hormigón estampado. Las 2735 piezas siguen la curva del arco del puente.
 
 Los balaustres del pretil, de piedra caliza de Champagny, se han rehecho por completo y han recibido un tratamiento impermeable contra las salpicaduras de las fuentes que hay debajo. Los postes de madera de la balaustrada son nuevos, y el puente levadizo ha estrenado un suelo de madera tropical.
 
-También se ha reconstruido la estructura que sostiene los elementos decorativos, igual que los arcos, las ménsulas y las enjutas ornamentadas que quedan entre ellos. Lo que en los muros laterales y bajo los arcos parece mampostería es piedra artificial. Se ha proyectado como pasta sobre un armazón metálico y se ha modelado a mano hasta darle forma de sillares. Después se ha pintado cada pieza a mano con cinco tonos, en matices claros y oscuros, para que encaje con la piedra del castillo. Por último, el puente se ha patinado, se ha vuelto a pintar y se ha plantado de nuevo.
+También se ha reconstruido la estructura que sostiene los elementos decorativos, igual que los arcos, las ménsulas y las enjutas ornamentadas que quedan entre ellos. Lo que en los muros laterales y bajo los arcos parece mampostería es piedra artificial. Se ha proyectado como pasta sobre un armazón metálico y se ha modelado a mano hasta darle forma de sillares. Las piezas están pintadas en cinco tonos para que encajen con la piedra del castillo. Lo último fueron la pátina y la pintura nueva, y los parterres a lo largo del puente se han vuelto a plantar.
 
 ## La rosa de los vientos
 
 La rosa de los vientos, de piedra natural con incrustaciones de latón, lleva los colores de las tres hadas buenas de «La bella durmiente». Los rayos azules de Primavera y los rojos de Flora apuntan en sentidos opuestos. Disney lo relaciona con la escena en la que las dos se pelean por el color del vestido de Aurora mientras ella baila con el príncipe Felipe. Un arco verde, el de Fauna, la pacificadora de la película, une los dos colores.
 
-En el centro hay un medallón de latón con la corona de Aurora rodeada de espinas. Hacia el norte apunta una flor de lis, también de latón. Recuerda las cuatro letras de latón que marcaban los puntos cardinales sobre el puente desde la apertura del parque. Se quitaron en una renovación de 2010. Un artesano ha hecho a mano todas las piezas de latón, cada una en tres niveles con acabados distintos.
+En el centro hay un medallón de latón con la corona de Aurora rodeada de espinas. Hacia el norte apunta una flor de lis, también de latón. Recuerda las cuatro letras de latón que marcaban los puntos cardinales sobre el puente desde la apertura del parque. Se quitaron en una renovación de 2010. Un artesano ha hecho todas las piezas de latón, cada una en tres niveles con acabados distintos.
 
 Desde junio de 2024, una de las ventanas del castillo alude a esa misma escena: por la noche cambia de color una y otra vez.
 
@@ -71,15 +71,15 @@ El castillo mide unos 51 metros, y sus torres tienen tejados azul real. Se inspi
 
 ## La galería y la guarida del dragón
 
-Unas escaleras suben al primer piso, donde está la [Galerie de la Belle au Bois Dormant](ref:/parks/europe/france/paris/disneyland-park/la-galerie-de-la-belle-au-bois-dormant). Allí se narra la historia con libros muy trabajados, tapices de Aubusson hechos a mano y nueve vidrieras de Paul Chapman, que también ha restaurado vidrieras de Notre-Dame de París. En una de ellas, Aurora y Felipe se besan.
+Unas escaleras suben al primer piso, donde está la [Galerie de la Belle au Bois Dormant](ref:/parks/europe/france/paris/disneyland-park/la-galerie-de-la-belle-au-bois-dormant). Allí cuelgan tapices de Aubusson y nueve vidrieras con escenas del cuento, y hay libros expuestos. Las vidrieras son de Paul Chapman, que también ha restaurado vidrieras de Notre-Dame de París. En una de ellas, Aurora y Felipe se besan.
 
-Bajo el castillo está [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon), una mazmorra oscura con un dragón vencido y encadenado a las rocas. De vez en cuando se despierta, echa humo y ruge.
+Bajo el castillo está [La Tanière du Dragon](ref:/parks/europe/france/paris/disneyland-park/la-taniere-du-dragon), una mazmorra oscura con un dragón vencido y encadenado a las rocas. De vez en cuando se despierta rugiendo y echa humo.
 
 La galería y la guarida del dragón siguieron abiertas durante las obras, igual que La Boutique du Château y la tienda Merlin l’Enchanteur.
 
 ## Alrededor del castillo en otoño
 
-El castillo cierra Main Street, U.S.A. Delante queda Central Plaza, de donde salen los caminos hacia las otras cuatro zonas temáticas. El propio castillo pertenece a Fantasyland.
+El castillo cierra Main Street, U.S.A. Delante queda Central Plaza, de donde salen los caminos hacia las otras cuatro zonas temáticas. Quien cruza el puente y atraviesa el castillo llega a Fantasyland.
 
 ```ride-waits-widget rides=/parks/europe/france/paris/disneyland-park/peter-pans-flight|Peter Pan's Flight;/parks/europe/france/paris/disneyland-park/blanche-neige-et-les-sept-nains|Blanche-Neige et les Sept Nains;/parks/europe/france/paris/disneyland-park/les-voyages-de-pinocchio|Les Voyages de Pinocchio;/parks/europe/france/paris/disneyland-park/le-carrousel-de-lancelot|Le Carrousel de Lancelot columns=peak,days
 
@@ -92,8 +92,6 @@ Del 7 de noviembre de 2026 al 6 de enero de 2027 llega [Disney Enchanted Christm
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
 ```
-
-Más detalles sobre el Premier Access y las atracciones principales de los dos parques están en nuestra [guía de Disneyland Paris](/blog/disneyland-paris-tiempos-de-espera-consejos).
 
 Fuentes:
 [Comunicado sobre el puente del 12 de octubre de 2026](https://news.disneylandparis.com/en/sleeping-beauty-castle-bridge-refurbishment/),
