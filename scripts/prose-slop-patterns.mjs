@@ -125,6 +125,13 @@ const firstSentence = (text) => splitSentences(text)[0] ?? '';
 const wordCount = (s) => s.trim().split(/\s+/).filter(Boolean).length;
 const paragraphs = (bs) => bs.filter((b) => b.kind === 'para');
 
+/*
+ * The word for "and" in each locale. One shared list read the Spanish and French `en` ("in") as
+ * the Dutch "and", so `Altura mínima y acompañante en las atracciones` counted as three items. A
+ * decimal comma (`5,2 g`) separates nothing.
+ */
+const HEADING_AND = { de: 'und', en: 'and', nl: 'en', fr: 'et', es: 'y|e', it: 'e|ed' };
+
 /* ------------------------------------------------------------------ the rules */
 
 /** Sentence-level wordlists. German and English first; a language that is missing is not covered. */
@@ -338,13 +345,15 @@ export const SLOP_RULES = [
     section: '§2.20 #2',
     locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
     min: 3,
-    run({ bs }) {
+    run({ bs, locale }) {
+      const and = HEADING_AND[locale];
+      const split = new RegExp(`(?<!\\d),(?!\\d)\\s*(?:(?:${and})\\s+)?|\\s+(?:${and})\\s+`);
       return headings(bs)
         .map((h) => h.text)
         .filter((text) => {
           if (/[?!.]$/.test(text)) return false;
           const rest = text.replace(/^[^:,]{2,30}:\s+/, '');
-          const items = rest.split(/,\s*(?:(?:und|and|en|et|y|e)\s+)?|\s+(?:und|and|en|et|y|e)\s+/);
+          const items = rest.split(split);
           return items.length >= 3 && items.every((i) => i.trim() && wordCount(i) <= 4);
         });
     },

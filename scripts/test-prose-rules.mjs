@@ -78,6 +78,25 @@ yes(
 no('heading-triple', lines('## Express Pass: Pakete, Preise, Zeitfenster', '## Wann du fährst'));
 no('heading-triple', lines('## Preise und Zeitfenster', '## Die App', '## Anreise mit der Bahn'));
 
+no(
+  'heading-triple',
+  lines(
+    '## Altura mínima y acompañante en las atracciones',
+    '## Qué hay en cada zona temática',
+    '## Cierres y novedades en los Studios'
+  ),
+  'es'
+);
+no(
+  'heading-triple',
+  lines(
+    '## Speed of Sound, 5,2 g dall’anno 2000',
+    '## Goliath, 46 m e 106 km/h',
+    '## Untamed, 2019'
+  ),
+  'it'
+);
+
 // 3 name-colon-subheading
 yes(
   'name-colon-subheading',
