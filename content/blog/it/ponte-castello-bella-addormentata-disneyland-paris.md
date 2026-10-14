@@ -2,7 +2,7 @@
 title: 'Riaprirà il ponte del castello della Bella Addormentata'
 translationKey: dornroeschenschloss-bruecke-disneyland-paris
 date: '2026-10-14'
-time: '00:00'
+time: '07:09'
 author: patrick
 mode: published
 featured: false
