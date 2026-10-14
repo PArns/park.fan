@@ -63,7 +63,7 @@ Auf dieselbe Filmszene spielt seit Juni 2024 eines der Schlossfenster an, das ab
 
 Vorgestellt wurde das Schloss am 12. Oktober 1991, ein halbes Jahr vor dem Park, beim Event „Rendez-Vous au Château“ vor Presse, Cast Members und deren Familien. Disneyland Paris öffnete am 12. April 1992. Zum fünften Geburtstag des Resorts 1997 trug das Schloss ein Karnevalsdekor zum „Glöckner von Notre Dame“.
 
-Die erste große Renovierung des Schlosses seit 1992 lief 2021. Neun französische Firmen arbeiteten daran, unter anderem Zimmerer, Dachdecker, Maler und Metallbauer. Dachstuhl und Dach übernahm Le Bras Frères, ein Betrieb, der sonst historische Monumente instand setzt. Adrien Beaugendre, Dachdecker bei Le Bras Frères und 2015 für seine Dacharbeiten mit dem Preis „Best Craftsman in France“ ausgezeichnet, sagte dazu in einem Beitrag des Parks, Dachstuhl und Schiefer würden genau so gemacht wie an einem echten französischen Schloss.
+Die erste große Renovierung des ganzen Schlosses seit 1992 lief 2021. Neun französische Firmen arbeiteten daran, unter anderem Zimmerer, Dachdecker, Maler und Metallbauer. Dachstuhl und Dach übernahm Le Bras Frères, ein Betrieb, der sonst historische Monumente instand setzt. Adrien Beaugendre, Dachdecker bei Le Bras Frères und 2015 für seine Dacharbeiten mit dem Preis „Best Craftsman in France“ ausgezeichnet, sagte dazu in einem Beitrag des Parks, Dachstuhl und Schiefer würden genau so gemacht wie an einem echten französischen Schloss.
 
 Seit Juni 2024 strahlen mehr als 200 neue LED-Scheinwerfer das Schloss rundherum an. Disney Tales of Magic, eine Show auf den Fassaden der Main Street und am Schloss, läuft seit 2025 abends. Am 14. Oktober beginnt sie laut Parkkalender um 22 Uhr.
 
@@ -79,7 +79,7 @@ Galerie und Drachenhöhle blieben während der Bauarbeiten offen, ebenso La Bout
 
 ## Rund um das Schloss im Herbst
 
-Das Schloss steht am Ende der Main Street, U.S.A. Davor liegt Central Plaza, von dort gehen die Wege in die fünf Themenbereiche ab. Das Schloss selbst gehört zu Fantasyland, wo unter anderem Peter Pan's Flight, Blanche-Neige et les Sept Nains, Les Voyages de Pinocchio und Le Carrousel de Lancelot fahren.
+Das Schloss steht am Ende der Main Street, U.S.A. Davor liegt Central Plaza, von dort gehen die Wege in die anderen vier Themenbereiche ab. Das Schloss selbst gehört zu Fantasyland, wo unter anderem Peter Pan's Flight, Blanche-Neige et les Sept Nains, Les Voyages de Pinocchio und Le Carrousel de Lancelot fahren.
 
 ```ride-waits-widget rides=/parks/europe/france/paris/disneyland-park/peter-pans-flight|Peter Pan's Flight;/parks/europe/france/paris/disneyland-park/blanche-neige-et-les-sept-nains|Blanche-Neige et les Sept Nains;/parks/europe/france/paris/disneyland-park/les-voyages-de-pinocchio|Les Voyages de Pinocchio;/parks/europe/france/paris/disneyland-park/le-carrousel-de-lancelot|Le Carrousel de Lancelot columns=peak,days
 
@@ -87,7 +87,7 @@ Das Schloss steht am Ende der Main Street, U.S.A. Davor liegt Central Plaza, von
 
 Bis zum 1. November läuft noch das Disney Halloween Festival, dessen Dekoration von der Main Street bis an den Fuß des Schlosses reicht. An der Royal Castle Stage ranken sich Dornen, Raben und Wappen der Disney-Schurken um die Tore, und am Fuß des Schlosses ist eine Ruine als Fotokulisse aufgebaut. Das Théâtre du Château seitlich des Schlosses ist ebenfalls als Spukruine dekoriert. Am 31. Oktober gibt es ein Sonderprogramm bis 23 Uhr mit eigenem Feuerwerk, und nur an diesem Tag im Jahr dürfen Gäste kostümiert in den Park.
 
-Vom 7. November 2026 bis zum 6. Januar 2027 folgt Disney Enchanted Christmas, mit geschmückter Main Street und einem 24 Meter hohen Weihnachtsbaum. Ab dem 14. November treten Minnie und Mrs. Claus an der Castle Stage auf. An Silvester geht um Mitternacht ein Feuerwerk über dem Dornröschenschloss hoch. Wie voll es zwischen den Jahren in Paris war, haben wir für [Weihnachten und Silvester in Orlando und Paris](/blog/weihnachten-silvester-orlando-paris-2026) ausgewertet.
+Vom 7. November 2026 bis zum 6. Januar 2027 folgt Disney Enchanted Christmas, mit geschmückter Main Street und einem 24 Meter hohen Weihnachtsbaum. Ab dem 14. November treten Minnie und Mrs. Claus an der Royal Castle Stage auf. An Silvester geht um Mitternacht ein Feuerwerk über dem Dornröschenschloss hoch. Wie voll es zwischen den Jahren in Paris war, haben wir für [Weihnachten und Silvester in Orlando und Paris](/blog/weihnachten-silvester-orlando-paris-2026) ausgewertet.
 
 Geschlossen für Renovierungen sind am 14. Oktober laut Parkkalender Buzz Lightyear Laser Blast, Pirates' Beach, die Pirate Galleon, der Frontierland Playground und die Bahnhöfe Frontierland Depot und Discoveryland Station der Disneyland Railroad. Das Plaza Gardens Restaurant an der Main Street ist seit April 2026 für einen Umbau zu, der bis Anfang 2027 dauern soll.
 
