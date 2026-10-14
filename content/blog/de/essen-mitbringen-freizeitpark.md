@@ -2,6 +2,7 @@
 title: 'Essen mitbringen im Freizeitpark: was die Parks erlauben'
 translationKey: bring-own-food-theme-parks
 date: '2026-10-09'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -108,6 +109,8 @@ Themenbereich Deutschland, neben dem Wodan Timburcoaster.
 
 In der Wasserwelt Rulantica ist mitgebrachtes Essen dagegen verboten.
 
+In der Europa-Park & Rulantica App bestellst du Essen und Getränke vor, bezahlst gleich dort und holst die Bestellung zur gewählten Zeit ab. Das geht in den Imbissen CMAK Russian Food & Burger und Moby Dick.
+
 ### Phantasialand
 
 Das [Phantasialand](ref:phantasialand) kontrolliert am Eingang Taschen, mit Detektoren und stichprobenartig. Auf seiner
@@ -115,6 +118,10 @@ Liste der verbotenen Gegenstände stehen Messer und Scheren, Reizgas, Pyrotechni
 und Segways. Dazu kommt Alkohol in jeder Verpackung, also auch ein verschlossenes Bier.
 
 Essen, Trinkflaschen, Kühlboxen und Glas kommen auf der Liste nicht vor.
+
+Im Restaurant Uhrwerk in Rookburgh kostet der Hähnchen-Burger The Navigator mit Pommes frites 26,00 €, eine Coca-Cola mit 0,2 Litern 3,30 €. Den Kinderburger für 14,00 € gibt es dort nur zusammen mit einem Gericht für Erwachsene. In Rutmor's Taverne kostet das Vesperbrett für eine Person 21,50 €.
+
+Neben dem Gästeservice am Kaiserplatz in Berlin liegt ein Stillraum, und die Mitarbeiter helfen beim Aufwärmen von Babynahrung.
 
 ### Heide Park
 
@@ -125,6 +132,8 @@ dem ganzen Gelände verboten.
 Wer eine starke Unverträglichkeit wie Zöliakie hat, dem rät der Park zu eigenem Essen. Die Küchen im Park können
 eine Kreuzkontamination nicht ganz ausschließen, und Sonderwünsche erfüllen sie nicht.
 
+Babynahrung wärmen die Mitarbeiter kostenlos auf, im Biergarten Rafting, bei Wild Wild Waffel, bei Mucho Pollo und an Frau Mümmels Kiosk. Vegetarische Gerichte gibt es laut Park in fast allen Restaurants, einen veganen Hot Dog bei Hot Dog Freestyle und einen pflanzlichen Burger im Piratenburger.
+
 ### Hansa-Park
 
 Die Parkordnung des [Hansa-Park](ref:hansa-park) verbietet Grillen, Grill- und Kochgeräte, Alkohol und Drogen. Zu mitgebrachtem Essen sagt sie nichts. Glasflaschen zählt die Parkordnung zu den gefährlichen Gegenständen, neben Messern
@@ -133,11 +142,15 @@ und Laserpointern.
 In den Attraktionen und in den Indoorshows ist Essen und Trinken untersagt. Das gilt für jeden Gast, auch für Essen, das
 im Park gekauft wurde.
 
+Picknickplätze liegen im Wikingerland neben der Viking Odin und zwischen Elins Luftreise und der Wikinger-Bootsfahrt, außerdem neben den Skandinaviske Hytter gegenüber dem Pow Wow, am Peterhof-Bahnhof in Hörweite der Bärenkapelle und in Roanoke. Die Skandinaviske Hytter selbst, Hütten direkt neben dem Schwur des Kärnan, bietet der Park ebenfalls zum Rasten an.
+
 ### Legoland Deutschland
 
 Die Park- und Geschäftsordnung von [Legoland Deutschland](ref:legoland-deutschland) gehört zu den AGB auf legoland.de.
 Sie verbietet offenes Feuer und Grills auf dem ganzen Gelände des Resorts und in den Unterkünften eigene Kochgeräte. Zu
 Essen, Getränken, Glas oder Kühltaschen im Park steht darin nichts.
+
+Zum Essen gibt es eine Picknickwiese mit Ruhebänken, Nummer 45 auf dem Parkplan. Dort liegt auch die Erste-Hilfe-Station, zwischen Aussichtsturm und Drachenjagd. An den mobilen Verkaufsständen zahlst du nur bar, in den Restaurants auch mit Karte. Baby- und Kleinkindnahrung verkauft der Baby Service im Park.
 
 ### Movie Park Germany
 
@@ -148,6 +161,10 @@ Beim Halloween Horror Festival gelten eigene Regeln. Laut den FAQ des Festivals 
 Glasflaschen verboten, ebenso Deo als Spray, während Roller und Stift erlaubt sind. Vor dem Einlass werden Personen und
 Taschen kontrolliert.
 
+An den Coca-Cola-Freestyle-Stationen füllst du einen gekauften Becher selbst. Einlösen kannst du ihn bei Studio Sip, der Drink Station im Hollywood Street Set. In einigen Restaurants zahlst du nur mit Karte.
+
+Essen und Babynahrung wärmt die Crew bei Hollywood Snack, in der Bakery, bei Subway und an der Langnese Happiness Station auf, in der Trattoria Hollywood nur mit Reservierung.
+
 ### Plopsaland Deutschland
 
 Im [Plopsaland Deutschland](ref:plopsaland-deutschland) ist das Picknick nur an den Plätzen erlaubt, die der Park dafür
@@ -156,6 +173,10 @@ ist, steht nicht darin.
 
 Auf dem übrigen Gelände und auf den Parkplätzen sind Grillen, Picknick und Camping verboten. In Attraktionen und
 Warteschlangen darfst du nicht essen und trinken, und Alkohol darfst du nicht mitbringen.
+
+Laut den FAQ des Parks darfst du eigene Verpflegung in kleinen Mengen außerhalb der Restaurants essen, zum Beispiel auf einer Parkbank, aber nicht in den Restaurants und nicht in deren Außenbereichen. Ausgenommen sind Babynahrung und der Geburtstagskuchen beim gebuchten Kindergeburtstag. Mikrowellen für Babynahrung stehen in den Restaurants Pfalzgraf und Maja-Burger und im Plopsa Indoor.
+
+Um etwas aus dem Auto zu holen, darfst du den Park kurz verlassen und kommst mit einem Stempel auf der Hand am selben Tag wieder hinein.
 
 ## Niederlande
 
@@ -166,6 +187,10 @@ drinken“, dass du eigenes Essen und Trinken mitbringen darfst. Dasselbe steht 
 
 Ist es voll, bittet der Park, das Mitgebrachte an einem der Picknickplätze zu essen statt in den Restaurants oder auf deren Terrassen.
 
+Deine Trinkflasche füllst du kostenlos an Wasserstellen im Park auf, etwa in der Warteschlange von Symbolica oder bei der Ganzenhoedster auf dem Anton-Pieck-Plein. Weitere Zapfstellen gibt es an den Toiletten Kleine Boodschap und ’t Gemack und nahe Fata Morgana, und auch das Wasser aus den Hähnen der Toilettengebäude ist Trinkwasser.
+
+Als schattigen Platz zum Picknicken nennt der Park einen schmalen Pfad neben dem Spookslot. Wer zwischendurch etwas aus der Garderobe am Parkplatz holen will, lässt sich beim Hinausgehen einen Stempel geben.
+
 ### Toverland
 
 Das [Toverland](ref:attractiepark-toverland) erlaubt eigenes Essen und stellt zwei Mikrowellen bereit, die du kostenlos
@@ -173,10 +198,14 @@ nutzen kannst, an der Waldstube und an der Katara Plaza. Der Park nennt sie auch
 
 Das Parkreglement liegt am Eingang aus und steht auf der Website als Download.
 
+Getränke bekommst du in Mehrwegbechern mit 1,50 € Pfand. Becher, Flaschen und Dosen gibst du an Pfandautomaten zurück, die an vier Stellen im Park stehen.
+
 ### Walibi Holland
 
 [Walibi Holland](ref:walibi-holland) erlaubt eigenes Essen und Trinken ausdrücklich und weist im Park Picknickplätze aus.
 Glas und Alkohol darfst du laut Parkregeln nicht mitbringen. Abseits der Wege und der Picknickplätze sind die Flächen gesperrt.
+
+Mikrowellen zum Aufwärmen von Fläschchen und Essen stehen in mehreren Restaurants.
 
 ## Belgien
 
@@ -188,6 +217,8 @@ Parkreglement. Große Pakete mit Essen und Getränken brauchen die Zustimmung de
 Mit Essen oder Getränken darfst du nicht in Attraktionen und Shops. Auf dem Parkplatz sind Campen, Grillen und
 Picknicken verboten.
 
+Getränke gibt es in Mehrwegbechern mit 2 € Pfand, das du bei der Rückgabe zurückbekommst. Du darfst die Becher auch behalten.
+
 ### Walibi Belgium
 
 Bei [Walibi Belgium](ref:walibi-belgium) hat das Picknick einen eigenen Artikel in den Parkregeln. Erlaubt ist es in den
@@ -195,6 +226,8 @@ Bereichen, die der Parkplan dafür zeigt, verboten in den Restaurants und auf de
 
 Alkohol ist im Park verboten. Taschen, Boxen und Behälter dürfen höchstens 55 cm breit, 40 cm lang und 20 cm tief sein,
 und in dieses Maß muss auch eine Kühlbox passen. In Attraktionen und Warteschlangen ist Essen und Trinken verboten.
+
+In den Restaurants stehen Mikrowellen, an denen du Fläschchen und Babynahrung selbst aufwärmst.
 
 ## Frankreich
 
@@ -206,21 +239,47 @@ ausdrücklich Kocher, Grill und Kühlbox.
 
 In Attraktionen darfst du aus Sicherheitsgründen nicht essen und trinken, in den Warteschlangen aus Gründen der Hygiene.
 
+Wer den Park für kurze Zeit verlassen will, meldet sich vorher an der Ausgangskontrolle und bekommt einen Stempel auf den Arm. Ohne ihn kommst du an diesem Tag nicht mehr hinein.
+
 ### Disneyland Paris
 
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) erlaubt eigenes Essen.
-Mahlzeiten, für die du eine Kühlbox, einen Tisch oder sperrige Behälter brauchst, sind im Disneyland Park und im Walt
-Disney Studios Park verboten. Für ein solches Picknick gibt es einen Picknickbereich zwischen Parkplatz und Eingang.
+Mahlzeiten, für die du eine Kühlbox, einen Tisch oder sperrige Behälter brauchst, sind im Disneyland Park und in Disney Adventure World verboten. Für ein solches Picknick gibt es einen Picknickbereich zwischen Parkplatz und Eingang.
 
 Glasflaschen und Alkohol stehen auf der Liste der Gegenstände, die draußen bleiben. An den Außentischen der Restaurants
 darfst du dich setzen, Vorrang haben aber Gäste, die dort gekauft haben. In Attraktionen, Theatern und Warteschlangen
 bittet der Park darum, nicht zu essen und zu trinken.
+
+Disney Adventure World hieß bis zum 29. März 2026 Walt Disney Studios Park.
 
 ### Futuroscope
 
 Im [Futuroscope](ref:futuroscope) darfst du laut FAQ auf allen Rasenflächen picknicken.
 
 Harte Kühlboxen sind verboten, sperrige Taschen sollen draußen bleiben, und am Eingang werden Taschen kontrolliert. Weil du den Park im Lauf des Tages verlassen und wieder betreten darfst, kann die Kühlbox im Auto bleiben.
+
+Essen und Getränke kommen in den Restaurants auf Mehrweggeschirr. Jedes Restaurant hat ein Kindermenü und vegetarische und glutenfreie Gerichte. Essensgutscheine wie Ticket Restaurant oder Chèque déjeuner nimmt das Futuroscope nicht an.
+
+## Schließfächer in den Parks
+
+Stand 14. Oktober 2026:
+
+| Park                   | Wo                                                                                        | Preis                                                                 |
+| ---------------------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Europa-Park            | Haupteingang                                                                              | klein 1 €, groß 4 €, jede weitere Öffnung 1 €                         |
+| Phantasialand          | Berlin am Pferdekarussell, Mexico am Ausgang von Colorado Adventure                       | 5 € für den Tag, Armband mit Code am Gästeservice                     |
+| Heide Park             | hinter dem Service Center und vor dem Colossos Shop                                       | XL 5 €, XXL 7 € pro Tag, nur mit Karte                                |
+| Hansa-Park             | Untergeschoss des Service-Centers                                                         | L 3 €, XL 5 € pro Besuchstag                                          |
+| Legoland Deutschland   | Eingangsbereich und Eingang zum Feriendorf im Land der Pharaonen                          | 5 € oder 7 € je nach Größe                                            |
+| Movie Park Germany     | neben dem Visitor Welcome Center, bei Andrang in der Bank am Ende des Hollywood Boulevard | klein 5 €, groß 8 € pro Tag, nur mit Karte, Apple Pay oder Google Pay |
+| Plopsaland Deutschland | nennt der Park nicht                                                                      | klein 5 €, groß 7 €                                                   |
+| Efteling               | Garderobe am Parkplatz                                                                    | 1,50 € pro Stück                                                      |
+| Toverland              | Port Laguna und Land van Toos                                                             | 2 €, beliebig oft zu öffnen                                           |
+| Walibi Holland         | Sunset Souvenirs                                                                          | mittel 5 €, groß 7 € pro Tag                                          |
+| Bobbejaanland          | Bobbejaan Schoepenplein                                                                   | nur mit Bankkarte, Preis nennt der Park nicht                         |
+| Walibi Belgium         | Eingang                                                                                   | 5 € bis 8 €                                                           |
+
+Der Movie Park setzt seine Fächer erst am nächsten Morgen vor der Öffnung zurück, deine Sachen können also über Parkschluss hinaus darin bleiben.
 
 ## Die Wasserwelten
 
@@ -295,6 +354,14 @@ und bei Walibi Belgium ist das Grillen auch auf dem Parkplatz verboten.
 In der Hausordnung, die je nach Park Parkordnung, Parkreglement, Park Rules oder Règlement intérieur heißt, und oft auch
 in den FAQ auf der Website des Parks.
 
+### Wo kann man im Freizeitpark Babynahrung aufwärmen?
+
+An Mikrowellen im Toverland, im Plopsaland Deutschland, bei Walibi Holland und bei Walibi Belgium, im Toverland kostenlos. Im Heide Park, im Movie Park und im Phantasialand wärmen die Mitarbeiter sie auf, im Heide Park ebenfalls kostenlos.
+
+### Was kosten Schließfächer im Freizeitpark?
+
+Zwischen 1 € für ein kleines Fach im Europa-Park und 8 € für ein großes Fach im Movie Park Germany. Häufig kostet ein kleines Fach 5 € und ein großes 7 €. Stand: Oktober 2026.
+
 ## Quellen
 
 - Europa-Park, Park Rules: [europapark.de](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations)
@@ -323,3 +390,27 @@ in den FAQ auf der Website des Parks.
 - Disneyland Paris, Theme Parks Rules: [disneylandparis.com](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules)
 - Futuroscope, FAQ Restauration: [futuroscope.com](https://www.futuroscope.com/en/practical-information/faq/category-3)
 - Futuroscope, Règlement de l'Aquascope vom 24. Dezember 2025: [collectivites.futuroscope.com](https://collectivites.futuroscope.com/sites/default/files/inline-files/Reglement_Aquascope_24-12-25.pdf)
+- Phantasialand, Information and arrival: [phantasialand.de](https://www.phantasialand.de/en/theme-park/information-and-arrival/)
+- Phantasialand, Speisekarte Restaurant Uhrwerk: [phantasialand.de](https://www.phantasialand.de/files/uploads/kulinarik/documents/speisekarten/speisekarte-restaurant-uhrwerk-mittagsbote-de.pdf)
+- Phantasialand, Speisekarte Rutmor's Taverne: [phantasialand.de](https://www.phantasialand.de/files/uploads/kulinarik/documents/speisekarten/speisekarte-rutmors.pdf)
+- Heide Park, Wo kann ich meine Wertsachen aufbewahren: [support.heide-park.de](https://support.heide-park.de/hc/de/articles/360011020217-Wo-kann-ich-meine-Wertsachen-aufbewahren)
+- Heide Park, Wo kann ich Babynahrung aufwärmen: [support.heide-park.de](https://support.heide-park.de/hc/de/articles/360011121298-Wo-kann-ich-Babynahrung-aufw%C3%A4rmen)
+- Heide Park, Vegetarische und vegane Gerichte: [support.heide-park.de](https://support.heide-park.de/hc/de/articles/360011121218-Bietet-Ihr-auch-vegetarische-vegane-Gerichte-in-den-Restaurants-an)
+- Hansa-Park, Picknickplätze: [hansapark.de](https://www.hansapark.de/picknickplaetze/)
+- Hansa-Park, Picknick & Chill-Out: [hansapark.de](https://www.hansapark.de/picknick-chill-out/?language=de)
+- Hansa-Park, Servicestationen: [hansapark.de](https://www.hansapark.de/servicestationen/?language=de)
+- Legoland Deutschland, FAQ: [legoland.de](https://www.legoland.de/faq/)
+- Movie Park Germany, Coca-Cola Freestyle: [movieparkgermany.de](https://www.movieparkgermany.de/besuch-planen/studio-gastronomie/coca-cola-freestyle)
+- Movie Park Germany, Restaurants und Snackangebote: [movieparkgermany.de](https://www.movieparkgermany.de/besuch-planen/studio-gastronomie/restaurants-und-snackangebote)
+- Movie Park Germany, Services: [movieparkgermany.de](https://www.movieparkgermany.de/entdecke-den-park/services)
+- Plopsaland Deutschland, Darf ich Essen & Trinken mit in den Park nehmen: [plopsa.com](https://www.plopsa.com/de/plopsaland-deutschland/node/6852)
+- Plopsaland Deutschland, Wo kann ich Babynahrung aufwärmen: [plopsa.com](https://www.plopsa.com/de/plopsaland-deutschland/node/7080)
+- Plopsaland Deutschland, Kann ich ein Schließfach mieten: [plopsa.com](https://www.plopsa.com/de/plopsaland-deutschland/node/6882)
+- Plopsaland Deutschland, Park verlassen und erneut betreten: [plopsa.com](https://www.plopsa.com/de/plopsaland-deutschland/haufig-gestellte-fragen/kann-ich-den-park-waehrend-meines-besuchs-verlassen-und-erneut-betreten)
+- Efteling, Bespaartips (Wasserstellen, Picknick): [efteling.com](https://www.efteling.com/nl/blog/tips/20200727-bespaar-tips-voor-dagje-efteling)
+- Efteling, Servicegebouw (Garderobe): [efteling.com](https://www.efteling.com/nl/blog/nieuws/20220808-servicegebouw-garderobe-verhuur-geopend)
+- Efteling, Cloakroom: [efteling.com](https://www.efteling.com/en/park/information/cloakroom)
+- Bobbejaanland, Diensten & voorzieningen: [bobbejaanland.be](https://www.bobbejaanland.be/het-park/diensten)
+- Bobbejaanland, Informatie personen met een beperking (Lockers): [bobbejaanland.be](https://www.bobbejaanland.be/plan-je-bezoek/informatie-personen-beperking)
+- Walibi Belgium, FAQ: [walibi.be](https://www.walibi.be/en/faq)
+- Wikipedia, Disney Adventure World: [en.wikipedia.org](https://en.wikipedia.org/wiki/Disney_Adventure_World)

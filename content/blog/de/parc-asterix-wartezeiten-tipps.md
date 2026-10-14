@@ -86,8 +86,6 @@ pro Stunde, OzIris 1.600. Für Cétautomatix kam das Fachportal Androland vor de
 Eröffnung auf rund 700, mit neun Wagen zu vier Plätzen und einer Abfahrt alle 20
 Sekunden. Bei Cétautomatix und Pégase Express stellt sich die ganze Familie an, weil Kinder mit Begleitung ab 100 Zentimetern mitdürfen, bei Toutatis erst ab 130.
 
-Die Tabelle vergleicht den Parc Astérix mit dem Disneyland Park, mit Walibi Belgium, das demselben Konzern gehört, und mit dem Europa-Park.
-
 ```park-comparison-widget slugs=parc-asterix,/parks/europe/france/paris/disneyland-park,walibi-belgium,europa-park show=quietest highlight=parc-asterix
 
 ```
@@ -140,14 +138,11 @@ Am 2. Dezember 2025 hat die Compagnie des Alpes angekündigt, aus Belantis bei
 Leipzig bis 2030 oder 2031 den ersten Parc Astérix außerhalb Frankreichs zu
 machen. Gekauft hat sie den Park im April 2025 von Parques Reunidos. Konzernchef François Fassier nannte das nach
 franceinfo ein „sehr komplexes und sehr ambitioniertes Projekt“, gedacht nur für
-den deutschen Markt. Wie es zu dem Verkauf kam, steht in unserer
-[Meldung zu Parques Reunidos](/blog/parques-reunidos-verkauf-movie-park).
+den deutschen Markt. Unsere [Meldung zu Parques Reunidos](/blog/parques-reunidos-verkauf-movie-park) erklärt, wie es zu dem Verkauf kam.
 
 ## Fünf Themenbereiche und das alte Paris
 
-Offiziell hat der Park fünf Themenbereiche. Durch den Eingang kommst du auf die
-Via Antiqua, eine Ladenstraße, die seit 2012 nicht mehr als eigener Bereich
-zählt. Von dort aus:
+Durch den Eingang kommst du auf die Via Antiqua, eine Ladenstraße, die seit 2012 nicht mehr als eigener Bereich zählt. Von dort aus erreichst du die fünf offiziellen Themenbereiche:
 
 - La Gaule, das Dorf von Astérix und Obelix, mit Cétautomatix, Menhir Express,
   La Revanche des Pirates, dem Rundkurs Épidemaïs Croisières und dem 4D-Kino.
@@ -173,8 +168,7 @@ reißt ihn ab. 2028 soll dort Londinium stehen.
 
 ## Die Achterbahnen
 
-Neun Achterbahnen zählt RCDB im Parc Astérix. Die Mindestgrößen unten sind die
-des Parks: die erste Zahl gilt, wenn ein Erwachsener mitfährt, die zweite für
+Die Mindestgrößen an den neun Achterbahnen, die RCDB im Parc Astérix zählt, sind die des Parks: die erste Zahl gilt, wenn ein Erwachsener mitfährt, die zweite für
 Kinder allein. Wo nur eine steht, gibt es keine Ausnahme mit Begleitung.
 
 ### Toutatis
@@ -310,7 +304,7 @@ Achterbahn. Es ist ein Disk'O, eine runde Scheibe für 40 Personen, die sich
 dreht, während sie auf einer gebogenen Schiene hin und her fährt. Mindestgröße
 120 Zentimeter.
 
-## Wasserbahnen, ein Turm und die Shows
+## Wasserbahnen und Shows
 
 Im Herbst schließen die Wasserbahnen nach und nach. Romus et Rapidus ist laut
 Park ab dem 11. Oktober 2026 zu, La Revanche des Pirates ab dem 1. November, und
@@ -383,8 +377,7 @@ nimm den Mittwoch. Die ruhigsten Tage der anderen Parks stehen auf der [Beste-Re
 Dezember und Januar stehen ganz oben, auf wenigen gemessenen Tagen, alle in den
 Weihnachtsferien 2025/26. Unter den Monaten mit vielen Messtagen sind Mai und Juni
 die ruhigsten, und der August ist voller als der Juli. Für Oktober und November haben wir noch keine Messung, weil Peur sur le
-Parc 2025 lief, bevor wir den Park erfasst haben. Die Prognose für die nächsten
-Wochen steht im Kalender:
+Parc 2025 lief, bevor wir den Park erfasst haben.
 
 ```best-days-widget slug=parc-asterix
 
@@ -481,9 +474,7 @@ Drei Häuser stehen dieses Jahr im Programm: Le Tombeau des Dieux (nicht unter
 für Pompéi kostet der Eintritt abends 6 Euro mit fester Uhrzeit). Neu sind La
 Forêt sans Retour, ein Weg durch den Wald nur zu den Nocturnes, ebenfalls ab 16
 empfohlen, und Les Bas-Fonds du Souk, eine Erschreckzone im Égypte-Viertel. La
-Colère d'Anubis ist mit der Rue de Paris verschwunden. Was die anderen Parks im
-Herbst machen, steht in unserem
-[Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
+Colère d'Anubis ist mit der Rue de Paris verschwunden. Unser [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026) beschreibt, was die anderen Parks im Herbst machen.
 
 ### Noël Gaulois
 
@@ -493,8 +484,7 @@ Viking, und die Schlittschuhe sind kostenlos. In der Warteschlange von Romus et
 Rapidus baut der Park die Gärten des Weihnachtsmanns auf, dazu kommen eine
 Reifenrutsche, La Glissade d'Obélix, ein Umzug und ein Weihnachtsmarkt. Die
 Achterbahnen fahren nach Angaben des Parks „in der Regel“, die Wasserbahnen
-nicht. Ein Weihnachtsticket ohne festes Datum kostet 57 Euro. Was andere Parks
-im Winter öffnen, steht im [Winter-Guide](/blog/winter-freizeitparks-2026).
+nicht. Ein Weihnachtsticket ohne festes Datum kostet 57 Euro. Im [Winter-Guide](/blog/winter-freizeitparks-2026) stehen die anderen Parks, die im Winter öffnen.
 
 Zwischen dem 9. November und dem 18. Dezember 2026 ist der Park zu, ebenso ab
 dem 4. Januar bis zum Saisonstart im Frühjahr. Seit 2007 bleibt er bis nach den
@@ -522,7 +512,7 @@ Multi Dimension Coaster von Intamin mit drehbaren Wagen, 17 Meter hoch, in der
 Halle. Tonnerre 2 Zeus bekommt im Winter 2026/27 den zweiten Teil ihrer neuen
 Stahlschiene.
 
-## Tickets, Anreise, Hotels und Essen
+## Reiseplanung
 
 ### Tickets und Preise 2026
 
@@ -625,8 +615,6 @@ Walibi Belgium, Walibi Holland und seit 2025 Belantis bei Leipzig, aus dem bis
 Für Walibi Belgium, den Park desselben Konzerns bei Brüssel, gibt es einen
 eigenen [Guide](/blog/walibi-belgium-wartezeiten-tipps), für die Nachbarn in
 Marne-la-Vallée den [Disneyland-Paris-Guide](/blog/disneyland-paris-wartezeiten-tipps).
-
-Das Wetter in Plailly für den Tag, an dem du hinfährst:
 
 ```weather-widget slug=parc-asterix
 

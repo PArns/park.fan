@@ -89,21 +89,19 @@ sopra il porto. Se la torre sarà decorata così, non lo dice.
 
 ## Torna Enzo's Piccolo Mondo
 
-Secondo il parco, i più piccoli salgono sulle gondole dell'area italiana da
-oltre 40 anni. Nel 2027 il giro dovrebbe tornare «con nuovo splendore». Se
+I più piccoli salgono sulle gondole dell'area italiana da oltre 40 anni, secondo il parco. Nel 2027 il giro dovrebbe tornare «con nuovo splendore». Se
 chiuderà per i lavori, e da quando, nell'annuncio non c'è scritto.
 
-Secondo il parco ci saranno arte, teatro classico e musica italiana. Quante
+Ci saranno arte, teatro classico e musica italiana, secondo il parco. Quante
 scene ci siano e quali siano nuove, non l'ha detto.
 
 Il giro ha l'età dell'area. L'Italia ha aperto nel 1982 come prima area
 tematica del parco, e Piccolo Mondo nello stesso anno. L'ha costruito MACK
 Rides. Le gondole portano sei persone ciascuna e passano al chiuso davanti a
 Pisa, Venezia e Firenze. Un giro dura poco più di tre minuti. I bambini sotto
-i 120 centimetri salgono solo con un adulto. Secondo la pagina del parco
-funziona in tutte e quattro le stagioni, inverno compreso.
+i 120 centimetri salgono solo con un adulto. Funziona in tutte e quattro le stagioni, inverno compreso, secondo la pagina del parco.
 
-Secondo la pagina del parco sulle novità 2027, Enzo è un pappagallo. Nella
+Sulla pagina del parco dedicata alle novità 2027, Enzo è un pappagallo. Nella
 stessa area c'è già un'attrazione del 1982 con due anni di apertura: per il
 [Castello dei Medici](ref:europa-park/castello-dei-medici) la pagina del parco
 indica 1982 e 2024. Accanto funziona dal 2011 Volo da Vinci, un
@@ -130,8 +128,6 @@ Nessuna delle tre novità è una grande montagna russa. Per i bambini ancora
 troppo bassi per blue fire e WODAN, Portogallo e Islanda guadagnano qualcosa che
 sale in alto, purché raggiungano l'altezza minima, che il parco non ha ancora
 indicato.
-
-La tabella elenca le attrazioni accanto alle quali nasceranno le tre novità.
 
 ```ride-waits-widget rides=europa-park/atlantica-supersplash|Atlantica SuperSplash|Montagna russa acquatica;europa-park/wodan-timburcoaster|WODAN - Timburcoaster|Montagna russa in legno;europa-park/blue-fire-megacoaster|blue fire Megacoaster|Launch-Coaster;europa-park/castello-dei-medici|Castello dei Medici|Dark Ride;europa-park/piccolo-mondo|Piccolo Mondo|Giro in gondola columns=type,peak,days
 

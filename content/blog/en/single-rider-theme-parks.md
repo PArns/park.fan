@@ -2,6 +2,7 @@
 title: 'Single rider: where riding alone gets you on faster'
 translationKey: single-rider-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -47,6 +48,19 @@ to strangers. In return you usually wait less than in the standard queue.
 
 On park.fan, 66 rides in 18 parks have a single rider queue.
 
+## Where the single rider queue comes from
+
+Disneyland in Anaheim opened on 17 July 1955. Three years later Walt Disney sent the park’s
+Operations Committee a memo, which the English Wikipedia dates to 31 July 1958:
+
+> [!QUOTE]
+> Perhaps during peak hours we should […] establish a special line for single riders, with the request that they double up.
+>
+> Walt Disney, memo from 1958, quoted by Marcy Carriker Smothers in an [interview with D23 on 15 December 2021](https://d23.com/inside-walts-disneyland-an-immersive-guide-to-the-park-walt-helped-create/)
+
+Smothers published the memo in her book “Walt’s Disneyland”, which came out in 2021 from Disney
+Editions.
+
 ## How a single rider entrance works
 
 A train has fixed seat groups, and not every group in the standard queue fills them. Where a seat
@@ -70,6 +84,27 @@ At every park whose page we could read:
 
 ```
 
+## How many seats sit side by side in a row
+
+Whether a seat stays empty on a train depends on how many guests sit next to each other. With two
+seats per row, a group of three fills one row and one seat of the next. On Baron 1898 six guests sit
+in a row, and a group of four leaves two seats in its row empty. The figures for the roller coasters
+with single rider at Europa-Park, Efteling and Phantasialand come from the Roller Coaster DataBase
+(RCDB).
+
+| Ride                     | Park          | Manufacturer                 | Opened | Seats per row | Seats per train | Riders per hour |
+| ------------------------ | ------------- | ---------------------------- | ------ | ------------- | --------------- | --------------- |
+| Eurosat – CanCan Coaster | Europa-Park   | Mack Rides                   | 1989   | 2             | 14              | –               |
+| blue fire Megacoaster    | Europa-Park   | Mack Rides                   | 2009   | 2             | 20              | 1,720           |
+| WODAN – Timburcoaster    | Europa-Park   | Great Coasters International | 2012   | 2             | 24              | 1,250           |
+| ARTHUR                   | Europa-Park   | Mack Rides                   | 2014   | 4             | 12              | 1,500           |
+| Voltron Nevera           | Europa-Park   | Mack Rides                   | 2024   | 4             | 16              | 1,600           |
+| Python                   | Efteling      | Vekoma                       | 1981   | 2             | 28              | –               |
+| Joris en de Draak        | Efteling      | Great Coasters International | 2010   | 2             | 24              | 1,750           |
+| Baron 1898               | Efteling      | Bolliger & Mabillard         | 2015   | 6             | 18              | 1,000           |
+| Max & Moritz             | Efteling      | Mack Rides                   | 2020   | 2             | 40              | –               |
+| Taron                    | Phantasialand | Intamin                      | 2016   | 2             | 16              | 1,200           |
+
 ## Who it is for, and when it is not
 
 The single rider entrance is worth it in three cases: you are alone in the park, your group can be
@@ -80,7 +115,9 @@ It isn’t worth it in these cases:
 
 - **You are riding with a child who needs a companion.** For Eurosat at Europa-Park the park’s page
   gives 120 to 195 centimetres, and below 130 centimetres only with an adult. If you need the child
-  next to you, you can’t board separately.
+  next to you, you can’t board separately. For parents who ride one after the other, Europa-Park
+  offers Baby-Switch. One adult rides, the other waits with the child and then boards through the exit
+  or a separate entrance. According to the park this is only available on the bigger roller coasters.
 - **You want to ride together.** Efteling lets groups use the single rider entrance, but they ride one
   after another. Only if several seats happen to be free do people from the single rider queue sit
   side by side.
@@ -100,8 +137,6 @@ reported 41 single rider queues between them. 19 of them were open, in seven par
 of the 41 carried a wait time. The parks tell us the queue is open, but not how long it is. On the
 attraction page park.fan then shows “Single rider” without a time, and the tables in this post show
 the standard queue.
-
-So how much time the entrance saves can’t currently be calculated from our data.
 
 ## Single rider rides by park
 
@@ -134,23 +169,23 @@ At [Europa-Park](ref:europa-park), six rides have a single rider entrance: ARTHU
 Kingdom themed area, WODAN – Timburcoaster and blue fire Megacoaster in Iceland, Eurosat – CanCan
 Coaster in France, the Voletarium in Germany and Voltron Nevera powered by Rimac in Croatia.
 
-The park itself confirms two of them. On the page for
-[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac), single rider is listed among the
-features as a special queue for individual guests, and so it is on the page for
-[Eurosat – CanCan Coaster](ref:europa-park/eurosat-cancan-coaster). Voltron Nevera admits riders from
+The park lists all six under “Single Rider” on its page of tips for your visit. On the pages for
+[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) and
+[Eurosat – CanCan Coaster](ref:europa-park/eurosat-cancan-coaster), single rider also appears among
+the ride’s features, as a special queue for individual guests. Voltron Nevera admits riders from
 130 centimetres, and a train holds 16 people. On Eurosat the limit is 120 to 195 centimetres and six
 years of age, and under eight only those with an adult ride along.
 
+blue fire, WODAN, the Voletarium and Voltron Nevera also offer the VirtualLine. You reserve a
+time slot in the app and spend the time until then elsewhere in the park.
+
 All six rides have a minimum height of 120 or 130 centimetres, according to the figures in our
 database. The single rider entrance therefore helps mostly teenagers and adults who are on their own or
-in a group without small children. How to lay out a sensible day in the park is in the
-[Europa-Park guide](/blog/europa-park-wait-times-tips).
+in a group without small children.
 
 ```ride-waits-widget rides=europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/blue-fire-megacoaster|blue fire;europa-park/wodan-timburcoaster|WODAN;europa-park/eurosat-cancan-coaster|Eurosat;europa-park/voletarium|Voletarium;europa-park/arthur|ARTHUR columns=land,peak
 
 ```
-
-The figures in the table are for the standard queue.
 
 ```hourly-profile-widget slug=europa-park top=6
 
@@ -158,9 +193,12 @@ The figures in the table are for the standard queue.
 
 ## Efteling
 
-[Efteling](ref:efteling) has the most complete official description we found. The page on the single
-rider entrance names six rides: Danse Macabre, Joris en de Draak, Symbolica, Baron 1898, Max & Moritz
-and Python. Each has two queues, one for groups and families, one for single riders. Our data
+[Efteling](ref:efteling) has the most complete official description we found. The page on the single rider entrance
+lists six rides under “Attractions with a single rider entrance”: Danse Macabre, Joris en de Draak,
+Symbolica, Baron 1898, Max & Moritz and Python. Each has two queues, one for groups and families, one
+for single riders, plus an entrance for visitors with disabilities, usually near the exit. The answers
+higher up on the same page leave out Baron 1898. In the standard queue Efteling guarantees groups that
+they sit together. Our data
 additionally lists De Vliegende Hollander, which the park’s page doesn’t name.
 
 According to the page, a single rider chooses neither the seat nor, on Symbolica, which of the three palace tours they get. Groups may use the entrance but ride one after another, and children may
@@ -181,8 +219,7 @@ At [Phantasialand](ref:phantasialand), three rides have a single rider entrance:
 [Taron](ref:phantasialand/taron) and [Raik](ref:phantasialand/raik) in the Mystery themed area and
 [Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn) in Mexico.
 
-For all 40 attractions at Phantasialand we know whether they have a single rider entrance, so the three rides are the complete list. The minimum
-height is 140 centimetres on Taron, 130 on Chiapas and 120 on Raik.
+The minimum height is 140 centimetres on Taron, 130 on Chiapas and 120 on Raik.
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/raik|Raik;phantasialand/chiapas-die-wasserbahn|Chiapas columns=land,peak
 
@@ -190,7 +227,7 @@ height is 140 centimetres on Taron, 130 on Chiapas and 120 on Raik.
 
 ## Disneyland Paris
 
-The resort has two parks. In
+In
 [Disney Adventure World](ref:disney-adventure-world) there are seven: Spider-Man W.E.B. Adventure and
 Avengers Assemble: Flight Force in Marvel Avengers Campus, Frozen Ever After in the World of Frozen,
 Ratatouille: L’Aventure Totalement Toquée de Rémy in Toon Studio, plus Crush’s Coaster, RC Racer and
@@ -200,16 +237,27 @@ any park in the table.
 In [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) there are two: Star Wars
 Hyperspace Mountain in Discoveryland and Indiana Jones and the Temple of Peril in Adventureland.
 
+On its single rider service page the resort names six rides: Star Wars Hyperspace Mountain and, in
+Disney Adventure World, Crush’s Coaster, Frozen Ever After, RC Racer, Ratatouille and Toy Soldiers
+Parachute Drop. Spider-Man W.E.B. Adventure and Avengers Assemble: Flight Force carry the single rider
+sign on their own pages. According to the resort the service is free
+and has its own entrance for guests who are ready to split up and board one by one. It gives neither
+immediate boarding nor a choice of seat and vehicle.
+
 ```ride-waits-widget rides=disney-adventure-world/frozen-ever-after|Frozen Ever After;disney-adventure-world/spider-man-web-adventure|Spider-Man W.E.B. Adventure;disney-adventure-world/crushs-coaster|Crush’s Coaster;disney-adventure-world/rc-racer|RC Racer;/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain|Star Wars Hyperspace Mountain;/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril|Indiana Jones and the Temple of Peril columns=park,peak
 
 ```
 
 ## Alton Towers and Thorpe Park
 
-At [Alton Towers](ref:alton-towers) there are four rides in the Thrills area: TH13TEEN, Spinball
+In our data [Alton Towers](ref:alton-towers) has four rides in the Thrills area: TH13TEEN, Spinball
 Whizzer, The Smiler and Galactica. At [Thorpe Park](ref:thorpe-park) there are two, both in the
 Coasters area: SAW – The Ride and Hyperia. The minimum height is 120 centimetres on TH13TEEN and
 Spinball Whizzer, 130 on Hyperia and 140 on The Smiler, Galactica and SAW.
+
+Alton Towers names six rides with single rider on its help page, adding Oblivion and Toxicator to
+our four. Thorpe Park names Stealth and The Swarm on its queue times page and writes that the single
+rider queue can cut the wait there in half.
 
 ```ride-waits-widget rides=alton-towers/the-smiler|The Smiler;alton-towers/galactica|Galactica;alton-towers/th13teen|TH13TEEN;alton-towers/spinball-whizzer|Spinball Whizzer;thorpe-park/hyperia|Hyperia;thorpe-park/saw-the-ride|SAW – The Ride columns=park,peak
 
@@ -217,8 +265,8 @@ Spinball Whizzer, 130 on Hyperia and 140 on The Smiler, Galactica and SAW.
 
 ## PortAventura
 
-At [PortAventura Park](ref:portaventura-park) we know four rides: Hurakan Condor, Furius Baco,
-Shambhala and Dragon Khan.
+At [PortAventura Park](ref:portaventura-park) we know four rides with single rider: Hurakan Condor, Furius Baco, Shambhala and
+Dragon Khan. The park’s blog only says in general terms that some rides have a single rider queue.
 
 ```ride-waits-widget rides=portaventura-park/shambhala|Shambhala;portaventura-park/dragon-khan|Dragon Khan;portaventura-park/furius-baco|Furius Baco;portaventura-park/hurakan-condor|Hurakan Condor columns=peak
 
@@ -231,7 +279,8 @@ Run, Star Wars: Rise of the Resistance and Rock ’n’ Roller Coaster Starring 
 Hollywood Studios, plus Remy’s Ratatouille Adventure and Test Track at EPCOT. Added to that is
 Expedition Everest at Disney’s Animal Kingdom, which isn’t on the park’s list.
 
-According to the same page, the service lets groups split up and board separately. Immediate
+According to the same page, the service lets groups split up and board separately. Single riders fill
+the seats that neither guests from the standby queue nor those from the Lightning Lane entrances take. Immediate
 boarding and the choice of seat aren’t guaranteed, special seating requests may not be met, and the
 participating attractions and the wait times can change.
 
@@ -278,24 +327,22 @@ Racers, Mine-Cart Madness and Mario Kart: Bowser’s Challenge.
 
 ## Shanghai Disneyland and Hong Kong Disneyland
 
-The two Asian Disney parks have two and three rides. At
+At
 [Shanghai Disneyland](ref:shanghai-disneyland) they are Zootopia: Hot Pursuit and Seven Dwarfs Mine
 Train, at [Hong Kong Disneyland](ref:hong-kong-disneyland-park) Hyperspace Mountain, Big Grizzly
-Mountain Runaway Mine Cars and Toy Soldier Parachute Drop.
+Mountain Runaway Mine Cars and Toy Soldier Parachute Drop. For Hyperspace Mountain, Hong Kong
+Disneyland gives a minimum height of 102 centimetres.
 
 ## How to plan a day with single rider
 
-**Pick two or three rides beforehand.** On the park page at park.fan you can see which rides carry the
+Pick two or three rides beforehand. On the park page at park.fan you can see which rides carry the
 badge. The entrance is worth most on the ride where the standard queue is longest.
 
-**Check that the queue is open before you split up.** On the attraction page the “Single rider” badge
+Check that the queue is open before you split up. On the attraction page the “Single rider” badge
 appears with the status of the queue. It can be closed without the ride being closed.
 
-**Split up if it pays off.** For two adults the fastest option is for one to take the standard queue
+Split up if it pays off. For two adults the fastest option is for one to take the standard queue
 and the other the single rider entrance. Whoever rides first waits at the exit.
-
-How waiting feels, and why moving up in the queue gets you nothing, is in the post
-[The art of waiting](/blog/the-art-of-waiting).
 
 ## Frequently asked questions about single rider
 
@@ -317,8 +364,8 @@ rider entrance is ruled out.
 
 ### Which rides at Europa-Park have single rider?
 
-Six: ARTHUR, WODAN, blue fire, Eurosat, the Voletarium and Voltron Nevera. The park states it
-explicitly on the pages for Voltron Nevera and Eurosat.
+Six: ARTHUR, WODAN, blue fire, Eurosat, the Voletarium and Voltron Nevera. The park lists all
+six on its page of tips for your visit.
 
 ### Which rides at Efteling have single rider?
 
@@ -346,8 +393,8 @@ rider entrance, so the lists there are complete. At the other parks this is miss
 attractions, at Disneyland Park in Paris for 41 of 43, at Disneyland Park in Anaheim for 54 of 56.
 There may be more single rider rides there, and in the 185 parks where we know of none.
 
-For Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal and the
-Asian Disney parks we could not read a park page that confirms the list.
+For Phantasialand, PortAventura, Universal and the Asian Disney parks we could not read a park page
+that confirms the list.
 
 ## Further reading
 
@@ -368,6 +415,30 @@ Asian Disney parks we could not read a park page that confirms the list.
   [Voltron Nevera powered by Rimac (official)](https://www.europapark.de/en/theme-park/attractions/voltron-nevera-powered-rimac)
 - Eurosat, height and age limits and single rider note:
   [Eurosat – CanCan Coaster (official)](https://www.europapark.de/en/theme-park/attractions/eurosat-cancan-coaster)
+- Walt Disney’s 1958 memo:
+  [Inside Walt’s Disneyland (D23)](https://d23.com/inside-walts-disneyland-an-immersive-guide-to-the-park-walt-helped-create/),
+  [Single rider (Wikipedia, citing page 130 of the book)](https://en.wikipedia.org/wiki/Single_rider)
+- Europa-Park, all six rides, VirtualLine and Baby-Switch:
+  [Tips for your Europa-Park visit (official)](https://www.europapark.de/en/theme-park/info/plan-your-visit/tips-your-europa-park-visit)
+- Disneyland Paris, list and rules:
+  [Single Rider service (official)](https://www.disneylandparis.com/en-gb/guest-services/single-rider-service),
+  [Spider-Man W.E.B. Adventure (official)](https://www.disneylandparis.com/en-gb/attractions/disney-adventure-world/spider-man-web-adventure),
+  [Avengers Assemble: Flight Force (official)](https://www.disneylandparis.com/en-gb/attractions/disney-adventure-world/avengers-assemble-flight-force)
+- Alton Towers, six rides:
+  [Do you operate single rider queuelines? (official)](https://support.altontowers.com/hc/en-us/articles/360002576232-Do-you-operate-single-rider-queuelines)
+- Thorpe Park, Stealth and The Swarm:
+  [Queue Times (official)](https://www.thorpepark.com/plan-your-visit/resort-information/queue-times/)
+- PortAventura:
+  [Who to take to PortAventura (official blog)](https://www.portaventuraworld.com/blog/en/who-to-take-to-portaventura)
+- Hyperspace Mountain in Hong Kong, minimum height:
+  [Hyperspace Mountain (official)](https://www.hongkongdisneyland.com/attractions/hyperspace-mountain/)
+- Manufacturer, opening, seat rows and capacity of the roller coasters:
+  RCDB: [Eurosat](https://rcdb.com/973.htm), [blue fire](https://rcdb.com/4074.htm),
+  [WODAN](https://rcdb.com/10018.htm), [ARTHUR](https://rcdb.com/11114.htm),
+  [Voltron](https://rcdb.com/7121.htm), [Python](https://rcdb.com/897.htm),
+  [Joris en de Draak](https://rcdb.com/4526.htm), [Baron 1898](https://rcdb.com/12083.htm),
+  [Max + Moritz](https://rcdb.com/16697.htm), [Taron](https://rcdb.com/12723.htm)
+- Opening of Disneyland: [Disneyland (Wikipedia)](https://en.wikipedia.org/wiki/Disneyland)
 - Which rides in which park carry the attribute, the figures in the table and the live queues: query
   of the park.fan API (`/v1/parks/<continent>/<country>/<city>/<park>`, fields `hasSingleRider` and
   `queues`), 203 parks with live wait times

@@ -139,7 +139,6 @@ Seventy kilometres to the north-west, the [Efteling](ref:efteling) has
 ```
 
 Joris en de Draak finished five places behind Troy in the 2026 Golden Ticket Awards.
-Here’s what the big names of the region cost you in waiting, wood or steel:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron|Multi-launch, steel;phantasialand/fly|F.L.Y.|Flying, steel;efteling/joris-en-de-draak|Joris en de Draak|Wood;efteling/baron-1898|Baron 1898|Dive coaster, steel;attractiepark-toverland/troy|Troy|Wood;attractiepark-toverland/fenix|Fēnix|Wing, steel columns=type,park,peak highlight=attractiepark-toverland/troy
 
@@ -156,7 +155,7 @@ rides and more than forty attractions in total. The Efteling counted 5.78
 million visits the same year, roughly five times as many, and it doesn’t have
 five times as many coasters.
 
-On top of that, **Toverland sells no fast pass and no express pass.** You can only trade money for time on the 13 Halloween nights in October and early November. There’s been a single rider line since
+On top of that, Toverland sells no fast pass and no express pass. You can only trade money for time on the 13 Halloween nights in October and early November. There’s been a single rider line since
 2023, mind you, but only at one attraction, the Dragonwatch drop tower, and it
 costs nothing extra.
 
@@ -401,14 +400,11 @@ The [best time to visit page](/best-time-to-visit) puts the parks side by side.
 
 You can’t rely on that the moment Dutch and German holiday calendars, weather
 and opening hours all overlap, and in the Limburg border region they overlap
-constantly. Here are the quietest days coming up:
+constantly.
 
 ```best-days-widget slug=attractiepark-toverland
 
 ```
-
-And this is how the crowds break down by month and weekday, calculated from the
-operating days we’ve measured:
 
 ```stats-widget slug=attractiepark-toverland
 

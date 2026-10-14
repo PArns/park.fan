@@ -55,7 +55,7 @@ parkLinks:
   - legoland-deutschland
 ---
 
-Sur park.fan, il y a **neuf parcs d’attractions en Allemagne**. Dans six d’entre eux, nous mesurons
+Pour six des **neuf parcs d’attractions en Allemagne** présents sur park.fan, nous mesurons
 les temps d’attente, attraction par attraction. Pour le [Hansa-Park](ref:hansa-park), aucun chiffre
 n’arrive, parce que le parc ne les montre que dans sa propre appli. [Traumatica](ref:traumatica), pour lequel nous n’avons encore que quatre jours de mesure, et le
 monde aquatique [Rulantica](ref:rulantica) font partie du resort d’Europa-Park et n’apparaissent donc pas comme des parcs à part.
@@ -185,7 +185,7 @@ tour panoramique de 86 mètres.
 Bros. Movie World, il porte son nom actuel depuis 2005. Dans notre mesure, les files sont plus
 courtes qu’au Phantasialand, et le dimanche fait ici partie des jours plus calmes.
 
-Le parc compte huit montagnes russes. La plus grande est
+La plus grande de ses huit montagnes russes est
 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), de Mack
 Rides, en 2017 : 40 mètres de haut, 90 km/h, à partir de 130 centimètres, et avant le départ, le
 train est projeté trois fois en avant et en arrière avant d’avoir assez de vitesse pour la première
@@ -289,7 +289,7 @@ Une case vide signifie que le parc n’a pas de grande attraction à ce niveau.
 
 ## Où tu attends le moins
 
-La comparaison sur tous les jours mesurés, calculée de la même façon pour chaque parc. Les lignes sont dans l’ordre de la mesure du 3 octobre 2026 et ne sont pas retriées :
+La comparaison porte sur tous les jours mesurés et se calcule de la même façon pour chaque parc. Les lignes sont dans l’ordre de la mesure du 3 octobre 2026 et ne sont pas retriées.
 
 ```park-comparison-widget slugs=phantasialand,legoland-deutschland,europa-park,heide-park,movie-park-germany,plopsaland-deutschland show=quietest
 
@@ -310,16 +310,13 @@ queue devant la même attraction, et sans pass, tu y attends plus longtemps que 
 
 ## À quelle heure on attend où
 
-À Phantasialand, la journée ressemble à ceci, attraction par attraction sur tous les jours
-mesurés :
-
 ```hourly-profile-widget slug=phantasialand top=6
 
 ```
 
-Taron est au plus plein à l’ouverture et pendant la dernière heure, quand tout le monde veut encore
+Sur l’ensemble des jours mesurés à Phantasialand, Taron est au plus plein à l’ouverture et pendant la dernière heure, quand tout le monde veut encore
 caser un tour. F.L.Y. est courte la première heure et atteint son pic une heure plus tard, une fois
-que le reste du parc est arrivé à Rookburgh. Les deux ont leur heure la plus calme l’après-midi. Pour faire les deux, va à F.L.Y. à l’ouverture et garde Taron pour l’après-midi.
+que le reste du parc est arrivé à Rookburgh. Les deux ont leur heure la plus calme l’après-midi. Pour les deux, cela donne F.L.Y. à l’ouverture et Taron l’après-midi.
 
 À Europa-Park, l’Eurosat a sa file la plus longue dès dix heures, parce qu’elle est près de
 l’entrée et roule à l’intérieur, et quand il pleut, tout le monde y va en même temps. Au Heide
@@ -348,8 +345,8 @@ Dans cinq des six parcs mesurés, un jour de semaine pendant les vacances scolai
 parc était plus chargé qu’un jour de week-end moyen. Quels Länder remplissent quel parc, c’est
 dans le [guide des vacances scolaires et de l’affluence](/blog/vacances-scolaires-parcs-d-attractions-allemagne).
 
-Le calendrier avec la prévision des prochains jours existe pour chaque parc, voici celui
-d’Europa-Park :
+Le calendrier avec la prévision des prochains jours existe pour chaque parc, et celui
+d’Europa-Park figure ci-dessous.
 
 ```best-days-widget slug=europa-park
 

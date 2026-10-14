@@ -68,7 +68,7 @@ sovrappiù.
 
 Secondo me è un errore, perché Untamed da solo vale il viaggio.
 
-## Prima il mare, poi le mucche, poi i coaster
+## La storia del parco
 
 Il **21 maggio 1971** la principessa Beatrice inaugurò su quella terra di polder
 appena guadagnata la **Flevohof**, un parco agricolo di 150 ettari. I bambini di città dovevano conoscervi l’agricoltura. C’erano stalle, serre, un
@@ -244,7 +244,7 @@ nettamente più in alto, perché dopo sette anni sulla vecchia struttura di Robi
 
 [Untamed](ref:walibi-holland/untamed?full)
 
-## YOY, Goliath e il resto
+## Gli altri coaster
 
 Oltre a Untamed il parco ha altri nove coaster.
 
@@ -390,8 +390,6 @@ Calcolato da **più di 150 giorni di apertura con dati di attesa utilizzabili**,
 l’**attesa tipica nella media del parco resta ben sotto la mezz’ora** (mediana).
 In quel giorno su dieci in cui c’è più movimento è una volta e mezza tanto.
 
-Attrazione per attrazione si presenta così:
-
 ```ride-waits-widget rides=walibi-holland/yoy-thrill|YOY THRILL|Rotaia singola, acciaio;walibi-holland/condor|Condor|Suspended, acciaio;walibi-holland/yoy-chill|YOY CHILL|Rotaia singola, acciaio;walibi-holland/lost-gravity|Lost Gravity|Big Dipper, acciaio;walibi-holland/untamed|UNTAMED|Ibrido;walibi-holland/xpress-platform-13|Xpress: Platform 13|Launch, acciaio;walibi-holland/goliath|Goliath|Mega Coaster, acciaio columns=type,peak,days highlight=walibi-holland/untamed
 
 ```
@@ -401,14 +399,12 @@ Lost Gravity. Se la mattina vai
 dritto nella Wilderness, avrai fatto Untamed prima che la coda di YOY si sia
 davvero mossa.
 
-Untamed accanto ai coaster dei parchi vicini, su tutti i giorni di apertura misurati:
-
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
 
 ```
 
-Nel tempo in cui a Phantasialand fai **una volta** la coda di
-[Taron](ref:phantasialand/taron), fai Untamed più o meno due volte. In questa
+Su tutti i giorni di apertura misurati, fai Untamed più o meno due volte nel tempo in cui a Phantasialand fai **una volta** la coda di
+[Taron](ref:phantasialand/taron). In questa
 selezione solo Troy a Toverland chiede ancora meno coda di Untamed.
 A livello di parco il quadro è simile: solo Toverland sta ancora più in basso, e
 Walibi Belgium è quasi alla pari con Walibi Holland.
@@ -631,12 +627,15 @@ festivi e di vacanza, da fine giugno a fine agosto tutti i giorni, a settembre
 quasi solo nel fine settimana e a ottobre nei fine settimana e durante le
 vacanze autunnali, secondo il calendario 2026.
 
-**Per mese** le attese si distinguono a malapena lungo la stagione. C’è un po’ più di gente ad aprile, quando coincidono Pasqua, il Giorno
+**Per mese**, calcolate su tutti i giorni di apertura misurati, le attese si distinguono a malapena lungo la stagione. C’è un po’ più di gente ad aprile, quando coincidono Pasqua, il Giorno
 del Re e l’inizio delle vacanze olandesi di maggio, e finora nei fine settimana
 di settembre. Le vacanze estive nei nostri dati si notano appena.
 
-**Per giorno della settimana** il sabato non è più pieno del resto della
-settimana:
+```stats-widget slug=walibi-holland show=months
+
+```
+
+**Per giorno della settimana** il sabato non è più pieno del resto della settimana.
 
 ```stats-widget slug=walibi-holland show=weekdays
 
@@ -650,16 +649,7 @@ giugno aveva un’affluenza bassa nel nostro calendario. L’ultima settimana di
 giugno, quando il parco apre già tutti i giorni, non era invece più tranquilla
 dell’estate piena.
 
-I prossimi giorni più tranquilli dal nostro calendario dell’affluenza:
-
 ```best-days-widget slug=walibi-holland
-
-```
-
-Ed ecco come si distribuisce l’affluenza tra i mesi, calcolata su tutti i giorni
-di apertura misurati:
-
-```stats-widget slug=walibi-holland show=months
 
 ```
 
@@ -677,7 +667,7 @@ mezzogiorno, e fai entrambi i tracciati.
 mezzogiorno, **[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** ci sta nel mezzo. Nell’ultima ora torna su Untamed, perché la sera il
 tracciato gira percettibilmente più veloce che al mattino.
 
-## Pratico: biglietti, come arrivare, mangiare
+## Pratico
 
 **Biglietti.** Walibi applica **prezzi dinamici**, quindi il biglietto
 giornaliero costa in modo diverso a seconda della data.
@@ -730,8 +720,6 @@ Ci sono patatine, hamburger, pizza e dignitosa cucina da mensa.
 Il ristorante **Flavors** vicino all’area YOY, con la terrazza sull’acqua,
 è l’indirizzo più piacevole, non fosse che per la vista sui due tracciati.
 Mangia presto, verso le undici e mezza, o tardi dalle due e mezza.
-
-Com’è la situazione adesso al parco:
 
 ```weather-widget slug=walibi-holland
 

@@ -84,8 +84,6 @@ familiares, Cétautomatix y Pégase Express, y la gran atracción queda detrás.
 1.260 personas por hora y OzIris 1.600. Para Cétautomatix, la web francesa Androland estimó antes de la apertura unas 700: nueve coches de cuatro plazas,
 una salida cada 20 segundos. En Cétautomatix y Pégase Express hace cola toda la familia, porque los niños acompañados pueden subir desde 1,00 m, en Toutatis solo desde 1,30 m.
 
-La tabla compara el parque con Disneyland Park, con Walibi Belgium, que pertenece al mismo grupo, y con Europa-Park.
-
 ```park-comparison-widget slugs=parc-asterix,/parks/europe/france/paris/disneyland-park,walibi-belgium,europa-park show=quietest highlight=parc-asterix
 
 ```
@@ -139,14 +137,11 @@ El 2 de diciembre de 2025 llegó el anuncio del primer Parc Astérix fuera de
 Francia. La Compagnie des Alpes compró Belantis, cerca de Leipzig, a Parques
 Reunidos en abril de 2025 y quiere convertirlo en un Parc Astérix hacia 2030 o 2031. Su consejero delegado, François Fassier, lo describió en franceinfo como
 «un proyecto muy complejo y muy ambicioso», pensado solo para el mercado alemán.
-Cómo se llegó a esa venta lo contamos en nuestra
-[noticia sobre Parques Reunidos](/blog/eqt-venta-parques-reunidos-movie-park).
+Nuestra [noticia sobre Parques Reunidos](/blog/eqt-venta-parques-reunidos-movie-park) cuenta cómo se llegó a esa venta.
 
 ## Las cinco zonas y el antiguo París
 
-Oficialmente el parque tiene cinco zonas temáticas. La entrada da a la Via
-Antiqua, una calle de tiendas que desde 2012 ya no cuenta como zona propia. Desde
-allí:
+La entrada da a la Via Antiqua, una calle de tiendas que desde 2012 ya no cuenta como zona propia. Desde allí se llega a las cinco zonas temáticas oficiales:
 
 - La Gaule, la aldea de Astérix y Obélix, con Cétautomatix, Menhir Express, La
   Revanche des Pirates, los barcos de Épidemaïs Croisières y el cine 4D. También
@@ -172,8 +167,7 @@ está derribando. En 2028 la sustituirá Londinium.
 
 ## Las montañas rusas
 
-RCDB cuenta nueve montañas rusas en el Parc Astérix. Las alturas mínimas de abajo
-son las del parque: la primera cifra vale si sube un adulto, la segunda para
+Las alturas mínimas de abajo, para las nueve montañas rusas que RCDB cuenta en el Parc Astérix, son las del parque: la primera cifra vale si sube un adulto, la segunda para
 niños solos. Cuando solo hay una, no hay mínimo más bajo con acompañante.
 
 ### Toutatis
@@ -300,7 +294,7 @@ niños pueden subir desde 90 cm. RCDB no cuenta
 un Disk’O, una plataforma redonda para 40 personas que gira mientras va y viene
 por una vía curva. Altura mínima 1,20 m.
 
-## Atracciones de agua, una torre y los espectáculos
+## Atracciones de agua y espectáculos
 
 En otoño, las atracciones de agua van cerrando una tras otra. Romus et Rapidus
 cierra el 11 de octubre de 2026 según el parque, La Revanche des Pirates el 1 de
@@ -370,7 +364,7 @@ miércoles el más tranquilo. Si puedes elegir el día, elige el miércoles. Los
 
 Diciembre y enero encabezan la lista, con pocos días medidos, todos en las
 vacaciones de Navidad de 2025/26. De los meses con muchos datos, mayo y junio son
-los más tranquilos, y agosto tiene más gente que julio. Octubre y noviembre aún no los tenemos, porque Peur sur le Parc 2025 fue antes de que empezáramos a seguir el parque. La previsión para las próximas semanas está en el calendario:
+los más tranquilos, y agosto tiene más gente que julio. Octubre y noviembre aún no los tenemos, porque Peur sur le Parc 2025 fue antes de que empezáramos a seguir el parque.
 
 ```best-days-widget slug=parc-asterix
 
@@ -464,9 +458,7 @@ menores de 14), Catacombes y Les Enfers de Pompéi (ambas no recomendadas para
 menores de 16; por la noche, Pompéi cuesta 6 euros con hora reservada). Son
 nuevas La Forêt sans Retour, un recorrido por el bosque solo en las nocturnas,
 también desde 16 años, y Les Bas-Fonds du Souk, una zona de sustos en el barrio
-Égypte. La Colère d’Anubis desapareció con la Rue de Paris. Lo que hacen los demás
-parques este otoño está en nuestra
-[guía de Halloween 2026](/blog/halloween-parques-atracciones-2026).
+Égypte. La Colère d’Anubis desapareció con la Rue de Paris. Nuestra [guía de Halloween 2026](/blog/halloween-parques-atracciones-2026) describe lo que hacen los demás parques este otoño.
 
 ### Noël Gaulois
 
@@ -476,8 +468,7 @@ la Patinoire Viking, con patines gratis. El parque monta los jardines de Papá
 Noel en la cola de Romus et Rapidus, y hay un tobogán con flotador, La Glissade
 d’Obélix, un desfile y un mercado navideño. Las montañas rusas funcionan «por lo
 general», dice el parque; las de agua no. Una entrada de Navidad sin fecha
-cuesta 57 euros. Lo que abren otros parques en invierno está en nuestra
-[guía de invierno](/blog/parques-atracciones-invierno-2026).
+cuesta 57 euros. En nuestra [guía de invierno](/blog/parques-atracciones-invierno-2026) están los demás parques que abren en invierno.
 
 Entre el 9 de noviembre y el 18 de diciembre de 2026 el parque está cerrado, y
 también desde el 4 de enero hasta que empieza la temporada en primavera. Desde
@@ -505,7 +496,7 @@ Dimension Coaster de Intamin con coches giratorios, de 17 metros de alto, dentro
 del edificio. Tonnerre 2 Zeus recibirá la segunda parte de su nueva vía de acero
 en el invierno de 2026/27.
 
-## Entradas, cómo llegar, hoteles y comida
+## Organizar el viaje
 
 ### Entradas y precios 2026
 
@@ -608,8 +599,6 @@ Walibi Belgium, el parque del mismo grupo cerca de Bruselas, tiene su propia
 [guía](/blog/walibi-belgium-tiempos-de-espera-consejos), igual que los vecinos
 de Marne-la-Vallée en nuestra
 [guía de Disneyland Paris](/blog/disneyland-paris-tiempos-de-espera-consejos).
-
-El tiempo en Plailly para el día que vayas:
 
 ```weather-widget slug=parc-asterix
 

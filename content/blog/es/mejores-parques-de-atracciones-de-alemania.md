@@ -55,7 +55,7 @@ parkLinks:
   - legoland-deutschland
 ---
 
-En park.fan hay **nueve parques de atracciones de Alemania**. En seis medimos los tiempos de
+De los **nueve parques de atracciones de Alemania** que hay en park.fan, en seis medimos los tiempos de
 espera, atracción por atracción. Del [Hansa-Park](ref:hansa-park) no llega ni una sola cifra,
 porque el parque solo las enseña en su propia app. [Traumatica](ref:traumatica), de la que por ahora tenemos solo cuatro días de medición, y el
 mundo acuático [Rulantica](ref:rulantica) pertenecen al
@@ -134,8 +134,7 @@ Winja’s Fear y Winja’s Force y la torre [Mystery Castle](ref:phantasialand/m
 metros.
 
 Siete mundos temáticos se aprietan en poco espacio: Berlin, China Town, Deep in Africa, Mexico,
-Fantasy, Mystery y Rookburgh. Las entradas solo se venden online y con fecha, ya no hay taquilla. Si
-pagas, con el **Quick Pass** entras antes en una atracción concreta, y con el Quick Pass Ultimate una
+Fantasy, Mystery y Rookburgh. Las entradas solo se venden online y con fecha, ya no hay taquilla. Pagando aparte, con el **Quick Pass** entras antes en una atracción concreta, y con el Quick Pass Ultimate una
 vez en cada una, y solo con el Ultimate en F.L.Y. Junto al parque hay tres hoteles temáticos:
 Charles Lindbergh en Rookburgh, Ling Bao y Matamba. A diferencia de Rust, alojarse en ellos no da
 entrada anticipada, aunque el hotel Charles Lindbergh sí da un acceso propio a F.L.Y. una vez al día. Se
@@ -185,7 +184,7 @@ parque cumple cincuenta años y para la ocasión construye una torre mirador de 
 World y se llama así desde 2005. Según nuestra medición, las colas son más cortas que en el
 Phantasialand, y el domingo es aquí uno de los días más tranquilos.
 
-El parque tiene ocho montañas rusas. La más grande es
+La más grande de sus ocho montañas rusas es
 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), de Mack
 Rides, de 2017: 40 metros de altura, 90 km/h, desde 130 centímetros, y antes de salir el tren se
 lanza tres veces adelante y atrás hasta coger velocidad para la primera colina.
@@ -287,7 +286,7 @@ En Taron y F.L.Y., con 130 centímetros solo se monta con un adulto al lado; sin
 
 ## Dónde esperas menos
 
-La comparación abarca todos los días medidos, calculados igual para cada parque. Las filas van en el orden de la medición del 3 de octubre de 2026 y no se reordenan:
+La comparación abarca todos los días medidos, calculados igual para cada parque. Las filas van en el orden de la medición del 3 de octubre de 2026 y no se reordenan.
 
 ```park-comparison-widget slugs=phantasialand,legoland-deutschland,europa-park,heide-park,movie-park-germany,plopsaland-deutschland show=quietest
 
@@ -308,16 +307,13 @@ misma atracción, y sin pase allí esperas más que nuestra mediana.
 
 ## A qué hora hay cola en cada sitio
 
-En el Phantasialand el día es así, atracción por atracción en todos los días medidos:
-
 ```hourly-profile-widget slug=phantasialand top=6
 
 ```
 
-Taron está más lleno a la apertura y en la última hora, cuando todo el mundo quiere un último viaje
+En el conjunto de días medidos en el Phantasialand, Taron está más lleno a la apertura y en la última hora, cuando todo el mundo quiere un último viaje
 rápido. F.L.Y. tiene poca cola en la primera hora y su pico una hora después, en cuanto el resto del
-parque ha llegado a Rookburgh. Los dos tienen su hora más tranquila por la tarde. Si
-quieres montar en ambos, ve a F.L.Y. a la apertura y guarda Taron para la tarde.
+parque ha llegado a Rookburgh. Los dos tienen su hora más tranquila por la tarde. Para los dos, eso significa F.L.Y. a la apertura y Taron por la tarde.
 
 En el Europa-Park, la Eurosat tiene su cola más larga ya a las diez, porque está cerca de la
 entrada y funciona a cubierto, y cuando llueve todos van allí a la vez. En el Heide
@@ -332,8 +328,7 @@ semana, no comparamos días que se apoyan en partes distintas del año.
 
 El sábado es el día más lleno en el Europa-Park, el Phantasialand, el Heide Park y el Legoland, y en
 Brühl es donde más se distancia del resto de la semana. Allí el domingo está casi igual de lleno,
-mientras que en Rust, Soltau y Bottrop es uno de los días más tranquilos. Si con niños solo puedes
-ir el fin de semana, ve el domingo y no el sábado, salvo a Brühl. En el Plopsaland todos los días están igual de tranquilos,
+mientras que en Rust, Soltau y Bottrop es uno de los días más tranquilos. Para las familias que solo pueden ir el fin de semana, el domingo es por tanto el mejor día, salvo en Brühl. En el Plopsaland todos los días están igual de tranquilos,
 también el sábado.
 
 Julio y agosto son los meses más llenos en casi todos los
@@ -346,8 +341,8 @@ En cinco de los seis parques medidos, un día laborable dentro de las vacaciones
 propio estado estuvo más lleno que un día medio de fin de semana. Qué estados llenan qué parque
 está en la [guía de vacaciones escolares y afluencia](/blog/vacaciones-escolares-parques-de-atracciones-alemania).
 
-El calendario con la previsión de los próximos días existe para cada parque, aquí el del
-Europa-Park:
+El calendario con la previsión de los próximos días existe para cada parque, y abajo está el del
+Europa-Park.
 
 ```best-days-widget slug=europa-park
 

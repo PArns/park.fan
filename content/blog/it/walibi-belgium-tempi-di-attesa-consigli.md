@@ -2,6 +2,7 @@
 title: 'Walibi Belgium: il primo Walibi e Kondaa, il coaster più alto del Benelux'
 translationKey: walibi-belgium-guide
 date: '2026-09-11'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -58,8 +59,7 @@ avvita in un elemento che prima non esisteva su nessun coaster al mondo: un
 cobra roll che il treno percorre senza finire mai a testa in giù.
 
 [Kondaa](ref:walibi-belgium/kondaa) sta a Wavre, il primissimo Walibi,
-quello che ha dato il nome a tutta la catena. Da maggio 2021 è il coaster più
-alto e più veloce del Benelux. Più noto è [Walibi Holland](ref:walibi-holland),
+quello che ha dato il nome a tutta la catena. Più noto è [Walibi Holland](ref:walibi-holland),
 con [Untamed](ref:walibi-holland/untamed).
 
 ## Walibi Belgium e Walibi Holland
@@ -75,7 +75,7 @@ sul cui territorio sorge il parco: **Wa**vre,
 
 Entrambi i parchi appartengono dal 2006 allo stesso gruppo, la francese
 **Compagnie des Alpes** (tramite la controllata Grévin & Cie), a cui fa capo
-anche il [Parc Astérix](ref:parc-asterix). Wavre è più compatto e più vecchio nelle strutture.
+anche il [Parc Astérix](ref:parc-asterix).
 
 Wavre, Biddinghuizen e il Bobbejaanland fiammingo a confronto:
 
@@ -118,8 +118,6 @@ corsa. Si sale fra i 130 e i 195 centimetri di altezza.
 
 ```
 
-I giorni più tranquilli delle prossime settimane, calcolati in diretta:
-
 ```best-days-widget slug=walibi-belgium
 
 ```
@@ -132,7 +130,9 @@ viene sparato fuori dalla stazione in avanti a 85,3 km/h, dal 2013 da un
 motore lineare e non più dal volano originale, prende l’unico looping
 dell’impianto, sale sulla torre che sta dietro e poi ripercorre la stessa pista
 a marcia indietro, di nuovo attraverso il looping e su per la seconda torre,
-oltre la stazione. Solo a quel punto frena. Secondo RCDB, degli Shuttle Loop di
+oltre la stazione. Solo a quel punto frena. Le torri sono alte 42 metri, il
+tracciato misura 220 metri, e si sale da 130 cm (da soli da 140 cm). Secondo
+RCDB, degli Shuttle Loop di
 Schwarzkopf ne funzionano ancora cinque in tutto il mondo. Questo si chiamava
 **Sirocco** fino al 1998, poi Turbine, è rimasto fermo dal 2009 a metà 2013,
 poi ha girato fino al 2024 completamente al coperto e al buio come
@@ -142,29 +142,53 @@ nome Turbine.
 **[Vampire](ref:walibi-belgium/vampire-2)** (1999) è un **Vekoma SLC**
 (Suspended Looping Coaster, modello 689) e all’apertura era il primo impianto
 del genere in Belgio. Il treno pende sotto la rotaia, e a ogni curva i piedi
-penzolano liberi. Secondo il parco Vampire resta aperto fino
-a ottobre 2027, poi verrà demolito. **[Calamity Mine](ref:walibi-belgium/calamity-mine)**
-(1992, battezzata all’inizio «Colorado») è un coaster minerario su 785 metri di tracciato, con andatura tranquilla e curve strette.
-**[Cobra](ref:walibi-belgium/cobra)** (2001) è un **Boomerang**: il
+penzolano liberi. Su 689 metri e a 33 metri d’altezza arriva a 80 km/h e
+capovolge i passeggeri cinque volte. Bisogna essere alti fra 130 e 195 cm.
+Secondo il parco Vampire resta aperto fino a ottobre 2027, poi verrà demolito.
+
+**[Calamity Mine](ref:walibi-belgium/calamity-mine)** ha aperto il 16 luglio
+1992 e fino al 1997 si chiamava «Colorado». Il coaster minerario di Vekoma
+percorre 785 metri a 48 km/h al massimo e a 14 metri d’altezza, con curve
+strette, ponti traballanti e un passaggio sotto una cascata. I bambini salgono
+da 100 cm accompagnati e da 120 cm da soli.
+
+**[Cobra](ref:walibi-belgium/cobra)** (2001) è un **Boomerang di Vekoma**: il
 treno viene trainato all’indietro su un lift, percorre in avanti un cobra roll e
 un looping, tre inversioni in tutto, e poi rifà tutto il percorso
-all’indietro.
+all’indietro. L’impianto è alto 36 metri e lungo 285, il treno arriva a
+76 km/h e l’altezza minima è di 130 cm. Dopo la stagione 2010 Cobra è rimasto fermo fino a luglio 2011.
+
 **[Loup-Garou](ref:walibi-belgium/loup-garou)**, anch’essa dal 2001, è una
 costruzione in legno di Vekoma, un costruttore che si associa piuttosto
-all’acciaio. Corre solo fino al 3 gennaio 2027. Dopo,
+all’acciaio. L’ha progettata Dennis Starkey. Il tracciato è lungo 1.035 metri e
+alto 28, il treno va fino a 80 km/h e si sale da 120 cm. Corre solo fino al
+3 gennaio 2027. Dopo,
 Rocky Mountain Construction lo trasformerà in un coaster ibrido.
 
-Più giovani sono **[Pulsar](ref:walibi-belgium/pulsar)** (2016, Mack Rides,
-water coaster con lancio), **[Tiki-Waka](ref:walibi-belgium/tiki-waka)**
-(2018, Gerstlauer Bobsled Coaster) e **[Fun Pilot](ref:walibi-belgium/fun-pilot)**
-(2019, Zierer, per gli ospiti più piccoli).
+**[Pulsar](ref:walibi-belgium/pulsar)** (2016) è un PowerSplash di Mack Rides:
+una barca da 20 posti viene lanciata in avanti e all’indietro, sale in
+verticale a 45 metri, arriva a 101 km/h e finisce in acqua. Il tracciato
+misura 217 metri, altezza minima 120 cm.
+**[Tiki-Waka](ref:walibi-belgium/tiki-waka)** (2018) è un bobsled coaster di
+Gerstlauer con vetture singole da quattro posti, lungo 564 metri, alto 21 e,
+secondo il parco, veloce fino a 55 km/h, da 100 cm accompagnati e da 120 cm da
+soli.
+**[Fun Pilot](ref:walibi-belgium/fun-pilot)** (2019) l’ha costruito Zierer per
+Fun World: 192 metri, 40 km/h, un treno da 16 posti, bambini da 90 cm
+accompagnati.
 
 ![Un faro con la scritta «Port Wavre» su una darsena, davanti barche e case su palafitte | Port Wavre, il porto immaginario della nuova area Dock World. | wide](/media/walibi-belgium/mecalodon.jpg)
 
 L’ultima novità è **[Mecalodon](ref:walibi-belgium/mecalodon)** (2025,
 Gerstlauer), un launch coaster che il parco mette tra le attrazioni per famiglie:
-925 metri, tre lanci, 65 km/h, a filo d’acqua. Sta nell’area **Dock World**,
-costruita da zero. Il suo cuore è il porto immaginario di **Port Wavre**, con
+925 metri, tre lanci, 65 km/h, a filo d’acqua. Le vetture sembrano squali
+meccanici, il tracciato sale solo a 15 metri ma ha 14 momenti di airtime, e in
+parte segue il percorso del giro in barca Gold River Adventure di Intamin,
+smontato nell’inverno 2023-2024. Dei quattro treni, tre sono sempre in
+servizio e il quarto è in manutenzione. I bambini salgono da 100 cm
+accompagnati e da 120 cm da soli. Mecalodon sta nell’area **Dock World**,
+costruita da zero e aperta il 5 aprile 2025. Per l’area, il coaster e il
+rinnovo di attrazioni più vecchie il parco ha speso circa 35 milioni di euro. Il suo cuore è il porto immaginario di **Port Wavre**, con
 faro, pontili e case su palafitte, dentro il quale il parco ha inglobato tre attrazioni più vecchie: la flume
 **[Flash Back](ref:walibi-belgium/flash-back)**, lo splash shuttle **Pulsar** e
 appunto **[Turbine](ref:walibi-belgium/turbine)**, tornato sotto il nome di
@@ -174,9 +198,38 @@ prestito da Kondaa, sta invece in Exotic World, accanto al coaster grande.
 Delle due novità nel parco, Mecalodon è quella che mi ha sorpreso di più.
 Davanti ai dettagli del porto resti a lungo anche senza salire su niente.
 
+### Attrazioni acquatiche, dark ride e la torre a caduta
+
+**[Radja River](ref:walibi-belgium/radja-river)** è il rafting di Intamin del
+1988, con gommoni rotondi da dodici posti, rapide e cascate. Accompagnati si
+sale da 105 cm, da soli da 140 cm.
+**[Flash Back](ref:walibi-belgium/flash-back)** l’ha costruita Mack Rides nel 1995. La flume scende un tratto all’indietro e
+finisce con due splash, e i bambini salgono da 90 cm accompagnati.
+
+**[Dalton Terror](ref:walibi-belgium/dalton-terror)** è una torre a caduta di
+Intamin del 1998 che, secondo il parco, porta i passeggeri a 77 metri in
+verticale, per altezze fra 120 e 195 cm. Il Top Spin
+**[Buzzsaw](ref:walibi-belgium/buzzsaw)** di Huss (2001) è solo per chi è alto
+almeno 140 cm.
+
+Nel dark ride **[Popcorn Revenge](ref:walibi-belgium/popcorn-revenge)** di
+Alterface (2019), in Karma World, si affrontano dei popcorn impazziti, e i
+bambini possono salire già da 50 cm.
+**[Challenge of Tutankhamon](ref:walibi-belgium/challenge-of-tutankhamon)**
+(2003, Sally Corporation ed ETF) è un dark ride con pistole laser in una tomba
+egizia, da 80 cm accompagnati. **Silverton** è arrivata nel 2023, attrazione
+per famiglie in stile Far West accanto a Dalton Terror. I fan hanno scelto il nome in un concorso, e rimanda al treno che serviva la città mineraria di Silverton, nelle Montagne Rocciose.
+
+Con bambini piccoli alle attrazioni c’è il **Baby Switch** gratuito. Un
+genitore fa la fila, l’altro aspetta all’uscita, poi ci si dà il cambio. Non si
+può combinare con lo Speedy.
+
 **Aqualibi**, il centro acquatico
 annesso con piscina a onde e scivoli, ha un ingresso a parte e non rientra
-nel biglietto giornaliero di Walibi.
+nel biglietto giornaliero di Walibi. Ha aperto il 6 luglio 1987, tiene l’acqua
+a 29 gradi tutto l’anno e ha dieci scivoli. Alla cassa chi è alto più di
+1,20 m paga 37,50 €, i bambini fra 1 e 1,20 m secondo il parco 15 €, e sotto il metro l’ingresso
+è gratuito.
 
 ```map-widget slug=walibi-belgium
 
@@ -189,23 +242,55 @@ dimostrazioni di sci nautico a fune, di cui aveva appena ottenuto i diritti di
 vendita per il Benelux. In pochi anni l’area delle esibizioni diventò un parco
 vero, e il **26 luglio 1975** Walibi aprì i cancelli, con circa
 **47.000 visitatori** nella prima stagione. La mascotte è un
-canguro, perché «Walibi» suona quasi come «wallaby».
+canguro, perché «Walibi» suona quasi come «wallaby». Secondo la Wikipedia in
+francese e RCDB, Walibi è stato il primo parco d’Europa a vendere un unico
+biglietto giornaliero valido per tutte le attrazioni.
 
-Il parco crebbe in fretta oltre Wavre. Nel 1981 Meeùs entrò in Avenir Land,
-il futuro Walibi Rhône-Alpes, in Francia; nel 1990 il gruppo comprò Bellewaerde,
-vicino a Ypres, e nel 1992 il Flevohof nei Paesi Bassi. Nel 1998 il gruppo
-statunitense Premier Parks, che nel 2000 si ribattezzò Six Flags, rilevò
-l’intero gruppo, e dal 2001 al 2004 la sede di Wavre si chiamò **Six Flags Belgium**, nella stessa
+Fino al 1997 il parco era decorato con i personaggi di **Tintin**. Con un
+contratto con le Éditions du Lombard, e con il consenso di Hergé, Meeùs
+costruì nel 1975 il Temple du Soleil come attrazione principale, sostituito nel
+1980 dal più grande Secret de la Licorne. In quell’edificio oggi gira Challenge of Tutankhamon. Nel 1997 il rinnovo del contratto con Moulinsart
+fallì, e ogni riferimento a Tintin sparì dal parco. Nel 1978 arrivò il percorso
+di tronchi Rivière sauvage, nel 1979 una ruota panoramica e **Tornado**, un
+coaster di Vekoma con due cavatappi. Tornado funzionò fino al 2002, poi restò
+fermo e, non trovandosi un compratore, fu demolito per rottame all’inizio del 2006.
+
+Nel 1985 aprì il dark ride acquatico Le Palais d’Ali Baba. Il
+24 giugno 1988 il gruppo Walibi si quotò alla Borsa di Bruxelles. Per il
+coaster minerario Colorado il parco spese nel 1992 più che per qualsiasi
+attrazione precedente. Occupa un ettaro e prese il posto del Jumbo Jet, un
+coaster di Schwarzkopf in funzione dal 1978. Per i vent’anni, nel 1995, circa
+4,9 milioni di euro andarono in tre novità, la maggiore delle quali era Flash
+Back. Nell’ottobre 1996 Eddy Meeùs passò la direzione al figlio Thierry.
+
+Nel 1981 Meeùs entrò in Avenir Land, il futuro Walibi Rhône-Alpes, in Francia, e il parco diventò **Walibi Wavre**. Nel 1990 il gruppo comprò Bellewaerde,
+vicino a Ypres, e nel 1992 il Flevohof nei Paesi Bassi. Il 15 dicembre 1997
+Meeùs trattò la vendita con il gruppo statunitense Premier Parks, e
+l’acquisizione si chiuse il 24 marzo 1998. L’ultimo investimento della sua
+squadra, costruito l’inverno prima, fu Lucky Luke City con la torre a caduta
+Dalton Terror. Premier Parks si ribattezzò Six Flags
+nel 2000, e dal 2001 al 2004 la sede di Wavre si chiamò **Six Flags Belgium**, nella stessa
 ondata di acquisizioni in cui a Six Flags finì anche l’attuale
-[Walibi Holland](ref:walibi-holland). Eddy Meeùs morì il
+[Walibi Holland](ref:walibi-holland). Per il 2001 Six Flags investì circa
+30 milioni di euro in una quindicina di attrazioni nuove, fra cui Loup-Garou e
+Cobra, costruito al posto della zona di Ali Baba, più un’area per bambini con i
+Looney Tunes. Bugs Bunny sostituì il canguro come simbolo. Eddy Meeùs morì il
 **24 novembre 2001**.
 
-Nel 2004 Six Flags vendette i suoi parchi europei al fondo londinese Palamon
-Capital Partners, che li gestì come Star Parks e restituì a Wavre il nome Walibi
-per la stagione 2005. Nel 2006 Grévin & Cie, controllata della francese
+Nel marzo 2004 Six Flags vendette i suoi parchi europei al fondo londinese Palamon Capital Partners, che li gestì
+come Star Parks e dovette rinunciare alle licenze Warner. Il 26 marzo 2005 il
+parco riaprì come **Walibi Belgium**, con Boule et Bill, Bob et Bobette e un
+cinema 4D di SimEx-Iwerks con SpongeBob. Nel 2006 Grévin & Cie, controllata della francese
 **Compagnie des Alpes**, comprò il parco e con esso tutte le altre sedi Walibi
-tranne Walibi Lorraine. Da allora Wavre, Biddinghuizen e il [Parc Astérix](ref:parc-asterix)
-appartengono allo stesso gruppo.
+tranne Walibi Lorraine.
+
+La prima novità sotto la Compagnie des Alpes fu **Vertigo**, un Mountain
+Glider di Doppelmayr previsto per il 2006 che, per problemi tecnici, funzionò
+solo dal 14 giugno 2007, e anche allora a singhiozzo. All’inaugurazione
+ufficiale dell’8 maggio 2008 venne Jean-Claude Van Damme, il 19 maggio
+l’attrazione si fermò di nuovo e a dicembre 2008 cominciò lo smontaggio. Il
+20 gennaio 2011 il parco presentò un tema musicale e lasciò le licenze dei
+fumetti, tranne Lucky Luke, rimasto fino al 2014.
 
 Il **15 luglio 2021**
 l’alluvione che devastò ampie zone dell’Europa occidentale e centrale colpì
@@ -222,7 +307,8 @@ Il **22 giugno 2017** il parco presentò il più grande piano di investimenti de
 aree a tema, più dieci attrazioni nuove. Tutto doveva
 essere pronto nel 2023. Si è partiti nel 2018 con Tiki-Waka, nel 2019 sono
 arrivati il dark ride Popcorn Revenge e Fun Pilot, nel 2021 **Kondaa** e nel
-2025 **Dock World** con Mecalodon. Dal 2016 il parco conta quattro mondi nuovi
+2025 **Dock World** con Mecalodon. Le novità del 2018 sono costate dodici
+milioni di euro, quelle del 2019 diciassette milioni. Dal 2016 il parco conta quattro mondi nuovi
 (Exotic, Karma, Fun e Dock World), cioè la metà, e l’ultimo è arrivato due anni
 dopo la scadenza.
 
@@ -230,6 +316,11 @@ Nel parco gemello
 [Walibi Holland](ref:walibi-holland) la **Compagnie des Alpes** ha costruito
 nello stesso periodo altre due grosse novità,
 [Untamed](ref:walibi-holland/untamed) (2019) e la doppia pista YOY (2025).
+
+Nel 2025, l’anno dei suoi 50 anni, il parco ha avuto secondo i suoi dati più di
+un milione di visitatori. Per aprire la stagione 2026 il 4 aprile ha cercato
+600 stagionali e studenti, oltre ai 150 dipendenti fissi, e circa 500 studenti
+in più per l’estate.
 
 Il 1° giugno 2026 il parco ha annunciato il mondo successivo,
 **Festival World**, un’area ispirata a New Orleans. Come primo passo, dopo
@@ -251,7 +342,13 @@ L’evento di Halloween si chiama dal 2024 **«Ibilaw»**, «Walibi» al contrar
 ha una mascotte tutta sua, **Bill**.
 Nel 2026 si tiene dal 10 ottobre all’11 novembre per 20 giorni, dieci dei quali
 fino alle 22, con quattro case stregate (la nuova è The Grand Hotel) e quattro
-scare zone, fra cui il circo di clown **Psycho Circus** e **Arachnophobia**.
+scare zone, fra cui il circo di clown **Psycho Circus**, che nel 2026 vive
+l’ultima stagione come «The Final Act», **Arachnophobia** e la nuova zona
+**Hecatomb**, accanto a Kondaa. In programma ci sono anche la parata Bill’s
+Procession verso fine giornata e lo spettacolo «Bill: A Fairy Tale», diretto da
+Felipe Garcia. Il parco resta aperto fino alle 22 il 17, 24, 25, 29, 30 e
+31 ottobre e l’1, 2, 7 e 11 novembre. Solo i bambini sotto i 13 anni possono
+venire in costume.
 Limiti di età non ce ne sono: i mostri restano nella zona fra Wave Swinger e
 Buzzsaw, e i bambini sotto i dodici anni possono ritirare una spilla
 anti-mostri all’ufficio informazioni.
@@ -259,10 +356,7 @@ Una delle case stregate, **Aquarium**, sta nella stessa area di Dock World in
 cui di giorno gira Mecalodon, dentro un acquario espositivo chiuso, a quanto si
 racconta, dagli anni Novanta. Mine Blast a parte, le case stregate si
 pagano. Lo **Speedy Pass**, la fast lane del parco, durante Ibilaw esiste in
-sei pacchetti per attrazioni e case stregate, e nessuno include l’ingresso al
-parco. Come se la cava rispetto a Toverland, Movie Park e compagnia
-sta nella nostra
-[guida ad Halloween 2026](/blog/halloween-parchi-divertimenti-2026).
+sei pacchetti per attrazioni e case stregate, e nessuno include l’ingresso al parco.
 
 ## Quando andarci
 
@@ -274,8 +368,9 @@ Fuori stagione e fuori dalle vacanze di Natale Walibi Belgium è chiuso. Dentro 
 gente ci sarà sono soprattutto le vacanze scolastiche belghe, che dall’anno
 scolastico 2022-2023 non coincidono più: nel 2026 le scuole francofone di
 Vallonia e Bruxelles hanno le vacanze d’autunno dal 19 al 30 ottobre, quelle
-fiamminghe dal 2 all’8 novembre, e Ibilaw le copre entrambe. Fuori dalle vacanze estive il parco non apre tutti i giorni. Come cadono
-mesi e giorni della settimana negli altri parchi sta nella [pagina del periodo migliore](/periodo-migliore-per-visitare).
+fiamminghe dal 2 all’8 novembre, e Ibilaw le copre entrambe. Le vacanze di
+Natale cominciano il 21 dicembre 2026 in entrambe le comunità e finiscono
+l’1 gennaio in Vallonia e a Bruxelles e il 3 gennaio 2027 nelle Fiandre, in pieno Walibi Winter.
 
 ## Una giornata a Wavre
 
@@ -298,7 +393,15 @@ Vallone), a circa mezz’ora d’auto da Bruxelles lungo la E411 (Bruxelles–Na
 uscita 6. Dalla zona di confine tedesca (Aquisgrana, Colonia), a seconda del
 percorso, ci vuole nettamente meno di tre ore, senza contare il ring di
 Bruxelles all’ora di punta. In treno si scende a Bierges-Walibi: secondo il
-parco la stazione è a 150 metri dall’ingresso.
+parco la stazione è a 150 metri dall’ingresso. Con un biglietto Walibi datato
+il biglietto del treno SNCB si compra nello stesso negozio online, con uno non
+datato arriva un codice per un andata e ritorno su sncb.be/walibi.
+
+**Parcheggio.** Il parcheggio costa 13 € per auto, il biglietto si compra alle
+casse dell’ingresso o online. Chi ha un abbonamento può comprare un pass
+parcheggio annuale a 40 €. Ci sono dieci colonnine per auto elettriche, una
+zona Kiss & Ride per lasciare e riprendere gratis e rastrelliere per bici a
+destra dei cancelli 1 e 2.
 
 **Orari.** La stagione va da inizio aprile fino a novembre, fuori dalle
 vacanze estive non tutti i giorni ma secondo calendario stagionale. A ottobre
@@ -310,16 +413,47 @@ per giorno sulla [pagina del parco](ref:walibi-belgium).
 
 **Mangiare.** Chioschi ce ne sono in tutto il parco. Chi vuole sedersi va
 nell’area a tema attorno a Kondaa: da N’Soso servono piatti di pollo, con una
-terrazza che guarda su Exotic World.
+terrazza che guarda su Exotic World. Per il 2026 il parco ha preso lo chef
+belga Bart De Pooter, che in passato aveva due stelle Michelin. Da allora la
+carne degli hamburger di manzo pesa 70 grammi invece di 55. Da Hungry Sharky ci
+sono poke bowl e hamburger vegani, da Delhi’cious piatti indiani e da Country
+Cantina costine. Nei ristoranti ci sono microonde self-service per scaldare le
+pappe dei bambini.
 
-**Biglietti.** Online costa meno che alla cassa. Il prezzo di riferimento sul
-posto è di **57 €**, i biglietti online con data partono da 45 € e i bambini
-sotto il metro entrano gratis (al 25 settembre 2026). Per Ibilaw ci sono
-biglietti in prevendita fino al 30 settembre: 49 € invece di 61 € per le
-giornate lunghe fino alle 22. Il Walibi Pass costa 155 €, quindi conviene dalla
+**Dove dormire.** Walibi Belgium non ha un hotel suo. Il più vicino è il
+Novotel Wavre Brussels East, a 300 metri dall’ingresso secondo il parco.
+Nell’elenco dei partner del parco ci sono anche l’Ibis Wavre Brussels East e il
+Best Western Wavre Hotel a Wavre, e a Louvain-la-Neuve il Martin’s All Suites
+(quattro stelle, 103 suite), il Martin’s Louvain-la-Neuve sul lago, l’Ibis
+Styles, il B-Lodge e l’ostello Gîte Mozaïk, a 150 metri dalla stazione. In
+campagna c’è la Ferme de l’Hosté, un B&B a meno di quattro chilometri dal
+parco, vicino alla stazione di Basse-Wavre.
+
+**Biglietti.** Online costa meno che alla cassa. All’apertura della stagione,
+il 4 aprile 2026, l’ingresso costava 56 € alla cassa, 46 € ridotto. Durante
+Ibilaw sono **57 €** alla cassa nei giorni normali e 61 € nelle giornate lunghe
+fino alle 22. Nei giorni normali di Ibilaw i bambini fra 1 e 1,40 m, gli over 65
+e le persone con disabilità pagano 47 €, e i bambini sotto il metro entrano
+gratis. Prenotando online almeno sette giorni prima, un giorno di Ibilaw costa
+47 € (giornata lunga 50 €), cinque o sei giorni prima 49 € (52 €). Nel 2023 un
+biglietto adulto costava ancora 45 €.
+
+Il Walibi Pass costa 155 €, quindi conviene dalla
 terza visita a prezzo di cassa. Include Ibilaw e Walibi Winter, ma le giornate
-lunghe di Ibilaw vanno prenotate prima (tranne con i pass Ruby e Diamond). I
-prezzi aggiornati stanno su [walibi.be](https://www.walibi.be/en/tickets).
+lunghe di Ibilaw vanno prenotate prima (tranne con i pass Ruby e Diamond). Con
+Aqualibi si chiama Red & Blue e costa 240 €. Il Gold a 405 € comprende quattro
+accessi Speedy per visita, il Ruby a 530 € lo Speedy e il parcheggio, il
+Diamond a 730 € lo Speedy illimitato e il parcheggio.
+
+**Speedy.** La fast lane ha tre livelli, online e alle casse e
+nei negozi del parco, in quantità limitata e sempre in aggiunta all’ingresso.
+Speedy One a 8 € vale una volta per un’attrazione. Speedy Rides a 55 € vale una
+volta per ciascuna delle 16 attrazioni della selezione e una volta per
+Mecalodon e Tiki-Waka. Con Speedy Rides Unlimited a 105 € fai le 16 e Mecalodon
+tutte le volte che vuoi, Tiki-Waka una volta. Nelle giornate lunghe di Ibilaw Speedy Rides costa 60 € e Unlimited 110 €, e Speedy One non è in vendita. Nella selezione ci sono Kondaa,
+Vampire, Loup-Garou, Pulsar, Turbine, Cobra, Calamity Mine, Dalton Terror,
+Buzzsaw, Flash Back, Radja River, Fun Pilot, Popcorn Revenge, Challenge of
+Tutankhamon, il Palais du Génie e il cinema 4D.
 
 ## Domande frequenti su Walibi Belgium
 
@@ -333,6 +467,28 @@ più alto e più veloce del Benelux dal 2021.
 Flevohof e diventato Walibi nel 1994, è il più noto dei due, con
 [Untamed](ref:walibi-holland/untamed) e
 [Goliath](ref:walibi-holland/goliath). Il biglietto di uno non vale nell’altro.
+
+### Quanto costa lo Speedy Pass a Walibi Belgium?
+
+Speedy One costa 8 € per un accesso rapido a un’attrazione, Speedy Rides 55 €
+per un accesso a ciascuna di 16 attrazioni più Mecalodon e Tiki-Waka, Speedy
+Rides Unlimited 105 € per tutti i giri che vuoi. L’ingresso al parco non è mai
+compreso. Gli abbonamenti annuali Gold, Ruby e Diamond includono lo Speedy.
+Durante Ibilaw ci sono pacchetti Speedy a parte che coprono le case stregate.
+
+### Quanto bisogna essere alti per le montagne russe?
+
+Per [Kondaa](ref:walibi-belgium/kondaa), Vampire e Cobra servono 130 cm, e per
+Kondaa e Vampire al massimo 195 cm. Loup-Garou e Pulsar accettano da 120 cm,
+Turbine da 130 cm accompagnati e da 140 cm da soli. Accompagnati, i bambini
+salgono da 100 cm su Calamity Mine, Tiki-Waka e Mecalodon, e da 90 cm su Fun Pilot.
+
+### Quanto costa il parcheggio a Walibi Belgium?
+
+13 € per auto, in vendita alle casse dell’ingresso o online. Chi ha un
+abbonamento può comprare un pass parcheggio a 40 € all’anno, e i pass Ruby e
+Diamond includono il parcheggio. In treno il parcheggio non si paga: la
+stazione di Bierges-Walibi è a 150 metri dall’ingresso.
 
 ### Quanto è alta e quanto va veloce Kondaa?
 
@@ -378,15 +534,9 @@ al 2030.
 
 ## Per approfondire
 
-Che tempo fa a Wavre quando ci vai:
-
 ```weather-widget slug=walibi-belgium
 
 ```
-
-Chi va a Wavre dovrebbe fare Kondaa due volte: davanti, dove il
-drop lo vedi arrivare, e nell’ultima fila, dove ti prende già prima che il treno
-sia arrivato del tutto in cima.
 
 — Patrick
 
@@ -405,4 +555,11 @@ sia arrivato del tutto in cima.
 - Ibilaw 2026 (date, case stregate, scare zone, spilla anti-mostri, Speedy): [Ibilaw (Walibi Belgium)](https://www.walibi.be/halloween-walibi/en) · la nostra [guida ad Halloween 2026](/blog/halloween-parchi-divertimenti-2026)
 - Vacanze d’autunno 2026: [Comunità francese (RTBF)](https://www.rtbf.be/article/voici-les-dates-conges-scolaires-pour-l-annee-2026-2027-en-federation-wallonie-bruxelles-11576448) · [Fiandre (KampKompas)](https://www.kampkompas.be/schoolvakanties-2026-2027-vlaanderen-belgie)
 - Biglietti, abbonamenti, come arrivare, Walibi Winter: [biglietti](https://www.walibi.be/en/tickets) · [abbonamenti](https://www.walibi.be/en/tickets/pass) · [come arrivare](https://www.walibi.be/en/plan-your-visit/directions) · [Walibi Winter](https://www.walibi.be/walibi-winter/en)
+- Storia del parco (contratto Tintin, biglietto unico, Walibi Wavre, quotazione in Borsa del 1988, Colorado, Flash Back, vendita a Premier Parks, Six Flags 2001, Palamon, Vertigo, tema musicale 2011, investimenti 2018 e 2019): [Walibi Belgium su Wikipedia (FR)](https://fr.wikipedia.org/wiki/Walibi_Belgium) · primo parco d’Europa con biglietto unico, nomi precedenti: [Walibi Belgium su RCDB](https://rcdb.com/4847.htm)
+- Dati, costruttori e storia dei coaster: [Vampire](https://rcdb.com/922.htm), [Calamity Mine](https://rcdb.com/924.htm), [Loup-Garou](https://rcdb.com/1029.htm), [Pulsar](https://rcdb.com/12409.htm), [Tiki-Waka](https://rcdb.com/15205.htm), [Fun Pilot](https://rcdb.com/15206.htm), [Tornado](https://rcdb.com/923.htm), [Jumbo Jet](https://rcdb.com/929.htm) e [Vertigo](https://rcdb.com/3457.htm) su RCDB
+- Altezza, velocità, lunghezza e altezze minime: [attrazioni di Walibi Belgium](https://www.walibi.be/en/explore-the-park/attractions) · [Calamity Mine](https://www.walibi.be/en/explore-the-park/attractions-family/calamity-mine) · [Dalton Terror](https://www.walibi.be/en/explore-the-park/attractions-thrills/dalton-terror) · [Radja River](https://www.walibi.be/en/explore-the-park/attractions-family/radja-river) · [Flash Back](https://www.walibi.be/en/explore-the-park/attractions-family/flash-back)
+- Dock World, 35 milioni di euro, 14 airtime: [Brussels Times](https://www.brusselstimes.com/1419206/walibi-theme-park-unveils-largest-family-rollercoaster-in-benelux) · [Blooloop](https://blooloop.com/theme-park/news/walibi-belgium-mecalodon-family-coaster/)
+- Apertura della stagione 2026, prezzi alla cassa, Bart De Pooter, Walibi Winter: [comunicato di Walibi Belgium sul 4 aprile 2026](https://walibibelgium.prezly.com/walibi-belgium-rouvre-le-4-avril-dock-world-souffle-sa-premiere-bougie-et-la-restauration-se-reinvente) · visitatori 2025, personale: [comunicato sulla stagione 2026](https://walibibelgium.prezly.com/walibi-belgium-recrute-600-postes-pour-lancer-la-saison-2026) · Ibilaw 2026 (Hecatomb, spettacolo, giornate lunghe): [comunicato su Ibilaw](https://walibibelgium.prezly.com/halloween-ibilaw-poursuit-son-expansion-a-walibi-belgium) · prezzi 2023, Silverton: [cartella stampa 2023](https://cdn.uc.assets.prezly.com/508b8e63-ce49-4fd4-9845-d0433844e030/-/inline/no/Dossier%20de%20presse%20Walibi%20Saison%202023%20FR.pdf)
+- Speedy, abbonamenti, parcheggio, hotel, ristoranti, Aqualibi: [Speedy](https://www.walibi.be/en/tickets/speedy) · [FAQ](https://www.walibi.be/en/faq) · [alloggi](https://www.walibi.be/en/plan-your-visit/accommodation) · [ristoranti](https://www.walibi.be/en/explore-the-park/restaurants) · [Aqualibi](https://www.walibi.be/aqualibi/en)
+- Vacanze di Natale 2026-2027: [Comunità francese (RTBF)](https://www.rtbf.be/article/voici-les-dates-conges-scolaires-pour-l-annee-2026-2027-en-federation-wallonie-bruxelles-11576448) · [Fiandre (KampKompas)](https://www.kampkompas.be/schoolvakanties-2026-2027-vlaanderen-belgie)
 - Dati su attese e affluenza: misurazioni proprie da fine dicembre 2025, [Walibi Belgium su park.fan](ref:walibi-belgium)

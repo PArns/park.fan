@@ -2,6 +2,7 @@
 title: 'Liseberg: Balder, Helix und ein Freizeitpark mitten in Göteborg'
 translationKey: liseberg-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -61,8 +62,7 @@ Liseberg in Göteborg ist 1923 für eine Jubiläumsausstellung
 gebaut worden und sollte danach wieder verschwinden. Heute stehen auf dem
 Gelände vier große Achterbahnen, der Turm [AtmosFear](ref:liseberg/atmosfear) mit
 einem 90 Meter hohen freien Fall und im Herbst fünf Spukhäuser. Im November
-kommt der Weihnachtsmarkt dazu. Das Gelände liegt am Rand der Innenstadt, und
-der Hauptbahnhof ist laut Park zu Fuß in 10 bis 15 Minuten erreichbar. Der Park
+kommt der Weihnachtsmarkt dazu. Das Gelände liegt am Rand der Innenstadt. Der Park
 nennt für 2025 rund **3 Millionen Gäste** im Jahr.
 
 ## Wie aus einer Ausstellung ein Park wurde
@@ -90,6 +90,18 @@ Das Rosa der Gebäude stammt aus der Ausstellung von 1923. Die Bergbahn von dama
 wurde **1987** abgerissen und durch die
 [Lisebergbanan](ref:liseberg/lisebergbanan) ersetzt, die Anton Schwarzkopf für denselben Berg
 entworfen hatte.
+
+Sechs Achterbahnen hat Liseberg wieder abgebaut, die Kanonen eingerechnet. Die
+Bergbahn von 1923 hatte Valdemar Lebech gebaut. Die **Super 8**, eine Wildcat von
+Schwarzkopf, fuhr von 1966 bis 1979 und zog dann in einen Park in Karlstad um. Von
+1980 bis 1995 lief die **Lisebergs Loopen**, ein Looping Star von Schwarzkopf mit
+einem Looping, 24,5 Meter hoch und 77 km/h schnell, die danach unter anderem im
+Playcenter in São Paulo stand. Auf ihren Platz kam 1997 **HangOver**, die erste
+Invertigo von Vekoma, 40 Meter hoch, 80 km/h schnell und mit drei Überschlägen.
+Geplant war sie für 1996 mit Linearmotoren. Wegen Problemen mit dieser Technik
+bekam sie einen Kettenlift und eröffnete ein Jahr später. Sie
+fuhr bis 2002. Die Kinderbahn **Cirkusexpressen** von Zierer lief von 1977 bis
+2008, bis 1985 unter dem Namen Lilla Bergbanan.
 
 Seit **2000** hat Liseberg im
 Winter geöffnet („Jul på Liseberg“), im ersten Jahr kamen 418.000 Gäste. **2015**
@@ -121,13 +133,12 @@ Bahn steht auf der anderen Seite des Flusses Mölndalsån, wie die Kållerado.
 
 ```
 
-In unseren Messungen gehört Balder zu den vier Bahnen mit den längsten
-Wartezeiten. Die Roller Coaster DataBase nennt für die
+Die Roller Coaster DataBase nennt für die
 Bahn eine Kapazität von rund 1.149 Gästen pro Stunde.
 
 [Balder](ref:liseberg/balder?full)
 
-## Helix, Valkyria und die Lisebergbanan
+## Die Stahlachterbahnen
 
 **[Helix](ref:liseberg/helix)** eröffnete am **26. April 2014** und kostete nach
 Angaben des Parks fast 240 Millionen Kronen; die Roller Coaster DataBase nennt
@@ -148,6 +159,9 @@ Gelände der Kanonen. Die Kanonen war ein Launch Coaster von Intamin, der am 23.
 ist ein Dive Coaster von Bolliger & Mabillard mit drei Inversionen
 und einer **50 Meter** langen, steilen ersten Abfahrt, die direkt in einen Tunnel
 unter der Erde führt. Der Park nennt **47 Meter** Höhe und **105 km/h**.
+Auf 700 Metern Strecke folgen ein Immelmann, eine Zero-G-Roll und eine
+Heartline-Roll. Drei Züge mit je 18 Plätzen, sechs nebeneinander in einer
+Reihe, schaffen rund 1.100 Gäste in der Stunde.
 Valkyria braucht **132 cm** plus sieben Jahre und hat, wie Mechanica, eine
 Obergrenze von 195 cm.
 
@@ -164,15 +178,16 @@ Unter ihr liegt ein Restaurant mit nachgebauten Waggons. Die Mindestgröße lieg
 130 cm, mit Begleitung bei 110 cm. Im Herbst und Winter fährt sie nur während
 Halloween, im Jul-Programm steht sie nicht auf der Liste.
 
-**[Luna](ref:liseberg/luna)**, 2023 eröffnet, ist ein Boomerang von
-Vekoma, 33,5 Meter hoch und 242 Meter lang, der den Zug erst vorwärts, dann rückwärts
-durch denselben Kurs schickt. Für Luna gilt 120 cm plus sechs Jahre Alter, mit
+**[Luna](ref:liseberg/luna)**, am 22. April 2023 eröffnet, ist ein Boomerang von
+Vekoma, 33,5 Meter hoch und 242 Meter lang, der den Zug mit bis zu 68 km/h erst
+vorwärts, dann rückwärts durch denselben Kurs schickt. Sie steht im Themenbereich
+Luna Park auf dem höchsten Punkt des Parks und kam zum 100. Geburtstag. Für Luna gilt 120 cm plus sechs Jahre Alter, mit
 Begleitung 95 cm plus drei Jahre. Für die Kleinen gibt es die
-**[Rabalder](ref:liseberg/rabalder)** von Zierer (2009) und die
-**[Stampbanan](ref:liseberg/stampbanan)** von Preston & Barbieri (2013), beide im
-Kaninchenland. Für beide braucht ein Kind 110 cm, in Begleitung 90 cm.
+**[Rabalder](ref:liseberg/rabalder)** von Zierer (25. April 2009, 9 Meter hoch,
+39 km/h) und die **[Stampbanan](ref:liseberg/stampbanan)** von Preston & Barbieri
+(27. April 2013, gut 3 Meter hoch), beide im Kaninchenland. Für beide braucht ein Kind 110 cm, in Begleitung 90 cm.
 
-## AtmosFear, Wasserfahrten und die übrigen Fahrgeschäfte
+## Die übrigen Fahrgeschäfte
 
 Der Turm **[AtmosFear](ref:liseberg/atmosfear)** wurde 1990 als Aussichtsturm gebaut („Lisebergstornet“), am 30. Mai
 2010 fuhr die letzte Gruppe hinauf, einen Tag später begann der Umbau durch Intamin.
@@ -234,7 +249,7 @@ Gasten und Skogen, **15 Jahre** für „7“.
 
 ```
 
-## Spukhotel, Bühnen und der Stjärnstigen
+## Spukhotel und Bühnen
 
 Das **Spökhotellet Gasten** eröffnete 1998 und bekam im Herbst 1999 einen
 THEA Award der Themed Entertainment Association in Kalifornien. Es steht in der
@@ -278,8 +293,6 @@ meisten Bahnen um 16 Uhr, bei der FlumeRide eine Stunde später. Die
 Kaninchenland-Bahnen haben ihren Höhepunkt eher am frühen Nachmittag. Wer um 12 Uhr
 da ist, hat vor den vier großen Bahnen weniger Gedränge als um vier.
 
-Die ruhigsten der kommenden Öffnungstage, live berechnet:
-
 ```best-days-widget slug=liseberg
 
 ```
@@ -298,8 +311,7 @@ Kraftverket, Lisebergbanan, Loke, Luna, Mechanica, das Spukhaus Gasten, Underlan
 und Valkyria. Pro Gruppe läuft immer nur eine Reservierung gleichzeitig, für eine bis
 sechs Personen, und daneben gibt es weiter die normale Warteschlange. Ob die
 virtuelle Warteschlange an einem bestimmten Tag läuft, hängt laut Park davon
-ab, wie viele Gäste da sind. Wer Valkyria oder Helix fahren will, reiht sich
-also zuerst in der App ein und fährt in der Zwischenzeit etwas anderes.
+ab, wie viele Gäste da sind.
 
 ## Wann du hinfahren solltest
 
@@ -315,8 +327,7 @@ mehr als dreimal so viele wie Montag oder Dienstag.
 Im Herbst schließt der Park sonntags um 20 Uhr, freitags und samstags um 22 Uhr.
 
 Die Sommersaison 2026 begann am **18. April** um 11 Uhr. Wann sie endet, sagt der
-Park nicht. Der Kalender auf der
-[Parkseite](ref:liseberg) zeigt, was für die nächsten Wochen veröffentlicht ist.
+Park nicht.
 
 ### Halloween: 2. Oktober bis 1. November 2026
 
@@ -385,8 +396,7 @@ Preisstufen je nach Tag. Die Preise der Halloween-Saison 2026, online:
 
 Ohne Åkpass kostet eine einzelne Fahrt eine Åkkupong zu 25 Kronen, ein Spukhaus
 zwei bis vier Kupongen. An den Tagen „Höst i Kaninlandet“ kostet der Eintritt 95
-Kronen, mit Kinderbahnen 245 Kronen. Die Sommerpreise 2026 zeigt die Seite des
-Parks nicht mehr. Welche der sieben Stufen an welchem Tag gilt, steht im Preiskalender des Parks als PDF.
+Kronen, mit Kinderbahnen 245 Kronen.
 
 Wer öfter kommt, kauft einen Jahrespass (zwölf Monate ab Aktivierung): das
 **Lisebergspasset** für 395 Kronen gilt für den Eintritt, das **Guldpasset** für 2.595
@@ -400,12 +410,11 @@ Korsvägen, mit den Haltestellen Korsvägen und Liseberg Station, der **Södra
 entrén** am Herman Lindholms torg 1 mit der Haltestelle Liseberg Södra. Vom
 Hauptbahnhof Göteborg Central sind es laut Park 10 bis 15 Minuten zu Fuß, und im
 Sommer fährt zwischen Central und dem Park eine historische Straßenbahn, die
-Lisebergslinjen. Für die Straßenbahnlinien verweist der Park auf Västtrafik.
+Lisebergslinjen.
 
 Wer mit dem Auto kommt, hat drei Parkhäuser: **P-huset Liseberg Södra** unter World of
 Volvo (1.170 Plätze), **P-huset Liseberg Västra** an der Södra Vägen 70 (162 Plätze)
-und **P-huset Focus** an der Fabriksgatan 45 (1.057 Plätze). Die Parkgebühren stehen
-bei Parkering Göteborg.
+und **P-huset Focus** an der Fabriksgatan 45 (1.057 Plätze).
 
 ## Übernachten und Essen
 
@@ -463,13 +472,11 @@ Für Balder und Helix 130 cm plus sieben Jahre, für Valkyria 132 cm plus sieben
 
 Die Sommersaison begann am 18. April. Halloween läuft vom 2. Oktober bis zum 1.
 November, Jul på Liseberg an ausgewählten Tagen vom 14. November bis zum 30. Dezember.
-Im Winter öffnet das Kaninchenland zusätzlich an Wochenenden. Der Kalender auf der
-[Parkseite](ref:liseberg) zeigt jeweils die nächsten Wochen.
+Im Winter öffnet das Kaninchenland zusätzlich an Wochenenden. Auf der [Parkseite](ref:liseberg) stehen im Kalender jeweils die nächsten Wochen.
 
 ### Wann ist auf Liseberg am wenigsten los?
 
-Am Sonntag, nach unseren Messungen mit deutlichem Abstand zum Dienstag. Im Winter ist
-es noch ruhiger, dann laufen aber nur wenige Bahnen.
+Am Sonntag, nach unseren Messungen mit deutlichem Abstand zum Dienstag.
 
 ### Darf ich Essen mitbringen?
 
@@ -513,7 +520,10 @@ Weihnachtsmarkt neben die anderen, und der
   · [Oceana (offiziell)](https://www.liseberg.se/oceana/)
 - Technische Daten der Bahnen:
   [Balder](https://rcdb.com/1562.htm) · [Helix](https://rcdb.com/11048.htm) ·
-  [Lisebergbanan](https://rcdb.com/1061.htm) in der Roller Coaster DataBase ·
+  [Lisebergbanan](https://rcdb.com/1061.htm) ·
+  [Valkyria](https://rcdb.com/14301.htm) · [Luna](https://rcdb.com/19785.htm) ·
+  [Rabalder](https://rcdb.com/4354.htm) · [Stampbanan](https://rcdb.com/10779.htm) ·
+  [abgebaute Bahnen](https://rcdb.com/4909.htm) ([Bergbanan](https://rcdb.com/1453.htm), [Super 8](https://rcdb.com/2401.htm), [Lisebergs Loopen](https://rcdb.com/1098.htm), [HangOver](https://rcdb.com/1060.htm), [Cirkusexpressen](https://rcdb.com/1059.htm)) in der Roller Coaster DataBase ·
   [Balder auf en.wikipedia](<https://en.wikipedia.org/wiki/Balder_(roller_coaster)>) ·
   [Helix auf sv.wikipedia](<https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)>) ·
   [AtmosFear auf sv.wikipedia](https://sv.wikipedia.org/wiki/Atmosfear) ·

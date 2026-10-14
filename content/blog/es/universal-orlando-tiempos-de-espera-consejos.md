@@ -2,6 +2,7 @@
 title: 'Universal Orlando: tres parques, y en Epic Universe no vale el Express Unlimited'
 translationKey: universal-orlando-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -67,7 +68,7 @@ visitantes de Epic Universe.
 
 En nuestras mediciones de los
 dos últimos años, donde más se espera es en Epic Universe, y donde menos, en los
-Studios:
+Studios.
 
 ```park-comparison-widget slugs=universal-studios-florida,universal-islands-of-adventure,universal-epic-universe highlight=universal-epic-universe
 
@@ -78,12 +79,19 @@ cola más larga de todo el resort, y justo detrás, empatadas, vienen Battle at 
 Ministry y Hagrid's Magical Creatures Motorbike Adventure, de Islands of
 Adventure.
 
+## Historia del resort
+
+Según Wikipedia, Universal Studios Florida costó unos 631 millones de dólares. La mitad era de MCA Universal y la otra mitad de la empresa de ocio Rank Organisation. El primer plan era un tour en tranvía por los estudios, como en Hollywood. Cuando el jefe de Disney, Michael Eisner, anunció los Disney-MGM Studios, Universal cambió de plan y construyó atracciones independientes. Back to the Future: The Ride, el simulador que Steven Spielberg desarrolló con el antiguo Imagineer de Disney Peter Alexander, abrió casi un año más tarde de lo previsto. La Production Studio Tour por platós reales terminó en 1995, y Nickelodeon se llevó su producción de televisión del parque a California en 2005.
+
+Después, Universal y Rank invirtieron 2.500 millones de dólares para convertir el terreno en un resort. En 1999 llegó CityWalk, y en septiembre el primer hotel, Portofino Bay. Al principio el resort se llamaba Universal Studios Escape. Como los visitantes no entendían por el nombre lo que ofrecía, desde julio de 2000 se llama Universal Orlando Resort. Ese mismo año Rank vendió su mitad a Blackstone por 275 millones de dólares. En 2011 NBCUniversal compró la parte de Blackstone por 1.025 millones de dólares y desde entonces es la única dueña del resort.
+
+El parque acuático Wet 'n Wild lo fundó en 1977 George Millay, fundador de SeaWorld, y Universal lo compró en 1998. Cerró el 31 de diciembre de 2016 y Volcano Bay ocupó su lugar. NBCUniversal anunció Epic Universe el 1 de agosto de 2019. En abril de 2020 la empresa aplazó la apertura por la pandemia de COVID-19. Con el nuevo parque, el resort ocupa 522 hectáreas.
+
 ## Por qué parque empezar
 
 Con dos días, yo dedicaría el primero a Islands of Adventure. Allí hay tres
 montañas rusas cerca unas de otras: VelociCoaster, Hagrid's y el Hulk. El segundo
-día es para Epic Universe, porque tiene la mayoría de las atracciones nuevas y
-allí las colas son las más largas. Los Studios quedan para el tercer día, o para
+día es para Epic Universe, porque tiene la mayoría de las atracciones nuevas. Los Studios quedan para el tercer día, o para
 la tarde de un día Park-to-Park. Con un solo día, la elección depende de quién
 vaya. Quien monte en montañas rusas desde 1,22 metros, que elija Islands of
 Adventure. Las familias con niños de menos de 1,02 metros encuentran
@@ -137,7 +145,7 @@ De espectáculos hay en el parque, entre otros, The Bourne Stuntacular (desde
 2020), Animal Actors on Location y la Horror Make-Up Show, ambos desde el año de
 la apertura, 1990. Los horarios cambian cada día y están en la app de Universal.
 
-### Qué está cerrado en los Studios y qué viene
+### Cierres y novedades de los Studios
 
 Hollywood Rip Ride Rockit cerró en agosto de 2025. En su lugar Universal construye
 **Fast & Furious: Hollywood Drift**, una montaña rusa de Intamin en la que los
@@ -274,7 +282,7 @@ Arcanus en el Ministry of Magic y The Untrainable Dragon en la Isle of Berk.
 
 ## Tres veces Harry Potter
 
-Cada uno de los tres parques tiene su propia zona de Harry Potter. La más antigua es Hogsmeade, en Islands of Adventure, que abrió el 18 de
+La zona de Harry Potter más antigua es Hogsmeade, en Islands of Adventure, que abrió el 18 de
 junio de 2010 sobre 8 hectáreas. Allí estaba antes la montaña rusa Flying
 Unicorn, que cerró en 2008 y regresó como **[Flight of the
 Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**. Esta
@@ -307,7 +315,7 @@ y el parque infantil Camp Jurassic.
 ## A la apertura o por la noche
 
 En el perfil por horas ves a qué hora es corta la cola de una atracción. Para Epic
-Universe, estas son las ocho atracciones con la cola más larga:
+Universe, estas son las ocho atracciones con la cola más larga.
 
 ```hourly-profile-widget slug=universal-epic-universe top=8
 
@@ -319,7 +327,7 @@ Hiccup's Wing Gliders vienen después como «buen consejo». Quien a la apertura
 llegue a una atracción, que elija Mine-Cart Madness.
 
 En Islands of Adventure, VelociCoaster, Ripsaw Falls, Skull Island y Spider-Man
-son un «buen consejo». Hagrid's no está en la lista:
+son un «buen consejo». Hagrid's no está en la lista.
 
 ```hourly-profile-widget slug=universal-islands-of-adventure top=8
 
@@ -372,8 +380,6 @@ text: Los precios de cada día están en el calendario de Universal.
 
 ## Express Pass: cuánto cuesta y dónde vale
 
-Con el Express Pass, en Universal pagas por saltarte la cola.
-
 **Universal Express** vale una vez por atracción. Universal lo vende para los
 Studios, Islands of Adventure, Epic Universe y Volcano Bay, como suplemento de la
 entrada. Para los Studios y Islands of Adventure, Universal indica en la página de
@@ -390,15 +396,13 @@ mientras queden pases.
 para atracciones concretas y en una franja horaria. Según Universal, lo ofrece de
 forma esporádica.
 
-Así que, si quieres un pase en Epic Universe, será el Express de una sola vez. Quien a la apertura monte antes en Mine-Cart Madness y en Battle at the
-Ministry no lo necesita para esas dos. En los Studios y en Islands of Adventure,
+Quien a la apertura monte antes en Mine-Cart Madness y en Battle at the
+Ministry no necesita el Express en Epic Universe para esas dos. En los Studios y en Islands of Adventure,
 sin la ventaja del hotel yo no compraría un pase. Llegando temprano llegas
 también sin pase a las atracciones de la lista de rope drop, es decir,
 VelociCoaster, Ripsaw Falls, Skull Island y Spider-Man, pero no a Hagrid's. Es mi estimación a partir de los perfiles por horas, porque no medimos cuántos minutos ahorra un pase.
 
 ## Cuándo conviene ir
-
-El tiempo de espera típico por mes, para cada uno de los tres parques:
 
 ```stats-widget slug=universal-studios-florida show=months
 
@@ -428,7 +432,7 @@ En Epic Universe hay además un evento nocturno propio, Universal Nights, desde 
 dólares por persona. Las fechas son el 17 y el 24 de octubre y el 6 y el 20 de
 noviembre.
 
-Cada día volvemos a calcular qué días de las próximas semanas habrá menos gente:
+Cada día volvemos a calcular qué días de las próximas semanas habrá menos gente.
 
 ```best-days-widget slug=universal-epic-universe
 
@@ -443,7 +447,7 @@ Universal, debe reabrir a más tardar el 1 de abril de 2027. Quien viaje entre
 noviembre y marzo tiene en ese periodo con la entrada Park-to-Park solo tres
 parques.
 
-## Early Park Admission y un día en los parques
+## Early Park Admission y un día por los parques
 
 Los huéspedes de los hoteles de Universal pueden entrar hasta una hora antes de
 la apertura en uno de los parques, a atracciones seleccionadas. Cuáles, depende
@@ -563,9 +567,6 @@ Del 26 de octubre de 2026 a más tardar hasta el 1 de abril de 2027.
 
 ## Para seguir leyendo
 
-Qué tiempo hará los próximos días en el resort, y qué supone eso para las
-atracciones al aire libre:
-
 ```weather-widget slug=universal-islands-of-adventure
 
 ```
@@ -579,8 +580,9 @@ En nuestras mediciones, Magic Kingdom tiene el tiempo de espera típico más cor
 
 ### Fuentes y para seguir leyendo
 
-- Apertura de los parques, zonas, atracciones con año de construcción y fabricante, cierres, visitas en 2024: [Universal Orlando en Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Orlando) · [Universal Studios Florida en Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Studios_Florida) · [Universal's Islands of Adventure en Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal%27s_Islands_of_Adventure) · [Universal Epic Universe en Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Epic_Universe)
+- Historia, propietarios y hoteles del resort, apertura de los parques, zonas, atracciones con año de construcción y fabricante, cierres, visitas en 2024: [Universal Orlando en Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Orlando) · [Universal Studios Florida en Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Studios_Florida) · [Universal's Islands of Adventure en Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal%27s_Islands_of_Adventure) · [Universal Epic Universe en Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Epic_Universe)
 - Datos técnicos de las atracciones: [Jurassic World VelociCoaster](https://en.wikipedia.org/wiki/Jurassic_World_VelociCoaster) · [Hagrid's Magical Creatures Motorbike Adventure](https://en.wikipedia.org/wiki/Hagrid%27s_Magical_Creatures_Motorbike_Adventure) · [The Incredible Hulk Coaster](https://en.wikipedia.org/wiki/The_Incredible_Hulk_Coaster) · [Revenge of the Mummy](https://en.wikipedia.org/wiki/Revenge_of_the_Mummy) · [Harry Potter and the Escape from Gringotts](https://en.wikipedia.org/wiki/Harry_Potter_and_the_Escape_from_Gringotts) · [Harry Potter and the Forbidden Journey](https://en.wikipedia.org/wiki/Harry_Potter_and_the_Forbidden_Journey) · [Skull Island: Reign of Kong](https://en.wikipedia.org/wiki/Skull_Island:_Reign_of_Kong) · [Stardust Racers](https://en.wikipedia.org/wiki/Stardust_Racers) · [Mario Kart: Bowser's Challenge](https://en.wikipedia.org/wiki/Mario_Kart:_Bowser%27s_Challenge) · [Dudley Do-Right's Ripsaw Falls](https://en.wikipedia.org/wiki/Dudley_Do-Right%27s_Ripsaw_Falls) · [Hogwarts Express](<https://en.wikipedia.org/wiki/Hogwarts_Express_(Universal_Orlando_Resort)>) · [Hiccup's Wing Gliders (Coasterpedia)](https://coasterpedia.net/wiki/Hiccup%27s_Wing_Gliders)
+- Precio de la parte de Blackstone en 2011: [nota de prensa de NBCUniversal (SEC, Form 8-K)](https://www.sec.gov/Archives/edgar/data/0001262449/000119312511159946/dex991.htm)
 - Alturas mínimas: [Ride Height Requirements (Universal Orlando)](https://www.universalorlando.com/web/en/us/plan-your-visit/hours-information/ride-height-requirements)
 - Precios de las entradas, oferta de 3 días, descuento en hoteles, rango de precios del Express: [Park Tickets (Universal Orlando)](https://www.universalorlando.com/web/en/us/tickets-packages/park-tickets)
 - Express, Express Unlimited, Express Now, validez por parque: [Express Passes (Universal Orlando)](https://www.universalorlando.com/web/en/us/tickets-packages/express-passes)

@@ -2,6 +2,7 @@
 title: 'Parco divertimenti poca gente: giorno e ora in dodici parchi'
 translationKey: theme-parks-quietest-day-and-hour
 date: '2026-10-06'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -120,9 +121,7 @@ di mercoledì, giovedì o venerdì.
 
 In tre parchi il giorno della settimana non cambia quasi nulla. Al Toverland si
 aspetta in media lo stesso ogni giorno. Al Plopsaland Deutschland sei giorni
-sono pieni allo stesso modo, solo il sabato lo è un po’ di più. A Disneyland
-Paris tra il giorno più pieno e il più tranquillo ci sono solo cinque minuti:
-sabato e martedì sono i più pieni, venerdì il più tranquillo.
+sono pieni allo stesso modo, solo il sabato lo è un po’ di più. A Disneyland Paris solo un gradino del nostro arrotondamento separa il giorno più pieno dal più tranquillo.
 
 A Walibi Holland il martedì è il giorno più pieno e il sabato uno dei più calmi.
 Al Movie Park sabato, martedì e mercoledì sono pari merito in testa. Da lunedì a
@@ -157,8 +156,6 @@ Al Legoland Deutschland e al Movie Park Germany l’ultima ora che misuriamo, le
 17, è una delle più piene. All’Heide Park anche le 17 sono l’ultima ora
 misurata, ma lì alla fine la gente non aumenta.
 
-La curva dell’Europa-Park, attrazione per attrazione:
-
 ```hourly-profile-widget slug=europa-park top=8
 
 ```
@@ -178,6 +175,8 @@ In un giorno feriale di vacanza si aspettava circa l’11 per cento in più che 
 un giorno feriale di scuola, su 40 giorni di vacanza e 79 giorni di scuola. È il
 valore più basso tra i parchi tedeschi. In un weekend nel periodo scolastico era il 16 per cento.
 
+L’Europa-Park ha aperto il 12 luglio 1975. All’inizio lo hanno diretto Franz Mack e suo figlio Roland.
+
 ```stats-widget slug=europa-park show=weekdays
 
 ```
@@ -186,18 +185,20 @@ valore più basso tra i parchi tedeschi. In un weekend nel periodo scolastico er
 
 A [Phantasialand](ref:phantasialand) c’è molta gente ogni giorno, meno che mai il
 giovedì. Il sabato è il giorno più pieno, seguito dalla domenica. Lunedì,
-martedì, venerdì e mercoledì stanno in mezzo e sono quasi indistinguibili. La
-distanza tra sabato e giovedì è tra le più grandi di questo confronto.
+martedì, venerdì e mercoledì stanno in mezzo e sono quasi indistinguibili.
 
 Dopo la salita del mattino fino a mezzogiorno, l’attesa resta quasi altrettanto
-lunga fino alla chiusura. Nell’ora più tranquilla è solo circa un sesto più
-corta che in quella più piena.
+lunga fino alla chiusura.
 
 Un giorno feriale di vacanza era circa il 65 per cento più pieno di uno di
 scuola, un weekend nel periodo scolastico circa il 39 per cento. Phantasialand è
 già pieno prima che in Renania Settentrionale-Vestfalia comincino le vacanze,
 più dettagli nel nostro [articolo sulle vacanze
 scolastiche](/blog/vacanze-scolastiche-parchi-divertimenti-germania).
+
+Phantasialand l’hanno fondato il giostraio Gottlieb Löffelhardt e il burattinaio
+Richard Schmidt, che lo hanno aperto il 30 aprile 1967 come parco delle fiabe,
+con una quarantina di storie intorno a un lago.
 
 ## Efteling
 
@@ -213,6 +214,9 @@ In vacanza l’attesa all’Efteling nei giorni feriali era più lunga solo dell
 per cento, su 36 giorni di vacanza e 84 di scuola. Nel weekend in periodo
 scolastico era circa il 14 per cento in più che in un giorno feriale.
 
+Il bosco delle fiabe ha aperto il 31 maggio 1952, due anni dopo la nascita della
+Stichting Natuurpark de Efteling.
+
 ## Heide Park
 
 All’[Heide Park](ref:heide-park) le vacanze pesano più che in qualsiasi altro
@@ -223,8 +227,13 @@ giorno più pieno e il venerdì il più tranquillo. La domenica sta in mezzo,
 vicino al venerdì.
 
 La curva giornaliera è tra le più piatte, simile a Phantasialand. C’è più gente
-verso le dodici. Nell’ora più tranquilla, alle 16, l’attesa è solo circa un
-settimo più corta.
+verso le dodici. L’ora più tranquilla è alle 16.
+
+Hans-Jürgen Tiemann, di una famiglia di giostrai, ha aperto l’Heide Park il 19
+agosto 1978. Il gruppo britannico Tussauds lo ha rilevato il 31 dicembre 2001,
+Merlin Entertainments ha comprato la maggioranza di Tussauds all’inizio del 2007,
+e da allora il parco appartiene a Merlin. Gli orari sul sito del parco valgono per le attrazioni, e il parco chiude un’ora
+dopo.
 
 ## Movie Park Germany
 
@@ -240,6 +249,10 @@ In vacanza un giorno feriale era circa il 54 per cento più pieno che in periodo
 scolastico, su 33 giorni di vacanza e 47 di scuola. In un weekend in periodo
 scolastico si aspettava solo il 15 per cento in più che in un giorno feriale.
 
+Il 30 giugno 1996 il parco ha aperto come Warner Bros. Movie World, nel 2005 ha
+preso il nome attuale, e dal 2010 lo gestisce il gruppo spagnolo Parques
+Reunidos.
+
 ## Plopsaland Deutschland
 
 Al [Plopsaland Deutschland](ref:plopsaland-deutschland) di Haßloch sei giorni
@@ -252,10 +265,13 @@ più o meno uguale fino alla chiusura, a un livello molto basso. Nell’ora più
 tranquilla è poco più della metà di quella nell’ora più piena.
 
 Un giorno feriale di vacanza era circa il 49 per cento più pieno di uno di
-scuola, un weekend scolastico circa il 53 per cento. Come questo si lega alle
-vacanze in Renania-Palatinato e in Renania Settentrionale-Vestfalia è spiegato
-nell’[articolo sulle vacanze
-scolastiche](/blog/vacanze-scolastiche-parchi-divertimenti-germania).
+scuola, un weekend scolastico circa il 53 per cento. L’[articolo sulle vacanze
+scolastiche](/blog/vacanze-scolastiche-parchi-divertimenti-germania) confronta
+le vacanze in Renania-Palatinato e in Renania Settentrionale-Vestfalia.
+
+La famiglia Schneider ha aperto il parco nel 1971, e per molto tempo si è
+chiamato Holiday Park. Il 3 novembre 2010 Studio 100 ha annunciato di averlo
+comprato, e il 28 giugno 2025 ha preso il nome Plopsaland Deutschland. Nel 2026 è aperto per la prima volta tutti i giorni della stagione.
 
 ## Legoland Deutschland
 
@@ -270,22 +286,26 @@ l’apertura.
 In vacanza in un giorno feriale si aspettava circa il 54 per cento in più che in
 un giorno feriale di scuola, in un weekend in periodo scolastico circa il 46.
 
+Il 17 maggio 2002 Legoland Deutschland è diventato il quarto parco Legoland, dopo
+Billund, Windsor e Carlsbad. Le attrazioni chiudono un’ora prima del parco.
+
 ## Parc Astérix
 
 Al [Parc Astérix](ref:parc-asterix), vicino a Parigi, il sabato è il giorno più
 pieno e la domenica il secondo. Il più tranquillo è il mercoledì, appena davanti
-al martedì, poi vengono giovedì, venerdì e lunedì. La distanza tra sabato e
-mercoledì è tra le più grandi di questo confronto.
+al martedì, poi vengono giovedì, venerdì e lunedì.
 
-Il parco ha la curva giornaliera più ripida dopo Disneyland Paris. Verso le undici
-c’è più gente, e fino a sera l’attesa scende a poco più di due quinti. La curva
+Il parco ha la curva giornaliera più ripida dopo Disneyland Paris. Verso le undici c’è più gente, poi l’attesa scende fino a sera. La curva
 arriva fino alle 21, e l’ultima ora è la più tranquilla. Alle 17 l’attesa è
 ancora circa due terzi di quella del picco. Chi è nel parco dalle 19 aspetta alle
 grandi attrazioni circa la metà che alle undici.
 
 In vacanza nei giorni feriali si aspettava circa il 35 per cento in più, su 50
-giorni di vacanza e 51 di scuola. In un weekend scolastico era circa il 32 per
-cento.
+giorni di vacanza e 51 di scuola, e circa il 32 per cento nei weekend
+scolastici.
+
+Albert Uderzo ebbe l’idea del parco nel 1981, dopo una visita a Disneyland in
+California, e il 30 aprile 1989 arrivarono a Plailly i primi visitatori.
 
 ## Toverland
 
@@ -295,10 +315,14 @@ stesso da lunedì a domenica.
 Alle grandi attrazioni qui aspetti meno che nella maggior parte degli altri
 parchi di questo confronto. In vacanza però l’attesa nei giorni feriali era circa
 il 27 per cento più lunga che in periodo scolastico, su 31 giorni di vacanza e 88
-di scuola. In un weekend scolastico era circa il 22 per cento.
+di scuola. Un weekend scolastico superava un giorno feriale di circa il 22 per cento.
 
 Per il Toverland non mostriamo una curva giornaliera, perché i nostri valori lì
 vanno da zero alle 23, anche fuori dall’orario di apertura.
+
+Il 19 maggio 2001 Toverland ha aperto come parco interamente al coperto, con un
+solo capannone, pensato per famiglie con bambini piccoli. Il secondo capannone e
+l’area esterna sono arrivati nel 2004.
 
 ## Walibi Holland
 
@@ -313,7 +337,12 @@ giorno feriale di scuola. In un giorno feriale di vacanza era solo circa l’1 p
 cento più lunga.
 
 Alle undici è il momento più pieno. Poi l’attesa si accorcia con regolarità, in
-modo sensibile dalle 16, e nell’ultima ora è la metà di quella del picco.
+modo sensibile dalle 16, e nell’ultima ora è la più corta.
+
+Il parco è nato nel 1971 come Flevohof, un parco didattico sull’agricoltura.
+Nell’autunno del 1993 il gruppo Walibi ha comprato il Flevohof fallito, e il 7
+maggio 1994 ha riaperto come Walibi Flevo. Dal 2000 si è chiamato Six Flags
+Holland, dal 2005 Walibi World e dal 2011 Walibi Holland.
 
 ## Walibi Belgium
 
@@ -331,14 +360,17 @@ Lungo la giornata somiglia a Walibi Holland. Il picco arriva presto, verso le
 undici, poi l’attesa si accorcia con regolarità. Nell’ultima ora è poco più
 della metà di quella del picco.
 
+Lo ha fondato l’imprenditore Eddy Meeùs, che lo ha aperto il 26 luglio 1975 come
+Walibi. Dal 1982 il parco si è chiamato Walibi Wavre, dal 2001 al 2004 Six Flags
+Belgium, e dal 2006 appartiene alla Compagnie des Alpes.
+
 ## Disneyland Paris
 
 Al [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) di
 Marne-la-Vallée i tempi di attesa sono i più lunghi di questo confronto. Il giorno
 della settimana lì non fa quasi differenza. Sabato e martedì sono i più pieni, il
 più tranquillo è il venerdì, seguito a ruota da mercoledì, domenica, lunedì e
-giovedì. Tra il giorno più pieno e il più tranquillo ci sono cinque minuti, il
-gradino più piccolo del nostro arrotondamento.
+giovedì.
 
 In vacanza l’attesa nei giorni feriali era solo circa il 3 per cento più lunga
 che in periodo scolastico, nei weekend scolastici circa il 5 per cento. Sospetto
@@ -346,8 +378,10 @@ che il parco abbia visitatori da tutta Europa e che da qualche parte ci siano
 sempre vacanze. Non posso dimostrarlo.
 
 Verso le dodici aspetti più a lungo, e fino a sera presto l’attesa resta lunga.
-Nell’ultima ora è solo poco più di un terzo, la distanza più grande di questo
-confronto.
+È più corta nell’ultima ora.
+
+Il parco ha aperto il 12 aprile 1992 come Euro Disneyland e si chiama Disneyland
+Park da marzo 2002.
 
 ```hourly-profile-widget slug=/parks/europe/france/paris/disneyland-park top=8
 
@@ -355,8 +389,7 @@ confronto.
 
 ## Vacanze contro periodo scolastico
 
-Nella tabella c’è quanto si aspettava in più in un giorno feriale di vacanza e in
-un weekend nel periodo scolastico rispetto a un giorno feriale di scuola.
+Entrambi i rincari sono calcolati rispetto a un giorno feriale di scuola.
 
 | Parco                  | Giorno feriale di vacanza, rincaro | Weekend in periodo scolastico, rincaro |
 | ---------------------- | ---------------------------------: | -------------------------------------: |
@@ -386,6 +419,17 @@ per evitare il sabato aspetta quindi più a lungo che in un weekend in periodo
 scolastico. All’Europa-Park, all’Efteling, a Disneyland Paris e a Walibi Holland
 né le vacanze né il weekend pesano molto.
 
+## Vacanze scolastiche 2026/27 nei paesi vicini
+
+Nei Paesi Bassi la regione nord ha le vacanze d’autunno dal 10 al 18 ottobre, le
+regioni centro e sud dal 17 al 25 ottobre. In Francia le vacanze di Ognissanti
+iniziano il 17 ottobre in tutte e tre le zone, e le lezioni riprendono il 2
+novembre. Le scuole francofone del Belgio sono chiuse dal 19 al 30 ottobre. Le Fiandre hanno vacanza solo dal 2 all’8 novembre.
+
+Le vacanze di Natale vanno dal 19 dicembre al 3 gennaio 2027 nei Paesi Bassi,
+dal 21 dicembre al 3 gennaio nelle Fiandre, e in Francia dal 19 dicembre al
+rientro a scuola il 4 gennaio.
+
 ## Pianificare il viaggio
 
 Se vuoi fare meno coda possibile, vanno bene il Plopsaland o
@@ -405,10 +449,7 @@ dei Länder tedeschi sono nell’[articolo sulle vacanze scolastiche](/blog/vaca
 Arriva all’apertura: prima che il picco si formi, verso le dieci
 o le dodici, passi alle grandi attrazioni con un’attesa più corta. Chi resta la
 sera guadagna a Disneyland Paris, al Parc Astérix, all’Europa-Park, all’Efteling
-e in entrambi i Walibi, ma poco a Phantasialand e all’Heide Park. Come dividere
-le ore è spiegato nell’articolo sul [pianificatore](/blog/pianificatore).
-
-I giorni più tranquilli delle prossime settimane all’Europa-Park:
+e in entrambi i Walibi, ma poco a Phantasialand e all’Heide Park. Le ore puoi dividerle con il [pianificatore](/blog/pianificatore).
 
 ```best-days-widget slug=europa-park
 
@@ -457,4 +498,9 @@ aver misurato una seconda stagione.
 - Rincari delle vacanze: analisi propria del calendario di park.fan dal 13 aprile al 30 settembre 2026, senza festivi e senza meteo
 - Date delle vacanze dei Länder tedeschi: [Vacanze scolastiche e parchi divertimenti in Germania](/blog/vacanze-scolastiche-parchi-divertimenti-germania)
 - Giorni tranquilli per il tuo mese di viaggio: [Periodo migliore per visitare](/periodo-migliore-per-visitare)
+
+- Storia dei parchi: Wikipedia su [Europa-Park](https://de.wikipedia.org/wiki/Europa-Park), [Phantasialand](https://de.wikipedia.org/wiki/Phantasialand), [Efteling](https://de.wikipedia.org/wiki/Efteling), [Heide Park](https://de.wikipedia.org/wiki/Heide_Park_Resort), [Movie Park Germany](https://de.wikipedia.org/wiki/Movie_Park_Germany), [Plopsaland Deutschland](https://de.wikipedia.org/wiki/Plopsaland_Deutschland), [Legoland Deutschland](https://de.wikipedia.org/wiki/Legoland_Deutschland_Resort), [Parc Astérix](https://fr.wikipedia.org/wiki/Parc_Ast%C3%A9rix), [Toverland](https://de.wikipedia.org/wiki/Toverland), [Walibi Holland](https://en.wikipedia.org/wiki/Walibi_Holland), [Walibi Belgium](https://en.wikipedia.org/wiki/Walibi_Belgium), [Disneyland Park](<https://en.wikipedia.org/wiki/Disneyland_Park_(Paris)>)
+- Cambio di nome in Plopsaland Deutschland: [eap-magazin](https://www.eap-magazin.de/Article/100-Million-Euro-Invest:-Holiday-Park-Becomes-Plopsaland-Deutschland.html)
+- Orari 2026: [Heide Park](https://www.heide-park.de/oeffnungszeiten/) · [Plopsaland Deutschland](https://www.plopsa.com/de/plopsaland-deutschland/taglich-geoffnet) · [Legoland Deutschland](https://www.legoland.de/besuch-planen/besuch-planen/oeffnungszeiten/)
+- Vacanze scolastiche 2026/27: [Paesi Bassi](https://www.government.nl/topics/school-holidays/overview-of-school-holiday-dates-per-academic-year/school-holiday-dates-2026-2027) · [Francia](https://www.service-public.fr/particuliers/vosdroits/F31952) · [Fiandre](https://www.vlaanderen.be/onderwijs-en-vorming/wat-mag-en-moet-op-school/schoolvakanties-vrije-dagen-en-afwezigheden/schoolvakanties) · [Federazione Vallonia-Bruxelles (RTBF)](https://www.rtbf.be/article/voici-les-dates-conges-scolaires-pour-l-annee-2026-2027-en-federation-wallonie-bruxelles-11576448)
 - Guide ai parchi: [Europa-Park](/blog/europa-park-tempi-di-attesa-consigli) · [Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli) · [Efteling](/blog/efteling-la-disney-dei-paesi-bassi) · [Heide Park](/blog/heide-park-tempi-di-attesa-consigli) · [Movie Park](/blog/movie-park-germany-tempi-di-attesa-consigli) · [Parc Astérix](/blog/parc-asterix-tempi-di-attesa-consigli) · [Toverland](/blog/toverland-troy-tempi-di-attesa-consigli) · [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan) · [Walibi Belgium](/blog/walibi-belgium-tempi-di-attesa-consigli) · [Disneyland Paris](/blog/disneyland-paris-tempi-di-attesa-consigli)

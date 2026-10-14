@@ -99,9 +99,7 @@ se non può salire.
 
 [Objectif Mars](ref:futuroscope/destination-mars) è in funzione dal 2020 e, a parte l'ottovolante
 per bambini Le Balancier a Futuropolis, è l'unico ottovolante del parco. L'ha costruito Intamin
-come launched coaster con veicoli rotanti, uno spinning coaster. Il parco lo chiama ottovolante
-per famiglie e indica una velocità massima di 55 km/h; il percorso passa dentro un edificio e
-all'aperto. Doveva aprire il 28 marzo 2020; per la chiusura dovuta alla pandemia partì a giugno
+come launched coaster con veicoli rotanti, uno spinning coaster. Per il parco è un ottovolante per famiglie, con una velocità massima di 55 km/h. Il percorso passa dentro un edificio e all'aperto. Doveva aprire il 28 marzo 2020; per la chiusura dovuta alla pandemia partì a giugno
 2020, all'inizio solo nei fine settimana.
 
 Si sale da 1,10 metri se accompagnati, da 1,20 metri da soli, e il limite massimo è 1,95 metri.
@@ -136,7 +134,7 @@ soffre di epilessia o di vertigini.
 [Danse avec les Robots](ref:futuroscope/dances-with-robots) è un robocoaster: ci si siede sul
 braccio di un robot industriale che balla sulle hit del DJ Martin Solveig. La corsa dura circa un
 minuto. Il padiglione dei robot ha aperto nel 2006, anno dei robot, mentre la versione con
-Solveig è del dicembre 2012. Il parco parla di un robot alto nove metri.
+Solveig è del dicembre 2012. Il robot è alto nove metri, secondo il parco.
 
 Da 1,20 metri, anche se accompagnati, fino a 2,00 metri.
 
@@ -213,9 +211,7 @@ pioggia, a meno che il tempo non sia eccezionale. Si vedono immagini d'acqua in 
 pirotecnica. Lo spettacolo va in scena da giugno 2021 e ha preso il posto di La Forge aux Étoiles,
 ideato dagli autori del Cirque du Soleil.
 
-Di giorno ci sono altri due spettacoli. **Éclipse, robotic show** è nato nel 2024 con il Cirque
-Éloize nell'ex padiglione IMAX 3D e mescola video mapping, laser e droni. **IllusiO, un destin
-magique** è uno spettacolo di illusionismo di 25 minuti, in programma nei fine settimana e nelle
+**Éclipse, robotic show** va in scena di giorno ed è nato nel 2024 con il Cirque Éloize nell'ex padiglione IMAX 3D. Mescola video mapping, laser e droni. Il secondo spettacolo diurno, **IllusiO, un destin magique**, è uno spettacolo di illusionismo di 25 minuti, in programma nei fine settimana e nelle
 vacanze scolastiche.
 
 Chi vuole solo la sera compra un biglietto Soirée (ingresso dalle 17) o un biglietto Nocturne
@@ -315,7 +311,7 @@ comprende.
 Futuroween comincia sabato 17 ottobre, un giorno prima delle vacanze autunnali. Dal 18 ottobre il
 parco è aperto, secondo il calendario, ogni giorno dalle 9:45 alle 22.
 
-## Biglietti, tessere e prezzi
+## Biglietti e prezzi
 
 Alla cassa un biglietto giornaliero con data costa 59 euro per gli adulti e 49 euro per i
 bambini da 5 a 12 anni. Online il prezzo dipende dalla data. Per il 2026 il parco promuove il

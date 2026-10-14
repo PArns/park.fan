@@ -2,6 +2,7 @@
 title: 'Apporter son repas au parc d’attractions : ce qui est permis'
 translationKey: bring-own-food-theme-parks
 date: '2026-10-09'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -109,6 +110,8 @@ Balthasar, dans le quartier thématique Allemagne, à côté du Wodan Timburcoas
 
 Au parc aquatique Rulantica, en revanche, la nourriture apportée est interdite.
 
+Dans l’application Europa-Park & Rulantica, on commande repas et boissons à l’avance, on paie dans l’application et on retire la commande à l’heure choisie. Cela fonctionne dans les snacks CMAK Russian Food & Burger et Moby Dick.
+
 ### Phantasialand
 
 [Phantasialand](ref:phantasialand) contrôle les sacs à l’entrée, avec des détecteurs et par sondage. Sa liste d’objets
@@ -116,6 +119,10 @@ interdits comprend couteaux et ciseaux, gaz lacrymogène, pyrotechnie, armes, sk
 S’y ajoute l’alcool sous tout emballage, donc aussi une bière encore fermée.
 
 La nourriture, les gourdes, les glacières et le verre ne figurent pas sur cette liste.
+
+Au Restaurant Uhrwerk, à Rookburgh, le burger au poulet The Navigator avec frites coûte 26,00 € et un Coca-Cola de 0,2 litre 3,30 €. Le burger enfant à 14,00 € n’y est servi qu’avec un plat adulte. À la Rutmor’s Taverne, la planche Vesperbrett pour une personne coûte 21,50 €.
+
+À côté de l’accueil des visiteurs, sur la Kaiserplatz de Berlin, se trouve une salle d’allaitement, et le personnel aide à réchauffer les repas pour bébé.
 
 ### Heide Park
 
@@ -127,6 +134,8 @@ Aux visiteurs atteints d’une intolérance grave comme la maladie cœliaque, le
 Ses cuisines ne peuvent pas exclure totalement une contamination croisée, et elles ne répondent pas aux demandes
 particulières.
 
+Le personnel réchauffe gratuitement les repas pour bébé au Biergarten Rafting, chez Wild Wild Waffel, chez Mucho Pollo et au Frau Mümmels Kiosk. Selon le parc, presque tous les restaurants proposent des plats végétariens, Hot Dog Freestyle vend un hot-dog végan et le Piratenburger un burger végétal.
+
 ### Hansa-Park
 
 Le règlement de [Hansa-Park](ref:hansa-park) interdit les grillades, les barbecues et appareils de cuisson, l’alcool et les drogues. Il ne dit rien de la nourriture apportée. Les bouteilles en verre y sont rangées parmi les
@@ -135,12 +144,16 @@ objets dangereux, à côté des couteaux et des pointeurs laser.
 Il est interdit de manger et de boire dans les attractions et dans les spectacles en salle. Cela vaut pour tous les
 visiteurs, y compris pour la nourriture achetée dans le parc.
 
+Les aires de pique-nique se trouvent dans le Wikingerland à côté du Viking Odin et entre Elins Luftreise et la Wikinger-Bootsfahrt, puis à côté des Skandinaviske Hytter face au Pow Wow, à la gare du Peterhof à portée de voix de la Bärenkapelle, et à Roanoke. Le parc propose aussi les Skandinaviske Hytter elles-mêmes, des cabanes juste à côté du Schwur des Kärnan, pour faire une pause.
+
 ### Legoland Deutschland
 
 Le règlement de [Legoland Deutschland](ref:legoland-deutschland) fait partie des conditions générales de vente publiées
 sur legoland.de. Il interdit le feu ouvert et les barbecues sur tout le site du resort, et les appareils de cuisson
 personnels dans les hébergements. Sur la nourriture, les boissons, le verre ou les sacs isothermes dans le parc, il n’y a
 rien.
+
+Pour manger, il y a une pelouse de pique-nique avec des bancs, numéro 45 sur le plan du parc. Le poste de secours s’y trouve aussi, entre la tour panoramique et Drachenjagd. Aux stands mobiles on paie seulement en espèces, dans les restaurants aussi par carte. Le Baby Service du parc vend des aliments pour bébés et jeunes enfants.
 
 ### Movie Park Germany
 
@@ -151,6 +164,10 @@ Le Halloween Horror Festival a ses propres règles. Selon la FAQ du festival, l�
 de verre sont interdits, tout comme les déodorants en spray, alors que le roll-on et le stick sont permis. Les personnes
 et les sacs sont contrôlés avant l’entrée.
 
+Aux stations Coca-Cola Freestyle, on remplit soi-même un gobelet acheté. Le gobelet s’utilise chez Studio Sip, la station de boissons du Hollywood Street Set. Certains restaurants n’acceptent que la carte.
+
+L’équipe réchauffe repas et petits pots chez Hollywood Snack, à la Bakery, chez Subway et à la Langnese Happiness Station, et à la Trattoria Hollywood seulement sur réservation.
+
 ### Plopsaland Deutschland
 
 À [Plopsaland Deutschland](ref:plopsaland-deutschland), le pique-nique n’est permis qu’aux endroits que le parc a prévus
@@ -159,6 +176,10 @@ grand conditionnement n’y est pas définie.
 
 Sur le reste du site et sur les parkings, barbecue, pique-nique et camping sont interdits. Vous ne pouvez ni manger ni
 boire dans les attractions et les files d’attente, et vous ne pouvez pas apporter d’alcool.
+
+Selon la FAQ du parc, on peut manger de petites quantités de nourriture apportée en dehors des restaurants, sur un banc par exemple, mais pas dans les restaurants ni sur leurs terrasses. Les repas pour bébé et le gâteau d’un anniversaire d’enfant réservé font exception. Des micro-ondes pour les repas de bébé se trouvent dans les restaurants Pfalzgraf et Maja-Burger et au Plopsa Indoor.
+
+On peut quitter le parc un moment pour chercher quelque chose dans la voiture et revenir le même jour avec un tampon sur la main.
 
 ## Pays-Bas
 
@@ -170,6 +191,10 @@ y lit que vous pouvez apporter votre nourriture et vos boissons. La même chose 
 Quand il y a foule, le parc demande de manger ce que vous avez apporté à l’une des aires de pique-nique plutôt que dans
 les restaurants ou sur leurs terrasses.
 
+On remplit sa gourde gratuitement aux points d’eau du parc, par exemple dans la file d’attente de Symbolica ou près de De Ganzenhoedster sur l’Anton Pieckplein. D’autres robinets se trouvent aux toilettes Kleine Boodschap et ’t Gemack et près de Fata Morgana, et l’eau des robinets des blocs sanitaires est potable elle aussi.
+
+Comme coin ombragé pour pique-niquer, le parc indique un sentier étroit à côté de Het Spookslot. Pour récupérer quelque chose au vestiaire près du parking en cours de journée, faites-vous tamponner la main en sortant.
+
 ### Toverland
 
 [Toverland](ref:attractiepark-toverland) autorise la nourriture apportée et met à votre disposition deux micro-ondes
@@ -177,11 +202,15 @@ gratuits, à la Waldstube et à Katara Plaza. Le parc les propose aussi pour ré
 
 Le règlement du parc est disponible à l’entrée et en téléchargement sur le site.
 
+Les boissons sont servies dans des gobelets réutilisables consignés 1,50 €. Gobelets, bouteilles et canettes se rendent aux automates de consigne, installés à quatre endroits du parc.
+
 ### Walibi Holland
 
 [Walibi Holland](ref:walibi-holland) autorise expressément la nourriture et les boissons apportées, et signale des aires
 de pique-nique dans le parc. Selon le règlement, le verre et l’alcool restent dehors. En dehors des chemins et des aires
 de pique-nique, les zones sont interdites d’accès.
+
+Plusieurs restaurants ont des micro-ondes pour réchauffer biberons et repas.
 
 ## Belgique
 
@@ -193,6 +222,8 @@ pique-nique du parc. Les grands paquets de nourriture et de boissons demandent l
 Vous ne pouvez pas entrer dans les attractions et les boutiques avec de la nourriture ou des boissons. Sur le parking,
 camper, faire des grillades et pique-niquer sont interdits.
 
+Les boissons sont servies dans des gobelets réutilisables avec une caution de 2 €, rendue quand on rapporte le gobelet. On peut aussi garder les gobelets.
+
 ### Walibi Belgium
 
 Le règlement de [Walibi Belgium](ref:walibi-belgium) consacre un article entier au pique-nique. Il est permis dans les
@@ -201,6 +232,8 @@ zones que le plan du parc prévoit pour cela, et interdit dans les restaurants e
 L’alcool est interdit dans le parc. Les sacs, boîtes et contenants ne doivent pas dépasser 55 cm de large, 40 cm de long
 et 20 cm de profondeur, et une glacière doit elle aussi tenir dans ces dimensions. Il est interdit de manger et de boire
 dans les attractions et les files d’attente.
+
+Les restaurants ont des micro-ondes en libre-service pour réchauffer soi-même biberons et petits pots.
 
 ## France
 
@@ -213,21 +246,48 @@ réchaud, le barbecue et la glacière.
 Vous ne pouvez ni manger ni boire dans les attractions, pour des raisons de sécurité, ni dans les files d’attente, pour
 des raisons d’hygiène.
 
+Pour sortir du parc un court moment, adressez-vous d’abord au contrôle des sorties, qui vous appose un tampon sur le bras. Sans lui, on ne peut plus rentrer ce jour-là.
+
 ### Disneyland Paris
 
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) autorise la nourriture apportée. Les repas qui demandent une glacière, une table ou des contenants volumineux sont interdits au parc
-Disneyland et au parc Walt Disney Studios. Pour ce genre de pique-nique, une aire est prévue entre le parking et
+Disneyland et à Disney Adventure World. Pour ce genre de pique-nique, une aire est prévue entre le parking et
 l’entrée.
 
 Les bouteilles en verre et l’alcool figurent sur la liste des objets qui restent dehors. Vous pouvez vous asseoir aux
 tables extérieures des restaurants, mais les visiteurs qui y ont acheté leur repas ont la priorité. Dans les
 attractions, les théâtres et les files d’attente, le parc demande de ne pas manger ni boire.
 
+Jusqu’au 29 mars 2026, Disney Adventure World s’appelait parc Walt Disney Studios.
+
 ### Futuroscope
 
 Selon sa FAQ, le [Futuroscope](ref:futuroscope) permet de pique-niquer sur toutes les pelouses.
 
 Les glacières rigides sont interdites, les sacs volumineux sont à éviter, et un contrôle des sacs a lieu à l’entrée. Comme vous pouvez quitter le parc dans la journée et y revenir, la glacière peut rester dans la voiture.
+
+Dans les restaurants, repas et boissons sont servis dans de la vaisselle lavable et réutilisable. Chaque restaurant propose un menu enfant et des plats végétariens et sans gluten. Le Futuroscope n’accepte pas les titres-restaurant comme Ticket Restaurant ou Chèque déjeuner.
+
+## Les casiers dans les parcs
+
+Situation au 14 octobre 2026 :
+
+| Parc                   | Où                                                                                                       | Prix                                                                     |
+| ---------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Europa-Park            | entrée principale                                                                                        | petit 1 €, grand 4 €, chaque nouvelle ouverture 1 €                      |
+| Phantasialand          | Berlin près du Pferdekarussell, Mexico à la sortie de Colorado Adventure                                 | 5 € pour la journée, bracelet à code à l’accueil                         |
+| Heide Park             | derrière le Service Center et devant le Colossos Shop                                                    | XL 5 €, XXL 7 € par jour, carte uniquement                               |
+| Hansa-Park             | sous-sol du Service-Center                                                                               | L 3 €, XL 5 € par jour de visite                                         |
+| Legoland Deutschland   | zone d’entrée et entrée du Feriendorf au Land der Pharaonen                                              | 5 € ou 7 € selon la taille                                               |
+| Movie Park Germany     | à côté du Visitor Welcome Center, en cas d’affluence aussi dans la banque au bout du Hollywood Boulevard | petit 5 €, grand 8 € par jour, carte, Apple Pay ou Google Pay uniquement |
+| Plopsaland Deutschland | le parc ne le précise pas                                                                                | petit 5 €, grand 7 €                                                     |
+| Efteling               | vestiaire près du parking                                                                                | 1,50 € par article                                                       |
+| Toverland              | Port Laguna et Land van Toos                                                                             | 2 €, ouverture illimitée                                                 |
+| Walibi Holland         | Sunset Souvenirs                                                                                         | moyen 5 €, grand 7 € par jour                                            |
+| Bobbejaanland          | Bobbejaan Schoepenplein                                                                                  | carte bancaire uniquement, le parc n’indique pas de prix                 |
+| Walibi Belgium         | entrée                                                                                                   | de 5 € à 8 €                                                             |
+
+Movie Park ne réinitialise ses casiers que le lendemain matin avant l’ouverture, vos affaires peuvent donc y rester après la fermeture du parc.
 
 ## Les parcs aquatiques
 
@@ -303,6 +363,14 @@ Disneyland Paris. À Bobbejaanland et à Walibi Belgium, les grillades sont auss
 Dans le règlement, qui s’appelle Parkordnung, Parkreglement, Park Rules ou règlement intérieur selon le parc, et souvent
 aussi dans la FAQ du site du parc.
 
+### Où réchauffer un repas pour bébé dans un parc d’attractions ?
+
+Toverland, Plopsaland Deutschland, Walibi Holland et Walibi Belgium ont des micro-ondes pour cela, gratuits à Toverland. À Heide Park, à Movie Park et à Phantasialand, le personnel le réchauffe, gratuitement aussi à Heide Park.
+
+### Combien coûte un casier dans un parc d’attractions ?
+
+Entre 1 € pour un petit casier à Europa-Park et 8 € pour un grand à Movie Park Germany. Souvent, un petit casier coûte 5 € et un grand 7 €. Situation en octobre 2026.
+
 ## Sources
 
 - Europa-Park, Park Rules : [europapark.de](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations)
@@ -331,3 +399,27 @@ aussi dans la FAQ du site du parc.
 - Disneyland Paris, Theme Parks Rules : [disneylandparis.com](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules)
 - Futuroscope, FAQ Restauration : [futuroscope.com](https://www.futuroscope.com/en/practical-information/faq/category-3)
 - Futuroscope, Règlement de l’Aquascope du 24 décembre 2025 : [collectivites.futuroscope.com](https://collectivites.futuroscope.com/sites/default/files/inline-files/Reglement_Aquascope_24-12-25.pdf)
+- Phantasialand, Information and arrival : [phantasialand.de](https://www.phantasialand.de/en/theme-park/information-and-arrival/)
+- Phantasialand, carte du Restaurant Uhrwerk : [phantasialand.de](https://www.phantasialand.de/files/uploads/kulinarik/documents/speisekarten/speisekarte-restaurant-uhrwerk-mittagsbote-de.pdf)
+- Phantasialand, carte de Rutmor’s Taverne : [phantasialand.de](https://www.phantasialand.de/files/uploads/kulinarik/documents/speisekarten/speisekarte-rutmors.pdf)
+- Heide Park, casiers : [support.heide-park.de](https://support.heide-park.de/hc/de/articles/360011020217-Wo-kann-ich-meine-Wertsachen-aufbewahren)
+- Heide Park, réchauffer les repas pour bébé : [support.heide-park.de](https://support.heide-park.de/hc/de/articles/360011121298-Wo-kann-ich-Babynahrung-aufw%C3%A4rmen)
+- Heide Park, plats végétariens et végans : [support.heide-park.de](https://support.heide-park.de/hc/de/articles/360011121218-Bietet-Ihr-auch-vegetarische-vegane-Gerichte-in-den-Restaurants-an)
+- Hansa-Park, aires de pique-nique : [hansapark.de](https://www.hansapark.de/picknickplaetze/)
+- Hansa-Park, Picknick & Chill-Out : [hansapark.de](https://www.hansapark.de/picknick-chill-out/?language=de)
+- Hansa-Park, Servicestationen : [hansapark.de](https://www.hansapark.de/servicestationen/?language=de)
+- Legoland Deutschland, FAQ : [legoland.de](https://www.legoland.de/faq/)
+- Movie Park Germany, Coca-Cola Freestyle : [movieparkgermany.de](https://www.movieparkgermany.de/besuch-planen/studio-gastronomie/coca-cola-freestyle)
+- Movie Park Germany, Restaurants und Snackangebote : [movieparkgermany.de](https://www.movieparkgermany.de/besuch-planen/studio-gastronomie/restaurants-und-snackangebote)
+- Movie Park Germany, Services : [movieparkgermany.de](https://www.movieparkgermany.de/entdecke-den-park/services)
+- Plopsaland Deutschland, nourriture et boissons apportées : [plopsa.com](https://www.plopsa.com/de/plopsaland-deutschland/node/6852)
+- Plopsaland Deutschland, réchauffer les repas pour bébé : [plopsa.com](https://www.plopsa.com/de/plopsaland-deutschland/node/7080)
+- Plopsaland Deutschland, casiers : [plopsa.com](https://www.plopsa.com/de/plopsaland-deutschland/node/6882)
+- Plopsaland Deutschland, sortir du parc et y revenir : [plopsa.com](https://www.plopsa.com/de/plopsaland-deutschland/haufig-gestellte-fragen/kann-ich-den-park-waehrend-meines-besuchs-verlassen-und-erneut-betreten)
+- Efteling, conseils pour économiser (points d’eau, pique-nique) : [efteling.com](https://www.efteling.com/nl/blog/tips/20200727-bespaar-tips-voor-dagje-efteling)
+- Efteling, bâtiment de services (vestiaire) : [efteling.com](https://www.efteling.com/nl/blog/nieuws/20220808-servicegebouw-garderobe-verhuur-geopend)
+- Efteling, Cloakroom : [efteling.com](https://www.efteling.com/en/park/information/cloakroom)
+- Bobbejaanland, services : [bobbejaanland.be](https://www.bobbejaanland.be/het-park/diensten)
+- Bobbejaanland, informations pour les personnes handicapées (casiers) : [bobbejaanland.be](https://www.bobbejaanland.be/plan-je-bezoek/informatie-personen-beperking)
+- Walibi Belgium, FAQ : [walibi.be](https://www.walibi.be/en/faq)
+- Wikipedia, Disney Adventure World : [en.wikipedia.org](https://en.wikipedia.org/wiki/Disney_Adventure_World)

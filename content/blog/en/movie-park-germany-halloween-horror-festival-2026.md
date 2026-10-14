@@ -137,10 +137,7 @@ start on 17 October. If you can, pick a Friday or Sunday before that: 2, 4, 9,
 
 ```
 
-How the festival compares with Traumatica, Walibi and Toverland is in the
-[Halloween overview](/blog/halloween-theme-parks-2026). Which weekday is
-otherwise the quietest at Movie Park, and what the autumn timetable looks like,
-is in the [Movie Park guide](/blog/movie-park-germany-wait-times-tips).
+We compare the festival with Traumatica, Walibi and Toverland in the [Halloween overview](/blog/halloween-theme-parks-2026). The [Movie Park guide](/blog/movie-park-germany-wait-times-tips) has the weekday that is otherwise the quietest at Movie Park and the autumn timetable.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

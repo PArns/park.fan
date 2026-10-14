@@ -260,7 +260,7 @@ Efteling Museum overdekt.
 
 ![De ingang van Droomvlucht bij nacht, roze en groen aangelicht | Overdag is deze muur wit. | right](/media/efteling/droomvlucht.jpg)
 
-Joris en de Draak, Baron 1898 en Python rijden buiten. Of een overdekte attractie voor onderhoud dicht is, staat op de pagina van die attractie en in de kalender van het park, en dat kijk je het best de avond ervoor na.
+Joris en de Draak, Baron 1898 en Python rijden buiten. Is een overdekte attractie voor onderhoud dicht, dan staat dat op de pagina van die attractie en in de kalender van het park, en dat kijk je het best de avond ervoor na.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Hangbaan;efteling/symbolica|Symbolica|Trackless Ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Indoor-coaster columns=type,peak,days
 
@@ -418,9 +418,6 @@ In de kolom “Overdekt” tellen alle attracties mee, ook die waarin je niet ri
 stations, doolhoven, ballenbaden, speelplekken, een museum en horrorhuizen die
 alleen rond Halloween 's avonds opengaan.
 
-In deze vergelijking van de typische wachttijden in de negen parken is
-Europa-Park gemarkeerd:
-
 ```park-comparison-widget slugs=europa-park,attractiepark-toverland,phantasialand,plopsaland-deutschland,movie-park-germany,efteling,walibi-belgium,heide-park,walibi-holland highlight=europa-park
 
 ```
@@ -439,8 +436,7 @@ regendag.
 
 In de kalender van elk park staan voor de komende weken het weer, de
 openingstijden en de verwachte drukte. Op regendagen is het gemiddeld rustiger,
-dus voorspelde buien zijn geen reden om je bezoek af te zeggen. Het weer voor
-Brühl, waar Phantasialand ligt:
+dus voorspelde buien zijn geen reden om je bezoek af te zeggen. Het weer hieronder geldt voor Brühl, waar Phantasialand ligt.
 
 ```weather-widget slug=phantasialand
 
@@ -490,9 +486,7 @@ geen enkele attractie in een hal.
 ### Rijden achtbanen bij regen?
 
 Dat beslist elk park voor zich, vaak pas op de dag zelf. In Phantasialand kan
-bij extreem weer elke buitenattractie op korte termijn dichtgaan. Of een
-attractie nu rijdt, staat op de pagina van die attractie op park.fan, en die
-status wordt elke vijf minuten bijgewerkt.
+bij extreem weer elke buitenattractie op korte termijn dichtgaan. Op de pagina van elke attractie op park.fan zie je of ze nu rijdt, en die status wordt elke vijf minuten bijgewerkt.
 
 ### Welk pretpark is bij regen het best voor kleine kinderen?
 

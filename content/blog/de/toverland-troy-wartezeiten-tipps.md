@@ -145,7 +145,6 @@ Siebzig Kilometer weiter nordwestlich steht im [Efteling](ref:efteling)
 ```
 
 Joris en de Draak landete bei den Golden Ticket Awards 2026 fünf Plätze hinter Troy.
-Das kosten die großen Namen der Region an Wartezeit, Holz wie Stahl:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron|Multi-Launch, Stahl;phantasialand/fly|F.L.Y.|Flying, Stahl;efteling/joris-en-de-draak|Joris en de Draak|Holz;efteling/baron-1898|Baron 1898|Dive Coaster, Stahl;attractiepark-toverland/troy|Troy|Holz;attractiepark-toverland/fenix|Fēnix|Wing, Stahl columns=type,park,peak highlight=attractiepark-toverland/troy
 
@@ -162,7 +161,7 @@ fünf Achterbahnen, fünf Wasserattraktionen und über vierzig Attraktionen
 insgesamt. Das Efteling zählte im selben Jahr 5,78 Millionen Besuche, rund
 fünfmal so viele, und hat nicht fünfmal so viele Achterbahnen.
 
-**Das Toverland verkauft keinen Fast Pass und keinen Express-Pass.** Zeit gegen Geld tauschen kannst du nur an den 13 Halloween-Abenden im Oktober und Anfang November.
+Das Toverland verkauft keinen Fast Pass und keinen Express-Pass. Zeit gegen Geld tauschen kannst du nur an den 13 Halloween-Abenden im Oktober und Anfang November.
 Eine Single-Rider-Spur gibt es seit 2023 übrigens auch, aber nur an einer
 einzigen Attraktion, dem Freifallturm Dragonwatch, und die kostet nichts extra.
 
@@ -420,14 +419,11 @@ Dienstag. Die [Beste-Reisezeit-Seite](/beste-reisezeit) stellt die Parks nebenei
 
 Verlassen kann man sich darauf nicht, sobald sich niederländische und deutsche
 Ferienkalender, Wetter und Öffnungszeiten überlagern, und im Grenzgebiet Limburg
-überlagern sie sich dauernd. Hier sind die ruhigsten kommenden Tage:
+überlagern sie sich dauernd.
 
 ```best-days-widget slug=attractiepark-toverland
 
 ```
-
-Und so sieht der Andrang über Monate und Wochentage aus, gerechnet aus den
-gemessenen Öffnungstagen:
 
 ```stats-widget slug=attractiepark-toverland
 

@@ -2,6 +2,7 @@
 title: 'Plopsaland Deutschland: el parque que antes era Holiday Park'
 translationKey: plopsaland-deutschland-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -87,6 +88,12 @@ ha elegido más de una vez la mejor del mundo. El parque cuenta ya 40 galardones
 La máquina no tiene inversión, ni lanzamiento, ni cambio de vía. Tras la primera caída tiene tres colinas en cuya cresta uno se levanta del asiento, y una hélice al final
 en la que, al contrario, uno queda pegado a él.
 
+Se inauguró el 18 de junio de 2001, por el 30 aniversario del parque, y costó unos 20 millones de
+marcos. El trazado lo calculó la oficina de ingeniería Stengel. Los trenes suben la cuesta
+inicial tirados por un carro sujeto a un cable de acero, el mismo sistema que en Millennium Force
+en Estados Unidos, y la primera caída tiene 82 grados de inclinación. Circulan dos trenes de siete
+vagones y 28 plazas cada uno, hasta 1.300 pasajeros por hora.
+
 ![Vista desde arriba de una montaña rusa de acero roja cuyo recorrido atraviesa un terreno arbolado en colinas largas y una curva amplia. | Expedition GeForce vista desde la Free Fall Tower. En la foto, las tres colinas tras la primera caída. Foto: Hetamin1000, Wikimedia Commons (Public Domain) | right](/media/plopsaland-deutschland/expedition-geforce-airtime-huegel-4x3.jpg)
 
 Se puede subir a partir de 140 centímetros, y por debajo ni siquiera acompañado. Solo funciona a
@@ -99,21 +106,24 @@ la primera montaña rusa alemana con inversiones. La sucesora es una Sky Rocket 
 alto, 100 km/h, 263 metros de vía, una inversión. El tren sale lanzado tres veces de la
 estación, hacia delante y hacia atrás, antes de superar el top hat vertical. Altura mínima
 140 centímetros, edad mínima 14 años, y también aquí rige el límite de ocho grados, medido en la
-temperatura de la vía.
+temperatura de la vía. Se inauguró el 12 de abril de 2014. En el tren van doce pasajeros en dos
+vagones, y un viaje dura 47 segundos.
 
 **100% Wolf – La montaña rusa familiar** es la novedad de 2026, inaugurada el 22 de marzo. La
 construyó Gerstlauer: 17,5 metros de alto, 760 metros de largo, 55 km/h, con un tramo de
 lanzamiento, un cambio de vía para la marcha atrás y un spike como elemento final. Es una atracción familiar: los
 niños pueden subir acompañados desde 100 centímetros y solos desde 130. Funciona ya a partir de
-5 grados.
+5 grados. En el circuito hay tres trenes de diez vagones para dos personas cada uno, pensados
+para 1.000 pasajeros por hora.
 
 En nuestras mediciones, aquí se espera más que en cualquier otra atracción del parque.
 
-**Tabaluga's Rollercoaster** de Zierer es con 9 metros y 39 km/h la más pequeña de las cuatro y
+**Tabaluga's Rollercoaster** de Zierer es con 9 metros y 39 km/h la más pequeña de las cuatro (modelo Force Two, 222 metros de vía,
+un minuto y 30 segundos de viaje) y
 la única bajo techo: pertenece a la nave Holiday Indoor, abierta en 2018 sobre 5.000 metros
 cuadrados. Los días de lluvia, la nave se llena.
 
-## Agua, altura y lo demás
+## Atracciones de agua y torres
 
 La Free Fall Tower fue en 1997 la primera torre de caída de Alemania, un Giant Drop de Intamin,
 70 metros de alto, desde 120 centímetros. Se ve desde la A65.
@@ -143,7 +153,7 @@ la temporada 2025 con nueva tematización.
 
 ```
 
-## Las zonas temáticas, y qué hay en cada una
+## Lo que hay en cada zona temática
 
 El parque tiene forma de estrella. Las zonas salen de la plaza de las Fuentes,
 detrás de la entrada, en todas las direcciones, y se cruza el centro varias veces al día. En 40 hectáreas, las distancias son cortas.
@@ -189,14 +199,12 @@ Medimos los tiempos de espera de este parque desde el 7 de octubre de 2024, a d�
 
 ```
 
-La mediana está en
-5 o 10 minutos en la mayoría de las atracciones. Aun en el tramo más cargado de un día normal
-solo llega a 10 o 20. Donde más se espera es en 100% Wolf, con una mediana de 10 minutos.
+En la mayoría de las atracciones la mediana es de solo unos minutos, y aun el tramo más cargado de un día normal se queda corto. Donde más se espera es en 100% Wolf.
 
-Aquí 804.218 visitantes al año se reparten 57 atracciones; en un parque grande, 6 millones se reparten cien. Quien venga de Europa-Park o de Phantasialand y allí calcule 60 minutos para las atracciones estrella, aquí necesita una fracción de eso.
+Aquí 804.218 visitantes al año se reparten 57 atracciones; en un parque grande, 6 millones se reparten cien. Quien venga de Europa-Park o de Phantasialand y allí calcule mucho tiempo para las atracciones estrella, aquí necesita una fracción de eso.
 
 Cuánto se monta en un día depende aquí, por tanto, del horario y apenas de las colas. Ocho horas, una de ellas para comer y caminar, dejan sitio para veinte vueltas
-y más con una mediana de diez minutos. Quien llegue con una lista de ocho atracciones habrá
+y más con estas esperas. Quien llegue con una lista de ocho atracciones habrá
 terminado a primera hora de la tarde y decidirá entonces qué repite.
 
 En un día frío de marzo, en cambio, cuando Expedition GeForce y Sky Scream están paradas por el
@@ -222,11 +230,7 @@ ilimitadas, siempre por persona y día. Vale en ocho atracciones: 100% Wolf, Din
 Splash, Die große Welle, bigFM Expedition GeForce, Sky Scream, Free Fall Tower y Sky Fly. Entre
 dos vueltas tienen que pasar al menos 15 minutos, y el parque solo vende un número limitado.
 
-En la atracción con las esperas más largas,
-la mediana es de 10 minutos. Con el Classic de 35 euros se ahorran, por tanto, nueve veces unos
-diez minutos, alrededor de hora y media en una jornada que de todos modos acaba a las 18:00. Un sábado de
-julio o una Fright Night cambian el cálculo; un viernes de septiembre no lo sostiene. El
-precio, eso sí, es el mismo todo el año.
+Incluso en la atracción con las esperas más largas, la cola es corta en un día normal. Con el Classic de 35 euros te saltas, por tanto, nueve colas cortas, en una jornada que de todos modos acaba a las 18:00. Un sábado de julio o una Fright Night cambian el cálculo; un viernes de septiembre no lo sostiene. El precio, eso sí, es el mismo todo el año.
 
 ## Cuándo ir
 
@@ -236,12 +240,9 @@ precio, eso sí, es el mismo todo el año.
 
 ### El día de la semana
 
-El sábado es con diferencia el día más cargado, con una mediana de 15 minutos, 20 en el tramo alto,
-medidos en 39 sábados. La mayoría de los demás días están en 10 minutos de mediana.
+El sábado es con diferencia el día más cargado, medido en 39 sábados. La mayoría de los demás días quedan claramente por debajo.
 
-El día más tranquilo es el **viernes**. En 38 viernes medidos la mediana está en 5 minutos, por debajo del martes, el
-miércoles y el jueves. Quien pueda coger un día libre y dude entre viernes y miércoles, que coja
-el viernes.
+El día más tranquilo es el **viernes**. En 38 viernes medidos la mediana está por debajo del martes, el miércoles y el jueves. Quien pueda coger un día libre y dude entre viernes y miércoles, que coja el viernes.
 
 A partir de finales de septiembre esa ventaja se da la vuelta, porque los
 viernes de octubre están las Halloween Fright Nights y el parque abre hasta las 22:00. Entonces
@@ -253,17 +254,17 @@ el viernes por la noche es el momento más cargado de la semana.
 
 ```
 
-Julio es el mes más cargado. Con una mediana de 15 minutos supera, como octubre, los 10 minutos
-del resto de la temporada alta. **Septiembre** es el mes más tranquilo en el que el parque aún
-abre a diario. La mediana está entonces en 10 minutos, y el tramo alto de un día tampoco pasa de
-10, el valor más bajo de todos los meses de abril a octubre. Además, el tiempo en el Palatinado
-en septiembre suele ser mejor que en junio.
+Julio es el mes más cargado y supera, como octubre, al resto de la temporada alta. **Septiembre** es el mes más tranquilo en el que el parque aún abre a diario, y hasta el tramo alto de un día es más bajo que en cualquier otro mes de abril a octubre. Además, el tiempo en el Palatinado en septiembre suele ser mejor que en junio.
 
 Marzo y noviembre son meses de borde. Entonces Expedition GeForce y Sky Scream solo funcionan si
 la vía alcanza ocho grados.
 
-Enero y febrero aparecen con cero minutos porque el parque está cerrado. La temporada 2026 va
-del 22 de marzo al 1 de noviembre.
+Enero y febrero aparecen vacíos porque la temporada principal está parada. La
+temporada 2026 va del 22 de marzo al 1 de noviembre. El invierno anterior, una parte del recinto
+abrió como Majaland Pfalz, con las atracciones del Majaland. Las entradas de invierno valían
+hasta el 22 de marzo de 2026 y costaban desde 24 euros con fecha y 32 euros sin fecha.
+
+Las vacaciones de verano en Renania-Palatinado van en 2026 del 29 de junio al 7 de agosto, así que abarcan todo julio. Las de otoño duran del 5 al 16 de octubre e incluyen las Fright Nights del 9, el 10 y el 16 de octubre. Las de Semana Santa fueron del 30 de marzo al 10 de abril.
 
 ```best-days-widget slug=plopsaland-deutschland
 
@@ -302,15 +303,36 @@ primera montaña rusa alemana con inversiones, en 1984 el Donnerfluss, en 1997 l
 Tower, en 2001 la Expedition GeForce. De los 70.000 metros cuadrados de la primera temporada se
 pasó a más de 400.000 en 2015.
 
+En 1972 llegaron un teatro de 600 plazas y un nuevo delfinario de 1.800 plazas, en 1978 el Kino Monumental, con una pantalla de 180 grados. En 1983 se crearon el lago del Holiday Park, de 30.000 metros cuadrados, y el Aqua-Stadion para el espectáculo de esquí acuático. El delfinario cerró en 1995, y el Aqua-Stadion se derribó en 2022.
+
+El Superwirbel era un modelo de Vekoma del tipo Corkscrew with Bayerncurve y costó 3,5 millones
+de marcos. En sus 731 metros de vía tenía un doble sacacorchos, con 22,9 metros de altura y
+64 km/h. Hizo su último viaje el 31 de octubre de 2013. Un trozo del sacacorchos se salvó de la
+chatarra y hoy cuelga sobre la entrada de la zona de Sky Scream.
+
 En 2002 y 2003 el profesor estadounidense Richard Rodriguez hizo aquí su maratón de montañas rusas, días
 enteros montando. Junto a la atracción hay desde entonces un monumento.
 
-En noviembre de 2010 el grupo belga Plopsa, filial de Studio 100, se hizo con el parque. Desde entonces es un parque temático de zonas enlazadas, y sus mascotas se llaman
+El 3 de noviembre de 2010 Studio 100 anunció que su filial, el grupo belga Plopsa, se hacía con
+el parque, y prometió 25 millones de euros para los cuatro primeros años. Desde entonces es un parque temático de zonas enlazadas, y sus mascotas se llaman
 Maya, Vic, Heidi, Mia y Tabaluga en vez de Holly, el loro que vivía aquí antes. En 2012 nació el
-Majaland en el sitio de la antigua entrada, y con él la entrada principal de hoy. En 2018 siguió
-la nave cubierta, en 2026 la nueva montaña rusa.
+Majaland en el sitio de la antigua entrada, y con él la entrada principal de hoy. De 2010 a 2016 funcionó en el parque el ratón loco
+Hollys Wilde Autofahrt, una montaña rusa de Maurer que antes había estado en Dreamland Margate,
+en Inglaterra, y en Loudoun Castle, en Escocia.
 
-El cambio de nombre llegó el 28 de junio de 2025. El operador ya llamaba Plopsaland y Plopsa a sus otros parques, y Haßloch era el último que aún llevaba un nombre anterior.
+Según la policía, el 15 de agosto de 2014 murió en el parque una niña de once años en Spinning Barrels. Este Breakdance de 2000 no volvió a funcionar y se vendió. En junio de 2016 el juzgado local (Amtsgericht) de Neustadt an der Weinstraße condenó al operario a una multa de 2.400 euros por homicidio imprudente y absolvió a sus dos superiores, también acusados.
+
+En 2018 siguió la nave cubierta, por más de 10 millones de euros, según Plopsa la mayor inversión
+individual en el parque hasta entonces. En junio de 2019 el grupo anunció otros 25 millones de
+euros en cinco años, con el objetivo de superar el millón de visitantes al año y tener un hotel
+propio. De ese plan salieron DinoSplash (2020) y el Wickieland con Splash Battle y el Disk'O
+(2021). En 2023 llegó la zona de juegos de agua Super Wings, en 2024 la zona Blinky Bill, en 2026
+la nueva montaña rusa.
+
+El cambio de nombre llegó el 28 de junio de 2025. El operador ya llamaba Plopsaland y Plopsa a sus otros parques, y Haßloch era el último que aún llevaba un nombre anterior. Según el operador, desde 2010 se
+habían invertido unos 50 millones de euros en el parque, y con el nuevo nombre anunció otros
+100 millones para los tres años siguientes. En 2025 los visitantes crecieron un 9 % respecto al
+año anterior.
 
 ## Lo que viene
 
@@ -318,7 +340,13 @@ Para 2028 el parque construye una montaña rusa que todavía no tiene nombre: un
 tematización de Tomorrowland como la que ya tiene The Ride to Happiness en el parque hermano
 belga Plopsaland Belgium. Figura en el plan director del parque y en RCDB como en construcción.
 
-Sería la quinta montaña rusa del parque. A diferencia de 100% Wolf, atracción familiar, está pensada para adultos.
+Sería la quinta montaña rusa del parque. A diferencia de 100% Wolf, atracción familiar, está pensada para adultos. Al anunciarla, en
+marzo de 2025, el operador habló de lanzamientos, vagones que giran e inversiones, y en enero de
+2026, del inicio de las obras este mismo año.
+
+Desde 2025 Plopsa construye además en Haßloch el parque acuático Plopsaqua Haßloch, por
+40 millones de euros. Según el operador abrirá a principios de 2028 como tarde, con toboganes,
+una piscina de olas, una piscina para nadar y una zona de sauna.
 
 ## Dormir y comer
 
@@ -333,9 +361,6 @@ quienes tienen abono reciben allí un diez por ciento de descuento. A su lado es
 palatino de vino y cerveza, Pasta Point, el Koala Joe's Roadhouse en la zona de Blinky Bill, el
 Maja Burger en el Majaland, una Super Wings Fuel Station y un café Dunkin'.
 
-El parque está en medio de una región vinícola, y aquí también hay flammkuchen o una copa de
-riesling.
-
 ## Un día en Haßloch, a grandes rasgos
 
 El parque abre a las 10:00 y cierra, fuera de las Fright Nights, a las 18:00.
@@ -343,8 +368,7 @@ El parque abre a las 10:00 y cierra, fuera de las Fright Nights, a las 18:00.
 1. **10:00** Directos a Expedition GeForce. La primera media hora está vacía, y dos vueltas seguidas son lo normal.
 2. **10:45** Seguir a Sky Scream, que está al lado. Las dos dependen de la regla de los ocho
    grados, así que tiene sentido despacharlas pronto si el día empieza frío.
-3. **11:30** 100% Wolf. La atracción es nueva y por eso tiene la cola más larga del parque, pero
-   con diez minutos de mediana es llevadera.
+3. **11:30** 100% Wolf. La atracción es nueva y por eso tiene la cola más larga del parque, pero es llevadera.
 4. **12:30** Comida, y después las acuáticas: DinoSplash y Wickie Splash están colocadas de
    modo que se hacen del tirón. En las dos uno se moja.
 5. **14:30** Free Fall Tower y Sky Fly, más la Lighthouse Tower para la vista del recinto.
@@ -360,8 +384,9 @@ de las atracciones de día cierran entonces antes que el parque.
 La dirección es Holiday-Park-Str. 1–5, 67454 Haßloch.
 
 **En coche.** Por la A65 o la B9, con aparcamientos junto al recinto. Quien solo deja o recoge a
-alguien puede entrar gratis hasta 45 minutos; la barrera se abre por lectura de matrícula. Quien
-se queda el día necesita un tique de aparcamiento, que el parque vende junto a las entradas. El
+alguien puede entrar gratis hasta 45 minutos; la barrera se abre por lectura de matrícula. El
+aparcamiento tiene más de 2.500 plazas para coches y 50 para autocares. Para quedarse el día hace
+falta un tique de aparcamiento, que se compra en línea o en la máquina antes de salir. El
 Plopsa Pass Europe Premium de 235 euros incluye un abono de aparcamiento.
 
 **En tren.** Hasta la estación de Haßloch; desde allí sale varias veces al día una lanzadera al
@@ -369,8 +394,11 @@ parque, del 22 de marzo al 1 de noviembre de 2026 inclusive. Está incluida en l
 VRN con destino Haßloch y en el Deutschlandticket, así que no cuesta nada aparte. A los grupos a
 partir de diez personas se les pide reservarla.
 
-**Entradas.** Una entrada con fecha cuesta desde 36 euros en línea. Las entradas familiares para
-tres a seis personas salen desde 43 euros por persona. Una entrada sin fecha, válida un año para
+**Entradas.** Una entrada con fecha cuesta desde 36 euros en línea. Los niños de menos de
+85 centímetros entran gratis, los niños de hasta 99 centímetros y los mayores de 70 años pagan
+22 euros. La entrada familiar cuesta 139 euros para tres personas, 179 para cuatro, 219 para
+cinco y 259 para seis. Una entrada de tarde de 46 euros vale desde tres horas antes del cierre, y
+en las Summernights y las Fright Nights ya desde las 17:00. Una entrada sin fecha, válida un año para
 un día a elegir, cuesta 58 euros. El precio del día depende de la fecha: para el jueves 8 de
 octubre de 2026 el calendario del parque marca 42 euros.
 
@@ -409,22 +437,17 @@ y DinoSplash, y 140 en Wickie Splash.
 
 ### ¿Cuándo hay menos gente en Plopsaland Deutschland?
 
-Los viernes fuera de la temporada de Halloween, y en septiembre. En 38 viernes medidos la
-mediana fue de 5 minutos. En septiembre fue de 10 minutos, como en la mayoría de los meses de
-temporada alta, pero el tramo alto de un día tampoco pasó de 10. El sábado es el día
-más cargado con 15 minutos.
+Los viernes fuera de la temporada de Halloween, y en septiembre. Los viernes la mediana está por debajo del martes, el miércoles y el jueves, y en septiembre hasta el tramo alto de un día es más bajo que en cualquier otro mes de temporada alta. El sábado es el día más cargado.
 
 ### ¿Cuánto se espera aquí de media?
 
-Sobre todos los días medidos, en el parque se
-espera de media algo más de 18 minutos. En las atracciones por separado, la mediana suele
-quedarse entre 5 y 10 minutos.
+Sobre todos los días medidos, en el parque se espera de media bastante menos de media hora, y en las atracciones por separado, por lo general, solo unos minutos.
 
 ### ¿Merece la pena el Express Pass?
 
 Más un sábado de julio y en las Fright Nights que un viernes de septiembre. Con el Classic de
 35 euros tienes nueve vueltas por la entrada reducida, con al menos 15 minutos entre ellas. Con
-los tiempos medidos de este parque se ahorra más bien hora y media que medio día.
+los tiempos medidos de este parque se ahorra bastante menos de medio día.
 
 ### ¿Qué montañas rusas tiene el parque?
 
@@ -474,5 +497,27 @@ funcionando está en [parque de atracciones con lluvia](/blog/parque-de-atraccio
 - [Plopsaland Deutschland en la Wikipedia alemana](https://de.wikipedia.org/wiki/Plopsaland_Deutschland)
   para historia, fabricantes y años de apertura
 - Visitantes en 2025: [nota de prensa del grupo Plopsa](https://plopsanews.com/de/pressemitteilungen/recordjaar-voor-plopsaland-deutschland-stuwt-groei-van-plopsa-group)
+- Roller Coaster DataBase sobre
+  [Expedition GeForce](https://rcdb.com/977.htm),
+  [Sky Scream](https://rcdb.com/6736.htm),
+  [100% Wolf](https://rcdb.com/21866.htm),
+  [Tabaluga's Rollercoaster](https://rcdb.com/15332.htm),
+  [Superwirbel](https://rcdb.com/976.htm),
+  [Hollys Wilde Autofahrt](https://rcdb.com/9128.htm) y
+  [la montaña rusa prevista para 2028](https://rcdb.com/23870.htm)
+- [Expedition GeForce](https://de.wikipedia.org/wiki/Expedition_GeForce) y
+  [Superwirbel](https://de.wikipedia.org/wiki/Superwirbel) en la Wikipedia en alemán
+- [Plopsaland Deutschland en la Wikipedia en inglés](https://en.wikipedia.org/wiki/Plopsaland_Deutschland)
+- Plopsaland Deutschland: [entradas](https://www.plopsa.com/de/plopsaland-deutschland/tickets),
+  [aparcamiento](https://www.plopsa.com/de/plopsaland-deutschland/parkplatz) y
+  [Majaland Pfalz](https://www.plopsa.com/de/majaland-pfalz)
+- Grupo Plopsa sobre las [inversiones de 2019](https://plopsanews.com/nl/persberichten/plopsa-group-kondigt-investering-van-meer-dan-25-miljoen-in-duitse-holiday-park-aan)
+- Sobre el cambio de nombre y los 100 millones de euros:
+  [ZDFheute](https://www.zdfheute.de/wirtschaft/unternehmen/holiday-park-plopsaland-neuer-name-100.html) y
+  [Tageskarte](https://www.tageskarte.io/tourismus/detail/100-millionen-euro-investition-holiday-park-in-hassloch-wird-plopsaland.html)
+- Sobre el accidente de 2014:
+  [Stars and Stripes](https://www.stripes.com/news/2018-05-17/german-court-affirms-acquittals-of-holiday-park-employees-in-2014-death-of-former-soldiers-daughter-1499334.html) y
+  [t-online (dpa)](https://www.t-online.de/nachrichten/panorama/justiz/id_78021956/unfall-im-holiday-park-22-jaehriger-nach-unfalltod-verurteilt.html)
+- [Vacaciones escolares en Renania-Palatinado](https://bm.rlp.de/service/ferientermine)
 - Tiempos de espera: mediciones propias del 7 de octubre de 2024 al 7 de octubre de 2026,
   225 jornadas de funcionamiento

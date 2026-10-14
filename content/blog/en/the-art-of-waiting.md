@@ -89,7 +89,7 @@ Maister wrote down eight of them. These three turn up in every queue:
 
 ### Your sense of time exaggerates, by a good third
 
-Just how badly we judge unoccupied waiting can be measured. In 1984 the
+In 1984 the
 marketing researcher **Jacob Hornik** timed shoppers in retail checkout lines
 and then asked them how long they thought they had waited. On average the
 guesses came out **around 36 percent** too high. Ten measured minutes become
@@ -144,7 +144,7 @@ the principle.
 Three rides in Orlando push this about as far as it goes. Their queues are worth
 a look even if you never got on the ride.
 
-### Avatar Flight of Passage: a museum as a queue
+### Avatar Flight of Passage
 
 The queue for
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
@@ -171,7 +171,7 @@ talk about afterwards is the breathing avatar in the tank.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
-### Cosmic Rewind: first the museum, then the coaster
+### Cosmic Rewind
 
 [EPCOT](ref:epcot?bare) takes it a step further with
 [Guardians of the Galaxy: Cosmic Rewind](ref:epcot/guardians-of-the-galaxy-cosmic-rewind).
@@ -193,7 +193,7 @@ only then did a permanent standby queue arrive. Until that point the physical
 queue existed mostly as a story route rather than as holding space, and that on
 a ride that, according to RCDB, moves 2,000 guests an hour with trains of 20.
 
-### VelociCoaster: waiting in the raptor paddock
+### VelociCoaster
 
 Universal plays the same card at
 [Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
@@ -236,9 +236,7 @@ Studios holds close to 10,000 people per show including standing room. That’s
 nearly ten thousand people sitting somewhere other than in front of your
 favourite coaster for the next half hour, and the rest of the park gets room to
 breathe. You can see it in the Hollywood Studios hourly profile on park.fan: in
-the evening hours when Fantasmic! is on, headliner wait times drop clearly. How
-much of that is the show and how much is closing time coming, we can’t separate
-in the numbers. On 25 September 2026, for instance, the first performance starts at
+the evening hours when Fantasmic! is on, headliner wait times drop clearly. The numbers can’t separate how much of that is the show and how much is closing time coming. On 25 September 2026, for instance, the first performance starts at
 8 pm, an hour before the park closes. If you’ve already seen the show, that hour
 is still the best value of the day. Moments like that are why we re-read the
 wait times every five minutes.
@@ -390,7 +388,7 @@ neighbouring regions), weather forecasts, opening hours and special events, and
 currently looks about six months ahead. Demand and throughput are still in
 every one of those numbers, because every posted wait is the queue divided by
 the throughput.
-How often our forecasts match reality is on the [Fancast page](/fancast).
+On the [Fancast page](/fancast) you can see how often our forecasts match reality.
 
 ## Why Peter Pan’s Flight always “escalates”
 
@@ -441,10 +439,7 @@ theme park:
 
 ## Phantasialand and Europa-Park vs. Orlando
 
-How much demand and capacity set the wait-time level of an entire park is
-easiest to see when you put two big European parks next to Orlando.
-
-**Orlando plays in a demand league of its own.** With 17.8 million guests in
+Orlando plays in a demand league of its own. With 17.8 million guests in
 2024, the [Magic Kingdom](ref:magic-kingdom-park?bare) is the busiest theme park
 in the world according to the industry body TEA, and both Disney and Universal
 pull guests from every continent. On top of that, you can buy your way past the
@@ -457,7 +452,7 @@ parallel (as of 25 September 2026). Europe sells queue-skipping too: Disneyland
 Paris has Premier Access, and Phantasialand sells a Quick Pass for its big
 rides, now priced per ride.
 
-**[Europa-Park](ref:europa-park?bare) is the counter-model.** Germany’s largest
+[Europa-Park](ref:europa-park?bare) is the counter-model. Germany’s largest
 park, and after Disneyland Paris the busiest in Europe (6.2 million guests in
 2024 according to TEA), spreads its visitors across **fourteen roller
 coasters** (RCDB’s count) plus dozens of themed rides. That sheer volume of
@@ -466,8 +461,8 @@ hardly any queue runs into permanent saturation. Which is why even busy days in
 Rust rarely feel like Orlando, and the longest median wait in the park belongs
 to its newest coaster, Voltron.
 
-**[Phantasialand](ref:phantasialand?bare), on the other hand, is the extreme
-case in the other direction:** about 28 hectares, half as many coasters as Rust
+[Phantasialand](ref:phantasialand?bare), on the other hand, is the extreme
+case in the other direction: about 28 hectares, half as many coasters as Rust
 (seven by RCDB’s count), and extraordinarily elaborate theming. The load
 concentrates on a handful of headliners, and when everyone wants
 [Taron](ref:phantasialand/taron?bare) on a holiday Saturday (greetings, I’m
@@ -554,8 +549,7 @@ On the vehicle side, on the other hand, every stop costs real capacity. That’s
 why the Haunted Mansion’s omnimover and YOY’s rolling station don’t stop at all
 in normal operation. In the queue in front of them, stop-and-go only costs you
 patience. What actually shortens your wait is a day with fewer people ahead of
-you, and you pick that before you go. Which day that is, you’ll find in the
-calendar of best days.
+you, and you pick that before you go, in the calendar of best days.
 
 ## Virtual queues and double stations
 

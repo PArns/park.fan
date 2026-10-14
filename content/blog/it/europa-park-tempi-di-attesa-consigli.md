@@ -90,8 +90,6 @@ salvo un giorno di luglio. Su tutti i giorni della settimana l’attesa tipica
 nella media del parco (la mediana) è **breve per un’affluenza simile**; nei
 giorni pieni sta nettamente più in alto.
 
-Le dieci attrazioni per cui aspetti di più, con accanto il valore di oggi:
-
 ```stats-widget slug=europa-park show=attractions
 
 ```
@@ -107,7 +105,7 @@ nessuno, in una mattina piena la coda arriva fino al piazzale.
 Voltron
 nel primo anno ha totalizzato 3,25 milioni di corse e ha la coda più lunga del
 parco, eppure per un parco con oltre sei milioni di ospiti **questa coda più
-lunga è sorprendentemente corta**. La tabella confronta parchi con la stessa base dati e lo stesso metodo di calcolo:
+lunga è sorprendentemente corta**. Tutti i parchi del confronto sono calcolati con la stessa base dati e lo stesso metodo di calcolo.
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
@@ -567,8 +565,7 @@ Nel 2027 si parte prima: dal 7 al 19 marzo il parco apre per la prima volta due
 Pre-Opening Weeks, non ancora con tutte le attrazioni e gli spettacoli, ma con i
 biglietti più economici dell’anno, e la stagione estiva comincia poi il 20
 marzo. Di ottobre nella tabella ci sono solo i primi giorni, di novembre nessuno.
-Quanto Halloween e HALLOWinter ci siano già entrati lo vedi dal numero di giorni
-misurati.
+Il numero di giorni misurati indica quanto Halloween e HALLOWinter ci siano già entrati.
 
 ### Le vacanze che riempiono il parco
 
@@ -578,7 +575,7 @@ francese Grand Est, cioè dell’Alsazia, quelle dei cantoni svizzeri di Argovia
 Basilea Città e Basilea Campagna e quelle dei Länder confinanti di Baviera,
 Assia e Renania-Palatinato.
 
-Quanto pesano si vede dai giorni feriali. Tra aprile e settembre ci sono stati 42
+Tra aprile e settembre ci sono stati 42
 giorni feriali senza vacanze scolastiche in nessuna delle otto regioni e senza
 festivi. Quattro sono stati su “alto” o più, 27 su “basso”. Dei giorni feriali
 delle vacanze argoviesi, 17 su 27 sono stati su “alto”, e nemmeno uno su
@@ -670,9 +667,7 @@ tranquilli sono nel calendario qui sopra.
 
 ## La giornata perfetta all’Europa-Park
 
-**Sii al cancello prima che apra, e poi va' al Voletarium.**
-
-La nostra analisi del rope drop confronta per ogni attrazione
+Sii al cancello prima che apra, e poi va' al Voletarium. La nostra analisi del rope drop confronta per ogni attrazione
 l’attesa all’apertura con il picco giornaliero più alto misurato lì in una
 giornata piena. Al Voletarium la coda all’apertura è solo una frazione di
 quel picco, di gran lunga il maggior risparmio di tutto il parco.
@@ -683,8 +678,7 @@ quel picco, di gran lunga il maggior risparmio di tutto il parco.
 
 Per Voltron, Arthur e Silver Star arrivare presto fa risparmiare meno della metà.
 
-Quanto la cosa si distribuisca nella giornata si vede solo nel profilo orario:
-l’attesa tipica di ogni ora, la mediana di tutti i giorni di apertura misurati
+Il profilo orario riporta l’attesa tipica di ogni ora, la mediana di tutti i giorni di apertura misurati
 dalla fine di dicembre 2025. In grassetto l’ora di punta di ogni attrazione.
 
 ```hourly-profile-widget slug=europa-park top=12
@@ -696,7 +690,7 @@ dalla fine di dicembre 2025. In grassetto l’ora di punta di ogni attrazione.
 A Silver Star alle dieci e alle undici c’è la fila più lunga della giornata, da mezzogiorno si accorcia
 parecchio e risale solo nelle ultime ore delle lunghe giornate estive.
 
-**Le ore più piene stanno tra le dieci e mezzogiorno.** La maggior parte delle
+Le ore più piene stanno tra le dieci e mezzogiorno. La maggior parte delle
 attrazioni ha il massimo alle dieci o alle undici; solo Arthur, Atlantica e il
 rafting sul fiordo toccano il massimo nel pomeriggio.
 
@@ -748,7 +742,7 @@ sabato arrivo, Rulantica o un giro in paese, domenica al parco.
 giorno feriale più pieno, anche se di poco. Se comunque l’unica opzione è un
 giorno infrasettimanale, prendi il giovedì.
 
-## Halloween, HALLOWinter, inverno
+## Halloween e inverno
 
 Dal **26 settembre** nel parco ci sono circa **180.000 zucche**, più le
 decorazioni autunnali in tutti e diciotto i paesi e, novità del 2026, un
@@ -829,7 +823,7 @@ e allora chiude solo alle 19, cioè esattamente quando accanto il terreno apre i
 cancelli. Chi si compra un biglietto per Traumatica in una data di novembre,
 rinuncia così all’ultima ora di parco.
 
-## In pratica: prezzi 2026, come arrivare, parcheggio, mangiare, dormire
+## Prezzi 2026 e come arrivare
 
 **Biglietti.** Il prezzo dipende dalla data, e il parco lavora con due
 categorie di prezzo. Online la
@@ -960,7 +954,7 @@ misurati a novembre non ne abbiamo ancora.
 
 ## Meteo e tempi di attesa aggiornati
 
-Quando piove, la coda dell’Eurosat si allunga:
+Quando piove, la coda dell’Eurosat si allunga.
 
 ```weather-widget slug=europa-park
 

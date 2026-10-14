@@ -2,6 +2,7 @@
 title: 'Jahreskarte im Freizeitpark: ab wie vielen Besuchen sie sich lohnt'
 translationKey: annual-pass-comparison-theme-parks
 date: '2026-10-06'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -80,10 +81,12 @@ Nicht eingerechnet habe ich den Rabatt auf Essen und Souvenirs, weil er davon ab
 
 Alle Karten sind personengebunden. Beim Toverland steht das in den Bedingungen ausdrücklich: Pro Person gibt es eine Karte, und sie ist nicht übertragbar.
 
-## Efteling: Classic, Plus und Premium
+## Die drei Jahreskarten im Efteling
 
 Das Efteling verkauft seit dem 11. Juni 2024 drei Jahreskarten, die sich nach der Zahl der Tage
-unterscheiden, an denen sie gelten. Eine Ermäßigung für Besucher ab 65 gibt es seither nicht mehr.
+unterscheiden, an denen sie gelten. Eine Ermäßigung für Besucher ab 65 gibt es seither nicht mehr, bestehende 65+-Karten liefen bis zum Ende ihrer Mindestlaufzeit weiter.
+
+Das Efteling hat 2023 die Inhaber befragt, und nach Angaben des Parks waren die meisten sehr zufrieden, wollten aber mehr Wahl. Vom 15. April bis zum 10. Juni 2024 verkaufte der Park keine neuen Karten, nur Verlängerungen. In den Niederlanden war die Zahl der Abonnenten schon 2023 deutlich gestiegen, schreibt das Efteling in seiner Jahresbilanz.
 
 | Stufe   | Jahrespreis | Monatlich | Zugang              | Rabatt aufs Parken | Essen, Getränke, Souvenirs | Freundestickets zum halben Preis |
 | ------- | ----------- | --------- | ------------------- | ------------------ | -------------------------- | -------------------------------- |
@@ -93,10 +96,12 @@ unterscheiden, an denen sie gelten. Eine Ermäßigung für Besucher ab 65 gibt e
 
 Alle drei Stufen geben 25 % auf CARO-Tickets und auf die Silvesterfeier, bis zu 25 % auf Übernachtungen
 im Park und freien oder ermäßigten Eintritt in Partnerparks und Zoos. Premium bringt zusätzlich ein
-Erinnerungsstück und den Zugang zu einer Veranstaltung nur für Inhaber. Wer monatlich zahlt, bindet
-sich für mindestens zwölf Monate und zahlt mehr. Zwölf Monate Classic kosten 252 €, 12 € mehr als bei
+Erinnerungsstück und den Zugang zu einer Veranstaltung nur für Inhaber. Bei monatlicher Zahlung bindest du
+dich für mindestens zwölf Monate und zahlst mehr. Zwölf Monate Classic kosten 252 €, 12 € mehr als bei
 Jahreszahlung. Bei Plus und Premium sind es je 32 € mehr. Den Beginn der Karte legst du beim Kauf fest,
 bis zu einen Monat im Voraus.
+
+Besucher mit Behinderung bekommen auf jede Stufe 50 € Rabatt bei Jahreszahlung oder 5 € pro Monat. Kinder bis einschließlich drei Jahre bekommen die Karte kostenlos. Zum Geburtstag gibt es zu einem gekauften Getränk ein Gebäck.
 
 ### Die Sperrtage im Kalender des Parks
 
@@ -139,15 +144,15 @@ Der Sprung von Classic auf Plus kostet 70 €, der von Plus auf Premium 90 €. 
 
 Nach [unseren Messungen](/blog/efteling-disney-der-niederlande) sind die Wartezeiten im Efteling nur samstags etwas länger als an den übrigen Tagen. Die Classic sperrt zwar überwiegend Wochenenden, aber auch 26 Tage von Montag bis Freitag. Wer an Wochentagen kommen kann, verliert mit der Classic also wenig.
 
-Der Park liegt von Düsseldorf aus gut anderthalb bis zwei Stunden Fahrt entfernt, aus Köln und dem Ruhrgebiet gut zwei. Wer dreimal im Jahr fährt, bleibt bei der Tageskarte.
-
-Die ruhigen Tage im Widget kannst du mit der Sperrtagsliste oben abgleichen.
+Der Park liegt von Düsseldorf aus gut anderthalb bis zwei Stunden Fahrt entfernt, aus Köln und dem Ruhrgebiet gut zwei.
 
 ```best-days-widget slug=efteling
 
 ```
 
-## Europa-Park: ResortPass Silber und Gold
+## ResortPass Silber und Gold im Europa-Park
+
+Vor dem ResortPass verkaufte der Park die Clubkarte des Europa-Park Clubs. Im März 2020, als der Park wegen Corona schließen musste, nahm er sie bis auf Weiteres aus dem Verkauf. Den ResortPass kündigte er am 8. März 2022 an, im Ticketshop von Mack International gab es ihn ab Mitte Mai 2022. Im März 2023 kostete Silber für Erwachsene 240 €, Gold 420 €, und beide waren laut Stuttgarter Zeitung ausverkauft. Eine Sprecherin sagte der Zeitung damals, nach den ersten Ablaufterminen im Mai und Juni 2023 kämen neue Kontingente in den Verkauf. Seitdem ist Silber um 85 € teurer geworden, Gold um 75 €.
 
 Der Europa-Park verkauft den ResortPass in zwei Stufen, beide mit einem Jahr Laufzeit:
 
@@ -162,7 +167,9 @@ Inhalte der Streamingplattform VEEJOY und Eintritt oder Ermäßigung in Partnerp
 gibt es für beide Stufen für 39 € dazu. Bei 10 € Parkgebühr pro Tag ist er ab dem vierten Besuch mit dem
 Auto günstiger. Die gedruckte Karte kostet bei Silber 5 € extra, bei Gold ist sie dabei.
 
-Derzeit gibt es keine neue Karte. Der Park schreibt auf seiner Seite, das Kontingent sei erschöpft und der ResortPass bis auf Weiteres nicht erhältlich, auch nicht am Telefon, per E-Mail oder vor Ort. Wer schon eine Karte hat, wird vor dem Ablauf über die Verlängerung informiert. Wann der Verkauf wieder beginnt, sagt der Park nicht.
+Einmal während der Laufzeit hast du mit beiden Stufen freien Eintritt im Efteling, im Pleasure Beach Resort in England, in Liseberg in Schweden, im PortAventura Park und in der Isla Mágica in Spanien, im Emerald Park in Irland und im Le Pal in Frankreich. Die acht Parks und Bäder der Plopsa-Gruppe, darunter das Plopsaland Deutschland, geben einmal 40 % auf den regulären Eintritt an der Kasse.
+
+Derzeit gibt es keine neue Karte. Der Park schreibt auf seiner Seite, das Kontingent sei erschöpft und der ResortPass bis auf Weiteres nicht erhältlich, auch nicht am Telefon, per E-Mail oder vor Ort. Inhaber bekommen 30 Tage vor dem Ablauf eine Nachricht und können in den letzten 14 Tagen der Laufzeit online im ResortPass-Portal verlängern, zum dann gültigen Preis. Eine abgelaufene Karte lässt sich innerhalb von zwei Jahren wieder aktivieren, wenn Kontingent frei ist. Von Silber auf Gold wechselst du nur bei der Verlängerung und nur, wenn Gold zu haben ist. Wann der Verkauf wieder beginnt, sagt der Park nicht.
 
 Die Tageskarte kostet für Erwachsene 67 bis 76 €, für Kinder und Senioren 56,50 bis 65 €.
 
@@ -191,7 +198,7 @@ Sonntag oder Donnerstag im Mai oder Juni, am vollsten am Samstag.
 
 ```
 
-## Toverland: Magic Member
+## Magic Member im Toverland
 
 Das Toverland in Sevenum hat mit dem Magic Member die günstigste Jahreskarte der vier.
 
@@ -201,11 +208,13 @@ Das Toverland in Sevenum hat mit dem Magic Member die günstigste Jahreskarte de
 | Kinder von 90 bis 140 cm        | 120 €       | 10,50 €                             | 50 €           | 4,50 €          |
 | Senioren ab 60 Jahren           | 130 €       | 11,50 €                             | 50 €           | 4,50 €          |
 
-Wer monatlich zahlt, kommt auf 168 € statt 160 €. Enthalten ist der Eintritt an allen Öffnungstagen, 5 %
+Bei Monatszahlung kommst du auf 168 € statt 160 €. Enthalten ist der Eintritt an allen Öffnungstagen, 5 %
 auf Essen, Getränke und Souvenirs an den festen Verkaufsstellen, Rabatte in anderen Parks und Zoos und
-Aktionen zum Geburtstag. Der Eintritt zu den Halloween Nights ist ohne Aufpreis dabei, die Haunted
+zum Geburtstag ein Gebäck zu einem gekauften Getränk. Der Eintritt zu den Halloween Nights ist ohne Aufpreis dabei, die Haunted
 Experiences kosten extra. Für ein Kind unter 90 cm gibt es eine kostenlose Karte, wenn ein Elternteil eine
 Jahreskarte hat. Wächst das Kind aus der Größenklasse, wird für jeden Restmonat nachgezahlt.
+
+Kaufst du die Karte an einem Besuchstag und zahlst für das ganze Jahr, erstattet der Park den Eintritt dieses Tages. Auf der Liste der Partner, Stand März 2026, stehen unter anderem Walibi Holland mit 20 % außer an den Halloween Fright Nights, der Attractiepark Hellendoorn mit 35 %, die Plopsa-Parks mit 40 % für Besucher ab 1 m, das Bobbejaanland mit 20 % und das Freizeit-Land Geiselwind mit 40 %.
 
 ### Die Bedingungen
 
@@ -225,7 +234,7 @@ Weitere Punkte aus den Bedingungen:
 
 ### Was sich rechnet
 
-Im Ticketkalender liegt der Basistarif für Erwachsene und Kinder ab 140 cm zwischen 37 und 49,50 €. Wer
+Die Preise unten sind der Basistarif im Ticketkalender für Erwachsene und Kinder ab 140 cm. Wer
 mindestens sieben Tage vorher online bucht, bekommt 7 € Early-Bird-Rabatt, kurzfristiger 2 €. Das Toverland
 hat vier Preisstufen, Bronze, Silber, Gold und Platin, nach Öffnungszeiten und Programm des Tages.
 
@@ -249,14 +258,14 @@ Nach [unseren Messungen](/blog/toverland-troy-wartezeiten-tipps) unterscheiden s
 
 ```
 
-## Phantasialand: keine Jahreskarte
+## Phantasialand ohne Jahreskarte
 
 Das Phantasialand hat seine Club-Karte in der Pandemie aus dem Verkauf genommen, die letzten Karten liefen im
 Sommer 2022 aus. In den häufigen Fragen des Ticketshops kommt weder eine Jahreskarte noch eine
 Club-Karte vor, und Tickets gibt es nur mit Datum und nur online. Warum das so geblieben ist und was die
 Fans dagegen unternommen haben, steht in unserem [Guide zum Phantasialand](/blog/phantasialand-tipps).
 
-Im Oktoberkalender des Ticketshops kostet ein Ticket für Erwachsene ab 12 Jahren zwischen 44 und 78 €. Der Abstand zwischen dem günstigsten und dem teuersten Tag beträgt 34 €, das sind 77 % Aufpreis auf den billigen Tag. Wer dreimal im Jahr kommt, zahlt zwischen 132 und 234 €. Der Unterschied hängt allein davon ab, wie früh du buchst und welchen Tag du nimmst. Im Phantasialand ist der Samstag spürbar voller als der Dienstag.
+Im Oktoberkalender des Ticketshops kostet ein Ticket für Erwachsene ab 12 Jahren zwischen 44 und 78 €. Der Abstand zwischen dem günstigsten und dem teuersten Tag beträgt 34 €, das sind 77 % Aufpreis auf den billigen Tag. Drei Besuche im Jahr kosten zwischen 132 und 234 €. Im Phantasialand ist der Samstag spürbar voller als der Dienstag.
 
 ```best-days-widget slug=phantasialand
 
@@ -264,9 +273,7 @@ Im Oktoberkalender des Ticketshops kostet ein Ticket für Erwachsene ab 12 Jahre
 
 ## Sperrtage gegen volle Tage
 
-Im Europa-Park ist der Samstag der vollste Tag, und ob Silber samstags gilt, legt der Park im Portal fest.
-
-Das Widget stellt den ruhigsten Wochentag der vier Parks nebeneinander.
+Ob Silber samstags gilt, legt der Europa-Park im Portal fest.
 
 ```park-comparison-widget slugs=efteling,europa-park,attractiepark-toverland,phantasialand show=quietest
 
@@ -283,7 +290,9 @@ acht bis zehn Besuchen. Unter vier Besuchen lohnt sich keine der drei Stufen.
 
 ## Wann du kaufst
 
-Eine Jahreskarte gilt ein Jahr ab Kauf oder ab Beginn. Im Efteling legst du den Beginn fest und kannst ihn bis zu einen Monat im Voraus setzen. Wer im Oktober beginnt, startet mitten in den gesperrten Wochen. Eine Classic ab dem 10. Oktober 2026 hat bis Ende des Jahres 44 Sperrtage. Das Kalenderjahr 2027 hat insgesamt 68.
+Eine Jahreskarte gilt ein Jahr ab Kauf oder ab Beginn. Im Efteling legst du den Beginn fest und kannst ihn bis zu einen Monat im Voraus setzen. Wer im Oktober beginnt, startet mitten in den gesperrten Wochen.
+
+Beim ResortPass des Europa-Parks muss der Beginn innerhalb von 14 Tagen nach dem Kauf liegen und lässt sich danach nicht mehr ändern.
 
 Im Efteling gelten die Preise von 2026 weiter, bis der Park neue nennt. Im Toverland darf der Park den Preis einer Karte erst zu ihrem Ablauf ändern.
 
@@ -301,8 +310,7 @@ Die Classic ist 2027 laut Kalender des Parks an 68 Tagen gesperrt, die Plus an 2
 
 ### Ist der ResortPass im Europa-Park noch zu kaufen?
 
-Derzeit nicht. Der Europa-Park schreibt auf seiner Website, das Kontingent sei erschöpft und der
-ResortPass bis auf Weiteres nicht erhältlich, auch nicht am Telefon, per E-Mail oder vor Ort.
+Derzeit nicht. Laut Europa-Park ist das Kontingent erschöpft.
 
 ### Hat das Toverland Sperrtage für die Jahreskarte?
 
@@ -328,6 +336,11 @@ Nein. Die Club-Karte wurde in der Pandemie eingestellt, die letzten Karten liefe
 - Phantasialand, Ticketkalender: [shop.phantasialand.de](https://shop.phantasialand.de/en/products/theme-park-tickets)
 - Phantasialand, Fragen zum Ticketshop: [shop.phantasialand.de](https://shop.phantasialand.de/en/faq)
 - Ende der Club-Karte 2022: [Parkerlebnis](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html)
+- Efteling, Besucherjahr 2023 und Abonnenten: [efteling.com](https://www.efteling.com/nl/pers/556-miljoen-bezoekers-voor-de-efteling-in-2023/)
+- Europa-Park, Ankündigung des ResortPass am 8. März 2022: [blog.europapark.de](https://blog.europapark.de/europa-park/resortpass-die-neue-jahreskarte-des-europa-park-erlebnis-resorts/)
+- Europa-Park, häufige Fragen zum ResortPass: [europapark.de](https://www.europapark.de/en/resortpass/faq)
+- Stuttgarter Zeitung, ResortPass ausverkauft, 17. März 2023: [stuttgarter-zeitung.de](https://www.stuttgarter-zeitung.de/lokales/baden-wuerttemberg/jahreskarten-ausverkauft-besucher-kritisieren-resortpass-das-sagt-der-europa-park-dazu-79025022.html)
+- Toverland, Vorteile und Partnerparks: [toverland.com](https://toverland.com/en/annualpasses/pass-benefits)
 
 Mehr zu den einzelnen Parks steht in unseren Guides zum [Efteling](/blog/efteling-disney-der-niederlande),
 zum [Europa-Park](/blog/europa-park-wartezeiten-tipps), zum [Toverland](/blog/toverland-troy-wartezeiten-tipps)

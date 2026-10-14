@@ -111,7 +111,7 @@ Kingdom et celui de la gare du sooperDooperLooper à Hersheypark.
 
 ## Allemagne
 
-### Hansa-Park : Buddenbrook-Turm
+### Buddenbrook-Turm au Hansa-Park
 
 Sur son site, le [Hansa-Park](ref:hansa-park) range la Buddenbrook-Turm sous l’étiquette « Neu
 2027 ». Elle doit ouvrir « dans le courant de la saison », sans mois précis. Cette tour s’élève dans
@@ -133,7 +133,7 @@ lancements. Nous ne mesurons pas les temps d’attente au Hansa-Park, qui ne les
 propre appli. Le calendrier, les soirées d’octobre et les huit montagnes russes sont dans le [guide
 du Hansa-Park](/blog/hansa-park-conseils).
 
-### Europa-Park : Pre-Opening Weeks et trois attractions familiales
+### Pre-Opening Weeks et trois attractions familiales à Europa-Park
 
 [Europa-Park](ref:europa-park) n’ajoute aucune montagne russe en 2027. Il ouvre en revanche plus tôt que
 d’habitude, avec pour la première fois des Pre-Opening Weeks à tarif réduit du 7 au 19 mars, avant
@@ -144,19 +144,19 @@ plus que jusqu’au 9 janvier 2027, et sa section se trouve plus bas, sous « C
 
 S’y ajoutent trois attractions familiales que le parc a annoncées le 8 octobre 2026. Il ne donne de date d’ouverture pour aucune et promet d’autres informations « à une date ultérieure ». Le reste se trouve dans [notre article sur les trois nouveautés](/news/europa-park-trois-nouveautes-2027).
 
-### Europa-Park : Wild Swing XL au Portugal
+### Wild Swing XL dans la zone portugaise d’Europa-Park
 
-Le quartier portugais accueillera une Wild Swing XL, une balançoire géante à plus de 14 mètres de hauteur, au-dessus du lac portugais. Selon le parc, elle mêle frissons et plaisir de la balade et s’adresse à tous les âges. Le parc ne nomme ni constructeur, ni taille minimale, ni nombre de passagers par tour, ni durée du trajet. Pour l’instant, le seul manège du Portugal est le water coaster [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), construit par MACK Rides en 2005. La balançoire sera le deuxième manège du quartier, sans date d’ouverture.
+Le quartier portugais accueillera une Wild Swing XL, une balançoire géante à plus de 14 mètres de hauteur, au-dessus du lac portugais. Selon le parc, elle mêle frissons et plaisir de la balade et s’adresse à tous les âges. Le constructeur, la taille minimale, le nombre de passagers par tour et la durée du trajet manquent dans l’annonce. Pour l’instant, le seul manège du Portugal est le water coaster [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), construit par MACK Rides en 2005. La balançoire sera le deuxième manège du quartier, sans date d’ouverture.
 
-### Europa-Park : une tour en Islande
+### Une tour dans la zone islandaise d’Europa-Park
 
 Entre le coaster en bois [WODAN - Timburcoaster](ref:europa-park/wodan-timburcoaster) et le mégacoaster [blue fire](ref:europa-park/blue-fire-megacoaster), une attraction en forme de tour doit ouvrir en 2027. D’après le parc, les visiteurs la pilotent eux-mêmes et regardent d’en haut le quartier islandais, jusqu’au port. La tour n’a pas encore de nom, et la hauteur, le constructeur, la taille minimale et la date d’ouverture manquent.
 
-### Europa-Park : Enzo's Piccolo Mondo
+### Enzo's Piccolo Mondo à Europa-Park
 
-La balade en gondole [Piccolo Mondo](ref:europa-park/piccolo-mondo) du quartier italien accompagne depuis plus de 40 ans les plus petits visiteurs, selon le parc, et doit revenir en 2027 « dans un nouvel éclat ». Le parc cite l’art, le théâtre classique et la musique italienne. L’annonce ne dit pas si le manège ferme avant, ni combien de scènes il comporte et lesquelles sont nouvelles. Il a ouvert en 1982, il vient de MACK Rides et chaque gondole accueille six personnes. Le parc ne donne pas de date d’ouverture.
+La balade en gondole [Piccolo Mondo](ref:europa-park/piccolo-mondo) du quartier italien accompagne depuis plus de 40 ans les plus petits visiteurs, selon le parc, et doit revenir en 2027, sans date précise, « dans un nouvel éclat ». Au programme, le parc cite l’art, le théâtre classique et la musique italienne. L’annonce ne dit pas si le manège ferme avant, ni combien de scènes il comporte et lesquelles sont nouvelles. Il a ouvert en 1982, il vient de MACK Rides et chaque gondole accueille six personnes.
 
-### Rulantica : Nørd Havn
+### Nørd Havn à Rulantica
 
 Le parc aquatique [Rulantica](ref:rulantica) construit Nørd Havn, un bâtiment de deux niveaux. Le
 rez-de-chaussée accueille un restaurant. À l’étage, des espaces de détente se répartissent en trois
@@ -169,14 +169,12 @@ prévu. Le parc écrit que « Nørd Havn ouvrira ses portes fin 2027 ».
 Germany](ref:movie-park-germany), [Legoland Deutschland](ref:legoland-deutschland) et [Plopsaland
 Deutschland](ref:plopsaland-deutschland) n’ont confirmé aucune nouveauté pour 2027 pour l’instant. À Phantasialand, tout projet d’envergure dépend de l’extension vers le terrain de
 l’Ententeich, pour laquelle il n’existe pas encore de plan d’urbanisme et contre laquelle des
-défenseurs de la nature recueillent des signatures depuis le 28 septembre. Ce que le parc prévoit
-d’y construire est expliqué dans [notre article sur la
-pétition](/blog/phantasialand-agrandissement-petition). Movie Park est à vendre avec sa maison mère,
+défenseurs de la nature recueillent des signatures depuis le 28 septembre. Les projets du parc sur ce terrain sont décrits dans [notre article sur la pétition](/blog/phantasialand-agrandissement-petition). Movie Park est à vendre avec sa maison mère,
 Parques Reunidos, et aucune annonce pour 2027 n’en est venue.
 
 ## Benelux
 
-### Plopsaland Belgium : Flying Cinema
+### Flying Cinema à Plopsaland Belgium
 
 Le Flying Cinema de [Plopsaland Belgium](ref:plopsaland-belgium) est la nouveauté qui ouvre le plus
 tôt. Il accueille tout le monde à partir du samedi 13 mars 2027, mais dès le 19 décembre 2026, les
@@ -198,7 +196,7 @@ après la fermeture du parc, et le Flying Cinema demande alors un billet à part
 annonce, les films du soir ne seront pas ceux de la journée. Avec la Plaza, Plopsa veut atteindre
 deux millions de visiteurs par an.
 
-### Efteling : la Bibliothèque des contes
+### La Bibliothèque des contes à l’Efteling
 
 Dans la forêt des contes de l’[Efteling](ref:efteling) prend forme le 32e conte, la Bibliothèque des
 contes. Elle occupe l’emplacement du Rossignol chinois, qui s’y trouvait jusqu’en mars 2026. Les
@@ -218,10 +216,9 @@ Avant la Bibliothèque, l’Efteling rouvre le 1er décembre 2026 la zone Ravele
 de travaux, avec un spectacle de cascades conçu avec le Puy du Fou et le Ravenring de Vekoma, pour
 20 millions d’euros au total. Les détails sont dans [notre article sur
 Raveleijn](/blog/efteling-raveleijn-ravenring). La prochaine montagne russe du parc n’arrivera qu’en
-2029, Missie Luminar, son premier suspended launch coaster. L’affluence de l’Efteling selon les
-jours se trouve dans le [guide de l’Efteling](/blog/efteling-le-disney-des-pays-bas).
+2029, Missie Luminar, son premier suspended launch coaster. Dans le [guide de l’Efteling](/blog/efteling-le-disney-des-pays-bas), tu trouveras l’affluence du parc selon les jours.
 
-### Bobbejaanland : une nouvelle zone
+### Une nouvelle zone à Bobbejaanland
 
 [Bobbejaanland](ref:bobbejaanland) prépare une nouvelle zone thématique pour 2027. Sur le site du
 parc, il n’en est question pour l’instant que dans un avis aux automobilistes, selon lequel les
@@ -233,7 +230,7 @@ vente fait l’objet d’[un article à part](/blog/parques-reunidos-a-vendre-mo
 
 ## France
 
-### Disney Adventure World : Wilderness Explorers Sky Swings
+### Wilderness Explorers Sky Swings à Disney Adventure World
 
 Le second parc de Disneyland Paris, qui s’appelle aujourd’hui [Disney Adventure
 World](ref:disney-adventure-world), accueille en 2027 la première attraction d’un parc Disney
@@ -243,19 +240,17 @@ Way, en face de Raiponce Tangled Spin, et s’accompagnent d’un jardin dans le
 ne donne ni mois ni constructeur.
 
 Dans le même parc, Disney construit aussi la zone consacrée au « Roi Lion », toujours sans année
-annoncée. La raison pour laquelle on attend plus longtemps dans le plus petit des deux parcs se
-trouve dans le [guide de Disneyland Paris](/blog/disneyland-paris-temps-d-attente-conseils).
+annoncée. Le [guide de Disneyland Paris](/blog/disneyland-paris-temps-d-attente-conseils) explique pourquoi on attend plus longtemps dans le plus petit des deux parcs.
 
-### Parc Astérix : agrandissement de la zone grecque
+### Agrandissement de la zone grecque au Parc Astérix
 
 En 2027, le [Parc Astérix](ref:parc-asterix) agrandit sa zone grecque avec deux attractions
 familiales, une aire de jeux et le restaurant La Table de Dionysos, qui compte 450 places. Dans son
 espace presse, le parc ne donne ni le nom ni le constructeur des deux attractions. À côté du parc,
 l’hôtel L’Odyssée ouvre aussi au printemps 2027, avec 300 chambres décorées d’après les voyages
-d’Astérix et Obélix en Orient. Les attractions du Parc Astérix où tu attends le plus longtemps
-aujourd’hui sont dans le [guide du Parc Astérix](/blog/parc-asterix-temps-d-attente-conseils).
+d’Astérix et Obélix en Orient. Dans le [guide du Parc Astérix](/blog/parc-asterix-temps-d-attente-conseils), tu trouveras les attractions où tu attends le plus longtemps aujourd’hui.
 
-### Nigloland : Supersonic 1887
+### Supersonic 1887 à Nigloland
 
 À [Nigloland](ref:nigloland), à Dolancourt en Champagne, se construit Supersonic 1887, une montagne
 russe signée Mack Rides, haute de 47 mètres, qui atteint selon le parc près de 100 km/h. Le projet
@@ -283,7 +278,7 @@ de France. Le parc n’a pas annoncé de nouveau manège pour 2027.
 
 ## Grande-Bretagne
 
-### Chessington World of Adventures : Minecraft World
+### Minecraft World à Chessington World of Adventures
 
 À [Chessington](ref:chessington-world-of-adventures), au sud-ouest de Londres, Minecraft World ouvre
 en 2027. D’après Merlin et Mojang, c’est la première zone consacrée au jeu dans un grand parc
@@ -293,7 +288,7 @@ interactives, des aires de jeux en blocs, des boutiques et des restaurants. Le 2
 Merlin a aussi annoncé un hôtel Minecraft à côté du parc pour 2027. Ni le nom, ni le constructeur,
 ni les données techniques de la montagne russe ne figurent dans l’un ou l’autre communiqué.
 
-### Paultons Park : Serpent's Curse
+### Serpent's Curse à Paultons Park
 
 [Paultons Park](ref:paultons-park), près de Southampton, construit une montagne russe aquatique de
 Mack Rides, selon ses propres termes l’une des plus grandes attractions jamais construites par le
@@ -308,7 +303,7 @@ enfants jusqu’à sept ans et sans taille minimale.
 
 ## Scandinavie
 
-### Djurs Sommerland : Midgårdsormen
+### Midgårdsormen à Djurs Sommerland
 
 Midgårdsormen, à [Djurs Sommerland](ref:djurs-sommerland), est un Hot Racer d’Intamin, une montagne
 russe sur un rail unique dont les passagers sont assis en file, les uns derrière les autres. Les
@@ -324,7 +319,7 @@ Hammer de 2002. Le thème est le serpent de mer de la mythologie nordique qui do
 l’attraction. Au printemps 2027, le parc tirera au sort neuf places de pilotes d’essai, mais il ne
 donne aucune date d’ouverture.
 
-### Gröna Lund : SCORE!
+### SCORE! à Gröna Lund
 
 Derrière une palissade de chantier en plein milieu de [Gröna Lund](ref:grona-lund), à Stockholm, se
 construit SCORE!, un dark ride interactif en bâtiment qui ouvrira en 2027. Les véhicules viennent de
@@ -333,7 +328,7 @@ l’équipe de design du parc. Les passagers d’un même véhicule marquent des
 minutes et demie du parcours et jouent les uns contre les autres. Le parc présente l’attraction
 comme unique au monde et prévoit un débit allant jusqu’à 540 visiteurs par heure.
 
-### Liseberg : Oceana
+### Oceana à Liseberg
 
 [Liseberg](ref:liseberg), à Göteborg, construit Oceana, un parc aquatique d’environ 13 600 mètres
 carrés, dont 6 000 en intérieur et 4 000 en extérieur. Quatre grands toboggans sont prévus, avec
@@ -342,7 +337,7 @@ Oceana doit ouvrir « début 2027 ».
 
 ## États-Unis
 
-### Six Flags Great Adventure : Bakunawa
+### Bakunawa à Six Flags Great Adventure
 
 La plus haute nouveauté de l’année se trouve dans le New Jersey. Bakunawa, à [Six Flags Great
 Adventure](ref:six-flags-great-adventure), est un spinning coaster lancé de Mack Rides, haut de 116
@@ -361,7 +356,7 @@ Deux pages de Six Flags ne s’accordent pas sur la hauteur. Un billet de blog d
 annonce que la tour a atteint sa hauteur définitive de 375 pieds, alors que la page du parc et Mack
 Rides parlent de 382 pieds, soit 116 mètres.
 
-### Six Flags Magic Mountain : Thrill Glider
+### Thrill Glider à Six Flags Magic Mountain
 
 Le Thrill Glider de [Six Flags Magic Mountain](ref:six-flags-magic-mountain) est un nouveau type de
 montagne russe de Vekoma, le premier « Thrillglider ». Les passagers sont allongés à plat ventre sur
@@ -380,7 +375,7 @@ définitivement retirée le 29 septembre. Dans aucun des deux communiqués, Six 
 fermeture au Thrill Glider. Le contexte se trouve dans [notre article sur la
 fermeture](/blog/x2-six-flags-magic-mountain-ferme).
 
-### Universal Studios Florida : Fast & Furious: Hollywood Drift
+### Fast & Furious: Hollywood Drift à Universal Studios Florida
 
 L’attraction ouverte le 16 septembre 2026 à Hollywood arrive aussi à Orlando en 2027. Aux [Universal
 Studios Florida](ref:universal-studios-florida), Fast & Furious: Hollywood Drift remplace l’ancienne
@@ -394,7 +389,7 @@ Hollywood. La version californienne est signée Intamin, atteint 116 km/h et com
 lancements, comme l’explique [notre article sur l’ouverture à
 Hollywood](/blog/hollywood-drift-universal-studios-hollywood).
 
-### Six Flags Fiesta Texas : Werewolf Gorge
+### Werewolf Gorge à Six Flags Fiesta Texas
 
 [Six Flags Fiesta Texas](ref:six-flags-fiesta-texas), à San Antonio, fête en 2027 sa 35e saison et
 construit pour l’occasion Werewolf Gorge, un family launch coaster de Vekoma. Avec 1 256 mètres,
@@ -408,7 +403,7 @@ total atteint 26 mètres. Trois trains de 16 places circulent sur un peu plus d�
 L’histoire se déroule dans l’ancienne carrière où se trouve réellement le parc, autour d’un
 loup-garou et d’une attraction de bord de route.
 
-### Silver Dollar City : Miner's Mountain Express
+### Miner's Mountain Express à Silver Dollar City
 
 [Silver Dollar City](ref:silver-dollar-city), dans le Missouri, construit avec Mack Rides une
 montagne russe familiale pour le printemps 2027. Miner's Mountain Express mesure 1 083 mètres et
@@ -422,7 +417,7 @@ Au-dessus d’elle se dresse un chevalement de quinze étages issu d’une véri
 scénario s’inspire de la Marble Cave Mining Company, qui exploitait le site dans les années 1880.
 Mack Rides a déjà construit Time Traveler pour ce parc.
 
-### Six Flags Great America : Camp Timber Trail
+### Camp Timber Trail à Six Flags Great America
 
 À [Six Flags Great America](ref:six-flags-great-america), près de Chicago, la zone Yukon Territory,
 qui existe depuis l’ouverture du parc en 1976, devient Camp Timber Trail. Elle comptera neuf
@@ -437,7 +432,7 @@ Run](ref:six-flags-great-america/loggers-run) restent telles quelles. Six Flags 
 constructeur ni les données techniques de Sky Hawk. Le parc présente Camp Timber Trail comme la
 première étape d’une transformation étalée sur plusieurs années.
 
-### Carowinds : Rip Roarin' Falls
+### Rip Roarin' Falls à Carowinds
 
 [Carowinds](ref:carowinds), à la frontière entre la Caroline du Nord et la Caroline du Sud,
 construit une attraction aquatique à trois records du monde. Rip Roarin' Falls est un super flume de
@@ -452,7 +447,7 @@ de Rip Roarin' Rapids, une rivière rapide fermée en 2019, et son entrée se tr
 Zone, près de Fury 325. Les enfants peuvent monter dès 89 centimètres s’ils sont accompagnés, et
 seuls à partir de 104 centimètres. Dans l’encadré du même communiqué, on lit un pouce de plus.
 
-### Disney's Hollywood Studios : Monstropolis
+### Monstropolis à Disney's Hollywood Studios
 
 Aux [Disney's Hollywood Studios](ref:disneys-hollywood-studios), une partie de Monstropolis, la zone
 consacrée à « Monstres & Cie », ouvre en 2027. La montagne russe aux portes n’en fait pas encore
@@ -467,7 +462,7 @@ boutique Scareporium. Pour faire de la place à la zone, Disney a fermé Grand A
 Muppet*Vision 3D y a été joué pour la dernière fois le 7 juin 2025, et les Muppets ont repris le
 [Rock 'n' Roller Coaster](ref:disneys-hollywood-studios/rock-n-roller-coaster-starring-aerosmith).
 
-### Disney's Animal Kingdom : Tropical Americas
+### Tropical Americas à Disney's Animal Kingdom
 
 À [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park), Tropical Americas prend forme,
 une zone consacrée à l’Amérique centrale et à l’Amérique du Sud, avec en son centre le village de
@@ -499,18 +494,14 @@ nouveau à l’été 2027.
 ## Combien de temps tu attends aujourd’hui dans ces parcs
 
 Si tu vas dans l’un de ces parcs en 2027 pour une nouveauté, tu feras aussi la queue à toutes les
-autres attractions. Dans les deux tableaux figurent les parcs avec une nouvelle montagne russe ou
+autres attractions. Dans les deux tableaux, l’Europe d’abord et les États-Unis ensuite, figurent les parcs avec une nouvelle montagne russe ou
 une nouvelle zone pour lesquels nous mesurons les temps d’attente, chacun avec le jour de la semaine
 où l’attente y est la plus courte. La nouveauté elle-même n’entre pas encore dans ces valeurs. Pour
 le Hansa-Park, aucun temps d’attente ne nous parvient.
 
-En Europe :
-
 ```park-comparison-widget slugs=chessington-world-of-adventures,parc-asterix,disney-adventure-world,plopsaland-belgium,nigloland,djurs-sommerland,paultons-park show=quietest
 
 ```
-
-Aux États-Unis :
 
 ```park-comparison-widget slugs=six-flags-great-adventure,six-flags-magic-mountain,universal-studios-florida,six-flags-fiesta-texas,silver-dollar-city,six-flags-great-america,carowinds,disneys-hollywood-studios show=quietest
 
@@ -521,10 +512,13 @@ minutes. Dès qu’une des nouveautés tourne, elle y apparaît sur sa propre li
 
 ## Ce qui disparaît en 2027
 
-Deux montagnes russes européennes font leurs derniers tours cet hiver, et toutes deux seront
-remplacées.
+Deux montagnes russes européennes font leurs derniers tours cet hiver, et toutes deux seront remplacées.
 
-### Europa-Park : Euro-Mir
+```ride-waits-widget rides=europa-park/euro-mir|Euro-Mir|Spinning coaster, Mack Rides;walibi-belgium/loup-garou|Loup-Garou|Montagne russe en bois columns=park,type,peak,days
+
+```
+
+### Euro-Mir à Europa-Park
 
 [Euro-Mir](ref:europa-park/euro-mir) roule depuis le 12 juin 1997 dans la zone russe d’Europa-Park.
 Mack Rides l’a construite en trois ans. Neuf trains de 16 places aux nacelles pivotantes circulent
@@ -538,7 +532,7 @@ Rides, prévue pour la saison 2028. Le parc y travaille avec l’Agence spatiale
 avec laquelle il a signé un partenariat le 8 juin 2026. La suite est dans [notre article sur les
 adieux](/blog/europa-park-adieu-euro-mir).
 
-### Walibi Belgium : Loup-Garou
+### Loup-Garou à Walibi Belgium
 
 Le [Loup-Garou](ref:walibi-belgium/loup-garou) de [Walibi Belgium](ref:walibi-belgium) est une
 montagne russe en bois de 28 mètres de haut et 1 035 mètres de long, qui atteint 80 km/h. Il roule
@@ -554,15 +548,7 @@ le style de La Nouvelle-Orléans. Pour la créer, le cinéma 4D disparaît en 20
 s’ajouteront des attractions familiales réaménagées, des tours de chute pour les familles, une aire
 de jeux d’eau et un restaurant. Walibi n’a pas encore publié de nom pour la nouvelle montagne russe.
 
-Si tu veux faire un dernier tour sur l’une des deux, voici leurs temps d’attente :
-
-```ride-waits-widget rides=europa-park/euro-mir|Euro-Mir|Spinning coaster, Mack Rides;walibi-belgium/loup-garou|Loup-Garou|Montagne russe en bois columns=park,type,peak,days
-
-```
-
-À quoi ressemble une journée d’hiver à Europa-Park, tu le trouveras dans le [guide
-d’Europa-Park](/blog/europa-park-temps-d-attente-conseils), et pour Walibi Belgium dans le [guide de
-Walibi Belgium](/blog/walibi-belgium-temps-d-attente-conseils).
+Dans le [guide d’Europa-Park](/blog/europa-park-temps-d-attente-conseils), tu trouveras à quoi ressemble une journée d’hiver là-bas, et dans le [guide de Walibi Belgium](/blog/walibi-belgium-temps-d-attente-conseils), la même chose pour Walibi Belgium.
 
 ## Quand commence la saison 2027
 

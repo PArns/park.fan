@@ -2,6 +2,7 @@
 title: 'PortAventura Park: Shambhala, Dragon Khan und Express-Tickets'
 translationKey: portaventura-park-guide
 date: '2026-10-07'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -49,19 +50,27 @@ Zu PortAventura World gehören drei Parks mit eigenen Tickets: der PortAventura 
 
 ## Wie der Park entstanden ist
 
-Der Park hat am 2. Mai 1995 aufgemacht, laut RCDB am selben Tag wie Dragon Khan und die Minenbahn El Diablo. Die Gesellschafter der ersten Jahre waren die Tussauds Group, La Caixa, Anheuser-Busch und FECSA. 1998 kaufte Universal den größten Teil der Tussauds-Anteile, und der Park hieß dann „Universal's Port Aventura“. Ab 2004 stieg NBCUniversal wieder aus, und seit 2005 trägt der Park den Universal-Namen nicht mehr.
+Anheuser-Busch hat das Projekt angestoßen und nach El País auch den Park entworfen. 1993 plante die Brauerei ihn laut Variety mit der spanischen Firma Grand Península unter dem Namen „Tibi Gardens“. Betreiber war bei der Eröffnung die Tussauds Group.
 
-Das Resort mit Hotels kam am 13. Juni 2002 dazu, Ferrari Land am 7. April 2017. Nach Wikipedia gehört das Ganze heute Investindustrial und dem Finanzinvestor KKR, der 2013 knapp die Hälfte der Anteile übernommen hat. PortAventura World meldete für 2023 rund 5,5 Millionen Besuche (Vozpopuli) und für 2025, das Jahr des dreißigsten Geburtstags, 5,3 Millionen (Diari de Tarragona), jeweils für das Resort mit allen drei Parks. Laut Diari de Tarragona kommt etwa die Hälfte der Gäste aus dem Ausland, vor allem aus Frankreich, Großbritannien und Irland.
+Der Park wurde am 1. Mai 1995 eingeweiht und hat am 2. Mai für zahlende Gäste aufgemacht, laut RCDB am selben Tag wie Dragon Khan und die Minenbahn El Diablo. Jordi Pujol, damals Präsident der katalanischen Regierung, fuhr bei der Eröffnung Dragon Khan. Zu diesem Zeitpunkt hielt Tussauds 40,01 Prozent der Anteile, La Caixa 33,19, Anheuser-Busch 19,9 und FECSA 6,7 Prozent. Das Gelände ist 52 Hektar groß. 1998 kaufte Universal den größten Teil der Tussauds-Anteile, und der Park hieß dann „Universal's Port Aventura“. Ab 2004 stieg NBCUniversal wieder aus, und seit 2005 trägt der Park den Universal-Namen nicht mehr.
+
+Das Resort mit Hotels kam am 13. Juni 2002 dazu, Ferrari Land am 7. April 2017. Nach Wikipedia gehört das Ganze heute Investindustrial und dem Finanzinvestor KKR, der 2013 knapp die Hälfte der Anteile übernommen hat. PortAventura World meldete für 2023 rund 5,5 Millionen Besuche (Vozpopuli) und für 2025, das Jahr des dreißigsten Geburtstags, 5,3 Millionen (Diari de Tarragona), jeweils für das Resort mit allen drei Parks. Laut Diari de Tarragona kommt etwa die Hälfte der Gäste aus dem Ausland, vor allem aus Frankreich, Großbritannien und Irland. Den Park allein führt der Theme Index von TEA und AECOM für 2023 mit 3,975 Millionen Besuchen, nach 3,75 Millionen im Jahr 2022, und damit auf Platz sechs in Europa.
+
+### Neue Bahnen und Abrisse seit 1995
+
+Der Templo del Fuego im México-Bereich ist 2001 gebaut worden und hat 2003 einen Thea Award der Themed Entertainment Association in der Kategorie Attraktion bekommen. SésamoAventura mit den Figuren der Sesamstraße hat am 8. April 2011 eröffnet. Im April 2019 folgte dort der Dark Ride Street Mission.
+
+Fumanchú, eine Bahn aus dem Eröffnungsjahr, ist 2012 abgebaut worden, an ihrer Stelle liegt heute der Eingang von Shambhala. Tifón in Polynesia lief nur bis 1998. Den Trono de Pacal in México hat El Secreto de los Mayas ersetzt, und Loco-Loco Tiki in SésamoAventura wich 2017 den Kiddie Dragons. Der Simulator Sea Odyssey von 2000 hieß ab 2014 Ice Age und ab 2017 Dino Escape 4D, seit 2020 steht er still. In seinen Räumen läuft heute die REC Experience.
 
 Der Park hat sechs Themenbereiche: Mediterrània am Eingang, dazu Polynesia, China, México, Far West und SésamoAventura für die kleinen Kinder.
 
-## Die Achterbahnen: Hersteller, Höhe, Mindestgröße
+## Die Achterbahnen im Park
 
 Laut Wikipedia zählt das Resort zehn Achterbahnen und fünf Wasserbahnen, Ferrari Land eingerechnet.
 
 ### Shambhala
 
-Shambhala hat am 12. Mai 2012 eröffnet und kommt von Bolliger & Mabillard, also vom selben Hersteller wie Dragon Khan. Die Bahn ist ein Hypercoaster ohne Inversion: Der Lifthügel ist **76 Meter** hoch, die erste Abfahrt misst 78 Meter, und der Zug erreicht **134 km/h** auf einer Strecke von 1.564 Metern. Das sind die Zahlen von RCDB, und Coasterpedia nennt dieselben. Die Mindestgröße liegt bei **1,40 m**, und es gibt keine Begleitoption.
+Shambhala hat am 12. Mai 2012 eröffnet und kommt von Bolliger & Mabillard, also vom selben Hersteller wie Dragon Khan. Die Bahn ist ein Hypercoaster ohne Inversion: Der Lifthügel ist **76 Meter** hoch, die erste Abfahrt misst 78 Meter, und der Zug erreicht **134 km/h** auf einer Strecke von 1.564 Metern. Das sind die Zahlen von RCDB, und Coasterpedia nennt dieselben. Drei Züge mit je 32 Plätzen schaffen 1.680 Fahrgäste in der Stunde. Die erste Abfahrt ist 77,4 Grad steil, eine Runde dauert drei Minuten. Die Mindestgröße liegt bei **1,40 m**, und es gibt keine Begleitoption.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -69,7 +78,7 @@ Shambhala hat am 12. Mai 2012 eröffnet und kommt von Bolliger & Mabillard, also
 
 ### Dragon Khan
 
-Dragon Khan ist 45 Meter hoch, hat **acht Inversionen** und stammt ebenfalls von Bolliger & Mabillard. Der Park schreibt auf seiner eigenen Seite, die Bahn habe 1995 mehr Inversionen gehabt als jede andere Achterbahn der Welt. Bei der Geschwindigkeit gehen die Angaben auseinander: Der Park wirbt mit 110 km/h, RCDB und Wikipedia führen 104,6 km/h, das sind 65 mph. Die Strecke ist 1.269 Meter lang, die Fahrt dauert nach RCDB 1:45 Minuten. Mitfahren dürfen Gäste von **1,40 m bis 1,95 m**.
+Dragon Khan ist 45 Meter hoch, hat **acht Inversionen** und stammt ebenfalls von Bolliger & Mabillard. Der Park schreibt auf seiner eigenen Seite, die Bahn habe 1995 mehr Inversionen gehabt als jede andere Achterbahn der Welt. Bei der Geschwindigkeit gehen die Angaben auseinander: Der Park wirbt mit 110 km/h, RCDB und Wikipedia führen 104,6 km/h, das sind 65 mph. Die Strecke ist 1.269 Meter lang, die Fahrt dauert nach RCDB 1:45 Minuten, und die erste Abfahrt misst 49 Meter. Die Strecke stammt aus dem Ingenieurbüro Stengel, auf ihr fahren drei Züge mit je 28 Plätzen. Mitfahren dürfen Gäste von **1,40 m bis 1,95 m**.
 
 ```glossary-widget slug=inversion
 
@@ -77,7 +86,7 @@ Dragon Khan ist 45 Meter hoch, hat **acht Inversionen** und stammt ebenfalls von
 
 ### Furius Baco
 
-Furius Baco ist ein Launch Coaster von Intamin und hat am 5. Juni 2007 eröffnet. Der Zug beschleunigt auf **135 km/h**, nach der Angabe des Parks in drei Sekunden, nach RCDB in 3,5. Die Strecke ist 850 Meter lang, und die Bahn hat nach Wikipedia eine Inversion, einen Inline Twist. Die Mindestgröße liegt bei 1,40 m, die Obergrenze bei 1,95 m. Der Park ordnet die Bahn dem Bereich Mediterrània zu.
+Furius Baco ist ein Launch Coaster von Intamin und hat am 5. Juni 2007 eröffnet. Der Zug beschleunigt auf **135 km/h**, nach der Angabe des Parks in drei Sekunden, nach RCDB in 3,5. Die Strecke ist 850 Meter lang, und die Bahn hat nach Wikipedia eine Inversion, einen Inline Twist. Die Mindestgröße liegt bei 1,40 m, die Obergrenze bei 1,95 m. Der Park ordnet die Bahn dem Bereich Mediterrània zu. Die Bahn ist ein Wing Rider Coaster mit vier Plätzen in einer Reihe. Drei Züge mit je 24 Plätzen bringen 1.500 Gäste in der Stunde, die Fahrt dauert 55 Sekunden. Die Eröffnungsfeier mit dem Motorradrennfahrer Valentino Rossi fand zwei Tage nach dem ersten Betriebstag statt.
 
 ```glossary-widget slug=launch-coaster
 
@@ -85,9 +94,9 @@ Furius Baco ist ein Launch Coaster von Intamin und hat am 5. Juni 2007 eröffnet
 
 ### Stampida und Tomahawk
 
-Stampida ist die Holzachterbahn des Parks, gebaut von Custom Coasters International. Seit dem 17. März 1997 fahren zwei Züge gegeneinander, einer auf der roten und einer auf der blauen Strecke, jede 953 Meter lang. RCDB nennt 74 km/h, der Park „bis zu 70“, und die Höhe beträgt 25,6 Meter. Seit der Saison 2007 laufen KumbaK-Züge auf den Schienen. Die Mindestgröße liegt bei 1,20 m, es gibt keine Begleitoption.
+Stampida ist die Holzachterbahn des Parks, gebaut von Custom Coasters International. Seit dem 17. März 1997 fahren zwei Züge gegeneinander, einer auf der roten und einer auf der blauen Strecke, jede 953 Meter lang. RCDB nennt 74 km/h, der Park „bis zu 70“, und die Höhe beträgt 25,6 Meter. Seit der Saison 2007 laufen KumbaK-Züge auf den Schienen. Die Strecke hat Larry Bill entworfen, eine Fahrt dauert 1:40 Minuten. Die Mindestgröße liegt bei 1,20 m, es gibt keine Begleitoption.
 
-Tomahawk, die Kinderbahn im selben Jahr vom selben Hersteller gebaut, ist 440 Meter lang und 48 km/h schnell. Seit 2015 fahren Mini-llennium-Flyer-Züge von Great Coasters International, die Größe liegt bei 1,05 m bis 1,85 m. Die Strecke verschlingt sich mit der von Stampida.
+Tomahawk, die Kinderbahn im selben Jahr vom selben Hersteller gebaut, ist 440 Meter lang, 13,4 Meter hoch und 48 km/h schnell, die Fahrt dauert 1:10 Minuten. Seit 2015 fahren Mini-llennium-Flyer-Züge von Great Coasters International, die Größe liegt bei 1,05 m bis 1,85 m. Die Strecke verschlingt sich mit der von Stampida.
 
 ```glossary-widget slug=racing-coaster
 
@@ -95,11 +104,11 @@ Tomahawk, die Kinderbahn im selben Jahr vom selben Hersteller gebaut, ist 440 Me
 
 ### El Diablo – Tren de la Mina
 
-El Diablo ist eine Minenbahn von Arrow Dynamics, hat am 2. Mai 1995 eröffnet und ist laut RCDB 1.008 Meter lang, mit drei Lifthügeln und 3:10 Minuten Fahrzeit. Die Bahn spielt in der Kolonialzeit in Mexiko, in einer alten Silbermine, die El Diablo stilllegen ließ, nachdem Bergleute verschwunden waren. Die Wagen sind nach Angabe des Parks noch aus Holz. RCDB führt die Bahn seit Mai 2025 als Virtual-Reality-Hybrid, weil Gäste eine Brille aufsetzen können. Mit **1,40 m** darf man allein fahren, mit **1,10 m** in Begleitung eines Erwachsenen.
+El Diablo ist eine Minenbahn von Arrow Dynamics, hat am 2. Mai 1995 eröffnet und ist laut RCDB 1.008 Meter lang, mit drei Lifthügeln von gut 16, 11 und 16,5 Metern und 3:10 Minuten Fahrzeit. Ein Zug fasst 36 Personen. Die Bahn spielt in der Kolonialzeit in Mexiko, in einer alten Silbermine, die El Diablo stilllegen ließ, nachdem Bergleute verschwunden waren. Die Wagen sind nach Angabe des Parks noch aus Holz. RCDB führt die Bahn seit Mai 2025 als Virtual-Reality-Hybrid, weil Gäste eine Brille aufsetzen können. Mit **1,40 m** darf man allein fahren, mit **1,10 m** in Begleitung eines Erwachsenen.
 
 ### Uncharted: The Enigma of Penitence
 
-Uncharted ist eine geschlossene Launch-Bahn von Intamin im Bereich Far West und hat am **17. Juni 2023** eröffnet. Die Strecke ist 673 Meter lang. Wer mindestens 1,10 m groß ist, darf mit Erwachsenem fahren, die Obergrenze liegt bei 1,95 m. Penitence, das Westernstädtchen, in dem die Bahn spielt, ist auch Schauplatz des neuen Halloween-Pasajes. Das steht in unserer [Halloween-News zu PortAventura](/blog/portaventura-halloween-2026).
+Uncharted ist eine geschlossene Launch-Bahn von Intamin im Bereich Far West und hat am **17. Juni 2023** eröffnet. Die Strecke ist 673 Meter lang. Die Vereinbarung mit Sony Pictures über eine Bahn zum Uncharted-Film hat PortAventura im November 2022 bekannt gegeben. Neben Intamin war die Sally Corporation beteiligt, und die Bahn hat laut Variety 25 Millionen Euro gekostet. Der Wagen wird fünfmal beschleunigt und fällt einmal seitwärts. Drei Wagen mit je zwölf Plätzen sind unterwegs, der höchste Punkt liegt bei zwölf Metern. Wer mindestens 1,10 m groß ist, darf mit Erwachsenem fahren, die Obergrenze liegt bei 1,95 m. Penitence, das Westernstädtchen, in dem die Bahn spielt, ist auch Schauplatz des neuen Halloween-Pasajes. Das steht in unserer [Halloween-News zu PortAventura](/blog/portaventura-halloween-2026).
 
 ### Bahnen für Kinder
 
@@ -144,6 +153,12 @@ Angkor ist laut Wikipedia 2014 eröffnet worden und ein Wasserspiel mit Wasserpi
 
 Templo del Fuego (ab 1,40 m, mit Erwachsenem ab 1,00 m) und Serpiente Emplumada im México-Bereich (ab 1,40 m) gehören zur mittleren Kategorie, die der Park „moderat“ nennt.
 
+## Shows und Paraden
+
+Von Juni bis September endet der Tag mit FiestAventura auf dem See in Mediterrània, einer Show mit Drohnen, Wasser, Musik und Feuerwerk. Die PortAventura Parade zieht über die Hauptstraße von Mediterrània, nach Angabe des Parks jeden Abend mit mehr als 50 Artisten, Woody und den Figuren der Sesamstraße.
+
+In Far West spielt Can Can Express im Saloon, wo ein Eisenbahnunternehmer namens Andrew Dolar das Haus abreißen lassen will, und West Gold Frenzy erzählt von einem Überfall in Penitence. Im México-Bereich gibt es zum Essen México Lindo mit Tänzen aus Veracruz und Jalisco. Polynesia hat Aloha Tahití, Pareos en Bora Bora und abends Noches de Fuego en Tahití mit Feuerjonglage. Magic Bubble im Templo Mágico in China ist eine Show mit Seifenblasen, in die nach Angabe des Parks ein Mensch hineinpasst.
+
 ## Wie voll es ist
 
 ```ride-waits-widget park=portaventura-park top=8 columns=land,peak,days highlight=shambhala
@@ -154,13 +169,11 @@ Templo del Fuego (ab 1,40 m, mit Erwachsenem ab 1,00 m) und Serpiente Emplumada 
 
 ```
 
-Die ruhigsten kommenden Öffnungstage, live berechnet:
-
 ```best-days-widget slug=portaventura-park
 
 ```
 
-## Express: die Produkte und ihre Preise
+## Express-Pässe und ihre Preise
 
 PortAventura verkauft seinen Vorrang an den Bahnen als „Express“, und in den Tickets steckt keiner davon. Die Preise gelten pro Person und Tag und sind „ab“-Preise, die vom Datum abhängen. Stand der Preise ist der 7. Oktober 2026.
 
@@ -193,17 +206,15 @@ Für die Parkseite berechnen wir, bei welchen Bahnen frühes Kommen die meiste W
 
 Der Park nennt auf seiner Seite „Tipps und Empfehlungen“. Dort steht, Samstage und Sonntage seien die Tage, an denen Familien kommen, „und im Allgemeinen ist dann mehr los“. Die ideale Zeit sei die Wochenmitte, Dienstag bis Donnerstag, solange kein Feiertag darauf fällt. Außerdem rät der Park, die Schulferien in Spanien und Frankreich zu prüfen, weil viele französische Gäste kommen. Dazu nennt er Sommer, lange Wochenenden, Ostern und Halloween als Zeiten mit größerem Andrang.
 
-Die Monate und Wochentage aus unseren Messungen:
-
 ```stats-widget slug=portaventura-park show=months,weekdays
 
 ```
 
 Im Schuljahr 2026/27 nennt der Fernsehsender 3Cat für Katalonien die Feiertage 12. Oktober und 8. Dezember. Die Weihnachtsferien laufen vom 22. Dezember 2026 bis zum 7. Januar 2027, die Osterferien vom 20. bis 29. März 2027. Für Schulen im Rest Spaniens gelten andere Termine.
 
-### Halloween: 19. September bis 15. November 2026
+### Halloween vom 19. September bis 15. November 2026
 
-Der Park feiert Halloween vom 19. September bis zum 15. November 2026. Die fünf Pasajes del Terror heißen El Carnicero de Penitence (neu), La Isla Maldita, La Muerte Viva, REC Experience und Angkor: La leyenda del Rey Caníbal. Dazu kommen die Show „Resurrection at the Saloon“ und die Scare Zone „La Maldición del Emperador“. Weil der Park Halloween selbst als Zeit mit mehr Andrang nennt, lohnt sich hier ein Dienstag oder Mittwoch. Alle Details zu Preisen und Alterslimits stehen in der [News zu Halloween bei PortAventura](/blog/portaventura-halloween-2026). Allgemeine Tipps für die Saison findest du im Guide zu [Halloween in Freizeitparks](/blog/halloween-freizeitparks-2026).
+Der Park feiert Halloween vom 19. September bis zum 15. November 2026. Die fünf Pasajes del Terror heißen El Carnicero de Penitence (neu), La Isla Maldita, La Muerte Viva, REC Experience und Angkor: La leyenda del Rey Caníbal. Dazu kommen die Show „Resurrection at the Saloon“ und die Scare Zone „La Maldición del Emperador“. Die Halloween Parade zieht durch Mediterrània, wo auch Horror en el Lago läuft, in México gibt es El Día de los Muertos und in China die Halloween Factory. Weil der Park Halloween selbst als Zeit mit mehr Andrang nennt, lohnt sich hier ein Dienstag oder Mittwoch. Alle Details zu Preisen und Alterslimits stehen in der [News zu Halloween bei PortAventura](/blog/portaventura-halloween-2026). Allgemeine Tipps für die Saison findest du im Guide zu [Halloween in Freizeitparks](/blog/halloween-freizeitparks-2026).
 
 ### Weihnachten
 
@@ -241,7 +252,7 @@ Die vier Jahreskarten gelten 365 Tage ab Kauf. Junioren sind Kinder von 4 bis 10
 
 Nur Explorer nennt kostenloses Parken als Vorteil. Bei Explorer gilt der Zugang zu Caribe laut Seite vom 23. Mai bis 7. Juni und vom 7. bis 20. September 2026.
 
-## Ferrari Land und Caribe Aquatic Park: die Ticketfrage
+## Tickets für Ferrari Land und Caribe Aquatic Park
 
 Das Park-Ticket gilt für den PortAventura Park und sonst nichts. Das schreibt der Park selbst: „Das Ticket erlaubt einen Tag Zugang zum PortAventura Park.“ Ferrari Land und Caribe haben ihre eigenen Eintrittskarten, oder sie stecken in den Kombitickets mit „2 Parks“ und „3 Parks“. Das Ticket „1 Tag, 2 Parks“ erlaubt „einen Tag Zugang zu PortAventura Park und Ferrari Land am selben Tag“. Die Drei-Parks-Tickets schließen Caribe ein.
 
@@ -262,8 +273,6 @@ Für 2027 hat der Park noch nichts Neues bestätigt.
 ## Ein Tag im Park, grob geplant
 
 Wer zur Öffnung am Eingang steht, geht zuerst zu den drei Bahnen aus dem Rope-Drop-Abschnitt: Hurakan Condor in México, Tutuki Splash in Polynesia und Silver River Flume in Far West. China hat Shambhala und Dragon Khan, zwischen den beiden stehen Schließfächer. Far West hat Stampida, Tomahawk, Uncharted und Grand Canyon Rapids, México El Diablo und Templo del Fuego, Mediterrània Furius Baco. Für Kinder, die für die großen Bahnen zu klein sind, gibt es in SésamoAventura Street Mission und Tami-Tami.
-
-Die Karte des Parks:
 
 ```map-widget slug=portaventura-park
 
@@ -349,5 +358,11 @@ Auf den Seiten des Parks steht dazu nichts.
   [PortAventura World auf en.wikipedia](https://en.wikipedia.org/wiki/PortAventura_World) · [PortAventura Park auf en.wikipedia](https://en.wikipedia.org/wiki/PortAventura_Park) · [Ferrari Land auf en.wikipedia](https://en.wikipedia.org/wiki/Ferrari_Land) · [Hurakan Condor auf en.wikipedia](https://en.wikipedia.org/wiki/Hurakan_Condor) · [Uncharted auf en.wikipedia](https://en.wikipedia.org/wiki/Uncharted:_The_Enigma_of_Penitence)
 - Besucherzahlen 2023 und 2025, Saison, Makamanu, Hard Rock Cafe:
   [Vozpopuli zu 5,5 Millionen Besuchen 2023](https://www.vozpopuli.com/economia/empresas/portaventura-world-arranca-temporada-mas-temprana-larga-historia-lograr-55-millones-visitas-ano-pasado.html) · [Diari de Tarragona zu 5,3 Millionen 2025](https://www.diaridetarragona.com/costa/249808/portaventura-vuelve-crecer-visitantes-temporada-30o-aniversario-5-3-millones.html) · [Diari de Tarragona zu den neuen Attraktionen](https://www.diaridetarragona.com/costa/261782/asi-son-nuevas-atracciones-abren-verano-portaventura-caribe-aquatic-park.html) · [Hard Rock Cafe PortAventura (Park-Blog)](https://www.portaventuraworld.com/blog/en/hard-rock-cafe-portaventura-world)
+- Planung, Eröffnung, Anteile 1995, Neuheiten und Abrisse:
+  [PortAventura Park auf es.wikipedia](https://es.wikipedia.org/wiki/PortAventura_Park) · [El País (1995)](https://elpais.com/diario/1995/05/02/sociedad/799365617_850215.html) · [Variety (1993)](https://variety.com/1993/more/news/santa-monica-lights-lamp-for-set-decorators-107018/) · [Variety (2022)](https://variety.com/2022/film/global/uncharted-dark-ride-roller-coaster-portaventura-world-1235445298/) · [Thea Award für den Templo del Fuego (Visual Terrain)](https://visualterrain.net/portfolio/templo-del-fuego/) · [Uncharted (InPark Magazine)](https://www.inparkmagazine.com/uncharted-the-enigma-of-penitence-opens-at-portaventura-world/)
+- Besuche 2022 und 2023 im Park:
+  [TEA/AECOM Theme Index 2023](https://aecom.com/wp-content/uploads/documents/reports/AECOM-Theme-Index-2023.pdf)
+- Shows:
+  [FiestAventura](https://www.portaventuraworld.com/en/shows/fiestaventura) · [PortAventura Parade](https://www.portaventuraworld.com/en/shows/portaventura-parade) · [Can Can Express](https://www.portaventuraworld.com/en/shows/can-can-express) · [West Gold Frenzy](https://www.portaventuraworld.com/en/shows/west-gold-frenzy) · [México Lindo](https://www.portaventuraworld.com/en/shows/cantina-mexico) · [Aloha Tahití](https://www.portaventuraworld.com/en/shows/aloha-tahiti) · [Pareos en Bora Bora](https://www.portaventuraworld.com/en/shows/pareos-en-bora-bora) · [Noches de Fuego en Tahití](https://www.portaventuraworld.com/en/shows/noches-de-fuego) · [Magic Bubble](https://www.portaventuraworld.com/en/shows/magic-bubble) · [Halloween Parade](https://www.portaventuraworld.com/en/halloween/shows/halloween-parade) · [Halloween Factory](https://www.portaventuraworld.com/en/halloween/shows/halloween-factory)
 - Schulkalender Katalonien 2026/27:
   [3Cat](https://www.3cat.cat/3catinfo/calendari-escolar-2026-2027-vacances-i-festius-del-curs-vinent-i-dels-dos-seguents/noticia-amp/3410044/)

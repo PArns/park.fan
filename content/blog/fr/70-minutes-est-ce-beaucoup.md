@@ -183,8 +183,7 @@ n’importe quel autre à trois heures du matin : aucune attraction ne remonte 
 que ce soit. Si nous en tirions la conclusion évidente, toutes les attractions du parc y
 seraient en « très faible », avec une moyenne de 0 minute et une prévision
 fondée sur zéro observation. À la place, la page du parc porte une mention
-disant qu’il n’y a rien à lire ici. Ce que nous pouvons quand même dire du parc
-se trouve dans le [guide du Hansa-Park](/blog/hansa-park-conseils).
+disant qu’il n’y a rien à lire ici. Le [guide du Hansa-Park](/blog/hansa-park-conseils) rassemble ce que nous pouvons quand même dire du parc.
 
 La même règle vaut, à plus petite échelle, pour la patinoire « Berliner
 Eislaufen » sur la Kaiserplatz du Phantasialand, qui n’existe que pendant le Wintertraum, cette fois
@@ -207,8 +206,7 @@ courte juste avant la fermeture.
 Si tu préfères acheter du temps, tu paies 12 € pour un tour sur Taron avec le Quick Pass, d’après la
 page d’information du Phantasialand (au 5 octobre 2026). Le pass ne s’achète que sur place, au service
 client du Kaiserplatz, et le contingent est limité. Quand le chiffre est de toute façon normal pour ce
-jour de la semaine, c’est rarement rentable. Ce que nous en pensons, et dans quels cas le Quick Pass
-Ultimate vaut le coup, se trouve dans le [guide du Phantasialand](/blog/phantasialand-temps-d-attente-conseils).
+jour de la semaine, c’est rarement rentable. Dans le [guide du Phantasialand](/blog/phantasialand-temps-d-attente-conseils), nous disons ce que nous en pensons et dans quels cas le Quick Pass Ultimate vaut le coup.
 
 Pour une journée entière, il y a le [planificateur](/blog/planificateur). Tu y choisis tes attractions et tu reçois un ordre de passage établi d’après les temps d’attente prévus pour ce jour-là. Tu sais ainsi avant même de partir si tu les fais toutes avant la fermeture du parc, au lieu de le découvrir à cinq heures de l’après-midi devant la dernière file.
 

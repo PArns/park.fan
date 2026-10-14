@@ -91,8 +91,6 @@ na compleet. Over alle weekdagen gerekend is de typische wachttijd parkbreed
 (de mediaan) **kort voor zo’n drukte**; op drukke dagen ligt hij daar duidelijk
 boven.
 
-De tien attracties waar je het langst staat, met de waarde van vandaag ernaast:
-
 ```stats-widget slug=europa-park show=attractions
 
 ```
@@ -107,7 +105,7 @@ nauwelijks iemand, op een volle ochtend reikt de rij tot op het voorplein.
 
 Voltron kreeg in zijn eerste jaar 3,25 miljoen ritten en heeft de langste rij
 van het park, en voor een park met ruim zes miljoen gasten is **die langste rij
-verrassend kort**. De tabel vergelijkt parken met dezelfde gegevens en dezelfde rekenmethode:
+verrassend kort**. Alle parken in de vergelijking zijn met dezelfde gegevens en dezelfde rekenmethode berekend.
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
@@ -563,8 +561,7 @@ tussen Kerstmis en oudejaarsavond 2025, de drukste week van de winter.
 In 2027 houdt het park van 7 tot 19 maart voor het eerst twee Pre-Opening
 Weeks, nog niet met alle attracties en shows, maar met de goedkoopste tickets
 van het jaar, en het zomerseizoen begint dan op 20 maart. Van oktober staan pas
-de eerste dagen in de tabel, van november nog geen enkele. Hoe ver Halloween en
-HALLOWinter er inmiddels in zitten, zie je aan het aantal meetdagen.
+de eerste dagen in de tabel, van november nog geen enkele. Het aantal meetdagen laat zien hoe ver Halloween en HALLOWinter er inmiddels in zitten.
 
 ### Welke vakanties het park vullen
 
@@ -574,7 +571,7 @@ Est, dus van de Elzas, van de Zwitserse kantons Aargau, Basel-Stadt en
 Basel-Landschaft, en van de aangrenzende deelstaten Beieren, Hessen en
 Rijnland-Palts.
 
-Hoeveel dat scheelt, zie je aan de werkdagen. Tussen april en september waren er
+Tussen april en september waren er
 42 werkdagen zonder schoolvakantie in een van de acht regio’s en zonder
 feestdag. Daarvan stonden er vier op “hoog” of hoger en 27 op “laag”. Van de
 werkdagen in de vakantie van Aargau stonden er 17 van de 27 op “hoog”, en geen
@@ -659,14 +656,11 @@ Rust hebben we nog niet gemeten.
 Het park opent pas om 11 uur en sluit op zijn vroegst om
 19 uur, dat is een uur minder dan in de zomer, het wordt vroeg donker, en op de
 waterbanen kun je niet rekenen. Als Poseidon en Atlantica je niets kunnen
-schelen, is een werkdag in november het proberen waard. Welke dagen er nu het
-rustigst uitzien, staat in de kalender hierboven.
+schelen, is een werkdag in november het proberen waard. De dagen die er nu het rustigst uitzien, staan in de kalender hierboven.
 
 ## De perfecte dag in het Europa-Park
 
-**Sta bij de ingang voordat er geopend wordt, en ga daarna naar het Voletarium.**
-
-In onze rope-drop-analyse vergelijken we voor elke attractie
+Sta bij de ingang voordat er geopend wordt, en ga daarna naar het Voletarium. In onze rope-drop-analyse vergelijken we voor elke attractie
 de wachttijd meteen bij opening met de hoogste dagpiek die daar op een volle dag
 is gemeten. Bij het Voletarium is de rij bij opening maar een fractie van die
 piek, en dat is veruit de grootste besparing in het hele park.
@@ -678,8 +672,7 @@ piek, en dat is veruit de grootste besparing in het hele park.
 Bij Voltron, Arthur en Silver Star levert een vroege start nog niet de helft
 daarvan op.
 
-Hoe sterk zich dat over de dag verdeelt, zie je pas in het uurprofiel: de
-typische wachttijd per uur, de mediaan over alle gemeten bedrijfsdagen sinds eind
+Het uurprofiel geeft de typische wachttijd per uur, de mediaan over alle gemeten bedrijfsdagen sinds eind
 december 2025. Het drukste uur van elke attractie staat vet.
 
 ```hourly-profile-widget slug=europa-park top=12
@@ -691,7 +684,7 @@ december 2025. Het drukste uur van elke attractie staat vet.
 Bij Silver Star staat om tien en om elf uur de langste rij van de dag, vanaf twaalf uur wordt die merkbaar
 korter en pas in de avonduren van lange zomerdagen trekt ze weer aan.
 
-**De drukste uren liggen tussen tien en twaalf.** De meeste banen hebben hun
+De drukste uren liggen tussen tien en twaalf. De meeste banen hebben hun
 maximum om tien of om elf uur; alleen Arthur, Atlantica en de fjord-rafting
 pieken pas in de middag.
 
@@ -743,7 +736,7 @@ park in.
 werkdag, al is het krap. Als er toch maar één doordeweekse dag in aanmerking
 komt, neem dan de donderdag.
 
-## Halloween, HALLOWinter, winter
+## Halloween en winter
 
 Vanaf **26 september** liggen er zo’n **180.000 pompoenen** in het park, plus
 herfstdecoratie in alle achttien landen en, nieuw in 2026, een herfstdorp, het
@@ -824,7 +817,7 @@ park HALLOWinter, en dan gaat het pas om 19 uur dicht, dus precies wanneer
 hiernaast het terrein opengaat. Wie voor een novemberdatum een Traumatica-ticket
 koopt, geeft daarmee het laatste parkuur weg.
 
-## Praktisch: entreeprijzen 2026, route, parkeren, eten, slapen
+## Entreeprijzen 2026 en route
 
 **Tickets.** De prijs hangt af van de datum, het park werkt met twee
 prijscategorieën. Online
@@ -889,8 +882,7 @@ Op een **zondag of donderdag in mei of juni**, buiten de schoolvakanties in
 Baden-Württemberg, Bazel, Aargau, de Elzas, Beieren, Hessen en Rijnland-Palts.
 De zaterdag is de drukste dag. Het drukst zijn de week na Pasen, de
 zomervakantie van eind juni tot half augustus en de dagen tussen Kerstmis en
-Nieuwjaar. Welke dagen er nu het rustigst uitzien, staat in
-[onze voorspelling](ref:europa-park?calendar).
+Nieuwjaar. De dagen die er nu het rustigst uitzien, staan in [onze voorspelling](ref:europa-park?calendar).
 
 ### Is er in het Europa-Park een fast pass?
 
@@ -952,7 +944,7 @@ Gemeten wachttijden uit november hebben we nog niet.
 
 ## Weer en actuele wachttijden
 
-Als het regent, wordt de rij bij de Eurosat langer:
+Als het regent, wordt de rij bij de Eurosat langer.
 
 ```weather-widget slug=europa-park
 

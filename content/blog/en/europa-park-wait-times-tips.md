@@ -90,8 +90,6 @@ April apart from one day in July. Across all days of the week the typical
 park-wide wait (the median) is **short for a crowd this size**; on busy days it
 sits well above that.
 
-The ten attractions you queue longest for, with today’s number beside them:
-
 ```stats-widget slug=europa-park show=attractions
 
 ```
@@ -107,7 +105,7 @@ busy morning the queue reaches out into the square.
 Voltron
 clocked up 3.25 million rides in its first year and has the longest queue in the
 park, and for a park with over six million guests **that longest queue is
-surprisingly short**. The table compares parks with the same data basis and the same method:
+surprisingly short**. Every park in the comparison is calculated from the same data basis with the same method.
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
@@ -554,9 +552,7 @@ between Christmas and New Year’s Eve 2025, the busiest week of the winter.
 2027 starts earlier: from 7 to 19 March the park opens for two Pre-Opening Weeks
 for the first time, not yet with every ride and show, but with the cheapest
 tickets of the year, and the summer season then begins on 20 March. October has
-only its first few days in the table so far, November none. How far Halloween
-and HALLOWinter have made it in by now, you can tell from the count of measured
-days.
+only its first few days in the table so far, November none. The count of measured days shows how far Halloween and HALLOWinter have made it in by now.
 
 ### Which holidays fill the park
 
@@ -566,7 +562,7 @@ means Alsace, those of the Swiss cantons of Aargau, Basel-Stadt and
 Basel-Landschaft, and those of the neighbouring German states of Bavaria, Hesse
 and Rhineland-Palatinate.
 
-The weekdays make the difference plain. Between April and September there were
+Between April and September there were
 42 weekdays with no school holiday in any of the eight regions and no public
 holiday either. Four of them were rated “high” or above, 27 “low”. Of the
 weekdays inside the Aargau holidays, 17 out of 27 were “high”, and not a single
@@ -651,14 +647,11 @@ in Rust yet.
 The park doesn’t open until 11 a.m. and closes at 7
 p.m. at the earliest, an hour less than in summer, darkness comes early, and the
 water rides can’t be relied on. If Poseidon and Atlantica mean nothing to you, a
-weekday in November is worth a try all the same. Which days look quietest right
-now is in the calendar above.
+weekday in November is worth a try all the same. The days that look quietest right now are in the calendar above.
 
 ## The perfect day at Europa-Park
 
-**Be at the gate before it opens, and then go to the Voletarium.**
-
-Our rope-drop analysis compares, for every
+Be at the gate before it opens, and then go to the Voletarium. Our rope-drop analysis compares, for every
 attraction, the wait right at opening with the highest daily peak measured there
 on a busy day. At the Voletarium the queue at opening is a fraction of that peak,
 by far the biggest saving anywhere in the park.
@@ -669,8 +662,7 @@ by far the biggest saving anywhere in the park.
 
 At Voltron, Arthur and Silver Star an early start saves less than half as much.
 
-How far it all spreads across the day only becomes visible hour by hour: the
-typical wait in each hour, the median across every operating day we have
+The hourly profile gives the typical wait in each hour, the median across every operating day we have
 measured since late December 2025. Each ride’s busiest hour is in bold.
 
 ```hourly-profile-widget slug=europa-park top=12
@@ -682,7 +674,7 @@ measured since late December 2025. Each ride’s busiest hour is in bold.
 At Silver Star, ten and eleven in the morning bring the longest queue of the day, from midday it gets noticeably
 shorter and only picks up again in the evening hours of long summer days.
 
-**The busiest hours fall between ten and twelve.** Most rides hit their maximum
+The busiest hours fall between ten and twelve. Most rides hit their maximum
 at ten or at eleven; only Arthur, Atlantica and the fjord rafting peak in the
 afternoon.
 
@@ -733,7 +725,7 @@ Sunday.
 **Taking Tuesday for a quiet weekday.** In our data it’s the busiest weekday
 of all, if only just. If only a weekday will do, take Thursday.
 
-## Halloween, HALLOWinter, winter
+## Halloween and winter
 
 From **26 September** around **180,000 pumpkins** lie around the park, along
 with autumn decoration in all eighteen countries and, new in 2026, an autumn
@@ -815,7 +807,7 @@ HALLOWinter and doesn’t close until 7 p.m., exactly when the site next door
 unlocks its gates. Buy a Traumatica ticket for a November date and you’re
 giving up the last hour in the park.
 
-## Practicalities: 2026 ticket prices, getting there, parking, food, beds
+## 2026 ticket prices and getting there
 
 **Tickets.** The price depends on the date, and the park works with two price
 categories. Online a
@@ -869,8 +861,7 @@ inside the park since 2020 and in Silver Lake City since 2026.
 
 Park-wide, shorter than at Phantasialand or at the Disneyland Park in Paris; the
 table above has the comparison. The longest queue usually belongs to Voltron
-Nevera, with Arthur, Wodan and Eurosat close together behind it. What the boards say today is on the
-[live Europa-Park wait times](ref:europa-park?bare), updated every five minutes
+Nevera, with Arthur, Wodan and Eurosat close together behind it. You can see what the boards say today on the [live Europa-Park wait times](ref:europa-park?bare), updated every five minutes
 and with a forecast for the days ahead.
 
 ### When is Europa-Park least busy?
@@ -879,8 +870,7 @@ On a **Sunday or Thursday in May or June**, outside the school holidays in
 Baden-Württemberg, Basel, Aargau, Alsace, Bavaria, Hesse and
 Rhineland-Palatinate. Saturday is the busiest day. The busiest weeks are the one
 after Easter, the summer holidays from late June to mid-August and the days
-between Christmas and New Year. Which days look quietest right now is in
-[our forecast](ref:europa-park?calendar).
+between Christmas and New Year. The days that look quietest right now are in [our forecast](ref:europa-park?calendar).
 
 ### Is there a fast pass at Europa-Park?
 
@@ -941,7 +931,7 @@ don’t have yet.
 
 ## Weather and live wait times
 
-When it rains, the queue at Eurosat gets longer:
+When it rains, the queue at Eurosat gets longer.
 
 ```weather-widget slug=europa-park
 

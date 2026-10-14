@@ -151,11 +151,11 @@ The park names changing rooms in seven places: at the main entrance, at the info
 point by the lake, in Ireland (Kinderwelt), in Italy next to dm family & friends,
 in Spain, in the Fairytale Forest and in the Kingdom of the Minimoys. It doesn't
 say how they're equipped or whether there's a nursing room. At dm family &
-friends the park sells selected baby food. The website doesn't say where you
-can warm it up and sends you to guest services instead.
+friends the park sells selected baby food. For warming it up, the website sends
+you to guest services.
 
 The rental stroller costs €5 plus a €50 deposit and is handed out at the main
-entrance or at the entrance to the hotel car park. According to the park it is
+entrance or at the entrance to the hotel car park. It is, according to the park,
 only for children who can already sit, because a child can't lie down in it. The
 park doesn't rent out wagons, and they don't appear in the park rules. The rules
 ban non-motorised vehicles such as skates, bikes and scooters, and it isn't
@@ -163,8 +163,8 @@ clear whether a wagon counts as one. If you want to bring one, ask guest
 services beforehand.
 
 At Europa-Park the swap is called Baby-Switch and, according to the park, it
-applies on many of the larger coasters. The park names blue fire Megacoaster and
-Alpenexpress Coastiality, but there's no complete list. Whoever waits stays with
+applies on many of the larger coasters, such as blue fire Megacoaster and
+Alpenexpress Coastiality. There's no complete list. Whoever waits stays with
 the child, at the playground for instance. Whoever rides first gets a card for
 the exit or for the separate Baby Switch entrance.
 
@@ -199,8 +199,7 @@ children. Wagons, bike
 trailers and dog carts are banned. An exception on medical grounds has to be
 e-mailed to guest services at least 14 days ahead.
 
-You ask for Baby Switch at the ride. The
-park doesn't say which rides take part.
+The park doesn't list the rides with Baby Switch, so you ask for it at the ride.
 
 In a table in its terms of use, the park lists under "Attractions for children"
 Der lustige Papagei, Die fröhliche Bienchenjagd, Bolles Riesenrad, Wözl's Duck
@@ -254,8 +253,8 @@ The dated day ticket costs from €37 online and €64 at the box office.
 
 At Heide Park the swap is called the Baby-Switch-Pass. Parents of children up to
 and including age 3 get it free at the Service Center, only on days when the
-Express Ticket is available. It applies to coasters. The park doesn't say which
-ones.
+Express Ticket is available. It applies to coasters, without the park naming
+any of them.
 
 You can warm up baby food at the Wirtshaus des Admirals and in Lucky Land, among
 other places, and the app shows all the stations. The park map also marks
@@ -291,8 +290,8 @@ terraces.
 
 Strollers are allowed, but at rides and shows they have to stand in the
 designated areas. On busy days they can't go into Plopsa Indoor. The park
-doesn't mention stroller rental. Wagons come with a fee, according to the park
-rules, against an ID or a €100 deposit. The rules don't say how much the fee is.
+doesn't mention stroller rental. Wagons come with a fee of an unstated amount,
+according to the park rules, against an ID or a €100 deposit.
 Neither the FAQ pages nor the park rules mention a Rider Switch or swapping.
 Every guest has to leave the ride after each trip, and anyone who wants a second
 go queues again.
@@ -317,14 +316,14 @@ centimetres pay nothing but still need a reservation in the ticket shop. From 90
 to 140 centimetres the ticket costs €32.50, from 140 centimetres €39.50,
 depending on the day class. On your birthday you get in for €0 with ID.
 
-All restrooms except those in Ithaka have changing tables. Microwaves are free in
-the Waldstube and on Katara Plaza, and the park doesn't mention a bottle warmer.
+All restrooms except those in Ithaka have changing tables. For warming food the
+park names only microwaves, free in the Waldstube and on Katara Plaza.
 If you want to pump, ask the staff at the main entrance.
 
 You may bring a buggy or wagon, and the park recommends a chain lock. Toverland
-doesn't rent anything out. Baby Switch applies on selected rides, with no age
-limit. You pick up a special ticket at the entrance, and one parent may ride
-through the exit. The park doesn't say which rides they are.
+doesn't rent anything out. Baby Switch applies, with no age limit, on selected
+rides that the park doesn't list. You pick up a special ticket at the entrance,
+and one parent may ride through the exit.
 
 In Land van Toos, an area with halls, children ride with a companion from 0 centimetres
 in the Klokhuis and in Morrels Truckjes, alone from 90. The Toos-Express,
@@ -354,10 +353,9 @@ Guest Service.
 
 Buggies cost €10 plus a €50 deposit at the Gift Shop and can't be booked in
 advance. The park's website doesn't say whether your own stroller or wagon is
-allowed. You may bring food and drinks. The swap system is called "baby change".
-One adult waits with the child at the exit and boards there afterwards without
-queuing. The park doesn't say which
-rides take part.
+allowed. You may bring food and drinks. The swap system is called "baby change",
+and the park doesn't say on which rides it applies. One adult waits with the
+child at the exit and boards there afterwards without queuing.
 
 The kids page lists Merrie Go'Round (from 0 with a
 companion, alone from 120 centimetres), Walibi's Fun Recorder, Garage, Bubble
@@ -378,7 +376,7 @@ Children under 13 may only enter the park with adults and are under constant
 supervision.
 
 Baby Switch is free and can't be combined with the Speedy Fast-Pass or the
-Easy-pass. The page's text doesn't explain how it works. Neither the services
+Easy-pass. The page doesn't explain how it works. Neither the services
 page nor the FAQ nor the park rules mention a changing room. Nursing is allowed
 everywhere in the park. If you'd like somewhere quieter, go to the first aid
 post. The restaurants have microwaves for bottles and baby food. According to
@@ -408,7 +406,7 @@ food.
 
 The park explains Baby Switch on a page of its own. After the first ride, both
 parents go to the ride operator, who lets the other parent ride without queuing again. It applies to children below the minimum height. The
-page doesn't give a complete list of rides.
+page has no complete list of rides.
 
 The children's area is called "Attractions for Little Gauls". The park gives a
 minimum age for The Mini Train and Ceasar's Carrousel (2 years) and for The Mini
@@ -421,8 +419,7 @@ measured and get a wristband listing the rides they're allowed on.
 
 ## When a park is quiet
 
-The table shows the
-weekday with the lowest average wait for eight of the ten parks.
+Walibi Belgium and Parc Astérix are not part of this comparison.
 
 ```park-comparison-widget slugs=efteling,europa-park,phantasialand,attractiepark-toverland,legoland-deutschland,heide-park,plopsaland-deutschland,walibi-holland show=quietest
 

@@ -137,8 +137,7 @@ Vielfaches für dieselbe Fahrt. Und
 Stunden praktisch gleich teuer und taugt deshalb als Füllung für die Lücken, die
 die anderen beiden lassen.
 
-Eine Faustregel behandelt alle drei Bahnen gleich. Im Planer steckt deshalb keine
-Rope-Drop-Regel, im Code kommt das Wort nicht einmal vor.
+Eine Faustregel kann diese drei Antworten nicht geben, weil sie alle drei Bahnen gleich behandelt. Im Planer steckt deshalb keine Rope-Drop-Regel, im Code kommt das Wort nicht einmal vor.
 
 ```glossary-widget slug=rope-drop
 
@@ -159,9 +158,9 @@ abends dichtmacht, meldet kein Feed verlässlich, also steht dazu auch nichts da
 
 ## Zwei Knöpfe sortieren den Tag
 
-Unter der Zeitachse stehen zwei Knöpfe. „Alle Headliner einplanen“ holt die
+Der Knopf „Alle Headliner einplanen“ unter der Zeitachse holt die
 großen Bahnen des Parks dazu, die noch nicht im Tag stehen, und sortiert
-anschließend alles. „Tag optimieren“ ordnet nur um, was schon
+anschließend alles. „Tag optimieren“ daneben ordnet nur um, was schon
 da ist. Dahinter läuft beide Male dieselbe Rechnung. Es sind zwei Knöpfe, weil
 es zwei Fragen sind: füll mir den Tag, und geht die Reihenfolge besser.
 
@@ -219,7 +218,7 @@ Ergebnis genau ein Rückgängig.
 Am längsten haben wir an vier Stellen gesessen, an denen wir mit Absicht weniger
 anzeigen, als wir könnten.
 
-**Die Prognose liegt daneben, und zwar messbar.** An jedem ausgewählten Block
+Die Prognose liegt daneben, und zwar messbar. An jedem ausgewählten Block
 steht, wie weit die Vorhersagen für eine so lange Warteschlange mit so viel Vorlauf in
 den letzten 45 Tagen im Schnitt von dem entfernt lagen, was der Tag dann
 wirklich brachte. Das gibt es bis 60 Tage im Voraus, weiter reicht die Messung
@@ -228,12 +227,12 @@ Schnitt ist keine Obergrenze, an vielen Tagen liegt die Prognose weiter daneben.
 Deshalb steht die Zahl als typischer Fehler da und nie als Spanne, in der die
 richtige Antwort schon drin wäre.
 
-**Showzeiten sind zweierlei.** Was der Park für heute veröffentlicht hat, ist
+Eine Showzeit kann auch geschätzt sein. Was der Park für heute veröffentlicht hat, ist
 eine Ansage. Was wir vom letzten passenden Wochentag hochgerechnet haben, ist
 eine Vermutung, und die wird im Planer weicher gezeichnet: mit Tilde vor der
 Uhrzeit, gepunkteter Linie und dem Datum, von dem die Zeiten stammen.
 
-**Manche Parks können wir gar nicht messen.** Der [Hansa-Park](ref:hansa-park)
+Manche Parks können wir gar nicht messen. Der [Hansa-Park](ref:hansa-park)
 gibt seine Wartezeiten nur in der eigenen App im Park-WLAN aus. Für uns kommt
 dort nie eine Zahl an. Ein Park ohne Quelle sieht in den Daten exakt aus wie ein
 Park, der nachts geschlossen ist, deshalb kommt diese Auskunft direkt aus der
@@ -241,7 +240,7 @@ API, und die beiden Sortier-Knöpfe fehlen dort ganz. Wenn
 jede Bahn dieselbe erfundene Zahl kostet, ist jede Reihenfolge gleich gut, und
 ein Sortier-Knopf würde dort nur so tun, als ob.
 
-**Ein vergangener Tag bleibt.** Im Kalender kannst du einen Tag wieder öffnen,
+Ein vergangener Tag bleibt. Im Kalender kannst du einen Tag wieder öffnen,
 an dem du etwas geplant hattest, und die automatischen Knöpfe sind dort weg.
 Alles von Hand geht weiter: verschieben, abhaken, löschen. Ein gelaufener Tag
 ist eine Aufzeichnung, und dass du um eins wirklich in dieser Warteschlange standst,
@@ -269,7 +268,7 @@ einen Link zum Teilen. Wer ihn öffnet, bekommt eine eigene Kopie in seinen
 Planer, und was er daran ändert, bleibt bei ihm. So kommt ein Plan auch vom
 Rechner aufs Handy.
 
-Zwei Sachen noch, die man leicht übersieht. Am Rechner hängt auf jeder Seite am
+Am Rechner hängt auf jeder Seite am
 Rand ein Reiter, der den Planer aufmacht, auch wenn noch gar nichts geplant ist.
 Auf dem Handy sitzt dafür seit dem 24. September ein Kalender-Symbol oben in der
 Leiste. Und am Rechner lässt sich eine zweite Spalte aufziehen, dann stehen zwei Tage
@@ -278,8 +277,7 @@ sähe das am Samstag aus“.
 
 ## So fängst du an
 
-Der Weg hinein führt über vier Fragen. In welchen Park geht’s, an welchem Tag,
-wer kommt mit, und welche großen Bahnen sollen rein. Die Bilder unten zeigen
+Zu Beginn beantwortest du vier Fragen: in welchen Park es geht, an welchem Tag, wer mitkommt und welche großen Bahnen rein sollen. Die Bilder unten zeigen
 noch die erste Fassung mit drei Schritten.
 
 Die erste ist ein Suchfeld, und dahinter steckt eine Kleinigkeit, die schnell

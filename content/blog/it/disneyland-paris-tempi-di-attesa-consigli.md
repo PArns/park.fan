@@ -2,6 +2,7 @@
 title: 'Disneyland Paris: il più piccolo dei due parchi ha le code più lunghe'
 translationKey: disneyland-paris-guide
 date: '2026-09-11'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -82,12 +83,50 @@ I due parchi si pagano separatamente. Il biglietto giornaliero vale per uno dei
 due, e chi vuole passare dall’uno all’altro ha bisogno della variante per due
 parchi.
 
-Ecco come si confrontano i due tra loro, più, per avere un termine di
-paragone, due parchi che dalla Germania distano più o meno lo stesso:
-
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,disney-adventure-world,parc-asterix,europa-park show=quietest highlight=/parks/europe/france/paris/disneyland-park
 
 ```
+
+## Storia del resort dal 1984
+
+Alla fine del 1984 Dick Nunis e Jim Cora, a capo della divisione parchi a tema
+della Disney, presentarono un elenco di circa 1.200 siti possibili in Europa.
+Regno Unito e Italia uscirono presto dalla lista, perché in nessuno dei due
+c’era un terreno pianeggiante abbastanza grande. A marzo 1985 restavano quattro
+candidati, due in Francia e due in Spagna. Il favorito spagnolo si trovava
+vicino a Pego, in provincia di Alicante, dove il parco avrebbe distrutto la
+palude della Marjal de Pego-Oliva, mentre un terreno vicino a Tolone fu scartato
+perché la roccia era troppo vicina alla superficie. Marne-la-Vallée vinse per la
+vicinanza a Parigi e la posizione centrale nell’Europa occidentale. La Disney
+calcolava che 68 milioni di persone abitassero al massimo a quattro ore di auto.
+
+Il capo della Disney Michael Eisner firmò il 18 dicembre 1985 una prima lettera d’intenti con il
+governo francese. Il contratto vero e proprio con lo Stato e gli enti locali
+arrivò il 24 marzo 1987, e i lavori cominciarono ad agosto 1988. A marzo 1988 un consiglio di cinque architetti, fra cui Frank Gehry e Michael
+Graves, stabilì che ogni hotel avrebbe rappresentato una regione degli Stati
+Uniti. La stazione RER
+davanti all’ingresso del parco aprì il 1° aprile 1992, quella del TGV il 26
+maggio 1994.
+
+A luglio 1992 Euro Disney annunciò per il primo esercizio una perdita di circa
+300 milioni di franchi, e l’hotel Newport Bay Club rimase chiuso il primo
+inverno perché le camere prenotate erano troppo poche. Dal 12 giugno 1993 il
+parco serve alcolici durante i pasti. L’8 giugno 1994 gli azionisti approvarono una ristrutturazione del
+debito. Le banche rinunciarono agli interessi, la Disney ai diritti di licenza,
+ed entrò nel capitale un investitore saudita, il principe al-Walid bin Talal.
+
+Nell’estate 1994 il resort si chiamava Euro Disneyland Paris, dal 1° ottobre
+1994 Disneyland Paris. Con il secondo parco nel 2002 divenne Disneyland
+Resort Paris, e dal 4 aprile 2009 si chiama di nuovo Disneyland Paris.
+
+Dal 19 giugno 2017 la società di gestione Euro Disney S.C.A. appartiene per
+intero a The Walt Disney Company, che fino ad allora ne aveva solo una quota di
+minoranza. Un’aggiunta al contratto del 1987, firmata il 7 febbraio 2020, dà
+alla Disney tempo fino al 2036 per decidere su un terzo parco. Se i due parchi
+esistenti arrivano a 22 milioni di visite l’anno, entro il 23 marzo 2040 deve
+essere presentato un progetto dettagliato. Per la pandemia entrambi i parchi
+rimasero chiusi da marzo al 15 luglio 2020 e poi di nuovo dal 29 ottobre 2020 al
+17 giugno 2021. Dall’apertura la Disney conta più di 445 milioni di visite.
 
 ## Disneyland Park: il castello e le attrazioni
 
@@ -110,7 +149,9 @@ e riemerge alla luce solo sull’isola, dove comincia il vero e proprio
 percorso. L’ha costruita Vekoma, ha aperto il primo giorno del parco, altezza
 minima 102 centimetri. Nel 2015 e nel 2016 è rimasta chiusa per un anno ed è
 tornata con freni nuovi, una bella mano di vernice e qualche effetto preso in
-prestito dalla California.
+prestito dalla California. Il percorso è lungo 1.205 metri, il punto più alto è a 22 metri da terra e i
+treni toccano i 65 km/h. Cinque treni da 30 posti portano 2.424 passeggeri
+all’ora. Da gennaio a giugno 2025 è rimasta ferma un’altra volta.
 
 **[Phantom Manor](ref:/parks/europe/france/paris/disneyland-park/phantom-manor)**
 è la Haunted Mansion di Parigi. Le versioni in Florida e in California non raccontano di proposito una storia continua, quella di Parigi invece sì. Melanie Ravenswood aspetta in abito da
@@ -125,9 +166,10 @@ Mountain](ref:/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mo
 si chiama così solo dal 7 maggio 2017. Ha aperto il 1° giugno 1995 come _Space
 Mountain: De la Terre à la Lune_, ispirata a Jules Verne, con un cannone come
 sistema di lancio. Il cannone spara ancora oggi il treno su per la montagna da 0 a
-71 km/h in 1,8 secondi. Tre capovolgimenti, un chilometro di percorso, fino a 5
-g. Fra tutte le Space Mountain del mondo è l’unica con un lancio ed è l’unica
-con inversioni. Michael Eisner, allora capo della Disney, la chiamò la
+71 km/h in 1,8 secondi. Tre capovolgimenti, 765 metri di percorso, 32 metri di altezza, fino a 5 g,
+altezza minima 1,20 metri. Dal 2005 al 2017 ha girato come _Space Mountain:
+Mission 2_. Fra tutte le Space Mountain del mondo è l’unica con un lancio ed è l’unica
+con inversioni. Eisner la chiamò la
 salvatrice del parco, e nell’esercizio 1995 Disneyland Paris chiuse per la prima
 volta in utile. A fine 2027 l’attrazione
 chiude per alcuni mesi e tornerà come _Space Mountain – De la Terre à la Lune_, di nuovo
@@ -150,13 +192,26 @@ un parco Disney, costruita da Intamin, 600 metri di percorso, 58 km/h. Da
 aprile 2000 a novembre 2004 ha girato al contrario. La sua altezza minima di
 140 centimetri è la più alta fra tutte le attrazioni Disney al mondo.
 
+**Casey Jr. – le Petit Train du Cirque**, in Fantasyland, è un trenino per famiglie a motore di Vekoma del marzo 1994: 300
+metri di percorso, due treni con la locomotiva davanti, nessuna altezza minima.
+Sotto i sedili ci sono altoparlanti, e secondo RCDB è stata la prima attrazione
+Vekoma con musica a bordo.
+
+In Discoveryland funziona dal 26 marzo 2017 **Star Tours: L’Aventure Continue**,
+un simulatore con un’altezza minima di 1,02 metri la cui apertura ha dato il via
+al 25° anniversario. **Buzz Lightyear Laser Blast**, una dark ride con pistole
+laser, è arrivata nel 2006. Autopia si guida da soli da 1,32 metri, accompagnati da 81 centimetri. La sera **Disney
+Tales of Magic** proietta dal 10 gennaio 2025, per venti minuti, scene di
+_Pinocchio_, _Encanto_, _Inside Out_ e altri film sul castello e sulle facciate di Main Street, con droni, fuochi d’artificio e
+fontane. La parata diurna Disney Stars on Parade sfila dal 2017.
+
 ```map-widget slug=/parks/europe/france/paris/disneyland-park
 
 ```
 
 ## Disney Adventure World: la ristrutturazione e Crush's Coaster
 
-Il secondo parco ha aperto nel 2002 come set cinematografico ed è stato per anni troppo piccolo rispetto al numero di visitatori. Prima del 2022 c’era molto asfalto. A febbraio 2018 Disney ha annunciato una ristrutturazione da **due
+Il secondo parco è nato come set cinematografico ed è stato per anni troppo piccolo rispetto al numero di visitatori. A febbraio 2018 Disney ha annunciato una ristrutturazione da **due
 miliardi di euro**, e tre pezzi sono ormai al loro posto: **Marvel Avengers
 Campus** da luglio 2022, **World of Frozen** dal 29 marzo 2026, con una montagna
 alta 36 metri e un fiordo davanti, e **Adventure Way**, una nuova passeggiata
@@ -179,8 +234,28 @@ luglio 2022 con l’area Marvel, mentre **[Avengers Assemble: Flight
 Force](ref:disney-adventure-world/avengers-assemble-flight-force)** è il Rock
 'n' Roller Coaster dell’anno di apertura 2002, trasformato per la stessa data.
 
+Flight Force è una montagna russa Vekoma al coperto con lancio a motori
+lineari, che porta il treno a 92 km/h in 2,8 secondi. Seguono tre inversioni su 996 metri di percorso, il punto più alto è a 24 metri, altezza minima 1,20
+metri. Per la trasformazione Marvel è rimasta ferma dal 2 settembre 2019. **RC Racer**
+di Intamin va
+avanti e indietro dal 17 agosto 2010 in Worlds of Pixar su un binario a U di 82
+metri, fino a 25 metri di altezza, anche lei da 1,20 metri. Per la Tower of
+Terror bastano 1,02 metri, per la torre di caduta Toy Soldiers Parachute Drop 81
+centimetri.
+
+Sul nuovo lago Adventure Bay la sera va in scena **Disney Cascade of Lights**,
+il secondo spettacolo notturno del resort. Secondo la Disney vi volano e
+galleggiano più di 380 droni sviluppati con l’azienda Dronisos, per la prima
+volta anche droni sull’acqua. Il palco è fatto di chiatte dal peso complessivo
+di 168 tonnellate, e fontane mobili lanciano l’acqua a più di 18 metri. Di
+giorno, sulla stessa baia di World of Frozen, va in scena più volte al giorno lo
+spettacolo di un quarto d’ora _A Celebration in Arendelle_, in cui Olaf compare
+come nuova figura robotica di Walt Disney Imagineering.
+
 **[Crush's Coaster](ref:disney-adventure-world/crushs-coaster)** aveva nei
-nostri dati la coda più lunga del parco, appena davanti a Frozen Ever After. Dal
+nostri dati la coda più lunga del parco, appena davanti a Frozen Ever After. L’ha costruita
+Maurer, ha aperto il 9 giugno 2007 e su ogni vagone rotante siedono quattro
+persone, altezza minima 1,07 metri. Dal
 **7 settembre 2026** non gira più. Il parco l’ha fermata per la revisione più
 grande dalla sua apertura: vengono sostituiti i sistemi di controllo, i sensori,
 la tecnologia di comunicazione e alcune parti dei binari, oltre a pulizia,
@@ -212,11 +287,7 @@ A dicembre, di cui abbiamo soltanto gli ultimi giorni del 2025, i tempi di attes
 Adventure World. Per il 2024 la
 TEA ha contato 10,2 milioni di visite al Disneyland Park e 5,5 milioni al
 secondo parco. Ogni visitatore viene contato solo nel parco in cui entra per
-primo; chi cambia a mezzogiorno nel secondo numero non compare affatto. Più di
-un terzo delle visite finisce così in un parco grande la metà e con meno della
-metà delle attrazioni.
-
-Ecco come si distribuisce una giornata al Disneyland Park nell’arco delle ore:
+primo; chi cambia a mezzogiorno nel secondo numero non compare affatto. Più di un terzo delle visite finisce così nel parco più piccolo.
 
 ```hourly-profile-widget slug=/parks/europe/france/paris/disneyland-park top=8
 
@@ -241,8 +312,8 @@ World: World of Frozen riceve addobbi natalizi in stile scandinavo e spettacoli
 propri con Anna, Elsa e Olaf. A Capodanno ciascuno dei due parchi festeggia con
 un programma suo.
 
-La curva dei giorni della settimana qui sopra è piatta, perché il parco è aperto 365 giorni all’anno e pubblicizzato in una mezza dozzina di paesi. Quali fra le prossime settimane siano comunque le più tranquille
-sta in questo calendario, ricalcolato di continuo:
+Le settimane più tranquille fra le prossime sono segnate in questo calendario,
+ricalcolato di continuo.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -308,6 +379,26 @@ raggiunto la capienza. Lì una giornata per adulti costa 129 euro per un parco e
 164 euro per entrambi (settembre 2026). I prezzi per la tua data sono su
 [disneylandparis.com](https://www.disneylandparis.com/).
 
+**Abbonamento annuale.** La Disney vende quattro livelli di Disneyland Pass. Il
+Bronze One costa 289 euro per gli adulti e 223 euro per i bambini dai tre agli
+undici anni e vale 170 giorni l’anno per un parco al giorno. Il Bronze Max a 399
+euro (bambini 300 euro) apre entrambi i parchi per 210 giorni, il Silver a 569
+euro (bambini 426 euro) per 300 giorni, con il dieci per cento di sconto nei
+negozi e nei ristoranti. Il Gold costa 799 euro (bambini 601 euro) e dà il 15
+per cento di sconto e l’Annual Disney PhotoPass+. Tutti e quattro i livelli
+includono il parcheggio visitatori per gli adulti, i camper pagano 15 euro in
+più al giorno.
+
+**Hotel.** La Disney gestisce sette hotel propri. Il Disneyland Hotel si trova
+proprio sopra l’ingresso del Disneyland Park ed è stato riaperto nel 2024 dopo
+una ristrutturazione completa. Il Disney’s Hotel New York si chiama «The Art of
+Marvel» dal 2021, e vi sono esposte più di 350 opere Marvel. Sul
+Lake Disney si trovano anche il Newport Bay Club, con 1.093 camere, e il Sequoia
+Lodge, con 1.010. L’Hotel Cheyenne è a tema _Toy Story_, l’Hotel Santa Fe, con
+1.000 camere, a tema _Cars_. Il Davy Crockett Ranch ha 584 bungalow di legno in
+57 ettari di bosco, a un quarto d’ora d’auto dai parchi. Gli ospiti degli hotel Disney parcheggiano gratis al
+proprio hotel.
+
 **Mangiare.** Entrambi i parchi hanno ristoranti con servizio al tavolo su
 prenotazione e molta ristorazione veloce nel mezzo. Al 25 settembre 2026 c’erano 35 ristoranti e chioschi nel Disneyland Park e 19 in Adventure World.
 
@@ -349,6 +440,19 @@ in diretta fra 5 e 16 euro a persona. Premier Access Ultimate, una volta per
 ogni attrazione partecipante, andava nel 2026 da 110 a oltre 200 euro a seconda
 della data.
 
+### Quali montagne russe ha Disneyland Paris?
+
+Il Disneyland Park ne ha quattro: Big Thunder Mountain, Indiana Jones and the
+Temple of Peril, Star Wars Hyperspace Mountain e il trenino per famiglie Casey
+Jr. Disney Adventure World ne ha tre: Avengers Assemble: Flight Force, RC Racer
+e Crush's Coaster, chiusa fino all’estate 2027.
+
+### Quanto costa l’abbonamento annuale di Disneyland Paris?
+
+A seconda del livello, il Disneyland Pass costa da 289 a 799 euro l’anno per gli
+adulti e da 223 a 601 euro per i bambini dai tre agli undici anni. Il parcheggio
+è incluso in tutti e quattro i livelli.
+
 ### Come arrivo a Disneyland Paris senza auto?
 
 In treno fino a **Marne-la-Vallée – Chessy**, la stazione proprio davanti ai due
@@ -356,9 +460,6 @@ ingressi dei parchi. Lì fermano TGV, Ouigo e la RER A, l’ICE no. Dalla Renani
 dall’area del Reno-Meno sono realistiche quattro ore abbondanti con un cambio.
 
 ## Per approfondire
-
-Che tempo fa nei prossimi giorni, e cosa significa per le code alle
-attrazioni all’aperto:
 
 ```weather-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -392,4 +493,14 @@ Dal 7 novembre al 6 gennaio i due parchi vivono la stagione natalizia. A differe
 - Extra Magic Time: [disneylandparis.com, FAQ](https://www.disneylandparis.com/en-usd/faq/park-hours-schedules/extra-magic-hours)
 - Biglietti, casse all’ingresso, formazione dei prezzi: [FAQ casse](https://www.disneylandparis.com/en-int/faq/tickets-and-vacation-packages/buy-tickets-at-parks-entrance-ticket-counters) · [FAQ prezzi](https://www.disneylandparis.com/en-int/faq/tickets-and-vacation-packages/ticket) · [disneylandparis.com, biglietti](https://www.disneylandparis.com/en-int/tickets/)
 - Come arrivare: [Eurostar Help Centre](https://help.eurostar.com/faq/uk-en/question/Travelling-to-from-Disneyland-Paris) · [Stazione di Marne-la-Vallée–Chessy su Wikipedia (EN)](https://en.wikipedia.org/wiki/Marne-la-Vall%C3%A9e%E2%80%93Chessy_station) · [Trainline, Francoforte–Chessy](https://www.thetrainline.com/en-us/train-times/frankfurt-main-hbf-to-disneyland-paris-marne-la-vallee-chessy)
+- Scelta del sito, lettera d’intenti del 1985, architetti, perdita del 1992, alcolici dal 1993, ristrutturazione del 1994, cambi di nome, acquisizione del 2017, chiusure per la pandemia: [Disneyland Paris su Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Paris) · [Disneyland Paris su Wikipedia (DE)](https://de.wikipedia.org/wiki/Disneyland_Paris)
+- Contratto del 1987, stazioni del 1992 e del 1994, Buzz Lightyear Laser Blast 2006, Disneyland Hotel 2024, Hotel New York 2021, visite dal 1992: [Disneyland Paris Newsroom, History](https://news.disneylandparis.com/en/history/)
+- Aggiunta del 7 febbraio 2020 e terzo parco: [Disneyland Paris su Wikipedia (DE)](https://de.wikipedia.org/wiki/Disneyland_Paris)
+- Dati delle montagne russe (lunghezza, altezza, velocità, treni, portata, date di apertura, chiusure): RCDB su [Big Thunder Mountain](https://rcdb.com/956.htm), [Indiana Jones](https://rcdb.com/957.htm), [Hyperspace Mountain](https://rcdb.com/959.htm), [Casey Jr.](https://rcdb.com/1835.htm), [RC Racer](https://rcdb.com/1170.htm), [Avengers Assemble: Flight Force](https://rcdb.com/1444.htm) e [Crush's Coaster](https://rcdb.com/3306.htm)
+- Altezze minime: [disneylandparis.com, attrazioni](https://www.disneylandparis.com/en-gb/attractions/)
+- Star Tours 2017, Disney Stars on Parade: [Disneyland Park (Paris) su Wikipedia (EN)](https://en.wikipedia.org/wiki/Disneyland_Park_%28Paris%29)
+- Disney Tales of Magic: [Disney Parks Blog](https://disneyparksblog.com/dlp/disneyland-paris-reveals-all-new-nighttime-show-details/)
+- Disney Cascade of Lights, A Celebration in Arendelle: [Disneyland Paris Newsroom, 29/03/2026](https://news.disneylandparis.com/en/on-march-29-2026-world-of-frozen-along-with-many-new-experiences-will-open-within-disney-adventure-world-the-reimagined-second-park-at-disneyland-paris/)
+- Disneyland Pass, prezzi e parcheggio: [disneylandparis.com, Disneyland Pass](https://www.disneylandparis.com/en-int/offers/disneyland-pass)
+- Hotel (numero di camere, Davy Crockett Ranch): [Disneyland Paris Newsroom, Disney Hotels](https://news.disneylandparis.com/en/disney-hotels-resort/) · Parcheggio per gli ospiti degli hotel: [FAQ parcheggio](https://www.disneylandparis.com/en-int/faq/travel-to-and-around-the-resort/parking-fee)
 - Dati su attese e affollamento, profilo orario, orari, numeri della ristorazione, analisi del rope drop, prezzi in diretta del Premier Access, ultimo dato in diretta di Crush's Coaster: storico proprio, [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) e [Disney Adventure World](ref:disney-adventure-world) su park.fan

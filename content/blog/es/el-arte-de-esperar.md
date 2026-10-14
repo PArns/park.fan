@@ -86,7 +86,7 @@ Maister anotó ocho. Estas tres se ven en cualquier cola:
 
 ### Tu sentido del tiempo exagera, en un buen tercio
 
-Lo mal que juzgamos la espera desocupada se puede medir. En 1984, el
+En 1984, el
 investigador de marketing **Jacob Hornik** cronometró la espera en las cajas de
 varias tiendas y luego preguntó a los clientes cuánto creían haber esperado. De
 media, sus estimaciones se pasaban en **alrededor de un 36 por ciento**. Diez
@@ -109,7 +109,7 @@ el mundo quiere salir cuanto antes.
 
 ```
 
-### Pre-shows: la espera disfrazada de programa
+### Pre-shows
 
 Lo que mejor lo resuelve es el **pre-show**, que declara la espera parte de la
 atracción. El ejemplo de manual
@@ -141,7 +141,7 @@ conoce el principio.
 Hasta dónde se puede llevar la idea se ve en tres atracciones de Orlando.
 Sus colas merecerían una visita aunque no te subieras.
 
-### Avatar Flight of Passage: un museo como cola
+### Avatar Flight of Passage
 
 La cola de
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
@@ -169,7 +169,7 @@ tanque.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
-### Cosmic Rewind: primero el museo, luego la montaña rusa
+### Cosmic Rewind
 
 [EPCOT](ref:epcot?bare) va un paso más allá con
 [Guardians of the Galaxy: Cosmic Rewind](ref:epcot/guardians-of-the-galaxy-cosmic-rewind).
@@ -193,7 +193,7 @@ ese momento, la cola física servía sobre todo como recorrido narrativo y apena
 como espacio de almacenamiento, y eso en una atracción que, según RCDB,
 despacha 2.000 visitantes por hora con trenes de 20 personas.
 
-### VelociCoaster: esperar en el recinto de los raptores
+### VelociCoaster
 
 Universal juega la misma carta en
 [Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
@@ -234,8 +234,7 @@ El anfiteatro de **Fantasmic!** en los Hollywood Studios acoge, entre plazas de
 pie y sentadas, a cerca de 10.000 personas por función. En el perfil por horas
 de los Hollywood Studios en park.fan, en las horas de la noche en que se
 representa Fantasmic!, los tiempos de espera de los cabezas de cartel bajan
-claramente. Cuánto de eso se debe al espectáculo y cuánto al cierre que se
-acerca, con nuestros números no se puede separar. El 25 de septiembre de 2026, por ejemplo, la
+claramente. Con nuestros números no se puede separar cuánto de eso se debe al espectáculo y cuánto al cierre que se acerca. El 25 de septiembre de 2026, por ejemplo, la
 primera función empieza a las 20:00, una hora antes de que cierre el parque.
 Quien ya conoce el espectáculo monta aun así en esa hora con la mejor relación
 del día. Para momentos así releemos los tiempos de espera cada cinco minutos.
@@ -308,10 +307,7 @@ el freno final, los ocupantes saludan a la estación, la estación saluda de
 vuelta y nadie se mueve. El cuello de botella pasa a ser entonces el despacho. ¿Con
 qué rapidez están comprobados todos los arneses y el tren fuera otra vez?
 
-Lo en serio que se lo toman las atracciones modernas se ve en
-[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) en el
-[Europa-Park](ref:europa-park?bare). Según la ficha técnica de Mack Rides, la
-atracción tiene **siete trenes**, de los que tres o cuatro circulan a la vez
+Según la ficha técnica de Mack Rides, [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) en el [Europa-Park](ref:europa-park?bare) tiene **siete trenes**, de los que tres o cuatro circulan a la vez
 por el recorrido. El objetivo de despacho es, según Coaster101, **una salida
 cada 36 segundos**. Con 16 plazas por tren, eso da los 1.600 visitantes por
 hora que Mack indica como capacidad teórica. No llega del todo al nivel del
@@ -389,8 +385,7 @@ y los festivos (también los de las regiones vecinas), de las previsiones del
 tiempo, los horarios y los eventos, y ahora mismo predice unos seis meses hacia
 delante. La demanda y el rendimiento están aun así en cada una de esas cifras,
 porque todo tiempo de espera es, al final, la ley de Little: la cola dividida
-entre el rendimiento. Con qué frecuencia
-aciertan nuestras predicciones está en la [página de Fancast](/fancast).
+entre el rendimiento. En la [página de Fancast](/fancast) puedes ver con qué frecuencia aciertan nuestras predicciones.
 
 ## Por qué Peter Pan’s Flight siempre «se desmadra»
 
@@ -440,13 +435,9 @@ atracciones más visitado del mundo:
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
-## Europa espera de otra manera: Phantasialand y Europa-Park frente a Orlando
+## Phantasialand y Europa-Park frente a Orlando
 
-Hasta qué punto la demanda y la capacidad determinan el nivel de espera de un
-parque entero se ve mejor si pones dos grandes parques europeos al lado de
-Orlando.
-
-**Orlando juega en una liga de demanda propia.** Con 17,8 millones de
+Orlando juega en una liga de demanda propia. Con 17,8 millones de
 visitantes en 2024, el [Magic Kingdom](ref:magic-kingdom-park?bare) es según la
 asociación del sector TEA el parque de atracciones más visitado del mundo, y
 tanto Disney como Universal atraen visitantes de todos los continentes. A eso
@@ -460,7 +451,7 @@ paralelo (a 25 de septiembre de 2026). Europa también vende ese atajo.
 Disneyland Paris tiene Premier Access, y el Phantasialand vende para sus
 grandes atracciones un Quick Pass, ahora por viaje.
 
-**El [Europa-Park](ref:europa-park?bare) es el contramodelo.** El parque más
+El [Europa-Park](ref:europa-park?bare) es el contramodelo. El parque más
 grande de Alemania, tras Disneyland Paris el más visitado de Europa (6,2
 millones de visitantes en 2024 según TEA), reparte a su público entre
 **catorce montañas rusas** (recuento de RCDB) más docenas de atracciones
@@ -469,8 +460,8 @@ ninguna cola entra en saturación permanente. Por eso incluso los días llenos e
 Orlando, y la mediana de espera más larga del parque la tiene su montaña rusa
 más nueva, Voltron.
 
-**El [Phantasialand](ref:phantasialand?bare), en cambio, es el caso extremo en
-la otra dirección**, con unas 28 hectáreas, la mitad de montañas rusas que en Rust
+El [Phantasialand](ref:phantasialand?bare), en cambio, es el caso extremo en
+la otra dirección, con unas 28 hectáreas, la mitad de montañas rusas que en Rust
 (siete según RCDB) y una tematización extremadamente cuidada. La carga se
 concentra en un puñado de cabezas de cartel, y cuando un sábado de vacaciones
 todo el mundo quiere [Taron](ref:phantasialand/taron?bare) (saludos, por
@@ -559,8 +550,7 @@ En el lado de los vehículos, en cambio, cada parada cuesta capacidad de verdad.
 Por eso el omnimover de la Haunted Mansion y la rolling station de YOY no se
 paran en absoluto en funcionamiento normal. En la cola de delante, el parar y
 arrancar solo cuesta paciencia. Lo que de verdad acorta tu espera se decide
-antes de ir, al elegir un día en el que haya menos gente delante de ti. Ese día
-lo encuentras en el calendario de los mejores días.
+antes de ir, al elegir en el calendario de los mejores días un día en el que haya menos gente delante de ti.
 
 ## Colas virtuales y estaciones dobles
 

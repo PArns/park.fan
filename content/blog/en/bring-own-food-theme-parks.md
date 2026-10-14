@@ -2,6 +2,7 @@
 title: 'Bringing your own food to a theme park: what parks allow'
 translationKey: bring-own-food-theme-parks
 date: '2026-10-09'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -106,6 +107,8 @@ area, next to the Wodan Timburcoaster.
 
 At the Rulantica water park, on the other hand, food from home is banned.
 
+In the Europa-Park & Rulantica app you can order food and drinks ahead, pay in the app and collect the order at the time you chose. It works at the snack bars CMAK Russian Food & Burger and Moby Dick.
+
 ### Phantasialand
 
 At the entrance, [Phantasialand](ref:phantasialand) uses detectors and checks bags at random. Its list of banned items
@@ -113,6 +116,10 @@ includes knives and scissors, pepper spray, pyrotechnics, weapons, skateboards, 
 Alcohol in any packaging is on it too, so a sealed can of beer counts.
 
 Food, water bottles, coolers and glass aren't on the list.
+
+At Restaurant Uhrwerk in Rookburgh, The Navigator chicken burger with fries costs €26.00 and a 0.2-litre Coca-Cola €3.30. The €14.00 kids' burger is only sold together with an adult dish. At Rutmor's Taverne, the Vesperbrett platter for one costs €21.50.
+
+Next to Guest Relations on Kaiserplatz in Berlin there is a nursing room, and staff help with warming up baby food.
 
 ### Heide Park
 
@@ -123,6 +130,8 @@ grilling is banned across the whole site.
 If you have a severe intolerance such as coeliac disease, the park recommends bringing your own food. Its kitchens
 can't fully rule out cross-contamination, and they don't take special requests.
 
+Staff warm up baby food for free at Biergarten Rafting, Wild Wild Waffel, Mucho Pollo and Frau Mümmels Kiosk. According to the park, almost every restaurant has vegetarian dishes, Hot Dog Freestyle sells a vegan hot dog and Piratenburger a plant-based burger.
+
 ### Hansa-Park
 
 The park rules of [Hansa-Park](ref:hansa-park) ban grilling, grills, cooking equipment, alcohol and drugs. They say nothing about food from home. Glass bottles are on the rules' list of dangerous items, alongside
@@ -131,11 +140,15 @@ knives and laser pointers.
 You can't eat or drink on the rides or in the indoor shows. That applies to every guest, including food bought in the
 park.
 
+Picnic areas are in Wikingerland next to Viking Odin and between Elins Luftreise and the Wikinger-Bootsfahrt, next to the Skandinaviske Hytter opposite Pow Wow, at Peterhof station within earshot of the Bärenkapelle, and in Roanoke. The park also offers the Skandinaviske Hytter themselves, huts right next to Schwur des Kärnan, as a place to rest.
+
 ### Legoland Deutschland
 
 The park and business rules of [Legoland Deutschland](ref:legoland-deutschland) are part of the terms and conditions on
 legoland.de. They ban open fire and grills anywhere in the resort, and your own cooking appliances in the accommodation.
 There's nothing in them about food, drinks, glass or cooler bags in the park.
+
+There is a picnic lawn with benches, number 45 on the park map. The first aid station is there too, between the observation tower and Drachenjagd. The mobile stands take cash only, the restaurants cards as well. The park's Baby Service sells baby and toddler food.
 
 ### Movie Park Germany
 
@@ -146,6 +159,10 @@ The Halloween Horror Festival has rules of its own. According to the festival FA
 bottle are banned, and so is spray deodorant, while roll-on and stick are fine. People and bags are checked before
 entry.
 
+At the Coca-Cola Freestyle stations you fill a cup you've bought yourself. The cup is redeemed at Studio Sip, the drink station in the Hollywood Street Set. Some restaurants take cards only.
+
+The crew warms up food and baby food at Hollywood Snack, the Bakery, Subway and the Langnese Happiness Station, and at Trattoria Hollywood only with a reservation.
+
 ### Plopsaland Deutschland
 
 At [Plopsaland Deutschland](ref:plopsaland-deutschland), picnics are allowed only in the areas the park provides for
@@ -153,6 +170,10 @@ them. Under the park regulations you can't bring bulk packs of food or drink, an
 
 Grilling, picnicking and camping are banned on the rest of the grounds and in the car parks. You can't eat or drink on
 rides or in queues, and you can't bring alcohol.
+
+Its FAQ lets you eat small amounts of your own food outside the restaurants, on a park bench for example, but not inside the restaurants or on their outdoor areas. Baby food and the birthday cake of a booked children's party are exceptions. Microwaves for baby food are in the restaurants Pfalzgraf and Maja-Burger and in Plopsa Indoor.
+
+You may leave the park briefly to fetch something from the car and get back in the same day with a stamp on your hand.
 
 ## The Netherlands
 
@@ -163,6 +184,10 @@ Under the heading "Eigen eten en drinken" (own food and drink), the park regulat
 When it's busy, the park asks you to eat what you've brought at one of the picnic areas, away from the restaurants and
 their terraces.
 
+You can refill your water bottle for free at taps in the park, for example in the Symbolica queue or at De Ganzenhoedster on the Anton Pieck Plein. There are more taps at the Kleine Boodschap and 't Gemack toilets and near Fata Morgana, and the water from the taps in the toilet buildings is drinking water too.
+
+As a shady spot for a picnic, the park names a narrow path next to Het Spookslot. If you want to fetch something from the cloakroom by the car park in between, get a stamp on the way out.
+
 ### Toverland
 
 [Toverland](ref:attractiepark-toverland) allows your own food and has two microwaves you can use for free, at the
@@ -170,10 +195,14 @@ Waldstube and at Katara Plaza. The park mentions them for warming baby bottles t
 
 The park regulations are available at the entrance and as a download on the website.
 
+Drinks come in reusable cups with a €1.50 deposit. You return cups, bottles and cans at deposit machines in four places in the park.
+
 ### Walibi Holland
 
 [Walibi Holland](ref:walibi-holland) explicitly allows your own food and drink and marks picnic areas in the park. Under
 the park rules you can't bring glass or alcohol. Everything off the paths and picnic areas is closed off.
+
+Several restaurants have microwaves for warming bottles and food.
 
 ## Belgium
 
@@ -184,6 +213,8 @@ park. Large packs of food and drink need the management's permission.
 
 You can't take food or drinks into rides or shops. Camping, grilling and picnicking are banned in the car park.
 
+Drinks come in reusable cups with a €2 deposit, refunded when you return the cup. You may also keep the cups.
+
 ### Walibi Belgium
 
 The park regulations of [Walibi Belgium](ref:walibi-belgium) have an article of their own on picnics. They're allowed in
@@ -191,6 +222,8 @@ the areas marked on the park map and banned in the restaurants and on their terr
 
 Alcohol is banned in the park. Bags, boxes and containers can be 55 cm wide, 40 cm long and 20 cm deep at most, and a
 cooler has to fit within those limits too. Eating and drinking are banned on rides and in queues.
+
+The restaurants have self-service microwaves for warming bottles and baby food.
 
 ## France
 
@@ -201,21 +234,48 @@ are alcohol the park didn't sell you and any kitchen appliance. The park explici
 
 You can't eat or drink on rides, for safety reasons, or in queues, for reasons of hygiene.
 
+If you want to leave the park for a short while, tell the staff at the exit checkpoint first and get a stamp on your arm. Without it you cannot get back in that day.
+
 ### Disneyland Paris
 
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) allows your own food. Meals
-that need a cooler, a table or bulky containers are banned in Disneyland Park and Walt Disney Studios Park. For a picnic
+that need a cooler, a table or bulky containers are banned in Disneyland Park and Disney Adventure World. For a picnic
 like that, there's a picnic area between the car park and the entrance.
 
 Glass bottles and alcohol are on the list of items that stay outside. You can sit at the restaurants' outdoor tables,
 but guests who bought their food there come first. On rides, in theatres and in queues, the park asks you not to eat or
 drink.
 
+Until 29 March 2026, Disney Adventure World was called Walt Disney Studios Park.
+
 ### Futuroscope
 
 According to its FAQ, you can picnic on any lawn at [Futuroscope](ref:futuroscope).
 
 Rigid coolers are banned, bulky bags should stay outside, and bags are checked at the entrance. Because you're allowed to leave the park during the day and come back in, the cooler can stay in the car.
+
+Restaurants serve food and drinks on reusable crockery. Every restaurant has a children's menu and vegetarian and gluten-free dishes. Futuroscope does not accept meal vouchers such as Ticket Restaurant or Chèque déjeuner.
+
+## Lockers in the parks
+
+As of 14 October 2026:
+
+| Park                   | Where                                                                                            | Price                                                          |
+| ---------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
+| Europa-Park            | main entrance                                                                                    | small €1, large €4, each further opening €1                    |
+| Phantasialand          | Berlin at the Pferdekarussell, Mexico at the exit of Colorado Adventure                          | €5 for the day, wristband with a code from Guest Relations     |
+| Heide Park             | behind the Service Center and in front of the Colossos Shop                                      | XL €5, XXL €7 per day, card only                               |
+| Hansa-Park             | basement of the Service-Center                                                                   | L €3, XL €5 per visiting day                                   |
+| Legoland Deutschland   | entrance area and the Feriendorf entrance in Land der Pharaonen                                  | €5 or €7 depending on size                                     |
+| Movie Park Germany     | next to the Visitor Welcome Center, when busy also in the bank at the end of Hollywood Boulevard | small €5, large €8 per day, card, Apple Pay or Google Pay only |
+| Plopsaland Deutschland | the park does not say                                                                            | small €5, large €7                                             |
+| Efteling               | cloakroom by the car park                                                                        | €1.50 per item                                                 |
+| Toverland              | Port Laguna and Land van Toos                                                                    | €2, open as often as you like                                  |
+| Walibi Holland         | Sunset Souvenirs                                                                                 | medium €5, large €7 per day                                    |
+| Bobbejaanland          | Bobbejaan Schoepenplein                                                                          | bank card only, the park gives no price                        |
+| Walibi Belgium         | entrance                                                                                         | €5 to €8                                                       |
+
+Movie Park only resets its lockers the next morning before opening, so your things can stay in them after the park closes.
 
 ## The water parks
 
@@ -288,6 +348,14 @@ grilling is banned in the car park as well.
 In the house rules, which go by Parkordnung, Parkreglement, park rules or Règlement intérieur depending on the park, and
 often in the FAQ on the park's website too.
 
+### Where can you warm up baby food at a theme park?
+
+Toverland, Plopsaland Deutschland, Walibi Holland and Walibi Belgium have microwaves for it, free at Toverland. At Heide Park, Movie Park and Phantasialand staff warm it up for you, at Heide Park also for free.
+
+### How much do lockers cost at a theme park?
+
+Between €1 for a small locker at Europa-Park and €8 for a large one at Movie Park Germany. A common price is €5 for a small locker and €7 for a large one. As of October 2026.
+
 ## Sources
 
 - Europa-Park, Park Rules: [europapark.de](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations)
@@ -316,3 +384,27 @@ often in the FAQ on the park's website too.
 - Disneyland Paris, Theme Parks Rules: [disneylandparis.com](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules)
 - Futuroscope, FAQ Restauration: [futuroscope.com](https://www.futuroscope.com/en/practical-information/faq/category-3)
 - Futuroscope, Règlement de l'Aquascope of 24 December 2025: [collectivites.futuroscope.com](https://collectivites.futuroscope.com/sites/default/files/inline-files/Reglement_Aquascope_24-12-25.pdf)
+- Phantasialand, Information and arrival: [phantasialand.de](https://www.phantasialand.de/en/theme-park/information-and-arrival/)
+- Phantasialand, menu of Restaurant Uhrwerk: [phantasialand.de](https://www.phantasialand.de/files/uploads/kulinarik/documents/speisekarten/speisekarte-restaurant-uhrwerk-mittagsbote-de.pdf)
+- Phantasialand, menu of Rutmor's Taverne: [phantasialand.de](https://www.phantasialand.de/files/uploads/kulinarik/documents/speisekarten/speisekarte-rutmors.pdf)
+- Heide Park, where to store valuables: [support.heide-park.de](https://support.heide-park.de/hc/de/articles/360011020217-Wo-kann-ich-meine-Wertsachen-aufbewahren)
+- Heide Park, where to warm up baby food: [support.heide-park.de](https://support.heide-park.de/hc/de/articles/360011121298-Wo-kann-ich-Babynahrung-aufw%C3%A4rmen)
+- Heide Park, vegetarian and vegan dishes: [support.heide-park.de](https://support.heide-park.de/hc/de/articles/360011121218-Bietet-Ihr-auch-vegetarische-vegane-Gerichte-in-den-Restaurants-an)
+- Hansa-Park, picnic areas: [hansapark.de](https://www.hansapark.de/picknickplaetze/)
+- Hansa-Park, Picknick & Chill-Out: [hansapark.de](https://www.hansapark.de/picknick-chill-out/?language=de)
+- Hansa-Park, service stations: [hansapark.de](https://www.hansapark.de/servicestationen/?language=de)
+- Legoland Deutschland, FAQ: [legoland.de](https://www.legoland.de/faq/)
+- Movie Park Germany, Coca-Cola Freestyle: [movieparkgermany.de](https://www.movieparkgermany.de/besuch-planen/studio-gastronomie/coca-cola-freestyle)
+- Movie Park Germany, restaurants and snacks: [movieparkgermany.de](https://www.movieparkgermany.de/besuch-planen/studio-gastronomie/restaurants-und-snackangebote)
+- Movie Park Germany, services: [movieparkgermany.de](https://www.movieparkgermany.de/entdecke-den-park/services)
+- Plopsaland Deutschland, may I bring food and drink: [plopsa.com](https://www.plopsa.com/de/plopsaland-deutschland/node/6852)
+- Plopsaland Deutschland, where to warm up baby food: [plopsa.com](https://www.plopsa.com/de/plopsaland-deutschland/node/7080)
+- Plopsaland Deutschland, lockers: [plopsa.com](https://www.plopsa.com/de/plopsaland-deutschland/node/6882)
+- Plopsaland Deutschland, leaving and re-entering the park: [plopsa.com](https://www.plopsa.com/de/plopsaland-deutschland/haufig-gestellte-fragen/kann-ich-den-park-waehrend-meines-besuchs-verlassen-und-erneut-betreten)
+- Efteling, money-saving tips (water taps, picnics): [efteling.com](https://www.efteling.com/nl/blog/tips/20200727-bespaar-tips-voor-dagje-efteling)
+- Efteling, service building (cloakroom): [efteling.com](https://www.efteling.com/nl/blog/nieuws/20220808-servicegebouw-garderobe-verhuur-geopend)
+- Efteling, Cloakroom: [efteling.com](https://www.efteling.com/en/park/information/cloakroom)
+- Bobbejaanland, services and facilities: [bobbejaanland.be](https://www.bobbejaanland.be/het-park/diensten)
+- Bobbejaanland, information for people with disabilities (lockers): [bobbejaanland.be](https://www.bobbejaanland.be/plan-je-bezoek/informatie-personen-beperking)
+- Walibi Belgium, FAQ: [walibi.be](https://www.walibi.be/en/faq)
+- Wikipedia, Disney Adventure World: [en.wikipedia.org](https://en.wikipedia.org/wiki/Disney_Adventure_World)

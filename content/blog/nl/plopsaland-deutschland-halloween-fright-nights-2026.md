@@ -121,8 +121,7 @@ parkeren, en scheelt je zes tijdslots boeken. Op een drukke zaterdag in oktober 
 ## Voor wie het is
 
 Het park raadt de Fright Nights aan **vanaf 16 jaar**. Anders dan bij
-Traumatica is dat geen harde grens: volgens de FAQ van het park mag wie jonger
-is mee naar binnen onder begeleiding van een ouder of voogd. Voor jongere of
+Traumatica is dat geen harde grens: in de FAQ van het park staat dat wie jonger is onder begeleiding van een ouder of voogd mee naar binnen mag. Voor jongere of
 schrikkerige mensen blijven Majaland en de Plopsa Indoor-hal monstervrij, en
 alleen ter plaatse is er de “Schreck-Stopp”, waarmee de monsters je volgens het
 park met rust laten. Gasten ouder dan 12 mogen geen maskers, zware make-up of

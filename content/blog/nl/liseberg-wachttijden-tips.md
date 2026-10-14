@@ -2,6 +2,7 @@
 title: 'Liseberg: Balder, Helix en een pretpark midden in Göteborg'
 translationKey: liseberg-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -61,8 +62,7 @@ Liseberg in Göteborg is in 1923 gebouwd voor een jubileumtentoonstelling en
 moest daarna weer verdwijnen. Nu staan er vier grote achtbanen op het terrein,
 de toren [AtmosFear](ref:liseberg/atmosfear) met een vrije val van 90 meter en
 in het najaar vijf spookhuizen. In november komt de kerstmarkt erbij. Het
-terrein ligt aan de rand van de binnenstad, en het centraal station is volgens
-het park te voet in 10 tot 15 minuten te bereiken. Voor 2025 noemt het park
+terrein ligt aan de rand van de binnenstad. Voor 2025 noemt het park
 zo’n **3 miljoen gasten** per jaar.
 
 ## Hoe een tentoonstelling een park werd
@@ -91,6 +91,18 @@ Het roze van de gebouwen komt uit de tentoonstelling van 1923. De bergbaan van
 toen werd in **1987** gesloopt en vervangen door de
 [Lisebergbanan](ref:liseberg/lisebergbanan), die Anton Schwarzkopf voor
 dezelfde berg had ontworpen.
+
+Zes achtbanen heeft Liseberg weer afgebroken, de Kanonen meegerekend. De
+bergbaan van 1923 was gebouwd door Valdemar Lebech. De **Super 8**, een Wildcat van
+Schwarzkopf, reed van 1966 tot 1979 en verhuisde daarna naar een park in Karlstad.
+Van 1980 tot 1995 reed de **Lisebergs Loopen**, een Looping Star van Schwarzkopf
+met één looping, 24,5 meter hoog en 77 km/u snel, die daarna onder meer in het
+Playcenter in São Paulo stond. Op zijn plek kwam in 1997 **HangOver**, de eerste
+Invertigo van Vekoma, 40 meter hoog, 80 km/u snel en met drie inversies. Hij was
+gepland voor 1996 met lineaire motoren. Door problemen met die techniek kreeg hij
+een kettinglift en opende hij een jaar later. Hij reed tot 2002. De
+kinderachtbaan **Cirkusexpressen** van Zierer reed van 1977 tot 2008, tot 1985
+onder de naam Lilla Bergbanan.
 
 Sinds **2000** is Liseberg ook in de winter open (“Jul på Liseberg”), in het
 eerste jaar kwamen er 418.000 gasten. In **2015** volgde Halloween. In **2020** bleef het park vanwege de pandemie het hele seizoen dicht, voor het
@@ -123,13 +135,13 @@ staat aan de andere kant van de rivier de Mölndalsån, net als de Kållerado.
 
 ```
 
-In onze metingen hoort Balder bij de vier banen met de langste wachttijden. De
+De
 Roller Coaster DataBase noemt voor de baan een capaciteit van zo’n 1.149 gasten
 per uur.
 
 [Balder](ref:liseberg/balder?full)
 
-## Helix, Valkyria en de Lisebergbanan
+## De stalen achtbanen
 
 **[Helix](ref:liseberg/helix)** opende op **26 april 2014** en kostte volgens
 het park bijna 240 miljoen kronen; de Roller Coaster DataBase noemt 200
@@ -151,7 +163,7 @@ van de Kanonen. De Kanonen was een launch coaster van Intamin die op 23 april
 2005 openging en op 30 december 2016 voor het laatst reed. Valkyria is een dive
 coaster van Bolliger & Mabillard met drie inversies en een **50 meter** lange,
 steile eerste afdaling die direct in een tunnel onder de grond eindigt. Het
-park noemt **47 meter** hoogte en **105 km/u**. Valkyria vraagt **132 cm** plus
+park noemt **47 meter** hoogte en **105 km/u**. Op 700 meter baan volgen een Immelmann, een zero-g roll en een heartline roll. Drie treinen van 18 plaatsen, zes naast elkaar in één rij, vervoeren zo’n 1.100 gasten per uur. Valkyria vraagt **132 cm** plus
 zeven jaar en heeft, net als Mechanica, een maximum van 195 cm.
 
 De Kanonen was de eerste baan van zijn soort in het noorden. De trein werd
@@ -169,16 +181,16 @@ nagebouwde wagons. De minimale lengte is 130 cm, in begeleiding 110 cm. In het
 najaar en de winter rijdt hij alleen tijdens Halloween, in het Jul-programma
 staat hij niet op de lijst.
 
-**[Luna](ref:liseberg/luna)**, geopend in 2023, is een boomerang van
+**[Luna](ref:liseberg/luna)**, geopend op 22 april 2023, is een boomerang van
 Vekoma, 33,5 meter hoog en 242 meter lang, die de trein eerst vooruit en dan
-achteruit over hetzelfde parcours stuurt. Voor Luna geldt 120 cm plus zes jaar,
+achteruit over hetzelfde parcours stuurt. Hij haalt tot 68 km/u. Hij staat in het themagebied Luna Park op het hoogste punt van het park en opende voor de 100e verjaardag. Voor Luna geldt 120 cm plus zes jaar,
 in begeleiding 95 cm plus drie jaar. Voor de kleintjes zijn er de
-**[Rabalder](ref:liseberg/rabalder)** van Zierer (2009) en de
-**[Stampbanan](ref:liseberg/stampbanan)** van Preston & Barbieri (2013), allebei
+**[Rabalder](ref:liseberg/rabalder)** van Zierer (25 april 2009, 9 meter hoog, 39 km/u) en de
+**[Stampbanan](ref:liseberg/stampbanan)** van Preston & Barbieri (27 april 2013, ruim 3 meter hoog), allebei
 in Kaninlandet, het konijnenland. Voor beide heeft een kind 110 cm nodig, in
 begeleiding 90 cm.
 
-## AtmosFear, waterattracties en de overige attracties
+## De overige attracties
 
 De toren **[AtmosFear](ref:liseberg/atmosfear)** werd in 1990 gebouwd als
 uitkijktoren (“Lisebergstornet”), op 30 mei 2010 ging de laatste groep naar
@@ -242,7 +254,7 @@ elf jaar voor Vinden, Zombie, Nattsvart på Gasten en Skogen, **15 jaar** voor
 
 ```
 
-## Spookhotel, podia en de Stjärnstigen
+## Spookhotel en podia
 
 Het **Spökhotellet Gasten** opende in 1998 en kreeg in het najaar van 1999 een
 THEA Award van de Themed Entertainment Association in Californië. Het staat op
@@ -287,8 +299,6 @@ uur, bij de FlumeRide een uur later. De banen in Kaninlandet pieken eerder in
 de vroege middag. Wie er om 12 uur is, heeft bij de vier grote banen minder
 gedrang dan om vier uur.
 
-De rustigste van de komende openingsdagen, live berekend:
-
 ```best-days-widget slug=liseberg
 
 ```
@@ -308,8 +318,7 @@ Lisebergbanan, Loke, Luna, Mechanica, het spookhuis Gasten, Underlandet en
 Valkyria. Per groep loopt er steeds maar één reservering tegelijk, voor één tot
 zes personen, en daarnaast blijft de gewone wachtrij bestaan. Of de virtuele
 wachtrij op een bepaalde dag draait, hangt volgens het park af van hoeveel
-gasten er zijn. Wie in Valkyria of Helix wil, schrijft zich dus eerst in de app
-in en rijdt in de tussentijd iets anders.
+gasten er zijn.
 
 ## Wanneer je moet gaan
 
@@ -325,8 +334,7 @@ keer zoveel als de maandag of dinsdag. In het najaar sluit het park op zondag
 om 20 uur, op vrijdag en zaterdag om 22 uur.
 
 Het zomerseizoen 2026 begon op **18 april** om 11 uur. Wanneer het eindigt,
-zegt het park niet. De kalender op de [parkpagina](ref:liseberg) laat zien wat
-er voor de komende weken is gepubliceerd.
+zegt het park niet.
 
 ### Halloween: 2 oktober tot 1 november 2026
 
@@ -399,10 +407,7 @@ van de dag. De prijzen van het halloweenseizoen 2026, online:
 
 Zonder Åkpass kost een afzonderlijke rit een Åkkupong van 25 kronen, een
 spookhuis twee tot vier kupongen. Op de dagen “Höst i Kaninlandet” kost de
-entree 95 kronen, met kinderbanen 245 kronen. De zomerprijzen van 2026 toont de
-site van het park niet meer. Welke
-van de zeven trappen op welke dag geldt, staat in de prijskalender van het park
-als pdf.
+entree 95 kronen, met kinderbanen 245 kronen.
 
 Wie vaker komt, koopt een jaarkaart (twaalf maanden vanaf activering): het
 **Lisebergspasset** voor 395 kronen geldt voor de entree, het **Guldpasset**
@@ -417,12 +422,12 @@ Korsvägen, met de haltes Korsvägen en Liseberg Station, de **Södra entrén** 
 de Herman Lindholms torg 1 met de halte Liseberg Södra. Vanaf het centraal
 station Göteborg Central is het volgens het park 10 tot 15 minuten lopen, en in
 de zomer rijdt er tussen Central en het park een historische tram, de
-Lisebergslinjen. Voor de tramlijnen verwijst het park naar Västtrafik.
+Lisebergslinjen.
 
 Wie met de auto komt, heeft drie parkeergarages: **P-huset Liseberg Södra**
 onder World of Volvo (1.170 plaatsen), **P-huset Liseberg Västra** aan de
 Södra Vägen 70 (162 plaatsen) en **P-huset Focus** aan de Fabriksgatan 45
-(1.057 plaatsen). De parkeertarieven staan bij Parkering Göteborg.
+(1.057 plaatsen).
 
 ## Overnachten en eten
 
@@ -489,8 +494,7 @@ december. In de winter is Kaninlandet ook in de weekenden open. De kalender op d
 
 ### Wanneer is het op Liseberg het rustigst?
 
-Op zondag, volgens onze metingen met duidelijke afstand tot de dinsdag. In de
-winter is het nog rustiger, maar dan rijden maar weinig banen.
+Op zondag, volgens onze metingen met duidelijke afstand tot de dinsdag.
 
 ### Mag ik eten meenemen?
 
@@ -537,7 +541,10 @@ najaarsprogramma’s. Nog een houten achtbaan staat in de gids over [Heide Park]
   · [Oceana (officieel)](https://www.liseberg.se/oceana/)
 - Technische gegevens van de banen:
   [Balder](https://rcdb.com/1562.htm) · [Helix](https://rcdb.com/11048.htm) ·
-  [Lisebergbanan](https://rcdb.com/1061.htm) in de Roller Coaster DataBase ·
+  [Lisebergbanan](https://rcdb.com/1061.htm) ·
+  [Valkyria](https://rcdb.com/14301.htm) · [Luna](https://rcdb.com/19785.htm) ·
+  [Rabalder](https://rcdb.com/4354.htm) · [Stampbanan](https://rcdb.com/10779.htm) ·
+  [afgebroken banen](https://rcdb.com/4909.htm) ([Bergbanan](https://rcdb.com/1453.htm), [Super 8](https://rcdb.com/2401.htm), [Lisebergs Loopen](https://rcdb.com/1098.htm), [HangOver](https://rcdb.com/1060.htm), [Cirkusexpressen](https://rcdb.com/1059.htm)) in de Roller Coaster DataBase ·
   [Balder op en.wikipedia](<https://en.wikipedia.org/wiki/Balder_(roller_coaster)>) ·
   [Helix op sv.wikipedia](<https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)>) ·
   [AtmosFear op sv.wikipedia](https://sv.wikipedia.org/wiki/Atmosfear) ·

@@ -81,13 +81,13 @@ Lengte, hoogte en snelheid van de vijf grote banen komen uit de Roller Coaster D
 
 [Katun](ref:mirabilandia/katun?full)
 
-Katun is 1.200 meter lang, 50 meter hoog en rijdt 2:22 minuten. Het parcours heeft volgens de RCDB zes inversies: een looping, een zero-g roll, een cobra roll en twee kurkentrekkers. Je zit met vier naast elkaar, een trein heeft acht wagens met 32 plaatsen en er rijden drie treinen tegelijk. De baan haalt volgens de RCDB 1.700 personen per uur. Volgens het park haalt Katun 110 km/u, volgens de RCDB 104.
+Katun is 1.200 meter lang, 50 meter hoog en rijdt 2:22 minuten. Het parcours heeft volgens de RCDB zes inversies: een looping, een zero-g roll, een cobra roll en twee kurkentrekkers. Je zit met vier naast elkaar, een trein heeft acht wagens met 32 plaatsen en er rijden drie treinen tegelijk. De baan haalt volgens de RCDB 1.700 personen per uur. Katun haalt volgens het park 110 km/u, volgens de RCDB 104.
 
-Het thema is de Maya-stad Sian Ka'an. De naam Katun staat in de Maya-kalender voor een tijdvak van 7.200 dagen, ongeveer 20 jaar, en aan het begin en einde van de rit rijdt de trein door een “Stargate”. Volgens het park is Katun de langste inverted achtbaan van Europa. Je rijdt mee vanaf 140 centimeter en vanaf twaalf jaar.
+Het thema is de Maya-stad Sian Ka'an. De naam Katun staat in de Maya-kalender voor een tijdvak van 7.200 dagen, ongeveer 20 jaar, en aan het begin en einde van de rit rijdt de trein door een “Stargate”. Katun is volgens het park de langste inverted achtbaan van Europa. Je rijdt mee vanaf 140 centimeter en vanaf twaalf jaar.
 
 ### iSpeed
 
-iSpeed is een launch coaster van Intamin met magnetische aandrijving. Volgens het park versnelt hij in 2,2 seconden naar 100 km/u, haalt hij tot 110 km/u (RCDB) en klimt hij naar 55 meter. Het parcours is 980 meter lang en heeft twee inversies. Het park vermeldt 120 km/u, de rit duurt 77 seconden.
+iSpeed is een launch coaster van Intamin met magnetische aandrijving. Hij versnelt volgens het park in 2,2 seconden naar 100 km/u, haalt hij tot 110 km/u (RCDB) en klimt hij naar 55 meter. Het parcours is 980 meter lang en heeft twee inversies. Het park vermeldt 120 km/u, de rit duurt 77 seconden.
 
 iSpeed verving in 2009 de Sierra Tonante, de houten achtbaan uit 1992. Je rijdt mee vanaf 140 centimeter, tot maximaal 195 centimeter, en vanaf twaalf jaar.
 
@@ -101,7 +101,7 @@ iSpeed verving in 2009 de Sierra Tonante, de houten achtbaan uit 1992. Je rijdt 
 
 Desmo Race opende in 2019 in het Ducati-gebied. Er liggen twee rails naast elkaar, elk 525 meter lang en 22 meter hoog, de rit duurt een minuut met snelheden tot 80 km/u. Je zit schrijlings, en volgens het park moet de rit aanvoelen als op een Panigale V4. Je kunt optrekken en remmen en zo de andere rail achter je laten. De fabrikant is Maurer Rides, het type heet Spike Coaster. Toegelaten zijn mensen van 120 tot 195 centimeter en maximaal 135 kilogram, kinderen onder tien jaar en onder 140 centimeter rijden mee met een begeleider.
 
-### Master Thai, Gold Digger en de gezinsbanen
+### De kleinere achtbanen
 
 [Master Thai](ref:mirabilandia/master-thai) is volgens het park de eerste achtbaan van Italië met twee rails. Preston & Barbieri bouwde hem in 2011, hij heeft een kettinglift, geen inversie en een möbius-parcours waarop twee treinen tegen elkaar rijden. De minimale lengte is 120 centimeter, kinderen van zes tot acht jaar rijden mee met een begeleider.
 
@@ -109,7 +109,7 @@ Desmo Race opende in 2019 in het Ducati-gebied. Er liggen twee rails naast elkaa
 
 In het kindergebied rijden nog twee banen: [PAW Patrol To The Rescue](ref:mirabilandia/paw-patrol-to-the-rescue), in 2005 geopend als Leprotto Express, 135 meter en 34 km/u, en [Cowabunga Carts](ref:mirabilandia/cowabunga-carts), een Zierer Force 190 uit 2025 met 192 meter, 40 km/u en een boosterwiellift. Beide rijden vanaf 90 centimeter, jongere kinderen met een begeleider.
 
-## Water, darkrides en torens
+## De overige attracties
 
 [Rio Bravo](ref:mirabilandia/rio-bravo) is de raftingrit van Intamin uit het openingsjaar, in rubberboten door een canyon met stroomversnellingen, vanaf 110 centimeter. [Autosplash](ref:mirabilandia/autosplash) opende datzelfde jaar als wildwaterbaan van Intamin, je zit in een Cadillac met staartvinnen en aan het eind val je 15 meter diep. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) van Hopkins is een shoot-the-chute uit 1999, met aan het slot een golf van 15 meter hoog. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) is een interactieve boottocht waarbij je op totempalen schiet. Autosplash, El Dorado Falls en Raratonga rijden vanaf 90 centimeter.
 
@@ -222,7 +222,7 @@ Uitgesloten zijn Desmo Race, Blu River en The Walking Dead. Desmo Race is de baa
 
 Waar de wachttijd rond een kwartier ligt, bespaart de pas niet veel. Het meest levert hij op bij de banen die in onze tabel na Desmo Race komen: Rio Bravo, iSpeed en Autosplash. Het pakket “VIP” combineert entree, het all-inclusivemenu en een Regular Flash Pass.
 
-## Tickets, prijzen en seizoenskaart
+## Tickets en seizoenskaart
 
 Het dagticket voor volwassenen (boven 140 centimeter) begint online bij € 27,90, hoe eerder je boekt hoe goedkoper. Volgens het park bespaar je tot € 20 als je minstens tien dagen van tevoren koopt (actie tot 25 oktober). Aan de kassa kost het ticket € 49,90. De gereduceerde kaart voor kinderen van 100 tot 140 centimeter en voor senioren boven 60 kost online vanaf € 27,90 en aan de kassa € 42,90. Kinderen onder 100 centimeter betalen niets. Het avondticket vanaf 17 uur kost € 22,90. Het ticket met open datum kost € 49,90 (gereduceerd € 42,90) en geldt tot het einde van het seizoen.
 

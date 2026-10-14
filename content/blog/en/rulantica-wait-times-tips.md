@@ -407,7 +407,7 @@ double room) and "Kids for free" for two adults with up to three children from
 Which wait times and quiet days we've measured at Europa-Park is covered in the
 [Europa-Park guide](/blog/europa-park-wait-times-tips).
 
-## Getting there, parking, staying overnight
+## Getting there and hotels
 
 Rulantica is at Roland-Mack-Ring 1 in 77977 Rust, opposite the Krønasår hotel.
 By car, take **exit 57b Rust on the A5**. The visitor car park costs **€10** a
@@ -430,7 +430,7 @@ otherwise every 15 to 30. The Rust bus takes guests of Silver Lake City to the
 water world every 30 minutes from 8:00 a.m. to 8:00 p.m. Overnight guests also
 get the earlier entry at 9:00 a.m.
 
-## Food, rules and the small print
+## Food and rules
 
 Dining includes the Kelpie Café in the lobby (8:30 a.m. to 10:30 p.m.), the
 Snekkjas in the city on stilts, the Lumålunda at the Surf Fjørd and the Tempel
@@ -453,7 +453,7 @@ These rules apply in the water world:
 - Wheelchair users can get around on most paths, and there are water wheelchairs
   in limited numbers. The VR station isn't accessible.
 
-## Closures, Halloween and Nørd Havn
+## Dates up to 2027
 
 From **16 to 27 November 2026** Rulantica is closed for maintenance, and so on 24
 and 25 December. On 31 December the water world closes as early as 7:00 p.m.

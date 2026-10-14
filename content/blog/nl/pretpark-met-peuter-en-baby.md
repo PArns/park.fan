@@ -156,19 +156,19 @@ Verschoonruimtes noemt het park op zeven plekken: bij de hoofdingang, bij het
 infopunt aan het meer, in Ierland (Kinderwelt), in Italië bij de dm family &
 friends, in Spanje, in het Märchenwald en in het Koninkrijk van de Minimoys. Hoe
 ze zijn ingericht en of er een borstvoedingsruimte is, staat daar niet. Bij dm
-family & friends verkoopt het park een selectie babyvoeding. Waar je die kunt
-opwarmen, staat niet op de website, die verwijst daarvoor naar de gastenservice.
+family & friends verkoopt het park een selectie babyvoeding. Voor het opwarmen
+verwijst de website naar de gastenservice.
 
 De huurwagen kost 5 euro plus 50 euro borg en wordt uitgegeven bij de
-hoofdingang of bij de ingang van de hotelparkeerplaats. Volgens het park is hij
+hoofdingang of bij de ingang van de hotelparkeerplaats. Hij is volgens het park
 alleen voor kinderen die al kunnen zitten, omdat een kind er niet in kan liggen. Een bolderkar verhuurt het park niet, en in het parkreglement komen
 bolderkarren niet voor. Het reglement verbiedt niet-gemotoriseerde voertuigen
 zoals skates, fietsen en steps, en of een bolderkar daaronder valt, is niet
 duidelijk. Wie er een wil meenemen, vraagt het vooraf aan bij de gastenservice.
 
 In Europa-Park heet het wisselen Baby-Switch, en volgens het park geldt het bij
-veel van de grotere achtbanen. Het park noemt blue fire Megacoaster en
-Alpenexpress Coastiality, een volledige lijst is er niet. Wie wacht, blijft met
+veel van de grotere achtbanen, zoals blue fire Megacoaster en Alpenexpress
+Coastiality. Een volledige lijst is er niet. Wie wacht, blijft met
 het kind bijvoorbeeld bij de speeltuin. Wie als eerste rijdt, krijgt een kaart
 voor de uitgang of voor de eigen baby-switchingang.
 
@@ -205,7 +205,7 @@ Bolderkarren, fietskarren en hondenwagens zijn verboden. Een uitzondering om
 medische redenen moet minstens 14 dagen van tevoren per e-mail naar de
 gastenservice.
 
-Naar de baby switch vraag je bij de attractie. Welke attracties meedoen, noemt het park niet.
+Het park noemt geen attracties met baby switch, je vraagt er bij de attractie naar.
 
 In een tabel in zijn gebruiksvoorwaarden noemt het park onder “Attraktionen
 für Kinder” Der lustige Papagei, Die fröhliche Bienchenjagd, Bolles Riesenrad,
@@ -260,8 +260,8 @@ gratis toegang. Jarigen van elke leeftijd komen met bewijs gratis binnen, het ti
 
 In Heide Park heet het wisselen baby-switchpas. Ouders met kinderen tot en met 3
 jaar krijgen hem gratis bij het Service Center, alleen op dagen waarop het
-Express Ticket beschikbaar is. Hij geldt voor achtbanen. Welke precies, noemt
-het park niet.
+Express Ticket beschikbaar is. Hij geldt voor achtbanen, zonder dat het park
+er een bij naam noemt.
 
 Babyvoeding opwarmen kan onder andere in het Wirtshaus des Admirals en in Lucky
 Land, alle plekken toont de app. De parkplattegrond markeert bovendien
@@ -299,8 +299,8 @@ buitenterrassen gegeten mag worden.
 Kinderwagens zijn toegestaan, maar moeten bij attracties en shows op de
 aangewezen plekken staan. Op drukke dagen mogen ze Plopsa Indoor niet in. Een
 kinderwagenverhuur noemt het park niet. Voor bolderkarren vraagt het park
-volgens het parkreglement een vergoeding, tegen een identiteitsbewijs of 100
-euro waarborg. Hoe hoog die vergoeding is, staat niet in het reglement. Een
+volgens het parkreglement een vergoeding van onbekende hoogte, tegen een
+identiteitsbewijs of 100 euro waarborg. Een
 rider switch of wisselen noemen noch de veelgestelde vragen noch het
 parkreglement. Na elke rit moet elke gast de attractie verlaten, en wie een
 tweede keer wil, sluit opnieuw aan.
@@ -325,14 +325,14 @@ centimeter niets, maar ze hebben toch een reservering in de ticketshop nodig. Va
 euro, afhankelijk van de dagklasse. Op je verjaardag kom je met identiteitsbewijs
 voor 0 euro binnen.
 
-Alle toiletten behalve die in Ithaka hebben commodes. Magnetrons staan gratis in
-de Waldstube en op het Katara Plaza, een flessenwarmer noemt het park niet. Wie
+Alle toiletten behalve die in Ithaka hebben commodes. Om op te warmen noemt
+het park alleen magnetrons, gratis in de Waldstube en op het Katara Plaza. Wie
 wil afkolven, spreekt het personeel bij de hoofdingang aan.
 
 Een buggy of bolderkar mag je meenemen, het park adviseert een kettingslot.
-Verhuren doet Toverland niets. De baby switch geldt bij geselecteerde attracties,
-zonder leeftijdsgrens. Bij de instap haal je een speciaal ticket, en één ouder
-mag via de uitgang rijden. Welke attracties dat zijn, noemt het park niet.
+Verhuren doet Toverland niets. De baby switch geldt zonder leeftijdsgrens bij
+geselecteerde attracties, die het park niet opsomt. Bij de instap haal je een
+speciaal ticket, en één ouder mag via de uitgang rijden.
 
 In Land van Toos, een gebied met hallen, gaan kinderen met begeleiding vanaf 0
 centimeter in het Klokhuis en in Morrels Truckjes, alleen vanaf 90. De
@@ -362,9 +362,8 @@ armband met naam en mobiel nummer wil geven, krijgt die bij Guest Service.
 Buggy's kosten 10 euro plus 50 euro borg in de Gift Shop en zijn niet vooraf te
 boeken. Of een eigen kinderwagen of bolderkar is toegestaan, staat niet op de
 website van het park. Eten en drinken mag je meenemen. Het wisselen heet “baby
-change”. Eén volwassene wacht met het kind bij de uitgang en stapt daarna daar in
-zonder aan te sluiten.
-Welke attracties meedoen, noemt het park niet.
+change”, en het park zegt niet bij welke attracties het geldt. Eén volwassene
+wacht met het kind bij de uitgang en stapt daarna daar in zonder aan te sluiten.
 
 De kidspagina noemt Merrie Go'Round (met begeleiding vanaf 0,
 alleen vanaf 120 centimeter), Walibi's Fun Recorder, Garage, Bubble Swirl en
@@ -385,7 +384,7 @@ de Ibilaw-dagen van 10 oktober tot 8 november 2026. Kinderen onder 13 jaar mogen
 met volwassenen in en staan onder voortdurend toezicht.
 
 De baby switch is gratis en niet te combineren met de Speedy Fast-Pass of de
-Easy-pass. Hoe het werkt, staat niet in de tekst van de pagina. Een
+Easy-pass. De pagina legt niet uit hoe het werkt. Een
 verschoonruimte noemen noch de servicepagina noch de FAQ noch het parkreglement.
 Borstvoeding geven mag overal in het park. Wie het rustiger wil, gaat naar de
 ziekenpost. In de restaurants staan magnetrons voor flesjes en babyvoeding.
@@ -417,7 +416,7 @@ het park.
 
 De baby switch legt het park uit op een eigen pagina. Na de eerste rit gaan
 beide ouders naar de medewerker van de attractie, die de andere ouder zonder opnieuw aan te sluiten laat rijden. Hij geldt
-voor kinderen onder de minimale lengte. Een volledige lijst met attracties noemt
+voor kinderen onder de minimale lengte. Een volledige lijst met attracties heeft
 de pagina niet.
 
 Het kindergebied heet “Attractions for Little Gauls”. Een minimumleeftijd noemt
@@ -431,8 +430,7 @@ gemeten en krijgen ze een armband met de attracties waar ze in mogen.
 
 ## Wanneer is een pretpark leeg
 
-De tabel noemt voor acht van de
-tien parken de weekdag met de laagste gemiddelde wachttijd.
+Walibi Belgium en Parc Astérix zitten niet in deze vergelijking.
 
 ```park-comparison-widget slugs=efteling,europa-park,phantasialand,attractiepark-toverland,legoland-deutschland,heide-park,plopsaland-deutschland,walibi-holland show=quietest
 

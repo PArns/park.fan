@@ -180,8 +180,7 @@ Rohdaten sieht dieser Park aus wie jeder andere um drei Uhr nachts: keine Bahn
 meldet etwas. Würden wir daraus das Naheliegende ableiten, stünden dort sämtliche
 Attraktionen des Parks auf „sehr niedrig“, dazu ein Ø von 0 Minuten und eine Prognose,
 die auf null Beobachtungen beruht, und jede dieser Angaben wäre erfunden. Stattdessen steht auf der Parkseite ein
-Hinweis, dass es hier nichts zu lesen gibt. Was wir über den Park trotzdem
-sagen können, steht im [Hansa-Park-Guide](/blog/hansa-park-tipps).
+Hinweis, dass es hier nichts zu lesen gibt. Im [Hansa-Park-Guide](/blog/hansa-park-tipps) steht, was wir über den Park trotzdem sagen können.
 
 Dieselbe Regel gilt an einer kleineren Stelle. Die Eisbahn „Berliner Eislaufen“ auf
 dem Kaiserplatz im Phantasialand gibt es nur zum Wintertraum, diesmal vom 14.
@@ -205,8 +204,7 @@ Messungen wieder deutlich kürzer wird.
 Wer die Zeit lieber kauft, zahlt an Taron für eine Fahrt mit dem Quick Pass 12 €, so steht es auf
 der Infoseite des Phantasialands (Stand 5. Oktober 2026). Den Pass gibt es nur vor Ort am
 Gästeservice am Kaiserplatz, und die Menge ist begrenzt. Bei einer Zahl, die für den Wochentag
-ohnehin normal ist, rechnet sich das selten. Wie wir das sehen und wann sich der Quick Pass
-Ultimate lohnt, steht im [Phantasialand-Guide](/blog/phantasialand-tipps).
+ohnehin normal ist, rechnet sich das selten. Im [Phantasialand-Guide](/blog/phantasialand-tipps) steht, wie wir das sehen und wann sich der Quick Pass Ultimate lohnt.
 
 Für einen ganzen Tag gibt es den [Tagesplaner](/blog/tagesplaner). Dort wählst du deine Bahnen aus und bekommst eine Reihenfolge nach den vorhergesagten Wartezeiten des Tages. Ob alle vor Parkschluss drankommen, siehst du dann schon vor der Abfahrt und nicht erst um fünf am Nachmittag vor der letzten Warteschlange.
 

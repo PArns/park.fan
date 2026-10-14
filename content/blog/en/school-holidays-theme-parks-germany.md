@@ -123,7 +123,7 @@ The 2026 summer holidays were spread a long way apart. Rhineland-Palatinate, Hes
 broke up at the end of June, and Bavaria was the last state to go back, on 14 September. In just
 one week, 3 to 7 August, all 16 states were off at the same time.
 
-### Heide Park: Lower Saxony and NRW both have to be off
+### Heide Park
 
 Lower Saxony had its holidays from 2 July to 12 August, NRW from 18 July. In the two weeks or so
 when only Lower Saxony was off, the increase at [Heide Park](ref:heide-park) was 36%. Then NRW
@@ -145,10 +145,10 @@ Park, 31 fell in some state's school holidays.
 
 ```
 
-How to plan an early start in Soltau is in the
-[Heide Park guide](/blog/heide-park-wait-times-tips).
+The [Heide Park guide](/blog/heide-park-wait-times-tips) has the plan for an early start in
+Soltau.
 
-### Phantasialand: full before NRW is off
+### Phantasialand
 
 Brühl went the other way. From 2 to 17 July, with Lower Saxony, Hesse, Rhineland-Palatinate and
 several other states on holiday and NRW still in school, [Phantasialand](ref:phantasialand) was
@@ -165,7 +165,7 @@ Wintertraum.
 The Quick Pass, which you may want in those weeks, is explained in the
 [Phantasialand guide](/blog/phantasialand-wait-times-tips), along with the ride to start on.
 
-### Movie Park: the first NRW week
+### Movie Park
 
 [Movie Park](ref:movie-park-germany) in Bottrop looks almost the same as Brühl, with +67% before
 NRW's holidays, +132% while NRW and Lower Saxony were off together, and +43% with NRW alone. The
@@ -174,7 +174,7 @@ queued twice as long at the big rides as in the week before, and the four busies
 entire period all fall in that one week, Tuesday to Friday. By the following week it was over,
 and I can't work out from the calendar why.
 
-### Plopsaland: Rhineland-Palatinate and NRW together
+### Plopsaland
 
 At [Plopsaland](ref:plopsaland-deutschland) in Haßloch, neither Rhineland-Palatinate nor NRW
 filled the park by itself. Rhineland-Palatinate was the first state to break up, on 27 June. In
@@ -187,10 +187,10 @@ That week the weekday average dropped to just over a third of the week before, a
 of NRW's holidays the park stayed 23% below a weekday without holidays.
 
 Plopsaland didn't have its busiest days in summer anyway. Four of its ten busiest days fell in
-the week of 7 to 10 April, in the Easter holidays. What the park does on October evenings is in
-the [post on the Halloween Fright Nights](/news/plopsaland-deutschland-halloween-fright-nights-2026).
+the week of 7 to 10 April, in the Easter holidays. On October evenings the park runs
+the [Halloween Fright Nights](/news/plopsaland-deutschland-halloween-fright-nights-2026).
 
-### Europa-Park: the weakest reaction
+### Europa-Park
 
 [Europa-Park](ref:europa-park) was 37% above the baseline in the three weeks with 14 to 16 states
 on holiday, the smallest increase of the six parks. From 20 to 29 July, before Baden-Württemberg's
@@ -203,7 +203,7 @@ neighbouring regions. I haven't looked separately at whether their holidays make
 Rust's busiest day of the whole period was Monday 29 December 2025, between Christmas and New
 Year, when all 16 states were off.
 
-### Legoland: the park that depends most on the south
+### Legoland
 
 [Legoland](ref:legoland-deutschland) in Günzburg depends on the southern holidays more than any
 other park, though not on them alone. Over Whitsun, which in 2026 only Bavaria and
@@ -293,8 +293,8 @@ Phantasialand. That rests on six holiday weekdays per park.
 The opening days for the coming winter are already in the calendar. Between 19 December 2026 and
 12 January 2027, Phantasialand is open on 21 days, Europa-Park on 20, Legoland on 19, Plopsaland
 on 13 and Movie Park on 11. Heide Park closes after 31 October. The Christmas holidays start on
-23 December in ten states and end between 31 December and 12 January. What each park offers in
-winter is in the [winter guide](/blog/winter-theme-parks-2026).
+23 December in ten states and end between 31 December and 12 January. Each park's winter programme is
+in the [winter guide](/blog/winter-theme-parks-2026).
 
 ## The quiet holiday weeks
 
@@ -405,9 +405,9 @@ holidays there were half as busy as the days between Christmas and New Year.
 I avoid the bridge day after Ascension, though not necessarily
 the holiday itself, and I plan a 1 May that falls on a weekday as if it were a Saturday.
 
-Which month is quietest at which park is on the [best time to visit page](/best-time-to-visit),
-and which of these parks suits whom is in the
-[ranking of German theme parks](/blog/best-theme-parks-in-germany).
+The quietest months at each park are on the [best time to visit page](/best-time-to-visit). In the
+[ranking of German theme parks](/blog/best-theme-parks-in-germany) you'll find which of these parks
+suits whom.
 
 — Patrick
 

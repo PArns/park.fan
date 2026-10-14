@@ -109,11 +109,11 @@ Quasi ogni parco sconsiglia di portare bambini sotto i 13 anni agli eventi seral
 
 ## Horror la sera
 
-### Universal Studios Florida: Halloween Horror Nights
+### Halloween Horror Nights a Universal Studios Florida
 
 Secondo Universal, [Universal Studios Florida](ref:universal-studios-florida) a Orlando ha 49 notti tra il 28 agosto e il 1° novembre, da mercoledì a domenica e in più lunedì 12 ottobre. I cancelli dell'evento aprono alle 18:30, e fino alle 19:30 gli ospiti degli hotel Universal hanno un ingresso riservato. In quelle sere l'apertura diurna del parco finisce alle 17. Chi vuole arrivare già nel pomeriggio prenota Scream Early, da 70 $ in più, entra tra le 14 e le 17 e poi resta nel parco fino all'inizio dell'evento.
 
-Le case in programma sono dieci, e cinque ci sono, identiche, anche a Hollywood:
+Delle dieci case in programma, cinque ci sono, identiche, anche a Hollywood:
 
 - Stranger Things, sulla quinta e ultima stagione della serie Netflix
 - Sinners, dal film horror del 2025
@@ -135,17 +135,17 @@ Nel negozio online di Universal una serata costa da 94,99 $, e in certe date di 
 
 Universal sconsiglia l'evento ai bambini sotto i 13 anni. Costumi e maschere sono vietati. L'unica eccezione è la Premium Scream Night di lunedì 19 ottobre, con un biglietto a parte, quando i costumi sono ammessi ma le maschere restano vietate.
 
-### Universal Studios Hollywood: Halloween Horror Nights
+### Halloween Horror Nights a Universal Studios Hollywood
 
 Nel 2026 [Universal Studios Hollywood](ref:universal-studios-hollywood) ha più notti che mai, 42 secondo Universal, dal 3 settembre al 1° novembre. L'evento comincia alle 19, mentre l'orario di chiusura cambia da sera a sera.
 
-Le case sono otto. Cinque sono le stesse di Orlando: Stranger Things, Sinners, Hellraiser, Ozzy Osbourne: Prince of Darkness ed Evil Dead Burn. Solo a Hollywood ci sono **Killer Klowns from Outer Space**, tratta dal film, **KILLceañera**, con musiche di Slash, dove la quinceañera di Lola va fuori controllo, e **Dead, Deader, Deadest**, in un'impresa di pompe funebri abbandonata.
+Delle otto case, cinque sono le stesse di Orlando: Stranger Things, Sinners, Hellraiser, Ozzy Osbourne: Prince of Darkness ed Evil Dead Burn. Solo a Hollywood ci sono **Killer Klowns from Outer Space**, tratta dal film, **KILLceañera**, con musiche di Slash, dove la quinceañera di Lola va fuori controllo, e **Dead, Deader, Deadest**, in un'impresa di pompe funebri abbandonata.
 
 Anche la Terror Tram esiste soltanto a Hollywood. In queste sere Art the Clown si impadronisce del trenino che di giorno attraversa gli studi cinematografici. La musica è della band Ice Nine Kills. Secondo il comunicato stampa di Universal si aggiungono uno spettacolo, The Purge: Dangerous Waters, e cinque scare zone: Fortnitemares, Hackerz, El Circo de la Muerte, Blood Bog e Murder of Crowz. La sera Mario Kart: Bowser's Challenge resta aperta fino alle 22 e Harry Potter and the Forbidden Journey fino alle 23:15, e funzionano anche Flight of the Hippogriff, TRANSFORMERS, The Simpsons Ride e Revenge of the Mummy.
 
 Una serata costa da 84 $ fino a 109 $, a seconda della data. Il Frequent Fear Pass, valido fino a 35 notti, parte da 179 $, l'Ultimate Fear Pass da 299 $, Universal Express da 279 $. Chi vuole entrare nel parco già dalle 14 prende il biglietto giorno più sera, da 124 $. Con l'Early Access, a 20 $, entri nelle prime case prima dell'inizio. Il sito indica per questo le 17, il comunicato stampa le 17:30. Un'età minima non c'è, ma Universal sconsiglia l'evento ai bambini sotto i 13 anni. Le maschere sono vietate.
 
-### Knott's Berry Farm: Knott's Scary Farm
+### Knott's Scary Farm a Knott's Berry Farm
 
 [Knott's Berry Farm](ref:knotts-berry-farm), a Buena Park vicino a Los Angeles, organizza la Scary Farm in notti selezionate dal 17 settembre al 31 ottobre. In ottobre l'evento è aperto da giovedì a domenica, dalle 19 all'una di notte, il venerdì e il sabato fino alle 2.
 
@@ -155,7 +155,7 @@ Nel parco ci sono cinque scare zone, tra cui CarnEVIL e le Ghost Town Streets co
 
 Una serata costa da 65 $, il pass per tutte le serate 164 $, entrambi solo online. Per i maze non si paga nessun supplemento. Per Fright & Fast Lane, con cui salti la coda normale ai maze e ad alcune attrazioni, la pagina dell'evento indica «da 139 $» e quella dei biglietti «da 159 $», in entrambi i casi senza ingresso. Il parco sconsiglia l'evento ai bambini sotto i 13 anni, e ogni ospite deve avere il proprio biglietto, a qualsiasi età.
 
-### Six Flags Magic Mountain: Fright Fest
+### Fright Fest a Six Flags Magic Mountain
 
 A [Six Flags Magic Mountain](ref:six-flags-magic-mountain), vicino a Los Angeles, Fright Fest si tiene da venerdì a domenica a partire dal 18 settembre, dall'8 ottobre anche il giovedì, e finisce domenica 1° novembre. Secondo il calendario del parco l'evento comincia alle 19 e va avanti fino alle 23 il giovedì e la domenica, fino a mezzanotte il venerdì e fino all'una il sabato. Chi esce dal parco dopo le 21 non può più rientrare.
 
@@ -163,33 +163,33 @@ I maze sono sette. Quelli nuovi sono **Final Destination: Death's Playground** e
 
 Di giorno, nello stesso parco e negli stessi giorni di Fright Fest, dalle 12 alle 17 c'è Tricks and Treats per le famiglie.
 
-### Six Flags Great Adventure: Fright Fest
+### Fright Fest a Six Flags Great Adventure
 
 [Six Flags Great Adventure](ref:six-flags-great-adventure), nel New Jersey, ha nove maze, più di qualsiasi altro parco Six Flags di questa guida tranne Knott's. Le novità sono **JASON: Blood Reign** e **Final Destination: Death's Playground**. Gli altri sono The Conjuring Universe, Army of the Dead, Asylum, Twisted Holidays, Deadwood Cabin, Big Top Terror e The Witch's Reflection, e ci sono anche cinque scare zone e cinque spettacoli.
 
 Fright Fest è aperto da giovedì a domenica, dal 18 settembre al 1° novembre. Il pacchetto con ingresso costa da 80 $, il pass per tutte le serate da 75 $. Per i bambini, di giorno, c'è Kids Boo Fest, dal 12 settembre al 1° novembre.
 
-### Kings Island e Kings Dominion: Halloween Haunt
+### Halloween Haunt a Kings Island e Kings Dominion
 
 [Kings Island](ref:kings-island), vicino a Cincinnati, organizza Halloween Haunt dal 25 settembre al 31 ottobre, il giovedì e la domenica dalle 18 alle 23, il venerdì e il sabato fino a mezzanotte. Dei sei maze, **JASON: Blood Reign** e **Metal Massacre** sono nuovi. Ci sono poi quattro scare zone e tre spettacoli. The Conjuring: Beyond Fear si paga a parte e non è compreso nell'Haunted Attractions Pass. Il pacchetto con ingresso parte da 64 $, il pass per la stagione da 49 $. Il giovedì e il venerdì chi esce dal parco non può rientrare, nel fine settimana si può fino alle 18. Per le famiglie c'è Tricks and Treats il sabato e la domenica, dalle 11 alle 17.
 
 [Kings Dominion](ref:kings-dominion), vicino a Richmond, in Virginia, apre Halloween Haunt da venerdì a domenica dal 18 settembre al 1° novembre, il venerdì e il sabato dalle 18 a mezzanotte e la domenica fino alle 22. Tra i sei maze è nuovo **Diablo: The Infernal Path**, e quattro dei cinque spettacoli sono nuovi nel 2026. I pacchetti partono da 55 $, l'Haunted Attractions Pass da 10 $.
 
-### Carowinds: SCarowinds
+### SCarowinds a Carowinds
 
 SCarowinds a [Carowinds](ref:carowinds), al confine tra North e South Carolina, va dall'11 settembre al 7 novembre, da giovedì a sabato dalle 18 a mezzanotte e la domenica fino alle 23. Sono nuovi il maze **JASON: Blood Reign**, tre delle cinque scare zone e quattro dei sei spettacoli. Anche qui The Conjuring: Beyond Fear si paga a parte. Il pacchetto con ingresso parte da 55 $, l'Haunted Attractions Pass da 10 $.
 
-### Texas: Fright Fest a Six Flags Over Texas e Fiesta Texas
+### Fright Fest a Six Flags Over Texas e Fiesta Texas
 
 [Six Flags Over Texas](ref:six-flags-over-texas), vicino a Dallas, apre Fright Fest da venerdì a domenica, dall'11 settembre al 1° novembre. I maze sono cinque, tra cui The Strangers: No Escape e SAW: Legacy of Terror. È nuova la scare zone Doc Varnum's Hybrid Hell Pit, per cui serve l'Haunted Attractions Pass, mentre le altre cinque scare zone sono comprese nell'ingresso. Il pacchetto costa 84 $, il pass per una sera da 30 $.
 
 [Six Flags Fiesta Texas](ref:six-flags-fiesta-texas), a San Antonio, ha sette maze. I nuovi sono **Nosferatu** e **Cinema Slasher**, un maze sul modello di quello di Knott's Scary Farm. In tutto ci sono otto spettacoli e cinque scare zone. Qui Fright Fest è aperto nei fine settimana dall'11 settembre al 1° novembre, dal 22 ottobre anche il giovedì, e il pacchetto costa da 84 $.
 
-### Six Flags Great America: Fright Fest
+### Fright Fest a Six Flags Great America
 
 [Six Flags Great America](ref:six-flags-great-america), tra Chicago e Milwaukee, ha cinque maze, tra cui i nuovi **Blair Witch: No Signal** e **Nightmares**, sette scare zone e nove spettacoli, più di qualsiasi altro parco di questa guida. Per i 50 anni del parco torna la scare zone Necropolis. Fright Fest va dal 19 settembre al 1° novembre, e il pacchetto costa da 75 $. Dopo le 20 non si può più rientrare nel parco, e dopo le 18 il parco sconsiglia l'evento ai bambini sotto i 13 anni.
 
-### Howl-O-Scream: Busch Gardens e SeaWorld
+### Howl-O-Scream a Busch Gardens e SeaWorld
 
 Howl-O-Scream è il nome dell'evento in tutti e quattro i parchi del gruppo United Parks.
 
@@ -199,17 +199,17 @@ A [Busch Gardens Tampa](ref:busch-gardens-tampa) Howl-O-Scream si tiene in serat
 
 A [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg), in Virginia, e a [SeaWorld San Antonio](ref:seaworld-san-antonio) Howl-O-Scream è compreso nel normale biglietto d'ingresso. Williamsburg comincia alle 18, con cinque case, due delle quali nuove. Alle famiglie con bambini piccoli il parco consiglia di pensarci bene prima di restare dopo le 18. San Antonio festeggia il 25° anno di Howl-O-Scream con cinque case, tre nuove, e otto scare zone. Lì l'evento è aperto da venerdì a domenica, fino al 1° novembre.
 
-### Hersheypark: Dark Nights
+### Dark Nights a Hersheypark
 
 A [Hersheypark](ref:hersheypark), in Pennsylvania, le Dark Nights fanno parte di Hersheypark Halloween, che dura otto fine settimana, dal 12 settembre al 1° novembre. Dalle 18 aprono cinque case horror e cinque scare zone, e la scare zone Reese's Depot of Doom è nuova. È tutto compreso nel biglietto di Halloween, che costa 56,99 $ per la giornata o 39,99 $ dalle 17. Per i bambini fino a 12 anni c'è un percorso di dolcetto o scherzetto con 14 tappe.
 
-### Kennywood: Phantom Fall Fest
+### Phantom Fall Fest a Kennywood
 
 [Kennywood](ref:kennywood), a Pittsburgh, ha sette case horror e quattro scare zone, e la casa nuova è Ghostwood Estate: Open House. È tutto compreso nell'ingresso, che in prevendita costa da 37,49 $. Phantom Fall Fest va dal 12 settembre al 1° novembre, il venerdì dalle 18 e nel fine settimana da mezzogiorno. Un'età minima non c'è, ma dopo le 18 l'evento è pensato per i più grandi. Chi ha 17 anni o meno deve essere accompagnato da qualcuno che ne abbia almeno 21.
 
-## Per le famiglie: Halloween di giorno
+## Halloween di giorno per le famiglie
 
-### Disney: feste di Halloween e Halloween Time
+### Feste di Halloween e Halloween Time da Disney
 
 Nel 2026 **Mickey's Not-So-Scary Halloween Party** al [Magic Kingdom](ref:magic-kingdom-park) si tiene in 38 sere tra il 7 agosto e il 31 ottobre, e in ottobre restano le sere del 6, 8, 9, 13, 15, 16, 18, 22, 23, 25, 27, 29 e 31. Secondo Disney tutte le date sono esaurite. La festa va dalle 19 a mezzanotte, e con il biglietto puoi entrare nel parco dalle 16. In programma ci sono la parata Mickey's Boo-To-You Halloween Parade, lo spettacolo pirotecnico con laser Disney's Not-So-Spooky Spectacular e lo show Hocus Pocus Villain Spelltacular sul palco davanti al castello. I dolcetti si prendono alle postazioni in tutte le aree del parco. Sono nuovi A Masquerade with Stitch, una festa da ballo con Stitch, Lilo e Angel a Tomorrowland, e Captain Jack Sparrow con un programma da pirati ad Adventureland. Secondo Disney, in queste sere Space Mountain viaggia nel buio totale, con musica di Halloween.
 
@@ -221,13 +221,13 @@ Al Magic Kingdom, di giorno, sopra Main Street sono appese ghirlande di zucche, 
 
 La Spooky Farm di Knott's Berry Farm si tiene di giorno, da giovedì a domenica dal 24 settembre al 31 ottobre, più il Columbus Day, il 12 ottobre. Il motto è «All Fun. No Fear.», e ci sono dolcetti nella Ghost Town, i personaggi dei Peanuts, un campo di zucche e spettacoli. Il campo di zucche e la decorazione dei biscotti si pagano a parte.
 
-Anche gli altri parchi Six Flags hanno le loro giornate per le famiglie. Si chiamano Tricks and Treats a Magic Mountain, Kings Island, Carowinds, Over Texas, Fiesta Texas e Kings Dominion, Kids Boo Fest a Great Adventure e Great America. Di solito sono i fine settimana fino al 1° novembre, di giorno fino alle 17 circa, prima che cominci il programma serale.
+Anche gli altri parchi Six Flags hanno le loro giornate per le famiglie. Si chiamano Tricks and Treats a Magic Mountain, Kings Island, Carowinds, Over Texas, Fiesta Texas e Kings Dominion, Kids Boo Fest a Great Adventure e Great America. Di solito sono i fine settimana fino al 1° novembre, di giorno fino alle 17 circa.
 
-### SeaWorld e Busch Gardens: Spooktacular
+### Spooktacular a SeaWorld e Busch Gardens
 
 Di giorno i quattro parchi di United Parks hanno un programma per bambini, compreso nel normale biglietto. A Busch Gardens Tampa l'Halloween Spooktacular si tiene il sabato e la domenica dal 12 settembre al 1° novembre, dalle 12 alle 16, e dal 3 ottobre c'è anche un Halloween di Sesame Street. SeaWorld Orlando ha il suo Spooktacular in giorni selezionati dal 29 agosto al 1° novembre. A Williamsburg è pensato per i bambini fino a nove anni, a San Antonio c'è uno spettacolo nuovo con Baby Shark.
 
-### Dollywood e Silver Dollar City: feste del raccolto con le zucche
+### Feste del raccolto con le zucche a Dollywood e Silver Dollar City
 
 [Dollywood](ref:dollywood), in Tennessee, festeggia l'Harvest Festival dal 14 settembre al 31 ottobre, compreso nel normale ingresso. La sera, alle Great Pumpkin LumiNights, si accendono più di 12.000 zucche e un albero di zucche alto dodici metri. Nuovo è Harvey's Boo Bash, il 16, 23 e 30 ottobre dalle 21 a mezzanotte, in costume, a 129,99 $ in più.
 
@@ -239,7 +239,7 @@ Di giorno i quattro parchi di United Parks hanno un programma per bambini, compr
 
 A [Knoebels](ref:knoebels-amusement-park), in Pennsylvania, l'ingresso è gratuito e si paga ogni corsa. Durante Hallo-Fun, nei fine settimana di ottobre, sono aperte più di 50 attrazioni con le decorazioni di Halloween, il venerdì dalle 18 alle 22, il sabato dalle 14 alle 22 e la domenica dalle 12 alle 18.
 
-## Con i bambini: limiti d'età e costumi
+## Limiti d'età e costumi
 
 Quasi tutti i parchi consigliano i loro eventi serali solo dai 13 anni in su. Six Flags lo scrive per ognuno dei suoi parchi. Busch Gardens Tampa e SeaWorld Orlando parlano di un pubblico adulto, anche se SeaWorld fa entrare i ragazzi sotto i 18 anni. A Great America il consiglio vale dalle 18. A Kennywood chiunque abbia fino a 17 anni deve essere accompagnato da qualcuno di almeno 21. Per le Dark Nights Hersheypark non indica un'età.
 
@@ -247,19 +247,17 @@ All'Oogie Boogie Bash le maschere sono vietate dai 14 anni, e i costumi non devo
 
 ## Quando andarci
 
-I nostri tempi di attesa coprono l'intera giornata, le serate degli eventi non le misuriamo a parte. Nella tabella qui sotto c’è ogni grande attrazione di Universal Studios Florida ora per ora, misurata sull'intera stagione:
+I nostri tempi di attesa coprono l'intera giornata, le serate degli eventi non le misuriamo a parte. Per le grandi attrazioni di Universal Studios Florida li abbiamo misurati ora per ora sull'intera stagione.
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 
 ```
 
-I giorni più tranquilli delle prossime settimane a Knott's Berry Farm sono nel calendario:
-
 ```best-days-widget slug=knotts-berry-farm
 
 ```
 
-Ecco, per i grandi parchi con un evento serale, il giorno della settimana con le code più corte, misurato sulla stagione in corso:
+Per i grandi parchi con un evento serale abbiamo misurato anche il giorno della settimana con le code più corte, sulla stagione in corso.
 
 ```park-comparison-widget slugs=universal-studios-florida,knotts-berry-farm,six-flags-magic-mountain,six-flags-great-adventure,kings-island,busch-gardens-tampa,seaworld-orlando show=quietest
 
@@ -291,7 +289,7 @@ SCarowinds a Carowinds, fino al 7 novembre. Quasi tutti gli altri finiscono il 3
 
 ### Cosa c'è per i bambini piccoli?
 
-Meglio le giornate che le serate, per esempio Knott's Spooky Farm, Tricks and Treats e Kids Boo Fest da Six Flags, lo Spooktacular di SeaWorld e Busch Gardens, Brick or Treat a Legoland e le zucche di Dollywood e Silver Dollar City. Di solito è tutto compreso nel normale biglietto.
+Knott's Spooky Farm, Tricks and Treats e Kids Boo Fest da Six Flags, lo Spooktacular di SeaWorld e Busch Gardens, Brick or Treat a Legoland e le zucche di Dollywood e Silver Dollar City. È tutto di giorno, e di solito compreso nel normale biglietto.
 
 — Patrick
 

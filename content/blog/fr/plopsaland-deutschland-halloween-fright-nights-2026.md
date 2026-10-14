@@ -126,8 +126,7 @@ parking et évite de réserver six créneaux. Si vous venez un samedi d’octobr
 ## Pour qui
 
 Le parc conseille les Fright Nights **à partir de 16 ans**. Contrairement à
-Traumatica, ce n’est pas une limite stricte : selon la FAQ du parc, les plus
-jeunes entrent accompagnés d’un parent ou d’un tuteur légal. Pour les plus
+Traumatica, ce n’est pas une limite stricte : la FAQ du parc précise que les plus jeunes entrent accompagnés d’un parent ou d’un tuteur légal. Pour les plus
 jeunes ou les personnes sensibles, Majaland et la halle Plopsa Indoor restent
 sans monstres, et sur place, uniquement là, on peut se procurer un
 « Schreck-Stopp » qui, selon le parc, tient les monstres à distance. Masques,

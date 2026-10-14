@@ -93,19 +93,16 @@ In de gondels in het Italiaanse gebied stappen volgens het park al meer dan
 40 jaar de jongste bezoekers. In 2027 komt de rit “in nieuwe glans” terug. Of en
 vanaf wanneer hij daarvoor dichtgaat, staat niet in de aankondiging.
 
-Volgens het park zijn er kunst, klassiek toneel en Italiaanse muziek te zien en
-te horen. Hoeveel
+Er zijn volgens het park kunst, klassiek toneel en Italiaanse muziek te zien en te horen. Hoeveel
 scènes er zijn en welke nieuw zijn, heeft het niet gezegd.
 
 De rit is even oud als het themagebied. Italië opende in 1982 als eerste
 themagebied van het park, Piccolo Mondo in hetzelfde jaar. MACK Rides bouwde
 hem. De gondels bieden elk plaats aan zes personen en varen in een hal langs
 Pisa, Venetië en Florence. Een rit duurt iets meer dan drie minuten. Kinderen
-onder 120 centimeter rijden alleen mee met een volwassene. Volgens de parkpagina
-rijdt hij in alle vier de seizoenen, ook in de winter.
+onder 120 centimeter rijden alleen mee met een volwassene. Hij rijdt volgens de parkpagina in alle vier de seizoenen, ook in de winter.
 
-Volgens de pagina van het park over de nieuwtjes voor 2027 is Enzo een
-papegaai. In hetzelfde gebied staat al een rit uit 1982 met twee openingsjaren: voor
+Op de pagina van het park over de nieuwtjes voor 2027 is Enzo een papegaai. In hetzelfde gebied staat al een rit uit 1982 met twee openingsjaren: voor
 [Castello dei Medici](ref:europa-park/castello-dei-medici) geeft de parkpagina
 1982 en 2024. Ernaast rijdt sinds 2011 Volo da Vinci, een
 rit in vliegmachines op zeven meter hoogte, gebouwd door ETF.
@@ -130,8 +127,6 @@ Bij de drie nieuwtjes zit geen grote achtbaan. Voor kinderen die nog te klein
 zijn voor blue fire en WODAN komt er in Portugal en IJsland iets in de hoogte
 bij, als ze lang genoeg zijn voor de minimumlengte die het park nog niet heeft
 genoemd.
-
-In de tabel staan de ritten waarnaast de drie nieuwtjes komen.
 
 ```ride-waits-widget rides=europa-park/atlantica-supersplash|Atlantica SuperSplash|Waterachtbaan;europa-park/wodan-timburcoaster|WODAN - Timburcoaster|Houten achtbaan;europa-park/blue-fire-megacoaster|blue fire Megacoaster|Launch-Coaster;europa-park/castello-dei-medici|Castello dei Medici|Dark Ride;europa-park/piccolo-mondo|Piccolo Mondo|Gondelvaart columns=type,peak,days
 

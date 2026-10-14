@@ -424,8 +424,6 @@ La colonne « À l’abri » compte toutes les attractions, pas uniquement c
 l’on embarque : gares, labyrinthes, piscines à balles, aires de jeux, un musée et
 des maisons hantées qui n’ouvrent que les soirs d’Halloween.
 
-Les temps d’attente typiques des neuf parcs, avec Europa-Park en évidence :
-
 ```park-comparison-widget slugs=europa-park,attractiepark-toverland,phantasialand,plopsaland-deutschland,movie-park-germany,efteling,walibi-belgium,heide-park,walibi-holland highlight=europa-park
 
 ```
@@ -445,8 +443,7 @@ ni au Heide Park, ni à Walibi Holland.
 Dans le calendrier de chaque parc, tu trouves pour les semaines à venir la
 météo, les horaires d’ouverture et l’affluence attendue. Comme les jours de
 pluie sont en moyenne plus calmes, tu n’as pas besoin d’annuler ta visite parce
-que des averses sont annoncées. Les prévisions pour Brühl, où se trouve le
-Phantasialand :
+que des averses sont annoncées. Les prévisions ci-dessous sont celles de Brühl, où se trouve le Phantasialand.
 
 ```weather-widget slug=phantasialand
 

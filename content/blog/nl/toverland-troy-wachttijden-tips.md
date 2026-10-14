@@ -138,9 +138,7 @@ Zeventig kilometer noordwestelijker staat in de [Efteling](ref:efteling)
 
 ```
 
-Joris en de Draak eindigde bij de Golden Ticket Awards 2026 vijf plekken achter
-Troy. Dit
-kosten de grote namen van de regio aan wachttijd, hout én staal:
+Joris en de Draak eindigde bij de Golden Ticket Awards 2026 vijf plekken achter Troy.
 
 ```ride-waits-widget rides=phantasialand/taron|Taron|Multi-launch, staal;phantasialand/fly|F.L.Y.|Flying, staal;efteling/joris-en-de-draak|Joris en de Draak|Hout;efteling/baron-1898|Baron 1898|Dive coaster, staal;attractiepark-toverland/troy|Troy|Hout;attractiepark-toverland/fenix|Fēnix|Wing, staal columns=type,park,peak highlight=attractiepark-toverland/troy
 
@@ -157,8 +155,8 @@ vijf waterattracties en in totaal ruim veertig attracties. De Efteling telde
 datzelfde jaar 5,78 miljoen bezoeken, zo’n vijf keer zoveel, en heeft geen vijf
 keer zoveel achtbanen.
 
-**Toverland verkoopt geen fastpass en
-geen expresspass.** Tijd tegen geld ruilen kan alleen op de 13 halloweenavonden in oktober en begin november. Een single rider-rij is er sinds 2023 overigens
+Toverland verkoopt geen fastpass en
+geen expresspass. Tijd tegen geld ruilen kan alleen op de 13 halloweenavonden in oktober en begin november. Een single rider-rij is er sinds 2023 overigens
 wel, maar bij één enkele attractie, de vrijevaltoren Dragonwatch, en die kost
 niets extra.
 
@@ -409,14 +407,11 @@ dinsdag. De [beste-reistijdpagina](/beste-tijd-om-te-bezoeken) zet de parken naa
 
 Daarop kun je niet blindvaren zodra Nederlandse en Duitse vakantiekalenders,
 weer en openingstijden over elkaar heen schuiven, en in het grensgebied Limburg
-schuiven ze voortdurend. Dit zijn de rustigste komende dagen:
+schuiven ze voortdurend.
 
 ```best-days-widget slug=attractiepark-toverland
 
 ```
-
-En zo ziet de drukte er over maanden en weekdagen uit, gerekend uit de gemeten
-openingsdagen:
 
 ```stats-widget slug=attractiepark-toverland
 

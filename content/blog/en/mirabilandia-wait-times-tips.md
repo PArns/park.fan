@@ -81,13 +81,13 @@ Length, height and speed of the five big coasters come from the Roller Coaster D
 
 [Katun](ref:mirabilandia/katun?full)
 
-Katun is 1,200 metres long, 50 metres tall and runs for 2:22 minutes. According to RCDB the track has six inversions: a loop, a zero-g roll, a cobra roll and two corkscrews. Riders sit four across, a train has eight cars with 32 seats, and three trains run at the same time. RCDB gives the ride a capacity of 1,700 people an hour. By the park's figure Katun reaches 110 km/h, by RCDB's 104.
+Katun is 1,200 metres long, 50 metres tall and runs for 2:22 minutes. According to RCDB the track has six inversions: a loop, a zero-g roll, a cobra roll and two corkscrews. Riders sit four across, a train has eight cars with 32 seats, and three trains run at the same time. RCDB gives the ride a capacity of 1,700 people an hour. Katun reaches 110 km/h by the park's figure, 104 by RCDB's.
 
-The theme is the Mayan city of Sian Ka'an. In the Mayan calendar a katun is a period of 7,200 days, about 20 years, and at the start and end of the ride the train passes through a "Stargate". According to the park, Katun is the longest inverted coaster in Europe. You can ride from 140 centimetres and from age twelve.
+The theme is the Mayan city of Sian Ka'an. In the Mayan calendar a katun is a period of 7,200 days, about 20 years, and at the start and end of the ride the train passes through a "Stargate". Katun is the longest inverted coaster in Europe, the park says. You can ride from 140 centimetres and from age twelve.
 
 ### iSpeed
 
-iSpeed is an Intamin launch coaster with a magnetic drive. According to the park it accelerates to 100 km/h in 2.2 seconds, reaches up to 110 km/h (RCDB) and climbs to 55 metres. The track is 980 metres long and has two inversions. The park's own figure is 120 km/h, and the ride takes 77 seconds.
+iSpeed is an Intamin launch coaster with a magnetic drive. It accelerates, by the park's account, to 100 km/h in 2.2 seconds, reaches up to 110 km/h (RCDB) and climbs to 55 metres. The track is 980 metres long and has two inversions. The park's own figure is 120 km/h, and the ride takes 77 seconds.
 
 iSpeed replaced Sierra Tonante in 2009, the wooden coaster from 1992. You can ride from 140 centimetres up to a maximum of 195 centimetres, and from age twelve.
 
@@ -101,15 +101,15 @@ iSpeed replaced Sierra Tonante in 2009, the wooden coaster from 1992. You can ri
 
 Desmo Race opened in 2019 in the Ducati area. It's two tracks side by side, each 525 metres long and 22 metres high, and the ride takes one minute at up to 80 km/h. You sit astride, and according to the park the ride is meant to feel like a Panigale V4. You can accelerate and brake to leave the other track behind. The manufacturer is Maurer Rides, and the type is called a Spike Coaster. Riders must be between 120 and 195 centimetres and weigh no more than 135 kilograms. Children under ten and under 140 centimetres ride with an adult.
 
-### Master Thai, Gold Digger and the family coasters
+### The smaller coasters
 
-According to the park, [Master Thai](ref:mirabilandia/master-thai) is the first two-track coaster in Italy. Preston & Barbieri built it in 2011. It has a chain lift, no inversion and a Mobius layout in which two trains run against each other. The minimum height is 120 centimetres, and children aged six to eight ride with an adult.
+[Master Thai](ref:mirabilandia/master-thai) is the first two-track coaster in Italy, the park says. Preston & Barbieri built it in 2011. It has a chain lift, no inversion and a Mobius layout in which two trains run against each other. The minimum height is 120 centimetres, and children aged six to eight ride with an adult.
 
 [Gold Digger](ref:mirabilandia/gold-digger) is a wild mouse by L&T Systems: 361 metres, 14.5 metres high, 1:25 minutes. It runs in the western area from 90 centimetres. [Rexplorer](ref:mirabilandia/rexplorer) in Dinoland is the oldest coaster in the park that still runs, 250 metres long at 35 km/h, also from 90 centimetres. RCDB lists S.D.C. as the manufacturer, the German Wikipedia Mack Rides.
 
 Two more run in the children's area: [PAW Patrol To The Rescue](ref:mirabilandia/paw-patrol-to-the-rescue), opened in 2005 as Leprotto Express, 135 metres and 34 km/h, and [Cowabunga Carts](ref:mirabilandia/cowabunga-carts), a Zierer Force 190 from 2025 with 192 metres, 40 km/h and a booster-wheel lift. Both are open from 90 centimetres, with younger children riding with an adult.
 
-## Water rides, dark rides and towers
+## The other rides
 
 [Rio Bravo](ref:mirabilandia/rio-bravo) is the Intamin rafting ride from the opening year, in inflatable boats through a canyon with rapids, from 110 centimetres. [Autosplash](ref:mirabilandia/autosplash) opened the same year as an Intamin white-water ride. You sit in a Cadillac with tail fins, and at the end you drop 15 metres. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) by Hopkins is a shoot-the-chute from 1999 with a 15-metre wave at the end. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) is an interactive boat ride where you shoot at totem poles. Autosplash, El Dorado Falls and Raratonga are open from 90 centimetres.
 
@@ -222,7 +222,7 @@ Desmo Race, Blu River and The Walking Dead are excluded. Desmo Race is the ride 
 
 Where the wait is around a quarter of an hour, the pass doesn't save much. It does the most on the rides that come after Desmo Race in our table: Rio Bravo, iSpeed and Autosplash. The "VIP" package combines admission, the all-inclusive meal plan and a Regular Flash Pass.
 
-## Tickets, prices and season pass
+## Tickets and season pass
 
 The adult day ticket (over 140 centimetres) starts at 27.90 euros online, and the earlier you book, the cheaper. According to the park you save up to 20 euros if you buy at least ten days ahead (offer until 25 October). At the ticket office the ticket costs 49.90 euros. The reduced ticket for children from 100 to 140 centimetres and for seniors over 60 costs from 27.90 euros online and 42.90 euros at the ticket office. Children under 100 centimetres pay nothing. The evening ticket from 5 pm costs 22.90 euros. The open-date ticket costs 49.90 euros (reduced 42.90) and is valid until the end of the season.
 

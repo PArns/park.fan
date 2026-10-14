@@ -221,8 +221,7 @@ Great Coasters International, la société qui a aussi construit
 out-and-back avec lift à chaîne et sans inversion, dessiné par Jeff Pike. Selon
 la Roller Coaster DataBase, il ressemble à White Lightning à Fun Spot America
 (Orlando) sans lui être identique. Deux trains de douze places circulent, pour
-un débit de 635 personnes par heure. Taille minimale 120 centimètres. Les trois
-coasters en bois GCI du Benelux, côte à côte :
+un débit de 635 personnes par heure. Taille minimale 120 centimètres. Avec Joris en de Draak à Efteling, le Benelux compte trois coasters en bois GCI.
 
 ```ride-waits-widget rides=plopsaland-belgium/heidi-the-ride|Heidi The Ride (GCI, 2017);attractiepark-toverland/troy|Troy (GCI, 2007);efteling/joris-en-de-draak|Joris en de Draak (GCI, 2010) columns=park,peak highlight=plopsaland-belgium/heidi-the-ride
 
@@ -249,10 +248,9 @@ Junior Coaster de Vekoma venu du Meli Park, long de 335 mètres et haut de
 Tivoli de Zierer, ouvert en 1976 sous le nom de Keverbaan au Meli Park et
 remplacé en 2014 par une nouvelle copie. Les deux demandent 90 centimètres.
 
-Il y a aussi deux dark rides. **[Plop’s Woods](ref:plopsaland-belgium/plops-woods)**
+Le dark ride **[Plop’s Woods](ref:plopsaland-belgium/plops-woods)**
 (Het Bos van Plop) est l’ancien Apirama de 1979 et emmène des bateaux dans la
-forêt des lutins. **[Bumba’s World Trip](ref:plopsaland-belgium/bumbas-world-trip)**
-(Op Reis met Bumba) a ouvert en 2023 dans l’espace couvert Circus Bumba et
+forêt des lutins. Le second, **[Bumba’s World Trip](ref:plopsaland-belgium/bumbas-world-trip)** (Op Reis met Bumba), a ouvert en 2023 dans l’espace couvert Circus Bumba et
 c’est, d’après Wikipédia en néerlandais, le premier dark ride que le groupe
 Plopsa a fait construire lui-même.
 
@@ -338,12 +336,6 @@ matin, et la file grandit jusqu’en fin d’après-midi.
 
 ## Quand y aller
 
-Le calendrier marque les jours les plus calmes des semaines à venir :
-
-```best-days-widget slug=plopsaland-belgium
-
-```
-
 Le parc n’ouvre pas toute l’année. D’après le calendrier de 2026, il était fermé
 du 5 janvier au 13 février, a rouvert le 14 février pour les vacances de carnaval
 (krokusvakantie) et n’a roulé en mars que le mercredi, le samedi et le dimanche,
@@ -353,6 +345,10 @@ septembre, le parc ferme le plus souvent à 17 ou 18 h, en juillet et en août �
 19 h et certains soirs à 22 h, en octobre 2026 à 17 h en semaine et à 18 h le week-end. Il ouvre en général à
 10 h. Quelques jours sont fermés, le 10 octobre 2026 pour un événement privé,
 pour lequel billets et abonnements ne sont pas valables.
+
+```best-days-widget slug=plopsaland-belgium
+
+```
 
 Le mercredi, le parc annonce actuellement le billet à 36 euros au lieu de 56. Qui
 a des enfants scolarisés vient de toute façon pendant les vacances, c’est-à-dire
@@ -365,10 +361,7 @@ octobre. On y voit le Pumpkin King (un épouvantail qui ne quitte Pumpkin Island
 qu’à Halloween), l’académie Nachtwacht, les renards Fox & Trot de la comédie
 musicale Pinocchio et la 25 Celebration Parade. Il y a aussi un feu d’artifice
 d’Halloween et des plats comme le Pumpkin Spice Latte, la gaufre d’Halloween et
-le Spooky Burger. Un billet daté coûte alors à partir de 42 euros. Ce que font
-les autres parcs de Belgique et des Pays-Bas à Halloween se trouve dans le
-[guide Halloween 2026](/blog/halloween-parcs-attractions-2026), avec notamment
-Ibilaw à Walibi Belgium.
+le Spooky Burger. Un billet daté coûte alors à partir de 42 euros. Ibilaw à Walibi Belgium et les autres événements d’Halloween en Belgique et aux Pays-Bas figurent dans le [guide Halloween 2026](/blog/halloween-parcs-attractions-2026).
 
 ```weather-widget slug=plopsaland-belgium
 
@@ -441,8 +434,7 @@ Au 7 octobre 2026, d’après la page des billets du parc :
 | Parking, acheté en ligne à l’avance                | 15 euros                             |
 
 La page d’accueil du parc indique « dès 38 euros », la page des billets « dès
-36 euros ». Le prix qui s’applique à ton jour figure dans le calendrier de la
-billetterie. Le tarif enfant dépend de la taille, qui est mesurée à la caisse
+36 euros ». Le calendrier de la billetterie donne le prix de chaque jour. Le tarif enfant dépend de la taille, qui est mesurée à la caisse
 avec les chaussures. En cas de doute, fais mesurer à l’accueil, et ce résultat
 fait foi. Avec un billet acheté en ligne, on passe devant la caisse et on va
 directement au contrôle.
@@ -496,7 +488,7 @@ SNCB (NMBS).
 
 ## Hôtels et restauration
 
-Le resort compte quatre hébergements. Le **Theater Hotel** (4 étoiles supérieur,
+Des quatre hébergements du resort, le **Theater Hotel** (4 étoiles supérieur,
 une à six personnes) comprend le petit-déjeuner et le parking, et avec la
 demi-pension deux jours de Plopsaqua en plus. Au **Village** (six à douze
 personnes, deux nuits minimum) et dans les **Studio 100 Chalets** (une à quatre

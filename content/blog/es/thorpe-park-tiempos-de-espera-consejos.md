@@ -78,7 +78,7 @@ El parque llamó al proyecto «Project Exodus». En diciembre de 2021 presentó 
 
 ```
 
-En su web, el parque da 995,4 metros de recorrido, el más largo del parque, 236 pies de altura, 81 mph de velocidad máxima, un looping de 168 pies (51 metros) que según el parque es el más alto de Europa, y un elemento que presenta como estreno mundial, una colina de airtime con inclinación hacia el exterior. Añade 14,8 segundos de ingravidez. La atracción tiene dos inversiones: un barrel roll en la bajada y un dive loop con una breve parada en el aire. Una cadena arrastra el tren por el lift. La primera caída es vertical y el tren gira 180 grados mientras cae.
+En su web, el parque da 995,4 metros de recorrido, el más largo del parque, 236 pies de altura, 81 mph de velocidad máxima, 14,8 segundos de ingravidez, un looping de 168 pies (51 metros) que según el parque es el más alto de Europa, y un elemento que presenta como estreno mundial, una colina de airtime con inclinación hacia el exterior. La atracción tiene dos inversiones: un barrel roll en la bajada y un dive loop con una breve parada en el aire. Una cadena arrastra el tren por el lift. La primera caída es vertical y el tren gira 180 grados mientras cae.
 
 La altura mínima es de **1,30 metros**, la más baja entre las grandes montañas rusas del parque. Quien lleve una prótesis no puede subir, y tras una revisión del parque la atracción ya no es apta para personas que no pueden moverse por sí solas. Hyperia y SAW tienen cola single rider.
 
@@ -175,7 +175,7 @@ El parque vende el Fastrack en cuatro paquetes, siempre por persona, y la tarjet
 - **Gold**, desde 115 libras: todo el día en 14 atracciones, sin Hyperia.
 - **Platinum**, desde 135 libras: todo el día en 15 atracciones, con Hyperia.
 
-Además existe un **One Shot Fastrack** desde 6 libras, que solo se compra ya dentro del parque, en la app o con un código QR en la entrada de una montaña rusa. El parque vende el Fastrack en número limitado y avisa de que conviene comprobar antes de comprarlo que haya entradas para ese día, porque se venden por separado. En la página de Fastrack del parque, el Ghost Train aparece en tres paquetes, y en la página de la atracción pone que ahora mismo no hay Fastrack para esa atracción.
+Además existe un **One Shot Fastrack** desde 6 libras, que solo se compra ya dentro del parque, en la app o con un código QR en la entrada de una montaña rusa. El parque vende el Fastrack y las entradas por separado, el Fastrack solo en número limitado, y avisa de que conviene comprobar antes de comprarlo que haya entradas para ese día. En la página de Fastrack del parque, el Ghost Train aparece en tres paquetes, y en la página de la atracción pone que ahora mismo no hay Fastrack para esa atracción.
 
 Quien se aloja en las Thorpe Shark Cabins tiene el segundo día una hora de Fastrack al principio o al final de la jornada. Durante las Fright Nights solo vale para la primera hora.
 

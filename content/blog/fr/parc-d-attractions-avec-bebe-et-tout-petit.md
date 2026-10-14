@@ -161,20 +161,20 @@ Le parc cite sept endroits avec une salle de change : l’entrée principale, 
 point info au bord du lac, l’Irlande (Kinderwelt), l’Italie près du dm family &
 friends, l’Espagne, le Märchenwald et le Royaume des Minimoys. Leur
 équipement et l’existence d’une salle d’allaitement ne sont pas précisés. Au dm
-family & friends, le parc vend une sélection d’aliments pour bébé. Le site
-n’indique pas où on peut les réchauffer et renvoie pour cela au service clients.
+family & friends, le parc vend une sélection d’aliments pour bébé. Pour les
+réchauffer, le site renvoie au service clients.
 
 La poussette de location coûte 5 euros plus 50 euros de caution et se retire à
-l’entrée principale ou à l’entrée du parking de l’hôtel. D’après le parc, elle ne
-convient qu’aux enfants qui tiennent déjà assis, parce qu’un enfant ne peut pas s’y allonger. Le parc ne loue pas de chariot à ridelles (Bollerwagen), et le
+l’entrée principale ou à l’entrée du parking de l’hôtel. Elle ne convient, d’après le parc,
+qu’aux enfants qui tiennent déjà assis, parce qu’un enfant ne peut pas s’y allonger. Le parc ne loue pas de chariot à ridelles (Bollerwagen), et le
 règlement n’en parle pas. Il interdit les véhicules non motorisés comme les
 patins à roulettes, les vélos et les trottinettes, et on ne sait pas si un
 Bollerwagen en fait partie. Si tu veux en apporter un, demande avant au service
 clients.
 
 À l’Europa-Park, l’échange s’appelle Baby-Switch et vaut, selon le parc, pour
-beaucoup de grandes montagnes russes. Le parc cite blue fire Megacoaster et
-Alpenexpress Coastiality, mais il n’y a pas de liste complète. Celui qui attend
+beaucoup de grandes montagnes russes, comme blue fire Megacoaster et
+Alpenexpress Coastiality. Il n’y a pas de liste complète. Celui qui attend
 reste avec l’enfant, par exemple à l’aire de jeu. Celui qui monte en premier
 reçoit une carte pour la sortie ou pour l’entrée Baby-Switch dédiée.
 
@@ -211,7 +211,7 @@ transporter des enfants. Les chariots (Bollerwagen), les remorques de vélo et
 les poussettes pour chiens sont interdits. Une dérogation pour raison médicale
 doit être envoyée par e-mail au service clients au moins 14 jours avant.
 
-Le Baby Switch se demande à l’attraction. Le parc ne dit pas quelles attractions le proposent.
+Le parc ne cite aucune attraction avec Baby Switch, on le demande à l’attraction.
 
 Dans un tableau de ses conditions d’utilisation, le parc range sous
 « Attraktionen für Kinder » Der lustige Papagei, Die fröhliche Bienchenjagd,
@@ -309,8 +309,8 @@ extérieures.
 Les poussettes sont autorisées, mais doivent être posées aux endroits prévus
 près des attractions et des spectacles. Les jours de forte affluence, elles ne
 sont pas admises au Plopsa Indoor. Le parc ne mentionne pas de location de
-poussettes. Les Bollerwagen sont payants d’après le règlement, contre une pièce
-d’identité ou 100 euros de caution. Le règlement n’en indique pas le prix. Ni
+poussettes. Les Bollerwagen sont payants d’après le règlement, pour un prix qu’il ne
+chiffre pas, contre une pièce d’identité ou 100 euros de caution. Ni
 les pages de questions ni le règlement ne mentionnent de Rider Switch ni
 d’échange. Après chaque tour, chaque visiteur doit quitter l’attraction, et qui
 veut faire un second tour refait la queue.
@@ -336,15 +336,15 @@ boutique en ligne. De 90 à 140 centimètres, le billet coûte 32,50 euros, à p
 de 140 centimètres 39,50 euros, selon la catégorie du jour. Le jour de son
 anniversaire, on entre pour 0 euro sur présentation d’une pièce d’identité.
 
-Toutes les toilettes, sauf celles d’Ithaka, ont des tables à langer. Des
-micro-ondes sont à disposition gratuitement à la Waldstube et sur le Katara
-Plaza, le parc ne mentionne pas de chauffe-biberon. Pour tirer son lait, on
+Toutes les toilettes, sauf celles d’Ithaka, ont des tables à langer. Pour
+réchauffer, le parc ne cite que des micro-ondes, gratuits à la Waldstube et sur
+le Katara Plaza. Pour tirer son lait, on
 s’adresse au personnel de l’entrée principale.
 
 Tu peux apporter un buggy ou un Bollerwagen, le parc recommande un cadenas à
-chaîne. Toverland ne loue rien. Le Baby Switch vaut sur certaines attractions,
-sans limite d’âge. On prend un ticket spécial à l’embarquement, et un parent
-peut passer par la sortie. Le parc ne dit pas de quelles attractions il s’agit.
+chaîne. Toverland ne loue rien. Le Baby Switch vaut sans limite d’âge sur
+certaines attractions, que le parc n’énumère pas. On prend un ticket spécial à
+l’embarquement, et un parent peut passer par la sortie.
 
 Au Land van Toos, un quartier avec des halles, les enfants accompagnés montent dès 0
 centimètre dans le Klokhuis et dans Morrels Truckjes, seuls dès 90. Toos-Express,
@@ -376,8 +376,9 @@ bracelet au Guest Service.
 Les buggys coûtent 10 euros plus 50 euros de caution au Gift Shop et ne se
 réservent pas à l’avance. Le site du parc n’indique pas si une poussette ou un
 Bollerwagen personnel est autorisé. On peut apporter à manger et à boire.
-L’échange s’appelle « baby change ». Un adulte attend avec l’enfant à la sortie
-et y monte ensuite sans faire la queue. Le parc ne dit pas quelles attractions le proposent.
+L’échange s’appelle « baby change », et le parc ne dit pas sur quelles
+attractions il vaut. Un adulte attend avec l’enfant à la sortie et y monte
+ensuite sans faire la queue.
 
 La page Kids du parc cite Merrie Go’Round (accompagné dès 0,
 seul dès 120 centimètres), Walibi’s Fun Recorder, Garage, Bubble Swirl et
@@ -397,7 +398,7 @@ jours d’Ibilaw du 10 octobre au 8 novembre 2026. Les enfants de moins de 13 an
 parc qu’avec des adultes et restent sous surveillance permanente.
 
 Le Baby Switch est gratuit et ne se combine pas avec le Speedy Fast-Pass ni avec
-l’Easy-pass. Le déroulement n’est pas décrit dans le texte de la page. Ni la page
+l’Easy-pass. La page n’explique pas comment il se déroule. Ni la page
 des services, ni la FAQ, ni le règlement ne mentionnent de salle de change.
 L’allaitement est permis partout dans le parc. Pour être au calme, on va à
 l’infirmerie. Les restaurants ont des micro-ondes pour biberons et aliments pour
@@ -430,7 +431,7 @@ pas si l’on peut apporter des aliments pour bébé.
 Le parc explique le Baby Switch sur une page à part. Après le premier tour, les
 deux parents vont voir l’opérateur, qui laisse monter l’autre
 parent sans nouvelle queue. Il vaut pour les enfants sous la taille minimale.
-La page ne donne pas de liste complète des attractions.
+La page n’a pas de liste complète des attractions.
 
 L’espace pour enfants s’appelle « Attractions for Little Gauls ». Le parc donne
 un âge minimum pour The Mini Train et Ceasar’s Carrousel (2 ans) et pour The
@@ -443,8 +444,7 @@ remet un bracelet avec les attractions qu’ils peuvent faire.
 
 ## Quand un parc est vide
 
-Le tableau donne pour huit des dix parcs le jour de la semaine où l’attente moyenne
-est la plus basse.
+Walibi Belgium et le Parc Astérix ne font pas partie de cette comparaison.
 
 ```park-comparison-widget slugs=efteling,europa-park,phantasialand,attractiepark-toverland,legoland-deutschland,heide-park,plopsaland-deutschland,walibi-holland show=quietest
 

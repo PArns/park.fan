@@ -77,7 +77,7 @@ eine ganze Halle voller Fahrgeschäfte, Walibi Belgium hat Hallen.
 
 ## Die drei deutschen Parks, die einfach weiterlaufen
 
-### Phantasialand: Wintertraum, 14. November bis 24. Januar
+### Phantasialand
 
 Halloween feiert Brühl nicht. Dafür startet das [Phantasialand](ref:phantasialand) am
 **14. November 2026** in den Wintertraum, der **bis zum 24. Januar 2027** täglich
@@ -110,15 +110,14 @@ Erde. Bleibt Taron bei Wind stehen, fahren diese Bahnen weiter. Geschlossen
 bleiben im Wintertraum River Quest, Wakobato und Wözl’s Wassertreter. Chiapas
 fährt dagegen auch im Dezember.
 
-Wie der Quick Pass seit der Saison 2025/26 funktioniert, und warum er im
-Wintertraum an Wochenenden oft schon mittags weg ist, steht im
-[Phantasialand-Guide](/blog/phantasialand-tipps).
+Im [Phantasialand-Guide](/blog/phantasialand-tipps) steht, wie der Quick Pass seit der Saison
+2025/26 funktioniert und warum er im Wintertraum an Wochenenden oft schon mittags weg ist.
 
 [Phantasialand](ref:phantasialand?full)
 
 Termine und Tickets: [phantasialand.de → Wintertraum](https://www.phantasialand.de/de/themenpark/wintertraum/).
 
-### Europa-Park: Wintersaison ab 28. November und Abschied von der Euro-Mir
+### Europa-Park
 
 Der [Europa-Park](ref:europa-park) macht nach Halloween gar nicht erst zu. Vom 2.
 bis 27. November läuft HALLOWinter, eine Mischung aus Kürbis und Tanne, und ab
@@ -149,7 +148,7 @@ wir im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps) nachgerechnet.
 
 Angebote und Termine: [europapark.de → Wintersaison 2026/2027](https://www.europapark.de/de/uebernachten/angebote-events/wintersaison-20262027).
 
-### Plopsaland Deutschland: Majaland Pfalz an den Wochenenden
+### Plopsaland Deutschland
 
 Das [Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch hatte im
 letzten Winter vom 7. November bis zum 22. März geöffnet, an jedem Freitag,
@@ -160,9 +159,9 @@ Showattraktionen, Eintritt ab 20 €. Offiziell angekündigt ist der Winter 2026
 noch nicht. Im Fahrplan, den der Park an uns liefert, stehen ab dem 6. November
 aber wieder alle Freitage bis Sonntage auf Betrieb, jeweils von 11 bis 18 Uhr.
 
-## Die Dark-Ride-Parks: gebaut für schlechtes Wetter
+## Die Dark-Ride-Parks
 
-### Efteling: Winter Efteling, 16. November bis 31. Januar
+### Efteling
 
 Regen, Wind und Dunkelheit können im [Efteling](ref:efteling) [Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana und [Danse Macabre](ref:efteling/danse-macabre) nichts anhaben, und mehrere davon wirken in der Dämmerung besser als bei Sonnenschein.
 
@@ -182,13 +181,12 @@ damit das längste Winterprogramm, das in dieser Übersicht fest angekündigt is
 Droomvlucht ist allerdings vom 9. November bis 4. Dezember in Wartung, Joris en
 de Draak vom 30. November bis 18. Dezember.
 
-Warum überhaupt nur fünf Millionen Gäste im Jahr hinein dürfen und was das mit
-der Wintersaison zu tun hat, steht im
-[Efteling-Guide](/blog/efteling-disney-der-niederlande).
+Im [Efteling-Guide](/blog/efteling-disney-der-niederlande) steht, warum überhaupt nur fünf
+Millionen Gäste im Jahr hinein dürfen und was das mit der Wintersaison zu tun hat.
 
 [Efteling](ref:efteling?full)
 
-### Toverland: Winter Feelings, 28. November bis 17. Januar
+### Toverland
 
 Das [Toverland](ref:attractiepark-toverland) in Sevenum hat zwei große Hallen,
 Land van Toos und Wunderwald, und damit dasselbe Argument wie Kaatsheuvel in
@@ -206,9 +204,8 @@ Strips auf einmal kauft, zahlt pro Strip weniger. Für den freien Eintritt muss
 man vorher gratis reservieren, die Plätze pro Tag sind begrenzt. Das normale
 Tagesticket mit unbegrenzten Fahrten gibt es daneben weiter.
 
-Sevenum liegt auf dem Weg von Köln und Düsseldorf nach Kaatsheuvel. Was
-Troy an einem normalen Tag an Wartezeit kostet, steht im
-[Toverland-Guide](/blog/toverland-troy-wartezeiten-tipps).
+Sevenum liegt auf dem Weg von Köln und Düsseldorf nach Kaatsheuvel. Die Wartezeit an Troy an
+einem normalen Tag steht im [Toverland-Guide](/blog/toverland-troy-wartezeiten-tipps).
 
 [Attractiepark Toverland](ref:attractiepark-toverland?full)
 
@@ -217,11 +214,11 @@ Troy an einem normalen Tag an Wartezeit kostet, steht im
 Diese Parks sind den Rest des Winters zu und machen für zwei bis sechs Wochen
 noch einmal auf.
 
-### Walibi Belgium: Walibi Winter, 5. Dezember bis 3. Januar
+### Walibi Belgium
 
 Während der niederländische Schwesterpark aufgibt, macht
-[Walibi Belgium](ref:walibi-belgium) in Wavre unverändert weiter. Vom
-**5. Dezember 2026 bis 3. Januar 2027** stehen acht dekorierte Bereiche, die
+[Walibi Belgium](ref:walibi-belgium) in Wavre unverändert weiter. Bei **Walibi Winter** stehen vom
+**5. Dezember 2026 bis 3. Januar 2027** acht dekorierte Bereiche, die
 meisten davon nordisch: Alpin Village, Frozen Land, Polar Playground und Twinkle
 Town, dazu Glowing Greetings, Chocolate Factory, Festive Tropics und seit dem
 letzten Winter der **Northern Dock**, ein skandinavischer Hafen rund um
@@ -254,14 +251,13 @@ und Sugar Rush. Angemeldet wird über Chronorace.
 
 Termine: [walibi.be → Walibi Winter](https://www.walibi.be/walibi-winter/en).
 
-### Bobbejaanland Wintert: 5. Dezember bis 3. Januar
+### Bobbejaanland
 
 [Bobbejaanland](ref:bobbejaanland) hat im Dezember 2025 zum ersten Mal in seiner
 Geschichte im Winter aufgemacht und wiederholt das 2026/27. Sechs Themenzonen,
 darunter Santa City, Snow Valley, Lake of Frost mit Eisbahn und Land of Fire &
 Ice, dazu eine Show im überdachten Wintercircus, Winterparade,
-Feuer-und-Licht-Show und die Weihnachtsbaum-Illumination. Geöffnet ist an 18
-Tagen in diesem Fenster, von 11 bis 19 Uhr, am 24. und 31. Dezember bis 17 Uhr;
+Feuer-und-Licht-Show und die Weihnachtsbaum-Illumination. **Bobbejaanland Wintert** ist vom 5. Dezember bis 3. Januar an 18 Tagen geöffnet, von 11 bis 19 Uhr, am 24. und 31. Dezember bis 17 Uhr;
 am 25. Dezember und 1. Januar bleibt der Park zu.
 
 In Kasterlee ist **alles im Tagesticket drin**, vom Eislaufen bis zur
@@ -270,7 +266,7 @@ bekommt den Wintert-Eintritt im Wert von 19,90 € dazu.
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
-### Movie Park Germany: Hollywood Christmas, 27. November bis 5. Januar
+### Movie Park Germany
 
 Sechs Wochen im Herbst heißt der Park Horrorwood Studios, und keine drei Wochen
 nach dem letzten Halloween-Abend wird das Studiogelände weihnachtlich. **Movie
@@ -290,13 +286,13 @@ Experience, eine Zugfahrt zum Nordpol gegen Aufpreis.
 Movie Park und Bobbejaanland gehören zu Parques Reunidos, und die will der
 Finanzinvestor EQT gerade verkaufen. Für Besucher ändert das vorerst nichts
 ([mehr zum Verkauf](/blog/parques-reunidos-verkauf-movie-park)).
-Welcher Wochentag in Bottrop am ruhigsten ist, steht im [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).
+Bottrops ruhigster Wochentag steht im [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
-### Legoland Deutschland: WinterWonder, 28. November bis 10. Januar
+### Legoland Deutschland
 
-Günzburg fährt seine vierte Winteröffnung, und der Kalender ist gestückelt:
+Günzburg fährt mit **WinterWonder** seine vierte Winteröffnung, und der Kalender ist gestückelt:
 **28. und 29. November**, dann **4. bis 6.**, **11. bis 13.**, **18. bis 23.**
 und **26. bis 30. Dezember**, schließlich **2. bis 10. Januar 2027**. Es gibt
 eine Eisbahn, Eisstockschießen und Shows im Halbstundentakt. Frühbuchertickets
@@ -311,10 +307,10 @@ die Liste des Parks.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
-### Parc Astérix: Noël Gaulois, 19. Dezember bis 3. Januar
+### Parc Astérix
 
 [Parc Astérix](ref:parc-asterix) nördlich von Paris hat das kürzeste Fenster in
-dieser Übersicht und öffnet vom **19. Dezember 2026 bis 3. Januar 2027** an allen
+dieser Übersicht und öffnet für **Noël Gaulois** vom **19. Dezember 2026 bis 3. Januar 2027** an allen
 16 Tagen, auch am 25. Dezember und an Neujahr, von 11 bis 20 Uhr,
 am 24. und 31. Dezember bis 19 Uhr. Seit dem letzten Winter gibt es eine
 Eisbahn im Wikingerbereich und einen Weihnachtsmarkt.
@@ -323,7 +319,7 @@ Eisbahn im Wikingerbereich und einen Weihnachtsmarkt.
 
 ## Der Süden macht länger auf
 
-### PortAventura: bis 6. Januar jeden Tag
+### PortAventura
 
 [PortAventura](ref:portaventura-park) macht nach Halloween, das bis zum 15.
 November läuft, gar nicht erst zu. Im Fahrplan des Parks steht jeder Tag bis
@@ -340,9 +336,9 @@ unten stehen die beiden nebeneinander.
 
 [PortAventura Park](ref:portaventura-park?full)
 
-### Gardaland: Magic Winter, 5. Dezember bis 6. Januar
+### Gardaland
 
-[Gardaland](ref:gardaland) am Gardasee macht vom **5. Dezember 2026 bis 6. Januar
+[Gardaland](ref:gardaland) am Gardasee macht für **Magic Winter** vom **5. Dezember 2026 bis 6. Januar
 2027** auf: vom 5. bis 8. Dezember rund um Mariä Empfängnis, am Wochenende
 12./13. Dezember und dann ab dem 19. Dezember täglich bis Dreikönig, nur am 25.
 Dezember nicht. Der 6. Januar ist in Italien der Tag der Befana, an dem die

@@ -156,21 +156,20 @@ identidad en la taquilla de la entrada principal.
 El parque nombra cambiadores en siete lugares: la entrada principal, el punto de
 información junto al lago, Irlanda (Kinderwelt), Italia junto a dm family &
 friends, España, el Märchenwald y el reino de los Minimoys. No dice cómo están
-equipados ni si hay sala de lactancia. En dm family & friends el parque vende alimentación infantil seleccionada. Dónde
-se puede calentar no consta en la web, que remite para ello al servicio de
-atención al visitante.
+equipados ni si hay sala de lactancia. En dm family & friends el parque vende alimentación infantil seleccionada. Para
+calentarla, la web remite al servicio de atención al visitante.
 
 El cochecito de alquiler cuesta 5 euros más 50 euros de fianza y se entrega en la
-entrada principal o en la entrada del aparcamiento del hotel. Según el parque,
-solo sirve para niños que ya se sientan, porque un niño no puede ir tumbado en él.
+entrada principal o en la entrada del aparcamiento del hotel. Solo sirve, según el parque,
+para niños que ya se sientan, porque un niño no puede ir tumbado en él.
 El parque no alquila carros de mano, y las normas del parque no los mencionan.
 Prohíben los vehículos sin motor como patines, bicicletas y patinetes, y no
 queda claro si un carro de mano cuenta como tal. Quien quiera llevarlo debe
 preguntar antes al servicio de atención al visitante.
 
 En Europa-Park el cambio de turno se llama Baby-Switch y, según el parque, vale
-en muchas de las montañas rusas más grandes. El parque nombra blue fire
-Megacoaster y Alpenexpress Coastiality, pero no hay una lista completa. Quien
+en muchas de las montañas rusas más grandes, como blue fire Megacoaster y
+Alpenexpress Coastiality. No hay una lista completa. Quien
 espera se queda con el niño, por ejemplo en la zona de juegos. Quien sube
 primero recibe una tarjeta para la salida o para la entrada propia del Baby
 Switch.
@@ -208,7 +207,7 @@ los carritos para perros están prohibidos. Una excepción por motivos médicos 
 que pedirla por correo electrónico al servicio de atención al visitante al menos
 14 días antes.
 
-El Baby Switch se pide en la atracción. El parque no dice qué atracciones participan.
+El parque no nombra ninguna atracción con Baby Switch, se pide en la propia atracción.
 
 En una tabla de sus condiciones de uso, el parque incluye en «Atracciones para
 niños» Der lustige Papagei, Die fröhliche Bienchenjagd, Bolles Riesenrad, Wözl's
@@ -264,7 +263,8 @@ taquilla 64 euros.
 
 En Heide Park el cambio de turno se llama Baby-Switch-Pass. Los padres con niños de hasta 3
 años inclusive lo reciben gratis en el Service Center, solo los días en que hay
-Express Ticket disponible. Vale para montañas rusas. El parque no dice cuáles.
+Express Ticket disponible. Vale para montañas rusas, sin que el parque nombre
+ninguna.
 
 Puedes calentar la comida del bebé, entre otros sitios, en el Wirtshaus des
 Admirals y en Lucky Land, y la app muestra todos los puntos. El plano del parque
@@ -303,8 +303,8 @@ tomar también en los restaurantes y en las terrazas exteriores.
 Los cochecitos están permitidos, pero en las atracciones y los espectáculos hay
 que dejarlos en las zonas previstas. Los días de mucha afluencia no se admiten
 en el Plopsa Indoor. El parque no menciona un alquiler de cochecitos. Los
-carros de mano son de pago según las normas del parque, a cambio de un documento
-de identidad o 100 euros de fianza. Las normas no indican el precio. Ni las
+carros de mano son de pago según las normas del parque, por un precio que no
+indican, a cambio de un documento de identidad o 100 euros de fianza. Ni las
 preguntas frecuentes ni las normas mencionan un Rider Switch ni el cambio de
 turno. Al terminar cada viaje, todos los visitantes tienen que bajarse de la
 atracción, y quien quiera repetir tiene que volver a hacer cola.
@@ -330,14 +330,14 @@ entradas. De 90 a 140 centímetros la entrada cuesta 32,50 euros, y desde 140
 centímetros, 39,50 euros, según la categoría del día. El día del cumpleaños se
 entra por 0 euros con documento de identidad.
 
-Todos los baños, salvo los de Ithaka, tienen cambiadores. Hay microondas gratis en
-la Waldstube y en la Katara Plaza, y el parque no menciona calientabiberones. Para
+Todos los baños, salvo los de Ithaka, tienen cambiadores. Para calentar, el parque
+solo nombra microondas, gratis en la Waldstube y en la Katara Plaza. Para
 sacarse leche hay que dirigirse al personal de la entrada principal.
 
 Se puede llevar una silla de paseo o un carro de mano, y el parque recomienda un
-candado de cadena. Toverland no alquila nada. El Baby Switch vale en atracciones
-seleccionadas, sin límite de edad. Se recoge un billete especial en el acceso, y
-un adulto puede subir por la salida. El parque no dice qué atracciones son.
+candado de cadena. Toverland no alquila nada. El Baby Switch vale sin límite de edad en
+atracciones seleccionadas, que el parque no enumera. Se recoge un billete
+especial en el acceso, y un adulto puede subir por la salida.
 
 En Land van Toos, una zona con naves cubiertas, los niños acompañados suben desde 0
 centímetros al Klokhuis y a Morrels Truckjes, y solos desde 90. Toos-Express,
@@ -369,8 +369,9 @@ hijo con nombre y número de móvil recibe una pulsera en el Guest Service.
 Las sillas de paseo cuestan 10 euros más 50 euros de fianza en la Gift Shop y no
 se pueden reservar de antemano. En la web del parque no consta si se admite un
 cochecito o un carro de mano propio. Se puede llevar comida y bebida. El
-cambio de turno se llama «baby change». Un adulto espera con el niño en la salida
-y después sube por allí sin hacer cola. El parque no dice qué atracciones participan.
+cambio de turno se llama «baby change», y el parque no dice en qué atracciones
+vale. Un adulto espera con el niño en la salida y después sube por allí sin
+hacer cola.
 
 La página de Kids incluye Merrie Go'Round (con acompañante
 desde 0, solo desde 120 centímetros), Walibi's Fun Recorder, Garage, Bubble Swirl
@@ -390,7 +391,7 @@ Ibilaw, del 10 de octubre al 8 de noviembre de 2026. Los niños de menos de 13 a
 entrar al parque con adultos y están bajo supervisión constante.
 
 El Baby Switch es gratis y no se puede combinar con el Speedy Fast-Pass ni con el
-Easy-pass. Cómo funciona, el texto de la página no lo explica. Ni la página de
+Easy-pass. La página no explica cómo funciona. Ni la página de
 servicios ni las preguntas frecuentes ni las normas del parque mencionan un
 cambiador. Dar el pecho está permitido en todo el parque. Quien busque
 tranquilidad puede ir a la enfermería. En los restaurantes hay microondas para
@@ -423,7 +424,7 @@ alimentación infantil.
 
 El parque explica el Baby Switch en una página propia. Después de la primera
 vuelta, ambos adultos van al operador, que deja subir al otro adulto sin
-nueva cola. Vale para niños por debajo de la altura mínima. La página no da una
+nueva cola. Vale para niños por debajo de la altura mínima. La página no tiene una
 lista completa de atracciones.
 
 La zona infantil se llama «Attractions for Little Gauls». El parque da una edad
@@ -437,9 +438,7 @@ los niños y se les da una pulsera con las atracciones a las que pueden subir.
 
 ## Cuándo está vacío un parque
 
-La tabla indica, para
-ocho de los diez parques, el día de la semana con el tiempo de espera medio más
-bajo.
+Walibi Belgium y Parc Astérix no entran en esta comparación.
 
 ```park-comparison-widget slugs=efteling,europa-park,phantasialand,attractiepark-toverland,legoland-deutschland,heide-park,plopsaland-deutschland,walibi-holland show=quietest
 

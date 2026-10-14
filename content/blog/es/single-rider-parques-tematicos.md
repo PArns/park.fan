@@ -2,6 +2,7 @@
 title: 'Single rider: en qué parques subes antes yendo solo'
 translationKey: single-rider-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -46,6 +47,21 @@ vehículo, junto a desconocidos. A cambio, sueles esperar menos que en la cola n
 
 En park.fan, 66 atracciones de 18 parques tienen cola single rider.
 
+## De dónde viene la cola single rider
+
+Disneyland, en Anaheim, abrió el 17 de julio de 1955. Tres años después, Walt Disney envió al comité
+de operaciones del parque un memorando que la Wikipedia en inglés fecha el 31 de julio de 1958:
+
+> [!QUOTE]
+> Quizá en las horas punta deberíamos […] crear una cola especial para single riders, pidiéndoles que
+> se junten.
+>
+> [en] Perhaps during peak hours we should […] establish a special line for single riders, with the request that they double up.
+>
+> Walt Disney, memorando de 1958, citado por Marcy Carriker Smothers en una [entrevista con D23 del 15 de diciembre de 2021](https://d23.com/inside-walts-disneyland-an-immersive-guide-to-the-park-walt-helped-create/), traducido del inglés
+
+Smothers publicó el memorando en su libro «Walt's Disneyland», editado en 2021 por Disney Editions.
+
 ## Cómo funciona una entrada single rider
 
 Un tren tiene grupos de asientos fijos, y no todos los grupos de la cola normal los llenan. Cuando
@@ -69,6 +85,27 @@ En todos los parques cuya web pudimos leer:
 
 ```
 
+## Cuántas plazas van una al lado de otra en cada fila
+
+Que quede una plaza libre en el tren depende de cuántos visitantes se sientan uno al lado de otro. Con
+dos plazas por fila, un grupo de tres ocupa una fila entera y una plaza de la siguiente. En Baron
+1898 se sientan seis visitantes por fila, y un grupo de cuatro deja dos plazas vacías en la suya. Los
+datos de las montañas rusas con single rider del Europa-Park, el Efteling y el Phantasialand proceden
+de la Roller Coaster DataBase (RCDB).
+
+| Atracción                | Parque        | Fabricante                   | Apertura | Plazas por fila | Plazas por tren | Pasajeros por hora |
+| ------------------------ | ------------- | ---------------------------- | -------- | --------------- | --------------- | ------------------ |
+| Eurosat – CanCan Coaster | Europa-Park   | Mack Rides                   | 1989     | 2               | 14              | –                  |
+| blue fire Megacoaster    | Europa-Park   | Mack Rides                   | 2009     | 2               | 20              | 1.720              |
+| WODAN – Timburcoaster    | Europa-Park   | Great Coasters International | 2012     | 2               | 24              | 1.250              |
+| ARTHUR                   | Europa-Park   | Mack Rides                   | 2014     | 4               | 12              | 1.500              |
+| Voltron Nevera           | Europa-Park   | Mack Rides                   | 2024     | 4               | 16              | 1.600              |
+| Python                   | Efteling      | Vekoma                       | 1981     | 2               | 28              | –                  |
+| Joris en de Draak        | Efteling      | Great Coasters International | 2010     | 2               | 24              | 1.750              |
+| Baron 1898               | Efteling      | Bolliger & Mabillard         | 2015     | 6               | 18              | 1.000              |
+| Max & Moritz             | Efteling      | Mack Rides                   | 2020     | 2               | 40              | –                  |
+| Taron                    | Phantasialand | Intamin                      | 2016     | 2               | 16              | 1.200              |
+
 ## Para quién compensa y cuándo no
 
 La entrada single rider compensa en tres casos: vas solo al parque, tu grupo puede separarse, o
@@ -79,7 +116,9 @@ No compensa en estos casos:
 
 - **Vas con un niño que necesita acompañante.** En Eurosat, en el Europa-Park, la web del parque
   indica de 120 a 195 centímetros, y por debajo de 130 solo con un adulto. Quien necesita al niño a su
-  lado no puede subir por separado.
+  lado no puede subir por separado. Para padres que montan uno detrás de otro, el Europa-Park ofrece
+  el Baby-Switch. Uno monta, el otro espera con el niño y después sube por la salida o por una entrada
+  propia. Según el parque, solo existe en las montañas rusas más grandes.
 - **Queréis montar juntos.** El Efteling permite a los grupos usar la entrada single rider, pero
   montan uno detrás de otro. Solo si por casualidad quedan varios sitios libres juntos se sientan
   una al lado de otra las personas de la cola single rider.
@@ -98,8 +137,6 @@ comunicaban en total 41 colas single rider, 19 de ellas abiertas, en siete
 parques. Ninguna de las 41 traía tiempo de espera. Los parques nos comunican que la cola está
 abierta, pero no su longitud. En la página de la atracción, park.fan muestra entonces «Single Rider»
 sin tiempo, y las tablas de este artículo muestran la cola normal.
-
-Cuánto tiempo ahorra la entrada no se puede calcular por ahora con nuestros datos.
 
 ## Atracciones con single rider por parque
 
@@ -133,23 +170,23 @@ zona temática Minimoys Kingdom; WODAN – Timburcoaster y blue fire Megacoaster
 – CanCan Coaster, en Francia; el Voletarium, en Alemania; y Voltron Nevera powered by Rimac, en
 Croacia.
 
-Dos de ellas las confirma el propio parque. En la página de
-[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) figura entre las características
-el single rider como cola especial para personas individuales, y lo mismo en la de
-[Eurosat – CanCan Coaster](ref:europa-park/eurosat-cancan-coaster). Voltron Nevera admite pasajeros
+El parque enumera las seis bajo «Single Rider» en su página de consejos para la visita. En las páginas
+de [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) y de
+[Eurosat – CanCan Coaster](ref:europa-park/eurosat-cancan-coaster) el single rider figura además entre
+las características de la atracción, como cola especial para personas individuales. Voltron Nevera admite pasajeros
 desde 130 centímetros y un tren tiene capacidad para 16 personas. En Eurosat el límite va de 120 a
 195 centímetros y desde los seis años; por debajo de los ocho solo sube quien lleva un adulto.
 
+blue fire, WODAN, el Voletarium y Voltron Nevera ofrecen además la VirtualLine. Reservas una
+franja horaria en la app y pasas el tiempo hasta entonces en otro lugar del parque.
+
 Las seis atracciones tienen una altura mínima de 120 o 130 centímetros, según los datos de nuestra
 base de datos. La entrada single rider ayuda por eso sobre todo a adolescentes y adultos que van
-solos o en un grupo sin niños pequeños. Cómo organizar con sentido el día en el parque lo cuenta la
-[guía del Europa-Park](/blog/europa-park-tiempos-de-espera-consejos).
+solos o en un grupo sin niños pequeños.
 
 ```ride-waits-widget rides=europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/blue-fire-megacoaster|blue fire;europa-park/wodan-timburcoaster|WODAN;europa-park/eurosat-cancan-coaster|Eurosat;europa-park/voletarium|Voletarium;europa-park/arthur|ARTHUR columns=land,peak
 
 ```
-
-En la tabla aparece la cola normal.
 
 ```hourly-profile-widget slug=europa-park top=6
 
@@ -157,10 +194,12 @@ En la tabla aparece la cola normal.
 
 ## Efteling
 
-El [Efteling](ref:efteling) tiene la descripción oficial más completa que hemos encontrado. La página
-sobre la entrada single rider enumera seis atracciones: Danse Macabre, Joris en de Draak, Symbolica,
-Baron 1898, Max & Moritz y Python. Cada una tiene dos colas, una para grupos y familias y otra para
-individuales. Nuestros datos añaden De Vliegende Hollander, que la página del parque no enumera.
+Del [Efteling](ref:efteling) procede la descripción oficial más completa que hemos encontrado. La página sobre la
+entrada single rider enumera bajo «Atracciones con entrada single rider» seis atracciones: Danse
+Macabre, Joris en de Draak, Symbolica, Baron 1898, Max & Moritz y Python. Cada una tiene dos colas,
+una para grupos y familias y otra para individuales, además de una entrada para visitantes con
+discapacidad, casi siempre cerca de la salida. En las respuestas más arriba de esa misma página falta
+Baron 1898. En la cola normal, el Efteling garantiza a los grupos que se sentarán juntos. Nuestros datos añaden De Vliegende Hollander, que la página del parque no enumera.
 
 Según la página, el single rider no elige el asiento ni, en Symbolica, cuál de las tres visitas guiadas al palacio le toca. Los grupos pueden usar la entrada, pero montan uno detrás de
 otro, y los niños pueden entrar solos si cumplen los requisitos de la atracción. La página no
@@ -180,7 +219,7 @@ En el [Phantasialand](ref:phantasialand) tres atracciones tienen entrada single 
 [Taron](ref:phantasialand/taron) y [Raik](ref:phantasialand/raik), en la zona temática Mystery, y
 [Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn), en Mexico.
 
-De las 40 atracciones del Phantasialand sabemos si tienen entrada single rider, así que las tres atracciones son la lista completa. La altura mínima es de 140 centímetros en Taron, de 130 en Chiapas y de 120 en Raik.
+La altura mínima es de 140 centímetros en Taron, de 130 en Chiapas y de 120 en Raik.
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/raik|Raik;phantasialand/chiapas-die-wasserbahn|Chiapas columns=land,peak
 
@@ -188,7 +227,6 @@ De las 40 atracciones del Phantasialand sabemos si tienen entrada single rider, 
 
 ## Disneyland Paris
 
-El resort tiene dos parques.
 En [Disney Adventure World](ref:disney-adventure-world) son siete: Spider-Man W.E.B. Adventure y
 Avengers Assemble: Flight Force, en el Marvel Avengers Campus; Frozen Ever After, en la World of
 Frozen; Ratatouille: L’Aventure Totalement Toquée de Rémy, en el Toon Studio; y, también en el Toon
@@ -198,16 +236,27 @@ proporción más alta de todos los parques de la tabla.
 En el [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) son dos: Star Wars
 Hyperspace Mountain, en Discoveryland, e Indiana Jones and the Temple of Peril, en Adventureland.
 
+En su página del servicio Single Rider, el resort enumera seis atracciones: Star Wars Hyperspace
+Mountain y, en Disney Adventure World, Crush’s Coaster, Frozen Ever After, RC Racer, Ratatouille y Toy
+Soldiers Parachute Drop. Spider-Man W.E.B. Adventure y Avengers Assemble: Flight Force llevan el
+distintivo Single Rider en sus propias páginas. Según el resort, el
+servicio es gratuito y tiene una entrada propia para visitantes dispuestos a separarse y subir uno a
+uno. No da acceso inmediato ni permite elegir asiento y vehículo.
+
 ```ride-waits-widget rides=disney-adventure-world/frozen-ever-after|Frozen Ever After;disney-adventure-world/spider-man-web-adventure|Spider-Man W.E.B. Adventure;disney-adventure-world/crushs-coaster|Crush’s Coaster;disney-adventure-world/rc-racer|RC Racer;/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain|Star Wars Hyperspace Mountain;/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril|Indiana Jones and the Temple of Peril columns=park,peak
 
 ```
 
 ## Alton Towers y Thorpe Park
 
-En [Alton Towers](ref:alton-towers) son cuatro atracciones de la zona Thrills: TH13TEEN, Spinball
+En nuestros datos, [Alton Towers](ref:alton-towers) tiene cuatro atracciones de la zona Thrills: TH13TEEN, Spinball
 Whizzer, The Smiler y Galactica. En [Thorpe Park](ref:thorpe-park) son dos, ambas de la zona
 Coasters: SAW – The Ride e Hyperia. La altura mínima es de 120 centímetros en TH13TEEN y Spinball
 Whizzer, de 130 en Hyperia y de 140 en The Smiler, Galactica y SAW.
+
+Alton Towers enumera en su página de ayuda seis atracciones con single rider, además de nuestras
+cuatro también Oblivion y Toxicator. Thorpe Park cita en su página de tiempos de espera Stealth y The
+Swarm, y escribe que la cola single rider puede reducir allí la espera a la mitad.
 
 ```ride-waits-widget rides=alton-towers/the-smiler|The Smiler;alton-towers/galactica|Galactica;alton-towers/th13teen|TH13TEEN;alton-towers/spinball-whizzer|Spinball Whizzer;thorpe-park/hyperia|Hyperia;thorpe-park/saw-the-ride|SAW – The Ride columns=park,peak
 
@@ -215,8 +264,9 @@ Whizzer, de 130 en Hyperia y de 140 en The Smiler, Galactica y SAW.
 
 ## PortAventura
 
-En el [PortAventura Park](ref:portaventura-park) conocemos cuatro atracciones: Hurakan Condor,
-Furius Baco, Shambhala y Dragon Khan.
+En el [PortAventura Park](ref:portaventura-park) conocemos cuatro atracciones con single rider: Hurakan Condor, Furius Baco,
+Shambhala y Dragon Khan. En su blog, el parque solo dice de forma general que algunas atracciones
+tienen cola single rider.
 
 ```ride-waits-widget rides=portaventura-park/shambhala|Shambhala;portaventura-park/dragon-khan|Dragon Khan;portaventura-park/furius-baco|Furius Baco;portaventura-park/hurakan-condor|Hurakan Condor columns=peak
 
@@ -229,7 +279,8 @@ Smugglers Run, Star Wars: Rise of the Resistance y Rock ’n’ Roller Coaster S
 Disney’s Hollywood Studios, y Remy’s Ratatouille Adventure y Test Track, en EPCOT. A ellas se suma
 Expedition Everest, en Disney’s Animal Kingdom, que no figura en la lista del parque.
 
-Según esa misma página, el servicio permite a los grupos separarse y subir por separado. El acceso
+Según esa misma página, el servicio permite a los grupos separarse y subir por separado. Los single riders ocupan las plazas
+que no llenan ni los visitantes de la cola standby ni los de las entradas Lightning Lane. El acceso
 inmediato y la elección del asiento no están garantizados, puede que no se atiendan peticiones
 especiales de asiento, y las atracciones participantes y los tiempos de espera pueden cambiar.
 
@@ -276,24 +327,22 @@ Challenge.
 
 ## Shanghai Disneyland y Hong Kong Disneyland
 
-Los dos parques Disney asiáticos tienen dos y tres atracciones. En
+En
 [Shanghai Disneyland](ref:shanghai-disneyland) son Zootopia: Hot Pursuit y Seven Dwarfs Mine Train;
 en [Hong Kong Disneyland](ref:hong-kong-disneyland-park), Hyperspace Mountain, Big Grizzly Mountain
-Runaway Mine Cars y Toy Soldier Parachute Drop.
+Runaway Mine Cars y Toy Soldier Parachute Drop. Para Hyperspace Mountain, Hong Kong Disneyland indica
+una altura mínima de 102 centímetros.
 
 ## Cómo planear un día con single rider
 
-**Elige antes dos o tres atracciones.** En la página del parque de park.fan ves qué atracciones llevan
+Elige antes dos o tres atracciones. En la página del parque de park.fan ves qué atracciones llevan
 el distintivo. La entrada vale más en la atracción cuya cola normal es la más larga.
 
-**Comprueba si la cola está abierta antes de separaros.** En la página de la atracción aparece el
+Comprueba si la cola está abierta antes de separaros. En la página de la atracción aparece el
 distintivo «Single Rider» con el estado de la cola. Puede estar cerrada sin que la atracción lo esté.
 
-**Repartíos si compensa.** Para dos adultos, lo más rápido es que uno haga la cola normal y el otro
+Repartíos si compensa. Para dos adultos, lo más rápido es que uno haga la cola normal y el otro
 entre por la single rider. Quien monta primero espera en la salida.
-
-Cómo se siente la espera y por qué avanzar puestos en la cola no sirve de nada lo cuenta el artículo
-[El arte de esperar](/blog/el-arte-de-esperar).
 
 ## Preguntas frecuentes sobre single rider
 
@@ -315,8 +364,8 @@ junto al adulto, así que la entrada single rider queda descartada.
 
 ### ¿Qué atracciones del Europa-Park tienen single rider?
 
-Seis: ARTHUR, WODAN, blue fire, Eurosat, el Voletarium y Voltron Nevera. El parque lo indica
-expresamente en las páginas de Voltron Nevera y de Eurosat.
+Seis: ARTHUR, WODAN, blue fire, Eurosat, el Voletarium y Voltron Nevera. El parque enumera las
+seis en su página de consejos para la visita.
 
 ### ¿Qué atracciones del Efteling tienen single rider?
 
@@ -345,8 +394,8 @@ en la mayoría de las atracciones, en el Disneyland Park de París en 41 de 43 y
 de Anaheim en 54 de 56. Allí puede haber más atracciones con single rider, igual que en los 185
 parques donde no conocemos ninguna.
 
-Para el Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal y los
-parques Disney asiáticos no pudimos leer ninguna página del parque que confirme la lista.
+Para el Phantasialand, PortAventura, Universal y los parques Disney asiáticos no pudimos leer ninguna
+página del parque que confirme la lista.
 
 ## Para seguir leyendo
 
@@ -367,6 +416,30 @@ parques Disney asiáticos no pudimos leer ninguna página del parque que confirm
   [Voltron Nevera powered by Rimac (oficial)](https://www.europapark.de/en/theme-park/attractions/voltron-nevera-powered-rimac)
 - Eurosat, límites de altura y edad y nota sobre single rider:
   [Eurosat – CanCan Coaster (oficial)](https://www.europapark.de/en/theme-park/attractions/eurosat-cancan-coaster)
+- El memorando de Walt Disney de 1958:
+  [Inside Walt’s Disneyland (D23)](https://d23.com/inside-walts-disneyland-an-immersive-guide-to-the-park-walt-helped-create/),
+  [Single rider (Wikipedia, que remite a la página 130 del libro)](https://en.wikipedia.org/wiki/Single_rider)
+- Europa-Park, las seis atracciones, VirtualLine y Baby-Switch:
+  [Consejos para tu visita (oficial)](https://www.europapark.de/en/theme-park/info/plan-your-visit/tips-your-europa-park-visit)
+- Disneyland Paris, lista y normas:
+  [Single Rider service (oficial)](https://www.disneylandparis.com/en-gb/guest-services/single-rider-service),
+  [Spider-Man W.E.B. Adventure (oficial)](https://www.disneylandparis.com/en-gb/attractions/disney-adventure-world/spider-man-web-adventure),
+  [Avengers Assemble: Flight Force (oficial)](https://www.disneylandparis.com/en-gb/attractions/disney-adventure-world/avengers-assemble-flight-force)
+- Alton Towers, seis atracciones:
+  [Do you operate single rider queuelines? (oficial)](https://support.altontowers.com/hc/en-us/articles/360002576232-Do-you-operate-single-rider-queuelines)
+- Thorpe Park, Stealth y The Swarm:
+  [Queue Times (oficial)](https://www.thorpepark.com/plan-your-visit/resort-information/queue-times/)
+- PortAventura:
+  [Who to take to PortAventura (blog oficial)](https://www.portaventuraworld.com/blog/en/who-to-take-to-portaventura)
+- Hyperspace Mountain en Hong Kong, altura mínima:
+  [Hyperspace Mountain (oficial)](https://www.hongkongdisneyland.com/attractions/hyperspace-mountain/)
+- Fabricante, apertura, filas de asientos y capacidad de las montañas rusas:
+  RCDB: [Eurosat](https://rcdb.com/973.htm), [blue fire](https://rcdb.com/4074.htm),
+  [WODAN](https://rcdb.com/10018.htm), [ARTHUR](https://rcdb.com/11114.htm),
+  [Voltron](https://rcdb.com/7121.htm), [Python](https://rcdb.com/897.htm),
+  [Joris en de Draak](https://rcdb.com/4526.htm), [Baron 1898](https://rcdb.com/12083.htm),
+  [Max + Moritz](https://rcdb.com/16697.htm), [Taron](https://rcdb.com/12723.htm)
+- Apertura de Disneyland: [Disneyland (Wikipedia)](https://en.wikipedia.org/wiki/Disneyland)
 - Qué atracciones de qué parque tienen la característica, las cifras de la tabla y las colas en vivo:
   consulta a la API de park.fan (`/v1/parks/<continente>/<país>/<ciudad>/<parque>`, campos
   `hasSingleRider` y `queues`), 203 parques con tiempos de espera

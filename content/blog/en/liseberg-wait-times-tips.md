@@ -2,6 +2,7 @@
 title: 'Liseberg: Balder, Helix and a Park in Central Gothenburg'
 translationKey: liseberg-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -61,8 +62,7 @@ Liseberg in Gothenburg was built in 1923 for a jubilee exhibition and was meant
 to disappear again afterwards. Today the grounds hold four big coasters, the
 [AtmosFear](ref:liseberg/atmosfear) tower with a 90-metre free fall and, in
 autumn, five haunted houses. In November the Christmas market joins in. The site
-is on the edge of the city centre, and according to the park the central station
-is a 10 to 15 minute walk away. For 2025 the park gives around **3 million
+is on the edge of the city centre. For 2025 the park gives around **3 million
 guests** for the year.
 
 ## How an exhibition became a park
@@ -90,6 +90,17 @@ birthday. The pink of the buildings dates from the 1923 exhibition. The
 mountain railway of that time was torn down in **1987** and replaced by the
 [Lisebergbanan](ref:liseberg/lisebergbanan), which Anton Schwarzkopf had
 designed for the same hill.
+
+Liseberg has taken down six roller coasters, the Kanonen included. The 1923
+mountain railway had been built by Valdemar Lebech. The **Super 8**, a Schwarzkopf
+Wildcat, ran from 1966 to 1979 and then moved to a park in Karlstad. From 1980 to
+1995 the **Lisebergs Loopen** ran, a Schwarzkopf Looping Star with one loop,
+24.5 metres tall with a top speed of 77 km/h, which later stood at Playcenter in
+São Paulo, among other parks. Its place went in 1997 to **HangOver**, Vekoma’s
+first Invertigo, 40 metres tall, with a top speed of 80 km/h and three inversions.
+It had been planned for 1996 with linear motors. Because of problems with that
+technology it was given a chain lift instead and opened a year later. It ran until 2002. The children’s coaster **Cirkusexpressen** by Zierer ran from 1977 to 2008,
+until 1985 under the name Lilla Bergbanan.
 
 Since **2000** Liseberg has opened in winter ("Jul på Liseberg"), and 418,000
 guests came in the first year. **2015** brought Halloween. In **2020** the park stayed closed the entire season because of the pandemic, for the first time
@@ -122,13 +133,12 @@ stands on the other side of the Mölndalsån river, like the Kållerado.
 
 ```
 
-In our measurements Balder is one of the four rides with the longest wait times.
 The Roller Coaster DataBase gives the ride a capacity of around 1,149 guests per
 hour.
 
 [Balder](ref:liseberg/balder?full)
 
-## Helix, Valkyria and the Lisebergbanan
+## The steel coasters
 
 **[Helix](ref:liseberg/helix)** opened on **26 April 2014** and, according to the
 park, cost almost 240 million kronor; the Roller Coaster DataBase gives 200
@@ -149,7 +159,7 @@ the Kanonen. The Kanonen was an Intamin launch coaster that opened on 23 April
 2005 and ran for the last time on 30 December 2016. Valkyria is a Bolliger &
 Mabillard dive coaster with three inversions and a steep first drop **50 metres**
 long that leads straight into a tunnel underground. The park gives **47 metres**
-of height and **105 km/h**. Valkyria needs **132 cm** plus seven years and, like
+of height and **105 km/h**. Its 700 metres of track hold an Immelmann, a zero-g roll and a heartline roll. Three trains of 18 seats, six abreast in one row, carry around 1,100 guests an hour. Valkyria needs **132 cm** plus seven years and, like
 Mechanica, has an upper limit of 195 cm.
 
 The Kanonen was the first ride of its kind in the north. The train shot out
@@ -165,14 +175,14 @@ station. Underneath it is a restaurant with replica carriages. The height
 requirement is 130 cm, or 110 cm with an accompanying adult. In autumn and
 winter it only runs during Halloween; it isn’t on the list for the Jul programme.
 
-**[Luna](ref:liseberg/luna)**, opened in 2023, is a Vekoma boomerang,
+**[Luna](ref:liseberg/luna)**, opened on 22 April 2023, is a Vekoma boomerang,
 33.5 metres tall and 242 metres long, that sends the train first forwards, then
-backwards through the same course. Luna requires 120 cm plus an age of six, or
-95 cm plus an age of three with an accompanying adult. For the little ones there are the **[Rabalder](ref:liseberg/rabalder)** by Zierer (2009) and the
-**[Stampbanan](ref:liseberg/stampbanan)** by Preston & Barbieri (2013), both in
+backwards through the same course. It reaches up to 68 km/h. It stands in the Luna Park themed area on the highest point of the park and opened for the park’s 100th birthday. Luna requires 120 cm plus an age of six, or
+95 cm plus an age of three with an accompanying adult. For the little ones there are the **[Rabalder](ref:liseberg/rabalder)** by Zierer (25 April 2009, 9 metres tall, 39 km/h) and the
+**[Stampbanan](ref:liseberg/stampbanan)** by Preston & Barbieri (27 April 2013, just over 3 metres tall), both in
 Rabbit Land. On both a child needs 110 cm, or 90 cm with an accompanying adult.
 
-## AtmosFear, water rides and the other rides
+## The other rides
 
 The **[AtmosFear](ref:liseberg/atmosfear)** tower was built in 1990 as an
 observation tower ("Lisebergstornet"); the last group went up it on 30 May 2010,
@@ -237,7 +247,7 @@ for Vinden, Zombie, Nattsvart på Gasten and Skogen, **15 years** for "7".
 
 ```
 
-## Haunted hotel, stages and the Stjärnstigen
+## Haunted hotel and stages
 
 The **Spökhotellet Gasten** opened in 1998 and won a THEA Award from the Themed
 Entertainment Association in California in autumn 1999. It’s on the list of
@@ -281,8 +291,6 @@ and an hour later on the FlumeRide. The Rabbit Land rides peak more in the early
 afternoon. If you’re there at noon, there’s less of a crowd at the four big rides
 than at four.
 
-The quietest of the upcoming opening days, calculated live:
-
 ```best-days-widget slug=liseberg
 
 ```
@@ -301,9 +309,7 @@ ride. It exists for AeroSpin, Balder, FlumeRide, Helix, Kållerado, Kraftverket,
 Lisebergbanan, Loke, Luna, Mechanica, the haunted house Gasten, Underlandet and
 Valkyria. Each group can only have one reservation at a time, for one to six
 people, and the normal queue stays alongside it. Whether the virtual queue runs
-on a given day depends, according to the park, on how many guests are there. If
-you want to ride Valkyria or Helix, you join the queue in the app first and ride
-something else in the meantime.
+on a given day depends, according to the park, on how many guests are there.
 
 ## When to go
 
@@ -319,8 +325,7 @@ as Monday or Tuesday. In autumn the park closes at 20:00 on Sundays and at 22:00
 on Fridays and Saturdays.
 
 The 2026 summer season began on **18 April** at 11:00. When it ends, the park
-doesn’t say. The calendar on the [park page](ref:liseberg) shows what has been
-published for the next few weeks.
+doesn’t say.
 
 ### Halloween: 2 October to 1 November 2026
 
@@ -358,7 +363,7 @@ opening days. The dates of other parks are in the
 
 The first Julmarknad took place on 7 December 1974, over two weekends, once more
 in 1975, and then not for 25 years. Since 2000 Liseberg has opened every winter.
-The park calls itself "Sveriges största julmarknad", Sweden’s biggest Christmas
+Liseberg advertises "Sveriges största julmarknad", Sweden’s biggest Christmas
 market. 2025 was the 25th anniversary, with 2,100 trees, seven tonnes of
 artificial snow, five million lights and a 116-metre tree, according to the
 park’s announcement of 6 November 2025.
@@ -393,9 +398,7 @@ season, online:
 
 Without an Åkpass a single ride costs one Åkkupong at 25 kronor, and a haunted
 house two to four coupons. On the "Höst i Kaninlandet" days admission costs 95
-kronor, and 245 kronor with the children’s rides. The park’s site no longer
-shows the 2026 summer prices. Which of
-the seven tiers applies on which day is in the park’s price calendar as a PDF.
+kronor, and 245 kronor with the children’s rides.
 
 If you come more often, you buy an annual pass (twelve months from activation):
 the **Lisebergspasset** for 395 kronor covers admission, and the **Guldpasset**
@@ -410,12 +413,11 @@ Korsvägen, with the stops Korsvägen and Liseberg Station, and the **Södra
 entrén** at Herman Lindholms torg 1 with the stop Liseberg Södra. From the
 central station, Göteborg Central, it’s 10 to 15 minutes on foot according to the
 park, and in summer a historic tram, the Lisebergslinjen, runs between Central
-and the park. For the tram lines the park refers you to Västtrafik.
+and the park.
 
 If you come by car, there are three car parks: **P-huset Liseberg Södra** under
 World of Volvo (1,170 spaces), **P-huset Liseberg Västra** at Södra Vägen 70
-(162 spaces) and **P-huset Focus** at Fabriksgatan 45 (1,057 spaces). The parking
-fees are listed at Parkering Göteborg.
+(162 spaces) and **P-huset Focus** at Fabriksgatan 45 (1,057 spaces).
 
 ## Staying and eating
 
@@ -476,13 +478,11 @@ accompanying adult.
 
 The summer season began on 18 April. Halloween runs from 2 October to 1
 November, and Jul på Liseberg on selected days from 14 November to 30 December.
-In winter Rabbit Land also opens on weekends. The calendar on the
-[park page](ref:liseberg) always shows the next few weeks.
+In winter Rabbit Land also opens on weekends. On the [park page](ref:liseberg) the calendar always covers the next few weeks.
 
 ### When is Liseberg least busy?
 
-On Sunday, by a clear margin over Tuesday in our measurements. In winter it’s
-quieter still, but then only a few rides run.
+On Sunday, by a clear margin over Tuesday in our measurements.
 
 ### Can I bring food?
 
@@ -528,7 +528,10 @@ programmes. Another wooden coaster is in the guide to [Heide Park](/blog/heide-p
   · [Oceana (official)](https://www.liseberg.se/oceana/)
 - Technical data for the coasters:
   [Balder](https://rcdb.com/1562.htm) · [Helix](https://rcdb.com/11048.htm) ·
-  [Lisebergbanan](https://rcdb.com/1061.htm) in the Roller Coaster DataBase ·
+  [Lisebergbanan](https://rcdb.com/1061.htm) ·
+  [Valkyria](https://rcdb.com/14301.htm) · [Luna](https://rcdb.com/19785.htm) ·
+  [Rabalder](https://rcdb.com/4354.htm) · [Stampbanan](https://rcdb.com/10779.htm) ·
+  [removed coasters](https://rcdb.com/4909.htm) ([Bergbanan](https://rcdb.com/1453.htm), [Super 8](https://rcdb.com/2401.htm), [Lisebergs Loopen](https://rcdb.com/1098.htm), [HangOver](https://rcdb.com/1060.htm), [Cirkusexpressen](https://rcdb.com/1059.htm)) in the Roller Coaster DataBase ·
   [Balder on en.wikipedia](<https://en.wikipedia.org/wiki/Balder_(roller_coaster)>) ·
   [Helix on sv.wikipedia](<https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)>) ·
   [AtmosFear on sv.wikipedia](https://sv.wikipedia.org/wiki/Atmosfear) ·

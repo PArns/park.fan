@@ -162,9 +162,8 @@ nessun feed, quindi non c’è scritto nulla al riguardo.
 
 ## Due pulsanti ordinano la giornata
 
-Sotto la linea del tempo ci sono due pulsanti. «Pianifica tutte le attrazioni
-principali» aggiunge le grandi del parco che non sono ancora nella giornata e
-poi ordina tutto. «Ottimizza la giornata» non aggiunge nulla e riordina soltanto
+Il pulsante «Pianifica tutte le attrazioni principali», sotto la linea del tempo, aggiunge le grandi del parco che non sono ancora nella giornata e
+poi ordina tutto. «Ottimizza la giornata», lì accanto, non aggiunge nulla e riordina soltanto
 quello che c’è già. Dietro entrambi gira lo stesso calcolo. Sono due pulsanti
 perché sono due domande: riempimi la giornata, e l’ordine può essere migliore.
 
@@ -217,7 +216,7 @@ per il momento in cui vedi gli undici blocchi e deglutisci.
 Ci abbiamo messo più tempo su quattro punti in cui il pianificatore afferma di
 proposito meno di quanto potrebbe.
 
-**La previsione sbaglia, e in modo misurabile.** Su ogni blocco selezionato c’è
+La previsione sbaglia, e in modo misurabile. Su ogni blocco selezionato c’è
 scritto di quanto, in media negli ultimi 45 giorni, le previsioni per una coda
 di quella lunghezza e con quell’anticipo si sono discostate da quello che la
 giornata ha portato davvero. C’è fino a 60 giorni prima; più in là la misura
@@ -226,14 +225,14 @@ ancora non arriva. (Dalle previsioni del tempo lo vorrei da anni.) Una media non
 numero sta lì come errore tipico e mai come intervallo che conterrebbe già la
 risposta giusta.
 
-**Gli orari degli spettacoli sono due cose diverse.** Quello che il parco ha
+Un orario di spettacolo può essere una stima. Quello che il parco ha
 pubblicato per oggi è un annuncio. Quello che abbiamo riportato dall’ultimo
 giorno della settimana corrispondente è una supposizione, e il pianificatore la
 disegna più tenue: con una tilde davanti all’ora, una linea punteggiata e la
 data da cui vengono gli orari. Gli orari degli spettacoli del sabato fra due
 settimane non li conosce nessuno, noi compresi.
 
-**Certi parchi non riusciamo proprio a misurarli.**
+Certi parchi non riusciamo proprio a misurarli.
 [Hansa-Park](ref:hansa-park) pubblica i suoi tempi di attesa solo nella propria
 app, sul wifi del parco. Da lì non ci arriva mai un numero. Nei dati un parco
 senza fonte è identico a un parco chiuso per la notte, perciò il pianificatore
@@ -242,7 +241,7 @@ pulsanti di ordinamento. Se ogni attrazione costa lo stesso numero inventato,
 ogni ordine vale quanto un altro, e un pulsante di ordinamento lì farebbe solo
 finta.
 
-**Una giornata passata resta.** Il calendario ti lascia riaprire un giorno in
+Una giornata passata resta. Il calendario ti lascia riaprire un giorno in
 cui avevi pianificato qualcosa, e lì i pulsanti automatici non ci sono più.
 Tutto quello che si fa a mano continua: spostare, spuntare, cancellare. Una
 giornata vissuta è una registrazione, e il fatto che all’una fossi davvero in
@@ -268,7 +267,7 @@ condividere. Chi lo apre riceve una copia tutta sua nel proprio pianificatore, e
 quello che ci cambia resta a lui. È anche il modo per portare un piano dal
 computer al telefono.
 
-Ancora due cose che sfuggono facilmente. Al computer, sul bordo dello schermo di
+Al computer, sul bordo dello schermo di
 ogni pagina, c’è una linguetta che apre il pianificatore, anche quando non è
 ancora pianificato nulla; sul telefono lo fa dal 24 settembre un’icona a forma di
 calendario nella barra in alto. E al computer si può aprire una seconda colonna, e allora ci
@@ -277,8 +276,7 @@ come verrebbe?».
 
 ## Come si comincia
 
-L’ingresso passa da quattro domande. In quale parco, in che giorno, chi viene, e
-quali grandi attrazioni mettere dentro. Le immagini qui sotto mostrano ancora la
+Per cominciare rispondi a quattro domande: in quale parco, in che giorno, chi viene e quali grandi attrazioni mettere dentro. Le immagini qui sotto mostrano ancora la
 prima versione, con tre passi.
 
 La prima è un campo di ricerca, e dietro c’è una piccolezza che va storta in

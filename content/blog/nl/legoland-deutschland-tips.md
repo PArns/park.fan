@@ -2,6 +2,7 @@
 title: 'Legoland Deutschland: tips voor een dag met kinderen van drie tot twaalf'
 translationKey: legoland-deutschland-guide
 date: '2026-10-06'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -54,8 +55,7 @@ seo:
 ---
 
 **Legoland Deutschland** zegt zelf dat het gebouwd is voor kinderen van **twee tot twaalf jaar**. Voor kinderen die met een volwassene meerijden, is de hoogste minimumlengte van het hele park
-**1,25 meter**, bij [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare). Bij geen van de
-negen headliners scheelt een vroege start zoveel wachttijd dat de wekker het waard is.
+**1,25 meter**, bij [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare).
 
 De wachttijden hebben we sinds december 2025 op 188 dagen gemeten, dus in één seizoen. Prijzen, tijden en data gelden op **6 oktober 2026**.
 
@@ -64,18 +64,32 @@ De wachttijden hebben we sinds december 2025 op 188 dagen gemeten, dus in één 
 Günzburg ligt tussen Ulm en Augsburg, direct aan de A8. De Lego-groep kondigde het park op
 9 september 1999 aan als vierde na Billund, Windsor en Carlsbad, en koos Günzburg boven een locatie in Tokio. Het terrein was een munitiedepot van de Luftwaffe, en volgens Wikipedia lagen er zo’n 60.000
 bommen, 33.800 granaten en 2.800 pantservuisten uit de Tweede Wereldoorlog in de grond. Het
-opruimen duurde twee jaar en kostte 34 miljoen Duitse mark.
+opruimen duurde twee jaar en kostte 34 miljoen Duitse mark. De eerste spade ging op 27 oktober 2000
+de grond in, gestoken door een achtjarige jongen uit Günzburg en Lego-topman Kjeld Kirk
+Kristiansen, in het bijzijn van de Beierse minister-president Edmund Stoiber.
 
 Op **17 mei 2002** ging het park open, negen maanden eerder dan gepland, met meer dan 40 attracties en
-kosten van ongeveer € 153 miljoen. In het eerste jaar kwamen 1,3 miljoen gasten, in 2020 nog maar
-750.000, en in 2024 waren het volgens de index van de Themed Entertainment Association zo’n **twee
-miljoen**. Daarmee is Legoland na Europa-Park en Phantasialand het op twee na drukst bezochte pretpark van Duitsland. Merlin Entertainments exploiteert het sinds 2005. In 2019 kochten drie
+kosten van ongeveer € 153 miljoen. In het eerste jaar kwamen 1,3 miljoen gasten en verkocht het park meer dan
+20.000 jaarkaarten. In 2020 kwamen er nog maar 750.000, en in 2024 waren het volgens de index van de Themed Entertainment Association zo’n **twee
+miljoen**. Daarmee is Legoland na Europa-Park en Phantasialand het op twee na drukst bezochte pretpark van Duitsland. Nadat de Lego-groep in 2003 zo’n
+€ 174 miljoen verlies had geleden, verkocht ze in 2005 haar vier parken aan de investeerder
+Blackstone, en sindsdien exploiteert diens dochter Merlin Entertainments Legoland. In 2019 kochten drie
 investeerders Merlin voor € 6,6 miljard: Blackstone, een Canadees pensioenfonds en Kirkbi, de
 beleggingsmaatschappij van de Lego-eigenaars.
 
+Op 21 maart 2007 kwam het Land der Piraten erbij, met Käpt'n Nicks Piratenschlacht, een splash
+battle van Mack Rides. Het vakantiedorp opende op 18 juni 2008 met 50 vakantiehuizen en een camping
+op 80.000 vierkante meter. Van 5 april tot 2 november 2014 stond in de hal van de Power Builder een
+X-wing uit Star Wars op ware grootte, gebouwd uit 5,3 miljoen steentjes, en daarvoor werden vijf van
+de tien robotarmen weggehaald. Door de pandemie ging het park in 2020 twee maanden later open dan
+gepland, en in 2021 pas op 10 juni.
+
+Op 11 augustus 2022 reed bij de Feuerdrache volgens de politie een trein in op een andere. De
+politie telde 31 gewonden, van wie één zwaargewond en tien kinderen. Volgens de politie onderzocht
+het Openbaar Ministerie in Memmingen de oorzaak.
+
 Volgens het park zelf telt het nu **68 attracties in 11 themawerelden** en meer dan 58 miljoen
-Lego-steentjes. Miniland bestaat volgens het park uit meer dan 23 miljoen daarvan, gebouwd door 140
-modelontwerpers. De Allianz Arena daar bestaat uit ruim een miljoen steentjes en weegt volgens
+Lego-steentjes. Ruim 23 miljoen daarvan zitten in Miniland, gebouwd door 140 modelontwerpers. De Allianz Arena daar bestaat uit ruim een miljoen steentjes en weegt volgens
 Wikipedia 1,5 ton. Op de tribunes zitten 30.000 minifiguren. In het Reichstaggebouw uit Berlijn
 zitten ongeveer 1,07 miljoen steentjes. De jongste themawereld is **LEGO Mythica**, geopend op 25 maart 2023. Met ruim
 € 15 miljoen was het de duurste uitbreiding van het park. De wing coaster daar is de eerste nieuwe
@@ -129,12 +143,12 @@ De **[Feuerdrache](ref:legoland-deutschland/fire-dragon)** rijdt sinds mei 2002 
 gezinsachtbaan van Zierer in twee delen. Eerst gaat de trein door de vertrekken van de kasteelbewoners,
 langs de voorraadkamer, de keuken, de feestzaal en Merlins schatkamer, alles van Lego. Dan merkt de
 draak de passagiers op, en op het buitenparcours gaat het met tot acht meter per seconde door de
-bochten, dat is net geen 29 km/u. Een kind mag met een volwassene mee vanaf 1,10 meter en zes jaar.
+bochten, dat is net geen 29 km/u. Volgens RCDB is het parcours 450 meter lang en 16 meter hoog,
+ontworpen door Ingenieurbüro Stengel, en er rijden drie treinen met elk 20 plaatsen.
 
 **[Das Große LEGO Rennen](ref:legoland-deutschland/the-great-lego-race)** is een wilde muis van Mack
 Rides, 18 meter hoog, volgens Wikipedia 400 meter lang en tot 56 km/u snel. De baan reed eerder als
-Project X en is sinds 2018 aangekleed als racebaan uit Lego City. Met een volwassene is 1,10 meter
-genoeg.
+Project X en is sinds 2018 aangekleed als racebaan uit Lego City.
 
 ```glossary-widget slug=wild-mouse
 
@@ -143,8 +157,7 @@ genoeg.
 **[Flying NINJAGO](ref:legoland-deutschland/flying-ninjago)** bouwde Gerstlauer in 2012 voor de
 tiende verjaardag van het park, volgens Wikipedia een wereldprimeur van de fabrikant. Tot twaalf
 passagiers vliegen op 22 meter hoogte met 50 km/u, en door hun gewicht te verplaatsen en de vleugels
-te sturen kunnen ze de draak laten draaien tot de 360-graden “Spinjitzu-twist”. Er is één grens voor
-iedereen, 1,25 meter en zeven jaar.
+te sturen kunnen ze de draak laten draaien tot de 360-graden “Spinjitzu-twist”.
 
 De **[Dschungel X-pedition](ref:legoland-deutschland/jungle-x-pedition)** is de boomstamattractie van
 Intamin uit het openingsjaar, met een afdaling van twaalf meter waarbij volgens het park 80 liter
@@ -156,7 +169,9 @@ staat vast wie de meeste punten had. De rit duurt ongeveer drieënhalve minuut, 
 volgens het park niet te kennen.
 
 Voor de kleinere kinderen is er de **[Drachenjagd](ref:legoland-deutschland/dragon-hunt)**, een
-junior coaster van Gerstlauer uit 2003, waar ze met een volwassene vanaf een meter in mogen. In de
+junior coaster van Gerstlauer uit 2003, waar ze met een volwassene vanaf een meter in mogen. Het
+parcours meet volgens RCDB 150 meter bij 5,5 meter hoogte, de enige trein met 16 plaatsen haalt
+33 km/u en een rit duurt 35 seconden. In de
 **[Fire & Ice Tower](ref:legoland-deutschland/fire-and-ice-tower)** mogen ze al vanaf drie jaar. Je
 draait daar op negen meter hoogte en valt dan. Bij de Wellenreiter en bij Käpt'n Nicks Piratenschlacht kunnen
 toeschouwers aan de kant meedoen en de boten nat spuiten.
@@ -197,7 +212,7 @@ de Hafenrundfahrt.
 De actuele wachttijden staan op de [parkpagina](ref:legoland-deutschland), om de vijf minuten
 vernieuwd. De Legoland-app toont ze alleen als je in het park bent en je locatie hebt gedeeld.
 
-De weekdag maakt in onze metingen het grootste verschil:
+De weekdag maakt in onze metingen het grootste verschil.
 
 ```stats-widget slug=legoland-deutschland show=weekdays
 
@@ -214,7 +229,7 @@ Legoland het sterkst af van de vakanties in Beieren en Baden-Württemberg.
 ```
 
 Augustus was de drukste maand. In juni en september was het rustiger dan in mei en juli. In oktober
-hebben we tot nu toe maar vijf dagen gemeten, te weinig om er iets over te zeggen.
+hebben we tot nu toe maar vijf dagen gemeten.
 
 Het
 park gaat om 10.00 uur open, en de attracties sluiten een uur voor sluitingstijd.
@@ -245,7 +260,7 @@ negen headliners die grenzen, doordeweeks niet en in het weekend niet.
 
 ```
 
-Wie vroeg komt, begint met de twee attracties waar de wachttijd in de loop van de dag alleen oploopt: de Dschungel X-pedition en de Tret-o-Mobil. Das Große LEGO Rennen en de Hafenrundfahrt zijn in de ochtend het drukst en passen daarom beter in de middag. Maximus, de Feuerdrache en Flying NINJAGO rijd je wanneer je wilt, omdat de wachttijd daar in de loop van de dag weinig verandert.
+Wie vroeg komt, rijdt eerst de Dschungel X-pedition en de Tret-o-Mobil en bewaart Das Große LEGO Rennen en de Hafenrundfahrt voor de middag.
 
 ## Fastrack: drie niveaus en de attracties
 
@@ -268,7 +283,7 @@ entree, voor een attractie waar de tabel hierboven toch geen uitschieters laat z
 in juni zou ik Fastrack niet kopen. Op een zaterdag in de Beierse vakantie, de drukste weekdag in onze metingen, zou ik Brons nemen voor de attractie die dan bovenaan de tabel
 staat.
 
-## Tickets, prijzen en jaarkaart
+## Tickets en jaarkaart
 
 De prijzen zijn **dynamisch**. Volgens Wikipedia voerde het park eind 2024 surge pricing in, en de
 prijzen op zijn site beginnen met “vanaf”. De volgende gelden op 6 oktober 2026.
@@ -287,7 +302,7 @@ in het seizoen. De Merlin Abenteuer Pass kost € 139 en omvat parkeren bij Lego
 Merlin-attracties. Wie elke keer de online minimumprijs betaalt, heeft de € 99 na het derde bezoek
 terug.
 
-## Openingstijden, sluitingsdagen en seizoen 2026
+## Openingstijden en sluitingsdagen 2026
 
 Het seizoen loopt van **28 maart tot 8 november 2026**. Het park is dicht op **5 en 6 mei**, van **18
 tot 20 mei**, op **8 en 9 juni** en op **15, 16 en van 21 tot 23 september**. Data voor 2027 staan nog
@@ -295,7 +310,6 @@ niet op de site van het park.
 
 De gewone openingstijd is **10.00 tot 18.00 uur**, in het weekend, in vakanties en op feestdagen
 langer. In het gewone seizoen sluiten de attracties **een uur voor sluitingstijd**.
-De rustigste komende dagen staan in de kalender:
 
 ```best-days-widget slug=legoland-deutschland
 
@@ -372,9 +386,7 @@ in mei 2024 als zelfstandig park, op 2,2 hectare, met een investering van ongeve
 Het **WinterWonder LEGOLAND** loopt in 2026/27 op losse dagen: 28 en 29 november, 4 tot en met 6, 11 tot
 en met 13, 18 tot en met 23 en 26 tot en met 30 december en 2 tot en met 10 januari 2027. Er is een
 ijsbaan, er zijn curlingbanen en shows om het halfuur, en bij veel attracties staat “weersafhankelijk
-geopend”. Een vroegboekticket kost tot 15 november € 22 in plaats van € 36. Hoe het park in de
-winter naast de andere Duitse parken staat, lees je in het
-[winteroverzicht](/blog/winter-pretparken-2026).
+geopend”. Een vroegboekticket kost tot 15 november € 22 in plaats van € 36.
 
 Legoland heeft verder het eerste LEGO Harry Potter Land ter wereld aangekondigd en het eerste
 verblijf met dat thema. Een openingsjaar noemt het park daarvoor niet.
@@ -485,8 +497,15 @@ passen.
   Harry Potter: [Aankondiging (officieel)](https://www.legoland.de/harrypotter/)
 - Geschiedenis, munitiedepot, opening 2002, kosten, exploitant, bezoekersaantallen, fabrikanten en
   bouwjaren, Miniland-modellen, vakantiedorp, Peppa Pig Park, surge pricing, het Legoland in
-  Sierksdorf:
-  [Legoland Deutschland Resort op de Duitse Wikipedia](https://de.wikipedia.org/wiki/Legoland_Deutschland_Resort)
+  Sierksdorf, de eerste spade, de verkoop in 2005, het Land der Piraten, de X-wing van 2014 en de
+  pandemiejaren:
+  [Legoland Deutschland Resort op de Duitse Wikipedia](https://de.wikipedia.org/wiki/Legoland_Deutschland_Resort) ·
+  [Legoland Deutschland Resort op de Engelse Wikipedia](https://en.wikipedia.org/wiki/Legoland_Deutschland_Resort)
+- Lengte, hoogte, snelheid en treinen van Feuerdrache en Drachenjagd:
+  [Feuerdrache op RCDB](https://rcdb.com/1476.htm) · [Drachenjagd op RCDB](https://rcdb.com/1683.htm)
+- Het ongeval bij de Feuerdrache in 2022:
+  [web.de (dpa)](https://web.de/magazine/panorama/achterbahn-unfall-31-verletzte-feuerdrachen-legoland-guenzburg-37189184) ·
+  [ABC7 (ABC News)](https://abc7.com/31-people-injured-on-legoland-park-ride-police-say/12117866/)
 - Wachttijden, weekdagen, maanden, aandeel regendagen en rope drop: onze
   [parkpagina](ref:legoland-deutschland), uit metingen sinds december 2025, plus de
   [regenvergelijking](/blog/pretpark-bij-regen)

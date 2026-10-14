@@ -68,8 +68,7 @@ Le parc porte un autre nom depuis 2005, appartient à un groupe espagnol depuis
 Sur l’ensemble des jours d’ouverture mesurés jusqu’ici, on patiente au
 [Movie Park](ref:movie-park-germany) un bon tiers de moins qu’au
 [Phantasialand](ref:phantasialand), à une petite heure de route plus au sud.
-Où se situent les autres parcs allemands, c’est dans mon
-[classement des parcs d’attractions en Allemagne](/blog/meilleurs-parcs-d-attractions-en-allemagne).
+Mon [classement des parcs d’attractions en Allemagne](/blog/meilleurs-parcs-d-attractions-en-allemagne) situe les autres parcs allemands.
 
 Le dimanche, que les guides habituels rangent parmi les jours de week-end
 chargés, compte dans nos données parmi les jours les plus calmes de la semaine.
@@ -93,9 +92,7 @@ Germany**. Cinq ans plus tard, le 17 mai 2010, l’exploitant espagnol **Parques
 Reunidos** a repris les rênes. Ce groupe madrilène appartient depuis 2019
 majoritairement au fonds suédois EQT, qui veut désormais le vendre d’un bloc,
 Movie Park compris, selon le quotidien économique espagnol Expansión du
-24 septembre 2026. Ce que cela change pour les visiteurs et les détenteurs de
-pass est expliqué dans
-[notre article sur la vente](/blog/parques-reunidos-a-vendre-movie-park).
+24 septembre 2026. [Notre article sur la vente](/blog/parques-reunidos-a-vendre-movie-park) explique ce que cela change pour les visiteurs et les détenteurs de pass.
 
 Cinq des attractions les plus connues vivent donc sous un nouveau nom :
 
@@ -333,8 +330,6 @@ fêté son anniversaire, avec ce jour-là un programme jusqu’à 23 heures.
 
 Notre historique de temps d’attente pour Bottrop commence en **décembre 2025**.
 
-Les dix attractions où l’on attend le plus longtemps :
-
 ```ride-waits-widget park=movie-park-germany top=10 columns=peak,days highlight=van-helsings-factory
 
 ```
@@ -345,11 +340,7 @@ enfants. Star Trek, la plus grande attraction du parc, se situe dans le ventre
 du classement.
 
 Van Helsing ne traite que 848 personnes par heure, et comme le parcours est à
-l’intérieur, beaucoup de monde veut y entrer quand il pleut. Comment capacité et demande
-deviennent un temps d’attente est expliqué en détail dans
-[l’art d’attendre](/blog/l-art-d-attendre).
-
-La même journée, heure par heure :
+l’intérieur, beaucoup de monde veut y entrer quand il pleut. [L’art d’attendre](/blog/l-art-d-attendre) explique en détail comment capacité et demande deviennent un temps d’attente.
 
 ```hourly-profile-widget slug=movie-park-germany top=8
 
@@ -366,8 +357,6 @@ mouiller.
 La ligne de Van Helsing bondit à la deuxième heure et reste ensuite à la même
 valeur jusqu’à la fermeture. Qui n’y est pas allé dans les
 soixante premières minutes ne trouvera pas de meilleur moment de la journée.
-
-En comparaison avec le voisinage :
 
 ```park-comparison-widget slugs=movie-park-germany,phantasialand,efteling,attractiepark-toverland,walibi-holland,europa-park highlight=movie-park-germany
 
@@ -436,8 +425,6 @@ Les vacances d’automne et la semaine suivante font exception :
   le dernier week-end. Le **8 novembre 2026**, la saison s’achève, et c’est en
   même temps la dernière soirée du Halloween Horror Festival. Ensuite, le parc
   reste fermé jusqu’à l’événement de Noël.
-
-Les plus calmes des prochains jours d’ouverture selon notre calendrier :
 
 ```best-days-widget slug=movie-park-germany
 
@@ -627,8 +614,7 @@ Trattoria Hollywood, plus des burgers, des frites et une boulangerie. Pour ce qu
 arrive dans l’assiette, je trouve les prix élevés, et je mange ici le plus vite
 possible.
 
-S’il pleut en ce moment à Bottrop, c’est ce qui décide où les files
-s’entassent :
+La pluie à Bottrop décide où les files s’entassent.
 
 ```weather-widget slug=movie-park-germany
 
@@ -650,7 +636,7 @@ Park](ref:movie-park-germany?bare).
 **Le vendredi**, suivi de près par **le dimanche** et **le jeudi**, est dans nos
 données le jour le plus calme, le mardi le plus chargé, et le samedi se situe nettement au-dessus du dimanche. À
 partir de début septembre, le parc n’ouvre de toute façon plus que du jeudi au
-dimanche, et tous les jours pendant les vacances d’automne du 17 au 31 octobre. Le jour précis se trouve dans le [calendrier des temps d’attente](ref:movie-park-germany?calendar).
+dimanche, et tous les jours pendant les vacances d’automne du 17 au 31 octobre. Le [calendrier des temps d’attente](ref:movie-park-germany?calendar) donne le jour précis.
 
 ### Quels jours le Movie Park est-il ouvert en automne ?
 
@@ -708,8 +694,8 @@ aux files courtes, un jour ordinaire, on y fait plus d’attractions qu’au Pha
 par an, dans les mêmes décors, se tient ce qui est, selon son propre décompte, le
 plus grand événement d’Halloween du continent.
 
-**Ce parc a pourtant ses meilleures années derrière lui.** Elles se
-situaient à l’époque Warner, quand un studio y mettait de l’argent et des
+Les meilleures années de ce parc se situaient pourtant
+à l’époque Warner, quand un studio y mettait de l’argent et des
 personnages. Depuis, le parc continue de construire, en 2011, 2017, 2018, 2021 et
 2026, mais sans les marques qui faisaient autrefois son identité. La dernière
 montagne russe pour adultes date de 2017, et la nouveauté de l’année anniversaire

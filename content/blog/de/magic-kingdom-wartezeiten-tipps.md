@@ -2,7 +2,7 @@
 title: 'Magic Kingdom: Die längste Warteschlange hat TRON'
 translationKey: magic-kingdom-guide
 date: '2026-09-30'
-updatedAt: '2026-10-05'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -59,6 +59,16 @@ längste.
 
 ```
 
+## Vom Landkauf 1964 bis zur Eröffnung 1971
+
+Ab April 1964 kaufte Walt Disney Productions über Strohfirmen Land bei Orlando, zusammen 27.443
+Acres, gut 111 Quadratkilometer. Manche Eigentümer bekamen nur 100 Dollar pro Acre. Offiziell stellte Walt Disney das Projekt am 15. November 1965 auf einer Pressekonferenz in Orlando vor, zusammen mit Floridas Gouverneur Haydon Burns.
+
+Walt Disney starb am 15. Dezember 1966, bevor gebaut wurde. Sein Bruder Roy O. Disney schob seinen
+Ruhestand auf, übernahm das Projekt und benannte das Resort vor der Eröffnung von „Disney World“ in
+„Walt Disney World“ um. 1967 begann der Bau, und am 12. Mai 1967 unterschrieb Gouverneur Claude R.
+Kirk Jr. das Gesetz, mit dem der Reedy Creek Improvement District für das Gelände entstand. Bei der Eröffnungsfeier vom 23. bis 25. Oktober 1971 weihte Roy O. Disney das Resort ein.
+
 ## Sechs Themenländer und die Utilidors
 
 Der Park hat am **1. Oktober 1971** als erster Teil von Walt Disney World eröffnet, am selben Tag
@@ -68,6 +78,9 @@ in Anaheim auch: Main Street, Adventureland, Frontierland, Fantasyland und Tomor
 sechste, Liberty Square, gibt es nur in Florida, und dort steht die Haunted Mansion. Betrieben wird
 er von Disney Experiences, der Parksparte des Konzerns, und am 1. Oktober 2026 ist das Resort 55
 Jahre alt geworden.
+
+Bis Anfang der 1990er Jahre hieß der Park offiziell Walt Disney World Magic Kingdom. 1994 benannte
+Disney ihn in Magic Kingdom Park um, damit er sich vom Disneyland in Kalifornien unterscheidet. Laut TEA kam er 2019 auf 20.963.000 Besuche, mehr als in jedem anderen Jahr seit 2000. 2020 war er wegen der Corona-Pandemie von Mitte März bis zum 11. Juli geschlossen und kam auf 6.941.000 Besuche, 66,9 Prozent weniger als 2019.
 
 Dazugekommen ist seitdem nur ein einziges Themenland. Es eröffnete 1988 als Mickey's Birthdayland,
 hieß zuletzt Mickey's Toontown Fair und schloss am 11. Februar 2011, um Platz für New Fantasyland zu
@@ -159,7 +172,7 @@ in der Tabelle oben meist weit vorn unter den Klassikern.
 
 ```
 
-## Paraden, Feuerwerk und Shows
+## Shows und Paraden
 
 Am Abend endet der Tag im Magic Kingdom mit Happily Ever After, einem Feuerwerk von 18 Minuten mit
 Lasern und Projektionen auf das Schloss und die Häuser der Main Street. Davor oder danach läuft die
@@ -173,8 +186,6 @@ Halloween- oder Weihnachtsparty fällt das reguläre Feuerwerk aus, dann läuft 
 für Gäste der Party.
 
 ## Zur Öffnung oder am Abend
-
-So verändern sich die acht längsten Warteschlangen zwischen 8 und 22 Uhr Ortszeit:
 
 ```hourly-profile-widget slug=magic-kingdom-park top=8
 
@@ -204,8 +215,8 @@ die Jungle Cruise laufen dagegen nicht.
 
 Gäste der Deluxe-Hotels und einiger weiterer Hotels, die Disney auf seiner Seite aufzählt, bekommen
 an ausgewählten Abenden Extended Evening Hours, bis zu zwei Stunden nach Parkschluss. Dann laufen
-auch TRON, Space Mountain, Big Thunder und der Mine Train. Welche Abende das sind, steht im Kalender
-von Disney.
+auch TRON, Space Mountain, Big Thunder und der Mine Train. Die Abende markiert Disney in seinem
+Kalender.
 
 ### Ein Tag, wie ich ihn planen würde
 
@@ -279,9 +290,6 @@ du gezielt wählen solltest, gibt es nicht. Wo ein anderer Park einen hat, steht
 Wegen Hurrikans hat Magic Kingdom seit der Eröffnung neunmal vorübergehend geschlossen, zuletzt im
 Oktober 2024 wegen Milton.
 
-Im Kalender darunter sind für jeden Zeitraum die ruhigsten Tage markiert, jeden Tag neu
-berechnet:
-
 ```best-days-widget slug=magic-kingdom-park
 
 ```
@@ -291,8 +299,7 @@ berechnet:
 An 38 Abenden zwischen dem 7. August und dem 31. Oktober 2026 läuft Mickey's Not-So-Scary Halloween
 Party, laut Disney sind alle Termine ausverkauft. An diesen Abenden schließt der Park für normale
 Gäste schon um 18 Uhr, die Party geht von 19 Uhr bis Mitternacht. Im Oktober betrifft das noch den
-6., 8., 9., 13., 15., 16., 18., 22., 23., 25., 27., 29. und 31. Was die Party bietet, steht in unserem Überblick [Halloween
-in den USA](/blog/halloween-usa-freizeitparks-2026).
+6., 8., 9., 13., 15., 16., 18., 22., 23., 25., 27., 29. und 31. Unser Überblick [Halloween in den USA](/blog/halloween-usa-freizeitparks-2026) beschreibt die Party.
 
 Danach folgt Mickey's Very Merry Christmas Party an 25 Abenden vom 8. November bis zum 22. Dezember
 2026, ebenfalls von 19 Uhr bis Mitternacht, mit Einlass ab 16 Uhr. Eine Karte kostet je nach Abend
@@ -345,7 +352,10 @@ auf der [Parkseite](ref:magic-kingdom-park). Zwischen dem 4. Oktober und dem 14.
 um 18 Uhr.
 
 **Tickets.** Disney legt die Preise je nach Datum fest, sie stehen im Kalender auf
-[disneyworld.com](https://disneyworld.com/). Mit dem Park Hopper darfst du nach dem ersten Park zu jeder Uhrzeit in einen
+[disneyworld.com](https://disneyworld.com/). Je mehr Tage du kaufst, desto weniger kostet der einzelne Tag, bei zehn Tagen ab 64 Dollar plus Steuer, und diese Preise gelten ab zehn Jahren. Kinder unter drei brauchen kein Ticket. Die Tage müssen
+nicht aufeinander folgen. Die Jahreskarte Disney Incredi-Pass kostet 1.749 Dollar, gilt ab drei
+Jahren und hat keine Sperrtage. Weitere Jahreskarten bietet Disney nur Einwohnern Floridas und
+Mitgliedern des Disney Vacation Club an. Mit dem Park Hopper darfst du nach dem ersten Park zu jeder Uhrzeit in einen
 der anderen drei wechseln, solange dort Platz ist.
 
 **Essen.** Im Park gibt es (Stand 30. September 2026) 23 Restaurants und Imbisse, von
@@ -367,8 +377,7 @@ dem 8. Oktober 2026.
 ### Hat der meistbesuchte Park auch die längsten Warteschlangen?
 
 Nein. Im Vergleich oben hat Magic Kingdom die kürzeste typische Wartezeit der vier Disney-Parks in
-Florida, EPCOT die längste. Mit Abstand die
-längste Warteschlange im Park hat eine einzige Bahn, TRON.
+Florida, EPCOT die längste.
 
 ### Welche Bahn hat im Magic Kingdom die längste Warteschlange?
 
@@ -414,15 +423,11 @@ von Lightning Lane.
 
 ## Zum Weiterlesen
 
-Wie das Wetter in den nächsten Tagen wird, und was das für die Bahnen im Freien heißt:
-
 ```weather-widget slug=magic-kingdom-park
 
 ```
 
-Dasselbe Unternehmen betreibt auch das Resort bei Paris, und dort hat der kleinere der beiden Parks
-die längeren Warteschlangen. Mehr dazu steht in unserem Text über [Disneyland
-Paris](/blog/disneyland-paris-wartezeiten-tipps).
+Dasselbe Unternehmen betreibt auch [Disneyland Paris](/blog/disneyland-paris-wartezeiten-tipps), und dort hat der kleinere der beiden Parks die längeren Warteschlangen.
 
 Zwischen Weihnachten und Silvester liegt die vollste Woche in unserer Jahrestabelle, und die Very Merry Christmas Party läuft an 25
 Abenden: [Weihnachten und Silvester in Orlando und
@@ -442,6 +447,9 @@ Paris](/blog/weihnachten-silvester-orlando-paris-2026).
 - Big Thunder Mountain 1980, Pirates of the Caribbean 1973, Peter Pan's Flight 1971: [Big Thunder Mountain Railroad auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Big_Thunder_Mountain_Railroad) · [Pirates of the Caribbean auf Wikipedia (EN)](<https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean_(attraction)>) · [Peter Pan's Flight auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Peter_Pan%27s_Flight)
 - Lightning Lane und das Ende von Genie+: [Lightning Lane auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Lightning_Lane)
 - Cinderella Castle (Höhe, Bauzeit, Perspektive, Suite): [Cinderella Castle auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Cinderella_Castle)
+- Landkauf, Ankündigung 1965, Walts Tod, Roy O. Disney, Reedy Creek, Baubeginn und Einweihung: [Walt Disney World auf Wikipedia (EN)](https://en.wikipedia.org/wiki/Walt_Disney_World) · [Walt Disney World Resort auf Wikipedia (DE)](https://de.wikipedia.org/wiki/Walt_Disney_World_Resort)
+- Besuche 2019 und 2020, Schließung 2020: [TEA/AECOM Theme Index 2019](https://aecom.com/content/wp-content/uploads/2020/07/Theme-Index-2019.pdf) · [TEA/AECOM Theme Index 2020](https://www.aecom.com/wp-content/uploads/documents/reports/AECOM-Theme-Index-2020.pdf)
+- Tickets und Jahreskarte: [Theme Park Tickets (Disney)](https://disneyworld.disney.go.com/admission/tickets/theme-parks/) · [Annual Passes (Disney)](https://disneyworld.disney.go.com/passes/)
 - Besuche 2024 und Platz eins: [TEA Global Experience Index 2024 (TEA)](https://www.teaconnect.org/tea-global-experience-indextm)
 - Technische Daten der Achterbahnen: [Space Mountain](https://rcdb.com/267.htm) · [Big Thunder Mountain Railroad](https://rcdb.com/273.htm) · [Seven Dwarfs Mine Train](https://rcdb.com/9720.htm) · [TRON Lightcycle / Run](https://rcdb.com/15286.htm) · [The Barnstormer](https://rcdb.com/274.htm) (alle Roller Coaster DataBase)
 - Mindestgrößen und Fallhöhe von Tiana's: Attraktionsseiten bei Disney, etwa [TRON Lightcycle / Run](https://disneyworld.disney.go.com/attractions/magic-kingdom/tron-lightcycle-run/) und [Tiana's Bayou Adventure](https://disneyworld.disney.go.com/attractions/magic-kingdom/tianas-bayou-adventure/), Big Thunder mit neuer Mindestgröße: [Disney Parks Blog vom 3. Mai 2026](https://disneyparksblog.com/wdw/new-magic-coming-to-big-thunder-mountain-railroad-at-disney-world/)

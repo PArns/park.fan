@@ -296,8 +296,7 @@ that way because Kogeloog is one of the six servants from that very fairy tale.
 His bust hangs on the facade, along with oval frames holding all six. The stand
 has been there since 1967, closed in 2002 for lack of custom, and has been open again since 26 April 2019.
 
-Nobody queues in the Fairytale Forest, and it has no capacity limit. Anyone walking
-around in here isn’t queueing for a ride, and that’s one
+Nobody queues in the Fairytale Forest, and it has no capacity limit. The people walking around in here aren’t queueing for a ride, and that’s one
 reason a park with almost six million visits has bearable wait times.
 
 Since spring 2026 the park has been rebuilding the routing. Four equal entrances
@@ -314,8 +313,6 @@ operating days** up to 25 September 2026.
 Across all days of the
 week the typical park-wide wait sits **under half an hour** (median); at the peaks
 it’s about half as long again.
-
-The ten most in-demand attractions:
 
 ```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
 
@@ -437,8 +434,7 @@ spring 2026 for its 25th birthday.
 
 Efteling is open 365 days a year.
 
-**By month**, April and September are the most relaxed of the well-measured months
-in our data. May, June and July sit close together, August picks up noticeably, and the
+**By month**, counting every operating day we have measured, April and September are the most relaxed of the well-measured months. May, June and July sit close together, August picks up noticeably, and the
 most crowded is **December**, the Winter Efteling season.
 
 April through August each have a full month of measured days behind them,
@@ -448,7 +444,11 @@ October and November we have no usable days at all so far (as of 25 September
 2026). So the ranking of the months is only rough. The quietest
 months across all parks are on the [best time to visit page](/best-time-to-visit).
 
-**By day of the week** there is hardly any difference:
+```stats-widget slug=efteling show=months
+
+```
+
+**By day of the week** there is hardly any difference.
 
 ```stats-widget slug=efteling show=weekdays
 
@@ -462,16 +462,9 @@ the park on Monday. At close to thirty days measured per weekday I still wouldn�
 sell differences that small as a recommendation.
 
 What counts more than the day of the week is whether Dutch schools are on holiday,
-and after that whether German ones are. The quietest days coming up:
+and after that whether German ones are.
 
 ```best-days-widget slug=efteling
-
-```
-
-And the crowding across the months, calculated from every operating day we have
-measured:
-
-```stats-widget slug=efteling show=months
 
 ```
 
@@ -481,8 +474,7 @@ There’s nothing to buy here that gets you past the queue, not even a dynamical
 priced single ride of the sort Phantasialand has
 been selling since the last Wintertraum. Free of charge there’s baby switch for
 parents with small children, and seven attractions have a single rider line,
-although since 2026 the park only opens those on very busy days. If you sleep at
-the hotel you get in **30 minutes early**.
+although since 2026 the park only opens those on very busy days. Hotel guests get in **30 minutes early**.
 
 On **15 September 2017** the **Efteling Boarding
 Pass** started at Python, planned as a two-month trial; in the end it ran until
@@ -562,7 +554,7 @@ which nothing happens. Late in the afternoon, when the light goes
 flat and the boats drift past the Pagode, it’s my favourite thing in the whole
 park.
 
-## Practicalities: tickets, getting there, food, sleeping
+## Tickets and getting there
 
 **Tickets.** Prices depend on the date and run between **40 and 56 €** a day in
 2026, children up to and including three go free. The regular ticket is only valid
@@ -735,8 +727,6 @@ December 2026 Raveleijn reopens with a new show and the new Ravenring. After tha
 come the Sprookjesbibliotheek in 2027 and Missie Luminar in 2029.
 
 ## Weather and current wait times
-
-The weather in Kaatsheuvel:
 
 ```weather-widget slug=efteling
 

@@ -2,6 +2,7 @@
 title: 'Liseberg: Balder, Helix e un parco dentro Göteborg'
 translationKey: liseberg-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -61,8 +62,7 @@ Liseberg, a Göteborg, è stato costruito nel 1923 per un’esposizione
 commemorativa e doveva sparire subito dopo. Oggi nell’area ci sono quattro grandi
 montagne russe, la torre [AtmosFear](ref:liseberg/atmosfear) con una caduta
 libera di 90 metri e, in autunno, cinque case stregate. A novembre si aggiunge il
-mercatino di Natale. Il parco si trova ai margini del centro, e secondo il parco
-la stazione centrale si raggiunge a piedi in 10–15 minuti. Per il 2025 il parco
+mercatino di Natale. Il parco si trova ai margini del centro. Per il 2025 il parco
 indica circa **3 milioni di ospiti** l’anno.
 
 ## Come un’esposizione è diventata un parco
@@ -91,6 +91,17 @@ compleanno. Il rosa degli edifici risale all’esposizione del 1923. La ferrovia
 montagna di allora fu demolita nel **1987** e sostituita dalla
 [Lisebergbanan](ref:liseberg/lisebergbanan), che Anton Schwarzkopf aveva
 progettato per la stessa collina.
+
+Liseberg ha smontato sei montagne russe, contando anche Kanonen. La montagna
+russa del 1923 l’aveva costruita Valdemar Lebech. La **Super 8**, una Wildcat di
+Schwarzkopf, funzionò dal 1966 al 1979 e poi si trasferì in un parco di Karlstad.
+Dal 1980 al 1995 funzionò la **Lisebergs Loopen**, un Looping Star di Schwarzkopf
+con un giro della morte, alta 24,5 metri e con una velocità di 77 km/h, che in
+seguito fu montata, tra l’altro, al Playcenter di São Paulo. Al suo posto arrivò
+nel 1997 **HangOver**, il primo Invertigo di Vekoma, alto 40 metri, a 80 km/h e
+con tre inversioni. Era previsto per il 1996 con motori lineari. Per problemi con
+quella tecnica ebbe una catena di risalita e aprì un anno dopo. Funzionò fino al 2002. La montagna russa per bambini **Cirkusexpressen** di Zierer funzionò dal
+1977 al 2008, fino al 1985 con il nome Lilla Bergbanan.
 
 Dal **2000** Liseberg apre anche d’inverno («Jul på Liseberg»), e il primo anno
 arrivarono 418.000 ospiti. Nel **2015** è seguito Halloween. Nel **2020**, per
@@ -124,13 +135,12 @@ riva del fiume Mölndalsån, come la Kållerado.
 
 ```
 
-Nelle nostre rilevazioni Balder è fra le quattro attrazioni con le attese più
-lunghe. La Roller Coaster DataBase indica per l’attrazione una capacità di circa
+La Roller Coaster DataBase indica per l’attrazione una capacità di circa
 1.149 ospiti all’ora.
 
 [Balder](ref:liseberg/balder?full)
 
-## Helix, Valkyria e la Lisebergbanan
+## Le montagne russe d’acciaio
 
 **[Helix](ref:liseberg/helix)** ha aperto il **26 aprile 2014** e, secondo il
 parco, è costato quasi 240 milioni di corone; la Roller Coaster DataBase ne
@@ -152,7 +162,7 @@ dei Cannoni. I Cannoni erano un launch coaster di Intamin, aperto il 23 aprile
 2005 e partito per l’ultima volta il 30 dicembre 2016. Valkyria è un dive coaster
 di Bolliger & Mabillard con tre inversioni e una prima discesa ripida di **50
 metri** che porta direttamente in un tunnel sotto terra. Il parco indica
-un’altezza di **47 metri** e **105 km/h**. Valkyria richiede **132 cm** più sette
+un’altezza di **47 metri** e **105 km/h**. Sui 700 metri di percorso ci sono un Immelmann, uno zero-g roll e un heartline roll. Tre treni da 18 posti, sei affiancati in un’unica fila, portano circa 1.100 ospiti all’ora. Valkyria richiede **132 cm** più sette
 anni e, come Mechanica, ha un limite massimo di 195 cm.
 
 I Cannoni erano la prima attrazione del loro genere nel Nord. Il treno, lanciato
@@ -169,16 +179,16 @@ di una stazione ferroviaria. Sotto c’è un ristorante con vagoni ricostruiti.
 L’altezza minima è 130 cm, con accompagnatore 110 cm. In autunno e in inverno
 funziona solo durante Halloween, e nel programma di Jul non figura nell’elenco.
 
-**[Luna](ref:liseberg/luna)**, aperta nel 2023, è un Boomerang di
+**[Luna](ref:liseberg/luna)**, aperta il 22 aprile 2023, è un Boomerang di
 Vekoma, alto 33,5 metri e lungo 242 metri, che manda il treno prima in avanti e
-poi all’indietro sullo stesso percorso. Per Luna valgono 120 cm più sei anni di
+poi all’indietro sullo stesso percorso. Raggiunge i 68 km/h. Si trova nell’area tematica Luna Park, nel punto più alto del parco, ed è arrivata per il centenario. Per Luna valgono 120 cm più sei anni di
 età, con accompagnatore 95 cm più tre anni. Per i più piccoli ci sono la
-**[Rabalder](ref:liseberg/rabalder)** di Zierer (2009) e la
-**[Stampbanan](ref:liseberg/stampbanan)** di Preston & Barbieri (2013), entrambe
+**[Rabalder](ref:liseberg/rabalder)** di Zierer (25 aprile 2009, 9 metri di altezza, 39 km/h) e la
+**[Stampbanan](ref:liseberg/stampbanan)** di Preston & Barbieri (27 aprile 2013, poco più di 3 metri di altezza), entrambe
 nel Paese dei Conigli. Per entrambe a un bambino servono 110 cm, con
 accompagnatore 90 cm.
 
-## AtmosFear, attrazioni acquatiche e le altre giostre
+## Le altre attrazioni
 
 La torre **[AtmosFear](ref:liseberg/atmosfear)** fu costruita nel 1990 come torre
 panoramica («Lisebergstornet»); il 30 maggio 2010 salì l’ultimo gruppo, e il
@@ -241,7 +251,7 @@ anni per Vinden, Zombie, Nattsvart på Gasten e Skogen, **15 anni** per «7».
 
 ```
 
-## Hotel stregato, palchi e lo Stjärnstigen
+## Hotel stregato e palchi
 
 Lo **Spökhotellet Gasten** ha aperto nel 1998 e nell’autunno del 1999 ha ricevuto
 un THEA Award della Themed Entertainment Association in California. Compare
@@ -286,8 +296,6 @@ maggior parte delle attrazioni, per la FlumeRide un’ora più tardi. Le attrazi
 del Paese dei Conigli hanno il loro picco piuttosto nel primo pomeriggio. Chi è
 lì alle 12 trova davanti alle quattro grandi attrazioni meno ressa che alle 16.
 
-I più tranquilli fra i prossimi giorni di apertura, calcolati in diretta:
-
 ```best-days-widget slug=liseberg
 
 ```
@@ -307,8 +315,6 @@ Kraftverket, Lisebergbanan, Loke, Luna, Mechanica, la casa stregata Gasten,
 Underlandet e Valkyria. Per ogni gruppo vale una sola prenotazione alla volta,
 per da una a sei persone, e accanto resta la coda normale. Se la coda virtuale
 sia attiva in un certo giorno dipende, secondo il parco, da quanti ospiti ci sono.
-Chi vuole salire su Valkyria o su Helix si mette quindi prima in coda
-nell’app e nel frattempo va su qualcos’altro.
 
 ## Quando andare
 
@@ -324,8 +330,7 @@ quanti il lunedì o il martedì. In autunno il parco chiude la domenica alle 20,
 venerdì e il sabato alle 22.
 
 La stagione estiva 2026 è cominciata il **18 aprile** alle 11. Quando finisce, il
-parco non lo dice. Il calendario sulla [pagina del parco](ref:liseberg) mostra
-ciò che è pubblicato per le prossime settimane.
+parco non lo dice.
 
 ### Halloween: dal 2 ottobre al 1° novembre 2026
 
@@ -398,9 +403,7 @@ online:
 
 Senza Åkpass una singola corsa costa una Åkkupong da 25 corone, una casa stregata
 da due a quattro kupong. Nei giorni «Höst i Kaninlandet» l’ingresso costa 95
-corone, con le attrazioni per bambini 245 corone. I prezzi estivi 2026 la pagina
-del parco non li mostra più. Quale delle sette
-fasce valga in quale giorno si legge nel calendario dei prezzi del parco, in PDF.
+corone, con le attrazioni per bambini 245 corone.
 
 Chi viene più spesso compra un abbonamento annuale (dodici mesi dall’attivazione):
 il **Lisebergspasset** da 395 corone vale per l’ingresso, il **Guldpasset** da
@@ -414,12 +417,11 @@ Gli ingressi sono due. Il **Norra entrén** si trova in Örgrytevägen 5, presso
 Korsvägen, con le fermate Korsvägen e Liseberg Station, il **Södra entrén** in
 Herman Lindholms torg 1, con la fermata Liseberg Södra. Dalla stazione centrale di
 Göteborg Central sono, secondo il parco, 10–15 minuti a piedi, e d’estate fra
-Central e il parco corre un tram storico, la Lisebergslinjen. Per le linee del tram il parco rimanda a Västtrafik.
+Central e il parco corre un tram storico, la Lisebergslinjen.
 
 Chi viene in auto ha tre parcheggi multipiano: il **P-huset Liseberg Södra** sotto
 il World of Volvo (1.170 posti), il **P-huset Liseberg Västra** in Södra Vägen 70
-(162 posti) e il **P-huset Focus** in Fabriksgatan 45 (1.057 posti). Le tariffe del
-parcheggio sono presso Parkering Göteborg.
+(162 posti) e il **P-huset Focus** in Fabriksgatan 45 (1.057 posti).
 
 ## Dormire e mangiare
 
@@ -484,7 +486,6 @@ novembre, Jul på Liseberg in giorni selezionati dal 14 novembre al 30 dicembre.
 ### Quando c’è meno gente a Liseberg?
 
 La domenica, secondo le nostre rilevazioni con un netto distacco dal martedì.
-D’inverno è ancora più tranquillo, ma allora funzionano solo poche attrazioni.
 
 ### Posso portare il cibo?
 
@@ -529,7 +530,10 @@ programmi d’autunno. Un’altra montagna russa di legno è nella guida all’[
   · [Oceana (ufficiale, in svedese)](https://www.liseberg.se/oceana/)
 - Dati tecnici delle montagne russe:
   [Balder](https://rcdb.com/1562.htm) · [Helix](https://rcdb.com/11048.htm) ·
-  [Lisebergbanan](https://rcdb.com/1061.htm) nella Roller Coaster DataBase ·
+  [Lisebergbanan](https://rcdb.com/1061.htm) ·
+  [Valkyria](https://rcdb.com/14301.htm) · [Luna](https://rcdb.com/19785.htm) ·
+  [Rabalder](https://rcdb.com/4354.htm) · [Stampbanan](https://rcdb.com/10779.htm) ·
+  [montagne russe smontate](https://rcdb.com/4909.htm) ([Bergbanan](https://rcdb.com/1453.htm), [Super 8](https://rcdb.com/2401.htm), [Lisebergs Loopen](https://rcdb.com/1098.htm), [HangOver](https://rcdb.com/1060.htm), [Cirkusexpressen](https://rcdb.com/1059.htm)) nella Roller Coaster DataBase ·
   [Balder su en.wikipedia (in inglese)](<https://en.wikipedia.org/wiki/Balder_(roller_coaster)>) ·
   [Helix su sv.wikipedia (in svedese)](<https://sv.wikipedia.org/wiki/Helix_(berg-_och_dalbana)>) ·
   [AtmosFear su sv.wikipedia (in svedese)](https://sv.wikipedia.org/wiki/Atmosfear) ·

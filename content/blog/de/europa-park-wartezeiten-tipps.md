@@ -91,9 +91,6 @@ im Juli lückenlos. Über
 alle Wochentage gerechnet ist die typische Wartezeit im Parkschnitt (der Median)
 **kurz für diesen Andrang**; an vollen Tagen liegt sie deutlich darüber.
 
-Die zehn Attraktionen, an denen du am längsten stehst, mit dem Wert von heute
-daneben:
-
 ```stats-widget slug=europa-park show=attractions
 
 ```
@@ -108,7 +105,7 @@ jemand an, an einem vollen Vormittag reicht die Warteschlange bis auf den Vorpla
 
 Auf Voltron entfielen im ersten Jahr 3,25 Millionen Fahrten, er hat die längste
 Warteschlange im Park, und für einen Park mit über sechs Millionen Gästen ist **diese
-längste Warteschlange erstaunlich kurz**. Die Tabelle vergleicht Parks mit derselben Datenbasis und derselben Rechenmethode:
+längste Warteschlange erstaunlich kurz**. Alle Parks im Vergleich sind mit derselben Datenbasis und derselben Rechenmethode gerechnet.
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
@@ -569,8 +566,7 @@ zwischen Weihnachten und Silvester 2025, der vollsten Woche des Winters.
 Pre-Opening Weeks, noch nicht mit allen Attraktionen und Shows, dafür mit den
 billigsten Tickets des Jahres. Die Sommersaison beginnt dann am 20. März. Für
 Oktober stehen erst die ersten Tage in der Tabelle, für November noch keiner.
-Wie weit Halloween und HALLOWinter inzwischen drinstecken, erkennst du an der
-Zahl der Messtage.
+Die Zahl der Messtage zeigt, wie weit Halloween und HALLOWinter inzwischen drinstecken.
 
 ### Welche Ferien den Park füllen
 
@@ -580,7 +576,7 @@ Grand Est eingerechnet, also des Elsass, dazu die der Schweizer Kantone Aargau,
 Basel-Stadt und Basel-Landschaft und die der angrenzenden Bundesländer Bayern,
 Hessen und Rheinland-Pfalz.
 
-Wie viel das ausmacht, sieht man an den Werktagen. Zwischen April und September
+Zwischen April und September
 gab es 42 Werktage, an denen in keiner der acht Regionen Schulferien waren und
 auch kein Feiertag lag. Vier davon standen auf „hoch“ oder höher, 27 auf
 „niedrig“. Von den Werktagen der Aargauer Ferien standen 17 von 27 auf „hoch“,
@@ -665,14 +661,11 @@ Rust haben wir noch nicht gemessen.
 Der Park öffnet erst um 11 Uhr und schließt frühestens um
 19 Uhr, das ist eine Stunde weniger als im Sommer, es ist früh dunkel, und auf
 die Wasserbahnen ist kein Verlass. Wenn dir Poseidon und Atlantica egal sind,
-ist ein Werktag im November trotzdem einen Versuch wert. Welche Tage gerade am
-ruhigsten aussehen, steht im Kalender oben.
+ist ein Werktag im November trotzdem einen Versuch wert. Die Tage, die gerade am ruhigsten aussehen, stehen im Kalender oben.
 
 ## Der perfekte Tag im Europa-Park
 
-**Sei am Eingang, bevor geöffnet wird, und geh dann zum Voletarium.**
-
-Unsere Rope-Drop-Auswertung
+Sei am Eingang, bevor geöffnet wird, und geh dann zum Voletarium. Unsere Rope-Drop-Auswertung
 vergleicht für jede Attraktion die Wartezeit direkt zur Öffnung mit der
 höchsten Tagesspitze, die dort an einem vollen Tag gemessen wurde. Beim Voletarium
 ist die Warteschlange zur Öffnung nur ein Bruchteil dieser Spitze, und das ist mit
@@ -685,8 +678,7 @@ Abstand die größte Ersparnis im ganzen Park.
 Bei Voltron, Arthur und Silver Star bringt der frühe Start nicht einmal halb so
 viel.
 
-Wie stark sich das über den Tag verteilt, sieht man erst im Stundenprofil: die
-typische Wartezeit jeder Stunde, der Median über alle gemessenen Betriebstage
+Im Stundenprofil steht für jede Stunde die typische Wartezeit, der Median über alle gemessenen Betriebstage
 seit Ende Dezember 2025. Fett steht jeweils die stärkste Stunde einer Bahn.
 
 ```hourly-profile-widget slug=europa-park top=12
@@ -698,7 +690,7 @@ seit Ende Dezember 2025. Fett steht jeweils die stärkste Stunde einer Bahn.
 Bei Silver Star steht um zehn und um elf die längste Warteschlange des Tages, ab zwölf wird sie
 spürbar kürzer und zieht erst in den Abendstunden langer Sommertage wieder an.
 
-**Die vollsten Stunden liegen zwischen zehn und zwölf.** Die meisten Bahnen haben
+Die vollsten Stunden liegen zwischen zehn und zwölf. Die meisten Bahnen haben
 ihr Maximum um zehn oder um elf; nur Arthur, Atlantica und das Fjord-Rafting
 haben ihre Spitze erst am Nachmittag.
 
@@ -751,7 +743,7 @@ Ort ansehen, Sonntag in den Park.
 unseren Daten der vollste, wenn auch knapp. Kommt ohnehin nur ein Werktag
 infrage, nimm den Donnerstag.
 
-## Halloween, HALLOWinter, Winter
+## Halloween und Winter
 
 Ab dem **26. September** liegen rund **180.000 Kürbisse** im Park, dazu
 Herbstdekoration in allen achtzehn Ländern und 2026 neu ein Herbstdorf, das
@@ -832,7 +824,7 @@ HALLOWinter, und da macht er erst um 19 Uhr zu, also genau dann, wenn nebenan da
 Gelände aufsperrt. Wer sich für ein Novemberdatum ein Traumatica-Ticket kauft,
 gibt damit die letzte Parkstunde her.
 
-## Praktisches: Eintrittspreise 2026, Anreise, Parken, Essen, Schlafen
+## Eintrittspreise 2026 und Anreise
 
 **Tickets.** Der Preis hängt vom Datum ab, der Park arbeitet mit zwei
 Preiskategorien. Online kostet der Tag für Erwachsene ab 12 Jahren **67 bis 76 Euro**, für Kinder von 4
@@ -896,8 +888,7 @@ An einem **Sonntag oder Donnerstag im Mai oder Juni**, außerhalb der
 Schulferien in Baden-Württemberg, Basel, im Aargau, im Elsass, in Bayern, Hessen
 und Rheinland-Pfalz. Der Samstag ist der vollste Tag. Am vollsten sind die
 Woche nach Ostern, die Sommerferien von Ende Juni bis Mitte August und die Tage
-zwischen Weihnachten und Neujahr. Welche Tage gerade am ruhigsten aussehen,
-steht in [unserer Prognose](ref:europa-park?calendar).
+zwischen Weihnachten und Neujahr. Die Tage, die gerade am ruhigsten aussehen, stehen in [unserer Prognose](ref:europa-park?calendar).
 
 ### Gibt es im Europa-Park einen Fast Pass?
 
@@ -961,7 +952,7 @@ Wartezeiten aus dem November haben wir noch keine.
 
 ## Wetter und aktuelle Wartezeiten
 
-Bei Regen wird die Warteschlange an der Eurosat länger:
+Bei Regen wird die Warteschlange an der Eurosat länger.
 
 ```weather-widget slug=europa-park
 

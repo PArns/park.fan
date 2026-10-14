@@ -141,8 +141,6 @@ Settanta chilometri più a nord-ovest, all’[Efteling](ref:efteling) c’è
 ```
 
 Joris en de Draak ai Golden Ticket Awards 2026 è finito cinque posti dietro Troy.
-Ecco quanto si aspetta per i grandi nomi della regione, legno o acciaio
-che siano:
 
 ```ride-waits-widget rides=phantasialand/taron|Taron|Multi-launch, acciaio;phantasialand/fly|F.L.Y.|Flying, acciaio;efteling/joris-en-de-draak|Joris en de Draak|Legno;efteling/baron-1898|Baron 1898|Dive coaster, acciaio;attractiepark-toverland/troy|Troy|Legno;attractiepark-toverland/fenix|Fēnix|Wing, acciaio columns=type,park,peak highlight=attractiepark-toverland/troy
 
@@ -159,7 +157,7 @@ distribuisce su cinque coaster, cinque attrazioni acquatiche e oltre quaranta
 attrazioni in totale. L’Efteling nello stesso anno ha contato 5,78 milioni di
 visite, circa cinque volte tanto, e non ha cinque volte i coaster.
 
-**Toverland non vende pass salta-fila né express pass.** Scambiare denaro con tempo si può solo nelle 13 serate di Halloween, tra ottobre e inizio novembre. Una fila single rider dal 2023 in
+Toverland non vende pass salta-fila né express pass. Scambiare denaro con tempo si può solo nelle 13 serate di Halloween, tra ottobre e inizio novembre. Una fila single rider dal 2023 in
 realtà c’è, ma a una sola attrazione, la torre di caduta Dragonwatch, e non
 costa nulla in più.
 
@@ -417,14 +415,11 @@ martedì. La [pagina del periodo migliore](/periodo-migliore-per-visitare) mette
 
 Su questo non ci si può fidare non appena calendari scolastici olandesi e
 tedeschi, meteo e orari di apertura si sovrappongono, e nella zona di confine del
-Limburgo si sovrappongono di continuo. Ecco i prossimi giorni più tranquilli:
+Limburgo si sovrappongono di continuo.
 
 ```best-days-widget slug=attractiepark-toverland
 
 ```
-
-E così si distribuisce l’affluenza per mesi e giorni della settimana, calcolata
-sui giorni di apertura misurati:
 
 ```stats-widget slug=attractiepark-toverland
 

@@ -420,7 +420,7 @@ y «Kids for free» para dos adultos con hasta tres niños, desde 320 euros.
 Qué tiempos de espera y qué días tranquilos hemos medido en el Europa-Park lo
 cuenta la [guía del Europa-Park](/blog/europa-park-tiempos-de-espera-consejos).
 
-## Cómo llegar, aparcar, dormir
+## Cómo llegar y hoteles
 
 Rulantica está en Roland-Mack-Ring 1, en 77977 Rust, enfrente del hotel Krønasår.
 En coche, la salida es la **57b Rust de la A5**. El aparcamiento de visitantes
@@ -445,7 +445,7 @@ cada 15 a 30. El autobús de Rust lleva a los huéspedes de Silver Lake City al
 mundo acuático de 8:00 a 20:00 h, cada 30 minutos. Para quienes duermen allí vale
 además la entrada anticipada a las 9:00 h.
 
-## Comer, normas y letra pequeña
+## Comida y normas
 
 En la gastronomía hay el Kelpie Café en el vestíbulo (de 8:30 a 22:30 h), el
 Snekkjas en la ciudad sobre pilotes, el Lumålunda en el Surf Fjørd y el Tempel Krog
@@ -468,7 +468,7 @@ Estas normas rigen en el mundo acuático:
   un número limitado de sillas de ruedas acuáticas. La estación de realidad virtual
   no es accesible.
 
-## Cierres, Halloween y Nørd Havn
+## Fechas hasta 2027
 
 Del **16 al 27 de noviembre de 2026** Rulantica está cerrado por revisión técnica,
 y también el 24 y el 25 de diciembre. El 31 de diciembre el mundo acuático cierra ya

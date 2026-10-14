@@ -157,19 +157,19 @@ Il parco indica fasciatoi in sette punti: all’ingresso principale, al punto
 informazioni sul lago, in Irlanda (Kinderwelt), in Italia accanto al dm family &
 friends, in Spagna, nel Märchenwald e nel Regno dei Minimoys. Come siano
 attrezzati e se esista una sala per l’allattamento, lì non si legge. Al dm
-family & friends il parco vende alcuni alimenti per neonati. Dove si possano
-scaldare non è scritto sul sito, che rimanda per questo al servizio ospiti.
+family & friends il parco vende alcuni alimenti per neonati. Per scaldarli, il
+sito rimanda al servizio ospiti.
 
 Il passeggino a noleggio costa 5 euro più 50 euro di cauzione e si ritira
-all’ingresso principale o all’ingresso del parcheggio dell’hotel. Secondo il
-parco è adatto solo ai bambini che stanno già seduti, perché un bambino non ci si può sdraiare. Un carretto a mano il parco non lo noleggia, e il regolamento non ne
+all’ingresso principale o all’ingresso del parcheggio dell’hotel. È adatto, secondo
+il parco, solo ai bambini che stanno già seduti, perché un bambino non ci si può sdraiare. Un carretto a mano il parco non lo noleggia, e il regolamento non ne
 parla. Vieta i veicoli non motorizzati come skate, biciclette e monopattini, e
 non è chiaro se un carretto rientri tra questi. Chi vuole portarne uno chiede
 prima al servizio ospiti.
 
 All’Europa-Park lo scambio si chiama Baby-Switch e secondo il parco vale su
-molte delle montagne russe più grandi. Il parco nomina blue fire Megacoaster e
-Alpenexpress Coastiality, un elenco completo non c’è. Chi aspetta resta con il
+molte delle montagne russe più grandi, come blue fire Megacoaster e
+Alpenexpress Coastiality. Un elenco completo non c’è. Chi aspetta resta con il
 bambino, per esempio al parco giochi. Chi sale per primo riceve una carta per
 l’uscita o per l’ingresso Baby Switch dedicato.
 
@@ -204,8 +204,7 @@ Carretti a mano, rimorchi per biciclette e carrelli per cani sono vietati. Una
 deroga per motivi medici va chiesta per e-mail al servizio ospiti almeno 14
 giorni prima.
 
-Il Baby Switch si chiede all’attrazione.
-Quali attrazioni aderiscano, il parco non lo dice.
+Il parco non nomina attrazioni con Baby Switch, lo si chiede all’attrazione.
 
 In una tabella delle sue condizioni d’uso il parco elenca sotto «Attrazioni per
 bambini» Der lustige Papagei, Die fröhliche Bienchenjagd, Bolles Riesenrad,
@@ -260,8 +259,8 @@ giornaliero con data costa online da 37 euro, alla cassa 64 euro.
 
 All’Heide Park lo scambio si chiama Baby-Switch-Pass. I genitori con bambini fino a 3 anni
 compresi lo ricevono gratis al Service Center, solo nei giorni in cui è
-disponibile l’Express Ticket. Vale per le montagne russe. Quali, il parco non lo
-dice.
+disponibile l’Express Ticket. Vale per le montagne russe, senza che il parco ne
+nomini una.
 
 Il cibo per neonati si scalda tra l’altro nel Wirtshaus des Admirals e nel Lucky
 Land, tutte le postazioni le mostra l’app. La mappa del parco segna anche i
@@ -298,9 +297,9 @@ anche nei ristoranti e sulle terrazze esterne.
 
 I passeggini sono ammessi, ma vanno lasciati nelle aree previste vicino alle
 attrazioni e agli spettacoli. Nei giorni affollati non sono ammessi nel Plopsa
-Indoor. Un noleggio di passeggini il parco non lo indica. I carretti a mano sono
-a pagamento secondo il regolamento del parco, contro un documento o 100 euro di
-cauzione. Il prezzo il regolamento non lo indica. Un Rider Switch o uno scambio
+Indoor. Il parco non nomina un noleggio di passeggini. I carretti a mano sono
+a pagamento secondo il regolamento del parco, per un prezzo che non indica,
+contro un documento o 100 euro di cauzione. Un Rider Switch o uno scambio
 non li nominano né le pagine delle domande né il regolamento. Dopo ogni giro
 ogni ospite deve lasciare l’attrazione, e chi vuole rifarlo si rimette in coda.
 
@@ -325,15 +324,14 @@ dei biglietti. Da 90 a 140 centimetri il biglietto costa 32,50 euro, da 140
 centimetri 39,50 euro, a seconda della categoria del giorno. Nel giorno del
 compleanno si entra con un documento per 0 euro.
 
-Tutti i bagni tranne quelli di Ithaka hanno fasciatoi. I microonde sono gratuiti
-nella Waldstube e sulla Katara Plaza, uno scaldabiberon il parco non lo indica.
+Tutti i bagni tranne quelli di Ithaka hanno fasciatoi. Per scaldare, il parco
+nomina solo microonde, gratuiti nella Waldstube e sulla Katara Plaza.
 Chi vuole tirare il latte si rivolge al personale all’ingresso principale.
 
 Un buggy o un carretto a mano si possono portare, il parco consiglia un
-lucchetto a catena. Il Toverland non noleggia nulla. Il Baby Switch vale su
-alcune attrazioni, senza limite d’età. All’imbarco si ritira un biglietto
-speciale e un genitore può salire dall’uscita. Quali attrazioni siano, il parco
-non lo dice.
+lucchetto a catena. Il Toverland non noleggia nulla. Il Baby Switch vale senza
+limite d’età su alcune attrazioni, che il parco non elenca. All’imbarco si ritira
+un biglietto speciale e un genitore può salire dall’uscita.
 
 Nel Land van Toos, un’area con padiglioni coperti, i bambini accompagnati salgono da
 0 centimetri nel Klokhuis e nei Morrels Truckjes, da soli dai 90. Toos-Express,
@@ -365,9 +363,8 @@ Service.
 I buggy costano 10 euro più 50 euro di cauzione al Gift Shop e non si possono
 prenotare in anticipo. Se un passeggino o un carretto proprio siano ammessi,
 sul sito del parco non c’è scritto. Cibo e bevande si possono portare. Lo
-scambio si chiama «baby change». Un adulto aspetta con il bambino all’uscita e
-poi sale da lì senza fare la coda.
-Quali attrazioni aderiscano, il parco non lo dice.
+scambio si chiama «baby change», e il parco non dice su quali attrazioni vale. Un
+adulto aspetta con il bambino all’uscita e poi sale da lì senza fare la coda.
 
 La pagina Kids elenca Merrie Go’Round (accompagnati da 0, da soli
 dai 120 centimetri), Walibi’s Fun Recorder, Garage, Bubble Swirl e Walibi’s
@@ -388,7 +385,7 @@ bambini sotto i 13 anni possono entrare nel parco solo con adulti e restano
 sotto sorveglianza costante.
 
 Il Baby Switch è gratuito e non si può combinare con lo Speedy Fast-Pass o con
-l’Easy-pass. Come funzioni, la pagina nel testo non lo spiega. Un fasciatoio non
+l’Easy-pass. La pagina non spiega come funziona. Un fasciatoio non
 lo nominano né la pagina dei servizi né la FAQ né il regolamento. Allattare è
 permesso in tutto il parco. Chi vuole tranquillità va all’infermeria. Nei
 ristoranti ci sono microonde per biberon e cibo per neonati. Secondo il
@@ -419,8 +416,8 @@ parco non c’è scritto.
 
 Il parco spiega il Baby Switch in una pagina dedicata. Dopo il primo giro,
 entrambi i genitori vanno dall’operatore, che fa salire l’altro
-genitore senza nuova coda. Vale per i bambini sotto l’altezza minima. Un elenco
-completo delle attrazioni la pagina non lo indica.
+genitore senza nuova coda. Vale per i bambini sotto l’altezza minima. La pagina
+non ha un elenco completo delle attrazioni.
 
 L’area per bambini si chiama «Attractions for Little Gauls». Un’età minima il
 parco la indica per The Mini Train e Ceasar’s Carrousel (dai 2 anni) e per The
@@ -433,9 +430,7 @@ misurati e ricevono un braccialetto con le attrazioni su cui possono salire.
 
 ## Quando un parco è vuoto
 
-La tabella
-indica per otto dei dieci parchi il giorno della settimana con l’attesa media
-più bassa.
+Walibi Belgium e il Parc Astérix non sono in questo confronto.
 
 ```park-comparison-widget slugs=efteling,europa-park,phantasialand,attractiepark-toverland,legoland-deutschland,heide-park,plopsaland-deutschland,walibi-holland show=quietest
 

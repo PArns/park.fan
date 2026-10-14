@@ -66,8 +66,7 @@ dertigste verjaardag uitgerekend met een attractie van Paramount.
 Over alle openingsdagen die we tot nu toe gemeten hebben, sta je in het
 [Movie Park](ref:movie-park-germany) ruim een derde korter aan dan in het
 [Phantasialand](ref:phantasialand), een klein uur rijden zuidelijker.
-Waar de andere Duitse parken staan, lees je in mijn
-[ranglijst van pretparken in Duitsland](/blog/beste-pretparken-in-duitsland).
+Mijn [ranglijst van pretparken in Duitsland](/blog/beste-pretparken-in-duitsland) zet de andere Duitse parken op een rij.
 
 De zondag, die de gangbare tipsites afschrijven als drukke weekenddag, hoort
 in onze gegevens bij de rustigste dagen van de week.
@@ -90,9 +89,7 @@ zo goed als alles hernoemen wat een naam uit een Warner-film droeg. In maart
 2010, nam de Spaanse exploitant **Parques Reunidos** het over. Dat concern uit
 Madrid is sinds 2019 grotendeels in handen van de Zweedse investeerder EQT, en
 die wil het volgens de Spaanse zakenkrant Expansión van 24 september 2026 in zijn
-geheel verkopen, Movie Park inbegrepen. Wat dat voor bezoekers en
-abonnementhouders betekent, staat in
-[ons nieuwsbericht over de verkoop](/blog/parques-reunidos-te-koop-movie-park).
+geheel verkopen, Movie Park inbegrepen. [Ons nieuwsbericht over de verkoop](/blog/parques-reunidos-te-koop-movie-park) legt uit wat dat voor bezoekers en abonnementhouders betekent.
 
 Vijf van de bekendste attracties leven daardoor onder een nieuwe naam verder:
 
@@ -323,8 +320,6 @@ uur.
 
 Onze wachttijdhistorie voor Bottrop begint in **december 2025**.
 
-De tien attracties waar je het langst staat:
-
 ```ride-waits-widget park=movie-park-germany top=10 columns=peak,days highlight=van-helsings-factory
 
 ```
@@ -334,11 +329,7 @@ meerdere attracties gelijk, waaronder de wildwaterbaan uit het kinderdeel. Star
 Trek, de grootste baan van het park, staat in de middenmoot.
 
 Van Helsing haalt maar 848 personen per uur, en omdat de rit binnen ligt, willen
-er bij regen extra veel mensen in. Hoe capaciteit en vraag samen een wachttijd
-worden, staat uitgebreid in
-[de kunst van het wachten](/blog/de-kunst-van-het-wachten).
-
-Dezelfde dag, uitgesplitst per uur:
+er bij regen extra veel mensen in. [De kunst van het wachten](/blog/de-kunst-van-het-wachten) legt uitgebreid uit hoe capaciteit en vraag samen een wachttijd worden.
 
 ```hourly-profile-widget slug=movie-park-germany top=8
 
@@ -353,8 +344,6 @@ omdat bij dertig graden iedereen op een gegeven moment nat wil worden.
 De regel van Van Helsing schiet in het tweede uur omhoog en blijft
 daarna tot sluitingstijd op dezelfde waarde staan. Wie er niet in de eerste
 zestig minuten was, vindt de hele dag geen beter moment meer.
-
-In vergelijking met de buren:
 
 ```park-comparison-widget slugs=movie-park-germany,phantasialand,efteling,attractiepark-toverland,walibi-holland,europa-park highlight=movie-park-germany
 
@@ -419,8 +408,6 @@ In de herfstvakantie en de week daarna gaat het anders:
   het alleen nog het laatste weekend open. Op **8 november 2026** sluit het
   seizoen, en dat is tegelijk de laatste avond van het Halloween Horror Festival.
   Daarna blijft het dicht tot het kerstevent.
-
-De rustigste van de komende openingsdagen volgens onze kalender:
 
 ```best-days-widget slug=movie-park-germany
 
@@ -557,7 +544,7 @@ concern in zijn geheel wil verkopen, blijven het ook na een verkoop zusterparken
 
 Daarbij komt de **Bonus Club**, die ook alleen bij Gold en Platin hoort. De
 aanbiedingen voor 2027 publiceert het park pas bij het begin van het
-seizoen 2027. Wat erin kan zitten, staat op de lijst voor 2026:
+seizoen 2027. De lijst voor 2026 laat zien wat erin kan zitten:
 
 - **Eén keer gratis entree** per kalenderjaar in de [Efteling](ref:efteling). Een
   ticket zonder vaste datum kost daar € 56, ruim een derde van de Gold-pas.
@@ -597,7 +584,7 @@ halte Movie Park vlak bij de hoofdingang stopt.
 in de Trattoria Hollywood, verder burgers, friet en een bakker. Voor wat er op je
 bord komt vind ik de prijzen hoog, en ik eet hier zo snel mogelijk.
 
-Of het in Bottrop regent, bepaalt waar de rijen zich opstapelen:
+Of het in Bottrop regent, bepaalt waar de rijen zich opstapelen.
 
 ```weather-widget slug=movie-park-germany
 
@@ -618,7 +605,7 @@ Park-parkpagina](ref:movie-park-germany?bare).
 **Vrijdag**, met **zondag** en **donderdag** vlak daarachter, is in onze gegevens
 de rustigste weekdag, dinsdag is de drukste, en zaterdag ligt duidelijk boven zondag. Vanaf begin september is het
 park sowieso alleen nog van donderdag tot en met zondag open, in de herfstvakantie
-van 17 tot en met 31 oktober dagelijks. Welke dag het precies wordt, staat in de [wachttijden-kalender](ref:movie-park-germany?calendar).
+van 17 tot en met 31 oktober dagelijks. De [wachttijden-kalender](ref:movie-park-germany?calendar) laat zien welke dag het precies wordt.
 
 ### Op welke dagen is Movie Park in het najaar open?
 
@@ -675,7 +662,7 @@ Door de korte rijen rijd je hier op een gewone dag meer dan in
 het Phantasialand of het Europa-Park, en zes weken per jaar staat in dezelfde
 decors het naar eigen telling grootste Halloween-evenement van het continent.
 
-**Zijn beste jaren heeft dit park toch achter zich.** Die lagen in de
+Zijn beste jaren had dit park toch in de
 Warner-tijd, toen een studio er geld en figuren in stak. Er wordt sindsdien
 nog steeds gebouwd, in 2011, 2017, 2018, 2021 en 2026, maar zonder de merken die
 het park ooit maakten. De laatste achtbaan voor volwassenen kwam in 2017, en de

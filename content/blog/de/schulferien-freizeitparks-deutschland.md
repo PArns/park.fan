@@ -125,7 +125,7 @@ Die Sommerferien 2026 lagen weit auseinander. Rheinland-Pfalz, Hessen und das Sa
 Ende Juni an, Bayern hörte am 14. September als letztes Land auf. Nur in einer einzigen Woche,
 vom 3. bis 7. August, hatten alle 16 Bundesländer gleichzeitig frei.
 
-### Heide Park: Niedersachsen und NRW müssen beide frei haben
+### Heide Park
 
 Niedersachsen hatte vom 2. Juli bis zum 12. August Ferien, NRW ab dem 18. Juli. In den gut zwei
 Wochen, in denen nur Niedersachsen frei hatte, lag der Aufschlag im
@@ -148,10 +148,10 @@ extrem stehen, lagen 31 in den Schulferien irgendeines Bundeslandes.
 
 ```
 
-Wie ein früher Start in Soltau aussieht, steht im
-[Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps).
+Im [Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps) steht, wie ein früher Start in Soltau
+aussieht.
 
-### Phantasialand: voll, bevor NRW frei hat
+### Phantasialand
 
 In Brühl war es umgekehrt. Vom 2. bis 17. Juli, als in Niedersachsen, Hessen, Rheinland-Pfalz und
 mehreren anderen Ländern Ferien waren und in NRW noch Schule, lag das
@@ -166,7 +166,7 @@ bis Ende August lag dort keine Werktagswoche weniger als 50 Prozent über dem Ma
 Der Quick Pass, den du in diesen Wochen brauchen kannst, ist im
 [Phantasialand-Guide](/blog/phantasialand-tipps) erklärt, samt der Bahn, mit der du anfängst.
 
-### Movie Park: die erste NRW-Woche
+### Movie Park
 
 Für den [Movie Park](ref:movie-park-germany) in Bottrop gilt fast dasselbe wie für Brühl: plus 67
 Prozent vor den NRW-Ferien, plus 132 Prozent, solange NRW und Niedersachsen gemeinsam frei hatten,
@@ -176,7 +176,7 @@ wie in der Woche davor, und die vier vollsten Tage des ganzen Messzeitraums lieg
 einen Woche, Dienstag bis Freitag. In der Woche danach war es wieder vorbei, und woran das lag,
 kann ich am Kalender nicht ablesen.
 
-### Plopsaland: Rheinland-Pfalz und NRW zusammen
+### Plopsaland
 
 Beim [Plopsaland](ref:plopsaland-deutschland) in Haßloch hat weder Rheinland-Pfalz noch NRW den
 Park allein gefüllt. Rheinland-Pfalz hatte als erstes Land Ferien, ab dem 27. Juni. In den drei
@@ -189,11 +189,10 @@ In dieser Woche fiel der Werktagsschnitt gegenüber der Vorwoche auf ein gutes D
 zum Ende der NRW-Ferien lag der Park 23 Prozent unter einem ferienfreien Werktag.
 
 Seine vollsten Tage hatte das Plopsaland ohnehin nicht im Sommer. Vier der zehn vollsten Tage
-lagen in der Woche vom 7. bis 10. April, in den Osterferien. Was der Park im Oktober
-abends macht, steht im
-[Beitrag zu den Halloween Fright Nights](/news/plopsaland-deutschland-halloween-fright-nights-2026).
+lagen in der Woche vom 7. bis 10. April, in den Osterferien. Im Oktober hat der Park abends
+die [Halloween Fright Nights](/news/plopsaland-deutschland-halloween-fright-nights-2026).
 
-### Europa-Park: reagiert am schwächsten
+### Europa-Park
 
 Der [Europa-Park](ref:europa-park) lag in den drei Wochen mit 14 bis 16 Ländern in den Ferien 37
 Prozent über dem Maßstab. Das ist der kleinste Aufschlag der sechs Parks. Vom 20. bis 29. Juli,
@@ -206,7 +205,7 @@ und den Grand Est. Ob deren Ferien den Unterschied machen, habe ich nicht getren
 Der vollste Tag des ganzen Messzeitraums war in Rust Montag, der 29. Dezember 2025, zwischen
 den Jahren, als alle 16 Länder frei hatten.
 
-### Legoland: am stärksten vom Süden abhängig
+### Legoland
 
 Das [Legoland](ref:legoland-deutschland) in Günzburg hängt am stärksten an den Ferien im Süden,
 aber nicht nur an ihnen. In den Pfingstferien, die 2026 nur Bayern und Baden-Württemberg hatten,
@@ -299,7 +298,7 @@ Phantasialand gut doppelt so lange. Das beruht auf sechs Ferienwerktagen je Park
 Für den kommenden Winter stehen die Öffnungstage schon im Kalender. Zwischen dem 19. Dezember 2026
 und dem 12. Januar 2027 hat das Phantasialand an 21 Tagen offen, der Europa-Park an 20, das
 Legoland an 19, das Plopsaland an 13 und der Movie Park an 11. Der Heide Park macht nach dem 31.
-Oktober zu. Die Weihnachtsferien beginnen in zehn Ländern am 23. Dezember und enden zwischen dem 31. Dezember und dem 12. Januar. Welche Parks im Winter was anbieten, steht im
+Oktober zu. Die Weihnachtsferien beginnen in zehn Ländern am 23. Dezember und enden zwischen dem 31. Dezember und dem 12. Januar. Das Winterprogramm der Parks steht im
 [Winter-Guide](/blog/winter-freizeitparks-2026).
 
 ## Die ruhigen Ferienwochen
@@ -412,9 +411,9 @@ Januartage nach den Ferien dort halb so voll wie die Tage zwischen den Jahren.
 Den Brückentag nach Christi Himmelfahrt meide ich, den Feiertag selbst
 nicht unbedingt, und einen 1. Mai an einem Werktag plane ich wie einen Samstag.
 
-Welcher Monat in welchem Park am ruhigsten ist, steht auf der
-[Beste-Reisezeit-Seite](/beste-reisezeit), und welcher der Parks sich für wen lohnt, in der
-[Rangliste der deutschen Freizeitparks](/blog/beste-freizeitparks-in-deutschland).
+Die ruhigsten Monate je Park stehen auf der [Beste-Reisezeit-Seite](/beste-reisezeit). In der
+[Rangliste der deutschen Freizeitparks](/blog/beste-freizeitparks-in-deutschland) steht, welcher
+der Parks sich für wen lohnt.
 
 — Patrick
 

@@ -97,8 +97,7 @@ bij sommige attracties toekijken als het niet mee mag.
 ### Objectif Mars
 
 [Objectif Mars](ref:futuroscope/destination-mars) draait sinds 2020 en is naast de kinderachtbaan Le Balancier in Futuropolis de enige achtbaan van het park. Intamin bouwde hem als launched
-coaster met draaiende wagens, een spinning coaster. Het park noemt hem een familieachtbaan en geeft
-een topsnelheid van 55 km/u op, het traject loopt door een gebouw en naar buiten. Hij zou op
+coaster met draaiende wagens, een spinning coaster. Voor het park is het een familieachtbaan met een topsnelheid van 55 km/u. Het traject loopt door een gebouw en naar buiten. Hij zou op
 28 maart 2020 opengaan; door de sluiting tijdens de pandemie startte hij in juni 2020, eerst
 alleen in het weekend.
 
@@ -133,7 +132,7 @@ en duizeligheid af.
 [Danse avec les Robots](ref:futuroscope/dances-with-robots) is een robocoaster: je zit aan de arm
 van een industriële robot die danst op hits van dj Martin Solveig. De rit duurt ongeveer een
 minuut. Het paviljoen van de robots opende in 2006, het jaar van de robots, de versie met Solveig
-dateert van december 2012. Het park spreekt van een robot van negen meter hoog.
+dateert van december 2012. De robot is volgens het park negen meter hoog.
 
 Vanaf 1,20 meter, ook met begeleiding, tot 2,00 meter.
 
@@ -174,7 +173,7 @@ Futuropolis is het buitengebied voor kinderen, drie hectare groot, in 1988 geope
 Enfants en sinds 2018 onder de huidige naam. De Franse Wikipedia telt 21 attracties en
 speelgebieden, waaronder draaimolens van Heege, Zierer en Zamperla.
 
-Er zijn armbandjes in vier kleuren, ingedeeld naar lichaamslengte. De grenzen die het park bij de
+De armbandjes zijn er in vier kleuren, ingedeeld naar lichaamslengte. De grenzen die het park bij de
 attracties vermeldt:
 
 | Attractie                                           | met begeleiding vanaf | alleen vanaf |
@@ -211,10 +210,7 @@ tenzij het weer buitengewoon is. Je ziet waterbeelden in 3D, licht en pyrotechni
 sinds juni 2021 en nam de plaats in van La Forge aux Étoiles, die makers van de Cirque du Soleil
 hadden ontworpen.
 
-Overdag zijn er nog twee shows. **Éclipse, robotic show** ontstond in 2024 met het Cirque Éloize
-in het voormalige IMAX 3D-paviljoen en combineert videomapping, lasers en drones. **IllusiO, un
-destin magique** is een illusieshow van 25 minuten die in het weekend en in de schoolvakanties
-draait.
+**Éclipse, robotic show** draait overdag en ontstond in 2024 met het Cirque Éloize in het voormalige IMAX 3D-paviljoen. De show combineert videomapping, lasers en drones. De tweede dagshow, **IllusiO, un destin magique**, is een illusieshow van 25 minuten die in het weekend en in de schoolvakanties draait.
 
 Wie alleen de avond wil, koopt een Soirée-ticket (toegang vanaf 17.00 uur) of een
 Nocturne-ticket (vanaf 20.00 uur). Beide bevatten de avondshow en de attracties die 's avonds
@@ -312,7 +308,7 @@ bezoek kost een bijdrage ten gunste van slechtzienden, die niet in het ticket zi
 Futuroween begint op zaterdag 17 oktober, een dag voor de herfstvakantie. Vanaf 18 oktober is het
 park volgens de kalender dagelijks open van 9.45 tot 22.00 uur.
 
-## Tickets, kaarten en prijzen
+## Tickets en prijzen
 
 Aan de dagkassa kost een dagticket met datum 59 euro voor volwassenen en 49 euro voor kinderen van
 5 tot 12 jaar. Online hangt de prijs af van de datum. Het park maakt voor 2026 reclame met het

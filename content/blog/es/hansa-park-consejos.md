@@ -2,6 +2,7 @@
 title: 'Hansa-Park: el Kärnan va a 127 km/h, y la temporada no tiene ningún día de cierre'
 translationKey: hansa-park-guide
 date: '2026-09-22'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -63,6 +64,7 @@ Lübeck a Neustadt, y desde lo alto del Highlander se ve toda la bahía de Lübe
 El Hansa-Park se apaña con **46 hectáreas**. El Heide Park tiene 85. Aquí dos montañas rusas rara vez están a más de unos minutos a pie una de
 otra, y
 las once zonas temáticas se suceden en lugar de estar separadas por prados.
+Unos 17.000 metros cuadrados del recinto están cubiertos.
 
 El [Highlander](ref:hansa-park/highlander?bare) es la gyro drop tower más alta del mundo. Además
 hay un paseo en barca heredado del Legoland y cuatro montañas rusas familiares o infantiles.
@@ -86,6 +88,14 @@ a más de 60 metros de altura, con los pasajeros tumbados boca arriba y a oscura
 lift lo siga subiendo hasta la primera caída. El parque lo presenta como algo
 único en el mundo. En 2017 más que duplicó la velocidad de caída, de unos 5 a unos 11 metros por segundo.
 
+El Kärnan abrió el 1 de julio de 2015, diseñado por la ingeniería Stengel. Su torre reproduce el
+Kärnan de Helsingborg, la torre del homenaje de una fortaleza medieval, aquí a más del doble de su
+tamaño. Desde 2019 cuelga dentro de la torre, sobre los pasajeros tumbados, una pantalla en la que
+antes de la caída hacia atrás aparece el fantasma del rey Erik Menved. Circulan tres trenes, cada uno
+con cuatro vagones de una sola fila de cuatro asientos. En la última sala antes de la estación los
+pasajeros se colocan en grupos de cuatro, y un generador aleatorio decide qué grupo sube a qué fila.
+IMAscore grabó la música en Budapest con 63 músicos y 40 coristas.
+
 ```glossary-widget slug=infinity-coaster
 
 ```
@@ -96,19 +106,27 @@ altura, **100 km/h**, y tiene un lanzamiento LSM, que te lleva a oscuras a 100 k
 cadena vertical. El
 lift está en la segunda parte del recorrido, de nuevo a oscuras, y la caída que viene después llega
 a **97 grados**, o sea, pasada la vertical. Hasta 2020 se llamaba Fluch von Novgorod, la
-maldición de Novgorod, y desde 2021 Flucht von Novgorod, la huida de Novgorod.
+maldición de Novgorod, y desde 2021 Flucht von Novgorod, la huida de Novgorod. El recorrido mide
+750 metros, los trenes tienen ocho plazas, cuatro en fila, y en la entrada hay un asiento de prueba.
 
 Anton Schwarzkopf construyó **[Nessie](ref:hansa-park/nessie)** en **1980**: 26 metros de altura, 741
 metros de recorrido, 80 km/h, un único looping vertical y, en su momento, el looping más grande de
-Europa. Lleva 46 años funcionando, y en 2019 su zona recibió una nueva tematización.
+Europa. Lleva 46 años funcionando, y en 2019 su zona recibió una nueva tematización. Funcionan dos
+trenes de 28 plazas cada uno, y el parque la permite a pasajeros de hasta 1,95 metros.
 
 De las cuatro más pequeñas, solo **[Crazy Mine](ref:hansa-park/crazy-mine)** no es familiar. Es de Maurer y
-funciona desde 1997 como ratón loco con decorado de mina, 15 metros de altura y terminada en 70
-segundos. El **[Royal Scotsman](ref:hansa-park/royal-scotsman)** es un junior coaster de Vekoma de
-**1993** que hasta 2019 se llamaba Rasender Roland y pasa justo por el medio del looping de Nessie.
-La **[Schlange von
-Midgard](ref:hansa-park/midgard-serpent)** está desde 2011 en el Wikingerland, **[Der kleine Zar](ref:hansa-park/the-little-tsar)** desde 2017 en el Alter Jahrmarkt, con
-tres metros de altura. Las dos admiten niños desde 90 centímetros.
+funciona desde 1997 como ratón loco con decorado de mina, 15 metros de altura, 370 metros de
+recorrido, 45 km/h, cuatro plazas por vagón y terminada en 70 segundos. El
+**[Royal Scotsman](ref:hansa-park/royal-scotsman)** es un junior coaster de Vekoma de **1993**,
+16 metros de altura, 522 metros de recorrido y 50 km/h, que hasta 2019 se llamaba Rasender Roland y
+pasa justo por el medio del looping de Nessie. Sustituyó a la Seeschlange, una montaña rusa de
+Zierer desmontada a finales de 1992 que hoy funciona en el Magic Park Verden.
+
+La **[Schlange von Midgard](ref:hansa-park/midgard-serpent)** está desde 2011 en el Wikingerland,
+una montaña rusa familiar de Gerstlauer con 200 metros de recorrido, 45 km/h y tramos a oscuras.
+**[Der kleine Zar](ref:hansa-park/the-little-tsar)**, de Preston & Barbieri, funciona desde 2017 en
+el Alter Jahrmarkt, con tres metros de altura, 54 metros de recorrido y 20 km/h. Las dos admiten
+niños desde 90 centímetros.
 
 El **[Cornwall
 Coaster](ref:hansa-park/new-2026-cornwall-coaster)** abrió el **23 de mayo de 2026** en la zona
@@ -123,7 +141,7 @@ En **abril de 2019** abrió el **[Highlander](ref:hansa-park/highlander)** como 
 más alta del mundo. **120 metros** de construcción, **103 metros** de
 caída libre, 120 km/h, los asientos inclinados 30 grados hacia delante, construida por Funtime. El
 título lo tenía hasta entonces [Scream](ref:heide-park/scream?bare), en el [Heide
-Park](/blog/heide-park-tiempos-de-espera-consejos), de 103 metros de altura. Es exactamente la altura de caída del [Highlander](ref:hansa-park/highlander?bare).
+Park](/blog/heide-park-tiempos-de-espera-consejos), de 103 metros de altura.
 
 A finales de 2021 abrió en Florida el Orlando FreeFall, de
 131 metros y también de Funtime, que era más alto. Tras un accidente mortal en marzo de 2022 se cerró y en 2023 se
@@ -134,7 +152,39 @@ Hansa-Park añadió cinturones adicionales a las barras de sujeción.
 
 ```
 
-El Highlander tiene la estatura mínima más alta del parque, 1,40 metros.
+El Highlander tiene la estatura mínima más alta del parque, 1,40 metros. Tiene 24 asientos con
+arneses de hombros, su punta está a 149 metros sobre el nivel del mar y los pilotes de debajo llegan
+a 28 metros de profundidad.
+
+## Las atracciones acuáticas
+
+La más antigua es la [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) de 1977, hoy
+«Der Wasserwolf am Ilmensee», en el Peterhof von Novgorod. Las canoas recorren cerca de un kilómetro
+y terminan con una caída de 15 metros a un canal estrecho. El
+[Super Splash](ref:hansa-park/super-splash?bare) de Intamin baja desde 20 metros con una pendiente
+del 85 % y salta por un trampolín al lago. El trampolín se añadió un año después de la apertura de 1986.
+
+[Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare) abrió en 2000 como Rio Dorado,
+entonces la única atracción de rafting de su tipo en Alemania, y lleva su nombre actual desde 2018.
+Las balsas neumáticas suben una rampa de más de 70 metros y giran por curvas peraltadas en una bajada
+de casi medio kilómetro. En el Barracuda Slide de 1998 bajan cuatro pistas en paralelo desde
+12 metros de altura.
+
+Para los pequeños están la Sturmfahrt der Drachenboote de 2007, 160 metros con una bajada desde siete
+metros, y [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) de 2021, un baby flume
+de 83 metros de Soquet. Los niños desde 90 centímetros suben con un adulto.
+
+## Espectáculos
+
+El espectáculo de variedades de la temporada 2026 se llama «Magical Cornwall» y dura unos
+30 minutos. Se representa en la Arena del Mar, que el parque presenta como el mayor teatro de
+variedades del norte de Alemania, y en la misma sala hay un espectáculo de láser y efectos
+especiales de diez minutos. En la Aquarena va el espectáculo familiar «Adrienne, Emmi, Pingi & Co
+und die versunkene Stadt», de unos 15 minutos, y en el escenario al aire libre del Alter Jahrmarkt
+el «Schaubudenzauber» con el Duo Kolobov.
+
+Una vez empezada la función, el parque no deja entrar a nadie, y durante el espectáculo no se puede
+hacer fotos ni grabar vídeo.
 
 ## Un calendario sin día de cierre
 
@@ -146,14 +196,23 @@ calendario con regularidad en primavera y otoño, el Movie Park cierra casi siem
 miércoles fuera de temporada alta, e incluso el Legoland Deutschland de Günzburg tiene en 2026 algunos
 días de cierre en mayo, junio y septiembre. Quien busque en Sierksdorf un [día tranquilo entre semana](/mejor-epoca-para-visitar) lo encuentra abierto.
 
-Hasta el **9 de octubre** el parque abre todos los días a
-las **10:00** y las atracciones cierran a las **18:00**. El Viernes Santo, el 3 de abril, las atracciones no arrancaron hasta
+Hasta el **9 de octubre** el parque abría todos los días a
+las **10:00** y las atracciones cerraban a las **18:00**. El Viernes Santo, el 3 de abril, las atracciones no arrancaron hasta
 las 11:00. El 11 de agosto el recinto siguió abierto hasta las 19:00 y el 12 de agosto hasta las
-18:30, pero las atracciones pararon igualmente a las 18:00 en ambas tardes. Si vienes todavía en
-septiembre, entre semana verás un programa de espectáculos cambiado, porque el parque prepara el
-Herbstzauber.
+18:30, pero las atracciones pararon igualmente a las 18:00 en ambas tardes.
 
 Para 2027, el parque planea por ahora la temporada del **25 de marzo al 24 de octubre**.
+
+## Vacaciones escolares en Schleswig-Holstein y Hamburgo
+
+Las vacaciones de otoño de 2026 van del 12 al 24 de octubre en Schleswig-Holstein, en pleno
+Herbstzauber, y del 19 al 30 de octubre en Hamburgo.
+
+Para 2027, las vacaciones de Semana Santa en Schleswig-Holstein están fijadas del 30 de marzo al
+10 de abril, cinco días después del inicio previsto de la temporada. Las de verano van allí del
+3 de julio al 14 de agosto, y en Hamburgo del 1 de julio al 11 de agosto.
+
+Además del Herbstzauber, la fiesta de la cosecha dura hasta el 25 de octubre de 2026, con parterres decorados.
 
 ```map-widget slug=hansa-park
 
@@ -195,6 +254,10 @@ niños de menos de diez años estás mejor aquí que en una noche de laberintos.
 nocturno es ruidoso, y el propio parque avisa de que puede asustar a
 los más pequeños.
 
+En un día de Herbstzauber empezaría a las 11:00 con la Wildwasserfahrt y el Super Splash, y haría
+Flucht von Novgorod, Kärnan y Highlander mientras haya luz. Ya de noche vienen la
+Blumenmeerbootsfahrt, luego el desfile de luces y el espectáculo nocturno.
+
 ## Límites de estatura y de edad
 
 En el Hansa-Park, la entrada de muchas atracciones indica una edad además de la estatura mínima, y
@@ -234,7 +297,9 @@ En **1978** abrió aquí el delfinario
 de cúpula más grande y moderno de Europa, con 1.400 asientos. Desde **1994** el parque renuncia a los
 espectáculos de delfines. El teatro abrió en 1984 con «Wetten Spaß», de Frank Elstner: quien
 había perdido su apuesta en «Wetten, dass..?» tenía en Sierksdorf una segunda oportunidad. En los años siguientes, Wim
-Thoelke y Michael Schanze ocuparon el mismo escenario.
+Thoelke y Michael Schanze ocuparon el mismo escenario. El teatro se construyó a partir de 1983 en
+semicírculo como un anfiteatro antiguo, con 1.800 asientos, y en 1988 llegó el Aqua-Stadion con los
+saltadores de Acapulco.
 
 Entretanto crecía la oferta de atracciones: **1980** [Nessie](ref:hansa-park/nessie?bare), **1986** el [Super Splash](ref:hansa-park/super-splash?bare), **1987** el
 cambio de nombre a Hansa-Park por el décimo aniversario, además de la Holsteinturm de 100 metros con
@@ -242,17 +307,41 @@ su cabina giratoria. Esa desapareció en **enero de 2025**, desmontada por probl
 no tenían arreglo. Algo parecido le pasó al Metroliner de 1989, un tren eléctrico sobre un ocho
 plegado sobre sí mismo, que más tarde circuló como El Paso Express y cerró tras la temporada 2015.
 
+En 1993 llegaron unas escaleras mecánicas acristaladas del aparcamiento a la
+entrada. En 1997, por el 20 aniversario, vino la mayor ampliación de la historia de la empresa. Por
+unos 15 millones de marcos se construyó el Piratenland, con una réplica del barco Nina de Colón que
+antes había estado expuesta en el Martin-Gropius-Bau de Berlín, además de la Wikinger-Bootsfahrt.
+En 2000 siguió la torre Monte-Zuma de 50 metros, y en 2006 un circuito de cuerdas en altura que
+desde su ampliación en 2008 se llama Navajo-Trail. En 2007 el Hansa-Park fue el primer parque de atracciones
+alemán en recibir para todo su recinto el sello «OK für Kids» de la asociación alemana de protección
+de la infancia y del TÜV Nord.
+
+Monte-Zuma se desmontó en 2013. El Star Flyer Torre del
+Mar, de 70 metros y de 2005, se fue a finales de 2015, porque la torre del Kärnan había cambiado el
+viento en el recinto. El parque retiró el Fliegender Hai de 1991 a finales de 2018, porque ya no se
+fabricaban piezas de recambio y gastaba muchísima electricidad, y Die Glocke de 2008 a finales de
+2019 para dejar sitio a Awildas Welt. El 29 de octubre de 2017 John Burke dio su último espectáculo
+de leones marinos en la Aquarena tras 28 años, y en 2020 se suspendió todo el programa de
+espectáculos por la pandemia de coronavirus.
+
 La mayor obra del parque es **Hanse in Europa**, que sustituye desde 2008 a los antiguos
 Landungsbrücken y crece fachada a fachada, en ocho fases documentadas: en 2008 la Holstentor como
 entrada; en 2010 Brujas, Visby, Lübeck, Hamburgo y Rostock; en 2011 Groninga y París; en 2012
 Londres, Ribe y Bergen; en 2013 otras seis, de Copenhague a Núremberg; en 2018 Gdansk y Cracovia; y
 en 2021 la fase más grande hasta la fecha, con 14 fachadas de Cracovia, Estocolmo, Stralsund,
-Helsinki, Riga y Venecia. Se calcularon veinte años. La última fase, el Palacio de Braga, no está
+Helsinki, Riga y Venecia. La Holstentor la inauguró el 26 de abril de 2008 Peter Harry Carstensen,
+entonces ministro presidente de Schleswig-Holstein. Se calcularon veinte años. La última fase, el Palacio de Braga, no está
 terminada.
 
 Desde 2021 han llegado Awildas Welt, el Peterhof von Novgorod en lugar del antiguo campamento de
 leñadores, New Lübeck en lugar del pueblo del oeste Bonanza City, el Carrousel Baltique, los Lost
 Trails of Roanoke y Einars Fjordfahrt.
+
+Hoy dirige el parque Christoph Andreas Leicht, socio colectivo de HANSA-PARK Freizeit- und
+Familienpark GmbH & Co. KG, y la Wikipedia en inglés señala a la familia Leicht como propietaria.
+Durante la temporada trabajan allí hasta 850 personas. Según el parque, cerca del 83 % de los
+visitantes ya había estado antes, y su edad media es de 28 años. La agencia dpa hablaba en 2023 de
+unos 1,4 millones de visitantes al año, y la Wikipedia en alemán da la misma cifra para 2016.
 
 ## Dónde dormir
 
@@ -261,18 +350,41 @@ el parque de vacaciones y el parque de atracciones. Se reserva a través de Land
 estancia mínima es de **tres noches** y dos solo bajo petición. Te alojas en una casa de vacaciones, mientras que los hoteles de parque de Rust y Brühl son hoteles tematizados. Tres noches encajan mejor en una semana en el Báltico con
 dos días de parque que en un solo día de parque.
 
+Las primeras casas se levantaron en 2007, y estaban previstas 109 viviendas de vacaciones de estilo
+escandinavo. El puente que llevaba del resort directamente al parque está cerrado desde 2020. El
+parque recomienda hoteles en Haffkrug y Sierksdorf, a cinco minutos, en Timmendorfer Strand, a
+entre 10 y 15 minutos, y en Travemünde y Lübeck, a entre 20 y 25 minutos.
+
+## Comer en el parque
+
+El restaurante familiar Weltumsegler sirve desayuno y comida, con platos
+veganos, vegetarianos y sin gluten entre ellos. También se come a cubierto en el Ristorante
+L'Artista y en el Saloon «New Chance», y el Café Rosa, junto a la entrada, abrió en 2024. Los otros
+16 puestos van del Joe's Grill 'N BBQ al algodón de azúcar del Krantor von Danzig, pasando por Elins
+Vafflejern.
+
+Se permite hacer pícnic. El parque tiene zonas de pícnic, praderas y, junto al Kärnan, las
+«Skandinaviske Hytter», cabañas donde pueden sentarse grupos. El reglamento del parque prohíbe las
+barbacoas y traer parrillas o hornillos. Los perros pueden entrar con correa corta, pero no a los
+espectáculos ni a las atracciones.
+
 ## Práctico: cómo llegar, entradas, aparcamiento
 
 **Cómo llegar.** Am Fahrenkrog 1, 23730 Sierksdorf. En tren regional de Lübeck en dirección Neustadt hasta la estación de Sierksdorf, y desde
 allí diez minutos a pie, señalizado; con carrito o silla de ruedas, toma en la estación la
 dirección de la playa, también señalizada, y te ahorras la escalera.
+En coche, toma la A1 hasta la salida 14 Neustadt-Mitte, y desde allí el parque está señalizado. El
+aparcamiento grande es también una parada de los autobuses de línea de Autokraft. Con la
+Ostsee-Card, el autobús lanzadera de la costa cuesta 1 € por trayecto. Pasa cada hora por las líneas
+550, 557 y 575, de Dahme al parque por Kellenhusen, Grömitz y Neustadt.
 
 **Aparcamiento.** **7 €** al día por coche en el aparcamiento grande, altura máxima de acceso 2,30
 metros. Las motos aparcan gratis y las autocaravanas pagan 15 € por cada doce horas empezadas. Los
 coches eléctricos tienen su propio aparcamiento con diez puntos de carga. La electricidad es gratis,
 pero el día cuesta **16 €**, más del doble que el aparcamiento grande, y el parque pide cambiar el
 coche de sitio cuando termina de cargar. La zona de parada breve para dejar y recoger es gratis
-durante 30 minutos.
+durante 30 minutos. El aparcamiento grande tiene 5.000 plazas, el tique vale para una sola entrada, y
+hay plazas gratuitas para personas con discapacidad frente a la entrada principal, en Am Fahrenkrog.
 
 **Entradas 2026.** **53 €** a partir de 12 años, **43 €** para niños de 4 a 11 años, gratis hasta los
 4, 43 € a partir de 70. Quien venga el día de su cumpleaños y cumpla como mucho 12 entra gratis, pero
@@ -280,6 +392,18 @@ solo en taquilla. La entrada de dos días cuesta 85 € o 65 € y se personaliz
 facial.
 
 El precio en línea es el mismo que en taquilla. En Soltau la taquilla sale hasta 27 € más cara que la compra en línea; aquí comprar por adelantado solo te ahorra la cola.
+
+**Visitantes con discapacidad.** Con una tarjeta alemana de discapacidad, el día cuesta 43 €, con la
+marca H y acompañamiento individual 29 €, y con aG o Bl la entrada es gratis. Un acompañante para la
+marca B o H paga 43 €. Estas entradas solo se venden en taquilla.
+
+**Fast pass.** En la lista de precios de 2026 no hay ninguna entrada exprés ni fast pass, y en cada
+atracción todo el mundo hace la misma cola. La app del HANSA-PARK muestra los horarios de los
+espectáculos y los límites de edad y estatura de cada atracción.
+
+**Pagar.** En las cajas del parque, pero no en las taquillas de la entrada, el parque acepta también
+billetes de las divisas extranjeras habituales y devuelve el cambio en euros. Hay un cajero de la
+Sparkasse Holstein a la izquierda de la Holstentor.
 
 **Pase de temporada.** El de 2026 costaba 135 € una vez empezada la temporada. El de 2027 cuesta
 **120 €** hasta el 24 de marzo de 2027 y después 140 €. Los adultos que lo compren antes del 25 de
@@ -295,8 +419,7 @@ Para el 50 cumpleaños del parque llega la **Buddenbrook-Turm** al Hansa-Garten:
 86 metros, de Funtime, que sube a 60 personas a la vez, dos de ellas en silla de ruedas. El nombre
 viene de «Los Buddenbrook», de Thomas Mann, donde Hanno pasa las vacaciones de verano en
 Travemünde, en la bahía de Lübeck. Las obras deben empezar en el invierno 2026/27 y la apertura está
-prevista a lo largo de la temporada 2027. Así el parque vuelve a tener una torre mirador algo más de
-dos años después de desmontar la Holsteinturm.
+prevista a lo largo de la temporada 2027.
 
 El [Super Splash](ref:hansa-park/super-splash?bare) de 1986 se
 desmonta en el invierno 2026/27, porque el parque replantea su zona. Qué irá en su lugar aún no se
@@ -331,6 +454,16 @@ con la carga gratis.
 
 [Highlander](ref:hansa-park/highlander?bare) desde 1,40 m, [Der Schwur des Kärnan](ref:hansa-park/the-oath-of-kaernan?bare) desde 1,30 m, [Flucht von Novgorod](ref:hansa-park/escape-of-novgorod?bare) desde 1,25 m. Con un adulto al lado: [Crazy Mine](ref:hansa-park/crazy-mine?bare) desde 1,10 m (sin acompañante a partir de 9 años), [Nessie](ref:hansa-park/nessie?bare) y [Royal Scotsman](ref:hansa-park/royal-scotsman?bare) desde 1 m (sin acompañante a partir de 10), [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster?bare) desde 90 cm (sin acompañante a partir de 8), [Schlange von Midgard](ref:hansa-park/midgard-serpent?bare) desde 90 cm (sin acompañante a partir de 6), [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) desde 90 cm en asiento infantil (sin acompañante a partir de 1,20 m).
 
+### ¿Tiene el Hansa-Park fast pass?
+
+No. En la lista de precios de 2026 no hay ninguna entrada exprés ni fast pass, y cada atracción tiene
+una sola cola para todos. En el Kärnan, un generador aleatorio decide en qué fila te sientas.
+
+### ¿Cuántos visitantes recibe el Hansa-Park?
+
+Unos 1,4 millones al año, según la agencia dpa en 2023, y la Wikipedia en alemán da la misma cifra
+para 2016. Según el parque, cerca del 83 % de los visitantes ya había estado antes.
+
 ### ¿Qué es el Herbstzauber am Meer?
 
 El programa nocturno de los últimos 16 días de temporada, del 10 al 25 de octubre de 2026. Unas 2.000
@@ -351,15 +484,10 @@ y entonces el parque también puede cambiar su horario:
 
 ```
 
-El [Heide Park](/blog/heide-park-tiempos-de-espera-consejos) queda
-a 131 kilómetros en línea recta hacia el suroeste y cabe en la misma semana. Cómo quedan los dos
+Hamburgo está a 78 kilómetros en línea recta, el [Heide Park](/blog/heide-park-tiempos-de-espera-consejos)
+a 131 kilómetros hacia el suroeste, y cabe en la misma semana. Cómo quedan los dos
 frente al resto de parques del país está en mi
 [clasificación de parques de atracciones alemanes](/blog/mejores-parques-de-atracciones-de-alemania).
-
-## La ubicación
-
-Hamburgo está a 78 kilómetros en línea recta. Quien
-venga solo por las ocho montañas rusas termina a primera hora de la tarde.
 
 — Patrick
 
@@ -410,6 +538,49 @@ venga solo por las ocho montañas rusas termina a primera hora de la tarde.
   Llegada en tren: [Tren (oficial)](https://www.hansapark.de/bahn/) · los trenes solo llegan ya hasta
   Neustadt:
   [Bahnstrecke Lübeck–Puttgarden en de.wikipedia](https://de.wikipedia.org/wiki/Bahnstrecke_L%C3%BCbeck%E2%80%93Puttgarden)
+- Teatro 1983, Aqua-Stadion 1988, Rasender Roland y escaleras mecánicas 1993, ampliación de 1997,
+  Barracuda Slide, Rio Dorado, Monte-Zuma, circuito de cuerdas, resort 2007, años de apertura del
+  Fliegender Hai, el Torre del Mar y la Glocke: [Hitos (oficial)](https://www.hansapark.de/historie/) ·
+  15 millones de marcos y la Nina, «OK für Kids», inauguración de la Holstentor, desmontaje de
+  Monte-Zuma, el Torre del Mar, el Fliegender Hai y la Glocke, espectáculo de leones marinos, temporada
+  de la pandemia, Seeschlange, trampolín del Super Splash, Rio Dorado hasta 2017, resort de 109
+  viviendas y puente cerrado: [Hansa-Park en de.wikipedia](https://de.wikipedia.org/wiki/Hansa-Park)
+- Dirección, superficie cubierta, 5.000 plazas de aparcamiento, personal, visitantes que repiten y
+  edad media: [Zahlen, Daten, Fakten (oficial)](https://www.hansapark.de/zahlen-daten-fakten/) · la
+  familia Leicht como propietaria: [Hansa-Park en en.wikipedia](https://en.wikipedia.org/wiki/Hansa-Park)
+- Unos 1,4 millones de visitantes al año:
+  [Volksstimme/dpa, 26 de junio de 2023](https://www.volksstimme.de/leben/brandschutz-hansa-park-fur-den-sommer-gerustet-3639129)
+  · para 2016: [Hansa-Park en de.wikipedia](https://de.wikipedia.org/wiki/Hansa-Park)
+- Fecha de apertura, diseñador, modelo de la torre, trenes, sorteo de filas, pantalla en la torre y
+  banda sonora del Kärnan: [Der Schwur des Kärnan en de.wikipedia](https://de.wikipedia.org/wiki/Der_Schwur_des_K%C3%A4rnan) ·
+  [Schwur des Kärnan en rcdb.com](https://rcdb.com/11615.htm)
+- Longitudes, velocidades, plazas y asientos de prueba de las montañas rusas:
+  [Montañas rusas (oficial)](https://www.hansapark.de/achterbahnen/) ·
+  [Royal Scotsman en rcdb.com](https://rcdb.com/983.htm) · [Seeschlange en rcdb.com](https://rcdb.com/1466.htm)
+- Highlander, asientos, altitud y pilotes:
+  [HIGHLANDER (oficial)](https://www.hansapark.de/attraktion/219/details/highlander)
+- Atracciones acuáticas con alturas, longitudes y años: [Wasserbahnen (oficial)](https://www.hansapark.de/wasserbahnen/)
+- Espectáculos y acceso:
+  [Espectáculo de variedades (oficial)](https://www.hansapark.de/attraktion/88/details/variete-show) ·
+  [Aquarena (oficial)](https://www.hansapark.de/attraktion/92/details/aquarena) ·
+  [Espectáculo de láser (oficial)](https://www.hansapark.de/attraktion/59/details/laser-und-special-effekt-show) ·
+  [Escenario al aire libre (oficial)](https://www.hansapark.de/attraktion/30/details/freilichtbuehne-alter-jahrmarkt) ·
+  [Preguntas frecuentes (oficial)](https://www.hansapark.de/faqs/)
+- Vacaciones escolares:
+  [KMK, vacaciones 2026/27](https://www.kmk.org/fileadmin/Dateien/pdf/Ferienkalender/FER2026_27.pdf)
+- Fiesta de la cosecha: [Erntedank (oficial)](https://www.hansapark.de/erntedank/)
+- En coche y en autobús, lanzadera de la costa: [Coche (oficial)](https://www.hansapark.de/pkw/) ·
+  [Autobús (oficial)](https://www.hansapark.de/bus/)
+- Precios para visitantes con discapacidad y ausencia de fast pass:
+  [Lista de precios (oficial)](https://www.hansapark.de/preisuebersicht/) · divisas extranjeras y
+  cajero: [Formas de pago (oficial)](https://www.hansapark.de/zahlungsmoeglichkeiten/) ·
+  [App (oficial)](https://www.hansapark.de/app/)
+- Restaurantes, pícnic, prohibición de barbacoas y perros:
+  [Comer y beber (oficial)](https://www.hansapark.de/restaurants-snack-points/) ·
+  [Restaurante Weltumsegler (oficial)](https://www.hansapark.de/attraktion/104/details/restaurant-weltumsegler) ·
+  [Pícnic y descanso (oficial)](https://www.hansapark.de/picknick-chill-out/) ·
+  [Reglamento del parque (oficial)](https://www.hansapark.de/parkordnung/) · hoteles cercanos:
+  [Hoteles (oficial)](https://www.hansapark.de/hotels/)
 - Casas de vacaciones y estancia mínima:
   [HANSA-PARK Resort am Meer (oficial)](https://www.hansapark.de/hansa-park-resort/)
 - Días de apertura uno a uno, horarios y catálogo de atracciones: nuestra

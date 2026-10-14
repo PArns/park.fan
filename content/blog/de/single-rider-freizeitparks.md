@@ -2,6 +2,7 @@
 title: 'Single Rider: In welchen Parks du allein schneller fährst'
 translationKey: single-rider-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -48,6 +49,22 @@ Warteschlange.
 
 Auf park.fan haben 66 Bahnen in 18 Parks eine Single-Rider-Warteschlange.
 
+## Woher die Single-Rider-Warteschlange kommt
+
+Disneyland in Anaheim hat am 17. Juli 1955 eröffnet. Drei Jahre später schrieb Walt Disney dem
+Operations Committee des Parks ein Memo, das die englische Wikipedia auf den 31. Juli 1958 datiert:
+
+> [!QUOTE]
+> Vielleicht sollten wir zu Spitzenzeiten […] eine eigene Warteschlange für Single Riders einrichten,
+> mit der Bitte, dass sie sich zusammentun.
+>
+> [en] Perhaps during peak hours we should […] establish a special line for single riders, with the request that they double up.
+>
+> Walt Disney, Memo von 1958, zitiert von Marcy Carriker Smothers im [Gespräch mit D23 vom 15. Dezember 2021](https://d23.com/inside-walts-disneyland-an-immersive-guide-to-the-park-walt-helped-create/), aus dem Englischen übersetzt
+
+Smothers hat das Memo in ihrem Buch „Walt's Disneyland“ veröffentlicht, das 2021 bei Disney
+Editions erschienen ist.
+
 ## Wie ein Single-Rider-Eingang funktioniert
 
 Ein Zug hat feste Sitzgruppen, und nicht jede Gruppe in der normalen Warteschlange füllt sie. Wo ein
@@ -73,6 +90,27 @@ Bei jedem Park, dessen Seite wir lesen konnten, gilt:
 
 ```
 
+## Wie viele Plätze in einer Reihe nebeneinander liegen
+
+Ob im Zug ein Platz frei bleibt, hängt davon ab, wie viele Gäste nebeneinander sitzen. Bei zwei
+Plätzen je Reihe belegt eine Dreiergruppe eine Reihe ganz und von der nächsten einen Platz. Bei
+Baron 1898 sitzen sechs Gäste in einer Reihe, dort lässt eine Vierergruppe in ihrer Reihe zwei Plätze
+leer. Die Angaben zu den Achterbahnen mit Single Rider im Europa-Park, im Efteling und im
+Phantasialand stammen aus der Roller Coaster DataBase (RCDB).
+
+| Bahn                     | Park          | Hersteller                   | Eröffnet | Plätze je Reihe | Plätze je Zug | Fahrgäste je Stunde |
+| ------------------------ | ------------- | ---------------------------- | -------- | --------------- | ------------- | ------------------- |
+| Eurosat – CanCan Coaster | Europa-Park   | Mack Rides                   | 1989     | 2               | 14            | –                   |
+| blue fire Megacoaster    | Europa-Park   | Mack Rides                   | 2009     | 2               | 20            | 1.720               |
+| WODAN – Timburcoaster    | Europa-Park   | Great Coasters International | 2012     | 2               | 24            | 1.250               |
+| ARTHUR                   | Europa-Park   | Mack Rides                   | 2014     | 4               | 12            | 1.500               |
+| Voltron Nevera           | Europa-Park   | Mack Rides                   | 2024     | 4               | 16            | 1.600               |
+| Python                   | Efteling      | Vekoma                       | 1981     | 2               | 28            | –                   |
+| Joris en de Draak        | Efteling      | Great Coasters International | 2010     | 2               | 24            | 1.750               |
+| Baron 1898               | Efteling      | Bolliger & Mabillard         | 2015     | 6               | 18            | 1.000               |
+| Max & Moritz             | Efteling      | Mack Rides                   | 2020     | 2               | 40            | –                   |
+| Taron                    | Phantasialand | Intamin                      | 2016     | 2               | 16            | 1.200               |
+
 ## Für wen es sich lohnt, und wann nicht
 
 Der Single-Rider-Eingang lohnt sich in drei Fällen: Du bist allein im Park, deine Gruppe lässt sich
@@ -83,7 +121,9 @@ Es lohnt sich nicht in diesen Fällen:
 
 - **Du fährst mit einem Kind, das eine Begleitung braucht.** Bei Eurosat im Europa-Park nennt die Seite
   des Parks 120 bis 195 Zentimeter, unter 130 Zentimetern nur in Begleitung eines Erwachsenen. Wer das
-  Kind neben sich braucht, kann nicht getrennt einsteigen.
+  Kind neben sich braucht, kann nicht getrennt einsteigen. Für Eltern, die nacheinander fahren, bietet
+  der Europa-Park Baby-Switch an. Einer fährt, der andere wartet mit dem Kind und steigt danach über
+  den Ausgang oder einen eigenen Eingang ein. Das gibt es laut Park nur an den größeren Achterbahnen.
 - **Ihr wollt gemeinsam fahren.** Das Efteling erlaubt Gruppen den Single-Rider-Eingang, aber sie
   fahren nacheinander. Nur wenn zufällig mehrere Plätze frei sind, sitzen Personen aus der
   Single-Rider-Warteschlange nebeneinander.
@@ -102,8 +142,6 @@ wissen wir es bei dieser Bahn nur nicht. Das Zeichen sagt nicht, ob die Wartesch
 Keine einzige der 41 trug eine Wartezeit. Die Parks melden uns, dass die Warteschlange offen ist,
 aber nicht, wie lang sie ist. Auf der Attraktionsseite zeigt park.fan dann „Single Rider“ ohne Zeit,
 und die Tabellen in diesem Beitrag zeigen die normale Warteschlange.
-
-Wie viel Zeit der Eingang spart, lässt sich aus unseren Daten deshalb zurzeit nicht ausrechnen.
 
 ## Single-Rider-Bahnen je Park
 
@@ -137,23 +175,23 @@ Themenbereich Minimoys Kingdom, WODAN – Timburcoaster und blue fire Megacoaste
 CanCan Coaster in Frankreich, das Voletarium in Deutschland und Voltron Nevera powered by Rimac in
 Kroatien.
 
-Zwei davon bestätigt der Park selbst. Auf der Seite von
-[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) steht unter den Merkmalen Single
-Rider als besondere Warteschlange für Einzelpersonen, ebenso auf der Seite von
-[Eurosat – CanCan Coaster](ref:europa-park/eurosat-cancan-coaster). Voltron Nevera lässt Fahrgäste ab
+Alle sechs zählt der Park auf seiner Seite mit Tipps für den Besuch unter „Single Rider“ auf. Auf den
+Seiten von [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac) und
+[Eurosat – CanCan Coaster](ref:europa-park/eurosat-cancan-coaster) steht Single Rider außerdem unter
+den Merkmalen der Bahn, als besondere Warteschlange für Einzelpersonen. Voltron Nevera lässt Fahrgäste ab
 130 Zentimetern mit, ein Zug fasst 16 Personen. Bei Eurosat liegt die Grenze bei 120 bis 195
 Zentimetern und bei sechs Jahren, unter acht Jahren fährt nur mit, wer einen Erwachsenen dabeihat.
 
+An blue fire, WODAN, dem Voletarium und Voltron Nevera gibt es zusätzlich die VirtualLine.
+Dort reservierst du in der App ein Zeitfenster und verbringst die Zeit bis dahin anderswo im Park.
+
 Alle sechs Bahnen haben eine Mindestgröße von 120 oder 130 Zentimetern, nach den Angaben in unserer
 Datenbank. Der Single-Rider-Eingang hilft also vor allem Jugendlichen und Erwachsenen, die allein oder
-in einer Gruppe ohne kleine Kinder unterwegs sind. Wie sich der Tag im Park sinnvoll legen lässt,
-steht im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
+in einer Gruppe ohne kleine Kinder unterwegs sind.
 
 ```ride-waits-widget rides=europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/blue-fire-megacoaster|blue fire;europa-park/wodan-timburcoaster|WODAN;europa-park/eurosat-cancan-coaster|Eurosat;europa-park/voletarium|Voletarium;europa-park/arthur|ARTHUR columns=land,peak
 
 ```
-
-In der Tabelle steht die normale Warteschlange.
 
 ```hourly-profile-widget slug=europa-park top=6
 
@@ -161,10 +199,12 @@ In der Tabelle steht die normale Warteschlange.
 
 ## Efteling
 
-Das [Efteling](ref:efteling) hat die vollständigste offizielle Beschreibung, die wir gefunden haben.
-Die Seite zum Single-Rider-Eingang nennt sechs Bahnen: Danse Macabre, Joris en de Draak, Symbolica,
-Baron 1898, Max & Moritz und Python. Jede hat zwei Warteschlangen, eine für Gruppen und Familien, eine
-für Einzelne. Unsere Daten führen zusätzlich De Vliegende Hollander, den die Seite des Parks nicht
+Vom [Efteling](ref:efteling) stammt die vollständigste offizielle Beschreibung, die wir gefunden haben. Die Seite zum
+Single-Rider-Eingang führt unter „Attraktionen mit Single-Rider-Eingang“ sechs Bahnen: Danse Macabre,
+Joris en de Draak, Symbolica, Baron 1898, Max & Moritz und Python. Jede hat zwei Warteschlangen, eine für Gruppen und Familien, eine
+für Einzelne, dazu einen Eingang für Besucher mit Behinderung, meist nahe am Ausgang. In den Antworten
+weiter oben auf derselben Seite fehlt Baron 1898. In der normalen
+Warteschlange garantiert das Efteling Gruppen, dass sie zusammen sitzen. Unsere Daten führen zusätzlich De Vliegende Hollander, den die Seite des Parks nicht
 aufzählt.
 
 Laut der Seite wählt der Single Rider weder den Sitzplatz noch bei Symbolica eine der drei Palastführungen. Gruppen dürfen den Eingang nutzen, fahren aber nacheinander, und
@@ -186,7 +226,7 @@ Im [Phantasialand](ref:phantasialand) haben drei Bahnen einen Single-Rider-Einga
 [Taron](ref:phantasialand/taron) und [Raik](ref:phantasialand/raik) im Themenbereich Mystery und
 [Chiapas – DIE Wasserbahn](ref:phantasialand/chiapas-die-wasserbahn) in Mexico.
 
-Für alle 40 Attraktionen im Phantasialand wissen wir, ob sie einen Single-Rider-Eingang haben, die drei Bahnen sind also die vollständige Liste. Die Mindestgröße liegt bei Taron bei 140 Zentimetern, bei Chiapas bei 130 und bei Raik
+Die Mindestgröße liegt bei Taron bei 140 Zentimetern, bei Chiapas bei 130 und bei Raik
 bei 120.
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/raik|Raik;phantasialand/chiapas-die-wasserbahn|Chiapas columns=land,peak
@@ -195,7 +235,7 @@ bei 120.
 
 ## Disneyland Paris
 
-Das Resort hat zwei Parks. In
+In
 [Disney Adventure World](ref:disney-adventure-world) sind es sieben: Spider-Man W.E.B. Adventure
 und Avengers Assemble: Flight Force im Marvel Avengers Campus, Frozen Ever After in der World of
 Frozen, Ratatouille: L’Aventure Totalement Toquée de Rémy im Toon Studio, dazu im Toon Studio
@@ -205,16 +245,27 @@ höchste Anteil unter allen Parks in der Tabelle.
 Im [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) sind es zwei: Star Wars
 Hyperspace Mountain in Discoveryland und Indiana Jones and the Temple of Peril in Adventureland.
 
+Auf seiner Seite zum Single-Rider-Service nennt das Resort sechs Bahnen: Star Wars Hyperspace Mountain
+und in Disney Adventure World Crush’s Coaster, Frozen Ever After, RC Racer, Ratatouille und Toy Soldiers
+Parachute Drop. Spider-Man W.E.B. Adventure und Avengers Assemble: Flight Force tragen das
+Single-Rider-Zeichen auf ihren eigenen Seiten. Laut Resort
+ist der Service kostenlos und hat einen eigenen Eingang für Gäste, die sich trennen und einzeln
+einsteigen. Sofortiges Einsteigen und die Wahl von Sitz und Fahrzeug gibt es dabei nicht.
+
 ```ride-waits-widget rides=disney-adventure-world/frozen-ever-after|Frozen Ever After;disney-adventure-world/spider-man-web-adventure|Spider-Man W.E.B. Adventure;disney-adventure-world/crushs-coaster|Crush’s Coaster;disney-adventure-world/rc-racer|RC Racer;/parks/europe/france/paris/disneyland-park/star-wars-hyperspace-mountain|Star Wars Hyperspace Mountain;/parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril|Indiana Jones and the Temple of Peril columns=park,peak
 
 ```
 
 ## Alton Towers und Thorpe Park
 
-In [Alton Towers](ref:alton-towers) sind es vier Bahnen im Bereich Thrills: TH13TEEN, Spinball
+Bei uns sind es in [Alton Towers](ref:alton-towers) vier Bahnen im Bereich Thrills: TH13TEEN, Spinball
 Whizzer, The Smiler und Galactica. Im [Thorpe Park](ref:thorpe-park) sind es zwei, beide im Bereich
 Coasters: SAW – The Ride und Hyperia. Die Mindestgröße liegt bei TH13TEEN und Spinball Whizzer bei
 120 Zentimetern, bei Hyperia bei 130 und bei The Smiler, Galactica und SAW bei 140.
+
+Alton Towers nennt auf seiner Hilfeseite sechs Bahnen mit Single Rider, zusätzlich zu unseren vier auch
+Oblivion und Toxicator. Thorpe Park nennt auf seiner Seite zu den Wartezeiten Stealth und The Swarm
+und schreibt, der Single-Rider-Eingang könne die Wartezeit dort halbieren.
 
 ```ride-waits-widget rides=alton-towers/the-smiler|The Smiler;alton-towers/galactica|Galactica;alton-towers/th13teen|TH13TEEN;alton-towers/spinball-whizzer|Spinball Whizzer;thorpe-park/hyperia|Hyperia;thorpe-park/saw-the-ride|SAW – The Ride columns=park,peak
 
@@ -222,8 +273,9 @@ Coasters: SAW – The Ride und Hyperia. Die Mindestgröße liegt bei TH13TEEN un
 
 ## PortAventura
 
-Im [PortAventura Park](ref:portaventura-park) kennen wir vier Bahnen: Hurakan Condor, Furius Baco,
-Shambhala und Dragon Khan.
+Im [PortAventura Park](ref:portaventura-park) kennen wir vier Bahnen mit Single Rider: Hurakan Condor, Furius Baco,
+Shambhala und Dragon Khan. Der Park schreibt in seinem Blog nur allgemein, einige Bahnen hätten eine
+Single-Rider-Warteschlange.
 
 ```ride-waits-widget rides=portaventura-park/shambhala|Shambhala;portaventura-park/dragon-khan|Dragon Khan;portaventura-park/furius-baco|Furius Baco;portaventura-park/hurakan-condor|Hurakan Condor columns=peak
 
@@ -236,7 +288,9 @@ Smugglers Run, Star Wars: Rise of the Resistance und Rock ’n’ Roller Coaster
 Disney’s Hollywood Studios sowie Remy’s Ratatouille Adventure und Test Track im EPCOT. Dazu kommt
 Expedition Everest in Disney’s Animal Kingdom, die auf der Liste des Parks nicht steht.
 
-Laut derselben Seite erlaubt der Service Gruppen, sich zu trennen und einzeln einzusteigen.
+Laut derselben Seite erlaubt der Service Gruppen, sich zu trennen und einzeln einzusteigen. Die Single
+Riders füllen die Plätze, die weder Gäste aus der Standby-Warteschlange noch aus den
+Lightning-Lane-Eingängen belegen.
 Sofortiges Einsteigen und die Wahl des Sitzes sind nicht garantiert, besondere Sitzwünsche werden
 womöglich nicht erfüllt, und die teilnehmenden Attraktionen und die Wartezeiten können sich ändern.
 
@@ -283,27 +337,25 @@ Racers, Mine-Cart Madness und Mario Kart: Bowser’s Challenge.
 
 ## Shanghai Disneyland und Hong Kong Disneyland
 
-Die beiden asiatischen Disney-Parks haben zwei und drei Bahnen. Im
+Im
 [Shanghai Disneyland](ref:shanghai-disneyland) sind es Zootopia: Hot Pursuit und Seven Dwarfs Mine
 Train, im [Hong Kong Disneyland](ref:hong-kong-disneyland-park) Hyperspace Mountain, Big Grizzly
-Mountain Runaway Mine Cars und Toy Soldier Parachute Drop.
+Mountain Runaway Mine Cars und Toy Soldier Parachute Drop. Für Hyperspace Mountain nennt Hong Kong
+Disneyland eine Mindestgröße von 102 Zentimetern.
 
 ## So planst du einen Tag mit Single Rider
 
-**Such dir vorher zwei oder drei Bahnen aus.** Auf der Parkseite von park.fan siehst du, welche Bahnen
+Such dir vorher zwei oder drei Bahnen aus. Auf der Parkseite von park.fan siehst du, welche Bahnen
 das Zeichen tragen. Der Eingang ist bei der Bahn am meisten wert, an der die normale Warteschlange am
 längsten ist.
 
-**Prüfe, ob die Warteschlange offen ist, bevor du dich trennst.** Auf der Attraktionsseite steht das
+Prüfe, ob die Warteschlange offen ist, bevor du dich trennst. Auf der Attraktionsseite steht das
 Zeichen „Single Rider“ mit dem Status der Warteschlange. Sie kann geschlossen sein, ohne dass die
 Bahn zu ist.
 
-**Teilt euch auf, wenn es sich lohnt.** Für zwei Erwachsene ist die schnellste Variante, dass einer die
+Teilt euch auf, wenn es sich lohnt. Für zwei Erwachsene ist die schnellste Variante, dass einer die
 normale Warteschlange nimmt und der andere den Single-Rider-Eingang. Wer zuerst fährt, wartet am
 Ausgang.
-
-Wie sich Warten anfühlt und warum Aufrücken in der Warteschlange nichts bringt, steht im Beitrag
-[Die Kunst des Wartens](/blog/die-kunst-des-wartens).
 
 ## Häufige Fragen zu Single Rider
 
@@ -326,7 +378,7 @@ sitzen, der Single-Rider-Eingang scheidet dann aus.
 ### Welche Bahnen im Europa-Park haben Single Rider?
 
 Sechs: ARTHUR, WODAN, blue fire, Eurosat, das Voletarium und Voltron Nevera. Der
-Park nennt es auf den Seiten von Voltron Nevera und Eurosat ausdrücklich.
+Park zählt alle sechs auf seiner Seite mit Tipps für den Besuch auf.
 
 ### Welche Bahnen im Efteling haben Single Rider?
 
@@ -355,8 +407,8 @@ Angabe bei den meisten Attraktionen, im Disneyland Park in Paris bei 41 von 43, 
 in Anaheim bei 54 von 56. Dort kann es weitere Bahnen mit Single Rider geben, ebenso in den 185
 Parks, in denen wir keine einzige kennen.
 
-Für Phantasialand, Disneyland Paris, PortAventura, Alton Towers, Thorpe Park, Universal und die
-asiatischen Disney-Parks konnten wir keine Seite des Parks lesen, die die Liste bestätigt.
+Für Phantasialand, PortAventura, Universal und die asiatischen Disney-Parks konnten wir keine Seite
+des Parks lesen, die die Liste bestätigt.
 
 ## Zum Weiterlesen
 
@@ -377,6 +429,30 @@ asiatischen Disney-Parks konnten wir keine Seite des Parks lesen, die die Liste 
   [Voltron Nevera powered by Rimac (offiziell)](https://www.europapark.de/en/theme-park/attractions/voltron-nevera-powered-rimac)
 - Eurosat, Größen- und Altersgrenzen und Single-Rider-Hinweis:
   [Eurosat – CanCan Coaster (offiziell)](https://www.europapark.de/en/theme-park/attractions/eurosat-cancan-coaster)
+- Walt Disneys Memo von 1958:
+  [Inside Walt’s Disneyland (D23)](https://d23.com/inside-walts-disneyland-an-immersive-guide-to-the-park-walt-helped-create/),
+  [Single rider (Wikipedia, mit Verweis auf Seite 130 des Buchs)](https://en.wikipedia.org/wiki/Single_rider)
+- Europa-Park, alle sechs Bahnen, VirtualLine und Baby-Switch:
+  [Tipps für den Besuch (offiziell)](https://www.europapark.de/en/theme-park/info/plan-your-visit/tips-your-europa-park-visit)
+- Disneyland Paris, Liste und Regeln:
+  [Single Rider service (offiziell)](https://www.disneylandparis.com/en-gb/guest-services/single-rider-service),
+  [Spider-Man W.E.B. Adventure (offiziell)](https://www.disneylandparis.com/en-gb/attractions/disney-adventure-world/spider-man-web-adventure),
+  [Avengers Assemble: Flight Force (offiziell)](https://www.disneylandparis.com/en-gb/attractions/disney-adventure-world/avengers-assemble-flight-force)
+- Alton Towers, sechs Bahnen:
+  [Do you operate single rider queuelines? (offiziell)](https://support.altontowers.com/hc/en-us/articles/360002576232-Do-you-operate-single-rider-queuelines)
+- Thorpe Park, Stealth und The Swarm:
+  [Queue Times (offiziell)](https://www.thorpepark.com/plan-your-visit/resort-information/queue-times/)
+- PortAventura:
+  [Who to take to PortAventura (offizieller Blog)](https://www.portaventuraworld.com/blog/en/who-to-take-to-portaventura)
+- Hyperspace Mountain in Hongkong, Mindestgröße:
+  [Hyperspace Mountain (offiziell)](https://www.hongkongdisneyland.com/attractions/hyperspace-mountain/)
+- Hersteller, Eröffnung, Sitzreihen und Kapazität der Achterbahnen:
+  RCDB zu [Eurosat](https://rcdb.com/973.htm), [blue fire](https://rcdb.com/4074.htm),
+  [WODAN](https://rcdb.com/10018.htm), [ARTHUR](https://rcdb.com/11114.htm),
+  [Voltron](https://rcdb.com/7121.htm), [Python](https://rcdb.com/897.htm),
+  [Joris en de Draak](https://rcdb.com/4526.htm), [Baron 1898](https://rcdb.com/12083.htm),
+  [Max + Moritz](https://rcdb.com/16697.htm), [Taron](https://rcdb.com/12723.htm)
+- Eröffnung von Disneyland: [Disneyland (Wikipedia)](https://en.wikipedia.org/wiki/Disneyland)
 - Welche Bahnen in welchem Park das Merkmal tragen, die Zahlen der Tabelle und die Live-Warteschlangen:
   Abfrage der park.fan-API (`/v1/parks/<Kontinent>/<Land>/<Stadt>/<Park>`, Felder `hasSingleRider`
   und `queues`), 203 Parks mit Live-Wartezeiten

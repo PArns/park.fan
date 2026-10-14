@@ -124,8 +124,7 @@ parque lleno, coge el pase.
 ## Para quién es
 
 El parque recomienda las Fright Nights **a partir de 16 años**. A diferencia
-de Traumatica, no es un límite estricto: según las preguntas frecuentes del
-parque, los más jóvenes entran acompañados de su padre, su madre o su tutor
+de Traumatica, no es un límite estricto: en las preguntas frecuentes del parque pone que los más jóvenes entran acompañados de su padre, su madre o su tutor
 legal. Para gente más joven o asustadiza, Majaland y el pabellón Plopsa Indoor
 quedan libres de monstruos, y solo en el parque se consigue el
 «Schreck-Stopp», con el que, según el parque, los monstruos te dejan en paz. A

@@ -91,22 +91,20 @@ leaves open.
 
 ## Enzo's Piccolo Mondo comes back
 
-According to the park, the youngest visitors have been riding the gondolas in
-the Italian area for more than 40 years. In 2027 the ride is due to return "in
+The youngest visitors have been riding the gondolas in the Italian area for more than 40 years, according to the park. In 2027 the ride is due to return "in
 new splendour". Whether and from when it closes for the work isn't in the
 announcement.
 
-The park says there'll be art, classical theatre and Italian music. How
+There'll be art, classical theatre and Italian music, the park says. How
 many scenes there are and which of them are new, it hasn't said.
 
 The ride is as old as the themed area. Italy opened in 1982 as the park's
 first themed area, and Piccolo Mondo opened the same year. MACK Rides built it.
 The gondolas seat six each and pass Pisa, Venice and Florence inside a hall.
 A ride takes just over three minutes. Children under 120 centimetres ride only
-with an adult. According to the park's page, the ride runs in all four seasons,
-winter included.
+with an adult. The ride runs in all four seasons, winter included, according to the park's page.
 
-According to the park's page on the 2027 novelties, Enzo is a parrot. The same area
+On the park's page about the 2027 novelties, Enzo is a parrot. The same area
 already has a ride from 1982 with two opening years: for
 [Castello dei Medici](ref:europa-park/castello-dei-medici) the park's page
 gives 1982 and 2024. Next to it, Volo da Vinci has run since 2011, a ride in
@@ -130,8 +128,6 @@ covered in our [post on the Euro-Mir farewell](/news/europa-park-euro-mir-farewe
 None of the three novelties is a big coaster. For children who are still too
 short for blue fire and WODAN, Portugal and Iceland get something that goes up
 high, as long as they meet a minimum height the park hasn't given yet.
-
-The table lists the rides the three novelties will stand next to.
 
 ```ride-waits-widget rides=europa-park/atlantica-supersplash|Atlantica SuperSplash|Water coaster;europa-park/wodan-timburcoaster|WODAN - Timburcoaster|Wooden coaster;europa-park/blue-fire-megacoaster|blue fire Megacoaster|Launch-Coaster;europa-park/castello-dei-medici|Castello dei Medici|Dark Ride;europa-park/piccolo-mondo|Piccolo Mondo|Gondola ride columns=type,peak,days
 

@@ -2,6 +2,7 @@
 title: 'Legoland Deutschland: Tipps für einen Tag mit Kindern von drei bis zwölf'
 translationKey: legoland-deutschland-guide
 date: '2026-10-06'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -55,8 +56,6 @@ seo:
 Das **Legoland Deutschland** ist nach eigener Angabe für Kinder zwischen **zwei und zwölf
 Jahren** gebaut. Für Kinder in Begleitung eines Erwachsenen liegt die höchste Mindestgröße im
 ganzen Park bei **1,25 Metern**, an [Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare).
-An keiner der neun Headliner-Bahnen spart ein früher Start so viel Wartezeit, dass sich der
-Wecker lohnt.
 
 Unsere Wartezeiten haben wir seit Dezember 2025 an 188 Tagen gemessen, also in einer Saison. Preise, Zeiten und Termine gelten mit Stand **6. Oktober 2026**.
 
@@ -65,15 +64,30 @@ Unsere Wartezeiten haben wir seit Dezember 2025 an 188 Tagen gemessen, also in e
 Günzburg liegt zwischen Ulm und Augsburg, direkt an der A8. Der Lego-Konzern kündigte den Park am 9. September 1999 an, als vierten nach Billund, Windsor und Carlsbad, und entschied sich damit gegen
 einen Standort in Tokio. Das Gelände war ein Munitionslager der Luftwaffe, und laut Wikipedia lagen
 dort rund 60.000 Bomben, 33.800 Granaten und 2.800 Panzerfäuste aus dem Zweiten Weltkrieg im Boden.
-Die Räumung dauerte zwei Jahre und kostete 34 Millionen D-Mark.
+Die Räumung dauerte zwei Jahre und kostete 34 Millionen D-Mark. Den ersten Spatenstich setzten am 27. Oktober 2000
+ein achtjähriger Junge aus Günzburg und Lego-Chef Kjeld Kirk Kristiansen, im
+Beisein des bayerischen Ministerpräsidenten Edmund Stoiber.
 
 Am **17. Mai 2002** machte der Park auf, neun Monate früher als geplant, mit mehr als 40
-Attraktionen und Kosten von rund 153 Millionen Euro. Im ersten Jahr kamen 1,3 Millionen Gäste, 2020
-nur noch 750.000, und 2024 waren es nach dem Index der Themed Entertainment Association rund **zwei
+Attraktionen und Kosten von rund 153 Millionen Euro. Im ersten Jahr kamen 1,3 Millionen Gäste, und der Park
+verkaufte mehr als 20.000 Jahreskarten. 2020 waren es nur noch 750.000 Gäste, und 2024 waren es nach dem Index der Themed Entertainment Association rund **zwei
 Millionen**. Damit ist das Legoland nach dem Europa-Park und dem Phantasialand der drittmeistbesuchte
-Freizeitpark Deutschlands. Betrieben wird er seit 2005 von Merlin Entertainments. 2019 kauften drei Investoren Merlin für
+Freizeitpark Deutschlands. Nachdem die Lego-Gruppe 2003 rund 174 Millionen Euro Verlust gemacht hatte,
+verkaufte sie 2005 ihre vier Parks an den Finanzinvestor Blackstone, und seitdem betreibt dessen
+Tochter Merlin Entertainments das Legoland. 2019 kauften drei Investoren Merlin für
 6,6 Milliarden Euro: Blackstone, ein kanadischer Pensionsfonds und Kirkbi, die Beteiligungsfirma
 der Lego-Eigner.
+
+Am 21. März 2007 kam das Land der Piraten mit Käpt'n Nicks Piratenschlacht dazu, einem Splash
+Battle von Mack Rides. Das Feriendorf öffnete am 18. Juni 2008 mit 50 Ferienhäusern und einem
+Campingplatz auf 80.000 Quadratmetern. Vom 5. April bis zum 2. November 2014 stand in der Halle des
+Power Builder ein X-Wing aus Star Wars im Maßstab 1:1, gebaut aus 5,3 Millionen Steinen, und für ihn
+wurden fünf der zehn Roboterarme abgebaut. Wegen der Pandemie öffnete der Park 2020 zwei Monate
+später als geplant und 2021 erst am 10. Juni.
+
+Am 11. August 2022 fuhr am Feuerdrachen nach Angaben der Polizei ein Zug auf einen anderen auf. Die
+Polizei zählte 31 Verletzte, einen davon schwer, unter ihnen zehn Kinder. Laut Polizei ermittelte
+die Staatsanwaltschaft Memmingen zur Ursache.
 
 Heute hat der Park nach eigener Angabe **68 Attraktionen in 11 Themenwelten** und mehr als 58
 Millionen Lego-Steine. Das Miniland besteht laut Park aus über 23 Millionen davon, gebaut von 140
@@ -133,13 +147,12 @@ Der **[Feuerdrache](ref:legoland-deutschland/fire-dragon)** fährt seit Mai 2002
 Familienachterbahn von Zierer mit zwei Teilen. Zuerst geht es im Zug durch die Räume der
 Burgbewohner, vorbei an Vorratskammer, Küche, Festsaal und Merlins Schatzkammer, alles aus Lego.
 Dann bemerkt der Drache die Fahrgäste, und auf der Außenstrecke geht es mit bis zu acht Metern pro
-Sekunde durch die Kurven, das sind knapp 29 km/h. Ein Kind darf mit Erwachsenem ab 1,10 Metern und
-sechs Jahren mitfahren.
+Sekunde durch die Kurven, das sind knapp 29 km/h. Die Strecke ist laut RCDB 450 Meter lang und 16 Meter
+hoch, entworfen vom Ingenieurbüro Stengel, und es fahren drei Züge mit je 20 Plätzen.
 
 **[Das Große LEGO Rennen](ref:legoland-deutschland/the-great-lego-race)** ist eine Wilde Maus von
 Mack Rides, 18 Meter hoch, laut Wikipedia 400 Meter lang und bis zu 56 km/h schnell. Sie
-fuhr zuvor als Project X und ist seit 2018 als Rennstrecke aus Lego City gestaltet. Mit Erwachsenem
-reichen 1,10 Meter.
+fuhr zuvor als Project X und ist seit 2018 als Rennstrecke aus Lego City gestaltet.
 
 ```glossary-widget slug=wild-mouse
 
@@ -148,8 +161,7 @@ reichen 1,10 Meter.
 **[Flying NINJAGO](ref:legoland-deutschland/flying-ninjago)** hat Gerstlauer 2012 zum zehnten
 Geburtstag des Parks gebaut, laut Wikipedia eine Weltneuheit des Herstellers. Bis zu zwölf Fahrgäste
 fliegen in 22 Metern Höhe mit 50 km/h, und durch Gewichtsverlagerung und Flügelsteuerung lässt sich
-der Drache bis zum 360-Grad-„Spinjitzu-Twist“ drehen. Es gibt nur eine Grenze für alle, 1,25 Meter
-und sieben Jahre.
+der Drache bis zum 360-Grad-„Spinjitzu-Twist“ drehen.
 
 Die **[Dschungel X-pedition](ref:legoland-deutschland/jungle-x-pedition)** ist die Wildwasserbahn
 von Intamin aus dem Eröffnungsjahr, mit einer zwölf Meter langen Abfahrt, bei der laut Park 80 Liter
@@ -162,7 +174,8 @@ Geschichte muss man laut Park nicht kennen.
 
 Für die Kleineren gibt es die **[Drachenjagd](ref:legoland-deutschland/dragon-hunt)**, eine
 Junior-Achterbahn von Gerstlauer von 2003, auf der Kinder mit einem Erwachsenen ab einem
-Meter mitfahren. Auf den **[Fire & Ice Tower](ref:legoland-deutschland/fire-and-ice-tower)** dürfen sie
+Meter mitfahren. Ihre Strecke misst nach RCDB 150 Meter bei 5,5 Metern Höhe, der einzige Zug mit
+16 Plätzen erreicht 33 km/h, und eine Fahrt dauert 35 Sekunden. Auf den **[Fire & Ice Tower](ref:legoland-deutschland/fire-and-ice-tower)** dürfen sie
 schon ab drei Jahren. Dort dreht man sich auf neun Metern Höhe und lässt sich dann fallen. Beim Wellenreiter und bei Käpt'n
 Nicks Piratenschlacht können außerdem Zuschauer an Land mitmachen und die Boote nass spritzen.
 
@@ -202,7 +215,7 @@ Tret-o-Mobil und Harbour Cruise die Hafenrundfahrt.
 Die aktuellen Wartezeiten stehen auf der [Parkseite](ref:legoland-deutschland), alle fünf Minuten
 neu. Die Legoland-App zeigt sie nur, wenn du im Park bist und den Standort freigegeben hast.
 
-Der Wochentag macht in unseren Messungen den größten Unterschied:
+Der Wochentag macht in unseren Messungen den größten Unterschied.
 
 ```stats-widget slug=legoland-deutschland show=weekdays
 
@@ -219,7 +232,7 @@ hängt das Legoland am stärksten von den Ferien in Bayern und Baden-Württember
 ```
 
 Der August war der vollste Monat. Im Juni und im September war weniger los als im Mai und im Juli.
-Für den Oktober haben wir erst fünf Tage gemessen, zu wenig für eine Aussage.
+Für den Oktober haben wir erst fünf Tage gemessen.
 
 Der Park öffnet um 10 Uhr, die Fahrgeschäfte schließen eine Stunde vor Parkschluss.
 
@@ -241,15 +254,15 @@ Wetter sei die Wartezeit bei vielen Attraktionen oft kürzer.
 ## Rope Drop lohnt sich hier nicht
 
 Früh zu kommen empfehlen wir nur, wenn die Wartezeit an einer Bahn im Lauf des Tages lang wird und
-man zur Öffnung so viel weniger ansteht, dass sich der Wecker lohnt. Wo diese Grenzen liegen und
-warum, steht im Artikel [Sind 70 Minuten viel?](/blog/sind-70-minuten-viel). Im Legoland erreicht
+man zur Öffnung so viel weniger ansteht, dass sich der Wecker lohnt. Die Grenzen und ihre
+Begründung stehen im Artikel [Sind 70 Minuten viel?](/blog/sind-70-minuten-viel). Im Legoland erreicht
 keine der neun Headliner-Bahnen diese Grenzen, weder an Werktagen noch am Wochenende.
 
 ```glossary-widget slug=rope-drop
 
 ```
 
-Wer früh kommt, nimmt sich zuerst die beiden Bahnen, an denen die Wartezeit über den Tag nur steigt: die Dschungel X-pedition und das Tret-o-Mobil. Das Große LEGO Rennen und die Hafenrundfahrt sind am Vormittag am vollsten und gehören deshalb eher in den Nachmittag. Maximus, Feuerdrache und Flying NINJAGO fährst du, wann du willst, weil sich die Wartezeit dort über den Tag wenig ändert.
+Wer früh kommt, fährt zuerst die Dschungel X-pedition und das Tret-o-Mobil und hebt sich das Große LEGO Rennen und die Hafenrundfahrt für den Nachmittag auf.
 
 ## Fastrack: drei Stufen und die Bahnen
 
@@ -271,7 +284,7 @@ Eintritt, für eine Bahn, an der die Tabelle oben ohnehin keine Ausreißer zeigt
 ich Fastrack nicht kaufen. An einem Samstag in den bayerischen Ferien, dem vollsten Wochentag in unseren Messungen, würde ich Bronze für die Bahn nehmen, die dann in der Tabelle
 ganz oben steht.
 
-## Tickets, Preise und Jahreskarte
+## Tickets und Jahreskarte
 
 Die Preise sind **dynamisch**. Der Park hat laut Wikipedia Ende 2024 Surge Pricing eingeführt, und
 die Preise auf seiner Seite beginnen mit „ab“. Die folgenden gelten am 6. Oktober 2026.
@@ -290,14 +303,13 @@ der Saison. Der Merlin Abenteuer Pass kostet 139 € und schließt das Parken im
 Merlin-Attraktionen ein. Wer jedes Mal den Online-Mindestpreis zahlt, hat die 99 € nach dem dritten
 Besuch wieder drin.
 
-## Öffnungszeiten, Schließtage und Saison 2026
+## Öffnungszeiten und Schließtage 2026
 
 Die Saison läuft vom **28. März bis zum 8. November 2026**. Geschlossen ist der Park am
 **5. und 6. Mai**, vom **18. bis 20. Mai**, am **8. und 9. Juni** sowie am **15., 16. und vom 21. bis 23. September**. Termine für 2027 stehen auf der Seite des Parks noch nicht.
 
 Die normale Öffnungszeit ist **10 bis 18 Uhr**, an Wochenenden, in den Ferien und an Feiertagen
 länger. Die Fahrgeschäfte schließen in der regulären Saison **eine Stunde vor Parkschluss**.
-Die ruhigsten kommenden Tage stehen im Kalender:
 
 ```best-days-widget slug=legoland-deutschland
 
@@ -373,7 +385,7 @@ Millionen Euro.
 
 Das **WinterWonder LEGOLAND** läuft 2026/27 an einzelnen Tagen: 28. und 29. November, 4. bis 6., 11. bis 13., 18. bis 23. und 26. bis 30. Dezember sowie 2. bis 10. Januar 2027. Es gibt eine
 Eisbahn, Eisstockbahnen und Shows im Halbstundentakt, und bei vielen Bahnen steht
-„witterungsabhängig geöffnet“. Ein Frühbucherticket kostet bis zum 15. November 22 € statt 36 €. Der [Winter-Überblick](/blog/winter-freizeitparks-2026) vergleicht den Park im Winter mit den anderen deutschen Parks.
+„witterungsabhängig geöffnet“. Ein Frühbucherticket kostet bis zum 15. November 22 € statt 36 €.
 
 Angekündigt hat das Legoland außerdem das erste LEGO Harry Potter Land der Welt und die erste Unterkunft
 mit diesem Thema. Ein Eröffnungsjahr nennt der Park dafür nicht.
@@ -433,8 +445,8 @@ Günzburg und dann mit dem Bus, wenn das Zugticket bis „LEGOLAND Park“ gebuc
 
 ## Zum Weiterlesen
 
-Wie das Legoland neben den übrigen Parks Deutschlands abschneidet, steht im
-[Ranking der deutschen Freizeitparks](/blog/beste-freizeitparks-in-deutschland). Auf dem Gelände des
+Im [Ranking der deutschen Freizeitparks](/blog/beste-freizeitparks-in-deutschland) steht das
+Legoland neben den übrigen Parks Deutschlands. Auf dem Gelände des
 Hansa-Parks in Sierksdorf stand von 1973 bis 1976 ein erstes deutsches Legoland, mehr dazu im
 [Hansa-Park-Guide](/blog/hansa-park-tipps).
 
@@ -483,7 +495,14 @@ passen.
   Unterkünfte: [Feriendorf (offiziell)](https://www.legoland.de/uebernachten/unterkuenfte/) ·
   Harry Potter: [Ankündigung (offiziell)](https://www.legoland.de/harrypotter/)
 - Geschichte, Munitionslager, Eröffnung 2002, Kosten, Betreiber, Besucherzahlen, Hersteller und
-  Baujahre, Miniland-Modelle, Feriendorf, Peppa Pig Park, Surge Pricing, das Legoland in Sierksdorf:
-  [Legoland Deutschland Resort auf de.wikipedia](https://de.wikipedia.org/wiki/Legoland_Deutschland_Resort)
+  Baujahre, Miniland-Modelle, Feriendorf, Peppa Pig Park, Surge Pricing, das Legoland in Sierksdorf,
+  Spatenstich, Verkauf 2005, Land der Piraten, X-Wing 2014 und die Pandemiejahre:
+  [Legoland Deutschland Resort auf de.wikipedia](https://de.wikipedia.org/wiki/Legoland_Deutschland_Resort) ·
+  [Legoland Deutschland Resort auf en.wikipedia](https://en.wikipedia.org/wiki/Legoland_Deutschland_Resort)
+- Streckenlänge, Höhe, Tempo und Züge von Feuerdrache und Drachenjagd:
+  [Feuerdrache auf RCDB](https://rcdb.com/1476.htm) · [Drachenjagd auf RCDB](https://rcdb.com/1683.htm)
+- Der Unfall am Feuerdrachen 2022:
+  [web.de (dpa)](https://web.de/magazine/panorama/achterbahn-unfall-31-verletzte-feuerdrachen-legoland-guenzburg-37189184) ·
+  [ABC7 (ABC News)](https://abc7.com/31-people-injured-on-legoland-park-ride-police-say/12117866/)
 - Wartezeiten, Wochentage, Monate, Regenanteil und Rope Drop: unsere [Parkseite](ref:legoland-deutschland),
   aus den Messungen seit Dezember 2025, dazu der [Regen-Vergleich](/blog/freizeitpark-bei-regen)

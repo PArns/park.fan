@@ -2,6 +2,7 @@
 title: 'Heide Park: Colossos van hout en vier Duitse primeurs'
 translationKey: heide-park-guide
 date: '2026-09-20'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -54,9 +55,8 @@ seo:
     - Heide Park Abenteuerhotel
 ---
 
-Bijna drie jaar lang stond er in het Land der Vergetenen een houten achtbaan
-waar niemand in mocht. Op **28 juli 2016** ging
-[Colossos](ref:heide-park/colossos-kampf-der-giganten) midden in het seizoen
+Op **28 juli 2016** ging
+[Colossos](ref:heide-park/colossos-kampf-der-giganten) in het Land der Vergetenen midden in het seizoen
 uit de lucht, omdat de rails na vijftien jaar versleten waren. Pas op
 **19 april 2019** reed hij weer.
 
@@ -85,6 +85,8 @@ eerste launch coaster van Duitsland. Een optakeling is er niet; een
 hydraulische katapult brengt de trein in twee seconden op **102 km/u**. Na 650
 meter en 49 seconden is hij terug in het station.
 
+Intamin bouwde Desert Race naar een ontwerp van Ingenieurbüro Stengel. De baan klimt tot 19 meter, het park noemt krachten tot 4,7 g, en in elk van de twee treinen zitten 20 mensen.
+
 ```glossary-widget slug=launch-coaster
 
 ```
@@ -100,9 +102,6 @@ verticaal, met **103 km/u** door een splashdown en een immelmann in.
 2014** de eerste wing coaster van het land. Bij die bouwwijze zitten de passagiers links en rechts naast de rails, met niets voor je voeten. 40
 meter hoog, 772 meter lang, 100 km/u, vijf inversies, drie minuten rijtijd,
 1.060 gasten per uur.
-
-De tabel vergelijkt Heide Park met drie andere
-[grote Duitse parken](/blog/beste-pretparken-in-duitsland), elke dag opnieuw berekend.
 
 ```park-comparison-widget slugs=heide-park,europa-park,phantasialand,movie-park-germany highlight=heide-park
 
@@ -149,10 +148,12 @@ twee minuten voorbij. In
 het seizoen 2026 leverde Vekoma nieuwe treinen, vormgegeven naar de originele
 wagens uit 1983.
 
+De Big Loop is 30 meter hoog en haalt 70 km/u. De Roller Coaster DataBase vermeldt hem als Vekoma MK-1200 met 1.200 passagiers per uur, en zijn baan is het spiegelbeeld van Dragon Fyre in Canada’s Wonderland. De allereerste treinen kwamen van Arrow.
+
 Toxic Garden heet pas sinds **mei 2023** zo. Vekoma verving bij de verbouwing
 een stuk spoor, ingang en station staan sindsdien in een tuin vol giftige
 planten, en sindsdien is de baan aangekleed zoals het themagebied
-Transsylvanië, waar zijn plek sinds 2011 onder valt.
+Transsylvanië, waar zijn plek sinds 2011 onder valt. De trein haalt 80 km/u, en het model is ontworpen door Peter Clerx.
 
 De **[Bobbahn](ref:heide-park/bobbahn)** van Mack Rides rijdt sinds **1993**
 zonder railgeleiding in een halve goot. De bobs starten op 27 meter hoogte, de
@@ -162,6 +163,8 @@ later of helemaal niet open. De
 rondjes voor iedereen die nog te klein is voor de grote banen, en de
 **[Indy-Blitz](ref:heide-park/indy-blitz)** uit 2008 is met 4,5 meter de
 kleinste achtbaan op het terrein.
+
+De Bobbahn heette vroeger Schweizer Bobbahn. Hij is 826 meter lang, en het park noemt 58 km/u als topsnelheid. De Grottenblitz, vroeger Mountain-Train en Mountain-Blitz, is ook van Mack. Over 370 meter haalt hij 45 km/u en hij helt in de bochten tot 40 procent over. De Indy-Blitz is een Force One van Zierer, 128 meter lang en hooguit 23 km/u snel.
 
 **[Scream](ref:heide-park/scream)** is **103 meter** hoog en laat je 71 meter
 daarvan vrij vallen, met bijna 100 km/u (het park noemt 98,3). De toren begon
@@ -190,17 +193,23 @@ tem je een draak” twee eigen hoekjes.
 De vier grote banen beginnen alle
 bij **140 cm**, Toxic Garden en Scream bij 130, Big Loop en Bobbahn bij 120. De
 laagste drempel in het park ligt op **86 cm**, bij Schorschs Dino-avontuur in
-Peppa Pig Land.
+Peppa Pig Land. Bij de Indy-Blitz ligt de grens op 100 cm, de Grottenblitz heeft er geen en vraagt een minimumleeftijd van vier jaar.
 
 ```map-widget slug=heide-park
 
 ```
 
+## Shows en evenementen in 2026
+
+Het showensemble van het park speelt in 2026 vier shows die dagelijks wisselen. Nieuw is “Aye Aye Käpt’n!”, een meedoeshow van ongeveer 30 minuten voor kinderen van drie tot acht jaar, die na een piratenproef een diploma krijgen. Daarnaast lopen de acrobatiekshow “Time”, de goochelshow “Smilie, it’s magic” en “The Movie Maker”. Foto’s met Tandloos en een Viking, met Peppa en Schorsch en met de Ghostbusters bij de Ecto-1 zijn gratis, je maakt ze met je eigen telefoon.
+
+Op het piratenfeest van 2026 in de Bucht der Piraten waren er een shantykoor, walkacts en een piratenkamp. De Pyro Games zijn een wedstrijd tussen vuurwerkteams uit heel Duitsland, en het eerste vuurwerk begint bij het invallen van de duisternis. Organisator is THF Events uit Maagdenburg, het park stelt het terrein ter beschikking, en kaarten zijn ook aan een avondkassa te koop. De data voor 2027 maakt het park later bekend.
+
 ## Hoe druk het wordt
 
 Onze metingen lopen sinds eind december 2025. Omdat Heide Park pas eind maart
 opengaat, staan in de tabel alleen dagen uit het seizoen 2026 (stand
-25 september 2026), elke baan met zijn eigen aantal meetdagen:
+25 september 2026), en elke baan heeft zijn eigen aantal meetdagen.
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
@@ -219,9 +228,6 @@ elf en twee uur. De wildwaterbaan piekt pas ’s middags, als het warm geworden
 is. De meeste gasten komen ’s ochtends met de auto en staan daardoor op
 hetzelfde moment voor dezelfde drie banen; ’s middags verspreidt de drukte
 zich.
-
-In het eerste uur rijd je daarom Colossos en Krake, omdat ze dan allebei op hun
-kortst zijn en vanaf elf uur tegelijk oplopen.
 
 ```best-days-widget slug=heide-park
 
@@ -284,9 +290,9 @@ op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 De maand verschuift ongeveer evenveel als de weekdag. Juli en augustus liggen hoog, september valt
 daarna duidelijk terug. Voor oktober hebben we nog geen meetdagen (stand 25
 september 2026); het park noemt zelf de schoolvakanties als zijn drukste
-periodes, en in oktober vallen herfstvakantie en Halloween samen. Wie een
-vrijdag in september neemt in plaats van een zaterdag in augustus, haalt er
-meer uit dan met elk van beide keuzes apart.
+periodes, en in oktober vallen herfstvakantie en Halloween samen.
+
+In Nedersaksen en Bremen liep de zomervakantie van 2026 van 2 juli tot en met 12 augustus, in Hamburg van 9 juli tot en met 19 augustus. De herfstvakantie valt in Nedersaksen en Bremen van 12 tot en met 24 oktober 2026, in Hamburg van 19 tot en met 30 oktober. De paasvakantie in Nedersaksen liep van 23 maart tot en met 7 april en dus over de start van het seizoen heen.
 
 ### Halloween: 10 tot en met 31 oktober 2026
 
@@ -314,6 +320,10 @@ Panoramabahn) en de westernspoorbaan, die sinds 1997 Heide Park Express heet.
 Een vierde, het oldtimercircuit met zijn replica’s van de Ford Model T, reed
 tot 2025; toen sloot het park hem zonder veel aankondiging.
 
+De andere twee attracties van de openingsdag waren het Monza-racecircuit, vanaf 1997 Monza-Piste genoemd, en de Wichtelhausenbahn van Mack Rides. Op die rails rijdt sinds 2018 Opa Pig’s Zugfahrt in Peppa Pig Land, gebouwd door Metallbau Emmeln. De Heidenhofkapel is van eikenhout en werd later omgebouwd tot molenpakhuis met twee verdiepingen. Sinds 1951 is ze weer een kapel, sinds 2007 heet ze “Offener Raum der Stille” (open ruimte van stilte), en af en toe houdt het kerkelijk district Soltau er korte diensten.
+
+De alligatorshow liep van 1978 tot 2003, vanaf 1985 in een eigen arena. In 1979 kwam er een dolfijnenshow bij, die een jaar later een koepeldak kreeg, en na het seizoen 2008 sloot het park het dolfinarium. De zeeleeuwen traden op tot 2007, op hun podium staat nu de piratenarena. De Hallo Spencer-show liep van 2004 tot 2016 en stopte omdat de licentie afliep.
+
 Van **1986** tot de winter van 2011/2012 stond hier een 35 meter hoge replica
 van het Vrijheidsbeeld, ingewijd op 4 juli 1986 voor de honderdste verjaardag
 van het origineel, met een felicitatie van Ronald Reagan. Na de afbraak stond
@@ -332,6 +342,8 @@ september 2026 noemde de Spaanse krant Expansión Merlin bovendien als mogelijke
 koper van Parques Reunidos, het concern achter Movie Park
 ([meer daarover](/blog/parques-reunidos-te-koop-movie-park)).
 
+Het Heide-Dorf, met replica’s van typische huizen uit de Lüneburger Heide, stond er van 1988 tot 2009. De Hollandse wijk met molen en grachten kwam er in 1996/97 bij, was vanaf 2009 alleen nog toegankelijk voor hotelgasten, en in 2014 gingen de gevels tegen de vlakte voor Sultan’s Spaßbad. In 2008 opende Wild Wild West met de Indy-Blitz, een stoomcarrousel en een westernreuzenrad. In 2011 verdeelde het park het terrein onder meer in het Land der Vergessenen en Transsilvanië, in 2012 was de Bucht der Totenkopfpiraten klaar. Na het eiland van “Hoe tem je een draak” (2016) en Peppa Pig Land (2018) voegde het park die twee in 2019 met Wild Wild West samen tot het gebied Exploria. In Peppa Pig Land draait sinds 2020 ook een ballonvaart van Technical Park.
+
 ## Overnachten bij het park
 
 Wie uit Zuid-Duitsland komt, maakt er beter twee dagen van. Het
@@ -342,6 +354,8 @@ Sultan’s Spaßbad open. Het **Holiday Camp** uit 2005 bestaat na een uitbreidi
 uit 81 houten huisjes met samen 536 bedden. De zeven omgebouwde VW T2’s van het
 **Bulli Camp**, waarin je vanaf juli 2014 kon slapen, zijn er sinds 2025 niet
 meer; in het camp boek je nu alleen nog hutten.
+
+Het Abenteuerhotel heeft 150 familiekamers en 16 comfortkamers, ingericht als piratenkamer, kapiteinshut, western- of demonenkamer of als Ghostbusters-suite. Vijf vroegere piratenkamers zijn sinds 2018 Peppa Pig-kamers. In het Holiday Camp boek je hutten met eigen badkamer voor twee of vier gasten, of goedkopere hutten zonder, waarvan de gasten het gedeelde sanitair in de buurt gebruiken.
 
 Op de lange dagen in het
 najaar mogen hotel- en campgasten al om 11 uur het park in, een uur vóór
@@ -367,7 +381,7 @@ park parkeertickets alleen bij uitzondering, alleen met kaart en duurder, € 16
 voor de auto. Met de trein ga je tot Soltau of tot Wolterdingen; vanaf
 Wolterdingen is het 20 minuten lopen, en vanuit Hamburg en Hannover rijdt een
 bus tot voor de poort. Die heet Heide Park Express, net als de parktrein, maar
-heeft daar niets mee te maken.
+heeft daar niets mee te maken. Hij wordt gereden door Elbe-Leine-Express GmbH. In Hannover vertrekt hij aan de Hamburger Allee 4, tegenover het busstation; een enkele rit kost € 15, heen en terug € 25.
 
 **Openingstijden.** 28 maart tot en met 31 oktober 2026, in het hoogseizoen en
 in oktober dagelijks, in het voorjaar en in september zonder een
@@ -383,9 +397,11 @@ plek is; de € 37 geldt wel alleen op geselecteerde dagen. Het ongedateerde
 ticket voor het hele seizoen kost € 52. Kinderen onder 90 cm komen gratis
 binnen, maar hebben een ticket van € 0 uit de onlineshop nodig.
 
+**Jaarkaart.** De Bronze Pass kost nieuw € 69 en € 59 bij verlenging, en is in 2026 op 45 dagen niet geldig, waaronder de meeste zaterdagen van april tot en met oktober en 1 tot en met 9 augustus. De Silber Pass voor € 89 (verlenging € 69) heeft geen uitsluitingsdagen. De Merlin Abenteuer-Pass voor € 139 (verlenging € 119) omvat parkeren en geldt ook in Legoland Deutschland, Peppa Pig Park Günzburg, de Duitse Sea Life-centra en Madame Tussauds Berlin, plus op maximaal twee opeenvolgende dagen in Legoland Billund en Gardaland. Wie met een Silber of Abenteuer-Pass op 31 oktober wil komen, heeft een gratis reserveringsticket nodig. Alle drie de kaarten zijn twaalf maanden geldig vanaf de aankoop.
+
 **Eten.** Onze parkpagina telt 21 horecazaken (stand september 2026), van de
 Schmalzkuchen-Schmiede met Duitse oliebollen op het terras van Colossos tot het
-Wirtshaus des Admirals.
+Wirtshaus des Admirals. Het Wirtshaus des Admirals in de Bucht der Piraten is een buffetrestaurant. Pizza haal je bij Pizza Scream en Flammkuchen bij de Flammkuchen Factory, allebei in Transsilvanië, en Thüringer braadworst van de lavagrill bij de Heide Park Grill aan de ingang. Frau Mümmels Kiosk in Peppa Pig Land verkoopt bowls, en veel restaurants hebben plantaardige alternatieven.
 
 ## Veelgestelde vragen over Heide Park
 
@@ -416,9 +432,7 @@ staat op de [parkpagina](ref:heide-park).
 ### Wanneer is het in Heide Park het rustigst?
 
 Op een vrijdag in september, ruim vóór een zaterdag in augustus. Weekdag en
-maand verschuiven elk ongeveer evenveel, samen meer dan elk apart. Welke van de
-komende openingsdagen het rustigst worden, staat dagelijks bijgewerkt in de
-widget hierboven.
+maand verschuiven elk ongeveer evenveel, samen meer dan elk apart. De rustigste van de komende openingsdagen staan gemarkeerd op de [parkpagina](ref:heide-park), elke dag opnieuw berekend.
 
 ### Welke achtbanen in Heide Park waren Duitse primeurs?
 
@@ -444,6 +458,10 @@ Online vanaf € 37 per persoon, bij de ticketautomaat ter plekke € 64; een ka
 is er niet. Parkeren kost online € 14 voor de auto. Actuele prijzen staan op
 [heide-park.de](https://www.heide-park.de/tickets-paesse/tickets/).
 
+### Wat kost een jaarkaart voor Heide Park?
+
+De Bronze Pass kost nieuw € 69, maar is in 2026 op 45 dagen niet geldig, waaronder de meeste zaterdagen van april tot en met oktober. De Silber Pass voor € 89 geldt op elke openingsdag van het seizoen. De Merlin Abenteuer-Pass voor € 139 omvat parkeren en toegang tot andere Merlin-attracties in Duitsland, zoals Legoland Deutschland.
+
 ### Loont een overnachting in het park?
 
 Als de rit langer duurt dan twee uur, ja. De winst is het eerste uur na
@@ -452,8 +470,6 @@ ophoopt. Op de lange najaarsdagen mogen hotel- en campgasten bovendien een uur
 eerder het park in.
 
 ## Verder lezen
-
-Hoe het weer boven het park eruitziet wanneer je gaat:
 
 ```weather-widget slug=heide-park
 
@@ -529,6 +545,30 @@ rustigste dagen.
   [Dagtickets (officieel, Duits)](https://www.heide-park.de/tickets-paesse/tickets/)
   ·
   [Zijn er tickets ter plekke? (helpcentrum van het park, Duits)](https://support.heide-park.de/hc/de/articles/4469462362269-Sind-Tickets-vor-Ort-erh%C3%A4ltlich)
+- Gegevens van de overige achtbanen en minimumlengtes:
+  [Big Loop](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/big-loop/) ·
+  [Bobbahn](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/bobbahn/) ·
+  [Grottenblitz](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/grottenblitz/) ·
+  [Indy-Blitz](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/indy-blitz/) ·
+  [Desert Race](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/desert-race/) ·
+  [Toxic Garden](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/toxic-garden-heide-park-resort/) op de site van het park (Duits) ·
+  [Bobbahn](https://rcdb.com/984.htm) ·
+  [Grottenblitz](https://rcdb.com/985.htm) ·
+  [Indy-Blitz](https://rcdb.com/4146.htm) in de Roller Coaster DataBase
+- Shows, meet and greets en evenementen in 2026:
+  [Shows (officieel, Duits)](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/shows/)
+  · [Piratenfeest (officieel, Duits)](https://www.heide-park.de/entdecken/events/piratenfest/)
+  · [Pyro Games (officieel, Duits)](https://www.heide-park.de/entdecken/events/pyro-games/)
+- Schoolvakanties 2026 in Nedersaksen, Bremen en Hamburg:
+  [Vakantiekalender 2025/26 van de KMK (Duits)](https://www.kmk.org/fileadmin/Dateien/pdf/Ferienkalender/FER2025_26.pdf)
+  · [Vakantiekalender 2026/27 van de KMK (Duits)](https://www.kmk.org/fileadmin/Dateien/pdf/Ferienkalender/FER2026_27.pdf)
+- Jaarkaarten 2026, prijzen en uitsluitingsdagen:
+  [Jaarkaarten (officieel, Duits)](https://www.heide-park.de/tickets-paesse/jahreskarten/)
+- Bus vanaf Hannover:
+  [Dienstregeling Heide Park Express (pdf van het park, Duits)](https://www.heide-park.de/media/1i0mavtt/heide-park_express_web.pdf)
+- Hutten in het Holiday Camp en restaurants in het park:
+  [Accommodaties in het Holiday Camp (officieel, Duits)](https://www.heide-park.de/uebernachten/holiday-camp/unterkuenfte/)
+  · [Restaurants & cafés (officieel, Duits)](https://www.heide-park.de/planen/besuch-planen/essen-trinken/)
 - Wachttijden, meetdagen, dagverlopen, minimale lengtes en openingstijden: de
   widgets in dit artikel en [onze parkpagina](ref:heide-park), uit eigen
   metingen

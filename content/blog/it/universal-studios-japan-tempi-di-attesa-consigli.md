@@ -2,6 +2,7 @@
 title: 'Universal Studios Japan: Nintendo, Hollywood Dream, Express Pass'
 translationKey: universal-studios-japan-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -62,8 +63,9 @@ Nintendo World. Nelle nostre misurazioni, in corso da ottobre 2024, è in testa
 Universal Studios Japan ha aperto il **31 marzo 2001** a Konohana-ku, un
 quartiere di Osaka. È stato il primo parco Universal fuori dagli Stati Uniti, costruito per
 1,7 miliardi di dollari. Il progetto è partito nel dicembre 1992 con la fondazione
-di Osaka Universal Planning Inc.; l’accordo quadro con MCA è del febbraio 1996 e i
-lavori sono cominciati nel 1998.
+di Osaka Universal Planning Inc.; l’accordo quadro con MCA è del febbraio 1996 e i lavori sono cominciati il 28 ottobre 1998.
+
+Prima della scelta di Osaka, alla fine degli anni Ottanta MCA esaminò insieme a Nippon Steel terreni del gruppo siderurgico a Kimitsu, nella prefettura di Chiba, e a Kitakyūshū. Nel 1990 il favorito era un terreno di Nippon Steel a Sakai, ma il progetto lì naufragò, come il tentativo della città di Osaka di portare il parco nel quartiere di Taishō. Nel gennaio 1994 la scelta cadde sul terreno di Konohana-ku.
 
 Nel primo anno sono arrivati più di **11 milioni** di ospiti, e il parco ha
 raggiunto i dieci milioni più in fretta di qualunque parco prima di lui. Nel 2009
@@ -73,17 +75,21 @@ ospiti erano 13,9 milioni, nel 2017 quasi 14,9. Nel 2020, per la pandemia, 4,9
 milioni; nel 2022 di nuovo 12,4. Per il 2024 Wikipedia in inglese riporta 16
 milioni di ospiti, terzo posto al mondo dopo il Magic Kingdom e Disneyland.
 
+All’inizio la città di Osaka aveva una quota nella società di gestione. Dopo un rifinanziamento di Goldman Sachs nel 2005 la società passò in mano privata, nel 2007 si quotò alla Borsa di Tokyo (segmento Mothers) e nel 2009 un’offerta pubblica d’acquisto portò tra gli azionisti MBK Partners, dalla Corea del Sud, e PAG, da Hong Kong. Nel 2015 NBCUniversal rilevò il 51 per cento delle quote per 183 miliardi di yen.
+
 Il gestore è USJ LLC. Comcast ha comprato le quote restanti nel 2017 per 2,3
 miliardi di dollari, e dal 2 marzo 2017 il parco appartiene per intero al gruppo
 attraverso NBCUniversal. Ad agosto 2026 USJ, Nippon Steel e la città di Osaka
 stanno trattando per un’ex area industriale confinante di circa 60.000 metri
 quadrati.
 
+Nel 2006 l’area Western, con il Wild Wild Wild West Stunt Show, diventò il Land of Oz, con una versione giapponese ridotta del musical «Wicked». L’area chiuse nel febbraio 2011 per fare posto a Universal Wonderland. E.T. Adventure funzionò dal 2001 al 2009, al suo posto c’è Space Fantasy. Back to the Future: The Ride funzionò per l’ultima volta il 31 maggio 2016, e Minion Mayhem ne ha preso il posto. Per la pandemia il parco restò chiuso dal 29 febbraio al 7 giugno 2020.
+
 L’ultima grande aggiunta è **Super Nintendo World**, aperto il **18 marzo 2021**
-per 40 miliardi di yen. Dall’**11 dicembre 2024** ne fa parte anche Donkey Kong
+per 40 miliardi di yen, con lavori iniziati nel giugno 2017. Dall’**11 dicembre 2024** ne fa parte anche Donkey Kong
 Country. Il parco ha oggi dieci aree tematiche: Hollywood, New York, San
 Francisco, Minion Park, Jurassic Park, Amity Village, Universal Wonderland,
-WaterWorld, The Wizarding World of Harry Potter e Super Nintendo World.
+WaterWorld, The Wizarding World of Harry Potter e Super Nintendo World. Il programma per il 25° anniversario si chiama «Discover U!!!» ed è partito il 4 marzo 2026.
 
 ## Regole all’imbarco
 
@@ -255,9 +261,6 @@ giorni:
 
 ```
 
-Chi costruisce il giro sulla tabella
-comincia dalle due attrazioni Nintendo, finché vale la fascia oraria.
-
 ```hourly-profile-widget slug=universal-studios-japan top=8
 
 ```
@@ -271,8 +274,7 @@ queste due e su Yoshi's Adventure. Segue Hollywood Dream: Backdrop.
 
 ```
 
-Il 9 ottobre 2026 il parco era aperto dalle 8:00 alle 22:00. Gli orari di ogni
-giorno sono sulla pagina degli orari del parco.
+Il 9 ottobre 2026 il parco era aperto dalle 8:00 alle 22:00.
 
 ## Quando andare
 
@@ -311,12 +313,10 @@ In questo periodo su Hollywood Dream suonano brani di gruppi giapponesi, e
 Jurassic Park gira al buio con il nome «The Ride in the Dark». Per l’Express Pass
 il parco ha preparato pacchetti di Halloween con quattro attrazioni, per esempio
 con Factory of Fear, Chainsaw Man: The Chaos 4-D o Resident Evil Requiem: The
-Dive. Gli altri parchi ad Halloween 2026 sono nella nostra
-[guida di Halloween](/blog/halloween-parchi-divertimenti-2026).
+Dive.
 
 La passeggiata «Frieren: Beyond Journey's End Story Walk» a Hollywood va dal 30
-maggio 2026 all’11 gennaio 2027 e richiede un Attraction Timed Entry Ticket
-dall’app. «ONE PIECE Premier Summer 2026» è dal 30 luglio al 19 novembre 2026, e
+maggio 2026 all’11 gennaio 2027 e richiede un Attraction Timed Entry Ticket dall’app. Fa parte della serie Universal Cool Japan, che esiste dal 2015. «ONE PIECE Premier Summer 2026» è dal 30 luglio al 19 novembre 2026, e
 lo spettacolo di strada «Wicked: The Witches of Oz» dal 20 febbraio al 27
 dicembre 2026.
 
@@ -380,7 +380,7 @@ senza preavviso. Anche con il biglietto in mano, l’attrazione dentro l’area 
 risultare di nuovo al completo.
 
 **Yoyakunori (Reserve & Ride)** prenota un orario di salita per alcune
-attrazioni, nel parco per esempio The Flying Snoopy e Freeze Ray Sliders. Fino all’orario prenotato si può salire su altro o mangiare. L’**Attraction Timed
+attrazioni, nel parco per esempio The Flying Snoopy e Freeze Ray Sliders. L’**Attraction Timed
 Entry Ticket** vale per singole attrazioni, compresa la passeggiata di Frieren.
 Entrambi si trovano solo nel parco e non sono trasferibili, e per gruppo si può
 scegliere una sola attrazione. Se si disinstalla l’app prima dell’orario, il
@@ -391,7 +391,7 @@ biglietto non è più valido. L’app richiede iOS 17 o Android 9.
 Tutti i prezzi sono nel negozio con le tasse e dipendono dal giorno di visita. Per
 le visite dal 1° settembre 2026 il parco applica prezzi legati al giorno: ogni
 giorno parte dal livello più basso e, con molta richiesta, il prezzo può salire.
-Comprare presto, dice il parco, di solito costa meno.
+Comprare presto, dice il parco, di solito costa meno. Il 1 Day Studio Pass ha prezzi diversi a seconda del giorno dal 2019.
 
 | Biglietto                                                  | Adulti da  |
 | ---------------------------------------------------------- | ---------- |
@@ -447,10 +447,9 @@ pagina a parte, e nei ristoranti si può prenotare in anticipo il Priority Seati
 
 ## Che cosa c’è di nuovo e che cosa ha chiuso
 
-Da fine 2024 sono arrivati l’area di Donkey Kong, lo spettacolo di Detective
-Conan, Illumination's Villain-Con Minion Blast e Snoopy's Flying Ace Adventure.
+Da fine 2024 c’è lo spettacolo di Detective Conan.
 L’attrazione di Spider-Man, aperta nel 2004, ha chiuso il 22 gennaio 2024. Backdraft
-e T2-3D sono chiusi dal 2020, la Sesame Street Fun World dal 10 maggio 2026.
+e T2-3D sono chiusi dal 2020.
 
 ## Domande frequenti su Universal Studios Japan
 
@@ -513,9 +512,10 @@ l’abbonamento annuale.
 
 ### Fonti e approfondimenti
 
-- Apertura, costi di costruzione, visitatori, proprietà, aree tematiche, chiusure,
-  trattative per l’ampliamento:
+- Apertura, scelta del sito, costi di costruzione, visitatori, proprietà, aree tematiche, attrazioni sostituite, chiusure, trattative per l’ampliamento:
   [Universal Studios Japan su en.wikipedia](https://en.wikipedia.org/wiki/Universal_Studios_Japan)
+  · [Universal Studios Japan su ja.wikipedia (in giapponese)](https://ja.wikipedia.org/wiki/%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E3%83%BB%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA%E3%83%BB%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3)
+  · [Acquisto del 51 per cento da parte di NBCUniversal (Simpson Thacher, in inglese)](https://stblaw.com/about-us/news/view/2015/10/07/simpson-thacher-represents-goldman-sachs-in-comcast-nbcuniversal-s-purchase-of-51-ownership-of-universal-studios-japan)
 - Super Nintendo World, apertura, costi, Donkey Kong Country, Boom Coaster:
   [Super Nintendo World su en.wikipedia](https://en.wikipedia.org/wiki/Super_Nintendo_World)
   · [Super Nintendo World (ufficiale)](https://www.usj.co.jp/web/en/us/areas/super-nintendo-world)

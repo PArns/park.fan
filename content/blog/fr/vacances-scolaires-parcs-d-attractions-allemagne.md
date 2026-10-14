@@ -126,7 +126,7 @@ En 2026, les vacances d’été étaient très étalées. La Rhénanie-Palatinat
 commencé fin juin, et la Bavière a fini la dernière, le 14 septembre. Pendant une seule semaine,
 du 3 au 7 août, les 16 Länder étaient en vacances en même temps.
 
-### Heide Park : la Basse-Saxe et la NRW doivent être en vacances toutes les deux
+### Heide Park
 
 La Basse-Saxe était en vacances du 2 juillet au 12 août, la NRW à partir du 18 juillet. Pendant
 les deux bonnes semaines où seule la Basse-Saxe était en vacances, la hausse à
@@ -149,10 +149,10 @@ de Heide Park, 31 tombaient pendant les vacances scolaires d’un Land ou d’un
 
 ```
 
-Comment arriver tôt à Soltau, c’est dans le
-[guide Heide Park](/blog/heide-park-temps-d-attente-conseils).
+Dans le [guide Heide Park](/blog/heide-park-temps-d-attente-conseils), tu trouves comment arriver
+tôt à Soltau.
 
-### Phantasialand : plein avant les vacances de NRW
+### Phantasialand
 
 À Brühl, c’était l’inverse. Du 2 au 17 juillet, quand la Basse-Saxe, la Hesse, la
 Rhénanie-Palatinat et plusieurs autres Länder étaient en vacances mais que la NRW avait encore
@@ -171,7 +171,7 @@ Le Quick Pass, qui peut te servir ces semaines-là, est expliqué dans le
 [guide Phantasialand](/blog/phantasialand-temps-d-attente-conseils), avec l’attraction par
 laquelle commencer.
 
-### Movie Park : la première semaine de la NRW
+### Movie Park
 
 Pour [Movie Park](ref:movie-park-germany) à Bottrop, c’est presque la même chose qu’à Brühl, avec
 +67 % avant les vacances de NRW, +132 % tant que la NRW et la Basse-Saxe étaient en vacances
@@ -181,7 +181,7 @@ attendu deux fois plus longtemps que la semaine précédente, et les quatre jour
 de toute la période de mesure tombent tous dans cette seule semaine, du mardi au vendredi. La
 semaine suivante, c’était déjà retombé, et pourquoi, je ne le trouve pas dans le calendrier.
 
-### Plopsaland : la Rhénanie-Palatinat et la NRW ensemble
+### Plopsaland
 
 Au [Plopsaland](ref:plopsaland-deutschland) de Haßloch, ni la Rhénanie-Palatinat ni la NRW n’ont
 rempli le parc à elles seules. La Rhénanie-Palatinat a été le premier Land en vacances, dès le
@@ -195,11 +195,11 @@ d’avant, et jusqu’à la fin des vacances de NRW, le parc est resté 23 % so
 vacances.
 
 Les jours les plus chargés du Plopsaland ne tombaient d’ailleurs pas en été. Quatre des dix plus
-chargés étaient dans la semaine du 7 au 10 avril, pendant les vacances de Pâques. Ce que le parc
-propose le soir en octobre est dans
-[l’article sur les Halloween Fright Nights](/news/plopsaland-deutschland-halloween-fright-nights-2026).
+chargés étaient dans la semaine du 7 au 10 avril, pendant les vacances de Pâques. En octobre, le parc
+propose le soir les
+[Halloween Fright Nights](/news/plopsaland-deutschland-halloween-fright-nights-2026).
 
-### Europa-Park : celui qui réagit le moins
+### Europa-Park
 
 [Europa-Park](ref:europa-park) était 37 % au-dessus de la référence pendant les trois semaines où
 14 à 16 Länder étaient en vacances. C’est la plus petite hausse des six parcs. Du 20 au
@@ -213,7 +213,7 @@ l’Argovie et le Grand Est. Je n’ai pas analysé à part si leurs vacances fo
 jour le plus chargé de toute la période de mesure a été le lundi 29 décembre 2025, entre Noël et
 le Nouvel An, quand les 16 Länder étaient en vacances.
 
-### Legoland : le plus dépendant du Sud
+### Legoland
 
 Le [Legoland](ref:legoland-deutschland) de Günzburg dépend plus que tous les autres des vacances du
 Sud, mais pas seulement d’elles. Pendant les vacances de Pentecôte, que seules la Bavière et le
@@ -308,7 +308,7 @@ Pour l’hiver qui vient, les jours d’ouverture sont déjà dans le calendrier
 2026 et le 12 janvier 2027, le Phantasialand ouvre 21 jours, Europa-Park 20, le Legoland 19, le
 Plopsaland 13 et Movie Park 11. Heide Park ferme après le 31 octobre. Les vacances de Noël
 commencent le 23 décembre dans dix Länder et se terminent entre le 31 décembre et le 12 janvier.
-Ce que chaque parc propose en hiver est dans le
+Le programme d’hiver de chaque parc est dans le
 [guide d’hiver](/blog/parcs-attractions-hiver-2026).
 
 ## Les semaines de vacances calmes

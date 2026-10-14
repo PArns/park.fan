@@ -72,13 +72,13 @@ d'Oblivion, parce qu'il pensait qu'elle faisait crier les passagers.
 
 ## Les montagnes russes, secteur par secteur
 
-Alton Towers compte onze montagnes russes. Trois d'entre elles étaient les premières de leur genre à
+Sur les onze montagnes russes d'Alton Towers, trois étaient les premières de leur genre à
 leur ouverture, Nemesis en Europe, Oblivion et TH13TEEN dans le monde, et The Smiler a établi en
 2013 un record du monde avec quatorze inversions. Entre les secteurs circule le Skyride, un
 télésiège avec des stations sur Towers Street, juste derrière l'entrée, dans Forbidden Valley et
 dans le Dark Forest.
 
-### Forbidden Valley : Nemesis Reborn et Galactica
+### Nemesis Reborn et Galactica dans Forbidden Valley
 
 Nemesis a ouvert le **19 mars 1994**, première montagne russe inversée d'Europe. Bolliger &
 Mabillard l'a construite sur des plans de Werner Stengel, d'après une idée de John Wardley, qui
@@ -110,7 +110,7 @@ bâtiment. Elle a fonctionné de 2012 à 2015 et tourne de nouveau depuis 2023.
 une plateforme de béton haute d'un peu moins de cinq mètres, au-dessus de l'allée, si bien qu'on
 peut le regarder tourner d'en bas.
 
-### X-Sector : Oblivion et The Smiler
+### Oblivion et The Smiler dans X-Sector
 
 Le X-Sector est mis en scène comme un centre d'essais. Oblivion y est arrivée le **14 mars 1998**,
 pour 12 millions de livres, et c'était le premier dive coaster du monde. Le wagon s'arrête au bord,
@@ -138,7 +138,7 @@ Court de Stafford a infligé une amende de 5 millions de livres, qui aurait atte
 le plaider-coupable. The Smiler roule de nouveau depuis le 19 mars 2016, avec des sécurités
 supplémentaires.
 
-### Dark Forest : Rita et TH13TEEN
+### Rita et TH13TEEN dans Dark Forest
 
 **[Rita](ref:alton-towers/rita)** roule dans le Dark Forest depuis le **1er avril 2005**. Cette
 attraction Intamin est lancée par un système hydraulique et passe de 0 à 98,3 km/h en 2,5 secondes,
@@ -156,7 +156,7 @@ derrière lui, puis la portion de voie tombe d'environ cinq mètres avec le trai
 ensuite en marche arrière dans un tunnel. Intamin l'a construite à l'emplacement du Corkscrew, qui y
 a fonctionné de 1980 à 2008.
 
-### Mutiny Bay : Wicker Man
+### Wicker Man dans Mutiny Bay
 
 **[Wicker Man](ref:alton-towers/wicker-man)** a ouvert le **20 mars 2018**, première nouvelle
 montagne russe en bois du Royaume-Uni depuis 22 ans. Great Coasters International l'a construite
@@ -194,14 +194,13 @@ et compte 48 places. Comme pour Nemesis, le tracé est de John Wardley. Il parta
 **[Congo River Rapids](ref:alton-towers/congo-river-rapids)**, une descente de rapides en bouées
 rondes construite pendant la grande extension de 1985 à 1988.
 
-CBeebies Land a deux montagnes russes pour enfants.
-L'**[Octonauts Rollercoaster Adventure](ref:alton-towers/octonauts-rollercoaster-adventure)** occupe
-depuis 2015 l'ancien emplacement de la Beastie. Depuis le 28 mars 2026, il y a aussi
+Dans CBeebies Land, l'**[Octonauts Rollercoaster Adventure](ref:alton-towers/octonauts-rollercoaster-adventure)** occupe
+depuis 2015 l'ancien emplacement de la Beastie. Depuis le 28 mars 2026, il y a une deuxième montagne russe pour enfants,
 **[Bluey the Ride: Here Come The Grannies!](ref:alton-towers/postman-pat-parcel-post)**, un train
 Zierer de 28 places installé sur le terrain du Postman Pat Parcel Post démonté. Dans la file
 d'attente, les enfants traversent la maison de la famille de la série.
 
-### Dans les Towers : Hex
+### Hex dans les Towers
 
 **[Hex](ref:alton-towers/hex-the-legend-of-the-towers)** est logée depuis 2000 dans les murs du
 manoir qui a donné son nom au parc. On parcourt d'abord les salles en écoutant la légende de la

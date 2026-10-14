@@ -67,8 +67,7 @@ celebrating its thirtieth birthday with a ride from Paramount of all studios.
 Across every operating day we’ve measured so far, you queue at
 [Movie Park](ref:movie-park-germany) a good third less than at
 [Phantasialand](ref:phantasialand), barely an hour’s drive further south.
-Where the other German parks stand is in my
-[German theme park ranking](/blog/best-theme-parks-in-germany).
+My [German theme park ranking](/blog/best-theme-parks-in-germany) ranks the other German parks.
 
 The Sunday that the usual tip sheets online write off as a crowded weekend
 day is one of the quietest days of the week in our data.
@@ -92,8 +91,7 @@ Five years later, on 17 May 2010, the Spanish operator **Parques Reunidos**
 took over. The Madrid group has been majority-owned by the Swedish private
 equity firm EQT since 2019, and according to a report in the Spanish business
 paper Expansión on 24 September 2026, EQT now wants to sell it as a whole,
-Movie Park included. What that means for visitors and pass holders is in
-[our news piece on the sale](/blog/parques-reunidos-sale-movie-park).
+Movie Park included. [Our news piece on the sale](/blog/parques-reunidos-sale-movie-park) explains what that means for visitors and pass holders.
 
 Five of the best-known rides have lived under new names ever since:
 
@@ -319,8 +317,6 @@ birthday on **4 July 2026**, with a programme running until 11 pm that day.
 
 Our wait-time history for Bottrop starts in **December 2025**.
 
-The ten attractions you stand in longest:
-
 ```ride-waits-widget park=movie-park-germany top=10 columns=peak,days highlight=van-helsings-factory
 
 ```
@@ -330,11 +326,7 @@ rides sit level with one another, the log flume from the children’s area among
 them. Star Trek, the biggest ride in the park, sits mid-table.
 
 Van Helsing manages only 848 people per hour, and because the ride is indoors,
-a lot of people want in when it rains. How capacity and demand turn into a
-wait time is covered at length in
-[the art of waiting](/blog/the-art-of-waiting).
-
-The same day, broken down by hour:
+a lot of people want in when it rains. [The art of waiting](/blog/the-art-of-waiting) explains at length how capacity and demand turn into a wait time.
 
 ```hourly-profile-widget slug=movie-park-germany top=8
 
@@ -350,8 +342,6 @@ afternoon, because at thirty degrees everybody eventually wants to get wet.
 Van Helsing’s row jumps up in the second hour and then
 stays on the same value until closing. Anyone who wasn’t there in the first
 sixty minutes won’t find a better moment all day.
-
-Compared with the neighbourhood:
 
 ```park-comparison-widget slugs=movie-park-germany,phantasialand,efteling,attractiepark-toverland,walibi-holland,europa-park highlight=movie-park-germany
 
@@ -416,8 +406,6 @@ The autumn holidays and the week after them are different:
   opens for the last weekend. **8 November 2026** is the last day of the season,
   and at the same time the final evening of the Halloween Horror Festival. After
   that it stays shut until the Christmas event.
-
-The quietest of the upcoming operating days according to our calendar:
 
 ```best-days-widget slug=movie-park-germany
 
@@ -597,7 +585,7 @@ from Essen Hauptbahnhof, which stops at the Movie Park stop right by the main en
 at the Trattoria Hollywood, plus burgers, chips and a bakery. For what ends up on
 the plate I find the prices high, and I eat here as quickly as possible.
 
-Whether it’s raining in Bottrop decides where the queues pile up:
+Whether it rains in Bottrop decides where the queues pile up.
 
 ```weather-widget slug=movie-park-germany
 
@@ -618,7 +606,7 @@ not to the big coaster. The current numbers are on the
 **Friday**, with **Sunday** and **Thursday** close behind, is the quietest
 weekday in our data, Tuesday is the busiest, and Saturday sits well above Sunday. From the start of September the
 park only opens Thursday to Sunday anyway, and daily during the autumn holidays
-from 17 to 31 October. Which day exactly is in the [wait-time calendar](ref:movie-park-germany?calendar).
+from 17 to 31 October. The [wait-time calendar](ref:movie-park-germany?calendar) narrows it down to the day.
 
 ### Which days is Movie Park open in autumn?
 
@@ -675,7 +663,7 @@ Because the queues are short, you ride more on a normal day here than at Phantas
 year the same sets host what is, by its own count, the biggest Halloween event
 on the continent.
 
-**This park’s best years are behind it, though.** They were in the Warner era,
+This park’s best years were in the Warner era, though,
 when a studio was putting money and characters into it. The park has kept
 building since, in 2011, 2017, 2018, 2021 and 2026, but without the brands that
 once made it. The last coaster for adults came in 2017, and the new attraction in

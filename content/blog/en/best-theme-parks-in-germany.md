@@ -54,7 +54,7 @@ parkLinks:
   - legoland-deutschland
 ---
 
-park.fan lists **nine theme parks in Germany**. At six of them we measure the wait times,
+Of the **nine theme parks in Germany** on park.fan, we measure the wait times at six,
 ride by ride. Not a single number comes in for [Hansa-Park](ref:hansa-park), because the park
 only shows them in its own app. [Traumatica](ref:traumatica), for which we have only four measured days so far, and the water world
 [Rulantica](ref:rulantica) belong to the Europa-Park resort and
@@ -130,7 +130,7 @@ Winja’s Fear and Winja’s Force and the 65-metre tower [Mystery Castle](ref:p
 
 Seven themed areas are packed into a small space: Berlin, China Town, Deep in Africa, Mexico,
 Fantasy, Mystery and Rookburgh. Tickets are sold only online and for a set date; there’s no ticket
-desk any more. If you pay, the **Quick Pass** gets you onto a single ride faster, or the Quick
+desk any more. For an extra charge, the **Quick Pass** gets you onto a single ride faster, or the Quick
 Pass Ultimate onto every ride once, and only Ultimate covers F.L.Y. Three themed hotels stand at
 the park: Charles Lindbergh in Rookburgh, Ling Bao and Matamba. Unlike in Rust they don’t get you
 in earlier, but the Hotel Charles Lindbergh has its own entrance to F.L.Y. once a day. By car it’s the
@@ -178,7 +178,7 @@ the A1. In 2027 the park turns fifty and is building an 86-metre observation tow
 World, and under its current name since 2005. In our measurement the queues are shorter than at
 Phantasialand, and Sunday is one of the quieter days here.
 
-The park has eight roller coasters. The biggest is
+The biggest of the park's eight roller coasters is
 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) by Mack
 Rides from 2017: 40 metres tall, 90 km/h, 130 centimetres minimum, and before it sets off the
 train is flung forwards and back three times until it has enough speed for the first hill.
@@ -277,7 +277,7 @@ On Taron and F.L.Y., 130 centimetres is only enough with an adult alongside; rid
 
 ## Where you queue the shortest
 
-The comparison across all measured days, calculated the same way for every park. The rows are in the order of the 3 October 2026 measurement and aren’t re-sorted:
+The comparison is calculated the same way for every park, across all measured days. The rows are in the order of the 3 October 2026 measurement and aren’t re-sorted.
 
 ```park-comparison-widget slugs=phantasialand,legoland-deutschland,europa-park,heide-park,movie-park-germany,plopsaland-deutschland show=quietest
 
@@ -297,16 +297,13 @@ same ride on busy days, and without a pass you wait longer there than our median
 
 ## Queues by time of day
 
-At Phantasialand the day looks like this, ride by ride, across all measured days:
-
 ```hourly-profile-widget slug=phantasialand top=6
 
 ```
 
-Taron is busiest at opening and in the last hour, when everyone wants to squeeze in one more
+Across all measured days at Phantasialand, Taron is busiest at opening and in the last hour, when everyone wants to squeeze in one more
 ride. F.L.Y. is short in the first hour and peaks an hour later, once the rest of the park has
-made it to Rookburgh. Both have their quietest hour in the afternoon. If you want to ride
-both, head for F.L.Y. at opening and save Taron for the afternoon.
+made it to Rookburgh. Both have their quietest hour in the afternoon. For both rides that means F.L.Y. at opening and Taron in the afternoon.
 
 At Europa-Park the Eurosat has its longest queue as early as ten in the morning, because it’s near
 the entrance and runs indoors, and when it rains everyone heads there at once.
@@ -322,8 +319,7 @@ days that rest on different parts of the year.
 
 Saturday is the busiest day at Europa-Park, Phantasialand, Heide Park and Legoland, and in Brühl
 it stands furthest above the rest of the week. There, Sunday is almost as busy; in Rust, Soltau
-and Bottrop it’s one of the quieter days. So if you can only go at the weekend with the kids, go
-on Sunday rather than Saturday, unless you’re heading to Brühl. At Plopsaland every day is equally quiet, Saturday included.
+and Bottrop it’s one of the quieter days. For families who can only go at the weekend, Sunday is the better day, except in Brühl. At Plopsaland every day is equally quiet, Saturday included.
 
 July and August are the busiest months at almost every park,
 and at Phantasialand by a long way. September is one of the quietest in Brühl, Soltau and Bottrop,
@@ -336,8 +332,8 @@ At five of the six measured parks, a weekday in the home state's school holidays
 than an average weekend day. Which German states fill which park is in the
 [guide to school holidays and crowds](/blog/school-holidays-theme-parks-germany).
 
-Every park has a calendar with the forecast for the coming days; this is the one for
-Europa-Park:
+Every park has a calendar with the forecast for the coming days, and the one for
+Europa-Park is below.
 
 ```best-days-widget slug=europa-park
 

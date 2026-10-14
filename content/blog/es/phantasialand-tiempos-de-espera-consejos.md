@@ -2,7 +2,7 @@
 title: 'Phantasialand: tiempos de espera y consejos de un habitual'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
-updatedAt: '2026-10-13'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -100,7 +100,26 @@ estado al frente de numerosas obras de televisión con marionetas. Lo que los do
 querían hacer de la mina agotada llamada «Berggeist» era un **Märchenwald** (un
 bosque de cuentos), un lugar tranquilo para familias y abuelos, con marionetas de
 la colección de Schmidt, unas cuarenta escenas de cuento y mucho verde. El 30 de
-abril de 1967 se abrieron las puertas. Montañas rusas no había ninguna.
+abril de 1967 se abrieron las puertas.
+
+Los dos lo construyeron por 2,5 millones de marcos, y en la primera temporada
+llegaron 400.000 visitantes. En 1970 abrió junto a la nueva entrada principal
+Alt-Berlin, una réplica de Unter den Linden con la fuente de Neptuno y una Puerta
+de Brandeburgo a escala 1:2, y ese mismo año el telecabina 1001 Nacht. A partir
+de 1972 se levantó en terreno nuevo el pueblo del Oeste Silver City, con el
+primera atracción de troncos de Alemania. Desde 1974 el monorraíl Phantasialand-Jet
+recorría el parque. La primera montaña rusa, la Bobbahn 1 de Schwarzkopf (luego
+Gebirgsbahn), llegó en 1975, y en 1978 el parque colocó en la misma parcela la
+Bobbahn 2, la futura Grand-Canyon-Bahn. Por el ruido, ambas quedaron envueltas en
+una montaña artificial.
+
+China Town abrió en 1981, construida con 1,3 millones de piezas que el parque
+mandó fabricar en Taiwán. Desde entonces el terreno no ha crecido, y cada
+novedad sustituyó algo antiguo. En 1984 llegó el dark ride Silbermine en Silver
+City, en 1988 la montaña rusa cubierta Space Center de Vekoma y en 1994 el
+simulador Galaxy bajo una cúpula dorada, derribada en 2016. El Space Center se
+llamó Temple of the Night Hawk desde 2001 y desde junio de 2019 funciona con gafas
+de realidad virtual como Crazy Bats.
 
 ![F.L.Y. en Rookburgh | Rookburgh con F.L.Y. (2020), la primera montaña rusa voladora con lanzamiento del mundo. | left](/media/phantasialand/fly-4x3.jpg)
 
@@ -110,8 +129,7 @@ después de la apertura lo bautizó en persona Michael Jackson. El **1 de mayo d
 2001** hubo un incendio. Un fallo técnico en la atracción del Gran Cañón prendió
 fuego a la montaña artificial en la que también circulaba la Gebirgsbahn, y las
 llamas alcanzaron el teatro Tanagra y parte del pueblo del Oeste. Ese día había
-unos 20.000 visitantes en el parque, 63 sufrieron heridas leves, los daños
-sumaron 38 millones de euros y el parque estuvo 15 días cerrado.
+unos 20.000 visitantes en el parque, 63 resultaron heridos y el parque estuvo 15 días cerrado.
 
 Wuze Town, con los dos spinning coasters
 [Winja’s Fear](ref:phantasialand/winjas-fear) y Force, tenía que abrir ya en
@@ -137,6 +155,10 @@ accionistas que miran el trimestre, el parque nunca los ha tenido por encima. El
 dueño de Movie Park Germany, a una hora en coche hacia el norte, pertenece en
 cambio a un fondo de inversión, y ese fondo
 [busca comprador desde septiembre de 2026](/blog/eqt-venta-parques-reunidos-movie-park).
+
+El Theme Index de TEA y AECOM atribuye al Phantasialand 2,05 millones de
+visitantes en 2019 y 2,1 millones en 2022, puesto 14 entre los parques de Europa.
+Para 2024, Blooloop, a partir del índice de TEA, vuelve a dar 2,1 millones y el puesto 14.
 
 El parque lleva desde 2003 luchando por una ampliación, y en julio de 2026 la
 comisión de urbanismo de Brühl abrió el procedimiento urbanístico para unas 15
@@ -178,6 +200,25 @@ Para los niños está [Raik](ref:phantasialand/raik), el boomerang familiar de
 Klugheim, que recorre la garganta de basalto hacia delante y hacia atrás. Como
 primera montaña rusa «de verdad» va bien.
 
+### Las montañas rusas en cifras
+
+| Atracción            | Fabricante           | Apertura | Altura | Velocidad    | Altura mínima |
+| -------------------- | -------------------- | -------- | ------ | ------------ | ------------- |
+| Taron                | Intamin              | 2016     | 30 m   | 117 km/h     | 1,30 m        |
+| F.L.Y.               | Vekoma               | 2020     | 19,5 m | 78 km/h      | 1,30 m        |
+| Black Mamba          | Bolliger & Mabillard | 2006     | 26 m   | 80 km/h      | 1,40 m        |
+| Colorado Adventure   | Vekoma               | 1996     | 26 m   | 50 km/h      | 1,00 m        |
+| Winja’s Fear & Force | Maurer               | 2002     | 17,4 m | 66 / 60 km/h | 1,20 m        |
+| Raik                 | Vekoma               | 2016     | 25 m   | 62 km/h      | 1,00 m        |
+| Crazy Bats           | Vekoma               | 1988     | 11,7 m | 46 km/h      | 1,00 m        |
+
+En Taron, F.L.Y. y los Winja’s, los niños de menos de 1,40 m solo suben con un
+adulto; en Colorado Adventure, Raik y Crazy Bats el límite es 1,20 m. Black Mamba
+no admite a nadie de más de 1,95 m ni a niños menores de diez años, F.L.Y. a
+nadie de más de 2,05 m ni a menores de ocho, los Winja’s a nadie de más de 2,00 m
+ni a menores de seis. En Crazy Bats las gafas de realidad virtual se usan a
+partir de 1,20 m; por debajo se monta sin ellas.
+
 ```gallery-widget heading="Los headliners en imágenes"
 - /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | La atracción acuática Chiapas | Chiapas, la bajada acuática más empinada del mundo, según el parque.
 - /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, el tren minero de 1996.
@@ -191,7 +232,7 @@ primera montaña rusa «de verdad» va bien.
 
 ## Entradas y abonos anuales
 
-**Ya no hay taquilla en puerta.** El Phantasialand vende exclusivamente
+Ya no hay taquilla en puerta. El Phantasialand vende exclusivamente
 **entradas online con fecha**. Reservas de antemano un día concreto de visita, y
 sin ese e-ticket en el móvil, en el peor de los casos te quedas ante la puerta
 cerrada.
@@ -203,9 +244,8 @@ para octubre y noviembre de 2026: **35 €, 59 € y 78 €**, es decir, más de
 por el mismo día de parque. La tienda anuncia entradas desde **44 €**. También se
 puede ir sobre la marcha, pero solo online y solo hasta las 14 h del mismo día, al
 precio que tenga ese día y siempre que no se haya agotado. El día barato es a menudo también el más vacío, pero no siempre.
-Cuánta gente habrá un día está en el calendario de afluencia.
 
-**Ya no hay abonos anuales.** El Phantasialand retiró su Club-Karte de la venta
+Ya no hay abonos anuales. El Phantasialand retiró su Club-Karte de la venta
 durante la pandemia y nunca la recuperó; las últimas caducaron en el verano de 2022. Entre los
 [grandes parques alemanes](/blog/mejores-parques-de-atracciones-de-alemania) es
 la excepción. El Europa-Park, por ejemplo, sigue vendiendo su ResortPass, aunque
@@ -242,23 +282,15 @@ Un par de reglas de oro que casi siempre se cumplen:
 Con el calendario de vacaciones, el tiempo, los horarios de apertura y el
 historial de tiempos de espera del parque calculamos un nivel de afluencia por
 día, de muy bajo a extremo, y lo ponemos en el calendario de los mejores días de
-visita. Aquí están los próximos días más tranquilos para el Phantasialand:
+visita.
 
 ```best-days-widget slug=phantasialand
 
 ```
 
-Qué días de la semana y qué meses suelen ser tranquilos y cuáles conviene evitar
-está en la **afluencia por día de la semana y por mes**, medida en los días de
-apertura. Nuestras mediciones empiezan a finales de diciembre de 2025; la tabla
-indica cuántos días hay detrás de cada mes, y el invierno todavía está poco
-medido:
-
 ```stats-widget slug=phantasialand
 
 ```
-
-Reserva la entrada mejor después de haber mirado el calendario.
 
 ## Quick Pass, suelto o Ultimate
 
@@ -285,13 +317,13 @@ funciona de forma completamente nueva. Hay dos variantes:
   pases sueltos suman 83 €, así que el Ultimate sale más barato y encima añade
   F.L.Y. Solo compensa, eso sí, si de verdad quieres hacerlo todo.
 
-**Incluso con el Quick Pass sigues esperando en F.L.Y., arriba, en la
-estación.** Por sus elaborados arneses de vuelo, la atracción tarda mucho en
+Incluso con el Quick Pass sigues esperando en F.L.Y., arriba, en la
+estación. Por sus elaborados arneses de vuelo, la atracción tarda mucho en
 cargarse, y ese atasco no se resuelve tampoco en el fast-track.
 
-Solo se compra allí mismo, en el servicio al cliente del Kaiserplatz, y **justo
+Solo se compra allí mismo, en el servicio al cliente del Kaiserplatz, y justo
 en el Wintertraum los Quick Pass suelen estar agotados el fin de semana ya a
-mediodía.** Quien necesite uno tiene que estar allí temprano.
+mediodía.
 
 Tras muchas visitas, creo que **en un día verde no lo necesitas.** Quien llega
 temprano y sigue un orden sensato monta en los headliners con poca espera. En un
@@ -308,8 +340,7 @@ las 10 como muy tarde funcionan todas las atracciones. En la primera hora las
 callejuelas siguen vacías y la mayoría de las atracciones tienen colas más cortas
 que en todo el resto del día.
 
-Mi orden, que rehíce en un punto según nuestros datos por horas (medidos desde
-finales de diciembre de 2025):
+Mi orden, que rehíce en un punto según nuestros datos por horas:
 
 1. **Directo a [Taron](ref:phantasialand/taron)**, a Klugheim. La montaña rusa
    multilanzamiento tiene la cola más larga del parque, y ya en la primera hora es
@@ -429,8 +460,6 @@ En los días llenos, tren más lanzadera es más tranquilo, porque por la noche 
 te quedas atascado en la salida del aparcamiento con unos cuantos miles de
 personas.
 
-El tiempo en Brühl, justo ahora:
-
 ```weather-widget slug=phantasialand
 
 ```
@@ -480,8 +509,7 @@ hubo entradas de preventa desde 30 € hasta el 12 de octubre.
   en un puñado de días, entre finales de diciembre de 2025 y enero de 2026, y en
   esos había mucha gente. Para todo lo que no sea fin de semana, mira primero el
   calendario de afluencia de más arriba.
-- **Abrígate bien.** Con temperaturas bajo cero, cualquier espera se hace más
-  larga. Por qué los minutos sentidos y los reales se separan tanto lo cuento en
+- **Abrígate bien.** Por qué los minutos sentidos y los reales se separan tanto lo cuento en
   [el arte de esperar](/blog/el-arte-de-esperar).
 
 ## Preguntas frecuentes sobre tiempos de espera y visita
@@ -541,6 +569,10 @@ jornada. Dos días son más relajados.
 - Fin de los abonos anuales y peticiones de los fans: [se suprime la Club-Karte (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html) · [petición «Reintroducción de los abonos anuales del Phantasialand» (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)
 - El Quick Pass en su lanzamiento en el Wintertraum 2025/26: [«QUICK Pass Switches to Dynamic Pricing» (Wartezeiten.APP)](https://www.wartezeiten.app/en/phantasialand/news/phantasialand-quick-pass-switches-to-dynamic-pricing-fans-outraged-2429.html)
 - Historia, el incendio de 2001 y el Märchenwald: [Phantasialand (Wikipedia, en alemán)](https://de.wikipedia.org/wiki/Phantasialand) · [30 de abril de 1967 (WDR Stichtag)](https://www1.wdr.de/stichtag/stichtag-eroeffnung-phantasialand-100.html) · [Märchenwald (Frei-Zeit Blog)](https://frei-zeit-blog.de/phantasialand/attraktionen/maerchenwald/)
+- Incendio de 2001, número de heridos: [Datos de la policía del 1 de mayo de 2001 (wissen.de, en alemán)](https://www.wissen.de/kalendar/1-mai-2001) · [«Die Wunden des Brandes heilen langsam» (Kölner Stadt-Anzeiger, 30 de abril de 2002, reproducido en el foro Planet Phantasialand)](https://freizeitparkweb.de/cgi-bin/dcf/dcboard.cgi?az=printer_format&om=1705&forum=DCForumID1)
+- Datos técnicos: [Phantasialand (RCDB)](https://rcdb.com/4872.htm) · [Space Center / Crazy Bats (RCDB)](https://rcdb.com/980.htm) · [Gebirgsbahn (RCDB)](https://rcdb.com/979.htm)
+- Alturas mínimas: [Taron (oficial)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/taron/) · [Black Mamba (oficial)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/black-mamba/) · [Colorado Adventure (oficial)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/colorado-adventure/) · [Winja’s Fear & Force (oficial)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/winjas-fear-force/) · [Raik (oficial)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/raik/) · [Crazy Bats (oficial)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/crazy-bats/)
+- Visitantes: [TEA/AECOM Theme Index 2022 (PDF)](https://aecom.com/wp-content/uploads/documents/reports/AECOM-Theme-Index-2022.pdf) · [Top 20 de parques temáticos en Europa según el índice TEA 2024 (Blooloop)](https://blooloop.com/features/the-top-20-theme-parks-and-amusement-parks-in-europe)
 - Ampliación en el Ententeich: [Planungsausschuss macht Weg für Prüfverfahren frei (FreizeitparkNEWS, julio de 2026)](https://www.freizeitparknews.de/phantasialand/erweiterung-pruefverfahren/)
 - Atracciones: [Chiapas (oficial)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/chiapas-die-wasserbahn/) · [F.L.Y. (oficial)](https://www.phantasialand.de/de/rookburgh/fly/) · [Raik (Wikipedia, en inglés)](https://en.wikipedia.org/wiki/Raik) · [Winja’s Fear & Force (Wikipedia, en inglés)](https://en.wikipedia.org/wiki/Winja%27s_Fear_%26_Force)
 - Die 3 Mausketiere: [Phantasialand opens Residenz Theater with new 4D film (DRdb, octubre de 2025)](https://darkridedatabase.com/phantasialand-opens-residenz-theater-with-new-4d-film/)

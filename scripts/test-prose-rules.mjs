@@ -79,6 +79,25 @@ yes(
 no('heading-triple', lines('## Express Pass: Pakete, Preise, Zeitfenster', '## Wann du fährst'));
 no('heading-triple', lines('## Preise und Zeitfenster', '## Die App', '## Anreise mit der Bahn'));
 
+no(
+  'heading-triple',
+  lines(
+    '## Altura mínima y acompañante en las atracciones',
+    '## Qué hay en cada zona temática',
+    '## Cierres y novedades en los Studios'
+  ),
+  'es'
+);
+no(
+  'heading-triple',
+  lines(
+    '## Speed of Sound, 5,2 g dall’anno 2000',
+    '## Goliath, 46 m e 106 km/h',
+    '## Untamed, 2019'
+  ),
+  'it'
+);
+
 // 3 name-colon-subheading
 yes(
   'name-colon-subheading',
@@ -153,6 +172,15 @@ yes(
   'widget-announcement',
   lines('Hoe de rijen groeien:', fence, 'De rustigste dagen:', fence),
   'nl'
+);
+yes(
+  'widget-announcement',
+  lines(
+    'Der Wochentag macht den größten Unterschied, und die Spanne reicht von leer bis voll, wie die Messungen der letzten zwölf Monate an allen Bahnen zeigen. Hier sind die ruhigsten kommenden Tage:',
+    fence,
+    'Das Wetter im Park, genau jetzt:',
+    fence
+  )
 );
 no(
   'widget-announcement',
@@ -301,6 +329,26 @@ no(
     'Drei Bahnen stehen im Bereich. Sie sind kurz.',
     'Der Park ist groß und die Wege sind lang.'
   )
+);
+
+no(
+  'count-announcement-opener',
+  lines('Um zehn gehst du in die Grèce. Dort ist es dann leer.', 'Um elf fährst du Tonnerre.')
+);
+
+no(
+  'count-announcement-opener',
+  lines(
+    'Seventy kilometres separate the two parks. The A73 links them.',
+    'One car held one, maybe two people.'
+  ),
+  'en'
+);
+
+no(
+  'count-announcement-opener',
+  lines('Six Flags doesn’t comment on pending litigation.', 'Six Flags closed the ride in 2026.'),
+  'en'
 );
 
 // 14 data-caveat-close
@@ -708,6 +756,19 @@ no(
 );
 
 // 38 bold-maxim
+no(
+  'bold-maxim',
+  lines('**Mit Bahn und Bus.** Die Linie C-3 fährt bis Pinto, dort fährt der Bus 413 zum Tor.')
+);
+no('bold-maxim', lines('**En train et en bus.** La ligne C-3 va jusqu’à Pinto.'), 'fr');
+no(
+  'bold-maxim',
+  lines(
+    '**Included in the ticket.** Parking costs extra and is paid at the gate.',
+    '**People with disabilities.** A carer enters free.'
+  ),
+  'en'
+);
 yes('bold-maxim', lines('Text davor. **Wer früh kommt, wartet kürzer.**'));
 yes('bold-maxim', lines('**Wer früh kommt, wartet kürzer.** Dann der Rest.'));
 yes('bold-maxim', lines('**The early visitor waits less.** Then the rest.'), 'en');

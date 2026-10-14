@@ -81,13 +81,13 @@ La longueur, la hauteur et la vitesse des cinq grandes attractions viennent de l
 
 [Katun](ref:mirabilandia/katun?full)
 
-Katun mesure 1 200 mètres de long pour 50 mètres de haut, et le tour dure 2 min 22. D’après la RCDB, le parcours compte six inversions : un looping, une zero-g roll, une cobra roll et deux tire-bouchons. Les passagers sont assis par quatre de front, un train a huit voitures et 32 places, et trois trains circulent en même temps. D’après la RCDB, l’attraction peut transporter 1 700 personnes par heure. Selon le parc, Katun atteint 110 km/h, selon la RCDB 104.
+Katun mesure 1 200 mètres de long pour 50 mètres de haut, et le tour dure 2 min 22. D’après la RCDB, le parcours compte six inversions : un looping, une zero-g roll, une cobra roll et deux tire-bouchons. Les passagers sont assis par quatre de front, un train a huit voitures et 32 places, et trois trains circulent en même temps. D’après la RCDB, l’attraction peut transporter 1 700 personnes par heure. Katun atteint 110 km/h selon le parc, 104 selon la RCDB.
 
-Le thème est la cité maya de Sian Ka’an. Dans le calendrier maya, un katun est une période de 7 200 jours, soit environ 20 ans, et au début comme à la fin du tour le train passe par une « Stargate ». D’après le parc, Katun est la plus longue montagne russe inversée d’Europe. On y monte à partir de 140 centimètres et de douze ans.
+Le thème est la cité maya de Sian Ka’an. Dans le calendrier maya, un katun est une période de 7 200 jours, soit environ 20 ans, et au début comme à la fin du tour le train passe par une « Stargate ». Katun est, d’après le parc, la plus longue montagne russe inversée d’Europe. On y monte à partir de 140 centimètres et de douze ans.
 
 ### iSpeed
 
-iSpeed est un launched coaster d’Intamin à propulsion magnétique. D’après le parc, il passe à 100 km/h en 2,2 secondes, atteint jusqu’à 110 km/h (RCDB) et grimpe à 55 mètres. Le parcours fait 980 mètres et compte deux inversions. Pour le parc, c’est 120 km/h, et le tour dure 77 secondes.
+iSpeed est un launched coaster d’Intamin à propulsion magnétique. Il passe, d’après le parc, à 100 km/h en 2,2 secondes, atteint jusqu’à 110 km/h (RCDB) et grimpe à 55 mètres. Le parcours fait 980 mètres et compte deux inversions. Pour le parc, c’est 120 km/h, et le tour dure 77 secondes.
 
 iSpeed a remplacé en 2009 la Sierra Tonante, les montagnes russes en bois de 1992. On y monte à partir de 140 centimètres, jusqu’à 195 centimètres au maximum, et à partir de douze ans.
 
@@ -101,15 +101,15 @@ iSpeed a remplacé en 2009 la Sierra Tonante, les montagnes russes en bois de 19
 
 Desmo Race a ouvert en 2019 dans la zone Ducati. Ce sont deux rails côte à côte, longs chacun de 525 mètres et hauts de 22 mètres, le tour dure une minute à 80 km/h au plus. On est assis à califourchon, et d’après le parc la sensation doit rappeler une Panigale V4. On peut accélérer et freiner pour distancer l’autre rail. Le constructeur est Maurer Rides, le type s’appelle Spike Coaster. L’accès est autorisé de 120 à 195 centimètres et jusqu’à 135 kilogrammes, et les enfants de moins de dix ans et de moins de 140 centimètres montent avec un accompagnateur.
 
-### Master Thai, Gold Digger et les montagnes russes familiales
+### Les petites montagnes russes
 
-D’après le parc, [Master Thai](ref:mirabilandia/master-thai) est la première montagne russe d’Italie à deux rails. Preston & Barbieri l’a construite en 2011, elle a un lift à chaîne, aucune inversion et un tracé en ruban de Möbius sur lequel deux trains roulent l’un contre l’autre. La taille minimum est de 120 centimètres, et les enfants de six à huit ans montent avec un accompagnateur.
+[Master Thai](ref:mirabilandia/master-thai) est, d’après le parc, la première montagne russe d’Italie à deux rails. Preston & Barbieri l’a construite en 2011, elle a un lift à chaîne, aucune inversion et un tracé en ruban de Möbius sur lequel deux trains roulent l’un contre l’autre. La taille minimum est de 120 centimètres, et les enfants de six à huit ans montent avec un accompagnateur.
 
 [Gold Digger](ref:mirabilandia/gold-digger) est une souris folle de L&T Systems : 361 mètres, 14,5 mètres de haut, 1 min 25. Elle se trouve dans la zone western et s’adresse à partir de 90 centimètres. [Rexplorer](ref:mirabilandia/rexplorer), à Dinoland, est la plus ancienne montagne russe encore en service dans le parc, 250 mètres de long à 35 km/h, elle aussi à partir de 90 centimètres. La RCDB indique S.D.C. comme constructeur, Wikipédia en allemand Mack Rides.
 
 Deux autres tournent dans la zone enfants : [PAW Patrol To The Rescue](ref:mirabilandia/paw-patrol-to-the-rescue), ouverte en 2005 sous le nom de Leprotto Express, 135 mètres et 34 km/h, et [Cowabunga Carts](ref:mirabilandia/cowabunga-carts), un Zierer Force 190 de 2025 de 192 mètres, 40 km/h et un lift à roues d’appoint. Les deux sont accessibles à partir de 90 centimètres, les plus jeunes avec un accompagnateur.
 
-## Eau, dark rides et tours
+## Les autres attractions
 
 [Rio Bravo](ref:mirabilandia/rio-bravo) est la descente de rapides d’Intamin de l’année d’ouverture, en bouées à travers un canyon, à partir de 110 centimètres. [Autosplash](ref:mirabilandia/autosplash) a ouvert la même année comme rivière sauvage d’Intamin, on y roule dans une Cadillac à ailerons et on tombe de 15 mètres à la fin. [El Dorado Falls](ref:mirabilandia/el-dorado-falls), de Hopkins, est un shoot-the-chute de 1999, avec une vague de 15 mètres de haut à l’arrivée. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) est un tour de bateau interactif où l’on tire sur des totems. Autosplash, El Dorado Falls et Raratonga sont accessibles à partir de 90 centimètres.
 
@@ -222,7 +222,7 @@ Sont exclues Desmo Race, Blu River et The Walking Dead. Desmo Race est l’attra
 
 Quand le temps d’attente est de l’ordre d’un quart d’heure, le pass ne fait pas gagner grand-chose. Il rapporte le plus sur les attractions qui viennent après Desmo Race dans notre tableau : Rio Bravo, iSpeed et Autosplash. Le forfait « VIP » combine l’entrée, le menu all inclusive et un Regular Flash Pass.
 
-## Billets, prix et abonnement
+## Billets et abonnement
 
 Le billet journée adulte (plus de 140 centimètres) commence en ligne à 27,90 €, d’autant moins cher que tu réserves tôt. D’après le parc, tu économises jusqu’à 20 € si tu achètes au moins dix jours avant (offre jusqu’au 25 octobre). À la caisse, le billet coûte 49,90 €. Le billet réduit, pour les enfants de 100 à 140 centimètres et pour les seniors de plus de 60 ans, coûte en ligne à partir de 27,90 € et à la caisse 42,90 €. Les enfants de moins de 100 centimètres ne paient rien. Le billet du soir à partir de 17 h coûte 22,90 €. Le billet à date ouverte coûte 49,90 € (réduit 42,90 €) et vaut jusqu’à la fin de la saison.
 

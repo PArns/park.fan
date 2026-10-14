@@ -412,7 +412,7 @@ free” per due adulti con fino a tre bambini da 320 €.
 Quali tempi di attesa e giorni tranquilli abbiamo misurato all’Europa-Park lo
 trovi nella [guida all’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli).
 
-## Come arrivare, parcheggiare, pernottare
+## Come arrivare e hotel
 
 Rulantica sta in Roland-Mack-Ring 1, a 77977 Rust, di fronte all’hotel Krønasår.
 In auto si esce all’**uscita 57b Rust della A5**. Il parcheggio visitatori costa
@@ -435,7 +435,7 @@ spola tra gli hotel e Rulantica, nelle ore di punta ogni 15 minuti, altrimenti o
 8:00 alle 20:00 ogni 30 minuti. Per chi pernotta vale inoltre l’ingresso
 anticipato alle 9:00.
 
-## Mangiare, regole e note in piccolo
+## Ristorazione e regole
 
 Della ristorazione fanno parte il Kelpie Café nella lobby (dalle 8:30 alle 22:30),
 lo Snekkjas nella città su palafitte, il Lumålunda al Surf Fjørd e il Tempel Krog al
@@ -457,7 +457,7 @@ Queste regole valgono nel mondo acquatico:
 - Per chi è in sedia a rotelle la maggior parte dei percorsi è percorribile, le sedie
   a rotelle impermeabili sono in numero limitato. La postazione VR non è accessibile.
 
-## Chiusure, Halloween e Nørd Havn
+## Date fino al 2027
 
 Dal **16 al 27 novembre 2026** Rulantica è chiusa per la revisione, come anche il
 24 e il 25 dicembre. Il 31 dicembre il mondo acquatico chiude già alle 19:00. Il

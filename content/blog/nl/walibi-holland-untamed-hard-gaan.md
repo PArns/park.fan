@@ -66,7 +66,7 @@ vaak over het hoofd gezien. De [Efteling](ref:efteling) en
 
 Dat vind ik een fout, want Untamed alleen is de rit al waard.
 
-## Eerst zee, dan koeien, dan achtbanen
+## Geschiedenis van het park
 
 Op **21 mei 1971** opende prinses Beatrix op het verse polderland de
 **Flevohof**, een landbouwpark van 150 hectare, waar stadskinderen de landbouw moesten leren kennen. Er waren stallen, kassen, een kaasmakerij, een paar
@@ -242,7 +242,7 @@ duidelijk hoger zetten, omdat hij na zeven jaar op het oude houten frame van Rob
 
 [Untamed](ref:walibi-holland/untamed?full)
 
-## YOY, Goliath en de rest
+## De andere achtbanen
 
 Naast Untamed heeft het park nog negen andere achtbanen.
 
@@ -391,8 +391,6 @@ Berekend uit **meer dan 150 openingsdagen met bruikbare wachttijddata**, ligt de
 die ene dag van de tien waarop het het drukst is, is het ruim anderhalf keer zo
 veel.
 
-Per baan ziet het er zo uit:
-
 ```ride-waits-widget rides=walibi-holland/yoy-thrill|YOY THRILL|Enkele rail, staal;walibi-holland/condor|Condor|Suspended, staal;walibi-holland/yoy-chill|YOY CHILL|Enkele rail, staal;walibi-holland/lost-gravity|Lost Gravity|Big Dipper, staal;walibi-holland/untamed|UNTAMED|Hybride;walibi-holland/xpress-platform-13|Xpress: Platform 13|Launch, staal;walibi-holland/goliath|Goliath|Mega Coaster, staal columns=type,peak,days highlight=walibi-holland/untamed
 
 ```
@@ -401,14 +399,12 @@ De langste rij staat bij de nieuwe YOY THRILL. Untamed zit in de middenmoot, op 
 Lost Gravity. Loop je ’s ochtends meteen de Wilderness in, dan
 heb je Untamed al gereden voordat de YOY-rij echt is opgeschoven.
 
-Untamed naast achtbanen in de buurparken, over alle gemeten openingsdagen:
-
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
 
 ```
 
-In de tijd dat je in Phantasialand **één keer** voor
-[Taron](ref:phantasialand/taron) staat, rijd je Untamed ongeveer twee keer. Nog
+Over alle gemeten openingsdagen rijd je Untamed ongeveer twee keer in de tijd dat je in Phantasialand **één keer** voor
+[Taron](ref:phantasialand/taron) staat. Nog
 korter dan bij Untamed sta je in dit rijtje alleen bij Troy in Toverland.
 Op parkniveau ziet het er vergelijkbaar uit: alleen Toverland zit nog lager, en
 Walibi Belgium ligt vrijwel gelijk met Walibi Holland.
@@ -630,12 +626,16 @@ feest- en vakantiedagen, van eind juni tot eind augustus dagelijks, in
 september bijna alleen nog in het weekend en in oktober in de weekenden en de
 herfstvakantie. Zo staat het in de kalender voor 2026.
 
-**Per maand** loopt de drukte over het seizoen nauwelijks uiteen. Iets drukker
+**Per maand**, berekend uit alle gemeten openingsdagen, loopt de drukte over het seizoen nauwelijks uiteen. Iets drukker
 wordt het in april, als Pasen, Koningsdag en het begin
 van de meivakantie samenvallen, en tot nu toe in de septemberweekenden. De
 zomervakantie valt in onze data nauwelijks op.
 
-**Per weekdag** is de zaterdag hier niet drukker dan de rest van de week:
+```stats-widget slug=walibi-holland show=months
+
+```
+
+**Per weekdag** is de zaterdag hier niet drukker dan de rest van de week.
 
 ```stats-widget slug=walibi-holland show=weekdays
 
@@ -648,16 +648,7 @@ een doordeweekse dag in juni buiten de vakanties: in 2026 lag in onze kalender
 elke donderdag in juni op lage drukte. De laatste week van juni, als het park al
 dagelijks open is, was juist niet rustiger dan hartje zomer.
 
-De rustigste komende dagen uit onze drukte-kalender:
-
 ```best-days-widget slug=walibi-holland
-
-```
-
-En zo ziet de drukte er over de maanden uit, berekend uit alle gemeten
-openingsdagen:
-
-```stats-widget slug=walibi-holland show=months
 
 ```
 
@@ -675,7 +666,7 @@ middaguur, en rijd beide banen.
 **[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** past ertussen. Rijd in het laatste uur nog een keer Untamed, want de baan loopt ’s avonds
 merkbaar sneller dan ’s ochtends.
 
-## Praktisch: tickets, route, eten
+## Praktisch
 
 **Tickets.** Walibi hanteert **dynamische prijzen**, het dagticket kost per
 datum verschillend.
@@ -727,8 +718,6 @@ zijn friet, burgers, pizza en degelijke kantinekost.
 Restaurant **Flavors** bij het YOY-gebied met terras aan het water is het
 aangenaamste adres, alleen al vanwege het uitzicht op de twee banen. Eet vroeg,
 rond half twaalf, of laat vanaf half drie.
-
-Hoe het er nu bij het park uitziet:
 
 ```weather-widget slug=walibi-holland
 

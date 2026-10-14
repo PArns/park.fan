@@ -183,9 +183,7 @@ alle tre di notte: nessuna attrazione riporta niente. Se ne traessimo la
 conclusione ovvia, lì ci sarebbero tutte le attrazioni del parco su «molto bassa», più una media
 di 0 minuti e una previsione fondata su zero osservazioni, tutto inventato. Al
 suo posto, sulla
-pagina del parco c’è un avviso che qui non c’è niente da leggere. Quello che
-possiamo dire comunque sul parco sta nella
-[guida all’Hansa-Park](/blog/hansa-park-consigli).
+pagina del parco c’è un avviso che qui non c’è niente da leggere. Nella [guida all’Hansa-Park](/blog/hansa-park-consigli) trovi quello che possiamo dire comunque sul parco.
 
 La stessa regola vale in piccolo per la pista di pattinaggio «Berliner
 Eislaufen», sulla Kaiserplatz del Phantasialand, che c’è solo durante il
@@ -209,9 +207,7 @@ parecchio.
 Chi preferisce comprarsi il tempo paga 12 € per una corsa su Taron con il Quick Pass, così c’è
 scritto sulla pagina informativa del Phantasialand (aggiornato al 5 ottobre 2026). Il pass si
 compra solo sul posto, al servizio ospiti del Kaiserplatz, in numero limitato. Con un numero che
-per quel giorno della settimana è comunque normale, di rado ne vale la pena. Cosa ne pensiamo noi,
-e quando conviene il Quick Pass Ultimate, lo trovi nella
-[guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli).
+per quel giorno della settimana è comunque normale, di rado ne vale la pena. Nella [guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli) trovi cosa ne pensiamo noi e quando conviene il Quick Pass Ultimate.
 
 Per una giornata intera c’è il [pianificatore](/blog/pianificatore). Lì scegli le tue attrazioni e
 ricevi un ordine basato sui tempi di attesa previsti per quel giorno. Se riesci a salire su tutte

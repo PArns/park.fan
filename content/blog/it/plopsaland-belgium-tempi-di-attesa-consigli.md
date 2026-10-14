@@ -215,8 +215,7 @@ lunga 627 metri, alta 22 e va a 71 km/h. Il tracciato è un out-and-back con lif
 a catena e senza inversioni, disegnato da Jeff Pike. Secondo la Roller Coaster
 DataBase somiglia a White Lightning a Fun Spot America, a Orlando, ma non è
 identico. Girano due treni da dodici posti, la capacità è di 635 ospiti all’ora.
-Altezza minima 120 centimetri. Le tre montagne russe in legno GCI del Benelux a
-confronto:
+Altezza minima 120 centimetri. Con Joris en de Draak a Efteling, nel Benelux le montagne russe in legno GCI sono tre.
 
 ```ride-waits-widget rides=plopsaland-belgium/heidi-the-ride|Heidi The Ride (GCI, 2017);attractiepark-toverland/troy|Troy (GCI, 2007);efteling/joris-en-de-draak|Joris en de Draak (GCI, 2010) columns=park,peak highlight=plopsaland-belgium/heidi-the-ride
 
@@ -243,10 +242,8 @@ K3, il gruppo di ragazze. La **#LikeMe Coaster** è un coaster Tivoli di Zierer
 che nel 1976 aprì al Meli Park come Keverbaan e nel 2014 è stato sostituito da
 una nuova copia. Entrambi richiedono 90 centimetri.
 
-Ci sono poi due dark ride. **[Plop’s Woods](ref:plopsaland-belgium/plops-woods)**
-(Het Bos van Plop) è l’Apirama del 1979 trasformato, e porta barche nel bosco dei
-folletti. **[Bumba’s World Trip](ref:plopsaland-belgium/bumbas-world-trip)** (Op Reis
-met Bumba) ha aperto nel 2023 nell’area indoor Circus Bumba ed è, secondo
+Il dark ride **[Plop’s Woods](ref:plopsaland-belgium/plops-woods)**
+(Het Bos van Plop) è l’Apirama del 1979 trasformato, e porta barche nel bosco dei folletti. Il secondo, **[Bumba’s World Trip](ref:plopsaland-belgium/bumbas-world-trip)** (Op Reis met Bumba), ha aperto nel 2023 nell’area indoor Circus Bumba ed è, secondo
 Wikipedia in olandese, il primo dark ride che il gruppo Plopsa ha fatto costruire
 in proprio.
 
@@ -330,12 +327,6 @@ cresce fino al tardo pomeriggio.
 
 ## Quando andarci
 
-Nel calendario sono segnati i giorni più tranquilli delle prossime settimane:
-
-```best-days-widget slug=plopsaland-belgium
-
-```
-
 Il parco non apre tutto l’anno. Secondo il calendario del 2026 è rimasto chiuso
 dal 5 gennaio al 13 febbraio, ha aperto il 14 febbraio per le vacanze di Krokus
 e a marzo ha funzionato solo di mercoledì, sabato e domenica, prima di aprire
@@ -345,6 +336,10 @@ solito alle 17 o alle 18, a luglio e agosto alle 19 e in qualche sera alle 22,
 a ottobre 2026 alle 17 nei giorni feriali e alle 18 nel fine settimana. Di solito apre alle 10. Alcuni giorni è chiuso, il 10
 ottobre 2026 per una festa privata, nella quale biglietti e abbonamenti non
 valgono.
+
+```best-days-widget slug=plopsaland-belgium
+
+```
 
 Il mercoledì il parco propone per ora il biglietto a 36 € invece di 56. Chi ha
 figli in età scolare va comunque nei giorni che il calendario segna come pieni,
@@ -357,10 +352,7 @@ il Pumpkin King (uno spaventapasseri che lascia Pumpkin Island solo a Halloween)
 l’accademia Nachtwacht, le volpi Fox & Trot dal musical Pinocchio e la 25
 Celebration Parade. In più ci sono i fuochi d’artificio di Halloween e piatti
 come il Pumpkin Spice Latte, il waffle di Halloween e lo Spooky Burger. In questo
-periodo un biglietto con data costa da 42 €. Che cosa fanno ad Halloween gli
-altri parchi di Belgio e Paesi Bassi sta nella
-[guida ad Halloween 2026](/blog/halloween-parchi-divertimenti-2026), compreso
-Ibilaw a Walibi Belgium.
+periodo un biglietto con data costa da 42 €. Ibilaw a Walibi Belgium e gli altri eventi di Halloween in Belgio e Paesi Bassi sono nella [guida ad Halloween 2026](/blog/halloween-parchi-divertimenti-2026).
 
 ```weather-widget slug=plopsaland-belgium
 
@@ -430,8 +422,7 @@ Al 7 ottobre 2026, secondo la pagina dei biglietti del parco:
 | Biglietto famiglia per 4, 5 e 6 persone           | 179, 222 e 259 €                      |
 | Parcheggio, acquistato online in anticipo         | 15 €                                  |
 
-La home del parco dice «da 38 €», la pagina dei biglietti «da 36 €». Quale prezzo
-valga per il tuo giorno si vede nel calendario del negozio di biglietti. La
+La home del parco dice «da 38 €», la pagina dei biglietti «da 36 €». Il calendario del negozio di biglietti mostra il prezzo di ogni giorno. La
 fascia di prezzo dei bambini dipende dall’altezza, che si misura alla biglietteria
 con le scarpe addosso. Se hai dubbi, fai rimisurare all’informazione, e vale quel
 risultato. Chi compra il biglietto online salta la cassa e va direttamente al
@@ -482,7 +473,7 @@ classe, e il codice si inserisce presso le ferrovie belghe NMBS.
 
 ## Hotel e ristoranti
 
-Il resort ha quattro alloggi. Il **Theater Hotel** (4 stelle superior, da una a
+Dei quattro alloggi del resort, il **Theater Hotel** (4 stelle superior, da una a
 sei persone) comprende colazione e parcheggio, con la mezza pensione in più due
 giorni di Plopsaqua. Nel **Village** (da sei a dodici persone, minimo due notti)
 e negli **Studio 100 Chalets** (da una a quattro persone) l’ingresso a Plopsaland

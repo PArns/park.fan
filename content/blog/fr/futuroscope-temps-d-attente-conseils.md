@@ -100,9 +100,7 @@ parfois regarder depuis l'attraction quand il ne peut pas monter.
 ### Objectif Mars
 
 [Objectif Mars](ref:futuroscope/destination-mars) est en service depuis 2020 et, avec le petite montagne russe pour enfants Le Balancier à Futuropolis, c'est la seule montagne russe du parc. Intamin l'a
-construite : un launched coaster à véhicules rotatifs, donc un spinning coaster. Le parc la
-présente comme des montagnes russes familiales et annonce une vitesse maximale de 55 km/h, le
-parcours traverse un bâtiment puis passe à l'extérieur. Son ouverture était prévue le 28 mars
+construite : un launched coaster à véhicules rotatifs, donc un spinning coaster. Pour le parc, ce sont des montagnes russes familiales, avec une vitesse maximale de 55 km/h. Le parcours traverse un bâtiment puis passe à l'extérieur. Son ouverture était prévue le 28 mars
 2020 ; à cause de la fermeture liée à la pandémie, elle a démarré en juin 2020, d'abord
 seulement le week-end.
 
@@ -137,7 +135,7 @@ cinq minutes.
 [Danse avec les Robots](ref:futuroscope/dances-with-robots) est un robocoaster : on est assis au
 bout du bras d'un robot industriel qui danse sur des tubes du DJ Martin Solveig. Le trajet dure
 environ une minute. Le pavillon des robots a ouvert en 2006, l'année des robots, et la version
-avec Solveig date de décembre 2012. Le parc parle d'un robot de neuf mètres de haut.
+avec Solveig date de décembre 2012. Le robot mesure neuf mètres de haut, selon le parc.
 
 À partir de 1,20 m, même accompagné, jusqu'à 2,00 m.
 
@@ -215,9 +213,8 @@ sous la pluie, tant que la météo n'est pas exceptionnelle. On y voit des image
 lumière et de la pyrotechnie. Le spectacle existe depuis juin 2021 et a remplacé La Forge aux
 Étoiles, conçue par les créateurs du Cirque du Soleil.
 
-Deux autres spectacles ont lieu en journée. **Éclipse, robotic show** a été créé en 2024 avec le
-Cirque Éloize dans l'ancien pavillon IMAX 3D et mêle vidéo mapping, lasers et drones.
-**IllusiO, un destin magique** est un spectacle d'illusion de 25 minutes, joué le week-end et
+**Éclipse, robotic show** se joue en journée et a été créé en 2024 avec le Cirque Éloize dans l'ancien pavillon IMAX 3D. Il mêle vidéo mapping, lasers et drones. Le second spectacle de la journée,
+**IllusiO, un destin magique**, est un spectacle d'illusion de 25 minutes, joué le week-end et
 pendant les vacances scolaires.
 
 Pour ne venir que le soir, on prend un billet Soirée (entrée dès 17 h) ou un billet Nocturne (dès
@@ -317,7 +314,7 @@ pas.
 Futuroween commence le samedi 17 octobre, un jour avant les vacances de la Toussaint. À partir du
 18 octobre, le parc est ouvert tous les jours de 9 h 45 à 22 h selon le calendrier.
 
-## Billets, cartes et prix
+## Billets et prix
 
 À la caisse, un billet journée daté coûte 59 euros pour un adulte et 49 euros pour un enfant de 5
 à 12 ans. En ligne, le prix dépend de la date. Pour 2026, le parc met en avant le Billet Tribu à

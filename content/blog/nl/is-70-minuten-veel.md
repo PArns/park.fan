@@ -184,9 +184,7 @@ enkele attractie meldt iets. Zouden we daar het voor de hand liggende uit
 afleiden, dan stonden alle attracties van het park op “zeer laag”, met een gemiddelde van 0
 minuten en een voorspelling die op nul waarnemingen berust. Geen van die getallen
 zou gemeten zijn. In plaats daarvan
-staat op de parkpagina een melding dat er hier niets te lezen valt. Wat we
-toch over het park kunnen zeggen, staat in de
-[Hansa-Park-gids](/blog/hansa-park-tips).
+staat op de parkpagina een melding dat er hier niets te lezen valt. In de [Hansa-Park-gids](/blog/hansa-park-tips) staat wat we toch over het park kunnen zeggen.
 
 Dezelfde regel geldt voor de schaatsbaan “Berliner Eislaufen” op de
 Kaiserplatz van Phantasialand, die er alleen is tijdens Wintertraum, dit keer van 14
@@ -210,8 +208,7 @@ korter wordt.
 Wie de tijd liever koopt, betaalt bij Taron 12 € voor één rit met de Quick Pass, zo staat het op de
 infopagina van Phantasialand (stand 5 oktober 2026). Je koopt hem alleen ter plekke, bij de
 gastenservice op de Kaiserplatz, en het aantal is beperkt. Bij een wachttijd die op die weekdag toch
-al normaal is, is dat zelden het geld waard. Hoe wij daarover denken en wanneer de Quick Pass
-Ultimate loont, lees je in de [Phantasialand-gids](/blog/phantasialand-wachttijden-tips).
+al normaal is, is dat zelden het geld waard. In de [Phantasialand-gids](/blog/phantasialand-wachttijden-tips) lees je hoe wij daarover denken en wanneer de Quick Pass Ultimate loont.
 
 Voor een hele dag heb je de [dagplanner](/blog/dagplanner). Daar kies je je attracties en krijg je
 een volgorde op basis van de voorspelde wachttijden van die dag. Of ze allemaal voor sluitingstijd
