@@ -338,9 +338,6 @@ export function listAllUrlSlugsByLocale(
   return out;
 }
 
-/** Default number of posts per page on listing views. */
-export const BLOG_POSTS_PER_PAGE = 12;
-
 const POSTS_BY_RECENCY = new Map<Locale, readonly BlogListItem[]>();
 
 /**

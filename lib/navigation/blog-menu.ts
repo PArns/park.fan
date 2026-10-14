@@ -1,7 +1,7 @@
 import 'server-only';
 import type { Locale } from '@/i18n/config';
-import { buildCategoryTree, resolveCategoryLabel } from '@/lib/blog/categories';
-import { lastTouched, listArticlesByRecency } from '@/lib/blog/listing';
+import { listTopCategories, resolveCategoryLabel } from '@/lib/blog/categories';
+import { lastTouched, listArticles, listArticlesByRecency } from '@/lib/blog/listing';
 import type { BlogListItem } from '@/lib/blog/types';
 import { postPath } from '@/lib/blog/paths';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
@@ -71,6 +71,8 @@ export interface BlogMenu {
   categories: BlogMenuCategory[];
   /** Articles only — news has its own panel (`getNewsMenu`). */
   recent: BlogMenuPost[];
+  /** How many articles `/blog` lists, printed on the panel's link to it. */
+  total: number;
 }
 
 /**
@@ -102,20 +104,13 @@ function toMenuPost(post: BlogListItem, locale: Locale, excerptChars: number): B
 }
 
 /**
- * Builds the header's blog panel for a locale: the article categories by post count and the five
- * most recently touched articles with trimmed excerpts and covers.
+ * Builds the header's blog panel for a locale: the article categories by post count, the five
+ * most recently touched articles with trimmed excerpts and covers, and how many articles there are.
  */
 export function getBlogMenu(locale: Locale): BlogMenu {
-  const { root } = buildCategoryTree(locale);
-
   return {
-    categories: root.children
-      .map((node) => ({
-        path: node.path,
-        label: node.label,
-        postCount: node.totalPostCount,
-      }))
-      .sort((a, b) => b.postCount - a.postCount || a.label.localeCompare(b.label)),
+    categories: listTopCategories(locale),
+    total: listArticles(locale).length,
     // By last change, like the homepage strips, and every row prints that date: a guide that got
     // new content is new again. Only new content moves `updatedAt`, never a wording pass
     // (docs/rules/updated-at-is-for-new-content.md).

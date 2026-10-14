@@ -2,23 +2,12 @@
 
 import { Suspense, useEffect, useRef, type ReactNode, type RefObject } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { cn } from '@/lib/utils';
-
-export interface NewsStreamItem {
-  key: string;
-  /** The item's park filter key (see {@link NewsStreamPark}), or `null` when it has no park. */
-  park: string | null;
-  /** The server-rendered entry. */
-  node: ReactNode;
-}
-
-export interface NewsStreamGroup {
-  /** The day, `YYYY-MM-DD`. */
-  key: string;
-  /** The server-rendered day heading. */
-  heading: ReactNode;
-  items: NewsStreamItem[];
-}
+import {
+  FILTER_PILL_ROW_CLASS,
+  filterPillClass,
+  PostStreamGroups,
+  type PostStreamGroup,
+} from '@/components/blog/post-stream';
 
 export interface NewsStreamPark {
   /**
@@ -34,13 +23,15 @@ export interface NewsStreamPark {
 const PARK_PARAM = 'park';
 
 /**
- * The news overview's stream, newest day first, with a filter by park. Every entry is rendered on
- * the server, so the full list is in the static page. The filter is `?park=` on the one `/news`
- * page (the canonical stays `/news`), written with `history.replaceState`. Filtering is CSS, not a
- * re-render: an inline script sets `data-news-filter` before paint, so a shared link arrives
- * filtered without the list shifting, and one rule per park hides the rest. Days match with
- * `data-parks ~=`, not `:has()` (docs/rules/no-has-selector-in-the-stylesheet.md). After hydration
- * the URL is the only state, and a pill press rebuilds no list
+ * One page of the news overview's stream (`PostStreamGroups`), newest day first, with a filter by
+ * park. Every entry is rendered on the server, so the page's list is in the static HTML. The
+ * filter is `?park=` on the page's own URL (the canonical drops it), written with
+ * `history.replaceState`, and it filters the page it is on: the pills offer the parks of that
+ * page. Filtering is CSS, not a re-render: an inline script sets `data-news-filter` before paint,
+ * so a shared link arrives filtered without the list shifting, and one rule per park hides the
+ * rest. Days match with `data-filter-keys ~=`, not `:has()`
+ * (docs/rules/no-has-selector-in-the-stylesheet.md). After hydration the URL is the only state,
+ * and a pill press rebuilds no list
  * (docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md).
  */
 export function NewsStream({
@@ -49,7 +40,8 @@ export function NewsStream({
   filterLabel,
   allLabel,
 }: {
-  groups: NewsStreamGroup[];
+  /** The days; each item's `filterKey` is its park's {@link NewsStreamPark} slug. */
+  groups: PostStreamGroup[];
   parks: NewsStreamPark[];
   filterLabel: string;
   allLabel: string;
@@ -64,8 +56,8 @@ export function NewsStream({
     .filter((p) => /^[a-z0-9-]+$/.test(p.slug))
     .map(
       ({ slug }) =>
-        `[data-news-filter="${slug}"] [data-news-item]:not([data-park="${slug}"]),` +
-        `[data-news-filter="${slug}"] [data-news-day]:not([data-parks~="${slug}"]){display:none}`
+        `[data-news-filter="${slug}"] [data-stream-item]:not([data-filter-key="${slug}"]),` +
+        `[data-news-filter="${slug}"] [data-stream-group]:not([data-filter-keys~="${slug}"]){display:none}`
     )
     .join('');
 
@@ -99,27 +91,7 @@ export function NewsStream({
         </Suspense>
       )}
 
-      <div className="space-y-10">
-        {groups.map((group) => (
-          <section
-            key={group.key}
-            data-news-day=""
-            data-parks={[...new Set(group.items.map((item) => item.park).filter(Boolean))].join(
-              ' '
-            )}
-            className="grid grid-cols-[minmax(0,1fr)] gap-3 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-8"
-          >
-            <div className="sm:sticky sm:top-20 sm:self-start sm:pt-4">{group.heading}</div>
-            <ol className="sm:border-border/60 space-y-3 sm:border-l sm:pl-8">
-              {group.items.map((item) => (
-                <li key={item.key} data-news-item="" data-park={item.park ?? ''}>
-                  {item.node}
-                </li>
-              ))}
-            </ol>
-          </section>
-        ))}
-      </div>
+      <PostStreamGroups groups={groups} />
     </div>
   );
 }
@@ -181,7 +153,7 @@ function FilterPills({
   onChoose?: (next: string | null) => void;
 }) {
   return (
-    <div role="group" aria-label={filterLabel} className="mb-8 flex flex-wrap gap-2">
+    <div role="group" aria-label={filterLabel} className={FILTER_PILL_ROW_CLASS}>
       <FilterPill pressed={park === null} onClick={() => onChoose?.(null)}>
         {allLabel}
       </FilterPill>
@@ -209,12 +181,7 @@ function FilterPill({
       type="button"
       aria-pressed={pressed}
       onClick={onClick}
-      className={cn(
-        'inline-flex min-h-9 items-center gap-1.5 rounded-full border px-3.5 text-sm font-medium transition-colors',
-        pressed
-          ? 'bg-primary text-primary-foreground border-transparent'
-          : 'border-border bg-card text-foreground hover:bg-muted'
-      )}
+      className={filterPillClass(pressed)}
     >
       {children}
     </button>

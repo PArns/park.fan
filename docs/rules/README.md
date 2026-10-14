@@ -84,6 +84,7 @@ _Sitemaps, feeds, favicon, robots and agents, analytics._
 - [Nothing here has a reader inside the site (REQUIREMENT)](nothing-here-has-a-reader-inside-the-site.md)
 - [A `<lastmod>` is observed, never stamped (REQUIREMENT)](a-lastmod-is-observed-never-stamped.md)
 - [A feed nobody links to is a file with a URL (REQUIREMENT)](a-feed-nobody-links-to-is-a-file-with-a-url.md)
+- [A listing page is a path with its own canonical (REQUIREMENT)](a-listing-page-is-a-path-with-its-own-canonical.md)
 - [Umami event budget (REQUIREMENT)](umami-event-budget.md)
 
 ## Content and media

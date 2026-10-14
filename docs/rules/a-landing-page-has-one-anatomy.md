@@ -60,8 +60,9 @@ The kind of each URL is written in the script, not read off the page, so a page 
 head fails instead of passing as another kind. A new landing page joins that table in the same
 pull request.
 
-The one `<h2>` that needs none of these homes is a **news day label** (`data-news-day` in the
-news index): date headings structure a timeline; they are not chapters.
+The one `<h2>` that needs none of these homes is a **stream group's date label**, the day on
+`/news` and the month on the blog listings (inside `[data-stream-group]`, `PostStreamGroups`):
+date headings structure a timeline; they are not chapters.
 
 `PageBottomSections`, the module under the blog and news indexes (nearby, favourites, popular
 parks; it also closes every post and glossary term), opens each of its three blocks with

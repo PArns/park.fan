@@ -1,39 +1,16 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
-import {
-  generateAlternateLanguages,
-  locales,
-  localeToOpenGraphLocale,
-  SITE_URL,
-} from '@/i18n/config';
-import { BLOG_POSTS_PER_PAGE, listArticles, hasPublishedPosts } from '@/lib/blog/listing';
-import { BlogPostGrid } from '@/components/blog/blog-post-grid';
-import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
-import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
-import { PageBottomSections } from '@/components/common/page-bottom-sections';
-import { BlogStructuredData } from '@/components/seo/blog-structured-data';
-import { LandingHero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
-import { getOgImageUrl } from '@/lib/utils/og-image';
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { BlogIndexPageBody, buildBlogIndexMetadata } from '@/components/blog/blog-index-page';
 import { RouteMessages } from '@/i18n/route-messages';
-import { blogFeedAlternates } from '@/lib/blog/feed';
-import { cn } from '@/lib/utils';
-
-/**
- * The blog hero's photo, asked of the media database so the path carries its content version and
- * the park can change which photo it is.
- */
-const BLOG_HERO_IMAGE =
-  getParkBackgroundImage('europa-park') ?? '/media/europa-park/background.jpg';
 
 interface BlogIndexPageProps {
   params: Promise<{ locale: string }>;
 }
 
-// Static: pagination via `?page=N` would force a dynamic render, so a second page of posts
-// means a path-based `/blog/page/[n]` route.
+// Static: a later page is the path-based `/blog/page/[n]`, never `?page=N`, which would render
+// this page per request (`lib/blog/pagination.ts`).
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -41,113 +18,16 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: BlogIndexPageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'blog' });
-  const ogImageUrl = getOgImageUrl([locale, 'blog']);
-  // A keyword-bearing <title>; the generic "Blog" stays the breadcrumb label.
-  const fullTitle = `${t('heroTitle')} | park.fan`;
-  return {
-    title: { absolute: fullTitle },
-    description: t('description'),
-    openGraph: {
-      title: fullTitle,
-      description: t('description'),
-      locale: localeToOpenGraphLocale[locale as Locale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
-      url: `${SITE_URL}/${locale}/blog`,
-      siteName: 'park.fan',
-      type: 'website',
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: fullTitle }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: fullTitle,
-      description: t('description'),
-      images: [ogImageUrl],
-    },
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/blog`,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}/blog`),
-        'x-default': `${SITE_URL}/en/blog`,
-      },
-      types: blogFeedAlternates(locale as Locale),
-    },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
-  };
+  return buildBlogIndexMetadata(locale, 1);
 }
 
 export default async function BlogIndexPage({ params }: BlogIndexPageProps) {
   const { locale } = await params;
-  if (!routing.locales.includes(locale as Locale)) {
-    return null;
-  }
-  // No posts listed for THIS locale → the blog doesn't exist here (yet).
-  if (!hasPublishedPosts(locale as Locale)) notFound();
+  if (!routing.locales.includes(locale as Locale)) notFound();
   setRequestLocale(locale);
-
-  const [t, tLanding] = await Promise.all([getTranslations('blog'), getTranslations('landing')]);
-  // Articles only. News has its own section at `/news` and is never listed under `/blog`.
-  const allPosts = listArticles(locale as Locale);
-
-  if (allPosts.length === 0) {
-    return (
-      <div className="container mx-auto px-4 py-16 text-center">
-        <h1 className="text-3xl font-bold">{t('title')}</h1>
-        <p className="text-muted-foreground mt-4">{t('empty')}</p>
-      </div>
-    );
-  }
-
-  // Older posts stay reachable through the category tree in the sidebar.
-  const visiblePosts = allPosts.slice(0, BLOG_POSTS_PER_PAGE);
-
   return (
     <RouteMessages route="/blog">
-      <>
-        <BlogStructuredData
-          locale={locale}
-          name={t('badge')}
-          description={t('description')}
-          posts={visiblePosts}
-          path="/blog"
-        />
-        <LandingHero
-          kicker={tLanding('blog.kicker')}
-          title={t('heroTitle')}
-          tagline={t('intro')}
-          imageSrc={BLOG_HERO_IMAGE}
-          imageAlt={t('heroTitle')}
-          scrollLabel={tLanding('scroll')}
-          flowInto
-        />
-
-        {/* Pulled up over the hero on phones — see `HERO_FLOW_INTO_PULL`, which owns
-            the number so it stays paired with the hero's own bottom padding.
-            `relative` puts this above the hero's stacking context. */}
-        <div
-          id="start"
-          className={cn('relative container mx-auto px-4 pt-0 pb-10 sm:py-14', HERO_FLOW_INTO_PULL)}
-        >
-          <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
-            <BlogPostGrid posts={visiblePosts} />
-            <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
-              <BlogCategoryTree locale={locale as Locale} />
-              <BlogTagCloud locale={locale as Locale} />
-            </aside>
-          </div>
-        </div>
-
-        <PageBottomSections locale={locale} />
-      </>
+      <BlogIndexPageBody locale={locale} page={1} />
     </RouteMessages>
   );
 }

@@ -10,7 +10,7 @@ interface NewsIndexPageProps {
 }
 
 // The park filter is a query parameter read in the browser, so it adds no URLs and the canonical
-// stays `/news`.
+// stays `/news`. A later page is the path-based `/news/page/[n]`.
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -18,7 +18,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: NewsIndexPageProps): Promise<Metadata> {
   const { locale } = await params;
-  return buildNewsIndexMetadata(locale);
+  return buildNewsIndexMetadata(locale, 1);
 }
 
 export default async function NewsIndexPage({ params }: NewsIndexPageProps) {
@@ -27,7 +27,7 @@ export default async function NewsIndexPage({ params }: NewsIndexPageProps) {
   setRequestLocale(locale);
   return (
     <RouteMessages route="/news">
-      <NewsIndexPageBody locale={locale} />
+      <NewsIndexPageBody locale={locale} page={1} />
     </RouteMessages>
   );
 }

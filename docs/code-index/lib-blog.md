@@ -32,7 +32,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `parseCategoryPath` _function_: Parse a slash-separated category path into normalized segments.
 - `categoryPathBreadcrumbs` _function_: Return [["a"], ["a","b"], ["a","b","c"]] from "a/b/c".
 - `buildCategoryTree` _function_: Builds the blog's category tree from every visible article; news has its own section and never enters it (see docs/rules/news-is-set-apart-from-the-articles.md).
+- `listTopCategories` _function_: The blog's top-level categories in a locale, most articles first, then by label.
 - `filterPostsByCategory` _function_: Posts whose category path starts with the given segments (inclusive).
+- Types: `TopCategory`
 
 ### [`country-guide.ts`](../../lib/blog/country-guide.ts)
 
@@ -90,7 +92,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `listArticles` _function_: `listPosts` without the news posts: what the blog lists.
 - `listArticlesByRecency` _function_: `listPostsByRecency` without the news posts. Frozen and memoised.
 - `listNewsByDate` _function_: The news posts only, newest first by publication date and time — not by last edit: a corrected typo does not make an anniversary note news again. Frozen and memoised.
-- `BLOG_POSTS_PER_PAGE` _const_: Default number of posts per page on listing views.
 - Types: `MetaEntry`, `ResolvedEntry`
 - Re-exports: `./paths`
 
@@ -124,6 +125,22 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`news-redirects-rule.ts`](../../lib/blog/news-redirects-rule.ts)
 
 - `newsRedirect` _function_: The 308s that moved news out of the blog, decided from the URL alone so `proxy.ts` can answer them before anything renders.
+
+### [`pagination.ts`](../../lib/blog/pagination.ts)
+
+- `pageCount` _function_: How many pages a listing of `total` posts has. An empty listing still has its first page.
+- `hasPage` _function_: Whether a listing of `total` posts has a page `page`. An empty listing has none at all.
+- `paginate` _function_: Page `page` of `items`, or `null` when the listing has no such page (the route 404s).
+- `pagedPath` _function_: Locale-relative path of page `page` of the listing at `base`: `base` itself for page 1.
+- `parsePageNumber` _function_: The page number in a `[n]` route segment, or `null` for anything a listing does not link: page 1 lives at the listing's own URL, so `/page/1`, `/page/02` and `/page/x` are not pages.
+- `laterPageNumbers` _function_: The page numbers after the first of a listing of `total` posts, for `generateStaticParams`.
+- `splitPageSegments` _function_: Splits a catch-all route's segments into the listing's own segments and the page number, for the category route, where `/page/<n>` can only arrive as the last two segments of `[...path]`.
+- `pagedSegments` _function_: `segments` plus the `/page/<n>` tail for page `page`, the inverse of `splitPageSegments`.
+- `listingAlternates` _function_: The hreflang map of one listing page: every locale for which `pathFor` names a path, absolute, plus `x-default` on the English one.
+- `pageWindow` _function_: The page numbers a pagination row shows: every page up to seven, else the first, the last and the current page with its neighbours, `null` where a run of two or more is left out.
+- `pagedTitle` _function_: A listing's title on page `page`: page 1 keeps it, a later page adds its number.
+- `POSTS_PER_PAGE` _const_: Posts per listing page, on the blog and the news alike.
+- Types: `ListingPage`
 
 ### [`park-resolver.ts`](../../lib/blog/park-resolver.ts)
 
@@ -171,7 +188,7 @@ Deliberately NOT anchored to ^…$ — remark may merge adjacent raw-HTML lines 
 - `listTags` _function_: Every tag across the published articles in a locale, sorted by count, for the tag archive, the tag cloud and the sitemap. News posts are not counted: a tag archive lists articles only, so a tag only news carries has no archive.
 - `isIndexableTag` _function_: Whether a tag archive should be indexed. Unknown slugs answer `false`: a tag with no entry has no posts, which is below any threshold.
 - `findCanonicalTag` _function_: Find the canonical display label for a slug — there may be multiple differently-cased variants in posts, the first wins.
-- `buildTagAlternates` _function_: Absolute hreflang alternates for a tag archive — only locales where the equivalent tag actually has a page.
+- `buildTagAlternates` _function_: Absolute hreflang alternates for page `page` of a tag archive — only locales where the equivalent tag actually has that page.
 - `getTagColorClass` _function_: Pick a deterministic color class for a tag slug. Using a tiny FNV-1a hash so the same string always picks the same palette regardless of locale.
 - `TAG_INDEX_MIN_POSTS` _const_: A tag archive is indexed once it collects at least this many posts; below it the page is one post's teaser at a second URL, and entity tags compete with their park's own page.
 - Types: `TagEntry`

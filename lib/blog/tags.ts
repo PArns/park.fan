@@ -2,6 +2,7 @@ import 'server-only';
 import { cache } from 'react';
 import { locales, SITE_URL, type Locale } from '@/i18n/config';
 import { listArticles } from './listing';
+import { hasPage, pagedPath } from './pagination';
 
 /** Lowercase + replace any whitespace / special chars with hyphens. */
 export function normalizeTagSlug(tag: string): string {
@@ -121,18 +122,24 @@ const getTagTranslationIndex = cache((): Map<string, Map<Locale, string>> => {
 });
 
 /**
- * Absolute hreflang alternates for a tag archive — only locales where the equivalent tag
- * actually has a page. A locale is included when the positional mapping resolves AND that
- * slug appears in the target locale's own tag list, so an alternate can never 404.
+ * Absolute hreflang alternates for page `page` of a tag archive — only locales where the
+ * equivalent tag actually has that page. A locale is included when the positional mapping
+ * resolves AND that slug appears in the target locale's own tag list with enough posts, so an
+ * alternate can never 404. Tag counts differ between locales, so a later page may have fewer.
  */
-export function buildTagAlternates(locale: Locale, slug: string): Record<string, string> {
+export function buildTagAlternates(
+  locale: Locale,
+  slug: string,
+  page: number = 1
+): Record<string, string> {
   const mapped = getTagTranslationIndex().get(`${locale}:${slug}`);
   const out: Record<string, string> = {};
   for (const target of locales) {
     const targetSlug = target === locale ? slug : mapped?.get(target);
     if (!targetSlug) continue;
-    if (!listTags(target).some((t) => t.slug === targetSlug)) continue;
-    out[target] = `${SITE_URL}/${target}/blog/tag/${targetSlug}`;
+    const entry = listTags(target).find((t) => t.slug === targetSlug);
+    if (!entry || !hasPage(entry.count, page)) continue;
+    out[target] = `${SITE_URL}/${target}${pagedPath(`/blog/tag/${targetSlug}`, page)}`;
   }
   return out;
 }

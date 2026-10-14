@@ -514,6 +514,7 @@
     "searchResults": "{count, plural, one {# résultat} other {# résultats}}",
     "searchEmpty": "Aucun guide trouvé pour « {query} ».",
     "searchFailed": "La recherche n’est pas disponible pour le moment.",
+    "allPosts": "Tous les articles",
     "latestNews": "Dernières actualités",
     "allNews": "Toutes les actualités",
     "moreCities": "{count, plural, =1 {1 autre ville} other {# autres villes}}",
@@ -2159,6 +2160,9 @@
     },
     "breadcrumbs": "Fil d’Ariane",
     "categories": "Catégories",
+    "filter": {
+      "all": "Tous"
+    },
     "category": {
       "label": "Catégorie",
       "description": "Tous les articles du blog park.fan classés dans {category} – carnets de visite, analyses de données et guides des parcs, les plus récents d’abord.",

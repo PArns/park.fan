@@ -20,8 +20,8 @@
  *      rendered `FaqList` only with its `FAQPage`;
  *   5. no bare `<h2>`: each one sits inside a `ChapterHeading` (`[data-chapter-heading]`), a card
  *      (`[data-slot="card"]`, `[data-glass-card]`, or `[data-card]` on a card built by hand) or the
- *      `LandingNextSteps` band (`[data-landing-next]`), or is a news day label
- *      (`[data-news-day]`). Only `<main>` is read: header, footer and
+ *      `LandingNextSteps` band (`[data-landing-next]`), or is a stream group's day or month label
+ *      (`[data-stream-group]`). Only `<main>` is read: header, footer and
  *      dialogs are not the page. The ones listed in `OPEN` are printed, not failed.
  *
  * The German URL of every page in concept §1, plus the English URL of each hub. The kind of each
@@ -84,9 +84,9 @@ const H2_HOMES = [
   '[data-glass-card]',
   '[data-card]',
   '[data-landing-next]',
-  // The news index's day labels (`data-news-day`): date headings structure a timeline; they are
-  // not chapters.
-  '[data-news-day]',
+  // The day labels on /news and the month labels on the blog listings (`PostStreamGroups`): date
+  // headings structure a timeline; they are not chapters.
+  '[data-stream-group]',
 ].join(',');
 
 /**

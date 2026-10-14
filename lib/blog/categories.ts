@@ -155,6 +155,25 @@ const buildTree = cache((locale: Locale): CategoryTree => {
   return { root, flat };
 });
 
+/** A top-level blog category, as the header menu and the listings' pills offer it. */
+export interface TopCategory {
+  path: string;
+  label: string;
+  /** Its articles, those in subcategories included. */
+  postCount: number;
+}
+
+/** The blog's top-level categories in a locale, most articles first, then by label. */
+export function listTopCategories(locale: Locale): TopCategory[] {
+  return buildCategoryTree(locale)
+    .root.children.map((node) => ({
+      path: node.path,
+      label: node.label,
+      postCount: node.totalPostCount,
+    }))
+    .sort((a, b) => b.postCount - a.postCount || a.label.localeCompare(b.label));
+}
+
 /** Posts whose category path starts with the given segments (inclusive). */
 export function filterPostsByCategory(
   posts: readonly BlogListItem[],

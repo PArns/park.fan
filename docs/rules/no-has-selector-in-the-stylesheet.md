@@ -72,7 +72,7 @@ user action, never to something that runs per render or per frame.
 | Slider head ring on keyboard focus (rider height, alert threshold) | The head is rendered after the `<input>` and reads `peer-focus-visible`; it takes no pointer events, so the invisible input stays the target.                                                             |
 | Hero pills fade while the search has focus                         | `peer/hero-search` on the search, `peer-focus-within/hero-search` on the pills (`app/[locale]/page.tsx`).                                                                                                 |
 | Planner show marks dim while a block is hovered                    | A delegated `pointerover`/`pointerleave` pair on the grid toggles `data-block-hover` (a DOM attribute, no state); the marks read `group-data-[block-hover]/grid`.                                         |
-| `/news` hides a day with no note for the chosen park               | The day carries `data-parks`, a space-separated list, and the rule matches it with `~=`.                                                                                                                  |
+| `/news` hides a day with no note for the chosen park               | The day carries `data-filter-keys`, a space-separated list, and the rule matches it with `~=`.                                                                                                            |
 | Tiptap canvas rules (globals.css)                                  | Moved to `editor-canvas.css`, imported by the editor.                                                                                                                                                     |
 
 ## Writing one of these

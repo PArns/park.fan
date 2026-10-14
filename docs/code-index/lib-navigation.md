@@ -14,7 +14,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`blog-menu.ts`](../../lib/navigation/blog-menu.ts)
 
 - `trimExcerpt` _function_: Cut on a word boundary, never mid-word, and only when there is something to cut.
-- `getBlogMenu` _function_: Builds the header's blog panel for a locale: the article categories by post count and the five most recently touched articles with trimmed excerpts and covers.
+- `getBlogMenu` _function_: Builds the header's blog panel for a locale: the article categories by post count, the five most recently touched articles with trimmed excerpts and covers, and how many articles there are.
 - `getBlogMenuSearchIndex` _function_: Every article of a locale, in the panel's order, for the search field in the blog panel.
 - Types: `BlogMenuCategory`, `BlogMenuPost`, `BlogMenu`, `BlogMenuSearchEntry`
 

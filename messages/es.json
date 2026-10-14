@@ -514,6 +514,7 @@
     "searchResults": "{count, plural, =1 {# resultado} other {# resultados}}",
     "searchEmpty": "No se encontraron guías para «{query}».",
     "searchFailed": "La búsqueda no está disponible en este momento.",
+    "allPosts": "Todas las entradas",
     "latestNews": "Últimas noticias",
     "allNews": "Todas las noticias",
     "moreCities": "{count, plural, =1 {1 ciudad más} other {# ciudades más}}",
@@ -2159,6 +2160,9 @@
     },
     "breadcrumbs": "Migas de pan",
     "categories": "Categorías",
+    "filter": {
+      "all": "Todos"
+    },
     "category": {
       "label": "Categoría",
       "description": "Todos los artículos del blog de park.fan en la categoría {category}: crónicas de visita, análisis de datos y guías de los parques, del más reciente.",

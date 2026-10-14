@@ -514,6 +514,7 @@
     "searchResults": "{count, plural, =1 {# Treffer} other {# Treffer}}",
     "searchEmpty": "Keine Guides für „{query}“ gefunden.",
     "searchFailed": "Die Suche ist gerade nicht erreichbar.",
+    "allPosts": "Alle Beiträge",
     "latestNews": "Neueste Meldungen",
     "allNews": "Alle News",
     "moreCities": "{count, plural, =1 {1 weitere Stadt} other {# weitere Städte}}",
@@ -2159,6 +2160,9 @@
     },
     "breadcrumbs": "Brotkrumen",
     "categories": "Kategorien",
+    "filter": {
+      "all": "Alle"
+    },
     "category": {
       "label": "Kategorie",
       "description": "Alle park.fan-Blogbeiträge in der Kategorie {category} – Reiseberichte, Datenanalysen und Guides aus den Freizeitparks, neueste zuerst.",

@@ -2179,6 +2179,13 @@ html[data-temp-unit] .u-force-metric .u-imperial {
   inset: 0;
   background: url('/logo-dark.svg') no-repeat center / auto 64%;
 }
+/* The stream's cover takes the card's height, so on a phone its box is taller than wide. Sized by
+   the height alone the pin ran past both edges there; fitted, it stays whole, and every box wider
+   than the pin draws it as before. */
+.blog-cover-fallback[data-mark='center']::after {
+  inset: 18%;
+  background-size: contain;
+}
 .blog-cover-fallback[data-mark='side'] {
   --cover-glow-x: 84%;
 }

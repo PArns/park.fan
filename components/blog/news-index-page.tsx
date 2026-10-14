@@ -1,15 +1,8 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
-import {
-  generateAlternateLanguages,
-  locales,
-  localeToOpenGraphLocale,
-  SITE_URL,
-} from '@/i18n/config';
-import { Link } from '@/i18n/navigation';
+import { locales, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
 import { hasPublishedPosts, listNewsByDate, NEWS_CATEGORY } from '@/lib/blog/listing';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
 import { NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
@@ -17,32 +10,34 @@ import { resolveNewsPark, type NewsPark } from '@/lib/blog/news-park';
 import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
 import { LandingHero } from '@/components/marketing/editorial-ui';
 import { NewsAge } from '@/components/blog/news-age';
-import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { NewsParkLabel } from '@/components/blog/news-park-label';
-import {
-  NewsStream,
-  type NewsStreamGroup,
-  type NewsStreamPark,
-} from '@/components/blog/news-stream';
+import { NewsStream, type NewsStreamPark } from '@/components/blog/news-stream';
+import { PostStreamEntry, type PostStreamGroup } from '@/components/blog/post-stream';
+import { ListingPagination } from '@/components/blog/listing-pagination';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { NewsListingStructuredData } from '@/components/seo/blog-structured-data';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import type { BlogListItem } from '@/lib/blog/types';
 import { blogFeedAlternates } from '@/lib/blog/feed';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils/metadata';
+import { hasPage, listingAlternates, paginate, pagedPath, pagedTitle } from '@/lib/blog/pagination';
 
 /**
- * The news overview's own metadata: a title carrying the search phrase ("Freizeitpark-News"), the
- * card from `/api/og/<locale>/news`, and a canonical of `/news` whatever `?park=` says (the filter
- * adds no URLs, see `NewsStream`).
+ * The news overview's own metadata for page `page`: a title carrying the search phrase
+ * ("Freizeitpark-News"), the card from `/api/og/<locale>/news`, and the page's own URL as the
+ * canonical whatever `?park=` says (the filter adds no URLs, see `NewsStream`).
  */
-export async function buildNewsIndexMetadata(locale: string): Promise<Metadata> {
+export async function buildNewsIndexMetadata(locale: string, page: number): Promise<Metadata> {
   if (!routing.locales.includes(locale as Locale)) return {};
-  const t = await getTranslations({ locale, namespace: 'news' });
-  const title = fitWithin(MAX_TITLE_LENGTH, `${t('metaTitle')} | park.fan`, t('metaTitle'));
+  const [t, tBlog] = await Promise.all([
+    getTranslations({ locale, namespace: 'news' }),
+    getTranslations({ locale, namespace: 'blog' }),
+  ]);
+  const name = pagedTitle(t('metaTitle'), page, tBlog('pagination.pageLabel', { page }));
+  const title = fitWithin(MAX_TITLE_LENGTH, `${name} | park.fan`, name);
   const description = t('metaDescription');
-  const url = `${SITE_URL}/${locale}${NEWS_INDEX_PATH}`;
+  const path = pagedPath(NEWS_INDEX_PATH, page);
+  const url = `${SITE_URL}/${locale}${path}`;
   const ogImageUrl = getOgImageUrl([locale, 'news']);
 
   return {
@@ -61,10 +56,7 @@ export async function buildNewsIndexMetadata(locale: string): Promise<Metadata> 
     twitter: { card: 'summary_large_image', title, description, images: [ogImageUrl] },
     alternates: {
       canonical: url,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}${NEWS_INDEX_PATH}`),
-        'x-default': `${SITE_URL}/en${NEWS_INDEX_PATH}`,
-      },
+      languages: listingAlternates((l) => (hasPage(listNewsByDate(l).length, page) ? path : null)),
       types: blogFeedAlternates(locale as Locale),
     },
     robots: {
@@ -81,30 +73,41 @@ export async function buildNewsIndexMetadata(locale: string): Promise<Metadata> 
 }
 
 /**
- * The news overview at `/news`: a stream of dated notes, newest day first, not the blog's card
- * grid. Each day opens with its date and age ({@link NewsAge}); each note carries its park, its
- * title, one line of teaser and a small cover. All news is listed — nothing drops out for its
- * age (`docs/rules/news-is-set-apart-from-the-articles.md`).
+ * Page `page` of the news overview at `/news`: a stream of dated notes, newest day first
+ * (`PostStreamGroups`, the list the blog listings draw by month). Each day opens with its date and
+ * age ({@link NewsAge}); each note carries its park, its title, its teaser and a small cover. All
+ * news is listed, page by page — nothing drops out for its age
+ * (`docs/rules/news-is-set-apart-from-the-articles.md`). The park filter works on the page it is
+ * on, so it offers that page's parks.
  */
-export async function NewsIndexPageBody({ locale }: { locale: string }) {
+export async function NewsIndexPageBody({ locale, page }: { locale: string; page: number }) {
   if (!routing.locales.includes(locale as Locale)) notFound();
   if (!hasPublishedPosts(locale as Locale)) notFound();
   setRequestLocale(locale);
 
-  const posts = listNewsByDate(locale as Locale);
-  if (posts.length === 0) notFound();
+  const all = listNewsByDate(locale as Locale);
+  if (all.length === 0) notFound();
+  const current = paginate(all, page);
+  if (!current) notFound();
 
-  const t = await getTranslations('news');
-  const tLanding = await getTranslations('landing.news');
+  const [t, tBlog, tLanding] = await Promise.all([
+    getTranslations('news'),
+    getTranslations('blog'),
+    getTranslations('landing.news'),
+  ]);
   const label = resolveCategoryLabel(NEWS_CATEGORY, locale as Locale, 'News');
+  const path = pagedPath(NEWS_INDEX_PATH, page);
 
   const withParks = await Promise.all(
-    posts.map(async (post) => ({ post, park: await resolveNewsPark(post.translationKey) }))
+    current.items.map(async (post) => ({
+      post,
+      park: await resolveNewsPark(post.translationKey),
+    }))
   );
 
   // The filter's key per park. A bare slug is not unique (`lib/blog/park-resolver.ts`): Paris and
   // Anaheim both have a `disneyland-park`, and one pill for the two would mix their news. So the
-  // key is the slug where it names one park among the news, and slug plus city where it does not.
+  // key is the slug where it names one park on this page, and slug plus city where it does not.
   const hrefsBySlug = new Map<string, Set<string>>();
   for (const { park } of withParks) {
     if (!park) continue;
@@ -118,17 +121,15 @@ export async function NewsIndexPageBody({ locale }: { locale: string }) {
       : park.slug;
 
   // Days, newest first — `listNewsByDate` is already sorted, so a day is a run of equal dates.
-  const groups: NewsStreamGroup[] = [];
+  const groups: PostStreamGroup[] = [];
   for (const { post, park } of withParks) {
     const day = post.frontmatter.date;
     let group = groups[groups.length - 1];
     if (!group || group.key !== day) {
       group = {
         key: day,
-        // `data-news-day`: a date heading structures the timeline and is not a chapter, so
-        // `pnpm check:landing-pages` lets it stand without a ChapterHeading.
         heading: (
-          <h2 data-news-day="">
+          <h2>
             <NewsAge date={day} className="text-sm sm:whitespace-normal" />
           </h2>
         ),
@@ -136,14 +137,25 @@ export async function NewsIndexPageBody({ locale }: { locale: string }) {
       };
       groups.push(group);
     }
+    const src = post.frontmatter.coverImage?.src;
     group.items.push({
       key: post.translationKey,
-      park: park ? filterKey(park) : null,
-      node: <NewsStreamEntry post={post} park={park} />,
+      filterKey: park ? filterKey(park) : null,
+      node: (
+        <PostStreamEntry
+          href={postPath(post)}
+          title={post.frontmatter.title}
+          excerpt={post.frontmatter.excerpt}
+          label={park ? <NewsParkLabel park={park} /> : undefined}
+          image={versionedPath(src) ?? src ?? null}
+          imagePosition={objectPositionForSrc(src, '50% 50%')}
+          fallbackSlug={post.slug}
+        />
+      ),
     });
   }
 
-  // The filter offers the parks that have news, most news first, then by name.
+  // The filter offers the parks with news on this page, most news first, then by name.
   const parkCounts = new Map<string, NewsStreamPark>();
   for (const { park } of withParks) {
     if (!park) continue;
@@ -162,11 +174,14 @@ export async function NewsIndexPageBody({ locale }: { locale: string }) {
         locale={locale}
         name={`${label} · park.fan`}
         description={t('metaDescription')}
-        posts={posts}
-        path={NEWS_INDEX_PATH}
+        posts={current.items}
+        path={path}
       />
       <BreadcrumbStructuredData
-        breadcrumbs={[{ name: label, url: NEWS_INDEX_PATH }]}
+        breadcrumbs={[
+          { name: label, url: NEWS_INDEX_PATH },
+          ...(page > 1 ? [{ name: tBlog('pagination.pageLabel', { page }), url: path }] : []),
+        ]}
         locale={locale}
       />
       {/* A tool page: the compact head (docs/product/landing-pages.md §1). No action button in
@@ -180,7 +195,9 @@ export async function NewsIndexPageBody({ locale }: { locale: string }) {
           <>
             {t('intro')}
             <span className="text-muted-foreground mt-2 block text-xs">
-              {t('count', { count: posts.length })}
+              {page > 1
+                ? `${t('count', { count: all.length })} · ${tBlog('pagination.pageOf', { page, total: current.pageCount })}`
+                : t('count', { count: all.length })}
             </span>
           </>
         }
@@ -195,53 +212,11 @@ export async function NewsIndexPageBody({ locale }: { locale: string }) {
             filterLabel={t('filter.label')}
             allLabel={t('filter.all')}
           />
+          <ListingPagination base={NEWS_INDEX_PATH} page={page} pageCount={current.pageCount} />
         </div>
       </div>
 
       <PageBottomSections locale={locale} />
     </>
-  );
-}
-
-/** One note in the stream. The title and the cover link the post; the park label its park. */
-function NewsStreamEntry({ post, park }: { post: BlogListItem; park: NewsPark | null }) {
-  const href = postPath(post) as '/';
-  const src = post.frontmatter.coverImage?.src;
-  const image = versionedPath(src) ?? src ?? null;
-
-  return (
-    <article className="border-border bg-card flex gap-4 rounded-2xl border p-4 shadow-sm">
-      <div className="min-w-0 flex-1">
-        {park && <NewsParkLabel park={park} />}
-        <h3 className="mt-2 text-base leading-snug font-bold text-pretty sm:text-lg">
-          <Link href={href} prefetch={false} className="hover:text-primary transition-colors">
-            {post.frontmatter.title}
-          </Link>
-        </h3>
-        <p className="text-muted-foreground mt-1 line-clamp-1 text-sm">
-          {post.frontmatter.excerpt}
-        </p>
-      </div>
-      <Link
-        href={href}
-        prefetch={false}
-        tabIndex={-1}
-        aria-hidden="true"
-        className="bg-muted relative block aspect-[16/10] w-24 shrink-0 self-start overflow-hidden rounded-xl sm:w-40"
-      >
-        {image ? (
-          <Image
-            src={image}
-            alt=""
-            fill
-            sizes="(min-width: 640px) 160px, 96px"
-            style={{ objectPosition: objectPositionForSrc(src, '50% 50%') }}
-            className="object-cover"
-          />
-        ) : (
-          <BlogCoverFallback slug={post.slug} />
-        )}
-      </Link>
-    </article>
   );
 }

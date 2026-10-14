@@ -3,17 +3,24 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { FolderTree } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
-import { generateAlternateLanguages, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
-import { BLOG_POSTS_PER_PAGE, listArticles, hasPublishedPosts } from '@/lib/blog/listing';
+import { localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
+import { listArticles, hasPublishedPosts } from '@/lib/blog/listing';
 import {
   categoryPathBreadcrumbs,
   filterPostsByCategory,
   parseCategoryPath,
   resolveCategoryLabel,
 } from '@/lib/blog/categories';
-import { BlogPostGrid } from '@/components/blog/blog-post-grid';
-import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
-import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
+import {
+  hasPage,
+  listingAlternates,
+  paginate,
+  pagedPath,
+  pagedTitle,
+  splitPageSegments,
+} from '@/lib/blog/pagination';
+import { BlogCategoryPills, BlogPostStream } from '@/components/blog/blog-post-stream';
+import { ListingPagination } from '@/components/blog/listing-pagination';
 import { BlogSectionHeader } from '@/components/blog/blog-section-header';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { BlogStructuredData } from '@/components/seo/blog-structured-data';
@@ -25,20 +32,25 @@ import { blogFeedAlternates } from '@/lib/blog/feed';
 import { categoryPath, NEWS_CATEGORY } from '@/lib/blog/paths';
 
 /**
- * Metadata for a blog category listing at `/blog/category/[...path]`. Articles only: the news
- * category's posts live under `/news` (`NewsIndexPageBody`). Canonical, hreflang and breadcrumbs
- * come from `categoryPath` (`lib/blog/paths.ts`).
+ * Metadata for a blog category listing at `/blog/category/[...path]`, where the path may end in
+ * `/page/<n>` (`splitPageSegments`). Articles only: the news category's posts live under `/news`
+ * (`NewsIndexPageBody`). Canonical, hreflang and breadcrumbs come from `categoryPath`
+ * (`lib/blog/paths.ts`); a later page is its own canonical, like every listing page.
  */
 export async function buildCategoryMetadata(locale: string, path: string[]): Promise<Metadata> {
   if (!routing.locales.includes(locale as Locale)) return {};
-  const fullPath = path.join('/');
-  const href = categoryPath(fullPath);
-  const lastSegment = path[path.length - 1] ?? '';
+  const split = splitPageSegments(path);
+  if (!split) return {};
+  const { segments, page } = split;
+  const fullPath = segments.join('/');
+  const href = pagedPath(categoryPath(fullPath), page);
+  const lastSegment = segments[segments.length - 1] ?? '';
   const label = resolveCategoryLabel(fullPath, locale as Locale, lastSegment);
   const t = await getTranslations({ locale, namespace: 'blog' });
-  const ogImageUrl = getOgImageUrl([locale, 'blog', ...path]);
-  const fullTitle = `${label} | ${t('title')} · park.fan`;
+  const ogImageUrl = getOgImageUrl([locale, 'blog', ...segments]);
+  const fullTitle = `${pagedTitle(label, page, t('pagination.pageLabel', { page }))} | ${t('title')} · park.fan`;
   const description = t('category.description', { category: label });
+  const categorySegments = parseCategoryPath(fullPath);
 
   return {
     title: { absolute: fullTitle },
@@ -55,10 +67,9 @@ export async function buildCategoryMetadata(locale: string, path: string[]): Pro
     twitter: { card: 'summary_large_image', title: fullTitle, description, images: [ogImageUrl] },
     alternates: {
       canonical: `${SITE_URL}/${locale}${href}`,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}${href}`),
-        'x-default': `${SITE_URL}/en${href}`,
-      },
+      languages: listingAlternates((l) =>
+        hasPage(filterPostsByCategory(listArticles(l), categorySegments).length, page) ? href : null
+      ),
       // No per-category feed (a few categories over few posts would repeat one post at a second
       // URL), so a category page points at the locale's main feed, as autodiscovery asks.
       types: blogFeedAlternates(locale as Locale),
@@ -67,9 +78,9 @@ export async function buildCategoryMetadata(locale: string, path: string[]): Pro
 }
 
 /**
- * Renders a blog category listing: breadcrumbs, the category's articles, the category tree and tag
- * cloud, plus Blog and BreadcrumbList JSON-LD. 404s for an unknown or empty category; `news`
- * redirects to `/news`.
+ * Renders a page of a blog category listing: breadcrumbs, the category pills, the category's
+ * articles in the blog's stream and the page links, plus Blog and BreadcrumbList JSON-LD. 404s
+ * for an unknown or empty category and for a page it does not have; `news` redirects to `/news`.
  */
 export async function BlogCategoryPageBody({ locale, path }: { locale: string; path: string[] }) {
   if (!routing.locales.includes(locale as Locale)) notFound();
@@ -79,7 +90,9 @@ export async function BlogCategoryPageBody({ locale, path }: { locale: string; p
   if (!hasPublishedPosts(locale as Locale)) notFound();
   setRequestLocale(locale);
 
-  const segments = parseCategoryPath(path.join('/'));
+  const split = splitPageSegments(path);
+  if (!split) notFound();
+  const segments = parseCategoryPath(split.segments.join('/'));
   if (segments.length === 0) notFound();
 
   const t = await getTranslations('blog');
@@ -88,8 +101,11 @@ export async function BlogCategoryPageBody({ locale, path }: { locale: string; p
   if (allInCategory.length === 0) notFound();
 
   const fullPath = segments.join('/');
-  const visiblePosts = allInCategory.slice(0, BLOG_POSTS_PER_PAGE);
+  const current = paginate(allInCategory, split.page);
+  if (!current) notFound();
+  const { page } = current;
   const totalItems = allInCategory.length;
+  const pageLabel = t('pagination.pageLabel', { page });
 
   const label = resolveCategoryLabel(fullPath, locale as Locale, segments[segments.length - 1]);
 
@@ -108,9 +124,13 @@ export async function BlogCategoryPageBody({ locale, path }: { locale: string; p
     }),
   ];
 
+  // A later page names the category as a crumb and itself as the current page.
+  const categoryCrumb: Breadcrumb = { name: label, url: categoryPath(fullPath) };
+  const visibleBreadcrumbs = page > 1 ? [...breadcrumbs, categoryCrumb] : breadcrumbs;
   const seoBreadcrumbs: Breadcrumb[] = [
     ...breadcrumbs,
-    { name: label, url: categoryPath(fullPath) },
+    categoryCrumb,
+    ...(page > 1 ? [{ name: pageLabel, url: pagedPath(categoryPath(fullPath), page) }] : []),
   ];
 
   return (
@@ -119,14 +139,14 @@ export async function BlogCategoryPageBody({ locale, path }: { locale: string; p
         locale={locale}
         name={`${label} · ${t('title')}`}
         description={t('category.description', { category: label })}
-        posts={visiblePosts}
-        path={categoryPath(fullPath)}
+        posts={current.items}
+        path={pagedPath(categoryPath(fullPath), page)}
       />
       <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
       <div className="container mx-auto px-4 py-10 sm:py-14">
         <BreadcrumbNav
-          breadcrumbs={breadcrumbs}
-          currentPage={label}
+          breadcrumbs={visibleBreadcrumbs}
+          currentPage={page > 1 ? pageLabel : label}
           variant="plain"
           className="mb-6"
         />
@@ -136,15 +156,21 @@ export async function BlogCategoryPageBody({ locale, path }: { locale: string; p
           badge={t('category.label')}
           badgeIcon={FolderTree}
           title={label}
-          meta={t('category.postsCount', { count: totalItems })}
+          meta={
+            page > 1
+              ? `${t('category.postsCount', { count: totalItems })} · ${t('pagination.pageOf', { page, total: current.pageCount })}`
+              : t('category.postsCount', { count: totalItems })
+          }
         />
 
-        <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
-          <BlogPostGrid posts={visiblePosts} />
-          <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
-            <BlogCategoryTree locale={locale as Locale} activePath={fullPath} />
-            <BlogTagCloud locale={locale as Locale} />
-          </aside>
+        <div className="max-w-5xl">
+          <BlogCategoryPills locale={locale as Locale} active={segments[0]} total={all.length} />
+          <BlogPostStream locale={locale as Locale} posts={current.items} />
+          <ListingPagination
+            base={categoryPath(fullPath)}
+            page={page}
+            pageCount={current.pageCount}
+          />
         </div>
       </div>
 
