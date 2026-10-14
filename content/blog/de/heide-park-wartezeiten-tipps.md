@@ -2,6 +2,7 @@
 title: 'Heide Park: Colossos aus Holz und vier Deutschland-Premieren'
 translationKey: heide-park-guide
 date: '2026-09-20'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -54,9 +55,8 @@ seo:
     - Heide Park Abenteuerhotel
 ---
 
-Fast drei Jahre lang stand im Land der Vergessenen eine Holzachterbahn, die
-niemand fahren durfte. Am **28. Juli 2016** ging
-[Colossos](ref:heide-park/colossos-kampf-der-giganten) mitten in der Saison vom
+Am **28. Juli 2016** ging
+[Colossos](ref:heide-park/colossos-kampf-der-giganten) im Land der Vergessenen mitten in der Saison vom
 Netz, weil die Schienen nach fünfzehn Jahren verschlissen waren. Wieder
 gefahren wurde sie erst am **19. April 2019**.
 
@@ -85,6 +85,8 @@ Deutschlands erster Launch Coaster. Statt eines Lifthills bringt eine
 hydraulische Katapultstrecke den Zug in zwei Sekunden auf **102 km/h**. Nach
 650 Metern und 49 Sekunden ist er wieder in der Station.
 
+Gebaut hat Desert Race Intamin nach einem Entwurf des Ingenieurbüros Stengel. Die Strecke steigt bis auf 19 Meter, der Park gibt Kräfte bis 4,7 g an, und in jedem der zwei Züge sitzen 20 Leute.
+
 ```glossary-widget slug=launch-coaster
 
 ```
@@ -102,9 +104,6 @@ einen Immelmann.
 links und rechts neben der Schiene, ohne etwas vor den Füßen. 40 Meter hoch, 772
 Meter lang, 100 km/h, fünf Inversionen, drei Minuten Fahrzeit, 1.060 Gäste pro
 Stunde.
-
-Die Tabelle vergleicht den Heide Park mit drei anderen
-[großen deutschen Parks](/blog/beste-freizeitparks-in-deutschland), jeden Tag neu gerechnet.
 
 ```park-comparison-widget slugs=heide-park,europa-park,phantasialand,movie-park-germany highlight=heide-park
 
@@ -149,9 +148,11 @@ Doppel-Korkenzieher, gut 700 Meter lang und nach knapp zwei Minuten vorbei.
 Saison 2026 hat Vekoma neue Züge geliefert, deren Design den Originalwagen von
 1983 nachempfunden ist.
 
+Der Big Loop ist 30 Meter hoch und fährt 70 km/h. Die Roller Coaster DataBase führt ihn als Vekoma MK-1200 mit 1.200 Fahrgästen pro Stunde, und seine Strecke ist das Spiegelbild von Dragon Fyre in Canada’s Wonderland. Die allerersten Züge hatte Arrow geliefert.
+
 Toxic Garden heißt erst seit **Mai 2023** so. Vekoma hat beim Umbau ein Stück
 Strecke ersetzt, Eingang und Station stehen seitdem in einem Garten aus
-Giftpflanzen, passend zum Themenbereich Transsilvanien, zu dem ihr Standort seit 2011 zählt.
+Giftpflanzen, passend zum Themenbereich Transsilvanien, zu dem ihr Standort seit 2011 zählt. Der Zug erreicht 80 km/h, entworfen hat das Modell Peter Clerx.
 
 Die **[Bobbahn](ref:heide-park/bobbahn)** von Mack Rides fährt seit **1993**
 ohne Schienenführung in einer Halbröhre. Die Bobs starten auf 27 Metern Höhe,
@@ -161,6 +162,8 @@ Bahn später oder gar nicht in Betrieb. Der
 Runden für alle, die für die großen Bahnen noch zu klein sind, und der
 **[Indy-Blitz](ref:heide-park/indy-blitz)** von 2008 ist mit 4,5 Metern Höhe
 die kleinste Achterbahn auf dem Gelände.
+
+Die Bobbahn hieß früher Schweizer Bobbahn. Sie ist 826 Meter lang, und der Park nennt 58 km/h als Spitze. Den Grottenblitz, früher Mountain-Train und Mountain-Blitz, hat ebenfalls Mack gebaut. Auf 370 Metern erreicht er 45 km/h und legt sich in den Kurven um bis zu 40 Prozent schräg. Der Indy-Blitz ist ein Modell Force One von Zierer, 128 Meter lang und höchstens 23 km/h schnell.
 
 **[Scream](ref:heide-park/scream)** ist **103 Meter** hoch und lässt 71 Meter
 davon frei fallen, mit knapp 100 km/h (der Park nennt 98,3). Angefangen hat der
@@ -188,17 +191,23 @@ Bereich „Drachenzähmen – Die Insel“ zwei eigene Ecken.
 
 Die vier großen Bahnen fangen alle bei **140 cm** an, Toxic Garden und Scream
 bei 130, Big Loop und Bobbahn bei 120. Die niedrigste Hürde im Park liegt bei
-**86 cm**, an Schorschs Dino-Abenteuer im Peppa Pig Land.
+**86 cm**, an Schorschs Dino-Abenteuer im Peppa Pig Land. Am Indy-Blitz liegt die Grenze bei 100 cm, am Grottenblitz gibt es keine, dort gilt ein Mindestalter von vier Jahren.
 
 ```map-widget slug=heide-park
 
 ```
 
+## Shows und Events 2026
+
+Das Show-Ensemble des Parks spielt 2026 vier Shows im täglichen Wechsel. Neu ist „Aye Aye Käpt’n!“, eine Mitmachshow von etwa 30 Minuten für Kinder von drei bis acht Jahren, die nach einer Piratenprüfung ein Diplom bekommen. Daneben laufen die Artistikshow „Time“, die Zaubershow „Smilie, it’s magic“ und „The Movie Maker“. Fotos mit Ohnezahn und einem Wikinger, mit Peppa und Schorsch und mit den Ghostbusters am Ecto-1 kosten nichts, fotografiert wird mit dem eigenen Handy.
+
+Beim Piratenfest 2026 in der Bucht der Piraten gab es einen Shanty-Chor, Walkacts und ein Piratenlager. Die Pyro Games sind ein Wettbewerb von Feuerwerkern aus ganz Deutschland, und das erste Feuerwerk startet mit Einbruch der Dunkelheit. Veranstalter ist THF Events aus Magdeburg, der Park stellt das Gelände, und Tickets gibt es auch an einer Abendkasse. Die Termine für 2027 will der Park später bekannt geben.
+
 ## Wie voll es wird
 
 Unsere Messungen laufen seit Ende Dezember 2025. Weil der Heide Park erst Ende
-März öffnet, stehen in der Tabelle nur Tage aus der Saison 2026
-(Stand 25. September 2026), jede Bahn mit ihrer eigenen Zahl an Messtagen:
+März öffnet, stammen alle Tage in der Tabelle aus der Saison 2026
+(Stand 25. September 2026), und jede Bahn hat ihre eigene Zahl an Messtagen.
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
@@ -218,9 +227,6 @@ es warm geworden ist. Die meisten Gäste kommen morgens mit dem Auto und stehen
 deshalb zur selben Zeit vor denselben drei Bahnen; nachmittags verteilt sich
 der Andrang.
 
-In der ersten Stunde fährst du also Colossos und die Krake, weil beide dann am
-kürzesten sind und ab elf gleichzeitig anziehen.
-
 ```best-days-widget slug=heide-park
 
 ```
@@ -234,7 +240,7 @@ kürzesten sind und ab elf gleichzeitig anziehen.
 Das **Express Ticket** gibt es in vier Stufen: Bronze ab **25 €** für
 Wildwasserbahn, Big Loop und Bobbahn, Silber ab 39 € für fünf der großen
 Attraktionen, Gold ab 59 € für alle acht, Platin ab 99 € für alle acht ohne
-Limit. Welche fünf in Silber stecken, steht auf der Seite des Parks zweimal
+Limit. Die Seite des Parks nennt die fünf Bahnen in Silber an zwei Stellen
 verschieden. In der Vergleichstabelle sind es Colossos, Desert Race, Flug der
 Dämonen, Krake und Scream, in der Liste darunter stehen Colossos und Scream erst
 ab Gold. Toxic Garden ist in keiner Stufe dabei.
@@ -265,9 +271,8 @@ jeweils eine Stunde später.
 Die langen Tage im Herbst fangen erst um 12 Uhr an, gefahren wird bis 21 Uhr.
 Am 19. und 26. September und am 3. Oktober heißen sie Late Rides, die fünf danach
 gehören zu Halloween. An all diesen Tagen schließen die Wasserbahnen und ein
-paar andere Anlagen schon mit der Dämmerung, ab etwa 17 Uhr. Was für die
-nächsten Wochen tatsächlich veröffentlicht ist, steht im Kalender auf der
-[Parkseite](ref:heide-park).
+paar andere Anlagen schon mit der Dämmerung, ab etwa 17 Uhr. Den veröffentlichten
+Kalender der nächsten Wochen findest du auf der [Parkseite](ref:heide-park).
 
 ### Der Wochentag
 
@@ -284,8 +289,9 @@ Der Monat verschiebt ungefähr genauso viel wie der Wochentag. Juli und August l
 danach deutlich ab. Für den Oktober haben wir noch keine Messtage (Stand 25.
 September 2026); der Park selbst nennt die Schulferien als seine
 besucherstärksten Zeiten, und im Oktober kommen Herbstferien und Halloween
-zusammen. Wer einen Freitag im September nimmt statt eines Samstags im August,
-holt mehr heraus als mit jeder der beiden Entscheidungen allein.
+zusammen.
+
+In Niedersachsen und Bremen dauerten die Sommerferien 2026 vom 2. Juli bis zum 12. August, in Hamburg vom 9. Juli bis zum 19. August. Die Herbstferien liegen in Niedersachsen und Bremen zwischen dem 12. und dem 24. Oktober 2026, in Hamburg zwischen dem 19. und dem 30. Oktober. Die niedersächsischen Osterferien liefen vom 23. März bis zum 7. April und damit über den Saisonstart.
 
 ### Halloween: 10. bis 31. Oktober 2026
 
@@ -315,6 +321,10 @@ Panoramabahn) und die Westerneisenbahn, die seit 1997 Heide Park Express heißt.
 Ein vierter, der Oldtimer-Rundkurs mit seinen Nachbauten des Ford Modell T,
 lief bis 2025; dann schloss der Park ihn ohne große Ankündigung.
 
+Die beiden anderen Fahrgeschäfte des ersten Tages waren die Monza-Rennstrecke, ab 1997 Monza-Piste genannt, und die Wichtelhausenbahn von Mack Rides. Auf deren Gleisen fährt seit 2018 Opa Pig’s Zugfahrt im Peppa Pig Land, gebaut von Metallbau Emmeln. Die Heidenhofkapelle ist aus Eichenholz und wurde später zu einem zweigeschossigen Mühlenspeicher umgebaut. Seit 1951 ist sie wieder eine Kapelle, seit 2007 heißt sie „Offener Raum der Stille“, und gelegentlich hält der Kirchenkreis Soltau dort Kurzandachten.
+
+Die Alligatorenshow lief von 1978 bis 2003, ab 1985 in einer eigenen Arena. 1979 kam eine Delfinshow dazu, ein Jahr später bekam sie ein Kuppeldach, und nach der Saison 2008 schloss der Park das Delfinarium. Die Seelöwen traten bis 2007 auf, auf ihrer Bühne steht heute die Piratenarena. Die Hallo-Spencer-Show lief von 2004 bis 2016 und endete, weil die Lizenz auslief.
+
 Von **1986** bis zum Winter 2011/2012 stand hier ein 35 Meter hoher Nachbau
 der Freiheitsstatue, eingeweiht am 4. Juli 1986 zum hundertsten Geburtstag des
 Originals, mit einem Glückwunsch von Ronald Reagan. Nach dem Abbau stand die
@@ -334,6 +344,8 @@ Zeitung Expansión Merlin außerdem als möglichen Käufer von Parques Reunidos,
 dem Konzern hinter dem Movie Park
 ([mehr dazu](/blog/parques-reunidos-verkauf-movie-park)).
 
+Das Heide-Dorf mit Nachbauten typischer Häuser aus der Lüneburger Heide stand von 1988 bis 2009. Der holländische Stadtteil mit Windmühle und Grachten kam 1996/97 dazu, war ab 2009 nur noch für Hotelgäste zugänglich, und 2014 wurden seine Fassaden für Sultan’s Spaßbad abgerissen. 2008 eröffnete der Bereich Wild Wild West mit Indy-Blitz, Dampfkarussell und Western-Riesenrad. 2011 teilte der Park das Gelände unter anderem in das Land der Vergessenen und Transsilvanien auf, 2012 war die Bucht der Totenkopfpiraten fertig. Nach Drachenzähmen – Die Insel (2016) und dem Peppa Pig Land (2018) legte der Park 2019 diese beiden mit Wild Wild West zum Bereich Exploria zusammen. Im Peppa Pig Land fährt seit 2020 außerdem eine Ballonfahrt von Technical Park.
+
 ## Übernachten am Park
 
 Wer aus Süddeutschland anreist, macht besser zwei Tage daraus. Das
@@ -344,6 +356,8 @@ daneben Sultan’s Spaßbad. Das **Holiday Camp** von 2005 besteht nach einer
 Erweiterung aus 81 Holzhäusern mit zusammen 536 Betten. Die sieben umgebauten
 VW T2 des **Bulli Camps**, in denen man ab Juli 2014 schlafen konnte, gibt es
 seit 2025 nicht mehr; gebucht werden im Camp jetzt nur noch Hütten.
+
+Im Abenteuerhotel gibt es 150 Familienzimmer und 16 Komfortzimmer, eingerichtet als Piratenzimmer, Kapitänskajüte, Western- oder Dämonen-Zimmer oder als Ghostbusters-Suite. Fünf frühere Piratenzimmer sind seit 2018 Peppa-Pig-Zimmer. Im Holiday Camp bucht man Hütten mit eigenem Bad für zwei oder vier Gäste oder günstigere Hütten ohne Bad, deren Gäste die zentralen Sanitäranlagen in der Nähe nutzen.
 
 An den langen Tagen im Herbst
 dürfen Hotel- und Campgäste schon um 11 Uhr in den Park, eine Stunde vor allen
@@ -371,7 +385,7 @@ Parktickets nur in Ausnahmefällen, nur mit Karte und teurer, 16 € für den PK
 Mit der Bahn fährt man bis Soltau oder bis Wolterdingen, von Wolterdingen sind
 es 20 Minuten zu Fuß, und aus Hamburg und Hannover fährt ein Bus direkt vors
 Tor. Er heißt Heide Park Express, wie die Parkbahn, hat mit ihr aber nichts zu
-tun.
+tun. Betrieben wird er von der Elbe-Leine-Express GmbH. In Hannover fährt er an der Hamburger Allee 4 gegenüber dem ZOB ab, eine Fahrt kostet 15 €, hin und zurück 25 €.
 
 **Öffnungszeiten.** 28. März bis 31. Oktober 2026, im Kern der Saison und im
 Oktober täglich, im Frühjahr und im September ohne einen Teil der Montage. Die
@@ -386,9 +400,11 @@ es Plätze gibt; die 37 € gelten allerdings nur an ausgewählten Tagen. Das
 undatierte Ticket für die ganze Saison liegt bei 52 €. Kinder unter 90 cm kommen
 kostenlos rein, brauchen aber ein 0-€-Ticket aus dem Online-Shop.
 
+**Jahreskarte.** Der Bronze Pass kostet neu 69 €, verlängert 59 €, und gilt 2026 an 45 Tagen nicht, darunter die meisten Samstage von April bis Oktober und der 1. bis 9. August. Der Silber Pass für 89 € (Verlängerung 69 €) hat keine Ausschlusstage. Der Merlin Abenteuer-Pass für 139 € (Verlängerung 119 €) enthält das Parken und gilt auch im Legoland Deutschland, im Peppa Pig Park Günzburg, in den deutschen Sea Life Centern und bei Madame Tussauds Berlin, dazu an bis zu zwei Tagen hintereinander im Legoland Billund und in Gardaland. Wer mit Silber oder Abenteuer-Pass am 31. Oktober kommen will, braucht ein kostenloses Reservierungsticket. Alle drei Karten gelten zwölf Monate ab dem Kauf.
+
 **Essen.** 21 gastronomische Betriebe führt unsere Parkseite (Stand September
 2026), von der Schmalzkuchen-Schmiede auf der Colossos-Terrasse bis zum
-Wirtshaus des Admirals.
+Wirtshaus des Admirals. Das Wirtshaus des Admirals in der Bucht der Piraten ist ein Buffet-Restaurant. Pizza gibt es bei Pizza Scream, Flammkuchen in der Flammkuchen Factory, beide in Transsilvanien, und Thüringer Rostbratwurst vom Lavagrill am Heide Park Grill im Eingangsbereich. Frau Mümmels Kiosk im Peppa Pig Land verkauft Bowls, und viele Restaurants haben pflanzliche Alternativen.
 
 ## Häufige Fragen zum Heide Park
 
@@ -420,8 +436,7 @@ Kalender steht auf der [Parkseite](ref:heide-park).
 
 An einem Freitag im September, weit vor einem Samstag im August. Wochentag und
 Monat verschieben einzeln ungefähr gleich viel, zusammen mehr als jeder für
-sich. Welche der nächsten Öffnungstage am ruhigsten werden, steht tagesaktuell im
-Widget weiter oben.
+sich. Die ruhigsten der nächsten Öffnungstage sind auf der [Parkseite](ref:heide-park) markiert, jeden Tag neu berechnet.
 
 ### Welche Achterbahnen im Heide Park sind deutsche Premieren?
 
@@ -448,6 +463,10 @@ Online ab 37 € pro Person, am Ticketautomaten vor Ort 64 €; eine Tageskasse
 gibt es nicht. Parken kostet online 14 € für den PKW. Tagesaktuelle Preise
 stehen auf [heide-park.de](https://www.heide-park.de/tickets-paesse/tickets/).
 
+### Was kostet eine Jahreskarte für den Heide Park?
+
+Der Bronze Pass kostet neu 69 €, gilt 2026 aber an 45 Tagen nicht, darunter an den meisten Samstagen von April bis Oktober. Der Silber Pass für 89 € gilt an jedem Öffnungstag der Saison. Der Merlin Abenteuer-Pass für 139 € enthält das Parken und den Eintritt in weitere Merlin-Attraktionen in Deutschland, etwa das Legoland Deutschland.
+
 ### Lohnt sich eine Übernachtung im Park?
 
 Wenn die Anfahrt länger als zwei Stunden dauert, ja. Der Gewinn ist die erste
@@ -456,8 +475,6 @@ die Mittagszeit konzentriert. An den langen Herbsttagen kommen Hotel- und
 Campgäste außerdem eine Stunde früher in den Park.
 
 ## Zum Weiterlesen
-
-Wie das Wetter über dem Park aussieht, wenn du hinfährst:
 
 ```weather-widget slug=heide-park
 
@@ -530,6 +547,30 @@ Freitag zu den ruhigsten Tagen.
   [Tagestickets (offiziell)](https://www.heide-park.de/tickets-paesse/tickets/)
   ·
   [Sind Tickets vor Ort erhältlich? (Hilfe-Center des Parks)](https://support.heide-park.de/hc/de/articles/4469462362269-Sind-Tickets-vor-Ort-erh%C3%A4ltlich)
+- Daten der übrigen Achterbahnen und Mindestgrößen:
+  [Big Loop](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/big-loop/) ·
+  [Bobbahn](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/bobbahn/) ·
+  [Grottenblitz](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/grottenblitz/) ·
+  [Indy-Blitz](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/indy-blitz/) ·
+  [Desert Race](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/desert-race/) ·
+  [Toxic Garden](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/toxic-garden-heide-park-resort/) auf der Seite des Parks ·
+  [Bobbahn](https://rcdb.com/984.htm) ·
+  [Grottenblitz](https://rcdb.com/985.htm) ·
+  [Indy-Blitz](https://rcdb.com/4146.htm) in der Roller Coaster DataBase
+- Shows, Meet & Greets und Events 2026:
+  [Shows (offiziell)](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/shows/)
+  · [Piratenfest (offiziell)](https://www.heide-park.de/entdecken/events/piratenfest/)
+  · [Pyro Games (offiziell)](https://www.heide-park.de/entdecken/events/pyro-games/)
+- Schulferien 2026 in Niedersachsen, Bremen und Hamburg:
+  [Ferienkalender 2025/26 der KMK](https://www.kmk.org/fileadmin/Dateien/pdf/Ferienkalender/FER2025_26.pdf)
+  · [Ferienkalender 2026/27 der KMK](https://www.kmk.org/fileadmin/Dateien/pdf/Ferienkalender/FER2026_27.pdf)
+- Jahreskarten 2026, Preise und Ausschlusstage:
+  [Jahreskarten (offiziell)](https://www.heide-park.de/tickets-paesse/jahreskarten/)
+- Bus ab Hannover:
+  [Fahrplan Heide Park Express (PDF des Parks)](https://www.heide-park.de/media/1i0mavtt/heide-park_express_web.pdf)
+- Hütten im Holiday Camp und Restaurants im Park:
+  [Unterkünfte im Holiday Camp (offiziell)](https://www.heide-park.de/uebernachten/holiday-camp/unterkuenfte/)
+  · [Restaurants & Cafés (offiziell)](https://www.heide-park.de/planen/besuch-planen/essen-trinken/)
 - Wartezeiten, Messtage, Tagesverläufe, Mindestgrößen und Öffnungszeiten: die
   Widgets in diesem Beitrag und [unsere Parkseite](ref:heide-park), aus eigenen
   Messungen

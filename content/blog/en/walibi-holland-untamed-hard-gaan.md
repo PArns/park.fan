@@ -66,7 +66,7 @@ in the Netherlands rarely volunteers for an extra hour of polder.
 
 I think that’s a mistake, because Untamed alone is worth the drive.
 
-## First sea, then cows, then coasters
+## The park's history
 
 On **21 May 1971** Princess Beatrix opened the **Flevohof** on the fresh polder
 land, a 150-hectare agricultural park. City kids were meant to learn about farming there. There were stables, greenhouses, a dairy, a few pieces of play
@@ -236,7 +236,7 @@ the 2019 season. In the global steel ranking it was 42nd in 2024 and 48th in
 
 [Untamed](ref:walibi-holland/untamed?full)
 
-## YOY, Goliath and the rest
+## The other coasters
 
 Besides Untamed, the park has nine more coasters.
 
@@ -381,8 +381,6 @@ wait-time data**, the **typical wait across the park sits well under half
 an hour** (median). On the one day in ten with the most going on, it’s
 about half as long again.
 
-Ride by ride it looks like this:
-
 ```ride-waits-widget rides=walibi-holland/yoy-thrill|YOY THRILL|Single rail, steel;walibi-holland/condor|Condor|Suspended, steel;walibi-holland/yoy-chill|YOY CHILL|Single rail, steel;walibi-holland/lost-gravity|Lost Gravity|Big Dipper, steel;walibi-holland/untamed|UNTAMED|Hybrid;walibi-holland/xpress-platform-13|Xpress: Platform 13|Launch, steel;walibi-holland/goliath|Goliath|Mega Coaster, steel columns=type,peak,days highlight=walibi-holland/untamed
 
 ```
@@ -391,14 +389,12 @@ The longest queue is at the new YOY THRILL. Untamed sits mid-table,
 level with Condor and Lost Gravity. Walk straight into the Wilderness in the morning and you’ll have ridden
 Untamed before the YOY queue has got anywhere much.
 
-Untamed next to coasters at the neighbouring parks, across every operating day we have measured:
-
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
 
 ```
 
-In the time you queue **once** for [Taron](ref:phantasialand/taron) at
-Phantasialand, you ride Untamed about twice. The only ride in this line-up with
+Across every operating day we have measured, you ride Untamed about twice in the time you queue **once** for
+[Taron](ref:phantasialand/taron) at Phantasialand. The only ride in this line-up with
 a shorter queue than Untamed is Troy at Toverland.
 At park level it looks similar: only Toverland comes in lower, and Walibi
 Belgium sits almost level with Walibi Holland.
@@ -617,12 +613,16 @@ holidays, daily from late June to the end of August, in September almost only
 at weekends, and in October at weekends and during the autumn holidays. That’s
 how the 2026 calendar reads.
 
-**By month** the waits barely differ across the season.
+**By month**, calculated from every operating day we have measured, the waits barely differ across the season.
 It gets a little busier in April, when Easter, King’s Day and the start of the
 Dutch May holidays coincide, and so far on September weekends. The summer
 holidays barely show up in our data.
 
-**By weekday**, Saturday is no busier than the rest of the week:
+```stats-widget slug=walibi-holland show=months
+
+```
+
+**By weekday**, Saturday is no busier than the rest of the week.
 
 ```stats-widget slug=walibi-holland show=weekdays
 
@@ -636,16 +636,7 @@ outside the holidays: in 2026 every Thursday in June sat at a low crowd level in
 our calendar. The last week of June, when the park already opens daily, was no
 quieter than high summer.
 
-The quietest days coming up from our crowd calendar:
-
 ```best-days-widget slug=walibi-holland
-
-```
-
-And here’s how the crowds spread across the months, calculated from every
-operating day we have measured:
-
-```stats-widget slug=walibi-holland show=months
 
 ```
 
@@ -662,7 +653,7 @@ midday, and ride both tracks.
 **[Crazy River](ref:walibi-holland/crazy-river?bare)** fit into the midday heat, and **[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** fits in between. In the last hour, ride Untamed again, because it runs noticeably
 faster in the evening than in the morning.
 
-## Practical: tickets, getting there, food
+## Practical
 
 **Tickets.** Walibi runs **dynamic pricing**, so the day ticket costs different
 amounts depending on the date.
@@ -715,8 +706,6 @@ are fries, burgers, pizza and decent canteen food. The
 **Flavors** restaurant by the YOY area, with its waterside terrace, is the most
 pleasant address, if only for the view of the two tracks. Eat early, around half eleven,
 or late from half two.
-
-Current conditions at the park:
 
 ```weather-widget slug=walibi-holland
 

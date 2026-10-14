@@ -109,7 +109,7 @@ snel mogelijk doorheen wil.
 
 ```
 
-### Pre-shows: wachten dat zich vermomt als programmaonderdeel
+### Pre-shows
 
 Het grondigst lost de **pre-show** dat op, die het wachten tot onderdeel van de
 attractie verklaart. Het schoolvoorbeeld staat
@@ -141,7 +141,7 @@ aanbevolen om zijn geweldige slot kent het principe.
 Hoe ver je dat kunt doortrekken, zie je bij drie banen in Orlando. Hun
 wachtrijen zou je desnoods ook zonder rit bekijken.
 
-### Avatar Flight of Passage: een museum als wachtrij
+### Avatar Flight of Passage
 
 De wachtrij van
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
@@ -169,7 +169,7 @@ staat, vertelt achteraf toch vooral over de ademende avatar in de tank.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
-### Cosmic Rewind: eerst het museum, dan de coaster
+### Cosmic Rewind
 
 [EPCOT](ref:epcot?bare) gaat met
 [Guardians of the Galaxy: Cosmic Rewind](ref:epcot/guardians-of-the-galaxy-cosmic-rewind)
@@ -193,7 +193,7 @@ bestond tot dan toe vooral als verhaaltraject en nauwelijks als opslagruimte, en
 dat bij een baan die volgens RCDB met treinen voor 20 personen 2.000 gasten per
 uur wegwerkt.
 
-### VelociCoaster: wachten in het raptorverblijf
+### VelociCoaster
 
 Universal speelt bij
 [Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
@@ -385,8 +385,7 @@ wachttijdgeschiedenis van een park, van schoolvakanties en feestdagen (ook die
 van naburige regio’s), weersvoorspellingen, openingstijden en evenementen, en
 kijkt op dit moment zo’n half jaar vooruit. Vraag en doorstroom zitten
 desondanks in elk van die getallen, want elke wachttijd is uiteindelijk
-Little’s Law: de rij gedeeld door de doorstroom. Hoe vaak onze voorspellingen de realiteit raken, staat op de
-[Fancast-pagina](/fancast).
+Little’s Law: de rij gedeeld door de doorstroom. Op de [Fancast-pagina](/fancast) staat hoe vaak onze voorspellingen de realiteit raken.
 
 ## Waarom Peter Pan’s Flight altijd “escaleert”
 
@@ -435,7 +434,7 @@ ter wereld:
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
-## Europa wacht anders: Phantasialand en Europa-Park versus Orlando
+## Phantasialand en Europa-Park versus Orlando
 
 Hoezeer vraag en capaciteit het wachttijdniveau van een heel park bepalen, zie
 je het best als je twee grote Europese parken naast Orlando legt.
@@ -551,9 +550,7 @@ station vooraan staat daar ver vanaf.
 Aan de voertuigkant kost elke stop daarentegen echte capaciteit. Daarom stoppen
 de omnimover van de Haunted Mansion en de rolling station van YOY bij normaal
 bedrijf helemaal niet. In de rij daarvoor kost het stop-and-go alleen geduld.
-Wat je wachttijd echt verkort, beslis je voor het parkbezoek: een dag waarop
-er minder mensen voor je staan. Welke dag dat is, staat in de kalender van de
-beste dagen.
+Wat je wachttijd echt verkort, beslis je voor het parkbezoek in de kalender van de beste dagen: een dag waarop er minder mensen voor je staan.
 
 ## Virtual queues en dubbele stations
 

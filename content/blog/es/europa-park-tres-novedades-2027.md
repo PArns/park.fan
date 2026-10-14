@@ -90,21 +90,19 @@ en círculos sobre el puerto. Si la torre irá decorada así, no lo dice.
 
 ## Vuelve Enzo's Piccolo Mondo
 
-Según el parque, los más pequeños suben a las góndolas del área italiana desde
-hace más de 40 años. En 2027 el paseo volverá «con un nuevo brillo». Si cierra
+Los más pequeños suben a las góndolas del área italiana desde hace más de 40 años, según el parque. En 2027 el paseo volverá «con un nuevo brillo». Si cierra
 para las obras, y desde cuándo, no figura en el anuncio.
 
-Según el parque, habrá arte, teatro clásico y música italiana.
+Habrá arte, teatro clásico y música italiana, según el parque.
 Cuántas escenas habrá y cuáles son nuevas, no lo ha dicho.
 
 La atracción tiene la edad del área. Italia abrió en 1982 como primera área
 temática del parque, y Piccolo Mondo el mismo año. La construyó MACK Rides. Las
 góndolas llevan seis personas cada una y pasan dentro de una nave junto a Pisa,
 Venecia y Florencia. Un viaje dura algo más de tres minutos. Los niños de menos
-de 120 centímetros solo suben con un adulto. Según la página del parque,
-funciona en las cuatro temporadas, también en invierno.
+de 120 centímetros solo suben con un adulto. Funciona en las cuatro temporadas, también en invierno, según la página del parque.
 
-Según la página del parque sobre las novedades de 2027, Enzo es un loro. La misma
+En la página del parque sobre las novedades de 2027, Enzo es un loro. La misma
 área ya tiene una atracción de 1982 con dos años de apertura: para el
 [Castello dei Medici](ref:europa-park/castello-dei-medici), la página del parque
 da 1982 y 2024. Al lado funciona desde 2011 Volo da Vinci, un viaje en
@@ -131,9 +129,6 @@ Ninguna de las tres novedades es una gran montaña rusa. Para los niños que aú
 son demasiado bajos para blue fire y WODAN, Portugal e Islandia ganan algo que
 sube a lo alto, siempre que alcancen la altura mínima, que el parque todavía no
 ha dado.
-
-La tabla recoge las atracciones junto a las que se instalarán las tres
-novedades.
 
 ```ride-waits-widget rides=europa-park/atlantica-supersplash|Atlantica SuperSplash|Montaña rusa acuática;europa-park/wodan-timburcoaster|WODAN - Timburcoaster|Montaña rusa de madera;europa-park/blue-fire-megacoaster|blue fire Megacoaster|Launch-Coaster;europa-park/castello-dei-medici|Castello dei Medici|Dark Ride;europa-park/piccolo-mondo|Piccolo Mondo|Paseo en góndola columns=type,peak,days
 

@@ -182,8 +182,7 @@ anything. If we drew the obvious conclusion, every attraction in the park would 
 there at “very low”, plus an average of 0 minutes and a forecast built on zero
 observations. A dream day for every visitor, and entirely made up. Instead
 there’s a notice on the park page saying that there’s
-nothing to read here. What we can still tell you about the park is in the
-[Hansa-Park guide](/blog/hansa-park-tips).
+nothing to read here. The [Hansa-Park guide](/blog/hansa-park-tips) has what we can still tell you about the park.
 
 The same goes for the “Berliner Eislaufen” ice rink on
 Phantasialand’s Kaiserplatz, which only exists during Wintertraum, this time from 14
@@ -208,8 +207,7 @@ If you’d rather buy the time, a Quick Pass for one ride on Taron costs €12,
 according to Phantasialand’s information page (as of 5 October 2026). You can
 only get it on the spot, at Guest Services on Kaiserplatz, and supply is
 limited. When the posted wait is normal for that weekday anyway, it rarely pays
-off. What we think of it, and when the Quick Pass Ultimate is worth it, is in
-the [Phantasialand guide](/blog/phantasialand-wait-times-tips).
+off. In the [Phantasialand guide](/blog/phantasialand-wait-times-tips) we say what we think of it and when the Quick Pass Ultimate is worth it.
 
 For a whole day there’s the [trip planner](/blog/trip-planner). You pick your
 rides and get them in an order based on the day’s forecast wait times. That way

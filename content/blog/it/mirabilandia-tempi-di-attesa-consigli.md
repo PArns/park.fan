@@ -81,13 +81,13 @@ Lunghezza, altezza e velocità delle cinque grandi montagne russe vengono dalla 
 
 [Katun](ref:mirabilandia/katun?full)
 
-Katun è lungo 1.200 metri, alto 50 e dura 2:22 minuti. Il percorso ha, secondo la RCDB, sei inversioni: loop, zero-g roll, cobra roll e due cavatappi. I passeggeri siedono in quattro per fila, un treno ha otto vetture con 32 posti e tre treni girano insieme. Secondo la RCDB l’attrazione smaltisce 1.700 persone all’ora. Secondo il parco Katun tocca i 110 km/h, secondo la RCDB i 104.
+Katun è lungo 1.200 metri, alto 50 e dura 2:22 minuti. Il percorso ha, secondo la RCDB, sei inversioni: loop, zero-g roll, cobra roll e due cavatappi. I passeggeri siedono in quattro per fila, un treno ha otto vetture con 32 posti e tre treni girano insieme. Secondo la RCDB l’attrazione smaltisce 1.700 persone all’ora. Katun tocca i 110 km/h secondo il parco, i 104 secondo la RCDB.
 
-Il tema è la città maya di Sian Ka’an. Nel calendario maya il katun indica un periodo di 7.200 giorni, circa 20 anni, e all’inizio e alla fine della corsa il treno passa attraverso una «Stargate». Secondo il parco Katun è la più lunga montagna russa inverted d’Europa. Si sale da 140 centimetri e da dodici anni.
+Il tema è la città maya di Sian Ka’an. Nel calendario maya il katun indica un periodo di 7.200 giorni, circa 20 anni, e all’inizio e alla fine della corsa il treno passa attraverso una «Stargate». Katun è, secondo il parco, la più lunga montagna russa inverted d’Europa. Si sale da 140 centimetri e da dodici anni.
 
 ### iSpeed
 
-iSpeed è un launch coaster di Intamin con propulsione magnetica. Secondo il parco accelera a 100 km/h in 2,2 secondi, arriva a 110 km/h (RCDB) e sale fino a 55 metri. Il percorso è lungo 980 metri e ha due inversioni. Per il parco sono 120 km/h, la corsa dura 77 secondi.
+iSpeed è un launch coaster di Intamin con propulsione magnetica. Accelera, secondo il parco, a 100 km/h in 2,2 secondi, arriva a 110 km/h (RCDB) e sale fino a 55 metri. Il percorso è lungo 980 metri e ha due inversioni. Per il parco sono 120 km/h, la corsa dura 77 secondi.
 
 iSpeed nel 2009 ha sostituito la Sierra Tonante, la montagna russa in legno del 1992. Si sale da 140 centimetri, fino a un massimo di 195, e da dodici anni.
 
@@ -101,7 +101,7 @@ iSpeed nel 2009 ha sostituito la Sierra Tonante, la montagna russa in legno del 
 
 Desmo Race ha aperto nel 2019 nell’area Ducati. Sono due binari affiancati, ciascuno lungo 525 metri e alto 22, la corsa dura un minuto a un massimo di 80 km/h. Si sta a cavalcioni, e secondo il parco la corsa dovrebbe dare la sensazione di guidare una Panigale V4. Si può accelerare e frenare e così staccare chi corre sull’altro binario. Il costruttore è Maurer Rides, il tipo si chiama Spike Coaster. Si sale da 120 a 195 centimetri e fino a 135 chili, i bambini sotto i dieci anni e sotto i 140 centimetri salgono con un accompagnatore.
 
-### Master Thai, Gold Digger e le attrazioni per famiglie
+### Le montagne russe più piccole
 
 [Master Thai](ref:mirabilandia/master-thai) è, secondo il parco, la prima montagna russa d’Italia con due binari. L’ha costruita Preston & Barbieri nel 2011, ha una salita a catena, nessuna inversione e un tracciato Möbius in cui due treni corrono l’uno contro l’altro. L’altezza minima è di 120 centimetri, i bambini da sei a otto anni salgono con un accompagnatore.
 
@@ -109,7 +109,7 @@ Desmo Race ha aperto nel 2019 nell’area Ducati. Sono due binari affiancati, ci
 
 Nell’area bambini ce ne sono altre due: [PAW Patrol To The Rescue](ref:mirabilandia/paw-patrol-to-the-rescue), aperta nel 2005 come Leprotto Express, 135 metri e 34 km/h, e [Cowabunga Carts](ref:mirabilandia/cowabunga-carts), uno Zierer Force 190 del 2025 con 192 metri, 40 km/h e un lift a ruota booster. Entrambe si salgono da 90 centimetri, i più piccoli con un accompagnatore.
 
-## Acqua, dark ride e torri
+## Le altre attrazioni
 
 [Rio Bravo](ref:mirabilandia/rio-bravo) è la rafting di Intamin dell’anno d’apertura: in gommone lungo un canyon con rapide, da 110 centimetri. [Autosplash](ref:mirabilandia/autosplash) ha aperto lo stesso anno come rapida di Intamin, si viaggia su una Cadillac con le pinne e alla fine si cade per 15 metri. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) di Hopkins è uno shoot-the-chute del 1999, con un’onda di 15 metri in chiusura. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) è un giro interattivo in barca in cui si spara ai totem. Autosplash, El Dorado Falls e Raratonga si salgono da 90 centimetri.
 
@@ -222,7 +222,7 @@ Sono escluse Desmo Race, Blu River e The Walking Dead. Desmo Race è l’attrazi
 
 Dove l’attesa è sul quarto d’ora, il pass fa risparmiare poco. Rende di più alle attrazioni che nella nostra tabella vengono dopo Desmo Race: Rio Bravo, iSpeed e Autosplash. Il pacchetto «VIP» combina ingresso, menu all inclusive e un Regular Flash Pass.
 
-## Biglietti, prezzi e abbonamento
+## Biglietti e abbonamento
 
 Il biglietto giornaliero per adulti (sopra i 140 centimetri) parte online da 27,90 euro, tanto meno quanto prima prenoti. Secondo il parco risparmi fino a 20 euro se compri almeno dieci giorni prima (promozione fino al 25 ottobre). In biglietteria il biglietto costa 49,90 euro. Il biglietto ridotto per bambini da 100 a 140 centimetri e per senior sopra i 60 anni costa online da 27,90 e in biglietteria 42,90 euro. I bambini sotto i 100 centimetri non pagano. Il biglietto serale dalle 17 costa 22,90 euro. Il biglietto a data aperta costa 49,90 euro (ridotto 42,90) e vale fino a fine stagione.
 

@@ -429,7 +429,7 @@ trois enfants dès 320 €.
 Les temps d’attente et les jours calmes que nous avons mesurés à l’Europa-Park
 sont dans le [guide de l’Europa-Park](/blog/europa-park-temps-d-attente-conseils).
 
-## Accès, stationnement, hébergement
+## Accès et hôtels
 
 Rulantica se trouve au Roland-Mack-Ring 1, à 77977 Rust, en face de l’hôtel
 Krønasår. En voiture, c’est la **sortie 57b Rust de l’A5**. Le parking visiteurs
@@ -454,7 +454,7 @@ pointe, sinon toutes les 15 à 30. Le bus de Rust emmène les clients de la
 Silver Lake City au parc aquatique de 8 h à 20 h, toutes les 30 minutes. Les
 clients qui passent la nuit bénéficient en plus de l’entrée anticipée à 9 h.
 
-## Restauration, règles et petits caractères
+## Restauration et règles
 
 La restauration comprend le Kelpie Café dans le hall (de 8 h 30 à 22 h 30), le
 Snekkjas dans la ville sur pilotis, le Lumålunda au Surf Fjørd et le Tempel
@@ -478,7 +478,7 @@ Ces règles valent dans le parc aquatique :
   praticables, et il y a des fauteuils aquatiques en nombre limité. La station
   VR n’est pas accessible.
 
-## Fermetures, Halloween et Nørd Havn
+## Dates jusqu’en 2027
 
 Du **16 au 27 novembre 2026**, Rulantica est fermé pour sa révision, comme les
 24 et 25 décembre. Le 31 décembre, le parc aquatique ferme dès 19 h. Le parc met

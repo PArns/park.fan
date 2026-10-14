@@ -215,8 +215,7 @@ metros, 22 de altura y alcanza 71 km/h. El trazado es un out-and-back con lift
 de cadena y sin inversiones, diseñado por Jeff Pike. Según la Roller Coaster
 DataBase se parece a White Lightning, en Fun Spot America (Orlando), pero no es
 idéntico. Circulan dos trenes de doce plazas y la capacidad es de 635 personas
-por hora. Altura mínima: 120 centímetros. Las tres montañas rusas de madera de
-GCI en el Benelux, comparadas:
+por hora. Altura mínima: 120 centímetros. Con Joris en de Draak, en Efteling, el Benelux tiene tres montañas rusas de madera de GCI.
 
 ```ride-waits-widget rides=plopsaland-belgium/heidi-the-ride|Heidi The Ride (GCI, 2017);attractiepark-toverland/troy|Troy (GCI, 2007);efteling/joris-en-de-draak|Joris en de Draak (GCI, 2010) columns=park,peak highlight=plopsaland-belgium/heidi-the-ride
 
@@ -244,10 +243,9 @@ Coaster** es una Tivoli de Zierer que abrió en 1976 en el Meli Park como
 Keverbaan y en 2014 se sustituyó por una copia nueva. Ambas piden 90
 centímetros.
 
-Hay además dos dark rides. **[Plop’s Woods](ref:plopsaland-belgium/plops-woods)**
+El dark ride **[Plop’s Woods](ref:plopsaland-belgium/plops-woods)**
 (Het Bos van Plop) es el Apirama de 1979 reformado y lleva barcas por el bosque
-de los duendes. **[Bumba’s World Trip](ref:plopsaland-belgium/bumbas-world-trip)**
-(Op Reis met Bumba) abrió en 2023 en la zona cubierta Circus Bumba y, según la
+de los duendes. El segundo, **[Bumba’s World Trip](ref:plopsaland-belgium/bumbas-world-trip)** (Op Reis met Bumba), abrió en 2023 en la zona cubierta Circus Bumba y, según la
 Wikipedia en neerlandés, es el primer dark ride que el grupo Plopsa hizo
 construir por su cuenta.
 
@@ -332,13 +330,6 @@ y la cola crece hasta última hora de la tarde.
 
 ## Cuándo ir
 
-En el calendario están marcados los días más tranquilos de las próximas
-semanas:
-
-```best-days-widget slug=plopsaland-belgium
-
-```
-
 El parque no abre todo el año. Según el calendario de 2026 estuvo cerrado del 5
 de enero al 13 de febrero, abrió el 14 de febrero por las vacaciones de
 carnaval y en marzo solo funcionó los miércoles, sábados y domingos, antes de
@@ -348,6 +339,10 @@ suele cerrar a las 17 o las 18 horas, en julio y agosto a las 19 y algunas
 noches a las 22, y en octubre de 2026 a las 17 entre semana y a las 18 el fin de semana. Suele abrir a las 10. Algunos
 días está cerrado; el 10 de octubre de 2026 por un evento privado en el que no
 valen ni las entradas ni los pases anuales.
+
+```best-days-widget slug=plopsaland-belgium
+
+```
 
 Los miércoles el parque anuncia ahora la entrada a 36 euros en lugar de 56. Quien
 tiene hijos en edad escolar va de todos modos en los días que el calendario marca
@@ -360,10 +355,7 @@ Pumpkin King (un espantapájaros que solo en Halloween sale de Pumpkin Island), 
 Nachtwacht-Akademie, los zorros Fox & Trot del musical Pinocchio y la 25
 Celebration Parade. Además hay fuegos artificiales de Halloween y platos como el
 Pumpkin Spice Latte, el gofre de Halloween y la Spooky Burger. Una entrada con
-fecha cuesta en esas semanas desde 42 euros. Lo que hacen en Halloween otros
-parques de Bélgica y los Países Bajos está en la
-[guía de Halloween 2026](/blog/halloween-parques-atracciones-2026), entre otros
-Ibilaw, en Walibi Belgium.
+fecha cuesta en esas semanas desde 42 euros. Ibilaw, en Walibi Belgium, y los demás eventos de Halloween de Bélgica y los Países Bajos están en la [guía de Halloween 2026](/blog/halloween-parques-atracciones-2026).
 
 ```weather-widget slug=plopsaland-belgium
 
@@ -435,8 +427,7 @@ A 7 de octubre de 2026, según la página de entradas del parque:
 | Aparcamiento, comprado online por adelantado     | 15 €                                  |
 
 La página de inicio del parque dice «desde 38 euros» y la de entradas «desde 36
-euros». Qué precio vale para tu día lo muestra el calendario de la tienda de
-entradas. El precio de los niños depende de la altura, que se mide en la taquilla
+euros». El calendario de la tienda de entradas muestra el precio de cada día. El precio de los niños depende de la altura, que se mide en la taquilla
 con zapatos. Quien tenga dudas puede pedir que se mida de nuevo en información, y
 ese resultado es el que vale. Quien compra la entrada online pasa de largo de la
 taquilla y va directo al control.
@@ -487,7 +478,7 @@ código se introduce en los ferrocarriles belgas NMBS.
 
 ## Hoteles y comida
 
-El resort tiene cuatro alojamientos. El **Theater Hotel** (4 estrellas superior,
+De los cuatro alojamientos del resort, el **Theater Hotel** (4 estrellas superior,
 de una a seis personas) incluye desayuno y aparcamiento, y con media pensión
 además dos días de Plopsaqua. En el **Village** (de seis a doce personas, mínimo
 dos noches) y en los **Studio 100 Chalets** (de una a cuatro personas) la entrada a

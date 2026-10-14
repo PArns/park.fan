@@ -107,10 +107,9 @@ Die Bahn ist so alt wie der Themenbereich. Italien eröffnete 1982 als erster
 Themenbereich des Parks, Piccolo Mondo im selben Jahr. Gebaut hat sie MACK
 Rides. Die Gondeln fassen je sechs Personen und fahren in einer Halle an Pisa,
 Venedig und Florenz vorbei. Eine Fahrt dauert gut drei Minuten. Kinder unter
-120 Zentimetern fahren nur mit einem Erwachsenen. Laut Parkseite fährt die Bahn
-in allen vier Saisons, auch im Winter.
+120 Zentimetern fahren nur mit einem Erwachsenen. Die Bahn fährt laut Parkseite in allen vier Saisons, auch im Winter.
 
-Laut der Neuheitenseite des Parks ist Enzo ein Papagei. Im selben Themenbereich
+Auf der Neuheitenseite des Parks ist Enzo ein Papagei. Im selben Themenbereich
 steht schon eine Bahn von 1982 mit zwei Eröffnungsjahren: Für das
 [Castello dei Medici](ref:europa-park/castello-dei-medici) gibt die Parkseite
 1982 und 2024 an. Daneben fährt seit 2011 Volo da Vinci, eine Fahrt mit
@@ -136,8 +135,6 @@ Unter den drei Neuheiten ist keine große Achterbahn. Für Kinder, die für
 blue fire und WODAN noch zu klein sind, kommt in Portugal und Island etwas in der
 Höhe dazu, sofern sie die Mindestgröße erreichen, die der Park noch nicht genannt
 hat.
-
-In der Tabelle stehen die Bahnen, neben denen die drei Neuheiten entstehen.
 
 ```ride-waits-widget rides=europa-park/atlantica-supersplash|Atlantica SuperSplash|Wasserachterbahn;europa-park/wodan-timburcoaster|WODAN - Timburcoaster|Holzachterbahn;europa-park/blue-fire-megacoaster|blue fire Megacoaster|Launch-Coaster;europa-park/castello-dei-medici|Castello dei Medici|Dark Ride;europa-park/piccolo-mondo|Piccolo Mondo|Gondelfahrt columns=type,peak,days
 

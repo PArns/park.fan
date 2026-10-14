@@ -121,8 +121,7 @@ meetelt.
 vrij door het paleis, in werkelijkheid volgen ze een draad in de vloer. Zeven
 minuten, zes personen per voertuig, 34 voertuigen, theoretisch 1.400 gasten per
 uur. Bij het instappen kies je tussen de helden-, schatten- en muziektour, en de
-drie routes laten je verschillende ruimtes zien. Wie alles wil zien, moet er dus
-drie keer in.
+drie routes laten je verschillende ruimtes zien. Voor alle drie moet je er dus drie keer in.
 
 ```glossary-widget slug=trackless-ride
 
@@ -293,7 +292,7 @@ van de zes dienaren uit precies dat sprookje is. Aan de gevel hangen zijn buste 
 ovale lijsten met alle zes. De kraam bestaat sinds 1967, ging in 2002 wegens gebrek aan omzet dicht en is sinds 26 april 2019 weer open.
 
 In het Sprookjesbos staat niemand in de rij, en een capaciteitsgrens is er niet.
-Wie hier rondloopt, staat niet bij een attractie in de rij, en dat is een
+De mensen die hier rondlopen, staan niet bij een attractie in de rij, en dat is een
 reden dat een park met bijna zes miljoen bezoeken draaglijke wachttijden heeft.
 
 Sinds het voorjaar van 2026 verbouwt het park de routing. Er komen vier
@@ -309,8 +308,6 @@ We meten de wachttijden in de Efteling sinds 26 december 2025, tot 25 september
 2026 op **bijna 190 openingsdagen**. Over alle
 weekdagen gerekend ligt de typische wachttijd parkbreed **onder het half uur**
 (mediaan); op de piekmomenten is het zo’n anderhalf keer zo veel.
-
-De tien meest gevraagde attracties:
 
 ```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
 
@@ -433,8 +430,7 @@ voor het 25-jarig bestaan, weer op het podium stond.
 
 De Efteling is 365 dagen per jaar open.
 
-**Per maand** zijn april en september in onze data de rustigste van de goed gemeten
-maanden.
+**Per maand**, gerekend over alle gemeten openingsdagen, zijn april en september de rustigste van de goed gemeten maanden.
 Mei, juni en juli liggen dicht bij elkaar, augustus trekt merkbaar aan, en het
 zwaarst is **december**, oftewel het Winter Efteling-seizoen.
 
@@ -446,7 +442,11 @@ februari, oktober en november hebben we tot nu toe helemaal geen bruikbare dagen
 (stand 25 september 2026). De rangorde van de maanden is daarom maar grof. De rustigste
 maanden over alle parken staan op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 
-**Per weekdag** verschillen de dagen nauwelijks:
+```stats-widget slug=efteling show=months
+
+```
+
+**Per weekdag** verschillen de dagen nauwelijks.
 
 ```stats-widget slug=efteling show=weekdays
 
@@ -461,15 +461,8 @@ verschillen toch niet als advies verkopen.
 
 Meer dan de weekdag telt of de Nederlandse scholen vakantie hebben, en daarna of de
 Duitse dat hebben.
-De rustigste dagen die eraan komen:
 
 ```best-days-widget slug=efteling
-
-```
-
-En de drukte over de maanden, gerekend over alle gemeten openingsdagen:
-
-```stats-widget slug=efteling show=months
 
 ```
 
@@ -479,7 +472,7 @@ Er valt hier niets te kopen waarmee je de rij voorbijkomt, ook geen dynamisch
 geprijsde losse rit zoals Phantasialand die
 sinds de laatste Wintertraum verkoopt. Gratis is er baby switch voor ouders met
 kleine kinderen, en zeven attracties hebben een single-riderrij, die het park sinds
-2026 alleen nog op heel drukke dagen opent. Wie in het hotel slaapt, mag **30
+2026 alleen nog op heel drukke dagen opent. Hotelgasten mogen **30
 minuten eerder** naar binnen.
 
 Op **15 september 2017** begon bij Python de **Efteling
@@ -560,7 +553,7 @@ gebeurt. Laat in de middag, als het licht vlak wordt en de
 boten langs de Pagode trekken, is dat mijn favoriete programmapunt van het hele
 park.
 
-## Praktisch: tickets, bereikbaarheid, eten, slapen
+## Tickets en bereikbaarheid
 
 **Tickets.** De prijzen hangen af van de datum en liggen in 2026 tussen **40 en
 56 €** per dag, kinderen tot en met drie jaar gratis. Het gewone ticket geldt alleen
@@ -581,8 +574,7 @@ voorzieningenkaart en tot drie begeleiders betalen 2 € minder. **Parkeren kost
 - **Premium, 400 €** (36 € per maand): geen blokkeerdagen, 60 % op parkeren, 10 %
   op horeca en winkels, vier voordeeltickets voor gasten in plaats van twee.
 
-Rekenen loont vanaf het vijfde à zesde bezoek. Wie als hotelgast komt, omzeilt de
-blokkeerdagen sowieso.
+Rekenen loont vanaf het vijfde à zesde bezoek. Hotelgasten omzeilen de blokkeerdagen sowieso.
 
 **Bereikbaarheid.** Kaatsheuvel ligt in Noord-Brabant, vanaf Düsseldorf ruim
 anderhalf tot twee uur rijden en vanaf Keulen en het Ruhrgebied ruim twee uur, in
@@ -735,8 +727,6 @@ niet meer bij. Ik zou twee dagen inplannen.
 volgen de Sprookjesbibliotheek in 2027 en Missie Luminar in 2029.
 
 ## Weer en actuele wachttijden
-
-Het weer in Kaatsheuvel:
 
 ```weather-widget slug=efteling
 

@@ -141,9 +141,7 @@ Setenta kilómetros al noroeste, el [Efteling](ref:efteling) tiene
 
 ```
 
-Joris en de Draak quedó en los Golden Ticket Awards de 2026 cinco puestos por
-detrás de Troy. Esto cuestan en tiempo de espera los grandes nombres de la región, de
-madera o de acero:
+Joris en de Draak quedó en los Golden Ticket Awards de 2026 cinco puestos por detrás de Troy.
 
 ```ride-waits-widget rides=phantasialand/taron|Taron|Multi-launch, acero;phantasialand/fly|F.L.Y.|Flying, acero;efteling/joris-en-de-draak|Joris en de Draak|Madera;efteling/baron-1898|Baron 1898|Dive coaster, acero;attractiepark-toverland/troy|Troy|Madera;attractiepark-toverland/fenix|Fēnix|Wing, acero columns=type,park,peak highlight=attractiepark-toverland/troy
 
@@ -419,15 +417,11 @@ La [página de la mejor época](/mejor-epoca-para-visitar) pone los parques uno 
 
 No te puedes fiar de eso en cuanto se superponen los calendarios de vacaciones
 neerlandeses y alemanes, el tiempo y los horarios de apertura, y en la zona
-fronteriza de Limburgo se superponen constantemente. Estos son los días más
-tranquilos que vienen:
+fronteriza de Limburgo se superponen constantemente.
 
 ```best-days-widget slug=attractiepark-toverland
 
 ```
-
-Y así se reparte la afluencia por meses y días de la semana, calculada sobre los
-días de apertura medidos:
 
 ```stats-widget slug=attractiepark-toverland
 

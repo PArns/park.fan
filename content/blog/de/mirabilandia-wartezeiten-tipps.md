@@ -81,13 +81,13 @@ Länge, Höhe und Tempo der fünf großen Bahnen stammen aus der Roller Coaster 
 
 [Katun](ref:mirabilandia/katun?full)
 
-Katun ist 1.200 Meter lang, 50 Meter hoch und fährt 2:22 Minuten. Die Strecke hat nach RCDB sechs Inversionen: Looping, Zero-G-Roll, Cobra Roll und zwei Korkenzieher. Die Fahrgäste sitzen zu viert in einer Reihe, ein Zug hat acht Wagen mit 32 Plätzen, und drei Züge fahren gleichzeitig. Die Bahn fasst nach RCDB 1.700 Personen pro Stunde. Nach Parkangabe fährt Katun 110 km/h, nach RCDB 104.
+Katun ist 1.200 Meter lang, 50 Meter hoch und fährt 2:22 Minuten. Die Strecke hat nach RCDB sechs Inversionen: Looping, Zero-G-Roll, Cobra Roll und zwei Korkenzieher. Die Fahrgäste sitzen zu viert in einer Reihe, ein Zug hat acht Wagen mit 32 Plätzen, und drei Züge fahren gleichzeitig. Die Bahn fasst nach RCDB 1.700 Personen pro Stunde. Katun fährt nach Parkangabe 110 km/h, nach RCDB 104.
 
 Das Thema ist die Maya-Stadt Sian Ka'an. Der Name Katun bezeichnet im Maya-Kalender einen Zeitraum von 7.200 Tagen, rund 20 Jahren, und am Anfang und am Ende der Fahrt fährt der Zug durch ein „Stargate“. Nach Angabe des Parks ist Katun die längste Inverted-Achterbahn Europas. Sie fährt ab 140 Zentimetern und ab zwölf Jahren.
 
 ### iSpeed
 
-iSpeed ist ein Intamin-Launch-Coaster mit magnetischem Antrieb. Er beschleunigt laut Park in 2,2 Sekunden auf 100 km/h, erreicht bis zu 110 km/h (RCDB) und klettert auf 55 Meter. Die Strecke ist 980 Meter lang und hat zwei Inversionen. Laut Park fährt iSpeed 120 km/h, die Fahrt dauert 77 Sekunden.
+iSpeed ist ein Intamin-Launch-Coaster mit magnetischem Antrieb. Er beschleunigt laut Park in 2,2 Sekunden auf 100 km/h, erreicht bis zu 110 km/h (RCDB) und klettert auf 55 Meter. Die Strecke ist 980 Meter lang und hat zwei Inversionen. iSpeed fährt laut Park 120 km/h, die Fahrt dauert 77 Sekunden.
 
 iSpeed hat 2009 die Sierra Tonante ersetzt, die Holzachterbahn von 1992. Gefahren wird ab 140 Zentimetern, bis höchstens 195 Zentimeter, und ab zwölf Jahren.
 
@@ -101,7 +101,7 @@ iSpeed hat 2009 die Sierra Tonante ersetzt, die Holzachterbahn von 1992. Gefahre
 
 Desmo Race eröffnete 2019 im Ducati-Bereich. Es sind zwei Schienen nebeneinander, jede 525 Meter lang und 22 Meter hoch, die Fahrt dauert eine Minute bei bis zu 80 km/h. Man sitzt rittlings, und die Fahrt soll sich nach Parkangabe anfühlen wie auf einer Panigale V4. Man kann beschleunigen und bremsen und so die andere Schiene abhängen. Hersteller ist Maurer Rides, der Typ heißt Spike Coaster. Zugelassen sind 120 bis 195 Zentimeter und höchstens 135 Kilogramm, Kinder unter zehn Jahren und unter 140 Zentimetern fahren mit Begleitung.
 
-### Master Thai, Gold Digger und die Familienbahnen
+### Die kleineren Achterbahnen
 
 [Master Thai](ref:mirabilandia/master-thai) ist nach Parkangabe die erste Achterbahn Italiens mit zwei Schienen. Preston & Barbieri hat sie 2011 gebaut, sie hat einen Kettenlift, keine Inversion und eine Möbius-Streckenführung, bei der zwei Züge gegeneinander fahren. Die Mindestgröße liegt bei 120 Zentimetern, Kinder von sechs bis acht Jahren fahren mit Begleitung.
 
@@ -109,7 +109,7 @@ Desmo Race eröffnete 2019 im Ducati-Bereich. Es sind zwei Schienen nebeneinande
 
 Im Kinderbereich fahren zwei weitere: [PAW Patrol To The Rescue](ref:mirabilandia/paw-patrol-to-the-rescue), 2005 als Leprotto Express eröffnet, 135 Meter und 34 km/h, und [Cowabunga Carts](ref:mirabilandia/cowabunga-carts), ein Zierer Force 190 von 2025 mit 192 Metern, 40 km/h und einem Boosterrad-Lift. Beide fahren ab 90 Zentimetern, jüngere Kinder mit Begleitung.
 
-## Wasser, Dunkelfahrten und Türme
+## Die übrigen Fahrgeschäfte
 
 [Rio Bravo](ref:mirabilandia/rio-bravo) ist die Rafting-Fahrt von Intamin aus dem Eröffnungsjahr, in Schlauchbooten durch einen Canyon mit Stromschnellen, ab 110 Zentimetern. [Autosplash](ref:mirabilandia/autosplash) hat im selben Jahr als Wildwasserbahn von Intamin eröffnet, man fährt in einem Cadillac mit Heckflossen, und am Ende fällt man 15 Meter tief. [El Dorado Falls](ref:mirabilandia/el-dorado-falls) von Hopkins ist ein Shoot-the-Chute von 1999, mit einer 15 Meter hohen Welle am Schluss. [Raratonga](ref:mirabilandia/raratonga) (2007, 3DBA) ist eine interaktive Bootsfahrt, bei der man auf Totempfähle schießt. Autosplash, El Dorado Falls und Raratonga fahren ab 90 Zentimetern.
 
@@ -222,7 +222,7 @@ Ausgeschlossen sind Desmo Race, Blu River und The Walking Dead. Desmo Race ist d
 
 Wo die Wartezeit im Bereich einer Viertelstunde liegt, spart der Pass nicht viel. Am meisten bringt er an den Bahnen, die in unserer Tabelle nach Desmo Race kommen: Rio Bravo, iSpeed und Autosplash. Das Paket „VIP“ kombiniert Eintritt, das All-Inclusive-Menü und einen Regular Flash Pass.
 
-## Tickets, Preise und Saisonkarte
+## Tickets und Saisonkarte
 
 Das Tagesticket für Erwachsene (über 140 Zentimeter) beginnt online bei 27,90 Euro, je früher du buchst. Nach Angabe des Parks sparst du bis zu 20 Euro, wenn du mindestens zehn Tage vorher kaufst (Aktion bis 25. Oktober). An der Kasse kostet das Ticket 49,90 Euro. Die ermäßigte Karte für Kinder von 100 bis 140 Zentimetern und für Senioren über 60 kostet online ab 27,90 und an der Kasse 42,90 Euro. Kinder unter 100 Zentimetern zahlen nichts. Das Abendticket ab 17 Uhr kostet 22,90 Euro. Das Ticket mit offenem Datum kostet 49,90 Euro (ermäßigt 42,90) und gilt bis zum Saisonende.
 

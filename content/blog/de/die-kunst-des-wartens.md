@@ -115,7 +115,7 @@ wollen.
 
 ```
 
-### Pre-Shows: Warten, das sich als Programmpunkt tarnt
+### Pre-Shows
 
 Am gründlichsten löst das die **Pre-Show**, die das Warten zum Teil der
 Attraktion umdeklariert. Das Paradebeispiel ist der
@@ -147,7 +147,7 @@ wegen eines großartigen Finales weiterempfohlen hat.
 Drei Bahnen in Orlando treiben das so weit, dass man sich ihre Warteschlangen
 notfalls auch ohne Fahrt anschauen würde.
 
-### Avatar Flight of Passage: Ein Museum als Warteschlange
+### Avatar Flight of Passage
 
 Die Warteschlange von
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
@@ -175,7 +175,7 @@ steht, erzählt hinterher trotzdem vom atmenden Avatar im Tank.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
-### Cosmic Rewind: Erst das Museum, dann der Coaster
+### Cosmic Rewind
 
 [EPCOT](ref:epcot?bare) treibt es mit
 [Guardians of the Galaxy: Cosmic Rewind](ref:epcot/guardians-of-the-galaxy-cosmic-rewind)
@@ -199,7 +199,7 @@ Standby-Warteschlange. Die physische Warteschlange existierte bis dahin quasi
 nur als Story-Strecke, kaum als Stauraum, und das bei einer Bahn, die laut RCDB
 mit Zügen für 20 Personen 2.000 Gäste pro Stunde wegschafft.
 
-### VelociCoaster: Warten im Raptor-Paddock
+### VelociCoaster
 
 Universal spielt bei
 [Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
@@ -398,8 +398,7 @@ aus der gemessenen Wartezeit-Historie eines Parks, aus Schulferien und
 Feiertagen (auch denen der Nachbarregionen), Wetterprognosen, Öffnungszeiten und
 Sonderevents und schaut derzeit rund ein halbes Jahr voraus. Nachfrage und
 Durchsatz stecken trotzdem in jeder dieser Zahlen, denn jede Wartezeit ist nach
-Little’s Law die Warteschlange geteilt durch den Durchsatz. Wie oft unsere
-Prognosen die Realität treffen, steht auf der [Fancast-Seite](/fancast).
+Little’s Law die Warteschlange geteilt durch den Durchsatz. Auf der [Fancast-Seite](/fancast) steht, wie oft unsere Prognosen die Realität treffen.
 
 ## Warum Peter Pan’s Flight immer „eskaliert“
 
@@ -449,7 +448,7 @@ der Welt:
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
-## Europa wartet anders: Phantasialand & Europa-Park vs. Orlando
+## Phantasialand und Europa-Park vs. Orlando
 
 Wie sehr Nachfrage und Kapazität das Wartezeit-Niveau eines ganzen Parks
 bestimmen, sieht man am besten, wenn man zwei große Parks aus Europa neben
@@ -567,8 +566,7 @@ Auf der Fahrzeugseite kostet jeder Stopp dagegen echte Kapazität. Deshalb
 halten der Omnimover der Haunted Mansion und die Rolling Station von YOY im
 Normalbetrieb gar nicht erst an. In der Warteschlange davor kostet das Stop-and-Go
 nur Nerven. Kürzer wird deine Wartezeit durch einen Tag, an dem weniger Leute
-vor dir stehen, und den wählst du vor dem Parkbesuch. Welcher das ist, steht im
-Kalender der besten Tage.
+vor dir stehen, und den wählst du vor dem Parkbesuch im Kalender der besten Tage.
 
 ## Virtual Queues und doppelte Stationen
 

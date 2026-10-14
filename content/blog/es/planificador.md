@@ -160,9 +160,8 @@ cierra una atracción por la noche, así que sobre eso no afirmamos nada.
 
 ## Dos botones ordenan el día
 
-Bajo la línea de tiempo hay dos botones. «Planificar todas las atracciones
-estrella» añade las grandes del parque que aún no están en el día y luego ordena
-todo. «Optimizar el día» no añade nada y solo reordena lo que ya hay. Detrás de
+El botón «Planificar todas las atracciones estrella», bajo la línea de tiempo, añade las grandes del parque que aún no están en el día y luego ordena
+todo. «Optimizar el día», a su lado, no añade nada y solo reordena lo que ya hay. Detrás de
 los dos corre el mismo cálculo. Son dos botones porque son dos preguntas:
 lléname el día, y si el orden puede ser mejor.
 
@@ -223,7 +222,7 @@ tiempo se lo llevo pidiendo años.) Una media no es un techo, y muchos días la
 previsión cae más lejos. Por eso el número está ahí como error típico y nunca
 como un margen que ya contuviera la respuesta correcta.
 
-**Los horarios de espectáculo son dos cosas.** Lo que el parque ha publicado
+**Un horario de espectáculo puede ser una estimación.** Lo que el parque ha publicado
 para hoy es un anuncio. Lo que hemos proyectado desde el último día de la semana
 equivalente es una suposición, y el planificador la dibuja más suave: con una
 tilde delante de la hora, línea de puntos y la fecha de la que salen los
@@ -264,7 +263,7 @@ un enlace para compartir. Quien lo abre recibe su propia copia en su
 planificador, y lo que cambie en ella se queda con él. Así llega también un plan
 del ordenador al móvil.
 
-Dos cosas más que se pasan por alto fácilmente. En el ordenador cuelga en cada
+En el ordenador cuelga en cada
 página, en el borde de la pantalla, una pestaña que abre el planificador,
 incluso sin nada planificado; en el móvil lo hace desde el 24 de septiembre un
 icono de calendario en la barra de arriba. Y en el ordenador puedes abrir una segunda columna, y entonces
@@ -273,8 +272,7 @@ quedaría?».
 
 ## Cómo empezar
 
-La entrada pasa por cuatro preguntas. A qué parque, qué día, quién viene y qué
-atracciones grandes entran. Las imágenes de abajo todavía muestran la primera
+Para empezar respondes cuatro preguntas: a qué parque, qué día, quién viene y qué atracciones grandes entran. Las imágenes de abajo todavía muestran la primera
 versión, con tres pasos.
 
 La primera es un buscador, y detrás hay una pequeñez que se tuerce enseguida.

@@ -77,7 +77,7 @@ The park called the plan "Project Exodus". It put first designs to a public cons
 
 ```
 
-On its own page the park gives the track length as 995.4 metres, the longest in the park, along with a height of 236 feet, a top speed of 81 mph, a 168-foot (51-metre) loop that the park says is the tallest in Europe, and an element the park lists as a world first, an airtime hill with an outward tilt. It also gives 14.8 seconds of weightlessness. The ride has two inversions, a barrel roll in the downward section and a dive loop with a short hold in mid-air. A chain pulls the train up the lift. The first drop is vertical, and the train turns through 180 degrees as it falls.
+On its own page the park gives the track length as 995.4 metres, the longest in the park, along with a height of 236 feet, a top speed of 81 mph, 14.8 seconds of weightlessness, a 168-foot (51-metre) loop that the park says is the tallest in Europe, and an element the park lists as a world first, an airtime hill with an outward tilt. The ride has two inversions, a barrel roll in the downward section and a dive loop with a short hold in mid-air. A chain pulls the train up the lift. The first drop is vertical, and the train turns through 180 degrees as it falls.
 
 The minimum height is **1.30 metres**, the lowest of the park's big coasters. Riders with a prosthesis can't ride, and after a review the park says the ride is no longer suitable for people who can't move independently. Hyperia and SAW both have a single rider queue.
 
@@ -174,7 +174,7 @@ The park sells Fastrack in four packages, each per person, and the card can be s
 - **Gold** from £115: all day on 14 rides, without Hyperia.
 - **Platinum** from £135: all day on 15 rides, with Hyperia.
 
-There's also a **One Shot Fastrack** from £6, which you buy only once you're in the park, through the app or a QR code at the entrance to a coaster. The park sells Fastrack in limited numbers and tells guests to check before buying that admission tickets are available for the day, because the two are sold separately. The park's Fastrack page lists the Ghost Train in three packages, while the ride's own page says there's currently no Fastrack for it.
+There's also a **One Shot Fastrack** from £6, which you buy only once you're in the park, through the app or a QR code at the entrance to a coaster. The park sells Fastrack and admission tickets separately, Fastrack only in limited numbers, and tells guests to check before buying that admission tickets are available for the day. The park's Fastrack page lists the Ghost Train in three packages, while the ride's own page says there's currently no Fastrack for it.
 
 Guests staying in the Thorpe Shark Cabins get an hour of Fastrack on the second day, at the start or the end of the park day. During Fright Nights it applies to the first hour only.
 

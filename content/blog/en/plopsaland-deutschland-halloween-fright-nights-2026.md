@@ -123,8 +123,7 @@ you booking six time slots. On a busy October Saturday, take the pass.
 ## Who it is for
 
 The park recommends the Fright Nights **for ages 16 and up**. Unlike
-Traumatica, that isn't a hard cut-off: according to the park's FAQ, younger
-guests get in with a parent or guardian. For younger or easily startled
+Traumatica, that isn't a hard cut-off: the park's FAQ says younger guests get in with a parent or guardian. For younger or easily startled
 company, Majaland and the Plopsa Indoor hall stay monster-free, and on site,
 and only there, you can get a "Schreck-Stopp", which the park says keeps the
 monsters off you. Guests over 12 may not wear masks, heavy make-up or costumes,

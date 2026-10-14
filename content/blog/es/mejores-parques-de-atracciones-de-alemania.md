@@ -55,7 +55,7 @@ parkLinks:
   - legoland-deutschland
 ---
 
-En park.fan hay **nueve parques de atracciones de Alemania**. En seis medimos los tiempos de
+De los **nueve parques de atracciones de Alemania** que hay en park.fan, en seis medimos los tiempos de
 espera, atracción por atracción. Del [Hansa-Park](ref:hansa-park) no llega ni una sola cifra,
 porque el parque solo las enseña en su propia app. [Traumatica](ref:traumatica), de la que por ahora tenemos solo cuatro días de medición, y el
 mundo acuático [Rulantica](ref:rulantica) pertenecen al
@@ -185,7 +185,7 @@ parque cumple cincuenta años y para la ocasión construye una torre mirador de 
 World y se llama así desde 2005. Según nuestra medición, las colas son más cortas que en el
 Phantasialand, y el domingo es aquí uno de los días más tranquilos.
 
-El parque tiene ocho montañas rusas. La más grande es
+La más grande de sus ocho montañas rusas es
 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise), de Mack
 Rides, de 2017: 40 metros de altura, 90 km/h, desde 130 centímetros, y antes de salir el tren se
 lanza tres veces adelante y atrás hasta coger velocidad para la primera colina.
@@ -287,7 +287,7 @@ En Taron y F.L.Y., con 130 centímetros solo se monta con un adulto al lado; sin
 
 ## Dónde esperas menos
 
-La comparación abarca todos los días medidos, calculados igual para cada parque. Las filas van en el orden de la medición del 3 de octubre de 2026 y no se reordenan:
+La comparación abarca todos los días medidos, calculados igual para cada parque. Las filas van en el orden de la medición del 3 de octubre de 2026 y no se reordenan.
 
 ```park-comparison-widget slugs=phantasialand,legoland-deutschland,europa-park,heide-park,movie-park-germany,plopsaland-deutschland show=quietest
 
@@ -308,13 +308,11 @@ misma atracción, y sin pase allí esperas más que nuestra mediana.
 
 ## A qué hora hay cola en cada sitio
 
-En el Phantasialand el día es así, atracción por atracción en todos los días medidos:
-
 ```hourly-profile-widget slug=phantasialand top=6
 
 ```
 
-Taron está más lleno a la apertura y en la última hora, cuando todo el mundo quiere un último viaje
+En el conjunto de días medidos en el Phantasialand, Taron está más lleno a la apertura y en la última hora, cuando todo el mundo quiere un último viaje
 rápido. F.L.Y. tiene poca cola en la primera hora y su pico una hora después, en cuanto el resto del
 parque ha llegado a Rookburgh. Los dos tienen su hora más tranquila por la tarde. Si
 quieres montar en ambos, ve a F.L.Y. a la apertura y guarda Taron para la tarde.
@@ -346,8 +344,8 @@ En cinco de los seis parques medidos, un día laborable dentro de las vacaciones
 propio estado estuvo más lleno que un día medio de fin de semana. Qué estados llenan qué parque
 está en la [guía de vacaciones escolares y afluencia](/blog/vacaciones-escolares-parques-de-atracciones-alemania).
 
-El calendario con la previsión de los próximos días existe para cada parque, aquí el del
-Europa-Park:
+El calendario con la previsión de los próximos días existe para cada parque, y abajo está el del
+Europa-Park.
 
 ```best-days-widget slug=europa-park
 

@@ -2,6 +2,7 @@
 title: 'Gardaland: Oblivion, Raptor and Blue Tornado on Lake Garda'
 translationKey: gardaland-guide
 date: '2026-10-07'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -56,15 +57,19 @@ The park’s big coasters are [Oblivion](ref:gardaland/oblivion-the-black-hole),
 
 In the early 1970s Livio Furini, a businessman from Verona, wanted to build a theme park on Lake Garda. He had been inspired by Edenlandia in Naples and a visit to Disneyland in California. In 1971 he bought a 60,000-square-metre plot between Lazise and Castelnuovo del Garda, on the shore of the lake.
 
-The park opened on 19 July 1975. There were 21 attractions on opening day, including a fishing pond, and about 100,000 visitors came in the first year. Admission was 1,750 lire. The narrow-gauge railway TransGardalandExpress is still there and is the only attraction left from the opening year. Furini himself stepped down as chairman in 1975 after disputes with the other shareholders.
+The park opened on 19 July 1975. There were 21 attractions on opening day, including a fishing pond, and about 100,000 visitors came in the first year. Admission was 1,750 lire, and the park had cost 200 million lire to build. The narrow-gauge railway TransGardalandExpress is still there and is the only attraction left from the opening year. Furini himself stepped down as chairman in 1975 after disputes with the other shareholders. The first director was Giorgio Tauber, who ran Gardaland until 1995.
 
-The park grew fast in the eighties. Fininvest, Silvio Berlusconi’s media company, advertised it on television, and from 1984 to 1992 it ran an entertainment show hosted by Paolo Bonolis. In 1985 the steel coaster Magic Mountain, the first in Italy, opened together with Colorado Boat, a log flume from Mack Rides. The mascot Prezzemolo, a young dragon who still turns up all over the park, dates from the same period.
+The park grew fast in the eighties. Fininvest, Silvio Berlusconi’s media company, advertised it on television, and from 1984 to 1992 it ran an entertainment show hosted by Paolo Bonolis. In 1985 the steel coaster Magic Mountain, the first in Italy, opened together with Colorado Boat, a log flume from Mack Rides. From 1986 to 1989 the park also ran Prezzemolo Tour, a family coaster from Zamperla. The mascot Prezzemolo, a young dragon who still turns up all over the park, dates from the same period.
 
-The nineties added the pirate area with the dark ride I Corsari (1992), Blue Tornado and the drop tower Space Vertigo (both 1998) and the river rapids Jungle Rapids (1999). Fuga da Atlantide followed in 2003 and the Gardaland Hotel, the first themed hotel in Italy, in 2004. Merlin Entertainments took over in October 2006, and in 2008 the SEA LIFE Aquarium and the coaster Mammut opened.
+The nineties added the pirate area with the dark ride I Corsari (1992), Blue Tornado and the drop tower Space Vertigo (both 1998) and the river rapids Jungle Rapids (1999). In 1997 the Palablù opened with 1,500 seats, at the time the largest dolphinarium in Italy.
+
+In 2001 the themed area Fantasy Kingdom was built on what had been the staff car park. Fuga da Atlantide followed in 2003 and the Gardaland Hotel, the first themed hotel in Italy, in 2004. In 2005 Sequoia Adventure opened, the prototype of the Screaming Squirrel from S&S, 30 metres high with three inversions. It broke down often, and from 2019 it was called Sequoia Magic Loop. In June 2005 Forbes magazine put Gardaland fifth among the ten amusement parks with the highest revenue in the world.
+
+Merlin Entertainments took over the park in October 2006. The sellers were the investment firm Investindustrial and Aletti Merchant, a merchant bank in the BPVN banking group, who together held about 90 per cent. According to press reports the price was around 500 million euros. In 2008 the SEA LIFE Aquarium and the coaster Mammut opened.
 
 Since then Merlin has been turning the park into a resort: Raptor (2011), Oblivion (28 March 2015), the Adventure Hotel (2016), the Magic Hotel (2019) and the LEGOLAND Water Park (2021). The pandemic interrupted that for a year. Gardaland reopened on 13 June 2020, the first Italian theme park to do so, with a cap of 10,000 guests a day.
 
-Attractions based on the film "Jumanji" have stood there since 2022. In 2024 the drop-and-twist tower Wolf Legend replaced the coaster Sequoia Magic Loop, which was taken down in autumn 2023. In 2025 the park celebrated its 50th birthday with Animal Treasure Island, a water dark ride on 6,000 square metres into which Merlin put about ten million euros.
+Attractions based on the film "Jumanji" have stood there since 2022. In 2024 the drop-and-twist tower Wolf Legend replaced the coaster Sequoia Magic Loop, which was taken down in 2023. In 2025 the park celebrated its 50th birthday with Animal Treasure Island, a water dark ride on 6,000 square metres into which Merlin put about ten million euros.
 
 ## The coasters
 
@@ -77,8 +82,9 @@ The technical data comes from the park and the Roller Coaster DataBase.
 | Raptor       | Wing Coaster, Bolliger & Mabillard | 2011   | 33 m   | 90 km/h  | 3          | 140 cm         |
 | Shaman       | Double Loop Corkscrew, Vekoma      | 1985   | 30 m   | 70 km/h  | 4          | 120 cm         |
 | Mammut       | Mine Train, Vekoma                 | 2008   | 14 m   | 50 km/h  | 0          | 110 cm         |
+| Dragon Rush  | Spinning Coaster, Fabbri           | 2016   | 14 m   | 40 km/h  | 0          | 110 cm         |
 
-### Oblivion: The Black Hole
+### Oblivion
 
 [Oblivion](ref:gardaland/oblivion-the-black-hole?full)
 
@@ -86,23 +92,23 @@ At the top the train hangs over the edge for a moment, then drops 42.5 metres at
 
 Oblivion opened on 28 March 2015, for the park’s 40th birthday.
 
-### Raptor: the first wing coaster
+### Raptor
 
 Raptor is the prototype of the wing coasters. Bolliger & Mabillard opened it on 1 April 2011. The seats hang to the left and right of the track, four people side by side, with nothing above or below you. Its three inversions are a corkscrew, a zero-g roll and an inline twist.
 
-### Blue Tornado and Shaman: Vekoma, 1998 and 1985
+### Blue Tornado and Shaman
 
-Blue Tornado is a suspended looping coaster in the standard 765-metre length, with a helix. The train hangs below the track, there are five inversions, and the ride lasts 1:42 minutes. A train holds 20 riders, and according to RCDB the ride manages 1,500 people an hour. Oblivion has three trains of 18 seats each.
+Blue Tornado is a suspended looping coaster in the standard 765-metre length, with a helix. The train hangs below the track, there are five inversions, and the ride lasts 1:42 minutes. A train holds 20 riders, and according to RCDB the ride manages 1,500 people an hour.
 
-Shaman is the oldest coaster in the park. It opened in 1985 as Magic Mountain, then the first steel coaster in Italy. In 2008 it got new chassis from Vekoma, and new train bodies for 2009. Over the winter of 2020/21 a large part of the track was replaced; only the station, lift hill and first drop stayed. The train runs two loops and a double corkscrew sequence, and the ride takes two minutes. In 2017 you could ride it with VR headsets. According to German Wikipedia the loading times caused queues, and the idea was dropped after one season.
+Shaman is the oldest coaster in the park. It opened in 1985 as Magic Mountain. In 2008 it got new chassis from Vekoma, and new train bodies for 2009. Over the winter of 2020/21 a large part of the track was replaced; only the station, lift hill and first drop stayed. The train runs two loops and a double corkscrew sequence, and the ride takes two minutes. In 2017 you could ride it with VR headsets. According to German Wikipedia the loading times caused queues, and the idea was dropped after one season.
 
-### Mammut, Dragon Rush and Ortobruco Tour
+### The family coasters
 
 [Mammut](ref:gardaland/mammut) is a mine-train coaster from Vekoma with three lift hills (12, 13 and 14 metres) and a ride time of 2:45 minutes. A statue of a mammoth stands at the entrance, and the theme is arctic. A train has 36 seats.
 
-[Dragon Rush](ref:gardaland/dragon-rush) is a spinning coaster from the Fabbri Group, opened in 2016 in what was then the Kung Fu Panda area. It was reworked in 2025 after the DreamWorks licence for Kung Fu Panda had ended, and the area is now called Dragon Empire. Dragon Rush runs from 110 centimetres and, by our measurements, has the longest queue in the park.
+[Dragon Rush](ref:gardaland/dragon-rush) is a spinning coaster from the Fabbri Group. It opened on 14 May 2016 as Kung Fu Panda Master in what was then the Kung Fu Panda area, and it has six cars for four people each. It was reworked in 2025 after the DreamWorks licence for Kung Fu Panda had ended, and the area is now called Dragon Empire. By our measurements Dragon Rush has the longest queue in the park.
 
-[Ortobruco Tour](ref:gardaland/ortobruco-tour) is a caterpillar coaster from Pinfari for children from 100 centimetres. According to the Roller Coaster DataBase it has seven booster lift hills, and the trains hold 28 people.
+[Ortobruco Tour](ref:gardaland/ortobruco-tour) is a caterpillar coaster from Pinfari for children from 100 centimetres. It has run since 1990 and has had its present track since 1993. According to the Roller Coaster DataBase it has seven booster lift hills, and the trains hold 28 people.
 
 ## Water, dark rides and towers
 
@@ -130,13 +136,9 @@ The Halloween programme runs until 1 November. "Halloween Manor" lasts 25 minute
 
 ## Wait times at the rides
 
-In the wait times measured over the past twelve months, the median at most rides is between ten and 25 minutes.
-
 ```ride-waits-widget park=gardaland top=8 columns=land,peak,days
 
 ```
-
-Dragon Rush, the family spinning coaster, tops the table, followed by Jumanji – The Adventure. Blue Tornado is in the upper third, while Oblivion and Raptor are at the bottom. The three run from 140 centimetres, Dragon Rush and Jumanji from 110 and 107.
 
 ```stats-widget slug=gardaland show=attractions
 
@@ -150,9 +152,7 @@ In high season the park opens at 10 am. Blue Tornado, Mammut, Raptor and Fuga da
 
 ```
 
-The best time for Blue Tornado, Mammut, Raptor and Fuga da Atlantide is the first 15 minutes after opening. Oblivion follows after about 30 minutes. Wolf Legend is worth it after roughly an hour, Jumanji – The Adventure after an hour and 15 minutes, Shaman and Colorado Boat after an hour and a half. Dragon Rush is shortest two hours after opening, so around noon.
-
-At most rides, going at the best time means queuing 20 to 45 minutes less than at the peak.
+At most rides, going at the best time means queuing about half an hour less than at the peak.
 
 ## When to go
 
@@ -186,11 +186,11 @@ Say you’re at the entrance at 10 am and can ride everything, so you’re at le
 
 Blue Tornado, Mammut and Raptor come first, in the first quarter of an hour while the queues there are still short, then Fuga da Atlantide. Oblivion is on the list for around half past ten, before its queue builds up.
 
-At eleven the four early rides peak. That’s the time for Wolf Legend, and a quarter of an hour later for Jumanji – The Adventure. If it’s warm, Space Vertigo and Jungle Rapids are next, or the SEA LIFE Aquarium (separate ticket). Shaman and Colorado Boat are shortest half an hour later, Dragon Rush around twelve, and after that its queue stays about the same length until evening. In the early afternoon the queues at Blue Tornado, Mammut, Raptor and Fuga da Atlantide are shorter again than at eleven, good for a second ride.
+At eleven, go to Wolf Legend, and a quarter of an hour later to Jumanji – The Adventure. If it’s warm, Space Vertigo and Jungle Rapids are next, or the SEA LIFE Aquarium (separate ticket). Shaman and Colorado Boat are shortest half an hour later, Dragon Rush around twelve, and after that its queue stays about the same length until evening. In the early afternoon the queues at Blue Tornado, Mammut, Raptor and Fuga da Atlantide are shorter again than at eleven, good for a second ride.
 
 You need two days if you have children who want to ride the smaller areas out, or if you add the aquarium and the LEGOLAND Water Park.
 
-## Gardaland Express: the fast track
+## Gardaland Express
 
 Gardaland calls its Fast Pass Gardaland Express. It applies on top of admission and lets you use a separate entrance at the included rides, with a shorter wait. It’s valid only on the day of your visit and can’t be transferred.
 
@@ -198,7 +198,7 @@ Gardaland calls its Fast Pass Gardaland Express. It applies on top of admission 
 
 You reserve through the "Gardaland Express" app. You import the voucher or ticket there by QR code, then see the estimated wait times and join the queue for a ride. A notification ("You’re up soon") arrives about five minutes before your ride, followed by a QR code that stays valid for about five minutes. You buy it online or at the Express Points in the park, and the number of passes per day is limited.
 
-## Tickets, prices and season pass
+## Tickets and season pass
 
 Day admission starts at 32 euros per adult if you book early online. The undated 1-day ticket for the park, valid on any day between 28 March and 1 November 2026, costs from 59 euros online. During Magic Halloween there’s the "One more day" offer: a 1-day ticket from 44 euros, with a second park admission free that you can redeem by 1 November. The offer ends on 29 October. The combination ticket "2 days park and 1 day aquarium" costs from 59 euros online. The ticket offices close two hours before the park does.
 
@@ -235,7 +235,7 @@ The SEA LIFE Aquarium is the first fully themed aquarium in Italy, opened in 200
 
 ## What’s new, and what has closed
 
-Five new things arrived in 2025: Animal Treasure Island, the reworked Dragon Empire, the live show "Bim Bum Bam Live" with the puppet Uan, the multimedia show "A.I. – The Future is Here" and the 4D cinema "Prezzemolo e l'Enigma Svelato". In return I Corsari closed in 2024, and Wolf Legend has stood since 2024 where the coaster Sequoia Magic Loop used to be.
+In 2025 the park added Animal Treasure Island, the reworked Dragon Empire, the live show "Bim Bum Bam Live" with the puppet Uan, the multimedia show "A.I. – The Future is Here" and the 4D cinema "Prezzemolo e l'Enigma Svelato". In return I Corsari closed in 2024.
 
 Magic Winter follows in winter, from 5 December to 6 January 2027. From 4 to 8 December the magic show Supermagic Elementi runs in the Gardaland Theatre with eight performances of about two hours each, tickets from 24 euros. Season pass holders get a discounted ticket for themselves and up to nine companions.
 
@@ -245,7 +245,7 @@ Gardaland hasn’t published anything about novelties for 2027.
 
 ### How long are the wait times at Gardaland?
 
-At most rides the median is between ten and 25 minutes, measured over the past twelve months. Saturday is the busiest day and Wednesday the emptiest. The big coasters peak shortly after opening and then drop. The current wait time of every ride is on the park page.
+At most rides the queues stay short, measured over the past twelve months. Saturday is the busiest day and Wednesday the emptiest. The big coasters peak shortly after opening and then drop. The current wait time of every ride is on the park page.
 
 ### When is Gardaland least crowded?
 
@@ -284,8 +284,9 @@ By train to Peschiera del Garda station, and from there a free shuttle bus runs 
 ### Sources and further reading
 
 - Park, resort, history, hotels, tickets, opening hours (official): [Gardaland Resort, What is the Gardaland Resort](https://www.gardaland.it/de/ueber-uns/was-ist-das-gardaland-resort/) · [A success story](https://www.gardaland.it/de/ueber-uns/eine-erfolgsgeschichte/) · [Gardaland Park tickets](https://www.gardaland.it/de/tickets-saisonkarten/tickets/gardaland-park/) · [Second day free](https://www.gardaland.it/de/zweiter-tag-gratis/) · [Season passes 2026](https://www.gardaland.it/de/tickets-saisonkarten/abonnements-und-mitgliedschaft-2026/) · [Gardaland Express](https://www.gardaland.it/de/tickets-saisonkarten/extra/gardaland-express/) · [Parking](https://www.gardaland.it/de/tickets-saisonkarten/extra/parkplatz-eintritt/) · [Getting there and parking](https://www.gardaland.it/de/nuetzliche-informationen/besuch-planen/anreise-parken/) · [Guest services](https://www.gardaland.it/de/nuetzliche-informationen/nuetzliche-dienstleistungen/dienstleistungen-fuer-die-gaeste/) · [For the little ones](https://www.gardaland.it/de/entdecke-gardaland/fuer-die-kleinen/) · [Our hotels](https://www.gardaland.it/de/unsere-hotels/) · [Kids free with a hotel booking](https://www.gardaland.it/de/kinder-eintritt-gratis/) · [LEGOLAND Water Park](https://www.gardaland.it/de/entdecke-gardaland/legoland-water-park/) · [Magic Winter](https://www.gardaland.it/de/entdecke-gardaland/events-und-sonderoeffnungszeiten/magic-winter/) · [Supermagic Elementi](https://www.gardaland.it/de/entdecke-gardaland/events-und-sonderoeffnungszeiten/supermagic-elementi/)
-- History, attractions, visitor numbers: [Gardaland on de.wikipedia](https://de.wikipedia.org/wiki/Gardaland) · [Gardaland on en.wikipedia](https://en.wikipedia.org/wiki/Gardaland)
-- Technical data for the coasters: [Blue Tornado](https://rcdb.com/961.htm) · [Shaman](https://rcdb.com/962.htm) · [Ortobruco Tour](https://rcdb.com/963.htm) · [Mammut](https://rcdb.com/3689.htm) · [Raptor](https://rcdb.com/9309.htm) · [Oblivion](https://rcdb.com/12050.htm)
+- History, attractions, visitor numbers: [Gardaland on de.wikipedia](https://de.wikipedia.org/wiki/Gardaland) · [Gardaland on en.wikipedia](https://en.wikipedia.org/wiki/Gardaland) · [Gardaland on it.wikipedia](https://it.wikipedia.org/wiki/Gardaland)
+- Technical data for the coasters: [Blue Tornado](https://rcdb.com/961.htm) · [Shaman](https://rcdb.com/962.htm) · [Ortobruco Tour](https://rcdb.com/963.htm) · [Mammut](https://rcdb.com/3689.htm) · [Raptor](https://rcdb.com/9309.htm) · [Oblivion](https://rcdb.com/12050.htm) · [Dragon Rush](https://rcdb.com/13726.htm) · [Sequoia Magic Loop](https://rcdb.com/2942.htm) · [Prezzemolo Tour](https://rcdb.com/4503.htm)
 - 2024 attendance (Themed Entertainment Association): [TEA 2024 Index, summary (Interpark)](https://interpark.co.uk/latest-news/tea-2024-index-releases-visitor-attendance-report/)
+- Merlin's takeover in 2006: ["Italy: Blackstone to buy Gardaland from Investindustrial" (Unquote)](https://www.unquote.com/unquote/news/92987/italy-blackstone-to-buy-gardaland-from-investindustrial) · ["Merlin Entertainments acquires Gardaland" (Attractions Management)](https://www.attractionsmanagement.com/attractions-news/Merlin-Entertainments-acquires-Gardaland/18184)
 - Animal Treasure Island: ["Gardaland inaugura Animal Treasure Island" (Quality Travel)](https://www.qualitytravel.it/gardaland-inaugura-animal-treasure-island-la-water-dark-ride-piu-lunga-deuropa/165891/amp)
 - Minimum heights, opening hours and wait-time data: our own measurements from October 2025 to October 2026, [Gardaland on park.fan](ref:gardaland)

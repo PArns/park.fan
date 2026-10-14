@@ -121,7 +121,7 @@ Ride von **ETF Ride Systems** aus dem nahen Nederweert. Die Wagen fahren scheinb
 Palastinnere, tatsächlich folgen sie einem Draht im Boden. Sieben Minuten,
 sechs Personen pro Wagen, 34 Wagen, theoretisch 1.400 Gäste pro Stunde. Beim
 Einstieg wählst du zwischen Helden-, Schatz- und Musiktour, und die drei Routen
-führen durch unterschiedliche Räume. Wer alle sehen will, fährt also dreimal.
+führen durch unterschiedliche Räume. Für alle drei musst du also dreimal fahren.
 
 ```glossary-widget slug=trackless-ride
 
@@ -291,7 +291,7 @@ Fassade hängen seine Büste und ovale Rahmen mit allen sechs. Den Stand gibt es
 seit 1967, 2002 machte er mangels Umsatz zu, seit dem 26. April 2019 ist er wieder offen.
 
 Im Märchenwald steht niemand an, und eine Kapazitätsgrenze gibt es dort nicht.
-Wer hier unterwegs ist, steht nicht vor den Fahrgeschäften an, und das ist ein
+Die Besucher, die hier unterwegs sind, stehen nicht vor den Fahrgeschäften an, und das ist ein
 Grund, warum dieser Park mit
 fast sechs Millionen Besuchen erträgliche Wartezeiten hat.
 
@@ -307,8 +307,6 @@ verschwinden. Danach kannst du den Wald in zwei Portionen an zwei Tagen sehen, o
 Wir messen die Wartezeiten im Efteling seit dem 26. Dezember 2025, bis zum 25. September 2026 an **knapp 190 Öffnungstagen**. Über alle
 Wochentage gerechnet liegt die typische Wartezeit im Parkschnitt **unter einer
 halben Stunde**. Zu den Spitzenzeiten ist es etwa das Anderthalbfache.
-
-Die gefragtesten zehn Attraktionen:
 
 ```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
 
@@ -438,8 +436,7 @@ Geburtstag im Frühjahr 2026 wieder auf der Bühne stand.
 
 Das Efteling hat an 365 Tagen im Jahr geöffnet.
 
-**Nach Monat** sind April und September in unseren Daten die entspanntesten der
-gut gemessenen Monate. Mai, Juni und Juli liegen eng beieinander, der August zieht
+**Nach Monat**, gerechnet über alle gemessenen Öffnungstage, sind April und September die entspanntesten der gut gemessenen Monate. Mai, Juni und Juli liegen eng beieinander, der August zieht
 spürbar an, und am anstrengendsten ist der **Dezember**, also die
 Winter-Efteling-Saison.
 
@@ -450,7 +447,11 @@ sind es die Weihnachtsferien ab dem 26.), und für
 Februar, Oktober und November haben wir bislang gar keine auswertbaren Tage (Stand 25. September 2026). Die Rangfolge der Monate ist deshalb nur grob. Die ruhigsten Monate über alle Parks stehen auf der
 [Beste-Reisezeit-Seite](/beste-reisezeit).
 
-**Nach Wochentag** unterscheiden sich die Tage kaum:
+```stats-widget slug=efteling show=months
+
+```
+
+**Nach Wochentag** unterscheiden sich die Tage kaum.
 
 ```stats-widget slug=efteling show=weekdays
 
@@ -465,15 +466,9 @@ dreißig Messtagen pro Wochentag würde ich so kleine Unterschiede trotzdem nich
 Empfehlung verkaufen.
 
 Mehr als der Wochentag zählt, ob in den Niederlanden Schulferien sind, danach,
-ob in Deutschland Ferien sind. Die ruhigsten kommenden Tage:
+ob in Deutschland Ferien sind.
 
 ```best-days-widget slug=efteling
-
-```
-
-Und der Andrang über die Monate, gerechnet aus allen gemessenen Öffnungstagen:
-
-```stats-widget slug=efteling show=months
 
 ```
 
@@ -483,7 +478,7 @@ Es gibt hier nichts zu kaufen, was dich an der Warteschlange vorbeibringt, auch
 keine dynamisch bepreiste Einzelfahrt, wie sie das Phantasialand seit dem letzten Wintertraum verkauft. Kostenlos gibt es
 Baby-Switch für Eltern mit kleinen Kindern und an sieben Attraktionen eine
 Single-Rider-Spur, die der Park seit 2026 allerdings nur noch an sehr vollen Tagen
-öffnet. Wer im Hotel schläft, darf **30 Minuten früher** rein.
+öffnet. Hotelgäste dürfen **30 Minuten früher** rein.
 
 Am **15. September 2017** startete an Python
 der **Efteling Boarding Pass**, geplant als Test für zwei Monate, am Ende lief er
@@ -567,7 +562,7 @@ Minuten**, in denen nichts passiert. Am späten Nachmittag, wenn
 das Licht flach wird und die Boote an der Pagode vorbeiziehen, ist das mein
 liebster Programmpunkt des ganzen Parks.
 
-## Praktisches: Tickets, Anreise, Essen, Schlafen
+## Tickets und Anreise
 
 **Tickets.** Die Preise hängen vom Datum ab und liegen 2026 zwischen **40 und
 56 €** pro Tag, Kinder bis einschließlich drei Jahre frei. Das normale Ticket gilt
@@ -591,8 +586,7 @@ den Sperrtagen:
 - **Premium, 400 €** (36 € im Monat): keine Sperrtage, 60 % aufs Parken, 10 % auf
   Gastronomie und Shops, vier vergünstigte Gästetickets statt zwei.
 
-Rechnen lohnt sich ab dem fünften bis sechsten Besuch. Wer als Hotelgast kommt,
-umgeht die Sperrtage ohnehin.
+Rechnen lohnt sich ab dem fünften bis sechsten Besuch. Hotelgäste umgehen die Sperrtage ohnehin.
 
 **Anreise.** Kaatsheuvel liegt in Noord-Brabant, gut anderthalb bis zwei Stunden
 von Düsseldorf, gut zwei aus Köln und dem Ruhrgebiet, jeweils über Venlo und
@@ -745,8 +739,6 @@ Am 1. Dezember 2026 öffnet Raveleijn wieder, mit neuer Show und der neuen
 Ravenring. Danach folgen die Sprookjesbibliotheek 2027 und Missie Luminar 2029.
 
 ## Wetter und aktuelle Wartezeiten
-
-Das Wetter in Kaatsheuvel:
 
 ```weather-widget slug=efteling
 

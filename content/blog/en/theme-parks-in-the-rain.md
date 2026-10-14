@@ -249,7 +249,7 @@ Museum are covered too.
 
 ![The Droomvlucht entrance at night, lit pink and green. | In daylight this wall is white. | right](/media/efteling/droomvlucht.jpg)
 
-Joris en de Draak, Baron 1898 and Python are outdoors. Whether a covered ride is closed for maintenance is on its page and in the park’s calendar, so check it the evening before.
+Joris en de Draak, Baron 1898 and Python are outdoors. If a covered ride is closed for maintenance, that’s on its page and in the park’s calendar, so check it the evening before.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Suspended ride;efteling/symbolica|Symbolica|Trackless Ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Indoor coaster columns=type,peak,days
 
@@ -403,8 +403,6 @@ As of 6 October 2026:
 mazes, ball pits, play areas, a museum and haunted houses that only open on
 Halloween evenings.
 
-Typical wait times at the nine parks, with Europa-Park highlighted:
-
 ```park-comparison-widget slugs=europa-park,attractiepark-toverland,phantasialand,plopsaland-deutschland,movie-park-germany,efteling,walibi-belgium,heide-park,walibi-holland highlight=europa-park
 
 ```
@@ -422,7 +420,7 @@ Heide Park or Walibi Holland for a rainy day.
 
 Each park’s calendar has the weather, opening hours and expected crowd level for
 the coming weeks. Parks are quieter on rainy days on average, so there’s no need
-to call off a visit because showers are forecast. Here’s the weather for Brühl:
+to call off a visit because showers are forecast. The weather below is for Brühl, where Phantasialand is.
 
 ```weather-widget slug=phantasialand
 
@@ -467,8 +465,7 @@ Phantasialand it’s 14 of 40. At Walibi Holland none of the attractions is indo
 ### Do roller coasters run in the rain?
 
 Each park decides that for itself, often on the day. At Phantasialand any outdoor
-ride can close at short notice in extreme weather. Whether a ride is running
-right now is on its page at park.fan, updated every five minutes.
+ride can close at short notice in extreme weather. Each ride’s page at park.fan shows whether it is running right now, updated every five minutes.
 
 ### Which theme park is best in the rain with small children?
 

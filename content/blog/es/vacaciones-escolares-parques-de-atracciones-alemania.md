@@ -128,7 +128,7 @@ En 2026 las vacaciones de verano estuvieron muy repartidas. Renania-Palatinado, 
 empezaron a finales de junio, y Baviera fue la última en terminar, el 14 de septiembre. Solo durante
 una semana, del 3 al 7 de agosto, los 16 estados tuvieron vacaciones a la vez.
 
-### Heide Park: Baja Sajonia y NRW tienen que coincidir
+### Heide Park
 
 Baja Sajonia tuvo vacaciones del 2 de julio al 12 de agosto, y NRW desde el 18 de julio. En las
 algo más de dos semanas en que solo Baja Sajonia estaba de vacaciones, el
@@ -151,10 +151,10 @@ o extremos en el Heide Park, 31 cayeron en las vacaciones escolares de algún es
 
 ```
 
-Cómo empezar pronto en Soltau está en la
-[guía del Heide Park](/blog/heide-park-tiempos-de-espera-consejos).
+En la [guía del Heide Park](/blog/heide-park-tiempos-de-espera-consejos) está cómo empezar pronto
+en Soltau.
 
-### Phantasialand: lleno antes de que NRW tenga vacaciones
+### Phantasialand
 
 En Brühl fue al revés. Del 2 al 17 de julio, con vacaciones en Baja Sajonia, Hesse,
 Renania-Palatinado y varios estados más y todavía colegio en NRW, el
@@ -171,7 +171,7 @@ El Quick Pass, que en esas semanas te puede hacer falta, está explicado en la
 [guía del Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos), junto con la atracción
 por la que conviene empezar.
 
-### Movie Park: la primera semana de NRW
+### Movie Park
 
 En el [Movie Park](ref:movie-park-germany) de Bottrop pasa casi lo mismo que en Brühl, con un
 +67 % antes de las vacaciones de NRW, un +132 % mientras NRW y Baja Sajonia coincidieron y un +43 %
@@ -179,7 +179,7 @@ con NRW sola. La primera semana de vacaciones de NRW, del 20 al 24 de julio, fue
 y los cuatro días más llenos de todo el periodo medido están todos en esa misma semana, de martes a
 viernes. A la semana siguiente ya había pasado, y en el calendario no encuentro el motivo.
 
-### Plopsaland: Renania-Palatinado y NRW juntas
+### Plopsaland
 
 En el [Plopsaland](ref:plopsaland-deutschland) de Haßloch, ni Renania-Palatinado ni NRW llenaron el
 parque por su cuenta. Renania-Palatinado fue el primer estado en empezar las vacaciones, el 27 de
@@ -191,11 +191,11 @@ El 10 de agosto Renania-Palatinado volvió al colegio, pero NRW y otros doce est
 media de los días laborables cayó a poco más de un tercio de la semana anterior, y hasta el final de
 las vacaciones de NRW el parque quedó un 23 % por debajo de un día laborable sin vacaciones.
 
-De todas formas, el Plopsaland no tuvo sus días más llenos en verano. Cuatro de los diez días más llenos cayeron en la semana del 7 al 10 de abril, en las vacaciones de Semana Santa. Lo que hace el
-parque por las noches en octubre está en la
-[noticia sobre las Halloween Fright Nights](/news/plopsaland-deutschland-halloween-fright-nights-2026).
+De todas formas, el Plopsaland no tuvo sus días más llenos en verano. Cuatro de los diez días más llenos cayeron en la semana del 7 al 10 de abril, en las vacaciones de Semana Santa. En octubre, el
+parque tiene por las noches las
+[Halloween Fright Nights](/news/plopsaland-deutschland-halloween-fright-nights-2026).
 
-### Europa-Park: el que menos reacciona
+### Europa-Park
 
 En las tres semanas con entre 14 y 16 estados de vacaciones, el [Europa-Park](ref:europa-park)
 quedó un 37 % por encima de la referencia, el aumento más pequeño de los seis parques. Del 20 al 29
@@ -208,7 +208,7 @@ Argovia y el Grand Est. Si sus vacaciones marcan la diferencia, no lo he analiza
 día más lleno de todo el periodo en Rust fue el lunes 29 de diciembre de 2025, entre Navidad y Año
 Nuevo, con los 16 estados de vacaciones.
 
-### Legoland: el que más depende del sur
+### Legoland
 
 El [Legoland](ref:legoland-deutschland) de Günzburg es el que más depende de las vacaciones del sur,
 aunque no únicamente de ellas. En las vacaciones de Pentecostés, que en 2026 solo tuvieron Baviera y
@@ -306,8 +306,8 @@ Para el próximo invierno los días de apertura ya están en el calendario. Entr
 2026 y el 12 de enero de 2027, el Phantasialand abre 21 días, el Europa-Park 20, el Legoland 19, el
 Plopsaland 13 y el Movie Park 11. El Heide Park cierra después del 31 de octubre. Las vacaciones de
 Navidad empiezan en diez estados el 23 de diciembre y terminan entre el 31 de diciembre y el 12 de
-enero. Qué ofrece cada parque en invierno está en la
-[guía de invierno](/blog/parques-atracciones-invierno-2026).
+enero. El programa de invierno de cada parque está
+en la [guía de invierno](/blog/parques-atracciones-invierno-2026).
 
 ## Las semanas de vacaciones tranquilas
 
@@ -421,9 +421,10 @@ después de las vacaciones tuvieron allí la mitad de gente que los días entre 
 El día puente después de la Ascensión lo evito, el festivo en sí no
 necesariamente, y un 1 de mayo en día laborable lo planifico como un sábado.
 
-Qué mes es el más tranquilo en cada parque está en la página de la
-[mejor época para visitar](/mejor-epoca-para-visitar), y qué parque compensa a quién, en la
-[clasificación de los parques de atracciones de Alemania](/blog/mejores-parques-de-atracciones-de-alemania).
+Los meses más tranquilos de cada parque están en la página de la
+[mejor época para visitar](/mejor-epoca-para-visitar). En la
+[clasificación de los parques de atracciones de Alemania](/blog/mejores-parques-de-atracciones-de-alemania)
+está qué parque compensa a quién.
 
 — Patrick
 

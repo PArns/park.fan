@@ -79,13 +79,13 @@ Each ride at Legoland Windsor has two limits: a minimum height at which a child 
 
 Say your child is six and 1.15 metres tall. With you, they can ride Hydra's Challenge, The Dragon, Pirate Falls and Flight of the Sky Lion. They can ride the Minifigure Speedway too, since the limit there is 1.05 metres. They can only ride alone from 1.30 metres, or from 1.20 metres on Flight of the Sky Lion. On Flight of the Sky Lion one adult can accompany at most two children between 1.00 and 1.20 metres.
 
-Children under 90 centimetres get in free, the park says. The park doesn't recommend LEGO NINJAGO The Ride for children under three, because of the sound, smoke and light effects. The LEGO City Driving School is open to children between 1.10 and 1.50 metres who are under 13. The park lists the heights for the remaining rides on its page on height restrictions.
+Children under 90 centimetres get in free. The park doesn't recommend LEGO NINJAGO The Ride for children under three, because of the sound, smoke and light effects. The LEGO City Driving School is open to children between 1.10 and 1.50 metres who are under 13. The park lists the heights for the remaining rides on its page on height restrictions.
 
 ## The big rides
 
 The park calls the **[Minifigure Speedway](ref:legoland-windsor/minifigure-speedway)** the first dueling coaster in Lego design, and it runs in both directions. Two trains, Team Legends and Team AllStars, launch at the same time, and part of the track runs backwards. Zierer built it. Wikipedia gives it as 14 metres tall and 244 metres long, with a top speed of 56 km/h. It stands on the site of the Raft Racers, a rubber-raft slide that ran until 2021.
 
-**[The Dragon](ref:legoland-windsor/the-dragon)** has been running since 1998. The train first rolls through a castle with animated Lego scenes, then climbs the lift and runs two figure-eights through the treetops. The park gives up to 30 miles per hour, which is about 48 km/h. According to Coasterpedia the track is 423 metres long. Two riders sit in each row, with children on the left side of the train.
+**[The Dragon](ref:legoland-windsor/the-dragon)** has been running since 1998. The train first rolls through a castle with animated Lego scenes, then climbs the lift and runs two figure-eights through the treetops. By the park's figures the train reaches up to 30 miles per hour, about 48 km/h. According to Coasterpedia the track is 423 metres long. Two riders sit in each row, with children on the left side of the train.
 
 ```glossary-widget slug=dark-ride
 
@@ -109,7 +109,7 @@ The **[Laser Raiders](ref:legoland-windsor/laser-raiders)** are a dark ride thro
 
 At the **[Fire Academy](ref:legoland-windsor/fire-academy)** four people take a fire engine up against other teams. You drive the vehicle by muscle power, then you spray a burning house. At least two people have to ride, and at most two of them can be adults. At **[Coastguard HQ](ref:legoland-windsor/coastguard-hq)** children steer electric boats while a Lego elephant squirts water. In **[L-Drivers](ref:legoland-windsor/l-drivers)** children between 0.90 and 1.10 metres drive small electric cars, and taller ones go to the **[LEGO City Driving School](ref:legoland-windsor/lego-city-driving-school)**. Every child first watches a traffic video there, then drives, and gets a licence at the end.
 
-## Miniland, building and everything without a queue
+## What has no queue
 
 **[Miniland](ref:legoland-windsor/miniland)** has no minimum height and no queue. The park recommends it for busy days, as it does the building areas **The Brick**, **Creature Creation** and **LEGO Ferrari Build & Race**, where children build a car and race it against others. The park also suggests the Magical Forest in Mythica. The park says the LEGO Store is emptier between noon and 4 pm than at the end of the day, and purchases can be stored at Shopper Services and collected later.
 
@@ -187,15 +187,15 @@ Bronze excludes Hydra's Challenge, Flight of the Sky Lion and Coastguard HQ, whi
 
 On a Tuesday in September I wouldn't buy Fastrack: Bronze doesn't cover the three longest queues, and at the other rides the waits on a day like that are short. On a Saturday or in the school holidays Silver or Gold can make sense, above all for Flight of the Sky Lion, since an early start saves nothing there.
 
-## Tickets, prices and annual passes
+## What tickets and annual passes cost
 
 A day ticket costs **from £32** online, and booking ahead saves up to £36, according to the park. Prices depend on the day. Children under 90 centimetres get in free. Tickets are non-refundable, but the date can be changed. The park says there are currently no two-for-one offers. Tickets for Brick or Treat start at £37 per person, for LEGOLAND at Christmas at £34.
 
 The **LEGOLAND Annual Pass** costs from £64 and has 17 blackout days. The **Merlin Essential Pass** costs £139 with 25 blackout days. The **Merlin Gold Pass** costs £239 and includes parking, with only the fireworks at Alton Towers excluded. The **Merlin Platinum Pass** costs £299 and has no blackout days, four friends' tickets a year and a single Fastrack per visit. If you want to come on a blackout day, you pay £15 per person for an upgrade ticket. All pass holders have to book their visit in advance. The passes include Brick or Treat and LEGOLAND at Christmas.
 
-## Opening hours, season and events
+## Opening hours in autumn and winter
 
-Legoland Windsor opens at 10 am, and closing time is between 4:30 and 6 pm depending on the day. In October 2026 the park usually closes at 4:30 pm on weekdays and at 6 pm at weekends and in the autumn half-term. Guests of the resort hotels can enter the park before opening (Early Park Access), for which they need a valid park ticket.
+Legoland Windsor opens at 10 am. In October 2026 the park usually closes at 4:30 pm on weekdays and at 6 pm at weekends and in the autumn half-term. Guests of the resort hotels can enter the park before opening (Early Park Access), for which they need a valid park ticket.
 
 Some rides run in autumn only on weekdays or only from the afternoon. From 25 September to 16 October, for example, LEGO NINJAGO The Ride, Destiny's Bounty and Deep Sea Adventure open only at 1 pm on weekdays, and Aero Nomad closes at 1 pm. All dates are on the park's "Ride & Show Availability" page.
 
@@ -215,15 +215,15 @@ The park calls the Laser Raiders an indoor ride. The LEGO Studios 4D films in Br
 
 ```
 
-## Food, babies and the entrance
+## Food in the park and checks at the entrance
 
 All the park's catering outlets are **cashless**, and you pay by card, Apple Pay or Android Pay. In the park there's **City Walk Pizza & Pasta** in Heartlake City, a self-service buffet with pizza and pasta, **Pirate's Burger Kitchen**, **Farmer Joe's Chicken Company** in DUPLO Valley, **The Hungry Troll** and the **Skyline Bar** in the Resort Hotel. There are also several LEGOLAND Coffee Co. stands, a Ben & Jerry's and Wizard's Frozen Wonders. You can bring your own food, but not glass bottles or alcohol. There are drinking water stations in the park.
 
-For babies and toddlers there are Baby Care Centres, spread across the resort and marked on the park map. The park names DUPLO Valley as the area for families with toddlers, where many rides have no minimum height. The park recommends Priority Parking for families with strollers, and lockers are near the main entrance. The Total Sensory Space in Heartlake City is a room with beanbags, projections and dimmed light for guests who need a break from the noise.
+For babies and toddlers there are Baby Care Centres, spread across the resort and marked on the park map. In DUPLO Valley many rides have no minimum height. The park recommends Priority Parking for families with strollers, and lockers are near the main entrance. The Total Sensory Space in Heartlake City is a room with beanbags, projections and dimmed light for guests who need a break from the noise.
 
 At the entrance, security staff search all bags. Banned items include glass bottles, alcohol, weapons and toy weapons, skateboards, scooters, rollerblades and drones. The Ride Access Pass system changes at the end of 2026. The park is introducing a virtual queue, eligibility stays the same, and the requirement to book in advance is to be phased out gradually.
 
-## Getting there, parking and where to stay
+## Getting there and the hotels on site
 
 The address is **Winkfield Road, Windsor, SL4 4AY**. Legoland is on the B3022 between Windsor and Ascot, about three kilometres from the centre of Windsor. By car you take exit 3 from the M3, exit 6 from the M4 and exit 13 from the M25 clockwise. For the drive home the park advises turning right at the roundabout towards the M25, M3 and M4, because that avoids the traffic in Windsor. Heathrow airport is about 20 kilometres away, Gatwick around 70.
 

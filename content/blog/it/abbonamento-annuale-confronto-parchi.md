@@ -2,6 +2,7 @@
 title: 'Abbonamento annuale nei parchi divertimento: da quante visite conviene'
 translationKey: annual-pass-comparison-theme-parks
 date: '2026-10-06'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -80,10 +81,12 @@ Non ho conteggiato lo sconto su cibo e souvenir, che dipende da ciò che compri,
 
 Tutti gli abbonamenti sono nominativi. A Toverland lo dicono espressamente le condizioni: un abbonamento per persona, non cedibile.
 
-## Efteling: Classic, Plus e Premium
+## I tre abbonamenti dell’Efteling
 
 L’Efteling vende dall’11 giugno 2024 tre abbonamenti annuali, che si distinguono per il numero di giorni
-in cui valgono. Uno sconto per i visitatori dai 65 anni da allora non esiste più.
+in cui valgono. Uno sconto per i visitatori dai 65 anni da allora non esiste più, e gli abbonamenti 65+ in corso sono andati avanti fino alla fine della durata minima.
+
+Nel 2023 l’Efteling ha interpellato gli abbonati e, secondo il parco, la maggior parte era molto soddisfatta ma voleva più scelta. Dal 15 aprile al 10 giugno 2024 il parco non ha venduto nuovi abbonamenti, solo rinnovi. Nei Paesi Bassi il numero di abbonati era già cresciuto molto nel 2023, scrive l’Efteling nel suo bilancio dell’anno.
 
 | Formula | Prezzo annuale | Al mese | Accesso           | Sconto sul parcheggio | Cibo, bevande, souvenir | Biglietti amici a metà prezzo |
 | ------- | -------------- | ------- | ----------------- | --------------------- | ----------------------- | ----------------------------- |
@@ -96,6 +99,8 @@ Tutte e tre le formule danno il 25 % sui biglietti dello spettacolo CARO e sulla
 un ricordo e l’accesso a un evento riservato agli abbonati. Pagare mensilmente vincola per almeno dodici mesi
 e costa di più. Dodici mesi di Classic fanno 252 €, 12 € in più rispetto al pagamento annuale. Per Plus e
 Premium sono 32 € in più ciascuno. La data di inizio la scegli alla sottoscrizione, fino a un mese prima.
+
+I visitatori con disabilità hanno 50 € di sconto su ogni formula pagando l’anno intero, o 5 € al mese. I bambini fino a tre anni compresi ricevono l’abbonamento gratis. Il giorno del tuo compleanno ricevi un dolce con una bevanda acquistata.
 
 ### I giorni bloccati nel calendario del parco
 
@@ -139,15 +144,15 @@ Il passaggio da Classic a Plus costa 70 €, quello da Plus a Premium 90 €. Ne
 
 Secondo [le nostre misurazioni](/blog/efteling-la-disney-dei-paesi-bassi), all’Efteling le attese sono un po’ più lunghe solo il sabato. Classic blocca soprattutto i fine settimana, ma anche 26 giorni dal lunedì al venerdì. Se puoi venire nei giorni feriali, con Classic perdi quindi poco.
 
-Il parco dista da Düsseldorf una buona ora e mezza o due di auto, da Colonia e dalla Ruhr due buone ore. Con tre visite l’anno si resta al biglietto giornaliero.
-
-I giorni tranquilli del widget puoi confrontarli con l’elenco dei giorni bloccati più sopra.
+Il parco dista da Düsseldorf una buona ora e mezza o due di auto, da Colonia e dalla Ruhr due buone ore.
 
 ```best-days-widget slug=efteling
 
 ```
 
-## Europa-Park: ResortPass Silver e Gold
+## ResortPass Silver e Gold a Europa-Park
+
+Prima del ResortPass il parco vendeva la tessera dell’Europa-Park Club. Nel marzo 2020, quando il parco dovette chiudere per il Covid, la tolse dalla vendita fino a nuovo avviso. Ha annunciato il ResortPass l’8 marzo 2022, e il pass è stato messo in vendita nel negozio di Mack International a metà maggio 2022. Nel marzo 2023 Silver costava 240 € per gli adulti e Gold 420 €, ed erano entrambi esauriti, secondo la Stuttgarter Zeitung. Una portavoce disse allora al giornale che dopo le prime scadenze di maggio e giugno 2023 sarebbero stati messi in vendita nuovi contingenti. Da allora Silver è aumentato di 85 € e Gold di 75 €.
 
 Europa-Park vende il ResortPass in due formule, entrambe valide un anno:
 
@@ -162,7 +167,9 @@ piattaforma VEEJOY e ingresso gratuito o scontato nei parchi partner. Un Parking
 entrambe. Con 10 € di parcheggio al giorno conviene dalla quarta visita in auto. La tessera stampata costa 5 €
 in più con Silver ed è inclusa con Gold.
 
-Al momento non si può comprare nessun nuovo abbonamento. Il parco scrive sulla sua pagina che il contingente è esaurito e che il ResortPass non è disponibile fino a nuovo avviso, neppure per telefono, per e-mail o in loco. I titolari attuali vengono informati sul rinnovo prima della scadenza. Il parco non dice quando riaprirà la vendita.
+Una volta durante la validità, entrambe le formule danno ingresso gratuito all’Efteling, al Pleasure Beach Resort in Inghilterra, a Liseberg in Svezia, a PortAventura Park e Isla Mágica in Spagna, a Emerald Park in Irlanda e a Le Pal in Francia. Gli otto parchi e piscine del gruppo Plopsa, tra cui Plopsaland Deutschland, danno una volta il 40 % sull’ingresso normale alla cassa.
+
+Al momento non si può comprare nessun nuovo abbonamento. Il parco scrive sulla sua pagina che il contingente è esaurito e che il ResortPass non è disponibile fino a nuovo avviso, neppure per telefono, per e-mail o in loco. I titolari ricevono un avviso 30 giorni prima della scadenza e possono rinnovare online nel portale ResortPass negli ultimi 14 giorni di validità, al prezzo in vigore in quel momento. Un pass scaduto si può riattivare entro due anni se c’è ancora contingente. Passare da Silver a Gold è possibile solo al rinnovo, e solo se Gold è disponibile. Il parco non dice quando riaprirà la vendita.
 
 Un biglietto giornaliero costa da 67 a 76 € per gli adulti e da 56,50 a 65 € per bambini e over 60.
 
@@ -190,7 +197,7 @@ Europa-Park è più vuoto di domenica o di giovedì a maggio o giugno e più pie
 
 ```
 
-## Toverland: Magic Member
+## Magic Member a Toverland
 
 Toverland a Sevenum ha con il Magic Member l’abbonamento annuale più economico dei quattro.
 
@@ -201,10 +208,12 @@ Toverland a Sevenum ha con il Magic Member l’abbonamento annuale più economic
 | Over 60                    | 130 €          | 11,50 €                      | 50 €               | 4,50 €             |
 
 Pagando mensilmente si arriva a 168 € invece di 160 €. Incluso l’ingresso in tutti i giorni di apertura, il
-5 % su cibo, bevande e souvenir nei punti vendita fissi, sconti in altri parchi e zoo e offerte per il
-compleanno. L’ingresso alle Halloween Nights è compreso senza supplemento, le Haunted Experiences costano
+5 % su cibo, bevande e souvenir nei punti vendita fissi, sconti in altri parchi e zoo e un dolce per il
+compleanno con una bevanda acquistata. L’ingresso alle Halloween Nights è compreso senza supplemento, le Haunted Experiences costano
 a parte. Per un bambino sotto i 90 cm c’è un abbonamento gratuito se un genitore ha un abbonamento annuale.
 Se il bambino supera la sua fascia di altezza, per ogni mese rimanente si paga la differenza.
+
+Se compri l’abbonamento in un giorno di visita e paghi l’anno intero, il parco rimborsa l’ingresso di quel giorno. L’elenco dei partner, aggiornato a marzo 2026, comprende tra gli altri Walibi Holland con il 20 % tranne durante le Halloween Fright Nights, l’Attractiepark Hellendoorn con il 35 %, i parchi Plopsa con il 40 % per i visitatori da 1 m, Bobbejaanland con il 20 % e il Freizeit-Land Geiselwind con il 40 %.
 
 ### Le condizioni
 
@@ -224,7 +233,7 @@ Altri punti delle condizioni:
 
 ### Cosa conviene
 
-Nel calendario dei biglietti la tariffa base per adulti e bambini da 140 cm sta tra 37 e 49,50 €. Chi
+I prezzi qui sotto sono la tariffa base del calendario dei biglietti per adulti e bambini da 140 cm. Chi
 prenota online almeno sette giorni prima ha 7 € di sconto early bird, con meno anticipo 2 €. Toverland ha
 quattro livelli di prezzo, Bronzo, Argento, Oro e Platino, secondo gli orari e il programma del giorno.
 
@@ -248,14 +257,14 @@ Secondo [le nostre misurazioni](/blog/toverland-troy-tempi-di-attesa-consigli), 
 
 ```
 
-## Phantasialand: nessun abbonamento annuale
+## Phantasialand senza abbonamento annuale
 
 Phantasialand ha tolto dalla vendita la sua Club Card durante la pandemia, e le ultime sono scadute
 nell’estate 2022. Nelle domande frequenti del negozio di biglietti non compaiono né un abbonamento annuale
 né una Club Card, e i biglietti si vendono solo datati e online. Perché sia rimasto così e cosa abbiano
 fatto i fan è nella nostra [guida a Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli).
 
-Nel calendario di ottobre del negozio un biglietto per adulti dai 12 anni costa tra 44 e 78 €. La differenza tra il giorno più economico e il più caro è di 34 €, cioè il 77 % in più rispetto al giorno economico. Tre visite l’anno costano tra 132 e 234 €. La differenza dipende solo da quanto presto prenoti e dal giorno che scegli. A Phantasialand il sabato è sensibilmente più affollato del martedì.
+Nel calendario di ottobre del negozio un biglietto per adulti dai 12 anni costa tra 44 e 78 €. La differenza tra il giorno più economico e il più caro è di 34 €, cioè il 77 % in più rispetto al giorno economico. Tre visite l’anno costano tra 132 e 234 €. A Phantasialand il sabato è sensibilmente più affollato del martedì.
 
 ```best-days-widget slug=phantasialand
 
@@ -263,9 +272,7 @@ Nel calendario di ottobre del negozio un biglietto per adulti dai 12 anni costa 
 
 ## Giorni bloccati contro giorni affollati
 
-A Europa-Park il sabato è il giorno più pieno, e se Silver vale di sabato lo stabilisce il parco nel portale.
-
-Il widget mette uno accanto all’altro il giorno della settimana più tranquillo dei quattro parchi.
+Se Silver vale di sabato lo stabilisce Europa-Park nel portale.
 
 ```park-comparison-widget slugs=efteling,europa-park,attractiepark-toverland,phantasialand show=quietest
 
@@ -282,7 +289,9 @@ conviene nessuna delle tre formule.
 
 ## Quando acquistare
 
-Un abbonamento annuale vale un anno dall’acquisto o dalla data di inizio. All’Efteling fissi tu l’inizio e puoi metterlo fino a un mese prima. Se inizi a ottobre, parti nel mezzo delle settimane bloccate. Un Classic dal 10 ottobre 2026 ha 44 giorni bloccati fino a fine anno. L’anno solare 2027 ne ha 68 in tutto.
+Un abbonamento annuale vale un anno dall’acquisto o dalla data di inizio. All’Efteling fissi tu l’inizio e puoi metterlo fino a un mese prima. Se inizi a ottobre, parti nel mezzo delle settimane bloccate.
+
+Per il ResortPass di Europa-Park la data di inizio deve cadere entro 14 giorni dall’acquisto e poi non si può più cambiare.
 
 All’Efteling restano validi i prezzi del 2026 finché il parco non ne indica di nuovi. A Toverland il parco può cambiare il prezzo di un abbonamento solo alla sua scadenza.
 
@@ -300,8 +309,7 @@ Secondo il calendario del parco Classic nel 2027 è bloccato 68 giorni, Plus 25 
 
 ### Si può ancora comprare il ResortPass di Europa-Park?
 
-Al momento no. Europa-Park scrive sul suo sito che il contingente è esaurito e che il ResortPass non è
-disponibile fino a nuovo avviso, neppure per telefono, per e-mail o in loco.
+Al momento no. Secondo Europa-Park il contingente è esaurito.
 
 ### Toverland ha giorni bloccati per l’abbonamento annuale?
 
@@ -327,6 +335,11 @@ No. La Club Card è terminata durante la pandemia, le ultime sono scadute nell�
 - Phantasialand, calendario dei biglietti: [shop.phantasialand.de](https://shop.phantasialand.de/en/products/theme-park-tickets)
 - Phantasialand, domande frequenti del negozio di biglietti: [shop.phantasialand.de](https://shop.phantasialand.de/en/faq)
 - Fine della Club Card nel 2022: [Parkerlebnis](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html)
+- Efteling, anno 2023 e abbonati: [efteling.com](https://www.efteling.com/nl/pers/556-miljoen-bezoekers-voor-de-efteling-in-2023/)
+- Europa-Park, annuncio del ResortPass l’8 marzo 2022: [blog.europapark.de](https://blog.europapark.de/europa-park/resortpass-die-neue-jahreskarte-des-europa-park-erlebnis-resorts/)
+- Europa-Park, domande frequenti sul ResortPass: [europapark.de](https://www.europapark.de/en/resortpass/faq)
+- Stuttgarter Zeitung, ResortPass esaurito, 17 marzo 2023: [stuttgarter-zeitung.de](https://www.stuttgarter-zeitung.de/lokales/baden-wuerttemberg/jahreskarten-ausverkauft-besucher-kritisieren-resortpass-das-sagt-der-europa-park-dazu-79025022.html)
+- Toverland, vantaggi e parchi partner: [toverland.com](https://toverland.com/en/annualpasses/pass-benefits)
 
 Altro sui singoli parchi nelle nostre guide all’[Efteling](/blog/efteling-la-disney-dei-paesi-bassi),
 a [Europa-Park](/blog/europa-park-tempi-di-attesa-consigli), a [Toverland](/blog/toverland-troy-tempi-di-attesa-consigli)

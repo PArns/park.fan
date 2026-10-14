@@ -2,6 +2,7 @@
 title: 'Heide Park: Colossos tutto in legno e quattro debutti tedeschi'
 translationKey: heide-park-guide
 date: '2026-09-20'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -54,9 +55,8 @@ seo:
     - Heide Park Abenteuerhotel
 ---
 
-Per quasi tre anni nella Terra dei Dimenticati sono rimaste ferme delle
-montagne russe di legno su cui nessuno poteva salire. Il **28 luglio 2016**
-[Colossos](ref:heide-park/colossos-kampf-der-giganten) si è fermato in piena
+Il **28 luglio 2016**
+[Colossos](ref:heide-park/colossos-kampf-der-giganten), nella Terra dei Dimenticati, si è fermato in piena
 stagione, perché dopo quindici anni il binario era consumato. È tornato a
 viaggiare solo il **19 aprile 2019**.
 
@@ -85,6 +85,8 @@ come primo launch coaster della Germania. Niente salita di traino: una
 catapulta idraulica porta il treno a **102 km/h** in due secondi. Dopo 650 metri
 e 49 secondi è di nuovo in stazione.
 
+Intamin ha costruito Desert Race su progetto dell’Ingenieurbüro Stengel. Il tracciato sale fino a 19 metri, il parco indica forze fino a 4,7 g, e su ciascuno dei due treni viaggiano 20 persone.
+
 ```glossary-widget slug=launch-coaster
 
 ```
@@ -100,9 +102,6 @@ splashdown ed entra in un Immelmann.
 **[Flug der Dämonen](ref:heide-park/flug-der-daemonen)** è stato, il
 **29 marzo 2014**, il primo wing coaster del paese. In questa tipologia i sedili stanno a sinistra e a destra del binario, senza niente davanti ai piedi. 40 metri di altezza, 772 metri di tracciato, 100 km/h, cinque
 inversioni, tre minuti di percorso, 1.060 ospiti all’ora.
-
-La tabella confronta l’Heide Park con altri tre
-[grandi parchi tedeschi](/blog/migliori-parchi-divertimenti-in-germania), ricalcolata ogni giorno.
 
 ```park-comparison-widget slugs=heide-park,europa-park,phantasialand,movie-park-germany highlight=heide-park
 
@@ -149,10 +148,12 @@ meno di due minuti. Nel 2010 ha ricevuto i treni del Corkscrew demolito di Alton
 stagione 2026 Vekoma ha consegnato treni nuovi, disegnati sul modello delle
 vetture originali del 1983.
 
+Il Big Loop è alto 30 metri e tocca i 70 km/h. La Roller Coaster DataBase lo registra come Vekoma MK-1200 da 1.200 passeggeri all’ora, e il suo tracciato è l’immagine speculare di Dragon Fyre a Canada’s Wonderland. I primissimi treni erano di Arrow.
+
 Toxic Garden si chiama così solo da **maggio 2023**. Vekoma ha sostituito un
 tratto di binario durante la trasformazione, ingresso e stazione stanno da
 allora in un giardino di piante velenose, e da allora l’attrazione è decorata come
-l’area Transilvania, di cui il suo terreno fa parte dal 2011.
+l’area Transilvania, di cui il suo terreno fa parte dal 2011. Il treno raggiunge gli 80 km/h, e il modello è stato progettato da Peter Clerx.
 
 La **[Bobbahn](ref:heide-park/bobbahn)** di Mack Rides viaggia dal **1993**
 senza guida su rotaia dentro una mezza canaletta. I bob partono da 27 metri di
@@ -162,6 +163,8 @@ l’attrazione apre più tardi o non apre affatto. Il
 quelli ancora troppo piccoli per le grandi, e
 l’**[Indy-Blitz](ref:heide-park/indy-blitz)** del 2008 è, con 4,5 metri, la
 montagna russa più piccola dell’area.
+
+La Bobbahn si chiamava un tempo Schweizer Bobbahn (bob svizzero). È lunga 826 metri, e il parco indica una punta di 58 km/h. Anche il Grottenblitz, un tempo Mountain-Train e poi Mountain-Blitz, è di Mack. Su 370 metri arriva a 45 km/h e nelle curve si inclina fino al 40 per cento. L’Indy-Blitz è un modello Force One di Zierer, lungo 128 metri, che non supera i 23 km/h.
 
 **[Scream](ref:heide-park/scream)** è alto **103 metri** e ne lascia cadere 71
 in caduta libera, a quasi 100 km/h (il parco indica 98,3). La torre è nata nel
@@ -191,18 +194,24 @@ l’isola di «Dragon Trainer».
 Le quattro grandi partono
 tutte da **140 cm**, Toxic Garden e Scream da 130, Big Loop e Bobbahn da 120.
 L’asticella più bassa del parco è a **86 cm**, all’avventura dei dinosauri di
-Giorgio nel Peppa Pig Land.
+Giorgio nel Peppa Pig Land. All’Indy-Blitz il limite è di 100 cm; il Grottenblitz non ne ha e chiede solo un’età minima di quattro anni.
 
 ```map-widget slug=heide-park
 
 ```
 
+## Spettacoli ed eventi nel 2026
+
+La compagnia del parco porta in scena nel 2026 quattro spettacoli che si alternano ogni giorno. La novità è «Aye Aye Käpt’n!», uno spettacolo interattivo di circa 30 minuti per bambini dai tre agli otto anni, che dopo una prova da pirata ricevono un diploma. Accanto a questo ci sono lo spettacolo acrobatico «Time», quello di magia «Smilie, it’s magic» e «The Movie Maker». Le foto con Sdentato e un vichingo, con Peppa e Giorgio e con i Ghostbusters accanto all’Ecto-1 sono gratuite, scattate con il proprio telefono.
+
+Alla festa dei pirati 2026 nella Bucht der Piraten c’erano un coro di canti marinareschi, artisti itineranti e un accampamento pirata. I Pyro Games sono una gara tra pirotecnici di tutta la Germania, e il primo spettacolo di fuochi parte al calar della notte. Li organizza THF Events di Magdeburgo, il parco mette a disposizione l’area, e i biglietti si vendono anche a una cassa serale. Il parco annuncerà più avanti le date del 2027.
+
 ## Quanta gente c’è
 
 Le nostre rilevazioni partono da fine dicembre 2025. Siccome l’Heide Park apre
 solo a fine marzo, nella tabella ci sono soltanto giorni della stagione 2026
-(dati al 25 settembre 2026), ogni attrazione con il proprio numero di giorni
-misurati:
+(dati al 25 settembre 2026), e ogni attrazione ha il proprio numero di giorni
+misurati.
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
@@ -221,8 +230,6 @@ fra le undici e le due. La log flume tocca il massimo solo nel pomeriggio,
 quando si è scaldato. La maggior parte degli ospiti arriva in auto la mattina,
 quindi tutti stanno nello stesso momento davanti alle stesse tre attrazioni; nel
 pomeriggio la folla si distribuisce.
-
-Nella prima ora, quindi, si va su Colossos e Krake, perché entrambi sono allora al minimo e dalle undici salgono insieme.
 
 ```best-days-widget slug=heide-park
 
@@ -287,8 +294,9 @@ Il mese sposta all’incirca quanto il giorno della settimana. Luglio e agosto s
 settembre scende nettamente dopo. Per ottobre non abbiamo ancora giorni
 misurati (dati al 25 settembre 2026); il parco stesso indica le vacanze
 scolastiche come i suoi periodi più affollati, e a ottobre vacanze autunnali e
-Halloween capitano insieme. Prendere un venerdì di settembre invece di un
-sabato di agosto rende più di ciascuna delle due decisioni presa da sola.
+Halloween capitano insieme.
+
+In Bassa Sassonia e a Brema le vacanze scolastiche estive del 2026 sono andate dal 2 luglio al 12 agosto, ad Amburgo dal 9 luglio al 19 agosto. Quelle autunnali cadono in Bassa Sassonia e a Brema tra il 12 e il 24 ottobre 2026, ad Amburgo tra il 19 e il 30 ottobre. Le vacanze di Pasqua della Bassa Sassonia sono andate dal 23 marzo al 7 aprile e hanno quindi coperto l’apertura della stagione.
 
 ### Halloween: dal 10 al 31 ottobre 2026
 
@@ -316,6 +324,10 @@ chiama Heide Park Express. Una quarta, il circuito Oldtimer con le sue repliche
 della Ford Modello T, ha girato fino al 2025; poi il parco l’ha chiusa quasi
 senza annunci.
 
+Le altre due attrazioni del giorno d’apertura erano la pista automobilistica Monza, chiamata Monza-Piste dal 1997, e la Wichtelhausenbahn di Mack Rides. Sui suoi binari corre dal 2018 l’Opa Pig’s Zugfahrt nel Peppa Pig Land, costruita da Metallbau Emmeln. La cappella di Heidenhof è in legno di quercia e in seguito è stata trasformata in magazzino di un mulino su due piani. Dal 1951 è di nuovo una cappella, dal 2007 si chiama «Offener Raum der Stille» (spazio aperto del silenzio), e di tanto in tanto il distretto ecclesiastico di Soltau vi celebra brevi funzioni.
+
+Lo spettacolo degli alligatori è andato avanti dal 1978 al 2003, dal 1985 in un’arena tutta sua. Nel 1979 è arrivato uno spettacolo di delfini, che un anno dopo ha avuto una copertura a cupola, e dopo la stagione 2008 il parco ha chiuso il delfinario. I leoni marini si sono esibiti fino al 2007, e sul loro palco oggi c’è l’arena dei pirati. Lo spettacolo di Hallo Spencer è andato in scena dal 2004 al 2016 e si è fermato perché la licenza era scaduta.
+
 Dal **1986** all’inverno 2011/2012 qui si ergeva una replica alta 35 metri della
 Statua della Libertà, inaugurata il 4 luglio 1986 per il centesimo compleanno
 dell’originale, con gli auguri di Ronald Reagan. Dopo lo smontaggio la metà
@@ -336,6 +348,8 @@ quotidiano spagnolo Expansión ha inoltre indicato Merlin fra i possibili
 acquirenti di Parques Reunidos, il gruppo che controlla Movie Park
 ([qui i dettagli](/blog/parques-reunidos-in-vendita-movie-park)).
 
+L’Heide-Dorf, con repliche di case tipiche della brughiera di Luneburgo, è esistito dal 1988 al 2009. Il quartiere olandese con mulino e canali è stato aggiunto nel 1996/97, dal 2009 era accessibile solo agli ospiti dell’hotel, e nel 2014 le sue facciate sono state demolite per fare spazio al Sultan’s Spaßbad. Nel 2008 ha aperto Wild Wild West con l’Indy-Blitz, una giostra a vapore e una ruota panoramica western. Nel 2011 il parco ha diviso l’area in zone, fra cui il Land der Vergessenen e la Transilvania, e nel 2012 è stata completata la Bucht der Totenkopfpiraten. Dopo l’isola di «Dragon Trainer» (2016) e il Peppa Pig Land (2018), nel 2019 il parco ha unito queste due a Wild Wild West in un’unica area, Exploria. Dal 2020 il Peppa Pig Land ha anche un giro in mongolfiera di Technical Park.
+
 ## Dormire accanto al parco
 
 Chi arriva dalla Germania meridionale fa meglio a farne due giorni.
@@ -346,6 +360,8 @@ accanto ha aperto il Sultan’s Spaßbad. L’**Holiday Camp** del 2005 è compo
 dopo un ampliamento, da 81 casette di legno con 536 posti letto in tutto. I
 sette VW T2 riadattati del **Bulli Camp**, in cui si poteva dormire da luglio
 2014, dal 2025 non ci sono più; nel campo ora si prenotano solo capanne.
+
+L’Abenteuerhotel ha 150 camere familiari e 16 camere comfort, arredate come camere dei pirati, cabine del capitano, camere western o dei demoni, oppure come suite dei Ghostbusters. Cinque ex camere dei pirati sono dal 2018 camere di Peppa Pig. All’Holiday Camp si prenotano casette con bagno per due o quattro persone, oppure casette più economiche senza bagno, i cui ospiti usano i servizi comuni lì vicino.
 
 Nelle giornate lunghe d’autunno gli
 ospiti dell’hotel e del campo entrano addirittura alle 11, un’ora prima di tutti
@@ -373,7 +389,7 @@ solo in casi eccezionali, solo con carta e a prezzo più alto, 16 € per l’au
 In treno si arriva a Soltau o a Wolterdingen; da Wolterdingen sono 20 minuti a
 piedi, e da Amburgo e Hannover un pullman arriva fin davanti al cancello. Si
 chiama Heide Park Express, come il trenino del parco, ma con quello non ha
-niente a che fare.
+niente a che fare. Lo gestisce la Elbe-Leine-Express GmbH. A Hannover parte da Hamburger Allee 4, di fronte all’autostazione; una corsa singola costa 15 €, andata e ritorno 25 €.
 
 **Orari.** Dal 28 marzo al 31 ottobre 2026, tutti i giorni nel cuore della
 stagione e a ottobre, in primavera e a settembre senza una parte dei lunedì.
@@ -388,9 +404,11 @@ online, se ci sono posti; i 37 € però valgono solo in giornate selezionate. I
 biglietto senza data per tutta la stagione costa 52 €. I bambini sotto i 90 cm
 entrano gratis, ma serve un biglietto da 0 € dal negozio online.
 
+**Abbonamento annuale.** Il Bronze Pass costa 69 € nuovo e 59 € al rinnovo, e nel 2026 non vale per 45 giorni, fra cui la maggior parte dei sabati da aprile a ottobre e dall’1 al 9 agosto. Il Silber Pass da 89 € (69 € al rinnovo) non ha giorni esclusi. Il Merlin Abenteuer-Pass da 139 € (119 € al rinnovo) comprende il parcheggio e vale anche al Legoland Deutschland, al Peppa Pig Park Günzburg, nei Sea Life tedeschi e da Madame Tussauds Berlino, più fino a due giorni consecutivi al Legoland Billund e a Gardaland. Chi ha il Silber Pass o l’Abenteuer-Pass e vuole venire il 31 ottobre deve prendere un biglietto di prenotazione gratuito. Tutti e tre valgono dodici mesi dall’acquisto.
+
 **Mangiare.** Sulla nostra pagina del parco ci sono 21 punti di ristoro (dati a
 settembre 2026), dalla Schmalzkuchen-Schmiede, un chiosco di frittelle sulla
-terrazza di Colossos, fino al Wirtshaus des Admirals.
+terrazza di Colossos, fino al Wirtshaus des Admirals. Il Wirtshaus des Admirals, nella Bucht der Piraten, è un ristorante a buffet. La pizza si trova da Pizza Scream e la Flammkuchen alla Flammkuchen Factory, entrambi in Transilvania, e la salsiccia della Turingia alla griglia di lava all’Heide Park Grill, all’ingresso. Il Frau Mümmels Kiosk nel Peppa Pig Land vende bowl, e molti ristoranti hanno alternative vegetali.
 
 ## Domande frequenti sull’Heide Park
 
@@ -422,8 +440,7 @@ tutti i giorni, e non c’è apertura invernale. Il calendario pubblicato è sul
 
 Un venerdì di settembre, molto prima di un sabato di agosto. Il giorno della
 settimana e il mese spostano da soli all’incirca lo stesso, e insieme più di
-ciascuno dei due. Quali fra i prossimi giorni di apertura saranno i più
-tranquilli lo trovi nel widget qui sopra, aggiornato ogni giorno.
+ciascuno dei due. I più tranquilli fra i prossimi giorni di apertura sono segnati sulla [pagina del parco](ref:heide-park), ricalcolati ogni giorno.
 
 ### Quali montagne russe dell’Heide Park sono state le prime in Germania?
 
@@ -450,6 +467,10 @@ Da 37 € a persona online, 64 € alle biglietterie automatiche sul posto; una
 cassa non c’è. Il parcheggio costa 14 € online per l’auto. I prezzi del giorno
 sono su [heide-park.de](https://www.heide-park.de/tickets-paesse/tickets/).
 
+### Quanto costa un abbonamento annuale all’Heide Park?
+
+Il Bronze Pass costa 69 € nuovo, ma nel 2026 non vale per 45 giorni, fra cui la maggior parte dei sabati da aprile a ottobre. Il Silber Pass da 89 € vale in ogni giorno d’apertura della stagione. Il Merlin Abenteuer-Pass da 139 € comprende il parcheggio e l’ingresso ad altre attrazioni Merlin in Germania, come il Legoland Deutschland.
+
 ### Conviene pernottare nel parco?
 
 Se il viaggio dura più di due ore, sì. Quello che si guadagna è la prima ora
@@ -458,8 +479,6 @@ mezzogiorno. Nelle giornate lunghe d’autunno gli ospiti dell’hotel e del cam
 entrano inoltre un’ora prima.
 
 ## Per approfondire
-
-Che tempo farà sopra il parco quando ci andrai:
 
 ```weather-widget slug=heide-park
 
@@ -535,6 +554,30 @@ venerdì è fra i giorni più tranquilli.
   [Biglietti giornalieri (ufficiale, in tedesco)](https://www.heide-park.de/tickets-paesse/tickets/)
   ·
   [Ci sono biglietti sul posto? (centro assistenza del parco, in tedesco)](https://support.heide-park.de/hc/de/articles/4469462362269-Sind-Tickets-vor-Ort-erh%C3%A4ltlich)
+- Dati delle altre montagne russe e altezze minime:
+  [Big Loop](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/big-loop/) ·
+  [Bobbahn](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/bobbahn/) ·
+  [Grottenblitz](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/grottenblitz/) ·
+  [Indy-Blitz](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/indy-blitz/) ·
+  [Desert Race](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/desert-race/) ·
+  [Toxic Garden](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/attraktionsuebersicht/toxic-garden-heide-park-resort/) sul sito del parco (in tedesco) ·
+  [Bobbahn](https://rcdb.com/984.htm) ·
+  [Grottenblitz](https://rcdb.com/985.htm) ·
+  [Indy-Blitz](https://rcdb.com/4146.htm) nella Roller Coaster DataBase
+- Spettacoli, incontri con i personaggi ed eventi 2026:
+  [Spettacoli (ufficiale, in tedesco)](https://www.heide-park.de/entdecken/attraktionen-shows-entertainment/shows/)
+  · [Festa dei pirati (ufficiale, in tedesco)](https://www.heide-park.de/entdecken/events/piratenfest/)
+  · [Pyro Games (ufficiale, in tedesco)](https://www.heide-park.de/entdecken/events/pyro-games/)
+- Vacanze scolastiche 2026 in Bassa Sassonia, a Brema e ad Amburgo:
+  [Calendario delle vacanze 2025/26 della KMK (in tedesco)](https://www.kmk.org/fileadmin/Dateien/pdf/Ferienkalender/FER2025_26.pdf)
+  · [Calendario delle vacanze 2026/27 della KMK (in tedesco)](https://www.kmk.org/fileadmin/Dateien/pdf/Ferienkalender/FER2026_27.pdf)
+- Abbonamenti annuali 2026, prezzi e giorni esclusi:
+  [Abbonamenti annuali (ufficiale, in tedesco)](https://www.heide-park.de/tickets-paesse/jahreskarten/)
+- Autobus da Hannover:
+  [Orario dell’Heide Park Express (PDF del parco, in tedesco)](https://www.heide-park.de/media/1i0mavtt/heide-park_express_web.pdf)
+- Casette dell’Holiday Camp e ristoranti del parco:
+  [Alloggi dell’Holiday Camp (ufficiale, in tedesco)](https://www.heide-park.de/uebernachten/holiday-camp/unterkuenfte/)
+  · [Ristoranti e caffè (ufficiale, in tedesco)](https://www.heide-park.de/planen/besuch-planen/essen-trinken/)
 - Tempi di attesa, giorni misurati, andamenti giornalieri, altezze minime e
   orari: i widget di questo articolo e
   [la nostra pagina del parco](ref:heide-park), da rilevazioni proprie

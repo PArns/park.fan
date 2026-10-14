@@ -123,8 +123,7 @@ vollen Samstag im Oktober kommt, nimmt den Pass.
 ## Für wen das ist
 
 Empfohlen sind die Fright Nights **ab 16**. Anders als bei Traumatica ist das
-keine harte Grenze: Wer jünger ist, kommt laut den FAQ des Parks in Begleitung
-eines Erziehungsberechtigten hinein. Für Jüngere und Schreckhafte bleiben
+keine harte Grenze: In den FAQ des Parks steht, dass Jüngere in Begleitung eines Erziehungsberechtigten hineinkommen. Für Jüngere und Schreckhafte bleiben
 Majaland und die Plopsa Indoor-Halle monsterfrei, und nur vor Ort gibt es den
 „Schreck-Stopp“, mit dem einen die Monster laut Park in Ruhe
 lassen. Gästen über 12 Jahren sind Masken, aufwendiges Make-up und Kostüme

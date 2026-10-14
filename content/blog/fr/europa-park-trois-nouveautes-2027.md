@@ -92,23 +92,20 @@ dit pas.
 
 ## Enzo's Piccolo Mondo revient
 
-Selon le parc, les plus petits montent dans les gondoles du quartier italien
-depuis plus de 40 ans. En 2027, la balade doit revenir « dans un nouvel
+Les plus petits montent dans les gondoles du quartier italien depuis plus de 40 ans, selon le parc. En 2027, la balade doit revenir « dans un nouvel
 éclat ». Si elle ferme pour les travaux, et à partir de quand, l’annonce ne le
 précise pas.
 
-Selon le parc, on y verra et entendra de l’art, du théâtre classique et de la
-musique italienne. Combien de scènes il y aura et lesquelles sont nouvelles, il ne l’a
+On y verra et entendra de l’art, du théâtre classique et de la musique italienne, selon le parc. Combien de scènes il y aura et lesquelles sont nouvelles, il ne l’a
 pas dit.
 
 Le manège a l’âge du quartier. L’Italie a ouvert en 1982, premier quartier
 thématique du parc, et Piccolo Mondo la même année. MACK Rides l’a construit.
 Les gondoles accueillent six personnes chacune et passent à l’intérieur d’un
 hall devant Pise, Venise et Florence. Un tour dure un peu plus de trois minutes.
-Les enfants de moins de 120 centimètres ne montent qu’avec un adulte. D’après la
-page du parc, le manège tourne aux quatre saisons, hiver compris.
+Les enfants de moins de 120 centimètres ne montent qu’avec un adulte. Le manège tourne aux quatre saisons, hiver compris, d’après la page du parc.
 
-Selon la page du parc sur les nouveautés 2027, Enzo est un perroquet. Le même
+Sur la page du parc consacrée aux nouveautés 2027, Enzo est un perroquet. Le même
 quartier a déjà un manège de 1982 avec deux années d’ouverture : pour le
 [Castello dei Medici](ref:europa-park/castello-dei-medici), la page du parc
 donne 1982 et 2024. Juste à côté tourne depuis 2011 Volo da
@@ -135,9 +132,6 @@ Aucune des trois nouveautés n’est un grand coaster. Pour les enfants encore
 trop petits pour blue fire et WODAN, le Portugal et l’Islande gagnent un manège
 qui monte en hauteur, à condition qu’ils atteignent la taille minimale, que le
 parc n’a pas encore donnée.
-
-Le tableau reprend les manèges à côté desquels les trois nouveautés vont
-s’installer.
 
 ```ride-waits-widget rides=europa-park/atlantica-supersplash|Atlantica SuperSplash|Water coaster;europa-park/wodan-timburcoaster|WODAN - Timburcoaster|Coaster en bois;europa-park/blue-fire-megacoaster|blue fire Megacoaster|Launch-Coaster;europa-park/castello-dei-medici|Castello dei Medici|Dark Ride;europa-park/piccolo-mondo|Piccolo Mondo|Balade en gondole columns=type,peak,days
 

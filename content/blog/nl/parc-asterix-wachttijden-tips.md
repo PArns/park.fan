@@ -86,8 +86,6 @@ Express, en pas daarachter de headliner. Volgens de Roller Coaster DataBase (RCD
 uur en OzIris 1.600. Voor Cétautomatix kwam de Franse site Androland vóór de
 opening uit op zo’n 700: negen karretjes van vier, elke 20 seconden een vertrek. Bij Cétautomatix en Pégase Express staat het hele gezin in de rij, omdat kinderen met begeleiding er vanaf 100 cm in mogen, in Toutatis pas vanaf 130 cm.
 
-De tabel vergelijkt Parc Astérix met het Disneyland Park, met Walibi Belgium, dat bij hetzelfde concern hoort, en met Europa-Park.
-
 ```park-comparison-widget slugs=parc-asterix,/parks/europe/france/paris/disneyland-park,walibi-belgium,europa-park show=quietest highlight=parc-asterix
 
 ```
@@ -142,15 +140,11 @@ aan. De
 Compagnie des Alpes kocht in april 2025 Belantis bij Leipzig van Parques
 Reunidos en wil het tegen 2030 of 2031 ombouwen tot Parc Astérix. Topman
 François Fassier noemde het tegenover franceinfo “een heel complex en heel
-ambitieus project”, alleen bedoeld voor de Duitse markt. Hoe die verkoop tot
-stand kwam, lees je in ons
-[bericht over Parques Reunidos](/blog/parques-reunidos-te-koop-movie-park).
+ambitieus project”, alleen bedoeld voor de Duitse markt. Ons [bericht over Parques Reunidos](/blog/parques-reunidos-te-koop-movie-park) legt uit hoe die verkoop tot stand kwam.
 
 ## Vijf themagebieden en het oude Parijs
 
-Officieel heeft het park vijf themagebieden. Via de ingang kom je op de Via
-Antiqua, een winkelstraat die sinds 2012 niet meer als apart gebied telt. Van
-daaruit:
+Via de ingang kom je op de Via Antiqua, een winkelstraat die sinds 2012 niet meer als apart gebied telt. Van daaruit bereik je de vijf officiële themagebieden:
 
 - La Gaule, het dorp van Astérix en Obélix, met Cétautomatix, Menhir Express,
   La Revanche des Pirates, de bootjes van Épidemaïs Croisières en de
@@ -176,8 +170,7 @@ In 2028 moet daar Londinium staan.
 
 ## De achtbanen
 
-RCDB telt negen achtbanen in Parc Astérix. De minimale lengtes hieronder zijn
-die van het park: het eerste getal geldt wanneer er een volwassene meerijdt, het
+De minimale lengtes hieronder, voor de negen achtbanen die RCDB in Parc Astérix telt, zijn die van het park: het eerste getal geldt wanneer er een volwassene meerijdt, het
 tweede voor kinderen alleen. Staat er maar één getal, dan is er geen lagere
 grens met begeleiding.
 
@@ -310,7 +303,7 @@ kinderen vanaf 90 cm mee. [Discobélix](ref:parc-asterix/discobelix) (Zamperla, 
 mensen dat ronddraait terwijl het over een gebogen baan heen en weer rijdt.
 Minimale lengte 120 cm.
 
-## Waterattracties, een toren en de shows
+## Waterattracties en shows
 
 In de herfst gaan de waterattracties een voor een dicht. Romus et Rapidus sluit
 volgens het park op 11 oktober 2026, La Revanche des Pirates op 1 november, en
@@ -383,8 +376,7 @@ Kun je de dag zelf kiezen, neem dan de woensdag. De rustigste dagen van de ander
 December en januari staan bovenaan, op maar een paar gemeten dagen, allemaal in
 de kerstvakantie van 2025/26. Van de maanden met veel meetdagen zijn mei en juni
 het rustigst, en augustus is drukker dan juli. Oktober en november hebben we nog
-niet, omdat Peur sur le Parc 2025 liep voordat we het park volgden. De verwachting
-voor de komende weken staat in de kalender:
+niet, omdat Peur sur le Parc 2025 liep voordat we het park volgden.
 
 ```best-days-widget slug=parc-asterix
 
@@ -480,9 +472,7 @@ Er staan dit jaar drie spookhuizen op het programma: Le Tombeau des Dieux
 onder de 16; ’s avonds kost Pompéi 6 euro met een vast tijdslot). Nieuw zijn La
 Forêt sans Retour, een tocht door het bos alleen tijdens de nocturnes, ook vanaf
 16 jaar, en Les Bas-Fonds du Souk, een schrikzone in het gebied Égypte. La
-Colère d’Anubis is samen met de Rue de Paris verdwenen. Wat de andere parken
-deze herfst doen, staat in onze
-[halloweengids 2026](/blog/halloween-pretparken-2026).
+Colère d’Anubis is samen met de Rue de Paris verdwenen. Onze [halloweengids 2026](/blog/halloween-pretparken-2026) beschrijft wat de andere parken deze herfst doen.
 
 ### Noël Gaulois
 
@@ -492,8 +482,7 @@ Viking, en de schaatsen zijn gratis. In de wachtrij van Romus et Rapidus bouwt
 het park de tuinen van de kerstman op, en er zijn een bandenglijbaan, La
 Glissade d’Obélix, een optocht en een kerstmarkt. De achtbanen rijden volgens
 het park “meestal”, de waterattracties niet. Een kerstticket zonder vaste datum
-kost 57 euro. Wat andere parken in de winter openen, staat in onze
-[wintergids](/blog/winter-pretparken-2026).
+kost 57 euro. In onze [wintergids](/blog/winter-pretparken-2026) staan de andere parken die in de winter openen.
 
 Tussen 9 november en 18 december 2026 is het park dicht, en weer vanaf 4 januari
 tot de start van het seizoen in het voorjaar. Sinds 2007 blijft het open tot na
@@ -521,7 +510,7 @@ Multi Dimension Coaster van Intamin met draaibare karretjes, 17 meter hoog,
 binnen in de hal. Tonnerre 2 Zeus krijgt in de winter van 2026/27 het tweede deel
 van zijn nieuwe stalen baan.
 
-## Tickets, bereikbaarheid, hotels en eten
+## De reis plannen
 
 ### Tickets en prijzen 2026
 
@@ -623,8 +612,6 @@ Walibi Belgium, het park van hetzelfde concern bij Brussel, heeft een eigen
 [gids](/blog/walibi-belgium-wachttijden-tips), en de buren in
 Marne-la-Vallée staan in onze
 [gids over Disneyland Paris](/blog/disneyland-paris-wachttijden-tips).
-
-Het weer in Plailly voor de dag dat je gaat:
 
 ```weather-widget slug=parc-asterix
 

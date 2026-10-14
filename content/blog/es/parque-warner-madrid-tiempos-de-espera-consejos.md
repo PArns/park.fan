@@ -2,6 +2,7 @@
 title: 'Parque Warner Madrid: Batman, Superman y apertura a las 12'
 translationKey: parque-warner-madrid-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -50,8 +51,7 @@ seo:
 A las **12** se abre la puerta del [Parque Warner Madrid](ref:parque-warner-madrid). En
 nuestro calendario, casi todos los días de apertura de 2026 empiezan a mediodía.
 El cierre es a las 20, a las 21 o a las 22 horas según la temporada, y en julio y
-agosto a medianoche. Quien se presenta a las diez en el aparcamiento espera dos
-horas, porque el aparcamiento abre una hora antes que el parque.
+agosto a medianoche. El aparcamiento abre una hora antes que el parque.
 
 El parque está en San Martín de la Vega, a unos 30 kilómetros al sur de la
 capital, y tiene cinco áreas temáticas basadas en las películas y los cómics de
@@ -62,10 +62,19 @@ Escape, desde 2023. Salvo en Batman, en el parque las colas suelen ser cortas.
 
 Madrid quería un parque como el que Disney levantó en París. Disney había
 estudiado España antes y se decidió por París, y la región se quedó con Warner.
-La adjudicación fue para **Six Flags**, entonces filial de Time Warner. El
+Por la gestión de la futura Ciudad del Ocio habían pujado filiales de Paramount y de
+Time Warner. La adjudicación fue para **Six Flags**, que Time Warner había vendido en
+1995 a la firma de inversión Boston Ventures. El
 acuerdo con la Comunidad de Madrid se firmó en **enero de 1999**, las obras
 empezaron en la primavera de 1999 y la Wikipedia en español cifra el coste total
 en **368 millones de euros**.
+
+En el terreno había un yacimiento de aljez del que salía el 90 % del yeso de la
+región. Los yeseros exigieron 10.000 millones de pesetas de indemnización, con un
+presupuesto previsto de unos 30.000 millones, y llegaron a un acuerdo judicial con la
+Comunidad. Esta compró 150 hectáreas por 8 millones de euros, pagó otros 28 millones
+para desdoblar 8 kilómetros de la M-506 y puso 160 millones de euros del coste de la
+obra.
 
 El parque abrió el **6 de abril de 2002**. La noche anterior, Bo Derek y
 Christopher Lambert lo habían inaugurado con una gala en la que llovió tanto que
@@ -73,16 +82,26 @@ se cancelaron el programa y la retransmisión televisiva. Se llamó primero Warn
 Bros. Movie World Madrid, desde 2004 Warner Bros. Park Madrid y desde 2006
 Parque Warner Madrid.
 
+A finales de 2005, la Comunidad tenía el 43,6 % de la sociedad del parque, Caja
+Madrid el 21,82, Fadesa el 13,09, El Corte Inglés y NH Hoteles un 4,3 cada uno y Six
+Flags o Warner un 4 %, y el resto estaba en manos de cinco constructoras. Six Flags
+gestionaba el parque con un contrato de 99 años, que debía durar hasta 2101. En noviembre de 2004 los accionistas lo rescindieron sin compensación. Culpaban a la
+gestora de 32 millones de euros de pérdidas, y el director general, Mike Foerster,
+dimitió. La licencia de las marcas y los personajes de Warner Bros. se mantuvo. Para
+todo 2004, El País informó de 38 millones de euros de pérdidas.
+
 Los gestores esperaban tres millones de visitantes al año y pronto bajaron la
 previsión a uno. La Wikipedia en español da como causas el precio de la entrada,
 la tarifa del aparcamiento y la prohibición de entrar con comida. En el primer
 año se sumaron las colas largas, porque los empleados no conocían las
 instalaciones, y 56 de ellos se fueron. En 2006 la deuda era de 240 millones de
-euros. La Comunidad vendió su participación por 25 millones de euros a la
+euros. La Comunidad vendió su participación por 26 millones de euros a la
 constructora Fadesa, y **Parques Reunidos** asumió la gestión durante diez años.
-Después, según la misma fuente, el parque tuvo beneficios por primera vez.
+Después, según la Wikipedia en español, el parque tuvo beneficios por primera vez.
 
-En 2019 llegaron 2,26 millones de visitantes, y así figura entre los veinte
+Según el informe de TEA y AECOM, la afluencia creció un 18,8 % en 2018, de 1,84 a
+2,185 millones. Ningún parque temático europeo de esa lista creció más, y el parque
+ocupó el puesto 13 en Europa. En 2019 llegaron 2,26 millones de visitantes, y así figura entre los veinte
 parques más visitados de Europa. Parques Reunidos pertenece hoy al fondo EQT, que
 según Expansión quiere ponerlo a la venta en septiembre de 2026
 ([más detalles](/blog/eqt-venta-parques-reunidos-movie-park)).
@@ -94,14 +113,15 @@ Village ocupa 5,5 hectáreas. Nuestra página del parque registra 45 atracciones
 experiencias, entre ellas los pasajes de Halloween, que solo funcionan en
 determinadas fechas; el propio parque habla de 33 atracciones.
 
-Con los años llegaron sobre todo novedades pequeñas. En 2004 hubo los primeros
-días de Halloween y más espectáculos de calle, en 2005 el viaje oscuro de
-Scooby-Doo, y la primera temporada de Navidad se celebró en 2006. En 2009
+En 2004 hubo más espectáculos de calle, en 2005 llegó el viaje oscuro de
+Scooby-Doo, y en 2006 el parque celebró su primera temporada de Halloween y su
+primera temporada de Navidad. En 2009
 abrieron Oso Yogui y Correcaminos Bip Bip, en 2011 Cartoon Village sumó cuatro
 atracciones, entre ellas la autoescuela de la familia Picapiedra, y en 2013 la
 Academia de Pilotos Baby Looney Tunes. El Parque Warner Beach llegó en junio de
-2014, en 2018 se añadió allí una zona DC con seis atracciones de agua y en 2019
-el Aquaman Nighttime Spectacular.
+2014, un parque acuático de 8,5 millones de euros en 30.000 metros cuadrados con dos
+piscinas de olas y un río lento. En 2018 se añadió allí una zona DC con seis atracciones de agua. En 2022 el parque acuático estrenó los toboganes
+Aquaman y Black Manta, de ProSlide.
 
 ## Superman y Gotham: DC Super Heroes World
 
@@ -156,8 +176,9 @@ en el modo Combo va uno tras otro. Altura mínima **132 cm**, máxima 195 cm.
 
 ```
 
-En el área están además el Lex Luthor Invertatron, las sillas voladoras de
-Mr. Freeze (desde 100 cm) y los autos de choque del Joker (desde 105 cm).
+En el área están además el Lex Luthor Invertatron (un Top Spin de HUSS), las sillas
+voladoras de Mr. Freeze (de Zierer, desde 100 cm) y los autos
+de choque del Joker (desde 105 cm).
 
 ## Las demás áreas
 
@@ -204,7 +225,7 @@ Mack Youngstar de 2009, de 16 metros de altura y unos 60 km/h, también desde
 **[La Aventura de Scooby-Doo](ref:parque-warner-madrid/la-aventura-de-scooby-doo)**
 se dispara a fantasmas en un viaje oscuro interactivo, sin altura mínima.
 
-**Hollywood Boulevard.** La entrada no tiene montañas rusas, pero sí baldosas con
+**Hollywood Boulevard.** La entrada tiene baldosas con
 los nombres de estrellas de cine, una réplica del Chinese Theatre con cine 3D y
 el escenario del espectáculo de bienvenida con los Looney Tunes.
 
@@ -239,15 +260,11 @@ de entre 100 y 120 cm suben solo con un adulto.
 
 ## Qué atracción para quién
 
-Quien solo vaya a subir a una montaña rusa grande, que elija Superman. Tiene
-siete inversiones y no tiene suelo en el vagón, y su cola está en la media del
-parque. Para el viaje más intenso hay que ir a Stunt Fall: la RCDB da 4,5 g y la
-atracción recorre dos veces el mismo trazado, una de ellas hacia atrás. Batman
-es la más moderna y la de las esperas más largas, y quien venga por ella hará
-bien en incluir un pase en el plan.
+Quien solo vaya a subir a una montaña rusa grande, que elija Superman, cuya cola
+está en la media del parque. El viaje más intenso es Stunt Fall, con 4,5 g. Batman
+es la más moderna.
 
-Shadows of Arkham es compacta, tiene
-cinco inversiones en 823 metros y casi nunca hay cola.
+Shadows of Arkham es compacta, con 823 metros, y casi nunca hay cola.
 
 ## Espectáculos y novedades de 2026
 
@@ -268,18 +285,11 @@ página del parque entre las atracciones cerradas.
 La tabla se basa en los días medidos de los dos últimos años hasta el 7 de
 octubre de 2026, cada atracción con su propio número de días. Como en invierno el
 parque abre solo algunos días, la mayor parte de los datos es de abril a
-septiembre:
+septiembre.
 
 ```ride-waits-widget park=parque-warner-madrid top=8 columns=land,peak,days highlight=batman-gotham-city-escape
 
 ```
-
-Batman: Gotham City Escape está arriba, y la distancia con las demás es grande.
-Todo lo que viene después queda muy junto: los Rápidos ACME están en segundo
-lugar, y detrás van Scooby-Doo, Superman, Río Bravo y Coaster Express. Stunt Fall
-no aparece entre los diez primeros.
-
-Así se reparten las colas a lo largo del día:
 
 ```hourly-profile-widget slug=parque-warner-madrid top=8
 
@@ -291,13 +301,11 @@ montañas rusas grandes sube hasta primera hora de la tarde y luego se queda
 plana. Los Rápidos ACME y Río Bravo tienen su máximo por la tarde, cuando hace
 calor.
 
-El rope drop solo compensa en este parque en una atracción. Los Rápidos ACME
-tienen unos diez minutos de espera a la apertura y unos 60 en el máximo del día.
+El rope drop solo compensa en este parque en una atracción. En los Rápidos ACME la cola es corta a la apertura y
+por la tarde se multiplica.
 Recomendamos subir a ellos en los primeros 90 minutos tras la apertura (a 8 de
-octubre de 2026). En Batman la espera a la apertura ya es de unos 40 minutos, y
-allí no recomendamos una visita temprana.
-
-Los más tranquilos de los próximos días de apertura, calculados en directo:
+octubre de 2026). En Batman ya es larga a la apertura, y allí no
+recomendamos una visita temprana.
 
 ```best-days-widget slug=parque-warner-madrid
 
@@ -338,20 +346,19 @@ El día con más gente es el sábado, con una diferencia clara, y los más tranq
 domingo y el martes quedan en el medio. El lunes se apoya en pocos días medidos,
 porque el parque suele cerrarlo en otoño.
 
-Agosto queda claramente por encima de julio, aunque en los dos meses el parque abre todos los días de 12 h a medianoche. Por qué, no lo sabemos. Septiembre es tranquilo. Octubre tiene hasta
+Agosto queda claramente por encima de julio, aunque en los dos meses el parque abre todos los días de 12 h a medianoche. Septiembre es tranquilo. Octubre tiene hasta
 ahora seis días medidos y es el mes más tranquilo; diciembre también tiene seis
-y un valor llamativamente alto (a 8 de octubre de 2026). Los dos datos son
-escasos.
+y un valor llamativamente alto (a 8 de octubre de 2026).
 
-De abril a junio de 2026 el parque suele abrir, unas veces
+Según el calendario de la [página del parque](ref:parque-warner-madrid), de abril a
+junio de 2026 el parque suele abrir, unas veces
 hasta las 20 y otras hasta las 22 h. En julio y agosto funciona todos los días
 hasta medianoche. En septiembre se alternan las 20 y las 22 h, y en octubre
 faltan una y otra vez los lunes y los martes. En noviembre abre solo los fines
 de semana y dos lunes, de 12 a 20 h. La temporada de Navidad va, según el
 parque, del 21 de noviembre al 10 de enero, e incluye algunos días laborables en
 diciembre de 2026 y nueve días en enero de 2027. En febrero está prácticamente
-cerrado. Lo que rige de verdad está en el calendario de la
-[página del parque](ref:parque-warner-madrid).
+cerrado.
 
 El parque ofrece una garantía de lluvia. Quien con una entrada comprada en
 parquewarner.com haya vivido en total dos horas de lluvia, incluso con
@@ -363,23 +370,24 @@ sobre otros parques con lluvia en la
 
 ### Halloween hasta el 2 de noviembre
 
-La temporada de Halloween va del **26 de septiembre al 2 de noviembre de 2026**.
+La temporada de Halloween va del **26 de septiembre al 2 de noviembre de 2026**, y
+las fechas de otros parques de Europa están en la [guía de Halloween 2026](/blog/halloween-parques-atracciones-2026).
 De día hay decoración, desfiles y la nueva atracción familiar ACME Factory, en la
 que se arregla una fábrica con el Coyote. Se suman cuatro Pasajes del Terror (La
 Monja, Crime Alley: Night of Chaos, IT Experience, Expedientes Warren) y dos
 Scare Zones. El parque vende los pasajes por separado o en paquete. También es
 nuevo el musical La Maldición de Drácula.
 
-Las **Halloween Scary Nights** son una entrada aparte para la noche. En 2026 se
-celebran por quinta vez, el 9, el 16 y el 23 de octubre de 22 a 3 h y el 31 de
+Las **Halloween Scary Nights** son una entrada aparte para la noche. Se celebraron
+por primera vez en 2021 como Halloween Horror Nights, el 30 y el 31 de octubre de 23
+a 3 h. En 2022 el parque les cambió el nombre, según la Wikipedia en español para que
+nadie las confundiera con el evento homónimo de Universal. Con ese nombre se celebran en 2026 por quinta vez, el 9, el 16 y el 23 de octubre de 22 a 3 h y el 31 de
 octubre de 0 a 5 h, con acceso dos horas antes en cada caso. El parque las
 recomienda a partir de 12 años y con acompañante. El programa incluye ocho
 pasajes, seis Scare Zones y un DJ, y siguen funcionando La Venganza del Enigma,
 Superman, Batman Gotham City Escape, Shadows of Arkham y los autos de choque del
 Joker. Slasher Royale es una experiencia extra para mayores de 18 años con
-control de documentación, y el 8 de octubre estaba agotada. Cómo queda el evento
-frente a otros de Europa está en la
-[guía de Halloween 2026](/blog/halloween-parques-atracciones-2026).
+control de documentación, y el 8 de octubre estaba agotada.
 
 ## Entradas, precios y pase anual
 
@@ -403,8 +411,8 @@ entre las 14 y las 15:30 h.
 Los **Bono Parques** son los pases anuales del grupo Parques Reunidos, válidos
 hasta finales de 2027. El Bono Oro cuesta 219 €, con aparcamiento 294 €, y vale
 en doce parques. El Bono Platino (329 €) vale en 27. Además, el Oro da un 50 %
-de descuento en el Parque Warner Beach. Cómo se compara con otros pases anuales
-está en la [comparativa de pases anuales](/blog/pase-anual-comparativa-parques).
+de descuento en el Parque Warner Beach. La [comparativa de pases anuales](/blog/pase-anual-comparativa-parques) los pone
+junto a otros pases anuales.
 
 ## Servicios en el parque
 
@@ -414,16 +422,13 @@ hasta la salida. El servicio sanitario está en la calle Nueva York, entre Stunt
 Fall y el teatro del espectáculo de especialistas. Solo se puede fumar en 16
 zonas señalizadas. En los bancos solares de Repsol se carga el móvil con energía
 del sol, y el parque alquila además baterías externas. La app oficial muestra
-los tiempos de espera, los espectáculos y el estado del Pase Correcaminos. Sus
-tiempos de espera son datos del parque; nuestras tablas salen de mediciones
-propias.
+los tiempos de espera, los espectáculos y el estado del Pase Correcaminos.
 
 ## Cómo llegar desde Madrid
 
 **En coche.** A-4 en dirección sur, salida 22 y después señalizado. Según la
 Wikipedia en español, el aparcamiento tiene capacidad para más de 10.000
-coches. El parque aconseja llegar antes de la apertura, porque en los accesos se
-forman colas, y el aparcamiento abre una hora antes que el parque.
+coches. El parque aconseja llegar antes de la apertura, porque en los accesos se forman colas.
 
 **En tren y autobús.** La línea C-3 de Cercanías llega hasta Pinto, y desde allí
 la línea 413 de La Veloz lleva hasta la puerta. La línea 412 sale del
@@ -432,6 +437,11 @@ vende la entrada con autobús desde la estación de Méndez Álvaro y desde Prí
 Pío; para las Scary Nights hay autobuses de SAMAR desde Méndez Álvaro con vuelta
 la misma noche.
 
+De 2002 al 4 de abril de 2012 un ramal propio de Cercanías, el C-3a, iba de Pinto al
+parque y seguía hasta San Martín de la Vega. La línea había costado 85 millones de
+euros. La Comunidad la cerró, y El Confidencial dio como motivo las pocas visitas del
+parque.
+
 **En coche compartido.** WiBLE alquila coches con el aparcamiento del parque
 incluido por 45 € al día.
 
@@ -439,8 +449,7 @@ incluido por 45 € al día.
 
 En el propio parque no hay hotel. Vende paquetes de entrada y noche en hoteles
 asociados de los pueblos de alrededor, y para visitas hasta el 2 de noviembre
-anuncia un segundo día gratis (reserva hasta el 12 de octubre). Quien duerme en
-Madrid recorre 30 kilómetros.
+anuncia un segundo día gratis (reserva hasta el 12 de octubre).
 
 ## Un día en el parque, a grandes rasgos
 
@@ -502,8 +511,6 @@ dos tallas y en número limitado.
 
 ## Para seguir leyendo
 
-Qué tiempo hará sobre el parque cuando vayas:
-
 ```weather-widget slug=parque-warner-madrid
 
 ```
@@ -540,3 +547,18 @@ Madrid, comparados:
   [Batman: Gotham City Escape en es.wikipedia](https://es.wikipedia.org/wiki/Batman:_Gotham_City_Escape)
 - Venta de Parques Reunidos:
   [nuestra noticia](/blog/eqt-venta-parques-reunidos-movie-park)
+- Parque acuático, atracciones y fabricantes:
+  [Parque Warner Madrid en en.wikipedia](https://en.wikipedia.org/wiki/Parque_Warner_Madrid)
+- Fin del contrato con Six Flags:
+  [Cinco Días](https://cincodias.elpais.com/cincodias/2004/11/23/empresas/1101220786_850215.html) ·
+  [El Mundo](https://www.elmundo.es/elmundo/2004/11/23/madrid/1101218257.html)
+- Accionistas y pérdidas de 2004:
+  [El País](https://elpais.com/diario/2005/12/29/madrid/1135859070_850215.html)
+- Terrenos, M-506, línea C-3a:
+  [El Confidencial](https://www.elconfidencial.com/espana/2012-03-18/aguirre-da-la-puntilla-a-la-warner-cierra-el-tren-que-lleva-al-parque_232651) ·
+  [C-3 en en.wikipedia](https://en.wikipedia.org/wiki/C-3_%28Cercan%C3%ADas_Madrid%29)
+- Visitantes 2017 y 2018:
+  [TEA/AECOM Theme Index 2018](https://aecom.com/content/wp-content/uploads/2019/05/Theme-Index-2018-5-1.pdf)
+- Venta de la participación de la Comunidad a Fadesa:
+  [Hosteltur](https://www.hosteltur.com/38174_madrid-vende-parque-warner-fadesa-26-m.html) ·
+  [El Mundo](https://www.elmundo.es/elmundo/2006/11/02/madrid/1162466445.html)

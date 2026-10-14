@@ -79,13 +79,13 @@ In Legoland Windsor gelden per attractie twee grenzen: een minimumlengte om mee 
 
 Stel, je kind is zes en 1,15 meter lang. Samen met jou mag het in Hydra's Challenge, The Dragon, Pirate Falls en Flight of the Sky Lion. Ook in de Minifigure Speedway mag het met 1,15 meter, want daar ligt de grens op 1,05 meter. Alleen rijden mag pas vanaf 1,30 meter, bij Flight of the Sky Lion vanaf 1,20 meter. Bij Flight of the Sky Lion kan een volwassene hooguit twee kinderen tussen 1,00 en 1,20 meter begeleiden.
 
-Kinderen onder de 90 centimeter betalen volgens het park geen entree. LEGO NINJAGO The Ride wordt volgens het park niet aanbevolen voor kinderen onder de drie jaar, vanwege geluid, rook en lichteffecten. De LEGO City Driving School staat open voor kinderen van 1,10 tot 1,50 meter die jonger zijn dan 13. De lengtes van de overige attracties staan op de pagina van het park over lengtebeperkingen.
+Kinderen onder de 90 centimeter betalen geen entree. LEGO NINJAGO The Ride wordt volgens het park niet aanbevolen voor kinderen onder de drie jaar, vanwege geluid, rook en lichteffecten. De LEGO City Driving School staat open voor kinderen van 1,10 tot 1,50 meter die jonger zijn dan 13. De lengtes van de overige attracties staan op de pagina van het park over lengtebeperkingen.
 
 ## De grote attracties
 
 De **[Minifigure Speedway](ref:legoland-windsor/minifigure-speedway)** is volgens het park de eerste duelcoaster in Lego-stijl en rijdt in beide richtingen. Twee treinen, Team Legends en Team AllStars, vertrekken tegelijk, en een deel van de baan wordt achterwaarts gereden. Zierer bouwde hem. Volgens Wikipedia is hij 14 meter hoog en 244 meter lang, met een topsnelheid van 56 km/u. Hij staat op de plek van de Raft Racers, een rubberbootglijbaan die tot 2021 reed.
 
-**[The Dragon](ref:legoland-windsor/the-dragon)** rijdt sinds 1998. De trein rolt eerst door een kasteel met geanimeerde Lego-taferelen, klimt dan de lift op en maakt twee achtjes door de boomtoppen. Het park noemt maximaal 30 mijl per uur, zo'n 48 km/u. De baan is volgens Coasterpedia 423 meter lang. Per rij zitten twee passagiers, kinderen aan de linkerkant van de trein.
+**[The Dragon](ref:legoland-windsor/the-dragon)** rijdt sinds 1998. De trein rolt eerst door een kasteel met geanimeerde Lego-taferelen, klimt dan de lift op en maakt twee achtjes door de boomtoppen. De trein haalt volgens het park maximaal 30 mijl per uur, zo'n 48 km/u. De baan is volgens Coasterpedia 423 meter lang. Per rij zitten twee passagiers, kinderen aan de linkerkant van de trein.
 
 ```glossary-widget slug=dark-ride
 
@@ -109,7 +109,7 @@ De **[Laser Raiders](ref:legoland-windsor/laser-raiders)** zijn een darkride doo
 
 Bij de **[Fire Academy](ref:legoland-windsor/fire-academy)** nemen vier mensen het met een brandweerauto op tegen andere teams. De auto rijd je op spierkracht, daarna spuit je op een brandend huis. Minstens twee mensen moeten meerijden, hooguit twee daarvan zijn volwassenen. Bij **[Coastguard HQ](ref:legoland-windsor/coastguard-hq)** sturen kinderen elektrische boten, waarbij een Lego-olifant water spuit. In **[L-Drivers](ref:legoland-windsor/l-drivers)** rijden kinderen van 0,90 tot 1,10 meter in kleine elektrische auto's, en wie groter is gaat naar de **[LEGO City Driving School](ref:legoland-windsor/lego-city-driving-school)**. Daar kijkt elk kind eerst een verkeersfilm, rijdt dan zelf en krijgt aan het eind een rijbewijs.
 
-## Miniland, bouwen en alles zonder wachtrij
+## Wat zonder wachtrij kan
 
 **[Miniland](ref:legoland-windsor/miniland)** heeft geen minimumlengte en geen wachtrij. Het park raadt het aan voor drukke dagen, net als de bouwplekken **The Brick**, **Creature Creation** en **LEGO Ferrari Build & Race**, waar kinderen een auto bouwen en tegen anderen laten racen. Ook het Magical Forest in Mythica staat in dat advies. De LEGO Store is volgens het park tussen 12 en 16 uur leger dan aan het eind van de dag, en aankopen kun je bij Shopper Services laten bewaren en later ophalen.
 
@@ -187,15 +187,15 @@ Bronze sluit Hydra's Challenge, Flight of the Sky Lion en Coastguard HQ uit, de 
 
 Op een dinsdag in september zou ik Fastrack niet kopen: Bronze dekt de drie langste wachtrijen niet, en bij de overige attracties zijn de wachttijden op zo'n dag kort. Op een zaterdag of in de schoolvakanties kan Silver of Gold zinvol zijn, vooral voor Flight of the Sky Lion, omdat een vroege start daar niets scheelt.
 
-## Tickets, prijzen en jaarkaarten
+## Wat tickets en jaarkaarten kosten
 
 Een dagkaart kost online **vanaf £ 32**, en vooraf boeken scheelt volgens het park tot £ 36. De prijzen hangen van de dag af. Kinderen onder de 90 centimeter hebben gratis toegang. Tickets worden niet terugbetaald, maar de datum kun je wel wijzigen. Twee-voor-een-acties zijn er volgens het park op dit moment niet. Tickets voor Brick or Treat beginnen bij £ 37 per persoon, voor LEGOLAND at Christmas bij £ 34.
 
 De **LEGOLAND Annual Pass** kost vanaf £ 64 en heeft 17 uitsluitingsdagen. De **Merlin Essential Pass** kost £ 139 met 25 uitsluitingsdagen. De **Merlin Gold Pass** kost £ 239 en omvat parkeren, met als enige uitzondering de vuurwerkshows in Alton Towers. De **Merlin Platinum Pass** kost £ 299 en heeft geen uitsluitingsdagen, vier vriendentickets per jaar en één Fastrack per bezoek. Wie op een uitsluitingsdag wil komen, betaalt £ 15 per persoon voor een upgradeticket. Alle passhouders moeten hun bezoek vooraf boeken. De passen omvatten Brick or Treat en LEGOLAND at Christmas.
 
-## Openingstijden, seizoen en evenementen
+## Openingstijden in herfst en winter
 
-Legoland Windsor gaat om 10 uur open, de sluitingstijd ligt afhankelijk van de dag tussen 16.30 en 18 uur. In oktober 2026 sluit het park doordeweeks meestal om 16.30 uur en in het weekend en in de herfstvakantie om 18 uur. Gasten van de resorthotels mogen voor de opening het park in (Early Park Access), daarvoor hebben ze een geldig parkticket nodig.
+Legoland Windsor gaat om 10 uur open. In oktober 2026 sluit het park doordeweeks meestal om 16.30 uur en in het weekend en in de herfstvakantie om 18 uur. Gasten van de resorthotels mogen voor de opening het park in (Early Park Access), daarvoor hebben ze een geldig parkticket nodig.
 
 Sommige attracties draaien in de herfst alleen doordeweeks of pas in de middag. Van 25 september tot 16 oktober gaan doordeweeks bijvoorbeeld LEGO NINJAGO The Ride, Destiny's Bounty en Deep Sea Adventure pas om 13 uur open, en Aero Nomad sluit om 13 uur. Alle data staan op de pagina “Ride & Show Availability” van het park.
 
@@ -215,15 +215,15 @@ Als binnenrit noemt het park de Laser Raiders. In een gebouw draaien verder de f
 
 ```
 
-## Eten, baby's en de ingang
+## Eten in het park en controle bij de ingang
 
 Alle horeca in het park is **contactloos**, je betaalt met pinpas, Apple Pay of Android Pay. In het park vind je de **City Walk Pizza & Pasta** in Heartlake City als zelfbedieningsbuffet met pizza en pasta, de **Pirate's Burger Kitchen**, **Farmer Joe's Chicken Company** in DUPLO Valley, **The Hungry Troll** en de **Skyline Bar** in het Resort Hotel. Daarbij komen meerdere kraampjes van LEGOLAND Coffee Co., een Ben & Jerry's en Wizard's Frozen Wonders. Eigen eten mag je meenemen, glazen flessen en alcohol niet. Drinkwaterpunten zijn er in het park.
 
-Voor baby's en peuters zijn er Baby Care Centres, die over het resort verspreid liggen en op de plattegrond staan. Het park noemt DUPLO Valley als themawereld voor gezinnen met peuters, daar hebben veel attracties geen minimumlengte. De Priority Parking is volgens het park geschikt voor gezinnen met kinderwagen, en kluisjes staan bij de hoofdingang. De Total Sensory Space in Heartlake City is een ruimte met zitzakken, projecties en gedempt licht voor gasten die even rust van het lawaai nodig hebben.
+Voor baby's en peuters zijn er Baby Care Centres, die over het resort verspreid liggen en op de plattegrond staan. In DUPLO Valley hebben veel attracties geen minimumlengte. De Priority Parking is volgens het park geschikt voor gezinnen met kinderwagen, en kluisjes staan bij de hoofdingang. De Total Sensory Space in Heartlake City is een ruimte met zitzakken, projecties en gedempt licht voor gasten die even rust van het lawaai nodig hebben.
 
 Bij de ingang doorzoekt de beveiliging alle tassen. Verboden zijn onder meer glazen flessen, alcohol, wapens en nepwapens, skateboards, steps, skeelers en drones. Het Ride Access Pass-systeem verandert eind 2026. Het park voert een virtuele wachtrij in, het recht blijft hetzelfde en de plicht om vooraf te boeken moet stapsgewijs vervallen.
 
-## Aankomst, parkeren en overnachten
+## Aankomst en hotels bij het park
 
 Het adres is **Winkfield Road, Windsor, SL4 4AY**. Legoland ligt aan de B3022 tussen Windsor en Ascot, zo'n drie kilometer van het centrum van Windsor. Met de auto neem je vanaf de M3 afrit 3, vanaf de M4 afrit 6 en vanaf de M25 met de klok mee afrit 13. Voor de terugweg raadt het park aan bij de rotonde rechtsaf te slaan richting M25, M3 en M4, omdat je dan het verkeer in Windsor mijdt. Vliegveld Heathrow ligt zo'n 20 kilometer verderop, Gatwick ongeveer 70.
 

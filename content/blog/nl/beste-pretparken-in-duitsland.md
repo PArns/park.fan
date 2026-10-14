@@ -53,7 +53,7 @@ parkLinks:
   - legoland-deutschland
 ---
 
-Op park.fan staan **negen pretparken in Duitsland**. Bij zes meten we de wachttijden, attractie
+Van de **negen pretparken in Duitsland** op park.fan meten we bij zes de wachttijden, attractie
 voor attractie. Bij [Hansa-Park](ref:hansa-park) komt geen enkel getal binnen, omdat het park ze
 alleen in de eigen app laat zien. [Traumatica](ref:traumatica), waarvoor we nog maar vier meetdagen hebben, en de waterwereld
 [Rulantica](ref:rulantica) horen bij het Europa-Park Resort en komen
@@ -177,7 +177,7 @@ park vijftig jaar, en daarvoor bouwt het een 86 meter hoge uitkijktoren.
 World, sinds 2005 onder de huidige naam. De wachtrijen zijn in onze meting korter dan in
 Phantasialand, en de zondag hoort hier bij de rustigere dagen.
 
-Het park heeft acht achtbanen. De grootste is
+De grootste van de acht achtbanen is
 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) van Mack
 Rides uit 2017, 40 meter hoog, 90 km/u, vanaf 130 centimeter, en de trein wordt voor de start drie
 keer heen en weer geslingerd voordat de snelheid genoeg is voor de eerste heuvel.
@@ -279,7 +279,7 @@ geen grote attractie heeft.
 
 ## Waar je het kortst in de rij staat
 
-De vergelijking over alle gemeten dagen, voor elk park op dezelfde manier berekend. De rijen staan in de volgorde van de meting van 3 oktober 2026 en worden niet opnieuw gesorteerd:
+De vergelijking beslaat alle gemeten dagen en is voor elk park op dezelfde manier berekend. De rijen staan in de volgorde van de meting van 3 oktober 2026 en worden niet opnieuw gesorteerd.
 
 ```park-comparison-widget slugs=phantasialand,legoland-deutschland,europa-park,heide-park,movie-park-germany,plopsaland-deutschland show=quietest
 
@@ -299,13 +299,11 @@ groepen voor dezelfde baan, en wie geen pass heeft, wacht daar langer dan onze m
 
 ## Op welk tijdstip je waar in de rij staat
 
-In Phantasialand ziet de dag er zo uit, attractie voor attractie over alle gemeten dagen:
-
 ```hourly-profile-widget slug=phantasialand top=6
 
 ```
 
-Taron is bij de opening en in het laatste uur het drukst, als iedereen nog snel een rit wil
+Over alle gemeten dagen in Phantasialand is Taron bij de opening en in het laatste uur het drukst, als iedereen nog snel een rit wil
 meepakken. F.L.Y. is in het eerste uur kort en heeft zijn piek een uur later, zodra de rest van het
 park in Rookburgh is aangekomen. Allebei hebben ze hun rustigste uur in de middag. Wie
 beide wil rijden, gaat bij de opening naar F.L.Y. en bewaart Taron voor de middag.
@@ -335,8 +333,8 @@ In vijf van de zes gemeten parken was een werkdag in de schoolvakantie van de ei
 drukker dan een gemiddelde weekenddag. Welke deelstaten welk park vullen, staat in de
 [gids over schoolvakanties en drukte](/blog/schoolvakanties-pretparken-duitsland).
 
-De kalender met de prognose voor de komende dagen bestaat voor elk park, hier die van
-Europa-Park:
+De kalender met de prognose voor de komende dagen bestaat voor elk park, en hieronder staat die van
+Europa-Park.
 
 ```best-days-widget slug=europa-park
 

@@ -2,6 +2,7 @@
 title: 'Jaarkaart pretpark: na hoeveel bezoeken loont hij'
 translationKey: annual-pass-comparison-theme-parks
 date: '2026-10-06'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -79,10 +80,12 @@ Niet meegerekend heb ik de korting op eten en souvenirs, omdat die afhangt van w
 
 Alle kaarten zijn persoonsgebonden. Bij Toverland staat dat uitdrukkelijk in de voorwaarden: één kaart per persoon, niet overdraagbaar.
 
-## Efteling: Classic, Plus en Premium
+## De drie abonnementen van de Efteling
 
 De Efteling verkoopt sinds 11 juni 2024 drie abonnementen, die verschillen in het aantal dagen waarop ze
-gelden. Een korting voor bezoekers vanaf 65 jaar bestaat sindsdien niet meer.
+gelden. Een korting voor bezoekers vanaf 65 jaar bestaat sindsdien niet meer, bestaande 65+-abonnementen liepen door tot het einde van hun minimale looptijd.
+
+De Efteling ondervroeg de houders in 2023, en volgens het park waren de meesten zeer tevreden maar wilden ze meer keuze. Van 15 april tot en met 10 juni 2024 verkocht het park geen nieuwe abonnementen, alleen verlengingen. In Nederland was het aantal abonnementhouders in 2023 al flink gestegen, schrijft de Efteling in haar jaaroverzicht.
 
 | Variant | Jaarprijs | Per maand | Toegang            | Korting op parkeren | Eten, drinken, souvenirs | Vriendentickets voor de halve prijs |
 | ------- | --------- | --------- | ------------------ | ------------------- | ------------------------ | ----------------------------------- |
@@ -96,6 +99,8 @@ voegt een aandenken en toegang tot een evenement alleen voor abonnees toe. Maand
 minimaal twaalf maanden vast en kost meer. Twaalf maanden Classic komen op € 252, € 12 meer dan bij
 betaling per jaar. Bij Plus en Premium is het telkens € 32 meer. De ingangsdatum kies je bij het afsluiten, tot
 een maand vooruit.
+
+Bezoekers met een beperking krijgen op elke variant € 50 korting bij betaling per jaar of € 5 per maand. Kinderen tot en met drie jaar krijgen het abonnement gratis. Op je verjaardag krijg je een gebakje bij een gekocht drankje.
 
 ### De geblokkeerde dagen in de kalender van het park
 
@@ -139,15 +144,15 @@ De stap van Classic naar Plus kost € 70, die van Plus naar Premium € 90. In 
 
 Volgens [onze metingen](/blog/efteling-disney-van-nederland) zijn de wachttijden in de Efteling alleen op zaterdag iets langer dan op de andere dagen. Classic blokkeert vooral weekenden, maar ook 26 dagen van maandag tot en met vrijdag. Wie op doordeweekse dagen kan komen, verliest met Classic dus weinig.
 
-Het park ligt van Düsseldorf een goed anderhalf tot twee uur rijden, vanuit Keulen en het Ruhrgebied een goede twee. Wie drie keer per jaar gaat, blijft bij de dagkaart.
-
-De rustige dagen in de widget kun je naast de lijst met geblokkeerde dagen hierboven leggen.
+Het park ligt van Düsseldorf een goed anderhalf tot twee uur rijden, vanuit Keulen en het Ruhrgebied een goede twee.
 
 ```best-days-widget slug=efteling
 
 ```
 
-## Europa-Park: ResortPass Silver en Gold
+## ResortPass Silver en Gold in Europa-Park
+
+Vóór de ResortPass verkocht het park de clubkaart van de Europa-Park Club. In maart 2020, toen het park door corona moest sluiten, nam het die kaart tot nader order uit de verkoop. De ResortPass kondigde het aan op 8 maart 2022, en half mei 2022 ging hij in de verkoop in de ticketshop van Mack International. In maart 2023 kostte Silver voor volwassenen € 240 en Gold € 420, en volgens de Stuttgarter Zeitung waren beide uitverkocht. Een woordvoerster zei toen tegen de krant dat er na de eerste vervaldata in mei en juni 2023 nieuwe contingenten in de verkoop zouden komen. Sindsdien is Silver € 85 duurder geworden en Gold € 75.
 
 Europa-Park verkoopt de ResortPass in twee varianten, beide met een looptijd van een jaar:
 
@@ -162,7 +167,9 @@ inhoud van het streamingplatform VEEJOY en gratis of met korting toegang tot par
 ParkingPass kost bij beide varianten € 39 extra. Bij € 10 parkeergeld per dag is hij vanaf het vierde
 bezoek met de auto goedkoper. De gedrukte kaart kost bij Silver € 5 extra en zit bij Gold inbegrepen.
 
-Op dit moment is er geen nieuwe kaart te koop. Het park schrijft op zijn pagina dat het contingent op is en de ResortPass tot nader order niet verkrijgbaar is, ook niet telefonisch, per e-mail of ter plaatse. Bestaande houders krijgen vóór het einde van hun kaart bericht over verlenging. Wanneer de verkoop weer opengaat, zegt het park niet.
+Eén keer tijdens de looptijd geven beide varianten gratis toegang tot de Efteling, Pleasure Beach Resort in Engeland, Liseberg in Zweden, PortAventura Park en Isla Mágica in Spanje, Emerald Park in Ierland en Le Pal in Frankrijk. De acht parken en zwembaden van de Plopsa-groep, waaronder Plopsaland Deutschland, geven eenmalig 40% korting op de gewone toegangsprijs aan de kassa.
+
+Op dit moment is er geen nieuwe kaart te koop. Het park schrijft op zijn pagina dat het contingent op is en de ResortPass tot nader order niet verkrijgbaar is, ook niet telefonisch, per e-mail of ter plaatse. Houders krijgen 30 dagen voor het einde een bericht en kunnen in de laatste 14 dagen van de looptijd online in het ResortPass-portaal verlengen, tegen de prijs die dan geldt. Een verlopen kaart is binnen twee jaar opnieuw te activeren als er contingent vrij is. Van Silver naar Gold overstappen kan alleen bij verlenging en alleen als Gold te koop is. Wanneer de verkoop weer opengaat, zegt het park niet.
 
 Een dagkaart kost voor volwassenen € 67 tot € 76 en voor kinderen en 60-plussers € 56,50 tot € 65.
 
@@ -191,7 +198,7 @@ donderdag in mei of juni en het drukst op zaterdag.
 
 ```
 
-## Toverland: Magic Member
+## Magic Member in Toverland
 
 Toverland in Sevenum heeft met de Magic Member de goedkoopste jaarkaart van de vier.
 
@@ -203,9 +210,11 @@ Toverland in Sevenum heeft met de Magic Member de goedkoopste jaarkaart van de v
 
 Wie maandelijks betaalt, komt op € 168 in plaats van € 160. Inbegrepen zijn toegang op alle openingsdagen,
 5% korting op eten, drinken en souvenirs bij de vaste verkooppunten, korting in andere parken en
-dierentuinen en verjaardagsacties. De toegang tot de Halloween Nights is zonder toeslag inbegrepen, de
+dierentuinen en op je verjaardag een gebakje bij een gekocht drankje. De toegang tot de Halloween Nights is zonder toeslag inbegrepen, de
 Haunted Experiences kosten extra. Voor een kind onder 90 cm is er een gratis kaart als een ouder een
 jaarkaart heeft. Groeit het kind uit zijn lengteklasse, dan wordt voor elke resterende maand bijbetaald.
+
+Koop je het abonnement op een bezoekdag en betaal je per jaar, dan betaalt het park de entree van die dag terug. Op de partnerlijst, stand maart 2026, staan onder meer Walibi Holland met 20% behalve tijdens de Halloween Fright Nights, Attractiepark Hellendoorn met 35%, de Plopsa-parken met 40% voor bezoekers vanaf 1 m, Bobbejaanland met 20% en Freizeit-Land Geiselwind met 40%.
 
 ### De voorwaarden
 
@@ -225,7 +234,7 @@ Verdere punten uit de voorwaarden:
 
 ### Wat het oplevert
 
-In de ticketkalender ligt het basistarief voor volwassenen en kinderen vanaf 140 cm tussen € 37 en € 49,50.
+De prijzen hieronder zijn het basistarief in de ticketkalender voor volwassenen en kinderen vanaf 140 cm.
 Wie minstens zeven dagen van tevoren online boekt, krijgt € 7 early-bird-korting, bij kortere termijn € 2.
 Toverland kent vier prijsniveaus, Brons, Zilver, Goud en Platina, naar openingstijden en programma van de dag.
 
@@ -249,14 +258,14 @@ Volgens [onze metingen](/blog/toverland-troy-wachttijden-tips) is er in Toverlan
 
 ```
 
-## Phantasialand: geen jaarkaart
+## Phantasialand zonder jaarkaart
 
 Phantasialand heeft zijn Club-kaart in de pandemie uit de verkoop genomen, de laatste kaarten liepen in
 de zomer van 2022 af. In de veelgestelde vragen van de ticketshop komen een jaarkaart en een Club-kaart
 niet voor, en tickets zijn er alleen met datum en alleen online. Waarom dat zo is gebleven en wat fans
 ertegen hebben gedaan, staat in onze [Phantasialand-gids](/blog/phantasialand-wachttijden-tips).
 
-In de oktoberkalender van de ticketshop kost een ticket voor volwassenen vanaf 12 jaar tussen € 44 en € 78. Het verschil tussen de goedkoopste en de duurste dag is € 34, dat is 77% bovenop de goedkope dag. Wie drie keer per jaar komt, betaalt tussen € 132 en € 234. Het verschil hangt alleen af van hoe vroeg je boekt en welke dag je neemt. In Phantasialand is een zaterdag merkbaar drukker dan een dinsdag.
+In de oktoberkalender van de ticketshop kost een ticket voor volwassenen vanaf 12 jaar tussen € 44 en € 78. Het verschil tussen de goedkoopste en de duurste dag is € 34, dat is 77% bovenop de goedkope dag. Drie bezoeken per jaar kosten tussen € 132 en € 234. In Phantasialand is een zaterdag merkbaar drukker dan een dinsdag.
 
 ```best-days-widget slug=phantasialand
 
@@ -264,9 +273,7 @@ In de oktoberkalender van de ticketshop kost een ticket voor volwassenen vanaf 1
 
 ## Geblokkeerde dagen tegenover drukke dagen
 
-Bij Europa-Park is zaterdag de drukste dag, en of Silver op zaterdag geldt, legt het park vast in het portaal.
-
-De widget zet de rustigste weekdag van de vier parken naast elkaar.
+Of Silver op zaterdag geldt, legt Europa-Park vast in het portaal.
 
 ```park-comparison-widget slugs=efteling,europa-park,attractiepark-toverland,phantasialand show=quietest
 
@@ -283,7 +290,9 @@ bezoeken. Onder de vier bezoeken loont geen van de drie varianten.
 
 ## Wanneer je koopt
 
-Een jaarkaart geldt een jaar vanaf aankoop of vanaf de ingangsdatum. Bij de Efteling kies je de ingangsdatum zelf, tot een maand vooruit. Wie in oktober begint, start midden in de geblokkeerde weken. Een Classic vanaf 10 oktober 2026 heeft tot het eind van het jaar 44 geblokkeerde dagen. Het kalenderjaar 2027 telt er in totaal 68.
+Een jaarkaart geldt een jaar vanaf aankoop of vanaf de ingangsdatum. Bij de Efteling kies je de ingangsdatum zelf, tot een maand vooruit. Wie in oktober begint, start midden in de geblokkeerde weken.
+
+Bij de ResortPass van Europa-Park moet de ingangsdatum binnen 14 dagen na aankoop liggen en is hij daarna niet meer te wijzigen.
 
 Bij de Efteling blijven de prijzen van 2026 gelden tot het park nieuwe noemt. Bij Toverland mag het park de prijs van een kaart pas wijzigen als die verloopt.
 
@@ -301,8 +310,7 @@ Classic is in 2027 volgens de kalender van het park op 68 dagen geblokkeerd, Plu
 
 ### Is de ResortPass van Europa-Park nog te koop?
 
-Op dit moment niet. Europa-Park schrijft op zijn website dat het contingent op is en de ResortPass tot
-nader order niet verkrijgbaar is, ook niet telefonisch, per e-mail of ter plaatse.
+Op dit moment niet. Volgens Europa-Park is het contingent op.
 
 ### Heeft Toverland geblokkeerde dagen voor de jaarkaart?
 
@@ -327,6 +335,11 @@ Nee. De Club-kaart is in de pandemie gestopt, de laatste kaarten liepen in de zo
 - Phantasialand, ticketkalender: [shop.phantasialand.de](https://shop.phantasialand.de/en/products/theme-park-tickets)
 - Phantasialand, veelgestelde vragen van de ticketshop: [shop.phantasialand.de](https://shop.phantasialand.de/en/faq)
 - Einde van de Club-kaart in 2022: [Parkerlebnis](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html)
+- Efteling, bezoekersjaar 2023 en abonnementhouders: [efteling.com](https://www.efteling.com/nl/pers/556-miljoen-bezoekers-voor-de-efteling-in-2023/)
+- Europa-Park, aankondiging van de ResortPass op 8 maart 2022: [blog.europapark.de](https://blog.europapark.de/europa-park/resortpass-die-neue-jahreskarte-des-europa-park-erlebnis-resorts/)
+- Europa-Park, veelgestelde vragen over de ResortPass: [europapark.de](https://www.europapark.de/en/resortpass/faq)
+- Stuttgarter Zeitung, ResortPass uitverkocht, 17 maart 2023: [stuttgarter-zeitung.de](https://www.stuttgarter-zeitung.de/lokales/baden-wuerttemberg/jahreskarten-ausverkauft-besucher-kritisieren-resortpass-das-sagt-der-europa-park-dazu-79025022.html)
+- Toverland, voordelen en partnerparken: [toverland.com](https://toverland.com/en/annualpasses/pass-benefits)
 
 Meer over de afzonderlijke parken staat in onze gidsen over de [Efteling](/blog/efteling-disney-van-nederland),
 [Europa-Park](/blog/europa-park-wachttijden-tips), [Toverland](/blog/toverland-troy-wachttijden-tips)

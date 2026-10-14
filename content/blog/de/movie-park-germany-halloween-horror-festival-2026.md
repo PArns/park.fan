@@ -141,9 +141,7 @@ den 2., 4., 9., 11. oder 16. Oktober.
 ```
 
 Mit Traumatica, Walibi und Toverland vergleichen wir das Festival im
-[Halloween-Überblick](/blog/halloween-freizeitparks-2026). Welcher Wochentag im
-Movie Park sonst der ruhigste ist und wie der Herbstfahrplan aussieht, steht im
-[Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).
+[Halloween-Überblick](/blog/halloween-freizeitparks-2026). Im [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps) steht, welcher Wochentag im Movie Park sonst der ruhigste ist und wie der Herbstfahrplan aussieht.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

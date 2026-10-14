@@ -2,6 +2,7 @@
 title: 'Legoland Deutschland: consejos para un día con niños de tres a doce años'
 translationKey: legoland-deutschland-guide
 date: '2026-10-06'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -54,8 +55,7 @@ seo:
 
 **Legoland Deutschland** dice de sí mismo que está pensado para niños de **dos a doce años**. Para un niño que sube con un
 adulto, la altura mínima más alta del parque es de **1,25 metros**, en
-[Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare). En ninguna de las nueve atracciones
-principales ahorra madrugar tanta espera como para que merezca la pena poner el despertador.
+[Flying NINJAGO](ref:legoland-deutschland/flying-ninjago?bare).
 
 Hemos medido los tiempos de espera en 188 días desde diciembre de 2025, es decir, en una temporada. Los precios, horarios y fechas valen a **6 de octubre de 2026**.
 
@@ -65,15 +65,30 @@ Günzburg está entre Ulm y Augsburgo, junto a la A8. El grupo Lego anunció el 
 de 1999, como el cuarto tras Billund, Windsor y Carlsbad, y eligió este sitio frente a uno en Tokio. El
 terreno era un depósito de municiones de la Luftwaffe, y según Wikipedia había enterrados unas 60.000
 bombas, 33.800 granadas y 2.800 Panzerfaust de la Segunda Guerra Mundial. La limpieza duró dos años y
-costó 34 millones de marcos.
+costó 34 millones de marcos. La primera palada la dieron el 27 de octubre de 2000 un niño de ocho
+años de Günzburg y el jefe de Lego, Kjeld Kirk Kristiansen, en presencia del ministro-presidente de
+Baviera, Edmund Stoiber.
 
 El parque abrió el **17 de mayo de 2002**, nueve meses antes de lo previsto, con más de 40 atracciones y
-un coste de unos 153 millones de euros. El primer año vinieron 1,3 millones de visitantes, en 2020 solo
-750.000, y en 2024 el índice de la Themed Entertainment Association contó unos **dos millones**. Con
+un coste de unos 153 millones de euros. El primer año vinieron 1,3 millones de visitantes y el parque vendió más
+de 20.000 pases anuales. En 2020 vinieron solo 750.000, y en 2024 el índice de la Themed Entertainment Association contó unos **dos millones**. Con
 eso, Legoland es, tras Europa-Park y Phantasialand, el tercer parque de atracciones más visitado de Alemania.
-Lo gestiona Merlin Entertainments desde 2005. En 2019, tres inversores compraron Merlin por 6.600
+Después de perder unos 174 millones de euros en 2003, el grupo Lego vendió en 2005 sus cuatro
+parques al fondo de inversión Blackstone, y desde entonces los gestiona su filial Merlin
+Entertainments. En 2019, tres inversores compraron Merlin por 6.600
 millones de euros: Blackstone, un fondo de pensiones canadiense y Kirkbi, la sociedad de inversión
 de los propietarios de Lego.
+
+El 21 de marzo de 2007 abrió el Land der Piraten con Käpt'n Nicks Piratenschlacht, un splash battle
+de Mack Rides. El pueblo de vacaciones abrió el 18 de junio de 2008 con 50 casas de vacaciones y un
+camping en 80.000 metros cuadrados. Del 5 de abril al 2 de noviembre de 2014 estuvo en la nave del
+Power Builder un X-wing de Star Wars a tamaño real, hecho con 5,3 millones de ladrillos, y para
+hacerle sitio se desmontaron cinco de los diez brazos robóticos. Por la pandemia, el parque abrió en
+2020 dos meses más tarde de lo previsto, y en 2021 no lo hizo hasta el 10 de junio.
+
+El 11 de agosto de 2022, según la policía, un tren del Feuerdrache chocó por detrás con otro. La
+policía contó 31 heridos, uno de ellos grave, entre ellos diez niños. Según la policía, la fiscalía
+de Memmingen investigó la causa.
 
 Según el parque, tiene hoy **68 atracciones en 11 mundos temáticos** y más de 58 millones de
 ladrillos de Lego. El Miniland usa más de 23 millones, montados por 140 maquetistas. La
@@ -85,7 +100,7 @@ Deutschland en unos 20 años.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
-## Altura mínima y edad en las atracciones
+## Altura mínima y edad para cada atracción
 
 En Legoland casi siempre hay dos límites: una altura y una edad, fijadas por separado para subir con un
 adulto y para subir solo. Donde un niño de 1,10 metros puede subir con un adulto, para subir solo
@@ -131,12 +146,12 @@ El **[Feuerdrache](ref:legoland-deutschland/fire-dragon)** funciona desde mayo d
 rusa familiar de Zierer en dos partes. Primero el tren recorre las estancias de los habitantes del
 castillo, junto a la despensa, la cocina, el salón de fiestas y la cámara del tesoro de Merlín, todo de
 Lego. Luego el dragón se da cuenta de los pasajeros, y en el recorrido exterior se toman las curvas
-a una velocidad de hasta ocho metros por segundo, algo menos de 29 km/h. Un niño puede subir con un adulto desde 1,10
-metros y seis años.
+a una velocidad de hasta ocho metros por segundo, algo menos de 29 km/h. Según RCDB, el
+recorrido mide 450 metros de largo y 16 metros de alto, lo diseñó la ingeniería Stengel y circulan
+tres trenes de 20 plazas cada uno.
 
 **[Das Große LEGO Rennen](ref:legoland-deutschland/the-great-lego-race)** es una wild mouse de Mack Rides, de 18 metros de altura, según Wikipedia de 400 metros de longitud y de hasta 56 km/h. Antes
-funcionaba como Project X y desde 2018 está ambientado como un circuito de Lego City. Con un adulto
-bastan 1,10 metros.
+funcionaba como Project X y desde 2018 está ambientado como un circuito de Lego City.
 
 ```glossary-widget slug=wild-mouse
 
@@ -145,8 +160,7 @@ bastan 1,10 metros.
 **[Flying NINJAGO](ref:legoland-deutschland/flying-ninjago)** lo construyó Gerstlauer en 2012 para el
 décimo cumpleaños del parque, y según Wikipedia fue un estreno mundial del fabricante. Hasta doce
 pasajeros vuelan a 22 metros de altura y a 50 km/h, y desplazando el peso y manejando las alas pueden
-hacer girar el dragón hasta el «Spinjitzu-Twist» de 360 grados. Hay un único límite para todos, 1,25
-metros y siete años.
+hacer girar el dragón hasta el «Spinjitzu-Twist» de 360 grados.
 
 La **[Dschungel X-pedition](ref:legoland-deutschland/jungle-x-pedition)** es la atracción de troncos de
 Intamin del año de apertura, con una bajada de doce metros en la que, según el parque, caen 80 litros de
@@ -159,7 +173,9 @@ del espectáculo, y al final se sabe quién logró más puntos. El recorrido dur
 y según el parque no hace falta conocer la historia.
 
 Para las primeras emociones está la **[Drachenjagd](ref:legoland-deutschland/dragon-hunt)**, una montaña
-rusa junior de Gerstlauer de 2003, a la que los niños suben con un adulto desde un metro. Al
+rusa junior de Gerstlauer de 2003, a la que los niños suben con un adulto desde un metro. Según RCDB, el recorrido
+mide 150 metros con 5,5 metros de altura, su único tren de 16 plazas llega a 33 km/h y una vuelta
+dura 35 segundos. Al
 **[Fire & Ice Tower](ref:legoland-deutschland/fire-and-ice-tower)** pueden subir ya desde los tres
 años: giras a nueve metros de altura y luego caes. En la Wellenreiter y en la Käpt'n Nicks Piratenschlacht los
 espectadores de la orilla pueden participar y salpicar las barcas, y quien mira desde allí no siempre se libra del agua.
@@ -200,7 +216,7 @@ Los tiempos de espera actuales están en la [página del parque](ref:legoland-de
 cada cinco minutos. La app de Legoland solo los muestra si estás dentro del parque y has compartido tu
 ubicación.
 
-El día de la semana marca la mayor diferencia en nuestras mediciones:
+El día de la semana es lo que marca la mayor diferencia en nuestras mediciones.
 
 ```stats-widget slug=legoland-deutschland show=weekdays
 
@@ -213,14 +229,12 @@ seis parques que comparamos en la
 [guía de vacaciones escolares](/blog/vacaciones-escolares-parques-de-atracciones-alemania), Legoland
 es el que más depende de las vacaciones de Baviera y Baden-Wurtemberg.
 
-Los meses:
-
 ```stats-widget slug=legoland-deutschland show=months
 
 ```
 
 Agosto fue el mes más lleno. En junio y septiembre hubo menos gente que en mayo y julio. De octubre
-solo hemos medido por ahora cinco días, muy pocos para sacar una conclusión.
+solo hemos medido por ahora cinco días.
 
 El
 parque abre a las 10:00, y las atracciones cierran una hora antes que el parque.
@@ -252,11 +266,7 @@ semana.
 
 ```
 
-Si llegas pronto, empieza por las dos
-atracciones en las que la espera solo sube a lo largo del día: la Dschungel X-pedition y el
-Tret-o-Mobil. El Große LEGO Rennen y la Hafenrundfahrt, donde la afluencia es mayor por la mañana,
-mejor déjalos para la tarde. Maximus, el Feuerdrache y Flying NINJAGO se pueden hacer cuando quieras,
-porque allí la espera cambia poco a lo largo del día.
+Si llegas pronto, empieza por la Dschungel X-pedition y el Tret-o-Mobil, y deja el Große LEGO Rennen y la Hafenrundfahrt para la tarde.
 
 ## Fastrack: tres niveles y las atracciones
 
@@ -278,7 +288,7 @@ Con cuatro personas, incluso 25 € por cabeza son 100 € además de la entrada
 junio no compraría Fastrack. Un sábado en las vacaciones de Baviera, el día de la semana más lleno en nuestras mediciones, compraría Bronce para la atracción que entonces esté arriba del todo en
 la tabla.
 
-## Entradas, precios y pase anual
+## Entradas y pase anual
 
 Los precios son **dinámicos**. Según Wikipedia, el parque introdujo el surge pricing a finales de 2024,
 y los precios de su web empiezan por «desde». Los siguientes valen a 6 de octubre de 2026.
@@ -296,15 +306,14 @@ exclusión en la temporada. El Merlin Abenteuer Pass cuesta 139 € e incluye el
 otras 28 atracciones de Merlin. Quien paga siempre el precio mínimo en línea recupera los 99 € a la
 tercera visita.
 
-## Horarios, días de cierre y temporada 2026
+## Horarios y días de cierre 2026
 
 La temporada va del **28 de marzo al 8 de noviembre de 2026**. El parque está cerrado el **5 y 6 de
 mayo**, del **18 al 20 de mayo**, el **8 y 9 de junio** y el **15, 16 y del 21 al 23 de septiembre**. En
 la web del parque aún no figuran fechas para 2027.
 
 El horario normal es de **10:00 a 18:00**, más largo en fines de semana, en vacaciones y en festivos.
-En la temporada regular, las atracciones cierran **una hora antes que el parque**. Los próximos días más tranquilos
-están en el calendario:
+En la temporada regular, las atracciones cierran **una hora antes que el parque**.
 
 ```best-days-widget slug=legoland-deutschland
 
@@ -381,7 +390,7 @@ hectáreas, con una inversión de unos 30 millones de euros.
 El **WinterWonder LEGOLAND** se celebra en 2026/27 en días sueltos: 28 y 29 de noviembre, del 4 al 6, del
 11 al 13, del 18 al 23 y del 26 al 30 de diciembre, y del 2 al 10 de enero de 2027. Hay una pista de
 hielo, pistas de curling y espectáculos cada media hora, y en muchas atracciones pone «abierto según el
-tiempo». Hasta el 15 de noviembre, una entrada de venta anticipada cuesta 22 € en lugar de 36 €. El [panorama del invierno](/blog/parques-atracciones-invierno-2026) compara el parque con los demás parques alemanes en la temporada fría.
+tiempo». Hasta el 15 de noviembre, una entrada de venta anticipada cuesta 22 € en lugar de 36 €.
 
 Legoland también ha anunciado el primer LEGO Harry Potter Land del mundo y el primer alojamiento con esa
 temática. El parque no da año de apertura.
@@ -493,8 +502,15 @@ convengan.
   Harry Potter: [Anuncio (oficial)](https://www.legoland.de/harrypotter/)
 - Historia, depósito de municiones, apertura en 2002, costes, operador, visitantes, fabricantes y años
   de construcción, maquetas del Miniland, pueblo de vacaciones, Peppa Pig Park, surge pricing, el
-  Legoland de Sierksdorf:
-  [Legoland Deutschland Resort en de.wikipedia](https://de.wikipedia.org/wiki/Legoland_Deutschland_Resort)
+  Legoland de Sierksdorf, la primera palada, la venta de 2005, el Land der Piraten, el X-wing de 2014
+  y los años de la pandemia:
+  [Legoland Deutschland Resort en de.wikipedia](https://de.wikipedia.org/wiki/Legoland_Deutschland_Resort) ·
+  [Legoland Deutschland Resort en en.wikipedia](https://en.wikipedia.org/wiki/Legoland_Deutschland_Resort)
+- Longitud, altura, velocidad y trenes del Feuerdrache y la Drachenjagd:
+  [Feuerdrache en RCDB](https://rcdb.com/1476.htm) · [Drachenjagd en RCDB](https://rcdb.com/1683.htm)
+- El accidente del Feuerdrache en 2022:
+  [web.de (dpa)](https://web.de/magazine/panorama/achterbahn-unfall-31-verletzte-feuerdrachen-legoland-guenzburg-37189184) ·
+  [ABC7 (ABC News)](https://abc7.com/31-people-injured-on-legoland-park-ride-police-say/12117866/)
 - Tiempos de espera, días de la semana, meses, proporción de días de lluvia y rope drop: nuestra
   [página del parque](ref:legoland-deutschland), a partir de las mediciones desde diciembre de 2025, más la
   [comparación con lluvia](/blog/parque-de-atracciones-con-lluvia)

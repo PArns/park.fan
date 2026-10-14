@@ -162,9 +162,8 @@ nessun feed, quindi non c’è scritto nulla al riguardo.
 
 ## Due pulsanti ordinano la giornata
 
-Sotto la linea del tempo ci sono due pulsanti. «Pianifica tutte le attrazioni
-principali» aggiunge le grandi del parco che non sono ancora nella giornata e
-poi ordina tutto. «Ottimizza la giornata» non aggiunge nulla e riordina soltanto
+Il pulsante «Pianifica tutte le attrazioni principali», sotto la linea del tempo, aggiunge le grandi del parco che non sono ancora nella giornata e
+poi ordina tutto. «Ottimizza la giornata», lì accanto, non aggiunge nulla e riordina soltanto
 quello che c’è già. Dietro entrambi gira lo stesso calcolo. Sono due pulsanti
 perché sono due domande: riempimi la giornata, e l’ordine può essere migliore.
 
@@ -226,7 +225,7 @@ ancora non arriva. (Dalle previsioni del tempo lo vorrei da anni.) Una media non
 numero sta lì come errore tipico e mai come intervallo che conterrebbe già la
 risposta giusta.
 
-**Gli orari degli spettacoli sono due cose diverse.** Quello che il parco ha
+**Un orario di spettacolo può essere una stima.** Quello che il parco ha
 pubblicato per oggi è un annuncio. Quello che abbiamo riportato dall’ultimo
 giorno della settimana corrispondente è una supposizione, e il pianificatore la
 disegna più tenue: con una tilde davanti all’ora, una linea punteggiata e la
@@ -268,7 +267,7 @@ condividere. Chi lo apre riceve una copia tutta sua nel proprio pianificatore, e
 quello che ci cambia resta a lui. È anche il modo per portare un piano dal
 computer al telefono.
 
-Ancora due cose che sfuggono facilmente. Al computer, sul bordo dello schermo di
+Al computer, sul bordo dello schermo di
 ogni pagina, c’è una linguetta che apre il pianificatore, anche quando non è
 ancora pianificato nulla; sul telefono lo fa dal 24 settembre un’icona a forma di
 calendario nella barra in alto. E al computer si può aprire una seconda colonna, e allora ci
@@ -277,8 +276,7 @@ come verrebbe?».
 
 ## Come si comincia
 
-L’ingresso passa da quattro domande. In quale parco, in che giorno, chi viene, e
-quali grandi attrazioni mettere dentro. Le immagini qui sotto mostrano ancora la
+Per cominciare rispondi a quattro domande: in quale parco, in che giorno, chi viene e quali grandi attrazioni mettere dentro. Le immagini qui sotto mostrano ancora la
 prima versione, con tre passi.
 
 La prima è un campo di ricerca, e dietro c’è una piccolezza che va storta in

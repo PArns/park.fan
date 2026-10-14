@@ -144,7 +144,7 @@ the principle.
 Three rides in Orlando push this about as far as it goes. Their queues are worth
 a look even if you never got on the ride.
 
-### Avatar Flight of Passage: a museum as a queue
+### Avatar Flight of Passage
 
 The queue for
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
@@ -171,7 +171,7 @@ talk about afterwards is the breathing avatar in the tank.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
-### Cosmic Rewind: first the museum, then the coaster
+### Cosmic Rewind
 
 [EPCOT](ref:epcot?bare) takes it a step further with
 [Guardians of the Galaxy: Cosmic Rewind](ref:epcot/guardians-of-the-galaxy-cosmic-rewind).
@@ -193,7 +193,7 @@ only then did a permanent standby queue arrive. Until that point the physical
 queue existed mostly as a story route rather than as holding space, and that on
 a ride that, according to RCDB, moves 2,000 guests an hour with trains of 20.
 
-### VelociCoaster: waiting in the raptor paddock
+### VelociCoaster
 
 Universal plays the same card at
 [Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
@@ -390,7 +390,7 @@ neighbouring regions), weather forecasts, opening hours and special events, and
 currently looks about six months ahead. Demand and throughput are still in
 every one of those numbers, because every posted wait is the queue divided by
 the throughput.
-How often our forecasts match reality is on the [Fancast page](/fancast).
+On the [Fancast page](/fancast) you can see how often our forecasts match reality.
 
 ## Why Peter Pan’s Flight always “escalates”
 
@@ -554,8 +554,7 @@ On the vehicle side, on the other hand, every stop costs real capacity. That’s
 why the Haunted Mansion’s omnimover and YOY’s rolling station don’t stop at all
 in normal operation. In the queue in front of them, stop-and-go only costs you
 patience. What actually shortens your wait is a day with fewer people ahead of
-you, and you pick that before you go. Which day that is, you’ll find in the
-calendar of best days.
+you, and you pick that before you go, in the calendar of best days.
 
 ## Virtual queues and double stations
 

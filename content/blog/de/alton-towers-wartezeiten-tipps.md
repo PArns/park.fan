@@ -71,12 +71,12 @@ dass sie die Fahrgäste zum Schreien brachte.
 
 ## Die Achterbahnen, Bereich für Bereich
 
-Alton Towers hat elf Achterbahnen. Drei davon waren bei ihrer Eröffnung die ersten ihrer Art,
+Von den elf Achterbahnen in Alton Towers waren drei bei ihrer Eröffnung die ersten ihrer Art,
 Nemesis in Europa, Oblivion und TH13TEEN weltweit, und The Smiler stellte 2013 mit vierzehn
 Überschlägen einen Weltrekord auf. Zwischen den Bereichen pendelt die Skyride, ein Sessellift
 mit Stationen an der Towers Street hinter dem Eingang, im Forbidden Valley und im Dark Forest.
 
-### Forbidden Valley: Nemesis Reborn und Galactica
+### Nemesis Reborn und Galactica im Forbidden Valley
 
 Nemesis eröffnete am **19. März 1994** als erste Inverted-Achterbahn Europas. Gebaut hat sie
 Bolliger & Mabillard nach einem Entwurf von Werner Stengel, die Idee stammte vom Parkentwickler
@@ -106,7 +106,7 @@ er lief von 2012 bis 2015 und fährt seit 2023 wieder. **[Toxicator](ref:alton-t
 ist ein Top Spin, der am 15. März 2025 eröffnete. Er steht auf einer knapp fünf Meter hohen
 Betonplattform über dem Weg, sodass man von unten zusehen kann.
 
-### X-Sector: Oblivion und The Smiler
+### Oblivion und The Smiler im X-Sector
 
 Der X-Sector ist als Versuchsanstalt gestaltet. Oblivion kam am **14. März 1998** für 12
 Millionen Pfund dorthin und war der erste Dive Coaster der Welt. Der Wagen hält an der Kante,
@@ -133,7 +133,7 @@ konnten, während sie in Betrieb war. Das Crown Court in Stafford verhängte am 
 eine Strafe von 5 Millionen Pfund; ohne das Geständnis wären es 7,5 Millionen gewesen. Der
 Smiler fährt seit dem 19. März 2016 wieder, mit zusätzlichen Sicherungen.
 
-### Dark Forest: Rita und TH13TEEN
+### Rita und TH13TEEN im Dark Forest
 
 **[Rita](ref:alton-towers/rita)** fährt seit dem **1. April 2005** im Dark Forest. Die Intamin-Bahn wird hydraulisch
 abgeschossen und beschleunigt in 2,5 Sekunden von 0 auf 98,3 km/h, mit 4,7 g. Sie ist gut 18
@@ -150,7 +150,7 @@ schließt sich ein Tor, und dann fällt das Gleisstück mit dem Zug darauf etwa 
 Tiefe. Danach geht es rückwärts in einen Tunnel. Gebaut hat sie Intamin, und zwar dort, wo von
 1980 bis 2008 die Corkscrew stand.
 
-### Mutiny Bay: Wicker Man
+### Wicker Man in der Mutiny Bay
 
 **[Wicker Man](ref:alton-towers/wicker-man)** eröffnete am **20. März 2018** als erste neue
 Holzachterbahn Großbritanniens seit 22 Jahren. Great Coasters International hat sie für 16
@@ -188,14 +188,14 @@ Runden und hat 48 Plätze. Die Streckenführung stammt wie bei Nemesis von John 
 **[Congo River Rapids](ref:alton-towers/congo-river-rapids)** teilt er sich einen Tunnel; die
 Wildwasserfahrt in runden Booten entstand beim großen Ausbau zwischen 1985 und 1988.
 
-Im CBeebies Land fahren zwei Kinderachterbahnen. Die
+Im CBeebies Land steht seit 2015 die
 **[Octonauts Rollercoaster Adventure](ref:alton-towers/octonauts-rollercoaster-adventure)**
-steht seit 2015 dort, wo früher die Beastie fuhr. Seit dem 28. März 2026 gibt es außerdem
+dort, wo früher die Beastie fuhr. Seit dem 28. März 2026 gibt es dort eine zweite Kinderachterbahn,
 **[Bluey the Ride: Here Come The Grannies!](ref:alton-towers/postman-pat-parcel-post)**, einen
 Zierer-Zug mit 28 Plätzen auf dem Gelände der abgebauten Postman Pat Parcel Post. In der
 Warteschlange können Kinder durch das Haus der Familie aus der Serie gehen.
 
-### In den Towers: Hex
+### Hex in den Towers
 
 **[Hex](ref:alton-towers/hex-the-legend-of-the-towers)** liegt seit 2000 in den Mauern des
 Herrenhauses, das dem Park seinen Namen gibt. Zuerst geht man durch die Räume und hört die

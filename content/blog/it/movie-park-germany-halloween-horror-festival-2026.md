@@ -138,10 +138,7 @@ venerdì o una domenica prima: il 2, il 4, il 9, l’11 o il 16 ottobre.
 ```
 
 Il confronto con Traumatica, Walibi e Toverland è nella
-[panoramica di Halloween](/blog/halloween-parchi-divertimenti-2026). Quale giorno
-della settimana è di solito il più tranquillo al Movie Park, e com’è il
-calendario autunnale, lo trovi nella
-[guida del Movie Park](/blog/movie-park-germany-tempi-di-attesa-consigli).
+[panoramica di Halloween](/blog/halloween-parchi-divertimenti-2026). Nella [guida del Movie Park](/blog/movie-park-germany-tempi-di-attesa-consigli) trovi quale giorno della settimana è di solito il più tranquillo al Movie Park e com’è il calendario autunnale.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

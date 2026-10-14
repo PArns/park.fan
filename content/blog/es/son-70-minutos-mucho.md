@@ -183,9 +183,7 @@ hay ninguna interfaz pública. En los datos en bruto este parque se ve como
 cualquier otro a las tres de la madrugada, cuando ninguna atracción informa de nada. Si
 sacáramos la conclusión evidente, ahí estarían todas las atracciones del parque en «muy baja», con
 una media de 0 minutos y una previsión basada en cero observaciones. En su lugar,
-la página del parque lleva un aviso de que aquí no hay nada que leer. Lo que sí
-podemos contar del parque está en la
-[guía del Hansa-Park](/blog/hansa-park-consejos).
+la página del parque lleva un aviso de que aquí no hay nada que leer. En la [guía del Hansa-Park](/blog/hansa-park-consejos) está lo que sí podemos contar del parque.
 
 La misma regla en un sitio más pequeño: la pista de hielo «Berliner Eislaufen»,
 en la Kaiserplatz del Phantasialand, solo existe durante el Wintertraum, esta vez
@@ -210,8 +208,7 @@ antes del cierre.
 Quien prefiera comprar el tiempo paga en Taron 12 € por una vuelta con Quick Pass, según la página
 informativa del Phantasialand (a 5 de octubre de 2026). El pase solo se vende allí mismo, en el
 servicio al cliente del Kaiserplatz, y el cupo es limitado. Con una cifra que ya es normal para ese
-día de la semana, rara vez sale a cuenta. Lo que pensamos del pase y cuándo compensa el Quick Pass
-Ultimate está en la [guía del Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
+día de la semana, rara vez sale a cuenta. En la [guía del Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos) está lo que pensamos del pase y cuándo compensa el Quick Pass Ultimate.
 
 Para un día entero está el [planificador](/blog/planificador). Ahí eliges tus atracciones y obtienes
 un orden según los tiempos de espera previstos para ese día. Así sabes ya antes de salir si te da

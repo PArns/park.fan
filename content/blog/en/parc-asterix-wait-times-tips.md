@@ -86,8 +86,6 @@ Toutatis handles 1,260 riders an hour and OzIris 1,600. Before Cétautomatix
 opened, the French site Androland put it at roughly 700: nine cars of
 four, one leaving every 20 seconds. At Cétautomatix and Pégase Express the whole family queues, because children can ride with an adult from 100 cm, at Toutatis only from 130.
 
-The table compares Parc Astérix with Disneyland Park, with Walibi Belgium, which belongs to the same group, and with Europa-Park.
-
 ```park-comparison-widget slugs=parc-asterix,/parks/europe/france/paris/disneyland-park,walibi-belgium,europa-park show=quietest highlight=parc-asterix
 
 ```
@@ -140,14 +138,11 @@ On 2 December 2025 the group announced the first Parc Astérix outside France.
 The Compagnie des Alpes bought Belantis near Leipzig from Parques Reunidos in
 April 2025 and plans to turn it into a Parc Astérix by 2030 or 2031. Chief
 executive François Fassier told franceinfo it was "a very complex and very
-ambitious project", meant only for the German market. How the sale came about
-is in our [Parques Reunidos story](/blog/parques-reunidos-sale-movie-park).
+ambitious project", meant only for the German market. Our [Parques Reunidos story](/blog/parques-reunidos-sale-movie-park) explains how the sale came about.
 
 ## Five themed areas and the old Paris
 
-Officially the park has five themed areas. The entrance leads onto the Via
-Antiqua, a shopping street that stopped counting as an area of its own in 2012.
-From there:
+The entrance leads onto the Via Antiqua, a shopping street that stopped counting as an area of its own in 2012. From there you reach the five official themed areas:
 
 - La Gaule, Astérix and Obélix's village, with Cétautomatix, Menhir Express,
   La Revanche des Pirates, the Épidemaïs Croisières boat ride and the 4D
@@ -173,8 +168,7 @@ it. Londinium is due to replace it in 2028.
 
 ## The coasters
 
-RCDB counts nine coasters at Parc Astérix. The height limits below are the
-park's: the first figure applies when an adult rides along, the second to
+The height limits below, for the nine coasters RCDB counts at Parc Astérix, are the park's: the first figure applies when an adult rides along, the second to
 children riding alone. Where there's only one, there's no lower limit with an
 adult.
 
@@ -308,7 +302,7 @@ adult, children can ride from 90 cm. RCDB doesn't count
 Disk'O, a round platform for 40 people that spins while it swings back and
 forth along a curved track. Height limit 120 cm.
 
-## Water rides, a tower and the shows
+## Water rides and shows
 
 The water rides close one after the other in autumn. Romus et Rapidus shuts on
 11 October 2026 according to the park, La Revanche des Pirates on 1 November,
@@ -378,8 +372,7 @@ the quietest. If you can pick the day, pick a Wednesday. The quietest days at th
 December and January come out on top, from only a few measured days, all in the
 2025/26 Christmas holidays. Of the months with plenty of data, May and June are
 the quietest, and August is busier than July. We don't have October or November
-yet, because Peur sur le Parc 2025 ran before we started tracking the park. The forecast
-for the coming weeks is in the calendar:
+yet, because Peur sur le Parc 2025 ran before we started tracking the park.
 
 ```best-days-widget slug=parc-asterix
 
@@ -472,8 +465,7 @@ under 14), Catacombes and Les Enfers de Pompéi (both not recommended under 16;
 in the evening Pompéi costs 6 euros with a booked time slot). New are La Forêt
 sans Retour, a walk through the woods at the nocturnes only, also 16 and up, and
 Les Bas-Fonds du Souk, a scare zone in the Égypte area. La Colère d'Anubis went
-with the Rue de Paris. What the other parks are doing this autumn is in our
-[Halloween guide 2026](/blog/halloween-theme-parks-2026).
+with the Rue de Paris. Our [Halloween guide 2026](/blog/halloween-theme-parks-2026) covers what the other parks are doing this autumn.
 
 ### Noël Gaulois
 
@@ -482,8 +474,7 @@ until 7 pm on 24 and 31 December. There's an ice rink, the Patinoire Viking,
 with free skates. The park sets up Father Christmas's gardens in the Romus et
 Rapidus queue, and there's a tube slide, La Glissade d'Obélix, a parade and a
 Christmas market. The coasters "generally" run, the park says, the water rides
-don't. An undated Christmas ticket costs 57 euros. What other parks open in
-winter is in our [winter guide](/blog/winter-theme-parks-2026).
+don't. An undated Christmas ticket costs 57 euros. Our [winter guide](/blog/winter-theme-parks-2026) lists the other parks that open in winter.
 
 Between 9 November and 18 December 2026 the park is closed, and again from 4
 January until the season starts in spring. Since 2007 it's stayed open until
@@ -509,7 +500,7 @@ and shops. RCDB already lists the coaster: an Intamin Multi Dimension Coaster
 with spinning cars, 17 metres tall, inside the building. Tonnerre 2 Zeus gets
 the second part of its new steel track over the winter of 2026/27.
 
-## Tickets, getting there, hotels and food
+## Planning the trip
 
 ### Tickets and prices 2026
 
@@ -609,8 +600,6 @@ become a Parc Astérix by 2030 or 2031.
 Walibi Belgium, the group's park near Brussels, has its own
 [guide](/blog/walibi-belgium-wait-times-tips), and so do the neighbours in
 Marne-la-Vallée, in our [Disneyland Paris guide](/blog/disneyland-paris-wait-times-tips).
-
-The weather in Plailly for the day you go:
 
 ```weather-widget slug=parc-asterix
 

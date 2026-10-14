@@ -217,8 +217,7 @@ is 627 meter lang, 22 meter hoog en rijdt 71 km/u. De lay-out is een out-and-bac
 met kettinglift en zonder inversie, ontworpen door Jeff Pike. Volgens de Roller
 Coaster DataBase lijkt hij op White Lightning in Fun Spot America in Orlando,
 maar is hij niet identiek. Er rijden twee treinen met elk twaalf zitplaatsen, de
-capaciteit ligt op 635 gasten per uur. Minimumlengte 120 centimeter. De drie
-GCI-houtbanen in de Benelux naast elkaar:
+capaciteit ligt op 635 gasten per uur. Minimumlengte 120 centimeter. Met Joris en de Draak in de Efteling zijn er in de Benelux drie GCI-houtbanen.
 
 ```ride-waits-widget rides=plopsaland-belgium/heidi-the-ride|Heidi The Ride (GCI, 2017);attractiepark-toverland/troy|Troy (GCI, 2007);efteling/joris-en-de-draak|Joris en de Draak (GCI, 2010) columns=park,peak highlight=plopsaland-belgium/heidi-the-ride
 
@@ -246,10 +245,9 @@ Zierer die in 1976 als Keverbaan in het Meli Park opende en in 2014 werd
 vervangen door een nieuwe kopie. Beide hebben een minimumlengte van 90
 centimeter.
 
-Daarnaast zijn er twee darkrides. **[Plop’s Woods](ref:plopsaland-belgium/plops-woods)**
+De darkride **[Plop’s Woods](ref:plopsaland-belgium/plops-woods)**
 (Het Bos van Plop) is het verbouwde Apirama uit 1979 en laat boten door het
-kabouterbos varen. **[Bumba’s World Trip](ref:plopsaland-belgium/bumbas-world-trip)**
-(Op Reis met Bumba) opende in 2023 in het indoorgebied Circus Bumba en is volgens
+kabouterbos varen. De tweede, **[Bumba’s World Trip](ref:plopsaland-belgium/bumbas-world-trip)** (Op Reis met Bumba), opende in 2023 in het indoorgebied Circus Bumba en is volgens
 de Nederlandstalige Wikipedia de eerste darkride die de Plopsa-groep zelf liet
 bouwen.
 
@@ -333,12 +331,6 @@ groeit de wachtrij tot laat in de namiddag.
 
 ## Wanneer je moet gaan
 
-In de kalender zijn de rustigste dagen van de komende weken gemarkeerd:
-
-```best-days-widget slug=plopsaland-belgium
-
-```
-
 Het park is niet het hele jaar open. Volgens de kalender van 2026 was het van 5
 januari tot en met 13 februari gesloten, ging het op 14 februari open voor de
 krokusvakantie en reed het in maart alleen op woensdag, zaterdag en zondag,
@@ -347,6 +339,10 @@ september sluit het park meestal om 17 of 18 uur, in juli en augustus om 19 uur
 en op enkele avonden om 22 uur, in oktober 2026 doordeweeks om 17 en in het weekend om 18 uur. Het opent meestal om
 10 uur. Enkele dagen is het dicht, op 10 oktober 2026 wegens een besloten
 evenement waarvoor tickets en jaarkaarten niet gelden.
+
+```best-days-widget slug=plopsaland-belgium
+
+```
 
 Op woensdag adverteert het park momenteel met € 36 in plaats van € 56 voor het
 ticket. Wie schoolgaande kinderen heeft, gaat door de vakanties toch op de dagen
@@ -359,10 +355,7 @@ Pumpkin King (een vogelverschrikker die Pumpkin Island
 alleen met Halloween verlaat), de Nachtwacht-Academie, de vossen Fox & Trot uit
 de musical Pinokkio en de 25 Celebration Parade. Daarbij komen een
 halloweenvuurwerk en gerechten als pumpkin spice latte, halloweenwafel en Spooky
-Burger. Een gedateerd ticket kost in deze periode vanaf € 42. Wat andere parken
-in België en Nederland met halloween doen, staat in de
-[halloweengids 2026](/blog/halloween-pretparken-2026), onder meer Ibilaw bij
-Walibi Belgium.
+Burger. Een gedateerd ticket kost in deze periode vanaf € 42. Ibilaw bij Walibi Belgium en de andere halloweenevenementen in België en Nederland staan in de [halloweengids 2026](/blog/halloween-pretparken-2026).
 
 ```weather-widget slug=plopsaland-belgium
 
@@ -433,7 +426,7 @@ Stand van 7 oktober 2026, volgens de ticketpagina van het park:
 | Parkeren, vooraf online gekocht                      | € 15                                     |
 
 De startpagina van het park noemt “vanaf € 38”, de ticketpagina “vanaf € 36”.
-Welke prijs voor jouw dag geldt, staat in de kalender van de ticketshop. De
+De kalender van de ticketshop toont de prijs voor elke dag. De
 prijscategorie voor kinderen hangt af van de lengte, en die wordt bij de
 ticketbalie met schoenen aan gemeten. Wie twijfelt, laat bij de informatiebalie
 opnieuw meten, en die uitkomst geldt. Wie het ticket online koopt, loopt langs de
@@ -484,8 +477,7 @@ klasse, de code vul je in bij de Belgische spoorwegen NMBS.
 
 ## Hotels en eten
 
-Bij het resort horen vier verblijven. Het **Theater Hotel** (4 sterren superior,
-een tot zes personen) omvat ontbijt en parkeren, met halfpension daarbovenop twee
+Van de vier verblijven van het resort omvat het **Theater Hotel** (4 sterren superior, een tot zes personen) ontbijt en parkeren, met halfpension daarbovenop twee
 dagen Plopsaqua. In het **Village** (zes tot twaalf personen, minstens twee
 nachten) en in de **Studio 100 Chalets** (een tot vier personen) zit de toegang
 tot Plopsaland en Plopsaqua in het pakket. De **Basecamp** is de camping voor

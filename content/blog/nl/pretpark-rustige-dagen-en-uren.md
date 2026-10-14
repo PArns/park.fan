@@ -2,6 +2,7 @@
 title: 'Pretpark: weekdag, tijdstip en vakantie in twaalf parken'
 translationKey: theme-parks-quietest-day-and-hour
 date: '2026-10-06'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -120,9 +121,7 @@ is het op woensdag, donderdag of vrijdag.
 
 In drie parken maakt de weekdag bijna niets uit. In Toverland sta je elke dag
 gemiddeld even lang in de rij. In Plopsaland Deutschland zijn zes dagen even
-druk, alleen zaterdag is wat drukker. In Disneyland Paris zit er maar vijf
-minuten tussen de drukste en de rustigste dag: zaterdag en dinsdag zijn het
-drukst, vrijdag het rustigst.
+druk, alleen zaterdag is wat drukker. In Disneyland Paris scheidt maar één stap van onze afronding de drukste en de rustigste dag.
 
 In Walibi Holland is dinsdag de drukste dag en zaterdag een van de rustigere. In
 Movie Park liggen zaterdag, dinsdag en woensdag gelijk vooraan. Maandag tot en
@@ -156,8 +155,6 @@ In Legoland Deutschland en Movie Park Germany is het laatste uur dat we meten,
 17 uur, een van de drukste. In Heide Park is 17 uur ook het laatste gemeten uur,
 maar daar wordt het aan het eind niet drukker.
 
-De curve voor Europa-Park, elke attractie apart:
-
 ```hourly-profile-widget slug=europa-park top=8
 
 ```
@@ -178,6 +175,8 @@ op een werkdag tijdens schooltijd, gemeten op 40 vakantiedagen en 79
 schooldagen. Dat is de kleinste waarde onder de Duitse parken. In een weekend
 tijdens schooltijd was het 16 procent.
 
+Europa-Park ging open op 12 juli 1975. Eerst leidden Franz Mack en zijn zoon Roland het park.
+
 ```stats-widget slug=europa-park show=weekdays
 
 ```
@@ -186,17 +185,19 @@ tijdens schooltijd was het 16 procent.
 
 In [Phantasialand](ref:phantasialand) is het elke dag druk, het minst op
 donderdag. Zaterdag is het drukst, gevolgd door zondag. Maandag, dinsdag, vrijdag
-en woensdag liggen daartussen en zijn nauwelijks te scheiden. Het verschil tussen
-zaterdag en donderdag hoort bij de grootste in deze vergelijking.
+en woensdag liggen daartussen en zijn nauwelijks te scheiden.
 
 Na de vroege stijging tot de middag blijft de wachttijd tot sluiting bijna even
-lang. In het rustigste uur is hij maar ongeveer een zesde korter dan in het
-drukste.
+lang.
 
 Een werkdag in de vakantie was ongeveer 65 procent drukker dan een in de
 schooltijd, een weekend tijdens schooltijd ongeveer 39 procent. Phantasialand is
 al vol voordat in Noordrijn-Westfalen de vakantie begint, meer daarover in het
 [artikel over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland).
+
+Phantasialand is opgericht door kermisexploitant Gottlieb Löffelhardt en
+poppenspeler Richard Schmidt, die het op 30 april 1967 openden als sprookjespark
+met zo'n 40 verhalen rond een meer.
 
 ## Efteling
 
@@ -213,6 +214,9 @@ In de vakantie was de wachttijd in de Efteling op werkdagen maar 11 procent
 langer, gemeten op 36 vakantie- en 84 schooldagen. In het weekend was het
 tijdens schooltijd ongeveer 14 procent meer dan op een werkdag.
 
+Op 31 mei 1952 ging het Sprookjesbos open, twee jaar nadat de Stichting
+Natuurpark de Efteling was opgericht.
+
 ## Heide Park
 
 In [Heide Park](ref:heide-park) maken de vakanties meer uit dan in welk ander
@@ -223,8 +227,13 @@ Zaterdag is de drukste dag en vrijdag de rustigste. Zondag ligt daartussen,
 dicht bij vrijdag.
 
 De dagcurve is een van de vlakste, vergelijkbaar met Phantasialand. Het drukst
-is het rond twaalf uur. In het rustigste uur, om zestien uur, is de wachttijd
-maar ongeveer een zevende korter.
+is het rond twaalf uur. Het rustigst is het om zestien uur.
+
+Hans-Jürgen Tiemann, uit een familie van kermisexploitanten, opende Heide Park op
+19 augustus 1978. Op 31 december 2001 nam de Britse Tussauds Group het over,
+begin 2007 kocht Merlin Entertainments de meerderheid van Tussauds, en sindsdien
+hoort het park bij Merlin. De openingstijden op de site van het park gelden voor de attracties, het park zelf
+sluit een uur later.
 
 ## Movie Park Germany
 
@@ -241,6 +250,10 @@ In de vakantie was een werkdag ongeveer 54 procent drukker dan tijdens
 schooltijd, gemeten op 33 vakantie- en 47 schooldagen. In een weekend tijdens
 schooltijd stond je maar 15 procent langer in de rij dan op een werkdag.
 
+Op 30 juni 1996 ging het park open als Warner Bros. Movie World, in 2005 kreeg
+het zijn huidige naam, en sinds 2010 wordt het geëxploiteerd door het Spaanse
+Parques Reunidos.
+
 ## Plopsaland Deutschland
 
 In [Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch zijn zes
@@ -253,9 +266,12 @@ en blijft tot sluiting ongeveer gelijk, op een heel laag niveau. In het
 rustigste uur is hij ruim half zo lang als in het drukste.
 
 Een werkdag in de vakantie was ongeveer 49 procent drukker dan een in de
-schooltijd, een weekend tijdens schooltijd ongeveer 53 procent. Hoe dat
-samenhangt met de vakanties in Rijnland-Palts en Noordrijn-Westfalen, staat in
-het [artikel over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland).
+schooltijd, een weekend tijdens schooltijd ongeveer 53 procent. Het [artikel over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland)
+vergelijkt de vakanties in Rijnland-Palts en Noordrijn-Westfalen.
+
+De familie Schneider opende het park in 1971, en lange tijd heette het Holiday
+Park. Op 3 november 2010 maakte Studio 100 bekend dat het het park had gekocht,
+en op 28 juni 2025 kreeg het de naam Plopsaland Deutschland. In 2026 is het voor het eerst elke dag van het seizoen open.
 
 ## Legoland Deutschland
 
@@ -271,23 +287,28 @@ In de vakanties stond je op een werkdag ongeveer 54 procent langer in de rij dan
 op een werkdag in de schooltijd, in een weekend tijdens schooltijd ongeveer 46
 procent.
 
+Op 17 mei 2002 werd Legoland Deutschland het vierde Legoland-park, na Billund,
+Windsor en Carlsbad. De attracties sluiten een uur voor het park.
+
 ## Parc Astérix
 
 In [Parc Astérix](ref:parc-asterix) bij Parijs is zaterdag het drukst en zondag
 de een-na-drukste dag. Het rustigst is woensdag, net voor dinsdag, daarna komen
-donderdag, vrijdag en maandag. Het verschil tussen zaterdag en woensdag hoort bij
-de grotere in deze vergelijking.
+donderdag, vrijdag en maandag.
 
-Het park heeft na Disneyland Paris de steilste dagcurve. Rond elf uur is het het
-drukst, en tot de avond zakt de wachttijd naar ruim twee vijfde daarvan. De
+Het park heeft na Disneyland Paris de steilste dagcurve. Rond elf uur is het het drukst, en daarna zakt de wachttijd tot de avond. De
 curve loopt tot 21 uur, en het laatste uur is het rustigst. Om 17 uur is de
 wachttijd nog ongeveer twee derde van die op het hoogste punt. Wie vanaf 19 uur in
 het park is, staat bij de grote attracties nog maar ongeveer half zo lang in de
 rij als om elf uur.
 
 In de vakantie stond je op werkdagen ongeveer 35 procent langer in de rij,
-gemeten op 50 vakantie- en 51 schooldagen. In een weekend tijdens schooltijd was
-het ongeveer 32 procent.
+gemeten op 50 vakantie- en 51 schooldagen, en in een weekend tijdens schooltijd
+ongeveer 32 procent.
+
+Albert Uderzo kwam in 1981 op het idee voor het park, na een bezoek aan
+Disneyland in Californië, en op 30 april 1989 kwamen de eerste bezoekers naar
+Plailly.
 
 ## Toverland
 
@@ -297,10 +318,14 @@ zondag gemiddeld even lang in de rij.
 Bij de grote attracties sta je hier korter in de rij dan in de meeste andere
 parken van deze vergelijking. In de vakantie was de wachttijd op werkdagen wel
 ongeveer 27 procent langer dan in de schooltijd, gemeten op 31 vakantie- en 88
-schooldagen. In een weekend tijdens schooltijd was het ongeveer 22 procent.
+schooldagen. Een weekend tijdens schooltijd lag ongeveer 22 procent boven een werkdag.
 
 Voor Toverland tonen we geen dagcurve, omdat onze waarden daar van nul tot 23
 uur lopen, ook buiten de openingstijd.
+
+Op 19 mei 2001 ging Toverland open als volledig overdekt park met één hal, gericht
+op gezinnen met kleine kinderen. De tweede hal en het buitengebied kwamen er in
+2004 bij.
 
 ## Walibi Holland
 
@@ -315,7 +340,12 @@ korter dan op een werkdag in de schooltijd. Op een werkdag in de vakantie was
 hij maar ongeveer 1 procent langer.
 
 Het drukst is het om elf uur. Daarna wordt de wachttijd gestaag korter, vanaf 16
-uur merkbaar, en in het laatste uur is hij half zo lang als op het hoogste punt.
+uur merkbaar, en in het laatste uur is hij het kortst.
+
+Het park begon in 1971 als Flevohof, een educatief park over landbouw. In de
+herfst van 1993 kocht de Walibi-groep het failliete Flevohof, en op 7 mei 1994
+ging het open als Walibi Flevo. Vanaf 2000 heette het Six Flags Holland, vanaf
+2005 Walibi World en sinds 2011 Walibi Holland.
 
 ## Walibi Belgium
 
@@ -333,14 +363,17 @@ Over de dag lijkt het op Walibi Holland. De piek komt vroeg, rond elf uur,
 daarna wordt de wachttijd gestaag korter. In het laatste uur is hij iets meer
 dan half zo lang als op het hoogste punt.
 
+Ondernemer Eddy Meeùs richtte het park op en opende het op 26 juli 1975 als
+Walibi. Vanaf 1982 heette het Walibi Wavre, van 2001 tot en met 2004 Six Flags
+Belgium, en sinds 2006 hoort het bij de Compagnie des Alpes.
+
 ## Disneyland Paris
 
 In [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) in
 Marne-la-Vallée zijn de wachttijden de langste van deze vergelijking. De weekdag
 maakt daar bijna geen verschil. Zaterdag en dinsdag zijn het drukst, het
 rustigst is vrijdag, op de voet gevolgd door woensdag, zondag, maandag en
-donderdag. Tussen de drukste en de rustigste dag zit vijf minuten, de kleinste
-stap waarop we afronden.
+donderdag.
 
 In de vakantie was de wachttijd op werkdagen maar ongeveer 3 procent langer dan
 in de schooltijd, in weekenden tijdens schooltijd ongeveer 5 procent. Ik vermoed
@@ -348,8 +381,10 @@ dat het park bezoekers uit heel Europa heeft en dat er ergens altijd vakantie is
 Bewijzen kan ik dat niet.
 
 Het langst sta je rond twaalf uur in de rij, en tot in de vroege avond blijft de
-wachttijd lang. In het laatste uur is hij nog maar ruim een derde zo lang, de
-grootste afstand in deze vergelijking.
+wachttijd lang. Het kortst is hij in het laatste uur.
+
+Het park ging op 12 april 1992 open als Euro Disneyland en heet sinds maart 2002
+Disneyland Park.
 
 ```hourly-profile-widget slug=/parks/europe/france/paris/disneyland-park top=8
 
@@ -357,8 +392,7 @@ grootste afstand in deze vergelijking.
 
 ## Vakantie tegenover schooltijd
 
-In de tabel staat hoeveel langer je op een werkdag in de vakantie en in een
-weekend tijdens schooltijd in de rij stond dan op een werkdag tijdens schooltijd.
+Beide toeslagen zijn berekend ten opzichte van een werkdag tijdens schooltijd.
 
 | Park                   | Werkdag in de vakantie, toeslag | Weekend tijdens schooltijd, toeslag |
 | ---------------------- | ------------------------------: | ----------------------------------: |
@@ -389,6 +423,18 @@ vakantie een dinsdag neemt om zaterdag te mijden, staat dus eerder langer in de
 rij dan in een weekend tijdens schooltijd. In Europa-Park, de Efteling,
 Disneyland Paris en Walibi Holland maken vakanties en weekenden weinig uit.
 
+## Schoolvakanties 2026/27 in de buurlanden
+
+In Nederland heeft regio Noord herfstvakantie van 10 tot en met 18 oktober, de
+regio's Midden en Zuid van 17 tot en met 25 oktober. In Frankrijk begint de
+Allerheiligenvakantie in alle drie de zones op 17 oktober, en de lessen beginnen
+weer op 2 november. Franstalige scholen in België zijn vrij van 19 tot en met 30
+oktober. Vlaanderen heeft pas vakantie van 2 tot en met 8 november.
+
+Kerstvakantie is in Nederland van 19 december tot en met 3 januari 2027, in
+Vlaanderen van 21 december tot en met 3 januari en in Frankrijk van 19 december
+tot de scholen op 4 januari weer beginnen.
+
 ## Je reis plannen
 
 Wil je zo weinig mogelijk in de rij staan, dan passen
@@ -408,10 +454,7 @@ Duitse deelstaten staan in het
 Kom bij opening: tot de piek zich rond tien tot twaalf uur
 opbouwt, kom je bij de grote attracties met een kortere wachttijd door. Wie in de
 avond blijft, wint in Disneyland Paris, Parc Astérix, Europa-Park, de Efteling en
-beide Walibi's, maar nauwelijks in Phantasialand en Heide Park. Hoe je de uren
-indeelt, staat in het artikel over de [dagplanner](/blog/dagplanner).
-
-De rustigste dagen van de komende weken in Europa-Park:
+beide Walibi's, maar nauwelijks in Phantasialand en Heide Park. De uren kun je indelen met de [dagplanner](/blog/dagplanner).
 
 ```best-days-widget slug=europa-park
 
@@ -457,4 +500,9 @@ tweede seizoen zeggen.
 - Vakantietoeslagen: eigen analyse van de park.fan-kalender voor 13 april tot en met 30 september 2026, zonder feestdagen en zonder weer
 - Vakantiedata van de Duitse deelstaten: [Schoolvakanties en pretparken in Duitsland](/blog/schoolvakanties-pretparken-duitsland)
 - Rustige dagen voor jouw reismaand: [Beste reistijd](/beste-tijd-om-te-bezoeken)
+
+- Geschiedenis van de parken: Wikipedia over [Europa-Park](https://de.wikipedia.org/wiki/Europa-Park), [Phantasialand](https://de.wikipedia.org/wiki/Phantasialand), [Efteling](https://de.wikipedia.org/wiki/Efteling), [Heide Park](https://de.wikipedia.org/wiki/Heide_Park_Resort), [Movie Park Germany](https://de.wikipedia.org/wiki/Movie_Park_Germany), [Plopsaland Deutschland](https://de.wikipedia.org/wiki/Plopsaland_Deutschland), [Legoland Deutschland](https://de.wikipedia.org/wiki/Legoland_Deutschland_Resort), [Parc Astérix](https://fr.wikipedia.org/wiki/Parc_Ast%C3%A9rix), [Toverland](https://de.wikipedia.org/wiki/Toverland), [Walibi Holland](https://en.wikipedia.org/wiki/Walibi_Holland), [Walibi Belgium](https://en.wikipedia.org/wiki/Walibi_Belgium), [Disneyland Park](<https://en.wikipedia.org/wiki/Disneyland_Park_(Paris)>)
+- Nieuwe naam Plopsaland Deutschland: [eap-magazin](https://www.eap-magazin.de/Article/100-Million-Euro-Invest:-Holiday-Park-Becomes-Plopsaland-Deutschland.html)
+- Openingstijden 2026: [Heide Park](https://www.heide-park.de/oeffnungszeiten/) · [Plopsaland Deutschland](https://www.plopsa.com/de/plopsaland-deutschland/taglich-geoffnet) · [Legoland Deutschland](https://www.legoland.de/besuch-planen/besuch-planen/oeffnungszeiten/)
+- Schoolvakanties 2026/27: [Nederland](https://www.government.nl/topics/school-holidays/overview-of-school-holiday-dates-per-academic-year/school-holiday-dates-2026-2027) · [Frankrijk](https://www.service-public.fr/particuliers/vosdroits/F31952) · [Vlaanderen](https://www.vlaanderen.be/onderwijs-en-vorming/wat-mag-en-moet-op-school/schoolvakanties-vrije-dagen-en-afwezigheden/schoolvakanties) · [Federatie Wallonië-Brussel (RTBF)](https://www.rtbf.be/article/voici-les-dates-conges-scolaires-pour-l-annee-2026-2027-en-federation-wallonie-bruxelles-11576448)
 - Gidsen voor de parken: [Europa-Park](/blog/europa-park-wachttijden-tips) · [Phantasialand](/blog/phantasialand-wachttijden-tips) · [Efteling](/blog/efteling-disney-van-nederland) · [Heide Park](/blog/heide-park-wachttijden-tips) · [Movie Park](/blog/movie-park-germany-wachttijden-tips) · [Parc Astérix](/blog/parc-asterix-wachttijden-tips) · [Toverland](/blog/toverland-troy-wachttijden-tips) · [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan) · [Walibi Belgium](/blog/walibi-belgium-wachttijden-tips) · [Disneyland Paris](/blog/disneyland-paris-wachttijden-tips)

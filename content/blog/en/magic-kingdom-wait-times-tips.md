@@ -2,7 +2,7 @@
 title: 'Magic Kingdom: the longest queue is at TRON'
 translationKey: magic-kingdom-guide
 date: '2026-09-30'
-updatedAt: '2026-10-05'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -59,6 +59,12 @@ EPCOT the highest.
 
 ```
 
+## From the land purchase in 1964 to the opening in 1971
+
+From April 1964, Walt Disney Productions bought land near Orlando through dummy companies, 27,443 acres in all, a little over 111 square kilometres. Some owners sold for as little as $100 an acre. Walt Disney officially presented the project on 15 November 1965 at a press conference in Orlando, together with Florida governor Haydon Burns.
+
+Walt Disney died on 15 December 1966, before construction began. His brother Roy O. Disney put off his retirement, took over the project and renamed the resort from "Disney World" to "Walt Disney World" before it opened. Construction started in 1967, and on 12 May 1967 governor Claude R. Kirk Jr. signed the law that created the Reedy Creek Improvement District for the site. Roy O. Disney dedicated the resort at the opening ceremony held from 23 to 25 October 1971.
+
 ## The six lands and the utilidors
 
 The park opened on **1 October 1971** as the first part of Walt Disney World, on
@@ -69,6 +75,8 @@ Frontierland, Fantasyland and Tomorrowland. The sixth, Liberty Square, exists
 only in Florida, and it's where the Haunted Mansion sits. The park is run by
 Disney Experiences, the company's parks division, and the resort turned 55 on 1
 October 2026.
+
+Until the early 1990s the park's official name was Walt Disney World Magic Kingdom. In 1994 Disney renamed it Magic Kingdom Park to set it apart from Disneyland in California. According to TEA it had 20,963,000 visits in 2019, more than in any other year since 2000. In 2020 it was closed from mid-March to 11 July because of the COVID-19 pandemic and had 6,941,000 visits, 66.9 percent fewer than in 2019.
 
 Only one land was ever added. It opened in 1988 as Mickey's Birthdayland, ended
 up as Mickey's Toontown Fair, and closed on 11 February 2011 to make room for
@@ -178,7 +186,7 @@ Haunted Mansion usually ranks highest in the table above.
 
 ```
 
-## Parades, fireworks and shows
+## Shows and parades
 
 The day at Magic Kingdom ends with Happily Ever After, an 18-minute fireworks
 show with lasers and projections on the castle and the buildings of Main Street.
@@ -195,9 +203,6 @@ the regular fireworks are cancelled, and a separate show runs for party guests
 only.
 
 ## Rope drop, or the evening
-
-This is how the eight longest queues move between 8:00 and
-22:00 local time:
 
 ```hourly-profile-widget slug=magic-kingdom-park top=8
 
@@ -311,9 +316,6 @@ is the one to pick. Where another park has one, it's on the
 Magic Kingdom has closed temporarily for
 nine hurricanes since it opened, most recently Milton in October 2024.
 
-The calendar below marks the quietest days for each date range, recalculated
-every day:
-
 ```best-days-widget slug=magic-kingdom-park
 
 ```
@@ -324,8 +326,7 @@ Mickey's Not-So-Scary Halloween Party runs on 38 nights between 7 August and 31
 October 2026, and Disney lists every date as sold out. On those nights the park
 closes to regular guests at 18:00, and the party runs from 19:00 to midnight.
 The October dates still to come are the 6th, 8th, 9th, 13th, 15th, 16th, 18th,
-22nd, 23rd, 25th, 27th, 29th and 31st. What the party includes is in our overview of
-[Halloween in the US](/blog/halloween-usa-theme-parks-2026).
+22nd, 23rd, 25th, 27th, 29th and 31st. Our overview of [Halloween in the US](/blog/halloween-usa-theme-parks-2026) covers the party.
 
 Mickey's Very Merry Christmas Party follows on 25 nights from 8 November to 22
 December 2026, also from 19:00 to midnight, with entry from 16:00. Tickets cost
@@ -384,7 +385,7 @@ December 2026, Disney has the park opening at 8:00 or 9:00 and closing at 22:00
 or 23:00, or at 18:00 on party nights.
 
 **Tickets.** Disney sets the prices by date, and they're in the calendar on
-[disneyworld.com](https://disneyworld.com/). With Park Hopper you can switch to any
+[disneyworld.com](https://disneyworld.com/). The more days you buy, the less each day costs, from $64 a day plus tax on a ten-day ticket, and these prices apply from age ten. Children under three don't need a ticket. The days don't have to be consecutive. The Disney Incredi-Pass annual pass costs $1,749, applies from age three and has no blockout dates. Disney sells other annual passes only to Florida residents and Disney Vacation Club members. With Park Hopper you can switch to any
 of the other three parks at any time of day after your first one, as long as
 there's room.
 
@@ -410,7 +411,6 @@ be booked from 8 October 2026.
 
 No. In the comparison above, Magic Kingdom has the lowest typical wait of the
 four Disney parks in Florida, and EPCOT the highest.
-One ride, TRON, has by far the longest queue in the park.
 
 ### Which ride has the longest queue at Magic Kingdom?
 
@@ -457,15 +457,11 @@ with a Lightning Lane Single Pass.
 
 ## Further reading
 
-The weather for the next few days, and what it means for the outdoor rides:
-
 ```weather-widget slug=magic-kingdom-park
 
 ```
 
-The same company runs a park in France, where the smaller of the two parks is
-the one with the longer queues. That is in our write-up on [Disneyland
-Paris](/blog/disneyland-paris-wait-times-tips).
+The same company runs [Disneyland Paris](/blog/disneyland-paris-wait-times-tips), where the smaller of the two parks is the one with the longer queues.
 
 The week between Christmas and New Year is the busiest week in our yearly table, and the
 Very Merry Christmas Party runs on 25 nights: [Christmas and New Year in Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026).
@@ -484,6 +480,9 @@ Very Merry Christmas Party runs on 25 nights: [Christmas and New Year in Orlando
 - Big Thunder Mountain 1980, Pirates of the Caribbean 1973, Peter Pan's Flight 1971: [Big Thunder Mountain Railroad on Wikipedia (EN)](https://en.wikipedia.org/wiki/Big_Thunder_Mountain_Railroad) · [Pirates of the Caribbean on Wikipedia (EN)](<https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean_(attraction)>) · [Peter Pan's Flight on Wikipedia (EN)](https://en.wikipedia.org/wiki/Peter_Pan%27s_Flight)
 - Lightning Lane products and the end of Genie+: [Lightning Lane on Wikipedia (EN)](https://en.wikipedia.org/wiki/Lightning_Lane)
 - Cinderella Castle (height, construction time, perspective, suite): [Cinderella Castle on Wikipedia (EN)](https://en.wikipedia.org/wiki/Cinderella_Castle)
+- Land purchase, the 1965 announcement, Walt's death, Roy O. Disney, Reedy Creek, start of construction and dedication: [Walt Disney World on Wikipedia (EN)](https://en.wikipedia.org/wiki/Walt_Disney_World) · [Walt Disney World Resort on Wikipedia (DE)](https://de.wikipedia.org/wiki/Walt_Disney_World_Resort)
+- Visits in 2019 and 2020, the 2020 closure: [TEA/AECOM Theme Index 2019](https://aecom.com/content/wp-content/uploads/2020/07/Theme-Index-2019.pdf) · [TEA/AECOM Theme Index 2020](https://www.aecom.com/wp-content/uploads/documents/reports/AECOM-Theme-Index-2020.pdf)
+- Tickets and annual pass: [Theme Park Tickets (Disney)](https://disneyworld.disney.go.com/admission/tickets/theme-parks/) · [Annual Passes (Disney)](https://disneyworld.disney.go.com/passes/)
 - 2024 visits and first place: [TEA Global Experience Index 2024 (TEA)](https://www.teaconnect.org/tea-global-experience-indextm)
 - Coaster technical data: [Space Mountain](https://rcdb.com/267.htm) · [Big Thunder Mountain Railroad](https://rcdb.com/273.htm) · [Seven Dwarfs Mine Train](https://rcdb.com/9720.htm) · [TRON Lightcycle / Run](https://rcdb.com/15286.htm) · [The Barnstormer](https://rcdb.com/274.htm) (all Roller Coaster DataBase)
 - Height requirements and Tiana's drop: Disney's attraction pages, for example [TRON Lightcycle / Run](https://disneyworld.disney.go.com/attractions/magic-kingdom/tron-lightcycle-run/) and [Tiana's Bayou Adventure](https://disneyworld.disney.go.com/attractions/magic-kingdom/tianas-bayou-adventure/); Big Thunder's new height requirement: [Disney Parks Blog, 3 May 2026](https://disneyparksblog.com/wdw/new-magic-coming-to-big-thunder-mountain-railroad-at-disney-world/)

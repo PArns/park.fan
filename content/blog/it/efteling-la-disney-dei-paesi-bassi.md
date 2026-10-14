@@ -295,8 +295,7 @@ chiosco di caffè e stroopwafel, sta proprio di fronte a Langnek e si chiama cos
 perché Kogeloog è uno dei sei servitori di quella stessa fiaba. Sulla facciata sono
 appesi il suo busto e cornici ovali con tutti e sei. Il chiosco esiste dal 1967, ha chiuso nel 2002 per mancanza di incassi ed è di nuovo aperto dal 26 aprile 2019.
 
-Nel bosco delle fiabe nessuno fa la fila, e non c’è limite di capienza. Chi gira
-qui non sta in fila davanti a un’attrazione, ed è uno dei motivi per cui un parco
+Nel bosco delle fiabe nessuno fa la fila, e non c’è limite di capienza. I visitatori che girano qui non stanno in fila davanti a un’attrazione, ed è uno dei motivi per cui un parco
 con quasi sei milioni di visite ha attese sopportabili.
 
 Dalla primavera 2026 il parco sta rifacendo i percorsi. Nascono quattro ingressi e
@@ -312,8 +311,6 @@ Misuriamo le attese a Efteling dal 26 dicembre 2025, su **quasi 190 giorni di
 apertura** fino al 25 settembre 2026. Su
 tutti i giorni della settimana l’attesa tipica nella media del parco resta **sotto
 la mezz’ora** (mediana); nei momenti di punta è più o meno una volta e mezza tanto.
-
-Le dieci attrazioni più richieste:
 
 ```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
 
@@ -440,8 +437,7 @@ palco per il 25° compleanno.
 
 Efteling è aperta 365 giorni l’anno.
 
-**Per mese**, aprile e settembre sono nei nostri dati i più tranquilli dei mesi ben
-misurati. Maggio, giugno e luglio stanno vicini, agosto sale in modo
+**Per mese**, contando tutti i giorni di apertura misurati, aprile e settembre sono i più tranquilli dei mesi ben misurati. Maggio, giugno e luglio stanno vicini, agosto sale in modo
 percepibile, e il più pesante è **dicembre**, cioè la stagione Winter Efteling.
 
 Dietro aprile fino ad agosto c’è ogni volta un mese intero di giorni misurati,
@@ -452,7 +448,11 @@ ottobre e novembre finora non abbiamo alcun giorno utilizzabile (al 25 settembre
 quindi solo indicativo. I mesi più tranquilli di tutti i parchi stanno nella
 [pagina del periodo migliore](/periodo-migliore-per-visitare).
 
-**Per giorno della settimana** le differenze sono minime:
+```stats-widget slug=efteling show=months
+
+```
+
+**Per giorno della settimana** le differenze sono minime.
 
 ```stats-widget slug=efteling show=weekdays
 
@@ -466,15 +466,9 @@ venerdì come blocco a sé, e chi prenota così il lunedì è al parco. Con quas
 giorni misurati per giorno della settimana, differenze così piccole non le venderei comunque come consiglio.
 
 Più del giorno della settimana conta se le scuole olandesi sono in vacanza, e poi
-se lo sono quelle tedesche. I giorni più tranquilli in arrivo:
+se lo sono quelle tedesche.
 
 ```best-days-widget slug=efteling
-
-```
-
-E l’affluenza per mesi, calcolata su tutti i giorni di apertura misurati:
-
-```stats-widget slug=efteling show=months
 
 ```
 
@@ -484,8 +478,7 @@ Qui non c’è nulla da comprare che ti faccia saltare la fila, nemmeno una sing
 corsa a prezzo dinamico
 come quella che Phantasialand vende dall’ultimo Wintertraum. Gratis c’è il baby
 switch per i genitori con bambini piccoli, e sette attrazioni hanno una corsia single
-rider, che però dal 2026 il parco apre solo nei giorni di grande affluenza. Chi dorme
-in hotel entra **30 minuti prima**.
+rider, che però dal 2026 il parco apre solo nei giorni di grande affluenza. Gli ospiti dell’hotel entrano **30 minuti prima**.
 
 Il **15 settembre 2017** è partito a Python l’**Efteling Boarding
 Pass**, pensato come prova di due mesi, che alla fine è andato avanti fino alla
@@ -568,7 +561,7 @@ barche su 1.081 metri d’acqua, e un giro dura **venti minuti**, in cui
 non succede niente. Nel tardo pomeriggio, quando la luce si fa radente e le barche
 passano davanti alla Pagode, è il mio momento preferito di tutto il parco.
 
-## Pratico: biglietti, come arrivare, mangiare, dormire
+## Biglietti e come arrivare
 
 **Biglietti.** I prezzi dipendono dalla data e nel 2026 vanno dai **40 ai 56 €** al
 giorno, bambini fino a tre anni compresi gratis. Il biglietto normale vale solo nel
@@ -590,8 +583,7 @@ per i giorni esclusi:
 - **Premium, 400 €** (36 € al mese): nessun giorno escluso, 60 % sul parcheggio,
   10 % su ristorazione e negozi, quattro biglietti ospite scontati invece di due.
 
-Comincia a convenire dalla quinta o sesta visita. Chi arriva come ospite dell’hotel
-aggira comunque i giorni esclusi.
+Comincia a convenire dalla quinta o sesta visita. Gli ospiti dell’hotel aggirano comunque i giorni esclusi.
 
 **Come arrivare.** Kaatsheuvel è nel Brabante Settentrionale, a un’ora e mezza
 abbondante o due da Düsseldorf e a poco più di due da Colonia e dalla Ruhr, in
@@ -743,8 +735,6 @@ camminare non ci stanno più sopra. Io metterei in conto due giorni.
 nuova Ravenring. Poi seguono la Sprookjesbibliotheek nel 2027 e Missie Luminar nel 2029.
 
 ## Meteo e attese attuali
-
-Il meteo a Kaatsheuvel:
 
 ```weather-widget slug=efteling
 

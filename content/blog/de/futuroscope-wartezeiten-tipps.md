@@ -96,9 +96,7 @@ zuschauen, wenn es nicht fahren darf.
 ### Objectif Mars
 
 [Objectif Mars](ref:futuroscope/destination-mars) ist seit 2020 in Betrieb und neben der Kinderachterbahn Le Balancier in Futuropolis die einzige Achterbahn des Parks. Gebaut hat sie Intamin
-als Launched Coaster mit drehenden Fahrzeugen, einen Spinning Coaster. Der Park nennt sie eine
-Familienachterbahn und gibt eine Höchstgeschwindigkeit von
-55 km/h an, die Strecke führt durch ein Gebäude und ins Freie. Eröffnet werden sollte sie am 28. März 2020. Wegen der Schließung in der Pandemie ging sie im Juni 2020 an den Start, zuerst
+als Launched Coaster mit drehenden Fahrzeugen, einen Spinning Coaster. Für den Park ist sie eine Familienachterbahn mit einer Höchstgeschwindigkeit von 55 km/h. Die Strecke führt durch ein Gebäude und ins Freie. Eröffnet werden sollte sie am 28. März 2020. Wegen der Schließung in der Pandemie ging sie im Juni 2020 an den Start, zuerst
 nur an den Wochenenden.
 
 Mit Begleitung geht es ab 1,10 Metern, allein ab 1,20 Metern, und die Obergrenze liegt bei
@@ -133,7 +131,7 @@ Schwindelanfälligkeit ab.
 [Danse avec les Robots](ref:futuroscope/dances-with-robots) ist ein Robocoaster: Man sitzt am
 Arm eines Industrieroboters, der zu Hits des DJs Martin Solveig tanzt. Die Fahrt dauert etwa
 eine Minute. Der Pavillon der Roboter eröffnete 2006, im Jahr der Roboter, die Version mit
-Solveig stammt vom Dezember 2012. Der Park spricht von einem Roboter von neun Metern Höhe.
+Solveig stammt vom Dezember 2012. Der Roboter ist nach Angabe des Parks neun Meter hoch.
 
 Ab 1,20 Metern, auch mit Begleitung, bis 2,00 Meter.
 
@@ -173,7 +171,7 @@ Futuropolis ist der Außenbereich für Kinder, drei Hektar groß, 1988 als Monde
 eröffnet und seit 2018 unter dem heutigen Namen. Die französische Wikipedia zählt 21 Attraktionen
 und Spielbereiche, darunter Karussells von Heege, Zierer und Zamperla.
 
-Es gibt vier Armbandfarben, abgestuft nach Körpergröße. Die Grenzen, die der Park an den
+Die Armbänder gibt es in vier Farben, abgestuft nach Körpergröße. Die Grenzen, die der Park an den
 Attraktionen angibt:
 
 | Attraktion                                        | mit Begleitung ab | allein ab |
@@ -210,9 +208,7 @@ findet auch bei Regen statt, sofern das Wetter nicht außergewöhnlich ist. Zu s
 in 3D, Licht und Pyrotechnik. Die Show läuft seit Juni 2021 und ersetzte La Forge aux Étoiles, die
 Macher des Cirque du Soleil gestaltet hatten.
 
-Tagsüber gibt es zwei weitere Shows. **Éclipse, robotic show** entstand 2024 mit dem Cirque Éloize
-im früheren IMAX-3D-Pavillon und mischt Videomapping, Laser und Drohnen. **IllusiO, un destin
-magique** ist eine Illusionsshow von 25 Minuten, die an Wochenenden und in den Schulferien läuft.
+**Éclipse, robotic show** läuft tagsüber und entstand 2024 mit dem Cirque Éloize im früheren IMAX-3D-Pavillon. Sie mischt Videomapping, Laser und Drohnen. Die zweite Show am Tag, **IllusiO, un destin magique**, ist eine Illusionsshow von 25 Minuten und läuft an Wochenenden und in den Schulferien.
 
 Wer nur den Abend will, kauft ein Soirée-Ticket (Einlass ab 17 Uhr) oder ein Nocturne-Ticket
 (ab 20 Uhr). Beide enthalten die Abendshow und die Attraktionen, die abends offen sind.
@@ -303,7 +299,7 @@ einschließt.
 Futuroween beginnt am Samstag, dem 17. Oktober, einen Tag vor den Herbstferien. Ab dem 18. Oktober
 hat der Park laut Kalender täglich von 9:45 bis 22 Uhr offen.
 
-## Tickets, Karten und Preise
+## Tickets und Preise
 
 An der Tageskasse kostet ein Tagesticket mit Datum 59 Euro für Erwachsene und 49 Euro für Kinder
 von 5 bis 12 Jahren. Online hängt der Preis vom Datum ab. Der Park wirbt für 2026 mit dem Billet

@@ -68,7 +68,7 @@ dran.
 
 Das halte ich für einen Fehler, denn Untamed allein lohnt die Fahrt.
 
-## Erst Meer, dann Kühe, dann Achterbahnen
+## Geschichte des Parks
 
 Am **21. Mai 1971** eröffnete Prinzessin Beatrix auf dem frischen Polderland die
 **Flevohof**, einen 150 Hektar großen Landwirtschaftspark. Stadtkinder sollten dort die Landwirtschaft kennenlernen. Es gab Ställe, Gewächshäuser, eine Käserei, ein
@@ -248,7 +248,7 @@ sie deutlich weiter oben einsortieren, weil sie nach sieben Jahren auf dem alten
 
 [Untamed](ref:walibi-holland/untamed?full)
 
-## YOY, Goliath und der Rest
+## Die anderen Achterbahnen
 
 Neben Untamed hat der Park neun weitere Achterbahnen.
 
@@ -397,8 +397,6 @@ auswertbaren Wartezeitdaten**, liegt die **typische Wartezeit im Parkschnitt deu
 unter einer halben Stunde** (Median). An dem einen Tag von zehn, an dem am
 meisten los ist, ist es gut das Anderthalbfache.
 
-Für die Bahnen einzeln sieht es so aus:
-
 ```ride-waits-widget rides=walibi-holland/yoy-thrill|YOY THRILL|Single Rail, Stahl;walibi-holland/condor|Condor|Suspended, Stahl;walibi-holland/yoy-chill|YOY CHILL|Single Rail, Stahl;walibi-holland/lost-gravity|Lost Gravity|Big Dipper, Stahl;walibi-holland/untamed|UNTAMED|Hybrid;walibi-holland/xpress-platform-13|Xpress: Platform 13|Launch, Stahl;walibi-holland/goliath|Goliath|Mega Coaster, Stahl columns=type,peak,days highlight=walibi-holland/untamed
 
 ```
@@ -407,14 +405,12 @@ Die längste Warteschlange hat die Neuheit YOY THRILL. Untamed liegt im Mittelfe
 Lost Gravity. Wenn du morgens direkt ins Wilderness läufst, hast du Untamed hinter
 dir, bevor die YOY-Warteschlange nennenswert vorangekommen ist.
 
-Untamed neben Achterbahnen der Nachbarparks, über alle gemessenen Öffnungstage:
-
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
 
 ```
 
-Für die Zeit, die du im Phantasialand **einmal** bei
-[Taron](ref:phantasialand/taron) anstehst, fährst du Untamed etwa zweimal. Noch
+Über alle gemessenen Öffnungstage fährst du Untamed etwa zweimal, während du im Phantasialand **einmal** bei
+[Taron](ref:phantasialand/taron) anstehst. Noch
 kürzer als an Untamed steht man in dieser Runde nur an Troy im Toverland.
 Auf Parkebene liegt ebenfalls nur das Toverland noch darunter, und Walibi
 Belgium liegt fast gleichauf mit Walibi Holland.
@@ -642,12 +638,16 @@ und Ferientagen, von Ende Juni bis Ende August täglich, im September fast nur
 noch am Wochenende und im Oktober an den Wochenenden und in den Herbstferien.
 So steht es im Kalender für 2026.
 
-**Nach Monat** unterscheiden sich die Wartezeiten über die Saison kaum. Etwas voller wird es im April, wenn Ostern, Königstag und der
+**Nach Monat**, gerechnet aus allen gemessenen Öffnungstagen, unterscheiden sich die Wartezeiten über die Saison kaum. Etwas voller wird es im April, wenn Ostern, Königstag und der
 Anfang der niederländischen Maiferien zusammenfallen, und bisher an den
 Septemberwochenenden. Die Sommerferien fallen in unseren Daten dagegen kaum
 auf.
 
-**Nach Wochentag** ist der Samstag hier nicht voller als der Rest der Woche:
+```stats-widget slug=walibi-holland show=months
+
+```
+
+**Nach Wochentag** ist der Samstag hier nicht voller als der Rest der Woche.
 
 ```stats-widget slug=walibi-holland show=weekdays
 
@@ -661,15 +661,7 @@ im Juni außerhalb der Ferien: 2026 lag in unserem Kalender jeder
 Juni-Donnerstag auf niedrigem Andrang. Die letzte Juniwoche, in der der Park
 schon täglich öffnet, war dagegen nicht ruhiger als der Hochsommer.
 
-Die ruhigsten kommenden Tage aus unserem Crowd-Kalender:
-
 ```best-days-widget slug=walibi-holland
-
-```
-
-Und der Andrang über die Monate, gerechnet aus allen gemessenen Öffnungstagen:
-
-```stats-widget slug=walibi-holland show=months
 
 ```
 
@@ -688,7 +680,7 @@ Mittagshitze, **[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** passt
 Stunde fährst du noch einmal Untamed, weil die Bahn abends spürbar schneller läuft als
 morgens.
 
-## Praktisches: Tickets, Anreise, Essen
+## Praktisches
 
 **Tickets.** Walibi fährt **dynamische Preise**, die Tageskarte kostet je nach
 Datum unterschiedlich viel.
@@ -738,8 +730,6 @@ zweieinhalb Stunden Autobahn vor dir hast.
 
 **Essen.** Die Gastronomie ist der schwächste Teil des Parks. Es gibt Pommes, Burger, Pizza und solide Kantinenkost. Das Restaurant **Flavors** am YOY-Bereich mit Terrasse am Wasser
 ist die angenehmste Adresse, allein wegen der Aussicht auf die beiden Strecken. Iss früh, gegen halb zwölf, oder spät ab halb drei.
-
-Wie es gerade am Park aussieht:
 
 ```weather-widget slug=walibi-holland
 

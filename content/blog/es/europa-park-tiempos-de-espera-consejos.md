@@ -92,8 +92,6 @@ días de la semana, el tiempo de espera típico en el conjunto del parque (la
 mediana) es **corto para semejante afluencia**; los días llenos queda bastante
 por encima.
 
-Las diez atracciones en las que más cola haces, con el valor de hoy al lado:
-
 ```stats-widget slug=europa-park show=attractions
 
 ```
@@ -108,7 +106,7 @@ nadie esperando; una mañana llena, la cola sale hasta la explanada de delante.
 
 Voltron sumó 3,25 millones de vueltas en su primer año y tiene la cola más larga
 del parque, y para un parque con más de seis millones de visitantes **esa cola
-más larga es sorprendentemente corta**. La tabla compara parques con la misma base de datos y el mismo método de cálculo:
+más larga es sorprendentemente corta**. Todos los parques de la comparación están calculados con la misma base de datos y el mismo método de cálculo.
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
@@ -680,8 +678,7 @@ todavía no lo hemos medido.
 El parque no abre hasta las 11 h y cierra como pronto a las
 19 h, una hora menos que en verano, oscurece pronto y con las acuáticas no se
 puede contar. Si Poseidon y Atlantica te dan igual, un día entre semana de
-noviembre merece el intento. Qué días pintan más tranquilos ahora mismo está en
-el calendario de arriba.
+noviembre merece el intento. Los días que pintan más tranquilos ahora mismo están en el calendario de arriba.
 
 ## El día perfecto en el Europa-Park
 
@@ -764,7 +761,7 @@ llegar el sábado, ver Rulantica o el pueblo, y el domingo al parque.
 laborable más lleno, aunque por poco. Si de todas formas solo te encaja un día
 entre semana, coge el jueves.
 
-## Halloween, HALLOWinter, invierno
+## Halloween e invierno
 
 A partir del **26 de septiembre** hay unas **180.000 calabazas** repartidas por
 el parque, además de decoración otoñal en los dieciocho países y, como novedad
@@ -850,7 +847,7 @@ parque va HALLOWinter, y entonces no cierra hasta las 19 h, es decir, justo cuan
 el recinto de al lado abre sus puertas. Quien se compra una entrada de Traumatica
 para una fecha de noviembre está entregando la última hora de parque.
 
-## Lo práctico: precios de entrada 2026, cómo llegar, aparcar, comer, dormir
+## Precios de entrada 2026 y cómo llegar
 
 **Entradas.** El precio depende de la fecha, y el parque trabaja con dos
 categorías de precio. Online, el
@@ -920,8 +917,7 @@ Un **domingo o un jueves de mayo o junio**, fuera de las vacaciones escolares
 de Baden-Wurtemberg, Basilea, Argovia, Alsacia, Baviera, Hesse y
 Renania-Palatinado. El sábado es el día más lleno. Las semanas más llenas son
 la de después de Semana Santa, las vacaciones de verano de finales de junio a
-mediados de agosto y los días entre Navidad y Año Nuevo. Qué días pintan más
-tranquilos ahora mismo está en [nuestra previsión](ref:europa-park?calendar).
+mediados de agosto y los días entre Navidad y Año Nuevo. Los días que pintan más tranquilos ahora mismo están en [nuestra previsión](ref:europa-park?calendar).
 
 ### ¿Hay fast pass en el Europa-Park?
 
@@ -985,7 +981,7 @@ de espera medidos de noviembre todavía no tenemos.
 
 ## Tiempo y esperas actuales
 
-Cuando llueve, la cola de la Eurosat se alarga:
+Cuando llueve, la cola de la Eurosat se alarga.
 
 ```weather-widget slug=europa-park
 

@@ -73,7 +73,7 @@ décorative. Presque partout, les mazes ne sont _pas_ compris dans le billet jou
 
 ![Caravane abandonnée avec des caisses en bois dans la brume matinale | Une caravane solitaire dans la brume du matin. | wide](/media/halloween-2026/beispiel-wohnwagen.jpg)
 
-### Movie Park Germany : Halloween Horror Festival
+### Movie Park Germany
 
 Le **Halloween Horror Festival** au [Movie Park Germany](ref:movie-park-germany)
 de Bottrop se présente comme le « plus grand événement Halloween d’Europe ». Un tel titre se vérifie mal, chaque parc comptant à sa manière. Selon le parc, la **28e édition**, sous la devise « Legends Never Die », compte plus de **300 monstres**, neuf maisons d’horreur et quatre scare zones. Le soir, des acteurs à la tronçonneuse parcourent les « Streets of New York ».
@@ -118,9 +118,9 @@ Bottrop a déjà ouvert cet été l’une de ses maisons d’Halloween en avance
 Dates, programmation des mazes et niveaux de billets sur la
 [page officielle du Halloween Horror Festival](https://www.movieparkgermany.de/en/halloween).
 
-### Europa-Park : Traumatica (Festival of Fear)
+### Europa-Park
 
-L’[Europa-Park](ref:europa-park) fait Halloween en deux équipes. En journée,
+En journée à l’[Europa-Park](ref:europa-park),
 du 26 septembre au 1er novembre, un décor d’automne coloré avec plus de 180 000 citrouilles attend les familles, sans frayeur. Le
 soir, **Traumatica** prend le relais, le « Festival of Fear », qui fête en
 2026 **20 ans d’horreur et 10 ans de Traumatica**.
@@ -145,8 +145,7 @@ dépend du soir, à partir de 45 € au 29 septembre) au **Shoxter Pass** avec a
 prioritaire (à partir de 96 €, désormais épuisé) jusqu’au
 **Psycho Pass** (18 ans et plus, tout compris, 349 €). Se paient en plus l’experience en contact
 intégral THE HOTEL (29 €), le club THE FORBIDDEN (10 €) et une courte VR
-d’horreur (6 €). Ce qui se passe dans THE HOTEL, pour ce que le parc en dit, est
-dans notre [actualité sur l’anniversaire](/blog/traumatica-dix-ans-europa-park).
+d’horreur (6 €). Notre [actualité sur l’anniversaire](/blog/traumatica-dix-ans-europa-park) raconte ce qui se passe dans THE HOTEL, pour ce que le parc en dit.
 
 Pour l’anniversaire, le **Vampire’s Club** est revenu pour exactement quatre
 nuits : les 25 et 26 septembre (c’est fini), puis les 2 et 3 octobre. Ces soirs-là, il prend la
@@ -163,7 +162,7 @@ heure dans le parc.
 
 Programme, dates et règles d’âge : [traumatica.com](https://traumatica.com/fr/).
 
-### Walibi Holland : Halloween Fright Nights
+### Walibi Holland
 
 À environ deux heures de route au nord-ouest de Bottrop, à Biddinghuizen :
 [Walibi Holland](ref:walibi-holland). Le parc découpe son événement Halloween en niveaux.
@@ -249,7 +248,7 @@ Programmation actuelle et dates : [walibi.nl/halloween](https://www.walibi.nl/h
 
 ```
 
-### Bobbejaanland : Halloween à Kasterlee
+### Bobbejaanland
 
 Le belge [Bobbejaanland](ref:bobbejaanland) a ouvert en 2025 sa plus grande
 maison hantée à ce jour, **« Paranormal Activity : Next of Kin »**, et elle
@@ -282,7 +281,7 @@ août. Son propriétaire EQT cherche désormais à vendre le groupe, voir notre
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
-### Toverland : Halloween Nights et labyrinthe de maïs
+### Toverland
 
 [Toverland](ref:attractiepark-toverland) à Sevenum, aux Pays-Bas (pour beaucoup
 de gens de Rhénanie-du-Nord-Westphalie, le parc du Benelux le plus proche),
@@ -321,7 +320,7 @@ Détails sur les experiences, les scare zones et le Fear Pass :
 [toverland.com/halloween](https://www.toverland.com/fr/evenements/halloween/scare-zones-experiences).
 Les adieux à Trapped, en néerlandais : [Toverblog](https://www.toverland.com/toverblog/blog-afscheiditems-trapped).
 
-### Walibi Belgium : « Ibilaw »
+### Walibi Belgium
 
 ![Clown au fez devant le stand de lancer de couteaux, de jour | Un clown au fez au stand de lancer de couteaux. | right](/media/halloween-2026/beispiel-fez-clown.jpg)
 
@@ -366,9 +365,9 @@ deux sur le même week-end.
 
 [Walibi Belgium](ref:walibi-belgium?full)
 
-### Plopsaland Deutschland : dix nuits dans le Palatinat
+### Plopsaland Deutschland
 
-Depuis le sud-ouest de l’Allemagne, Haßloch est plus près que Bottrop : le
+Depuis le sud-ouest de l’Allemagne, Haßloch, dans le Palatinat, est plus près que Bottrop : le
 [Plopsaland Deutschland](ref:plopsaland-deutschland), l’ancien Holiday Park,
 organise ses **Halloween Fright Nights** sur dix soirées, les vendredis et
 samedis du **2 au 31 octobre 2026**, jusqu’à 22 h. Deux de ses six maisons
@@ -384,7 +383,7 @@ spectacles et le calcul du Nightmare Society Pass sont dans notre
 
 ![Actrice en poupée de porcelaine brisée devant la clôture colorée du monde des enfants | Une actrice en poupée de porcelaine brisée. | right](/media/halloween-2026/beispiel-porzellanpuppe.jpg)
 
-### Heide-Park : Halloween à la carte
+### Heide-Park
 
 Le [Heide-Park](ref:heide-park) de Soltau fait les deux.
 Halloween se déroule **du 10 au 31 octobre 2026**, avec en journée un décor
@@ -397,8 +396,7 @@ dans une chapelle abandonnée, le _Grand Hotel Morton_ façon années vingt et
 _SubTerra_, un banquet des moissons masqué. Chaque maze demande son propre
 billet horodaté à 9 €, les trois en lot coûtent 22 €.
 
-Les familles ont deux offres à elles. La _Zauberwald_ (la forêt magique) s’adresse
-aux enfants de 3 à 10 ans, et _Mission Meeresgrund_ tourne dans une version
+La _Zauberwald_ (la forêt magique) s’adresse aux familles avec enfants de 3 à 10 ans, et _Mission Meeresgrund_ tourne dans une version
 Halloween dès la fin d’après-midi, recommandée à partir de 10 ans. Les cinq
 jours longs, un feu d’artifice avec jeu de lumières sur le lac a lieu le soir.
 _Parasomnis_ a des effets supplémentaires par rapport à 2025, et environ 80 %
@@ -414,7 +412,7 @@ Dates actuelles et âges autorisés :
 Le reste de la saison à Soltau, de Colossos au jour le plus calme, se trouve
 dans le [guide du Heide Park](/blog/heide-park-temps-d-attente-conseils).
 
-### Parc Astérix : Peur sur le Parc
+### Parc Astérix
 
 Le [Parc Astérix](ref:parc-asterix) au nord
 de Paris déroule sa **Peur sur le Parc** **du 3 octobre au 8 novembre 2026**,
@@ -427,7 +425,7 @@ Retour »** et un spectacle d’illusions aux Arènes.
 
 [Parc Astérix](ref:parc-asterix?full)
 
-### Disneyland Paris : Disney Halloween Festival
+### Disneyland Paris
 
 L’inverse de Bottrop se joue du **26 septembre au 1er novembre 2026** au
 [Parc Disneyland](ref:/parks/europe/france/paris/disneyland-park) : le **Disney
@@ -441,7 +439,7 @@ déguisés. Le reste des nouveautés est dans notre
 
 [Parc Disneyland](ref:/parks/europe/france/paris/disneyland-park?full)
 
-### Alton Towers : Scarefest dans le Staffordshire
+### Alton Towers
 
 Si vous passez de toute façon par l’Angleterre en octobre, le Staffordshire
 vous offre Halloween en prime. [Alton Towers](ref:alton-towers) organise
@@ -476,7 +474,7 @@ le nouveau dîner « Dine with the Dead » sont dans notre
 Dates, mazes et billets :
 [altontowers.com → Scarefest](https://www.altontowers.com/explore/events/scarefest/).
 
-### PortAventura : le boucher de Penitence
+### PortAventura
 
 L’espagnol [PortAventura Park](ref:portaventura-park), sur la Costa Dorada, fête
 Halloween depuis le 19 septembre et continue jusqu’au **15 novembre 2026**, soit
@@ -507,7 +505,7 @@ Gardaland, au bord du lac de Garde, ouvre cet automne un nouveau labyrinthe à
 traverser en silence, et notre [actualité sur
 Gardaland](/blog/gardaland-magic-halloween-2026) en donne les dates et les prix.
 
-Ce qui se passe de l’autre côté de l’Atlantique est dans le [tour d’horizon
+Les événements de l’autre côté de l’Atlantique sont dans le [tour d’horizon
 d’Halloween aux États-Unis](/blog/halloween-etats-unis-parcs-2026), et Cedar
 Point, dans l’Ohio, a son propre article sur les
 [HalloWeekends](/blog/cedar-point-halloweekends-2026).
@@ -522,9 +520,7 @@ Le [Phantasialand](ref:phantasialand) de Brühl ne propose **aucun événement H
 
 La grande saison de Brühl commence **plus tard**. À partir du
 **14 novembre 2026**, **Wintertraum** court jusqu’en janvier (24 janvier 2027),
-avec patinoire, spectacles d’hiver et illuminations en soirée. Qui d’autre ouvre en
-Europe entre novembre et janvier est dans le
-[guide hiver](/blog/parcs-attractions-hiver-2026).
+avec patinoire, spectacles d’hiver et illuminations en soirée. Les autres parcs d’Europe ouverts entre novembre et janvier sont dans le [guide hiver](/blog/parcs-attractions-hiver-2026).
 
 Wintertraum a droit à son propre chapitre dans le [guide
 Phantasialand](/blog/phantasialand-temps-d-attente-conseils), avec le Quick
@@ -597,8 +593,7 @@ Les **jours à venir les plus calmes** de notre calendrier d’affluence par IA 
 ```
 
 Pour les soirées d’horreur du Movie Park, prenez la prévision avec prudence.
-Voici l’affluence habituelle à Bottrop par jour de la semaine et par mois,
-d’après nos mesures, qui ne comprennent pas encore Halloween :
+Nos mesures par jour de la semaine et par mois ne comprennent pas encore Halloween non plus.
 
 **Movie Park Germany, temps d’attente typiques par jour de semaine & mois**
 

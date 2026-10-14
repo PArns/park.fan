@@ -53,7 +53,7 @@ parkLinks:
   - legoland-deutschland
 ---
 
-Auf park.fan stehen **neun Freizeitparks in Deutschland**. Bei sechs messen wir die
+Von den **neun Freizeitparks in Deutschland** auf park.fan messen wir bei sechs die
 Wartezeiten, Bahn für Bahn. Beim [Hansa-Park](ref:hansa-park) kommt keine einzige Zahl an, weil
 der Park sie nur in seiner eigenen App zeigt. Die [Traumatica](ref:traumatica), für die wir erst vier Messtage haben, und die Wasserwelt
 [Rulantica](ref:rulantica) gehören zum
@@ -177,7 +177,7 @@ die A1. 2027 wird der Park fünfzig und baut dafür einen 86 Meter hohen Aussich
 World, seit 2005 unter dem heutigen Namen. Die Warteschlangen sind in unserer Messung kürzer als
 im Phantasialand, und der Sonntag gehört hier zu den ruhigeren Tagen.
 
-Acht Achterbahnen hat der Park. Die größte ist
+Die größte der acht Achterbahnen ist
 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) von Mack
 Rides aus dem Jahr 2017, 40 Meter hoch, 90 km/h, ab 130 Zentimetern, und der Zug wird vor dem Start
 dreimal vor und zurück geworfen, bevor das Tempo für den ersten Hügel reicht.
@@ -277,7 +277,7 @@ ab 140. In einer leeren Zelle hat der Park für diese Stufe keine große Bahn.
 
 ## Wo du am kürzesten ansteht
 
-Der Vergleich über alle gemessenen Tage, für jeden Park gleich gerechnet. Die Zeilen stehen in der Reihenfolge der Messung vom 3. Oktober 2026 und werden nicht neu sortiert:
+Der Vergleich rechnet für jeden Park gleich, über alle gemessenen Tage. Die Zeilen stehen in der Reihenfolge der Messung vom 3. Oktober 2026 und werden nicht neu sortiert.
 
 ```park-comparison-widget slugs=phantasialand,legoland-deutschland,europa-park,heide-park,movie-park-germany,plopsaland-deutschland show=quietest
 
@@ -298,13 +298,11 @@ Gruppen vor derselben Bahn, und wer keinen Pass hat, wartet dort länger als uns
 
 ## Zu welcher Uhrzeit du wo anstehst
 
-Im Phantasialand sieht der Tag so aus, Bahn für Bahn über alle gemessenen Tage:
-
 ```hourly-profile-widget slug=phantasialand top=6
 
 ```
 
-Taron ist zur Öffnung und in der letzten Stunde am vollsten, wenn alle noch schnell eine Fahrt
+Über alle gemessenen Tage im Phantasialand ist Taron zur Öffnung und in der letzten Stunde am vollsten, wenn alle noch schnell eine Fahrt
 mitnehmen wollen. F.L.Y. ist in der ersten Stunde kurz und hat seine Spitze eine Stunde später,
 sobald der Rest des Parks in Rookburgh angekommen ist. Beide haben am Nachmittag ihre ruhigste
 Stunde. Wer beide fahren will, geht zur Öffnung zu F.L.Y. und hebt sich Taron für den Nachmittag auf.
@@ -336,8 +334,8 @@ In fünf der sechs gemessenen Parks war ein Werktag in den Ferien des eigenen Bu
 als ein durchschnittlicher Wochenendtag. Welche Bundesländer welchen Park füllen, steht im
 [Guide zu Schulferien und Andrang](/blog/schulferien-freizeitparks-deutschland).
 
-Den Kalender mit der Prognose für die nächsten Tage gibt es für jeden Park, hier den des
-Europa-Parks:
+Den Kalender mit der Prognose für die nächsten Tage gibt es für jeden Park, unten den des
+Europa-Parks.
 
 ```best-days-widget slug=europa-park
 

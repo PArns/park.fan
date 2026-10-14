@@ -415,8 +415,6 @@ La colonna «Al coperto» conta tutte le attrazioni al coperto, comprese quelle 
 cui non si sale: stazioni, labirinti, piscine di palline, aree giochi, un museo e
 case horror che aprono solo la sera nel periodo di Halloween.
 
-Ecco i tempi di attesa tipici dei nove parchi, con l’Europa-Park evidenziato:
-
 ```park-comparison-widget slugs=europa-park,attractiepark-toverland,phantasialand,plopsaland-deutschland,movie-park-germany,efteling,walibi-belgium,heide-park,walibi-holland highlight=europa-park
 
 ```
@@ -436,7 +434,7 @@ Park e Walibi Holland.
 Nel calendario di ogni parco trovi, per le prossime settimane, il meteo, gli
 orari di apertura e l’affluenza prevista. Visto che nei giorni di pioggia c’è in
 media meno gente, non devi rinunciare alla visita solo perché sono previsti dei
-rovesci. Il meteo per Brühl:
+rovesci. Il meteo qui sotto è quello di Brühl, dove si trova il Phantasialand.
 
 ```weather-widget slug=phantasialand
 

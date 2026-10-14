@@ -71,12 +71,12 @@ Oblivion klonk, omdat het aannam dat die de passagiers aan het gillen bracht.
 
 ## De achtbanen, gebied voor gebied
 
-Alton Towers heeft elf achtbanen. Drie daarvan waren bij hun opening de eerste in hun soort, Nemesis
+Van de elf achtbanen in Alton Towers waren er drie bij hun opening de eerste in hun soort, Nemesis
 in Europa en Oblivion en TH13TEEN wereldwijd, en The Smiler vestigde in 2013 met veertien inversies
 een wereldrecord. Tussen de gebieden pendelt de Skyride, een stoeltjeslift met stations aan Towers
 Street achter de ingang, in Forbidden Valley en in het Dark Forest.
 
-### Forbidden Valley: Nemesis Reborn en Galactica
+### Nemesis Reborn en Galactica in Forbidden Valley
 
 Nemesis opende op **19 maart 1994** als de eerste inverted coaster van Europa. Bolliger & Mabillard
 bouwde haar naar een ontwerp van Werner Stengel, en het idee kwam van parkontwikkelaar John Wardley.
@@ -105,7 +105,7 @@ draaide van 2012 tot 2015 en is sinds 2023 weer open. **[Toxicator](ref:alton-to
 is een Top Spin die op 15 maart 2025 openging. Hij staat op een betonnen platform van net geen vijf
 meter hoog boven het pad, zodat je van onderaf kunt toekijken.
 
-### X-Sector: Oblivion en The Smiler
+### Oblivion en The Smiler in X-Sector
 
 De X-Sector is vormgegeven als proefinstallatie. Oblivion kwam daar op **14 maart 1998** voor 12
 miljoen pond en was de eerste dive coaster ter wereld. De wagen stopt aan de rand, hangt een tot
@@ -130,7 +130,7 @@ de baan konden werken terwijl die in bedrijf was. Het Crown Court in Stafford le
 2016 een boete van 5 miljoen pond op; zonder de schuldbekentenis was dat 7,5 miljoen geworden. The
 Smiler rijdt sinds 19 maart 2016 weer, met extra beveiligingen.
 
-### Dark Forest: Rita en TH13TEEN
+### Rita en TH13TEEN in het Dark Forest
 
 **[Rita](ref:alton-towers/rita)** rijdt sinds **1 april 2005** in het Dark Forest. De baan van
 Intamin wordt hydraulisch gelanceerd en gaat in 2,5 seconde van 0 naar 98,3 km/u, met 4,7 g. Ze is
@@ -146,7 +146,7 @@ verticale vrije val midden in het parcours. De trein rolt een gebouw in, achter 
 dicht, en dan valt het stuk rails met de trein erop zo'n vijf meter omlaag. Daarna gaat het achteruit
 een tunnel in. Intamin bouwde haar op de plek waar van 1980 tot 2008 de Corkscrew stond.
 
-### Mutiny Bay: Wicker Man
+### Wicker Man in Mutiny Bay
 
 **[Wicker Man](ref:alton-towers/wicker-man)** opende op **20 maart 2018** als de eerste nieuwe houten
 achtbaan van Groot-Brittannië in 22 jaar. Great Coasters International bouwde haar voor 16 miljoen
@@ -184,14 +184,14 @@ trein van Mack opende op 21 maart 1992, rijdt met 36 km/u twee rondes over 305 m
 de **[Congo River Rapids](ref:alton-towers/congo-river-rapids)**, de wildwaterbaan met ronde boten
 die tijdens de grote uitbreiding tussen 1985 en 1988 werd aangelegd.
 
-In CBeebies Land rijden twee kinderachtbanen. De
-**[Octonauts Rollercoaster Adventure](ref:alton-towers/octonauts-rollercoaster-adventure)** staat
-sinds 2015 op de plek waar vroeger de Beastie reed. Sinds 28 maart 2026 is er ook
+In CBeebies Land staat de
+**[Octonauts Rollercoaster Adventure](ref:alton-towers/octonauts-rollercoaster-adventure)**
+sinds 2015 op de plek waar vroeger de Beastie reed. Sinds 28 maart 2026 is er een tweede kinderachtbaan,
 **[Bluey the Ride: Here Come The Grannies!](ref:alton-towers/postman-pat-parcel-post)**, een
 Zierer-trein met 28 plaatsen op het terrein van de afgebroken Postman Pat Parcel Post. In de wachtrij
 kunnen kinderen door het huis van de familie uit de serie lopen.
 
-### In de Towers: Hex
+### Hex in de Towers
 
 **[Hex](ref:alton-towers/hex-the-legend-of-the-towers)** zit sinds 2000 in de muren van het landhuis
 waaraan het park zijn naam dankt. Eerst loop je door de kamers en hoor je de legende van de vloek die

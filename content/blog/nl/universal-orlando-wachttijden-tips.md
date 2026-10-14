@@ -2,6 +2,7 @@
 title: 'Universal Orlando: drie parken, en in Epic Universe geldt de Express Unlimited niet'
 translationKey: universal-orlando-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -64,7 +65,7 @@ Volcano Bay is een waterpark, achtbanen hebben de andere drie. Volgens Wikipedia
 plaats 14. Voor Epic Universe heeft Universal tot nu toe geen bezoekersaantal gepubliceerd.
 
 In onze metingen van de afgelopen
-twee jaar wacht je in Epic Universe het langst en in de Studios het kortst:
+twee jaar wacht je in Epic Universe het langst en in de Studios het kortst.
 
 ```park-comparison-widget slugs=universal-studios-florida,universal-islands-of-adventure,universal-epic-universe highlight=universal-epic-universe
 
@@ -74,11 +75,18 @@ Mine-Cart Madness heeft in onze metingen de langste rij van het hele
 resort, op gelijke hoogte daarachter volgen Battle at the Ministry en Hagrid's Magical Creatures
 Motorbike Adventure uit Islands of Adventure.
 
+## Geschiedenis van het resort
+
+Universal Studios Florida kostte volgens Wikipedia ongeveer 631 miljoen dollar. De helft was van MCA Universal, de andere helft van het vrijetijdsbedrijf Rank Organisation. Eerst wilde Universal een studiotour met een tram bouwen, zoals in Hollywood. Toen Disney-topman Michael Eisner de Disney-MGM Studios aankondigde, gooide Universal het plan om en bouwde losse attracties. Back to the Future: The Ride, de simulator die Steven Spielberg met de voormalige Disney-Imagineer Peter Alexander ontwikkelde, opende bijna een jaar later dan gepland. De Production Studio Tour langs echte filmsets stopte in 1995, en Nickelodeon verhuisde zijn tv-productie in 2005 uit het park naar Californië.
+
+Daarna bouwden Universal en Rank het terrein voor 2,5 miljard dollar uit tot resort. In 1999 kwam CityWalk erbij, in september het eerste hotel, Portofino Bay. Het resort heette eerst Universal Studios Escape. Omdat bezoekers aan die naam niet zagen wat het resort bood, heet het sinds juli 2000 Universal Orlando Resort. In hetzelfde jaar verkocht Rank zijn helft voor 275 miljoen dollar aan Blackstone. In 2011 kocht NBCUniversal het aandeel van Blackstone voor 1,025 miljard dollar, en sindsdien is het resort helemaal van NBCUniversal.
+
+Het waterpark Wet 'n Wild was in 1977 opgericht door SeaWorld-oprichter George Millay, Universal kocht het in 1998. Het sloot op 31 december 2016, Volcano Bay nam zijn plaats in. NBCUniversal kondigde Epic Universe aan op 1 augustus 2019. In april 2020 stelde het bedrijf de opening uit vanwege de coronapandemie. Met het nieuwe park beslaat het resort 522 hectare.
+
 ## Welk park je het eerst neemt
 
 Heb je twee dagen, dan zou ik op de eerste dag naar Islands of Adventure gaan. Daar staan met VelociCoaster,
-Hagrid's en de Hulk drie achtbanen vlak bij elkaar. De tweede dag is voor Epic Universe, want dat heeft de
-meeste nieuwe attracties en daar worden de rijen het langst. De Studios zijn de derde dag, of de middag van
+Hagrid's en de Hulk drie achtbanen vlak bij elkaar. De tweede dag is voor Epic Universe, want dat heeft de meeste nieuwe attracties. De Studios zijn de derde dag, of de middag van
 een Park-to-Park-dag. Heb je maar één dag, dan hangt de keuze af van wie er meegaat. Wie in achtbanen vanaf
 1,22 meter wil, kiest Islands of Adventure. Gezinnen met kinderen onder 1,02 meter vinden in alle drie de
 parken attracties, de lijst staat verderop.
@@ -233,7 +241,7 @@ Magic en The Untrainable Dragon op de Isle of Berk.
 
 ## Drie keer Harry Potter
 
-Elk van de drie parken heeft een eigen Harry Potter-gebied. Het oudste is
+Het oudste Harry Potter-gebied is
 Hogsmeade in Islands of Adventure, dat op 18 juni 2010 opende op 8 hectare. Daar stond eerst de achtbaan
 Flying Unicorn, die in 2008 sloot en terugkwam als **[Flight of the
 Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**. De junior-achtbaan van Vekoma
@@ -260,7 +268,7 @@ Jurassic.
 ## Bij de opening of 's avonds
 
 In het uurprofiel zie je hoe laat de rij bij een attractie kort is. Voor Epic Universe zijn dit de
-acht attracties met de langste rij:
+acht attracties met de langste rij.
 
 ```hourly-profile-widget slug=universal-epic-universe top=8
 
@@ -271,7 +279,7 @@ Werewolf, Yoshi's Adventure, Mario Kart en Hiccup's Wing Gliders volgen als “g
 opening maar één attractie, neem dan Mine-Cart Madness.
 
 Voor Islands of Adventure zijn VelociCoaster, Ripsaw Falls, Skull Island en Spider-Man een “goede tip”.
-Hagrid's staat niet op de lijst:
+Hagrid's staat niet op de lijst.
 
 ```hourly-profile-widget slug=universal-islands-of-adventure top=8
 
@@ -319,8 +327,6 @@ text: De prijzen per dag staan in de kalender van Universal.
 
 ## Express Pass: wat hij kost en waar hij geldt
 
-Met de Express Pass koop je je bij Universal langs de rij.
-
 **Universal Express** geldt één keer per attractie. Universal verkoopt hem voor de Studios, Islands of
 Adventure, Epic Universe en Volcano Bay, als toeslag op het ticket. Voor de Studios en Islands of Adventure
 noemt Universal op de ticketpagina 119,99 tot 319,99 dollar per persoon en park, afhankelijk van de dag.
@@ -334,15 +340,13 @@ passen beschikbaar zijn.
 **Universal Express Now** is er alleen in de app in het park, op dezelfde dag, voor losse attracties in
 een tijdvenster. Universal biedt hem volgens eigen zeggen sporadisch aan.
 
-Wie in Epic Universe een pas wil, neemt dus de eenmalige Express. Wie bij de opening eerst Mine-Cart
-Madness en Battle at the Ministry rijdt, heeft hem voor die twee niet nodig. In de Studios en Islands of
+Wie bij de opening eerst Mine-Cart
+Madness en Battle at the Ministry rijdt, heeft in Epic Universe voor die twee geen Express nodig. In de Studios en Islands of
 Adventure zou ik zonder hotelvoordeel geen pas kopen. Met een vroege aankomst kom je ook zonder pas
 aan bij de attracties van de rope-drop-lijst, dus VelociCoaster, Ripsaw Falls, Skull Island en
 Spider-Man, maar niet bij Hagrid's. Dat schat ik in op basis van de uurprofielen, want hoeveel minuten een pas scheelt, meten we niet.
 
 ## Wanneer je het beste kunt gaan
-
-De typische wachttijd per maand, voor elk van de drie parken:
 
 ```stats-widget slug=universal-studios-florida show=months
 
@@ -368,7 +372,7 @@ Het feestseizoen loopt van 14 november tot 3 januari, meer daarover in [Kerst en
 Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026). In Epic Universe is er een eigen avondevent, Universal
 Nights, vanaf 179 dollar per persoon. De data zijn 17 en 24 oktober en 6 en 20 november.
 
-Op welke dagen het de komende weken het rustigst is, rekenen we elke dag opnieuw uit:
+Op welke dagen het de komende weken het rustigst is, rekenen we elke dag opnieuw uit.
 
 ```best-days-widget slug=universal-epic-universe
 
@@ -487,8 +491,6 @@ Van 26 oktober 2026 tot uiterlijk 1 april 2027.
 
 ## Verder lezen
 
-Hoe het weer de komende dagen in het resort wordt, en wat dat betekent voor de attracties buiten:
-
 ```weather-widget slug=universal-islands-of-adventure
 
 ```
@@ -502,8 +504,9 @@ tips](/blog/magic-kingdom-wachttijden-tips).
 
 ### Bronnen & verder lezen
 
-- Opening van de parken, gebieden, attracties met bouwjaar en fabrikant, sluitingen, bezoekersaantallen 2024: [Universal Orlando op Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Orlando) · [Universal Studios Florida op Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Studios_Florida) · [Universal's Islands of Adventure op Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal%27s_Islands_of_Adventure) · [Universal Epic Universe op Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Epic_Universe)
+- Geschiedenis, eigenaars en hotels van het resort, opening van de parken, gebieden, attracties met bouwjaar en fabrikant, sluitingen, bezoekersaantallen 2024: [Universal Orlando op Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Orlando) · [Universal Studios Florida op Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Studios_Florida) · [Universal's Islands of Adventure op Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal%27s_Islands_of_Adventure) · [Universal Epic Universe op Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Epic_Universe)
 - Technische gegevens van de attracties: [Jurassic World VelociCoaster](https://en.wikipedia.org/wiki/Jurassic_World_VelociCoaster) · [Hagrid's Magical Creatures Motorbike Adventure](https://en.wikipedia.org/wiki/Hagrid%27s_Magical_Creatures_Motorbike_Adventure) · [The Incredible Hulk Coaster](https://en.wikipedia.org/wiki/The_Incredible_Hulk_Coaster) · [Revenge of the Mummy](https://en.wikipedia.org/wiki/Revenge_of_the_Mummy) · [Harry Potter and the Escape from Gringotts](https://en.wikipedia.org/wiki/Harry_Potter_and_the_Escape_from_Gringotts) · [Harry Potter and the Forbidden Journey](https://en.wikipedia.org/wiki/Harry_Potter_and_the_Forbidden_Journey) · [Skull Island: Reign of Kong](https://en.wikipedia.org/wiki/Skull_Island:_Reign_of_Kong) · [Stardust Racers](https://en.wikipedia.org/wiki/Stardust_Racers) · [Mario Kart: Bowser's Challenge](https://en.wikipedia.org/wiki/Mario_Kart:_Bowser%27s_Challenge) · [Dudley Do-Right's Ripsaw Falls](https://en.wikipedia.org/wiki/Dudley_Do-Right%27s_Ripsaw_Falls) · [Hogwarts Express](<https://en.wikipedia.org/wiki/Hogwarts_Express_(Universal_Orlando_Resort)>) · [Hiccup's Wing Gliders (Coasterpedia)](https://coasterpedia.net/wiki/Hiccup%27s_Wing_Gliders)
+- Prijs voor het aandeel van Blackstone in 2011: [persbericht van NBCUniversal (SEC, Form 8-K)](https://www.sec.gov/Archives/edgar/data/0001262449/000119312511159946/dex991.htm)
 - Minimale lengtes: [Ride Height Requirements (Universal Orlando)](https://www.universalorlando.com/web/en/us/plan-your-visit/hours-information/ride-height-requirements)
 - Ticketprijzen, 3-dagenaanbieding, hotelkorting, prijsrange van Express: [Park Tickets (Universal Orlando)](https://www.universalorlando.com/web/en/us/tickets-packages/park-tickets)
 - Express, Express Unlimited, Express Now, geldigheid per park: [Express Passes (Universal Orlando)](https://www.universalorlando.com/web/en/us/tickets-packages/express-passes)

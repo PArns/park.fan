@@ -2,6 +2,7 @@
 title: 'Universal Studios Japan: Super Nintendo World, Express Pass'
 translationKey: universal-studios-japan-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -62,7 +63,9 @@ Universal Studios Japan opened on **31 March 2001** in Osaka's Konohana ward. It
 was Universal's first park outside the US, built for 1.7 billion US dollars.
 Planning began in December 1992 with the founding of Osaka Universal Planning
 Inc., the framework agreement with MCA followed in February 1996, and
-construction started in 1998.
+construction began on 28 October 1998.
+
+Before Osaka was chosen, MCA and Nippon Steel looked at the steel group's own land in Kimitsu in Chiba Prefecture and in Kitakyūshū in the late 1980s. In 1990 a Nippon Steel site in Sakai was the front-runner, but the plan fell through there, as did the city of Osaka's attempt to bring the park to Taishō ward. In January 1994 the choice fell on the site in Konohana ward.
 
 In its first year more than **11 million** guests came, and the park reached
 ten million faster than any park before it. By 2009 attendance had dropped to 8
@@ -73,17 +76,21 @@ pandemic and 12.4 million again in 2022. For 2024, English Wikipedia gives 16
 million guests, which puts it third in the world behind the Magic Kingdom and
 Disneyland.
 
+At first the city of Osaka held a stake in the operating company. After Goldman Sachs refinanced it in 2005 it was privately run, in 2007 it listed on the Tokyo Stock Exchange's Mothers segment, and in 2009 a tender offer brought in MBK Partners from South Korea and PAG from Hong Kong as shareholders. In 2015 NBCUniversal took 51 percent of the shares for 183 billion yen.
+
 USJ LLC runs the park. Comcast bought out the remaining shares in 2017 for 2.3
 billion US dollars, and since 2 March 2017 the park has belonged entirely to the
 group through NBCUniversal. In August 2026, USJ, Nippon Steel and the city of
 Osaka are in talks about a neighbouring former factory site of around 60,000
 square metres.
 
+In 2006 the Western area with the Wild Wild Wild West Stunt Show became the Land of Oz, with a shortened Japanese version of the musical "Wicked". The area closed in February 2011 to make room for Universal Wonderland. E.T. Adventure ran from 2001 to 2009, and Space Fantasy stands in its place. Back to the Future: The Ride ran for the last time on 31 May 2016, and Minion Mayhem has replaced it. Because of the pandemic the park was closed from 29 February to 7 June 2020.
+
 The latest big addition was **Super Nintendo World**, which opened on **18 March
-2021** and cost 40 billion yen. Donkey Kong Country has been part of it since
+2021** and cost 40 billion yen, with construction from June 2017. Donkey Kong Country has been part of it since
 **11 December 2024**. The park now has ten themed areas: Hollywood, New York,
 San Francisco, Minion Park, Jurassic Park, Amity Village, Universal Wonderland,
-WaterWorld, The Wizarding World of Harry Potter and Super Nintendo World.
+WaterWorld, The Wizarding World of Harry Potter and Super Nintendo World. The programme for the 25th anniversary has run under the name "Discover U!!!" since 4 March 2026.
 
 ## Rules at the boarding area
 
@@ -254,9 +261,6 @@ The ten attractions with the highest median over the last two years, measured on
 
 ```
 
-If you plan your order by that table,
-you start with the two Nintendo rides for as long as your time slot is valid.
-
 ```hourly-profile-widget slug=universal-studios-japan top=8
 
 ```
@@ -269,8 +273,7 @@ and on Yoshi's Adventure, going by our rope drop measurements. Hollywood Dream: 
 
 ```
 
-On 9 October 2026 the park was open from 8:00 am to 10:00 pm. The park's
-schedule page has the hours for each day.
+On 9 October 2026 the park was open from 8:00 am to 10:00 pm.
 
 ## When to go
 
@@ -310,12 +313,10 @@ During this time Hollywood Dream plays tracks by Japanese bands, and Jurassic
 Park runs in the dark as "The Ride in the Dark". For the Express Pass, the park
 has put together Halloween packages with four attractions, for example with
 Factory of Fear, Chainsaw Man: The Chaos 4-D or Resident Evil Requiem: The
-Dive. The other parks' Halloween events are in our
-[Halloween guide](/blog/halloween-theme-parks-2026).
+Dive.
 
 The "Frieren: Beyond Journey's End Story Walk" in Hollywood runs from 30 May
-2026 to 11 January 2027 and requires an Attraction Timed Entry Ticket from the
-app. "ONE PIECE Premier Summer 2026" runs from 30 July to 19 November 2026, and
+2026 to 11 January 2027 and requires an Attraction Timed Entry Ticket from the app. It belongs to the Universal Cool Japan series, which has existed since 2015. "ONE PIECE Premier Summer 2026" runs from 30 July to 19 November 2026, and
 the street show "Wicked: The Witches of Oz" from 20 February to 27 December 2026.
 
 ## Express Pass: packages, prices, time slots
@@ -378,7 +379,7 @@ and it says that depending on the crowds, this can stop without warning. Even
 with a ticket, the ride inside the area can already be fully booked.
 
 **Yoyakunori (Reserve & Ride)** reserves a ride time for selected rides, in the
-park for example at The Flying Snoopy and Freeze Ray Sliders. Until your reserved time, you can ride other rides or eat. The **Attraction Timed Entry
+park for example at The Flying Snoopy and Freeze Ray Sliders. The **Attraction Timed Entry
 Ticket** applies to individual rides, including the Frieren walk. Both are only
 available in the park and can't be transferred, and each group can pick only one
 ride. If you uninstall the app before your ride time, the ticket becomes
@@ -389,7 +390,7 @@ invalid. The app requires iOS 17 or Android 9.
 All prices are listed with tax in the ticket shop and depend on the day of the
 visit. For visits from 1 September 2026, the park uses day-based pricing: every
 day starts at its lowest level, and the price can rise when demand is high.
-According to the park, buying early is usually cheapest.
+According to the park, buying early is usually cheapest. Day-based prices for the 1 Day Studio Pass have existed since 2019.
 
 | Ticket                                                 | Adults from |
 | ------------------------------------------------------ | ----------- |
@@ -445,10 +446,7 @@ advance.
 
 ## What's new and what has closed
 
-Since the end of 2024, the Donkey Kong area, the Detective Conan show,
-Illumination's Villain-Con Minion Blast and Snoopy's Flying Ace Adventure have
-been added. The Spider-Man ride, which opened in 2004, closed on 22 January 2024. Backdraft and T2-3D have been closed since 2020, and Sesame Street Fun
-World since 10 May 2026.
+The Detective Conan show was added at the end of 2024. The Spider-Man ride, which opened in 2004, closed on 22 January 2024. Backdraft and T2-3D have been closed since 2020.
 
 ## Frequently asked questions about Universal Studios Japan
 
@@ -511,9 +509,10 @@ does.
 
 ### Sources & further reading
 
-- Opening, construction costs, attendance, ownership, themed areas, closures,
-  expansion talks:
+- Opening, site search, construction costs, attendance, ownership, themed areas, replaced rides, closures, expansion talks:
   [Universal Studios Japan on en.wikipedia](https://en.wikipedia.org/wiki/Universal_Studios_Japan)
+  · [Universal Studios Japan on ja.wikipedia](https://ja.wikipedia.org/wiki/%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E3%83%BB%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA%E3%83%BB%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3)
+  · [NBCUniversal's purchase of 51 percent (Simpson Thacher)](https://stblaw.com/about-us/news/view/2015/10/07/simpson-thacher-represents-goldman-sachs-in-comcast-nbcuniversal-s-purchase-of-51-ownership-of-universal-studios-japan)
 - Super Nintendo World, opening, construction costs, Donkey Kong Country, Boom Coaster:
   [Super Nintendo World on en.wikipedia](https://en.wikipedia.org/wiki/Super_Nintendo_World)
   · [Super Nintendo World (official)](https://www.usj.co.jp/web/en/us/areas/super-nintendo-world)

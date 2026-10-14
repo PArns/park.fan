@@ -161,9 +161,9 @@ avond staat er niets over in de planner.
 
 ## Twee knoppen sorteren de dag
 
-Onder de tijdlijn staan twee knoppen. “Alle headliners inplannen” haalt de grote
+De knop “Alle headliners inplannen” onder de tijdlijn haalt de grote
 attracties van het park erbij die nog niet in de dag staan en sorteert daarna
-alles. “Dag optimaliseren” voegt niets toe en herschikt alleen wat er al staat.
+alles. “Dag optimaliseren” ernaast voegt niets toe en herschikt alleen wat er al staat.
 Achter allebei draait dezelfde berekening. Het zijn twee knoppen omdat het twee
 vragen zijn: vul mijn dag, en kan de volgorde beter.
 
@@ -227,7 +227,7 @@ bovengrens, op veel dagen zit de voorspelling er verder naast. Daarom staat het
 getal er als typische fout en nooit als marge waarin het juiste antwoord al zou
 zitten.
 
-**Speeltijden zijn twee dingen.** Wat het park voor vandaag heeft gepubliceerd,
+**Een speeltijd kan ook een schatting zijn.** Wat het park voor vandaag heeft gepubliceerd,
 is een mededeling. Wat wij van de laatste passende weekdag hebben doorgetrokken,
 is een vermoeden, en dat tekenen we zachter, met een tilde voor de tijd,
 een stippellijn en de datum waar de tijden vandaan komen. Speeltijden voor de
@@ -266,7 +266,7 @@ Zolang de meldingen aan staan, is er sinds 23 september ook een link om te
 delen. Wie hem opent, krijgt een eigen kopie in zijn planner, en wat hij daaraan
 verandert, blijft bij hem. Zo komt een plan ook van de computer op de telefoon.
 
-Nog twee dingen die je makkelijk over het hoofd ziet. Op een computer hangt op
+Op een computer hangt op
 elke pagina aan de rand van het scherm een tab die de planner opent, ook als er
 nog niets gepland is; op de telefoon zit daarvoor sinds 24 september een
 kalendericoon bovenin de balk. En op een computer kun je een tweede kolom openen, dan staan er twee
@@ -275,8 +275,7 @@ op zaterdag uitzien”.
 
 ## Zo begin je
 
-De weg naar binnen loopt via vier vragen. Naar welk park, op welke dag, wie gaat
-er mee, en welke grote attracties moeten erin. De afbeeldingen hieronder tonen
+Je begint met vier vragen: naar welk park, op welke dag, wie er meegaat en welke grote attracties erin moeten. De afbeeldingen hieronder tonen
 nog de eerste versie, met drie stappen.
 
 De eerste is een zoekveld, en daarachter zit een kleinigheid die snel misgaat.

@@ -109,7 +109,7 @@ el mundo quiere salir cuanto antes.
 
 ```
 
-### Pre-shows: la espera disfrazada de programa
+### Pre-shows
 
 Lo que mejor lo resuelve es el **pre-show**, que declara la espera parte de la
 atracción. El ejemplo de manual
@@ -141,7 +141,7 @@ conoce el principio.
 Hasta dónde se puede llevar la idea se ve en tres atracciones de Orlando.
 Sus colas merecerían una visita aunque no te subieras.
 
-### Avatar Flight of Passage: un museo como cola
+### Avatar Flight of Passage
 
 La cola de
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
@@ -169,7 +169,7 @@ tanque.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
-### Cosmic Rewind: primero el museo, luego la montaña rusa
+### Cosmic Rewind
 
 [EPCOT](ref:epcot?bare) va un paso más allá con
 [Guardians of the Galaxy: Cosmic Rewind](ref:epcot/guardians-of-the-galaxy-cosmic-rewind).
@@ -193,7 +193,7 @@ ese momento, la cola física servía sobre todo como recorrido narrativo y apena
 como espacio de almacenamiento, y eso en una atracción que, según RCDB,
 despacha 2.000 visitantes por hora con trenes de 20 personas.
 
-### VelociCoaster: esperar en el recinto de los raptores
+### VelociCoaster
 
 Universal juega la misma carta en
 [Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
@@ -389,8 +389,7 @@ y los festivos (también los de las regiones vecinas), de las previsiones del
 tiempo, los horarios y los eventos, y ahora mismo predice unos seis meses hacia
 delante. La demanda y el rendimiento están aun así en cada una de esas cifras,
 porque todo tiempo de espera es, al final, la ley de Little: la cola dividida
-entre el rendimiento. Con qué frecuencia
-aciertan nuestras predicciones está en la [página de Fancast](/fancast).
+entre el rendimiento. En la [página de Fancast](/fancast) puedes ver con qué frecuencia aciertan nuestras predicciones.
 
 ## Por qué Peter Pan’s Flight siempre «se desmadra»
 
@@ -440,7 +439,7 @@ atracciones más visitado del mundo:
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
-## Europa espera de otra manera: Phantasialand y Europa-Park frente a Orlando
+## Phantasialand y Europa-Park frente a Orlando
 
 Hasta qué punto la demanda y la capacidad determinan el nivel de espera de un
 parque entero se ve mejor si pones dos grandes parques europeos al lado de
@@ -559,8 +558,7 @@ En el lado de los vehículos, en cambio, cada parada cuesta capacidad de verdad.
 Por eso el omnimover de la Haunted Mansion y la rolling station de YOY no se
 paran en absoluto en funcionamiento normal. En la cola de delante, el parar y
 arrancar solo cuesta paciencia. Lo que de verdad acorta tu espera se decide
-antes de ir, al elegir un día en el que haya menos gente delante de ti. Ese día
-lo encuentras en el calendario de los mejores días.
+antes de ir, al elegir en el calendario de los mejores días un día en el que haya menos gente delante de ti.
 
 ## Colas virtuales y estaciones dobles
 

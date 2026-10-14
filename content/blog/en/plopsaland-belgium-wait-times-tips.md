@@ -209,8 +209,7 @@ metres long, 22 metres tall and runs at 71 km/h. The layout is an out-and-back w
 a chain lift and no inversion, designed by Jeff Pike. According to the Roller
 Coaster DataBase it resembles White Lightning at Fun Spot America in Orlando but
 isn’t identical. Two trains with twelve seats each run, and capacity is 635 guests
-an hour. Minimum height 120 centimetres. The three GCI wooden coasters in the
-Benelux compared:
+an hour. Minimum height 120 centimetres. With Joris en de Draak at Efteling there are three GCI wooden coasters in the Benelux.
 
 ```ride-waits-widget rides=plopsaland-belgium/heidi-the-ride|Heidi The Ride (GCI, 2017);attractiepark-toverland/troy|Troy (GCI, 2007);efteling/joris-en-de-draak|Joris en de Draak (GCI, 2010) columns=park,peak highlight=plopsaland-belgium/heidi-the-ride
 
@@ -235,10 +234,8 @@ junior coaster from the Meli Park, 335 metres long and 13 metres tall, themed on
 the girl band K3 since 2019. The **#LikeMe Coaster** is a Tivoli coaster by Zierer
 that opened in 1976 as Keverbaan at the Meli Park and was replaced by a new copy in 2014. Both have a minimum height of 90 centimetres.
 
-Then there are two dark rides. **[Plop’s Woods](ref:plopsaland-belgium/plops-woods)**
-(Het Bos van Plop) is the converted Apirama of 1979 and takes boats through the
-goblin forest. **[Bumba’s World Trip](ref:plopsaland-belgium/bumbas-world-trip)** (Op
-Reis met Bumba) opened in 2023 in the indoor area Circus Bumba and, according to
+The dark ride **[Plop’s Woods](ref:plopsaland-belgium/plops-woods)** (Het Bos van Plop) is the converted Apirama of 1979 and takes boats through the
+goblin forest. The second, **[Bumba’s World Trip](ref:plopsaland-belgium/bumbas-world-trip)** (Op Reis met Bumba), opened in 2023 in the indoor area Circus Bumba and, according to
 Dutch Wikipedia, is the first dark ride the Plopsa group had built itself.
 
 ```glossary-widget slug=dark-ride
@@ -319,12 +316,6 @@ until late afternoon.
 
 ## When to go
 
-The calendar marks the quietest days of the coming weeks:
-
-```best-days-widget slug=plopsaland-belgium
-
-```
-
 The park isn’t open all year. According to the 2026 calendar it was closed from 5
 January to 13 February, opened on 14 February for the crocus holidays and ran in
 March only on Wednesdays, Saturdays and Sundays, before running almost daily from
@@ -333,6 +324,10 @@ From April to June and in September the park usually closes at 5 or 6 p.m., in
 July and August at 7 p.m. and on a few evenings at 10 p.m., in October 2026 at
 5 p.m. on weekdays and 6 p.m. at weekends. It usually opens at 10 a.m. A few days are closed, on 10 October 2026 for a
 private event, to which tickets and annual passes don’t apply.
+
+```best-days-widget slug=plopsaland-belgium
+
+```
 
 On Wednesdays the park is currently advertising the ticket at €36 instead of €56.
 If you have children of school age, you’re going in the holidays anyway, on the
@@ -345,9 +340,7 @@ park is open daily during it, except 10 October. You get the Pumpkin King (a sca
 Nachtwacht Academy, the foxes Fox & Trot from the musical Pinocchio and the 25
 Celebration Parade. There are also Halloween fireworks and dishes such as a Pumpkin
 Spice Latte, a Halloween waffle and the Spooky Burger. A dated ticket costs from
-€42 in this period. What other parks in Belgium and the Netherlands do at
-Halloween is in the [Halloween guide 2026](/blog/halloween-theme-parks-2026), including
-Ibilaw at Walibi Belgium.
+€42 in this period. Ibilaw at Walibi Belgium and the other Halloween events in Belgium and the Netherlands are in the [Halloween guide 2026](/blog/halloween-theme-parks-2026).
 
 ```weather-widget slug=plopsaland-belgium
 
@@ -418,8 +411,7 @@ As of 7 October 2026, from the park’s ticket page:
 | Family ticket for 4, 5 and 6 people                | €179, €222 and €259                    |
 | Parking, bought online in advance                  | €15                                    |
 
-The park’s home page says "from €38", the ticket page "from €36". Which price
-applies to your day is in the ticket shop’s calendar. The price tier for children
+The park’s home page says "from €38", the ticket page "from €36". The ticket shop’s calendar shows the price for each day. The price tier for children
 depends on height, which is measured at the ticket desk with shoes on. If you’re in
 doubt, have them re-measured at the information desk, and that result stands. If you
 buy the ticket online, you skip the ticket office and go straight to the check.
@@ -466,8 +458,7 @@ the Belgian railway NMBS.
 
 ## Hotels and food
 
-The resort has four places to stay. The **Theater Hotel** (4 stars superior, one to
-six people) includes breakfast and parking, and with half board two days of
+Of the resort’s four places to stay, the **Theater Hotel** (4 stars superior, one to six people) includes breakfast and parking, and with half board two days of
 Plopsaqua as well. In the **Village** (six to twelve people, at least two nights)
 and the **Studio 100 Chalets** (one to four people), admission to Plopsaland and
 Plopsaqua is part of the package. The **Basecamp** is the campsite for tents,

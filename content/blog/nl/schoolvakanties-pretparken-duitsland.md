@@ -121,7 +121,7 @@ De zomervakanties van 2026 lagen ver uit elkaar. Rijnland-Palts, Hessen en Saarl
 juni, Beieren stopte op 14 september als laatste. In maar één week, van 3 tot 7 augustus, hadden alle
 16 deelstaten tegelijk vrij.
 
-### Heide Park: Nedersaksen en NRW moeten allebei vrij zijn
+### Heide Park
 
 Nedersaksen had van 2 juli tot 12 augustus vakantie, NRW vanaf 18 juli. In de ruim twee weken
 waarin alleen Nedersaksen vrij was, lag de toeslag in [Heide Park](ref:heide-park) op 36 procent.
@@ -144,10 +144,10 @@ lagen er 31 in de schoolvakantie van een of andere deelstaat.
 
 ```
 
-Hoe een vroege start in Soltau eruitziet, lees je in de
-[gids voor Heide Park](/blog/heide-park-wachttijden-tips).
+In de [gids voor Heide Park](/blog/heide-park-wachttijden-tips) staat hoe een vroege start in
+Soltau eruitziet.
 
-### Phantasialand: vol voordat NRW vrij heeft
+### Phantasialand
 
 In Brühl ging het andersom. Van 2 tot 17 juli, toen Nedersaksen, Hessen, Rijnland-Palts en nog een
 paar deelstaten vakantie hadden en in NRW de scholen nog open waren, lag
@@ -164,7 +164,7 @@ Hoe de Quick Pass werkt, die je in deze weken goed kunt gebruiken, staat in de
 [gids voor Phantasialand](/blog/phantasialand-wachttijden-tips), samen met de baan waarmee je
 begint.
 
-### Movie Park: de eerste week van NRW
+### Movie Park
 
 Voor [Movie Park](ref:movie-park-germany) in Bottrop geldt bijna hetzelfde als voor Brühl, met plus
 67 procent vóór de vakantie in NRW, plus 132 procent zolang NRW en Nedersaksen samen vrij hadden, en
@@ -174,7 +174,7 @@ in de week daarvoor, en de vier drukste dagen van de hele meetperiode vallen all
 week, van dinsdag tot en met vrijdag. De week erna was het alweer over, en waar dat aan lag, kan ik
 uit de kalender niet opmaken.
 
-### Plopsaland: Rijnland-Palts en NRW samen
+### Plopsaland
 
 Bij [Plopsaland](ref:plopsaland-deutschland) in Haßloch heeft Rijnland-Palts het park niet in zijn
 eentje gevuld, en NRW evenmin. Rijnland-Palts had als eerste deelstaat vakantie, vanaf 27 juni. In de
@@ -187,11 +187,10 @@ week zakte het doordeweekse gemiddelde naar een ruim derde van dat van de week e
 eind van de vakantie in NRW zat het park 23 procent onder een werkdag zonder vakantie.
 
 Zijn drukste dagen had Plopsaland trouwens helemaal niet in de zomer. Vier van de tien drukste dagen
-vielen in de week van 7 tot 10 april, in de paasvakantie. Wat het park in oktober 's avonds doet,
-lees je in het
-[stuk over de Halloween Fright Nights](/news/plopsaland-deutschland-halloween-fright-nights-2026).
+vielen in de week van 7 tot 10 april, in de paasvakantie. In oktober heeft het park 's avonds
+de [Halloween Fright Nights](/news/plopsaland-deutschland-halloween-fright-nights-2026).
 
-### Europa-Park: reageert het zwakst
+### Europa-Park
 
 [Europa-Park](ref:europa-park) lag in de drie weken met 14 tot 16 deelstaten in de vakantie 37
 procent boven de maatstaf. Dat is de kleinste toeslag van de zes parken. Van 20 tot 29 juli, voordat
@@ -204,7 +203,7 @@ hun vakanties het verschil maken, heb ik niet apart uitgezocht. De drukste dag v
 meetperiode was in Rust maandag 29 december 2025, tussen kerst en oud en nieuw, toen alle 16
 deelstaten vrij hadden.
 
-### Legoland: het sterkst afhankelijk van het zuiden
+### Legoland
 
 [Legoland](ref:legoland-deutschland) in Günzburg hangt het sterkst aan de vakanties in het zuiden,
 al zijn dat niet de enige. In de pinkstervakantie, die in 2026 alleen Beieren en Baden-Württemberg
@@ -296,8 +295,8 @@ twee keer zo lang. Dat berust op zes vakantiewerkdagen per park.
 Voor de komende winter staan de openingsdagen al in de kalender. Tussen 19 december 2026 en 12
 januari 2027 is Phantasialand op 21 dagen open, Europa-Park op 20, Legoland op 19, Plopsaland op 13
 en Movie Park op 11. Heide Park gaat na 31 oktober dicht. De kerstvakantie begint in tien deelstaten
-op 23 december en eindigt tussen 31 december en 12 januari. Welke parken in de winter wat te bieden
-hebben, staat in de [wintergids](/blog/winter-pretparken-2026).
+op 23 december en eindigt tussen 31 december en 12 januari. Het winterprogramma van de parken
+staat in de [wintergids](/blog/winter-pretparken-2026).
 
 ## De rustige vakantieweken
 
@@ -408,9 +407,9 @@ druk als de dagen tussen kerst en oud en nieuw.
 De brugdag na Hemelvaartsdag mijd ik, de feestdag zelf niet per se, en
 een 1 mei op een werkdag plan ik als een zaterdag.
 
-Welke maand in welk park het rustigst is, staat op de pagina
-[beste tijd om te bezoeken](/beste-tijd-om-te-bezoeken), en welk park bij wie past in de
-[ranglijst van Duitse pretparken](/blog/beste-pretparken-in-duitsland).
+De rustigste maanden per park staan op de pagina
+[beste tijd om te bezoeken](/beste-tijd-om-te-bezoeken). In de
+[ranglijst van Duitse pretparken](/blog/beste-pretparken-in-duitsland) staat welk park bij wie past.
 
 — Patrick
 

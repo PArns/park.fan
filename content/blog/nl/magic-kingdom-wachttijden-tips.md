@@ -2,7 +2,7 @@
 title: 'Magic Kingdom: de langste rij staat bij TRON'
 translationKey: magic-kingdom-guide
 date: '2026-09-30'
-updatedAt: '2026-10-05'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -61,6 +61,12 @@ wachttijd, EPCOT de langste.
 
 ```
 
+## Van de grondaankoop in 1964 tot de opening in 1971
+
+Vanaf april 1964 kocht Walt Disney Productions via dekmantelbedrijven grond bij Orlando, samen 27.443 acres, ruim 111 vierkante kilometer. Sommige eigenaars kregen maar 100 dollar per acre. Officieel presenteerde Walt Disney het project op 15 november 1965, op een persconferentie in Orlando samen met de gouverneur van Florida, Haydon Burns.
+
+Walt Disney overleed op 15 december 1966, voordat de bouw begon. Zijn broer Roy O. Disney stelde zijn pensioen uit, nam het project over en veranderde vóór de opening de naam van het resort van “Disney World” in “Walt Disney World”. In 1967 begon de bouw, en op 12 mei 1967 ondertekende gouverneur Claude R. Kirk Jr. de wet waarmee het Reedy Creek Improvement District voor het terrein ontstond. Tijdens de openingsceremonie van 23 tot 25 oktober 1971 wijdde Roy O. Disney het resort in.
+
 ## Zes themalanden en de utilidors
 
 Het park ging op **1 oktober 1971** open als eerste deel van Walt Disney World,
@@ -71,6 +77,8 @@ Street, Adventureland, Frontierland, Fantasyland en Tomorrowland. Het zesde,
 Liberty Square, bestaat alleen in Florida, en daar staat de Haunted Mansion. Het
 park wordt gerund door Disney Experiences, de parkendivisie van het concern, en
 op 1 oktober 2026 bestond het resort 55 jaar.
+
+Tot begin jaren negentig heette het park officieel Walt Disney World Magic Kingdom. In 1994 doopte Disney het om tot Magic Kingdom Park, om het te onderscheiden van Disneyland in Californië. Volgens TEA kwam het park in 2019 op 20.963.000 bezoeken, meer dan in enig ander jaar sinds 2000. In 2020 was het vanwege de coronapandemie van half maart tot 11 juli dicht en kwam het op 6.941.000 bezoeken, 66,9 procent minder dan in 2019.
 
 Sindsdien is er maar één themaland bijgekomen. Het opende in 1988 als Mickey's
 Birthdayland, heette uiteindelijk Mickey's Toontown Fair en ging op 11 februari
@@ -178,7 +186,7 @@ Haunted Mansion meestal ver bovenaan tussen de klassiekers.
 
 ```
 
-## Parades, vuurwerk en shows
+## Shows en parades
 
 's Avonds sluit Magic Kingdom de dag af met Happily Ever After, een
 vuurwerkshow van 18 minuten met lasers en projecties op het kasteel en de huizen
@@ -194,8 +202,6 @@ kerstfeest vervalt het gewone vuurwerk en is er een eigen show alleen voor de
 gasten van het feest.
 
 ## Bij de opening of 's avonds
-
-Zo verlopen de acht langste rijen tussen 8 en 22 uur lokale tijd:
 
 ```hourly-profile-widget slug=magic-kingdom-park top=8
 
@@ -314,9 +320,6 @@ van de week die je speciaal moet uitkiezen, is er niet. Heeft een ander park er 
 Sinds de opening is Magic Kingdom negen keer tijdelijk dichtgegaan vanwege een
 orkaan, het laatst in oktober 2024 bij Milton.
 
-In de kalender hieronder zijn voor elke periode de rustigste dagen gemarkeerd, elke dag
-opnieuw berekend:
-
 ```best-days-widget slug=magic-kingdom-park
 
 ```
@@ -327,8 +330,7 @@ Op 38 avonden tussen 7 augustus en 31 oktober 2026 is er Mickey's Not-So-Scary
 Halloween Party, en volgens Disney zijn alle data uitverkocht. Op die avonden
 gaat het park voor gewone bezoekers al om 18 uur dicht, het feest duurt van 19
 uur tot middernacht. In oktober zijn dat nog de avonden van 6, 8, 9, 13, 15, 16,
-18, 22, 23, 25, 27, 29 en 31 oktober. Wat het feest te bieden heeft, staat
-in ons overzicht [Halloween in de VS](/blog/halloween-vs-pretparken-2026).
+18, 22, 23, 25, 27, 29 en 31 oktober. Ons overzicht [Halloween in de VS](/blog/halloween-vs-pretparken-2026) beschrijft het feest.
 
 Daarna komt Mickey's Very Merry Christmas Party, op 25 avonden van 8 november
 tot 22 december 2026, ook van 19 uur tot middernacht, en wie een kaartje heeft,
@@ -393,7 +395,7 @@ december 2026 gaat het park volgens Disney om 8 of 9 uur open en om 22 of 23 uur
 dicht, op feestavonden al om 18 uur.
 
 **Tickets.** Disney bepaalt de prijzen per datum, en ze staan in de kalender op
-[disneyworld.com](https://disneyworld.com/). Met de Park Hopper mag je na je
+[disneyworld.com](https://disneyworld.com/). Hoe meer dagen je koopt, hoe minder een dag kost, bij tien dagen vanaf 64 dollar per dag plus belasting, en die prijzen gelden vanaf tien jaar. Kinderen onder de drie hebben geen ticket nodig. De dagen hoeven niet aaneen te sluiten. Het jaarabonnement Disney Incredi-Pass kost 1.749 dollar, geldt vanaf drie jaar en heeft geen blokkadedagen. Andere jaarabonnementen verkoopt Disney alleen aan inwoners van Florida en leden van de Disney Vacation Club. Met de Park Hopper mag je na je
 eerste park op elk moment naar een van de andere drie, zolang daar plaats is.
 
 **Eten.** Het park heeft (stand 30 september 2026) 23 restaurants en
@@ -418,8 +420,7 @@ Lakeshore Lodge, te boeken vanaf 8 oktober 2026.
 ### Heeft het best bezochte park ook de langste rijen?
 
 Nee. In de vergelijking hierboven heeft Magic Kingdom de kortste typische
-wachttijd van de vier Disneyparken in Florida, EPCOT de langste. Veruit de langste rij in het park
-staat bij één attractie, TRON.
+wachttijd van de vier Disneyparken in Florida, EPCOT de langste.
 
 ### Welke attractie heeft in Magic Kingdom de langste rij?
 
@@ -469,16 +470,11 @@ Pass van Lightning Lane.
 
 ## Verder lezen
 
-Hoe het weer de komende dagen wordt, en wat dat betekent voor de
-buitenattracties:
-
 ```weather-widget slug=magic-kingdom-park
 
 ```
 
-Hetzelfde bedrijf runt ook het resort bij Parijs, en daar heeft het kleinere van
-de twee parken de langere rijen. Meer daarover staat in onze tekst over
-[Disneyland Paris](/blog/disneyland-paris-wachttijden-tips).
+Hetzelfde bedrijf runt ook [Disneyland Paris](/blog/disneyland-paris-wachttijden-tips), en daar heeft het kleinere van de twee parken de langere rijen.
 
 De week tussen Kerst en Nieuwjaar is de drukste week in onze jaartabel, en de Very Merry
 Christmas Party draait op 25 avonden: [Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
@@ -497,6 +493,9 @@ Christmas Party draait op 25 avonden: [Kerst en oud en nieuw in Orlando en Parij
 - Big Thunder Mountain 1980, Pirates of the Caribbean 1973, Peter Pan's Flight 1971: [Big Thunder Mountain Railroad op Wikipedia (EN)](https://en.wikipedia.org/wiki/Big_Thunder_Mountain_Railroad) · [Pirates of the Caribbean op Wikipedia (EN)](<https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean_(attraction)>) · [Peter Pan's Flight op Wikipedia (EN)](https://en.wikipedia.org/wiki/Peter_Pan%27s_Flight)
 - Lightning Lane en het einde van Genie+: [Lightning Lane op Wikipedia (EN)](https://en.wikipedia.org/wiki/Lightning_Lane)
 - Cinderella Castle (hoogte, bouwtijd, perspectief, suite): [Cinderella Castle op Wikipedia (EN)](https://en.wikipedia.org/wiki/Cinderella_Castle)
+- Grondaankoop, aankondiging in 1965, dood van Walt, Roy O. Disney, Reedy Creek, start van de bouw en inwijding: [Walt Disney World op Wikipedia (EN)](https://en.wikipedia.org/wiki/Walt_Disney_World) · [Walt Disney World Resort op Wikipedia (DE)](https://de.wikipedia.org/wiki/Walt_Disney_World_Resort)
+- Bezoeken in 2019 en 2020, sluiting in 2020: [TEA/AECOM Theme Index 2019](https://aecom.com/content/wp-content/uploads/2020/07/Theme-Index-2019.pdf) · [TEA/AECOM Theme Index 2020](https://www.aecom.com/wp-content/uploads/documents/reports/AECOM-Theme-Index-2020.pdf)
+- Tickets en jaarabonnement: [Theme Park Tickets (Disney)](https://disneyworld.disney.go.com/admission/tickets/theme-parks/) · [Annual Passes (Disney)](https://disneyworld.disney.go.com/passes/)
 - Bezoeken in 2024 en de eerste plaats: [TEA Global Experience Index 2024 (TEA)](https://www.teaconnect.org/tea-global-experience-indextm)
 - Technische gegevens van de achtbanen: [Space Mountain](https://rcdb.com/267.htm) · [Big Thunder Mountain Railroad](https://rcdb.com/273.htm) · [Seven Dwarfs Mine Train](https://rcdb.com/9720.htm) · [TRON Lightcycle / Run](https://rcdb.com/15286.htm) · [The Barnstormer](https://rcdb.com/274.htm) (allemaal Roller Coaster DataBase)
 - Minimale lengtes en valhoogte van Tiana's: attractiepagina's van Disney, zoals [TRON Lightcycle / Run](https://disneyworld.disney.go.com/attractions/magic-kingdom/tron-lightcycle-run/) en [Tiana's Bayou Adventure](https://disneyworld.disney.go.com/attractions/magic-kingdom/tianas-bayou-adventure/), Big Thunder met de nieuwe minimale lengte: [Disney Parks Blog van 3 mei 2026](https://disneyparksblog.com/wdw/new-magic-coming-to-big-thunder-mountain-railroad-at-disney-world/)

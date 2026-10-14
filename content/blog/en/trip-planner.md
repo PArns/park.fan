@@ -158,9 +158,9 @@ single ride shuts, so nothing is said about it.
 
 ## Two buttons sort the day
 
-Under the timeline sit two buttons. “Plan every headliner” pulls in the park’s
+The “Plan every headliner” button under the timeline pulls in the park’s
 big rides that aren’t in the day yet and sorts everything afterwards.
-“Optimise the day” adds nothing and only reorders what’s already there. The
+“Optimise the day” next to it adds nothing and only reorders what’s already there. The
 same calculation runs behind both. They’re two buttons because they’re two
 questions: fill my day, and is there a better order.
 
@@ -220,7 +220,7 @@ weather forecasts for years.) An average isn’t a ceiling, and on plenty of day
 the forecast lands further out. So the number stands there as a typical error
 and never as a range that already contains the right answer.
 
-**Showtimes are two different things.** What the park has published for today is
+**A showtime can be an estimate.** What the park has published for today is
 a statement. What we carried forward from the last matching weekday is a guess,
 and it’s drawn more softly: a tilde in front of the time, a dotted
 line, and the date the times came from. Showtimes for the Saturday after next
@@ -259,7 +259,7 @@ September. Whoever opens it gets their own copy in their planner, and whatever
 they change stays with them. That’s also how a plan gets from a computer onto a
 phone.
 
-Two more things that are easy to miss. On a computer a tab hangs at the edge of
+On a computer a tab hangs at the edge of
 the screen on every page and opens the planner, even with nothing planned yet;
 on a phone, since 24 September, a calendar icon in the top bar does that job.
 And on a desktop you can open a second column, which puts two days side by side. I
@@ -267,8 +267,7 @@ built it for exactly one sentence: “and what would that look like on Saturday�
 
 ## How to start
 
-The way in runs through four questions. Which park, which day, who’s coming,
-and which big rides should go in. The pictures below still show the first
+You start by answering four questions: which park, which day, who’s coming and which big rides should go in. The pictures below still show the first
 version, with three steps.
 
 The first is a search field, and there’s a small thing behind it that goes

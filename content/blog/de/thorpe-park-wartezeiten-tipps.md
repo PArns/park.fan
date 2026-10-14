@@ -78,7 +78,7 @@ Den Plan nannte der Park „Project Exodus“. Im Dezember 2021 zeigte er in ein
 
 ```
 
-Auf seiner Seite gibt der Park 995,4 Meter Streckenlänge an, die längste im Park, dazu 236 Fuß Höhe, 81 mph Höchstgeschwindigkeit, ein Looping von 168 Fuß (51 Meter), laut Park der höchste Europas, und ein Element, das der Park als Weltpremiere führt, einen Airtime-Hügel mit Außenneigung. Dazu gibt der Park 14,8 Sekunden schwerelose Momente an. Die Bahn hat zwei Inversionen, einen Barrel Roll im Abwärtsteil und einen Dive Loop mit kurzem Halt in der Luft. Eine Kette zieht den Zug den Lift hinauf. Der erste Abfall ist senkrecht, und der Zug dreht sich dabei um 180 Grad.
+Auf seiner Seite gibt der Park 995,4 Meter Streckenlänge an, die längste im Park, dazu 236 Fuß Höhe, 81 mph Höchstgeschwindigkeit, 14,8 Sekunden schwerelose Momente, ein Looping von 168 Fuß (51 Meter), laut Park der höchste Europas, und ein Element, das der Park als Weltpremiere führt, einen Airtime-Hügel mit Außenneigung. Die Bahn hat zwei Inversionen, einen Barrel Roll im Abwärtsteil und einen Dive Loop mit kurzem Halt in der Luft. Eine Kette zieht den Zug den Lift hinauf. Der erste Abfall ist senkrecht, und der Zug dreht sich dabei um 180 Grad.
 
 Die Mindestgröße liegt bei **1,30 Meter**, das ist die niedrigste unter den großen Achterbahnen des Parks. Wer eine Prothese trägt, darf nicht mitfahren, und für Menschen, die sich nicht selbstständig bewegen können, ist die Bahn nach einer Überprüfung des Parks nicht mehr geeignet. Für Hyperia und SAW gibt es eine Single-Rider-Warteschlange.
 
@@ -175,7 +175,7 @@ Den Fastrack verkauft der Park in vier Paketen, jeweils pro Person, und die Kart
 - **Gold** ab 115 Pfund: ganztägig an 14 Bahnen, ohne Hyperia.
 - **Platinum** ab 135 Pfund: ganztägig an 15 Bahnen, mit Hyperia.
 
-Dazu gibt es einen **One Shot Fastrack** ab 6 Pfund, den man erst im Park über die App oder einen QR-Code am Eingang einer Achterbahn kauft. Der Park verkauft Fastrack in begrenzter Zahl, und er schreibt, man solle vor dem Kauf prüfen, ob für den Tag auch Eintrittskarten da sind, weil beide getrennt verkauft werden. Die Ghost Train steht auf der Fastrack-Seite des Parks in drei Paketen, auf ihrer eigenen Seite steht, dass es dafür derzeit keinen Fastrack gibt.
+Dazu gibt es einen **One Shot Fastrack** ab 6 Pfund, den man erst im Park über die App oder einen QR-Code am Eingang einer Achterbahn kauft. Fastrack und Eintrittskarten verkauft der Park getrennt, Fastrack nur in begrenzter Zahl, und er schreibt, man solle vor dem Kauf prüfen, ob für den Tag auch Eintrittskarten da sind. Die Ghost Train steht auf der Fastrack-Seite des Parks in drei Paketen, auf ihrer eigenen Seite steht, dass es dafür derzeit keinen Fastrack gibt.
 
 Wer in den Thorpe Shark Cabins übernachtet, bekommt am zweiten Tag eine Stunde Fastrack am Anfang oder am Ende des Parktags. Während der Fright Nights gilt das nur für die erste Stunde.
 

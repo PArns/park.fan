@@ -163,9 +163,9 @@ le soir, donc rien n’est écrit là-dessus.
 
 ## Deux boutons trient la journée
 
-Sous la frise, deux boutons. « Planifier toutes les attractions phares » ajoute
+Le bouton « Planifier toutes les attractions phares », sous la frise, ajoute
 les grosses attractions du parc qui ne sont pas encore dans la journée, puis
-trie l’ensemble. « Optimiser la journée » n’ajoute rien et réorganise seulement
+trie l’ensemble. « Optimiser la journée », juste à côté, n’ajoute rien et réorganise seulement
 ce qui est déjà là. Derrière les deux tourne le même calcul. Ce sont deux
 boutons parce que ce sont deux questions : remplis-moi la journée, et l’ordre
 peut-il être meilleur.
@@ -234,7 +234,7 @@ années.) Une moyenne n’est pas un plafond, et bien des jours la prévision to
 plus loin. Le chiffre est donc présenté comme une erreur typique et jamais comme
 une fourchette qui contiendrait déjà la bonne réponse.
 
-**Les horaires de spectacle sont deux choses différentes.** Ce que le parc a
+**Un horaire de spectacle peut être une estimation.** Ce que le parc a
 publié pour aujourd’hui est une annonce. Ce que nous avons reporté depuis le
 dernier jour de semaine comparable est une supposition, et elle est dessinée plus
 doucement : un tilde devant l’heure, un trait pointillé et la date
@@ -279,7 +279,7 @@ septembre un lien de partage. Qui l’ouvre reçoit sa propre copie dans son
 planificateur, et ce qu’il y change reste chez lui. C’est aussi comme ça qu’un
 plan passe de l’ordinateur au téléphone.
 
-Deux choses encore, faciles à manquer. Sur ordinateur, un onglet est accroché au
+Sur ordinateur, un onglet est accroché au
 bord de l’écran sur chaque page et ouvre le planificateur, même quand rien n’est
 encore prévu ; sur téléphone, c’est depuis le 24 septembre une icône de calendrier
 dans la barre du haut. Et sur ordinateur, une deuxième colonne met deux
@@ -288,8 +288,7 @@ donnerait quoi samedi ».
 
 ## Par où commencer
 
-L’entrée passe par quatre questions. Quel parc, quel jour, qui vient, et
-quelles grosses attractions mettre dedans. Les images ci-dessous montrent encore
+Pour commencer, tu réponds à quatre questions : quel parc, quel jour, qui vient et quelles grosses attractions mettre dedans. Les images ci-dessous montrent encore
 la première version, en trois étapes.
 
 La première est un champ de recherche, et derrière se cache un détail qui part

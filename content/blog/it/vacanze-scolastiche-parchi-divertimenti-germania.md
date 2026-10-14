@@ -125,7 +125,7 @@ Nel 2026 le vacanze estive erano molto sfalsate. Renania-Palatinato, Assia e Saa
 cominciato a fine giugno, la Baviera ha chiuso per ultima il 14 settembre. Solo in una settimana,
 dal 3 al 7 agosto, tutti i 16 Länder erano in vacanza insieme.
 
-### Heide Park: servono sia la Bassa Sassonia sia la NRW
+### Heide Park
 
 La Bassa Sassonia era in vacanza dal 2 luglio al 12 agosto, la NRW dal 18 luglio. Nelle due
 settimane abbondanti in cui era in vacanza solo la Bassa Sassonia, all'[Heide Park](ref:heide-park)
@@ -149,10 +149,10 @@ qualsiasi.
 
 ```
 
-Come arrivare presto a Soltau lo trovi nella
-[guida all'Heide Park](/blog/heide-park-tempi-di-attesa-consigli).
+Nella [guida all'Heide Park](/blog/heide-park-tempi-di-attesa-consigli) trovi come arrivare presto
+a Soltau.
 
-### Phantasialand: pieno prima che la NRW vada in vacanza
+### Phantasialand
 
 A Brühl è andata al contrario. Dal 2 al 17 luglio, con le vacanze in Bassa Sassonia, Assia,
 Renania-Palatinato e diversi altri Länder e le scuole ancora aperte in NRW, il
@@ -169,7 +169,7 @@ Il Quick Pass, che in queste settimane può servirti, è spiegato nella
 [guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli), insieme all'attrazione da
 cui cominciare.
 
-### Movie Park: la prima settimana della NRW
+### Movie Park
 
 Per il [Movie Park](ref:movie-park-germany) di Bottrop vale quasi lo stesso che per Brühl, con +67%
 prima delle vacanze in NRW, +132% finché NRW e Bassa Sassonia erano in vacanza insieme e +43% con
@@ -179,7 +179,7 @@ della settimana prima, e i quattro giorni più pieni di tutto il periodo misurat
 quella sola settimana, da martedì a venerdì. Già la settimana dopo era finita, e il perché dal
 calendario non riesco a ricavarlo.
 
-### Plopsaland: Renania-Palatinato e NRW insieme
+### Plopsaland
 
 Al [Plopsaland](ref:plopsaland-deutschland) di Haßloch né la Renania-Palatinato né la NRW sono
 bastate da sole a riempire il parco. La Renania-Palatinato è stata il primo Land ad andare in
@@ -193,11 +193,11 @@ settimana prima, e fino alla fine delle vacanze in NRW il parco è rimasto il 23
 feriale senza vacanze.
 
 I suoi giorni più pieni, comunque, il Plopsaland non li ha avuti in estate. Quattro dei dieci
-giorni più pieni cadevano nella settimana dal 7 al 10 aprile, durante le vacanze di Pasqua. Che
-cosa fa il parco la sera in ottobre lo trovi
-nell'[articolo sulle Halloween Fright Nights](/news/plopsaland-deutschland-halloween-fright-nights-2026).
+giorni più pieni cadevano nella settimana dal 7 al 10 aprile, durante le vacanze di Pasqua. In
+ottobre, la sera, il parco ha le
+[Halloween Fright Nights](/news/plopsaland-deutschland-halloween-fright-nights-2026).
 
-### Europa-Park: reagisce meno di tutti
+### Europa-Park
 
 Nelle tre settimane con 14-16 Länder in vacanza l'[Europa-Park](ref:europa-park) stava il 37%
 sopra il riferimento, il sovrappiù più piccolo dei sei parchi. Dal 20 al 29 luglio, prima che
@@ -210,7 +210,7 @@ il Grand Est. Se siano le loro vacanze a fare la differenza non l'ho analizzato 
 più pieno di tutto il periodo misurato, a Rust, è stato lunedì 29 dicembre 2025, tra Natale e
 Capodanno, quando tutti i 16 Länder erano in vacanza.
 
-### Legoland: il più legato al sud
+### Legoland
 
 Il [Legoland](ref:legoland-deutschland) di Günzburg è il parco più legato alle vacanze del sud,
 anche se si riempie pure con quelle degli altri. Nelle vacanze di Pentecoste, che nel 2026 avevano
@@ -306,8 +306,8 @@ parco.
 Per il prossimo inverno i giorni di apertura sono già nel calendario. Tra il 19 dicembre 2026 e il
 12 gennaio 2027 il Phantasialand è aperto 21 giorni, l'Europa-Park 20, il Legoland 19, il
 Plopsaland 13 e il Movie Park 11. L'Heide Park chiude dopo il 31 ottobre. Le vacanze di Natale
-cominciano in dieci Länder il 23 dicembre e finiscono tra il 31 dicembre e il 12 gennaio. Che cosa
-offrono i parchi in inverno lo trovi nella
+cominciano in dieci Länder il 23 dicembre e finiscono tra il 31 dicembre e il 12 gennaio. Il programma
+invernale dei parchi è nella
 [guida ai parchi in inverno](/blog/parchi-divertimenti-inverno-2026).
 
 ## Le settimane di vacanza tranquille
@@ -422,9 +422,10 @@ dopo le vacanze erano pieni la metà di quelli tra Natale e Capodanno.
 Il ponte dopo l'Ascensione lo evito, la festa in sé non per forza, e un 1° maggio
 in un giorno feriale lo pianifico come un sabato.
 
-Quale mese è il più tranquillo in quale parco lo trovi nella pagina sul
-[periodo migliore per visitare](/periodo-migliore-per-visitare), e quale dei parchi fa per chi
-nella [classifica dei parchi divertimenti tedeschi](/blog/migliori-parchi-divertimenti-in-germania).
+I mesi più tranquilli di ogni parco sono nella pagina sul
+[periodo migliore per visitare](/periodo-migliore-per-visitare). Nella
+[classifica dei parchi divertimenti tedeschi](/blog/migliori-parchi-divertimenti-in-germania) trovi
+quale dei parchi fa per chi.
 
 — Patrick
 

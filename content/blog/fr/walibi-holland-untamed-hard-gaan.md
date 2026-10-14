@@ -67,7 +67,7 @@ aux Pays-Bas s’offre rarement, de son plein gré, une heure de polder en rab.
 
 Je pense que c’est une erreur, car Untamed vaut à lui seul le trajet.
 
-## D’abord la mer, puis les vaches, puis les coasters
+## L’histoire du parc
 
 Le **21 mai 1971**, la princesse Beatrix inaugurait sur ces terres neuves de
 polder la **Flevohof**, un parc agricole de 150 hectares. Les enfants des villes devaient y découvrir l’agriculture. Il y avait des étables, des serres, une
@@ -245,7 +245,7 @@ classerais nettement plus haut, parce qu’après sept ans sur l’ancienne char
 
 [Untamed](ref:walibi-holland/untamed?full)
 
-## YOY, Goliath et le reste
+## Les autres coasters
 
 En plus d’Untamed, le parc compte neuf autres coasters.
 
@@ -397,8 +397,6 @@ exploitables**, l’**attente typique à l’échelle du parc reste bien en dess
 de la demi-heure** (médiane). Le jour sur dix où il y a le plus de monde, elle vaut
 une fois et demie cela.
 
-Coaster par coaster, cela donne ceci :
-
 ```ride-waits-widget rides=walibi-holland/yoy-thrill|YOY THRILL|Rail unique, acier;walibi-holland/condor|Condor|Suspended, acier;walibi-holland/yoy-chill|YOY CHILL|Rail unique, acier;walibi-holland/lost-gravity|Lost Gravity|Big Dipper, acier;walibi-holland/untamed|UNTAMED|Hybride;walibi-holland/xpress-platform-13|Xpress: Platform 13|Launch, acier;walibi-holland/goliath|Goliath|Mega Coaster, acier columns=type,peak,days highlight=walibi-holland/untamed
 
 ```
@@ -407,14 +405,12 @@ La file la plus longue est celle de la nouveauté YOY THRILL. Untamed se situe e
 et Lost Gravity. Si tu files le matin directement dans la Wilderness, tu auras fait Untamed avant
 que la file de YOY n’ait vraiment avancé.
 
-Untamed face aux coasters des parcs voisins, sur tous les jours d’ouverture mesurés :
-
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;efteling/joris-en-de-draak|Joris en de Draak;phantasialand/black-mamba|Black Mamba;efteling/baron-1898|Baron 1898;walibi-holland/untamed|UNTAMED;walibi-belgium/kondaa|Kondaa;attractiepark-toverland/troy|Troy columns=park,peak highlight=walibi-holland/untamed
 
 ```
 
-Dans le temps où tu fais **une fois** la file de [Taron](ref:phantasialand/taron)
-à Phantasialand, tu fais Untamed à peu près deux fois. Dans cette sélection,
+Sur tous les jours d’ouverture mesurés, tu fais Untamed à peu près deux fois dans le temps où tu fais **une fois** la file de
+[Taron](ref:phantasialand/taron) à Phantasialand. Dans cette sélection,
 seul Troy à Toverland demande encore moins d’attente qu’Untamed.
 À l’échelle des parcs, le tableau est comparable : seul Toverland est encore
 plus bas, et Walibi Belgium est presque au niveau de Walibi Holland.
@@ -641,12 +637,15 @@ printemps, le parc ouvre du mercredi au dimanche ainsi que les jours fériés et
 de vacances, tous les jours de fin juin à fin août, en septembre presque
 uniquement le week-end et en octobre les week-ends et pendant les vacances d’automne, selon le calendrier 2026.
 
-**Par mois**, les attentes se distinguent à peine sur toute la saison. C’est un peu plus chargé en avril, quand Pâques, le Jour du Roi et le
+**Par mois**, calculées sur tous les jours d’ouverture mesurés, les attentes se distinguent à peine sur toute la saison. C’est un peu plus chargé en avril, quand Pâques, le Jour du Roi et le
 début des vacances de mai néerlandaises coïncident, et jusqu’ici les week-ends
 de septembre. Les vacances d’été ressortent à peine dans nos données.
 
-**Par jour de la semaine**, le samedi n’a rien de plus chargé que le reste de la
-semaine :
+```stats-widget slug=walibi-holland show=months
+
+```
+
+**Par jour de la semaine**, le samedi n’a rien de plus chargé que le reste de la semaine.
 
 ```stats-widget slug=walibi-holland show=weekdays
 
@@ -659,16 +658,7 @@ vacances. Qui a le choix prend un jour de semaine en juin, hors vacances : en
 La dernière semaine de juin, quand le parc ouvre déjà tous les jours, n’était
 en revanche pas plus calme que le plein été.
 
-Les prochains jours les plus calmes de notre calendrier d’affluence :
-
 ```best-days-widget slug=walibi-holland
-
-```
-
-Et voici comment l’affluence se répartit sur les mois, calculée sur tous les
-jours d’ouverture mesurés :
-
-```stats-widget slug=walibi-holland show=months
 
 ```
 
@@ -686,7 +676,7 @@ deux voies.
 chaleur de midi, **[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** se glisse entre deux. Dans la dernière heure, refais Untamed, car le
 parcours tourne sensiblement plus vite le soir que le matin.
 
-## Pratique : billets, accès, restauration
+## Pratique
 
 **Billets.** Walibi pratique des **tarifs dynamiques**, le billet journée coûte
 donc différemment selon la date.
@@ -740,8 +730,6 @@ Il y a des frites, des burgers, des pizzas et de la cantine correcte. Le restaur
 de l’eau, est l’adresse la plus agréable, ne serait-ce que pour
 la vue sur les deux voies. Mange tôt, vers onze heures et demie, ou tard à
 partir de quatorze heures trente.
-
-L’état actuel au parc :
 
 ```weather-widget slug=walibi-holland
 

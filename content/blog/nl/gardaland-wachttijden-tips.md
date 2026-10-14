@@ -2,6 +2,7 @@
 title: 'Gardaland: Oblivion, Raptor en Blue Tornado'
 translationKey: gardaland-guide
 date: '2026-10-07'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -56,15 +57,19 @@ De grote achtbanen van het park zijn [Oblivion](ref:gardaland/oblivion-the-black
 
 Livio Furini, een ondernemer uit Verona, wilde begin jaren zeventig een pretpark aan het Gardameer bouwen. Hij liet zich inspireren door het park Edenlandia in Napels en door een bezoek aan Disneyland in Californië. In 1971 kocht hij een terrein van 60.000 vierkante meter tussen Lazise en Castelnuovo del Garda, aan de oever van het meer.
 
-Op 19 juli 1975 ging het park open. Bij de opening waren er 21 attracties, waaronder een visvijver, en in het eerste jaar kwamen ongeveer 100.000 bezoekers. De entree was 1.750 lire. Van die tijd staat alleen de smalspoortrein TransGardalandExpress er nog, de enige attractie uit het openingsjaar. Furini zelf stapte in 1975 al op als bestuursvoorzitter, na ruzie met de andere vennoten.
+Op 19 juli 1975 ging het park open. Bij de opening waren er 21 attracties, waaronder een visvijver, en in het eerste jaar kwamen ongeveer 100.000 bezoekers. De entree was 1.750 lire, en de bouw had 200 miljoen lire gekost. Van die tijd staat alleen de smalspoortrein TransGardalandExpress er nog, de enige attractie uit het openingsjaar. Furini zelf stapte in 1975 al op als bestuursvoorzitter, na ruzie met de andere vennoten. De eerste directeur was Giorgio Tauber, die Gardaland tot 1995 leidde.
 
-In de jaren tachtig groeide het park snel. Fininvest, het mediabedrijf van Silvio Berlusconi, maakte er reclame voor op tv. Vanaf 1984 liep daar een amusementsshow van Paolo Bonolis, die tot 1992 bleef bestaan. In 1985 opende Magic Mountain, de eerste stalen achtbaan van Italië, samen met de wildwaterbaan Colorado Boat van Mack Rides. Uit dezelfde tijd stamt de mascotte Prezzemolo, een jonge draak die nog steeds overal in het park te zien is.
+In de jaren tachtig groeide het park snel. Fininvest, het mediabedrijf van Silvio Berlusconi, maakte er reclame voor op tv. Vanaf 1984 liep daar een amusementsshow van Paolo Bonolis, die tot 1992 bleef bestaan. In 1985 opende Magic Mountain, de eerste stalen achtbaan van Italië, samen met de wildwaterbaan Colorado Boat van Mack Rides. Van 1986 tot 1989 reed er ook de Prezzemolo Tour, een familieachtbaan van Zamperla. Uit dezelfde tijd stamt de mascotte Prezzemolo, een jonge draak die nog steeds overal in het park te zien is.
 
-In de jaren negentig kwamen de piratenwereld met de darkride I Corsari (1992), Blue Tornado en de vrijevaltoren Space Vertigo (allebei 1998) en de wildwaterbaan Jungle Rapids (1999) erbij. In 2003 volgde Fuga da Atlantide en in 2004 het Gardaland Hotel, het eerste themahotel van Italië. In oktober 2006 nam Merlin Entertainments het park over, in 2008 openden het SEA LIFE Aquarium en de achtbaan Mammut.
+In de jaren negentig kwamen de piratenwereld met de darkride I Corsari (1992), Blue Tornado en de vrijevaltoren Space Vertigo (allebei 1998) en de wildwaterbaan Jungle Rapids (1999) erbij. In 1997 opende het Palablù met 1.500 plaatsen, toen het grootste dolfinarium van Italië.
+
+Op het vroegere personeelsparkeerterrein verrees in 2001 het themagebied Fantasy Kingdom. In 2003 volgde Fuga da Atlantide en in 2004 het Gardaland Hotel, het eerste themahotel van Italië. In 2005 opende Sequoia Adventure, het prototype van de Screaming Squirrel van S&S, 30 meter hoog met drie inversies. Hij viel vaak uit en heette vanaf 2019 Sequoia Magic Loop. In juni 2005 zette het tijdschrift Forbes Gardaland op de vijfde plaats van de tien pretparken met de hoogste omzet ter wereld.
+
+In oktober 2006 nam Merlin Entertainments het park over. Verkopers waren de investeringsmaatschappij Investindustrial en Aletti Merchant, een zakenbank van de bankgroep BPVN, die samen ongeveer 90 procent hadden. De koopprijs lag volgens persberichten rond de 500 miljoen euro. In 2008 openden het SEA LIFE Aquarium en de achtbaan Mammut.
 
 Sindsdien bouwt Merlin het park uit tot resort: Raptor (2011), Oblivion (28 maart 2015), het Adventure Hotel (2016), het Magic Hotel (2019) en het LEGOLAND Water Park (2021). De pandemie zorgde een jaar lang voor een onderbreking. Op 13 juni 2020 was Gardaland het eerste Italiaanse pretpark dat weer openging, met maximaal 10.000 gasten per dag.
 
-Sinds 2022 staan er attracties bij de film “Jumanji”. In 2024 verving de drop-en-twisttoren Wolf Legend de achtbaan Sequoia Magic Loop, die in het najaar van 2023 was afgebroken. In 2025 vierde het park zijn 50e verjaardag met Animal Treasure Island, een water dark ride op 6.000 vierkante meter waarin Merlin ongeveer tien miljoen euro heeft gestoken.
+Sinds 2022 staan er attracties bij de film “Jumanji”. In 2024 verving de drop-en-twisttoren Wolf Legend de achtbaan Sequoia Magic Loop, die in 2023 was afgebroken. In 2025 vierde het park zijn 50e verjaardag met Animal Treasure Island, een water dark ride op 6.000 vierkante meter waarin Merlin ongeveer tien miljoen euro heeft gestoken.
 
 ## De achtbanen
 
@@ -77,8 +82,9 @@ De technische gegevens komen van het park en uit de Roller Coaster DataBase.
 | Raptor       | Wing coaster, Bolliger & Mabillard | 2011    | 33 m   | 90 km/u  | 3         | 140 cm          |
 | Shaman       | Double loop corkscrew, Vekoma      | 1985    | 30 m   | 70 km/u  | 4         | 120 cm          |
 | Mammut       | Mine train, Vekoma                 | 2008    | 14 m   | 50 km/u  | 0         | 110 cm          |
+| Dragon Rush  | Spinning coaster, Fabbri           | 2016    | 14 m   | 40 km/u  | 0         | 110 cm          |
 
-### Oblivion: The Black Hole
+### Oblivion
 
 [Oblivion](ref:gardaland/oblivion-the-black-hole?full)
 
@@ -86,23 +92,23 @@ Op het hoogste punt hangt de trein even over de rand, en dan valt hij onder een 
 
 Oblivion opende op 28 maart 2015, bij de 40e verjaardag van het park.
 
-### Raptor: de eerste wing coaster
+### Raptor
 
 Raptor is het prototype van de wing coasters. Bolliger & Mabillard opende de baan op 1 april 2011. De stoelen hangen links en rechts van het spoor, vier naast elkaar, en boven of onder je zit niets. De drie inversies zijn een kurkentrekker, een zero-g roll en een inline twist.
 
-### Blue Tornado en Shaman: Vekoma, 1998 en 1985
+### Blue Tornado en Shaman
 
-Blue Tornado is een suspended looping coaster in de standaardlengte van 765 meter met een helix. De trein hangt onder het spoor, er zijn vijf inversies en de rit duurt 1:42 minuten. Een trein biedt plaats aan 20 passagiers en volgens de RCDB haalt de baan 1.500 personen per uur. Oblivion heeft drie treinen met elk 18 plaatsen.
+Blue Tornado is een suspended looping coaster in de standaardlengte van 765 meter met een helix. De trein hangt onder het spoor, er zijn vijf inversies en de rit duurt 1:42 minuten. Een trein biedt plaats aan 20 passagiers en volgens de RCDB haalt de baan 1.500 personen per uur.
 
-Shaman is de oudste achtbaan van het park. Hij opende in 1985 onder de naam Magic Mountain, toen als eerste stalen achtbaan van Italië. In 2008 kreeg hij nieuwe onderstellen van Vekoma en voor 2009 nieuwe treinkoppen. In de winter van 2020/21 is een groot deel van het spoor vervangen, alleen het station, de lifthill en de eerste val bleven staan. De trein rijdt twee loopings en een dubbele kurkentrekker, de rit duurt twee minuten. In 2017 kon je de rit met VR-brillen maken. Volgens de Duitse Wikipedia zorgde het laden daarvoor voor wachttijd en na één seizoen is het opgegeven.
+Shaman is de oudste achtbaan van het park. Hij opende in 1985 onder de naam Magic Mountain. In 2008 kreeg hij nieuwe onderstellen van Vekoma en voor 2009 nieuwe treinkoppen. In de winter van 2020/21 is een groot deel van het spoor vervangen, alleen het station, de lifthill en de eerste val bleven staan. De trein rijdt twee loopings en een dubbele kurkentrekker, de rit duurt twee minuten. In 2017 kon je de rit met VR-brillen maken. Volgens de Duitse Wikipedia zorgde het laden daarvoor voor wachttijd en na één seizoen is het opgegeven.
 
-### Mammut, Dragon Rush en Ortobruco Tour
+### De familieachtbanen
 
 [Mammut](ref:gardaland/mammut) is een mine train van Vekoma met drie lifthills (12, 13 en 14 meter) en een ritduur van 2:45 minuten. Bij de ingang staat het standbeeld van een mammoet, het thema is arctisch. Een trein heeft 36 plaatsen.
 
-[Dragon Rush](ref:gardaland/dragon-rush) is een spinning coaster van de Fabbri Group, in 2016 geopend in het toenmalige Kung Fu Panda-gebied. In 2025 is de baan omgebouwd, nadat de DreamWorks-licentie voor Kung Fu Panda was afgelopen. Het gebied heet nu Dragon Empire. Dragon Rush rijdt vanaf 110 centimeter en heeft volgens onze metingen de langste wachtrij van het park.
+[Dragon Rush](ref:gardaland/dragon-rush) is een spinning coaster van de Fabbri Group. Hij opende op 14 mei 2016 als Kung Fu Panda Master in het toenmalige Kung Fu Panda-gebied en heeft zes wagens voor elk vier personen. In 2025 is de baan omgebouwd, nadat de DreamWorks-licentie voor Kung Fu Panda was afgelopen. Het gebied heet nu Dragon Empire. Dragon Rush heeft volgens onze metingen de langste wachtrij van het park.
 
-[Ortobruco Tour](ref:gardaland/ortobruco-tour) is een rupsbaan van Pinfari voor kinderen vanaf 100 centimeter. Volgens de Roller Coaster DataBase heeft hij zeven booster-lifthills en bieden de treinen plaats aan 28 personen.
+[Ortobruco Tour](ref:gardaland/ortobruco-tour) is een rupsbaan van Pinfari voor kinderen vanaf 100 centimeter. Hij rijdt sinds 1990 en heeft zijn huidige baan sinds 1993. Volgens de Roller Coaster DataBase heeft hij zeven booster-lifthills en bieden de treinen plaats aan 28 personen.
 
 ## Water, darkrides en torens
 
@@ -130,13 +136,9 @@ Tot 1 november loopt het Halloween-programma. “Halloween Manor” duurt 25 min
 
 ## Wachttijden bij de attracties
 
-In de gemeten wachttijden van de afgelopen twaalf maanden ligt de mediaan bij de meeste attracties tussen tien en 25 minuten.
-
 ```ride-waits-widget park=gardaland top=8 columns=land,peak,days
 
 ```
-
-Bovenaan de tabel staat Dragon Rush, de spinning coaster voor het gezin, gevolgd door Jumanji – The Adventure. Blue Tornado staat in het bovenste derde deel, Oblivion en Raptor onderaan. Die drie rijden vanaf 140 centimeter, Dragon Rush en Jumanji vanaf 110 en 107 centimeter.
 
 ```stats-widget slug=gardaland show=attractions
 
@@ -150,9 +152,7 @@ In het hoogseizoen opent het park om 10 uur. Bij Blue Tornado, Mammut, Raptor en
 
 ```
 
-Voor Blue Tornado, Mammut, Raptor en Fuga da Atlantide zijn de eerste 15 minuten na opening het beste moment. Oblivion volgt na ongeveer 30 minuten. Wolf Legend loont na een uur, Jumanji – The Adventure na een uur en 15 minuten, Shaman en Colorado Boat na anderhalf uur. Bij Dragon Rush is de wachtrij twee uur na opening het kortst, dus rond het middaguur.
-
-Wie op het beste moment instapt, staat bij de meeste attracties 20 tot 45 minuten korter in de rij dan op het piekmoment.
+Wie op het beste moment instapt, staat bij de meeste attracties ongeveer een half uur korter in de rij dan op het piekmoment.
 
 ## Wanneer je het best gaat
 
@@ -186,11 +186,11 @@ Stel dat je om 10 uur bij de ingang staat en overal in mag, je bent dus minstens
 
 Eerst Blue Tornado, Mammut en Raptor, in het eerste kwartier, zolang de wachtrijen daar nog kort zijn, daarna Fuga da Atlantide. Oblivion pak je rond half elf, voordat daar de wachtrij oploopt.
 
-Om elf uur hebben de vier vroege attracties hun piek. Dan is het tijd voor Wolf Legend, een kwartier later voor Jumanji – The Adventure. Als het warm is, zijn Space Vertigo en Jungle Rapids aan de beurt, of het SEA LIFE Aquarium (eigen ticket). Bij Shaman en Colorado Boat is de wachtrij een half uur later het kortst, bij Dragon Rush rond twaalf uur, en daarna blijft die rij tot de avond ongeveer even lang. Begin van de middag zijn de wachtrijen bij Blue Tornado, Mammut, Raptor en Fuga da Atlantide weer korter dan om elf uur, genoeg voor een tweede rit.
+Om elf uur is het tijd voor Wolf Legend, een kwartier later voor Jumanji – The Adventure. Als het warm is, zijn Space Vertigo en Jungle Rapids aan de beurt, of het SEA LIFE Aquarium (eigen ticket). Bij Shaman en Colorado Boat is de wachtrij een half uur later het kortst, bij Dragon Rush rond twaalf uur, en daarna blijft die rij tot de avond ongeveer even lang. Begin van de middag zijn de wachtrijen bij Blue Tornado, Mammut, Raptor en Fuga da Atlantide weer korter dan om elf uur, genoeg voor een tweede rit.
 
 Twee dagen heb je nodig als je kinderen bij je hebt die de kleinere gebieden helemaal willen doen, of als je ook het aquarium en het LEGOLAND Water Park meepakt.
 
-## Gardaland Express: de fast track
+## Gardaland Express
 
 Gardaland noemt de fast pass Gardaland Express. Hij geldt bovenop de entree en geeft je bij de inbegrepen attracties een eigen toegang, met een kortere wachttijd. Hij geldt alleen op de dag van je bezoek en is niet overdraagbaar.
 
@@ -198,7 +198,7 @@ Gardaland noemt de fast pass Gardaland Express. Hij geldt bovenop de entree en g
 
 De reservering loopt via de app “Gardaland Express”. Het voucher of ticket importeer je daar met een QR-code, daarna zie je de geschatte wachttijden en sluit je aan bij een attractie. Ongeveer vijf minuten voor de rit komt er een melding (“Je bent bijna aan de beurt”), dan verschijnt een QR-code die zo'n vijf minuten geldig blijft. Je koopt de pas online of bij de Express Points in het park, het aantal passen per dag is beperkt.
 
-## Tickets, prijzen en seizoenskaart
+## Tickets en seizoenskaart
 
 De dagentree begint bij 32 euro per volwassene als je vroeg online boekt. Het ongedateerde 1-dagenticket voor het park, dat tussen 28 maart en 1 november 2026 op een willekeurige dag geldt, kost online vanaf 59 euro. Tijdens Magic Halloween is er de actie “One more day”: een 1-dagenticket vanaf 44 euro, met een tweede parkdag gratis die je tot 1 november kunt inwisselen. Het aanbod eindigt op 29 oktober. Het combiticket “2 dagen park en 1 dag aquarium” kost online vanaf 59 euro. De kassa's sluiten twee uur voor sluitingstijd van het park.
 
@@ -235,7 +235,7 @@ Het SEA LIFE Aquarium is het eerste volledig gethematiseerde aquarium van Itali�
 
 ## Wat nieuw is en wat dicht is
 
-In 2025 kwamen er vijf nieuwe dingen: Animal Treasure Island, het omgebouwde Dragon Empire, de liveshow “Bim Bum Bam Live” met de pop Uan, de multimediashow “A.I. – The Future is Here” en de 4D-bioscoop “Prezzemolo e l'Enigma Svelato”. I Corsari is daarvoor in 2024 gesloten, en Wolf Legend staat sinds 2024 op de plek van de achtbaan Sequoia Magic Loop.
+In 2025 kwamen er vijf nieuwe dingen: Animal Treasure Island, het omgebouwde Dragon Empire, de liveshow “Bim Bum Bam Live” met de pop Uan, de multimediashow “A.I. – The Future is Here” en de 4D-bioscoop “Prezzemolo e l'Enigma Svelato”. I Corsari is daarvoor in 2024 gesloten.
 
 In de winter volgt Magic Winter van 5 december tot 6 januari 2027. Van 4 tot en met 8 december loopt in het Gardaland Theatre de goochelshow Supermagic Elementi met acht voorstellingen, duur ongeveer twee uur, tickets vanaf 24 euro. Wie een seizoenskaart heeft, krijgt voor zichzelf en maximaal negen begeleiders een ticket met korting.
 
@@ -245,7 +245,7 @@ Over nieuwe attracties voor 2027 heeft Gardaland nog niets gepubliceerd.
 
 ### Hoe lang zijn de wachttijden in Gardaland?
 
-Bij de meeste attracties ligt de mediaan tussen tien en 25 minuten, gemeten over de afgelopen twaalf maanden. Op zaterdag is het het drukst, op woensdag het leegst. De piek van de grote achtbanen valt kort na opening, daarna zakt hij. De actuele wachttijd van elke attractie staat op de parkpagina.
+Bij de meeste attracties blijft de wachtrij kort, gemeten over de afgelopen twaalf maanden. Op zaterdag is het het drukst, op woensdag het leegst. De piek van de grote achtbanen valt kort na opening, daarna zakt hij. De actuele wachttijd van elke attractie staat op de parkpagina.
 
 ### Wanneer is het in Gardaland het rustigst?
 
@@ -284,8 +284,9 @@ Met de trein naar station Peschiera del Garda, vanaf daar rijdt elke 30 minuten 
 ### Bronnen en meer lezen
 
 - Park, resort, geschiedenis, hotels, tickets, openingstijden (officieel): [Gardaland Resort, Was ist das Gardaland Resort](https://www.gardaland.it/de/ueber-uns/was-ist-das-gardaland-resort/) · [Eine Erfolgsgeschichte](https://www.gardaland.it/de/ueber-uns/eine-erfolgsgeschichte/) · [Tickets Gardaland Park](https://www.gardaland.it/de/tickets-saisonkarten/tickets/gardaland-park/) · [Zweiter Tag gratis](https://www.gardaland.it/de/zweiter-tag-gratis/) · [Saisonkarten 2026](https://www.gardaland.it/de/tickets-saisonkarten/abonnements-und-mitgliedschaft-2026/) · [Gardaland Express](https://www.gardaland.it/de/tickets-saisonkarten/extra/gardaland-express/) · [Parkplatz](https://www.gardaland.it/de/tickets-saisonkarten/extra/parkplatz-eintritt/) · [Anreise und Parken](https://www.gardaland.it/de/nuetzliche-informationen/besuch-planen/anreise-parken/) · [Dienstleistungen für Gäste](https://www.gardaland.it/de/nuetzliche-informationen/nuetzliche-dienstleistungen/dienstleistungen-fuer-die-gaeste/) · [Für die Kleinen](https://www.gardaland.it/de/entdecke-gardaland/fuer-die-kleinen/) · [Unsere Hotels](https://www.gardaland.it/de/unsere-hotels/) · [Kinder gratis bei Hotelbuchung](https://www.gardaland.it/de/kinder-eintritt-gratis/) · [LEGOLAND Water Park](https://www.gardaland.it/de/entdecke-gardaland/legoland-water-park/) · [Magic Winter](https://www.gardaland.it/de/entdecke-gardaland/events-und-sonderoeffnungszeiten/magic-winter/) · [Supermagic Elementi](https://www.gardaland.it/de/entdecke-gardaland/events-und-sonderoeffnungszeiten/supermagic-elementi/)
-- Geschiedenis, attracties, bezoekersaantallen: [Gardaland op de Duitse Wikipedia](https://de.wikipedia.org/wiki/Gardaland) · [Gardaland op de Engelse Wikipedia](https://en.wikipedia.org/wiki/Gardaland)
-- Technische gegevens van de achtbanen: [Blue Tornado](https://rcdb.com/961.htm) · [Shaman](https://rcdb.com/962.htm) · [Ortobruco Tour](https://rcdb.com/963.htm) · [Mammut](https://rcdb.com/3689.htm) · [Raptor](https://rcdb.com/9309.htm) · [Oblivion](https://rcdb.com/12050.htm)
+- Geschiedenis, attracties, bezoekersaantallen: [Gardaland op de Duitse Wikipedia](https://de.wikipedia.org/wiki/Gardaland) · [Gardaland op de Engelse Wikipedia](https://en.wikipedia.org/wiki/Gardaland) · [Gardaland op de Italiaanse Wikipedia](https://it.wikipedia.org/wiki/Gardaland)
+- Technische gegevens van de achtbanen: [Blue Tornado](https://rcdb.com/961.htm) · [Shaman](https://rcdb.com/962.htm) · [Ortobruco Tour](https://rcdb.com/963.htm) · [Mammut](https://rcdb.com/3689.htm) · [Raptor](https://rcdb.com/9309.htm) · [Oblivion](https://rcdb.com/12050.htm) · [Dragon Rush](https://rcdb.com/13726.htm) · [Sequoia Magic Loop](https://rcdb.com/2942.htm) · [Prezzemolo Tour](https://rcdb.com/4503.htm)
 - Bezoekersaantal 2024 (Themed Entertainment Association): [TEA 2024 Index, samenvatting (Interpark)](https://interpark.co.uk/latest-news/tea-2024-index-releases-visitor-attendance-report/)
+- Overname door Merlin in 2006: [“Italy: Blackstone to buy Gardaland from Investindustrial” (Unquote)](https://www.unquote.com/unquote/news/92987/italy-blackstone-to-buy-gardaland-from-investindustrial) · [“Merlin Entertainments acquires Gardaland” (Attractions Management)](https://www.attractionsmanagement.com/attractions-news/Merlin-Entertainments-acquires-Gardaland/18184)
 - Animal Treasure Island: [“Gardaland inaugura Animal Treasure Island” (Quality Travel)](https://www.qualitytravel.it/gardaland-inaugura-animal-treasure-island-la-water-dark-ride-piu-lunga-deuropa/165891/amp)
 - Minimale lengtes, openingstijden en wachttijdgegevens: eigen metingen van oktober 2025 tot oktober 2026, [Gardaland op park.fan](ref:gardaland)

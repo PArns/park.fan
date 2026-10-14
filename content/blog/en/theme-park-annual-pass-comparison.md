@@ -2,6 +2,7 @@
 title: 'Theme park annual passes: how many visits they take to pay off'
 translationKey: annual-pass-comparison-theme-parks
 date: '2026-10-06'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -79,10 +80,12 @@ I haven't counted the discount on food and souvenirs, because it depends on what
 
 All passes are tied to a person. At Toverland the terms say so outright: one pass per person, not transferable.
 
-## Efteling: Classic, Plus and Premium
+## Efteling's three annual passes
 
 Efteling has sold three annual passes since 11 June 2024, differing in the number of days they are
-valid. A discount for visitors aged 65 and over no longer exists.
+valid. A discount for visitors aged 65 and over no longer exists, and existing 65+ passes ran until the end of their minimum term.
+
+Efteling surveyed the holders in 2023, and according to the park most were very satisfied but wanted more choice. From 15 April to 10 June 2024 the park sold no new passes, only renewals. In the Netherlands the number of pass holders had already risen sharply in 2023, Efteling writes in its review of the year.
 
 | Tier    | Annual price | Monthly | Access            | Parking discount | Food, drinks, souvenirs | Friend tickets at half price |
 | ------- | ------------ | ------- | ----------------- | ---------------- | ----------------------- | ---------------------------- |
@@ -95,6 +98,8 @@ the park and free or reduced entry to partner parks and zoos. Premium adds a kee
 event for pass holders only. Paying monthly commits you for at least twelve months and costs more.
 Twelve months of Classic come to €252, €12 more than paying for the year up front. For Plus and Premium
 it's €32 more each. You set the start date of the pass when you buy, up to one month ahead.
+
+Visitors with a disability get €50 off any tier when paying for the year, or €5 a month. Children up to and including three get the pass free. On your birthday you get a pastry with a drink you buy.
 
 ### The blocked days in the park's calendar
 
@@ -137,15 +142,15 @@ The step from Classic to Plus costs €70, the step from Plus to Premium €90. 
 
 By [our measurements](/blog/efteling-disney-of-the-netherlands), waits at Efteling are only a little longer on Saturdays than on other days. Classic does block mostly weekends, but also 26 days from Monday to Friday. If you can come on weekdays, you lose little with Classic.
 
-The park is a good one and a half to two hours' drive from Düsseldorf, a good two from Cologne and the Ruhr. If you go three times a year, stick with day tickets.
-
-You can check the quiet days in the widget against the list of blocked days above.
+The park is a good one and a half to two hours' drive from Düsseldorf, a good two from Cologne and the Ruhr.
 
 ```best-days-widget slug=efteling
 
 ```
 
-## Europa-Park: ResortPass Silver and Gold
+## ResortPass Silver and Gold at Europa-Park
+
+Before the ResortPass the park sold the Europa-Park Club card. In March 2020, when the park had to close because of Covid, it took the card off sale until further notice. It announced the ResortPass on 8 March 2022, and the pass went on sale in the Mack International ticket shop in mid-May 2022. In March 2023 Silver cost €240 for adults and Gold €420, and both were sold out, according to the Stuttgarter Zeitung. A spokeswoman told the paper at the time that new allotments would go on sale after the first expiry dates in May and June 2023. Since then Silver has gone up by €85 and Gold by €75.
 
 Europa-Park sells the ResortPass in two tiers, both valid for one year:
 
@@ -160,7 +165,9 @@ platform and free or reduced entry to partner parks. A ParkingPass costs €39 e
 €10 parking fee per day it's cheaper from the fourth visit by car. The printed card costs €5 extra on
 Silver and comes with Gold.
 
-At the moment no new pass can be bought. The park writes on its page that the allotment is used up and the ResortPass is unavailable until further notice, also by phone, by e-mail or on site. Existing holders are told about renewal before their pass ends. The park hasn't said when sales will reopen.
+Once during the term, both tiers give free entry to Efteling, Pleasure Beach Resort in England, Liseberg in Sweden, PortAventura Park and Isla Mágica in Spain, Emerald Park in Ireland and Le Pal in France. The eight parks and pools of the Plopsa group, Plopsaland Deutschland among them, give a one-off 40% off the regular admission at the ticket desk.
+
+At the moment no new pass can be bought. The park writes on its page that the allotment is used up and the ResortPass is unavailable until further notice, also by phone, by e-mail or on site. Holders get a message 30 days before expiry and can renew online in the ResortPass portal during the last 14 days of the term, at the price that applies then. An expired pass can be reactivated within two years if there is allotment left. You can only switch from Silver to Gold when renewing, and only if Gold is available. The park hasn't said when sales will reopen.
 
 A day ticket costs €67 to €76 for adults and €56.50 to €65 for children and seniors.
 
@@ -189,7 +196,7 @@ or Thursday in May or June and fullest on Saturday.
 
 ```
 
-## Toverland: Magic Member
+## Magic Member at Toverland
 
 Toverland in Sevenum has the cheapest annual pass of the four, Magic Member.
 
@@ -200,10 +207,12 @@ Toverland in Sevenum has the cheapest annual pass of the four, Magic Member.
 | Seniors 60+                 | €130         | €11.50                          | €50              | €4.50             |
 
 Paying monthly comes to €168 instead of €160. Included is entry on all opening days, 5% off food, drinks
-and souvenirs at the permanent outlets, discounts at other parks and zoos and birthday offers. Entry to
+and souvenirs at the permanent outlets, discounts at other parks and zoos and a birthday pastry with a drink you buy. Entry to
 the Halloween Nights comes at no extra charge, while the Haunted Experiences cost extra. A child under
 90 cm gets a free pass if a parent holds an annual pass. If the child outgrows the height class, the
 difference is payable for each remaining month.
+
+When the pass is bought on a visit day and paid for the whole year, the park refunds that day's admission. The partner list, as of March 2026, includes Walibi Holland at 20% except during Halloween Fright Nights, Attractiepark Hellendoorn at 35%, the Plopsa parks at 40% for visitors from 1 m, Bobbejaanland at 20% and Freizeit-Land Geiselwind at 40%.
 
 ### The terms
 
@@ -222,7 +231,7 @@ Further points from the terms:
 
 ### What pays off
 
-In the ticket calendar the base rate for adults and children 140 cm and over lies between €37 and €49.50.
+The prices below are the base rate in the ticket calendar for adults and children 140 cm and over.
 Anyone who books online at least seven days ahead gets a €7 early-bird discount, a shorter lead time gets
 €2. Toverland has four price levels, Bronze, Silver, Gold and Platinum, set by the opening hours and
 programme of the day.
@@ -247,14 +256,14 @@ By [our measurements](/blog/toverland-troy-wait-times-tips), weekdays at Toverla
 
 ```
 
-## Phantasialand: no annual pass
+## Phantasialand without an annual pass
 
 Phantasialand took its Club card off sale during the pandemic, and the last cards ran out in summer 2022.
 Neither an annual pass nor a Club card comes up in the ticket shop's FAQ, and tickets are only sold
 dated and online. Why it stayed that way and what fans did about it is in our
 [Phantasialand guide](/blog/phantasialand-wait-times-tips).
 
-In the ticket shop's October calendar a ticket for adults from 12 years costs between €44 and €78. The gap between the cheapest and the dearest day is €34, which is 77% on top of the cheap day. Three visits a year cost between €132 and €234. The difference comes entirely from how early you book and which day you pick. At Phantasialand a Saturday is noticeably fuller than a Tuesday.
+In the ticket shop's October calendar a ticket for adults from 12 years costs between €44 and €78. The gap between the cheapest and the dearest day is €34, which is 77% on top of the cheap day. Three visits a year cost between €132 and €234. At Phantasialand a Saturday is noticeably fuller than a Tuesday.
 
 ```best-days-widget slug=phantasialand
 
@@ -262,9 +271,7 @@ In the ticket shop's October calendar a ticket for adults from 12 years costs be
 
 ## Blocked days against full days
 
-At Europa-Park Saturday is the fullest day, and the park sets in the portal whether Silver is valid on Saturdays.
-
-The widget sets the quietest weekday of the four parks side by side.
+Europa-Park sets in the portal whether Silver is valid on Saturdays.
 
 ```park-comparison-widget slugs=efteling,europa-park,attractiepark-toverland,phantasialand show=quietest
 
@@ -281,7 +288,9 @@ four visits none of the three tiers pays off.
 
 ## When to buy
 
-An annual pass runs for one year from purchase or from its start date. At Efteling you set the start and can place it up to one month ahead. If you start in October, you begin in the middle of the blocked weeks. A Classic from 10 October 2026 has 44 blocked days by the end of the year. The calendar year 2027 has 68 in all.
+An annual pass runs for one year from purchase or from its start date. At Efteling you set the start and can place it up to one month ahead. If you start in October, you begin in the middle of the blocked weeks.
+
+For the Europa-Park ResortPass the start date must fall within 14 days of purchase and can't be changed afterwards.
 
 At Efteling the 2026 prices stand until the park names new ones. At Toverland the park can only change the price of a pass when it expires.
 
@@ -299,8 +308,7 @@ According to the park's calendar the Classic is blocked on 68 days in 2027, Plus
 
 ### Can you still buy the Europa-Park ResortPass?
 
-Not at the moment. Europa-Park says on its website that the allotment is used up and the ResortPass is
-unavailable until further notice, also by phone, by e-mail or on site.
+Not at the moment. According to Europa-Park the allotment is used up.
 
 ### Does Toverland have blocked days for the annual pass?
 
@@ -325,6 +333,11 @@ No. The Club card ended during the pandemic, and the last cards ran out in summe
 - Phantasialand, ticket calendar: [shop.phantasialand.de](https://shop.phantasialand.de/en/products/theme-park-tickets)
 - Phantasialand, ticket shop FAQ: [shop.phantasialand.de](https://shop.phantasialand.de/en/faq)
 - End of the Club card in 2022: [Parkerlebnis](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html)
+- Efteling, visitor year 2023 and pass holders: [efteling.com](https://www.efteling.com/nl/pers/556-miljoen-bezoekers-voor-de-efteling-in-2023/)
+- Europa-Park, ResortPass announcement of 8 March 2022: [blog.europapark.de](https://blog.europapark.de/europa-park/resortpass-die-neue-jahreskarte-des-europa-park-erlebnis-resorts/)
+- Europa-Park, ResortPass FAQ: [europapark.de](https://www.europapark.de/en/resortpass/faq)
+- Stuttgarter Zeitung, ResortPass sold out, 17 March 2023: [stuttgarter-zeitung.de](https://www.stuttgarter-zeitung.de/lokales/baden-wuerttemberg/jahreskarten-ausverkauft-besucher-kritisieren-resortpass-das-sagt-der-europa-park-dazu-79025022.html)
+- Toverland, pass benefits and partner parks: [toverland.com](https://toverland.com/en/annualpasses/pass-benefits)
 
 More on the individual parks is in our guides to [Efteling](/blog/efteling-disney-of-the-netherlands),
 [Europa-Park](/blog/europa-park-wait-times-tips), [Toverland](/blog/toverland-troy-wait-times-tips)

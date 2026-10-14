@@ -78,7 +78,7 @@ Le parc appelait le projet « Project Exodus ». En décembre 2021, il a prés
 
 ```
 
-Sur son site, le parc indique 995,4 mètres de parcours, le plus long du parc, 236 pieds de hauteur, une vitesse maximale de 81 mph, un looping de 168 pieds (51 mètres), le plus haut d’Europe d’après le parc, et un élément qu’il présente comme une première mondiale, une bosse d’airtime inclinée vers l’extérieur. Le parc annonce en outre 14,8 secondes d’apesanteur. Le circuit compte deux inversions, un barrel roll dans la descente et un dive loop avec un bref arrêt en l’air. Une chaîne tire le train jusqu’en haut du lift. La première chute est verticale, et le train pivote de 180 degrés pendant qu’il tombe.
+Sur son site, le parc indique 995,4 mètres de parcours, le plus long du parc, 236 pieds de hauteur, une vitesse maximale de 81 mph, 14,8 secondes d’apesanteur, un looping de 168 pieds (51 mètres), le plus haut d’Europe d’après le parc, et un élément qu’il présente comme une première mondiale, une bosse d’airtime inclinée vers l’extérieur. Le circuit compte deux inversions, un barrel roll dans la descente et un dive loop avec un bref arrêt en l’air. Une chaîne tire le train jusqu’en haut du lift. La première chute est verticale, et le train pivote de 180 degrés pendant qu’il tombe.
 
 La taille minimale est de **1,30 m**, la plus basse parmi les grandes montagnes russes du parc. Les personnes portant une prothèse ne peuvent pas monter, et d’après un réexamen du parc, l’attraction ne convient plus aux personnes incapables de se déplacer seules. Hyperia et SAW ont une file single rider.
 
@@ -175,7 +175,7 @@ Le parc vend le Fastrack en quatre formules, par personne, et la carte peut êtr
 - **Gold** dès 115 £ : toute la journée sur 14 attractions, sans Hyperia.
 - **Platinum** dès 135 £ : toute la journée sur 15 attractions, Hyperia comprise.
 
-Il existe aussi un **One Shot Fastrack** dès 6 £, qu’on n’achète qu’une fois dans le parc, via l’appli ou un QR code à l’entrée d’une montagne russe. Le parc limite le nombre de Fastrack vendus et demande de vérifier avant l’achat qu’il reste des billets d’entrée pour la date, car les deux se vendent séparément. La page Fastrack du parc place le Ghost Train dans trois formules, alors que la page de l’attraction dit qu’il n’y a pour l’instant pas de Fastrack pour lui.
+Il existe aussi un **One Shot Fastrack** dès 6 £, qu’on n’achète qu’une fois dans le parc, via l’appli ou un QR code à l’entrée d’une montagne russe. Le parc vend le Fastrack et les billets d’entrée séparément, le Fastrack en nombre limité, et demande de vérifier avant l’achat qu’il reste des billets d’entrée pour la date. La page Fastrack du parc place le Ghost Train dans trois formules, alors que la page de l’attraction dit qu’il n’y a pour l’instant pas de Fastrack pour lui.
 
 Les clients des Thorpe Shark Cabins reçoivent le deuxième jour une heure de Fastrack au début ou à la fin de la journée. Pendant les Fright Nights, seule la première heure compte.
 

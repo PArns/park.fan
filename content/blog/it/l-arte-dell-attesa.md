@@ -112,7 +112,7 @@ tutti, alla fine, vogliono solo uscire il prima possibile.
 
 ```
 
-### Pre-show: l’attesa travestita da programma della giornata
+### Pre-show
 
 A risolverlo più a fondo è il **pre-show**, che dichiara l’attesa parte
 dell’attrazione. L’esempio da manuale sta ai
@@ -146,7 +146,7 @@ finale conosce il principio.
 Tre attrazioni di Orlando spingono l’idea fino in fondo. Le loro code
 varrebbero una visita anche senza salire.
 
-### Avatar Flight of Passage: un museo come coda
+### Avatar Flight of Passage
 
 La coda di
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
@@ -174,7 +174,7 @@ dell’avatar che respira nella vasca.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
-### Cosmic Rewind: prima il museo, poi il coaster
+### Cosmic Rewind
 
 [EPCOT](ref:epcot?bare) va ancora un passo oltre con
 [Guardians of the Galaxy: Cosmic Rewind](ref:epcot/guardians-of-the-galaxy-cosmic-rewind).
@@ -198,7 +198,7 @@ a quel momento la coda fisica serviva soprattutto come percorso narrativo e
 appena come spazio di accumulo, e questo su un’attrazione che, secondo RCDB,
 smaltisce 2.000 ospiti l’ora con treni da 20 persone.
 
-### VelociCoaster: aspettare nel recinto dei raptor
+### VelociCoaster
 
 Universal gioca la stessa carta con
 [Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
@@ -252,7 +252,7 @@ minuti.
 
 ![Migliaia di spettatori nell’anfiteatro notturno di Fantasmic! ai Disney’s Hollywood Studios | Fantasmic! agli Hollywood Studios. Chi è seduto qui non sta facendo la coda da nessuna parte. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
-## Portata: il numero senza fascino che decide la tua giornata
+## Portata
 
 **Portata** vuol dire semplicemente quante persone un’attrazione trasporta
 davvero all’ora. Non lo trovi su nessun cartellone pubblicitario, eppure sulla
@@ -398,8 +398,7 @@ dei tempi di attesa di un parco, dalle vacanze scolastiche e dai giorni festivi
 apertura e dagli eventi, e al momento le sue previsioni arrivano a circa sei
 mesi. Domanda e
 portata stanno comunque dentro ognuno di quei numeri, perché ogni tempo di attesa
-è alla fine la legge di Little: la coda divisa per la portata. Quanto spesso le nostre previsioni colgano la
-realtà sta sulla [pagina di Fancast](/fancast).
+è alla fine la legge di Little: la coda divisa per la portata. Sulla [pagina di Fancast](/fancast) trovi quanto spesso le nostre previsioni colgono la realtà.
 
 ## Perché Peter Pan’s Flight “esplode” sempre
 
@@ -447,7 +446,7 @@ più visitato al mondo:
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
-## L’Europa aspetta in modo diverso: Phantasialand ed Europa-Park contro Orlando
+## Phantasialand ed Europa-Park contro Orlando
 
 Quanto domanda e capacità determinino il livello di attesa di un intero parco
 si vede meglio se metti due grandi parchi europei accanto a Orlando.
@@ -566,9 +565,7 @@ lontanissima.
 Sul lato dei veicoli, invece, ogni fermata costa capacità vera. Per questo
 l’omnimover della Haunted Mansion e la rolling station di YOY non si fermano
 affatto nel funzionamento normale. Nella coda davanti a loro lo stop-and-go
-costa solo pazienza. Quello che accorcia davvero la tua attesa si decide prima
-della visita: un giorno in cui davanti a te c’è meno gente. Quel giorno lo trovi
-nel calendario dei giorni migliori.
+costa solo pazienza. Quello che accorcia davvero la tua attesa si decide prima della visita, nel calendario dei giorni migliori: un giorno in cui davanti a te c’è meno gente.
 
 ## Virtual queue e stazioni doppie
 

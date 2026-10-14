@@ -70,12 +70,12 @@ announcement was what made riders scream.
 
 ## The coasters, area by area
 
-Alton Towers has eleven roller coasters. Three of them were the first of their kind when they
+Of the eleven roller coasters at Alton Towers, three were the first of their kind when they
 opened, Nemesis in Europe and Oblivion and TH13TEEN worldwide, and in 2013 The Smiler set a world
 record with fourteen inversions. The Skyride, a chairlift, shuttles between the areas, with stations
 on Towers Street behind the entrance, in Forbidden Valley and in the Dark Forest.
 
-### Forbidden Valley: Nemesis Reborn and Galactica
+### Nemesis Reborn and Galactica in Forbidden Valley
 
 Nemesis opened on **19 March 1994** as Europe's first inverted coaster. Bolliger & Mabillard built
 it to a design by Werner Stengel, and the idea came from the park developer John Wardley. The track
@@ -105,7 +105,7 @@ ran from 2012 to 2015 and has been back in operation since 2023.
 **[Toxicator](ref:alton-towers/toxicator)** is a Top Spin that opened on 15 March 2025. It stands on
 a concrete platform just under five metres high above the path, so you can watch it from below.
 
-### X-Sector: Oblivion and The Smiler
+### Oblivion and The Smiler in the X-Sector
 
 X-Sector is themed as a testing facility. Oblivion arrived there on **14 March 1998** at a cost of
 £12 million and was the world's first dive coaster. The car stops at the edge, hangs over the drop
@@ -130,7 +130,7 @@ no procedures that let engineers work safely on the ride while it was running. O
 Stafford Crown Court imposed a fine of £5 million; without the guilty plea it would have been £7.5
 million. The Smiler has been running again since 19 March 2016, with additional safeguards.
 
-### Dark Forest: Rita and TH13TEEN
+### Rita and TH13TEEN in the Dark Forest
 
 **[Rita](ref:alton-towers/rita)** has run in the Dark Forest since **1 April 2005**. The Intamin
 coaster is launched hydraulically and goes from 0 to 98.3 km/h in 2.5 seconds, at 4.7 g. It's just
@@ -147,7 +147,7 @@ it, and then the section of track drops about five metres with the train still o
 it runs backwards into a tunnel. Intamin built it on the spot where the Corkscrew stood from 1980
 to 2008.
 
-### Mutiny Bay: Wicker Man
+### Wicker Man in Mutiny Bay
 
 **[Wicker Man](ref:alton-towers/wicker-man)** opened on **20 March 2018** as Britain's first new
 wooden coaster in 22 years. Great Coasters International built it for £16 million. The track is 795
@@ -185,14 +185,14 @@ Like Nemesis, its layout is John Wardley's. It shares a tunnel with the
 **[Congo River Rapids](ref:alton-towers/congo-river-rapids)**, a rapids ride in round boats that
 was built during the big expansion between 1985 and 1988.
 
-CBeebies Land has two children's coasters. The
+In CBeebies Land, the
 **[Octonauts Rollercoaster Adventure](ref:alton-towers/octonauts-rollercoaster-adventure)** has
-stood since 2015 where the Beastie used to run. Since 28 March 2026 there's also
+stood since 2015 where the Beastie used to run. Since 28 March 2026 the area has had a second children's coaster,
 **[Bluey the Ride: Here Come The Grannies!](ref:alton-towers/postman-pat-parcel-post)**, a Zierer
 train with 28 seats on the site of the dismantled Postman Pat Parcel Post. In the queue, children
 can walk through the family's house from the series.
 
-### Inside the Towers: Hex
+### Hex inside the Towers
 
 **[Hex](ref:alton-towers/hex-the-legend-of-the-towers)** has been inside the walls of the stately
 home that gives the park its name since 2000. You first walk through the rooms and hear the legend

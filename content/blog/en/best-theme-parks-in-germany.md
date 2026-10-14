@@ -54,7 +54,7 @@ parkLinks:
   - legoland-deutschland
 ---
 
-park.fan lists **nine theme parks in Germany**. At six of them we measure the wait times,
+Of the **nine theme parks in Germany** on park.fan, we measure the wait times at six,
 ride by ride. Not a single number comes in for [Hansa-Park](ref:hansa-park), because the park
 only shows them in its own app. [Traumatica](ref:traumatica), for which we have only four measured days so far, and the water world
 [Rulantica](ref:rulantica) belong to the Europa-Park resort and
@@ -178,7 +178,7 @@ the A1. In 2027 the park turns fifty and is building an 86-metre observation tow
 World, and under its current name since 2005. In our measurement the queues are shorter than at
 Phantasialand, and Sunday is one of the quieter days here.
 
-The park has eight roller coasters. The biggest is
+The biggest of the park's eight roller coasters is
 [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) by Mack
 Rides from 2017: 40 metres tall, 90 km/h, 130 centimetres minimum, and before it sets off the
 train is flung forwards and back three times until it has enough speed for the first hill.
@@ -277,7 +277,7 @@ On Taron and F.L.Y., 130 centimetres is only enough with an adult alongside; rid
 
 ## Where you queue the shortest
 
-The comparison across all measured days, calculated the same way for every park. The rows are in the order of the 3 October 2026 measurement and aren’t re-sorted:
+The comparison is calculated the same way for every park, across all measured days. The rows are in the order of the 3 October 2026 measurement and aren’t re-sorted.
 
 ```park-comparison-widget slugs=phantasialand,legoland-deutschland,europa-park,heide-park,movie-park-germany,plopsaland-deutschland show=quietest
 
@@ -297,13 +297,11 @@ same ride on busy days, and without a pass you wait longer there than our median
 
 ## Queues by time of day
 
-At Phantasialand the day looks like this, ride by ride, across all measured days:
-
 ```hourly-profile-widget slug=phantasialand top=6
 
 ```
 
-Taron is busiest at opening and in the last hour, when everyone wants to squeeze in one more
+Across all measured days at Phantasialand, Taron is busiest at opening and in the last hour, when everyone wants to squeeze in one more
 ride. F.L.Y. is short in the first hour and peaks an hour later, once the rest of the park has
 made it to Rookburgh. Both have their quietest hour in the afternoon. If you want to ride
 both, head for F.L.Y. at opening and save Taron for the afternoon.
@@ -336,8 +334,8 @@ At five of the six measured parks, a weekday in the home state's school holidays
 than an average weekend day. Which German states fill which park is in the
 [guide to school holidays and crowds](/blog/school-holidays-theme-parks-germany).
 
-Every park has a calendar with the forecast for the coming days; this is the one for
-Europa-Park:
+Every park has a calendar with the forecast for the coming days, and the one for
+Europa-Park is below.
 
 ```best-days-widget slug=europa-park
 

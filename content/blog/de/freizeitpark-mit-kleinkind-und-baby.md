@@ -155,11 +155,11 @@ Wickelräume nennt der Park an sieben Orten: am Haupteingang, am Infopunkt am
 See, in Irland (Kinderwelt), in Italien beim dm family & friends, in Spanien, im
 Märchenwald und im Königreich der Minimoys. Wie sie ausgestattet sind und ob es
 einen Stillraum gibt, steht dort nicht. Bei dm family & friends verkauft der
-Park ausgewählte Babynahrung. Wo man sie aufwärmen kann, steht nicht auf der
-Website, sie verweist dafür auf den Gästeservice.
+Park ausgewählte Babynahrung. Zum Aufwärmen verweist die Website auf den
+Gästeservice.
 
 Der Leihwagen kostet 5 Euro plus 50 Euro Pfand und wird am Haupteingang oder am
-Eingang des Hotelparkplatzes ausgegeben. Laut Park ist er nur für Kinder, die schon
+Eingang des Hotelparkplatzes ausgegeben. Er ist laut Park nur für Kinder, die schon
 sitzen können, weil ein Kind darin nicht liegen kann.
 Einen Bollerwagen verleiht der Park nicht. In der Parkordnung kommen Bollerwagen
 nicht vor. Sie verbietet nicht motorisierte Fahrzeuge wie Skates, Fahrräder und
@@ -167,8 +167,8 @@ Roller, und ob ein Bollerwagen dazuzählt, ist nicht eindeutig. Wer einen
 mitbringen will, fragt vorher beim Gästeservice nach.
 
 Im Europa-Park heißt der Wechsel Baby-Switch und gilt laut Park an vielen der
-größeren Achterbahnen. Der Park nennt blue fire Megacoaster und Alpenexpress
-Coastiality, eine vollständige Liste gibt es nicht. Wer wartet, bleibt mit dem
+größeren Achterbahnen, etwa an blue fire Megacoaster und Alpenexpress
+Coastiality. Eine vollständige Liste gibt es nicht. Wer wartet, bleibt mit dem
 Kind etwa am Spielplatz. Wer zuerst fährt, bekommt eine Karte für den Ausgang
 oder den eigenen Baby-Switch-Eingang.
 
@@ -201,7 +201,7 @@ Zentimeter Länge, 75 Zentimeter Breite und 125 Zentimeter Höhe erlaubt, und nu
 zum Transport von Kindern. Bollerwagen, Fahrradanhänger und Hundewagen sind verboten. Eine Ausnahme aus medizinischen
 Gründen muss mindestens 14 Tage vorher per E-Mail an den Gästeservice gehen.
 
-Nach dem Baby Switch fragt man an der Bahn. Welche Bahnen mitmachen, nennt der Park nicht.
+Der Park nennt keine Bahnen mit Baby Switch, man fragt an der Bahn danach.
 
 In seinen Nutzungsbedingungen führt der Park in einer Tabelle unter
 „Attraktionen für Kinder“ Der lustige Papagei, Die fröhliche Bienchenjagd, Bolles
@@ -257,8 +257,8 @@ Das datierte Tagesticket kostet online ab 37 Euro, an der Kasse 64 Euro.
 
 Im Heide Park heißt der Wechsel Baby-Switch-Pass. Eltern mit Kindern bis
 einschließlich 3 Jahren bekommen ihn kostenlos im Service Center, nur an Tagen,
-an denen das Express Ticket verfügbar ist. Er gilt für Achterbahnen. Welche genau,
-nennt der Park nicht.
+an denen das Express Ticket verfügbar ist. Er gilt für Achterbahnen, ohne dass der
+Park einzelne nennt.
 
 Babynahrung aufwärmen kannst du unter anderem im Wirtshaus des Admirals und im
 Lucky Land, alle Stationen zeigt die App. Der Parkplan markiert außerdem
@@ -295,8 +295,7 @@ auf Außenterrassen gegessen werden darf.
 Kinderwagen sind erlaubt, müssen bei Bahnen und Shows aber in den vorgesehenen
 Bereichen stehen. An vollen Tagen dürfen sie nicht ins Plopsa Indoor. Einen
 Kinderwagen-Verleih erwähnt der Park nicht. Bollerwagen kosten laut Parkordnung
-eine Gebühr, gegen einen Ausweis oder 100 Euro Kaution. Wie hoch die Gebühr ist,
-steht in der Parkordnung nicht. Einen Rider Switch oder Wechselbetrieb erwähnen
+eine Gebühr in ungenannter Höhe, gegen einen Ausweis oder 100 Euro Kaution. Einen Rider Switch oder Wechselbetrieb erwähnen
 weder die Fragen-Seiten noch die Parkordnung. Nach jeder Fahrt muss jeder Gast
 die Bahn verlassen, und wer ein zweites Mal fahren will, steht wieder an.
 
@@ -319,15 +318,13 @@ Zentimetern nichts, brauchen aber trotzdem eine Reservierung im Ticketshop. Von 
 bis 140 Zentimetern kostet das Ticket 32,50 Euro, ab 140 Zentimetern 39,50 Euro,
 je nach Tagesklasse. Am Geburtstag kommt man mit Ausweis für 0 Euro hinein.
 
-Alle Toiletten außer denen in Ithaka haben Wickeltische. Mikrowellen stehen
-gratis in der Waldstube und auf dem Katara Plaza, einen Flaschenwärmer nennt der
-Park nicht. Wer abpumpen will, spricht das Personal am Haupteingang an.
+Alle Toiletten außer denen in Ithaka haben Wickeltische. Zum Aufwärmen nennt
+der Park nur Mikrowellen, gratis in der Waldstube und auf dem Katara Plaza. Wer abpumpen will, spricht das Personal am Haupteingang an.
 
 Einen Buggy oder Bollerwagen darf man mitbringen, der Park empfiehlt ein
-Kettenschloss. Einen Verleih gibt es im Toverland nicht. Der Baby Switch gilt an
-ausgewählten Bahnen, ohne Altersgrenze. Am Einstieg holt man ein Spezialticket,
-und ein Elternteil darf über den Ausgang fahren. Welche Bahnen es sind, nennt
-der Park nicht.
+Kettenschloss. Einen Verleih gibt es im Toverland nicht. Der Baby Switch gilt ohne
+Altersgrenze an ausgewählten Bahnen, die der Park nicht aufzählt. Am Einstieg
+holt man ein Spezialticket, und ein Elternteil darf über den Ausgang fahren.
 
 Im Land van Toos, einem Bereich mit Hallen, fahren Kinder in Begleitung ab 0 Zentimeter
 im Klokhuis und in Morrels Truckjes, allein ab 90. Die Toos-Express, Theekopjes
@@ -358,8 +355,9 @@ Armband.
 Buggys kosten 10 Euro plus 50 Euro Pfand im Gift Shop und lassen sich nicht
 vorab buchen. Ob ein eigener Kinderwagen oder Bollerwagen erlaubt ist, steht
 nicht auf der Website des Parks. Essen und Getränke darf man mitbringen. Der
-Wechsel an der Bahn heißt „baby change“. Ein Erwachsener wartet mit dem Kind am
-Ausgang und steigt danach dort ohne Anstehen ein. Welche Bahnen mitmachen, nennt der Park nicht.
+Wechsel an der Bahn heißt „baby change“, und der Park sagt nicht, an welchen
+Bahnen er gilt. Ein Erwachsener wartet mit dem Kind am Ausgang und steigt danach
+dort ohne Anstehen ein.
 
 Die Kids-Seite führt Merrie Go'Round (in Begleitung ab 0,
 allein ab 120 Zentimetern), Walibi's Fun Recorder, Garage, Bubble Swirl und
@@ -380,7 +378,7 @@ unter 13 Jahren dürfen nur mit Erwachsenen in den Park und stehen unter
 ständiger Aufsicht.
 
 Der Baby Switch ist kostenlos und lässt sich nicht mit dem Speedy Fast-Pass oder
-dem Easy-pass kombinieren. Wie er abläuft, steht im Text der Seite nicht. Einen
+dem Easy-pass kombinieren. Die Seite beschreibt nicht, wie er abläuft. Einen
 Wickelraum erwähnen weder die Services-Seite noch die FAQ noch die Parkordnung.
 Stillen ist überall im Park erlaubt. Wer es ruhiger haben will, geht zur
 Krankenstation. In den Restaurants stehen Mikrowellen für Fläschchen und
@@ -412,7 +410,7 @@ Website des Parks.
 Den Baby Switch erklärt der Park auf einer eigenen Seite. Nach der ersten Fahrt
 gehen beide Eltern zum Personal an der Bahn, das dann das andere Elternteil ohne neues
 Anstehen fahren lässt. Er gilt für Kinder unter der Mindestgröße.
-Eine vollständige Bahnliste nennt die Seite nicht.
+Eine vollständige Liste der Bahnen hat die Seite nicht.
 
 Der Kinderbereich heißt „Attractions for Little Gauls“. Ein Mindestalter nennt
 der Park für The Mini Train und Ceasar's Carrousel (ab 2 Jahren) und für The Mini
@@ -426,8 +424,7 @@ den Bahnen, die sie fahren dürfen.
 
 ## Wann ein Park leer ist
 
-Die Tabelle nennt für
-acht der zehn Parks den Wochentag mit der niedrigsten mittleren Wartezeit.
+Walibi Belgium und Parc Astérix sind in diesem Vergleich nicht dabei.
 
 ```park-comparison-widget slugs=efteling,europa-park,phantasialand,attractiepark-toverland,legoland-deutschland,heide-park,plopsaland-deutschland,walibi-holland show=quietest
 

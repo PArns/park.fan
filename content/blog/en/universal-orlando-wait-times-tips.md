@@ -2,6 +2,7 @@
 title: "Universal Orlando: three parks, and Express Unlimited doesn't work in Epic Universe"
 translationKey: universal-orlando-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -64,7 +65,7 @@ Florida had just over 9.5 million visits in 2024, ranking 13th in the world, and
 9.45 million, ranking 14th. Universal hasn't published an attendance figure for Epic Universe so far.
 
 In our measurements of the last two years,
-you wait longest in Epic Universe and shortest in the Studios:
+you wait longest in Epic Universe and shortest in the Studios.
 
 ```park-comparison-widget slugs=universal-studios-florida,universal-islands-of-adventure,universal-epic-universe highlight=universal-epic-universe
 
@@ -74,11 +75,18 @@ In our measurements Mine-Cart Madness has the longest queue of the whole
 resort, followed by the Battle at the Ministry and Hagrid's Magical Creatures Motorbike Adventure from
 Islands of Adventure, which are level with each other.
 
+## History of the resort
+
+According to Wikipedia, Universal Studios Florida cost around $631 million to build. MCA Universal and the leisure company Rank Organisation each owned half. The first plan was a studio tram tour like the one in Hollywood. When Disney CEO Michael Eisner announced Disney-MGM Studios, Universal changed course and built standalone rides. Back to the Future: The Ride, the simulator Steven Spielberg developed with former Disney Imagineer Peter Alexander, opened almost a year later than planned. The Production Studio Tour through working sets ended in 1995, and Nickelodeon moved its TV production out of the park to California in 2005.
+
+Universal and Rank then spent $2.5 billion turning the site into a resort. CityWalk arrived in 1999, and in September the first hotel, Portofino Bay. The resort was first called Universal Studios Escape. Because guests could not tell from the name what it offered, it has been Universal Orlando Resort since July 2000. That same year Rank sold its half to Blackstone for $275 million. In 2011 NBCUniversal bought Blackstone's stake for $1.025 billion and has owned the resort outright since.
+
+SeaWorld founder George Millay started the Wet 'n Wild water park in 1977, and Universal bought it in 1998. It closed on 31 December 2016, and Volcano Bay took its place. NBCUniversal announced Epic Universe on 1 August 2019. In April 2020 the company postponed the opening because of the COVID-19 pandemic. With the new park, the resort covers 522 hectares.
+
 ## Which park to do first
 
 With two days, I'd spend the first in Islands of Adventure. VelociCoaster, Hagrid's and the Hulk, three
-coasters, stand close together there. The second day goes to Epic Universe, because it has the most new
-rides and the queues there get longest. The Studios are the third day, or the afternoon of a
+coasters, stand close together there. The second day goes to Epic Universe, because it has the most new rides. The Studios are the third day, or the afternoon of a
 park-to-park day. With only one day, the choice depends on who's coming along. If you ride coasters from
 1.22 m, take Islands of Adventure. Families with children under 1.02 m will find rides in all three
 parks, and the list is further down.
@@ -236,7 +244,7 @@ Magic and The Untrainable Dragon on the Isle of Berk.
 
 ## Harry Potter three times
 
-Each of the three parks has its own Harry Potter area. The oldest is
+The oldest Harry Potter area is
 Hogsmeade in Islands of Adventure, which opened on 18 June 2010 on 8 hectares. The coaster Flying
 Unicorn stood there before, closed in 2008 and came back as **[Flight of the
 Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**. The Vekoma junior coaster
@@ -262,7 +270,7 @@ taller than 1.43 m rides only together with a child of that height), and the pla
 ## At rope drop or in the evening
 
 In the hourly profile you can see at what time of day the queue at a ride is short. For Epic
-Universe, these are the eight rides with the longest queues:
+Universe, these are the eight rides with the longest queues.
 
 ```hourly-profile-widget slug=universal-epic-universe top=8
 
@@ -273,7 +281,7 @@ the Werewolf, Yoshi's Adventure, Mario Kart and Hiccup's Wing Gliders follow as 
 manage only one ride at opening, take Mine-Cart Madness.
 
 For Islands of Adventure, VelociCoaster, Ripsaw Falls, Skull Island and Spider-Man are a "good tip".
-Hagrid's isn't on the list:
+Hagrid's isn't on the list.
 
 ```hourly-profile-widget slug=universal-islands-of-adventure top=8
 
@@ -320,8 +328,6 @@ text: The prices for each day are in Universal's calendar.
 
 ## Express Pass: what it costs and where it's valid
 
-With the Express Pass you buy your way past the queue at Universal.
-
 **Universal Express** is valid once per ride. Universal sells it for the Studios, Islands of Adventure,
 Epic Universe and Volcano Bay, as a surcharge on the ticket. For the Studios and Islands of Adventure,
 Universal's ticket page lists $119.99 to $319.99 per person and park, depending on the day. There's
@@ -335,14 +341,12 @@ are available.
 **Universal Express Now** is only available in the app in the park, on the same day, for single rides in
 a time window. By Universal's own account, it offers it sporadically.
 
-So if you want a pass in Epic Universe, it's the one-time Express. If you ride Mine-Cart Madness
-and the Battle at the Ministry at opening first, you don't need it for those two. In the Studios and
+If you ride Mine-Cart Madness
+and the Battle at the Ministry at opening first, you don't need the Express in Epic Universe for those two. In the Studios and
 Islands of Adventure I wouldn't buy a pass without the hotel benefit. With an early arrival you get onto the
 rides from the rope-drop list, that is VelociCoaster, Ripsaw Falls, Skull Island and Spider-Man, without a pass too, but not onto Hagrid's. That's my estimate from the hourly profiles, because we don't measure how many minutes a pass saves.
 
 ## When to go
-
-The typical wait time by month, for each of the three parks:
 
 ```stats-widget slug=universal-studios-florida show=months
 
@@ -368,7 +372,7 @@ The holiday season runs from 14 November to 3 January, more on that in [Christma
 Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026). Epic Universe has an evening event of
 its own, Universal Nights, from $179 per person. The dates are 17 and 24 October and 6 and 20 November.
 
-We work out every day which days in the coming weeks will be quietest:
+We work out every day which days in the coming weeks will be quietest.
 
 ```best-days-widget slug=universal-epic-universe
 
@@ -486,9 +490,6 @@ From 26 October 2026 until 1 April 2027 at the latest.
 
 ## Further reading
 
-What the weather in the resort will be like in the next few days, and what that means for the outdoor
-rides:
-
 ```weather-widget slug=universal-islands-of-adventure
 
 ```
@@ -502,8 +503,9 @@ tips](/blog/magic-kingdom-wait-times-tips).
 
 ### Sources & further reading
 
-- Opening of the parks, areas, rides with year built and manufacturer, closures, 2024 attendance: [Universal Orlando on Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Orlando) · [Universal Studios Florida on Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Studios_Florida) · [Universal's Islands of Adventure on Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal%27s_Islands_of_Adventure) · [Universal Epic Universe on Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Epic_Universe)
+- History, owners and hotels of the resort, opening of the parks, areas, rides with year built and manufacturer, closures, 2024 attendance: [Universal Orlando on Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Orlando) · [Universal Studios Florida on Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Studios_Florida) · [Universal's Islands of Adventure on Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal%27s_Islands_of_Adventure) · [Universal Epic Universe on Wikipedia (EN)](https://en.wikipedia.org/wiki/Universal_Epic_Universe)
 - Coaster technical data: [Jurassic World VelociCoaster](https://en.wikipedia.org/wiki/Jurassic_World_VelociCoaster) · [Hagrid's Magical Creatures Motorbike Adventure](https://en.wikipedia.org/wiki/Hagrid%27s_Magical_Creatures_Motorbike_Adventure) · [The Incredible Hulk Coaster](https://en.wikipedia.org/wiki/The_Incredible_Hulk_Coaster) · [Revenge of the Mummy](https://en.wikipedia.org/wiki/Revenge_of_the_Mummy) · [Harry Potter and the Escape from Gringotts](https://en.wikipedia.org/wiki/Harry_Potter_and_the_Escape_from_Gringotts) · [Harry Potter and the Forbidden Journey](https://en.wikipedia.org/wiki/Harry_Potter_and_the_Forbidden_Journey) · [Skull Island: Reign of Kong](https://en.wikipedia.org/wiki/Skull_Island:_Reign_of_Kong) · [Stardust Racers](https://en.wikipedia.org/wiki/Stardust_Racers) · [Mario Kart: Bowser's Challenge](https://en.wikipedia.org/wiki/Mario_Kart:_Bowser%27s_Challenge) · [Dudley Do-Right's Ripsaw Falls](https://en.wikipedia.org/wiki/Dudley_Do-Right%27s_Ripsaw_Falls) · [Hogwarts Express](<https://en.wikipedia.org/wiki/Hogwarts_Express_(Universal_Orlando_Resort)>) · [Hiccup's Wing Gliders (Coasterpedia)](https://coasterpedia.net/wiki/Hiccup%27s_Wing_Gliders)
+- Price for Blackstone's stake in 2011: [NBCUniversal press release (SEC, Form 8-K)](https://www.sec.gov/Archives/edgar/data/0001262449/000119312511159946/dex991.htm)
 - Height requirements: [Ride Height Requirements (Universal Orlando)](https://www.universalorlando.com/web/en/us/plan-your-visit/hours-information/ride-height-requirements)
 - Ticket prices, 3-day offer, hotel discount, Express price range: [Park Tickets (Universal Orlando)](https://www.universalorlando.com/web/en/us/tickets-packages/park-tickets)
 - Express, Express Unlimited, Express Now, validity by park: [Express Passes (Universal Orlando)](https://www.universalorlando.com/web/en/us/tickets-packages/express-passes)

@@ -2,6 +2,7 @@
 title: 'Universal Studios Japan : Super Nintendo World, Express Pass'
 translationKey: universal-studios-japan-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -53,13 +54,19 @@ Les deux attractions où l’on attend le plus longtemps se trouvent dans Super 
 
 ## Histoire du parc
 
-Universal Studios Japan a ouvert le **31 mars 2001** dans le quartier de Konohana, à Osaka. C’était le premier parc d’Universal hors des États-Unis, construit pour 1,7 milliard de dollars. La société Osaka Universal Planning Inc. a été fondée en décembre 1992, l’accord-cadre avec MCA date de février 1996 et le chantier a démarré en 1998.
+Universal Studios Japan a ouvert le **31 mars 2001** dans le quartier de Konohana, à Osaka. C’était le premier parc d’Universal hors des États-Unis, construit pour 1,7 milliard de dollars. La société Osaka Universal Planning Inc. a été fondée en décembre 1992, l’accord-cadre avec MCA date de février 1996 et la première pierre a été posée le 28 octobre 1998.
+
+Avant le choix d’Osaka, MCA a étudié à la fin des années 1980, avec Nippon Steel, des terrains du sidérurgiste à Kimitsu, dans la préfecture de Chiba, et à Kitakyūshū. En 1990, un terrain de Nippon Steel à Sakai tenait la corde, mais le projet y a échoué, comme la tentative de la ville d’Osaka d’attirer le parc dans l’arrondissement de Taishō. En janvier 1994, le choix s’est porté sur le terrain de Konohana.
 
 La première année, plus de **11 millions** de visiteurs sont venus, et le parc a atteint les dix millions plus vite qu’aucun parc avant lui. En 2009, la fréquentation était retombée à 8 millions par an. Le **15 juillet 2014**, **The Wizarding World of Harry Potter** a ouvert pour 45 milliards de yens. Le parc a compté 13,9 millions de visiteurs en 2015 et presque 14,9 millions en 2017, puis 4,9 millions en 2020 à cause de la pandémie et 12,4 millions en 2022. Pour 2024, Wikipédia en anglais donne 16 millions, ce qui place le parc au troisième rang mondial derrière le Magic Kingdom et Disneyland.
 
+Au départ, la ville d’Osaka avait une participation dans la société d’exploitation. Après un refinancement par Goldman Sachs en 2005, la société est passée sous gestion privée, elle est entrée en 2007 à la Bourse de Tokyo (segment Mothers), et en 2009 une offre publique d’achat a fait entrer MBK Partners, de Corée du Sud, et PAG, de Hong Kong, au capital. En 2015, NBCUniversal a pris 51 % des parts pour 183 milliards de yens.
+
 Le parc est exploité par USJ LLC. Comcast a racheté en 2017 les parts restantes pour 2,3 milliards de dollars, et depuis le 2 mars 2017 le parc appartient entièrement au groupe via NBCUniversal. En août 2026, USJ, Nippon Steel et la ville d’Osaka discutent d’une ancienne friche industrielle voisine d’environ 60 000 mètres carrés.
 
-La dernière grande extension est **Super Nintendo World**, ouvert le **18 mars 2021** pour 40 milliards de yens. Donkey Kong Country s’y ajoute depuis le **11 décembre 2024**. Le parc compte aujourd’hui dix zones thématiques : Hollywood, New York, San Francisco, Minion Park, Jurassic Park, Amity Village, Universal Wonderland, WaterWorld, The Wizarding World of Harry Potter et Super Nintendo World.
+En 2006, la zone Western, avec le Wild Wild Wild West Stunt Show, est devenue le Land of Oz, avec une version japonaise raccourcie de la comédie musicale « Wicked ». La zone a fermé en février 2011 pour laisser la place à Universal Wonderland. E.T. Adventure a fonctionné de 2001 à 2009, Space Fantasy occupe sa place. Back to the Future: The Ride a tourné pour la dernière fois le 31 mai 2016, et Minion Mayhem l’a remplacée. À cause de la pandémie, le parc a été fermé du 29 février au 7 juin 2020.
+
+La dernière grande extension est **Super Nintendo World**, ouvert le **18 mars 2021** pour 40 milliards de yens, après des travaux commencés en juin 2017. Donkey Kong Country s’y ajoute depuis le **11 décembre 2024**. Le parc compte aujourd’hui dix zones thématiques : Hollywood, New York, San Francisco, Minion Park, Jurassic Park, Amity Village, Universal Wonderland, WaterWorld, The Wizarding World of Harry Potter et Super Nintendo World. Le programme du 25e anniversaire s’appelle « Discover U!!! » et a commencé le 4 mars 2026.
 
 ## Règles à l’embarquement
 
@@ -133,8 +140,6 @@ Voici les dix attractions à la médiane la plus élevée sur les deux dernière
 
 ```
 
-Si vous organisez votre ordre de passage d’après le tableau, commencez par les deux attractions Nintendo tant que le créneau est valable.
-
 ```hourly-profile-widget slug=universal-studios-japan top=8
 
 ```
@@ -145,7 +150,7 @@ Si vous organisez votre ordre de passage d’après le tableau, commencez par le
 
 ```
 
-Le 9 octobre 2026, le parc était ouvert de 8 h à 22 h. Les horaires de chaque jour figurent sur la page des horaires du parc.
+Le 9 octobre 2026, le parc était ouvert de 8 h à 22 h.
 
 ## Quand y aller
 
@@ -169,9 +174,9 @@ Juillet a l’affluence la plus basse dans nos mesures, mars reste nettement au-
 
 La saison d’automne s’appelle « Universal Extreme Autumn » en 2026 et dure du **10 septembre au 8 novembre**. **Halloween Horror Nights** en est le cœur, du 11 septembre au 8 novembre, pour sa 15e édition. Parmi les attractions figurent « Lights Out: Nightmare Isolation », la première attraction réservée aux plus de 18 ans avec déclaration de consentement selon le parc, « Resident Evil Requiem: The Dive » et « Factory of Fear: Zombie Tour ». Jusqu’à 12 ans, l’accord des parents est requis, et jusqu’à cinq ans le parc le déconseille. D’après l’avertissement du parc, « Resident Evil Requiem: The Dive » est interdit aux enfants jusqu’à 14 ans et aux élèves de collège en raison de son contenu extrême.
 
-Pendant cette période, Hollywood Dream passe des morceaux de groupes japonais, et Jurassic Park roule dans le noir sous le nom « The Ride in the Dark ». Le parc a composé pour l’Express Pass des forfaits Halloween de quatre attractions, par exemple avec Factory of Fear, Chainsaw Man: The Chaos 4-D ou Resident Evil Requiem: The Dive. Les autres parcs à Halloween 2026 figurent dans notre [guide Halloween](/blog/halloween-parcs-attractions-2026).
+Pendant cette période, Hollywood Dream passe des morceaux de groupes japonais, et Jurassic Park roule dans le noir sous le nom « The Ride in the Dark ». Le parc a composé pour l’Express Pass des forfaits Halloween de quatre attractions, par exemple avec Factory of Fear, Chainsaw Man: The Chaos 4-D ou Resident Evil Requiem: The Dive.
 
-La promenade « Frieren: Beyond Journey's End Story Walk », à Hollywood, dure du 30 mai 2026 au 11 janvier 2027 et demande un Attraction Timed Entry Ticket pris dans l’appli. « ONE PIECE Premier Summer 2026 » va du 30 juillet au 19 novembre 2026, et le spectacle de rue « Wicked: The Witches of Oz » se joue du 20 février au 27 décembre 2026.
+La promenade « Frieren: Beyond Journey's End Story Walk », à Hollywood, dure du 30 mai 2026 au 11 janvier 2027 et demande un Attraction Timed Entry Ticket pris dans l’appli. Elle fait partie de la série Universal Cool Japan, qui existe depuis 2015. « ONE PIECE Premier Summer 2026 » va du 30 juillet au 19 novembre 2026, et le spectacle de rue « Wicked: The Witches of Oz » se joue du 20 février au 27 décembre 2026.
 
 ## Express Pass : forfaits, prix, créneaux
 
@@ -212,11 +217,11 @@ Avant d’acheter un créneau, le billet doit être enregistré dans l’appli, 
 
 L’**Area Timed Entry Ticket** vaut pour des zones comme Super Nintendo World. Quand le contingent du jour est épuisé, le parc distribue le **Standby Entry Ticket**. Il précise que la distribution peut s’arrêter sans préavis selon l’affluence. Même avec un billet, l’attraction de la zone peut déjà être complète.
 
-**Yoyakunori (Reserve & Ride)** réserve une heure de passage sur certaines attractions, dans le parc par exemple à The Flying Snoopy et Freeze Ray Sliders. D’ici là, on peut faire d’autres attractions ou manger. L’**Attraction Timed Entry Ticket** vaut pour une attraction précise, y compris la promenade Frieren. Les deux ne s’obtiennent que dans le parc, ne sont pas transférables, et un groupe ne peut choisir qu’une seule attraction. Si on désinstalle l’appli avant l’heure de passage, le billet devient invalide. L’appli demande iOS 17 ou Android 9.
+**Yoyakunori (Reserve & Ride)** réserve une heure de passage sur certaines attractions, dans le parc par exemple à The Flying Snoopy et Freeze Ray Sliders. L’**Attraction Timed Entry Ticket** vaut pour une attraction précise, y compris la promenade Frieren. Les deux ne s’obtiennent que dans le parc, ne sont pas transférables, et un groupe ne peut choisir qu’une seule attraction. Si on désinstalle l’appli avant l’heure de passage, le billet devient invalide. L’appli demande iOS 17 ou Android 9.
 
 ## Billets et prix
 
-Tous les prix de la boutique incluent les taxes et dépendent du jour de la visite. Pour les visites à partir du 1er septembre 2026, le parc applique une tarification selon le jour : chaque jour commence à son niveau le plus bas, et le prix peut monter quand la demande est forte. D’après le parc, acheter tôt est le plus souvent le moins cher.
+Tous les prix de la boutique incluent les taxes et dépendent du jour de la visite. Pour les visites à partir du 1er septembre 2026, le parc applique une tarification selon le jour : chaque jour commence à son niveau le plus bas, et le prix peut monter quand la demande est forte. D’après le parc, acheter tôt est le plus souvent le moins cher. Le 1 Day Studio Pass a des prix qui varient selon le jour depuis 2019.
 
 | Billet                                                | Adultes à partir de |
 | ----------------------------------------------------- | ------------------- |
@@ -244,7 +249,7 @@ Super Nintendo World a Kinopio's Café, Yoshi's Snack Island et Pit Stop Popcorn
 
 ## Les nouveautés et ce qui a fermé
 
-Depuis fin 2024, la zone Donkey Kong, le spectacle Detective Conan, Illumination's Villain-Con Minion Blast et Snoopy's Flying Ace Adventure sont arrivés. L’attraction Spider-Man, ouverte en 2004, a fermé le 22 janvier 2024. Backdraft et T2-3D sont fermés depuis 2020, la Sesame Street Fun World depuis le 10 mai 2026.
+Le spectacle Detective Conan est arrivé fin 2024. L’attraction Spider-Man, ouverte en 2004, a fermé le 22 janvier 2024. Backdraft et T2-3D sont fermés depuis 2020.
 
 ## Questions fréquentes sur Universal Studios Japan
 
@@ -292,8 +297,10 @@ Pas avec le Studio Pass. Le parc n’autorise pas à rentrer de nouveau, seul l�
 
 ### Sources et lectures complémentaires
 
-- Ouverture, coût de construction, fréquentation, propriétaires, zones thématiques, fermetures, discussions sur l’extension :
+- Ouverture, choix du site, coût de construction, fréquentation, propriétaires, zones thématiques, attractions remplacées, fermetures, discussions sur l’extension :
   [Universal Studios Japan sur en.wikipedia](https://en.wikipedia.org/wiki/Universal_Studios_Japan)
+  · [Universal Studios Japan sur ja.wikipedia (en japonais)](https://ja.wikipedia.org/wiki/%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E3%83%BB%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA%E3%83%BB%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3)
+  · [rachat de 51 % par NBCUniversal (Simpson Thacher, en anglais)](https://stblaw.com/about-us/news/view/2015/10/07/simpson-thacher-represents-goldman-sachs-in-comcast-nbcuniversal-s-purchase-of-51-ownership-of-universal-studios-japan)
 - Super Nintendo World, ouverture, coût de construction, Donkey Kong Country, Boom Coaster :
   [Super Nintendo World sur en.wikipedia](https://en.wikipedia.org/wiki/Super_Nintendo_World)
   · [Super Nintendo World (officiel)](https://www.usj.co.jp/web/en/us/areas/super-nintendo-world)

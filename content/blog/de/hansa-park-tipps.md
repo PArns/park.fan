@@ -2,6 +2,7 @@
 title: 'Hansa-Park: Der Kärnan fährt 127 km/h, und die Saison hat keinen Schließtag'
 translationKey: hansa-park-guide
 date: '2026-09-22'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -62,6 +63,7 @@ von Lübeck nach Neustadt, und vom Highlander aus schaust du über die Lübecker
 
 Der Hansa-Park kommt mit **46 Hektar** aus. Der Heide Park hat 85. Zwischen zwei Achterbahnen liegen hier selten mehr als ein paar
 Minuten Fußweg, und die elf Themenbereiche gehen ineinander über, statt durch Wiesen getrennt zu sein.
+Rund 17.000 Quadratmeter der Fläche sind überdacht.
 
 Der [Highlander](ref:hansa-park/highlander?bare) ist der höchste Gyro-Drop-Tower der Welt.
 Daneben gibt es eine Kanalfahrt aus Legoland-Zeiten und vier Familien- und Kinderachterbahnen.
@@ -85,6 +87,15 @@ rückwärts, bevor der Lift ihn weiter zum ersten Abgang zieht. Der Park sagt, d
 nirgends. 2017 hat er die
 Fallgeschwindigkeit von rund 5 auf rund 11 Meter pro Sekunde mehr als verdoppelt.
 
+Eröffnet hat der Kärnan am 1. Juli 2015, entworfen vom Ingenieurbüro Stengel. Sein Turm ist dem
+Kärnan in Helsingborg nachgebaut, dem Bergfried einer mittelalterlichen Festung, hier in mehr als
+doppelter Größe. Seit 2019 hängt im Turm über den liegenden Fahrgästen eine Leinwand, auf der vor
+dem Rückwärtsfall der Geist von König Erik Menved erscheint. Drei Züge fahren, jeder mit vier
+Wagen zu je einer Reihe mit vier Plätzen. Im letzten Raum vor dem Bahnhof stellen sich die
+Fahrgäste in Vierergruppen auf, und ein Zufallsgenerator legt fest, welche Gruppe in welche Reihe
+steigt. Die Musik hat IMAscore mit 63 Musikern und 40
+Chorsängern in Budapest aufgenommen.
+
 ```glossary-widget slug=infinity-coaster
 
 ```
@@ -94,19 +105,26 @@ Die zweite große Bahn fährt seit **2009**, heute im Themenbereich Peterhof von
 hoch, **100 km/h**, und sie hat einen LSM-Launch,
 der im Dunkeln in 1,4 Sekunden auf 100 km/h beschleunigt, und dazu einen senkrechten Kettenlift. Der Lift steckt im zweiten, wieder dunklen Teil der Fahrt, und die Abfahrt danach
 fällt mit **97 Grad** über die Senkrechte hinaus. Bis 2020 hieß die Bahn Fluch von Novgorod, seit
-2021 Flucht von Novgorod.
+2021 Flucht von Novgorod. Die Strecke ist 750 Meter lang, die Züge haben acht Plätze, vier
+nebeneinander, und am Eingang steht ein Testsitz.
 
 **[Nessie](ref:hansa-park/nessie)** baute Anton Schwarzkopf **1980**, 26 Meter hoch, 741 Meter lang,
 80 km/h, mit einem einzelnen senkrechten Looping, und sie war damals die größte Loopingbahn Europas.
-Sie fährt seit 46 Jahren und hat 2019 einen neu thematisierten Bereich bekommen.
+Sie fährt seit 46 Jahren und hat 2019 einen neu thematisierten Bereich bekommen. Zwei Züge mit je
+28 Plätzen sind im Einsatz, und der Park gibt die Bahn für Fahrgäste bis 1,95 Meter frei.
 
 Von den vier kleineren ist nur **[Crazy
 Mine](ref:hansa-park/crazy-mine)** keine Familienbahn. Sie ist von Maurer und fährt seit 1997 als Wilde Maus im Bergwerksdekor,
-15 Meter hoch und nach 70 Sekunden vorbei. Der **[Royal Scotsman](ref:hansa-park/royal-scotsman)**
-ist ein Vekoma-Juniorcoaster von **1993**, der bis 2019 Rasender Roland hieß und mitten durch den
-Looping von Nessie fährt. Die **[Schlange von Midgard](ref:hansa-park/midgard-serpent)** steht seit
-2011 im Wikingerland, **[Der kleine Zar](ref:hansa-park/the-little-tsar)** seit 2017 im Alten
-Jahrmarkt, drei Meter hoch. Beide nehmen Kinder ab 90 Zentimetern mit.
+15 Meter hoch, 370 Meter lang, 45 km/h, mit vier Plätzen pro Wagen und nach 70 Sekunden vorbei.
+Der **[Royal Scotsman](ref:hansa-park/royal-scotsman)** ist ein Vekoma-Juniorcoaster von **1993**,
+16 Meter hoch, 522 Meter lang und 50 km/h schnell, der bis 2019 Rasender Roland hieß und mitten
+durch den Looping von Nessie fährt. Er ersetzte die Seeschlange, eine Zierer-Bahn, die Ende 1992
+abgebaut wurde und heute im Magic Park Verden fährt.
+
+Die **[Schlange von Midgard](ref:hansa-park/midgard-serpent)** steht seit 2011 im Wikingerland, eine
+Familienbahn von Gerstlauer mit 200 Metern Strecke, 45 km/h und dunklen Abschnitten. **[Der kleine
+Zar](ref:hansa-park/the-little-tsar)** von Preston & Barbieri fährt seit 2017 im Alten Jahrmarkt,
+drei Meter hoch, 54 Meter lang, 20 km/h. Beide nehmen Kinder ab 90 Zentimetern mit.
 
 Der **[Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coaster)** hat am
 **23. Mai 2026** im Bezaubernden Britannien eröffnet, wieder Gerstlauer, 18 Meter hoch, rund
@@ -120,7 +138,7 @@ Im **April 2019** eröffnete der **[Highlander](ref:hansa-park/highlander)** als
 Gyro-Drop-Tower der Welt. **120 Meter** Bauwerk, **103 Meter** freier Fall, 120 km/h, die Sitze um
 30 Grad nach vorn geneigt, gebaut von Funtime. Den Titel hatte bis dahin
 [Scream](ref:heide-park/scream) im [Heide Park](/blog/heide-park-wartezeiten-tipps), 103 Meter
-hoch. Das ist genau die Fallhöhe des Highlander.
+hoch.
 
 Ende 2021 eröffnete in Orlando der 131 Meter
 hohe Orlando FreeFall, ebenfalls von Funtime, und war damit höher. Nach einem tödlichen Unfall im März 2022 wurde er
@@ -131,7 +149,41 @@ nach dem Unfall zusätzliche Gurte an den Haltebügeln nachgerüstet.
 
 ```
 
-Der Highlander hat mit 1,40 Metern die höchste Mindestgröße im Park.
+Der Highlander hat mit 1,40 Metern die höchste Mindestgröße im Park. Er hat 24 Sitze mit
+Schulterbügeln, seine Spitze liegt 149 Meter über dem Meeresspiegel, und die Bohrpfähle darunter
+reichen 28 Meter tief.
+
+## Die Wasserbahnen
+
+Die älteste ist die [Wildwasserfahrt](ref:hansa-park/wild-water-ride-the-great-pike) von 1977, heute
+„Der Wasserwolf am Ilmensee“ im Peterhof von Novgorod. Die Einbäume fahren rund einen Kilometer und
+stürzen am Ende aus 15 Metern in einen schmalen Kanal. Der
+[Super Splash](ref:hansa-park/super-splash?bare) von Intamin schießt aus 20 Metern mit 85 Prozent
+Gefälle über eine Sprungschanze in den See. Die Schanze kam ein Jahr nach der Eröffnung von 1986
+dazu.
+
+[Störtebekers Kaperfahrt](ref:hansa-park/stoertebekers-sea-raid?bare) eröffnete im Jahr 2000 als
+Rio Dorado, damals die einzige Raftingbahn dieser Art in Deutschland, und fährt seit 2018 unter
+ihrem heutigen Namen.
+Die Schlauchboote fahren eine über 70 Meter lange Rampe hinauf und drehen sich auf fast einem halben
+Kilometer Talfahrt durch Steilkurven. Am Barracuda Slide von 1998 rutschen vier Bahnen nebeneinander
+aus 12 Metern Höhe.
+
+Für kleine Kinder sind die Sturmfahrt der Drachenboote von 2007, 160 Meter mit einer Schussfahrt aus
+sieben Metern, und [Awildas Abenteuerfahrt](ref:hansa-park/awildas-adventure-ride?bare) von 2021
+gedacht, eine 83 Meter lange Babyflume von Soquet. Dort dürfen Kinder ab 90 Zentimetern mit einem
+Erwachsenen einsteigen.
+
+## Shows
+
+Die Varieté-Show der Saison 2026 heißt „Magical Cornwall“ und dauert rund 30 Minuten. Sie läuft in
+der Arena del Mar, die der Park Norddeutschlands größtes Varieté-Theater nennt, und im selben Saal
+zeigt er eine zehnminütige Laser- und Special-Effect-Show. In der Aquarena läuft die Familienshow
+„Adrienne, Emmi, Pingi & Co und die versunkene Stadt“, rund 15 Minuten lang, und auf der
+Freilichtbühne am Alten Jahrmarkt der „Schaubudenzauber“ mit dem Duo Kolobov.
+
+Nach Beginn einer Vorstellung lässt der Park niemanden mehr hinein, und während der Show sind Fotos
+und Videos verboten.
 
 ## Ein Kalender ohne Schließtag
 
@@ -144,13 +196,23 @@ meist montags bis mittwochs, und auch das Legoland in Günzburg hat 2026 einzeln
 Mai, Juni und September. Wer in Sierksdorf einen [ruhigen Wochentag](/beste-reisezeit) sucht, kann deshalb jeden
 nehmen, auch einen Montag im Oktober.
 
-Bis zum **9. Oktober** öffnet der Park täglich um **10 Uhr**, und die
-Fahrattraktionen schließen um **18 Uhr**. Am Karfreitag, dem 3. April, fuhren die Attraktionen erst ab 11 Uhr. Am 11. August blieb das
+Bis zum **9. Oktober** öffnete der Park täglich um **10 Uhr**, und die
+Fahrattraktionen schlossen um **18 Uhr**. Am Karfreitag, dem 3. April, fuhren die Attraktionen erst ab 11 Uhr. Am 11. August blieb das
 Gelände bis 19 Uhr offen, am 12. August bis 18:30, die Bahnen standen an beiden Abenden trotzdem um
-18 Uhr still. Wer noch im September kommt, sieht werktags ein geändertes Showprogramm, weil der
-Park den Herbstzauber vorbereitet.
+18 Uhr still.
 
 Die Saison 2027 plant der Park nach heutigem Stand vom **25. März bis zum 24. Oktober**.
+
+## Schulferien in Schleswig-Holstein und Hamburg
+
+Die Herbstferien 2026 laufen in Schleswig-Holstein vom 12. bis 24. Oktober, mitten im Herbstzauber,
+und in Hamburg vom 19. bis 30. Oktober.
+
+Für 2027 sind die Osterferien in Schleswig-Holstein vom 30. März bis 10. April angesetzt, fünf Tage
+nach dem geplanten Saisonstart. Die Sommerferien gehen dort vom 3. Juli bis 14. August, in Hamburg
+vom 1. Juli bis 11. August.
+
+Neben dem Herbstzauber läuft bis zum 25. Oktober 2026 Erntedank, mit geschmückten Beeten.
 
 ```map-widget slug=hansa-park
 
@@ -194,6 +256,10 @@ Hansa-Park hat an denselben Abenden volles Programm. Wer mit
 Kindern unter zehn fährt, ist hier deshalb besser aufgehoben als bei einem Maze-Abend. Die
 Abendshow ist allerdings laut, und der Park warnt selbst vor
 Schreckreaktionen bei den Kleinsten.
+
+An einem Herbstzauber-Tag würde ich um 11 Uhr mit Wildwasserfahrt und Super Splash anfangen und
+Flucht von Novgorod, Kärnan und Highlander fahren, solange es hell ist. Nach Einbruch der Dunkelheit
+kommen die Blumenmeerbootsfahrt, dann Lichter-Parade und Abendshow.
 
 ## Mindestgröße und Alter an den Achterbahnen
 
@@ -240,7 +306,8 @@ kam die erste originalamerikanische Wildwasserbahn Deutschlands dazu, die bis he
 modernste Kuppelbau-Delfinarium Europas mit 1.400 Sitzplätzen. Seit **1994** verzichtet der Park
 auf Delfinshows. 1984 eröffnete das Showtheater mit „Wetten Spaß“ von Frank Elstner: Wer bei
 „Wetten, dass..?“ seine Wette verloren hatte, bekam in Sierksdorf eine zweite Chance. In den Jahren darauf standen Wim Thoelke und Michael Schanze auf
-derselben Bühne.
+derselben Bühne. Gebaut wurde das Theater ab 1983 als Halbrund wie ein antikes Amphitheater, mit
+1.800 Plätzen, und 1988 kam das Aqua-Stadion mit den Acapulco-Todesspringern dazu.
 
 Dazwischen wuchs der Fahrbetrieb: **1980** [Nessie](ref:hansa-park/nessie?bare), **1986** der
 [Super Splash](ref:hansa-park/super-splash?bare), **1987** die
@@ -249,12 +316,29 @@ seiner Drehkabine. Der ist seit **Januar 2025** weg, abgebaut wegen technischer 
 nicht mehr reparieren ließen. Ähnlich erging es dem Metroliner von 1989, einem Elektrozug auf einer
 ineinandergeschobenen Acht, der später als El Paso Express fuhr und nach der Saison 2015 schloss.
 
+1993 kamen gläserne Rolltreppen vom Parkplatz zum Eingang. 1997,
+zum 20-jährigen Bestehen, folgte die größte Erweiterung der Firmengeschichte. Für rund 15 Millionen DM entstand
+das Piratenland mit einem Nachbau des Kolumbus-Schiffs Nina, der vorher im Berliner
+Martin-Gropius-Bau ausgestellt war, dazu die Wikinger-Bootsfahrt. 2000 folgte der 50 Meter hohe
+Power-Tower Monte-Zuma, 2006 ein Hochseilgarten, der seit seiner Erweiterung 2008 Navajo-Trail
+heißt. 2007 bekam der
+Hansa-Park als erster deutscher Freizeitpark das Siegel „OK für Kids“ von Kinderschutzbund und
+TÜV Nord für das ganze Gelände.
+
+Monte-Zuma wurde 2013 abgebaut. Der 70 Meter hohe
+Star Flyer Torre del Mar von 2005 ging Ende 2015, weil der Turm des Kärnan die Windverhältnisse auf
+dem Gelände verändert hatte. Den Fliegenden Hai von 1991 nahm der Park Ende 2018 heraus, weil es
+keine Ersatzteile mehr gab und er sehr viel Strom brauchte, Die Glocke von 2008 Ende 2019 für
+Awildas Welt. Am 29. Oktober 2017 zeigte John Burke nach 28 Jahren seine letzte Seelöwenshow in der
+Aquarena, und 2020 fiel wegen der Corona-Pandemie das ganze Showprogramm aus.
+
 Das größte Bauvorhaben des Parks ist **Hanse in Europa**. Es ersetzt seit 2008 die früheren
 Landungsbrücken und entsteht Fassade für Fassade, in acht dokumentierten Bauabschnitten: 2008 das
 Holstentor als Eingang, 2010 Brügge, Visby, Lübeck, Hamburg und Rostock, 2011 Groningen und Paris,
 2012 London, Ribe und Bergen, 2013 sechs weitere von Kopenhagen bis Nürnberg, 2018 Danzig und
 Krakau, und 2021 der bis dahin größte Abschnitt mit 14 Fassaden aus Krakau, Stockholm, Stralsund,
-Helsinki, Riga und Venedig. Veranschlagt war das auf 20 Jahre. Der
+Helsinki, Riga und Venedig. Das Holstentor enthüllte der damalige Ministerpräsident Peter Harry
+Carstensen am 26. April 2008. Veranschlagt war das Ganze auf 20 Jahre. Der
 letzte Abschnitt, der Palacio de
 Braga, ist noch nicht fertig.
 
@@ -262,23 +346,53 @@ Seit 2021 kamen Awildas Welt, der Peterhof von Novgorod anstelle des Holzfäller
 anstelle der Westernstadt Bonanza City, das Carrousel Baltique, die Lost Trails of Roanoke und
 Einars Fjordfahrt dazu.
 
+Geführt wird der Park heute von Christoph Andreas Leicht, persönlich haftender Gesellschafter der
+HANSA-PARK Freizeit- und Familienpark GmbH & Co. KG, und die englische Wikipedia nennt die Familie
+Leicht als Eigentümerin. In der Saison arbeiten bis zu 850 Menschen im Park. Nach Angaben des Parks
+waren rund 83 Prozent der Gäste schon einmal da, im Schnitt sind sie 28 Jahre alt. Die dpa schrieb
+2023 von rund 1,4 Millionen Besuchern im Jahr, dieselbe Zahl nennt die deutsche Wikipedia für 2016.
+
 ## Übernachten im Resort am Meer
 
 Das **HANSA-PARK Resort am Meer** liegt am Ortsrand von Sierksdorf, zwischen Ferienpark und
 Freizeitpark verläuft die Bahnlinie. Gebucht wird über Landal oder Ostseezeit, der Mindestaufenthalt
 beträgt **drei Nächte**, zwei gehen nur auf Anfrage. Du wohnst dort in einem Ferienhaus, die Parkhotels in Rust und Brühl sind Themenhotels. Drei Nächte lohnen sich eher für eine Ostseewoche mit zwei Parktagen als für einen einzelnen Parktag.
 
+Die ersten Häuser entstanden 2007, geplant waren 109 Ferienwohnungen im skandinavischen Stil. Die
+Brücke, die vom Resort direkt in den Park führte, ist seit 2020 geschlossen. Hotels listet der Park
+in Haffkrug und Sierksdorf, fünf Minuten entfernt, in Timmendorfer Strand in 10 bis 15 Minuten und
+in Travemünde und Lübeck in 20 bis 25 Minuten.
+
+## Essen im Park
+
+Das Familienrestaurant Weltumsegler serviert Frühstück und Mittagessen, darunter vegane,
+vegetarische und glutenfreie Gerichte. Mittagessen unter Dach gibt
+es auch im Ristorante L'Artista und im Saloon „New Chance“, und das Café Rosa am Eingang hat 2024
+eröffnet. Die übrigen 16 Stände reichen von Joe's Grill 'N BBQ über Elins Vafflejern bis zur
+Zuckerwatte am Krantor von Danzig.
+
+Ein Picknick ist erlaubt. Der Park hat Picknickplätze, Liegewiesen und neben dem Kärnan die
+„Skandinaviske Hytter“, Hütten, in denen Gruppen sitzen können. Grillen und das Mitbringen von
+Grill- und Kochgeräten verbietet die Parkordnung. Hunde dürfen an der kurzen Leine mit, in Shows
+und Fahrattraktionen aber nicht.
+
 ## Praktisches: Anreise, Tickets, Parken
 
 **Anreise.** Am Fahrenkrog 1, 23730 Sierksdorf. Mit der Regionalbahn von Lübeck Richtung Neustadt
 bis Sierksdorf, von dort zehn Minuten zu Fuß, ausgeschildert; wer mit Kinderwagen oder Rollstuhl
 unterwegs ist, folgt am Bahnhof dem Wegweiser Richtung Strand und umgeht damit die Treppe.
+Mit dem Auto fährst du auf der A1 bis zur Ausfahrt 14 Neustadt-Mitte, von dort ist der Park
+ausgeschildert. Der Großparkplatz ist auch eine Haltestelle der Linienbusse von Autokraft. Mit der
+Ostsee-Card kostet der Küstenshuttle 1 € pro Fahrt, er fährt stündlich auf den Linien 550, 557 und
+575 von Dahme über Kellenhusen, Grömitz und Neustadt zum Park.
 
 **Parken.** **7 €** pro Tag für den PKW auf dem Großparkplatz, maximale Einfahrthöhe 2,30 Meter.
 Motorräder stehen kostenlos, Wohnmobile zahlen 15 € je angefangene zwölf Stunden. Für Elektroautos
 gibt es einen eigenen E-Parkplatz mit zehn Ladesäulen. Der Strom ist dort kostenlos, der Tag kostet
 aber **16 €**, mehr als das Doppelte des Großparkplatzes, und der Park bittet darum, nach dem Laden
-umzuparken. Die Kurzparkzone zum Bringen und Abholen ist 30 Minuten lang kostenlos.
+umzuparken. Die Kurzparkzone zum Bringen und Abholen ist 30 Minuten lang kostenlos. Der
+Großparkplatz hat 5.000 Plätze, das Ticket gilt nur für eine Einfahrt, und kostenlose
+Behindertenparkplätze liegen gegenüber dem Haupteingang am Fahrenkrog.
 
 **Tickets 2026.** Ab 12 Jahren **53 €**, Kinder von 4 bis 11 Jahren **43 €**, unter 4 Jahren frei,
 ab 70 Jahren 43 €. Wer am Geburtstag kommt und höchstens 12 wird, kommt kostenlos rein, das gibt es
@@ -287,6 +401,18 @@ Gesichtserkennung personalisiert.
 
 Der Online-Preis ist derselbe wie der Kassenpreis. In Soltau zahlst du an der Kasse bis zu 27 € mehr
 als online. Hier sparst du mit dem Vorverkauf nur die Warteschlange an der Kasse.
+
+**Gäste mit Behinderung.** Mit Schwerbehindertenausweis kostet der Tag 43 €, mit Merkzeichen H und
+1:1-Betreuung 29 €, mit aG oder Bl ist der Eintritt frei. Eine Begleitperson bei Merkzeichen B oder H
+zahlt 43 €. Diese Tickets gibt es nur an der Kasse.
+
+**Fast Pass.** Ein Express- oder Fast-Pass-Ticket steht nicht in der Preisübersicht 2026, an jeder
+Bahn stehen alle in derselben Warteschlange. Showzeiten und die Alters- und Größengrenzen jeder Bahn
+zeigt die HANSA-PARK-App.
+
+**Bezahlen.** An den Kassen im Park, nicht an den Ticketkassen am Eingang, nimmt der Park auch
+Geldscheine in gängigen Fremdwährungen und gibt Euro heraus. Einen Geldautomaten der Sparkasse
+Holstein gibt es links am Holstentor.
 
 **Saisonkarte.** Die für 2026 kostete ab Saisonbeginn 135 €. Die für 2027 kostet **120 €** bis
 zum 24. März 2027, danach 140 €. Wer volljährig ist und bis zum 25. Oktober 2026 kauft, parkt 2027
@@ -301,8 +427,7 @@ Zum 50. Geburtstag des Parks kommt der **Buddenbrook-Turm** im Hansa-Garten: ein
 Aussichtsturm von Funtime, in dem 60 Gäste gleichzeitig nach oben fahren, zwei davon im Rollstuhl.
 Der Name kommt aus Thomas Manns „Buddenbrooks“, in denen Hanno in den Sommerferien von Lübeck nach
 Travemünde fährt. Der Bau soll im Winter 2026/27 beginnen, eröffnen soll der Turm im Laufe der
-Saison 2027. Damit hat der Park gut zwei Jahre nach dem Abbau des Holsteinturms wieder einen
-Aussichtsturm.
+Saison 2027.
 
 Der
 [Super Splash](ref:hansa-park/super-splash?bare) von 1986 wird im Winter 2026/27 abgebaut, weil der
@@ -348,6 +473,16 @@ ab 1 m (allein ab 10), [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coast
 [Der kleine Zar](ref:hansa-park/the-little-tsar?bare) ab 90 cm auf dem Kindersitz (allein ab
 1,20 m).
 
+### Gibt es im Hansa-Park einen Fast Pass?
+
+Nein. In der Preisübersicht 2026 steht kein Express- oder Fast-Pass-Ticket, an allen Bahnen gilt
+dieselbe Warteschlange. Beim Kärnan legt ein Zufallsgenerator fest, in welcher Reihe du sitzt.
+
+### Wie viele Besucher hat der Hansa-Park?
+
+Rund 1,4 Millionen im Jahr, das schrieb die dpa 2023, und die deutsche Wikipedia nennt dieselbe Zahl
+für 2016. Rund 83 Prozent der Gäste waren nach Angaben des Parks schon einmal da.
+
 ### Was ist der Herbstzauber am Meer?
 
 Das Abendprogramm der letzten 16 Saisontage, vom 10. bis 25. Oktober 2026. Rund 2.000 Leuchtfiguren
@@ -370,15 +505,10 @@ und der Park kann dann auch die Öffnungszeiten ändern:
 
 ```
 
-Der [Heide Park](/blog/heide-park-wartezeiten-tipps) liegt
-131 Kilometer Luftlinie südwestlich und lässt sich in derselben Woche mitnehmen. Wie die beiden
+Hamburg liegt 78 Kilometer Luftlinie entfernt, der [Heide Park](/blog/heide-park-wartezeiten-tipps)
+131 Kilometer südwestlich, und er lässt sich in derselben Woche mitnehmen. Wie die beiden
 neben den übrigen Parks im Land abschneiden, steht in meinem
 [Ranking der deutschen Freizeitparks](/blog/beste-freizeitparks-in-deutschland).
-
-## Die Lage
-
-Hamburg liegt 78 Kilometer Luftlinie entfernt. Wer nur wegen
-der acht Achterbahnen kommt, ist am frühen Nachmittag durch.
 
 — Patrick
 
@@ -428,6 +558,49 @@ der acht Achterbahnen kommt, ist am frühen Nachmittag durch.
   Anreise mit der Bahn: [Bahn (offiziell)](https://www.hansapark.de/bahn/) · Zugverkehr nur noch
   bis Neustadt:
   [Bahnstrecke Lübeck–Puttgarden auf de.wikipedia](https://de.wikipedia.org/wiki/Bahnstrecke_L%C3%BCbeck%E2%80%93Puttgarden)
+- Showtheater 1983, Aqua-Stadion 1988, Rasender Roland und Rolltreppen 1993, Erweiterung 1997,
+  Barracuda Slide, Rio Dorado, Monte-Zuma, Hochseilgarten, Resort 2007, Eröffnungsjahre von
+  Fliegendem Hai, Torre del Mar und Glocke: [Meilensteine (offiziell)](https://www.hansapark.de/historie/) ·
+  15 Millionen DM und die Nina, „OK für Kids“, Holstentor-Enthüllung, Abbau von Monte-Zuma, Torre del
+  Mar, Fliegendem Hai und Glocke, Seelöwenshow, Corona-Saison, Seeschlange, Schanze am Super Splash,
+  Rio Dorado bis 2017, Resort mit 109 Wohnungen und geschlossener Brücke:
+  [Hansa-Park auf de.wikipedia](https://de.wikipedia.org/wiki/Hansa-Park)
+- Geschäftsleitung, überdachte Fläche, 5.000 Parkplätze, Mitarbeiter, Wiederholungsbesucher und
+  Durchschnittsalter: [Zahlen, Daten, Fakten (offiziell)](https://www.hansapark.de/zahlen-daten-fakten/) ·
+  Familie Leicht als Eigentümerin: [Hansa-Park auf en.wikipedia](https://en.wikipedia.org/wiki/Hansa-Park)
+- Rund 1,4 Millionen Besucher im Jahr:
+  [Volksstimme/dpa, 26. Juni 2023](https://www.volksstimme.de/leben/brandschutz-hansa-park-fur-den-sommer-gerustet-3639129)
+  · für 2016: [Hansa-Park auf de.wikipedia](https://de.wikipedia.org/wiki/Hansa-Park)
+- Eröffnungstag, Designer, Turmvorbild, Züge, Sitzreihen-Auslosung, Leinwand im Turm und Soundtrack
+  des Kärnan: [Der Schwur des Kärnan auf de.wikipedia](https://de.wikipedia.org/wiki/Der_Schwur_des_K%C3%A4rnan) ·
+  [Schwur des Kärnan auf rcdb.com](https://rcdb.com/11615.htm)
+- Längen, Geschwindigkeiten, Plätze und Testsitze der Achterbahnen:
+  [Achterbahnen (offiziell)](https://www.hansapark.de/achterbahnen/) ·
+  [Royal Scotsman auf rcdb.com](https://rcdb.com/983.htm) · [Seeschlange auf rcdb.com](https://rcdb.com/1466.htm)
+- Highlander, Sitze, Höhe über dem Meer und Bohrpfähle:
+  [HIGHLANDER (offiziell)](https://www.hansapark.de/attraktion/219/details/highlander)
+- Wasserbahnen mit Höhen, Längen und Baujahren: [Wasserbahnen (offiziell)](https://www.hansapark.de/wasserbahnen/)
+- Shows und Einlass:
+  [Varieté-Show (offiziell)](https://www.hansapark.de/attraktion/88/details/variete-show) ·
+  [Aquarena (offiziell)](https://www.hansapark.de/attraktion/92/details/aquarena) ·
+  [Laser- & Special Effekt Show (offiziell)](https://www.hansapark.de/attraktion/59/details/laser-und-special-effekt-show) ·
+  [Freilichtbühne (offiziell)](https://www.hansapark.de/attraktion/30/details/freilichtbuehne-alter-jahrmarkt) ·
+  [FAQs (offiziell)](https://www.hansapark.de/faqs/)
+- Schulferien:
+  [KMK, Ferien 2026/27](https://www.kmk.org/fileadmin/Dateien/pdf/Ferienkalender/FER2026_27.pdf)
+- Erntedank: [Erntedank (offiziell)](https://www.hansapark.de/erntedank/)
+- Anreise mit Auto und Bus, Küstenshuttle: [PKW (offiziell)](https://www.hansapark.de/pkw/) ·
+  [Bus (offiziell)](https://www.hansapark.de/bus/)
+- Preise für Gäste mit Behinderung und kein Fast Pass:
+  [Preisübersicht (offiziell)](https://www.hansapark.de/preisuebersicht/) · Fremdwährungen und
+  Geldautomat: [Zahlungsmöglichkeiten (offiziell)](https://www.hansapark.de/zahlungsmoeglichkeiten/) ·
+  [App (offiziell)](https://www.hansapark.de/app/)
+- Restaurants, Picknick, Grillverbot und Hunde:
+  [Essen & Trinken (offiziell)](https://www.hansapark.de/restaurants-snack-points/) ·
+  [Restaurant Weltumsegler (offiziell)](https://www.hansapark.de/attraktion/104/details/restaurant-weltumsegler) ·
+  [Picknick & Chill-Out (offiziell)](https://www.hansapark.de/picknick-chill-out/) ·
+  [Parkordnung (offiziell)](https://www.hansapark.de/parkordnung/) · Hotels in der Umgebung:
+  [Hotels (offiziell)](https://www.hansapark.de/hotels/)
 - Ferienhäuser und Mindestaufenthalt:
   [HANSA-PARK Resort am Meer (offiziell)](https://www.hansapark.de/hansa-park-resort/)
 - Öffnungstage Tag für Tag, Öffnungszeiten und Attraktionskatalog:

@@ -301,8 +301,7 @@ y stroopwafels, está justo enfrente de Langnek y se llama así porque Kogeloog 
 uno de los seis servidores de ese mismo cuento. En la fachada cuelgan su busto y
 marcos ovalados con los seis. El puesto existe desde 1967, cerró en 2002 por falta de ventas y está abierto de nuevo desde el 26 de abril de 2019.
 
-En el bosque de los cuentos nadie hace cola, y no hay límite de capacidad. Quien
-pasea por aquí no está haciendo cola en ninguna atracción, y esa es una de las
+En el bosque de los cuentos nadie hace cola, y no hay límite de capacidad. Los que pasean por aquí no están haciendo cola en ninguna atracción, y esa es una de las
 razones por las que un parque con casi seis
 millones de visitas tiene esperas soportables.
 
@@ -319,8 +318,6 @@ Medimos las esperas en Efteling desde el 26 de diciembre de 2025, en **casi 190
 días de apertura** hasta el 25 de septiembre de 2026. Sumando todos los días de la semana, la espera típica en el
 conjunto del parque queda **por debajo de la media hora** (mediana); en los
 momentos punta es más o menos vez y media eso.
-
-Las diez atracciones más demandadas:
 
 ```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
 
@@ -449,8 +446,7 @@ la primavera de 2026 volvió a subirse allí al escenario por su 25 aniversario.
 
 Efteling abre 365 días al año.
 
-**Por meses**, abril y septiembre son en nuestros datos los más tranquilos de los
-meses bien medidos. Mayo, junio y julio están muy juntos, agosto sube de forma
+**Por meses**, con todos los días de apertura medidos, abril y septiembre son los más tranquilos de los meses bien medidos. Mayo, junio y julio están muy juntos, agosto sube de forma
 perceptible, y el más duro es **diciembre**, es decir, la temporada Winter
 Efteling.
 
@@ -463,7 +459,11 @@ noviembre no tenemos hasta ahora ningún día aprovechable (a 25 de septiembre d
 aproximado. Los meses más tranquilos de todos los parques están en la
 [página de la mejor época](/mejor-epoca-para-visitar).
 
-**Por día de la semana**, las diferencias son mínimas:
+```stats-widget slug=efteling show=months
+
+```
+
+**Por día de la semana**, las diferencias son mínimas.
 
 ```stats-widget slug=efteling show=weekdays
 
@@ -477,15 +477,9 @@ a viernes como un bloque propio, y quien reserva así está el lunes en el parqu
 Con casi treinta días medidos por día de la semana, tampoco vendería diferencias tan pequeñas como recomendación.
 
 Más que el día de la semana cuenta si los colegios neerlandeses están de
-vacaciones, y después si lo están los alemanes. Los días más tranquilos que vienen:
+vacaciones, y después si lo están los alemanes.
 
 ```best-days-widget slug=efteling
-
-```
-
-Y la afluencia por meses, calculada con todos los días de apertura medidos:
-
-```stats-widget slug=efteling show=months
 
 ```
 
@@ -495,8 +489,7 @@ Aquí no hay nada que comprar que te salte la cola, tampoco un viaje suelto de
 precio dinámico como el que vende Phantasialand
 desde el último Wintertraum. Gratis hay baby switch para padres con niños pequeños,
 y siete atracciones tienen carril single rider, aunque desde 2026 el parque solo lo
-abre los días de muchísima afluencia. Quien duerme en el hotel entra **30 minutos
-antes**.
+abre los días de muchísima afluencia. Los huéspedes del hotel entran **30 minutos antes**.
 
 El **15 de septiembre de 2017** arrancó en Python el
 **Efteling Boarding Pass**, previsto como prueba de dos meses, que al final
@@ -581,7 +574,7 @@ minutos**, en los que no pasa nada. A última hora de la tarde,
 cuando la luz se vuelve rasante y las barcas pasan junto a la Pagode, es mi
 momento favorito de todo el parque.
 
-## Práctico: entradas, cómo llegar, comer, dormir
+## Entradas y cómo llegar
 
 **Entradas.** Los precios dependen de la fecha y en 2026 van de **40 a 56 €** por
 día, niños hasta tres años inclusive gratis. La entrada normal solo vale el día que
@@ -606,8 +599,7 @@ días bloqueados:
   10 % en restauración y tiendas, cuatro entradas de invitado con descuento en
   lugar de dos.
 
-Empieza a salir a cuenta a partir de la quinta o sexta visita. Quien llega como
-huésped del hotel se salta los días bloqueados de todos modos.
+Empieza a salir a cuenta a partir de la quinta o sexta visita. Los huéspedes del hotel se saltan los días bloqueados de todos modos.
 
 **Cómo llegar.** Kaatsheuvel está en Brabante Septentrional, a hora y media o dos
 horas largas de Düsseldorf y a algo más de dos de Colonia y del Ruhr, en ambos
@@ -761,8 +753,6 @@ nuevo y la nueva Ravenring. Después vienen la Sprookjesbibliotheek en 2027 y Mi
 en 2029.
 
 ## Tiempo y esperas actuales
-
-El tiempo en Kaatsheuvel:
 
 ```weather-widget slug=efteling
 

@@ -101,9 +101,7 @@ mirar si no le toca montar.
 
 [Objectif Mars](ref:futuroscope/destination-mars) funciona desde 2020 y, junto a la montaña rusa infantil
 Le Balancier de Futuropolis, es la única montaña rusa del parque. La construyó Intamin como
-launched coaster con vehículos giratorios, es decir, un spinning coaster. El parque la define
-como montaña rusa familiar y da una velocidad máxima de 55 km/h; el recorrido pasa por un
-edificio y sale al aire libre. Debía abrir el 28 de marzo de 2020; por el cierre de la pandemia
+launched coaster con vehículos giratorios, es decir, un spinning coaster. Para el parque es una montaña rusa familiar, con una velocidad máxima de 55 km/h. El recorrido pasa por un edificio y sale al aire libre. Debía abrir el 28 de marzo de 2020; por el cierre de la pandemia
 arrancó en junio de 2020, al principio solo los fines de semana.
 
 Se sube desde 1,10 metros acompañado y desde 1,20 metros solo, y el máximo es de 1,95 metros. El
@@ -138,8 +136,7 @@ personas con epilepsia y con tendencia al mareo.
 [Danse avec les Robots](ref:futuroscope/dances-with-robots) es un robocoaster: uno va sentado en
 el brazo de un robot industrial que baila con éxitos del DJ Martin Solveig. El trayecto dura
 alrededor de un minuto. El pabellón de los robots abrió en 2006, el año de los robots, y la
-versión con Solveig es de diciembre de 2012. El parque habla de un robot de nueve metros de
-altura.
+versión con Solveig es de diciembre de 2012. El robot mide nueve metros de altura, según el parque.
 
 Desde 1,20 metros, también acompañado, hasta 2,00 metros.
 
@@ -180,7 +177,7 @@ Futuropolis es la zona exterior para niños, de tres hectáreas, abierta en 1988
 Enfants y con el nombre actual desde 2018. La Wikipedia francesa cuenta 21 atracciones y zonas
 de juego, entre ellas carruseles de Heege, Zierer y Zamperla.
 
-Hay pulseras de cuatro colores, escalonados por altura. Los límites que el parque indica en las
+Las pulseras son de cuatro colores, escalonados por altura. Los límites que el parque indica en las
 atracciones:
 
 | Atracción                                            | acompañado desde | solo desde |
@@ -218,9 +215,7 @@ también con lluvia, siempre que el tiempo no sea excepcional. Se ven imágenes 
 luces y pirotecnia. El espectáculo funciona desde junio de 2021 y sustituyó a La Forge aux Étoiles,
 diseñada por gente del Cirque du Soleil.
 
-De día hay otros dos espectáculos. **Éclipse, robotic show** se creó en 2024 con el Cirque Éloize
-en el antiguo pabellón IMAX 3D y combina videomapping, láseres y drones. **IllusiO, un destin
-magique** es un espectáculo de ilusionismo de 25 minutos que se ofrece los fines de semana y en
+**Éclipse, robotic show** se representa de día y se creó en 2024 con el Cirque Éloize en el antiguo pabellón IMAX 3D. Combina videomapping, láseres y drones. El segundo espectáculo de día, **IllusiO, un destin magique**, es un espectáculo de ilusionismo de 25 minutos que se ofrece los fines de semana y en
 las vacaciones escolares.
 
 Quien solo quiera la noche compra una entrada Soirée (acceso desde las 17:00) o una Nocturne
@@ -323,7 +318,7 @@ incluye.
 Futuroween empieza el sábado 17 de octubre, un día antes de las vacaciones de otoño. A partir del
 18 de octubre el parque abre, según el calendario, todos los días de 9:45 a 22:00.
 
-## Entradas, tarjetas y precios
+## Entradas y precios
 
 En taquilla, una entrada de día con fecha cuesta 59 euros para adultos y 49 euros para niños de
 5 a 12 años. Online el precio depende de la fecha. Para 2026 el parque anuncia el Billet Tribu a

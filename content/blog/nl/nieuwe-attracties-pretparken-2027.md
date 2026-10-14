@@ -95,43 +95,43 @@ Daarnaast gaan in 2027 twee verbouwde attracties weer open, Carousel of Progress
 
 ## Duitsland
 
-### Hansa-Park: Buddenbrook-Turm
+### Buddenbrook-Turm in Hansa-Park
 
-[Hansa-Park](ref:hansa-park) zet de Buddenbrook-Turm op zijn website bij “Nieuw 2027”. Hij moet “in de loop van het seizoen” opengaan, een maand noemt het park niet. De toren komt in de themawereld Hansa-Garten, en op de attractiepagina staat hij met twee symbolen, “Indoor of overdekt” en “Voor gasten met een beperking”. Hoogte, fabrikant en capaciteit staan er niet bij, en ook niet of je naar boven rijdt of klimt. Een blok met cijfers en gegevens, zoals de andere attracties op die site hebben, ontbreekt voor de toren nog.
+[Hansa-Park](ref:hansa-park) zet de Buddenbrook-Turm op zijn website bij “Nieuw 2027”. Hij moet “in de loop van het seizoen” opengaan, zonder maand. De toren komt in de themawereld Hansa-Garten, en op de attractiepagina staat hij met twee symbolen, “Indoor of overdekt” en “Voor gasten met een beperking”. Hoogte, fabrikant en capaciteit staan er niet bij, en ook niet of je naar boven rijdt of klimt. Een blok met cijfers en gegevens, zoals de andere attracties op die site hebben, ontbreekt voor de toren nog.
 
 Waar de naam vandaan komt, schrijft het park er ook niet bij. “De Buddenbrooks” is de roman van Thomas Mann over een koopmansfamilie uit Lübeck, en Lübeck ligt ruim 30 kilometer ten zuiden van Sierksdorf. Hansa-Park ging op 15 mei 1977 open, dus 2027 wordt zijn vijftigste seizoen. Volgens het park loopt dat van 25 maart tot en met 24 oktober 2027.
 
 Op 23 mei 2026 opende het park met de Cornwall Coaster zijn achtste achtbaan. Volgens de attractiepagina heeft de baan van Gerstlauer zeven launches over zo'n 570 meter, haalt hij tot 50 km/u en is hij 18 meter hoog. In het persbericht van maart stonden nog zes launches. Wachttijden meten we in Hansa-Park niet, het park toont ze alleen in zijn eigen app. Wat je verder moet weten, staat in de [gids over Hansa-Park](/blog/hansa-park-tips).
 
-### Europa-Park: Pre-Opening Weeks en drie gezinsattracties
+### Pre-Opening Weeks en drie gezinsattracties in Europa-Park
 
 In [Europa-Park](ref:europa-park) komt er in 2027 geen nieuwe achtbaan bij. Het park gaat in plaats daarvan eerder open dan anders. Van 7 tot en met 19 maart lopen voor het eerst Pre-Opening Weeks met goedkopere tickets, en het zomerseizoen begint op 20 maart. De details staan in [ons bericht over de Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027). [Euro-Mir](ref:europa-park/euro-mir) rijdt nog tot 9 januari 2027, daarover gaat het verderop onder “Wat in 2027 verdwijnt”.
 
 Daar komen drie gezinsattracties bij die het park op 8 oktober 2026 heeft aangekondigd. Openingsdata noemt het voor geen van drieën, meer informatie wil het “op een later moment” publiceren. De rest staat in [ons bericht over de drie nieuwtjes](/news/europa-park-drie-nieuwe-familieattracties-2027).
 
-### Europa-Park: Wild Swing XL in Portugal
+### Wild Swing XL in het Portugese gebied van Europa-Park
 
-In het Portugese themagebied komt een Wild Swing XL, een reuzenschommel op meer dan 14 meter hoogte boven het Portugese meer. Volgens het park combineert hij spanning met rijplezier en is hij bedoeld voor alle leeftijden. Fabrikant, minimumlengte, passagiers per rit en ritduur noemt het park niet. In Portugal rijdt tot nu toe alleen de waterachtbaan [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), die MACK Rides in 2005 bouwde. De schommel wordt de tweede rit-attractie in het themagebied, een openingsdatum is er niet.
+In het Portugese themagebied komt een Wild Swing XL, een reuzenschommel op meer dan 14 meter hoogte boven het Portugese meer. Volgens het park combineert hij spanning met rijplezier en is hij bedoeld voor alle leeftijden. Fabrikant, minimumlengte, passagiers per rit en ritduur ontbreken in de aankondiging. In Portugal rijdt tot nu toe alleen de waterachtbaan [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), die MACK Rides in 2005 bouwde. De schommel wordt de tweede rit-attractie in het themagebied, een openingsdatum is er niet.
 
-### Europa-Park: een toren in IJsland
+### Een toren in het IJslandse gebied van Europa-Park
 
 Tussen de houten achtbaan [WODAN - Timburcoaster](ref:europa-park/wodan-timburcoaster) en de megacoaster [blue fire](ref:europa-park/blue-fire-megacoaster) opent in 2027 een torenattractie. Volgens het park besturen gasten hem zelf en kijken ze van boven over het IJslandse gebied, ook naar beneden op de haven. De toren heeft nog geen naam, en hoogte, fabrikant, minimumlengte en openingsdatum ontbreken.
 
-### Europa-Park: Enzo's Piccolo Mondo
+### Enzo's Piccolo Mondo in Europa-Park
 
-De gondelrit [Piccolo Mondo](ref:europa-park/piccolo-mondo) in het Italiaanse themagebied begeleidt volgens het park al meer dan 40 jaar de kleinste bezoekers en komt in 2027 “in nieuwe glans” terug. Als inhoud noemt het park kunst, klassiek toneel en Italiaanse muziek. Of de rit eerst dichtgaat, laat de aankondiging open, net als hoeveel scènes er zijn en welke nieuw zijn. De rit opende in 1982 en komt van MACK Rides, in elke gondel passen zes personen. Een openingsdatum noemt het park niet.
+De gondelrit [Piccolo Mondo](ref:europa-park/piccolo-mondo) in het Italiaanse themagebied begeleidt volgens het park al meer dan 40 jaar de kleinste bezoekers en komt in 2027, zonder precieze datum, “in nieuwe glans” terug. Als inhoud noemt het park kunst, klassiek toneel en Italiaanse muziek. Of de rit eerst dichtgaat, laat de aankondiging open, net als hoeveel scènes er zijn en welke nieuw zijn. De rit opende in 1982 en komt van MACK Rides, in elke gondel passen zes personen.
 
-### Rulantica: Nørd Havn
+### Nørd Havn in Rulantica
 
 In het waterpark [Rulantica](ref:rulantica) komt Nørd Havn, een gebouw met twee verdiepingen. Beneden zit een restaurant, boven liggen ligplekken in drie zones: binnen, in een wintertuin en buiten op terrassen. Een glijbaan hoort er niet bij. Het park schrijft dat Nørd Havn “eind 2027 zijn deuren opent”.
 
 ### Phantasialand, Heide Park, Movie Park en de andere parken
 
-[Phantasialand](ref:phantasialand), [Heide Park](ref:heide-park), [Movie Park Germany](ref:movie-park-germany), [Legoland Deutschland](ref:legoland-deutschland) en [Plopsaland Deutschland](ref:plopsaland-deutschland) hebben nog geen nieuwigheid voor 2027 bevestigd. Bij Phantasialand hangt alles wat groter is af van de uitbreiding naar het gebied bij de Ententeich. Daarvoor bestaat nog geen bestemmingsplan, en sinds 28 september worden er handtekeningen tegen verzameld. Wat het park daar wil bouwen, staat in [ons bericht over het burgerinitiatief](/blog/phantasialand-uitbreiding-burgerinitiatief). Movie Park staat samen met zijn moederbedrijf Parques Reunidos te koop, en een aankondiging voor 2027 is er van die kant niet.
+[Phantasialand](ref:phantasialand), [Heide Park](ref:heide-park), [Movie Park Germany](ref:movie-park-germany), [Legoland Deutschland](ref:legoland-deutschland) en [Plopsaland Deutschland](ref:plopsaland-deutschland) hebben nog geen nieuwigheid voor 2027 bevestigd. Bij Phantasialand hangt alles wat groter is af van de uitbreiding naar het gebied bij de Ententeich. Daarvoor bestaat nog geen bestemmingsplan, en sinds 28 september worden er handtekeningen tegen verzameld. In [ons bericht over het burgerinitiatief](/blog/phantasialand-uitbreiding-burgerinitiatief) staat wat het park daar wil bouwen. Movie Park staat samen met zijn moederbedrijf Parques Reunidos te koop, en een aankondiging voor 2027 is er van die kant niet.
 
 ## Benelux
 
-### Plopsaland Belgium: Flying Cinema
+### Flying Cinema in Plopsaland Belgium
 
 Het Flying Cinema in [Plopsaland Belgium](ref:plopsaland-belgium) is de nieuwigheid met de vroegste datum. Voor iedereen gaat het open op zaterdag 13 maart 2027. Al vanaf 19 december 2026 draait het op geselecteerde dagen voor wie een jaarabonnement heeft en voor gasten die in het park overnachten. Er wordt sinds eind september 2025 aan gebouwd.
 
@@ -139,31 +139,31 @@ Het is een flying theatre. Je zit in een gondel die voor een grote projectiekoep
 
 Het Flying Cinema hoort bij Plopsaland Plaza, met 25 miljoen euro de grootste investering in de geschiedenis van het park. Op de Plaza komen verder een grand café, een bowlingbaan, speelautomaten en een nieuw station voor de Plopsa Express. Op zomeravonden blijft de Plaza na sluitingstijd van het park vrij toegankelijk, en voor het Flying Cinema koop je dan een apart ticket. Volgens de eerste aankondiging draaien er 's avonds andere films dan overdag. Met de Plaza wil Plopsa naar twee miljoen bezoekers per jaar.
 
-### Efteling: de Sprookjesbibliotheek
+### De Sprookjesbibliotheek in de Efteling
 
 In het Sprookjesbos van de [Efteling](ref:efteling) komt het 32e sprookje, de Sprookjesbibliotheek. Die staat op de plek waar tot maart 2026 de Chinese Nachtegaal stond. Je gaat een negen meter hoog gebouw binnen vol boeken met verhalen die een sprookjesverzamelaar op zijn reizen heeft bijeengebracht, en daar horen zeven ijverige dwergen bij. Het geraamte van het gebouw staat volgens het park al. Op de pagina “Nieuw in de Efteling” staat “Nieuw vanaf 2027”, zonder maand.
 
 De Chinese Nachtegaal in zijn laatste vorm was een ontwerp van Ton van de Ven en stond in die vorm sinds 1999 in het bos. Het gebouw was in slechte staat, en op 9 maart 2026 begonnen de werkzaamheden. De Nachtegaal komt in een nieuwe vorm terug, in de buurt van de oude plek, maar wanneer en hoe zegt de Efteling nog niet. De siertuin ervoor blijft. Het sprookje hoort bij de tien waarmee het Sprookjesbos in 1952 openging.
 
-Vóór de bibliotheek komt er in de Efteling nog iets anders. Op 1 december 2026 gaat het themagebied Raveleijn na bijna een jaar verbouwing weer open, met een stuntshow die het park samen met Puy du Fou heeft ontwikkeld en de Ravenring van Vekoma, voor samen 20 miljoen euro. Dat staat in [ons bericht over Raveleijn](/blog/efteling-raveleijn-ravenring). De volgende achtbaan van de Efteling, Missie Luminar, staat pas voor 2029 gepland en wordt de eerste suspended launch coaster van het park. Hoe druk het op welke dag in de Efteling is, lees je in de [Efteling-gids](/blog/efteling-disney-van-nederland).
+Vóór de bibliotheek komt er in de Efteling nog iets anders. Op 1 december 2026 gaat het themagebied Raveleijn na bijna een jaar verbouwing weer open, met een stuntshow die het park samen met Puy du Fou heeft ontwikkeld en de Ravenring van Vekoma, voor samen 20 miljoen euro. Dat staat in [ons bericht over Raveleijn](/blog/efteling-raveleijn-ravenring). De volgende achtbaan van de Efteling, Missie Luminar, staat pas voor 2029 gepland en wordt de eerste suspended launch coaster van het park. In de [Efteling-gids](/blog/efteling-disney-van-nederland) lees je hoe druk het op welke dag in de Efteling is.
 
-### Bobbejaanland: een nieuw themagebied
+### Een nieuw themagebied in Bobbejaanland
 
 [Bobbejaanland](ref:bobbejaanland) bouwt aan een nieuw themagebied voor 2027. Op de site van het park staat er tot nu toe één zin over, in een bericht voor wie met de auto komt. Door de werken aan de “nieuwe zone van 2027” zijn de laadpalen op het parkeerterrein buiten gebruik. Welke attracties erbij horen, wie ze bouwt en wat het gebied kost, heeft het park op zijn eigen pagina's nog niet gepubliceerd. Het gebied staat in de lijst omdat het park het voor 2027 noemt. Net als Movie Park hoort Bobbejaanland bij Parques Reunidos, en over de verkoop van die groep gaat [een apart artikel](/blog/parques-reunidos-te-koop-movie-park).
 
 ## Frankrijk
 
-### Disney Adventure World: Wilderness Explorers Sky Swings
+### Wilderness Explorers Sky Swings in Disney Adventure World
 
 In het tweede park van Disneyland Paris, dat nu [Disney Adventure World](ref:disney-adventure-world) heet, komt in 2027 de eerste attractie rond Pixars “Up” in een Disney-park. De Wilderness Explorers Sky Swings zijn een zweefmolen voor gezinnen die hoog in de lucht ronddraait, zodat je over het park uitkijkt. Hij staat aan Adventure Way tegenover Raiponce Tangled Spin, met een tuin in de stijl van de film erbij. Een maand en een fabrikant geeft Disney niet.
 
-Voor het themagebied rond “De Leeuwenkoning”, dat Disney in hetzelfde park bouwt, is er nog altijd geen jaar. Wat je voor een dag in de twee Disney-parken moet weten, staat in de [gids over Disneyland Paris](/blog/disneyland-paris-wachttijden-tips).
+Voor het themagebied rond “De Leeuwenkoning”, dat Disney in hetzelfde park bouwt, is er nog altijd geen jaar. In de [gids over Disneyland Paris](/blog/disneyland-paris-wachttijden-tips) staat wat je voor een dag in de twee Disney-parken moet weten.
 
-### Parc Astérix: uitbreiding van het Griekse gebied
+### Uitbreiding van het Griekse gebied in Parc Astérix
 
-[Parc Astérix](ref:parc-asterix) breidt in 2027 zijn Griekse themagebied uit met twee familieattracties, een speeltuin en het restaurant La Table de Dionysos met 450 plaatsen. Namen en fabrikant van de twee attracties staan niet in de persruimte van het park. Naast het park opent in het voorjaar van 2027 ook Hotel L'Odyssée, met 300 kamers en ingericht naar de reizen van Asterix en Obelix naar de Oriënt. Waar je in Parc Astérix nu het langst in de rij staat, lees je in de [gids over Parc Astérix](/blog/parc-asterix-wachttijden-tips).
+[Parc Astérix](ref:parc-asterix) breidt in 2027 zijn Griekse themagebied uit met twee familieattracties, een speeltuin en het restaurant La Table de Dionysos met 450 plaatsen. Namen en fabrikant van de twee attracties staan niet in de persruimte van het park. Naast het park opent in het voorjaar van 2027 ook Hotel L'Odyssée, met 300 kamers en ingericht naar de reizen van Asterix en Obelix naar de Oriënt. In de [gids over Parc Astérix](/blog/parc-asterix-wachttijden-tips) lees je waar je daar nu het langst in de rij staat.
 
-### Nigloland: Supersonic 1887
+### Supersonic 1887 in Nigloland
 
 In [Nigloland](ref:nigloland) in Dolancourt, in de Champagne, komt Supersonic 1887, een achtbaan van Mack Rides, 47 meter hoog en volgens het park “bijna 100 km/u” snel. Het project kost 18 miljoen euro, de grootste investering in de geschiedenis van het park, en gaat terug tot 2022. De trein heeft het team van het park zelf ontworpen.
 
@@ -177,11 +177,11 @@ De baan staat in een nieuw gebied rond de wereldtentoonstelling van 1887, waarin
 
 ## Groot-Brittannië
 
-### Chessington World of Adventures: Minecraft World
+### Minecraft World in Chessington World of Adventures
 
 In [Chessington](ref:chessington-world-of-adventures), in het zuidwesten van Londen, opent in 2027 Minecraft World, volgens Merlin en Mojang het eerste themagebied rond de game in een groot pretpark. Het project kost 50 miljoen pond. Er komen een Minecraft-achtbaan die er volgens Merlin nergens anders is, interactieve attracties, speelplekken van blokken, winkels en restaurants. Op 26 september 2026 kondigde Merlin daarnaast een Minecraft-hotel bij het park aan, ook voor 2027. Naam, fabrikant en rijgegevens van de achtbaan staan in geen van beide persberichten.
 
-### Paultons Park: Serpent's Curse
+### Serpent's Curse in Paultons Park
 
 [Paultons Park](ref:paultons-park) bij Southampton bouwt een waterachtbaan van Mack Rides, volgens het park zelf een van de grootste attracties die het ooit heeft gebouwd. Serpent's Curse heeft een lifthill en snelle bochten en eindigt met een plons in het water. De baan komt in een uitbreiding van Valgard, het Vikinggebied van het park, en is bedoeld voor gezinnen met oudere kinderen en voor tieners.
 
@@ -189,23 +189,23 @@ Een datum geeft het park niet (“de precieze datum staat nog niet vast”), een
 
 ## Scandinavië
 
-### Djurs Sommerland: Midgårdsormen
+### Midgårdsormen in Djurs Sommerland
 
 Midgårdsormen in [Djurs Sommerland](ref:djurs-sommerland) is een Hot Racer van Intamin, een achtbaan op één enkele rail met wagens waarin de gasten op één rij achter elkaar zitten. De gegevens van het park: 603 meter baan, 23 meter hoog, 75 km/u, twee launches, drie inversies, een rit van ongeveer 107 seconden en een minimale lengte van 120 centimeter. Het park noemt het de hoogste en snelste baan van dit type in Europa.
 
 Het is de tiende achtbaan van het park en de eerste met inversies. In een persbericht dat ook een restaurant, een speeltuin en een winkel in het uitgebreide gebied opsomt, spreekt Djurs Sommerland van een investering van meer dan 100 miljoen kronen, ruim 13 miljoen euro. Het Vikinggebied Vikingeland wordt daarvoor 15.000 vierkante meter groter, naast de achtbaan Thors Hammer uit 2002. Het thema is de zeeslang uit de Noorse mythologie waar de baan naar heet. In het voorjaar van 2027 verloot het park negen plaatsen als testpiloot, een openingsdatum is er nog niet.
 
-### Gröna Lund: SCORE!
+### SCORE! in Gröna Lund
 
 Achter een bouwhek midden in [Gröna Lund](ref:grona-lund) in Stockholm wordt SCORE! gebouwd, een interactieve darkride in een hal die in 2027 opengaat. De voertuigen komen van Vekoma, rijden zonder rails en worden met radar gestuurd, en JoraVision heeft de hal samen met het ontwerpteam van het park vormgegeven. Wie samen in een wagen zit, verzamelt tijdens de vierenhalve minuut punten en speelt tegen de anderen. Het park noemt de attractie wereldwijd uniek en rekent op maximaal 540 gasten per uur.
 
-### Liseberg: Oceana
+### Oceana in Liseberg
 
 [Liseberg](ref:liseberg) in Göteborg bouwt het waterpark Oceana, zo'n 13.600 vierkante meter groot, waarvan 6.000 binnen en 4.000 buiten. Er komen vier grotere glijbanen, drie kinderzones, een golfslagbad en een rivier voor gezinnen. Volgens Liseberg gaat Oceana “begin 2027” open.
 
 ## VS
 
-### Six Flags Great Adventure: Bakunawa
+### Bakunawa in Six Flags Great Adventure
 
 De hoogste nieuwigheid van het jaar staat in New Jersey. Bakunawa in [Six Flags Great Adventure](ref:six-flags-great-adventure) is een spinning launch coaster van Mack Rides, 116 meter hoog en tot 161 km/u snel. Six Flags noemt hem de hoogste en snelste spinning coaster ter wereld en somt zes records op, waaronder de eerste launch waarbij de trein ondersteboven hangt en de eerste floorless spinning coaster. Six Flags vermeldt de fabrikant zelf niet, Mack Rides heeft in een eigen bericht bevestigd dat het de baan bouwt.
 
@@ -213,49 +213,49 @@ De baan is 964 meter lang, de rit duurt 2 minuten en 17 seconden. De trein wordt
 
 Over de hoogte zijn twee pagina's van Six Flags het niet eens. Volgens een blogbericht van 3 juli 2026 had de toren toen zijn volle hoogte van 375 voet bereikt, op de parkpagina en bij Mack Rides staat 382 voet, ofwel 116 meter.
 
-### Six Flags Magic Mountain: Thrill Glider
+### Thrill Glider in Six Flags Magic Mountain
 
 De Thrill Glider in [Six Flags Magic Mountain](ref:six-flags-magic-mountain) is een nieuw type van Vekoma, de eerste “Thrillglider”. Je ligt op je buik in een “Hovercycle”, met je gezicht naar voren, en hangt onder de rails. De baan is bijna 33 meter hoog, 1.030 meter lang, haalt tot 80 km/u en heeft vijf inversies en twaalf airtimemomenten. Op de parkpagina staan twee launches en twee treinen met elk 16 plaatsen. Minimale lengte 122 centimeter.
 
 Voor de ritduur bestaan twee opgaven, 80 seconden in het persbericht van 10 september 2026 en 1 minuut 24 seconden op de parkpagina. De baan komt op de plek van het vroegere Golden Bear Theatre, tussen Full Throttle en Lex Luthor: Drop of Doom. Meer daarover, ook over het verhaal dat in de wachtrij wordt verteld, staat in [ons bericht van 3 oktober](/blog/thrill-glider-six-flags-magic-mountain). In hetzelfde park rijdt [X2](ref:six-flags-magic-mountain/x2) sinds 12 juli 2026 niet meer, en op 29 september heeft Six Flags de baan definitief buiten dienst gesteld. In geen van beide berichten legt Six Flags een verband tussen de sluiting en de Thrill Glider. De achtergrond staat in [ons bericht over de sluiting](/blog/x2-six-flags-magic-mountain-gesloten).
 
-### Universal Studios Florida: Fast & Furious: Hollywood Drift
+### Fast & Furious: Hollywood Drift in Universal Studios Florida
 
 De baan die op 16 september 2026 in Hollywood openging, komt in 2027 ook naar Orlando. In [Universal Studios Florida](ref:universal-studios-florida) vervangt Fast & Furious: Hollywood Drift de vroegere achtbaan Hollywood Rip Ride Rockit. Universal beschrijft wagens die 360 graden draaien, alsof ze driften, en een verticale “spike” van 52 meter die de gasten boven de rand van Universal CityWalk uit tilt.
 
 Universal kondigde de baan op 20 januari 2026 aan en heeft sindsdien geen preciezere datum genoemd dan 2027. Of de baan in Orlando dezelfde gegevens heeft als in Hollywood, zegt Universal niet. De Californische versie is van Intamin, haalt tot 116 km/u en heeft vier launches. Dat staat in [ons bericht over de opening in Hollywood](/blog/hollywood-drift-universal-studios-hollywood).
 
-### Six Flags Fiesta Texas: Werewolf Gorge
+### Werewolf Gorge in Six Flags Fiesta Texas
 
 [Six Flags Fiesta Texas](ref:six-flags-fiesta-texas) in San Antonio viert in 2027 zijn 35e seizoen en bouwt daarvoor Werewolf Gorge, een family launch coaster van Vekoma. Met 1.256 meter is het volgens Six Flags en Vekoma de langste in zijn soort. De rit duurt 2 minuten en 36 seconden en heeft vier launches met lineaire motoren, een rollback halverwege de baan en 32 airtimemomenten. Sneller dan 72 km/u gaat hij niet, de eerste launch brengt de trein in drie seconden van 10 naar 69 km/u.
 
 De minimale lengte is 99 centimeter. De hoogste afdaling is 12 meter, in totaal gaat het 26 meter op en neer. Drie treinen met elk 16 plaatsen rijden op ruim een hectare. Het verhaal speelt in de oude steengroeve waar het park echt in ligt, rond een weerwolf en een bezienswaardigheid langs de weg.
 
-### Silver Dollar City: Miner's Mountain Express
+### Miner's Mountain Express in Silver Dollar City
 
 [Silver Dollar City](ref:silver-dollar-city) in Missouri bouwt samen met Mack Rides een familieachtbaan voor het voorjaar van 2027. Miner's Mountain Express is 1.083 meter lang en volgens het park de langste familieachtbaan in het Midwesten van de VS. De baan heeft twee lifthills, waarvan de hoogste 30 meter, en 15 airtimemomenten, meer dan elke andere baan in het park. Een rit duurt 3 minuten en 18 seconden, en kinderen mogen vanaf 99 centimeter mee onder begeleiding.
 
 De baan rijdt door het nieuwe gebied Daredevil Pass, tussen Wildfire, Powder Keg en American Plunge. Erboven staat een schachtbok van 15 verdiepingen uit een echte mijn in Missouri. Het verhaal gaat terug op de Marble Cave Mining Company, die in de jaren 1880 op het terrein actief was. Mack Rides bouwde voor het park eerder al Time Traveler.
 
-### Six Flags Great America: Camp Timber Trail
+### Camp Timber Trail in Six Flags Great America
 
 In [Six Flags Great America](ref:six-flags-great-america) bij Chicago wordt het gebied Yukon Territory, dat er sinds de opening in 1976 is, omgebouwd tot Camp Timber Trail. Daar horen negen attracties bij. Nieuw zijn Sky Hawk, een suspended family coaster die volgens het park de langste, hoogste en snelste in zijn soort in het Midwesten is, verder een pad met dieren dat Trail Trotters heet en de speeltuin Forest Grove Play Park.
 
 Vier bestaande attracties krijgen een nieuw thema en een nieuwe naam. Sprocket Rockets heet dan Chirp Chaser, Crazy Bus wordt Wilderness Wagon, Yahoo River wordt Creek Cruiser en Buzzy Beez wordt Bee Boppin'. De houten achtbaan Little Dipper en de boomstammenbaan [Logger's Run](ref:six-flags-great-america/loggers-run) blijven zoals ze zijn. Fabrikant en rijgegevens van Sky Hawk vermeldt Six Flags niet. Het park noemt Camp Timber Trail de eerste stap van een verbouwing over meerdere jaren.
 
-### Carowinds: Rip Roarin' Falls
+### Rip Roarin' Falls in Carowinds
 
 [Carowinds](ref:carowinds) op de grens van North en South Carolina bouwt een waterbaan met drie wereldrecords. Rip Roarin' Falls is een super flume van WhiteWater met boten voor acht personen. Aan het eind gaat het 30 meter naar beneden, met tot 80 km/u. Onderweg veranderen twee wissels de rijrichting, zodat de boot ook achteruit vaart. De records zijn de hoogste afdaling van een waterbaan, de hoogste achterwaartse afdaling met 13 meter en de hoogste achterwaartse heuvel met bijna 10 meter.
 
 De baan is 683 meter lang, een rit duurt zes en een halve minuut. Hij staat op de plek van Rip Roarin' Rapids, een wildwaterbaan die in 2019 dichtging, en de ingang ligt in de Thrill Zone bij Fury 325. Kinderen mogen vanaf 89 centimeter mee onder begeleiding en vanaf 104 centimeter alleen. In het infokader van hetzelfde persbericht staat een inch meer.
 
-### Disney's Hollywood Studios: Monstropolis
+### Monstropolis in Disney's Hollywood Studios
 
 In [Disney's Hollywood Studios](ref:disneys-hollywood-studios) opent in 2027 een deel van het themagebied Monstropolis, rond “Monsters en Co.”. De achtbaan met de deuren hoort daar nog niet bij, volgens Disney wordt er nog aan gebouwd. Een jaar voor de baan noemt Disney niet. Bekend is alleen dat het de eerste suspended coaster in een Disney-park wordt en als eerste een verticale lift krijgt.
 
 In 2027 openen de Glob Theater Show “Welcome to Monstropolis”, met Mike en Sulley als gastheren en een lied van Randy Newman, het restaurant Archie's Scare Pig Pizza met de Monsters University Alumni Club ernaast, het restaurant Harryhausen's met een sushikok als audio-animatronic en de winkel Scareporium. Voor het nieuwe gebied sloot Disney in 2025 het gebied Grand Avenue. Muppet*Vision 3D draaide daar op 7 juni 2025 voor het laatst, en de Muppets hebben de [Rock 'n' Roller Coaster](ref:disneys-hollywood-studios/rock-n-roller-coaster-starring-aerosmith) overgenomen.
 
-### Disney's Animal Kingdom: Tropical Americas
+### Tropical Americas in Disney's Animal Kingdom
 
 In [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park) komt Tropical Americas, een themagebied over Midden- en Zuid-Amerika met het dorp Pueblo Esperanza in het midden. Er horen twee ride-throughs bij, Antonio's Fiesta de Encanto in het huis van de familie Madrigal uit “Encanto” en Indiana Jones and the Myth of the Jade Serpent in een Mayatempel, en verder een draaimolen met dieren. Disney schrijft op de Parks Blog “wanneer het in 2027 opent”, op disneyexperiences.com staat “Set to open in 2027”. Een maand noemt Disney niet.
 
@@ -271,15 +271,11 @@ In [Hersheypark](ref:hersheypark) krijgt sooperDooperLooper, een achtbaan uit 19
 
 ## Hoe lang je nu in deze parken in de rij staat
 
-Wie in 2027 voor een nieuwigheid naar een van deze parken gaat, staat daar ook bij alle andere attracties in de rij. In de twee tabellen staan de parken met een nieuwe achtbaan of een nieuw themagebied waarvoor wij wachttijden meten, telkens met de weekdag waarop de wachttijd daar het kortst is. De nieuwigheid zelf zit nog niet in deze waarden. Uit Hansa-Park komen bij ons geen wachttijden binnen.
-
-In Europa:
+Wie in 2027 voor een nieuwigheid naar een van deze parken gaat, staat daar ook bij alle andere attracties in de rij. In de twee tabellen staan, eerst voor Europa en dan voor de VS, de parken met een nieuwe achtbaan of een nieuw themagebied waarvoor wij wachttijden meten, telkens met de weekdag waarop de wachttijd daar het kortst is. De nieuwigheid zelf zit nog niet in deze waarden. Uit Hansa-Park komen bij ons geen wachttijden binnen.
 
 ```park-comparison-widget slugs=chessington-world-of-adventures,parc-asterix,disney-adventure-world,plopsaland-belgium,nigloland,djurs-sommerland,paultons-park show=quietest
 
 ```
-
-In de VS:
 
 ```park-comparison-widget slugs=six-flags-great-adventure,six-flags-magic-mountain,universal-studios-florida,six-flags-fiesta-texas,silver-dollar-city,six-flags-great-america,carowinds,disneys-hollywood-studios show=quietest
 
@@ -291,25 +287,23 @@ De actuele wachttijden van elk park staan op zijn parkpagina en worden elke vijf
 
 Twee achtbanen in Europa rijden deze winter voor het laatst, en ze worden allebei vervangen.
 
-### Europa-Park: Euro-Mir
+```ride-waits-widget rides=europa-park/euro-mir|Euro-Mir|Spinning coaster, Mack Rides;walibi-belgium/loup-garou|Loup-Garou|Houten achtbaan columns=park,type,peak,days
+
+```
+
+### Euro-Mir in Europa-Park
 
 [Euro-Mir](ref:europa-park/euro-mir) rijdt sinds 12 juni 1997 in het Russische themagebied van Europa-Park. Mack Rides heeft er drie jaar aan gebouwd. Negen treinen met draaibare gondels rijden rond de spiegeltorens, 28,3 meter hoog en tot 80 km/u snel, met 16 gasten per trein. In het eerste jaar reden er volgens het park zo'n 1,5 miljoen gasten mee.
 
 Zijn laatste rondes rijdt Euro-Mir in het winterseizoen, dat op 28 november 2026 begint en op 9 januari 2027 eindigt. Op die dag neemt het park met een groot evenement afscheid, daarna begint de afbraak. Op die plek komt een eigen themagebied rond de ruimtevaart met een nieuwe familieachtbaan van Mack Rides, dat in het seizoen 2028 klaar moet zijn. Het park werkt daarvoor samen met het Europese ruimtevaartagentschap ESA, en het partnerschap werd op 8 juni 2026 getekend. Meer staat in [ons bericht over het afscheid](/blog/europa-park-neemt-afscheid-van-euro-mir).
 
-### Walibi Belgium: Loup-Garou
+### Loup-Garou in Walibi Belgium
 
 [Loup-Garou](ref:walibi-belgium/loup-garou) in [Walibi Belgium](ref:walibi-belgium) is een houten achtbaan, 28 meter hoog, 1.035 meter lang en tot 80 km/u snel. Op 3 januari 2027 rijdt hij voor het laatst in deze vorm. Het park is in de winter open van 5 december 2026 tot en met die dag. In januari 2027 beginnen de werkzaamheden, en Rocky Mountain Construction bouwt de baan om tot een hybride achtbaan die in 2028 open moet gaan.
 
 De nieuwe baan moet 49 meter hoog en 106 km/u snel worden en met 1.231 meter de langste van de Benelux zijn, met een eerste afdaling van 47 meter onder 89 graden en drie elementen die nergens anders bestaan. Op één plek in de persmap staat 48 meter, in het overzicht met de cijfers 49. De baan is het begin van Festival World, een gebied in de stijl van New Orleans. Daarvoor verdwijnt in 2028 de 4D-bioscoop, en tot 2030 komen er vernieuwde familieattracties, vrije-valtorens voor gezinnen, een waterspeeltuin en een restaurant bij. Een naam voor de nieuwe baan heeft Walibi nog niet bekendgemaakt.
 
-Wie een van de twee nog een keer wil rijden, kan met deze wachttijden plannen:
-
-```ride-waits-widget rides=europa-park/euro-mir|Euro-Mir|Spinning coaster, Mack Rides;walibi-belgium/loup-garou|Loup-Garou|Houten achtbaan columns=park,type,peak,days
-
-```
-
-Hoe een winterdag in Europa-Park eruitziet, staat in de [gids over Europa-Park](/blog/europa-park-wachttijden-tips), en hoe het in Walibi Belgium gaat, in de [gids over Walibi Belgium](/blog/walibi-belgium-wachttijden-tips).
+In de [gids over Europa-Park](/blog/europa-park-wachttijden-tips) staat hoe een winterdag daar eruitziet, in de [gids over Walibi Belgium](/blog/walibi-belgium-wachttijden-tips) hoe het in Walibi Belgium gaat.
 
 ## Wanneer het seizoen 2027 begint
 

@@ -2,7 +2,7 @@
 title: 'Phantasialand: Wartezeiten und Tipps von einem Stammgast'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
-updatedAt: '2026-10-13'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -100,7 +100,25 @@ Wintergarten-Varietés gestanden und zahlreiche Puppenfernsehspiele betreut
 hatte. Aus der erschöpften Grube namens „Berggeist“ wollten die beiden einen
 Märchenwald machen, einen ruhigen Ort für Familien und Großeltern, mit Puppen aus
 Schmidts Fundus, rund vierzig Märchenszenen und viel Grün. Am 30. April 1967
-öffneten die Tore. Achterbahnen gab es keine.
+öffneten die Tore.
+
+Gebaut hatten die beiden für 2,5 Millionen Mark, und in der ersten Saison kamen
+400.000 Besucher. 1970 eröffnete am neuen Haupteingang Alt-Berlin, eine
+Nachbildung von Unter den Linden mit Neptunbrunnen und einem Brandenburger Tor im
+Maßstab 1:2, im selben Jahr die Gondelbahn 1001 Nacht. Ab 1972 entstand auf
+neuem Gelände die Westernstadt Silver City mit der ersten Wildwasserbahn
+Deutschlands. Seit 1974 fuhr die Einschienenbahn Phantasialand-Jet über den Park.
+Die erste Achterbahn, die Bobbahn 1 von Schwarzkopf (später Gebirgsbahn), kam
+1975, und 1978 setzte der Park auf dieselbe Fläche die Bobbahn 2, die spätere
+Grand-Canyon-Bahn. Wegen des Lärms bekamen beide ein künstliches Gebirge als
+Hülle.
+
+1981 eröffnete China Town, für das der Park 1,3 Millionen Bauteile in Taiwan
+fertigen ließ. Seitdem ist die Fläche nicht mehr gewachsen, und was neu kam,
+ersetzte etwas Altes. 1984 folgte der Dark Ride Silbermine in Silver City, 1988
+die Hallenachterbahn Space Center von Vekoma, 1994 der Simulator Galaxy unter
+einer goldenen Kuppel, die 2016 abgerissen wurde. Das Space Center hieß ab 2001
+Temple of the Night Hawk und fährt seit Juni 2019 mit VR-Brillen als Crazy Bats.
 
 ![F.L.Y. in Rookburgh | Rookburgh mit F.L.Y. (2020), dem weltweit ersten Flying-Launch-Coaster. | left](/media/phantasialand/fly-4x3.jpg)
 
@@ -110,8 +128,7 @@ nach der Eröffnung taufte sie Michael Jackson persönlich. Am **1. Mai 2001**
 brannte es. Ein technischer Defekt an der Grand-Canyon-Bahn setzte das
 künstliche Gebirge in Brand, in dem auch die Gebirgsbahn fuhr, und das Feuer
 griff auf das Tanagra-Theater und Teile der Westernstadt über. Rund 20.000 Gäste
-waren an dem Tag im Park, 63 wurden leicht verletzt, der Schaden lag bei 38
-Millionen Euro, und der Park blieb 15 Tage geschlossen.
+waren an dem Tag im Park, 63 wurden verletzt, und der Park blieb 15 Tage geschlossen.
 
 Wuze Town mit den beiden Spinning Coastern
 [Winja’s Fear](ref:phantasialand/winjas-fear) & Force sollte eigentlich schon
@@ -137,15 +154,19 @@ nie über sich gehabt. Der Eigentümer des Movie Park Germany, eine Autostunde
 weiter nördlich, gehört dagegen einem Finanzinvestor, und der
 [sucht seit September 2026 einen Käufer](/blog/parques-reunidos-verkauf-movie-park).
 
+Im Theme Index von TEA und AECOM steht das Phantasialand für 2019 mit 2,05
+Millionen Besuchern und für 2022 mit 2,1 Millionen, auf Platz 14 der Parks in
+Europa. Für 2024 nennt Blooloop nach dem TEA-Index wieder 2,1 Millionen, ebenfalls Platz 14.
+
 Um eine Erweiterung ringt der Park seit 2003, und im Juli 2026 hat der Brühler
 Planungsausschuss das Bauleitverfahren für rund 15 Hektar am Naturschutzgebiet
 Ententeich eingeleitet. Genehmigt ist damit nichts. Zuerst kommen Gutachten zu
 Natur, Verkehr und Hochwasserschutz, und seit dem 28. September sammelt ein
 Netzwerk von Naturschützern Unterschriften für ein Bürgerbegehren dagegen.
 Geplant sind laut Park unter anderem ein Aquapark-Hotelresort, Fahrattraktionen
-und Theater. Was das Phantasialand dazu veröffentlicht hat und wie der Streit
-seit 2003 verlief, steht in
-[unserer News zum Bürgerbegehren](/news/phantasialand-erweiterung-buergerbegehren).
+und Theater. Die Stellungnahmen des Phantasialands und den Streit
+seit 2003 haben wir in
+[unserer News zum Bürgerbegehren](/news/phantasialand-erweiterung-buergerbegehren) zusammengefasst.
 
 ## Die Headliner
 
@@ -177,6 +198,25 @@ Für Kinder gibt es [Raik](ref:phantasialand/raik), den Familien-Boomerang in
 Klugheim, der vorwärts und rückwärts durch die Basaltschlucht fährt. Als erster
 „richtiger“ Coaster passt er gut.
 
+### Die Achterbahnen in Zahlen
+
+| Bahn                 | Hersteller           | Eröffnet | Höhe   | Tempo        | Mindestgröße |
+| -------------------- | -------------------- | -------- | ------ | ------------ | ------------ |
+| Taron                | Intamin              | 2016     | 30 m   | 117 km/h     | 1,30 m       |
+| F.L.Y.               | Vekoma               | 2020     | 19,5 m | 78 km/h      | 1,30 m       |
+| Black Mamba          | Bolliger & Mabillard | 2006     | 26 m   | 80 km/h      | 1,40 m       |
+| Colorado Adventure   | Vekoma               | 1996     | 26 m   | 50 km/h      | 1,00 m       |
+| Winja’s Fear & Force | Maurer               | 2002     | 17,4 m | 66 / 60 km/h | 1,20 m       |
+| Raik                 | Vekoma               | 2016     | 25 m   | 62 km/h      | 1,00 m       |
+| Crazy Bats           | Vekoma               | 1988     | 11,7 m | 46 km/h      | 1,00 m       |
+
+Bei Taron, F.L.Y. und den Winja’s fahren Kinder unter 1,40 m nur mit einem
+Erwachsenen, bei Colorado Adventure, Raik und Crazy Bats gilt das unter 1,20 m.
+Black Mamba lässt niemanden über 1,95 m und keine Kinder unter zehn Jahren
+einsteigen, F.L.Y. niemanden über 2,05 m und keine Kinder unter acht, die
+Winja’s niemanden über 2,00 m und keine Kinder unter sechs. In Crazy Bats setzt du die VR-Brille erst ab
+1,20 m auf, darunter fährst du ohne.
+
 ```gallery-widget heading="Die Headliner in Bildern"
 - /media/phantasialand/chiapas-die-wasserbahn-16x9.jpg | Die Wasserbahn Chiapas | Chiapas, laut Park die steilste Abfahrt einer Wasserbahn weltweit.
 - /media/phantasialand/colorado-adventure-16x9.jpg | Colorado Adventure | Colorado Adventure, die Minenbahn von 1996.
@@ -201,8 +241,7 @@ Preisstufen: **35 €, 59 € und 78 €**, also mehr als das Doppelte für dens
 Parktag. Der Shop wirbt mit Tickets ab **44 €**. Spontan geht auch, aber nur
 online und nur bis 14 Uhr am Besuchstag, zum dann gültigen Tagespreis und nur,
 solange der Tag nicht ausverkauft ist. Der
-günstige Tag ist oft auch der leerere, aber nicht immer. Wie voll ein Tag wird,
-steht im Crowd-Kalender.
+günstige Tag ist oft auch der leerere, aber nicht immer.
 
 **Jahreskarten gibt es keine mehr.** Das Phantasialand hat seine Club-Karte in
 der Pandemie aus dem Verkauf genommen und nie zurückgebracht, die letzten liefen
@@ -240,24 +279,15 @@ Ein paar Faustregeln, die fast immer stimmen:
 
 Ferienkalender, Wetter und Öffnungszeiten rechnen wir zusammen mit der
 Wartezeit-Historie des Parks in eine Andrangsstufe pro Tag um, von sehr niedrig
-bis extrem, und die steht im Kalender der besten Besuchstage. Hier sind die
-ruhigsten kommenden Tage fürs Phantasialand:
+bis extrem, und die steht im Kalender der besten Besuchstage.
 
 ```best-days-widget slug=phantasialand
 
 ```
 
-Welche Wochentage und Monate übers Jahr typischerweise entspannt sind und welche
-du meiden solltest, steht in der Übersicht **Andrang nach Wochentag und Monat**,
-gemessen an den Öffnungstagen. Unsere Messungen beginnen Ende Dezember 2025; wie
-viele Tage hinter einem Monat stehen, steht in der Tabelle dabei, und der Winter
-ist darin noch dünn gemessen:
-
 ```stats-widget slug=phantasialand
 
 ```
-
-Buch das Ticket am besten erst, nachdem du im Kalender nachgesehen hast.
 
 ## Quick Pass, einzeln oder als Ultimate
 
@@ -290,7 +320,7 @@ dieser Stau löst sich auch im Fast-Track nicht auf.
 
 Gekauft wird nur vor Ort, beim Gästeservice am Kaiserplatz, und die Menge ist
 begrenzt. **Gerade im Wintertraum sind die Quick Pässe am Wochenende oft schon
-mittags ausverkauft.** Wer einen braucht, sollte früh dort sein.
+mittags ausverkauft.**
 
 Nach vielen Besuchen meine ich, dass du ihn **an einem grünen Tag nicht
 brauchst.** Wer früh da ist und eine sinnvolle Reihenfolge fährt, nimmt die
@@ -307,7 +337,7 @@ antizyklisch fahren**. Einlass ist in der Sommersaison ab 9 Uhr, spätestens um
 Warteschlangen an den meisten Bahnen so kurz wie den ganzen Tag nicht mehr.
 
 Meine Reihenfolge, die ich an einer Stelle nach unseren stündlichen Daten
-umgebaut habe (gemessen seit Ende Dezember 2025):
+umgebaut habe:
 
 1. **Direkt zu [Taron](ref:phantasialand/taron)** nach Klugheim. Der
    Multi-Launch-Coaster hat die längste Warteschlange im Park, und sie ist schon
@@ -429,8 +459,6 @@ Das Phantasialand liegt in Brühl, zwischen Köln und Bonn.
 An vollen Tagen ist Bahn plus Shuttle entspannter, weil du abends nicht mit ein
 paar tausend anderen in der Parkplatzausfahrt stehst.
 
-Das Wetter in Brühl, genau jetzt:
-
 ```weather-widget slug=phantasialand
 
 ```
@@ -477,7 +505,7 @@ laufen wie im Sommer über datierte Online-Tagestickets; Vorverkaufstickets ab
   einer Handvoll Tagen zwischen Ende Dezember 2025 und Januar 2026, und an denen
   war es voll. Für alles außer den Wochenenden schau also erst in den
   Crowd-Kalender von oben.
-- **Warm anziehen.** Bei Minusgraden fühlt sich jede Wartezeit länger an. Warum
+- **Warm anziehen.** Warum
   gefühlte und echte Minuten so weit auseinanderliegen, steht in der
   [Kunst des Wartens](/blog/die-kunst-des-wartens).
 
@@ -537,6 +565,10 @@ einen Tag. Entspannter sind zwei Tage.
 - Jahreskarten-Aus & Fan-Petitionen: [Club-Karte wird abgeschafft (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html) · [Petition „Wiedereinführung der Phantasialand Jahreskarten“ (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)
 - Quick Pass zum Start im Wintertraum 2025/26: [„QUICK Pass Switches to Dynamic Pricing“ (Wartezeiten.APP)](https://www.wartezeiten.app/en/phantasialand/news/phantasialand-quick-pass-switches-to-dynamic-pricing-fans-outraged-2429.html)
 - Geschichte, Brand 2001 und Märchenwald: [Phantasialand (Wikipedia)](https://de.wikipedia.org/wiki/Phantasialand) · [Stichtag 30. April 1967 (WDR)](https://www1.wdr.de/stichtag/stichtag-eroeffnung-phantasialand-100.html) · [Märchenwald (Frei-Zeit Blog)](https://frei-zeit-blog.de/phantasialand/attraktionen/maerchenwald/)
+- Brand 2001, Zahl der Verletzten: [Polizeiangaben vom 1. Mai 2001 (wissen.de)](https://www.wissen.de/kalendar/1-mai-2001) · [„Die Wunden des Brandes heilen langsam“ (Kölner Stadt-Anzeiger, 30. April 2002, Nachdruck im Forum Planet Phantasialand)](https://freizeitparkweb.de/cgi-bin/dcf/dcboard.cgi?az=printer_format&om=1705&forum=DCForumID1)
+- Bahndaten: [Phantasialand (RCDB)](https://rcdb.com/4872.htm) · [Space Center / Crazy Bats (RCDB)](https://rcdb.com/980.htm) · [Gebirgsbahn (RCDB)](https://rcdb.com/979.htm)
+- Mindestgrößen: [Taron (offiziell)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/taron/) · [Black Mamba (offiziell)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/black-mamba/) · [Colorado Adventure (offiziell)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/colorado-adventure/) · [Winja’s Fear & Force (offiziell)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/winjas-fear-force/) · [Raik (offiziell)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/raik/) · [Crazy Bats (offiziell)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/crazy-bats/)
+- Besucherzahlen: [TEA/AECOM Theme Index 2022 (PDF)](https://aecom.com/wp-content/uploads/documents/reports/AECOM-Theme-Index-2022.pdf) · [Top 20 theme parks in Europe nach dem TEA-Index 2024 (Blooloop)](https://blooloop.com/features/the-top-20-theme-parks-and-amusement-parks-in-europe)
 - Erweiterung am Ententeich: [Planungsausschuss macht Weg für Prüfverfahren frei (FreizeitparkNEWS, Juli 2026)](https://www.freizeitparknews.de/phantasialand/erweiterung-pruefverfahren/)
 - Bahnen: [Chiapas (offiziell)](https://www.phantasialand.de/de/themenpark/einzigartige-attraktionen/chiapas-die-wasserbahn/) · [F.L.Y. (offiziell)](https://www.phantasialand.de/de/rookburgh/fly/) · [Raik (Wikipedia, englisch)](https://en.wikipedia.org/wiki/Raik) · [Winja’s Fear & Force (Wikipedia, englisch)](https://en.wikipedia.org/wiki/Winja%27s_Fear_%26_Force)
 - Die 3 Mausketiere: [Phantasialand eröffnet Weltneuheit in 4D (NRW-Parks, Oktober 2025)](https://www.nrw-parks.de/news/phantasialand-die-3-mausketiere-2687.html)

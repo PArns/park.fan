@@ -259,7 +259,7 @@ Diorama und das Efteling Museum.
 
 ![Der Eingang von Droomvlucht bei Nacht, rosa und grün angeleuchtet | Bei Tag ist diese Wand weiß. | right](/media/efteling/droomvlucht.jpg)
 
-Joris en de Draak, Baron 1898 und Python fahren im Freien. Ob eine überdachte Bahn wegen Wartung geschlossen ist, steht auf ihrer Seite und im Kalender des Parks, und dort siehst du am besten am Abend vorher nach.
+Joris en de Draak, Baron 1898 und Python fahren im Freien. Ist eine überdachte Bahn wegen Wartung geschlossen, steht das auf ihrer Seite und im Kalender des Parks, und dort siehst du am besten am Abend vorher nach.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Hängebahn;efteling/symbolica|Symbolica|Trackless Ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Indoor-Coaster columns=type,peak,days
 
@@ -419,8 +419,6 @@ Stand 6. Oktober 2026:
 Labyrinthe, Bällebäder, Spielbereiche, ein Museum und Horrorhäuser, die nur zu
 Halloween abends öffnen.
 
-Die typischen Wartezeiten der neun Parks, der Europa-Park ist hervorgehoben:
-
 ```park-comparison-widget slugs=europa-park,attractiepark-toverland,phantasialand,plopsaland-deutschland,movie-park-germany,efteling,walibi-belgium,heide-park,walibi-holland highlight=europa-park
 
 ```
@@ -439,7 +437,7 @@ Holland würde ich mir für einen Regentag nicht aussuchen.
 
 Im Kalender jedes Parks stehen für die nächsten Wochen Wetter, Öffnungszeiten und
 die erwartete Auslastung. Weil es an Regentagen im Schnitt leerer ist, musst du
-einen Besuch wegen angesagter Schauer nicht absagen. Das Wetter für Brühl:
+einen Besuch wegen angesagter Schauer nicht absagen. Das Wetter unten gilt für Brühl, wo das Phantasialand liegt.
 
 ```weather-widget slug=phantasialand
 
@@ -488,8 +486,7 @@ Attraktion in einer Halle.
 ### Fahren Achterbahnen bei Regen?
 
 Das entscheidet jeder Park selbst, oft erst am Tag. Im Phantasialand kann bei
-extremem Wetter jede Außenbahn kurzfristig schließen. Ob eine Bahn gerade fährt,
-steht auf ihrer Seite bei park.fan, alle fünf Minuten aktualisiert.
+extremem Wetter jede Außenbahn kurzfristig schließen. Auf der Seite jeder Bahn bei park.fan siehst du, ob sie gerade fährt, alle fünf Minuten aktualisiert.
 
 ### Welcher Freizeitpark ist bei Regen mit kleinen Kindern am besten?
 

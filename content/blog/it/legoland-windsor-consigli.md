@@ -79,13 +79,13 @@ Al Legoland Windsor valgono due limiti per ogni attrazione: un'altezza minima da
 
 Mettiamo che tuo figlio abbia sei anni e sia alto 1,15 metri. Con te può salire su Hydra's Challenge, The Dragon, Pirate Falls e Flight of the Sky Lion. Può salire anche sul Minifigure Speedway, perché lì il limite è di 1,05 metri. Da solo può salire solo da 1,30 metri, su Flight of the Sky Lion da 1,20 metri. Su Flight of the Sky Lion un adulto può accompagnare al massimo due bambini tra 1,00 e 1,20 metri.
 
-I bambini sotto i 90 centimetri non pagano l'ingresso, secondo il parco. Per il parco LEGO NINJAGO The Ride è sconsigliato ai bambini sotto i tre anni, per via di suoni, fumo ed effetti di luce. La LEGO City Driving School è aperta ai bambini tra 1,10 e 1,50 metri che hanno meno di 13 anni. Le altezze delle altre attrazioni sono elencate dal parco nella pagina sulle restrizioni di altezza.
+I bambini sotto i 90 centimetri non pagano l'ingresso. Per il parco LEGO NINJAGO The Ride è sconsigliato ai bambini sotto i tre anni, per via di suoni, fumo ed effetti di luce. La LEGO City Driving School è aperta ai bambini tra 1,10 e 1,50 metri che hanno meno di 13 anni. Le altezze delle altre attrazioni sono elencate dal parco nella pagina sulle restrizioni di altezza.
 
 ## Le attrazioni grandi
 
 Il **[Minifigure Speedway](ref:legoland-windsor/minifigure-speedway)** è, secondo il parco, il primo coaster a duello in stile Lego e corre in entrambe le direzioni. Due treni, il Team Legends e il Team AllStars, partono insieme, e una parte del percorso va all'indietro. Lo ha costruito Zierer. Secondo Wikipedia è alto 14 metri, lungo 244 metri e arriva a 56 km/h. Sorge dove c'erano le Raft Racers, uno scivolo con gommoni in funzione fino al 2021.
 
-**[The Dragon](ref:legoland-windsor/the-dragon)** corre dal 1998. Il treno attraversa prima un castello con scene Lego animate, poi sale sul lift e percorre due otto tra le chiome degli alberi. Il parco indica fino a 30 miglia orarie, cioè circa 48 km/h. Il percorso è lungo 423 metri secondo Coasterpedia. In ogni fila siedono due passeggeri, i bambini sul lato sinistro del treno.
+**[The Dragon](ref:legoland-windsor/the-dragon)** corre dal 1998. Il treno attraversa prima un castello con scene Lego animate, poi sale sul lift e percorre due otto tra le chiome degli alberi. Secondo il parco il treno arriva fino a 30 miglia orarie, cioè circa 48 km/h. Il percorso è lungo 423 metri secondo Coasterpedia. In ogni fila siedono due passeggeri, i bambini sul lato sinistro del treno.
 
 ```glossary-widget slug=dark-ride
 
@@ -109,7 +109,7 @@ I **[Laser Raiders](ref:legoland-windsor/laser-raiders)** sono un dark ride in u
 
 Alla **[Fire Academy](ref:legoland-windsor/fire-academy)** quattro persone con un camion dei pompieri sfidano altre squadre. Il veicolo si muove a forza di braccia, poi si spruzza su una casa in fiamme. Devono salire almeno due persone, e al massimo due sono adulti. A **[Coastguard HQ](ref:legoland-windsor/coastguard-hq)** i bambini guidano barche elettriche, mentre un elefante Lego spruzza acqua. Nelle **[L-Drivers](ref:legoland-windsor/l-drivers)** i bambini tra 0,90 e 1,10 metri guidano piccole auto elettriche, e chi è più alto va alla **[LEGO City Driving School](ref:legoland-windsor/lego-city-driving-school)**. Lì ogni bambino guarda prima un video sul traffico, poi guida e alla fine riceve una patente.
 
-## Miniland, costruzioni e tutto ciò che è senza coda
+## Cosa si fa senza coda
 
 Il **[Miniland](ref:legoland-windsor/miniland)** non ha né un'altezza minima né una coda. Il parco lo consiglia per le giornate affollate, come le aree costruzioni **The Brick**, **Creature Creation** e **LEGO Ferrari Build & Race**, dove i bambini costruiscono un'auto e la fanno correre contro altre. Il parco suggerisce inoltre il Magical Forest a Mythica. Il LEGO Store è, secondo il parco, più vuoto tra le 12 e le 16 che a fine giornata, e gli acquisti si possono lasciare in custodia agli Shopper Services e ritirare più tardi.
 
@@ -187,15 +187,15 @@ Bronze esclude Hydra's Challenge, Flight of the Sky Lion e Coastguard HQ, cioè 
 
 Un martedì di settembre non comprerei il Fastrack: Bronze non copre le tre code più lunghe, e alle altre attrazioni in un giorno così le attese sono corte. Un sabato o durante le vacanze scolastiche Silver o Gold possono avere senso, soprattutto per Flight of the Sky Lion, perché lì partire presto non fa risparmiare nulla.
 
-## Biglietti, prezzi e abbonamenti annuali
+## Quanto costano biglietti e abbonamenti annuali
 
 Un biglietto giornaliero costa online **da 32 £**, e prenotare in anticipo fa risparmiare, secondo il parco, fino a 36 £. I prezzi dipendono dal giorno. I bambini sotto i 90 centimetri entrano gratis. I biglietti non sono rimborsabili, ma la data si può cambiare. Offerte due per uno al momento non ci sono, secondo il parco. I biglietti per Brick or Treat partono da 37 £ a persona, quelli per LEGOLAND at Christmas da 34 £.
 
 Il **LEGOLAND Annual Pass** costa da 64 £ e ha 17 giorni di esclusione. Il **Merlin Essential Pass** costa 139 £ con 25 giorni di esclusione. Il **Merlin Gold Pass** costa 239 £ e comprende il parcheggio, con l'unica eccezione dei fuochi d'artificio ad Alton Towers. Il **Merlin Platinum Pass** costa 299 £ e non ha giorni di esclusione, ha quattro biglietti amico all'anno e un Fastrack singolo per ogni visita. Chi vuole venire in un giorno di esclusione paga 15 £ a persona per un biglietto di upgrade. Tutti i titolari di un pass devono prenotare la visita in anticipo. I pass comprendono Brick or Treat e LEGOLAND at Christmas.
 
-## Orari, stagione ed eventi
+## Orari in autunno e inverno
 
-Il Legoland Windsor apre alle 10, e la chiusura cade, a seconda del giorno, tra le 16:30 e le 18. In ottobre 2026 il parco chiude nei giorni feriali di solito alle 16:30 e nei fine settimana e durante le vacanze autunnali alle 18. Gli ospiti degli hotel del resort possono entrare nel parco prima dell'apertura (Early Park Access), ma serve un biglietto del parco valido.
+Il Legoland Windsor apre alle 10. In ottobre 2026 il parco chiude nei giorni feriali di solito alle 16:30 e nei fine settimana e durante le vacanze autunnali alle 18. Gli ospiti degli hotel del resort possono entrare nel parco prima dell'apertura (Early Park Access), ma serve un biglietto del parco valido.
 
 Alcune attrazioni in autunno funzionano solo nei giorni feriali o solo dal pomeriggio. Dal 25 settembre al 16 ottobre, per esempio, LEGO NINJAGO The Ride, Destiny's Bounty e Deep Sea Adventure aprono nei giorni feriali solo alle 13, e Aero Nomad chiude alle 13. Tutte le date sono nella pagina «Ride & Show Availability» del parco.
 
@@ -215,15 +215,15 @@ Come attrazione al coperto il parco indica i Laser Raiders. In un edificio si te
 
 ```
 
-## Mangiare, neonati e ingresso
+## Mangiare nel parco e controlli all'ingresso
 
 Tutti i punti ristoro del parco sono **senza contanti**: si paga con carta, Apple Pay o Android Pay. Nel parco ci sono il **City Walk Pizza & Pasta** a Heartlake City, un buffet self-service con pizza e pasta, il **Pirate's Burger Kitchen**, la **Farmer Joe's Chicken Company** a DUPLO Valley, **The Hungry Troll** e la **Skyline Bar** nel Resort Hotel. Si aggiungono diversi chioschi di LEGOLAND Coffee Co., un Ben & Jerry's e Wizard's Frozen Wonders. Puoi portare il tuo cibo, ma non bottiglie di vetro né alcol. Nel parco ci sono punti per l'acqua potabile.
 
-Per neonati e bambini piccoli ci sono i Baby Care Centres, distribuiti nel resort e segnati sulla mappa del parco. Il parco indica DUPLO Valley come mondo tematico per famiglie con bambini piccoli, dove molte attrazioni non hanno un'altezza minima. Il Priority Parking è adatto, secondo il parco, a famiglie con passeggino, e gli armadietti sono vicino all'ingresso principale. Il Total Sensory Space a Heartlake City è una stanza con pouf, proiezioni e luce attenuata per gli ospiti che hanno bisogno di una pausa dal rumore.
+Per neonati e bambini piccoli ci sono i Baby Care Centres, distribuiti nel resort e segnati sulla mappa del parco. A DUPLO Valley molte attrazioni non hanno un'altezza minima. Il Priority Parking è adatto, secondo il parco, a famiglie con passeggino, e gli armadietti sono vicino all'ingresso principale. Il Total Sensory Space a Heartlake City è una stanza con pouf, proiezioni e luce attenuata per gli ospiti che hanno bisogno di una pausa dal rumore.
 
 All'ingresso il personale di sicurezza controlla tutte le borse. Sono vietati tra l'altro bottiglie di vetro, alcol, armi e repliche di armi, skateboard, monopattini, pattini in linea e droni. Il sistema Ride Access Pass cambia a fine 2026. Il parco introduce una coda virtuale, il diritto resta lo stesso, e l'obbligo di prenotare in anticipo dovrebbe cadere gradualmente.
 
-## Come arrivare, parcheggiare e dormire
+## Come arrivare e dove dormire
 
 L'indirizzo è **Winkfield Road, Windsor, SL4 4AY**. Il Legoland si trova sulla B3022 tra Windsor e Ascot, a circa tre chilometri dal centro di Windsor. In auto si esce dalla M3 all'uscita 3, dalla M4 all'uscita 6 e dalla M25 in senso orario all'uscita 13. Per il ritorno il parco consiglia di girare a destra alla rotonda verso M25, M3 e M4, perché così si evita il traffico di Windsor. L'aeroporto di Heathrow dista circa 20 chilometri, Gatwick circa 70.
 

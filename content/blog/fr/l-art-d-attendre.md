@@ -116,7 +116,7 @@ monde veut quitter au plus vite.
 
 ```
 
-### Les pre-shows : l’attente déguisée en numéro du programme
+### Les pre-shows
 
 C’est le **pre-show** qui règle cela le plus complètement, en déclarant
 l’attente partie intégrante de l’attraction. L’exemple d’école se
@@ -150,7 +150,7 @@ recommandé un film moyen pour son grand final connaît le principe.
 Trois attractions d’Orlando montrent jusqu’où on peut pousser l’idée. Leurs
 files se visitent même sans monter dans l’attraction.
 
-### Avatar Flight of Passage : un musée en guise de file
+### Avatar Flight of Passage
 
 La file d’attente d’
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage)
@@ -180,7 +180,7 @@ la matinée raconte quand même ensuite l’avatar qui respire dans sa cuve.
 
 [Avatar Flight of Passage](ref:disneys-animal-kingdom-theme-park/avatar-flight-of-passage?full)
 
-### Cosmic Rewind : d’abord le musée, ensuite le coaster
+### Cosmic Rewind
 
 [EPCOT](ref:epcot?bare) va encore un cran plus loin avec
 [Guardians of the Galaxy: Cosmic Rewind](ref:epcot/guardians-of-the-galaxy-cosmic-rewind).
@@ -204,7 +204,7 @@ standby permanente est arrivée. Jusque-là, la file physique servait surtout de
 parcours narratif et à peine d’espace de stockage, sur une attraction qui,
 selon RCDB, évacue 2 000 visiteurs par heure avec des trains de 20 places.
 
-### VelociCoaster : attendre dans l’enclos des raptors
+### VelociCoaster
 
 Universal joue la même carte à
 [Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
@@ -259,7 +259,7 @@ temps d’attente toutes les cinq minutes.
 
 ![Des milliers de spectateurs dans l’amphithéâtre nocturne de Fantasmic! à Disney’s Hollywood Studios | Fantasmic! aux Hollywood Studios. Qui est assis ici ne fait la queue nulle part. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
-## Le débit : le chiffre discret qui décide de votre journée
+## Le débit
 
 Le **débit**, c’est tout simplement le nombre de personnes qu’une attraction
 transporte réellement par heure. Ce chiffre ne figure sur aucune affiche, et
@@ -413,8 +413,7 @@ compris ceux des régions voisines), des prévisions météo, des horaires
 d’ouverture et des événements, et couvre actuellement environ six mois.
 La demande et le débit sont pourtant dans chacun de ces chiffres, puisque
 tout temps d’attente relève au bout du compte de la loi de Little : la file
-divisée par le débit. La fréquence à laquelle
-nos prévisions collent à la réalité figure sur la [page Fancast](/fancast).
+divisée par le débit. Sur la [page Fancast](/fancast) figure la fréquence à laquelle nos prévisions collent à la réalité.
 
 ## Pourquoi Peter Pan’s Flight « déraille » toujours
 
@@ -468,7 +467,7 @@ d’attractions le plus fréquenté du monde :
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
-## L’Europe attend autrement : Phantasialand et Europa-Park face à Orlando
+## Phantasialand et Europa-Park face à Orlando
 
 À quel point la demande et la capacité déterminent le niveau d’attente de tout
 un parc, cela se voit le mieux en posant deux grands parcs européens à côté
@@ -591,8 +590,7 @@ Côté véhicules, en revanche, chaque arrêt coûte de la vraie capacité. C’
 pourquoi l’omnimover de la Haunted Mansion et la rolling station de YOY ne
 s’arrêtent pas du tout en fonctionnement normal. Dans la file devant eux, le
 stop-and-go ne coûte que de la patience. Ce qui raccourcit vraiment votre
-attente, c’est de choisir avant la visite un jour où moins de gens se trouvent devant
-vous. Ce jour-là se trouve dans le calendrier des meilleurs jours.
+attente, c’est de choisir avant la visite, dans le calendrier des meilleurs jours, un jour où moins de gens se trouvent devant vous.
 
 ## Files virtuelles et gares doubles
 

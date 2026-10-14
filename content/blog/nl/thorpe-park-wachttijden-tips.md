@@ -78,7 +78,7 @@ Het park noemde het plan “Project Exodus”. In december 2021 liet het in een 
 
 ```
 
-Op zijn website geeft het park een baanlengte van 995,4 meter op, de langste van het park, en verder 236 voet hoogte, 81 mph topsnelheid, een loop van 168 voet (51 meter), volgens het park de hoogste van Europa, en een element dat het park als wereldprimeur aanmerkt: een airtimeheuvel met buitenhelling. Daarbij geeft het park 14,8 seconden gewichtloosheid op. De baan heeft twee inversies, een barrel roll in de afdaling en een dive loop met een korte stop in de lucht. Een ketting trekt de trein de lift op, en in het eerste geval draait de trein daarbij 180 graden.
+Op zijn website geeft het park een baanlengte van 995,4 meter op, de langste van het park, en verder 236 voet hoogte, 81 mph topsnelheid, 14,8 seconden gewichtloosheid, een loop van 168 voet (51 meter), volgens het park de hoogste van Europa, en een element dat het park als wereldprimeur aanmerkt: een airtimeheuvel met buitenhelling. De baan heeft twee inversies, een barrel roll in de afdaling en een dive loop met een korte stop in de lucht. Een ketting trekt de trein de lift op, en in het eerste geval draait de trein daarbij 180 graden.
 
 De minimale lengte is **1,30 meter**, de laagste van de grote achtbanen van het park. Wie een prothese draagt, mag niet mee, en voor mensen die zich niet zelfstandig kunnen verplaatsen is de baan na een toetsing door het park niet meer geschikt. Voor Hyperia en SAW is er een wachtrij voor single riders.
 
@@ -175,7 +175,7 @@ Het park verkoopt Fastrack in vier pakketten, elk per persoon, en de kaart kan e
 - **Gold** vanaf £ 115: de hele dag op 14 banen, zonder Hyperia.
 - **Platinum** vanaf £ 135: de hele dag op 15 banen, met Hyperia.
 
-Daarnaast is er een **One Shot Fastrack** vanaf £ 6, die je pas in het park koopt, via de app of met een QR-code bij de ingang van een achtbaan. Het park verkoopt Fastrack in beperkte aantallen en schrijft dat je vóór de aankoop moet nagaan of er voor die dag ook toegangskaarten zijn, omdat beide apart worden verkocht. Op de Fastrack-pagina van het park staat de Ghost Train in drie pakketten, op haar eigen pagina staat dat er momenteel geen Fastrack voor bestaat.
+Daarnaast is er een **One Shot Fastrack** vanaf £ 6, die je pas in het park koopt, via de app of met een QR-code bij de ingang van een achtbaan. Het park verkoopt Fastrack en toegangskaarten apart, Fastrack alleen in beperkte aantallen, en schrijft dat je vóór de aankoop moet nagaan of er voor die dag ook toegangskaarten zijn. Op de Fastrack-pagina van het park staat de Ghost Train in drie pakketten, op haar eigen pagina staat dat er momenteel geen Fastrack voor bestaat.
 
 Wie in de Thorpe Shark Cabins overnacht, krijgt op de tweede dag een uur Fastrack aan het begin of het eind van de parkdag. Tijdens de Fright Nights geldt dat alleen voor het eerste uur.
 

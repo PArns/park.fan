@@ -108,11 +108,11 @@ Bijna elk park raadt af om kinderen onder de 13 mee te nemen naar de avondevenem
 
 ## Horror in de avond
 
-### Universal Studios Florida: Halloween Horror Nights
+### Halloween Horror Nights in Universal Studios Florida
 
 [Universal Studios Florida](ref:universal-studios-florida) in Orlando heeft volgens Universal 49 nachten tussen 28 augustus en 1 november, van woensdag tot en met zondag en daarnaast op maandag 12 oktober. De poorten voor het evenement gaan om 18.30 uur open, en hotelgasten van Universal hebben tot 19.30 uur een eigen ingang. Op die dagen eindigt de gewone parkdag om 17 uur. Wil je ’s middags al binnen zijn, dan boek je Scream Early, vanaf 70 $ extra. Je komt dan tussen 14 en 17 uur binnen en blijft in het park tot het evenement begint.
 
-Er staan tien huizen op het programma. Vijf daarvan draaien in dezelfde vorm ook in Hollywood:
+Van de tien huizen op het programma draaien er vijf in dezelfde vorm ook in Hollywood:
 
 - Stranger Things, het vijfde en laatste seizoen van de Netflix-serie
 - Sinners, naar de horrorfilm uit 2025
@@ -134,17 +134,17 @@ In de webshop van Universal kost een avond vanaf 94,99 $, en op sommige data mee
 
 Universal raadt het evenement af voor kinderen onder de 13. Kostuums en verkleedmaskers zijn verboden. De enige uitzondering is de Premium Scream Night op maandag 19 oktober, waar je een eigen ticket voor koopt. Die avond mogen kostuums wel, maskers ook dan niet.
 
-### Universal Studios Hollywood: Halloween Horror Nights
+### Halloween Horror Nights in Universal Studios Hollywood
 
 [Universal Studios Hollywood](ref:universal-studios-hollywood) heeft in 2026 meer nachten dan ooit, volgens Universal 42, van 3 september tot en met 1 november. Het evenement begint om 19 uur. Hoe laat het eindigt, verschilt per avond.
 
-Er draaien acht huizen. Vijf ken je uit Orlando, namelijk Stranger Things, Sinners, Hellraiser, Ozzy Osbourne: Prince of Darkness en Evil Dead Burn. Alleen in Hollywood staan **Killer Klowns from Outer Space**, naar de film, **KILLceañera** met muziek van Slash, waarin het quinceañerafeest van Lola uit de hand loopt, en **Dead, Deader, Deadest** in een verlaten uitvaartcentrum.
+Van de acht huizen ken je er vijf uit Orlando, namelijk Stranger Things, Sinners, Hellraiser, Ozzy Osbourne: Prince of Darkness en Evil Dead Burn. Alleen in Hollywood staan **Killer Klowns from Outer Space**, naar de film, **KILLceañera** met muziek van Slash, waarin het quinceañerafeest van Lola uit de hand loopt, en **Dead, Deader, Deadest** in een verlaten uitvaartcentrum.
 
 De Terror Tram rijdt alleen in Hollywood. Op deze avonden kaapt Art the Clown het treintje dat overdag door de filmstudio’s rijdt. De muziek komt van de band Ice Nine Kills. Volgens het persbericht van Universal komen er nog een show bij, The Purge: Dangerous Waters, en vijf scare zones, Fortnitemares, Hackerz, El Circo de la Muerte, Blood Bog en Murder of Crowz. ’s Avonds rijden Mario Kart: Bowser's Challenge tot 22 uur en Harry Potter and the Forbidden Journey tot 23.15 uur, en verder Flight of the Hippogriff, TRANSFORMERS, The Simpsons Ride en Revenge of the Mummy.
 
 Een avond kost vanaf 84 $ en, afhankelijk van de datum, tot 109 $. De Frequent Fear Pass voor maximaal 35 nachten begint bij 179 $, de Ultimate Fear Pass bij 299 $ en Universal Express bij 279 $. Wie al vanaf 14 uur het park in wil, neemt het dag- en avondticket vanaf 124 $. Met Early Access voor 20 $ kom je vóór de start in de eerste huizen. Op de website staat daarvoor 17 uur, in het persbericht 17.30 uur. Een minimumleeftijd is er niet, maar Universal raadt het evenement af voor kinderen onder de 13. Verkleedmaskers zijn verboden.
 
-### Knott's Berry Farm: Knott's Scary Farm
+### Knott's Scary Farm in Knott's Berry Farm
 
 [Knott's Berry Farm](ref:knotts-berry-farm) in Buena Park bij Los Angeles houdt de Scary Farm op geselecteerde nachten van 17 september tot en met 31 oktober. In oktober is het evenement van donderdag tot en met zondag open, van 19 uur tot 1 uur ’s nachts en op vrijdag en zaterdag tot 2 uur.
 
@@ -154,7 +154,7 @@ Over het park liggen vijf scare zones verspreid, waaronder CarnEVIL en de Ghost 
 
 Een avond kost vanaf 65 $, de pass voor alle avonden 164 $, allebei alleen online. Voor de mazes betaal je niets extra. Voor Fright & Fast Lane, waarmee je bij de mazes en een paar attracties de gewone wachtrij overslaat, staat op de eventpagina “vanaf 139 $” en op de ticketpagina “vanaf 159 $”, telkens zonder toegang. Het park raadt het evenement af voor kinderen onder de 13, en elke gast heeft een eigen ticket nodig, ongeacht de leeftijd.
 
-### Six Flags Magic Mountain: Fright Fest
+### Fright Fest in Six Flags Magic Mountain
 
 Fright Fest in [Six Flags Magic Mountain](ref:six-flags-magic-mountain) bij Los Angeles loopt sinds 18 september van vrijdag tot en met zondag, vanaf 8 oktober ook op donderdag, en eindigt op zondag 1 november. Volgens de kalender van het park begint het om 19 uur en duurt het op donderdag en zondag tot 23 uur, op vrijdag tot middernacht en op zaterdag tot 1 uur. Wie het park verlaat, mag er na 21 uur niet meer in.
 
@@ -162,33 +162,33 @@ Er zijn zeven mazes, met als nieuwkomers **Final Destination: Death's Playground
 
 Overdag loopt in hetzelfde park van 12 tot 17 uur Tricks and Treats voor gezinnen, op dezelfde dagen als Fright Fest.
 
-### Six Flags Great Adventure: Fright Fest
+### Fright Fest in Six Flags Great Adventure
 
 [Six Flags Great Adventure](ref:six-flags-great-adventure) in New Jersey heeft negen mazes, meer dan elk ander Six Flags-park in dit overzicht behalve Knott's. Nieuw zijn **JASON: Blood Reign** en **Final Destination: Death's Playground**. Verder staan The Conjuring Universe, Army of the Dead, Asylum, Twisted Holidays, Deadwood Cabin, Big Top Terror en The Witch's Reflection op het programma, plus vijf scare zones en vijf shows.
 
 Fright Fest loopt van 18 september tot en met 1 november, telkens van donderdag tot en met zondag. Het pakket met toegang kost vanaf 80 $, de pass voor alle avonden vanaf 75 $. Voor kinderen is er overdag Kids Boo Fest, van 12 september tot en met 1 november.
 
-### Kings Island en Kings Dominion: Halloween Haunt
+### Halloween Haunt in Kings Island en Kings Dominion
 
 [Kings Island](ref:kings-island) bij Cincinnati houdt Halloween Haunt van 25 september tot en met 31 oktober, op donderdag en zondag van 18 tot 23 uur en op vrijdag en zaterdag tot middernacht. Van de zes mazes zijn **JASON: Blood Reign** en **Metal Massacre** nieuw. Daarnaast zijn er vier scare zones en drie shows. The Conjuring: Beyond Fear kost extra en zit niet in de Haunted Attractions Pass. Het pakket met toegang is er vanaf 64 $, de pass voor het seizoen vanaf 49 $. Op donderdag en vrijdag mag je het park niet uit en weer in, in het weekend alleen tot 18 uur. Voor gezinnen loopt op zaterdag en zondag van 11 tot 17 uur Tricks and Treats.
 
 In [Kings Dominion](ref:kings-dominion) bij Richmond in Virginia is Halloween Haunt van 18 september tot en met 1 november open van vrijdag tot en met zondag, op vrijdag en zaterdag van 18 uur tot middernacht en op zondag tot 22 uur. Nieuw onder de zes mazes is **Diablo: The Infernal Path**, en vier van de vijf shows zijn er in 2026 voor het eerst. Pakketten zijn er vanaf 55 $, de Haunted Attractions Pass vanaf 10 $.
 
-### Carowinds: SCarowinds
+### SCarowinds in Carowinds
 
 SCarowinds in [Carowinds](ref:carowinds), op de grens van North en South Carolina, loopt van 11 september tot en met 7 november, van donderdag tot en met zaterdag van 18 uur tot middernacht en op zondag tot 23 uur. Nieuw zijn de maze **JASON: Blood Reign**, drie van de vijf scare zones en vier van de zes shows. The Conjuring: Beyond Fear kost ook hier extra. Het pakket met toegang begint bij 55 $, de Haunted Attractions Pass bij 10 $.
 
-### Texas: Fright Fest in Six Flags Over Texas en Fiesta Texas
+### Fright Fest in Six Flags Over Texas en Fiesta Texas
 
 [Six Flags Over Texas](ref:six-flags-over-texas) bij Dallas houdt Fright Fest van 11 september tot en met 1 november, van vrijdag tot en met zondag. Er draaien vijf mazes, waaronder The Strangers: No Escape en SAW: Legacy of Terror. Nieuw is de scare zone Doc Varnum's Hybrid Hell Pit, waarvoor je de Haunted Attractions Pass nodig hebt. De andere vijf scare zones horen bij de toegang. Het pakket kost 84 $, de pass voor één avond vanaf 30 $.
 
 [Six Flags Fiesta Texas](ref:six-flags-fiesta-texas) in San Antonio heeft zeven mazes. Nieuw zijn **Nosferatu** en **Cinema Slasher**, een maze naar het voorbeeld uit Knott's Scary Farm. Er spelen acht shows en er zijn vijf scare zones. Fright Fest is daar van 11 september tot en met 1 november in het weekend open, vanaf 22 oktober ook op donderdag, en het pakket kost vanaf 84 $.
 
-### Six Flags Great America: Fright Fest
+### Fright Fest in Six Flags Great America
 
 [Six Flags Great America](ref:six-flags-great-america) tussen Chicago en Milwaukee heeft vijf mazes, waaronder de nieuwe **Blair Witch: No Signal** en **Nightmares**, zeven scare zones en negen shows, meer shows dan elk ander park in dit overzicht. Voor het 50-jarig bestaan van het park keert de scare zone Necropolis terug. Fright Fest loopt van 19 september tot en met 1 november, en het pakket kost vanaf 75 $. Na 20 uur mag niemand meer terug het park in, en na 18 uur raadt het park het evenement af voor kinderen onder de 13.
 
-### Howl-O-Scream: Busch Gardens en SeaWorld
+### Howl-O-Scream in Busch Gardens en SeaWorld
 
 Howl-O-Scream heet het evenement in alle vier parken van exploitant United Parks.
 
@@ -198,17 +198,17 @@ In [Busch Gardens Tampa](ref:busch-gardens-tampa) loopt Howl-O-Scream op geselec
 
 In [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg) in Virginia en [SeaWorld San Antonio](ref:seaworld-san-antonio) zit Howl-O-Scream bij de gewone toegang. Williamsburg begint om 18 uur, met vijf huizen, waarvan twee nieuw. Het park raadt gezinnen met kleine kinderen aan om goed na te denken of ze na 18 uur blijven. San Antonio viert het 25e jaar van Howl-O-Scream met vijf huizen, waarvan drie nieuw, en acht scare zones. Daar loopt het van vrijdag tot en met zondag, tot 1 november.
 
-### Hersheypark: Dark Nights
+### Dark Nights in Hersheypark
 
 In [Hersheypark](ref:hersheypark) in Pennsylvania horen de Dark Nights bij Hersheypark Halloween, dat acht weekenden lang loopt, van 12 september tot en met 1 november. Vanaf 18 uur gaan vijf horrorhuizen en vijf scare zones open, met als nieuwe scare zone Reese's Depot of Doom. Alles zit in het Halloween-ticket, dat voor een hele dag 56,99 $ kost en vanaf 17 uur 39,99 $. Voor kinderen tot 12 jaar is er een trick-or-treatroute met 14 posten.
 
-### Kennywood: Phantom Fall Fest
+### Phantom Fall Fest in Kennywood
 
 [Kennywood](ref:kennywood) in Pittsburgh heeft zeven horrorhuizen, waarvan Ghostwood Estate: Open House nieuw is, en vier scare zones. Alles zit bij de toegang, die in de voorverkoop vanaf 37,49 $ kost. Phantom Fall Fest loopt van 12 september tot en met 1 november, op vrijdag vanaf 18 uur en in het weekend vanaf 12 uur ’s middags. Een minimumleeftijd is er niet, maar na 18 uur is het evenement eerder voor oudere bezoekers bedoeld. Wie 17 of jonger is, moet begeleid worden door iemand van 21 of ouder.
 
-## Voor gezinnen: Halloween overdag
+## Halloween overdag voor gezinnen
 
-### Disney: Halloweenfeesten en Halloween Time
+### Halloweenfeesten en Halloween Time bij Disney
 
 **Mickey's Not-So-Scary Halloween Party** in het [Magic Kingdom](ref:magic-kingdom-park) loopt in 2026 op 38 avonden tussen 7 augustus en 31 oktober. In oktober zijn dat nog de 6e, 8e, 9e, 13e, 15e, 16e, 18e, 22e, 23e, 25e, 27e, 29e en 31e. Volgens Disney zijn alle data uitverkocht. Het feest duurt van 19 uur tot middernacht, en met een ticket mag je vanaf 16 uur het park in. Op het programma staan de parade Mickey's Boo-To-You Halloween Parade, het vuurwerk Disney's Not-So-Spooky Spectacular met lasers en de podiumshow Hocus Pocus Villain Spelltacular voor het kasteel. Snoep haal je bij posten in alle delen van het park. Nieuw zijn A Masquerade with Stitch, een dansfeest met Stitch, Lilo en Angel in Tomorrowland, en Captain Jack Sparrow met een piratenprogramma in Adventureland. Space Mountain rijdt op deze avonden volgens Disney in volledige duisternis, met Halloween-muziek.
 
@@ -222,11 +222,11 @@ De Spooky Farm in Knott's Berry Farm loopt overdag, van donderdag tot en met zon
 
 De andere Six Flags-parken hebben hun eigen dagen voor gezinnen. In Magic Mountain, Kings Island, Carowinds, Over Texas, Fiesta Texas en Kings Dominion heet dat Tricks and Treats, in Great Adventure en Great America Kids Boo Fest. Meestal gaat het om de weekenden tot en met 1 november, overdag tot ongeveer 17 uur, voordat het avondprogramma begint.
 
-### SeaWorld en Busch Gardens: Spooktacular
+### Spooktacular in SeaWorld en Busch Gardens
 
 Overdag hebben de vier parken van United Parks een programma voor kinderen, inbegrepen bij de gewone toegang. In Busch Gardens Tampa loopt het Halloween Spooktacular op zaterdag en zondag van 12 september tot en met 1 november, van 12 tot 16 uur, en vanaf 3 oktober is er ook een Sesame Street-Halloween. SeaWorld Orlando houdt zijn Spooktacular op geselecteerde dagen van 29 augustus tot en met 1 november. In Williamsburg is het bedoeld voor kinderen tot negen jaar, en in San Antonio is er dit jaar voor het eerst een show met Baby Shark.
 
-### Dollywood en Silver Dollar City: oogstfeesten met pompoenen
+### Oogstfeesten met pompoenen in Dollywood en Silver Dollar City
 
 [Dollywood](ref:dollywood) in Tennessee viert van 14 september tot en met 31 oktober het Harvest Festival, inbegrepen bij de gewone toegang. ’s Avonds branden bij de Great Pumpkin LumiNights meer dan 12.000 pompoenen, en er staat een pompoenboom van twaalf meter hoog. Nieuw is Harvey's Boo Bash, een kostuumfeest op 16, 23 en 30 oktober van 21 uur tot middernacht, voor 129,99 $ extra.
 
@@ -238,7 +238,7 @@ Overdag hebben de vier parken van United Parks een programma voor kinderen, inbe
 
 [Knoebels](ref:knoebels-amusement-park) in Pennsylvania vraagt geen toegangsprijs, je betaalt per rit. Tijdens Hallo-Fun zijn in de weekenden van oktober meer dan 50 attracties in Halloween-versiering open, op vrijdag van 18 tot 22 uur, op zaterdag van 14 tot 22 uur en op zondag van 12 tot 18 uur.
 
-## Met kinderen: leeftijdsgrenzen en kostuums
+## Leeftijdsgrenzen en kostuums
 
 Bijna alle parken raden hun avondevenementen pas vanaf 13 jaar aan. Six Flags zet dat bij elk van zijn parken. Busch Gardens Tampa en SeaWorld Orlando spreken van een volwassen publiek, al laat SeaWorld jongeren onder de 18 wel binnen. In Great America geldt het advies vanaf 18 uur. In Kennywood moet iedereen van 17 of jonger begeleid worden door iemand van 21 of ouder. Hersheypark noemt voor de Dark Nights geen leeftijd.
 
@@ -246,19 +246,17 @@ Bij de Oogie Boogie Bash zijn maskers vanaf 14 jaar verboden, en kostuums mogen 
 
 ## Wanneer je gaat
 
-Onze wachttijden gelden voor de hele dag, de eventavonden meten we niet apart. Voor Universal Studios Florida staat hieronder elke grote attractie uur voor uur, gemeten over het hele seizoen:
+Onze wachttijden gelden voor de hele dag, de eventavonden meten we niet apart. Voor de grote attracties in Universal Studios Florida hebben we ze uur voor uur over het hele seizoen gemeten.
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 
 ```
 
-De rustigste dagen van de komende weken in Knott's Berry Farm staan in de kalender:
-
 ```best-days-widget slug=knotts-berry-farm
 
 ```
 
-Op welke weekdag de wachtrijen in de grote parken met een avondevenement het kortst zijn, gemeten over dit seizoen:
+Voor de grote parken met een avondevenement hebben we ook de weekdag met de kortste wachtrijen over dit seizoen gemeten.
 
 ```park-comparison-widget slugs=universal-studios-florida,knotts-berry-farm,six-flags-magic-mountain,six-flags-great-adventure,kings-island,busch-gardens-tampa,seaworld-orlando show=quietest
 

@@ -2,6 +2,7 @@
 title: 'Parque Warner Madrid : Batman, Superman et ouverture à midi'
 translationKey: parque-warner-madrid-guide
 date: '2026-10-08'
+updatedAt: '2026-10-14'
 author: patrick
 mode: published
 featured: false
@@ -51,8 +52,7 @@ seo:
 La porte du [Parque Warner Madrid](ref:parque-warner-madrid) ouvre à **midi**.
 Dans notre calendrier, presque chaque jour d’ouverture de 2026 commence à 12 h.
 Selon la saison, le parc ferme à 20, 21 ou 22 h, et à minuit en juillet et en
-août. Qui se gare à dix heures attend deux heures, car le parking n’ouvre
-qu’une heure avant le parc.
+août. Le parking ouvre une heure avant le parc.
 
 Le parc se trouve à San Martín de la Vega, à environ 30 kilomètres au sud de la
 capitale, et compte cinq univers tirés des films et des comics de Warner Bros.
@@ -63,10 +63,19 @@ en 2002, et Batman: Gotham City Escape, depuis 2023. Sauf à Batman, les files d
 
 Madrid voulait un parc comme celui que Disney a construit à Paris. Disney avait
 examiné l’Espagne avant de choisir Paris, et la région a obtenu Warner. Le
-contrat est allé à **Six Flags**, alors filiale de Time Warner. L’accord avec la
+contrat est allé à **Six Flags**, que Time Warner avait vendu en 1995 à la société
+d’investissement Boston Ventures. Des filiales de Paramount et de Time Warner avaient
+toutes deux fait une offre pour exploiter la future Ciudad del Ocio. L’accord avec la
 Comunidad de Madrid a été signé en **janvier 1999**, les travaux ont commencé au
 printemps 1999, et la Wikipédia espagnole chiffre le coût total à
 **368 millions d’euros**.
+
+Le terrain abritait un gisement de gypse qui fournissait 90 % du gypse de la région.
+Les plâtriers ont réclamé 10 000 millions de pesetas d’indemnisation, pour un budget
+prévu d’environ 30 000 millions, et ont conclu un accord en justice avec la Comunidad.
+Celle-ci a acheté 150 hectares pour 8 millions d’euros, a payé 28 millions de plus
+pour élargir la M-506 en route à deux chaussées sur 8 kilomètres, et a apporté
+elle-même 160 millions d’euros au coût de construction.
 
 Le parc a ouvert le **6 avril 2002**. La veille au soir, Bo Derek et
 Christopher Lambert l’avaient inauguré lors d’un gala où il a plu si fort que le
@@ -74,17 +83,27 @@ programme et la retransmission télévisée ont été annulés. Il s’est d’a
 appelé Warner Bros. Movie World Madrid, puis Warner Bros. Park Madrid à partir
 de 2004, et Parque Warner Madrid depuis 2006.
 
+Fin 2005, la Comunidad détenait 43,6 % de la société du parc, Caja Madrid 21,82,
+Fadesa 13,09, El Corte Inglés et NH Hoteles 4,3 chacun et Six Flags ou Warner 4 %,
+le reste revenant à cinq entreprises de construction. Six Flags dirigeait le parc avec
+un contrat de 99 ans, censé courir jusqu’en 2101. En novembre 2004, les actionnaires l’ont résilié sans indemnité. Ils imputaient à l’exploitant 32 millions
+d’euros de pertes, et le directeur général Mike Foerster a démissionné. La licence
+pour les marques et les personnages de Warner Bros. a été maintenue. Pour toute
+l’année 2004, El País a fait état de 38 millions d’euros de pertes.
+
 Les exploitants avaient compté sur trois millions de visiteurs par an et ont
 vite ramené l’objectif à un million. La Wikipédia espagnole en donne pour causes
 le prix d’entrée élevé, le tarif du parking et l’interdiction d’apporter à
 manger. S’y sont ajoutées, la première année, de longues files d’attente, parce
 que le personnel ne connaissait pas l’installation, et 56 employés ont démissionné.
 En 2006, la dette atteignait 240 millions d’euros. La Comunidad a vendu ses
-parts pour 25 millions d’euros à l’entreprise de construction Fadesa, et
-**Parques Reunidos** a repris la direction pour dix ans. Selon la même source,
-le parc a alors dégagé ses premiers bénéfices.
+parts pour 26 millions d’euros à l’entreprise de construction Fadesa, et
+**Parques Reunidos** a repris la direction pour dix ans. Selon la Wikipédia
+espagnole, le parc a alors dégagé ses premiers bénéfices.
 
-En 2019, il a reçu 2,26 millions de visiteurs, ce qui le place parmi les vingt
+Selon le rapport de TEA et AECOM, la fréquentation a augmenté de 18,8 % en 2018,
+de 1,84 à 2,185 millions. Aucun parc à thème européen de cette liste n’a progressé
+davantage, et le parc était 13e en Europe. En 2019, il a reçu 2,26 millions de visiteurs, ce qui le place parmi les vingt
 parcs les plus fréquentés d’Europe. Parques Reunidos appartient aujourd’hui au
 fonds d’investissement EQT, qui veut, selon Expansión, faire vendre le groupe en
 septembre 2026 ([plus de détails](/blog/parques-reunidos-a-vendre-movie-park)).
@@ -96,14 +115,16 @@ Village en occupe 5,5. Notre page du parc recense 45 attractions et
 expériences, dont des Pasajes de Halloween qui ne tournent que par moments ; le
 parc lui-même parle de 33 attractions.
 
-Au fil des années, le parc a surtout reçu des ajouts plus modestes. En 2004
-sont venus les premiers jours d’Halloween et davantage de spectacles de rue, en
-2005 la balade en noir Scooby-Doo, et la première saison de Noël date de 2006.
+En 2004 sont venus davantage de spectacles de rue, en 2005 la balade en noir
+Scooby-Doo, et en 2006 le parc a fêté sa première saison d’Halloween et sa
+première saison de Noël.
 En 2009 ont ouvert Oso Yogui et Correcaminos Bip Bip, en 2011 Cartoon Village a
 reçu quatre attractions de plus, dont l’école de conduite de la famille
 Pierrafeu, et en 2013 l’Academia de Pilotos Baby Looney Tunes. Le Parque Warner
-Beach a suivi en juin 2014, une zone DC avec six attractions aquatiques y a été
-ajoutée en 2018, et l’Aquaman Nighttime Spectacular en 2019.
+Beach a suivi en juin 2014, un parc aquatique de 8,5 millions d’euros sur
+30 000 mètres carrés avec deux piscines à vagues et une rivière lente. Une zone DC avec six attractions aquatiques y a été
+ajoutée en 2018. En 2022, le parc
+aquatique a reçu les toboggans Aquaman et Black Manta de ProSlide.
 
 ## Superman et Gotham : DC Super Heroes World
 
@@ -160,9 +181,9 @@ hissée lentement puis tombe ; en mode Combo, l’un suit l’autre. Taille mini
 
 ```
 
-À cela s’ajoutent, dans la zone, le Lex Luthor Invertatron, les chaises
-volantes de Mr. Freeze (à partir de 100 cm) et les autos tamponneuses du Joker
-(à partir de 105 cm).
+À cela s’ajoutent, dans la zone, le Lex Luthor Invertatron (un Top Spin de HUSS),
+les chaises volantes de Mr. Freeze (un manège de Zierer, à partir de 100 cm) et
+les autos tamponneuses du Joker (à partir de 105 cm).
 
 ## Les autres univers
 
@@ -211,8 +232,7 @@ aussi à partir de 100 cm. Aux **[Rápidos ACME](ref:parque-warner-madrid/rapido
 rondes, et dans **[La Aventura de Scooby-Doo](ref:parque-warner-madrid/la-aventura-de-scooby-doo)**,
 une balade en noir interactive, on tire sur des fantômes, sans taille minimale.
 
-**Hollywood Boulevard.** L’entrée n’a aucune attraction à sensations, mais des
-dalles de trottoir aux noms de stars du cinéma, une réplique du Chinese Theatre
+**Hollywood Boulevard.** L’entrée a des dalles de trottoir aux noms de stars du cinéma, une réplique du Chinese Theatre
 avec un cinéma 3D et la scène du spectacle d’accueil avec les Looney Tunes.
 
 Toutes les tailles minimales, telles que le parc les indique sur les pages de
@@ -247,15 +267,12 @@ ces attractions, les enfants de 100 à 120 cm ne montent qu’avec un adulte.
 
 ## Quelle attraction pour qui
 
-Qui ne fait qu’une grande attraction prend Superman. Elle a sept inversions et
-pas de plancher, et sa file d’attente se situe dans la moyenne du parc. Qui veut
-le tour le plus intense va à Stunt Fall. La RCDB indique 4,5 g, et le circuit
-est parcouru deux fois, une fois à reculons. Batman est la plus moderne et celle
-qui a les temps d’attente les plus longs ; qui vient pour elle prévoit de
-préférence un pass.
+Qui ne fait qu’une grande attraction prend Superman, dont la file d’attente se
+situe dans la moyenne du parc. Le tour le plus intense est Stunt Fall, avec 4,5 g.
+Batman est la plus moderne.
 
-Le circuit de Shadows of Arkham est compact, avec cinq inversions sur 823 mètres, et on y fait rarement la
-queue.
+Le circuit de Shadows of Arkham est compact, avec 823 mètres, et on y fait
+rarement la queue.
 
 ## Spectacles et nouveautés 2026
 
@@ -276,18 +293,11 @@ d’Espagne, figure sur notre page du parc parmi les attractions fermées.
 Le tableau repose sur les jours de mesure des deux dernières années, jusqu’au
 7 octobre 2026, chaque attraction avec son propre nombre de jours mesurés. Comme
 le parc n’ouvre qu’à quelques dates en hiver, l’essentiel vient des mois d’avril
-à septembre :
+à septembre.
 
 ```ride-waits-widget park=parque-warner-madrid top=8 columns=land,peak,days highlight=batman-gotham-city-escape
 
 ```
-
-Batman: Gotham City Escape est en tête, et l’écart avec la suite est grand. Tout
-ce qui suit est serré : les Rápidos ACME sont deuxièmes, puis viennent Scooby-Doo,
-Superman, Río Bravo et Coaster Express, et Stunt Fall n’apparaît pas parmi les
-dix premières.
-
-Voici comment les files se répartissent au fil de la journée :
 
 ```hourly-profile-widget slug=parque-warner-madrid top=8
 
@@ -300,13 +310,11 @@ et reste ensuite plate. Les Rápidos ACME et Río Bravo atteignent leur maximum
 l’après-midi, quand il fait chaud.
 
 Le rope drop, c’est-à-dire arriver dès l’ouverture, ne vaut le coup dans ce parc
-que pour une seule attraction. Les Rápidos ACME ont environ dix minutes
-d’attente à l’ouverture et environ 60 au maximum de la journée. Nous
+que pour une seule attraction. Aux Rápidos ACME, la file est courte à l’ouverture et
+se multiplie jusqu’à l’après-midi. Nous
 recommandons de les faire dans les 90 premières minutes après l’ouverture (état
-au 8 octobre 2026). À Batman, l’attente à l’ouverture est déjà d’environ
-40 minutes, et nous n’y recommandons pas de venir tôt.
-
-Les plus calmes des prochains jours d’ouverture, calculés en direct :
+au 8 octobre 2026). À Batman, elle est déjà longue à l’ouverture, et nous
+n’y recommandons pas de venir tôt.
 
 ```best-days-widget slug=parque-warner-madrid
 
@@ -347,21 +355,19 @@ Le samedi est le jour le plus chargé, avec un net écart, le mercredi et le jeu
 et le mardi au milieu. Le lundi repose sur peu de jours mesurés, parce que le
 parc le ferme souvent en automne.
 
-Août est nettement plus chargé que juillet, alors que le parc est ouvert tous les jours de 12 h à minuit pendant les deux mois.
-Nous ne savons pas pourquoi. Septembre est calme. Octobre compte pour l’instant
+Août est nettement plus chargé que juillet, alors que le parc est ouvert tous les jours de 12 h à minuit pendant les deux mois. Septembre est calme. Octobre compte pour l’instant
 six jours mesurés et c’est le mois le plus calme, décembre repose lui aussi sur
-six jours et affiche une valeur étonnamment haute (état au 8 octobre 2026). Ces
-deux chiffres sont minces.
+six jours et affiche une valeur étonnamment haute (état au 8 octobre 2026).
 
-D’avril à juin 2026, le parc est le plus souvent ouvert,
+D’avril à juin 2026, selon le calendrier de la
+[page du parc](ref:parque-warner-madrid), le parc est le plus souvent ouvert,
 tantôt jusqu’à 20 h, tantôt jusqu’à 22 h. En juillet et en août, il ouvre tous
 les jours jusqu’à minuit. En septembre, 20 et 22 h alternent, et en octobre
 des lundis et des mardis disparaissent régulièrement. En novembre, il n’ouvre
 que les week-ends et deux lundis, de 12 à 20 h. La saison de Noël court, selon
 le parc, du 21 novembre au 10 janvier, avec aussi quelques jours de semaine en
 décembre 2026 et neuf jours en janvier 2027. En février, c’est pratiquement
-fermé. Ce qui s’applique réellement figure dans le calendrier de la
-[page du parc](ref:parque-warner-madrid).
+fermé.
 
 Le parc offre une garantie pluie. Qui, avec un billet acheté sur parquewarner.com,
 subit au total deux heures de pluie, même avec des interruptions, échange son
@@ -372,7 +378,8 @@ parcs sous la pluie, voir le [guide de la pluie](/blog/parc-d-attractions-sous-l
 
 ### Halloween jusqu’au 2 novembre
 
-La saison d’Halloween court du **26 septembre au 2 novembre 2026**. En journée,
+La saison d’Halloween court du **26 septembre au 2 novembre 2026**, et les dates
+des autres parcs d’Europe figurent dans le [guide Halloween 2026](/blog/halloween-parcs-attractions-2026). En journée,
 il y a de la décoration, des parades et la nouvelle attraction familiale ACME
 Factory, où l’on répare une usine avec Coyote. S’y ajoutent quatre Pasajes del
 Terror, des parcours d’épouvante à pied (La Monja, Crime Alley: Night of Chaos,
@@ -380,16 +387,16 @@ IT Experience, Expedientes Warren), et deux scare zones. Le parc vend les
 Pasajes à l’unité ou en pack. Autre nouveauté, la comédie musicale La
 Maldición de Drácula.
 
-Les **Halloween Scary Nights** sont un billet à part pour la soirée. Elles ont
-lieu en 2026 pour la cinquième fois, les 9, 16 et 23 octobre de 22 h à 3 h et le
+Les **Halloween Scary Nights** sont un billet à part pour la soirée. Elles ont eu
+lieu pour la première fois en 2021 sous le nom de Halloween Horror Nights, les 30 et
+31 octobre de 23 h à 3 h. En 2022, le parc les a rebaptisées, selon la Wikipédia
+espagnole pour qu’on ne les confonde pas avec l’événement du même nom chez Universal. Sous ce nom, elles ont lieu en 2026 pour la cinquième fois, les 9, 16 et 23 octobre de 22 h à 3 h et le
 31 octobre de 0 à 5 h, avec une entrée deux heures plus tôt chaque fois. Le parc
 les recommande à partir de 12 ans, accompagné. Au programme figurent huit
 Pasajes, six scare zones et un DJ, et la Venganza del Enigma, Superman, Batman
 Gotham City Escape, Shadows of Arkham ainsi que les autos tamponneuses du Joker
 continuent de tourner. Slasher Royale est une expérience supplémentaire à partir
-de 18 ans, avec contrôle d’identité, et affichait complet le 8 octobre. Pour
-voir comment l’événement se place face aux autres en Europe, lisez le
-[guide Halloween 2026](/blog/halloween-parcs-attractions-2026).
+de 18 ans, avec contrôle d’identité, et affichait complet le 8 octobre.
 
 ## Billets, tarifs et abonnement annuel
 
@@ -413,9 +420,9 @@ et 55 € pour un enfant, le menu Express 12,90 €. Les restaurants ouvrent à
 Les **Bono Parques** sont les abonnements annuels du groupe Parques Reunidos,
 valables jusqu’à fin 2027. Le Bono Oro coûte 219 €, 294 € avec parking, et
 vaut dans douze parcs. Le Bono Platino (329 €) vaut dans 27. L’Oro donne en
-outre 50 % de réduction au Parque Warner Beach. Pour la comparaison avec les
-autres abonnements annuels, voir le
-[comparatif des abonnements annuels](/blog/abonnement-annuel-comparatif-parcs).
+outre 50 % de réduction au Parque Warner Beach. Le
+[comparatif des abonnements annuels](/blog/abonnement-annuel-comparatif-parcs) les
+place à côté des autres abonnements annuels.
 
 ## Services dans le parc
 
@@ -426,15 +433,13 @@ sur la Calle Nueva York, entre Stunt Fall et le théâtre des spectacles de
 cascades. On ne peut fumer que dans 16 zones signalées. Sur des bancs solaires
 de Repsol, on recharge son téléphone à l’énergie solaire, et le parc loue en
 plus des batteries externes. L’application officielle affiche les temps
-d’attente, les spectacles et l’état du Pase Correcaminos. Ses temps d’attente
-sont ceux du parc, nos tableaux viennent de nos propres mesures.
+d’attente, les spectacles et l’état du Pase Correcaminos.
 
 ## Venir depuis Madrid
 
 **En voiture.** A-4 vers le sud, sortie 22, puis suivre la signalisation. Selon
 la Wikipédia espagnole, le parking compte plus de 10 000 places. Le parc
-conseille d’arriver avant l’ouverture, parce que des files se forment aux
-accès, et le parking ouvre une heure avant le parc.
+conseille d’arriver avant l’ouverture, parce que des files se forment aux accès.
 
 **En train et en bus.** La ligne C-3 des Cercanías va jusqu’à Pinto, où la
 ligne 413 de La Veloz conduit les visiteurs jusqu’à la porte. La ligne 412 part
@@ -443,6 +448,11 @@ aussi l’entrée avec le bus depuis la gare routière de Méndez Álvaro et dep
 Príncipe Pío ; pour les Scary Nights, des bus de SAMAR partent de Méndez Álvaro,
 avec retour la même nuit.
 
+De 2002 au 4 avril 2012, une branche de Cercanías dédiée, la C-3a, reliait Pinto au
+parc puis à San Martín de la Vega. La ligne avait coûté 85 millions d’euros. La
+Comunidad l’a fermée, et El Confidencial a donné pour raison le faible nombre de
+visiteurs du parc.
+
 **En autopartage.** WiBLE loue des voitures avec le parking du parc inclus, pour
 45 € par jour.
 
@@ -450,8 +460,7 @@ avec retour la même nuit.
 
 Il n’y a pas d’hôtel au parc même. Il vend des packs entrée et nuit dans des
 hôtels partenaires des communes voisines, et propose pour les visites jusqu’au
-2 novembre un deuxième jour gratuit (réservation jusqu’au 12 octobre). Qui dort
-à Madrid fait 30 kilomètres.
+2 novembre un deuxième jour gratuit (réservation jusqu’au 12 octobre).
 
 ## Une journée au parc, dans les grandes lignes
 
@@ -513,8 +522,6 @@ une caution, en deux tailles et en nombre limité.
 
 ## Pour aller plus loin
 
-Le temps qu’il fera au-dessus du parc le jour de votre visite :
-
 ```weather-widget slug=parque-warner-madrid
 
 ```
@@ -549,3 +556,18 @@ Le temps qu’il fera au-dessus du parc le jour de votre visite :
   [Batman: Gotham City Escape sur es.wikipedia (en espagnol)](https://es.wikipedia.org/wiki/Batman:_Gotham_City_Escape)
 - Vente de Parques Reunidos :
   [notre article](/blog/parques-reunidos-a-vendre-movie-park)
+- Parc aquatique, attractions et constructeurs :
+  [Parque Warner Madrid sur en.wikipedia](https://en.wikipedia.org/wiki/Parque_Warner_Madrid)
+- Fin du contrat avec Six Flags :
+  [Cinco Días](https://cincodias.elpais.com/cincodias/2004/11/23/empresas/1101220786_850215.html) ·
+  [El Mundo](https://www.elmundo.es/elmundo/2004/11/23/madrid/1101218257.html)
+- Actionnaires et pertes de 2004 :
+  [El País](https://elpais.com/diario/2005/12/29/madrid/1135859070_850215.html)
+- Terrain, M-506, ligne ferroviaire C-3a :
+  [El Confidencial](https://www.elconfidencial.com/espana/2012-03-18/aguirre-da-la-puntilla-a-la-warner-cierra-el-tren-que-lleva-al-parque_232651) ·
+  [C-3 sur en.wikipedia](https://en.wikipedia.org/wiki/C-3_%28Cercan%C3%ADas_Madrid%29)
+- Fréquentation 2017 et 2018 :
+  [TEA/AECOM Theme Index 2018](https://aecom.com/content/wp-content/uploads/2019/05/Theme-Index-2018-5-1.pdf)
+- Vente des parts de la Comunidad à Fadesa :
+  [Hosteltur (en espagnol)](https://www.hosteltur.com/38174_madrid-vende-parque-warner-fadesa-26-m.html) ·
+  [El Mundo (en espagnol)](https://www.elmundo.es/elmundo/2006/11/02/madrid/1162466445.html)

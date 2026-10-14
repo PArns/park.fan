@@ -90,8 +90,6 @@ salvo un giorno di luglio. Su tutti i giorni della settimana l’attesa tipica
 nella media del parco (la mediana) è **breve per un’affluenza simile**; nei
 giorni pieni sta nettamente più in alto.
 
-Le dieci attrazioni per cui aspetti di più, con accanto il valore di oggi:
-
 ```stats-widget slug=europa-park show=attractions
 
 ```
@@ -107,7 +105,7 @@ nessuno, in una mattina piena la coda arriva fino al piazzale.
 Voltron
 nel primo anno ha totalizzato 3,25 milioni di corse e ha la coda più lunga del
 parco, eppure per un parco con oltre sei milioni di ospiti **questa coda più
-lunga è sorprendentemente corta**. La tabella confronta parchi con la stessa base dati e lo stesso metodo di calcolo:
+lunga è sorprendentemente corta**. Tutti i parchi del confronto sono calcolati con la stessa base dati e lo stesso metodo di calcolo.
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
@@ -748,7 +746,7 @@ sabato arrivo, Rulantica o un giro in paese, domenica al parco.
 giorno feriale più pieno, anche se di poco. Se comunque l’unica opzione è un
 giorno infrasettimanale, prendi il giovedì.
 
-## Halloween, HALLOWinter, inverno
+## Halloween e inverno
 
 Dal **26 settembre** nel parco ci sono circa **180.000 zucche**, più le
 decorazioni autunnali in tutti e diciotto i paesi e, novità del 2026, un
@@ -829,7 +827,7 @@ e allora chiude solo alle 19, cioè esattamente quando accanto il terreno apre i
 cancelli. Chi si compra un biglietto per Traumatica in una data di novembre,
 rinuncia così all’ultima ora di parco.
 
-## In pratica: prezzi 2026, come arrivare, parcheggio, mangiare, dormire
+## Prezzi 2026 e come arrivare
 
 **Biglietti.** Il prezzo dipende dalla data, e il parco lavora con due
 categorie di prezzo. Online la
@@ -960,7 +958,7 @@ misurati a novembre non ne abbiamo ancora.
 
 ## Meteo e tempi di attesa aggiornati
 
-Quando piove, la coda dell’Eurosat si allunga:
+Quando piove, la coda dell’Eurosat si allunga.
 
 ```weather-widget slug=europa-park
 

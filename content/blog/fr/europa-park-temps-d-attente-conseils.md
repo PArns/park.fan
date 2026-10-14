@@ -89,9 +89,6 @@ trou depuis avril, à un jour de juillet près. Tous jours de la semaine
 confondus, l’attente typique sur l’ensemble du parc (la médiane) est **courte
 pour une telle affluence** ; les jours chargés, elle passe nettement au-dessus.
 
-Les dix attractions devant lesquelles tu patientes le plus longtemps, avec la
-valeur du jour à côté :
-
 ```stats-widget slug=europa-park show=attractions
 
 ```
@@ -106,7 +103,7 @@ personne n’attend ; un matin chargé, la file déborde jusque sur le parvis.
 
 Voltron a totalisé 3,25 millions de tours la première année et a la
 file la plus longue du parc, et pour un parc de plus de six millions de visiteurs,
-**cette file la plus longue est étonnamment courte**. Le tableau compare des parcs avec la même base de données et la même méthode de calcul :
+**cette file la plus longue est étonnamment courte**. Tous les parcs de la comparaison sont calculés avec la même base de données et la même méthode de calcul.
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
@@ -762,7 +759,7 @@ aller dans le parc le dimanche.
 le jour de semaine le plus chargé, de justesse. Si de toute façon seul un jour de
 semaine est envisageable, prends le jeudi.
 
-## Halloween, HALLOWinter, hiver
+## Halloween et hiver
 
 À partir du **26 septembre**, environ **180 000 citrouilles** sont posées dans
 le parc, avec de la décoration d’automne dans les dix-huit pays et, nouveauté
@@ -849,7 +846,7 @@ HALLOWinter et ne ferme qu’à 19 h, précisément au moment où le terrain d�
 ouvre ses grilles. Qui s’achète un billet Traumatica pour une date de novembre
 abandonne du même coup la dernière heure de parc.
 
-## Pratique : prix d’entrée 2026, accès, stationnement, restauration, hébergement
+## Prix d’entrée 2026 et accès
 
 **Billets.** Le prix dépend de la date, et le parc travaille avec deux
 catégories de prix. En ligne,
@@ -988,7 +985,7 @@ jours. Des temps d’attente mesurés en novembre, nous n’en avons pas encore.
 
 ## Météo et temps d’attente en direct
 
-Quand il pleut, la file d’Eurosat s’allonge :
+Quand il pleut, la file d’Eurosat s’allonge.
 
 ```weather-widget slug=europa-park
 

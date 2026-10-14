@@ -417,7 +417,7 @@ kinderen vanaf 320 euro.
 Welke wachttijden en rustige dagen we in het Europa-Park hebben gemeten, staat in
 de [Europa-Park-gids](/blog/europa-park-wachttijden-tips).
 
-## Route, parkeren, overnachten
+## Route en hotels
 
 Rulantica ligt aan de Roland-Mack-Ring 1 in 77977 Rust, tegenover hotel
 Krønasår. Met de auto neem je **afslag 57b Rust van de A5**. Het bezoekersparkeerterrein
@@ -442,7 +442,7 @@ tussen de hotels en Rulantica, op drukke momenten elk kwartier, anders elke 15 t
 om de 30 minuten naar de waterwereld. Voor overnachtende gasten geldt bovendien
 de vroegere toegang om 9:00 uur.
 
-## Eten, regels en kleine lettertjes
+## Eten en regels
 
 Tot de horeca horen het Kelpie Café in de lobby (8:30 tot 22:30 uur), de
 Snekkjas in de palenstad, de Lumålunda aan de Surf Fjørd en de Tempel Krog bij de
@@ -464,7 +464,7 @@ Deze regels gelden in de waterwereld:
 - Voor rolstoelgebruikers zijn de meeste paden berijdbaar, er zijn waterrolstoelen
   in beperkt aantal. Het VR-station is niet toegankelijk.
 
-## Sluitingstijden, Halloween en Nørd Havn
+## Data tot en met 2027
 
 Van **16 tot en met 27 november 2026** is Rulantica wegens revisie gesloten,
 evenals op 24 en 25 december. Op 31 december sluit de waterwereld al om 19:00

@@ -69,8 +69,7 @@ Paramount.
 Über alle Öffnungstage, die wir bisher gemessen haben, steht man im
 [Movie Park](ref:movie-park-germany) gut ein Drittel kürzer an als im
 [Phantasialand](ref:phantasialand), eine knappe Autostunde weiter südlich.
-Wie sich die übrigen deutschen Parks einordnen, steht in meinem
-[Freizeitpark-Ranking für Deutschland](/blog/beste-freizeitparks-in-deutschland).
+Mein [Freizeitpark-Ranking für Deutschland](/blog/beste-freizeitparks-in-deutschland) ordnet die übrigen deutschen Parks ein.
 
 Der Sonntag, den die gängigen Ratgeber im Netz als vollen Wochenendtag
 abschreiben, gehört in unseren Daten zu den ruhigsten Tagen der Woche.
@@ -94,8 +93,7 @@ später, am 17. Mai 2010, übernahm der spanische Betreiber **Parques Reunidos**
 Der Madrider Konzern gehört seit 2019 mehrheitlich dem schwedischen
 Finanzinvestor EQT, und der will ihn laut einem Bericht der spanischen
 Wirtschaftszeitung Expansión vom 24. September 2026 als Ganzes verkaufen, samt
-Movie Park. Was das für Besucher und Saisonpässe heißt, steht in
-[unserer Meldung zum Verkauf](/blog/parques-reunidos-verkauf-movie-park).
+Movie Park. [Unsere Meldung zum Verkauf](/blog/parques-reunidos-verkauf-movie-park) erklärt, was das für Besucher und Saisonpässe heißt.
 
 Fünf der bekanntesten Fahrgeschäfte leben deshalb unter neuem Namen weiter:
 
@@ -327,8 +325,6 @@ Geburtstag, an dem Tag mit Programm bis 23 Uhr.
 
 Unsere Wartezeit-Historie für Bottrop beginnt im **Dezember 2025**.
 
-Die zehn Attraktionen, an denen du am längsten stehst:
-
 ```ride-waits-widget park=movie-park-germany top=10 columns=peak,days highlight=van-helsings-factory
 
 ```
@@ -339,11 +335,7 @@ aus dem Kinderbereich. Star Trek, die größte Bahn im Park, liegt mit ihren
 90 km/h im Mittelfeld.
 
 Van Helsing schafft nur 848 Personen pro Stunde, und weil die Fahrt drinnen
-liegt, wollen bei Regen besonders viele hinein. Wie aus Kapazität und Nachfrage eine
-Wartezeit wird, steht ausführlich in der
-[Kunst des Wartens](/blog/die-kunst-des-wartens).
-
-Derselbe Tag, nach Stunden aufgeschlüsselt:
+liegt, wollen bei Regen besonders viele hinein. Die [Kunst des Wartens](/blog/die-kunst-des-wartens) erklärt ausführlich, wie aus Kapazität und Nachfrage eine Wartezeit wird.
 
 ```hourly-profile-widget slug=movie-park-germany top=8
 
@@ -359,8 +351,6 @@ späten Nachmittag, weil bei dreißig Grad irgendwann alle nass werden wollen.
 Die Zeile von Van Helsing springt in der zweiten Stunde hoch und
 bleibt danach bis zum Schluss auf demselben Wert stehen. Wer nicht in den ersten
 sechzig Minuten dort war, findet den ganzen Tag keinen besseren Moment mehr.
-
-Im Vergleich mit der Nachbarschaft:
 
 ```park-comparison-widget slugs=movie-park-germany,phantasialand,efteling,attractiepark-toverland,walibi-holland,europa-park highlight=movie-park-germany
 
@@ -426,8 +416,6 @@ Ausnahmen gibt es in den Herbstferien und danach:
   nur noch am letzten Wochenende. Am **8. November 2026** ist Saisonschluss, und das ist
   gleichzeitig der letzte Abend des Halloween Horror Festivals. Danach bleibt bis
   zum Weihnachtsevent zu.
-
-Die ruhigsten der kommenden Öffnungstage laut unserem Kalender:
 
 ```best-days-widget slug=movie-park-germany
 
@@ -566,8 +554,7 @@ Alle gehören wie der Movie Park zu Parques Reunidos, und weil EQT den Konzern a
 Ganzes verkaufen will, blieben sie auch nach einem Verkauf Schwesterparks.
 
 Dazu kommt der **Bonus Club**, der ebenfalls nur an Gold und Platin hängt. Seine
-Angebote für 2027 veröffentlicht der Park erst zum Beginn der Saison 2027. Was
-darin stecken kann, steht in der Liste für 2026:
+Angebote für 2027 veröffentlicht der Park erst zum Beginn der Saison 2027. Die Liste für 2026 zeigt, was darin stecken kann:
 
 - **Einmal freier Eintritt** pro Kalenderjahr im [Efteling](ref:efteling). Ein
   Ticket ohne festes Datum kostet dort 56 Euro, gut ein Drittel des Gold-Passes.
@@ -609,7 +596,7 @@ der Trattoria Hollywood, dazu Burger, Pommes und eine Bäckerei. Für das, was a
 den Teller kommt, finde ich die Preise hoch, und ich esse hier so schnell wie
 möglich.
 
-Ob es in Bottrop gerade regnet, entscheidet, wo sich die Warteschlangen stapeln:
+Ob es in Bottrop regnet, entscheidet, wo sich die Warteschlangen stapeln.
 
 ```weather-widget slug=movie-park-germany
 
@@ -630,7 +617,7 @@ große Achterbahn. Die aktuellen Zahlen stehen auf der
 **Freitag**, dicht gefolgt von **Sonntag** und **Donnerstag**, ist in unseren
 Daten der ruhigste Wochentag, der Dienstag ist der vollste, und der Samstag liegt deutlich über dem Sonntag. Ab
 Anfang September öffnet der Park ohnehin nur noch von Donnerstag bis Sonntag, in
-den Herbstferien vom 17. bis 31. Oktober täglich. Welcher Tag es konkret wird, steht im [Wartezeiten-Kalender](ref:movie-park-germany?calendar).
+den Herbstferien vom 17. bis 31. Oktober täglich. Der [Wartezeiten-Kalender](ref:movie-park-germany?calendar) zeigt, welcher Tag es konkret wird.
 
 ### An welchen Tagen hat der Movie Park im Herbst geöffnet?
 
