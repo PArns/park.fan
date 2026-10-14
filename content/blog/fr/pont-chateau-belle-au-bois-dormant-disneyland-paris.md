@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Pont du Château de la Belle au Bois Dormant rénové'
   description: >-
-    À Disneyland Paris, le pont du Château de la Belle au Bois Dormant rouvre après près de six mois de travaux, pavé de granit et orné d’une nouvelle rose des vents.
+    À Disneyland Paris, le pont du Château de la Belle au Bois Dormant rouvre après près de six mois de travaux, avec granit et nouvelle rose des vents.
   keywords:
     - pont Château de la Belle au Bois Dormant
     - rénovation château Disneyland Paris

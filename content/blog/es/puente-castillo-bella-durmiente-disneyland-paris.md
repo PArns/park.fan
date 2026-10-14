@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Puente renovado en el castillo de Disneyland Paris'
   description: >-
-    El puente del Castillo de la Bella Durmiente en Disneyland Paris reabre tras casi seis meses de obras, con adoquines de granito y una rosa de los vientos nueva.
+    El puente del Castillo de la Bella Durmiente en Disneyland Paris reabre tras casi seis meses de obras, con suelo de granito y una rosa de los vientos.
   keywords:
     - puente Castillo de la Bella Durmiente
     - renovación castillo Disneyland Paris
