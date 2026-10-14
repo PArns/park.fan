@@ -59,19 +59,17 @@ Inghilterra e in Danimarca, mentre negli Stati Uniti hanno un cantiere aperto be
 solo gruppo Six Flags.
 
 La prossima grande occasione per nuovi annunci è la fiera di settore IAAPA Expo, a Orlando dal 17
-al 20 novembre 2026. Se lì si aggiunge qualcosa, dopo lo trovi su questa pagina.
+al 20 novembre 2026.
 
 ## Cosa entra nell’elenco
 
 Una novità entra nell’elenco se il parco, il suo gestore o il costruttore la nomina sul proprio
 sito o in un proprio comunicato stampa. Voci di corridoio, domande di permesso di costruire e foto
-dei cantieri non contano, nemmeno quando le riprendono i media di settore. Quello che circola per
-queste vie è più in basso, in «Cosa non è nell’elenco».
+dei cantieri non contano, nemmeno quando le riprendono i media di settore.
 
-Data, costruttore e numeri sono riportati come li danno il parco o il costruttore. «2027» vuol dire 2027, senza mese.
+Data, costruttore e numeri sono riportati come li danno il parco o il costruttore. Dove c’è solo «2027», il mese non c’è ancora.
 Dove due pagine ufficiali si contraddicono, riporto tutte e due le versioni. Ho convertito piedi,
-miglia e pollici in metri, chilometri orari e centimetri, e ho arrotondato. Ogni sezione ha il link
-alla sua fonte, l’elenco completo è in fondo.
+miglia e pollici in metri, chilometri orari e centimetri, e ho arrotondato.
 
 ## Tutte le novità in breve
 
@@ -116,8 +114,7 @@ Sul suo sito l’[Hansa-Park](ref:hansa-park) elenca la Buddenbrook-Turm tra le 
 Dovrebbe aprire nel corso della stagione, senza un mese preciso. La torre sorge nell’area
 tematica Hansa-Garten, e sulla pagina dell’attrazione porta due simboli, quello per le attrazioni
 al chiuso o al coperto e quello per gli ospiti con disabilità. Altezza, costruttore, capacità e se
-in cima si sale con un mezzo o a piedi, su quella pagina il parco non lo scrive. Le altre
-attrazioni lì hanno un riquadro con numeri e dati, la torre per ora no.
+in cima si sale con un mezzo o a piedi, su quella pagina il parco non lo scrive.
 
 Da dove venga il nome, il parco non lo scrive. «I Buddenbrook» è il romanzo di Thomas Mann su una famiglia
 di mercanti di Lubecca, e Lubecca si trova poco più di 30 chilometri a sud di Sierksdorf. L’Hansa-Park
@@ -127,32 +124,28 @@ parco andrà dal 25 marzo al 24 ottobre 2027.
 Il 23 maggio 2026 il parco ha aperto la sua ottava montagna russa, il Cornwall Coaster. Stando alla
 pagina dell’attrazione, la montagna russa di Gerstlauer ha sette lanci su circa 570 metri, arriva a
 50 km/h e a 18 metri d’altezza. Nel comunicato stampa di marzo i lanci erano ancora sei.
-All’Hansa-Park i tempi di attesa non li misuriamo, il parco li pubblica soltanto nella sua app.
-Calendario, serate di ottobre e tutte e otto le montagne russe sono nella
-[guida all’Hansa-Park](/blog/hansa-park-consigli).
+All’[Hansa-Park](/blog/hansa-park-consigli) i tempi di attesa non li misuriamo, il parco li pubblica soltanto nella sua app.
 
 ### Pre-Opening Weeks e tre attrazioni per famiglie a Europa-Park
 
 All’[Europa-Park](ref:europa-park) nel 2027 non arriva nessuna nuova montagna russa. In compenso il
-parco apre prima del solito. Dal 7 al 19 marzo ci sono per la prima volta le Pre-Opening Weeks con
-biglietti più economici, e la stagione estiva comincia il 20 marzo. I dettagli sono nella
-[nostra notizia sulle Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027).
-L’[Euro-Mir](ref:europa-park/euro-mir) resta aperta solo fino al 9 gennaio 2027, e ne parlo più in
-basso, in «Cosa sparisce nel 2027».
+parco apre prima del solito. Dal 7 al 19 marzo ci sono per la prima volta le [Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027) con
+biglietti più economici, e la stagione estiva comincia il 20 marzo.
+L’[Euro-Mir](ref:europa-park/euro-mir) resta aperta solo fino al 9 gennaio 2027.
 
-A queste si aggiungono tre attrazioni per famiglie che il parco ha annunciato l’8 ottobre 2026. Non indica una data di apertura per nessuna delle tre e promette altre informazioni «in un secondo momento». Il resto è nella [nostra notizia sulle tre novità](/news/europa-park-tre-novita-2027).
+A queste si aggiungono [tre attrazioni per famiglie](/news/europa-park-tre-novita-2027) che il parco ha annunciato l’8 ottobre 2026. Non indica una data di apertura per nessuna delle tre e promette altre informazioni «in un secondo momento».
 
 ### Wild Swing XL nell’area portoghese di Europa-Park
 
-Nell’area portoghese arriva una Wild Swing XL, un’altalena gigante a oltre 14 metri d’altezza, sopra il lago portoghese. Secondo il parco unisce brivido e divertimento ed è pensata per tutte le età. Nell’annuncio mancano costruttore, altezza minima, passeggeri per giro e durata. Finora l’unica attrazione su cui si viaggia in Portogallo è la montagna russa acquatica [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), costruita da MACK Rides nel 2005. L’altalena sarà la seconda attrazione su cui si viaggia nell’area, e una data di apertura non c’è.
+Nell’area portoghese arriva una Wild Swing XL, un’altalena gigante a oltre 14 metri d’altezza, sopra il lago portoghese. Secondo il parco unisce brivido e divertimento ed è pensata per tutte le età. Nell’annuncio mancano costruttore, altezza minima, passeggeri per giro e durata. Finora l’unica attrazione su cui si viaggia in Portogallo è la montagna russa acquatica [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash), costruita da MACK Rides nel 2005. L’altalena sarà la seconda attrazione su cui si viaggia nell’area.
 
 ### Una torre nell’area islandese di Europa-Park
 
-Tra la montagna russa in legno [WODAN - Timburcoaster](ref:europa-park/wodan-timburcoaster) e la megacoaster [blue fire](ref:europa-park/blue-fire-megacoaster) nel 2027 dovrebbe aprire un’attrazione a torre. Secondo il parco i visitatori la guidano da soli e guardano dall’alto l’area islandese, anche giù verso il porto. La torre non ha ancora un nome, e mancano altezza, costruttore, altezza minima e data di apertura.
+Tra la montagna russa in legno [WODAN - Timburcoaster](ref:europa-park/wodan-timburcoaster) e la megacoaster [blue fire](ref:europa-park/blue-fire-megacoaster) nel 2027 dovrebbe aprire un’attrazione a torre. Secondo il parco i visitatori la guidano da soli e guardano dall’alto l’area islandese, anche giù verso il porto. La torre non ha ancora un nome, e mancano altezza, costruttore e altezza minima.
 
 ### Enzo's Piccolo Mondo a Europa-Park
 
-Il giro in gondola [Piccolo Mondo](ref:europa-park/piccolo-mondo) nell’area italiana accompagna da oltre 40 anni i visitatori più piccoli, secondo il parco, e nel 2027, senza una data precisa, tornerà «in nuovo splendore». Come contenuti cita arte, teatro classico e musica italiana. L’annuncio non dice se l’attrazione chiude prima, né quante scene ha e quali sono nuove. Ha aperto nel 1982 ed è di MACK Rides, e ogni gondola porta sei persone.
+Il giro in gondola [Piccolo Mondo](ref:europa-park/piccolo-mondo) nell’area italiana accompagna da oltre 40 anni i visitatori più piccoli, secondo il parco, e nel 2027 tornerà «in nuovo splendore». Come contenuti cita arte, teatro classico e musica italiana. L’annuncio non dice se l’attrazione chiude prima, né quante scene ha e quali sono nuove. Ha aperto nel 1982 ed è di MACK Rides, e ogni gondola porta sei persone.
 
 ### Nørd Havn a Rulantica
 
@@ -166,9 +159,8 @@ che Nørd Havn aprirà le sue porte alla fine del 2027.
 Il [Phantasialand](ref:phantasialand), l’[Heide Park](ref:heide-park), il
 [Movie Park Germany](ref:movie-park-germany), il [Legoland Deutschland](ref:legoland-deutschland) e
 il [Plopsaland Deutschland](ref:plopsaland-deutschland) non hanno ancora confermato nessuna
-novità per il 2027. Al Phantasialand qualunque progetto più grande dipende dall’ampliamento
-nella zona dell’Ententeich, per cui un piano urbanistico ancora non c’è e contro cui dal 28
-settembre gli ambientalisti raccolgono firme. Nella [nostra notizia sulla raccolta firme](/blog/phantasialand-ampliamento-raccolta-firme) trovi cosa vuole costruire lì il parco. Il Movie Park
+novità per il 2027. Al Phantasialand qualunque progetto più grande dipende dall’[ampliamento](/blog/phantasialand-ampliamento-raccolta-firme) nella zona dell’Ententeich, per cui un piano urbanistico ancora non c’è e contro cui dal 28
+settembre gli ambientalisti raccolgono firme. Il Movie Park
 è in vendita insieme al suo gruppo, Parques Reunidos, e da lì per il 2027 non è arrivato nessun
 annuncio.
 
@@ -176,8 +168,7 @@ annuncio.
 
 ### Flying Cinema a Plopsaland Belgium
 
-Il Flying Cinema di [Plopsaland Belgium](ref:plopsaland-belgium) è la novità con la data più vicina.
-Apre a tutti sabato 13 marzo 2027, ma già dal 19 dicembre 2026, in giorni scelti, possono provarlo
+Il Flying Cinema di [Plopsaland Belgium](ref:plopsaland-belgium) apre a tutti sabato 13 marzo 2027, ma già dal 19 dicembre 2026, in giorni scelti, possono provarlo
 gli abbonati annuali e gli ospiti che pernottano nel parco. Il cantiere è aperto dalla fine di
 settembre 2025.
 
@@ -202,7 +193,7 @@ Nel bosco delle fiabe dell’[Efteling](ref:efteling) sta nascendo la 32ª fiaba
 fiabe. Sorge dove fino a marzo 2026 c’era l’Usignolo Cinese. Si entra in un edificio alto nove metri
 pieno di libri, con le storie che un collezionista di fiabe ha raccolto nei suoi viaggi, e ci sono
 anche sette nani laboriosi. Il parco dice che lo scheletro dell’edificio è già in piedi. Sulla pagina
-delle novità l’Efteling la annuncia dal 2027, senza indicare il mese.
+delle novità l’Efteling la annuncia dal 2027.
 
 L’Usignolo Cinese, nella versione che si vedeva fino a quest’anno, l’aveva progettato Ton van de
 Ven, e così stava nel bosco dal 1999. L’edificio era in cattive condizioni e i lavori sono
@@ -210,12 +201,9 @@ cominciati il 9 marzo 2026. L’Usignolo tornerà in una forma nuova, vicino al 
 quando e come l’Efteling non lo dice ancora. Il giardino ornamentale davanti resta. L’Usignolo è una
 delle dieci fiabe con cui il bosco delle fiabe aprì nel 1952.
 
-Prima della Biblioteca, il 1° dicembre 2026, all’Efteling riapre l’area tematica Raveleijn dopo
+Prima della Biblioteca, il 1° dicembre 2026, all’Efteling riapre l’area tematica [Raveleijn](/blog/efteling-raveleijn-ravenring) dopo
 quasi un anno di lavori. Ci sono uno spettacolo di stunt che il parco ha sviluppato con il Puy du Fou
-e il Ravenring di Vekoma, per 20 milioni di euro in tutto, come abbiamo scritto nella
-[nostra notizia su Raveleijn](/blog/efteling-raveleijn-ravenring). La prossima montagna russa
-l’Efteling la prevede solo per il 2029, Missie Luminar, la prima suspended launch coaster del parco.
-Nella [guida all’Efteling](/blog/efteling-la-disney-dei-paesi-bassi) trovi in quali giorni il parco è più o meno pieno.
+e il Ravenring di Vekoma, per 20 milioni di euro in tutto. La prossima montagna russa l’[Efteling](/blog/efteling-la-disney-dei-paesi-bassi) la prevede solo per il 2029, Missie Luminar, la prima suspended launch coaster del parco.
 
 ### Una nuova area a Bobbejaanland
 
@@ -223,23 +211,21 @@ Nella [guida all’Efteling](/blog/efteling-la-disney-dei-paesi-bassi) trovi in 
 parco finora c’è soltanto un avviso per chi arriva in auto, secondo cui le colonnine di ricarica del
 parcheggio sono fuori servizio per i lavori alla «nieuwe zone van 2027», la nuova area del 2027.
 Quali attrazioni ne faranno parte, chi le costruisce e quanto costa, sulle sue pagine il parco non
-l’ha ancora pubblicato. L’area è in elenco perché il parco la indica per il 2027. Come il Movie Park,
-Bobbejaanland appartiene a Parques Reunidos, e della vendita del gruppo abbiamo scritto in
-[un articolo a parte](/blog/parques-reunidos-in-vendita-movie-park).
+l’ha ancora pubblicato. Come il Movie Park,
+Bobbejaanland appartiene a [Parques Reunidos](/blog/parques-reunidos-in-vendita-movie-park).
 
 ## Francia
 
 ### Wilderness Explorers Sky Swings a Disney Adventure World
 
-Nel secondo parco di Disneyland Paris, che oggi si chiama
+Nel secondo parco di [Disneyland Paris](/blog/disneyland-paris-tempi-di-attesa-consigli), che oggi si chiama
 [Disney Adventure World](ref:disney-adventure-world), nel 2027 arriva la prima attrazione dedicata
 a «Up» della Pixar in un parco Disney. Le Wilderness Explorers Sky Swings sono una giostra a catene
 per famiglie che gira in aria, e da lassù si vede il parco. Stanno sull’Adventure Way, di fronte a
-Raiponce Tangled Spin, con un giardino nello stile del film. Disney non indica né il mese né il
-costruttore.
+Raiponce Tangled Spin, con un giardino nello stile del film. Disney non indica il costruttore.
 
 Nello stesso parco, Disney costruisce anche l’area tematica del «Re Leone», ma continua a non dare
-un anno di apertura. Nella [guida a Disneyland Paris](/blog/disneyland-paris-tempi-di-attesa-consigli) spiego perché nel più piccolo dei due parchi si aspetta di più.
+un anno di apertura.
 
 ### Ampliamento dell’area greca al Parc Astérix
 
@@ -247,7 +233,7 @@ Nel 2027 il [Parc Astérix](ref:parc-asterix) allarga la sua area tematica greca
 per famiglie, un parco giochi e il ristorante La Table de Dionysos, da 450 posti. Nomi e costruttore
 delle due attrazioni non compaiono nell’area stampa del parco. Accanto al parco, nella primavera del
 2027, apre anche l’hotel L’Odyssée con 300 camere, arredato sul tema dei viaggi di Asterix e Obelix
-in Oriente. Nella [guida al Parc Astérix](/blog/parc-asterix-tempi-di-attesa-consigli) vedi dove oggi aspetti più a lungo nel parco.
+in Oriente.
 
 ### Supersonic 1887 a Nigloland
 
@@ -266,8 +252,7 @@ testa al treno, la «0 car».
 L’attrazione sta in una nuova area dedicata all’Esposizione universale del 1887, dove alcune
 attrazioni esistenti diventano padiglioni nazionali. La storia ruota intorno a un ingegnere
 inventato, Émile Delaroche. I media di settore danno il 28 marzo 2027 come giorno di apertura,
-mentre sulla pagina del parco c’è solo «2027». Il calendario di Nigloland per ora arriva all’11
-novembre 2026.
+mentre sulla pagina del parco c’è solo «2027».
 
 ### Futuroscope
 
@@ -337,7 +322,7 @@ del 2027.
 
 ### Bakunawa a Six Flags Great Adventure
 
-La novità più alta dell’anno sta nel New Jersey. Bakunawa, a
+Bakunawa, a
 [Six Flags Great Adventure](ref:six-flags-great-adventure), è una spinning launch coaster di Mack
 Rides alta 116 metri e veloce fino a 161 km/h. Six Flags la definisce la spinning coaster più alta e
 più veloce del mondo ed elenca sei record, tra cui il primo lancio con il treno a testa in giù e la
@@ -356,7 +341,7 @@ parlano di 382 piedi, cioè 116 metri.
 
 ### Thrill Glider a Six Flags Magic Mountain
 
-Il Thrill Glider di [Six Flags Magic Mountain](ref:six-flags-magic-mountain) è un tipo nuovo di
+Il [Thrill Glider](/blog/thrill-glider-six-flags-magic-mountain) di [Six Flags Magic Mountain](ref:six-flags-magic-mountain) è un tipo nuovo di
 montagna russa di Vekoma, il primo «Thrillglider». I passeggeri stanno sdraiati a pancia in giù in
 un «hovercycle», con il viso in avanti, e pendono sotto il binario. L’attrazione è alta poco meno di
 33 metri, lunga 1.030 metri, arriva a 80 km/h e ha cinque inversioni e dodici momenti di airtime.
@@ -365,17 +350,13 @@ centimetri.
 
 Per la durata del giro ci sono due valori, 80 secondi nel comunicato stampa del 10 settembre 2026 e
 1 minuto e 24 secondi sulla pagina del parco. L’attrazione sorge sull’area dell’ex Golden Bear
-Theatre, tra Full Throttle e Lex Luthor: Drop of Doom. Altri dettagli, compresa la storia che si
-racconta nell’area di attesa, sono nella
-[nostra notizia del 3 ottobre](/blog/thrill-glider-six-flags-magic-mountain). Nello stesso parco
-[X2](ref:six-flags-magic-mountain/x2) è ferma dal 12 luglio 2026, e il 29 settembre Six Flags l’ha
-ritirata per sempre. In nessuna delle due comunicazioni Six Flags collega la chiusura al Thrill
-Glider. Il resto della storia è nella
-[nostra notizia sulla chiusura](/blog/x2-six-flags-magic-mountain-chiude).
+Theatre, tra Full Throttle e Lex Luthor: Drop of Doom. Nell’area di attesa si racconta una storia. Nello stesso parco
+[X2](ref:six-flags-magic-mountain/x2) è ferma dal 12 luglio 2026, e il 29 settembre Six Flags l’ha [ritirata per sempre](/blog/x2-six-flags-magic-mountain-chiude). In nessuna delle due comunicazioni Six Flags collega la chiusura al Thrill
+Glider.
 
 ### Fast & Furious: Hollywood Drift a Universal Studios Florida
 
-L’attrazione aperta a Hollywood il 16 settembre 2026 arriva nel 2027 anche a Orlando. Agli
+L’attrazione [aperta a Hollywood](/blog/hollywood-drift-universal-studios-hollywood) il 16 settembre 2026 arriva nel 2027 anche a Orlando. Agli
 [Universal Studios Florida](ref:universal-studios-florida) Fast & Furious: Hollywood Drift prende il
 posto della vecchia montagna russa Hollywood Rip Ride Rockit. Universal descrive vetture che ruotano
 di 360 gradi, come se andassero in derapata, e uno «spike» verticale di 52 metri che solleva i
@@ -383,8 +364,7 @@ passeggeri sopra il bordo di Universal CityWalk.
 
 Universal ha annunciato l’attrazione il 20 gennaio 2026 e da allora non ha dato una data più precisa
 del 2027. Se a Orlando avrà gli stessi dati che a Hollywood, Universal non lo dice. La versione
-californiana è di Intamin, arriva a 116 km/h e ha quattro lanci, come abbiamo scritto nella
-[nostra notizia sull’apertura a Hollywood](/blog/hollywood-drift-universal-studios-hollywood).
+californiana è di Intamin, arriva a 116 km/h e ha quattro lanci.
 
 ### Werewolf Gorge a Six Flags Fiesta Texas
 
@@ -463,7 +443,7 @@ un’area tematica dedicata all’America centrale e meridionale con al centro i
 Esperanza. Ci sono due ride-through, Antonio's Fiesta de Encanto, ambientato nella casa della
 famiglia Madrigal di «Encanto», e Indiana Jones and the Myth of the Jade Serpent, in un tempio maya,
 più una giostra con animali. Nel Parks Blog Disney scrive che l’area aprirà nel 2027, e su
-disneyexperiences.com c’è «Set to open in 2027». Disney non indica il mese.
+disneyexperiences.com c’è «Set to open in 2027».
 
 ### Altre novità e ristrutturazioni negli Stati Uniti
 
@@ -485,11 +465,9 @@ nell’estate del 2027.
 
 ## Quanto aspetti oggi in questi parchi
 
-Chi nel 2027 va in uno di questi parchi per una novità farà la coda anche a tutte le altre
-attrazioni. Nelle due tabelle, prima l’Europa e poi gli Stati Uniti, ci sono i parchi con una nuova montagna russa o una nuova area
+Nelle due tabelle ci sono i parchi con una nuova montagna russa o una nuova area
 tematica in cui misuriamo i tempi di attesa, ciascuno con il giorno della settimana in cui lì si
-aspetta meno. La novità in questi valori ancora non c’è. Per l’Hansa-Park non ci arrivano tempi di
-attesa.
+aspetta meno. La novità in questi valori ancora non c’è.
 
 ```park-comparison-widget slugs=chessington-world-of-adventures,parc-asterix,disney-adventure-world,plopsaland-belgium,nigloland,djurs-sommerland,paultons-park show=quietest
 
@@ -517,18 +495,17 @@ dell’Europa-Park, e Mack Rides l’ha costruita in tre anni di lavori. È alta
 km/h e fa girare intorno alle torri a specchio nove treni con gondole girevoli, da 16 ospiti
 ciascuno. Nel primo anno, stando ai dati del parco, ci sono saliti circa 1,5 milioni di persone.
 
-L’ultimo giro lo fa nella stagione invernale, che comincia il 28 novembre 2026 e finisce il 9
-gennaio 2027. Quel giorno il parco la saluta con un grande evento, poi comincia lo smontaggio. Al
+L’ultimo giro lo fa nella [stagione invernale](/blog/europa-park-tempi-di-attesa-consigli), che comincia il 28 novembre 2026 e finisce il 9
+gennaio 2027. Quel giorno il parco [la saluta](/blog/europa-park-saluta-euro-mir) con un grande evento, poi comincia lo smontaggio. Al
 suo posto nasce un’area tematica dedicata allo spazio, con una nuova montagna russa per famiglie di
 Mack Rides, che dovrebbe essere pronta per la stagione 2028. Per quest’area il parco lavora con
-l’Agenzia spaziale europea, l’ESA, e l’accordo è stato firmato l’8 giugno 2026. Il resto è nella
-[nostra notizia sull’addio](/blog/europa-park-saluta-euro-mir).
+l’Agenzia spaziale europea, l’ESA, e l’accordo è stato firmato l’8 giugno 2026.
 
 ### Loup-Garou a Walibi Belgium
 
 Il [Loup-Garou](ref:walibi-belgium/loup-garou) di [Walibi Belgium](ref:walibi-belgium) è una
 montagna russa in legno alta 28 metri, lunga 1.035 metri e veloce fino a 80 km/h. Il 3 gennaio 2027
-fa l’ultimo giro in questa forma, e per l’inverno il parco apre dal 5 dicembre 2026 fino a quel
+fa l’ultimo giro in questa forma, e per l’[inverno](/blog/walibi-belgium-tempi-di-attesa-consigli) il parco apre dal 5 dicembre 2026 fino a quel
 giorno. A gennaio 2027 cominciano i lavori, e Rocky Mountain Construction trasformerà l’attrazione
 in una montagna russa ibrida che dovrebbe aprire nel 2028.
 
@@ -539,8 +516,6 @@ numeri 49. L’attrazione è l’inizio di Festival World, un’area in stile Ne
 nel 2028 sparisce il cinema 4D, e fino al 2030 arrivano attrazioni per famiglie rinnovate, torri di
 caduta per famiglie, un parco giochi d’acqua e un ristorante. Walibi non ha ancora reso noto il
 nome della nuova montagna russa.
-
-Nella [guida all’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli) racconto com’è lì una giornata d’inverno, nella [guida a Walibi Belgium](/blog/walibi-belgium-tempi-di-attesa-consigli) com’è a Walibi Belgium.
 
 ## Quando comincia la stagione 2027
 
@@ -582,10 +557,6 @@ per il 2027:
 - L’area di Cars, Piston Peak, e quella dei cattivi Disney al Magic Kingdom non hanno un anno, e lo
   stesso vale per l’area del «Re Leone» a Parigi, per Pokémon a Orlando e per le nuove attrazioni di
   Epic Universe.
-
-Una domanda di permesso di costruire può diventare una novità del 2027, ma può anche restare ferma un
-anno in più o non essere mai realizzata. Quando un parco conferma uno di questi
-progetti, lo sposto nell’elenco più in alto.
 
 ## Domande frequenti
 

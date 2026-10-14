@@ -26,7 +26,7 @@ seo:
   title: 'Plopsaland Belgium: Wartezeiten, Tickets & Tipps für De Panne'
   description: >-
     Plopsaland Belgium in De Panne: The Ride to Happiness, Anubis und Heidi,
-    Express Pass, Tickets ab 36 Euro, Anreise und die besten Tage für wenig
+    Express Pass, Tickets ab 36 Euro und die besten Tage für wenig
     Warteschlange.
   keywords:
     - Plopsaland Belgium
@@ -55,7 +55,7 @@ weißt, wohin du gerade schaust. Fünf Überschläge hat die Bahn, zwei Starts u
 [Plopsaland Belgium](ref:plopsaland-belgium) liegt in De Panne, wenige Kilometer
 vom Strand und nah an der französischen Grenze. Die meisten Fahrgeschäfte sind
 für Kinder gebaut. Drei Achterbahnen sind es nicht, The Ride to Happiness,
-Anubis und Heidi, und wegen ihnen fahren Achterbahnsammler hierher.
+Anubis und Heidi.
 
 Für die drei großen Bahnen reicht mir ein halber Tag. Mit Kindern bis etwa
 zwölf wird es ein ganzer, und die Warteschlangen sind dabei meist kurz.
@@ -100,12 +100,7 @@ konnte, und im Sommer 2025 benannte die Gruppe ihn in **Plopsaland Belgium** um.
 Plopsa ist die Freizeitpark-Sparte von Studio 100 und hat sieben Parks, die
 zusammen mehr als 3,5 Millionen Besucher im Jahr zählen.
 
-2004 öffnete mit dem Draak eine Bahn, mit
-der Plopsa zeigen wollte, dass der Park mehr ist als ein Kinderpark. 2006
-folgten SuperSplash und ein Starflyer, 2009 Anubis The Ride, 2011 die
-Indoor-Halle Mayaland, 2013 Wickieland und das Studio 100 Theater mit 1.400
-Plätzen, 2015 das Wasserparadies Plopsaqua, 2017 Heidi The Ride, 2021 das erste
-Hotel und The Ride to Happiness und 2023 die Indoor-Welt Circus Bumba.
+Mit dem Draak wollte Plopsa 2004 zeigen, dass der Park mehr ist als ein Kinderpark. 2011 kam die Indoor-Halle Mayaland dazu, 2013 Wickieland und das Studio 100 Theater mit 1.400 Plätzen, 2015 das Wasserparadies Plopsaqua und 2021 das erste Hotel.
 
 Wie viele Besucher kommen, trägt die niederländische Wikipedia aus den
 Jahresabschlüssen zusammen. 2022 waren es 1.382.632, 2023
@@ -189,8 +184,7 @@ Achterbahn Europas gewählt worden. Wer abgestimmt hat, steht dort nicht.
 
 ```
 
-Die Mindestgröße beträgt 130 Zentimeter, und nach Angaben des Parks läuft die
-Bahn ab 6 Grad. Für die Bahn gilt der Express Pass.
+Nach Angaben des Parks läuft die Bahn ab 6 Grad.
 
 [The Ride to Happiness by Tomorrowland](ref:plopsaland-belgium/the-ride-to-happiness-by-tomorrowland?full)
 
@@ -204,7 +198,7 @@ Loop, einen Immelmann und eine Heartline Roll, drei Inversionen auf 600 Metern
 Strecke. Das Layout gleicht fast dem der Dare Devil Dive im Six Flags Over
 Georgia. Dort zieht ein senkrechter Lift den Zug hoch, hier sind es Start und Top
 Hat. Der Bahnhof ist ein Nachbau des Hauses aus der flämischen Serie _Het Huis
-Anubis_ im Maßstab zwei Drittel. Mindestgröße 125 Zentimeter.
+Anubis_ im Maßstab zwei Drittel.
 
 ```glossary-widget slug=top-hat
 
@@ -217,32 +211,29 @@ Great Coasters International, derselben Firma, die auch
 Out-and-Back mit Kettenlift und ohne Überschlag, entworfen von Jeff Pike. Nach der
 Roller Coaster DataBase ähnelt es White Lightning im Fun Spot America in
 Orlando, ist aber nicht identisch. Zwei Züge mit je zwölf Plätzen fahren, die
-Kapazität liegt bei 635 Gästen in der Stunde. Mindestgröße 120 Zentimeter. Mit Joris en de Draak in der Efteling gibt es im Benelux drei GCI-Holzbahnen.
+Kapazität liegt bei 635 Gästen in der Stunde. Mit Joris en de Draak in der Efteling gibt es im Benelux drei GCI-Holzbahnen.
 
 ```ride-waits-widget rides=plopsaland-belgium/heidi-the-ride|Heidi The Ride (GCI, 2017);attractiepark-toverland/troy|Troy (GCI, 2007);efteling/joris-en-de-draak|Joris en de Draak (GCI, 2010) columns=park,peak highlight=plopsaland-belgium/heidi-the-ride
 
 ```
 
-**[Draconis](ref:plopsaland-belgium/draconis)** ist ein Powered Coaster von Mack aus
-dem Jahr 2004, bis zum Saisonstart 2025 am 29. März hieß er „De Draak“. Der Zug fährt in drei Spiralen
+**[Draconis](ref:plopsaland-belgium/draconis)** ist ein Powered Coaster von Mack aus dem Jahr 2004. Der Zug fährt in drei Spiralen
 durch eine Burg und kreuzt dabei sieben Mal die Strecke von DinoSplash. Er ist 450
 Meter lang, 14 Meter hoch und 36 km/h schnell. Die Station ist eine 80 Meter
-lange Burg über drei Etagen. Mindestgröße 96 Zentimeter.
+lange Burg über drei Etagen.
 
 **[SuperSplash](ref:plopsaland-belgium/supersplash)** ist ein Super Splash von Mack
 aus dem Jahr 2006, 30 Meter hoch und 70 km/h schnell, und nach der niederländischen
 Wikipedia für Mack die erste Anlage dieser Art mit einem Lift im Turm.
 **[DinoSplash](ref:plopsaland-belgium/dinosplash)** öffnete 1989 als Splash im Meli Park und bekam 2019 ein Dinosaurier-Thema.
 Mit zwei Abfahrten gehört sie nach der niederländischen Wikipedia zu den größeren
-Boomstammbahnen Europas. Der Park markiert beide Wasserbahnen als nass. Die
-Mindestgröße liegt bei SuperSplash bei 96 und bei DinoSplash bei 100 Zentimetern.
+Boomstammbahnen Europas. Der Park markiert beide Wasserbahnen als nass.
 
 Der **K3 Roller Skater** ist
 ein Vekoma Junior Coaster aus dem Meli Park, 335 Meter lang und 13 Meter hoch, seit
 2019 mit dem Thema der Mädchenband K3. Die **#LikeMe Coaster** ist eine
 Tivoli-Bahn von Zierer, die 1976 als Keverbaan im Meli Park eröffnete und 2014
-durch eine neue Kopie ersetzt wurde. Beide haben eine Mindestgröße von 90
-Zentimetern.
+durch eine neue Kopie ersetzt wurde.
 
 Die Dunkelfahrt **[Plop’s Woods](ref:plopsaland-belgium/plops-woods)**
 (Het Bos van Plop) ist der umgebaute Apirama von 1979 und fährt Boote durch den
@@ -287,15 +278,13 @@ Für diese Fahrgeschäfte gibt der Park eine Mindestgröße an:
 ## Wie lang die Warteschlangen sind
 
 Die Wartezeiten stammen aus unseren Messungen seit Oktober 2025, auf der
-Parkseite stehen sie alle fünf Minuten neu. In der Tabelle stehen die Bahnen, an
-denen im Park am längsten angestanden wird, sortiert nach dem typischen Wert.
+Parkseite stehen sie alle fünf Minuten neu.
 
 ```ride-waits-widget park=plopsaland-belgium top=8 columns=type,peak,days
 
 ```
 
-Der Median liegt auch an der Spitze der Tabelle bei einer Viertelstunde oder
-darunter, und er gilt über alle Betriebstage des Jahres, nicht nur über volle.
+Der Median gilt über alle Betriebstage des Jahres.
 Unter den ersten acht stehen mehrere Kinderfahrgeschäfte, und The Ride to
 Happiness liegt nicht vorn.
 
@@ -322,12 +311,6 @@ einem Wochentag außerhalb der Ferien und lass Juli und August aus.
 
 ```
 
-An Plop’s Woods und Heidi The Ride ist die Warteschlange gegen Mittag am längsten.
-Bei The Ride to Happiness bleibt sie über den Tag fast gleich, mit dem kürzesten
-Wert in der ersten Stunde. Anubis und der K3 Roller Skater haben ihren Höhepunkt am
-Nachmittag. An SuperSplash und DinoSplash steht vormittags praktisch niemand an, die
-Warteschlange wächst dort bis zum späten Nachmittag.
-
 ## Wann du hinfahren solltest
 
 Der Park öffnet nicht das ganze Jahr. Nach dem Kalender von 2026 war er vom 5.
@@ -344,9 +327,7 @@ und Jahreskarten nicht gelten.
 
 ```
 
-Mittwochs wirbt der Park derzeit mit 36 statt 56 Euro für das Ticket. Wer
-schulpflichtige Kinder hat, fährt wegen der Ferien ohnehin an den Tagen, die der
-Kalender als voll markiert. Ohne Kinder oder mit Vorschulkindern lohnen sich nach den
+Mittwochs wirbt der Park derzeit mit 36 statt 56 Euro für das Ticket. Ohne Kinder oder mit Vorschulkindern lohnen sich nach den
 Messungen Wochentage im September und Oktober sowie Februar und März.
 
 Im Herbst läuft die **Halloween Celebration** vom 3. Oktober bis zum 8. November,
@@ -371,7 +352,7 @@ haben beide ihre Spitze. In diese Zeit gehört das Essen. Nach dem Essen folgen
 späten Nachmittag füllen. **K3 Roller Skater** und die **#LikeMe Coaster** passen in die Lücken.
 
 Nach der Parkseite sind im Herbst 2026 SuperSplash, die Tractors, die Animal Farm und
-Willy’s Playground vorübergehend geschlossen, schau also vor der Anreise nach.
+Willy’s Playground vorübergehend geschlossen.
 
 Der Sprint zur Öffnung lohnt sich in diesem Park kaum. Wir haben für jede Bahn die Wartezeit zur Öffnung mit der Tagesspitze an einem vollen Tag verglichen, und bei keiner Bahn reicht der Unterschied für die
 Empfehlung, extra früh am Eingang zu stehen. Am meisten spart der frühe Start an
@@ -383,9 +364,7 @@ Wochenendtagen bei Heidi The Ride, SuperSplash und Plop’s Woods.
 
 Mit kleinen Kindern besteht der Tag aus dem Spielbereich
 **Ploptuin**, den Tractors, Plop’s Woods und der überdachten Welt von **Circus
-Bumba**. Auch **Mayaland** ist überdacht, falls es regnet. Parade und
-Shows laufen nach einem Programm, das die Parkseite und die App des Parks
-anzeigen.
+Bumba**. Auch **Mayaland** ist überdacht, falls es regnet.
 
 ## Der Express Pass
 
@@ -432,8 +411,7 @@ gemessen. Wer Zweifel hat, lässt an der Information nachmessen, und dieses
 Ergebnis gilt. Wer das Ticket online
 kauft, geht am Kassenhäuschen vorbei direkt zur Kontrolle.
 
-Wer mehrmals im Jahr kommen will, rechnet mit der **Jahreskarte**. Der Park
-verkauft drei Stufen. Der Plopsaland Belgium Pass kostet 150 Euro (125 Euro als
+Wer mehrmals im Jahr kommen will, rechnet mit der **Jahreskarte**. Der Plopsaland Belgium Pass kostet 150 Euro (125 Euro als
 Verlängerung). Der Plopsa Pass Europe für 175 Euro gilt zusätzlich in den
 Plopsa-Parks in Hasselt, Plopsaland Ardennes, Coevorden und Plopsaland
 Deutschland. Die Premium-Variante für 235 Euro schließt die beiden Wasserparks
@@ -478,7 +456,7 @@ der belgischen Bahn NMBS ein.
 
 ## Hotels und Essen
 
-Von den vier Unterkünften des Resorts enthält das **Theater Hotel** (4 Sterne superior, ein bis sechs Personen) Frühstück und Parkplatz, mit Halbpension zusätzlich
+Das **Theater Hotel** (4 Sterne superior, ein bis sechs Personen) enthält Frühstück und Parkplatz, mit Halbpension zusätzlich
 zwei Tage Plopsaqua. Im **Village** (sechs bis zwölf Personen, mindestens zwei
 Nächte) und in den **Studio 100 Chalets** (ein bis vier Personen) gehört der Eintritt
 in Plopsaland und Plopsaqua zum Paket. Das **Basecamp** ist der Campingplatz für Zelt,
@@ -572,9 +550,6 @@ Das ursprüngliche Walibi in Wavre hat einen eigenen
 [Walibi-Belgium-Guide](/blog/walibi-belgium-wartezeiten-tipps), und die Holzbahn aus
 dem Vergleich oben hat einen eigenen Guide, den
 [Toverland-Troy-Guide](/blog/toverland-troy-wartezeiten-tipps).
-
-Wenn du nur eine Bahn fährst, dann The Ride to Happiness, am besten gleich nach der
-Öffnung.
 
 — Patrick
 

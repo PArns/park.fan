@@ -101,8 +101,7 @@ achtbaan in Legoland Deutschland in zo’n 20 jaar.
 
 In Legoland gelden bijna overal twee grenzen: een lengte en een leeftijd, apart voor meerijden met een
 volwassene en voor alleen rijden. Waar een kind van 1,10 meter met een volwassene mee mag,
-heeft het voor alleen rijden vaak 1,20 nodig. Het park bepaalt dat per attractie, en bij de ingang beslist het
-personeel of iemand mee mag.
+heeft het voor alleen rijden vaak 1,20 nodig.
 
 | Attractie                                                                                 | Wat is het                       | met volwassene     | alleen                  |
 | ----------------------------------------------------------------------------------------- | -------------------------------- | ------------------ | ----------------------- |
@@ -125,7 +124,7 @@ niet in Maximus en niet in Flying NINJAGO. Daarvoor missen vijf respectievelijk 
 
 Een achtjarige van 1,30 meter mag bij de meeste attracties uit de tabel zonder volwassene, een zesjarige van 1,20 meter alleen bij de kleinere. Bij Flying
 NINJAGO, Power Builder en de Wüsten X-kursion geldt bovendien een **maximumlengte** van 1,95 meter, bij
-Maximus van 2,00 meter. Dat raakt vooral ouders die mee willen.
+Maximus van 2,00 meter.
 
 ## De grote attracties
 
@@ -219,7 +218,7 @@ De weekdag maakt in onze metingen het grootste verschil.
 ```
 
 De zaterdag is de drukste dag van de week en de vrijdag de rustigste. Elke weekdag hebben we op meer
-dan twintig dagen gemeten, maar wel in één seizoen. Ook in de
+dan twintig dagen gemeten. Ook in de
 vakantie is de vrijdag in onze metingen de werkdag met de kortste wachttijden. Van de zes parken die
 we in de [gids over schoolvakanties](/blog/schoolvakanties-pretparken-duitsland) vergelijken, hangt
 Legoland het sterkst af van de vakanties in Beieren en Baden-Württemberg.
@@ -230,9 +229,6 @@ Legoland het sterkst af van de vakanties in Beieren en Baden-Württemberg.
 
 Augustus was de drukste maand. In juni en september was het rustiger dan in mei en juli. In oktober
 hebben we tot nu toe maar vijf dagen gemeten.
-
-Het
-park gaat om 10.00 uur open, en de attracties sluiten een uur voor sluitingstijd.
 
 ```hourly-profile-widget slug=legoland-deutschland top=8
 
@@ -286,7 +282,7 @@ staat.
 ## Tickets en jaarkaart
 
 De prijzen zijn **dynamisch**. Volgens Wikipedia voerde het park eind 2024 surge pricing in, en de
-prijzen op zijn site beginnen met “vanaf”. De volgende gelden op 6 oktober 2026.
+prijzen op zijn site beginnen met “vanaf”.
 
 Een dagkaart kost online **vanaf € 39**, aan de kassa **€ 64** voor bezoekers vanaf twaalf en **€ 58**
 voor kinderen van twee tot en met elf. Onder de twee jaar is de toegang gratis. De tweedaagse kaart
@@ -446,14 +442,13 @@ dan met de bus, als het treinticket tot “LEGOLAND Park” is geboekt.
 
 ## Verder lezen
 
-Hoe Legoland naast de andere parken van Duitsland scoort, staat in de
-[ranglijst van Duitse pretparken](/blog/beste-pretparken-in-duitsland). Op het terrein van het
+Op het terrein van het
 Hansa-Park in Sierksdorf stond van 1973 tot 1976 een eerste Duitse Legoland, meer daarover in de
 [Hansa-Park-gids](/blog/hansa-park-tips).
 
 ## Voor wie Legoland minder past
 
-Het park heeft vier klassieke achtbanen, en maar één daarvan, Maximus, gaat ondersteboven. Wie met kinderen
+Wie met kinderen
 boven de twaalf komt of zonder kind, vindt in Phantasialand of Europa-Park meer attracties die bij hen
 passen.
 

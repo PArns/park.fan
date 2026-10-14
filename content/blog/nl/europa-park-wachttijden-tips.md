@@ -85,9 +85,8 @@ Na het winterseizoen wordt de baan afgebroken. Het park heeft voor
 
 ## Europa-Park wachttijden, baan voor baan gemeten
 
-Onze wachttijdhistorie voor het Europa-Park begint op 26 december 2025, beslaat
-eind september 2026 dus zo’n negen maanden, en is sinds april op één dag in juli
-na compleet. Over alle weekdagen gerekend is de typische wachttijd parkbreed
+Eind september 2026 beslaat onze wachttijdhistorie voor het Europa-Park zo’n
+negen maanden, en sinds april is ze op één dag in juli na compleet. Over alle weekdagen gerekend is de typische wachttijd parkbreed
 (de mediaan) **kort voor zo’n drukte**; op drukke dagen ligt hij daar duidelijk
 boven.
 
@@ -105,7 +104,7 @@ nauwelijks iemand, op een volle ochtend reikt de rij tot op het voorplein.
 
 Voltron kreeg in zijn eerste jaar 3,25 miljoen ritten en heeft de langste rij
 van het park, en voor een park met ruim zes miljoen gasten is **die langste rij
-verrassend kort**. Alle parken in de vergelijking zijn met dezelfde gegevens en dezelfde rekenmethode berekend.
+verrassend kort**.
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
@@ -115,7 +114,8 @@ De publiekscijfers daarbij komen uit de TEA-index, die één keer per jaar versc
 voor het pretpark en niet de 7,4 miljoen van het hele resort, in het
 Phantasialand 2,1 miljoen, in de Efteling 5,6, in Parijs ongeveer tien.
 Toverland staat daar niet in, de 1,17 miljoen is de eigen opgave van het park.
-Bij elk park staat in de tabel de attractie met de hoogste mediaan waarvoor we
+De wachttijden van alle parken rekenen we op dezelfde manier. Als
+langste rij van een park telt de attractie met de hoogste mediaan waarvoor we
 minstens honderd meetdagen hebben. In Toverland ligt daar eigenlijk nog Maximus' Blitz
 Bahn boven, maar op slechts 61 meetdagen (stand 25 september 2026), en een kinderachtbaan met zo weinig meetdagen nemen we niet als maatstaf voor een heel park.
 
@@ -142,7 +142,7 @@ een kring om één hoofdplein. Dat is zwaar
 voor de benen en goed tegen de rijen, omdat het de mensenmassa over de dag uit
 elkaar trekt.
 
-Daar komt de lengte van het seizoen bij. Het seizoen 2026 loopt van 28 maart tot 9 januari 2027, aaneengesloten, met twee rustdagen met Kerstmis.
+Het seizoen 2026 loopt van 28 maart tot 9 januari 2027, aaneengesloten, met twee rustdagen met Kerstmis.
 Dat zijn **286 bedrijfsdagen** volgens de officiële seizoenskalender. Dezelfde vraag verdeelt zich daarmee over ongeveer
 zeventig dagen meer dan bij een park dat begin november dichtgaat en pas in april
 weer opengaat. Op papier komen er per dag krap 22.000 gasten.
@@ -218,8 +218,8 @@ landen.
 | 2005     | Heinrich Mack GmbH wordt Mack Rides                             |
 | 2018     | Een deel van de productie verhuist naar Herbolzheim             |
 
-Het prototype van de wilde muis ontstond in 1957 in Waldkirch, 26 kilometer
-hemelsbreed van Rust, toen nog van hout en tegenwoordig overal van staal. De
+Waldkirch ligt 26 kilometer hemelsbreed van Rust, en wilde muizen zijn
+tegenwoordig overal van staal. De
 **[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** is er zo een. Het
 baantype en het park komen uit dezelfde werkplaats, en die had tot september
 2024 wereldwijd 174 achtbanen geleverd, wilde muizen en alle andere typen bij
@@ -281,8 +281,7 @@ sprookjesbos en het Koninkrijk van de Minimoys uit 2014.
 
 De Zwitserse bobbaan staat
 sinds 1985 in het park, het Zwitserse themagebied is er pas acht jaar later
-omheen gebouwd. Het Duitse themagebied kwam als negende, eenentwintig jaar na
-de opening.
+omheen gebouwd.
 
 Voor het seizoen 2026 is het achttiende land erbij gekomen: **Monaco**, gebouwd
 rond de bestaande achtbaan Silver Star, die daarmee van het Franse naar het
@@ -322,7 +321,7 @@ laatste rail kwam op 16 mei 2023 op zijn plek. Drie LSM-trajecten met samen zo�
 personen per uur.
 
 Je zit in Voltron met **alleen een heupbeugel**, zonder beugel naast je hoofd of
-kussen op je schouders, en zo ga je door zeven inversies.
+kussen op je schouders.
 
 ```glossary-widget slug=swing-launch
 
@@ -352,8 +351,7 @@ Sponsor Rimac bouwt een paar honderd kilometer zuidelijker elektrische
 hypersportwagens, en “nevera” is Kroatisch voor de plotselinge onweersbui die in
 de zomer boven de Adriatische Zee opsteekt.
 
-Het eerste jaar leverde 3,25 miljoen ritten op, en de typische wachttijd ligt ruim boven
-het parkgemiddelde, hoger dan bij welke andere baan in het park ook.
+De typische wachttijd van Voltron ligt ruim boven het parkgemiddelde.
 
 **[Silver Star](ref:europa-park/silver-star)** werd in 2002 gebouwd door **Bolliger & Mabillard** uit Monthey in Wallis, als hun eerste installatie in Duitsland, en was bij de opening de hoogste en snelste stalen
 achtbaan van Europa. 73 meter, volgens opgave van het park 130 km/u, 1.620 meter
@@ -405,14 +403,15 @@ een wilde muis die haar wagens met een verticale lift omhoog brengt, de
 **[Alpenexpress Enzian](ref:europa-park/alpine-express-enzian)** uit 1984, de
 **[Ba-a-a Express](ref:europa-park/ba-a-a-express)** in Ierland, plus
 **[Arthur](ref:europa-park/arthur)**, een hangende powered coaster door het
-Koninkrijk van de Minimoys, waarvan de rij even lang is als bij de grote achtbanen. En de **[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, dezelfde baan als
-de Enzian, alleen met VR-bril en bij ons als aparte attractie geteld.
+Koninkrijk van de Minimoys, waarvan de rij even lang is als bij de grote achtbanen. De
+**[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)** rijdt
+over dezelfde baan als de Enzian, alleen met VR-bril, en telt bij ons als
+aparte attractie.
 
 ![Een paddenstoelenhuis in de hal van Arthur, boven alles de rail van de baan | Alles is te groot, omdat de Minimoys te klein zijn. | wide](/media/europa-park/arthur-16x9.jpg)
 
-En dan is er nog het **[Voletarium](ref:europa-park/voletarium)** uit 2017, een
-vliegtheater van Brogent dat je met vrij bungelende benen boven Europa laat
-zweven. Geen achtbaan, maar de attractie waar het het meest uitmaakt of je er bij de opening bent.
+Het **[Voletarium](ref:europa-park/voletarium)** uit 2017 is een vliegtheater
+van Brogent dat je met vrij bungelende benen boven Europa laat zweven.
 
 ```glossary-widget slug=flying-theater
 
@@ -478,7 +477,7 @@ Rulantica, in de hotels en op de Traumatica-podia meegerekend.
 
 De **[Euro-Mir](ref:europa-park/euro-mir)** opende op **12 juni 1997** en rijdt
 in het seizoen 2026/27 voor het laatst, tot 9 januari 2027. Daarna wordt ze
-afgebroken. Het [nieuwsbericht over het afscheid](/news/europa-park-neemt-afscheid-van-euro-mir) noemt datum en opvolger.
+[afgebroken](/news/europa-park-neemt-afscheid-van-euro-mir).
 
 Een rit duurt bijna vijf minuten, een flink deel ervan rond twee gespiegelde torens, en de wagens draaien
 onderweg om hun eigen as, zodat je nooit weet waar je zo meteen naar kijkt.
@@ -522,9 +521,7 @@ gelijk. De maandag laat ik in mijn advies toch weg: die had negen dagen op
 In de [andere parken die ik registreer](/beste-tijd-om-te-bezoeken) is dat anders. In het
 [Phantasialand](ref:phantasialand?bare) is de zondag na de zaterdag de drukste
 dag, in de [Efteling](ref:efteling?bare) liggen dinsdag tot en met vrijdag onder
-het weekend. Meer daarover in de
-[Phantasialand-gids](/blog/phantasialand-wachttijden-tips) en de
-[Efteling-gids](/blog/efteling-disney-van-nederland).
+het weekend.
 
 De verklaring ligt bij de samenstelling van het publiek. Tot de Rijn en daarmee
 tot Frankrijk is het vanaf Rust een paar kilometer, tot Bazel ruim een uur
@@ -561,7 +558,7 @@ tussen Kerstmis en oudejaarsavond 2025, de drukste week van de winter.
 In 2027 houdt het park van 7 tot 19 maart voor het eerst twee Pre-Opening
 Weeks, nog niet met alle attracties en shows, maar met de goedkoopste tickets
 van het jaar, en het zomerseizoen begint dan op 20 maart. Van oktober staan pas
-de eerste dagen in de tabel, van november nog geen enkele. Het aantal meetdagen laat zien hoe ver Halloween en HALLOWinter er inmiddels in zitten.
+de eerste dagen in de tabel, van november nog geen enkele.
 
 ### Welke vakanties het park vullen
 
@@ -656,7 +653,7 @@ Rust hebben we nog niet gemeten.
 Het park opent pas om 11 uur en sluit op zijn vroegst om
 19 uur, dat is een uur minder dan in de zomer, het wordt vroeg donker, en op de
 waterbanen kun je niet rekenen. Als Poseidon en Atlantica je niets kunnen
-schelen, is een werkdag in november het proberen waard. De dagen die er nu het rustigst uitzien, staan in de kalender hierboven.
+schelen, is een werkdag in november het proberen waard.
 
 ## De perfecte dag in het Europa-Park
 
@@ -672,8 +669,9 @@ piek, en dat is veruit de grootste besparing in het hele park.
 Bij Voltron, Arthur en Silver Star levert een vroege start nog niet de helft
 daarvan op.
 
-Het uurprofiel geeft de typische wachttijd per uur, de mediaan over alle gemeten bedrijfsdagen sinds eind
-december 2025. Het drukste uur van elke attractie staat vet.
+De uurwaarden zijn medianen over alle gemeten bedrijfsdagen sinds eind december
+2025, hoogzomer en de weken rond de jaarwisseling samen. Het drukste uur van
+elke attractie staat vet.
 
 ```hourly-profile-widget slug=europa-park top=12
 
@@ -705,8 +703,7 @@ Een dagindeling die daaruit volgt:
    heeft, heeft die ’s middags korter; bij Arthur en Wodan blijft ze ongeveer
    gelijk.
 4. **Vanaf twaalf uur Silver Star**, dan Eurosat, Piraten in Batavia, Josefina’s
-   Keizerlijke Toverreis en het Castello dei Medici. Binnen is het op hete dagen
-   toch aangenamer.
+   Keizerlijke Toverreis en het Castello dei Medici.
 5. **Vanaf zeventien uur de waterbanen**, als nat worden ’s ochtends je te vroeg
    was. Ze zakken dan allebei onder hun middag- en namiddagwaarden, vanaf
    achttien uur ruim.
@@ -715,10 +712,8 @@ Een dagindeling die daaruit volgt:
    de opening het kortste van de dag, en op lange zomeravonden trekken Voltron,
    Eurosat en Silver Star in het laatste uur nog eens aan.
 
-Deze curves beslaan alle gemeten bedrijfsdagen, hoogzomer en de weken rond de
-jaarwisseling samen. Voor een novemberdag van elf tot negentien uur hebben we nog
-geen eigen metingen; de kolom voor negen uur bestaat dan gewoon niet, en de
-dagpiek kan op zijn vroegst om elf uur komen.
+Op een novemberdag van elf tot negentien uur bestaat de kolom voor negen uur
+niet, en de dagpiek kan op zijn vroegst om elf uur komen.
 
 ```map-widget slug=europa-park
 
@@ -935,12 +930,11 @@ tweede dag dus zo’n 60 tot 67,50 €.
 
 ### Is het Europa-Park in de winter de moeite waard?
 
-Ja, met één kanttekening. De winterdecoratie, de ijsbaan en de kerstmarkt zijn
+Ja. De winterdecoratie, de ijsbaan en de kerstmarkt zijn
 er alleen dan, daar staat tegenover dat het eerder donker wordt, dat het park op
 zijn vroegst om 19 uur dichtgaat en dat de waterbanen niet doorlopend draaien;
 Atlantica heeft in de winter pauze. Tussen Kerstmis en oudejaarsavond 2025 lagen
 de wachttijden ongeveer even hoog als in augustus, gemeten op zes dagen.
-Gemeten wachttijden uit november hebben we nog niet.
 
 ## Weer en actuele wachttijden
 
@@ -950,12 +944,8 @@ Als het regent, wordt de rij bij de Eurosat langer.
 
 ```
 
-En twee waarvoor je lang zult staan, met hun actuele cijfers:
-
 [Voltron Nevera powered by Rimac](ref:europa-park/voltron-nevera-powered-by-rimac?full)
 [Arthur](ref:europa-park/arthur?full)
-
-Ga je vóór 9 januari nog, ga dan één keer in de Euro-Mir zitten.
 
 — Patrick
 

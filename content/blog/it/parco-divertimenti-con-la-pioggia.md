@@ -205,8 +205,6 @@ facciata del Moulin Rouge.
 
 ```
 
-Di più sul parco nella [guida all’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli).
-
 ## Phantasialand
 
 Al [Phantasialand](ref:phantasialand) di Brühl sono al coperto 14 attrazioni su 40.
@@ -240,8 +238,6 @@ Taron, Black Mamba e le altre grandi montagne russe sono all’aperto.
 
 ```
 
-Di più sul parco nella [guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli).
-
 ## Efteling
 
 [Efteling](ref:efteling), a Kaatsheuvel, ha undici attrazioni al coperto su 37.
@@ -262,14 +258,11 @@ Diorama e l’Efteling Museum.
 
 Joris en de Draak, Baron 1898 e Python sono all’aperto. Le chiusure per manutenzione delle
 attrazioni al coperto sono indicate sulla pagina di ciascuna e nel calendario del
-parco, e conviene controllare la sera prima.
+parco.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Dark ride sospesa;efteling/symbolica|Symbolica|Trackless Ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Indoor coaster columns=type,peak,days
 
 ```
-
-Di più sul parco nell’articolo
-[Efteling, la Disney dei Paesi Bassi](/blog/efteling-la-disney-dei-paesi-bassi).
 
 ## Toverland
 
@@ -300,8 +293,6 @@ minima 100 centimetri), gira sopra il mercato orientale del Land van Toos.
 
 ```
 
-Di più sul parco nella [guida al Toverland](/blog/toverland-troy-tempi-di-attesa-consigli).
-
 ## Movie Park Germany
 
 Al [Movie Park Germany](ref:movie-park-germany) di Bottrop sono al coperto 12
@@ -323,8 +314,6 @@ una sera dell’Halloween Horror Festival.
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulatore;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 
 ```
-
-Tutto sul parco è nella [guida al Movie Park](/blog/movie-park-germany-tempi-di-attesa-consigli).
 
 ## Plopsaland Deutschland
 
@@ -362,8 +351,6 @@ e le altre attrazioni all’aperto e speri in un pomeriggio asciutto.
 
 ```
 
-Di più sul parco, con Colossos, nella [guida all’Heide Park](/blog/heide-park-tempi-di-attesa-consigli).
-
 ## Walibi Belgium
 
 [Walibi Belgium](ref:walibi-belgium), a Wavre, ha sette attrazioni al coperto su 42. Due sono film in 4D, «Wanted Alive» e, solo a dicembre e gennaio, «Festive
@@ -385,15 +372,11 @@ Génie e lo Spinning Taxi.
 
 ```
 
-Di più sul parco nella [guida a Walibi Belgium](/blog/walibi-belgium-tempi-di-attesa-consigli).
-
 ## Walibi Holland
 
 [Walibi Holland](ref:walibi-holland), a Biddinghuizen, non ha nessuna attrazione
 al chiuso tra le sue 39. Quando, nell’aprile 2026, il parco ha rinunciato
 all’apertura invernale, la direttrice Mascha Taminiau ha indicato tra i motivi la dipendenza dal meteo.
-
-Di più sul parco nella [guida a Walibi Holland](/blog/walibi-holland-untamed-hard-gaan).
 
 ## I nove parchi a confronto
 
@@ -434,7 +417,7 @@ Park e Walibi Holland.
 Nel calendario di ogni parco trovi, per le prossime settimane, il meteo, gli
 orari di apertura e l’affluenza prevista. Visto che nei giorni di pioggia c’è in
 media meno gente, non devi rinunciare alla visita solo perché sono previsti dei
-rovesci. Il meteo qui sotto è quello di Brühl, dove si trova il Phantasialand.
+rovesci.
 
 ```weather-widget slug=phantasialand
 

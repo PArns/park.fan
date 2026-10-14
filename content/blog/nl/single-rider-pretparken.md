@@ -88,7 +88,7 @@ Bij elk park waarvan we de pagina konden lezen, geldt:
 
 ## Hoeveel plaatsen er naast elkaar in een rij zitten
 
-Of er in de trein een plaats vrij blijft, hangt af van hoeveel gasten naast elkaar zitten. Bij twee
+Bij twee
 plaatsen per rij vult een groep van drie één rij helemaal en van de volgende één plaats. Bij Baron
 1898 zitten zes gasten in een rij, daar laat een groep van vier in zijn rij twee plaatsen leeg. De
 gegevens over de achtbanen met single rider in het Europa-Park, de Efteling en het Phantasialand komen
@@ -183,8 +183,7 @@ Bij blue fire, WODAN, het Voletarium en Voltron Nevera is er daarnaast de Virtua
 reserveert in de app een tijdslot en brengt de tijd tot dan ergens anders in het park door.
 
 Alle zes banen hebben een minimale lengte van 120 of 130 centimeter, volgens de gegevens in onze
-database. De single-rideringang helpt dus vooral tieners en volwassenen die alleen of in een gezelschap
-zonder jonge kinderen onderweg zijn.
+database.
 
 ```ride-waits-widget rides=europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/blue-fire-megacoaster|blue fire;europa-park/wodan-timburcoaster|WODAN;europa-park/eurosat-cancan-coaster|Eurosat;europa-park/voletarium|Voletarium;europa-park/arthur|ARTHUR columns=land,peak
 
@@ -196,8 +195,7 @@ zonder jonge kinderen onderweg zijn.
 
 ## Efteling
 
-Van de [Efteling](ref:efteling) komt de meest complete officiële beschrijving die we hebben gevonden. De pagina over
-de single-rideringang noemt onder “Attracties met single-rideringang” zes banen: Danse Macabre, Joris
+De pagina van de [Efteling](ref:efteling) over de single-rideringang noemt onder “Attracties met single-rideringang” zes banen: Danse Macabre, Joris
 en de Draak, Symbolica, Baron 1898, Max & Moritz en Python. Elke baan heeft twee rijen, een voor
 groepen en gezinnen, een voor alleenstaanden, plus een ingang voor bezoekers met een beperking, meestal
 vlak bij de uitgang. In de antwoorden hoger op dezelfde pagina ontbreekt Baron 1898. In de gewone rij
@@ -347,7 +345,7 @@ De ingang is het meest waard bij de baan waar de gewone rij het langst is.
 Controleer of de rij open is voordat je je laat scheiden. Op de attractiepagina staat het teken
 “Single Rider” met de status van de rij. Hij kan gesloten zijn zonder dat de baan dicht is.
 
-Splits op als het loont. Voor twee volwassenen is de snelste variant dat de een de gewone rij neemt
+Voor twee volwassenen is de snelste variant dat de een de gewone rij neemt
 en de ander de single-rideringang. Wie eerst rijdt, wacht bij de uitgang.
 
 ## Veelgestelde vragen over single rider
@@ -370,8 +368,7 @@ single-rideringang valt dan af.
 
 ### Welke banen in het Europa-Park hebben single rider?
 
-Zes: ARTHUR, WODAN, blue fire, Eurosat, het Voletarium en Voltron Nevera. Het park somt alle
-zes op zijn pagina met tips voor je bezoek op.
+Zes: ARTHUR, WODAN, blue fire, Eurosat, het Voletarium en Voltron Nevera.
 
 ### Welke banen in de Efteling hebben single rider?
 

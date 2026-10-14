@@ -49,27 +49,19 @@ seo:
     - Movie Park come arrivare Bottrop
 ---
 
-Il 29 giugno 1996 Michael Douglas, Sophia Loren e Claudia Schiffer erano a
-Bottrop-Kirchhellen.
-
-Ventimila invitati, un parco da circa 200 milioni di euro, costruito sul terreno
-di un parco cinematografico fallito, all’estremità nord della Ruhr:
-**Warner Bros. Movie World**, sul modello dell’omonimo parco che
-Warner aveva aperto cinque anni prima sulla Gold Coast australiana. Un giorno
+Il 29 giugno 1996 ha aperto a Bottrop-Kirchhellen **Warner Bros. Movie World**, davanti a ventimila invitati, fra cui Michael Douglas, Sophia Loren e Claudia Schiffer. Il parco era costato circa 200 milioni di euro, aveva una città di scenografie di 45 ettari con le Streets of New York e sorgeva sul terreno di un parco cinematografico fallito, all’estremità nord della Ruhr. Il modello era l’omonimo parco che Warner aveva aperto cinque anni prima sulla Gold Coast australiana. Un giorno
 dopo è entrato il pubblico pagante.
 
 Dei marchi per cui è stato fatto tutto questo non ne è rimasto nemmeno uno, né
 Bugs Bunny né Batman, né i Gremlins né Police Academy. Il parco si chiama in
 un altro modo dal 2005, appartiene a un gruppo spagnolo dal 2010 e festeggia il
-suo trentesimo compleanno proprio con un’attrazione della Paramount.
+suo trentesimo compleanno con un’attrazione della Paramount.
 
 Su tutti i giorni di apertura misurati finora, al
 [Movie Park](ref:movie-park-germany) si sta in coda un buon terzo in meno che al
 [Phantasialand](ref:phantasialand), a poco meno di un’ora di macchina più a sud.
-La mia [classifica dei parchi divertimenti in Germania](/blog/migliori-parchi-divertimenti-in-germania) colloca gli altri parchi tedeschi.
 
-La domenica, che le guide abituali in rete danno per giorno pieno del fine
-settimana, nei nostri dati è fra i giorni più tranquilli della settimana.
+La domenica nei nostri dati è fra i giorni più tranquilli della settimana.
 
 ## Come Warner Bros. Movie World è diventato il Movie Park
 
@@ -78,9 +70,7 @@ Allekötter nel 1967. Ne è venuto fuori il Traumlandpark, e all’inizio degli 
 Novanta Bavaria Film ci ha provato qui con un proprio **Bavaria Filmpark**. Ha
 retto dal 1992 al 1994.
 
-Warner prestava i suoi personaggi al parco, e il parco vendeva i biglietti.
-
-È durato otto anni. Nell’ottobre 1999 Time Warner ha venduto il 97 per cento a
+Per otto anni Warner ha prestato i suoi personaggi al parco, e il parco vendeva i biglietti. Nell’ottobre 1999 Time Warner ha venduto il 97 per cento a
 **Premier Parks**, che poco dopo ha preso il nome di **Six Flags**. Nel 2004 gli
 americani hanno ceduto la loro attività europea al fondo **Palamon Capital
 Partners**, e con quella vendita sono scaduti i contratti di licenza.
@@ -88,9 +78,7 @@ Nell’inverno 2004/05 il parco ha dovuto rinominare praticamente tutto ciò che
 portava un nome preso da un film Warner. Nel marzo 2005 ha riaperto come **Movie
 Park Germany**. Cinque anni dopo, il 17 maggio 2010, ha rilevato tutto
 l’operatore spagnolo **Parques Reunidos**. Il gruppo madrileno appartiene dal
-2019 in maggioranza al fondo svedese EQT, che ora vuole venderlo in blocco, Movie
-Park compreso, secondo il quotidiano economico spagnolo Expansión del 24
-settembre 2026. [La nostra notizia sulla vendita](/blog/parques-reunidos-in-vendita-movie-park) spiega cosa significa per visitatori e abbonati.
+2019 in maggioranza al fondo svedese EQT, che ora vuole [venderlo in blocco](/blog/parques-reunidos-in-vendita-movie-park), Movie Park compreso, secondo il quotidiano economico spagnolo Expansión del 24 settembre 2026.
 
 Per questo cinque fra le attrazioni più note vivono oggi con un altro nome:
 
@@ -116,7 +104,7 @@ come motivo il calo di visitatori nei parchi del gruppo in Spagna e in Italia. S
 
 Chi ha visitato il parco fra il 2012 e il 2016 ha visto un parco in cui, a parte
 The Lost Temple (2014), si muoveva poco, e da quegli anni viene la fama che il
-Movie Park ha nel mondo delle montagne russe.
+Movie Park ha nel mondo delle montagne russe. Nel 2024 il parco ha contato più visitatori che in qualunque anno dal 2002, con un record all’Halloween Horror Festival.
 
 ## La storia del cinema che racconta al posto loro
 
@@ -152,14 +140,11 @@ proiezione, con effetti nella sala. Si interpreta una comparsa in una produzione
 dei Paramount Studios a Los Angeles. Il filmato è stato girato nel novembre 2025
 sul vero terreno dello studio.
 
-È costruita nell’edificio di **The Lost Temple** (2014), e sotto c’è ancora uno
-strato: lì dal 1996 si trovava **Movie Magic**, l’attrazione con cui Warner
+È costruita nell’edificio di **The Lost Temple** (2014), dove dal 1996 si trovava **Movie Magic**, l’attrazione con cui Warner
 spiegava ai visitatori come si fa un film. Altezza
 minima 100 centimetri, e l’uscita passa per uno showroom Paramount.
 
 ## Le altre sette montagne russe
-
-Il parco ne ha otto, la Studio Tour compresa.
 
 ### Star Trek™: Operation Enterprise
 
@@ -210,8 +195,7 @@ pino dell’Oregon nell’inverno 2015/16.
 ```
 
 Dopo 27 anni è rumorosa e ruvida, un po’ più sopportabile in coda al
-treno che davanti, e a me il secondo giro basta per il mal di testa. Una volta ci salirei comunque, perché nel 1999 era l’unica montagna russa in
-legno della Germania. Chi
+treno che davanti, e a me il secondo giro basta per il mal di testa. Una volta ci salirei comunque. Chi
 prende Colossos, allo [Heide-Park](ref:heide-park), come metro di paragone si
 fermi a quell’unica volta.
 
@@ -331,8 +315,7 @@ Van Helsing’s Factory, un percorso al chiuso da 36 km/h, ha la mediana più al
 attrazioni appaiate, tra cui il tronco dell’area bambini. Star Trek, l’attrazione
 più grande del parco, sta a metà classifica.
 
-Van Helsing smaltisce solo 848 persone all’ora, e siccome il percorso è al
-chiuso, quando piove ci vuole entrare molta gente. [L’arte dell’attesa](/blog/l-arte-dell-attesa) spiega per esteso come capacità e domanda diventino un tempo di attesa.
+Siccome Van Helsing è al chiuso, quando piove ci vuole entrare molta gente.
 
 ```hourly-profile-widget slug=movie-park-germany top=8
 
@@ -341,12 +324,10 @@ chiuso, quando piove ci vuole entrare molta gente. [L’arte dell’attesa](/blo
 Le grandi montagne russe all’aperto si riempiono
 la mattina e poi calano: Star Trek ha l’ora più forte a tarda mattinata, Bandit e
 Iron Claw verso mezzogiorno, e verso le tre tutte e tre sono più corte. Le **attrazioni acquatiche fanno esattamente il contrario**.
-Dora, Excalibur e Area 51 hanno la loro ora piena nel tardo pomeriggio, perché
-con trenta gradi prima o poi vogliono bagnarsi tutti.
+Dora, Excalibur e Area 51 hanno la loro ora piena nel tardo pomeriggio.
 
 La riga di Van Helsing schizza in alto nella seconda ora e resta poi sullo
-stesso valore fino alla chiusura. Chi non c’è stato nei primi sessanta
-minuti non troverà un momento migliore per tutta la giornata.
+stesso valore fino alla chiusura.
 
 ```park-comparison-widget slugs=movie-park-germany,phantasialand,efteling,attractiepark-toverland,walibi-holland,europa-park highlight=movie-park-germany
 
@@ -371,9 +352,7 @@ meno, e al Walibi Holland più o meno lo stesso. Al Phantasialand e all’Europa
 ```
 
 Si aspetta meno il **venerdì**, seguito da vicino dalla **domenica** e dal
-**giovedì**, di più il **martedì**. Chi cerca consigli sul Movie Park legge
-soprattutto altro: in settimana sarebbe tranquillo, il fine settimana pieno. Il
-sabato si aspetta effettivamente più che la domenica, e i due giorni da noi sono
+**giovedì**, di più il **martedì**. Il sabato si aspetta più che la domenica, e i due giorni da noi sono
 misurati più o meno con la stessa frequenza, quindi sono direttamente
 confrontabili.
 
@@ -391,12 +370,10 @@ gita è il sabato. La domenica molti lavorano il giorno dopo.
 
 All’[Europa-Park](ref:europa-park) la domenica è addirittura il giorno più vuoto, ma lì
 per il motivo opposto: Rust vive di clienti d’albergo che arrivano il sabato e
-ripartono la domenica, come si legge nella
-[guida all’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli). Allo
+ripartono la domenica. Allo
 [Heide-Park](ref:heide-park),
 che assomiglia strutturalmente al Movie Park, la settimana ha quasi la
-stessa forma, conti alla mano nella
-[guida dell’Heide Park](/blog/heide-park-tempi-di-attesa-consigli).
+stessa forma.
 
 ### Il calendario dal 2 settembre
 
@@ -438,7 +415,7 @@ dell’Halloween Horror Festival, e ottobre e novembre mancano ancora del tutto.
 
 Sei settimane all’anno questo parco si chiama **Horrorwood Studios**.
 
-L’**Halloween Horror Festival** è nel 2026 alla sua **28ª edizione**, in 22 serate
+L’**[Halloween Horror Festival](/blog/halloween-parchi-divertimenti-2026)** è nel 2026 alla sua **28ª edizione**, in 22 serate
 selezionate, dal **26 settembre all’8 novembre**, con il motto dell’anno «Legends
 Never Die». Il parco lo chiama il più grande evento di Halloween d’Europa, con oltre **300
 mostri**, nove case dell’orrore, quattro scare zone e una parata di mostri. Di giorno il parco funziona normalmente dalle
@@ -454,9 +431,6 @@ spettacolo in cui il pubblico gioca invece di guardare.
 Il **17 ottobre**, una data che segnerei a parte, si tiene per la quinta volta
 la giornata **Haunters Against Hate**. Bottrop l’ha organizzata nel 2022, primo
 parco divertimenti al mondo a farlo, e mi piace che quel giorno gli attori si schierino pubblicamente contro l’esclusione.
-
-Il confronto con Traumatica, Walibi e Toverland e i prezzi delle case sono nella
-nostra [guida ad Halloween 2026](/blog/halloween-parchi-divertimenti-2026).
 
 Le case non sono comprese nel biglietto giornaliero e si prenotano a
 parte, con una fascia oraria fissa. Chi vuole farle tutte e nove faccia il
@@ -525,9 +499,7 @@ Il sovrapprezzo alla cassa è di venticinque euro a persona adulta e di venti a
 bambino. Con due adulti e due bambini fanno novanta euro. I visitatori con
 un GdB di 100 e uno dei contrassegni aG, Bl, B o H entrano gratis, e
 l’accompagnatore paga 29,90 €. Il parcheggio privilegiato più vicino all’ingresso
-costa 19,90 € e si vende solo online. Il biglietto compleanno si compra solo il
-giorno stesso alla cassa informazioni, allo stesso prezzo anche per un
-accompagnatore.
+costa 19,90 € e si vende solo online. Allo stesso prezzo anche un accompagnatore può comprare il biglietto compleanno.
 
 **Abbonamenti stagionali.** Quattro livelli, allo stesso prezzo per adulti e bambini: Bronze 89,90 €, Silber
 135,90 €, Gold 155,90 € e Platin 179,90 €. Quello in vendita adesso è già
@@ -598,8 +570,6 @@ Hauptbahnhof, che ferma alla fermata Movie Park, proprio all’ingresso principa
 Trattoria Hollywood, poi hamburger, patatine e un forno. Per quello che arriva nel
 piatto trovo i prezzi alti, e qui mangio il più in fretta possibile.
 
-Se a Bottrop piove o no decide dove si ammucchiano le file.
-
 ```weather-widget slug=movie-park-germany
 
 ```
@@ -611,15 +581,14 @@ Se a Bottrop piove o no decide dove si ammucchiano le file.
 Meno che dai grandi vicini: su tutti i giorni di apertura misurati finora, qui si sta in
 coda un buon terzo in meno che al Phantasialand. Il valore più alto del parco ce l’ha [Van Helsing’s
 Factory](ref:movie-park-germany/van-helsings-factory), non le grandi montagne
-russe. I numeri aggiornati sono sulla [pagina del Movie
-Park](ref:movie-park-germany?bare).
+russe.
 
 ### Quando c’è meno gente al Movie Park?
 
 **Il venerdì**, seguito da vicino dalla **domenica** e dal **giovedì**, è nei
 nostri dati il giorno più tranquillo, il martedì il più carico, e il sabato sta nettamente sopra la domenica. Da inizio
 settembre il parco apre comunque solo da giovedì a domenica, e tutti i giorni
-nelle vacanze autunnali dal 17 al 31 ottobre. Il [calendario dei tempi di attesa](ref:movie-park-germany?calendar) indica il giorno preciso.
+nelle vacanze autunnali dal 17 al 31 ottobre.
 
 ### In che giorni il Movie Park è aperto in autunno?
 
@@ -634,8 +603,7 @@ In 22 serate selezionate, dal **26 settembre all’8 novembre 2026**, alla
 ventottesima edizione, con nove case dell’orrore, quattro scare zone e oltre 300
 mostri. La novità è la casa **Jason Universe**, più lo spettacolo dal vivo
 **PHOBIA** allo Studio 7. Le case si pagano a parte e si prenotano
-separatamente. I dettagli e il confronto con gli altri eventi europei sono nella
-[guida ad Halloween 2026](/blog/halloween-parchi-divertimenti-2026).
+separatamente.
 
 ### Quanto costa l’ingresso al Movie Park nel 2026?
 
@@ -668,24 +636,6 @@ reggono la mattina, Excalibur e Area 51 il pomeriggio, e a ottobre il parco è, 
 l’Halloween Horror Festival, tutt’altra faccenda. Chi cerca soprattutto grandi
 montagne russe sta meglio al [Phantasialand](ref:phantasialand) o allo
 [Heide-Park](ref:heide-park).
-
-## Perché ci torno volentieri
-
-Dalla Renania si passa davanti al Phantasialand per arrivare a Bottrop. Grazie
-alle file corte, in una giornata normale qui si sale su più cose che al Phantasialand o all’Europa-Park, e sei settimane all’anno,
-nelle stesse scenografie, si tiene quello che, secondo il suo stesso conteggio, è
-il più grande evento di Halloween del continente.
-
-Gli anni migliori di questo parco, però, sono stati quelli dell’epoca Warner, quando uno studio ci metteva soldi e
-personaggi. Da allora il parco ha continuato a costruire, nel 2011, 2017, 2018,
-2021 e 2026, ma senza i marchi che un tempo lo definivano. Le ultime montagne
-russe per adulti sono del 2017, e la novità dell’anno del giubileo è un tunnel
-cinematografico nell’edificio di un’attrazione del 2014.
-
-Nel 2024 il parco ha contato più visitatori che in
-qualunque anno dal 2002, con un record all’Halloween Horror Festival. A ottobre i visitatori arrivano a Bottrop da tutto il paese, molti ogni anno. La città di scenografie
-di 45 ettari con le Streets of New York, costruita nel 1996 con i soldi di uno studio di Hollywood, è ancora
-in piedi.
 
 — Patrick
 

@@ -102,8 +102,7 @@ Deutschland in about 20 years.
 
 Almost everywhere in Legoland two limits apply: a height and an age, set separately for riding with
 an adult and for riding alone. Where a child of 1.10 metres may ride with an adult, they often need
-1.20 to ride alone. The park sets this ride by ride, and at the ride entrance the staff decide
-whether someone may board.
+1.20 to ride alone.
 
 | Ride                                                                                      | What it is                       | with an adult      | alone              |
 | ----------------------------------------------------------------------------------------- | -------------------------------- | ------------------ | ------------------ |
@@ -127,7 +126,7 @@ Ride, but not Maximus and not Flying NINJAGO. They're five and ten centimetres s
 An eight-year-old of 1.30 metres can ride most
 of the rides in the table alone, while a six-year-old of 1.20 metres can only do the smaller ones.
 Flying NINJAGO, Power Builder and the Wüsten X-kursion also have a **maximum height** of 1.95
-metres, Maximus one of 2.00 metres. That mostly affects parents who want to come along.
+metres, Maximus one of 2.00 metres.
 
 ## The big rides
 
@@ -218,7 +217,7 @@ The weekday makes the biggest difference in our measurements.
 ```
 
 Saturday is the busiest day of the week and Friday the quietest. We've measured each weekday on more
-than twenty days, though only in one season. In our
+than twenty days. In our
 measurements, Friday is also the weekday with the shortest waits during the school holidays. Of the
 six parks we compare in our [school holidays guide](/blog/school-holidays-theme-parks-germany),
 Legoland depends most on the holidays in Bavaria and Baden-Württemberg.
@@ -229,9 +228,6 @@ Legoland depends most on the holidays in Bavaria and Baden-Württemberg.
 
 August was the busiest month. June and September were quieter than May and July. We've only measured
 five days in October so far.
-
-The park
-opens at 10, and the rides close an hour before the park does.
 
 ```hourly-profile-widget slug=legoland-deutschland top=8
 
@@ -285,7 +281,7 @@ take Bronze for whichever ride is then at the top of the table.
 ## Tickets and annual pass
 
 Prices are **dynamic**. According to Wikipedia the park introduced surge pricing at the end of 2024,
-and the prices on its site start with “from”. The following apply on 6 October 2026.
+and the prices on its site start with “from”.
 
 A day ticket costs **from €39** online, and **€64** at the box office for visitors aged twelve and over and
 **€58** for children between two and eleven. Under two, admission is free. The two-day ticket
@@ -444,14 +440,13 @@ by bus, if the train ticket is booked to “LEGOLAND Park”.
 
 ## Further reading
 
-The [ranking of German theme parks](/blog/best-theme-parks-in-germany) puts Legoland next to the
-other parks in Germany. On the site of Hansa-Park in
+On the site of Hansa-Park in
 Sierksdorf stood a first German Legoland from 1973 to 1976, more in the
 [Hansa-Park guide](/blog/hansa-park-tips).
 
 ## Who Legoland suits less
 
-The park has four classic coasters, and only one of them, Maximus, goes upside down. If you come with
+If you come with
 children over twelve or without any, Phantasialand or Europa-Park have more rides that suit them.
 
 — Patrick

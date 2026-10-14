@@ -82,7 +82,7 @@ Jahre alt geworden.
 Bis Anfang der 1990er Jahre hieß der Park offiziell Walt Disney World Magic Kingdom. 1994 benannte
 Disney ihn in Magic Kingdom Park um, damit er sich vom Disneyland in Kalifornien unterscheidet. Laut TEA kam er 2019 auf 20.963.000 Besuche, mehr als in jedem anderen Jahr seit 2000. 2020 war er wegen der Corona-Pandemie von Mitte März bis zum 11. Juli geschlossen und kam auf 6.941.000 Besuche, 66,9 Prozent weniger als 2019.
 
-Dazugekommen ist seitdem nur ein einziges Themenland. Es eröffnete 1988 als Mickey's Birthdayland,
+Seit der Eröffnung ist nur ein Themenland dazugekommen. Es eröffnete 1988 als Mickey's Birthdayland,
 hieß zuletzt Mickey's Toontown Fair und schloss am 11. Februar 2011, um Platz für New Fantasyland zu
 machen. Fertig wurde dieser Ausbau am 28. Mai 2014 mit dem Seven Dwarfs Mine Train.
 
@@ -164,8 +164,7 @@ Mehrere Dunkelfahrten sind so alt wie der Park. Die [Haunted
 Mansion](ref:magic-kingdom-park/haunted-mansion) in Liberty Square, „it's a small world“ in
 Fantasyland und die Jungle Cruise in Adventureland haben am 1. Oktober 1971 eröffnet, Peter Pan's
 Flight zwei Tage später. [Pirates of the Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean)
-kam am 15. Dezember 1973 dazu. Bei allen fünf gibt es keine Mindestgröße. Sie sind die Bahnen, die
-du am Nachmittag fährst, wenn TRON und der Mine Train schon erledigt sind. Die Haunted Mansion steht
+kam am 15. Dezember 1973 dazu. Bei allen fünf gibt es keine Mindestgröße. Die Haunted Mansion steht
 in der Tabelle oben meist weit vorn unter den Klassikern.
 
 ```map-widget slug=magic-kingdom-park
@@ -202,7 +201,7 @@ Rope-Drop-Auswertung ein „guter Tipp“.
 Am Seven Dwarfs Mine Train bleibt die Warteschlange von mittags bis in den Abend auf einem Niveau,
 in den letzten Stunden vor Parkschluss wird sie kürzer.
 
-Fahr also TRON zur Öffnung, Tiana's direkt danach und den Mine Train in der letzten Stunde. Space
+Space
 Mountain ist um die Mittagszeit am vollsten, die Jungle Cruise hält ihr Niveau vom Vormittag bis in
 den frühen Abend, und beide werden zum Parkschluss hin kürzer.
 
@@ -214,9 +213,8 @@ Mine Train, Space Mountain, Peter Pan's Flight und The Barnstormer. TRON, Tiana'
 die Jungle Cruise laufen dagegen nicht.
 
 Gäste der Deluxe-Hotels und einiger weiterer Hotels, die Disney auf seiner Seite aufzählt, bekommen
-an ausgewählten Abenden Extended Evening Hours, bis zu zwei Stunden nach Parkschluss. Dann laufen
-auch TRON, Space Mountain, Big Thunder und der Mine Train. Die Abende markiert Disney in seinem
-Kalender.
+an ausgewählten Abenden, die Disney in seinem Kalender markiert, Extended Evening Hours, bis zu zwei Stunden nach Parkschluss. Dann laufen
+auch TRON, Space Mountain, Big Thunder und der Mine Train.
 
 ### Ein Tag, wie ich ihn planen würde
 
@@ -231,8 +229,7 @@ Warteschlangen an den großen Bahnen am längsten sind, fährst du die Klassiker
 auf der Main Street am vollsten, deshalb fährst du in der Zeit noch eine der großen Bahnen. In der
 letzten Stunde vor Parkschluss ist der Mine Train dran, falls er morgens nicht geklappt hat.
 
-Wie viel Zeit das alles kostet, siehst du im [Tagesplaner](/blog/tagesplaner), wenn du deine Bahnen
-dort einträgst. Dort bekommst du eine Reihenfolge nach den vorhergesagten Wartezeiten des Tages.
+Im [Tagesplaner](/blog/tagesplaner) bekommst du für deine Bahnen eine Reihenfolge nach den vorhergesagten Wartezeiten des Tages und siehst, wie lange alles dauert.
 
 ## Mit kleinen Kindern
 
@@ -284,8 +281,7 @@ stehen dagegen auf wenigen Tagen, fünf im Januar, vier im März und acht im Dez
 Stand 28. September 2026 sind es 196 gemessene Tage, die meisten davon seit April.
 
 Die Wochentagskurve ist flach, die Mediane liegen nur eine Stufe auseinander. Einen Wochentag, den
-du gezielt wählen solltest, gibt es nicht. Wo ein anderer Park einen hat, steht er auf der
-[Beste-Reisezeit-Seite](/beste-reisezeit).
+du gezielt wählen solltest, gibt es nicht.
 
 Wegen Hurrikans hat Magic Kingdom seit der Eröffnung neunmal vorübergehend geschlossen, zuletzt im
 Oktober 2024 wegen Milton.
@@ -296,10 +292,9 @@ Oktober 2024 wegen Milton.
 
 ## Halloween und Weihnachten
 
-An 38 Abenden zwischen dem 7. August und dem 31. Oktober 2026 läuft Mickey's Not-So-Scary Halloween
-Party, laut Disney sind alle Termine ausverkauft. An diesen Abenden schließt der Park für normale
+An 38 Abenden zwischen dem 7. August und dem 31. Oktober 2026 läuft [Mickey's Not-So-Scary Halloween Party](/blog/halloween-usa-freizeitparks-2026), laut Disney sind alle Termine ausverkauft. An diesen Abenden schließt der Park für normale
 Gäste schon um 18 Uhr, die Party geht von 19 Uhr bis Mitternacht. Im Oktober betrifft das noch den
-6., 8., 9., 13., 15., 16., 18., 22., 23., 25., 27., 29. und 31. Unser Überblick [Halloween in den USA](/blog/halloween-usa-freizeitparks-2026) beschreibt die Party.
+6., 8., 9., 13., 15., 16., 18., 22., 23., 25., 27., 29. und 31.
 
 Danach folgt Mickey's Very Merry Christmas Party an 25 Abenden vom 8. November bis zum 22. Dezember
 2026, ebenfalls von 19 Uhr bis Mitternacht, mit Einlass ab 16 Uhr. Eine Karte kostet je nach Abend
@@ -381,7 +376,7 @@ Florida, EPCOT die längste.
 
 ### Welche Bahn hat im Magic Kingdom die längste Warteschlange?
 
-In unseren Daten TRON Lightcycle / Run. Die aktuelle Rangliste steht in der Tabelle weiter oben.
+In unseren Daten TRON Lightcycle / Run.
 
 ### Wann ist die Warteschlange an TRON am kürzesten?
 
@@ -413,8 +408,7 @@ Dunkelfahrten haben keine Mindestgröße.
 ### Wann ist das Magic Kingdom früher zu?
 
 An den Abenden der Halloween-Party im Herbst und der Weihnachtsparty im November und Dezember, dann
-schließt der Park für normale Gäste um 18 Uhr. Die Termine stehen weiter oben unter „Halloween und
-Weihnachten“.
+schließt der Park für normale Gäste um 18 Uhr.
 
 ### Gibt es noch eine virtuelle Warteschlange für TRON?
 
@@ -429,9 +423,7 @@ von Lightning Lane.
 
 Dasselbe Unternehmen betreibt auch [Disneyland Paris](/blog/disneyland-paris-wartezeiten-tipps), und dort hat der kleinere der beiden Parks die längeren Warteschlangen.
 
-Zwischen Weihnachten und Silvester liegt die vollste Woche in unserer Jahrestabelle, und die Very Merry Christmas Party läuft an 25
-Abenden: [Weihnachten und Silvester in Orlando und
-Paris](/blog/weihnachten-silvester-orlando-paris-2026).
+Die vollste Woche des Jahres liegt in unseren Daten zwischen Weihnachten und Silvester ([Weihnachten und Silvester in Orlando und Paris](/blog/weihnachten-silvester-orlando-paris-2026)).
 
 — Patrick
 

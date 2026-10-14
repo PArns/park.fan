@@ -49,11 +49,9 @@ parkLinks:
   - phantasialand
 ---
 
-Las visitas que necesita un pase anual para compensar son el precio del pase dividido entre el precio de la entrada de un día, redondeado hacia arriba. En los días bloqueados el pase no vale.
-
 El [Efteling](ref:efteling) en los Países Bajos, [Europa-Park](ref:europa-park) en Rust y [Toverland](ref:attractiepark-toverland) en Sevenum venden pase anual, [Phantasialand](ref:phantasialand) en Brühl no.
 
-Todos los precios proceden de las páginas de los parques, enlazadas al final, a 6 de octubre de 2026. Bajo cada parque, un widget muestra los días tranquilos según nuestros tiempos de espera.
+Todos los precios proceden de las páginas de los parques, enlazadas al final, a 6 de octubre de 2026.
 
 ## Los cuatro parques de un vistazo
 
@@ -78,14 +76,14 @@ Cada uno de los tres parques con pase vende un permiso de aparcamiento o descuen
 
 No he contado el descuento en comida y recuerdos, que depende de lo que compres, ni las visitas que no habrías hecho sin el pase.
 
-Todos los pases son personales. En Toverland las condiciones lo dicen expresamente: un pase por persona, no transferible.
+Todos los pases son personales.
 
 ## Los tres pases anuales del Efteling
 
 El Efteling vende desde el 11 de junio de 2024 tres pases anuales, que se distinguen por el número de días
 en que valen. Un descuento para visitantes de 65 años o más ya no existe desde entonces, y los pases 65+ vigentes siguieron hasta el final de su duración mínima.
 
-El Efteling encuestó a los titulares en 2023 y, según el parque, la mayoría estaba muy satisfecha pero quería más opciones. Del 15 de abril al 10 de junio de 2024 el parque no vendió pases nuevos, solo renovaciones. En los Países Bajos el número de titulares ya había subido con fuerza en 2023, escribe el Efteling en su balance del año.
+El Efteling encuestó a los titulares en 2023 y, según el parque, la mayoría quería más opciones. Del 15 de abril al 10 de junio de 2024 el parque no vendió pases nuevos, solo renovaciones. En los Países Bajos el número de titulares había subido en 2023, escribe el Efteling en su balance del año.
 
 | Nivel   | Precio anual | Al mes  | Acceso            | Descuento en parking | Comida, bebida, recuerdos | Entradas para amigos a mitad de precio |
 | ------- | ------------ | ------- | ----------------- | -------------------- | ------------------------- | -------------------------------------- |
@@ -177,7 +175,7 @@ Una entrada de un día cuesta 67 a 76 € para adultos y 56,50 a 65 € para ni�
 | Silver | 5 visitas     | 5 visitas       | 5 visitas (1.200 € frente a 247 a 282 € al día)     |
 | Gold   | 7 a 8 visitas | 7 a 8 visitas   | 7 a 8 visitas (1.850 € frente a 247 a 282 € al día) |
 
-En Silver el punto de equilibrio es el mismo en los dos extremos del rango de precios: cinco visitas. Tienes que venir cinco veces en días que Silver cubre. Cuáles son figura en el portal del ResortPass, y la página de precios solo da el número, más de 230. La temporada 2026 va del 28 de marzo de 2026 al 9 de enero de 2027, que son 288 días naturales, menos los dos días de descanso en Navidad. Silver deja fuera una parte de los días de apertura, y qué días lo decide el parque.
+Las cinco visitas tienen que caer en días que Silver cubre. Cuáles son figura en el portal del ResortPass, y la página de precios solo da el número, más de 230. La temporada 2026 va del 28 de marzo de 2026 al 9 de enero de 2027, que son 288 días naturales, menos los dos días de descanso en Navidad.
 
 Gold cuesta 170 € más, 155 € para niños. Son algo más de dos entradas de adulto adicionales al precio
 máximo. A cambio, Gold vale cada día de apertura, y las dos entradas de Rulantica están incluidas. La
@@ -251,7 +249,7 @@ En 2026 el parque vendió por primera vez un Summer Pass: 79 € para adultos, 5
 visitas ilimitadas del 1 de julio al 30 de septiembre. Si volverá en 2027, el parque no lo ha dicho. Quien
 solo viene en verano paga 81 € menos que por el pase anual.
 
-Según [nuestras mediciones](/blog/toverland-troy-tiempos-de-espera-consejos), en Toverland apenas hay diferencia entre los días de la semana, y en las vacaciones de Navidad hay más gente.
+En Toverland apenas hay diferencia entre los días de la semana, y en las vacaciones de Navidad hay más gente.
 
 ```best-days-widget slug=attractiepark-toverland
 
@@ -261,8 +259,7 @@ Según [nuestras mediciones](/blog/toverland-troy-tiempos-de-espera-consejos), e
 
 Phantasialand retiró de la venta su tarjeta Club durante la pandemia, y las últimas caducaron en el verano
 de 2022. En las preguntas frecuentes de la tienda de entradas no aparece ni un pase anual ni una tarjeta
-Club, y las entradas solo se venden con fecha y en línea. Por qué sigue así y qué hicieron los aficionados
-está en nuestra [guía de Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
+Club, y las entradas solo se venden con fecha y en línea.
 
 En el calendario de octubre de la tienda, una entrada para adultos desde 12 años cuesta entre 44 y 78 €. La diferencia entre el día más barato y el más caro es de 34 €, un 77 % más sobre el día barato. Tres visitas al año cuestan entre 132 y 234 €. En Phantasialand el sábado está claramente más lleno que el martes.
 
@@ -271,8 +268,6 @@ En el calendario de octubre de la tienda, una entrada para adultos desde 12 año
 ```
 
 ## Días bloqueados frente a días llenos
-
-Si Silver vale los sábados lo fija Europa-Park en el portal.
 
 ```park-comparison-widget slugs=efteling,europa-park,attractiepark-toverland,phantasialand show=quietest
 
@@ -285,7 +280,7 @@ Si puedes venir entre semana, lo más barato es Classic en el Efteling y Magic M
 En el Efteling basta con Classic si puedes venir fuera de las vacaciones y estás en el parque al menos seis
 veces al año. Si quieres ir entre mediados de octubre y principios de noviembre, necesitas Plus. Entre
 Navidad y Año Nuevo Plus también está bloqueado, y solo queda Premium. Premium solo compensa a partir de
-ocho a diez visitas. Por debajo de cuatro visitas no compensa ninguno de los tres niveles.
+ocho a diez visitas.
 
 ## Cuándo comprar
 

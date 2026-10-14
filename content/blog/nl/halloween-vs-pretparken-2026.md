@@ -75,7 +75,7 @@ seo:
 
 Begin oktober lopen er in 25 van de Amerikaanse parken op park.fan Halloween-evenementen, en bijna allemaal duren ze tot 31 oktober of 1 november. SCarowinds in Charlotte sluit als laatste, op 7 november. Voor de Horror Nights, Knott's Scary Farm en Howl-O-Scream in Tampa en Orlando heb je een apart ticket nodig. Bij sommige parken zit het evenement gewoon in de toegangsprijs. De twee Disneyfeesten zijn voor 2026 al uitverkocht.
 
-Bijna elk park raadt af om kinderen onder de 13 mee te nemen naar de avondevenementen. Het overzicht voor Europa staat in onze [Halloween-gids](/blog/halloween-pretparken-2026), en over [HalloWeekends](/blog/cedar-point-halloweekends-2026) in Cedar Point in Ohio hebben we een apart bericht.
+Het overzicht voor Europa staat in onze [Halloween-gids](/blog/halloween-pretparken-2026), en over [HalloWeekends](/blog/cedar-point-halloweekends-2026) in Cedar Point in Ohio hebben we een apart bericht.
 
 > [!NOTE]
 > Bijgewerkt op 5 oktober 2026: de data, huizen, leeftijdsgrenzen en prijzen komen van de websites van de parken en exploitanten. Het zijn vanafprijzen in Amerikaanse dollars zonder belasting. Ze hangen af van de avond en lopen meestal op naarmate die dichterbij komt.
@@ -234,7 +234,7 @@ Overdag hebben de vier parken van United Parks een programma voor kinderen, inbe
 
 ### Legoland en Knoebels
 
-[Legoland Florida](ref:legoland-florida) en [Legoland California](ref:legoland-california) houden Brick or Treat, voor gezinnen met kinderen van twee tot twaalf jaar en inbegrepen bij het dagticket. In Californië gaat het om de weekenden tot en met 1 november, met snoep vanaf 15 uur. Nieuw in beide parken is de Brick or Treat Street met monsterhuizen van Lego. Voor Florida staan op de eventpagina en op de blog van het park verschillende dagen.
+[Legoland Florida](ref:legoland-florida) en [Legoland California](ref:legoland-california) houden Brick or Treat, voor gezinnen met kinderen van twee tot twaalf jaar en inbegrepen bij het dagticket. In Californië gaat het om de weekenden tot en met 1 november, met snoep vanaf 15 uur. Nieuw in beide parken is de Brick or Treat Street met monsterhuizen van Lego.
 
 [Knoebels](ref:knoebels-amusement-park) in Pennsylvania vraagt geen toegangsprijs, je betaalt per rit. Tijdens Hallo-Fun zijn in de weekenden van oktober meer dan 50 attracties in Halloween-versiering open, op vrijdag van 18 tot 22 uur, op zaterdag van 14 tot 22 uur en op zondag van 12 tot 18 uur.
 
@@ -246,7 +246,7 @@ Bij de Oogie Boogie Bash zijn maskers vanaf 14 jaar verboden, en kostuums mogen 
 
 ## Wanneer je gaat
 
-Onze wachttijden gelden voor de hele dag, de eventavonden meten we niet apart. Voor de grote attracties in Universal Studios Florida hebben we ze uur voor uur over het hele seizoen gemeten.
+Onze wachttijden gelden voor de hele dag, de eventavonden meten we niet apart.
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 
@@ -255,8 +255,6 @@ Onze wachttijden gelden voor de hele dag, de eventavonden meten we niet apart. V
 ```best-days-widget slug=knotts-berry-farm
 
 ```
-
-Voor de grote parken met een avondevenement hebben we ook de weekdag met de kortste wachtrijen over dit seizoen gemeten.
 
 ```park-comparison-widget slugs=universal-studios-florida,knotts-berry-farm,six-flags-magic-mountain,six-flags-great-adventure,kings-island,busch-gardens-tampa,seaworld-orlando show=quietest
 

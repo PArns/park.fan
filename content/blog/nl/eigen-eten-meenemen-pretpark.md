@@ -59,8 +59,7 @@ parkLinks:
   - futuroscope
 ---
 
-Of boterhammen, fruit en een drinkfles mee het pretpark in mogen, bepaalt elk park zelf, in zijn huisregels of in de
-veelgestelde vragen op zijn website. Wij hebben de regels van vijftien parken in Duitsland, Nederland, België en Frankrijk
+Wij hebben de huisregels en de veelgestelde vragen op de websites van vijftien parken in Duitsland, Nederland, België en Frankrijk
 naast elkaar gelegd.
 
 Heide Park, de Efteling, Toverland, Walibi Holland, Futuroscope en Disneyland Paris staan eigen eten uitdrukkelijk toe.
@@ -76,23 +75,23 @@ eten. Hun verboden gaan over barbecues, kookapparatuur of alcohol.
 
 Stand van 9 oktober 2026:
 
-| Park                   | Eigen eten                          | Wat verder geldt                                                         | Regel van het park                                                                                                                                                   |
-| ---------------------- | ----------------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Europa-Park            | niet geregeld                       | barbecue en kookapparatuur verboden, grote hoeveelheden alcohol verboden | [Park Rules](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations)                                                                         |
-| Phantasialand          | niet geregeld                       | alcohol in elke verpakking verboden, tascontrole                         | [Tascontrole](https://www.phantasialand.de/files/uploads/themenpark/documents/informationen/taschenkontrollen_de.pdf)                                                |
-| Heide Park             | toegestaan                          | glazen flessen en barbecueën verboden                                    | [Helpcentrum](https://support.heide-park.de/hc/de/articles/360011020097-Darf-ich-Speisen-und-Getr%C3%A4nke-mitbringen)                                               |
-| Hansa-Park             | niet geregeld                       | barbecue, kookapparatuur, alcohol en glazen flessen verboden             | [Parkordnung](https://www.hansapark.de/parkordnung?language=de)                                                                                                      |
-| Legoland Deutschland   | niet geregeld                       | open vuur en barbecues verboden                                          | [Park- und Geschäftsordnung](https://www.legoland.de/rechtliches/internetbuchungsbedingungen-agb/)                                                                   |
-| Movie Park Germany     | niet geregeld                       | alcohol en barbecueën verboden                                           | [Parkordnung](https://www.movieparkgermany.de/parkordnung)                                                                                                           |
-| Plopsaland Deutschland | op picknickplaatsen                 | geen grootverpakkingen, alcohol en barbecueën verboden                   | [Park Regulations](https://www.plopsa.com/en/plopsaland-deutschland/park-regulations)                                                                                |
-| Efteling               | toegestaan                          | bij drukte op de picknickplaatsen eten                                   | [Parkreglement](https://efteling.com/nl/-/media/files/conditions/28-02-2025/20250228-parkreglement-nl.pdf)                                                           |
-| Toverland              | toegestaan                          | twee gratis magnetrons                                                   | [Practical information](https://www.toverland.com/en/practical-information)                                                                                          |
-| Walibi Holland         | toegestaan                          | glas en alcohol verboden                                                 | [Facilities](https://www.walibi.nl/en/plan-your-visit/facilities), [Park rules](https://www.walibi.nl/en/legal/general-conditions/park-rules)                        |
-| Bobbejaanland          | op picknickplaatsen                 | grote eet- en drinkpakketten alleen met toestemming                      | [Parkreglement](https://www.bobbejaanland.be/parkreglement)                                                                                                          |
-| Walibi Belgium         | op picknickplaatsen                 | alcohol verboden, tassen hooguit 55 × 40 × 20 cm                         | [Park regulations](https://www.walibi.be/en/regulations/park-regulations)                                                                                            |
-| Parc Astérix           | op picknickplaatsen                 | glas, koelbox, kookapparatuur en alcohol van buiten het park verboden    | [Règlement intérieur](https://www.parcasterix.fr/reglement-interieur-du-parc)                                                                                        |
-| Disneyland Paris       | toegestaan, zonder koelbox en tafel | glazen flessen en alcohol verboden, picknickplek voor de ingang          | [FAQ](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages), [Theme Parks Rules](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules) |
-| Futuroscope            | toegestaan, op alle grasvelden      | harde koelboxen verboden, tascontrole                                    | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3)                                                                                           |
+| Park                   | Eigen eten                          | Wat verder geldt                                                           | Regel van het park                                                                                                                                                   |
+| ---------------------- | ----------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Europa-Park            | niet geregeld                       | barbecue en kookapparatuur verboden, grote hoeveelheden alcohol verboden   | [Park Rules](https://www.europapark.de/en/theme-park/park-and-parking-rules-and-regulations)                                                                         |
+| Phantasialand          | niet geregeld                       | alcohol in elke verpakking verboden, tascontrole                           | [Tascontrole](https://www.phantasialand.de/files/uploads/themenpark/documents/informationen/taschenkontrollen_de.pdf)                                                |
+| Heide Park             | toegestaan                          | glazen flessen en barbecueën verboden                                      | [Helpcentrum](https://support.heide-park.de/hc/de/articles/360011020097-Darf-ich-Speisen-und-Getr%C3%A4nke-mitbringen)                                               |
+| Hansa-Park             | niet geregeld                       | barbecue, kookapparatuur, alcohol en glazen flessen verboden               | [Parkordnung](https://www.hansapark.de/parkordnung?language=de)                                                                                                      |
+| Legoland Deutschland   | niet geregeld                       | open vuur en barbecues verboden                                            | [Park- und Geschäftsordnung](https://www.legoland.de/rechtliches/internetbuchungsbedingungen-agb/)                                                                   |
+| Movie Park Germany     | niet geregeld                       | alcohol en barbecueën verboden                                             | [Parkordnung](https://www.movieparkgermany.de/parkordnung)                                                                                                           |
+| Plopsaland Deutschland | op picknickplaatsen                 | geen grootverpakkingen, alcohol en barbecueën verboden                     | [Park Regulations](https://www.plopsa.com/en/plopsaland-deutschland/park-regulations)                                                                                |
+| Efteling               | toegestaan                          | bij drukte op de picknickplaatsen eten                                     | [Parkreglement](https://efteling.com/nl/-/media/files/conditions/28-02-2025/20250228-parkreglement-nl.pdf)                                                           |
+| Toverland              | toegestaan                          | twee gratis magnetrons                                                     | [Practical information](https://www.toverland.com/en/practical-information)                                                                                          |
+| Walibi Holland         | toegestaan                          | glas en alcohol verboden                                                   | [Facilities](https://www.walibi.nl/en/plan-your-visit/facilities), [Park rules](https://www.walibi.nl/en/legal/general-conditions/park-rules)                        |
+| Bobbejaanland          | op picknickplaatsen                 | grote eet- en drinkpakketten alleen met toestemming                        | [Parkreglement](https://www.bobbejaanland.be/parkreglement)                                                                                                          |
+| Walibi Belgium         | op picknickplaatsen                 | alcohol verboden, tassen hooguit 55 × 40 × 20 cm                           | [Park regulations](https://www.walibi.be/en/regulations/park-regulations)                                                                                            |
+| Parc Astérix           | op picknickplaatsen                 | glas, koelbox, kookapparatuur en alcohol van buiten het park verboden      | [Règlement intérieur](https://www.parcasterix.fr/reglement-interieur-du-parc)                                                                                        |
+| Disneyland Paris       | toegestaan, zonder koelbox en tafel | glazen flessen en alcohol verboden, picknickplek voor de ingang            | [FAQ](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages), [Theme Parks Rules](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules) |
+| Futuroscope            | toegestaan, op alle grasvelden      | harde koelboxen, glas en alcohol van buiten het park verboden, tascontrole | [FAQ](https://www.futuroscope.com/en/practical-information/faq/category-3), [Parkreglement](https://www.futuroscope.com/en/parks-rules)                              |
 
 “Niet geregeld” betekent dat de huisregels eigen eten niet verbieden en ook niet uitdrukkelijk toestaan.
 
@@ -245,20 +244,17 @@ Wil je het park even verlaten, meld je dan eerst bij de uitgangscontrole en laat
 ### Disneyland Paris
 
 [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park) staat eigen eten toe. Maaltijden
-waarvoor je een koelbox, een tafel of omvangrijke bakken nodig hebt, zijn in Disneyland Park en Disney Adventure World
-verboden. Voor zo’n picknick is er een picknickplek tussen de parkeerplaats en de ingang.
+waarvoor je een koelbox, een tafel of omvangrijke bakken nodig hebt, zijn in Disneyland Park en Disney Adventure World (tot 29 maart 2026 Walt Disney Studios Park) verboden. Voor zo’n picknick is er een picknickplek tussen de parkeerplaats en de ingang.
 
 Glazen flessen en alcohol staan op de lijst van voorwerpen die buiten blijven. Aan de buitentafels van de restaurants mag
 je gaan zitten, maar gasten die daar iets hebben gekocht gaan voor. In attracties, theaters en wachtrijen vraagt het park
 om niet te eten en te drinken.
 
-Tot 29 maart 2026 heette Disney Adventure World Walt Disney Studios Park.
-
 ### Futuroscope
 
 In [Futuroscope](ref:futuroscope) mag je volgens de FAQ op alle grasvelden picknicken.
 
-Harde koelboxen zijn verboden, omvangrijke tassen laat je beter buiten en bij de ingang worden tassen gecontroleerd. Omdat je het park in de loop van de dag mag verlaten en weer binnengaan, kan de koelbox in de auto blijven.
+Harde koelboxen en glas zijn verboden, net als alcohol die je niet in het park hebt gekocht. Omvangrijke tassen laat je beter buiten en bij de ingang worden tassen gecontroleerd. Omdat je het park in de loop van de dag mag verlaten en weer binnengaan, kan de koelbox in de auto blijven.
 
 Eten en drinken krijg je in de restaurants op herbruikbaar servies. Elk restaurant heeft een kindermenu en vegetarische en glutenvrije gerechten. Maaltijdcheques zoals Ticket Restaurant of Chèque déjeuner neemt Futuroscope niet aan.
 
@@ -301,9 +297,7 @@ de horecazones. Wie de Aquascope verlaat, komt er niet meer in, ook niet na een 
 
 Boterhammen, fruit en snacks gaan in een rugzak of een zachte koeltas. Een koelbox is in Parc Astérix en Disneyland Paris
 verboden, in Futuroscope geldt dat voor een harde. Walibi Belgium laat alleen tassen tot 55 × 40 × 20 cm binnen. Voor
-drinken neem je een fles van plastic of metaal mee, want glas is in vijf van de vijftien parken verboden, en ook in Rulantica.
-
-Elk park dat iets zegt over eten in wachtrijen of attracties, verbiedt het daar.
+drinken neem je een fles van plastic of metaal mee, want glas is in zes van de vijftien parken verboden, en ook in Rulantica.
 
 ## Veelgestelde vragen
 
@@ -316,7 +310,7 @@ Phantasialand, Hansa-Park, Legoland Deutschland en Movie Park staat er niets ove
 
 ### Mag je glazen flessen meenemen naar een pretpark?
 
-Niet in Heide Park, Hansa-Park, Walibi Holland, Parc Astérix, Disneyland Paris en de waterwereld Rulantica van
+Niet in Heide Park, Hansa-Park, Walibi Holland, Parc Astérix, Disneyland Paris, Futuroscope en de waterwereld Rulantica van
 Europa-Park, en ook niet tijdens het Halloween Horror Festival in Movie Park. De andere parken noemen glas niet in hun
 regels. Een drinkfles van plastic of metaal is in geen van de vijftien parken verboden.
 
@@ -340,7 +334,7 @@ picknicken.
 ### Mag je alcohol meenemen naar een pretpark?
 
 Meestal niet. Phantasialand, Hansa-Park, Movie Park, Plopsaland Deutschland, Walibi Holland, Walibi Belgium en Disneyland
-Paris verbieden het. Parc Astérix verbiedt alcohol die het park niet zelf heeft verkocht, Europa-Park grote hoeveelheden
+Paris verbieden het. Parc Astérix en Futuroscope verbieden alcohol die ze niet zelf hebben verkocht, Europa-Park grote hoeveelheden
 en sterke drank. In Phantasialand geldt het verbod ook voor ongeopende flessen en blikjes.
 
 ### Mag je in een pretpark barbecueën?
@@ -389,6 +383,7 @@ Tussen € 1 voor een klein kluisje in Europa-Park en € 8 voor een groot kluis
 - Disneyland Paris, Bringing your own food: [disneylandparis.com](https://www.disneylandparis.com/en-usd/faq/dining/outside-food-beverages)
 - Disneyland Paris, Theme Parks Rules: [disneylandparis.com](https://www.disneylandparis.com/en-usd/legal/theme-parks-rules)
 - Futuroscope, FAQ Restauration: [futuroscope.com](https://www.futuroscope.com/en/practical-information/faq/category-3)
+- Futuroscope, Parkreglement: [futuroscope.com](https://www.futuroscope.com/en/parks-rules)
 - Futuroscope, Règlement de l’Aquascope van 24 december 2025: [collectivites.futuroscope.com](https://collectivites.futuroscope.com/sites/default/files/inline-files/Reglement_Aquascope_24-12-25.pdf)
 - Phantasialand, Information and arrival: [phantasialand.de](https://www.phantasialand.de/en/theme-park/information-and-arrival/)
 - Phantasialand, menukaart Restaurant Uhrwerk: [phantasialand.de](https://www.phantasialand.de/files/uploads/kulinarik/documents/speisekarten/speisekarte-restaurant-uhrwerk-mittagsbote-de.pdf)

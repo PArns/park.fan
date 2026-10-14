@@ -92,7 +92,7 @@ Bei jedem Park, dessen Seite wir lesen konnten, gilt:
 
 ## Wie viele Plätze in einer Reihe nebeneinander liegen
 
-Ob im Zug ein Platz frei bleibt, hängt davon ab, wie viele Gäste nebeneinander sitzen. Bei zwei
+Bei zwei
 Plätzen je Reihe belegt eine Dreiergruppe eine Reihe ganz und von der nächsten einen Platz. Bei
 Baron 1898 sitzen sechs Gäste in einer Reihe, dort lässt eine Vierergruppe in ihrer Reihe zwei Plätze
 leer. Die Angaben zu den Achterbahnen mit Single Rider im Europa-Park, im Efteling und im
@@ -186,8 +186,7 @@ An blue fire, WODAN, dem Voletarium und Voltron Nevera gibt es zusätzlich die V
 Dort reservierst du in der App ein Zeitfenster und verbringst die Zeit bis dahin anderswo im Park.
 
 Alle sechs Bahnen haben eine Mindestgröße von 120 oder 130 Zentimetern, nach den Angaben in unserer
-Datenbank. Der Single-Rider-Eingang hilft also vor allem Jugendlichen und Erwachsenen, die allein oder
-in einer Gruppe ohne kleine Kinder unterwegs sind.
+Datenbank.
 
 ```ride-waits-widget rides=europa-park/voltron-nevera-powered-by-rimac|Voltron Nevera;europa-park/blue-fire-megacoaster|blue fire;europa-park/wodan-timburcoaster|WODAN;europa-park/eurosat-cancan-coaster|Eurosat;europa-park/voletarium|Voletarium;europa-park/arthur|ARTHUR columns=land,peak
 
@@ -199,8 +198,7 @@ in einer Gruppe ohne kleine Kinder unterwegs sind.
 
 ## Efteling
 
-Vom [Efteling](ref:efteling) stammt die vollständigste offizielle Beschreibung, die wir gefunden haben. Die Seite zum
-Single-Rider-Eingang führt unter „Attraktionen mit Single-Rider-Eingang“ sechs Bahnen: Danse Macabre,
+Die Seite des [Efteling](ref:efteling) zum Single-Rider-Eingang führt unter „Attraktionen mit Single-Rider-Eingang“ sechs Bahnen: Danse Macabre,
 Joris en de Draak, Symbolica, Baron 1898, Max & Moritz und Python. Jede hat zwei Warteschlangen, eine für Gruppen und Familien, eine
 für Einzelne, dazu einen Eingang für Besucher mit Behinderung, meist nahe am Ausgang. In den Antworten
 weiter oben auf derselben Seite fehlt Baron 1898. In der normalen
@@ -353,7 +351,7 @@ Prüfe, ob die Warteschlange offen ist, bevor du dich trennst. Auf der Attraktio
 Zeichen „Single Rider“ mit dem Status der Warteschlange. Sie kann geschlossen sein, ohne dass die
 Bahn zu ist.
 
-Teilt euch auf, wenn es sich lohnt. Für zwei Erwachsene ist die schnellste Variante, dass einer die
+Für zwei Erwachsene ist die schnellste Variante, dass einer die
 normale Warteschlange nimmt und der andere den Single-Rider-Eingang. Wer zuerst fährt, wartet am
 Ausgang.
 
@@ -377,8 +375,7 @@ sitzen, der Single-Rider-Eingang scheidet dann aus.
 
 ### Welche Bahnen im Europa-Park haben Single Rider?
 
-Sechs: ARTHUR, WODAN, blue fire, Eurosat, das Voletarium und Voltron Nevera. Der
-Park zählt alle sechs auf seiner Seite mit Tipps für den Besuch auf.
+Sechs: ARTHUR, WODAN, blue fire, Eurosat, das Voletarium und Voltron Nevera.
 
 ### Welche Bahnen im Efteling haben Single Rider?
 

@@ -60,10 +60,9 @@ seven coasters are the reason to come: Superman, there since the opening in
 ## How the park came about
 
 Madrid wanted a park like the one Disney built in Paris. Disney had looked at
-Spain beforehand and picked Paris, and the region got Warner instead. The
-contract went to **Six Flags**, which Time Warner had sold to the investment firm Boston
-Ventures in 1995. Subsidiaries of Paramount and Time Warner had both bid to run the
-planned Ciudad del Ocio. The agreement
+Spain beforehand and picked Paris. Subsidiaries of Paramount and Time Warner had both bid to run the planned Ciudad del Ocio.
+The contract went to **Six Flags**, which Time Warner had sold to the investment firm
+Boston Ventures in 1995. The agreement
 with the Comunidad de Madrid was signed in **January 1999**, construction began
 in spring 1999, and the Spanish Wikipedia puts the total cost at **368 million
 euros**.
@@ -260,8 +259,7 @@ from 110 cm the Rápidos ACME. On most of these rides, children between 100 and
 ## Which ride for whom
 
 If you only ride one big coaster, take Superman, whose queue sits in the middle
-of the park’s range. The most intense ride is Stunt Fall, at 4.5 g. Batman is the
-most modern coaster.
+of the park’s range. The most intense ride is Stunt Fall, at 4.5 g.
 
 Shadows of Arkham is compact at 823 metres, and you rarely queue there.
 
@@ -298,10 +296,8 @@ hardly drops afterwards, only between 3 and 6pm is it a little shorter. On the
 other big coasters it climbs until early afternoon and then stays flat. Rápidos
 ACME and Río Bravo peak in the afternoon, when it’s warm.
 
-Rope drop only pays off in this park for one ride. At the Rápidos ACME the queue
-is short at opening and grows several times over by the afternoon. We recommend
-riding them in the first 90 minutes after opening (as of 8 October 2026). At
-Batman it is already long at opening, so we don’t recommend an early visit there.
+Rope drop only pays off in this park at the Rápidos ACME, where the queue is short at opening and grows several times over by the afternoon. We recommend
+riding them in the first 90 minutes after opening (as of 8 October 2026). At Batman we don’t recommend an early visit.
 
 ```best-days-widget slug=parque-warner-madrid
 
@@ -326,8 +322,7 @@ access. The One-Pass (€8) covers a single ride on one chosen coaster.
 
 If you’re coming mainly for Batman, I’d buy the One-Pass or Gold. Silver saves a
 little time at Superman, Venganza del Enigma and Coaster Express, but those are
-exactly the places where the queues are short anyway, and the pass skips the
-one long queue in the park. If you’d rather save the pass money, ride Batman
+exactly the places where the queues are short anyway. If you’d rather save the pass money, ride Batman
 around 4pm, when the queue is a few minutes shorter than usual.
 
 ## When to go
@@ -362,8 +357,7 @@ Warner Beach and the Scary Nights. More on other parks in the rain is in the
 
 ### Halloween until 2 November
 
-The Halloween season runs from **26 September to 2 November 2026**; the dates of
-other parks in Europe are in the [Halloween guide 2026](/blog/halloween-theme-parks-2026). During the
+The Halloween season runs from **26 September to 2 November 2026**. During the
 day there’s decoration, parades and the new family attraction ACME Factory,
 where you repair a factory with the Coyote. On top of that come four Pasajes del
 Terror (La Monja, Crime Alley: Night of Chaos, IT Experience, Expedientes
@@ -397,11 +391,10 @@ Wikipedia counts around 20 food outlets. The All Inclusive menu costs €63 onli
 for adults and €55 for children, the Express menu €12.90. The restaurants open
 at 1pm, and the peak is between 2 and 3:30pm.
 
-The **Bono Parques** are the annual passes of the Parques Reunidos group, valid
+The **Bono Parques** are the [annual passes](/blog/theme-park-annual-pass-comparison) of the Parques Reunidos group, valid
 until the end of 2027. The Bono Oro costs €219, with parking €294, and is valid
 in twelve parks. The Bono Platino (€329) is valid in 27. The Oro also gives 50
-percent off at Parque Warner Beach. The [annual pass comparison](/blog/theme-park-annual-pass-comparison) sets them
-against other annual passes.
+percent off at Parque Warner Beach.
 
 ## Services in the park
 
@@ -501,7 +494,8 @@ deposit, in two sizes and in limited numbers.
 
 ```
 
-[PortAventura](/blog/portaventura-halloween-2026) celebrates Halloween too. The
+[PortAventura](/blog/portaventura-halloween-2026) celebrates Halloween too, and the
+dates of other parks in Europe are in the [Halloween guide 2026](/blog/halloween-theme-parks-2026). The
 wait times of Parque Warner, PortAventura and Parque de Atracciones de Madrid
 compared:
 

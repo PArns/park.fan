@@ -59,8 +59,7 @@ seit 2023. Außer an Batman steht man im Park meist kurz an.
 ## Wie der Park entstand
 
 Madrid wollte einen Park, wie Disney ihn in Paris gebaut hat. Disney hatte
-Spanien zuvor geprüft und sich für Paris entschieden, und die Region bekam
-Warner. Um den Betrieb der geplanten Ciudad del Ocio hatten sich Tochterfirmen von
+Spanien zuvor geprüft und sich für Paris entschieden. Um den Betrieb der geplanten Ciudad del Ocio hatten sich Tochterfirmen von
 Paramount und Time Warner beworben. Den Zuschlag erhielt **Six Flags**, das Time Warner
 1995 an die Investmentfirma Boston Ventures verkauft hatte.
 Die Vereinbarung mit der Comunidad de Madrid wurde im **Januar 1999**
@@ -70,7 +69,7 @@ die spanische Wikipedia auf **368 Millionen Euro**.
 Auf dem Gelände lag ein Gipsvorkommen, aus dem 90 Prozent des Gipses der Region kamen.
 Die Gipsfirmen verlangten 10.000 Millionen Peseten Entschädigung, bei einem
 veranschlagten Budget von rund 30.000 Millionen, und einigten sich vor Gericht mit der
-Comunidad. Sie kaufte 150 Hektar für 8 Millionen Euro, zahlte weitere 28 Millionen
+Comunidad. Die Comunidad kaufte 150 Hektar für 8 Millionen Euro, zahlte weitere 28 Millionen
 für den zweibahnigen Ausbau der M-506 auf 8 Kilometern und trug von den Baukosten
 160 Millionen Euro selbst.
 
@@ -257,8 +256,7 @@ Achterbahnen, Río Bravo, der Mr.-Freeze-Stuhl und das Hotel Embrujado dazu, ab
 ## Welche Bahn für wen
 
 Wer nur eine große Bahn fährt, nimmt Superman, deren Warteschlange im Mittelfeld
-des Parks liegt. Die intensivste Fahrt ist Stunt Fall mit 4,5 g. Batman ist die
-modernste Bahn.
+des Parks liegt. Die intensivste Fahrt ist Stunt Fall mit 4,5 g.
 
 Shadows of Arkham ist mit 823 Metern kompakt, und man steht dort selten an.
 
@@ -296,10 +294,9 @@ und sie sinkt danach kaum, nur zwischen 15 und 18 Uhr ist sie ein wenig kürzer.
 Bei den anderen großen Bahnen steigt sie bis zum frühen Nachmittag und bleibt dann
 flach. Rápidos ACME und Río Bravo haben ihr Maximum am Nachmittag, wenn es warm ist.
 
-Rope Drop lohnt sich in diesem Park nur bei einer Bahn. Bei den Rápidos ACME ist die
+Rope Drop lohnt sich in diesem Park nur bei den Rápidos ACME. Dort ist die
 Warteschlange zur Öffnung kurz und wächst bis zum Nachmittag auf ein Vielfaches.
-Wir empfehlen, sie in den ersten 90 Minuten nach der Öffnung zu fahren (Stand 8. Oktober 2026). Bei Batman ist sie schon zur Öffnung lang, einen frühen Besuch
-empfehlen wir dort nicht.
+Wir empfehlen, sie in den ersten 90 Minuten nach der Öffnung zu fahren (Stand 8. Oktober 2026). Bei Batman empfehlen wir keinen frühen Besuch.
 
 ```best-days-widget slug=parque-warner-madrid
 
@@ -324,7 +321,7 @@ sofortigem Zugang. Der One-Pass (8 €) gilt für eine einzige Fahrt auf einer
 gewählten Bahn.
 
 Wer vor allem wegen Batman kommt, kauft meiner Meinung nach den One-Pass oder Gold. Silber spart bei Superman, Venganza del Enigma und Coaster Express etwas Zeit, aber genau dort sind die
-Warteschlangen ohnehin kurz, und der Pass lässt die einzige lange Warteschlange des Parks aus.
+Warteschlangen ohnehin kurz.
 Wer sich den Pass sparen will, fährt Batman gegen 16 Uhr, wenn die Warteschlange
 ein paar Minuten kürzer ist als sonst.
 
@@ -359,8 +356,7 @@ steht im [Regen-Guide](/blog/freizeitpark-bei-regen).
 
 ### Halloween bis 2. November
 
-Die Halloween-Saison läuft vom **26. September bis zum 2. November 2026**, die
-Termine anderer Parks in Europa stehen im [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
+Die Halloween-Saison läuft vom **26. September bis zum 2. November 2026**.
 Tagsüber gibt es Dekoration, Paraden und die neue Familienattraktion ACME Factory,
 in der man mit dem Coyote eine Fabrik repariert. Dazu kommen vier Pasajes del
 Terror (La Monja, Crime Alley: Night of Chaos, IT Experience, Expedientes Warren)
@@ -393,10 +389,10 @@ Wikipedia zählt rund 20 Gastronomiebetriebe. Das Menü All Inclusive kostet onl
 63 € für Erwachsene und 55 € für Kinder, das Express-Menü 12,90 €. Die
 Restaurants öffnen um 13 Uhr, die Spitze liegt zwischen 14 und 15:30 Uhr.
 
-Die **Bono Parques** sind die Jahreskarten der Parques-Reunidos-Gruppe, gültig bis
+Die **Bono Parques** sind die [Jahreskarten](/blog/jahreskarte-vergleich-freizeitparks) der Parques-Reunidos-Gruppe, gültig bis
 Ende 2027. Der Bono Oro kostet 219 €, mit Parkplatz 294 €, und gilt in zwölf
 Parks. Der Bono Platino (329 €) gilt in 27. Der Oro gibt außerdem 50 Prozent Nachlass
-im Parque Warner Beach. Der [Jahreskartenvergleich](/blog/jahreskarte-vergleich-freizeitparks) stellt sie neben andere Jahreskarten.
+im Parque Warner Beach.
 
 ## Service im Park
 
@@ -496,7 +492,8 @@ gegen Pfand, in zwei Größen und in begrenzter Zahl.
 
 ```
 
-Auch [PortAventura](/blog/portaventura-halloween-2026) feiert Halloween. Die Wartezeiten von Parque Warner, PortAventura und Parque de Atracciones de Madrid im Vergleich:
+Auch [PortAventura](/blog/portaventura-halloween-2026) feiert Halloween, die Termine anderer Parks in Europa stehen im
+[Halloween-Guide 2026](/blog/halloween-freizeitparks-2026). Die Wartezeiten von Parque Warner, PortAventura und Parque de Atracciones de Madrid im Vergleich:
 
 ```park-comparison-widget slugs=parque-warner-madrid,portaventura-park,parque-de-atracciones-de-madrid highlight=parque-warner-madrid
 

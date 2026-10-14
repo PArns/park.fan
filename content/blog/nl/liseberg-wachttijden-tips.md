@@ -92,7 +92,7 @@ toen werd in **1987** gesloopt en vervangen door de
 [Lisebergbanan](ref:liseberg/lisebergbanan), die Anton Schwarzkopf voor
 dezelfde berg had ontworpen.
 
-Zes achtbanen heeft Liseberg weer afgebroken, de Kanonen meegerekend. De
+De
 bergbaan van 1923 was gebouwd door Valdemar Lebech. De **Super 8**, een Wildcat van
 Schwarzkopf, reed van 1966 tot 1979 en verhuisde daarna naar een park in Karlstad.
 Van 1980 tot 1995 reed de **Lisebergs Loopen**, een Looping Star van Schwarzkopf
@@ -105,16 +105,15 @@ kinderachtbaan **Cirkusexpressen** van Zierer reed van 1977 tot 2008, tot 1985
 onder de naam Lilla Bergbanan.
 
 Sinds **2000** is Liseberg ook in de winter open (“Jul på Liseberg”), in het
-eerste jaar kwamen er 418.000 gasten. In **2015** volgde Halloween. In **2020** bleef het park vanwege de pandemie het hele seizoen dicht, voor het
-eerst sinds de oprichting. In 2023 werd het 100 jaar.
+eerste jaar kwamen er 418.000 gasten. In **2020** bleef het park vanwege de pandemie het hele seizoen dicht, voor het
+eerst sinds de oprichting.
 
 In 1936 kwamen er meer dan een miljoen gasten, in 1954 ruim 1,7 miljoen en in 1979 1,8 miljoen. In 2003,
 het jaar van Balder, meldde het park met 3,4 miljoen gasten in zomer en kerst
 zijn record. In 2021, het eerste jaar na de pandemie, waren het er 1,5 miljoen,
 in 2023 volgens de Zweedse Wikipedia 2,2 miljoen. De tot dan toe duurste
 investering was **Spaceport Liseberg**: in 1990 opende het park een
-simulatorbioscoop en de uitkijktoren, voor 110 miljoen kronen. Van die
-uitkijktoren werd later AtmosFear gemaakt.
+simulatorbioscoop en de uitkijktoren, voor 110 miljoen kronen.
 
 ## Balder: de houten achtbaan
 
@@ -135,9 +134,7 @@ staat aan de andere kant van de rivier de Mölndalsån, net als de Kållerado.
 
 ```
 
-De
-Roller Coaster DataBase noemt voor de baan een capaciteit van zo’n 1.149 gasten
-per uur.
+Balder vervoert zo’n 1.149 gasten per uur.
 
 [Balder](ref:liseberg/balder?full)
 
@@ -246,9 +243,7 @@ In Kaninlandet (geopend in 2013) staan zeven attracties voor de kleintjes,
 plus de twee banen van hierboven en een speeltuin. Dat is ook het enige deel dat
 in het najaar en de winter op aparte dagen opengaat.
 
-De JukeBox vraagt 110 cm, en voor de spookhuizen geldt een minimumleeftijd:
-elf jaar voor Vinden, Zombie, Nattsvart på Gasten en Skogen, **15 jaar** voor
-“7”.
+De JukeBox vraagt 110 cm.
 
 ```map-widget slug=liseberg
 
@@ -330,8 +325,7 @@ De zomer is de drukke tijd, juli en augustus staan bovenaan, mei en juni iets
 daaronder. Van januari tot maart is het rustig, omdat alleen Kaninlandet in het
 weekend open is en er bijna niets wordt gemeten. Op dinsdag is het het drukst,
 op zondag het rustigst, en de zondag heeft met 40 gemeten dagen meer dan drie
-keer zoveel als de maandag of dinsdag. In het najaar sluit het park op zondag
-om 20 uur, op vrijdag en zaterdag om 22 uur.
+keer zoveel als de maandag of dinsdag.
 
 Het zomerseizoen 2026 begon op **18 april** om 11 uur. Wanneer het eindigt,
 zegt het park niet.
@@ -365,19 +359,18 @@ alleen Kaninlandet open, van 11 tot 17 uur, op 26 en 27 september, op 30
 september en 1 oktober en op 14 en 15 oktober.
 
 Halloween 2025 bracht volgens het park zo’n **330.000 gasten** op 16
-openingsdagen. De data van andere parken staan in de
-[halloweengids 2026](/blog/halloween-pretparken-2026).
+openingsdagen.
 
 ### Jul på Liseberg: half november tot eind december
 
 De eerste Julmarknad was op 7 december 1974, op twee weekenden, in 1975 nog
-eens, en daarna 25 jaar niet. Sinds het jaar 2000 is Liseberg elke winter open.
+eens, en daarna 25 jaar niet.
 Het park noemt zich “Sveriges största julmarknad”, de grootste kerstmarkt van
 Zweden. In 2025 was het 25-jarig jubileum, met 2.100 bomen, zeven ton
 kunstsneeuw, vijf miljoen lichtjes en een boom van 116 meter hoog, volgens het
 bericht van het park van 6 november 2025.
 
-De openingsdagen in 2026, zoals de park-API ze levert: in november de 14e en
+De openingsdagen in 2026: in november de 14e en
 15e, 20 tot 22 en 27 tot 29, in december 2 tot 6, 9 tot 13 en 16 tot 23 (vanaf
 de 20e dagelijks) en 26 tot 30 december. Op vrijdag is het open van 15 tot 22
 uur, op zaterdag van 12 tot 22 uur, op zondag van 12 tot 20 uur. Op 24 en 25
@@ -451,8 +444,7 @@ op ongeveer 13.600 vierkante meter. Het zou in 2024 opengaan. Op 12 februari
 2024 brandde het bouwwerk af. Sinds juli 2024 staat vast dat het park het
 herbouwt. Volgens Liseberg kost de herbouw “drygt 1 miljard kronor” (ruim een
 miljard kronen), de opening is gepland voor “i början av 2027” (begin 2027), en
-tickets moeten er vanaf eind november 2026 zijn. Meer daarover in het artikel
-[Nieuwe attracties in pretparken 2027](/blog/nieuwe-attracties-pretparken-2027).
+tickets moeten er vanaf eind november 2026 zijn.
 
 Volgens het park heeft Oceana zo’n 6.000 vierkante meter binnenbaden en 4.000
 vierkante meter buitenruimte. Het bad hoort bij het project dat in 2017 werd

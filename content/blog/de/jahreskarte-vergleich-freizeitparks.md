@@ -48,11 +48,9 @@ parkLinks:
   - phantasialand
 ---
 
-Wie viele Besuche eine Jahreskarte braucht, bis sie sich lohnt, ist Jahreskartenpreis geteilt durch Tageskartenpreis, aufgerundet. An den Sperrtagen gilt die Karte nicht.
-
 Das [Efteling](ref:efteling) in den Niederlanden, der [Europa-Park](ref:europa-park) in Rust und das [Toverland](ref:attractiepark-toverland) in Sevenum verkaufen eine Jahreskarte, das [Phantasialand](ref:phantasialand) in Brühl nicht.
 
-Alle Preise stammen von den Seiten der Parks, die am Ende verlinkt sind, Stand 6. Oktober 2026. Unter jedem Park zeigt ein Widget nach unseren Wartezeiten die ruhigen Tage.
+Alle Preise stammen von den Seiten der Parks, die am Ende verlinkt sind, Stand 6. Oktober 2026.
 
 ## Die vier Parks auf einen Blick
 
@@ -79,14 +77,14 @@ Jeder der drei Parks mit Jahreskarte verkauft eine Parkberechtigung oder gibt Ra
 
 Nicht eingerechnet habe ich den Rabatt auf Essen und Souvenirs, weil er davon abhängt, was du dort kaufst, und die Besuche, die du ohne Karte nicht gemacht hättest.
 
-Alle Karten sind personengebunden. Beim Toverland steht das in den Bedingungen ausdrücklich: Pro Person gibt es eine Karte, und sie ist nicht übertragbar.
+Alle Karten sind personengebunden.
 
 ## Die drei Jahreskarten im Efteling
 
 Das Efteling verkauft seit dem 11. Juni 2024 drei Jahreskarten, die sich nach der Zahl der Tage
 unterscheiden, an denen sie gelten. Eine Ermäßigung für Besucher ab 65 gibt es seither nicht mehr, bestehende 65+-Karten liefen bis zum Ende ihrer Mindestlaufzeit weiter.
 
-Das Efteling hat 2023 die Inhaber befragt, und nach Angaben des Parks waren die meisten sehr zufrieden, wollten aber mehr Wahl. Vom 15. April bis zum 10. Juni 2024 verkaufte der Park keine neuen Karten, nur Verlängerungen. In den Niederlanden war die Zahl der Abonnenten schon 2023 deutlich gestiegen, schreibt das Efteling in seiner Jahresbilanz.
+Das Efteling hat 2023 die Inhaber befragt, und nach Angaben des Parks wollten die meisten mehr Wahl. Vom 15. April bis zum 10. Juni 2024 verkaufte der Park keine neuen Karten, nur Verlängerungen. In den Niederlanden war die Zahl der Abonnenten 2023 gestiegen, schreibt das Efteling in seiner Jahresbilanz.
 
 | Stufe   | Jahrespreis | Monatlich | Zugang              | Rabatt aufs Parken | Essen, Getränke, Souvenirs | Freundestickets zum halben Preis |
 | ------- | ----------- | --------- | ------------------- | ------------------ | -------------------------- | -------------------------------- |
@@ -178,7 +176,7 @@ Die Tageskarte kostet für Erwachsene 67 bis 76 €, für Kinder und Senioren 56
 | Silber | 5 Besuche       | 5 Besuche           | 5 Besuche (1.200 € gegen 247 bis 282 € pro Tag)       |
 | Gold   | 7 bis 8 Besuche | 7 bis 8 Besuche     | 7 bis 8 Besuche (1.850 € gegen 247 bis 282 € pro Tag) |
 
-Bei Silber ist der Break-even an beiden Enden der Preisspanne derselbe, nämlich fünf Besuche. Du musst also fünfmal an Tagen kommen, die Silber abdeckt. Welche das sind, steht im ResortPass-Portal. Die Preisseite nennt nur ihre Zahl, über 230. Die Saison 2026 läuft vom 28. März 2026 bis zum 9. Januar 2027, das sind 288 Kalendertage, abzüglich der zwei Ruhetage an Weihnachten. Silber lässt also einen Teil der Öffnungstage aus, und welche, legt der Park fest.
+Die fünf Besuche müssen auf Tage fallen, die Silber abdeckt. Welche das sind, steht im ResortPass-Portal. Die Preisseite nennt nur ihre Zahl, über 230. Die Saison 2026 läuft vom 28. März 2026 bis zum 9. Januar 2027, das sind 288 Kalendertage, abzüglich der zwei Ruhetage an Weihnachten.
 
 Gold kostet 170 € mehr, bei Kindern 155 €. Das sind gut zwei zusätzliche Tageskarten für Erwachsene zum
 Höchstpreis. Dafür gilt Gold an jedem Öffnungstag, und die zwei Rulantica-Tickets sind dabei. Das
@@ -191,7 +189,7 @@ zwei bis vier Tage im Jahr kommt, bleibt bei der Tageskarte.
 
 Vom 7. bis 19. März 2027 hat der Park die Pre-Opening Weeks angekündigt, zwei Wochen vor dem Saisonstart. Auf der ResortPass-Seite nennt der Park für sie die günstigsten Tickets des Jahres. Die Tagesreservierung dafür läuft über das ResortPass-Portal. Das ist der erste Termin, an dem du eine neue Karte nutzen könntest.
 
-Am leersten ist der Europa-Park nach [unseren Messungen](/blog/europa-park-wartezeiten-tipps) an einem
+Am leersten ist der Europa-Park an einem
 Sonntag oder Donnerstag im Mai oder Juni, am vollsten am Samstag.
 
 ```best-days-widget slug=europa-park
@@ -252,7 +250,7 @@ Jahresparken hat sich nach vier Besuchen mit dem Auto bezahlt gemacht.
 90 bis 140 cm, unbegrenzte Besuche vom 1. Juli bis 30. September. Ob es ihn 2027 wieder gibt, hat der
 Park nicht gesagt. Wer nur im Sommer kommt, zahlt damit 81 € weniger als für die Jahreskarte.
 
-Nach [unseren Messungen](/blog/toverland-troy-wartezeiten-tipps) unterscheiden sich die Wochentage im Toverland kaum, in den Weihnachtsferien ist es voller.
+Im Toverland unterscheiden sich die Wochentage kaum, in den Weihnachtsferien ist es voller.
 
 ```best-days-widget slug=attractiepark-toverland
 
@@ -262,8 +260,7 @@ Nach [unseren Messungen](/blog/toverland-troy-wartezeiten-tipps) unterscheiden s
 
 Das Phantasialand hat seine Club-Karte in der Pandemie aus dem Verkauf genommen, die letzten Karten liefen im
 Sommer 2022 aus. In den häufigen Fragen des Ticketshops kommt weder eine Jahreskarte noch eine
-Club-Karte vor, und Tickets gibt es nur mit Datum und nur online. Warum das so geblieben ist und was die
-Fans dagegen unternommen haben, steht in unserem [Guide zum Phantasialand](/blog/phantasialand-tipps).
+Club-Karte vor, und Tickets gibt es nur mit Datum und nur online.
 
 Im Oktoberkalender des Ticketshops kostet ein Ticket für Erwachsene ab 12 Jahren zwischen 44 und 78 €. Der Abstand zwischen dem günstigsten und dem teuersten Tag beträgt 34 €, das sind 77 % Aufpreis auf den billigen Tag. Drei Besuche im Jahr kosten zwischen 132 und 234 €. Im Phantasialand ist der Samstag spürbar voller als der Dienstag.
 
@@ -272,8 +269,6 @@ Im Oktoberkalender des Ticketshops kostet ein Ticket für Erwachsene ab 12 Jahre
 ```
 
 ## Sperrtage gegen volle Tage
-
-Ob Silber samstags gilt, legt der Europa-Park im Portal fest.
 
 ```park-comparison-widget slugs=efteling,europa-park,attractiepark-toverland,phantasialand show=quietest
 
@@ -286,7 +281,7 @@ Wer unter der Woche kommen kann, kommt mit der Classic im Efteling und dem Magic
 Im Efteling reicht die Classic, wenn du außerhalb der Ferien kommen kannst und mindestens sechsmal im
 Jahr im Park bist. Wer zwischen Mitte Oktober und Anfang November hinwill, braucht die Plus. Zwischen
 Weihnachten und Neujahr ist auch die Plus gesperrt, dann bleibt nur die Premium. Sie lohnt sich erst ab
-acht bis zehn Besuchen. Unter vier Besuchen lohnt sich keine der drei Stufen.
+acht bis zehn Besuchen.
 
 ## Wann du kaufst
 

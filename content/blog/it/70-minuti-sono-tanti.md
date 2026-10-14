@@ -6,9 +6,7 @@ updatedAt: '2026-10-05'
 author: patrick
 mode: published
 excerpt: >-
-  Il numero all’ingresso di Taron, da solo, vale quanto una temperatura senza
-  la stagione. Diventa una risposta solo accanto a ogni martedì misurato. Perché park.fan non butta via niente, cosa succede di notte e
-  perché ad agosto non consigliamo più di pattinare.
+  Il numero all’ingresso di Taron diventa una risposta solo accanto a ogni martedì misurato.
 tags:
   - tempi-di-attesa
   - park-fan
@@ -26,13 +24,12 @@ rideLinks:
 coverImage:
   src: /media/phantasialand/taron.jpg
   alt: 'Un treno di Taron tra le rocce di basalto di Klugheim'
-  caption: 'Taron a Klugheim. Il numero all’ingresso segna 70. E adesso?'
+  caption: 'Taron a Klugheim.'
   credit: 'Patrick Arns'
 seo:
   title: 'Leggere bene un tempo di attesa: 70 minuti sono tanti?'
   description: >-
-    Un tempo di attesa senza confronto è come una temperatura senza la stagione.
-    Cosa vogliono dire «tipico» e «pieno» e come park.fan ne ricava una risposta.
+    Un tempo di attesa senza confronto è come una temperatura senza stagione. «Tipico» è la mediana dei picchi giornalieri, «pieno» il 90° percentile.
   keywords:
     - tempi di attesa parco divertimenti
     - come leggere i tempi di attesa
@@ -54,7 +51,7 @@ richiesta ogni cinque minuti. Però sta da solo, come una temperatura senza la
 stagione. Settanta minuti di un martedì di maggio sono una cosa completamente
 diversa da 70 minuti di un sabato delle vacanze estive.
 
-## Cosa vogliono dire davvero «tipico» e «pieno»
+## Cosa vogliono dire «tipico» e «pieno»
 
 park.fan mette accanto a ogni grande attrazione di un parco due valori di
 confronto, calcolati sugli ultimi 365 giorni. **Tipico** è la mediana dei picchi
@@ -70,20 +67,17 @@ n’è sentito nulla. La mediana davanti a una giornata così non batte ciglio. 
 questo il record sta a parte, con la data, così lo si vede senza che tocchi gli
 altri due numeri.
 
-Per il [Phantasialand](ref:phantasialand) la classifica è questa. La colonna
-più importante è quella dei giorni misurati, perché più giorni ha una riga,
+Nella classifica del [Phantasialand](ref:phantasialand) la colonna più importante è quella dei giorni misurati, perché più giorni ha una riga,
 più quella riga pesa.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
 
 ```
 
-Queste tabelle sono in tempo reale. Se rileggi questo articolo tra tre mesi, in
-tabella ci saranno altri numeri, e il testo attorno starà ancora in piedi. Per
+Queste tabelle sono in tempo reale. Per
 questo esistono questi widget. In quattro articoli più vecchi i
 numeri erano digitati a mano in tabelle Markdown, distribuiti su sei lingue, e
-dopo qualche settimana si erano allontanati in silenzio, come gli orologi di una
-casa vacanze.
+dopo qualche settimana si erano allontanati in silenzio.
 
 ## Gli stessi 70 minuti di sabato e di martedì
 
@@ -95,35 +89,28 @@ questa attrazione. Di martedì stanno ben al di sopra di quello che lì è norma
 Poi ci sono i mesi, che spostano il numero ancora una volta. Calcolati sull’intero parco e non sulla
 sola Taron, i mesi pieni sono luglio e agosto, e dicembre, nei pochi giorni in cui lo abbiamo
 misurato, era più o meno allo stesso livello. Settembre è il mese più tranquillo che abbiamo
-misurato. Di ottobre per ora abbiamo solo qualche giorno, perché la nostra serie è partita a
-dicembre 2025 e l’ottobre 2026 è appena cominciato.
+misurato. Di ottobre per ora abbiamo solo qualche giorno.
 
 ```stats-widget slug=phantasialand show=months
 
 ```
 
-All’ingresso non c’è niente di tutto questo, c’è solo quel numero. Sulla pagina dell’attrazione
-trovi entrambi i valori per oggi e, sotto, la settimana giorno per giorno, così i 70 minuti li
-puoi giudicare da te.
-
 ## La giornata ha una forma
 
 Un’attrazione non ha la stessa fila tutto il giorno. All’apertura è corta, poi
 il resto del mondo finisce la colazione, e verso sera torna sopportabile.
-Dove cada esattamente il massimo cambia da attrazione ad attrazione, e sono
-proprio quelle differenze la parte utile.
+Dove cada esattamente il massimo cambia da attrazione ad attrazione.
 
 ```hourly-profile-widget slug=phantasialand top=6
 
 ```
 
-Da questa forma nascono due consigli. Il primo è il **rope drop**: all’apertura
+Da questa forma nasce il **rope drop**: all’apertura
 andare dritti a una determinata attrazione, prima che i viali si riempiano. Lo
 proponiamo solo se il picco di una giornata normale degli ultimi 70 giorni
-raggiunge almeno 60 minuti e la partenza mattutina ne fa risparmiare almeno 45. Tutto quello che sta sotto
-sarebbe un consiglio valido ovunque e quindi utile da nessuna parte.
+raggiunge almeno 60 minuti e la partenza mattutina ne fa risparmiare almeno 45.
 
-Il secondo è l’alternativa più tranquilla: l’ora in cui la fila di
+L’altro consiglio è l’alternativa più tranquilla: l’ora in cui la fila di
 quell’attrazione di solito è più corta. Se cade di sera, non bisogna alzarsi
 alle sette. Entrambe le indicazioni stanno sulla pagina di ogni grande
 attrazione con abbastanza giorni misurati, con un orario concreto nell’ora del
@@ -139,10 +126,8 @@ alta» (dati di settembre 2026), e da un calendario normale non si vede. La
 differenza la fanno quali regioni sono in vacanza, se c’è un ponte attaccato, se piove e se oltre confine
 sta succedendo qualcosa.
 
-Un parco vicino al confine si accorge subito di quando iniziano le vacanze accanto, di solito già dalle targhe
-nel parcheggio. Per questo contiamo anche le
+Per un parco vicino al confine contano anche le vacanze dall’altra parte. Per questo contiamo anche le
 regioni entro circa 200 chilometri e le contrassegniamo a parte nel calendario.
-Tre parchi a confronto, ciascuno con il suo giorno più tranquillo:
 
 ```park-comparison-widget slugs=phantasialand,efteling,europa-park show=quietest
 
@@ -162,15 +147,13 @@ perché ogni passo poggia sul precedente. Alle 02:00 UTC i percentili per ora,
 alle 03:00 i valori di riferimento per parco, alle 04:30 il riassunto di ieri,
 alle 05:15 i consigli rope drop, che leggono proprio quel riassunto, alle 05:30
 «tipico» e «pieno» per le grandi attrazioni. Alle 06:00
-il modello di previsione si riaddestra con i tempi di attesa del giorno prima,
-mentre i fan del rope drop sono già in coda in autostrada.
+il modello di previsione si riaddestra con i tempi di attesa del giorno prima.
 
 L’altra metà è che non buttiamo via nessuna rilevazione. I periodi più
 vecchi vengono compressi, non sfoltiti. Fin dove risale un’analisi lo
 decidiamo caso per caso: per «tipico» e «pieno» prendiamo gli ultimi 365 giorni,
 un giro d’anno completo, per il consiglio rope drop solo gli ultimi 70, per
-seguire la stagione. Chi comincia a salvare al terzo anno, al terzo anno ha un
-anno di storico, e i due precedenti sono persi per sempre. La nostra serie di
+seguire la stagione. La nostra serie di
 rilevazioni comincia il 26 dicembre 2025, e la colonna dei giorni misurati nella
 tabella qui sopra conta da lì.
 
@@ -183,14 +166,12 @@ alle tre di notte: nessuna attrazione riporta niente. Se ne traessimo la
 conclusione ovvia, lì ci sarebbero tutte le attrazioni del parco su «molto bassa», più una media
 di 0 minuti e una previsione fondata su zero osservazioni, tutto inventato. Al
 suo posto, sulla
-pagina del parco c’è un avviso che qui non c’è niente da leggere. Nella [guida all’Hansa-Park](/blog/hansa-park-consigli) trovi quello che possiamo dire comunque sul parco.
+pagina del parco c’è un avviso che qui non c’è niente da leggere. Sul parco trovi di più nella [guida all’Hansa-Park](/blog/hansa-park-consigli).
 
-La stessa regola vale in piccolo per la pista di pattinaggio «Berliner
-Eislaufen», sulla Kaiserplatz del Phantasialand, che c’è solo durante il
+La pista di pattinaggio «Berliner Eislaufen», sulla Kaiserplatz del Phantasialand, c’è solo durante il
 Wintertraum, questa volta dal 14 novembre 2026 al 24 gennaio 2027. Ad agosto
 nessuno riporta niente su di essa, perché non c’è niente da riportare. Leggere quel silenzio come «aperta»
-sarebbe l’errore comodo, ed è davvero comparso così sulla pagina del parco:
-pattini ai piedi in pieno agosto, con la nostra benedizione. E i mesi di
+sarebbe l’errore comodo, ed è davvero comparso così sulla pagina del parco. E i mesi di
 esercizio che ricaviamo dalle nostre rilevazioni li indichiamo solo dopo 330
 giorni di osservazione: prima non compare alcun mese, perché «va da dicembre ad aprile»
 descriverebbe il periodo in cui per caso abbiamo già misurato.
@@ -207,12 +188,11 @@ parecchio.
 Chi preferisce comprarsi il tempo paga 12 € per una corsa su Taron con il Quick Pass, così c’è
 scritto sulla pagina informativa del Phantasialand (aggiornato al 5 ottobre 2026). Il pass si
 compra solo sul posto, al servizio ospiti del Kaiserplatz, in numero limitato. Con un numero che
-per quel giorno della settimana è comunque normale, di rado ne vale la pena. Nella [guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli) trovi cosa ne pensiamo noi e quando conviene il Quick Pass Ultimate.
+per quel giorno della settimana è comunque normale, di rado ne vale la pena. Del Quick Pass Ultimate parlo nella [guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli).
 
 Per una giornata intera c’è il [pianificatore](/blog/pianificatore). Lì scegli le tue attrazioni e
 ricevi un ordine basato sui tempi di attesa previsti per quel giorno. Se riesci a salire su tutte
-prima della chiusura del parco lo sai già prima di partire, e non alle cinque del pomeriggio davanti
-all’ultima fila.
+prima della chiusura del parco lo sai già prima di partire.
 
 ## Dove sta tutto questo
 
@@ -224,8 +204,5 @@ pianificatore ne viene fuori una giornata e in quali tre punti di proposito non
 affermiamo nulla. Ci sono anche quattro situazioni di visita concrete, dalla
 famiglia nelle vacanze d’autunno alla prima volta in un grande parco, passando
 per l’abbonato annuale che si chiede se valga ancora la pena andarci stasera.
-
-E la prossima volta che sei all’ingresso a fissare il display, guarda cos’è
-normale su quell’attrazione di martedì.
 
 — Patrick

@@ -148,7 +148,7 @@ Les médianes reposent sur 192 jours mesurés entre le 6 octobre 2024 et le 6�
 
 ```
 
-Hyperia devance nettement toutes les autres. Storm Surge, une attraction aquatique à radeau tournant qui ne se remplit qu’en début d’après-midi, arrive en deuxième position. SAW, The Swarm, Nemesis Inferno, Colossus et Stealth se suivent de près derrière.
+Storm Surge, une attraction aquatique à radeau tournant qui ne se remplit qu’en début d’après-midi, arrive en deuxième position.
 
 ```hourly-profile-widget slug=thorpe-park top=8
 
@@ -175,7 +175,7 @@ Le parc vend le Fastrack en quatre formules, par personne, et la carte peut êtr
 - **Gold** dès 115 £ : toute la journée sur 14 attractions, sans Hyperia.
 - **Platinum** dès 135 £ : toute la journée sur 15 attractions, Hyperia comprise.
 
-Il existe aussi un **One Shot Fastrack** dès 6 £, qu’on n’achète qu’une fois dans le parc, via l’appli ou un QR code à l’entrée d’une montagne russe. Le parc vend le Fastrack et les billets d’entrée séparément, le Fastrack en nombre limité, et demande de vérifier avant l’achat qu’il reste des billets d’entrée pour la date. La page Fastrack du parc place le Ghost Train dans trois formules, alors que la page de l’attraction dit qu’il n’y a pour l’instant pas de Fastrack pour lui.
+Il existe aussi un **One Shot Fastrack** dès 6 £, qu’on n’achète qu’une fois dans le parc, via l’appli ou un QR code à l’entrée d’une montagne russe. Le parc vend le Fastrack à part du billet d’entrée et en nombre limité, et conseille de vérifier avant l’achat qu’il reste des billets d’entrée pour la date. La page Fastrack du parc place le Ghost Train dans trois formules, alors que la page de l’attraction dit qu’il n’y a pour l’instant pas de Fastrack pour lui.
 
 Les clients des Thorpe Shark Cabins reçoivent le deuxième jour une heure de Fastrack au début ou à la fin de la journée. Pendant les Fright Nights, seule la première heure compte.
 
@@ -213,7 +213,7 @@ Il y a cinq scare mazes. Tenement est nouveau. Dans une maison de retraite nomm�
 
 Un billet journée avec Fright Nights coûte en ligne dès 39 £, 66 £ à la caisse du jour, sans les mazes. La formule à quatre mazes (« Fearsome Four » : DeadBeat, Stitches, Trailers, Survival Games) coûte en ligne dès 71 £, 98 £ à la caisse du jour. Tenement n’est pas dans la formule et se prend à l’unité. Avec un billet d’entrée déjà en poche, on réserve les quatre mazes dès 32 £ par personne, ou chacun séparément dès 8 £. La formule VIP « Phantom Five », avec un accès prioritaire unique aux cinq mazes, coûte dès 110 £ (entrée non comprise) sur les créneaux de 15 h à 17 h 30 ou de 18 h à 20 h 30. Qui arrive en retard à un maze n’est plus admis après 15 minutes de tolérance, sans remboursement.
 
-Toutes les montagnes russes tournent le soir, et le parc met en avant Hyperia et SAW dans le noir. Pour Halloween dans d’autres parcs, il y a notre [panorama Halloween 2026](/blog/halloween-parcs-attractions-2026), et pour Alton Towers un article à part sur le [Scarefest 2026](/news/alton-towers-scarefest-2026).
+Toutes les montagnes russes tournent le soir, et le parc met en avant Hyperia et SAW dans le noir.
 
 ### Météo
 
@@ -225,11 +225,11 @@ En octobre et entre les saisons, certaines attractions restent fermées par vent
 
 ## Billets, abonnements et tarifs
 
-Le parc annonce ses billets journée « dès 32 £ » pour une réservation à l’avance. Les prix dépendent de la date et figurent dans la grille tarifaire du parc. Pendant les Fright Nights, le billet coûte 66 £ à la caisse du jour. Les étudiants obtiennent une réduction en réservant à l’avance.
+Le parc annonce ses billets journée « dès 32 £ » pour une réservation à l’avance. Les prix dépendent de la date. Pendant les Fright Nights, le billet coûte 66 £ à la caisse du jour. Les étudiants obtiennent une réduction en réservant à l’avance.
 
 Les enfants de moins de 1,20 m entrent gratuitement s’ils sont inscrits lors d’une réservation en ligne. Chaque réservation permet au plus quatre billets de ce type et doit comprendre au moins un billet payant. Le jour de la visite, les enfants sont mesurés au Ticket Centre, où l’on retire aussi le billet.
 
-L’abonnement Thorpe Park Annual Pass coûte 64 £ par an. Le Merlin Essential Pass (139 £) est valable 339 jours dans plus de 20 attractions Merlin britanniques, dont Thorpe Park, Chessington World of Adventures, le London Eye et Sea Life. Le Gold Pass (239 £, renouvellement 179 £) est valable 364 jours et inclut le stationnement gratuit. Le Platinum Pass (299 £, renouvellement 229 £) n’a aucun jour d’exclusion, donne quatre billets amis par an et un One Shot Fastrack par visite. Les abonnements des autres parcs sont comparés dans notre [comparatif des abonnements annuels](/blog/abonnement-annuel-comparatif-parcs).
+L’abonnement Thorpe Park Annual Pass coûte 64 £ par an. Le Merlin Essential Pass (139 £) est valable 339 jours dans plus de 20 attractions Merlin britanniques, dont Thorpe Park, Chessington World of Adventures, le London Eye et Sea Life. Le Gold Pass (239 £, renouvellement 179 £) est valable 364 jours et inclut le stationnement gratuit. Le Platinum Pass (299 £, renouvellement 229 £) n’a aucun jour d’exclusion, donne quatre billets amis par an et un One Shot Fastrack par visite.
 
 Les visiteurs en situation de handicap réservent le Ride Access Pass en ligne avant la visite, les places sont limitées. Le jour même, on présente la réservation et une pièce d’identité à l’Accessibility Kiosk. Les conditions par attraction (distances à pied, prothèses, plâtres) figurent dans les « Rider Requirements » du parc, au format PDF.
 
@@ -297,7 +297,7 @@ Pas jusqu’ici. La saison 2026 se termine après les Fright Nights, le 1er nov
 
 ### Quelles attractions conviennent aux personnes en situation de handicap ?
 
-Hyperia ne convient pour l’instant pas aux personnes qui ne peuvent pas marcher. Sur SAW, il faut pouvoir marcher 25 mètres sans aide, sur le Ghost Train au moins 50 pas. La liste complète figure dans les Rider Requirements du parc.
+Hyperia ne convient pour l’instant pas aux personnes qui ne peuvent pas marcher. Sur SAW, il faut pouvoir marcher 25 mètres sans aide, sur le Ghost Train au moins 50 pas.
 
 ## Pour aller plus loin
 

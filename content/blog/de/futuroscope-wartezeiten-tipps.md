@@ -67,8 +67,8 @@ im Jahr, die Themed Entertainment Association zählt für den Park allein 2,05 M
 
 Am 11. Dezember 1984 legte René Monory, der Präsident des Départementrats der Vienne, den
 Grundstein. Er hatte sich schon Anfang der Achtzigerjahre eine Stadt der Zukunft ausgedacht, und
-der Park war ihr erster Teil. Am 31. Mai 1987 machte er auf, mit dem Pavillon, dem Kinémax und
-einem Spielbereich. Danach kamen 1988 das erste Cinéma Dynamique, 1990 das Omnimax
+der Park war ihr erster Teil. Zur Eröffnung standen dort der Pavillon, das Kinémax und
+ein Spielbereich. Danach kamen 1988 das erste Cinéma Dynamique, 1990 das Omnimax
 und der Aussichtsturm Gyrotour, 1996 das IMAX 3D, 2000 die TGV-Station mit einem Fußgängersteg
 direkt in den Park.
 
@@ -96,7 +96,7 @@ zuschauen, wenn es nicht fahren darf.
 ### Objectif Mars
 
 [Objectif Mars](ref:futuroscope/destination-mars) ist seit 2020 in Betrieb und neben der Kinderachterbahn Le Balancier in Futuropolis die einzige Achterbahn des Parks. Gebaut hat sie Intamin
-als Launched Coaster mit drehenden Fahrzeugen, einen Spinning Coaster. Für den Park ist sie eine Familienachterbahn mit einer Höchstgeschwindigkeit von 55 km/h. Die Strecke führt durch ein Gebäude und ins Freie. Eröffnet werden sollte sie am 28. März 2020. Wegen der Schließung in der Pandemie ging sie im Juni 2020 an den Start, zuerst
+als Launched Coaster mit drehenden Fahrzeugen, einen Spinning Coaster. Sie fährt bis zu 55 km/h, und der Park führt sie als Familienachterbahn. Die Strecke führt durch ein Gebäude und ins Freie. Eröffnet werden sollte sie am 28. März 2020. Wegen der Schließung in der Pandemie ging sie im Juni 2020 an den Start, zuerst
 nur an den Wochenenden.
 
 Mit Begleitung geht es ab 1,10 Metern, allein ab 1,20 Metern, und die Obergrenze liegt bei
@@ -193,8 +193,7 @@ mit Fotomotiven; der Park nennt dafür keine Größengrenze.
 
 Für Kinder, die zu klein für eine Bahn sind, gibt es die „Solution Jeunes Enfants“, englisch Baby
 Switch. Man fragt am Eingang der Attraktion danach. Kinder von 5 bis 12 Jahren zahlen den
-Kindertarif, unter fünf Jahren ist der Eintritt frei, und alle Restaurants haben ein Menü für
-Kinder unter zwölf Jahren.
+Kindertarif, unter fünf Jahren ist der Eintritt frei.
 
 ```map-widget slug=futuroscope
 
@@ -223,12 +222,8 @@ Park eine Wartezeit meldet.
 
 ```
 
-Objectif Mars und L'Extraordinaire Voyage teilen sich den ersten Rang. Dahinter folgen Arthur,
-Chasseurs de Tornades, La Maison à l'envers, Aventure Éclabousse und Danse avec les Robots dicht
-beieinander.
-
-La Maison à l'envers hat nach den Angaben des Parks keine Größengrenze und ist die Ausweichmöglichkeit für Familien,
-deren Kinder die Bahnen noch nicht fahren dürfen. Der Pass Premium+ gilt dort nicht.
+Weit oben steht auch La Maison à l'envers, die Ausweichmöglichkeit für Familien, deren Kinder
+die Bahnen noch nicht fahren dürfen.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
@@ -296,8 +291,7 @@ Futuroween eine Variante, in der ein Zauberer die Reise stört. Der Park empfieh
 zwölf Jahren. Der Besuch kostet einen Beitrag zugunsten Sehbehinderter, den das Ticket nicht
 einschließt.
 
-Futuroween beginnt am Samstag, dem 17. Oktober, einen Tag vor den Herbstferien. Ab dem 18. Oktober
-hat der Park laut Kalender täglich von 9:45 bis 22 Uhr offen.
+Die Herbstferien beginnen am 18. Oktober, einen Tag nach dem Start von Futuroween. Ab dann hat der Park laut Kalender täglich von 9:45 bis 22 Uhr offen.
 
 ## Tickets und Preise
 
@@ -355,8 +349,7 @@ zum Mitnehmen im **Food Court Festival**, bei **La Crêpe Volante** und im **Ber
 Alle Restaurants haben ein Kindermenü für Kinder unter zwölf Jahren. Mit der Carte Saison gibt es
 zehn Prozent Rabatt.
 
-Das **Space Loop** zwischen Park und Aquascope vermarktet der Betreiber als „Rollercoaster
-Restaurant“. Es eröffnete am 29. April 2022 gemeinsam mit dem Hotel Station Cosmos.
+Das **Space Loop** zwischen Park und Aquascope vermarktet der Betreiber als „Rollercoaster Restaurant“.
 
 Drei Hotels gehören zum Resort: das **Station Cosmos** mit Zimmern, die wie Kabinen einer
 Raumstation eingerichtet sind (Paket aus Hotel und Ticket ab 196 Euro pro Erwachsenem), das
@@ -479,8 +472,7 @@ TGV und TER halten dort, am Wochenende auch OUIGO ab 10 Euro. Vom Bahnhof Poitie
 ### Muss man den Aquascope extra buchen?
 
 Ja. Der Aquascope hat ein eigenes Ticket mit Zeitfenster, denn die Kapazität ist begrenzt, und es
-gibt keine Tageskasse. Das Ticket für Erwachsene beginnt bei 39 Euro. Im Parkticket ist er nicht
-enthalten.
+gibt keine Tageskasse. Das Ticket für Erwachsene beginnt bei 39 Euro.
 
 ### Gibt es Hunde und Kinderwagen?
 

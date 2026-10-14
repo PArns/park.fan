@@ -333,7 +333,7 @@ de mayo de 2026 al 11 de enero de 2027 y exige un Attraction Timed Entry Ticket 
 de 2026, y el espectáculo callejero «Wicked: The Witches of Oz» del 20 de febrero
 al 27 de diciembre de 2026.
 
-## Express Pass: paquetes, precios, franja horaria
+## Express Pass
 
 Un Studio Pass da la entrada y el acceso a todas las atracciones. El Universal
 Express Pass se compra además y da acceso a una cola más corta en atracciones

@@ -68,7 +68,7 @@ meten hier sinds 6 oktober 2024 wachttijden, op dit moment bij 55 attracties.
 
 Op 11 december 1984 legde René Monory, voorzitter van de departementsraad van de Vienne, de
 eerste steen. Hij had al begin jaren tachtig een stad van de toekomst bedacht, en het park was
-daarvan het eerste deel. Op 31 mei 1987 ging het open, met het paviljoen, de Kinémax en een
+daarvan het eerste deel. Bij de opening stonden er het paviljoen, de Kinémax en een
 speelgebied. Daarna kwamen in 1988 de eerste Cinéma Dynamique, in
 1990 de Omnimax en de uitkijktoren Gyrotour, in 1996 de IMAX 3D en in 2000 het TGV-station met
 een voetgangersbrug rechtstreeks het park in.
@@ -97,7 +97,7 @@ bij sommige attracties toekijken als het niet mee mag.
 ### Objectif Mars
 
 [Objectif Mars](ref:futuroscope/destination-mars) draait sinds 2020 en is naast de kinderachtbaan Le Balancier in Futuropolis de enige achtbaan van het park. Intamin bouwde hem als launched
-coaster met draaiende wagens, een spinning coaster. Voor het park is het een familieachtbaan met een topsnelheid van 55 km/u. Het traject loopt door een gebouw en naar buiten. Hij zou op
+coaster met draaiende wagens, een spinning coaster. Hij haalt 55 km/u, en het park rekent hem tot de familieachtbanen. Het traject loopt door een gebouw en naar buiten. Hij zou op
 28 maart 2020 opengaan; door de sluiting tijdens de pandemie startte hij in juni 2020, eerst
 alleen in het weekend.
 
@@ -195,8 +195,7 @@ plekken voor foto's; het park noemt daarvoor geen lengtegrens.
 
 Voor kinderen die te klein zijn voor een attractie is er de “Solution Jeunes Enfants”, in het
 Engels Baby Switch. Je vraagt ernaar bij de ingang van de attractie. Kinderen van 5 tot 12 jaar
-betalen het kindertarief, onder de vijf jaar is de toegang gratis, en alle restaurants hebben een
-menu voor kinderen onder de twaalf.
+betalen het kindertarief, onder de vijf jaar is de toegang gratis.
 
 ```map-widget slug=futuroscope
 
@@ -226,13 +225,8 @@ wachttijd meldt.
 
 ```
 
-Objectif Mars en L'Extraordinaire Voyage delen de eerste plek. Daarachter volgen Arthur,
-Chasseurs de Tornades, La Maison à l'envers, Aventure Éclabousse en Danse avec les Robots vlak
-bij elkaar.
-
-La Maison à l'envers heeft volgens het park geen lengtegrens en
-is de uitwijkmogelijkheid voor gezinnen met kinderen die de attracties nog niet in mogen. De Pass
-Premium+ geldt er niet.
+Hoog in de lijst staat ook La Maison à l'envers, de uitwijkmogelijkheid voor gezinnen met
+kinderen die de attracties nog niet in mogen.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
@@ -305,8 +299,7 @@ Les Yeux Grands Fermés, de rondgang door het donker met een blinde gids, heeft 
 variant waarin een tovenaar de reis verstoort. Het park beveelt hem pas aan vanaf twaalf jaar. Het
 bezoek kost een bijdrage ten gunste van slechtzienden, die niet in het ticket zit.
 
-Futuroween begint op zaterdag 17 oktober, een dag voor de herfstvakantie. Vanaf 18 oktober is het
-park volgens de kalender dagelijks open van 9.45 tot 22.00 uur.
+De herfstvakantie begint op 18 oktober, een dag na de start van Futuroween. Vanaf dan is het park volgens de kalender dagelijks open van 9.45 tot 22.00 uur.
 
 ## Tickets en prijzen
 
@@ -364,8 +357,7 @@ om mee te nemen bij **Food Court Festival**, **La Crêpe Volante** en **Bermuda 
 restaurants hebben een kindermenu voor kinderen onder de twaalf. Met de Carte Saison krijg je tien
 procent korting.
 
-De **Space Loop** tussen het park en de Aquascope presenteert de exploitant als “Rollercoaster
-Restaurant”. Het opende op 29 april 2022 samen met het hotel Station Cosmos.
+De **Space Loop** tussen het park en de Aquascope presenteert de exploitant als “Rollercoaster Restaurant”.
 
 Drie hotels horen bij het resort: het **Station Cosmos** met kamers die zijn ingericht als hutten
 van een ruimtestation (pakket van hotel en ticket vanaf 196 euro per volwassene), het
@@ -489,7 +481,7 @@ en TER stoppen er, in het weekend ook OUIGO vanaf 10 euro. Vanaf station Poitier
 ### Moet je de Aquascope apart boeken?
 
 Ja. De Aquascope heeft een eigen ticket met tijdvenster, want de capaciteit is beperkt, en er is
-geen dagkassa. Het ticket voor volwassenen begint bij 39 euro. In het parkticket zit hij niet.
+geen dagkassa. Het ticket voor volwassenen begint bij 39 euro.
 
 ### Mogen honden en kinderwagens mee?
 

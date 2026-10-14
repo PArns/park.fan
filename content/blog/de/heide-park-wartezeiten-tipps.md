@@ -132,8 +132,7 @@ Ingenieurbüro Stengel, gebaut Intamin zusammen mit dem Holzbaubetrieb Cordes.
 
 Intamin hatte für Colossos ein Verfahren
 verwendet, bei dem die Fahrfläche aus verleimten Holzschichten vorgefertigt und
-dann montiert wird. Nach fünfzehn Jahren war sie hin, die Bahn machte 2016 zu,
-im Juni 2018 kam die erste alte Schiene heraus, und als sie wieder aufmachte,
+dann montiert wird. Im Juni 2018 kam die erste alte Schiene heraus, und als sie wieder aufmachte,
 hieß sie **Colossos – Kampf der Giganten**. Auf dem letzten Hügel steht seitdem
 ein Riese, der Feuer spuckt, und der Zug fährt mitten durch ihn hindurch.
 
@@ -207,15 +206,11 @@ Beim Piratenfest 2026 in der Bucht der Piraten gab es einen Shanty-Chor, Walkact
 
 Unsere Messungen laufen seit Ende Dezember 2025. Weil der Heide Park erst Ende
 März öffnet, stammen alle Tage in der Tabelle aus der Saison 2026
-(Stand 25. September 2026), und jede Bahn hat ihre eigene Zahl an Messtagen.
+(Stand 25. September 2026).
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
 ```
-
-Colossos steht oben, knapp vor Flug der Dämonen, der Krake, der Bobbahn von
-1993 und der Wildwasserbahn von 1980. Bei der Wildwasserbahn liegt es am
-Wetter, zu sehen im Tagesprofil weiter unten.
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -271,8 +266,7 @@ jeweils eine Stunde später.
 Die langen Tage im Herbst fangen erst um 12 Uhr an, gefahren wird bis 21 Uhr.
 Am 19. und 26. September und am 3. Oktober heißen sie Late Rides, die fünf danach
 gehören zu Halloween. An all diesen Tagen schließen die Wasserbahnen und ein
-paar andere Anlagen schon mit der Dämmerung, ab etwa 17 Uhr. Den veröffentlichten
-Kalender der nächsten Wochen findest du auf der [Parkseite](ref:heide-park).
+paar andere Anlagen schon mit der Dämmerung, ab etwa 17 Uhr.
 
 ### Der Wochentag
 
@@ -280,8 +274,7 @@ Oben steht der Samstag, unten der Freitag, und der Abstand zwischen den beiden
 ist klein. Der Montag steht auf nur etwa halb so vielen Messtagen wie die
 anderen, weil der Park ihn im Frühjahr und im September regelmäßig aus dem
 Kalender nimmt. Gezählt werden also vor allem Montage in der Hauptsaison, und
-ruhig sind die nicht. Den ruhigsten Wochentag anderer Parks findest du auf der
-[Beste-Reisezeit-Seite](/beste-reisezeit).
+ruhig sind die nicht.
 
 ### Der Monat
 
@@ -304,9 +297,7 @@ Horror-Mazes: Parasomnis, Grand Hotel Morton und SubTerra. Für die Mazes
 gilt ein Mindestalter von **16 Jahren** mit Ausweispflicht.
 Jedes Maze braucht ein eigenes Zeitfenster-Ticket, das es nur online gibt, 9 €
 pro Maze oder 22 € für alle drei. Wer nur den Abend will, kommt mit dem
-Abendticket ab 24 € ab 17 Uhr in den Park. Wie sich das im Vergleich zu
-Toverland, Movie Park und Walibi schlägt, steht im
-[Halloween-Guide 2026](/blog/halloween-freizeitparks-2026).
+Abendticket ab 24 € ab 17 Uhr in den Park. Im [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026) stehen auch Toverland, Movie Park und Walibi.
 
 ## Vom Schaustellerbetrieb zum Merlin-Park
 
@@ -404,7 +395,7 @@ kostenlos rein, brauchen aber ein 0-€-Ticket aus dem Online-Shop.
 
 **Essen.** 21 gastronomische Betriebe führt unsere Parkseite (Stand September
 2026), von der Schmalzkuchen-Schmiede auf der Colossos-Terrasse bis zum
-Wirtshaus des Admirals. Das Wirtshaus des Admirals in der Bucht der Piraten ist ein Buffet-Restaurant. Pizza gibt es bei Pizza Scream, Flammkuchen in der Flammkuchen Factory, beide in Transsilvanien, und Thüringer Rostbratwurst vom Lavagrill am Heide Park Grill im Eingangsbereich. Frau Mümmels Kiosk im Peppa Pig Land verkauft Bowls, und viele Restaurants haben pflanzliche Alternativen.
+Wirtshaus des Admirals, einem Buffet-Restaurant in der Bucht der Piraten. Pizza gibt es bei Pizza Scream, Flammkuchen in der Flammkuchen Factory, beide in Transsilvanien, und Thüringer Rostbratwurst vom Lavagrill am Heide Park Grill im Eingangsbereich. Frau Mümmels Kiosk im Peppa Pig Land verkauft Bowls, und viele Restaurants haben pflanzliche Alternativen.
 
 ## Häufige Fragen zum Heide Park
 
@@ -414,8 +405,7 @@ Laut Roller Coaster DataBase 50 Meter hoch, mit einem ersten Gefälle von
 48,5 Metern bei 61 Grad, 110 km/h Spitzentempo und 1.344 Metern Strecke; der
 Park selbst nennt 60 Meter Höhe und 1.500 Meter. Bei der Eröffnung 2001 war sie
 laut Guinness die steilste Holzachterbahn der Welt, und sie ist bis heute die
-höchste reine Holzachterbahn Europas. Aktuelle Wartezeiten stehen auf der
-[Colossos-Seite](ref:heide-park/colossos-kampf-der-giganten).
+höchste reine Holzachterbahn Europas.
 
 ### Warum war Colossos jahrelang geschlossen?
 

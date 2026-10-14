@@ -132,8 +132,7 @@ Cordes.
 
 Pour Colossos, Intamin avait utilisé un procédé où
 la surface de roulement est préfabriquée à partir de couches de bois collées,
-puis montée. Au bout de quinze ans elle était finie, l’attraction a fermé en
-2016, le premier ancien rail a été retiré en juin 2018, et quand elle a rouvert
+puis montée. Le premier ancien rail a été retiré en juin 2018, et quand elle a rouvert
 elle s’appelait **Colossos – Kampf der Giganten**. Depuis, un géant qui crache
 du feu se dresse sur la dernière bosse, et le train le traverse de part en
 part.
@@ -209,16 +208,11 @@ La fête des pirates 2026, dans la Bucht der Piraten, réunissait un chœur de c
 
 Nos mesures remontent à fin décembre 2025. Comme le Heide Park n’ouvre qu’à la
 fin mars, le tableau ne contient que des jours de la saison 2026 (état au
-25 septembre 2026), et chaque attraction a son propre nombre de jours
-mesurés.
+25 septembre 2026).
 
 ```ride-waits-widget park=heide-park top=8 columns=land,peak,days highlight=colossos-kampf-der-giganten
 
 ```
-
-Colossos est en tête, juste devant Flug der Dämonen, Krake, la Bobbahn de 1993
-et la bûche de 1980. Pour la bûche, c’est la météo (voir le profil horaire plus
-bas).
 
 ```hourly-profile-widget slug=heide-park top=8
 
@@ -275,9 +269,7 @@ Les longues journées d’automne ne commencent qu’à 12 h, et les attractions
 tournent jusqu’à 21 h. Les
 19 et 26 septembre et le 3 octobre, elles s’appellent Late Rides ; les cinq
 suivantes appartiennent à Halloween. Ces jours-là, les attractions aquatiques
-et quelques autres ferment dès la tombée de la nuit, vers 17 h. Ce qui est
-effectivement publié pour les prochaines semaines figure au calendrier sur la
-[page du parc](ref:heide-park).
+et quelques autres ferment dès la tombée de la nuit, vers 17 h.
 
 ### Le jour de la semaine
 
@@ -286,8 +278,7 @@ faible.
 Le lundi ne repose que sur environ la moitié des jours
 mesurés des autres, parce que le parc le retire régulièrement du calendrier au
 printemps et en septembre. Les lundis comptés tombent donc surtout en haute
-saison, et ceux-là n’ont rien de calme. Le jour le plus calme des autres parcs se trouve sur la
-[page des meilleures périodes](/meilleure-periode-pour-visiter).
+saison, et ceux-là n’ont rien de calme.
 
 ### Le mois
 
@@ -310,9 +301,7 @@ ouvrent vers 16 h : Parasomnis, Grand Hotel Morton et SubTerra. Les mazes
 imposent un âge minimum de **16 ans** avec pièce d’identité obligatoire.
 Chaque maze demande son propre billet horodaté, vendu uniquement en ligne,
 9 € par maze ou 22 € pour les trois. Pour la soirée seule, le billet du soir à
-partir de 24 € donne accès au parc dès 17 h. La comparaison avec Toverland,
-Movie Park et Walibi se trouve dans le
-[guide Halloween 2026](/blog/halloween-parcs-attractions-2026).
+partir de 24 € donne accès au parc dès 17 h. Toverland, Movie Park et Walibi figurent aussi dans le [guide Halloween 2026](/blog/halloween-parcs-attractions-2026).
 
 ## De la famille foraine au parc Merlin
 
@@ -411,7 +400,7 @@ enfants de moins de 90 cm entrent gratuitement, mais ont besoin d’un billet à
 
 **Restauration.** Notre page parc recense 21 points de restauration (état en
 septembre 2026), de la Schmalzkuchen-Schmiede, stand de beignets sur la
-terrasse de Colossos, jusqu’au Wirtshaus des Admirals. Le Wirtshaus des Admirals, dans la Bucht der Piraten, est un restaurant-buffet. On trouve des pizzas chez Pizza Scream et des tartes flambées à la Flammkuchen Factory, tous deux en Transylvanie, et des saucisses de Thuringe grillées sur pierre de lave au Heide Park Grill, à l’entrée. Frau Mümmels Kiosk, dans le Peppa Pig Land, vend des bowls, et beaucoup de restaurants proposent des plats végétaux.
+terrasse de Colossos, jusqu’au Wirtshaus des Admirals, un restaurant-buffet dans la Bucht der Piraten. On trouve des pizzas chez Pizza Scream et des tartes flambées à la Flammkuchen Factory, tous deux en Transylvanie, et des saucisses de Thuringe grillées sur pierre de lave au Heide Park Grill, à l’entrée. Frau Mümmels Kiosk, dans le Peppa Pig Land, vend des bowls, et beaucoup de restaurants proposent des plats végétaux.
 
 ## Questions fréquentes sur le Heide Park
 
@@ -421,8 +410,7 @@ Selon la Roller Coaster DataBase, 50 mètres de haut, une première descente de
 48,5 mètres à 61 degrés, une vitesse de pointe de 110 km/h et 1 344 mètres de
 voie ; le parc annonce 60 mètres et 1 500 mètres. À son ouverture en 2001,
 c’était selon le Guinness le coaster en bois le plus raide du monde, et il reste
-le plus haut coaster entièrement en bois d’Europe. Les temps d’attente actuels
-sont sur la [page de Colossos](ref:heide-park/colossos-kampf-der-giganten).
+le plus haut coaster entièrement en bois d’Europe.
 
 ### Pourquoi Colossos est-il resté fermé des années ?
 

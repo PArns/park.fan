@@ -48,11 +48,9 @@ parkLinks:
   - phantasialand
 ---
 
-The number of visits an annual pass needs to pay off is the pass price divided by the day ticket price, rounded up. On blocked days the pass isn't valid.
-
 [Efteling](ref:efteling) in the Netherlands, [Europa-Park](ref:europa-park) in Rust and [Toverland](ref:attractiepark-toverland) in Sevenum sell an annual pass, [Phantasialand](ref:phantasialand) in Brühl doesn't.
 
-All prices come from the parks' own pages, linked at the end, as of 6 October 2026. Under each park a widget shows the quiet days by our wait times.
+All prices come from the parks' own pages, linked at the end, as of 6 October 2026.
 
 ## The four parks at a glance
 
@@ -78,14 +76,14 @@ Each of the three parks with a pass sells a parking permit or discounts the park
 
 I haven't counted the discount on food and souvenirs, because it depends on what you buy, or the visits you wouldn't have made without the pass.
 
-All passes are tied to a person. At Toverland the terms say so outright: one pass per person, not transferable.
+All passes are tied to a person.
 
 ## Efteling's three annual passes
 
 Efteling has sold three annual passes since 11 June 2024, differing in the number of days they are
 valid. A discount for visitors aged 65 and over no longer exists, and existing 65+ passes ran until the end of their minimum term.
 
-Efteling surveyed the holders in 2023, and according to the park most were very satisfied but wanted more choice. From 15 April to 10 June 2024 the park sold no new passes, only renewals. In the Netherlands the number of pass holders had already risen sharply in 2023, Efteling writes in its review of the year.
+Efteling surveyed the holders in 2023, and according to the park most wanted more choice. From 15 April to 10 June 2024 the park sold no new passes, only renewals. In the Netherlands the number of pass holders had risen in 2023, Efteling writes in its review of the year.
 
 | Tier    | Annual price | Monthly | Access            | Parking discount | Food, drinks, souvenirs | Friend tickets at half price |
 | ------- | ------------ | ------- | ----------------- | ---------------- | ----------------------- | ---------------------------- |
@@ -176,7 +174,7 @@ A day ticket costs €67 to €76 for adults and €56.50 to €65 for children 
 | Silver | 5 visits      | 5 visits             | 5 visits (€1,200 against €247 to €282 a day)      |
 | Gold   | 7 to 8 visits | 7 to 8 visits        | 7 to 8 visits (€1,850 against €247 to €282 a day) |
 
-For Silver the break-even is the same at both ends of the price range, five visits. So you have to come five times on days Silver covers. Which days those are is in the ResortPass portal, and the price page gives only their number, over 230. The 2026 season runs from 28 March 2026 to 9 January 2027, which is 288 calendar days, less the two rest days at Christmas. Silver leaves out part of the opening days, and the park chooses which.
+The five visits have to fall on days Silver covers. Which days those are is in the ResortPass portal, and the price page gives only their number, over 230. The 2026 season runs from 28 March 2026 to 9 January 2027, which is 288 calendar days, less the two rest days at Christmas.
 
 Gold costs €170 more, €155 for children. That's a little over two extra adult day tickets at the top
 price. In return Gold is valid on every opening day, and the two Rulantica tickets are included. The
@@ -189,7 +187,7 @@ two to four days a year, stay with the day ticket.
 
 The park has announced the Pre-Opening Weeks from 7 to 19 March 2027, two weeks before the season opens. On the ResortPass page the park lists the cheapest tickets of the year for them. Day reservations for them go through the ResortPass portal. That's the first date on which you could use a new pass.
 
-By [our measurements](/blog/europa-park-wait-times-tips), Europa-Park is emptiest on a Sunday
+Europa-Park is emptiest on a Sunday
 or Thursday in May or June and fullest on Saturday.
 
 ```best-days-widget slug=europa-park
@@ -250,7 +248,7 @@ In 2026 the park sold a Summer Pass for the first time: €79 for adults, €59 
 140 cm, unlimited visits from 1 July to 30 September. Whether it returns in 2027 the park hasn't said.
 If you come only in summer, you pay €81 less than for the annual pass.
 
-By [our measurements](/blog/toverland-troy-wait-times-tips), weekdays at Toverland hardly differ, and it's busier in the Christmas holidays.
+Weekdays at Toverland hardly differ, and it's busier in the Christmas holidays.
 
 ```best-days-widget slug=attractiepark-toverland
 
@@ -260,8 +258,7 @@ By [our measurements](/blog/toverland-troy-wait-times-tips), weekdays at Toverla
 
 Phantasialand took its Club card off sale during the pandemic, and the last cards ran out in summer 2022.
 Neither an annual pass nor a Club card comes up in the ticket shop's FAQ, and tickets are only sold
-dated and online. Why it stayed that way and what fans did about it is in our
-[Phantasialand guide](/blog/phantasialand-wait-times-tips).
+dated and online.
 
 In the ticket shop's October calendar a ticket for adults from 12 years costs between €44 and €78. The gap between the cheapest and the dearest day is €34, which is 77% on top of the cheap day. Three visits a year cost between €132 and €234. At Phantasialand a Saturday is noticeably fuller than a Tuesday.
 
@@ -270,8 +267,6 @@ In the ticket shop's October calendar a ticket for adults from 12 years costs be
 ```
 
 ## Blocked days against full days
-
-Europa-Park sets in the portal whether Silver is valid on Saturdays.
 
 ```park-comparison-widget slugs=efteling,europa-park,attractiepark-toverland,phantasialand show=quietest
 
@@ -283,8 +278,7 @@ If you can come during the week, you pay least with Classic at Efteling and Magi
 
 At Efteling, Classic is enough if you can come outside the holidays and are at the park at least six
 times a year. If you want to go between mid-October and early November, you need Plus. Between Christmas
-and New Year Plus is blocked too, which leaves Premium. It only pays off from eight to ten visits. Below
-four visits none of the three tiers pays off.
+and New Year Plus is blocked too, which leaves Premium. It only pays off from eight to ten visits.
 
 ## When to buy
 

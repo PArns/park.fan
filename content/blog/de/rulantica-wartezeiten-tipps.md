@@ -157,9 +157,7 @@ und II.
 Die beiden Rutschen laufen parallel, heißen zusammen Odinrås und sind 148 Meter
 lang. Gefahren wird im Zweierreifen. Immer wieder ist die Trennwand zwischen den
 Röhren geöffnet, sodass du den Reifen nebenan siehst, und im Auslauf entscheidet
-sich, wer vorn lag. Kinder unter acht Jahren fahren mit einem Erwachsenen. Mit je 300 Gästen pro
-Stunde und Rutsche ist das Duell auf dem Papier schneller abgefertigt als die
-Fallkabinen.
+sich, wer vorn lag. Kinder unter acht Jahren fahren mit einem Erwachsenen. Jede der beiden schafft 300 Gäste pro Stunde.
 
 ### Svalgur Rytt und Vinter Rytt
 
@@ -172,8 +170,7 @@ Gleich daneben liegt [Vinter Rytt](ref:rulantica/vinter-rytt), die Halfpipe. Der
 Start im Vierer-Reifen ist gemächlich, dann geht es steil bergab, und der
 Reifen schießt auf der anderen Seite die Wand hoch. Hier gibt es als einzige
 Rutsche der Anlage eine Gewichtsgrenze: 320 Kilogramm pro Reifen. Mindestgröße
-125 Zentimeter, ab zehn Jahren. In unseren Daten stehen die beiden Rutschen an
-der Spitze der Wartezeiten.
+125 Zentimeter, ab zehn Jahren.
 
 ### Stormvind
 
@@ -245,8 +242,7 @@ längsten typischen Wartezeiten, gerechnet über alle gemessenen Öffnungstage.
 
 ```
 
-Die typischen Wartezeiten sind in Rulantica kurz, und die Unterschiede zwischen
-den Rutschen sind klein. Ganz vorn stehen die beiden Vierer-Reifen-Rutschen im
+Die Unterschiede zwischen den Rutschen sind klein. Ganz vorn stehen die beiden Vierer-Reifen-Rutschen im
 Eispalast, dahinter Stormvind, die VR-Station und Två Fall. Die Duellrutschen
 Hugin und Munin liegen weiter hinten, die Fallkabinen am Ende der Liste, obwohl
 sie unter den Rutschen die wenigsten Gäste pro Stunde durchlassen.
@@ -260,7 +256,7 @@ Plateau, nach 21 Uhr fällt es ab.
 
 ```
 
-Nach 13 Uhr verdoppelt sich in unseren Daten an keiner Rutsche die Wartezeit von einer Stunde zur nächsten. Früh anzukommen spart bei Hugin, Munin und Stormvind etwas und an den Vierer-Reifen
+Früh anzukommen spart bei Hugin, Munin und Stormvind etwas und an den Vierer-Reifen
 wenig.
 
 ## Wann du hinfahren solltest
@@ -291,9 +287,8 @@ Vor der Öffnung dürfen Übernachtungsgäste des Europa-Park Erlebnis-Resorts u
 Inhaber des Abenteuertickets ab 9:00 Uhr hinein, eine halbe Stunde vor
 allen anderen. Die Fallkabinen in Rangnakor kannst du in dieser halben Stunde mitnehmen.
 
-Am Vormittag gehst du danach nach Vinterhal zu Svalgur Rytt und Vinter Rytt, den
-beiden Rutschen mit den längsten Wartezeiten, dann zu Stormvind und Isbrekker. Vikingløp im
-Nordiskturn hat trotz seiner acht Bahnen in unseren Daten deutlich kürzere
+Am Vormittag gehst du danach nach Vinterhal zu Svalgur Rytt und Vinter Rytt, dann zu Stormvind und Isbrekker. Vikingløp im
+Nordiskturn hat in unseren Daten deutlich kürzere
 Wartezeiten als die beiden Vierer-Reifen-Rutschen.
 
 Mittags lohnen zwischen den Rutschenrunden Snorri's Saga, der Surf Fjørd und
@@ -325,8 +320,7 @@ Für Kinder dazwischen beginnen die Einsteigerrutschen **Skiprok**, **Vragrok**,
 **Slalomrok** und **Vågorrok** bei 110. Bei einem Kind mit 118 Zentimetern reicht die Größe
 für alles bis Vikingløp (ab zehn Jahren), für die Fallkabinen und Vinter Rytt noch nicht.
 
-Der Park schreibt an jeder Attraktion aus, ob Schwimmkenntnisse nötig sind: Bei Isbrekker gilt „nur für Schwimmer“, bei Snorri
-Snorkling VR ebenfalls.
+Der Park schreibt an jeder Attraktion aus, ob Schwimmkenntnisse nötig sind.
 
 ## Die Sauna Hyggedal
 
@@ -368,8 +362,7 @@ kommt mit Balkon und Panoramasauna im fünften Obergeschoss. Im Sommer kann man 
 ## Tickets und Preise
 
 Der Park nennt für jede Karte eine Preisspanne. Die Preise gelten für Besuche
-bis zum 19. März 2027. Die Karten sind tagesbasiert, ein Zeitfenster nennt der
-Park nicht. Weil die Kapazität begrenzt ist, rät er zum Online-Kauf. An der
+bis zum 19. März 2027. Die Karten sind tagesbasiert. Weil die Kapazität begrenzt ist, rät er zum Online-Kauf. An der
 Tageskasse gibt es Karten nur bei freier Kapazität und für **6 Euro Aufpreis**.
 
 - Tagesticket: 38 bis 54 Euro, von 9:30 bis 22:00 Uhr.
@@ -409,9 +402,6 @@ Europa-Park, einen Tag Rulantica und eine Übernachtung mit Frühstück, ab 192 
 pro Person im Fünfbettzimmer. In der Nebensaison gibt es „2 für 1“ (zwei Nächte
 und zwei Tage Rulantica ab 160 Euro pro Person im Doppelzimmer) und „Kids for free“
 für zwei Erwachsene mit bis zu drei Kindern ab 320 Euro.
-
-Welche Wartezeiten und ruhigen Tage wir im Europa-Park gemessen haben, steht im
-[Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
 
 ## Anreise und Hotels
 
@@ -462,8 +452,7 @@ Diese Regeln gelten in der Wasserwelt:
 
 Vom **16. bis zum 27. November 2026** ist Rulantica wegen der Revision
 geschlossen, ebenso am 24. und 25. Dezember. Am 31. Dezember schließt die
-Wasserwelt schon um 19:00 Uhr. Der Park aktualisiert diese Termine laufend,
-schau also vor der Buchung noch einmal auf die Öffnungszeiten-Seite.
+Wasserwelt schon um 19:00 Uhr.
 
 Bis zum **15. November 2026** läuft die Halloween-Saison. Zu ihr gehören
 Dekoration aus Kürbissen, Skeletten und Maisstauden, drei Shows am Skip Strand

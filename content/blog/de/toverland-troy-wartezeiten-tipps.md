@@ -84,10 +84,6 @@ Achterbahnfans vorbei. Die meisten haben
 dann noch eine gute Stunde vor sich, bis nach Kaatsheuvel, zum
 [Efteling](ref:efteling), dem Disney der Niederlande.
 
-Siebzig Kilometer trennen die beiden Parks. In beiden steht eine Holzachterbahn
-vom selben amerikanischen Hersteller. Für die in Sevenum wartest du typischerweise rund eine Viertelstunde, für die im
-Efteling mehr als doppelt so lang.
-
 Das [Toverland](ref:attractiepark-toverland) in
 Sevenum, das ich für einen der schönsten kleinen Parks Europas halte, wird
 dieses Jahr 25. Ich habe dort einmal selbst im Kostüm als Erschrecker gestanden.
@@ -100,8 +96,7 @@ sind sich alle bei 1.077 Metern Strecke; dazu kommen gut 20.000 Quadratmeter
 Grundfläche. Die höchste, längste und schnellste Holzachterbahn der
 Beneluxstaaten ist Troy so oder so.
 
-Troy ist ein **Twister**. Die Bahn dreht permanent die Richtung und steckt jeden Meter Höhe in einen
-Richtungswechsel. Die Elemente der Reihe nach: Lifthill, First Drop, Airtime Hill,
+Troy ist ein **Twister**. Die Elemente der Reihe nach: Lifthill, First Drop, Airtime Hill,
 Overbanked Turn, Camelback, Double Down, Bremsstrecke.
 
 ```glossary-widget slug=twister-coaster
@@ -150,7 +145,7 @@ Joris en de Draak landete bei den Golden Ticket Awards 2026 fünf Plätze hinter
 
 ```
 
-Die beiden Toverland-Bahnen stehen unten, mit Abstand. Für die Zeit, die du im
+Für die Zeit, die du im
 Phantasialand **einmal** bei [Taron](ref:phantasialand/taron) anstehst, fährst du
 hier [Troy](ref:attractiepark-toverland/troy) mehrmals.
 
@@ -228,8 +223,7 @@ schon eine Junior-Achterbahn von Vekoma, der Toos-Express. Den Eröffnungsakt be
 
 **2004** kam die zweite Halle dazu, damals „Magic Forest“, heute der
 **Wunderwald**, mit Wildwasserbahn, Bobkartbahn und Funhouse. Draußen daneben
-entstand [Booster Bike](ref:attractiepark-toverland/booster-bike), der weltweite Prototyp der
-Motorrad-Achterbahn von Vekoma, allerdings erst zum 27. Juli; bis dahin stellte
+entstand [Booster Bike](ref:attractiepark-toverland/booster-bike), allerdings erst zum 27. Juli; bis dahin stellte
 der Park als Trostpflaster die Wilde Maus eines Schaustellers auf. Ein Jahr später folgte mit dem Wirbelbaum, damals Twist & Turn, der zweite Prototyp, ein 13 Meter hohes
 Riesenrad von Metallbau Emmeln, in dessen Körben du selbst bestimmst, wie wild
 sie sich drehen.
@@ -261,9 +255,7 @@ Holzachterbahn knapp hinter dem Sieger.
 [Dragonwatch](ref:attractiepark-toverland/dragonwatch) und das Flugkarussell Pixarus.
 
 Die Besucherzahlen dazu: 862.000 im letzten Vor-Corona-Jahr 2019, seit 2022
-jedes Jahr über einer Million, zuletzt **1.137.000 im Jahr 2025**. Zum
-Vergleich: Der Europa-Park kam 2025 erstmals auf mehr als sieben Millionen
-Gäste, das Efteling auf 5,78 Millionen Besuche.
+jedes Jahr über einer Million, zuletzt **1.137.000 im Jahr 2025**. Der Europa-Park kam 2025 erstmals auf mehr als sieben Millionen Gäste.
 
 ![Das beleuchtete Kettenkarussell Djinn in der Halle Land van Toos, Gäste in den Gondeln in Bewegung | Djinn dreht seine Runden über dem orientalischen Markt in Land van Toos, und zwar komplett unter Dach. | left](/media/toverland-halloween/05-djinn-land-van-toos.jpg)
 
@@ -289,13 +281,9 @@ Feuerwerk. Dafür gab es ein eigenes Ticket für 46,50 €.
 
 ![Das hölzerne trojanische Pferd bei Nacht, rot angestrahlt und in Nebel gehüllt, davor eine Menschenmenge | Dasselbe Pferd wie oben, sechs Wochen später. Tagsüber machen Familien davor Fotos. | wide](/media/toverland-halloween/01-trojanisches-pferd-rot.jpg)
 
-Den Vergleich mit anderen Parks in Europa findest du in unserem
-[Halloween-Guide](/blog/halloween-freizeitparks-2026).
-
 ![Darsteller mit Tentakel-Maske und Handglocke vor dem Toverland-Halloween-Nights-Banner | Der Nachtwächter der Halloween Nights. | right](/media/halloween-2026/toverland-cthulhu.jpg)
 
-Die Saison läuft **vom 3. Oktober bis 8. November 2026** und zerfällt in zwei
-sehr unterschiedliche Veranstaltungen:
+Die Saison läuft **vom 3. Oktober bis 8. November 2026** und zerfällt in zwei Veranstaltungen:
 
 - **Halloween Days** (17 Tage), tagsüber, familienfreundlich, für Kinder bis etwa
   12: Kürbisfarm, ein Maislabyrinth für Kinder, Shows, harmlos verkleidete Hexen.
@@ -310,8 +298,7 @@ sehr unterschiedliche Veranstaltungen:
 Neu ist 2026 **„Entwined: The Maze“**, ein
 **sieben Hektar großes Maisfeld** mit meterhohen Wänden auf einer bisher
 gesperrten Fläche hinter Fēnix, laut Park doppelt so groß wie der gesamte
-Avalon-Bereich und vermarktet als größte Halloween-Experience Europas
-(nachgemessen haben wir das nicht). Es ersetzt die langjährige Experience „Trapped“ im Labyrinth Dwaalhof.
+Avalon-Bereich und vermarktet als größte Halloween-Experience Europas. Es ersetzt die langjährige Experience „Trapped“ im Labyrinth Dwaalhof.
 Wer im Maisfeld stehen bleibt, wird geschnappt.
 
 ![Der Schriftzug am Eingang von Troy, zu „DesTROY – The Ride“ umdekoriert, darunter zwei Halloween-Nights-Banner | Aus Troy wird DesTROY. Der Park dekoriert dafür den Schriftzug am Eingang der Achterbahn um. | right](/media/toverland-halloween/03-destroy-schild.jpg)
@@ -332,8 +319,7 @@ außer uns war niemand im Haus.
 ![Eine pink angestrahlte Fassade mit Balkon, Puppenfigur und Leuchtschrift „The Dollhouse“ | „The Dollhouse“, eine der sechs Haunted Experiences. Tagsüber ist das Villa Fiasko. | right](/media/toverland/villa-fiasko-4x3.jpg)
 
 Als Erschrecker stehst du an einer Stelle, von der aus du fast nichts siehst, und
-musst trotzdem auf die Sekunde genau dran sein. Am selben Abend kam
-der Parkleiter vorbei und nahm sich Zeit für uns.
+musst trotzdem auf die Sekunde genau dran sein.
 
 > [!TIP]
 > **Mein Tipp für die Halloween Nights: der Fear Pass.** Für 69,95 € bekommst
@@ -382,8 +368,7 @@ geneigten Kurven. Du regelst dein Tempo weiter selbst mit Hebeln, eine
 Grundgeschwindigkeit sorgt dafür, dass niemand mehr auf der Strecke stehen
 bleibt, und die Bobs für zwei Personen schwingen an bestimmten Punkten
 mechanisch aus. Die Wagen kommen im Steampunk-Look, passend zu Maximus Müllers
-Erfindungen. Name und Story hat der Park bislang
-nicht verraten. Nach Booster Bike und dem Wirbelbaum ist der Swinging Bobsled der dritte Prototyp im Toverland.
+Erfindungen. Nach Booster Bike und dem Wirbelbaum ist der Swinging Bobsled der dritte Prototyp im Toverland.
 
 Das Toverland will ein Kurzurlaubsziel mit eigenem
 Hotelresort werden und veranschlagt dafür, samt neuen Attraktionen und einem
@@ -400,9 +385,7 @@ durchgehend über die Weihnachtsferien. Die Attraktionen fahren auch dann,
 solange das Wetter mitspielt. Zum Jubiläum ist an den ersten drei Wochenenden
 und Mittwochen, bis zum 16. Dezember, der Eintritt frei: Wer vorher kostenlos
 reserviert, zahlt nur pro Fahrt, mit Streifen zu je 2 €, und Troy kostet drei
-davon. Normale Tagestickets gibt es parallel. Die letzten Tage des Jahres 2025, mit
-denen unsere Messung am 26. Dezember begann, waren so voll wie der
-August.
+davon. Normale Tagestickets gibt es parallel.
 
 ## Wann du hinfahren solltest
 
@@ -416,10 +399,6 @@ und am Wochenende.
 
 **Nach Wochentag** gibt es kaum Unterschiede. Im Phantasialand ist ein Samstag spürbar voller als ein
 Dienstag. Die [Beste-Reisezeit-Seite](/beste-reisezeit) stellt die Parks nebeneinander.
-
-Verlassen kann man sich darauf nicht, sobald sich niederländische und deutsche
-Ferienkalender, Wetter und Öffnungszeiten überlagern, und im Grenzgebiet Limburg
-überlagern sie sich dauernd.
 
 ```best-days-widget slug=attractiepark-toverland
 
@@ -437,8 +416,7 @@ Nordrhein-Westfalen.
 Geh bei Öffnung direkt nach Ithaka zu **Troy**. Voll wird sie später auch
 nicht, aber eine Holzachterbahn ist morgens noch kalt und läuft schneller,
 sobald sie warmgefahren ist. Fahr sie früh **und** spät. Danach **Fēnix** in Avalon, ein paar Minuten zu
-Fuß nach Norden. Als Drittes **Booster Bike**, weil sie in unseren
-Daten die längste typische Wartezeit aller Coaster hat (ein Zug, 16 Plätze). Die **Wasserbahnen** hebst du dir für die Mittagshitze auf. In der letzten Stunde rauscht Troy hörbar schneller durch die Station als morgens. Im Dunkeln erlebst du das nur an den Halloween-Abenden und im Winter,
+Fuß nach Norden. Als Drittes **Booster Bike**. Die **Wasserbahnen** hebst du dir für die Mittagshitze auf. Im Dunkeln fährst du Troy nur an den Halloween-Abenden und im Winter,
 wenn der Park erst nach Sonnenuntergang schließt.
 
 ## Praktisches: Tickets, Anreise, Essen
@@ -523,11 +501,10 @@ Unterschied. Tag für Tag steht das im [Wartezeiten-Kalender](ref:attractiepark-
 
 ### Braucht man im Toverland einen Fast Pass?
 
-Es gibt keinen. Das Toverland verkauft überhaupt keinen Fast Pass; die einzige
+Es gibt keinen; die einzige
 Ausnahme ist der **Fear Pass** für die Haunted Experiences während der
 Halloween Nights (69,95 €, für 2026 ausverkauft). Eine kostenlose Single-Rider-Spur gibt es nur am
-Freifallturm Dragonwatch. Bei den Medianen, die an den Headlinern stehen, brauchst du an einem normalen
-Tag ohnehin keine Abkürzung.
+Freifallturm Dragonwatch. An einem normalen Tag brauchst du ohnehin keine Abkürzung.
 
 ### Ist Troy die beste Holzachterbahn Europas?
 

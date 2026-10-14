@@ -63,7 +63,7 @@ The first years went badly. Between 1994 and 1996, visits fell to around 600,000
 
 The new owners put up the two 60-metre towers now called Oil Tower in 1997. In 1998 came the wild mouse Pakal, now [Gold Digger](ref:mirabilandia/gold-digger), and the entrance area got its pirate theme, the Baia dei Pirati. In 1999 the Eurowheel Ferris wheel and the water ride Niagara, now [El Dorado Falls](ref:mirabilandia/el-dorado-falls), opened. Katun followed in 2000. In 2003 the water park Mirabilandia Beach opened, called Mirabeach since 2011.
 
-Parques Reunidos bought the park in 2006. The German Wikipedia, citing the Spanish newspaper Cinco Días, puts the price at around 100 million euros. iSpeed replaced Sierra Tonante, which had stood idle since 2007 (opened in 2008 according to the park, 2009 according to Wikipedia). Master Thai (2011), Divertical (2012), the children's area Dinoland (2014), the western area Far West Valley (2016) and, in 2019, Ducati World with Desmo Race followed. The Nickelodeon partnership began in 2022, and Nickelodeon Land opened in 2025. EQT is looking for a buyer for Parques Reunidos; more in our post [Movie Park Germany's owner Parques Reunidos is up for sale](/news/parques-reunidos-sale-movie-park).
+Parques Reunidos bought the park in 2006. The German Wikipedia, citing the Spanish newspaper Cinco Días, puts the price at around 100 million euros. iSpeed replaced Sierra Tonante, which had stood idle since 2007 (opened in 2008 according to the park, 2009 according to Wikipedia). Master Thai (2011), Divertical (2012), the children's area Dinoland (2014), the western area Far West Valley (2016) and, in 2019, Ducati World with Desmo Race followed. The Nickelodeon partnership began in 2022, and Nickelodeon Land opened in 2025. [EQT is looking for a buyer for Parques Reunidos](/news/parques-reunidos-sale-movie-park).
 
 ## The coasters
 
@@ -87,7 +87,7 @@ The theme is the Mayan city of Sian Ka'an. In the Mayan calendar a katun is a pe
 
 ### iSpeed
 
-iSpeed is an Intamin launch coaster with a magnetic drive. It accelerates, by the park's account, to 100 km/h in 2.2 seconds, reaches up to 110 km/h (RCDB) and climbs to 55 metres. The track is 980 metres long and has two inversions. The park's own figure is 120 km/h, and the ride takes 77 seconds.
+iSpeed is an Intamin launch coaster with a magnetic drive. By the park's figures it accelerates to 100 km/h in 2.2 seconds and reaches 120 km/h, by RCDB's 110. The track is 980 metres long, climbs to 55 metres and has two inversions, and the ride takes 77 seconds.
 
 iSpeed replaced Sierra Tonante in 2009, the wooden coaster from 1992. You can ride from 140 centimetres up to a maximum of 195 centimetres, and from age twelve.
 
@@ -130,17 +130,15 @@ Behind the entrance square, the Baia dei Pirati with the X Point for Flash Passe
 - **Dinoland** (since 2014) is the area for small children with Reptilium, Raptotana, Rexplorer, Bicisauro and Monosauro.
 - **Nickelodeon Land** (since 2025, 25,000 square metres) has areas for SpongeBob, PAW Patrol, Dora and the Ninja Turtles.
 
-[Buffalo Bill Rodeo](ref:mirabilandia/buffalo-bill-rodeo) is a Zamperla Disk'O Coaster (2016), a spinning disc on 80 metres of track and 13 metres of height. It turns 14 times a minute and you can ride from 120 centimetres up to 190 centimetres. Ducati World also has simulators. [Motion Sphere](ref:mirabilandia/motion-sphere) costs extra and isn't included in admission. You can ride from 130 centimetres and up to 110 kilograms, and for children under 13 the "Motion" setting stays off.
+[Buffalo Bill Rodeo](ref:mirabilandia/buffalo-bill-rodeo) is a Zamperla Disk'O Coaster (2016), a spinning disc on 80 metres of track and 13 metres of height. It turns 14 times a minute and you can ride from 120 centimetres up to 190 centimetres. The [Motion Sphere](ref:mirabilandia/motion-sphere) simulator in Ducati World costs extra. You can ride from 130 centimetres and up to 110 kilograms, and for children under 13 the "Motion" setting stays off.
 
 ## For small children: Nickelodeon Land and Dinoland
 
-Children under 100 centimetres get in free.
-
-**Nickelodeon Land** (2025, 25,000 square metres) has ten attractions, three restaurants, a shop, two meet-and-greet areas and a show stage, according to the park. The area is organised around four series. SpongeBob has Jellyfish Jam (from 100 centimetres, children under six and under 120 centimetres with an adult) and the Bikini Bottom Express (from 75 centimetres). PAW Patrol has the Adventure Bay playground, the PAW Patrol To The Rescue coaster, the water ride Rubble's Rapids and a carousel. There's also Dora's Train Adventure, Splish Splat as a water playground and, for the Ninja Turtles, the Cowabunga Carts. The park's website calls the area "Italy's Best New Family Attraction 2025".
+**Nickelodeon Land** has ten attractions, three restaurants, a shop, two meet-and-greet areas and a show stage, according to the park. The area is organised around four series. SpongeBob has Jellyfish Jam (from 100 centimetres, children under six and under 120 centimetres with an adult) and the Bikini Bottom Express (from 75 centimetres). PAW Patrol has the Adventure Bay playground, the PAW Patrol To The Rescue coaster, the water ride Rubble's Rapids and a carousel. There's also Dora's Train Adventure, Splish Splat as a water playground and, for the Ninja Turtles, the Cowabunga Carts. The park's website calls the area "Italy's Best New Family Attraction 2025".
 
 In **Dinoland**, [Reptilium](ref:mirabilandia/reptilium) is open from 120 centimetres, while Raptotana (the spinning nests with Mama Velociraptor), Bicisauro and Monosauro are open from 90 centimetres. Children under ten need an adult with them on most rides there.
 
-If you're coming with children, set height and weight in the access filter on the park's website and it shows which rides they can take.
+On the park's website you can filter the rides by height and weight.
 
 ## Shows
 
@@ -152,19 +150,19 @@ For the Halloween season from 26 September to 1 November, the park's website lis
 
 Halloween runs from 26 September to 1 November in 2026. Admission includes Suburbia, which according to the park is the biggest horror zone of any theme park in Italy. It has more than 30,000 square metres, over 100 performers, five scare trails and, new this year, the Ossarium zone. Suburbia is open from 7 pm on 26 September, on all Saturdays in October and on 1 November.
 
-Three horror houses cost extra: [The Walking Dead](ref:mirabilandia/the-walking-dead), [Paranormal Activity: Next of Kin](ref:mirabilandia/paranormal-activity-next-of-kin) (new in 2026, based on the film) and [Mr. Blackmoon's Hypnotic Circus](ref:mirabilandia/mr-blackmoons-hypnotic-circus). None of the three is included in park admission, and the Flash Pass isn't valid for The Walking Dead. Holders of a 2027 season pass get the Hypnotic Circus once a day for free in the 2026 season (from age 12, except on 31 October).
+Three horror houses cost extra: [The Walking Dead](ref:mirabilandia/the-walking-dead), [Paranormal Activity: Next of Kin](ref:mirabilandia/paranormal-activity-next-of-kin) (new in 2026, based on the film) and [Mr. Blackmoon's Hypnotic Circus](ref:mirabilandia/mr-blackmoons-hypnotic-circus). The Flash Pass isn't valid for The Walking Dead. Holders of a 2027 season pass get the Hypnotic Circus once a day for free in the 2026 season (from age 12, except on 31 October).
 
 On 30 October the park opens an extra session for the Scary Night at 7:30 pm, with its own ticket. Season passes aren't valid that evening. Shuttle buses run from Lido di Savio/Lido di Classe station to the park at 7:45 and 8:45 pm, and back at 10 and 11 pm.
 
 ## Wait times by ride
 
-The park shows the current wait time for each ride in its app. The table below shows the rides with the longest wait times, each with at least 20 measurement days out of the 42.
+The park shows the current wait time for each ride in its app. Every ride in the table below has at least 20 of the 42 measurement days.
 
 ```ride-waits-widget park=mirabilandia top=8 columns=land,peak,days
 
 ```
 
-Desmo Race tops the table by a clear margin. Rio Bravo, iSpeed and Autosplash follow close together, then Gold Digger, Divertical, El Dorado Falls and Cowabunga Carts. Katun and Master Thai aren't among the ten rides with the longest waits.
+Katun and Master Thai aren't among the ten rides with the longest waits.
 
 ```stats-widget slug=mirabilandia show=attractions
 
@@ -182,7 +180,7 @@ For none of the eight rides that our park page has a rope-drop analysis for does
 
 ## When to go
 
-In our data Friday is the quietest weekday and Tuesday the busiest. Saturday and Wednesday are above the middle, Sunday below, Monday and Thursday in between. Each rests on five to nine days, and until the end of October the park is open on weekends only. A single packed Friday can change the order.
+In our data Friday is the quietest weekday and Tuesday the busiest. Saturday and Wednesday are above the middle, Sunday below, Monday and Thursday in between. Each rests on five to nine days.
 
 ```stats-widget slug=mirabilandia show=weekdays
 
@@ -218,9 +216,9 @@ Mirabilandia calls its fast pass the Flash Pass. You buy it on top of admission.
 
 There are three versions. The **Gold Flash Pass** is a personal wristband with unlimited rides on the attractions with a Flash Pass entrance and costs from 49.90 euros online, from 59.90 euros in the park. The **Regular Flash Pass** is a transferable card with one ride per attraction, from 24.90 euros online, from 29.90 euros in the park. The **One Shot Flash Pass** is valid for one ride on a single attraction and is sold only in the park, from 5.90 euros, at the X Point, at the ticket office, in the Mayan Shop and at the Autosplash photo point.
 
-Desmo Race, Blu River and The Walking Dead are excluded. Desmo Race is the ride with the longest queue in our table. The Flash Pass is valid on Katun, iSpeed, Divertical, Master Thai, Rio Bravo, Autosplash, El Dorado Falls, Gold Digger and most of the family rides. Passes bought online aren't valid on the day of purchase but on a visit day of your choice, while passes bought in the park are valid that day only. The number of passes is limited.
+Desmo Race, Blu River and The Walking Dead are excluded. The Flash Pass is valid on Katun, iSpeed, Divertical, Master Thai, Rio Bravo, Autosplash, El Dorado Falls, Gold Digger and most of the family rides. Passes bought online aren't valid on the day of purchase but on a visit day of your choice, while passes bought in the park are valid that day only. The number of passes is limited.
 
-Where the wait is around a quarter of an hour, the pass doesn't save much. It does the most on the rides that come after Desmo Race in our table: Rio Bravo, iSpeed and Autosplash. The "VIP" package combines admission, the all-inclusive meal plan and a Regular Flash Pass.
+Where the wait is around a quarter of an hour, the pass doesn't save much. It does the most at Rio Bravo, iSpeed and Autosplash. The "VIP" package combines admission, the all-inclusive meal plan and a Regular Flash Pass.
 
 ## Tickets and season pass
 
@@ -257,7 +255,7 @@ You eat at restaurants and kiosks, among them the Locanda del Faro, the Paddock 
 
 ## New rides and closures
 
-2025 brought Nickelodeon Land and with it the Cowabunga Carts. New in 2026 are, among other things, Paranormal Activity: Next of Kin, the Ossarium zone in Suburbia, the show "I misteri di Wondy" and the Coca-Cola Freestyle cup. The monorail Mirabilandia Express (1992 to 2019), Colazione da Papere (2003 to 2023) and Casa Matta (2001 to 2024) have closed, according to the Italian Wikipedia. Sierra Tonante stood from 1992 to 2007.
+2025 brought Nickelodeon Land and with it the Cowabunga Carts. New in 2026 are, among other things, Paranormal Activity: Next of Kin, the Ossarium zone in Suburbia, the show "I misteri di Wondy" and the Coca-Cola Freestyle cup. The monorail Mirabilandia Express (1992 to 2019), Colazione da Papere (2003 to 2023) and Casa Matta (2001 to 2024) have closed, according to the Italian Wikipedia.
 
 In its 2027 season pass campaign, which started in early August, the park doesn't name a new ride for 2027.
 

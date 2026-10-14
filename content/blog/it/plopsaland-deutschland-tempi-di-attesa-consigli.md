@@ -49,11 +49,10 @@ seo:
 ---
 
 A Haßloch la strada d'accesso si chiama sempre
-Holiday-Park-Straße, e il numero civico non è cambiato. Anche l'ottovolante per cui arriva la
-maggior parte delle persone sta nello stesso punto dal 2001. Il parco stesso si chiama [Plopsaland Deutschland](ref:plopsaland-deutschland) dal 28 giugno 2025. Il nome viene dal gestore
+Holiday-Park-Straße, e il numero civico non è cambiato. Il parco stesso si chiama [Plopsaland Deutschland](ref:plopsaland-deutschland) dal 28 giugno 2025. Il nome viene dal gestore
 belga, proprietario del parco già da novembre 2010.
 
-Chi nel 2026 cerca un biglietto digitando «Holiday Park» trova anche pagine degli anni passati, con prezzi non più validi. Un biglietto con data costa nel 2026 online da 36 euro. Il gestore
+Chi nel 2026 cerca un biglietto digitando «Holiday Park» trova anche pagine degli anni passati, con prezzi non più validi. Il gestore
 non usa più il vecchio nome da quando l'ha cambiato.
 
 Il parco si trova nel Palatinato, tra Neustadt an der Weinstraße e Ludwigshafen, su 40 ettari.
@@ -71,7 +70,7 @@ Renania-Palatinato. Qui misuriamo i tempi di attesa da due anni, al momento su 5
 Intamin del 2001. Il parco
 indica 55 metri di altezza, 120 km/h, 1.220 metri di percorso, 1:15 minuti di corsa e fino a
 4,5 g. La Wikipedia tedesca riporta 53 metri. È l'altezza del binario, mentre il parco misura
-dal punto più alto del lift. Dove i due divergono, usiamo quello del parco.
+dal punto più alto del lift.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -82,7 +81,7 @@ il secondo più alto. Non è più né l'uno né l'altro da parecchio. Ha però r
 _Amusement Today_ come miglior ottovolante d'Europa, e l'_Internet Coaster Poll_ lo ha eletto
 più di una volta il migliore del mondo. Il parco conta ormai 40 riconoscimenti.
 
-La macchina non ha inversioni, né lancio, né scambio. Dopo la prima discesa ha tre collinette in cima alle quali ci si solleva dal sedile, e un'elica finale in cui invece ci si
+Dopo la prima discesa ha tre collinette in cima alle quali ci si solleva dal sedile, e un'elica finale in cui invece ci si
 viene schiacciati.
 
 Ha aperto il 18 giugno 2001, per i 30 anni del parco, ed è costata circa 20 milioni di marchi. Il
@@ -95,7 +94,6 @@ Uniti, e la prima discesa ha una pendenza di 82 gradi. Viaggiano due treni da se
 
 Si sale da 140 centimetri, e sotto nemmeno accompagnati. Funziona solo a partire da 8 gradi
 centigradi, quindi nelle giornate fredde di marzo e novembre resta ferma.
-Anche qui vale l'Express Pass.
 
 ## Gli altri tre ottovolanti
 
@@ -118,7 +116,7 @@ Nelle nostre misurazioni qui si attende più che a qualsiasi altra attrazione de
 **Tabaluga's Rollercoaster** di Zierer è con 9 metri e 39 km/h il più piccolo dei quattro (modello Force Two, 222 metri di binario, un
 minuto e 30 secondi di corsa) e
 l'unico al coperto: appartiene al padiglione Holiday Indoor, aperto nel 2018 su 5.000 metri
-quadrati. Nei giorni di pioggia il padiglione è pieno.
+quadrati.
 
 ## Attrazioni d'acqua e torri
 
@@ -138,11 +136,10 @@ Accanto c'è **Splash Battle** nel Wickieland, dove gli equipaggi delle barche e
 bagnano a vicenda, e **Die große Welle**, un Disk'O di Zamperla. Entrambe stanno, come Wickie
 Splash, nel Wickieland.
 
-**Sky Fly** di Gerstlauer, dal 2015 al posto della Bounty Tower venduta, è un'attrazione in cui ci si ribalta da sé. La **Lighthouse Tower** di Funtime sta lì dal 2006 ed è il punto da cui
+**Sky Fly** di Gerstlauer, dal 2015, è un'attrazione in cui ci si ribalta da sé. La **Lighthouse Tower** di Funtime sta lì dal 2006 ed è il punto da cui
 si abbraccia l'area in una volta.
 
-Per i bambini piccoli il Majaland del 2012 ha undici attrazioni, e a quelle si
-aggiungono Blinky Bill, Super Wings, The Beach e il padiglione coperto. **L'Avventura dei
+**L'Avventura dei
 Puffi** è un dark ride di Mack Rides che fino a fine 2022 si chiamava Burg Falkenstein e ha
 riaperto per la stagione 2025 con una nuova tematizzazione.
 
@@ -153,12 +150,12 @@ riaperto per la stagione 2025 con una nuova tematizzazione.
 ## Le aree tematiche, e che cosa c'è in ciascuna
 
 Il parco è organizzato a stella: le aree partono dalla piazza delle Fontane dietro
-l'ingresso in tutte le direzioni, e si attraversa il centro più volte al giorno. Su 40 ettari le distanze sono brevi.
+l'ingresso in tutte le direzioni, e si attraversa il centro più volte al giorno.
 
 Sulla **piazza delle Fontane** stanno la Free Fall Tower e le fontane danzanti, il gioco
 d'acqua che torna in ogni parco Plopsa.
 
-Il **Majaland** è nato nel 2012 sull'area del vecchio ingresso e ha undici attrazioni per
+Il **Majaland** ha undici attrazioni per
 bambini piccoli, per lo più di Zamperla e Zierer: il Blütensplash di Maya come Flying Fish, la
 torre dei fiori come sorella minore della Free Fall Tower, l'Albero Pazzo, il Volo delle
 farfalle, Le Rane, le Mini-Cars, il Volo della coccinella di Lara, la Zattera di Willi e il
@@ -196,24 +193,18 @@ apertura. I numeri qui sotto coprono tutto quel periodo, non una sola stagione.
 
 ```
 
-Nella maggior parte delle attrazioni la mediana è di pochi minuti, e anche la fascia più carica di una giornata normale resta breve. Si attende più a lungo a 100% Wolf.
-
-Qui 804.218 visitatori all'anno si dividono 57 attrazioni, in un parco grande 6 milioni se ne dividono cento. Chi arriva da Europa-Park o da Phantasialand e lì mette in conto molto tempo per le attrazioni di punta, qui ne ha bisogno di una frazione.
+Qui 804.218 visitatori all'anno si dividono 57 attrazioni, in un parco grande 6 milioni se ne dividono cento.
 
 Quanto si riesce a fare in un giorno dipende quindi qui dagli orari di apertura, e quasi per niente
 dalle code. Otto ore, una delle quali per pranzo e spostamenti, lasciano
 spazio a venti corse e più con queste attese. Chi arriva con una lista di otto
 attrazioni ha finito nel primo pomeriggio e decide allora che cosa ripetere.
 
-In una fredda giornata di marzo, invece, quando Expedition GeForce e Sky Scream sono fermi per il
-freddo, per gli adulti non resta molto.
-
 ```hourly-profile-widget slug=plopsaland-deutschland top=8
 
 ```
 
-Nel corso della giornata le attese vanno come nella maggior parte dei parchi: salgono la mattina,
-tengono a mezzogiorno e calano nel pomeriggio. Chi fa i tre grandi nella prima ora dopo
+Chi fa i tre grandi nella prima ora dopo
 l'apertura ci passa praticamente senza fare la fila. In un parco di queste dimensioni basta essere
 lì all'apertura.
 
@@ -228,7 +219,7 @@ illimitate, ogni volta a persona e al giorno. Vale su otto attrazioni: 100% Wolf
 Wickie Splash, Die große Welle, bigFM Expedition GeForce, Sky Scream, Free Fall Tower e Sky Fly.
 Tra due corse devono passare almeno 15 minuti, e il parco ne vende solo un numero limitato.
 
-Anche sull'attrazione con le attese più lunghe, in una giornata normale la coda è breve. Con il Classic da 35 euro si salta quindi nove volte una coda breve, in una giornata che finisce comunque alle 18. Un sabato di luglio o una Fright Night cambiano il calcolo; un venerdì di settembre non lo regge. Il prezzo resta lo stesso tutto l'anno.
+Con il Classic da 35 euro in una giornata normale si salta nove volte una coda breve, e il parco chiude comunque alle 18. Il prezzo resta lo stesso tutto l'anno.
 
 ## Quando andare
 
@@ -238,7 +229,7 @@ Anche sull'attrazione con le attese più lunghe, in una giornata normale la coda
 
 ### Il giorno della settimana
 
-Il sabato è di gran lunga il giorno più carico, misurato su 39 sabati. La maggior parte degli altri giorni resta nettamente sotto.
+Il sabato è di gran lunga il giorno più carico, misurato su 39 sabati.
 
 Il giorno più tranquillo è il **venerdì**. Su 38 venerdì misurati la mediana è sotto martedì, mercoledì e giovedì. Chi può prendersi un giorno di ferie e sceglie tra venerdì e mercoledì, prenda il venerdì.
 
@@ -254,10 +245,7 @@ venerdì sera è il momento più carico della settimana.
 
 Luglio è il mese più carico e supera, come ottobre, il resto dell'alta stagione. **Settembre** è il mese più tranquillo in cui il parco apre ancora ogni giorno, e anche la fascia alta di una giornata è più bassa che in qualsiasi altro mese da aprile a ottobre. In più, il tempo nel Palatinato a settembre è spesso migliore che a giugno.
 
-Marzo e novembre sono mesi di margine. Allora Expedition GeForce e Sky Scream funzionano solo se
-il binario raggiunge gli otto gradi.
-
-Gennaio e febbraio restano vuoti perché la stagione principale è ferma. La stagione 2026
+A gennaio e febbraio la stagione principale è ferma. La stagione 2026
 va dal 22 marzo al 1° novembre. L'inverno precedente una parte dell'area era aperta come
 Majaland Pfalz, con le attrazioni del Majaland. I biglietti invernali valevano fino al
 22 marzo 2026 e costavano da 24 euro con data, 32 euro senza data.
@@ -278,8 +266,7 @@ Di giorno si aggiungono la festa d'autunno Plopsa e una mostra di zucche nel vil
 zucche, adatte anche ai bambini piccoli. I maze, case del terrore da attraversare a piedi, aprono
 solo nelle Fright Nights: Skrämma, NEXUS AI, Murder
 District, Academy of Freaks, Scarecrow, Titty Twister e LOST: Deep in the woods, più la Holly's
-Halloween Party e un incontro con King Pumpkin per i più piccoli. Sulla nostra pagina del parco
-compaiono come attrazioni a sé, e negli altri giorni come chiusi.
+Halloween Party e un incontro con King Pumpkin per i più piccoli.
 
 In una Fright Night parte delle attrazioni diurne chiude prima del parco, DinoSplash per esempio
 alle 20. Invece di otto ore se ne hanno dodici, e le ultime quattro sono per i maze. Quello che il parco ha annunciato per questa
@@ -294,10 +281,7 @@ più tardi si chiamò Liliputstadt. La famiglia gestiva da generazioni un circo 
 bassa statura, e il parco gli diede un posto fisso; quell'area esistette fino al 1996. Il nome
 Holiday Park arrivò nel 1973.
 
-Poi il parco è cresciuto: nel 1973 la monorotaia
-Holiday Transit, nel 1978 bruciò la wilde Maus, nel 1979 arrivò il Superwirbel come primo
-ottovolante tedesco con inversioni, nel 1984 il Donnerfluss, nel 1997 la Free Fall Tower, nel
-2001 la Expedition GeForce. Dai 70.000 metri quadrati della prima stagione si passò a oltre
+Nel 1973 arrivò la monorotaia Holiday Transit, nel 1978 bruciò la wilde Maus. Dai 70.000 metri quadrati della prima stagione si passò a oltre
 400.000 entro il 2015.
 
 Nel 1972 arrivarono un teatro da 600 posti e un nuovo delfinario da 1.800 posti, nel 1978 il Kino Monumental con uno schermo a 180 gradi. Nel 1983 nacquero il lago dell'Holiday Park, di 30.000 metri quadrati, e l'Aqua-Stadion per lo spettacolo di sci nautico. Il delfinario chiuse nel 1995, e l'Aqua-Stadion fu demolito nel 2022.
@@ -374,8 +358,7 @@ Il parco apre alle 10 e chiude, fuori dalle Fright Nights, alle 18.
    GeForce. Il pomeriggio è la seconda fase tranquilla della giornata.
 7. **17:00** L'Avventura dei Puffi o Splash Battle per ultime, poi all'uscita.
 
-In una Fright Night tutto slitta di quattro ore, perché i maze aprono solo la sera. Parte delle
-attrazioni diurne chiude allora prima del parco.
+In una Fright Night tutto slitta di quattro ore, perché i maze aprono solo la sera.
 
 ## Pratico: come arrivare, biglietti, orari
 
@@ -443,8 +426,7 @@ Su tutti i giorni misurati nel parco si attende in media ben meno di mezz'ora, e
 ### Conviene l'Express Pass?
 
 Più un sabato di luglio e nelle Fright Nights che un venerdì di settembre. Con il Classic da 35 euro
-si hanno nove corse dall'ingresso ridotto, con almeno 15 minuti tra una e l'altra. Con i tempi
-misurati di questo parco si risparmia ben meno di mezza giornata.
+si hanno nove corse dall'ingresso ridotto, con almeno 15 minuti tra una e l'altra.
 
 ### Quali ottovolanti ha il parco?
 

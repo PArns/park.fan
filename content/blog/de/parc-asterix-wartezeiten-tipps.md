@@ -138,7 +138,7 @@ Am 2. Dezember 2025 hat die Compagnie des Alpes angekündigt, aus Belantis bei
 Leipzig bis 2030 oder 2031 den ersten Parc Astérix außerhalb Frankreichs zu
 machen. Gekauft hat sie den Park im April 2025 von Parques Reunidos. Konzernchef François Fassier nannte das nach
 franceinfo ein „sehr komplexes und sehr ambitioniertes Projekt“, gedacht nur für
-den deutschen Markt. Unsere [Meldung zu Parques Reunidos](/blog/parques-reunidos-verkauf-movie-park) erklärt, wie es zu dem Verkauf kam.
+den deutschen Markt.
 
 ## Fünf Themenbereiche und das alte Paris
 
@@ -168,8 +168,7 @@ reißt ihn ab. 2028 soll dort Londinium stehen.
 
 ## Die Achterbahnen
 
-Die Mindestgrößen an den neun Achterbahnen, die RCDB im Parc Astérix zählt, sind die des Parks: die erste Zahl gilt, wenn ein Erwachsener mitfährt, die zweite für
-Kinder allein. Wo nur eine steht, gibt es keine Ausnahme mit Begleitung.
+RCDB zählt im Parc Astérix neun Achterbahnen, die Mindestgrößen unten stammen vom Park. Die erste Zahl gilt, wenn ein Erwachsener mitfährt, die zweite für Kinder allein. Wo nur eine steht, gibt es keine Ausnahme mit Begleitung.
 
 ### Toutatis
 
@@ -366,7 +365,7 @@ Januar 2027, genau in den französischen Weihnachtsferien, an sechzehn Tagen. Im
 
 Der Samstag ist in unseren Messungen der vollste Tag, mit Abstand, und der
 Mittwoch der ruhigste. Wenn du dir den Tag aussuchen kannst,
-nimm den Mittwoch. Die ruhigsten Tage der anderen Parks stehen auf der [Beste-Reisezeit-Seite](/beste-reisezeit).
+nimm den Mittwoch.
 
 ### Der Monat
 
@@ -401,7 +400,7 @@ meist zu Ostern.
 ```
 
 Der Park öffnet in der Hauptsaison um 10 Uhr, der Parkplatz um 9. Zu Peur sur
-le Parc und an Weihnachten gelten andere Zeiten, sie stehen weiter unten.
+le Parc und an Weihnachten gelten andere Zeiten.
 
 Um zehn gehst du in die Grèce. Dort stehen drei Bahnen nah beieinander, deren
 Warteschlangen in der ersten halben Stunde kurz sind: Tonnerre 2 Zeus, Pégase
@@ -415,12 +414,9 @@ Vorsprung dort weg.
 
 Danach kommt die Descente du Nil an die Reihe. Sie ist bis etwa eine Stunde nach
 Öffnung kurz und hat ihre vollste Zeit am frühen Nachmittag, wenn es warm ist.
-OzIris ist in der ersten halben Stunde ebenfalls kurz; wenn du die verpasst,
-heb sie dir für den späten Nachmittag auf.
+Wenn du OzIris in der ersten halben Stunde verpasst, heb sie dir für den späten Nachmittag auf.
 
-Mittags laufen die Shows. Toutatis kommt am frühen Nachmittag dran, denn nach
-unserer Analyse liegt das beste Fenster dort etwa dreieinhalb Stunden nach
-Öffnung.
+Mittags laufen die Shows. Toutatis kommt am frühen Nachmittag dran.
 
 Gegen Abend folgen La Trace du Hourra und noch einmal OzIris. In der letzten
 Stunde sind die meisten Warteschlangen wieder kurz, nur Toutatis und Cétautomatix
@@ -454,8 +450,7 @@ bis fünfzehn Minuten an, und die Zahl der Pässe pro Tag ist begrenzt.
 An einem Wochentag außerhalb der Ferien würde ich mir das Geld sparen und mit
 der Reihenfolge oben auskommen. An einem Samstag im August oder zwischen
 Weihnachten und Neujahr lohnt sich am ehesten die Stufe Or, weil sie die großen
-Bahnen außer Toutatis abdeckt, und Toutatis fährst du über die Single-Rider-Spur. Die gibt es laut Park nur an Toutatis und
-OzIris, und an vollen Tagen kann sie geschlossen bleiben.
+Bahnen außer Toutatis abdeckt, und Toutatis fährst du über die Single-Rider-Spur. Laut Park kann sie an vollen Tagen geschlossen bleiben.
 
 ## Peur sur le Parc und Noël Gaulois
 
@@ -474,7 +469,7 @@ Drei Häuser stehen dieses Jahr im Programm: Le Tombeau des Dieux (nicht unter
 für Pompéi kostet der Eintritt abends 6 Euro mit fester Uhrzeit). Neu sind La
 Forêt sans Retour, ein Weg durch den Wald nur zu den Nocturnes, ebenfalls ab 16
 empfohlen, und Les Bas-Fonds du Souk, eine Erschreckzone im Égypte-Viertel. La
-Colère d'Anubis ist mit der Rue de Paris verschwunden. Unser [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026) beschreibt, was die anderen Parks im Herbst machen.
+Colère d'Anubis ist mit der Rue de Paris verschwunden.
 
 ### Noël Gaulois
 
@@ -484,7 +479,7 @@ Viking, und die Schlittschuhe sind kostenlos. In der Warteschlange von Romus et
 Rapidus baut der Park die Gärten des Weihnachtsmanns auf, dazu kommen eine
 Reifenrutsche, La Glissade d'Obélix, ein Umzug und ein Weihnachtsmarkt. Die
 Achterbahnen fahren nach Angaben des Parks „in der Regel“, die Wasserbahnen
-nicht. Ein Weihnachtsticket ohne festes Datum kostet 57 Euro. Im [Winter-Guide](/blog/winter-freizeitparks-2026) stehen die anderen Parks, die im Winter öffnen.
+nicht. Ein Weihnachtsticket ohne festes Datum kostet 57 Euro.
 
 Zwischen dem 9. November und dem 18. Dezember 2026 ist der Park zu, ebenso ab
 dem 4. Januar bis zum Saisonstart im Frühjahr. Seit 2007 bleibt er bis nach den

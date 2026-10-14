@@ -70,7 +70,7 @@ parc en 2024. Nous mesurons les temps d'attente ici depuis le 6 octobre 2024, ac
 
 Le 11 décembre 1984, René Monory, président du conseil général de la Vienne, pose la première
 pierre. Il avait imaginé dès le début des années quatre-vingt une ville du futur, dont le parc
-était la première partie. Il ouvre le 31 mai 1987, avec le pavillon, le Kinémax et une aire de
+était la première partie. À l'ouverture, il y a le pavillon, le Kinémax et une aire de
 jeux. Suivent en 1988 le premier Cinéma Dynamique, en 1990 l'Omnimax et
 la tour panoramique Gyrotour, en 1996 l'IMAX 3D, en 2000 la gare TGV avec une passerelle piétonne
 qui mène directement au parc.
@@ -100,7 +100,7 @@ parfois regarder depuis l'attraction quand il ne peut pas monter.
 ### Objectif Mars
 
 [Objectif Mars](ref:futuroscope/destination-mars) est en service depuis 2020 et, avec le petite montagne russe pour enfants Le Balancier à Futuropolis, c'est la seule montagne russe du parc. Intamin l'a
-construite : un launched coaster à véhicules rotatifs, donc un spinning coaster. Pour le parc, ce sont des montagnes russes familiales, avec une vitesse maximale de 55 km/h. Le parcours traverse un bâtiment puis passe à l'extérieur. Son ouverture était prévue le 28 mars
+construite : un launched coaster à véhicules rotatifs, donc un spinning coaster. Elles atteignent 55 km/h, et le parc les classe parmi les montagnes russes familiales. Le parcours traverse un bâtiment puis passe à l'extérieur. Son ouverture était prévue le 28 mars
 2020 ; à cause de la fermeture liée à la pandémie, elle a démarré en juin 2020, d'abord
 seulement le week-end.
 
@@ -198,8 +198,7 @@ taille.
 
 Pour les enfants trop petits pour une attraction, il existe la « Solution Jeunes Enfants », en
 anglais Baby Switch. On la demande à l'entrée de l'attraction. Les enfants de 5 à 12 ans paient
-le tarif enfant, l'entrée est gratuite avant cinq ans, et tous les restaurants proposent un menu
-pour les enfants de moins de douze ans.
+le tarif enfant, l'entrée est gratuite avant cinq ans.
 
 ```map-widget slug=futuroscope
 
@@ -230,13 +229,8 @@ attractions pour lesquelles le parc signale un temps d'attente.
 
 ```
 
-Objectif Mars et L'Extraordinaire Voyage se partagent la première place. Derrière viennent Arthur,
-Chasseurs de Tornades, La Maison à l'envers, Aventure Éclabousse et Danse avec les Robots, très
-proches les uns des autres.
-
-Selon le parc, La Maison à l'envers n'a pas de limite de
-taille et sert de solution de repli aux familles dont les enfants n'ont pas encore le droit de
-monter dans les attractions. Le Pass Premium+ n'y est pas valable.
+La Maison à l'envers figure aussi en haut du classement et sert de solution de repli aux
+familles dont les enfants n'ont pas encore le droit de monter dans les attractions.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
@@ -311,8 +305,8 @@ variante où un magicien perturbe le voyage. Le parc la recommande à partir de 
 coûte une contribution en faveur des personnes déficientes visuelles, que le billet ne comprend
 pas.
 
-Futuroween commence le samedi 17 octobre, un jour avant les vacances de la Toussaint. À partir du
-18 octobre, le parc est ouvert tous les jours de 9 h 45 à 22 h selon le calendrier.
+Les vacances de la Toussaint commencent le 18 octobre, un jour après le début de Futuroween.
+À partir de là, le parc est ouvert tous les jours de 9 h 45 à 22 h selon le calendrier.
 
 ## Billets et prix
 
@@ -374,8 +368,7 @@ la restauration rapide et à emporter au **Food Court Festival**, chez **La Crê
 **Bermuda Bar & Food**. Tous les restaurants proposent un menu enfant pour les moins de douze ans.
 Avec la Carte Saison, on a dix pour cent de réduction.
 
-Le **Space Loop**, entre le parc et l'Aquascope, est présenté par l'exploitant comme un « Rollercoaster
-Restaurant ». Il a ouvert le 29 avril 2022, en même temps que l'hôtel Station Cosmos.
+Le **Space Loop**, entre le parc et l'Aquascope, est présenté par l'exploitant comme un « Rollercoaster Restaurant ».
 
 Trois hôtels font partie du resort : le **Station Cosmos**, dont les chambres sont aménagées comme
 des cabines de station spatiale (forfait hôtel et billet à partir de 196 euros par adulte),
@@ -501,8 +494,7 @@ Poitiers, il faut 20 minutes.
 ### Faut-il réserver l'Aquascope à part ?
 
 Oui. L'Aquascope a son propre billet avec créneau horaire, car la capacité est limitée, et il n'y
-a pas de caisse du jour. Le billet adulte commence à 39 euros. Il n'est pas compris dans le billet
-du parc.
+a pas de caisse du jour. Le billet adulte commence à 39 euros.
 
 ### Y a-t-il des chiens et des poussettes ?
 

@@ -10,7 +10,6 @@ excerpt: >-
   El sábado 26 de septiembre arranca en Bottrop el 28.º Halloween Horror
   Festival: nueve pasajes del terror (el nuevo es Jason Universe, para mayores de
   16), el espectáculo en directo PHOBIA y 22 noches hasta el 8 de noviembre.
-  Fechas, entradas y la prohibición de disfraces.
 tags:
   - noticias
   - movie-park
@@ -24,7 +23,7 @@ rideLinks:
 coverImage:
   src: /media/movie-park-germany/van-helsings-factory.jpg
   alt: 'La entrada de Van Helsing’s Factory: una fachada oxidada de gasolinera con letras PETROL inclinadas y visitantes en la acera.'
-  caption: 'Van Helsing’s Factory a principios de septiembre. Desde el sábado, por las noches, el cazador de monstruos está en clara desventaja numérica.'
+  caption: 'Van Helsing’s Factory a principios de septiembre.'
   credit: 'Patrick Arns'
 seo:
   title: 'Movie Park Halloween Horror Festival 2026: fechas y entradas'
@@ -47,10 +46,7 @@ primera hora de la noche más de 300 monstruos rondan por Bottrop-Kirchhellen:
 el **Halloween Horror Festival** empieza su 28.ª edición, con el lema «Legends
 Never Die».
 
-Poco tiene que ver con la
-[fiesta familiar de Disney](/blog/disneyland-paris-halloween-2026), que empieza
-el mismo sábado. En Bottrop, por la noche, hay sangre falsa, motosierras y
-niebla, y las scare zones no están pensadas para niños de primaria.
+En Bottrop, por la noche, hay sangre falsa, motosierras y niebla, y las scare zones no están pensadas para niños de primaria, a diferencia de la [fiesta familiar de Disney](/blog/disneyland-paris-halloween-2026), que empieza el mismo sábado.
 
 ## Cuándo se celebra
 
@@ -63,7 +59,7 @@ Renania del Norte-Westfalia se suman los jueves 22 y 29 de octubre. En total,
 Esos días el parque abre hasta las 22:00 los viernes y sábados y hasta las 21:00
 los domingos. Las zonas de terror suelen abrir hacia las 18:00. Hasta entonces
 es un día normal de parque, y en Nickelodeon LAND hay **Halloween for Kids**
-durante el día, con manualidades en lugar de sangre falsa.
+durante el día, con manualidades.
 
 El **17 de octubre** se celebra por quinta vez la jornada **Haunters Against
 Hate**. Bottrop fue el primer parque de atracciones en organizarla, en 2022.
@@ -91,7 +87,7 @@ parque de caravanas abandonado al borde de Yosemite y sin cobertura,
 [Circus of Freaks](ref:movie-park-germany/circus-of-freaks).
 
 Lo nuevo en el escenario es **PHOBIA – The Live Horror Game Show**, en el
-Studio 7, donde el público juega en lugar de limitarse a mirar. Como los
+Studio 7, donde el público participa. Como los
 pasajes, el espectáculo necesita su propia franja horaria, y hay límites de
 edad.
 
@@ -104,9 +100,7 @@ cuestan ahora 38,90 € según el parque. En taquilla son 59,90 € a partir de
 
 Los pasajes y PHOBIA **no están incluidos**. Cada pasaje necesita su propia
 entrada con franja horaria, que se reserva en línea. Según el plano del parque,
-también se venden entradas sobrantes en atención al visitante, según disponibilidad. Las páginas de
-Halloween del parque no dan un precio por pasaje. Solo aparece en la tienda en
-línea.
+también se venden entradas sobrantes en atención al visitante, según disponibilidad. El parque solo da el precio por pasaje en su tienda en línea.
 
 Si quieres los nueve, haz la cuenta frente al **S.I.K. Pass**: 215 € con la
 entrada al parque, 185 € si ya tienes entrada o pase anual. Con él entras una
@@ -117,7 +111,7 @@ rellenar y aparcamiento cerca de la entrada principal.
 Con pase anual hay que registrar antes el día de la visita en la web del
 parque.
 
-## Lo que se queda en casa
+## Disfraces y alcohol
 
 A diferencia de Disney el 31 de octubre, el Movie Park no permite **disfraces,
 máscaras ni maquillaje de terror propios** en ninguna de las noches. Solo los
@@ -141,9 +135,6 @@ o un domingo antes de esa fecha: el 2, 4, 9, 11 o 16 de octubre.
 ```best-days-widget slug=movie-park-germany
 
 ```
-
-El [resumen de Halloween](/blog/halloween-parques-atracciones-2026) pone el
-festival al lado de Traumatica, Walibi y Toverland. En la [guía del Movie Park](/blog/movie-park-germany-tiempos-de-espera-consejos) está qué día de la semana suele ser el más tranquilo en el Movie Park y cómo es el calendario de otoño.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

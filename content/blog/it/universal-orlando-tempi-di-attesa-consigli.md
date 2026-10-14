@@ -60,8 +60,7 @@ L’Universal Orlando Resort gestisce quattro parchi: Universal Studios Florida 
 7 giugno 1990, Islands of Adventure dal 28 maggio 1999, Volcano
 Bay dal 2017 e, dal 22 maggio 2025, l’Epic Universe. Volcano Bay è un parco acquatico, le montagne russe ce l’hanno gli altri tre. Secondo Wikipedia nel 2024 Universal Studios Florida
 ha contato poco più di 9,5 milioni di visite, al 13° posto nel mondo, Islands of
-Adventure 9,45 milioni, al 14°. Per l’Epic Universe Universal finora non ha
-pubblicato alcun numero di visitatori.
+Adventure 9,45 milioni, al 14°.
 
 Nelle nostre misurazioni
 degli ultimi due anni si aspetta più a lungo all’Epic Universe e meno agli Studios.
@@ -109,14 +108,11 @@ In autunno si aspetta di più alle case delle Halloween Horror Nights, aperte fi
 
 ```
 
-In testa c’è **[Harry Potter and the Escape from
-Gringotts](ref:universal-studios-florida/harry-potter-and-the-escape-from-gringotts)**.
-È una montagna russa al coperto di Intamin che racconta la sua storia come una
+**[Harry Potter and the Escape from Gringotts](ref:universal-studios-florida/harry-potter-and-the-escape-from-gringotts)** è una montagna russa al coperto di Intamin che racconta la sua storia come una
 dark ride, sugli schermi. Un giro dura cinque minuti. Sopra l’ingresso c’è un drago di
 18 metri. L’altezza minima è 107 centimetri.
 
-Poi viene **[Revenge of the Mummy](ref:universal-studios-florida/revenge-of-the-mummy)**,
-in funzione dal 21 maggio 2004. La montagna russa al coperto è di Premier Rides.
+**[Revenge of the Mummy](ref:universal-studios-florida/revenge-of-the-mummy)** è in funzione dal 21 maggio 2004. La montagna russa al coperto è di Premier Rides.
 Il treno viene lanciato tre volte da un motore lineare e arriva a 64 km/h. Un
 giro dura poco meno di tre minuti. I lettori della rivista di settore Amusement Today l’hanno votata per sette
 anni la migliore montagna russa al coperto, prima che la categoria venisse
@@ -148,11 +144,11 @@ prevista per il 2027. La versione californiana è nel nostro articolo [Hollywood
 Hollywood](/news/hollywood-drift-universal-studios-hollywood).
 
 Fast & Furious: Supercharged è chiusa dal 17 agosto 2026, un anno prima di quanto
-annunciato all’inizio. In autunno nella sua fila finora c’era una casa delle Halloween Horror Nights. Cosa nascerà lì dopo, Universal non l’ha detto.
+annunciato all’inizio. In autunno nella sua fila finora c’era una casa delle Halloween Horror Nights.
 
 ## Islands of Adventure
 
-Islands of Adventure ha aperto il 28 maggio 1999 e si compone di otto isole: Port
+Islands of Adventure si compone di otto isole: Port
 of Entry, Marvel Super Hero Island, Toon Lagoon, Skull Island, Jurassic Park, The
 Wizarding World of Harry Potter a Hogsmeade, The Lost Continent e Seuss Landing. Si
 cammina in cerchio attorno a una laguna, e le tre grandi montagne russe stanno su
@@ -162,18 +158,12 @@ tre isole vicine.
 
 ```
 
-La classifica la guida **[Hagrid's Magical Creatures Motorbike
-Adventure](ref:universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure)**.
-Questa montagna russa di Intamin ha aperto il 13 giugno 2019. È alta 20 metri,
+**[Hagrid's Magical Creatures Motorbike Adventure](ref:universal-islands-of-adventure/hagrids-magical-creatures-motorbike-adventure)**, una montagna russa di Intamin, ha aperto il 13 giugno 2019. È alta 20 metri,
 veloce 80 km/h e lunga 1.540 metri, con sette lanci da motore lineare e nessuna
 inversione. Sorge dove
-c’era Dragon Challenge, i vecchi Dueling Dragons, chiusi nel 2017. Altezza minima
-122 centimetri. Nelle nostre misurazioni qui si aspetta molto più che
-all’attrazione al secondo posto.
+c’era Dragon Challenge, i vecchi Dueling Dragons, chiusi nel 2017. Altezza minima 122 centimetri.
 
-Al secondo posto c’è **[Jurassic World
-VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)**.
-Questa montagna russa di Intamin ha aperto il 10 giugno 2021. È alta 47 metri,
+**[Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)**, anch’essa di Intamin, ha aperto il 10 giugno 2021. È alta 47 metri,
 veloce 110 km/h e lunga 1.400 metri, con due lanci e quattro inversioni.
 All’apertura era la montagna russa più veloce di tutti i parchi Universal. Altezza minima 130 centimetri.
 
@@ -184,8 +174,7 @@ La fila passa per il paddock dei raptor, dove stanno velociraptor animatronici.
 ![La figura di un velociraptor nell’atrio verde della stazione del VelociCoaster | Nell’atrio il raptor sta fra le piante, poco prima della stazione. | right](/media/velocicoaster/03-atrium.jpg)
 
 **[The Incredible Hulk Coaster](ref:universal-islands-of-adventure/the-incredible-hulk-coaster)**
-è la più vecchia delle tre. Bolliger & Mabillard l’hanno costruita per
-l’apertura del parco, il 28 maggio 1999. Ha sette inversioni, è alta 34 metri e
+è la più vecchia delle tre. Bolliger & Mabillard l’hanno costruita per l’apertura del parco. Ha sette inversioni, è alta 34 metri e
 veloce 108 km/h. La prima salita il treno la fa senza catena: dei pneumatici
 lo portano a 64 km/h in due secondi. Altezza minima 138 centimetri, la più alta del parco.
 
@@ -216,13 +205,12 @@ di caduta libera da 133 centimetri.
 ### Cosa finisce sull’isola di Lost Continent
 
 Il 7 maggio 2026 Universal ha annunciato che The Lost Continent chiuderà a fasi e
-sarà sostituita da una nuova area. Un nome o un’attrazione Universal finora non li
-indica. Il ristorante Mythos, secondo Fox 35 Orlando, chiude nel 2027. Poseidon's
+sarà sostituita da una nuova area. Il ristorante Mythos, secondo Fox 35 Orlando, chiude nel 2027. Poseidon's
 Fury è chiusa dal 2023, The Eighth Voyage of Sinbad è andato in scena fino al 2018.
 
 ## Universal Epic Universe
 
-L’Epic Universe ha aperto il 22 maggio 2025. L’area misura 300 ettari, il parco
+L’area misura 300 ettari, il parco
 stesso 45. Ha un parcheggio multipiano tutto suo con un proprio indirizzo, 1001
 Epic Boulevard a Orlando. Il parco ha cinque aree: il Celestial Park, al centro, e altre quattro che partono da lì. Sono Dark Universe con i classici mostri Universal, How to Train Your Dragon: Isle of Berk,
 Super Nintendo World e The Wizarding World of Harry Potter: Ministry of Magic,
@@ -232,12 +220,9 @@ ambientato nella Parigi degli anni Venti.
 
 ```
 
-In cima c’è **[Mine-Cart Madness](ref:universal-epic-universe/mine-cart-madness)**
-a Super Nintendo World. È una «Boom Coaster» con un tracciato nascosto nel
+**[Mine-Cart Madness](ref:universal-epic-universe/mine-cart-madness)** a Super Nintendo World è una «Boom Coaster» con un tracciato nascosto nel
 paesaggio, così i carrelli sembrano saltare sopra i vuoti. Altezza minima 102
-centimetri. Subito dietro viene **[Harry Potter and the Battle at the
-Ministry](ref:universal-epic-universe/harry-potter-and-the-battle-at-the-ministry)**,
-una dark ride in un ascensore di Simtec, anch’essa da 102 centimetri.
+centimetri. **[Harry Potter and the Battle at the Ministry](ref:universal-epic-universe/harry-potter-and-the-battle-at-the-ministry)** è una dark ride in un ascensore di Simtec, anch’essa da 102 centimetri.
 
 **[Mario Kart: Bowser's Challenge](ref:universal-epic-universe/mario-kart-bowsers-challenge)**
 è una dark ride con realtà aumentata in cui lanci i gusci contro gli altri
@@ -273,8 +258,7 @@ Hippogriff](ref:universal-islands-of-adventure/flight-of-the-hippogriff)**. Ques
 junior coaster di Vekoma parte da 92 centimetri. A questo si aggiungono Forbidden
 Journey, Hagrid's e il negozio di bacchette Ollivanders.
 
-Diagon Alley agli Studios è arrivata nel 2014, insieme a Escape from Gringotts e
-all’Hogwarts Express. Il Ministry of Magic all’Epic Universe è la più giovane delle
+Il Ministry of Magic all’Epic Universe è la più giovane delle
 tre aree. Va dalla Parigi degli anni Venti dei film «Animali fantastici» al
 ministero britannico degli anni Novanta. In Harry Potter and the Battle at the
 Ministry aiuti Harry, Ron e Hermione a fermare Dolores Umbridge.
@@ -295,9 +279,6 @@ sospesa per bambini da 92 a 143 centimetri (chi è più alto di 143 centimetri s
 solo con un bambino di quell’altezza), e il parco giochi Camp Jurassic.
 
 ## All’apertura o la sera
-
-Nel profilo orario vedi a che ora la coda a un’attrazione è corta. Per l’Epic
-Universe, ecco le otto attrazioni con la coda più lunga.
 
 ```hourly-profile-widget slug=universal-epic-universe top=8
 
@@ -377,7 +358,7 @@ disponibili.
 per singole attrazioni in una fascia oraria. Universal, a quanto dice, lo offre
 solo di tanto in tanto.
 
-Chi all’apertura fa prima Mine-Cart Madness e il Battle at the Ministry non ha bisogno dell’Express all’Epic Universe per queste due. Agli Studios e alle Islands of Adventure, senza il
+Chi all’apertura fa Mine-Cart Madness e il Battle at the Ministry non ha bisogno dell’Express all’Epic Universe per queste due. Agli Studios e alle Islands of Adventure, senza il
 vantaggio dell’hotel, non comprerei il pass. Arrivando presto, alle attrazioni dell’elenco del rope drop, cioè VelociCoaster, Ripsaw Falls, Skull Island e Spider-Man, arrivi anche senza pass, a Hagrid's no. È una mia stima dai profili orari, perché quanti minuti faccia risparmiare un pass non lo misuriamo.
 
 ## Quando andarci
@@ -410,8 +391,6 @@ Parigi](/blog/natale-capodanno-orlando-parigi-2026). All’Epic Universe c’è 
 tutto suo, Universal Nights, da 179 dollari a persona. Le date sono il 17 e il 24
 ottobre e il 6 e il 20 novembre.
 
-Ogni giorno ricalcoliamo quali saranno i giorni più tranquilli delle prossime settimane.
-
 ```best-days-widget slug=universal-epic-universe
 
 ```
@@ -441,9 +420,6 @@ tocca alle attrazioni acquatiche. Con l’hotel dipende da quali attrazioni Univ
 All’Epic Universe all’apertura vai a Super Nintendo World per Mine-Cart Madness e
 poi al Ministry of Magic. Stardust Racers ha, nelle nostre misurazioni, la coda
 più corta: la montagna russa a duello la tieni per il pomeriggio.
-
-Quanto tempo richiede una giornata in ciascun parco lo vedi nel
-[pianificatore](/blog/pianificatore), dopo averci inserito le tue attrazioni.
 
 ## Con bambini piccoli
 
@@ -544,7 +520,7 @@ Dal 26 ottobre 2026 al più tardi fino al 1° aprile 2027.
 
 ```
 
-Nelle nostre misurazioni il Magic Kingdom ha l’attesa tipica più breve dei quattro parchi Disney in Florida: [Magic Kingdom,
+[Magic Kingdom,
 tempi di attesa e consigli](/blog/magic-kingdom-tempi-di-attesa-consigli).
 
 — Patrick

@@ -139,7 +139,7 @@ Le 2 décembre 2025 vient l’annonce du premier Parc Astérix hors de France. L
 Compagnie des Alpes a racheté Belantis, près de Leipzig, à Parques Reunidos en
 avril 2025 et veut en faire un Parc Astérix d’ici 2030 ou 2031. Son directeur
 général, François Fassier, a parlé à franceinfo d’un « projet très complexe et
-très ambitieux », destiné au seul marché allemand. Notre [article sur Parques Reunidos](/blog/parques-reunidos-a-vendre-movie-park) explique le contexte de cette vente.
+très ambitieux », destiné au seul marché allemand.
 
 ## Les cinq univers et l’ancien Paris
 
@@ -169,8 +169,7 @@ Londinium doit le remplacer en 2028.
 
 ## Les montagnes russes
 
-Les tailles minimales ci-dessous, pour les neuf montagnes russes que RCDB compte au Parc Astérix, sont celles du parc : le premier chiffre vaut avec un adulte, le
-second pour un enfant seul. Quand il n’y en a qu’un, il n’y a pas de seuil plus
+RCDB compte neuf montagnes russes au Parc Astérix, et les tailles minimales ci-dessous sont celles du parc. Le premier chiffre vaut avec un adulte, le second pour un enfant seul. Quand il n’y en a qu’un, il n’y a pas de seuil plus
 bas avec un accompagnateur.
 
 ### Toutatis
@@ -362,7 +361,7 @@ exactement les vacances de Noël, seize jours en tout. Selon la FAQ du parc, les
 ```
 
 Dans nos mesures, le samedi est de loin le jour le plus chargé et le mercredi le
-plus calme. Si vous pouvez choisir le jour, prenez le mercredi. Les jours les plus calmes des autres parcs sont sur la [page des meilleures périodes](/meilleure-periode-pour-visiter).
+plus calme. Si vous pouvez choisir le jour, prenez le mercredi.
 
 ### Le mois
 
@@ -395,7 +394,7 @@ la saison commence en général à Pâques.
 ```
 
 En haute saison, le parc ouvre à 10 h et le parking à 9 h. Peur sur le Parc et
-Noël ont d’autres horaires, indiqués plus bas.
+Noël ont d’autres horaires.
 
 À 10 h, direction la Grèce. Trois attractions s’y trouvent côte à côte, avec des
 files courtes pendant la première demi-heure : Tonnerre 2 Zeus, Pégase Express
@@ -409,10 +408,9 @@ est perdue.
 
 Ensuite, La Descente du Nil. Sa file reste courte jusqu’à environ une heure après
 l’ouverture et atteint son pic en début d’après-midi, quand il fait chaud.
-La file d’OzIris est courte, elle aussi, pendant la première demi-heure ; si vous la ratez,
-gardez-la pour la fin d’après-midi.
+Si vous ratez OzIris pendant la première demi-heure, gardez-la pour la fin d’après-midi.
 
-Les spectacles occupent le milieu de journée. Toutatis vient en début d’après-midi, car d’après notre analyse son meilleur créneau tombe environ trois heures et demie après l’ouverture.
+Les spectacles occupent le milieu de journée. Toutatis vient en début d’après-midi.
 
 En fin de journée, La Trace du Hourra et un second tour d’OzIris. Pendant la
 dernière heure, la plupart des files redeviennent courtes ; seules Toutatis et
@@ -446,9 +444,7 @@ sont accessibles qu’avec l’Illimité. Même avec Filotomatix, on attend enco
 
 Un jour de semaine hors vacances, je garderais mon argent et je suivrais l’ordre
 ci-dessus. Un samedi d’août ou entre Noël et le Nouvel An, l’Or est le niveau le plus rentable, parce qu’il couvre les grandes
-attractions sauf Toutatis, et Toutatis se fait par la file single rider. Selon
-le parc, celle-ci n’existe qu’à Toutatis et à OzIris, et elle peut rester fermée
-les jours d’affluence.
+attractions sauf Toutatis, et Toutatis se fait par la file single rider. Selon le parc, elle peut rester fermée les jours d’affluence.
 
 ## Peur sur le Parc et Noël Gaulois
 
@@ -465,7 +461,7 @@ Trois maisons hantées sont au programme : Le Tombeau des Dieux (déconseillé 
 moins de 14 ans), Catacombes et Les Enfers de Pompéi (déconseillés aux moins de
 16 ans ; en nocturne, Pompéi coûte 6 euros avec un créneau réservé). Les nouveautés sont La Forêt sans Retour, un parcours en forêt réservé aux nocturnes, lui aussi
 déconseillé aux moins de 16 ans, et Les Bas-Fonds du Souk, une zone de peur dans
-le quartier Égypte. La Colère d’Anubis a disparu avec la rue de Paris. Notre [guide Halloween 2026](/blog/halloween-parcs-attractions-2026) décrit ce que font les autres parcs cet automne.
+le quartier Égypte. La Colère d’Anubis a disparu avec la rue de Paris.
 
 ### Noël Gaulois
 
@@ -475,7 +471,7 @@ avec des patins gratuits. Le parc installe les jardins merveilleux du Père Noë
 dans la file de Romus et Rapidus, et il y a une glissade sur bouée, La Glissade
 d’Obélix, un défilé et un marché de Noël. Les montagnes russes sont « généralement
 ouvertes », dit le parc, les attractions aquatiques non. Un billet de Noël non
-daté coûte 57 euros. Notre [guide d’hiver](/blog/parcs-attractions-hiver-2026) recense les autres parcs ouverts en hiver.
+daté coûte 57 euros.
 
 Du 9 novembre au 18 décembre 2026, le parc est fermé, et de nouveau du 4 janvier
 jusqu’au début de la saison au printemps. Depuis 2007, il reste ouvert jusqu’à

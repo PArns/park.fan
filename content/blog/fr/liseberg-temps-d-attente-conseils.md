@@ -96,7 +96,7 @@ de montagne d’alors a été démoli en **1987** et remplacé par la
 [Lisebergbanan](ref:liseberg/lisebergbanan), qu’Anton Schwarzkopf avait conçue
 pour la même colline.
 
-Liseberg a démonté six montagnes russes, Kanonen compris. Les montagnes russes
+Les montagnes russes
 de 1923 avaient été construites par Valdemar Lebech. Le **Super 8**, un Wildcat de
 Schwarzkopf, a roulé de 1966 à 1979 avant de partir pour un parc de Karlstad. De
 1980 à 1995 a fonctionné le **Lisebergs Loopen**, un Looping Star de Schwarzkopf
@@ -110,8 +110,8 @@ tard. Il a roulé jusqu’en 2002. Les montagnes russes pour enfants
 Bergbanan jusqu’en 1985.
 
 Depuis **2000**, Liseberg ouvre en hiver (« Jul på Liseberg »), avec
-418 000 visiteurs la première année. **2015** a vu arriver Halloween. En **2020**, le parc est resté fermé toute la saison à cause de la pandémie, pour
-la première fois depuis sa fondation. En 2023, il a eu 100 ans.
+418 000 visiteurs la première année. En **2020**, le parc est resté fermé toute la saison à cause de la pandémie, pour
+la première fois depuis sa fondation.
 
 En 1936, il y avait plus d’un
 million de visiteurs, en 1954 un bon 1,7 million, et en 1979 1,8 million. En
@@ -120,7 +120,7 @@ visiteurs, été et Noël compris. En 2021, première année après la pandémie
 étaient 1,5 million, et en 2023, selon Wikipédia en suédois, 2,2 millions.
 L’investissement le plus coûteux jusque-là était **Spaceport Liseberg** : en
 1990, le parc a ouvert un cinéma à simulateur et la tour panoramique, pour
-110 millions de couronnes. La tour panoramique est devenue plus tard AtmosFear.
+110 millions de couronnes.
 
 ## Balder : les montagnes russes en bois
 
@@ -141,8 +141,7 @@ se trouve de l’autre côté de la rivière Mölndalsån, comme la Kållerado.
 
 ```
 
-La Roller Coaster DataBase indique pour cette attraction une
-capacité d’environ 1 149 visiteurs par heure.
+Balder transporte environ 1 149 visiteurs par heure.
 
 [Balder](ref:liseberg/balder?full)
 
@@ -254,9 +253,7 @@ Dans le Pays des Lapins (ouvert en 2013), il y a sept attractions pour les
 petits, plus les deux coasters évoqués plus haut et une aire de jeux. C’est aussi
 la seule partie qui ouvre à l’automne et en hiver à des jours à part.
 
-La JukeBox demande 110 cm, et pour les maisons hantées, un âge minimum
-s’applique : onze ans pour Vinden, Zombie, Nattsvart på Gasten et Skogen,
-**15 ans** pour « 7 ».
+La JukeBox demande 110 cm.
 
 ```map-widget slug=liseberg
 
@@ -339,8 +336,7 @@ L’été est la haute période, juillet et août sont en haut, mai et juin un p
 en dessous. De janvier à mars, c’est calme, parce que seul le Pays des Lapins
 ouvre le week-end et que presque rien n’est mesuré. C’est le mardi qu’il y a le
 plus de monde, le dimanche le moins, et avec 40 jours mesurés, le dimanche en
-compte plus de trois fois plus que le lundi ou le mardi. À l’automne, le parc
-ferme le dimanche à 20 h, le vendredi et le samedi à 22 h.
+compte plus de trois fois plus que le lundi ou le mardi.
 
 La saison d’été 2026 a commencé le **18 avril** à 11 h. Quand elle se termine,
 le parc ne le dit pas.
@@ -376,19 +372,17 @@ seul le Pays des Lapins ouvre, de 11 h à 17 h, les 26 et 27 septembre, le
 30 septembre et le 1er octobre, et les 14 et 15 octobre.
 
 Halloween 2025 a attiré, selon le parc, environ **330 000 visiteurs** sur
-16 jours d’ouverture. Les dates des autres parcs figurent dans le
-[guide Halloween 2026](/blog/halloween-parcs-attractions-2026).
+16 jours d’ouverture.
 
 ### Jul på Liseberg : de la mi-novembre à fin décembre
 
 Le premier Julmarknad a eu lieu le 7 décembre 1974, sur deux week-ends, encore
-une fois en 1975, puis plus pendant 25 ans. Depuis l’an 2000, Liseberg ouvre
-chaque hiver. Le parc se présente comme « Sveriges största julmarknad », le plus
+une fois en 1975, puis plus pendant 25 ans. Le parc se présente comme « Sveriges största julmarknad », le plus
 grand marché de Noël de Suède. En 2025, c’était le 25e anniversaire, avec
 2 100 sapins, sept tonnes de neige artificielle, cinq millions de lumières et un
 arbre de 116 mètres de haut, selon le communiqué du parc du 6 novembre 2025.
 
-Les jours d’ouverture 2026, tels que les fournit l’API du parc : en novembre les
+Les jours d’ouverture 2026 : en novembre les
 14 et 15, du 20 au 22 et du 27 au 29, en décembre du 2 au 6, du 9 au 13 et du
 16 au 23 (tous les jours à partir du 20), ainsi que du 26 au 30 décembre. Le
 vendredi, c’est ouvert de 15 h à 22 h, le samedi de 12 h à 22 h, le dimanche de
@@ -467,8 +461,7 @@ En novembre 2020, la construction d’Oceana a commencé, un centre aquatique av
 parc le reconstruit. Selon Liseberg, la reconstruction coûte « drygt 1 miljard
 kronor » (plus d’un milliard de couronnes), l’ouverture est prévue « i början av
 2027 » (début 2027), et les billets doivent être en vente à partir de fin
-novembre 2026. Plus de détails dans l’article
-[nouveautés 2027 des parcs d’attractions](/blog/nouveautes-parcs-attractions-2027).
+novembre 2026.
 
 D’après le parc, Oceana compte environ 6 000 mètres carrés de bassins
 intérieurs et 4 000 mètres carrés d’espace extérieur. Le centre aquatique fait

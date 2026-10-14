@@ -148,7 +148,7 @@ Las medianas se basan en 192 días medidos entre el 6 de octubre de 2024 y el 6 
 
 ```
 
-Hyperia va muy por delante de las demás. En segundo lugar está Storm Surge, una atracción de agua con balsa giratoria que no se llena hasta la tarde. SAW, The Swarm, Nemesis Inferno, Colossus y Stealth quedan muy juntas por detrás.
+En segundo lugar está Storm Surge, una atracción de agua con balsa giratoria que no se llena hasta la tarde.
 
 ```hourly-profile-widget slug=thorpe-park top=8
 
@@ -175,7 +175,7 @@ El parque vende el Fastrack en cuatro paquetes, siempre por persona, y la tarjet
 - **Gold**, desde 115 libras: todo el día en 14 atracciones, sin Hyperia.
 - **Platinum**, desde 135 libras: todo el día en 15 atracciones, con Hyperia.
 
-Además existe un **One Shot Fastrack** desde 6 libras, que solo se compra ya dentro del parque, en la app o con un código QR en la entrada de una montaña rusa. El parque vende el Fastrack y las entradas por separado, el Fastrack solo en número limitado, y avisa de que conviene comprobar antes de comprarlo que haya entradas para ese día. En la página de Fastrack del parque, el Ghost Train aparece en tres paquetes, y en la página de la atracción pone que ahora mismo no hay Fastrack para esa atracción.
+Además existe un **One Shot Fastrack** desde 6 libras, que solo se compra ya dentro del parque, en la app o con un código QR en la entrada de una montaña rusa. El parque vende el Fastrack aparte de la entrada y solo en número limitado, y aconseja comprobar antes de comprarlo que queden entradas para ese día. En la página de Fastrack del parque, el Ghost Train aparece en tres paquetes, y en la página de la atracción pone que ahora mismo no hay Fastrack para esa atracción.
 
 Quien se aloja en las Thorpe Shark Cabins tiene el segundo día una hora de Fastrack al principio o al final de la jornada. Durante las Fright Nights solo vale para la primera hora.
 
@@ -213,7 +213,7 @@ Hay cinco scare mazes. La novedad es Tenement: en una residencia de ancianos lla
 
 Una entrada de día con Fright Nights cuesta desde 39 libras online y 66 libras en taquilla, sin mazes. El paquete con cuatro mazes («Fearsome Four»: DeadBeat, Stitches, Trailers, Survival Games) cuesta desde 71 libras online y 98 libras en taquilla. Tenement no entra en el paquete y se compra aparte. Quien ya tiene entrada reserva los cuatro mazes desde 32 libras por persona, o cada uno por separado desde 8 libras. El paquete VIP «Phantom Five», con un acceso prioritario a cada uno de los cinco mazes, cuesta desde 110 libras (sin entrada) en las franjas de 15:00 a 17:30 o de 18:00 a 20:30. Quien llega tarde a un maze tiene 15 minutos de tolerancia y después no entra, sin reembolso.
 
-Todas las montañas rusas siguen funcionando por la noche, y el parque anuncia Hyperia y SAW en la oscuridad. Para Halloween en otros parques está la [guía de Halloween 2026](/blog/halloween-parques-atracciones-2026), y sobre Alton Towers hay un artículo propio sobre el [Scarefest 2026](/news/alton-towers-scarefest-2026).
+Todas las montañas rusas siguen funcionando por la noche, y el parque anuncia Hyperia y SAW en la oscuridad.
 
 ### Tiempo
 
@@ -225,11 +225,11 @@ En octubre y en las épocas de transición, algunas atracciones se quedan cerrad
 
 ## Entradas, pases y precios
 
-El parque anuncia sus entradas de día «desde 32 libras» reservando con antelación. Los precios dependen de la fecha y están en la tabla de precios del parque. Durante las Fright Nights, la entrada en taquilla cuesta 66 libras. Los estudiantes tienen descuento si reservan con antelación.
+El parque anuncia sus entradas de día «desde 32 libras» reservando con antelación. Los precios dependen de la fecha. Durante las Fright Nights, la entrada en taquilla cuesta 66 libras. Los estudiantes tienen descuento si reservan con antelación.
 
 Los niños de menos de 1,20 metros entran gratis si se apuntan en una reserva online. Cada reserva admite como máximo cuatro de esas entradas y tiene que incluir al menos una de pago. El día de la visita hay que medir a los niños en el Ticket Centre, donde se recoge la entrada.
 
-El Thorpe Park Annual Pass cuesta 64 libras al año. El Merlin Essential Pass (139 libras) vale 339 días en más de 20 atracciones británicas de Merlin, entre ellas Thorpe Park, Chessington World of Adventures, el London Eye y Sea Life. El Gold Pass (239 libras, renovación 179 libras) vale 364 días e incluye aparcamiento gratis. El Platinum Pass (299 libras, renovación 229 libras) no tiene días bloqueados, da cuatro entradas para amigos al año y un One Shot Fastrack por visita. Los pases de otros parques están al lado, en la [comparativa de pases anuales](/blog/pase-anual-comparativa-parques).
+El Thorpe Park Annual Pass cuesta 64 libras al año. El Merlin Essential Pass (139 libras) vale 339 días en más de 20 atracciones británicas de Merlin, entre ellas Thorpe Park, Chessington World of Adventures, el London Eye y Sea Life. El Gold Pass (239 libras, renovación 179 libras) vale 364 días e incluye aparcamiento gratis. El Platinum Pass (299 libras, renovación 229 libras) no tiene días bloqueados, da cuatro entradas para amigos al año y un One Shot Fastrack por visita.
 
 Los visitantes con discapacidad reservan online el Ride Access Pass antes de la visita, con plazas limitadas. El mismo día se muestran la reserva y el documento de identidad en el Accessibility Kiosk. Los requisitos de cada atracción (distancias a pie, prótesis, escayolas) están en un PDF, los Rider Requirements del parque.
 
@@ -297,7 +297,7 @@ De momento no. La temporada 2026 termina tras las Fright Nights, el 1 de noviemb
 
 ### ¿Qué atracciones son aptas para personas con discapacidad?
 
-Hyperia no es apta ahora mismo para personas que no pueden caminar. En SAW hay que poder caminar 25 metros sin ayuda, y en el Ghost Train, al menos 50 pasos. La lista completa está en los Rider Requirements del parque.
+Hyperia no es apta ahora mismo para personas que no pueden caminar. En SAW hay que poder caminar 25 metros sin ayuda, y en el Ghost Train, al menos 50 pasos.
 
 ## Para seguir leyendo
 

@@ -81,7 +81,7 @@ des parcs, et le resort a eu 55 ans le 1er octobre 2026.
 
 Jusqu’au début des années 1990, le parc s’appelait officiellement Walt Disney World Magic Kingdom. En 1994, Disney l’a rebaptisé Magic Kingdom Park pour le distinguer du Disneyland de Californie. Selon la TEA, il a reçu 20 963 000 visites en 2019, plus qu’au cours de toute autre année depuis 2000. En 2020, il a fermé de la mi-mars au 11 juillet à cause de la pandémie de Covid-19 et a reçu 6 941 000 visites, 66,9 % de moins qu’en 2019.
 
-Une seule zone s’est ajoutée depuis. Ouverte en 1988 sous le nom de Mickey's
+Une seule zone s’est ajoutée depuis l’ouverture. Ouverte en 1988 sous le nom de Mickey's
 Birthdayland, elle a fini sous celui de Mickey's Toontown Fair et a fermé le
 11 février 2011 pour faire place à New Fantasyland. Cet agrandissement s’est
 achevé le 28 mai 2014 avec le Seven Dwarfs Mine Train.
@@ -187,9 +187,7 @@ Mansion](ref:magic-kingdom-park/haunted-mansion) dans Liberty Square, « it's a
 small world » dans Fantasyland et la Jungle Cruise dans Adventureland ont ouvert
 le 1er octobre 1971, Peter Pan's Flight deux jours plus tard. [Pirates of the
 Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean) a suivi le 15
-décembre 1973. Aucune de ces cinq attractions n’impose de taille minimale. Tu
-les gardes pour l’après-midi, quand TRON et le Mine Train sont faits, et dans le
-tableau plus haut, la Haunted Mansion arrive en général loin devant les autres
+décembre 1973. Aucune de ces cinq attractions n’impose de taille minimale. Dans le tableau plus haut, la Haunted Mansion arrive en général loin devant les autres
 classiques.
 
 ```map-widget slug=magic-kingdom-park
@@ -230,8 +228,7 @@ dans notre analyse du rope drop.
 À Seven Dwarfs Mine Train, la file reste au même niveau de midi jusqu’au soir,
 puis elle raccourcit dans les dernières heures avant la fermeture.
 
-Fais donc TRON à l’ouverture, Tiana's juste après et le Mine Train dans la
-dernière heure. À Space Mountain, la file est la plus longue vers midi, celle de
+À Space Mountain, la file est la plus longue vers midi, celle de
 la Jungle Cruise garde son niveau de la matinée jusqu’en début de soirée, et les
 deux raccourcissent à l’approche de la fermeture.
 
@@ -243,11 +240,10 @@ demi-heure, au Magic Kingdom, tournent entre autres Seven Dwarfs Mine Train,
 Space Mountain, Peter Pan's Flight et The Barnstormer. TRON, Tiana's, Big
 Thunder et la Jungle Cruise, eux, restent à l’arrêt.
 
-Certains soirs, les clients des hôtels Deluxe et de quelques autres hôtels, que
+Certains soirs, signalés dans le calendrier de Disney, les clients des hôtels Deluxe et de quelques autres hôtels, que
 Disney énumère sur sa page, ont droit aux Extended Evening Hours, jusqu’à deux
 heures après la fermeture du parc. TRON, Space Mountain, Big Thunder et le Mine
-Train tournent alors aussi. Les soirs concernés figurent dans le calendrier de
-Disney.
+Train tournent alors aussi.
 
 ### Une journée comme je l’organiserais
 
@@ -331,7 +327,7 @@ Pour février, octobre et novembre, nous n’avons encore aucune valeur. Au 28
 septembre 2026, nous comptons 196 jours mesurés, pour la plupart depuis avril.
 
 La courbe des jours de la semaine est plate, et les médianes ne s’écartent que
-d’un cran. Il n’y a pas de jour de la semaine à viser en particulier. Quand un autre parc en a un, il figure sur la [page des meilleures périodes](/meilleure-periode-pour-visiter).
+d’un cran. Il n’y a pas de jour de la semaine à viser en particulier.
 
 Depuis son ouverture, le Magic Kingdom a fermé temporairement neuf fois à cause
 d’ouragans, la dernière fois en octobre 2024, pour l’ouragan Milton.
@@ -342,11 +338,11 @@ d’ouragans, la dernière fois en octobre 2024, pour l’ouragan Milton.
 
 ## Halloween et Noël
 
-Mickey's Not-So-Scary Halloween Party a lieu 38 soirs entre le 7 août et le 31
+[Mickey's Not-So-Scary Halloween Party](/blog/halloween-etats-unis-parcs-2026) a lieu 38 soirs entre le 7 août et le 31
 octobre 2026, et d’après Disney, toutes les dates affichent complet. Ces
 soirs-là, le parc ferme dès 18 h pour les autres visiteurs, et la soirée dure de
 19 h à minuit. En octobre, il reste les 6, 8, 9, 13, 15, 16, 18, 22, 23, 25, 27,
-29 et 31. Notre tour d’horizon [Halloween aux États-Unis](/blog/halloween-etats-unis-parcs-2026) présente la soirée.
+29 et 31.
 
 Vient ensuite Mickey's Very Merry Christmas Party, 25 soirs du 8 novembre au 22
 décembre 2026, elle aussi de 19 h à minuit, avec une entrée possible dès 16 h.
@@ -443,8 +439,7 @@ typique le plus court des quatre parcs Disney de Floride, et EPCOT le plus long.
 
 ### Quelle attraction a la plus longue file au Magic Kingdom ?
 
-TRON Lightcycle / Run, dans nos données. Le classement actuel est dans le
-tableau plus haut.
+TRON Lightcycle / Run, dans nos données.
 
 ### Quand la file de TRON est-elle la plus courte ?
 
@@ -480,8 +475,7 @@ pas de taille minimale.
 
 Les soirs de la fête d’Halloween, à l’automne, et de la fête de Noël, en
 novembre et en décembre. Le parc ferme alors à 18 h pour les visiteurs sans
-billet pour la soirée. Les dates sont plus haut, dans la partie « Halloween et
-Noël ».
+billet pour la soirée.
 
 ### Existe-t-il encore une file virtuelle pour TRON ?
 
@@ -496,10 +490,7 @@ Pass de Lightning Lane.
 
 La même entreprise exploite aussi [Disneyland Paris](/blog/disneyland-paris-temps-d-attente-conseils), où c’est le plus petit des deux parcs qui a les files les plus longues.
 
-La semaine entre Noël et le Nouvel An est la plus chargée de notre tableau
-annuel, et la Very
-Merry Christmas Party se tient 25 soirées. Les dates et les chiffres sont dans
-[Noël et Nouvel An à Orlando et à Paris](/blog/noel-nouvel-an-orlando-paris-2026).
+Dans nos données, la semaine la plus chargée de l’année tombe entre Noël et le Nouvel An ([Noël et Nouvel An à Orlando et à Paris](/blog/noel-nouvel-an-orlando-paris-2026)).
 
 — Patrick
 

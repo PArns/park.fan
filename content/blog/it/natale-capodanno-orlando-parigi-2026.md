@@ -61,7 +61,7 @@ qualsiasi altro mese dell'anno**.
 
 > **Sulle date:** questa è la situazione al 4 ottobre 2026. Date, orari e prezzi
 > vengono dalle pagine ufficiali dei parchi, linkate fra le fonti. I parchi spostano le
-> serate fino a novembre inoltrato. Controlla prima di prenotare.
+> serate fino a novembre inoltrato.
 
 ## Walt Disney World dal 13 novembre al 6 gennaio
 
@@ -184,8 +184,7 @@ gennaio 2016 The Osborne Family Spectacle of Dancing Lights. Jennings Osborne
 l'aveva iniziato nel 1986 con 1.000 lampadine sulla sua casa di Little Rock, in
 Arkansas; nel 1993 erano più di tre milioni. Disney lo allestì prima in
 Residential Street e dal 2004 nelle Streets of America, alla fine con più di
-cinque milioni di lampadine. Disney ne annunciò la fine nel settembre 2015, un
-mese dopo aver presentato Star Wars: Galaxy's Edge e Toy Story Land. La maggior
+cinque milioni di lampadine. Disney ne annunciò la fine nel settembre 2015. La maggior
 parte delle lampadine andò al Give Kids the World Village di Kissimmee. Jollywood
 Nights esiste dal 2023.
 
@@ -246,21 +245,17 @@ Coconut Club, con musica dal vivo, cocktail di stagione e decorazioni natalizie.
 
 ### Il Natale da Universal dal 2000
 
-Grinchmas è cominciato nel dicembre 2000 a Seuss Landing, un anno e mezzo dopo
-l'apertura delle Islands of Adventure il 28 maggio 1999. Il primo anno il Grinch
+Grinchmas è cominciato nel dicembre 2000 a Seuss Landing, nelle Islands of Adventure (aperte il 28 maggio 1999). Il primo anno il Grinch
 era interpretato da Mike Aiello, che oggi lavora nel reparto creativo di
 Universal. Lo spettacolo era allora diviso in tre atti a orari diversi della
 giornata, recitati davanti al negozio All the Books You Can Read. Nel 2002
-Universal riunì i tre in un solo spettacolo di 15-20 minuti. Nel 2025 Grinchmas
-ha festeggiato il suo 25º anno.
+Universal riunì i tre in un solo spettacolo di 15-20 minuti.
 
-La parata Macy's sfila dal 2002 negli Universal Studios Florida, il parco aperto
-il 7 giugno 1990. Fino al 2017 si chiamava Macy's Holiday Parade; poi ha preso
+La parata Macy's sfila dal 2002 negli Universal Studios Florida (aperti il 7 giugno 1990). Fino al 2017 si chiamava Macy's Holiday Parade; poi ha preso
 il nome attuale e ha ricevuto nuovi carri natalizi e palloni.
 
 Nello stesso anno, dal 18 novembre 2017, il Wizarding World ha festeggiato il
-Natale per la prima volta, più di sette anni dopo l'apertura di Hogsmeade il 18
-giugno 2010. Lo spettacolo di proiezioni sul castello durava allora circa otto minuti e ripartiva più o meno ogni 20 minuti dopo il tramonto. Spectrum News 13 riferì nel
+Natale per la prima volta (Hogsmeade aveva aperto il 18 giugno 2010). Lo spettacolo di proiezioni sul castello durava allora circa otto minuti e ripartiva più o meno ogni 20 minuti dopo il tramonto. Spectrum News 13 riferì nel
 2017 che la sua preparazione aveva richiesto un anno e mezzo.
 
 ## Disneyland Paris dal 7 novembre al 6 gennaio
@@ -317,8 +312,7 @@ per nessuno dei nove parchi**, né per la prima metà della stagione natalizia.
 
 Dicembre sta sopra tutti gli altri mesi, e la distanza da febbraio e marzo,
 i due mesi più affollati subito dopo, è maggiore della distanza fra febbraio e
-il mese estivo più tranquillo. Nella colonna dei giorni trovi su quanti giorni
-di misurazione si regge ogni riga.
+il mese estivo più tranquillo.
 
 Alle Islands of Adventure dicembre è l'unico mese, su tutti e nove i parchi,
 che il nostro modello colloca nella fascia più alta.
@@ -342,7 +336,7 @@ che il nostro modello colloca nella fascia più alta.
 ```
 
 Al Disneyland Park la settimana fra Natale e Capodanno sta al livello di un mese
-estivo qualsiasi. A Disney Adventure World è più tranquilla di qualsiasi altro mese dell'anno.
+estivo qualsiasi.
 
 Un motivo sarà la capacità. Il Magic Kingdom ha 37 attrazioni attive, Disney
 Adventure World ne ha 14, e i parchi parigini distribuiscono i visitatori su due
@@ -369,12 +363,12 @@ stagione, è utile.
 
 ```
 
-Ogni parco ha lo stesso calendario sulla propria pagina, giorno di apertura per giorno di apertura, e accanto, per tutta la stagione, i tempi di attesa attuali. Per dicembre 2026 è poco affidabile, perché gli unici giorni di dicembre finiti
+Per dicembre 2026 il calendario è poco affidabile, perché gli unici giorni di dicembre finiti
 finora nel modello sono quegli otto giorni di vacanza, e nessuno d'avvento.
 
 ## Gli hotel a Natale
 
-La casa di pan di zenzero nella hall del Grand Floridian, che esiste dal 1999 e ha compiuto 25 anni nel 2024, nel 2026 non ci sarà. Disney spiega che la
+La casa di pan di zenzero nella hall del Grand Floridian, che esiste dal 1999, nel 2026 non ci sarà. Disney spiega che la
 hall deve restare libera per gli ospiti dell'hotel e mette al suo posto figure
 di pan di zenzero più piccole nell'hotel. Per le camere della Disney Resorts
 Collection, Disney concede fino al 20 % di sconto in notti selezionate dal 4
@@ -402,30 +396,23 @@ castello della Bella Addormentata. Al momento dell'acquisto scegli in quale dei
 due parchi starai.
 
 **Universal Orlando** cita il Capodanno in tutti e tre i parchi e al CityWalk,
-con DJ, musica dal vivo e un conto alla rovescia a mezzanotte. Sulla pagina non
-ci sono date, orari né prezzi, e non ci sono nemmeno nel comunicato del 6 agosto.
+con DJ, musica dal vivo e un conto alla rovescia a mezzanotte. Date, orari e prezzi Universal non li ha ancora comunicati.
 
 **Walt Disney World** non ha pubblicato nessun programma di Capodanno sulla sua
-pagina natalizia. Disney elenca lì Magic Kingdom, Hollywood Studios, EPCOT,
-Animal Kingdom, Disney Springs, gli hotel e Blizzard Beach, e il 31 dicembre non
-compare in nessuna di quelle sezioni. Può ancora arrivare, Disney pubblica il Capodanno spesso solo a novembre.
+pagina natalizia. Può ancora arrivare, Disney pubblica il Capodanno spesso solo a novembre.
 
 ## Cosa prenoterei al posto tuo
 
-Novembre ti dà già la decorazione completa. A
-Orlando entrambe le serate partono prima dell'inizio ufficiale della stagione,
-Universal festeggia dal 14 e Parigi già dal 7 novembre. La settimana fra Natale e
+Novembre ti dà già la decorazione completa. La settimana fra Natale e
 Capodanno a Orlando ti dà lo stesso programma con i tempi di attesa più alti
 dell'anno.
 
-Se devi partire fra Natale e Capodanno, vai a Parigi. Lì quella stessa settimana non è salita sopra gli altri mesi, e a Disney
-Adventure World è stata perfino il periodo più tranquillo dell'anno.
+Se devi partire fra Natale e Capodanno, vai a Parigi.
 
 Se vuoi una serata a biglietto a Orlando e guardi il prezzo, prendi le
 Jollywood Nights. Costano meno della Very Merry Christmas Party in ogni data,
 lo sconto per il pass annuale vale tutte le sere invece che solo alcune, e
-durano fino al 5 gennaio, cioè due settimane dopo la fine della festa al Magic
-Kingdom.
+durano fino al 5 gennaio.
 
 ## Domande frequenti
 

@@ -6,10 +6,7 @@ updatedAt: '2026-10-05'
 author: patrick
 mode: published
 excerpt: >-
-  Am Eingang von Taron steht eine Zahl, und allein ist sie so viel wert wie eine
-  Temperatur ohne Jahreszeit. Erst der Vergleich mit jedem gemessenen Dienstag
-  macht daraus eine Auskunft. Warum park.fan nichts wegwirft, was nachts damit
-  passiert und warum wir im August keine Schlittschuhe mehr empfehlen.
+  Am Eingang von Taron steht eine Zahl. Erst der Vergleich mit jedem gemessenen Dienstag macht daraus eine Auskunft.
 tags:
   - wartezeiten
   - park-fan
@@ -27,13 +24,12 @@ rideLinks:
 coverImage:
   src: /media/phantasialand/taron.jpg
   alt: 'Ein Zug von Taron zwischen den Basaltfelsen von Klugheim'
-  caption: 'Taron in Klugheim. Die Zahl am Eingang steht auf 70. Und jetzt?'
+  caption: 'Taron in Klugheim.'
   credit: 'Patrick Arns'
 seo:
   title: 'Wartezeiten richtig lesen: Sind 70 Minuten viel?'
   description: >-
-    Eine Wartezeit ohne Vergleich ist wie eine Temperatur ohne Jahreszeit. Was
-    „typisch“ und „voll“ bedeuten und wie park.fan daraus eine Auskunft macht.
+    Eine Wartezeit ohne Vergleich ist wie eine Temperatur ohne Jahreszeit. „Typisch“ ist der Median der Tagesspitzen, „voll“ das 90. Perzentil.
   keywords:
     - Wartezeiten Freizeitpark
     - Wartezeit einordnen
@@ -54,10 +50,9 @@ ohnehin zu deinen Ungunsten
 Die Parks schreiben die Zahl selbst an, sie stimmt meistens ungefähr, und sie
 kostet uns einen Abruf alle fünf Minuten. Nur steht sie allein da, wie eine
 Temperatur ohne Jahreszeit. 70 Minuten sind an einem Dienstag im Mai
-etwas völlig anderes als an einem Samstag in den Sommerferien, und ohne den
-zweiten Teil dieses Satzes kannst du nichts damit anfangen.
+etwas völlig anderes als an einem Samstag in den Sommerferien.
 
-## Was „typisch“ und „voll“ wirklich heißen
+## Was „typisch“ und „voll“ heißen
 
 park.fan legt neben jede große Bahn eines Parks zwei Vergleichswerte, gerechnet
 über die letzten 365 Tage. **Typisch** ist der Median der Tagesspitzen: An der
@@ -73,20 +68,16 @@ Monats nach oben, obwohl an 29 Tagen nichts davon zu spüren war. Der Median
 zuckt bei so einem Tag nicht einmal. Der Rekord steht deshalb extra, mit Datum,
 damit man ihn sieht, ohne dass er die anderen beiden Zahlen anfasst.
 
-Für das [Phantasialand](ref:phantasialand) sieht die Rangliste so aus. Am
-wichtigsten ist die Spalte mit den Messtagen, denn je mehr Tage dort stehen,
+In der Rangliste für das [Phantasialand](ref:phantasialand) ist die Spalte mit den Messtagen am wichtigsten, denn je mehr Tage dort stehen,
 desto mehr Gewicht trägt eine Zeile.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days highlight=taron
 
 ```
 
-Diese Tabellen sind live. Wenn du diesen Artikel in drei Monaten noch einmal
-liest, stehen andere Zahlen in der Tabelle, und der Text drumherum stimmt
-trotzdem noch. Die Widgets gibt es, weil in vier älteren Artikeln die Zahlen
+Diese Tabellen sind live. Die Widgets gibt es, weil in vier älteren Artikeln die Zahlen
 mal von Hand getippt in Markdown-Tabellen standen, über sechs Sprachen
-verteilt, und nach ein paar Wochen still auseinanderliefen, wie die Uhren in
-einer Ferienwohnung.
+verteilt, und nach ein paar Wochen still auseinanderliefen.
 
 ## Dieselben 70 Minuten am Samstag und am Dienstag
 
@@ -94,34 +85,29 @@ Für Taron stehen „typisch“ und „voll“ auf der Seite der Bahn für jeden
 Wochenenden heben sich deutlich ab. Samstag und Sonntag haben die höheren Werte, der Dienstag hat den niedrigsten. Dieselben 70 Minuten sind deshalb an einem Samstag ein gewöhnlicher
 Tag an dieser Bahn. An einem Dienstag liegen sie deutlich über dem, was dort normal ist.
 
-Die Monate verschieben die Zahl noch einmal. Über den ganzen Park gerechnet, nicht nur für Taron, sind Juli und August die vollen Monate, und der Dezember lag an den wenigen Tagen, die wir dort gemessen haben, ähnlich hoch. Der September ist der ruhigste Monat, den wir gemessen haben. Für den Oktober gibt es bisher nur ein paar Tage, weil unsere Reihe erst im Dezember 2025 begonnen hat und der Oktober 2026 gerade erst angefangen hat.
+Die Monate verschieben die Zahl noch einmal. Über den ganzen Park gerechnet, nicht nur für Taron, sind Juli und August die vollen Monate, und der Dezember lag an den wenigen Tagen, die wir dort gemessen haben, ähnlich hoch. Der September ist der ruhigste Monat, den wir gemessen haben. Für den Oktober gibt es bisher nur ein paar Tage.
 
 ```stats-widget slug=phantasialand show=months
 
 ```
 
-Am Eingang steht nichts davon, nur die eine Zahl. Auf der Seite der Bahn stehen beide Werte für
-heute, und darunter die Woche Tag für Tag, sodass du die 70 Minuten selbst einordnen kannst.
-
 ## Der Tag hat eine Form
 
 Eine Bahn hat nicht den ganzen Tag dieselbe Warteschlange. Die Grundbewegung kennt
 jeder: Zur Öffnung ist es kurz, dann ist der Rest der Welt mit dem Frühstück
-fertig, und gegen Abend wird es wieder erträglich. Wo genau der Höchststand liegt, ist pro Bahn verschieden, und
-diese Abweichungen sind der nützliche Teil.
+fertig, und gegen Abend wird es wieder erträglich. Wo genau der Höchststand liegt, ist pro Bahn verschieden.
 
 ```hourly-profile-widget slug=phantasialand top=6
 
 ```
 
-Aus dieser Form entstehen zwei Empfehlungen. Die erste ist **Rope Drop**:
+Aus dieser Form folgt **Rope Drop**:
 direkt zur Öffnung an eine bestimmte Bahn, bevor sich die Wege füllen. Wir
 schlagen das nur vor, wenn die Tagesspitze an einem gewöhnlichen Tag der letzten
 70 Tage mindestens 60 Minuten erreicht und der frühe Start davon mindestens 45
-spart. Alles darunter wäre ein Tipp, der
-überall stünde und deshalb nirgends etwas wert wäre.
+spart.
 
-Die zweite ist die ruhigere Alternative: die Uhrzeit, zu der die Warteschlange an
+Die andere Empfehlung ist die ruhigere Alternative: die Uhrzeit, zu der die Warteschlange an
 dieser Bahn typischerweise am kürzesten ist. Liegt sie am Abend, muss man dafür
 nicht um sieben aufstehen. Beide Angaben stehen auf der Seite jeder großen Bahn,
 für die genug Messtage da sind, mit konkreter Uhrzeit in Parkzeit.
@@ -136,10 +122,8 @@ September 2026), und einem gewöhnlichen Kalender sieht man das nicht an. Der Un
 daran, welche Bundesländer gerade frei haben, ob ein Brückentag dranhängt,
 ob es regnet und ob im Nachbarland etwas los ist.
 
-Ein Park nahe der Grenze merkt sofort, wenn nebenan die Ferien anfangen,
-meistens schon an den Kennzeichen auf dem Parkplatz. Also rechnen wir Regionen im Umkreis von rund
-200 Kilometern mit ein und markieren sie im Kalender getrennt. Drei Parks im
-Vergleich, jeweils mit ihrem ruhigsten Wochentag:
+Bei einem Park nahe der Grenze zählen auch die Ferien nebenan. Also rechnen wir Regionen im Umkreis von rund
+200 Kilometern mit ein und markieren sie im Kalender getrennt.
 
 ```park-comparison-widget slugs=phantasialand,efteling,europa-park show=quietest
 
@@ -160,16 +144,13 @@ Perzentile pro Stunde, um 03:00 die Basiswerte pro Park, um 04:30 die
 Zusammenfassung von gestern, um 05:15 die Rope-Drop-Empfehlungen, die genau
 diese Zusammenfassung lesen, um 05:30 „typisch“ und „voll“ für die großen Bahnen.
 Um 06:00 trainiert sich das Prognosemodell mit
-den Wartezeiten des Vortags neu, während die Rope-Drop-Fraktion schon auf der
-Autobahn steht.
+den Wartezeiten des Vortags neu.
 
 Außerdem werfen wir keine Messung weg. Ältere Zeiträume
 werden komprimiert, aber nicht ausgedünnt. Wie weit eine Auswertung
 zurückreicht, legen wir für jede einzeln fest. Für „typisch“ und „voll“ nehmen
 wir die letzten 365 Tage, also einen ganzen Jahreslauf, für die Rope-Drop-Empfehlung
-nur die letzten 70, damit sie der Saison folgt. Wer im dritten Jahr anfängt zu
-speichern, hat im dritten Jahr ein Jahr Historie, und die beiden Jahre davor
-sind für immer weg. Unsere Messreihe beginnt am 26. Dezember 2025, und ab da
+nur die letzten 70, damit sie der Saison folgt. Unsere Messreihe beginnt am 26. Dezember 2025, und ab da
 zählt die Spalte mit den Messtagen in der Tabelle oben.
 
 ## Wo wir lieber gar nichts sagen
@@ -180,14 +161,13 @@ Rohdaten sieht dieser Park aus wie jeder andere um drei Uhr nachts: keine Bahn
 meldet etwas. Würden wir daraus das Naheliegende ableiten, stünden dort sämtliche
 Attraktionen des Parks auf „sehr niedrig“, dazu ein Ø von 0 Minuten und eine Prognose,
 die auf null Beobachtungen beruht, und jede dieser Angaben wäre erfunden. Stattdessen steht auf der Parkseite ein
-Hinweis, dass es hier nichts zu lesen gibt. Im [Hansa-Park-Guide](/blog/hansa-park-tipps) steht, was wir über den Park trotzdem sagen können.
+Hinweis, dass es hier nichts zu lesen gibt. Mehr über den Park steht im [Hansa-Park-Guide](/blog/hansa-park-tipps).
 
-Dieselbe Regel gilt an einer kleineren Stelle. Die Eisbahn „Berliner Eislaufen“ auf
+Die Eisbahn „Berliner Eislaufen“ auf
 dem Kaiserplatz im Phantasialand gibt es nur zum Wintertraum, diesmal vom 14.
 November 2026 bis zum 24. Januar 2027. Im August meldet über sie niemand
 etwas, weil es nichts zu melden gibt. Diese Stille als „geöffnet“ zu lesen,
-wäre der bequeme Fehler, und er stand tatsächlich mal so auf der Parkseite:
-Schlittschuhe im Hochsommer, mit unserem Segen.
+wäre der bequeme Fehler, und er stand tatsächlich mal so auf der Parkseite.
 Betriebsmonate, die wir aus den eigenen Messungen ablesen, nennen wir
 überhaupt erst nach 330 Beobachtungstagen, und so lange steht bei ihr kein
 Monat. Ein „läuft von Dezember bis April“ würde bis dahin nur den Zeitraum
@@ -204,9 +184,9 @@ Messungen wieder deutlich kürzer wird.
 Wer die Zeit lieber kauft, zahlt an Taron für eine Fahrt mit dem Quick Pass 12 €, so steht es auf
 der Infoseite des Phantasialands (Stand 5. Oktober 2026). Den Pass gibt es nur vor Ort am
 Gästeservice am Kaiserplatz, und die Menge ist begrenzt. Bei einer Zahl, die für den Wochentag
-ohnehin normal ist, rechnet sich das selten. Im [Phantasialand-Guide](/blog/phantasialand-tipps) steht, wie wir das sehen und wann sich der Quick Pass Ultimate lohnt.
+ohnehin normal ist, rechnet sich das selten. Wann sich der Quick Pass Ultimate lohnt, schreibe ich im [Phantasialand-Guide](/blog/phantasialand-tipps).
 
-Für einen ganzen Tag gibt es den [Tagesplaner](/blog/tagesplaner). Dort wählst du deine Bahnen aus und bekommst eine Reihenfolge nach den vorhergesagten Wartezeiten des Tages. Ob alle vor Parkschluss drankommen, siehst du dann schon vor der Abfahrt und nicht erst um fünf am Nachmittag vor der letzten Warteschlange.
+Für einen ganzen Tag gibt es den [Tagesplaner](/blog/tagesplaner). Dort wählst du deine Bahnen aus und bekommst eine Reihenfolge nach den vorhergesagten Wartezeiten des Tages. Ob alle vor Parkschluss drankommen, siehst du dann schon vor der Abfahrt .
 
 ## Wo das alles steht
 
@@ -218,8 +198,5 @@ eingehen, wie daraus im Tagesplaner ein Tag wird und an welchen drei
 Stellen wir bewusst nichts behaupten. Vier konkrete Besuchssituationen sind auch
 dabei, von der Familie in den Herbstferien über den spontanen Abend mit
 Jahreskarte bis zum ersten Besuch in einem großen Park.
-
-Und wenn du das nächste Mal am Eingang stehst und auf die Anzeige starrst,
-schau nach, was an dieser Bahn an einem Dienstag normal ist.
 
 — Patrick

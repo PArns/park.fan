@@ -65,9 +65,6 @@ Der Hansa-Park kommt mit **46 Hektar** aus. Der Heide Park hat 85. Zwischen zwei
 Minuten Fußweg, und die elf Themenbereiche gehen ineinander über, statt durch Wiesen getrennt zu sein.
 Rund 17.000 Quadratmeter der Fläche sind überdacht.
 
-Der [Highlander](ref:hansa-park/highlander?bare) ist der höchste Gyro-Drop-Tower der Welt.
-Daneben gibt es eine Kanalfahrt aus Legoland-Zeiten und vier Familien- und Kinderachterbahnen.
-
 Zwischen 2009 und 2017 kamen vier neue Achterbahnen, darunter der
 Kärnan, danach neun Jahre lang keine, bis 2026 der Cornwall Coaster eröffnete. In der Pause kamen
 der Highlander und mehrere kleinere Themenbereiche, und seit 2008 baut der Park Stadt für Stadt an
@@ -212,8 +209,6 @@ Für 2027 sind die Osterferien in Schleswig-Holstein vom 30. März bis 10. April
 nach dem geplanten Saisonstart. Die Sommerferien gehen dort vom 3. Juli bis 14. August, in Hamburg
 vom 1. Juli bis 11. August.
 
-Neben dem Herbstzauber läuft bis zum 25. Oktober 2026 Erntedank, mit geschmückten Beeten.
-
 ```map-widget slug=hansa-park
 
 ```
@@ -230,6 +225,8 @@ an. Er hängt stattdessen rund **2.000 Leuchtfiguren** auf und fährt zwei Progr
   eingeführt zum 25-jährigen Bestehen des Parks.
 - Die Abendshow „Adrienne & der Regenbogen“ folgt gegen 20:30 Uhr auf der Plaza del Mar und endet
   mit einem Feuerwerk aus den Arenamauern.
+
+Neben dem Herbstzauber läuft bis zum 25. Oktober 2026 Erntedank, mit geschmückten Beeten.
 
 In der [Blumenmeerbootsfahrt](ref:hansa-park/flower-magic-boat-tour) tanzen nach Einbruch der
 Dunkelheit knapp 1.000 Leuchtfiguren zu klassischer Musik. Für diese Kanalfahrt aus
@@ -250,7 +247,7 @@ Wer die vier genannten Bahnen noch fahren will, stellt sich deutlich vor halb ac
 Warteschlangen schließen früher. Der übrige Fahrbetrieb läuft bis 20:30 Uhr weiter, mit der Pause
 während der Parade.
 
-Im [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026) stehen zehn Parks. Acht davon laufen
+Acht der zehn Parks aus dem [Halloween-Guide 2026](/blog/halloween-freizeitparks-2026) laufen
 in diesen Oktoberwochen mit Mazes oder Scare Zones, zwei lassen Halloween ganz aus. Der
 Hansa-Park hat an denselben Abenden volles Programm. Wer mit
 Kindern unter zehn fährt, ist hier deshalb besser aufgehoben als bei einem Maze-Abend. Die
@@ -328,8 +325,8 @@ TÜV Nord für das ganze Gelände.
 Monte-Zuma wurde 2013 abgebaut. Der 70 Meter hohe
 Star Flyer Torre del Mar von 2005 ging Ende 2015, weil der Turm des Kärnan die Windverhältnisse auf
 dem Gelände verändert hatte. Den Fliegenden Hai von 1991 nahm der Park Ende 2018 heraus, weil es
-keine Ersatzteile mehr gab und er sehr viel Strom brauchte, Die Glocke von 2008 Ende 2019 für
-Awildas Welt. Am 29. Oktober 2017 zeigte John Burke nach 28 Jahren seine letzte Seelöwenshow in der
+keine Ersatzteile mehr gab und er sehr viel Strom brauchte, und Die Glocke von 2008 Ende 2019
+für Awildas Welt. Am 29. Oktober 2017 zeigte John Burke nach 28 Jahren seine letzte Seelöwenshow in der
 Aquarena, und 2020 fiel wegen der Corona-Pandemie das ganze Showprogramm aus.
 
 Das größte Bauvorhaben des Parks ist **Hanse in Europa**. Es ersetzt seit 2008 die früheren
@@ -338,7 +335,7 @@ Holstentor als Eingang, 2010 Brügge, Visby, Lübeck, Hamburg und Rostock, 2011 
 2012 London, Ribe und Bergen, 2013 sechs weitere von Kopenhagen bis Nürnberg, 2018 Danzig und
 Krakau, und 2021 der bis dahin größte Abschnitt mit 14 Fassaden aus Krakau, Stockholm, Stralsund,
 Helsinki, Riga und Venedig. Das Holstentor enthüllte der damalige Ministerpräsident Peter Harry
-Carstensen am 26. April 2008. Veranschlagt war das Ganze auf 20 Jahre. Der
+Carstensen am 26. April 2008. Für Hanse in Europa waren 20 Jahre veranschlagt. Der
 letzte Abschnitt, der Palacio de
 Braga, ist noch nicht fertig.
 
@@ -475,13 +472,11 @@ ab 1 m (allein ab 10), [Cornwall Coaster](ref:hansa-park/new-2026-cornwall-coast
 
 ### Gibt es im Hansa-Park einen Fast Pass?
 
-Nein. In der Preisübersicht 2026 steht kein Express- oder Fast-Pass-Ticket, an allen Bahnen gilt
-dieselbe Warteschlange. Beim Kärnan legt ein Zufallsgenerator fest, in welcher Reihe du sitzt.
+Nein, an allen Bahnen gilt dieselbe Warteschlange.
 
 ### Wie viele Besucher hat der Hansa-Park?
 
-Rund 1,4 Millionen im Jahr, das schrieb die dpa 2023, und die deutsche Wikipedia nennt dieselbe Zahl
-für 2016. Rund 83 Prozent der Gäste waren nach Angaben des Parks schon einmal da.
+Rund 1,4 Millionen im Jahr, das schrieb die dpa 2023.
 
 ### Was ist der Herbstzauber am Meer?
 
@@ -505,10 +500,8 @@ und der Park kann dann auch die Öffnungszeiten ändern:
 
 ```
 
-Hamburg liegt 78 Kilometer Luftlinie entfernt, der [Heide Park](/blog/heide-park-wartezeiten-tipps)
-131 Kilometer südwestlich, und er lässt sich in derselben Woche mitnehmen. Wie die beiden
-neben den übrigen Parks im Land abschneiden, steht in meinem
-[Ranking der deutschen Freizeitparks](/blog/beste-freizeitparks-in-deutschland).
+Hamburg liegt 78 Kilometer Luftlinie entfernt. Den [Heide Park](/blog/heide-park-wartezeiten-tipps),
+131 Kilometer südwestlich, kannst du in derselben Woche mitnehmen.
 
 — Patrick
 

@@ -83,9 +83,9 @@ Après la saison d’hiver, l’attraction sera démontée. Le parc a annoncé u
 
 ## Temps d’attente à l’Europa-Park, mesurés attraction par attraction
 
-Notre historique des temps d’attente pour l’Europa-Park commence le 26 décembre
-2025, couvre donc fin septembre 2026 environ neuf mois, et ne connaît plus de
-trou depuis avril, à un jour de juillet près. Tous jours de la semaine
+Fin septembre 2026, notre historique des temps d’attente pour l’Europa-Park
+couvre environ neuf mois, et il ne connaît plus de trou depuis avril, à un jour
+de juillet près. Tous jours de la semaine
 confondus, l’attente typique sur l’ensemble du parc (la médiane) est **courte
 pour une telle affluence** ; les jours chargés, elle passe nettement au-dessus.
 
@@ -103,7 +103,7 @@ personne n’attend ; un matin chargé, la file déborde jusque sur le parvis.
 
 Voltron a totalisé 3,25 millions de tours la première année et a la
 file la plus longue du parc, et pour un parc de plus de six millions de visiteurs,
-**cette file la plus longue est étonnamment courte**. Tous les parcs de la comparaison sont calculés avec la même base de données et la même méthode de calcul.
+**cette file la plus longue est étonnamment courte**.
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
@@ -113,8 +113,9 @@ Les chiffres de fréquentation viennent de l’indice TEA, qui paraît une fois 
 c’est à Rust 6,2 millions pour le parc d’attractions et non les 7,4 millions de
 l’ensemble du resort, au Phantasialand 2,1 millions, à l’Efteling 5,6, à Paris
 une dizaine. Toverland n’y figure pas, et le chiffre de 1,17 million vient du
-parc lui-même. Pour chaque parc, le tableau indique l’attraction à la médiane la
-plus haute pour laquelle nous disposons d’au moins cent jours de mesure. À Toverland,
+parc lui-même. Nous calculons les temps d’attente de tous les parcs de la même façon.
+La file la plus longue d’un parc est celle de l’attraction à la médiane la plus
+haute pour laquelle nous disposons d’au moins cent jours de mesure. À Toverland,
 Maximus' Blitz Bahn se place en réalité au-dessus, mais sur
 61 jours de mesure seulement (au 25 septembre 2026), et nous ne prenons pas des montagnes russes pour enfants avec si peu de jours de mesure comme référence pour un parc entier.
 
@@ -141,12 +142,12 @@ thématiques sont bâties comme des pays et s’alignent donc en une longue cha�
 lieu de former un cercle autour d’une place centrale. Ça fatigue les jambes et ça soulage les files, parce
 que ça étire la foule sur toute la journée.
 
-S’y ajoute la longueur de la saison. La saison 2026 court du 28 mars au 9 janvier
+La saison 2026 court du 28 mars au 9 janvier
 2027, sans interruption, avec deux jours de fermeture à Noël. Cela fait
 **286 jours d’exploitation** selon le calendrier officiel. La même demande se
 répartit donc sur environ soixante-dix jours de plus que dans un parc qui ferme
 début novembre et ne rouvre qu’en avril. Sur le papier, ça donne un peu moins de
-22 000 visiteurs par jour sur 95 hectares.
+22 000 visiteurs par jour.
 
 ## Pas de fast pass à l’Europa-Park, et ce qu’il y a à la place
 
@@ -220,8 +221,8 @@ aujourd’hui dans plus de soixante-dix pays.
 | 2005     | La Heinrich Mack GmbH devient Mack Rides                            |
 | 2018     | Une partie de la production déménage à Herbolzheim                  |
 
-Le prototype de la Wild Mouse est né à Waldkirch, à 26 kilomètres à vol d’oiseau de
-Rust, en bois à l’époque et partout en acier aujourd’hui. Le
+Waldkirch est à 26 kilomètres à vol d’oiseau de Rust, et les Wild Mouse sont
+aujourd’hui partout en acier. Le
 **[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** en est une. Le modèle et
 le parc sortent du même atelier, qui avait livré jusqu’en septembre 2024
 174 montagnes russes dans le monde entier, Wild Mouse et tous les autres
@@ -289,8 +290,7 @@ l’Aventure, la forêt des contes de Grimm et le Royaume des Minimoys, de 2014.
 
 Le Bobsleigh suisse est dans
 le parc depuis 1985, la zone thématique suisse n’a été bâtie autour de lui que
-huit ans plus tard. La zone allemande est arrivée en neuvième position, vingt
-et un ans après l’ouverture.
+huit ans plus tard.
 
 Pour la saison 2026, le dix-huitième pays s’est ajouté : **Monaco**, construit
 autour des montagnes russes Silver Star déjà en place, qui ont ainsi déménagé de
@@ -328,7 +328,7 @@ totalisant environ 300 stators accélèrent sept trains, et le premier lancement
 exige à lui seul 2 500 chevaux ; un train quitte la gare toutes les
 36 secondes, ce qui fait 1 600 personnes à l’heure.
 
-Pour les sept inversions, tu n’as qu’**une barre ventrale**, sans arceau contre
+Tu n’as qu’**une barre ventrale**, sans arceau contre
 la tête ni rembourrage sur les épaules.
 
 ```glossary-widget slug=swing-launch
@@ -356,8 +356,7 @@ construit quelques centaines de kilomètres plus au sud des hypercars électriqu
 et « nevera » désigne en croate l’orage soudain qui monte l’été au-dessus de
 l’Adriatique.
 
-La première année a donné 3,25 millions de tours, et son attente typique dépasse
-nettement la moyenne du parc, plus que celle de n’importe quelle autre attraction.
+L’attente typique de Voltron dépasse nettement la moyenne du parc.
 
 **[Silver Star](ref:europa-park/silver-star)** a été bâtie en 2002 par **Bolliger & Mabillard**, de Monthey en Valais, première installation du constructeur en Allemagne ; c’étaient à l’ouverture les montagnes russes
 en acier les plus hautes et les plus rapides d’Europe. 73 mètres, 130 km/h selon
@@ -411,14 +410,16 @@ de 1985, **[Pegasus](ref:europa-park/pegasus)** de 2006,
 l’**[Alpenexpress Enzian](ref:europa-park/alpine-express-enzian)** de 1984, le
 **[Ba-a-a Express](ref:europa-park/ba-a-a-express)** en Irlande, ainsi
 qu’**[Arthur](ref:europa-park/arthur)**, un parcours suspendu motorisé à travers
-le Royaume des Minimoys, dont la file est aussi longue que celle des grands coasters. Et l’**[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, le même parcours que
-l’Enzian, mais avec un casque VR, que nous répertorions comme une attraction à part.
+le Royaume des Minimoys, dont la file est aussi longue que celle des grands coasters.
+L’**[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)** roule
+sur le même parcours que l’Enzian, mais avec un casque VR, et nous le
+répertorions comme une attraction à part.
 
 ![Une maison-champignon dans le hall d’Arthur, au-dessus la voie de l’attraction | Tout est trop grand parce que les Minimoys sont trop petits. | wide](/media/europa-park/arthur-16x9.jpg)
 
-Et puis il y a le **[Voletarium](ref:europa-park/voletarium)** de 2017, un théâtre
-volant signé Brogent qui te fait planer au-dessus de l’Europe, les jambes
-pendantes dans le vide. Pas des montagnes russes, mais l’attraction où être là à l’ouverture change le plus.
+Le **[Voletarium](ref:europa-park/voletarium)** de 2017 est un théâtre volant
+signé Brogent qui te fait planer au-dessus de l’Europe, les jambes pendantes
+dans le vide.
 
 ```glossary-widget slug=flying-theater
 
@@ -487,7 +488,7 @@ scènes de Traumatica.
 
 L’**[Euro-Mir](ref:europa-park/euro-mir)** a ouvert le **12 juin 1997** et roule
 pour la dernière fois pendant la saison 2026/27, jusqu’au 9 janvier 2027. Ensuite,
-elle sera démontée. La [brève sur les adieux](/news/europa-park-adieu-euro-mir) donne la date et le successeur.
+elle sera [démontée](/news/europa-park-adieu-euro-mir).
 
 Un tour dure près de cinq minutes, dont une bonne partie autour de deux tours miroitantes, et les wagons
 pivotent en chemin sur leur propre axe, si bien que tu ne sais jamais ce que tu
@@ -534,9 +535,7 @@ L’Europa-Park ne suit donc pas [les autres parcs que je
 relève](/meilleure-periode-pour-visiter). Au
 [Phantasialand](ref:phantasialand?bare), le dimanche est le jour le plus chargé
 après le samedi ; à l’[Efteling](ref:efteling?bare), du mardi au vendredi, on
-reste sous le niveau du week-end. Plus de détails dans le
-[guide du Phantasialand](/blog/phantasialand-temps-d-attente-conseils) et dans
-le [guide de l’Efteling](/blog/efteling-le-disney-des-pays-bas).
+reste sous le niveau du week-end.
 
 L’explication tient à la composition du public. De Rust au Rhin, et donc à la
 France, il n’y a que quelques kilomètres ; jusqu’à Bâle, une bonne heure de
@@ -576,7 +575,7 @@ En 2027, ça démarre plus tôt : du 7 au 19 mars, le parc ouvre pour la premi�
 fois deux Pre-Opening Weeks, pas encore avec toutes les attractions et tous les
 spectacles, mais avec les billets les moins chers de l’année, et la saison d’été
 commence ensuite le 20 mars. Pour octobre, seuls les premiers jours figurent
-dans le tableau, pour novembre aucun. Le nombre de jours de mesure indique où en sont Halloween et HALLOWinter.
+dans le tableau, pour novembre aucun.
 
 ### Les vacances qui remplissent le parc
 
@@ -673,8 +672,7 @@ Le parc n’ouvre qu’à 11 h et ferme au plus tôt à
 19 h, soit une heure de moins qu’en été, la nuit tombe tôt, et on ne peut pas
 compter sur les attractions aquatiques. Si Poseidon et Atlantica te sont
 indifférents, un jour de semaine en novembre vaut quand même la peine d’être
-tenté. Les jours qui s’annoncent les plus calmes en ce moment sont dans le
-calendrier ci-dessus.
+tenté.
 
 ## La journée parfaite à l’Europa-Park
 
@@ -690,8 +688,9 @@ l’ouverture n’est qu’une fraction de cette pointe, de très loin la plus g
 
 Pour Voltron, Arthur et Silver Star, arriver tôt rapporte moins de la moitié.
 
-Le profil horaire donne l’attente typique de chaque heure, la médiane sur tous les jours
-d’exploitation mesurés depuis fin décembre 2025. En gras, l’heure la plus
+Les valeurs horaires sont des médianes sur tous les jours d’exploitation
+mesurés depuis fin décembre 2025, plein été et semaines autour du Nouvel An
+confondus. En gras, l’heure la plus
 chargée de chaque attraction.
 
 ```hourly-profile-widget slug=europa-park top=12
@@ -723,8 +722,7 @@ Un déroulé de journée qui en découle :
    tout ce qui a une file maintenant l’aura plus courte l’après-midi ; chez
    Arthur et Wodan, elle reste à peu près la même.
 4. **Silver Star à partir de midi**, puis Eurosat, Pirates de Batavia, Le voyage
-   impérial magique de Josefina et le Castello dei Medici. Les jours de chaleur,
-   l’intérieur est de toute façon plus agréable.
+   impérial magique de Josefina et le Castello dei Medici.
 5. **Les attractions aquatiques à partir de dix-sept heures**, si te faire
    tremper le matin te paraissait trop tôt. Les deux retombent alors sous leurs
    valeurs de midi et d’après-midi, et nettement à partir de dix-huit heures.
@@ -734,10 +732,8 @@ Un déroulé de journée qui en découle :
    les longs soirs d’été, Voltron, Eurosat et Silver Star remontent encore dans
    la dernière heure.
 
-Ces courbes couvrent tous les jours d’exploitation mesurés, plein été et
-semaines autour du Nouvel An confondus. Pour une journée de novembre, de onze à
-dix-neuf heures, nous n’avons pas encore de mesures propres ; la colonne de neuf
-heures n’existe alors tout simplement pas, et la pointe du jour ne peut arriver
+Pour une journée de novembre, de onze à dix-neuf heures, la colonne de neuf
+heures n’existe pas, et la pointe du jour ne peut arriver
 qu’à partir de onze heures.
 
 ```map-widget slug=europa-park
@@ -973,12 +969,12 @@ aux adultes 127 à 143,50 €, la deuxième journée revient donc à environ 60 
 
 ### L’Europa-Park vaut-il le coup en hiver ?
 
-Oui, avec une réserve. La décoration hivernale, la patinoire et le marché de
+Oui. La décoration hivernale, la patinoire et le marché de
 Noël n’existent qu’à ce moment-là, mais la nuit tombe plus tôt, le parc ferme au
 plus tôt à 19 h, et les attractions aquatiques ne tournent pas en continu ;
 Atlantica fait une pause en hiver. Entre Noël et la Saint-Sylvestre 2025, les
 temps d’attente se sont situés à peu près au niveau d’août, mesurés sur six
-jours. Des temps d’attente mesurés en novembre, nous n’en avons pas encore.
+jours.
 
 ## Météo et temps d’attente en direct
 
@@ -988,13 +984,8 @@ Quand il pleut, la file d’Eurosat s’allonge.
 
 ```
 
-Et deux devant lesquelles tu patienteras longtemps, avec leurs chiffres du
-moment :
-
 [Voltron Nevera powered by Rimac](ref:europa-park/voltron-nevera-powered-by-rimac?full)
 [Arthur](ref:europa-park/arthur?full)
-
-Si tu y vas encore d’ici le 9 janvier, assieds-toi une fois dans l’Euro-Mir.
 
 — Patrick
 

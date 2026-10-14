@@ -9,8 +9,7 @@ featured: false
 excerpt: >-
   Samedi 26 septembre, Bottrop lance son 28e Halloween Horror Festival : neuf
   mazes d’horreur, dont le nouveau Jason Universe à partir de 16 ans, le
-  spectacle PHOBIA et 22 soirées jusqu’au 8 novembre. Dates, billets et pourquoi
-  votre déguisement reste à la maison.
+  spectacle PHOBIA et 22 soirées jusqu’au 8 novembre.
 tags:
   - actualites
   - movie-park
@@ -24,7 +23,7 @@ rideLinks:
 coverImage:
   src: /media/movie-park-germany/van-helsings-factory.jpg
   alt: 'L’entrée de Van Helsing’s Factory : une façade de station-service rouillée avec des lettres PETROL en biais, des visiteurs sur le trottoir devant.'
-  caption: 'Van Helsing’s Factory début septembre. Dès samedi, le soir, le chasseur de monstres est nettement en infériorité numérique.'
+  caption: 'Van Helsing’s Factory début septembre.'
   credit: 'Patrick Arns'
 seo:
   title: 'Billets et dates du Halloween Horror Festival 2026 au Movie Park'
@@ -46,10 +45,7 @@ Vendredi, le [Movie Park Germany](ref:movie-park-germany) ferme encore à 17 h.
 soirée plus de 300 monstres rôdent à Bottrop-Kirchhellen : le **Halloween
 Horror Festival** entame sa 28e édition, sous la devise « Legends Never Die ».
 
-Rien à voir avec la [fête familiale de Disney](/blog/disneyland-paris-halloween-2026),
-qui commence le même samedi. À Bottrop, le soir, c’est faux sang, tronçonneuses
-et brouillard, et les scare zones ne sont pas faites pour des enfants de
-primaire.
+À Bottrop, le soir, c’est faux sang, tronçonneuses et brouillard, et les scare zones ne sont pas faites pour des enfants de primaire, contrairement à la [fête familiale de Disney](/blog/disneyland-paris-halloween-2026), qui commence le même samedi.
 
 ## Quand ça se passe
 
@@ -62,7 +58,7 @@ Rhénanie-du-Nord-Westphalie s’ajoutent les jeudis 22 et 29 octobre. Cela fait
 Ces jours-là, le parc est ouvert jusqu’à 22 h le vendredi et le samedi, jusqu’à
 21 h le dimanche. Les zones d’horreur ouvrent en général vers 18 h. Jusque-là,
 c’est une journée normale au parc, et le Nickelodeon LAND propose en journée
-**Halloween for Kids**, avec du bricolage à la place du faux sang.
+**Halloween for Kids**, avec du bricolage.
 
 Le **17 octobre** se tient pour la cinquième fois la journée **Haunters Against
 Hate**. Bottrop a été le premier parc d’attractions à l’organiser, en 2022.
@@ -87,8 +83,7 @@ camp de caravanes abandonné en bordure du Yosemite, sans réseau,
 [The Slaughterhouse](ref:movie-park-germany/the-slaughterhouse) et
 [Circus of Freaks](ref:movie-park-germany/circus-of-freaks).
 
-Nouveau sur scène : **PHOBIA – The Live Horror Game Show** au Studio 7, où le
-public joue au lieu de simplement regarder. Comme les mazes, le spectacle
+Nouveau sur scène : **PHOBIA – The Live Horror Game Show** au Studio 7, où le public participe. Comme les mazes, le spectacle
 demande son propre créneau, et des limites d’âge s’appliquent.
 
 ## Ce que le billet comprend, et ce qu’il ne comprend pas
@@ -99,8 +94,7 @@ ce moment 38,90 € selon le parc, contre 59,90 € au guichet à partir de 12 a
 
 Les mazes et PHOBIA ne sont **pas compris**. Chaque maze demande son propre
 billet à créneau horaire, à réserver en ligne. D’après le plan du parc, des billets
-restants sont aussi vendus sur place, au service clients, selon les disponibilités. Les pages Halloween du parc
-n’indiquent pas de prix par maze. On ne le trouve que dans la boutique en ligne.
+restants sont aussi vendus sur place, au service clients, selon les disponibilités. Le parc n’indique le prix par maze que dans sa boutique en ligne.
 
 Si vous voulez les neuf, faites le calcul face au **S.I.K. Pass** : 215 € avec
 l’entrée du parc, 185 € si vous avez déjà un billet ou un pass annuel. Il donne
@@ -112,7 +106,7 @@ principale.
 Avec un pass annuel, il faut enregistrer son jour de visite à l’avance sur le
 site du parc.
 
-## Ce qui reste à la maison
+## Déguisements et alcool
 
 Contrairement à Disney le 31 octobre, le Movie Park n’autorise **ni
 déguisements, ni masques, ni maquillage d’horreur** apportés par les visiteurs,
@@ -137,9 +131,6 @@ ou le 16 octobre.
 ```best-days-widget slug=movie-park-germany
 
 ```
-
-Le [tour d’horizon Halloween](/blog/halloween-parcs-attractions-2026) met le
-festival à côté de Traumatica, Walibi et Toverland. Le [guide du Movie Park](/blog/movie-park-germany-temps-d-attente-conseils) donne le jour de la semaine d’ordinaire le plus calme au Movie Park et le calendrier d’automne.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

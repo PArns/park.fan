@@ -60,7 +60,7 @@ other month of the year**.
 
 > **About the dates:** this is where things stood on 4 October 2026. Dates,
 > times and prices come from the parks' official pages, linked in the sources below. Parks
-> move evening dates around well into November, so check again before you book.
+> move evening dates around well into November.
 
 ## Walt Disney World from 13 November to 6 January
 
@@ -177,8 +177,7 @@ Dancing Lights from 1995 to 6 January 2016. Jennings Osborne had started it in
 1986 with 1,000 lights on his house in Little Rock, Arkansas; by 1993 there were
 more than three million. Disney first set it up on Residential Street and from
 2004 on the Streets of America, in the end with more than five million lights.
-Disney announced its end in September 2015, a month after unveiling Star Wars:
-Galaxy's Edge and Toy Story Land. Most of the lights went to Give Kids the World
+Disney announced its end in September 2015. Most of the lights went to Give Kids the World
 Village in Kissimmee. Jollywood Nights has run since 2023.
 
 Without an extra ticket, Sunset Seasons Greetings projects onto the Hollywood
@@ -238,20 +237,17 @@ for the season, with live music, seasonal cocktails and holiday decorations.
 
 ### Christmas at Universal since 2000
 
-Grinchmas started in December 2000 in Seuss Landing, a year and a half after
-Islands of Adventure opened on 28 May 1999. The Grinch was played in that first
+Grinchmas started in December 2000 in Seuss Landing at Islands of Adventure (opened 28 May 1999). The Grinch was played in that first
 year by Mike Aiello, who now works in Universal's creative development team. The
 show was then three acts at different times of day, performed outside the shop
 All the Books You Can Read. In 2002 Universal combined the three into one show of
-15 to 20 minutes. Grinchmas marked its 25th year in 2025.
+15 to 20 minutes.
 
-The Macy's parade has run through Universal Studios Florida, the park that opened
-on 7 June 1990, since 2002. Until 2017 it was called Macy's Holiday Parade; then
+The Macy's parade has run through Universal Studios Florida (opened 7 June 1990) since 2002. Until 2017 it was called Macy's Holiday Parade; then
 it got its current name and new holiday floats and balloons.
 
 In the same year, from 18 November 2017, the Wizarding World celebrated
-Christmas for the first time, more than seven years after Hogsmeade opened on 18
-June 2010. The projection show on the castle then lasted about eight minutes and ran roughly every 20 minutes after sunset. Spectrum News 13 reported in 2017 that
+Christmas for the first time (Hogsmeade had opened on 18 June 2010). The projection show on the castle then lasted about eight minutes and ran roughly every 20 minutes after sunset. Spectrum News 13 reported in 2017 that
 work on it had taken a year and a half.
 
 ## Disneyland Paris from 7 November to 6 January
@@ -306,8 +302,7 @@ Christmas season either.
 
 December sits above every other month, and the gap to February and March,
 the next two busiest months, is wider than the gap between February and the
-quietest summer month. The days column tells you how many measured days each row
-rests on.
+quietest summer month.
 
 At Islands of Adventure, December is the only month in all nine parks that our
 model puts in the top band.
@@ -331,7 +326,7 @@ model puts in the top band.
 ```
 
 At Disneyland Park the week between Christmas and New Year sits where an ordinary
-summer month sits. At Disney Adventure World it's quieter than any other month of the year.
+summer month sits.
 
 One reason is probably capacity. Magic Kingdom has 37 active attractions,
 Disney Adventure World has 14, and the Paris parks spread their guests across
@@ -358,12 +353,12 @@ the column is useful.
 
 ```
 
-Every park has the same calendar on its own page, day by day, next to the current wait times all season. For December 2026 it's uncertain, because the only December days in the model
+For December 2026 the calendar is uncertain, because the only December days in the model
 so far are those eight holiday days, and none from Advent.
 
 ## Hotels over Christmas
 
-The gingerbread house in the Grand Floridian lobby, which dates back to 1999 and marked its 25th anniversary in 2024, is not there in 2026. Disney says the lobby needs
+The gingerbread house in the Grand Floridian lobby, which dates back to 1999, is not there in 2026. Disney says the lobby needs
 to stay clear for hotel guests and is putting smaller gingerbread displays around
 the hotel instead. For rooms in the Disney Resorts Collection, Disney gives up to
 20 per cent off on selected nights from 4 October to 24 December 2026. Children
@@ -388,29 +383,22 @@ its own fireworks over Sleeping Beauty Castle at midnight. You pick which park
 you'll be standing in when you buy the ticket.
 
 **Universal Orlando** lists New Year's Eve across all three parks and CityWalk,
-with DJs, live entertainment and a midnight countdown. Dates, times and prices
-aren't on the page, and they aren't in the 6 August press release either.
+with DJs, live entertainment and a midnight countdown. Universal hasn't given dates, times or prices yet.
 
 **Walt Disney World** has published no New Year's Eve programme on its Christmas
-page. Disney lists Magic Kingdom, Hollywood Studios, EPCOT, Animal Kingdom,
-Disney Springs, the hotels and Blizzard Beach there, and 31 December appears in
-none of those sections. It may still come; Disney often publishes New Year's Eve in November.
+page. It may still come; Disney often publishes New Year's Eve in November.
 
 ## What I'd book in your place
 
-November already gets you the full decoration. In
-Orlando both evening events start before the season officially does, Universal
-celebrates from the 14th, and Paris from the 7th. The week between Christmas and New
+November already gets you the full decoration. The week between Christmas and New
 Year gets you the same programme at the highest waits of the year.
 
-If you have to travel between Christmas and New Year, go to Paris. There the same week was no outlier upwards, and at Disney Adventure World it
-was the quietest time of the year.
+If you have to travel between Christmas and New Year, go to Paris.
 
 If you want one ticketed evening in Orlando and you're watching the price,
 take Jollywood Nights. It's cheaper than the Very Merry Christmas Party on
 every date, the Passholder discount applies on all nights instead of selected
-ones, and it runs to 5 January, which is two weeks after the Magic Kingdom party
-has finished.
+ones, and it runs to 5 January.
 
 ## Frequently asked questions
 

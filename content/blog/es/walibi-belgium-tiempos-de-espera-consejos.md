@@ -55,9 +55,7 @@ seo:
 
 El lift de Kondaa te sube a 50 metros, lo bastante despacio como para mirar por encima de
 las copas de los árboles hasta Wavre.
-Después el tren se vuelca, 80 grados hacia abajo, 113 km/h, y a mitad de
-recorrido la vía se retuerce en un elemento que hasta entonces no existía en
-ninguna montaña rusa del mundo: un cobra roll por el que el tren pasa sin ponerse ni una sola vez cabeza abajo.
+Después el tren se vuelca 80 grados hacia abajo.
 
 [Kondaa](ref:walibi-belgium/kondaa) está en Wavre, el primer Walibi de
 todos y el que le dio nombre a la cadena entera. Más conocido es
@@ -160,8 +158,7 @@ atrás. La atracción mide 36 metros de alto y 285 de largo, el tren llega a
 76 km/h y la altura mínima es de 130 cm. Tras la temporada 2010, Cobra estuvo parada hasta julio de 2011.
 
 **[Loup-Garou](ref:walibi-belgium/loup-garou)**, también desde 2001, es una
-construcción de madera de Vekoma, un fabricante al que uno asocia más bien con
-el acero. La diseñó Dennis Starkey. El recorrido tiene 1.035 metros y
+construcción de madera de Vekoma. La diseñó Dennis Starkey. El recorrido tiene 1.035 metros y
 28 metros de altura, el tren va hasta 80 km/h y se puede subir desde 120 cm.
 Solo funciona hasta el 3 de enero de 2027. Después, Rocky Mountain Construction lo convertirá en una montaña rusa
 híbrida.
@@ -192,14 +189,9 @@ En la zona, la atracción y la renovación de otras más antiguas el parque gast
 unos 35 millones de euros. En el centro está el pueblo
 portuario ficticio de **Port Wavre**, con faro, pantalanes y casas sobre
 pilotes, y el parque metió dentro tres atracciones más antiguas: la atracción de troncos
-**[Flash Back](ref:walibi-belgium/flash-back)**, el splash shuttle **Pulsar** y
-la propia **[Turbine](ref:walibi-belgium/turbine)**, de vuelta con su nombre de
-siempre. **Kondaala**, la atracción infantil que le ha tomado prestado el nombre
-a Kondaa, está en cambio en Exotic World, al lado de la montaña rusa grande.
+**[Flash Back](ref:walibi-belgium/flash-back)**, el splash shuttle **Pulsar** y **[Turbine](ref:walibi-belgium/turbine)**. La atracción infantil **Kondaala** está en Exotic World, al lado de Kondaa.
 
 De las dos novedades del parque, Mecalodon es la que más me sorprendió.
-Delante de los detalles del puerto te quedas parado un buen rato aunque no haya
-ninguna atracción cerca.
 
 ### Atracciones acuáticas, dark rides y la torre de caída
 
@@ -244,7 +236,7 @@ En 1970, el
 empresario **Eddy Meeùs** compró una lámina de agua en Limal para hacer allí
 exhibiciones de telesquí acuático, cuyos derechos de venta para el Benelux
 acababa de conseguir. En pocos años, aquella pista de exhibición se convirtió
-en un parque de verdad, y el **26 de julio de 1975** Walibi abrió sus puertas,
+en un parque de verdad, y el **26 de julio de 1975** Walibi abrió,
 con unos **47.000 visitantes** en la primera temporada. La mascota es un
 canguro, porque «Walibi» suena casi como «wallaby». Según la Wikipedia en
 francés y RCDB, Walibi fue el primer parque de Europa que vendió una única
@@ -312,8 +304,7 @@ que estar listo en 2023. La cosa arrancó en 2018 con Tiki-Waka, en 2019
 llegaron el dark ride Popcorn Revenge y Fun Pilot, en 2021 **Kondaa** y en 2025
 **Dock World** con Mecalodon. Las novedades de 2018 costaron doce millones de
 euros, las de 2019 diecisiete millones. El parque cuenta desde 2016 cuatro mundos nuevos
-(Exotic, Karma, Fun y Dock World), la mitad, y el último llegó dos años después
-del plazo.
+(Exotic, Karma, Fun y Dock World).
 
 En el parque hermano
 [Walibi Holland](ref:walibi-holland), la **Compagnie des Alpes** levantó en el
@@ -365,8 +356,7 @@ y ninguno incluye la entrada al parque.
 
 ```
 
-Fuera de la temporada y de las vacaciones de Navidad, Walibi Belgium está
-cerrado. Dentro de la temporada, lo lleno que estará lo deciden
+Dentro de la temporada, lo lleno que estará lo deciden
 sobre todo las vacaciones escolares belgas, que desde el curso 2022-2023 ya no
 coinciden: en 2026 los colegios francófonos de Valonia y Bruselas tienen
 vacaciones de otoño del 19 al 30 de octubre, los flamencos del 2 al 8 de
@@ -384,7 +374,7 @@ la tarde. **Turbine**, **Cobra** y
 **Calamity Mine** apenas cambian a lo largo del día y rellenan cualquier hueco,
 mientras que **Vampire** y **Loup-Garou** están más llenas por la mañana y se
 alivian claramente a partir de mediodía. Las acuáticas, **Pulsar** y
-**Flash Back**, te las guardas para la hora de más calor. Quien tenga tiempo y una segunda entrada le añade una tarde en el **Aqualibi**.
+**Flash Back**, te las guardas para la hora de más calor.
 
 ## Práctico: cómo llegar, entradas, horarios
 
@@ -522,9 +512,7 @@ cuatro scare zones y la mascota Bill. Los detalles, en la
 
 **Eddy Meeùs**, que en 1970 en realidad solo compró un estanque en Limal
 para hacer exhibiciones de esquí acuático. De ahí salió el parque, que abrió el
-26 de julio de 1975 con unos 47.000 visitantes en la primera temporada. Meeùs
-murió en 2001, el mismo año en que su parque pasó brevemente a llamarse Six
-Flags Belgium.
+26 de julio de 1975 con unos 47.000 visitantes en la primera temporada. Meeùs murió en 2001.
 
 ### ¿Qué es «Worlds of Walibi»?
 

@@ -8,7 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Het Phantasialand is mijn thuispark, en park.fan is ontstaan in een rij voor
-  Taron. Hoe lang je er in de rij staat, hangt vooral af van de dag. De Quick
+  Taron.  De Quick
   Pass heb je alleen op drukke dagen nodig.
 tags:
   - phantasialand
@@ -54,11 +54,7 @@ seo:
 Naar het [Phantasialand](ref:phantasialand) ga ik al meer dan dertig jaar. Mijn
 ouders hebben me hier in de kinderwagen rond de Märchensee geduwd, met mijn vader
 gleed ik in de gondelbaan “1001 Nacht” door een opengeslagen sprookjesboek, lang
-voordat die werd afgebroken, en park.fan heb ik hier bedacht, in een rij van
-zestig minuten voor Taron. Het hele voorverhaal staat in
-[ons ontstaansverhaal](/blog/welkom-bij-de-park-fan-blog).
-
-Voor zijn bezoekersaantal heeft het park maar acht echte headliners.
+voordat die werd afgebroken, en [park.fan](/blog/welkom-bij-de-park-fan-blog) heb ik hier bedacht, in een rij van zestig minuten voor Taron.
 
 ![Een verlichte zweefmolen draait, links een lichtboom | Wintertraum, het winterseizoen van Phantasialand. | wide](/media/phantasialand/background-16x9.jpg)
 
@@ -145,9 +141,7 @@ de baan erin gebouwd.
 
 Het Phantasialand is tot op de dag van vandaag in **familiehanden** gebleven. In
 1998 werd Robert Löffelhardt, de zoon van Gottlieb, enige directeur, drie jaar
-nadat hij het aandeel van medeoprichter Richard Schmidt had overgenomen; een
-internationaal concern of aandeelhouders die op het kwartaal letten, heeft het
-park nooit boven zich gehad. De eigenaar van Movie Park Germany, een uur rijden
+nadat hij het aandeel van medeoprichter Richard Schmidt had overgenomen. De eigenaar van Movie Park Germany, een uur rijden
 noordelijker, is daarentegen in handen van een investeringsmaatschappij, en die
 [zoekt sinds september 2026 een koper](/blog/parques-reunidos-te-koop-movie-park).
 
@@ -159,11 +153,8 @@ Het park strijdt al sinds 2003 voor een uitbreiding, en in juli 2026 heeft de
 planningscommissie van Brühl de bestemmingsplanprocedure gestart voor zo’n 15
 hectare bij het natuurgebied Ententeich. Goedgekeurd is daarmee nog niets. Eerst
 komen onderzoeken naar natuur, verkeer en hoogwater, en sinds 28 september
-verzamelt een netwerk van natuurbeschermers handtekeningen voor een
-burgerinitiatief tegen de plannen. Volgens het park komen er onder meer een
-aquapark-hotelresort, attracties en theaters. Wat Phantasialand daarover heeft
-gepubliceerd en hoe de strijd sinds 2003 verliep, staat in
-[ons nieuwsbericht over het burgerinitiatief](/news/phantasialand-uitbreiding-burgerinitiatief).
+verzamelt een netwerk van natuurbeschermers handtekeningen voor een [burgerinitiatief](/news/phantasialand-uitbreiding-burgerinitiatief) tegen de plannen. Volgens het park komen er onder meer een
+aquapark-hotelresort, attracties en theaters.
 
 ## De headliners
 
@@ -175,9 +166,7 @@ gepubliceerd en hoe de strijd sinds 2003 verliep, staat in
   sinds 2006. Ze scheert zo dicht langs rotsen, hutten en boomkruinen dat je bij
   elk element denkt dat je ergens tegenaan gaat.
 - **[Chiapas](ref:phantasialand/chiapas-die-wasserbahn)**, met 53 graden volgens
-  het park de steilste afdaling van een waterbaan ter wereld, plus een afdaling
-  achteruit, veel water en een soundtrack die je er dagenlang niet meer uit
-  krijgt.
+  het park de steilste afdaling van een waterbaan ter wereld, plus een afdaling achteruit en een soundtrack.
 - **[Colorado Adventure](ref:phantasialand/colorado-adventure)**, de mijntrein van
   1996 die Michael Jackson kort na de opening doopte. Gezinsvriendelijk, maar
   snel.
@@ -237,7 +226,7 @@ het wordt. De ticketkalender in de online shop kent voor oktober en november 202
 drie prijsstappen: **35 €, 59 € en 78 €**, dus meer dan het dubbele voor dezelfde
 parkdag. De shop adverteert met tickets vanaf **44 €**. Spontaan kan ook, maar
 alleen online en alleen tot 14 uur op de bezoekdag zelf, tegen de dan geldende
-dagprijs en alleen als de dag niet is uitverkocht. De goedkope dag is vaak ook de legere, maar niet altijd.
+dagprijs en alleen als de dag niet is uitverkocht.
 
 Jaarkaarten zijn er niet meer. Het Phantasialand haalde zijn Club-Karte in de
 pandemie uit de verkoop en bracht hem nooit terug; de laatste liepen in de zomer
@@ -255,16 +244,14 @@ jaarkaarten en de ticketprijzen, weet ik niet, en cijfers heb ik er niet bij.
 
 ## Phantasialand wachttijden: wanneer ze het kortst zijn
 
-Een grauwe dinsdag in november kan leger zijn dan elke
-zaterdag in juli, en een NRW-vakantiedag met zon in de voorspelling is
+Een NRW-vakantiedag met zon in de voorspelling is
 gegarandeerd vol.
 
 Een paar vuistregels die bijna altijd kloppen:
 
 - **Doordeweeks verslaat weekend.** Maandag tot en met vrijdag liggen in onze
   metingen gelijk op, zaterdag en zondag erboven (gemeten sinds eind december
-  2025). Een doordeweekse dag die leger is dan de andere, is er dus niet. Welke
-  parken er wel een hebben, staat op de
+  2025). Welke parken wel een rustigere doordeweekse dag hebben, staat op de
   [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
 - **NRW-schoolvakanties mijden**, vooral zomer- en herfstvakantie. Het
   verzorgingsgebied Keulen/Bonn/Ruhrgebied is groot.
@@ -274,7 +261,7 @@ Een paar vuistregels die bijna altijd kloppen:
 
 Vakantiekalender, weer en openingstijden rekenen we samen met de
 wachttijd-historie van het park om naar één drukteniveau per dag, van zeer laag
-tot extreem, en dat staat in de kalender van de beste bezoekdagen.
+tot extreem.
 
 ```best-days-widget slug=phantasialand
 
@@ -321,13 +308,11 @@ Na veel bezoeken vind ik dat je hem **op een groene dag niet nodig hebt.** Wie
 vroeg present is en een verstandige volgorde rijdt, haalt de headliners met
 korte wachttijd. Op een dieprode vakantiezaterdag daarentegen kan hij de dag
 redden. Kijk vóór de aankoop naar de live wachttijden, en staan de cijfers laag,
-hou dan je geld op zak. Naast de Ultimate is er nog een tweede weg naar F.L.Y.
-zonder lange rij, via het hotel Charles Lindbergh.
+hou dan je geld op zak.
 
 ## In welke volgorde je rijdt
 
-De doeltreffendste gratis truc in het Phantasialand heet **vroeg present zijn en
-anticyclisch rijden**. In het zomerseizoen gaan de poorten om 9 uur open,
+In het zomerseizoen gaan de poorten om 9 uur open,
 uiterlijk om 10 uur draaien alle banen. In het eerste uur zijn de steegjes nog
 leeg en de rijen bij de meeste banen zo kort als de hele dag niet meer.
 
@@ -352,15 +337,12 @@ Mijn volgorde, die ik op één punt naar onze gegevens per uur heb omgebouwd:
    terwijl hij loopt, zit een hele theaterzaal vol mensen binnen en niet voor je
    in de rij.
 
-Taron en F.L.Y., live uit onze data:
-
 [Taron](ref:phantasialand/taron?full)
 [F.L.Y.](ref:phantasialand/fly?full)
 
 ## Eten
 
-Het Phantasialand is ook vanwege het **eten** een reis waard, en dat zou ik bij
-geen enkel ander park zo uitlichten. Drie restaurants die ik aanraad:
+Drie restaurants die ik aanraad:
 
 - **Rutmor’s Taverne** (Klugheim) is mijn favoriet. À la carte, rustiek tot in de
   gesneden houten banken, met hartige keuken: Eierknöpfli (spätzle), knödel,
@@ -377,10 +359,7 @@ geen enkel ander park zo uitlichten. Drie restaurants die ik aanraad:
 Voor tussendoor eet ik het liefst de **churros**, die je het hele jaar door
 krijgt.
 
-Eet **anticyclisch**, rond half twaalf, voordat de restaurants vollopen. Dan zit
-je aan tafel terwijl buiten de rijen het langst zijn, en sta je niet ook nog eens
-in de rij voor je eten. In de winter zet het park op de Kaiserplatz nog een eigen
-winterkaart neer, meer daarover bij de Wintertraum.
+Eet **anticyclisch**, rond half twaalf, voordat de restaurants vollopen.
 
 ## De kleine dingen waarvoor ik altijd terugkom
 
@@ -438,8 +417,7 @@ Het Phantasialand ligt in Brühl, tussen Keulen en Bonn.
 - **Met de auto:** via de A553, afrit Brühl-Süd. Het park waarschuwt dat
   navigatiesystemen graag de afrit Bornheim voorstellen, en die is fout. Parkeren
   doe je op de parkeerterreinen _Mystery_ (P1) of _China_ (P2) voor **8 € per
-  auto per dag**, hotelgasten parkeren gratis bij hun hotel. Wie vroeg komt,
-  parkeert dichter bij de ingang.
+  auto per dag**, hotelgasten parkeren gratis bij hun hotel.
 - **Met de trein:** met de RE5, RB26 of RB48 naar **Brühl (Rheinland)**, of met
   sneltramlijn **18** tussen Keulen en Bonn naar **Brühl Mitte**. Vanaf beide
   haltes rijdt een **shuttlebus** naar het park, vanaf Brühl Mitte in ongeveer een
@@ -478,8 +456,7 @@ verkoopt ze ook buiten de Wintertraum.
 In de winter wordt het vroeg donker, en **Taron in het donker** rijd ik het
 liefst, als de baan door het verlichte Klugheim jaagt en de basaltzuilen nog maar
 schaduwen tegen de nachthemel zijn. Alleen wil precies dan iedereen erin. Koop de
-**Quick Pass meteen vroeg op de dag** (in het weekend zijn ze rond het middaguur
-weg), en rijd dan Taron in het donker, zo vaak je kunt.
+**Quick Pass meteen vroeg op de dag**, en rijd dan Taron in het donker, zo vaak je kunt.
 
 De Wintertraum 2026/27 loopt van **14 november 2026 tot 24 januari 2027**,
 dagelijks van **11 tot 20 uur**. Gesloten op 24 en 25 december 2026 en op 1, 12
@@ -498,9 +475,6 @@ voorverkooptickets vanaf 30 € tot 12 oktober te koop.
   weinig. We hebben de Wintertraum tot nu toe maar op een handvol dagen gemeten,
   tussen eind december 2025 en januari 2026, en die waren druk. Kijk voor alles
   buiten de weekenden dus eerst in de druktekalender van hierboven.
-- **Kleed je warm aan.** Waarom
-  gevoelde en echte minuten zo ver uit elkaar liggen, lees je in de
-  [kunst van het wachten](/blog/de-kunst-van-het-wachten).
 
 ## Veelgestelde vragen over wachttijden & bezoek
 
@@ -533,8 +507,7 @@ het eind van de middag, als de rij daar het kortst is.
 
 Op een rustige (groene) dag niet, met een vroege aankomst rijd je alles met korte
 wachttijd. Op een volle dag kan hij Taron en F.L.Y. redden. Taron kost los 12 €,
-F.L.Y. zit alleen in de Ultimate van 80 €. Kijk vooraf naar de live wachttijden,
-en staan de cijfers laag, hou dan je geld op zak.
+F.L.Y. zit alleen in de Ultimate van 80 €.
 
 ### Zijn er in het Phantasialand nog jaarkaarten?
 

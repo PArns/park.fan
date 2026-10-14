@@ -70,7 +70,7 @@ parque en 2024. Medimos aquí los tiempos de espera desde el 6 de octubre de 202
 
 El 11 de diciembre de 1984 René Monory, presidente del consejo departamental de la Vienne, puso
 la primera piedra. Ya a principios de los años ochenta había imaginado una ciudad del futuro, y
-el parque fue su primera parte. Abrió el 31 de mayo de 1987 con el pabellón, el Kinémax y una
+el parque fue su primera parte. En la apertura tenía el pabellón, el Kinémax y una
 zona de juegos. Después llegaron en 1988 el primer Cinéma Dynamique,
 en 1990 el Omnimax y la torre mirador Gyrotour, en 1996 el IMAX 3D y en 2000 la estación del TGV
 con una pasarela peatonal directa al parque.
@@ -101,7 +101,7 @@ mirar si no le toca montar.
 
 [Objectif Mars](ref:futuroscope/destination-mars) funciona desde 2020 y, junto a la montaña rusa infantil
 Le Balancier de Futuropolis, es la única montaña rusa del parque. La construyó Intamin como
-launched coaster con vehículos giratorios, es decir, un spinning coaster. Para el parque es una montaña rusa familiar, con una velocidad máxima de 55 km/h. El recorrido pasa por un edificio y sale al aire libre. Debía abrir el 28 de marzo de 2020; por el cierre de la pandemia
+launched coaster con vehículos giratorios, es decir, un spinning coaster. Alcanza 55 km/h, y el parque la cuenta como montaña rusa familiar. El recorrido pasa por un edificio y sale al aire libre. Debía abrir el 28 de marzo de 2020; por el cierre de la pandemia
 arrancó en junio de 2020, al principio solo los fines de semana.
 
 Se sube desde 1,10 metros acompañado y desde 1,20 metros solo, y el máximo es de 1,95 metros. El
@@ -200,8 +200,7 @@ altura.
 
 Para los niños que son demasiado pequeños para una atracción existe la «Solution Jeunes
 Enfants», en inglés Baby Switch. Se pide en la entrada de la atracción. Los niños de 5 a 12 años
-pagan la tarifa infantil, por debajo de los cinco años la entrada es gratuita y todos los
-restaurantes tienen un menú para niños menores de doce años.
+pagan la tarifa infantil, y por debajo de los cinco años la entrada es gratuita.
 
 ```map-widget slug=futuroscope
 
@@ -232,13 +231,8 @@ parque comunica un tiempo de espera.
 
 ```
 
-Objectif Mars y L'Extraordinaire Voyage comparten el primer puesto. Detrás vienen, muy juntas,
-Arthur, Chasseurs de Tornades, La Maison à l'envers, Aventure Éclabousse y Danse avec les
-Robots.
-
-Según el parque, La Maison à l'envers no tiene límite de
-altura y es la alternativa para las familias cuyos hijos todavía no pueden subir a las atracciones.
-El pase Premium+ no vale allí.
+También La Maison à l'envers está entre las primeras, y es la alternativa para las familias cuyos
+hijos todavía no pueden subir a las atracciones.
 
 ```hourly-profile-widget slug=futuroscope top=8
 
@@ -315,8 +309,8 @@ variante en la que un mago estropea el viaje. El parque la recomienda a partir d
 visita cuesta una aportación a favor de personas con discapacidad visual que la entrada no
 incluye.
 
-Futuroween empieza el sábado 17 de octubre, un día antes de las vacaciones de otoño. A partir del
-18 de octubre el parque abre, según el calendario, todos los días de 9:45 a 22:00.
+Las vacaciones de otoño empiezan el 18 de octubre, un día después del inicio de Futuroween. A
+partir de entonces el parque abre, según el calendario, todos los días de 9:45 a 22:00.
 
 ## Entradas y precios
 
@@ -376,8 +370,7 @@ rápido y para llevar, el **Food Court Festival**, **La Crêpe Volante** y el **
 Food**. Todos los restaurantes tienen menú infantil para menores de doce años. Con la Carte Saison
 hay un diez por ciento de descuento.
 
-El **Space Loop**, entre el parque y el Aquascope, lo comercializa el operador como «Rollercoaster
-Restaurant». Abrió el 29 de abril de 2022, junto con el hotel Station Cosmos.
+El **Space Loop**, entre el parque y el Aquascope, lo comercializa el operador como «Rollercoaster Restaurant».
 
 Tres hoteles forman parte del resort: el **Station Cosmos**, con habitaciones decoradas como
 cabinas de una estación espacial (paquete de hotel y entrada desde 196 euros por adulto), el
@@ -502,8 +495,7 @@ la estación de Poitiers son 20 minutos.
 ### ¿Hay que reservar el Aquascope aparte?
 
 Sí. El Aquascope tiene una entrada propia con franja horaria, porque la capacidad es limitada, y
-no hay taquilla de día. La entrada de adulto empieza en 39 euros. No está incluido en la entrada
-del parque.
+no hay taquilla de día. La entrada de adulto empieza en 39 euros.
 
 ### ¿Se admiten perros y cochecitos?
 

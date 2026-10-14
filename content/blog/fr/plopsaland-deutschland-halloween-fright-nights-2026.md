@@ -7,10 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dès le 2 octobre, Haßloch devient un parc de l’horreur chaque vendredi et
-  samedi : six maisons hantées dont deux nouvelles, trois scare zones, trois
-  spectacles et un final chaque soir. Dates, prix et ce que le billet ne
-  couvre pas.
+  Dès le 2 octobre, les Halloween Fright Nights ont lieu à Haßloch chaque vendredi et samedi, avec six maisons hantées dont deux nouvelles, trois scare zones, trois spectacles et un final chaque soir.
 tags:
   - actualites
   - plopsaland-deutschland
@@ -24,7 +21,7 @@ rideLinks:
 coverImage:
   src: /media/halloween-2026/darsteller/09-kettensaegen-clown-raupe.jpg
   alt: 'Clown armé d’une tronçonneuse devant un manège chenille, éclairé en vert et violet.'
-  caption: 'Ce clown travaille à Walibi Holland. Les photos de Haßloch viendront après le 2 octobre ; là-bas, son collègue s’appelle Reddles.'
+  caption: 'Un clown à la tronçonneuse à Walibi Holland. Les photos de Haßloch viendront après le 2 octobre.'
   credit: 'Patrick Arns'
 seo:
   title: 'Halloween Fright Nights 2026 à Plopsaland Deutschland : dates et prix'
@@ -58,7 +55,7 @@ attractions tournent jusqu’à la fermeture. Il ne cite que les attractions
 aquatiques DinoSplash et Wickie Splash, qui s’arrêtent à 20 h.
 
 En journée se tient en parallèle la Fête d’automne Plopsa, pensée pour les
-enfants. Les monstres sortent le soir.
+enfants.
 
 ## Les nouveautés
 
@@ -66,10 +63,7 @@ Deux des six maisons hantées sont nouvelles. Dans
 [NEXUS AI](ref:plopsaland-deutschland/nexus-ai), une entreprise recrute des
 cobayes pour la prochaine génération de sensations fortes, et l’expérience
 tourne vite à la lutte pour savoir qui contrôle qui.
-[Lost: Deep in the Woods](ref:plopsaland-deutschland/lost-deep-in-the-woods)
-joue la carte locale : quelque part dans la forêt du Palatinat se cache un lieu
-maudit où des gens disparaissent sans laisser de trace, et vous suivez la
-légende dans le noir.
+[Lost: Deep in the Woods](ref:plopsaland-deutschland/lost-deep-in-the-woods) se déroule dans un lieu maudit de la forêt du Palatinat où des gens disparaissent sans laisser de trace.
 
 Reviennent [Academy of Freaks](ref:plopsaland-deutschland/academy-of-freaks),
 où une directrice de cirque cherche de nouveaux talents,
@@ -77,9 +71,7 @@ où une directrice de cirque cherche de nouveaux talents,
 d’_Une nuit en enfer_ et tenu par une certaine Miss Monique,
 [Mad Rat](ref:plopsaland-deutschland/mad-rat), peuplé d’humains changés en rats
 géants par des expériences, et le
-[Schnitzelhaus](ref:plopsaland-deutschland/schnitzelhaus), connu pour son
-schnitzel et redouté pour son boucher. Qui s’approche trop finit au menu, et
-pas en tant que client.
+[Schnitzelhaus](ref:plopsaland-deutschland/schnitzelhaus) et son boucher.
 
 Deux spectacles sont nouveaux aussi : le **Monster Release Show « Freaks
 Reloaded »** avec Reddles, le clown attitré des Fright Nights, et le spectacle
@@ -125,8 +117,7 @@ parking et évite de réserver six créneaux. Si vous venez un samedi d’octobr
 
 ## Pour qui
 
-Le parc conseille les Fright Nights **à partir de 16 ans**. Contrairement à
-Traumatica, ce n’est pas une limite stricte : la FAQ du parc précise que les plus jeunes entrent accompagnés d’un parent ou d’un tuteur légal. Pour les plus
+Le parc conseille les Fright Nights **à partir de 16 ans**. Contrairement à Traumatica, les plus jeunes entrent accompagnés d’un parent ou d’un tuteur légal, selon la FAQ du parc. Pour les plus
 jeunes ou les personnes sensibles, Majaland et la halle Plopsa Indoor restent
 sans monstres, et sur place, uniquement là, on peut se procurer un
 « Schreck-Stopp » qui, selon le parc, tient les monstres à distance. Masques,
@@ -135,8 +126,7 @@ maquillage élaboré et déguisements sont interdits aux visiteurs de plus de
 
 Haßloch se situe entre l’A65 et la B9, et une navette relie la gare de Haßloch
 au parc. [Europa-Park](ref:europa-park) et Traumatica sont à un peu moins de
-deux heures de route au sud. Le [tour d’horizon Halloween](/blog/halloween-parcs-attractions-2026) compare
-les Fright Nights à Traumatica, au Movie Park, à Walibi et à Toverland.
+deux heures de route au sud.
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 

@@ -53,8 +53,6 @@ In Bottrop sollen dann über eine Million Lichter hängen, in Wavre steht eine
 Eisbahn von 700 Quadratmetern unter einem Hallendach, und in Kasterlee ist der
 Weihnachtsmann im Tagesticket drin.
 
-Der Großteil der deutschen Parks schließt Ende Oktober und macht erst im Frühjahr wieder auf.
-
 Am 23. April 2026 hat [Walibi Holland](ref:walibi-holland) seinen Winterbetrieb
 eingestellt. Vier Ausgaben lang hieß das **Bright Nights**, mit illuminierten
 Achterbahnen und einer Feuerwerksshow namens „Light up the Night“. Einen
@@ -64,15 +62,12 @@ Geschäftsführerin Mascha Taminiau nannte als Gründe die kurze Öffnungsperiod
 den Weihnachtsferien und die Abhängigkeit vom Wetter. Achterbahnen fahren bei
 Frost, Sturm und Eisregen nicht, und Walibi Holland hat fast nichts Überdachtes.
 
-Ob ein Park im Dezember aufmacht, hängt davon ab, wie viel er unter Dach hat. Das
-[Efteling](ref:efteling) füllt denselben Zeitraum mit Dark Rides und sieht bei
-Regen sogar besser aus. Das [Phantasialand](ref:phantasialand) hat mit Wuze Town
+Das [Efteling](ref:efteling) füllt denselben Zeitraum mit Dark Rides. Das [Phantasialand](ref:phantasialand) hat mit Wuze Town
 eine ganze Halle voller Fahrgeschäfte, Walibi Belgium hat Hallen.
 
 > **Zu den Terminen:** Stand ist der 25. September 2026. Die Parks schieben ihre
 > Winterkalender bis in den Herbst noch hin und her, und nicht jeder hat schon
-> alles veröffentlicht. Die offiziellen Seiten stehen unten in den Quellen, und
-> die Öffnungstage im Kalender auf park.fan kommen direkt aus dem Fahrplan des
+> alles veröffentlicht. Die Öffnungstage im Kalender auf park.fan kommen direkt aus dem Fahrplan des
 > Parks.
 
 ## Die drei deutschen Parks, die einfach weiterlaufen
@@ -110,8 +105,7 @@ Erde. Bleibt Taron bei Wind stehen, fahren diese Bahnen weiter. Geschlossen
 bleiben im Wintertraum River Quest, Wakobato und Wözl’s Wassertreter. Chiapas
 fährt dagegen auch im Dezember.
 
-Im [Phantasialand-Guide](/blog/phantasialand-tipps) steht, wie der Quick Pass seit der Saison
-2025/26 funktioniert und warum er im Wintertraum an Wochenenden oft schon mittags weg ist.
+Der Quick Pass ist im Wintertraum an Wochenenden oft schon mittags weg ([Phantasialand-Guide](/blog/phantasialand-tipps)).
 
 [Phantasialand](ref:phantasialand?full)
 
@@ -141,9 +135,6 @@ denn auf der Fläche entsteht ein eigener Themenbereich mit einer neuen
 Familienachterbahn von Mack Rides, die ESA ist als Partner dabei, fertig sein
 soll er laut Park zur Saison 2028.
 
-Welcher Wochentag in Rust am ruhigsten ist und was im November los ist, haben
-wir im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps) nachgerechnet.
-
 [Europa-Park](ref:europa-park?full)
 
 Angebote und Termine: [europapark.de → Wintersaison 2026/2027](https://www.europapark.de/de/uebernachten/angebote-events/wintersaison-20262027).
@@ -163,7 +154,7 @@ aber wieder alle Freitage bis Sonntage auf Betrieb, jeweils von 11 bis 18 Uhr.
 
 ### Efteling
 
-Regen, Wind und Dunkelheit können im [Efteling](ref:efteling) [Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana und [Danse Macabre](ref:efteling/danse-macabre) nichts anhaben, und mehrere davon wirken in der Dämmerung besser als bei Sonnenschein.
+Regen, Wind und Dunkelheit können im [Efteling](ref:efteling) [Droomvlucht](ref:efteling/droomvlucht), [Symbolica](ref:efteling/symbolica), Villa Volta, Fata Morgana und [Danse Macabre](ref:efteling/danse-macabre) nichts anhaben.
 
 ![Das blau angeleuchtete Schloss von Symbolica bei Nacht, davor ein Springbrunnen | Symbolica an einem Winterabend. Im Dezember wird es hier um halb fünf dunkel. | wide](/media/efteling/symbolica.jpg)
 
@@ -181,16 +172,14 @@ damit das längste Winterprogramm, das in dieser Übersicht fest angekündigt is
 Droomvlucht ist allerdings vom 9. November bis 4. Dezember in Wartung, Joris en
 de Draak vom 30. November bis 18. Dezember.
 
-Im [Efteling-Guide](/blog/efteling-disney-der-niederlande) steht, warum überhaupt nur fünf
-Millionen Gäste im Jahr hinein dürfen und was das mit der Wintersaison zu tun hat.
+Ins Efteling dürfen nur fünf Millionen Gäste im Jahr ([Efteling-Guide](/blog/efteling-disney-der-niederlande)).
 
 [Efteling](ref:efteling?full)
 
 ### Toverland
 
 Das [Toverland](ref:attractiepark-toverland) in Sevenum hat zwei große Hallen,
-Land van Toos und Wunderwald, und damit dasselbe Argument wie Kaatsheuvel in
-klein. **Winter Feelings** läuft vom **28. November 2026 bis 17. Januar 2027**,
+Land van Toos und Wunderwald. **Winter Feelings** läuft vom **28. November 2026 bis 17. Januar 2027**,
 an Mittwochen, an den Wochenenden und durchgehend in den Weihnachtsferien. Der
 Park öffnet um 11 Uhr und schließt mittwochs um 18, am Wochenende um 19 und
 zwischen Weihnachten und Silvester um 20 Uhr. Port Laguna am Eingang wird in
@@ -204,8 +193,7 @@ Strips auf einmal kauft, zahlt pro Strip weniger. Für den freien Eintritt muss
 man vorher gratis reservieren, die Plätze pro Tag sind begrenzt. Das normale
 Tagesticket mit unbegrenzten Fahrten gibt es daneben weiter.
 
-Sevenum liegt auf dem Weg von Köln und Düsseldorf nach Kaatsheuvel. Die Wartezeit an Troy an
-einem normalen Tag steht im [Toverland-Guide](/blog/toverland-troy-wartezeiten-tipps).
+Sevenum liegt auf dem Weg von Köln und Düsseldorf nach Kaatsheuvel.
 
 [Attractiepark Toverland](ref:attractiepark-toverland?full)
 
@@ -286,7 +274,6 @@ Experience, eine Zugfahrt zum Nordpol gegen Aufpreis.
 Movie Park und Bobbejaanland gehören zu Parques Reunidos, und die will der
 Finanzinvestor EQT gerade verkaufen. Für Besucher ändert das vorerst nichts
 ([mehr zum Verkauf](/blog/parques-reunidos-verkauf-movie-park)).
-Bottrops ruhigster Wochentag steht im [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
@@ -301,9 +288,7 @@ Wintertag.
 
 Auf der Winterliste des Parks stehen gut 30 Einträge, darunter MAXIMUS, die
 Tempel X-pedition, LEGO NINJAGO The Ride und die Techno Schleuder. Bei den
-meisten Bahnen draußen steht allerdings „witterungsabhängig geöffnet“. Wer mit
-einem Kind anreist, das genau eine bestimmte Bahn fahren will, schaut vorher in
-die Liste des Parks.
+meisten Bahnen draußen steht allerdings „witterungsabhängig geöffnet“.
 
 [Legoland Deutschland](ref:legoland-deutschland?full)
 
@@ -376,8 +361,7 @@ Im Phantasialand liegen der Dezember und der Januar näher am Juli und August al
 ```
 
 Die Wintermonate stehen auf einer Handvoll Messtagen, die Sommermonate auf einem
-Vielfachen davon. In der Tage-Spalte der Tabelle steht bei jeder Zeile, auf wie
-vielen Messtagen sie beruht. Und die Dezemberzeile stammt komplett aus den
+Vielfachen davon. Und die Dezemberzeile stammt komplett aus den
 Weihnachtsferien, weil unsere Messungen erst Ende Dezember 2025 beginnen,
 zwischen den Jahren. Für eine Aussage über die Größenordnung zwischen den Jahren
 reicht das, über den Advent wissen wir daraus nichts. Beim Efteling ist der

@@ -103,8 +103,7 @@ erste neue Achterbahn im Legoland Deutschland seit gut 20 Jahren.
 
 Im Legoland gelten fast überall zwei Grenzen: eine Größe und ein Alter, jeweils getrennt für die
 Fahrt mit einem Erwachsenen und die Fahrt allein. Wo ein Kind mit 1,10 Metern in Begleitung mitfahren darf, braucht es
-für die Fahrt allein oft 1,20. Der Park legt das pro Bahn fest, und ob jemand mitfahren darf, entscheidet
-am Eingang der Bahn das Personal.
+für die Fahrt allein oft 1,20.
 
 | Bahn                                                                                      | Was es ist                       | mit Erwachsenem       | allein             |
 | ----------------------------------------------------------------------------------------- | -------------------------------- | --------------------- | ------------------ |
@@ -129,8 +128,7 @@ fünf beziehungsweise zehn Zentimeter.
 Ein Achtjähriger mit 1,30 Metern darf
 bei den meisten Bahnen aus der Tabelle allein fahren, ein Sechsjähriger mit 1,20 Metern nur auf den
 kleineren. Bei Flying NINJAGO, Power Builder und der Wüsten X-kursion gibt es außerdem eine
-**Maximalgröße** von 1,95 Metern, bei Maximus von 2,00 Metern. Das betrifft vor allem Eltern, die
-mitfahren wollen.
+**Maximalgröße** von 1,95 Metern, bei Maximus von 2,00 Metern.
 
 ## Die großen Bahnen
 
@@ -222,7 +220,7 @@ Der Wochentag macht in unseren Messungen den größten Unterschied.
 ```
 
 Der Samstag ist der vollste Tag der Woche und der Freitag der ruhigste. Für jeden Wochentag haben wir an
-mehr als zwanzig Tagen gemessen, allerdings nur in einer Saison. Auch in den
+mehr als zwanzig Tagen gemessen. Auch in den
 Ferien ist der Freitag nach unseren Messungen der Werktag mit den kürzesten Wartezeiten. Von den
 sechs Parks, die wir im [Ferienguide](/blog/schulferien-freizeitparks-deutschland) vergleichen,
 hängt das Legoland am stärksten von den Ferien in Bayern und Baden-Württemberg ab.
@@ -233,8 +231,6 @@ hängt das Legoland am stärksten von den Ferien in Bayern und Baden-Württember
 
 Der August war der vollste Monat. Im Juni und im September war weniger los als im Mai und im Juli.
 Für den Oktober haben wir erst fünf Tage gemessen.
-
-Der Park öffnet um 10 Uhr, die Fahrgeschäfte schließen eine Stunde vor Parkschluss.
 
 ```hourly-profile-widget slug=legoland-deutschland top=8
 
@@ -287,7 +283,7 @@ ganz oben steht.
 ## Tickets und Jahreskarte
 
 Die Preise sind **dynamisch**. Der Park hat laut Wikipedia Ende 2024 Surge Pricing eingeführt, und
-die Preise auf seiner Seite beginnen mit „ab“. Die folgenden gelten am 6. Oktober 2026.
+die Preise auf seiner Seite beginnen mit „ab“.
 
 Eine Tageskarte kostet online **ab 39 €**, an der Kasse **64 €** für Besucher ab zwölf und **58 €**
 für Kinder zwischen zwei und elf. Unter zwei Jahren ist der Eintritt frei. Die Karte für zwei Tage kostet
@@ -445,14 +441,13 @@ Günzburg und dann mit dem Bus, wenn das Zugticket bis „LEGOLAND Park“ gebuc
 
 ## Zum Weiterlesen
 
-Im [Ranking der deutschen Freizeitparks](/blog/beste-freizeitparks-in-deutschland) steht das
-Legoland neben den übrigen Parks Deutschlands. Auf dem Gelände des
+Auf dem Gelände des
 Hansa-Parks in Sierksdorf stand von 1973 bis 1976 ein erstes deutsches Legoland, mehr dazu im
 [Hansa-Park-Guide](/blog/hansa-park-tipps).
 
 ## Für wen das Legoland weniger passt
 
-Vier klassische Achterbahnen hat der Park, und nur eine davon, Maximus, fährt über Kopf. Wer mit Kindern über
+Wer mit Kindern über
 zwölf oder ohne Kind kommt, findet im Phantasialand oder im Europa-Park mehr Bahnen, die zu ihnen
 passen.
 

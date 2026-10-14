@@ -63,7 +63,7 @@ Les premières années ont été difficiles. Entre 1994 et 1996, selon Wikipédi
 
 Les nouveaux propriétaires ont installé en 1997 les deux tours de 60 mètres qui s’appellent aujourd’hui Oil Tower. En 1998, la souris folle Pakal, aujourd’hui [Gold Digger](ref:mirabilandia/gold-digger), et l’entrée a pris son thème de pirates, la Baia dei Pirati. En 1999 ont ouvert la grande roue Eurowheel et la rivière Niagara, aujourd’hui [El Dorado Falls](ref:mirabilandia/el-dorado-falls). Katun date de 2000. Le parc aquatique Mirabilandia Beach a ouvert en 2003, il s’appelle Mirabeach depuis 2011.
 
-En 2006, Parques Reunidos a racheté le parc. Wikipédia en allemand cite, en s’appuyant sur le journal espagnol Cinco Días, environ 100 millions d’euros. iSpeed a remplacé la Sierra Tonante, à l’arrêt depuis 2007 (ouverture en 2008 selon le parc, en 2009 selon Wikipédia). Ont suivi Master Thai (2011), Divertical (2012), la zone enfants Dinoland (2014), la zone western Far West Valley (2016) et, en 2019, Ducati World avec Desmo Race. La collaboration avec Nickelodeon a commencé en 2022, et Nickelodeon Land a ouvert en 2025. EQT cherche un acquéreur pour Parques Reunidos, le détail est dans notre article [Parques Reunidos, maison mère de Movie Park, est à vendre](/news/parques-reunidos-a-vendre-movie-park).
+En 2006, Parques Reunidos a racheté le parc. Wikipédia en allemand cite, en s’appuyant sur le journal espagnol Cinco Días, environ 100 millions d’euros. iSpeed a remplacé la Sierra Tonante, à l’arrêt depuis 2007 (ouverture en 2008 selon le parc, en 2009 selon Wikipédia). Ont suivi Master Thai (2011), Divertical (2012), la zone enfants Dinoland (2014), la zone western Far West Valley (2016) et, en 2019, Ducati World avec Desmo Race. La collaboration avec Nickelodeon a commencé en 2022, et Nickelodeon Land a ouvert en 2025. [EQT cherche un acquéreur pour Parques Reunidos](/news/parques-reunidos-a-vendre-movie-park).
 
 ## Les montagnes russes
 
@@ -87,7 +87,7 @@ Le thème est la cité maya de Sian Ka’an. Dans le calendrier maya, un katun e
 
 ### iSpeed
 
-iSpeed est un launched coaster d’Intamin à propulsion magnétique. Il passe, d’après le parc, à 100 km/h en 2,2 secondes, atteint jusqu’à 110 km/h (RCDB) et grimpe à 55 mètres. Le parcours fait 980 mètres et compte deux inversions. Pour le parc, c’est 120 km/h, et le tour dure 77 secondes.
+iSpeed est un launched coaster d’Intamin à propulsion magnétique. D’après le parc, il passe à 100 km/h en 2,2 secondes et atteint 120 km/h, 110 selon RCDB. Le parcours fait 980 mètres, grimpe à 55 mètres et compte deux inversions, et le tour dure 77 secondes.
 
 iSpeed a remplacé en 2009 la Sierra Tonante, les montagnes russes en bois de 1992. On y monte à partir de 140 centimètres, jusqu’à 195 centimètres au maximum, et à partir de douze ans.
 
@@ -130,17 +130,15 @@ Derrière la place d’entrée, la Baia dei Pirati, avec le X Point pour les Fla
 - **Dinoland** (depuis 2014) est la zone des petits enfants, avec Reptilium, Raptotana, Rexplorer, Bicisauro et Monosauro.
 - **Nickelodeon Land** (depuis 2025, 25 000 mètres carrés) compte des espaces pour Bob l’éponge, la Pat’ Patrouille, Dora et les Tortues Ninja.
 
-[Buffalo Bill Rodeo](ref:mirabilandia/buffalo-bill-rodeo) est un Disk’O Coaster de Zamperla (2016), un disque tournant sur 80 mètres de rail et 13 mètres de haut. Il tourne 14 fois par minute et s’adresse à partir de 120 centimètres, jusqu’à 190 centimètres. Ducati World compte aussi des simulateurs. [Motion Sphere](ref:mirabilandia/motion-sphere) est payant en plus et n’est pas compris dans l’entrée. On y monte à partir de 130 centimètres et jusqu’à 110 kilogrammes, et le réglage « Motion » reste coupé pour les enfants de moins de 13 ans.
+[Buffalo Bill Rodeo](ref:mirabilandia/buffalo-bill-rodeo) est un Disk’O Coaster de Zamperla (2016), un disque tournant sur 80 mètres de rail et 13 mètres de haut. Il tourne 14 fois par minute et s’adresse à partir de 120 centimètres, jusqu’à 190 centimètres. Le simulateur [Motion Sphere](ref:mirabilandia/motion-sphere) de Ducati World est payant en plus. On y monte à partir de 130 centimètres et jusqu’à 110 kilogrammes, et le réglage « Motion » reste coupé pour les enfants de moins de 13 ans.
 
 ## Pour les jeunes enfants : Nickelodeon Land et Dinoland
 
-Les enfants de moins de 100 centimètres entrent gratuitement.
-
-**Nickelodeon Land** (2025, 25 000 mètres carrés) compte, d’après le parc, dix attractions, trois restaurants, une boutique, deux espaces de rencontre avec les personnages et une scène de spectacle. La zone est organisée autour de quatre séries. Bob l’éponge a Jellyfish Jam (à partir de 100 centimètres, les enfants de moins de six ans et de moins de 120 centimètres avec un accompagnateur) et le Bikini Bottom Express (à partir de 75 centimètres). La Pat’ Patrouille a l’aire de jeux Adventure Bay, l’attraction PAW Patrol To The Rescue, le tour aquatique Rubble’s Rapids et un carrousel. S’y ajoutent Dora’s Train Adventure, Splish Splat comme aire de jeux d’eau et, pour les Tortues Ninja, les Cowabunga Carts. Le site du parc qualifie la zone de « Italy’s Best New Family Attraction 2025 ».
+**Nickelodeon Land** compte, d’après le parc, dix attractions, trois restaurants, une boutique, deux espaces de rencontre avec les personnages et une scène de spectacle. La zone est organisée autour de quatre séries. Bob l’éponge a Jellyfish Jam (à partir de 100 centimètres, les enfants de moins de six ans et de moins de 120 centimètres avec un accompagnateur) et le Bikini Bottom Express (à partir de 75 centimètres). La Pat’ Patrouille a l’aire de jeux Adventure Bay, l’attraction PAW Patrol To The Rescue, le tour aquatique Rubble’s Rapids et un carrousel. S’y ajoutent Dora’s Train Adventure, Splish Splat comme aire de jeux d’eau et, pour les Tortues Ninja, les Cowabunga Carts. Le site du parc qualifie la zone de « Italy’s Best New Family Attraction 2025 ».
 
 À **Dinoland**, [Reptilium](ref:mirabilandia/reptilium) s’adresse à partir de 120 centimètres, Raptotana (les nids tournants avec maman vélociraptor), Bicisauro et Monosauro à partir de 90 centimètres. Les enfants de moins de dix ans y ont besoin d’un adulte sur la plupart des attractions.
 
-Si tu viens avec des enfants, règle la taille et le poids dans le filtre d’accès du site du parc, tu verras quelles attractions sont possibles.
+Sur le site du parc, on peut filtrer les attractions par taille et par poids.
 
 ## Spectacles
 
@@ -152,19 +150,19 @@ Pour la saison d’Halloween, du 26 septembre au 1er novembre, le site du parc
 
 Halloween dure en 2026 du 26 septembre au 1er novembre. Suburbia est comprise dans l’entrée, la plus grande zone d’horreur d’un parc d’attractions en Italie d’après le parc. Elle fait plus de 30 000 mètres carrés, compte plus de 100 comédiens, cinq parcours de peur et, nouveauté, la zone Ossarium. Suburbia est ouverte à partir de 19 h le 26 septembre, tous les samedis d’octobre et le 1er novembre.
 
-Trois maisons hantées sont payantes en supplément : [The Walking Dead](ref:mirabilandia/the-walking-dead), [Paranormal Activity: Next of Kin](ref:mirabilandia/paranormal-activity-next-of-kin) (nouveau en 2026, d’après le film) et [Mr. Blackmoon’s Hypnotic Circus](ref:mirabilandia/mr-blackmoons-hypnotic-circus). Aucune des trois n’est comprise dans l’entrée du parc, et le Flash Pass n’est pas valable pour The Walking Dead. Les titulaires d’un abonnement 2027 ont l’Hypnotic Circus gratuitement une fois par jour pendant la saison 2026 (à partir de 12 ans, sauf le 31 octobre).
+Trois maisons hantées sont payantes en supplément : [The Walking Dead](ref:mirabilandia/the-walking-dead), [Paranormal Activity: Next of Kin](ref:mirabilandia/paranormal-activity-next-of-kin) (nouveau en 2026, d’après le film) et [Mr. Blackmoon’s Hypnotic Circus](ref:mirabilandia/mr-blackmoons-hypnotic-circus). Le Flash Pass n’est pas valable pour The Walking Dead. Les titulaires d’un abonnement 2027 ont l’Hypnotic Circus gratuitement une fois par jour pendant la saison 2026 (à partir de 12 ans, sauf le 31 octobre).
 
 Le 30 octobre, le parc ouvre en plus à 19 h 30 pour la Scary Night, avec son propre billet. Les abonnements ne sont pas valables ce soir-là. Depuis la gare de Lido di Savio/Lido di Classe, des navettes partent pour le parc à 19 h 45 et à 20 h 45, et reviennent à 22 h et à 23 h.
 
 ## Temps d’attente des attractions
 
-Le temps d’attente actuel de chaque attraction est affiché par le parc dans son application. Le tableau ci-dessous montre les attractions aux temps d’attente les plus longs, chacune avec au moins 20 jours de mesure sur les 42.
+Le temps d’attente actuel de chaque attraction est affiché par le parc dans son application. Pour chaque attraction du tableau ci-dessous, nous avons au moins 20 des 42 jours de mesure.
 
 ```ride-waits-widget park=mirabilandia top=8 columns=land,peak,days
 
 ```
 
-Desmo Race est en tête du tableau, avec une nette avance. Viennent ensuite Rio Bravo, iSpeed et Autosplash, très proches, puis Gold Digger, Divertical, El Dorado Falls et Cowabunga Carts. Katun et Master Thai ne figurent pas parmi les dix attractions aux temps d’attente les plus longs.
+Katun et Master Thai ne figurent pas parmi les dix attractions aux temps d’attente les plus longs.
 
 ```stats-widget slug=mirabilandia show=attractions
 
@@ -182,7 +180,7 @@ Sur aucune des huit attractions pour lesquelles la page du parc propose une anal
 
 ## Quand y aller
 
-Le vendredi est dans nos données le jour le plus calme, le mardi le plus chargé. Le samedi et le mercredi sont au-dessus de la moyenne, le dimanche en dessous, le lundi et le jeudi entre les deux. La base est à chaque fois de cinq à neuf jours, et jusqu’à fin octobre le parc n’ouvre que le week-end. Un seul vendredi bondé peut changer l’ordre.
+Le vendredi est dans nos données le jour le plus calme, le mardi le plus chargé. Le samedi et le mercredi sont au-dessus de la moyenne, le dimanche en dessous, le lundi et le jeudi entre les deux. La base est à chaque fois de cinq à neuf jours.
 
 ```stats-widget slug=mirabilandia show=weekdays
 
@@ -218,9 +216,9 @@ Mirabilandia appelle son fast pass le Flash Pass. Il s’achète en plus de l’
 
 Il existe trois variantes. Le **Gold Flash Pass** est un bracelet personnel avec un nombre illimité de tours sur les attractions dotées d’une entrée Flash Pass, à partir de 49,90 € en ligne et de 59,90 € dans le parc. Le **Regular Flash Pass** est une carte transmissible avec un tour par attraction, à partir de 24,90 € en ligne et de 29,90 € dans le parc. Le **One Shot Flash Pass** vaut pour un tour sur une seule attraction et se vend uniquement dans le parc, à partir de 5,90 €, au X Point, à la billetterie, au Mayan Shop et au point photo d’Autosplash.
 
-Sont exclues Desmo Race, Blu River et The Walking Dead. Desmo Race est l’attraction à la file d’attente la plus longue de notre tableau. Le Flash Pass est en revanche valable sur Katun, iSpeed, Divertical, Master Thai, Rio Bravo, Autosplash, El Dorado Falls, Gold Digger et la plupart des attractions familiales. Les pass achetés en ligne ne sont pas valables le jour de l’achat mais un jour de visite au choix, ceux achetés dans le parc seulement le jour même. Le nombre de pass est limité.
+Sont exclues Desmo Race, Blu River et The Walking Dead. Le Flash Pass est en revanche valable sur Katun, iSpeed, Divertical, Master Thai, Rio Bravo, Autosplash, El Dorado Falls, Gold Digger et la plupart des attractions familiales. Les pass achetés en ligne ne sont pas valables le jour de l’achat mais un jour de visite au choix, ceux achetés dans le parc seulement le jour même. Le nombre de pass est limité.
 
-Quand le temps d’attente est de l’ordre d’un quart d’heure, le pass ne fait pas gagner grand-chose. Il rapporte le plus sur les attractions qui viennent après Desmo Race dans notre tableau : Rio Bravo, iSpeed et Autosplash. Le forfait « VIP » combine l’entrée, le menu all inclusive et un Regular Flash Pass.
+Quand le temps d’attente est de l’ordre d’un quart d’heure, le pass ne fait pas gagner grand-chose. Il rapporte le plus sur Rio Bravo, iSpeed et Autosplash. Le forfait « VIP » combine l’entrée, le menu all inclusive et un Regular Flash Pass.
 
 ## Billets et abonnement
 
@@ -257,7 +255,7 @@ On mange dans des restaurants et des kiosques, dont la Locanda del Faro, le Padd
 
 ## Nouveautés et fermetures
 
-En 2025 sont arrivés Nickelodeon Land et, avec lui, les Cowabunga Carts. En 2026 sont nouveaux entre autres Paranormal Activity: Next of Kin, la zone Ossarium dans Suburbia, le spectacle « I misteri di Wondy » et le gobelet Coca-Cola Freestyle. Ont fermé le monorail Mirabilandia Express (1992 à 2019), Colazione da Papere (2003 à 2023) et Casa Matta (2001 à 2024), d’après Wikipédia en italien. La Sierra Tonante a été en place de 1992 à 2007.
+En 2025 sont arrivés Nickelodeon Land et, avec lui, les Cowabunga Carts. En 2026 sont nouveaux entre autres Paranormal Activity: Next of Kin, la zone Ossarium dans Suburbia, le spectacle « I misteri di Wondy » et le gobelet Coca-Cola Freestyle. Ont fermé le monorail Mirabilandia Express (1992 à 2019), Colazione da Papere (2003 à 2023) et Casa Matta (2001 à 2024), d’après Wikipédia en italien.
 
 Pour 2027, le parc ne cite pas de nouvelle attraction dans sa campagne d’abonnement 2027, lancée début août.
 

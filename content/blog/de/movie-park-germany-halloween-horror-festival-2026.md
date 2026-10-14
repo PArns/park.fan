@@ -9,8 +9,7 @@ featured: false
 excerpt: >-
   Am Samstag, 26. September, startet in Bottrop das 28. Halloween Horror
   Festival: neun Horrorhäuser, neu ist Jason Universe ab 16, dazu die Live-Show
-  PHOBIA und 22 Abende bis 8. November. Termine, Tickets und warum dein Kostüm
-  zu Hause bleibt.
+  PHOBIA und 22 Abende bis 8. November.
 tags:
   - news
   - movie-park
@@ -24,7 +23,7 @@ rideLinks:
 coverImage:
   src: /media/movie-park-germany/van-helsings-factory.jpg
   alt: 'Eingang von Van Helsing’s Factory: eine rostige Tankstellenfassade mit schrägem PETROL-Schriftzug, davor Besucher auf dem Gehweg.'
-  caption: 'Van Helsing’s Factory Anfang September. Ab Samstag ist der Monsterjäger abends deutlich in der Unterzahl.'
+  caption: 'Van Helsing’s Factory Anfang September.'
   credit: 'Patrick Arns'
 seo:
   title: 'Movie Park Halloween Horror Festival 2026: Termine & Tickets'
@@ -48,10 +47,7 @@ seine 28. Ausgabe, Motto „Legends Never Die“. Am Freitag davor macht der Par
 noch um 17 Uhr zu, am Samstag bleibt er bis 22 Uhr offen, und ab dem frühen
 Abend laufen über 300 Monster durch Bottrop-Kirchhellen.
 
-Mit dem [Familienfest bei Disney](/blog/disneyland-paris-halloween-2026), das am
-selben Samstag beginnt, hat das wenig gemein. In Bottrop gibt es abends
-Kunstblut, Kettensägen und Nebel, und die Scare Zones sind nicht für
-Grundschulkinder gemacht.
+In Bottrop gibt es abends Kunstblut, Kettensägen und Nebel, und die Scare Zones sind nicht für Grundschulkinder gemacht, anders als beim [Familienfest bei Disney](/blog/disneyland-paris-halloween-2026), das am selben Samstag beginnt.
 
 ## Wann gespielt wird
 
@@ -63,7 +59,7 @@ dazu. Zusammen sind das 22 Abende.
 Freitags und samstags hat der Park an diesen Tagen bis 22 Uhr geöffnet,
 sonntags bis 21 Uhr. Die Horrorbereiche öffnen meist gegen 18 Uhr. Bis dahin
 ist es ein normaler Parktag, und im Nickelodeon LAND läuft tagsüber **Halloween
-for Kids** mit Basteln statt Kunstblut.
+for Kids** mit Basteln.
 
 Am **17. Oktober** findet zum fünften Mal der Event Day **Haunters Against
 Hate** statt, den Bottrop 2022 als erster Freizeitpark veranstaltet hat.
@@ -90,8 +86,7 @@ verlassener Wohnwagenplatz am Rand des Yosemite ohne Handyempfang,
 [The Slaughterhouse](ref:movie-park-germany/the-slaughterhouse) und
 [Circus of Freaks](ref:movie-park-germany/circus-of-freaks).
 
-Neu auf der Bühne ist **PHOBIA – The Live Horror Game Show** im Studio 7. Das
-Publikum spielt dort mit, statt nur zuzusehen. Wie die Häuser braucht die Show
+Neu auf der Bühne ist **PHOBIA – The Live Horror Game Show** im Studio 7. Das Publikum spielt dort mit. Wie die Häuser braucht die Show
 ein eigenes Zeitfenster, und es gelten Altersgrenzen.
 
 ## Was im Ticket steckt und was nicht
@@ -103,8 +98,7 @@ Online-Tickets kosten laut Park gerade 38,90 €, an der Tageskasse sind es ab
 
 Die Horrorhäuser und PHOBIA sind **nicht im Eintritt**. Jedes Haus braucht ein
 eigenes Zeitfenster-Ticket, gebucht wird online. Restkarten gibt es laut Parkplan
-je nach Verfügbarkeit auch im Park am Gästeservice. Einen Einzelpreis pro Haus
-nennt der Park auf seinen Halloween-Seiten nicht, der steht erst im Webshop.
+je nach Verfügbarkeit auch im Park am Gästeservice. Den Preis pro Haus nennt der Park erst im Webshop.
 
 Wer alle neun Häuser will, rechnet am besten gegen den **S.I.K. Pass**: 215 €
 mit Parkeintritt, 185 € für alle, die schon ein Ticket oder eine Jahreskarte
@@ -116,7 +110,7 @@ Parkplatz nah am Haupteingang.
 Mit Jahreskarte musst du deinen Besuchstag vorher auf der Website des Parks
 anmelden.
 
-## Was zu Hause bleibt
+## Kostüme und Alkohol
 
 Anders als bei Disney am 31. Oktober sind **eigene Kostüme, Masken und
 Horror-Make-up** im Movie Park an keinem der Abende erlaubt. Nur Kinder bis zu
@@ -139,9 +133,6 @@ den 2., 4., 9., 11. oder 16. Oktober.
 ```best-days-widget slug=movie-park-germany
 
 ```
-
-Mit Traumatica, Walibi und Toverland vergleichen wir das Festival im
-[Halloween-Überblick](/blog/halloween-freizeitparks-2026). Im [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps) steht, welcher Wochentag im Movie Park sonst der ruhigste ist und wie der Herbstfahrplan aussieht.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

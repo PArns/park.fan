@@ -53,8 +53,7 @@ stehst du dieselben 60 Minuten und würdest hinterher schwören, es waren
 höchstens 25.
 
 Beide Male warst du derselbe Mensch in derselben Warteschlange, mit denselben müden
-Beinen. Den Unterschied machen Psychologie und Kapazität, und gute Parks haben
-beides gleichzeitig im Griff. Die eine entscheidet, wie sich das Warten
+Beinen. Den Unterschied machen Psychologie und Kapazität. Die eine entscheidet, wie sich das Warten
 _anfühlt_, die andere, wie lang die Warteschlange _wirklich_ ist.
 
 Mich lässt das Thema aus einem ziemlich persönlichen Grund nicht los. park.fan ist in
@@ -138,8 +137,7 @@ Warteschlange prägen deshalb die letzten Minuten vor dem Boarding die Erinnerun
 an die gesamte Stunde davor. Flight of Passage und Cosmic Rewind setzen ihre
 Pre-Shows ans Ende der Warteschlange, direkt vor den Einstieg. Wenn das Ende
 stark ist, verzeiht dein Gedächtnis den zähen Mittelteil erstaunlich
-bereitwillig. Das Prinzip kennt jeder, der schon mal einen mittelmäßigen Film
-wegen eines großartigen Finales weiterempfohlen hat.
+bereitwillig.
 
 ## Wenn die Warteschlange selbst die Show ist
 
@@ -163,7 +161,7 @@ Pre-Show-Räume**, in denen du „gescannt“ und mit deinem eigenen Avatar
 
 ```
 
-Das ist psychologisch doppelt clever. Die Story-Räume takten die Menge in
+Die Story-Räume takten die Menge in
 Gruppen und verwandeln die letzte Viertelstunde in einen Teil der Attraktion,
 also genau die Phase, die laut Peak-End-Regel am stärksten erinnert wird.
 Zugleich hängt an ihnen die Kapazität, denn geflogen wird in Theater-artigen
@@ -192,9 +190,7 @@ die schon zwanzig Minuten vorher begonnen hat.
 Cosmic Rewind eröffnete im Mai 2022 komplett ohne klassische
 Standby-Warteschlange. Wer nicht für eine Lightning Lane bezahlte, kam bis zum
 **25. Februar 2025** nur über die virtuelle Warteschlange in der App hinein.
-Fast drei Jahre lang gab es vor dem Coaster also keine Warteschlange, in die man
-sich einfach hätte stellen können; erst dann kam eine dauerhafte
-Standby-Warteschlange. Die physische Warteschlange existierte bis dahin quasi
+Seitdem gibt es eine dauerhafte Standby-Warteschlange. Die physische Warteschlange existierte bis dahin quasi
 nur als Story-Strecke, kaum als Stauraum, und das bei einer Bahn, die laut RCDB
 mit Zügen für 20 Personen 2.000 Gäste pro Stunde wegschafft.
 
@@ -223,8 +219,7 @@ Wartezeit ab und hilft dem Park, jeden Wagen voll zu machen. Am VelociCoaster
 hat Universal diese Spur im Dezember 2025 geschlossen. Seitdem teilt das
 Personal die Wartenden in Gruppen mit gerader und ungerader Personenzahl auf und
 füllt die Wagen so ohne Einzelfahrer. Am Hulk nebenan gibt es die
-Single-Rider-Spur weiterhin. Dafür sitzt deine Begleitung dort ein paar
-Reihen weiter vorne, und ob sie geschrien hat, erfährst du erst am Ausgang.
+Single-Rider-Spur weiterhin.
 
 ```glossary-widget slug=single-rider
 
@@ -242,10 +237,9 @@ die 10.000 Menschen pro Vorstellung. Das sind knapp zehntausend Leute, die für
 die nächste halbe Stunde woanders sitzen als vor deinem Lieblingscoaster, und
 der Rest des Parks atmet entsprechend durch. Im Stundenprofil der Hollywood
 Studios auf park.fan fallen die Wartezeiten der Headliner in den Abendstunden,
-in denen Fantasmic! läuft, deutlich. Die Zahlen trennen allerdings nicht, wie viel davon die Show ausmacht und wie viel das nahende Parkende, denn am 25. September 2026 etwa beginnt die erste Vorstellung um 20 Uhr, eine Stunde
+in denen Fantasmic! läuft, deutlich. Wie viel davon die Show ausmacht und wie viel das nahende Parkende, können wir nicht trennen, denn am 25. September 2026 etwa beginnt die erste Vorstellung um 20 Uhr, eine Stunde
 vor Parkschluss. Wer die Show schon kennt, fährt in dieser Stunde trotzdem am
-günstigsten. Für solche Momente lesen wir die Wartezeiten alle fünf
-Minuten neu ein.
+günstigsten.
 
 ![Tausende Zuschauer im nächtlichen Amphitheater von Fantasmic! in Disney’s Hollywood Studios | Fantasmic! in den Hollywood Studios. Wer hier sitzt, steht gerade nirgends an. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -316,8 +310,7 @@ schnell sind alle Bügel geprüft und der Zug wieder draußen?
 Laut Hersteller-Factsheet von Mack Rides hat [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) im [Europa-Park](ref:europa-park?bare) **sieben Züge**, von denen drei bis vier gleichzeitig auf der
 Strecke sind. Das Ziel für die Abfertigung ist laut Coaster101 **eine Abfahrt
 alle 36 Sekunden**. Bei 16 Plätzen pro Zug ergibt das die 1.600 Gäste pro
-Stunde, die Mack als theoretische Kapazität angibt. Das ist nicht ganz das
-Niveau des Hulk, aber mit Zügen, die nur halb so groß sind.
+Stunde, die Mack als theoretische Kapazität angibt.
 
 ### Züge, die nicht anhalten
 
@@ -336,8 +329,7 @@ Single-Rail-Duell-Coaster, bei dem du dich zwischen den Schwester-Strecken
 [YOY Chill](ref:walibi-holland/yoy-chill?bare) entscheidest, halten die Züge im
 Bahnhof nicht an. Sie rollen im Schritttempo durch, während die Gäste
 einsteigen. Diese **Rolling Station** ist quasi das Omnimover-Prinzip für
-Achterbahnen. Bei nur acht Plätzen pro Zug (hintereinander, wie auf einem sehr
-entschlossenen Fahrrad) zählt jede Sekunde, die der Zug nicht steht.
+Achterbahnen. Bei nur acht Plätzen pro Zug (hintereinander) zählt jede Sekunde, die der Zug nicht steht.
 Freizeitpark-Welt kommt für YOY trotzdem nur auf rund 800 Fahrgäste pro Stunde.
 
 ## Little’s Law: Die Formel hinter jeder Warteschlange
@@ -403,8 +395,7 @@ die längste mittlere Wartezeit aller Attraktionen, und im Magic Kingdom in Orla
 gehört sie zur Spitzengruppe. So steht es im Median aller Tage, die wir seit
 Beginn unserer Messungen Ende Dezember 2025 erfasst haben
 (Stand: 25. September 2026). In Paris ist die Warteschlange schon in der ersten
-Stunde nach Parköffnung länger als vor jeder anderen Bahn, als gäbe es am Ende
-Freibier. In Anaheim, Tokio und Shanghai, wo es die Bahn ebenfalls gibt, liegt
+Stunde nach Parköffnung länger als vor jeder anderen Bahn. In Anaheim, Tokio und Shanghai, wo es die Bahn ebenfalls gibt, liegt
 sie in unseren Daten dagegen im Mittelfeld.
 
 In Paris und Orlando hat das mit der Bahn wenig zu tun und mit Arithmetik viel:
@@ -416,9 +407,7 @@ In Paris und Orlando hat das mit der Bahn wenig zu tun und mit Arithmetik viel:
    ganzen Nachthimmel. Fanschätzungen wie die von MagicWait kommen auf etwa
    **1.200 Gäste pro Stunde**, die
    [Version im Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
-   (seit 1971) schafft nach einer Fan-Aufstellung sogar nur um die 800. Ein
-   einziger Hulk-Zug befördert pro Abfahrt doppelt so viele Menschen, wie Peter
-   Pan Schiffe besitzt. Und zum Vergleich im eigenen Haus: Pirates of the
+   (seit 1971) schafft nach einer Fan-Aufstellung sogar nur um die 800. Und zum Vergleich im eigenen Haus: Pirates of the
    Caribbean schluckt im selben Park mit seinen großen Booten ein Mehrfaches.
 2. **Sättigung ab dem Frühstück.** Sobald die Nachfrage die maximale Kapazität
    erreicht (Sättigung = 1,0), wächst die Warteschlange mit jedem zusätzlichen Gast
@@ -427,8 +416,7 @@ In Paris und Orlando hat das mit der Bahn wenig zu tun und mit Arithmetik viel:
    ist dieser Punkt nicht mittags erreicht, sondern ungefähr dann, wenn der
    zweite Reisebus vorfährt.
 3. **Die Warteschlange als Qualitätssiegel.** Besucher lesen eine lange Warteschlange als
-   Beweis, dass sich die Fahrt lohnen muss. Dieselbe Logik, mit der wir uns am
-   Urlaubsort ins Restaurant mit der vollsten Terrasse setzen. Also stellen
+   Beweis, dass sich die Fahrt lohnen muss. Also stellen
    sich alle erst recht an, und die Wartezeit wird zur selbsterfüllenden
    Prophezeiung.
 
@@ -436,9 +424,6 @@ Eine Einschränkung dazu: Unsere Rangliste beruht auf angezeigten Wartezeiten,
 und ausgerechnet bei Peter Pan’s Flight im Magic Kingdom übertreibt die Anzeige
 laut TouringPlans am stärksten. Gestoppt wurden dort im Schnitt 45 Prozent der
 angezeigten Zeit (Auswertung vom Februar 2023).
-
-Hier die Live-Wartezeiten der Orlando-Version, im meistbesuchten Freizeitpark
-der Welt:
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
@@ -486,8 +471,7 @@ darüber, hat im Median seit Ende Dezember 2025 aber die kürzere Warteschlange
 nebenan, die Nachfrage abziehen.
 
 Deshalb stehen auf jeder Parkseite von park.fan neben den Live-Wartezeiten auch
-die Langzeit-Statistiken. Dieselbe Wartezeit ist in Brühl ein schlechter Tag und
-im Magic Kingdom ein ganz normaler.
+die Langzeit-Statistiken.
 Schau dir denselben Datensatz für beide Parks an, typische Wartezeiten nach
 Monat und Wochentag, aus allen Öffnungstagen, die wir gemessen haben. Unsere
 Messungen laufen seit Ende Dezember 2025, lückenlos erst seit April 2026;
@@ -509,8 +493,6 @@ Minuten und der Verlauf über die bisher gemessenen Monate aussehen.
 ```stats-widget slug=magic-kingdom-park
 
 ```
-
-Aus solchen Mustern lernt unser Modell, wann sich ein Besuch lohnt.
 
 ## Aufrücken bringt nichts
 
@@ -576,8 +558,7 @@ begrenzt. Disney ließ
 von der Eröffnung im Dezember 2019 bis September 2021 nur über **Boarding
 Groups** fahren, Cosmic Rewind bis Februar 2025 (dort gab es zusätzlich die
 bezahlte Lightning Lane). Du „stehst“ dabei digital an, während du isst, shoppst
-oder eine Show schaust. Die Warteschlange existiert weiter, sie findet nur ohne
-deine Beine statt. Die Wartezeit verschwindet nicht, aber sie frisst nicht mehr
+oder eine Show schaust. Die Wartezeit verschwindet nicht, aber sie frisst nicht mehr
 deinen Tag, und der Park verteilt die Nachfrage kontrollierter über die Stunden.
 
 Für alle, die lieber mit den Füßen anstehen als mit dem Daumen, schrauben die
@@ -593,8 +574,7 @@ Parks parallel an der Station selbst:
 - **Gleich zwei komplette Strecken**: Disneys Space Mountain im Magic Kingdom
   ist das radikalste Beispiel. Im selben Gebäude laufen zwei verschränkte,
   spiegelbildliche Bahnen („Alpha“ und „Omega“) mit eigenen Stationen. Das
-  verdoppelt die Kapazität des Systems praktisch. Effektiv zwei Achterbahnen,
-  die sich als eine ausgeben. Das Vorbild lieferte 1959 die Matterhorn-Bobbahn in
+  verdoppelt die Kapazität des Systems praktisch. Das Vorbild lieferte 1959 die Matterhorn-Bobbahn in
   Disneyland, die erste Achterbahn der Welt mit Stahlrohr-Schienen, ebenfalls
   mit zwei Strecken.
 
@@ -617,8 +597,7 @@ anders, wenn man drei Dinge weiß, und die stehen auf park.fan:
   samt Aufschlag. Ob sie gerade steigen oder fallen, siehst du trotzdem, ohne
   die 640 Leute vor dir selbst zählen zu müssen.
 - **Ist das gerade viel oder normal?** Das steht in den **Langzeit-Statistiken**
-  jeder Attraktion, denn dieselbe Zahl ist je nach Park ein Ärgernis oder ein
-  Lottogewinn.
+  jeder Attraktion.
 - **Und muss ich überhaupt anstehen?** Das entscheidet sich meist schon bei der
   Tageswahl. Dafür gibt es den **Kalender der besten Besuchstage**. Die Prognose
   dahinter reicht derzeit rund ein halbes Jahr voraus, das Widget hier zeigt die

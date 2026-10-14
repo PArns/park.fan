@@ -72,9 +72,7 @@ caduta di Oblivion, perché riteneva che facesse urlare i passeggeri.
 
 ## Le montagne russe, area per area
 
-Delle undici montagne russe di Alton Towers, tre erano le prime del loro tipo quando hanno aperto, Nemesis
-in Europa, Oblivion e TH13TEEN nel mondo, e nel 2013 The Smiler ha stabilito un record mondiale con
-quattordici inversioni. Tra le aree fa la spola lo Skyride, una seggiovia con stazioni in Towers
+Tra le aree fa la spola lo Skyride, una seggiovia con stazioni in Towers
 Street subito dietro l'ingresso, nella Forbidden Valley e nel Dark Forest.
 
 ### Nemesis Reborn e Galactica nella Forbidden Valley
@@ -166,7 +164,7 @@ prima montagna russa in legno con il fuoco.
 Sempre nella Mutiny Bay girano i **[Battle Galleons](ref:alton-towers/battle-galleons)**, barche per
 famiglie che fino al 2025 avevano i cannoni ad acqua. Durante la ristrutturazione invernale il parco
 ha smontato i cannoni e li ha sostituiti con ugelli che spruzzano nebbia. Dal 23 maggio 2026 le
-barche sono di nuovo in funzione, e si scende asciutti.
+barche sono di nuovo in funzione.
 
 ### Spinball Whizzer
 
@@ -231,8 +229,6 @@ stagione 2026.
 
 ```
 
-Il confronto con Thorpe Park, Heide Park ed Europa-Park lo ricalcoliamo ogni giorno.
-
 ```park-comparison-widget slugs=alton-towers,thorpe-park,heide-park,europa-park highlight=alton-towers
 
 ```
@@ -287,8 +283,7 @@ the Afterlife e Trick O' Treat Town con biglietto aggiuntivo, più tre spettacol
 La novità del 2026 è Dine with the Dead, una cena con attori al tavolo, dai 14 anni in su.
 
 Nei giorni di Scarefest il biglietto giornaliero costa online da 37 sterline. Con tutti e quattro i
-maze il biglietto combinato parte da 80 sterline, con le due attrazioni per famiglie da 53. Le
-novità del 2026 sono nella nostra notizia sullo [Scarefest 2026](/news/alton-towers-scarefest-2026).
+maze il biglietto combinato parte da 80 sterline, con le due attrazioni per famiglie da 53.
 
 Con questo nome Scarefest esiste dal 2007. Il primo maze del parco, nel 2002, si chiamava Terror of
 the Towers. Nel 2006 non c'è stato un programma di Halloween aperto al pubblico, solo un maze non
@@ -382,9 +377,6 @@ la prova il 13 febbraio. Il direttore operativo Rob Smith si è scusato e ha det
 le difficoltà con la folla continuerà a essere riconosciuto.
 
 ## Dormire al parco
-
-Il parco ha cinque strutture per dormire sul
-proprio terreno.
 
 L'**Alton Towers Hotel** del 1996 ha 180 camere in tredici categorie ed è costruito intorno a un
 esploratore inventato. I due piani superiori hanno temi propri, da Gangsta Granny a una camera
@@ -493,8 +485,7 @@ Gold da 95 sterline. In un giorno feriale fuori dalle vacanze di solito basta ar
 ### Da che altezza può salire tuo figlio?
 
 Con 140 cm può salire dappertutto. Da 120 cm sono ammessi TH13TEEN, Wicker Man e Spinball Whizzer,
-da 110 cm i Congo River Rapids e il Runaway Mine Train, da 90 cm le attrazioni per famiglie. Nemesis
-Reborn, Oblivion, Galactica, Rita, The Smiler, Nemesis Sub-Terra e Toxicator richiedono 140 cm.
+da 110 cm i Congo River Rapids e il Runaway Mine Train, da 90 cm le attrazioni per famiglie.
 
 ### Che cosa è successo su The Smiler nel 2015?
 

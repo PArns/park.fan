@@ -92,7 +92,7 @@ montaña de entonces se desmontó en **1987** y se sustituyó por la
 [Lisebergbanan](ref:liseberg/lisebergbanan), que Anton Schwarzkopf había
 diseñado para la misma colina.
 
-Liseberg ha desmontado seis montañas rusas, contando Kanonen. La montaña rusa de
+La montaña rusa de
 1923 la había construido Valdemar Lebech. La **Super 8**, una Wildcat de
 Schwarzkopf, funcionó de 1966 a 1979 y después se trasladó a un parque de
 Karlstad. De 1980 a 1995 funcionó la **Lisebergs Loopen**, un Looping Star de
@@ -105,17 +105,16 @@ hasta 2002. La montaña rusa infantil **Cirkusexpressen** de Zierer funcionó de
 1977 a 2008, hasta 1985 con el nombre de Lilla Bergbanan.
 
 Desde el **2000** Liseberg abre en invierno («Jul på Liseberg»); el primer año
-vinieron 418.000 visitantes. En **2015** llegó Halloween. En **2020** el parque
+vinieron 418.000 visitantes. En **2020** el parque
 permaneció cerrado toda la temporada por la pandemia, por primera vez desde su
-fundación. En 2023 cumplió 100 años.
+fundación.
 
 En 1936 llegaron más de un millón de visitantes, en 1954 algo más de 1,7 millones y en 1979 1,8 millones. En
 2003, el año de Balder, el parque registró su récord con 3,4 millones de
 visitantes entre verano y Navidad. En 2021, el primer año tras la pandemia,
 fueron 1,5 millones, y en 2023, según la Wikipedia sueca, 2,2 millones. La
 inversión más cara hasta entonces fue **Spaceport Liseberg**: en 1990 el parque
-abrió un cine con simuladores y la torre mirador, por 110 millones de coronas. De
-la torre mirador salió más tarde AtmosFear.
+abrió un cine con simuladores y la torre mirador, por 110 millones de coronas.
 
 ## Balder: la montaña rusa de madera
 
@@ -136,8 +135,7 @@ otro lado del río Mölndalsån, igual que la Kållerado.
 
 ```
 
-La Roller Coaster DataBase da para la atracción una
-capacidad de unos 1.149 visitantes por hora.
+Balder transporta unos 1.149 visitantes por hora.
 
 [Balder](ref:liseberg/balder?full)
 
@@ -244,8 +242,7 @@ En la Tierra de los Conejos (abierta en 2013) hay siete atracciones para los
 pequeños, además de las dos montañas rusas mencionadas arriba y un parque
 infantil. Es también la única zona que abre en otoño e invierno en días propios.
 
-La JukeBox pide 110 cm, y para las casas del terror rige una edad mínima: once
-años para Vinden, Zombie, Nattsvart på Gasten y Skogen, **15 años** para «7».
+La JukeBox pide 110 cm.
 
 ```map-widget slug=liseberg
 
@@ -330,8 +327,7 @@ El verano es la época llena, julio y agosto están arriba, mayo y junio algo po
 debajo. De enero a marzo hay tranquilidad, porque solo abre la Tierra de los
 Conejos los fines de semana y apenas se mide nada. El martes es cuando más gente
 hay, el domingo cuando menos, y el domingo, con 40 días medidos, tiene más de
-tres veces los del lunes o el martes. En otoño el parque cierra los domingos a
-las 20 horas y los viernes y sábados a las 22.
+tres veces los del lunes o el martes.
 
 La temporada de verano de 2026 empezó el **18 de abril** a las 11 horas. Cuándo
 termina, el parque no lo dice.
@@ -367,20 +363,18 @@ la Tierra de los Conejos de 11 a 17 horas, el 26 y 27 de septiembre, el 30 de
 septiembre y 1 de octubre, y el 14 y 15 de octubre.
 
 Halloween 2025 trajo, según el parque, unos **330.000 visitantes** en 16 días de
-apertura. Las fechas de otros parques están en la
-[guía de Halloween 2026](/blog/halloween-parques-atracciones-2026).
+apertura.
 
 ### Jul på Liseberg: de mediados de noviembre a finales de diciembre
 
 El primer Julmarknad fue el 7 de diciembre de 1974, durante dos fines de semana,
-otra vez en 1975, y después no hubo ninguno durante 25 años. Desde el año 2000
-Liseberg abre cada invierno. El parque se llama a sí mismo «Sveriges största
+otra vez en 1975, y después no hubo ninguno durante 25 años. El parque se llama a sí mismo «Sveriges största
 julmarknad», el mayor mercado navideño de Suecia. En 2025 fue el 25.º
 aniversario, con 2.100 árboles, siete toneladas de nieve artificial, cinco
 millones de luces y un árbol de 116 metros de altura, según el comunicado del
 parque del 6 de noviembre de 2025.
 
-Los días de apertura de 2026, tal como los devuelve la API del parque: en
+Los días de apertura de 2026: en
 noviembre el 14 y 15, del 20 al 22 y del 27 al 29, en diciembre del 2 al 6, del 9
 al 13 y del 16 al 23 (desde el 20 a diario), así como del 26 al 30 de diciembre.
 Los viernes abre de 15 a 22 horas, los sábados de 12 a 22, los domingos de 12 a 20. El 24 y el 25 de diciembre el parque permanece cerrado.
@@ -453,8 +447,7 @@ febrero de 2024 la obra ardió. Desde julio de 2024 se sabe que el parque la
 reconstruye. Según Liseberg, la reconstrucción cuesta «drygt 1 miljard kronor»
 (en español: más de mil millones de coronas), la apertura está prevista «i början
 av 2027» (en español: a principios de 2027) y las entradas deberían estar a la
-venta desde finales de noviembre de 2026. Más en el artículo
-[Novedades de los parques temáticos en 2027](/blog/novedades-parques-tematicos-2027).
+venta desde finales de noviembre de 2026.
 
 Según el parque, Oceana tiene unos 6.000 metros cuadrados de piscinas
 interiores y 4.000 metros cuadrados de superficie exterior. El parque acuático

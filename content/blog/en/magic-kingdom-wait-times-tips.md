@@ -178,9 +178,7 @@ Mansion](ref:magic-kingdom-park/haunted-mansion) in Liberty Square, "it's a
 small world" in Fantasyland and the Jungle Cruise in Adventureland opened on 1
 October 1971, and Peter Pan's Flight two days later. [Pirates of the
 Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean) followed on 15
-December 1973. None of the five has a height requirement. They're the rides for
-the afternoon, once TRON and the Mine Train are done, and of the classics the
-Haunted Mansion usually ranks highest in the table above.
+December 1973. None of the five has a height requirement. Of the classics, the Haunted Mansion usually ranks highest in the table above.
 
 ```map-widget slug=magic-kingdom-park
 
@@ -220,8 +218,7 @@ get a moderate rope-drop rating.
 At Seven Dwarfs Mine Train the queue holds its level from midday into the
 evening and drops in the last hours before closing.
 
-Take TRON at opening, Tiana's directly after it and the Mine
-Train in the last hour. Space Mountain peaks around midday, the Jungle Cruise
+Space Mountain peaks around midday, the Jungle Cruise
 holds its level from mid-morning into the early evening, and both fall off
 toward closing.
 
@@ -234,9 +231,8 @@ Dwarfs Mine Train, Space Mountain, Peter Pan's Flight and The Barnstormer.
 TRON, Tiana's, Big Thunder and the Jungle Cruise stay shut.
 
 Guests at the Deluxe hotels and a few others that Disney lists on its page get
-Extended Evening Hours on selected nights, up to two hours after the park
-closes. TRON, Space Mountain, Big Thunder and the Mine Train all run then. Disney's calendar lists which
-nights they are.
+Extended Evening Hours on selected nights, marked in Disney's calendar, up to two hours after the park
+closes. TRON, Space Mountain, Big Thunder and the Mine Train all run then.
 
 ### A day the way I'd plan it
 
@@ -253,9 +249,7 @@ classics. Main Street is at its fullest during the fireworks, so that's the
 time for one more of the big rides. The last hour before closing
 is for the Mine Train, if it didn't work out in the morning.
 
-To see how long all of that takes, enter your rides in the [trip
-planner](/blog/trip-planner). You get an order for them based on the day's
-forecast wait times.
+In the [trip planner](/blog/trip-planner) you get an order for your rides based on the day's forecast wait times, and how long it all takes.
 
 ## With small children
 
@@ -310,8 +304,7 @@ the scale rest on few days: five in January, four in March and eight in December
 As of 28 September 2026 we have 196 measured days, most of them since April.
 
 The weekday chart is flat, with medians a single step apart. No day of the week
-is the one to pick. Where another park has one, it's on the
-[best time to visit page](/best-time-to-visit).
+is the one to pick.
 
 Magic Kingdom has closed temporarily for
 nine hurricanes since it opened, most recently Milton in October 2024.
@@ -322,11 +315,11 @@ nine hurricanes since it opened, most recently Milton in October 2024.
 
 ## Halloween and Christmas
 
-Mickey's Not-So-Scary Halloween Party runs on 38 nights between 7 August and 31
+[Mickey's Not-So-Scary Halloween Party](/blog/halloween-usa-theme-parks-2026) runs on 38 nights between 7 August and 31
 October 2026, and Disney lists every date as sold out. On those nights the park
 closes to regular guests at 18:00, and the party runs from 19:00 to midnight.
 The October dates still to come are the 6th, 8th, 9th, 13th, 15th, 16th, 18th,
-22nd, 23rd, 25th, 27th, 29th and 31st. Our overview of [Halloween in the US](/blog/halloween-usa-theme-parks-2026) covers the party.
+22nd, 23rd, 25th, 27th, 29th and 31st.
 
 Mickey's Very Merry Christmas Party follows on 25 nights from 8 November to 22
 December 2026, also from 19:00 to midnight, with entry from 16:00. Tickets cost
@@ -414,7 +407,7 @@ four Disney parks in Florida, and EPCOT the highest.
 
 ### Which ride has the longest queue at Magic Kingdom?
 
-TRON Lightcycle / Run, in our data. The current ranking is in the table above.
+TRON Lightcycle / Run, in our data.
 
 ### When is TRON shortest?
 
@@ -447,8 +440,7 @@ needs 40 inches (102 cm). The dark rides have no height requirement.
 ### When does Magic Kingdom close early?
 
 On the nights of the Halloween party in autumn and the Christmas party in
-November and December, when the park closes to regular guests at 18:00. The
-dates are further up, under "Halloween and Christmas".
+November and December, when the park closes to regular guests at 18:00.
 
 ### Is there still a virtual queue for TRON?
 
@@ -463,8 +455,7 @@ with a Lightning Lane Single Pass.
 
 The same company runs [Disneyland Paris](/blog/disneyland-paris-wait-times-tips), where the smaller of the two parks is the one with the longer queues.
 
-The week between Christmas and New Year is the busiest week in our yearly table, and the
-Very Merry Christmas Party runs on 25 nights: [Christmas and New Year in Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026).
+In our data the busiest week of the year falls between Christmas and New Year ([Christmas and New Year in Orlando and Paris](/blog/christmas-new-year-orlando-paris-2026)).
 
 — Patrick
 

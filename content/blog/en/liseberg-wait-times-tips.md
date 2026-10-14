@@ -91,7 +91,7 @@ mountain railway of that time was torn down in **1987** and replaced by the
 [Lisebergbanan](ref:liseberg/lisebergbanan), which Anton Schwarzkopf had
 designed for the same hill.
 
-Liseberg has taken down six roller coasters, the Kanonen included. The 1923
+The 1923
 mountain railway had been built by Valdemar Lebech. The **Super 8**, a Schwarzkopf
 Wildcat, ran from 1966 to 1979 and then moved to a park in Karlstad. From 1980 to
 1995 the **Lisebergs Loopen** ran, a Schwarzkopf Looping Star with one loop,
@@ -103,16 +103,15 @@ technology it was given a chain lift instead and opened a year later. It ran unt
 until 1985 under the name Lilla Bergbanan.
 
 Since **2000** Liseberg has opened in winter ("Jul på Liseberg"), and 418,000
-guests came in the first year. **2015** brought Halloween. In **2020** the park stayed closed the entire season because of the pandemic, for the first time
-since it was founded. In 2023 it turned 100.
+guests came in the first year. In **2020** the park stayed closed the entire season because of the pandemic, for the first time
+since it was founded.
 
 In 1936 more than a million guests came, in 1954 a good 1.7 million, and in 1979 1.8 million. In 2003,
 the year of Balder, the park reported its record of 3.4 million guests across
 summer and Christmas. In 2021, the first year after the pandemic, it was 1.5
 million, and in 2023 2.2 million according to the Swedish Wikipedia. The most
 expensive investment until then was **Spaceport Liseberg**: in 1990 the park
-opened a simulator cinema and the observation tower, for 110 million kronor. The
-observation tower later became AtmosFear.
+opened a simulator cinema and the observation tower, for 110 million kronor.
 
 ## Balder: the wooden coaster
 
@@ -133,8 +132,7 @@ stands on the other side of the Mölndalsån river, like the Kållerado.
 
 ```
 
-The Roller Coaster DataBase gives the ride a capacity of around 1,149 guests per
-hour.
+Balder carries around 1,149 guests per hour.
 
 [Balder](ref:liseberg/balder?full)
 
@@ -240,8 +238,7 @@ Rabbit Land (opened in 2013) has seven rides for the little ones, plus the two
 coasters from above and a playground. It’s also the only part that opens on days
 of its own in autumn and winter.
 
-The JukeBox requires 110 cm, and the haunted houses have a minimum age: eleven
-for Vinden, Zombie, Nattsvart på Gasten and Skogen, **15 years** for "7".
+The JukeBox requires 110 cm.
 
 ```map-widget slug=liseberg
 
@@ -321,8 +318,7 @@ Summer is the busy time, with July and August on top and May and June a little
 below. From January to March it’s quiet, because only Rabbit Land is open, on
 weekends, and almost nothing is measured. Tuesday is the busiest day and Sunday
 the quietest, and with 40 measured days Sunday has more than three times as many
-as Monday or Tuesday. In autumn the park closes at 20:00 on Sundays and at 22:00
-on Fridays and Saturdays.
+as Monday or Tuesday.
 
 The 2026 summer season began on **18 April** at 11:00. When it ends, the park
 doesn’t say.
@@ -356,19 +352,18 @@ Rabbit Land is open, from 11:00 to 17:00, on 26 and 27 September, 30 September
 and 1 October, and 14 and 15 October.
 
 According to the park, Halloween 2025 brought around **330,000 guests** over 16
-opening days. The dates of other parks are in the
-[Halloween guide 2026](/blog/halloween-theme-parks-2026).
+opening days.
 
 ### Jul på Liseberg: mid-November to the end of December
 
 The first Julmarknad took place on 7 December 1974, over two weekends, once more
-in 1975, and then not for 25 years. Since 2000 Liseberg has opened every winter.
+in 1975, and then not for 25 years.
 Liseberg advertises "Sveriges största julmarknad", Sweden’s biggest Christmas
 market. 2025 was the 25th anniversary, with 2,100 trees, seven tonnes of
 artificial snow, five million lights and a 116-metre tree, according to the
 park’s announcement of 6 November 2025.
 
-The 2026 opening days, as the park API returns them: in November the 14th and
+The 2026 opening days: in November the 14th and
 15th, 20th to 22nd and 27th to 29th, in December the 2nd to 6th, 9th to 13th and
 16th to 23rd (daily from the 20th) and the 26th to 30th. On Fridays it’s open
 from 15:00 to 22:00, on Saturdays from 12:00 to 22:00, on Sundays from 12:00 to
@@ -442,8 +437,7 @@ February 2024 the building burned down. Since July 2024 it has been settled that
 the park will rebuild it. According to Liseberg the rebuild costs "drygt 1
 miljard kronor" (just over a billion kronor), the opening is planned for "i
 början av 2027" (early 2027), and tickets are due to go on sale from the end of
-November 2026. More on this in the post
-[Theme park novelties 2027](/blog/new-theme-park-attractions-2027).
+November 2026.
 
 According to the park, Oceana has around 6,000 square metres of indoor pools and
 4,000 square metres of outdoor area. The water park belongs to the project that

@@ -61,10 +61,9 @@ Mensen reizen vooral voor twee van de zeven achtbanen: Superman, er sinds de ope
 ## Hoe het park ontstond
 
 Madrid wilde een park zoals Disney dat bij Parijs had gebouwd. Disney had
-Spanje eerder bekeken en voor Parijs gekozen, en de regio kreeg Warner. De
-opdracht ging naar **Six Flags**, dat Time Warner in 1995 aan investeringsmaatschappij
-Boston Ventures had verkocht. Dochters van Paramount en Time Warner hadden allebei
-geboden op de exploitatie van de geplande Ciudad del Ocio. De afspraak
+Spanje eerder bekeken en voor Parijs gekozen. Dochters van Paramount en Time Warner hadden allebei geboden op de exploitatie
+van de geplande Ciudad del Ocio. De opdracht ging naar **Six Flags**, dat Time Warner
+in 1995 aan investeringsmaatschappij Boston Ventures had verkocht. De afspraak
 met de Comunidad de Madrid werd in **januari 1999** getekend, de bouw begon in
 het voorjaar van 1999, en de totale kosten komen volgens de Spaanse Wikipedia uit
 op **368 miljoen euro**.
@@ -256,7 +255,7 @@ achtbanen, Río Bravo, de Mr.-Freeze-stoel en het Hotel Embrujado erbij, vanaf
 ## Welke baan voor wie
 
 Wie maar één grote baan rijdt, kiest Superman, waarvan de rij middelmatig is voor
-dit park. De heftigste rit is Stunt Fall, met 4,5 g. Batman is de modernste baan.
+dit park. De heftigste rit is Stunt Fall, met 4,5 g.
 
 Shadows of Arkham is compact, met 823 meter, en je staat er zelden aan.
 
@@ -295,10 +294,8 @@ nauwelijks, alleen tussen 15 en 18 uur is hij iets korter. Bij de andere grote
 banen loopt hij op tot het begin van de middag en blijft dan vlak. Rápidos ACME en
 Río Bravo hebben hun piek in de middag, als het warm is.
 
-Rope drop loont in dit park bij maar één baan. Bij de Rápidos ACME is de rij bij opening kort en
-groeit die tot de middag tot een veelvoud. Wij raden aan ze in de
-eerste 90 minuten na opening te rijden (stand 8 oktober 2026). Bij Batman is de rij bij opening al lang, een vroeg bezoek raden we
-daar niet aan.
+Rope drop loont in dit park alleen bij de Rápidos ACME, waar de rij bij opening kort is en tot de middag groeit tot een veelvoud. Wij raden aan ze in de
+eerste 90 minuten na opening te rijden (stand 8 oktober 2026). Bij Batman raden we een vroeg bezoek niet aan.
 
 ```best-days-widget slug=parque-warner-madrid
 
@@ -323,7 +320,7 @@ directe toegang. De One-Pass (€ 8) geldt voor één rit op een gekozen baan.
 
 Wie vooral voor Batman komt, koopt volgens mij de One-Pass of Gold. Silver bespaart
 bij Superman, Venganza del Enigma en Coaster Express wat tijd, maar juist daar zijn
-de rijen toch al kort, en de pas laat de enige lange rij van het park links liggen.
+de rijen toch al kort.
 Wie de pas wil overslaan, rijdt Batman rond 16 uur, als de rij een paar minuten
 korter is dan anders.
 
@@ -358,8 +355,7 @@ in de [regengids](/blog/pretpark-bij-regen).
 
 ### Halloween tot en met 2 november
 
-Het Halloweenseizoen loopt van **26 september tot en met 2 november 2026**, de data
-van andere parken in Europa staan in de [halloweengids 2026](/blog/halloween-pretparken-2026).
+Het Halloweenseizoen loopt van **26 september tot en met 2 november 2026**.
 Overdag zijn er versiering, optochten en de nieuwe gezinsattractie ACME Factory,
 waar je met de Coyote een fabriek repareert. Daarbij komen vier Pasajes del
 Terror (spookdoolhoven: La Monja, Crime Alley: Night of Chaos, IT Experience,
@@ -394,11 +390,10 @@ Wikipedia telt zo’n 20 horecazaken. Het menu All Inclusive kost online € 63
 voor volwassenen en € 55 voor kinderen, het Express-menu € 12,90. De
 restaurants gaan om 13 uur open, de piek ligt tussen 14 en 15:30 uur.
 
-De **Bono Parques** zijn de jaarkaarten van de Parques-Reunidos-groep, geldig tot
+De **Bono Parques** zijn de [jaarkaarten](/blog/jaarkaart-vergelijking-pretparken) van de Parques-Reunidos-groep, geldig tot
 eind 2027. De Bono Oro kost € 219, met parkeren € 294, en geldt in twaalf
 parken. De Bono Platino (€ 329) geldt in 27. De Oro geeft daarnaast 50 procent
-korting in Parque Warner Beach. De [jaarkaartvergelijking](/blog/jaarkaart-vergelijking-pretparken) zet ze naast
-andere jaarkaarten.
+korting in Parque Warner Beach.
 
 ## Voorzieningen in het park
 
@@ -499,7 +494,8 @@ leen, in twee maten en in beperkt aantal.
 
 ```
 
-Ook [PortAventura](/blog/portaventura-halloween-2026) viert Halloween. De wachttijden van Parque Warner, PortAventura en Parque de Atracciones de Madrid naast elkaar:
+Ook [PortAventura](/blog/portaventura-halloween-2026) viert Halloween, en de data van andere parken in Europa
+staan in de [halloweengids 2026](/blog/halloween-pretparken-2026). De wachttijden van Parque Warner, PortAventura en Parque de Atracciones de Madrid naast elkaar:
 
 ```park-comparison-widget slugs=parque-warner-madrid,portaventura-park,parque-de-atracciones-de-madrid highlight=parque-warner-madrid
 

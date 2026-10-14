@@ -52,8 +52,7 @@ gezelschap uit dat de baan “toch overschat” is. Op andere sta je diezelfde 6
 minuten en zou je achteraf zweren dat het er hooguit 25 waren.
 
 Beide keren was je dezelfde persoon in dezelfde rij, met dezelfde moede
-benen. Het verschil zit in psychologie en capaciteit, twee dingen die een goed
-park tegelijk onder controle heeft. De ene bepaalt hoe het wachten _voelt_, de andere hoe lang de rij
+benen. Het verschil zit in psychologie en capaciteit. De ene bepaalt hoe het wachten _voelt_, de andere hoe lang de rij
 _echt_ is.
 
 Dit onderwerp laat me om een nogal persoonlijke reden niet los. park.fan is bedacht
@@ -78,8 +77,7 @@ Maister schreef er acht op. Deze drie zie je in elke wachtrij terug:
   hangt bij de ingang de wachttijdaanduiding, die trouwens vaak te hoog staat.
 - **Onrechtvaardig wachten voelt langer dan rechtvaardig wachten.** Niets
   verpest de stemming sneller dan het gevoel dat anderen je voorbijgaan. Daarom
-  verstoppen parken hun expresslanes zo goed als het gaat, en meestal gaat dat
-  niet erg goed.
+  verstoppen parken hun expresslanes zo goed als het gaat.
 - **Wachten op iets waardevols houd je langer vol.** Hoe groter de voorpret,
   hoe geduldiger de rij. Voor een flat ride van de kermis staan we geen 20
   minuten. Voor de nieuwe megacoaster praten we onszelf 90 minuten aan.
@@ -133,8 +131,7 @@ wachtrij bepalen dus de laatste minuten voor het instappen de herinnering aan he
 hele uur ervoor. Flight of Passage en Cosmic Rewind zetten
 hun pre-shows allebei helemaal aan het eind van de wachtrij, vlak voor het
 instappen. Is het einde sterk, dan vergeeft je geheugen het taaie middenstuk
-verbazingwekkend gemakkelijk. Iedereen die ooit een middelmatige film heeft
-aanbevolen om zijn geweldige slot kent het principe.
+verbazingwekkend gemakkelijk.
 
 ## Als de wachtrij zelf de show is
 
@@ -158,7 +155,7 @@ je eigen avatar wordt “gekoppeld”.
 
 ```
 
-Dat is psychologisch dubbel slim. De verhaalruimtes doseren de menigte in
+De verhaalruimtes doseren de menigte in
 groepen en veranderen het laatste kwartier in een deel van de attractie,
 precies de fase die volgens de peak-end-regel het sterkst wordt onthouden. En
 ze zijn tegelijk de kern van de capaciteit, want er wordt gevlogen in
@@ -184,11 +181,10 @@ enscenering die twintig minuten eerder begon.
 
 ```
 
-Ook met de capaciteit ging EPCOT zijn eigen weg. Cosmic Rewind opende in mei
+Cosmic Rewind opende in mei
 2022 helemaal zonder klassieke standby-rij. Wie niet voor een Lightning Lane
 betaalde, kwam tot **25 februari 2025** alleen via de virtuele wachtrij in de
-app naar binnen. Bijna drie jaar lang was er dus geen rij waar je gewoon kon
-aansluiten; pas daarna kwam er een permanente standby-rij. De fysieke wachtrij
+app naar binnen. Sindsdien is er een permanente standby-rij. De fysieke wachtrij
 bestond tot dan toe vooral als verhaaltraject en nauwelijks als opslagruimte, en
 dat bij een baan die volgens RCDB met treinen voor 20 personen 2.000 gasten per
 uur wegwerkt.
@@ -217,8 +213,7 @@ eigen wachttijd en helpt het park elke wagen vol te krijgen. Bij de
 VelociCoaster heeft Universal die rij in december 2025 gesloten. Sindsdien
 verdeelt het personeel de wachtenden in groepen met een even en een oneven
 aantal personen en vult het de wagens zo zonder solorijders. Bij de Hulk
-ernaast bestaat de single rider-rij nog wel. Je reisgenoot zit daar wel een paar
-rijen verderop, en of die gegild heeft, hoor je pas bij de uitgang.
+ernaast bestaat de single rider-rij nog wel.
 
 ```glossary-widget slug=single-rider
 
@@ -236,8 +231,7 @@ dan voor jouw favoriete coaster, en de rest van het park haalt even adem. In
 het uurprofiel van de Hollywood Studios op park.fan zakken de wachttijden van de
 headliners duidelijk in de avonduren waarin Fantasmic! speelt. Uit de cijfers is niet af te lezen hoeveel daarvan door de show komt en hoeveel door de naderende sluitingstijd. Op 25 september 2026
 bijvoorbeeld begint de eerste voorstelling om 20.00 uur, een uur voordat het
-park sluit. Wie de show al kent, rijdt dat uur toch het voordeligst. Voor
-zulke momenten lezen we de wachttijden elke vijf minuten opnieuw in.
+park sluit. Wie de show al kent, rijdt dat uur toch het voordeligst.
 
 ![Duizenden toeschouwers in het nachtelijke amfitheater van Fantasmic! in Disney’s Hollywood Studios | Fantasmic! in de Hollywood Studios. Wie hier zit, staat nergens in de rij. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -259,9 +253,7 @@ capacity), is simpel:
 Het woord “theoretisch” is serieus bedoeld. De berekening gaat ervan uit dat
 elke stoel bezet is en niets klemt, zonder het gezin dat pas bij de trein
 beslist wie naast wie zit, en zonder die ene losse schoen die het vertrek ophoudt.
-De echte, operationele doorstroom ligt daarom praktisch altijd lager. De
-formule wordt interessant omdat parken de twee factoren totaal verschillend
-combineren, volgens het buffetprincipe of het tapasprincipe. Twee banen uit
+De echte, operationele doorstroom ligt daarom praktisch altijd lager. Parken combineren de twee factoren totaal verschillend, volgens het buffetprincipe of het tapasprincipe. Twee banen uit
 Orlando die op papier bijna identiek presteerden, laten het verschil zien:
 
 ![Twee wegen naar vergelijkbare doorstroom: weinig grote treinen bij de Hulk, veel kleine wagens bij Rip Ride Rockit | Zelfde klasse, totaal andere strategie: massa per trein versus frequentie. | wide](/media/diagrams/durchsatz-hulk-rockit.svg)
@@ -306,8 +298,7 @@ weer buiten?
 Volgens het factsheet van Mack Rides heeft [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) in het [Europa-Park](ref:europa-park?bare) **zeven treinen**, waarvan er drie of vier tegelijk op het
 traject rijden. Het doel voor de afhandeling is volgens Coaster101 **één vertrek
 elke 36 seconden**. Met 16 plaatsen per trein levert dat de 1.600 gasten per
-uur op die Mack als theoretische capaciteit opgeeft. Net niet het niveau van de
-Hulk, maar met treinen die half zo groot zijn.
+uur op die Mack als theoretische capaciteit opgeeft.
 
 ### Treinen die niet stoppen
 
@@ -326,9 +317,7 @@ eerste single rail duelling coaster, waarbij je kiest tussen de zusterbanen
 [YOY Chill](ref:walibi-holland/yoy-chill?bare), stoppen de treinen in het
 station niet. Ze rollen stapvoets door terwijl de gasten instappen, in een
 **rolling station**, eigenlijk het omnimover-principe voor achtbanen. Bij
-slechts acht plaatsen per trein (achter elkaar, als op een zeer vastberaden
-fiets) telt elke seconde die de trein niet stilstaat. Veel wordt het toch
-niet. Freizeitpark-Welt komt voor YOY op zo’n 800 rijders per uur.
+slechts acht plaatsen per trein (achter elkaar) telt elke seconde die de trein niet stilstaat. Freizeitpark-Welt komt voor YOY op zo’n 800 rijders per uur.
 
 ## Little’s Law: de formule achter elke wachtrij
 
@@ -391,8 +380,7 @@ de langste mediane wachttijd van alle attracties, en in het Magic Kingdom in
 Orlando hoort ze bij de kopgroep. Zo staat het in de mediaan over alle dagen
 die we sinds het begin van onze metingen eind december 2025 hebben vastgelegd
 (stand 25 september 2026). In Parijs is de rij al in het eerste uur na opening langer
-dan bij elke andere baan, alsof er aan het eind gratis bier is. Overal geldt
-dat niet. In Anaheim, Tokio en Shanghai, waar de baan ook staat, eindigt ze in
+dan bij elke andere baan. In Anaheim, Tokio en Shanghai, waar de baan ook staat, eindigt ze in
 onze data in de middenmoot.
 
 In Parijs en Orlando heeft dat weinig met de baan te maken en veel met rekenwerk:
@@ -405,8 +393,7 @@ In Parijs en Orlando heeft dat weinig met de baan te maken en veel met rekenwerk
    **1.200 gasten per uur**, en de
    [versie in het Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
    (sinds 1971) haalt volgens een door fans samengestelde lijst zelfs maar rond
-   de 800. Eén Hulk-trein vervoert per vertrek twee keer zoveel mensen als Peter
-   Pan schepen heeft. En ter vergelijking in eigen huis: Pirates of the
+   de 800. En ter vergelijking in eigen huis: Pirates of the
    Caribbean slikt in hetzelfde park met zijn grote boten een veelvoud daarvan
    op.
 2. **Verzadiging vanaf het ontbijt.** Zodra de vraag de maximale capaciteit
@@ -415,17 +402,13 @@ In Parijs en Orlando heeft dat weinig met de baan te maken en veel met rekenwerk
    wegwerkt. Bij zo’n lage capaciteitsgrens is dat punt niet rond het middaguur
    bereikt, maar ongeveer wanneer de tweede touringcar voorrijdt.
 3. **De rij als keurmerk.** Bezoekers lezen een lange rij als bewijs dat de rit
-   wel de moeite waard moet zijn. Dezelfde logica waarmee we op vakantie het
-   restaurant met het volste terras kiezen. Dus schuift iedereen er des te harder bij aan, en wordt de
+   wel de moeite waard moet zijn. Dus schuift iedereen er des te harder bij aan, en wordt de
    wachttijd een zelfvervullende voorspelling.
 
 Een kanttekening: onze ranglijst berust op aangegeven wachttijden, en juist bij
 Peter Pan’s Flight in het Magic Kingdom overdrijft de aanduiding volgens
 TouringPlans het sterkst. Gasten klokten daar gemiddeld 45 procent van de
 aangegeven tijd (analyse van februari 2023).
-
-Hier de live wachttijden van de Orlando-versie, in het drukstbezochte pretpark
-ter wereld:
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
@@ -448,8 +431,7 @@ Pass, inmiddels per rit.
 Het [Europa-Park](ref:europa-park?bare) is het tegenmodel. Duitslands
 grootste park, na Disneyland Paris het drukstbezochte van Europa (6,2 miljoen
 gasten in 2024 volgens TEA), verdeelt zijn bezoekers over **veertien
-achtbanen** (telling van RCDB) plus tientallen themaritten. Die pure
-hoeveelheid parallelle capaciteit werkt als een overdrukventiel. De vraag
+achtbanen** (telling van RCDB) plus tientallen themaritten. De vraag
 spreidt zich, en nauwelijks een rij loopt permanent in verzadiging. Daarom
 voelen zelfs volle dagen in Rust zelden als Orlando, en de langste mediane
 wachttijd van het park heeft de nieuwste achtbaan, Voltron.
@@ -473,8 +455,7 @@ derde hoger, maar had sinds eind december 2025 wel de kortere mediane rij
 weg.
 
 Daarom toont elke parkpagina op park.fan naast de live wachttijden ook de
-langetermijnstatistieken. “Druk” is namelijk relatief. Dezelfde wachttijd is in
-Brühl een slechte dag en in het Magic Kingdom een heel gewone. Bekijk dezelfde
+langetermijnstatistieken. Bekijk dezelfde
 dataset voor beide parken, typische wachttijden per maand en weekdag, uit alle
 openingsdagen die we gemeten hebben. Onze metingen lopen sinds eind december
 2025 en pas sinds april 2026 zonder gaten; februari, oktober en november
@@ -496,9 +477,6 @@ en het verloop over de tot nu toe gemeten maanden eruitzien.
 ```stats-widget slug=magic-kingdom-park
 
 ```
-
-Uit zulke patronen leert ons model wanneer een bezoek de moeite waard
-is.
 
 ## Opschuiven helpt niet
 
@@ -562,7 +540,7 @@ beperkt. Disney liet
 vanaf de opening in december 2019 tot september 2021 alleen via **boarding
 groups** rijden, en Cosmic Rewind tot februari 2025 (daar was de betaalde
 Lightning Lane de enige andere weg naar binnen). In alle drie de gevallen sta je
-digitaal aan te schuiven terwijl je eet, winkelt of een show kijkt. De rij bestaat nog steeds, hij vindt alleen zonder jouw benen plaats. De
+digitaal aan te schuiven terwijl je eet, winkelt of een show kijkt. De
 wachttijd verdwijnt niet, maar hij vreet niet langer je dag op, en het park
 spreidt de vraag gecontroleerder over de uren.
 
@@ -602,8 +580,7 @@ als je drie dingen weet, en die staan op park.fan:
   marge. Of ze stijgen of dalen, zie je toch, zonder dat je de 640 mensen voor
   je zelf hoeft te tellen.
 - **Is dat nu veel of normaal?** Dat staat in de
-  **langetermijnstatistieken** van elke attractie, want hetzelfde getal is,
-  afhankelijk van het park, een ergernis of een lot uit de loterij.
+  **langetermijnstatistieken** van elke attractie.
 - **En moet ik überhaupt aanschuiven?** Dat beslist zich meestal al bij de
   dagkeuze. Daarvoor is de **kalender van de beste bezoekdagen** er. De
   voorspelling erachter reikt op dit moment zo’n half jaar vooruit, de widget

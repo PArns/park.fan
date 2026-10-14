@@ -147,7 +147,7 @@ The medians are based on 192 measured days between 6 October 2024 and 6 October 
 
 ```
 
-Hyperia is well ahead of everything else. Second place goes to Storm Surge, a water ride with a spinning raft that only fills up in the afternoon. SAW, The Swarm, Nemesis Inferno, Colossus and Stealth sit close together behind it.
+Second place goes to Storm Surge, a water ride with a spinning raft that only fills up in the afternoon.
 
 ```hourly-profile-widget slug=thorpe-park top=8
 
@@ -174,7 +174,7 @@ The park sells Fastrack in four packages, each per person, and the card can be s
 - **Gold** from £115: all day on 14 rides, without Hyperia.
 - **Platinum** from £135: all day on 15 rides, with Hyperia.
 
-There's also a **One Shot Fastrack** from £6, which you buy only once you're in the park, through the app or a QR code at the entrance to a coaster. The park sells Fastrack and admission tickets separately, Fastrack only in limited numbers, and tells guests to check before buying that admission tickets are available for the day. The park's Fastrack page lists the Ghost Train in three packages, while the ride's own page says there's currently no Fastrack for it.
+There's also a **One Shot Fastrack** from £6, which you buy only once you're in the park, through the app or a QR code at the entrance to a coaster. The park sells Fastrack separately from admission and only in limited numbers, and advises checking before you buy that admission tickets are still available for the day. The park's Fastrack page lists the Ghost Train in three packages, while the ride's own page says there's currently no Fastrack for it.
 
 Guests staying in the Thorpe Shark Cabins get an hour of Fastrack on the second day, at the start or the end of the park day. During Fright Nights it applies to the first hour only.
 
@@ -212,7 +212,7 @@ There are five scare mazes. Tenement is new. In a care home called Nova Lux, vis
 
 A day ticket with Fright Nights costs from £39 online and £66 at the gate, without mazes. The package with four mazes ("Fearsome Four": DeadBeat, Stitches, Trailers, Survival Games) costs from £71 online and £98 at the gate. Tenement isn't part of the package and is sold separately only. If you already have an admission ticket, you can book the four mazes from £32 per person or each one on its own from £8. The VIP package "Phantom Five", with one priority entry to each of the five mazes, costs from £110 (without admission) in the time slots 3 to 5:30 pm or 6 to 8:30 pm. If you arrive late for a maze, you're turned away after a 15-minute grace period, with no refund.
 
-All coasters keep running in the evening, and the park advertises Hyperia and SAW in the dark. For Halloween at other parks there's the [Halloween overview 2026](/blog/halloween-theme-parks-2026), and for Alton Towers a separate post on [Scarefest 2026](/news/alton-towers-scarefest-2026).
+All coasters keep running in the evening, and the park advertises Hyperia and SAW in the dark.
 
 ### Weather
 
@@ -224,11 +224,11 @@ In October and the shoulder season, some rides stay shut in wind, cold or heavy 
 
 ## Tickets, passes and prices
 
-The park advertises its day tickets as "from £32" when booked in advance. Prices depend on the date and are listed in the park's price table. During Fright Nights a ticket at the gate costs £66. Students get a discount when they book in advance.
+The park advertises its day tickets as "from £32" when booked in advance. Prices depend on the date. During Fright Nights a ticket at the gate costs £66. Students get a discount when they book in advance.
 
 Children under 1.20 metres get in free if they're registered with an online booking. A single booking allows at most four such tickets, and at least one paid ticket has to be part of it. On the day of the visit the children have to be measured at the Ticket Centre, where you collect the ticket.
 
-The Thorpe Park Annual Pass costs £64 a year. The Merlin Essential Pass (£139) is valid on 339 days for more than 20 British Merlin attractions, including Thorpe Park, Chessington World of Adventures, the London Eye and Sea Life. The Gold Pass (£239, renewal £179) is valid on 364 days and includes free parking. The Platinum Pass (£299, renewal £229) has no blackout dates, four friend tickets a year and a One Shot Fastrack per visit. The passes of other parks are compared in the [annual pass comparison](/blog/theme-park-annual-pass-comparison).
+The Thorpe Park Annual Pass costs £64 a year. The Merlin Essential Pass (£139) is valid on 339 days for more than 20 British Merlin attractions, including Thorpe Park, Chessington World of Adventures, the London Eye and Sea Life. The Gold Pass (£239, renewal £179) is valid on 364 days and includes free parking. The Platinum Pass (£299, renewal £229) has no blackout dates, four friend tickets a year and a One Shot Fastrack per visit.
 
 Guests with a disability book the Ride Access Pass online before the visit, and places are limited. On the day you show the reservation and ID at the Accessibility Kiosk. The requirements for each ride (walking distances, prostheses, plaster casts) are in the park's "Rider Requirements" PDF.
 
@@ -296,7 +296,7 @@ Not so far. The 2026 season ends after Fright Nights on 1 November, and the park
 
 ### Which rides suit guests with a disability?
 
-Hyperia is currently not suitable for people who can't walk. For SAW you have to be able to walk 25 metres without help, for the Ghost Train at least 50 steps. The full list is in the park's Rider Requirements.
+Hyperia is currently not suitable for people who can't walk. For SAW you have to be able to walk 25 metres without help, for the Ghost Train at least 50 steps.
 
 ## Further reading
 

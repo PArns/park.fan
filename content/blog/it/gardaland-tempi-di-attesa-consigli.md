@@ -52,7 +52,7 @@ seo:
 
 [Gardaland](ref:gardaland) a Castelnuovo del Garda è il più grande parco divertimenti d’Italia. Ha aperto nel 1975, appartiene a Merlin Entertainments e nel 2024, secondo i dati della Themed Entertainment Association, ha contato circa tre milioni di visite. In Europa basta per il settimo posto.
 
-Le grandi montagne russe del parco sono [Oblivion](ref:gardaland/oblivion-the-black-hole), un dive coaster con 87 gradi di inclinazione nella prima discesa, [Raptor](ref:gardaland/raptor), il prototipo dei wing coaster di Bolliger & Mabillard, e [Blue Tornado](ref:gardaland/blue-tornado), un inverted coaster con cinque inversioni. Secondo i tempi di attesa degli ultimi dodici mesi, alla maggior parte delle attrazioni le code restano corte.
+Le grandi montagne russe del parco sono [Oblivion](ref:gardaland/oblivion-the-black-hole), un dive coaster con 87 gradi di inclinazione nella prima discesa, [Raptor](ref:gardaland/raptor), il prototipo dei wing coaster di Bolliger & Mabillard, e [Blue Tornado](ref:gardaland/blue-tornado), un inverted coaster con cinque inversioni.
 
 ## Da Livio Furini a Merlin
 
@@ -68,9 +68,9 @@ Nel 2001 sull’ex parcheggio dei dipendenti nacque l’area tematica Fantasy Ki
 
 Nell’ottobre 2006 Merlin Entertainments rilevò il parco. A vendere furono la società d’investimento Investindustrial e Aletti Merchant, una banca d’affari del gruppo bancario BPVN, che insieme ne avevano circa il 90 per cento. Secondo la stampa il prezzo fu di circa 500 milioni di euro. Nel 2008 aprirono l’acquario SEA LIFE e la montagna russa Mammut.
 
-Da allora Merlin lo sta trasformando in un resort: Raptor (2011), Oblivion (28 marzo 2015), l’Adventure Hotel (2016), il Magic Hotel (2019) e il LEGOLAND Water Park (2021). La pandemia ha interrotto tutto per un anno. Gardaland ha riaperto il 13 giugno 2020, primo parco divertimenti italiano a farlo, con un massimo di 10.000 ospiti al giorno.
+Da allora Merlin lo sta trasformando in un resort: Raptor (2011), Oblivion (2015), l’Adventure Hotel (2016), il Magic Hotel (2019) e il LEGOLAND Water Park (2021). La pandemia ha interrotto tutto per un anno. Gardaland ha riaperto il 13 giugno 2020, primo parco divertimenti italiano a farlo, con un massimo di 10.000 ospiti al giorno.
 
-Dal 2022 ci sono attrazioni dedicate al film «Jumanji». Nel 2024 la torre drop and twist Wolf Legend ha preso il posto della montagna russa Sequoia Magic Loop, smontata nel 2023. Nel 2025 il parco ha festeggiato i 50 anni con Animal Treasure Island, una water dark ride su 6.000 metri quadrati in cui Merlin ha investito circa dieci milioni di euro.
+Nel 2024 la torre drop and twist Wolf Legend ha preso il posto della montagna russa Sequoia Magic Loop, smontata nel 2023. Nel 2025 il parco ha festeggiato i 50 anni con Animal Treasure Island, una water dark ride su 6.000 metri quadrati in cui Merlin ha investito circa dieci milioni di euro.
 
 ## Le montagne russe
 
@@ -153,8 +153,6 @@ In alta stagione il parco apre alle 10. Blue Tornado, Mammut, Raptor e Fuga da A
 
 ```
 
-Chi sale nel momento migliore fa, alla maggior parte delle attrazioni, circa mezz’ora di coda in meno che al picco.
-
 ## Quando andare
 
 Il sabato è il giorno più pieno, il mercoledì il più tranquillo. La domenica è un po’ più piena del lunedì.
@@ -197,7 +195,7 @@ Gardaland chiama il suo fast pass Gardaland Express. Si paga in aggiunta all’i
 
 «Give me 5» permette un giro su cinque attrazioni a scelta tra 15 e costa online da 27 euro, nel parco da 30 euro. «Epic 17» vale un giro su ciascuna di 17 attrazioni, tra cui Blue Tornado, Oblivion, Raptor, Mammut, Fuga da Atlantide e Jumanji – The Adventure, online da 57 euro, nel parco da 60 euro. «No Limits» permette giri illimitati su quelle 17 attrazioni e costa online da 87 euro, nel parco da 90 euro. Tutti e tre danno il 20 per cento di sconto nei negozi del parco.
 
-La prenotazione passa dall’app «Gardaland Express». Il voucher o il biglietto si importa lì con il codice QR, poi vedi i tempi di attesa stimati e ti metti in fila virtuale per un’attrazione. Una notifica («Tocca quasi a te») arriva circa cinque minuti prima della corsa, poi compare un codice QR che resta valido per circa cinque minuti. Si compra online o agli Express Point nel parco, il numero di pass al giorno è limitato.
+La prenotazione passa dall’app «Gardaland Express». Il voucher o il biglietto si importa lì con il codice QR, poi vedi i tempi di attesa stimati e ti metti in fila virtuale per un’attrazione. Una notifica («Tocca quasi a te») arriva circa cinque minuti prima della corsa, poi compare un codice QR che resta valido per circa cinque minuti. Il pass Express si compra online o agli Express Point nel parco, il numero di pass al giorno è limitato.
 
 ## Biglietti e abbonamento
 
@@ -220,7 +218,7 @@ La tessera Platinum comprende quest’anno un ingresso gratuito per due giorni c
 
 Il Gardaland Resort è in via Derna 4 a Castelnuovo del Garda, vicino all’autostrada A4 tra Milano e Venezia. Da Milano si esce a Peschiera del Garda, da Venezia a Sommacampagna o a Peschiera del Garda, in entrambi i casi restano pochi chilometri. Dall’autostrada del Brennero A22 si esce ad Affi e si segue la superstrada in direzione Peschiera del Garda. Da Modena si prende la A22 e poi la A4 verso Milano.
 
-Secondo Gardaland il parcheggio è gratuito, apre un’ora prima del parco e le casse chiudono due ore prima della chiusura. Un posto coperto si prenota online con un supplemento, il sito del parco indica «da 7 €» nello shop e «da 5 €» nelle FAQ. I camper non possono entrare nel parcheggio principale. Stanno al parcheggio dei bus in via Ronchi, dove di notte non si può sostare. Gli ospiti dell’hotel entrano da via Palù e pagano per il parcheggio dell’hotel 12 euro per 72 ore.
+Secondo Gardaland il parcheggio è gratuito e apre un’ora prima del parco. Un posto coperto si prenota online con un supplemento, il sito del parco indica «da 7 €» nello shop e «da 5 €» nelle FAQ. I camper non possono entrare nel parcheggio principale. Stanno al parcheggio dei bus in via Ronchi, dove di notte non si può sostare. Gli ospiti dell’hotel entrano da via Palù e pagano per il parcheggio dell’hotel 12 euro per 72 ore.
 
 In treno si arriva alla stazione di Peschiera del Garda, a due chilometri dal parco. Una navetta gratuita passa ogni 30 minuti, la prima corsa 30 minuti prima dell’apertura, l’ultima 30 minuti dopo la chiusura. FlixBus e Busforfun raggiungono Gardaland da tutta Italia. L’aeroporto più vicino è Verona Villafranca, a pochi chilometri.
 
@@ -238,7 +236,7 @@ L’acquario SEA LIFE è il primo acquario completamente tematizzato d’Italia,
 
 Nel 2025 sono arrivate cinque novità: Animal Treasure Island, la zona rinnovata Dragon Empire, lo show dal vivo «Bim Bum Bam Live» con il pupazzo Uan, lo show multimediale «A.I. – The Future is Here» e il cinema 4D «Prezzemolo e l’Enigma Svelato». In compenso I Corsari ha chiuso nel 2024.
 
-In inverno segue Magic Winter, dal 5 dicembre al 6 gennaio 2027. Dal 4 all’8 dicembre al Gardaland Theatre va in scena lo spettacolo di magia Supermagic Elementi con otto repliche, durata circa due ore, biglietti da 24 euro. Chi ha un abbonamento ottiene per sé e per fino a nove accompagnatori un biglietto scontato.
+Dal 4 all’8 dicembre al Gardaland Theatre va in scena lo spettacolo di magia Supermagic Elementi con otto repliche, durata circa due ore, biglietti da 24 euro. Chi ha un abbonamento ottiene per sé e per fino a nove accompagnatori un biglietto scontato.
 
 Sulle novità per il 2027 Gardaland non ha ancora pubblicato nulla.
 

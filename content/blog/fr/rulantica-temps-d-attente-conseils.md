@@ -161,8 +161,7 @@ Vildfål et aux toboggans Schabernakker I et II.
 Les deux toboggans courent en parallèle, s’appellent ensemble Odinrås et
 mesurent 148 mètres. On descend en bouée double. À plusieurs endroits, la
 cloison entre les tubes est ouverte, si bien que tu vois la bouée d’à côté, et
-c’est à la sortie que se joue la victoire. Les enfants de moins de huit ans montent avec un adulte. Avec 300 visiteurs par heure et par toboggan, le duel est expédié sur
-le papier plus vite que les cabines à trappe.
+c’est à la sortie que se joue la victoire. Les enfants de moins de huit ans montent avec un adulte. Chacun des deux fait passer 300 visiteurs par heure.
 
 ### Svalgur Rytt et Vinter Rytt
 
@@ -175,8 +174,7 @@ Juste à côté se trouve [Vinter Rytt](ref:rulantica/vinter-rytt), le half-pipe
 Le départ en bouée à quatre est tranquille, puis la pente devient raide, et la
 bouée remonte la paroi de l’autre côté. C’est le seul toboggan du parc à avoir
 une limite de poids : 320 kilogrammes par bouée. Taille minimale 125 cm, dès
-dix ans. Dans nos données, ces deux toboggans arrivent en tête des temps
-d’attente.
+dix ans.
 
 ### Stormvind
 
@@ -251,8 +249,7 @@ jours d’ouverture mesurés.
 
 ```
 
-À Rulantica, les temps d’attente typiques sont courts, et les écarts entre
-toboggans sont minces. En tête viennent les deux toboggans à bouée de quatre
+Les écarts entre toboggans sont minces. En tête viennent les deux toboggans à bouée de quatre
 dans le palais de glace, puis Stormvind, la station VR et Två Fall. Les
 toboggans en duel, Hugin et Munin, sont plus loin, les cabines à trappe en fin
 de liste, alors que ce sont les toboggans qui laissent passer le moins de
@@ -267,7 +264,7 @@ plateau jusqu’en début de soirée, et après 21 h ça retombe.
 
 ```
 
-Après 13 h, aucun toboggan de nos données ne voit son attente doubler d’une heure à l’autre. Arriver tôt fait gagner un peu
+Arriver tôt fait gagner un peu
 à Hugin, Munin et Stormvind, et peu aux bouées à quatre.
 
 ## Quand venir
@@ -298,9 +295,8 @@ Avant l’ouverture, les clients qui dorment au resort de l’Europa-Park et les
 détenteurs du billet Aventure entrent dès 9 h, une demi-heure avant tout le
 monde. Les cabines à trappe de Rangnakor peuvent se faire dans cette demi-heure.
 
-Le matin, tu files ensuite à Vinterhal, à Svalgur Rytt et à Vinter Rytt, les
-deux toboggans aux attentes les plus longues, puis à Stormvind et à Isbrekker.
-Malgré ses huit pistes, Vikingløp, dans le Nordiskturn, a dans nos données des
+Le matin, tu files ensuite à Vinterhal, à Svalgur Rytt et à Vinter Rytt, puis à Stormvind et à Isbrekker.
+Vikingløp, dans le Nordiskturn, a dans nos données des
 temps d’attente nettement plus courts que les deux toboggans à bouée de quatre.
 
 À midi, entre deux tours de toboggans, Snorri’s Saga, le Surf Fjørd et les
@@ -332,8 +328,7 @@ Pour les enfants entre les deux, les toboggans d’initiation **Skiprok**, **Vra
 **Slalomrok** et **Vågorrok** à 110. Un enfant de 118 cm a la taille pour tout
 jusqu’à Vikingløp (dès dix ans), mais pas encore pour les cabines à trappe ni pour Vinter Rytt.
 
-À chaque attraction, le parc indique si savoir nager est nécessaire : à
-Isbrekker c’est « réservé aux nageurs », à Snorri Snorkling VR aussi.
+À chaque attraction, le parc indique si savoir nager est nécessaire.
 
 ## Le sauna Hyggedal
 
@@ -379,8 +374,7 @@ Svit** sur deux niveaux (dès 750 € par jour, jusqu’à six personnes, plus d
 ## Billets et prix
 
 Le parc indique une fourchette de prix pour chaque billet. Les prix valent
-pour les visites jusqu’au 19 mars 2027. Les billets sont valables à la journée,
-le parc n’indique pas de créneau. Comme la capacité est limitée, il conseille
+pour les visites jusqu’au 19 mars 2027. Les billets sont valables à la journée. Comme la capacité est limitée, il conseille
 l’achat en ligne. À la caisse du jour, les billets ne sont vendus que s’il reste
 de la place, avec **6 € de supplément**.
 
@@ -425,9 +419,6 @@ avec petit déjeuner, dès 192 € par personne en chambre à cinq lits. Hors
 saison, il y a « 2 für 1 » (deux nuits et deux jours à Rulantica dès 160 € par
 personne en chambre double) et « Kids for free » pour deux adultes avec jusqu’à
 trois enfants dès 320 €.
-
-Les temps d’attente et les jours calmes que nous avons mesurés à l’Europa-Park
-sont dans le [guide de l’Europa-Park](/blog/europa-park-temps-d-attente-conseils).
 
 ## Accès et hôtels
 
@@ -481,9 +472,7 @@ Ces règles valent dans le parc aquatique :
 ## Dates jusqu’en 2027
 
 Du **16 au 27 novembre 2026**, Rulantica est fermé pour sa révision, comme les
-24 et 25 décembre. Le 31 décembre, le parc aquatique ferme dès 19 h. Le parc met
-ces dates à jour en continu, regarde donc encore une fois la page des horaires
-avant de réserver.
+24 et 25 décembre. Le 31 décembre, le parc aquatique ferme dès 19 h.
 
 La saison d’Halloween dure jusqu’au **15 novembre 2026**. Elle comprend une
 décoration de citrouilles, de squelettes et de tiges de maïs, trois spectacles

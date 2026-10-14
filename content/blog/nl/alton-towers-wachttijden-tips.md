@@ -71,9 +71,7 @@ Oblivion klonk, omdat het aannam dat die de passagiers aan het gillen bracht.
 
 ## De achtbanen, gebied voor gebied
 
-Van de elf achtbanen in Alton Towers waren er drie bij hun opening de eerste in hun soort, Nemesis
-in Europa en Oblivion en TH13TEEN wereldwijd, en The Smiler vestigde in 2013 met veertien inversies
-een wereldrecord. Tussen de gebieden pendelt de Skyride, een stoeltjeslift met stations aan Towers
+Tussen de gebieden pendelt de Skyride, een stoeltjeslift met stations aan Towers
 Street achter de ingang, in Forbidden Valley en in het Dark Forest.
 
 ### Nemesis Reborn en Galactica in Forbidden Valley
@@ -161,8 +159,7 @@ het de eerste houten achtbaan met vuur.
 
 Ook in Mutiny Bay varen de **[Battle Galleons](ref:alton-towers/battle-galleons)**, boten voor
 gezinnen waarop tot 2025 waterkanonnen zaten. Bij de renovatie in de winter heeft het park de
-kanonnen eruit gehaald en vervangen door nevelsproeiers. Sinds 23 mei 2026 varen de boten weer, en
-je blijft erop droog.
+kanonnen eruit gehaald en vervangen door nevelsproeiers. Sinds 23 mei 2026 varen de boten weer.
 
 ### Spinball Whizzer
 
@@ -227,8 +224,6 @@ Omdat het themapark in de winter dicht is, komen alle meetdagen uit het seizoen 
 
 ```
 
-De vergelijking met Thorpe Park, Heide Park en het Europa-Park rekenen we elke dag opnieuw uit.
-
 ```park-comparison-widget slugs=alton-towers,thorpe-park,heide-park,europa-park highlight=alton-towers
 
 ```
@@ -284,8 +279,7 @@ als extra tickets, en drie shows zonder meerprijs. Nieuw in 2026 is Dine with th
 acteurs aan tafel, vanaf 14 jaar.
 
 Het dagticket kost op Scarefest-dagen online vanaf 37 pond. Met alle vier de mazes betaal je voor het
-combiticket vanaf 80 pond, met de twee familieattracties vanaf 53 pond. Wat er in 2026 nieuw is, staat
-in ons nieuwsbericht over [Scarefest 2026](/news/alton-towers-scarefest-2026).
+combiticket vanaf 80 pond, met de twee familieattracties vanaf 53 pond.
 
 Onder deze naam bestaat Scarefest sinds 2007. Het eerste maze van het park heette in 2002 Terror of
 the Towers. In 2006 was er geen openbaar halloweenprogramma, alleen een onaangekondigd maze met de
@@ -379,9 +373,6 @@ Operationeel directeur Rob Smith bood zijn excuses aan en zei dat het symbool vo
 erkend blijft.
 
 ## Overnachten bij het park
-
-Het park heeft vijf accommodaties op het
-eigen terrein.
 
 Het **Alton Towers Hotel** uit 1996 heeft 180 kamers in dertien categorieën en is vormgegeven rond
 een verzonnen ontdekkingsreiziger; de bovenste twee verdiepingen hebben eigen thema's, van Gangsta
@@ -488,8 +479,7 @@ meestal genoeg.
 ### Vanaf welke lengte mag je kind mee?
 
 Met 140 cm mag het overal in. Vanaf 120 cm mogen TH13TEEN, Wicker Man en Spinball Whizzer, vanaf
-110 cm de Congo River Rapids en de Runaway Mine Train, vanaf 90 cm de familieattracties. Nemesis
-Reborn, Oblivion, Galactica, Rita, The Smiler, Nemesis Sub-Terra en Toxicator vragen 140 cm.
+110 cm de Congo River Rapids en de Runaway Mine Train, vanaf 90 cm de familieattracties.
 
 ### Wat gebeurde er in 2015 op The Smiler?
 

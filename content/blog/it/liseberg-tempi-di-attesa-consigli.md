@@ -92,7 +92,7 @@ montagna di allora fu demolita nel **1987** e sostituita dalla
 [Lisebergbanan](ref:liseberg/lisebergbanan), che Anton Schwarzkopf aveva
 progettato per la stessa collina.
 
-Liseberg ha smontato sei montagne russe, contando anche Kanonen. La montagna
+La montagna
 russa del 1923 l’aveva costruita Valdemar Lebech. La **Super 8**, una Wildcat di
 Schwarzkopf, funzionò dal 1966 al 1979 e poi si trasferì in un parco di Karlstad.
 Dal 1980 al 1995 funzionò la **Lisebergs Loopen**, un Looping Star di Schwarzkopf
@@ -104,17 +104,16 @@ quella tecnica ebbe una catena di risalita e aprì un anno dopo. Funzionò fino 
 1977 al 2008, fino al 1985 con il nome Lilla Bergbanan.
 
 Dal **2000** Liseberg apre anche d’inverno («Jul på Liseberg»), e il primo anno
-arrivarono 418.000 ospiti. Nel **2015** è seguito Halloween. Nel **2020**, per
+arrivarono 418.000 ospiti. Nel **2020**, per
 la pandemia, il parco è rimasto chiuso per l’intera stagione, per la prima volta
-dalla fondazione. Nel 2023 ha compiuto 100 anni.
+dalla fondazione.
 
 Nel 1936 arrivarono più di un milione di ospiti, nel 1954 quasi 1,7 milioni, nel 1979 1,8 milioni. Nel 2003, l’anno di
 Balder, il parco ha registrato il suo record con 3,4 milioni di ospiti fra estate
 e Natale. Nel 2021, il primo anno dopo la pandemia, furono 1,5 milioni, nel 2023
 secondo Wikipedia svedese 2,2 milioni. L’investimento più costoso fino ad allora
 fu **Spaceport Liseberg**: nel 1990 il parco inaugurò un cinema con simulatore e
-la torre panoramica, per 110 milioni di corone. La torre panoramica divenne poi
-AtmosFear.
+la torre panoramica, per 110 milioni di corone.
 
 ## Balder: le montagne russe di legno
 
@@ -135,8 +134,7 @@ riva del fiume Mölndalsån, come la Kållerado.
 
 ```
 
-La Roller Coaster DataBase indica per l’attrazione una capacità di circa
-1.149 ospiti all’ora.
+Balder trasporta circa 1.149 ospiti all’ora.
 
 [Balder](ref:liseberg/balder?full)
 
@@ -244,8 +242,7 @@ Nel Paese dei Conigli (aperto nel 2013) ci sono sette giostre per i più piccoli
 più le due montagne russe già citate e un parco giochi. È anche l’unica parte che
 in autunno e in inverno apre in giorni propri.
 
-La JukeBox richiede 110 cm, e per le case stregate vale un’età minima: undici
-anni per Vinden, Zombie, Nattsvart på Gasten e Skogen, **15 anni** per «7».
+La JukeBox richiede 110 cm.
 
 ```map-widget slug=liseberg
 
@@ -326,8 +323,7 @@ L’estate è il periodo pieno, luglio e agosto stanno in alto, maggio e giugno 
 po’ sotto. Da gennaio a marzo è tranquillo, perché apre solo il Paese dei Conigli
 nei fine settimana e si misura quasi niente. Il martedì c’è più gente, la
 domenica meno, e la domenica, con 40 giorni misurati, ne ha più di tre volte
-quanti il lunedì o il martedì. In autunno il parco chiude la domenica alle 20, il
-venerdì e il sabato alle 22.
+quanti il lunedì o il martedì.
 
 La stagione estiva 2026 è cominciata il **18 aprile** alle 11. Quando finisce, il
 parco non lo dice.
@@ -360,19 +356,18 @@ Paese dei Conigli, dalle 11 alle 17, il 26 e 27 settembre, il 30 settembre e il 
 ottobre, e il 14 e 15 ottobre.
 
 Halloween 2025 ha portato, secondo il parco, circa **330.000 ospiti** in 16 giorni
-di apertura. Le date degli altri parchi sono nella
-[guida di Halloween 2026](/blog/halloween-parchi-divertimenti-2026).
+di apertura.
 
 ### Jul på Liseberg: da metà novembre a fine dicembre
 
 Il primo Julmarknad ci fu il 7 dicembre 1974, per due fine settimana, ancora uno
-nel 1975, poi per 25 anni niente. Dal 2000 Liseberg apre ogni inverno. Il parco si
+nel 1975, poi per 25 anni niente. Il parco si
 definisce «Sveriges största julmarknad», il più grande mercatino di Natale della
 Svezia. Il 2025 è stato il 25° anniversario, con 2.100 alberi, sette tonnellate di
 neve artificiale, cinque milioni di luci e un albero alto 116 metri, secondo il
 comunicato del parco del 6 novembre 2025.
 
-I giorni di apertura 2026, come li fornisce l’API del parco: a novembre il 14 e
+I giorni di apertura 2026: a novembre il 14 e
 15, dal 20 al 22 e dal 27 al 29, a dicembre dal 2 al 6, dal 9 al 13 e dal 16 al
 23 (dal 20 ogni giorno) e dal 26 al 30 dicembre. Il venerdì si apre dalle 15 alle
 22, il sabato dalle 12 alle 22, la domenica dalle 12 alle 20. Il 24 e 25 dicembre
@@ -446,8 +441,7 @@ circa 13.600 metri quadrati. Doveva aprire nel 2024. Il 12 febbraio 2024 il
 cantiere è andato a fuoco. Da luglio 2024 è deciso che il parco lo ricostruisce.
 Secondo Liseberg la ricostruzione costa «drygt 1 miljard kronor» (più di un
 miliardo di corone), l’apertura è prevista «i början av 2027» (all’inizio del
-2027), e i biglietti dovrebbero esserci da fine novembre 2026. Di più
-nell’articolo [Novità dei parchi divertimento 2027](/blog/novita-parchi-divertimento-2027).
+2027), e i biglietti dovrebbero esserci da fine novembre 2026.
 
 Secondo il parco, Oceana ha circa 6.000 metri quadrati di vasche interne e 4.000
 metri quadrati di area esterna. Il bagno fa parte del progetto deciso nel 2017,

@@ -56,17 +56,16 @@ Nach Angaben des Parks soll sie Nervenkitzel und Fahrspaß mischen und für alle
 Altersgruppen gedacht sein. Als Vorbild nennt er die Leichtigkeit der portugiesischen
 Küste, kreativen Tüftlergeist und eine außergewöhnliche Erfindergeschichte.
 
-Die Mitteilung nennt keinen Hersteller. In einzelnen Medien steht ein Name,
-bestätigt hat der Park ihn bisher nicht. Auch Mindestgröße, Plätze pro Fahrt und
-Fahrdauer stehen nicht darin.
+Hersteller, Mindestgröße, Plätze pro Fahrt und Fahrdauer stehen nicht in der
+Mitteilung. In einzelnen Medien steht ein Herstellername, bestätigt hat der
+Park ihn bisher nicht.
 
 Gefahren wird in Portugal bisher nur auf der Wasserachterbahn
 [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash). MACK Rides hat
 sie 2005 gebaut. Sie ist 30 Meter hoch, ein Boot fasst 16 Fahrgäste.
 Mitfahren darf, wer mindestens vier Jahre alt und 100 Zentimeter groß ist.
 Daneben stehen das Spielhaus Casa da Aventura, seit 2003 für Kinder von drei bis
-zwölf Jahren, und die Magellan Lounge auf einem Segelschiff. Die Schaukel wird
-die zweite Fahrattraktion im Themenbereich.
+zwölf Jahren, und die Magellan Lounge auf einem Segelschiff.
 
 ## Ein Turm zum Selbststeuern in Island
 
@@ -76,8 +75,8 @@ eine Turmattraktion öffnen. Die Fahrgäste steuern sie nach Angaben des Parks
 selbst und sehen von oben über den isländischen Themenbereich, auch hinunter
 auf den Hafen.
 
-Einen Namen hat der Turm noch nicht. Höhe und Hersteller hat der Park nicht
-genannt.
+Einen Namen hat der Turm noch nicht. Höhe, Hersteller und Mindestgröße hat der
+Park nicht genannt.
 
 Island ist bisher der Themenbereich der großen Achterbahnen. blue fire ist von
 MACK Rides und fährt seit 2009. Die Bahn ist 38 Meter hoch, einsteigen darf man
@@ -87,8 +86,7 @@ Zentimetern mit. Für
 Kleinere gibt es die Bootsfahrt Whale Adventures - Northern Lights von 2010,
 den Wasserspielplatz Lítill Island und die Monorail.
 
-Eine Mindestgröße für den Turm nennt der Park nicht. In der Mitteilung
-schreibt er nur, dass „Klein und Groß“ ihn selbst steuern können. Auf seiner
+In der Mitteilung schreibt der Park nur, dass „Klein und Groß“ ihn selbst steuern können. Auf seiner
 Seite zu den Neuheiten 2027 erzählt er außerdem von Möwen und
 Papageientauchern, die über dem Hafen kreisen. Ob der Turm so gestaltet wird,
 lässt er offen.
@@ -103,16 +101,15 @@ Zu sehen und zu hören sein sollen laut Park Kunst, klassisches Schauspiel und
 italienische Musik.
 Wie viele Szenen es gibt und was davon neu ist, hat er nicht gesagt.
 
-Die Bahn ist so alt wie der Themenbereich. Italien eröffnete 1982 als erster
+Italien eröffnete 1982 als erster
 Themenbereich des Parks, Piccolo Mondo im selben Jahr. Gebaut hat sie MACK
 Rides. Die Gondeln fassen je sechs Personen und fahren in einer Halle an Pisa,
 Venedig und Florenz vorbei. Eine Fahrt dauert gut drei Minuten. Kinder unter
 120 Zentimetern fahren nur mit einem Erwachsenen. Die Bahn fährt laut Parkseite in allen vier Saisons, auch im Winter.
 
-Auf der Neuheitenseite des Parks ist Enzo ein Papagei. Im selben Themenbereich
-steht schon eine Bahn von 1982 mit zwei Eröffnungsjahren: Für das
-[Castello dei Medici](ref:europa-park/castello-dei-medici) gibt die Parkseite
-1982 und 2024 an. Daneben fährt seit 2011 Volo da Vinci, eine Fahrt mit
+Auf der Neuheitenseite des Parks ist Enzo ein Papagei. Für das
+[Castello dei Medici](ref:europa-park/castello-dei-medici) im selben
+Themenbereich gibt die Parkseite zwei Eröffnungsjahre an, 1982 und 2024. Daneben fährt seit 2011 Volo da Vinci, eine Fahrt mit
 Flugmaschinen in sieben Metern Höhe, gebaut von ETF.
 
 [Piccolo Mondo](ref:europa-park/piccolo-mondo?full)
@@ -123,18 +120,16 @@ Die [Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027) laufen
 vom 7. bis 19. März 2027. In dieser Zeit sind laut Park nicht alle Attraktionen
 geöffnet. Welche der drei Neuheiten dann schon laufen, ist offen. Wie voll der
 Park zu welcher Jahreszeit ist, steht im
-[Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps). Welche anderen Parks
-und Hersteller 2027 etwas bestätigt haben, steht in unserer Übersicht
+[Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps), was andere Parks und
+Hersteller für 2027 bestätigt haben, in der Übersicht
 [Freizeitpark-Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
 
-Die laufende Saison endet am 9. Januar 2027, Übernachtungsgäste kommen am 10. Januar noch in den Park. In diesem Winter fährt auch die Euro-Mir zum
-letzten Mal, mehr dazu in unserem
-[Beitrag zum Abschied der Euro-Mir](/news/europa-park-verabschiedet-euro-mir).
+Die laufende Saison endet am 9. Januar 2027, Übernachtungsgäste kommen am 10. Januar noch in den Park. In diesem Winter fährt auch die
+[Euro-Mir zum letzten Mal](/news/europa-park-verabschiedet-euro-mir).
 
 Unter den drei Neuheiten ist keine große Achterbahn. Für Kinder, die für
 blue fire und WODAN noch zu klein sind, kommt in Portugal und Island etwas in der
-Höhe dazu, sofern sie die Mindestgröße erreichen, die der Park noch nicht genannt
-hat.
+Höhe dazu, sofern sie die Mindestgröße erreichen.
 
 ```ride-waits-widget rides=europa-park/atlantica-supersplash|Atlantica SuperSplash|Wasserachterbahn;europa-park/wodan-timburcoaster|WODAN - Timburcoaster|Holzachterbahn;europa-park/blue-fire-megacoaster|blue fire Megacoaster|Launch-Coaster;europa-park/castello-dei-medici|Castello dei Medici|Dark Ride;europa-park/piccolo-mondo|Piccolo Mondo|Gondelfahrt columns=type,peak,days
 

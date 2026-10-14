@@ -53,17 +53,16 @@ spanning met rijplezier en is hij bedoeld voor alle leeftijden. Als inspiratie n
 het park de lichtheid van de Portugese kust, creatief knutselwerk en een
 bijzonder uitvindersverhaal.
 
-De aankondiging noemt geen fabrikant. In enkele media staat een naam, maar het
-park heeft die niet bevestigd. Ook minimumlengte, passagiers per rit en ritduur
-staan niet in de aankondiging.
+Fabrikant, minimumlengte, passagiers per rit en ritduur staan niet in de
+aankondiging. In enkele media staat een fabrikant, maar het park heeft die niet
+bevestigd.
 
 In Portugal rijdt tot nu toe alleen de waterachtbaan
 [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash). MACK Rides
 bouwde hem in 2005. Hij is 30 meter hoog en een boot biedt plaats aan 16
 passagiers. Meerijden mag vanaf vier jaar en 100 centimeter. Daarnaast staan
 het speelhuis Casa da Aventura, sinds 2003 voor kinderen van drie tot twaalf
-jaar, en de Magellan Lounge op een zeilschip. De schommel wordt de tweede rit-attractie
-in het themagebied.
+jaar, en de Magellan Lounge op een zeilschip.
 
 ## Een toren die je zelf bestuurt in IJsland
 
@@ -72,7 +71,8 @@ en de megacoaster [blue fire](ref:europa-park/blue-fire-megacoaster) opent in
 2027 een torenattractie. Volgens het park besturen gasten hem zelf en kijken ze
 van boven over het IJslandse gebied, ook naar beneden op de haven.
 
-De toren heeft nog geen naam. Hoogte en fabrikant heeft het park niet genoemd.
+De toren heeft nog geen naam. Hoogte, fabrikant en minimumlengte heeft het park
+niet genoemd.
 
 IJsland is tot nu toe het gebied van de grote achtbanen. blue fire is van
 MACK Rides en rijdt sinds 2009. De baan is 38 meter hoog, instappen mag vanaf
@@ -82,8 +82,7 @@ mee. Voor kleinere
 kinderen zijn er de bootrit Whale Adventures - Northern Lights uit 2010, de
 waterspeelplaats Lítill Island en de monorail.
 
-Een minimumlengte voor de toren noemt het park niet. In de aankondiging
-staat alleen dat jong en oud hem zelf kunnen besturen. Op zijn pagina over de
+In de aankondiging staat alleen dat jong en oud hem zelf kunnen besturen. Op zijn pagina over de
 nieuwtjes voor 2027 schrijft het park ook over meeuwen en papegaaiduikers die
 boven de haven cirkelen. Of de toren zo wordt aangekleed, laat het open.
 
@@ -96,15 +95,15 @@ vanaf wanneer hij daarvoor dichtgaat, staat niet in de aankondiging.
 Er zijn volgens het park kunst, klassiek toneel en Italiaanse muziek te zien en te horen. Hoeveel
 scènes er zijn en welke nieuw zijn, heeft het niet gezegd.
 
-De rit is even oud als het themagebied. Italië opende in 1982 als eerste
+Italië opende in 1982 als eerste
 themagebied van het park, Piccolo Mondo in hetzelfde jaar. MACK Rides bouwde
 hem. De gondels bieden elk plaats aan zes personen en varen in een hal langs
 Pisa, Venetië en Florence. Een rit duurt iets meer dan drie minuten. Kinderen
 onder 120 centimeter rijden alleen mee met een volwassene. Hij rijdt volgens de parkpagina in alle vier de seizoenen, ook in de winter.
 
-Op de pagina van het park over de nieuwtjes voor 2027 is Enzo een papegaai. In hetzelfde gebied staat al een rit uit 1982 met twee openingsjaren: voor
-[Castello dei Medici](ref:europa-park/castello-dei-medici) geeft de parkpagina
-1982 en 2024. Ernaast rijdt sinds 2011 Volo da Vinci, een
+Op de pagina van het park over de nieuwtjes voor 2027 is Enzo een papegaai. Voor
+[Castello dei Medici](ref:europa-park/castello-dei-medici) in hetzelfde gebied
+geeft de parkpagina twee openingsjaren, 1982 en 2024. Ernaast rijdt sinds 2011 Volo da Vinci, een
 rit in vliegmachines op zeven meter hoogte, gebouwd door ETF.
 
 [Piccolo Mondo](ref:europa-park/piccolo-mondo?full)
@@ -114,19 +113,17 @@ rit in vliegmachines op zeven meter hoogte, gebouwd door ETF.
 De [Pre-Opening Weeks](/blog/europa-park-pre-opening-weeks-2027) lopen van 7
 tot 19 maart 2027. Volgens het park zijn dan niet alle attracties open. Welke
 van de drie nieuwtjes dan al draaien, is open. Hoe druk het park in welk seizoen
-is, staat in de [Europa-Park-gids](/blog/europa-park-wachttijden-tips). Wat
-andere parken en fabrikanten voor 2027 hebben bevestigd, staat in ons
+is, staat in de [Europa-Park-gids](/blog/europa-park-wachttijden-tips), wat
+andere parken en fabrikanten voor 2027 hebben bevestigd in ons
 [overzicht van de nieuwtjes voor 2027](/blog/nieuwe-attracties-pretparken-2027).
 
 Het lopende seizoen eindigt op 9 januari 2027, gasten die overnachten
-kunnen op 10 januari nog het park in. Deze winter rijdt ook de Euro-Mir voor het
-laatst, meer daarover in ons
-[bericht over het afscheid van de Euro-Mir](/news/europa-park-neemt-afscheid-van-euro-mir).
+kunnen op 10 januari nog het park in. Deze winter rijdt ook de
+[Euro-Mir voor het laatst](/news/europa-park-neemt-afscheid-van-euro-mir).
 
 Bij de drie nieuwtjes zit geen grote achtbaan. Voor kinderen die nog te klein
 zijn voor blue fire en WODAN komt er in Portugal en IJsland iets in de hoogte
-bij, als ze lang genoeg zijn voor de minimumlengte die het park nog niet heeft
-genoemd.
+bij, als ze lang genoeg zijn voor de minimumlengte.
 
 ```ride-waits-widget rides=europa-park/atlantica-supersplash|Atlantica SuperSplash|Waterachtbaan;europa-park/wodan-timburcoaster|WODAN - Timburcoaster|Houten achtbaan;europa-park/blue-fire-megacoaster|blue fire Megacoaster|Launch-Coaster;europa-park/castello-dei-medici|Castello dei Medici|Dark Ride;europa-park/piccolo-mondo|Piccolo Mondo|Gondelvaart columns=type,peak,days
 

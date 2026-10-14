@@ -94,7 +94,7 @@ zuzusehen. Ebenfalls neu sind die Feuer- und Tanzshow **„El Despertar“** und
 eine Séance mit dem Hypnotiseur Stephan Nölle, dazu kommen der Monsteraufmarsch
 und DJ-Sets von Max Bering.
 
-An vollen Abenden staut es sich im Movie Park vor den neun Mazes, die im Durchlaufbetrieb laufen.
+Die Mazes im Movie Park laufen im Durchlaufbetrieb.
 
 Gespielt wird an **22 ausgewählten Abenden vom 26. September bis 8. November
 2026**, überwiegend Freitag bis Sonntag; tagsüber ist der Park ab 10 Uhr normal
@@ -109,9 +109,6 @@ Event Day **Haunters Against Hate** läuft.
 [Movie Park Germany](ref:movie-park-germany?full)
 
 Schon im Sommer hat Bottrop eines seiner Halloween-Häuser früher aufgesperrt. **Slaughterhouse** lief unter dem Label „Summerween“ an allen Augustwochenenden, 5 € pro Person.
-
-Termine, Maze-Line-up und Ticketstufen stehen auf der
-[offiziellen Halloween-Horror-Festival-Seite](https://www.movieparkgermany.de/halloween).
 
 ### Europa-Park
 
@@ -147,18 +144,16 @@ die Stelle von THE FORBIDDEN, und Marc Terenzi steht dort selbst auf der Bühne.
 
 In nebelverhangenen Gassen machen ganze Gruppen von Darstellern gezielt Jagd auf einzelne Besucher, dazu kommen Pyro-Shows.
 
-Tagsüber sind die [Warteschlangen in Rust](/blog/europa-park-wartezeiten-tipps) für einen Park dieser Größe kurz. Im November kostet ein Traumatica-Ticket die letzte Parkstunde.
+Tagsüber sind die [Warteschlangen in Rust](/blog/europa-park-wartezeiten-tipps) für einen Park dieser Größe kurz.
 
 [Europa-Park](ref:europa-park?full)
-
-Programm, Termine und Altersregeln: [traumatica.com](https://traumatica.com/).
 
 ### Walibi Holland
 
 Rund zwei Autostunden nordwestlich von Bottrop liegt in Biddinghuizen
-[Walibi Holland](ref:walibi-holland). Der Park teilt sein Halloween-Event in mehrere Stufen.
+[Walibi Holland](ref:walibi-holland).
 
-Die **Halloween Spooky Days** sind die harmlose Tagvariante mit Herbstdeko für Kinder. Die **Halloween Fright Nights** sind das Abend-Event, 2026 mit vier Haunted Houses, zwei Walkthroughs, vier Scare Zones und zwei Fright Areas. Bei den Fright Nights unterscheidet Walibi noch einmal. **Haunted Houses** sind die klassischen begehbaren Spukhäuser, durch die du in der Gruppe läufst. Die **Experiences** sind eine eigene Erfindung von Walibi, für kleinste Gruppen oder einzelne Besucher, die Darsteller kommen dir sehr nah, und der Park verspricht ausdrücklich, dass dir etwas _passiert_. Eine Experience kostet im Vorverkauf 20 bis 25 €, zusätzlich zum Parkticket.
+Die **Halloween Spooky Days** sind die harmlose Tagvariante mit Herbstdeko für Kinder. Die **Halloween Fright Nights** sind das Abend-Event, 2026 mit vier Haunted Houses, zwei Walkthroughs, vier Scare Zones und zwei Fright Areas. **Haunted Houses** sind die klassischen begehbaren Spukhäuser, durch die du in der Gruppe läufst. Die **Experiences** sind eine eigene Erfindung von Walibi, für kleinste Gruppen oder einzelne Besucher, die Darsteller kommen dir sehr nah, und der Park verspricht ausdrücklich, dass dir etwas _passiert_. Eine Experience kostet im Vorverkauf 20 bis 25 €, zusätzlich zum Parkticket.
 
 In **The Clinic** sieht der Empfang aus wie eine normale Klinik, und
 dann wirst du auf eine Trage geschnallt und liegend durch den Rest geschoben,
@@ -174,8 +169,7 @@ damit, dass du Schuhe und Hose ausziehst und in einen
 Wathose-Anzug steigst. Die Wathose brauchst du, weil
 du in ein Kanalsystem hinabsteigst und durch **kniehohes Wasser** watest,
 angeblich auf der Jagd nach einem Ungeziefer-Befall. Die Darsteller
-kommen durch echte Wasserfälle auf dich zugestürmt, mit, Zitat eines Besuchers,
-beachtlichem „Spritzschaden“.
+kommen durch echte Wasserfälle auf dich zugestürmt.
 
 ![Darsteller mit Schweißmaske und Lederschurz vor einer Containertür | Der Metzger wartet schon. | left](/media/halloween-2026/beispiel-metzger.jpg)
 
@@ -224,8 +218,6 @@ Commissie sah die Menschenwürde verletzt. Walibi zog den Spot am 22. August 202
 zurück, erst vorläufig, vier Tage später endgültig.
 
 [Walibi Holland](ref:walibi-holland?full)
-
-Aktuelles Line-up und Termine: [walibi.nl/halloween](https://www.walibi.nl/halloween/de/halloween-fright-nights).
 
 ```gallery-widget folder=/media/halloween-2026/kinderwelt heading="Kaputte Kinderwelt"
 
@@ -301,10 +293,6 @@ einzeln.
 
 [Toverland](ref:attractiepark-toverland?full)
 
-Details zu Experiences, Scare Zones und Fear Pass:
-[toverland.com/halloween](https://www.toverland.com/de/veranstaltungen/halloween/scare-zones-experiences).
-Abschied von Trapped, auf Niederländisch: [Toverblog](https://www.toverland.com/toverblog/blog-afscheiditems-trapped).
-
 ### Walibi Belgium
 
 ![Clown mit Fez am Messerwurfstand bei Tag | Ein Clown mit Fez am Messerwurfstand. | right](/media/halloween-2026/beispiel-fez-clown.jpg)
@@ -337,7 +325,7 @@ Ibilaw läuft an 20 Tagen vom **10. Oktober bis 11. November 2026**, an zehn dav
 Neu ist neben dem Grand Hotel die Scare Zone **Hecatomb**, ein Stammesritual
 gleich bei Kondaa.
 
-Das Gelände ist kompakt, und die Darsteller kommen nah heran. [Bobbejaanland](ref:bobbejaanland) liegt gut eine
+[Bobbejaanland](ref:bobbejaanland) liegt gut eine
 Autostunde entfernt; wer ohnehin nach Belgien fährt, legt beide auf ein
 Wochenende.
 
@@ -378,11 +366,6 @@ hat gegenüber 2025 zusätzliche Effekte, und rund 80 % der Attraktionen laufen 
 den langen Tagen bis 21 Uhr.
 
 [Heide-Park](ref:heide-park?full)
-
-Quelle: [Pressemitteilung des Heide-Park vom 4. Oktober 2026](https://www.heide-park.de/presse/pressemeldungen/halloween-2026/).
-
-Aktuelle Termine und Altersfreigaben:
-[heide-park.de → Halloween](https://www.heide-park.de/entdecken/events/halloween/).
 
 ### Parc Astérix
 
@@ -439,9 +422,6 @@ with the Dead“.
 
 [Alton Towers](ref:alton-towers?full)
 
-Termine, Mazes und Tickets:
-[altontowers.com → Scarefest](https://www.altontowers.com/explore/events/scarefest/).
-
 ### PortAventura
 
 Das spanische [PortAventura Park](ref:portaventura-park) an der Costa Dorada
@@ -462,23 +442,17 @@ alle fünf dieselbe Altersgrenze, ab 12 Jahren in Begleitung und allein ab 14.
 
 [PortAventura Park](ref:portaventura-park?full)
 
-Programm und Preise:
-[portaventuraworld.com → Halloween](https://www.portaventuraworld.com/blog/en/halloween26)
-und [Halloween-Pasajes](https://www.portaventuraworld.com/en/tickets/halloween-passages).
-
 Gardaland am Gardasee hat diesen Herbst ein
 [neues Labyrinth](/blog/gardaland-magic-halloween-2026), durch das du schweigend
 gehen musst.
 
 ## Parks ohne Halloween
 
-Zwei der meistbesuchten Parks der Region machen bei Halloween nicht mit.
-
 ### Phantasialand
 
 Das [Phantasialand](ref:phantasialand) in Brühl bietet **kein Halloween-Event**.
 
-Brühls große Saison beginnt **später**. Ab **14. November 2026** läuft **Wintertraum** bis in den Januar (24. Januar 2027), mit Eisbahn,
+Ab **14. November 2026** läuft **Wintertraum** bis in den Januar (24. Januar 2027), mit Eisbahn,
 Winter-Shows und abendlicher Illumination. Der
 [Quick Pass](/blog/phantasialand-tipps) funktioniert seit der Saison 2025/26
 komplett anders.
@@ -519,11 +493,8 @@ von fünf Millionen Gästen, und im Winter gibt es den Winter Efteling.
 
 1. **Wo „ab 16“ als Grenze gilt, wird sie durchgesetzt.** Traumatica, die
    meisten Horrorhäuser im Movie Park und die Mazes im Heide-Park kontrollieren
-   den Ausweis und lassen Jüngere auch _mit_ Eltern nicht rein. Vorher klären, sonst wird ein Teil der Familie am Einlass abgewiesen. Bei Walibi Holland ist „ab 16“ dagegen nur eine Empfehlung, im Plopsaland kommen Jüngere mit einem Erziehungsberechtigten hinein, und im Toverland gilt „ab 12“.
-2. **Mazes und Experiences kosten extra.** Bei fast allen großen Events sind die
-   Häuser und Experiences nicht im Tagesticket. Einrechnen, und früh buchen,
-   wenn dir ein bestimmtes Datum wichtig ist.
-3. **Fast-Lanes lohnen sich hier.** [Toverlands](ref:attractiepark-toverland) **Fear Pass** oder [Walibi Belgiums](ref:walibi-belgium) **Speedy Pass** rechnen sich an vollen Halloween-Abenden, weil ein Halloween-Abend kürzer ist als ein normaler Parktag.
+   den Ausweis und lassen Jüngere auch _mit_ Eltern nicht rein. Bei Walibi Holland ist „ab 16“ dagegen nur eine Empfehlung, im Plopsaland kommen Jüngere mit einem Erziehungsberechtigten hinein, und im Toverland gilt „ab 12“.
+2. **Fast-Lanes lohnen sich hier.** [Toverlands](ref:attractiepark-toverland) **Fear Pass** oder [Walibi Belgiums](ref:walibi-belgium) **Speedy Pass** rechnen sich an vollen Halloween-Abenden, weil ein Halloween-Abend kürzer ist als ein normaler Parktag.
 
 Am vollsten wird es an den Wochenenden und am 31. Oktober, so steht es auch in
 unserem Crowd-Kalender für fast alle Parks in diesem Guide. Das bleibt eine Prognose, denn unsere Messungen beginnen erst Ende Dezember 2025
@@ -531,8 +502,6 @@ und enthalten noch keinen Halloween-Oktober. Für
 Werktage und die Randwochen der Saison liegt die Prognose spürbar niedriger.
 
 ![Beleuchteter Torbogen Psycho Circus mit Menschenmenge bei Nacht | Psycho Circus an einem vollen Abend. | wide](/media/halloween-2026/beispiel-psycho-circus.jpg)
-
-Die **ruhigsten kommenden Tage** aus unserem KI-Crowd-Kalender:
 
 **Europa-Park, die ruhigsten kommenden Tage**
 
@@ -546,8 +515,7 @@ Die **ruhigsten kommenden Tage** aus unserem KI-Crowd-Kalender:
 
 ```
 
-Die Prognose für die Horrorabende im Movie Park nimmst du besser mit Vorsicht.
-Auch in der Statistik nach Wochentag und Monat fehlt Halloween noch.
+In der Statistik nach Wochentag und Monat fehlt Halloween noch.
 
 **Movie Park Germany, typische Wartezeiten nach Wochentag & Monat**
 
@@ -560,6 +528,8 @@ Auch in der Statistik nach Wochentag und Monat fehlt Halloween noch.
 ```
 
 ## Quellen & Weiterlesen
+
+Offizielle Seiten: [Movie Park](https://www.movieparkgermany.de/halloween) · [Traumatica](https://traumatica.com/) · [Walibi Holland](https://www.walibi.nl/halloween/de/halloween-fright-nights) · [Toverland](https://www.toverland.com/de/veranstaltungen/halloween/scare-zones-experiences) · [Toverblog, Abschied von Trapped (niederländisch)](https://www.toverland.com/toverblog/blog-afscheiditems-trapped) · [Pressemitteilung des Heide-Park vom 4. Oktober 2026](https://www.heide-park.de/presse/pressemeldungen/halloween-2026/) · [Heide Park](https://www.heide-park.de/entdecken/events/halloween/) · [Alton Towers](https://www.altontowers.com/explore/events/scarefest/) · [PortAventura](https://www.portaventuraworld.com/blog/en/halloween26) · [PortAventura, Halloween-Pasajes](https://www.portaventuraworld.com/en/tickets/halloween-passages)
 
 Weitere Beiträge: [Termine und S.I.K. Pass im Movie Park](/blog/movie-park-germany-halloween-horror-festival-2026) · [Zehn Jahre Traumatica](/blog/traumatica-zehn-jahre-europa-park) · [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan) · [Toverland](/blog/toverland-troy-wartezeiten-tipps) · [Walibi Belgium](/blog/walibi-belgium-wartezeiten-tipps) · [Fright Nights und Nightmare Society Pass im Plopsaland](/blog/plopsaland-deutschland-halloween-fright-nights-2026) · [Heide Park](/blog/heide-park-wartezeiten-tipps) · [Halloween im Disneyland Paris](/blog/disneyland-paris-halloween-2026) · [Halloween in PortAventura](/blog/portaventura-halloween-2026) · [Halloween in den USA](/blog/halloween-usa-freizeitparks-2026) · [HalloWeekends in Cedar Point](/blog/cedar-point-halloweekends-2026) · [Freizeitparks im Winter](/blog/winter-freizeitparks-2026)
 

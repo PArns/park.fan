@@ -80,7 +80,7 @@ op 1 oktober 2026 bestond het resort 55 jaar.
 
 Tot begin jaren negentig heette het park officieel Walt Disney World Magic Kingdom. In 1994 doopte Disney het om tot Magic Kingdom Park, om het te onderscheiden van Disneyland in Californië. Volgens TEA kwam het park in 2019 op 20.963.000 bezoeken, meer dan in enig ander jaar sinds 2000. In 2020 was het vanwege de coronapandemie van half maart tot 11 juli dicht en kwam het op 6.941.000 bezoeken, 66,9 procent minder dan in 2019.
 
-Sindsdien is er maar één themaland bijgekomen. Het opende in 1988 als Mickey's
+Sinds de opening is er maar één themaland bijgekomen. Het opende in 1988 als Mickey's
 Birthdayland, heette uiteindelijk Mickey's Toontown Fair en ging op 11 februari
 2011 dicht om plaats te maken voor New Fantasyland. Die uitbreiding was op 28
 mei 2014 klaar, met de Seven Dwarfs Mine Train.
@@ -178,8 +178,7 @@ Mansion](ref:magic-kingdom-park/haunted-mansion) in Liberty Square, “it's a sm
 world” in Fantasyland en de Jungle Cruise in Adventureland gingen op 1 oktober
 1971 open, Peter Pan's Flight twee dagen later. Op 15 december 1973 kwam [Pirates
 of the Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean) erbij. Bij geen
-van deze vijf geldt een minimale lengte. Dit zijn de attracties voor de middag,
-als je TRON en de Mine Train al gehad hebt, en in de tabel hierboven staat de
+van deze vijf geldt een minimale lengte. In de tabel hierboven staat de
 Haunted Mansion meestal ver bovenaan tussen de klassiekers.
 
 ```map-widget slug=magic-kingdom-park
@@ -218,8 +217,7 @@ zo. Allebei zijn ze in de rope-drop-analyse een “goede tip”.
 Bij Seven Dwarfs Mine Train blijft de rij van het middaguur tot in de avond op
 hetzelfde niveau, in de laatste uren voor sluitingstijd wordt hij korter.
 
-Ga dus bij de opening naar TRON, direct daarna naar Tiana's en in het laatste
-uur naar de Mine Train. Space Mountain is rond het middaguur het drukst, bij de
+Space Mountain is rond het middaguur het drukst, bij de
 Jungle Cruise blijft de rij van de ochtend tot in de vroege avond even lang, en
 allebei worden ze tegen sluitingstijd rustiger.
 
@@ -232,10 +230,8 @@ en The Barnstormer. TRON, Tiana's, Big Thunder en de Jungle Cruise doen niet
 mee.
 
 Gasten van de deluxehotels en van een paar andere hotels die Disney op zijn
-pagina noemt, krijgen op bepaalde
-avonden Extended Evening Hours, tot twee uur na sluitingstijd. Dan zijn ook
-TRON, Space Mountain, Big Thunder en de Mine Train open. Om welke avonden het
-gaat, staat in de kalender van Disney.
+pagina noemt, krijgen op bepaalde avonden, die Disney in zijn kalender aangeeft, Extended Evening Hours, tot twee uur na sluitingstijd. Dan zijn ook
+TRON, Space Mountain, Big Thunder en de Mine Train open.
 
 ### Een dag zoals ik hem zou plannen
 
@@ -252,9 +248,7 @@ het vuurwerk is het op Main Street het drukst, dus gebruik je die tijd voor nog
 een van de grote attracties. Het laatste uur voor sluitingstijd is voor de Mine
 Train, als die 's ochtends niet gelukt is.
 
-Hoeveel tijd dat allemaal kost, zie je als je je attracties in de
-[dagplanner](/blog/dagplanner) zet. Daar krijg je een volgorde op basis van de
-voorspelde wachttijden van die dag.
+In de [dagplanner](/blog/dagplanner) krijg je voor je attracties een volgorde op basis van de voorspelde wachttijden van die dag, en zie je hoeveel tijd het allemaal kost.
 
 ## Met kleine kinderen
 
@@ -315,7 +309,7 @@ we nog helemaal geen waarden. Op 28 september 2026 hadden we 196 gemeten dagen,
 de meeste daarvan sinds april.
 
 De weekdagcurve is vlak, de medianen liggen maar één stap uit elkaar. Een dag
-van de week die je speciaal moet uitkiezen, is er niet. Heeft een ander park er wel een, dan staat die op de [beste-reistijdpagina](/beste-tijd-om-te-bezoeken).
+van de week die je speciaal moet uitkiezen, is er niet.
 
 Sinds de opening is Magic Kingdom negen keer tijdelijk dichtgegaan vanwege een
 orkaan, het laatst in oktober 2024 bij Milton.
@@ -326,11 +320,10 @@ orkaan, het laatst in oktober 2024 bij Milton.
 
 ## Halloween en kerst
 
-Op 38 avonden tussen 7 augustus en 31 oktober 2026 is er Mickey's Not-So-Scary
-Halloween Party, en volgens Disney zijn alle data uitverkocht. Op die avonden
+Op 38 avonden tussen 7 augustus en 31 oktober 2026 is er [Mickey's Not-So-Scary Halloween Party](/blog/halloween-vs-pretparken-2026), en volgens Disney zijn alle data uitverkocht. Op die avonden
 gaat het park voor gewone bezoekers al om 18 uur dicht, het feest duurt van 19
 uur tot middernacht. In oktober zijn dat nog de avonden van 6, 8, 9, 13, 15, 16,
-18, 22, 23, 25, 27, 29 en 31 oktober. Ons overzicht [Halloween in de VS](/blog/halloween-vs-pretparken-2026) beschrijft het feest.
+18, 22, 23, 25, 27, 29 en 31 oktober.
 
 Daarna komt Mickey's Very Merry Christmas Party, op 25 avonden van 8 november
 tot 22 december 2026, ook van 19 uur tot middernacht, en wie een kaartje heeft,
@@ -424,8 +417,7 @@ wachttijd van de vier Disneyparken in Florida, EPCOT de langste.
 
 ### Welke attractie heeft in Magic Kingdom de langste rij?
 
-In onze data TRON Lightcycle / Run. De actuele ranglijst staat in de tabel
-hierboven.
+In onze data TRON Lightcycle / Run.
 
 ### Wanneer is de rij bij TRON het kortst?
 
@@ -460,8 +452,7 @@ geen minimale lengte.
 ### Wanneer gaat Magic Kingdom eerder dicht?
 
 Op de avonden van het Halloweenfeest in de herfst en van het kerstfeest in
-november en december. Het park sluit dan om 18 uur voor gewone bezoekers. De
-data staan hierboven onder “Halloween en kerst”.
+november en december. Het park sluit dan om 18 uur voor gewone bezoekers.
 
 ### Is er nog een virtuele wachtrij voor TRON?
 
@@ -476,8 +467,7 @@ Pass van Lightning Lane.
 
 Hetzelfde bedrijf runt ook [Disneyland Paris](/blog/disneyland-paris-wachttijden-tips), en daar heeft het kleinere van de twee parken de langere rijen.
 
-De week tussen Kerst en Nieuwjaar is de drukste week in onze jaartabel, en de Very Merry
-Christmas Party draait op 25 avonden: [Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
+In onze data valt de drukste week van het jaar tussen Kerst en Nieuwjaar ([Kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026)).
 
 — Patrick
 

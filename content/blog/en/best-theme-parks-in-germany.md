@@ -8,8 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   In September Europa-Park won the Golden Ticket Award for best park in the world for the eleventh
-  time, but you wait longest at Phantasialand and shortest at Plopsaland. I sort the parks into two
-  rankings, one for coaster fans and one for families with small children.
+  time, but you wait longest at Phantasialand and shortest at Plopsaland.
 tags:
   - theme-park
   - germany
@@ -60,18 +59,16 @@ only shows them in its own app. [Traumatica](ref:traumatica), for which we have 
 [Rulantica](ref:rulantica) belong to the Europa-Park resort and
 so don’t appear as parks of their own.
 
-There are two rankings, one for coaster fans and one for families with children under ten.
-
 ## How I sort them
 
 For coaster fans, what counts is the rides I want to ride once I’ve arrived, how they’re built
 into the grounds and how much waiting they cost. For families, what counts is the height at which
-kids can ride and what stays open on a rainy day. That weighting is mine. The numbers next to it
+kids can ride and what stays open on a rainy day. The numbers next to it
 are our own measurement, as of 3 October 2026, and the technical data comes from the parks, from
 the Roller Coaster DataBase and from our guides to the individual parks, which are linked further
 down.
 
-I leave prices out. The park guides list them with a date.
+I leave prices out.
 
 ## The seven parks at a glance
 
@@ -160,8 +157,7 @@ the gate. At the park there’s the Abenteuerhotel and the Holiday Camp with 81 
 [Oath of Kärnan](ref:hansa-park/the-oath-of-kaernan) and the
 [Highlander](ref:hansa-park/highlander), the tallest gyro drop tower in the world. In the 2026
 season, from 26 March to 25 October, there isn’t a single closing day. The park is fourth because
-I can’t say how long you’ll queue there. The [park page](ref:hansa-park?bare) therefore shows a
-notice instead of a wait time.
+I can’t say how long you’ll queue there.
 
 Kärnan, built by Gerstlauer, hauls you straight up in a tower, on your back and in the dark,
 and at more than 60 metres lets the train drop backwards a little before the first drop from
@@ -212,8 +208,7 @@ from the opening year, from 110 centimetres and age six with an adult, and the
 one metre. [Flying Ninjago](ref:legoland-deutschland/flying-ninjago) is a Sky Fly from 2012 where
 you spin your own gondola round its axis.
 
-According to Wikipedia, Miniland is made of more than 25 million bricks. Wikipedia also puts 2024 attendance at
-around two million. The 2026 season runs from 28 March to 8 November, with Halloween from
+According to Wikipedia, Miniland is made of more than 25 million bricks, and around two million guests came in 2024. The 2026 season runs from 28 March to 8 November, with Halloween from
 3 October to the end of the season. Here the paid queue skip is called **Fastrack**, in three
 tiers, for 18 attractions and without admission. You can stay in the holiday village right next
 to the park, in the Pirate Island Hotel, in three castles, in the Ninjago quarter or, since 2024,
@@ -283,7 +278,7 @@ The comparison is calculated the same way for every park, across all measured da
 
 ```
 
-At Phantasialand the median is highest and at Plopsaland it’s lowest. Europa-Park, Heide Park and
+Europa-Park, Heide Park and
 Movie Park are close together, even though Europa-Park has the largest visitor numbers. It spreads them across more rides, so even its longest queue doesn’t get as long.
 
 For Legoland the column with the longest queue is missing. We only put a ride in that column from 100 measured days, and at Legoland none of the ten rides
@@ -303,13 +298,12 @@ same ride on busy days, and without a pass you wait longer there than our median
 
 Across all measured days at Phantasialand, Taron is busiest at opening and in the last hour, when everyone wants to squeeze in one more
 ride. F.L.Y. is short in the first hour and peaks an hour later, once the rest of the park has
-made it to Rookburgh. Both have their quietest hour in the afternoon. For both rides that means F.L.Y. at opening and Taron in the afternoon.
+made it to Rookburgh. Both have their quietest hour in the afternoon. So ride F.L.Y. at opening and Taron in the afternoon.
 
 At Europa-Park the Eurosat has its longest queue as early as ten in the morning, because it’s near
 the entrance and runs indoors, and when it rains everyone heads there at once.
 At Heide Park, Colossos draws the crowds around midday, and at Movie Park the queue for Van
-Helsing’s Factory doesn’t get shorter until evening. The curves for all the other parks are on
-their park pages.
+Helsing’s Factory doesn’t get shorter until evening.
 
 ## When to go
 
@@ -332,9 +326,6 @@ At five of the six measured parks, a weekday in the home state's school holidays
 than an average weekend day. Which German states fill which park is in the
 [guide to school holidays and crowds](/blog/school-holidays-theme-parks-germany).
 
-Every park has a calendar with the forecast for the coming days, and the one for
-Europa-Park is below.
-
 ```best-days-widget slug=europa-park
 
 ```
@@ -353,17 +344,14 @@ Europa-Park is below.
 
 Phantasialand doesn’t do Halloween, but opens in winter with mulled wine, fairy
 lights and Taron in the dark. Our December figures for Brühl and Rust rest on a few days around the turn of the year, the busiest time of
-winter. All dates and prices are in the
-[Halloween guide](/blog/halloween-theme-parks-2026) and the
-[winter guide](/blog/winter-theme-parks-2026).
+winter.
 
 ## Two parks on one trip
 
 The distances are straight lines between the entrances.
 
 - Phantasialand and Movie Park, **91 kilometres.** Both
-  are in North Rhine-Westphalia, both can be reached by train. Brühl has the theming and long queues, Bottrop shorter queues and
-  Halloween. It works especially
+  are in North Rhine-Westphalia, both can be reached by train. It works especially
   well in autumn, because Phantasialand doesn’t do Halloween.
 - Heide Park and Hansa-Park, **131 kilometres.** Soltau is south of Hamburg on the A7, Sierksdorf
   north of it on the A1. Hamburg sits in between, and if you stay there, each day starts with a
@@ -395,8 +383,7 @@ fourteen roller coasters. For theming Phantasialand comes first, for small child
 
 If you want to fit as many roller coasters as possible into one day, go to Rust. If you want
 Taron, F.L.Y. and themed areas where the queue is part of the set, go to Brühl and accept longer
-waits for it. Phantasialand is smaller and has fewer rides to spread the crowd across. Both need
-a full day.
+waits for it. Phantasialand is smaller and has fewer rides to spread the crowd across.
 
 ### Which theme park in Germany is best for small children?
 
@@ -407,8 +394,7 @@ Hansa-Park, children from 90 centimetres can ride three of the eight roller coas
 ### Where are the wait times shortest?
 
 At Plopsaland Deutschland, by a wide margin. They’re longest at Phantasialand. Europa-Park, Heide
-Park and Movie Park sit in between and close together. The current figures are in the table above
-and on the park pages.
+Park and Movie Park sit in between and close together.
 
 ### What is the tallest roller coaster in Germany?
 
@@ -428,8 +414,6 @@ hasn’t announced anything for this winter yet.
 Movie Park. Feldhausen station is about 400 metres from the entrance. Europa-Park, Phantasialand
 and Heide Park are served by a shuttle or bus from the nearest station, and Hansa-Park is a
 ten-minute walk from Sierksdorf station.
-
-The current wait times are on the park pages and are read again every five minutes.
 
 — Patrick
 

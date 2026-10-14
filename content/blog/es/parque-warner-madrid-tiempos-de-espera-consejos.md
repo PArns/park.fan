@@ -61,7 +61,7 @@ Escape, desde 2023. Salvo en Batman, en el parque las colas suelen ser cortas.
 ## Cómo nació el parque
 
 Madrid quería un parque como el que Disney levantó en París. Disney había
-estudiado España antes y se decidió por París, y la región se quedó con Warner.
+estudiado España antes y se decidió por París.
 Por la gestión de la futura Ciudad del Ocio habían pujado filiales de Paramount y de
 Time Warner. La adjudicación fue para **Six Flags**, que Time Warner había vendido en
 1995 a la firma de inversión Boston Ventures. El
@@ -261,8 +261,7 @@ de entre 100 y 120 cm suben solo con un adulto.
 ## Qué atracción para quién
 
 Quien solo vaya a subir a una montaña rusa grande, que elija Superman, cuya cola
-está en la media del parque. El viaje más intenso es Stunt Fall, con 4,5 g. Batman
-es la más moderna.
+está en la media del parque. El viaje más intenso es Stunt Fall, con 4,5 g.
 
 Shadows of Arkham es compacta, con 823 metros, y casi nunca hay cola.
 
@@ -301,11 +300,10 @@ montañas rusas grandes sube hasta primera hora de la tarde y luego se queda
 plana. Los Rápidos ACME y Río Bravo tienen su máximo por la tarde, cuando hace
 calor.
 
-El rope drop solo compensa en este parque en una atracción. En los Rápidos ACME la cola es corta a la apertura y
+El rope drop solo compensa en este parque en los Rápidos ACME, donde la cola es corta a la apertura y
 por la tarde se multiplica.
 Recomendamos subir a ellos en los primeros 90 minutos tras la apertura (a 8 de
-octubre de 2026). En Batman ya es larga a la apertura, y allí no
-recomendamos una visita temprana.
+octubre de 2026). En Batman no recomendamos una visita temprana.
 
 ```best-days-widget slug=parque-warner-madrid
 
@@ -332,8 +330,7 @@ elegir.
 
 Quien venga sobre todo por Batman compra, en mi opinión, el One-Pass o el Gold.
 El Silver ahorra algo de tiempo en Superman, La Venganza del Enigma y Coaster
-Express, pero justo ahí las colas ya son cortas, y el pase se salta la única cola
-larga del parque. Quien quiera ahorrarse el pase sube a Batman hacia las 16 h,
+Express, pero justo ahí las colas ya son cortas. Quien quiera ahorrarse el pase sube a Batman hacia las 16 h,
 cuando la cola es unos minutos más corta que de costumbre.
 
 ## Cuándo ir
@@ -370,8 +367,7 @@ sobre otros parques con lluvia en la
 
 ### Halloween hasta el 2 de noviembre
 
-La temporada de Halloween va del **26 de septiembre al 2 de noviembre de 2026**, y
-las fechas de otros parques de Europa están en la [guía de Halloween 2026](/blog/halloween-parques-atracciones-2026).
+La temporada de Halloween va del **26 de septiembre al 2 de noviembre de 2026**.
 De día hay decoración, desfiles y la nueva atracción familiar ACME Factory, en la
 que se arregla una fábrica con el Coyote. Se suman cuatro Pasajes del Terror (La
 Monja, Crime Alley: Night of Chaos, IT Experience, Expedientes Warren) y dos
@@ -408,11 +404,10 @@ All Inclusive cuesta por internet 63 € para adultos y 55 € para niños, y el
 exprés 12,90 €. Los restaurantes abren a las 13 h, y el momento de más gente es
 entre las 14 y las 15:30 h.
 
-Los **Bono Parques** son los pases anuales del grupo Parques Reunidos, válidos
+Los **Bono Parques** son los [pases anuales](/blog/pase-anual-comparativa-parques) del grupo Parques Reunidos, válidos
 hasta finales de 2027. El Bono Oro cuesta 219 €, con aparcamiento 294 €, y vale
 en doce parques. El Bono Platino (329 €) vale en 27. Además, el Oro da un 50 %
-de descuento en el Parque Warner Beach. La [comparativa de pases anuales](/blog/pase-anual-comparativa-parques) los pone
-junto a otros pases anuales.
+de descuento en el Parque Warner Beach.
 
 ## Servicios en el parque
 
@@ -515,7 +510,8 @@ dos tallas y en número limitado.
 
 ```
 
-También [PortAventura](/blog/portaventura-halloween-2026) celebra Halloween. Los
+También [PortAventura](/blog/portaventura-halloween-2026) celebra Halloween, y las
+fechas de otros parques de Europa están en la [guía de Halloween 2026](/blog/halloween-parques-atracciones-2026). Los
 tiempos de espera de Parque Warner, PortAventura y Parque de Atracciones de
 Madrid, comparados:
 

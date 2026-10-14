@@ -7,9 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Ab 2. Oktober wird Haßloch jeden Freitag und Samstag zum Horror-Park: sechs
-  Horrorhäuser, davon zwei neu, drei Scare Zones, drei Shows und ein
-  Abschlussfeuerwerk. Termine, Preise und was im Ticket fehlt.
+  Ab 2. Oktober laufen in Haßloch jeden Freitag und Samstag die Halloween Fright Nights mit sechs Horrorhäusern, davon zwei neu, drei Scare Zones, drei Shows und einem Abschlussfeuerwerk.
 tags:
   - news
   - plopsaland-deutschland
@@ -23,7 +21,7 @@ rideLinks:
 coverImage:
   src: /media/halloween-2026/darsteller/09-kettensaegen-clown-raupe.jpg
   alt: 'Clown mit Kettensäge vor einem Raupenfahrgeschäft, grün-violett beleuchtet'
-  caption: 'Dieser Clown arbeitet bei Walibi Holland. Fotos aus Haßloch gibt es erst nach dem 2. Oktober, sein Kollege dort heißt Reddles.'
+  caption: 'Clown mit Kettensäge bei Walibi Holland. Fotos aus Haßloch gibt es erst nach dem 2. Oktober.'
   credit: 'Patrick Arns'
 seo:
   title: 'Plopsaland Halloween Fright Nights 2026: Termine & Preise'
@@ -53,11 +51,9 @@ Gespielt wird **freitags und samstags vom 2. bis 31. Oktober 2026**, also am
 2., 3., 9., 10., 16., 17., 23., 24., 30. und 31. Oktober. An diesen Tagen hat
 der Park von **10 bis 22 Uhr** geöffnet, und laut Park laufen fast alle
 Fahrgeschäfte bis zum Schluss. Ausdrücklich genannt sind nur die Wasserbahnen
-DinoSplash und Wickie Splash, die um 20 Uhr zumachen, was im Oktober vermutlich
-niemanden stört.
+DinoSplash und Wickie Splash, die um 20 Uhr zumachen.
 
-Tagsüber läuft parallel das kinderfreundliche Plopsa Herbstfest. Die Monster
-kommen am Abend.
+Tagsüber läuft parallel das kinderfreundliche Plopsa Herbstfest.
 
 ## Neu in diesem Jahr
 
@@ -65,9 +61,7 @@ Von den sechs Horrorhäusern sind zwei neu. In
 [NEXUS AI](ref:plopsaland-deutschland/nexus-ai) sucht eine Firma Testpersonen
 für die nächste Generation von Nervenkitzel, und aus dem Experiment wird
 schnell ein Kampf darum, wer hier wen kontrolliert.
-[Lost: Deep in the Woods](ref:plopsaland-deutschland/lost-deep-in-the-woods)
-bleibt in der Gegend: Irgendwo im Pfälzerwald liegt ein verfluchter Ort, an dem
-Leute spurlos verschwinden, und du folgst der Legende in die Dunkelheit.
+[Lost: Deep in the Woods](ref:plopsaland-deutschland/lost-deep-in-the-woods) spielt an einem verfluchten Ort im Pfälzerwald, an dem Leute spurlos verschwinden.
 
 Zurück sind [Academy of Freaks](ref:plopsaland-deutschland/academy-of-freaks),
 wo eine Zirkusdirektorin neue Talente sucht,
@@ -75,9 +69,7 @@ wo eine Zirkusdirektorin neue Talente sucht,
 Namen aus _From Dusk Till Dawn_ und einer Wirtin namens Miss Monique,
 [Mad Rat](ref:plopsaland-deutschland/mad-rat) mit Menschen, die nach
 Experimenten zu Riesenratten geworden sind, und das
-[Schnitzelhaus](ref:plopsaland-deutschland/schnitzelhaus). Letzteres ist
-bekannt für sein Schnitzel und berüchtigt für seinen Metzger. Wer ihm zu nahe
-kommt, landet auf der Karte, und zwar nicht als Gast.
+[Schnitzelhaus](ref:plopsaland-deutschland/schnitzelhaus) mit seinem Metzger.
 
 Neu sind auch zwei Shows: die **Monster Release Show „Freaks Reloaded“** mit
 Reddles, dem Hausclown der Fright Nights, und die Wrestling-Show **„The
@@ -114,16 +106,14 @@ Bereich bei den Shows mit, solange der Platz reicht. Wer eine Plopsaland-Jahresk
 Aufpreis zu den Fright Nights und bekommt bis 30. September, solange der Vorrat
 reicht, ein Freiticket für Mad Rat.
 
-Für zwei Leute, die alle sechs Häuser wollen, ist die Rechnung einfach: Mit dem
-günstigsten Tagesticket und dem 49-€-Paket landest du bei 88 € pro Person, der
+Für alle sechs Häuser landest du mit dem günstigsten Tagesticket und dem 49-€-Paket bei 88 € pro Person, der
 Pass kostet 109 €, bringt den Parkschein mit und spart das Buchen von sechs
 Zeitfenstern. Wer an einem
 vollen Samstag im Oktober kommt, nimmt den Pass.
 
 ## Für wen das ist
 
-Empfohlen sind die Fright Nights **ab 16**. Anders als bei Traumatica ist das
-keine harte Grenze: In den FAQ des Parks steht, dass Jüngere in Begleitung eines Erziehungsberechtigten hineinkommen. Für Jüngere und Schreckhafte bleiben
+Empfohlen sind die Fright Nights **ab 16**. Jüngere kommen laut den FAQ des Parks in Begleitung eines Erziehungsberechtigten hinein. Für Jüngere und Schreckhafte bleiben
 Majaland und die Plopsa Indoor-Halle monsterfrei, und nur vor Ort gibt es den
 „Schreck-Stopp“, mit dem einen die Monster laut Park in Ruhe
 lassen. Gästen über 12 Jahren sind Masken, aufwendiges Make-up und Kostüme
@@ -131,9 +121,7 @@ nicht erlaubt, damit am Abend klar bleibt, wer zum Personal gehört.
 
 Haßloch liegt zwischen A65 und B9, vom Bahnhof Haßloch fährt ein Shuttlebus zum
 Park. Der [Europa-Park](ref:europa-park) mit Traumatica liegt knapp zwei
-Autostunden südlich. Den Herbst von Traumatica, Movie Park, Walibi und Toverland
-haben wir im [Halloween-Überblick](/blog/halloween-freizeitparks-2026)
-zusammengetragen.
+Autostunden südlich.
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 

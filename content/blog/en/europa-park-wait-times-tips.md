@@ -84,9 +84,8 @@ event for **9 January 2027**.
 
 ## Europa-Park wait times, measured ride by ride
 
-Our wait-time history for Europa-Park starts on 26 December 2025, so at the end
-of September 2026 it covers about nine months, and it has been gapless since
-April apart from one day in July. Across all days of the week the typical
+At the end of September 2026 our wait-time history for Europa-Park covers about
+nine months, and it has been gapless since April apart from one day in July. Across all days of the week the typical
 park-wide wait (the median) is **short for a crowd this size**; on busy days it
 sits well above that.
 
@@ -105,7 +104,7 @@ busy morning the queue reaches out into the square.
 Voltron
 clocked up 3.25 million rides in its first year and has the longest queue in the
 park, and for a park with over six million guests **that longest queue is
-surprisingly short**. Every park in the comparison is calculated from the same data basis with the same method.
+surprisingly short**.
 
 ```park-comparison-widget slugs=/parks/europe/france/paris/disneyland-park,phantasialand,efteling,europa-park,movie-park-germany,heide-park,attractiepark-toverland highlight=europa-park
 
@@ -114,8 +113,8 @@ surprisingly short**. Every park in the comparison is calculated from the same d
 The attendance figures come from the TEA index, which appears once a year. For 2024 that’s 6.2 million in Rust for the
 theme park and not the 7.4 million of the whole resort, 2.1 million at
 Phantasialand, 5.6 at the Efteling, around ten in Paris. Toverland doesn’t
-appear there at all, and the 1.17 million is the park’s own figure. For each park
-the table names the attraction with the highest median for which we have at
+appear there at all, and the 1.17 million is the park’s own figure. We calculate the wait times of every park the same way. A park's
+longest queue is the attraction with the highest median for which we have at
 least a hundred days of measurements. At Toverland, Maximus' Blitz Bahn actually
 sits above that, but on only 61 days of measurement (as of 25 September 2026), and we don’t take a children’s coaster with so few days of measurement as the yardstick for a whole park.
 
@@ -139,12 +138,11 @@ countries and therefore sit in one long chain instead of a ring around a central
 square. That’s hard on the legs
 and good for the queues, because it pulls the crowd apart across the day.
 
-Then there’s the length of the season. The 2026 season runs from 28 March to 9
+The 2026 season runs from 28 March to 9
 January 2027 without a break, with two closed days at Christmas.
 That comes to **286 operating days** by the official season calendar. The same
 demand therefore spreads across roughly seventy days more than at a park that
-shuts in early November and doesn’t open up again until April. On paper it
-works out at just under 22,000 guests a day, spread over 95 hectares.
+shuts in early November and doesn’t open up again until April. On paper it works out at just under 22,000 guests a day.
 
 ## No fast pass at Europa-Park, and what there is instead
 
@@ -217,9 +215,8 @@ seventy countries.
 | 2005     | Heinrich Mack GmbH becomes Mack Rides                             |
 | 2018     | Part of production moves to Herbolzheim                           |
 
-The prototype of the wild mouse was
-built in Waldkirch, 26 kilometres from Rust as the crow flies, out of wood back
-then and out of steel everywhere today. The
+Waldkirch is 26 kilometres from Rust as the crow flies, and wild mice are made of
+steel everywhere today. The
 **[Matterhorn-Blitz](ref:europa-park/matterhorn-blitz)** is one of them. The ride
 type and the park come out of the same workshop, which by September 2024 had
 shipped 174 roller coasters around the world, wild mice and every other type
@@ -280,7 +277,7 @@ Grimm’s fairy-tale forest and the Kingdom of the Minimoys from 2014.
 
 The Swiss Bob Run has stood in the
 park since 1985, and the Swiss themed area was only built around it eight years
-later. The German area arrived ninth, twenty-one years after the opening.
+later.
 
 The eighteenth country arrived for the 2026 season: **Monaco**, built around the
 existing Silver Star coaster, which has thereby moved from the French part of
@@ -317,7 +314,7 @@ needs 2,500 hp; a train leaves the station every 36 seconds, which works out at
 1,600 people an hour.
 
 The trains have **lap bars and nothing else**, with no restraint beside your
-head and no padding on your shoulders, through all seven inversions.
+head and no padding on your shoulders.
 
 ```glossary-widget slug=swing-launch
 
@@ -348,8 +345,7 @@ Sponsor Rimac builds electric hypercars a few hundred kilometres to the south,
 and “nevera” is Croatian for the sudden storm that blows up over the Adriatic in
 summer.
 
-The first year brought 3.25 million rides, and its typical wait sits well above the park
-average, higher than at any other ride in the park.
+Voltron's typical wait sits well above the park average.
 
 **[Silver Star](ref:europa-park/silver-star)** was built in 2002 by **Bolliger & Mabillard** of Monthey in the Valais,
 their first installation in Germany, and on opening was the tallest and fastest
@@ -402,14 +398,15 @@ a wild mouse that hauls its cars up on a vertical lift, the
 **[Alpenexpress Enzian](ref:europa-park/alpine-express-enzian)** from 1984, the
 **[Ba-a-a Express](ref:europa-park/ba-a-a-express)** in Ireland, and
 **[Arthur](ref:europa-park/arthur)**, a suspended powered coaster through the
-Kingdom of the Minimoys, whose queue is as long as those at the big coasters. And the **[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)**, the same track as the
-Enzian, only with a VR headset, which we list as a ride of its own.
+Kingdom of the Minimoys, whose queue is as long as those at the big coasters. The
+**[Alpenexpress Coastiality](ref:europa-park/alpenexpress-coastiality)** runs on
+the same track as the Enzian, only with a VR headset, and we list it as a ride
+of its own.
 
 ![A mushroom house in the Arthur ride building, with the track running above it | Everything is oversized, because the Minimoys are tiny. | wide](/media/europa-park/arthur-16x9.jpg)
 
-And then there’s the **[Voletarium](ref:europa-park/voletarium)** from 2017, a
-flying theatre by Brogent that lets you glide over Europe with your legs
-dangling free. Not a coaster, but the attraction where being there at opening makes the biggest difference.
+The **[Voletarium](ref:europa-park/voletarium)** from 2017 is a flying theatre
+by Brogent that lets you glide over Europe with your legs dangling free.
 
 ```glossary-widget slug=flying-theater
 
@@ -470,7 +467,8 @@ those at Rulantica, in the hotels and on the Traumatica stages.
 ## Euro-Mir: the last season
 
 **[Euro-Mir](ref:europa-park/euro-mir)** opened on **12 June 1997** and runs for
-the last time in the 2026/27 season, until 9 January 2027. Then it comes down. Our [news post on the farewell](/news/europa-park-euro-mir-farewell) covers the date and the successor.
+the last time in the 2026/27 season, until 9 January 2027. Then it
+[comes down](/news/europa-park-euro-mir-farewell).
 
 A ride lasts just under five minutes, a good part of it spent circling two mirrored towers,
 with cars that rotate on their own axis along the way, so you never know what
@@ -513,9 +511,7 @@ six, and eleven Sundays came out “low”.
 In the [other parks I record](/best-time-to-visit) it’s different.
 At [Phantasialand](ref:phantasialand?bare) Sunday is the busiest day after
 Saturday, and at the [Efteling](ref:efteling?bare) Tuesday to Friday run below
-the weekend. More on both in the
-[Phantasialand guide](/blog/phantasialand-wait-times-tips) and the
-[Efteling guide](/blog/efteling-disney-of-the-netherlands).
+the weekend.
 
 The explanation lies in who comes. From Rust it’s a few kilometres to the Rhine
 and therefore to France, and a good hour’s drive to Basel, so the crowd is
@@ -552,7 +548,7 @@ between Christmas and New Year’s Eve 2025, the busiest week of the winter.
 2027 starts earlier: from 7 to 19 March the park opens for two Pre-Opening Weeks
 for the first time, not yet with every ride and show, but with the cheapest
 tickets of the year, and the summer season then begins on 20 March. October has
-only its first few days in the table so far, November none. The count of measured days shows how far Halloween and HALLOWinter have made it in by now.
+only its first few days in the table so far, November none.
 
 ### Which holidays fill the park
 
@@ -646,8 +642,7 @@ in Rust yet.
 
 The park doesn’t open until 11 a.m. and closes at 7
 p.m. at the earliest, an hour less than in summer, darkness comes early, and the
-water rides can’t be relied on. If Poseidon and Atlantica mean nothing to you, a
-weekday in November is worth a try all the same. The days that look quietest right now are in the calendar above.
+water rides can’t be relied on. If Poseidon and Atlantica mean nothing to you, a weekday in November is worth a try all the same.
 
 ## The perfect day at Europa-Park
 
@@ -662,8 +657,9 @@ by far the biggest saving anywhere in the park.
 
 At Voltron, Arthur and Silver Star an early start saves less than half as much.
 
-The hourly profile gives the typical wait in each hour, the median across every operating day we have
-measured since late December 2025. Each ride’s busiest hour is in bold.
+The hourly figures are medians across every operating day we have measured
+since late December 2025, high summer and the weeks around New Year together.
+Each ride’s busiest hour is in bold.
 
 ```hourly-profile-widget slug=europa-park top=12
 
@@ -695,8 +691,7 @@ A plan for the day that follows from that:
    queue now will have a shorter one in the afternoon; at Arthur and Wodan it
    stays about the same.
 4. **Silver Star from midday**, then Eurosat, Pirates in Batavia, Josefina’s
-   Magical Imperial Journey and the Castello dei Medici. On hot days indoors is
-   the better place to be anyway.
+   Magical Imperial Journey and the Castello dei Medici.
 5. **Water rides from five in the afternoon**, if getting soaked in the morning
    was too early for you. Both then drop below their midday and afternoon
    figures, and well below them from six.
@@ -705,10 +700,8 @@ A plan for the day that follows from that:
    after opening is the shortest of the day, and on long summer evenings
    Voltron, Eurosat and Silver Star pick up again in the final hour.
 
-These curves cover every operating day we have measured, high summer and the
-weeks around New Year together. For a November day from eleven to seven we have
-no measurements of our own yet; the nine o’clock column simply doesn’t exist
-then, and the day’s peak can’t come before eleven.
+On a November day from eleven to seven the nine o’clock column doesn’t exist,
+and the day’s peak can’t come before eleven.
 
 ```map-widget slug=europa-park
 
@@ -922,12 +915,11 @@ comes to around €60 to €67.50.
 
 ### Is Europa-Park worth it in winter?
 
-Yes, with one caveat. The winter decoration, the ice rink and the Christmas
+Yes. The winter decoration, the ice rink and the Christmas
 market exist only then, but it gets dark earlier, the park closes at 7 p.m. at
 the earliest, and the water rides don’t all run; Atlantica takes the winter
 off. Between Christmas and New Year’s Eve 2025 wait times came out at about
-August’s level, measured on six days. Measured wait times from November we
-don’t have yet.
+August’s level, measured on six days.
 
 ## Weather and live wait times
 
@@ -937,12 +929,8 @@ When it rains, the queue at Eurosat gets longer.
 
 ```
 
-And two you’ll queue a long time for, with their current numbers:
-
 [Voltron Nevera powered by Rimac](ref:europa-park/voltron-nevera-powered-by-rimac?full)
 [Arthur](ref:europa-park/arthur?full)
-
-If you do get there before 9 January, take one ride on Euro-Mir.
 
 — Patrick
 

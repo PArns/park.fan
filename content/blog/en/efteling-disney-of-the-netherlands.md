@@ -63,13 +63,13 @@ drew it. Eleven of these bins stand in the park today, not all of them shaped li
 Gijs. When the first one went in, the park didn’t have a single roller coaster.
 
 [Efteling](ref:efteling?long) in Kaatsheuvel gets called the Disney of the
-Netherlands, and I use the phrase myself. The order of it is wrong, though. The
+Netherlands, and I use the phrase myself. The
 Fairytale Forest opened on **31 May 1952** with ten fairy tale scenes. Disneyland
 in Anaheim opened three years later, in July 1955.
 
 ## The foundation behind the park
 
-Disney belongs to shareholders. Efteling belongs to the **Stichting Natuurpark de Efteling**, a non-profit foundation
+Efteling belongs to the **Stichting Natuurpark de Efteling**, a non-profit foundation
 set up in 1950 that holds every share in Efteling B.V. The foundation may not pay
 out to anyone, not even to its founders. Around 40 percent of the profit goes to
 it, the business keeps the rest, and the money goes back into the park.
@@ -103,8 +103,7 @@ bricklayers from laying straight courses. The bricks came from demolished farms,
 the roof slates ideally with the moss still on. You can still see it on the roofs today.
 
 The ten fairy tales of 1952 have grown to 31, the newest being the Princess and
-the Pea from May 2025. In 2027, the year of the **75th birthday**, number 32 is due
-to join them.
+the Pea from May 2025.
 
 ## The five realms and what runs in them
 
@@ -121,7 +120,7 @@ by **ETF Ride Systems** from nearby Nederweert. The cars appear to drive freely
 through the palace; in reality they follow a wire in the floor. Seven minutes,
 six people per car, 34 cars, a theoretical 1,400 guests an hour. At the boarding
 point you pick between the hero, treasure and music tour, and each route passes
-through different rooms. To see all of them you have to ride three times.
+through different rooms.
 
 ```glossary-widget slug=trackless-ride
 
@@ -262,9 +261,6 @@ it has since lost that place.
 
 ## The Fairytale Forest was here first
 
-In 1952 the Fairytale Forest was the whole park, and everything else was built
-around it later.
-
 On 31 May 1952 ten scenes stood between the trees: Sleeping Beauty, Snow White,
 the Frog King, the Magic Clock, the Chinese Nightingale, the Talking Parrot, the
 Gnome Village, Mother Holle, Langnek and the Kleine Boodschap. Nine of them are
@@ -280,15 +276,13 @@ among the branches. It’s all done with mechanics, as it has been since 1952.
 gnome sits on a stone by the path to the only toilet block in the forest, points
 the way and calls out "Kleine boodschap!" without a break, Dutch for
 a number one.
-It’s also one of the ten scenes from 1952.
 
 **The Little Match Girl** ends as it does in Andersen: the child freezes to death
 against a wall.
 
 **The Sprookjesboom** started out on Dutch television, in an animated series from
 October 2006 in which a talking tree watches the figures of
-the forest bicker. Four years later, on 1 April 2010, the nine metre oak actually
-appeared in the Sprookjesbos, opposite the Little Match Girl.
+the forest bicker. On 1 April 2010 the nine metre oak appeared in the Sprookjesbos, opposite the Little Match Girl.
 
 **Kogeloog**,
 the coffee and stroopwafel stand, sits directly opposite Langnek and is named
@@ -296,8 +290,7 @@ that way because Kogeloog is one of the six servants from that very fairy tale.
 His bust hangs on the facade, along with oval frames holding all six. The stand
 has been there since 1967, closed in 2002 for lack of custom, and has been open again since 26 April 2019.
 
-Nobody queues in the Fairytale Forest, and it has no capacity limit. The people walking around in here aren’t queueing for a ride, and that’s one
-reason a park with almost six million visits has bearable wait times.
+Nobody queues in the Fairytale Forest, and it has no capacity limit. That’s one reason a park with almost six million visits has bearable wait times.
 
 Since spring 2026 the park has been rebuilding the routing. Four equal entrances
 and exits are being created (the one at the Grand Hotel for hotel guests only),
@@ -326,7 +319,7 @@ wouldn’t take its exact place in the list seriously, but the order of magnitud
 holds.
 
 Even the longest queue in the park is short for almost six million
-visits. All four parks in the comparison below are calculated the same way. Attendance for 2025 alongside it: Europa-Park 7 m across the resort,
+visits. Attendance for 2025 alongside it: Europa-Park 7 m across the resort,
 Efteling 5.78 m, Toverland 1.14 m.
 
 ```park-comparison-widget slugs=phantasialand,efteling,europa-park,attractiepark-toverland highlight=efteling
@@ -335,11 +328,8 @@ Efteling 5.78 m, Toverland 1.14 m.
 
 Phantasialand doesn’t publish its attendance; the TEA index lists 2.1 million
 for 2024. So it has a fraction of Efteling’s crowd and still the longest queues
-in the table. How long a queue gets depends on demand and capacity
-([The Art of Waiting](/blog/the-art-of-waiting)), and at Efteling capacity is
-even higher than demand. Villa Volta, Droomvlucht, Fata Morgana and Joris en de Draak each move
-between 1,750 and 1,900 guests an hour, plus there’s a fairytale forest where
-nobody queues. And all of it sits on 72 hectares against Phantasialand’s 28.
+in the table. At Efteling capacity is higher than demand. Villa Volta, Droomvlucht, Fata Morgana and Joris en de Draak each move
+between 1,750 and 1,900 guests an hour. And all of it sits on 72 hectares against Phantasialand’s 28.
 
 **Voltron** at Europa-Park, opened in 2024 and named the world’s best new roller
 coaster at that year’s Golden Ticket Awards, sits roughly level in that table’s
@@ -384,7 +374,7 @@ In practice that means the park takes fewer school trips and corporate events,
 pushes demand into its own hotels, and **stops selling tickets over the winter
 holidays** when a day is full. On peak days you may find
 there’s no ticket left for the date you wanted, even though there would physically
-be room. So if you’re going during the holidays, book early.
+be room.
 
 ## Villa Pardoes
 
@@ -441,8 +431,7 @@ April through August each have a full month of measured days behind them,
 September a good three weeks, December, January and March only a handful (for
 December that means the Christmas holidays from the 26th), and for February,
 October and November we have no usable days at all so far (as of 25 September
-2026). So the ranking of the months is only rough. The quietest
-months across all parks are on the [best time to visit page](/best-time-to-visit).
+2026). So the ranking of the months is only rough.
 
 ```stats-widget slug=efteling show=months
 
@@ -513,8 +502,7 @@ Ride [Joris en de Draak](ref:efteling/joris-en-de-draak) first. It has the longe
 queue in the park, and that queue is already long by late morning. Right next to it stand
 [Baron 1898](ref:efteling/baron-1898),
 [De Vliegende Hollander](ref:efteling/de-vliegende-hollander) and, since May,
-[Hooghmoed](ref:efteling/hooghmoed). Three of the four are near the top of the
-table above.
+[Hooghmoed](ref:efteling/hooghmoed).
 
 Then cut across Anderrijk to [Danse Macabre](ref:efteling/danse-macabre) and
 [Piraña](ref:efteling/pirana). At [Symbolica](ref:efteling/symbolica) the queue
@@ -583,7 +571,7 @@ blockout days anyway.
 hours from Düsseldorf and a good two from Cologne and the Ruhr, in both cases via
 Venlo and Eindhoven. If you’re in the border region anyway, the visit combines well
 with [Toverland](ref:attractiepark-toverland), which is right on the way. By train it’s more of
-a slog: to 's-Hertogenbosch or Tilburg, then a bus. Count on changes and plan the journey back before you set off.
+a slog: to 's-Hertogenbosch or Tilburg, then a bus.
 
 **Sleeping.** Four options right at the park: the **Efteling Grand Hotel**, open
 since 1 August 2025 with 140 rooms and suites, two restaurants and a pool, the
@@ -599,8 +587,7 @@ every quarter of an hour the big stove in the middle goes haywire until the pots
 dance and the kettle whistles. And **In den Swarte Kat** in the Huyverwoud, the
 dark, heavy counterpart, built as part of the same project as
 [Danse Macabre](ref:efteling/danse-macabre). For in between there are poffertjes on
-every corner. Eat at half past eleven or after half past two to miss the lunchtime
-queues at the food stands.
+every corner.
 
 ## Winter Efteling
 
@@ -618,8 +605,7 @@ winter, and De Vliegende Hollander only on milder days.
 although so far the only December days behind it are those from 26 December 2025
 onwards, which is to say the Christmas holidays. The
 park-wide figure is then not far below what Joris en de Draak has across the rest
-of the year. On top of that, the park stops selling tickets on full days over the
-winter holidays. If you want to see the winter season in peace, take a weekday in
+of the year. If you want to see the winter season in peace, take a weekday in
 November or the second half of January, not the week between Christmas and New
 Year. Check the park’s maintenance list first: in 2026 Droomvlucht is closed from 9
 November to 4 December, Joris en de Draak from 30 November to 18 December.
@@ -731,9 +717,6 @@ come the Sprookjesbibliotheek in 2027 and Missie Luminar in 2029.
 ```weather-widget slug=efteling
 
 ```
-
-Joris en de Draak has the longest queue, with Danse Macabre among those close
-behind. Both with their current numbers:
 
 [Joris en de Draak](ref:efteling/joris-en-de-draak?full)
 [Danse Macabre](ref:efteling/danse-macabre?full)

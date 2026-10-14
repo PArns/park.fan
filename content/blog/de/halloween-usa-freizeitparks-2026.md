@@ -76,7 +76,7 @@ seo:
 Anfang Oktober laufen in 25 der US-Parks auf park.fan Halloween-Events, und fast alle dauern bis zum 31. Oktober oder zum 1. November. SCarowinds in Charlotte macht als letztes zu, am 7. November. Für die Horror Nights, Knott's Scary Farm und Howl-O-Scream in Tampa und Orlando brauchst du ein eigenes Ticket. Bei einigen Parks steckt
 das Event im normalen Eintritt. Die beiden Disney-Partys sind für 2026 schon ausverkauft.
 
-Fast jeder Park rät davon ab, Kinder unter 13 Jahren zu den Abend-Events mitzubringen. Den Überblick
+Den Überblick
 für Europa haben wir im [Halloween-Guide](/blog/halloween-freizeitparks-2026). Über die
 [HalloWeekends](/blog/cedar-point-halloweekends-2026) in Cedar Point in Ohio gibt es einen eigenen Beitrag.
 
@@ -379,8 +379,7 @@ eigenes Event-Ticket braucht man nicht.
 [Legoland Florida](ref:legoland-florida) und [Legoland California](ref:legoland-california)
 veranstalten Brick or Treat, für Familien mit Kindern von zwei bis zwölf Jahren und im Ticket des
 Tages enthalten. In Kalifornien sind es die Wochenenden bis zum 1. November, Süßigkeiten gibt es ab
-15 Uhr. Neu ist in beiden Parks die Brick or Treat Street mit Monsterhäusern aus Lego. Für Florida
-nennen die Event-Seite und der Blog des Parks unterschiedliche Tage.
+15 Uhr. Neu ist in beiden Parks die Brick or Treat Street mit Monsterhäusern aus Lego.
 
 [Knoebels](ref:knoebels-amusement-park) in Pennsylvania hat keinen Eintritt, bezahlt wird pro
 Fahrt. Bei Hallo-Fun sind an den Oktoberwochenenden mehr als 50 Bahnen in Halloween-Dekoration
@@ -400,7 +399,7 @@ Hollywood sind es die Kostümmasken.
 
 ## Wann du hingehst
 
-Unsere Wartezeiten gelten für den ganzen Tag, die Event-Abende messen wir nicht getrennt. Für die großen Bahnen in Universal Studios Florida haben wir sie Stunde für Stunde über die ganze Saison gemessen.
+Unsere Wartezeiten gelten für den ganzen Tag, die Event-Abende messen wir nicht getrennt.
 
 ```hourly-profile-widget slug=universal-studios-florida top=8
 
@@ -409,8 +408,6 @@ Unsere Wartezeiten gelten für den ganzen Tag, die Event-Abende messen wir nicht
 ```best-days-widget slug=knotts-berry-farm
 
 ```
-
-Für die großen Parks mit Abend-Event haben wir auch den Wochentag mit den kürzesten Warteschlangen über die laufende Saison gemessen.
 
 ```park-comparison-widget slugs=universal-studios-florida,knotts-berry-farm,six-flags-magic-mountain,six-flags-great-adventure,kings-island,busch-gardens-tampa,seaworld-orlando show=quietest
 

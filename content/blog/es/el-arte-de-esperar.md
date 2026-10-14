@@ -52,8 +52,7 @@ acompañante que la atracción «está sobrevalorada de todas formas». Otros ha
 esos mismos 60 minutos y jurarías después que fueron 25 como mucho.
 
 Las dos veces eras la misma persona en la misma cola, con las mismas piernas
-cansadas. La diferencia está en la psicología y en la capacidad, y un buen
-parque controla las dos a la vez. Una decide cómo se _siente_ la espera, la otra
+cansadas. La diferencia está en la psicología y en la capacidad. Una decide cómo se _siente_ la espera, la otra
 cuánto mide _realmente_ la cola.
 
 El tema no me suelta por una razón bastante personal. park.fan se inventó en una
@@ -79,8 +78,7 @@ Maister anotó ocho. Estas tres se ven en cualquier cola:
   menos en Disney World se pasa bastante.
 - **La espera injusta se siente más larga que la equitativa.** Nada arruina el
   ambiente más rápido que la sensación de que otros te adelantan. Por eso los
-  parques esconden sus carriles exprés todo lo que pueden, que casi nunca es
-  mucho.
+  parques esconden sus carriles exprés todo lo que pueden.
 - **Esperar por algo valioso se aguanta mejor.** Por una atracción de feria no
   aguantamos 20 minutos. Por la nueva megamontaña nos convencemos de aguantar 90.
 
@@ -97,7 +95,7 @@ colas del MIT **Richard Larson** con dos colegas, bajo el bonito título
 [«Entertain, Enlighten, and Engage»](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage).
 En una sucursal bancaria comprobaron qué cambiaba un tablón electrónico de
 noticias. La gente apenas calculaba su espera más corta, pero la encontraba más
-interesante y salía más satisfecha. Bastaron unos titulares en la pared.
+interesante y salía más satisfecha.
 
 Maister cita a propósito al filósofo William James, para quien el aburrimiento
 nace de prestar atención al paso del tiempo mismo. Todo lo que ves en una buena cola
@@ -133,8 +131,6 @@ Para las colas eso significa que los últimos minutos antes de embarcar marcan
 el recuerdo de toda la hora anterior. Flight of Passage y Cosmic Rewind colocan
 sus pre-shows justo al final de la cola, antes de subir. Si el final es fuerte,
 tu memoria perdona el tramo intermedio pesado con una facilidad asombrosa.
-Quien alguna vez ha recomendado una película mediocre por su gran desenlace
-conoce el principio.
 
 ## Cuando la cola es el espectáculo
 
@@ -157,7 +153,7 @@ pre-show**, en las que te «escanean» y te «vinculan» con tu propio avatar.
 
 ```
 
-Es doblemente listo desde el punto de vista psicológico. Las salas narrativas
+Las salas narrativas
 dosifican a la multitud en grupos y convierten el último cuarto de hora en
 parte de la atracción, justo la fase que según la regla del pico-final se
 recuerda con más fuerza. Y al mismo tiempo sostienen la capacidad. Se vuela en
@@ -184,11 +180,10 @@ veinte minutos antes.
 
 ```
 
-También con la capacidad EPCOT fue por libre. Cosmic Rewind abrió en mayo de
+Cosmic Rewind abrió en mayo de
 2022 sin cola standby clásica alguna. Salvo pagando una Lightning Lane, solo se
 entraba por la cola virtual de la aplicación, hasta el **25 de febrero de
-2025**. Durante casi tres años no hubo, por tanto, ninguna cola a la que uno
-pudiera sumarse sin más; solo entonces llegó una cola standby permanente. Hasta
+2025**. Desde entonces hay una cola standby permanente. Hasta
 ese momento, la cola física servía sobre todo como recorrido narrativo y apenas
 como espacio de almacenamiento, y eso en una atracción que, según RCDB,
 despacha 2.000 visitantes por hora con trenes de 20 personas.
@@ -217,8 +212,7 @@ propia espera y el parque llena cada vagón. En el VelociCoaster, Universal cerr
 esa fila en diciembre de 2025. Desde entonces el personal separa a los
 visitantes en grupos con un número par o impar de personas y llena así los
 vagones sin viajeros solos. En el Hulk de al lado la fila de single rider sigue
-abierta. Eso sí, tu acompañante va unas filas más adelante, y si gritó o no, te
-enteras a la salida.
+abierta.
 
 ```glossary-widget slug=single-rider
 
@@ -237,7 +231,7 @@ representa Fantasmic!, los tiempos de espera de los cabezas de cartel bajan
 claramente. Con nuestros números no se puede separar cuánto de eso se debe al espectáculo y cuánto al cierre que se acerca. El 25 de septiembre de 2026, por ejemplo, la
 primera función empieza a las 20:00, una hora antes de que cierre el parque.
 Quien ya conoce el espectáculo monta aun así en esa hora con la mejor relación
-del día. Para momentos así releemos los tiempos de espera cada cinco minutos.
+del día.
 
 ![Miles de espectadores en el anfiteatro nocturno de Fantasmic! en los Disney’s Hollywood Studios | Fantasmic! en los Hollywood Studios. Quien está sentado aquí no está haciendo cola en ningún sitio. | wide](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -260,7 +254,7 @@ La palabra «teórico» va en serio. El cálculo supone que cada asiento está
 ocupado y que nada se atasca, sin contar con la familia que decide junto al
 tren quién se sienta al lado de quién, ni con ese zapato suelto que retrasa una
 salida. El rendimiento real, operativo, queda por tanto prácticamente siempre
-por debajo. La fórmula se pone interesante porque los parques combinan los dos
+por debajo. Los parques combinan los dos
 factores de formas totalmente distintas, según el principio del bufé o el de
 las tapas. En dos atracciones de Orlando con cifras casi idénticas sobre el
 papel se ve la diferencia:
@@ -310,8 +304,7 @@ qué rapidez están comprobados todos los arneses y el tren fuera otra vez?
 Según la ficha técnica de Mack Rides, [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) en el [Europa-Park](ref:europa-park?bare) tiene **siete trenes**, de los que tres o cuatro circulan a la vez
 por el recorrido. El objetivo de despacho es, según Coaster101, **una salida
 cada 36 segundos**. Con 16 plazas por tren, eso da los 1.600 visitantes por
-hora que Mack indica como capacidad teórica. No llega del todo al nivel del
-Hulk, pero con trenes de la mitad de tamaño.
+hora que Mack indica como capacidad teórica.
 
 ### Trenes que no se paran
 
@@ -330,9 +323,7 @@ hermanos [YOY Thrill](ref:walibi-holland/yoy-thrill?bare) y
 [YOY Chill](ref:walibi-holland/yoy-chill?bare), los trenes no se paran en la
 estación. La cruzan al paso mientras los visitantes suben, en una **rolling
 station**, básicamente el principio del omnimover aplicado a las montañas
-rusas. Con solo ocho plazas por tren (una detrás de otra, como en una bicicleta
-muy decidida) cuenta cada segundo en que el tren no está parado. Aun así no da
-para mucho. Freizeitpark-Welt calcula para YOY unos 800 pasajeros por hora.
+rusas. Con solo ocho plazas por tren (una detrás de otra) cuenta cada segundo en que el tren no está parado. Freizeitpark-Welt calcula para YOY unos 800 pasajeros por hora.
 
 ## La ley de Little: la fórmula detrás de cada cola
 
@@ -396,8 +387,7 @@ es la atracción con la mediana de espera más larga, y en el Magic Kingdom de
 Orlando está en el grupo de cabeza. Así sale en la mediana de todos los días que
 hemos medido desde que empezamos a finales de diciembre de 2025 (a 25 de
 septiembre de 2026). En París la cola ya es más larga que en cualquier otra
-atracción en la primera hora tras la apertura, como si al final regalaran
-cerveza. No ocurre en todas partes. En Anaheim, Tokio y Shanghái, donde la
+atracción en la primera hora tras la apertura. En Anaheim, Tokio y Shanghái, donde la
 atracción también existe, está en la zona media según nuestros datos.
 
 En París y Orlando tiene poco que ver con la atracción y mucho con la
@@ -411,8 +401,7 @@ aritmética:
    llegan a unos **1.200 visitantes por hora**, y la
    [versión del Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
    (abierta en 1971) ni siquiera pasa de unos 800 según una lista elaborada por
-   aficionados. Un solo tren del Hulk transporta por salida el doble de gente de
-   la que Peter Pan tiene barcos. Y para comparar en la misma casa: Pirates of
+   aficionados. Y para comparar en la misma casa: Pirates of
    the Caribbean, en el mismo parque, se traga con sus barcas grandes varias
    veces más.
 2. **Saturación desde el desayuno.** En cuanto la demanda alcanza la capacidad
@@ -421,17 +410,13 @@ aritmética:
    atracción despacha. Con un techo de capacidad tan bajo, ese punto se alcanza
    más o menos cuando aparca el segundo autocar.
 3. **La cola como sello de calidad.** Los visitantes leen una cola larga como
-   prueba de que la atracción tiene que merecer la pena. La misma lógica con la
-   que en vacaciones elegimos el restaurante con la terraza más llena. Así que todos se ponen con más ganas
+   prueba de que la atracción tiene que merecer la pena. Así que todos se ponen con más ganas
    todavía, y la espera se convierte en una profecía autocumplida.
 
 Un matiz: nuestra clasificación se basa en tiempos publicados, y justo en Peter
 Pan’s Flight del Magic Kingdom es donde más exagera el panel según
 TouringPlans. Los visitantes cronometraron allí de media un 45 por ciento del
 tiempo anunciado (análisis de febrero de 2023).
-
-Aquí los tiempos de espera en vivo de la versión de Orlando, en el parque de
-atracciones más visitado del mundo:
 
 [Peter Pan’s Flight](ref:magic-kingdom-park/peter-pans-flight?full)
 
@@ -479,8 +464,7 @@ ha tenido la cola mediana más corta de las dos (a 25 de septiembre de 2026). Mi
 explicación es que las demás montañas rusas vecinas absorben demanda.
 
 Por eso cada página de parque en park.fan muestra, junto a los tiempos de
-espera en vivo, las estadísticas de largo plazo. La misma espera es un mal día
-en Brühl y un día normal en el Magic Kingdom. Mira el
+espera en vivo, las estadísticas de largo plazo. Mira el
 mismo conjunto de datos para ambos parques, tiempos de espera típicos por mes y
 día de la semana, de todos los días de apertura que hemos medido. Nuestras
 mediciones empezaron a finales de diciembre de 2025 y solo son continuas desde
@@ -503,9 +487,6 @@ y la curva a lo largo de los meses medidos hasta ahora.
 ```stats-widget slug=magic-kingdom-park
 
 ```
-
-De esos patrones aprende nuestro modelo cuándo merece la pena una
-visita.
 
 ## Pegarse al de delante no sirve de nada
 
@@ -587,8 +568,7 @@ trabajan a la vez en la propia estación:
 - **Directamente dos recorridos completos**: el Space Mountain de Disney en el
   Magic Kingdom es el ejemplo más radical. En el mismo edificio corren dos
   recorridos entrelazados y en espejo («Alpha» y «Omega») con estaciones
-  propias, y así prácticamente duplica la capacidad del sistema. En la
-  práctica, dos montañas rusas que se hacen pasar por una. El modelo lo dio en
+  propias, y así prácticamente duplica la capacidad del sistema. El modelo lo dio en
   1959 el Matterhorn Bobsleds de Disneyland, la primera montaña rusa del mundo
   con raíles de tubo de acero, también con dos recorridos.
 
@@ -612,8 +592,7 @@ manera cuando sabes tres cosas, y están en park.fan:
   parques, margen incluido. Aun así ves si suben o bajan, sin tener que contar
   tú mismo a las 640 personas de delante.
 - **¿Eso es mucho o normal?** La respuesta está en las **estadísticas de largo
-  plazo** de cada atracción, porque la misma cifra es, según el parque, una molestia o un
-  premio de lotería.
+  plazo** de cada atracción.
 - **¿Y tengo que hacer cola siquiera?** Eso se decide casi siempre ya al elegir
   el día. Para eso está el **calendario de los mejores días de visita**. La
   predicción que hay detrás llega ahora mismo a unos seis meses vista, y el

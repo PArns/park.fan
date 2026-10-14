@@ -62,8 +62,7 @@ was hij **rustiger dan elke andere maand van het jaar**.
 
 > **Over de data:** dit is de stand van 4 oktober 2026. Data, tijden en prijzen
 > komen van de officiële pagina's van de parken, gelinkt onderaan bij de bronnen. Parken
-> schuiven avonddata tot ver in november nog heen en weer. Even controleren
-> voordat je boekt.
+> schuiven avonddata tot ver in november nog heen en weer.
 
 ## Walt Disney World van 13 november tot 6 januari
 
@@ -181,8 +180,7 @@ The Osborne Family Spectacle of Dancing Lights. Jennings Osborne was er in 1986
 mee begonnen, met 1.000 lampjes aan zijn huis in Little Rock, Arkansas; in 1993
 waren het er meer dan drie miljoen. Disney zette de show eerst op in Residential
 Street en vanaf 2004 in de Streets of America, uiteindelijk met meer dan vijf
-miljoen lampjes. In september 2015 kondigde Disney het einde aan, een maand nadat
-het Star Wars: Galaxy's Edge en Toy Story Land had gepresenteerd. Het grootste
+miljoen lampjes. In september 2015 kondigde Disney het einde aan. Het grootste
 deel van de lampjes ging naar het Give Kids the World Village in Kissimmee.
 Jollywood Nights bestaat sinds 2023.
 
@@ -244,19 +242,16 @@ Coconut Club, met livemuziek, seizoenscocktails en kerstversiering.
 
 ### Kerst bij Universal sinds 2000
 
-Grinchmas begon in december 2000 in Seuss Landing, anderhalf jaar na de opening
-van de Islands of Adventure op 28 mei 1999. De Grinch werd het eerste jaar
+Grinchmas begon in december 2000 in Seuss Landing op de Islands of Adventure (geopend op 28 mei 1999). De Grinch werd het eerste jaar
 gespeeld door Mike Aiello, die nu op de creatieve afdeling van Universal werkt.
 De show bestond toen uit drie aktes op verschillende tijden van de dag, gespeeld
 voor de winkel All the Books You Can Read. In 2002 voegde Universal de drie samen
-tot één show van 15 tot 20 minuten. In 2025 vierde Grinchmas zijn 25e jaar.
+tot één show van 15 tot 20 minuten.
 
-De Macy's-parade rijdt sinds 2002 door de Universal Studios Florida, het park dat
-op 7 juni 1990 openging. Tot 2017 heette ze Macy's Holiday Parade; daarna kreeg
+De Macy's-parade rijdt sinds 2002 door de Universal Studios Florida (geopend op 7 juni 1990). Tot 2017 heette ze Macy's Holiday Parade; daarna kreeg
 ze haar huidige naam en nieuwe kerstwagens en ballonnen.
 
-In hetzelfde jaar, vanaf 18 november 2017, vierde de Wizarding World voor het
-eerst Kerst, ruim zeven jaar na de opening van Hogsmeade op 18 juni 2010. De projectieshow op het kasteel duurde toen ongeveer acht minuten en draaide na zonsondergang ongeveer elke 20 minuten. Spectrum News 13 meldde in 2017 dat het
+In hetzelfde jaar, vanaf 18 november 2017, vierde de Wizarding World voor het eerst Kerst (Hogsmeade was op 18 juni 2010 geopend). De projectieshow op het kasteel duurde toen ongeveer acht minuten en draaide na zonsondergang ongeveer elke 20 minuten. Spectrum News 13 meldde in 2017 dat het
 werk eraan anderhalf jaar had geduurd.
 
 ## Disneyland Paris van 7 november tot 6 januari
@@ -315,8 +310,7 @@ kerstseizoen.
 
 December ligt boven elke andere maand, en het gat met februari en maart, de
 twee eerstvolgende drukke maanden, is groter dan het gat tussen februari en de
-rustigste zomermaand. In de dagenkolom staat bij elke regel op hoeveel meetdagen
-hij berust.
+rustigste zomermaand.
 
 Op de Islands of Adventure is december de enige maand in alle negen parken die
 ons model in de hoogste band zet.
@@ -340,7 +334,7 @@ ons model in de hoogste band zet.
 ```
 
 In het Disneyland Park ligt de week tussen Kerst en Nieuwjaar op het niveau van
-een gewone zomermaand. In de Disney Adventure World is hij rustiger dan elke andere maand van het jaar.
+een gewone zomermaand.
 
 Een reden is waarschijnlijk de capaciteit. Het Magic Kingdom heeft 37 actieve
 attracties, de Disney Adventure World 14, en de Parijse parken verdelen hun
@@ -366,12 +360,12 @@ is de kolom bruikbaar.
 
 ```
 
-Voor elk park staat dezelfde kalender op zijn eigen parkpagina, met elke openingsdag apart, en ernaast het hele seizoen de actuele wachttijden. Voor december 2026 is hij onzeker, omdat de enige decemberdagen in het model tot
+Voor december 2026 is de kalender onzeker, omdat de enige decemberdagen in het model tot
 nu toe die acht vakantiedagen zijn, en geen enkele uit de advent.
 
 ## Hotels rond Kerst
 
-Het peperkoekhuis in de lobby van het Grand Floridian, dat er sinds 1999 is en in 2024 zijn 25-jarig jubileum had, staat er in 2026 niet. Disney zegt dat de
+Het peperkoekhuis in de lobby van het Grand Floridian, dat er sinds 1999 is, staat er in 2026 niet. Disney zegt dat de
 lobby vrij moet blijven voor hotelgasten en zet in plaats daarvan kleinere
 peperkoekfiguren in het hotel. Voor kamers in de Disney Resorts Collection geeft
 Disney op geselecteerde nachten van 4 oktober tot 24 december 2026 tot 20
@@ -399,29 +393,23 @@ Doornroosjekasteel. Bij de ticketkoop kies je in welk van de twee parken je
 staat.
 
 **Universal Orlando** noemt oudjaarsavond in alle drie de parken en in CityWalk,
-met dj's, livemuziek en een aftelling om middernacht. Data, tijden en prijzen
-staan niet op de pagina, en ook niet in het persbericht van 6 augustus.
+met dj's, livemuziek en een aftelling om middernacht. Data, tijden en prijzen heeft Universal nog niet genoemd.
 
 **Walt Disney World** heeft op zijn kerstpagina geen oudejaarsprogramma
-gepubliceerd. Disney noemt daar Magic Kingdom, Hollywood Studios, EPCOT, Animal
-Kingdom, Disney Springs, de hotels en Blizzard Beach, en 31 december komt in
-geen van die onderdelen voor. Het kan nog komen, Disney publiceert oudjaarsavond vaak pas in november.
+gepubliceerd. Het kan nog komen, Disney publiceert oudjaarsavond vaak pas in november.
 
 ## Wat ik in jouw plaats zou boeken
 
-De volle versiering krijg je al in november. In Orlando beginnen beide avondevenementen vóór de officiële
-seizoensstart, Universal viert vanaf de 14e en Parijs al vanaf 7 november. De
+De volle versiering krijg je al in november. De
 week tussen Kerst en Nieuwjaar levert je in Orlando hetzelfde programma bij de
 hoogste wachttijden van het jaar.
 
-Moet je tussen Kerst en Nieuwjaar reizen, ga dan naar Parijs. Daar was dezelfde week geen uitschieter naar boven, en in de Disney Adventure
-World zelfs de rustigste tijd van het jaar.
+Moet je tussen Kerst en Nieuwjaar reizen, ga dan naar Parijs.
 
 Wil je één avondevenement in Orlando en let je op de prijs, neem dan Jollywood
 Nights. Het is op elke datum goedkoper dan de Very Merry Christmas Party, de
 korting voor jaarkaarten geldt op alle avonden in plaats van op geselecteerde,
-en het loopt tot 5 januari, dus ook nog als het feest in het Magic Kingdom al
-twee weken voorbij is.
+en het loopt tot 5 januari.
 
 ## Veelgestelde vragen
 

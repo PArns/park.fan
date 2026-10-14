@@ -207,9 +207,6 @@ y le puso delante una fachada del Moulin Rouge.
 
 ```
 
-Más sobre el parque en la [guía de
-Europa-Park](/blog/europa-park-tiempos-de-espera-consejos).
-
 ## Phantasialand
 
 En [Phantasialand](ref:phantasialand), en Brühl, están cubiertas 14 de las 40
@@ -244,9 +241,6 @@ Taron, Black Mamba y las demás montañas rusas grandes van al aire libre.
 
 ```
 
-Más sobre el parque en la [guía de
-Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
-
 ## Efteling
 
 En [Efteling](ref:efteling), en Kaatsheuvel, están cubiertas once de las 37
@@ -267,14 +261,11 @@ Diorama y el Efteling Museum.
 ![La entrada de Droomvlucht de noche, iluminada de rosa y verde. | De día, esta pared es blanca. | right](/media/efteling/droomvlucht.jpg)
 
 Joris en de Draak, Baron 1898 y Python van al aire libre. Los cierres por mantenimiento de las atracciones cubiertas
-aparecen en la página de cada una y en el calendario del parque, así que échales un vistazo la noche antes.
+aparecen en la página de cada una y en el calendario del parque.
 
 ```ride-waits-widget rides=efteling/droomvlucht|Droomvlucht|Atracción colgante;efteling/symbolica|Symbolica|Trackless Ride;efteling/villa-volta|Villa Volta|Madhouse;efteling/vogel-rok|Vogel Rok|Coaster indoor columns=type,peak,days
 
 ```
-
-Más sobre el parque en el artículo [Efteling, el Disney de los Países
-Bajos](/blog/efteling-el-disney-de-los-paises-bajos).
 
 ## Toverland
 
@@ -305,9 +296,6 @@ centímetros, da vueltas sobre el mercado oriental de Land van Toos.
 
 ```
 
-Más sobre el parque en la [guía de
-Toverland](/blog/toverland-troy-tiempos-de-espera-consejos).
-
 ## Movie Park Germany
 
 En [Movie Park Germany](ref:movie-park-germany), en Bottrop, están cubiertas
@@ -332,9 +320,6 @@ Horror Festival.
 ```ride-waits-widget rides=movie-park-germany/van-helsings-factory|Van Helsing's Factory|Bobsled Coaster;movie-park-germany/time-riders|Time Riders|Simulador;movie-park-germany/area-51-top-secret|Area 51 – Top Secret|Dark Ride columns=type,peak,days
 
 ```
-
-Todo sobre el parque está en la [guía de Movie
-Park](/blog/movie-park-germany-tiempos-de-espera-consejos).
 
 ## Plopsaland Deutschland
 
@@ -373,9 +358,6 @@ Colossos y las demás atracciones exteriores y esperas que la tarde salga seca.
 
 ```
 
-Más sobre el parque, con Colossos, en la [guía de Heide
-Park](/blog/heide-park-tiempos-de-espera-consejos).
-
 ## Walibi Belgium
 
 En [Walibi Belgium](ref:walibi-belgium), en Wavre, están cubiertas siete de las
@@ -398,18 +380,12 @@ atracciones cubiertas son el Palais du Génie y el Spinning Taxi.
 
 ```
 
-Más sobre el parque en la [guía de Walibi
-Belgium](/blog/walibi-belgium-tiempos-de-espera-consejos).
-
 ## Walibi Holland
 
 En [Walibi Holland](ref:walibi-holland), en Biddinghuizen, ninguna de las 39
 atracciones está dentro de una nave. Cuando el parque suprimió su apertura de
 invierno, en abril de 2026, la directora general, Mascha Taminiau, mencionó la
 dependencia del tiempo como uno de los motivos.
-
-Más sobre el parque en la [guía de Walibi
-Holland](/blog/walibi-holland-untamed-hard-gaan).
 
 ## Los nueve parques comparados
 
@@ -448,7 +424,7 @@ Park, Heide Park y Walibi Holland no los elegiría para un día de lluvia.
 
 En el calendario de cada parque tienes el tiempo, el horario y la afluencia
 prevista de las próximas semanas. Como los días de lluvia hay de media menos
-gente, no hace falta que anules la visita porque anuncien chubascos. El tiempo de abajo es el previsto para Brühl, donde está Phantasialand.
+gente, no hace falta que anules la visita porque anuncien chubascos.
 
 ```weather-widget slug=phantasialand
 

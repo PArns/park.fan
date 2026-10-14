@@ -11,8 +11,7 @@ excerpt: >-
   escolares tiene más gente que un sábado o un domingo medio, y en fin de semana las vacaciones
   apenas cambian nada. El Heide Park solo se llena cuando Baja Sajonia y
   Renania del Norte-Westfalia tienen vacaciones a la vez, y el Legoland es el
-  único que se llena en las vacaciones de Pentecostés. Con las fechas de
-  vacaciones hasta el verano de 2027.
+  único que se llena en las vacaciones de Pentecostés.
 tags:
   - parque-atracciones
   - alemania
@@ -151,9 +150,6 @@ o extremos en el Heide Park, 31 cayeron en las vacaciones escolares de algún es
 
 ```
 
-En la [guía del Heide Park](/blog/heide-park-tiempos-de-espera-consejos) está cómo empezar pronto
-en Soltau.
-
 ### Phantasialand
 
 En Brühl fue al revés. Del 2 al 17 de julio, con vacaciones en Baja Sajonia, Hesse,
@@ -167,17 +163,13 @@ hasta finales de agosto, ninguna semana laborable bajó del 50 % por encima de l
 días más llenos fueron el jueves 6 de agosto y el lunes 10 de agosto. Detrás vino el viernes 2 de
 enero, en pleno Wintertraum.
 
-El Quick Pass, que en esas semanas te puede hacer falta, está explicado en la
-[guía del Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos), junto con la atracción
-por la que conviene empezar.
-
 ### Movie Park
 
 En el [Movie Park](ref:movie-park-germany) de Bottrop pasa casi lo mismo que en Brühl, con un
 +67 % antes de las vacaciones de NRW, un +132 % mientras NRW y Baja Sajonia coincidieron y un +43 %
 con NRW sola. La primera semana de vacaciones de NRW, del 20 al 24 de julio, fue la semana laborable más llena de todo el verano. En las grandes atracciones esperaste el doble que la semana anterior,
 y los cuatro días más llenos de todo el periodo medido están todos en esa misma semana, de martes a
-viernes. A la semana siguiente ya había pasado, y en el calendario no encuentro el motivo.
+viernes. A la semana siguiente ya había pasado.
 
 ### Plopsaland
 
@@ -218,7 +210,7 @@ Pero del 20 al 31 de julio, con Baviera aún en clase y NRW y el norte de vacaci
 llegó al 120 %.
 
 La distancia entre un día laborable y el fin de semana es en el Legoland mayor que en ningún otro
-sitio. Un sábado sin vacaciones quedó un 123 % por encima de un día laborable sin vacaciones. Los
+sitio. Los
 días más llenos del parque cayeron en las vacaciones de Semana Santa, y el que más, el jueves 9 de
 abril.
 
@@ -306,8 +298,7 @@ Para el próximo invierno los días de apertura ya están en el calendario. Entr
 2026 y el 12 de enero de 2027, el Phantasialand abre 21 días, el Europa-Park 20, el Legoland 19, el
 Plopsaland 13 y el Movie Park 11. El Heide Park cierra después del 31 de octubre. Las vacaciones de
 Navidad empiezan en diez estados el 23 de diciembre y terminan entre el 31 de diciembre y el 12 de
-enero. El programa de invierno de cada parque está
-en la [guía de invierno](/blog/parques-atracciones-invierno-2026).
+enero.
 
 ## Las semanas de vacaciones tranquilas
 
@@ -315,7 +306,7 @@ en la [guía de invierno](/blog/parques-atracciones-invierno-2026).
 los demás estados hubo como mucho unos días alrededor de Pentecostés. En el Phantasialand la segunda
 semana quedó un 1 % por debajo de la referencia, en el Plopsaland un 3 % por encima, en el
 Europa-Park un 7 y en el Heide Park un 10 %. Son entre tres y cinco días laborables por parque. La
-única excepción es Günzburg, que ya salió más arriba.
+única excepción es Günzburg.
 
 **El final del verano en el sur.** Del 2 al 14 de septiembre solo Baviera y Baden-Wurtemberg seguían
 de vacaciones. En el Heide Park ese periodo quedó un 33 % por debajo de la referencia, en el
@@ -398,16 +389,13 @@ Legoland no se calma hasta después del 13 de septiembre.
 ## Lo que yo haría en cada periodo de vacaciones
 
 Si tiene que ser en las vacaciones de Semana Santa, voy al Europa-Park, donde el aumento en 2026 fue
-de un 13 %. El Legoland y el Plopsaland los evitaría en la semana después del lunes de Pascua. El
-Viernes Santo y el lunes de Pascua no tuvieron en ninguno de los seis parques más gente que el martes,
-el miércoles y el jueves siguientes.
+de un 13 %. El Legoland y el Plopsaland los evitaría en la semana después del lunes de Pascua. El Viernes Santo y el lunes de Pascua no tuvieron en ninguno de los seis parques más gente que el martes, el miércoles y el jueves siguientes.
 
 En las vacaciones de Pentecostés vale cualquier parque menos el Legoland, mientras en Baviera y
-Baden-Wurtemberg dure la segunda semana. En 2027, eso es a partir del 19 de mayo.
+Baden-Wurtemberg dure la segunda semana.
 
 En verano, desde NRW iría a Brühl, a Bottrop o a Rust al final de las vacaciones antes que al
-principio, y al Heide Park solo cuando Baja Sajonia haya vuelto al colegio. En 2026 el aumento allí
-era entonces de un 19 %. Desde Baja Sajonia, al Heide Park en la primera semana de vacaciones, y
+principio, y al Heide Park solo cuando Baja Sajonia haya vuelto al colegio. Desde Baja Sajonia, al Heide Park en la primera semana de vacaciones, y
 desde Renania-Palatinado, al Plopsaland en las tres primeras. Desde Baviera y Baden-Wurtemberg
 aprovecharía las dos últimas semanas de vacaciones para un parque del norte en lugar del Legoland.
 
@@ -422,9 +410,7 @@ El día puente después de la Ascensión lo evito, el festivo en sí no
 necesariamente, y un 1 de mayo en día laborable lo planifico como un sábado.
 
 Los meses más tranquilos de cada parque están en la página de la
-[mejor época para visitar](/mejor-epoca-para-visitar). En la
-[clasificación de los parques de atracciones de Alemania](/blog/mejores-parques-de-atracciones-de-alemania)
-está qué parque compensa a quién.
+[mejor época para visitar](/mejor-epoca-para-visitar).
 
 — Patrick
 

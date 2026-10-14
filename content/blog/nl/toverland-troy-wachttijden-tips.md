@@ -80,10 +80,6 @@ achtbanen ter wereld. Het park ligt aan de A67 tussen Venlo en Eindhoven, afrit 
 Helden/Sevenum, en elk jaar rijden er heel wat achtbaanfans langs. De meesten hebben dan nog een klein uur voor de boeg, tot Kaatsheuvel, naar de
 [Efteling](ref:efteling), de Disney van Nederland.
 
-Zeventig kilometer scheidt de twee parken. In allebei staat een houten achtbaan
-van dezelfde Amerikaanse fabrikant. Voor die in Sevenum wacht je doorgaans zo’n kwartier, voor die in de Efteling ruim
-het dubbele.
-
 [Toverland](ref:attractiepark-toverland) in Sevenum, voor mij een van de
 mooiste kleine parken van Europa, wordt dit jaar 25. Ik heb er ooit zelf in kostuum als scare actor gestaan.
 
@@ -95,8 +91,7 @@ fabrikant GCI 31,9 meter, de Roller Coaster DataBase net geen 87 km/u. Over de
 grondoppervlak ook. De hoogste, langste en snelste houten achtbaan van de
 Benelux is ze hoe dan ook.
 
-Troy is een **twister**. De baan verandert permanent van richting en steekt ze elke meter hoogte in
-een richtingswisseling. De elementen op volgorde: optakeling, first drop, airtime hill,
+Troy is een **twister**. De elementen op volgorde: optakeling, first drop, airtime hill,
 overbanked turn, camelback, double down, remstuk.
 
 ```glossary-widget slug=twister-coaster
@@ -144,7 +139,7 @@ Joris en de Draak eindigde bij de Golden Ticket Awards 2026 vijf plekken achter 
 
 ```
 
-De twee Toverland-banen staan onderaan, met afstand. Voor de tijd die je in
+Voor de tijd die je in
 Phantasialand **één keer** bij [Taron](ref:phantasialand/taron) staat, rijd je
 hier [Troy](ref:attractiepark-toverland/troy) een paar keer.
 
@@ -222,8 +217,7 @@ Toos-Express. De opening verrichtte de jonge Nederlandse illusionist **Hans Klok
 
 **2004** kwam de tweede hal erbij, toen “Magic Forest”, vandaag het
 **Wunderwald**, met een wildwaterbaan, een bobkartbaan en een funhouse. Buiten
-ernaast verrees [Booster Bike](ref:attractiepark-toverland/booster-bike), het wereldwijde
-prototype van de motorachtbaan van Vekoma, al opende die pas op 27 juli; tot dan
+ernaast verrees [Booster Bike](ref:attractiepark-toverland/booster-bike), al opende die pas op 27 juli; tot dan
 zette het park als goedmakertje een wildemuis van een kermisexploitant neer. Een jaar later volgde met de Wirbelbaum, toen nog Twist & Turn, het tweede prototype, een 13 meter hoog reuzenrad van
 Metallbau Emmeln waarvan je de mandjes zelf zo wild laat draaien als je wilt.
 
@@ -252,9 +246,7 @@ vrijevaltoren [Dragonwatch](ref:attractiepark-toverland/dragonwatch) en de vlieg
 Pixarus.
 
 De bezoekersaantallen: 862.000 in het laatste jaar voor corona, 2019, sinds 2022
-elk jaar boven een miljoen, laatstelijk **1.137.000 in 2025**. Ter vergelijking:
-Europa-Park kwam in 2025 voor het eerst boven zeven miljoen gasten, de Efteling
-op 5,78 miljoen bezoeken.
+elk jaar boven een miljoen, laatstelijk **1.137.000 in 2025**. Europa-Park kwam in 2025 voor het eerst boven zeven miljoen gasten.
 
 ![De verlichte zweefmolen Djinn in de hal Land van Toos, gasten in de gondels in beweging | Djinn draait zijn rondjes boven de oosterse markt in Land van Toos, en dat volledig onder dak. | left](/media/toverland-halloween/05-djinn-land-van-toos.jpg)
 
@@ -279,13 +271,9 @@ vijf uur, met een XXL-parade en vuurwerk. Daarvoor gold een apart ticket van
 
 ![Het houten Trojaanse paard bij nacht, rood aangelicht en in nevel gehuld, ervoor een mensenmenigte | Hetzelfde paard als hierboven, zes weken later. Overdag maken families er foto’s voor. | wide](/media/toverland-halloween/01-trojanisches-pferd-rot.jpg)
 
-Hoe Toverland zich verhoudt tot andere parken in Europa, staat in onze
-[halloweengids](/blog/halloween-pretparken-2026).
-
 ![Acteur met tentakelmasker en handbel voor het Toverland Halloween Nights-banner | De nachtwaker van de Halloween Nights. | right](/media/halloween-2026/toverland-cthulhu.jpg)
 
-Het seizoen loopt **van 3 oktober tot 8 november 2026** en valt uiteen in twee
-heel verschillende evenementen:
+Het seizoen loopt **van 3 oktober tot 8 november 2026** en valt uiteen in twee evenementen:
 
 - **Halloween Days** (17 dagen), overdag, gezinsvriendelijk, voor kinderen tot
   ongeveer 12: pompoenboerderij, een maisdoolhof voor kinderen, shows, goedlachse
@@ -301,8 +289,7 @@ heel verschillende evenementen:
 Nieuw in 2026 is **“Entwined: The Maze”**, een
 **maisveld van zeven hectare** met metershoge wanden op een tot nu toe
 afgesloten stuk grond achter Fēnix, volgens het park twee keer zo groot als het
-hele Avalon-gebied en vermarkt als grootste halloween-experience van Europa
-(nagemeten hebben we dat niet). Het vervangt de
+hele Avalon-gebied en vermarkt als grootste halloween-experience van Europa. Het vervangt de
 jarenlange experience “Trapped” in het Dwaalhof. Wie in het maisveld stil blijft staan, wordt gepakt.
 
 ![De naam van Troy boven de ingang, omgebouwd tot “DesTROY – The Ride”, eronder twee Halloween Nights-banners | Van Troy wordt DesTROY. Het park bouwt daarvoor de letters boven de ingang van de achtbaan om. | right](/media/toverland-halloween/03-destroy-schild.jpg)
@@ -323,8 +310,7 @@ Dat gebeurde buiten de openingsuren, in een leeg huis.
 ![Een roze aangelichte gevel met balkon, popfiguur en lichtreclame “The Dollhouse” | “The Dollhouse”, een van de zes haunted experiences. Overdag is dat Villa Fiasko. | right](/media/toverland/villa-fiasko-4x3.jpg)
 
 Als scare actor sta je op een plek waar je bijna niets ziet, en moet je toch op de
-seconde op tijd zijn. Diezelfde avond kwam de parkdirecteur langs en nam hij tijd
-voor ons.
+seconde op tijd zijn.
 
 > [!TIP]
 > **Mijn tip voor de Halloween Nights: de Fear Pass.** Voor 69,95 € krijg je
@@ -368,8 +354,7 @@ wachtrij blijven, maar gereden wordt er over een klassieke achtbaanrail met
 gekantelde bochten. Je regelt je tempo nog steeds zelf met hendels, een
 minimumsnelheid zorgt dat niemand meer op de baan stil komt te staan, en de
 bobsleeën voor twee personen zwaaien op bepaalde punten mechanisch uit. De wagens
-komen in steampunklook, passend bij de uitvindingen van Maximus Müller. Naam en
-verhaal heeft het park tot nu toe niet verklapt. Na Booster Bike en de Wirbelbaum is de Swinging Bobsled het derde prototype in Toverland.
+komen in steampunklook, passend bij de uitvindingen van Maximus Müller. Na Booster Bike en de Wirbelbaum is de Swinging Bobsled het derde prototype in Toverland.
 
 Toverland wil een short-staybestemming met een eigen
 hotelresort worden en trekt daarvoor, inclusief nieuwe attracties en een
@@ -386,10 +371,7 @@ schaatsbaan en een tubingbaan in Port Laguna, woensdags en in de weekends plus
 doorlopend tijdens de kerstvakantie. De attracties draaien dan gewoon, zolang
 het weer het toelaat. Voor het jubileum is de entree op de eerste drie weekends
 en woensdagen, tot en met 16 december, gratis: wie vooraf gratis reserveert,
-betaalt per rit, met strippen van 2 € per stuk, en Troy kost er drie. Gewone
-dagtickets zijn er gewoon naast. De laatste dagen van
-2025, vanaf 26 december, toen onze metingen hier begonnen, waren even druk als
-augustus.
+betaalt per rit, met strippen van 2 € per stuk, en Troy kost er drie. Gewone dagtickets zijn er gewoon naast.
 
 ## Wanneer je moet gaan
 
@@ -404,10 +386,6 @@ woensdag en in het weekend open.
 
 **Per weekdag** is er nauwelijks verschil. In Phantasialand is een zaterdag merkbaar drukker dan een
 dinsdag. De [beste-reistijdpagina](/beste-tijd-om-te-bezoeken) zet de parken naast elkaar.
-
-Daarop kun je niet blindvaren zodra Nederlandse en Duitse vakantiekalenders,
-weer en openingstijden over elkaar heen schuiven, en in het grensgebied Limburg
-schuiven ze voortdurend.
 
 ```best-days-widget slug=attractiepark-toverland
 
@@ -425,10 +403,8 @@ Noordrijn-Westfalen.
 Ga bij opening direct naar Ithaka voor **Troy**. Vol wordt ze later ook niet,
 maar een houten achtbaan is ’s ochtends nog koud en loopt sneller zodra ze
 warmgereden is. Rijd haar vroeg **én** laat. Daarna **Fēnix** in Avalon, een paar minuten lopen naar het noorden.
-Als derde **Booster Bike**, omdat zij in onze data de langste typische wachttijd
-van alle coasters heeft (één trein, 16 plaatsen). De
-**waterattracties** bewaar je voor de middaghitte. In het laatste uur raast Troy hoorbaar sneller door het station dan ’s ochtends. In het donker beleef je
-dat alleen op de halloweenavonden en in de winter, als het park pas na
+Als derde **Booster Bike**. De
+**waterattracties** bewaar je voor de middaghitte. In het donker rijd je Troy alleen op de halloweenavonden en in de winter, als het park pas na
 zonsondergang sluit.
 
 ## Praktisch: tickets, route, eten
@@ -511,11 +487,10 @@ Per dag staat het in de [wachttijden-kalender](ref:attractiepark-toverland?calen
 
 ### Heb je in Toverland een fastpass nodig?
 
-Die is er niet. Toverland verkoopt helemaal geen fastpass; de enige
+Die is er niet; de enige
 uitzondering is de **Fear Pass** voor de haunted experiences tijdens de
 Halloween Nights (69,95 €, voor 2026 uitverkocht). Een gratis single rider-rij bestaat alleen bij de
-vrijevaltoren Dragonwatch. Bij de medianen die op de headliners staan heb je op
-een normale dag sowieso geen kortere weg nodig.
+vrijevaltoren Dragonwatch. Op een normale dag heb je sowieso geen kortere weg nodig.
 
 ### Is Troy de beste houten achtbaan van Europa?
 

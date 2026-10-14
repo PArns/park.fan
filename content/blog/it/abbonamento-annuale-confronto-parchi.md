@@ -49,11 +49,9 @@ parkLinks:
   - phantasialand
 ---
 
-Le visite che servono perché un abbonamento annuale convenga sono il prezzo dell’abbonamento diviso per il prezzo del biglietto giornaliero, arrotondato per eccesso. Nei giorni bloccati l’abbonamento non vale.
-
 L’[Efteling](ref:efteling) nei Paesi Bassi, [Europa-Park](ref:europa-park) a Rust e [Toverland](ref:attractiepark-toverland) a Sevenum vendono un abbonamento annuale, [Phantasialand](ref:phantasialand) a Brühl no.
 
-Tutti i prezzi vengono dalle pagine dei parchi, linkate in fondo, al 6 ottobre 2026. Sotto ogni parco un widget mostra i giorni tranquilli secondo i nostri tempi di attesa.
+Tutti i prezzi vengono dalle pagine dei parchi, linkate in fondo, al 6 ottobre 2026.
 
 ## I quattro parchi in sintesi
 
@@ -79,14 +77,14 @@ Ciascuno dei tre parchi con abbonamento vende un permesso di parcheggio o sconta
 
 Non ho conteggiato lo sconto su cibo e souvenir, che dipende da ciò che compri, né le visite che senza abbonamento non avresti fatto.
 
-Tutti gli abbonamenti sono nominativi. A Toverland lo dicono espressamente le condizioni: un abbonamento per persona, non cedibile.
+Tutti gli abbonamenti sono nominativi.
 
 ## I tre abbonamenti dell’Efteling
 
 L’Efteling vende dall’11 giugno 2024 tre abbonamenti annuali, che si distinguono per il numero di giorni
 in cui valgono. Uno sconto per i visitatori dai 65 anni da allora non esiste più, e gli abbonamenti 65+ in corso sono andati avanti fino alla fine della durata minima.
 
-Nel 2023 l’Efteling ha interpellato gli abbonati e, secondo il parco, la maggior parte era molto soddisfatta ma voleva più scelta. Dal 15 aprile al 10 giugno 2024 il parco non ha venduto nuovi abbonamenti, solo rinnovi. Nei Paesi Bassi il numero di abbonati era già cresciuto molto nel 2023, scrive l’Efteling nel suo bilancio dell’anno.
+Nel 2023 l’Efteling ha interpellato gli abbonati e, secondo il parco, la maggior parte voleva più scelta. Dal 15 aprile al 10 giugno 2024 il parco non ha venduto nuovi abbonamenti, solo rinnovi. Nei Paesi Bassi il numero di abbonati era cresciuto nel 2023, scrive l’Efteling nel suo bilancio dell’anno.
 
 | Formula | Prezzo annuale | Al mese | Accesso           | Sconto sul parcheggio | Cibo, bevande, souvenir | Biglietti amici a metà prezzo |
 | ------- | -------------- | ------- | ----------------- | --------------------- | ----------------------- | ----------------------------- |
@@ -178,7 +176,7 @@ Un biglietto giornaliero costa da 67 a 76 € per gli adulti e da 56,50 a 65 €
 | Silver  | 5 visite        | 5 visite          | 5 visite (1.200 € contro 247-282 € al giorno)        |
 | Gold    | da 7 a 8 visite | da 7 a 8 visite   | da 7 a 8 visite (1.850 € contro 247-282 € al giorno) |
 
-Per Silver il punto di pareggio è lo stesso ai due estremi dell’intervallo di prezzo: cinque visite. Devi quindi venire cinque volte nei giorni che Silver copre. Quali sono sta nel portale ResortPass. La pagina dei prezzi ne indica solo il numero, oltre 230. La stagione 2026 va dal 28 marzo 2026 al 9 gennaio 2027, cioè 288 giorni di calendario, meno i due giorni di riposo a Natale. Silver lascia quindi fuori una parte dei giorni di apertura, e quali sono lo decide il parco.
+Le cinque visite devono cadere nei giorni che Silver copre. Quali sono sta nel portale ResortPass. La pagina dei prezzi ne indica solo il numero, oltre 230. La stagione 2026 va dal 28 marzo 2026 al 9 gennaio 2027, cioè 288 giorni di calendario, meno i due giorni di riposo a Natale.
 
 Gold costa 170 € in più, 155 € per i bambini. Sono poco più di due biglietti adulti in più al prezzo massimo.
 In cambio Gold vale ogni giorno di apertura, e i due biglietti di Rulantica sono inclusi. Il biglietto di
@@ -251,7 +249,7 @@ Nel 2026 il parco ha venduto per la prima volta un Summer Pass: 79 € per gli a
 90 a 140 cm, visite illimitate dal 1º luglio al 30 settembre. Se tornerà nel 2027 il parco non l’ha detto.
 Chi viene solo d’estate paga 81 € in meno rispetto all’abbonamento annuale.
 
-Secondo [le nostre misurazioni](/blog/toverland-troy-tempi-di-attesa-consigli), a Toverland tra i giorni della settimana c’è appena differenza, e durante le vacanze di Natale c’è più gente.
+A Toverland tra i giorni della settimana c’è appena differenza, e durante le vacanze di Natale c’è più gente.
 
 ```best-days-widget slug=attractiepark-toverland
 
@@ -261,8 +259,7 @@ Secondo [le nostre misurazioni](/blog/toverland-troy-tempi-di-attesa-consigli), 
 
 Phantasialand ha tolto dalla vendita la sua Club Card durante la pandemia, e le ultime sono scadute
 nell’estate 2022. Nelle domande frequenti del negozio di biglietti non compaiono né un abbonamento annuale
-né una Club Card, e i biglietti si vendono solo datati e online. Perché sia rimasto così e cosa abbiano
-fatto i fan è nella nostra [guida a Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli).
+né una Club Card, e i biglietti si vendono solo datati e online.
 
 Nel calendario di ottobre del negozio un biglietto per adulti dai 12 anni costa tra 44 e 78 €. La differenza tra il giorno più economico e il più caro è di 34 €, cioè il 77 % in più rispetto al giorno economico. Tre visite l’anno costano tra 132 e 234 €. A Phantasialand il sabato è sensibilmente più affollato del martedì.
 
@@ -271,8 +268,6 @@ Nel calendario di ottobre del negozio un biglietto per adulti dai 12 anni costa 
 ```
 
 ## Giorni bloccati contro giorni affollati
-
-Se Silver vale di sabato lo stabilisce Europa-Park nel portale.
 
 ```park-comparison-widget slugs=efteling,europa-park,attractiepark-toverland,phantasialand show=quietest
 
@@ -284,8 +279,7 @@ Se puoi venire in settimana, spendi meno con Classic all’Efteling e Magic Memb
 
 All’Efteling basta Classic se puoi venire fuori dalle vacanze e sei nel parco almeno sei volte l’anno. Se
 vuoi andare tra metà ottobre e inizio novembre, ti serve Plus. Tra Natale e Capodanno è bloccato anche
-Plus, e resta solo Premium. Premium conviene solo da otto a dieci visite. Sotto le quattro visite non
-conviene nessuna delle tre formule.
+Plus, e resta solo Premium. Premium conviene solo da otto a dieci visite.
 
 ## Quando acquistare
 
