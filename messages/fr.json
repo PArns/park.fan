@@ -111,7 +111,7 @@
       "cta": "Explorer les parcs",
       "searchPlaceholder": "Rechercher parcs, attractions, spectacles & restaurants...",
       "title": "Où l’attente en vaut-elle la peine aujourd’hui ?",
-      "intro": "park.fan affiche les temps d’attente de <strong>{parks, number} parcs d’attractions</strong> et <strong>{attractions, number} attractions</strong>, relevés toutes les cinq minutes. Pour les prochains jours, le site indique aussi l’affluence attendue.",
+      "intro": "park.fan affiche les temps d’attente de <strong>{parks} parcs d’attractions</strong> et <strong>{attractions} attractions</strong>, relevés toutes les cinq minutes. Pour les prochains jours, le site indique aussi l’affluence attendue.",
       "openNow": "{count, plural, one {# parc ouvert en ce moment} other {# parcs ouverts en ce moment}}",
       "searchExamples": "Disneyland Paris, Taron, Efteling …"
     },

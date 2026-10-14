@@ -3,6 +3,7 @@
 import { StatsCard } from '@/components/common/stats-card';
 import { useGlobalStats } from '@/lib/hooks/use-global-stats';
 import { useMounted } from '@/lib/hooks/use-mounted';
+import { getNumberFormat } from '@/lib/utils/intl-format';
 import type { GlobalStats } from '@/lib/api/types';
 
 /** Labels pre-translated by the server parent — keeps next-intl out of this client chunk. */
@@ -40,6 +41,7 @@ export function GlobalStatsLiveCounts({
    */
   const mounted = useMounted();
   const counts = (mounted ? data?.counts : undefined) ?? initialCounts;
+  const numberFormat = getNumberFormat(locale);
 
   return (
     <div className="mb-4 grid gap-4 sm:grid-cols-2">
@@ -54,10 +56,10 @@ export function GlobalStatsLiveCounts({
       />
       <StatsCard
         title={labels.totalAttractions}
-        value={counts.attractions.toLocaleString(locale)}
+        value={numberFormat.format(counts.attractions)}
         description={
           <>
-            {counts.openAttractions.toLocaleString(locale)} {labels.operating}
+            {numberFormat.format(counts.openAttractions)} {labels.operating}
           </>
         }
       />

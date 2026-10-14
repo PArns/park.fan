@@ -111,7 +111,7 @@
       "cta": "Explore Parks",
       "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
       "title": "Where is the wait worth it today?",
-      "intro": "park.fan shows the wait times at <strong>{parks, number} theme parks</strong> and <strong>{attractions, number} attractions</strong>, updated every five minutes. For the coming days there is also a forecast of how busy each park will be.",
+      "intro": "park.fan shows the wait times at <strong>{parks} theme parks</strong> and <strong>{attractions} attractions</strong>, updated every five minutes. For the coming days there is also a forecast of how busy each park will be.",
       "openNow": "{count, plural, =1 {1 park open right now} other {# parks open right now}}",
       "searchExamples": "Europa-Park, Taron, Efteling …"
     },

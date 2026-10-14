@@ -33,6 +33,20 @@ export function getDateTimeFormat(
   return formatter;
 }
 
+/**
+ * Node 22 (CLDR 47) prints Italian "7580", Chromium "7.580", so a four-digit figure rendered on the
+ * server and again in the browser differed and React threw #418 on /it. Grouping is forced on for
+ * Italian until both engines agree.
+ */
+function pinnedNumberOptions(
+  locale: string | string[] | undefined,
+  options: Intl.NumberFormatOptions | undefined
+): Intl.NumberFormatOptions | undefined {
+  const first = Array.isArray(locale) ? locale[0] : locale;
+  if (!first?.startsWith('it') || options?.useGrouping !== undefined) return options;
+  return { ...options, useGrouping: 'always' };
+}
+
 /** Cached {@link Intl.NumberFormat}. Same arguments → same instance. */
 export function getNumberFormat(
   locale?: string | string[],
@@ -41,7 +55,7 @@ export function getNumberFormat(
   const key = cacheKey(locale, options);
   let formatter = numberFormatters.get(key);
   if (!formatter) {
-    formatter = new Intl.NumberFormat(locale, options);
+    formatter = new Intl.NumberFormat(locale, pinnedNumberOptions(locale, options));
     numberFormatters.set(key, formatter);
   }
   return formatter;
