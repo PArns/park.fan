@@ -226,7 +226,7 @@ const ANNOUNCES_POST = {
 
 /** A number in front of a unit is a measurement (`um neun Uhr`), not a count of things. */
 const MEASURE_WORD =
-  /\b(?:Uhr|Minuten?|Stunden?|Sekunden?|Euro|Meter|Jahre[ns]?|Tage[ns]?|Wochen?|Monate[ns]?|minutes?|hours?|seconds?|euros?|metres?|meters?|years?|days?|weeks?|months?|o['’]clock)\b/i;
+  /\b(?:Uhr|Minuten?|Stunden?|Sekunden?|Euro|Meter|Kilometer[ns]?|Personen|Jahre[ns]?|Tage[ns]?|Wochen?|Monate[ns]?|minutes?|hours?|seconds?|euros?|metres?|meters?|kilometres?|kilometers?|people|persons|years?|days?|weeks?|months?|o['’]clock)\b/i;
 
 /** `Um zehn gehst du …` names a time of day, not a count. */
 const CLOCK_TIME =

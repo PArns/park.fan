@@ -335,6 +335,15 @@ no(
   lines('Um zehn gehst du in die Grèce. Dort ist es dann leer.', 'Um elf fährst du Tonnerre.')
 );
 
+no(
+  'count-announcement-opener',
+  lines(
+    'Seventy kilometres separate the two parks. The A73 links them.',
+    'One car held one, maybe two people.'
+  ),
+  'en'
+);
+
 // 14 data-caveat-close
 yes(
   'data-caveat-close',
