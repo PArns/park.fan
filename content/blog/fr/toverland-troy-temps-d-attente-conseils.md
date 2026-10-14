@@ -156,7 +156,7 @@ en 2025 et les répartit sur cinq coasters, cinq attractions aquatiques et plus
 de quarante attractions au total. L’Efteling a compté la même année 5,78 millions
 de visites, environ cinq fois plus, et n’a pas cinq fois plus de coasters.
 
-**Toverland ne vend ni coupe-file ni pass express.** Échanger de l’argent contre du temps n’est possible que pendant les 13 soirées d’Halloween, en octobre et début novembre.
+Toverland ne vend ni coupe-file ni pass express. Échanger de l’argent contre du temps n’est possible que pendant les 13 soirées d’Halloween, en octobre et début novembre.
 Une file single rider existe bien depuis 2023, cela dit, mais sur une seule
 attraction, la tour de chute Dragonwatch, et elle ne coûte rien de plus.
 

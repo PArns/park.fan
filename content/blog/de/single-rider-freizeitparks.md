@@ -345,15 +345,15 @@ Disneyland eine Mindestgröße von 102 Zentimetern.
 
 ## So planst du einen Tag mit Single Rider
 
-**Such dir vorher zwei oder drei Bahnen aus.** Auf der Parkseite von park.fan siehst du, welche Bahnen
+Such dir vorher zwei oder drei Bahnen aus. Auf der Parkseite von park.fan siehst du, welche Bahnen
 das Zeichen tragen. Der Eingang ist bei der Bahn am meisten wert, an der die normale Warteschlange am
 längsten ist.
 
-**Prüfe, ob die Warteschlange offen ist, bevor du dich trennst.** Auf der Attraktionsseite steht das
+Prüfe, ob die Warteschlange offen ist, bevor du dich trennst. Auf der Attraktionsseite steht das
 Zeichen „Single Rider“ mit dem Status der Warteschlange. Sie kann geschlossen sein, ohne dass die
 Bahn zu ist.
 
-**Teilt euch auf, wenn es sich lohnt.** Für zwei Erwachsene ist die schnellste Variante, dass einer die
+Teilt euch auf, wenn es sich lohnt. Für zwei Erwachsene ist die schnellste Variante, dass einer die
 normale Warteschlange nimmt und der andere den Single-Rider-Eingang. Wer zuerst fährt, wartet am
 Ausgang.
 

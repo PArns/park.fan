@@ -565,8 +565,7 @@ Nel 2027 si parte prima: dal 7 al 19 marzo il parco apre per la prima volta due
 Pre-Opening Weeks, non ancora con tutte le attrazioni e gli spettacoli, ma con i
 biglietti più economici dell’anno, e la stagione estiva comincia poi il 20
 marzo. Di ottobre nella tabella ci sono solo i primi giorni, di novembre nessuno.
-Quanto Halloween e HALLOWinter ci siano già entrati lo vedi dal numero di giorni
-misurati.
+Il numero di giorni misurati indica quanto Halloween e HALLOWinter ci siano già entrati.
 
 ### Le vacanze che riempiono il parco
 
@@ -576,7 +575,7 @@ francese Grand Est, cioè dell’Alsazia, quelle dei cantoni svizzeri di Argovia
 Basilea Città e Basilea Campagna e quelle dei Länder confinanti di Baviera,
 Assia e Renania-Palatinato.
 
-Quanto pesano si vede dai giorni feriali. Tra aprile e settembre ci sono stati 42
+Tra aprile e settembre ci sono stati 42
 giorni feriali senza vacanze scolastiche in nessuna delle otto regioni e senza
 festivi. Quattro sono stati su “alto” o più, 27 su “basso”. Dei giorni feriali
 delle vacanze argoviesi, 17 su 27 sono stati su “alto”, e nemmeno uno su
@@ -668,9 +667,7 @@ tranquilli sono nel calendario qui sopra.
 
 ## La giornata perfetta all’Europa-Park
 
-**Sii al cancello prima che apra, e poi va' al Voletarium.**
-
-La nostra analisi del rope drop confronta per ogni attrazione
+Sii al cancello prima che apra, e poi va' al Voletarium. La nostra analisi del rope drop confronta per ogni attrazione
 l’attesa all’apertura con il picco giornaliero più alto misurato lì in una
 giornata piena. Al Voletarium la coda all’apertura è solo una frazione di
 quel picco, di gran lunga il maggior risparmio di tutto il parco.
@@ -681,8 +678,7 @@ quel picco, di gran lunga il maggior risparmio di tutto il parco.
 
 Per Voltron, Arthur e Silver Star arrivare presto fa risparmiare meno della metà.
 
-Quanto la cosa si distribuisca nella giornata si vede solo nel profilo orario:
-l’attesa tipica di ogni ora, la mediana di tutti i giorni di apertura misurati
+Il profilo orario riporta l’attesa tipica di ogni ora, la mediana di tutti i giorni di apertura misurati
 dalla fine di dicembre 2025. In grassetto l’ora di punta di ogni attrazione.
 
 ```hourly-profile-widget slug=europa-park top=12
@@ -694,7 +690,7 @@ dalla fine di dicembre 2025. In grassetto l’ora di punta di ogni attrazione.
 A Silver Star alle dieci e alle undici c’è la fila più lunga della giornata, da mezzogiorno si accorcia
 parecchio e risale solo nelle ultime ore delle lunghe giornate estive.
 
-**Le ore più piene stanno tra le dieci e mezzogiorno.** La maggior parte delle
+Le ore più piene stanno tra le dieci e mezzogiorno. La maggior parte delle
 attrazioni ha il massimo alle dieci o alle undici; solo Arthur, Atlantica e il
 rafting sul fiordo toccano il massimo nel pomeriggio.
 

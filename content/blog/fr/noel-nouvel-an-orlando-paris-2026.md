@@ -420,16 +420,16 @@ n'apparaît dans aucune de ces rubriques. Cela peut encore venir, Disney publie 
 
 ## Ce que je réserverais à votre place
 
-**Novembre vous donne déjà la décoration complète.** À Orlando, les deux soirées commencent avant le début officiel de la
+Novembre vous donne déjà la décoration complète. À Orlando, les deux soirées commencent avant le début officiel de la
 saison, Universal fête à partir du 14 et Paris dès le 7 novembre. La semaine
 entre Noël et le jour de l'an vous donne à Orlando le même programme avec les
 temps d'attente les plus élevés de l'année.
 
-**Si vous devez partir entre Noël et le Nouvel An, allez à Paris.** Là-bas, la même semaine n'est pas ressortie vers le haut, et à Disney
+Si vous devez partir entre Noël et le Nouvel An, allez à Paris. Là-bas, la même semaine n'est pas ressortie vers le haut, et à Disney
 Adventure World elle a même été la période la plus calme de l'année.
 
-**Si vous voulez une soirée à billet séparé à Orlando et que vous regardez le
-prix, prenez les Jollywood Nights.** Elles coûtent moins cher que la Very Merry
+Si vous voulez une soirée à billet séparé à Orlando et que vous regardez le
+prix, prenez les Jollywood Nights. Elles coûtent moins cher que la Very Merry
 Christmas Party à chaque date, la remise pass annuel vaut tous les soirs au lieu
 de certains, et elles durent jusqu'au 5 janvier, soit deux semaines après la fin
 de la soirée du Magic Kingdom.

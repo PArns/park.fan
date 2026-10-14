@@ -221,7 +221,7 @@ En Magic Kingdom cuelgan de día guirnaldas de calabazas sobre Main Street, y en
 
 La Spooky Farm de Knott's Berry Farm es de día, de jueves a domingo del 24 de septiembre al 31 de octubre y además el Columbus Day, 12 de octubre. Su lema es «All Fun. No Fear.», y hay caramelos en Ghost Town, los personajes de Peanuts, un campo de calabazas y espectáculos. El campo de calabazas y la decoración de galletas se pagan aparte.
 
-Los demás parques de Six Flags tienen sus propios días para familias. En Magic Mountain, Kings Island, Carowinds, Over Texas, Fiesta Texas y Kings Dominion se llaman Tricks and Treats, y en Great Adventure y Great America, Kids Boo Fest. Suelen ser los fines de semana hasta el 1 de noviembre, de día y hasta las 17:00 más o menos, antes de que empiece el programa de noche.
+Los demás parques de Six Flags tienen sus propios días para familias. En Magic Mountain, Kings Island, Carowinds, Over Texas, Fiesta Texas y Kings Dominion se llaman Tricks and Treats, y en Great Adventure y Great America, Kids Boo Fest. Suelen ser los fines de semana hasta el 1 de noviembre, de día y hasta las 17:00 más o menos.
 
 ### Spooktacular en SeaWorld y Busch Gardens
 
@@ -289,7 +289,7 @@ SCarowinds, en Carowinds, que dura hasta el 7 de noviembre. Casi todos los demá
 
 ### ¿Qué hay para niños pequeños?
 
-Lo mejor es ir de día y no de noche, por ejemplo a Knott's Spooky Farm, a Tricks and Treats y Kids Boo Fest en Six Flags, al Spooktacular de SeaWorld y Busch Gardens, a Brick or Treat en Legoland o a ver las calabazas de Dollywood y Silver Dollar City. Casi siempre va incluido en la entrada normal.
+Knott's Spooky Farm, Tricks and Treats y Kids Boo Fest en Six Flags, el Spooktacular de SeaWorld y Busch Gardens, Brick or Treat en Legoland y las calabazas de Dollywood y Silver Dollar City. Todo esto es de día, y casi siempre va incluido en la entrada normal.
 
 — Patrick
 

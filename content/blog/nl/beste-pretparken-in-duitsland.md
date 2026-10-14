@@ -128,8 +128,7 @@ Winja’s Fear en Winja’s Force en de 65 meter hoge toren
 [Mystery Castle](ref:phantasialand/mystery-castle).
 
 Zeven themawerelden liggen dicht op elkaar: Berlin, China Town, Deep in Africa, Mexico, Fantasy,
-Mystery en Rookburgh. Tickets zijn er alleen online en op datum, een dagkassa is er niet meer. Wie
-betaalt, komt met de **Quick Pass** sneller op één baan of met de Quick Pass Ultimate één keer op
+Mystery en Rookburgh. Tickets zijn er alleen online en op datum, een dagkassa is er niet meer. Tegen betaling kom je met de **Quick Pass** sneller op één baan of met de Quick Pass Ultimate één keer op
 elke baan, en alleen met Ultimate op F.L.Y. Bij het park staan drie themahotels, Charles Lindbergh
 in Rookburgh, Ling Bao en Matamba. Vroeger naar binnen mag je daarmee anders dan in Rust niet, maar
 het Hotel Charles Lindbergh geeft wel één keer per dag een eigen toegang tot F.L.Y. Met de auto via de
@@ -305,8 +304,7 @@ groepen voor dezelfde baan, en wie geen pass heeft, wacht daar langer dan onze m
 
 Over alle gemeten dagen in Phantasialand is Taron bij de opening en in het laatste uur het drukst, als iedereen nog snel een rit wil
 meepakken. F.L.Y. is in het eerste uur kort en heeft zijn piek een uur later, zodra de rest van het
-park in Rookburgh is aangekomen. Allebei hebben ze hun rustigste uur in de middag. Wie
-beide wil rijden, gaat bij de opening naar F.L.Y. en bewaart Taron voor de middag.
+park in Rookburgh is aangekomen. Allebei hebben ze hun rustigste uur in de middag. Voor allebei betekent dat F.L.Y. bij de opening en Taron in de middag.
 
 In Europa-Park heeft de Eurosat haar langste wachtrij al om tien uur, omdat ze dicht bij de ingang
 staat en binnen rijdt, en bij regen gaat iedereen er tegelijk heen. In Heide Park loopt
@@ -321,8 +319,7 @@ geen dagen die op verschillende delen van het jaar berusten.
 
 Zaterdag is in Europa-Park, Phantasialand, Heide Park en Legoland de drukste dag, in Brühl met het
 grootste verschil met de rest van de week. Zondag is daar bijna net zo druk, in Rust, Soltau en
-Bottrop juist een van de rustigere dagen. Wie met kinderen alleen in het weekend kan, gaat dus op
-zondag en niet op zaterdag, behalve naar Brühl. In Plopsaland is elke dag even rustig, zaterdag ook.
+Bottrop juist een van de rustigere dagen. Voor gezinnen die alleen in het weekend kunnen, is zondag dus de betere dag, behalve in Brühl. In Plopsaland is elke dag even rustig, zaterdag ook.
 
 Juli en augustus zijn in bijna alle parken de drukste maanden,
 in Phantasialand met grote afstand. September is in Brühl, Soltau en Bottrop een van de rustigste,

@@ -157,7 +157,7 @@ distribuisce su cinque coaster, cinque attrazioni acquatiche e oltre quaranta
 attrazioni in totale. L’Efteling nello stesso anno ha contato 5,78 milioni di
 visite, circa cinque volte tanto, e non ha cinque volte i coaster.
 
-**Toverland non vende pass salta-fila né express pass.** Scambiare denaro con tempo si può solo nelle 13 serate di Halloween, tra ottobre e inizio novembre. Una fila single rider dal 2023 in
+Toverland non vende pass salta-fila né express pass. Scambiare denaro con tempo si può solo nelle 13 serate di Halloween, tra ottobre e inizio novembre. Una fila single rider dal 2023 in
 realtà c’è, ma a una sola attrazione, la torre di caduta Dragonwatch, e non
 costa nulla in più.
 

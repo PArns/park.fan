@@ -316,7 +316,7 @@ queue devant la même attraction, et sans pass, tu y attends plus longtemps que 
 
 Sur l’ensemble des jours mesurés à Phantasialand, Taron est au plus plein à l’ouverture et pendant la dernière heure, quand tout le monde veut encore
 caser un tour. F.L.Y. est courte la première heure et atteint son pic une heure plus tard, une fois
-que le reste du parc est arrivé à Rookburgh. Les deux ont leur heure la plus calme l’après-midi. Pour faire les deux, va à F.L.Y. à l’ouverture et garde Taron pour l’après-midi.
+que le reste du parc est arrivé à Rookburgh. Les deux ont leur heure la plus calme l’après-midi. Pour les deux, cela donne F.L.Y. à l’ouverture et Taron l’après-midi.
 
 À Europa-Park, l’Eurosat a sa file la plus longue dès dix heures, parce qu’elle est près de
 l’entrée et roule à l’intérieur, et quand il pleut, tout le monde y va en même temps. Au Heide

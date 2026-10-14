@@ -157,7 +157,7 @@ reparte entre cinco montañas rusas, cinco atracciones acuáticas y más de
 cuarenta atracciones en total. El Efteling contó ese mismo año 5,78 millones de
 visitas, unas cinco veces más, y no tiene cinco veces más montañas rusas.
 
-**Toverland no vende pase rápido ni pase exprés.** Cambiar dinero por tiempo solo se puede en las 13 noches de Halloween, en octubre y a principios de noviembre. Fila de single rider hay desde 2023, pero
+Toverland no vende pase rápido ni pase exprés. Cambiar dinero por tiempo solo se puede en las 13 noches de Halloween, en octubre y a principios de noviembre. Fila de single rider hay desde 2023, pero
 solo en una atracción, la torre de caída Dragonwatch, y no cuesta nada extra.
 
 ## El resto del parque

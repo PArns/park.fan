@@ -227,7 +227,7 @@ F.L.Y. niemand boven 2,05 m en geen kinderen onder acht, de Winja’s niemand bo
 
 ## Tickets en jaarkaarten
 
-**Er is geen dagkassa meer.** Het Phantasialand verkoopt uitsluitend
+Er is geen dagkassa meer. Het Phantasialand verkoopt uitsluitend
 **gedateerde online tickets**, je boekt vooraf een concrete bezoekdag, en zonder
 dat e-ticket op je telefoon sta je in het ergste geval voor een gesloten poort.
 
@@ -239,7 +239,7 @@ parkdag. De shop adverteert met tickets vanaf **44 €**. Spontaan kan ook, maar
 alleen online en alleen tot 14 uur op de bezoekdag zelf, tegen de dan geldende
 dagprijs en alleen als de dag niet is uitverkocht. De goedkope dag is vaak ook de legere, maar niet altijd.
 
-**Jaarkaarten zijn er niet meer.** Het Phantasialand haalde zijn Club-Karte in de
+Jaarkaarten zijn er niet meer. Het Phantasialand haalde zijn Club-Karte in de
 pandemie uit de verkoop en bracht hem nooit terug; de laatste liepen in de zomer
 van 2022 af. Onder de [grote Duitse parken](/blog/beste-pretparken-in-duitsland)
 is dat de uitzondering. Het Europa-Park verkoopt zijn ResortPass bijvoorbeeld
@@ -309,13 +309,13 @@ werkt hij compleet anders. Er zijn twee varianten:
   de Ultimate is dus goedkoper en doet F.L.Y. er nog bovenop. Het loont alleen als
   je echt overal in wilt.
 
-**Zelfs met de Quick Pass wacht je bij F.L.Y. nog, boven, in het station.** De
+Zelfs met de Quick Pass wacht je bij F.L.Y. nog, boven, in het station. De
 baan doet er door haar ingewikkelde vliegbeugels lang over om te laden, en die
 opstopping lost ook in de fast track niet op.
 
 Kopen doe je alleen ter plekke, bij de gastenservice op de Kaiserplatz, en het
-aantal is beperkt. **Juist tijdens de Wintertraum zijn de Quick Passes in het
-weekend vaak al rond het middaguur uitverkocht.**
+aantal is beperkt. Juist tijdens de Wintertraum zijn de Quick Passes in het
+weekend vaak al rond het middaguur uitverkocht.
 
 Na veel bezoeken vind ik dat je hem **op een groene dag niet nodig hebt.** Wie
 vroeg present is en een verstandige volgorde rijdt, haalt de headliners met

@@ -663,7 +663,7 @@ Because the queues are short, you ride more on a normal day here than at Phantas
 year the same sets host what is, by its own count, the biggest Halloween event
 on the continent.
 
-**This park’s best years are behind it, though.** They were in the Warner era,
+This park’s best years were in the Warner era, though,
 when a studio was putting money and characters into it. The park has kept
 building since, in 2011, 2017, 2018, 2021 and 2026, but without the brands that
 once made it. The last coaster for adults came in 2017, and the new attraction in

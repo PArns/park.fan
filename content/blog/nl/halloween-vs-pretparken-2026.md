@@ -220,7 +220,7 @@ In het Magic Kingdom hangen overdag pompoenslingers boven Main Street, en in het
 
 De Spooky Farm in Knott's Berry Farm loopt overdag, van donderdag tot en met zondag tussen 24 september en 31 oktober en daarnaast op Columbus Day, 12 oktober. Het motto is “All Fun. No Fear.”, met snoep in Ghost Town, de Peanuts-figuren, een pompoenveld en shows. Voor het pompoenveld en het versieren van koekjes betaal je extra.
 
-De andere Six Flags-parken hebben hun eigen dagen voor gezinnen. In Magic Mountain, Kings Island, Carowinds, Over Texas, Fiesta Texas en Kings Dominion heet dat Tricks and Treats, in Great Adventure en Great America Kids Boo Fest. Meestal gaat het om de weekenden tot en met 1 november, overdag tot ongeveer 17 uur, voordat het avondprogramma begint.
+De andere Six Flags-parken hebben hun eigen dagen voor gezinnen. In Magic Mountain, Kings Island, Carowinds, Over Texas, Fiesta Texas en Kings Dominion heet dat Tricks and Treats, in Great Adventure en Great America Kids Boo Fest. Meestal gaat het om de weekenden tot en met 1 november, overdag tot ongeveer 17 uur.
 
 ### Spooktacular in SeaWorld en Busch Gardens
 
@@ -288,7 +288,7 @@ SCarowinds in Carowinds, tot en met 7 november. Bijna alle andere eindigen op 31
 
 ### Wat is er voor kleine kinderen?
 
-Kies de dagen in plaats van de avonden, zoals Knott's Spooky Farm, Tricks and Treats en Kids Boo Fest bij Six Flags, het Spooktacular bij SeaWorld en Busch Gardens, Brick or Treat in Legoland en de pompoenen in Dollywood en Silver Dollar City. Meestal zit dat bij de gewone toegang inbegrepen.
+Knott's Spooky Farm, Tricks and Treats en Kids Boo Fest bij Six Flags, het Spooktacular bij SeaWorld en Busch Gardens, Brick or Treat in Legoland en de pompoenen in Dollywood en Silver Dollar City. Dat is allemaal overdag, en meestal zit het bij de gewone toegang inbegrepen.
 
 — Patrick
 

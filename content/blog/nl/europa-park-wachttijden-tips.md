@@ -561,8 +561,7 @@ tussen Kerstmis en oudejaarsavond 2025, de drukste week van de winter.
 In 2027 houdt het park van 7 tot 19 maart voor het eerst twee Pre-Opening
 Weeks, nog niet met alle attracties en shows, maar met de goedkoopste tickets
 van het jaar, en het zomerseizoen begint dan op 20 maart. Van oktober staan pas
-de eerste dagen in de tabel, van november nog geen enkele. Hoe ver Halloween en
-HALLOWinter er inmiddels in zitten, zie je aan het aantal meetdagen.
+de eerste dagen in de tabel, van november nog geen enkele. Het aantal meetdagen laat zien hoe ver Halloween en HALLOWinter er inmiddels in zitten.
 
 ### Welke vakanties het park vullen
 
@@ -572,7 +571,7 @@ Est, dus van de Elzas, van de Zwitserse kantons Aargau, Basel-Stadt en
 Basel-Landschaft, en van de aangrenzende deelstaten Beieren, Hessen en
 Rijnland-Palts.
 
-Hoeveel dat scheelt, zie je aan de werkdagen. Tussen april en september waren er
+Tussen april en september waren er
 42 werkdagen zonder schoolvakantie in een van de acht regio’s en zonder
 feestdag. Daarvan stonden er vier op “hoog” of hoger en 27 op “laag”. Van de
 werkdagen in de vakantie van Aargau stonden er 17 van de 27 op “hoog”, en geen
@@ -661,9 +660,7 @@ schelen, is een werkdag in november het proberen waard. De dagen die er nu het r
 
 ## De perfecte dag in het Europa-Park
 
-**Sta bij de ingang voordat er geopend wordt, en ga daarna naar het Voletarium.**
-
-In onze rope-drop-analyse vergelijken we voor elke attractie
+Sta bij de ingang voordat er geopend wordt, en ga daarna naar het Voletarium. In onze rope-drop-analyse vergelijken we voor elke attractie
 de wachttijd meteen bij opening met de hoogste dagpiek die daar op een volle dag
 is gemeten. Bij het Voletarium is de rij bij opening maar een fractie van die
 piek, en dat is veruit de grootste besparing in het hele park.
@@ -675,8 +672,7 @@ piek, en dat is veruit de grootste besparing in het hele park.
 Bij Voltron, Arthur en Silver Star levert een vroege start nog niet de helft
 daarvan op.
 
-Hoe sterk zich dat over de dag verdeelt, zie je pas in het uurprofiel: de
-typische wachttijd per uur, de mediaan over alle gemeten bedrijfsdagen sinds eind
+Het uurprofiel geeft de typische wachttijd per uur, de mediaan over alle gemeten bedrijfsdagen sinds eind
 december 2025. Het drukste uur van elke attractie staat vet.
 
 ```hourly-profile-widget slug=europa-park top=12
@@ -688,7 +684,7 @@ december 2025. Het drukste uur van elke attractie staat vet.
 Bij Silver Star staat om tien en om elf uur de langste rij van de dag, vanaf twaalf uur wordt die merkbaar
 korter en pas in de avonduren van lange zomerdagen trekt ze weer aan.
 
-**De drukste uren liggen tussen tien en twaalf.** De meeste banen hebben hun
+De drukste uren liggen tussen tien en twaalf. De meeste banen hebben hun
 maximum om tien of om elf uur; alleen Arthur, Atlantica en de fjord-rafting
 pieken pas in de middag.
 

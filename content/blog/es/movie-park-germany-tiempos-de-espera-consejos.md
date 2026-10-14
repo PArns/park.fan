@@ -685,7 +685,7 @@ Gracias a las colas cortas, en un día normal aquí te montas en más cosas que 
 seis semanas al año, en los mismos decorados, se celebra el que, según su propio
 recuento, es el mayor evento de Halloween del continente.
 
-**Aun así, sus mejores años este parque ya los ha dejado atrás.** Fueron los de la
+Aun así, los mejores años de este parque fueron los de la
 época Warner, cuando un estudio metía dinero y personajes. Desde entonces el
 parque sigue construyendo, en 2011, 2017, 2018, 2021 y 2026, pero sin las marcas
 que un día lo definían. La última montaña rusa para adultos llegó en 2017, y la

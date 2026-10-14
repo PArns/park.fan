@@ -417,17 +417,17 @@ noviembre.
 
 ## Qué reservaría yo en tu lugar
 
-**Noviembre ya te da la decoración completa.** En
+Noviembre ya te da la decoración completa. En
 Orlando las dos fiestas nocturnas empiezan antes del inicio oficial de la
 temporada, Universal celebra desde el día 14 y París ya desde el 7 de noviembre.
 La semana entre Navidad y Año Nuevo te da en Orlando el mismo programa con los
 tiempos de espera más altos del año.
 
-**Si tienes que viajar entre Navidad y Año Nuevo, ve a París.** Allí esa misma semana no sobresalió hacia arriba, y en Disney Adventure World
+Si tienes que viajar entre Navidad y Año Nuevo, ve a París. Allí esa misma semana no sobresalió hacia arriba, y en Disney Adventure World
 fue incluso la época más tranquila del año.
 
-**Si quieres una fiesta nocturna en Orlando y miras el precio, elige Jollywood
-Nights.** Sale más barata que la Very Merry Christmas Party en todas las fechas,
+Si quieres una fiesta nocturna en Orlando y miras el precio, elige Jollywood
+Nights. Sale más barata que la Very Merry Christmas Party en todas las fechas,
 el descuento de pase anual vale todas las noches en vez de algunas, y dura hasta
 el 5 de enero, o sea dos semanas después de que la fiesta del Magic Kingdom haya
 terminado.

@@ -341,13 +341,13 @@ Disneyland een minimale lengte van 102 centimeter.
 
 ## Zo plan je een dag met single rider
 
-**Kies vooraf twee of drie banen.** Op de parkpagina van park.fan zie je welke banen het teken dragen.
+Kies vooraf twee of drie banen. Op de parkpagina van park.fan zie je welke banen het teken dragen.
 De ingang is het meest waard bij de baan waar de gewone rij het langst is.
 
-**Controleer of de rij open is voordat je je laat scheiden.** Op de attractiepagina staat het teken
+Controleer of de rij open is voordat je je laat scheiden. Op de attractiepagina staat het teken
 “Single Rider” met de status van de rij. Hij kan gesloten zijn zonder dat de baan dicht is.
 
-**Splits op als het loont.** Voor twee volwassenen is de snelste variant dat de een de gewone rij neemt
+Splits op als het loont. Voor twee volwassenen is de snelste variant dat de een de gewone rij neemt
 en de ander de single-rideringang. Wie eerst rijdt, wacht bij de uitgang.
 
 ## Veelgestelde vragen over single rider

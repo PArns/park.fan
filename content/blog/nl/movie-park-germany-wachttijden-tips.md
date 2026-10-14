@@ -662,7 +662,7 @@ Door de korte rijen rijd je hier op een gewone dag meer dan in
 het Phantasialand of het Europa-Park, en zes weken per jaar staat in dezelfde
 decors het naar eigen telling grootste Halloween-evenement van het continent.
 
-**Zijn beste jaren heeft dit park toch achter zich.** Die lagen in de
+Zijn beste jaren had dit park toch in de
 Warner-tijd, toen een studio er geld en figuren in stak. Er wordt sindsdien
 nog steeds gebouwd, in 2011, 2017, 2018, 2021 en 2026, maar zonder de merken die
 het park ooit maakten. De laatste achtbaan voor volwassenen kwam in 2017, en de

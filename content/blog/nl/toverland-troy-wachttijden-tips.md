@@ -155,8 +155,8 @@ vijf waterattracties en in totaal ruim veertig attracties. De Efteling telde
 datzelfde jaar 5,78 miljoen bezoeken, zo’n vijf keer zoveel, en heeft geen vijf
 keer zoveel achtbanen.
 
-**Toverland verkoopt geen fastpass en
-geen expresspass.** Tijd tegen geld ruilen kan alleen op de 13 halloweenavonden in oktober en begin november. Een single rider-rij is er sinds 2023 overigens
+Toverland verkoopt geen fastpass en
+geen expresspass. Tijd tegen geld ruilen kan alleen op de 13 halloweenavonden in oktober en begin november. Een single rider-rij is er sinds 2023 overigens
 wel, maar bij één enkele attractie, de vrijevaltoren Dragonwatch, en die kost
 niets extra.
 

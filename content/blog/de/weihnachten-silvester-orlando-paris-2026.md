@@ -410,16 +410,16 @@ Animal Kingdom, Disney Springs, die Hotels und Blizzard Beach, und der 31. Dezem
 
 ## Was ich an deiner Stelle buchen würde
 
-**Die volle Dekoration gibt es schon im November.** In Orlando beginnen beide Abendevents vor dem offiziellen
+Die volle Dekoration gibt es schon im November. In Orlando beginnen beide Abendevents vor dem offiziellen
 Saisonstart, Universal feiert ab dem 14. und Paris schon ab dem 7. November. Die
 Woche zwischen den Jahren bringt dir in Orlando dasselbe Programm bei den
 höchsten Wartezeiten des Jahres.
 
-**Musst du zwischen den Jahren fahren, fahre nach Paris.** Dort war dieselbe Woche kein Ausreißer nach oben, in der Disney Adventure World
+Musst du zwischen den Jahren fahren, fahre nach Paris. Dort war dieselbe Woche kein Ausreißer nach oben, in der Disney Adventure World
 sogar die ruhigste Zeit des Jahres.
 
-**Willst du ein Abendevent in Orlando und schaust auf den Preis, nimm Jollywood
-Nights.** Es ist an jedem Termin günstiger als die Very Merry Christmas Party,
+Willst du ein Abendevent in Orlando und schaust auf den Preis, nimm Jollywood
+Nights. Es ist an jedem Termin günstiger als die Very Merry Christmas Party,
 der Rabatt für Jahreskarten gilt an allen Abenden statt an ausgewählten, und es
 läuft bis zum 5. Januar, also auch dann noch, wenn die Party im Magic Kingdom
 seit zwei Wochen vorbei ist.

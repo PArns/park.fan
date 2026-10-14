@@ -674,7 +674,7 @@ Wegen der kurzen Warteschlangen fährst du hier an einem normalen Tag mehr als i
 Jahr steht in denselben Kulissen das nach eigener Zählung größte Halloween-Event
 des Kontinents.
 
-**Seine besten Jahre hat dieser Park allerdings hinter sich.** Die lagen in der
+Seine besten Jahre hatte dieser Park allerdings in der
 Warner-Zeit, als ein Studio Geld und Figuren hineinsteckte. Gebaut wird seitdem
 weiter, 2011, 2017, 2018, 2021 und 2026, aber ohne die Marken, die den Park einmal
 ausgemacht haben. Die letzte Achterbahn für Erwachsene kam 2017, und die Neuheit

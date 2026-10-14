@@ -91,8 +91,7 @@ Warteschlange:
 
 ### Dein Zeitgefühl übertreibt, um gut ein Drittel
 
-Wie schlecht wir unbeschäftigtes Warten einschätzen, lässt sich messen. Der
-Marketingforscher **Jacob Hornik** hat 1984 an Kassen im Einzelhandel die
+Der Marketingforscher **Jacob Hornik** hat 1984 an Kassen im Einzelhandel die
 gestoppte Wartezeit mit dem verglichen, was die Wartenden hinterher schätzten.
 Im Schnitt lagen die Schätzungen **rund 36 Prozent** zu hoch. Aus gemessenen
 zehn Minuten werden im Kopf fast vierzehn.
@@ -243,9 +242,7 @@ die 10.000 Menschen pro Vorstellung. Das sind knapp zehntausend Leute, die für
 die nächste halbe Stunde woanders sitzen als vor deinem Lieblingscoaster, und
 der Rest des Parks atmet entsprechend durch. Im Stundenprofil der Hollywood
 Studios auf park.fan fallen die Wartezeiten der Headliner in den Abendstunden,
-in denen Fantasmic! läuft, deutlich. Wie viel davon die Show ausmacht und wie
-viel das nahende Parkende, lässt sich aus den Zahlen allerdings nicht trennen,
-denn am 25. September 2026 etwa beginnt die erste Vorstellung um 20 Uhr, eine Stunde
+in denen Fantasmic! läuft, deutlich. Die Zahlen trennen allerdings nicht, wie viel davon die Show ausmacht und wie viel das nahende Parkende, denn am 25. September 2026 etwa beginnt die erste Vorstellung um 20 Uhr, eine Stunde
 vor Parkschluss. Wer die Show schon kennt, fährt in dieser Stunde trotzdem am
 günstigsten. Für solche Momente lesen wir die Wartezeiten alle fünf
 Minuten neu ein.
@@ -316,10 +313,7 @@ Zug in der Schlussbremse, die Insassen winken der Station zu, die Station winkt
 zurück, und niemand bewegt sich. Das Nadelöhr ist dann die Abfertigung. Wie
 schnell sind alle Bügel geprüft und der Zug wieder draußen?
 
-Wie ernst moderne Bahnen das nehmen, sieht man an
-[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) im
-[Europa-Park](ref:europa-park?bare). Laut Hersteller-Factsheet von Mack Rides
-hat die Bahn **sieben Züge**, von denen drei bis vier gleichzeitig auf der
+Laut Hersteller-Factsheet von Mack Rides hat [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) im [Europa-Park](ref:europa-park?bare) **sieben Züge**, von denen drei bis vier gleichzeitig auf der
 Strecke sind. Das Ziel für die Abfertigung ist laut Coaster101 **eine Abfahrt
 alle 36 Sekunden**. Bei 16 Plätzen pro Zug ergibt das die 1.600 Gäste pro
 Stunde, die Mack als theoretische Kapazität angibt. Das ist nicht ganz das
@@ -450,11 +444,7 @@ der Welt:
 
 ## Phantasialand und Europa-Park vs. Orlando
 
-Wie sehr Nachfrage und Kapazität das Wartezeit-Niveau eines ganzen Parks
-bestimmen, sieht man am besten, wenn man zwei große Parks aus Europa neben
-Orlando legt.
-
-**Orlando spielt in einer eigenen Nachfrage-Liga.** Das
+Orlando spielt in einer eigenen Nachfrage-Liga. Das
 [Magic Kingdom](ref:magic-kingdom-park?bare) ist mit 17,8 Millionen Gästen im
 Jahr 2024 laut dem Branchenverband TEA der meistbesuchte Freizeitpark der Welt,
 und Disney wie Universal ziehen Gäste von allen Kontinenten an. Dazu kommt, dass
@@ -468,7 +458,7 @@ trotz vier parallel laufender Theater die längste mittlere Wartezeit des Parks
 und das Phantasialand verkauft für seine großen Bahnen einen Quick Pass,
 inzwischen pro Fahrt.
 
-**Der [Europa-Park](ref:europa-park?bare) ist das Gegenmodell.** Deutschlands
+Der [Europa-Park](ref:europa-park?bare) ist das Gegenmodell. Deutschlands
 größter Park, nach Disneyland Paris der meistbesuchte Europas (6,2 Millionen
 Gäste 2024 laut TEA), verteilt seine Besucher auf **vierzehn Achterbahnen**
 (Zählung von RCDB) plus Dutzende Themenfahrten. Bei so viel paralleler
@@ -477,8 +467,8 @@ dauerhaft in die Sättigung. Deshalb fühlen sich selbst
 volle Tage in Rust selten nach Orlando an, und die längste mittlere Wartezeit
 im Park hat mit Voltron die neueste Achterbahn.
 
-**Das [Phantasialand](ref:phantasialand?bare) wiederum ist der Extremfall in der
-anderen Richtung.** Auf rund 28 Hektar stehen halb so viele Achterbahnen wie in
+Das [Phantasialand](ref:phantasialand?bare) wiederum ist der Extremfall in der
+anderen Richtung. Auf rund 28 Hektar stehen halb so viele Achterbahnen wie in
 Rust (sieben laut RCDB), dafür extrem aufwendig thematisiert. Die Last
 konzentriert sich auf eine Handvoll Headliner, und wenn an einem Ferien-Samstag
 alle zu [Taron](ref:phantasialand/taron?bare) wollen (Grüße gehen raus, ich bin

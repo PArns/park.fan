@@ -335,13 +335,13 @@ una altura mínima de 102 centímetros.
 
 ## Cómo planear un día con single rider
 
-**Elige antes dos o tres atracciones.** En la página del parque de park.fan ves qué atracciones llevan
+Elige antes dos o tres atracciones. En la página del parque de park.fan ves qué atracciones llevan
 el distintivo. La entrada vale más en la atracción cuya cola normal es la más larga.
 
-**Comprueba si la cola está abierta antes de separaros.** En la página de la atracción aparece el
+Comprueba si la cola está abierta antes de separaros. En la página de la atracción aparece el
 distintivo «Single Rider» con el estado de la cola. Puede estar cerrada sin que la atracción lo esté.
 
-**Repartíos si compensa.** Para dos adultos, lo más rápido es que uno haga la cola normal y el otro
+Repartíos si compensa. Para dos adultos, lo más rápido es que uno haga la cola normal y el otro
 entre por la single rider. Quien monta primero espera en la salida.
 
 ## Preguntas frecuentes sobre single rider

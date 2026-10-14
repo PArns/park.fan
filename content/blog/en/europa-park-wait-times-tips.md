@@ -552,9 +552,7 @@ between Christmas and New Year’s Eve 2025, the busiest week of the winter.
 2027 starts earlier: from 7 to 19 March the park opens for two Pre-Opening Weeks
 for the first time, not yet with every ride and show, but with the cheapest
 tickets of the year, and the summer season then begins on 20 March. October has
-only its first few days in the table so far, November none. How far Halloween
-and HALLOWinter have made it in by now, you can tell from the count of measured
-days.
+only its first few days in the table so far, November none. The count of measured days shows how far Halloween and HALLOWinter have made it in by now.
 
 ### Which holidays fill the park
 
@@ -564,7 +562,7 @@ means Alsace, those of the Swiss cantons of Aargau, Basel-Stadt and
 Basel-Landschaft, and those of the neighbouring German states of Bavaria, Hesse
 and Rhineland-Palatinate.
 
-The weekdays make the difference plain. Between April and September there were
+Between April and September there were
 42 weekdays with no school holiday in any of the eight regions and no public
 holiday either. Four of them were rated “high” or above, 27 “low”. Of the
 weekdays inside the Aargau holidays, 17 out of 27 were “high”, and not a single
@@ -653,9 +651,7 @@ weekday in November is worth a try all the same. The days that look quietest rig
 
 ## The perfect day at Europa-Park
 
-**Be at the gate before it opens, and then go to the Voletarium.**
-
-Our rope-drop analysis compares, for every
+Be at the gate before it opens, and then go to the Voletarium. Our rope-drop analysis compares, for every
 attraction, the wait right at opening with the highest daily peak measured there
 on a busy day. At the Voletarium the queue at opening is a fraction of that peak,
 by far the biggest saving anywhere in the park.
@@ -666,8 +662,7 @@ by far the biggest saving anywhere in the park.
 
 At Voltron, Arthur and Silver Star an early start saves less than half as much.
 
-How far it all spreads across the day only becomes visible hour by hour: the
-typical wait in each hour, the median across every operating day we have
+The hourly profile gives the typical wait in each hour, the median across every operating day we have
 measured since late December 2025. Each ride’s busiest hour is in bold.
 
 ```hourly-profile-widget slug=europa-park top=12
@@ -679,7 +674,7 @@ measured since late December 2025. Each ride’s busiest hour is in bold.
 At Silver Star, ten and eleven in the morning bring the longest queue of the day, from midday it gets noticeably
 shorter and only picks up again in the evening hours of long summer days.
 
-**The busiest hours fall between ten and twelve.** Most rides hit their maximum
+The busiest hours fall between ten and twelve. Most rides hit their maximum
 at ten or at eleven; only Arthur, Atlantica and the fjord rafting peak in the
 afternoon.
 

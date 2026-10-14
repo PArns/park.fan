@@ -676,7 +676,7 @@ alle file corte, in una giornata normale qui si sale su più cose che al Phantas
 nelle stesse scenografie, si tiene quello che, secondo il suo stesso conteggio, è
 il più grande evento di Halloween del continente.
 
-**I suoi anni migliori, però, questo parco se li è lasciati alle spalle.** Erano quelli dell’epoca Warner, quando uno studio ci metteva soldi e
+Gli anni migliori di questo parco, però, sono stati quelli dell’epoca Warner, quando uno studio ci metteva soldi e
 personaggi. Da allora il parco ha continuato a costruire, nel 2011, 2017, 2018,
 2021 e 2026, ma senza i marchi che un tempo lo definivano. Le ultime montagne
 russe per adulti sono del 2017, e la novità dell’anno del giubileo è un tunnel

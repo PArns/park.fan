@@ -335,13 +335,13 @@ Disneyland gives a minimum height of 102 centimetres.
 
 ## How to plan a day with single rider
 
-**Pick two or three rides beforehand.** On the park page at park.fan you can see which rides carry the
+Pick two or three rides beforehand. On the park page at park.fan you can see which rides carry the
 badge. The entrance is worth most on the ride where the standard queue is longest.
 
-**Check that the queue is open before you split up.** On the attraction page the “Single rider” badge
+Check that the queue is open before you split up. On the attraction page the “Single rider” badge
 appears with the status of the queue. It can be closed without the ride being closed.
 
-**Split up if it pays off.** For two adults the fastest option is for one to take the standard queue
+Split up if it pays off. For two adults the fastest option is for one to take the standard queue
 and the other the single rider entrance. Whoever rides first waits at the exit.
 
 ## Frequently asked questions about single rider

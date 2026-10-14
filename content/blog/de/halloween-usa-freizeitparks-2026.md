@@ -354,7 +354,7 @@ Shows. Fürs Kürbisfeld und das Plätzchenverzieren zahlst du extra.
 Die übrigen Six-Flags-Parks haben ihre eigenen Tage für Familien. Tricks and Treats heißt es in
 Magic Mountain, Kings Island, Carowinds, Over Texas, Fiesta Texas und Kings Dominion, Kids Boo Fest
 in Great Adventure und Great America. Meist sind das die Wochenenden bis zum 1. November, am Tag
-bis etwa 17 Uhr, bevor das Abendprogramm beginnt.
+bis etwa 17 Uhr.
 
 ### Spooktacular in SeaWorld und Busch Gardens
 
@@ -451,7 +451,7 @@ SCarowinds in Carowinds, bis zum 7. November. Fast alle anderen enden am 31. Okt
 
 ### Was gibt es für kleine Kinder?
 
-Am besten die Tage statt der Abende, etwa Knott's Spooky Farm, Tricks and Treats und Kids Boo Fest bei Six Flags, das Spooktacular bei SeaWorld und Busch Gardens, Brick or Treat im Legoland und die Kürbisse in Dollywood und Silver Dollar City. Meist steckt das im normalen Eintritt.
+Knott's Spooky Farm, Tricks and Treats und Kids Boo Fest bei Six Flags, das Spooktacular bei SeaWorld und Busch Gardens, Brick or Treat im Legoland und die Kürbisse in Dollywood und Silver Dollar City. Das alles läuft am Tag, und meist steckt es im normalen Eintritt.
 
 — Patrick
 

@@ -398,16 +398,16 @@ none of those sections. It may still come; Disney often publishes New Year's Eve
 
 ## What I'd book in your place
 
-**November already gets you the full decoration.** In
+November already gets you the full decoration. In
 Orlando both evening events start before the season officially does, Universal
 celebrates from the 14th, and Paris from the 7th. The week between Christmas and New
 Year gets you the same programme at the highest waits of the year.
 
-**If you have to travel between Christmas and New Year, go to Paris.** There the same week was no outlier upwards, and at Disney Adventure World it
+If you have to travel between Christmas and New Year, go to Paris. There the same week was no outlier upwards, and at Disney Adventure World it
 was the quietest time of the year.
 
-**If you want one ticketed evening in Orlando and you're watching the price,
-take Jollywood Nights.** It's cheaper than the Very Merry Christmas Party on
+If you want one ticketed evening in Orlando and you're watching the price,
+take Jollywood Nights. It's cheaper than the Very Merry Christmas Party on
 every date, the Passholder discount applies on all nights instead of selected
 ones, and it runs to 5 January, which is two weeks after the Magic Kingdom party
 has finished.

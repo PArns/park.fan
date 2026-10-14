@@ -219,7 +219,7 @@ At Magic Kingdom pumpkin garlands hang over Main Street during the day, and at t
 
 Spooky Farm at Knott's Berry Farm runs in the daytime, Thursday through Sunday from September 24 to October 31 and on Columbus Day, October 12. Under the motto "All Fun. No Fear." there's candy in Ghost Town, the Peanuts characters, a pumpkin patch and shows. The pumpkin patch and cookie decorating cost extra.
 
-The other Six Flags parks have their own days for families. It's called Tricks and Treats at Magic Mountain, Kings Island, Carowinds, Over Texas, Fiesta Texas and Kings Dominion, and Kids Boo Fest at Great Adventure and Great America. Mostly that means weekends until November 1, in the daytime until about 5 pm, before the evening program starts.
+The other Six Flags parks have their own days for families. It's called Tricks and Treats at Magic Mountain, Kings Island, Carowinds, Over Texas, Fiesta Texas and Kings Dominion, and Kids Boo Fest at Great Adventure and Great America. Mostly that means weekends until November 1, in the daytime until about 5 pm.
 
 ### Spooktacular at SeaWorld and Busch Gardens
 
@@ -287,7 +287,7 @@ SCarowinds at Carowinds, running until November 7. Nearly all the others end on 
 
 ### What is there for small kids?
 
-The daytime events suit them better than the evenings, for example Knott's Spooky Farm, Tricks and Treats and Kids Boo Fest at Six Flags, Spooktacular at SeaWorld and Busch Gardens, Brick or Treat at Legoland and the pumpkins at Dollywood and Silver Dollar City. Most of it comes with regular admission.
+Knott's Spooky Farm, Tricks and Treats and Kids Boo Fest at Six Flags, Spooktacular at SeaWorld and Busch Gardens, Brick or Treat at Legoland and the pumpkins at Dollywood and Silver Dollar City. All of it runs in the daytime, and most of it comes with regular admission.
 
 — Patrick
 

@@ -409,16 +409,16 @@ geen van die onderdelen voor. Het kan nog komen, Disney publiceert oudjaarsavond
 
 ## Wat ik in jouw plaats zou boeken
 
-**De volle versiering krijg je al in november.** In Orlando beginnen beide avondevenementen vóór de officiële
+De volle versiering krijg je al in november. In Orlando beginnen beide avondevenementen vóór de officiële
 seizoensstart, Universal viert vanaf de 14e en Parijs al vanaf 7 november. De
 week tussen Kerst en Nieuwjaar levert je in Orlando hetzelfde programma bij de
 hoogste wachttijden van het jaar.
 
-**Moet je tussen Kerst en Nieuwjaar reizen, ga dan naar Parijs.** Daar was dezelfde week geen uitschieter naar boven, en in de Disney Adventure
+Moet je tussen Kerst en Nieuwjaar reizen, ga dan naar Parijs. Daar was dezelfde week geen uitschieter naar boven, en in de Disney Adventure
 World zelfs de rustigste tijd van het jaar.
 
-**Wil je één avondevenement in Orlando en let je op de prijs, neem dan Jollywood
-Nights.** Het is op elke datum goedkoper dan de Very Merry Christmas Party, de
+Wil je één avondevenement in Orlando en let je op de prijs, neem dan Jollywood
+Nights. Het is op elke datum goedkoper dan de Very Merry Christmas Party, de
 korting voor jaarkaarten geldt op alle avonden in plaats van op geselecteerde,
 en het loopt tot 5 januari, dus ook nog als het feest in het Magic Kingdom al
 twee weken voorbij is.

@@ -230,7 +230,7 @@ Winja’s niemanden über 2,00 m und keine Kinder unter sechs. In Crazy Bats set
 
 ## Tickets und Jahreskarten
 
-**Es gibt keine Tageskasse mehr.** Das Phantasialand verkauft ausschließlich
+Es gibt keine Tageskasse mehr. Das Phantasialand verkauft ausschließlich
 **datierte Online-Tickets**, du buchst vorab einen konkreten Besuchstag, und
 ohne dieses E-Ticket am Handy stehst du im Zweifel vor verschlossenem Tor.
 
@@ -243,7 +243,7 @@ online und nur bis 14 Uhr am Besuchstag, zum dann gültigen Tagespreis und nur,
 solange der Tag nicht ausverkauft ist. Der
 günstige Tag ist oft auch der leerere, aber nicht immer.
 
-**Jahreskarten gibt es keine mehr.** Das Phantasialand hat seine Club-Karte in
+Jahreskarten gibt es keine mehr. Das Phantasialand hat seine Club-Karte in
 der Pandemie aus dem Verkauf genommen und nie zurückgebracht, die letzten liefen
 im Sommer 2022 aus. Unter den
 [großen deutschen Parks](/blog/beste-freizeitparks-in-deutschland) ist das die
@@ -314,13 +314,13 @@ Wintertraum 2025/26 funktioniert er komplett neu. Es gibt zwei Varianten:
   83 €, der Ultimate ist also billiger und legt F.L.Y. obendrauf. Das lohnt sich
   aber nur, wenn du wirklich überall durchwillst.
 
-**Selbst mit dem Quick Pass wartest du bei F.L.Y. noch, oben, in der Station.**
+Selbst mit dem Quick Pass wartest du bei F.L.Y. noch, oben, in der Station.
 Die Bahn braucht durch ihre aufwendigen Flieger-Bügel lange fürs Beladen, und
 dieser Stau löst sich auch im Fast-Track nicht auf.
 
 Gekauft wird nur vor Ort, beim Gästeservice am Kaiserplatz, und die Menge ist
-begrenzt. **Gerade im Wintertraum sind die Quick Pässe am Wochenende oft schon
-mittags ausverkauft.**
+begrenzt. Gerade im Wintertraum sind die Quick Pässe am Wochenende oft schon
+mittags ausverkauft.
 
 Nach vielen Besuchen meine ich, dass du ihn **an einem grünen Tag nicht
 brauchst.** Wer früh da ist und eine sinnvolle Reihenfolge fährt, nimmt die

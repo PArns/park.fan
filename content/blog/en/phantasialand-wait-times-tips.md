@@ -223,7 +223,7 @@ On Crazy Bats you wear the VR headset from 1.20 m and ride without it below that
 
 ## Tickets and annual passes
 
-**There’s no box office any more.** Phantasialand sells exclusively **dated
+There’s no box office any more. Phantasialand sells exclusively **dated
 online tickets**, you book a specific visit day in advance, and without that
 e-ticket on your phone you may well find yourself standing at a locked gate.
 
@@ -236,7 +236,7 @@ online and only until 2 p.m. on the day itself, at that day’s price and only i
 the day hasn’t sold out. The cheap
 day is often the emptier one, but not always.
 
-**There are no more annual passes.** Phantasialand took its Club-Karte off sale
+There are no more annual passes. Phantasialand took its Club-Karte off sale
 during the pandemic and never brought it back; the last ones expired in summer 2022. That makes it the exception among
 [Germany’s big parks](/blog/best-theme-parks-in-germany); Europa-Park, for one,
 still sells its ResortPass, even if the allocations go fast. In 2022 fans
@@ -305,13 +305,13 @@ works completely differently. There are two variants:
   so Ultimate is cheaper and throws F.L.Y. in on top. It only pays off if you
   really want to do the lot, though.
 
-**Even with the Quick Pass you still wait at F.L.Y., up top, in the station.**
+Even with the Quick Pass you still wait at F.L.Y., up top, in the station.
 The elaborate flying restraints make loading slow, and the fast track doesn’t
 make that jam go away.
 
 You can only buy it on the spot, at Guest Services on Kaiserplatz, and there
-aren’t many. **During Wintertraum in particular, the Quick Passes are often sold
-out by midday on weekends.**
+aren’t many. During Wintertraum in particular, the Quick Passes are often sold
+out by midday on weekends.
 
 After many visits, I think **on a green day you don’t need it.** Arrive early,
 ride in a sensible order, and you’ll get the headliners with short waits. On a

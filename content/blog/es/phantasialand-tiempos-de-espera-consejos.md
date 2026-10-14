@@ -232,7 +232,7 @@ partir de 1,20 m; por debajo se monta sin ellas.
 
 ## Entradas y abonos anuales
 
-**Ya no hay taquilla en puerta.** El Phantasialand vende exclusivamente
+Ya no hay taquilla en puerta. El Phantasialand vende exclusivamente
 **entradas online con fecha**. Reservas de antemano un día concreto de visita, y
 sin ese e-ticket en el móvil, en el peor de los casos te quedas ante la puerta
 cerrada.
@@ -245,7 +245,7 @@ por el mismo día de parque. La tienda anuncia entradas desde **44 €**. Tambi�
 puede ir sobre la marcha, pero solo online y solo hasta las 14 h del mismo día, al
 precio que tenga ese día y siempre que no se haya agotado. El día barato es a menudo también el más vacío, pero no siempre.
 
-**Ya no hay abonos anuales.** El Phantasialand retiró su Club-Karte de la venta
+Ya no hay abonos anuales. El Phantasialand retiró su Club-Karte de la venta
 durante la pandemia y nunca la recuperó; las últimas caducaron en el verano de 2022. Entre los
 [grandes parques alemanes](/blog/mejores-parques-de-atracciones-de-alemania) es
 la excepción. El Europa-Park, por ejemplo, sigue vendiendo su ResortPass, aunque
@@ -317,13 +317,13 @@ funciona de forma completamente nueva. Hay dos variantes:
   pases sueltos suman 83 €, así que el Ultimate sale más barato y encima añade
   F.L.Y. Solo compensa, eso sí, si de verdad quieres hacerlo todo.
 
-**Incluso con el Quick Pass sigues esperando en F.L.Y., arriba, en la
-estación.** Por sus elaborados arneses de vuelo, la atracción tarda mucho en
+Incluso con el Quick Pass sigues esperando en F.L.Y., arriba, en la
+estación. Por sus elaborados arneses de vuelo, la atracción tarda mucho en
 cargarse, y ese atasco no se resuelve tampoco en el fast-track.
 
-Solo se compra allí mismo, en el servicio al cliente del Kaiserplatz, y **justo
+Solo se compra allí mismo, en el servicio al cliente del Kaiserplatz, y justo
 en el Wintertraum los Quick Pass suelen estar agotados el fin de semana ya a
-mediodía.**
+mediodía.
 
 Tras muchas visitas, creo que **en un día verde no lo necesitas.** Quien llega
 temprano y sigue un orden sensato monta en los headliners con poca espera. En un

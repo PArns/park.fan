@@ -339,13 +339,13 @@ un’altezza minima di 102 centimetri.
 
 ## Come organizzi una giornata con il single rider
 
-**Scegline due o tre prima.** Sulla pagina del parco di park.fan vedi quali attrazioni hanno l’icona.
+Scegline due o tre prima. Sulla pagina del parco di park.fan vedi quali attrazioni hanno l’icona.
 L’ingresso vale di più all’attrazione in cui la coda normale è più lunga.
 
-**Controlla che la coda sia aperta, prima di separarti.** Sulla pagina dell’attrazione c’è l’icona
+Controlla che la coda sia aperta, prima di separarti. Sulla pagina dell’attrazione c’è l’icona
 “Single Rider” con lo stato della coda. Può essere chiusa anche se l’attrazione è aperta.
 
-**Dividetevi, se conviene.** Per due adulti la soluzione più veloce è che uno faccia la coda normale e
+Dividetevi, se conviene. Per due adulti la soluzione più veloce è che uno faccia la coda normale e
 l’altro l’ingresso single rider. Chi sale per primo aspetta all’uscita.
 
 ## Domande frequenti sul single rider

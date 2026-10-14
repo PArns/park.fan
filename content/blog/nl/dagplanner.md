@@ -218,7 +218,7 @@ het moment waarop je die elf blokken ziet en even moet slikken.
 Het langst hebben we gezeten op vier plekken waar we in de planner bewust minder
 beweren dan we zouden kunnen.
 
-**De voorspelling zit ernaast, en meetbaar ook.** Bij elk geselecteerd blok
+De voorspelling zit ernaast, en meetbaar ook. Bij elk geselecteerd blok
 staat hoe ver de voorspellingen voor een rij van die lengte, met zoveel
 aanlooptijd, de afgelopen 45 dagen gemiddeld af lagen van wat de dag werkelijk
 bracht. Dat staat er tot 60 dagen vooruit; verder reikt de meting nog niet. (Dat
@@ -227,13 +227,13 @@ bovengrens, op veel dagen zit de voorspelling er verder naast. Daarom staat het
 getal er als typische fout en nooit als marge waarin het juiste antwoord al zou
 zitten.
 
-**Een speeltijd kan ook een schatting zijn.** Wat het park voor vandaag heeft gepubliceerd,
+Een speeltijd kan ook een schatting zijn. Wat het park voor vandaag heeft gepubliceerd,
 is een mededeling. Wat wij van de laatste passende weekdag hebben doorgetrokken,
 is een vermoeden, en dat tekenen we zachter, met een tilde voor de tijd,
 een stippellijn en de datum waar de tijden vandaan komen. Speeltijden voor de
 zaterdag over twee weken kent niemand, wij ook niet.
 
-**Sommige parken kunnen we helemaal niet meten.** [Hansa-Park](ref:hansa-park)
+Sommige parken kunnen we helemaal niet meten. [Hansa-Park](ref:hansa-park)
 geeft zijn wachttijden alleen in de eigen app op de wifi van het park. Bij ons
 komt daar nooit een getal binnen. Een park zonder bron ziet er in de data
 precies zo uit als een park dat ’s nachts gesloten is, dus komt die informatie
@@ -241,7 +241,7 @@ rechtstreeks uit de API, en daar zijn allebei de sorteerknoppen verborgen.
 Als elke attractie hetzelfde verzonnen getal kost, is elke volgorde even goed,
 en elke volgorde die een sorteerknop daar maakt, berust nergens op.
 
-**Een dag die voorbij is, blijft.** De kalender laat je een dag opnieuw openen
+Een dag die voorbij is, blijft. De kalender laat je een dag opnieuw openen
 waarop je iets had gepland, en de automatische knoppen zijn daar weg. Verschuiven,
 afvinken en verwijderen gaan met de hand gewoon door. Een gelopen dag is een
 registratie, en dat je om één uur echt in die rij stond, is de reden dat hij

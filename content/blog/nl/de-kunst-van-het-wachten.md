@@ -86,7 +86,7 @@ Maister schreef er acht op. Deze drie zie je in elke wachtrij terug:
 
 ### Je tijdsgevoel overdrijft, met een dikke derde
 
-Hoe slecht we onbezet wachten inschatten, is meetbaar. Marketingonderzoeker
+Marketingonderzoeker
 **Jacob Hornik** klokte in 1984 de wachttijd aan kassa’s in winkels en vroeg de
 wachtenden daarna hoe lang ze dachten dat het had geduurd. Gemiddeld zaten de
 schattingen er **ruim 36 procent** boven. Uit gemeten tien minuten worden in je
@@ -234,9 +234,7 @@ biedt met sta- en zitplaatsen ruimte aan bijna 10.000 mensen per voorstelling.
 Dat zijn bijna tienduizend mensen die het komende halfuur ergens anders zitten
 dan voor jouw favoriete coaster, en de rest van het park haalt even adem. In
 het uurprofiel van de Hollywood Studios op park.fan zakken de wachttijden van de
-headliners duidelijk in de avonduren waarin Fantasmic! speelt. Hoeveel daarvan
-door de show komt en hoeveel door de naderende sluitingstijd, is uit de cijfers
-niet af te lezen. Op 25 september 2026
+headliners duidelijk in de avonduren waarin Fantasmic! speelt. Uit de cijfers is niet af te lezen hoeveel daarvan door de show komt en hoeveel door de naderende sluitingstijd. Op 25 september 2026
 bijvoorbeeld begint de eerste voorstelling om 20.00 uur, een uur voordat het
 park sluit. Wie de show al kent, rijdt dat uur toch het voordeligst. Voor
 zulke momenten lezen we de wachttijden elke vijf minuten opnieuw in.
@@ -305,10 +303,7 @@ naar het station, het station zwaait terug, en niemand beweegt. Het knelpunt is
 dan de afhandeling. Hoe snel zijn alle beugels gecontroleerd en is de trein
 weer buiten?
 
-Hoe serieus moderne banen dat nemen, laat
-[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) in het
-[Europa-Park](ref:europa-park?bare) zien. Volgens het factsheet van Mack Rides
-heeft de baan **zeven treinen**, waarvan er drie of vier tegelijk op het
+Volgens het factsheet van Mack Rides heeft [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) in het [Europa-Park](ref:europa-park?bare) **zeven treinen**, waarvan er drie of vier tegelijk op het
 traject rijden. Het doel voor de afhandeling is volgens Coaster101 **één vertrek
 elke 36 seconden**. Met 16 plaatsen per trein levert dat de 1.600 gasten per
 uur op die Mack als theoretische capaciteit opgeeft. Net niet het niveau van de
@@ -436,10 +431,7 @@ ter wereld:
 
 ## Phantasialand en Europa-Park versus Orlando
 
-Hoezeer vraag en capaciteit het wachttijdniveau van een heel park bepalen, zie
-je het best als je twee grote Europese parken naast Orlando legt.
-
-**Orlando speelt in een eigen vraagcompetitie.** Met 17,8 miljoen gasten in
+Orlando speelt in een eigen vraagcompetitie. Met 17,8 miljoen gasten in
 2024 is het [Magic Kingdom](ref:magic-kingdom-park?bare) volgens de
 brancheorganisatie TEA het drukstbezochte pretpark ter wereld, en zowel Disney
 als Universal trekt gasten van alle continenten. Daarbij kun je je daar langs
@@ -453,7 +445,7 @@ ondanks vier parallelle theaters de langste mediane wachttijd van het park
 Premier Access, en het Phantasialand verkoopt voor zijn grote banen een Quick
 Pass, inmiddels per rit.
 
-**Het [Europa-Park](ref:europa-park?bare) is het tegenmodel.** Duitslands
+Het [Europa-Park](ref:europa-park?bare) is het tegenmodel. Duitslands
 grootste park, na Disneyland Paris het drukstbezochte van Europa (6,2 miljoen
 gasten in 2024 volgens TEA), verdeelt zijn bezoekers over **veertien
 achtbanen** (telling van RCDB) plus tientallen themaritten. Die pure
@@ -462,8 +454,8 @@ spreidt zich, en nauwelijks een rij loopt permanent in verzadiging. Daarom
 voelen zelfs volle dagen in Rust zelden als Orlando, en de langste mediane
 wachttijd van het park heeft de nieuwste achtbaan, Voltron.
 
-**Het [Phantasialand](ref:phantasialand?bare) is daarentegen het uiterste geval
-in de andere richting.** Het heeft zo’n 28 hectare, half zoveel achtbanen als in
+Het [Phantasialand](ref:phantasialand?bare) is daarentegen het uiterste geval
+in de andere richting. Het heeft zo’n 28 hectare, half zoveel achtbanen als in
 Rust (zeven volgens RCDB), en is extreem uitbundig gethematiseerd. De belasting
 concentreert zich op een handvol headliners, en als op een vakantiezaterdag
 iedereen naar [Taron](ref:phantasialand/taron?bare) wil (groeten, ik ben er

@@ -161,7 +161,7 @@ fünf Achterbahnen, fünf Wasserattraktionen und über vierzig Attraktionen
 insgesamt. Das Efteling zählte im selben Jahr 5,78 Millionen Besuche, rund
 fünfmal so viele, und hat nicht fünfmal so viele Achterbahnen.
 
-**Das Toverland verkauft keinen Fast Pass und keinen Express-Pass.** Zeit gegen Geld tauschen kannst du nur an den 13 Halloween-Abenden im Oktober und Anfang November.
+Das Toverland verkauft keinen Fast Pass und keinen Express-Pass. Zeit gegen Geld tauschen kannst du nur an den 13 Halloween-Abenden im Oktober und Anfang November.
 Eine Single-Rider-Spur gibt es seit 2023 übrigens auch, aber nur an einer
 einzigen Attraktion, dem Freifallturm Dragonwatch, und die kostet nichts extra.
 

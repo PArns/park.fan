@@ -221,7 +221,7 @@ Al Magic Kingdom, di giorno, sopra Main Street sono appese ghirlande di zucche, 
 
 La Spooky Farm di Knott's Berry Farm si tiene di giorno, da giovedì a domenica dal 24 settembre al 31 ottobre, più il Columbus Day, il 12 ottobre. Il motto è «All Fun. No Fear.», e ci sono dolcetti nella Ghost Town, i personaggi dei Peanuts, un campo di zucche e spettacoli. Il campo di zucche e la decorazione dei biscotti si pagano a parte.
 
-Anche gli altri parchi Six Flags hanno le loro giornate per le famiglie. Si chiamano Tricks and Treats a Magic Mountain, Kings Island, Carowinds, Over Texas, Fiesta Texas e Kings Dominion, Kids Boo Fest a Great Adventure e Great America. Di solito sono i fine settimana fino al 1° novembre, di giorno fino alle 17 circa, prima che cominci il programma serale.
+Anche gli altri parchi Six Flags hanno le loro giornate per le famiglie. Si chiamano Tricks and Treats a Magic Mountain, Kings Island, Carowinds, Over Texas, Fiesta Texas e Kings Dominion, Kids Boo Fest a Great Adventure e Great America. Di solito sono i fine settimana fino al 1° novembre, di giorno fino alle 17 circa.
 
 ### Spooktacular a SeaWorld e Busch Gardens
 
@@ -289,7 +289,7 @@ SCarowinds a Carowinds, fino al 7 novembre. Quasi tutti gli altri finiscono il 3
 
 ### Cosa c'è per i bambini piccoli?
 
-Meglio le giornate che le serate, per esempio Knott's Spooky Farm, Tricks and Treats e Kids Boo Fest da Six Flags, lo Spooktacular di SeaWorld e Busch Gardens, Brick or Treat a Legoland e le zucche di Dollywood e Silver Dollar City. Di solito è tutto compreso nel normale biglietto.
+Knott's Spooky Farm, Tricks and Treats e Kids Boo Fest da Six Flags, lo Spooktacular di SeaWorld e Busch Gardens, Brick or Treat a Legoland e le zucche di Dollywood e Silver Dollar City. È tutto di giorno, e di solito compreso nel normale biglietto.
 
 — Patrick
 

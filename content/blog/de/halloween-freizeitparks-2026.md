@@ -98,19 +98,13 @@ An vollen Abenden staut es sich im Movie Park vor den neun Mazes, die im Durchla
 
 Gespielt wird an **22 ausgewählten Abenden vom 26. September bis 8. November
 2026**, überwiegend Freitag bis Sonntag; tagsüber ist der Park ab 10 Uhr normal
-geöffnet, die Horror-Bereiche starten am frühen Abend. Der Horrorabend steckt im
+geöffnet, die Horror-Bereiche starten am frühen Abend. Ab September öffnet der
+[Movie Park](/blog/movie-park-germany-wartezeiten-tipps) ohnehin nur noch von
+Donnerstag bis Sonntag. Der Horrorabend steckt im
 normalen Parkticket, die **Mazes kommen separat obendrauf**, und eigene Kostüme
 oder Masken sind an keinem Abend erlaubt, nur Kinder bis 1,40 m dürfen sich
-verkleiden. Alle 22 Termine, die Preise und den
-S.I.K. Pass hat unsere
-[Meldung zum Start](/blog/movie-park-germany-halloween-horror-festival-2026).
-Extra vormerken würde ich mir den **17. Oktober**, an dem zum fünften Mal der
+verkleiden. Extra vormerken würde ich mir den **17. Oktober**, an dem zum fünften Mal der
 Event Day **Haunters Against Hate** läuft.
-
-Was der Park tagsüber und außerhalb der Halloween-Saison kann, welcher Wochentag
-dort wirklich der ruhigste ist und warum ab September nur noch von Donnerstag
-bis Sonntag geöffnet wird, steht im
-[Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
@@ -145,7 +139,7 @@ Einlass ist um 17:45 Uhr, der Food Court öffnet um 18 Uhr, die Horror-Welten um
 Eintritt läuft über gestaffelte Pässe, vom **Event Pass** (der Preis hängt vom
 Abend ab, Stand 29. September ab 45 €) über den **Shoxter Pass** mit
 Priority-Zugang (ab 96 €, inzwischen ausverkauft) bis zum **Psycho Pass** (ab 18, All-inclusive, 349 €). Extra bezahlt werden die Vollkontakt-Experience THE HOTEL (29 €), der Club THE FORBIDDEN
-(10 €) und eine kurze Horror-VR (6 €). Unsere [Meldung zum Jubiläum](/blog/traumatica-zehn-jahre-europa-park) beschreibt, was in THE HOTEL passiert, soweit der Park es verrät.
+(10 €) und eine kurze Horror-VR (6 €).
 
 Zum Jubiläum kam der **Vampire’s Club** für genau vier Nächte zurück, am 25.
 und 26. September (vorbei) sowie am 2. und 3. Oktober. An diesen Abenden tritt er an
@@ -153,7 +147,7 @@ die Stelle von THE FORBIDDEN, und Marc Terenzi steht dort selbst auf der Bühne.
 
 In nebelverhangenen Gassen machen ganze Gruppen von Darstellern gezielt Jagd auf einzelne Besucher, dazu kommen Pyro-Shows.
 
-Tagsüber sind die Warteschlangen in Rust für einen Park dieser Größe kurz. Die Zahlen stehen in unserem [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps), ebenso der Grund, warum ein Traumatica-Ticket im November die letzte Parkstunde kostet.
+Tagsüber sind die [Warteschlangen in Rust](/blog/europa-park-wartezeiten-tipps) für einen Park dieser Größe kurz. Im November kostet ein Traumatica-Ticket die letzte Parkstunde.
 
 [Europa-Park](ref:europa-park?full)
 
@@ -229,10 +223,6 @@ meistbeanstandete niederländische Werbung des Jahres; die Reclame Code
 Commissie sah die Menschenwürde verletzt. Walibi zog den Spot am 22. August 2025
 zurück, erst vorläufig, vier Tage später endgültig.
 
-Wie es in Biddinghuizen ohne Halloween aussieht und was Untamed an einem
-normalen Tag an Wartezeit kostet, steht im
-[Walibi-Guide](/blog/walibi-holland-untamed-hard-gaan).
-
 [Walibi Holland](ref:walibi-holland?full)
 
 Aktuelles Line-up und Termine: [walibi.nl/halloween](https://www.walibi.nl/halloween/de/halloween-fright-nights).
@@ -272,9 +262,9 @@ Als einziges Halloween-Angebot des Sommers sollte das Spukhaus **Bazaar
 Bizarre** ausnahmsweise im Juli, August und an den Septemberwochenenden laufen. Nach nicht einmal vier Wochen
 machte der Park es am 26. Juli wieder zu, weil zu wenige Tickets verkauft
 wurden. Zu Halloween ist es vom 31. Oktober an wieder dabei. Bottrop, das zum
-selben Konzern Parques Reunidos gehört, hat sein Sommer-Spukhaus im August
-durchgezogen. Den Konzern will sein Eigentümer EQT gerade verkaufen, mehr dazu
-in unserer [Meldung vom 25. September](/blog/parques-reunidos-verkauf-movie-park).
+selben Konzern [Parques Reunidos](/blog/parques-reunidos-verkauf-movie-park)
+gehört, hat sein Sommer-Spukhaus im August durchgezogen. Den Konzern will sein
+Eigentümer EQT gerade verkaufen.
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
@@ -301,16 +291,13 @@ gesamte Avalon-Gebiet_. Es ersetzt das alte Ratten-Labyrinth „Trapped“ (2019
 Das Toverland vermarktet Entwined als „größte Halloween-Experience Europas“.
 Sevenum liegt gut eine Autostunde von Bottrop entfernt.
 
-**Wenn du im Toverland für irgendetwas extra zahlst, dann für den Fear Pass.**
+Der Fear Pass ist das einzige Extra, für das ich im Toverland zahlen würde.
 Für 69,95 € gibt es einmaligen, schnelleren Zugang zu allen sechs Experiences
 plus einen eigenen Bereich an der Parade, die jeden Abend um 18 Uhr startet.
 Einzeln kosten die Experiences 6,50 bis 13 € pro Zeitfenster, Entwined allein
 13 €, und vom Fear Pass gibt es pro Abend nur ein begrenztes Kontingent. An vollen Abenden entscheidet er, ob du drei oder alle sechs schaffst. Für 2026 ist der Fear Pass
 allerdings für alle Halloween Nights ausverkauft; die Experiences gibt es weiter
 einzeln.
-
-Für den normalen Betrieb, Troy und die Frage, wann Sevenum wirklich leer ist,
-gibt es den [Toverland-Guide](/blog/toverland-troy-wartezeiten-tipps).
 
 [Toverland](ref:attractiepark-toverland?full)
 
@@ -348,9 +335,7 @@ Diamond-Pässe sind davon ausgenommen.
 Ibilaw läuft an 20 Tagen vom **10. Oktober bis 11. November 2026**, an zehn davon bis 22 Uhr:
 17., 24. und 25. Oktober, 29. Oktober bis 2. November sowie 7. und 11. November.
 Neu ist neben dem Grand Hotel die Scare Zone **Hecatomb**, ein Stammesritual
-gleich bei Kondaa. Der Rest des Jahres, mit Kondaa, der
-Parkgeschichte und dem Vergleich zum bekannteren Walibi Holland, steht in
-unserem [Walibi-Belgium-Guide](/blog/walibi-belgium-wartezeiten-tipps).
+gleich bei Kondaa.
 
 Das Gelände ist kompakt, und die Darsteller kommen nah heran. [Bobbejaanland](ref:bobbejaanland) liegt gut eine
 Autostunde entfernt; wer ohnehin nach Belgien fährt, legt beide auf ein
@@ -366,9 +351,7 @@ an zehn Abenden die **Halloween Fright Nights**, freitags und samstags vom **2.
 bis 31. Oktober 2026**, jeweils bis 22 Uhr. Von den sechs Horrorhäusern sind zwei
 neu, **NEXUS AI** und **Lost: Deep in the Woods**. Die drei Scare Zones stecken
 im Eintritt, die Häuser kosten ab 3 € pro Haus mit Zeitfenster, alle sechs als
-Paket 49 €. Empfohlen ist das ab 16, doch anders als bei Traumatica kommen Jüngere in Begleitung eines Erziehungsberechtigten hinein. Tickets, Shows und die Rechnung, ab wann sich der Nightmare
-Society Pass lohnt, stehen in unserer
-[Meldung zu den Fright Nights](/blog/plopsaland-deutschland-halloween-fright-nights-2026).
+Paket 49 €. Empfohlen ist das ab 16, doch anders als bei Traumatica kommen Jüngere in Begleitung eines Erziehungsberechtigten hinein.
 
 [Plopsaland Deutschland](ref:plopsaland-deutschland?full)
 
@@ -401,9 +384,6 @@ Quelle: [Pressemitteilung des Heide-Park vom 4. Oktober 2026](https://www.heide-
 Aktuelle Termine und Altersfreigaben:
 [heide-park.de → Halloween](https://www.heide-park.de/entdecken/events/halloween/).
 
-Den Rest der Saison in Soltau, von Colossos bis zum ruhigsten Wochentag, gibt
-es im [Heide-Park-Guide](/blog/heide-park-wartezeiten-tipps).
-
 ### Parc Astérix
 
 Der [Parc Astérix](ref:parc-asterix) nördlich von Paris zieht sein **Peur sur le Parc** vom **3. Oktober bis 8.
@@ -425,14 +405,13 @@ Mickey's Halloween Celebration und Schurken zum Fotografieren, dieses Jahr
 wieder mit Dr. Facilier. Alles steckt im normalen Ticket, ein Maze gibt es
 nicht. Am **31. Oktober** bleibt der Park bis 23 Uhr offen, mit Feuerwerk, und
 das ist der einzige Tag im Jahr, an dem auch Erwachsene verkleidet kommen
-dürfen. Die übrigen Neuheiten stehen in unserer [Meldung zum Start](/blog/disneyland-paris-halloween-2026).
+dürfen.
 
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?full)
 
 ### Alton Towers
 
-Wer im Oktober ohnehin nach England fliegt, kann in Staffordshire Halloween
-mitnehmen. [Alton Towers](ref:alton-towers) veranstaltet **Scarefest** an
+[Alton Towers](ref:alton-towers) veranstaltet **Scarefest** an
 ausgewählten Tagen vom **26. September bis 1. November 2026**: 26. und 27.
 September, 2. bis 4. Oktober, 9. bis 11. Oktober und danach täglich vom 16.
 Oktober bis 1. November. An diesen Tagen ist der Park bis 21 Uhr offen, das sind
@@ -454,9 +433,9 @@ Stunden nach Sonnenuntergang. Der Park nennt ausdrücklich
 [The Smiler](ref:alton-towers/the-smiler),
 [Nemesis Reborn](ref:alton-towers/nemesis-reborn) und
 [Wicker Man](ref:alton-towers/wicker-man), die Holzachterbahn, die auf eine
-sechs Stockwerke hohe, brennende Figur zufährt. Preise, Kombitickets und das
-neue Dinner „Dine with the Dead“ stehen in unserer
-[Meldung zu Scarefest](/blog/alton-towers-scarefest-2026).
+sechs Stockwerke hohe, brennende Figur zufährt. Neu bei
+[Scarefest](/blog/alton-towers-scarefest-2026) ist außerdem das Dinner „Dine
+with the Dead“.
 
 [Alton Towers](ref:alton-towers?full)
 
@@ -476,12 +455,10 @@ und keiner davon steckt im Parkeintritt. Neu ist der fünfte,
 verdächtigt den Metzger, und du gehst durch Metzgerei und Schlachthof, um ihm zu
 helfen. Die anderen vier sind **La Isla Maldita** (ab 12 €, Geisterpiraten),
 **REC® Experience** (ab 8,90 €, nach der spanischen Filmreihe und nur in
-PortAventura), **La Muerte Viva** und **Angkor** (je ab 6,90 €). Wer mehr als
-einen will, rechnet mit dem Halloween Passport: Passport 2 (El Carnicero und REC)
+PortAventura), **La Muerte Viva** und **Angkor** (je ab 6,90 €). Für mehr als
+einen gibt es den Halloween Passport: Passport 2 (El Carnicero und REC)
 ab 11,90 €, Passport 5 mit allen fünf ab 30,90 €. Laut Ticketseite gilt für
 alle fünf dieselbe Altersgrenze, ab 12 Jahren in Begleitung und allein ab 14.
-Öffnungszeiten, Vergleich der Pässe und was sonst neu ist, steht in unserer
-[Meldung zu PortAventura](/blog/portaventura-halloween-2026).
 
 [PortAventura Park](ref:portaventura-park?full)
 
@@ -489,14 +466,9 @@ Programm und Preise:
 [portaventuraworld.com → Halloween](https://www.portaventuraworld.com/blog/en/halloween26)
 und [Halloween-Pasajes](https://www.portaventuraworld.com/en/tickets/halloween-passages).
 
-Gardaland am Gardasee hat diesen Herbst ein neues Labyrinth, durch das du
-schweigend gehen musst, und unsere [Meldung zu
-Gardaland](/blog/gardaland-magic-halloween-2026) hat Termine und Preise.
-
-Die Events auf der anderen Seite des Atlantiks stehen im [Halloween-Überblick für
-die USA](/blog/halloween-usa-freizeitparks-2026), und Cedar Point in Ohio hat
-einen eigenen Beitrag zu den
-[HalloWeekends](/blog/cedar-point-halloweekends-2026).
+Gardaland am Gardasee hat diesen Herbst ein
+[neues Labyrinth](/blog/gardaland-magic-halloween-2026), durch das du schweigend
+gehen musst.
 
 ## Parks ohne Halloween
 
@@ -507,11 +479,9 @@ Zwei der meistbesuchten Parks der Region machen bei Halloween nicht mit.
 Das [Phantasialand](ref:phantasialand) in Brühl bietet **kein Halloween-Event**.
 
 Brühls große Saison beginnt **später**. Ab **14. November 2026** läuft **Wintertraum** bis in den Januar (24. Januar 2027), mit Eisbahn,
-Winter-Shows und abendlicher Illumination. Die anderen Parks in Europa, die zwischen November und Januar aufmachen, stehen im [Winter-Guide](/blog/winter-freizeitparks-2026).
-
-Den Wintertraum nimmt sich der [Phantasialand-Guide](/blog/phantasialand-tipps)
-ausführlich vor, samt dem Quick Pass, der seit der Saison 2025/26 komplett
-anders funktioniert.
+Winter-Shows und abendlicher Illumination. Der
+[Quick Pass](/blog/phantasialand-tipps) funktioniert seit der Saison 2025/26
+komplett anders.
 
 [Phantasialand](ref:phantasialand?full)
 
@@ -540,8 +510,8 @@ donnerstags nur mittlerer. In der zweiten fehlen drei Attraktionen, darunter Dan
 Macabre, und auch dort steht im Kalender jeden Tag hoher Andrang. Wer wegen
 Danse Macabre kommt, nimmt trotzdem die erste.
 
-Das Besucherlimit von fünf Millionen Gästen und der Winter Efteling stehen im
-[Efteling-Guide](/blog/efteling-disney-der-niederlande).
+Für das Efteling gilt ein [Besucherlimit](/blog/efteling-disney-der-niederlande)
+von fünf Millionen Gästen, und im Winter gibt es den Winter Efteling.
 
 [Efteling](ref:efteling?full)
 
@@ -588,5 +558,9 @@ Auch in der Statistik nach Wochentag und Monat fehlt Halloween noch.
 ```gallery-widget folder=/media/halloween-2026/kulissen heading="Kulissen und Zonen"
 
 ```
+
+## Quellen & Weiterlesen
+
+Weitere Beiträge: [Termine und S.I.K. Pass im Movie Park](/blog/movie-park-germany-halloween-horror-festival-2026) · [Zehn Jahre Traumatica](/blog/traumatica-zehn-jahre-europa-park) · [Walibi Holland](/blog/walibi-holland-untamed-hard-gaan) · [Toverland](/blog/toverland-troy-wartezeiten-tipps) · [Walibi Belgium](/blog/walibi-belgium-wartezeiten-tipps) · [Fright Nights und Nightmare Society Pass im Plopsaland](/blog/plopsaland-deutschland-halloween-fright-nights-2026) · [Heide Park](/blog/heide-park-wartezeiten-tipps) · [Halloween im Disneyland Paris](/blog/disneyland-paris-halloween-2026) · [Halloween in PortAventura](/blog/portaventura-halloween-2026) · [Halloween in den USA](/blog/halloween-usa-freizeitparks-2026) · [HalloWeekends in Cedar Point](/blog/cedar-point-halloweekends-2026) · [Freizeitparks im Winter](/blog/winter-freizeitparks-2026)
 
 — Patrick

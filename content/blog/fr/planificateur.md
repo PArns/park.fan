@@ -225,7 +225,7 @@ assez pour le moment où l’on découvre les onze blocs et où l’on déglutit
 Ce qui nous a pris le plus de temps, ce sont quatre endroits où nous affirmons
 volontairement moins que nous ne pourrions.
 
-**La prévision se trompe, et de façon mesurable.** Chaque bloc sélectionné
+La prévision se trompe, et de façon mesurable. Chaque bloc sélectionné
 indique de combien, en moyenne sur les 45 derniers jours, les prévisions pour une
 file de cette longueur et à cette distance se sont écartées de ce que la journée
 a réellement apporté. C’est affiché jusqu’à 60 jours à l’avance ; la mesure ne
@@ -234,14 +234,14 @@ années.) Une moyenne n’est pas un plafond, et bien des jours la prévision to
 plus loin. Le chiffre est donc présenté comme une erreur typique et jamais comme
 une fourchette qui contiendrait déjà la bonne réponse.
 
-**Un horaire de spectacle peut être une estimation.** Ce que le parc a
+Un horaire de spectacle peut être une estimation. Ce que le parc a
 publié pour aujourd’hui est une annonce. Ce que nous avons reporté depuis le
 dernier jour de semaine comparable est une supposition, et elle est dessinée plus
 doucement : un tilde devant l’heure, un trait pointillé et la date
 d’où viennent les horaires. Personne au monde ne connaît les horaires de
 spectacle du samedi en huit.
 
-**Certains parcs, nous ne pouvons pas les mesurer du tout.**
+Certains parcs, nous ne pouvons pas les mesurer du tout.
 [Hansa-Park](ref:hansa-park) ne diffuse ses temps d’attente que dans sa propre
 application, sur le wifi du parc. Chez nous, aucun chiffre n’arrive de là. Dans
 les données, un parc sans source ressemble exactement à un parc fermé pour la
@@ -250,7 +250,7 @@ tri sont masqués là-bas. Si chaque attraction coûte le même
 chiffre inventé, tous les ordres se valent, et un bouton de tri ne ferait là
 que semblant.
 
-**Une journée passée reste.** Dans le calendrier, tu peux rouvrir un jour où
+Une journée passée reste. Dans le calendrier, tu peux rouvrir un jour où
 tu avais planifié quelque chose, et les boutons automatiques n’y sont plus. Tout ce
 qui se fait à la main continue : déplacer, cocher, supprimer. Une journée vécue
 est un enregistrement, et le fait que tu étais vraiment dans cette file à une

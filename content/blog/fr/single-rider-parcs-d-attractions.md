@@ -344,14 +344,14 @@ Disneyland indique une taille minimale de 102 centimètres.
 
 ## Comment organiser une journée avec Single Rider
 
-**Choisis deux ou trois attractions à l’avance.** Sur la page du parc de park.fan, tu vois quelles
+Choisis deux ou trois attractions à l’avance. Sur la page du parc de park.fan, tu vois quelles
 attractions portent le repère. L’entrée vaut le plus là où la file normale est la plus longue.
 
-**Vérifie que la file est ouverte avant de vous séparer.** Sur la page de l’attraction, le repère
+Vérifie que la file est ouverte avant de vous séparer. Sur la page de l’attraction, le repère
 « Single Rider » s’affiche avec l’état de la file. Elle peut être fermée sans que l’attraction le
 soit.
 
-**Répartissez-vous quand cela vaut le coup.** Pour deux adultes, la solution la plus rapide est que
+Répartissez-vous quand cela vaut le coup. Pour deux adultes, la solution la plus rapide est que
 l’un prenne la file normale et l’autre l’entrée Single Rider. Celui qui monte en premier attend à la
 sortie.
 

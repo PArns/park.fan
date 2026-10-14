@@ -135,8 +135,7 @@ Winja’s Fear e Winja’s Force e la torre [Mystery Castle](ref:phantasialand/m
 
 Sette aree a tema stanno strette l'una all'altra: Berlin, China Town, Deep in Africa, Mexico,
 Fantasy, Mystery e Rookburgh. I biglietti si comprano solo online e con data, la biglietteria
-sul posto non c'è più. Chi paga sale più in fretta su una singola attrazione con il
-**Quick Pass**, oppure una volta su ognuna con il Quick Pass Ultimate, e su F.L.Y. solo con
+sul posto non c'è più. Pagando a parte, con il **Quick Pass** sali più in fretta su una singola attrazione, oppure una volta su ognuna con il Quick Pass Ultimate, e su F.L.Y. solo con
 l'Ultimate. Accanto al parco ci sono tre hotel a tema: il Charles Lindbergh a Rookburgh, il
 Ling Bao e il Matamba. A differenza di Rust non danno un ingresso anticipato, ma l'hotel Charles
 Lindbergh offre un accesso riservato a F.L.Y. una volta al giorno. Si arriva dall'A553, uscita
@@ -312,8 +311,7 @@ sono due gruppi, e senza pass lì aspetti più della nostra mediana.
 
 Sull'insieme dei giorni misurati al Phantasialand, Taron è al massimo all'apertura e nell'ultima ora, quando tutti vogliono infilare un'ultima
 corsa. F.L.Y. nella prima ora è corto e ha il suo picco un'ora dopo, appena il resto del parco
-arriva a Rookburgh. Tutti e due hanno l'ora più tranquilla nel pomeriggio. Chi vuole
-farli entrambi va da F.L.Y. all'apertura e si tiene Taron per il pomeriggio.
+arriva a Rookburgh. Tutti e due hanno l'ora più tranquilla nel pomeriggio. Per tutti e due vuol dire F.L.Y. all'apertura e Taron nel pomeriggio.
 
 All'Europa-Park la Eurosat ha la coda più lunga già alle dieci, perché sta vicino all'ingresso e
 corre al coperto, e quando piove ci vanno tutti nello stesso momento. All'Heide
@@ -328,8 +326,7 @@ non confrontiamo giorni che si basano su parti diverse dell'anno.
 
 All'Europa-Park, al Phantasialand, all'Heide Park e al Legoland il sabato è il giorno più pieno,
 a Brühl con lo stacco più netto dal resto della settimana. Lì la domenica è piena quasi
-altrettanto, mentre a Rust, Soltau e Bottrop è uno dei giorni più tranquilli. Chi con i bambini
-può andare solo nel fine settimana sceglie quindi la domenica e non il sabato, tranne a Brühl. Al Plopsaland ogni giorno è tranquillo
+altrettanto, mentre a Rust, Soltau e Bottrop è uno dei giorni più tranquilli. Per le famiglie che possono andare solo nel fine settimana, la domenica è quindi il giorno migliore, tranne a Brühl. Al Plopsaland ogni giorno è tranquillo
 uguale, sabato compreso.
 
 Luglio e agosto sono i mesi più pieni in quasi tutti i parchi,

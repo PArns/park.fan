@@ -218,7 +218,7 @@ Ergebnis genau ein Rückgängig.
 Am längsten haben wir an vier Stellen gesessen, an denen wir mit Absicht weniger
 anzeigen, als wir könnten.
 
-**Die Prognose liegt daneben, und zwar messbar.** An jedem ausgewählten Block
+Die Prognose liegt daneben, und zwar messbar. An jedem ausgewählten Block
 steht, wie weit die Vorhersagen für eine so lange Warteschlange mit so viel Vorlauf in
 den letzten 45 Tagen im Schnitt von dem entfernt lagen, was der Tag dann
 wirklich brachte. Das gibt es bis 60 Tage im Voraus, weiter reicht die Messung
@@ -227,12 +227,12 @@ Schnitt ist keine Obergrenze, an vielen Tagen liegt die Prognose weiter daneben.
 Deshalb steht die Zahl als typischer Fehler da und nie als Spanne, in der die
 richtige Antwort schon drin wäre.
 
-**Eine Showzeit kann auch geschätzt sein.** Was der Park für heute veröffentlicht hat, ist
+Eine Showzeit kann auch geschätzt sein. Was der Park für heute veröffentlicht hat, ist
 eine Ansage. Was wir vom letzten passenden Wochentag hochgerechnet haben, ist
 eine Vermutung, und die wird im Planer weicher gezeichnet: mit Tilde vor der
 Uhrzeit, gepunkteter Linie und dem Datum, von dem die Zeiten stammen.
 
-**Manche Parks können wir gar nicht messen.** Der [Hansa-Park](ref:hansa-park)
+Manche Parks können wir gar nicht messen. Der [Hansa-Park](ref:hansa-park)
 gibt seine Wartezeiten nur in der eigenen App im Park-WLAN aus. Für uns kommt
 dort nie eine Zahl an. Ein Park ohne Quelle sieht in den Daten exakt aus wie ein
 Park, der nachts geschlossen ist, deshalb kommt diese Auskunft direkt aus der
@@ -240,7 +240,7 @@ API, und die beiden Sortier-Knöpfe fehlen dort ganz. Wenn
 jede Bahn dieselbe erfundene Zahl kostet, ist jede Reihenfolge gleich gut, und
 ein Sortier-Knopf würde dort nur so tun, als ob.
 
-**Ein vergangener Tag bleibt.** Im Kalender kannst du einen Tag wieder öffnen,
+Ein vergangener Tag bleibt. Im Kalender kannst du einen Tag wieder öffnen,
 an dem du etwas geplant hattest, und die automatischen Knöpfe sind dort weg.
 Alles von Hand geht weiter: verschieben, abhaken, löschen. Ein gelaufener Tag
 ist eine Aufzeichnung, und dass du um eins wirklich in dieser Warteschlange standst,

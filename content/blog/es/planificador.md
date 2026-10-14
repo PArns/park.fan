@@ -214,7 +214,7 @@ en que ves los once bloques y tragas saliva.
 Donde más horas echamos fue en cuatro sitios en los que el planificador afirma
 a propósito menos de lo que podría.
 
-**La previsión se equivoca, y de forma medible.** En cada bloque seleccionado
+La previsión se equivoca, y de forma medible. En cada bloque seleccionado
 pone cuánto se apartaron de media, en los últimos 45 días, las previsiones para
 una cola de esa longitud y con esa antelación de lo que el día trajo realmente.
 Está hasta 60 días vista; más allá la medición aún no llega. (Al parte del
@@ -222,14 +222,14 @@ tiempo se lo llevo pidiendo años.) Una media no es un techo, y muchos días la
 previsión cae más lejos. Por eso el número está ahí como error típico y nunca
 como un margen que ya contuviera la respuesta correcta.
 
-**Un horario de espectáculo puede ser una estimación.** Lo que el parque ha publicado
+Un horario de espectáculo puede ser una estimación. Lo que el parque ha publicado
 para hoy es un anuncio. Lo que hemos proyectado desde el último día de la semana
 equivalente es una suposición, y el planificador la dibuja más suave: con una
 tilde delante de la hora, línea de puntos y la fecha de la que salen los
 horarios. Los horarios del sábado de dentro de dos semanas no los sabe nadie,
 nosotros tampoco.
 
-**Hay parques que no podemos medir.** [Hansa-Park](ref:hansa-park) publica sus
+Hay parques que no podemos medir. [Hansa-Park](ref:hansa-park) publica sus
 tiempos de espera solo en su propia aplicación, en el wifi del parque. Hasta
 nosotros no llega nunca ninguna cifra. En los datos, un parque sin fuente se ve
 exactamente igual que un parque cerrado por la noche, así que ese dato sale
@@ -237,7 +237,7 @@ directamente de la API, y en ese parque no hay botones de ordenar.
 Si cada atracción cuesta la misma cifra inventada, todos los órdenes valen igual,
 y un botón de ordenar allí solo haría como que ordena.
 
-**Un día pasado se queda.** En el calendario puedes volver a abrir un día en el
+Un día pasado se queda. En el calendario puedes volver a abrir un día en el
 que habías planificado algo, y allí los botones automáticos ya no están. Todo lo
 manual sigue: mover, marcar, borrar. Un día vivido es un registro, y que a la
 una estuvieras de verdad en esa cola es la razón por la que se guarda.

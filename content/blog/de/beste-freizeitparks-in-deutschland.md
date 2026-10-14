@@ -128,9 +128,7 @@ im Stehen einsteigst und auf dem Bauch liegend fährst, durch eine viktorianisch
 [Mystery Castle](ref:phantasialand/mystery-castle).
 
 Sieben Themenwelten stehen auf engem Raum: Berlin, China Town, Deep in Africa, Mexico, Fantasy,
-Mystery und Rookburgh. Tickets gibt es nur online und datiert, eine Tageskasse nicht mehr. Wer
-zahlt, kommt mit dem **Quick Pass** schneller auf eine einzelne Bahn oder mit dem Quick Pass
-Ultimate einmal auf jede, und nur mit Ultimate auf F.L.Y. Drei Themenhotels stehen am Park:
+Mystery und Rookburgh. Tickets gibt es nur online und datiert, eine Tageskasse nicht mehr. Gegen Aufpreis kommst du mit dem **Quick Pass** schneller auf eine einzelne Bahn oder mit dem Quick Pass Ultimate einmal auf jede, und nur mit Ultimate auf F.L.Y. Drei Themenhotels stehen am Park:
 Charles Lindbergh in Rookburgh, Ling Bao und Matamba. Einen früheren Einlass bringen sie anders als
 in Rust nicht, das Hotel Charles Lindbergh aber einen eigenen Zugang zu F.L.Y. einmal am Tag. Anreise
 über die A553, Ausfahrt Brühl-Süd, oder mit der Bahn bis Brühl und von dort im Shuttlebus.
@@ -305,7 +303,7 @@ Gruppen vor derselben Bahn, und wer keinen Pass hat, wartet dort länger als uns
 Über alle gemessenen Tage im Phantasialand ist Taron zur Öffnung und in der letzten Stunde am vollsten, wenn alle noch schnell eine Fahrt
 mitnehmen wollen. F.L.Y. ist in der ersten Stunde kurz und hat seine Spitze eine Stunde später,
 sobald der Rest des Parks in Rookburgh angekommen ist. Beide haben am Nachmittag ihre ruhigste
-Stunde. Wer beide fahren will, geht zur Öffnung zu F.L.Y. und hebt sich Taron für den Nachmittag auf.
+Stunde. Für beide Bahnen heißt das F.L.Y. zur Öffnung und Taron am Nachmittag.
 
 Im Europa-Park hat die Eurosat ihre längste Warteschlange schon um zehn Uhr, weil sie nahe am
 Eingang steht und drinnen fährt, und bei Regen gehen alle gleichzeitig dorthin. Im Heide Park
@@ -320,8 +318,7 @@ vergleichen wir keine Tage, die auf verschiedenen Teilen des Jahres beruhen.
 
 Der Samstag ist im Europa-Park, im Phantasialand, im Heide Park und im Legoland der vollste Tag,
 in Brühl mit dem größten Abstand zum Rest der Woche. Der Sonntag ist dort fast genauso voll, in
-Rust, Soltau und Bottrop dagegen einer der ruhigeren Tage. Wer mit Kindern nur am Wochenende kann,
-fährt also sonntags und nicht samstags, außer nach Brühl. Im Plopsaland ist jeder Tag gleich ruhig, auch der Samstag.
+Rust, Soltau und Bottrop dagegen einer der ruhigeren Tage. Für Familien, die nur am Wochenende können, ist der Sonntag also der bessere Tag, außer in Brühl. Im Plopsaland ist jeder Tag gleich ruhig, auch der Samstag.
 
 Juli und August sind in fast allen Parks die vollsten Monate, im
 Phantasialand mit großem Abstand. Der September ist in Brühl, Soltau und Bottrop einer der

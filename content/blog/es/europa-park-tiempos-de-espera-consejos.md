@@ -581,8 +581,7 @@ En 2027 se arranca antes: del 7 al 19 de marzo el parque abre por primera vez
 dos Pre-Opening Weeks, todavía no con todas las atracciones y espectáculos, pero
 con las entradas más baratas del año, y la temporada de verano empieza luego el
 20 de marzo. De octubre solo están en la tabla los primeros días, de noviembre
-ninguno. Hasta dónde han entrado ya Halloween y HALLOWinter lo ves en el número
-de días medidos.
+ninguno. El número de días medidos indica hasta dónde han entrado ya Halloween y HALLOWinter.
 
 ### Qué vacaciones llenan el parque
 
@@ -592,7 +591,7 @@ francesa de Grand Est, es decir, de Alsacia, las de los cantones suizos de
 Argovia, Basilea-Ciudad y Basilea-Campiña y las de los estados federados vecinos
 de Baviera, Hesse y Renania-Palatinado.
 
-Cuánto pesa eso se ve en los días laborables. Entre abril y septiembre hubo 42
+Entre abril y septiembre hubo 42
 días laborables sin vacaciones escolares en ninguna de las ocho regiones y sin
 festivo. Cuatro estuvieron en «alto» o más, 27 en «bajo». De los días
 laborables de las vacaciones de Argovia, 17 de 27 estuvieron en «alto», y ni uno
@@ -682,9 +681,7 @@ noviembre merece el intento. Los días que pintan más tranquilos ahora mismo es
 
 ## El día perfecto en el Europa-Park
 
-**Preséntate en la entrada antes de que abran, y ve entonces al Voletarium.**
-
-Nuestro análisis de rope drop compara, para cada atracción, el
+Preséntate en la entrada antes de que abran, y ve entonces al Voletarium. Nuestro análisis de rope drop compara, para cada atracción, el
 tiempo de espera justo en la apertura con el pico diario más alto que se ha medido
 allí en un día lleno. En el Voletarium la cola de la apertura es solo una
 fracción de ese pico, con diferencia el mayor ahorro de todo el parque.
@@ -695,8 +692,7 @@ fracción de ese pico, con diferencia el mayor ahorro de todo el parque.
 
 En Voltron, Arthur y Silver Star, madrugar ahorra menos de la mitad.
 
-Hasta qué punto se reparte todo esto por el día solo se ve en el perfil horario:
-la espera típica de cada hora, la mediana de todos los días de operación medidos
+El perfil horario da la espera típica de cada hora, la mediana de todos los días de operación medidos
 desde finales de diciembre de 2025. En negrita, la hora más cargada de cada
 atracción.
 
@@ -709,7 +705,7 @@ atracción.
 En Silver Star, la cola más larga del día está a las diez y a las once; a partir de las doce se acorta bastante
 y no vuelve a crecer hasta las últimas horas de los días largos de verano.
 
-**Las horas más llenas están entre las diez y las doce.** La mayoría de las
+Las horas más llenas están entre las diez y las doce. La mayoría de las
 atracciones tienen su máximo a las diez o a las once; solo Arthur, Atlantica y
 el fjord rafting tocan techo por la tarde.
 

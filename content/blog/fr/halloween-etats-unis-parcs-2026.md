@@ -221,7 +221,7 @@ Au Magic Kingdom, des guirlandes de citrouilles pendent en journée au-dessus de
 
 À Knott's Berry Farm, la Spooky Farm a lieu en journée, du jeudi au dimanche du 24 septembre au 31 octobre, ainsi que le Columbus Day, le 12 octobre. Sa devise est « All Fun. No Fear. », avec des bonbons dans Ghost Town, les personnages des Peanuts, un champ de citrouilles et des spectacles. Le champ de citrouilles et la décoration de biscuits se paient en plus.
 
-Les autres parcs Six Flags ont leurs propres journées pour les familles. Elles s’appellent Tricks and Treats à Magic Mountain, Kings Island, Carowinds, Over Texas, Fiesta Texas et Kings Dominion, et Kids Boo Fest à Great Adventure et Great America. Ce sont en général les week-ends jusqu’au 1er novembre, en journée jusque vers 17 h, avant le programme du soir.
+Les autres parcs Six Flags ont leurs propres journées pour les familles. Elles s’appellent Tricks and Treats à Magic Mountain, Kings Island, Carowinds, Over Texas, Fiesta Texas et Kings Dominion, et Kids Boo Fest à Great Adventure et Great America. Ce sont en général les week-ends jusqu’au 1er novembre, en journée jusque vers 17 h.
 
 ### Spooktacular à SeaWorld et à Busch Gardens
 
@@ -289,7 +289,7 @@ SCarowinds, à Carowinds, jusqu’au 7 novembre. Presque tous les autres s’arr
 
 ### Que faire avec de jeunes enfants ?
 
-Plutôt les journées que les soirées, par exemple Knott's Spooky Farm, Tricks and Treats et Kids Boo Fest chez Six Flags, le Spooktacular de SeaWorld et de Busch Gardens, Brick or Treat à Legoland et les citrouilles de Dollywood et de Silver Dollar City. C’est en général compris dans l’entrée normale.
+Knott's Spooky Farm, Tricks and Treats et Kids Boo Fest chez Six Flags, le Spooktacular de SeaWorld et de Busch Gardens, Brick or Treat à Legoland et les citrouilles de Dollywood et de Silver Dollar City. Tout cela se passe en journée, et c’est en général compris dans l’entrée normale.
 
 — Patrick
 

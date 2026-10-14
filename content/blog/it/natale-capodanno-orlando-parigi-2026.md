@@ -412,17 +412,17 @@ compare in nessuna di quelle sezioni. Può ancora arrivare, Disney pubblica il C
 
 ## Cosa prenoterei al posto tuo
 
-**Novembre ti dà già la decorazione completa.** A
+Novembre ti dà già la decorazione completa. A
 Orlando entrambe le serate partono prima dell'inizio ufficiale della stagione,
 Universal festeggia dal 14 e Parigi già dal 7 novembre. La settimana fra Natale e
 Capodanno a Orlando ti dà lo stesso programma con i tempi di attesa più alti
 dell'anno.
 
-**Se devi partire fra Natale e Capodanno, vai a Parigi.** Lì quella stessa settimana non è salita sopra gli altri mesi, e a Disney
+Se devi partire fra Natale e Capodanno, vai a Parigi. Lì quella stessa settimana non è salita sopra gli altri mesi, e a Disney
 Adventure World è stata perfino il periodo più tranquillo dell'anno.
 
-**Se vuoi una serata a biglietto a Orlando e guardi il prezzo, prendi le
-Jollywood Nights.** Costano meno della Very Merry Christmas Party in ogni data,
+Se vuoi una serata a biglietto a Orlando e guardi il prezzo, prendi le
+Jollywood Nights. Costano meno della Very Merry Christmas Party in ogni data,
 lo sconto per il pass annuale vale tutte le sere invece che solo alcune, e
 durano fino al 5 gennaio, cioè due settimane dopo la fine della festa al Magic
 Kingdom.

@@ -216,7 +216,7 @@ per il momento in cui vedi gli undici blocchi e deglutisci.
 Ci abbiamo messo più tempo su quattro punti in cui il pianificatore afferma di
 proposito meno di quanto potrebbe.
 
-**La previsione sbaglia, e in modo misurabile.** Su ogni blocco selezionato c’è
+La previsione sbaglia, e in modo misurabile. Su ogni blocco selezionato c’è
 scritto di quanto, in media negli ultimi 45 giorni, le previsioni per una coda
 di quella lunghezza e con quell’anticipo si sono discostate da quello che la
 giornata ha portato davvero. C’è fino a 60 giorni prima; più in là la misura
@@ -225,14 +225,14 @@ ancora non arriva. (Dalle previsioni del tempo lo vorrei da anni.) Una media non
 numero sta lì come errore tipico e mai come intervallo che conterrebbe già la
 risposta giusta.
 
-**Un orario di spettacolo può essere una stima.** Quello che il parco ha
+Un orario di spettacolo può essere una stima. Quello che il parco ha
 pubblicato per oggi è un annuncio. Quello che abbiamo riportato dall’ultimo
 giorno della settimana corrispondente è una supposizione, e il pianificatore la
 disegna più tenue: con una tilde davanti all’ora, una linea punteggiata e la
 data da cui vengono gli orari. Gli orari degli spettacoli del sabato fra due
 settimane non li conosce nessuno, noi compresi.
 
-**Certi parchi non riusciamo proprio a misurarli.**
+Certi parchi non riusciamo proprio a misurarli.
 [Hansa-Park](ref:hansa-park) pubblica i suoi tempi di attesa solo nella propria
 app, sul wifi del parco. Da lì non ci arriva mai un numero. Nei dati un parco
 senza fonte è identico a un parco chiuso per la notte, perciò il pianificatore
@@ -241,7 +241,7 @@ pulsanti di ordinamento. Se ogni attrazione costa lo stesso numero inventato,
 ogni ordine vale quanto un altro, e un pulsante di ordinamento lì farebbe solo
 finta.
 
-**Una giornata passata resta.** Il calendario ti lascia riaprire un giorno in
+Una giornata passata resta. Il calendario ti lascia riaprire un giorno in
 cui avevi pianificato qualcosa, e lì i pulsanti automatici non ci sono più.
 Tutto quello che si fa a mano continua: spostare, spuntare, cancellare. Una
 giornata vissuta è una registrazione, e il fatto che all’una fossi davvero in

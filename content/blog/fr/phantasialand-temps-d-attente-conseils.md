@@ -234,7 +234,7 @@ dessous on roule sans.
 
 ## Billets et cartes annuelles
 
-**Il n’y a plus de caisse à l’entrée.** Le Phantasialand ne vend que des
+Il n’y a plus de caisse à l’entrée. Le Phantasialand ne vend que des
 **billets en ligne datés**, tu réserves à l’avance un jour de visite précis, et
 sans cet e-billet sur ton téléphone, tu risques de te retrouver devant une porte
 close.
@@ -249,7 +249,7 @@ le jour même, au prix du jour et à condition que la date ne soit pas complète
 Le jour bon marché est souvent aussi le plus vide,
 mais pas toujours.
 
-**Il n’y a plus de cartes annuelles.** Le Phantasialand a retiré sa Club-Karte de
+Il n’y a plus de cartes annuelles. Le Phantasialand a retiré sa Club-Karte de
 la vente pendant la pandémie et ne l’a jamais remise en vente; les dernières ont
 expiré à l’été 2022. Parmi les
 [grands parcs allemands](/blog/meilleurs-parcs-d-attractions-en-allemagne), c’est
@@ -324,13 +324,13 @@ Le **Quick Pass** te fait contourner la file classique. Depuis le Wintertraum
   moins cher et ajoute F.L.Y. par-dessus. Il ne vaut le coup que si tu veux
   vraiment tout faire, cela dit.
 
-**Même avec le Quick Pass, on attend encore à F.L.Y., en haut, dans la
-station.** L’attraction met longtemps à embarquer à cause de ses harnais de vol
+Même avec le Quick Pass, on attend encore à F.L.Y., en haut, dans la
+station. L’attraction met longtemps à embarquer à cause de ses harnais de vol
 sophistiqués, et cet embouteillage ne se dissout pas non plus en fast-track.
 
 L’achat se fait uniquement sur place, au service client du Kaiserplatz, et le
-contingent est limité. **Pendant le Wintertraum surtout, les Quick Pass sont, le
-week-end, souvent épuisés dès midi.**
+contingent est limité. Pendant le Wintertraum surtout, les Quick Pass sont, le
+week-end, souvent épuisés dès midi.
 
 Après de nombreuses visites, je pense qu’**un jour vert, tu n’en as pas besoin.**
 Qui arrive tôt et suit un ordre judicieux fait les têtes d’affiche avec de courts

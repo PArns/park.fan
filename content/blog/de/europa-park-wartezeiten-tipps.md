@@ -566,8 +566,7 @@ zwischen Weihnachten und Silvester 2025, der vollsten Woche des Winters.
 Pre-Opening Weeks, noch nicht mit allen Attraktionen und Shows, dafür mit den
 billigsten Tickets des Jahres. Die Sommersaison beginnt dann am 20. März. Für
 Oktober stehen erst die ersten Tage in der Tabelle, für November noch keiner.
-Wie weit Halloween und HALLOWinter inzwischen drinstecken, erkennst du an der
-Zahl der Messtage.
+Die Zahl der Messtage zeigt, wie weit Halloween und HALLOWinter inzwischen drinstecken.
 
 ### Welche Ferien den Park füllen
 
@@ -577,7 +576,7 @@ Grand Est eingerechnet, also des Elsass, dazu die der Schweizer Kantone Aargau,
 Basel-Stadt und Basel-Landschaft und die der angrenzenden Bundesländer Bayern,
 Hessen und Rheinland-Pfalz.
 
-Wie viel das ausmacht, sieht man an den Werktagen. Zwischen April und September
+Zwischen April und September
 gab es 42 Werktage, an denen in keiner der acht Regionen Schulferien waren und
 auch kein Feiertag lag. Vier davon standen auf „hoch“ oder höher, 27 auf
 „niedrig“. Von den Werktagen der Aargauer Ferien standen 17 von 27 auf „hoch“,
@@ -666,9 +665,7 @@ ist ein Werktag im November trotzdem einen Versuch wert. Die Tage, die gerade am
 
 ## Der perfekte Tag im Europa-Park
 
-**Sei am Eingang, bevor geöffnet wird, und geh dann zum Voletarium.**
-
-Unsere Rope-Drop-Auswertung
+Sei am Eingang, bevor geöffnet wird, und geh dann zum Voletarium. Unsere Rope-Drop-Auswertung
 vergleicht für jede Attraktion die Wartezeit direkt zur Öffnung mit der
 höchsten Tagesspitze, die dort an einem vollen Tag gemessen wurde. Beim Voletarium
 ist die Warteschlange zur Öffnung nur ein Bruchteil dieser Spitze, und das ist mit
@@ -681,8 +678,7 @@ Abstand die größte Ersparnis im ganzen Park.
 Bei Voltron, Arthur und Silver Star bringt der frühe Start nicht einmal halb so
 viel.
 
-Wie stark sich das über den Tag verteilt, sieht man erst im Stundenprofil: die
-typische Wartezeit jeder Stunde, der Median über alle gemessenen Betriebstage
+Im Stundenprofil steht für jede Stunde die typische Wartezeit, der Median über alle gemessenen Betriebstage
 seit Ende Dezember 2025. Fett steht jeweils die stärkste Stunde einer Bahn.
 
 ```hourly-profile-widget slug=europa-park top=12
@@ -694,7 +690,7 @@ seit Ende Dezember 2025. Fett steht jeweils die stärkste Stunde einer Bahn.
 Bei Silver Star steht um zehn und um elf die längste Warteschlange des Tages, ab zwölf wird sie
 spürbar kürzer und zieht erst in den Abendstunden langer Sommertage wieder an.
 
-**Die vollsten Stunden liegen zwischen zehn und zwölf.** Die meisten Bahnen haben
+Die vollsten Stunden liegen zwischen zehn und zwölf. Die meisten Bahnen haben
 ihr Maximum um zehn oder um elf; nur Arthur, Atlantica und das Fjord-Rafting
 haben ihre Spitze erst am Nachmittag.
 

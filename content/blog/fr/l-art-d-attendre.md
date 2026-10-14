@@ -92,7 +92,7 @@ Maister en a noté huit. Ces trois-là, on les voit dans toutes les files :
 
 ### Votre sens du temps exagère, d’un bon tiers
 
-À quel point nous jugeons mal l’attente inoccupée, cela se mesure. En 1984, le
+En 1984, le
 chercheur en marketing **Jacob Hornik** a chronométré l’attente aux caisses de
 magasins, puis demandé aux clients combien de temps ils pensaient avoir
 patienté. En moyenne, leurs estimations dépassaient la réalité de **près de 36
@@ -249,9 +249,7 @@ Studios accueille près de 10 000 personnes par représentation. Cela fait près
 dix mille personnes qui, pour la demi-heure qui vient, sont assises ailleurs que
 devant votre coaster préféré, et le reste du parc respire. Dans le profil horaire des
 Hollywood Studios sur park.fan, les heures du soir où se joue Fantasmic! sont
-celles où les temps d’attente des têtes d’affiche baissent nettement. Quelle
-part revient au spectacle et quelle part à la fermeture qui approche, les
-chiffres ne permettent pas de le dire. Le 25 septembre 2026, par exemple, la
+celles où les temps d’attente des têtes d’affiche baissent nettement. Les chiffres ne permettent pas de dire quelle part revient au spectacle et quelle part à la fermeture qui approche. Le 25 septembre 2026, par exemple, la
 première représentation commence à 20 h, une heure avant la fermeture du parc.
 Qui connaît déjà le spectacle roule quand même au meilleur rapport de la
 journée pendant cette heure. C’est pour ces moments-là que nous relisons les
@@ -325,11 +323,7 @@ frein final, les passagers font signe à la gare, la gare fait signe en retour,
 et personne ne bouge. Le goulot d’étranglement, c’est alors l’expédition. À
 quelle vitesse tous les harnais sont-ils vérifiés et la rame de nouveau dehors ?
 
-Le sérieux avec lequel les attractions modernes traitent la question apparaît
-sur
-[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) à
-l’[Europa-Park](ref:europa-park?bare). Selon la fiche technique de Mack Rides,
-l’attraction dispose de **sept trains**, dont trois ou quatre circulent en même
+Selon la fiche technique de Mack Rides, [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) à l’[Europa-Park](ref:europa-park?bare) dispose de **sept trains**, dont trois ou quatre circulent en même
 temps sur le parcours. L’objectif d’expédition est, selon Coaster101, d’**un
 départ toutes les 36 secondes**. Avec 16 places par train, cela donne les 1 600
 visiteurs par heure que Mack indique comme capacité théorique. Pas tout à fait
@@ -469,11 +463,7 @@ d’attractions le plus fréquenté du monde :
 
 ## Phantasialand et Europa-Park face à Orlando
 
-À quel point la demande et la capacité déterminent le niveau d’attente de tout
-un parc, cela se voit le mieux en posant deux grands parcs européens à côté
-d’Orlando.
-
-**Orlando joue dans une catégorie de demande à part.** Avec 17,8 millions de
+Orlando joue dans une catégorie de demande à part. Avec 17,8 millions de
 visiteurs en 2024, le [Magic Kingdom](ref:magic-kingdom-park?bare) est selon
 l’association professionnelle TEA le parc d’attractions le plus fréquenté au
 monde, et Disney comme Universal attirent des visiteurs de tous les continents.
@@ -487,7 +477,7 @@ a l’attente médiane la plus longue du parc malgré quatre salles en parallèl
 propose Premier Access, et le Phantasialand vend pour ses grandes attractions
 un Quick Pass, désormais à l’unité.
 
-**L’[Europa-Park](ref:europa-park?bare) est le contre-modèle.** Le plus grand
+L’[Europa-Park](ref:europa-park?bare) est le contre-modèle. Le plus grand
 parc d’Allemagne, deuxième d’Europe derrière Disneyland Paris en fréquentation
 (6,2 millions de visiteurs en 2024 selon TEA), répartit ses visiteurs sur
 **quatorze montagnes russes** (décompte de RCDB) et des dizaines d’attractions
@@ -497,8 +487,8 @@ durablement à saturation. C’est pourquoi même les journées chargées à Rus
 ressemblent rarement à Orlando, et l’attente médiane la plus longue du parc
 revient à son coaster le plus récent, Voltron.
 
-**Le [Phantasialand](ref:phantasialand?bare), en revanche, est le cas extrême
-dans l’autre sens :** environ 28 hectares, moitié moins de montagnes russes
+Le [Phantasialand](ref:phantasialand?bare), en revanche, est le cas extrême
+dans l’autre sens : environ 28 hectares, moitié moins de montagnes russes
 qu’à Rust (sept selon RCDB), et une thématisation extrêmement soignée. La charge
 se concentre sur une poignée de têtes d’affiche, et quand tout le monde veut
 [Taron](ref:phantasialand/taron?bare) un samedi de vacances (salutations, j’en

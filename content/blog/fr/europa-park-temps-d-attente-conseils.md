@@ -576,8 +576,7 @@ En 2027, ça démarre plus tôt : du 7 au 19 mars, le parc ouvre pour la premi�
 fois deux Pre-Opening Weeks, pas encore avec toutes les attractions et tous les
 spectacles, mais avec les billets les moins chers de l’année, et la saison d’été
 commence ensuite le 20 mars. Pour octobre, seuls les premiers jours figurent
-dans le tableau, pour novembre aucun. Où en sont Halloween et HALLOWinter, tu le
-vois au nombre de jours de mesure.
+dans le tableau, pour novembre aucun. Le nombre de jours de mesure indique où en sont Halloween et HALLOWinter.
 
 ### Les vacances qui remplissent le parc
 
@@ -587,7 +586,7 @@ de l’Alsace, celles des cantons suisses d’Argovie, de Bâle-Ville et de
 Bâle-Campagne, et celles des Länder voisins de Bavière, de Hesse et de
 Rhénanie-Palatinat.
 
-L’écart se voit aux jours de semaine. D’avril à septembre, il y a eu 42 jours
+D’avril à septembre, il y a eu 42 jours
 de semaine sans vacances scolaires dans aucune des huit régions et sans jour
 férié. Quatre d’entre eux ont été classés « élevé » ou plus, 27 « faible ».
 Pendant les vacances argoviennes, 17 jours de semaine sur 27 étaient à
@@ -679,9 +678,7 @@ calendrier ci-dessus.
 
 ## La journée parfaite à l’Europa-Park
 
-**Sois à l’entrée avant l’ouverture, puis file au Voletarium.**
-
-Notre analyse du rope drop compare, pour chaque
+Sois à l’entrée avant l’ouverture, puis file au Voletarium. Notre analyse du rope drop compare, pour chaque
 attraction, le temps d’attente juste à l’ouverture avec la plus haute pointe
 journalière qui y a été mesurée un jour chargé. Au Voletarium, la file à
 l’ouverture n’est qu’une fraction de cette pointe, de très loin la plus grosse
@@ -693,7 +690,7 @@ l’ouverture n’est qu’une fraction de cette pointe, de très loin la plus g
 
 Pour Voltron, Arthur et Silver Star, arriver tôt rapporte moins de la moitié.
 
-La répartition sur la journée est dans le profil horaire : l’attente typique de chaque heure, la médiane sur tous les jours
+Le profil horaire donne l’attente typique de chaque heure, la médiane sur tous les jours
 d’exploitation mesurés depuis fin décembre 2025. En gras, l’heure la plus
 chargée de chaque attraction.
 
@@ -706,7 +703,7 @@ chargée de chaque attraction.
 À Silver Star, c’est à dix et à onze heures qu’on trouve la plus longue file de la journée ; à partir de midi, elle
 raccourcit nettement et ne remonte que le soir des longues journées d’été.
 
-**Les heures les plus chargées se situent entre dix et douze.** La plupart des
+Les heures les plus chargées se situent entre dix et douze. La plupart des
 attractions atteignent leur maximum à dix ou à onze heures ; seuls Arthur,
 Atlantica et le rafting des fjords culminent l’après-midi.
 

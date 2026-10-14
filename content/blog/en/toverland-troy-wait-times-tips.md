@@ -155,7 +155,7 @@ rides and more than forty attractions in total. The Efteling counted 5.78
 million visits the same year, roughly five times as many, and it doesn’t have
 five times as many coasters.
 
-On top of that, **Toverland sells no fast pass and no express pass.** You can only trade money for time on the 13 Halloween nights in October and early November. There’s been a single rider line since
+On top of that, Toverland sells no fast pass and no express pass. You can only trade money for time on the 13 Halloween nights in October and early November. There’s been a single rider line since
 2023, mind you, but only at one attraction, the Dragonwatch drop tower, and it
 costs nothing extra.
 

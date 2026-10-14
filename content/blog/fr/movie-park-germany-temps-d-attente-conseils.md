@@ -694,8 +694,8 @@ aux files courtes, un jour ordinaire, on y fait plus d’attractions qu’au Pha
 par an, dans les mêmes décors, se tient ce qui est, selon son propre décompte, le
 plus grand événement d’Halloween du continent.
 
-**Ce parc a pourtant ses meilleures années derrière lui.** Elles se
-situaient à l’époque Warner, quand un studio y mettait de l’argent et des
+Les meilleures années de ce parc se situaient pourtant
+à l’époque Warner, quand un studio y mettait de l’argent et des
 personnages. Depuis, le parc continue de construire, en 2011, 2017, 2018, 2021 et
 2026, mais sans les marques qui faisaient autrefois son identité. La dernière
 montagne russe pour adultes date de 2017, et la nouveauté de l’année anniversaire

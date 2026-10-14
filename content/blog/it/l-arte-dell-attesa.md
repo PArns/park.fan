@@ -87,7 +87,7 @@ Maister ne ha messe per iscritto otto. Queste tre si vedono in ogni coda:
 
 ### Il tuo senso del tempo esagera, di un buon terzo
 
-Quanto male valutiamo l’attesa non occupata si può misurare. Nel 1984 il
+Nel 1984 il
 ricercatore di marketing **Jacob Hornik** cronometrò l’attesa alle casse di
 alcuni negozi e poi chiese ai clienti quanto pensavano di aver aspettato. In
 media le loro stime superavano la realtà di **circa il 36 per cento**. Dieci
@@ -242,9 +242,7 @@ quasi 10.000 persone a rappresentazione. Sono quasi diecimila persone che per la
 prossima mezz’ora sono sedute da tutt’altra parte rispetto al tuo coaster
 preferito, e il resto del parco tira il fiato. Nel profilo orario degli
 Hollywood Studios su park.fan, nelle ore serali in cui va in scena Fantasmic!,
-i tempi di attesa delle attrazioni di punta calano nettamente. Quanto dipenda
-dallo spettacolo e quanto dalla chiusura che si avvicina, dai nostri numeri non
-si riesce a separarlo. Il 25 settembre 2026, per esempio, la prima
+i tempi di attesa delle attrazioni di punta calano nettamente. Dai nostri numeri non si riesce a separare quanto dipenda dallo spettacolo e quanto dalla chiusura che si avvicina. Il 25 settembre 2026, per esempio, la prima
 rappresentazione comincia alle 20, un’ora prima che il parco chiuda. Chi lo
 spettacolo lo conosce già in quell’ora gira comunque al rapporto migliore della
 giornata. È per momenti così che rileggiamo i tempi di attesa ogni cinque
@@ -448,10 +446,7 @@ più visitato al mondo:
 
 ## Phantasialand ed Europa-Park contro Orlando
 
-Quanto domanda e capacità determinino il livello di attesa di un intero parco
-si vede meglio se metti due grandi parchi europei accanto a Orlando.
-
-**Orlando gioca in un campionato di domanda tutto suo.** Con 17,8 milioni di
+Orlando gioca in un campionato di domanda tutto suo. Con 17,8 milioni di
 ospiti nel 2024, il [Magic Kingdom](ref:magic-kingdom-park?bare) è secondo
 l’associazione di settore TEA il parco divertimenti più visitato al mondo, e sia
 Disney sia Universal attirano ospiti da tutti i continenti. A questo si aggiunge
@@ -465,7 +460,7 @@ ha l’attesa mediana più lunga del parco nonostante quattro sale in parallelo
 Paris ha il Premier Access, e il Phantasialand vende per le sue attrazioni
 principali un Quick Pass, ora a corsa singola.
 
-**L’[Europa-Park](ref:europa-park?bare) è il controesempio.** Il parco più
+L’[Europa-Park](ref:europa-park?bare) è il controesempio. Il parco più
 grande della Germania, dopo Disneyland Paris il più visitato d’Europa (6,2
 milioni di ospiti nel 2024 secondo TEA), distribuisce i suoi ospiti su
 **quattordici montagne russe** (conteggio di RCDB) più decine di attrazioni
@@ -475,8 +470,8 @@ saturazione permanente. Per questo anche le giornate piene a Rust raramente
 somigliano a Orlando, e l’attesa mediana più lunga del parco spetta al suo
 coaster più recente, Voltron.
 
-**Il [Phantasialand](ref:phantasialand?bare) è invece il caso estremo nella
-direzione opposta:** circa 28 ettari, metà delle montagne russe di Rust (sette
+Il [Phantasialand](ref:phantasialand?bare) è invece il caso estremo nella
+direzione opposta: circa 28 ettari, metà delle montagne russe di Rust (sette
 secondo RCDB) e una tematizzazione estremamente accurata. Il carico si
 concentra su una manciata di attrazioni di punta, e quando in un sabato di
 vacanza tutti vogliono il [Taron](ref:phantasialand/taron?bare) (saluti, per

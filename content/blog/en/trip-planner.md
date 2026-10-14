@@ -212,7 +212,7 @@ an undo. It goes back one step only.
 
 We spent longest on four places where the planner claims less than it could.
 
-**The forecast is off, and measurably so.** Every selected block shows how far,
+The forecast is off, and measurably so. Every selected block shows how far,
 on average over the last 45 days, the predictions for a queue that long and that
 far ahead sat from what the day actually brought. It’s there up to 60 days
 ahead; the measurement doesn’t reach further yet. (I’ve wanted the same from
@@ -220,20 +220,20 @@ weather forecasts for years.) An average isn’t a ceiling, and on plenty of day
 the forecast lands further out. So the number stands there as a typical error
 and never as a range that already contains the right answer.
 
-**A showtime can be an estimate.** What the park has published for today is
+A showtime can be an estimate. What the park has published for today is
 a statement. What we carried forward from the last matching weekday is a guess,
 and it’s drawn more softly: a tilde in front of the time, a dotted
 line, and the date the times came from. Showtimes for the Saturday after next
 are known to nobody, us included.
 
-**Some parks we can’t measure at all.** [Hansa-Park](ref:hansa-park) publishes
+Some parks we can’t measure at all. [Hansa-Park](ref:hansa-park) publishes
 its wait times only in its own app on the park wi-fi. No number ever reaches us
 from there. A park with no source looks exactly like a park closed for the night
 in the data, so that fact comes straight from the API, and both sorting buttons
 are hidden there. If every ride costs the same invented number, every order is
 as good as every other.
 
-**A day that has passed stays.** In the calendar you can reopen a day you planned
+A day that has passed stays. In the calendar you can reopen a day you planned
 something on, and the automatic buttons are gone there. Everything by hand
 continues: move, tick off, delete. A day you walked is a record, and the fact
 that you really stood in that queue at one o’clock is the reason it’s kept at

@@ -86,7 +86,7 @@ Maister anotó ocho. Estas tres se ven en cualquier cola:
 
 ### Tu sentido del tiempo exagera, en un buen tercio
 
-Lo mal que juzgamos la espera desocupada se puede medir. En 1984, el
+En 1984, el
 investigador de marketing **Jacob Hornik** cronometró la espera en las cajas de
 varias tiendas y luego preguntó a los clientes cuánto creían haber esperado. De
 media, sus estimaciones se pasaban en **alrededor de un 36 por ciento**. Diez
@@ -234,8 +234,7 @@ El anfiteatro de **Fantasmic!** en los Hollywood Studios acoge, entre plazas de
 pie y sentadas, a cerca de 10.000 personas por función. En el perfil por horas
 de los Hollywood Studios en park.fan, en las horas de la noche en que se
 representa Fantasmic!, los tiempos de espera de los cabezas de cartel bajan
-claramente. Cuánto de eso se debe al espectáculo y cuánto al cierre que se
-acerca, con nuestros números no se puede separar. El 25 de septiembre de 2026, por ejemplo, la
+claramente. Con nuestros números no se puede separar cuánto de eso se debe al espectáculo y cuánto al cierre que se acerca. El 25 de septiembre de 2026, por ejemplo, la
 primera función empieza a las 20:00, una hora antes de que cierre el parque.
 Quien ya conoce el espectáculo monta aun así en esa hora con la mejor relación
 del día. Para momentos así releemos los tiempos de espera cada cinco minutos.
@@ -308,10 +307,7 @@ el freno final, los ocupantes saludan a la estación, la estación saluda de
 vuelta y nadie se mueve. El cuello de botella pasa a ser entonces el despacho. ¿Con
 qué rapidez están comprobados todos los arneses y el tren fuera otra vez?
 
-Lo en serio que se lo toman las atracciones modernas se ve en
-[Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) en el
-[Europa-Park](ref:europa-park?bare). Según la ficha técnica de Mack Rides, la
-atracción tiene **siete trenes**, de los que tres o cuatro circulan a la vez
+Según la ficha técnica de Mack Rides, [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) en el [Europa-Park](ref:europa-park?bare) tiene **siete trenes**, de los que tres o cuatro circulan a la vez
 por el recorrido. El objetivo de despacho es, según Coaster101, **una salida
 cada 36 segundos**. Con 16 plazas por tren, eso da los 1.600 visitantes por
 hora que Mack indica como capacidad teórica. No llega del todo al nivel del
@@ -441,11 +437,7 @@ atracciones más visitado del mundo:
 
 ## Phantasialand y Europa-Park frente a Orlando
 
-Hasta qué punto la demanda y la capacidad determinan el nivel de espera de un
-parque entero se ve mejor si pones dos grandes parques europeos al lado de
-Orlando.
-
-**Orlando juega en una liga de demanda propia.** Con 17,8 millones de
+Orlando juega en una liga de demanda propia. Con 17,8 millones de
 visitantes en 2024, el [Magic Kingdom](ref:magic-kingdom-park?bare) es según la
 asociación del sector TEA el parque de atracciones más visitado del mundo, y
 tanto Disney como Universal atraen visitantes de todos los continentes. A eso
@@ -459,7 +451,7 @@ paralelo (a 25 de septiembre de 2026). Europa también vende ese atajo.
 Disneyland Paris tiene Premier Access, y el Phantasialand vende para sus
 grandes atracciones un Quick Pass, ahora por viaje.
 
-**El [Europa-Park](ref:europa-park?bare) es el contramodelo.** El parque más
+El [Europa-Park](ref:europa-park?bare) es el contramodelo. El parque más
 grande de Alemania, tras Disneyland Paris el más visitado de Europa (6,2
 millones de visitantes en 2024 según TEA), reparte a su público entre
 **catorce montañas rusas** (recuento de RCDB) más docenas de atracciones
@@ -468,8 +460,8 @@ ninguna cola entra en saturación permanente. Por eso incluso los días llenos e
 Orlando, y la mediana de espera más larga del parque la tiene su montaña rusa
 más nueva, Voltron.
 
-**El [Phantasialand](ref:phantasialand?bare), en cambio, es el caso extremo en
-la otra dirección**, con unas 28 hectáreas, la mitad de montañas rusas que en Rust
+El [Phantasialand](ref:phantasialand?bare), en cambio, es el caso extremo en
+la otra dirección, con unas 28 hectáreas, la mitad de montañas rusas que en Rust
 (siete según RCDB) y una tematización extremadamente cuidada. La carga se
 concentra en un puñado de cabezas de cartel, y cuando un sábado de vacaciones
 todo el mundo quiere [Taron](ref:phantasialand/taron?bare) (saludos, por

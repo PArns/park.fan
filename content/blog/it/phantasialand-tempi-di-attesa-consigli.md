@@ -229,7 +229,7 @@ i sei. Su Crazy Bats il visore VR si indossa da 1,20 m, sotto si viaggia senza.
 
 ## Biglietti e abbonamenti annuali
 
-**Non esiste più la biglietteria all’ingresso.** Il Phantasialand vende
+Non esiste più la biglietteria all’ingresso. Il Phantasialand vende
 esclusivamente **biglietti online con data**, prenoti in anticipo un giorno di
 visita preciso, e senza quell’e-ticket sul telefono, nel dubbio, resti davanti al
 cancello chiuso.
@@ -242,7 +242,7 @@ al parco. Lo shop pubblicizza biglietti da **44 €**. Si può anche partire
 all’ultimo momento, ma solo online e solo fino alle 14 del giorno stesso, al
 prezzo del giorno e purché la data non sia esaurita. Il giorno economico è spesso anche quello più vuoto, ma non sempre.
 
-**Gli abbonamenti annuali non esistono più.** Il Phantasialand ha tolto dalla
+Gli abbonamenti annuali non esistono più. Il Phantasialand ha tolto dalla
 vendita la sua Club-Karte durante la pandemia e non l’ha mai rimessa in vendita;
 le ultime sono scadute nell’estate 2022. Tra i
 [grandi parchi tedeschi](/blog/migliori-parchi-divertimenti-in-germania) è
@@ -314,13 +314,13 @@ modo completamente nuovo. Ci sono due varianti:
   Gli undici pass singoli costano in tutto 83 €, quindi l’Ultimate costa meno e ci
   aggiunge pure F.L.Y. Conviene però solo se vuoi davvero fare tutto.
 
-**Anche con il Quick Pass, a F.L.Y. aspetti lo stesso, su, in stazione.** A causa
+Anche con il Quick Pass, a F.L.Y. aspetti lo stesso, su, in stazione. A causa
 delle sue elaborate barre di sicurezza da volo, l’attrazione impiega molto per il
 carico, e questo ingorgo non si scioglie nemmeno con il fast-track.
 
 Si compra solo sul posto, al servizio ospiti del Kaiserplatz, in numero limitato,
-e **proprio durante il Wintertraum, nel weekend, i Quick Pass sono spesso già
-esauriti a mezzogiorno.**
+e proprio durante il Wintertraum, nel weekend, i Quick Pass sono spesso già
+esauriti a mezzogiorno.
 
 Dopo tante visite penso che **in un giorno verde non ti serva.** Chi arriva
 presto e segue un ordine sensato fa gli headliner con poca attesa. In un sabato di
