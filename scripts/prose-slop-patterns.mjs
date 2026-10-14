@@ -383,6 +383,19 @@ const POINTS_TO = {
 const BLOG_LINK = /\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\)/;
 /** A paragraph that is nothing but one internal link. */
 const LINK_ONLY = /^\[[^\]]+\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\)\.?$/;
+/*
+ * The same pointer with the link moved to the front: `Im [Efteling-Guide](/blog/…) steht, wie …`,
+ * `Unser [Halloween-Guide](/blog/…) beschreibt, was …`. Rewording the sentence end to dodge the
+ * series above left fourteen of these in one post on 2026-10-14.
+ */
+const LINK_LEADS = {
+  de: /^(?:\S+\s+){0,2}\[[^\]]+\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\),?\s+(?:\S+\s+)?(?:steht|stehen|findest|erklärt|beschreibt|zeigt|vergleicht)(?!\p{L})/iu,
+  en: /^(?:\S+\s+){0,2}\[[^\]]+\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\),?\s+(?:\S+\s+)?(?:has|lists|covers|explains|describes|shows|compares|you['’]ll find)(?!\p{L})/iu,
+  nl: /^(?:\S+\s+){0,2}\[[^\]]+\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\),?\s+(?:\S+\s+)?(?:staat|staan|lees|vind|legt|beschrijft|vergelijkt)(?!\p{L})/iu,
+  fr: /^(?:\S+\s+){0,2}\[[^\]]+\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\),?\s+(?:\S+\s+)?(?:trouveras|explique|décrit|recense|présente|compare)(?!\p{L})/iu,
+  es: /^(?:\S+\s+){0,2}\[[^\]]+\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\),?\s+(?:\S+\s+)?(?:está|están|encontrarás|explica|describe|cuenta|compara)(?!\p{L})/iu,
+  it: /^(?:\S+\s+){0,2}\[[^\]]+\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\),?\s+(?:\S+\s+)?(?:trovi|spiega|descrive|racconta|confronta|elenca)(?!\p{L})/iu,
+};
 const ENDS_ON_LINK = /\]\(\/(?:[a-z]{2}\/)?(?:blog|news)\/[^)\s]+\)\.$/;
 
 const WIDGET_SHOWS = {
@@ -852,8 +865,12 @@ export const SLOP_RULES = [
       const linkOnly = chapters
         .map((c) => c.at(-1))
         .filter((b) => b?.kind === 'para' && LINK_ONLY.test(b.raw.trim()));
+      const leads = paragraphs(bs).flatMap((b) =>
+        splitSentences(b.raw).filter((s) => LINK_LEADS[locale].test(s.trim()))
+      );
       return [
         ...(series.length >= 4 ? series.map((b) => lastRaw(b)) : []),
+        ...(leads.length >= 2 ? leads : []),
         ...linkSentences.filter((s) => count.get(s) > 1),
         ...(linkOnly.length >= 4 ? linkOnly.map((b) => b.text) : []),
       ];
