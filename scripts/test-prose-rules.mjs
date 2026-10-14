@@ -344,6 +344,12 @@ no(
   'en'
 );
 
+no(
+  'count-announcement-opener',
+  lines('Six Flags doesn’t comment on pending litigation.', 'Six Flags closed the ride in 2026.'),
+  'en'
+);
+
 // 14 data-caveat-close
 yes(
   'data-caveat-close',

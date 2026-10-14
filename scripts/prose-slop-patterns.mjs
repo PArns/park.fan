@@ -234,7 +234,7 @@ const CLOCK_TIME =
 
 const COUNT_WORD = {
   de: /(?<!\p{L})(?:zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf)(?!\p{L})/iu,
-  en: /(?<!\p{L})(?:two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:two|three|four|five|six(?!\s+Flags)|seven|eight|nine|ten|eleven|twelve)(?!\p{L})/iu,
 };
 
 const CAVEAT_CLOSE = {
