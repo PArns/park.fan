@@ -153,6 +153,15 @@ yes(
   lines('Hoe de rijen groeien:', fence, 'De rustigste dagen:', fence),
   'nl'
 );
+yes(
+  'widget-announcement',
+  lines(
+    'Der Wochentag macht den größten Unterschied, und die Spanne reicht von leer bis voll, wie die Messungen der letzten zwölf Monate an allen Bahnen zeigen. Hier sind die ruhigsten kommenden Tage:',
+    fence,
+    'Das Wetter im Park, genau jetzt:',
+    fence
+  )
+);
 no(
   'widget-announcement',
   lines('Die Tabelle steht unten.', fence, 'Danach geht es weiter.', fence)

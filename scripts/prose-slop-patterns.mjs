@@ -391,7 +391,10 @@ export const SLOP_RULES = [
       return bs
         .filter(
           (b, i) =>
-            b.kind === 'para' && isWidget(bs[i + 1]) && /:$/.test(b.text) && wordCount(b.text) <= 30
+            b.kind === 'para' &&
+            isWidget(bs[i + 1]) &&
+            /:$/.test(b.text) &&
+            wordCount(lastSentence(b.text)) <= 30
         )
         .map((b) => b.text);
     },
