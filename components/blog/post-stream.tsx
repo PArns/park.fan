@@ -70,8 +70,9 @@ export function PostStreamGroups({ groups }: { groups: PostStreamGroup[] }) {
 
 /**
  * One post in the stream: a label over the title (the park on `/news`, the category on the blog),
- * the title, two lines of teaser, an optional meta line and a small cover on the right. The title
- * and the cover link the post; the cover is out of the tab order, so the post is one stop.
+ * the title, two lines of teaser, an optional meta line and the cover on the right, as tall as the
+ * text beside it. The title and the cover link the post; the cover is out of the tab order, so the
+ * post is one stop.
  */
 export function PostStreamEntry({
   href,
@@ -119,14 +120,16 @@ export function PostStreamEntry({
         prefetch={false}
         tabIndex={-1}
         aria-hidden="true"
-        className="bg-muted relative block aspect-[16/10] w-24 shrink-0 self-start overflow-hidden rounded-xl sm:w-40"
+        className="bg-muted relative block min-h-15 w-24 shrink-0 self-stretch overflow-hidden rounded-xl sm:min-h-25 sm:w-40"
       >
+        {/* `sizes` is the width the photo is drawn at, not the box's: the box takes the card's
+            height, so a 16:9 cover is scaled to that height and runs wider than the box. */}
         {image ? (
           <Image
             src={image}
             alt=""
             fill
-            sizes="(min-width: 640px) 160px, 96px"
+            sizes="(min-width: 1024px) 256px, (min-width: 640px) 384px, 320px"
             style={imagePosition ? { objectPosition: imagePosition } : undefined}
             className="object-cover"
           />

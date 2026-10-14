@@ -260,7 +260,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`post-stream.tsx`](../../components/blog/post-stream.tsx)
 
 - `PostStreamGroups` _component_: The groups, each heading in a sticky column on the left and its entries along a rule on the right; stacked on a phone.
-- `PostStreamEntry` _component_: One post in the stream: a label over the title (the park on `/news`, the category on the blog), the title, two lines of teaser, an optional meta line and a small cover on the right.
+- `PostStreamEntry` _component_: One post in the stream: a label over the title (the park on `/news`, the category on the blog), the title, two lines of teaser, an optional meta line and the cover on the right, as tall as the text beside it.
 - `PostStreamLabel` _component_: The label over an entry's title, as a link drawn as a badge, so it reads as a label rather than a second headline: the park on `/news`, the category on the blog.
 - `filterPillClass` _function_: One pill over the stream: the park filter's buttons on `/news`, the category links on the blog. `pressed` is the chosen one.
 - `FILTER_PILL_ROW_CLASS` _const_: The row the filter pills sit in, over the stream.

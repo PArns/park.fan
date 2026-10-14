@@ -39,7 +39,7 @@ Two cases take two hops, and both are rare. A bare `/blog/<news-slug>` without a
 
 ## The overview and a post's park
 
-`/news` is a stream grouped by day, newest first, 20 notes a page (`/news/page/<n>` after the first, see [listing pages](a-listing-page-is-a-path-with-its-own-canonical.md)). The day heading is `NewsAge`; every note shows its park (`NewsParkLabel`), title, two lines of excerpt and a small cover. The stream itself is `PostStreamGroups` (`components/blog/post-stream.tsx`), the list the blog listings draw by month. Every note is listed on one of the pages, whatever its age.
+`/news` is a stream grouped by day, newest first, 20 notes a page (`/news/page/<n>` after the first, see [listing pages](a-listing-page-is-a-path-with-its-own-canonical.md)). The day heading is `NewsAge`; every note shows its park (`NewsParkLabel`), title, two lines of excerpt and its cover, as tall as the text beside it. The stream itself is `PostStreamGroups` (`components/blog/post-stream.tsx`), the list the blog listings draw by month. Every note is listed on one of the pages, whatever its age.
 
 A note's park comes from `getNewsParkRef()` in `lib/blog/backlinks.ts`: the first `parkLinks` entry, in the order the author wrote them, across all translations with the English one read first. A post without `parkLinks` falls back to the best-scored park it mentions, with the score the park pages rank by. `resolveNewsPark()` (`lib/blog/news-park.ts`) turns that into a name and a park page; a park the geo structure does not know leaves the note without a label, never out of the list.
 
